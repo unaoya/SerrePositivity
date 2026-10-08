@@ -6,6 +6,7 @@ public import Mathlib.Algebra.Homology.HomotopyCategory.MappingCone
 public import Mathlib.Algebra.Homology.HomotopyCofiber
 public import Mathlib.GroupTheory.FreeAbelianGroup
 public import Mathlib.GroupTheory.QuotientGroup.Defs
+public import Mathlib.RingTheory.TensorProduct.Finite
 
 /-!
 # 台つき完全複体の `K₀`
@@ -24,8 +25,8 @@ public import Mathlib.GroupTheory.QuotientGroup.Defs
 - `K0.map φ`：基底変更 `K₀(A) → K₀(C)`。
 - `K0.twistHom g`：ひねり `g^*` の誘導する準同型。`g • x := twistHom g⁻¹ x` で `G` の左作用。
 
-台つき完全複体が基底変更・ひねりで保たれることのうち、各項が有限自由であることの移送
-（`free_baseChange` など四つ）は `sorry`（層 1、未証明）。
+台つき完全複体は基底変更・ひねりで保たれる（`isPerfectSupported_baseChange`、
+`isPerfectSupported_twist`）。各項が有限自由であることの移送は `free_baseChange` など四つ。
 -/
 
 @[expose] public section
@@ -154,15 +155,19 @@ lemma isSupported_baseChange (φ : A →+* C) {e : ℕ} {z : Fin e → A}
     CategoryTheory.Functor.map_zero, map_pow] at this
   exact ⟨this⟩
 
-/-- 基底変更は各項の自由性を保つ（層 1、未証明）。 -/
+/-- 基底変更は各項の自由性を保つ。 -/
 lemma free_baseChange (φ : A →+* C) (M : ModuleCat.{u} A) [Module.Free A M] :
     Module.Free C ((ModuleCat.extendScalars.{u, u, u} φ).obj M) := by
-  sorry
+  let := φ.toAlgebra
+  change Module.Free C (TensorProduct A C M)
+  infer_instance
 
-/-- 基底変更は各項の有限生成性を保つ（層 1、未証明）。 -/
+/-- 基底変更は各項の有限生成性を保つ。 -/
 lemma finite_baseChange (φ : A →+* C) (M : ModuleCat.{u} A) [Module.Finite A M] :
     Module.Finite C ((ModuleCat.extendScalars.{u, u, u} φ).obj M) := by
-  sorry
+  let := φ.toAlgebra
+  change Module.Finite C (TensorProduct A C M)
+  infer_instance
 
 /-- 台つき完全複体は基底変更で保たれる。 -/
 lemma isPerfectSupported_baseChange (φ : A →+* C) {e : ℕ} {z : Fin e → A}
@@ -210,15 +215,40 @@ lemma isSupported_twist {e : ℕ} (z : Fin e → A) (g : G) {P : CochainComplex 
     CategoryTheory.Functor.map_zero] at this
   exact ⟨this⟩
 
-/-- 環自己同型に沿った係数制限は自由性を保つ（層 1、未証明）。 -/
-lemma free_twist (g : G) (M : ModuleCat.{u} T) [Module.Free T M] :
-    Module.Free T ((ModuleCat.restrictScalars (MulSemiringAction.toRingHom G T g)).obj M) := by
-  sorry
+/-- `g⁻¹` の作用 `T ≃+* T`。 -/
+noncomputable abbrev twistInvEquiv (g : G) : T ≃+* T := MulSemiringAction.toRingEquiv G T g⁻¹
 
-/-- 環自己同型に沿った係数制限は有限生成性を保つ（層 1、未証明）。 -/
+instance (g : G) : RingHomInvPair (twistInvEquiv (T := T) g).toRingHom
+    (twistInvEquiv (T := T) g).symm.toRingHom :=
+  RingHomInvPair.of_ringEquiv (twistInvEquiv (T := T) g)
+
+instance (g : G) : RingHomInvPair (twistInvEquiv (T := T) g).symm.toRingHom
+    (twistInvEquiv (T := T) g).toRingHom :=
+  RingHomInvPair.symm _ _
+
+/-- ひねり `g^*M` は、`M` から恒等写像による `g⁻¹` 半線形同型を受ける。 -/
+noncomputable def twistSemilinearEquiv (g : G) (M : ModuleCat.{u} T) :
+    M ≃ₛₗ[(twistInvEquiv (T := T) g).toRingHom]
+      (ModuleCat.restrictScalars (MulSemiringAction.toRingHom G T g)).obj M where
+  toFun x := x
+  invFun x := x
+  map_add' _ _ := rfl
+  map_smul' t x := by
+    change t • x = (g • (g⁻¹ • t)) • x
+    rw [smul_inv_smul]
+  left_inv _ := rfl
+  right_inv _ := rfl
+
+/-- 環自己同型に沿った係数制限は自由性を保つ。 -/
+lemma free_twist (g : G) (M : ModuleCat.{u} T) [Module.Free T M] :
+    Module.Free T ((ModuleCat.restrictScalars (MulSemiringAction.toRingHom G T g)).obj M) :=
+  Module.Free.of_equiv (twistSemilinearEquiv g M)
+
+/-- 環自己同型に沿った係数制限は有限生成性を保つ。 -/
 lemma finite_twist (g : G) (M : ModuleCat.{u} T) [Module.Finite T M] :
-    Module.Finite T ((ModuleCat.restrictScalars (MulSemiringAction.toRingHom G T g)).obj M) := by
-  sorry
+    Module.Finite T ((ModuleCat.restrictScalars (MulSemiringAction.toRingHom G T g)).obj M) :=
+  Module.Finite.of_surjective (twistSemilinearEquiv g M).toLinearMap
+    (twistSemilinearEquiv g M).surjective
 
 /-- `A` 上の作用によるひねりは、`A` から来る台をもつ完全複体を保つ。 -/
 lemma isPerfectSupported_twist {e : ℕ} (z : Fin e → A) (g : G)

@@ -1,6 +1,8 @@
 module
 
 public import SerrePositivity.Descent.ConjugateSum
+public import SerrePositivity.Descent.Lemma35b.Normalized
+public import SerrePositivity.Descent.Lemma35b.Ordinary
 public import SerrePositivity.Descent.OrdinaryLength
 public import SerrePositivity.Descent.NormalizedLength
 public import SerrePositivity.GeometricFiber
@@ -27,6 +29,8 @@ public import Mathlib.RingTheory.Spectrum.Prime.RingHom
   `χ_T(Q ⊗_A T) = χ_C(Q ⊗_A T) = r · χ_A(Q)`。二つの等式は独立に示せるので分ける。
   普通の長さの側 `lemma_3_5b_ord` は `T` が局所環で剰余体が同じこと（`hres`）を使い、
   正規化長さの側 `lemma_3_5b_lam` は (3.9) の `v = 1`（`hkz`、`hq`）と `hfin` を使う。
+  証明は `Descent/Lemma35b/`：`K₀^{m}(A)` が `[K(z)]` で生成されること（共通の入力）から、
+  `K(z)` での値の比較に帰着する。
 - **3.5c**（節 c：さらに剰余標数 `p > 0`、有限群 `G` が `A` 上 `T` に作用し、
   `Spec T → Spec A` は全射（`hsurj`）で幾何ファイバーで推移的（`htrans`））：
   共役和 `Σ_g χ_T(g^*P) = Σ_g χ_C(g^*P)`。証明は Theorem 3.1 の帰結 `theorem_3_1_K0`（層 2）と
@@ -98,22 +102,28 @@ variable [IsRegularLocalRing A] [Module.Finite A T]
   (hfin : ∀ (v j : ℕ), lam.len (koszulHomologySelf (fun k ↦ algebraMap A C (z k ^ v)) j) ≠ ⊤)
 
 include hz' hdim in
+/-- 正則パラメータ系の Koszul 複体は `A/(z)` の分解（A1 から）。3.5b の両側が共通に使う。 -/
+lemma isKoszulResolution_of_regular : IsKoszulResolution z :=
+  isKoszulResolution_of_isWeaklyRegular z (isWeaklyRegular_of_span_eq_maximalIdeal A z hz' hdim)
+
+include hz' hdim in
 /-- **Lemma 3.5b、普通の長さの側** (3.14)：`χ_T(Q ⊗_A T) = r · χ_A(Q)`。
 `λ` も (3.9) も使わない。`T` が局所環で剰余体が同じこと（`hres`）は、`T` 上の長さと
-`A` 上の長さを一致させるためだけに使う。 -/
+`A` 上の長さを一致させるためだけに使う。証明は `Descent/Lemma35b/Ordinary.lean`。 -/
 theorem lemma_3_5b_ord [IsLocalRing T]
-    (_hres : Function.Surjective ((residue T).comp (algebraMap A T)))
-    (Q : CochainComplex (ModuleCat.{u} A) ℤ) (_hQ : IsPerfectSupported z Q) :
-    chiOrd (baseChange (algebraMap A T) Q) = (Module.finrank A T : ℝ) * chiOrd Q := by
-  sorry
+    (hres : Function.Surjective ((residue T).comp (algebraMap A T)))
+    (Q : CochainComplex (ModuleCat.{u} A) ℤ) (hQ : IsPerfectSupported z Q) :
+    chiOrd (baseChange (algebraMap A T) Q) = (Module.finrank A T : ℝ) * chiOrd Q :=
+  lemma_3_5b_ord_of_koszul hz' (isKoszulResolution_of_regular hz' hdim) hres
+    (koszulEulerChar_eq_finrank A T z hz' hdim) Q hQ
 
 include hz' hdim hkz hq hfin in
 /-- **Lemma 3.5b、正規化長さの側** (3.13)：`χ_C(Q ⊗_A T) = r · χ_A(Q)`。
-`T` が局所環であることも剰余体が同じことも使わない。 -/
-theorem lemma_3_5b_lam (Q : CochainComplex (ModuleCat.{u} A) ℤ) (_hQ : IsPerfectSupported z Q) :
+`T` が局所環であることも剰余体が同じことも使わない。証明は `Descent/Lemma35b/Normalized.lean`。 -/
+theorem lemma_3_5b_lam (Q : CochainComplex (ModuleCat.{u} A) ℤ) (hQ : IsPerfectSupported z Q) :
     chiLam lam (algebraMap T C) (baseChange (algebraMap A T) Q) =
-      (Module.finrank A T : ℝ) * chiOrd Q := by
-  sorry
+      (Module.finrank A T : ℝ) * chiOrd Q :=
+  lemma_3_5b_lam_of_koszul hz' (isKoszulResolution_of_regular hz' hdim) hkz hq hfin Q hQ
 
 include hz' hdim hkz hq hfin in
 /-- **Lemma 3.5b**：`A` から来る類の上で `χ_T(Q ⊗_A T) = χ_C(Q ⊗_A T) = r · χ_A(Q)`。

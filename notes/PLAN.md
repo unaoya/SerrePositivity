@@ -573,8 +573,9 @@ Tor 長完全列で、正次数の項は非負性と加法性から `λ = 0`、0
 `n • y = K0.map x`」。`⊗ ℚ` を扱わない。設定は論文より狭く、`A` は Noether 局所環で剰余標数 `p`、
 `z` はパラメータ系（`√(z) = m_A ∋ p`）。
 
-残る `sorry`（層 1 の小さな補題）：`free_baseChange`、`finite_baseChange`、`free_twist`、
-`finite_twist`（基底変更・環自己同型に沿った係数制限が有限自由加群を保つ）。
+`free_baseChange`、`finite_baseChange`、`free_twist`、`finite_twist`（基底変更・環自己同型に沿った
+係数制限が有限自由加群を保つ）は 2026-10-08 に証明済み（ひねりは恒等写像を `g⁻¹` 半線形同型と
+みて `Module.Free.of_equiv`、`Module.Finite.of_surjective`）。
 
 `conjSum_eq` の「全射性」は `K_ℚ → (K'_ℚ)^G` の全射の整数版（`G` 不変な `y` に `n > 0`、`x` があって
 `n • y = f x`）で書いた。(3.2) からこの形が出るので、`⊗ ℚ` を扱わずに済む。
@@ -658,3 +659,30 @@ Mathlib には超 Tor スペクトル系列も「正則局所環の大域次元�
 | 8 | `lemma_3_5b_ord`、`lemma_3_5b_lam` の組み立て | 各側 |
 
 7a の証明は別トラック（正則 ⇒ 有限大域次元、`K(z) ⊗ L` の二重複体、交代ランク = 生成ランク）。
+
+### 12.6 Lemma 3.5b の証明の実装（2026-10-08）
+
+§12.5 の方針で `Descent/Lemma35b/` に実装した。`lake build` は成功。
+
+| ファイル | 内容 | 段階 |
+| --- | --- | --- |
+| `Support.lean` | 台の条件をホモトピー圏の等式 `z_j^v • 𝟙 = 0` に言い換え。三角形の補題（`a` が `g` の前と `h` の後ろで消えれば `a² • 𝟙_Z = 0`）、写像錐・シフト・ホモトピー同値での保存、`K(x)` は `x` に台をもつ | 1 |
+| `K0Basic.lean` | 台つき完全複体が写像錐・シフトで保たれること、`K₀` で零複体・可縮な複体の類は `0`、`[P⟦n⟧] = (-1)^n [P]`、`K(x)` は台つき完全複体（`koszulPerfSupp`） | 2 |
+| `Lift.lean` | `H^0(L) → M` から鎖写像 `L → M[0]`（`toSingleOfHomology`）、K 射影的な複体からの擬同型に沿った持ち上げ（`exists_lift_of_quasiIso`、Mathlib の `Qh_map_bijective`） | 3 |
+| `ConeLength.lean` | ホモロジーの長さの総和 `homologyLengthSum`、シフト・ホモトピー同値での不変性、`f : Q → K` が `H^0` で全射なら錐の総和が 1 減る | 3 |
+| `Truncate.lean` | 最上段の切り詰め：`H^0(Q) = 0` なら `τ^{≤-1}Q` とホモトピー同値（分裂全射の核は局所環上自由、K 射影的な複体の間の擬同型はホモトピー同値） | 4 |
+| `Generation.lean` | **共通の入力**：`K0.exists_eq_zsmul_koszul`（`[Q] = m · [K(z)]`）、`K0.hom_ext_koszul`、`chiOrd_koszulComplex`（`χ_A(K(z)) = 1`） | 5, 6a |
+| `Normalized.lean` | `chiLam_baseChange_koszulComplex`（`χ_C(K(z) ⊗ T) = λ(C/zC)`）と `lemma_3_5b_lam_of_koszul` | 6b, 8 |
+| `Ordinary.lean` | `length_eq_of_residue_surjective`（剰余体が同じなら `length_A = length_T`）、`chiOrd_baseChange_koszulComplex`、`lemma_3_5b_ord_of_koszul` | 7b, 8 |
+
+生成の定理は `[IsLocalRing A] [IsNoetherianRing A]`、`z` が `m_A` を生成すること、`IsKoszulResolution z` の
+もとで述べ、正則性は使わない。`Descent/Lemma35.lean` の `lemma_3_5b_ord`、`lemma_3_5b_lam` は、
+`IsKoszulResolution z` を A1 から（`isKoszulResolution_of_regular`）、`χ^A(z; T) = r` を層 3a の入力
+`koszulEulerChar_eq_finrank`（`Inputs/RegularLocalRing.lean`、7a）から与えてこれらを適用する。
+
+`#print axioms`：生成（`K0.exists_eq_zsmul_koszul`、`K0.hom_ext_koszul`）、`chiOrd_koszulComplex`、
+`length_eq_of_residue_surjective`、生成元での値の計算、`lemma_3_5b_ord_of_koszul` は標準公理のみ
+（`K0.lean` の四つの小補題を埋めた後）。`lemma_3_5b_lam_of_koszul` に残る `sorry` は
+`lemma_3_5a_lam_finite`（3.5a の λ 側の Koszul 有限性、`Descent/NormalizedLength.lean`）だけ。
+`lemma_3_5b_ord`、`lemma_3_5b_lam` にはさらに A1 と 7a の入力（`koszulEulerChar_eq_finrank`、
+可換環論の古典的な定理として当面 `sorry` のまま）が加わる。

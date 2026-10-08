@@ -28,6 +28,14 @@ public import SerrePositivity.Descent.TorLES
 public import SerrePositivity.Descent.TorTorsion
 public import SerrePositivity.Descent.Lemma34Abstract
 public import SerrePositivity.Descent.Lemma34
+public import SerrePositivity.Descent.Lemma35b.Support
+public import SerrePositivity.Descent.Lemma35b.K0Basic
+public import SerrePositivity.Descent.Lemma35b.Lift
+public import SerrePositivity.Descent.Lemma35b.ConeLength
+public import SerrePositivity.Descent.Lemma35b.Truncate
+public import SerrePositivity.Descent.Lemma35b.Generation
+public import SerrePositivity.Descent.Lemma35b.Normalized
+public import SerrePositivity.Descent.Lemma35b.Ordinary
 public import SerrePositivity.Descent.Lemma35
 public import SerrePositivity.OrdinaryEuler
 public import SerrePositivity.Descent.OrdinaryLength
