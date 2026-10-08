@@ -66,4 +66,7 @@
 - [x] Lemma 5.2 トラックの定義と主張（`notes/PLAN.md` §10）：Koszul 複体、パラメータ系、重複度、台つき完全複体と評価、ひねり、幾何ファイバーの推移性、Theorem 2.5・Cor 2.6・Lemma 3.4・3.5 の主張、`IsPaperData`
 - [x] Lemma 3.4 の抽象版 `lemma_3_4_of_isWeaklyRegular` を標準公理のみで証明（`notes/PLAN.md` §11）。Koszul 複体の完全性・分解・基底変更・`Tor` との同一視、Tor の長完全列（写像錐による）、Tor が消去イデアルで消えることを含む
 - [ ] `Setup34` 版 `lemma_3_4` と Cor 2.6 の 1・2 が依存する層 3a の二つの `sorry`（A1：正則パラメータ系は正則列、`m_T^N ≤ m_A T`）の証明、Cor 2.6 の 3
+- [x] Lemma 3.5 を 3.5a・3.5b・3.5c と形式的補題 `conjSum_eq` に分けて主張を形式化（`notes/PLAN.md` §12）。`conjSum_eq` は証明済み。台つき完全複体の `K₀` を定義
+- [x] `theorem_3_1_K0`（Theorem 3.1 の帰結、整数版、`sorry` つきの定理）の主張、`K₀` の基底変更と `G` 作用、3.5c の証明（`notes/PLAN.md` §12.2'）
+- [ ] 3.5a、3.5b の証明。基底変更・係数制限が有限自由加群を保つ四つの小補題（`K0.lean`）
 - [ ] K₀ と Theorem 3.1、Lemma 5.2 の証明の骨格（`notes/PLAN.md` §10.2–10.3）

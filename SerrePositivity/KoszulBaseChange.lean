@@ -37,6 +37,14 @@ lemma extendScalars_map_smul {M N : ModuleCat.{u} A} (f : M ⟶ N) (a : A) :
   rw [TensorProduct.tmul_smul, TensorProduct.smul_tmul']
   rfl
 
+/-- 係数拡大は複体の射のスカラー倍を `φ` 倍に送る（任意の複体の形）。 -/
+lemma extendScalars_mapHomologicalComplex_smul {ι : Type*} {c : ComplexShape ι}
+    {K L : HomologicalComplex (ModuleCat.{u} A) c} (f : K ⟶ L) (a : A) :
+    ((ModuleCat.extendScalars.{u, u, u} φ).mapHomologicalComplex c).map (a • f) =
+      φ a • ((ModuleCat.extendScalars.{u, u, u} φ).mapHomologicalComplex c).map f := by
+  ext i
+  simp [extendScalars_map_smul]
+
 /-- 係数拡大は `a • 𝟙 K` を `φ a • 𝟙` に送る。 -/
 lemma baseChange_smulId (K : CochainComplex (ModuleCat.{u} A) ℤ) (a : A) :
     ((ModuleCat.extendScalars.{u, u, u} φ).mapHomologicalComplex _).map (smulId a K) =

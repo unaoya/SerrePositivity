@@ -3,14 +3,18 @@ module
 public import SerrePositivity.NormalizedLength
 public import Mathlib.Algebra.Category.ModuleCat.ChangeOfRings
 public import Mathlib.Algebra.Homology.HomologicalComplex
+public import Mathlib.Algebra.Homology.Homotopy
+public import Mathlib.Algebra.Homology.Linear
 public import Mathlib.Algebra.Ring.Action.Basic
 public import Mathlib.Algebra.Ring.NegOnePow
 
 /-!
 # 閉点に台をもつ完全複体とその二つの Euler 評価（論文 §3.4、Lemma 3.5）
 
-- `IsPerfectSupported J P`：`P` は有界で各項が有限自由な `T` 複体で、各ホモロジーが `J` の冪で消える。
-  Lemma 3.5 では `J = m_A T`。
+- `IsSupported z P`：論文 §3.1 の台の判定法。ある `v` で、すべての `j` について `z_j^v • 𝟙 P` が
+  零ホモトピック（`P[1/z_j] = 0` と同値）。生成元 `z` で書くので、基底変更やひねりで保たれる。
+- `IsPerfectSupported z P`：`P` は有界で各項が有限自由な `T` 複体で、`z` に台をもつ。
+  Lemma 3.5 では `z = algebraMap A T ∘ (A の正則パラメータ系)`。
 - `chiOrd T P = Σ_i (-1)^i length_T H_i(P)`：通常の Euler 評価。
 - `chiLam λ φ P = Σ_i (-1)^i λ H_i(P ⊗_T C)`：正規化長さ `λ` による評価。`φ : T →+* C`。
 - `twist g P = g^*P`：`g : T → T` に沿った係数制限（論文 §3.4 末尾の scalar twisting）。
@@ -28,16 +32,21 @@ namespace SerrePositivity
 
 variable {T : Type u} [CommRing T]
 
-/-- `P` が閉点（`J` の零点集合）に台をもつ完全複体であること。 -/
-structure IsPerfectSupported (J : Ideal T) (P : CochainComplex (ModuleCat.{u} T) ℤ) : Prop where
+/-- 台の判定法：ある `v` で、すべての `j` について `z_j^v • 𝟙 P` が零ホモトピック。 -/
+def IsSupported {e : ℕ} (z : Fin e → T) (P : CochainComplex (ModuleCat.{u} T) ℤ) : Prop :=
+  ∃ v : ℕ, ∀ j : Fin e, Nonempty (Homotopy ((z j) ^ v • 𝟙 P) 0)
+
+/-- `P` が `z` の零点集合に台をもつ完全複体であること。 -/
+structure IsPerfectSupported {e : ℕ} (z : Fin e → T) (P : CochainComplex (ModuleCat.{u} T) ℤ) :
+    Prop where
   /-- 有界。 -/
   bounded : ∃ a b : ℤ, ∀ i, (i < a ∨ b < i) → Limits.IsZero (P.X i)
   /-- 各項は自由。 -/
   free : ∀ i, Module.Free T (P.X i)
   /-- 各項は有限生成。 -/
   finite : ∀ i, Module.Finite T (P.X i)
-  /-- 各ホモロジーは `J` の冪で消える。 -/
-  supported : ∀ i, ∃ n : ℕ, Module.IsTorsionBySet T (P.homology i) (J ^ n : Ideal T)
+  /-- `z` に台をもつ。 -/
+  supported : IsSupported z P
 
 /-- 通常の Euler 評価 `χ_T(P) = Σ_i (-1)^i length_T H_i(P)`。無限長は `0` になる。 -/
 noncomputable def chiOrd (P : CochainComplex (ModuleCat.{u} T) ℤ) : ℝ :=

@@ -524,3 +524,137 @@ Tor 長完全列で、正次数の項は非負性と加法性から `λ = 0`、0
 - 並行して走らせた Bash コマンドは作業ディレクトリを共有するので、`cd` を含むコマンドを
   並行実行すると相対パスが壊れる。ビルドは一度に一つ、読み取りは絶対パスで。
 - ビルド出力を `tail` で切ると先頭の「Unknown constant」を見落とす。`head` で先頭から見る。
+
+## 12. Lemma 3.5 トラック（2026-10-08）
+
+`notes/lemma-3-5.md` の三分割に従い、主張を四つに分けて形式化した（`Descent/Lemma35.lean`、
+`Descent/ConjugateSum.lean`、`K0.lean`、`Perfect.lean`）。
+
+### 12.1 定義の変更
+
+- 台の条件を論文 §3.1 の判定法に変えた：`IsSupported z P := ∃ v, ∀ j, z_j^v • 𝟙 P` が零ホモトピック。
+  生成元 `z`（`A` の正則パラメータ系の像）で指定するので、基底変更とひねりで保たれる。
+  以前の「ホモロジーが `J` の冪で消える」は基底変更と相性が悪かった。
+- `K0Supported T z`：`z` に台をもつ完全 `T` 複体の自由アーベル群を、ホモトピー同値と
+  写像錐の関係 `[Cone f] = [P'] - [P]` で割ったもの。`K0.mk`、`K0.lift`（関係式を保つ関数から
+  準同型）を用意した。基底変更 `K₀(A) → K₀(T)` と `G` の作用はまだ定義していない
+  （Theorem 3.1 を `Inputs.Descent` として置く段階で、ひねり・基底変更が台つき完全複体と
+  関係式を保つ補題とともに足す）。
+
+### 12.2 四つの主張
+
+| 主張 | 設定 | 内容 | 状態 |
+| --- | --- | --- | --- |
+| `lemma_3_5a` | 節 a：`A` Noether 局所、`z` パラメータ系（`hz`）、`T` 有限、`λ H_j(z^v; C) < ∞`（`hfin`） | `χ_T`、`χ_C` が有限で `K₀` 上の準同型を定める | 通常側は証明済み、正規化長さ側は `sorry` |
+| `lemma_3_5b` | 節 b：`A` 正則、`z` 正則パラメータ系（`hz'`、`hdim`）、`T` 局所で剰余体同じ（`hres`）、(3.9) の `v = 1`（`hkz`、`hq`）、`hfin` | `Q ⊗_A T` の上で `χ_T = χ_C = r · χ_A(Q)` | `sorry` |
+| `lemma_3_5c` | 節 c：節 b に加えて剰余標数 `p`、`G` の作用、`Spec T → Spec A` 全射（`hsurj`）、幾何ファイバーで推移的（`htrans`） | `Σ_g χ_T(g^*P) = Σ_g χ_C(g^*P)` | 証明済み（3.5a・3.5b・`theorem_3_1_K0` から） |
+| `conjSum_eq` | アーベル群の準同型 `f : K →+ K'`、有限群 `G` の `K'` への作用、`φ ψ : K' →+ ℝ`、`φ ∘ f = ψ ∘ f`、`G` 不変元は正の倍数が `f` の像 | `Σ_g φ(g • y) = Σ_g ψ(g • y)` | 証明済み |
+
+`lemma_3_5` は 3.5a の有限性と 3.5c の組み合わせ（証明済み）。
+
+仮定は構造体（旧 `Setup35a/b/c`）に束ねず、`Descent/Lemma35.lean` の節 a・b・c の `variable` に置き、
+命題の仮定は `include` で各定理に入れる（2026-10-08）。節 b・c は Lemma 3.4 と同じく
+`[IsRegularLocalRing A]` を使うので、`[IsLocalRing A]` と `λ` は共通の `variable` ではなく節ごとに置く
+（同じ `Nontrivial A` が二つの経路から来る警告を避けるため）。節 b の `√(z) = m_A` は
+`radical_span_eq_maximalIdeal` で `hz'` から出す。
+
+### 12.2' 3.5c の証明と `K₀` の基盤（2026-10-08）
+
+3.5c は `conjSum_eq` に `K' := K₀(T)`、`f := K0.map`（基底変更）、`φ ψ := ` 3.5a で得た
+`χ_T`、`χ_C` の準同型を入れ、`φ ∘ f = ψ ∘ f` を 3.5b と `K0.hom_ext` で、不変元の条件を
+`theorem_3_1_K0`（Theorem 3.1 の帰結、`Inputs/Descent.lean`、`sorry` つきの定理）で与えて証明した。
+`G` の `K₀(T)` への作用は `g • x := (g⁻¹)^* x`（ひねりは反変なので逆元で左作用にする）。
+そのために `K0.lean` に足したもの：`mk_eq_of_homotopyEquiv`、`mk_cone`、`lift`（任意のアーベル群へ）、
+`hom_ext`、`IsPerfectSupported.of_iso`、台つき完全複体が基底変更・ひねりで保たれること、
+`K0.map`、`K0.twistHom`、`twistOneIso`・`twistMulIso`（`restrictScalarsId'App`・
+`restrictScalarsComp'App` の各項の同型）、`instDistribMulAction`。
+
+`theorem_3_1_K0` は (3.2) の整数版：「`G` 不変な `y ∈ K₀(T)` には `n > 0`、`x ∈ K₀(A)` があって
+`n • y = K0.map x`」。`⊗ ℚ` を扱わない。設定は論文より狭く、`A` は Noether 局所環で剰余標数 `p`、
+`z` はパラメータ系（`√(z) = m_A ∋ p`）。
+
+残る `sorry`（層 1 の小さな補題）：`free_baseChange`、`finite_baseChange`、`free_twist`、
+`finite_twist`（基底変更・環自己同型に沿った係数制限が有限自由加群を保つ）。
+
+`conjSum_eq` の「全射性」は `K_ℚ → (K'_ℚ)^G` の全射の整数版（`G` 不変な `y` に `n > 0`、`x` があって
+`n • y = f x`）で書いた。(3.2) からこの形が出るので、`⊗ ℚ` を扱わずに済む。
+
+### 12.3 証明に向けて要るもの
+
+- 3.5a：Koszul 複体の分裂 (3.12)（`z_j^v • 𝟙 P` の零ホモトピーで錐を分解）、二重複体の
+  ホモロジーの長さの評価（スペクトル系列の代わりに有限フィルトレーションの長さの加法性）、
+  `K₀` の関係式を `χ` が保つこと（ホモトピー不変性、錐の三角の長完全列）。
+- 3.5b：論文は hyper-Tor の議論（λ 側は Lemma 3.4、通常側は `T` の有限自由 `A` 分解と交代ランク）。
+  形式化では `K₀^{m_A}(A)` が `[K(z)]` で生成されることを使う方針に変えた（§12.5）。
+- 3.5c：`Inputs.Descent`（Theorem 3.1 の `K₀` レベルの帰結）、`K0.map`、`G` の `K₀` への作用、
+  3.5b を `K0.lift` で `K₀(A)` 上の準同型の一致に直すこと、`conjSum_eq`。
+- `isPerfectSupported_twist`（ひねりが台つき完全複体を保つ）：係数制限による有限自由性の移送。
+
+
+### 12.4 Lemma 3.5a の通常長さ側（2026-10-08）
+
+通常側と正規化長さ側を独立した課題に分けた。
+
+- `OrdinaryEuler.lean`：`T` は Noether 可換環、`w : Fin e → T`、
+  `T/(w)` は Artin 環という一般設定。`IsSupported` の零ホモトピーから
+  `(w) ≤ radical(Ann H^i(P))` を導き、有限生成ホモロジーの有限長性を証明。
+  `chiOrd_eq_of_homotopyEquiv`、写像錐の長完全列による `chiOrd_cone`、
+  `K0.lift` による `chiOrdHom` と類の上での評価式も証明した。
+- `Descent/OrdinaryLength.lean`：`A` は Noether 局所環、`T` は `A` 上有限、
+  `√(z) = m_A` から、`T` の Noether 性と `T/(zT)` の Artin 性を出して一般定理を適用。
+  `lemma_3_5a_ord` は `C`、`λ`、`T` の局所性を要求しない。
+- `Descent/Lemma35.lean`：正規化長さ側だけを `lemma_3_5a_lam`（未証明）に分離し、
+  `lemma_3_5a` は両者をまとめる証明とした。
+
+通常側の証明は Koszul 分裂、Lemma 3.4、Theorem 3.1 を使わない。
+`lake build` は成功。一般設定の有限長性、`chiOrd_cone`、`chiOrdHom`、
+`lemma_3_5a_ord` の `#print axioms` は `propext`、`Classical.choice`、`Quot.sound` のみ。
+
+### 12.5 Lemma 3.5b の証明計画（2026-10-08）
+
+**論文の議論と変更点**：論文は超 Tor スペクトル系列で `χ(Q ⊗ T)` を `H_j(Q)` の Tor に分解し、
+λ 側は Lemma 3.4、通常側は `T` の有限自由 `A` 分解（交代ランク `= r`）で計算する。
+Mathlib には超 Tor スペクトル系列も「正則局所環の大域次元は有限」もないので、次の方針に変える。
+
+**方針**：`K₀^{m_A}(A)` は Koszul 複体の類 `[K(z)]` で生成される（台つき完全 `A` 複体 `Q` に
+整数 `n` があって `[Q] = n · [K(z)]`）。`Q ↦ χ_T(Q ⊗ T)`、`Q ↦ χ_C(Q ⊗ T)`、`Q ↦ r · χ_A(Q)` は
+どれも `K₀^{m_A}(A)` 上の準同型（3.5a を `T` と `A` に適用）なので、`K(z)` での値が `r` で
+一致すれば足りる。λ 側では Lemma 3.4 を使わない（`V = k` の場合が `hkz`、`hq` そのもの）。
+
+**主張の分割**：二つの等式は独立に示せるので分けた（`Descent/Lemma35.lean`）。
+
+| 主張 | 内容 | 使う仮定 |
+| --- | --- | --- |
+| `lemma_3_5b_ord` | `χ_T(Q ⊗_A T) = r · χ_A(Q)` | `A` 正則、`hz'`、`hdim`、`T` 有限・局所、`hres` |
+| `lemma_3_5b_lam` | `χ_C(Q ⊗_A T) = r · χ_A(Q)` | `A` 正則、`hz'`、`hdim`、`T` 有限、`hkz`、`hq`、`hfin` |
+| `lemma_3_5b` | 二つを並べたもの（証明済み） | 両方 |
+
+共通部分は「生成」（下の段階 1〜5）と `χ_A(K(z)) = 1` だけ。
+
+**生成の証明（デヴィサージュ）**：`Q` の項が 0 でない最高次数を `t` とし、ホモロジーの長さの
+総和と幅について帰納法。
+
+- `H^t(Q) ≠ 0`：`H^t(Q) ↠ k` を選び、`Q → k[-t]` を Koszul 分解 `K(z)[-t] → k[-t]` に沿って
+  持ち上げる（`Q` は有界な射影的複体なので K 射影的、Mathlib の `isKProjective_of_projective`、
+  `DerivedCategory.Qh_map_bijective`）。写像錐の長完全列から錐のホモロジーの長さの総和は 1 減る。
+  `[Q] = ±[K(z)] - [錐]`。
+- `H^t(Q) = 0`：最上段の微分は分裂全射。切り詰め（`truncLE`）で一段短くする。核は有限射影的なので
+  局所環上自由。切り詰めは K 射影的な複体の間の擬同型なのでホモトピー同値（`quasiIso_iff`）。
+- ホモロジーが 0：非輪状で K 射影的なので可縮、`[Q] = 0`。
+
+**段階**
+
+| 段階 | 内容 | 使う側 |
+| --- | --- | --- |
+| 1 | 三角形 `X → Y → Z → X[1]` で `a` が `g` と `h` を消すなら `a² • 𝟙_Z ∼ 0`。錐と `K(z)` の台 | 共通 |
+| 2 | `K(z)` は台つき完全複体。`K₀` の零複体・シフトの補題 | 共通 |
+| 3 | K 射影性による持ち上げと、錐のホモロジーの長さの計算 | 共通 |
+| 4 | 最上段の切り詰め（分裂、射影的なら自由、ホモトピー同値） | 共通 |
+| 5 | 生成：`∀ Q, ∃ n : ℤ, K0.mk Q = n • K0.mk K(z)` | 共通 |
+| 6a | `χ_A(K(z)) = 1`（A1 に依存） | 共通 |
+| 6b | `χ_C(K(z) ⊗ T) = r`（`baseChangeKoszulIso`、`hkz`、`hq`、`H_0 ≅ C/(z)`） | λ 側 |
+| 7a | Koszul Euler 標数 `χ(z; T) = rank_A T`（`A` 正則）。層 3a の入力として `sorry` で置く | 通常側 |
+| 7b | 剰余体が同じ局所環 `T` 上の有限長加群で `length_T = length_A` | 通常側 |
+| 8 | `lemma_3_5b_ord`、`lemma_3_5b_lam` の組み立て | 各側 |
+
+7a の証明は別トラック（正則 ⇒ 有限大域次元、`K(z) ⊗ L` の二重複体、交代ランク = 生成ランク）。

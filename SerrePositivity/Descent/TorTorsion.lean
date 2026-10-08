@@ -59,14 +59,6 @@ end general
 
 variable {A C : Type u} [CommRing A] [CommRing C] (φ : A →+* C)
 
-/-- 係数拡大は複体の射のスカラー倍を `φ` 倍に送る（任意の複体の形）。 -/
-lemma extendScalars_mapHomologicalComplex_smul {ι : Type*} {c : ComplexShape ι}
-    {K L : HomologicalComplex (ModuleCat.{u} A) c} (f : K ⟶ L) (a : A) :
-    ((ModuleCat.extendScalars.{u, u, u} φ).mapHomologicalComplex c).map (a • f) =
-      φ a • ((ModuleCat.extendScalars.{u, u, u} φ).mapHomologicalComplex c).map f := by
-  ext i
-  simp [extendScalars_map_smul]
-
 /-- `a` が `V` を消すなら `φ a` は `Tor_i^A(V, C)` を消す。 -/
 theorem torAlg_smul_eq_zero (i : ℕ) (V : Type u) [AddCommGroup V] [Module A V] (a : A)
     (ha : ∀ v : V, a • v = 0) (x : TorAlg φ i V) : φ a • x = 0 := by
