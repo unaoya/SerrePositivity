@@ -6,7 +6,7 @@ public import Mathlib.Algebra.Homology.HomotopyCategory.MappingCone
 public import Mathlib.Algebra.Homology.Linear
 public import Mathlib.Algebra.Homology.Single
 public import Mathlib.RingTheory.Length
-public import SerrePositivity.HomologicalAlgebra.ConeSmul
+public import SerrePositivity.HomologicalAlgebra.Basic
 
 /-!
 # Koszul 複体

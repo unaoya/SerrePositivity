@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.HomologicalAlgebra.Basic
 public import Mathlib.Algebra.Category.ModuleCat.Biproducts
 public import Mathlib.Algebra.Homology.HomotopyCategory.MappingCone
 public import Mathlib.Algebra.Homology.ShortComplex.ModuleCat
@@ -12,7 +13,7 @@ public import Mathlib.RingTheory.Noetherian.Basic
 /-!
 # 複体の項の自由性・有限性
 
-零加群・biproduct・写像錐の項が有限自由であること、各項が零な複体は零であること。
+零加群・biproduct・写像錐の項が有限自由であること。
 Noether 環上では、各項が有限生成な複体のホモロジーも有限生成（`homology_moduleFinite`）。
 -/
 
@@ -25,12 +26,6 @@ open CategoryTheory Limits
 namespace SerrePositivity
 
 variable {R : Type u} [CommRing R]
-
-/-- 各項が零な複体は零。 -/
-lemma isZero_of_isZero_X {P : CochainComplex (ModuleCat.{u} R) ℤ} (h : ∀ i, IsZero (P.X i)) :
-    IsZero P := by
-  rw [IsZero.iff_id_eq_zero]
-  exact HomologicalComplex.hom_ext _ _ fun i ↦ (h i).eq_of_src _ _
 
 lemma isZero_moduleCat_free {M : ModuleCat.{u} R} (h : IsZero M) : Module.Free R M := by
   have : Subsingleton M := ModuleCat.isZero_iff_subsingleton.mp h

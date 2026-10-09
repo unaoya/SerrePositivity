@@ -49,11 +49,6 @@ lemma free_finite_ker_of_surjective [IsLocalRing R] {M N : Type u} [AddCommGroup
   have : Module.Finite R (LinearMap.ker d) := Module.Finite.of_surjective p hp
   exact ⟨Module.free_of_flat_of_isLocalRing, this⟩
 
-/-- 自由加群は圏論的に射影的。 -/
-lemma projective_of_free {M : ModuleCat.{u} R} (h : Module.Free R M) : Projective M := by
-  have : Module.Projective R M := Module.Projective.of_free
-  exact M.projective_of_categoryTheory_projective
-
 /-- **最上段の切り詰め**。 -/
 theorem exists_homotopyEquiv_truncate [IsLocalRing R] (Q : CochainComplex (ModuleCat.{u} R) ℤ)
     (hfree : ∀ i, Module.Free R (Q.X i)) (hfin : ∀ i, Module.Finite R (Q.X i))
@@ -91,7 +86,7 @@ theorem exists_homotopyEquiv_truncate [IsLocalRing R] (Q : CochainComplex (Modul
     rw [HomologicalComplex.exactAt_iff_isZero_homology]
     rcases (show i = 0 ∨ 0 < i by omega) with rfl | hi
     · exact h0
-    · exact isZero_homology_of_isZero_X' (htop i hi)
+    · exact isZero_homology_of_isZero_X _ _ (htop i hi)
   have hQle : Q.IsStrictlyLE 0 := by
     rw [CochainComplex.isStrictlyLE_iff]
     exact htop

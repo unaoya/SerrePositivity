@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.ConeSmul
+public import SerrePositivity.HomologicalAlgebra.Basic
 public import SerrePositivity.HomologicalAlgebra.Tor
 public import Mathlib.Algebra.Category.ModuleCat.ChangeOfRings
 public import Mathlib.Algebra.Homology.Additive

@@ -29,12 +29,6 @@ open CategoryTheory Limits
 
 namespace SerrePositivity
 
-/-- 項が零ならホモロジーも零。 -/
-lemma isZero_homology_of_isZero_X {C : Type*} [Category* C] [Abelian C] {ι : Type*}
-    {c : ComplexShape ι} (K : HomologicalComplex C c) (i : ι) (h : IsZero (K.X i)) :
-    IsZero (K.homology i) :=
-  (HomologicalComplex.exactAt_iff_isZero_homology _ _).mp (ShortComplex.exact_of_isZero_X₂ _ h)
-
 namespace TorLES
 
 variable {A C : Type u} [CommRing A] [CommRing C] (φ : A →+* C)

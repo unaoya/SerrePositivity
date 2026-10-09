@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.Koszul
-public import SerrePositivity.HomologicalAlgebra.ConeSmul
+public import SerrePositivity.HomologicalAlgebra.ConeLES
 public import SerrePositivity.HomologicalAlgebra.FreeTerms
 public import Mathlib.Algebra.Homology.HomotopyCategory.HomologicalFunctor
 public import Mathlib.Algebra.Homology.HomotopyCategory.Pretriangulated
@@ -22,7 +22,7 @@ public import Mathlib.RingTheory.Regular.RegularSequence
 長完全列を使う。`xₙ` が `H^0(K') ≅ R/(x₀,…,xₙ₋₁)` 上で正則なので `H^{-1}(Cone) = 0`、
 `H^0(Cone) = H^0(K')/xₙ = R/(x)`。
 
-一般の複体 `K` と `a : R` に対する `Cone(a • 𝟙 K)` の長完全列は `HomologicalAlgebra/ConeSmul.lean`。
+写像錐の長完全列 `Cone.exact₁₂₃`（`HomologicalAlgebra/ConeLES.lean`）を `φ = smulId a K` に適用する。
 -/
 
 @[expose] public section
@@ -143,9 +143,9 @@ theorem homologyZeroEquiv_succ {n : ℕ} (x : Fin (n + 1) → R)
   set I : Ideal R := Ideal.span (Set.range (Fin.init x)) with hI
   have hmap : HomologicalComplex.homologyMap (smulId a K) 0 = a • 𝟙 (K.homology 0) := by
     rw [smulId, homologyMap_smul, HomologicalComplex.homologyMap_id]
-  change Nonempty ((ConeSmul.cone K a).homology 0 ≃ₗ[R] R ⧸ Ideal.span (Set.range x))
-  have h2 := ConeSmul.exact₂ K a 0
-  have h3 := ConeSmul.exact₃ K a 0 1 rfl
+  change Nonempty ((Cone.cone (smulId a K)).homology 0 ≃ₗ[R] R ⧸ Ideal.span (Set.range x))
+  have h2 := Cone.exact₂ (smulId a K) 0
+  have h3 := Cone.exact₃ (smulId a K) 0 1 rfl
   have hepi : Epi (HomologicalComplex.homologyMap
       (CochainComplex.mappingCone.inr (smulId a K)) 0) :=
     h3.epi_f (h1.eq_zero_of_tgt _)
@@ -233,20 +233,21 @@ theorem isKoszulResolution_succ {n : ℕ} (x : Fin (n + 1) → R)
     exact hinj (by simpa using h)
   have h10 : (-1 : ℤ) + 1 = 0 := by norm_num
   refine ⟨fun i hi ↦ ?_, homologyZeroEquiv_succ x (ih.isZero 1 one_ne_zero) e⟩
-  change IsZero ((ConeSmul.cone K a).homology i)
+  change IsZero ((Cone.cone (smulId a K)).homology i)
   by_cases hi1 : i = -1
   · subst hi1
-    have h3 := ConeSmul.exact₃ K a (-1) 0 h10
+    have h3 := Cone.exact₃ (smulId a K) (-1) 0 h10
     have hz : IsZero (K.homology (-1)) := ih.isZero (-1) (by norm_num)
-    have hmonoδ : Mono (ConeSmul.δ K a (-1) 0 h10) := h3.mono_g (hz.eq_zero_of_src _)
-    have hcomp : ConeSmul.δ K a (-1) 0 h10 ≫ HomologicalComplex.homologyMap (smulId a K) 0 = 0 :=
-      comp_eq_zero_transport (ConeSmul.S₁ K a (-1) 0 h10) _ _ _ _ _
-        (ConeSmul.δ_square K a (-1) 0 h10) (ConeSmul.e_naturality 0 (smulId a K))
+    have hmonoδ : Mono (Cone.δ (smulId a K) (-1) 0 h10) := h3.mono_g (hz.eq_zero_of_src _)
+    have hcomp : Cone.δ (smulId a K) (-1) 0 h10 ≫
+        HomologicalComplex.homologyMap (smulId a K) 0 = 0 :=
+      comp_eq_zero_transport (Cone.S₁ (smulId a K) (-1) 0 h10) _ _ _ _ _
+        (Cone.δ_square (smulId a K) (-1) 0 h10) (Cone.e_naturality 0 (smulId a K))
     rw [hmap 0] at hcomp
-    have hδ : ConeSmul.δ K a (-1) 0 h10 = 0 := zero_of_comp_mono _ hcomp
-    rw [IsZero.iff_id_eq_zero, ← cancel_mono (ConeSmul.δ K a (-1) 0 h10), Category.id_comp,
+    have hδ : Cone.δ (smulId a K) (-1) 0 h10 = 0 := zero_of_comp_mono _ hcomp
+    rw [IsZero.iff_id_eq_zero, ← cancel_mono (Cone.δ (smulId a K) (-1) 0 h10), Category.id_comp,
       zero_comp, hδ]
-  · have h3 := ConeSmul.exact₃ K a i (i + 1) rfl
+  · have h3 := Cone.exact₃ (smulId a K) i (i + 1) rfl
     exact h3.isZero_of_both_isZero (ih.isZero i hi) (ih.isZero (i + 1) (by omega))
 
 /-- **Koszul 複体の完全性**：`x` が弱正則列なら `K(x; R)` は `R/(x)` の分解。 -/

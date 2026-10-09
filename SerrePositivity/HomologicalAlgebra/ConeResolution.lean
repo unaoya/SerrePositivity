@@ -119,7 +119,7 @@ noncomputable def isResolutionOf_cone (hf : Function.Injective f) (hg : Function
       have hcomp : Cone.δ (liftSES f) (-1) 0 h10 ≫
           HomologicalComplex.homologyMap (liftSES f) 0 = 0 :=
         comp_eq_zero_transport (Cone.S₁ (liftSES f) (-1) 0 h10) _ _ _ _ _
-          (Cone.δ_square (liftSES f) (-1) 0 h10) (ConeSmul.e_naturality 0 (liftSES f))
+          (Cone.δ_square (liftSES f) (-1) 0 h10) (Cone.e_naturality 0 (liftSES f))
       have := mono_homologyMap_liftSES_zero f hf
       have hδ : Cone.δ (liftSES f) (-1) 0 h10 = 0 := zero_of_comp_mono _ hcomp
       rw [IsZero.iff_id_eq_zero, ← cancel_mono (Cone.δ (liftSES f) (-1) 0 h10), Category.id_comp,

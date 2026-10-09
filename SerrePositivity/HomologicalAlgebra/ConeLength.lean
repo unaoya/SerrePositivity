@@ -31,11 +31,6 @@ variable {R : Type u} [CommRing R]
 noncomputable def homologyLengthSum (P : CochainComplex (ModuleCat.{u} R) ℤ) : ℕ :=
   ∑ᶠ i : ℤ, (Module.length R (P.homology i)).toNat
 
-/-- 項が零ならホモロジーも零。 -/
-lemma isZero_homology_of_isZero_X' {P : CochainComplex (ModuleCat.{u} R) ℤ} {i : ℤ}
-    (h : IsZero (P.X i)) : IsZero (P.homology i) :=
-  (P.sc i).isZero_homology_of_isZero_X₂ h
-
 lemma length_toNat_eq_zero_of_isZero {M : ModuleCat.{u} R} (h : IsZero M) :
     (Module.length R M).toNat = 0 := by
   have := ModuleCat.subsingleton_of_isZero h
@@ -50,7 +45,7 @@ lemma homologyLength_support_finite (P : CochainComplex (ModuleCat.{u} R) ℤ)
   intro i hi
   by_contra hn
   exact hi (length_toNat_eq_zero_of_isZero
-    (isZero_homology_of_isZero_X' (hab i (by simp only [Set.mem_Icc] at hn; omega))))
+    (isZero_homology_of_isZero_X _ _ (hab i (by simp only [Set.mem_Icc] at hn; omega))))
 
 /-- ホモトピー同値で長さの総和は変わらない。 -/
 lemma homologyLengthSum_eq_of_homotopyEquiv {P P' : CochainComplex (ModuleCat.{u} R) ℤ}
@@ -111,7 +106,7 @@ include hQ hK hf in
 /-- `0` 次以上で写像錐のホモロジーは零。 -/
 lemma isZero_mappingCone_homology_of_nonneg (i : ℤ) (hi : 0 ≤ i) :
     IsZero ((CochainComplex.mappingCone f).homology i) := by
-  have hQ1 : IsZero (Q.homology (i + 1)) := isZero_homology_of_isZero_X' (hQ _ (by omega))
+  have hQ1 : IsZero (Q.homology (i + 1)) := isZero_homology_of_isZero_X _ _ (hQ _ (by omega))
   have := ModuleCat.subsingleton_of_isZero hQ1
   rw [ModuleCat.isZero_iff_subsingleton]
   -- `H^i(K) → H^i(Cone)` は全射
@@ -161,7 +156,7 @@ theorem homologyLengthSum_mappingCone (hK0 : Module.length R (K.homology 0) = 1)
     by_cases hi : 0 ≤ i
     · simp only [show i ≠ -1 by omega, ↓reduceIte, add_zero, Lc, LQ]
       rw [length_toNat_eq_zero_of_isZero (isZero_mappingCone_homology_of_nonneg f hQ hK hf i hi),
-        length_toNat_eq_zero_of_isZero (isZero_homology_of_isZero_X' (hQ _ (by omega)))]
+        length_toNat_eq_zero_of_isZero (isZero_homology_of_isZero_X _ _ (hQ _ (by omega)))]
     · by_cases hi' : i = -1
       · subst hi'
         simp only [↓reduceIte, Lc, LQ]

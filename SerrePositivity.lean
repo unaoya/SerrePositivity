@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Statement
 public import SerrePositivity.EulerChar
-public import SerrePositivity.HomologicalAlgebra.ConeSmul
+public import SerrePositivity.HomologicalAlgebra.Basic
 public import SerrePositivity.HomologicalAlgebra.ConeLES
 public import SerrePositivity.HomologicalAlgebra.BaseChange
 public import SerrePositivity.HomologicalAlgebra.TriangleSmul
