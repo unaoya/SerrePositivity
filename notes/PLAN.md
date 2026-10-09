@@ -726,8 +726,8 @@ Mathlib には超 Tor スペクトル系列も「正則局所環の大域次元�
 項の自由性（`K0Basic` から `HomologicalAlgebra/FreeTerms`）、剰余体が同じときの長さの比較
 （3.5b の普通の側から `CommutativeAlgebra/LengthComparison`、定理名は `length_eq_of_common_residueField`）。
 
-旧パスには新しいモジュールを再エクスポートするだけの互換用ファイルを置いた（作業中のファイルが
-旧パスを import しているため）。作業中のファイルが移行したら削除する。
+旧パスには新しいモジュールを再エクスポートするだけの互換用ファイルを置いていたが、作業中のファイルの
+移行が終わったので 2026-10-09 に削除した（§14）。
 
 | 旧パス | 新パス |
 | --- | --- |
@@ -767,3 +767,62 @@ Mathlib には超 Tor スペクトル系列も「正則局所環の大域次元�
 | `Descent/Lemma35b/Normalized.lean` | `Paper/Lemma3_5/B_Normalized.lean` |
 | `Descent/ConjugateSum.lean` | `Paper/Lemma3_5/C_ConjugateSum.lean` |
 | `Descent/Lemma35.lean` | `Paper/Lemma3_5.lean` |
+
+## 14. `PerfectComplex/` のリファクタ（2026-10-09）
+
+§13 の再編のあと、`PerfectComplex/` の重複と層の混在を整理した。定理名・定義名は原則変えず、
+移動とファイル分割だけにした。各段階で `lake build` と、`lemma_3_5`・`CoreData.firstComparison` などの
+`#print axioms` が変わらないことを確認した（`sorry` の集合は不変）。
+
+### 14.1 通常の長さは正規化長さの特別な場合
+
+`OrdinaryEuler.lean` と `NormalizedEuler.lean` にあった、ホモトピー不変性と写像錐での加法性の
+証明（`chiOrd_cone` と `lambdaEuler_cone` など約 130 行）が `Module.length` と `lam.len` の違いを除いて
+同一だった。`NormalizedLength.ordinary T : NormalizedLength T ⊥`（`ℕ∞` を `ℝ≥0∞` に埋め込んだ
+`Module.length`）を定義し、`IsPowTorsion ⊥ M` がどの `M` でも成り立つこと（`IsPowTorsion.bot`）を使って、
+通常の長さ側の定理を `lambdaEuler` 側の系として導く（`chiOrd_eq_lambdaEuler_ordinary`）。
+依存の向きは `NormalizedEuler ← OrdinaryEuler` に反転した。
+
+### 14.2 層の規律に合わせた移動
+
+`HomologicalAlgebra ← CommutativeAlgebra ← PerfectComplex ← Paper` の向きに合わせて次を移した。
+
+| 移したもの | 移動先 |
+| --- | --- |
+| `IsPowTorsion` とその補題、`IsPowTorsion.of_pow_le` | `CommutativeAlgebra/PowTorsion.lean`（新規） |
+| `lambdaChi`（`Tor` による Euler 標数） | `PerfectComplex/NormalizedEuler.lean`（`NormalizedLength.lean` は `Tor` を import しなくなった） |
+| `isArtinianRing_quotient_of_le_radical`、`isFiniteLength_of_le_radical_annihilator`、`isArtinianRing_quotient_span_of_eq`、`isSimpleModule_quotient_span_of_eq`、`exists_surjective_quotient_span` | `CommutativeAlgebra/FiniteLength.lean` |
+| `homology_moduleFinite` | `HomologicalAlgebra/FreeTerms.lean` |
+| `koszulComplex_isZero_X_of_lt`、`koszulComplex_free_finite_X` | `CommutativeAlgebra/KoszulExact.lean` |
+| `koszulH0Iso`、`koszulAugmentation`、`quasiIso_koszulAugmentation`、`koszulComplex_d_zero_one` | `CommutativeAlgebra/KoszulResolution.lean` |
+| `baseChange_bounded` | `HomologicalAlgebra/BaseChange.lean` |
+| `IsSupported.le_radical_annihilator`、`isSupported_baseChange`、`isSupported_twist` | `PerfectComplex/Support.lean` |
+| `supported_homology_isPowTorsion`、`chiLam_homology_isPowTorsion`、`chiLam_eq_of_homotopyEquiv`、`chiLam_cone_of_finite`、`chiLamHom_of_finite`（`Paper/Lemma3_5/A_Normalized.lean` にあった一般論） | `PerfectComplex/NormalizedEuler.lean` |
+
+### 14.3 `PerfectComplex/` の構成（依存順）
+
+| ファイル | 内容 |
+| --- | --- |
+| `NormalizedLength.lean` | 正規化長さの構造体と基本補題、`restrict`、`ordinary` |
+| `Basic.lean` | `IsSupported`、`IsPerfectSupported`、`PerfSupp`、`chiOrd`、`chiLam`、`twist` |
+| `Support.lean` | `IsSupported` の閉包性（ホモトピー同値・シフト・錐・基底変更・ひねり・Koszul）、ホモロジーの零化 |
+| `Closure.lean` | `IsPerfectSupported` の閉包性（同型・錐・シフト・零複体・基底変更・ひねり）、`koszulPerfSupp` |
+| `K0.lean` | `K0Supported` の定義、`mk`・`lift`・`hom_ext`、零複体・シフトの関係式 |
+| `K0Functor.lean` | `K0.map`、`K0.twistHom`、`G` の作用 |
+| `NormalizedEuler.lean` | `lambdaEuler`・`lambdaChi`、錐での加法性、`ordinary` との関係、台つき複体への `chiLamHom_of_finite` |
+| `OrdinaryEuler.lean` | 台つき完全複体のホモロジーの有限長性、`chiOrdHom` |
+| `KoszulGeneration.lean` | `K₀^{m}(A)` が `[K(z)]` で生成されること |
+
+`K0Basic.lean` は `Closure.lean` と `K0.lean` に分けて廃止した。
+
+### 14.4 `Paper/Lemma3_5` のインターフェース
+
+`∃ χ, ∀ P, χ (K0.mk P) = …` の形で準同型を返していた `lemma_3_5a_ord`・`lemma_3_5a_lam`・
+`ordinary_euler_of_artinian_quotient` を廃止し、準同型そのものを定義した。
+
+- 通常の長さ側：`length_homology_ne_top_of_radical`（有限性）、`chiOrdHom_of_radical`（準同型）と
+  `chiOrdHom_of_radical_mk`（`Paper/Lemma3_5/A_Ordinary.lean`）。
+- 正規化長さ側：`lemma_3_5a_lam_finite`（有限性、唯一の `sorry`、`A_Normalized.lean`）、
+  `chiLamHom_of_finite`（準同型）と `chiLamHom_of_finite_mk`（`PerfectComplex/NormalizedEuler.lean`）。
+
+`lemma_3_5a` は論文の形にこれらを並べたもので残した。3.5b・3.5c は準同型を直接使う。

@@ -15,17 +15,17 @@ Early stage. Theorem 1.1 and the core case after Lemma 5.1 are stated in `SerreP
 
 `SerrePositivity/Core/` holds the skeleton of the core case: the data of §5.1 (`CoreData`), the hypotheses making it the paper's data (`CoreData.IsPaperData`), the twisted normalized Euler characteristics `c_σ` of (5.2), the statements of Lemma 5.2 and of (5.18)+(5.17), and a sorry-free proof (`CoreData.chi_pos`) that these give `χ^R(D, E) > 0`. The input bundle `Inputs.Core` packages them as a `Prop`-valued class.
 
-The Lean sources are organized as follows (2026-10-08):
+The Lean sources are organized as follows (2026-10-09):
 
 - `Statement.lean`, `EulerChar.lean`: Theorem 1.1 and Serre's intersection multiplicity.
 - `HomologicalAlgebra/`: general homological algebra (mapping-cone long exact sequences, resolutions indexed by `ℤ`, `Tor` and its long exact sequence, base change of complexes, K-projective lifts, truncation).
-- `CommutativeAlgebra/`: general commutative algebra (finite length, Hilbert–Samuel multiplicity, Koszul complexes and their exactness, base change and `Tor`, length comparison over a common residue field, geometric transitivity).
-- `PerfectComplex/`: supported perfect complexes, their `K₀`, normalized lengths and the two Euler evaluations, and generation of `K₀^{m}(A)` by the Koszul complex.
+- `CommutativeAlgebra/`: general commutative algebra (finite length, modules killed by a power of an ideal, Hilbert–Samuel multiplicity, Koszul complexes and their exactness, base change and `Tor`, length comparison over a common residue field, geometric transitivity).
+- `PerfectComplex/`: supported perfect complexes (`Basic`, closure properties in `Support` and `Closure`), their `K₀` (`K0`, functoriality in `K0Functor`), normalized lengths (`NormalizedLength`) and the two Euler evaluations (`NormalizedEuler`, with the ordinary length as the special case `NormalizedLength.ordinary` in `OrdinaryEuler`), and generation of `K₀^{m}(A)` by the Koszul complex (`KoszulGeneration`).
 - `Paper/`: the paper's lemmas (`Lemma3_4`, `Lemma3_5` with parts `A_*`, `B_*`, `C_*`).
 - `Inputs/`: theorems from outside the paper and standard facts not yet in Mathlib, stated with `sorry` or as classes (Theorem 2.5, Theorem 3.1, facts on regular local rings).
 - `Core/`: the core case of §5.
 
-Lemma 3.4 (abstract form) and Lemma 3.5b, 3.5c are proved modulo the inputs; the remaining `sorry` in the paper part is the finiteness step of Lemma 3.5a for the normalized length. Files at the old paths (e.g. `Perfect.lean`, `Descent/Lemma35.lean`) only re-export the new modules for work in progress and will be removed. See `notes/PLAN.md` §12–13.
+Lemma 3.4 (abstract form), Lemma 3.5b, 3.5c and Lemma 5.2 (`CoreData.firstComparison`, modulo the general inputs of `Inputs/IntersectionTheory.lean`) are proved modulo the inputs; the remaining `sorry` in the paper part is the finiteness step of Lemma 3.5a for the normalized length (`lemma_3_5a_lam_finite`). See `notes/PLAN.md` §12–14.
 
 The plan has three layers:
 
