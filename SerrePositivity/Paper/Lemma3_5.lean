@@ -24,7 +24,10 @@ public import Mathlib.RingTheory.Spectrum.Prime.RingHom
 - **3.5a**（節 a：`A` は Noether 局所環、`z` はパラメータ系 `hz`、`T` は `A` 上有限、
   `λ` は `m_A C` の冪で消える `C` 加群の正規化長さで `λ H_j(z^v; C) < ∞`（`hfin`））：
   `z` に台をもつ完全 `T` 複体 `P` について `χ_T(P)`、`χ_C(P)` は有限で、
-  `K₀^{m_A}(T)` 上の準同型を定める。通常の長さ側は `lemma_3_5a_ord`、`λ` 側は `lemma_3_5a_lam`。
+  `K₀^{m_A}(T)` 上の準同型を定める。通常の長さ側は `length_homology_ne_top_of_radical` と
+  `chiOrdHom_of_radical`（`Paper/Lemma3_5/A_Ordinary.lean`）、`λ` 側は `lemma_3_5a_lam_finite`
+  （`A_Normalized.lean`、唯一の `sorry`）と `chiLamHom_of_finite`（`PerfectComplex/NormalizedEuler.lean`）。
+  `lemma_3_5a` はこれらを論文の形に並べたもの。
 - **3.5b**（節 b：さらに `A` は正則で `z` は正則パラメータ系（`hz'`、`hdim`））：`A` から来る類の上で
   `χ_T(Q ⊗_A T) = χ_C(Q ⊗_A T) = r · χ_A(Q)`。二つの等式は独立に示せるので分ける。
   普通の長さの側 `lemma_3_5b_ord` は `T` が局所環で剰余体が同じこと（`hres`）を使い、
@@ -85,8 +88,10 @@ theorem lemma_3_5a :
       (∃ χ : K0Supported T (algebraMap A T ∘ z) →+ ℝ, ∀ P, χ (K0.mk P) = chiOrd P.1) ∧
       (∃ χ : K0Supported T (algebraMap A T ∘ z) →+ ℝ,
         ∀ P, χ (K0.mk P) = chiLam lam (algebraMap T C) P.1) :=
-  ⟨(lemma_3_5a_ord A T z hz).1, (lemma_3_5a_lam hz hfin).1, (lemma_3_5a_ord A T z hz).2,
-    (lemma_3_5a_lam hz hfin).2⟩
+  ⟨length_homology_ne_top_of_radical hz, lemma_3_5a_lam_finite hz hfin,
+    ⟨chiOrdHom_of_radical hz, chiOrdHom_of_radical_mk hz⟩,
+    ⟨chiLamHom_of_finite hz (lemma_3_5a_lam_finite hz hfin),
+      chiLamHom_of_finite_mk hz (lemma_3_5a_lam_finite hz hfin)⟩⟩
 
 end a
 
@@ -154,20 +159,22 @@ include hz' hdim hres hkz hq hfin p hsurj htrans in
 theorem lemma_3_5c (P : PerfSupp T (algebraMap A T ∘ z)) :
     ∑ g : G, chiOrd (twist g P.1) = ∑ g : G, chiLam lam (algebraMap T C) (twist g P.1) := by
   have hz := radical_span_eq_maximalIdeal hz'
-  obtain ⟨-, -, ⟨χT, hT⟩, ⟨χC, hC⟩⟩ := lemma_3_5a (T := T) hz hfin
-  -- `K₀(A)` の像の上で一致（3.5b）
-  have h1 : ∀ x, χT (K0.map (algebraMap A T) x) = χC (K0.map (algebraMap A T) x) := by
+  have hfinite := lemma_3_5a_lam_finite (T := T) hz hfin
+  -- 3.5a の準同型 `χ_T`、`χ_C` は `K₀(A)` の像の上で一致する（3.5b）
+  have h1 : ∀ x, chiOrdHom_of_radical (T := T) hz (K0.map (algebraMap A T) x) =
+      chiLamHom_of_finite hz hfinite (K0.map (algebraMap A T) x) := by
     intro x
-    have : χT.comp (K0.map (algebraMap A T)) = χC.comp (K0.map (algebraMap A T)) :=
+    have : (chiOrdHom_of_radical (T := T) hz).comp (K0.map (algebraMap A T)) =
+        (chiLamHom_of_finite hz hfinite).comp (K0.map (algebraMap A T)) :=
       K0.hom_ext fun Q ↦ by
-        rw [AddMonoidHom.comp_apply, AddMonoidHom.comp_apply, K0.map_mk, hT, hC,
-          (lemma_3_5b hz' hdim hkz hq hfin hres Q.1 Q.2).1,
+        rw [AddMonoidHom.comp_apply, AddMonoidHom.comp_apply, K0.map_mk, chiOrdHom_of_radical_mk,
+          chiLamHom_of_finite_mk, (lemma_3_5b hz' hdim hkz hq hfin hres Q.1 Q.2).1,
           (lemma_3_5b hz' hdim hkz hq hfin hres Q.1 Q.2).2]
     exact DFunLike.congr_fun this x
   -- Theorem 3.1 の帰結
   have h2 := theorem_3_1_K0 A T p z hz G hsurj htrans
-  have key := conjSum_eq (K0.map (algebraMap A T)) χT χC h1 h2 (K0.mk P)
-  simp only [K0.smul_mk, hT, hC] at key
+  have key := conjSum_eq (K0.map (algebraMap A T)) _ _ h1 h2 (K0.mk P)
+  simp only [K0.smul_mk, chiOrdHom_of_radical_mk, chiLamHom_of_finite_mk] at key
   -- `g ↦ g⁻¹` で和を取り直す
   rw [Fintype.sum_equiv (Equiv.inv G) (fun g ↦ chiOrd (twist g⁻¹ P.1))
       (fun g ↦ chiOrd (twist g P.1)) (fun _ ↦ rfl),
@@ -183,8 +190,10 @@ theorem lemma_3_5 (P : PerfSupp T (algebraMap A T ∘ z)) :
         lam.len ((baseChange (algebraMap T C) (twist g P.1)).homology i) ≠ ⊤) ∧
       ∑ g : G, chiOrd (twist g P.1) = ∑ g : G, chiLam lam (algebraMap T C) (twist g P.1) :=
   have hz := radical_span_eq_maximalIdeal hz'
-  ⟨fun g i ↦ (lemma_3_5a (T := T) hz hfin).1 ⟨twist g P.1, isPerfectSupported_twist z g P.2⟩ i,
-    fun g i ↦ (lemma_3_5a (T := T) hz hfin).2.1 ⟨twist g P.1, isPerfectSupported_twist z g P.2⟩ i,
+  ⟨fun g i ↦
+      length_homology_ne_top_of_radical hz ⟨twist g P.1, isPerfectSupported_twist z g P.2⟩ i,
+    fun g i ↦
+      lemma_3_5a_lam_finite (T := T) hz hfin ⟨twist g P.1, isPerfectSupported_twist z g P.2⟩ i,
     lemma_3_5c hz' hdim hkz hq hfin hres p G hsurj htrans P⟩
 
 end c

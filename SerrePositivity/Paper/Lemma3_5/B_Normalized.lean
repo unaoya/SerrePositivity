@@ -11,7 +11,7 @@ public import SerrePositivity.CommutativeAlgebra.KoszulBaseChange
 `χ_C(Q ⊗_A T) = r · χ_A(Q)`（`r = rank_A T`）。
 
 `Q ↦ χ_C(Q ⊗_A T)` と `Q ↦ r · χ_A(Q)` はどちらも `K₀^{m}(A)` 上の準同型（前者は 3.5a の
-`lemma_3_5a_lam` と基底変更 `K0.map` の合成）なので、`K₀^{m}(A)` が `[K(z)]` で生成されること
+`chiLamHom_of_finite` と基底変更 `K0.map` の合成）なので、`K₀^{m}(A)` が `[K(z)]` で生成されること
 （`K0.hom_ext_koszul`）から、`K(z)` での値を比べれば足りる。
 `χ_C(K(z) ⊗_A T) = Σ (-1)^i λ H_i(z; C) = λ(C/zC) = r`（(3.9) の `v = 1`）、`χ_A(K(z)) = 1`。
 
@@ -81,17 +81,19 @@ theorem lemma_3_5b_lam_of_koszul (hz' : Ideal.span (Set.range z) = maximalIdeal 
     rw [hz']
     exact (maximalIdeal.isMaximal A).isPrime.radical
   have := isArtinianRing_quotient_span_of_eq hz'
-  obtain ⟨-, χC, hC⟩ := lemma_3_5a_lam (T := T) hz hfin
-  have key : χC.comp (K0.map (algebraMap A T)) = Module.finrank A T • chiOrdHom z :=
+  have hfinite := lemma_3_5a_lam_finite (T := T) hz hfin
+  have key : (chiLamHom_of_finite hz hfinite).comp (K0.map (algebraMap A T)) =
+      Module.finrank A T • chiOrdHom z :=
     K0.hom_ext_koszul hz' hK (by
-      rw [AddMonoidHom.comp_apply, K0.map_mk, hC, AddMonoidHom.smul_apply, chiOrdHom_mk]
+      rw [AddMonoidHom.comp_apply, K0.map_mk, chiLamHom_of_finite_mk, AddMonoidHom.smul_apply,
+        chiOrdHom_mk]
       change chiLam lam (algebraMap T C) (baseChange (algebraMap A T) (koszulComplex z)) =
         Module.finrank A T • chiOrd (koszulComplex z)
       rw [chiLam_baseChange_koszulComplex hkz, hq, chiOrd_koszulComplex hK hz', nsmul_eq_mul,
         mul_one, ENNReal.toReal_natCast])
   have h := DFunLike.congr_fun key (K0.mk ⟨Q, hQ⟩)
-  rw [AddMonoidHom.comp_apply, K0.map_mk, hC, AddMonoidHom.smul_apply, chiOrdHom_mk,
-    nsmul_eq_mul] at h
+  rw [AddMonoidHom.comp_apply, K0.map_mk, chiLamHom_of_finite_mk, AddMonoidHom.smul_apply,
+    chiOrdHom_mk, nsmul_eq_mul] at h
   exact h
 
 end SerrePositivity

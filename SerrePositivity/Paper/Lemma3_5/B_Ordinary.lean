@@ -13,7 +13,7 @@ public import SerrePositivity.CommutativeAlgebra.KoszulBaseChange
 `χ_T(Q ⊗_A T) = r · χ_A(Q)`（`r = rank_A T`、`χ_T` は `T` 上の長さ）。
 
 `Q ↦ χ_T(Q ⊗_A T)` と `Q ↦ r · χ_A(Q)` はどちらも `K₀^{m}(A)` 上の準同型（前者は 3.5a の
-`lemma_3_5a_ord` と基底変更 `K0.map` の合成）なので、`K₀^{m}(A)` が `[K(z)]` で生成されること
+`chiOrdHom_of_radical` と基底変更 `K0.map` の合成）なので、`K₀^{m}(A)` が `[K(z)]` で生成されること
 （`K0.hom_ext_koszul`）から、`K(z)` での値を比べれば足りる。
 
 - `χ_T(K(z) ⊗_A T) = χ^A(z; T)`：剰余体が同じ局所環 `T` 上では、`T` 加群の `T` 上の長さと
@@ -59,17 +59,18 @@ theorem lemma_3_5b_ord_of_koszul (hz' : Ideal.span (Set.range z) = maximalIdeal 
     rw [hz']
     exact (maximalIdeal.isMaximal A).isPrime.radical
   have := isArtinianRing_quotient_span_of_eq hz'
-  obtain ⟨-, χT, hT⟩ := lemma_3_5a_ord A T z hz
-  have key : χT.comp (K0.map (algebraMap A T)) = Module.finrank A T • chiOrdHom z :=
+  have key : (chiOrdHom_of_radical (T := T) hz).comp (K0.map (algebraMap A T)) =
+      Module.finrank A T • chiOrdHom z :=
     K0.hom_ext_koszul hz' hK (by
-      rw [AddMonoidHom.comp_apply, K0.map_mk, hT, AddMonoidHom.smul_apply, chiOrdHom_mk]
+      rw [AddMonoidHom.comp_apply, K0.map_mk, chiOrdHom_of_radical_mk, AddMonoidHom.smul_apply,
+        chiOrdHom_mk]
       change chiOrd (baseChange (algebraMap A T) (koszulComplex z)) =
         Module.finrank A T • chiOrd (koszulComplex z)
       rw [chiOrd_baseChange_koszulComplex hres, hχ, chiOrd_koszulComplex hK hz', nsmul_eq_mul,
         mul_one])
   have h := DFunLike.congr_fun key (K0.mk ⟨Q, hQ⟩)
-  rw [AddMonoidHom.comp_apply, K0.map_mk, hT, AddMonoidHom.smul_apply, chiOrdHom_mk,
-    nsmul_eq_mul] at h
+  rw [AddMonoidHom.comp_apply, K0.map_mk, chiOrdHom_of_radical_mk, AddMonoidHom.smul_apply,
+    chiOrdHom_mk, nsmul_eq_mul] at h
   exact h
 
 end SerrePositivity
