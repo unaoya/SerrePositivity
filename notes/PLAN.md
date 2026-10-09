@@ -936,3 +936,20 @@ Mathlib には超 Tor スペクトル系列も「正則局所環の大域次元�
 | `TorKoszul.lean` | `Tor` と Koszul ホモロジー |
 | `HomologyLength.lean` | ホモロジーの長さの総和（デヴィサージュ） |
 | `Truncate.lean` | 最上段の切り詰め |
+
+## 17. `Support/` の解体（2026-10-10）
+
+`Support/` の 3 ファイルは、一般定理（ホモロジーの台から零ホモトピーへ）と Lemma 5.2 固有の 1 定理の同居だった。
+中身を層に合わせて移し、ディレクトリを廃止した。定理名は変えていない（消えたのは `SupportBridge.quot` だけ）。
+
+| 旧 | 新 |
+| --- | --- |
+| `Support/NullHomotopy.lean` の `clear_degree`、`exists_pow_nullHomotopy_of_homology_annihilated` | `HomologicalAlgebra/NullHomotopy.lean`（`SupportBridge.quot` は `homotopyQuot` に統一） |
+| `Support/PerfectComplex.lean` の `HasHomologySupport` と補題、`Support/NullHomotopy.lean` の `isSupported_of_homologySupport`・`isSupported_iff_homologySupport`・`isPerfectSupported_of_homologySupport` | `PerfectComplex/HomologySupport.lean` |
+| `Support/Resolution.lean` と `IntersectionMultiplicity/OrdinaryEvaluation.lean` | `IntersectionMultiplicity/BaseChangeResolution.lean`（分解の基底変更についての 2 定理） |
+
+「`J` が有限生成で `J ≤ √(Ann M)` なら `J` の冪が `M` を消す」という共通部分は
+`IsPowTorsion.of_le_radical_annihilator`（`CommutativeAlgebra/PowTorsion.lean`）にし、
+`homology_pow_torsion_of_support` と `supported_homology_isPowTorsion` の両方がそれを使う。
+
+`IntersectionMultiplicity/` に残るのは `FiniteExtension`・`BaseChangeResolution`・`ResolutionEvaluation` の 3 ファイル。
