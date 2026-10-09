@@ -7,9 +7,7 @@ public import SerrePositivity.HomologicalAlgebra.ConeLES
 public import SerrePositivity.HomologicalAlgebra.BaseChange
 public import SerrePositivity.HomologicalAlgebra.TriangleSmul
 public import SerrePositivity.HomologicalAlgebra.FreeTerms
-public import SerrePositivity.HomologicalAlgebra.ToChain
-public import SerrePositivity.HomologicalAlgebra.ResolutionOfCochain
-public import SerrePositivity.HomologicalAlgebra.ExtendResolution
+public import SerrePositivity.HomologicalAlgebra.Resolution
 public import SerrePositivity.HomologicalAlgebra.Tor
 public import SerrePositivity.HomologicalAlgebra.TorCochain
 public import SerrePositivity.HomologicalAlgebra.ConeResolution

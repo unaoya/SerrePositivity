@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.KoszulExact
-public import SerrePositivity.HomologicalAlgebra.ResolutionOfCochain
+public import SerrePositivity.HomologicalAlgebra.Resolution
 public import SerrePositivity.HomologicalAlgebra.KProjectiveLift
 public import Mathlib.Algebra.Category.ModuleCat.Projective
 

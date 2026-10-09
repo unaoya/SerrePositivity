@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.ConeLES
-public import SerrePositivity.HomologicalAlgebra.ExtendResolution
+public import SerrePositivity.HomologicalAlgebra.Resolution
 public import Mathlib.Algebra.Category.ModuleCat.Projective
 
 /-!

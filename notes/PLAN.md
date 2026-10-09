@@ -826,3 +826,59 @@ Mathlib には超 Tor スペクトル系列も「正則局所環の大域次元�
   `chiLamHom_of_finite`（準同型）と `chiLamHom_of_finite_mk`（`PerfectComplex/NormalizedEuler.lean`）。
 
 `lemma_3_5a` は論文の形にこれらを並べたもので残した。3.5b・3.5c は準同型を直接使う。
+
+## 15. `HomologicalAlgebra/` のリファクタ（2026-10-09）
+
+§14 と同じ方針（名前は原則変えない、移動とファイル分割だけ、各段階で `lake build` と `#print axioms` を確認）。
+
+### 15.1 重複の解消
+
+- `ConeSmul.lean` にあった `Cone(a • 𝟙 K)` の長完全列（`ConeSmul.cone/δ/S₁₂₃/exact₁₂₃`、約 85 行）は、
+  `ConeLES.lean` の一般の射の長完全列 `Cone.*` に `φ = smulId a K` を代入したものと定義まで一致していたので
+  削除し、`KoszulExact.lean` では `Cone.exact₃ (smulId a K)` のように使う。`ConeSmul.lean` の残り
+  （ホモトピー圏のホモロジー関手との同一視 `e`、短複体の移送補題）は `ConeLES.lean` に吸収し、
+  `ConeSmul.H₀`・`ConeSmul.e`・`ConeSmul.e_naturality` は `Cone.H₀`・`Cone.e`・`Cone.e_naturality` に改名した。
+- `isZero_homology_of_isZero_X'`（`ModuleCat` 限定）は一般の `isZero_homology_of_isZero_X` に、
+  `homologyMap_smul'`（任意の complex shape）は `homologyMap_smul` に統一した（プライムなしが残る）。
+
+### 15.2 新しい `Basic.lean` と依存の正常化
+
+- `HomologicalAlgebra/Basic.lean`（新規）：`isZero_homology_of_isZero_X`、`isZero_of_isZero_X`、
+  `projective_of_free`、`smulId`、`homologyMap_smul`、`single_map_smul`。
+- `ModuleCat.extendScalars` の加法性のインスタンスと `baseChange_isZero_X_of_pos` は `BaseChange.lean` に置き、
+  `Tor.lean` が `BaseChange.lean` を import する向きにした（以前は逆で、インスタンスのためだけに
+  `BaseChange` が `Tor` を import していた）。
+
+### 15.3 層の規律に合わせた移動
+
+| 旧 | 新 |
+| --- | --- |
+| `HomologicalAlgebra/ConeLength.lean` | `CommutativeAlgebra/HomologyLength.lean`（`homologyLengthSum`、`Module.length` を使う） |
+| `HomologicalAlgebra/Truncate.lean` | `CommutativeAlgebra/Truncate.lean`（局所環を要求する。`free_finite_ker_of_surjective` もここ） |
+
+どちらも利用者は `PerfectComplex/KoszulGeneration.lean` だけ。
+
+### 15.4 ファイルの統合
+
+`ToChain.lean`・`ResolutionOfCochain.lean`・`ExtendResolution.lean` を `HomologicalAlgebra/Resolution.lean`
+に統合した（ℤ 添字 cochain 複体と `ProjectiveResolution` の行き来、という一つの話）。
+
+### 15.5 `HomologicalAlgebra/` の構成（依存順）
+
+| ファイル | 内容 |
+| --- | --- |
+| `Basic.lean` | 複体についての基本補題、`smulId` |
+| `ConeLES.lean` | 写像錐の長完全列 `Cone.exact₁₂₃`、ホモトピー圏のホモロジー関手との同一視 |
+| `TriangleSmul.lean` | 完全三角形で `a² • 𝟙 = 0`、`homotopyQuot` |
+| `FreeTerms.lean` | 項の有限自由性、`homology_moduleFinite` |
+| `Resolution.lean` | `toChain`、`IsResolutionOf`、`extRes`、`extLift` |
+| `BaseChange.lean` | `baseChange`、係数拡大とスカラー倍 |
+| `Tor.lean` | `TorModule`、`torLength`、`TorAlg` |
+| `TorCochain.lean` | `torIsoCochain` |
+| `ConeResolution.lean` | 持ち上げの錐は余核の分解 |
+| `TorLES.lean` | Tor の長完全列 |
+| `TorTorsion.lean` | Tor の消去イデアル |
+| `KProjectiveLift.lean` | `toSingleOfHomology`、`exists_lift_of_quasiIso` |
+
+`torAlg_longExact` の `∃ α β δ, …` の形は残した。利用者（Lemma 3.4 の抽象形）は長完全列の存在だけを使い、
+射の具体形には依存しないため、梱包を解く利点がない。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Statement
-public import SerrePositivity.HomologicalAlgebra.ResolutionOfCochain
+public import SerrePositivity.HomologicalAlgebra.Resolution
 public import SerrePositivity.PerfectComplex.Basic
 public import Mathlib.RingTheory.KrullDimension.Module
 

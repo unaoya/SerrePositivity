@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.BaseChange
-public import SerrePositivity.HomologicalAlgebra.ResolutionOfCochain
+public import SerrePositivity.HomologicalAlgebra.Resolution
 public import SerrePositivity.HomologicalAlgebra.Tor
 
 /-!

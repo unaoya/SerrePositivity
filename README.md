@@ -18,8 +18,8 @@ Early stage. Theorem 1.1 and the core case after Lemma 5.1 are stated in `SerreP
 The Lean sources are organized as follows (2026-10-09):
 
 - `Statement.lean`, `EulerChar.lean`: Theorem 1.1 and Serre's intersection multiplicity.
-- `HomologicalAlgebra/`: general homological algebra (mapping-cone long exact sequences, resolutions indexed by `ℤ`, `Tor` and its long exact sequence, base change of complexes, K-projective lifts, truncation).
-- `CommutativeAlgebra/`: general commutative algebra (finite length, modules killed by a power of an ideal, Hilbert–Samuel multiplicity, Koszul complexes and their exactness, base change and `Tor`, length comparison over a common residue field, geometric transitivity).
+- `HomologicalAlgebra/`: general homological algebra over a ring (basic lemmas on complexes in `Basic`, mapping-cone long exact sequences in `ConeLES`, resolutions indexed by `ℤ` in `Resolution`, base change of complexes, `Tor` and its long exact sequence, K-projective lifts).
+- `CommutativeAlgebra/`: general commutative algebra (finite length, modules killed by a power of an ideal, Hilbert–Samuel multiplicity, Koszul complexes and their exactness, base change and `Tor`, length comparison over a common residue field, geometric transitivity, sums of homology lengths and truncation of complexes over a local ring).
 - `PerfectComplex/`: supported perfect complexes (`Basic`, closure properties in `Support` and `Closure`), their `K₀` (`K0`, functoriality in `K0Functor`), normalized lengths (`NormalizedLength`) and the two Euler evaluations (`NormalizedEuler`, with the ordinary length as the special case `NormalizedLength.ordinary` in `OrdinaryEuler`), and generation of `K₀^{m}(A)` by the Koszul complex (`KoszulGeneration`).
 - `Paper/`: the paper's lemmas (`Lemma3_4`, `Lemma3_5` with parts `A_*`, `B_*`, `C_*`).
 - `Inputs/`: theorems from outside the paper and standard facts not yet in Mathlib, stated with `sorry` or as classes (Theorem 2.5, Theorem 3.1, facts on regular local rings).
