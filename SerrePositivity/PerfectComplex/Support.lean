@@ -124,4 +124,60 @@ theorem isSupported_koszulComplex : ∀ {n : ℕ} (x : Fin n → R), IsSupported
       rw [pow_add]
       exact mappingCone_smul_mul_self_eq_zero _ _ (hv j) (hv j)
 
+/-! ## 基底変更とひねり -/
+
+section baseChange
+
+variable {A C : Type u} [CommRing A] [CommRing C]
+
+/-- 台は基底変更で保たれる。 -/
+lemma isSupported_baseChange (φ : A →+* C) {e : ℕ} {z : Fin e → A}
+    {P : CochainComplex (ModuleCat.{u} A) ℤ} (h : IsSupported z P) :
+    IsSupported (φ ∘ z) (baseChange φ P) := by
+  obtain ⟨v, hv⟩ := h
+  refine ⟨v, fun j ↦ ?_⟩
+  obtain ⟨H⟩ := hv j
+  have := (ModuleCat.extendScalars.{u, u, u} φ).mapHomotopy H
+  rw [extendScalars_mapHomologicalComplex_smul, CategoryTheory.Functor.map_id,
+    CategoryTheory.Functor.map_zero, map_pow] at this
+  exact ⟨this⟩
+
+end baseChange
+
+section twist
+
+variable {A T : Type u} [CommRing A] [CommRing T] [Algebra A T] {G : Type u} [Group G]
+  [MulSemiringAction G T] [SMulCommClass G A T]
+
+/-- 係数制限は `f` で固定される元によるスカラー倍と両立する。 -/
+lemma restrictScalars_mapHomologicalComplex_smul_of_fixed (f : T →+* T) (c : T) (hc : f c = c)
+    {ι : Type*} {cs : ComplexShape ι} {K L : HomologicalComplex (ModuleCat.{u} T) cs} (u : K ⟶ L) :
+    ((ModuleCat.restrictScalars f).mapHomologicalComplex _).map (c • u) =
+      c • ((ModuleCat.restrictScalars f).mapHomologicalComplex _).map u := by
+  ext i x
+  change c • (u.f i x) = f c • (u.f i x)
+  rw [hc]
+
+/-- `A` 上の作用は `A` の元の像を固定する。 -/
+lemma toRingHom_algebraMap (g : G) (a : A) :
+    MulSemiringAction.toRingHom G T g (algebraMap A T a) = algebraMap A T a := by
+  change g • algebraMap A T a = algebraMap A T a
+  rw [Algebra.algebraMap_eq_smul_one, smul_comm, smul_one]
+
+/-- `A` から来る台はひねりで保たれる。 -/
+lemma isSupported_twist {e : ℕ} (z : Fin e → A) (g : G) {P : CochainComplex (ModuleCat.{u} T) ℤ}
+    (h : IsSupported (algebraMap A T ∘ z) P) : IsSupported (algebraMap A T ∘ z) (twist g P) := by
+  obtain ⟨v, hv⟩ := h
+  refine ⟨v, fun j ↦ ?_⟩
+  obtain ⟨H⟩ := hv j
+  have hfix : MulSemiringAction.toRingHom G T g ((algebraMap A T ∘ z) j ^ v) =
+      (algebraMap A T ∘ z) j ^ v := by
+    rw [map_pow, Function.comp_apply, toRingHom_algebraMap]
+  have := (ModuleCat.restrictScalars (MulSemiringAction.toRingHom G T g)).mapHomotopy H
+  rw [restrictScalars_mapHomologicalComplex_smul_of_fixed _ _ hfix, CategoryTheory.Functor.map_id,
+    CategoryTheory.Functor.map_zero] at this
+  exact ⟨this⟩
+
+end twist
+
 end SerrePositivity

@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.PerfectComplex.KoszulGeneration
+public import SerrePositivity.PerfectComplex.K0Functor
 public import SerrePositivity.Paper.Lemma3_5.A_Normalized
 public import SerrePositivity.CommutativeAlgebra.KoszulBaseChange
 

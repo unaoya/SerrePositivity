@@ -1,12 +1,9 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.KoszulBaseChange
-public import SerrePositivity.PerfectComplex.Basic
+public import SerrePositivity.PerfectComplex.Closure
 public import Mathlib.Algebra.Homology.HomotopyCategory.MappingCone
-public import Mathlib.Algebra.Homology.HomotopyCofiber
 public import Mathlib.GroupTheory.FreeAbelianGroup
 public import Mathlib.GroupTheory.QuotientGroup.Defs
-public import Mathlib.RingTheory.TensorProduct.Finite
 
 /-!
 # 台つき完全複体の `K₀`
@@ -22,28 +19,23 @@ public import Mathlib.RingTheory.TensorProduct.Finite
 
 - `K0.mk P`：類 `[P]`。`K0.mk_eq_of_homotopyEquiv`、`K0.mk_cone` が関係式。
 - `K0.lift χ`：関係式を保つ関数から準同型を作る。`K0.hom_ext`：準同型は類の上で決まる。
-- `K0.map φ`：基底変更 `K₀(A) → K₀(C)`。
-- `K0.twistHom g`：ひねり `g^*` の誘導する準同型。`g • x := twistHom g⁻¹ x` で `G` の左作用。
+- 基本事項：同型な複体は同じ類、零複体と可縮な複体の類は `0`、シフトは符号
+  `[P⟦n⟧] = (-1)^n [P]` を与える。
 
-台つき完全複体は基底変更・ひねりで保たれる（`isPerfectSupported_baseChange`、
-`isPerfectSupported_twist`）。各項が有限自由であることの移送は `free_baseChange` など四つ。
+台つき完全複体の閉包性は `Closure.lean`、基底変更・ひねりの誘導する準同型は `K0Functor.lean`。
 -/
 
 @[expose] public section
 
 universe u
 
-open CategoryTheory Limits
+open CategoryTheory Limits Pretriangulated ZeroObject
 
 namespace SerrePositivity
 
 section defs
 
 variable (T : Type u) [CommRing T] {e : ℕ} (z : Fin e → T)
-
-/-- `z` に台をもつ完全 `T` 複体。 -/
-abbrev PerfSupp : Type (u + 1) :=
-  {P : CochainComplex (ModuleCat.{u} T) ℤ // IsPerfectSupported z P}
 
 /-- `K₀` の関係式を生成する元。 -/
 def K0Rels : Set (FreeAbelianGroup (PerfSupp T z)) :=
@@ -112,267 +104,78 @@ lemma hom_ext {β : Type*} [AddCommGroup β] {f g : K0Supported T z →+ β}
   ext P
   exact h P
 
-end K0
+/-! ## 基本事項 -/
 
-/-! ## 台つき完全複体の同型・基底変更・ひねりによる保存 -/
+/-- 同型な複体は同じ類。 -/
+lemma mk_eq_of_iso (P P' : PerfSupp T z) (i : P.1 ≅ P'.1) : mk P = mk P' :=
+  mk_eq_of_homotopyEquiv P P' (HomotopyEquiv.ofIso i)
 
-section preserve
+/-- 零複体の類は `0`。 -/
+lemma mk_eq_zero_of_isZero (P : PerfSupp T z) (hP : IsZero P.1) : mk P = 0 := by
+  have hc : IsZero (CochainComplex.mappingCone (𝟙 P.1)) := by
+    refine isZero_of_isZero_X fun i ↦ ?_
+    rw [CochainComplex.mappingCone.isZero_X_iff]
+    exact ⟨(HomologicalComplex.eval _ _ _).map_isZero hP,
+      (HomologicalComplex.eval _ _ _).map_isZero hP⟩
+  have h1 := mk_cone P P (𝟙 P.1) (isPerfectSupported_of_isZero hc)
+  have h2 := mk_eq_of_iso ⟨_, isPerfectSupported_of_isZero hc⟩ P (hc.iso hP)
+  rw [sub_self] at h1
+  rw [← h2, h1]
 
-variable {T : Type u} [CommRing T] {e : ℕ} {z : Fin e → T}
+/-- 恒等射が零ホモトピックな（可縮な）複体の類は `0`。 -/
+lemma mk_eq_zero_of_homotopy_id_zero (P : PerfSupp T z) (h : Homotopy (𝟙 P.1) 0) : mk P = 0 := by
+  have hZ : IsZero (0 : CochainComplex (ModuleCat.{u} T) ℤ) := isZero_zero _
+  let E : HomotopyEquiv P.1 0 :=
+    { hom := 0
+      inv := 0
+      homotopyHomInvId := (Homotopy.ofEq (by simp)).trans h.symm
+      homotopyInvHomId := Homotopy.ofEq (hZ.eq_of_src _ _) }
+  rw [mk_eq_of_homotopyEquiv P ⟨0, isPerfectSupported_of_isZero hZ⟩ E,
+    mk_eq_zero_of_isZero _ hZ]
 
-/-- 台つき完全複体は複体の同型で保たれる。 -/
-lemma IsPerfectSupported.of_iso {P P' : CochainComplex (ModuleCat.{u} T) ℤ} (i : P ≅ P')
-    (h : IsPerfectSupported z P) : IsPerfectSupported z P' where
-  bounded := by
-    obtain ⟨a, b, hab⟩ := h.bounded
-    exact ⟨a, b, fun n hn ↦ (HomologicalComplex.Hom.isoApp i n).isZero_iff.mp (hab n hn)⟩
-  free n := by
-    have := h.free n
-    exact Module.Free.of_equiv (HomologicalComplex.Hom.isoApp i n).toLinearEquiv
-  finite n := by
-    have := h.finite n
-    exact Module.Finite.equiv (HomologicalComplex.Hom.isoApp i n).toLinearEquiv
-  supported := by
-    obtain ⟨v, hv⟩ := h.supported
-    refine ⟨v, fun j ↦ ?_⟩
-    obtain ⟨H⟩ := hv j
-    refine ⟨(Homotopy.ofEq ?_).trans (((H.compRight i.hom).compLeft i.inv).trans
-      (Homotopy.ofEq ?_))⟩
-    · rw [Linear.smul_comp, Linear.comp_smul, Category.id_comp, Iso.inv_hom_id]
-    · simp
+/-- `Cone(P → 0) ≅ P⟦1⟧`（ホモトピー圏で）。 -/
+noncomputable def mappingConeToZeroIso (P : CochainComplex (ModuleCat.{u} T) ℤ) :
+    (homotopyQuot T).obj (CochainComplex.mappingCone (0 : P ⟶ 0)) ≅
+      (homotopyQuot T).obj (P⟦(1 : ℤ)⟧) := by
+  have hZ : IsZero ((homotopyQuot T).obj (0 : CochainComplex (ModuleCat.{u} T) ℤ)) :=
+    Functor.map_isZero _ (isZero_zero _)
+  let T₂ := Triangle.mk (0 : (homotopyQuot T).obj P ⟶ 0) 0 (𝟙 (((homotopyQuot T).obj P)⟦(1 : ℤ)⟧))
+  let e := isoTriangleOfIso₁₂ (CochainComplex.mappingCone.triangleh (0 : P ⟶ 0)) T₂
+    (HomotopyCategory.mappingCone_triangleh_distinguished _) (contractible_distinguished₂ _)
+    (Iso.refl _) (hZ.iso (isZero_zero _)) ((isZero_zero _).eq_of_tgt _ _)
+  exact Triangle.π₃.mapIso e ≪≫ (((homotopyQuot T).commShiftIso (1 : ℤ)).app P).symm
 
-variable {A C : Type u} [CommRing A] [CommRing C]
+/-- シフト 1 は符号を変える：`[P⟦1⟧] = -[P]`。 -/
+lemma mk_shift_one (P : PerfSupp T z) : mk ⟨P.1⟦(1 : ℤ)⟧, P.2.shift 1⟩ = -mk P := by
+  have hZ : IsZero (0 : CochainComplex (ModuleCat.{u} T) ℤ) := isZero_zero _
+  let Z : PerfSupp T z := ⟨0, isPerfectSupported_of_isZero hZ⟩
+  have hc := P.2.mappingCone (0 : P.1 ⟶ 0) Z.2
+  have h1 := mk_cone P Z (0 : P.1 ⟶ 0) hc
+  rw [mk_eq_zero_of_isZero Z hZ, zero_sub] at h1
+  rw [← h1]
+  exact (mk_eq_of_homotopyEquiv _ _
+    (HomotopyCategory.homotopyEquivOfIso (mappingConeToZeroIso P.1))).symm
 
-/-- 台は基底変更で保たれる。 -/
-lemma isSupported_baseChange (φ : A →+* C) {e : ℕ} {z : Fin e → A}
-    {P : CochainComplex (ModuleCat.{u} A) ℤ} (h : IsSupported z P) :
-    IsSupported (φ ∘ z) (baseChange φ P) := by
-  obtain ⟨v, hv⟩ := h
-  refine ⟨v, fun j ↦ ?_⟩
-  obtain ⟨H⟩ := hv j
-  have := (ModuleCat.extendScalars.{u, u, u} φ).mapHomotopy H
-  rw [extendScalars_mapHomologicalComplex_smul, CategoryTheory.Functor.map_id,
-    CategoryTheory.Functor.map_zero, map_pow] at this
-  exact ⟨this⟩
-
-/-- 基底変更は各項の自由性を保つ。 -/
-lemma free_baseChange (φ : A →+* C) (M : ModuleCat.{u} A) [Module.Free A M] :
-    Module.Free C ((ModuleCat.extendScalars.{u, u, u} φ).obj M) := by
-  let := φ.toAlgebra
-  change Module.Free C (TensorProduct A C M)
-  infer_instance
-
-/-- 基底変更は各項の有限生成性を保つ。 -/
-lemma finite_baseChange (φ : A →+* C) (M : ModuleCat.{u} A) [Module.Finite A M] :
-    Module.Finite C ((ModuleCat.extendScalars.{u, u, u} φ).obj M) := by
-  let := φ.toAlgebra
-  change Module.Finite C (TensorProduct A C M)
-  infer_instance
-
-/-- 台つき完全複体は基底変更で保たれる。 -/
-lemma isPerfectSupported_baseChange (φ : A →+* C) {e : ℕ} {z : Fin e → A}
-    {P : CochainComplex (ModuleCat.{u} A) ℤ} (h : IsPerfectSupported z P) :
-    IsPerfectSupported (φ ∘ z) (baseChange φ P) where
-  bounded := by
-    obtain ⟨a, b, hab⟩ := h.bounded
-    exact ⟨a, b, fun n hn ↦ (ModuleCat.extendScalars.{u, u, u} φ).map_isZero (hab n hn)⟩
-  free n := by
-    have := h.free n
-    exact free_baseChange φ (P.X n)
-  finite n := by
-    have := h.finite n
-    exact finite_baseChange φ (P.X n)
-  supported := isSupported_baseChange φ h.supported
-
-/-- 係数制限は `f` で固定される元によるスカラー倍と両立する。 -/
-lemma restrictScalars_mapHomologicalComplex_smul_of_fixed (f : T →+* T) (c : T) (hc : f c = c)
-    {ι : Type*} {cs : ComplexShape ι} {K L : HomologicalComplex (ModuleCat.{u} T) cs} (u : K ⟶ L) :
-    ((ModuleCat.restrictScalars f).mapHomologicalComplex _).map (c • u) =
-      c • ((ModuleCat.restrictScalars f).mapHomologicalComplex _).map u := by
-  ext i x
-  change c • (u.f i x) = f c • (u.f i x)
-  rw [hc]
-
-variable {G : Type u} [Group G] [MulSemiringAction G T] [Algebra A T] [SMulCommClass G A T]
-
-/-- `A` 上の作用は `A` の元の像を固定する。 -/
-lemma toRingHom_algebraMap (g : G) (a : A) :
-    MulSemiringAction.toRingHom G T g (algebraMap A T a) = algebraMap A T a := by
-  change g • algebraMap A T a = algebraMap A T a
-  rw [Algebra.algebraMap_eq_smul_one, smul_comm, smul_one]
-
-/-- `A` から来る台はひねりで保たれる。 -/
-lemma isSupported_twist {e : ℕ} (z : Fin e → A) (g : G) {P : CochainComplex (ModuleCat.{u} T) ℤ}
-    (h : IsSupported (algebraMap A T ∘ z) P) : IsSupported (algebraMap A T ∘ z) (twist g P) := by
-  obtain ⟨v, hv⟩ := h
-  refine ⟨v, fun j ↦ ?_⟩
-  obtain ⟨H⟩ := hv j
-  have hfix : MulSemiringAction.toRingHom G T g ((algebraMap A T ∘ z) j ^ v) =
-      (algebraMap A T ∘ z) j ^ v := by
-    rw [map_pow, Function.comp_apply, toRingHom_algebraMap]
-  have := (ModuleCat.restrictScalars (MulSemiringAction.toRingHom G T g)).mapHomotopy H
-  rw [restrictScalars_mapHomologicalComplex_smul_of_fixed _ _ hfix, CategoryTheory.Functor.map_id,
-    CategoryTheory.Functor.map_zero] at this
-  exact ⟨this⟩
-
-/-- `g⁻¹` の作用 `T ≃+* T`。 -/
-noncomputable abbrev twistInvEquiv (g : G) : T ≃+* T := MulSemiringAction.toRingEquiv G T g⁻¹
-
-instance (g : G) : RingHomInvPair (twistInvEquiv (T := T) g).toRingHom
-    (twistInvEquiv (T := T) g).symm.toRingHom :=
-  RingHomInvPair.of_ringEquiv (twistInvEquiv (T := T) g)
-
-instance (g : G) : RingHomInvPair (twistInvEquiv (T := T) g).symm.toRingHom
-    (twistInvEquiv (T := T) g).toRingHom :=
-  RingHomInvPair.symm _ _
-
-/-- ひねり `g^*M` は、`M` から恒等写像による `g⁻¹` 半線形同型を受ける。 -/
-noncomputable def twistSemilinearEquiv (g : G) (M : ModuleCat.{u} T) :
-    M ≃ₛₗ[(twistInvEquiv (T := T) g).toRingHom]
-      (ModuleCat.restrictScalars (MulSemiringAction.toRingHom G T g)).obj M where
-  toFun x := x
-  invFun x := x
-  map_add' _ _ := rfl
-  map_smul' t x := by
-    change t • x = (g • (g⁻¹ • t)) • x
-    rw [smul_inv_smul]
-  left_inv _ := rfl
-  right_inv _ := rfl
-
-/-- 環自己同型に沿った係数制限は自由性を保つ。 -/
-lemma free_twist (g : G) (M : ModuleCat.{u} T) [Module.Free T M] :
-    Module.Free T ((ModuleCat.restrictScalars (MulSemiringAction.toRingHom G T g)).obj M) :=
-  Module.Free.of_equiv (twistSemilinearEquiv g M)
-
-/-- 環自己同型に沿った係数制限は有限生成性を保つ。 -/
-lemma finite_twist (g : G) (M : ModuleCat.{u} T) [Module.Finite T M] :
-    Module.Finite T ((ModuleCat.restrictScalars (MulSemiringAction.toRingHom G T g)).obj M) :=
-  Module.Finite.of_surjective (twistSemilinearEquiv g M).toLinearMap
-    (twistSemilinearEquiv g M).surjective
-
-/-- `A` 上の作用によるひねりは、`A` から来る台をもつ完全複体を保つ。 -/
-lemma isPerfectSupported_twist {e : ℕ} (z : Fin e → A) (g : G)
-    {P : CochainComplex (ModuleCat.{u} T) ℤ} (h : IsPerfectSupported (algebraMap A T ∘ z) P) :
-    IsPerfectSupported (algebraMap A T ∘ z) (twist g P) where
-  bounded := by
-    obtain ⟨a, b, hab⟩ := h.bounded
-    exact ⟨a, b, fun n hn ↦
-      (ModuleCat.restrictScalars (MulSemiringAction.toRingHom G T g)).map_isZero (hab n hn)⟩
-  free n := by
-    have := h.free n
-    exact free_twist g (P.X n)
-  finite n := by
-    have := h.finite n
-    exact finite_twist g (P.X n)
-  supported := isSupported_twist z g h.supported
-
-end preserve
-
-/-! ## 基底変更とひねりの `K₀` への作用 -/
-
-namespace K0
-
-section map
-
-variable {A C : Type u} [CommRing A] [CommRing C] {e : ℕ} {z : Fin e → A}
-
-/-- 基底変更の誘導する準同型 `K₀(A) → K₀(C)`。 -/
-noncomputable def map (φ : A →+* C) : K0Supported A z →+ K0Supported C (φ ∘ z) :=
-  lift (fun P ↦ mk ⟨baseChange φ P.1, isPerfectSupported_baseChange φ P.2⟩)
-    (fun P P' h ↦ mk_eq_of_homotopyEquiv _ _
-      ((ModuleCat.extendScalars.{u, u, u} φ).mapHomotopyEquiv h))
-    (fun P P' f hc ↦ by
-      have i : baseChange φ (CochainComplex.mappingCone f) ≅
-          CochainComplex.mappingCone
-            (((ModuleCat.extendScalars.{u, u, u} φ).mapHomologicalComplex _).map f) :=
-        HomologicalComplex.homotopyCofiber.mapHomologicalComplexObjIso f _
-      have hc' := (isPerfectSupported_baseChange φ hc).of_iso i
-      rw [mk_eq_of_homotopyEquiv ⟨_, isPerfectSupported_baseChange φ hc⟩ ⟨_, hc'⟩
-        (HomotopyEquiv.ofIso i)]
-      exact mk_cone ⟨baseChange φ P.1, isPerfectSupported_baseChange φ P.2⟩
-        ⟨baseChange φ P'.1, isPerfectSupported_baseChange φ P'.2⟩ _ hc')
-
-@[simp] lemma map_mk (φ : A →+* C) (P : PerfSupp A z) :
-    map φ (mk P) = mk ⟨baseChange φ P.1, isPerfectSupported_baseChange φ P.2⟩ :=
-  lift_mk _ _ _ _
-
-end map
-
-section twist
-
-variable {A T : Type u} [CommRing A] [CommRing T] [Algebra A T] {G : Type u} [Group G]
-  [MulSemiringAction G T] [SMulCommClass G A T] {e : ℕ} {z : Fin e → A}
-
-/-- ひねり `g^*` の誘導する準同型 `K₀(T) → K₀(T)`。 -/
-noncomputable def twistHom (g : G) :
-    K0Supported T (algebraMap A T ∘ z) →+ K0Supported T (algebraMap A T ∘ z) :=
-  lift (fun P ↦ mk ⟨twist g P.1, isPerfectSupported_twist z g P.2⟩)
-    (fun P P' h ↦ mk_eq_of_homotopyEquiv _ _
-      ((ModuleCat.restrictScalars (MulSemiringAction.toRingHom G T g)).mapHomotopyEquiv h))
-    (fun P P' f hc ↦ by
-      have i : twist g (CochainComplex.mappingCone f) ≅
-          CochainComplex.mappingCone
-            (((ModuleCat.restrictScalars (MulSemiringAction.toRingHom G T g)).mapHomologicalComplex
-              _).map f) :=
-        HomologicalComplex.homotopyCofiber.mapHomologicalComplexObjIso f _
-      have hc' := (isPerfectSupported_twist z g hc).of_iso i
-      rw [mk_eq_of_homotopyEquiv ⟨_, isPerfectSupported_twist z g hc⟩ ⟨_, hc'⟩
-        (HomotopyEquiv.ofIso i)]
-      exact mk_cone ⟨twist g P.1, isPerfectSupported_twist z g P.2⟩
-        ⟨twist g P'.1, isPerfectSupported_twist z g P'.2⟩ _ hc')
-
-@[simp] lemma twistHom_mk (g : G) (P : PerfSupp T (algebraMap A T ∘ z)) :
-    twistHom (A := A) (z := z) g (mk P) = mk ⟨twist g P.1, isPerfectSupported_twist z g P.2⟩ :=
-  lift_mk _ _ _ _
-
-/-- `twist 1 P ≅ P`（各項の台集合は同じ）。 -/
-noncomputable def twistOneIso (P : CochainComplex (ModuleCat.{u} T) ℤ) : twist (1 : G) P ≅ P :=
-  HomologicalComplex.Hom.isoOfComponents
-    (fun i ↦ ModuleCat.restrictScalarsId'App (MulSemiringAction.toRingHom G T 1)
-      (by ext x; simp) (P.X i))
-    (fun _ _ _ ↦ by ext; rfl)
-
-/-- `twist a (twist b P) ≅ twist (b * a) P`（各項の台集合は同じ）。 -/
-noncomputable def twistMulIso (a b : G) (P : CochainComplex (ModuleCat.{u} T) ℤ) :
-    twist a (twist b P) ≅ twist (b * a) P :=
-  HomologicalComplex.Hom.isoOfComponents
-    (fun i ↦ (ModuleCat.restrictScalarsComp'App (MulSemiringAction.toRingHom G T a)
-      (MulSemiringAction.toRingHom G T b) (MulSemiringAction.toRingHom G T (b * a))
-      (by ext x; simp [mul_smul]) (P.X i)).symm)
-    (fun _ _ _ ↦ by ext; rfl)
-
-lemma twistHom_one : twistHom (A := A) (T := T) (z := z) (1 : G) = AddMonoidHom.id _ :=
-  hom_ext fun P ↦ by
-    rw [twistHom_mk, AddMonoidHom.id_apply]
-    exact mk_eq_of_homotopyEquiv _ _ (HomotopyEquiv.ofIso (twistOneIso P.1))
-
-lemma twistHom_mul (a b : G) :
-    twistHom (A := A) (T := T) (z := z) (b * a) =
-      (twistHom (A := A) (z := z) a).comp (twistHom (A := A) (z := z) b) :=
-  hom_ext fun P ↦ by
-    rw [AddMonoidHom.comp_apply, twistHom_mk, twistHom_mk, twistHom_mk]
-    exact mk_eq_of_homotopyEquiv _ _ (HomotopyEquiv.ofIso (twistMulIso a b P.1)).symm
-
-/-- `G` の `K₀(T)` への左作用：`g • x := (g⁻¹)^* x`。 -/
-noncomputable instance instDistribMulAction :
-    DistribMulAction G (K0Supported T (algebraMap A T ∘ z)) where
-  smul g := twistHom (A := A) (z := z) g⁻¹
-  one_smul x := by
-    change twistHom (A := A) (z := z) (1 : G)⁻¹ x = x
-    rw [inv_one, twistHom_one, AddMonoidHom.id_apply]
-  mul_smul g h x := by
-    change twistHom (A := A) (z := z) (g * h)⁻¹ x =
-      twistHom (A := A) (z := z) g⁻¹ (twistHom (A := A) (z := z) h⁻¹ x)
-    rw [mul_inv_rev, twistHom_mul, AddMonoidHom.comp_apply]
-  smul_zero g := map_zero _
-  smul_add g x y := map_add _ _ _
-
-lemma smul_mk (g : G) (P : PerfSupp T (algebraMap A T ∘ z)) :
-    g • mk P = mk ⟨twist g⁻¹ P.1, isPerfectSupported_twist z g⁻¹ P.2⟩ := by
-  change twistHom (A := A) (z := z) g⁻¹ (mk P) = _
-  exact twistHom_mk _ _
-
-end twist
+/-- シフトは符号 `(-1)^n` を与える。 -/
+lemma mk_shift (P : PerfSupp T z) (n : ℤ) :
+    mk ⟨P.1⟦n⟧, P.2.shift n⟩ = ((n.negOnePow : ℤˣ) : ℤ) • mk P := by
+  induction n using Int.induction_on with
+  | zero =>
+    rw [Int.negOnePow_zero, Units.val_one, one_smul]
+    exact mk_eq_of_iso _ _ ((shiftFunctorZero _ ℤ).app P.1)
+  | succ n ih =>
+    have h := mk_eq_of_iso ⟨P.1⟦(n + 1 : ℤ)⟧, P.2.shift _⟩
+      ⟨(P.1⟦(n : ℤ)⟧)⟦(1 : ℤ)⟧, (P.2.shift _).shift 1⟩
+      ((shiftFunctorAdd' _ (n : ℤ) 1 (n + 1) rfl).app P.1)
+    rw [h, mk_shift_one ⟨P.1⟦(n : ℤ)⟧, P.2.shift _⟩, ih, Int.negOnePow_succ, Units.val_neg,
+      neg_smul]
+  | pred n ih =>
+    have h := mk_eq_of_iso ⟨P.1⟦(-n : ℤ)⟧, P.2.shift _⟩
+      ⟨(P.1⟦(-n - 1 : ℤ)⟧)⟦(1 : ℤ)⟧, (P.2.shift _).shift 1⟩
+      ((shiftFunctorAdd' _ (-n - 1 : ℤ) 1 (-n) (by omega)).app P.1)
+    rw [mk_shift_one ⟨P.1⟦(-n - 1 : ℤ)⟧, P.2.shift _⟩, ih] at h
+    rw [← neg_neg (mk ⟨P.1⟦(-n - 1 : ℤ)⟧, _⟩), ← h, Int.negOnePow_sub, Int.negOnePow_one,
+      mul_neg, mul_one, Units.val_neg, neg_smul]
 
 end K0
 

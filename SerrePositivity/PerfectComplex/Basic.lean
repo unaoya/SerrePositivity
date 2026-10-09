@@ -15,7 +15,7 @@ public import Mathlib.Algebra.Ring.NegOnePow
 - `IsSupported z P`：論文 §3.1 の台の判定法。ある `v` で、すべての `j` について `z_j^v • 𝟙 P` が
   零ホモトピック（`P[1/z_j] = 0` と同値）。生成元 `z` で書くので、基底変更やひねりで保たれる。
 - `IsPerfectSupported z P`：`P` は有界で各項が有限自由な `T` 複体で、`z` に台をもつ。
-  Lemma 3.5 では `z = algebraMap A T ∘ (A の正則パラメータ系)`。
+  Lemma 3.5 では `z = algebraMap A T ∘ (A の正則パラメータ系)`。`PerfSupp T z` はその全体（部分型）。
 - `chiOrd T P = Σ_i (-1)^i length_T H_i(P)`：通常の Euler 評価。
 - `chiLam λ φ P = Σ_i (-1)^i λ H_i(P ⊗_T C)`：正規化長さ `λ` による評価。`φ : T →+* C`。
 - `twist g P = g^*P`：`g : T → T` に沿った係数制限（論文 §3.4 末尾の scalar twisting）。
@@ -48,6 +48,11 @@ structure IsPerfectSupported {e : ℕ} (z : Fin e → T) (P : CochainComplex (Mo
   finite : ∀ i, Module.Finite T (P.X i)
   /-- `z` に台をもつ。 -/
   supported : IsSupported z P
+
+variable (T) in
+/-- `z` に台をもつ完全 `T` 複体の全体。`K₀`（`K0.lean`）の生成元。 -/
+abbrev PerfSupp {e : ℕ} (z : Fin e → T) : Type (u + 1) :=
+  {P : CochainComplex (ModuleCat.{u} T) ℤ // IsPerfectSupported z P}
 
 /-- 通常の Euler 評価 `χ_T(P) = Σ_i (-1)^i length_T H_i(P)`。無限長は `0` になる。 -/
 noncomputable def chiOrd (P : CochainComplex (ModuleCat.{u} T) ℤ) : ℝ :=

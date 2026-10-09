@@ -30,11 +30,12 @@ public import SerrePositivity.CommutativeAlgebra.KoszulBaseChange
 public import SerrePositivity.CommutativeAlgebra.TorKoszul
 public import SerrePositivity.PerfectComplex.NormalizedLength
 public import SerrePositivity.PerfectComplex.Basic
-public import SerrePositivity.PerfectComplex.K0
 public import SerrePositivity.PerfectComplex.Support
-public import SerrePositivity.PerfectComplex.K0Basic
-public import SerrePositivity.PerfectComplex.OrdinaryEuler
+public import SerrePositivity.PerfectComplex.Closure
+public import SerrePositivity.PerfectComplex.K0
+public import SerrePositivity.PerfectComplex.K0Functor
 public import SerrePositivity.PerfectComplex.NormalizedEuler
+public import SerrePositivity.PerfectComplex.OrdinaryEuler
 public import SerrePositivity.PerfectComplex.KoszulGeneration
 public import SerrePositivity.Inputs.RegularLocalRing
 public import SerrePositivity.Inputs.LengthAlgebra

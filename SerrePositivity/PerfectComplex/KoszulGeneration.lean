@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.Truncate
-public import SerrePositivity.PerfectComplex.K0Basic
+public import SerrePositivity.PerfectComplex.K0
 public import SerrePositivity.CommutativeAlgebra.FiniteLength
 public import SerrePositivity.CommutativeAlgebra.KoszulResolution
 public import SerrePositivity.PerfectComplex.OrdinaryEuler

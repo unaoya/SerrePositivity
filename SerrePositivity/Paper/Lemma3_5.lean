@@ -7,7 +7,7 @@ public import SerrePositivity.Paper.Lemma3_5.A_Ordinary
 public import SerrePositivity.Paper.Lemma3_5.A_Normalized
 public import SerrePositivity.CommutativeAlgebra.GeometricFiber
 public import SerrePositivity.Inputs.Descent
-public import SerrePositivity.PerfectComplex.K0
+public import SerrePositivity.PerfectComplex.K0Functor
 public import SerrePositivity.CommutativeAlgebra.Koszul
 public import SerrePositivity.PerfectComplex.Basic
 public import Mathlib.Algebra.CharP.Defs
