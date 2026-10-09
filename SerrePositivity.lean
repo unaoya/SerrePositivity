@@ -6,6 +6,7 @@ public import SerrePositivity.HomologicalAlgebra.Basic
 public import SerrePositivity.HomologicalAlgebra.ConeLES
 public import SerrePositivity.HomologicalAlgebra.BaseChange
 public import SerrePositivity.HomologicalAlgebra.TriangleSmul
+public import SerrePositivity.HomologicalAlgebra.NullHomotopy
 public import SerrePositivity.HomologicalAlgebra.FreeTerms
 public import SerrePositivity.HomologicalAlgebra.Resolution
 public import SerrePositivity.HomologicalAlgebra.Tor
@@ -31,6 +32,7 @@ public import SerrePositivity.PerfectComplex.NormalizedLength
 public import SerrePositivity.PerfectComplex.Basic
 public import SerrePositivity.PerfectComplex.Support
 public import SerrePositivity.PerfectComplex.Closure
+public import SerrePositivity.PerfectComplex.HomologySupport
 public import SerrePositivity.PerfectComplex.K0
 public import SerrePositivity.PerfectComplex.K0Functor
 public import SerrePositivity.PerfectComplex.NormalizedEuler

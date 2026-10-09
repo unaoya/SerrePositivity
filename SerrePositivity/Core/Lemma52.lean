@@ -2,9 +2,8 @@ module
 
 public import SerrePositivity.Core.FirstComparison
 public import SerrePositivity.Core.NormApplication
-public import SerrePositivity.Support.Resolution
 public import SerrePositivity.IntersectionMultiplicity.FiniteExtension
-public import SerrePositivity.IntersectionMultiplicity.OrdinaryEvaluation
+public import SerrePositivity.IntersectionMultiplicity.BaseChangeResolution
 public import SerrePositivity.IntersectionMultiplicity.ResolutionEvaluation
 public import Mathlib.Algebra.CharP.Algebra
 

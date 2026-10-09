@@ -192,15 +192,10 @@ theorem lambdaEuler_cone {P Q : CochainComplex (ModuleCat.{u} C) ℤ} (f : P ⟶
 lemma supported_homology_isPowTorsion (hfg : J.FG) {n : ℕ}
     {w : Fin n → C} (hJ : J ≤ (Ideal.span (Set.range w)).radical)
     {P : CochainComplex (ModuleCat.{u} C) ℤ} (hP : IsSupported w P) (i : ℤ) :
-    IsPowTorsion J (P.homology i) := by
-  have hAnn : J ≤ (Module.annihilator C (P.homology i)).radical :=
-    hJ.trans (by
-      have h := Ideal.radical_mono (hP.le_radical_annihilator i)
-      simpa only [Ideal.radical_idem] using h)
-  obtain ⟨n, hn⟩ := Ideal.exists_pow_le_of_le_radical_of_fg hAnn hfg
-  refine ⟨n, ?_⟩
-  rw [Module.isTorsionBySet_iff_subset_annihilator, SetLike.coe_subset_coe]
-  exact hn
+    IsPowTorsion J (P.homology i) :=
+  IsPowTorsion.of_le_radical_annihilator hfg (hJ.trans (by
+    have h := Ideal.radical_mono (hP.le_radical_annihilator i)
+    simpa only [Ideal.radical_idem] using h))
 
 /-! ## The ordinary length as a normalized length -/
 

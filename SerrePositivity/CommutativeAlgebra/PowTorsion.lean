@@ -2,6 +2,7 @@ module
 
 public import Mathlib.Algebra.Module.Torsion.Basic
 public import Mathlib.RingTheory.Ideal.Maps
+public import Mathlib.RingTheory.Noetherian.Nilpotent
 
 /-!
 # イデアルの冪で消える加群
@@ -9,6 +10,8 @@ public import Mathlib.RingTheory.Ideal.Maps
 `IsPowTorsion J M`：`M` がイデアル `J` のある冪で消えること。正規化長さ
 （`PerfectComplex/NormalizedLength.lean`）の定義域を与える条件で、単射・全射・同型・部分加群・商で
 保たれる。`J = ⊥` ならどの加群も条件をみたす（`IsPowTorsion.bot`）。
+`J` が有限生成で `J ≤ √(Ann M)` なら成り立つ（`IsPowTorsion.of_le_radical_annihilator`。
+台をもつ複体のホモロジーに使う）。
 
 `IsPowTorsion.of_pow_le`：`J^N ≤ I T` なら `I C` 冪ねじれは `J C` 冪ねじれ
 （正規化長さの定義域のイデアルの取り替え `NormalizedLength.restrict` に使う）。
@@ -62,6 +65,14 @@ lemma bot : IsPowTorsion (⊥ : Ideal C) M :=
   ⟨1, fun _ a ↦ by
     have ha : (a : C) = 0 := by simpa using a.2
     rw [ha, zero_smul]⟩
+
+/-- `J` が有限生成で `J ≤ √(Ann M)` なら、`J` のある冪が `M` を消す。 -/
+lemma of_le_radical_annihilator (hfg : J.FG) (h : J ≤ (Module.annihilator C M).radical) :
+    IsPowTorsion J M := by
+  obtain ⟨n, hn⟩ := Ideal.exists_pow_le_of_le_radical_of_fg h hfg
+  refine ⟨n, ?_⟩
+  rw [Module.isTorsionBySet_iff_subset_annihilator, SetLike.coe_subset_coe]
+  exact hn
 
 end IsPowTorsion
 
