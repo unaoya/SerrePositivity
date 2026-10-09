@@ -32,12 +32,6 @@ theorem isWeaklyRegular_of_span_eq_maximalIdeal (A : Type u) [CommRing A] [IsReg
     (_he : ringKrullDim A = e) : RingTheory.Sequence.IsWeaklyRegular A (List.ofFn z) := by
   sorry
 
-/-- 局所環 `A` 上有限な局所環 `T` では `m_T^N ≤ m_A T` となる `N` がある（層 3a、未証明）。 -/
-theorem exists_pow_maximalIdeal_le_map (A T : Type u) [CommRing A] [IsLocalRing A] [CommRing T]
-    [IsLocalRing T] [Algebra A T] (_hfin : Module.Finite A T) :
-    ∃ N : ℕ, (maximalIdeal T) ^ N ≤ (maximalIdeal A).map (algebraMap A T) := by
-  sorry
-
 /-- **Koszul Euler 標数 = 生成ランク**（層 3a、未証明）。正則局所環 `A` の正則パラメータ系 `z` と
 `A` 上有限な代数 `T` について `χ^A(z; T) = rank_A T`（`koszulEulerChar` は
 `CommutativeAlgebra/Koszul.lean`）。

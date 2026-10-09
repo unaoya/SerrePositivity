@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Inputs.IntersectionTheory
-public import SerrePositivity.IntersectionMultiplicity.LengthComparison
+public import SerrePositivity.CommutativeAlgebra.LengthComparison
 
 /-! # Ordinary evaluation of a resolution after coefficient extension -/
 
@@ -17,24 +17,18 @@ variable {R T : Type u} [CommRing R] [IsRegularLocalRing R]
   [Inputs.RegularHomologicalAlgebra R] [CommRing T] [IsLocalRing T] [Algebra R T]
   [Module.Finite R T]
 
-omit [IsRegularLocalRing R] in
+omit [IsRegularLocalRing R] [Module.Finite R T] in
 /-- Over a common residue field, a base-changed resolution has ordinary Euler
 evaluation equal to the original intersection characteristic. -/
 theorem chiOrd_baseChange_resolution
     (M : Type u) [AddCommGroup M] [Module R M] [Module.Finite R M]
     (F : CochainComplex (ModuleCat.{u} R) ℤ) (hF : IsResolutionOf F (ModuleCat.of R M))
-    (hres : Function.Surjective ((residue T).comp (algebraMap R T)))
-    (htensor : Module.length R (T ⊗[R] M) ≠ ⊤) :
+    (hres : Function.Surjective ((residue T).comp (algebraMap R T))) :
     chiOrd (baseChange (algebraMap R T) F) = (chi R T M : ℝ) := by
   let K := baseChange (algebraMap R T) F
   have hlen (i : ℕ) : Module.length T (K.homology (-(i : ℤ))) = torLength R i T M := by
     obtain ⟨e⟩ := Inputs.RegularHomologicalAlgebra.ordinaryTorIso T M F hF i
-    have ht := Inputs.RegularHomologicalAlgebra.finiteTor T M htensor i
-    have hR : IsFiniteLength R ((ModuleCat.restrictScalars (algebraMap R T)).obj
-        (K.homology (-(i : ℤ)))) :=
-      Module.length_ne_top_iff.mp (ne_of_eq_of_ne e.length_eq ht)
-    have hT := finiteLength_of_restrictScalars (K.homology (-(i : ℤ))) hR
-    exact (length_restrictScalars_eq_of_residue_surjective hres _ hT).symm.trans e.length_eq
+    exact (length_restrictScalars_eq hres _).symm.trans e.length_eq
   let f := fun i : ℤ ↦ ((i.negOnePow : ℤ) : ℝ) * ((Module.length T (K.homology i)).toNat : ℝ)
   let g := fun i : ℕ ↦ -(i : ℤ)
   have hg : Function.Injective g := by

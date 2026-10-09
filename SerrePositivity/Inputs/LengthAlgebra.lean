@@ -3,6 +3,7 @@ module
 public import SerrePositivity.Paper.Lemma3_4.Abstract
 public import SerrePositivity.Inputs.RegularLocalRing
 public import SerrePositivity.CommutativeAlgebra.Koszul
+public import SerrePositivity.CommutativeAlgebra.LocalAlgebra
 public import SerrePositivity.CommutativeAlgebra.Multiplicity
 public import SerrePositivity.PerfectComplex.NormalizedLength
 public import Mathlib.Algebra.CharP.Defs
@@ -137,7 +138,9 @@ theorem cor_2_6_tor (A D : Type u) [CommRing A] [IsLocalRing A] [CommRing D] [Is
   have : IsRegularLocalRing A := hbase.regular
   have hVfl : IsFiniteLength A V := Module.length_ne_top_iff.mp hV
   have hreg := isWeaklyRegular_of_span_eq_maximalIdeal A t hbase.regular_params hbase.dimA
-  have hN := exists_pow_maximalIdeal_le_map A D hbase.finite
+  have hN : ∃ N : ℕ, (maximalIdeal D) ^ N ≤ (maximalIdeal A).map (algebraMap A D) := by
+    have := hbase.finite
+    exact maximalIdeal_pow_le_map_of_finite (R := A) D
   let lam' : NormalizedLength C ((maximalIdeal A).map (algebraMap A C)) :=
     lam.restrict _ (fun M _ _ hM ↦ IsPowTorsion.of_pow_le hN M hM)
   have ht1 : (fun j ↦ algebraMap D C ((algebraMap A D ∘ t) j ^ 1)) = algebraMap A C ∘ t := by

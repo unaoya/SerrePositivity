@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EulerChar
 public import Mathlib.LinearAlgebra.Quotient.Defs
 public import SerrePositivity.Inputs.IntersectionTheory
-public import SerrePositivity.IntersectionMultiplicity.LocalAlgebra
+public import SerrePositivity.CommutativeAlgebra.LocalAlgebra
 
 /-!
 # Rank factors in intersection multiplicity

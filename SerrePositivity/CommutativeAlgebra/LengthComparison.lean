@@ -109,4 +109,44 @@ lemma length_restrictScalars_eq (M : ModuleCat.{u} T) :
 
 end length
 
+/-! ## 係数制限と長さ -/
+
+section restrictScalars
+
+variable {A T : Type u} [CommRing A] [CommRing T] [Algebra A T]
+
+/-- 係数制限して有限長なら、もとの環の上でも有限長（部分加群の束が埋め込まれる）。 -/
+lemma finiteLength_of_restrictScalars (M : ModuleCat.{u} T)
+    (hM : IsFiniteLength A ((ModuleCat.restrictScalars (algebraMap A T)).obj M)) :
+    IsFiniteLength T M := by
+  let : Module A M := Module.compHom M (algebraMap A T)
+  have : IsScalarTower A T M := IsScalarTower.of_algebraMap_smul (fun _ _ ↦ rfl)
+  have h : IsFiniteLength A M := hM
+  obtain ⟨hn, ha⟩ := isFiniteLength_iff_isNoetherian_isArtinian.mp h
+  exact isFiniteLength_iff_isNoetherian_isArtinian.mpr
+    ⟨isNoetherian_of_tower A hn, isArtinian_of_tower A ha⟩
+
+end restrictScalars
+
+section semilinear
+
+variable {R S : Type u} [CommRing R] [CommRing S]
+
+/-- 全射な環準同型の上の半線形全単射は長さを保つ（部分加群の束の同型による）。 -/
+lemma length_eq_of_semilinear_bijective (φ : R →+* S) (hφ : Function.Surjective φ)
+    {M N : Type u} [AddCommGroup M] [Module R M] [AddCommGroup N] [Module S N]
+    (f : M →ₛₗ[φ] N) (hf : Function.Bijective f) : Module.length R M = Module.length S N := by
+  have : RingHomSurjective φ := ⟨hφ⟩
+  rw [Module.length, Module.length, WithBot.unbot_inj,
+    Order.krullDim_eq_of_orderIso (Submodule.orderIsoMapComapOfBijective f hf)]
+
+/-- 環自己同型に沿った係数制限は長さを保つ。 -/
+lemma length_restrictScalars_equiv (σ : R ≃+* R) (M : ModuleCat.{u} R) :
+    Module.length R ((ModuleCat.restrictScalars σ.toRingHom).obj M) = Module.length R M := by
+  let f : (ModuleCat.restrictScalars σ.toRingHom).obj M →ₛₗ[σ.toRingHom] M :=
+    { toFun := id, map_add' := fun _ _ ↦ rfl, map_smul' := fun _ _ ↦ rfl }
+  exact length_eq_of_semilinear_bijective σ.toRingHom σ.surjective f Function.bijective_id
+
+end semilinear
+
 end SerrePositivity

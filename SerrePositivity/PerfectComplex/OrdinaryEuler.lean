@@ -1,9 +1,11 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.FiniteLength
+public import SerrePositivity.CommutativeAlgebra.LengthComparison
 public import SerrePositivity.HomologicalAlgebra.FreeTerms
 public import SerrePositivity.PerfectComplex.NormalizedEuler
 public import SerrePositivity.PerfectComplex.K0
+public import Mathlib.Algebra.Homology.ShortComplex.PreservesHomology
 
 /-!
 # Ordinary Euler evaluation on supported perfect complexes
@@ -15,7 +17,8 @@ or choice of a normalization base is involved.
 
 Homotopy invariance and mapping-cone additivity of `chiOrd` are the special case
 `NormalizedLength.ordinary` of the statements in `NormalizedEuler.lean`
-(`chiOrd_eq_lambdaEuler_ordinary`).
+(`chiOrd_eq_lambdaEuler_ordinary`). Scalar restriction along a ring automorphism,
+in particular the twist `g^*P`, does not change `chiOrd` (`chiOrd_twist`).
 -/
 
 @[expose] public section
@@ -76,5 +79,29 @@ noncomputable def chiOrdHom {e : ℕ} (w : Fin e → T)
 lemma chiOrdHom_mk {e : ℕ} (w : Fin e → T)
     [IsArtinianRing (T ⧸ Ideal.span (Set.range w))] (P : PerfSupp T w) :
     chiOrdHom w (K0.mk P) = chiOrd P.1 := K0.lift_mk _ _ _ _
+
+/-! ## Scalar restriction along an automorphism -/
+
+omit [IsNoetherianRing T] in
+/-- Ordinary Euler evaluation is invariant under scalar restriction by
+an automorphism, without hypotheses on finite length or boundedness. -/
+lemma chiOrd_restrictScalars_equiv (σ : T ≃+* T)
+    (P : CochainComplex (ModuleCat.{u} T) ℤ) :
+    chiOrd (((ModuleCat.restrictScalars σ.toRingHom).mapHomologicalComplex _).obj P) =
+      chiOrd P := by
+  let F := ModuleCat.restrictScalars.{u} σ.toRingHom
+  have : F.IsEquivalence := inferInstance
+  unfold chiOrd
+  congr 1
+  funext i
+  let e : ((F.mapHomologicalComplex _).obj P).homology i ≅ F.obj (P.homology i) :=
+    (P.sc i).mapHomologyIso F
+  rw [e.toLinearEquiv.length_eq, length_restrictScalars_equiv]
+
+omit [IsNoetherianRing T] in
+/-- Every group twist has the same ordinary Euler evaluation. -/
+lemma chiOrd_twist {G : Type u} [Group G] [MulSemiringAction G T]
+    (g : G) (P : CochainComplex (ModuleCat.{u} T) ℤ) : chiOrd (twist g P) = chiOrd P :=
+  chiOrd_restrictScalars_equiv (MulSemiringAction.toRingEquiv G T g) P
 
 end SerrePositivity

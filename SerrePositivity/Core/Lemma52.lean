@@ -5,6 +5,8 @@ public import SerrePositivity.Core.NormApplication
 public import SerrePositivity.Support.Resolution
 public import SerrePositivity.IntersectionMultiplicity.FiniteExtension
 public import SerrePositivity.IntersectionMultiplicity.OrdinaryEvaluation
+public import SerrePositivity.IntersectionMultiplicity.ResolutionEvaluation
+public import Mathlib.Algebra.CharP.Algebra
 
 /-!
 # Lemma 5.2: the first norm comparison
@@ -64,7 +66,7 @@ theorem firstComparison (p : ℕ) [Fact p.Prime] [CharP (ResidueField R) p]
     isPerfectSupported_baseChange_resolution X.E' F hF hbound hfree hfinite htensor
       (algebraMap X.AD X.D' ∘ X.tD) hpaper.baseD.sop.2
   have hOrd : chiOrd L = (chi R X.D' X.E' : ℝ) :=
-    chiOrd_baseChange_resolution X.E' F hF hpaper.residueD htensor
+    chiOrd_baseChange_resolution X.E' F hF hpaper.residueD
   have : IsRegularLocalRing X.AD := hpaper.baseD.regular
   have : Module.Finite X.AD X.D' := hpaper.baseD.finite
   let : Algebra X.AD X.CD :=

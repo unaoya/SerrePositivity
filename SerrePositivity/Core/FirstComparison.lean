@@ -2,7 +2,8 @@ module
 
 public import SerrePositivity.Core.Setup
 public import SerrePositivity.PerfectComplex.Basic
-public import SerrePositivity.IntersectionMultiplicity.TwistEvaluation
+public import SerrePositivity.PerfectComplex.OrdinaryEuler
+public import SerrePositivity.IntersectionMultiplicity.ResolutionEvaluation
 
 /-!
 # Assembling Lemma 5.2

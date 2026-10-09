@@ -3,6 +3,7 @@ module
 public import SerrePositivity.Paper.Lemma3_4.Abstract
 public import SerrePositivity.Inputs.RegularLocalRing
 public import SerrePositivity.CommutativeAlgebra.Koszul
+public import SerrePositivity.CommutativeAlgebra.LocalAlgebra
 public import SerrePositivity.PerfectComplex.NormalizedLength
 public import Mathlib.Algebra.CharP.Defs
 public import Mathlib.RingTheory.AdicCompletion.Basic
@@ -93,7 +94,9 @@ theorem lemma_3_4 (A T C : Type u) [CommRing A] [IsRegularLocalRing A] [CommRing
       (∀ i : ℕ, lam.len (TorAlg (algebraMap A C) i V) ≠ ⊤) := by
   have hVfl : IsFiniteLength A V := Module.length_ne_top_iff.mp hV
   have hreg := isWeaklyRegular_of_span_eq_maximalIdeal A z S.regular_params S.dim
-  have hN := exists_pow_maximalIdeal_le_map A T S.finite
+  have hN : ∃ N : ℕ, (maximalIdeal T) ^ N ≤ (maximalIdeal A).map (algebraMap A T) := by
+    have := S.finite
+    exact maximalIdeal_pow_le_map_of_finite (R := A) T
   let lam' : NormalizedLength C ((maximalIdeal A).map (algebraMap A C)) :=
     lam.restrict _ (fun M _ _ hM ↦ IsPowTorsion.of_pow_le hN M hM)
   have hz1 : (fun j ↦ algebraMap A C (z j ^ 1)) = algebraMap A C ∘ z := by

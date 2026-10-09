@@ -17,6 +17,7 @@ public import SerrePositivity.HomologicalAlgebra.KProjectiveLift
 public import SerrePositivity.CommutativeAlgebra.PowTorsion
 public import SerrePositivity.CommutativeAlgebra.FiniteLength
 public import SerrePositivity.CommutativeAlgebra.LengthComparison
+public import SerrePositivity.CommutativeAlgebra.LocalAlgebra
 public import SerrePositivity.CommutativeAlgebra.Multiplicity
 public import SerrePositivity.CommutativeAlgebra.GeometricFiber
 public import SerrePositivity.CommutativeAlgebra.Koszul

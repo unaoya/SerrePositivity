@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Support.NullHomotopy
 public import SerrePositivity.Inputs.IntersectionTheory
-public import SerrePositivity.IntersectionMultiplicity.LocalAlgebra
+public import SerrePositivity.CommutativeAlgebra.LengthComparison
 
 /-! # Closed-point support of a base-changed finite free resolution -/
 

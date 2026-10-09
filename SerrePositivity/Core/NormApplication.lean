@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Paper.Lemma3_5
 public import SerrePositivity.PerfectComplex.Support
 public import SerrePositivity.Inputs.LengthAlgebra
-public import SerrePositivity.IntersectionMultiplicity.LocalAlgebra
+public import SerrePositivity.CommutativeAlgebra.LocalAlgebra
 
 /-! # Applying Lemma 3.5 to a length algebra from Theorem 2.5 -/
 
