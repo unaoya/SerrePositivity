@@ -12,11 +12,13 @@
 | M2 | 正規化長さの抽象化（Lemma 2.3–2.4）、Koszul 複体の定義、Theorem 2.5 の束 | 1 か月 |
 | M3 | 核の骨格：Lemma 5.2–5.6 から Theorem 1.1 を sorry なしで出す。**第一マイルストーン** | 2 か月 |
 | M4 | 標準事実（層 3a）を証明して束から外す。Tor API、Lemma 3.4、Lemma 5.3 | 継続 |
-| M5 | §4 の圏と Theorem 4.7、Theorem 3.1 | 長期。着手は人手の検証の結果を見て判断 |
+| M5 | §4 の圏と Theorem 4.7、Theorem 3.1 | 長期。Prop. 4.5 は一様持ち上げと有限版 3.5b の再利用で進める（下記 M5） |
 
 **改訂（2026-10-07）**：M2・M3 の順序は §10 の「Lemma 5.2 トラック」に置き換える。
 Lemma 5.1 の帰着（M1）は後回しにし、Lemma 5.2 の証明に向けて、Theorem 2.5・Cor 2.6・
 Lemma 3.4・3.5・Theorem 3.1 の主張を先に形式化する。
+
+**§4 の方針決定（2026-10-08）**：Prop. 4.5 は、一様な自由持ち上げの存在を証明して有限版 Lemma 3.5b を再利用する。4.5 を最初の到達点 M5a、4.7 と §5 向け評価までを §4 の到達点 M5b とする。列の圏の K₀ の明示的な計算は追加課題。全体の実装順と完了条件は [section-4-plan.md](section-4-plan.md)、代替証明は [section-4-devissage.md](section-4-devissage.md) に記す。
 
 第一マイルストーン（M3）の判定基準：`SerrePositivity.main_theorem` が sorry なしで、`#print axioms` に出るのが Lean の標準公理（`propext`、`Classical.choice`、`Quot.sound`）と、名前つきの入力インスタンスだけであること。
 
@@ -199,7 +201,7 @@ Theorem 1.1 (Proof/Main.lean)
 
 ## 5. §5 を書くためのインターフェース
 
-§4 の圏や perfectoid 化は作らない。§5 が使う性質だけを structure に書き、その存在を束に入れる。
+§5 の先行実装では、§4 の圏の構成を待たず、使う性質を structure に書いて存在を入力にする。M5 では §4 の圏と評価を実際に構成してこの入力を充足する。perfectoid 化そのものは従来どおり層 3b に置く。以下の表には実装予定のインターフェースも含む。
 
 | 構造 | 論文 | 中身 | §5 で使う性質 | 層 |
 | --- | --- | --- | --- | --- |
@@ -208,14 +210,14 @@ Theorem 1.1 (Proof/Main.lean)
 | `LengthAlgebra D A` | Theorem 2.5、Cor 2.6 | `C_D`（`D` 代数かつ `Λ` 代数）、`λ_D` | (2.4) 正次数 Koszul ホモロジーの λ = 0、(2.5 弱) パラメータ商の λ は正で有限、(2.6)、Cor 2.6 | 3b |
 | `GaloisSetup D` | §5.1 | `A_D ⊂ D ⊂ D'`、`G_D`、`a_D = rank_D D'` | 有限、`D'` は局所整域で剰余体 `k`、`(D')^G = A_D`、幾何ファイバーで推移的 | 3b + 1 |
 | `OrdinaryNormComparison` | Lemma 3.5 | 命題 | 有限自由 `T` 複体で台が閉点のものについて (3.11)、`χ_C` の有限性 | 2 |
-| `AsymptoticEvaluation` | §4、Theorem 4.7 | 台つきの列 `F = (F_n)` に `b_i^ord(F), b_i^C(F) ≥ 0` を対応させる | 有限個を除き 0、両評価の (4.2)、ひねり γ との両立、台の十分条件（Lemma 5.5 前半）、Theorem 4.7 | 2 |
+| `AsymptoticEvaluation`（予定） | §4、Theorem 4.7 | 商で台つきとなる列 `F = (F_n)` に `b_i^ord(F), b_i^C(F) ≥ 0` を対応させる | 有限個を除き 0、両評価の (4.2)、ひねり γ との両立、Theorem 4.7 | 2。M5b で構成から充足 |
 
 補足：
 
 - 幾何ファイバーの推移性は `∀ Ω [Field Ω] [IsAlgClosed Ω] [Algebra A Ω], ∀ x y : PrimeSpectrum (T ⊗[A] Ω), ∃ g, g • x = y` と書ける。
 - `γ` によるひねり `g^*P` は `ModuleCat.restrictScalars` を複体に写したもの。
-- (4.2) の右辺の超極限は `Ultrafilter.lim` で書く。有界列なら存在し、通常の極限があればそれに一致する（`Ultralimit.lean`）。
-- `AsymptoticEvaluation` に「台の十分条件」を入れるのは Lemma 5.5 の証明の一部を束に移すことになる。docstring に明記し、M5 で §4 を作る段階で外す。
+- (4.2) の右辺の超極限は Mathlib の超フィルターによる極限を使う。有界列での存在、有限和との交換、通常の極限との一致を §4 用の API として整備する（未実装）。
+- 「台の十分条件」は rank-small 誤差と支持条件から示す Lemma 5.5 側の接続補題として分ける。先行実装で入力に置く場合も出典を別に明示し、評価の存在だけで証明済みとはしない。
 
 ## 6. マイルストーン別の作業項目
 
@@ -279,7 +281,27 @@ Lemma 5.2 の主張 `FirstComparison`（(5.3) と長さの有限性）と、(5.1
 
 ### M5：§4 と Theorem 3.1
 
-Verdier 商、冪等完備化、`∏ M_{s_n}(A)` 上の dg 代数、Land–Tamme の降下はいずれも Mathlib の現状から遠い。人手の検証（`INVESTIGATION.md` の「検証の重点」）の結果を見てから、着手するかを判断する。着手する場合は Lemma 4.2 と Prop. 4.3 の圏論的部分（三角圏の局所化は Mathlib にある）から。
+詳細な計画は [section-4-plan.md](section-4-plan.md) を基準とする。Prop. 4.5 は一様持ち上げによる代替証明を採用し、その前後の必須構成を次の段階に分ける。
+
+| 段階 | 成果物 | 主な依存 |
+| --- | --- | --- |
+| S0 | 4.3・4.5・4.6・4.7 と §5 向け評価の型、入力境界 | 論文と既存実装 |
+| S1 | 商の有界 t 構造、冪等完備性 | Serre heart 条件を含む一般論。最初の実装単位 |
+| S2 | 列の圏、ランク商、台、基底変更、ひねり、K₀ の基盤 | 通常の O・o、共通有界性、三角的 Karoubi 包絡 |
+| S3 | Lemma 4.2 | S2 と Koszul による支持つき因子化 |
+| S4 | Prop. 4.3 と (4.2) | S2・S3、長さの Serre 商、有限フィルトレーションの上界、超極限 |
+| S5 | A 側の一様自由持ち上げ | S1・S2・S3、ランク評価つき自由分解、通常の o による特徴付け |
+| S6 | Prop. 4.5。M5a 完了 | S4・S5 と有限版 3.5b |
+| S7 | Lemma 4.6、一般の連結な H による降下との接続 | S2、dg 商、生成元による表示、支持と群作用の同定、Theorem 3.1 |
+| S8 | Theorem 4.7、§5 向け評価の充足。M5b 完了 | S4・S6・S7 と既存の `conjSum_eq` |
+
+直近は S0 → S1。その後 S2 → S3 を整備し、S4・S5 を S6 に接続する。S7 の型と両立条件は S0・S2 から設計しておき、S6 の後は追加の K₀ 計算より S7 → S8 を優先する。
+
+M5a の完成条件は、任意の X ∈ P_A^J を実際の一様支持つき自由複体列の像として表し、構成済みの評価について Prop. 4.5 の両等式を証明すること。持ち上げ定理を入力として仮定した段階は完成に数えない。一様分解の評価は rank P(M)^i ≤ C·ℓ_A(M) と次数 [-e,0] で十分とし、二項係数の厳密な公式は必須にしない。
+
+M5b は Lemma 4.2、Prop. 4.3 と (4.2)、Prop. 4.5、Lemma 4.6、Theorem 4.7 を接続する。既存の `Inputs/Descent.lean` は H = A の場合だけであり、4.7 には一般の連結な H に対する Theorem 3.1 の帰結が必要。その入力が未証明なら条件つきの到達と記録し、Theorem 3.1 自体の証明を全体計画の依存として追跡する。
+
+追加課題は K₀(P_A^J) ≃ G_s/g_s の明示計算、可変個数の Koszul 列による生成、および sₙ → ∞ の場合の ℓ∞/c₀ との同定。論文に必要な K₀ の構成・基底変更・群作用・降下は必須範囲に含む。
 
 ## 7. 公理の管理と CI
 
@@ -298,7 +320,7 @@ Verdier 商、冪等完備化、`∏ M_{s_n}(A)` 上の dg 代数、Land–Tamme
 | Koszul 複体の添字 | 複体のテンソル積の対称性・結合性は `up ℤ` にしかない | ℤ 添字で定義する。鎖複体との読み替え補題を一つ用意する |
 | 束の忠実性 | 論文より強い仮定を束に入れてしまう危険 | docstring に出典を必ず書く。Lemma 5.5 の台の条件のように移した部分は一覧を `Inputs/Descent.lean` の冒頭に書く |
 | Mathlib の更新 | master 追従で破壊的変更が入る | manifest で固定。更新は PR 単位 |
-| §4・Theorem 3.1 | 形式化は遠い | 人手の検証を優先。M5 は着手判断を保留 |
+| §4・Theorem 3.1 | 商の t 構造・冪等完備性と dg 代数・降下に追加実装が必要 | Prop. 4.5 は M5 の最小範囲で進め、t 構造の一般論を先に検証する。K₀ の計算は追加課題 |
 
 決定済み（2026-10-07）：
 
@@ -686,3 +708,62 @@ Mathlib には超 Tor スペクトル系列も「正則局所環の大域次元�
 `lemma_3_5a_lam_finite`（3.5a の λ 側の Koszul 有限性、`Descent/NormalizedLength.lean`）だけ。
 `lemma_3_5b_ord`、`lemma_3_5b_lam` にはさらに A1 と 7a の入力（`koszulEulerChar_eq_finrank`、
 可換環論の古典的な定理として当面 `sorry` のまま）が加わる。
+
+## 13. ディレクトリ構成の整理（2026-10-08）
+
+一般論と論文の補題を分けた。
+
+- `HomologicalAlgebra/`：ホモロジー代数の一般論（任意の可換環、またはアーベル圏）。
+- `CommutativeAlgebra/`：可換環論の一般論（局所環、Koszul 複体、長さ）。
+- `PerfectComplex/`：台つき完全複体・`K₀`・正規化長さ・Euler 評価（このプロジェクトの道具の一般論）。
+- `Paper/`：論文の補題（`Lemma3_4`、`Lemma3_5` と `Lemma3_5/A_*`・`B_*`・`C_*`）。
+- `Inputs/`、`Core/`、`Statement.lean`、`EulerChar.lean` はそのまま。
+
+層の依存は `HomologicalAlgebra` ← `CommutativeAlgebra` ← `PerfectComplex` ← `Paper` の向きだけ。
+そのために次を切り出した：`smulId` と `Cone(a • 𝟙 K)` の長完全列（`KoszulExact` から
+`HomologicalAlgebra/ConeSmul`）、`baseChange` とスカラー倍の補題（`Perfect`・`KoszulBaseChange` から
+`HomologicalAlgebra/BaseChange`）、三角形の補題（`Support` から `HomologicalAlgebra/TriangleSmul`）、
+項の自由性（`K0Basic` から `HomologicalAlgebra/FreeTerms`）、剰余体が同じときの長さの比較
+（3.5b の普通の側から `CommutativeAlgebra/LengthComparison`、定理名は `length_eq_of_common_residueField`）。
+
+旧パスには新しいモジュールを再エクスポートするだけの互換用ファイルを置いた（作業中のファイルが
+旧パスを import しているため）。作業中のファイルが移行したら削除する。
+
+| 旧パス | 新パス |
+| --- | --- |
+| `ConeLES.lean` | `HomologicalAlgebra/ConeLES.lean` |
+| `ToChain.lean` | `HomologicalAlgebra/ToChain.lean` |
+| `ResolutionOfCochain.lean` | `HomologicalAlgebra/ResolutionOfCochain.lean` |
+| `ExtendResolution.lean` | `HomologicalAlgebra/ExtendResolution.lean` |
+| `Tor.lean` | `HomologicalAlgebra/Tor.lean` |
+| `TorCochain.lean` | `HomologicalAlgebra/TorCochain.lean` |
+| `Descent/TorLES.lean` | `HomologicalAlgebra/TorLES.lean` |
+| `Descent/ConeResolution.lean` | `HomologicalAlgebra/ConeResolution.lean` |
+| `Descent/TorTorsion.lean` | `HomologicalAlgebra/TorTorsion.lean` |
+| `Descent/Lemma35b/Lift.lean` | `HomologicalAlgebra/KProjectiveLift.lean` |
+| `Descent/Lemma35b/ConeLength.lean` | `HomologicalAlgebra/ConeLength.lean` |
+| `Descent/Lemma35b/Truncate.lean` | `HomologicalAlgebra/Truncate.lean` |
+| `FiniteLength.lean` | `CommutativeAlgebra/FiniteLength.lean` |
+| `Multiplicity.lean` | `CommutativeAlgebra/Multiplicity.lean` |
+| `GeometricFiber.lean` | `CommutativeAlgebra/GeometricFiber.lean` |
+| `Koszul.lean` | `CommutativeAlgebra/Koszul.lean` |
+| `KoszulExact.lean` | `CommutativeAlgebra/KoszulExact.lean` |
+| `KoszulResolution.lean` | `CommutativeAlgebra/KoszulResolution.lean` |
+| `KoszulBaseChange.lean` | `CommutativeAlgebra/KoszulBaseChange.lean` |
+| `TorKoszul.lean` | `CommutativeAlgebra/TorKoszul.lean` |
+| `Perfect.lean` | `PerfectComplex/Basic.lean` |
+| `NormalizedLength.lean` | `PerfectComplex/NormalizedLength.lean` |
+| `K0.lean` | `PerfectComplex/K0.lean` |
+| `Descent/Lemma35b/K0Basic.lean` | `PerfectComplex/K0Basic.lean` |
+| `Descent/Lemma35b/Support.lean` | `PerfectComplex/Support.lean` |
+| `OrdinaryEuler.lean` | `PerfectComplex/OrdinaryEuler.lean` |
+| `NormalizedEuler.lean` | `PerfectComplex/NormalizedEuler.lean` |
+| `Descent/Lemma35b/Generation.lean` | `PerfectComplex/KoszulGeneration.lean` |
+| `Descent/Lemma34Abstract.lean` | `Paper/Lemma3_4/Abstract.lean` |
+| `Descent/Lemma34.lean` | `Paper/Lemma3_4.lean` |
+| `Descent/OrdinaryLength.lean` | `Paper/Lemma3_5/A_Ordinary.lean` |
+| `Descent/NormalizedLength.lean` | `Paper/Lemma3_5/A_Normalized.lean` |
+| `Descent/Lemma35b/Ordinary.lean` | `Paper/Lemma3_5/B_Ordinary.lean` |
+| `Descent/Lemma35b/Normalized.lean` | `Paper/Lemma3_5/B_Normalized.lean` |
+| `Descent/ConjugateSum.lean` | `Paper/Lemma3_5/C_ConjugateSum.lean` |
+| `Descent/Lemma35.lean` | `Paper/Lemma3_5.lean` |

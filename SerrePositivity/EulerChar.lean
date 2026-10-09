@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.Tor
+public import SerrePositivity.HomologicalAlgebra.Tor
 public import Mathlib.Algebra.BigOperators.Finprod
 
 /-!

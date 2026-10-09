@@ -1,10 +1,10 @@
 module
 
-public import SerrePositivity.Descent.Lemma34Abstract
+public import SerrePositivity.Paper.Lemma3_4.Abstract
 public import SerrePositivity.Inputs.RegularLocalRing
-public import SerrePositivity.Koszul
-public import SerrePositivity.Multiplicity
-public import SerrePositivity.NormalizedLength
+public import SerrePositivity.CommutativeAlgebra.Koszul
+public import SerrePositivity.CommutativeAlgebra.Multiplicity
+public import SerrePositivity.PerfectComplex.NormalizedLength
 public import Mathlib.Algebra.CharP.Defs
 public import Mathlib.FieldTheory.Perfect
 public import Mathlib.FieldTheory.Separable

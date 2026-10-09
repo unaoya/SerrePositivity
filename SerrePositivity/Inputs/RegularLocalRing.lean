@@ -4,7 +4,7 @@ public import Mathlib.RingTheory.RegularLocalRing.Defs
 public import Mathlib.RingTheory.Regular.RegularSequence
 public import Mathlib.RingTheory.LocalRing.ResidueField.Basic
 public import Mathlib.RingTheory.Finiteness.Defs
-public import SerrePositivity.Koszul
+public import SerrePositivity.CommutativeAlgebra.Koszul
 public import Mathlib.Basic.Real.Basic
 public import Mathlib.Algebra.Category.ModuleCat.ChangeOfRings
 

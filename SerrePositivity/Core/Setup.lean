@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.EulerChar
-public import SerrePositivity.GeometricFiber
+public import SerrePositivity.CommutativeAlgebra.GeometricFiber
 public import SerrePositivity.Inputs.LengthAlgebra
-public import SerrePositivity.NormalizedLength
+public import SerrePositivity.PerfectComplex.NormalizedLength
 public import Mathlib.Algebra.Ring.Action.Basic
 public import Mathlib.RingTheory.IsGaloisGroup.Basic
 public import Mathlib.RingTheory.LocalRing.MaximalIdeal.Basic
