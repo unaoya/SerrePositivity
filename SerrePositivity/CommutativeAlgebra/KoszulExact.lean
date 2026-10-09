@@ -2,7 +2,6 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.Koszul
 public import SerrePositivity.HomologicalAlgebra.ConeLES
-public import SerrePositivity.HomologicalAlgebra.FreeTerms
 public import Mathlib.Algebra.Homology.HomotopyCategory.HomologicalFunctor
 public import Mathlib.Algebra.Homology.HomotopyCategory.Pretriangulated
 public import Mathlib.Algebra.Homology.HomotopyCategory.ShiftSequence
@@ -23,6 +22,7 @@ public import Mathlib.RingTheory.Regular.RegularSequence
 `H^0(Cone) = H^0(K')/xₙ = R/(x)`。
 
 写像錐の長完全列 `Cone.exact₁₂₃`（`HomologicalAlgebra/ConeLES.lean`）を `φ = smulId a K` に適用する。
+`H^0(K(x)) ≅ R/(x)` には正則性は要らない（`koszulComplex_homology_zero_equiv`）。
 -/
 
 @[expose] public section
@@ -34,18 +34,6 @@ open CategoryTheory Limits Pretriangulated
 namespace SerrePositivity
 
 variable {R : Type u} [CommRing R]
-
-/-! ## Koszul 複体の完全性 -/
-
-lemma koszulComplex_zero (x : Fin 0 → R) :
-    koszulComplex x =
-      (HomologicalComplex.single (ModuleCat.{u} R) (ComplexShape.up ℤ) 0).obj (ModuleCat.of R R) :=
-  rfl
-
-lemma koszulComplex_succ {n : ℕ} (x : Fin (n + 1) → R) :
-    koszulComplex x =
-      CochainComplex.mappingCone (smulId (x (Fin.last n)) (koszulComplex (Fin.init x))) :=
-  rfl
 
 /-- `K(x; R)` が `R/(x)` の分解であること：`H^i = 0 (i ≠ 0)`、`H^0 ≅ R/(x)`。 -/
 structure IsKoszulResolution {n : ℕ} (x : Fin n → R) : Prop where
@@ -83,54 +71,6 @@ lemma isWeaklyRegular_init_and_isSMulRegular_last {n : ℕ} (x : Fin (n + 1) →
     rw [Ideal.smul_eq_mul, Ideal.mul_top, Ideal.ofList, hset]
   rw [h] at hx
   exact hx.2
-
-/-- Koszul 複体は正の次数で零。 -/
-lemma koszulComplex_isZero_X_of_pos :
-    ∀ {n : ℕ} (x : Fin n → R) (i : ℤ), 0 < i → IsZero ((koszulComplex x).X i)
-  | 0, x, i, hi => by
-    rw [koszulComplex_zero]
-    exact HomologicalComplex.isZero_single_obj_X _ _ _ _ (by omega)
-  | n + 1, x, i, hi => by
-    rw [koszulComplex_succ, CochainComplex.mappingCone.isZero_X_iff]
-    exact ⟨koszulComplex_isZero_X_of_pos (Fin.init x) (i + 1) (by omega),
-      koszulComplex_isZero_X_of_pos (Fin.init x) i hi⟩
-
-/-- Koszul 複体は `-n` 次より下で零。 -/
-lemma koszulComplex_isZero_X_of_lt :
-    ∀ {n : ℕ} (x : Fin n → R) (i : ℤ), i < -(n : ℤ) → IsZero ((koszulComplex x).X i)
-  | 0, x, i, hi => by
-    rw [koszulComplex_zero]
-    exact HomologicalComplex.isZero_single_obj_X _ _ _ _ (by omega)
-  | n + 1, x, i, hi => by
-    rw [koszulComplex_succ, CochainComplex.mappingCone.isZero_X_iff]
-    exact ⟨koszulComplex_isZero_X_of_lt (Fin.init x) (i + 1) (by omega),
-      koszulComplex_isZero_X_of_lt (Fin.init x) i (by omega)⟩
-
-/-- Koszul 複体の項は有限自由。 -/
-lemma koszulComplex_free_finite_X :
-    ∀ {n : ℕ} (x : Fin n → R) (i : ℤ),
-      Module.Free R ((koszulComplex x).X i) ∧ Module.Finite R ((koszulComplex x).X i)
-  | 0, x, i => by
-    rw [koszulComplex_zero]
-    by_cases hi : i = 0
-    · subst hi
-      let e := (HomologicalComplex.singleObjXSelf (ComplexShape.up ℤ) 0
-        (ModuleCat.of R R)).toLinearEquiv
-      exact ⟨Module.Free.of_equiv e.symm, Module.Finite.equiv e.symm⟩
-    · have h := HomologicalComplex.isZero_single_obj_X (ComplexShape.up ℤ) 0
-        (ModuleCat.of R R) i hi
-      exact ⟨isZero_moduleCat_free h, isZero_moduleCat_finite h⟩
-  | n + 1, x, i => by
-    rw [koszulComplex_succ]
-    obtain ⟨h1, h2⟩ := koszulComplex_free_finite_X (Fin.init x) (i + 1)
-    obtain ⟨h3, h4⟩ := koszulComplex_free_finite_X (Fin.init x) i
-    exact mappingCone_free_finite _ i
-
-/-- Koszul 複体のホモロジーは正の次数で零。 -/
-lemma koszulComplex_isZero_homology_of_pos {n : ℕ} (x : Fin n → R) (i : ℤ) (hi : 0 < i) :
-    IsZero ((koszulComplex x).homology i) :=
-  (HomologicalComplex.exactAt_iff_isZero_homology _ _).mp
-    (ShortComplex.exact_of_isZero_X₂ _ (koszulComplex_isZero_X_of_pos x i hi))
 
 /-- 帰納段の `0` 次：`H^1(K') = 0` と `H^0(K') ≃ R/I` から `H^0(Cone(a • 𝟙 K')) ≃ R/(I, a)`。
 正則性は要らない。 -/

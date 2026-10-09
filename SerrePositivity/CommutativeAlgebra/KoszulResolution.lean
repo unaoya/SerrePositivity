@@ -26,25 +26,6 @@ namespace SerrePositivity
 
 variable {R : Type u} [CommRing R]
 
-/-- Koszul 複体の各項は射影的（有限自由加群の直和）。 -/
-lemma koszulComplex_projective_X :
-    ∀ {n : ℕ} (x : Fin n → R) (i : ℤ), Projective ((koszulComplex x).X i)
-  | 0, x, i => by
-    rw [koszulComplex_zero]
-    by_cases hi : i = 0
-    · subst hi
-      exact Projective.of_iso
-        (HomologicalComplex.singleObjXSelf (ComplexShape.up ℤ) 0 (ModuleCat.of R R)).symm
-        inferInstance
-    · exact (HomologicalComplex.isZero_single_obj_X _ _ _ _ hi).projective
-  | n + 1, x, i => by
-    rw [koszulComplex_succ]
-    have := koszulComplex_projective_X (Fin.init x) (i + 1)
-    have := koszulComplex_projective_X (Fin.init x) i
-    exact Projective.of_iso
-      (HomologicalComplex.homotopyCofiber.XIsoBiprod
-        (smulId (x (Fin.last n)) (koszulComplex (Fin.init x))) i (i + 1) rfl).symm inferInstance
-
 /-! ## 添加写像 -/
 
 section augmentation

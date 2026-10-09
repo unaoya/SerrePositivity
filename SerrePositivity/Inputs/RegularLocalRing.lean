@@ -38,16 +38,9 @@ theorem exists_pow_maximalIdeal_le_map (A T : Type u) [CommRing A] [IsLocalRing 
     ∃ N : ℕ, (maximalIdeal T) ^ N ≤ (maximalIdeal A).map (algebraMap A T) := by
   sorry
 
-/-- `K(z; T) = K(z) ⊗_A T` の Euler 標数を `A` 上の長さで測ったもの
-`χ^A(z; T) = Σ_i (-1)^i length_A H_i(z; T)`。`K(z; T)` は `T` の元 `z` の像の Koszul 複体で、
-各ホモロジーを係数制限で `A` 加群とみる。 -/
-noncomputable def koszulEulerChar (A T : Type u) [CommRing A] [CommRing T] [Algebra A T] {e : ℕ}
-    (z : Fin e → A) : ℝ :=
-  ∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * ((Module.length A ((ModuleCat.restrictScalars
-    (algebraMap A T)).obj ((koszulComplex (algebraMap A T ∘ z)).homology i))).toNat : ℝ)
-
 /-- **Koszul Euler 標数 = 生成ランク**（層 3a、未証明）。正則局所環 `A` の正則パラメータ系 `z` と
-`A` 上有限な代数 `T` について `χ^A(z; T) = rank_A T`。
+`A` 上有限な代数 `T` について `χ^A(z; T) = rank_A T`（`koszulEulerChar` は
+`CommutativeAlgebra/Koszul.lean`）。
 Serre の定理 `χ(z; M) = e(z; M)` と `e(z; M) = rank_A M · e(z; A)`、`e(z; A) = 1` による。
 論文 (3.14) では `T` の有限自由 `A` 分解の交代ランクとして計算している。 -/
 theorem koszulEulerChar_eq_finrank (A T : Type u) [CommRing A] [IsRegularLocalRing A] [CommRing T]
