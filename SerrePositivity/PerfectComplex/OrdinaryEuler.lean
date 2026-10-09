@@ -76,23 +76,6 @@ lemma homology_moduleFinite (P : CochainComplex (ModuleCat.{u} T) ℤ) (i : ℤ)
     infer_instance
   exact Module.Finite.equiv S.moduleCatHomologyIso.toLinearEquiv.symm
 
-omit [IsNoetherianRing T] in
-/-- Null-homotopic powers of the support generators annihilate homology. -/
-lemma IsSupported.le_radical_annihilator {e : ℕ} {w : Fin e → T}
-    {P : CochainComplex (ModuleCat.{u} T) ℤ} (hP : IsSupported w P) (i : ℤ) :
-    Ideal.span (Set.range w) ≤ (Module.annihilator T (P.homology i)).radical := by
-  obtain ⟨v, hv⟩ := hP
-  apply Ideal.span_le.mpr
-  rintro _ ⟨j, rfl⟩
-  refine ⟨v, ?_⟩
-  obtain ⟨H⟩ := hv j
-  have h := H.homologyMap_eq i
-  rw [homologyMap_smul, HomologicalComplex.homologyMap_id,
-    HomologicalComplex.homologyMap_zero] at h
-  rw [Module.mem_annihilator]
-  intro x
-  exact congrArg (fun f : P.homology i ⟶ P.homology i ↦ f.hom x) h
-
 /-- Supported perfect complexes have finite-length homology whenever the
 quotient by the support ideal is Artinian. -/
 theorem homology_finiteLength_of_isPerfectSupported {e : ℕ} {w : Fin e → T}
@@ -141,14 +124,5 @@ noncomputable def chiOrdHom {e : ℕ} (w : Fin e → T)
 lemma chiOrdHom_mk {e : ℕ} (w : Fin e → T)
     [IsArtinianRing (T ⧸ Ideal.span (Set.range w))] (P : PerfSupp T w) :
     chiOrdHom w (K0.mk P) = chiOrd P.1 := K0.lift_mk _ _ _ _
-
-/-- The finite-length and homomorphism assertions for ordinary Euler evaluation,
-in a setting independent of the paper's normalization base. -/
-theorem ordinary_euler_of_artinian_quotient {e : ℕ} (w : Fin e → T)
-    [IsArtinianRing (T ⧸ Ideal.span (Set.range w))] :
-    (∀ (P : PerfSupp T w) (i : ℤ), Module.length T (P.1.homology i) ≠ ⊤) ∧
-      (∃ χ : K0Supported T w →+ ℝ, ∀ P, χ (K0.mk P) = chiOrd P.1) :=
-  ⟨fun P i ↦ Module.length_ne_top_iff.mpr (homology_finiteLength_of_isPerfectSupported P.2 i),
-    chiOrdHom w, chiOrdHom_mk w⟩
 
 end SerrePositivity

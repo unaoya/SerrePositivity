@@ -52,6 +52,7 @@ theorem lemma_3_5a_ord (A T : Type u)
         ∀ P, χ (K0.mk P) = chiOrd P.1) := by
   have : IsNoetherianRing T := IsNoetherianRing.of_finite A T
   have := isArtinianRing_quotient_span_of_finite A T z hz
-  exact ordinary_euler_of_artinian_quotient (algebraMap A T ∘ z)
+  exact ⟨fun P i ↦ Module.length_ne_top_iff.mpr (homology_finiteLength_of_isPerfectSupported P.2 i),
+    chiOrdHom _, chiOrdHom_mk _⟩
 
 end SerrePositivity

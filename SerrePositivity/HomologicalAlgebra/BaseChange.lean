@@ -31,6 +31,13 @@ noncomputable abbrev baseChange (φ : T →+* C) (P : CochainComplex (ModuleCat.
     CochainComplex (ModuleCat.{u} C) ℤ :=
   ((ModuleCat.extendScalars.{u, u, u} φ).mapHomologicalComplex _).obj P
 
+/-- 係数拡大は複体の有界性を保つ。 -/
+lemma baseChange_bounded (φ : T →+* C) (P : CochainComplex (ModuleCat.{u} T) ℤ)
+    (hP : ∃ a b : ℤ, ∀ i, (i < a ∨ b < i) → IsZero (P.X i)) :
+    ∃ a b : ℤ, ∀ i, (i < a ∨ b < i) → IsZero ((baseChange φ P).X i) := by
+  obtain ⟨a, b, hab⟩ := hP
+  exact ⟨a, b, fun i hi ↦ (ModuleCat.extendScalars φ).map_isZero (hab i hi)⟩
+
 end
 
 variable {A C : Type u} [CommRing A] [CommRing C] (φ : A →+* C)

@@ -3,6 +3,7 @@ module
 public import SerrePositivity.CommutativeAlgebra.Koszul
 public import SerrePositivity.HomologicalAlgebra.TriangleSmul
 public import SerrePositivity.PerfectComplex.Basic
+public import Mathlib.RingTheory.Ideal.Maps
 
 /-!
 # 台の条件をホモトピー圏で扱う
@@ -10,6 +11,7 @@ public import SerrePositivity.PerfectComplex.Basic
 台の条件 `IsSupported z P`（`z_j^v • 𝟙 P` が零ホモトピック）を、ホモトピー圏 `K(A)` での等式
 `z_j^v • 𝟙 = 0` に言い換え、ホモトピー同値・シフト・写像錐で保たれることを示す。
 Koszul 複体 `K(x)` は `x` に台をもつ。一般的な部分は `HomologicalAlgebra/TriangleSmul.lean`。
+台をもつ複体のホモロジーは `z` の冪で消える（`IsSupported.le_radical_annihilator`）。
 -/
 
 @[expose] public section
@@ -83,6 +85,24 @@ lemma IsSupported.mappingCone {e : ℕ} {z : Fin e → R} (f : X ⟶ Y) (hX : Is
     (pow_smul_id_eq_zero_of_le (hw j) le_sup_right)
 
 end cone
+
+/-! ## ホモロジーの零化 -/
+
+/-- 零ホモトピックな `z_j^v • 𝟙` はホモロジーを零化する：`(z) ≤ √(Ann H^i(P))`。 -/
+lemma IsSupported.le_radical_annihilator {e : ℕ} {w : Fin e → R}
+    {P : CochainComplex (ModuleCat.{u} R) ℤ} (hP : IsSupported w P) (i : ℤ) :
+    Ideal.span (Set.range w) ≤ (Module.annihilator R (P.homology i)).radical := by
+  obtain ⟨v, hv⟩ := hP
+  apply Ideal.span_le.mpr
+  rintro _ ⟨j, rfl⟩
+  refine ⟨v, ?_⟩
+  obtain ⟨H⟩ := hv j
+  have h := H.homologyMap_eq i
+  rw [homologyMap_smul, HomologicalComplex.homologyMap_id,
+    HomologicalComplex.homologyMap_zero] at h
+  rw [Module.mem_annihilator]
+  intro x
+  exact congrArg (fun f : P.homology i ⟶ P.homology i ↦ f.hom x) h
 
 /-! ## Koszul 複体の台 -/
 
