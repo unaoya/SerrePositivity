@@ -882,3 +882,57 @@ Mathlib には超 Tor スペクトル系列も「正則局所環の大域次元�
 
 `torAlg_longExact` の `∃ α β δ, …` の形は残した。利用者（Lemma 3.4 の抽象形）は長完全列の存在だけを使い、
 射の具体形には依存しないため、梱包を解く利点がない。
+
+## 16. `CommutativeAlgebra/` のリファクタ（2026-10-09）
+
+§14・§15 と同じ方針。`CommutativeAlgebra/` の内部には重複がほとんどなく、主な作業は
+`Inputs/`・`IntersectionMultiplicity/` に散っていた一般論の引き上げだった。
+
+### 16.1 Koszul 複体の定義ファイルへの集約
+
+`koszulComplex_zero/succ`、`koszulComplex_isZero_X_of_pos/lt`、`koszulComplex_free_finite_X`、
+`koszulComplex_isZero_homology_of_pos`（KoszulExact から）と `koszulComplex_projective_X`
+（KoszulResolution から。`projective_of_free (koszulComplex_free_finite_X x i).1` の 1 行に簡略化）を
+`Koszul.lean` に集めた。KoszulExact は完全性だけ、KoszulResolution は分解だけになった。
+`koszulEulerChar` は定義であって入力ではないので、`Inputs/RegularLocalRing.lean` から `Koszul.lean` へ移した。
+どこからも使われていない `koszulComplexCoeff`・`koszulHomology` は削除した
+（係数つき Koszul ホモロジーは `koszulHomologySelf (φ ∘ z)` で書く）。
+
+### 16.2 `sorry` の入力の置き換え
+
+`Inputs/RegularLocalRing.lean` の `exists_pow_maximalIdeal_le_map`（`sorry`）と同じ主張が、Lemma 5.2 の
+作業で `IntersectionMultiplicity/LocalAlgebra.lean` に `maximalIdeal_pow_le_map_of_finite` として
+証明されていた。後者を `CommutativeAlgebra/LocalAlgebra.lean`（新規）に移し、前者を削除して
+`Paper/Lemma3_4.lean` と `Inputs/LengthAlgebra.lean` の利用箇所を置き換えた。`sorry` は 8 → 7。
+
+### 16.3 `IntersectionMultiplicity/` からの引き上げ
+
+| 移したもの | 移動先 |
+| --- | --- |
+| `quotient_action_annihilator`、`annihilator_le_quotient`、`residueFieldEquiv_of_surjective`、`maximalIdeal_pow_le_map_of_finite` | `CommutativeAlgebra/LocalAlgebra.lean` |
+| `finiteLength_of_restrictScalars`、`length_eq_of_semilinear_bijective`、`length_restrictScalars_equiv` | `CommutativeAlgebra/LengthComparison.lean` |
+| `chiOrd_restrictScalars_equiv`、`chiOrd_twist` | `PerfectComplex/OrdinaryEuler.lean` |
+
+`IntersectionMultiplicity/LocalAlgebra.lean`・`LengthComparison.lean`・`TwistEvaluation.lean` は廃止。
+`length_restrictScalars_eq_of_residue_surjective` は `length_restrictScalars_eq` の薄い包み（有限長の仮定が未使用）
+だったので削除し、その結果 `chiOrd_baseChange_resolution` から `λ(T ⊗ M) < ∞` の仮定が不要になった。
+`IntersectionMultiplicity/` に残るのは Lemma 5.2 固有の `FiniteExtension`・`OrdinaryEvaluation`・
+`ResolutionEvaluation` の 3 ファイル。
+
+### 16.4 `CommutativeAlgebra/` の構成
+
+| ファイル | 内容 |
+| --- | --- |
+| `PowTorsion.lean` | イデアルの冪で消える加群 |
+| `FiniteLength.lean` | 有限長（Noether 環上、局所環上、`m` を生成する列） |
+| `LocalAlgebra.lean` | 局所環上の有限代数（零化イデアル、剰余体の同型、`m_T^n ≤ m_R T`） |
+| `LengthComparison.lean` | 剰余体が同じときの長さ、係数制限・半線形同型と長さ |
+| `Multiplicity.lean` | パラメータ系、Hilbert–Samuel 重複度 |
+| `GeometricFiber.lean` | 幾何ファイバーでの推移性 |
+| `Koszul.lean` | Koszul 複体の定義、項の性質、`koszulEulerChar` |
+| `KoszulExact.lean` | 正則列の Koszul 複体の完全性 |
+| `KoszulResolution.lean` | Koszul 複体を射影分解に、添加写像 |
+| `KoszulBaseChange.lean` | 基底変更との両立 |
+| `TorKoszul.lean` | `Tor` と Koszul ホモロジー |
+| `HomologyLength.lean` | ホモロジーの長さの総和（デヴィサージュ） |
+| `Truncate.lean` | 最上段の切り詰め |
