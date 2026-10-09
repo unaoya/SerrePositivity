@@ -11,7 +11,10 @@ public import Mathlib.Algebra.Homology.SingleHomology
   鎖写像 `L → M[0]`。`H^0` で `ε` を誘導する。
 - `exists_lift_of_quasiIso`：K 射影的な複体 `Q` からの鎖写像は、擬同型 `s : X → Y` に沿って
   ホモトピーを除いて持ち上がる。Mathlib の `CochainComplex.IsKProjective.Qh_map_bijective` による。
-- Koszul 複体の添加写像 `K(z) → (A/(z))[0]` は（`K(z)` が分解なら）擬同型。
+
+Koszul 複体の添加写像 `K(z) → (A/(z))[0]` が擬同型であることは
+`CommutativeAlgebra/KoszulResolution.lean`、それを使ったデヴィサージュは
+`PerfectComplex/KoszulGeneration.lean`。
 -/
 
 @[expose] public section

@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.HomologicalAlgebra.BaseChange
 public import Mathlib.Algebra.Category.ModuleCat.Abelian
 public import Mathlib.Algebra.Category.ModuleCat.ChangeOfRings
 public import Mathlib.Algebra.Category.ModuleCat.Monoidal.Basic
@@ -44,10 +45,6 @@ end SerrePositivity
 namespace SerrePositivity
 
 variable {R : Type u} [CommRing R]
-
-/-- 係数拡大関手は（係数制限関手の左随伴なので）加法的。左導来関手をとるのに要る。 -/
-instance {C : Type u} [CommRing C] (φ : R →+* C) : (ModuleCat.extendScalars.{u, u, u} φ).Additive :=
-  (ModuleCat.extendRestrictScalarsAdj φ).left_adjoint_additive
 
 /-- `R` 代数 `C`（構造は環準同型 `φ : R →+* C` で与える）と `R` 加群 `N` に対する
 `Tor_i^R(C, N)` を、係数拡大関手 `N ↦ C ⊗_R N : ModuleCat R ⥤ ModuleCat C` の

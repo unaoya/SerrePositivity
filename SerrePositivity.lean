@@ -16,8 +16,6 @@ public import SerrePositivity.HomologicalAlgebra.ConeResolution
 public import SerrePositivity.HomologicalAlgebra.TorLES
 public import SerrePositivity.HomologicalAlgebra.TorTorsion
 public import SerrePositivity.HomologicalAlgebra.KProjectiveLift
-public import SerrePositivity.HomologicalAlgebra.ConeLength
-public import SerrePositivity.HomologicalAlgebra.Truncate
 public import SerrePositivity.CommutativeAlgebra.PowTorsion
 public import SerrePositivity.CommutativeAlgebra.FiniteLength
 public import SerrePositivity.CommutativeAlgebra.LengthComparison
@@ -28,6 +26,8 @@ public import SerrePositivity.CommutativeAlgebra.KoszulExact
 public import SerrePositivity.CommutativeAlgebra.KoszulResolution
 public import SerrePositivity.CommutativeAlgebra.KoszulBaseChange
 public import SerrePositivity.CommutativeAlgebra.TorKoszul
+public import SerrePositivity.CommutativeAlgebra.HomologyLength
+public import SerrePositivity.CommutativeAlgebra.Truncate
 public import SerrePositivity.PerfectComplex.NormalizedLength
 public import SerrePositivity.PerfectComplex.Basic
 public import SerrePositivity.PerfectComplex.Support

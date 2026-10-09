@@ -23,12 +23,6 @@ namespace SerrePositivity
 
 variable {A C : Type u} [CommRing A] [CommRing C] (φ : A →+* C)
 
-/-- 基底変更した複体も正の次数で零。 -/
-lemma baseChange_isZero_X_of_pos (K : CochainComplex (ModuleCat.{u} A) ℤ)
-    (hK : ∀ i : ℤ, 0 < i → IsZero (K.X i)) (i : ℤ) (hi : 0 < i) :
-    IsZero ((baseChange φ K).X i) :=
-  (ModuleCat.extendScalars.{u, u, u} φ).map_isZero (hK i hi)
-
 /-- **`Tor` と cochain 分解**：`Tor_i^A(Z, C) ≅ H^{-i}(C ⊗_A K)`。 -/
 noncomputable def torIsoCochain {Z : Type u} [AddCommGroup Z] [Module A Z]
     {K : CochainComplex (ModuleCat.{u} A) ℤ} (h : IsResolutionOf K (ModuleCat.of A Z)) (i : ℕ) :

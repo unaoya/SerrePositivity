@@ -1,6 +1,5 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.ConeLength
 public import SerrePositivity.HomologicalAlgebra.KProjectiveLift
 public import SerrePositivity.HomologicalAlgebra.FreeTerms
 public import Mathlib.Algebra.Homology.Embedding.CochainComplex

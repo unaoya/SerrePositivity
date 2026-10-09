@@ -1,15 +1,17 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.Basic
-public import SerrePositivity.HomologicalAlgebra.Tor
 public import Mathlib.Algebra.Category.ModuleCat.ChangeOfRings
+public import Mathlib.CategoryTheory.Adjunction.Additive
 public import Mathlib.Algebra.Homology.Additive
 public import Mathlib.LinearAlgebra.TensorProduct.Tower
 
 /-!
 # 複体の係数拡大
 
+- 係数拡大関手 `ModuleCat.extendScalars φ` は加法的（複体に施すため、また左導来関手をとるために要る）。
 - `baseChange φ P = P ⊗_T C`：環準同型 `φ : T →+* C` に沿った係数拡大を、各項に施したもの。
+  有界性・正の次数での零を保つ。
 - 係数拡大はスカラー倍を `φ` 倍に送る（`extendScalars_map_smul` など）。
 -/
 
@@ -26,6 +28,10 @@ section
 
 variable {T C : Type u} [CommRing T] [CommRing C]
 
+/-- 係数拡大関手は（係数制限関手の左随伴なので）加法的。 -/
+instance (φ : T →+* C) : (ModuleCat.extendScalars.{u, u, u} φ).Additive :=
+  (ModuleCat.extendRestrictScalarsAdj φ).left_adjoint_additive
+
 /-- 係数拡大 `P ⊗_T C`（`φ : T →+* C` に沿って）。 -/
 noncomputable abbrev baseChange (φ : T →+* C) (P : CochainComplex (ModuleCat.{u} T) ℤ) :
     CochainComplex (ModuleCat.{u} C) ℤ :=
@@ -37,6 +43,12 @@ lemma baseChange_bounded (φ : T →+* C) (P : CochainComplex (ModuleCat.{u} T) 
     ∃ a b : ℤ, ∀ i, (i < a ∨ b < i) → IsZero ((baseChange φ P).X i) := by
   obtain ⟨a, b, hab⟩ := hP
   exact ⟨a, b, fun i hi ↦ (ModuleCat.extendScalars φ).map_isZero (hab i hi)⟩
+
+/-- 基底変更した複体も正の次数で零。 -/
+lemma baseChange_isZero_X_of_pos (φ : T →+* C) (K : CochainComplex (ModuleCat.{u} T) ℤ)
+    (hK : ∀ i : ℤ, 0 < i → IsZero (K.X i)) (i : ℤ) (hi : 0 < i) :
+    IsZero ((baseChange φ K).X i) :=
+  (ModuleCat.extendScalars.{u, u, u} φ).map_isZero (hK i hi)
 
 end
 
