@@ -18,6 +18,7 @@ public import SerrePositivity.HomologicalAlgebra.TorTorsion
 public import SerrePositivity.HomologicalAlgebra.KProjectiveLift
 public import SerrePositivity.HomologicalAlgebra.ConeLength
 public import SerrePositivity.HomologicalAlgebra.Truncate
+public import SerrePositivity.CommutativeAlgebra.PowTorsion
 public import SerrePositivity.CommutativeAlgebra.FiniteLength
 public import SerrePositivity.CommutativeAlgebra.LengthComparison
 public import SerrePositivity.CommutativeAlgebra.Multiplicity

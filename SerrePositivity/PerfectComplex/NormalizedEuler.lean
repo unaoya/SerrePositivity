@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.ConeLES
+public import SerrePositivity.HomologicalAlgebra.Tor
 public import SerrePositivity.PerfectComplex.Support
 public import SerrePositivity.PerfectComplex.K0
 public import Mathlib.Basic.ENNReal.Real
@@ -41,6 +42,14 @@ variable {C : Type u} [CommRing C] {J : Ideal C} (lam : NormalizedLength C J)
 /-- Euler evaluation of a coefficient-ring complex by the abstract length. -/
 noncomputable def lambdaEuler (P : CochainComplex (ModuleCat.{u} C) ℤ) : ℝ :=
   ∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * (lam.len (P.homology i)).toReal
+
+/-- 正規化長さ `λ` による Euler 標数 `Σ_i (-1)^i λ(Tor_i^R(C, N))`。
+`C` の `R` 代数構造は `φ : R →+* C` で与える。無限の長さは `ENNReal.toReal` で `0` になる。
+論文 (5.2) の `c_σ` は `φ = ι_σ`、`N = E'` の場合。`lambdaEuler` との関係は
+`IntersectionMultiplicity/ResolutionEvaluation.lean`。 -/
+noncomputable def lambdaChi {R : Type u} [CommRing R] (φ : R →+* C)
+    (N : Type u) [AddCommGroup N] [Module R N] : ℝ :=
+  ∑ᶠ i : ℕ, (-1 : ℝ) ^ i * (lam.len (TorAlg φ i N)).toReal
 
 /-- Exactness expresses the length of the middle term as the sum of image lengths. -/
 lemma lambdaLengthReal_eq_add_range {M N L : Type u} [AddCommGroup M] [Module C M]

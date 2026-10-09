@@ -1,0 +1,84 @@
+module
+
+public import Mathlib.Algebra.Module.Torsion.Basic
+public import Mathlib.RingTheory.Ideal.Maps
+
+/-!
+# イデアルの冪で消える加群
+
+`IsPowTorsion J M`：`M` がイデアル `J` のある冪で消えること。正規化長さ
+（`PerfectComplex/NormalizedLength.lean`）の定義域を与える条件で、単射・全射・同型・部分加群・商で
+保たれる。`J = ⊥` ならどの加群も条件をみたす（`IsPowTorsion.bot`）。
+
+`IsPowTorsion.of_pow_le`：`J^N ≤ I T` なら `I C` 冪ねじれは `J C` 冪ねじれ
+（正規化長さの定義域のイデアルの取り替え `NormalizedLength.restrict` に使う）。
+-/
+
+@[expose] public section
+
+universe u
+
+namespace SerrePositivity
+
+/-- `M` が `J` の冪で消えること。 -/
+abbrev IsPowTorsion {C : Type u} [CommRing C] (J : Ideal C) (M : Type u) [AddCommGroup M]
+    [Module C M] : Prop :=
+  ∃ n : ℕ, Module.IsTorsionBySet C M (J ^ n : Ideal C)
+
+namespace IsPowTorsion
+
+variable {C : Type u} [CommRing C] {J : Ideal C} {M N : Type u} [AddCommGroup M] [Module C M]
+  [AddCommGroup N] [Module C N]
+
+lemma of_injective (f : M →ₗ[C] N) (hf : Function.Injective f) (hN : IsPowTorsion J N) :
+    IsPowTorsion J M := by
+  obtain ⟨n, hn⟩ := hN
+  refine ⟨n, ?_⟩
+  rw [Module.isTorsionBySet_iff_subset_annihilator] at hn ⊢
+  exact hn.trans (f.annihilator_le_of_injective hf)
+
+lemma of_surjective (f : M →ₗ[C] N) (hf : Function.Surjective f) (hM : IsPowTorsion J M) :
+    IsPowTorsion J N := by
+  obtain ⟨n, hn⟩ := hM
+  refine ⟨n, ?_⟩
+  rw [Module.isTorsionBySet_iff_subset_annihilator] at hn ⊢
+  exact hn.trans (f.annihilator_le_of_surjective hf)
+
+lemma of_equiv (e : M ≃ₗ[C] N) (hM : IsPowTorsion J M) : IsPowTorsion J N :=
+  of_surjective e.toLinearMap e.surjective hM
+
+lemma submodule (hM : IsPowTorsion J M) (N : Submodule C M) : IsPowTorsion J N :=
+  of_injective N.subtype N.injective_subtype hM
+
+lemma quotient (hM : IsPowTorsion J M) (N : Submodule C M) : IsPowTorsion J (M ⧸ N) :=
+  of_surjective N.mkQ N.mkQ_surjective hM
+
+lemma of_subsingleton [Subsingleton M] : IsPowTorsion J M :=
+  ⟨0, fun _ _ ↦ Subsingleton.elim _ _⟩
+
+/-- `J = ⊥` の冪ねじれは自明：どの加群も `⊥` 冪ねじれ。通常の長さを正規化長さ
+`NormalizedLength.ordinary` として扱うときに、ねじれの仮定を満たすのに使う。 -/
+lemma bot : IsPowTorsion (⊥ : Ideal C) M :=
+  ⟨1, fun _ a ↦ by
+    have ha : (a : C) = 0 := by simpa using a.2
+    rw [ha, zero_smul]⟩
+
+end IsPowTorsion
+
+/-- `J^N ≤ I T` なら、`I C` 冪ねじれは `J C` 冪ねじれ。 -/
+lemma IsPowTorsion.of_pow_le {A T C : Type u} [CommRing A] [CommRing T] [CommRing C]
+    [Algebra A T] [Algebra T C] [Algebra A C] [IsScalarTower A T C] {I : Ideal A} {J : Ideal T}
+    (hN : ∃ N : ℕ, J ^ N ≤ I.map (algebraMap A T)) (M : Type u) [AddCommGroup M] [Module C M]
+    (hM : IsPowTorsion (I.map (algebraMap A C)) M) : IsPowTorsion (J.map (algebraMap T C)) M := by
+  obtain ⟨N, hN⟩ := hN
+  obtain ⟨n, hn⟩ := hM
+  refine ⟨N * n, ?_⟩
+  rw [Module.isTorsionBySet_iff_subset_annihilator] at hn ⊢
+  refine Set.Subset.trans ?_ hn
+  rw [SetLike.coe_subset_coe, pow_mul, ← Ideal.map_pow]
+  refine Ideal.pow_right_mono ?_ n
+  calc (J ^ N).map (algebraMap T C) ≤ (I.map (algebraMap A T)).map (algebraMap T C) :=
+        Ideal.map_mono hN
+    _ = I.map (algebraMap A C) := by rw [Ideal.map_map, ← IsScalarTower.algebraMap_eq]
+
+end SerrePositivity

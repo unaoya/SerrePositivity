@@ -2,15 +2,18 @@ module
 
 public import Mathlib.Algebra.Category.ModuleCat.Biproducts
 public import Mathlib.Algebra.Homology.HomotopyCategory.MappingCone
+public import Mathlib.Algebra.Homology.ShortComplex.ModuleCat
 public import Mathlib.LinearAlgebra.FreeModule.Basic
 public import Mathlib.LinearAlgebra.Basis.Prod
 public import Mathlib.RingTheory.Finiteness.Basic
 public import Mathlib.RingTheory.Finiteness.Prod
+public import Mathlib.RingTheory.Noetherian.Basic
 
 /-!
 # 複体の項の自由性・有限性
 
 零加群・biproduct・写像錐の項が有限自由であること、各項が零な複体は零であること。
+Noether 環上では、各項が有限生成な複体のホモロジーも有限生成（`homology_moduleFinite`）。
 -/
 
 @[expose] public section
@@ -53,5 +56,15 @@ lemma mappingCone_free_finite {X Y : CochainComplex (ModuleCat.{u} R) ℤ} (f : 
   let e := (HomologicalComplex.homotopyCofiber.XIsoBiprod f i (i + 1) rfl).toLinearEquiv
   obtain ⟨h1, h2⟩ := free_finite_biprod (X.X (i + 1)) (Y.X i)
   exact ⟨Module.Free.of_equiv e.symm, Module.Finite.equiv e.symm⟩
+
+/-- Noether 環上、各項が有限生成な複体のホモロジーは有限生成。 -/
+lemma homology_moduleFinite [IsNoetherianRing R] (P : CochainComplex (ModuleCat.{u} R) ℤ) (i : ℤ)
+    [Module.Finite R (P.X i)] : Module.Finite R (P.homology i) := by
+  let S := P.sc i
+  have : Module.Finite R S.X₂ := inferInstanceAs (Module.Finite R (P.X i))
+  have : Module.Finite R S.moduleCatLeftHomologyData.H := by
+    change Module.Finite R (LinearMap.ker S.g.hom ⧸ LinearMap.range S.moduleCatToCycles)
+    infer_instance
+  exact Module.Finite.equiv S.moduleCatHomologyIso.toLinearEquiv.symm
 
 end SerrePositivity

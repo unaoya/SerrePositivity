@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.Koszul
 public import SerrePositivity.HomologicalAlgebra.ConeSmul
+public import SerrePositivity.HomologicalAlgebra.FreeTerms
 public import Mathlib.Algebra.Homology.HomotopyCategory.HomologicalFunctor
 public import Mathlib.Algebra.Homology.HomotopyCategory.Pretriangulated
 public import Mathlib.Algebra.Homology.HomotopyCategory.ShiftSequence
@@ -93,6 +94,37 @@ lemma koszulComplex_isZero_X_of_pos :
     rw [koszulComplex_succ, CochainComplex.mappingCone.isZero_X_iff]
     exact ⟨koszulComplex_isZero_X_of_pos (Fin.init x) (i + 1) (by omega),
       koszulComplex_isZero_X_of_pos (Fin.init x) i hi⟩
+
+/-- Koszul 複体は `-n` 次より下で零。 -/
+lemma koszulComplex_isZero_X_of_lt :
+    ∀ {n : ℕ} (x : Fin n → R) (i : ℤ), i < -(n : ℤ) → IsZero ((koszulComplex x).X i)
+  | 0, x, i, hi => by
+    rw [koszulComplex_zero]
+    exact HomologicalComplex.isZero_single_obj_X _ _ _ _ (by omega)
+  | n + 1, x, i, hi => by
+    rw [koszulComplex_succ, CochainComplex.mappingCone.isZero_X_iff]
+    exact ⟨koszulComplex_isZero_X_of_lt (Fin.init x) (i + 1) (by omega),
+      koszulComplex_isZero_X_of_lt (Fin.init x) i (by omega)⟩
+
+/-- Koszul 複体の項は有限自由。 -/
+lemma koszulComplex_free_finite_X :
+    ∀ {n : ℕ} (x : Fin n → R) (i : ℤ),
+      Module.Free R ((koszulComplex x).X i) ∧ Module.Finite R ((koszulComplex x).X i)
+  | 0, x, i => by
+    rw [koszulComplex_zero]
+    by_cases hi : i = 0
+    · subst hi
+      let e := (HomologicalComplex.singleObjXSelf (ComplexShape.up ℤ) 0
+        (ModuleCat.of R R)).toLinearEquiv
+      exact ⟨Module.Free.of_equiv e.symm, Module.Finite.equiv e.symm⟩
+    · have h := HomologicalComplex.isZero_single_obj_X (ComplexShape.up ℤ) 0
+        (ModuleCat.of R R) i hi
+      exact ⟨isZero_moduleCat_free h, isZero_moduleCat_finite h⟩
+  | n + 1, x, i => by
+    rw [koszulComplex_succ]
+    obtain ⟨h1, h2⟩ := koszulComplex_free_finite_X (Fin.init x) (i + 1)
+    obtain ⟨h3, h4⟩ := koszulComplex_free_finite_X (Fin.init x) i
+    exact mappingCone_free_finite _ i
 
 /-- Koszul 複体のホモロジーは正の次数で零。 -/
 lemma koszulComplex_isZero_homology_of_pos {n : ℕ} (x : Fin n → R) (i : ℤ) (hi : 0 < i) :

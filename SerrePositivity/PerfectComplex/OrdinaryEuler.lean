@@ -1,11 +1,9 @@
 module
 
+public import SerrePositivity.CommutativeAlgebra.FiniteLength
+public import SerrePositivity.HomologicalAlgebra.FreeTerms
 public import SerrePositivity.PerfectComplex.NormalizedEuler
 public import SerrePositivity.PerfectComplex.K0
-public import Mathlib.RingTheory.HopkinsLevitzki
-public import Mathlib.RingTheory.KrullDimension.Zero
-public import Mathlib.RingTheory.LocalRing.Quotient
-public import Mathlib.RingTheory.Noetherian.Basic
 
 /-!
 # Ordinary Euler evaluation on supported perfect complexes
@@ -29,52 +27,6 @@ open CategoryTheory Limits
 namespace SerrePositivity
 
 variable {T : Type u} [CommRing T] [IsNoetherianRing T]
-
-/-- An Artinian quotient remains Artinian when the defining ideal is replaced
-by an ideal whose radical contains the original ideal. -/
-lemma isArtinianRing_quotient_of_le_radical (I J : Ideal T)
-    [IsArtinianRing (T ⧸ I)] (hIJ : I ≤ J.radical) : IsArtinianRing (T ⧸ J) := by
-  have : IsNoetherianRing (T ⧸ J) :=
-    isNoetherianRing_of_surjective T _ (Ideal.Quotient.mk J) Ideal.Quotient.mk_surjective
-  apply (isArtinianRing_iff_krullDimLE_zero).mpr
-  apply Ideal.krullDimLE_zero_quotient_iff_forall_minimalPrimes_isMaximal.mpr
-  intro p hp
-  have : p.IsPrime := hp.1.1
-  have hIp : I ≤ p := hIJ.trans ((Ideal.IsPrime.radical_le_iff ‹p.IsPrime›).mpr hp.1.2)
-  have : (p.map (Ideal.Quotient.mk I)).IsPrime :=
-    Ideal.map_isPrime_of_surjective Ideal.Quotient.mk_surjective (by simpa using hIp)
-  have : (p.map (Ideal.Quotient.mk I)).IsMaximal := Ideal.IsPrime.isMaximal' inferInstance
-  have h := Ideal.comap_isMaximal_of_surjective (Ideal.Quotient.mk I)
-    Ideal.Quotient.mk_surjective (K := p.map (Ideal.Quotient.mk I))
-  simpa [Ideal.comap_map_of_surjective, sup_eq_right.mpr hIp] using h
-
-/-- A finite module supported on an Artinian closed subscheme has finite length. -/
-lemma isFiniteLength_of_le_radical_annihilator (I : Ideal T)
-    [IsArtinianRing (T ⧸ I)] (M : Type u) [AddCommGroup M] [Module T M]
-    [Module.Finite T M] (hI : I ≤ (Module.annihilator T M).radical) : IsFiniteLength T M := by
-  have : IsArtinianRing (T ⧸ Module.annihilator T M) :=
-    isArtinianRing_quotient_of_le_radical I _ hI
-  let hM := Module.isTorsionBySet_annihilator T M
-  let := hM.module
-  let : RingHomSurjective (Ideal.Quotient.mk (Module.annihilator T M)) :=
-    ⟨Ideal.Quotient.mk_surjective⟩
-  have : IsNoetherian (T ⧸ Module.annihilator T M) M :=
-    isNoetherian_of_surjective hM.semilinearMap
-      (LinearMap.range_eq_top.mpr Function.surjective_id)
-  have : IsArtinian (T ⧸ Module.annihilator T M) M := inferInstance
-  have : IsArtinian T M :=
-    (hM.semilinearMap.isArtinian_iff_of_bijective Function.bijective_id).mpr inferInstance
-  exact isFiniteLength_iff_isNoetherian_isArtinian.mpr ⟨inferInstance, inferInstance⟩
-
-/-- Homology of a complex of finite modules over a Noetherian ring is finite. -/
-lemma homology_moduleFinite (P : CochainComplex (ModuleCat.{u} T) ℤ) (i : ℤ)
-    [Module.Finite T (P.X i)] : Module.Finite T (P.homology i) := by
-  let S := P.sc i
-  have : Module.Finite T S.X₂ := inferInstanceAs (Module.Finite T (P.X i))
-  have : Module.Finite T S.moduleCatLeftHomologyData.H := by
-    change Module.Finite T (LinearMap.ker S.g.hom ⧸ LinearMap.range S.moduleCatToCycles)
-    infer_instance
-  exact Module.Finite.equiv S.moduleCatHomologyIso.toLinearEquiv.symm
 
 /-- Supported perfect complexes have finite-length homology whenever the
 quotient by the support ideal is Artinian. -/

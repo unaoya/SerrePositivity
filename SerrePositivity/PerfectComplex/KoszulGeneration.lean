@@ -3,6 +3,7 @@ module
 public import SerrePositivity.HomologicalAlgebra.Truncate
 public import SerrePositivity.PerfectComplex.K0Basic
 public import SerrePositivity.CommutativeAlgebra.FiniteLength
+public import SerrePositivity.CommutativeAlgebra.KoszulResolution
 public import SerrePositivity.PerfectComplex.OrdinaryEuler
 
 /-!
@@ -32,63 +33,11 @@ namespace SerrePositivity
 
 variable {A : Type u} [CommRing A] [IsLocalRing A] {e : ℕ} {z : Fin e → A}
 
-/-! ## 剰余体まわり -/
-
-section residue
-
-variable (hz : Ideal.span (Set.range z) = maximalIdeal A)
-
-include hz in
-lemma isArtinianRing_quotient_span_of_eq : IsArtinianRing (A ⧸ Ideal.span (Set.range z)) := by
-  rw [hz]
-  exact inferInstanceAs (IsArtinianRing (ResidueField A))
-
-include hz in
-lemma isSimpleModule_quotient_span_of_eq : IsSimpleModule A (A ⧸ Ideal.span (Set.range z)) := by
-  rw [hz, isSimpleModule_iff_isCoatom]
-  exact Ideal.isMaximal_def.mp (maximalIdeal.isMaximal A)
-
-include hz in
-/-- 有限生成で `0` でない加群は `A/(z) = k` に全射をもつ。 -/
-lemma exists_surjective_quotient_span (H : ModuleCat.{u} A) [Module.Finite A H]
-    (hH : ¬ IsZero H) :
-    ∃ ε : H ⟶ ModuleCat.of A (A ⧸ Ideal.span (Set.range z)), Function.Surjective ε.hom := by
-  have : Nontrivial H := by
-    rw [ModuleCat.isZero_iff_subsingleton] at hH
-    exact not_subsingleton_iff_nontrivial.mp hH
-  obtain h | ⟨N, hN, -⟩ := IsCoatomic.eq_top_or_exists_le_coatom (⊥ : Submodule A H)
-  · exact absurd h bot_ne_top
-  have : IsSimpleModule A (H ⧸ N) := isSimpleModule_iff_isCoatom.mpr hN
-  obtain ⟨φ⟩ := IsSimpleModule.nonempty_linearEquiv_quotient_maximalIdeal (A := A) (M := H ⧸ N)
-  let ψ := φ.trans (Submodule.quotEquivOfEq _ _ hz.symm)
-  exact ⟨ModuleCat.ofHom (ψ.toLinearMap ∘ₗ N.mkQ), ψ.surjective.comp N.mkQ_surjective⟩
-
-end residue
-
-/-! ## Koszul 複体の添加写像 -/
+/-! ## Koszul 複体の Euler 評価 -/
 
 section koszul
 
 variable (hK : IsKoszulResolution z)
-
-/-- `H^0(K(z)) ≅ A/(z)`。 -/
-noncomputable def koszulH0Iso :
-    (koszulComplex z).homology 0 ≅ ModuleCat.of A (A ⧸ Ideal.span (Set.range z)) :=
-  hK.equiv.some.toModuleIso
-
-omit [IsLocalRing A] in
-lemma koszulComplex_d_zero_one : (koszulComplex z).d 0 1 = 0 :=
-  (koszulComplex_isZero_X_of_pos z 1 one_pos).eq_of_tgt _ _
-
-/-- 添加写像 `K(z) → (A/(z))[0]`。 -/
-noncomputable def koszulAugmentation :
-    koszulComplex z ⟶
-      (HomologicalComplex.single _ (ComplexShape.up ℤ) 0).obj
-        (ModuleCat.of A (A ⧸ Ideal.span (Set.range z))) :=
-  toSingleOfHomology (koszulComplex z) (koszulComplex_d_zero_one) (koszulH0Iso hK).hom
-
-instance quasiIso_koszulAugmentation : QuasiIso (koszulAugmentation hK) :=
-  quasiIso_toSingleOfHomology _ _ _ hK.isZero
 
 include hK in
 /-- `χ_A(K(z)) = length_A(A/(z)) = 1`（`z` が `m_A` を生成するとき）。 -/
