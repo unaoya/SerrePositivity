@@ -1,14 +1,21 @@
 module
 
-public import SerrePositivity.PerfectComplex.OrdinaryEuler
+public import SerrePositivity.HomologicalAlgebra.ConeLES
+public import SerrePositivity.PerfectComplex.Basic
 public import Mathlib.Basic.ENNReal.Real
+public import Mathlib.Data.Int.Interval
+public import Mathlib.Algebra.FiniteSupport.Basic
 
 /-!
 # Euler evaluation for an abstract additive length
 
-Finite normalized homology lengths and power torsion suffice for homotopy
-invariance and mapping-cone additivity. No Noetherian hypothesis on the
-coefficient ring is used.
+`lambdaEuler lam P = Σ_i (-1)^i λ H^i(P)` for a normalized length `λ`. Finite normalized
+homology lengths and power torsion suffice for homotopy invariance and mapping-cone
+additivity. No Noetherian hypothesis on the coefficient ring is used.
+
+The ordinary length is the normalized length `NormalizedLength.ordinary` for `J = ⊥`, so the
+ordinary Euler evaluation `chiOrd` is the special case `chiOrd_eq_lambdaEuler_ordinary`; the
+ordinary statements are derived from the ones here in `OrdinaryEuler.lean`.
 -/
 
 @[expose] public section
@@ -78,8 +85,8 @@ private lemma alternating_finsum_shift (f : ℤ → ℝ) :
 set_option maxHeartbeats 800000 in
 -- Transporting the three exact sequences with dependent homology objects
 -- requires additional elaboration time.
-/-- The ordinary Euler evaluation is additive on a mapping-cone triangle when
-the homology is bounded and has finite length. -/
+/-- The Euler evaluation is additive on a mapping-cone triangle when
+the homology is bounded, power torsion, and has finite length. -/
 theorem lambdaEuler_cone {P Q : CochainComplex (ModuleCat.{u} C) ℤ} (f : P ⟶ Q)
     (hQ : ∃ a b : ℤ, ∀ i, (i < a ∨ b < i) → IsZero (Q.X i))
     (hC : ∃ a b : ℤ, ∀ i, (i < a ∨ b < i) → IsZero ((Cone.cone f).X i))
@@ -162,5 +169,20 @@ theorem lambdaEuler_cone {P Q : CochainComplex (ModuleCat.{u} C) ℤ} (f : P ⟶
     rw [finsum_add_distrib hds haw, alternating_finsum_shift]
   rw [eC, eQ, eP]
   ring
+
+/-! ## The ordinary length as a normalized length -/
+
+/-- Casting `ℕ∞` into `ℝ≥0∞` and then into `ℝ` agrees with `ENat.toNat`; both send `⊤` to `0`. -/
+lemma toReal_toENNReal (n : ℕ∞) : (n : ℝ≥0∞).toReal = (n.toNat : ℝ) := by
+  induction n using ENat.recTopCoe with
+  | top => simp
+  | coe k => simp
+
+/-- The ordinary Euler evaluation is the one for `NormalizedLength.ordinary`. -/
+lemma chiOrd_eq_lambdaEuler_ordinary {T : Type u} [CommRing T]
+    (P : CochainComplex (ModuleCat.{u} T) ℤ) :
+    chiOrd P = lambdaEuler (NormalizedLength.ordinary T) P := by
+  unfold chiOrd lambdaEuler
+  simp only [NormalizedLength.ordinary_len, toReal_toENNReal]
 
 end SerrePositivity

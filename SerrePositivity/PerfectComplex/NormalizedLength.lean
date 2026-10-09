@@ -5,7 +5,9 @@ public import Mathlib.Algebra.BigOperators.Finprod
 public import Mathlib.Algebra.Exact.Basic
 public import Mathlib.Algebra.Module.Torsion.Basic
 public import Mathlib.Basic.ENNReal.Basic
+public import Mathlib.Basic.Real.ENatENNReal
 public import Mathlib.RingTheory.Ideal.Maps
+public import Mathlib.RingTheory.Length
 
 /-!
 # 正規化長さ
@@ -85,6 +87,13 @@ lemma quotient (hM : IsPowTorsion J M) (N : Submodule C M) : IsPowTorsion J (M �
 
 lemma of_subsingleton [Subsingleton M] : IsPowTorsion J M :=
   ⟨0, fun _ _ ↦ Subsingleton.elim _ _⟩
+
+/-- `J = ⊥` の冪ねじれは自明：どの加群も `⊥` 冪ねじれ。通常の長さを正規化長さ
+`NormalizedLength.ordinary` として扱うときに、ねじれの仮定を満たすのに使う。 -/
+lemma bot : IsPowTorsion (⊥ : Ideal C) M :=
+  ⟨1, fun _ a ↦ by
+    have ha : (a : C) = 0 := by simpa using a.2
+    rw [ha, zero_smul]⟩
 
 end IsPowTorsion
 
@@ -178,6 +187,26 @@ def restrict (lam : NormalizedLength C J) (J' : Ideal C)
 
 @[simp] lemma restrict_len (lam : NormalizedLength C J) (J' : Ideal C) (h) (M : Type u)
     [AddCommGroup M] [Module C M] : (lam.restrict J' h).len M = lam.len M := rfl
+
+/-- 通常の長さ `Module.length` は `J = ⊥` の正規化長さ（`ℕ∞` を `ℝ≥0∞` に埋め込む）。
+`IsPowTorsion ⊥ M` はどの `M` でも成り立つ（`IsPowTorsion.bot`）ので、正規化長さについての
+Euler 評価の定理はすべて通常の長さに特殊化できる（`NormalizedEuler.lean`、`OrdinaryEuler.lean`）。 -/
+noncomputable def ordinary (T : Type u) [CommRing T] : NormalizedLength T ⊥ where
+  len := by
+    intro M _ _
+    exact (Module.length T M : ℝ≥0∞)
+  len_eq_zero_of_subsingleton := by
+    intro M _ _ _
+    simp [Module.length_eq_zero]
+  len_congr := by
+    intro M N _ _ _ _ e
+    rw [e.length_eq]
+  len_add_of_exact := by
+    intro M₁ M₂ M₃ _ _ _ _ _ _ f g hf hg hfg _
+    rw [Module.length_eq_add_of_exact f g hf hg hfg, ENat.toENNReal_add]
+
+@[simp] lemma ordinary_len (T : Type u) [CommRing T] (M : Type u) [AddCommGroup M]
+    [Module T M] : (ordinary T).len M = (Module.length T M : ℝ≥0∞) := rfl
 
 end NormalizedLength
 
