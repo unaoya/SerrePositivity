@@ -26,6 +26,7 @@ public import SerrePositivity.Asymptotic.PaperVanishing
 public import SerrePositivity.Asymptotic.PaperMinimalLowerBound
 public import SerrePositivity.Paper.Section4.PaperK0Comparison
 public import SerrePositivity.Paper.Section4.SymmetricComparison
+public import SerrePositivity.Paper.Section4.FlatRealization
 public import SerrePositivity.Paper.Section4.Theorem4_7
 
 /-!

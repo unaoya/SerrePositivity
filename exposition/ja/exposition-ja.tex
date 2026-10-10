@@ -4,7 +4,7 @@
 \usepackage[haranoaji]{luatexja-preset}
 \usepackage[margin=25mm]{geometry}
 \usepackage{booktabs,tabularx,array,longtable}
-\usepackage{enumitem}
+\usepackage{enumitem,needspace}
 \usepackage[hidelinks]{hyperref}
 \usepackage{xcolor}
 
@@ -212,7 +212,7 @@ $(C,\lambda)$ を長さ付き $A$ 代数とする。
 どちらも $V = k$ の場合が必要条件。逆は組成列の長さの帰納法で、$0\to V'\to V\to V''\to 0$ の Tor の長完全列から、$i>0$ では $\lambda\Tor_i(V)\le\lambda\Tor_i(V')+\lambda\Tor_i(V'')=0$、$i=0$ では $\lambda\Tor_1(V'')=0$ より $\lambda(V\otimes C)=\lambda(V'\otimes C)+\lambda(V''\otimes C)$。
 \end{proof}
 この証明は $\lambda$ の加法性と非負性しか使わない。$A$ の完備性も、次節の $T$ の性質も使わない。
-\lean{\ld{Paper.lemma_3_4}、一般形は \ld{normalizedLength_tor_of_isWeaklyRegular}（引用を除いて証明済み。残る引用は「正則パラメータ系は正則列」のみ）。Lean の主張は (3.9) の $v=1$ の形を仮定とする（注意~\ref{rem:leandiff}）。}
+\lean{\ld{IntersectionMultiplicity.NormalizedTor} の剰余体判定と有限長加群の公式は、任意の局所環上で証明済み。ランクは任意の有限な非負実数でよい。零次 Tor と通常のテンソル積の対応も確認した。既存の \ld{Paper.lemma_3_4} は正則パラメータの引用を通してこの一般論に接続する。}
 
 \begin{corollary}\label{cor:allv}
 $z_1,\dots,z_e$ を $A$ の正則パラメータ系とする。$(C,\lambda)$ が $\lambda$-平坦でランク $r$ なら、全ての $v\ge 1$ で
@@ -224,14 +224,15 @@ $z_1,\dots,z_e$ を $A$ の正則パラメータ系とする。$(C,\lambda)$ が
 \begin{proof}
 $z$ は正則列なので $z^v$ も正則列で、Koszul 複体 $K(z^v)$ は $A/(z^v)$ の自由分解である。よって $H_i(z^v;C) = \Tor_i^A(A/(z^v),C)$ で、$\len_A A/(z^v) = v^e$。定義を $V = A/(z^v)$ に適用する。逆は $K(z)$ が $k$ の分解であることと補題~\ref{lem:34} から。
 \end{proof}
-\lean{未（Lean では (3.9) を直接仮定するので、この系は使っていない）。}
+\lean{\ld{LengthAlgebra.Flat} で証明済み。\ld{flat_rank_iff_koszul} が一乗での同値を、\ld{quotient_length_powers_of_flat} が全ての正の冪の値を与える。列の冪の正則性と商の長さ $v^e$ は \ld{RegularSequencePowers}・\ld{RegularSequenceLength} で証明し、重複度の未証明公式は使わない。正則列であることを明示的な入力とする。}
 
 \begin{remark}[仮定の形と形式化の境界]\label{rem:leandiff}
 共通理論では、全ての正の冪についての Koszul 有限性、正次数の Koszul ホモロジーの長さ零、$v=1$ での Koszul Euler 特性の値を別々に指定する。有限性だけで Euler 評価を構成し、消滅と値の計算はそれぞれ必要な定理にだけ加えるためである。
 
-定義~\ref{def:lengthalg} の $\lambda$-平坦性と有限ランクからは、系~\ref{cor:allv} によりこれらの入力が得られる。ただし、この座標によらない定義と Koszul 条件との同値全体はまだ形式化していない。Lean の適用では \ld{KoszulFinite}、高次の長さ零、Koszul Euler 特性の等式を明示的に受け取る。この境界を保ち、共通定理そのものの有限性条件を削除することはしない。
+定義~\ref{def:lengthalg} の $\lambda$-平坦性と有限ランクからこれらの入力を供給する接続も形式化した。\ld{LengthAlgebra.Flat} が \ld{KoszulFinite}、高次の長さ零、Koszul Euler 特性 $e_\lambda=r$ をそれぞれ導く。\ld{LengthAlgebra.CohenMacaulay} は任意のパラメータ系についての $\lambda$-CM 条件から同じ入力を供給する。一般の共通定理ではこれらを独立に受け取り、平坦性をもたない通常の長さによる Euler 評価も引き続き扱う。
 \end{remark}
 
+\Needspace{8\baselineskip}
 \paragraph{$\lambda$-CM 代数}
 \begin{definition}[$\lambda$-CM]\label{def:lambdacm}
 $(D,\m_D)$ を次元 $h$ のネーター局所環とする。$D$ 代数 $C$ と $\m_D C$-冪ねじれ $C$ 加群の上の長さ関数 $\lambda$ の組（長さ付き $D$ 代数）$(C,\lambda)$ が \textbf{$\lambda$-CM} であるとは、$D$ の任意のパラメータ系 $x$ について
@@ -248,7 +249,7 @@ $A\subseteq D$ を正則局所部分環で $D$ が $A$ 上有限なものとし�
 \begin{proof}
 $\m_D^N\subseteq\m_A D$ となる $N$ があるので、$\m_A C$-冪ねじれと $\m_D C$-冪ねじれは同じである。$z$ は $D$ のパラメータ系でもあるので、系~\ref{cor:allv} の逆を適用する。
 \end{proof}
-\lean{未（解説での整理。付録~\ref{sec:future}）。}
+\lean{\ld{LengthAlgebra.CohenMacaulay} の \ld{flat_of_cm} と \ld{tor_length_of_cm} で証明済み。有限な単射 $A\to D$ に沿うパラメータの移送と \ld{restrictToBase} を用いる。基底の次元と剰余体の Koszul 分解は明示して受け取る。}
 
 \begin{lemma}[$\lambda$ 版の Auslander--Buchsbaum]\label{lem:lambdaAB}
 $R$ を次元 $d$ の正則局所環、$R\to D$ を有限な局所準同型（$D$ は次元 $h$ のネーター局所環）、$(C,\lambda)$ を $D$ 上の $\lambda$-CM 代数とする。$x_1,\dots,x_h\in R$ を $R$ 正則列で像が $D$ のパラメータ系になるものとし、$B = R/(x)$ とおく。このとき有限生成 $B$ 加群 $L$ について
@@ -683,7 +684,7 @@ $\lambda$-平坦な長さ付き代数の存在 & Monsky、Roberts（Ma, Thm 2.4�
 }
 
 \subsection{状況のまとめ}
-以下の「条件から証明済み」は、Koszul 有限性・消滅・分解・降下などを定理の引数として受け取る形を指す。概念的な $\lambda$-平坦性から全入力を供給する同値は別項目である。
+以下の「条件から証明済み」は、Koszul 有限性・消滅・分解・降下などを定理の引数として受け取る形を指す。$\lambda$-平坦性・有限ランクおよび $\lambda$-CM 性から、長さ代数側の入力を供給する接続も証明した。分解・支持・降下などの独立した入力は引き続き区別する。
 {\small
 \begin{longtable}{>{\raggedright}p{3.2cm}>{\raggedright}p{3.0cm}>{\raggedright\arraybackslash}p{8.0cm}}
 \toprule
@@ -691,8 +692,8 @@ $\lambda$-平坦な長さ付き代数の存在 & Monsky、Roberts（Ma, Thm 2.4�
 \midrule
 \endhead
 定理~\ref{thm:main}、\ref{thm:core} と帰着 & Thm 1.1、Lemma 5.1 & 未。論文全体の完成は今回の範囲外 \\
-補題~\ref{lem:34} & Lemma 3.4 & 引用を除いて証明済み \\
-系~\ref{cor:allv}、命題~\ref{prop:cmflat} & (3.9) との同値など & 概念的な $\lambda$-平坦性・$\lambda$-CM 性との接続全体は未 \\
+補題~\ref{lem:34} & Lemma 3.4 & 剰余体での判定と有限長加群の公式は引用なしで証明済み \\
+系~\ref{cor:allv}、命題~\ref{prop:cmflat} & (3.9) との同値など & 正則列・Koszul 分解を明示して証明済み。二つの実現の比較・下界へ接続 \\
 補題~\ref{lem:lambdaAB} & Lemma 5.3 & 環変更の長さ比較と消滅は、明示した Koszul 条件・有限分解から証明済み \\
 命題~\ref{prop:B-euler}、補題~\ref{lem:B-nit}、\ref{lem:B-h0} & 共通抽象論 & 証明済み。反復錐は二項直和の再帰表示を使う \\
 命題~\ref{prop:B-length-descends}、\ref{prop:B-finite-part} & 長さの商 & 大きな商・有限な商・両者の有限部分の同値まで証明済み \\
@@ -728,7 +729,7 @@ $\lambda$-平坦な長さ付き代数の存在 & Monsky、Roberts（Ma, Thm 2.4�
 
 \subsection{残る境界と別の課題}\label{sec:future}
 \begin{itemize}
-  \item \textbf{今回の残作業：概念的な定義との接続}：座標によらない $\lambda$-平坦性・$\lambda$-CM 性と Koszul 条件の対応を形式化する（注意~\ref{rem:leandiff}）。そこから有限性・高次消滅・Koszul Euler 特性の値を導き、二つの実現に必要な入力を供給する。この接続と検証までを今回の抽象化の区切りとする。共通評価に必要な有限性と、消滅に必要な条件は分けて保つ。
+  \item \textbf{今回の区切り：概念的な定義との接続}：座標によらない $\lambda$-平坦性・有限ランクと Koszul 条件の同値、$\lambda$-CM 性からの有限性・消滅、および有限基底への制限を証明した（注意~\ref{rem:leandiff}）。これらから二つの実現の比較・消滅・下界へ入力を供給する経路までを今回の完了範囲とする。共通評価の有限性と消滅の条件は分けて保った。
   \item \textbf{引用された降下}：有限版は \ld{Inputs.theorem_3_1_K0}、ランク無視版は \ld{Section4.supportedRankK0_descent} を引用する。後者は補題~\ref{lem:dga} と一般係数の降下への接続を含む。正則パラメータが正則列となる結果も既存の引用である。
   \item \textbf{論文全体への適用}：正規化基底・ガロア閉包・具体的な長さ代数と有限近似の存在構成、核心定理・主定理の完成は別の課題とする。現在の完了範囲は共通理論と二つの実現、および明示したデータからの適用である。
 \end{itemize}
@@ -1183,9 +1184,9 @@ Koszul 有限性と台 & ホモロジー的評価の (Fin)、$K_0$ 上の Euler 
 一方、比較に必要な不変類の降下は独立な入力である。具体的な Lemma 3.5 は \ld{Inputs.theorem_3_1_K0}、定理4.7は \ld{Section4.supportedRankK0_descent} を引用する。後者には dg 表示と一般係数の降下への接続が含まれる。正則局所環から Koszul 分解を供給する経路は \ld{Inputs.isWeaklyRegular_of_span_eq_maximalIdeal} に依存する。これらを引数にとる一般定理と、名前付きの未証明定理を呼ぶ具体的適用を区別する。
 
 \paragraph{検証と現在の到達点}
-直前の Lean の全体ビルドは3478ジョブで成功した。共通層・評価・主要適用先47宣言と、係数変更・群作用21宣言の計68宣言を公理監査し、66宣言は \ld{propext}、\ld{Classical.choice}、\ld{Quot.sound} のみであった。既存の \ld{lemma_3_5} と \ld{Section4.theorem_4_7_K0} の2宣言は、上記の引用に由来する \ld{sorryAx} を含む。これは選んだ宣言の監査であり、リポジトリ全体の未証明入力が消えたという意味ではない。
+Lean の全体ビルドは3484ジョブで成功した。今回の概念的条件との接続および適用に関する35宣言は、公理監査で全て \ld{propext}、\ld{Classical.choice}、\ld{Quot.sound} のみであり、\ld{sorryAx} を含まない。前回は共通層・評価・主要適用先47宣言と、係数変更・群作用21宣言の計68宣言を公理監査し、66宣言は \ld{propext}、\ld{Classical.choice}、\ld{Quot.sound} のみであった。既存の \ld{lemma_3_5} と \ld{Section4.theorem_4_7_K0} の2宣言は、上記の引用に由来する \ld{sorryAx} を含む。これは選んだ宣言の監査であり、リポジトリ全体の未証明入力が消えたという意味ではない。
 
-この抽象化で目指した、同じ Euler・比較・消滅・下界を二つの実現に適用する証明経路はそろった。今回の残作業は、§\ref{sec:future} の概念的な定義から入力を供給する接続である。その証明・適用・検証までを一区切りとする。具体的存在構成や主定理の完成へ作業範囲を広げることとは分けて扱う。
+この抽象化で目指した、同じ Euler・比較・消滅・下界を二つの実現に適用する証明経路に、概念的な定義からの入力供給も接続した。\ld{LengthAlgebra.FlatRealization} と \ld{Paper.Section4.FlatRealization} は、同じ有限ランクの $\lambda$-平坦代数の共役和比較、範囲外での消滅、極小性からの Euler 下界を既存の実現へ直接適用する。$\lambda$-CM 代数は有限基底への制限を通して使える。これを今回の抽象化の一区切りとし、具体的存在構成や主定理の完成は別の課題として残す。
 
 
 %======================================================================

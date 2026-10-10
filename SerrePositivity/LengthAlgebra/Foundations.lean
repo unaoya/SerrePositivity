@@ -6,6 +6,7 @@ public import SerrePositivity.LengthAlgebra.Ordinary
 public import SerrePositivity.LengthAlgebra.EulerCompatibility
 public import SerrePositivity.PerfectComplex.K0Functoriality
 public import SerrePositivity.LengthAlgebra.PerfectMinimalLowerBound
+public import SerrePositivity.LengthAlgebra.FlatRealization
 
 /-! # 単一の長さ付き代数による共通 Euler 理論の実現
 
@@ -19,4 +20,6 @@ perfect ホモロジーはこの同値に沿って自然に対応し、消滅条
 旧 `chiOrdHom`・`chiLamHom_of_finite` も、共通 Euler 評価の引き戻しと一致する。
 有限自由／有限射影 K₀ の比較は係数変更と群作用に関して可換し、
 局所環上では既存の不変類の降下も有限射影版へ移せる。
+λ-平坦性の剰余体判定、有限ランクからの全パラメータ冪の Koszul 条件、
+λ-CM 性から有限基底上の λ-平坦性への制限、および比較・下界への適用を含む。
 -/

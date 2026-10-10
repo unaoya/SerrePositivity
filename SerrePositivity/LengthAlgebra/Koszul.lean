@@ -71,4 +71,17 @@ lemma koszulEuler_eq_length_quotient
     · have := ModuleCat.subsingleton_of_isZero (koszulComplex_isZero_homology_of_pos z q hq)
       simp [lam.len_eq_zero_of_subsingleton]
 
+/-- 正次数の消滅と零次商の有限性から、一つの Koszul 複体の全次数の有限性を得る。 -/
+lemma koszul_finite_of_zero_positive
+    (hzero : ∀ i : ℕ, 0 < i → lam.len (koszulHomologySelf z i) = 0)
+    (hquot : lam.len (C ⧸ Ideal.span (Set.range z)) ≠ ⊤) (q : ℤ) :
+    lam.len ((koszulComplex z).homology q) ≠ ⊤ := by
+  apply koszul_finite_of_homologySelf
+  intro i
+  rcases i with _ | i
+  · change lam.len ((koszulComplex z).homology 0) ≠ ⊤
+    rwa [lam.len_congr _ _ (koszulComplex_homology_zero_equiv z).some]
+  · rw [hzero (i + 1) (by omega)]
+    exact ENNReal.zero_ne_top
+
 end SerrePositivity.LengthAlgebra

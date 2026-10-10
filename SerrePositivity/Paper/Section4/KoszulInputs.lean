@@ -40,17 +40,8 @@ lemma normalized_koszul_finite {C : Type u} [CommRing C] {J : Ideal C}
     (lam : NormalizedLength C J) {e : ℕ} (x : Fin e → C)
     (hzero : ∀ i : ℕ, 0 < i → lam.len (koszulHomologySelf x i) = 0)
     (hquot : lam.len (C ⧸ Ideal.span (Set.range x)) ≠ ⊤) (i : ℤ) :
-    lam.len ((koszulComplex x).homology i) ≠ ⊤ := by
-  rcases lt_trichotomy i 0 with hi | rfl | hi
-  · obtain ⟨k, rfl⟩ : ∃ k : ℕ, i = -(k : ℤ) := ⟨(-i).toNat, by omega⟩
-    have hz := hzero k (by omega)
-    change lam.len ((koszulComplex x).homology (-(k : ℤ))) = 0 at hz
-    rw [hz]
-    exact ENNReal.zero_ne_top
-  · rwa [lam.len_congr _ _ (koszulComplex_homology_zero_equiv x).some]
-  · have := ModuleCat.subsingleton_of_isZero (koszulComplex_isZero_homology_of_pos x i hi)
-    rw [lam.len_eq_zero_of_subsingleton]
-    exact ENNReal.zero_ne_top
+    lam.len ((koszulComplex x).homology i) ≠ ⊤ :=
+  LengthAlgebra.koszul_finite_of_zero_positive lam x hzero hquot i
 
 /-- 非負の homological 次数での有限性を全整数次数に読み替える共通補題。 -/
 lemma normalized_koszul_finite_of_homologySelf
