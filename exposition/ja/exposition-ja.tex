@@ -521,7 +521,7 @@ $K(z)$ が剰余体の自由分解であることから、$A$ 側の支持つき
 
 各 $F_n$ に命題~\ref{prop:C-base} を適用し、$s_n$ で割って超極限をとる。共通の有界な次数範囲と Koszul 上界により、有限 Euler 和と極限を交換できる。二つの係数はともに $r$ で、係数変更の合成の自然同型も評価と両立するから結論する。ここでは $K_0(P_A^J)$ の Koszul 一元生成は使わない。
 \end{proof}
-\lean{\ld{Paper.Section4.UniformRepresentative}、\ld{PaperK0Comparison}、\ld{CompletedRankComparison}。明示した Koszul 分解からの一般係数公式は証明済み。正則局所環からその分解を供給する適用は正則パラメータの引用に依存する。}
+\lean{\ld{Paper.Section4.UniformRepresentative}、\ld{PaperK0Comparison}。明示した Koszul 分解からの一般係数公式は証明済み。正則局所環からその分解を供給する適用は正則パラメータの引用に依存する。}
 
 \begin{lemma}\orig{Lemma 4.6}\label{lem:dga}
 連結な dg $A$ 代数 $H$ で、$P_A\simeq\Perf(H)$、$P_T\simeq\Perf(H\otimes^L_A T)$ となるものがある。$H$ は行列環の積 $\prod_n M_{s_n}(A)$ のランクの小さい部分による DG 商の、生成元の自己準同型として得られる。
@@ -537,7 +537,7 @@ $K(z)$ が剰余体の自由分解であることから、$A$ 側の支持つき
 \begin{proof}
 補題~\ref{lem:conjsum} を $f\colon K_0(P_A^J)\to K_0(P_T^J)$、$\varphi = \chi_{\ord}$、$\psi = \chi_C$ に適用する。$\varphi\circ f = \psi\circ f$ は命題~\ref{prop:45}、$f_\Q$ の全射性は補題~\ref{lem:dga} の $H$ についての定理~\ref{thm:descent} による。
 \end{proof}
-\lean{\ld{Section4.normComparison_of_descent} は降下を引数にして証明済み。\ld{Section4.theorem_4_7_K0} は \ld{supportedRankK0_descent} と正則パラメータの引用を除いて証明済み。任意の二つの Koszul Euler 特性の一致からの比較は \ld{symmetricPaperEuler_conjSum_eq}。}
+\lean{\ld{symmetricPaperEuler_conjSum_eq} は二つの Koszul Euler 特性の一致と降下を引数にして証明済み。\ld{Section4.theorem_4_7_K0} はその系であり、\ld{supportedRankK0_descent} と正則パラメータの引用への依存は残る。}
 
 %======================================================================
 \section{$\lambda$-平坦な長さ付き代数の構成}\label{sec:construction}
@@ -656,7 +656,7 @@ $D$ 側の $\lambda$-CM 性（補題~\ref{lem:lambdaAB}）が複体の長さを 
 \[
   |G_D|\, a_D a_E\, \chi^R(D,E) \;=\; \frac{1}{|G_E|}\sum_{\sigma\in G_D}\sum_{\gamma\in G_E} b_{\sigma,\gamma} \;>\; 0.
 \]
-\lean{\ld{Section5.chi_pos_of_comparisons}、\ld{core_of_inputs}（2つの比較と正値性を仮定として受け取る形で証明済み）。}
+\lean{\ld{chi_pos_of_firstComparison}、\ld{core_of_twistedEuler_pos} が第一比較と各 $c_\sigma>0$ を接続する。\ld{Section5.core_of_lengthAlgebras} は、与えられた長さ代数から第二比較とこの正値性も導く。}
 
 %======================================================================
 \appendix

@@ -86,25 +86,4 @@ theorem exists_free_resolution_length_mul
       ENat.toNat_add (Module.length_ne_top_iff.mpr hN) (by simp), ENat.toNat_one]
     ring
 
-/-- 極大イデアルを生成する列の Koszul 複体が分解なら、すべての有限長加群は
-`[-e, 0]` にある有限自由分解をもつ。各項の階数は長さと Koszul の項の階数の積。
-Koszul の完全性を明示的な仮定とし、正則局所環に関する未証明入力を呼ばない。 -/
-theorem exists_free_resolution_length_mul_koszul {e : ℕ} (z : Fin e → A)
-    (hz : Ideal.span (Set.range z) = maximalIdeal A) (hK : IsKoszulResolution z)
-    (M : Type u) [AddCommGroup M] [Module A M] (hM : IsFiniteLength A M) :
-    ∃ P : CochainComplex (ModuleCat.{u} A) ℤ,
-      Nonempty (IsResolutionOf P (ModuleCat.of A M)) ∧
-      (∀ i, Module.Free A (P.X i)) ∧ (∀ i, Module.Finite A (P.X i)) ∧
-      (∀ i, i < -(e : ℤ) → IsZero (P.X i)) ∧
-      ∀ i, Module.finrank A (P.X i) =
-        (Module.length A M).toNat * Module.finrank A ((koszulComplex z).X i) := by
-  have hres : IsResolutionOf (koszulComplex z) (ModuleCat.of A (A ⧸ maximalIdeal A)) := by
-    have h := isResolutionOf_koszul z hK
-    rw [hz] at h
-    exact h
-  exact exists_free_resolution_length_mul (koszulComplex z) hres
-    (fun i ↦ (koszulComplex_free_finite_X z i).1)
-    (fun i ↦ (koszulComplex_free_finite_X z i).2) (-(e : ℤ))
-    (koszulComplex_isZero_X_of_lt z) M hM
-
 end SerrePositivity

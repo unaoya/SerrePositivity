@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.Paper.Section5.ApproximationHomology
+public import SerrePositivity.HomologicalAlgebra.TorSymmetry
 public import SerrePositivity.Asymptotic.MinimalBettiEvaluation
 public import SerrePositivity.Asymptotic.NormalizedLowerBound
 public import SerrePositivity.PerfectComplex.NormalizedLengthComap

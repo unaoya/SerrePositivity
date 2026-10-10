@@ -24,7 +24,7 @@ namespace SerrePositivity.Section2
 /-- 具体的な perfection 上の長さの性質。Monsky・Roberts の結果との接続、
 共通分母に必要な基底環の正規性、誤差評価用の元の選択と極限への接続、
 Koszul の重複度公式の適用は未完了。
-部分代数の増大・被覆、分母を与えた場合の核の評価、根の段の通常の長さ公式は
+部分代数の増大・被覆、分母を与えた場合の核の評価は
 `PerfectApproximation` で証明済み。テンソル積と近似部分代数の同型は
 `PerfectBaseChange` で証明済み。近似環の商の正規化長さを `D` 上の通常の長さに戻す
 有限段の公式は `PerfectApproximationLength` で証明済み。

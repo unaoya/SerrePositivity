@@ -154,17 +154,6 @@ lemma mk_eq_zero_of_isZero (P : PerfSupp T z) (hP : IsZero P.1) : mk P = 0 := by
   rw [sub_self] at h1
   rw [← h2, h1]
 
-/-- 可縮な複体（恒等射が零ホモトピック）の類は `0`。可縮なら零複体とホモトピー同値だから。 -/
-lemma mk_eq_zero_of_homotopy_id_zero (P : PerfSupp T z) (h : Homotopy (𝟙 P.1) 0) : mk P = 0 := by
-  have hZ : IsZero (0 : CochainComplex (ModuleCat.{u} T) ℤ) := isZero_zero _
-  let E : HomotopyEquiv P.1 0 :=
-    { hom := 0
-      inv := 0
-      homotopyHomInvId := (Homotopy.ofEq (by simp)).trans h.symm
-      homotopyInvHomId := Homotopy.ofEq (hZ.eq_of_src _ _) }
-  rw [mk_eq_of_homotopyEquiv P ⟨0, isPerfectSupported_of_isZero hZ⟩ E,
-    mk_eq_zero_of_isZero _ hZ]
-
 /-- ホモトピー圏での同型 `Cone(P → 0) ≅ P⟦1⟧`。完全三角形 `P → 0 → Cone(P → 0) → P⟦1⟧` と、
 可縮な三角形 `P → 0 → P⟦1⟧ → P⟦1⟧` は最初の二つの頂点が一致するので、三角圏の公理により
 三番目の頂点も同型になる（Mathlib の `isoTriangleOfIso₁₂`）。 -/

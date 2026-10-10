@@ -18,8 +18,6 @@ public import SerrePositivity.Asymptotic.LengthFamilies
 public import SerrePositivity.Asymptotic.EulerLimit
 public import SerrePositivity.Asymptotic.RankEulerAdditivity
 public import SerrePositivity.PerfectComplex.ResolutionFamilies
-public import SerrePositivity.Paper.Section4.NormalizedRankComparison
-public import SerrePositivity.Paper.Section4.CompletedRankComparison
 public import SerrePositivity.Asymptotic.PaperRankGenerators
 public import SerrePositivity.Asymptotic.PaperBaseChangeEvaluation
 public import SerrePositivity.Asymptotic.PaperVanishing
@@ -40,7 +38,6 @@ public import SerrePositivity.Paper.Section4.Theorem4_7
 対象上の有限な Euler 和と実際の複体列での超極限公式も構成済み。
 冪等完備化前の支持つきランク商では Euler 評価の三角加法性と `K₀` への降下も含む。
 係数変更と各段のテンソル積の自然同型、一様な台の保存、支持つき商の係数変更も含む。
-有限版3.5bの入力の下で、冪等完備化前の `K₀` 上の通常・正規化の階数倍公式まで接続した。
 一般の三角圏の `K₀` と、有界 t 構造に関する既存の結果も含める。
 長さで制限した加群列の有界導来圏については、全ホモロジーが通常の `o(s)`、
 または超極限で長さ零になる対象による商の有界 t 構造と冪等完備性を構成した。
@@ -51,10 +48,7 @@ heart からの有限 Postnikov 生成と、充満な三角関手の本質像に
 満たす族全体を支持つき自由列で表せる。小さいランク条件と、全ホモロジーの
 通常の `o(s)` 条件の同値も証明した。
 A 側では支持つき自由列とそのランク商の有界 t 構造を構成し、後者の冪等完備性を得た。
-この結果と支持部分圏の比較により、全体のランク商の冪等完備化の任意の支持対象に
-実際の共通有界な支持つき自由列の代表を選べる。
-Koszul 完全性を入力として、通常・正規化の Euler 階数倍公式を
-支持つきランク商の Karoubi 包絡の全対象に拡張した。
+この冪等完備性を、論文の支持圏上の一般の Koszul Euler 基底公式に適用する。
 
 Karoubi 包絡の標準的な三角構造は八面体公理まで構成済み。
 完備化と Verdier 商の順序を交換する線形三角同値を構成し、
@@ -69,16 +63,15 @@ Euler 和の K₀ への降下、および公式 (4.2) の係数等式を得た�
 極小性から実際の Koszul 第零ホモロジーの全射を作り、
 零次項のランクの正規化超極限による Euler 下界を論文側の係数変更後にも証明した。
 二段階の係数変更と直接の係数変更の自然同型を、支持つき商、完備化、論文の圏で構成した。
-有限版3.5bと A 側の Koszul 完全性から、論文の支持圏の K₀ 上で
-通常・正規化の階数倍公式を証明した。
-任意の Koszul Euler 数による全対象の基底公式を構成し、両階数倍公式をその特殊例へ移した。
+任意の Koszul Euler 数による全対象の基底公式を構成した。
+通常・正規化の比較は、この係数の一致を確認して共通の対称比較へ渡す。
 異なる二つの長さ付き代数について、Koszul Euler 数の一致と不変類の降下だけから
 共役和が一致する対称な比較も含む。
 
 2026-10-10 の方針変更により、補題4.6と定理3.1の K₀ に関する帰結を
 `supportedRankK0_descent` という一つの名前付き未証明入力として切り出した。
 係数変更によるひねりと K₀ 上の群作用、(4.1) からの有限性を証明し、
-その入力に相対的な定理4.7を対象と K₀ 類の両方について証明した。
+その入力に相対的な定理4.7を、対称比較の系として対象と K₀ 類の両方について証明した。
 定理4.7は既存の正則パラメータの正則性の未証明入力にも依存する。
 §2の具体的な環の構成は必要とせず、§2からの適用は§5側の作業である。
 

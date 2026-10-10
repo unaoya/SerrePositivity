@@ -137,10 +137,4 @@ lemma d_coordinate_mem (n : ℕ) (x : term M (n + 1))
   apply MinimalGenerators.ker_coordinate_mem
   exact (exact_ι_π M n).apply_apply_eq_zero (π M (n + 1) x)
 
-/-- 零次項の階数は `Tor₀(M,k)` の長さである。 -/
-lemma length_tor_zero :
-    Module.length R (TorModule R 0 M (R ⧸ IsLocalRing.maximalIdeal R)) =
-      MinimalGenerators.rank (syzygy M 0) :=
-  MinimalGenerators.length_tor_zero M
-
 end SerrePositivity.MinimalFreeResolution

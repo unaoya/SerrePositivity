@@ -77,23 +77,6 @@ theorem perfectionApproximation_conductor_root (g : D)
   rw [map_mul, he, RingEquiv.symm_apply_apply] at hm
   exact hm
 
-/-- 初段の共通分母だけから、各段の商への写像の核を分母の根を加えた商で評価する。
-各段ごとに共通分母条件を仮定し直す必要はない。 -/
-theorem perfectionApproximation_kernel_bound_of_conductor
-    {J : Ideal R} (lam : NormalizedLength R J) (g : D)
-    (hg : ∀ c : PerfectClosure D p, PerfectClosure.of D p g * c ∈
-      perfectionApproximation D p R 0)
-    (n : ℕ) (I : Ideal (perfectionApproximation D p R n))
-    (htors : IsPowTorsion J ((perfectionApproximation D p R n) ⧸ I))
-    (hfinite : lam.len ((perfectionApproximation D p R n) ⧸ I) ≠ ⊤) :
-    lam.len (LinearMap.ker
-      ((quotientToExtension (C := PerfectClosure D p) I).toLinearMap.restrictScalars R)) ≤
-    lam.len ((perfectionApproximation D p R n) ⧸
-      (I ⊔ Ideal.span {⟨perfectionRootHom D p n g,
-        Algebra.subset_adjoin (Set.mem_range_self g)⟩})) := by
-  apply perfectionApproximation_kernel_bound D p R lam n I _ _ htors hfinite
-  exact perfectionApproximation_conductor_root D p R g hg n
-
 /-- 等標数で完全な剰余体を持つ完備正則局所環の根の塔は、その perfection と同型。
 各段の Frobenius の全射性から、塔の像が基底環の perfection 全体になる。
 単射性には既存の正則パラメータの入力から得る各段の被約性を使う。 -/

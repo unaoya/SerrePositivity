@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.Paper.Section4.KoszulInputs
+public import SerrePositivity.Paper.Lemma3_5.Ordinary
 public import SerrePositivity.CommutativeAlgebra.FiniteLocalSupport
 public import SerrePositivity.PerfectComplex.QuotientLength
 
@@ -53,7 +53,7 @@ include hzero hquot in
 /-- 正の冪での消滅と有限な商の値から、抽象層の Koszul 有限性を得る。 -/
 lemma koszulFinite_of_lengthAlgebra_values : LengthAlgebra.KoszulFinite lam w := by
   intro v hv q
-  exact normalized_koszul_finite lam _ (hzero v hv)
+  exact LengthAlgebra.koszul_finite_of_zero_positive lam _ (hzero v hv)
     (by rw [hquot v hv]; exact ENNReal.natCast_ne_top _) q
 
 include hquot in

@@ -1,6 +1,9 @@
 module
 
-public import SerrePositivity.Paper.Section4.NormComparison
+public import SerrePositivity.Paper.Section4.SymmetricComparison
+public import SerrePositivity.Paper.Section4.LengthAlgebraRealization
+public import SerrePositivity.LengthAlgebra.Flat
+public import SerrePositivity.Asymptotic.PaperComplexBaseChange
 public import SerrePositivity.Paper.Section4.SupportedDescent
 public import SerrePositivity.Paper.Section4.LengthHypotheses
 public import SerrePositivity.Inputs.RegularLocalRing
@@ -39,16 +42,17 @@ open scoped ENNReal
 variable {A T C : Type u} [CommRing A] [IsRegularLocalRing A]
   [hderived : HasDerivedCategory (ModuleCat.{u} A)]
   [CommRing T] [IsLocalRing T] [IsDomain T] [Algebra A T] [Module.Finite A T]
-  [CommRing C] [Algebra T C] [Algebra A C] [IsScalarTower A T C]
+  [CommRing C] [Algebra T C]
   {e : ℕ} (z : Fin e → A)
-  (lam : NormalizedLength C ((maximalIdeal A).map (algebraMap A C)))
+  (lam : NormalizedLength C ((maximalIdeal A).map
+    ((algebraMap T C).comp (algebraMap A T))))
   (hz : Ideal.span (Set.range z) = maximalIdeal A)
-  (hdim : ringKrullDim A = e) (he : 0 < e)
+  (hdim : ringKrullDim A = e)
   (hres : Function.Surjective ((residue T).comp (algebraMap A T)))
   (hzero : ∀ v : ℕ, 0 < v → ∀ j : ℕ, 0 < j →
-    lam.len (koszulHomologySelf (fun k ↦ algebraMap A C (z k ^ v)) j) = 0)
+    lam.len (koszulHomologySelf (fun k ↦ (algebraMap T C (algebraMap A T (z k))) ^ v) j) = 0)
   (hquot : ∀ v : ℕ, 0 < v →
-    lam.len (C ⧸ Ideal.span (Set.range fun k ↦ algebraMap A C (z k ^ v))) =
+    lam.len (C ⧸ Ideal.span (Set.range fun k ↦ (algebraMap T C (algebraMap A T (z k))) ^ v)) =
       ((v ^ e * Module.finrank A T : ℕ) : ℝ≥0∞))
   {s : ℕ → ℕ} (U : Ultrafilter ℕ) (hU : (U : Filter ℕ) ≤ atTop) (hs : ∀ n, 0 < s n)
   (p : ℕ) [Fact p.Prime] [CharP (ResidueField A) p]
@@ -57,55 +61,75 @@ variable {A T C : Type u} [CommRing A] [IsRegularLocalRing A]
   (htrans : IsGeometricallyTransitive A T G)
 
 include hquot hsurj in
-omit hderived [IsLocalRing T] [Algebra T C] [IsScalarTower A T C] in
+omit hderived [IsLocalRing T] in
 /-- §4 の商の長さの公式から C の非自明性を得る。
 評価の構成で必要な型クラスを供給し、定理4.7の追加仮定にはしない。 -/
 lemma section4_nontrivial : Nontrivial C := by
   let : IsDomain A := isDomain_of_isRegularLocalRing A
-  have hone : (fun k : Fin e ↦ algebraMap A C (z k ^ 1)) = algebraMap A C ∘ z := by
-    funext k
-    simp
-  have hq := hquot 1 one_pos
-  rw [hone, one_pow, one_mul] at hq
-  exact nontrivial_of_section4_quotient lam _ hsurj hq
+  exact nontrivial_of_section4_quotient lam _ hsurj
+    (quotient_length_of_lengthAlgebra_values lam _ (Module.finrank A T) hquot)
 
+set_option maxHeartbeats 800000 in
+-- 一般の対称比較を、通常の評価と合成された係数変更の評価に特殊化する。
 include hdim hres p hsurj htrans hderived in
-/-- 定理4.7の K₀ 版。仮定 (4.1) から有限性を供給し、降下と命題4.5を適用する。
-全ての K₀ 類で共役和が一致し、個々の類での評価の一致は仮定しない。 -/
+/-- 定理4.7の K₀ 版。通常長さと λ の Koszul Euler 数の一致を確認し、
+対称な共通比較に降下の引用を渡す。正の冪だけで足り、`0 < e` は不要。 -/
 theorem theorem_4_7_K0
     (y : TriangulatedK0 (paperSupportedRank (s := s) (algebraMap A T ∘ z)).FullSubcategory) :
     let : Nontrivial C := section4_nontrivial z lam hquot hsurj
-    let hfin := koszul_finite_of_section4 lam z he (Module.finrank A T) hzero hquot
-    ∑ g : G, ordinaryPaperEulerOnT z hz U hU hs (g • y) =
-      ∑ g : G, normalizedPaperEulerOnT z lam hz hfin U hU hs (g • y) := by
+    let : IsNoetherianRing T := IsNoetherianRing.of_finite A T
+    let hfin := koszulFinite_of_lengthAlgebra_values lam
+      (algebraMap T C ∘ algebraMap A T ∘ z) (Module.finrank A T) hzero hquot
+    ∑ g : G, ordinaryPaperEulerK0 (algebraMap A T ∘ z)
+      (isArtinianRing_quotient_span_of_finite A T z
+        (by rw [hz]; exact (maximalIdeal.isMaximal A).isPrime.radical)) U hU hs (g • y) =
+      ∑ g : G, paperBaseChangeEulerK0 (algebraMap T C) (algebraMap A T ∘ z) lam
+        (LengthAlgebra.parameterIdeal_fg ((algebraMap T C).comp (algebraMap A T)))
+        (LengthAlgebra.parameterIdeal_support ((algebraMap T C).comp (algebraMap A T)) z hz)
+        hfin U hU hs (g • y) := by
   let : Nontrivial C := section4_nontrivial z lam hquot hsurj
-  let hfin := koszul_finite_of_section4 lam z he (Module.finrank A T) hzero hquot
+  let : IsNoetherianRing T := IsNoetherianRing.of_finite A T
+  have hArt := isArtinianRing_quotient_span_of_finite A T z
+    (by rw [hz]; exact (maximalIdeal.isMaximal A).isPrime.radical)
   have hK : IsKoszulResolution z := isKoszulResolution_of_isWeaklyRegular z
     (isWeaklyRegular_of_span_eq_maximalIdeal A z hz hdim)
-  have hone : (fun k : Fin e ↦ algebraMap A C (z k ^ 1)) = algebraMap A C ∘ z := by
-    funext k
-    simp
-  have hkz := hzero 1 one_pos
-  rw [hone] at hkz
-  have hq := hquot 1 one_pos
-  rw [hone, one_pow, one_mul] at hq
-  exact normComparison_of_descent z lam hz hfin U hU hs hK hres
-    (koszulEulerChar_eq_finrank A T z hz hdim) hkz hq G
-    (supportedRankK0_descent A T p z hz s hs G hsurj htrans) y
+  have hc : LengthAlgebra.koszulEuler (NormalizedLength.ordinary T) (algebraMap A T ∘ z) =
+      LengthAlgebra.koszulEuler lam (algebraMap T C ∘ algebraMap A T ∘ z) := by
+    apply Eq.trans ?_ (koszulEuler_of_lengthAlgebra_values lam
+      (algebraMap T C ∘ algebraMap A T ∘ z) (Module.finrank A T) hzero hquot).symm
+    change lambdaEuler (NormalizedLength.ordinary T) _ = _
+    rw [← chiOrd_eq_lambdaEuler_ordinary,
+      ← chiOrd_eq_of_homotopyEquiv (HomotopyEquiv.ofIso (baseChangeKoszulIso (algebraMap A T) z)),
+      chiOrd_baseChange_koszulComplex hres, koszulEulerChar_eq_finrank A T z hz hdim]
+  have he := symmetricPaperEuler_conjSum_eq (algebraMap A T) (RingHom.id T) (algebraMap T C)
+    (NormalizedLength.ordinary T) lam Submodule.fg_bot
+    (LengthAlgebra.parameterIdeal_fg ((algebraMap T C).comp (algebraMap A T))) z bot_le
+    (LengthAlgebra.parameterIdeal_support ((algebraMap T C).comp (algebraMap A T)) z hz)
+    (fun v _ i ↦ ordinary_koszul_pow_finite (algebraMap A T ∘ z) v i)
+    (koszulFinite_of_lengthAlgebra_values lam _ (Module.finrank A T) hzero hquot)
+    hz hK U hU hs hc (supportedRankK0_descent A T p z hz s hs G hsurj htrans) y
+  rw [paperBaseChangeEulerK0_id] at he
+  exact he
 
 include hdim hres p hsurj htrans hderived in
-/-- 定理4.7：論文の支持圏の任意の対象について、二つの Euler 評価の共役和は一致する。
-補題4.6と定理3.1の帰結、および既存の正則パラメータの入力に依存する。 -/
+/-- 定理4.7：論文の支持圏の対象について、二つの Euler 評価の共役和は一致する。
+K₀ 版を対象の類へ適用する。既存の降下と正則パラメータの引用への依存は残る。 -/
 theorem theorem_4_7
     (X : (paperSupportedRank (s := s) (algebraMap A T ∘ z)).FullSubcategory) :
     let : Nontrivial C := section4_nontrivial z lam hquot hsurj
-    let hfin := koszul_finite_of_section4 lam z he (Module.finrank A T) hzero hquot
-    ∑ g : G, ordinaryPaperEulerOnT z hz U hU hs
+    let : IsNoetherianRing T := IsNoetherianRing.of_finite A T
+    let hfin := koszulFinite_of_lengthAlgebra_values lam
+      (algebraMap T C ∘ algebraMap A T ∘ z) (Module.finrank A T) hzero hquot
+    ∑ g : G, ordinaryPaperEulerK0 (algebraMap A T ∘ z)
+      (isArtinianRing_quotient_span_of_finite A T z
+        (by rw [hz]; exact (maximalIdeal.isMaximal A).isPrime.radical)) U hU hs
         (TriangulatedK0.mk ((paperTwist z g).obj X)) =
-      ∑ g : G, normalizedPaperEulerOnT z lam hz hfin U hU hs
-        (TriangulatedK0.mk ((paperTwist z g).obj X)) := by
+      ∑ g : G, paperBaseChangeEulerK0 (algebraMap T C) (algebraMap A T ∘ z) lam
+        (LengthAlgebra.parameterIdeal_fg ((algebraMap T C).comp (algebraMap A T)))
+        (LengthAlgebra.parameterIdeal_support ((algebraMap T C).comp (algebraMap A T)) z hz)
+        hfin U hU hs (TriangulatedK0.mk ((paperTwist z g).obj X)) := by
   let : Nontrivial C := section4_nontrivial z lam hquot hsurj
-  simpa only [paperK0_smul_mk] using theorem_4_7_K0 z lam hz hdim he hres hzero hquot
+  simpa only [paperK0_smul_mk] using theorem_4_7_K0 z lam hz hdim hres hzero hquot
     U hU hs p G hsurj htrans (TriangulatedK0.mk X)
 
 end SerrePositivity.Section4

@@ -1,88 +1,80 @@
-# 不要になった旧形式化の候補（2026-10-11 調査）
+# 新しい抽象化への移行後のコード整理（2026-10-11）
 
-共通の抽象化への方針転換（[section-4-plan.md](section-4-plan.md) 冒頭）のあと、旧い形式化で不要・重複になったものを調べた記録。
-2026-10-11 時点の作業ツリー（並行作業の未コミット分を含む）に基づく。**まだ何も削除していない。**
-候補の大半は並行作業の未コミットのファイルにあるので、そのコミット後に区分ごとに別コミットで整理し、
-モジュール単位でビルドして確かめる。
+移行完了分を `1576952`（λ-平坦性・λ-CM 性から二つの実現への接続）にコミットした後、
+このノートの旧候補一覧を現在の実装と照合して整理した。
+旧候補一覧は `1576952` の同ファイルに残る。
 
-## 調べ方
+単に「核心定理から参照されない」ことだけで削除せず、現行の証明・型・import と、
+付録の抽象論の公開 API としての役割を確認した。
+削除した名前付き宣言は **74個**、削除した管理対象モジュールは **10個**。
+Lean ソースの差分は **95行追加、1753行削除（純減1658行）**。
 
-- 宣言名の出現回数による機械的な洗い出し（出現 1 回の宣言、ルート以外から import されないファイル）。
-  docstring に名前が出る宣言は漏れるので、grep で依存を手で追った。
-- 最上位の `Section5.core_of_normalization_bases` が推移的に使う定数を、ビルド済みの olean から
-  Lean のメタプログラムで計算した（10/11 00:15 時点）。以下の「新経路」はこの依存集合を指す。
-- 新経路の依存：`core_of_normalization_bases` → `core_of_lengthAlgebras_with_parameter_choice` →
-  `core_of_lengthAlgebras` → `core_of_twistedEuler_pos`＋`firstComparison`＋
-  `twistedEuler_pos_of_lengthAlgebras` → … → `lambdaChi_pos_of_parameter_tower`（`lemma_5_3`、`lemma_5_4`、
-  `exists_secondComparison_pos_of_regular`）→ … → `Section4.symmetricPaperEuler_conjSum_eq`、
-  `supportedRankK0_descent`。
-- import の上では旧ファイルも新経路に含まれる（`AsymptoticPositivity` → … → `Positivity` → `Lemma5_2`）ので、
-  判定は宣言単位で行った。
+## 削除した経路と置換先
 
-## A. 消してよいもの（旧経路の残骸）
+| 削除対象 | 現在使う経路・判断理由 |
+| --- | --- |
+| §4 の `RepresentativeComparison`、`OrdinaryRankComparison`、`NormalizedRankComparison`、`CompletedRankComparison` | `PaperK0Comparison.koszulPaperEulerK0_changeRing` が任意の Koszul Euler 数による全対象の基底公式を与える。通常・正規化の階数倍を別々に持ち上げる経路を削除した |
+| `NormComparison` と `PaperK0Comparison` の通常・正規化専用の階数倍公式 | `theorem_4_7_K0` を `symmetricPaperEuler_conjSum_eq` の特殊例に変更。定理4.7の名前と数学的結論は残す |
+| `KoszulInputs`、`LengthHypotheses` の零乗・全冪の有限性 | `LengthAlgebra.koszul_finite_of_zero_positive` と `koszulFinite_of_lengthAlgebra_values` を直接使用。抽象論は正の冪だけを要求するため、定理4.7の `0 < e` も不要になった |
+| `SupportedCompletedRepresentative` と `uniform_free_representative_of_koszul` | 旧比較用に複合していた未使用の入口を削除。基底公式に必要な `supportedRank_isIdempotentComplete_of_koszul` と一般の代表・支持比較の構成は保持 |
+| `PerfectComplex/NormalizedEuler` の錐・短完全列・自由項による有限性、独立した実数値加法性の補助証明（10宣言） | 有限性は `ProjectiveBounds` の有限射影版、加法性は `LengthAlgebra/ExactSequenceEuler` を経由する共通定理。ホモトピー不変性、錐加法性、直和因子への有限性の移送は現行証明から使うため保持 |
+| `KoszulLengthBounds` の自由基底だけを扱う上界2個、`K0.mk_eq_zero_of_homotopy_id_zero` | 直和因子版や既存の K₀ 関係で代替でき、外部参照なし |
+| `TorBound` の上下の数値的不等式、消去冪を増やす補題群（10宣言） | `ParamQuot.len_torAlg_eq_zero` は `LengthAlgebra.lambdaHomology_projective_vanishing` を使用。共通の正の消去冪と振幅を渡すので、旧 `2^h` の処理は不要 |
+| `chiLam_baseChange_koszulComplex` | `LengthAlgebra.koszulEuler_eq_length_quotient` と一般の基底公式で計算する |
+| `Paper/Lemma3_5/ConjugateSum` | 中身が互換 import だけだった。`GroupTheory/ConjugateSum` を直接使う |
+| `core_of_inputs` と `chi_pos_of_comparisons` | 現行の核心への経路は `core_of_twistedEuler_pos` と `chi_pos_of_firstComparison`。第二比較・正値性は `core_of_lengthAlgebras` 側で導く |
+| `ApproximationGrowth`、`ApproximationHomology` の Tor 代表選択2個、`MinimalTruncationComparison` の未使用5宣言、`MinimalTruncationHomology` | 生の Tor を特定次数の深い代表で計算する別経路を削除。`betti_growth_of_approximation_limits`、`exists_deeper_minimal_truncation`、現行の Koszul 計算 `minimalModelKoszulHomologyIsoAt` は保持 |
+| `MinimalFreeResolution.length_tor_zero`、`exists_free_resolution_length_mul_koszul` | 外部参照のない適用だけの入口。実際に使う `MinimalGenerators.length_tor_zero` と一般の制御付き分解は保持 |
+| §2 の `perfectionRootStageQuotientEquiv`・旧根の段の長さ公式2個、`perfectionApproximation_kernel_bound_of_conductor` | `PerfectApproximationLength` の塔の段での長さ公式、および分母の根と核の評価の組み合わせへ置換済み。残る §2 の存在構成・未証明入力は保持 |
 
-| 場所 | 宣言 | 根拠 | 消すときの注意 |
-|---|---|---|---|
-| `Paper/Section5/Positivity.lean` | `core_of_inputs`、`chi_pos_of_comparisons` | 第二比較を引数で受け取る旧入口。利用 0（後者は前者からのみ） | exposition-ja.tex と section-4-plan.md の記述を直す。`chi_pos_of_firstComparison`・`core_of_twistedEuler_pos` は新経路で使用中なので残す |
-| `Paper/Section4/` | `RepresentativeComparison`（3）→ `OrdinaryRankComparison`（`ordinaryRankEulerK0`(_changeRing)）→ `NormalizedRankComparison`（4）→ `CompletedRankComparison`（3） | 完備化前・Karoubi 段階の階数倍公式の旧層。`koszulPaperEulerK0_changeRing` が一般公式として置き換えた。全宣言が新経路で未使用 | `PaperK0Comparison` の import を `UniformRepresentative` に付け替え、`Foundations.lean` の import 2 本を外す |
-| `Paper/Section4/KoszulInputs.lean` | 4 宣言（`ordinary_koszul_pow_finite_of_finite` など） | 上の層からのみ使用 | 上と一緒に |
-| `Paper/Section4/UniformRepresentative.lean`、`Asymptotic/SupportedCompletedRepresentative.lean` | `uniform_free_representative_of_koszul` と後者の 2 宣言 | 一様代表を作る旧ルート。利用 0 | `supportedRank_isIdempotentComplete_of_koszul` は使用中なので残す |
-| `PerfectComplex/NormalizedEuler.lean` | `lambdaHomology_koszulComplexOn_ne_top`、`…_ne_top_of_single`、`lambdaHomology_koszul_single_finiteFree`、`lambdaHomology_koszul_single_ring`、`lambdaHomology_shortExact_ne_top`（約 110 行）、`lambdaHomology_cone_ne_top`、`lambdaHomology_cone_le`、`lambdaHomology_ne_top_of_nullHomotopic_cone`、`lambdaLengthReal_eq_add_range`、`lambdaHomology_hasFiniteSupport` | 互いに呼び合うだけで外部利用 0。有限性は `ProjectiveBounds` に、加法性の部品は `CategoryTheory/ExactSequenceEuler` に移った | docstring 44–52 行の説明も直す。`lambdaHomology_ne_top_of_koszulComplexOn`・`…_of_retract`・`supported_homology_isPowTorsion` は使用中 |
-| `PerfectComplex/KoszulLengthBounds.lean` | `lambdaHomology_koszul_single_le`、`lambdaHomology_koszul_baseChange_le_sum` | 直和因子版に置き換わった。利用 0 | |
-| `Paper/Lemma3_5/Normalized.lean` | `chiLam_baseChange_koszulComplex` | `LengthAlgebra.koszulEuler_eq_length_quotient` に置き換わった。利用 0 | |
-| `PerfectComplex/K0.lean` | `mk_eq_zero_of_homotopy_id_zero` | `mk_eq_zero_of_isZero` で足りる。利用 0 | |
-| `IntersectionMultiplicity/ParameterQuotientTorBound.lean` | `section upper` 全体（`isPowTorsion_koszul`、`len_koszul_isZero`、`len_koszul_single_ring`、`len_koszul_single`、`len_homology_koszulComplexOn_eq_zero`）と、`len_homology_le_koszulComplexOn`、`kills_koszulComplexOn`(_self)、`Kills.smul_homology`、`isPowTorsion_homology` | `len_torAlg_eq_zero` が共通層の `lambdaHomology_projective_vanishing` を直接使うようになり、外部利用 0 | 並行作業が編集中。`Kills` 自体は残す |
-| `Paper/Section2/PerfectApproximation.lean` | `perfectionRootStageQuotientEquiv`、`length_perfectionRootStage_quotient`、`…_quotient_base` | 塔の段の版 `PerfectApproximationLength.length_rootStage_*` に置き換わった | `LengthAlgebraConstruction` の docstring の記述も直す |
-| `Paper/Section2/PerfectConductor.lean` | `perfectionApproximation_kernel_bound_of_conductor` | 別の 2 補題の組み合わせに置き換わった。利用 0 | |
-| `Paper/Lemma3_5/ConjugateSum.lean` | ファイル全体 | 互換 import のみ（`GroupTheory/ConjugateSum`） | ルートの import 1 行と、`Paper/Lemma3_5.lean` の docstring、section-4-plan.md の表のパスを直す |
-| その他の単独の未使用 | `MinimalFreeResolution.length_tor_zero`、`ControlledResolution.exists_free_resolution_length_mul_koszul`、`Section5/ApproximationGrowth.betti_growth_of_parameter_approximation`、`Section5/ApproximationHomology` の 2 宣言と `Asymptotic/MinimalTruncationComparison` の 5 宣言（Tor を極小代表で計算する別ルート） | 利用 0、または新経路が同じことを内部で行う | `ApproximationGrowth` を消すなら `AsymptoticPositivity` の import も外す |
-| リポジトリ直下 `PerfectComplex/HomotopyCategory.lean` | ファイル全体 | ビルド対象外の古い複製（git 管理外） | 並行作業が置いた可能性があるので確認してから |
+定理4.7の係数環は `A → T → C` の合成で記述する。別に与えた `A → C` と塔の等式を
+毎回扱う旧専用定義は削除した。通常長さと λ の Koszul Euler 数をともに
+`rank_A T` と計算して共通比較へ渡す。降下と正則パラメータの引用への依存は変わらない。
 
-## B. 統合すべきもの（二重証明）
+管理対象外の `PerfectComplex/HomotopyCategory.lean` も、全宣言が正式な
+`SerrePositivity/PerfectComplex/HomotopyCategory.lean` に存在する古い複製と確認したため削除した。
+このファイルは上の74宣言・10モジュールの集計に含めない。
+OS のメタデータと別途作成された文章再構成の計画ノートは変更していない。
 
-| 対象 | 内容 | 方針 |
-|---|---|---|
-| 共役和の比較 | 共通層の `homologicalEulerK0_conjSum_eq`・`perfectEuler_conjSum_eq` が未使用。`lemma_3_5c`、`Section4/SymmetricComparison`、`NormComparison` が `conjSum_eq` を直接呼ぶ | 適用側を共通定理経由に書き換える |
-| `Section4/Theorem4_7.lean`、`NormComparison.lean` | `theorem_4_7`・`theorem_4_7_K0` は新経路で未使用で、`symmetricPaperEuler_conjSum_eq` と同じ議論の二重証明。`NormComparison` の 5 宣言は定理 4.7 からのみ使用。`PaperK0Comparison` の `ordinary/normalizedPaperEulerK0_changeRing`、`LengthHypotheses` の 3 宣言も同様 | 定理 4.7 は論文との対応として残し、`symmetricPaperEuler_conjSum_eq` の系として数行に書き直す。そのうえで `NormComparison.lean` と付随宣言を消す |
-| `Section5/AsymptoticPositivity` の `paperEuler_pos_of_finiteApproximation`・`exists_paperEuler_pos_of_minimalApproximation`、`SecondComparisonLowerBound.secondComparison_minimal_lower_bound` | 新経路は未使用で、`exists_secondComparison_pos_of_approximation` の中で同じ下界を別に証明している。section-4-plan の表では入口として挙げている | 新経路をこれらの適用にする |
-| `Paper/Corollary2_6.lean` と `Paper/Section2/Corollary2_6.lean` | 同名ファイルが二つ。`cor_2_6_pos` は `Section2.cor_2_6_residue_pos` を呼ぶ一行 | 一つにまとめる |
-| `Paper/Lemma3_4.lemma_3_4` と `Paper/Corollary2_6.cor_2_6_tor` | どちらも `normalizedLength_tor_of_isWeaklyRegular` の `v = 1` の適用。`lemma_3_4` は `NormalizedLength.restrictToBase` を手で組み直している | `cor_2_6_tor` を `lemma_3_4` から導く。両方とも論文対応として残す |
-| `HomologicalAlgebra/FiniteFreeResolution` と `CommutativeAlgebra/MinimalGenerators`＋`MinimalFreeResolution` | 有限自由被覆の核を繰り返す構成が二通り。前者の唯一の利用者は局所 Noether 環を仮定している | 極小版に統一（中優先） |
-| `NormalizedEuler.lambdaHomology_ne_top_of_retract` と `KoszulLengthBounds.lambdaHomology_le_of_retract` | 前者は後者の系 | 前者を後者から導く（低優先） |
-| `Lemma3_5.radical_span_eq_maximalIdeal` | 同じ証明が 2 か所にインライン | 任意 |
-| `MinimalTruncationHomology.truncatedKoszulMapHomologyIso` | 未使用。利用側は `StupidTruncation.koszulMapHomologyIso` を直接呼ぶ | どちらかにそろえる |
+## 残したコードと理由
 
-## C. 判断が必要なもの
+- `K0Supported`、`chiOrd`、`chiOrdHom`、`chiLam`、`chiLamHom_of_finite`、`lambdaEuler`：
+  現在も具体的な計算、旧 K₀ での Koszul 生成・降下、より弱い有限性条件で使用する。
+  新 K₀ への比較と評価の一致は証明済みで、加法性の重複した証明は残していない。
+- `RankEulerComparison`、`CompletedK0Comparison` などの一般の係数変更・完備化の比較：
+  現在の `PaperBaseChange` と `koszulPaperEulerK0_changeRing` が使う。
+  今回削除した論文固有の階数倍比較とは区別する。
+- `LengthDerivedQuotient`、`SmallLengthDerivedQuotient`、`PaperRankGenerators`、
+  `FreeSequenceGenerator`：付録の圏・関手と論文の圏の実現を支える公開 API。
+- `ApproximationEuler`・`ApproximationBetti` の評価同定、正値性・下界の個別入口：
+  最終の核心への一本道以外にも、論文の式や抽象論の適用に対応する独立した主張がある。
+- `LengthAlgebra.KoszulAcyclic`：旧調査時には未使用だったが、現在は λ-平坦性・λ-CM 性からの
+  接続で使用中。旧調査の結果だけで削除しない。
+- `homologicalEulerK0_conjSum_eq`・`perfectEuler_conjSum_eq` と群論の `conjSum_eq`：
+  評価の抽象度に応じた共通入口。後者を直接使う証明も群論を再証明しているわけではない。
+- 論文の主張そのもの、§2の未完成の構成、既存の引用定理：今回の整理で削除しない。
 
-| 対象 | 状況 |
-|---|---|
-| `Section5/ApproximationEuler.lean` の 4 宣言 | 有限近似から `c_σ` を同定する別ルート。新経路は不要だが論文の式との対応がある |
-| `Asymptotic/` の LengthDerivedQuotient、SmallLengthDerivedQuotient（`SmallLengthSerreQuotient` の 7 宣言を含む）、PaperRankGenerators、FreeSequenceGenerator | 論文の圏 D_S、N_S、P_S との対応。新経路には不要。import 元は `Foundations.lean` だけ |
-| `Asymptotic/` の完備化前・Karoubi 段階の K₀ 評価（`RankEulerAdditivity`、`RankEulerComparison`、`CompletedK0Comparison`、`CompletedEulerAdditivity` の一部） | Section4 の旧比較層と対。P1 で `homologicalEulerK0` に統一したばかりなので、消すなら宣言単位 |
-| `Section5/ApproximationBetti` の 4 宣言、`MinimalBetti.finrank_eq_length_tor`、`TorSymmetry.length_torModule_comm`・`torModuleIsoCochainLeft` | 未使用だが API の性格 |
-| `CommutativeAlgebra/Multiplicity.lean` | 旧定義が消え、パラメータ系の定義だけが残る。改名候補（import 4 か所） |
-| `Inputs/LengthAlgebra.lean` | `sorry` も入力もなく書き換え補題 2 つだけ。`Paper/Section2/LengthAlgebraConsequences.lean` へ移し、不要な import を削る候補 |
-| `LengthAlgebra/Koszul.KoszulAcyclic` | 新しい定義だが利用 0 |
-| ルートに載っていないファイル | 多数（FiniteFreeResolution、MinimalFreeResolution、Perfect* 系など）。推移的に import されるのでビルドは壊れない。ルートを全ファイルの一覧とするなら追加する |
+## 統合と削除の区別
 
-## 残すもの
+旧候補一覧にあった、系2.6と補題3.4の入口の統合、一般の有限自由分解と極小分解の
+構成の統合、ファイル名の変更などは、単なる未使用コードの削除とは異なる。
+一般性や独立した公開定理の形を変える必要があるため、今回の削除には含めていない。
+現在の実装が不要であると確認できた、未処理の削除候補としては扱わない。
 
-- 新経路で使用中：`lemma_5_3`、`lemma_5_4`、`length_le_tor_zero_mul`、`firstComparison`、`FirstComparison`・`NormApplication`、
-  `Preparation`、`ParameterAvoidance`、`ParameterChoice`（前者を有限拡大へ移す薄い包みで重複ではない）、
-  `SymmetricComparison`、`PaperK0Comparison` の `ordinaryPaperEulerK0`・`koszulPaperEulerK0_changeRing`、
-  `LengthAlgebraRealization`、`SupportedDescent`。
-- 論文の主張に対応する未使用の定理：`lemma_2_1`、`lemma_2_2`、`lemma_2_4_*`、`lemma_3_4`、`Statement` の 2 主張。
-- 旧定義 `K0Supported`、`chiOrd`、`chiOrdHom`、`chiLam`、`chiLamHom_of_finite`、`lambdaEuler`：今も広く使用。
-  降下の入力 `theorem_3_1_K0` が旧 K₀ 上で述べられ、Koszul 生成 `hom_ext_koszul` も旧側にしかない。
-  計画ノートも具体的な計算と弱い有限性条件のために残すと明記。加法性の証明はすでに共通定理を通る。
-- 付録の二つの実現のための API（消滅、下界、t 構造、`LengthFamilies` など）。
-- §2 の未完の部品（等標数の長さ代数の `sorry` を埋めるためのもの）。
+README・解説 TeX/PDF・現行の証明方針も置換先に合わせた。
+過去の実施記録は履歴として残し、冒頭にこの整理記録への案内を加えた。
 
-## 古い記述
+## 検証
 
-- `PerfectComplex/NormalizedEuler.lean` の docstring 44–52 行（有限性の証明経路）。
-- `Paper/Lemma3_5/Ordinary.lean` 後半の docstring（`K0.hom_ext_koszul` で直接比べると書いているが、実装は
-  `lambdaEuler_baseChange_eq_koszulEuler_mul` 経由）。
-- `Paper/Section2/Lemma2_2.lean` の「具体形（下流では使わない）」（いまは `theorem_2_5` の `hbase` が使う）。
-- `notes/section-2-plan.md` の、削除済みの `exists_lengthAlgebra`・`hilbertSamuelMultiplicity` を「現在の」とする箇所。
-- `PowTorsionCategory.lean`、`KoszulOrdinaryLength.lean` にモジュール docstring がない。
+- 全体 `lake build`：3474ジョブで成功。今回の変更による新規警告なし。
+- 49宣言の `#print axioms`：46宣言は `propext`・`Classical.choice`・`Quot.sound` のみ。
+  `theorem_4_7_K0`・`theorem_4_7`・`lemma_3_5` の3宣言には既存の引用に由来する
+  `sorryAx` が残る。新しい `sorry`・公理は追加していない。
+- ルートを import した Lean の環境を調べ、削除した74宣言が全て存在しないことを確認。
+  古いビルド生成物から削除済み宣言が読み込まれていないことも確認できる。
+- 全324モジュールがルートから到達可能で、欠けた import もない。
+  削除したファイル経由で読み込まれていた `TorSymmetry` は、実際の使用先である
+  `ApproximationBetti` から直接 import する。
+- `git diff --check`：成功。解説の Lean 参照にも削除した宣言は残っていない。
+- LuaLaTeX による解説PDFの再生成：50ページ。修正箇所と隣接ページ（13・14・16・17）を
+  画像で確認し、はみ出し・行欠けなし。Overfull/Underfull の警告なし。

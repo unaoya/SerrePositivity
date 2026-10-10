@@ -1,5 +1,9 @@
 # §4 の形式化計画
 
+2026-10-11 の整理：抽象化で置き換わった旧比較層・補助証明を削除した。
+以下の過去の実施記録には削除前の名前を残す。現行の置換先と保持理由は
+[整理記録](cleanup-candidates-2026-10-11.md) を参照。
+
 ## 現在の作業範囲：抽象化と二つの実現に集中する（2026-10-10 方針変更）
 
 ユーザーの指示により、論文全体の形式化は後の課題とし、付録 B・C の共通理論と、
@@ -896,7 +900,7 @@ M5b の Theorem 4.7 は、論文と同様に Theorem 3.1 を使う。現在の�
 | `PerfectComplex/NormalizedLength.lean`、`NormalizedEuler.lean` | `lambdaHomology_cone_le`、`lambdaHomology_koszulComplexOn_ne_top` などを実装済み。通常長さは `NormalizedLength.ordinary` として共通の理論を使える。有限性から O(sₙ) への定量化は未実装 |
 | `HomologicalAlgebra/NullHomotopy.lean`、`PerfectComplex/Support.lean` | ホモロジーの消去から零ホモトピーへの橋渡しがある。存在量化された冪をそのまま段ごとに選ばず、共通の次数幅から一様な冪を取り出す接続が必要 |
 | `HomologicalAlgebra/KProjectiveLift.lean`、`Resolution.lean`、`Basic.lean`、`ConeResolution.lean` | S5 の制御された Horseshoe 構成の材料。`IsResolutionOf` と `Inputs.regularResolution` だけでは共通の次数幅とランク評価は得られない |
-| `Paper/Lemma3_5/ConjugateSum.lean` の `conjSum_eq` | 任意のアーベル群について証明済み。Theorem 4.7 の最後の共役和の等式に使う |
+| `GroupTheory/ConjugateSum.lean` の `conjSum_eq` | 任意のアーベル群について証明済み。Theorem 4.7 の最後の共役和の等式に使う |
 | `PerfectComplex/K0.lean` | 有限自由複体を生成元とする具体的な K₀。商圏 P_S^J の K₀ を直接与えるものではない。普遍性・関係式の実装方針を再利用する |
 | `Inputs/Descent.lean` の `theorem_3_1_K0` | H = A の場合の未証明入力。一般の連結な H が必要な Theorem 4.7 には、そのまま適用できない |
 

@@ -99,9 +99,9 @@ end
 
 `χ_T(Q ⊗_A T) = r · χ_A(Q)`（`r = rank_A T`、`χ_T` は `T` 上の長さ）。
 
-`Q ↦ χ_T(Q ⊗_A T)` と `Q ↦ r · χ_A(Q)` はどちらも `K₀^{m}(A)` 上の準同型（前者は 3.5a の
-`chiOrdHom_of_radical` と基底変更 `K0.map` の合成、後者は `chiOrdHom` の `r` 倍）なので、`K₀^{m}(A)`
-が `[K(z)]` で生成されること（`K0.hom_ext_koszul`）から、`K(z)` での値を比べれば足りる。
+共通の `LengthAlgebra.lambdaEuler_baseChange_eq_koszulEuler_mul` に通常長さを適用する。
+この共通定理が基底上の Koszul 生成を扱うので、ここでは準同型の一致を再証明せず、
+係数となる Koszul Euler 数を次の通り計算する。
 
 - `χ_T(K(z) ⊗_A T) = χ^A(z; T)`（`chiOrd_baseChange_koszulComplex`）：`K(z) ⊗_A T ≅ K(z; T)` で、
   剰余体が同じ局所環 `T` 上では `T` 加群の `T` 上の長さと `A` 上の長さが一致する

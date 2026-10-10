@@ -45,7 +45,7 @@ public import Mathlib.RingTheory.Spectrum.Prime.RingHom
 - **3.5c**（節 c：さらに剰余標数 `p > 0`、有限群 `G` が `A` 上 `T` に作用し、`Spec T → Spec A` は
   全射（`hsurj`）で幾何ファイバーで推移的（`htrans`））：共役和 `Σ_g χ_T(g^*P) = Σ_g χ_C(g^*P)`。
   証明は Theorem 3.1 の帰結 `theorem_3_1_K0`（層 2、`sorry`）と形式的補題 `conjSum_eq`
-  （`Lemma3_5/ConjugateSum.lean`）、3.5a、3.5b による：3.5a の二つの準同型は 3.5b により `K₀(A)` の
+  （`GroupTheory/ConjugateSum.lean`）、3.5a、3.5b による：3.5a の二つの準同型は 3.5b により `K₀(A)` の
   像の上で一致し、Theorem 3.1 により `G` 不変な元（共役和）の正の倍数は `K₀(A)` から来る。
 
 `lemma_3_5` はこれらの組み合わせ（有限性と共役和の一致）。

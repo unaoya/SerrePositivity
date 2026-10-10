@@ -63,7 +63,6 @@ public import SerrePositivity.Paper.Corollary2_6
 public import SerrePositivity.Paper.Lemma3_4
 public import SerrePositivity.Paper.Lemma3_5.Ordinary
 public import SerrePositivity.Paper.Lemma3_5.Normalized
-public import SerrePositivity.Paper.Lemma3_5.ConjugateSum
 public import SerrePositivity.Paper.Lemma3_5
 public import SerrePositivity.Paper.Lemma5_2
 public import SerrePositivity.Paper.Section4.Foundations

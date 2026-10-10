@@ -12,7 +12,6 @@ public import SerrePositivity.CommutativeAlgebra.PerfectNormality
 `D_perf` の中で `D^{1/pⁿ}` と係数環 `R` が生成する部分代数を定義する。
 これらは増大し、全ての元を覆う。定理2.5では `R = Λ` として `B_q` の像を扱う。
 共通分母を与えれば、商への写像の核の長さを分母倍写像の余核の長さで評価できる。
-根の段の通常の長さは、Frobenius 冪による商の長さへ戻す。
 テンソル積表示との同定は `PerfectBaseChange.lean` で証明する。
 近似環の商の正規化長さは `PerfectApproximationLength.lean` で証明する。
 固定した商の中での像も定義し、その増大性と被覆を証明する。
@@ -132,58 +131,6 @@ theorem perfectionRootStageBaseMap_coe [IsReduced D] (n : ℕ) (x : D) :
     (perfectionRootStageBaseMap D p n x : PerfectClosure D p) = PerfectClosure.of D p x := by
   change perfectionRootHom D p n (x ^ (p ^ n)) = _
   rw [map_pow, perfectionRootHom_apply, perfection_mk_pow]
-
-/-- 根の段での商を、元の環での Frobenius 冪による商に戻す。
-`H.map (iterateFrobenius D p n)` は論文の `H^[q]`、`q = pⁿ` である。
-右辺では `H` を通常の包含で拡大し、`g` の `q` 乗根を加えている。 -/
-noncomputable def perfectionRootStageQuotientEquiv [IsReduced D] (n : ℕ)
-    (H : Ideal D) (g : D) :
-    D ⧸ (H.map (iterateFrobenius D p n) ⊔ Ideal.span {g}) ≃+*
-      (perfectionRootStage D p n) ⧸
-        (H.map (perfectionRootStageBaseMap D p n) ⊔
-          Ideal.span {perfectionRootStageEquiv D p n g}) :=
-  Ideal.quotientEquiv _ _ (perfectionRootStageEquiv D p n) (by
-    rw [Ideal.map_sup, Ideal.map_span, Set.image_singleton, Ideal.map_map]
-    rfl)
-
-/-- 根の段での商の通常の長さを、元の環の Frobenius 冪による商の長さに戻す。
-環同型に沿った係数制限で長さを比較する。通常の包含に沿った係数制限とは区別する。 -/
-theorem length_perfectionRootStage_quotient [IsReduced D] (n : ℕ) (H : Ideal D) (g : D) :
-    Module.length (perfectionRootStage D p n)
-      ((perfectionRootStage D p n) ⧸
-        (H.map (perfectionRootStageBaseMap D p n) ⊔
-          Ideal.span {perfectionRootStageEquiv D p n g})) =
-      Module.length D (D ⧸ (H.map (iterateFrobenius D p n) ⊔ Ideal.span {g})) := by
-  let : Algebra D (perfectionRootStage D p n) :=
-    (perfectionRootStageEquiv D p n).toRingHom.toAlgebra
-  let e : D ≃ₐ[D] perfectionRootStage D p n :=
-    { perfectionRootStageEquiv D p n with commutes' := fun _ ↦ rfl }
-  have hmap : H.map (perfectionRootStageBaseMap D p n) ⊔
-      Ideal.span {perfectionRootStageEquiv D p n g} =
-      (H.map (iterateFrobenius D p n) ⊔ Ideal.span {g}).map e.toRingEquiv.toRingHom := by
-    rw [Ideal.map_sup, Ideal.map_span, Set.image_singleton, Ideal.map_map]
-    rfl
-  let eqv := Ideal.quotientEquivAlg _ _ e hmap
-  rw [← Module.length_eq_of_surjective (S := D) (R := perfectionRootStage D p n)
-    (M := (perfectionRootStage D p n) ⧸
-      (H.map (perfectionRootStageBaseMap D p n) ⊔
-        Ideal.span {perfectionRootStageEquiv D p n g})) e.surjective]
-  exact eqv.toLinearEquiv.length_eq.symm
-
-/-- 分母を加えない場合の有限段の長さ公式。 -/
-theorem length_perfectionRootStage_quotient_base [IsReduced D] (n : ℕ) (H : Ideal D) :
-    Module.length (perfectionRootStage D p n)
-      ((perfectionRootStage D p n) ⧸ H.map (perfectionRootStageBaseMap D p n)) =
-      Module.length D (D ⧸ H.map (iterateFrobenius D p n)) := by
-  have hleft : H.map (perfectionRootStageBaseMap D p n) ⊔
-      Ideal.span {perfectionRootStageEquiv D p n 0} =
-      H.map (perfectionRootStageBaseMap D p n) := by simp
-  have hright : H.map (iterateFrobenius D p n) ⊔ Ideal.span {0} =
-      H.map (iterateFrobenius D p n) := by simp
-  exact (congrArg (fun I : Ideal (perfectionRootStage D p n) ↦
-    Module.length (perfectionRootStage D p n) ((perfectionRootStage D p n) ⧸ I)) hleft).symm.trans
-    ((length_perfectionRootStage_quotient D p n H 0).trans
-      (congrArg (fun I : Ideal D ↦ Module.length D (D ⧸ I)) hright))
 
 variable (R : Type u) [CommRing R] [Algebra R (PerfectClosure D p)]
 

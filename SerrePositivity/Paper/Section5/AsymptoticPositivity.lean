@@ -2,7 +2,6 @@ module
 
 public import SerrePositivity.Paper.Section5.SupportedApproximation
 public import SerrePositivity.Paper.Section5.ApproximationEuler
-public import SerrePositivity.Paper.Section5.ApproximationGrowth
 public import SerrePositivity.Paper.Section5.ApproximationSecondComparison
 public import SerrePositivity.Paper.Section5.ApproximationPositivity
 public import SerrePositivity.Paper.Section5.NormalizationPositivity
@@ -18,7 +17,7 @@ public import SerrePositivity.Asymptotic.PaperMinimalLowerBound
 `ApproximationBetti` により、同じ対象の各次数の評価と有限近似の Tor 極限が一致し、
 Euler 評価をその有限交代和で計算できる。
 `ApproximationEuler` は有限近似の極限から全ひねりの通常評価を `c_σ` と同定する。
-`ApproximationGrowth` はパラメータ商での有限性・消滅から Betti 数の増大条件を供給する。
+`ApproximationHomology` は剰余体 Tor の極限から Betti 数の増大条件を供給する。
 `ApproximationSecondComparison` は同じ複体の支持を移し、実際の群作用について第二比較を導く。
 `SecondComparisonLowerBound` は各共役の共通下界を、比較元の通常 Euler 評価にも移す。
 `ApproximationPositivity` は同じ近似から第二比較の対象と全共役の正値性を同時に構成し、

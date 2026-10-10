@@ -128,19 +128,6 @@ lemma lambdaHomology_koszul_single_pi_le (hfg : J.FG) {n : ℕ}
           lambdaHomology_koszul_single_ring_eq lam x a q, succ_nsmul]
       simpa only [add_comm] using add_le_add_left ih (lam.len ((koszulComplex x).homology (q - a))))
 
-/-- 指定された有限基底の個数で単一複体の Koszul ホモロジーを評価する。
-基底変更後の階数を改めて計算せず、与えられた同型を関手で送る。 -/
-lemma lambdaHomology_koszul_single_le (hfg : J.FG) {n : ℕ}
-    (x : Fin n → C) (hJ : J ≤ (Ideal.span (Set.range x)).radical) (a q : ℤ)
-    (M : ModuleCat.{u} C) (m : ℕ) (e : M ≅ ModuleCat.of C (Fin m → C)) :
-    lam.len ((koszulComplexOn x ((HomologicalComplex.single _ _ a).obj M)).homology q) ≤
-      m • lam.len ((koszulComplex x).homology (q - a)) := by
-  let F := HomologicalComplex.single (ModuleCat.{u} C) (ComplexShape.up ℤ) a ⋙ koszulFunctor x ⋙
-    HomologicalComplex.homologyFunctor (ModuleCat.{u} C) (ComplexShape.up ℤ) q
-  change lam.len (F.obj M) ≤ _
-  rw [lam.len_congr _ _ (F.mapIso e).toLinearEquiv]
-  exact lambdaHomology_koszul_single_pi_le lam hfg x hJ a q m
-
 /-- 有限自由加群の直和因子に対しても、同じ Koszul 長さの上界が使える。 -/
 lemma lambdaHomology_koszul_single_le_of_retract (hfg : J.FG) {n : ℕ}
     (x : Fin n → C) (hJ : J ≤ (Ideal.span (Set.range x)).radical) (a q : ℤ)
@@ -240,24 +227,5 @@ lemma lambdaHomology_le_sum_of_nullHomotopies (hfg : J.FG) {n : ℕ}
   (lambdaHomology_le_of_retract lam (retractKoszulComplexOn x P hnull) q
     (supported_homology_isPowTorsion hfg hJ (isSupported_koszulComplexOn x P) q)).trans
     (lambdaHomology_koszulComplexOn_le_sum lam hfg x hJ a w r P hbound hterm q)
-
-/-- 係数拡大した複体の Koszul ホモロジーを、元の環上の基底の個数で評価する。
-有限基底をテンソル積に運ぶので、係数拡大の平坦性は必要ない。 -/
-lemma lambdaHomology_koszul_baseChange_le_sum {T : Type u} [CommRing T]
-    (φ : T →+* C) (hfg : J.FG) {n : ℕ}
-    (x : Fin n → C) (hJ : J ≤ (Ideal.span (Set.range x)).radical)
-    (a : ℤ) (w : ℕ) (r : ℤ → ℕ) (P : CochainComplex (ModuleCat.{u} T) ℤ)
-    (hbound : ∀ i, (i < a ∨ a + w ≤ i) → IsZero (P.X i))
-    (hterm : ∀ i, a ≤ i → i < a + w → Nonempty (P.X i ≅ ModuleCat.of T (Fin (r i) → T)))
-    (q : ℤ) :
-    lam.len ((koszulComplexOn x (baseChange φ P)).homology q) ≤
-      ∑ j ∈ Finset.range w, r (a + j) • lam.len ((koszulComplex x).homology (q - (a + j))) := by
-  let : Algebra T C := φ.toAlgebra
-  apply lambdaHomology_koszulComplexOn_le_sum lam hfg x hJ a w r
-  · intro i hi
-    exact (ModuleCat.extendScalars φ).map_isZero (hbound i hi)
-  · intro i hi hi'
-    let b := Module.Basis.ofEquivFun (hterm i hi hi').some.toLinearEquiv
-    exact ⟨(b.baseChange C).equivFun.toModuleIso⟩
 
 end SerrePositivity

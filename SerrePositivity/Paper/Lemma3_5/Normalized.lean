@@ -93,44 +93,6 @@ variable {A T C : Type u} [CommRing A] [IsLocalRing A] [IsNoetherianRing A] [Com
   [Algebra A T] [Module.Finite A T] [CommRing C] [Algebra T C] [Algebra A C] [IsScalarTower A T C]
   {e : ℕ} {z : Fin e → A} {lam : NormalizedLength C ((maximalIdeal A).map (algebraMap A C))}
 
-omit [IsNoetherianRing A] [Module.Finite A T] in
-/-- 生成元での値：正次数の Koszul ホモロジーの `λ` が `0` なら `χ_C(K(z) ⊗_A T) = λ(C/zC)`。
-`(K(z) ⊗_A T) ⊗_T C ≅ K(z; C)`（`baseChangeKoszulIso` を二回）なので、`χ_C` は `K(z; C)` のホモロジーの
-`λ` の交代和。正の次数は項が零、負の次数は仮定 `hkz` で `0`、残る `0` 次は `H^0(K(z; C)) ≅ C/zC`。 -/
-theorem chiLam_baseChange_koszulComplex
-    (hkz : ∀ i : ℕ, 0 < i → lam.len (koszulHomologySelf (algebraMap A C ∘ z) i) = 0) :
-    chiLam lam (algebraMap T C) (baseChange (algebraMap A T) (koszulComplex z)) =
-      (lam.len (C ⧸ Ideal.span (Set.range (algebraMap A C ∘ z)))).toReal := by
-  have hw : algebraMap T C ∘ (algebraMap A T ∘ z) = algebraMap A C ∘ z := by
-    funext j
-    exact (IsScalarTower.algebraMap_apply A T C (z j)).symm
-  -- `(K(z) ⊗_A T) ⊗_T C ≅ K(z; C)`
-  let i : baseChange (algebraMap T C) (baseChange (algebraMap A T) (koszulComplex z)) ≅
-      koszulComplex (algebraMap A C ∘ z) :=
-    ((ModuleCat.extendScalars.{u, u, u} (algebraMap T C)).mapHomologicalComplex _).mapIso
-      (baseChangeKoszulIso (algebraMap A T) z) ≪≫
-      baseChangeKoszulIso (algebraMap T C) (algebraMap A T ∘ z) ≪≫ eqToIso (by rw [hw])
-  have hlen : ∀ n : ℤ, lam.len
-      ((baseChange (algebraMap T C) (baseChange (algebraMap A T) (koszulComplex z))).homology n) =
-      lam.len ((koszulComplex (algebraMap A C ∘ z)).homology n) := fun n ↦
-    lam.len_congr _ _ ((HomologicalComplex.homologyFunctor _ _ n).mapIso i).toLinearEquiv
-  unfold chiLam
-  simp_rw [hlen]
-  rw [finsum_eq_single _ (0 : ℤ)]
-  · rw [Int.negOnePow_zero, Units.val_one, Int.cast_one, one_mul,
-      lam.len_congr _ _ (koszulComplex_homology_zero_equiv (algebraMap A C ∘ z)).some]
-  · intro n hn
-    rcases lt_or_gt_of_ne hn with hn | hn
-    · obtain ⟨k, rfl⟩ : ∃ k : ℕ, n = -(k : ℤ) := ⟨(-n).toNat, by omega⟩
-      have := hkz k (by omega)
-      change lam.len (koszulHomologySelf (algebraMap A C ∘ z) k) = 0 at this
-      rw [show lam.len ((koszulComplex (algebraMap A C ∘ z)).homology (-(k : ℤ))) = 0 from this]
-      simp
-    · have := ModuleCat.subsingleton_of_isZero
-        (koszulComplex_isZero_homology_of_pos (algebraMap A C ∘ z) n hn)
-      rw [lam.len_eq_zero_of_subsingleton]
-      simp
-
 omit [Module.Finite A T] in
 /-- **Lemma 3.5b、正規化長さの側**：共通の Koszul Euler 基底公式に、
 高次の零長さと第零商の階数の計算を適用する。基底の Koszul 分解は入力として明示する。 -/

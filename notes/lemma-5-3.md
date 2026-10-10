@@ -31,19 +31,16 @@
 
 主定理 `ParamQuot.len_torAlg_eq_zero`：`x_j L = 0`、`L` の長さ `d` 以下の有限自由分解 `P`（`IsResolutionOf`、
 `-d` 次より下で零）、`J` は有限生成で `J ⊆ √((x)C)`、`λ(H_q(x^v; C)) = 0`（`q, v > 0`）なら
-`i + h > d` で `λ(Tor_i^R(C, L)) = 0`。論文の導来圏の分解は使わず、`K(z; P_C)`
-（`P_C = C ⊗ P`、`z = φ(x)^{w 2^h}`）のホモロジーを二通りに評価した。
+`i + h > d` で `λ(Tor_i^R(C, L)) = 0`。
 
-- 零ホモトピーの道具（`TorBound`）：`Kills a X`（ホモトピー圏で `a • 𝟙 = 0`）、写像錐ごとに冪が二乗
-  （`kills_koszulComplexOn`、`kills_koszulComplexOn_self`）、ホモロジーを消す（`Kills.smul_homology`）、
-  ねじれ（`isPowTorsion_homology`）。
-- 下から（`len_homology_le_koszulComplexOn`）：`c_k` が `X` 上で零、`e ≥ 2^n` なら
-  `λ(H^{m+n}(X)) ≤ λ(H^m(K(c^e; X)))`。写像錐の長完全列で連結射が全射（`Cone.exact₁`）。
-- 上から（`len_homology_koszulComplexOn_eq_zero`）：有界有限自由複体 `Q` が `m` 次以下で零なら
-  `λ(H^m(K(z; Q))) = 0`。項による帰納法（`boundedFiniteFree_induction`）、単一複体はシフト同型で
-  `H_q(z; C)` へ、直積は分裂短完全列（`NormalizedEuler.lean` の有限性の議論と同じ形）。
-- `x_j` の冪は `P` 上で零ホモトピック（`exists_pow_nullHomotopy_of_homology_annihilated`）、
-  係数拡大で `P_C` へ（`Functor.mapHomotopy`、`baseChange_smulId`）。
+2026-10-11：証明を共通の反復錐定理へ移し、旧数値的不等式の反復証明を削除した。
+
+- `x_j L = 0` から、分解 `P` 上で各 `x_j` の冪が零ホモトピックになる。
+  共通の正の冪 `w` を選び、係数変更後の `P_C` へ移す。
+- `c_j = φ(x_j)^w` と分解の振幅 `[-d, 0]` を
+  `LengthAlgebra.lambdaHomology_projective_vanishing` に渡す。
+- 環自身の正次数の Koszul 消滅と、長さの商での反復錐定理から結論を得る。
+  以前の `w 2^h` という余分な冪と、上下の数値的不等式の独立した証明は不要。
 
 仮定の形について：(a) は `J^a ⊆ (x)C`、(b) は `J` 有限生成かつ `J ⊆ √((x)C)`。論文の設定
 （`J = 𝔡′C`、`I_σ` は `𝔡′` 準素）ではどちらも成り立つ。Koszul ホモロジーの評価は (b) では
