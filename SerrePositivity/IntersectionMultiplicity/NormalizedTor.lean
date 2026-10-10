@@ -1,28 +1,28 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.TorLES
-public import SerrePositivity.HomologicalAlgebra.TorTorsion
+public import SerrePositivity.CommutativeAlgebra.TorFiniteLength
 public import SerrePositivity.CommutativeAlgebra.FiniteLength
 public import SerrePositivity.PerfectComplex.NormalizedLength
-public import SerrePositivity.CommutativeAlgebra.TorKoszul
+public import SerrePositivity.CommutativeAlgebra.KoszulResolution
 public import Mathlib.RingTheory.Regular.RegularSequence
 public import Mathlib.Topology.Instances.ENNReal.ENatENNReal
 
 /-!
-# Lemma 3.4 の抽象版
+# 有限長加群の Tor の正規化長さ
 
-`notes/lemma-3-4.md` の整理どおり、証明に使うのは
+系2.6と補題3.4に共通する一般定理。仮定は
 
 - `z` が `m_A` を生成する弱正則列であること（`A` は局所環）、
 - `C` が `A` 代数であること（`φ : A →+* C`）、
 - `λ` が `m_A C` の冪で消える `C` 加群の上で加法的・非負であること、
-- (3.9) の `v = 1`：`λ H_i(φ z; C) = 0 (i > 0)`、`λ(C/(φ z)C) = r`
+- Koszul ホモロジーの評価：`λ H_i(φ z; C) = 0 (i > 0)`、`λ(C/(φ z)C) = r`
 
-だけである。結論は有限長 `A` 加群 `V` に対する (3.10)：
-`λ Tor_i^A(V, C) = 0 (i > 0)`、`λ Tor_0^A(V, C) = r · length_A V`、すべて有限。
+である。結論は有限長 `A` 加群 `V` に対する公式：
+`λ Tor_i^A(C, V) = 0 (i > 0)`、`λ Tor_0^A(C, V) = r · length_A V`、すべて有限。
 
 証明は組成列の帰納法。`V = k = A/m` のときは Koszul 分解（`torAlgKoszulEquiv`）で
-`Tor_i^A(k, C) ≅ H_i(φ z; C)`。一般の `V` は `0 → N → V → k → 0` の Tor 長完全列
+`Tor_i^A(C, k) ≅ H_i(φ z; C)`。一般の `V` は `0 → N → V → k → 0` の Tor 長完全列
 （`torAlg_longExact`）と、`NormalizedLength` の完全列の評価による。
 -/
 
@@ -37,50 +37,10 @@ namespace SerrePositivity
 
 variable {A C : Type u} [CommRing A] [CommRing C] (φ : A →+* C)
 
-/-- 線形同値な加群の `Tor` は線形同値。 -/
-noncomputable def torAlgCongr (i : ℕ) {V W : Type u} [AddCommGroup V] [Module A V]
-    [AddCommGroup W] [Module A W] (e : V ≃ₗ[A] W) : TorAlg φ i V ≃ₗ[C] TorAlg φ i W :=
-  (((ModuleCat.extendScalars.{u, u, u} φ).leftDerived i).mapIso e.toModuleIso).toLinearEquiv
-
-/-- 零加群の `Tor` は零。 -/
-lemma torAlg_subsingleton (i : ℕ) (V : Type u) [AddCommGroup V] [Module A V] [Subsingleton V] :
-    Subsingleton (TorAlg φ i V) := by
-  have hz : IsZero (ModuleCat.of A V) := ModuleCat.isZero_of_subsingleton _
-  have : Projective (ModuleCat.of A V) := hz.projective
-  rcases i with _ | i
-  · -- `Tor_0 ≅ F.obj V`：`F = extendScalars φ` は左随伴なので有限余極限を保つ
-    have : PreservesFiniteColimits (ModuleCat.extendScalars.{u, u, u} φ) := by
-      have := (ModuleCat.extendRestrictScalarsAdj.{u, u, u} φ).leftAdjoint_preservesColimits
-      infer_instance
-    exact ModuleCat.subsingleton_of_isZero
-      ((((ModuleCat.extendScalars.{u, u, u} φ).leftDerivedZeroIsoSelf).app
-        (ModuleCat.of A V)).isZero_iff.mpr
-        ((ModuleCat.extendScalars.{u, u, u} φ).map_isZero hz))
-  · exact ModuleCat.subsingleton_of_isZero
-      ((ModuleCat.extendScalars.{u, u, u} φ).isZero_leftDerived_obj_projective_succ i _)
-
 variable [IsLocalRing A]
 
-/-- `V` が有限長なら `Tor_i^A(V, C)` は `m_A C` の冪で消える。 -/
-lemma torAlg_isPowTorsion (i : ℕ) (V : Type u) [AddCommGroup V] [Module A V]
-    (hV : IsFiniteLength A V) : IsPowTorsion ((maximalIdeal A).map φ) (TorAlg φ i V) := by
-  obtain ⟨n, hn⟩ := IsFiniteLength.exists_isTorsionBySet_maximalIdeal_pow hV
-  refine ⟨n, ?_⟩
-  rw [Module.isTorsionBySet_iff_subset_annihilator, ← Ideal.map_pow, Ideal.map,
-    SetLike.coe_subset_coe, Ideal.span_le]
-  rintro _ ⟨a, ha, rfl⟩
-  rw [SetLike.mem_coe, Module.mem_annihilator]
-  intro x
-  exact torAlg_smul_eq_zero φ i V a (fun v ↦ @hn v ⟨a, ha⟩) x
-
-omit [IsLocalRing A] in
-/-- 単純加群は有限長。 -/
-lemma isFiniteLength_of_isSimpleModule (M : Type u) [AddCommGroup M] [Module A M]
-    [IsSimpleModule A M] : IsFiniteLength A M :=
-  isFiniteLength_iff_isNoetherian_isArtinian.mpr ⟨inferInstance, inferInstance⟩
-
-/-- **Lemma 3.4 の抽象版**。 -/
-theorem lemma_3_4_of_isWeaklyRegular {e : ℕ} (z : Fin e → A)
+/-- 弱正則列の Koszul ホモロジーの評価から、有限長加群の Tor の正規化長さを計算する。 -/
+theorem normalizedLength_tor_of_isWeaklyRegular {e : ℕ} (z : Fin e → A)
     (hz : Ideal.span (Set.range z) = maximalIdeal A)
     (hreg : RingTheory.Sequence.IsWeaklyRegular A (List.ofFn z))
     (lam : NormalizedLength C ((maximalIdeal A).map φ)) (r : ℕ)

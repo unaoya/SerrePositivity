@@ -33,6 +33,7 @@ namespace IsPowTorsion
 variable {C : Type u} [CommRing C] {J : Ideal C} {M N : Type u} [AddCommGroup M] [Module C M]
   [AddCommGroup N] [Module C N]
 
+/-- `N` が `J` の冪で消えるなら、`N` に単射で入る加群 `M` も同じ冪で消える。 -/
 lemma of_injective (f : M →ₗ[C] N) (hf : Function.Injective f) (hN : IsPowTorsion J N) :
     IsPowTorsion J M := by
   obtain ⟨n, hn⟩ := hN
@@ -40,6 +41,7 @@ lemma of_injective (f : M →ₗ[C] N) (hf : Function.Injective f) (hN : IsPowTo
   rw [Module.isTorsionBySet_iff_subset_annihilator] at hn ⊢
   exact hn.trans (f.annihilator_le_of_injective hf)
 
+/-- `M` が `J` の冪で消えるなら、その全射像 `N` も同じ冪で消える。 -/
 lemma of_surjective (f : M →ₗ[C] N) (hf : Function.Surjective f) (hM : IsPowTorsion J M) :
     IsPowTorsion J N := by
   obtain ⟨n, hn⟩ := hM
@@ -47,15 +49,19 @@ lemma of_surjective (f : M →ₗ[C] N) (hf : Function.Surjective f) (hM : IsPow
   rw [Module.isTorsionBySet_iff_subset_annihilator] at hn ⊢
   exact hn.trans (f.annihilator_le_of_surjective hf)
 
+/-- 冪ねじれ性を線形同値に沿って移す。 -/
 lemma of_equiv (e : M ≃ₗ[C] N) (hM : IsPowTorsion J M) : IsPowTorsion J N :=
   of_surjective e.toLinearMap e.surjective hM
 
+/-- 冪ねじれ加群の部分加群も、同じイデアルの冪で消える。 -/
 lemma submodule (hM : IsPowTorsion J M) (N : Submodule C M) : IsPowTorsion J N :=
   of_injective N.subtype N.injective_subtype hM
 
+/-- 冪ねじれ加群の商加群も、同じイデアルの冪で消える。 -/
 lemma quotient (hM : IsPowTorsion J M) (N : Submodule C M) : IsPowTorsion J (M ⧸ N) :=
   of_surjective N.mkQ N.mkQ_surjective hM
 
+/-- 零加群は任意のイデアルについて冪ねじれである。 -/
 lemma of_subsingleton [Subsingleton M] : IsPowTorsion J M :=
   ⟨0, fun _ _ ↦ Subsingleton.elim _ _⟩
 

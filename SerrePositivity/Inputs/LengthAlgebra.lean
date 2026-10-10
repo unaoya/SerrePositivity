@@ -1,9 +1,7 @@
 module
 
-public import SerrePositivity.Paper.Lemma3_4.Abstract
-public import SerrePositivity.Inputs.RegularLocalRing
-public import SerrePositivity.CommutativeAlgebra.Koszul
 public import SerrePositivity.CommutativeAlgebra.LocalAlgebra
+public import SerrePositivity.CommutativeAlgebra.Koszul
 public import SerrePositivity.CommutativeAlgebra.Multiplicity
 public import SerrePositivity.PerfectComplex.NormalizedLength
 public import Mathlib.Algebra.CharP.Defs
@@ -15,14 +13,17 @@ public import Mathlib.RingTheory.RegularLocalRing.Defs
 public import Mathlib.Topology.Instances.ENNReal.ENatENNReal
 
 /-!
-# 長さ代数 `C_D` と正規化長さ `λ_D`（論文 Lemma 2.2、Theorem 2.5、Cor 2.6）
+# 長さ代数 `C_D` と正規化長さ `λ_D`（論文 Lemma 2.2、Theorem 2.5）
 
 - `IsRegularNormalizationBase A D t`：Lemma 2.2 の形の正規化基底。`A` は正則完備局所環、
   `A ⊆ D` は有限かつ生成的分離、剰余体は同じ、`t` は `A` の正則パラメータ系で `D` のパラメータ系。
 - `LengthAlgebraData D`：`D` 代数 `C` と正規化長さ `λ : NormalizedLength C (m_D C)`。
 - `LengthAlgebraProps A D t C λ`：Theorem 2.5 の結論 (2.4)、(2.5)、(2.6)。
 - `Inputs.LengthAlgebra`：Theorem 2.5 を入力束として置いた class。
-- `cor_2_6`：Corollary 2.6。Lemma 3.4 の特別な場合なので、証明は Lemma 3.4 から出す（今は `sorry`）。
+- `restrictToBase` と `base_values`：有限な局所代数とパラメータ系から証明した適用準備。基底の極大イデアルへの
+  制限と、基底のパラメータの冪に対する評価を、系2.6と補題3.5への適用で共有する。
+
+この入力からの系2.6は `Paper/Corollary2_6.lean` に置く。
 
 ## 論文との差
 
@@ -65,11 +66,11 @@ structure IsRegularNormalizationBase (A D : Type u) [CommRing A] [IsLocalRing A]
   separable : Algebra.IsSeparable A D
   /-- 剰余体は同じ：`A → D → D/m_D` は全射。 -/
   residue_surjective : Function.Surjective ((residue D).comp (algebraMap A D))
-  /-- `dim A = h`。 -/
+  /-- 基底環 `A` の Krull 次元が、選んだ列の長さ `h` に等しい。 -/
   dimA : ringKrullDim A = h
-  /-- `dim D = h`。 -/
+  /-- 有限代数 `D` の Krull 次元が、選んだ列の長さ `h` に等しい。 -/
   dim : ringKrullDim D = h
-  /-- `h > 0`。 -/
+  /-- パラメータの個数、したがって指定した次元が正である。 -/
   pos : 0 < h
   /-- `t` は `A` の正則パラメータ系。 -/
   regular_params : Ideal.span (Set.range t) = maximalIdeal A
@@ -80,7 +81,9 @@ structure IsRegularNormalizationBase (A D : Type u) [CommRing A] [IsLocalRing A]
 structure LengthAlgebraData (D : Type u) [CommRing D] [IsLocalRing D] where
   /-- 代数 `C`。 -/
   C : Type u
+  /-- `C` の可換環構造。 -/
   [commRing : CommRing C]
+  /-- `Algebra D C` として指定する代数構造。 -/
   [algebra : Algebra D C]
   /-- 正規化長さ `λ`。 -/
   lam : NormalizedLength C ((maximalIdeal D).map (algebraMap D C))
@@ -94,7 +97,7 @@ structure LengthAlgebraProps (A D : Type u) [CommRing A] [CommRing D] [IsLocalRi
   /-- (2.4)：`D` の任意のパラメータ系 `z` と `v ≥ 1` で、正次数の Koszul ホモロジー `H_i(z^v; C)` の `λ` は `0`。 -/
   koszul_zero : ∀ (z : Fin h → D), IsSystemOfParameters D z → ∀ v : ℕ, 0 < v →
     ∀ i : ℕ, 0 < i → lam.len (koszulHomologySelf (fun j ↦ algebraMap D C (z j ^ v)) i) = 0
-  /-- (2.5)：`λ(C/(z^v)C) = v^h e((z), D)`。 -/
+  /-- 論文 (2.5)：パラメータの冪による商の正規化長さを、Hilbert–Samuel 重複度で表す。 -/
   quotient_eq : ∀ (z : Fin h → D), IsSystemOfParameters D z → ∀ v : ℕ, 0 < v →
     lam.len (C ⧸ Ideal.span (Set.range fun j ↦ algebraMap D C (z j ^ v))) =
       ENNReal.ofReal ((v : ℝ) ^ h * hilbertSamuelMultiplicity D (Ideal.span (Set.range z)) D)
@@ -106,6 +109,58 @@ structure LengthAlgebraProps (A D : Type u) [CommRing A] [CommRing D] [IsLocalRi
     lam.len (C ⧸ Ideal.span (Set.range fun j ↦ algebraMap D C (algebraMap A D (t j) ^ v))) =
       ((v ^ h * Module.finrank A D : ℕ) : ℝ≥0∞)
 
+section preparation
+
+variable {A D C : Type u} [CommRing A] [CommRing D] [IsLocalRing D]
+  [Algebra A D] [CommRing C] [Algebra D C] [Algebra A C] [IsScalarTower A D C]
+  {h : ℕ} {t : Fin h → A}
+
+/-- 長さ代数の性質を基底環のパラメータの正の冪で書き直す。
+高次 Koszul ホモロジーの長さは零、商の長さは `v^h rank_A D` となる。
+系2.6と補題3.5への適用に必要な値を取り出す、環準同型の合成に沿う書き換えである。 -/
+theorem LengthAlgebraProps.base_values
+    {lam : NormalizedLength C ((maximalIdeal D).map (algebraMap D C))}
+    (hC : LengthAlgebraProps A D t C lam)
+    (hsop : IsSystemOfParameters D (algebraMap A D ∘ t))
+    (v : ℕ) (hv : 0 < v) :
+    (∀ i : ℕ, 0 < i →
+      lam.len (koszulHomologySelf (fun j ↦ algebraMap A C (t j ^ v)) i) = 0) ∧
+    lam.len
+      (C ⧸ Ideal.span (Set.range fun j ↦ algebraMap A C (t j ^ v))) =
+        ((v ^ h * Module.finrank A D : ℕ) : ℝ≥0∞) := by
+  have heq : (fun j ↦ algebraMap D C ((algebraMap A D ∘ t) j ^ v)) =
+      (fun j ↦ algebraMap A C (t j ^ v)) := by
+    funext j
+    simp [IsScalarTower.algebraMap_apply A D C]
+  constructor
+  · intro i hi
+    have hz := hC.koszul_zero (algebraMap A D ∘ t) hsop v hv i hi
+    rw [heq] at hz
+    exact hz
+  · have hq := hC.base_eq v hv
+    change lam.len (C ⧸ Ideal.span
+      (Set.range fun j ↦ algebraMap D C ((algebraMap A D ∘ t) j ^ v))) = _ at hq
+    rw [heq] at hq
+    exact hq
+
+/-- 基底のパラメータ自身（冪が1）についての消滅と商の長さの公式。 -/
+theorem LengthAlgebraProps.base_values_one
+    {lam : NormalizedLength C ((maximalIdeal D).map (algebraMap D C))}
+    (hC : LengthAlgebraProps A D t C lam)
+    (hsop : IsSystemOfParameters D (algebraMap A D ∘ t)) :
+    (∀ i : ℕ, 0 < i →
+      lam.len (koszulHomologySelf (algebraMap A C ∘ t) i) = 0) ∧
+    lam.len (C ⧸ Ideal.span (Set.range (algebraMap A C ∘ t))) =
+      Module.finrank A D := by
+  have ht : (fun j ↦ algebraMap A C (t j ^ 1)) = algebraMap A C ∘ t := by
+    funext j
+    simp
+  have hv := hC.base_values hsop 1 one_pos
+  rw [ht] at hv
+  simpa only [one_pow, one_mul] using hv
+
+end preparation
+
 namespace Inputs
 
 /-- **Theorem 2.5**（正規化長さの入力）を入力束として置いた class。
@@ -115,6 +170,7 @@ Lemma 2.2 の形の基底 `A ⊆ D` で、`D` の剰余体が標数 `p > 0` の�
 論文での根拠：標数 `p` では Monsky（Hilbert–Kunz 重複度の存在）と Roberts の Frobenius ホモロジー定理、
 混標数では Cai–Lee–Ma–Schwede–Tucker の Prop. 4.0.4 / 4.0.10 / 4.0.14 と Bhatt–Scholze の perfectoid 化。 -/
 class LengthAlgebra : Prop where
+  /-- 正規化基底と完全な正標数剰余体の条件から、定理2.5の性質を満たす長さ代数が存在するという入力。 -/
   exists_lengthAlgebra :
     ∀ (A D : Type u) [CommRing A] [IsLocalRing A] [CommRing D] [IsLocalRing D] [Algebra A D]
       {h : ℕ} (t : Fin h → A), IsRegularNormalizationBase A D t →
@@ -122,52 +178,5 @@ class LengthAlgebra : Prop where
       ∃ Y : LengthAlgebraData D, LengthAlgebraProps A D t Y.C Y.lam
 
 end Inputs
-
-/-- **Corollary 2.6** の 1・2（有限長の基底変更）。`r = rank_A D` とすると、有限長 `A` 加群 `V` で
-`λ Tor_i^A(V, C_D) = 0 (i > 0)`、`λ Tor_0^A(V, C_D) = r · length_A V`（`Tor_0 = V ⊗_A C_D`）。
-Lemma 3.4 の抽象版（`lemma_3_4_of_isWeaklyRegular`）を `z = t` に適用する。 -/
-theorem cor_2_6_tor (A D : Type u) [CommRing A] [IsLocalRing A] [CommRing D] [IsLocalRing D]
-    [Algebra A D] {h : ℕ} (t : Fin h → A) (hbase : IsRegularNormalizationBase A D t)
-    (C : Type u) [CommRing C] [Algebra D C] [Algebra A C] [IsScalarTower A D C]
-    (lam : NormalizedLength C ((maximalIdeal D).map (algebraMap D C)))
-    (hC : LengthAlgebraProps A D t C lam)
-    (V : Type u) [AddCommGroup V] [Module A V] (hV : Module.length A V ≠ ⊤) :
-    (∀ i : ℕ, 0 < i → lam.len (TorAlg (algebraMap A C) i V) = 0) ∧
-      lam.len (TorAlg (algebraMap A C) 0 V) =
-        (Module.finrank A D : ℝ≥0∞) * ENat.toENNReal (Module.length A V) := by
-  have : IsRegularLocalRing A := hbase.regular
-  have hVfl : IsFiniteLength A V := Module.length_ne_top_iff.mp hV
-  have hreg := isWeaklyRegular_of_span_eq_maximalIdeal A t hbase.regular_params hbase.dimA
-  have hN : ∃ N : ℕ, (maximalIdeal D) ^ N ≤ (maximalIdeal A).map (algebraMap A D) := by
-    have := hbase.finite
-    exact maximalIdeal_pow_le_map_of_finite (R := A) D
-  let lam' : NormalizedLength C ((maximalIdeal A).map (algebraMap A C)) :=
-    lam.restrict _ (fun M _ _ hM ↦ IsPowTorsion.of_pow_le hN M hM)
-  have ht1 : (fun j ↦ algebraMap D C ((algebraMap A D ∘ t) j ^ 1)) = algebraMap A C ∘ t := by
-    funext j
-    simp [IsScalarTower.algebraMap_apply A D C]
-  have ht1' : (fun j ↦ algebraMap D C (algebraMap A D (t j) ^ 1)) = algebraMap A C ∘ t := by
-    funext j
-    simp [IsScalarTower.algebraMap_apply A D C]
-  have h39a : ∀ i : ℕ, 0 < i → lam'.len (koszulHomologySelf (algebraMap A C ∘ t) i) = 0 := by
-    intro i hi
-    have := hC.koszul_zero (algebraMap A D ∘ t) hbase.sop 1 one_pos i hi
-    rwa [ht1] at this
-  have h39b : lam'.len (C ⧸ Ideal.span (Set.range (algebraMap A C ∘ t))) = Module.finrank A D := by
-    have := hC.base_eq 1 one_pos
-    rw [ht1'] at this
-    simpa [lam'] using this
-  have := lemma_3_4_of_isWeaklyRegular (algebraMap A C) t hbase.regular_params hreg lam'
-    (Module.finrank A D) h39a h39b V hVfl
-  exact ⟨this.1, this.2.1⟩
-
-/-- **Corollary 2.6** の 3：`λ(C_D/𝔡 C_D) > 0`。(2.5) と `D/H` の組成列による（未証明）。 -/
-theorem cor_2_6_pos (A D : Type u) [CommRing A] [IsLocalRing A] [CommRing D] [IsLocalRing D]
-    [Algebra A D] {h : ℕ} (t : Fin h → A) (_hbase : IsRegularNormalizationBase A D t)
-    (C : Type u) [CommRing C] [Algebra D C]
-    (lam : NormalizedLength C ((maximalIdeal D).map (algebraMap D C)))
-    (_hC : LengthAlgebraProps A D t C lam) :
-    0 < lam.len (C ⧸ (maximalIdeal D).map (algebraMap D C)) := by
-  sorry
 
 end SerrePositivity

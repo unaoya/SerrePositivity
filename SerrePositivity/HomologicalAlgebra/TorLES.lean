@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomologicalAlgebra.ConeResolution
 public import SerrePositivity.HomologicalAlgebra.BaseChange
-public import SerrePositivity.HomologicalAlgebra.TorCochain
+public import SerrePositivity.HomologicalAlgebra.Tor
 public import Mathlib.Algebra.Exact.Basic
 
 /-!
@@ -37,23 +37,23 @@ variable {V₁ V₂ V₃ : Type u} [AddCommGroup V₁] [Module A V₁] [AddCommG
 variable (f : V₁ →ₗ[A] V₂) (g : V₂ →ₗ[A] V₃) (hf : Function.Injective f)
   (hg : Function.Surjective g) (hfg : Function.Exact f g)
 
-/-- `F f̃`。 -/
+/-- 短完全列の単射を射影分解に持ち上げた鎖写像に、係数拡大関手 `F` を適用したもの。 -/
 noncomputable abbrev ψ : baseChange φ (resV A V₁) ⟶ baseChange φ (resV A V₂) :=
   ((ModuleCat.extendScalars.{u, u, u} φ).mapHomologicalComplex _).map (liftSES f)
 
-/-- `Tor_i V₁ ≅ H^{-i}(F (resV V₁))`。 -/
+/-- 短完全列の第1加群の Tor を、係数拡大した分解の負次数ホモロジーに同一視する。 -/
 noncomputable abbrev T₁ (i : ℕ) :=
   torIsoCochain φ (isResolutionOf_extRes (projectiveResolution (ModuleCat.of A V₁))) i
 
-/-- `Tor_i V₂ ≅ H^{-i}(F (resV V₂))`。 -/
+/-- 短完全列の第2加群の Tor を、係数拡大した分解の負次数ホモロジーに同一視する。 -/
 noncomputable abbrev T₂ (i : ℕ) :=
   torIsoCochain φ (isResolutionOf_extRes (projectiveResolution (ModuleCat.of A V₂))) i
 
-/-- `Tor_i V₃ ≅ H^{-i}(F (Cone f̃))`。 -/
+/-- 短完全列の第3加群の Tor を、持ち上げの写像錐の係数拡大のホモロジーに同一視する。 -/
 noncomputable abbrev T₃ (i : ℕ) :=
   torIsoCochain φ (isResolutionOf_cone f g hf hg hfg) i
 
-/-- `F (Cone f̃) ≅ Cone (F f̃)`。 -/
+/-- 係数拡大と写像錐の構成が両立することを表す複体の同型。 -/
 noncomputable abbrev cIso : baseChange φ (Cone.cone (liftSES f)) ≅ Cone.cone (ψ φ f) :=
   HomologicalComplex.homotopyCofiber.mapHomologicalComplexObjIso (liftSES f)
     (ModuleCat.extendScalars.{u, u, u} φ)
@@ -63,13 +63,13 @@ noncomputable abbrev cH (n : ℤ) :
     (baseChange φ (Cone.cone (liftSES f))).homology n ≅ (Cone.cone (ψ φ f)).homology n :=
   (HomologicalComplex.homologyFunctor _ _ n).mapIso (cIso φ f)
 
-/-- `α_i : Tor_i V₁ → Tor_i V₂`。 -/
+/-- 短完全列の第1加群から第2加群への、同次数の Tor の写像。分解上の写像から構成する。 -/
 noncomputable def α (i : ℕ) :
     ((ModuleCat.extendScalars.{u, u, u} φ).leftDerived i).obj (ModuleCat.of A V₁) ⟶
       ((ModuleCat.extendScalars.{u, u, u} φ).leftDerived i).obj (ModuleCat.of A V₂) :=
   (T₁ φ (V₁ := V₁) i).hom ≫ HomologicalComplex.homologyMap (ψ φ f) (-(i : ℤ)) ≫ (T₂ φ i).inv
 
-/-- `β_i : Tor_i V₂ → Tor_i V₃`。 -/
+/-- 短完全列の第2加群から第3加群への、同次数の Tor の写像。写像錐への包含から構成する。 -/
 noncomputable def β (i : ℕ) :
     ((ModuleCat.extendScalars.{u, u, u} φ).leftDerived i).obj (ModuleCat.of A V₂) ⟶
       ((ModuleCat.extendScalars.{u, u, u} φ).leftDerived i).obj (ModuleCat.of A V₃) :=
@@ -77,7 +77,7 @@ noncomputable def β (i : ℕ) :
     HomologicalComplex.homologyMap (CochainComplex.mappingCone.inr (ψ φ f)) (-(i : ℤ)) ≫
     (cH φ f (-(i : ℤ))).inv ≫ (T₃ φ f g hf hg hfg i).inv
 
-/-- `δ_i : Tor_{i+1} V₃ → Tor_i V₁`。 -/
+/-- 短完全列の第3加群の `Tor_{i+1}` から第1加群の `Tor_i` への連結写像。 -/
 noncomputable def δ (i : ℕ) :
     ((ModuleCat.extendScalars.{u, u, u} φ).leftDerived (i + 1)).obj (ModuleCat.of A V₃) ⟶
       ((ModuleCat.extendScalars.{u, u, u} φ).leftDerived i).obj (ModuleCat.of A V₁) :=

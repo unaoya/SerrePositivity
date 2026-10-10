@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.CommutativeAlgebra.LocalAlgebra
 public import SerrePositivity.CommutativeAlgebra.PowTorsion
 public import Mathlib.Algebra.Exact.Basic
 public import Mathlib.Basic.ENNReal.Basic
@@ -13,7 +14,8 @@ public import Mathlib.RingTheory.Length
 環 `C` の加群に `ℝ≥0∞` を対応させる関数で、イデアル `J` の冪で消える加群の短完全列で加法的、
 同型で不変、零加群で `0` となるもの。値は無限でもよい（論文 §1.4 の規約）。
 
-Lemma 2.3 の sup 性質 (2.3) は M2 で足す。
+論文の上限による性質 (2.3) や具体的な長さの構成は、この構造には含めていない。
+ここで証明する結果に必要な、同型不変性と短完全列の加法性だけを抽象化している。
 
 後半は、加法性と非負性から出る基本補題：部分加群・商・単射・全射に対する単調性、
 `len M = len (ker f) + len (range f)`、完全列 `M → N → P` に対する `len N ≤ len M + len P`、
@@ -56,42 +58,48 @@ variable {C : Type u} [CommRing C] {J : Ideal C} (lam : NormalizedLength C J)
 variable {M N P : Type u} [AddCommGroup M] [Module C M] [AddCommGroup N] [Module C N]
   [AddCommGroup P] [Module C P]
 
-/-- `len M = len N + len (M ⧸ N)`。 -/
+/-- 冪ねじれ加群 `M` の長さは、任意の部分加群 `N` の長さと商 `M/N` の長さの和になる。 -/
 lemma len_eq_add_quotient (hM : IsPowTorsion J M) (N : Submodule C M) :
     lam.len M = lam.len N + lam.len (M ⧸ N) :=
   lam.len_add_of_exact N M (M ⧸ N) N.subtype N.mkQ N.injective_subtype N.mkQ_surjective
     (LinearMap.exact_subtype_mkQ N) hM
 
+/-- 冪ねじれ加群の部分加群の正規化長さは、もとの加群の長さ以下である。 -/
 lemma len_submodule_le (hM : IsPowTorsion J M) (N : Submodule C M) : lam.len N ≤ lam.len M := by
   rw [lam.len_eq_add_quotient hM N]
   exact le_self_add
 
+/-- 冪ねじれ加群の商の正規化長さは、もとの加群の長さ以下である。 -/
 lemma len_quotient_le (hM : IsPowTorsion J M) (N : Submodule C M) :
     lam.len (M ⧸ N) ≤ lam.len M := by
   rw [lam.len_eq_add_quotient hM N]
   exact le_add_self
 
+/-- 冪ねじれ加群への単射は、正規化長さの大小関係を与える。 -/
 lemma len_le_of_injective (f : M →ₗ[C] N) (hf : Function.Injective f) (hN : IsPowTorsion J N) :
     lam.len M ≤ lam.len N := by
   rw [lam.len_congr M (LinearMap.range f) (LinearEquiv.ofInjective f hf)]
   exact lam.len_submodule_le hN _
 
+/-- 冪ねじれ加群からの全射では、像の正規化長さはもとの長さ以下である。 -/
 lemma len_le_of_surjective (f : M →ₗ[C] N) (hf : Function.Surjective f) (hM : IsPowTorsion J M) :
     lam.len N ≤ lam.len M := by
   rw [← lam.len_congr _ _ (LinearMap.quotKerEquivOfSurjective f hf)]
   exact lam.len_quotient_le hM _
 
-/-- `len M = len (ker f) + len (range f)`。 -/
+/-- 冪ねじれ加群 `M` からの線形写像について、`M` の長さは核と像の長さの和である。 -/
 lemma len_eq_add_ker_range (f : M →ₗ[C] N) (hM : IsPowTorsion J M) :
     lam.len M = lam.len (LinearMap.ker f) + lam.len (LinearMap.range f) := by
   rw [lam.len_eq_add_quotient hM (LinearMap.ker f)]
   congr 1
   exact lam.len_congr _ _ (LinearMap.quotKerEquivRange f)
 
+/-- 冪ねじれ加群からの線形写像の像の長さは、定義域の長さ以下である。 -/
 lemma len_range_le (f : M →ₗ[C] N) (hM : IsPowTorsion J M) :
     lam.len (LinearMap.range f) ≤ lam.len M :=
   lam.len_le_of_surjective f.rangeRestrict f.surjective_rangeRestrict hM
 
+/-- 長さが零の冪ねじれ加群からの線形写像は、長さが零の像をもつ。 -/
 lemma len_range_eq_zero (f : M →ₗ[C] N) (hM : IsPowTorsion J M) (h : lam.len M = 0) :
     lam.len (LinearMap.range f) = 0 :=
   le_antisymm (h ▸ lam.len_range_le f hM) zero_le
@@ -138,6 +146,7 @@ def restrict (lam : NormalizedLength C J) (J' : Ideal C)
     intro M₁ M₂ M₃ _ _ _ _ _ _ f g hf hg hfg hM₂
     exact lam.len_add_of_exact M₁ M₂ M₃ f g hf hg hfg (h M₂ hM₂)
 
+/-- 正規化長さの加法性を適用するイデアルを取り替えても、各加群に割り当てる値は変わらない。 -/
 @[simp] lemma restrict_len (lam : NormalizedLength C J) (J' : Ideal C) (h) (M : Type u)
     [AddCommGroup M] [Module C M] : (lam.restrict J' h).len M = lam.len M := rfl
 
@@ -158,8 +167,19 @@ noncomputable def ordinary (T : Type u) [CommRing T] : NormalizedLength T ⊥ wh
     intro M₁ M₂ M₃ _ _ _ _ _ _ f g hf hg hfg _
     rw [Module.length_eq_add_of_exact f g hf hg hfg, ENat.toENNReal_add]
 
+/-- 通常の長さを用いた正規化長さの値は、`Module.length` を拡張非負実数に移したものである。 -/
 @[simp] lemma ordinary_len (T : Type u) [CommRing T] (M : Type u) [AddCommGroup M]
     [Module T M] : (ordinary T).len M = (Module.length T M : ℝ≥0∞) := rfl
+
+/-- 有限な局所代数 `A → D` に対し、同じ長さを `m_A C` の冪ねじれ加群上で使う。
+`m_D` のある冪が `m_A D` に含まれることを用いる。長さの値自体は変わらない。 -/
+def restrictToBase (A D : Type u) [CommRing A] [IsLocalRing A]
+    [CommRing D] [IsLocalRing D] [Algebra A D] [Module.Finite A D]
+    {C : Type u} [CommRing C] [Algebra A C] [Algebra D C] [IsScalarTower A D C]
+    (lam : NormalizedLength C ((IsLocalRing.maximalIdeal D).map (algebraMap D C))) :
+    NormalizedLength C ((IsLocalRing.maximalIdeal A).map (algebraMap A C)) := by
+  exact lam.restrict _ (fun M _ _ hM ↦ IsPowTorsion.of_pow_le
+    (maximalIdeal_pow_le_map_of_finite (R := A) D) M hM)
 
 end NormalizedLength
 

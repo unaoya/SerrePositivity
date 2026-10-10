@@ -20,7 +20,7 @@ public import Mathlib.Algebra.Homology.ShortComplex.ModuleCat
 
 ホモトピー圏のホモロジー関手と複体のホモロジーの同一視 `Cone.e` と、短複体の完全性を同型で移す
 補題 `exact_transport` を経由する。`φ = smulId a K`（Koszul 複体の完全性、
-`CommutativeAlgebra/KoszulExact.lean`）、Tor の長完全列（`TorLES.lean`）、Euler 評価の加法性
+`CommutativeAlgebra/KoszulResolution.lean`）、Tor の長完全列（`TorLES.lean`）、Euler 評価の加法性
 （`PerfectComplex/NormalizedEuler.lean`）に使う。
 -/
 
@@ -69,6 +69,7 @@ noncomputable abbrev e (n : ℤ) (L : CochainComplex (ModuleCat.{u} R) ℤ) :
       ((HomotopyCategory.quotient _ _).obj L) ≅ L.homology n :=
   (HomotopyCategory.homologyFunctorFactors (ModuleCat.{u} R) (ComplexShape.up ℤ) n).app L
 
+/-- ホモトピー圏のホモロジーと複体のホモロジーを結ぶ同型は、複体の射と両立する。 -/
 lemma e_naturality (n : ℤ) {L L' : CochainComplex (ModuleCat.{u} R) ℤ} (f : L ⟶ L') :
     (HomotopyCategory.homologyFunctor (ModuleCat.{u} R) (ComplexShape.up ℤ) n).map
         ((HomotopyCategory.quotient _ _).map f) ≫ (e n L').hom =
@@ -79,9 +80,10 @@ lemma e_naturality (n : ℤ) {L L' : CochainComplex (ModuleCat.{u} R) ℤ} (f : 
 
 variable {K L : CochainComplex (ModuleCat.{u} R) ℤ} (φ : K ⟶ L)
 
-/-- `Cone φ`。 -/
+/-- 複体の射 `φ : K → L` の写像錐。長完全列に現れる第三の複体を表す。 -/
 noncomputable abbrev cone : CochainComplex (ModuleCat.{u} R) ℤ := CochainComplex.mappingCone φ
 
+/-- 写像錐から作る三角形は、ホモトピー圏の完全三角形である。 -/
 lemma triangleh_distinguished :
     CochainComplex.mappingCone.triangleh φ ∈
       distTriang (HomotopyCategory (ModuleCat.{u} R) (ComplexShape.up ℤ)) :=
@@ -93,6 +95,7 @@ noncomputable def δ (n₀ n₁ : ℤ) (h : n₀ + 1 = n₁) : (cone φ).homolog
     (H₀ (R := R)).homologySequenceδ (CochainComplex.mappingCone.triangleh φ) n₀ n₁ h ≫
     (e n₁ K).hom
 
+/-- 写像錐の連結写像とホモトピー圏の三角形から得た写像が、ホモロジーの同一視のもとで一致する。 -/
 lemma δ_square (n₀ n₁ : ℤ) (h : n₀ + 1 = n₁) :
     (H₀ (R := R)).homologySequenceδ (CochainComplex.mappingCone.triangleh φ) n₀ n₁ h ≫
         (e n₁ K).hom =

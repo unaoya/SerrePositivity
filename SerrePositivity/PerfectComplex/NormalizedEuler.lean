@@ -11,19 +11,19 @@ public import Mathlib.RingTheory.LocalRing.MaximalIdeal.Basic
 public import Mathlib.RingTheory.Noetherian.Nilpotent
 
 /-!
-# Euler evaluation for an abstract additive length
+# 加法的な正規化長さによる Euler 評価
 
-`lambdaEuler lam P = Σ_i (-1)^i λ H^i(P)` for a normalized length `λ`. Finite normalized
-homology lengths and power torsion suffice for homotopy invariance and mapping-cone
-additivity. No Noetherian hypothesis on the coefficient ring is used.
+`C` 上の複体の評価 `lambdaEuler` と、係数拡大の Tor の評価 `lambdaChi` を定義する。
+ホモトピー同値による不変性は有限性なしに示せる。写像錐についての加法性には、
+ホモロジーが長さの加法性の対象となる冪ねじれ加群であること、評価の有限性、有界性を用いる。
+係数環 `C` の Noether 性は仮定しない。
 
-The ordinary length is the normalized length `NormalizedLength.ordinary` for `J = ⊥`, so the
-ordinary Euler evaluation `chiOrd` is the special case `chiOrd_eq_lambdaEuler_ordinary`; the
-ordinary statements are derived from the ones here in `OrdinaryEuler.lean`.
+通常の長さは `NormalizedLength.ordinary` という特殊例なので、通常の Euler 評価の加法性も
+ここから導く。後半では、係数拡大後のホモロジーが正規化長さの加法性の対象となることを確認し、
+有限性を仮定して `chiLam` を台つき完全複体の `K₀` 上の準同型にする。
 
-The last section descends the normalized evaluation `chiLam` of supported perfect complexes to
-the supported `K₀`, assuming the homology lengths are finite (`chiLamHom_of_finite`). The
-finiteness itself is the Koszul argument of Lemma 3.5a (`Paper/Lemma3_5/A_Normalized.lean`).
+有限性を Koszul ホモロジーの評価から導く段階は、補題3.5aの
+`Paper/Lemma3_5/Normalized.lean` に残る未証明部分であり、このファイルでは証明しない。
 -/
 
 @[expose] public section
@@ -39,7 +39,9 @@ section general
 
 variable {C : Type u} [CommRing C] {J : Ideal C} (lam : NormalizedLength C J)
 
-/-- Euler evaluation of a coefficient-ring complex by the abstract length. -/
+/-- `C` 上のコチェイン複体のホモロジーを正規化長さで測った Euler 評価。
+`Σ_i (-1)^i λ(H^i(P))` を実数値で定義する。`toReal` は無限長を零に送り、
+`finsum` は非零項が無限にある場合に零を返すため、通常の有限和として使うには別途有限性が必要である。 -/
 noncomputable def lambdaEuler (P : CochainComplex (ModuleCat.{u} C) ℤ) : ℝ :=
   ∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * (lam.len (P.homology i)).toReal
 
@@ -51,7 +53,8 @@ noncomputable def lambdaChi {R : Type u} [CommRing R] (φ : R →+* C)
     (N : Type u) [AddCommGroup N] [Module R N] : ℝ :=
   ∑ᶠ i : ℕ, (-1 : ℝ) ^ i * (lam.len (TorAlg φ i N)).toReal
 
-/-- Exactness expresses the length of the middle term as the sum of image lengths. -/
+/-- 完全な列 `M → N → L` の中央の長さを、二つの写像の像の長さの和に分解する。
+`N` が `J` の冪で消え、正規化長さが有限であることにより、加法性を実数値へ移せる。 -/
 lemma lambdaLengthReal_eq_add_range {M N L : Type u} [AddCommGroup M] [Module C M]
     [AddCommGroup N] [Module C N] [AddCommGroup L] [Module C L]
     (f : M →ₗ[C] N) (g : N →ₗ[C] L) (hfg : Function.Exact f g)
@@ -65,7 +68,7 @@ lemma lambdaLengthReal_eq_add_range {M N L : Type u} [AddCommGroup M] [Module C 
   rw [lam.len_eq_add_ker_range g tN, ENNReal.toReal_add hk hr,
     ← LinearMap.exact_iff.mp hfg]
 
-/-- Boundedness makes the homology evaluation finitely supported. -/
+/-- 複体の項が有界なら、ホモロジーの正規化長さを実数に移した関数は有限な台をもつ。 -/
 lemma lambdaHomology_hasFiniteSupport (P : CochainComplex (ModuleCat.{u} C) ℤ)
     (hP : ∃ a b : ℤ, ∀ i, (i < a ∨ b < i) → IsZero (P.X i)) :
     Function.HasFiniteSupport (fun i ↦ (lam.len (P.homology i)).toReal) := by
@@ -78,7 +81,8 @@ lemma lambdaHomology_hasFiniteSupport (P : CochainComplex (ModuleCat.{u} C) ℤ)
   have := ModuleCat.subsingleton_of_isZero hzero
   exact hi (by simp [lam.len_eq_zero_of_subsingleton])
 
-/-- Homotopy equivalent coefficient complexes have the same evaluation. -/
+/-- ホモトピー同値な複体は同じ正規化 Euler 評価をもつ。
+各次数のホモロジーが線形同値になるため、有限性の仮定なしに成り立つ。 -/
 lemma lambdaEuler_eq_of_homotopyEquiv {P Q : CochainComplex (ModuleCat.{u} C) ℤ}
     (h : HomotopyEquiv P Q) : lambdaEuler lam P = lambdaEuler lam Q := by
   unfold lambdaEuler
@@ -86,6 +90,7 @@ lemma lambdaEuler_eq_of_homotopyEquiv {P Q : CochainComplex (ModuleCat.{u} C) �
   funext i
   rw [lam.len_congr _ _ (h.toHomologyIso i).toLinearEquiv]
 
+/-- 整数添字の交代和で添字を一つずらすと符号が反転する。`finsum` の規約を含めて成り立つ。 -/
 private lemma alternating_finsum_shift (f : ℤ → ℝ) :
     (∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * f (i - 1)) =
       -(∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * f i) := by
@@ -101,10 +106,10 @@ private lemma alternating_finsum_shift (f : ℤ → ℝ) :
     _ = _ := finsum_neg_distrib _
 
 set_option maxHeartbeats 800000 in
--- Transporting the three exact sequences with dependent homology objects
--- requires additional elaboration time.
-/-- The Euler evaluation is additive on a mapping-cone triangle when
-the homology is bounded, power torsion, and has finite length. -/
+-- ホモロジーの対象に依存する型を含む三つの完全列の移送に、追加の処理時間を許す。
+/-- 写像錐の三角形に対する正規化 Euler 評価の加法性。
+各ホモロジーが `J` の冪で消え、正規化長さが有限で、指定した複体の項が有界であるとき、
+`χ(Cone f) = χ(Q) - χ(P)` を長完全列の像の長さの相殺から導く。係数環の Noether 性は不要である。 -/
 theorem lambdaEuler_cone {P Q : CochainComplex (ModuleCat.{u} C) ℤ} (f : P ⟶ Q)
     (hQ : ∃ a b : ℤ, ∀ i, (i < a ∨ b < i) → IsZero (Q.X i))
     (hC : ∃ a b : ℤ, ∀ i, (i < a ∨ b < i) → IsZero ((Cone.cone f).X i))
@@ -188,7 +193,8 @@ theorem lambdaEuler_cone {P Q : CochainComplex (ModuleCat.{u} C) ℤ} (f : P ⟶
   rw [eC, eQ, eP]
   ring
 
-/-- Supported homology belongs to the power-torsion category. -/
+/-- 台の零ホモトピー条件から、ホモロジーが有限生成イデアル `J` の冪で消えることを導く。
+`J` が生成元の張るイデアルの根基に含まれることを用いる。 -/
 lemma supported_homology_isPowTorsion (hfg : J.FG) {n : ℕ}
     {w : Fin n → C} (hJ : J ≤ (Ideal.span (Set.range w)).radical)
     {P : CochainComplex (ModuleCat.{u} C) ℤ} (hP : IsSupported w P) (i : ℤ) :
@@ -197,15 +203,16 @@ lemma supported_homology_isPowTorsion (hfg : J.FG) {n : ℕ}
     have h := Ideal.radical_mono (hP.le_radical_annihilator i)
     simpa only [Ideal.radical_idem] using h))
 
-/-! ## The ordinary length as a normalized length -/
+/-! ## 通常の長さを正規化長さの特殊例として扱う -/
 
-/-- Casting `ℕ∞` into `ℝ≥0∞` and then into `ℝ` agrees with `ENat.toNat`; both send `⊤` to `0`. -/
+/-- 拡張自然数を拡張非負実数経由で実数に移す操作は、`toNat` 経由の変換と一致する。
+両方の変換で `⊤` は零に送られる。 -/
 lemma toReal_toENNReal (n : ℕ∞) : (n : ℝ≥0∞).toReal = (n.toNat : ℝ) := by
   induction n using ENat.recTopCoe with
   | top => simp
   | coe k => simp
 
-/-- The ordinary Euler evaluation is the one for `NormalizedLength.ordinary`. -/
+/-- 通常の Euler 評価は、正規化長さに通常の加群長を選んだ `lambdaEuler` の特殊例である。 -/
 lemma chiOrd_eq_lambdaEuler_ordinary {T : Type u} [CommRing T]
     (P : CochainComplex (ModuleCat.{u} T) ℤ) :
     chiOrd P = lambdaEuler (NormalizedLength.ordinary T) P := by
@@ -214,12 +221,12 @@ lemma chiOrd_eq_lambdaEuler_ordinary {T : Type u} [CommRing T]
 
 end general
 
-/-! ## Normalized Euler evaluation on supported perfect complexes
+/-! ## 台つき完全複体の正規化 Euler 評価
 
-Over a tower `A → T → C` with `z` a tuple in `A` generating an `m_A`-primary ideal and `λ` a
-normalized length on `C` for the ideal `m_A C`, the homology of the base change to `C` of a
-`z`-supported perfect `T`-complex lies in the domain of `λ`. When these lengths are finite,
-`chiLam lam` descends to `K₀^{m_A}(T)`. -/
+環の塔 `A → T → C`、`m_A` 準素なイデアルを生成する列 `z`、`m_A C` の冪ねじれ加群上で
+加法的な正規化長さを考える。`z` に台をもつ完全 `T` 複体の係数拡大のホモロジーは
+この加法性の対象となる。その長さの有限性を仮定して、評価を `K₀` 上の準同型にする。
+-/
 
 section supported
 
@@ -227,7 +234,8 @@ variable {A T C : Type u} [CommRing A] [IsLocalRing A] [IsNoetherianRing A] [Com
   [Algebra A T] [CommRing C] [Algebra T C] [Algebra A C] [IsScalarTower A T C]
   {e : ℕ} {z : Fin e → A} {lam : NormalizedLength C ((maximalIdeal A).map (algebraMap A C))}
 
-/-- Base-changed supported complexes have homology in the domain of `λ`. -/
+/-- 基底の極大イデアルに台をもつ完全複体を `C` に係数拡大すると、
+そのホモロジーは `m_A C` の冪で消える。これにより正規化長さの加法性を適用できる。 -/
 lemma chiLam_homology_isPowTorsion
     (hz : (Ideal.span (Set.range z)).radical = maximalIdeal A)
     {P : CochainComplex (ModuleCat.{u} T) ℤ}
@@ -249,13 +257,14 @@ lemma chiLam_homology_isPowTorsion
   exact supported_homology_isPowTorsion hfg hJ hs i
 
 omit [IsNoetherianRing A] [Algebra A T] [Algebra T C] [IsScalarTower A T C] in
-/-- Normalized Euler evaluation is invariant under homotopy equivalence. -/
+/-- 係数拡大後の正規化 Euler 評価 `chiLam` は、元の複体のホモトピー同値で不変である。 -/
 lemma chiLam_eq_of_homotopyEquiv (φ : T →+* C)
     {P Q : CochainComplex (ModuleCat.{u} T) ℤ} (h : HomotopyEquiv P Q) :
     chiLam lam φ P = chiLam lam φ Q :=
   lambdaEuler_eq_of_homotopyEquiv lam ((ModuleCat.extendScalars φ).mapHomotopyEquiv h)
 
-/-- Mapping-cone additivity assuming finite homology evaluations. -/
+/-- 台つき完全複体とその写像錐について、係数拡大後のホモロジーの正規化長さが有限なら、
+`chiLam` は写像錐の関係式を保つ。有限性そのものは仮定として受け取る。 -/
 lemma chiLam_cone_of_finite
     (hz : (Ideal.span (Set.range z)).radical = maximalIdeal A)
     (hfinite : ∀ (P : PerfSupp T (algebraMap A T ∘ z)) (i : ℤ),
@@ -290,7 +299,8 @@ lemma chiLam_cone_of_finite
     (chiLam_homology_isPowTorsion hz P.2) (chiLam_homology_isPowTorsion hz Q.2) tC
     (hfinite P) (hfinite Q) lC
 
-/-- Finite evaluations let the normalized Euler evaluation descend to `K₀`. -/
+/-- すべての対象のホモロジー評価が有限であるという仮定のもとで、
+正規化 Euler 評価を台つき完全複体の `K₀` から実数への加法群準同型に降ろす。 -/
 noncomputable def chiLamHom_of_finite
     (hz : (Ideal.span (Set.range z)).radical = maximalIdeal A)
     (hfinite : ∀ (P : PerfSupp T (algebraMap A T ∘ z)) (i : ℤ),
@@ -300,6 +310,7 @@ noncomputable def chiLamHom_of_finite
     (fun _ _ h ↦ chiLam_eq_of_homotopyEquiv (algebraMap T C) h)
     (chiLam_cone_of_finite hz hfinite)
 
+/-- 正規化 Euler 準同型を複体の類に適用すると、その複体の `chiLam` に一致する。 -/
 @[simp]
 lemma chiLamHom_of_finite_mk
     (hz : (Ideal.span (Set.range z)).radical = maximalIdeal A)

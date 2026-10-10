@@ -9,13 +9,16 @@ public import Mathlib.Basic.Real.Basic
 public import Mathlib.Algebra.Category.ModuleCat.ChangeOfRings
 
 /-!
-# 正則局所環・局所環の標準事実（層 3a）
+# 正則局所環に関する未証明の一般的な入力
 
-Mathlib にない標準事実を `sorry` つきの定理として置く。`notes/PLAN.md` §11 の A1 など。
+二つの標準的な主張を `sorry` 付きの定理として置く。
+極大イデアルを環の次元個の元で生成した列が弱正則列になることと、
+その列の Koszul Euler 標数が有限代数の階数に一致することである。
+このファイルを通じて使う定理には、これらの未証明結果への依存が残る。
 
-- 正則局所環の正則パラメータ系は（弱）正則列。
-- 局所環 `A` 上有限な局所環 `T` では、`m_T` の冪が `m_A T` に入る（`T/m_A T` は Artin 局所環）。
-- 正則パラメータ系の Koszul Euler 標数は生成ランク：`χ^A(z; T) = rank_A T`（Lemma 3.5b の通常側）。
+有限な局所代数の極大イデアルの冪が基底の極大イデアルの拡大に入る事実は、
+`CommutativeAlgebra/LocalAlgebra.lean` ですでに証明されている。
+Mathlib との対応と残る接続の検討は `notes/mathlib-review-2026-10-10.md` を参照する。
 -/
 
 @[expose] public section

@@ -33,7 +33,7 @@ noncomputable abbrev resV (V : Type u) [AddCommGroup V] [Module A V] :
     CochainComplex (ModuleCat.{u} A) ℤ :=
   extRes (projectiveResolution (ModuleCat.of A V))
 
-/-- `H^0(resV V) ≅ V`。 -/
+/-- 選んだ射影分解を整数添字へ延長した複体の零次ホモロジーを、もとの加群 `V` に同一視する。 -/
 noncomputable abbrev resVHomologyZeroIso (V : Type u) [AddCommGroup V] [Module A V] :
     (resV A V).homology 0 ≅ ModuleCat.of A V :=
   extResHomologyZeroIso (projectiveResolution (ModuleCat.of A V))
@@ -63,7 +63,7 @@ lemma mono_homologyMap_liftSES_zero (hf : Function.Injective f) :
   have : Mono (ModuleCat.ofHom f) := (ModuleCat.mono_iff_injective _).mpr hf
   infer_instance
 
-/-- `H^0(Cone f̃) ≃ V₃`。 -/
+/-- 短完全列の単射の持ち上げの写像錐について、零次ホモロジーを列の余核 `V₃` に同一視する。 -/
 noncomputable def coneHomologyZeroEquiv (hg : Function.Surjective g) (hfg : Function.Exact f g) :
     (Cone.cone (liftSES f)).homology 0 ≃ₗ[A] V₃ := by
   have h2 := Cone.exact₂ (liftSES f) 0

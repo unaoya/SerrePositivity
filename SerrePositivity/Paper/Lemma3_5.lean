@@ -1,13 +1,11 @@
 module
 
-public import SerrePositivity.Paper.Lemma3_5.C_ConjugateSum
-public import SerrePositivity.Paper.Lemma3_5.B_Normalized
-public import SerrePositivity.Paper.Lemma3_5.B_Ordinary
-public import SerrePositivity.Paper.Lemma3_5.A_Ordinary
-public import SerrePositivity.Paper.Lemma3_5.A_Normalized
+public import SerrePositivity.Paper.Lemma3_5.ConjugateSum
+public import SerrePositivity.Paper.Lemma3_5.Normalized
+public import SerrePositivity.Paper.Lemma3_5.Ordinary
 public import SerrePositivity.CommutativeAlgebra.GeometricFiber
 public import SerrePositivity.Inputs.Descent
-public import SerrePositivity.PerfectComplex.K0Functor
+public import SerrePositivity.PerfectComplex.K0
 public import SerrePositivity.CommutativeAlgebra.Koszul
 public import SerrePositivity.PerfectComplex.Basic
 public import Mathlib.Algebra.CharP.Defs
@@ -25,14 +23,15 @@ public import Mathlib.RingTheory.Spectrum.Prime.RingHom
   `λ` は `m_A C` の冪で消える `C` 加群の正規化長さで `λ H_j(z^v; C) < ∞`（`hfin`））：
   `z` に台をもつ完全 `T` 複体 `P` について `χ_T(P)`、`χ_C(P)` は有限で、
   `K₀^{m_A}(T)` 上の準同型を定める。通常の長さ側は `length_homology_ne_top_of_radical` と
-  `chiOrdHom_of_radical`（`Paper/Lemma3_5/A_Ordinary.lean`）、`λ` 側は `lemma_3_5a_lam_finite`
-  （`A_Normalized.lean`、唯一の `sorry`）と `chiLamHom_of_finite`（`PerfectComplex/NormalizedEuler.lean`）。
+  `chiOrdHom_of_radical`（`Paper/Lemma3_5/Ordinary.lean`）、`λ` 側は `lemma_3_5a_lam_finite`
+  （`Normalized.lean`、唯一の `sorry`）と `chiLamHom_of_finite`（`PerfectComplex/NormalizedEuler.lean`）。
   `lemma_3_5a` はこれらを論文の形に並べたもの。
 - **3.5b**（節 b：さらに `A` は正則で `z` は正則パラメータ系（`hz'`、`hdim`））：`A` から来る類の上で
   `χ_T(Q ⊗_A T) = χ_C(Q ⊗_A T) = r · χ_A(Q)`。二つの等式は独立に示せるので分ける。
   普通の長さの側 `lemma_3_5b_ord` は `T` が局所環で剰余体が同じこと（`hres`）を使い、
   正規化長さの側 `lemma_3_5b_lam` は (3.9) の `v = 1`（`hkz`、`hq`）と `hfin` を使う。
-  証明は `Paper/Lemma3_5/B_*.lean`：`K₀^{m}(A)` が `[K(z)]` で生成されること（共通の入力）から、
+  証明は `Paper/Lemma3_5/Ordinary.lean` と `Normalized.lean` の後半。
+  `K₀^{m}(A)` が `[K(z)]` で生成されること（共通の入力）から、
   `K(z)` での値の比較に帰着する。
 - **3.5c**（節 c：さらに剰余標数 `p > 0`、有限群 `G` が `A` 上 `T` に作用し、
   `Spec T → Spec A` は全射（`hsurj`）で幾何ファイバーで推移的（`htrans`））：
@@ -70,7 +69,7 @@ lemma radical_span_eq_maximalIdeal [IsLocalRing A]
   rw [hz']
   exact (maximalIdeal.isMaximal A).isPrime.radical
 
-/-! ## 3.5a -/
+/-! ## 3.5a：二つの評価の有限性と加法性 -/
 
 section a
 
@@ -95,7 +94,7 @@ theorem lemma_3_5a :
 
 end a
 
-/-! ## 3.5b -/
+/-! ## 3.5b：基底から来る複体の階数倍の公式 -/
 
 section b
 
@@ -114,7 +113,7 @@ lemma isKoszulResolution_of_regular : IsKoszulResolution z :=
 include hz' hdim in
 /-- **Lemma 3.5b、普通の長さの側** (3.14)：`χ_T(Q ⊗_A T) = r · χ_A(Q)`。
 `λ` も (3.9) も使わない。`T` が局所環で剰余体が同じこと（`hres`）は、`T` 上の長さと
-`A` 上の長さを一致させるためだけに使う。証明は `Paper/Lemma3_5/B_Ordinary.lean`。 -/
+`A` 上の長さを一致させるためだけに使う。証明は `Paper/Lemma3_5/Ordinary.lean`。 -/
 theorem lemma_3_5b_ord [IsLocalRing T]
     (hres : Function.Surjective ((residue T).comp (algebraMap A T)))
     (Q : CochainComplex (ModuleCat.{u} A) ℤ) (hQ : IsPerfectSupported z Q) :
@@ -124,7 +123,7 @@ theorem lemma_3_5b_ord [IsLocalRing T]
 
 include hz' hdim hkz hq hfin in
 /-- **Lemma 3.5b、正規化長さの側** (3.13)：`χ_C(Q ⊗_A T) = r · χ_A(Q)`。
-`T` が局所環であることも剰余体が同じことも使わない。証明は `Paper/Lemma3_5/B_Normalized.lean`。 -/
+`T` が局所環であることも剰余体が同じことも使わない。証明は `Paper/Lemma3_5/Normalized.lean`。 -/
 theorem lemma_3_5b_lam (Q : CochainComplex (ModuleCat.{u} A) ℤ) (hQ : IsPerfectSupported z Q) :
     chiLam lam (algebraMap T C) (baseChange (algebraMap A T) Q) =
       (Module.finrank A T : ℝ) * chiOrd Q :=
@@ -141,7 +140,7 @@ theorem lemma_3_5b [IsLocalRing T]
         (Module.finrank A T : ℝ) * chiOrd Q :=
   ⟨lemma_3_5b_ord hz' hdim hres Q hQ, lemma_3_5b_lam hz' hdim hkz hq hfin Q hQ⟩
 
-/-! ## 3.5c -/
+/-! ## 3.5c：共役和の比較 -/
 
 section c
 

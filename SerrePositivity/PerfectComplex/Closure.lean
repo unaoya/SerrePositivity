@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.PerfectComplex.Support
-public import SerrePositivity.HomologicalAlgebra.FreeTerms
-public import SerrePositivity.CommutativeAlgebra.KoszulExact
-public import SerrePositivity.CommutativeAlgebra.KoszulBaseChange
+public import SerrePositivity.HomologicalAlgebra.Basic
+public import SerrePositivity.CommutativeAlgebra.KoszulResolution
+public import SerrePositivity.CommutativeAlgebra.Koszul
 public import Mathlib.RingTheory.TensorProduct.Finite
 
 /-!
@@ -14,7 +14,7 @@ public import Mathlib.RingTheory.TensorProduct.Finite
 （`koszulPerfSupp`）。
 
 台の条件そのものの閉包性は `Support.lean`、各項の有限自由性の移送は
-`HomologicalAlgebra/FreeTerms.lean`、基底変更・ひねりの `K₀` への作用は `K0Functor.lean`。
+`HomologicalAlgebra/Basic.lean`、基底変更・ひねりの `K₀` への作用は `K0.lean`。
 -/
 
 @[expose] public section
@@ -143,10 +143,12 @@ variable {A T : Type u} [CommRing A] [CommRing T] [Algebra A T] {G : Type u} [Gr
 /-- `g⁻¹` の作用 `T ≃+* T`。 -/
 noncomputable abbrev twistInvEquiv (g : G) : T ≃+* T := MulSemiringAction.toRingEquiv G T g⁻¹
 
+/-- ひねりを表す環同型とその逆は互いに逆であり、半線形写像の合成に必要な整合性を与える。 -/
 instance (g : G) : RingHomInvPair (twistInvEquiv (T := T) g).toRingHom
     (twistInvEquiv (T := T) g).symm.toRingHom :=
   RingHomInvPair.of_ringEquiv (twistInvEquiv (T := T) g)
 
+/-- ひねりを表す環同型とその逆は互いに逆であり、半線形写像の合成に必要な整合性を与える。 -/
 instance (g : G) : RingHomInvPair (twistInvEquiv (T := T) g).symm.toRingHom
     (twistInvEquiv (T := T) g).toRingHom :=
   RingHomInvPair.symm _ _

@@ -47,3 +47,5 @@ theorem conjSum_eq {K K' : Type*} [AddCommGroup K] [AddCommGroup K'] (f : K →+
   exact mul_left_cancel₀ (by exact_mod_cast hn.ne') this
 
 end SerrePositivity
+
+end

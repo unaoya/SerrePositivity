@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.Paper.Lemma3_4.Abstract
+public import SerrePositivity.IntersectionMultiplicity.NormalizedTor
 public import SerrePositivity.Inputs.RegularLocalRing
 public import SerrePositivity.CommutativeAlgebra.Koszul
 public import SerrePositivity.CommutativeAlgebra.LocalAlgebra
@@ -22,16 +22,16 @@ public import Mathlib.Topology.Instances.ENNReal.ENatENNReal
 
 をみたす。
 
-**Lemma 3.4**：有限長 `A` 加群 `V` で `λ Tor_i^A(V, C) = 0 (i > 0)`、`λ(V ⊗_A C) = r · length_A V`。
+**Lemma 3.4**：有限長 `A` 加群 `V` で `λ Tor_i^A(C, V) = 0 (i > 0)`、`λ(V ⊗_A C) = r · length_A V`。
 すべて有限。
 
 ## 規約
 
 - 論文の `λ` は「`m_A` の冪で消える `C` 加群」の上で定義されるが、ここでは `m_T C` の冪で消える加群とする。
   `T` は `A` 上有限で剰余体が同じなので `m_A T` は `m_T` 準素であり、二つの条件は同じ。
-- `Tor_i^A(V, C)` は `TorAlg (algebraMap A C) i V`、つまり `V` を分解して計算する `C` 加群。
+- `Tor_i^A(C, V)` は `TorAlg (algebraMap A C) i V`、つまり `V` を分解して計算する `C` 加群。
   論文の `Tor_i^A(V, C)` と変数の順序は逆だが、Mathlib の `Tor` の規約に合わせた（`notes/PLAN.md` §1.3）。
-- 論文の `V ⊗_A C` は `Tor_0^A(V, C)`、つまり `TorAlg (algebraMap A C) 0 V` で書く。
+- 論文の `V ⊗_A C` は `Tor_0^A(C, V)`、つまり `TorAlg (algebraMap A C) 0 V` で書く。
   `Tor_0 ≅ C ⊗_A V` は右完全性（`Functor.leftDerivedZeroIsoSelf`）で、別の補題にする。
   `TorAlg` の内部の `C ⊗[A] V` は `(algebraMap A C).toAlgebra` 由来の加群構造をもち、
   環境の `Algebra A C` 由来のものと型の上で食い違うので、主張には出さない。
@@ -58,9 +58,9 @@ structure Setup34 (A T C : Type u) [CommRing A] [IsRegularLocalRing A] [CommRing
   prime : p.Prime
   /-- 剰余標数は `p`。 -/
   charP : CharP (ResidueField A) p
-  /-- `dim A = e`。 -/
+  /-- 基底環 `A` の Krull 次元が、パラメータの個数 `e` に等しい。 -/
   dim : ringKrullDim A = e
-  /-- `e > 0`。 -/
+  /-- パラメータの個数が正である。 -/
   pos : 0 < e
   /-- `z` は `A` の正則パラメータ系。 -/
   regular_params : Ideal.span (Set.range z) = maximalIdeal A
@@ -81,7 +81,7 @@ structure Setup34 (A T C : Type u) [CommRing A] [IsRegularLocalRing A] [CommRing
       ((v ^ e * Module.finrank A T : ℕ) : ℝ≥0∞)
 
 /-- **Lemma 3.4**。有限長 `A` 加群 `V` に対して (3.10)：
-`λ Tor_i^A(V, C) = 0 (i > 0)`、`λ Tor_0^A(V, C) = r · length_A V`（`Tor_0 = V ⊗_A C`）、すべて有限。 -/
+`λ Tor_i^A(C, V) = 0 (i > 0)`、`λ Tor_0^A(C, V) = r · length_A V`（`Tor_0 = C ⊗_A V`）、すべて有限。 -/
 theorem lemma_3_4 (A T C : Type u) [CommRing A] [IsRegularLocalRing A] [CommRing T] [IsLocalRing T]
     [Algebra A T] [CommRing C] [Algebra T C] [Algebra A C] [IsScalarTower A T C]
     (p : ℕ) {e : ℕ} (z : Fin e → A)
@@ -110,7 +110,7 @@ theorem lemma_3_4 (A T C : Type u) [CommRing A] [IsRegularLocalRing A] [CommRing
     have := S.quotient_eq 1 one_pos
     rw [hz1] at this
     simpa [lam'] using this
-  exact lemma_3_4_of_isWeaklyRegular (algebraMap A C) z S.regular_params hreg lam'
+  exact normalizedLength_tor_of_isWeaklyRegular (algebraMap A C) z S.regular_params hreg lam'
     (Module.finrank A T) h39a h39b V hVfl
 
 end SerrePositivity

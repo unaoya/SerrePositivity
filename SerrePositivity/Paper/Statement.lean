@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EulerChar
+public import SerrePositivity.IntersectionMultiplicity.Basic
 public import Mathlib.Algebra.CharP.Defs
 public import Mathlib.FieldTheory.IsAlgClosed.Basic
 public import Mathlib.LinearAlgebra.TensorProduct.Basic

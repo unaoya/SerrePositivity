@@ -1,7 +1,6 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.Basic
-public import SerrePositivity.HomologicalAlgebra.FreeTerms
 public import Mathlib.Algebra.BigOperators.Finprod
 public import Mathlib.Algebra.Category.ModuleCat.Abelian
 public import Mathlib.Algebra.Category.ModuleCat.ChangeOfRings
@@ -11,6 +10,9 @@ public import Mathlib.Algebra.Homology.Single
 public import Mathlib.Algebra.Ring.NegOnePow
 public import Mathlib.Basic.Real.Basic
 public import Mathlib.RingTheory.Length
+public import SerrePositivity.HomologicalAlgebra.BaseChange
+public import Mathlib.Algebra.Homology.Additive
+public import Mathlib.LinearAlgebra.TensorProduct.Tower
 
 /-!
 # Koszul 複体
@@ -27,10 +29,10 @@ public import Mathlib.RingTheory.Length
 添字は cochain（`ComplexShape.up ℤ`）で、`K(x)` は `-n, …, 0` 次に乗る。
 論文は homological に添字づけしているので、`H_i(x; M)` は cochain の `-i` 次のホモロジーである。
 係数 `C` の Koszul ホモロジー `H_i(z; C)` は、`z` の像の Koszul 複体のホモロジー
-`koszulHomologySelf (φ ∘ z) i` で書く（基底変更との両立は `KoszulBaseChange.lean`）。
+`koszulHomologySelf (φ ∘ z) i` で書く（係数拡大との両立はこのファイルの後半）。
 
 項の性質（正の次数と `-n` 次より下で零、各項は有限自由で射影的）と、`A` 上の長さで測った
-Euler 標数 `koszulEulerChar` もここに置く。完全性は `KoszulExact.lean`。
+Euler 標数 `koszulEulerChar` もここに置く。完全性は `KoszulResolution.lean`。
 -/
 
 @[expose] public section
@@ -55,11 +57,13 @@ noncomputable def koszulComplex : {n : ℕ} → (Fin n → R) → CochainComplex
 noncomputable abbrev koszulHomologySelf {n : ℕ} (x : Fin n → R) (i : ℕ) : Type u :=
   (koszulComplex x).homology (-(i : ℤ))
 
+/-- 空の列の Koszul 複体は、環自身を零次に置いた単一複体である。 -/
 lemma koszulComplex_zero (x : Fin 0 → R) :
     koszulComplex x =
       (HomologicalComplex.single (ModuleCat.{u} R) (ComplexShape.up ℤ) 0).obj (ModuleCat.of R R) :=
   rfl
 
+/-- 列の末尾に元を追加した Koszul 複体は、それまでの複体上の末尾の元による乗法の写像錐である。 -/
 lemma koszulComplex_succ {n : ℕ} (x : Fin (n + 1) → R) :
     koszulComplex x =
       CochainComplex.mappingCone (smulId (x (Fin.last n)) (koszulComplex (Fin.init x))) :=
@@ -131,3 +135,47 @@ noncomputable def koszulEulerChar (A T : Type u) [CommRing A] [CommRing T] [Alge
     (algebraMap A T)).obj ((koszulComplex (algebraMap A T ∘ z)).homology i))).toNat : ℝ)
 
 end SerrePositivity
+
+end
+
+/-!
+## Koszul 複体の基底変更
+
+環準同型 `φ : A → C` による係数拡大（`baseChange φ`）は Koszul 複体と両立する：
+`C ⊗_A K(z; A) ≅ K(φ z; C)`。写像錐の反復で定義したので、
+写像錐が加法的関手と両立すること（`homotopyCofiber.mapHomologicalComplexObjIso`）と、
+係数拡大が `a • 𝟙` を `φ a • 𝟙` に送ることから、`n` の帰納法で出る。
+-/
+
+@[expose] public section
+
+universe u
+
+open CategoryTheory Limits
+open scoped ChangeOfRings
+
+namespace SerrePositivity
+
+variable {A C : Type u} [CommRing A] [CommRing C] (φ : A →+* C)
+
+/-- 基底変更と Koszul 複体の両立：`C ⊗_A K(z; A) ≅ K(φ z; C)`。 -/
+noncomputable def baseChangeKoszulIso :
+    ∀ {n : ℕ} (z : Fin n → A), baseChange φ (koszulComplex z) ≅ koszulComplex (φ ∘ z)
+  | 0, z =>
+    (HomologicalComplex.singleMapHomologicalComplex (ModuleCat.extendScalars.{u, u, u} φ)
+      (c := ComplexShape.up ℤ) 0).app (ModuleCat.of A A) ≪≫
+    (HomologicalComplex.single (ModuleCat.{u} C) (ComplexShape.up ℤ) 0).mapIso
+      (letI := φ.toAlgebra; (TensorProduct.AlgebraTensorModule.rid A C C).toModuleIso)
+  | n + 1, z => by
+    change baseChange φ (CochainComplex.mappingCone
+      (smulId (z (Fin.last n)) (koszulComplex (Fin.init z)))) ≅
+      CochainComplex.mappingCone (smulId (φ (z (Fin.last n))) (koszulComplex (Fin.init (φ ∘ z))))
+    refine HomologicalComplex.homotopyCofiber.mapHomologicalComplexObjIso _ _ ≪≫ ?_
+    rw [baseChange_smulId]
+    exact HomologicalComplex.homotopyCofiber.mapArrowIso _ _ (fun j ↦ ⟨j - 1, by simp⟩)
+      (Arrow.isoMk (baseChangeKoszulIso (Fin.init z)) (baseChangeKoszulIso (Fin.init z))
+        (by simp [smulId]))
+
+end SerrePositivity
+
+end

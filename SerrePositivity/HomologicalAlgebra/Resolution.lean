@@ -61,6 +61,7 @@ variable {R : Type u} [CommRing R]
 noncomputable abbrev embUp : ComplexShape.Embedding (ComplexShape.down ℕ) (ComplexShape.up ℤ) :=
   ComplexShape.embeddingUpIntLE 0
 
+/-- 添字の埋め込みは、チェインとコチェインの微分が許される隣接関係を対応させる。 -/
 instance : embUp.IsRelIff := inferInstanceAs (ComplexShape.embeddingUpIntLE 0).IsRelIff
 
 /-- ℤ 添字の cochain 複体の、`n ↦ -n` に沿った ℕ 添字の chain 複体への制限。 -/
@@ -121,14 +122,14 @@ structure IsResolutionOf (K : CochainComplex (ModuleCat.{u} R) ℤ) (Z : ModuleC
   projective : ∀ i : ℤ, Projective (K.X i)
   /-- `i ≠ 0` でホモロジーは零。 -/
   isZero_homology : ∀ i : ℤ, i ≠ 0 → IsZero (K.homology i)
-  /-- `H^0(K) ≅ Z`。 -/
+  /-- 零次ホモロジーを、分解される加群 `Z` に同一視する同型。 -/
   homologyZeroIso : K.homology 0 ≅ Z
 
 namespace IsResolutionOf
 
 variable {K : CochainComplex (ModuleCat.{u} R) ℤ} {Z : ModuleCat.{u} R} (h : IsResolutionOf K Z)
 
-/-- `(toChain K).opcycles 0 ≅ Z`。 -/
+/-- コチェイン分解をチェイン複体に制限したときの零次の余サイクルを、分解される加群に同一視する。 -/
 noncomputable def opcyclesIso : (toChain K).opcycles 0 ≅ Z :=
   (asIso ((toChain K).homologyι 0)).symm ≪≫ toChainHomologyIsoZero K h.isZero_X ≪≫
     h.homologyZeroIso
@@ -139,6 +140,7 @@ noncomputable def π : toChain K ⟶ (ChainComplex.single₀ (ModuleCat.{u} R)).
     ⟨(toChain K).pOpcycles 0 ≫ h.opcyclesIso.hom, by
       rw [← Category.assoc, HomologicalComplex.d_pOpcycles, zero_comp]⟩
 
+/-- 射影分解の添加写像の零次成分は、零次の余サイクルへの射と分解先への同型の合成である。 -/
 lemma π_f_zero : h.π.f 0 = (toChain K).pOpcycles 0 ≫ h.opcyclesIso.hom := by
   simp [π]
 
@@ -180,6 +182,7 @@ end IsResolutionOf
 
 section extend
 
+/-- 添字の埋め込み `n ↦ -n` は零を零に送る。 -/
 lemma embUp_f_zero : embUp.f 0 = 0 := by
   change (0 : ℤ) - 0 = 0
   simp
@@ -190,11 +193,13 @@ variable {X : ModuleCat.{u} R} (P : ProjectiveResolution X)
 noncomputable abbrev extRes : CochainComplex (ModuleCat.{u} R) ℤ :=
   P.complex.extend embUp
 
+/-- 自然数添字の射影分解を整数添字へ延長した複体は、正次数の項が零になる。 -/
 lemma extRes_isZero_X (i : ℤ) (hi : 0 < i) : IsZero ((extRes P).X i) :=
   HomologicalComplex.isZero_extend_X _ _ _ (fun n hn ↦ by
     have : (0 : ℤ) - n = i := hn
     omega)
 
+/-- 射影分解を整数添字に延長しても、各項は射影的である。追加される項は零対象である。 -/
 lemma extRes_projective (i : ℤ) : Projective ((extRes P).X i) := by
   by_cases h : ∃ n : ℕ, embUp.f n = i
   · obtain ⟨n, rfl⟩ := h
@@ -208,6 +213,7 @@ lemma res_homology_isZero (n : ℕ) (hn : n ≠ 0) : IsZero (P.complex.homology 
   (asIso (HomologicalComplex.homologyMap P.π n)).isZero_iff.mpr
     (HomologicalComplex.isZero_single_obj_homology _ _ _ _ hn)
 
+/-- 整数添字に延長した射影分解のホモロジーは、零次以外で消える。 -/
 lemma extRes_isZero_homology (i : ℤ) (hi : i ≠ 0) : IsZero ((extRes P).homology i) := by
   by_cases h : ∃ n : ℕ, embUp.f n = i
   · obtain ⟨n, rfl⟩ := h
@@ -217,7 +223,7 @@ lemma extRes_isZero_homology (i : ℤ) (hi : i ≠ 0) : IsZero ((extRes P).homol
   · exact (HomologicalComplex.exactAt_iff_isZero_homology _ _).mp
       (HomologicalComplex.extend_exactAt _ _ _ (fun n hn ↦ h ⟨n, hn⟩))
 
-/-- `H^0(extRes P) ≅ X`。 -/
+/-- 整数添字に延長した射影分解の零次ホモロジーを、もとの加群に同一視する。 -/
 noncomputable def extResHomologyZeroIso : (extRes P).homology 0 ≅ X :=
   haveI : IsIso (HomologicalComplex.homologyMap P.π 0) :=
     (quasiIsoAt_iff_isIso_homologyMap _ _).mp inferInstance

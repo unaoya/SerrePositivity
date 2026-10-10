@@ -13,14 +13,17 @@ public import Mathlib.Algebra.Ring.NegOnePow
 # 閉点に台をもつ完全複体とその二つの Euler 評価（論文 §3.4、Lemma 3.5）
 
 - `IsSupported z P`：論文 §3.1 の台の判定法。ある `v` で、すべての `j` について `z_j^v • 𝟙 P` が
-  零ホモトピック（`P[1/z_j] = 0` と同値）。生成元 `z` で書くので、基底変更やひねりで保たれる。
+  零ホモトピック。局所化による台の記述との同値はこのファイルでは形式化していない。生成元 `z` で書くので、基底変更やひねりで保たれる。
 - `IsPerfectSupported z P`：`P` は有界で各項が有限自由な `T` 複体で、`z` に台をもつ。
   Lemma 3.5 では `z = algebraMap A T ∘ (A の正則パラメータ系)`。`PerfSupp T z` はその全体（部分型）。
-- `chiOrd T P = Σ_i (-1)^i length_T H_i(P)`：通常の Euler 評価。
+- `chiOrd P = Σ_i (-1)^i length_T H_i(P)`：通常の Euler 評価。
 - `chiLam λ φ P = Σ_i (-1)^i λ H_i(P ⊗_T C)`：正規化長さ `λ` による評価。`φ : T →+* C`。
 - `twist g P = g^*P`：`g : T → T` に沿った係数制限（論文 §3.4 末尾の scalar twisting）。
 
-添字は cochain で、homological な `i` 次は cochain の `-i` 次。符号 `(-1)^i` は `Int.negOnePow` で与える。
+ここでの完全複体は、有界な有限自由複体という具体的なモデルである。
+任意の環上の有限射影複体や導来圏の完全対象との同値は別途示す必要がある。
+
+添字はコチェインで、homological な `i` 次は cochain の `-i` 次。符号 `(-1)^i` は `Int.negOnePow` で与える。
 -/
 
 @[expose] public section

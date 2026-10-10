@@ -11,7 +11,7 @@ public import Mathlib.Topology.MetricSpace.Basic
 - `IsSystemOfParameters D z`：`z : Fin h → D` が局所環 `D` のパラメータ系。
   `h = dim D` かつ `(z)` が `m_D` 準素。
 - `hilbertSamuelMultiplicity I M`：`e(I, M) = lim_n d! · length(M / Iⁿ M) / nᵈ`（`d = dim M`）。
-  `Filter.limUnder` で定義し、極限の存在は証明しない（存在しなければ junk value）。
+  `Filter.limUnder` で定義し、極限の存在は証明しない（存在しない場合にも定義上の値が与えられる）。
   論文 (2.5) の右辺「正で有限」は、使う側で別に仮定する。
 -/
 
@@ -30,7 +30,9 @@ variable (D : Type u) [CommRing D]
 def IsSystemOfParameters [IsLocalRing D] {h : ℕ} (z : Fin h → D) : Prop :=
   ringKrullDim D = h ∧ (Ideal.span (Set.range z)).radical = IsLocalRing.maximalIdeal D
 
-/-- Hilbert–Samuel 重複度 `e(I, M) = lim_n d! · length_D(M / Iⁿ M) / nᵈ`、`d = dim M`。 -/
+/-- Hilbert–Samuel 重複度を表す実数値の式 `e(I, M) = lim_n d! · length_D(M / Iⁿ M) / nᵈ`。
+`d` は台の次元を自然数に移した値である。有限生成性や準素性を仮定しない全域的な定義であり、
+極限の存在や通常の重複度との一致・正値性はこの定義だけからは主張しない。 -/
 noncomputable def hilbertSamuelMultiplicity (I : Ideal D) (M : Type u) [AddCommGroup M]
     [Module D M] : ℝ :=
   let d := dimToNat (Module.supportDim D M)

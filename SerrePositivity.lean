@@ -1,54 +1,55 @@
 module
 
-public import SerrePositivity.Statement
-public import SerrePositivity.EulerChar
+public import SerrePositivity.Paper.Statement
+public import SerrePositivity.IntersectionMultiplicity.Basic
 public import SerrePositivity.HomologicalAlgebra.Basic
 public import SerrePositivity.HomologicalAlgebra.ConeLES
 public import SerrePositivity.HomologicalAlgebra.BaseChange
-public import SerrePositivity.HomologicalAlgebra.TriangleSmul
 public import SerrePositivity.HomologicalAlgebra.NullHomotopy
-public import SerrePositivity.HomologicalAlgebra.FreeTerms
 public import SerrePositivity.HomologicalAlgebra.Resolution
 public import SerrePositivity.HomologicalAlgebra.Tor
-public import SerrePositivity.HomologicalAlgebra.TorCochain
 public import SerrePositivity.HomologicalAlgebra.ConeResolution
 public import SerrePositivity.HomologicalAlgebra.TorLES
-public import SerrePositivity.HomologicalAlgebra.TorTorsion
 public import SerrePositivity.HomologicalAlgebra.KProjectiveLift
 public import SerrePositivity.CommutativeAlgebra.PowTorsion
 public import SerrePositivity.CommutativeAlgebra.FiniteLength
-public import SerrePositivity.CommutativeAlgebra.LengthComparison
 public import SerrePositivity.CommutativeAlgebra.LocalAlgebra
 public import SerrePositivity.CommutativeAlgebra.Multiplicity
 public import SerrePositivity.CommutativeAlgebra.GeometricFiber
 public import SerrePositivity.CommutativeAlgebra.Koszul
-public import SerrePositivity.CommutativeAlgebra.KoszulExact
 public import SerrePositivity.CommutativeAlgebra.KoszulResolution
-public import SerrePositivity.CommutativeAlgebra.KoszulBaseChange
-public import SerrePositivity.CommutativeAlgebra.TorKoszul
 public import SerrePositivity.CommutativeAlgebra.HomologyLength
 public import SerrePositivity.CommutativeAlgebra.Truncate
 public import SerrePositivity.PerfectComplex.NormalizedLength
 public import SerrePositivity.PerfectComplex.Basic
 public import SerrePositivity.PerfectComplex.Support
 public import SerrePositivity.PerfectComplex.Closure
-public import SerrePositivity.PerfectComplex.HomologySupport
 public import SerrePositivity.PerfectComplex.K0
-public import SerrePositivity.PerfectComplex.K0Functor
 public import SerrePositivity.PerfectComplex.NormalizedEuler
 public import SerrePositivity.PerfectComplex.OrdinaryEuler
 public import SerrePositivity.PerfectComplex.KoszulGeneration
 public import SerrePositivity.Inputs.RegularLocalRing
 public import SerrePositivity.Inputs.LengthAlgebra
 public import SerrePositivity.Inputs.Descent
-public import SerrePositivity.Paper.Lemma3_4.Abstract
+public import SerrePositivity.CommutativeAlgebra.TorFiniteLength
+public import SerrePositivity.IntersectionMultiplicity.NormalizedTor
+public import SerrePositivity.Paper.Corollary2_6
 public import SerrePositivity.Paper.Lemma3_4
-public import SerrePositivity.Paper.Lemma3_5.A_Ordinary
-public import SerrePositivity.Paper.Lemma3_5.A_Normalized
-public import SerrePositivity.Paper.Lemma3_5.B_Ordinary
-public import SerrePositivity.Paper.Lemma3_5.B_Normalized
-public import SerrePositivity.Paper.Lemma3_5.C_ConjugateSum
+public import SerrePositivity.Paper.Lemma3_5.Ordinary
+public import SerrePositivity.Paper.Lemma3_5.Normalized
+public import SerrePositivity.Paper.Lemma3_5.ConjugateSum
 public import SerrePositivity.Paper.Lemma3_5
 public import SerrePositivity.Paper.Lemma5_2
-public import SerrePositivity.Core.Setup
-public import SerrePositivity.Core.Main
+public import SerrePositivity.Paper.Section5.Positivity
+
+/-!
+# Serre の交点重複度の正値性の形式化
+
+プロジェクトの公開ファイルをまとめて読み込む入口。
+ホモロジー代数・可換代数・完全複体・交点重複度の一般論を組み合わせ、
+`Paper` 以下で論文の各主張への適用を記述する。
+
+未証明の定理は `sorry`、まだ供給していない一般論は入力クラスとして明示されている。
+このファイルのビルド成功は、それらの数学的な入力が証明されたことを意味しない。
+各宣言の説明と `Inputs` のファイルで、証明の依存する仮定を確認できる。
+-/

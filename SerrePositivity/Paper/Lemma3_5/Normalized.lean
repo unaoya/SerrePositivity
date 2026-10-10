@@ -1,12 +1,53 @@
 module
 
+public import SerrePositivity.PerfectComplex.NormalizedEuler
+public import SerrePositivity.CommutativeAlgebra.Koszul
 public import SerrePositivity.PerfectComplex.KoszulGeneration
-public import SerrePositivity.PerfectComplex.K0Functor
-public import SerrePositivity.Paper.Lemma3_5.A_Normalized
-public import SerrePositivity.CommutativeAlgebra.KoszulBaseChange
+public import SerrePositivity.PerfectComplex.K0
 
 /-!
-# Lemma 3.5b、正規化長さの側 (3.13)
+# 補題3.5の正規化長さによる評価
+
+前半の `lemma_3_5a_lam_finite` は、Koszul ホモロジーの評価の有限性から一般の台つき完全複体の
+評価の有限性を導く主張で、現在は `sorry` が残る。冪ねじれ性と、有限性を仮定した `K₀` への降下は
+`PerfectComplex/NormalizedEuler.lean` にある。
+
+後半は補題3.5bの正規化評価の階数倍の公式を証明する。`K₀` が Koszul 複体で生成されることを使い、
+正次数の正規化長さが零、零次の評価が指定した階数になるという仮定を適用する。
+後半の証明も、前半の未証明の有限性に依存する。通常の長さの側は `Ordinary.lean` に置く。
+-/
+
+@[expose] public section
+
+universe u
+
+open CategoryTheory Limits IsLocalRing
+open scoped ENNReal
+
+namespace SerrePositivity
+
+variable {A T C : Type u} [CommRing A] [IsLocalRing A] [IsNoetherianRing A] [CommRing T]
+  [Algebra A T] [Module.Finite A T] [CommRing C] [Algebra T C] [Algebra A C] [IsScalarTower A T C]
+  {e : ℕ} {z : Fin e → A} {lam : NormalizedLength C ((maximalIdeal A).map (algebraMap A C))}
+
+/-- 補題3.5aの正規化長さの有限性。各冪の Koszul ホモロジーの評価が有限なら、
+台つき完全複体を `C` に係数拡大したホモロジーの評価も有限となる、という主張。現在は未証明。
+予定する議論は、零ホモトピーの共通の正の冪を取り、Koszul 複体とのテンソル積を有限段の
+フィルトレーションで評価した後、元のホモロジーを直和因子として取り出すものである。 -/
+theorem lemma_3_5a_lam_finite
+    (_hz : (Ideal.span (Set.range z)).radical = maximalIdeal A)
+    (_hfin : ∀ (v j : ℕ),
+      lam.len (koszulHomologySelf (fun k ↦ algebraMap A C (z k ^ v)) j) ≠ ⊤)
+    (P : PerfSupp T (algebraMap A T ∘ z)) (i : ℤ) :
+    lam.len ((baseChange (algebraMap T C) P.1).homology i) ≠ ⊤ := by
+  sorry
+
+end SerrePositivity
+
+end
+
+/-!
+## Lemma 3.5b、正規化長さの側 (3.13)
 
 `χ_C(Q ⊗_A T) = r · χ_A(Q)`（`r = rank_A T`）。
 
@@ -97,3 +138,5 @@ theorem lemma_3_5b_lam_of_koszul (hz' : Ideal.span (Set.range z) = maximalIdeal 
   exact h
 
 end SerrePositivity
+
+end
