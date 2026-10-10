@@ -953,3 +953,34 @@ Mathlib には超 Tor スペクトル系列も「正則局所環の大域次元�
 `homology_pow_torsion_of_support` と `supported_homology_isPowTorsion` の両方がそれを使う。
 
 `IntersectionMultiplicity/` に残るのは `FiniteExtension`・`BaseChangeResolution`・`ResolutionEvaluation` の 3 ファイル。
+
+## 18. 説明コメント（docstring）の書き直し（2026-10-10）
+
+全 46 ファイルのモジュール docstring と宣言 docstring を、次の方針で書き直した（コードは変えていない）。
+ディレクトリごとに 1 コミット（`HomologicalAlgebra/`、`CommutativeAlgebra/`、`PerfectComplex/`、`Inputs/`、
+`IntersectionMultiplicity/`、`Paper/` ×2）。
+
+### 18.1 モジュール docstring
+
+見出しつきで 10〜30 行。
+
+- **概要**：このファイルが何を定義・証明するか、論文のどこに当たるか。
+- **背景 / 定義 / 方針 / 証明**：なぜこの形で定義するか、証明の筋道（使う Mathlib の定理、このプロジェクトの
+  どの補題に帰着するか）。
+- **規約と注意**：添字の向き（cochain の `-i` 次が `H_i`）、junk value（無限長は `0`、`finsum` の規約）、
+  ひねりの反変性（`g • [P] = [twist g⁻¹ P]`）、`Tor` は第 2 変数を分解する、など。
+- **使われ方**：どのファイル・どの補題から使われるか。残る `sorry` への依存があれば明記する。
+
+### 18.2 宣言 docstring
+
+- 最初の文で主張を日本語で述べる（記号は補助。`λ`、`χ_T`、`K₀^{m}(A)` などは初出で説明する）。
+- 仮定の意味（なぜ要るか、何に使うか）を書く。
+- 自明でない証明には 1〜3 文で筋道を書く（長完全列のどこを見るか、帰納法の構造、など）。
+- 関連する補題・論文の式番号・使われる場所を書く。
+- 定義と構造体は「なぜこの形か」を書き、構造体の場には 1〜2 文ずつ付ける。
+- 目安：補題 2〜5 文、定義・構造体 3〜8 文。
+
+### 18.3 注意
+
+docstring の変更だけなので定理名・証明は変わらず、`#print axioms` の結果も変わらない。
+各ディレクトリの書き換え後に `lake build` で確認した。

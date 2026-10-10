@@ -24,6 +24,8 @@ The Lean sources are organized as follows (2026-10-10):
 - `Inputs/`: theorems from outside the paper and standard facts not yet in Mathlib, stated with `sorry` or as classes (Theorem 2.5, Theorem 3.1, facts on regular local rings, the intersection-theory inputs of Lemma 5.2).
 - `IntersectionMultiplicity/`: Serre's intersection multiplicity (`Basic`), normalized Tor lengths of finite-length modules (`NormalizedTor`, shared by Corollary 2.6 and Lemma 3.4), and the ingredients of Lemma 5.2 (rank factors of `χ`, base change of a finite free resolution, Euler evaluations of resolutions).
 
+Every file has a Japanese module docstring (purpose, background, proof strategy, conventions, where it is used) and every declaration a Japanese docstring stating the claim in words, the role of its hypotheses and the idea of the proof; the conventions are recorded in `notes/PLAN.md` §18.
+
 The general theorem `normalizedLength_tor_of_isWeaklyRegular`, its application in Lemma 3.4, Lemma 3.5b, 3.5c and Lemma 5.2 (`firstComparison`, modulo the general inputs of `Inputs/IntersectionTheory.lean`) are proved modulo the inputs; the remaining `sorry` declarations in the paper part are the positivity assertion of Corollary 2.6 (`cor_2_6_pos`) and the finiteness step of Lemma 3.5a for the normalized length (`lemma_3_5a_lam_finite`). See `notes/PLAN.md` §12–14.
 
 The plan has three layers:
