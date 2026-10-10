@@ -10,15 +10,34 @@ public import Mathlib.Data.Int.Interval
 public import Mathlib.RingTheory.Support
 
 /-!
-# 台の条件をホモトピー圏で扱う
+# 台の条件の閉包性と Koszul 複体の台
 
-台の条件 `IsSupported z P`（`z_j^v • 𝟙 P` が零ホモトピック）を、ホモトピー圏 `K(A)` での等式
-`z_j^v • 𝟙 = 0` に言い換え、ホモトピー同値・シフト・写像錐で保たれることを示す。
-Koszul 複体 `K(x)` は `x` に台をもつ。一般的な部分は `HomologicalAlgebra/NullHomotopy.lean`。
-台をもつ複体のホモロジーは `z` の冪で消える（`IsSupported.le_radical_annihilator`）。
+## 概要
 
-後半ではホモロジーの台を定義し、Noether 環上の有界有限射影複体について、
-台の条件からスカラーの冪の零ホモトピーを導く。有限自由な場合には完全複体の台の条件を得る。
+`Basic.lean` で定義した台の条件 `IsSupported z P`（ある `v` について、各 `j` で `z_j^v • 𝟙 P` が
+零ホモトピック）が、ホモトピー同値・シフト・写像錐・基底変更・ひねりで保たれることを示し、
+Koszul 複体 `K(x)` が `x` に台をもつことを示す。これらは、台つき完全複体の全体が `K₀` を定義するのに
+十分な閉包性をもつこと（`Closure.lean`、`K0.lean`）の、「台」の部分である。
+
+## 方針
+
+台の条件はホモトピー圏 `K(R)` での等式 `z_j^v • 𝟙 P = 0` に言い換えられる（`isSupported_iff`）。
+ホモトピー圏ではホモトピー同値は同型、写像錐は完全三角形の頂点なので、閉包性は `K(R)` が
+`R` 線形な三角圏であることから従う。写像錐については `HomologicalAlgebra/NullHomotopy.lean` の
+`mappingCone_smul_mul_self_eq_zero`（両端で `a • 𝟙 = 0` なら錐で `a² • 𝟙 = 0`）を使う。
+基底変更とひねりは加法的関手で、ホモトピーを保ち、`z_j^v • 𝟙` を `φ(z_j)^v • 𝟙` に送ることによる。
+
+## 内容
+
+- 言い換え `isSupported_iff` と、各 `j` ごとの冪から共通の冪をとる `isSupported_of_forall`。
+- ホモトピー同値・シフト・写像錐での閉包性。
+- ホモロジーの零化：台をもつ複体のホモロジーは `(z)` の冪で消える
+  （`IsSupported.le_radical_annihilator`）。ホモロジーの有限長性（`OrdinaryEuler.lean`）と
+  冪ねじれ性（`NormalizedEuler.lean`）の根拠。
+- Koszul 複体 `K(x)` は `x` に台をもつ（`isSupported_koszulComplex`）。
+- 基底変更・ひねりでの閉包性。
+
+後半の節では、ホモロジーの台で定義した条件 `HasHomologySupport` と `IsSupported` の関係を扱う。
 -/
 
 @[expose] public section
@@ -31,12 +50,17 @@ namespace SerrePositivity
 
 variable {R : Type u} [CommRing R]
 
-/-- 台の条件のホモトピー圏での言い換え。 -/
+/-- 台の条件のホモトピー圏での言い換え：`IsSupported z P` は、ある `v` について各 `j` で
+ホモトピー圏 `K(R)` における等式 `z_j^v • 𝟙 P = 0` が成り立つことと同値。零ホモトピーの存在と
+ホモトピー圏での等式の同値（`nonempty_homotopy_smul_id_zero_iff`）による。以下の閉包性は
+この形で示す。 -/
 lemma isSupported_iff {e : ℕ} (z : Fin e → R) (P : CochainComplex (ModuleCat.{u} R) ℤ) :
     IsSupported z P ↔ ∃ v : ℕ, ∀ j, (z j) ^ v • 𝟙 ((homotopyQuot R).obj P) = 0 := by
   simp only [IsSupported, nonempty_homotopy_smul_id_zero_iff]
 
-/-- 各 `j` ごとに冪がとれれば、共通の冪がとれる。 -/
+/-- 各 `j` ごとに冪 `v_j` があって `z_j^{v_j} • 𝟙 P = 0` なら、共通の冪 `v = max_j v_j` で
+`IsSupported z P` が成り立つ。`z_j^v • 𝟙 = z_j^{v - v_j} • (z_j^{v_j} • 𝟙) = 0` だから
+（`pow_smul_id_eq_zero_of_le`）。写像錐や Koszul 複体で、`j` ごとに別々の冪が出てくるときに使う。 -/
 lemma isSupported_of_forall {e : ℕ} {z : Fin e → R} {P : CochainComplex (ModuleCat.{u} R) ℤ}
     (h : ∀ j, ∃ v : ℕ, (z j) ^ v • 𝟙 ((homotopyQuot R).obj P) = 0) : IsSupported z P := by
   choose v hv using h
@@ -44,7 +68,7 @@ lemma isSupported_of_forall {e : ℕ} {z : Fin e → R} {P : CochainComplex (Mod
   exact ⟨Finset.univ.sup v, fun j ↦
     pow_smul_id_eq_zero_of_le (hv j) (Finset.le_sup (Finset.mem_univ j))⟩
 
-/-- ホモトピー圏での同型で台の条件は保たれる。 -/
+/-- ホモトピー圏での同型 `i : P ≅ Q` で台の条件は移る：`z_j^v • 𝟙 Q = i⁻¹ ≫ (z_j^v • 𝟙 P) ≫ i = 0`。 -/
 lemma IsSupported.of_quotIso {e : ℕ} {z : Fin e → R} {P Q : CochainComplex (ModuleCat.{u} R) ℤ}
     (i : (homotopyQuot R).obj P ≅ (homotopyQuot R).obj Q) (hP : IsSupported z P) :
     IsSupported z Q := by
@@ -55,13 +79,15 @@ lemma IsSupported.of_quotIso {e : ℕ} {z : Fin e → R} {P Q : CochainComplex (
     rw [Linear.smul_comp, Category.id_comp, Linear.comp_smul, Iso.inv_hom_id]
   rw [this, hv j, zero_comp, comp_zero]
 
-/-- ホモトピー同値で台の条件は保たれる。 -/
+/-- ホモトピー同値 `P ≃ Q` で台の条件は移る（ホモトピー同値はホモトピー圏で同型だから）。 -/
 lemma IsSupported.of_homotopyEquiv {e : ℕ} {z : Fin e → R}
     {P Q : CochainComplex (ModuleCat.{u} R) ℤ} (h : HomotopyEquiv P Q) (hP : IsSupported z P) :
     IsSupported z Q :=
   hP.of_quotIso (HomotopyCategory.isoOfHomotopyEquiv h)
 
-/-- シフトで台の条件は保たれる。 -/
+/-- シフト `P⟦n⟧` で台の条件は保たれる。ホモトピー圏のシフト関手は線形なので、
+`z_j^v • 𝟙 (P⟦n⟧)` は `(z_j^v • 𝟙 P)⟦n⟧ = 0` に、ホモトピー圏への射影とシフトの可換性
+（`commShiftIso`）を通して一致する。 -/
 lemma IsSupported.shift {e : ℕ} {z : Fin e → R} {P : CochainComplex (ModuleCat.{u} R) ℤ}
     (hP : IsSupported z P) (n : ℤ) : IsSupported z (P⟦n⟧) := by
   rw [isSupported_iff] at hP ⊢
@@ -80,7 +106,9 @@ section cone
 
 variable {X Y : CochainComplex (ModuleCat.{u} R) ℤ}
 
-/-- `X`、`Y` が `z` に台をもてば `Cone(f)` も台をもつ。 -/
+/-- `X`、`Y` が `z` に台をもてば、任意の射 `f : X ⟶ Y` の写像錐 `Cone f` も `z` に台をもつ。`X`、`Y` の
+冪を `v`、`w` とし `u = max(v, w)` とすると、錐では `z_j^{2u} • 𝟙 = 0`
+（`mappingCone_smul_mul_self_eq_zero`：両端で `a • 𝟙 = 0` なら錐で `a · a • 𝟙 = 0`）。 -/
 lemma IsSupported.mappingCone {e : ℕ} {z : Fin e → R} (f : X ⟶ Y) (hX : IsSupported z X)
     (hY : IsSupported z Y) : IsSupported z (CochainComplex.mappingCone f) := by
   rw [isSupported_iff] at hX hY
@@ -95,7 +123,10 @@ end cone
 
 /-! ## ホモロジーの零化 -/
 
-/-- 零ホモトピックな `z_j^v • 𝟙` はホモロジーを零化する：`(z) ≤ √(Ann H^i(P))`。 -/
+/-- `w` に台をもつ複体のホモロジーは `w` の冪で消える：`(w) ⊆ √(Ann H^i(P))`。零ホモトピックな射は
+ホモロジーに零写像を誘導するので、`w_j^v • 𝟙 P ≃ 0` から `H^i(P)` 上で `w_j^v = 0`、すなわち
+`w_j^v ∈ Ann H^i(P)`。ホモロジーが有限長であること（`OrdinaryEuler.lean`）と `(w)` 冪ねじれで
+あること（`NormalizedEuler.lean`）の出発点。 -/
 lemma IsSupported.le_radical_annihilator {e : ℕ} {w : Fin e → R}
     {P : CochainComplex (ModuleCat.{u} R) ℤ} (hP : IsSupported w P) (i : ℤ) :
     Ideal.span (Set.range w) ≤ (Module.annihilator R (P.homology i)).radical := by
@@ -113,7 +144,11 @@ lemma IsSupported.le_radical_annihilator {e : ℕ} {w : Fin e → R}
 
 /-! ## Koszul 複体の台 -/
 
-/-- Koszul 複体 `K(x)` は `x` に台をもつ。 -/
+/-- Koszul 複体 `K(x)` は `x` に台をもつ。`n` についての帰納法で、`K(x) = Cone(x_n • 𝟙 K')`
+（`K' = K(x_0, …, x_{n-1})`）とする。最後の元 `x_n` については、`a • 𝟙` の錐では `a² • 𝟙 = 0`
+（`mappingCone_smulId_mul_self_eq_zero`）。他の `x_j` については、帰納法の仮定で `K'` 上
+`x_j^v • 𝟙 = 0` なので、錐で `x_j^{2v} • 𝟙 = 0`。各 `j` の冪を `isSupported_of_forall` でまとめる。
+空列では `j` が存在しないので自明。 -/
 theorem isSupported_koszulComplex : ∀ {n : ℕ} (x : Fin n → R), IsSupported x (koszulComplex x)
   | 0, x => ⟨0, fun j ↦ j.elim0⟩
   | n + 1, x => by
@@ -137,7 +172,9 @@ section baseChange
 
 variable {A C : Type u} [CommRing A] [CommRing C]
 
-/-- 台は基底変更で保たれる。 -/
+/-- `P` が `z` に台をもてば、基底変更 `P ⊗_A C` は `φ ∘ z` に台をもつ。係数拡大関手はホモトピーを
+保ち（`mapHomotopy`）、`z_j^v • 𝟙 P` を `φ(z_j)^v • 𝟙 (P ⊗_A C)` に送る
+（`extendScalars_mapHomologicalComplex_smul`）から。 -/
 lemma isSupported_baseChange (φ : A →+* C) {e : ℕ} {z : Fin e → A}
     {P : CochainComplex (ModuleCat.{u} A) ℤ} (h : IsSupported z P) :
     IsSupported (φ ∘ z) (baseChange φ P) := by
@@ -156,7 +193,8 @@ section twist
 variable {A T : Type u} [CommRing A] [CommRing T] [Algebra A T] {G : Type u} [Group G]
   [MulSemiringAction G T] [SMulCommClass G A T]
 
-/-- 係数制限は `f` で固定される元によるスカラー倍と両立する。 -/
+/-- 環準同型 `f : T → T` に沿った係数制限関手は、`f` で固定される元 `c` によるスカラー倍と両立する：
+`restrictScalars f` した加群では `c • x` が `f(c) • x` なので、`f c = c` なら両者は一致する。 -/
 lemma restrictScalars_mapHomologicalComplex_smul_of_fixed (f : T →+* T) (c : T) (hc : f c = c)
     {ι : Type*} {cs : ComplexShape ι} {K L : HomologicalComplex (ModuleCat.{u} T) cs} (u : K ⟶ L) :
     ((ModuleCat.restrictScalars f).mapHomologicalComplex _).map (c • u) =
@@ -165,13 +203,17 @@ lemma restrictScalars_mapHomologicalComplex_smul_of_fixed (f : T →+* T) (c : T
   change c • (u.f i x) = f c • (u.f i x)
   rw [hc]
 
-/-- `A` 上の作用は `A` の元の像を固定する。 -/
+/-- `G` の `T` への作用が `A` 線形（`SMulCommClass G A T`）なら、`A` の元の像は固定される：
+`g • (a • 1) = a • (g • 1) = a • 1`。 -/
 lemma toRingHom_algebraMap (g : G) (a : A) :
     MulSemiringAction.toRingHom G T g (algebraMap A T a) = algebraMap A T a := by
   change g • algebraMap A T a = algebraMap A T a
   rw [Algebra.algebraMap_eq_smul_one, smul_comm, smul_one]
 
-/-- `A` から来る台はひねりで保たれる。 -/
+/-- `A` の元の列 `z` から来る台はひねり `twist g` で保たれる。ひねりは `g` の作用に沿った係数制限で、
+ホモトピーを保ち、`algebraMap A T (z_j)^v` は `g` で固定される（`toRingHom_algebraMap`）ので
+`z_j^v • 𝟙` はそのまま `z_j^v • 𝟙` に移る。`§5.1` の `g^*P` が再び `K₀^{m}(T)` の元を定めること
+（`Closure.lean`、`K0.lean`）に使う。 -/
 lemma isSupported_twist {e : ℕ} (z : Fin e → A) (g : G) {P : CochainComplex (ModuleCat.{u} T) ℤ}
     (h : IsSupported (algebraMap A T ∘ z) P) : IsSupported (algebraMap A T ∘ z) (twist g P) := by
   obtain ⟨v, hv⟩ := h
@@ -194,18 +236,20 @@ end
 /-!
 ## ホモロジーの台と台の条件
 
-`HasHomologySupport I P`：各ホモロジー `H^i(P)` の台が `V(I)` に入ること。Noether 環上の有限加群の
-複体では `I ≤ √(Ann H^i(P))` と同値で、各次数で `I` のある冪がホモロジーを消す。有界なら共通の冪がとれる。
+論文では「`V(JT)` に台をもつ完全複体」をホモロジーの台で定義する：`HasHomologySupport I P` は、
+各ホモロジー `H^i(P)` の台（`Module.support`、`Supp H^i(P) ⊆ Spec T`）が閉集合 `V(I)` に入ること。
+一方 `Basic.lean` の `IsSupported w P` は零ホモトピーで定義した。この節は両者が有界な有限射影複体に
+ついて一致することを示す（`isSupported_iff_homologySupport`）。
 
-台の条件 `IsSupported w P`（`w_j^v • 𝟙 P` が零ホモトピック）との関係：
-
-- `IsSupported w P → HasHomologySupport (w) P` は `IsSupported.le_radical_annihilator`
-  （`Support.lean`）。
-- 逆は、有界な有限射影複体について、ホモロジーを消すスカラーの冪が零ホモトピックであること
-  （`HomologicalAlgebra/NullHomotopy.lean`）から出る（`isSupported_of_homologySupport`）。
+- `IsSupported w P → HasHomologySupport (w) P` は `IsSupported.le_radical_annihilator`。
+- 逆：Noether 環上の有限加群の複体では `HasHomologySupport I P` は `I ⊆ √(Ann H^i(P))` と同値で、
+  各次数で `I` のある冪がホモロジーを消す。有界なら共通の冪 `I^n` がとれる。すると `w_j^n` は
+  すべてのホモロジーを消すので、有界な有限射影複体についてはその冪が零ホモトピックになる
+  （`HomologicalAlgebra/NullHomotopy.lean` の `exists_pow_nullHomotopy_of_homology_annihilated`）。
 
 これで、ホモロジーの台で定義した条件から Lemma 3.5 の要求する `IsPerfectSupported` が得られる
-（`isPerfectSupported_of_homologySupport`。`IntersectionMultiplicity/ResolutionEvaluation.lean`）。
+（`isPerfectSupported_of_homologySupport`）。Lemma 5.2 で、`D'` 加群 `M` の分解 `P` の基底変更
+`P ⊗ T` が `m_A` に台をもつことを言うのに使う（`IntersectionMultiplicity/ResolutionEvaluation.lean`）。
 -/
 
 @[expose] public section
@@ -218,13 +262,16 @@ namespace SerrePositivity
 
 variable {T : Type u} [CommRing T]
 
-/-- 各ホモロジー `H^i(P)` の台が `V(I)` に入ること。 -/
+/-- 各ホモロジー `H^i(P)` の台 `Supp H^i(P) ⊆ Spec T` が閉集合 `V(I)` に入ること。論文の
+「`V(I)` に台をもつ複体」の定義に当たる。 -/
 def HasHomologySupport (I : Ideal T) (P : CochainComplex (ModuleCat.{u} T) ℤ) : Prop :=
   ∀ i, Module.support T (P.homology i) ⊆ PrimeSpectrum.zeroLocus I
 
 variable [IsNoetherianRing T]
 
-/-- 有限加群の複体では、ホモロジーの台の条件は `I ≤ √(Ann H^i(P))` と同値。 -/
+/-- 項が有限生成な複体では、`HasHomologySupport I P` は各 `i` で `I ⊆ √(Ann H^i(P))` と同値。
+Noether 環上の有限生成加群 `M` の台は `V(Ann M)`（Mathlib の `Module.support_eq_zeroLocus`）で、
+`V(J) ⊆ V(I)` は `I ⊆ √J` と同値だから。 -/
 lemma homologySupport_iff_le_radical_annihilator (I : Ideal T)
     (P : CochainComplex (ModuleCat.{u} T) ℤ) (hfinite : ∀ i, Module.Finite T (P.X i)) :
     HasHomologySupport I P ↔ ∀ i, I ≤ (Module.annihilator T (P.homology i)).radical := by
@@ -235,7 +282,9 @@ lemma homologySupport_iff_le_radical_annihilator (I : Ideal T)
   have := homology_moduleFinite P i
   rw [Module.support_eq_zeroLocus, PrimeSpectrum.zeroLocus_subset_zeroLocus_iff]
 
-/-- ホモロジーの台の条件から、各次数で `I` のある冪がホモロジーを消す。 -/
+/-- ホモロジーの台の条件から、各次数 `i` で `I` のある冪 `I^n` が `H^i(P)` を消す。`I ⊆ √(Ann H^i(P))`
+と、Noether 環のイデアルが有限生成であることから（`IsPowTorsion.of_le_radical_annihilator`）。
+冪 `n` は `i` によるので、共通の冪は次の補題でとる。 -/
 lemma homology_pow_torsion_of_support (I : Ideal T)
     (P : CochainComplex (ModuleCat.{u} T) ℤ) (hfinite : ∀ i, Module.Finite T (P.X i))
     (hP : HasHomologySupport I P) (i : ℤ) :
@@ -243,7 +292,9 @@ lemma homology_pow_torsion_of_support (I : Ideal T)
   IsPowTorsion.of_le_radical_annihilator I.fg_of_isNoetherianRing
     ((homologySupport_iff_le_radical_annihilator I P hfinite).mp hP i)
 
-/-- 有界なら、すべてのホモロジーを消す共通の冪がとれる。 -/
+/-- 有界な複体では、すべてのホモロジーを消す共通の冪 `I^n` がとれる。ホモロジーが非零でありうる
+次数は範囲 `[a, b]` の有限個なので、各次数の冪の最大値をとればよい。範囲の外ではホモロジーが零で
+何も消す必要がない。 -/
 theorem exists_common_pow_annihilator_of_homologySupport (I : Ideal T)
     (P : CochainComplex (ModuleCat.{u} T) ℤ) (hfinite : ∀ i, Module.Finite T (P.X i))
     (hbounded : ∃ a b : ℤ, ∀ i, (i < a ∨ b < i) → IsZero (P.X i))
@@ -266,7 +317,10 @@ theorem exists_common_pow_annihilator_of_homologySupport (I : Ideal T)
 
 /-! ## 台の条件との関係 -/
 
-/-- 有界な有限射影複体では、ホモロジーの台の条件から台の条件 `IsSupported` が出る。 -/
+/-- 有界で各項が有限生成射影的な複体では、ホモロジーの台の条件 `HasHomologySupport (w) P` から
+台の条件 `IsSupported w P` が出る。共通の冪 `n` をとると `w_j^n` はすべてのホモロジーを消すので、
+`exists_pow_nullHomotopy_of_homology_annihilated` により `(w_j^n)^m • 𝟙 P` が零ホモトピックになる
+`m` がある。各 `j` の冪 `n m` を `isSupported_of_forall` でまとめる。 -/
 theorem isSupported_of_homologySupport {e : ℕ} (w : Fin e → T)
     (P : CochainComplex (ModuleCat.{u} T) ℤ)
     (hfinite : ∀ i, Module.Finite T (P.X i)) (hproj : ∀ i, Projective (P.X i))
@@ -289,7 +343,9 @@ theorem isSupported_of_homologySupport {e : ℕ} (w : Fin e → T)
   obtain ⟨v, hv⟩ := each j
   exact ⟨v, (nonempty_homotopy_smul_id_zero_iff _ _).mp hv⟩
 
-/-- 有界な有限射影複体では、二つの台の条件は一致する。 -/
+/-- 有界で各項が有限生成射影的な複体では、零ホモトピーによる台の条件 `IsSupported w P` と
+ホモロジーの台による条件 `HasHomologySupport (w) P` は同値である。順方向は
+`IsSupported.le_radical_annihilator`、逆方向は `isSupported_of_homologySupport`。 -/
 theorem isSupported_iff_homologySupport {e : ℕ} (w : Fin e → T)
     (P : CochainComplex (ModuleCat.{u} T) ℤ)
     (hfinite : ∀ i, Module.Finite T (P.X i)) (hproj : ∀ i, Projective (P.X i))
@@ -301,7 +357,10 @@ theorem isSupported_iff_homologySupport {e : ℕ} (w : Fin e → T)
       (h.le_radical_annihilator)
   · exact isSupported_of_homologySupport w P hfinite hproj hbound
 
-/-- 有界な有限自由複体で、ホモロジーの台が `V(w)` に入るものは、`w` に台をもつ完全複体。 -/
+/-- 有界で各項が有限自由な複体で、ホモロジーの台が `V(w)` に入るものは、`w` に台をもつ完全複体
+`IsPerfectSupported w P` である（自由加群は射影的なので `isSupported_of_homologySupport` が使える）。
+論文の意味で「`V(w)` に台をもつ完全複体」であるものを、このプロジェクトの `PerfSupp T w` の元に
+するための橋渡し。 -/
 theorem isPerfectSupported_of_homologySupport {e : ℕ} (w : Fin e → T)
     (P : CochainComplex (ModuleCat.{u} T) ℤ)
     (hfinite : ∀ i, Module.Finite T (P.X i)) (hfree : ∀ i, Module.Free T (P.X i))
