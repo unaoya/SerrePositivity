@@ -39,6 +39,8 @@ public import SerrePositivity.Inputs.LengthAlgebra
 public import SerrePositivity.Inputs.Descent
 public import SerrePositivity.CommutativeAlgebra.TorFiniteLength
 public import SerrePositivity.IntersectionMultiplicity.NormalizedTor
+public import SerrePositivity.IntersectionMultiplicity.ParameterQuotientTor
+public import SerrePositivity.IntersectionMultiplicity.ParameterQuotientTorBound
 public import SerrePositivity.Paper.Section2.MonomialBasis
 public import SerrePositivity.Paper.Section2.Tower
 public import SerrePositivity.Paper.Section2.TowerStage
