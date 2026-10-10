@@ -47,6 +47,7 @@ public import SerrePositivity.Paper.Section2.Tower
 public import SerrePositivity.Paper.Section2.TowerStage
 public import SerrePositivity.Paper.Section2.TowerLength
 public import SerrePositivity.Paper.Section2.TowerDescent
+public import SerrePositivity.Paper.Section2.TowerApproximation
 public import SerrePositivity.Paper.Section2.Lemma2_1
 public import SerrePositivity.Paper.Section2.Lemma2_2
 public import SerrePositivity.Paper.Section2.Lemma2_4

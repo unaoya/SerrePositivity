@@ -12,7 +12,7 @@ public import Mathlib.LinearAlgebra.FreeModule.StrongRankCondition
 
 ## 概要
 
-`B` 代数 `S`、`S` 加群 `M`、有限自由 `B` 加群からなる複体 `G`（加群 `L` の分解）について、
+環準同型 `ψ : B → S`、`S` 加群 `M`、有限自由 `B` 加群からなる複体 `G`（加群 `L` の分解）について、
 `M ⊗_B G = M ⊗_S (S ⊗_B G)` を `S` 加群の複体として扱う（`tensorRes`）。そのホモロジーは
 `Tor^B(M, L)` に `S` の作用を載せたもので、`S` 上の正規化長さ `μ` で測れる。
 
@@ -125,42 +125,46 @@ lemma isPowTorsion_homology_of_X (X : CochainComplex (ModuleCat.{u} S) ℤ) (m :
 
 /-! ## `M ⊗_B G` -/
 
-variable {B : Type u} [CommRing B] [Algebra B S] (G : CochainComplex (ModuleCat.{u} B) ℤ)
+variable {B : Type u} [CommRing B] (ψ : B →+* S) (G : CochainComplex (ModuleCat.{u} B) ℤ)
 
-/-- `S ⊗_B G`（`S` 加群の複体）。 -/
-noncomputable abbrev GS : CochainComplex (ModuleCat.{u} S) ℤ := baseChange (algebraMap B S) G
+/-- `S ⊗_B G`（`S` 加群の複体、`ψ : B → S`）。 -/
+noncomputable abbrev GS : CochainComplex (ModuleCat.{u} S) ℤ := baseChange ψ G
 
 /-- `M ⊗_B G = M ⊗_S (S ⊗_B G)`（`S` 加群の複体）。 -/
 noncomputable abbrev tensorRes (M : ModuleCat.{u} S) : CochainComplex (ModuleCat.{u} S) ℤ :=
-  (tensorComplexFunctor (GS G)).obj M
+  (tensorComplexFunctor (GS ψ G)).obj M
 
 /-- `G` の `m` 次の項の階数（`S` 上）。 -/
-noncomputable abbrev rk (m : ℤ) : ℕ := Module.finrank S ((GS (S := S) G).X m)
+noncomputable abbrev rk (m : ℤ) : ℕ := Module.finrank S ((GS ψ G).X m)
 
 variable (hfree : ∀ i, Module.Free B (G.X i)) (hfin : ∀ i, Module.Finite B (G.X i))
 
 include hfree in
 /-- `M ↦ M ⊗_B G` は短完全列を保つ（項が平坦）。 -/
 lemma tensorRes_shortExact (Sc : ShortComplex (ModuleCat.{u} S)) (hs : Sc.ShortExact) :
-    (Sc.map (tensorComplexFunctor (GS (S := S) G))).ShortExact :=
+    (Sc.map (tensorComplexFunctor (GS ψ G))).ShortExact :=
   tensorComplex_shortExact _ (fun i ↦ by
     have := hfree i
-    have : Module.Free S ((GS (S := S) G).X i) := free_baseChange (algebraMap B S) (G.X i)
+    have : Module.Free S ((GS ψ G).X i) := free_baseChange ψ (G.X i)
     exact Module.Flat.of_free) Sc hs
 
 /-- `M` が `J` 冪ねじれなら `M ⊗_B G` のホモロジーも。 -/
 lemma isPowTorsion_tensorRes (M : ModuleCat.{u} S) (hM : IsPowTorsion J M) (m : ℤ) :
-    IsPowTorsion J ((tensorRes G M).homology m) :=
+    IsPowTorsion J ((tensorRes ψ G M).homology m) :=
   isPowTorsion_homology_of_X _ m (isPowTorsion_tensor M _ hM)
 
 include hfree hfin in
 /-- `μ(H^m(K ⊗_B G)) ≤ r_m · μ(K)`。 -/
-lemma len_homology_tensorRes_le [Nontrivial S] (K : ModuleCat.{u} S) (hK : IsPowTorsion J K)
-    (m : ℤ) : μ.len ((tensorRes G K).homology m) ≤ (rk (S := S) G m : ℝ≥0∞) * μ.len K := by
+lemma len_homology_tensorRes_le (K : ModuleCat.{u} S) (hK : IsPowTorsion J K)
+    (m : ℤ) : μ.len ((tensorRes ψ G K).homology m) ≤ (rk ψ G m : ℝ≥0∞) * μ.len K := by
+  rcases subsingleton_or_nontrivial S with hS | hS
+  · have : Subsingleton ((tensorRes ψ G K).homology m) := Module.subsingleton S _
+    rw [μ.len_eq_zero_of_subsingleton]
+    exact zero_le
   have := hfree m
   have := hfin m
-  have : Module.Free S ((GS (S := S) G).X m) := free_baseChange (algebraMap B S) (G.X m)
-  have : Module.Finite S ((GS (S := S) G).X m) := finite_baseChange (algebraMap B S) (G.X m)
+  have : Module.Free S ((GS ψ G).X m) := free_baseChange ψ (G.X m)
+  have : Module.Finite S ((GS ψ G).X m) := finite_baseChange ψ (G.X m)
   exact (len_homology_le_X μ _ m (isPowTorsion_tensor K _ hK)).trans
     (len_tensor_free_le μ K hK _)
 
@@ -171,12 +175,12 @@ include hfree in
 `P ↠ im f ↪ U` の二つの短完全列のホモロジー長完全列による。 -/
 theorem len_tensorRes_le_of_hom {P U : ModuleCat.{u} S} (f : P ⟶ U) (hP : IsPowTorsion J P)
     (hU : IsPowTorsion J U) (m : ℤ) :
-    μ.len ((tensorRes G P).homology m) ≤ μ.len ((tensorRes G U).homology m) +
-        μ.len ((tensorRes G (ModuleCat.of S (LinearMap.ker f.hom))).homology m) +
-        μ.len ((tensorRes G (ModuleCat.of S (U ⧸ LinearMap.range f.hom))).homology (m - 1)) ∧
-      μ.len ((tensorRes G U).homology m) ≤ μ.len ((tensorRes G P).homology m) +
-        μ.len ((tensorRes G (ModuleCat.of S (LinearMap.ker f.hom))).homology (m + 1)) +
-        μ.len ((tensorRes G (ModuleCat.of S (U ⧸ LinearMap.range f.hom))).homology m) := by
+    μ.len ((tensorRes ψ G P).homology m) ≤ μ.len ((tensorRes ψ G U).homology m) +
+        μ.len ((tensorRes ψ G (ModuleCat.of S (LinearMap.ker f.hom))).homology m) +
+        μ.len ((tensorRes ψ G (ModuleCat.of S (U ⧸ LinearMap.range f.hom))).homology (m - 1)) ∧
+      μ.len ((tensorRes ψ G U).homology m) ≤ μ.len ((tensorRes ψ G P).homology m) +
+        μ.len ((tensorRes ψ G (ModuleCat.of S (LinearMap.ker f.hom))).homology (m + 1)) +
+        μ.len ((tensorRes ψ G (ModuleCat.of S (U ⧸ LinearMap.range f.hom))).homology m) := by
   let K := LinearMap.ker f.hom
   let I := LinearMap.range f.hom
   have hK : IsPowTorsion J K := IsPowTorsion.of_injective K.subtype K.injective_subtype hP
@@ -193,16 +197,16 @@ theorem len_tensorRes_le_of_hom {P U : ModuleCat.{u} S} (f : P ⟶ U) (hP : IsPo
     (by ext x; exact (Submodule.Quotient.mk_eq_zero _).mpr x.2)
   have hS₂ : S₂.ShortExact := ModuleCat.shortComplex_shortExact S₂
     (LinearMap.exact_subtype_mkQ I) I.injective_subtype I.mkQ_surjective
-  have hT₁ := tensorRes_shortExact G hfree S₁ hS₁
-  have hT₂ := tensorRes_shortExact G hfree S₂ hS₂
+  have hT₁ := tensorRes_shortExact ψ G hfree S₁ hS₁
+  have hT₂ := tensorRes_shortExact ψ G hfree S₂ hS₂
   have t := fun (M : ModuleCat.{u} S) (hM : IsPowTorsion J M) (k : ℤ) ↦
-    isPowTorsion_tensorRes (J := J) G M hM k
+    isPowTorsion_tensorRes (J := J) ψ G M hM k
   -- 長完全列からの不等式
-  let hP' := fun k ↦ μ.len ((tensorRes G P).homology k)
-  let hU' := fun k ↦ μ.len ((tensorRes G U).homology k)
-  let hK' := fun k ↦ μ.len ((tensorRes G (ModuleCat.of S K)).homology k)
-  let hI' := fun k ↦ μ.len ((tensorRes G (ModuleCat.of S I)).homology k)
-  let hW' := fun k ↦ μ.len ((tensorRes G (ModuleCat.of S (U ⧸ I))).homology k)
+  let hP' := fun k ↦ μ.len ((tensorRes ψ G P).homology k)
+  let hU' := fun k ↦ μ.len ((tensorRes ψ G U).homology k)
+  let hK' := fun k ↦ μ.len ((tensorRes ψ G (ModuleCat.of S K)).homology k)
+  let hI' := fun k ↦ μ.len ((tensorRes ψ G (ModuleCat.of S I)).homology k)
+  let hW' := fun k ↦ μ.len ((tensorRes ψ G (ModuleCat.of S (U ⧸ I))).homology k)
   have e₁ : hP' m ≤ hK' m + hI' m := μ.len_le_add_of_exact _ _
     (LinearMap.exact_iff.mpr (hT₁.homology_exact₂ m).moduleCat_range_eq_ker.symm)
     (t (ModuleCat.of S K) hK m) (t P hP m) (t (ModuleCat.of S I) hI m)
