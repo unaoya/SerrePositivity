@@ -193,14 +193,29 @@ Euler 評価 & 命題~\ref{prop:35a} & 命題~\ref{prop:43} \\
 %======================================================================
 \section{共通の抽象論}\label{sec:abstract}\label{sec:planB}\label{sec:planC}
 
-この節では、証明で繰り返し使う四つの道具を、三角圏とアーベル圏の言葉だけで述べる。
+この節では、証明で繰り返し使う一般論を、三角圏とアーベル圏の言葉だけで述べる。環や長さ付き代数はここでは使わない。
+
+\paragraph{前提}
 \begin{itemize}
-  \item \textbf{Euler 評価}（命題~\ref{prop:B-euler}）：長さ付きアーベル圏に値をとるホモロジー的関手から、$K_0$ 上の準同型を作る。
-  \item \textbf{共役和の比較}（命題~\ref{prop:B-compare}）：二つの評価が基底から来る類で一致し、不変類が基底から降下すれば、共役和が一致する。
-  \item \textbf{反復錐による消滅}（補題~\ref{lem:B-nit}）：スカラーが零作用する対象では、高次のホモロジーが消える。
-  \item \textbf{第零次の下界}（補題~\ref{lem:B-h0}）：消滅のもとで、Euler 評価を第零次のホモロジーの長さで下から押さえる。
+  \item 長さ付きアーベル圏 $(\mathcal{A},\ell)$（定義~\ref{def:B-lenab}）。
+  \item 三角圏 $\mathcal{K}$ と、ホモロジー的関手 $H_*\colon\mathcal{K}\to\mathcal{A}$（§\ref{sec:planB-abs}）。
+  \item §\ref{sec:abstract-cone} ではさらに、可換環 $A$ とその元の有限列 $z$ を固定し、$\mathcal{K}$ が $A$ 線形でシフトも $A$ 線形であることを仮定する。
 \end{itemize}
-環や長さ付き代数はこの節では使わない。§\ref{sec:length} で長さ付き代数から評価先 $\mathcal{A}$ を作り、§\ref{sec:perfect}（perfect 複体）と §\ref{sec:asymp}（ランク無視の圏）で評価元 $\mathcal{K}$ と関手 $H_*$ を作って、ここでの仮定を確かめる。§\ref{sec:param} と §\ref{sec:core} はその適用である。
+
+\paragraph{結論と使う場所}
+\begin{center}
+\begin{tabularx}{\textwidth}{>{\raggedright}p{6.2cm}>{\raggedright\arraybackslash}X}
+\toprule
+結論 & 使う場所 \\
+\midrule
+Euler 評価（命題~\ref{prop:B-euler}）：Euler 数が $K_0(\mathcal{K})$ 上の準同型になる & §\ref{sec:perfect}、§\ref{sec:asymp} の評価関手 \\
+共役和の比較（命題~\ref{prop:B-compare}。群論の部分は補題~\ref{lem:conjsum}）：基底から来る類で一致し不変類が降下すれば、共役和が一致する & 命題~\ref{prop:35c}（Lemma 3.5c）、定理~\ref{thm:47}（Theorem 4.7） \\
+反復錐による消滅（補題~\ref{lem:B-nit}）：スカラーが零作用する対象では高次のホモロジーが消える & §\ref{sec:perfect}、§\ref{sec:asymp} の消滅、§\ref{sec:param} の次数の上界 \\
+第零次の下界（補題~\ref{lem:B-h0}）：消滅のもとで Euler 数を第零次の長さで下から押さえる & §\ref{sec:perfect}、§\ref{sec:asymp} の下界、§\ref{sec:core} の正値性 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+§\ref{sec:length} で長さ付き代数から評価先 $\mathcal{A}$ を作り、§\ref{sec:perfect}（perfect 複体）と §\ref{sec:asymp}（ランク無視の圏）で評価元 $\mathcal{K}$ と関手 $H_*$ を作って、ここでの前提と各結論の仮定を確かめる。§\ref{sec:param} と §\ref{sec:core} はその適用である。
 
 \subsection{長さ付きアーベル圏と Euler 評価}\label{sec:planB-abs}
 
@@ -262,7 +277,18 @@ $\mathcal{K}$ を三角圏とし、$H^{(1)}_*$、$H^{(2)}_*$ をそれぞれ長�
 \lean{\ld{CategoryTheory.EulerComparison} の \ld{homologicalEulerK0_conjSum_eq}（証明済み）。}
 
 \subsection{スカラーの反復錐}\label{sec:abstract-cone}
-$A$ を可換環、$z=(z_1,\dots,z_e)$ を有限列とし、$z^v=(z_1^v,\dots,z_e^v)$ と書く。$\mathcal{K}$ を $A$ 線形とし、シフトも $A$ 線形とする。$v\ge1$ に対し $z_j^v$ のスカラー作用の錐を順にとった対象を $K_v\otimes X$ と書く。抽象三角圏でこの記法は反復錐を表し、テンソル積の存在を仮定しない。一般論では $e=\dim A$ や $A$ の正則性も不要である。
+
+\paragraph{前提}
+この小節では次を仮定する。
+\begin{itemize}
+  \item $A$ は可換環、$z=(z_1,\dots,z_e)$ はその元の有限列で、$z^v=(z_1^v,\dots,z_e^v)$ と書く。$e=\dim A$ や $A$ の正則性は要らない。
+  \item $\mathcal{K}$ は $A$ 線形な三角圏で、シフトも $A$ 線形である。したがって $a\in A$ と対象 $X$ についてスカラー倍 $a\operatorname{id}_X$ が定まり、その錐がとれる。
+  \item $H_*\colon\mathcal{K}\to\mathcal{A}$ は §\ref{sec:planB-abs} のホモロジー的関手である。補題~\ref{lem:B-split}、\ref{lem:B-nit} は長さを使わず、補題~\ref{lem:B-h0} だけが長さ $\ell$ を使う。
+\end{itemize}
+$v\ge1$ に対し $z_j^v$ のスカラー作用の錐を順にとった対象を $K_v\otimes X$ と書く。抽象三角圏でこの記法は反復錐を表し、テンソル積の存在を仮定しない。
+
+\paragraph{使う場所}
+補題~\ref{lem:B-nit}、\ref{lem:B-h0} は、比較（命題~\ref{prop:35c}、定理~\ref{thm:47}）には使わない。§\ref{sec:perfect-vanishing} と §\ref{sec:asymp-vanishing} で、perfect 複体と列の圏について仮定 (Supp)、(Kos$_m$) と第零次の全射を確かめて適用する。その結果を §\ref{sec:param} の次数の上界と、§\ref{sec:core} の正値性（補題~\ref{lem:pos}）で使う。
 
 \begin{lemma}[零作用と分裂]\label{lem:B-split}
 全ての $j$ で $z_j^v\operatorname{id}_X=0$ なら
