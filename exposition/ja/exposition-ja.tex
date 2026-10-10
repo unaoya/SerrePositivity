@@ -60,7 +60,7 @@
 
 この解説では、証明を次のように整理して述べる。
 \begin{itemize}
-  \item Euler 評価、反復錐による消滅、第零次の下界、群作用による共役和比較を共通定理としてまとめる（付録~\ref{sec:planB}）。
+  \item Euler 評価、反復錐による消滅、第零次の下界、群作用による共役和比較を共通定理としてまとめる（§\ref{sec:abstract}）。評価先は長さ付き代数から作る（§\ref{sec:length}）。
   \item perfect 複体（§\ref{sec:perfect}）とランク無視の圏（§\ref{sec:asymp}）をその二つの実現とする。各節では具体的な圏と関手を作り、共通定理の仮定を確認して適用する。
   \item 長さの有限性、Koszul ホモロジーの消滅、比較に必要な降下を別々の入力とする。$\lambda$-平坦性・$\lambda$-CM 性（§\ref{sec:length}）は、それらを供給する十分条件として述べる。
   \item 具体的な代数の構成（§\ref{sec:construction}）と核の場合への適用（§\ref{sec:core}）は別に述べる。今回の形式化の対象は共通理論と二つの実現であり、論文全体の完成や引用結果の証明までは含めない。
@@ -175,18 +175,34 @@ $\chi$ を変えずに $D$ と $E$ を1つずつ置き換える。個々の値�
 
 置き換え 2 で左の因子 $C_D^\sigma$ が有限加群でないために、有限近似と「ランク $o(s_n)$ を無視する圏」が必要になる。これが論文 §4 の存在理由である。
 
+\paragraph{証明の骨格}
+以下では、二つの置き換えと正値性に共通する四つの道具を先に抽象的に述べ（§\ref{sec:abstract}）、評価先を長さ付き代数から作る（§\ref{sec:length}）。その上で、評価元を perfect 複体とランク無視の圏にとった二つの実現を作り（§\ref{sec:perfect}、§\ref{sec:asymp}）、パラメータ商（§\ref{sec:param}）と具体的な長さ付き代数（§\ref{sec:construction}）を経て核の場合を示す（§\ref{sec:core}）。
+\begin{center}
+\begin{tabularx}{\textwidth}{>{\raggedright}p{3.4cm}>{\raggedright}X>{\raggedright\arraybackslash}X}
+\toprule
+共通の道具（§\ref{sec:abstract}） & 第一の実現（§\ref{sec:perfect}） & 第二の実現（§\ref{sec:asymp}） \\
+\midrule
+Euler 評価 & 命題~\ref{prop:35a} & 命題~\ref{prop:43} \\
+共役和の比較 & 命題~\ref{prop:35c}（置き換え 1） & 定理~\ref{thm:47}（置き換え 2） \\
+反復錐による消滅 & 補題~\ref{lem:nit} & 系~\ref{cor:nitasymp}、補題~\ref{lem:lambdaAB} \\
+第零次の下界 & 補題~\ref{lem:h0bound} & 系~\ref{cor:nitasymp}（正値性） \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
 %======================================================================
 \section{共通の抽象論}\label{sec:abstract}\label{sec:planB}\label{sec:planC}
 
-この付録は、従来の付録 B の「長さ付きアーベル圏」と付録 C の「長さ付き代数の仮定の整理」を統合する。長さ付き代数 $(C,\lambda)$ を入力として、長さ $0$ の加群で割ったアーベル圏を評価先にとり、
-\[
-  P\longmapsto q\,H_i(P\otimes_S^L C)
-\]
-というホモロジー的評価を作る。Koszul 有限性はこの評価の有限性を与え、Koszul ホモロジーの消滅は新交叉型の消滅を与える。比較のためにはさらに、正則な基底から来る類での評価と有理 K 理論の降下を使う。
+この節では、証明で繰り返し使う四つの道具を、三角圏とアーベル圏の言葉だけで述べる。
+\begin{itemize}
+  \item \textbf{Euler 評価}（命題~\ref{prop:B-euler}）：長さ付きアーベル圏に値をとるホモロジー的関手から、$K_0$ 上の準同型を作る。
+  \item \textbf{共役和の比較}（補題~\ref{lem:conjsum}）：二つの評価が基底から来る類で一致し、不変類が基底から降下すれば、共役和が一致する。
+  \item \textbf{反復錐による消滅}（補題~\ref{lem:B-nit}）：スカラーが零作用する対象では、高次のホモロジーが消える。
+  \item \textbf{第零次の下界}（補題~\ref{lem:B-h0}）：消滅のもとで、Euler 評価を第零次のホモロジーの長さで下から押さえる。
+\end{itemize}
+環や長さ付き代数はこの節では使わない。§\ref{sec:length} で長さ付き代数から評価先 $\mathcal{A}$ を作り、§\ref{sec:perfect}（perfect 複体）と §\ref{sec:asymp}（ランク無視の圏）で評価元 $\mathcal{K}$ と関手 $H_*$ を作って、ここでの仮定を確かめる。§\ref{sec:param} と §\ref{sec:core} はその適用である。
 
-以下では共通のホモロジー代数、長さ付き代数による実現、二つの評価の比較、列の圏による実現の順に述べる。実装では共通定理を先に置き、有限版・ランク無視版の既存の証明をその適用へ移した。§\ref{sec:check-perfect}、\ref{sec:check-rank} は各実現での仮定確認、§\ref{sec:planB-todo} は実装との対応と未証明入力の境界をまとめる。
-
-\subsection{共通のホモロジー代数}\label{sec:planB-abs}
+\subsection{長さ付きアーベル圏と Euler 評価}\label{sec:planB-abs}
 
 \begin{definition}[長さ付きアーベル圏]\label{def:B-lenab}
 アーベル圏 $\mathcal{A}$ と、同型不変な関数 $\ell\colon\mathrm{Ob}\,\mathcal{A}\to[0,\infty]$ で、$\ell(0)=0$、短完全列で加法的、$\ell(X)=0\Rightarrow X\cong0$ となるものの組を長さ付きアーベル圏という。$\ell$ は組成列の長さである必要はない。
@@ -223,7 +239,7 @@ $f\colon K\to K'$ をアーベル群の準同型、有限群 $G$ が $K'$ に群
 \begin{proof}
 $\sum_g g\cdot x$ は $G$ 不変なので、ある正の整数 $m$ で $m\sum_g g\cdot x$ は $f$ の像に入る。そこで $\varphi$ と $\psi$ は一致するので、$m$ で割ればよい。
 \end{proof}
-有理化した $f$ が $G$ 不変部分へ全射であれば、分母と捩れを払うことでこの整数倍の条件が得られる。
+有理化した $f$ が $G$ 不変部分へ全射であれば、分母と捩れを払うことでこの整数倍の条件が得られる。命題~\ref{prop:B-euler} の二つの Euler 評価 $K_0(\mathcal{K}')\to\R$ に適用すると、評価元の $K_0$ への群作用と降下だけから共役和の一致が出る。評価先での一致や長さの $G$ 不変性は要らない。
 \lean{\ld{GroupTheory.ConjugateSum} の \ld{conjSum_eq}、ホモロジー的評価への適用は \ld{CategoryTheory.EulerComparison}（証明済み）。}
 
 \subsection{スカラーの反復錐}\label{sec:abstract-cone}
@@ -266,6 +282,8 @@ $m\ge0$ と $X$ について、ある $v\ge1$ で次の二つが成り立つと�
 %======================================================================
 \section{長さ付き代数}\label{sec:length}
 
+この節では、§\ref{sec:abstract} の評価先 $\mathcal{A}$ を長さ付き代数から作り、二つの実現に共通する代数側の条件を整理する。長さ関数と長さ付き代数を定義し（§\ref{sec:length-def}）、長さ零の加群で割った Serre 商を評価先とする（§\ref{sec:planB-quot}）。評価の有限性を与える Koszul 有限性と、消滅を与える $\lambda$-平坦性・$\lambda$-CM 性を述べ、後者から前者が出ることを確かめる（§\ref{sec:length-koszul}、§\ref{sec:length-cm}）。
+
 \subsection{長さ関数と長さ付き代数}\label{sec:length-def}
 
 \begin{definition}[長さ関数]\label{def:lengthfn}
@@ -293,7 +311,7 @@ $V$ を有限長 $A$ 加群（普通の長さで $\len_A V<\infty$）とする�
 
 \subsection{長さ付き代数と評価先}\label{sec:planB-quot}\label{sec:planC-levels}
 
-$A$ を可換環、$z=(z_1,\dots,z_e)$ をその元の有限列とし、$z^v=(z_1^v,\dots,z_e^v)$ と書く。長さ付き $A$ 代数とは、可換 $A$ 代数 $C$ と、$J=(z)C$ のある冪で加群全体が消される $C$ 加群上の長さ関数 $\lambda$ の組である。長さ関数は定義~\ref{def:lengthfn} の意味で、非負の拡大実数値をとり、同型不変で短完全列に加法的である。
+評価先の構成と以下の一般論では、定義~\ref{def:lengthalg} を次のように広げる。$A$ を可換環、$z=(z_1,\dots,z_e)$ をその元の有限列とし、$z^v=(z_1^v,\dots,z_e^v)$ と書く。長さ付き $A$ 代数とは、可換 $A$ 代数 $C$ と、$J=(z)C$ のある冪で加群全体が消される $C$ 加群上の長さ関数 $\lambda$ の組である。長さ関数は定義~\ref{def:lengthfn} の意味で、非負の拡大実数値をとり、同型不変で短完全列に加法的である。
 
 $A$ がネーター局所環で $\sqrt{(z)}=\m_A$ なら、$(z)C$-冪ねじれと $\m_A C$-冪ねじれは同じ条件である。実際、$\m_A$ のある冪が $(z)$ に入り、この包含を $C$ に移せばよい。以下の一般論では $A$ のネーター性は仮定せず、有限列 $z$ を固定して使う。
 
@@ -353,8 +371,6 @@ $q$ を複体の各項に適用できるのは、その各項が $\mathcal{T}_J(
 を Koszul Euler 特性、または $\lambda$-重複度と呼ぶ。この一般性では、その正値性は仮定しない。
 \end{definition}
 
-$S$ を任意の可換 $A$ 代数とする。$\Perf_{(z)}(S)$ は、ホモロジーの幾何学的な台が $V((z)S)$ に入る perfect 複体の三角圏を表す。perfect 複体は有限射影項の有界複体で計算する。
-
 \begin{lemma}[判定法]\orig{Lemma 3.4}\label{lem:34}
 $(C,\lambda)$ を長さ付き $A$ 代数とする。
 \begin{enumerate}[label=(\alph*)]
@@ -397,14 +413,6 @@ $\lambda$-平坦性だけでは $\lambda(C/zC)$ の有限性は出ない。有�
 \]
 したがって Koszul 有限性と消滅の両方を得る。これに対し、$\lambda$-CM 性は $D$ のパラメータ系について同様の消滅と有限性を与える。正則部分環 $A\subseteq D$ 上で使うには、$D$ が $A$ 上有限で、そのパラメータ系が $D$ のパラメータ系にもなる条件を使う（命題~\ref{prop:cmflat}）。
 
-$P$ が $0$ 次から $m$ 次に有限射影項をもつなら、$K_v\otimes P\otimes C$ の項によるフィルトレーションの各段は、$K(z^v;C)$ の有限直和のシフトの直和因子である。正次数の Koszul ホモロジーが商で零であれば、各段はその項の次数だけに集中し、長完全列から (Kos$_m$) が出る。(Supp) は台の条件と補題~\ref{lem:C-nil} から出るので、補題~\ref{lem:B-nit} が使える。
-
-一方、$S=T$ が局所環で $P$ の $0$ 次の項が $T^{\oplus\beta_0}$、$d_1$ の成分が $\m_T$ に入れば
-\[
- H_0(P\otimes C)\twoheadrightarrow(C/\m_T C)^{\oplus\beta_0}.
-\]
-この全射と長さの単調性は $\lambda$-平坦性を使わない。$\lambda$-平坦性による高次の消滅と組み合わせて初めて、$m=e$ のとき Euler 評価の下界になる。
-
 \begin{example}\label{ex:C-levels}\label{ex:B-lenab}
 普通の評価は $(T,\len_T)$、正規化側は $(C,\lambda)$ という二つの例である。$T$ がネーターで $T/(z)T$ が有限長なら、$H_j(z^v;T)$ は有限生成で $(z^v)$ により消されるので、$(T,\len_T)$ は Koszul 有限である。この有限性には CM 性を使わない。例えば本文の有限局所代数 $T$ が CM でなければ、普通の長さで測る高次の Koszul ホモロジーが残り、$\lambda$-平坦性は満たさない。したがって普通の側にも Euler 評価はあるが、消滅まで結論することはできない。
 \end{example}
@@ -428,7 +436,122 @@ $\m_D^N\subseteq\m_A D$ となる $N$ があるので、$\m_A C$-冪ねじれと
 \end{proof}
 \lean{\ld{LengthAlgebra.CohenMacaulay} の \ld{flat_of_cm} と \ld{tor_length_of_cm} で証明済み。有限な単射 $A\to D$ に沿うパラメータの移送と \ld{restrictToBase} を用いる。基底の次元と剰余体の Koszul 分解は明示して受け取る。}
 
-\subsection{基底から来る類と対称な比較}\label{sec:planC-comparison}
+%======================================================================
+\section{第一の実現：perfect 複体}\label{sec:perfect}\label{sec:check-perfect}
+
+この節では、評価元を閉点に台をもつ perfect 複体の三角圏、評価先を §\ref{sec:length} の商とし、§\ref{sec:abstract} の四つの共通定理の仮定を確かめる。ゴールは命題~\ref{prop:35c}（Lemma 3.5c）である。閉点に台をもつ perfect 複体について、普通の長さで測った Euler 特性と、長さ付き $A$ 代数 $(C,\lambda)$ で測った Euler 特性は、個々には一致しないが Galois 共役の和をとると一致する。§\ref{sec:core} の置き換え 1（補題~\ref{lem:first}）で使うのはこの命題だけである。§\ref{sec:perfect-vanishing} の消滅と下界は $\lambda$-平坦性の帰結で、§\ref{sec:asymp} の系~\ref{cor:nitasymp} を通して正値性（補題~\ref{lem:pos}）で使う。
+
+\subsection{設定と評価関手}\label{sec:perfect-eval}
+
+\paragraph{設定}
+$(C,\lambda)$ を正則局所環 $A$ 上の $\lambda$-平坦でランク $r$ の長さ付き $A$ 代数とし、$z$ を $A$ の正則パラメータ系とする。$T$ を $A$ 上有限な局所整域で剰余体が $A$ と同じもの、$r = \rank_A T$ とし、$C$ は $T$ 代数で $A\to T\to C$ が可換とする。$S\in\{A,T\}$ に対し
+\[
+  \mathcal{K}_S = \Perf_{\m}(S) \quad\text{（閉点に台をもつ perfect $S$ 複体の三角圏）}
+\]
+とおく。係数拡大 $-\otimes_A T\colon\mathcal{K}_A\to\mathcal{K}_T$ がある。$P\in\mathcal{K}_T$ に対して
+\[
+  \chi_{\ord}(P) = \sum_i (-1)^i \len_T H_i(P),\qquad
+  \chi_C(P) = \sum_i (-1)^i \lambda\, H_i(P\otimes_T C)
+\]
+とおく（$S = A$、$C = A$、$\lambda = \len$ のときの $\chi_{\ord}$ を $\chi_A$ と書く）。§\ref{sec:asymp} では評価元と評価先を列の圏に取り替え、同じ共通定理を適用する。
+\lean{評価元は \ld{SupportedPerfectHomotopy}、評価は \ld{LengthAlgebra.perfectEulerK0}。局所環上で \ld{K0Supported} と同型になり、\ld{chiOrdHom}・\ld{chiLamHom_of_finite} との一致は \ld{LengthAlgebra.EulerCompatibility}。}
+
+\paragraph{圏・関手の構成に使う仮定}
+普通の側の評価先は有限長 $T$ 加群の圏である。正規化側は、有限な $\lambda$-長さをもつ冪ねじれ $C$ 加群を、長さ零の加群で割った Serre 商 $\mathcal A_\lambda^{\mathrm{fin}}$ とし、$H_i^C(P)=q_{\mathrm{fin}}H_i(P\otimes_T C)$ とする。商の長さは忠実で、元の $\lambda$ と一致する（§\ref{sec:planB-quot}）。
+
+\begin{center}
+\begin{tabularx}{\textwidth}{>{\raggedright}p{4.0cm}>{\raggedright\arraybackslash}X}
+\toprule
+結論 & この実現で確認する入力 \\
+\midrule
+有限な Euler 評価 & 台と Koszul 有限性、シフト・長完全列・有界性 \\
+基底から来る類の公式 & $K(z)$ が剰余体の分解であることと $e_\lambda(z;C)$ の値 \\
+共役和の一致 & 二つの $e_\lambda$ の一致と不変類の降下 \\
+高次の消滅 & 零ホモトピー、自由振幅、正次数の Koszul 長さ零 \\
+第零次の下界 & 極小性による全射と長さの非負性 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+$T$ は有限 $A$ 代数なのでネーターだが、$C$ のネーター性は使わない。以下の補題~\ref{lem:C-nil}、命題~\ref{prop:C-euler} は、任意の可換 $A$ 代数 $S$ 上の有限射影項の複体で述べる。
+
+$S$ を任意の可換 $A$ 代数とする。$\Perf_{(z)}(S)$ は、ホモロジーの幾何学的な台が $V((z)S)$ に入る perfect 複体の三角圏を表す。perfect 複体は有限射影項の有界複体で計算する。
+
+\begin{lemma}[幾何学的な台とスカラーの零作用]\label{lem:C-nil}
+任意の可換環 $S$ 上の有界有限射影複体 $P$ について、次は同値である。
+\begin{enumerate}[label=(\roman*)]
+ \item 全ての $H_i(P)$ の台が $V((z)S)$ に入る。
+ \item ある $v\ge1$ で全ての $z_j^v$ の作用が $P$ 上で零ホモトピックである。
+\end{enumerate}
+これらは全ホモロジーが共通の $(z)S$ の冪で消されることとも同値である。$S$ のネーター性やホモロジーの有限生成性は不要である。
+\end{lemma}
+\begin{proof}
+(ii) なら $z_j^v$ が全ホモロジーを消す。有限列なので $(z)S$ の十分大きな冪も全ホモロジーを消し、(i) を得る。
+
+逆に一つのスカラー $x=z_j$ を固定し、cochain 次数の上から順に恒等射の成分を消す。より上の成分を消した鎖写像の次の成分はサイクルへ写る。そのホモロジーへの像は有限生成な項からの像なので有限生成であり、台が $V(x)$ に入ることから $x$ のある冪で消える。項の射影性により境界への持ち上げを選べるので、その冪を掛けた鎖写像の成分をホモトピーで一段消せる。有界性により有限回で零射となる。有限個の $j$ について指数をそろえれば (ii) を得る。ホモロジー全体が有限生成だとは使っていない。
+\end{proof}
+\lean{\ld{HomologicalAlgebra.SupportNullHomotopy}、\ld{PerfectComplex.Support}、\ld{HomotopyCategory}（任意の可換環上で証明済み）。}
+
+\begin{lemma}[Koszul 上界]\label{lem:koszulbound}
+$P$ を各項が有限自由（$k$ 次の項のランク $n_k$、有界）な $T$ 複体とし、ある $v$ で全ての $z_j^v$ が $P$ 上ホモトピー的に $0$ とする。
+\[
+  M_v = \sum_j \lambda H_j(z^v; C)
+\]
+とおくと、全ての $i$ で
+\[
+  \lambda H_i(P\otimes_T C) \;\le\; \Bigl(\sum_k n_k\Bigr)\cdot M_v.
+\]
+$C = T$、$\lambda = \len_T$ としても成り立つ。
+\end{lemma}
+\begin{proof}
+零ホモトピーにより、$P\otimes C$ は $K(z^v)\otimes P\otimes C$ の直和因子になる。後者を $P$ の項による愚直なフィルトレーションで分解すると、各段は $K(z^v;C)^{\oplus n_k}$ のシフトで、長完全列と $\lambda$ の劣加法性から上界が出る。
+\end{proof}
+系~\ref{cor:allv} より $M_v = v^e r < \infty$。普通の長さの側でも、$T$ はネーターで $H_j(z^v;T)$ は $(z^v)$ で消される有限生成加群なので $M_v<\infty$。この補題は §\ref{sec:asymp} で列に一様に適用する。
+\lean{\ld{PerfectComplex.KoszulLengthBounds}（\ld{lambdaHomology_le_of_retract}、\ld{lambdaHomology_koszulComplexOn_le_sum} ほか。証明済み）。}
+
+\begin{proposition}[有限性とホモロジー的評価]\label{prop:C-euler}
+$(C,\lambda)$ を Koszul 有限とし、$S\to C$ を $A$ 代数の準同型とする。このとき
+\[
+ H_i^C(P)=q_{\mathrm{fin}}H_i(P\otimes_S^LC)
+ \quad(P\in\Perf_{(z)}(S))
+\]
+は長さ付きアーベル圏 $\mathcal{A}_\lambda^{\mathrm{fin}}$ に値をとるホモロジー的関手を定め、(Fin) を満たす。したがって
+\[
+ \chi_C(P)=\sum_i(-1)^i\lambda H_i(P\otimes_S^LC)
+\]
+は $K_0(\Perf_{(z)}(S))\to\R$ の準同型になる。さらに、$S\to S'\to C$ が与えられれば
+\[
+ \chi_C(P\otimes_S^LS')=\chi_C(P).
+\]
+\end{proposition}
+\begin{proof}
+補題~\ref{lem:C-nil} により全ての $z_j^v$ が $P$ 上で零ホモトピックとなる共通の $v\ge1$ を選べる。係数拡大後の $Q=P\otimes_S C$ でも同じ作用が零なので、ホモロジーは $(z)C$-冪ねじれである。また $Q$ は $K_v\otimes Q$ の直和因子である。
+
+$P$ の有限射影項 $P_k$ を有限自由項 $S^{r_k}$ の直和因子として表す。$K(z^v;C)\otimes_S P_k$ のホモロジーは $K(z^v;C)^{\oplus r_k}$ のホモロジーの直和因子である。項による有限フィルトレーションと長完全列の劣加法性から、補題~\ref{lem:koszulbound} と同じく
+\[
+ \lambda H_i(Q)\le\left(\sum_k r_k\right)
+                 \left(\sum_j\lambda H_j(z^v;C)\right)<\infty
+\]
+となる。この説明は有限自由項に限った上界を有限射影項へ拡張している。
+
+係数拡大は導来圏で完全三角を保ち、ホモロジーの長完全列は全て有限な冪ねじれ加群に入るので、完全な $q_{\mathrm{fin}}$ を適用できる。これによりホモロジー的関手と (Fin) を得る。Euler 評価は命題~\ref{prop:B-euler} による。最後の等式は導来テンソルの結合律から従い、係数拡大した $P$ の台も零作用から保たれる。
+\end{proof}
+この命題では $S$ の局所性、ネーター性、$A$ 上の有限性や平坦性を使わない。大きな商の有限部分を評価先にした場合も、命題~\ref{prop:B-finite-part} の同値により同じ Euler 評価となる。
+\lean{\ld{LengthAlgebra.PerfectHomology}、\ld{PerfectBaseChange}、\ld{PerfectHomologyComparison}。実装は、より一般の有限生成イデアル $J$ と $J\subseteq\sqrt{(z)C}$ を入力にとる。本文の $J=(z)C$ ではこの条件は自動的に満たされる。}
+
+\begin{proposition}\orig{Lemma 3.5a}\label{prop:35a}\label{prop:check-perfect-euler}
+$\chi_{\ord}$、$\chi_C$ は $\mathcal{K}_T$ の全ての対象で有限で、準同型
+\[
+  \chi_{\ord},\ \chi_C\colon K_0(\mathcal{K}_T)\to\R
+\]
+を定める。
+\end{proposition}
+\begin{proof}
+台から共通の $v$ を選んで全ての $z_j^v$ の零ホモトピーを得る。補題~\ref{lem:koszulbound} が各ホモロジーの長さの有限性を与えるので、上の二つの評価先に値をとる関手を構成できる。複体は有界で、商関手は完全だから、ホモロジーの長完全列とシフト同型がそのまま移る。これで (Fin) が確認でき、準同型の存在は共通の命題~\ref{prop:B-euler} の適用である。
+\end{proof}
+\lean{\ld{Paper.lemma_3_5a}、\ld{lemma_3_5a_lam_finite}（証明済み）。}
+
+\subsection{基底から来る類と比較}\label{sec:planC-comparison}
+
 
 \begin{proposition}[基底から来る類での評価]\label{prop:C-base}
 $A$ を正則局所環、$z$ を正則パラメータ系とし、$(C,\lambda)$ を Koszul 有限とする。$Q\in\Perf_{\m}(A)$ について
@@ -477,121 +600,6 @@ $T$ 上の群作用が $A$ を固定すれば、ひねり $P\mapsto P^g$ がこ�
 
 本文の比較では $(C_1,\lambda_1)=(T,\len_T)$ と $(C_2,\lambda_2)=(C,\lambda)$ をとる。普通の側の Koszul Euler 特性が $\rank_A T$ であることと、正規化側の $e_\lambda=r=\rank_A T$ をそれぞれ計算すれば命題~\ref{prop:35b}、\ref{prop:35c} が出る。$T$ の局所性と剰余体の一致は前者の長さ・ランクの計算で使い、対称な比較定理そのものには使わない。
 
-%======================================================================
-\section{perfect 複体での比較}\label{sec:perfect}
-
-この節のゴールは命題~\ref{prop:35c}（Lemma 3.5c）である。閉点に台をもつ perfect 複体について、普通の長さで測った Euler 特性と、長さ付き $A$ 代数 $(C,\lambda)$ で測った Euler 特性は、個々には一致しないが Galois 共役の和をとると一致する。§\ref{sec:core} の置き換え 1（補題~\ref{lem:first}）で使うのはこの命題だけである。節の最後の補題~\ref{lem:nit}、\ref{lem:h0bound} は $\lambda$-平坦性の帰結（高次の消滅と $0$ 次の下界）で、§\ref{sec:asymp} の系~\ref{cor:nitasymp} を通して正値性（補題~\ref{lem:pos}）で使う。
-
-\paragraph{適用する共通定理}
-三角圏 $\mathcal K$ から長さ付きアーベル圏 $\mathcal A$ へのホモロジー的関手 $H_*$ が、各対象で有界かつ有限な長さをもてば、Euler 和は $K_0(\mathcal K)$ 上の準同型になる（命題~\ref{prop:B-euler}）。二つの評価が基底から来る類で一致し、不変類の正の整数倍が基底から降下すれば、共役和も一致する（補題~\ref{lem:conjsum}）。群作用は評価元の $K_0$ に置けばよく、評価先の一致や長さの不変性は要らない。
-
-消滅には別の共通定理を使う。$e$ 個のスカラーが $X$ 上で零作用し、その反復錐のホモロジーが $[0,m]$ に集中すれば、$H_i(X)=0$（$i<0$ または $i>m-e$）である。$m=e$ なら第零次だけが残り、そこからの全射が Euler 評価の下界を与える（補題~\ref{lem:B-nit}、\ref{lem:B-h0}）。以下では、これらの仮定を perfect 複体について確認する。
-
-\paragraph{設定}
-$(C,\lambda)$ を正則局所環 $A$ 上の $\lambda$-平坦でランク $r$ の長さ付き $A$ 代数とし、$z$ を $A$ の正則パラメータ系とする。$T$ を $A$ 上有限な局所整域で剰余体が $A$ と同じもの、$r = \rank_A T$ とし、$C$ は $T$ 代数で $A\to T\to C$ が可換とする。$S\in\{A,T\}$ に対し
-\[
-  \mathcal{K}_S = \Perf_{\m}(S) \quad\text{（閉点に台をもつ perfect $S$ 複体の三角圏）}
-\]
-とおく。係数拡大 $-\otimes_A T\colon\mathcal{K}_A\to\mathcal{K}_T$ がある。$P\in\mathcal{K}_T$ に対して
-\[
-  \chi_{\ord}(P) = \sum_i (-1)^i \len_T H_i(P),\qquad
-  \chi_C(P) = \sum_i (-1)^i \lambda\, H_i(P\otimes_T C)
-\]
-とおく（$S = A$、$C = A$、$\lambda = \len$ のときの $\chi_{\ord}$ を $\chi_A$ と書く）。§\ref{sec:asymp} では評価元と評価先を列の圏に取り替え、同じ共通定理を適用する。
-\lean{評価元は \ld{SupportedPerfectHomotopy}、評価は \ld{LengthAlgebra.perfectEulerK0}。局所環上で \ld{K0Supported} と同型になり、\ld{chiOrdHom}・\ld{chiLamHom_of_finite} との一致は \ld{LengthAlgebra.EulerCompatibility}。}
-
-\paragraph{圏・関手の構成に使う仮定}
-普通の側の評価先は有限長 $T$ 加群の圏である。正規化側は、有限な $\lambda$-長さをもつ冪ねじれ $C$ 加群を、長さ零の加群で割った Serre 商 $\mathcal A_\lambda^{\mathrm{fin}}$ とし、$H_i^C(P)=q_{\mathrm{fin}}H_i(P\otimes_T C)$ とする。商の長さは忠実で、元の $\lambda$ と一致する（§\ref{sec:planB-quot}）。
-
-\begin{center}
-\begin{tabularx}{\textwidth}{>{\raggedright}p{4.0cm}>{\raggedright\arraybackslash}X}
-\toprule
-結論 & この実現で確認する入力 \\
-\midrule
-有限な Euler 評価 & 台と Koszul 有限性、シフト・長完全列・有界性 \\
-基底から来る類の公式 & $K(z)$ が剰余体の分解であることと $e_\lambda(z;C)$ の値 \\
-共役和の一致 & 二つの $e_\lambda$ の一致と不変類の降下 \\
-高次の消滅 & 零ホモトピー、自由振幅、正次数の Koszul 長さ零 \\
-第零次の下界 & 極小性による全射と長さの非負性 \\
-\bottomrule
-\end{tabularx}
-\end{center}
-$T$ は有限 $A$ 代数なのでネーターだが、$C$ のネーター性は使わない。付録では任意の可換 $S$ 上の有限射影項まで一般化する。幾何学的な台とスカラーの冪の零ホモトピーとの同値は、その一般性でも証明されている（補題~\ref{lem:C-nil}）。
-
-\begin{lemma}[幾何学的な台とスカラーの零作用]\label{lem:C-nil}
-任意の可換環 $S$ 上の有界有限射影複体 $P$ について、次は同値である。
-\begin{enumerate}[label=(\roman*)]
- \item 全ての $H_i(P)$ の台が $V((z)S)$ に入る。
- \item ある $v\ge1$ で全ての $z_j^v$ の作用が $P$ 上で零ホモトピックである。
-\end{enumerate}
-これらは全ホモロジーが共通の $(z)S$ の冪で消されることとも同値である。$S$ のネーター性やホモロジーの有限生成性は不要である。
-\end{lemma}
-\begin{proof}
-(ii) なら $z_j^v$ が全ホモロジーを消す。有限列なので $(z)S$ の十分大きな冪も全ホモロジーを消し、(i) を得る。
-
-逆に一つのスカラー $x=z_j$ を固定し、cochain 次数の上から順に恒等射の成分を消す。より上の成分を消した鎖写像の次の成分はサイクルへ写る。そのホモロジーへの像は有限生成な項からの像なので有限生成であり、台が $V(x)$ に入ることから $x$ のある冪で消える。項の射影性により境界への持ち上げを選べるので、その冪を掛けた鎖写像の成分をホモトピーで一段消せる。有界性により有限回で零射となる。有限個の $j$ について指数をそろえれば (ii) を得る。ホモロジー全体が有限生成だとは使っていない。
-\end{proof}
-\lean{\ld{HomologicalAlgebra.SupportNullHomotopy}、\ld{PerfectComplex.Support}、\ld{HomotopyCategory}（任意の可換環上で証明済み）。}
-
-\begin{proposition}[有限性とホモロジー的評価]\label{prop:C-euler}
-$(C,\lambda)$ を Koszul 有限とし、$S\to C$ を $A$ 代数の準同型とする。このとき
-\[
- H_i^C(P)=q_{\mathrm{fin}}H_i(P\otimes_S^LC)
- \quad(P\in\Perf_{(z)}(S))
-\]
-は長さ付きアーベル圏 $\mathcal{A}_\lambda^{\mathrm{fin}}$ に値をとるホモロジー的関手を定め、(Fin) を満たす。したがって
-\[
- \chi_C(P)=\sum_i(-1)^i\lambda H_i(P\otimes_S^LC)
-\]
-は $K_0(\Perf_{(z)}(S))\to\R$ の準同型になる。さらに、$S\to S'\to C$ が与えられれば
-\[
- \chi_C(P\otimes_S^LS')=\chi_C(P).
-\]
-\end{proposition}
-\begin{proof}
-補題~\ref{lem:C-nil} により全ての $z_j^v$ が $P$ 上で零ホモトピックとなる共通の $v\ge1$ を選べる。係数拡大後の $Q=P\otimes_S C$ でも同じ作用が零なので、ホモロジーは $(z)C$-冪ねじれである。また $Q$ は $K_v\otimes Q$ の直和因子である。
-
-$P$ の有限射影項 $P_k$ を有限自由項 $S^{r_k}$ の直和因子として表す。$K(z^v;C)\otimes_S P_k$ のホモロジーは $K(z^v;C)^{\oplus r_k}$ のホモロジーの直和因子である。項による有限フィルトレーションと長完全列の劣加法性から、補題~\ref{lem:koszulbound} と同じく
-\[
- \lambda H_i(Q)\le\left(\sum_k r_k\right)
-                 \left(\sum_j\lambda H_j(z^v;C)\right)<\infty
-\]
-となる。この説明は有限自由項に限った上界を有限射影項へ拡張している。
-
-係数拡大は導来圏で完全三角を保ち、ホモロジーの長完全列は全て有限な冪ねじれ加群に入るので、完全な $q_{\mathrm{fin}}$ を適用できる。これによりホモロジー的関手と (Fin) を得る。Euler 評価は命題~\ref{prop:B-euler} による。最後の等式は導来テンソルの結合律から従い、係数拡大した $P$ の台も零作用から保たれる。
-\end{proof}
-この命題では $S$ の局所性、ネーター性、$A$ 上の有限性や平坦性を使わない。大きな商の有限部分を評価先にした場合も、命題~\ref{prop:B-finite-part} の同値により同じ Euler 評価となる。
-\lean{\ld{LengthAlgebra.PerfectHomology}、\ld{PerfectBaseChange}、\ld{PerfectHomologyComparison}。実装は、より一般の有限生成イデアル $J$ と $J\subseteq\sqrt{(z)C}$ を入力にとる。本文の $J=(z)C$ ではこの条件は自動的に満たされる。}
-
-\begin{lemma}[Koszul 上界]\label{lem:koszulbound}
-$P$ を各項が有限自由（$k$ 次の項のランク $n_k$、有界）な $T$ 複体とし、ある $v$ で全ての $z_j^v$ が $P$ 上ホモトピー的に $0$ とする。
-\[
-  M_v = \sum_j \lambda H_j(z^v; C)
-\]
-とおくと、全ての $i$ で
-\[
-  \lambda H_i(P\otimes_T C) \;\le\; \Bigl(\sum_k n_k\Bigr)\cdot M_v.
-\]
-$C = T$、$\lambda = \len_T$ としても成り立つ。
-\end{lemma}
-\begin{proof}
-零ホモトピーにより、$P\otimes C$ は $K(z^v)\otimes P\otimes C$ の直和因子になる。後者を $P$ の項による愚直なフィルトレーションで分解すると、各段は $K(z^v;C)^{\oplus n_k}$ のシフトで、長完全列と $\lambda$ の劣加法性から上界が出る。
-\end{proof}
-系~\ref{cor:allv} より $M_v = v^e r < \infty$。普通の長さの側でも、$T$ はネーターで $H_j(z^v;T)$ は $(z^v)$ で消される有限生成加群なので $M_v<\infty$。この補題は §\ref{sec:asymp} で列に一様に適用する。
-\lean{\ld{PerfectComplex.KoszulLengthBounds}（\ld{lambdaHomology_le_of_retract}、\ld{lambdaHomology_koszulComplexOn_le_sum} ほか。証明済み）。}
-
-\begin{proposition}\orig{Lemma 3.5a}\label{prop:35a}
-$\chi_{\ord}$、$\chi_C$ は $\mathcal{K}_T$ の全ての対象で有限で、準同型
-\[
-  \chi_{\ord},\ \chi_C\colon K_0(\mathcal{K}_T)\to\R
-\]
-を定める。
-\end{proposition}
-\begin{proof}
-台から共通の $v$ を選んで全ての $z_j^v$ の零ホモトピーを得る。補題~\ref{lem:koszulbound} が各ホモロジーの長さの有限性を与えるので、上の二つの評価先に値をとる関手を構成できる。複体は有界で、商関手は完全だから、ホモロジーの長完全列とシフト同型がそのまま移る。これで (Fin) が確認でき、準同型の存在は共通の命題~\ref{prop:B-euler} の適用である。
-\end{proof}
-\lean{\ld{Paper.lemma_3_5a}、\ld{lemma_3_5a_lam_finite}（証明済み）。}
-
 \begin{proposition}\orig{Lemma 3.5b}\label{prop:35b}
 $Q\in\mathcal{K}_A$ について
 \[
@@ -615,7 +623,7 @@ $A$ を有限次元ネーター $\Z_{(p)}$ 代数、$J\ni p$、$H$ を連結な 
 証明の流れ（未検証）：$J$ で台をつけた有理 K 理論は truncating になり（Goodwillie）、cdh 降下をもつ（Land--Tamme）。有限平坦被覆では転送で降下し、爆発による平坦化で一般の有限全射に延ばし、切断の $G$ 移動で不変部分を同定する。
 \lean{\ld{Inputs.theorem_3_1_K0}（$H = A$ の場合のみ、引用）。}
 
-\begin{proposition}\orig{Lemma 3.5c}\label{prop:35c}
+\begin{proposition}\orig{Lemma 3.5c}\label{prop:35c}\label{prop:check-perfect-comparison}
 さらに $A$ の剰余標数が $p$、有限群 $G$ が $T$ に $A$ 上で作用して幾何ファイバーに推移的、$\Spec T\to\Spec A$ が全射とする。$P\in\mathcal{K}_T$ と、$g$ でひねった $P^g = P\otimes_{T,g} T$ について
 \[
   \sum_{g\in G} \chi_{\ord}(P^g) \;=\; \sum_{g\in G} \chi_C(P^g).
@@ -626,8 +634,19 @@ $A$ を有限次元ネーター $\Z_{(p)}$ 代数、$J\ni p$、$H$ を連結な 
 \end{proof}
 \lean{\ld{Paper.lemma_3_5c}（引用を除いて証明済み）。}
 
-\paragraph{$\lambda$-平坦性の帰結：高次の消滅と $0$ 次の下界}
-\begin{lemma}[新交叉型の消滅]\label{lem:nit}
+ここで抽象的な比較に入力するのは「基底からの一致」と「不変類の降下」である。$H_*^C$ の同変性、$C$ 上の群作用や $\lambda$ の不変性は入力にしない。群作用は評価元の $K_0$ に入れ、共役和をとった実数値を比較する。
+
+\subsection{消滅と下界}\label{sec:perfect-vanishing}
+
+$P$ が $0$ 次から $m$ 次に有限射影項をもつなら、$K_v\otimes P\otimes C$ の項によるフィルトレーションの各段は、$K(z^v;C)$ の有限直和のシフトの直和因子である。正次数の Koszul ホモロジーが商で零であれば、各段はその項の次数だけに集中し、長完全列から (Kos$_m$) が出る。(Supp) は台の条件と補題~\ref{lem:C-nil} から出るので、補題~\ref{lem:B-nit} が使える。
+
+一方、$S=T$ が局所環で $P$ の $0$ 次の項が $T^{\oplus\beta_0}$、$d_1$ の成分が $\m_T$ に入れば
+\[
+ H_0(P\otimes C)\twoheadrightarrow(C/\m_T C)^{\oplus\beta_0}.
+\]
+この全射と長さの単調性は $\lambda$-平坦性を使わない。$\lambda$-平坦性による高次の消滅と組み合わせて初めて、$m=e$ のとき Euler 評価の下界になる。
+
+\begin{lemma}[新交叉型の消滅]\label{lem:nit}\label{prop:check-perfect-vanishing}
 $e = \dim A$ とする。$P\in\mathcal{K}_T$ が $0$ 次から $m$ 次に有限自由な項をもつ複体で表されるなら、
 \[
   \lambda H_i(P\otimes_T C) = 0 \qquad (i > m - e).
@@ -651,48 +670,15 @@ $H_0(P\otimes C) = C^{\oplus\beta_0}/\operatorname{im}(d_1\otimes C)$ は極小�
 \end{proof}
 \lean{\ld{LengthAlgebra.PerfectMinimalLowerBound}（極小性から全射を構成し、共通下界を適用。証明済み）。}
 
-\subsection{有限版で確認する主張}\label{sec:check-perfect}
-
-解説 §\ref{sec:perfect}（元論文 §3）の議論を、次の三つの確認に分ける。$A$ は正則局所環、$z$ はその正則パラメータ系、$T$ は有限局所 $A$ 代数で剰余体が $A$ と同じものとする。$C$ は $T$ 代数で、$A\to T\to C$ は与えられた $A$ 作用と両立する。普通の長さの側と正規化側は、同じ評価元 $\Perf_{\m}(T)$ を使うが、評価先は別々である。
-
-\begin{proposition}[有限版の評価関手の確認]\label{prop:check-perfect-euler}
-$(C,\lambda)$ が Koszul 有限なら、
-\[
- H_i^{\ord}(P)=H_i(P),\qquad
- H_i^C(P)=q_{\mathrm{fin}}H_i(P\otimes_T^LC)
-\]
-は、それぞれ有限長 $T$ 加群の圏と $\mathcal{A}_\lambda^{\mathrm{fin}}$ に値をとるホモロジー的関手で、(Fin) を満たす。命題~\ref{prop:B-euler} により、二つの Euler 評価は $K_0(\Perf_{\m}(T))$ の準同型になる。
-\end{proposition}
-\begin{proof}
-普通の側では $T$ のネーター性と閉点の台が有限長性を与える。正規化側では命題~\ref{prop:C-euler} が冪ねじれ、有限性、ホモロジー的関手の構成を与える。どちらも有界な perfect 代表で計算するので、有界性も得られる。
-\end{proof}
-
-\begin{proposition}[有限版の比較の入力の確認]\label{prop:check-perfect-comparison}
-上の設定で $r=\rank_A T$ とし、$e_\lambda(z;C)=r$ とする。係数拡大が誘導する $f\colon K_0(\Perf_{\m}(A))\to K_0(\Perf_{\m}(T))$ について
-\[
- \chi_{\ord}\circ f=\chi_C\circ f=r\,\chi_A.
-\]
-さらに有限群 $G$ の作用について、不変な $T$ 側の類の正の整数倍が $f$ の像に入るなら、任意の $P$ の二つの共役和は一致する。
-\end{proposition}
-\begin{proof}
-命題~\ref{prop:C-base} を二つの長さ付き代数に適用する。普通の側は Koszul Euler 特性の階数公式から $r$、正規化側は仮定から $r$ となる。共役和には補題~\ref{lem:conjsum} を使う。本文では正規化側の値を $\lambda$-平坦性とランク条件から計算し、不変類の降下を群作用の幾何的条件と定理~\ref{thm:descent} の引用から供給する。
-\end{proof}
-ここで抽象的な比較に入力するのは「基底からの一致」と「不変類の降下」である。$H_*^C$ の同変性、$C$ 上の群作用や $\lambda$ の不変性は入力にしない。群作用は評価元の $K_0$ に入れ、共役和をとった実数値を比較する。
-
-\begin{proposition}[有限版の消滅と下界の入力の確認]\label{prop:check-perfect-vanishing}
-$P$ が $0$ 次から $m$ 次の有限自由項で表され、全ての $v\ge1$ について正次数の $\lambda H_j(z^v;C)$ が零であるとする。このとき $H_i^C(P)=0$（$i>m-e$ または $i<0$）。$m=e$ で $d_1$ が極小なら
-\[
- \chi_C(P)=\lambda H_0(P\otimes_T C)
- \ge\beta_0(P)\lambda(C/\m_TC).
-\]
-\end{proposition}
-\begin{proof}
-台から共通の零ホモトピーの指数を選び、(Supp) を得る。項による Koszul フィルトレーションで (Kos$_m$) を確認し、補題~\ref{lem:B-nit} を適用する。極小性による第零ホモロジーの全射を商関手で送って下界を得る。ここでは前の設定の Koszul 有限性も使い、Euler 評価の有限性を確保する。
-\end{proof}
 普通の評価についても準同型と共役和の比較はあるが、この消滅の入力は一般には満たさない。
 
+\subsection{$\lambda$-平坦な代数での適用}\label{sec:perfect-flat}
+
+$(C,\lambda)$ が $\lambda$-平坦で有限ランクなら、§\ref{sec:length-koszul} により Koszul 有限性、正次数の Koszul ホモロジーの長さ零、$e_\lambda(z;C)=r$ がすべて得られる。したがって、この節の比較・消滅・下界は、Koszul 条件を個別に仮定し直さずに適用できる。$\lambda$-CM 代数についても §\ref{sec:length-cm} を通して同じである。
+\lean{\ld{LengthAlgebra.FlatRealization} の \ld{perfectEuler_conjSum_eq_of_flat}、\ld{lambdaHomology_projective_vanishing_of_flat}、\ld{perfectEuler_minimal_lower_bound_of_flat}（基底の Koszul 分解と降下を明示した形で証明済み）。}
+
 %======================================================================
-\section{ランク無視の圏での比較}\label{sec:asymp}
+\section{第二の実現：ランク無視の圏}\label{sec:asymp}\label{sec:check-rank}
 
 この節では、共通定理の第二の実現を作る。評価元をランク無視の圏 $P_S^J$、評価先を加群列の Serre 商とする。Euler 加法性・共役和比較・消滅・下界は §\ref{sec:perfect} と同じ定理を使う。この実現で新たに必要なのは、支持つき局所化、冪等完備化へのホモロジー関手の延長、一様代表による計算である。
 
@@ -712,6 +698,8 @@ $P$ が $0$ 次から $m$ 次の有限自由項で表され、全ての $v\ge1$ 
 \bottomrule
 \end{tabularx}
 \end{center}
+
+\subsection{圏}\label{sec:asymp-cat}
 
 \begin{definition}[ランク無視の圏]\label{def:rankquot}
 正の整数の列 $s_n$ と非単項超フィルター $\U$ を固定する。$S = A, T$ について
@@ -739,7 +727,27 @@ $P_S^J$ の対象は全て、一様に台をもつ $D_S$ の対象の像の直�
 \end{proof}
 \lean{\ld{Asymptotic.SupportedKaroubi}、\ld{PaperRankQuotient}（支持つきの比較同値と直和因子による表示を構成済み）。}
 
-\begin{proposition}\orig{Prop 4.3、命題~\ref{prop:35a} の対応物}\label{prop:43}
+\subsection{評価関手}\label{sec:planB-unify}\label{sec:planC-asymp}
+
+$s_n>0$ と非単項超フィルター $\U$ を固定する。共通の $J$ の冪で消え、各段の $\lambda(M_n)$ が有限で、$\lambda(M_n)=O(s_n)$ となる加群列の圏は、部分商・拡大で閉じるアーベル圏である。正規化超極限
+\[
+ L(M)=\lim_\U\lambda(M_n)/s_n
+\]
+は有限・非負・同型不変で短完全列に加法的である。$L=0$ の列で割った Serre 商を $\mathcal{A}_{\lambda,s,\U}$ と書く。命題~\ref{prop:B-length-descends} と同じ証明で忠実な有限値の長さが入る。
+
+一様に台をもつ自由複体列に Koszul 上界を各段で適用すると、ホモロジー列の長さは $O(s_n)$ となる。ランク $o(s_n)$ の一様に台をもつ列なら正規化長さは零になる。ただし一般のランクの小さい複体列の生のホモロジーをそのまま評価できるわけではない（§\ref{sec:asymp} の Remark 4.1）。支持つきランク商 $P_T^J$ 上の関手は、次の四段階で構成する。
+\begin{enumerate}[label=(\arabic*)]
+ \item 一様に台をもつ代表元で、共通の冪ねじれ条件と長さ $O(s_n)$ を示す。
+ \item 支持部分の局所化で逆にする射を、列の Serre 商の同型に送る。
+ \item シフト・長完全列と両立して関手を降下させ、冪等元の像によって直和因子へ延長する。
+ \item 一様に台をもつ列の像では、延長した関手を元のホモロジー列で計算できることを示す。
+\end{enumerate}
+この接続と有界性を構成すると (Fin) が成立し、命題~\ref{prop:B-euler} が使える。評価先の Serre 商だけでは (2)--(4) は得られないが、これらも実装済みである。
+\lean{\ld{Asymptotic.SequenceHomologyLocalization}、\ld{CompletedHomology}、\ld{RankHomologyShiftNatural}、\ld{CompletedRankEvaluation}、\ld{PaperBaseChangeEvaluation}。}
+
+段ごとの長さ $0$ は正規化超極限の長さ $0$ を含意するが、逆は成り立たない。「段ごとに商をとり、次に列の商をとる」という説明を圏同値として使うには、射の分数表示の持ち上げと一様な制御を確かめる必要がある。ここではその同値を使わず、元の加群列から直接 Serre 商を作る。
+
+\begin{proposition}\orig{Prop 4.3、命題~\ref{prop:35a} の対応物}\label{prop:43}\label{prop:check-rank-euler}
 一様に台をもつ $F = (F_n)$ に対し
 \[
   b_i^{\ord}(F) = \lim_\U \frac{\len H_i(F_n)}{s_n},\qquad
@@ -776,7 +784,44 @@ $P_S^J$ の対象は全て、一様に台をもつ $D_S$ の対象の像の直�
 \end{proof}
 \lean{\ld{Asymptotic.SequenceHomologyBounds}、\ld{SequenceHomologyLocalization}、\ld{CompletedHomology}、\ld{PaperRankEvaluation}、\ld{PaperBaseChangeEvaluation}。(a)、(b)、(d) は Koszul 有限性を入力として証明済み。Euler の準同型は共通の \ld{homologicalEulerK0} の引き戻しで定義する。}
 
-\begin{corollary}[補題~\ref{lem:nit}、\ref{lem:h0bound} の対応物]\label{cor:nitasymp}
+この証明で構成するのは、(i) ホモロジー列が評価先に入ること、(ii) 支持つき局所化の分母を同型に送ること、(iii) 直和因子への延長の完全性、(iv) シフトとの自然な同型と有界性、(v) 一様支持の代表での計算公式、である。これらはそれぞれ独立に証明して接続している。任意の小ランク列の生のホモロジーが零となると仮定するものではない。
+
+\subsection{基底から来る類と比較}\label{sec:asymp-comparison}
+
+\begin{proposition}\orig{Prop 4.5、命題~\ref{prop:35b} の対応物}\label{prop:45}
+$X\in P_A^J$ について
+\[
+  \chi_{\ord}(X\otimes_A T) \;=\; r\cdot\chi_A(X) \;=\; \chi_C(X\otimes_A T).
+\]
+\end{proposition}
+\begin{proof}
+$K(z)$ が剰余体の自由分解であることから、$A$ 側の支持つきランク商に有界な t 構造を構成し、冪等完備性を得る。これにより $X$ は一様に台をもつ共通有界な自由複体列 $F$ で表される。単に直和因子であることから評価の一致を推論するのではなく、全対象をこの形で計算できることを使う。
+
+各 $F_n$ に命題~\ref{prop:C-base} を適用し、$s_n$ で割って超極限をとる。共通の有界な次数範囲と Koszul 上界により、有限 Euler 和と極限を交換できる。二つの係数はともに $r$ で、係数変更の合成の自然同型も評価と両立するから結論する。ここでは $K_0(P_A^J)$ の Koszul 一元生成は使わない。
+\end{proof}
+\lean{\ld{Paper.Section4.UniformRepresentative}、\ld{PaperK0Comparison}。明示した Koszul 分解からの一般係数公式は証明済み。正則局所環からその分解を供給する適用は正則パラメータの引用に依存する。}
+
+一様に台をもつ $A$ 自由複体列には、命題~\ref{prop:C-base} を各段に適用して正規化超極限をとれる。実装では、基底の Koszul 分解から得られる支持つきランク商の冪等完備性を使い、$P_A^J$ の全対象に一様な代表元を構成してこの計算を適用する。$K_0(P_A^J)$ が一つの Koszul 類で生成されることは仮定しない。全対象上で基底からの一致が得られ、一般の dg 代数での降下の入力も与えられれば、補題~\ref{lem:conjsum} によって対称なノルム比較が成り立つ。この最後の議論でも二つの列の評価先を同じ圏にする必要はない。 また二段階の係数変更 $A\to T\to C$ と直接の $A\to C$ の自然な同定が必要である。幾何的条件から不変類を降下させる議論は、これらとは別の入力である。
+
+\begin{lemma}\orig{Lemma 4.6}\label{lem:dga}
+連結な dg $A$ 代数 $H$ で、$P_A\simeq\Perf(H)$、$P_T\simeq\Perf(H\otimes^L_A T)$ となるものがある。$H$ は行列環の積 $\prod_n M_{s_n}(A)$ のランクの小さい部分による DG 商の、生成元の自己準同型として得られる。
+\end{lemma}
+\lean{dg 表示そのものは未。定理~\ref{thm:47} に必要な一般係数の降下への接続を含む帰結を、\ld{Section4.supportedRankK0_descent} として引用している。}
+
+\begin{theorem}\orig{Theorem 4.7、命題~\ref{prop:35c} の対応物}\label{thm:47}\label{prop:check-rank-comparison}
+命題~\ref{prop:35c} と同じ仮定のもと、$X\in P_T^J$ について
+\[
+  \sum_{g\in G} \chi_{\ord}(X^g) \;=\; \sum_{g\in G} \chi_C(X^g).
+\]
+\end{theorem}
+\begin{proof}
+補題~\ref{lem:conjsum} を $f\colon K_0(P_A^J)\to K_0(P_T^J)$、$\varphi = \chi_{\ord}$、$\psi = \chi_C$ に適用する。$\varphi\circ f = \psi\circ f$ は命題~\ref{prop:45}、$f_\Q$ の全射性は補題~\ref{lem:dga} の $H$ についての定理~\ref{thm:descent} による。
+\end{proof}
+\lean{\ld{symmetricPaperEuler_conjSum_eq} は二つの Koszul Euler 特性の一致と降下を引数にして証明済み。\ld{Section4.theorem_4_7_K0} はその系であり、\ld{supportedRankK0_descent} と正則パラメータの引用への依存は残る。}
+
+\subsection{消滅と下界}\label{sec:asymp-vanishing}
+
+\begin{corollary}[補題~\ref{lem:nit}、\ref{lem:h0bound} の対応物]\label{cor:nitasymp}\label{prop:check-rank-vanishing}
 $e = \dim A$ とし、$F = (F_n)$ を $0$ 次から $m$ 次に有限自由な項をもつ有界な自由列で、像 $X$ が $P_T^J$ に入るものとする。このとき $b_i^C(X) = 0$（$i > m-e$）。特に $m = e$ なら $\chi_C(X) = b_0^C(X)$ で、さらに各 $F_n$ が $1$ 次で極小なら
 \[
   b_0^C(X) \;\ge\; \Bigl(\lim_\U\frac{\beta_0(F_n)}{s_n}\Bigr)\cdot\lambda(C/\m_T C).
@@ -795,114 +840,17 @@ $m=e$ では第零次だけが残る。各段の極小性は
 \end{proof}
 \lean{\ld{Asymptotic.RankVanishing}、\ld{PaperVanishing}、\ld{RankMinimalLowerBound}、\ld{PaperMinimalLowerBound}（Koszul 条件と極小性を入力として証明済み）。}
 
-\begin{proposition}\orig{Prop 4.5、命題~\ref{prop:35b} の対応物}\label{prop:45}
-$X\in P_A^J$ について
-\[
-  \chi_{\ord}(X\otimes_A T) \;=\; r\cdot\chi_A(X) \;=\; \chi_C(X\otimes_A T).
-\]
-\end{proposition}
-\begin{proof}
-$K(z)$ が剰余体の自由分解であることから、$A$ 側の支持つきランク商に有界な t 構造を構成し、冪等完備性を得る。これにより $X$ は一様に台をもつ共通有界な自由複体列 $F$ で表される。単に直和因子であることから評価の一致を推論するのではなく、全対象をこの形で計算できることを使う。
-
-各 $F_n$ に命題~\ref{prop:C-base} を適用し、$s_n$ で割って超極限をとる。共通の有界な次数範囲と Koszul 上界により、有限 Euler 和と極限を交換できる。二つの係数はともに $r$ で、係数変更の合成の自然同型も評価と両立するから結論する。ここでは $K_0(P_A^J)$ の Koszul 一元生成は使わない。
-\end{proof}
-\lean{\ld{Paper.Section4.UniformRepresentative}、\ld{PaperK0Comparison}。明示した Koszul 分解からの一般係数公式は証明済み。正則局所環からその分解を供給する適用は正則パラメータの引用に依存する。}
-
-\begin{lemma}\orig{Lemma 4.6}\label{lem:dga}
-連結な dg $A$ 代数 $H$ で、$P_A\simeq\Perf(H)$、$P_T\simeq\Perf(H\otimes^L_A T)$ となるものがある。$H$ は行列環の積 $\prod_n M_{s_n}(A)$ のランクの小さい部分による DG 商の、生成元の自己準同型として得られる。
-\end{lemma}
-\lean{dg 表示そのものは未。定理~\ref{thm:47} に必要な一般係数の降下への接続を含む帰結を、\ld{Section4.supportedRankK0_descent} として引用している。}
-
-\begin{theorem}\orig{Theorem 4.7、命題~\ref{prop:35c} の対応物}\label{thm:47}
-命題~\ref{prop:35c} と同じ仮定のもと、$X\in P_T^J$ について
-\[
-  \sum_{g\in G} \chi_{\ord}(X^g) \;=\; \sum_{g\in G} \chi_C(X^g).
-\]
-\end{theorem}
-\begin{proof}
-補題~\ref{lem:conjsum} を $f\colon K_0(P_A^J)\to K_0(P_T^J)$、$\varphi = \chi_{\ord}$、$\psi = \chi_C$ に適用する。$\varphi\circ f = \psi\circ f$ は命題~\ref{prop:45}、$f_\Q$ の全射性は補題~\ref{lem:dga} の $H$ についての定理~\ref{thm:descent} による。
-\end{proof}
-\lean{\ld{symmetricPaperEuler_conjSum_eq} は二つの Koszul Euler 特性の一致と降下を引数にして証明済み。\ld{Section4.theorem_4_7_K0} はその系であり、\ld{supportedRankK0_descent} と正則パラメータの引用への依存は残る。}
-
-\subsection{列の商と漸近版への接続}\label{sec:planB-unify}\label{sec:planC-asymp}
-
-$s_n>0$ と非単項超フィルター $\U$ を固定する。共通の $J$ の冪で消え、各段の $\lambda(M_n)$ が有限で、$\lambda(M_n)=O(s_n)$ となる加群列の圏は、部分商・拡大で閉じるアーベル圏である。正規化超極限
-\[
- L(M)=\lim_\U\lambda(M_n)/s_n
-\]
-は有限・非負・同型不変で短完全列に加法的である。$L=0$ の列で割った Serre 商を $\mathcal{A}_{\lambda,s,\U}$ と書く。命題~\ref{prop:B-length-descends} と同じ証明で忠実な有限値の長さが入る。
-
-一様に台をもつ自由複体列に Koszul 上界を各段で適用すると、ホモロジー列の長さは $O(s_n)$ となる。ランク $o(s_n)$ の一様に台をもつ列なら正規化長さは零になる。ただし一般のランクの小さい複体列の生のホモロジーをそのまま評価できるわけではない（§\ref{sec:asymp} の Remark 4.1）。支持つきランク商 $P_T^J$ 上の関手は、次の四段階で構成する。
-\begin{enumerate}[label=(\arabic*)]
- \item 一様に台をもつ代表元で、共通の冪ねじれ条件と長さ $O(s_n)$ を示す。
- \item 支持部分の局所化で逆にする射を、列の Serre 商の同型に送る。
- \item シフト・長完全列と両立して関手を降下させ、冪等元の像によって直和因子へ延長する。
- \item 一様に台をもつ列の像では、延長した関手を元のホモロジー列で計算できることを示す。
-\end{enumerate}
-この接続と有界性を構成すると (Fin) が成立し、命題~\ref{prop:B-euler} が使える。評価先の Serre 商だけでは (2)--(4) は得られないが、これらも実装済みである。
-\lean{\ld{Asymptotic.SequenceHomologyLocalization}、\ld{CompletedHomology}、\ld{RankHomologyShiftNatural}、\ld{CompletedRankEvaluation}、\ld{PaperBaseChangeEvaluation}。}
-
-\paragraph{漸近版の消滅と下界}
-$X$ が $0$ 次から $m$ 次の有界自由列 $F$ の像で、商の中で $z_j^v\operatorname{id}_X=0$ とする。$F$ 自体は一様に台をもたなくてよい。$K_v\otimes F$ は一様に台をもつので、(4) により評価できる。正次数の Koszul ホモロジーの長さが零なら、各段で項によるフィルトレーションを使って $[0,m]$ の外のホモロジーの長さが零と分かる。したがって列の商で (Kos$_m$) が成り立ち、補題~\ref{lem:B-nit} によって高次が消える。
-
-$m=e$ で各 $F_n$ が $1$ 次で極小なら
-\[
- H_0(K_v\otimes F_n\otimes C)
- =C^{\oplus\beta_0(F_n)}/(\operatorname{im}d_1+(z^v))
- \twoheadrightarrow(C/\m_T C)^{\oplus\beta_0(F_n)}.
-\]
-右辺の列も共通の冪で消され、長さ $O(s_n)$ である。補題~\ref{lem:B-h0} により
-\[
- \chi_C(X)\ge\left(\lim_\U\beta_0(F_n)/s_n\right)
-                   \lambda(C/\m_T C).
-\]
-長さの有限性と階数の上界を使って右辺を計算し、二つの因子の正値性は別に証明する。
-
-\paragraph{漸近版の比較}
-一様に台をもつ $A$ 自由複体列には、命題~\ref{prop:C-base} を各段に適用して正規化超極限をとれる。実装では、基底の Koszul 分解から得られる支持つきランク商の冪等完備性を使い、$P_A^J$ の全対象に一様な代表元を構成してこの計算を適用する。$K_0(P_A^J)$ が一つの Koszul 類で生成されることは仮定しない。全対象上で基底からの一致が得られ、一般の dg 代数での降下の入力も与えられれば、補題~\ref{lem:conjsum} によって対称なノルム比較が成り立つ。この最後の議論でも二つの列の評価先を同じ圏にする必要はない。
-
-段ごとの長さ $0$ は正規化超極限の長さ $0$ を含意するが、逆は成り立たない。「段ごとに商をとり、次に列の商をとる」という説明を圏同値として使うには、射の分数表示の持ち上げと一様な制御を確かめる必要がある。ここではその同値を使わず、元の加群列から直接 Serre 商を作る。
-
-\subsection{ランク無視版で確認する主張}\label{sec:check-rank}
-
-解説 §\ref{sec:asymp}（元論文 §4）では、評価元を $P_T^J$ に置き換える。評価先は普通の長さと $\lambda$ のそれぞれについての列の Serre 商である。$J$ は本文と同じ基底の台を指定し、係数環上のイデアルはその像を使う。次の三つの確認が、有限版の三つに対応する。
-
-\begin{proposition}[ランク無視版の評価関手の確認]\label{prop:check-rank-euler}
-Koszul 有限性のもとで、一様に台をもつ自由複体列のホモロジー列を使う評価は $P_T^J$ の全対象に延長され、シフトと長完全列に両立し、各対象で有界となる。したがって二つの評価は (Fin) を満たすホモロジー的関手となり、Euler 評価は $K_0(P_T^J)$ の準同型になる。
-\end{proposition}
-\begin{proof}
-一様な台の指数 $v$ に対し、各段で
-\[
- \lambda H_i(F_n\otimes_T C)
- \le\left(\sum_k\rank F_{n,k}\right)M_v,
- \qquad M_v=\sum_j\lambda H_j(z^v;C)<\infty
-\]
-なので長さ $O(s_n)$ が出る。共通の冪ねじれも零ホモトピーから得られる。直和因子では評価先の射影子の像をとり、長さは元の対象の長さ以下になる。支持つき局所化での分母の可逆化とシフトとの両立は §\ref{sec:planC-asymp} の構成による。長さの有限性は評価先の構成に含まれ、有界性は有界代表とその直和因子への延長から得る。最後に命題~\ref{prop:B-euler} を使う。
-\end{proof}
-この証明で構成するのは、(i) ホモロジー列が評価先に入ること、(ii) 支持つき局所化の分母を同型に送ること、(iii) 直和因子への延長の完全性、(iv) シフトとの自然な同型と有界性、(v) 一様支持の代表での計算公式、である。これらはそれぞれ独立に証明して接続している。任意の小ランク列の生のホモロジーが零となると仮定するものではない。
-
-\begin{proposition}[ランク無視版の比較の入力の確認]\label{prop:check-rank-comparison}
-$K(z)$ が $A$ の剰余体の分解であるとする。このとき $A$ 側の全対象は一様に台をもつ共通有界自由複体列で表され、その Euler 評価と係数変更後の評価を各段の値の正規化超極限で計算できる。二つの長さ付き代数の Koszul Euler 特性が等しければ、係数拡大の $K_0$ 写像 $f\colon K_0(P_A^J)\to K_0(P_T^J)$ の像上で二つの評価は一致する。さらに不変類の正の整数倍が $f$ の像に入るなら、全ての対象の共役和が一致する。
-\end{proposition}
-\begin{proof}
-基底の Koszul 分解から有界な t 構造と冪等完備性を得て、一様代表を構成する。その各段に命題~\ref{prop:C-base} を適用し、基準列 $s_n$ で割って超極限をとる。共通の有界な次数範囲と長さの上界があるので、有限 Euler 和と超極限は交換できる。全対象の代表と計算公式を使って $K_0$ 上の一致を得て、補題~\ref{lem:conjsum} を適用する。
-\end{proof}
-ここでは $K_0(P_A^J)$ の Koszul 一元生成を使わない。直和因子上での比較は、全対象の代表または同等の延長の証明によって確かめる。また二段階の係数変更 $A\to T\to C$ と直接の $A\to C$ の自然な同定が必要である。幾何的条件から不変類を降下させる議論は、これらとは別の入力である。
-
-\begin{proposition}[ランク無視版の消滅と下界の入力の確認]\label{prop:check-rank-vanishing}
-$X$ を $0$ 次から $m$ 次の自由列 $F$ の像とし、商で全ての $z_j^v$ が $X$ に零作用するとする。上の評価関手について、正次数の $\lambda H_j(z^v;C)$ が零なら、$H_i^C(X)=0$（$i>m-e$ または $i<0$）。$m=e$ で各 $F_n$ が $1$ 次で極小なら
-\[
- \chi_C(X)\ge
- \left(\lim_\U\frac{\beta_0(F_n)}{s_n}\right)\lambda(C/\m_TC).
-\]
-\end{proposition}
-\begin{proof}
-$F$ 自体の一様支持は使わない。$K_v\otimes F$ の一様支持とその評価の計算公式を使い、各段で Koszul の項によるフィルトレーションをとる。指定範囲外のホモロジー列は各段で長さ零なので評価先で零となり、(Kos$_m$) を得る。(Supp) は商での零作用として与えられている。補題~\ref{lem:B-nit} を適用して消滅を得る。極小性の全射を列の商に送り、補題~\ref{lem:B-h0} で下界を得る。
-\end{proof}
 既存の二項係数の数値公式から非負性を使って長さの消滅を得る方法でも、忠実な長さによって同じ零対象の結論に戻せる。実装では対象としての抽象的消滅を使い、数値の二項係数公式との対応も証明している。
+
+\subsection{$\lambda$-平坦な代数での適用}\label{sec:asymp-flat}
+
+§\ref{sec:perfect-flat} と同じく、$\lambda$-平坦で有限ランクの $(C,\lambda)$ では、この節の比較・消滅・下界に必要な Koszul 条件が §\ref{sec:length-koszul} から得られる。
+\lean{\ld{Paper.Section4.FlatRealization} の \ld{symmetricPaperEuler_conjSum_eq_of_flat}、\ld{paperBaseChangeHomology_vanishing_of_flat}、\ld{paperBaseChangeEuler_minimal_lower_bound_of_flat}（基底の Koszul 分解と降下を明示した形で証明済み）。係数環は $A\to S\to C$ と一般の $S$ 上の自由複体列で扱う。}
 
 %======================================================================
 \section{パラメータ商}\label{sec:param}
+
+置き換え 2 の準備として、$C_D$ を有限加群の代わりに使えるようにする。$D$ のパラメータ系 $x$ で割った商 $U=C/xC$ は、$\lambda$ の目では $B=R/(x)$ 上の射影次元が低い加群のように振る舞う。この節の補題は、$\lambda$-CM 性（§\ref{sec:length-cm}）と反復錐の消滅（補題~\ref{lem:B-nit}）の適用である。
 
 \begin{lemma}[$\lambda$ 版の Auslander--Buchsbaum]\label{lem:lambdaAB}
 $R$ を次元 $d$ の正則局所環、$R\to D$ を有限な局所準同型（$D$ は次元 $h$ のネーター局所環）、$(C,\lambda)$ を $D$ 上の $\lambda$-CM 代数とする。$x_1,\dots,x_h\in R$ を $R$ 正則列で像が $D$ のパラメータ系になるものとし、$B = R/(x)$ とおく。このとき有限生成 $B$ 加群 $L$ について
@@ -918,9 +866,8 @@ $R$ を次元 $d$ の正則局所環、$R\to D$ を有限な局所準同型（$D
 $B$ は次元 $d-h$ の完全交叉局所環だが、一般には正則ではない。次数の上界は $B$ の大域次元ではなく、正則環 $R$ 上の分解と Koszul 消滅から得る。古典的には、有限 CM $R$ 加群 $M$ の射影次元を $d-\dim M$ とする Auslander--Buchsbaum の公式に対応する。
 \lean{\ld{ParamQuot.torClaim}、\ld{ParamQuot.len_torAlg_eq_zero}（正則列・Koszul 消滅・有限自由分解などを明示した形で証明済み）。$\lambda$-CM という定義から全入力を供給する定式化は未。}
 
-\subsection{パラメータ商と正値性への適用}\label{sec:planB-param}
+\subsection{長さの一致と次数の上界}\label{sec:planB-param}
 
-\paragraph{パラメータ商の比較と次数の上界}
 本文の補題~\ref{lem:lambdaAB} は二つに分ける。$R$ をネーター環、$x$ を $R$ 正則列、$B=R/(x)$、$U=C/xC$ とする。$J$ のある冪が $(x)C$ に入り、$\lambda H_q(x;C)=0$（$q>0$）、$\lambda(U)<\infty$ とする。このとき有限生成 $B$ 加群 $L$ について
 \[
  \lambda\Tor_i^R(C,L)=\lambda\Tor_i^B(U,L)<\infty.
@@ -931,9 +878,6 @@ $B$ は次元 $d-h$ の完全交叉局所環だが、一般には正則ではな
 次数の上界には、$L$ の $R$ 上の長さ $d$ 以下の有限自由分解と $x_jL=0$ を使う。$x$ の長さを $h$ とし、全ての $x^v$ の Koszul ホモロジーについて正次数の長さが零、$0$ 次の長さが有限とする。$x$ に台をもつ perfect 複体の圏で、$z=x$、$e=h$、$m=d$ として補題~\ref{lem:B-nit} を適用する。分解上の $x_j$ の作用は零ホモトピックであり、(Kos$_d$) は項によるフィルトレーションから出る。したがって $i>d-h$ では $\lambda\Tor_i^R(C,L)=0$ となる。$R$ が次元 $d$ の正則局所環で $L$ が有限生成なら、必要な分解の長さの上界が得られる。
 
 $R$ が正則で $x$ が正則列でも、$B$ は一般には正則局所環ではない。例えば $k[[u,v]]/(u^2)$ がそうである。本文の補題~\ref{lem:lambdaAB} と §\ref{sec:core} でもこの議論を使う。消滅は $B$ の大域次元ではなく $R$ 上の分解の長さから得る。
-
-\paragraph{核の場合の証明での役割}
-補題~\ref{lem:first} は $(D',\len_{D'})$ と $(C_D,\lambda_D)$ の対称な比較である。式~\eqref{eq:second} は $(E',\len_{E'})$ と $(C_E,\lambda_E)$ の漸近版の比較である。$C_D$ の $\lambda$-CM 性はパラメータ商と次数の上界を与え、有限近似を長さ $l$ の複体列にする。$C_E$ の Koszul 消滅はその列の高次を消す。極小性が $0$ 次の下界を与え、生成元数の正規化極限と非自明性が正値性を与える。比較に必要な有限性と、正値性に必要な消滅は、このように別々の入力である。
 
 %======================================================================
 \section{$\lambda$-平坦な長さ付き代数の構成}\label{sec:construction}
@@ -986,6 +930,8 @@ $\lambda_D(C_D/\m_D C_D) > 0$。つまり $C_D$ は非自明な $\lambda$-CM 代
 
 %======================================================================
 \section{核の場合の証明}\label{sec:core}
+
+補題~\ref{lem:first} は $(D',\len_{D'})$ と $(C_D,\lambda_D)$ の対称な比較である。式~\eqref{eq:second} は $(E',\len_{E'})$ と $(C_E,\lambda_E)$ の漸近版の比較である。$C_D$ の $\lambda$-CM 性はパラメータ商と次数の上界を与え、有限近似を長さ $l$ の複体列にする。$C_E$ の Koszul 消滅はその列の高次を消す。極小性が $0$ 次の下界を与え、生成元数の正規化極限と非自明性が正値性を与える。比較に必要な有限性と、正値性に必要な消滅は、このように別々の入力である。
 
 \paragraph{設定\orig{§5.1}}
 定理~\ref{thm:core} の $D, E$ に対し、補題~\ref{lem:cohengabber} の正則部分環 $A_D\subseteq D$、$A_E\subseteq E$ をとる。$D'$ を $\Frac(D)/\Frac(A_D)$ の Galois 閉包における $A_D$ の整閉包、$G_D$ をその Galois 群とする（$E'$、$G_E$ も同様）。$D'$ は $A_D$ 上有限な局所整域（優秀性）で、$G_D$ は幾何ファイバーに推移的。定理~\ref{thm:existence} を $D'$、$E'$ に適用して $\lambda$-平坦な長さ付き代数 $(C_D,\lambda_D)$、$(C_E,\lambda_E)$ を得る。$a_D = \rank_D D'$、$a_E = \rank_E E'$。
@@ -1199,7 +1145,7 @@ Lean の全体ビルドは3484ジョブで成功した。今回の概念的条�
 %======================================================================
 \section{先行研究との関係}\label{sec:prior}
 
-この付録では、\ref{sec:planB} の枠組み（長さ関数、長さ $0$ の加群による Serre 商、長さ付きアーベル圏に値をとるホモロジー的評価）から、二つの先行研究がどう見えるかを整理する。一つは Cai--Lee--Ma--Schwede--Tucker（以下 CLMST、arXiv:2209.04046v4、Invent.\ Math.\ 244 (2026)）で、もう一つは Bhatt--Hochster--Ma（以下 BHM、arXiv:2410.18372、J.\ Reine Angew.\ Math.\ 835 (2026)）である。番号は CLMST は arXiv v4、BHM は arXiv v1 による（BHM の §6 の番号が Crelle 版でも同じかは未確認）。
+この付録では、§\ref{sec:abstract}、§\ref{sec:length} の枠組み（長さ関数、長さ $0$ の加群による Serre 商、長さ付きアーベル圏に値をとるホモロジー的評価）から、二つの先行研究がどう見えるかを整理する。一つは Cai--Lee--Ma--Schwede--Tucker（以下 CLMST、arXiv:2209.04046v4、Invent.\ Math.\ 244 (2026)）で、もう一つは Bhatt--Hochster--Ma（以下 BHM、arXiv:2410.18372、J.\ Reine Angew.\ Math.\ 835 (2026)）である。番号は CLMST は arXiv v4、BHM は arXiv v1 による（BHM の §6 の番号が Crelle 版でも同じかは未確認）。
 
 以下では、評価の係数（CM な対象）を次の三つの型に分けて呼ぶ。
 \begin{itemize}
