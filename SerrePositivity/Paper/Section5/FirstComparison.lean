@@ -7,15 +7,33 @@ public import SerrePositivity.PerfectComplex.OrdinaryEuler
 public import SerrePositivity.IntersectionMultiplicity.ResolutionEvaluation
 
 /-!
-# 第一のノルム比較の組み立て
+# 第一のノルム比較の組み立て（Lemma 5.2 の形式的部分）
 
-補題3.5が与える複体上の共役和の等式を、補題5.2の Tor と交点重複度の等式に移す。
-`firstComparison_of_complex` は各評価の同一視を明示的に受け取り、
-`firstComparison_of_resolution` は射影分解からそれらの一部を一般定理で導く。
+## 概要
 
-係数制限によるひねりは、係数拡大として書くと逆元による係数構造に対応する。
-最後に有限群の反転写像で和を取り直し、論文の `Σ_σ c_σ` にそろえる。
-分解の存在や台の確認、実際の補題3.5の適用は `Paper/Lemma5_2.lean` で行う。
+論文 Lemma 5.2 は、Lemma 3.5 が複体のレベルで与える共役和の等式 `Σ_σ χ_T(σ^*L) = Σ_σ χ_C(σ^*L)` を、
+`Tor` と交点重複度の等式
+
+  `|G| · rank_{R/P} D · rank_{R/Q} E · χ^R(R/P, R/Q) = Σ_σ c_σ`
+
+（`c_σ = Σ_i (-1)^i λ(Tor_i^R(C, E))`、`R` の `C` 代数構造を `σ` でひねったもの、論文 (5.2)）に移す。
+このファイルはその移し替えの形式的な部分を担う。
+
+- `twistedAlgebraMap σ`：ひねった構造射 `R → D →σ D → C`。
+- `twistedEuler σ`：論文の `c_σ`。
+- `firstComparison_of_complex`：複体 `L` についての共役和の等式と、各評価の同一視（`χ_T(σ^*L) = χ^R(D, E)`、
+  `χ_C(σ^*L) = c_{σ⁻¹}`、`Tor` とホモロジーの線形同値）、階数比較 `χ^R(D, E) = rank · rank · χ^R(R/P, R/Q)`
+  を明示的に引数にとって結論を組み立てる。
+- `firstComparison_of_resolution`：`E` の射影分解 `F` から `L = F ⊗_R D` をとり、上の同一視の一部
+  （`Tor` との同一視、ひねりの評価、`χ_T` のひねり不変性）を
+  `IntersectionMultiplicity/ResolutionEvaluation.lean` の一般定理で導く。
+
+## 規約
+
+ひねり `twist σ` は係数制限なので、係数拡大の言葉で書くと逆元 `σ⁻¹` による構造射に対応する
+（`χ_C(σ^*L) = c_{σ⁻¹}`）。最後に `σ ↦ σ⁻¹` で和を取り直して論文の `Σ_σ c_σ` にそろえる。
+
+分解の存在、台の確認、Lemma 3.5 の実際の適用は `Paper/Lemma5_2.lean`。
 -/
 
 public section
@@ -26,13 +44,15 @@ open CategoryTheory
 
 namespace SerrePositivity
 
-/-- 群の元でひねった係数構造 `R → D →σ D → C`。 -/
+/-- `σ ∈ G` でひねった構造射 `ι_σ : R → D →σ D → C`。論文 §5.1 の `ι_σ` で、`C` を `R` 代数とみる
+やり方を `σ` ごとに変える。 -/
 noncomputable def twistedAlgebraMap (R D C G : Type u) [CommRing R] [CommRing D]
     [CommRing C] [Algebra R D] [Algebra D C] [Group G] [MulSemiringAction G D]
     (σ : G) : R →+* C :=
   (algebraMap D C).comp ((MulSemiringAction.toRingHom G D σ).comp (algebraMap R D))
 
-/-- 論文 (5.2) の `c_σ`。ひねった係数構造での Tor の正規化 Euler 評価。 -/
+/-- 論文 (5.2) の `c_σ = Σ_i (-1)^i λ(Tor_i^R(C, E))`：`C` を `ι_σ` で `R` 代数とみたときの `Tor` の
+正規化 Euler 評価（`lambdaChi`）。 -/
 noncomputable def twistedEuler (R D E C G : Type u) [CommRing R] [CommRing D]
     [CommRing C] [Algebra R D] [Algebra D C] [AddCommGroup E] [Module R E]
     [Group G] [MulSemiringAction G D] {J : Ideal C} (lam : NormalizedLength C J)
@@ -45,8 +65,12 @@ variable {R D E C G : Type u} [CommRing R] [CommRing D] [CommRing C]
   (P Q : Ideal R) [Algebra (R ⧸ P) D] [Module (R ⧸ Q) E]
   {J : Ideal C} (lam : NormalizedLength C J)
 
-/-- 補題5.2の結論を、複体上の共役和の比較と有限拡大の階数比較から組み立てる。
-通常・正規化評価の同一視、Tor とホモロジーの線形同値、有限性は個別の引数として受け取る。 -/
+/-- Lemma 5.2 の結論を、複体 `L` についての共役和の等式 `hnorm` と階数比較 `hRanks` から組み立てる。
+各評価の同一視（`hOrd`：`χ_T(σ^*L) = χ^R(D, E)`、`hLam`：`χ_C(σ^*L) = c_{σ⁻¹}`、`hTor`：`Tor` と
+ホモロジーの線形同値）と有限性 `hfinite` は個別の引数として受け取る。結論は、各 `c_σ` の各項が有限
+であることと、`|G| · rank_{R/P} D · rank_{R/Q} E · χ^R(R/P, R/Q) = Σ_σ c_σ`。`hnorm` の両辺を
+`hOrd`、`hLam` で書き換えると `|G| · χ^R(D, E) = Σ_σ c_{σ⁻¹}`、和を `σ ↦ σ⁻¹` で取り直し、`hRanks`
+で `χ^R(D, E)` を展開する。 -/
 theorem firstComparison_of_complex
     (L : CochainComplex (ModuleCat.{u} D) ℤ)
     (hfinite : ∀ (σ : G) (i : ℤ),
@@ -83,9 +107,11 @@ theorem firstComparison_of_complex
   rw [← hcomparison, hRanksReal]
   ring
 
-/-- `E′` の射影コチェイン分解から補題5.2の結論を組み立てる。
-Tor との同一視、逆元を伴うひねりの評価、通常評価のひねり不変性は一般定理から導く。
-共役和の比較、ひねる前の通常評価と交点重複度の一致、有限拡大の階数比較は引数として受け取る。 -/
+/-- `E` の射影 cochain 分解 `F`（`IsResolutionOf F E`）から Lemma 5.2 の結論を組み立てる。`L = F ⊗_R D` に
+ついて `firstComparison_of_complex` を使い、`Tor` との同一視（`torAlgTwistBaseChangeEquiv`）、ひねりの
+評価 `χ_C(σ^*L) = c_{σ⁻¹}`（`chiLam_twist_baseChange_resolution`）、`χ_T` のひねり不変性
+（`chiOrd_twist`）は一般定理から導く。共役和の等式 `hnorm`、ひねる前の `χ_T(L) = χ^R(D, E)`
+（`hOrd`）、階数比較 `hRanks` は引数として受け取る。 -/
 theorem firstComparison_of_resolution
     (F : CochainComplex (ModuleCat.{u} R) ℤ)
     (hF : IsResolutionOf F (ModuleCat.of R E))
