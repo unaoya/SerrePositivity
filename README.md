@@ -44,7 +44,7 @@ The Lean sources are organized as follows (2026-10-10):
 
 Every file has a Japanese module docstring (purpose, background, proof strategy, conventions, where it is used) and every declaration a Japanese docstring stating the claim in words, the role of its hypotheses and the idea of the proof; the conventions are recorded in `notes/PLAN.md` §18.
 
-The general theorem `normalizedLength_tor_of_isWeaklyRegular`, its application in Lemma 3.4, Lemma 3.5b, 3.5c and Lemma 5.2 (`firstComparison`, modulo the general inputs of `Inputs/IntersectionTheory.lean`) are proved modulo the inputs; Lemma 3.5a, including `lemma_3_5a_lam_finite`, is proved without unproved inputs. Direct `sorry` declarations in the paper part remain in Corollary 2.6 (`cor_2_6_pos`) and the core/main statements. See `notes/PLAN.md` §12–14.
+The general theorem `normalizedLength_tor_of_isWeaklyRegular`, its application in Lemma 3.4, Lemma 3.5b, 3.5c and Lemma 5.2 (`firstComparison`, modulo the general inputs of `Inputs/IntersectionTheory.lean`) are proved modulo the inputs; Lemma 3.5a, including `lemma_3_5a_lam_finite`, is proved without unproved inputs. Direct `sorry` declarations in the paper part remain in Corollary 2.6 (`cor_2_6_pos`) and the core/main statements. See `notes/PLAN.md` §11–12.
 
 The Koszul Euler/rank identity now has an explicit derivation: the rank calculation for finite resolutions, the Koszul/Tor identification, and the general Euler–Poincaré formula for tensoring a finite free resolution are proved. The only remaining regular-local dependency is the named `sorry` theorem that regular parameters form a regular sequence. The domain property and finite free resolutions are now derived from it, using general theorems in `CommutativeAlgebra/RegularSequence.lean` and `HomologicalAlgebra/FiniteFreeResolution.lean`.
 
@@ -59,10 +59,9 @@ The first milestone is a sorry-free derivation of Theorem 1.1 in which `#print a
 ## Layout
 
 - `paper/` — the preprint and its source (`SOURCE.md`)
-- `notes/INVESTIGATION.md` — reading notes, verification checklist, Mathlib survey (in Japanese)
 - `notes/MEMO.md` — full investigation memo (in Japanese)
-- `notes/PLAN.md` — formalization plan: milestones, file layout, dependency graph, interfaces (in Japanese)
-- `notes/mathlib-review-2026-10-10.md` — Japanese documentation coverage, mathematical refactoring candidates, and comparison with the pinned Mathlib version
+- `notes/PLAN.md` — current priorities, design conventions, dependency graph, interfaces, and links to the per-section notes (in Japanese)
+- `notes/mathlib-review-2026-10-10.md` — comparison with the pinned Mathlib version and caveats on the scope of the formalization (in Japanese)
 - `SerrePositivity/` — Lean sources
 
 ## Source and license

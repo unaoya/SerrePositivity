@@ -106,15 +106,19 @@ C_E 側も λ の目で CM なので、評価は 0 次の項 b₀ だけにな�
 
 ### 3層の切り分け
 
+当初は層 2・3 を `class` と `axiom` で置く予定だったが、2026-10-10 に名前付きの `sorry` 定理へ改めた（`PLAN.md` §1.1）。層 3 の細分は `PLAN.md` §1.2。
+
 | 層 | 中身 | 扱い |
 | --- | --- | --- |
 | 1. 論文固有の議論 | §5 全体、Lemma 3.4/3.5 の形式的部分 | sorry なしで形式化する第一目標 |
-| 2. 論文の新しい一般定理 | Theorem 3.1、Theorem 4.7（§4） | 当面は名前つき axiom。人手の検証を最優先 |
-| 3. 文献からの入力 | Serre、Roberts–Gillet–Soulé、Cohen–Gabber、Monsky、Roberts、CLMST、Land–Tamme、Bhatt–Scholze | `class` と `axiom` インスタンスで置く |
+| 2. 論文の新しい一般定理 | Theorem 3.1、Theorem 4.7（§4） | 名前付きの `sorry` 定理として引用する。人手の検証を最優先 |
+| 3. 文献からの入力 | Serre、Roberts–Gillet–Soulé、Cohen–Gabber、Monsky、Roberts、CLMST、Land–Tamme、Bhatt–Scholze | 名前付きの `sorry` 定理として引用する |
 
-第一マイルストーンは、主定理が層 2・3 の名前つき仮定だけから sorry なしで出る状態です。`#print axioms` に出るのが名前つき仮定だけになれば、論文の骨格の機械検証になります。そのあと、Lemma 3.4 系、標数 p の Theorem 2.5、§4 の圏論的部分の順に仮定を外していきます。
+第一マイルストーンは、主定理が層 2・3 の名前付き引用定理だけに依存して証明される状態です。依存する引用は `#print axioms` の `sorryAx` と証明内の呼び出し箇所で確認します。そのあと、Lemma 3.4 系、標数 p の Theorem 2.5、§4 の圏論的部分の順に仮定を外していきます。
 
 ### Mathlib の現状（2026-10-07、mathlib `e6bbacd0`）
+
+調査時点の記録。「ない」とした Koszul 複体や Hilbert–Samuel 重複度などはその後プロジェクト内で実装した。固定版 Mathlib との詳しい対応は `mathlib-review-2026-10-10.md`。
 
 | 状況 | 項目 |
 | --- | --- |
@@ -128,5 +132,5 @@ C_E 側も λ の目で CM なので、評価は 0 次の項 b₀ だけにな�
 
 - **リポジトリ**：公開前提の独立リポジトリ [unaoya/SerrePositivity](https://github.com/unaoya/SerrePositivity)。既存の `arxiv_formalization` の仕組みは使わない（2026-10-07 決定）。
 - **元論文**：openai/math はフォークせず、`paper/` に PDF と取得元（コミット `adc7f1241b42`）を記録する（`paper/SOURCE.md`）。
-- **ノート**：`notes/INVESTIGATION.md`（要約、検証チェックリスト、Mathlib の現状）と、この調査メモの写し `notes/MEMO.md`。
+- **ノート**：この調査メモの写し `notes/MEMO.md`。計画と規約は `notes/PLAN.md`。
 - **作業**：以降の形式化は Claude Code で進める。

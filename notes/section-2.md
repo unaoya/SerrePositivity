@@ -149,5 +149,5 @@ C_D = (D ⊗_A A_∞)_perfd。
 
 - Lemma 2.3 の λ_∞ の構成と加法性は、Faltings Appendix 2 の Lemma が原典。CLMST も証明を委ねているので、形式化するなら Faltings または Gabber–Ramero 14.5.75 を読む必要がある。有限段の長さを p^{−nh} 倍するところまでは初等的で、下限・上限で延ばしたときの加法性が本体。
 - 標数 p の Theorem 2.5 は、Monsky（Hilbert–Kunz の存在）、Ma Theorem 2.4（Roberts）、Stacks 0AZZ（Koszul の Euler 特性）、Cohen–Gabber の4つを入力にすれば、残りは [21] §3.2 の初等的な議論（トレース、塔の有限段、Lemma 2.4）。
-- 混標数の Theorem 2.5 は CLMST の Cor. 4.0.4、Prop. 4.0.10、Prop. 4.0.14 を入力にする。これらは Bhatt–Scholze の perfectoid 化と almost purity に依存するので、当面は層 3b の仮定。
-- 入力束に入れるときの文献名：`Inputs.CohenGabber`（Kurano–Shimomoto Thm 1.1）、`Inputs.CohenStructure`（係数環）、`Inputs.Monsky`、`Inputs.RobertsFrobenius`（Ma Thm 2.4）、`Inputs.KoszulMultiplicity`（Stacks 0AZZ）、`Inputs.FaltingsLength`（Lemma 2.3）、`Inputs.CLMST`（Cor. 4.0.4、Prop. 4.0.10、4.0.14）。
+- 混標数の Theorem 2.5 は CLMST の Cor. 4.0.4、Prop. 4.0.10、Prop. 4.0.14 を入力にする。これらは Bhatt–Scholze の perfectoid 化と almost purity に依存するので、証明せずに引用する（層 3b）。
+- 引用する文献：Kurano–Shimomoto Thm 1.1（Cohen–Gabber）、Cohen の構造定理（係数環）、Monsky、Ma Thm 2.4（Roberts）、Stacks 0AZZ（Koszul の Euler 特性）、Faltings Appendix 2（Lemma 2.3）、CLMST（Cor. 4.0.4、Prop. 4.0.10、4.0.14）。どれも入力の束にはせず、名前付きの `sorry` 定理として置く（`PLAN.md` §1.1）。実際に置いた引用の一覧は `section-2-plan.md`。

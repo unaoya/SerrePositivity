@@ -133,13 +133,12 @@ Corollary 2.6（§2、p.8–9）は、定理 2.5 で作った具体的な (C_D, 
 
 (3.9) は定理 2.5 の (2.4) と (2.6) を D′ と基底 A_D に適用したもの。
 
-## 形式化に向けて
+## 形式化（実装済み）
 
-- 「(3.9) をみたす (C, λ)」を構造体として定義し、補題 3.4・3.5 はその構造体について証明する。
-- 定理 2.5 は「D′ に対してそういう構造体が存在する」という仮定（層 3）として置く。perfectoid の入力はここ1か所に閉じ込められる。
-- Corollary 2.6 は「補題 3.4 の適用 ＋ 3 の正値性」として書く。
-- 必要な基盤：
-  - 正則局所環における剰余体の Koszul 分解（Mathlib に Koszul 複体がない）
-  - A 加群 V と A 代数 C の Tor が C 加群になること、その長完全列
-  - 局所環上の有限長加群の組成列による帰納法（Mathlib の `Module.length` まわり）
-- λ の値域は `ENNReal`（[0, ∞]）が自然。定義域は「m_A の冪で消される C 加群」なので、述語つきの加法的関数として定義する。
+- 最小の仮定の一般論 `normalizedLength_tor_of_isWeaklyRegular`（`IntersectionMultiplicity/NormalizedTor.lean`）を先に証明し、
+  `lemma_3_4`（`Paper/Lemma3_4.lean`）と Corollary 2.6 の 1・2 をそこから出した。
+- 「(3.9) をみたす (C, λ)」は構造体にせず、個別の仮定として定理に渡す（`PLAN.md` §1.1a）。定理 2.5 は具体的な塔の上で
+  述べる（`Section2.theorem_2_5`）。
+- 基盤（剰余体の Koszul 分解、Tor の `C` 加群構造と長完全列、組成列による帰納法）はプロジェクト内で証明した。
+  正則局所環について残る引用は、正則パラメータ系が正則列であること（`isWeaklyRegular_of_span_eq_maximalIdeal`）だけ。
+- λ の値域は `ENNReal`（[0, ∞]）、定義域は「m_A の冪で消される C 加群」（`NormalizedLength`、`IsPowTorsion`）。
