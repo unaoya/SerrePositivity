@@ -14,18 +14,26 @@ Lemma 3.5a・3.5b のうち、正規化長さ `λ` による Euler 評価 `χ_C(
 通常の長さの側は `Ordinary.lean`。
 
 - 前半 `lemma_3_5a_lam_finite`：Koszul ホモロジー `H_j(z^v; C)` の `λ` がすべて有限なら、`z` に台を
-  もつ任意の完全 `T` 複体 `P` について `P ⊗_T C` のホモロジーの `λ` も有限。**未証明**（この
-  プロジェクトの Lemma 3.5 まわりで唯一の `sorry`）。冪ねじれ性と、有限性を仮定した `K₀` への降下
+  もつ任意の完全 `T` 複体 `P` について `P ⊗_T C` のホモロジーの `λ` も有限。証明済み。
+  この有限性には `T` が `A` 上有限であることは不要。冪ねじれ性と、`K₀` への降下
   （`chiLamHom_of_finite`）は `PerfectComplex/NormalizedEuler.lean` にある。
 - 後半 `lemma_3_5b_lam_of_koszul`：階数倍の公式 (3.13) `χ_C(Q ⊗_A T) = r · χ_A(Q)`。前半の有限性に
   依存する。
 
-## 前半の予定する証明
+## 前半の証明
 
-台の条件から、`z_j^v • 𝟙 P` が零ホモトピックな共通の冪 `v` をとる。`P ⊗_T C` と Koszul 複体
-`K(z^v; C)` のテンソル積を、`K(z^v)` の長さ `e` の有限段のフィルトレーションで評価すると、各段の
-ホモロジーの `λ` は `H_j(z^v; C)` の `λ` で押さえられて有限。一方 `z^v` が `P` 上で零ホモトピックなので
-`P ⊗ K(z^v) ≃ ⊕ P[shift]` となり、もとのホモロジーが直和因子として取り出せる。
+台の条件から、`z_j^v • 𝟙 P` が零ホモトピックな共通の冪 `v` をとる。
+`Q = P ⊗_T C` を係数とする `K(z^v; Q)` を反復写像錐 `koszulComplexOn` で構成する。
+`Q` がその直和因子となることは `retractKoszulComplexOn` で証明済みであり、
+`lambdaHomology_ne_top_of_koszulComplexOn` により有限性を `Q` へ戻せる。
+この引き戻しと、`m_A C` の冪ねじれ性に必要な根基の包含は以下の証明へ接続済み。
+
+`Q` の有限自由な項による有限フィルトレーションの評価は
+`lambdaHomology_koszulComplexOn_ne_top` で与える。
+各次数の項が有限自由なので、各層は `K(z^v; C)` の有限直和をシフトしたものとなり、
+仮定された Koszul ホモロジーの有限性と長完全列の評価を反復して全体の有限性を得る。
+ここでフィルトレーションをとる方向は係数複体 `Q` の次数である。
+有限自由加群の基底分解とシフト同型も一般論として証明し、以下の定理へ接続している。
 -/
 
 @[expose] public section
@@ -41,16 +49,58 @@ variable {A T C : Type u} [CommRing A] [IsLocalRing A] [IsNoetherianRing A] [Com
   [Algebra A T] [Module.Finite A T] [CommRing C] [Algebra T C] [Algebra A C] [IsScalarTower A T C]
   {e : ℕ} {z : Fin e → A} {lam : NormalizedLength C ((maximalIdeal A).map (algebraMap A C))}
 
-/-- **Lemma 3.5a の正規化長さの有限性**（未証明）：`√(z) = m_A` で、各冪 `v` と各次数 `j` について
+omit [Module.Finite A T] in
+/-- **Lemma 3.5a の正規化長さの有限性**：`√(z) = m_A` で、各冪 `v` と各次数 `j` について
 `λ(H_j(z^v; C)) < ∞` なら、`z` に台をもつ完全 `T` 複体 `P` を `C` に係数拡大したホモロジーの `λ` は
-有限。予定する証明はモジュール docstring 参照。 -/
+有限。係数つき Koszul 複体を有限自由な項で評価し、零ホモトピーからの直和因子へ有限性を戻す。 -/
 theorem lemma_3_5a_lam_finite
-    (_hz : (Ideal.span (Set.range z)).radical = maximalIdeal A)
-    (_hfin : ∀ (v j : ℕ),
+    (hz : (Ideal.span (Set.range z)).radical = maximalIdeal A)
+    (hfin : ∀ (v j : ℕ),
       lam.len (koszulHomologySelf (fun k ↦ algebraMap A C (z k ^ v)) j) ≠ ⊤)
     (P : PerfSupp T (algebraMap A T ∘ z)) (i : ℤ) :
     lam.len ((baseChange (algebraMap T C) P.1).homology i) ≠ ⊤ := by
-  sorry
+  have hs : IsSupported (algebraMap A C ∘ z) (baseChange (algebraMap T C) P.1) := by
+    have h := isSupported_baseChange (algebraMap T C) P.2.supported
+    have heq : algebraMap T C ∘ (algebraMap A T ∘ z) = algebraMap A C ∘ z := by
+      funext j
+      exact (IsScalarTower.algebraMap_apply A T C (z j)).symm
+    rwa [heq] at h
+  obtain ⟨v, hv⟩ := hs
+  have hJ : (maximalIdeal A).map (algebraMap A C) ≤
+      (Ideal.span (Set.range (fun k ↦ algebraMap A C (z k ^ v)))).radical := by
+    have h := Ideal.map_radical_le (algebraMap A C) (I := Ideal.span (Set.range z))
+    rw [hz, Ideal.map_span, ← Set.range_comp] at h
+    apply h.trans
+    apply Ideal.radical_le_radical_iff.mpr
+    apply Ideal.span_le.mpr
+    rintro _ ⟨j, rfl⟩
+    refine ⟨v, ?_⟩
+    change (algebraMap A C (z j)) ^ v ∈ _
+    rw [← map_pow]
+    exact Ideal.subset_span (Set.mem_range_self j)
+  apply lambdaHomology_ne_top_of_koszulComplexOn lam
+    ((maximalIdeal A).fg_of_isNoetherianRing.map (algebraMap A C))
+    (fun k ↦ algebraMap A C (z k ^ v)) hJ (baseChange (algebraMap T C) P.1)
+    (fun j ↦ by simpa only [smulId, map_pow, Function.comp_apply] using hv j) i
+  apply lambdaHomology_koszulComplexOn_ne_top lam
+    ((maximalIdeal A).fg_of_isNoetherianRing.map (algebraMap A C))
+    (fun k ↦ algebraMap A C (z k ^ v)) hJ ?_ (baseChange (algebraMap T C) P.1) ?_ ?_
+    (baseChange_bounded (algebraMap T C) P.1 P.2.bounded) i
+  · intro j
+    by_cases hj : 0 < j
+    · have hz := koszulComplex_isZero_homology_of_pos (fun k ↦ algebraMap A C (z k ^ v)) j hj
+      have := ModuleCat.isZero_iff_subsingleton.mp hz
+      rw [lam.len_eq_zero_of_subsingleton]
+      exact ENNReal.zero_ne_top
+    · obtain ⟨k, rfl⟩ : ∃ k : ℕ, j = -(k : ℤ) := ⟨(-j).toNat, by omega⟩
+      exact hfin v k
+  · intro j
+    have := P.2.free j
+    exact free_baseChange (algebraMap T C) (P.1.X j)
+  · intro j
+    have := P.2.finite j
+    exact finite_baseChange (algebraMap T C) (P.1.X j)
+
 
 end SerrePositivity
 

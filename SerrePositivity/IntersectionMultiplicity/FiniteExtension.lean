@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.IntersectionMultiplicity.Basic
+public import SerrePositivity.IntersectionMultiplicity.Additivity
 public import Mathlib.LinearAlgebra.Quotient.Defs
 public import Mathlib.LinearAlgebra.TensorProduct.Pi
 public import Mathlib.Data.ENat.BigOperators
@@ -34,7 +34,7 @@ public import SerrePositivity.CommutativeAlgebra.LocalAlgebra
   （`chi_rank_factor_left/right_of_additivity_and_vanishing`、`chi_rank_factors`）と、`WithBot ℕ∞` 値の
   次元についての不等式の補題。
 - 有限直和の公式 `χ(M^n, N) = n · χ(M, N)` を加法性から帰納法で示す（`chi_pi_left/right_of_additivity`）。
-- `chi_finite_extensions`：以上を組み合わせる。加法性と消滅定理は入力 class
+- `chi_finite_extensions`：以上を組み合わせる。加法性は証明済みの定理（分解の存在に依存）、消滅定理は名前付きの未証明定理
   （`Inputs/IntersectionTheory.lean`）に依存する。Lemma 3.5、Galois 作用、正規化長さとは独立の議論。
 -/
 
@@ -91,9 +91,21 @@ lemma dimension_add_nat_lt {x : WithBot ℕ∞} {a b : ℕ}
     have h' := (ENat.add_lt_add_iff_right (ENat.natCast_ne_top b)).mpr h
     exact_mod_cast h'
 
+/-- `WithBot ℕ∞` 値の次元について、`x + 1 ≤ n`（`n` は自然数）なら `x < n`。零加群の次元 `⊥` も含めて
+成り立つ。`exists_genericBasis` の評価 `dim coker + 1 ≤ dim R/P` を狭義不等式に直すのに使う。 -/
+lemma dimension_lt_of_add_one_le_nat {x : WithBot ℕ∞} {n : ℕ}
+    (hx : x + 1 ≤ (n : WithBot ℕ∞)) : x < n := by
+  cases x with
+  | bot => simp
+  | coe x =>
+    have hx' : x + 1 ≤ (n : ℕ∞) := by exact_mod_cast hx
+    have hfin : x ≠ ⊤ := by intro h; simp [h] at hx'
+    lift x to ℕ using hfin
+    exact_mod_cast (show x < n by exact_mod_cast hx')
+
 section additivity
 
-variable [Inputs.IntersectionAdditivity R]
+variable [IsRegularLocalRing R]
 
 /-- 第 1 変数の有限直和の公式 `χ(M^n, N) = n · χ(M, N)`（`M ⊗ N` が有限長のとき）。`n` についての帰納法で、
 分裂短完全列 `0 → M^n → M^{n+1} → M → 0`（先頭成分への射影）に加法性 `add_left` を使う。各段階で
@@ -110,7 +122,7 @@ theorem chi_pi_left_of_additivity
         (LinearMap.id : (Fin 0 → M) →ₗ[R] (Fin 0 → M)) := by
       intro x
       exact ⟨fun _ ↦ ⟨x, rfl⟩, fun _ ↦ Subsingleton.elim _ _⟩
-    have hh := Inputs.IntersectionAdditivity.add_left (Fin 0 → M) (Fin 0 → M) (Fin 0 → M) N
+    have hh := chi_add_left (Fin 0 → M) (Fin 0 → M) (Fin 0 → M) N
       LinearMap.id LinearMap.id Function.injective_id Function.surjective_id he
       (by simp [Module.length_eq_zero])
     simpa using (show chi R (Fin 0 → M) N = 0 by omega)
@@ -138,7 +150,7 @@ theorem chi_pi_left_of_additivity
       rw [(TensorProduct.piLeft R N (fun _ : Fin (n + 1) ↦ M)).length_eq,
         Module.length_pi_of_fintype]
       exact ENat.sum_ne_top.mpr (fun _ _ ↦ h)
-    rw [Inputs.IntersectionAdditivity.add_left _ _ _ _ f g hf hg he hfin, ih]
+    rw [chi_add_left _ _ _ _ f g hf hg he hfin, ih]
     push_cast
     ring
 
@@ -156,7 +168,7 @@ theorem chi_pi_right_of_additivity
         (LinearMap.id : (Fin 0 → N) →ₗ[R] (Fin 0 → N)) := by
       intro x
       exact ⟨fun _ ↦ ⟨x, rfl⟩, fun _ ↦ Subsingleton.elim _ _⟩
-    have hh := Inputs.IntersectionAdditivity.add_right M (Fin 0 → N) (Fin 0 → N) (Fin 0 → N)
+    have hh := chi_add_right M (Fin 0 → N) (Fin 0 → N) (Fin 0 → N)
       LinearMap.id LinearMap.id Function.injective_id Function.surjective_id he
       (by simp [Module.length_eq_zero])
     simpa using (show chi R M (Fin 0 → N) = 0 by omega)
@@ -184,7 +196,7 @@ theorem chi_pi_right_of_additivity
       rw [(TensorProduct.piRight R R M (fun _ : Fin (n + 1) ↦ N)).length_eq,
         Module.length_pi_of_fintype]
       exact ENat.sum_ne_top.mpr (fun _ _ ↦ h)
-    rw [Inputs.IntersectionAdditivity.add_right _ _ _ _ f g hf hg he hfin, ih]
+    rw [chi_add_right _ _ _ _ f g hf hg he hfin, ih]
     push_cast
     ring
 
@@ -192,8 +204,7 @@ end additivity
 
 section extension
 
-variable [IsRegularLocalRing R] [Inputs.IntersectionAdditivity R]
-  [Inputs.IntersectionVanishing R]
+variable [IsRegularLocalRing R]
 
 /-- **有限拡大による階数倍**：正則局所環 `R` の素イデアル `P`、`Q` で `√(P + Q) = m_R`、
 `dim R/P + dim R/Q = dim R` なるものと、有限代数 `T/(R/P)`、`U/(R/Q)`（`U` の階数は正）について
@@ -201,7 +212,7 @@ variable [IsRegularLocalRing R] [Inputs.IntersectionAdditivity R]
 
 証明：`exists_genericBasis` で `(R/P)^a ↪ T`、`(R/Q)^b ↪ U` をとる。余核の台の次元はそれぞれ
 `dim R/P`、`dim R/Q` より真に小さいので、`U` の次元（`supportDim_of_quotient_rank_pos` で `dim R/Q`）
-あるいは `R/P` の次元と足すと `dim R` 未満になり、消滅定理 `IntersectionVanishing.vanish` で
+あるいは `R/P` の次元と足すと `dim R` 未満になり、消滅定理 `intersectionVanishing` で
 余核の寄与が消える。各テンソル積の有限長性は `length_tensorProduct_ne_top_of_annihilator` から。
 第 1 変数、第 2 変数の順に `chi_rank_factor_*` を適用し、`chi_rank_factors` で合成する。 -/
 theorem chi_finite_extensions
@@ -223,8 +234,14 @@ theorem chi_finite_extensions
   have finTU := length_tensorProduct_ne_top_of_annihilator P Q T U annT annU hprimary
   have finDU := length_tensorProduct_ne_top_of_annihilator P Q (R ⧸ P) U annD annU hprimary
   have finDE := length_tensorProduct_ne_top_of_annihilator P Q (R ⧸ P) (R ⧸ Q) annD annE hprimary
-  obtain ⟨f, hf, hC⟩ := Inputs.GenericBasis.generic_basis P T hT
-  obtain ⟨g, hg, hK⟩ := Inputs.GenericBasis.generic_basis Q U hU
+  obtain ⟨f, hf, hC⟩ := exists_genericBasis P T
+  obtain ⟨g, hg, hK⟩ := exists_genericBasis Q U
+  have hC : Module.supportDim R (T ⧸ LinearMap.range f) < (h : WithBot ℕ∞) := by
+    rw [hP] at hC
+    exact dimension_lt_of_add_one_le_nat hC
+  have hK : Module.supportDim R (U ⧸ LinearMap.range g) < (l : WithBot ℕ∞) := by
+    rw [hQ] at hK
+    exact dimension_lt_of_add_one_le_nat hK
   have finCU := length_tensorProduct_ne_top_of_annihilator P Q (T ⧸ LinearMap.range f) U
     (annT.trans (annihilator_le_quotient T _)) annU hprimary
   have finDK := length_tensorProduct_ne_top_of_annihilator P Q (R ⧸ P) (U ⧸ LinearMap.range g)
@@ -234,21 +251,21 @@ theorem chi_finite_extensions
   have dimD : Module.supportDim R (R ⧸ P) = (h : WithBot ℕ∞) := by
     rw [Module.supportDim_quotient_eq_ringKrullDim, hP]
   have vanishC : chi R (T ⧸ LinearMap.range f) U = 0 :=
-    Inputs.IntersectionVanishing.vanish _ _ finCU (by
+    Inputs.intersectionVanishing R _ _ finCU (by
       rw [dimU, ← hsum]
-      exact dimension_add_nat_lt (hP ▸ hC))
+      exact dimension_add_nat_lt hC)
   have vanishK : chi R (R ⧸ P) (U ⧸ LinearMap.range g) = 0 :=
-    Inputs.IntersectionVanishing.vanish _ _ finDK (by
+    Inputs.intersectionVanishing R _ _ finDK (by
       rw [dimD, add_comm, ← hsum, Nat.add_comm h l]
-      exact dimension_add_nat_lt (hQ ▸ hK))
+      exact dimension_add_nat_lt hK)
   have left := chi_rank_factor_left_of_additivity_and_vanishing
     (Module.finrank (R ⧸ P) T) f
-    (Inputs.IntersectionAdditivity.add_left _ _ _ _ f (LinearMap.range f).mkQ hf
+    (chi_add_left _ _ _ _ f (LinearMap.range f).mkQ hf
       (Submodule.mkQ_surjective _) (LinearMap.exact_map_mkQ_range f) finTU)
     (chi_pi_left_of_additivity _ _ finDU _) vanishC
   have right := chi_rank_factor_right_of_additivity_and_vanishing
     (Module.finrank (R ⧸ Q) U) g
-    (Inputs.IntersectionAdditivity.add_right _ _ _ _ g (LinearMap.range g).mkQ hg
+    (chi_add_right _ _ _ _ g (LinearMap.range g).mkQ hg
       (Submodule.mkQ_surjective _) (LinearMap.exact_map_mkQ_range g) finDU)
     (chi_pi_right_of_additivity (R ⧸ P) (R ⧸ Q) finDE _) vanishK
   exact chi_rank_factors _ _ left right

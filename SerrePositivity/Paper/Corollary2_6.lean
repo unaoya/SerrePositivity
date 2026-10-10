@@ -21,7 +21,7 @@ Theorem 2.5 の長さ代数 `(C_D, λ_D)` について、有限長 `A` 加群 `V
 1・2 は `cor_2_6_tor`：一般定理 `normalizedLength_tor_of_isWeaklyRegular`
 （`IntersectionMultiplicity/NormalizedTor.lean`）を、`z = t`（`A` の正則パラメータ系）、
 `r = rank_A D` に適用する。(3.9) に当たる仮定は Theorem 2.5 の (2.4)、(2.6) の `v = 1`
-（`LengthAlgebraProps.base_values_one`）から、`t` が弱正則列であることは A1
+（`lengthAlgebra_base_values_one`）から、`t` が弱正則列であることは A1
 （`Inputs/RegularLocalRing.lean`、`sorry`）から得る。`λ_D` の定義域を `m_D C` から `m_A C` に
 取り替えるには `NormalizedLength.restrictToBase` を使う。
 
@@ -41,14 +41,18 @@ namespace SerrePositivity
 正則パラメータ系 `t`（`D` のパラメータ系でもある）、Theorem 2.5 の性質をみたす `(C, λ)` について、
 有限長 `A` 加群 `V` で `λ(Tor_i^A(C, V)) = 0 (i > 0)`、`λ(Tor_0^A(C, V)) = rank_A D · ℓ_A(V)`
 （`Tor_0 = C ⊗_A V`）。一般定理 `normalizedLength_tor_of_isWeaklyRegular` を `z = t` に適用する。
-`IsRegularNormalizationBase` の全部（完備性、生成的分離性など）は要らず、ここに挙げた仮定で足りる。 -/
+完備性・生成的分離性などは要らず、ここに挙げた仮定で足りる。 -/
 theorem cor_2_6_tor (A D : Type u) [CommRing A] [IsRegularLocalRing A] [CommRing D] [IsLocalRing D]
     [Algebra A D] [Module.Finite A D] {h : ℕ} (t : Fin h → A)
     (ht : Ideal.span (Set.range t) = maximalIdeal A) (hdim : ringKrullDim A = h)
     (hsop : IsSystemOfParameters D (algebraMap A D ∘ t))
     (C : Type u) [CommRing C] [Algebra D C] [Algebra A C] [IsScalarTower A D C]
     (lam : NormalizedLength C ((maximalIdeal D).map (algebraMap D C)))
-    (hC : LengthAlgebraProps A D t C lam)
+    (hzero : ∀ (z : Fin h → D), IsSystemOfParameters D z → ∀ v : ℕ, 0 < v →
+      ∀ i : ℕ, 0 < i → lam.len (koszulHomologySelf (fun j ↦ algebraMap D C (z j ^ v)) i) = 0)
+    (hbase : ∀ v : ℕ, 0 < v →
+      lam.len (C ⧸ Ideal.span (Set.range fun j ↦ algebraMap D C (algebraMap A D (t j) ^ v))) =
+        ((v ^ h * Module.finrank A D : ℕ) : ℝ≥0∞))
     (V : Type u) [AddCommGroup V] [Module A V] (hV : Module.length A V ≠ ⊤) :
     (∀ i : ℕ, 0 < i → lam.len (TorAlg (algebraMap A C) i V) = 0) ∧
       lam.len (TorAlg (algebraMap A C) 0 V) =
@@ -56,18 +60,35 @@ theorem cor_2_6_tor (A D : Type u) [CommRing A] [IsRegularLocalRing A] [CommRing
   have hVfl : IsFiniteLength A V := Module.length_ne_top_iff.mp hV
   have hreg := isWeaklyRegular_of_span_eq_maximalIdeal A t ht hdim
   let lam' := lam.restrictToBase A D
-  obtain ⟨h39a, h39b⟩ := hC.base_values_one hsop
+  obtain ⟨h39a, h39b⟩ := lengthAlgebra_base_values_one hzero hbase hsop
   have := normalizedLength_tor_of_isWeaklyRegular (algebraMap A C) t ht hreg lam'
     (Module.finrank A D) h39a h39b V hVfl
   exact ⟨this.1, this.2.1⟩
 
 /-- **Corollary 2.6** の 3（未証明）：`λ_D(C_D / m_D C_D) > 0`。論文では (2.5) の正値性
 （`multiplicity_pos`）と組成列の議論による。 -/
-theorem cor_2_6_pos (A D : Type u) [CommRing A] [IsLocalRing A] [CommRing D] [IsLocalRing D]
-    [Algebra A D] {h : ℕ} (t : Fin h → A) (_hbase : IsRegularNormalizationBase A D t)
+theorem cor_2_6_pos (A D : Type u) [CommRing A] [IsRegularLocalRing A]
+    [IsAdicComplete (maximalIdeal A) A]
+    [CommRing D] [IsLocalRing D] [IsNoetherianRing D] [IsDomain D]
+    [IsAdicComplete (maximalIdeal D) D] [Algebra A D] [Module.Finite A D]
+    [Algebra.IsSeparable A D]
+    (hinj : Function.Injective (algebraMap A D))
+    (hres : Function.Surjective ((residue D).comp (algebraMap A D)))
+    {h : ℕ} (t : Fin h → A) (hdimA : ringKrullDim A = h) (hdimD : ringKrullDim D = h)
+    (hpos : 0 < h) (ht : Ideal.span (Set.range t) = maximalIdeal A)
+    (hsop : IsSystemOfParameters D (algebraMap A D ∘ t))
     (C : Type u) [CommRing C] [Algebra D C]
     (lam : NormalizedLength C ((maximalIdeal D).map (algebraMap D C)))
-    (_hC : LengthAlgebraProps A D t C lam) :
+    (hzero : ∀ (z : Fin h → D), IsSystemOfParameters D z → ∀ v : ℕ, 0 < v →
+      ∀ i : ℕ, 0 < i → lam.len (koszulHomologySelf (fun j ↦ algebraMap D C (z j ^ v)) i) = 0)
+    (hquot : ∀ (z : Fin h → D), IsSystemOfParameters D z → ∀ v : ℕ, 0 < v →
+      lam.len (C ⧸ Ideal.span (Set.range fun j ↦ algebraMap D C (z j ^ v))) =
+        ENNReal.ofReal ((v : ℝ) ^ h * hilbertSamuelMultiplicity D (Ideal.span (Set.range z)) D))
+    (hmult : ∀ (z : Fin h → D), IsSystemOfParameters D z →
+      0 < hilbertSamuelMultiplicity D (Ideal.span (Set.range z)) D)
+    (hbase : ∀ v : ℕ, 0 < v →
+      lam.len (C ⧸ Ideal.span (Set.range fun j ↦ algebraMap D C (algebraMap A D (t j) ^ v))) =
+        ((v ^ h * Module.finrank A D : ℕ) : ℝ≥0∞)) :
     0 < lam.len (C ⧸ (maximalIdeal D).map (algebraMap D C)) := by
   sorry
 

@@ -5,11 +5,14 @@ public import Mathlib.Algebra.Category.ModuleCat.Projective
 public import Mathlib.Algebra.Homology.Linear
 public import Mathlib.Algebra.Homology.ShortComplex.HomologicalComplex
 public import Mathlib.Algebra.Homology.ShortComplex.Linear
+public import Mathlib.Algebra.Homology.HomologicalComplexAbelian
 public import Mathlib.Algebra.Homology.Single
 public import Mathlib.Algebra.Category.ModuleCat.Biproducts
 public import Mathlib.Algebra.Homology.HomotopyCategory.MappingCone
 public import Mathlib.Algebra.Homology.ShortComplex.ModuleCat
 public import Mathlib.LinearAlgebra.FreeModule.Basic
+public import Mathlib.LinearAlgebra.FreeModule.Finite.Basic
+public import Mathlib.LinearAlgebra.Pi
 public import Mathlib.LinearAlgebra.Basis.Prod
 public import Mathlib.RingTheory.Finiteness.Basic
 public import Mathlib.RingTheory.Finiteness.Prod
@@ -38,7 +41,11 @@ Mathlib にないので、一度だけここで用意しておく。
 - `homologyMap_smul`・`single_map_smul`：鎖写像の `a` 倍はホモロジーの射の `a` 倍を誘導し、
   一つの次数に集中した複体への埋め込み `single` もスカラー倍と両立する。添字の形 `c` は任意。
 
-後半は項の有限自由性について。
+後半は項の有限自由性と、それを用いた帰納法について。
+
+- `finiteFree_module_induction`：有限自由加群を基底に沿って環の有限直和に分解する帰納法。
+- `boundedFiniteFree_induction`：有界有限自由複体を項による短完全列で分解する帰納法。
+  下端への射の核を取り、単一複体の場合から一般の場合へ移る。
 
 - 零対象は自由かつ有限生成（`isZero_moduleCat_free`、`isZero_moduleCat_finite`）。
 - 二つの有限自由加群の直和は有限自由（`free_finite_biprod`）。
@@ -94,6 +101,16 @@ noncomputable def smulId (a : R) (K : CochainComplex (ModuleCat.{u} R) ℤ) : K 
 section shape
 
 variable {ι : Type*} {c : ComplexShape ι}
+
+/-- ホモロジーの零化イデアルは、同じ次数の複体の項の零化イデアルを含む。
+サイクルへの単射とホモロジーへの全射を通して、零化イデアルの包含を合成する。 -/
+theorem annihilator_le_homology {ι : Type*} {c : ComplexShape ι}
+    (K : HomologicalComplex (ModuleCat.{u} R) c) (i : ι) :
+    Module.annihilator R (K.X i) ≤ Module.annihilator R (K.homology i) :=
+  ((K.iCycles i).hom.annihilator_le_of_injective
+    ((ModuleCat.mono_iff_injective _).mp inferInstance)).trans
+    ((K.homologyπ i).hom.annihilator_le_of_surjective
+      ((ModuleCat.epi_iff_surjective _).mp inferInstance))
 
 /-- 鎖写像のスカラー倍 `a • f` がホモロジーに誘導する射は、`f` が誘導する射の `a` 倍である。
 添字の形 `c` は任意。ホモロジーは各次数の短複体 `K.sc i` から関手的に定まるので、短複体の
@@ -199,6 +216,169 @@ lemma homology_moduleFinite [IsNoetherianRing R] (P : CochainComplex (ModuleCat.
     change Module.Finite R (LinearMap.ker S.g.hom ⧸ LinearMap.range S.moduleCatToCycles)
     infer_instance
   exact Module.Finite.equiv S.moduleCatHomologyIso.toLinearEquiv.symm
+
+/-- 二つの加群の短複体の項ごとの直積。 -/
+def moduleCatShortComplexProd (S T : ShortComplex (ModuleCat.{u} R)) :
+    ShortComplex (ModuleCat.{u} R) :=
+  ModuleCat.shortComplexOfCompEqZero (S.f.hom.prodMap T.f.hom) (S.g.hom.prodMap T.g.hom)
+    (by ext x <;> simp [S.moduleCat_zero_apply, T.moduleCat_zero_apply])
+
+/-- 短完全列の有限直積は短完全である。核と像の等式、単射性、全射性を成分ごとに確認する。 -/
+lemma moduleCatShortComplexProd_shortExact {S T : ShortComplex (ModuleCat.{u} R)}
+    (hS : S.ShortExact) (hT : T.ShortExact) : (moduleCatShortComplexProd S T).ShortExact where
+  mono_f := (ModuleCat.mono_iff_injective _).mpr
+    (hS.moduleCat_injective_f.prodMap hT.moduleCat_injective_f)
+  epi_g := (ModuleCat.epi_iff_surjective _).mpr
+    (hS.moduleCat_surjective_g.prodMap hT.moduleCat_surjective_g)
+  exact := by
+    rw [ShortComplex.moduleCat_exact_iff]
+    intro x hx
+    have hs : S.g x.1 = 0 := congrArg Prod.fst hx
+    have ht : T.g x.2 = 0 := congrArg Prod.snd hx
+    obtain ⟨y, hy⟩ := S.moduleCat_exact_iff.mp hS.exact _ hs
+    obtain ⟨z, hz⟩ := T.moduleCat_exact_iff.mp hT.exact _ ht
+    exact ⟨(y,z), Prod.ext hy hz⟩
+
+/-- 加群の圏論的直和と直積の標準同型は、各成分の射と両立する。 -/
+lemma moduleCat_prodMap_biprodIsoProd_inv {M N M' N' : ModuleCat.{u} R}
+    (f : M ⟶ M') (g : N ⟶ N') :
+    ModuleCat.ofHom (f.hom.prodMap g.hom) ≫ (ModuleCat.biprodIsoProd M' N').inv =
+      (ModuleCat.biprodIsoProd M N).inv ≫ biprod.map f g := by
+  apply biprod.hom_ext
+  · simp only [Category.assoc, ModuleCat.biprodIsoProd_inv_comp_fst, biprod.map_fst,
+      reassoc_of% ModuleCat.biprodIsoProd_inv_comp_fst M N]
+    rfl
+  · simp only [Category.assoc, ModuleCat.biprodIsoProd_inv_comp_snd, biprod.map_snd,
+      reassoc_of% ModuleCat.biprodIsoProd_inv_comp_snd M N]
+    rfl
+
+
+/-- 有限自由加群に対する基底の個数による帰納法。零加群と環で成り立ち、
+同型と二項の直積で保たれる性質は、すべての有限自由加群で成り立つ。 -/
+lemma finiteFree_module_induction (F : ModuleCat.{u} R → Prop)
+    (hzero : ∀ M, IsZero M → F M) (hR : F (ModuleCat.of R R))
+    (hiso : ∀ {M N : ModuleCat.{u} R}, (M ≅ N) → F M → F N)
+    (hprod : ∀ M N : ModuleCat.{u} R, F M → F N → F (ModuleCat.of R (M × N)))
+    (M : ModuleCat.{u} R) [Module.Free R M] [Module.Finite R M] : F M := by
+  have hfin : ∀ n : ℕ, F (ModuleCat.of R (Fin n → R)) := by
+    intro n
+    induction n with
+    | zero => exact hzero _ (ModuleCat.isZero_iff_subsingleton.mpr inferInstance)
+    | succ n ih =>
+      let e := LinearEquiv.piCongrLeft R (fun _ ↦ R) (finSuccEquiv n) ≪≫ₗ
+        LinearEquiv.piOptionEquivProd R
+      exact hiso e.symm.toModuleIso (hprod _ _ hR ih)
+  let b := Module.Free.chooseBasis R M
+  let e := b.equivFun ≪≫ₗ LinearEquiv.funCongrLeft R R
+    (Fintype.equivFin (Module.Free.ChooseBasisIndex R M)).symm
+  exact hiso e.symm.toModuleIso (hfin _)
+
+/-- 下端 `a` より下が零の複体から、その `a` 次の項だけを残した単一複体への自然な射。 -/
+noncomputable def bottomProjection (P : CochainComplex (ModuleCat.{u} R) ℤ) (a : ℤ)
+    (ha : ∀ i, i < a → IsZero (P.X i)) :
+    P ⟶ (HomologicalComplex.single _ _ a).obj (P.X a) :=
+  HomologicalComplex.mkHomToSingle (𝟙 _) (fun i hi ↦ by
+    have hia : i < a := by
+      have : i + 1 = a := hi
+      omega
+    exact (ha i hia).eq_of_src _ _)
+
+/-- 下端への射は各次数で全射なので、複体の圏でも全射である。 -/
+lemma bottomProjection_epi (P : CochainComplex (ModuleCat.{u} R) ℤ) (a : ℤ)
+    (ha : ∀ i, i < a → IsZero (P.X i)) : Epi (bottomProjection P a ha) := by
+  apply HomologicalComplex.epi_of_epi_f
+  intro i
+  by_cases hi : i = a
+  · subst i
+    dsimp [bottomProjection]
+    rw [HomologicalComplex.mkHomToSingle_f, Category.id_comp]
+    infer_instance
+  · exact (HomologicalComplex.isZero_single_obj_X (ComplexShape.up ℤ) a (P.X a) i hi).epi _
+
+/-- 下端への射の核は、その下端の次数では零となる。 -/
+lemma bottomProjection_kernel_isZero (P : CochainComplex (ModuleCat.{u} R) ℤ) (a : ℤ)
+    (ha : ∀ i, i < a → IsZero (P.X i)) :
+    IsZero ((kernel (bottomProjection P a ha)).X a) := by
+  let E := HomologicalComplex.eval (ModuleCat.{u} R) (ComplexShape.up ℤ) a
+  have : Mono ((bottomProjection P a ha).f a) := by
+    dsimp [bottomProjection]
+    rw [HomologicalComplex.mkHomToSingle_f, Category.id_comp]
+    infer_instance
+  have : Mono (E.map (bottomProjection P a ha)) :=
+    inferInstanceAs (Mono ((bottomProjection P a ha).f a))
+  exact (isZero_zero _).of_iso
+    (PreservesKernel.iso E (bottomProjection P a ha) ≪≫ kernel.ofMono _)
+
+/-- 下端以外の次数では、下端への射の核の項は元の項と同型である。 -/
+noncomputable def bottomProjectionKernelXIso (P : CochainComplex (ModuleCat.{u} R) ℤ) (a : ℤ)
+    (ha : ∀ i, i < a → IsZero (P.X i)) (i : ℤ) (hi : i ≠ a) :
+    (kernel (bottomProjection P a ha)).X i ≅ P.X i := by
+  let E := HomologicalComplex.eval (ModuleCat.{u} R) (ComplexShape.up ℤ) i
+  have hzero : E.map (bottomProjection P a ha) = 0 :=
+    (HomologicalComplex.isZero_single_obj_X (ComplexShape.up ℤ) a (P.X a) i hi).eq_of_tgt _ _
+  have := kernel.ι_of_zero hzero
+  exact PreservesKernel.iso E (bottomProjection P a ha) ≪≫ asIso (kernel.ι _)
+
+/-- 有界な有限自由複体に対する、項による有限フィルトレーションの帰納法。
+零複体と有限自由加群の単一複体で成り立ち、短完全列の両端から中央へ移る性質は、
+任意の有界有限自由複体で成り立つ。下端の項への射の核は一段短く、残る項は元の項と
+同型なので、係数環の Noether 性や局所性は不要である。 -/
+lemma boundedFiniteFree_induction
+    (F : CochainComplex (ModuleCat.{u} R) ℤ → Prop)
+    (hzero : ∀ P, IsZero P → F P)
+    (hsingle : ∀ (a : ℤ) (M : ModuleCat.{u} R), Module.Free R M → Module.Finite R M →
+      F ((HomologicalComplex.single _ _ a).obj M))
+    (hext : ∀ S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ),
+      S.ShortExact → F S.X₁ → F S.X₃ → F S.X₂)
+    (P : CochainComplex (ModuleCat.{u} R) ℤ)
+    (hfree : ∀ i, Module.Free R (P.X i)) (hfinite : ∀ i, Module.Finite R (P.X i))
+    (hbounded : ∃ a b : ℤ, ∀ i, (i < a ∨ b < i) → IsZero (P.X i)) : F P := by
+  suffices aux : ∀ (n : ℕ) (a : ℤ) (Q : CochainComplex (ModuleCat.{u} R) ℤ),
+      (∀ i, Module.Free R (Q.X i)) → (∀ i, Module.Finite R (Q.X i)) →
+      (∀ i, (i < a ∨ a + n ≤ i) → IsZero (Q.X i)) → F Q by
+    obtain ⟨a, b, hb⟩ := hbounded
+    exact aux (b - a + 1).toNat a P hfree hfinite (fun i hi ↦ hb i (by
+      rcases hi with hi | hi
+      · exact Or.inl hi
+      · right; omega))
+  intro n
+  induction n with
+  | zero =>
+    intro a Q _ _ hb
+    apply hzero Q
+    rw [IsZero.iff_id_eq_zero]
+    apply HomologicalComplex.Hom.ext
+    funext i
+    exact (hb i (by omega)).eq_of_src _ _
+  | succ n ih =>
+    intro a Q hfree hfinite hb
+    let ha := fun i (hi : i < a) ↦ hb i (Or.inl hi)
+    let π := bottomProjection Q a ha
+    let Q' := kernel π
+    have hepi : Epi π := bottomProjection_epi Q a ha
+    let S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ) :=
+      ShortComplex.mk (kernel.ι π) π (kernel.condition π)
+    have hS : S.ShortExact := { exact := ShortComplex.exact_kernel π }
+    apply hext S hS
+    · apply ih (a + 1) Q'
+      · intro i
+        by_cases hi : i = a
+        · subst i
+          exact isZero_moduleCat_free (bottomProjection_kernel_isZero Q a ha)
+        · have := hfree i
+          exact Module.Free.of_equiv (bottomProjectionKernelXIso Q a ha i hi).symm.toLinearEquiv
+      · intro i
+        by_cases hi : i = a
+        · subst i
+          exact isZero_moduleCat_finite (bottomProjection_kernel_isZero Q a ha)
+        · have := hfinite i
+          exact Module.Finite.equiv (bottomProjectionKernelXIso Q a ha i hi).symm.toLinearEquiv
+      · intro i hi
+        by_cases hia : i = a
+        · subst i
+          exact bottomProjection_kernel_isZero Q a ha
+        · exact (hb i (by omega)).of_iso (bottomProjectionKernelXIso Q a ha i hia)
+    · exact hsingle a (Q.X a) (hfree a) (hfinite a)
 
 end SerrePositivity
 

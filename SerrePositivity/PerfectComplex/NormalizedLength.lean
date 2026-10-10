@@ -22,7 +22,7 @@ public import Mathlib.RingTheory.Length
 
 論文の正規化長さの具体的な構成や、上限による評価 (2.3) は含めない。Lemma 3.4、3.5a、
 Corollary 2.6、§5 の議論で使うのは、同型不変性と短完全列での加法性（と、そこから出る単調性）
-だけだからである。具体的な正規化長さの存在は `Inputs/LengthAlgebra.lean` で入力として受け取る。
+だけだからである。具体的な正規化長さの存在は `Inputs/LengthAlgebra.lean` の `Inputs.exists_lengthAlgebra` で未証明定理として述べる。
 
 値を `ℝ≥0∞` にとるのは、論文 §1.4 の規約（長さは無限でもよい）に合わせるため。加法性の対象を
 `J` 冪ねじれ加群に限るのは、論文の `λ` が `m_D C` の冪で消える加群の上でしか加法的でないからである。

@@ -53,7 +53,7 @@ public import Mathlib.RingTheory.Spectrum.Prime.RingHom
 ## 規約
 
 - `χ_T` は `T` 上の長さで定義する（`chiOrd`）。剰余体が同じなので `A` 上の長さと一致する。
-- `λ` の定義域は `m_A C` の冪で消える `C` 加群（論文どおり）。`Setup34` の `m_T C` とは
+- `λ` の定義域は `m_A C` の冪で消える `C` 加群（論文どおり）。補題3.4 の `m_T C` とは
   `NormalizedLength.restrict` で移り合う（`Paper/Section5/NormApplication.lean`）。
 - `A` が `ℤ_(p)` 代数であることは、局所環で剰余標数が `p` なら自動なので書かない。
 - 節 b 以降は Lemma 3.4 と同じく `[IsRegularLocalRing A]` を仮定する（`IsLocalRing A`、

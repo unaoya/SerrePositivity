@@ -1,9 +1,11 @@
 module
 
+public import Mathlib.RingTheory.Flat.CategoryTheory
 public import SerrePositivity.HomologicalAlgebra.BaseChange
 public import Mathlib.Algebra.Category.ModuleCat.Abelian
 public import Mathlib.Algebra.Category.ModuleCat.ChangeOfRings
 public import Mathlib.Algebra.Category.ModuleCat.Monoidal.Basic
+public import Mathlib.Algebra.Category.ModuleCat.Monoidal.Closed
 public import Mathlib.Algebra.Category.ModuleCat.Projective
 public import Mathlib.CategoryTheory.Adjunction.Additive
 public import Mathlib.CategoryTheory.Monoidal.Tor
@@ -34,14 +36,20 @@ Mathlib の `Tor` は左導来関手として圏論的に定義されていて�
 
 ## 規約（`notes/PLAN.md` §1.3）
 
-Mathlib の `Tor` は第 2 変数で導来する。両変数の対称性 `Tor ≅ Tor'` は Mathlib に未証明なので、
-このプロジェクトでは Tor の対称性を一切使わず、常に第 2 変数（`TorAlg` では `N`）を分解して
-計算する。論文で `Tor_i^A(V, C)` と書かれるものは、ここでは `TorAlg φ i V`（`V` を分解）である。
+Mathlib の `Tor` は第 2 変数で導来する。第 1 変数で導来した `Tor'` との比較は
+現在の Mathlib に未整備であり、このファイルの計算も第 2 変数の分解による。
+両変数の比較は、二重複体による一般論として今後整備する。
+論文で `Tor_i^A(V, C)` と書かれるものは、ここでは `TorAlg φ i V`（`V` を分解）である。
 
 ## 内容
 
+通常の Tor について、`torModuleZeroEquiv` が零次とテンソル積の比較、
+`torModuleIsoCochain` が任意の第2変数の射影分解による計算を与える。
+`ordinaryTorIso` は代数係数のホモロジーの係数制限と通常の Tor を比較する。
+
 後半では `TorAlg` について次を示す。線形同値な加群の `Tor` は線形同値（`torAlgCongr`）、
-零加群の `Tor` は零（`torAlg_subsingleton`）、`Tor` は ℤ 添字 cochain 複体の分解で計算できる
+平坦な第1変数の高次 Tor は零（`torModule_subsingleton_of_flat`）。
+零加群の `Tor` は零（`torAlg_subsingleton`、`torModule_subsingleton_left`）、`Tor` は ℤ 添字 cochain 複体の分解で計算できる
 （`torIsoCochain`）、`N` を消す元 `a` の像 `φ(a)` は `Tor_i^R(C, N)` を消す（`torAlg_smul_eq_zero`）。
 -/
 
@@ -61,6 +69,14 @@ variable (R : Type u) [CommRing R]
 noncomputable abbrev TorModule (i : ℕ) (M N : Type u) [AddCommGroup M] [Module R M]
     [AddCommGroup N] [Module R N] : Type u :=
   ((Tor (ModuleCat.{u} R) i).obj (ModuleCat.of R M)).obj (ModuleCat.of R N)
+
+open MonoidalCategory in
+/-- `Tor₀^R(M,N)` は通常のテンソル積と線形同値である。
+テンソル関手は左随伴なので右完全であり、Mathlib の `leftDerivedZeroIsoSelf` を適用する。 -/
+noncomputable def torModuleZeroEquiv (M N : Type u) [AddCommGroup M] [Module R M]
+    [AddCommGroup N] [Module R N] : TorModule R 0 M N ≃ₗ[R] TensorProduct R M N :=
+  ((((tensoringLeft (ModuleCat.{u} R)).obj (ModuleCat.of R M)).leftDerivedZeroIsoSelf).app
+    (ModuleCat.of R N)).toLinearEquiv
 
 /-- `Tor_i^R(M, N)` の `R` 加群としての長さ（`ℕ∞` 値。有限長でなければ `⊤`）。交点重複度
 `χ^R(M, N) = Σ_i (-1)^i torLength R i M N` の各項になる。 -/
@@ -94,25 +110,13 @@ noncomputable def torAlgCongr (i : ℕ) {V W : Type u} [AddCommGroup V] [Module 
     [AddCommGroup W] [Module A W] (e : V ≃ₗ[A] W) : TorAlg φ i V ≃ₗ[C] TorAlg φ i W :=
   (((ModuleCat.extendScalars.{u, u, u} φ).leftDerived i).mapIso e.toModuleIso).toLinearEquiv
 
-/-- 零加群 `V` の `Tor_i^R(C, V)` は零である。`i = 0` では `Tor_0 ≅ C ⊗_R V`（左導来関手の `0` 次は
-もとの関手。`extendScalars` は左随伴なので有限余極限を保ち、Mathlib の `leftDerivedZeroIsoSelf` が
-使える）で、零加群のテンソル積は零。`i ≥ 1` では、零加群は射影的で、射影加群の高次の `Tor` は零
-（`isZero_leftDerived_obj_projective_succ`）。 -/
+/-- 零加群の Tor はすべての次数で零である。
+左導来関手は加法的なので零対象を零対象に送る。 -/
 lemma torAlg_subsingleton (i : ℕ) (V : Type u) [AddCommGroup V] [Module A V] [Subsingleton V] :
     Subsingleton (TorAlg φ i V) := by
-  have hz : IsZero (ModuleCat.of A V) := ModuleCat.isZero_of_subsingleton _
-  have : Projective (ModuleCat.of A V) := hz.projective
-  rcases i with _ | i
-  · -- `Tor_0 ≅ F.obj V`：`F = extendScalars φ` は左随伴なので有限余極限を保つ
-    have : PreservesFiniteColimits (ModuleCat.extendScalars.{u, u, u} φ) := by
-      have := (ModuleCat.extendRestrictScalarsAdj.{u, u, u} φ).leftAdjoint_preservesColimits
-      infer_instance
-    exact ModuleCat.subsingleton_of_isZero
-      ((((ModuleCat.extendScalars.{u, u, u} φ).leftDerivedZeroIsoSelf).app
-        (ModuleCat.of A V)).isZero_iff.mpr
-        ((ModuleCat.extendScalars.{u, u, u} φ).map_isZero hz))
-  · exact ModuleCat.subsingleton_of_isZero
-      ((ModuleCat.extendScalars.{u, u, u} φ).isZero_leftDerived_obj_projective_succ i _)
+  exact ModuleCat.subsingleton_of_isZero
+    (((ModuleCat.extendScalars.{u, u, u} φ).leftDerived i).map_isZero
+      (ModuleCat.isZero_of_subsingleton (ModuleCat.of A V)))
 
 end SerrePositivity
 
@@ -149,10 +153,7 @@ noncomputable def torIsoCochain {Z : Type u} [AddCommGroup Z] [Module A Z]
     {K : CochainComplex (ModuleCat.{u} A) ℤ} (h : IsResolutionOf K (ModuleCat.of A Z)) (i : ℕ) :
     ((ModuleCat.extendScalars.{u, u, u} φ).leftDerived i).obj (ModuleCat.of A Z) ≅
       (baseChange φ K).homology (-(i : ℤ)) :=
-  h.toProjectiveResolution.isoLeftDerivedObj (ModuleCat.extendScalars.{u, u, u} φ) i ≪≫
-    (HomologicalComplex.homologyFunctor _ _ i).mapIso
-      (mapRestrictionIso (ModuleCat.extendScalars.{u, u, u} φ) K) ≪≫
-    toChainHomologyIso _ (baseChange_isZero_X_of_pos φ _ h.isZero_X) i
+  leftDerivedIsoCochain (ModuleCat.extendScalars.{u, u, u} φ) h i
 
 end SerrePositivity
 
@@ -166,11 +167,9 @@ end
 使い、`Tor` が正規化長さ `λ` の定義域（`m C` 冪ねじれ加群）に入ることを保証する
 （`IntersectionMultiplicity/NormalizedTor.lean`）。`notes/PLAN.md` §11 の B3。
 
-証明の筋道：`a • 𝟙 V = 0` なので、これを左導来関手で送ったものは零。一方、射影分解 `P` 上の
-`a • 𝟙 P` は `a • 𝟙 V` の持ち上げなので、左導来関手の値は `H_i(F(a • 𝟙 P))` で計算できる
-（`Functor.leftDerived_map_eq`）。係数拡大とホモロジーがスカラー倍と両立すること
-（`BaseChange.lean` の `extendScalars_mapHomologicalComplex_smul`、`Basic.lean` の
-`homologyMap_smul`）から、それは `φ(a) • 𝟙` に等しい。よって `φ(a) • 𝟙 = 0`。
+証明には `Resolution.lean` の一般定理 `leftDerived_smul_eq_zero` を用いる。
+加法的関手が射のスカラー倍と両立すれば、その左導来関手も両立するため、
+`a • 𝟙 V = 0` から導来関手の値で `φ(a) • 𝟙 = 0` が従う。
 -/
 
 @[expose] public section
@@ -183,37 +182,162 @@ namespace SerrePositivity
 
 variable {A C : Type u} [CommRing A] [CommRing C] (φ : A →+* C)
 
-/-- `a ∈ A` が `V` のすべての元を消すなら、`φ(a)` は `Tor_i^A(C, V)` のすべての元を消す。
-`a • 𝟙 V = 0` を左導来関手で送ると零になる一方、射影分解上の持ち上げ `a • 𝟙 P` で計算すると
-`φ(a) • 𝟙` になる（`single_map_smul` で持ち上げの可換性を、`extendScalars_mapHomologicalComplex_smul`
-と `homologyMap_smul` でスカラー倍の両立を確かめる）ので、`φ(a) • 𝟙 = 0`。これを元 `x` に適用する。 -/
+/-- `a ∈ A` が `V` を消すなら、`φ(a)` はすべての `Tor_i^A(C, V)` を消す。
+係数拡大のスカラー倍との両立を、一般の左導来関手の零化の定理に適用する。 -/
 theorem torAlg_smul_eq_zero (i : ℕ) (V : Type u) [AddCommGroup V] [Module A V] (a : A)
     (ha : ∀ v : V, a • v = 0) (x : TorAlg φ i V) : φ a • x = 0 := by
-  let F := ModuleCat.extendScalars.{u, u, u} φ
-  let X := ModuleCat.of A V
-  let P := projectiveResolution X
-  have hf : (a • 𝟙 X : X ⟶ X) = 0 := ModuleCat.hom_ext (LinearMap.ext ha)
-  have hw : (a • 𝟙 P.complex) ≫ P.π =
-      P.π ≫ (ChainComplex.single₀ (ModuleCat.{u} A)).map (a • 𝟙 X) := by
-    rw [single_map_smul, CategoryTheory.Functor.map_id, Linear.smul_comp, Linear.comp_smul,
-      Category.id_comp, Category.comp_id]
-  have h1 := F.leftDerived_map_eq i (a • 𝟙 X) (P := P) (Q := P) (a • 𝟙 P.complex) hw
-  have h2 : (F.mapHomologicalComplex _ ⋙ HomologicalComplex.homologyFunctor _ _ i).map
-      (a • 𝟙 P.complex) = φ a • 𝟙 _ := by
-    rw [Functor.comp_map, extendScalars_mapHomologicalComplex_smul, CategoryTheory.Functor.map_id,
-      HomologicalComplex.homologyFunctor_map, homologyMap_smul, HomologicalComplex.homologyMap_id]
-    rfl
-  have h3 : (F.leftDerived i).map (a • 𝟙 X) = φ a • 𝟙 _ := by
-    rw [h1, h2, Linear.smul_comp, Linear.comp_smul]
-    erw [Category.id_comp]
-    rw [Iso.hom_inv_id]
-  have h4 : (F.leftDerived i).map (a • 𝟙 X) = 0 := by
-    rw [hf, F.leftDerived_map_eq i (0 : X ⟶ X) (P := P) (Q := P) 0 (by simp), Functor.map_zero]
-    erw [Limits.zero_comp]
-    rw [Limits.comp_zero]
-  have h5 : (φ a • 𝟙 ((F.leftDerived i).obj X) : _ ⟶ _) = 0 := h3.symm.trans h4
-  have := congrArg (fun g : (F.leftDerived i).obj X ⟶ (F.leftDerived i).obj X ↦ g.hom x) h5
-  simpa using this
+  exact leftDerived_smul_eq_zero φ (ModuleCat.extendScalars φ)
+    (fun a f => extendScalars_map_smul φ f a) i (ModuleCat.of A V) a ha x
+
+end SerrePositivity
+
+end
+
+/-!
+## 通常の `Tor` と係数拡大した分解の比較
+
+通常の長さを測るときに使う比較同型を、Mathlib の導来関手の計算から構成する。
+-/
+
+@[expose] public section
+
+open CategoryTheory Limits MonoidalCategory TensorProduct
+
+namespace SerrePositivity
+
+variable {R T : Type u} [CommRing R] [CommRing T] [Algebra R T]
+
+set_option backward.isDefEq.respectTransparency false in
+/-- 係数拡大後に係数を制限する関手は、`T ⊗[R] -` と自然同型である。
+係数制限で入るスカラー作用を、既存の `R` 代数構造による作用と同一視する。 -/
+noncomputable def extendRestrictScalarsTensorIso :
+    ModuleCat.extendScalars (algebraMap R T) ⋙ ModuleCat.restrictScalars (algebraMap R T) ≅
+      (tensoringLeft (ModuleCat.{u} R)).obj (ModuleCat.of R T) :=
+  NatIso.ofComponents (fun M => by
+    let T' := (ModuleCat.restrictScalars (algebraMap R T)).obj (ModuleCat.of T T)
+    let eT : T' ≃ₗ[R] T :=
+      { toFun := fun x => x
+        invFun := fun x => x
+        left_inv := fun x => rfl
+        right_inv := fun x => rfl
+        map_add' := fun x y => rfl
+        map_smul' := fun r t => by
+          dsimp [T', ModuleCat.restrictScalars, ModuleCat.RestrictScalars.obj'] at t ⊢
+          exact (Algebra.smul_def r t).symm }
+    let e : ((ModuleCat.restrictScalars (algebraMap R T)).obj
+        ((ModuleCat.extendScalars (algebraMap R T)).obj M)) ≃ₗ[R] (T' ⊗[R] M) :=
+      { toFun := fun x => x
+        invFun := fun x => x
+        left_inv := fun x => rfl
+        right_inv := fun x => rfl
+        map_add' := fun x y => rfl
+        map_smul' := fun r x => by
+          induction x using TensorProduct.inductionOn with
+          | tmul t m => rfl
+          | add x y hx hy => simp_all only [smul_add] }
+    exact (e.trans (TensorProduct.congr eT (LinearEquiv.refl R M))).toModuleIso)
+    (by
+      intro M N f
+      ext x
+      induction x using TensorProduct.inductionOn with
+      | tmul t m => rfl
+      | add x y hx hy => simp_all only [map_add])
+
+/-- 通常の `Tor_i^R(M, N)` を、第2変数 `N` の任意の射影コチェイン分解で計算する。
+`M` は任意の加群でよく、代数構造は必要ない。Mathlib のテンソル関手の左導来関手に
+`leftDerivedIsoCochain` を適用する。 -/
+noncomputable def torModuleIsoCochain (M : Type u) [AddCommGroup M] [Module R M]
+    {N : ModuleCat.{u} R} {K : CochainComplex (ModuleCat.{u} R) ℤ}
+    (h : IsResolutionOf K N) (i : ℕ) :
+    ((Tor (ModuleCat.{u} R) i).obj (ModuleCat.of R M)).obj N ≅
+      HomologicalComplex.homology
+        ((((tensoringLeft (ModuleCat.{u} R)).obj (ModuleCat.of R M)).mapHomologicalComplex _).obj K)
+        (-(i : ℤ)) :=
+  leftDerivedIsoCochain ((tensoringLeft (ModuleCat.{u} R)).obj (ModuleCat.of R M)) h i
+
+/-- 射影的なコチェイン分解を `T` に係数拡大したホモロジーは、
+係数を `R` に制限すると通常の `Tor_i^R(T, M)` と線形同値になる。
+係数制限によるホモロジーの保存、テンソル関手の同一視、分解による左導来関手の計算を使う。
+Noether 性、局所性、有限生成性、有界性は不要である。 -/
+noncomputable def ordinaryTorIso (M : Type u) [AddCommGroup M] [Module R M]
+    (F : CochainComplex (ModuleCat.{u} R) ℤ)
+    (hF : IsResolutionOf F (ModuleCat.of R M)) (i : ℕ) :
+    ((ModuleCat.restrictScalars (algebraMap R T)).obj
+        ((baseChange (algebraMap R T) F).homology (-(i : ℤ)))) ≃ₗ[R] TorModule R i T M := by
+  let U := ModuleCat.restrictScalars (algebraMap R T)
+  let e := (Functor.mapHomologicalComplexCompIso (extendRestrictScalarsTensorIso (R := R) (T := T))
+    (ComplexShape.up ℤ)).app F
+  exact ((((baseChange (algebraMap R T) F).sc (-(i : ℤ))).mapHomologyIso U).symm ≪≫
+    (HomologicalComplex.homologyFunctor _ _ (-(i : ℤ))).mapIso e ≪≫
+    (torModuleIsoCochain T hF i).symm).toLinearEquiv
+
+/-- 第1変数を消す元は通常の Tor も消す。
+テンソルした分解の各項がその元で消え、ホモロジーは項の部分商だからである。 -/
+theorem annihilator_le_torModule_left (i : ℕ) (M N : Type u) [AddCommGroup M] [Module R M]
+    [AddCommGroup N] [Module R N] :
+    Module.annihilator R M ≤ Module.annihilator R (TorModule R i M N) := by
+  let P := projectiveResolution (ModuleCat.of R N)
+  let F := (tensoringLeft (ModuleCat.{u} R)).obj (ModuleCat.of R M)
+  let K := (F.mapHomologicalComplex _).obj P.complex
+  change Module.annihilator R M ≤ Module.annihilator R ((F.leftDerived i).obj (ModuleCat.of R N))
+  rw [(P.isoLeftDerivedObj F i).toLinearEquiv.annihilator_eq]
+  apply le_trans ?_ (annihilator_le_homology K i)
+  intro a ha
+  rw [Module.mem_annihilator] at ha ⊢
+  intro x
+  change a • (x : M ⊗[R] P.complex.X i) = 0
+  induction x using TensorProduct.inductionOn with
+  | tmul m n => rw [TensorProduct.smul_tmul', ha m, zero_tmul]
+  | add x y hx hy => simp [smul_add, hx, hy]
+
+/-- 第2変数を消す元は通常の Tor も消す。
+テンソル関手のスカラー倍との両立を左導来関手へ移して得る。 -/
+theorem annihilator_le_torModule_right (i : ℕ) (M N : Type u) [AddCommGroup M] [Module R M]
+    [AddCommGroup N] [Module R N] :
+    Module.annihilator R N ≤ Module.annihilator R (TorModule R i M N) := by
+  intro a ha
+  rw [Module.mem_annihilator] at ha ⊢
+  apply leftDerived_smul_eq_zero (RingHom.id R)
+    ((tensoringLeft (ModuleCat.{u} R)).obj (ModuleCat.of R M)) ?_ i (ModuleCat.of R N) a ha
+  intro X Y a f
+  ext x
+  induction x using TensorProduct.inductionOn with
+  | tmul m x => exact TensorProduct.tmul_smul a m (f x)
+  | add x y hx hy => simp_all only [map_add]
+
+end SerrePositivity
+
+end
+
+@[expose] public section
+
+open CategoryTheory Limits MonoidalCategory
+
+namespace SerrePositivity
+
+variable {R : Type u} [CommRing R]
+
+/-- 平坦な第1変数に対する正次数の Tor は零。テンソル関手が完全なので、
+第2変数の射影分解の消えるホモロジーをそのまま保つ。Tor の対称性は使わない。 -/
+lemma torModule_subsingleton_of_flat (M N : Type u) [AddCommGroup M] [Module R M]
+    [AddCommGroup N] [Module R N] [Module.Flat R M] (i : ℕ) :
+    Subsingleton (TorModule R (i + 1) M N) := by
+  let P := projectiveResolution (ModuleCat.of R N)
+  let G := tensorLeft (ModuleCat.of R M)
+  apply ModuleCat.subsingleton_of_isZero
+  apply IsZero.of_iso _ (P.isoLeftDerivedObj G (i + 1))
+  apply IsZero.of_iso _ ((P.complex.sc (i + 1)).mapHomologyIso G)
+  exact G.map_isZero ((HomologicalComplex.exactAt_iff_isZero_homology _ _).mp
+    (P.complex_exactAt_succ i))
+
+/-- 第1変数が零加群ならすべての Tor は零。0 次は通常のテンソル積、
+正次数は零加群の平坦性による。 -/
+lemma torModule_subsingleton_left (M N : Type u) [AddCommGroup M] [Module R M]
+    [AddCommGroup N] [Module R N] [Subsingleton M] (i : ℕ) :
+    Subsingleton (TorModule R i M N) := by
+  cases i with
+  | zero => exact (torModuleZeroEquiv R M N).injective.subsingleton
+  | succ i => exact torModule_subsingleton_of_flat (R := R) M N i
 
 end SerrePositivity
 

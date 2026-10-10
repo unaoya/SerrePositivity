@@ -44,8 +44,12 @@ Euler 評価 `lambdaEuler lam P = Σ (-1)^i λ(H^i(P))` と、`Tor` を測った
 ## 使われ方と残る仮定
 
 `chiLamHom_of_finite` は「係数拡大後のホモロジーの `λ` がすべて有限」という仮定 `hfinite` をとる。
-この有限性を Koszul ホモロジーの評価 (3.9) から導く段階は Lemma 3.5a の未証明部分
-（`Paper/Lemma3_5/Normalized.lean` の `sorry`）で、このファイルでは扱わない。
+この有限性は `lambdaHomology_koszulComplexOn_ne_top` と
+`lambdaHomology_ne_top_of_koszulComplexOn` を組み合わせて証明する。
+前者は単一複体・基底による有限直和・項による有限フィルトレーションを順に扱い、
+後者は零ホモトピーから得られる直和因子へ有限性を戻す。
+論文の設定への適用は `Paper/Lemma3_5/Normalized.lean` の `lemma_3_5a_lam_finite`。
+係数環の Noether 性や平坦性は要求しない。
 -/
 
 @[expose] public section
@@ -75,6 +79,76 @@ noncomputable def lambdaEuler (P : CochainComplex (ModuleCat.{u} C) ℤ) : ℝ :
 noncomputable def lambdaChi {R : Type u} [CommRing R] (φ : R →+* C)
     (N : Type u) [AddCommGroup N] [Module R N] : ℝ :=
   ∑ᶠ i : ℕ, (-1 : ℝ) ^ i * (lam.len (TorAlg φ i N)).toReal
+
+/-! ## 写像錐による有限性の評価 -/
+
+/-- 写像錐のホモロジーの正規化長さは、両端のホモロジーの長さの和で上から評価される。
+三つの加群が `J` 冪ねじれであることだけを仮定し、長さの有限性は要求しない。
+有限フィルトレーションの各段で繰り返し使う長完全列の不等式。 -/
+lemma lambdaHomology_cone_le {P Q : CochainComplex (ModuleCat.{u} C) ℤ}
+    (f : P ⟶ Q) (i : ℤ)
+    (tQ : IsPowTorsion J (Q.homology i))
+    (tCone : IsPowTorsion J ((Cone.cone f).homology i))
+    (tP : IsPowTorsion J (P.homology (i + 1))) :
+    lam.len ((Cone.cone f).homology i) ≤
+      lam.len (Q.homology i) + lam.len (P.homology (i + 1)) := by
+  exact lam.len_le_add_of_exact
+    (HomologicalComplex.homologyMap (CochainComplex.mappingCone.inr f) i).hom
+    (Cone.δ f i (i + 1) rfl).hom
+    (LinearMap.exact_iff.mpr (Cone.exact₃ f i (i + 1) rfl).moduleCat_range_eq_ker.symm) tQ tCone tP
+
+/-- 写像錐の両端のホモロジーの正規化長さが有限なら、錐のホモロジーの長さも有限。
+`lambdaHomology_cone_le` と有限な二つの長さの和の有限性による。 -/
+lemma lambdaHomology_cone_ne_top {P Q : CochainComplex (ModuleCat.{u} C) ℤ}
+    (f : P ⟶ Q) (i : ℤ)
+    (tQ : IsPowTorsion J (Q.homology i))
+    (tCone : IsPowTorsion J ((Cone.cone f).homology i))
+    (tP : IsPowTorsion J (P.homology (i + 1)))
+    (hQ : lam.len (Q.homology i) ≠ ⊤)
+    (hP : lam.len (P.homology (i + 1)) ≠ ⊤) :
+    lam.len ((Cone.cone f).homology i) ≠ ⊤ :=
+  ne_top_of_le_ne_top (WithTop.add_ne_top.mpr ⟨hQ, hP⟩)
+    (lambdaHomology_cone_le lam f i tQ tCone tP)
+
+/-- 零ホモトピックな射 `f : P → Q` では `H^i(Q) → H^i(Cone f)` が単射となるので、
+錐のホモロジーの長さが有限なら `H^i(Q)` の長さも有限。
+Koszul の錐から元の複体へ有限性を戻すための一般論で、錐の直和分解の構成は不要。 -/
+lemma lambdaHomology_ne_top_of_nullHomotopic_cone
+    {P Q : CochainComplex (ModuleCat.{u} C) ℤ} (f : P ⟶ Q)
+    (hf : Homotopy f 0) (i : ℤ)
+    (tCone : IsPowTorsion J ((Cone.cone f).homology i))
+    (hCone : lam.len ((Cone.cone f).homology i) ≠ ⊤) :
+    lam.len (Q.homology i) ≠ ⊤ := by
+  have hzero : HomologicalComplex.homologyMap f i = 0 := by
+    simpa only [HomologicalComplex.homologyMap_zero] using hf.homologyMap_eq i
+  have : Mono (HomologicalComplex.homologyMap (CochainComplex.mappingCone.inr f) i) :=
+    (Cone.exact₂ f i).mono_g hzero
+  exact ne_top_of_le_ne_top hCone (lam.len_le_of_injective
+    (HomologicalComplex.homologyMap (CochainComplex.mappingCone.inr f) i).hom
+    ((ModuleCat.mono_iff_injective _).mp inferInstance) tCone)
+
+/-- 複体 `P` が `Q` の直和因子なら、ホモロジーも直和因子となる。
+`Q` のホモロジーが `J` 冪ねじれで正規化長さが有限なら、`P` のホモロジーの長さも有限。 -/
+lemma lambdaHomology_ne_top_of_retract {P Q : CochainComplex (ModuleCat.{u} C) ℤ}
+    (h : Retract P Q) (i : ℤ) (tQ : IsPowTorsion J (Q.homology i))
+    (hQ : lam.len (Q.homology i) ≠ ⊤) : lam.len (P.homology i) ≠ ⊤ := by
+  let hh := h.map (HomologicalComplex.homologyFunctor (ModuleCat.{u} C) (ComplexShape.up ℤ) i)
+  exact ne_top_of_le_ne_top hQ (lam.len_le_of_injective hh.i.hom
+    ((ModuleCat.mono_iff_injective hh.i).mp inferInstance) tQ)
+
+/-- 複体の短完全列で、両端の同じ次数のホモロジーの正規化長さが有限なら、中央も有限。
+ホモロジーの長完全列の三項部分と、冪ねじれ加群上の長さの加法性を使う。 -/
+lemma lambdaHomology_shortExact_ne_top
+    (S : ShortComplex (CochainComplex (ModuleCat.{u} C) ℤ)) (hS : S.ShortExact) (i : ℤ)
+    (t₁ : IsPowTorsion J (S.X₁.homology i))
+    (t₂ : IsPowTorsion J (S.X₂.homology i))
+    (t₃ : IsPowTorsion J (S.X₃.homology i))
+    (h₁ : lam.len (S.X₁.homology i) ≠ ⊤) (h₃ : lam.len (S.X₃.homology i) ≠ ⊤) :
+    lam.len (S.X₂.homology i) ≠ ⊤ :=
+  lam.len_ne_top_of_exact (HomologicalComplex.homologyMap S.f i).hom
+    (HomologicalComplex.homologyMap S.g i).hom
+    (LinearMap.exact_iff.mpr (hS.homology_exact₂ i).moduleCat_range_eq_ker.symm)
+    t₁ t₂ t₃ h₁ h₃
 
 /-- 完全列 `M →f N →g L` の中央の長さは、二つの射の像の長さの和：`λ(N) = λ(im f) + λ(im g)`
 （実数値）。`λ(N) = λ(ker g) + λ(im g)`（`len_eq_add_ker_range`）と `ker g = im f` による。`N` が `J` の
@@ -236,6 +310,129 @@ lemma supported_homology_isPowTorsion (hfg : J.FG) {n : ℕ}
   IsPowTorsion.of_le_radical_annihilator hfg (hJ.trans (by
     have h := Ideal.radical_mono (hP.le_radical_annihilator i)
     simpa only [Ideal.radical_idem] using h))
+
+/-- 各元の作用が零ホモトピックなら、係数つき Koszul 複体のホモロジーの有限性は
+元の複体へ戻る。冪ねじれ性は `J` の有限生成性と `J ⊆ √(x)` から導く。
+有界性や項の自由性はこの引き戻し自体には必要ない。 -/
+lemma lambdaHomology_ne_top_of_koszulComplexOn (hfg : J.FG) {n : ℕ}
+    (x : Fin n → C) (hJ : J ≤ (Ideal.span (Set.range x)).radical)
+    (P : CochainComplex (ModuleCat.{u} C) ℤ)
+    (h : ∀ j, Nonempty (Homotopy (smulId (x j) P) 0)) (i : ℤ)
+    (hfinite : lam.len ((koszulComplexOn x P).homology i) ≠ ⊤) :
+    lam.len (P.homology i) ≠ ⊤ :=
+  lambdaHomology_ne_top_of_retract lam (retractKoszulComplexOn x P h) i
+    (supported_homology_isPowTorsion hfg hJ (isSupported_koszulComplexOn x P) i) hfinite
+
+/-- 係数つき Koszul ホモロジーの有限性を、有限自由加群の単一複体の場合へ帰着する。
+係数複体の項による有限フィルトレーションを `boundedFiniteFree_induction` で扱い、
+Koszul 関手の完全性とホモロジーの長完全列で各段の有限性を伝える。 -/
+lemma lambdaHomology_koszulComplexOn_ne_top_of_single (hfg : J.FG) {n : ℕ}
+    (x : Fin n → C) (hJ : J ≤ (Ideal.span (Set.range x)).radical)
+    (hsingle : ∀ (a : ℤ) (M : ModuleCat.{u} C), Module.Free C M → Module.Finite C M →
+      ∀ i : ℤ, lam.len ((koszulComplexOn x
+        ((HomologicalComplex.single _ _ a).obj M)).homology i) ≠ ⊤)
+    (P : CochainComplex (ModuleCat.{u} C) ℤ)
+    (hfree : ∀ i, Module.Free C (P.X i)) (hfinite : ∀ i, Module.Finite C (P.X i))
+    (hbounded : ∃ a b : ℤ, ∀ i, (i < a ∨ b < i) → IsZero (P.X i)) (i : ℤ) :
+    lam.len ((koszulComplexOn x P).homology i) ≠ ⊤ := by
+  let F := koszulFunctor x
+  have ht (Q : CochainComplex (ModuleCat.{u} C) ℤ) (j : ℤ) :
+      IsPowTorsion J ((F.obj Q).homology j) := by
+    exact
+      supported_homology_isPowTorsion hfg hJ (isSupported_koszulComplexOn x Q) j
+  suffices h : ∀ j : ℤ, lam.len ((F.obj P).homology j) ≠ ⊤ by
+    exact h i
+  apply boundedFiniteFree_induction (fun Q ↦ ∀ j : ℤ, lam.len ((F.obj Q).homology j) ≠ ⊤)
+    ?_ ?_ ?_ P hfree hfinite hbounded
+  · intro Q hQ j
+    have hz :=
+      (HomologicalComplex.homologyFunctor (ModuleCat.{u} C) (ComplexShape.up ℤ) j).map_isZero
+      (F.map_isZero hQ)
+    have : Subsingleton ((F.obj Q).homology j) := ModuleCat.isZero_iff_subsingleton.mp hz
+    rw [lam.len_eq_zero_of_subsingleton]
+    exact ENNReal.zero_ne_top
+  · intro a M hMfree hMfinite j
+    exact hsingle a M hMfree hMfinite j
+  · intro S hS h₁ h₃ j
+    exact lambdaHomology_shortExact_ne_top lam (S.map F) (koszulFunctor_shortExact x S hS) j
+      (ht S.X₁ j) (ht S.X₂ j) (ht S.X₃ j) (h₁ j) (h₃ j)
+
+/-- 環を任意の一つの次数に置いた係数複体の場合、Koszul ホモロジーの有限性は
+通常の Koszul 複体の有限性からシフト同型によって従う。 -/
+lemma lambdaHomology_koszul_single_ring {n : ℕ} (x : Fin n → C)
+    (hfin : ∀ i : ℤ, lam.len ((koszulComplex x).homology i) ≠ ⊤) (a i : ℤ) :
+    lam.len ((koszulComplexOn x
+      ((HomologicalComplex.single _ _ a).obj (ModuleCat.of C C))).homology i) ≠ ⊤ := by
+  let P := (HomologicalComplex.single (ModuleCat.{u} C) (ComplexShape.up ℤ) 0).obj
+    (ModuleCat.of C C)
+  let e := ((CochainComplex.singleFunctors (ModuleCat.{u} C)).shiftIso (-a) a 0 (by omega)).app
+    (ModuleCat.of C C)
+  let eK : koszulComplexOn x ((HomologicalComplex.single _ _ a).obj (ModuleCat.of C C)) ≅
+      (koszulComplex x)⟦-a⟧ :=
+    (koszulFunctor x).mapIso e.symm ≪≫ (koszulComplexOnShiftIso x P (-a)).symm ≪≫
+      (shiftFunctor _ (-a)).mapIso (eqToIso (koszulComplexOn_single x))
+  let eh :=
+    (HomologicalComplex.homologyFunctor (ModuleCat.{u} C) (ComplexShape.up ℤ) i).mapIso eK ≪≫
+    (CochainComplex.ShiftSequence.shiftIso (ModuleCat.{u} C) (-a) i (i - a) (by omega)).app
+      (koszulComplex x)
+  exact ne_of_eq_of_ne (lam.len_congr _ _ eh.toLinearEquiv) (hfin _)
+
+/-- 有限自由加群を一つの次数に置いた係数複体では、Koszul ホモロジーの正規化長さは有限。
+基底の個数について帰納し、環の場合と直積の分裂短完全列に帰着する。 -/
+lemma lambdaHomology_koszul_single_finiteFree (hfg : J.FG) {n : ℕ}
+    (x : Fin n → C) (hJ : J ≤ (Ideal.span (Set.range x)).radical)
+    (hfin : ∀ i : ℤ, lam.len ((koszulComplex x).homology i) ≠ ⊤)
+    (a : ℤ) (M : ModuleCat.{u} C) [Module.Free C M] [Module.Finite C M] (i : ℤ) :
+    lam.len ((koszulComplexOn x ((HomologicalComplex.single _ _ a).obj M)).homology i) ≠ ⊤ := by
+  let F := HomologicalComplex.single (ModuleCat.{u} C) (ComplexShape.up ℤ) a ⋙ koszulFunctor x
+  have ht (N : ModuleCat.{u} C) : IsPowTorsion J ((F.obj N).homology i) :=
+    supported_homology_isPowTorsion hfg hJ (isSupported_koszulComplexOn x _) i
+  change lam.len ((F.obj M).homology i) ≠ ⊤
+  apply finiteFree_module_induction (fun N ↦ lam.len ((F.obj N).homology i) ≠ ⊤) ?_ ?_ ?_ ?_ M
+  · intro N hN
+    have hz :=
+      (HomologicalComplex.homologyFunctor (ModuleCat.{u} C) (ComplexShape.up ℤ) i).map_isZero
+      (F.map_isZero hN)
+    have : Subsingleton ((F.obj N).homology i) := ModuleCat.isZero_iff_subsingleton.mp hz
+    rw [lam.len_eq_zero_of_subsingleton]
+    exact ENNReal.zero_ne_top
+  · exact lambdaHomology_koszul_single_ring lam x hfin a i
+  · intro N N' e hN
+    let eh := (HomologicalComplex.homologyFunctor (ModuleCat.{u} C) (ComplexShape.up ℤ) i).mapIso
+      (F.mapIso e)
+    exact ne_of_eq_of_ne (lam.len_congr _ _ eh.toLinearEquiv).symm hN
+  · intro N N' hN hN'
+    let S : ShortComplex (ModuleCat.{u} C) :=
+      ModuleCat.shortComplexOfCompEqZero (LinearMap.inl C N N') (LinearMap.snd C N N') (by ext; rfl)
+    have hS : S.ShortExact := by
+      refine { exact := ?_, mono_f := ?_, epi_g := ?_ }
+      · rw [ShortComplex.moduleCat_exact_iff]
+        intro y hy
+        exact ⟨y.1, Prod.ext rfl hy.symm⟩
+      · exact (ModuleCat.mono_iff_injective _).mpr (fun y z h ↦ congrArg Prod.fst h)
+      · exact (ModuleCat.epi_iff_surjective _).mpr (fun y ↦ ⟨(0, y), rfl⟩)
+    have := hS.mono_f
+    have := hS.epi_g
+    have hs := hS.map (HomologicalComplex.single (ModuleCat.{u} C) (ComplexShape.up ℤ) a)
+    exact lambdaHomology_shortExact_ne_top lam
+      ((S.map (HomologicalComplex.single _ _ a)).map (koszulFunctor x))
+      (koszulFunctor_shortExact x _ hs) i (ht N) (ht _) (ht N') hN hN'
+
+/-- 通常の Koszul ホモロジーの正規化長さが全次数で有限なら、有界有限自由複体 `P` を
+係数とする Koszul ホモロジーの長さも有限。単一次数の有限自由加群の場合を基底分解で示し、
+項による有限フィルトレーションを使って一般の複体へ広げる。 -/
+lemma lambdaHomology_koszulComplexOn_ne_top (hfg : J.FG) {n : ℕ}
+    (x : Fin n → C) (hJ : J ≤ (Ideal.span (Set.range x)).radical)
+    (hfin : ∀ j : ℤ, lam.len ((koszulComplex x).homology j) ≠ ⊤)
+    (P : CochainComplex (ModuleCat.{u} C) ℤ)
+    (hfree : ∀ j, Module.Free C (P.X j)) (hfinite : ∀ j, Module.Finite C (P.X j))
+    (hbounded : ∃ a b : ℤ, ∀ j, (j < a ∨ b < j) → IsZero (P.X j)) (i : ℤ) :
+    lam.len ((koszulComplexOn x P).homology i) ≠ ⊤ := by
+  apply lambdaHomology_koszulComplexOn_ne_top_of_single lam hfg x hJ ?_ P hfree hfinite hbounded i
+  intro a M hMfree hMfinite j
+  have := hMfree
+  have := hMfinite
+  exact lambdaHomology_koszul_single_finiteFree lam hfg x hJ hfin a M j
 
 /-! ## 通常の長さを正規化長さの特殊例として扱う -/
 

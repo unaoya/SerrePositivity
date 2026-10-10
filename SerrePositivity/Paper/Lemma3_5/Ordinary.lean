@@ -23,7 +23,7 @@ Lemma 3.5a・3.5b のうち、通常の長さによる Euler 評価 `χ_T(P) = c
 - 後半（3.5b）：階数倍の公式 (3.14) `χ_T(Q ⊗_A T) = r · χ_A(Q)`。剰余体が同じ局所環 `T` では
   `T` 上の長さと `A` 上の長さが一致することと、`K₀^{m}(A)` が `[K(z)]` で生成されることにより、
   `K(z)` での値 `χ_T(K(z) ⊗_A T) = χ^A(z; T)` の計算に帰着する。`χ^A(z; T) = rank_A T` は仮定として
-  受け取り、論文の設定では層 3a の入力（Serre の定理）を使う。
+  受け取り、論文の設定では一般の有限自由分解の Euler–Poincaré 公式と正則局所環の性質から導く。
 -/
 
 @[expose] public section
@@ -105,7 +105,7 @@ end
   剰余体が同じ局所環 `T` 上では `T` 加群の `T` 上の長さと `A` 上の長さが一致する
   （`length_eq_of_common_residueField`）。
 - `χ^A(z; T) = rank_A T` は仮定 `hχ` として受け取る。正則局所環では層 3a の入力
-  `koszulEulerChar_eq_finrank`（Serre の定理）から出る。
+  `koszulEulerChar_eq_finrank`（正則局所環の未証明の性質からの導出）から出る。
 - `χ_A(K(z)) = 1`（`chiOrd_koszulComplex`）。
 -/
 

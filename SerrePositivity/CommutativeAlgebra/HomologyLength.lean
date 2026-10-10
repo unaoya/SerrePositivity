@@ -1,12 +1,14 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.ConeLES
+public import Mathlib.Tactic.LinearCombination
+public import Mathlib.Data.ENat.BigOperators
 public import Mathlib.RingTheory.Length
 public import Mathlib.Algebra.Homology.HomotopyCategory.ShiftSequence
 public import Mathlib.Data.Int.Interval
 
 /-!
-# ホモロジーの長さの総和
+# ホモロジーの長さの総和と長完全列の交代和
 
 ## 概要
 
@@ -17,12 +19,16 @@ Lemma 3.5b の証明（`PerfectComplex/KoszulGeneration.lean`）で使うデヴ�
 
 ## 内容
 
+- **長完全列の交代和**：有限長な三列からなる長完全列について、切断版
+  `lengthEuler_longExact` と高次消滅を仮定する `lengthEuler_finsum_longExact` を示す。
+  Tor の左右の長完全列に適用して交点重複度の加法性を得る。
+
 - 総和はホモトピー同値とシフトで変わらない（`homologyLengthSum_eq_of_homotopyEquiv`、
   `homologyLengthSum_shift`）。
 - **長さが 1 減る一歩**（`homologyLengthSum_mappingCone`）：`Q` が `0` 次以下に乗り、`K` の
   ホモロジーが `0` 次に集中して `ℓ(H^0(K)) = 1`（`K = K(z)` なら `H^0(K) = k`）、`f : Q → K` が
   `H^0` で全射なら、`Σ ℓ(H(Cone f)) + 1 = Σ ℓ(H(Q))`。写像錐の長完全列で各次数のホモロジーを
-  比べる：`i ≥ 0` で `H^i(Cone f) = 0`、`i ≤ -2` で `H^i(Cone f) ≅ H^{i+1}(Q)`、`i = -1` で
+  比べる：`i ≥ 0` で `H^i(Cone f) = 0`、`i ≤ -2` で `H^i(Cone f) ≅ H^{i + 1}(Q)`、`i = -1` で
   `ℓ(H^0(Q)) = ℓ(H^{-1}(Cone f)) + ℓ(H^0(K)) = ℓ(H^{-1}(Cone f)) + 1`。足し合わせると結論になる。
 
 ## 規約
@@ -113,7 +119,7 @@ variable (hQ : ∀ i : ℤ, 0 < i → IsZero (Q.X i)) (hK : ∀ i : ℤ, i ≠ 0
   (hf : Function.Surjective (HomologicalComplex.homologyMap f 0).hom)
 
 include hQ hK hf in
-/-- `0` 次以上で写像錐のホモロジーは零。長完全列 `H^i(K) → H^i(Cone f) → H^{i+1}(Q) = 0` から
+/-- `0` 次以上で写像錐のホモロジーは零。長完全列 `H^i(K) → H^i(Cone f) → H^{i + 1}(Q) = 0` から
 `H^i(K) → H^i(Cone f)` は全射。`i > 0` では `H^i(K) = 0`。`i = 0` では `H^0(Q) → H^0(K)` が全射なので、
 完全性から `H^0(K) → H^0(Cone f)` は零写像、全射かつ零なので `H^0(Cone f) = 0`。 -/
 lemma isZero_mappingCone_homology_of_nonneg (i : ℤ) (hi : 0 ≤ i) :
@@ -137,8 +143,8 @@ lemma isZero_mappingCone_homology_of_nonneg (i : ℤ) (hi : 0 ≤ i) :
     rw [(fexact₂ f 0).apply_apply_eq_zero, (fexact₂ f 0).apply_apply_eq_zero]
 
 include hK in
-/-- `i ≤ -2` では `H^i(Cone f) ≅ H^{i+1}(Q)` なので長さが等しい。長完全列
-`H^i(K) = 0 → H^i(Cone f) → H^{i+1}(Q) → H^{i+1}(K) = 0`（`i, i + 1 ≠ 0`）による。 -/
+/-- `i ≤ -2` では `H^i(Cone f) ≅ H^{i + 1}(Q)` なので長さが等しい。長完全列
+`H^i(K) = 0 → H^i(Cone f) → H^{i + 1}(Q) → H^{i + 1}(K) = 0`（`i, i + 1 ≠ 0`）による。 -/
 lemma length_mappingCone_homology_of_le (i : ℤ) (hi : i ≤ -2) :
     Module.length R ((CochainComplex.mappingCone f).homology i) =
       Module.length R (Q.homology (i + 1)) := by
@@ -168,7 +174,7 @@ lemma length_mappingCone_homology_neg_one :
 
 include hQ hK hf in
 /-- **長さが 1 減る**：`ℓ(H^0(K)) = 1` なら `Σ ℓ(H(Cone f)) + 1 = Σ ℓ(H(Q))`。各次数の比較（上の三つの
-補題）から `ℓ(H^i(Cone f)) + [i = -1] = ℓ(H^{i+1}(Q))` が得られ、`i` について足し合わせて添字をずらす。
+補題）から `ℓ(H^i(Cone f)) + [i = -1] = ℓ(H^{i + 1}(Q))` が得られ、`i` について足し合わせて添字をずらす。
 `Q` のホモロジーが有限長（`hQfin`）で `Q` が有界（`hQb`）であることは、`finsum` を通常の有限和として
 扱うために使う。 -/
 theorem homologyLengthSum_mappingCone (hK0 : Module.length R (K.homology 0) = 1)
@@ -221,5 +227,109 @@ theorem homologyLengthSum_mappingCone (hK0 : Module.length R (K.homology 0) = 1)
   exact finsum_comp_equiv (Equiv.addRight (1 : ℤ)) (f := LQ)
 
 end cone
+
+end SerrePositivity
+
+namespace SerrePositivity
+
+variable {R : Type u} [CommRing R]
+
+/-- 有限長な中央の項をもつ完全列では、その整数値の長さは前後の射の像の長さの和である。 -/
+theorem lengthInt_eq_add_range {M N L : Type u} [AddCommGroup M] [Module R M]
+    [AddCommGroup N] [Module R N] [AddCommGroup L] [Module R L]
+    (f : M →ₗ[R] N) (g : N →ₗ[R] L) (he : Function.Exact f g)
+    (hn : IsFiniteLength R N) :
+    ((Module.length R N).toNat : ℤ) = (Module.length R (LinearMap.range f)).toNat +
+      (Module.length R (LinearMap.range g)).toNat := by
+  have hk := hn.of_injective (LinearMap.ker g).injective_subtype
+  have hr := hn.of_surjective g.surjective_rangeRestrict
+  have h := Module.length_eq_add_of_exact (LinearMap.ker g).subtype g.rangeRestrict
+    (LinearMap.ker g).injective_subtype g.surjective_rangeRestrict
+    (by rw [LinearMap.exact_iff]; ext x; simp)
+  rw [h, ENat.toNat_add (Module.length_ne_top_iff.mpr hk) (Module.length_ne_top_iff.mpr hr),
+    Nat.cast_add, ← LinearMap.exact_iff.mp he]
+
+/-- 自然数で添字づけた長完全列の長さの交代和。
+`C₀` への射が全射で、切断の直上 `Cₙ₊₁` が零なら、中央の交代和は両側の交代和の和となる。
+各長さを像の長さに分け、部分和の誤差が連結射の像の長さだけになることを帰納的に示す。 -/
+theorem lengthEuler_longExact
+    (A B C : ℕ → ModuleCat.{u} R)
+    (α : ∀ i, A i →ₗ[R] B i) (β : ∀ i, B i →ₗ[R] C i)
+    (δ : ∀ i, C (i + 1) →ₗ[R] A i)
+    (hab : ∀ i, Function.Exact (α i) (β i))
+    (hbd : ∀ i, Function.Exact (β (i + 1)) (δ i))
+    (hda : ∀ i, Function.Exact (δ i) (α i)) (hb : Function.Surjective (β 0))
+    (hA : ∀ i, IsFiniteLength R (A i)) (hB : ∀ i, IsFiniteLength R (B i))
+    (hC : ∀ i, IsFiniteLength R (C i)) (n : ℕ)
+    (hz : Subsingleton (C (n + 1))) :
+    (∑ i ∈ Finset.range (n + 1), (-1 : ℤ) ^ i * (Module.length R (B i)).toNat) =
+    (∑ i ∈ Finset.range (n + 1), (-1 : ℤ) ^ i * (Module.length R (A i)).toNat) +
+    (∑ i ∈ Finset.range (n + 1), (-1 : ℤ) ^ i * (Module.length R (C i)).toNat) := by
+  let a := fun i => ((Module.length R (LinearMap.range (α i))).toNat : ℤ)
+  let b := fun i => ((Module.length R (LinearMap.range (β i))).toNat : ℤ)
+  let d := fun i => ((Module.length R (LinearMap.range (δ i))).toNat : ℤ)
+  have eA i : ((Module.length R (A i)).toNat : ℤ) = d i + a i :=
+    lengthInt_eq_add_range _ _ (hda i) (hA i)
+  have eB i : ((Module.length R (B i)).toNat : ℤ) = a i + b i :=
+    lengthInt_eq_add_range _ _ (hab i) (hB i)
+  have eC i : ((Module.length R (C (i + 1))).toNat : ℤ) = b (i + 1) + d i :=
+    lengthInt_eq_add_range _ _ (hbd i) (hC (i + 1))
+  have eC0 : ((Module.length R (C 0)).toNat : ℤ) = b 0 := by
+    dsimp [b]
+    rw [LinearMap.range_eq_top.mpr hb, Module.length_top]
+  have hsum : ∀ k : ℕ,
+      (∑ i ∈ Finset.range (k + 1), (-1 : ℤ) ^ i * (Module.length R (B i)).toNat) -
+      (∑ i ∈ Finset.range (k + 1), (-1 : ℤ) ^ i * (Module.length R (A i)).toNat) -
+      (∑ i ∈ Finset.range (k + 1), (-1 : ℤ) ^ i * (Module.length R (C i)).toNat) =
+      -((-1 : ℤ)^k * d k) := by
+    intro k
+    induction k with
+    | zero => simp [eA, eB, eC0]; ring
+    | succ k ih =>
+      simp only [Finset.sum_range_succ (n := k + 1)]
+      rw [eA (k + 1), eB (k + 1), eC k, pow_succ]
+      linear_combination ih
+  have hd : d n = 0 := by
+    have : Subsingleton (LinearMap.range (δ n)) :=
+      Function.Surjective.subsingleton (δ n).surjective_rangeRestrict
+    simp [d, Module.length_eq_zero]
+  have h := hsum n
+  rw [hd, mul_zero, neg_zero] at h
+  linarith
+
+/-- 各項が有限長で高次が零となる長完全列では、長さの交代有限和は加法的である。
+三列の消滅次数を共通の上界にまとめて `finsum` を有限和に直し、切断版の定理を適用する。 -/
+theorem lengthEuler_finsum_longExact
+    (A B C : ℕ → ModuleCat.{u} R)
+    (α : ∀ i, A i →ₗ[R] B i) (β : ∀ i, B i →ₗ[R] C i)
+    (δ : ∀ i, C (i + 1) →ₗ[R] A i)
+    (hab : ∀ i, Function.Exact (α i) (β i))
+    (hbd : ∀ i, Function.Exact (β (i + 1)) (δ i))
+    (hda : ∀ i, Function.Exact (δ i) (α i)) (hb : Function.Surjective (β 0))
+    (hA : ∀ i, IsFiniteLength R (A i)) (hB : ∀ i, IsFiniteLength R (B i))
+    (hC : ∀ i, IsFiniteLength R (C i))
+    (zA : ∃ n, ∀ i, n < i → Subsingleton (A i))
+    (zB : ∃ n, ∀ i, n < i → Subsingleton (B i))
+    (zC : ∃ n, ∀ i, n < i → Subsingleton (C i)) :
+    (∑ᶠ i : ℕ, (-1 : ℤ) ^ i * (Module.length R (B i)).toNat) =
+    (∑ᶠ i : ℕ, (-1 : ℤ) ^ i * (Module.length R (A i)).toNat) +
+    (∑ᶠ i : ℕ, (-1 : ℤ) ^ i * (Module.length R (C i)).toNat) := by
+  obtain ⟨a, ha⟩ := zA
+  obtain ⟨b, hb'⟩ := zB
+  obtain ⟨c, hc⟩ := zC
+  let n := a + b + c
+  have cut (X : ℕ → ModuleCat.{u} R) (hX : ∀ i, n < i → Subsingleton (X i)) :
+      (∑ᶠ i : ℕ, (-1 : ℤ) ^ i * (Module.length R (X i)).toNat) =
+      ∑ i ∈ Finset.range (n + 1), (-1 : ℤ) ^ i * (Module.length R (X i)).toNat := by
+    apply finsum_eq_sum_of_support_subset
+    intro i hi
+    simp only [Finset.coe_range, Set.mem_Iio]
+    by_contra h
+    have := hX i (by omega)
+    exact hi (by simp [Module.length_eq_zero])
+  rw [cut A (fun i hi => ha i (by dsimp [n] at hi; omega)),
+    cut B (fun i hi => hb' i (by dsimp [n] at hi; omega)),
+    cut C (fun i hi => hc i (by dsimp [n] at hi; omega))]
+  exact lengthEuler_longExact A B C α β δ hab hbd hda hb hA hB hC n (hc _ (by dsimp [n]; omega))
 
 end SerrePositivity

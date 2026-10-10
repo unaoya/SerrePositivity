@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.Paper.Statement
 public import SerrePositivity.IntersectionMultiplicity.Basic
+public import SerrePositivity.IntersectionMultiplicity.Additivity
 public import SerrePositivity.HomologicalAlgebra.Basic
 public import SerrePositivity.HomologicalAlgebra.ConeLES
 public import SerrePositivity.HomologicalAlgebra.BaseChange
@@ -49,7 +50,7 @@ public import SerrePositivity.Paper.Section5.Positivity
 ホモロジー代数・可換代数・完全複体・交点重複度の一般論を組み合わせ、
 `Paper` 以下で論文の各主張への適用を記述する。
 
-未証明の定理は `sorry`、まだ供給していない一般論は入力クラスとして明示されている。
+未証明の一般論・引用は名前付きの `sorry` 定理として明示され、利用先の証明から直接適用する。
 このファイルのビルド成功は、それらの数学的な入力が証明されたことを意味しない。
 各宣言の説明と `Inputs` のファイルで、証明の依存する仮定を確認できる。
 -/

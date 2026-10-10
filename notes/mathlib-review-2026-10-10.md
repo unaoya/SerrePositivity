@@ -1,5 +1,9 @@
 # 形式化の議論の整理と Mathlib との対応
 
+> 最新の変更：入力クラス3つは名前付きの `sorry` 定理へ移行した。
+> 以下の入力クラスについての記述は各作業時点の履歴。最新の優先順位は `PLAN.md` 冒頭参照。
+> 系2.6の正値性は保留し、3.5a の正規化長さの有限性に着手した。
+
 2026年10月10日時点。対象は本プロジェクトの46モジュールと公開入口（設定の整理前は47モジュール）、および `lake-manifest.json` に固定された Mathlib `e6bbacd0e1b7307ff6e17da09cd2455f60804fa6`。Mathlib の現在の公開最新版についての調査ではない。
 
 一般的な長さ・台・分解の基礎は、すでに Mathlib を利用している。次に効果が大きいのは、入力クラスのうち既存の結果から証明できる項目を減らすことと、共通する数学的な変換を一度だけ記述することである。初回は説明コメントのみを整備した。その後、承認された項目1〜3を実装した（以下の実施記録を参照）。
@@ -195,3 +199,183 @@
 不要になった `Paper/Section5/Setup.lean` を削除した。ひねった係数構造は `twistedAlgebraMap`、その評価は `twistedEuler` として `FirstComparison.lean` に置く。`FirstComparison.lean`、`Lemma5_2.lean`、`Positivity.lean` はいずれも設定の構造体を経由しない。公開入口の import と README も更新した。
 
 全体ビルドと差分の空白検査に成功した。明示的な `sorry` は7個のまま。`firstComparison` と `core_of_inputs` は引き続き既存の未証明結果に依存する。
+
+## 一般論の証明の追加：一般点の基底と通常 Tor の比較
+
+Roberts–Gillet–Soulé の消滅定理は、引き続き `Inputs.IntersectionVanishing` として引用する。
+今回、次の二項目を Mathlib に基づく証明で置き換えた。
+
+1. `CommutativeAlgebra/LocalAlgebra.lean` の `exists_genericBasis`：
+   `exists_linearIndependent_of_le_finrank` で階数個の独立な元を取り、自由部分加群を作る。
+   `Module.finrank_quotient_add_finrank_le` から余核の階数は零、
+   `Module.finrank_eq_zero_iff_isTorsion` からねじれ加群となる。
+   有限生成ねじれ加群全体を消す非零因子を選び、
+   `ringKrullDim_succ_le_of_surjective` で `dim Supp(coker) + 1 ≤ dim(R/I)` を得る。
+   有限次元の場合の狭義不等式に直して有限拡大の階数倍公式に適用した。
+   正則性・局所性・正の階数を仮定せずに証明でき、入力クラス `GenericBasis` を削除した。
+2. `HomologicalAlgebra/Tor.lean` の `ordinaryTorIso`：
+   係数拡大後の係数制限と `T ⊗[R] -` の自然同型を構成する。
+   `ShortComplex.mapHomologyIso` による係数制限とホモロジーの可換性、
+   既存の整数添字と自然数添字の分解の比較、`ProjectiveResolution.isoLeftDerivedObj` を合成する。
+   通常の Euler 評価および台つき完全複体の構成でこの証明済み同型を使うようにした。
+   `TorHomologicalAlgebra` から比較の項目を削除し、残った有限長性の入力を `TorFiniteLength` とした。
+
+以上で `Inputs/IntersectionTheory.lean` の未供給の入力は7項目から5項目へ減った。
+残るのは、有界有限自由分解の存在、Tor の有限長性、左右の加法性、引用する消滅定理である。
+通常 Euler 評価の等式 `chiOrd_baseChange_resolution` には、このファイルの入力クラスが不要になった。
+一般点の基底の構成に正の階数が不要になったため、有限拡大の公式と補題5.2から不要になった
+第1変数の階数の正値条件も除いた。最終的な正値性の導出では引き続き両方の階数の正値性を仮定する。
+明示的な `sorry` の7箇所（補題3.5など）は今回の証明対象に含めず、新しい `sorry` は追加していない。
+
+検証：`lake build SerrePositivity` は成功（2856 jobs）。上記の次元評価・基底の構成・
+自然同型・Tor 比較・`chiOrd_baseChange_resolution` の `#print axioms` は、いずれも
+`propext`, `Classical.choice`, `Quot.sound` のみで、`sorryAx` に依存しない。
+
+## 導来関手を基礎とする一般論の整備
+
+既存の定義は Mathlib の `Functor.leftDerived` と `CategoryTheory.Tor` を維持し、
+係数拡大に特化していた証明を一般の加法的関手の証明に置き換えた。
+
+### 今回証明したこと
+
+- `Resolution.leftDerivedIsoCochain`（宣言の名前空間は `SerrePositivity`）：
+  加群圏の間の加法的関手を、任意の射影コチェイン分解で計算する同型。
+  Mathlib の `ProjectiveResolution.isoLeftDerivedObj` と添字の比較を合成する。
+- `isZero_leftDerived_eventually_of_resolution`：
+  左側で有界な射影コチェイン分解から高次左導来関手の消滅を導く。
+  正則性や有限生成性は仮定しない。
+- `leftDerived_longExact`：任意の加法的関手の左導来関手に対する長完全列。
+  既存の係数拡大専用の写像錐の証明を一般化し、`torAlg_longExact` はその適用にした。
+  通常の任意の加群を係数とする `torModule_longExact` も同じ一般定理から得る。
+- `torModuleZeroEquiv` と `torModuleIsoCochain`：通常の Tor の零次の同一視と分解による計算。
+  代数構造をもたない加群も扱う。
+- `finite_torModule`：Noether 環上の有限生成加群どうしの Tor は各次数で有限生成。
+  Mathlib の `Module.Finite.exists_fin'` で有限自由加群からの全射を取り、
+  核が有限生成であることと Tor の長完全列を使って次数で帰納する。
+  `Tor₀` はテンソル積、自由加群の高次 Tor は Mathlib の定理で零なので、
+  連結射によって一つ低い次数の Tor に単射を得る。この証明には正則性も有界分解も不要。
+
+### Mathlib の到達点と残る作業
+
+参照したのは、このプロジェクトが固定している Mathlib のソースである。
+
+- `CategoryTheory/Abelian/LeftDerived.lean`：分解による計算とその自然性、零次の比較、射影対象上の高次消滅。
+- `CategoryTheory/Monoidal/Tor.lean`：第2変数で導来する `Tor` と、第1変数で導来する `Tor'`。
+  両者の比較はファイル冒頭でも未整備と明記されている。
+- `Algebra/Homology/Bifunctor.lean`、`TotalComplex.lean`、`TotalComplexSymmetry.lean`：
+  二重複体の全複体と交換の構成はある。Tor の両変数の比較をこれだけで得られるわけではなく、
+  分解を増大射で比較したときに擬同型になることの証明が必要である。
+- `Algebra/Category/ModuleCat/Localization.lean`：局所化関手、その完全性、有限極限・余極限の保存。
+  今後の Tor の局所化との比較に利用できる。
+
+現在の長完全列は構成した射の完全性を証明する形である。
+導来関手の標準の射との一致と連結射の自然性は、まだ証明していない。
+Tor の両変数の比較・対称性、局所化との比較と台の評価、有限長性、Euler 数の左右の加法性は残る。
+今回の `finite_torModule` は有限生成性の証明であり、有限長性の入力 `TorFiniteLength` の解消ではない。
+新しい未証明入力や `sorry` は追加していない。
+
+検証：全体ビルド成功（2875 jobs）、差分の空白検査成功。
+今回の分解計算、高次消滅、零次 Tor、一般の長完全列とその二つの適用、Tor の有限生成性、
+既存の `ordinaryTorIso` の公理依存はいずれも `propext`, `Classical.choice`, `Quot.sound` のみだった。
+
+## 続報：Tor の台と有限長性の入力を解消
+
+上の「有限長性は残る」という段階から、次の一般論を証明した。
+
+- 加法的関手の左導来関手も加法的である。環準同型に沿う射のスカラー倍の保存も
+  左導来関手へ移る。これを `Resolution.lean` にまとめた。
+- 複体の各項の零化イデアルは、その次数のホモロジーの零化イデアルに含まれる。
+  この事実と導来関手のスカラー作用から、Tor は両変数の零化イデアルで消える。
+- 有限生成加群について、`Supp(M ⊗ N) = Supp(M) ∩ Supp(N)`。
+  Mathlib の剰余体へのテンソル積による台の判定と、体上の非零テンソル積を使う。
+- 有限長加群の台に属する素イデアルはすべて極大である。Noether 環上の有限生成加群では
+  逆も成立する。逆向きは零化イデアルによる商の零次元性と Artin 性による。
+- `support_torModule_subset`：有限生成加群どうしの Tor の台は両方の台の共通部分に含まれる。
+  零化イデアルの包含と Mathlib の `Module.mem_support_iff_of_finite` で直接証明する。
+  この証明には Tor の局所化比較や両変数の対称性を先に構築する必要はない。
+- `isFiniteLength_torModule`：Noether 環上の有限生成加群のテンソル積が有限長なら、
+  すべての Tor が有限長である。既に証明した有限生成性と上の台の評価を組み合わせる。
+  正則性・有界有限自由分解は仮定しない。
+
+利用側も更新した。`TorFiniteLength` 入力クラスを削除し、補題5.2と Section 5 の仮定から除いた。
+`ResolutionEvaluation.lean` は一般論の入力ファイルを import せず、証明済み定理を使う。
+有限長性の移送は長さの等式の変形から `LinearEquiv.isFiniteLength` に簡略化した。
+係数拡大版 Tor の零化も一般の左導来関手の定理の適用へ短縮し、零加群の Tor の消滅は
+加法的関手の零対象保存から一様に証明する。
+
+`IntersectionTheory.lean` に残る入力は3クラス・4主張：有界有限自由分解の存在、
+交点重複度の左右の加法性、Roberts–Gillet–Soulé の消滅定理である。
+長完全列の標準射との一致・自然性、Tor の両変数の比較は引き続き未整備。
+今回は新しい入力・公理・`sorry` を追加していない。
+
+検証：全体ビルド成功（2875 jobs）、`git diff --check` 成功。
+新しい14個の基礎定理・適用先を `#print axioms` で確認し、すべて
+`propext`, `Classical.choice`, `Quot.sound` のみだった。
+特に `isFiniteLength_torModule` と `isPerfectSupported_baseChange_resolution` に
+`sorryAx` への依存はない。既存の論文側の未証明結果は引き続き残る。
+
+## 続報：交点重複度の左右の加法性を証明
+
+`chi` の定義を変更せず、次の順序で加法性を証明した。
+
+1. `HomologyLength.lean` の `lengthInt_eq_add_range`：有限長な中央の項の長さを、
+   前後の射の像の長さの和で表す。Mathlib の `Module.length_eq_add_of_exact` を使う。
+2. `lengthEuler_longExact` と `lengthEuler_finsum_longExact`：三列からなる長完全列について、
+   切断した交代和の誤差を連結射の像の長さとして計算する。
+   各項が有限長で、高次が零になれば、中央の交代和は左右の交代和の和になる。
+3. `TorLES.lean` の `tensorComplex_shortExact` と `torModule_longExact_left`：
+   第2変数の射影分解を固定し、各項の平坦性によって第1変数の短完全列を複体の短完全列にする。
+   Mathlib の `HomologicalComplex.shortExact_of_degreewise_shortExact` と
+   `ShortComplex.ShortExact.homology_exact₁/₂/₃` を使い、分解との比較同型で Tor に移す。
+   Tor の対称性は仮定しない。長完全列の標準射との一致や連結射の自然性は引き続き別の課題であり、
+   今回の数値的加法性には必要ない。
+4. 新しい `IntersectionMultiplicity/Additivity.lean`：まず Noether 環上で高次 Tor の消滅を
+   明示した `chi_add_left_of_eventually` と `chi_add_right_of_eventually` を証明する。
+   中央のテンソル積の有限長性から、台の包含によって両端の有限長性を導き、
+   証明済みの Tor の有限長性と長完全列の交代和を適用する。
+5. 正則局所環では `RegularResolution` の分解の存在から高次 Tor の消滅を導き、
+   `chi_add_left` と `chi_add_right` を得る。加法性を別に仮定する必要はなくなった。
+
+`IntersectionAdditivity` クラスを削除し、有限直和の評価、有限拡大の階数倍の公式、補題5.2、
+Section 5 の正値性の記述を更新した。一般論の入力として残るのは
+`RegularResolution` と `IntersectionVanishing` の2クラス・2主張である。
+前者は引き続き未証明の分解存在の仮定、後者は指定どおり引用扱いの消滅定理である。
+新しい `sorry` や公理は追加していない。
+
+検証：全体ビルド成功（2877 jobs）、差分の空白検査成功。
+長完全列の交代和、第1変数の Tor 長完全列、一般の高次消滅条件のもとでの左右の加法性、
+正則局所環への適用、および `chi_finite_extensions` の計11宣言について公理依存を確認した。
+いずれも `propext`, `Classical.choice`, `Quot.sound` のみで、`sorryAx` への依存はない。
+ただし、`chi_add_left/right` は明示的な引数として `RegularResolution` を受け取り、
+`chi_finite_extensions` はさらに `IntersectionVanishing` を受け取ることも型で確認した。
+公理依存検査が、これらの入力の証明を与えるわけではない。
+
+
+## 入力の明示化と次の証明課題（2026-10-10）
+
+入力クラス `RegularResolution`、`IntersectionVanishing`、`LengthAlgebra` を廃止した。
+それぞれ `Inputs.regularResolution`、`Inputs.intersectionVanishing`、
+`Inputs.exists_lengthAlgebra` という名前付きの `sorry` 定理に置き換えた。
+分解と消滅定理の呼び出しは証明内で行い、利用先の入力クラス引数を削除した。
+長さ代数の存在定理は、現在まだデータ構成段階で使われていない。
+
+検証：全体の `lake build` が成功。`#print axioms` で三つの未証明定理と
+`chi_add_left`、`chi_add_right`、`firstComparison` に `sorryAx` が現れることを確認した。
+直接の `sorry` は7か所から10か所へ増えたが、増分は従来入力クラスに隠れていた三つの主張である。
+
+3.5a の準備として、`lambdaHomology_cone_le`、`lambdaHomology_cone_ne_top`、
+`lambdaHomology_ne_top_of_nullHomotopic_cone` を証明した。三つとも公理依存は
+`propext`、`Classical.choice`、`Quot.sound` のみで `sorryAx` を含まない。
+3.5a 本体の `sorry` は残っており、Koszul テンソルと有限フィルトレーションの接続を続ける。
+系2.6の正値性、有限自由分解の存在、正則パラメータの正則性は今回証明しない。
+Theorem 3.1 の引用も維持する。最新の順序は `PLAN.md` 冒頭に記録した。
+
+## 設定の構造体の廃止（2026-10-10）
+
+入力クラスに続いて、`Setup34`、`IsRegularNormalizationBase`、`LengthAlgebraProps`、
+`LengthAlgebraData` も削除した。各定理の前提は個別の引数とし、定理2.5の存在結論は
+環・環構造・代数構造・正規化長さを直接量化して、四つの性質を明記する。
+補題3.4では完備性・標数・整域性等の使っていなかった仮定を除いた。
+系2.6の Tor 評価も必要な (2.4)、(2.6) だけを受け取る。
+未証明の系2.6の正値性と定理2.5では、元の前提と結論を展開して保持している。
+仮定の束を別名の連言へ置き換えることはしない。

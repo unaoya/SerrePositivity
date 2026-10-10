@@ -13,6 +13,10 @@ public import Mathlib.RingTheory.Length
 public import SerrePositivity.HomologicalAlgebra.BaseChange
 public import Mathlib.Algebra.Homology.Additive
 public import Mathlib.LinearAlgebra.TensorProduct.Tower
+public import Mathlib.CategoryTheory.Retract
+public import Mathlib.Algebra.Homology.HomotopyCategory.Pretriangulated
+public import Mathlib.Algebra.Homology.HomotopyCategory.SingleFunctors
+public import Mathlib.Algebra.Homology.HomotopyCategory.ShiftSequence
 
 /-!
 # Koszul 複体
@@ -49,6 +53,8 @@ public import Mathlib.LinearAlgebra.TensorProduct.Tower
 
 ## 内容
 
+- 係数複体に関する Koszul 関手 `koszulFunctor`：加法性、短完全列の保存、シフトとの両立、
+  零ホモトピーからの直和因子の構成。
 - 項の性質：正の次数と `-n` 次より下で零、各項は有限自由で射影的、正の次数のホモロジーは零。
 - `koszulEulerChar A T z`：`A` 上の代数 `T` について、`K(z; T)` のホモロジーを `A` 加群として測った
   Euler 標数 `χ^A(z; T) = Σ (-1)^i ℓ_A(H_i(z; T))`。論文 (3.14) に現れ、正則局所環なら `rank_A T` に
@@ -94,6 +100,204 @@ lemma koszulComplex_succ {n : ℕ} (x : Fin (n + 1) → R) :
     koszulComplex x =
       CochainComplex.mappingCone (smulId (x (Fin.last n)) (koszulComplex (Fin.init x))) :=
   rfl
+
+/-! ## 複体を係数とする Koszul 複体と直和因子 -/
+
+/-- 複体 `P` を元 `a` の作用の写像錐に送る関手。射には自然な可換正方形から誘導される
+錐の射を対応させる。係数複体を変えたときの Koszul 構成の関手性を表す。 -/
+noncomputable def scalarConeFunctor (a : R) :
+    CochainComplex (ModuleCat.{u} R) ℤ ⥤ CochainComplex (ModuleCat.{u} R) ℤ where
+  obj P := CochainComplex.mappingCone (smulId a P)
+  map {P Q} f := HomologicalComplex.homotopyCofiber.mapArrowHom
+    (smulId a P) (smulId a Q) (fun j ↦ ⟨j - 1, by simp⟩)
+    (Arrow.homMk f f (by simp [smulId]))
+  map_id P := by
+    have he : Arrow.homMk (𝟙 P) (𝟙 P) (by simp [smulId]) =
+        𝟙 (Arrow.mk (smulId a P)) := by ext <;> rfl
+    rw [he]
+    exact HomologicalComplex.homotopyCofiber.mapArrowHom_id _ _
+  map_comp {P Q S} f g := by
+    exact HomologicalComplex.homotopyCofiber.mapArrowHom_comp
+      (smulId a P) (smulId a Q) (smulId a S) (fun j ↦ ⟨j - 1, by simp⟩)
+      (Arrow.homMk f f (by simp [smulId])) (Arrow.homMk g g (by simp [smulId]))
+
+section scalarCone
+
+open HomologicalComplex.homotopyCofiber
+
+set_option backward.defeqAttrib.useBackward true in
+set_option backward.isDefEq.respectTransparency false in
+/-- 錐の射は左成分では、元の複体の一つ上の次数の射を誘導する。 -/
+@[reassoc]
+lemma scalarConeFunctor_inl_map (a : R) {P Q : CochainComplex (ModuleCat.{u} R) ℤ}
+    (f : P ⟶ Q) (i : ℤ) :
+    inlX (smulId a P) (i + 1) i rfl ≫ ((scalarConeFunctor a).map f).f i =
+      f.f (i + 1) ≫ inlX (smulId a Q) (i + 1) i rfl := by
+  dsimp only [scalarConeFunctor]
+  rw [mapArrowHom, inlX_desc_f _ _ _ _ _ (show (ComplexShape.up ℤ).Rel i (i + 1) from rfl)]
+  simp [Homotopy.trans, Homotopy.ofEq, Homotopy.compLeft,
+    inrCompHomotopy_hom _ _ _ _ (show (ComplexShape.up ℤ).Rel i (i + 1) from rfl)]
+set_option backward.defeqAttrib.useBackward true in
+set_option backward.isDefEq.respectTransparency false in
+/-- 錐の射は右成分では、元の複体の同じ次数の射を誘導する。 -/
+@[reassoc]
+lemma scalarConeFunctor_inr_map (a : R) {P Q : CochainComplex (ModuleCat.{u} R) ℤ}
+    (f : P ⟶ Q) (i : ℤ) :
+    inrX (smulId a P) i ≫ ((scalarConeFunctor a).map f).f i =
+      f.f i ≫ inrX (smulId a Q) i := by
+  dsimp only [scalarConeFunctor]
+  rw [mapArrowHom, inrX_desc_f]
+  rfl
+
+set_option backward.defeqAttrib.useBackward true in
+set_option backward.isDefEq.respectTransparency false in
+/-- スカラー作用の錐をとる関手は加法的である。 -/
+instance scalarConeFunctor_additive (a : R) : (scalarConeFunctor a).Additive where
+  map_add {P Q} f g := by
+    apply HomologicalComplex.Hom.ext
+    funext i
+    apply ext_from_X (smulId a P) (i + 1) i (show (ComplexShape.up ℤ).Rel i (i + 1) from rfl)
+    · simp only [HomologicalComplex.add_f_apply, Preadditive.comp_add, scalarConeFunctor_inl_map,
+        Preadditive.add_comp]
+    · simp only [HomologicalComplex.add_f_apply, Preadditive.comp_add, scalarConeFunctor_inr_map,
+        Preadditive.add_comp]
+
+set_option backward.defeqAttrib.useBackward true in
+set_option backward.isDefEq.respectTransparency false in
+/-- 錐の各項を二項の直和と同一視すると、誘導される射は元の射の直和になる。 -/
+lemma scalarConeFunctor_map_XIso (a : R) {P Q : CochainComplex (ModuleCat.{u} R) ℤ}
+    (f : P ⟶ Q) (i : ℤ) :
+    ((scalarConeFunctor a).map f).f i ≫ (XIsoBiprod (smulId a Q) i (i+1) rfl).hom =
+      (XIsoBiprod (smulId a P) i (i+1) rfl).hom ≫ biprod.map (f.f (i+1)) (f.f i) := by
+  apply ext_from_X (smulId a P) (i + 1) i (show (ComplexShape.up ℤ).Rel i (i + 1) from rfl)
+  · simp only [scalarConeFunctor_inl_map_assoc,
+      inlX_XIsoBiprod_hom, inlX_XIsoBiprod_hom_assoc, biprod.inl_map]
+  · simp only [scalarConeFunctor_inr_map_assoc,
+      inrX_XIsoBiprod_hom, inrX_XIsoBiprod_hom_assoc, biprod.inr_map]
+
+/-- スカラー作用の錐の項を、元の複体の隣り合う二項の直積と同一視する。 -/
+noncomputable def scalarConeXIsoProd (a : R) (P : CochainComplex (ModuleCat.{u} R) ℤ) (i : ℤ) :
+    ((scalarConeFunctor a).obj P).X i ≅ ModuleCat.of R (P.X (i+1) × P.X i) :=
+  XIsoBiprod (smulId a P) i (i+1) rfl ≪≫ ModuleCat.biprodIsoProd _ _
+
+set_option backward.defeqAttrib.useBackward true in
+set_option backward.isDefEq.respectTransparency false in
+/-- 錐の項の直積表示は、係数複体の射について自然である。 -/
+lemma scalarConeXIsoProd_inv_naturality (a : R) {P Q : CochainComplex (ModuleCat.{u} R) ℤ}
+    (f : P ⟶ Q) (i : ℤ) :
+    ModuleCat.ofHom ((f.f (i+1)).hom.prodMap (f.f i).hom) ≫ (scalarConeXIsoProd a Q i).inv =
+      (scalarConeXIsoProd a P i).inv ≫ ((scalarConeFunctor a).map f).f i := by
+  have hn : biprod.map (f.f (i+1)) (f.f i) ≫ (XIsoBiprod (smulId a Q) i (i+1) rfl).inv =
+      (XIsoBiprod (smulId a P) i (i+1) rfl).inv ≫ ((scalarConeFunctor a).map f).f i := by
+    apply (cancel_mono (XIsoBiprod (smulId a Q) i (i+1) rfl).hom).mp
+    simp only [Category.assoc, Iso.inv_hom_id, Category.comp_id]
+    rw [scalarConeFunctor_map_XIso, ← Category.assoc, Iso.inv_hom_id, Category.id_comp]
+  dsimp only [scalarConeXIsoProd, Iso.trans_inv]
+  rw [← Category.assoc, moduleCat_prodMap_biprodIsoProd_inv, Category.assoc, hn, Category.assoc]
+
+/-- スカラー作用の錐をとる関手は短完全列を保つ。各次数では二つの短完全列の直積に帰着する。 -/
+lemma scalarConeFunctor_shortExact (a : R)
+    (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ)) (hS : S.ShortExact) :
+    (S.map (scalarConeFunctor a)).ShortExact := by
+  have := hS.mono_f
+  have := hS.epi_g
+  apply HomologicalComplex.shortExact_of_degreewise_shortExact
+  intro i
+  let S₁ := S.map (HomologicalComplex.eval _ _ (i+1))
+  let S₂ := S.map (HomologicalComplex.eval _ _ i)
+  have h₁ : S₁.ShortExact := hS.map _
+  have h₂ : S₂.ShortExact := hS.map _
+  let e : moduleCatShortComplexProd S₁ S₂ ≅
+      (S.map (scalarConeFunctor a)).map (HomologicalComplex.eval _ _ i) :=
+    ShortComplex.isoMk (scalarConeXIsoProd a S.X₁ i).symm
+      (scalarConeXIsoProd a S.X₂ i).symm (scalarConeXIsoProd a S.X₃ i).symm
+      (scalarConeXIsoProd_inv_naturality a S.f i).symm
+      (scalarConeXIsoProd_inv_naturality a S.g i).symm
+  exact ShortComplex.shortExact_of_iso e (moduleCatShortComplexProd_shortExact h₁ h₂)
+
+end scalarCone
+
+/-- 係数複体を変数とする Koszul 関手。各元のスカラー作用の錐をとる関手を合成する。 -/
+noncomputable def koszulFunctor : {n : ℕ} → (Fin n → R) →
+    CochainComplex (ModuleCat.{u} R) ℤ ⥤ CochainComplex (ModuleCat.{u} R) ℤ
+  | 0, _ => 𝟭 _
+  | n + 1, x => koszulFunctor (Fin.init x) ⋙ scalarConeFunctor (x (Fin.last n))
+
+/-- 複体 `P` を係数とする Koszul 複体 `K(x; P)`。Koszul 関手の対象部分であり、
+空列では `P`、元を一つ加えるごとにそのスカラー作用の写像錐をとる。 -/
+noncomputable abbrev koszulComplexOn {n : ℕ} (x : Fin n → R)
+    (P : CochainComplex (ModuleCat.{u} R) ℤ) : CochainComplex (ModuleCat.{u} R) ℤ :=
+  (koszulFunctor x).obj P
+
+/-- Koszul 関手は加法的である。 -/
+instance koszulFunctor_additive {n : ℕ} (x : Fin n → R) : (koszulFunctor x).Additive := by
+  induction n with
+  | zero => change (𝟭 _).Additive; infer_instance
+  | succ n ih =>
+    have := ih (Fin.init x)
+    change (koszulFunctor (Fin.init x) ⋙ scalarConeFunctor (x (Fin.last n))).Additive
+    infer_instance
+
+/-- 係数複体の短完全列は、Koszul 関手を適用した後も短完全である。
+列の長さについて帰納し、一段の錐の完全性を反復する。 -/
+lemma koszulFunctor_shortExact {n : ℕ} (x : Fin n → R)
+    (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ)) (hS : S.ShortExact) :
+    (S.map (koszulFunctor x)).ShortExact := by
+  induction n with
+  | zero => simpa only [koszulFunctor, ShortComplex.map_id] using hS
+  | succ n ih =>
+    simpa only [koszulFunctor, ShortComplex.map_comp] using
+      scalarConeFunctor_shortExact (x (Fin.last n)) (S.map (koszulFunctor (Fin.init x)))
+        (ih (Fin.init x))
+
+/-- Koszul 構成は係数複体のシフトと同型を除いて可換である。
+一段ごとに Mathlib の写像錐とシフトの同型を適用する。 -/
+noncomputable def koszulComplexOnShiftIso {n : ℕ} (x : Fin n → R)
+    (P : CochainComplex (ModuleCat.{u} R) ℤ) (m : ℤ) :
+    (koszulComplexOn x P)⟦m⟧ ≅ koszulComplexOn x (P⟦m⟧) := by
+  induction n with
+  | zero => exact Iso.refl _
+  | succ n ih =>
+    let Q := koszulComplexOn (Fin.init x) P
+    have he : (smulId (x (Fin.last n)) Q)⟦m⟧' = smulId (x (Fin.last n)) (Q⟦m⟧) := by
+      simp [smulId, Functor.map_smul]
+    exact CochainComplex.mappingCone.shiftIso (smulId (x (Fin.last n)) Q) m ≪≫
+      eqToIso (by rw [he]; rfl) ≪≫
+      (scalarConeFunctor (x (Fin.last n))).mapIso (ih (Fin.init x))
+
+
+/-- 環を零次に集中させた係数複体に対する Koszul 構成は、通常の Koszul 複体と一致する。 -/
+lemma koszulComplexOn_single {n : ℕ} (x : Fin n → R) :
+    koszulComplexOn x
+      ((HomologicalComplex.single (ModuleCat.{u} R) (ComplexShape.up ℤ) 0).obj
+        (ModuleCat.of R R)) = koszulComplex x := by
+  induction n with
+  | zero => rfl
+  | succ n ih =>
+    change CochainComplex.mappingCone _ = CochainComplex.mappingCone _
+    exact congrArg (fun Q ↦ CochainComplex.mappingCone (smulId (x (Fin.last n)) Q))
+      (ih (Fin.init x))
+
+/-- `a` の作用が零ホモトピックなら、元の複体はその作用の写像錐の直和因子となる。
+包含の左逆を零ホモトピーから構成する。 -/
+noncomputable def retractScalarCone (a : R) (P : CochainComplex (ModuleCat.{u} R) ℤ)
+    (h : Homotopy (smulId a P) 0) : Retract P ((scalarConeFunctor a).obj P) where
+  i := HomologicalComplex.homotopyCofiber.inr (smulId a P)
+  r := HomologicalComplex.homotopyCofiber.desc (smulId a P) (𝟙 P)
+    (by simpa using h)
+  retract := HomologicalComplex.homotopyCofiber.inr_desc _ _ _
+
+/-- 列の各元が係数複体 `P` に零ホモトピックに作用すれば、`P` は `K(x; P)` の直和因子。
+各元の零ホモトピーの間に両立条件は不要である。既に得た分裂を錐関手で送り、
+最後の元の作用による分裂と合成して帰納的に構成する。 -/
+noncomputable def retractKoszulComplexOn : ∀ {n : ℕ} (x : Fin n → R)
+    (P : CochainComplex (ModuleCat.{u} R) ℤ)
+    (_h : ∀ j, Nonempty (Homotopy (smulId (x j) P) 0)), Retract P (koszulComplexOn x P)
+  | 0, _, P, _ => Retract.refl P
+  | n + 1, x, P, h =>
+    (retractScalarCone (x (Fin.last n)) P (h (Fin.last n)).some).trans
+      ((retractKoszulComplexOn (Fin.init x) P (fun j ↦ h j.castSucc)).map
+        (scalarConeFunctor (x (Fin.last n))))
 
 /-! ## 項の性質 -/
 
@@ -161,8 +365,9 @@ lemma koszulComplex_isZero_homology_of_pos {n : ℕ} (x : Fin n → R) (i : ℤ)
 として作り、各ホモロジーを係数制限で `A` 加群とみる。無限長の項は `0` と数える（`toNat`）。
 
 論文 (3.14) に現れる量で、`A` が正則局所環、`z` がその正則パラメータ系、`T` が `A` 上有限なら
-`χ^A(z; T) = rank_A T`（Serre の定理 `χ(z; M) = e(z; M)` と `e(z; M) = rank_A M · e(z; A)`、
-`e(z; A) = 1`）。この等式は `Inputs/RegularLocalRing.lean` の入力 `koszulEulerChar_eq_finrank` で、
+`χ^A(z; T) = rank_A T`。この等式は `Inputs/RegularLocalRing.lean` の
+`koszulEulerChar_eq_finrank` で、一般の有限自由分解の Euler–Poincaré 公式と
+正則局所環の性質（こちらは明示的な未証明入力）から導き、
 Lemma 3.5b の通常の長さ側（`Paper/Lemma3_5/Ordinary.lean`）で使う。 -/
 noncomputable def koszulEulerChar (A T : Type u) [CommRing A] [CommRing T] [Algebra A T] {e : ℕ}
     (z : Fin e → A) : ℝ :=

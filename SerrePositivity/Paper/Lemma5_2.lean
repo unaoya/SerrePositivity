@@ -23,7 +23,7 @@ public import Mathlib.Algebra.CharP.Algebra
 
 1. 有限拡大の階数倍（`IntersectionMultiplicity/FiniteExtension.lean`）：
    `χ^R(D, E) = rank_{R/P} D · rank_{R/Q} E · χ^R(R/P, R/Q)`。
-2. `E` の有界有限自由分解 `F`（入力 `RegularResolution`）をとり、`L = F ⊗_R D` とする。`D ⊗_R E` が
+2. `E` の有界有限自由分解 `F`（未証明定理 `Inputs.regularResolution`）をとり、`L = F ⊗_R D` とする。`D ⊗_R E` が
    有限長（`√(P + Q) = m_R` から）なので、`L` は `D` の閉点、すなわち `z` の像に台をもつ完全複体
    （`isPerfectSupported_baseChange_resolution`）。
 3. `χ_D(L) = χ^R(D, E)`（`chiOrd_baseChange_resolution`。`R` と `D` の剰余体が同じことを使う）。
@@ -36,7 +36,7 @@ public import Mathlib.Algebra.CharP.Algebra
 
 有限代数 `D/(R/P)`、`E/(R/Q)`、正則局所環 `A`、群 `G`、長さ代数 `(C, λ)` を直接引数で受け取る。階数は
 `Module.finrank` で表し、別の値との一致は仮定しない。基底の構成に用いる完備性・分離性、第二の
-正規化基底や群は仮定に含めない。幾何的推移性は直接仮定する。三つの一般論の入力 class
+正規化基底や群は仮定に含めない。幾何的推移性は直接仮定する。二つの一般論の未証明定理
 （`Inputs/IntersectionTheory.lean`）と、Lemma 3.5 側の未証明結果（層 2、層 3a、
 `lemma_3_5a_lam_finite`）への依存は残る。
 -/
@@ -51,8 +51,6 @@ open scoped ENNReal
 namespace SerrePositivity
 
 variable {R : Type u} [CommRing R] [IsRegularLocalRing R]
-  [Inputs.RegularResolution R] [Inputs.IntersectionAdditivity R]
-  [Inputs.IntersectionVanishing R]
 
 /-- **Lemma 5.2（第一のノルム比較）**：`|G| · rank_{R/P} D · rank_{R/Q} E · χ^R(R/P, R/Q) = Σ_σ c_σ` と、
 各 `c_σ` の各項の有限性。仮定は、正則局所環 `A` の正則パラメータ系 `z`（`hz`、`hdimA`）、その `D` での
@@ -60,7 +58,7 @@ variable {R : Type u} [CommRing R] [IsRegularLocalRing R]
 `Spec D → Spec A` の全射性と `G` の幾何的推移性（`hsurj`、`htrans`）、`E` の階数が正（`rankE`）、
 次元の条件（`hPdim`、`hQdim`、`hsum`）、長さ代数の (3.9)（`hzero`、`hquot`）、剰余標数 `p`、
 `√(P + Q) = m_R`（`hprimary`）。長さ代数の構成条件（完備性、分離性）は要らない。証明本体に `sorry` は
-ないが、一般論の入力と Lemma 3.5 の未証明結果に依存する。 -/
+ないが、一般論の未証明定理と Lemma 3.5 の未証明結果に依存する。 -/
 theorem firstComparison
     (P Q : Ideal R) [P.IsPrime] [Q.IsPrime]
     (A D E C G : Type u) [CommRing A] [IsRegularLocalRing A]
@@ -96,10 +94,10 @@ theorem firstComparison
   have : Module.Finite R E := Module.Finite.trans (R ⧸ Q) E
   have dimR : ((h + l : ℕ) : WithBot ℕ∞) = ringKrullDim R := by
     simpa only [hPdim, hQdim, Nat.cast_add] using hsum
-  have hRanks := chi_finite_extensions P Q D E rankD rankE hprimary h l hPdim hQdim dimR
+  have hRanks := chi_finite_extensions P Q D E rankE hprimary h l hPdim hQdim dimR
   have htensor := length_tensorProduct_ne_top_of_annihilator P Q D E
     (quotient_action_annihilator P D) (quotient_action_annihilator Q E) hprimary
-  obtain ⟨F, ⟨hF⟩, hbound, hfree, hfinite⟩ := Inputs.RegularResolution.resolution (R := R) E
+  obtain ⟨F, ⟨hF⟩, hbound, hfree, hfinite⟩ := Inputs.regularResolution R E
   let L := baseChange (algebraMap R D) F
   have hL : IsPerfectSupported (algebraMap A D ∘ z) L :=
     isPerfectSupported_baseChange_resolution E F hF hbound hfree hfinite htensor

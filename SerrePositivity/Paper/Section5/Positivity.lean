@@ -30,7 +30,7 @@ public import SerrePositivity.Paper.Lemma5_2
 ここではデータの存在を一括で仮定する class を置かない。`core_of_inputs` は「指定した対象と仮定が
 与えられたときの正値性」であり、`core_statement`（`Paper/Statement.lean`）からそれらの対象
 （正規化基底 `A ⊆ D`、長さ代数、群 `G`、`H`）を構成する段階と、第二比較 Lemma 5.4 の証明は別途
-必要である。Lemma 5.2 の一般論の入力と未証明結果への依存も残る。
+必要である。Lemma 5.2 の一般論の未証明定理と未証明結果への依存も残る。
 -/
 
 public section
@@ -65,8 +65,6 @@ theorem chi_pos_of_comparisons {G H : Type u} [Fintype G] [Nonempty G]
   exact_mod_cast this
 
 variable {R : Type u} [CommRing R] [IsRegularLocalRing R]
-  [Inputs.RegularResolution R] [Inputs.IntersectionAdditivity R]
-  [Inputs.IntersectionVanishing R]
 
 /-- **核の場合の正値性（条件付き）**：Lemma 5.2 の仮定（`firstComparison` と同じ。`D` の階数が正
 `rankD` を追加）に加えて、第二比較のデータ `H`、`b : G → H → ℝ` と、等式

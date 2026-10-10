@@ -144,20 +144,22 @@ lemma IsSupported.le_radical_annihilator {e : ℕ} {w : Fin e → R}
 
 /-! ## Koszul 複体の台 -/
 
-/-- Koszul 複体 `K(x)` は `x` に台をもつ。`n` についての帰納法で、`K(x) = Cone(x_n • 𝟙 K')`
-（`K' = K(x_0, …, x_{n-1})`）とする。最後の元 `x_n` については、`a • 𝟙` の錐では `a² • 𝟙 = 0`
+/-- 任意の複体 `P` を係数とする Koszul 複体 `K(x; P)` は `x` に台をもつ。`n` についての帰納法で、
+`K(x; P) = Cone(x_n • 𝟙 K')`（`K' = K(x_0, …, x_{n-1}; P)`）とする。
+最後の元 `x_n` については、`a • 𝟙` の錐では `a² • 𝟙 = 0`
 （`mappingCone_smulId_mul_self_eq_zero`）。他の `x_j` については、帰納法の仮定で `K'` 上
 `x_j^v • 𝟙 = 0` なので、錐で `x_j^{2v} • 𝟙 = 0`。各 `j` の冪を `isSupported_of_forall` でまとめる。
 空列では `j` が存在しないので自明。 -/
-theorem isSupported_koszulComplex : ∀ {n : ℕ} (x : Fin n → R), IsSupported x (koszulComplex x)
-  | 0, x => ⟨0, fun j ↦ j.elim0⟩
-  | n + 1, x => by
-    have ih := isSupported_koszulComplex (Fin.init x)
+theorem isSupported_koszulComplexOn : ∀ {n : ℕ} (x : Fin n → R)
+    (P : CochainComplex (ModuleCat.{u} R) ℤ), IsSupported x (koszulComplexOn x P)
+  | 0, x, _ => ⟨0, fun j ↦ j.elim0⟩
+  | n + 1, x, P => by
+    have ih := isSupported_koszulComplexOn (Fin.init x) P
     rw [isSupported_iff] at ih
     obtain ⟨v, hv⟩ := ih
     refine isSupported_of_forall fun j ↦ ?_
     change ∃ w : ℕ, (x j) ^ w • 𝟙 ((homotopyQuot R).obj
-      (CochainComplex.mappingCone (smulId (x (Fin.last n)) (koszulComplex (Fin.init x))))) = 0
+      (CochainComplex.mappingCone (smulId (x (Fin.last n)) (koszulComplexOn (Fin.init x) P)))) = 0
     induction j using Fin.lastCases with
     | last =>
       exact ⟨2, by rw [pow_two]; exact mappingCone_smulId_mul_self_eq_zero _⟩
@@ -165,6 +167,12 @@ theorem isSupported_koszulComplex : ∀ {n : ℕ} (x : Fin n → R), IsSupported
       refine ⟨v + v, ?_⟩
       rw [pow_add]
       exact mappingCone_smul_mul_self_eq_zero _ _ (hv j) (hv j)
+
+/-- 通常の Koszul 複体は、その定義列に台をもつ。係数複体を環の単一複体とした場合。 -/
+theorem isSupported_koszulComplex {n : ℕ} (x : Fin n → R) :
+    IsSupported x (koszulComplex x) := by
+  rw [← koszulComplexOn_single]
+  exact isSupported_koszulComplexOn _ _
 
 /-! ## 基底変更とひねり -/
 

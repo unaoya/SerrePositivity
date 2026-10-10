@@ -1,10 +1,14 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.Tor
+public import SerrePositivity.HomologicalAlgebra.TorLES
+public import SerrePositivity.CommutativeAlgebra.HomologyLength
+public import SerrePositivity.CommutativeAlgebra.KoszulResolution
 public import SerrePositivity.PerfectComplex.NormalizedEuler
 public import Mathlib.Algebra.Ring.Action.Group
 public import Mathlib.CategoryTheory.Adjunction.Unique
-public import SerrePositivity.Inputs.IntersectionTheory
+public import SerrePositivity.IntersectionMultiplicity.Basic
+public import SerrePositivity.CommutativeAlgebra.TorFiniteLength
 public import SerrePositivity.PerfectComplex.Support
 public import SerrePositivity.PerfectComplex.Closure
 public import SerrePositivity.CommutativeAlgebra.FiniteLength
@@ -30,6 +34,12 @@ public import SerrePositivity.CommutativeAlgebra.FiniteLength
 分解の係数拡大 `F ⊗_R T` が `T` の閉点に台をもつ完全複体であることを示す
 （`isPerfectSupported_baseChange_resolution`）。ホモロジー `Tor_i^R(T, M)` が有限長なので `m_T` の
 冪で消え、ホモロジーの台の条件から零ホモトピーの条件に移す（`PerfectComplex/Support.lean`）。
+
+後半には、Koszul Euler 特性と交点重複度の同一視 `koszulEulerChar_eq_chi`、
+有界有限自由分解をもつ加群と有限長加群の交点 Euler 特性の階数公式を置く。
+後者は、syzygy の短完全列と Tor の長完全列から証明する
+`chi_eq_sum_finrank_mul_length_of_resolution` と、分解の階数の交代和を使う。
+このファイルの一般公式に未証明入力はない。
 
 ## 規約
 
@@ -237,7 +247,7 @@ theorem chiOrd_baseChange_resolution
     chiOrd (baseChange (algebraMap R T) F) = (chi R T M : ℝ) := by
   let K := baseChange (algebraMap R T) F
   have hlen (i : ℕ) : Module.length T (K.homology (-(i : ℤ))) = torLength R i T M := by
-    obtain ⟨e⟩ := Inputs.TorHomologicalAlgebra.ordinaryTorIso T M F hF i
+    let e := ordinaryTorIso (T := T) M F hF i
     exact (length_restrictScalars_eq hres _).symm.trans e.length_eq
   have hz (i : ℤ) (hi : 0 < i) : ((Module.length T (K.homology i)).toNat : ℝ) = 0 := by
     have := ModuleCat.subsingleton_of_isZero (isZero_homology_of_isZero_X _ _
@@ -292,8 +302,8 @@ theorem isPerfectSupported_baseChange_resolution
       exact IsFiniteLength.of_subsingleton
     · obtain ⟨n, rfl⟩ : ∃ n : ℕ, i = -(n : ℤ) :=
         ⟨(-i).toNat, by rw [Int.toNat_of_nonneg (by omega), neg_neg]⟩
-      obtain ⟨e⟩ := Inputs.TorHomologicalAlgebra.ordinaryTorIso T M F hF n
-      have ht := Inputs.TorHomologicalAlgebra.finiteTor T M htensor n
+      let e := ordinaryTorIso (T := T) M F hF n
+      have ht := isFiniteLength_torModule T M (Module.length_ne_top_iff.mp htensor) n
       exact finiteLength_of_restrictScalars (L.homology (-(n : ℤ)))
         (e.symm.isFiniteLength ht)
   have supported : HasHomologySupport (Ideal.span (Set.range w)) L := by
@@ -308,6 +318,228 @@ theorem isPerfectSupported_baseChange_resolution
     exact ((Ideal.span (Set.range w)).le_radical.trans_eq hw).trans hm
   exact isPerfectSupported_of_homologySupport w L finiteX freeX boundedL supported
 
+end SerrePositivity
+
+end
+
+@[expose] public section
+
+open CategoryTheory Limits
+
+namespace SerrePositivity
+
+variable {R : Type u} [CommRing R]
+
+/-- 有限自由な第1変数と有限長な第2変数に対する Tor はすべて有限長。
+0 次は有限直和の長さの計算、正次数は平坦性による消滅を使う。 -/
+lemma isFiniteLength_torModule_of_finite_free_left (M N : Type u) [AddCommGroup M] [Module R M]
+    [AddCommGroup N] [Module R N] [Module.Free R M] [Module.Finite R M]
+    (hN : IsFiniteLength R N) (i : ℕ) : IsFiniteLength R (TorModule R i M N) := by
+  cases i with
+  | zero =>
+    apply (torModuleZeroEquiv R M N).symm.isFiniteLength
+    apply Module.length_ne_top_iff.mp
+    rw [length_tensorProduct_of_finite_free_left]
+    rw [← ENat.natCast_toNat (Module.length_ne_top_iff.mpr hN)]
+    simpa only [Nat.cast_mul] using
+      ENat.natCast_ne_top (Module.finrank R M * (Module.length R N).toNat)
+  | succ i =>
+    have := torModule_subsingleton_of_flat (R := R) M N i
+    exact .of_subsingleton
+
+/-- 有限自由な第1変数の交点 Euler 特性は、その階数と第2変数の長さの積。
+高次 Tor が消えるので 0 次だけを計算する。長さは `toNat` の規約も含めた等式。 -/
+lemma chi_of_finite_free_left (M N : Type u) [AddCommGroup M] [Module R M]
+    [AddCommGroup N] [Module R N] [Module.Free R M] [Module.Finite R M] :
+    (chi R M N : ℝ) = (Module.finrank R M : ℝ) * (Module.length R N).toNat := by
+  unfold chi
+  rw [finsum_eq_single _ 0]
+  · simp only [pow_zero, one_mul, torLength, (torModuleZeroEquiv R M N).length_eq,
+      length_tensorProduct_of_finite_free_left, ENat.toNat_mul, ENat.toNat_natCast,
+      Nat.cast_mul, Int.cast_mul, Int.cast_natCast]
+  · intro i hi
+    obtain ⟨j, rfl⟩ := Nat.exists_eq_succ_of_ne_zero hi
+    have := torModule_subsingleton_of_flat (R := R) M N j
+    simp [torLength, Module.length_eq_zero]
+
+/-- 第1変数の短完全列に対し、左端と中央の Tor が有限長かつ高次で零なら、
+右端についても同じことが成り立ち、交点 Euler 特性は加法的である。
+長完全列から有限長性と消滅を移し、その長さの交代和を取る。環の Noether 性は不要。 -/
+lemma torEuler_shortExact_left
+    (M₁ M₂ M₃ N : Type u) [AddCommGroup M₁] [Module R M₁]
+    [AddCommGroup M₂] [Module R M₂] [AddCommGroup M₃] [Module R M₃]
+    [AddCommGroup N] [Module R N]
+    (f : M₁ →ₗ[R] M₂) (g : M₂ →ₗ[R] M₃)
+    (hf : Function.Injective f) (hg : Function.Surjective g) (he : Function.Exact f g)
+    (h₁ : ∀ i, IsFiniteLength R (TorModule R i M₁ N))
+    (h₂ : ∀ i, IsFiniteLength R (TorModule R i M₂ N))
+    (z₁ : ∃ n, ∀ i, n < i → Subsingleton (TorModule R i M₁ N))
+    (z₂ : ∃ n, ∀ i, n < i → Subsingleton (TorModule R i M₂ N)) :
+    (∀ i, IsFiniteLength R (TorModule R i M₃ N)) ∧
+    (∃ n, ∀ i, n < i → Subsingleton (TorModule R i M₃ N)) ∧
+    chi R M₂ N = chi R M₁ N + chi R M₃ N := by
+  obtain ⟨α, β, δ, hab, hbd, hda, hb⟩ := torModule_longExact_left N f g hf hg he
+  have h₃ : ∀ i, IsFiniteLength R (TorModule R i M₃ N) := by
+    intro i
+    cases i with
+    | zero => exact (h₂ 0).of_surjective hb
+    | succ i => exact isFiniteLength_of_exact (β (i + 1)) (δ i) (hbd i) (h₂ (i + 1)) (h₁ i)
+  have z₃ : ∃ n, ∀ i, n < i → Subsingleton (TorModule R i M₃ N) := by
+    obtain ⟨a, ha⟩ := z₁
+    obtain ⟨b, hb'⟩ := z₂
+    refine ⟨a + b + 1, ?_⟩
+    intro i hi
+    obtain ⟨j, rfl⟩ := Nat.exists_eq_succ_of_ne_zero (by omega : i ≠ 0)
+    have := ha j (by omega)
+    have := hb' (j + 1) (by omega)
+    have hinj := (LinearMap.injective_iff_eq_zero_of_exact (hbd j)).mpr
+      (Subsingleton.elim _ _)
+    exact hinj.subsingleton
+  refine ⟨h₃, z₃, ?_⟩
+  exact lengthEuler_finsum_longExact
+    (fun i => ModuleCat.of R (TorModule R i M₁ N))
+    (fun i => ModuleCat.of R (TorModule R i M₂ N))
+    (fun i => ModuleCat.of R (TorModule R i M₃ N))
+    α β δ hab hbd hda hb h₁ h₂ h₃ z₁ z₂ z₃
+
+/-- 有界有限自由分解と有限長加群に対する Euler–Poincaré 公式。
+Tor の長さの交代和は、分解の階数の交代和と有限長加群の長さの積に等しい。
+分解の syzygy の短完全列に沿って有限長性と高次消滅を降下帰納法で示し、
+Tor の Euler 特性の加法性を足し合わせる。正則性・局所性・Noether 性も、Tor の対称性も使わない。 -/
+theorem chi_eq_sum_finrank_mul_length_of_resolution
+    (R M N : Type u) [CommRing R] [AddCommGroup M] [Module R M]
+    [AddCommGroup N] [Module R N] (hlength : IsFiniteLength R N)
+    (P : ProjectiveResolution (ModuleCat.of R M))
+    (hfree : ∀ i, Module.Free R (P.complex.X i))
+    (hfinite : ∀ i, Module.Finite R (P.complex.X i))
+    (n : ℕ) (hz : ∀ i, n < i → IsZero (P.complex.X i)) :
+    (chi R M N : ℝ) =
+      (∑ i ∈ Finset.range (n + 1), (-1 : ℝ) ^ i * Module.finrank R (P.complex.X i)) *
+        (Module.length R N).toNat := by
+  let Z := ResolutionSyzygy.obj P
+  have hlast : Subsingleton (Z (n + 1)) := ModuleCat.subsingleton_of_isZero
+    (ResolutionSyzygy.isZero_obj_succ P n (hz _ (by omega)))
+  have lastTor (i : ℕ) : Subsingleton (TorModule R i (Z (n + 1)) N) :=
+    torModule_subsingleton_left (R := R) (Z (n + 1)) N i
+  have hT : ∀ k, k ≤ n + 1 →
+      (∀ i, IsFiniteLength R (TorModule R i (Z k) N)) ∧
+      (∃ b, ∀ i, b < i → Subsingleton (TorModule R i (Z k) N)) := by
+    intro k hk
+    induction hk using Nat.decreasingInduction with
+    | self =>
+      refine ⟨?_, ⟨0, fun i _ => lastTor i⟩⟩
+      intro i
+      have := lastTor i
+      exact .of_subsingleton
+    | of_succ k hk ih =>
+      have := hfree k
+      have := hfinite k
+      have h := torEuler_shortExact_left (Z (k + 1)) (P.complex.X k) (Z k) N
+        (ResolutionSyzygy.ι P k).hom (ResolutionSyzygy.π P k).hom
+        (ResolutionSyzygy.injective_ι P k) (ResolutionSyzygy.surjective_π P k)
+        (ResolutionSyzygy.exact P k) ih.1
+        (isFiniteLength_torModule_of_finite_free_left _ N hlength) ih.2
+        ⟨0, fun i hi => by
+          obtain ⟨j, rfl⟩ := Nat.exists_eq_succ_of_ne_zero (by omega : i ≠ 0)
+          exact torModule_subsingleton_of_flat (R := R) _ N j⟩
+      exact ⟨h.1, h.2.1⟩
+  let c := fun k => (chi R (Z k) N : ℝ)
+  let r := fun k => (Module.finrank R (P.complex.X k) : ℝ) * (Module.length R N).toNat
+  have step (k : ℕ) (hk : k ≤ n) : r k = c (k + 1) + c k := by
+    have := hfree k
+    have := hfinite k
+    have h := torEuler_shortExact_left (Z (k + 1)) (P.complex.X k) (Z k) N
+      (ResolutionSyzygy.ι P k).hom (ResolutionSyzygy.π P k).hom
+      (ResolutionSyzygy.injective_ι P k) (ResolutionSyzygy.surjective_π P k)
+      (ResolutionSyzygy.exact P k) (hT (k + 1) (by omega)).1
+      (isFiniteLength_torModule_of_finite_free_left _ N hlength) (hT (k + 1) (by omega)).2
+      ⟨0, fun i hi => by
+        obtain ⟨j, rfl⟩ := Nat.exists_eq_succ_of_ne_zero (by omega : i ≠ 0)
+        exact torModule_subsingleton_of_flat (R := R) _ N j⟩
+    have he := congrArg (fun a : ℤ => (a : ℝ)) h.2.2
+    rw [Int.cast_add, chi_of_finite_free_left _ N] at he
+    exact he
+  have hs : ∀ k, k ≤ n → (∑ i ∈ Finset.range (k + 1), (-1 : ℝ) ^ i * r i) =
+      c 0 + (-1 : ℝ) ^ k * c (k + 1) := by
+    intro k
+    induction k with
+    | zero => intro hk; simpa [add_comm] using step 0 hk
+    | succ k ih =>
+      intro hk
+      rw [Finset.sum_range_succ, ih (by omega), step (k + 1) hk, pow_succ]
+      ring
+  have hc : c (n + 1) = 0 := by
+    dsimp [c, chi]
+    have he : ∀ i, torLength R i (Z (n + 1)) N = 0 := by
+      intro i
+      have := lastTor i
+      exact Module.length_eq_zero
+    simp [he]
+  have h := hs n le_rfl
+  rw [hc, mul_zero, add_zero] at h
+  change c 0 = _
+  rw [← h, Finset.sum_mul]
+  apply Finset.sum_congr rfl
+  intro i hi
+  dsimp [r]
+  ring
+
+/-- 整域上で有界有限自由分解をもつ加群 `M` と有限長加群 `N` の交点 Euler 特性は
+`rank(M) · length(N)` に等しい。正則局所性を仮定せず、分解を明示的に受け取る。
+テンソルした分解の Euler–Poincaré 公式を上の定理から適用し、
+階数の交代和は証明済みの `resolution_alternating_finrank` で計算する。 -/
+lemma chi_eq_finrank_mul_length_of_resolution
+    (R M N : Type u) [CommRing R] [IsDomain R]
+    [AddCommGroup M] [Module R M] [AddCommGroup N] [Module R N]
+    (hN : IsFiniteLength R N)
+    (F : CochainComplex (ModuleCat.{u} R) ℤ) (hF : IsResolutionOf F (ModuleCat.of R M))
+    (hfree : ∀ i, Module.Free R (F.X i))
+    (hfinite : ∀ i, Module.Finite R (F.X i))
+    (hbounded : ∃ a b : ℤ, ∀ i, (i < a ∨ b < i) → IsZero (F.X i)) :
+    (chi R M N : ℝ) = (Module.finrank R M : ℝ) * (Module.length R N).toNat := by
+  obtain ⟨a, b, hb⟩ := hbounded
+  let P := hF.toProjectiveResolution
+  let n := (-a).toNat
+  have hp (i : ℕ) : Module.Free R (P.complex.X i) := hfree _
+  have hf (i : ℕ) : Module.Finite R (P.complex.X i) := hfinite _
+  have hz (i : ℕ) (hi : n < i) : IsZero (P.complex.X i) := by
+    apply hb _ (Or.inl ?_)
+    dsimp [n] at hi
+    change 0 - (i : ℤ) < a
+    omega
+  rw [chi_eq_sum_finrank_mul_length_of_resolution R M N hN P hp hf n hz,
+    resolution_alternating_finrank P hf n (hz _ (by omega))]
+
+/-- `K(z)` が `A/(z)` の分解なら、係数 `T` の Koszul Euler 特性は
+`χ^A(T, A/(z))` に等しい。基底変更した分解のホモロジーを通常の Tor と同一視し、
+整数添字の交代和を非負のホモロジー次数に直す。長さの有限性や正則局所性は不要。 -/
+lemma koszulEulerChar_eq_chi (A T : Type u) [CommRing A] [CommRing T] [Algebra A T]
+    {e : ℕ} (z : Fin e → A) (hz : IsKoszulResolution z) :
+    koszulEulerChar A T z = (chi A T (A ⧸ Ideal.span (Set.range z)) : ℝ) := by
+  let U := ModuleCat.restrictScalars (algebraMap A T)
+  let K := koszulComplex (algebraMap A T ∘ z)
+  have hl (i : ℕ) : Module.length A (U.obj (K.homology (-(i : ℤ)))) =
+      torLength A i T (A ⧸ Ideal.span (Set.range z)) := by
+    let ek := (HomologicalComplex.homologyFunctor (ModuleCat T) (ComplexShape.up ℤ)
+      (-(i : ℤ))).mapIso (baseChangeKoszulIso (algebraMap A T) z)
+    exact ((U.mapIso ek.symm).toLinearEquiv.trans
+      (ordinaryTorIso (A ⧸ Ideal.span (Set.range z)) (koszulComplex z)
+        (isResolutionOf_koszul z hz) i)).length_eq
+  have hp (i : ℤ) (hi : 0 < i) : ((Module.length A (U.obj (K.homology i))).toNat : ℝ) = 0 := by
+    have h := isZero_homology_of_isZero_X K i (koszulComplex_isZero_X_of_pos _ i hi)
+    have := ModuleCat.subsingleton_of_isZero (Functor.map_isZero U h)
+    simp [Module.length_eq_zero]
+  unfold koszulEulerChar
+  rw [alternating_finsum_eq_nat _ hp]
+  unfold chi
+  have hc : ((∑ᶠ i : ℕ, (-1 : ℤ) ^ i *
+      (torLength A i T (A ⧸ Ideal.span (Set.range z))).toNat : ℤ) : ℝ) =
+      ∑ᶠ i : ℕ, (((-1 : ℤ) ^ i * (torLength A i T (A ⧸ Ideal.span (Set.range z))).toNat : ℤ) : ℝ) :=
+    (Int.castRingHom ℝ).toAddMonoidHom.map_finsum_of_injective Int.cast_injective _
+  rw [hc]
+  congr 1
+  funext i
+  simp only [hl, Int.cast_mul, Int.cast_pow, Int.cast_neg, Int.cast_one, Int.cast_natCast]
 end SerrePositivity
 
 end

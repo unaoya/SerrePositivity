@@ -1,6 +1,9 @@
 module
 
+public import Mathlib.LinearAlgebra.TensorProduct.Pi
 public import Mathlib.Algebra.Category.ModuleCat.Basic
+public import Mathlib.RingTheory.LocalRing.Module
+public import Mathlib.RingTheory.Flat.FaithfullyFlat.Basic
 public import Mathlib.RingTheory.TensorProduct.Finite
 public import Mathlib.RingTheory.FiniteLength
 public import Mathlib.RingTheory.HopkinsLevitzki
@@ -18,6 +21,9 @@ public import Mathlib.Algebra.Category.ModuleCat.ChangeOfRings
 # 有限長加群
 
 ## 概要
+
+有限自由加群とのテンソル積の長さの計算と、完全列の両端から中央の有限長性を
+得る補題も含む。これらには Noether 性を要求しない。
 
 加群の長さ `Module.length`（`ℕ∞` 値）と有限長性 `IsFiniteLength` についての補題を集める。
 このプロジェクトでは、Euler 標数の各項（`Tor` の長さ、複体のホモロジーの長さ）が有限であることを
@@ -38,7 +44,10 @@ public import Mathlib.Algebra.Category.ModuleCat.ChangeOfRings
    `T` 加群の `A` 上の長さと `T` 上の長さは一致する（`length_eq_of_common_residueField`）。
    単純 `T` 加群が `A` 上でも単純だからである。Lemma 3.5b で `χ_T` を `A` 上の長さで測り直すときと、
    Lemma 5.2 で基底変更した分解の Euler 評価を比べるときに使う。
-4. **係数制限・半線形同型と長さ**：係数制限して有限長ならもとの環上でも有限長
+4. **台による有限長の判定**：有限生成加群のテンソル積の台は両方の台の共通部分。
+   有限長加群の台は極大イデアルだけからなり、Noether 環上の有限生成加群では逆も成立する。
+   `TorFiniteLength.lean` の Tor の有限長性の証明に用いる。
+5. **係数制限・半線形同型と長さ**：係数制限して有限長ならもとの環上でも有限長
    （`finiteLength_of_restrictScalars`）、全射な環準同型の上の半線形全単射は長さを保つ
    （`length_eq_of_semilinear_bijective`）。後者は特に環自己同型に沿った係数制限に使い、ひねり
    `g^*P` の Euler 評価が不変であること（`PerfectComplex/OrdinaryEuler.lean`）の根拠になる。
@@ -248,6 +257,72 @@ lemma exists_surjective_quotient_span (H : ModuleCat.{u} A) [Module.Finite A H]
 
 end span
 
+section support
+
+open TensorProduct
+
+variable {R : Type u} [CommRing R]
+
+/-- 有限生成加群のテンソル積の台は、両方の台の共通部分に等しい。
+各素イデアルの剰余体へのテンソル積で台への所属を判定し、体上では非零なベクトル空間どうしの
+テンソル積が非零であることを用いる。Noether 性は不要である。 -/
+theorem support_tensorProduct (M N : Type u) [AddCommGroup M] [Module R M]
+    [AddCommGroup N] [Module R N] [Module.Finite R M] [Module.Finite R N] :
+    Module.support R (M ⊗[R] N) = Module.support R M ∩ Module.support R N := by
+  ext p
+  let K := p.asIdeal.ResidueField
+  let e : (K ⊗[R] M) ⊗[K] (K ⊗[R] N) ≃ₗ[K] K ⊗[R] (M ⊗[R] N) :=
+    (AlgebraTensorModule.tensorTensorTensorComm R R K K K M K N).trans
+      (AlgebraTensorModule.congr (TensorProduct.rid K K) (LinearEquiv.refl R (M ⊗[R] N)))
+  simp only [Set.mem_inter_iff, Module.mem_support_iff_nontrivial_residueField_tensorProduct]
+  constructor
+  · intro h
+    have ht : Nontrivial ((K ⊗[R] M) ⊗[K] (K ⊗[R] N)) := e.nontrivial_congr.mpr h
+    constructor
+    · by_contra hn
+      have : Subsingleton (K ⊗[R] M) := not_nontrivial_iff_subsingleton.mp hn
+      exact (not_nontrivial_iff_subsingleton.mpr
+        (inferInstance : Subsingleton ((K ⊗[R] M) ⊗[K] (K ⊗[R] N)))) ht
+    · by_contra hn
+      have : Subsingleton (K ⊗[R] N) := not_nontrivial_iff_subsingleton.mp hn
+      exact (not_nontrivial_iff_subsingleton.mpr
+        (inferInstance : Subsingleton ((K ⊗[R] M) ⊗[K] (K ⊗[R] N)))) ht
+  · rintro ⟨hM, hN⟩
+    exact e.nontrivial_congr.mp inferInstance
+
+/-- 有限長加群の台に属する素イデアルは極大である。
+組成列で帰納し、単純加群の零化イデアルが極大であることと短完全列に沿う台の和集合表示を使う。 -/
+theorem isMaximal_of_mem_support_of_isFiniteLength (M : Type u) [AddCommGroup M] [Module R M]
+    (h : IsFiniteLength R M) : ∀ p ∈ Module.support R M, p.asIdeal.IsMaximal := by
+  induction h with
+  | of_subsingleton => simp [Module.support_eq_empty]
+  | @of_simple_quotient M _ _ N hs hN ih =>
+    intro p hp
+    rw [Module.support_of_exact (LinearMap.exact_subtype_mkQ N)
+      N.injective_subtype N.mkQ_surjective] at hp
+    rcases hp with hp | hp
+    · exact ih p hp
+    · have hmax := IsSimpleModule.annihilator_isMaximal (R := R) (M := M ⧸ N)
+      have he := hmax.eq_of_le p.2.ne_top (Module.annihilator_le_of_mem_support hp)
+      exact he ▸ hmax
+
+/-- Noether 環上の有限生成加群は、その台が極大イデアルだけからなるなら有限長である。
+零化イデアルによる商環は零次元 Noether 環、したがって Artin 環となる。 -/
+theorem isFiniteLength_of_support_isMaximal [IsNoetherianRing R]
+    (M : Type u) [AddCommGroup M] [Module R M] [Module.Finite R M]
+    (h : ∀ p ∈ Module.support R M, p.asIdeal.IsMaximal) : IsFiniteLength R M := by
+  have : IsNoetherianRing (R ⧸ Module.annihilator R M) :=
+    isNoetherianRing_of_surjective R _ (Ideal.Quotient.mk _) Ideal.Quotient.mk_surjective
+  have : IsArtinianRing (R ⧸ Module.annihilator R M) := by
+    apply isArtinianRing_iff_krullDimLE_zero.mpr
+    apply Ideal.krullDimLE_zero_quotient_iff_forall_minimalPrimes_isMaximal.mpr
+    intro p hp
+    exact h ⟨p, hp.1.1⟩ (Module.mem_support_iff_of_finite.mpr hp.1.2)
+  exact isFiniteLength_of_le_radical_annihilator (Module.annihilator R M) M
+    Ideal.le_radical
+
+end support
+
 end SerrePositivity
 
 end
@@ -418,6 +493,59 @@ lemma length_restrictScalars_equiv (σ : R ≃+* R) (M : ModuleCat.{u} R) :
   exact length_eq_of_semilinear_bijective σ.toRingHom σ.surjective f Function.bijective_id
 
 end semilinear
+
+/-- Noether 環上の有限生成加群の台が有限長加群の台に含まれるなら、その加群も有限長である。
+台に属する素イデアルがすべて極大であるという有限長性の判定による。 -/
+theorem isFiniteLength_of_support_subset {R : Type u} [CommRing R] [IsNoetherianRing R]
+    (M N : Type u) [AddCommGroup M] [Module R M] [Module.Finite R M]
+    [AddCommGroup N] [Module R N] (hN : IsFiniteLength R N)
+    (h : Module.support R M ⊆ Module.support R N) : IsFiniteLength R M :=
+  isFiniteLength_of_support_isMaximal M (fun p hp =>
+    isMaximal_of_mem_support_of_isFiniteLength N hN p (h hp))
+
+end SerrePositivity
+
+end
+
+@[expose] public section
+
+open scoped TensorProduct
+
+namespace SerrePositivity
+
+variable {R : Type u} [CommRing R]
+
+/-- 有限自由加群とのテンソル積の長さは、自由加群の階数ともう一方の長さの積。
+有限基底でテンソル積を有限直和に同一視し、長さの加法性を使う。長さの有限性は不要。 -/
+lemma length_tensorProduct_of_finite_free_left (M N : Type u) [AddCommGroup M] [Module R M]
+    [AddCommGroup N] [Module R N] [Module.Free R M] [Module.Finite R M] :
+    Module.length R (M ⊗[R] N) = Module.finrank R M * Module.length R N := by
+  classical
+  nontriviality R using Module.length_eq_zero
+  let b := Module.Free.chooseBasis R M
+  let e := TensorProduct.congr b.equivFun (LinearEquiv.refl R N) ≪≫ₗ
+    TensorProduct.piLeft R N (fun _ : Module.Free.ChooseBasisIndex R M => R) ≪≫ₗ
+    LinearEquiv.piCongrRight (fun _ => TensorProduct.lid R N)
+  rw [e.length_eq, Module.length_pi_of_fintype]
+  simp only [Finset.sum_const, Finset.card_univ, nsmul_eq_mul]
+  congr 1
+  exact_mod_cast (Module.finrank_eq_card_basis b).symm
+
+/-- 完全列の両端が有限長なら中央も有限長。中央を核と像に分け、
+両端の部分商の有限長性と短完全列での長さの加法性を使う。 -/
+lemma isFiniteLength_of_exact {M N L : Type u} [AddCommGroup M] [Module R M]
+    [AddCommGroup N] [Module R N] [AddCommGroup L] [Module R L]
+    (f : M →ₗ[R] N) (g : N →ₗ[R] L) (he : Function.Exact f g)
+    (hM : IsFiniteLength R M) (hL : IsFiniteLength R L) : IsFiniteLength R N := by
+  have hk : IsFiniteLength R (LinearMap.ker g) := by
+    rw [LinearMap.exact_iff.mp he]
+    exact hM.of_surjective f.surjective_rangeRestrict
+  have hr := hL.of_injective (LinearMap.range g).injective_subtype
+  apply Module.length_ne_top_iff.mp
+  rw [Module.length_eq_add_of_exact (LinearMap.ker g).subtype g.rangeRestrict
+    (LinearMap.ker g).injective_subtype g.surjective_rangeRestrict
+    (by rw [LinearMap.exact_iff]; ext x; simp)]
+  exact WithTop.add_ne_top.mpr ⟨Module.length_ne_top_iff.mpr hk, Module.length_ne_top_iff.mpr hr⟩
 
 end SerrePositivity
 

@@ -1,6 +1,12 @@
 module
 
+public import SerrePositivity.HomologicalAlgebra.Basic
+public import Mathlib.LinearAlgebra.Dimension.Localization
+public import Mathlib.Algebra.Homology.ShortComplex.ModuleCat
+public import Mathlib.Basic.Real.Basic
+public import Mathlib.Tactic.Ring
 public import Mathlib.Algebra.Category.ModuleCat.Abelian
+public import Mathlib.Algebra.Category.ModuleCat.Projective
 public import Mathlib.Algebra.Homology.Additive
 public import Mathlib.Algebra.Homology.Embedding.Basic
 public import Mathlib.Algebra.Homology.Embedding.Extend
@@ -9,6 +15,7 @@ public import Mathlib.Algebra.Homology.Embedding.Restriction
 public import Mathlib.Algebra.Homology.Embedding.RestrictionHomology
 public import Mathlib.Algebra.Homology.QuasiIso
 public import Mathlib.Algebra.Homology.SingleHomology
+public import Mathlib.CategoryTheory.Abelian.LeftDerived
 public import Mathlib.CategoryTheory.Abelian.Projective.Resolution
 public import Mathlib.CategoryTheory.Preadditive.Projective.Resolution
 
@@ -41,6 +48,9 @@ public import Mathlib.CategoryTheory.Preadditive.Projective.Resolution
    射影分解への持ち上げ `ProjectiveResolution.lift f P Q` も延長でき（`extLift`）、`0` 次のホモロジーで
    `f` を誘導する（`extLift_homologyZero`）。Tor の長完全列（`TorLES.lean`）で、短完全列の射を
    分解の間の鎖写像に持ち上げて写像錐をとるために使う。
+
+階数の計算として、整域上の有限な射影分解の階数の交代和を求める
+`resolution_alternating_finrank` も示す。正則局所環に固有の入力には依存しない。
 
 ## 規約
 
@@ -316,4 +326,203 @@ lemma extLift_homologyZero {Y : ModuleCat.{u} R} (f : X ⟶ Y) (Q : ProjectiveRe
 
 end extend
 
+/-- 加法的関手の左導来関手を、任意の射影コチェイン分解で計算する。
+Mathlib の `ProjectiveResolution.isoLeftDerivedObj` を使い、自然数添字の鎖複体と
+整数添字のコチェイン複体を同一視する。右完全性、有限生成性、有界性は不要である。 -/
+noncomputable def leftDerivedIsoCochain {S : Type u} [CommRing S]
+    (G : ModuleCat.{u} R ⥤ ModuleCat.{u} S) [G.Additive]
+    {Z : ModuleCat.{u} R} {K : CochainComplex (ModuleCat.{u} R) ℤ}
+    (h : IsResolutionOf K Z) (i : ℕ) :
+    (G.leftDerived i).obj Z ≅ ((G.mapHomologicalComplex _).obj K).homology (-(i : ℤ)) :=
+  h.toProjectiveResolution.isoLeftDerivedObj G i ≪≫
+    (HomologicalComplex.homologyFunctor _ _ i).mapIso (mapRestrictionIso G K) ≪≫
+    toChainHomologyIso _ (fun j hj => G.map_isZero (h.isZero_X j hj)) i
+
+/-- 左側で有界な射影コチェイン分解があれば、任意の加法的関手の高次左導来関手は消える。
+`K^j = 0 (j < a)` なら、`i > max(0,-a)` で計算に使う `K^{-i}` が零になる。
+正則局所環や有限生成性に依存せず、有界な分解そのものを仮定として受け取る。 -/
+theorem isZero_leftDerived_eventually_of_resolution {S : Type u} [CommRing S]
+    (G : ModuleCat.{u} R ⥤ ModuleCat.{u} S) [G.Additive]
+    {Z : ModuleCat.{u} R} {K : CochainComplex (ModuleCat.{u} R) ℤ}
+    (h : IsResolutionOf K Z) (a : ℤ) (ha : ∀ j, j < a → IsZero (K.X j)) :
+    ∃ n : ℕ, ∀ i : ℕ, n < i → IsZero ((G.leftDerived i).obj Z) := by
+  refine ⟨(-a).toNat, fun i hi => ?_⟩
+  apply (leftDerivedIsoCochain G h i).isZero_iff.mpr
+  exact ShortComplex.isZero_homology_of_isZero_X₂ _ (G.map_isZero (ha _ (by omega)))
+
+/-- 加法的関手の左導来関手も加法的である。
+二つの射を同じ射影分解の間に持ち上げ、その和が和の持ち上げになることから従う。 -/
+instance leftDerived_additive {C D : Type*} [Category* C] [Abelian C]
+    [HasProjectiveResolutions C] [Category* D] [Abelian D] (F : C ⥤ D) [F.Additive] (i : ℕ) :
+    (F.leftDerived i).Additive where
+  map_add {X Y} f g := by
+    let P := projectiveResolution X
+    let Q := projectiveResolution Y
+    let f' := ProjectiveResolution.lift f P Q
+    let g' := ProjectiveResolution.lift g P Q
+    have hf : f' ≫ Q.π = P.π ≫ (ChainComplex.single₀ _).map f :=
+      ProjectiveResolution.lift_commutes f P Q
+    have hg : g' ≫ Q.π = P.π ≫ (ChainComplex.single₀ _).map g :=
+      ProjectiveResolution.lift_commutes g P Q
+    have hfg : (f' + g') ≫ Q.π = P.π ≫ (ChainComplex.single₀ _).map (f + g) := by
+      rw [Preadditive.add_comp, hf, hg, Functor.map_add, Preadditive.comp_add]
+    rw [F.leftDerived_map_eq i (f + g) (f' + g') hfg,
+      F.leftDerived_map_eq i f f' hf, F.leftDerived_map_eq i g g' hg,
+      Functor.map_add]
+    erw [Preadditive.add_comp, Preadditive.comp_add]
+
+/-- 関手が環準同型 `φ` に沿って射のスカラー倍と両立すれば、その左導来関手も同じ性質をもつ。
+射影分解の間の持ち上げをスカラー倍し、ホモロジー上のスカラー作用と比較する。 -/
+theorem leftDerived_map_smul {S : Type u} [CommRing S] (φ : R →+* S)
+    (F : ModuleCat.{u} R ⥤ ModuleCat.{u} S) [F.Additive]
+    (hF : ∀ {X Y : ModuleCat.{u} R} (a : R) (f : X ⟶ Y), F.map (a • f) = φ a • F.map f)
+    (i : ℕ) {X Y : ModuleCat.{u} R} (a : R) (f : X ⟶ Y) :
+    (F.leftDerived i).map (a • f) = φ a • (F.leftDerived i).map f := by
+  let P := projectiveResolution X
+  let Q := projectiveResolution Y
+  let g := ProjectiveResolution.lift f P Q
+  have hw : g ≫ Q.π = P.π ≫ (ChainComplex.single₀ (ModuleCat.{u} R)).map f :=
+    ProjectiveResolution.lift_commutes f P Q
+  have hwa : (a • g) ≫ Q.π =
+      P.π ≫ (ChainComplex.single₀ (ModuleCat.{u} R)).map (a • f) := by
+    rw [single_map_smul, Linear.smul_comp, Linear.comp_smul, hw]
+  have hmap : (F.mapHomologicalComplex (ComplexShape.down ℕ)).map (a • g) =
+      φ a • (F.mapHomologicalComplex _).map g := by
+    apply HomologicalComplex.hom_ext
+    intro j
+    exact hF a (g.f j)
+  rw [F.leftDerived_map_eq i (a • f) (a • g) hwa,
+    F.leftDerived_map_eq i f g hw, Functor.comp_map, hmap,
+    HomologicalComplex.homologyFunctor_map, homologyMap_smul]
+  erw [Linear.smul_comp, Linear.comp_smul]
+  rfl
+
+/-- `a` が加群 `X` を消すとき、スカラー倍と両立する加法的関手の
+左導来関手の値は `φ(a)` で消える。導来関手の加法性とスカラー倍の保存による。 -/
+theorem leftDerived_smul_eq_zero {S : Type u} [CommRing S] (φ : R →+* S)
+    (F : ModuleCat.{u} R ⥤ ModuleCat.{u} S) [F.Additive]
+    (hF : ∀ {X Y : ModuleCat.{u} R} (a : R) (f : X ⟶ Y), F.map (a • f) = φ a • F.map f)
+    (i : ℕ) (X : ModuleCat.{u} R) (a : R) (ha : ∀ x : X, a • x = 0)
+    (x : (F.leftDerived i).obj X) : φ a • x = 0 := by
+  have hz : (a • 𝟙 X : X ⟶ X) = 0 := ModuleCat.hom_ext (LinearMap.ext ha)
+  have h := leftDerived_map_smul φ F hF i a (𝟙 X)
+  rw [hz, Functor.map_zero, CategoryTheory.Functor.map_id] at h
+  exact (congrArg (fun f : (F.leftDerived i).obj X ⟶ (F.leftDerived i).obj X => f.hom x) h).symm
+
 end SerrePositivity
+
+namespace SerrePositivity
+
+variable {R : Type u} [CommRing R] [IsDomain R]
+/-- 整域上の完全列の中央の有限生成加群の階数は、前後の射の像の階数の和である。
+Mathlib の商加群に対する rank-nullity と第一同型定理による。 -/
+lemma finrank_eq_add_range_of_exact {M N L : ModuleCat.{u} R}
+    [Module.Finite R N] (f : M ⟶ N) (g : N ⟶ L) (he : Function.Exact f.hom g.hom) :
+    Module.finrank R N = Module.finrank R (LinearMap.range f.hom) +
+      Module.finrank R (LinearMap.range g.hom) := by
+  have h := (LinearMap.ker g.hom).finrank_quotient_add_finrank
+  rw [g.hom.quotKerEquivRange.finrank_eq, LinearMap.exact_iff.mp he] at h
+  omega
+
+/-- 整域上の射影分解の各項が有限生成で、`n + 1` 次の項が零なら、
+`0` 次から `n` 次までの階数の交代和は分解される加群の階数に等しい。
+微分の像の階数を用いて完全列の加法性を足し合わせる。自由性や正則局所性は不要。 -/
+lemma resolution_alternating_finrank {M : ModuleCat.{u} R}
+    (P : ProjectiveResolution M) (hfinite : ∀ i, Module.Finite R (P.complex.X i))
+    (n : ℕ) (hz : IsZero (P.complex.X (n + 1))) :
+    (∑ i ∈ Finset.range (n + 1), (-1 : ℝ)^i * Module.finrank R (P.complex.X i)) =
+      Module.finrank R M := by
+  let r := fun i => (Module.finrank R (LinearMap.range (P.complex.d (i + 1) i).hom) : ℝ)
+  have e0 : (Module.finrank R (P.complex.X 0) : ℝ) = Module.finrank R M + r 0 := by
+    have := hfinite 0
+    have h := finrank_eq_add_range_of_exact (P.complex.d 1 0) (P.π.f 0)
+      (LinearMap.exact_iff.mpr P.exact₀.moduleCat_range_eq_ker.symm)
+    have hs : Function.Surjective (P.π.f 0).hom := (ModuleCat.epi_iff_surjective _).mp inferInstance
+    rw [LinearMap.range_eq_top.mpr hs] at h
+    have ht : Module.finrank R (⊤ : Submodule R M) = Module.finrank R M :=
+      (Submodule.topEquiv : (⊤ : Submodule R M) ≃ₗ[R] M).finrank_eq
+    change Module.finrank R (P.complex.X 0) = _ + Module.finrank R (⊤ : Submodule R M) at h
+    rw [ht] at h
+    dsimp [r]
+    exact_mod_cast h.trans (Nat.add_comm _ _)
+  have es (i : ℕ) : (Module.finrank R (P.complex.X (i + 1)) : ℝ) = r i + r (i + 1) := by
+    have := hfinite (i + 1)
+    have h := finrank_eq_add_range_of_exact (P.complex.d (i + 2) (i + 1))
+      (P.complex.d (i + 1) i)
+      (LinearMap.exact_iff.mpr (P.exact_succ i).moduleCat_range_eq_ker.symm)
+    dsimp [r]
+    exact_mod_cast h.trans (Nat.add_comm _ _)
+  have hs : ∀ k, (∑ i ∈ Finset.range (k + 1), (-1 : ℝ)^i * Module.finrank R (P.complex.X i)) =
+      Module.finrank R M + (-1 : ℝ)^k * r k := by
+    intro k
+    induction k with
+    | zero => simpa using e0
+    | succ k ih =>
+      rw [Finset.sum_range_succ, ih, es k, pow_succ]
+      ring
+  have hr : r n = 0 := by
+    have := ModuleCat.subsingleton_of_isZero hz
+    have : Subsingleton (LinearMap.range (P.complex.d (n + 1) n).hom) :=
+      (P.complex.d (n + 1) n).hom.surjective_rangeRestrict.subsingleton
+    simp [r, Module.finrank_zero_of_subsingleton]
+  simpa [hr] using hs n
+end SerrePositivity
+
+@[expose] public section
+
+open CategoryTheory Limits
+
+namespace SerrePositivity
+
+variable {R : Type u} [CommRing R]
+
+/-! ## 射影分解の syzygy と短完全列 -/
+
+namespace ResolutionSyzygy
+variable {M : ModuleCat.{u} R} (P : ProjectiveResolution M)
+/-- 射影分解の第 `i` syzygy。0 次は分解される加群、`i + 1` 次は
+微分 `Pᵢ₊₁ → Pᵢ` の像であり、完全性から前の射の核にも等しい。 -/
+noncomputable def obj : ℕ → ModuleCat.{u} R
+  | 0 => M
+  | i + 1 => ModuleCat.of R (LinearMap.range (P.complex.d (i + 1) i).hom)
+/-- 次の syzygy を分解の第 `i` 項に埋め込む射。 -/
+noncomputable def ι (i : ℕ) : obj P (i + 1) ⟶ P.complex.X i :=
+  ModuleCat.ofHom (LinearMap.range (P.complex.d (i + 1) i).hom).subtype
+/-- 分解の第 `i` 項から syzygy への全射。0 次では添加写像、
+正次数では微分の余域をその像に制限した写像である。 -/
+noncomputable def π : ∀ i, P.complex.X i ⟶ obj P i
+  | 0 => P.π.f 0
+  | i + 1 => ModuleCat.ofHom (P.complex.d (i + 1) i).hom.rangeRestrict
+/-- `Zᵢ₊₁ → Pᵢ → Zᵢ` は中央で完全。元の分解の完全性を像への制限に移す。 -/
+lemma exact (i : ℕ) : Function.Exact (ι P i).hom (π P i).hom := by
+  cases i with
+  | zero =>
+    rw [LinearMap.exact_iff]
+    change (P.π.f 0).hom.ker = (LinearMap.range (P.complex.d 1 0).hom).subtype.range
+    rw [Submodule.range_subtype]
+    exact P.exact₀.moduleCat_range_eq_ker.symm
+  | succ i =>
+    rw [LinearMap.exact_iff]
+    change (P.complex.d (i + 1) i).hom.rangeRestrict.ker =
+      (LinearMap.range (P.complex.d (i + 2) (i + 1)).hom).subtype.range
+    rw [Submodule.range_subtype, LinearMap.ker_rangeRestrict]
+    exact (P.exact_succ i).moduleCat_range_eq_ker.symm
+/-- syzygy の包含射は単射。 -/
+lemma injective_ι (i : ℕ) : Function.Injective (ι P i).hom := Subtype.val_injective
+/-- 分解の各項から syzygy への射は全射。 -/
+lemma surjective_π (i : ℕ) : Function.Surjective (π P i).hom := by
+  cases i with
+  | zero => exact (ModuleCat.epi_iff_surjective (P.π.f 0)).mp inferInstance
+  | succ i => exact (P.complex.d (i + 1) i).hom.surjective_rangeRestrict
+/-- 分解の `n + 1` 次の項が零なら、その像である syzygy も零。
+有限分解に沿った降下帰納法の出発点になる。 -/
+lemma isZero_obj_succ (n : ℕ) (hz : IsZero (P.complex.X (n + 1))) : IsZero (obj P (n + 1)) := by
+  have := ModuleCat.subsingleton_of_isZero hz
+  have : Subsingleton (obj P (n + 1)) :=
+    (P.complex.d (n + 1) n).hom.surjective_rangeRestrict.subsingleton
+  exact ModuleCat.isZero_of_subsingleton _
+end ResolutionSyzygy
+
+end SerrePositivity
+
+end
