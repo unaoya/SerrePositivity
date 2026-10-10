@@ -37,7 +37,7 @@
 
 \section*{このノートの目的}
 
-OpenAI の論文「Positivity of Serre's Intersection Multiplicity」は、almost flat を $\lambda$-平坦に、almost CM を $\lambda$-CM に弱めることで結論を得た（解説 \texttt{exposition-ja} の付録 D、E）。弱めてよかった理由は三つあった。
+OpenAI の論文「Positivity of Serre's Intersection Multiplicity」は、almost flat を $\lambda$-平坦に、almost CM を $\lambda$-CM に弱めることで結論を得た（解説 \texttt{exposition-ja} の付録 C、D）。弱めてよかった理由は三つあった。
 \begin{enumerate}
   \item 正値性は数の主張であり、$\lambda$ は数を返す。
   \item 標数 $p$ では almost の形の入力は得られないが、$\lambda$ の形なら Roberts の定理から得られる。
@@ -61,6 +61,10 @@ Serre の論文の Theorem 2.5 の標数 $p$ の証明では、$A[1/g]\to D[1/g]
 完全化（混標数では almost purity による perfectoid 化）の後では、生成的にエタールな有限拡大は全て almost étale になる。したがって、最上次の $\lambda$ で定義した「$\lambda$-エタール」は自動的に成り立ち、余次元 $1$ の分岐すら見えない。
 
 同じことは重複度でも起きる。整域 $R$ 上の有限加群 $M$ について $\eHK(I;M) = \rank(M)\,\eHK(I;R)$ なので、有限拡大 $R\subseteq S$ について $\eHK(\m;S) = [L:K]\,\eHK(\m;R)$ は分岐と無関係に成り立つ（$S$ を $R$ 加群と見る）。最上次の長さは、分岐を見るには粗すぎる。
+
+\subsection{期待できることと注意}
+混標数で perfectoid を使わずに $\lambda$-エタールや $\lambda$-平坦を示す、という方向は見込みが薄い。標数 $p$ で $g$ を $g^{1/q}$ に薄めているのは Frobenius で、混標数でその役をするのは結局 almost purity だからである。$\lambda$ 版の概念が新しく与えうるのは、証明の易しさよりも、(i) almost が成り立たない状況でも数値的な結論を出せること、(ii) 有限段での速さ（次元ごとの位数）という定量的な情報、の二点だと思われる。なお、$\lambda$-CM の議論に分岐が直接は出てこないのは、平坦でない場所 $W$ が分岐の場所 $V(g)$ に含まれる（エタールなら平坦）からである。
+（この小節は 2026-10-11 に解説の付録から移した。）
 
 \section{二つの方向}
 

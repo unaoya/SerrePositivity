@@ -1240,56 +1240,8 @@ CM な対象が有限加群なら、普通の長さで測れるので、二つ�
 \end{itemize}
 
 
-\subsection{OpenAI の Lech の論文と、小さな CM 加群の反例}\label{sec:prior-lech}
-
-元論文と同日に、同じ方法を使う論文が二つ公開されている（openai/math の \ld{preprints/} 以下）。
-\begin{itemize}
-  \item OpenAI, \emph{Lech's multiplicity conjecture}（2026-09-23）。以下「Lech の論文」。
-  \item OpenAI, \emph{A Complete Local Domain without a Small Cohen--Macaulay Module}（2026-09-23）。以下「小さな CM 加群の論文」。
-\end{itemize}
-
-\paragraph{Lech の論文の主張と方法}
-主定理は、Noetherian 局所環の平坦な局所準同型 $R\to S$ について $e(R)\le e(S)$（Lech の重複度予想）を、次元・剰余体・標数の制限なしに示すというものである。道具立ては元論文と共通で、この解説の枠組みにかなり近い形で書かれている。
-\begin{itemize}
-  \item \textbf{§2.1（長さの仮定）}：$I = (z_1,\dots,z_h)C$ の冪で消される $C$ 加群の上の加法的な長さ $\lambda$ をとり、$C$ のネーター性は課さない。長さ $0$ の加群の直和と有向余極限が（共通の $I$ の冪で消される範囲で）長さ $0$ であること、$\lambda(C/(z^a)C) = a^h\mu$、$\lambda H_i(z^a;C) = 0$（$i>0$）を仮定する（式 (2.1)）。さらに、長さ $0$ の対象は Serre 部分圏をなすので、その商で核・像・余核・有限スペクトル系列を扱ってよい、と明記している。\ref{sec:planB} の $\mathcal{A}_\lambda$ を、名前をつけずに使っている形である。
-  \item \textbf{Lemma 2.2}：Koszul 複体の分裂 $F\otimes K_a\simeq\bigoplus F[|T|]$ と、Koszul を先にとる二重複体の議論で、短い自由複体の正の次数のホモロジーが長さ $0$ であることを示す。補題~\ref{lem:nit}、\ref{lem:B-nit} と同じ議論である。
-  \item \textbf{§3「Normalized length algebras」、Theorem 3.1}：元論文の Theorem 2.5（定理~\ref{thm:existence}）に、標数 $p$ で $\lambda(C/HC) = e_{\mathrm{HK}}(H,D)$、混標数で $\lambda(C/HC)\le e(H,D)$（CLMST Cor.~4.0.18 による）を加えたもの。Lemma 3.2 は元論文の Lemma 2.4 に当たる。
-  \item \textbf{Theorem 2.1（主な道具）}：長さ $h$ 以下で $V(I)$ の外で可縮、交代階数 $0$ の有限自由複体 $F$ の微分の成分が $I^s$ に入るとき、
-  \[
-    \lambda H_0(F) \;\ge\; \mu s^h\Bigl(b_0 - \frac{A_h}{s}\sum_i b_i\Bigr).
-  \]
-  定数 $A_h$ は $h$ だけによる。爆発と Eisenbud--Schreyer のベクトル束で示される。
-\end{itemize}
-
-\paragraph{Dutta 重複度}
-Lech の論文 §5.1（Cor.~5.4 の証明）は、標数 $p$ の局所環 $R$ 上の短い複体 $G$（長さ $\dim R$ 以下で有限長ホモロジーをもつ有限自由複体）について、$C = R_{\mathrm{perf}}$ と正規化長さで
-\[
-  \lambda H_0(C\otimes_R G) \;=\; \chi^R_\infty(G)\qquad\text{（Dutta 重複度）}
-\]
-を示している。高次の項は Roberts の Frobenius ホモロジー定理で消える。つまり、この解説の言葉で「$R_{\mathrm{perf}}$ による評価は Dutta 重複度である」ことが、短い複体については明記されている。Cor.~5.4 自体は、標数 $p$ の完備局所整域上の短い複体について $\chi_\infty(F)\ge e(R)$ を示しており、Iyengar--Ma--Walker の予想（ANT 16 (2022)、Conjecture 8.1）の整域の場合に当たる。
-
-\paragraph{lim Ulrich 列との関係}
-Ma（Invent.\ Math.\ 231 (2023)）は、弱い lim Ulrich 列（重複度と生成元数の比が $1$ に近づき、高次の Koszul Euler 特性が生成元数に比べて無視できる有限加群の列）を構成して、標準次数付きの場合に Lech 予想を示した。Lech の論文は有限加群の列を使わず、単一の $\lambda$-CM 代数と上の一様な評価で置き換えている（序論では、Ulrich 加群や Ulrich 列を全ての源の環に要求しない方針だと述べている）。これは元論文と BHM の関係（§\ref{sec:prior-bhm}）と同じ構図である。
-\begin{center}
-\small
-\begin{tabularx}{\textwidth}{>{\raggedright}p{2.8cm}>{\raggedright}X>{\raggedright\arraybackslash}X}
-\toprule
-予想 & 有限加群の列による条件付きの経路 & OpenAI の経路 \\
-\midrule
-Serre の正値性 & BHM の lim CM 列（型 (iii)） & $\lambda$-CM 代数（型 (ii)）と K 理論の降下 \\
-Lech の予想 & Ma の弱い lim Ulrich 列（型 (iii)） & $\lambda$-CM 代数（型 (ii)）と短い複体の一様な評価 \\
-\bottomrule
-\end{tabularx}
-\end{center}
-どちらも有限加群の列の存在問題を迂回しており、lim CM 列や lim Ulrich 列そのものは構成していない。
-
-\paragraph{小さな CM 加群の反例}
-小さな CM 加群の論文の主定理（abstract による）は、剰余体 $\mathbb{C}$ の 3 次元完備 Noetherian 正規局所整域で、$0$ でない有限生成の極大 CM 加群をもたないものが存在する、というもので、小さな CM 加群予想の整域版を否定する。構成は滑らかな射影曲面の切断環 $R(X,H)$ で、小さな CM 加群をもてば $K_X^2 - 2c_2(X)\le 6H^2$ が成り立つ、という障害を使う。Lech の論文はこれを「有限加群を全ての環に要求する方法は普遍的でない」根拠として挙げ、ただしこの障害は弱い lim Ulrich 列の非存在までは意味しない、と注意している。
-
-\paragraph{まとめ}
-長さ付き代数とその Serre 商という枠組みは、OpenAI の Serre と Lech の二つの論文に共通する方法である。\ref{sec:planB} の整理は、この二つに共通する構造を取り出したものと位置づけられる。どちらの論文も有限加群の列の存在を示さずに、それが与えるはずの結論を $\lambda$-CM 代数から直接出す。一般の完備局所整域が lim CM 列や lim Ulrich 列をもつかは開いている。小さな CM 加群は一般には存在しない。
-
-
+\subsection{Lech の論文}\label{sec:prior-lech}
+元論文と同日に、同じ方法を使う論文が二つ公開されている。OpenAI, \emph{Lech's multiplicity conjecture} と、OpenAI, \emph{A Complete Local Domain without a Small Cohen--Macaulay Module}（いずれも 2026-09-23、openai/math の \ld{preprints/} 以下）である。前者も長さ付き代数とその Serre 商という同じ枠組みを使い、有限加群の列（Ma の弱い lim Ulrich 列）の代わりに $\lambda$-CM 代数と短い複体の一様な評価を使う。これらとの関係は、Lech の論文のノート（\texttt{notes/lech-overview.md}）にまとめた。
 
 %======================================================================
 \section{拡大すると高次の項が消える理由（直感的な説明）}\label{sec:intuition}
@@ -1650,47 +1602,7 @@ $E$ 側 & $E$ が CM なら長さ $l$ の複体は acyclic & $C_E$ が $A_E$ 上
   \item 補題~\ref{lem:lambdaAB} の修正（\S\ref{sec:planB-param} の形への置き換え）と同時に行う。
 \end{itemize}
 
-\subsection{$\lambda$-エタールと $\lambda$ 版の purity（検討課題）}\label{sec:lflat-etale}
-
-元論文は、almost flat を $\lambda$-平坦に、almost CM を $\lambda$-CM に弱めることで結論を得た（弱めた理由は、正値性が数の主張であること、標数 $p$ では almost でなく $\lambda$ の形でしか入力が得られないこと、有限段と比べられること）。同じように、分岐（エタール性）の側も $\lambda$ で測る概念を導入して、別の問題に使えないかを検討する。以下は全て検討段階のアイディアで、確かめた主張ではない。
-
-\paragraph{almost purity も「悪さを薄める」定理である}
-Tate の例 $K_n = \mathbb{Q}_p(p^{1/p^n})$ では、$K_\infty$ の有限次拡大の差積の付値は $n$ とともに $p^{-n}$ 程度の速さで $0$ に近づき、極限で「付値 $0^+$」（almost étale）になる。分岐は消えずに薄まる。標数 $p$ ではほぼ自明で、perfect な環の上では Frobenius が差積を保つので、差積が $t^c$ を含めば $t^{c/p^n}$ を全て含み、almost に単位イデアルになる。これは $\lambda$-CM の議論の「冪根をとるたびに指数が $1/p$ になる」と同じ仕組みである。
-
-\paragraph{元論文の中の $\lambda$ 版 purity}
-定理 2.5 の証明のステップ (3)（\S\ref{sec:intuition-thm25}）は、トレースの分母 $g$ による $g^{1/q}C_D\subseteq B_q$ から、有限段と極限のずれの $\lambda$ が $O(q^{-1})\to0$ となることを出している。これは「分岐によるずれは $\lambda$ で測ると消える」という主張で、標数 $p$ の $\lambda$ 版 almost purity と読める。速さ $q^{-1}$ は分岐の場所 $V(g)$ の余次元 $1$ から来る。
-
-\paragraph{定義の候補}
-$\lambda$ は大きさしか測らないので、エタール性を何かの加群の大きさに翻訳する必要がある。候補は次のとおりで、互いの関係は分かっていない。
-\begin{itemize}
-  \item トレース：$C\to\operatorname{Hom}_A(C,A)$ の余核を $\m_A$ の冪で割ったものの $\lambda$ が $0$。
-  \item 微分：全ての $N$ で $\lambda(\Omega_{C/A}\otimes A/\m_A^N) = 0$。
-  \item 対角：$C\otimes_A C\to C$ が、$\lambda$ が $0$ の核・余核を除いて分裂する。
-\end{itemize}
-強さはエタール $\Rightarrow$ almost étale $\Rightarrow$ $\lambda$-エタールの順になるはずで、$\lambda$-平坦と同じ並びである。「$\lambda$-エタール $\Rightarrow$ $\lambda$-平坦」も期待できる。
-
-ただし、最上次の $\lambda$ だけでは弱すぎる可能性が高い。上のとおり標数 $p$ の完全化（混標数では almost purity による perfectoid 化）の後では、生成的にエタールな有限拡大は全て almost étale になり、したがって $\lambda$-エタールになってしまう。最上次の $\lambda$ は余次元 $1$ の分岐すら見えない。
-
-\paragraph{次元ごとに細分した長さ}
-$\lambda$ で $0$ になる部分にも、有限段では次の位数の大きさがある。\S\ref{sec:intuition-growth} と \S\ref{sec:intuition-thm25} で見たとおり、余次元 $k$ の場所に住む悪さは $q^{h-k}$ の速さで増える。そこで、長さを位数 $q^{h-k}$ ごとに細分した量（$\lambda^{(0)} = \lambda$、$\lambda^{(1)}$、\dots）を考えると、次のような対応が期待できる。
-\begin{itemize}
-  \item 平坦性（CM 性）の側：$\lambda^{(k)}$ まで欠陥が見えないことは、$\dim W\le h-k-1$、すなわち Serre の条件 $S_k$ 型の条件に当たる。
-  \item 分岐の側：分岐の場所は余次元 $1$ なので、$\lambda^{(1)}$ に現れる。分岐の場所の純粋性（Zariski--Nagata）は、「分岐は $\lambda^{(1)}$ で測れる部分に全て現れ、$\lambda^{(2)}$ 以下にだけ住む分岐はない」と読める。
-\end{itemize}
-Hilbert--Kunz 関数の第二係数（Huneke--McDermott--Monsky、Kurano など）は、正規環で $q^{h-1}$ の位数に現れ、因子類や標準因子と関係することが知られている（と理解している。正確な主張は未確認）。有限拡大 $A\subseteq D$ では、標準因子の差は分岐因子（Hurwitz の公式）なので、第二係数が分岐を測る量になっている可能性がある。
-
-\paragraph{先例：局所基本群の有限性}
-「余次元 $1$ でエタールな拡大に対する長さの変換公式」という形の議論には、既に成果がある。標数 $p$ では Carvajal-Rojas--Schwede--Tucker が、F-signature の有限拡大に対する変換公式から、強 F 正則な特異点の局所エタール基本群が有限であること（位数は $1/s(R)$ 以下）を示した。CLMST の論文（題名にある「an application to local fundamental groups」）は、その perfectoid 版を混標数で与えている。これらは $\lambda$ 型の数値不変量と「余次元 $1$ でエタール」という条件を組み合わせた議論であり、ここでの $\lambda$-エタールの発想に最も近い先例である。
-
-\paragraph{使えるかもしれない問題（候補）}
-\begin{itemize}
-  \item 局所基本群の有限性・位数の評価を、より広いクラスの特異点や、F 正則性・BCM 正則性の仮定を弱めた状況に広げること。
-  \item 分岐の場所の純粋性の定量版（$\lambda^{(1)}$ による「分岐の大きさ」と分岐因子の関係）を、混標数や正則でない基底の上で述べること。
-  \item Hilbert--Kunz 重複度、perfectoid Hilbert--Kunz 重複度、Dutta 重複度の、有限拡大に対する変換公式。Lech の論文（Theorem 3.1 (3)）や小さな CM 加群の問題と関係するかもしれない。
-  \item 元論文の Galois 閉包と K 理論の降下（§\ref{sec:perfect}）を、「$\lambda$ が $0$ のものを除いて Galois 不変部分をとる」という形に単純化すること。
-\end{itemize}
-
-\paragraph{注意}
-混標数で perfectoid を使わずに $\lambda$-エタールや $\lambda$-平坦を示す、という方向は見込みが薄い。標数 $p$ で $g$ を $g^{1/q}$ に薄めているのは Frobenius で、混標数でその役をするのは結局 almost purity だからである。$\lambda$ 版の概念が新しく与えうるのは、証明の易しさよりも、(i) almost が成り立たない状況でも数値的な結論を出せること、(ii) 有限段での速さ（次元ごとの位数）という定量的な情報、の二点だと思われる。なお、$\lambda$-CM の議論に分岐が直接は出てこないのは、平坦でない場所 $W$ が分岐の場所 $V(g)$ に含まれる（エタールなら平坦）からである。
+\paragraph{$\lambda$-エタール}
+分岐（エタール性）の側も $\lambda$ で測る概念を導入して別の問題に使えないか、という検討は、別のノート（\texttt{notes/lambda-etale/lambda-etale-ja.tex}）にまとめた。
 
 \end{document}
