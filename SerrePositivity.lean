@@ -25,6 +25,7 @@ public import SerrePositivity.CommutativeAlgebra.HomologyLength
 public import SerrePositivity.CommutativeAlgebra.Truncate
 public import SerrePositivity.PerfectComplex.NormalizedLength
 public import SerrePositivity.PerfectComplex.NormalizedLengthComap
+public import SerrePositivity.PerfectComplex.TensorResolutionLength
 public import SerrePositivity.PerfectComplex.SupProperty
 public import SerrePositivity.PerfectComplex.QuotientLength
 public import SerrePositivity.PerfectComplex.Basic
