@@ -467,12 +467,12 @@ $\m_D^N\subseteq\m_A D$ となる $N$ があるので、$\m_A C$-冪ねじれと
 命題~\ref{prop:B-compare} の入力 & 確かめる場所 \\
 \midrule
 $\chi_{\ord}$、$\chi_C$ が $K_0$ 上の Euler 評価であること（命題~\ref{prop:B-euler} の (Fin)） & §\ref{sec:perfect-eval}：補題~\ref{lem:C-nil}、\ref{lem:koszulbound}、命題~\ref{prop:C-euler}、\ref{prop:35a} \\
-(a) 基底から来る類での一致 & §\ref{sec:planC-comparison}：命題~\ref{prop:C-base}、\ref{prop:35b}。$e_\lambda$ の値は系~\ref{cor:allv} \\
-(b) 不変類の降下 & §\ref{sec:planC-comparison}：定理~\ref{thm:descent}（引用） \\
+(a) 基底から来る類での一致 & §\ref{sec:planC-comparison}：命題~\ref{prop:C-base}。§\ref{sec:perfect-35}：命題~\ref{prop:35b}。$e_\lambda$ の値は系~\ref{cor:allv} \\
+(b) 不変類の降下 & §\ref{sec:perfect-35}：定理~\ref{thm:descent}（引用） \\
 \bottomrule
 \end{tabularx}
 \end{center}
-定理~\ref{thm:C-norm} は、この三つを一般の二つの長さ付き代数についてまとめた比較定理で、命題~\ref{prop:35c} はその特殊例である。§\ref{sec:perfect-vanishing} の消滅と下界は命題~\ref{prop:35c} には使わない。§\ref{sec:asymp} の系~\ref{cor:nitasymp} を通して、正値性（補題~\ref{lem:pos}）で使う。§\ref{sec:perfect-flat} は $\lambda$-平坦な代数での適用である。
+§\ref{sec:planC-comparison} の定理~\ref{thm:C-norm} は、この三つを一般の二つの長さ付き代数についてまとめた、この実現での比較定理である。命題~\ref{prop:35c} はその特殊例として §\ref{sec:perfect-35} で示す。§\ref{sec:perfect-vanishing} の消滅と下界は命題~\ref{prop:35c} には使わない。§\ref{sec:asymp} の系~\ref{cor:nitasymp} を通して、正値性（補題~\ref{lem:pos}）で使う。§\ref{sec:perfect-flat} は $\lambda$-平坦な代数での適用である。
 
 \subsection{設定と評価関手}\label{sec:perfect-eval}
 
@@ -583,7 +583,7 @@ $\chi_{\ord}$、$\chi_C$ は $\mathcal{K}_T$ の全ての対象で有限で、�
 \end{proof}
 \lean{\ld{Paper.lemma_3_5a}、\ld{lemma_3_5a_lam_finite}（証明済み）。}
 
-\subsection{基底から来る類と比較}\label{sec:planC-comparison}
+\subsection{この実現での比較定理}\label{sec:planC-comparison}
 
 
 \begin{proposition}[基底から来る類での評価]\label{prop:C-base}
@@ -631,6 +631,8 @@ $T$ 上の群作用が $A$ を固定すれば、ひねり $P\mapsto P^g$ がこ�
 
 二つの評価先 $\mathcal{A}_{\lambda_1}^{\mathrm{fin}}$ と $\mathcal{A}_{\lambda_2}^{\mathrm{fin}}$ を同じ圏に同定する必要はない。共通なのは評価元の $K_0$ と、最終的な実数値の Euler 評価である。$T$ が局所でない場合、$\Perf_{(z)}(T)$ の台は閉ファイバー $V(\m_AT)$ であり、一つの閉点に限らない。
 
+\subsection{Lemma 3.5b、3.5c}\label{sec:perfect-35}
+
 以下の命題~\ref{prop:35b}、\ref{prop:35c} は、$(C_1,\lambda_1)=(T,\len_T)$ と $(C_2,\lambda_2)=(C,\lambda)$ をとった場合である。$T$ の局所性と剰余体の一致は、普通の側の $e_{\len_T}(z;T)=r$ の計算で使い、比較定理そのものには使わない。
 
 \begin{proposition}\orig{Lemma 3.5b、命題~\ref{prop:C-base} の系}\label{prop:35b}
@@ -667,7 +669,9 @@ $A$ を有限次元ネーター $\Z_{(p)}$ 代数、$J\ni p$、$H$ を連結な 
 \end{proof}
 \lean{\ld{Paper.lemma_3_5c}（引用を除いて証明済み）。ただし Lean の証明はこの形になっていない。旧来の有限自由モデル（\ld{K0Supported}、\ld{chiOrdHom}、\ld{chiLamHom_of_finite}）の上で群論の \ld{conjSum_eq} を直接使い、定理~\ref{thm:C-norm}（\ld{perfectEuler_conjSum_eq}）を経由しない。降下の引用 \ld{theorem_3_1_K0} が旧モデルの $K_0$ で述べられているためである。新旧の評価の一致（\ld{LengthAlgebra.EulerCompatibility}）と局所環での降下の移送（\ld{perfectK0_descent_of_free}）は証明済みなので、定理~\ref{thm:C-norm} を経由する形に書き直すことはできる。}
 
-\subsection{消滅と下界}\label{sec:perfect-vanishing}
+\subsection{消滅と下界：補題~\ref{lem:B-nit}、\ref{lem:B-h0} の適用}\label{sec:perfect-vanishing}
+
+ここでは、補題~\ref{lem:B-nit} の仮定 (Supp)、(Kos$_m$) と、補題~\ref{lem:B-h0} の全射を perfect 複体について確かめ、補題~\ref{lem:nit}、\ref{lem:h0bound} を得る。(Supp) は台の条件と補題~\ref{lem:C-nil} から、(Kos$_m$) は次の段落の項によるフィルトレーションから、全射は極小性から出る。
 
 $P$ が $0$ 次から $m$ 次に有限射影項をもつなら、$K_v\otimes P\otimes C$ の項によるフィルトレーションの各段は、$K(z^v;C)$ の有限直和のシフトの直和因子である。正次数の Koszul ホモロジーが商で零であれば、各段はその項の次数だけに集中し、長完全列から (Kos$_m$) が出る。(Supp) は台の条件と補題~\ref{lem:C-nil} から出るので、補題~\ref{lem:B-nit} が使える。
 
@@ -712,6 +716,20 @@ $(C,\lambda)$ が $\lambda$-平坦で有限ランクなら、§\ref{sec:length-k
 \section{第二の実現：ランク無視の圏}\label{sec:asymp}\label{sec:check-rank}
 
 この節では、共通定理の第二の実現を作る。評価元をランク無視の圏 $P_S^J$、評価先を加群列の Serre 商とする。Euler 加法性・共役和比較・消滅・下界は §\ref{sec:perfect} と同じ定理を使う。この実現で新たに必要なのは、支持つき局所化、冪等完備化へのホモロジー関手の延長、一様代表による計算である。
+
+ゴールは定理~\ref{thm:47}（Theorem 4.7）で、§\ref{sec:core} の置き換え 2（式~\eqref{eq:second}）で使う。§\ref{sec:perfect} と同じく、これは命題~\ref{prop:B-compare} を評価元 $P_T^J$、二つの評価 $\chi_{\ord}$、$\chi_C$、係数拡大 $f\colon K_0(P_A^J)\to K_0(P_T^J)$ に適用したものである。
+\begin{center}
+\begin{tabularx}{\textwidth}{>{\raggedright}p{5.6cm}>{\raggedright\arraybackslash}X}
+\toprule
+命題~\ref{prop:B-compare} の入力 & 確かめる場所 \\
+\midrule
+$\chi_{\ord}$、$\chi_C$ が $K_0$ 上の Euler 評価であること（命題~\ref{prop:B-euler} の (Fin)） & §\ref{sec:planB-unify}：命題~\ref{prop:43} \\
+(a) 基底から来る類での一致 & §\ref{sec:asymp-comparison}：命題~\ref{prop:asymp-base}。§\ref{sec:asymp-47}：命題~\ref{prop:45} \\
+(b) 不変類の降下 & §\ref{sec:asymp-47}：補題~\ref{lem:dga} と定理~\ref{thm:descent}（引用） \\
+\bottomrule
+\end{tabularx}
+\end{center}
+§\ref{sec:asymp-comparison} の定理~\ref{thm:asymp-norm} がこの実現での比較定理で、定理~\ref{thm:47} はその特殊例である。§\ref{sec:asymp-vanishing} の消滅と下界は定理~\ref{thm:47} には使わず、正値性（補題~\ref{lem:pos}）で使う。§\ref{sec:asymp-flat} は $\lambda$-平坦な代数での適用である。
 
 設定は §\ref{sec:perfect} と同じとし、原論文の適用に合わせて $A$ の優秀性も仮定する。共通定理や以下の評価関手の構成自体は、この優秀性を使わない。完備性も不要である。
 
@@ -817,7 +835,35 @@ $s_n>0$ と非単項超フィルター $\U$ を固定する。共通の $J$ の�
 
 この証明で構成するのは、(i) ホモロジー列が評価先に入ること、(ii) 支持つき局所化の分母を同型に送ること、(iii) 直和因子への延長の完全性、(iv) シフトとの自然な同型と有界性、(v) 一様支持の代表での計算公式、である。これらはそれぞれ独立に証明して接続している。任意の小ランク列の生のホモロジーが零となると仮定するものではない。
 
-\subsection{基底から来る類と比較}\label{sec:asymp-comparison}
+\subsection{この実現での比較定理}\label{sec:asymp-comparison}
+
+\begin{proposition}[ランク無視版の基底公式、命題~\ref{prop:C-base} の対応物]\label{prop:asymp-base}
+$A$ を正則局所環、$z$ を正則パラメータ系、$(C,\lambda)$ を Koszul 有限な長さ付き $A$ 代数とする。$X\in P_A^J$ について
+\[
+ \chi_C(X\otimes_A C)=e_\lambda(z;C)\,\chi_A(X).
+\]
+\end{proposition}
+\begin{proof}
+$K(z)$ が剰余体の自由分解であることから、$A$ 側の支持つきランク商に有界な t 構造を構成し、冪等完備性を得る。これにより $X$ は一様に台をもつ共通有界な自由複体列 $F$ で表される。単に直和因子であることから評価の一致を推論するのではなく、全対象をこの形で計算できることを使う。
+
+各 $F_n$ に命題~\ref{prop:C-base} を適用し、$s_n$ で割って超極限をとる。共通の有界な次数範囲と Koszul 上界により、有限 Euler 和と極限を交換できる。ここでは $K_0(P_A^J)$ の Koszul 一元生成は使わない。
+\end{proof}
+\lean{\ld{Paper.Section4.PaperK0Comparison} の \ld{koszulPaperEulerK0_changeRing}（基底の Koszul 分解を明示して証明済み）。全対象の一様代表は \ld{UniformRepresentative}。}
+
+\begin{theorem}[ランク無視版のノルム比較、定理~\ref{thm:C-norm} の対応物]\label{thm:asymp-norm}
+$A$ を正則局所環、$z$ を正則パラメータ系、$T$ を可換 $A$ 代数とする。有限群 $G$ が $K_0(P_T^J)$ に群自己同型として作用し、その不変類の正の整数倍が係数拡大 $f\colon K_0(P_A^J)\to K_0(P_T^J)$ の像に入るとする。$T$ 代数 $C_1,C_2$ とそれぞれの長さ関数 $\lambda_1,\lambda_2$ が Koszul 有限で $e_{\lambda_1}(z;C_1)=e_{\lambda_2}(z;C_2)$ なら、任意の $y\in K_0(P_T^J)$ について
+\[
+ \sum_{g\in G}\chi_{C_1}(g\cdot y)=\sum_{g\in G}\chi_{C_2}(g\cdot y).
+\]
+\end{theorem}
+\begin{proof}
+命題~\ref{prop:43} により、二つの評価は命題~\ref{prop:B-euler} の Euler 評価である。命題~\ref{prop:asymp-base} により、どちらも $f$ の像の上で $e_{\lambda_i}(z;C_i)\,\chi_A$ に等しいので、命題~\ref{prop:B-compare} の (a) が成り立つ。ここで二段階の係数変更 $A\to T\to C_i$ と直接の $A\to C_i$ の自然な同定を使う。(b) は仮定である。命題~\ref{prop:B-compare} を適用する。二つの列の評価先を同じ圏にする必要はない。
+\end{proof}
+\lean{\ld{Paper.Section4.SymmetricComparison} の \ld{symmetricPaperEuler_conjSum_eq}（二つの Koszul Euler 特性の一致と降下を引数にして証明済み）。Lean の証明は群論の \ld{conjSum_eq} を直接使い、\ld{homologicalEulerK0_conjSum_eq} は経由していない。}
+
+\subsection{Prop 4.5、Theorem 4.7}\label{sec:asymp-47}
+
+以下は $(C_1,\lambda_1)=(T,\len_T)$、$(C_2,\lambda_2)=(C,\lambda)$ の場合である。幾何的条件から不変類を降下させる議論は、上の比較定理とは別の入力である。
 
 \begin{proposition}\orig{Prop 4.5、命題~\ref{prop:35b} の対応物}\label{prop:45}
 $X\in P_A^J$ について
@@ -826,13 +872,9 @@ $X\in P_A^J$ について
 \]
 \end{proposition}
 \begin{proof}
-$K(z)$ が剰余体の自由分解であることから、$A$ 側の支持つきランク商に有界な t 構造を構成し、冪等完備性を得る。これにより $X$ は一様に台をもつ共通有界な自由複体列 $F$ で表される。単に直和因子であることから評価の一致を推論するのではなく、全対象をこの形で計算できることを使う。
-
-各 $F_n$ に命題~\ref{prop:C-base} を適用し、$s_n$ で割って超極限をとる。共通の有界な次数範囲と Koszul 上界により、有限 Euler 和と極限を交換できる。二つの係数はともに $r$ で、係数変更の合成の自然同型も評価と両立するから結論する。ここでは $K_0(P_A^J)$ の Koszul 一元生成は使わない。
+命題~\ref{prop:asymp-base} を二つの長さ付き代数に適用する。二つの Koszul Euler 特性はともに $r$ である（命題~\ref{prop:35b} の証明）。
 \end{proof}
 \lean{\ld{Paper.Section4.UniformRepresentative}、\ld{PaperK0Comparison}。明示した Koszul 分解からの一般係数公式は証明済み。正則局所環からその分解を供給する適用は正則パラメータの引用に依存する。}
-
-一様に台をもつ $A$ 自由複体列には、命題~\ref{prop:C-base} を各段に適用して正規化超極限をとれる。実装では、基底の Koszul 分解から得られる支持つきランク商の冪等完備性を使い、$P_A^J$ の全対象に一様な代表元を構成してこの計算を適用する。$K_0(P_A^J)$ が一つの Koszul 類で生成されることは仮定しない。全対象上で基底からの一致が得られ、一般の dg 代数での降下の入力も与えられれば、補題~\ref{lem:conjsum} によって対称なノルム比較が成り立つ。この最後の議論でも二つの列の評価先を同じ圏にする必要はない。 また二段階の係数変更 $A\to T\to C$ と直接の $A\to C$ の自然な同定が必要である。幾何的条件から不変類を降下させる議論は、これらとは別の入力である。
 
 \begin{lemma}\orig{Lemma 4.6}\label{lem:dga}
 連結な dg $A$ 代数 $H$ で、$P_A\simeq\Perf(H)$、$P_T\simeq\Perf(H\otimes^L_A T)$ となるものがある。$H$ は行列環の積 $\prod_n M_{s_n}(A)$ のランクの小さい部分による DG 商の、生成元の自己準同型として得られる。
@@ -846,11 +888,13 @@ $K(z)$ が剰余体の自由分解であることから、$A$ 側の支持つき
 \]
 \end{theorem}
 \begin{proof}
-命題~\ref{prop:B-compare} を $f\colon K_0(P_A^J)\to K_0(P_T^J)$、$\chi_1 = \chi_{\ord}$、$\chi_2 = \chi_C$ に適用する。$\varphi\circ f = \psi\circ f$ は命題~\ref{prop:45}、$f_\Q$ の全射性は補題~\ref{lem:dga} の $H$ についての定理~\ref{thm:descent} による。
+定理~\ref{thm:asymp-norm} を $(C_1,\lambda_1)=(T,\len_T)$、$(C_2,\lambda_2)=(C,\lambda)$ に適用する。二つの Koszul Euler 特性はともに $r$ である。降下は、補題~\ref{lem:dga} の $H$ についての定理~\ref{thm:descent} による（引用）。
 \end{proof}
 \lean{\ld{symmetricPaperEuler_conjSum_eq} は二つの Koszul Euler 特性の一致と降下を引数にして証明済み。\ld{Section4.theorem_4_7_K0} はその系であり、\ld{supportedRankK0_descent} と正則パラメータの引用への依存は残る。}
 
-\subsection{消滅と下界}\label{sec:asymp-vanishing}
+\subsection{消滅と下界：補題~\ref{lem:B-nit}、\ref{lem:B-h0} の適用}\label{sec:asymp-vanishing}
+
+§\ref{sec:perfect-vanishing} と同じく、補題~\ref{lem:B-nit} の (Supp)、(Kos$_m$) と補題~\ref{lem:B-h0} の全射を、列の圏について確かめる。(Supp) は商での零作用、(Kos$_m$) は $K_v\otimes F$ の各段のフィルトレーション、全射は各段の極小性から出る。元の列 $F$ の一様な台は使わない。
 
 \begin{corollary}[補題~\ref{lem:nit}、\ref{lem:h0bound} の対応物]\label{cor:nitasymp}\label{prop:check-rank-vanishing}
 $e = \dim A$ とし、$F = (F_n)$ を $0$ 次から $m$ 次に有限自由な項をもつ有界な自由列で、像 $X$ が $P_T^J$ に入るものとする。このとき $b_i^C(X) = 0$（$i > m-e$）。特に $m = e$ なら $\chi_C(X) = b_0^C(X)$ で、さらに各 $F_n$ が $1$ 次で極小なら
