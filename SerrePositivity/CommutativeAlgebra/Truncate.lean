@@ -7,13 +7,24 @@ public import Mathlib.Algebra.Category.ModuleCat.Projective
 public import Mathlib.RingTheory.LocalRing.Module
 
 /-!
-# 最上段の切り詰め（Lemma 3.5b の準備、段階 4）
+# 最上段の切り詰め
 
-局所環 `R` 上、項が有限自由で `1` 次以上が零の複体 `Q` について、`H^0(Q) = 0` なら
-`0` 次以上が零の複体 `Q'` で、項が有限自由、`-1` 次より下の項は `Q` と同じものと
-ホモトピー同値になる。`Q'` は標準的な切り詰め `τ^{≤ -1} Q` で、`-1` 次の項は
-`d : Q^{-1} → Q^0` の核（分裂全射の核なので射影的、局所環上なので自由）。
-`Q' → Q` は K 射影的な複体の間の擬同型なのでホモトピー同値（Mathlib の
+## 概要
+
+Lemma 3.5b のデヴィサージュ（`PerfectComplex/KoszulGeneration.lean`）では、台つき完全複体 `Q` の
+最上段 `0` 次のホモロジーが零のとき、`Q` を「一段短い」複体に取り替えて帰納法を進める。
+このファイルはその取り替えを与える：局所環 `R` 上、項が有限自由で `1` 次以上が零の複体 `Q` に
+ついて `H^0(Q) = 0` なら、`0` 次以上が零で項が有限自由な複体 `Q'` で、`Q` とホモトピー同値なものが
+ある（`exists_homotopyEquiv_truncate`）。`-1` 次より下の項は `Q` と同じなので、有界性も保たれる。
+
+## 構成
+
+`Q'` は標準的な切り詰め `τ^{≤ -1} Q`（Mathlib の `truncLE`）で、`-1` 次の項はサイクル
+`Z^{-1} = ker(d : Q^{-1} → Q^0)` である。`H^0(Q) = 0` と `Q^1 = 0` から `d : Q^{-1} → Q^0` は全射で、
+`Q^0` が自由（射影的）なので分裂し、核は有限自由加群の直和因子、したがって有限生成射影加群で、
+局所環上の有限生成射影加群は自由だから有限自由（`free_finite_ker_of_surjective`）。包含 `Q' → Q` は、
+`Q` の `0` 次以上のホモロジーが零なので擬同型であり、`Q`、`Q'` はともに項が射影的な有界複体なので
+K 射影的、K 射影的な複体の間の擬同型はホモトピー同値である（Mathlib の
 `CochainComplex.IsKProjective.quasiIso_iff`）。
 -/
 
@@ -27,7 +38,10 @@ namespace SerrePositivity
 
 variable {R : Type u} [CommRing R]
 
-/-- 有限自由加群への全射の核は、局所環上で有限自由。 -/
+/-- 局所環上、有限自由加群 `M` から自由加群 `N` への全射 `d` の核は有限自由である。`N` が射影的なので
+`d` は分裂し（`s : N → M` で `d ∘ s = id`）、`p := id - s ∘ d` は `M` から `ker d` への引き込みを
+与える。よって `ker d` は `M` の直和因子で、射影的かつ有限生成、そして局所環上の有限生成射影加群は
+自由である（Mathlib の `Module.free_of_flat_of_isLocalRing`）。 -/
 lemma free_finite_ker_of_surjective [IsLocalRing R] {M N : Type u} [AddCommGroup M] [Module R M]
     [AddCommGroup N] [Module R N] [Module.Free R M] [Module.Finite R M] [Module.Free R N]
     (d : M →ₗ[R] N) (hd : Function.Surjective d) :
@@ -48,7 +62,10 @@ lemma free_finite_ker_of_surjective [IsLocalRing R] {M N : Type u} [AddCommGroup
   have : Module.Finite R (LinearMap.ker d) := Module.Finite.of_surjective p hp
   exact ⟨Module.free_of_flat_of_isLocalRing, this⟩
 
-/-- **最上段の切り詰め**。 -/
+/-- **最上段の切り詰め**：局所環上、項が有限自由で `1` 次以上が零の複体 `Q` について `H^0(Q) = 0` なら、
+複体 `Q'` で次をみたすものがある：項が有限自由、`-1` 次より上で零、`-1` 次以下では `Q` の項が零なら
+`Q'` の項も零、`Q'` と `Q` はホモトピー同値。`Q' = τ^{≤ -1} Q` にとり、`-1` 次の項（サイクル）が
+有限自由であることを `free_finite_ker_of_surjective` で、ホモトピー同値を K 射影性で示す。 -/
 theorem exists_homotopyEquiv_truncate [IsLocalRing R] (Q : CochainComplex (ModuleCat.{u} R) ℤ)
     (hfree : ∀ i, Module.Free R (Q.X i)) (hfin : ∀ i, Module.Finite R (Q.X i))
     (htop : ∀ i : ℤ, 0 < i → IsZero (Q.X i)) (h0 : IsZero (Q.homology 0)) :
