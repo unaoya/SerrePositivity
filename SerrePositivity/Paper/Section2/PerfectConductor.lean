@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.Paper.Section2.PerfectBaseChange
 public import SerrePositivity.CommutativeAlgebra.TraceConductor
+public import SerrePositivity.CommutativeAlgebra.RegularNormality
 
 /-!
 # 共通分母の Frobenius 根への移行
@@ -14,6 +15,7 @@ public import SerrePositivity.CommutativeAlgebra.TraceConductor
 完全性を追加仮定にせず各段の包含を導く。
 基底環の正規性を明示的に仮定した場合は、分数体上のトレースの議論を適用し、
 最初の分母の存在から全ての段の包含までを導く。
+最後に正則局所環の正規性を供給し、論文の元の仮定から共通分母を構成する。
 -/
 
 public section
@@ -305,5 +307,30 @@ theorem exists_tower_perfection_conductor_roots_of_normal_base
     (algebraMap A D g) hgc⟩
 
 end InitialConductor
+
+/-- 論文の等標数の設定から、perfection 全体に共通の非零分母を構成する。
+正則基底の正規性と剰余体の完全性を証明内で供給し、追加の仮定にはしない。
+基底の正規性は既存の正則パラメータの引用入力から導かれる。 -/
+theorem exists_tower_perfection_conductor
+    (A : Type u) [CommRing A] [IsRegularLocalRing A]
+    [IsAdicComplete (IsLocalRing.maximalIdeal A) A]
+    [IsDomain D] [IsLocalRing D] [Algebra A D] [Module.Finite A D]
+    [Algebra A (PerfectClosure D p)]
+    [CharP (IsLocalRing.ResidueField D) p] [PerfectField (IsLocalRing.ResidueField D)]
+    {h : ℕ} (t : Fin h → A)
+    (ht : Ideal.span (Set.range t) = IsLocalRing.maximalIdeal A)
+    (hdim : ringKrullDim A = h) (hinj : Function.Injective (algebraMap A D))
+    (hres : Function.Surjective ((IsLocalRing.residue D).comp (algebraMap A D)))
+    (hbase : ∀ a : A, algebraMap A (PerfectClosure D p) a =
+      PerfectClosure.of D p (algebraMap A D a))
+    (hsep : ∀ d : D, ((minpoly A d).map (algebraMap A (FractionRing A))).Separable) :
+    ∃ g : A, g ≠ 0 ∧ ∀ c : PerfectClosure D p,
+      PerfectClosure.of D p (algebraMap A D g) * c ∈
+        perfectionApproximation D p (Tower A t p) 0 := by
+  let := isIntegrallyClosed_of_isRegularLocalRing A
+  let er := residueFieldEquiv_of_surjective (R := A) D hres
+  let : CharP (IsLocalRing.ResidueField A) p := er.toRingHom.charP er.injective p
+  let : PerfectField (IsLocalRing.ResidueField A) := PerfectField.of_ringEquiv er.symm
+  exact exists_tower_perfection_conductor_of_normal_base D p A t ht hdim hinj hbase hsep
 
 end SerrePositivity.Section2

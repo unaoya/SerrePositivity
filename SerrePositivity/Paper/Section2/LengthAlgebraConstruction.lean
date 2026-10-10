@@ -1,8 +1,7 @@
 module
 
 public import SerrePositivity.Paper.Section2.TowerLengthOn
-public import SerrePositivity.Paper.Section2.PerfectApproximationLength
-public import SerrePositivity.Paper.Section2.PerfectConductor
+public import SerrePositivity.Paper.Section2.PerfectQuotientLimit
 public import Mathlib.RingTheory.WittVector.Basic
 public import Mathlib.RingTheory.MvPowerSeries.Basic
 
@@ -10,7 +9,8 @@ public import Mathlib.RingTheory.MvPowerSeries.Basic
 # 定理2.5の標数別の未完了部分
 
 両分岐とも一つの代数上で全てのパラメータ系を扱い、冪と階数の公式は共通の導出に任せる。
-等標数の `sorry` は引用だけではなく、トレース・誤差評価の未実装部分も含む。perfection と塔の作用は構成済み。
+等標数では perfection・塔の作用・共通分母・商の長さの極限比較まで構成済み。
+`sorry` の内容は極限値の重複度との同定と正次数の Koszul ホモロジーの消滅である。
 混標数の `sorry` は CLMST の帰結を現在の塔へ移す部分を含む。
 これらは定理2.5の完成を意味しない。仮定をまとめる独自の構造体やクラスは使わない。
 -/
@@ -21,30 +21,19 @@ open IsLocalRing
 open scoped ENNReal
 namespace SerrePositivity.Section2
 
-/-- 具体的な perfection 上の長さの性質。Monsky・Roberts の結果との接続、
-共通分母に必要な基底環の正規性、誤差評価用の元の選択と極限への接続、
-Koszul の重複度公式の適用は未完了。
-部分代数の増大・被覆、分母を与えた場合の核の評価は
-`PerfectApproximation` で証明済み。テンソル積と近似部分代数の同型は
-`PerfectBaseChange` で証明済み。近似環の商の正規化長さを `D` 上の通常の長さに戻す
-有限段の公式は `PerfectApproximationLength` で証明済み。
-さらに、`H` 内の `h-1` 個の元と分母 `g` が有限長の商を定めれば、
-分母の根を加えた近似環の商の長さが零へ収束することも証明済み。
-初段の共通分母も与えれば、商写像の核の長さの零への収束と、
-核・像の長さの和を Frobenius 商の長さで表す等式も証明済み。
-像の増大・被覆と長さの上限性も接続済みで、共通分母と元の組を与えれば
-通常の Frobenius 商の正規化した長さは perfection の商の正規化長さへ収束する。
-この元の組の存在、文献による極限値の同定、正次数の Koszul ホモロジーの消滅は未完了。
-トレース双対基底による共通分母の一般論は `TraceConductor` で証明済み。
-正規な基底から塔の正規性を導く一般論も証明済み。
-元の環内からの分数体基底の選択と、有限拡大から分数体の有限次元性を導く部分も証明済み。
-具体的な分数体の代数構造を整え、基底環の正規性を前提とした共通分母の存在を
-`exists_tower_perfection_conductor_of_normal_base` で証明済み。
-論文の基底の正規性を現行の仮定から導く部分は未完了であり、本定理の仮定は増やしていない。
-体の係数拡大の同型・基底の移送とトレースによる分母の一般論の接続は証明済みである。
-初段の分母から全ての段の分母への移行と塔の完全性は `PerfectConductor` で証明済み。
-代数自体の存在ではなく、標準写像で定まる `D_perf` の性質を未証明入力として残す。
-塔の作用は完全性から一意に決まるため、基底の作用との両立を仮定すればよい。 -/
+/-- 具体的な perfection 上の長さの性質のうち、残る未証明部分。
+共通分母は `exists_tower_perfection_conductor` で、正則基底の正規性を導いて構成する。
+`PrimaryParameters` は分母と合わせて有限長の商を定める `h-1` 個の元を準素イデアル内で選ぶ。
+`PerfectQuotientLimit.lean` の
+`normalized_frobenius_length_tendsto_perfection_quotient_of_primary` は、
+それらを既存の近似環の核・像の長さ評価に適用し、
+通常の Frobenius 商の正規化した長さが perfection の商の正規化長さへ収束することを証明した。
+任意の両立する塔作用での `towerLengthOn` への移送も、
+`normalized_frobenius_length_tendsto_towerLengthOn_quotient` で証明済み。
+
+残るのは Monsky・Roberts の結果との接続による極限値の Hilbert–Samuel 重複度との同定、
+正次数の Koszul ホモロジーの正規化長さの消滅。
+代数自体の存在ではなく、標準写像で定まる `D_perf` のこれらの性質を未証明入力として残す。 -/
 theorem perfectClosure_length_properties_pending (A D : Type u) [CommRing A] [IsRegularLocalRing A]
     [IsAdicComplete (maximalIdeal A) A]
     [CommRing D] [IsLocalRing D] [IsNoetherianRing D] [IsDomain D]

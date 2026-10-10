@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.IntersectionMultiplicity.Basic
 public import SerrePositivity.Paper.Section5.CompletionReduction
+public import SerrePositivity.Paper.Section5.CharacteristicZeroReduction
 public import Mathlib.Algebra.CharP.Defs
 public import Mathlib.FieldTheory.IsAlgClosed.Basic
 public import Mathlib.LinearAlgebra.TensorProduct.Basic
@@ -16,8 +17,8 @@ public import Mathlib.RingTheory.RegularLocalRing.Defs
 ## 概要
 
 論文 *Positivity of Serre's Intersection Multiplicity*（OpenAI、2026-09-23）の主定理 Theorem 1.1 と、
-Lemma 5.1 で帰着した後の核の場合を述べる。主定理は剰余標数零の場合が未証明で、
-正の剰余標数と核の場合は既存の引用入力から証明する。
+Lemma 5.1 で帰着した後の核の場合を述べる。主定理と核の場合はいずれも
+名前付きの引用入力から証明し、自身の `sorry` は持たない。
 
 - `main_statement`：Theorem 1.1。正則局所環 `(R, m)` と `0` でない有限生成加群 `M`、`N` について、
   `M ⊗_R N` が有限長かつ `dim M + dim N = dim R` なら `χ^R(M, N) > 0`。交点重複度 `χ` は
@@ -34,8 +35,8 @@ M3（核：§5 の正値性の議論、`Paper/Section5/`）で与える。
 `Paper/Section5/ModuleReduction.lean` は同じ環の仮定の下で任意の有限生成加群へ広げる。
 `Paper/Section5/ResidueFieldReduction.lean` は Lemma 2.1 と平坦局所拡大の保存則により
 剰余体の代数閉性も外す。`CompletionReduction.lean` は完備化で一般の環へ広げる。
-剰余標数零の場合と、
-§2 の長さ代数の存在などの引用入力は残る。
+`CharacteristicZeroReduction.lean` は剰余標数零の場合に `ℚ` の作用を構成して
+Serre の等標数正値性へ帰着する。Serre の定理、§2 の長さ代数の存在などの引用入力は残る。
 -/
 
 public section
@@ -48,10 +49,11 @@ open TensorProduct
 
 variable (R : Type u) [CommRing R]
 
-/-- **Theorem 1.1**（未証明）：`(R, m)` を正則局所環、`M`、`N` を `0` でない有限生成 `R` 加群とする。
+/-- **Theorem 1.1**（名前付き引用入力から証明）：`(R, m)` を正則局所環、`M`、`N` を
+`0` でない有限生成 `R` 加群とする。
 `ℓ_R(M ⊗_R N) < ∞`（幾何的には `Supp M ∩ Supp N` が閉点だけ）かつ `dim M + dim N = dim R`（固有な
 交わり）なら `χ^R(M, N) > 0`。Serre の正値性予想の主張。
-正の剰余標数の分岐は証明し、従来の `sorry` は剰余標数零の分岐に残る。 -/
+正の剰余標数では核心定理への帰着を、剰余標数零では Serre の引用定理への帰着を用いる。 -/
 theorem main_statement [IsRegularLocalRing R]
     (M N : Type u) [AddCommGroup M] [Module R M] [AddCommGroup N] [Module R N]
     [Module.Finite R M] [Module.Finite R N] [Nontrivial M] [Nontrivial N]
@@ -62,8 +64,8 @@ theorem main_statement [IsRegularLocalRing R]
   rcases CharP.char_is_prime_or_zero (IsLocalRing.ResidueField R) p with hprime | rfl
   · let : Fact p.Prime := ⟨hprime⟩
     exact Section5.positivity_of_residueCharP R p M N hfin hdim
-  · -- Serre の等標数零の正値性への接続が未実装。
-    sorry
+  · let : CharZero (IsLocalRing.ResidueField R) := CharP.charP_to_charZero _
+    exact Section5.positivity_of_residueCharZero R M N hfin hdim
 
 /-- **Lemma 5.1 の帰着先**（既存の引用入力から証明）：`R` は完備で剰余体は標数 `p > 0` の代数閉体、`P`、`Q` は
 素イデアルで `R/P`、`R/Q` は正次元、`dim R/P + dim R/Q = dim R`、`P + Q` は `m` 準素

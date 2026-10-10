@@ -11,11 +11,11 @@ including the ramified mixed-characteristic case.
 
 ## Status
 
-Incomplete formalization. Theorem 1.1 in `SerrePositivity/Paper/Statement.lean` still has a direct `sorry` in its residue-characteristic-zero branch. Its positive-residue-characteristic branch and the core case after Lemma 5.1 are now derived from the existing named inputs; the core's own `sorry` has been removed.
+Incomplete formalization. Theorem 1.1 and the core case in `SerrePositivity/Paper/Statement.lean` are now derived from named inputs; neither statement has a direct `sorry`. Serre's equal-characteristic positivity is explicitly quoted in `Inputs/SerrePositivity.lean`. Other unproved inputs, including the remaining Section 2 constructions, still occur in their dependencies.
 
 `SerrePositivity/Paper/Section5/` contains the twisted Euler evaluations, the application of Lemma 3.5, and the final positivity argument. Lemma 5.2 (`firstComparison` in `Paper/Lemma5_2.lean`) takes its rings, finite algebras, ranks, parameters, group action, and length conditions as explicit arguments. The former `CoreData`, `IsPaperData`, and `Inputs.Core` bundles have been removed. `core_of_twistedEuler_pos` combines Lemma 5.2 with positivity of the twisted Euler values. `Section5.core_of_lengthAlgebras` derives these positive values from the supplied length algebras, and `core_of_normalization_bases` supplies the length algebras from the quoted Section 2 construction. `GaloisNormalization.lean` and `Core.lean` now construct the normalization bases, finite Galois extensions and actions from the original core hypotheses. Ranks are written directly as `Module.finrank`.
 
-The reduction now handles arbitrary finite modules over regular local rings of positive residue characteristic (`Section5.positivity_of_residueCharP`), without completeness or an algebraically closed residue field. The zero-dimensional boundary, prime-quotient dévissage, and preservation of length, module dimension and intersection multiplicity under flat local extensions preserving the maximal ideal are proved. The Noetherianity of adic completions is proved using a surjection from a finite-variable power series ring; Lemma 2.1 supplies the residue-field extension. The residue-characteristic-zero case remains to be connected; no new `sorry` declarations were added.
+The reduction handles arbitrary finite modules over regular local rings of positive residue characteristic (`Section5.positivity_of_residueCharP`), without completeness or an algebraically closed residue field. The zero-dimensional boundary, prime-quotient dévissage, and preservation of length, module dimension and intersection multiplicity under flat local extensions preserving the maximal ideal are proved. The Noetherianity of adic completions is proved using a surjection from a finite-variable power series ring; Lemma 2.1 supplies the residue-field extension. In residue characteristic zero, nonzero integers are units, which constructs a rational algebra structure and connects the main theorem to Serre's quoted result. The former `main_statement` gap has moved to that named classical input; the connection itself is proved.
 
 Unproved inputs are explicit theorems, including `isWeaklyRegular_of_span_eq_maximalIdeal`,
 `Inputs.intersectionVanishing`, and `Section2.theorem_2_5`. Their uses occur in proof bodies,
@@ -35,8 +35,12 @@ The current milestone is complete: the shared Euler, iterated-cone and symmetric
 its perfect-complex and rank-quotient realizations, and the connection from λ-flatness and λ-CM
 conditions to the required Koszul inputs. Obsolete comparison layers and duplicated finiteness
 and vanishing proofs have been removed; see `notes/cleanup-candidates-2026-10-11.md`.
-The current sequence is: finish the core connection (done relative to existing inputs), finish the
-general-to-core reduction (in progress), then finish the remaining Section 2 constructions.
+The core connection and the general-to-core/Serre reduction are complete relative to named inputs.
+Work has resumed on Section 2: `PerfectConductor.lean` now supplies a common denominator from
+regularity, and `PrimaryParameters.lean` supplies the parameters for the error estimate.
+`PerfectQuotientLimit.lean` combines these with the approximation estimates to identify the
+Frobenius length limit with the length of the perfection quotient. Identifying that limit with
+Hilbert–Samuel multiplicity, higher Koszul vanishing, and the mixed-characteristic construction remain.
 The cited descent results remain separate work.
 
 The Lean sources are organized as follows (2026-10-11):
@@ -54,7 +58,7 @@ The Lean sources are organized as follows (2026-10-11):
 
 Every file has a Japanese module docstring (purpose, background, proof strategy, conventions, where it is used) and every declaration a Japanese docstring stating the claim in words, the role of its hypotheses and the idea of the proof; the conventions are recorded in `notes/PLAN.md` §18.
 
-The general theorem `normalizedLength_tor_of_isWeaklyRegular`, its application in Lemma 3.4, Lemma 3.5b, 3.5c and Lemma 5.2 (`firstComparison`, modulo the general inputs of `Inputs/IntersectionTheory.lean`) are proved modulo the inputs; Lemma 3.5a, including `lemma_3_5a_lam_finite`, is proved without unproved inputs. Corollary 2.6 (`cor_2_6_pos`) is proved from `Section2.cor_2_6_residue_pos`, which depends on the positivity of the Hilbert–Samuel multiplicity. Direct `sorry` declarations in the paper part remain in the cited theorems of Section 2, `supportedRankK0_descent`, and `main_statement`. See `notes/PLAN.md` §11–12.
+The general theorem `normalizedLength_tor_of_isWeaklyRegular`, its application in Lemma 3.4, Lemma 3.5b, 3.5c and Lemma 5.2 (`firstComparison`, modulo the general inputs of `Inputs/IntersectionTheory.lean`) are proved modulo the inputs; Lemma 3.5a, including `lemma_3_5a_lam_finite`, is proved without unproved inputs. Corollary 2.6 (`cor_2_6_pos`) is proved from `Section2.cor_2_6_residue_pos`, which depends on the positivity of the Hilbert–Samuel multiplicity. Direct `sorry` declarations in the paper part remain in the cited theorems of Section 2 and `supportedRankK0_descent`. Serre's classical positivity remains a separate named input. See `notes/PLAN.md` §11–12.
 
 The Koszul Euler/rank identity now has an explicit derivation: the rank calculation for finite resolutions, the Koszul/Tor identification, and the general Euler–Poincaré formula for tensoring a finite free resolution are proved. The only remaining regular-local dependency is the named `sorry` theorem that regular parameters form a regular sequence. The domain property and finite free resolutions are now derived from it, using general theorems in `CommutativeAlgebra/RegularSequence.lean` and `HomologicalAlgebra/FiniteFreeResolution.lean`.
 

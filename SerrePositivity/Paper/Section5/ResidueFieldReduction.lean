@@ -8,7 +8,8 @@ public import SerrePositivity.IntersectionMultiplicity.BaseChange
 
 Lemma 2.1 で剰余体を代数閉体へ拡大する。環・加群の次元と交点重複度の保存は
 平坦局所拡大の一般論から供給する。剰余体の代数閉性を外した完備・正剰余標数の場合を得る。
-完備化による帰着は `CompletionReduction.lean` で扱い、剰余標数零の場合は残る。
+完備化による帰着は `CompletionReduction.lean`、剰余標数零の場合は
+`CharacteristicZeroReduction.lean` で扱う。
 -/
 
 public section
