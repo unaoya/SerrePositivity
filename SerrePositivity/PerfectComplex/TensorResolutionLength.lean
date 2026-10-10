@@ -227,6 +227,54 @@ theorem len_tensorRes_le_of_hom {P U : ModuleCat.{u} S} (f : P ⟶ U) (hP : IsPo
   · calc hU' m ≤ hI' m + hW' m := e₃
       _ ≤ hP' m + hK' (m + 1) + hW' m := add_le_add e₂ le_rfl
 
+/-! ## `B` に制限した `M ⊗_B G` -/
+
+section restrict
+
+variable {S : Type u} [CommRing S] {B : Type u} [CommRing B] (ψ : B →+* S)
+
+/-- 項ごとの同型 `V ⊗_S (S ⊗_B N) ≅ V ⊗_B N`（`B` 線形、Mathlib の `cancelBaseChange`）。 -/
+noncomputable def restrictTensorXIso (V : ModuleCat.{u} S) (N : ModuleCat.{u} B) :
+    (ModuleCat.restrictScalars ψ).obj (MonoidalCategoryStruct.tensorObj V
+      ((ModuleCat.extendScalars ψ).obj N)) ≅
+      MonoidalCategoryStruct.tensorObj ((ModuleCat.restrictScalars ψ).obj V) N :=
+  letI := ψ.toAlgebra
+  letI : Module B V := Module.compHom V ψ
+  haveI : IsScalarTower B S V := IsScalarTower.of_algebraMap_smul fun _ _ ↦ rfl
+  LinearEquiv.toModuleIso
+    ((TensorProduct.AlgebraTensorModule.cancelBaseChange B S S V N).restrictScalars B)
+
+/-- `B` に制限した `M ⊗_S (S ⊗_B G)` は `M ⊗_B G`（複体の同型）。 -/
+noncomputable def restrictTensorResIso (G : CochainComplex (ModuleCat.{u} B) ℤ)
+    (V : ModuleCat.{u} S) :
+    ((ModuleCat.restrictScalars ψ).mapHomologicalComplex _).obj (tensorRes ψ G V) ≅
+      (((tensoringLeft (ModuleCat.{u} B)).obj
+        ((ModuleCat.restrictScalars ψ).obj V)).mapHomologicalComplex _).obj G :=
+  HomologicalComplex.Hom.isoOfComponents (fun m ↦ restrictTensorXIso ψ V (G.X m))
+    (fun m m' _ ↦ by
+      ext x
+      induction x using TensorProduct.inductionOn with
+      | tmul v y =>
+        induction y using TensorProduct.inductionOn with
+        | tmul s n => rfl
+        | add y z hy hz => erw [TensorProduct.tmul_add, map_add, map_add, hy, hz]
+      | add x y hx hy => erw [map_add, map_add, hx, hy])
+
+/-- **通常の `Tor^B` との一致**：`G` が `L` の射影分解なら、`S` 加群 `V` を `B` 加群とみた
+`Tor_i^B(V, L)` は `B` に制限した `H^{-i}(V ⊗_S (S ⊗_B G))` と線形同値。 -/
+noncomputable def torModuleRestrictEquiv (G : CochainComplex (ModuleCat.{u} B) ℤ)
+    (L : Type u) [AddCommGroup L] [Module B L] (hG : IsResolutionOf G (ModuleCat.of B L))
+    (V : ModuleCat.{u} S) (i : ℕ) :
+    TorModule B i ((ModuleCat.restrictScalars ψ).obj V) L ≃ₗ[B]
+      (ModuleCat.restrictScalars ψ).obj ((tensorRes ψ G V).homology (-(i : ℤ))) :=
+  (torModuleIsoCochain ((ModuleCat.restrictScalars ψ).obj V) hG i ≪≫
+    (HomologicalComplex.homologyFunctor _ _ (-(i : ℤ))).mapIso
+      (restrictTensorResIso ψ G V).symm ≪≫
+    ((tensorRes ψ G V).sc (-(i : ℤ))).mapHomologyIso (ModuleCat.restrictScalars ψ)).toLinearEquiv
+
+end restrict
+
+
 end TensorRes
 
 end SerrePositivity

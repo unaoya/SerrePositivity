@@ -39,8 +39,22 @@
 という選び方は使わない（各次数で固定の階数なので `ε_n → 0` で十分）。`s_n → ∞` は `j_n ≥ n` から
 （`h > 0` のとき）。
 
+## `B` 加群の形（証明済み）
+
+`exists_tower_approximation_B`：`M_n = V_n` を `B` 加群とみて、`M_n` は有限長、`T` を消す `B` のイデアルは
+`M_n` も消し、`s_n = p^{j_n h}`（`h > 0` なら `s_n → ∞`）、`ℓ_B(M_n)/s_n → λ(U)`、
+`ℓ_B(Tor_i^B(M_n, L_k))/s_n → λ(H^{-i}(U ⊗_B G_k))`。段で計算した `Tor` と通常の `Tor^B` の一致は
+`TensorResolutionLength.lean` の `torModuleRestrictEquiv`（`V ⊗_S (S ⊗_B N) ≅ V ⊗_B N`、Mathlib の
+`cancelBaseChange`、係数制限とホモロジーの交換）。
+
+## §5 の形（`Paper/Section5/ParameterQuotient.lean`）
+
+- `Section5.lemma_5_3`：証明済み。一般論に正則局所環上の長さ `d` 以下の有限自由分解を与える。
+- `Section5.lemma_5_4`：主張のみ（`sorry`）。`S = Λ ⊗_A T` の `U = C/(x)C` への作用を環準同型 `θ` と
+  二つの両立条件で与え、(5.9)、(5.10)（`τ_i(L) = λ(Tor_i^R(C, L))`）、(5.11)（`λ(U) ≤ τ_0(k) ℓ_B(B/I)`）を
+  結論にする。証明は一般論・Lemma 5.3・`θ` による長さの一致・`Tor^B(U, L)` の二つの計算の一致から。
+
 ## 残り
 
-- `M_n = V_n`（`B` 加群とみる）の通常の `Tor^B_i(M_n, L)` と、段で計算した `H(V_n ⊗_B G)` の同一視。
-- `M_n` が有限長で `m_B^a M_n = 0` であること（`T` についての仮定から）、`s_n → ∞`。
-- §5 に残す部分の主張。
+- `lemma_5_4` の証明（上の接続）。
+- Lemma 5.5、5.6 の主張：§4 の漸近圏（並行作業で構築中）の定義が固まってから。

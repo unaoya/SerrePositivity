@@ -992,6 +992,51 @@ theorem exists_tower_approximation {ι : Type*} (G : ι → CochainComplex (Modu
     · refine (htor n k m).2.trans (add_le_add le_rfl (mul_le_mul' ?_ le_rfl))
       exact le_self_add
 
+
+include ht hTa hresT hresB in
+/-- **論文 Lemma 5.4 の一般的な部分（`B` 加群の形）**：`B` 加群の列 `M_n`（`V_n` を `B` 加群とみたもの）と
+`s_n = p^{j_n h}` で、`M_n` は有限長、`T` を消す `B` のイデアルは `M_n` も消し、
+
+  `ℓ_B(M_n) / s_n → λ(U)`、`ℓ_B(Tor_i^B(M_n, L_k)) / s_n → λ(H^{-i}(U ⊗_B G_k))`
+
+（`G_k` は `L_k` の有限自由分解）。`h > 0` なら `s_n → ∞`。 -/
+theorem exists_tower_approximation_B {ι : Type*} (L : ι → Type u) [∀ k, AddCommGroup (L k)]
+    [∀ k, Module B (L k)] (G : ι → CochainComplex (ModuleCat.{u} B) ℤ)
+    (hG : ∀ k, IsResolutionOf (G k) (ModuleCat.of B (L k)))
+    (hfree : ∀ k i, Module.Free B ((G k).X i)) (hfin : ∀ k i, Module.Finite B ((G k).X i))
+    (U : ModuleCat.{u} (TS A t p T)) (hU : IsPowTorsion (JT A t p T) U)
+    (hUfin : (μT A t p T).len U ≠ ⊤) :
+    ∃ (M : ℕ → ModuleCat.{u} B) (s : ℕ → ℕ),
+      (∀ n, IsFiniteLength B (M n)) ∧ (∀ n, 0 < s n) ∧
+      (0 < h → Filter.Tendsto s Filter.atTop Filter.atTop) ∧
+      (∀ (I : Ideal B), (∀ x ∈ I, algebraMap B T x = 0) → ∀ n, ∀ x ∈ I, ∀ y : M n, x • y = 0) ∧
+      Filter.Tendsto (fun n ↦ (Module.length B (M n) : ℝ≥0∞) / (s n : ℝ≥0∞)) Filter.atTop
+        (nhds ((μT A t p T).len U)) ∧
+      ∀ k (i : ℕ), Filter.Tendsto
+        (fun n ↦ (Module.length B (TorModule B i (M n) (L k)) : ℝ≥0∞) / (s n : ℝ≥0∞))
+        Filter.atTop
+        (nhds ((μT A t p T).len ((tensorRes (ψU A t p T B) (G k) U).homology (-(i : ℤ))))) := by
+  obtain ⟨j, V, hj, hV, hlen, htor⟩ :=
+    exists_tower_approximation A t p T ht hTa hresT hresB G hfree hfin U hU hUfin
+  refine ⟨fun n ↦ (ModuleCat.restrictScalars (φB A t p T B (j n))).obj (V n),
+    fun n ↦ stageRank h p (j n), fun n ↦ ?_, fun n ↦ ?_, fun hh ↦ ?_, ?_, hlen, fun k i ↦ ?_⟩
+  · -- 有限長
+    have := length_TSj_ne_top A t p T ht hTa hresT B hresB (j n) (V n)
+    exact Module.length_ne_top_iff.mp (by exact_mod_cast this)
+  · exact pow_pos (Fact.out : p.Prime).pos _
+  · -- `s_n ≥ j_n ≥ n`
+    refine Filter.tendsto_atTop_mono (fun n ↦ ?_) Filter.tendsto_id
+    calc n ≤ j n := hj n
+      _ ≤ j n * h := Nat.le_mul_of_pos_right _ hh
+      _ ≤ p ^ (j n * h) := (Nat.lt_pow_self (Fact.out : p.Prime).one_lt).le
+  · intro I hI n x hx y
+    change (ιT A t p T (j n) (algebraMap B T x)) • (y : V n) = 0
+    rw [hI x hx, map_zero, zero_smul]
+  · refine (htor k (-(i : ℤ))).congr fun n ↦ ?_
+    simp only [lenB]
+    congr 2
+    exact ((torModuleRestrictEquiv (φB A t p T B (j n)) (G k) (L k) (hG k) (V n) i).length_eq).symm
+
 end assembly
 
 end Section2

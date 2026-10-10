@@ -61,6 +61,7 @@ public import SerrePositivity.Paper.Lemma3_5.ConjugateSum
 public import SerrePositivity.Paper.Lemma3_5
 public import SerrePositivity.Paper.Lemma5_2
 public import SerrePositivity.Paper.Section5.Positivity
+public import SerrePositivity.Paper.Section5.ParameterQuotient
 
 /-!
 # Serre の交点重複度の正値性の形式化
