@@ -43,12 +43,12 @@ open scoped ENNReal
 
 namespace SerrePositivity
 
-variable {D C : Type u} [CommRing D] [IsLocalRing D] [CommRing C] [Algebra D C]
+variable {D C : Type u} [CommRing D] [CommRing C] [Algebra D C]
 
-/-- `D` 加群 `M` が `m_D^n` で消えるなら `C ⊗_D M` は `(m_D C)^n` で消える。 -/
-lemma isPowTorsion_tensorProduct (M : Type u) [AddCommGroup M] [Module D M] {n : ℕ}
-    (hM : Module.IsTorsionBySet D M ((maximalIdeal D) ^ n : Ideal D)) :
-    IsPowTorsion ((maximalIdeal D).map (algebraMap D C)) (C ⊗[D] M) := by
+/-- `D` 加群 `M` がイデアル `J` の `n` 乗で消えるなら `C ⊗_D M` は `(J C)^n` で消える。 -/
+lemma isPowTorsion_tensorProduct_of_isTorsionBySet (J : Ideal D) (M : Type u) [AddCommGroup M]
+    [Module D M] {n : ℕ} (hM : Module.IsTorsionBySet D M (J ^ n : Ideal D)) :
+    IsPowTorsion (J.map (algebraMap D C)) (C ⊗[D] M) := by
   refine ⟨n, ?_⟩
   rw [Module.isTorsionBySet_iff_subset_annihilator, ← Ideal.map_pow, SetLike.coe_subset_coe,
     Ideal.map_le_iff_le_comap]
@@ -60,6 +60,14 @@ lemma isPowTorsion_tensorProduct (M : Type u) [AddCommGroup M] [Module D M] {n :
   rw [algebraMap_smul, ← TensorProduct.tmul_smul]
   have : a • m = 0 := hM (x := m) (a := ⟨a, ha⟩)
   rw [this, TensorProduct.tmul_zero]
+
+variable [IsLocalRing D]
+
+/-- `D` 加群 `M` が `m_D^n` で消えるなら `C ⊗_D M` は `(m_D C)^n` で消える。 -/
+lemma isPowTorsion_tensorProduct (M : Type u) [AddCommGroup M] [Module D M] {n : ℕ}
+    (hM : Module.IsTorsionBySet D M ((maximalIdeal D) ^ n : Ideal D)) :
+    IsPowTorsion ((maximalIdeal D).map (algebraMap D C)) (C ⊗[D] M) :=
+  isPowTorsion_tensorProduct_of_isTorsionBySet (maximalIdeal D) M hM
 
 /-- 有限長 `D` 加群 `M` について `C ⊗_D M` は `m_D C` 冪ねじれ。 -/
 lemma isPowTorsion_tensorProduct_of_isFiniteLength (M : Type u) [AddCommGroup M] [Module D M]

@@ -17,6 +17,7 @@ public import SerrePositivity.CommutativeAlgebra.FiniteLength
 public import SerrePositivity.CommutativeAlgebra.LocalAlgebra
 public import SerrePositivity.CommutativeAlgebra.Multiplicity
 public import SerrePositivity.CommutativeAlgebra.HilbertSamuel
+public import SerrePositivity.CommutativeAlgebra.PresentationBaseChange
 public import SerrePositivity.CommutativeAlgebra.GeometricFiber
 public import SerrePositivity.CommutativeAlgebra.Koszul
 public import SerrePositivity.CommutativeAlgebra.KoszulResolution
@@ -38,8 +39,11 @@ public import SerrePositivity.Inputs.LengthAlgebra
 public import SerrePositivity.Inputs.Descent
 public import SerrePositivity.CommutativeAlgebra.TorFiniteLength
 public import SerrePositivity.IntersectionMultiplicity.NormalizedTor
+public import SerrePositivity.Paper.Section2.MonomialBasis
 public import SerrePositivity.Paper.Section2.Tower
+public import SerrePositivity.Paper.Section2.TowerStage
 public import SerrePositivity.Paper.Section2.TowerLength
+public import SerrePositivity.Paper.Section2.TowerDescent
 public import SerrePositivity.Paper.Section2.Lemma2_1
 public import SerrePositivity.Paper.Section2.Lemma2_2
 public import SerrePositivity.Paper.Section2.Lemma2_4

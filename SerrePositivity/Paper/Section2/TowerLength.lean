@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.Paper.Section2.Tower
+public import SerrePositivity.PerfectComplex.QuotientLength
 public import SerrePositivity.PerfectComplex.SupProperty
 public import Mathlib.Algebra.Module.FinitePresentation
 public import Mathlib.LinearAlgebra.TensorProduct.Tower
@@ -19,15 +20,11 @@ public import Mathlib.RingTheory.FiniteLength
 2. 有限生成の段階 `λ*`（`fgLength`）：有限表示な全射 `P ↠ N` にわたる `λ**(P)` の下限。
 3. 一般（`towerLengthFun`）：`λ_∞(M) = sup{λ*(N) : N ⊆ M 有限生成}`（論文 (2.3)）。
 
-定義から出る性質（零加群で `0`、同型不変）はここで証明し、Lemma 2.3 (b) の本体
-
-- 有限生成加群で `λ_∞ = λ*`（CLMST Prop. 2.2.3、Gabber–Ramero Lemma 14.5.74）、
-- (2.2) 有限段の公式 `λ_∞(Λ ⊗_{A_n} V) = ℓ_{A_n}(V) / p^{nh}`、
-- `m_A` 冪ねじれで有限表示な加群の段への降下、
-- `m_A` 冪ねじれ加群の短完全列での加法性（Faltings [9, Appendix 2]、Gabber–Ramero 14.5.75）
-
-は引用（`sorry`）とする。これで `towerLength : NormalizedLength Λ (m_A Λ)` ができ、上限の性質
-`towerLength_hasSup` が従う。Lemma 2.4 と Theorem 2.5 はこの `λ_∞` について述べる。
+定義から出る性質（零加群で `0`、同型不変）はここで証明する。Lemma 2.3 (b) の本体のうち、
+有限生成加群で `λ_∞ = λ*`（C1）と加法性（C2）は引用（`sorry`）、有限段の公式（S1）と降下（S2）は
+標準事実として主張を置く（後で証明する）。引用元の正確な対応は下の節に書く。
+これで `towerLength : NormalizedLength Λ (m_A Λ)` ができ、上限の性質 `towerLength_hasSup` が従う。
+Lemma 2.4 と Theorem 2.5 はこの `λ_∞` について述べる。
 
 ## 論文との差
 
@@ -151,36 +148,38 @@ lemma towerLengthFun_eq_zero_of_subsingleton (M : Type u) [AddCommGroup M]
   refine le_antisymm (iSup₂_le fun N _ ↦ le_of_eq ?_) zero_le
   exact fgLength_eq_zero_of_subsingleton N
 
-/-! ## Lemma 2.3 (b)：引用する性質（`sorry`） -/
+/-! ## Lemma 2.3 (b)：引用する性質と標準事実
+
+**引用（証明しない、`sorry`）**
+
+- (C1) `towerLengthFun_eq_fgLength`：有限生成で `m_A` 冪ねじれの加群で `λ_∞ = λ*`。
+  CLMST（Cai–Lee–Ma–Schwede–Tucker, arXiv:2209.04046v4）Proposition 2.2.3 の主張
+  「`λ_∞` は well defined で、有限生成加群では `λ_∞^*` と一致する」。その証明は
+  Gabber–Ramero, *Foundations for almost ring theory*, Lemma 14.5.74（または Shimomoto, Lemma 2.2）
+  に委ねられている。内容は「有限生成 `N` の有限生成部分加群 `N'` について `λ*(N') ≤ λ*(N)`」
+  （`λ*` の単調性）で、これが (2.3) の上限が `λ*` 自身に戻ることを保証する。
+- (C2) `towerLengthFun_add_of_exact`：`m_A` 冪ねじれ加群の短完全列での加法性。
+  CLMST Proposition 2.2.6(a)。証明は Faltings, *Almost étale extensions*, Astérisque 279 (2002),
+  Appendix 2 の補題（Gabber–Ramero Theorem 14.5.75、Shimomoto Prop. 2.8 も同じ主張）。
+
+**標準事実（`Paper/Section2/TowerDescent.lean` で証明する）**
+
+- (S1) `fgLength_tensor`：有限長 `A_n` 加群 `V` で `λ*(Λ ⊗_{A_n} V) = ℓ_{A_n}(V) / p^{nh}`。
+- (S2) `exists_descent`：`m_A` 冪ねじれで有限表示な `Λ` 加群は、ある段の有限長 `A_n` 加群から
+  `Λ ⊗_{A_n} V` として得られる。
+
+(2.2) `towerLengthFun_tensor` は (C1) と (S1) から導く（同じファイル）。 -/
 
 variable (A t p) [IsLocalRing A]
 
-/-- **有限生成加群で `λ_∞ = λ*`**（CLMST Prop. 2.2.3 の本体、Gabber–Ramero Lemma 14.5.74）。
-`m_A` 冪ねじれで有限生成な `N` について `sup{λ*(N') : N' ⊆ N 有限生成} = λ*(N)`。 -/
+/-- (C1) **有限生成加群で `λ_∞ = λ*`**。引用：CLMST Prop. 2.2.3、Gabber–Ramero Lemma 14.5.74。 -/
 theorem towerLengthFun_eq_fgLength (N : Type u) [AddCommGroup N] [Module (Tower A t p) N]
     [Module.Finite (Tower A t p) N] (hN : IsPowTorsion (towerMaxIdeal A t p) N) :
     towerLengthFun A t p N = fgLength A t p N := by
   sorry
 
-/-- **(2.2) 有限段の公式**：有限長 `A_n` 加群 `V` について `λ_∞(Λ ⊗_{A_n} V) = ℓ_{A_n}(V) / p^{nh}`。
-段を上げても値が変わらないこと（`Λ` の平坦性と遷移写像の自由ランク）を含む。 -/
-theorem towerLengthFun_tensor (n : ℕ) (V : Type u) [AddCommGroup V]
-    [Module (TowerStage A t p n) V] (hV : IsFiniteLength (TowerStage A t p n) V) :
-    towerLengthFun A t p (Tower A t p ⊗[TowerStage A t p n] V) =
-      (Module.length (TowerStage A t p n) V : ℝ≥0∞) / (stageRank h p n : ℝ≥0∞) := by
-  sorry
-
-/-- **降下**：`m_A` 冪ねじれで有限表示な `Λ` 加群は、ある段 `n` の有限長 `A_n` 加群 `V` から
-`Λ ⊗_{A_n} V` として得られる（有限個の生成元と関係式はどれかの段に入る）。 -/
-theorem exists_descent (M : Type u) [AddCommGroup M] [Module (Tower A t p) M]
-    [Module.FinitePresentation (Tower A t p) M] (hM : IsPowTorsion (towerMaxIdeal A t p) M) :
-    ∃ (n : ℕ) (V : Type u) (_ : AddCommGroup V) (_ : Module (TowerStage A t p n) V),
-      IsFiniteLength (TowerStage A t p n) V ∧
-        Nonempty (M ≃ₗ[Tower A t p] Tower A t p ⊗[TowerStage A t p n] V) := by
-  sorry
-
-/-- **加法性**（Faltings [9, Appendix 2]、Gabber–Ramero Thm 14.5.75、CLMST Prop. 2.2.6(a)）：
-`m_A` 冪ねじれ加群の短完全列 `0 → M₁ → M₂ → M₃ → 0` で `λ_∞(M₂) = λ_∞(M₁) + λ_∞(M₃)`。 -/
+/-- (C2) **加法性**。引用：CLMST Prop. 2.2.6(a)、Faltings Appendix 2、Gabber–Ramero Thm 14.5.75。
+`m_A Λ` 冪ねじれ加群の短完全列 `0 → M₁ → M₂ → M₃ → 0` で `λ_∞(M₂) = λ_∞(M₁) + λ_∞(M₃)`。 -/
 theorem towerLengthFun_add_of_exact (M₁ M₂ M₃ : Type u) [AddCommGroup M₁]
     [Module (Tower A t p) M₁] [AddCommGroup M₂] [Module (Tower A t p) M₂] [AddCommGroup M₃]
     [Module (Tower A t p) M₃] (f : M₁ →ₗ[Tower A t p] M₂) (g : M₂ →ₗ[Tower A t p] M₃)

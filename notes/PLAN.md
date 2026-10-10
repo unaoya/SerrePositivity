@@ -1106,5 +1106,9 @@ docstring の変更だけなので定理名・証明は変わらず、`#print ax
   `hilbertSamuelMultiplicity` は削除した。
 - Lemma 2.4（`Paper/Section2/Lemma2_4.lean`）と Corollary 2.6 (3)（`cor_2_6_pos`、
   `Section2.cor_2_6_residue_pos`）を証明した。後者は `HilbertSamuel.multiplicity_pos`（`sorry`）に依存。
-- 残る `sorry`：引用（Lemma 2.1、2.2、Theorem 2.5、`λ_∞` の加法性・`λ = λ*`・有限段の公式・降下）、
-  塔の段の標準事実 8 つ、重複度の定理 3 つ。
+- 塔の段の標準事実（`Paper/Section2/TowerStage.lean`、単項式基底は `MonomialBasis.lean`）：有限自由と
+  ランク、遷移写像の自由性、局所性と剰余体、`Λ` の平坦性を証明した。残りは完備性・正則性。
+- Lemma 2.3 (b) の標準事実 (S1) 有限段の公式・(S2) 降下を証明した（`Paper/Section2/TowerDescent.lean`、
+  一般論 `CommutativeAlgebra/PresentationBaseChange.lean`）。引用は (C1) `λ = λ*`（CLMST Prop. 2.2.3、
+  Gabber–Ramero Lemma 14.5.74）と (C2) 加法性（CLMST Prop. 2.2.6(a)、Faltings Appendix 2）だけ。
+- 残る `sorry`：引用（Lemma 2.1、2.2、Theorem 2.5、(C1)、(C2)）、段の完備性・正則性、重複度の定理 3 つ。

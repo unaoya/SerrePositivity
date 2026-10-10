@@ -301,7 +301,7 @@ Koszul Euler 標数、Lemma 2.4）を、Monsky・Roberts・Stacks 0AZZ を `sorr
 README、`PLAN.md` §1.5・§19 を更新した。利用側（Lemma 5.2、§5）は (2.6) の形の `hquot` を
 引数にとるので変更なし。
 
-残り：段階 H の証明（重複度の定理）、塔の段の標準事実、段階 E。
+残り：段階 H の証明（重複度の定理）、塔の段の標準事実のうち完備性・正則性、段階 E。
 
 ### 10.1 標準的事実のうち証明したもの（2026-10-10）
 
@@ -310,6 +310,49 @@ README、`PLAN.md` §1.5・§19 を更新した。利用側（Lemma 5.2、§5）
 - `Section2.isIntegral_towerStage`、`towerStage_finite`：`A_n` は `X_i` の像で生成され、各 `X_i` は
   `X_i^{p^n} = t_i` から整（`IsIntegral.of_pow`）。有限型かつ整なので有限生成
   （`Algebra.IsIntegral.finite`）。`[Fact p.Prime]` を仮定に加えた（`p = 0` では偽）。
+
+### 10.2 塔の段の標準事実と引用の明確化（2026-10-10、第二回）
+
+**単項式基底の一般論（`Paper/Section2/MonomialBasis.lean`、新規、`sorry` なし）**：可換環 `R`、
+`s : Fin h → R`、`q > 0` について `R[X₁..X_h]/(X_i^q − s_i)` は `X^e`（`0 ≤ e_i < q`）を基底とする
+自由加群（`relBasis`）、ランク `q^h`（`finrank_quotient_relIdeal`、`R` が非自明のとき）。証明は
+「割り算」写像 `ψ : R[X] → R^{(Fin h → Fin q)}`（`X^d ↦ (∏ s_i^{⌊d_i/q⌋}) e_{d mod q}`）が関係式を消して
+商に降り、単項式の写像 `Φ` の逆になることによる。`Tower.lean` の `towerRel` はこの `relIdeal` で
+`q = p^n` としたものに定義し直した。
+
+**段の性質（`Paper/Section2/TowerStage.lean`、新規）**：Lemma 2.3 (a) の主張を `Tower.lean` から移し、
+次を証明した（`[Fact p.Prime]`）。
+
+- `towerStage_free`、`towerStage_finite`、`finrank_towerStage`（`= p^{nh}`）、基底 `towerStageBasis`。
+- `towerMap_free_finrank`：`A_b` は `A_a` 上有限自由でランク `p^{(b−a)h}`。`A_b ≅ A_a[Y]/(Y_i^{p^{b−a}} − x_i)`
+  （`relStageEquiv`、`Y_i ↦ X_i`、逆は `X_i ↦ Y_i`、`A_a` の作用は `towerMap`）を作って一般論を使う。
+  基底は `towerMapBasis`。
+- `isLocalRing_towerStage`、`maximalIdeal_towerStage`、`residue_surjective_towerStage`（`t_i ∈ m_A` を仮定）：
+  `A_n → k`（`X_i ↦ 0`、`a ↦ ā`）の核 `M` が極大で、任意の極大イデアル `M'` は整拡大なので `m_A` の上にあり
+  （`Ideal.isMaximal_comap_of_isIntegral_of_isMaximal`）、`X_i^{p^n} = t_i ∈ M'` と素性から `X_i ∈ M'`、
+  よって `M ⊆ M'`、極大性から `M = M'`（`IsLocalRing.of_unique_max_ideal`）。剰余体は定数項から。
+- `flat_tower`：`Λ` は `A_n` 上平坦。等式的判定法（`Module.Flat.of_forall_exists_factorization`）で、
+  `A_n^l → Λ` の生成元の像が入る段 `m` と関係式が消える段 `m' ≥ m`（`Ring.DirectLimit.of.zero_exact`、
+  `DirectedSystem` の instance を `Tower.lean` に追加）をとり、`A_n^l → A_{m'} ≅ A_n^k → Λ` と分解する。
+  `Tower` の定義は `towerMapRingHom`（環準同型の族）で書き直した（`zero_exact` の形に合わせるため）。
+
+残り（`sorry`）：`isAdicComplete_towerStage`（完備な Noether 局所環上の有限加群の完備性と、`m_{A_n}` 進と
+`m_A A_n` 進の位相の一致が要る）、`isRegularLocalRing_towerStage`（整拡大での次元の保存
+`dim A_n = dim A` が Mathlib にない。あれば `IsRegularLocalRing.of_spanFinrank_maximalIdeal_le` と
+`m_{A_n} = (X)` から出る）。どちらも Theorem 2.5 の証明（段階 E）まで使わない。
+
+**引用の明確化（`TowerLength.lean`）**：Lemma 2.3 (b) の四つの `sorry` を次のように分けた。
+
+| 名前 | 主張 | 位置づけ | 出典 |
+| --- | --- | --- | --- |
+| (C1) `towerLengthFun_eq_fgLength` | 有限生成・`m_A` 冪ねじれで `λ_∞ = λ*` | 引用 | CLMST Prop. 2.2.3。本体は Gabber–Ramero *Foundations for almost ring theory* Lemma 14.5.74（Shimomoto Lemma 2.2）：有限生成加群の有限生成部分加群で `λ*` が単調 |
+| (C2) `towerLengthFun_add_of_exact` | 短完全列での加法性 | 引用 | CLMST Prop. 2.2.6(a)。証明は Faltings *Almost étale extensions* (Astérisque 279, 2002) Appendix 2 に委ねられている。Gabber–Ramero Thm 14.5.75、Shimomoto Prop. 2.8 も同じ |
+| (S1) `fgLength_tensor` | 有限長 `A_n` 加群 `V` で `λ*(Λ ⊗_{A_n} V) = ℓ(V)/p^{nh}` | 標準事実（後で証明） | 段の自由ランクと平坦性、有限表示加群で `λ* = λ**` |
+| (S2) `exists_descent` | `m_A` 冪ねじれで有限表示な加群はある段から来る | 標準事実（後で証明） | 有限個の生成元と関係式はある段に入る |
+
+(2.2) `towerLengthFun_tensor` は (C1) と (S1) から証明した（`isPowTorsion_tower_tensor` を経由。
+`QuotientLength.lean` の `isPowTorsion_tensorProduct` を任意のイデアルに一般化した
+`isPowTorsion_tensorProduct_of_isTorsionBySet` を使う）。
 
 残りの標準的事実が簡単でない理由：
 
@@ -320,3 +363,53 @@ README、`PLAN.md` §1.5・§19 を更新した。利用側（Lemma 5.2、§5）
   ファイバー `A_n/m_A A_n = k[X]/(X_i^{p^n})` が局所であることから出るが、Mathlib にその判定法はない。
 - 正則性・完備性：局所性に依存し、さらに「有限加群は完備」「極大イデアルが `h` 個で生成」が要る。
 - `flat_tower`：段の自由性（上）と、自由加群の有向極限が平坦であること（Mathlib に未確認）。
+
+### 10.3 標準事実 (S1)・(S2) の証明（2026-10-10、第三回）
+
+新しいファイル `Paper/Section2/TowerDescent.lean`（`sorry` なし）と一般論
+`CommutativeAlgebra/PresentationBaseChange.lean`（`sorry` なし）。`TowerLength.lean` からは (S1)・(S2)・
+(2.2) の主張を移し、引用 (C1)・(C2) だけを残した。
+
+**一般論（`PresentationBaseChange.lean`）**：`R` 代数 `S` と関係式 `r : κ → (ι → R)` について
+`S ⊗_R (R^ι / span r) ≃ S^ι / span (ρ ∘ r)`（`S` 線形、`baseChangeQuotEquiv`、`ρ = piAlgebraMap` は各成分に
+`algebraMap`）。Mathlib の `tensorQuotientEquiv` は `R` 線形にしか述べられていないので直接作った
+（順方向は `liftBaseChange`、逆方向は `e_i ↦ 1 ⊗ [e_i]`）。
+
+**段への降下の道具**（`Tower.lean` と `TowerDescent.lean`）：
+
+- `exists_towerOf_family`：`Λ` の有限個の元は共通の段から来る。
+- `exists_towerMap_eq_zero`：段の有限個の元が `Λ` で `0` ならある段で `0`（`Ring.DirectLimit.of.zero_exact`）。
+- `stageToTower m`（各成分に `towerOf m`）、`stageToStage m m'`（各成分に `towerMap m m'`）と
+  その計算規則。
+- `exists_stage_mem_span`：段の元の有限族の像が `Λ` で `span` に入るならある段で `span` に入る
+  （係数を段に持ち上げ、差が `Λ` で `0` になることから先の段で `0`）。
+- `exists_stage_surjective`：段 `N` で表示された二つの加群の `Λ` への係数拡大の間の `Λ` 線形な全射は、
+  ある段 `N' ≥ N` の `A_{N'}` 線形な全射に降りる（生成元の像、関係式、全射性の証人を段に持ち上げ、
+  `exists_stage_mem_span` で降ろす）。
+
+**(S2) `exists_descent`**（`[IsNoetherianRing A] [Fact p.Prime]` を追加）：`M ≃ Λ^l / span k`
+（`Module.FinitePresentation.exists_fin`）、`k` の成分を段 `m` に持ち上げ、ねじれ `(m_A Λ)^e M = 0` から
+`x_σ e_i ∈ span k`（`x` は `m_A^e` の生成元、`A` の Noether 性）、`exists_stage_mem_span` で段 `N` に降ろす。
+`V := A_N^l / span (c の像)` は `(m_A A_N)^e` で消え、`A` 上有限（`towerStage_finite`）で `m_A^e` で消えるので
+`A` 上有限長、`isNoetherian_of_tower`・`isArtinian_of_tower` で `A_N` 上有限長。
+`Λ ⊗_{A_N} V ≃ Λ^l / span k ≃ M` は `baseChangeQuotEquiv`。
+
+**(S1) `fgLength_tensor`**（`ht : ∀ i, t i ∈ m_A` を追加。`[IsNoetherianRing A] [Fact p.Prime]`）：
+
+- `length_tensor_towerMap`：`ℓ_{A_N}(A_N ⊗_{A_n} V) = p^{(N−n)h} ℓ_{A_n}(V)`。`A_N ≅ A_n^{p^{(N−n)h}}`
+  （`towerMapBasis`）で `A_N ⊗ V ≅ V^{p^{(N−n)h}}`（`finsuppScalarLeft`、`Module.length_finsupp`）、
+  `A_n` 上の長さと `A_N` 上の長さは剰余体が同じなので一致（`length_eq_of_common_residueField`、
+  `residue_surjective_towerMap`）。
+- `length_div_le_of_surjective`：有限長 `V`（段 `n`）、`W`（段 `m`）と `Λ` 線形な全射
+  `Λ ⊗_{A_m} W ↠ Λ ⊗_{A_n} V` があれば `ℓ(V)/p^{nh} ≤ ℓ(W)/p^{mh}`。共通の段 `N = n ⊔ m` に上げ
+  （`cancelBaseChange`）、`A_N ⊗ V`・`A_N ⊗ W` を有限表示し、全射を段 `N'` に降ろし
+  （`exists_stage_surjective`）、`Module.length_le_of_surjective` と `length_tensor_towerMap` で
+  `p^{(N'−n)h} ℓ(V) ≤ p^{(N'−m)h} ℓ(W)`、両辺を `p^{N'h}` で割る（`div_stageRank_eq`）。
+- `fgLength_tensor`：`≤` は定義（`P := Λ ⊗ V`、`f := id`、降下 `(n, V)`）、`≥` は
+  `length_div_le_of_surjective`。
+
+(2.2) `towerLengthFun_tensor` は (C1) と (S1) から（`sorryAx` は (C1) 経由のみ）。
+`#print axioms`：`exists_descent`、`fgLength_tensor`、`exists_stage_surjective`、`length_tensor_towerMap`、
+`baseChangeQuotEquiv` は標準公理のみ。
+
+残る `sorry`（§2）：引用 (C1)・(C2)、Lemma 2.1、2.2、Theorem 2.5、段の完備性・正則性、重複度の定理 3 つ。
