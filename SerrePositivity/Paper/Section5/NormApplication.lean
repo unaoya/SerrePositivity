@@ -6,15 +6,25 @@ public import SerrePositivity.PerfectComplex.NormalizedLength
 public import SerrePositivity.CommutativeAlgebra.LocalAlgebra
 
 /-!
-# 長さ代数への補題3.5の適用
+# 長さ代数への Lemma 3.5 の適用
 
-正則局所環上の有限局所代数 `A → T` と定理2.5の長さ代数 `(C, λ)` を、補題3.5の仮定に合わせる。
-`m_T` のある冪が `m_A T` に入ることから、同じ長さを `m_A C` の冪ねじれ加群上で使える。
-パラメータの正の冪では Koszul ホモロジーの消滅と商の長さの公式を用いる。
-冪が零の場合には各パラメータが `1` になるため、Koszul 複体の可縮性から評価の有限性を得る。
+## 概要
 
-群作用についての全射性と幾何的推移性を併せて補題3.5を適用し、
-ひねった複体の評価の有限性と共役和の一致を得る。このファイルはその適用部分を証明する。
+§5 の設定では、正則局所環 `A` 上の有限局所代数 `T` と Theorem 2.5 の長さ代数 `(C, λ)` があり、`λ` は
+`m_T C` 冪ねじれ加群の上で定義されていて、(3.9) に当たる Koszul ホモロジーの評価は `v ≥ 1` について
+与えられる。Lemma 3.5（`Paper/Lemma3_5.lean`）の仮定は `λ` の定義域が `m_A C` で、有限性 `hfin` は
+`v = 0` も含めて要求するので、その差を埋めて Lemma 3.5 を適用するのがこのファイルの役割である
+（`normComparison_of_lengthAlgebra`）。
+
+## 内容
+
+- 定義域の取り替え：`m_T^N ⊆ m_A T`（`maximalIdeal_pow_le_map_of_finite`）から、同じ `λ` を `m_A C`
+  冪ねじれ加群の上で使える（`NormalizedLength.restrictToBase`）。
+- 有限性 `hfin`：`v ≥ 1` では (3.9) から（正次数は `0`、`0` 次は `λ(C/(z^v)C) = v^e r < ∞`）。`v = 0`
+  では各 `z_j^0 = 1` なので Koszul 複体 `K(1, …, 1; C)` は可縮（`1 • 𝟙` が零ホモトピック、
+  `isSupported_koszulComplex`）でホモロジーが零、したがって `λ = 0`。
+- 群作用についての全射性と幾何的推移性を添えて `lemma_3_5` を適用し、ひねった複体の評価の有限性と
+  共役和の一致を得る。
 -/
 
 @[expose] public section
@@ -26,12 +36,13 @@ open scoped ENNReal
 
 namespace SerrePositivity
 
-/-- Koszul ホモロジーの消滅と商の長さ、有限性、パラメータ系、剰余体への全射を
-個別に受け取り、補題3.5を適用する。
-完備性や生成的分離性を含む正規化基底の構成条件は要求しない。
-有限拡大による極大イデアルの冪の包含を使い、長さの値を変えずに加法性の対象を `m_A C` の冪ねじれへ制限する。
-群作用の幾何的推移性などを仮定し、各ひねりのホモロジー評価の有限性と通常・正規化共役和の一致を得る。
-補題3.5とその入力に依存する。 -/
+/-- **長さ代数への Lemma 3.5 の適用**：正則局所環 `A` の正則パラメータ系 `z`、`A` 上有限で剰余体が同じ
+局所環 `T`、`m_T C` 冪ねじれ加群上の正規化長さ `λ` で (3.9)（`hzero`、`hquot`、`v ≥ 1`）をみたすもの、
+剰余標数 `p > 0`、`A` 上 `T` に作用する有限群 `G`（`Spec T → Spec A` は全射で幾何ファイバーで
+推移的）について、`z` に台をもつ完全 `T` 複体 `L` の各共役 `g^*L` の係数拡大したホモロジーの `λ` は
+有限で、共役和 `Σ_g χ_T(g^*L) = Σ_g χ_C(g^*L)` が成り立つ。完備性や生成的分離性など正規化基底の
+条件は要らない。`λ` の定義域を `m_A C` に取り替え、`v = 0` を含む有限性を用意して `lemma_3_5` を
+呼ぶ。Lemma 3.5 の入力（層 2 の `theorem_3_1_K0`、層 3a、`lemma_3_5a_lam_finite`）に依存する。 -/
 theorem normComparison_of_lengthAlgebra
     (A T C : Type u) [CommRing A] [IsRegularLocalRing A] [CommRing T] [IsLocalRing T]
     [Algebra A T] [Module.Finite A T] [CommRing C] [Algebra T C] [Algebra A C] [IsScalarTower A T C]

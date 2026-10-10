@@ -5,13 +5,32 @@ public import SerrePositivity.Paper.Lemma5_2
 /-!
 # 核の場合の正値性（論文 §5.5）
 
-補題5.2に必要な有限代数・パラメータ・長さを直接引数で受け取り、第一比較を証明する。
-第二比較の評価 `b`、比較等式、正値性も個別の引数で渡す。
-最後の算術は `chi_pos_of_comparisons` として、環や長さ代数から独立に証明する。
+## 概要
 
-ここではデータの存在を一括で仮定するクラスを置かない。`core_of_inputs` は、指定した
-対象と仮定が与えられた場合の正値性であり、対象の構成・第二比較の証明は別途必要である。
-補題5.2の一般論の入力と未証明結果への依存も残る。
+論文 §5.5 の最後の議論：第一のノルム比較（Lemma 5.2）
+
+  `|G| · a · d · χ = Σ_σ c_σ`（`a = rank_{R/P} D`、`d = rank_{R/Q} E`、`χ = χ^R(R/P, R/Q)`）
+
+と第二のノルム比較（Lemma 5.4）
+
+  `|H| · c_σ = Σ_γ b_{σ,γ}`、各 `b_{σ,γ} > 0`
+
+から `χ > 0` を導く。`b_{σ,γ}` は長さ代数の商の正規化長さ `λ(C/m C)`（Corollary 2.6 の 3 で正）に
+当たる量である。
+
+## 内容
+
+- `chi_pos_of_comparisons`：最後の算術。二つの比較等式と `b > 0`、階数因子 `a, d > 0`、添字集合 `G`、
+  `H` の非空性だけから `χ > 0`。環や長さ代数から独立。
+- `core_of_inputs`：Lemma 5.2（`firstComparison`）を適用し、第二比較の `b` とその二つの性質を引数と
+  して受け取って `χ > 0` を結論する。
+
+## 注意
+
+ここではデータの存在を一括で仮定する class を置かない。`core_of_inputs` は「指定した対象と仮定が
+与えられたときの正値性」であり、`core_statement`（`Paper/Statement.lean`）からそれらの対象
+（正規化基底 `A ⊆ D`、長さ代数、群 `G`、`H`）を構成する段階と、第二比較 Lemma 5.4 の証明は別途
+必要である。Lemma 5.2 の一般論の入力と未証明結果への依存も残る。
 -/
 
 public section
@@ -23,8 +42,9 @@ open scoped ENNReal
 
 namespace SerrePositivity
 
-/-- 二つの有限和の比較と各項の正値性から、整数 `χ` の正値性を導く。
-階数因子 `a, d` の正値性と添字集合の非空性だけを用いる最後の算術。 -/
+/-- **最後の算術**：`|G| · a · d · χ = Σ_σ c_σ`（`hfirst`）、`|H| · c_σ = Σ_γ b_{σ,γ}`（`hsecond`）、
+`b_{σ,γ} > 0`（`hpos`）、`a, d > 0`、`G`、`H` が空でないなら、整数 `χ` は正。各 `c_σ` が正の和を `|H|` で
+割ったものなので正、したがって `Σ_σ c_σ > 0`、`|G| a d > 0` で割って `χ > 0`。 -/
 theorem chi_pos_of_comparisons {G H : Type u} [Fintype G] [Nonempty G]
     [Fintype H] [Nonempty H] (a d : ℕ) (ha : 0 < a) (hd : 0 < d)
     (χ : ℤ) (c : G → ℝ) (b : G → H → ℝ)
@@ -45,12 +65,14 @@ theorem chi_pos_of_comparisons {G H : Type u} [Fintype G] [Nonempty G]
   exact_mod_cast this
 
 variable {R : Type u} [CommRing R] [IsRegularLocalRing R]
-  [Inputs.RegularResolution R] [Inputs.TorHomologicalAlgebra R] [Inputs.IntersectionAdditivity R]
-  [Inputs.GenericBasis R] [Inputs.IntersectionVanishing R]
+  [Inputs.RegularResolution R] [Inputs.IntersectionAdditivity R]
+  [Inputs.IntersectionVanishing R]
 
-/-- 補題5.2を適用し、第二比較の等式と正値性を合わせて交点重複度の正値性を導く。
-第一比較の仮定を直接列挙し、第二比較の `b` と二つの性質を別の引数にする。
-対象の存在を主張する定理ではなく、与えられた対象についての条件付きの結論である。 -/
+/-- **核の場合の正値性（条件付き）**：Lemma 5.2 の仮定（`firstComparison` と同じ。`D` の階数が正
+`rankD` を追加）に加えて、第二比較のデータ `H`、`b : G → H → ℝ` と、等式
+`|H| · c_σ = Σ_γ b_{σ,γ}`（`hsecond`）、正値性 `b > 0`（`hpos`）を仮定すると `χ^R(R/P, R/Q) > 0`。
+`firstComparison` の結論を `chi_pos_of_comparisons` に渡すだけ。対象の存在を主張する定理ではなく、
+与えられた対象についての条件付きの結論である。 -/
 theorem core_of_inputs
     (P Q : Ideal R) [P.IsPrime] [Q.IsPrime]
     (A D E C G : Type u) [CommRing A] [IsRegularLocalRing A]
@@ -84,7 +106,7 @@ theorem core_of_inputs
     (hpos : ∀ σ γ, 0 < b σ γ) : 0 < chi R (R ⧸ P) (R ⧸ Q) := by
   let := Fintype.ofFinite G
   have hfirst := firstComparison P Q A D E C G z hh hz hdimA hsupport hresA hresR
-    hsurj htrans rankD rankE hPdim hQdim lam hzero hquot p hsum hprimary
+    hsurj htrans rankE hPdim hQdim lam hzero hquot p hsum hprimary
   exact chi_pos_of_comparisons (Module.finrank (R ⧸ P) D) (Module.finrank (R ⧸ Q) E)
     rankD rankE _ (twistedEuler R D E C G lam) b hfirst.2 hsecond hpos
 

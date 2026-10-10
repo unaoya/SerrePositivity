@@ -7,15 +7,38 @@ public import SerrePositivity.IntersectionMultiplicity.ResolutionEvaluation
 public import Mathlib.Algebra.CharP.Algebra
 
 /-!
-# 補題5.2：第一のノルム比較
+# Lemma 5.2：第一のノルム比較
 
-有限代数 `D/(R/P)`、`E/(R/Q)`、正則局所環 `A`、群 `G`、長さ代数 `(C, λ)` を直接受け取る。
-階数は `Module.finrank` で表し、別の値やそれとの一致を仮定しない。
-`E` の有界有限自由分解を `D` に係数拡大し、閉点での台の条件を確認して補題3.5を適用する。
+## 概要
 
-基底の構成に用いる完備性・分離性、第二の正規化基底や群は、この証明の仮定には含めない。
-第一の群については幾何的推移性を直接仮定する。定理の結論は Tor の有限性と共役和の等式。
-五つの一般論の入力クラスと、補題3.5側の未証明結果への依存は残っている。
+論文 Lemma 5.2 は、§5 の設定で交点重複度 `χ^R(R/P, R/Q)` を正規化長さによる量 `c_σ` の和で表す：
+
+  `|G| · rank_{R/P} D · rank_{R/Q} E · χ^R(R/P, R/Q) = Σ_{σ ∈ G} c_σ`、
+
+`c_σ = Σ_i (-1)^i λ(Tor_i^R(C, E))`（`C` の `R` 代数構造を `σ` でひねったもの、
+`Paper/Section5/FirstComparison.lean` の `twistedEuler`）。各 `c_σ` の各項が有限であることも主張する
+（`firstComparison`）。
+
+## 証明
+
+1. 有限拡大の階数倍（`IntersectionMultiplicity/FiniteExtension.lean`）：
+   `χ^R(D, E) = rank_{R/P} D · rank_{R/Q} E · χ^R(R/P, R/Q)`。
+2. `E` の有界有限自由分解 `F`（入力 `RegularResolution`）をとり、`L = F ⊗_R D` とする。`D ⊗_R E` が
+   有限長（`√(P + Q) = m_R` から）なので、`L` は `D` の閉点、すなわち `z` の像に台をもつ完全複体
+   （`isPerfectSupported_baseChange_resolution`）。
+3. `χ_D(L) = χ^R(D, E)`（`chiOrd_baseChange_resolution`。`R` と `D` の剰余体が同じことを使う）。
+4. Lemma 3.5 を `A → D` と長さ代数 `(C, λ)` に適用して共役和の等式を得る
+   （`Paper/Section5/NormApplication.lean`）。`A` の剰余標数が `p` であることは、`R` と `A` の剰余体が
+   ともに `D` の剰余体と同型であること（`residueFieldEquiv_of_surjective`）から移す。
+5. 以上を `firstComparison_of_resolution` で組み立てる。
+
+## 仮定の扱い
+
+有限代数 `D/(R/P)`、`E/(R/Q)`、正則局所環 `A`、群 `G`、長さ代数 `(C, λ)` を直接引数で受け取る。階数は
+`Module.finrank` で表し、別の値との一致は仮定しない。基底の構成に用いる完備性・分離性、第二の
+正規化基底や群は仮定に含めない。幾何的推移性は直接仮定する。三つの一般論の入力 class
+（`Inputs/IntersectionTheory.lean`）と、Lemma 3.5 側の未証明結果（層 2、層 3a、
+`lemma_3_5a_lam_finite`）への依存は残る。
 -/
 
 public section
@@ -28,14 +51,16 @@ open scoped ENNReal
 namespace SerrePositivity
 
 variable {R : Type u} [CommRing R] [IsRegularLocalRing R]
-  [Inputs.RegularResolution R] [Inputs.TorHomologicalAlgebra R] [Inputs.IntersectionAdditivity R]
-  [Inputs.GenericBasis R] [Inputs.IntersectionVanishing R]
+  [Inputs.RegularResolution R] [Inputs.IntersectionAdditivity R]
+  [Inputs.IntersectionVanishing R]
 
-/-- 補題5.2。有限代数の階数、次元、パラメータ系、剰余体への全射、幾何的推移性を個別に仮定する。
-`hPdim`・`hQdim` は商環の次元を自然数で指定する条件である。
-`hsupport` は `z` の像で生成したイデアルが閉点を定める条件である。
-長さ代数の構成条件は不要で、高次 Koszul ホモロジーの消滅 `hzero` と商の長さ `hquot` だけを用いる。
-証明本体に `sorry` はないが、一般論の入力と補題3.5の未証明結果に依存する。 -/
+/-- **Lemma 5.2（第一のノルム比較）**：`|G| · rank_{R/P} D · rank_{R/Q} E · χ^R(R/P, R/Q) = Σ_σ c_σ` と、
+各 `c_σ` の各項の有限性。仮定は、正則局所環 `A` の正則パラメータ系 `z`（`hz`、`hdimA`）、その `D` での
+像が `D` の閉点を定めること（`hsupport`）、`A → D` と `R → D` が剰余体で全射（`hresA`、`hresR`）、
+`Spec D → Spec A` の全射性と `G` の幾何的推移性（`hsurj`、`htrans`）、`E` の階数が正（`rankE`）、
+次元の条件（`hPdim`、`hQdim`、`hsum`）、長さ代数の (3.9)（`hzero`、`hquot`）、剰余標数 `p`、
+`√(P + Q) = m_R`（`hprimary`）。長さ代数の構成条件（完備性、分離性）は要らない。証明本体に `sorry` は
+ないが、一般論の入力と Lemma 3.5 の未証明結果に依存する。 -/
 theorem firstComparison
     (P Q : Ideal R) [P.IsPrime] [Q.IsPrime]
     (A D E C G : Type u) [CommRing A] [IsRegularLocalRing A]
@@ -53,7 +78,7 @@ theorem firstComparison
     (hresR : Function.Surjective ((residue D).comp (algebraMap R D)))
     (hsurj : Function.Surjective (PrimeSpectrum.comap (algebraMap A D)))
     (htrans : IsGeometricallyTransitive A D G)
-    (rankD : 0 < Module.finrank (R ⧸ P) D) (rankE : 0 < Module.finrank (R ⧸ Q) E)
+    (rankE : 0 < Module.finrank (R ⧸ Q) E)
     (hPdim : ringKrullDim (R ⧸ P) = h) (hQdim : ringKrullDim (R ⧸ Q) = l)
     (lam : NormalizedLength C ((maximalIdeal D).map (algebraMap D C)))
     (hzero : ∀ v : ℕ, 0 < v → ∀ i : ℕ, 0 < i →
