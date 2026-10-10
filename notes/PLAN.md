@@ -163,6 +163,11 @@ Lean の公理監査で確認できる。証明が完成したらその定理の
 
 Theorem 2.5 の (2.5) は §5 では `0 < λ(U) < ∞`（(5.5)）としてしか使われない。(2.6) は基底パラメータについて `λ(C_D/(t^v)) = v^h rank_A D` の形で使う。したがって束には (2.5) を「任意のパラメータ系 z と v ≥ 1 で `0 < λ(C_D/(z^v)C_D) < ∞`」に弱めて入れ、Hilbert–Samuel 重複度の定義を避ける。弱めた形なので忠実性の問題はない。
 
+**改訂（2026-10-10）**：この方針は取り下げた。§2 は具体的な対象の話なので、Hilbert–Samuel 重複度は
+Samuel 多項式の最高次係数として定義し（`CommutativeAlgebra/HilbertSamuel.lean`）、(2.5) は論文どおり
+`λ(C_D/(z^v)C_D) = v^h e((z), D)` と書く。重複度の定理（多項式性、次元定理、正値性）は可換環論の
+一般論として別トラックで証明する。詳細は `notes/section-2-plan.md` §5。
+
 ## 2. Lean での主張（コンパイル確認済み）
 
 次のファイルは `lake env lean` で通った（警告は `sorry` のみ）。M0 でそのまま `SerrePositivity/Tor.lean`、`EulerChar.lean`、`Statement.lean` に分ける。
@@ -1089,3 +1094,17 @@ Mathlib には超 Tor スペクトル系列も「正則局所環の大域次元�
 
 docstring の変更だけなので定理名・証明は変わらず、`#print axioms` の結果も変わらない。
 各ディレクトリの書き換え後に `lake build` で確認した。
+
+## 19. §2 トラック（2026-10-10）
+
+計画と実施記録は `notes/section-2-plan.md`。要点：
+
+- 塔 `Λ`、正規化長さ `λ_∞`、Hilbert–Samuel 重複度を具体的に定義した（`Paper/Section2/Tower.lean`、
+  `TowerLength.lean`、`CommutativeAlgebra/HilbertSamuel.lean`）。
+- Theorem 2.5（`Section2.theorem_2_5`、`sorry`）は塔の作用との両立を含み、`λ_D` は `λ_∞` の係数制限
+  （`towerLengthOn`）として定義する。旧 `Inputs.exists_lengthAlgebra` と極限の式による
+  `hilbertSamuelMultiplicity` は削除した。
+- Lemma 2.4（`Paper/Section2/Lemma2_4.lean`）と Corollary 2.6 (3)（`cor_2_6_pos`、
+  `Section2.cor_2_6_residue_pos`）を証明した。後者は `HilbertSamuel.multiplicity_pos`（`sorry`）に依存。
+- 残る `sorry`：引用（Lemma 2.1、2.2、Theorem 2.5、`λ_∞` の加法性・`λ = λ*`・有限段の公式・降下）、
+  塔の段の標準事実 8 つ、重複度の定理 3 つ。

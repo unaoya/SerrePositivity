@@ -16,7 +16,7 @@ Early stage. Theorem 1.1 and the core case after Lemma 5.1 are stated in `SerreP
 `SerrePositivity/Paper/Section5/` contains the twisted Euler evaluations, the application of Lemma 3.5, and the final positivity argument. Lemma 5.2 (`firstComparison` in `Paper/Lemma5_2.lean`) takes its rings, finite algebras, ranks, parameters, group action, and length conditions as explicit arguments. The former `CoreData`, `IsPaperData`, and `Inputs.Core` bundles have been removed. `core_of_inputs` applies Lemma 5.2 to supplied data and combines it with an explicitly supplied second comparison; it does not construct those data or prove the second comparison. Ranks are written directly as `Module.finrank`.
 
 Unproved inputs are explicit theorems, including `isWeaklyRegular_of_span_eq_maximalIdeal`,
-`Inputs.intersectionVanishing`, and `Inputs.exists_lengthAlgebra`. Their uses occur in proof bodies,
+`Inputs.intersectionVanishing`, and `Section2.theorem_2_5`. Their uses occur in proof bodies,
 so downstream axiom audits expose `sorryAx`; there are no input classes to instantiate.
 Do not introduce structures or classes to package theorem assumptions. State each needed
 hypothesis directly. The former `Setup34`, `IsRegularNormalizationBase`, `LengthAlgebraProps`,
@@ -29,7 +29,7 @@ Lemma 3.5a's normalized-length finiteness is proved: the Koszul functor preserve
 sequences and shifts; induction on finite free terms establishes finiteness, which descends along
 the retract furnished by scalar null-homotopies. This proof uses no unproved inputs.
 Lemmas 3.2 and 3.3 and their K-theory foundations remain deferred.
-Corollary 2.6 positivity is deferred until the treatment of Theorem 2.5 is settled.
+Section 2 (`Paper/Section2/`, 2026-10-10): the tower `Λ = lim A[t^{1/p^n}]`, its normalized length `λ_∞` (Faltings' three-step definition) and the Hilbert–Samuel multiplicity (leading coefficient of the Samuel polynomial, `CommutativeAlgebra/HilbertSamuel.lean`) are defined concretely rather than assumed. Lemma 2.4 and Corollary 2.6 (3) are proved from the sup property and the composition-series argument; Lemma 2.1, 2.2, Theorem 2.5 (now with the compatible `Λ`-action and `λ_D := λ_∞` by restriction of scalars), the Faltings-type properties of `λ_∞`, the standard facts on the tower stages and the Hilbert–Samuel theorems remain named `sorry`s. See `notes/section-2-plan.md`.
 The next larger tasks are Sections 2 and 4, followed by the core and main statements.
 
 The Lean sources are organized as follows (2026-10-10):
@@ -38,7 +38,8 @@ The Lean sources are organized as follows (2026-10-10):
 - `CommutativeAlgebra/`: general commutative algebra (finite length, modules killed by a power of an ideal, finite local algebras, Hilbert–Samuel multiplicity, Koszul complexes and base change (`Koszul`), exactness, resolutions and Tor computations (`KoszulResolution`), length comparison over a common residue field and along automorphisms (`FiniteLength`), geometric transitivity, sums of homology lengths and truncation of complexes over a local ring).
 - `PerfectComplex/`: supported perfect complexes (`Basic`, homology support in `Support` and closure properties in `Closure`), their `K₀` (`K0`, including functoriality), normalized lengths (`NormalizedLength`) and the two Euler evaluations (`NormalizedEuler`, with the ordinary length as the special case `NormalizedLength.ordinary` in `OrdinaryEuler`), and generation of `K₀^{m}(A)` by the Koszul complex (`KoszulGeneration`).
 - `Paper/`: the main statements (`Statement`), the explicit comparisons and supporting arguments of §5 (`Section5/`), and the paper's lemmas (`Corollary2_6`, `Lemma3_4`, `Lemma3_5` with `Ordinary`, `Normalized`, and `ConjugateSum`, `Lemma5_2`).
-- `Inputs/`: theorems from outside the paper and standard facts not yet in Mathlib, stated as named theorems with `sorry` (Theorem 2.5, Theorem 3.1, facts on regular local rings, the intersection-theory inputs of Lemma 5.2).
+- `Paper/Section2/`: §2 of the paper: the tower and its normalized length (`Tower`, `TowerLength`), Lemma 2.1, 2.2, 2.4, Theorem 2.5 and Corollary 2.6 (3).
+- `Inputs/`: theorems from outside the paper and standard facts not yet in Mathlib, stated as named theorems with `sorry` (Theorem 3.1, facts on regular local rings, the intersection-theory inputs of Lemma 5.2), and the rewriting of (2.4), (2.6) in terms of the base parameters (`LengthAlgebra`).
 - `IntersectionMultiplicity/`: Serre's intersection multiplicity (`Basic`), normalized Tor lengths of finite-length modules (`NormalizedTor`, shared by Corollary 2.6 and Lemma 3.4), and the ingredients of Lemma 5.2 (rank factors of `χ`, base change of a finite free resolution, Euler evaluations of resolutions).
 
 Every file has a Japanese module docstring (purpose, background, proof strategy, conventions, where it is used) and every declaration a Japanese docstring stating the claim in words, the role of its hypotheses and the idea of the proof; the conventions are recorded in `notes/PLAN.md` §18.

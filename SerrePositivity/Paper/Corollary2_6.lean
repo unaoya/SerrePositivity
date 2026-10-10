@@ -4,6 +4,7 @@ public import SerrePositivity.Inputs.LengthAlgebra
 public import SerrePositivity.Inputs.RegularLocalRing
 public import SerrePositivity.CommutativeAlgebra.LocalAlgebra
 public import SerrePositivity.IntersectionMultiplicity.NormalizedTor
+public import SerrePositivity.Paper.Section2.Corollary2_6
 
 /-!
 # Corollary 2.6：長さ代数への有限長加群の係数拡大
@@ -25,7 +26,10 @@ Theorem 2.5 の長さ代数 `(C_D, λ_D)` について、有限長 `A` 加群 `V
 （`Inputs/RegularLocalRing.lean`、`sorry`）から得る。`λ_D` の定義域を `m_D C` から `m_A C` に
 取り替えるには `NormalizedLength.restrictToBase` を使う。
 
-3 は `cor_2_6_pos`：論文では (2.5) の正値性と組成列の議論による。未証明（`sorry`）。
+3 は `cor_2_6_pos`：(2.5) の `v = 1` で `λ_D(C_D/(t)C_D) = e((t), D) > 0`（Hilbert–Samuel 重複度の
+正値性 `HilbertSamuel.multiplicity_pos`、可換環論の一般論として当面 `sorry`）、`D/(t)D` の組成列を
+テンソルして `λ_D(C_D/(t)C_D) ≤ ℓ(D/(t)D) · λ_D(C_D/m_D C_D)`。証明の本体は
+`Paper/Section2/Corollary2_6.lean` の `Section2.cor_2_6_residue_pos`。
 -/
 
 @[expose] public section
@@ -65,31 +69,19 @@ theorem cor_2_6_tor (A D : Type u) [CommRing A] [IsRegularLocalRing A] [CommRing
     (Module.finrank A D) h39a h39b V hVfl
   exact ⟨this.1, this.2.1⟩
 
-/-- **Corollary 2.6** の 3（未証明）：`λ_D(C_D / m_D C_D) > 0`。論文では (2.5) の正値性
-（`multiplicity_pos`）と組成列の議論による。 -/
-theorem cor_2_6_pos (A D : Type u) [CommRing A] [IsRegularLocalRing A]
-    [IsAdicComplete (maximalIdeal A) A]
-    [CommRing D] [IsLocalRing D] [IsNoetherianRing D] [IsDomain D]
-    [IsAdicComplete (maximalIdeal D) D] [Algebra A D] [Module.Finite A D]
-    [Algebra.IsSeparable A D]
-    (hinj : Function.Injective (algebraMap A D))
-    (hres : Function.Surjective ((residue D).comp (algebraMap A D)))
-    {h : ℕ} (t : Fin h → A) (hdimA : ringKrullDim A = h) (hdimD : ringKrullDim D = h)
-    (hpos : 0 < h) (ht : Ideal.span (Set.range t) = maximalIdeal A)
-    (hsop : IsSystemOfParameters D (algebraMap A D ∘ t))
-    (C : Type u) [CommRing C] [Algebra D C]
+/-- **Corollary 2.6** の 3：`λ_D(C_D / m_D C_D) > 0`。(2.5) の `v = 1` と Hilbert–Samuel 重複度の
+正値性（`HilbertSamuel.multiplicity_pos`、当面 `sorry`）、`D/(t)D` の組成列を `C` でテンソルする
+右完全性の議論（`Section2.cor_2_6_residue_pos`）による。(2.5) 以外の性質や、完備性・分離性などは
+要らない。 -/
+theorem cor_2_6_pos (A D C : Type u) [CommRing A] [IsLocalRing A] [CommRing D] [IsLocalRing D]
+    [IsNoetherianRing D] [Algebra A D] [CommRing C] [Algebra D C]
     (lam : NormalizedLength C ((maximalIdeal D).map (algebraMap D C)))
-    (hzero : ∀ (z : Fin h → D), IsSystemOfParameters D z → ∀ v : ℕ, 0 < v →
-      ∀ i : ℕ, 0 < i → lam.len (koszulHomologySelf (fun j ↦ algebraMap D C (z j ^ v)) i) = 0)
+    {h : ℕ} (t : Fin h → A) (hsop : IsSystemOfParameters D (algebraMap A D ∘ t))
     (hquot : ∀ (z : Fin h → D), IsSystemOfParameters D z → ∀ v : ℕ, 0 < v →
       lam.len (C ⧸ Ideal.span (Set.range fun j ↦ algebraMap D C (z j ^ v))) =
-        ENNReal.ofReal ((v : ℝ) ^ h * hilbertSamuelMultiplicity D (Ideal.span (Set.range z)) D))
-    (hmult : ∀ (z : Fin h → D), IsSystemOfParameters D z →
-      0 < hilbertSamuelMultiplicity D (Ideal.span (Set.range z)) D)
-    (hbase : ∀ v : ℕ, 0 < v →
-      lam.len (C ⧸ Ideal.span (Set.range fun j ↦ algebraMap D C (algebraMap A D (t j) ^ v))) =
-        ((v ^ h * Module.finrank A D : ℕ) : ℝ≥0∞)) :
-    0 < lam.len (C ⧸ (maximalIdeal D).map (algebraMap D C)) := by
-  sorry
+        ENNReal.ofReal ((v : ℝ) ^ h *
+          (HilbertSamuel.multiplicity D (Ideal.span (Set.range z)) D : ℝ))) :
+    0 < lam.len (C ⧸ (maximalIdeal D).map (algebraMap D C)) :=
+  Section2.cor_2_6_residue_pos A D C lam t hsop hquot
 
 end SerrePositivity
