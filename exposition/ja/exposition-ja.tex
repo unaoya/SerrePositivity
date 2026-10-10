@@ -196,7 +196,7 @@ Euler 評価 & 命題~\ref{prop:35a} & 命題~\ref{prop:43} \\
 この節では、証明で繰り返し使う四つの道具を、三角圏とアーベル圏の言葉だけで述べる。
 \begin{itemize}
   \item \textbf{Euler 評価}（命題~\ref{prop:B-euler}）：長さ付きアーベル圏に値をとるホモロジー的関手から、$K_0$ 上の準同型を作る。
-  \item \textbf{共役和の比較}（補題~\ref{lem:conjsum}）：二つの評価が基底から来る類で一致し、不変類が基底から降下すれば、共役和が一致する。
+  \item \textbf{共役和の比較}（命題~\ref{prop:B-compare}）：二つの評価が基底から来る類で一致し、不変類が基底から降下すれば、共役和が一致する。
   \item \textbf{反復錐による消滅}（補題~\ref{lem:B-nit}）：スカラーが零作用する対象では、高次のホモロジーが消える。
   \item \textbf{第零次の下界}（補題~\ref{lem:B-h0}）：消滅のもとで、Euler 評価を第零次のホモロジーの長さで下から押さえる。
 \end{itemize}
@@ -239,8 +239,27 @@ $f\colon K\to K'$ をアーベル群の準同型、有限群 $G$ が $K'$ に群
 \begin{proof}
 $\sum_g g\cdot x$ は $G$ 不変なので、ある正の整数 $m$ で $m\sum_g g\cdot x$ は $f$ の像に入る。そこで $\varphi$ と $\psi$ は一致するので、$m$ で割ればよい。
 \end{proof}
-有理化した $f$ が $G$ 不変部分へ全射であれば、分母と捩れを払うことでこの整数倍の条件が得られる。命題~\ref{prop:B-euler} の二つの Euler 評価 $K_0(\mathcal{K}')\to\R$ に適用すると、評価元の $K_0$ への群作用と降下だけから共役和の一致が出る。評価先での一致や長さの $G$ 不変性は要らない。
-\lean{\ld{GroupTheory.ConjugateSum} の \ld{conjSum_eq}、ホモロジー的評価への適用は \ld{CategoryTheory.EulerComparison}（証明済み）。}
+有理化した $f$ が $G$ 不変部分へ全射であれば、分母と捩れを払うことでこの整数倍の条件が得られる。
+\lean{\ld{GroupTheory.ConjugateSum} の \ld{conjSum_eq}（証明済み）。}
+
+この補題を命題~\ref{prop:B-euler} の二つの Euler 評価に適用したものが、二つの実現で使う比較定理である。
+
+\begin{proposition}[Euler 評価の共役和比較]\label{prop:B-compare}
+$\mathcal{K}$ を三角圏とし、$H^{(1)}_*$、$H^{(2)}_*$ をそれぞれ長さ付きアーベル圏 $(\mathcal{A}_1,\ell_1)$、$(\mathcal{A}_2,\ell_2)$ に値をとる (Fin) を満たすホモロジー的関手、$\chi_1,\chi_2\colon K_0(\mathcal{K})\to\R$ を命題~\ref{prop:B-euler} の Euler 評価とする。アーベル群 $K$ からの準同型 $f\colon K\to K_0(\mathcal{K})$ と、有限群 $G$ の $K_0(\mathcal{K})$ への作用が次をみたすとする。
+\begin{enumerate}[label=(\alph*)]
+ \item \textbf{基底から来る類での一致}：$\chi_1\circ f=\chi_2\circ f$。
+ \item \textbf{不変類の降下}：全ての $G$ 不変な $y\in K_0(\mathcal{K})$ について、ある正の整数 $n$ と $a\in K$ で $ny=f(a)$。
+\end{enumerate}
+このとき全ての $x\in K_0(\mathcal{K})$ について
+\[
+ \sum_{g\in G}\chi_1(g\cdot x)=\sum_{g\in G}\chi_2(g\cdot x).
+\]
+\end{proposition}
+\begin{proof}
+補題~\ref{lem:conjsum} を $\varphi=\chi_1$、$\psi=\chi_2$ に適用する。
+\end{proof}
+二つの評価先を同じ圏に同定する必要はなく、$H^{(i)}_*$ の $G$ 同変性や長さの $G$ 不変性も要らない。群作用は評価元の $K_0$ に置けばよい。二つの実現では、(a) を基底の Koszul 分解から（命題~\ref{prop:C-base}）、(b) を有理 K 理論の降下から（定理~\ref{thm:descent}）供給する。
+\lean{\ld{CategoryTheory.EulerComparison} の \ld{homologicalEulerK0_conjSum_eq}（証明済み）。}
 
 \subsection{スカラーの反復錐}\label{sec:abstract-cone}
 $A$ を可換環、$z=(z_1,\dots,z_e)$ を有限列とし、$z^v=(z_1^v,\dots,z_e^v)$ と書く。$\mathcal{K}$ を $A$ 線形とし、シフトも $A$ 線形とする。$v\ge1$ に対し $z_j^v$ のスカラー作用の錐を順にとった対象を $K_v\otimes X$ と書く。抽象三角圏でこの記法は反復錐を表し、テンソル積の存在を仮定しない。一般論では $e=\dim A$ や $A$ の正則性も不要である。
@@ -439,7 +458,21 @@ $\m_D^N\subseteq\m_A D$ となる $N$ があるので、$\m_A C$-冪ねじれと
 %======================================================================
 \section{第一の実現：perfect 複体}\label{sec:perfect}\label{sec:check-perfect}
 
-この節では、評価元を閉点に台をもつ perfect 複体の三角圏、評価先を §\ref{sec:length} の商とし、§\ref{sec:abstract} の四つの共通定理の仮定を確かめる。ゴールは命題~\ref{prop:35c}（Lemma 3.5c）である。閉点に台をもつ perfect 複体について、普通の長さで測った Euler 特性と、長さ付き $A$ 代数 $(C,\lambda)$ で測った Euler 特性は、個々には一致しないが Galois 共役の和をとると一致する。§\ref{sec:core} の置き換え 1（補題~\ref{lem:first}）で使うのはこの命題だけである。§\ref{sec:perfect-vanishing} の消滅と下界は $\lambda$-平坦性の帰結で、§\ref{sec:asymp} の系~\ref{cor:nitasymp} を通して正値性（補題~\ref{lem:pos}）で使う。
+この節では、評価元を閉点に台をもつ perfect 複体の三角圏、評価先を §\ref{sec:length} の商とし、§\ref{sec:abstract} の共通定理の仮定を確かめる。ゴールは命題~\ref{prop:35c}（Lemma 3.5c）である。閉点に台をもつ perfect 複体について、普通の長さで測った Euler 特性と、長さ付き $A$ 代数 $(C,\lambda)$ で測った Euler 特性は、個々には一致しないが Galois 共役の和をとると一致する。§\ref{sec:core} の置き換え 1（補題~\ref{lem:first}）で使うのはこの命題だけである。
+
+命題~\ref{prop:35c} は、命題~\ref{prop:B-compare} を評価元 $\mathcal{K}_T$、二つの評価 $\chi_{\ord}$、$\chi_C$、係数拡大 $f\colon K_0(\mathcal{K}_A)\to K_0(\mathcal{K}_T)$ に適用したものである。この節の仕事は、その三つの入力を確かめることにある。
+\begin{center}
+\begin{tabularx}{\textwidth}{>{\raggedright}p{5.6cm}>{\raggedright\arraybackslash}X}
+\toprule
+命題~\ref{prop:B-compare} の入力 & 確かめる場所 \\
+\midrule
+$\chi_{\ord}$、$\chi_C$ が $K_0$ 上の Euler 評価であること（命題~\ref{prop:B-euler} の (Fin)） & §\ref{sec:perfect-eval}：補題~\ref{lem:C-nil}、\ref{lem:koszulbound}、命題~\ref{prop:C-euler}、\ref{prop:35a} \\
+(a) 基底から来る類での一致 & §\ref{sec:planC-comparison}：命題~\ref{prop:C-base}、\ref{prop:35b}。$e_\lambda$ の値は系~\ref{cor:allv} \\
+(b) 不変類の降下 & §\ref{sec:planC-comparison}：定理~\ref{thm:descent}（引用） \\
+\bottomrule
+\end{tabularx}
+\end{center}
+定理~\ref{thm:C-norm} は、この三つを一般の二つの長さ付き代数についてまとめた比較定理で、命題~\ref{prop:35c} はその特殊例である。§\ref{sec:perfect-vanishing} の消滅と下界は命題~\ref{prop:35c} には使わない。§\ref{sec:asymp} の系~\ref{cor:nitasymp} を通して、正値性（補題~\ref{lem:pos}）で使う。§\ref{sec:perfect-flat} は $\lambda$-平坦な代数での適用である。
 
 \subsection{設定と評価関手}\label{sec:perfect-eval}
 
@@ -589,18 +622,18 @@ $A$ を正則局所環、$z$ を正則パラメータ系、$T$ を可換 $A$ 代
 \]
 \end{theorem}
 \begin{proof}
-命題~\ref{prop:C-euler} の係数変更と命題~\ref{prop:C-base} から、二つの準同型は $f$ の像上で一致する。あとは補題~\ref{lem:conjsum} を使う。
+命題~\ref{prop:C-euler} により、二つの評価は命題~\ref{prop:B-euler} の Euler 評価で、係数変更と両立する。命題~\ref{prop:C-base} により、どちらも $f$ の像の上で $e_{\lambda_i}(z;C_i)\,\chi_A$ に等しいので、仮定から命題~\ref{prop:B-compare} の (a) が成り立つ。(b) は仮定である。命題~\ref{prop:B-compare} を適用する。
 \end{proof}
-\lean{\ld{LengthAlgebra.Comparison} の \ld{perfectEuler_conjSum_eq}（Koszul 分解と整数倍の降下を明示的に受け取り、証明済み）。}
+\lean{\ld{LengthAlgebra.Comparison} の \ld{perfectEuler_conjSum_eq}（Koszul 分解と整数倍の降下を明示的に受け取り、証明済み）。Lean の証明は群論の \ld{conjSum_eq} を直接使い、命題~\ref{prop:B-compare} の \ld{homologicalEulerK0_conjSum_eq} は経由していない。評価そのものは \ld{homologicalEulerK0} として定義されているので、内容は同じである。}
 $T$ 上の群作用が $A$ を固定すれば、ひねり $P\mapsto P^g$ がこの $K_0$ 作用を与える。有限射影版での作用、係数変更との両立、有限自由モデルとの同変な比較は \ld{PerfectComplex.K0Functoriality} で構成されている。局所環 $T$ では旧モデルの降下入力も移せる。
 
 幾何的な適用では、剰余標数 $p>0$、$T$ の有限性、幾何ファイバーへの推移的作用と $\Spec T\to\Spec A$ の全射性から、定理~\ref{thm:descent} の引用で降下を供給する。これは上の条件付き比較とは別の段階である。
 
 二つの評価先 $\mathcal{A}_{\lambda_1}^{\mathrm{fin}}$ と $\mathcal{A}_{\lambda_2}^{\mathrm{fin}}$ を同じ圏に同定する必要はない。共通なのは評価元の $K_0$ と、最終的な実数値の Euler 評価である。$T$ が局所でない場合、$\Perf_{(z)}(T)$ の台は閉ファイバー $V(\m_AT)$ であり、一つの閉点に限らない。
 
-本文の比較では $(C_1,\lambda_1)=(T,\len_T)$ と $(C_2,\lambda_2)=(C,\lambda)$ をとる。普通の側の Koszul Euler 特性が $\rank_A T$ であることと、正規化側の $e_\lambda=r=\rank_A T$ をそれぞれ計算すれば命題~\ref{prop:35b}、\ref{prop:35c} が出る。$T$ の局所性と剰余体の一致は前者の長さ・ランクの計算で使い、対称な比較定理そのものには使わない。
+以下の命題~\ref{prop:35b}、\ref{prop:35c} は、$(C_1,\lambda_1)=(T,\len_T)$ と $(C_2,\lambda_2)=(C,\lambda)$ をとった場合である。$T$ の局所性と剰余体の一致は、普通の側の $e_{\len_T}(z;T)=r$ の計算で使い、比較定理そのものには使わない。
 
-\begin{proposition}\orig{Lemma 3.5b}\label{prop:35b}
+\begin{proposition}\orig{Lemma 3.5b、命題~\ref{prop:C-base} の系}\label{prop:35b}
 $Q\in\mathcal{K}_A$ について
 \[
   \chi_{\ord}(Q\otimes_A T) \;=\; r\cdot\chi_A(Q) \;=\; \chi_C(Q\otimes_A T).
@@ -630,11 +663,9 @@ $A$ を有限次元ネーター $\Z_{(p)}$ 代数、$J\ni p$、$H$ を連結な 
 \]
 \end{proposition}
 \begin{proof}
-補題~\ref{lem:conjsum} を $f\colon K_0(\mathcal{K}_A)\to K_0(\mathcal{K}_T)$（係数拡大）、$\varphi = \chi_{\ord}$、$\psi = \chi_C$ に適用する。$\varphi\circ f = \psi\circ f$ は命題~\ref{prop:35b}、$f_\Q$ の全射性は定理~\ref{thm:descent}（$H = A$）による。
+定理~\ref{thm:C-norm} を $(C_1,\lambda_1)=(T,\len_T)$、$(C_2,\lambda_2)=(C,\lambda)$ に適用する。$G$ の $K_0(\mathcal{K}_T)$ への作用はひねり $P\mapsto P^g$ による。二つの Koszul Euler 特性はともに $r$ である（命題~\ref{prop:35b} の証明）。降下は、剰余標数 $p$、推移性、全射性を仮定として定理~\ref{thm:descent} を $H=A$ に使って得る。
 \end{proof}
-\lean{\ld{Paper.lemma_3_5c}（引用を除いて証明済み）。}
-
-ここで抽象的な比較に入力するのは「基底からの一致」と「不変類の降下」である。$H_*^C$ の同変性、$C$ 上の群作用や $\lambda$ の不変性は入力にしない。群作用は評価元の $K_0$ に入れ、共役和をとった実数値を比較する。
+\lean{\ld{Paper.lemma_3_5c}（引用を除いて証明済み）。ただし Lean の証明はこの形になっていない。旧来の有限自由モデル（\ld{K0Supported}、\ld{chiOrdHom}、\ld{chiLamHom_of_finite}）の上で群論の \ld{conjSum_eq} を直接使い、定理~\ref{thm:C-norm}（\ld{perfectEuler_conjSum_eq}）を経由しない。降下の引用 \ld{theorem_3_1_K0} が旧モデルの $K_0$ で述べられているためである。新旧の評価の一致（\ld{LengthAlgebra.EulerCompatibility}）と局所環での降下の移送（\ld{perfectK0_descent_of_free}）は証明済みなので、定理~\ref{thm:C-norm} を経由する形に書き直すことはできる。}
 
 \subsection{消滅と下界}\label{sec:perfect-vanishing}
 
@@ -815,7 +846,7 @@ $K(z)$ が剰余体の自由分解であることから、$A$ 側の支持つき
 \]
 \end{theorem}
 \begin{proof}
-補題~\ref{lem:conjsum} を $f\colon K_0(P_A^J)\to K_0(P_T^J)$、$\varphi = \chi_{\ord}$、$\psi = \chi_C$ に適用する。$\varphi\circ f = \psi\circ f$ は命題~\ref{prop:45}、$f_\Q$ の全射性は補題~\ref{lem:dga} の $H$ についての定理~\ref{thm:descent} による。
+命題~\ref{prop:B-compare} を $f\colon K_0(P_A^J)\to K_0(P_T^J)$、$\chi_1 = \chi_{\ord}$、$\chi_2 = \chi_C$ に適用する。$\varphi\circ f = \psi\circ f$ は命題~\ref{prop:45}、$f_\Q$ の全射性は補題~\ref{lem:dga} の $H$ についての定理~\ref{thm:descent} による。
 \end{proof}
 \lean{\ld{symmetricPaperEuler_conjSum_eq} は二つの Koszul Euler 特性の一致と降下を引数にして証明済み。\ld{Section4.theorem_4_7_K0} はその系であり、\ld{supportedRankK0_descent} と正則パラメータの引用への依存は残る。}
 
@@ -1041,7 +1072,7 @@ $\lambda$-平坦な長さ付き代数の存在 & Monsky、Roberts（Ma, Thm 2.4�
 \endhead
 定理~\ref{thm:main}、\ref{thm:core} と帰着 & Thm 1.1、Lemma 5.1 & 未。論文全体の完成は今回の範囲外 \\
 \multicolumn{3}{l}{\textbf{§\ref{sec:abstract} 共通の抽象論}} \\
-命題~\ref{prop:B-euler}、補題~\ref{lem:conjsum} & Euler 評価、共役和 & 証明済み \\
+命題~\ref{prop:B-euler}、補題~\ref{lem:conjsum}、命題~\ref{prop:B-compare} & Euler 評価、共役和 & 証明済み \\
 補題~\ref{lem:B-split}、\ref{lem:B-nit}、\ref{lem:B-h0} & 反復錐 & 証明済み。分裂は二項直和の再帰表示を使う \\
 \multicolumn{3}{l}{\textbf{§\ref{sec:length} 長さ付き代数}} \\
 命題~\ref{prop:B-length-descends}、\ref{prop:B-finite-part} & 長さの商 & 大きな商・有限な商・両者の有限部分の同値まで証明済み \\
@@ -1050,7 +1081,7 @@ $\lambda$-平坦な長さ付き代数の存在 & Monsky、Roberts（Ma, Thm 2.4�
 \multicolumn{3}{l}{\textbf{§\ref{sec:perfect} 第一の実現}} \\
 補題~\ref{lem:C-nil}、\ref{lem:koszulbound}、命題~\ref{prop:C-euler}、\ref{prop:35a} & Lemma 3.5a & 任意の可換環の有限射影複体で、支持の対応と有限 Euler 評価を証明済み \\
 命題~\ref{prop:C-base}、定理~\ref{thm:C-norm} & 基底公式、対称な比較 & 基底の Koszul 分解と降下を明示した形で証明済み \\
-命題~\ref{prop:35b}、\ref{prop:35c} & Lemma 3.5b,c & 正則パラメータと降下（定理~\ref{thm:descent}）の引用を除いて証明済み \\
+命題~\ref{prop:35b}、\ref{prop:35c} & Lemma 3.5b,c & 正則パラメータと降下（定理~\ref{thm:descent}）の引用を除いて証明済み。Lean の 3.5c は旧モデル上の証明で、定理~\ref{thm:C-norm} を経由しない \\
 補題~\ref{lem:nit}、\ref{lem:h0bound} & 消滅と下界 & Koszul 消滅・極小性から証明済み \\
 \multicolumn{3}{l}{\textbf{§\ref{sec:asymp} 第二の実現}} \\
 定義~\ref{def:rankquot}、命題~\ref{prop:42} & §4.1--4.2 & 圏と支持つきの比較同値、直和因子による表示を構成済み \\
