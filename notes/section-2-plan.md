@@ -2,6 +2,11 @@
 
 2026-10-10 作成、同日改訂。対象は論文 §2（p.4–9）。主張の確認と引用元の照合は `section-2.md`。
 
+現在の優先順位（2026-10-10 方針変更）：[PLAN.md](PLAN.md) と
+[section-4-plan.md](section-4-plan.md) 冒頭に従い、抽象化と二つの実現に集中する。
+§2の具体的な長さ代数の構成と未証明部分の解消は後の課題として保存し、当面は続行しない。
+抽象理論への適用では、必要な長さの性質を個別の入力として明示する。
+
 方針（2026-10-10 の決定）：
 
 - §2 は具体的な対象の話なので、**数学的な定義があるものはその定義で書く**。塔 `Λ`、
@@ -413,3 +418,471 @@ README、`PLAN.md` §1.5・§19 を更新した。利用側（Lemma 5.2、§5）
 `baseChangeQuotEquiv` は標準公理のみ。
 
 残る `sorry`（§2）：引用 (C1)・(C2)、Lemma 2.1、2.2、Theorem 2.5、段の完備性・正則性、重複度の定理 3 つ。
+
+
+### 10.4 定理2.5の標数別分割と共通の導出（2026-10-10）
+
+- `TowerStage` の完備性・正則性は、有限代数の完備性と整拡大の次元比較に接続済み。
+- `TowerLengthOn.lean` に、長さを `D` に沿って扱うための係数制限を移した。
+- `LengthAlgebraConstruction.lean` に等標数・混標数それぞれの未完了の存在主張を置いた。
+  これらは単なる引用定理ではない。等標数では perfection、トレース、核の誤差評価、
+  Monsky・Roberts の結果との接続が残る。混標数では CLMST の結果と塔の完備化の比較が残る。
+- `Theorem2_5` は補題2.2の具体的な基底の選択肢を明示的な引数 `hbase` に受け取る。
+  混標数では Witt 冪級数環の表示に加えて `t₀ = p` を明示する。
+- `IsSystemOfParameters.pow` は証明済み。正の冪を取っても生成イデアルの根基が変わらない。
+- `MultiplicityFormulas.lean` に二つの標準的な未証明主張を明示した：
+  成分ごとの冪の重複度公式、剰余体が一致する有限局所拡大での
+  Hilbert–Samuel 重複度と係数制限した Koszul Euler 特性の一致。
+  基底が正則な場合の階数公式は、後者と既存の `koszulEulerChar_eq_finrank` から導出した。
+- `LengthAlgebraConsequences.lean` では、一乗のパラメータ商の値から全ての正の冪での
+  (2.5) を導き、階数公式を用いて (2.6) を導出した。
+- `theorem_2_5` の直接の `sorry` はなくなったが、定理全体は未完成。
+  標数別の構成二つ、重複度の一般公式二つに直接 `sorry` があり、既存の
+  長さの可加性、Hilbert–Samuel 理論、正則パラメータの正則性の未証明入力にも依存する。
+  `sorry` の個数の減少や、等標数でのトレースの議論の完了を意味しない。
+
+次の実装は、等標数で Mathlib の `PerfectClosure` に塔の作用を構成すること。
+その後、トレースの共通分母、商への写像の核の評価、正規化後の誤差の消滅へ進む。
+Monsky・Roberts の定理そのものの引用と、この接続の未実装部分は引き続き区別する。
+
+### 10.5 等標数の具体的な代数と塔の作用（2026-10-10）
+
+`PerfectTower.lean` に、任意の標数 `p` の完全環 `C` への `A` 代数準同型
+`Tower A t p →ₐ[A] C` を構成した。このファイルには `sorry` はない。
+
+- `perfectRoot`：反復 Frobenius の逆による `tᵢ` の `pⁿ` 乗根。
+- `perfectRoot_pow`、`perfectRoot_compatible`：根の関係式と遷移写像との両立。
+- `towerStageToPerfect`：商環の普遍性による各段からの写像。
+- `towerToPerfect`：Mathlib の `Ring.DirectLimit.lift` による塔からの写像。
+- `towerStageToPerfect_unique`、`towerToPerfect_unique`：完全環での根の一意性に基づく一意性。
+
+`lengthAlgebra_equalCharacteristic` は `C = PerfectClosure D p` を実際に選び、
+`D`・`A`・塔の作用と二つのスカラー塔の両立を証明する形に変更した。
+`Theorem2_5` の等標数分岐もこれに接続済み。
+残る `perfectClosure_length_properties_pending` は具体的な perfection 上の
+Koszul ホモロジーの長さの消滅とパラメータ商の重複度公式である。
+この未証明主張は純粋な引用ではなく、トレース・誤差評価・文献定理との接続を含む。
+混標数側と重複度の一般公式の未証明入力は今回変更していない。
+
+### 10.6 Perfection の近似と分母による核の評価（2026-10-10）
+
+この段階では新しい `sorry` は追加していない。
+
+- `PerfectApproximation.lean` で `D^{1/pⁿ}` と係数環 `R` が生成する部分代数を
+  `Algebra.adjoin` で定義した。逆 Frobenius による根と Mathlib の `PerfectClosure.mk`
+  が一致すること、部分代数の増大性、全ての元を覆うことを証明した。
+  `R = Λ` とすれば論文の `B_q` の像に当たるが、テンソル積表示との同定はまだ未実装。
+- `ConductorQuotient.lean`：単射な環拡大 `B → C` と `gC ⊆ B` から、
+  `B/I → C/IC` の核が `g` で消えることを証明した。Noether 性は不要。
+- `NormalizedLength.lean`：`λ(M) < ∞` のとき自己準同型の核と余核の長さが等しいこと、
+  `ker(f) ⊆ ker(g)` なら `λ ker(f) ≤ λ coker(g)` となることを証明した。
+- `QuotientLength.lean`：上記を組み合わせ、係数環に制限した正規化長さについて
+  商写像の核を分母倍写像の余核で評価した。
+- `perfectionApproximation_kernel_bound`：この評価を近似部分代数に適用した。
+  共通分母と商の長さの有限性は明示的な仮定であり、まだ構成していない。
+
+定理2.5の等標数側の未証明主張は依然として残る。次に必要なのは、
+(1) 近似部分代数と有限段からのテンソル積の同定・正規化長さの計算、
+(2) トレース双対基底からの共通分母の存在、
+(3) 分母倍写像の余核と `D/(H^[q],g)` の比較および成長評価、
+(4) Monsky・Roberts の定理と極限への接続である。
+今回証明した核の評価自体は、これらの未証明主張に依存しない。
+
+### 10.7 商による核の評価と根の段の通常の長さ（2026-10-10）
+
+新しい `sorry` は追加せず、次を証明した。
+
+- `quotientSmulCokerEquiv`：`B/I` 上の `g` 倍写像の余核と `B/(I,g)` の
+  係数環 `R` 上の線形同型。これにより `len_ker_quotientToExtension_le` と
+  `perfectionApproximation_kernel_bound` の右辺を、余核から通常の商の長さへ変更した。
+- `perfectionRootHom_injective`：被約環で根の写像が単射。Mathlib の被約環の
+  Frobenius の単射性を使用する。
+- `perfectionRootStage` と `perfectionRootStageEquiv`：`D_perf` 内の `D^{1/pⁿ}` と
+  元の環 `D` の環同型。
+- `perfectionRootStageBaseMap`：根の段への通常の包含。perfection まで合成すれば
+  `PerfectClosure.of` と一致する。この包含と根を取る環同型は区別した。
+- `perfectionRootStageQuotientEquiv`：`D/(H^[q],g)` と
+  `D^{1/q}/(H D^{1/q},g^{1/q})` の環同型。
+- `length_perfectionRootStage_quotient`：上の二つの商の、それぞれの係数環上での
+  通常の長さの一致。Mathlib の商環同型と全射に沿った長さの不変性を組み合わせた。
+  `length_perfectionRootStage_quotient_base` は分母を加えない `g = 0` の場合。
+
+ここで `H^[q]` は新しい独自定義を作らず、`H.map (iterateFrobenius D p n)` とした。
+今回の結果は `q⁻ʰ length_D(D/(H^[q],g))` の通常の長さの部分を準備するもの。
+`B_q = Λ ⊗_{A^{1/q}} D^{1/q}` との同定と有限段の正規化長さへの接続は依然として残る。
+トレースによる分母の存在、成長評価、極限への接続もまだ未完了である。
+
+### 10.8 有限段からのテンソル積と近似部分代数の接続（2026-10-10）
+
+`PerfectBaseChange.lean` を追加し、以下を `sorry` なしで証明した。
+
+- `towerStageToRootStage`：各段 `A_n → D^{1/pⁿ}`。係数は通常の包含で送り、変数は
+  対応するパラメータの根に送る。定義関係式を満たすことも証明した。
+- `towerStageToRootStage_coe`：perfection への包含と合成すると、既存の
+  `towerStageToPerfect` に一致する。
+- `perfectBaseChangeMap`：`Λ ⊗_{A_n} D^{1/pⁿ} → D_perf` の `Λ` 代数準同型。
+  `perfectBaseChangeMap_tmul` は単純テンソルについての計算規則。
+- `perfectBaseChangeMap_range`：写像の像は `perfectionApproximation` に等しい。
+- `perfectBaseChangeSurjection`：値域を近似部分代数へ制限した全射。
+
+一般論 `tensorProduct_range_eq_adjoin` は `PresentationBaseChange.lean` に置いた。
+これは係数拡大の積写像の像を、右因子の像が生成する部分代数と同定する。
+仮定をまとめる独自の構造体・クラスは追加していない。根の段・塔の作用については
+既存の Mathlib の `Algebra` と `IsScalarTower` を具体的に構成し、ファイル内で登録した。
+
+**未完了の境界**：全射は環同型ではない。単射性のための、一般点での分離拡大と
+純非分離拡大の線形無関連性、および平坦性・ねじれなし性からの降下がまだ必要。
+正規化長さの有限段公式にこのテンソル積を同定する作業、共通分母、成長評価、
+極限への接続も引き続き残る。今回新しい `sorry` は追加していない。
+
+### 10.9 単射性の体論と平坦な降下、および塔への部分適用（2026-10-10）
+
+`CommutativeAlgebra/SeparableBaseChange.lean` で以下を証明した。
+
+- 分離拡大と純非分離拡大の共通の体への積写像は単射。
+  Mathlib の純非分離拡大後の線形独立性を、基底の係数拡大に適用した。
+- 各元のある `p` 冪が底体に入る環の分数体は純非分離。
+  分子と分母の冪をそろえる直接の証明。
+- 底環の局所化が体で、左因子が平坦であり、両因子がそれぞれ純非分離拡大と
+  分離拡大に単射で入る場合の、環のテンソル積の積写像の単射性。
+  Mathlib の平坦性によるテンソル積の単射性と局所化による底環変更を利用した。
+
+`PerfectTower.lean` では、有限段の元の `pⁿ` 乗が基底環から来ること、
+塔の各元のある `p` 冪が基底環から来ることを証明した。
+また、被約な各段から完全環への単射性と、その塔全体への拡張を証明した。
+これらと上の一般論は `sorryAx` に依存しない。
+
+`PerfectBaseChange.lean` では、正則パラメータの設定で塔から perfection への
+単射性を導出し、塔の分数体の純非分離性も証明した。
+前者の各段の整域性は既存の `isDomain_of_isRegularLocalRing` を用いるため、
+既存の正則パラメータの入力定理の `sorry` に依存する。新しい `sorry` はない。
+仮定をまとめる独自の構造体・クラスも追加していない。
+
+**未完了の境界**：`perfectBaseChangeMap` 自体の単射性はまだ未証明。
+`Frac(D^{1/q}) / Frac(A_n)` の分離性を Lemma 2.2 の生成的分離性から導く部分と、
+共通の分数体の中の代数構造・包含を整合させ、上の一般定理を適用する部分が残る。
+有限段の長さ公式、トレースの共通分母、成長評価、極限への接続も引き続き必要。
+
+### 10.10 近似環のテンソル積表示の完成と生成的分離性の修正（2026-10-10）
+
+`perfectBaseChangeMap_injective` と `perfectBaseChangeEquiv` を証明した。
+後者は補題2.2と同じ剰余体の一致・完全性の仮定から
+`Λ ⊗_{A_n} D^{1/pⁿ} ≃ₐ[Λ] perfectionApproximation D p Λ n` を与える。
+前節で残していた単射性は、今回で解決した。新しい `sorry` はない。
+
+証明の流れ：
+
+1. `TowerStage.lean` の極大イデアルの生成元の議論を
+   `span_stageX_eq_maximalIdeal` として取り出し、既存の正則性の証明でも再利用。
+2. `PerfectTower.lean` で `towerStageFrobenius` を構成。
+   係数を `pⁿ` 乗、根を元のパラメータに送る。
+   剰余体の完全性と Mathlib の完備性による全射性判定で全射性を証明。
+   被約性による単射性と合わせて `towerStageFrobeniusEquiv : A_n ≃+* A` を得た。
+3. 根の段の同型 `D ≃+* D^{1/pⁿ}` との可換性を証明。
+   分数体での分離性を環同型に沿って移す一般論から
+   `rootStage_fractionRing_isSeparable` を導いた。
+4. 整域の perfection が整域であることを、その分数体の perfection への単射で証明。
+   これによりすべての因子を `Frac(D_perf)` に埋め込み、前回の平坦性・局所化の
+   一般定理を適用した。既存の全射性と合わせて近似環との同型を構成。
+
+**ステートメントの修正**：従来の `Algebra.IsSeparable A D` は環上の条件として強すぎた。
+Mathlib の多項式の `Separable` は導関数との Bezout 関係を要求するため、
+分岐を許す生成的分離性と同一視できない。
+`Lemma2_2.lean`、`Theorem2_5.lean`、`LengthAlgebraConstruction.lean` を
+`∀ d : D, ((minpoly A d).map (algebraMap A (FractionRing A))).Separable`
+という明示的な仮定に統一し、呼び出し側も修正した。
+正規な整域上の整拡大で、この条件が分数体の分離性と同値であることも
+一般定理 `separable_minpoly_iff_fractionRing` として証明した。
+仮定をまとめる独自の構造体・クラスは導入していない。
+
+**依存と残り**：Frobenius 写像の構成・全射性、分数体の分離性の一般論、
+perfection の整域性に `sorry` はない。論文の設定での同型は、各段の被約性を得る
+既存の正則パラメータの正則性の未証明入力に依存する。
+定理2.5の長さの性質の証明はまだ完成していない。
+次はこの同型を有限段の正規化長さの公式につなぎ、トレースによる共通分母の存在、
+成長評価、Monsky・Roberts の結果と極限への接続を進める。
+
+### 10.11 近似環の商の正規化長さと元の環の長さの接続（2026-10-10）
+
+`PerfectApproximationLength.lean` で有限段の長さ公式を近似環の商へ接続した。
+
+- `PresentationBaseChange.lean`：Mathlib のテンソル積と商の交換同型から、
+  `R ⊗_S T ≃ₐ[R] B` の下で `R ⊗_S (T/I) ≃ₐ[R] B/IB` を構成。
+- `TowerDescent.lean`：有限長性から極大イデアルの冪による零化を導き、
+  `towerLengthFun_tensor_of_finiteLength` により利用側の冪ねじれ条件を省く。
+- `FiniteLength.lean`：係数環と代数の環同型が構造写像と可換なら、対応する商の長さが
+  等しいことを半線形全単射による一般論から証明。
+- `PerfectApproximationLength.lean`：Frobenius 同型と剰余体の一致から、
+  `A_n` 上の根の段の商の長さを `D` 上の商の長さに戻す。
+  近似環のテンソル積表示に適用すると、有限長な `D/J` に対し、
+  根の同型で移した商の正規化長さは `ℓ_D(D/J)/p^(nh)` になる。
+  特に `J = H^[q] + (g)` として、論文の
+  `λ(B_q/(HB_q + g^(1/q)B_q)) = ℓ_D(D/(H^[q]+(g)))/q^h` を得る。
+
+仮定は明示的に保ち、新しい `sorry` や入力クラスは追加しない。
+商・テンソル積の交換と同型による長さの比較の一般論は `sorryAx` に依存しない。
+論文の公式は既存の (C1) と、有限段の被約性のための正則パラメータの入力に依存する。
+
+**残り**：トレースによる共通分母の存在、誤差項の成長評価、
+Monsky・Roberts の結果および極限との接続。混標数の引用入力も残る。
+`perfectClosure_length_properties_pending` は引き続き未証明であり、
+有限段の公式が完成しても定理2.5全体の完成ではない。
+
+### 10.12 トレース双対基底による共通分母の一般論（2026-10-10）
+
+`CommutativeAlgebra/TraceConductor.lean` を追加し、次を証明した。
+
+- 正規整域 `R` の分数体 `K` の有限分離拡大 `L` と基底 `b` に対して、
+  全ての `g • b.traceDual i` が `R` 上整なら、任意の整元 `x` の `g • x` は
+  `b` の `R` 線形包に入る。
+  Mathlib の `traceDual_repr_apply`、`Algebra.isIntegral_trace`、
+  `IsIntegrallyClosed.algebraMap_eq_of_integral` を組み合わせた。
+- Mathlib の `Algebra.IsAlgebraic.exists_integral_multiples` を使って、
+  双対基底の有限個の整倍数の分母を一つにそろえる。
+- より小さい整域 `A` 上 `L` が代数的な場合、分母を `A` 内で選べる。
+  論文の `g ∈ A` を保つための形であり、分母を `Λ` 内にしか取れないという問題を避ける。
+- 基底を含む部分代数 `B` と、全ての元が `R` 上整な部分代数 `C` に対して、
+  `∃ g : A, g ≠ 0 ∧ gC ⊆ B` を導いた。
+
+論文では `gβ_i ∈ D` とするが、トレースの整性に必要なのは `gβ_i` の整性だけである。
+今回の一般論はその十分な条件を使う。仮定は個々に明示し、入力クラスや `sorry` は追加しない。
+
+`PerfectApproximation.lean` には `isIntegral_perfection_of_isIntegral` を追加。
+整拡大 `R → D` と両立する作用の下で、`D_perf` の各元が `R` 上整であることを
+`pⁿ` 乗からの整性の下降で証明した。
+
+**未完了の境界**：論文の具体的な `g D_perf ⊆ B₁` はまだ導出していない。
+`Λ` の正規性、`Frac(D_perf)` と係数拡大した有限分離拡大の同定、
+`B₁` に入る体上の基底の構成・対応を整える必要がある。
+その後で根を取って `g^(1/q) D_perf ⊆ B_q` を得る。
+共通分母の一般論が証明済みであることと、その具体的な適用の完成とは区別する。
+成長評価・極限・混標数の未証明部分は引き続き残る。
+
+### 10.13 塔の完全性と共通分母の根への移行（2026-10-10）
+
+`PerfectConductor.lean` で、初段の共通分母を各段へ移す部分を証明した。
+
+- `perfectionApproximation_root_mem`：完全な係数環 `R` では、`B₁` の元の
+  `pⁿ` 乗根は `B_q` に入る。部分代数の生成に関する帰納法で、係数の根には
+  `R` の完全性、`D` の元の根には既存の `perfectionRootHom` を用いる。
+- `perfectionApproximation_conductor_root`：`gC ⊆ B₁` を `c^q` に適用して
+  逆 Frobenius を取ることで `g^(1/q)C ⊆ B_q` を導く。
+- `perfectionApproximation_kernel_bound_of_conductor`：既存の核の長さ評価に接続し、
+  各段の分母条件を初段の一つの条件から導く形にした。
+- `towerEquivPerfection`：既存の有限段 Frobenius の全射性から、
+  `Tower A t p ≃+* PerfectClosure A p` を構成。
+  単射性には各段の被約性を使い、これは既存の正則パラメータの入力に依存する。
+- `perfectRing_tower`：この同型から塔の完全性を導出。
+- `tower_perfectionApproximation_conductor_root`：剰余体の一致から基底の完全剰余体を得て、
+  塔の完全性を証明して使う。完全性を新しい仮定にはせず、論文の塔で各段の包含を得る。
+
+新しい `sorry` や独自の入力クラスは追加していない。
+一般形の根への移行は `sorryAx` 非依存。
+塔の同型・完全性と具体的適用は既存の正則パラメータ入力に依存する。
+
+**残り**：最初の `gC ⊆ B₁` の存在は引き続き未証明。
+塔の正規性と、perfection の分数体における有限分離拡大・基底の対応が必要。
+Mathlib の正則局所環・多変数形式冪級数環・直極限のファイルを確認した範囲では、
+この塔の正規性に直接適用できる定理は見つかっていない。
+今回得た塔と perfection の同型も、以降の正規性・分数体の議論に再利用できる。
+成長評価・極限・混標数の未証明部分は変わらない。
+
+### 10.14 正規整域の perfection の正規性（2026-10-10）
+
+有限段の係数への降下の代わりに、整性の推移性と純非分離性による証明を実装した。
+
+- `CommutativeAlgebra/PerfectNormality.lean`：正規整域 `A` の整拡大 `S` が完全であり、
+  分数体拡大 `Frac(S)/Frac(A)` が純非分離なら `S` は正規。
+  `Frac(S)` の `S` 上整な元 `x` は `A` 上も整である。
+  純非分離性から `x^(p^n)` を `Frac(A)` に戻すと、正規性により `A` の元になる。
+  `S` の完全性からその根を取り、体上の Frobenius の単射性で `x` 自身を `S` に戻す。
+  Noether 性は不要。
+- `perfectClosure_fractionRing_isPurelyInseparable`：perfection の分数体の純非分離性を
+  再利用可能な定理として証明。
+- `perfectClosure_isIntegrallyClosed`：上記と前回の perfection の整性を合わせ、
+  正規整域の perfection が正規であることを証明。
+- `isIntegrallyClosed_tower_of_base`：前回の `Tower ≃+* PerfectClosure A p` を使い、
+  `A` が正規なら塔も正規であることを導出。
+
+新しい `sorry` や独自の入力クラスはない。一般論・perfection の正規性は `sorryAx` 非依存。
+塔への移行だけは既存の同型を通じて正則パラメータ入力に依存する。
+
+**正確な残り**：`isIntegrallyClosed_tower_of_base` は標準の `[IsIntegrallyClosed A]` を
+明示的に要求する。定理2.5本体の仮定にこれを追加したわけではなく、
+論文の基底環（体上の多変数形式冪級数環）の正規性を現行の仮定から導く部分は未実装。
+体の係数拡大における基底の対応と合わせて、最初の `gC ⊆ B₁` の導出がなお必要。
+成長評価・極限・混標数の未証明部分も残る。
+
+### 10.15 完全な係数体への拡大とトレース基底の接続（2026-10-10）
+
+`SeparableBaseChange.lean` で既存の単射性を拡張した。
+`L/K` が有限分離、`E/K` が純非分離、`E` が完全体、共通の体 `Ω` が `L` 上純非分離なら、
+積写像 `E ⊗_K L → Ω` は全単射である。
+
+単射性は既存の線形無関連性の証明を使う。テンソル積は `E` 上有限次元の整域なので体であり、
+完全体の代数拡大なので完全体である。`x ∈ Ω` のある `pⁿ` 乗は `L` から来るので、
+そのテンソル積内で根を取り、`Ω` の Frobenius の単射性から `x` が像に入ることを示した。
+
+- `tensorProduct_bijective_of_perfect_of_purelyInseparable` とその代数同型版。
+- `basisOfPerfectBaseChange`：`L/K` の基底を `Ω/E` の基底に移す。
+  各ベクトルが元の基底の自然な像であることも計算補題で証明。
+- `finrank_perfectBaseChange`：`[Ω:E] = [L:K]`。
+- `TraceConductor.exists_smul_subalgebra_le_of_perfectBaseChange`：この基底を
+  既存のトレース分母定理に渡す。拡大後の基底を別に仮定せず、元の基底の像が
+  `B` に入るという条件から、`A` 内の非零分母 `g` と `gC ⊆ B` を構成する。
+
+全て一般の体・整域・部分代数についての定理で、新しい `sorry` や入力クラスはない。
+
+**未完了の境界**：論文の具体的な `A, D, Λ, D_perf` にこの一般論を適用する部分はまだ残る。
+`A` の正規性を現行の仮定から導くこと、`Frac(D)` の有限基底を `D` 内から選ぶこと、
+具体的な分数体の代数構造と完全性・純非分離性を整合させることが必要。
+初段の `g D_perf ⊆ B₁` の無条件の導出はまだ完成していない。
+成長評価・極限・混標数の未証明部分も残る。
+
+### 10.16 元の環内からの分数体基底の選択（2026-10-10）
+
+`SeparableBaseChange.lean` で次を証明した。
+
+- `span_range_fractionRing_eq_top`：代数的な整域拡大 `A → D` では、
+  `D` の像が `Frac(D)` を `Frac(A)` 上張る。
+  Mathlib の `IsFractionRing.ideal_span_singleton_map_subset` を単位イデアルに適用。
+  同定理が分母を底環側に移す議論を既に含むため、独自の分母計算は重複して実装しない。
+- `finiteDimensional_fractionRing_of_finite`：`D` が有限 `A` 加群なら、分数体拡大は有限次元。
+  `Frac(A) ⊗_A D → Frac(D)` の像が全体を張ることから全射性を示し、
+  有限加群の商として有限次元性を得る。
+- `exists_basis_fractionRing_mem_range`：張る集合から基底を選ぶ Mathlib の
+  `Module.Basis.ofSpan` を使い、分数体の基底を `D` の像の中から選ぶ。
+
+`TraceConductor.exists_smul_subalgebra_le_of_fractionRing` で、これらを前回の
+完全な係数拡大とトレースの議論へ接続した。
+利用側は有限分数体拡大や具体的な基底を別に仮定する必要がなく、
+`Module.Finite A D` と `D` の像が `B` に含まれることから、それらを証明内で導く。
+その他の正規性・純非分離性・完全性・整性等の前提は明示的に残る。
+新しい `sorry` や独自の入力クラスは追加していない。
+
+**残り**：論文の `A` の正規性を現行の仮定から導くことと、
+具体的な `A, D, Λ, D_perf` の分数体に代数構造・両立条件・完全性等を与えて
+上の分母定理を適用すること。基底の存在・選択そのものは今回で解決した。
+初段の共通分母の具体的な導出、成長評価・極限・混標数の未証明部分はなお残る。
+
+
+### 10.17 具体的な塔への共通分母定理の適用（2026-10-10）
+
+- `PerfectNormality.perfectRing_fractionRing`：完全整域の分数体の完全性を証明。
+  分子と分母の根を取る証明で、Noether 性は不要。`sorryAx` 非依存。
+- `exists_tower_perfection_conductor_of_normal_base`：基底環の正規性を明示的に
+  仮定した上で、非零の `g : A` と `g C ⊆ B₁` を構成。
+  `Frac(A), Frac(D), Frac(Λ), Frac(C)` の両立する代数構造を与え、
+  分離性・純非分離性・完全性・整性を既存の定理から導いた。
+  トレースの一般定理を分数体内の部分代数に適用し、分数体への単射から環へ戻す。
+- `exists_tower_perfection_conductor_roots_of_normal_base`：同じ `g` について
+  全ての `n` で `g^(1/p^n) C ⊆ B_(p^n)` を導出。
+  既存の `perfectionApproximation_kernel_bound` へこの包含を渡せる。
+
+新しい `sorry` や入力を束ねる独自の構造・クラスは追加していない。
+塔の定理は従来どおり正則パラメータの引用入力に依存する。
+
+**残りの境界**：共通分母の具体的な適用は今回で完了したが、標準の
+`[IsIntegrallyClosed A]` を前提とする。これを論文の元の仮定から導くことは未実装。
+`perfectClosure_length_properties_pending` の仮定は変更しておらず、その `sorry` も残る。
+成長評価・極限への接続・混標数の場合も引き続き未完了。
+
+検証：`lake build` 全体が成功（3062 jobs）。`git diff --check` も成功。
+`#print axioms` で分数体の完全性とトレースの一般定理は `sorryAx` 非依存、
+塔の二つの存在定理は既存の正則パラメータ入力を通じた `sorryAx` 依存を確認した。
+
+
+### 10.18 誤差商の成長評価と零への収束（2026-10-10）
+
+`CommutativeAlgebra/QuotientPowerLength.lean` で、Noether 性や正則列を仮定しない
+通常の長さの評価を証明した。値域は `ℕ∞` とする。
+
+- `length_quotient_sup_span_mul_le`：`ℓ(R/(I,xy)) ≤ ℓ(R/(I,x)) + ℓ(R/(I,y))`。
+  `y` 倍と自然な商写像の右完全列、および Mathlib の長さの加法性・単調性を使う。
+- `length_quotient_sup_span_pow_le`：一つの生成元の `q` 乗で長さは高々 `q` 倍。
+- `length_quotient_sup_span_powers_le`：`r` 個の生成元の `q` 乗では高々 `q^r` 倍。
+- `length_quotient_frobenius_sup_le`：`z_i ∈ H` なら
+  `ℓ(R/(H^[q]+I)) ≤ q^r ℓ(R/(I,z))`。
+- `isFiniteLength_quotient_frobenius_sup`：右辺の基礎となる商が有限長なら、
+  各 Frobenius 段の商の有限長性もこの上界から従う。
+
+`PerfectApproximationLength.lean` で上記を実際の近似環の商に接続した。
+`z : Fin r → D`、`z_i ∈ H`、`D/(g,z)` が有限長という明示的な仮定のもとで、
+`λ(B_q/(HB_q+g^(1/q))) ≤ q^r ℓ(D/(g,z))/q^h`。
+特に `r+1=h` なら定数倍の `1/q` に抑えられ、正規化長さは零へ収束する。
+各段の有限長性を別に要求する必要はない。
+
+**未完了の境界**：`g ≠ 0` と次元の条件から、この `h-1` 個の元を `H` 内に
+選べることはまだ証明していない。今回の収束定理は選んだ元と有限長性を明示的に要求する。
+また核の長さの収束、余極限との比較、Monsky・Roberts の引用との接続も残る。
+基底環の正規性と混標数の場合も従来どおり未完了。
+新しい `sorry` や仮定を束ねる独自の構造・クラスは追加していない。
+
+検証：全体の `lake build` が成功（3089 jobs）、`git diff --check` も成功。
+`#print axioms` により、新しい一般の長さ評価・有限長性は `sorryAx` 非依存。
+近似環の上界と収束定理には、既存の有限段の長さ公式を通じた `sorryAx` 依存が残る。
+
+
+### 10.19 商写像の核の消滅と核・像の長さの等式（2026-10-10）
+
+前回の誤差商の収束を、実際の商写像の核へ接続した。
+
+- `radical_map_iterateFrobenius`：Frobenius 冪イデアルは根基を保つ。
+- `isFiniteLength_quotient_map_iterateFrobenius`：Noether 環で `D/H` が有限長なら
+  `D/H^[q]` も有限長。既存の根基による Artin 性の比較を使い、追加の未証明入力は不要。
+- `isPowTorsion_quotient_of_baseChange` と近似環への適用：有限段の有限長性から
+  塔上の商の冪ねじれを導く。
+- `length_rootStage_base_quotient` と有限長性の系：通常の包含で作る根の段の商を
+  `D/H^[q]` と長さのレベルで同定する。
+- `towerLengthFun_perfectionApproximation_kernel_le`：上記と有限段の長さ公式により、
+  核の評価に必要な冪ねじれ・長さの有限性を証明内で用意する。
+- `towerLengthFun_perfectionApproximation_kernel_tendsto_zero`：`D/H` の有限長性、
+  初段の共通分母 `gC ⊆ B₁`、および前回の `h-1` 個の元 `z ∈ H` と `D/(g,z)` の
+  有限長性から、`λ ker(B_q/HB_q → C/HC) → 0` を証明。
+  各段の分母条件は初段から導き、各段の有限長性・冪ねじれも追加仮定にしていない。
+- `rootStageToApproximation_map_extension`：拡大イデアルはどの段からでも `HC` になり、
+  商写像の行き先が段によらないことを確認。
+- `towerLengthFun_perfectionApproximation_kernel_add_range`：各段で
+  `λ ker(f_q) + λ im(f_q) = ℓ_D(D/H^[q])/q^h` を証明。
+  Hilbert–Kunz 極限と結び付けるための加法性の等式である。
+
+**残り**：`h-1` 個の元の選択、基底環の正規性、像の増大・被覆と余極限での
+長さの比較、Monsky・Roberts の結果との接続は未完了。
+今回の核の消滅は共通分母と元の組を明示的に与える定理であり、定理2.5全体の完成ではない。
+新しい `sorry` や仮定を束ねる独自の構造・クラスは追加していない。
+
+検証：全体の `lake build` 成功（3089 jobs）、`git diff --check` 成功。
+`#print axioms` により、根基・有限長性・一般の係数拡大後の冪ねじれ・拡大イデアルの同定は
+`sorryAx` 非依存。核の収束と核・像の等式には既存の長さ公式等を通じた依存が残る。
+
+
+### 10.20 像の増大・被覆と Frobenius 商の極限の比較（2026-10-10）
+
+- `perfectionQuotientImage`：固定した商 `C/J` の中で、近似部分代数 `B_q` から来る
+  元の部分加群を定義。仮定の束ではなく、比較する数学的な像である。
+  `perfectionQuotientImage_monotone` と `iSup_perfectionQuotientImage` で増大性と被覆を証明。
+- `isPowTorsion_quotient_extension`：`R → B → C` において `B/I` が `R` の
+  イデアルの冪で消えるなら、`C/IC` も同じ冪で消える。平坦性・有限性は不要。
+- `towerLengthFun_quotient_eq_iSup_image` と `towerLengthFun_quotientImage_tendsto`：
+  既存の長さの上限性を用い、像の長さの上限と極限が商全体の長さになることを証明。
+  無限大の長さも扱う。
+- `isPowTorsion_perfection_quotient`：`D/H` が有限長なら、初段の商を使って
+  `C/HC` の塔上の冪ねじれを導く。
+  したがって具体的な像の収束定理に冪ねじれを追加仮定する必要はない。
+- `towerLengthFun_perfectionApproximation_range_eq_image`：前回までの段ごとの
+  商写像の像と、固定した商の中の像の長さを同定する。
+  この同定自体に正則性・完備性・剰余体の条件は不要。
+- `normalized_frobenius_length_tendsto_perfection_quotient`：共通分母 `gC ⊆ B₁` と
+  `z : Fin (h-1) → H`、`D/(g,z)` の有限長性を与えると、
+  `ℓ_D(D/H^[q])/q^h → λ(C/HC)`。前回の核の零への収束、今回の像の収束、
+  各段の加法性を合わせて証明した。
+
+**未完了の境界**：この比較定理では共通分母と元の組を明示的に要求する。
+論文の仮定からそれらを用意するには、なお基底環の正規性と元の選択の次元論が必要。
+また文献からの Hilbert–Kunz 極限の値の同定はまだ接続していない。
+正次数の Koszul ホモロジーの長さの消滅、混標数の場合も未完了。
+定理2.5本体の仮定と `sorry` は維持しており、新たな `sorry` は追加していない。
+
+検証：全体の `lake build` 成功（3089 jobs）、`git diff --check` 成功。
+公理監査で、冪ねじれの環拡大・像の増大と被覆・段の像との長さの同定は
+`sorryAx` 非依存。最終比較定理には既存の長さ公式等を通じた `sorryAx` 依存が残る。

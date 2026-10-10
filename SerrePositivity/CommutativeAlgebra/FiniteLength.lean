@@ -482,6 +482,25 @@ lemma length_eq_of_semilinear_bijective (φ : R →+* S) (hφ : Function.Surject
   rw [Module.length, Module.length, WithBot.unbot_inj,
     Order.krullDim_eq_of_orderIso (Submodule.orderIsoMapComapOfBijective f hf)]
 
+set_option backward.isDefEq.respectTransparency false in
+/-- 係数環と代数の同型が構造写像と可換なら、対応する商の長さは等しい。
+商の環同型を係数環の同型に関する半線形全単射として扱う。 -/
+lemma length_quotient_eq_of_equiv
+    (T U : Type u) [CommRing T] [CommRing U] [Algebra R T] [Algebra S U]
+    (eR : R ≃+* S) (eT : T ≃+* U)
+    (he : ∀ r, eT (algebraMap R T r) = algebraMap S U (eR r)) (I : Ideal T) :
+    Module.length R (T ⧸ I) = Module.length S (U ⧸ I.map eT.toRingHom) := by
+  let e := Ideal.quotientEquiv I (I.map eT.toRingHom) eT rfl
+  let f : (T ⧸ I) →ₛₗ[eR.toRingHom] (U ⧸ I.map eT.toRingHom) :=
+    { e.toAddEquiv.toAddMonoidHom with
+      map_smul' := by
+        intro r x
+        obtain ⟨x, rfl⟩ := Ideal.Quotient.mk_surjective x
+        change e (Ideal.Quotient.mk I (r • x)) = eR r • e (Ideal.Quotient.mk I x)
+        simp only [e, Ideal.quotientEquiv_mk]
+        simp only [Algebra.smul_def, map_mul, he, Ideal.Quotient.mk_algebraMap] }
+  exact length_eq_of_semilinear_bijective eR.toRingHom eR.surjective f e.bijective
+
 /-- 環自己同型 `σ : R ≃+* R` に沿って係数を制限しても（`r • x` を `σ(r) • x` に取り替えても）長さは
 変わらない。恒等写像が `σ` 半線形全単射になることと `length_eq_of_semilinear_bijective` による。
 ひねり `g^*P` の通常の Euler 評価が不変であること（`PerfectComplex/OrdinaryEuler.lean` の

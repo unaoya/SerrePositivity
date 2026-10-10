@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.Koszul
 public import SerrePositivity.HomologicalAlgebra.NullHomotopy
+public import SerrePositivity.HomologicalAlgebra.SupportNullHomotopy
 public import SerrePositivity.PerfectComplex.Basic
 public import Mathlib.RingTheory.Ideal.Maps
 public import SerrePositivity.HomologicalAlgebra.Basic
@@ -50,6 +51,18 @@ namespace SerrePositivity
 
 variable {R : Type u} [CommRing R]
 
+/-- 生成元を共通の正の冪で置き換えても根基による台の条件を保つ。 -/
+lemma le_radical_span_pow {J : Ideal R} {e : ℕ} (z : Fin e → R)
+    (hJ : J ≤ (Ideal.span (Set.range z)).radical) (v : ℕ) :
+    J ≤ (Ideal.span (Set.range (fun j ↦ z j ^ v))).radical := by
+  have h : Ideal.span (Set.range z) ≤
+      (Ideal.span (Set.range (fun j ↦ z j ^ v))).radical := by
+    apply Ideal.span_le.mpr
+    rintro _ ⟨j, rfl⟩
+    exact ⟨v, Ideal.subset_span ⟨j, rfl⟩⟩
+  exact hJ.trans (by simpa only [Ideal.radical_idem] using Ideal.radical_mono h)
+
+
 /-- 台の条件のホモトピー圏での言い換え：`IsSupported z P` は、ある `v` について各 `j` で
 ホモトピー圏 `K(R)` における等式 `z_j^v • 𝟙 P = 0` が成り立つことと同値。零ホモトピーの存在と
 ホモトピー圏での等式の同値（`nonempty_homotopy_smul_id_zero_iff`）による。以下の閉包性は
@@ -57,6 +70,16 @@ variable {R : Type u} [CommRing R]
 lemma isSupported_iff {e : ℕ} (z : Fin e → R) (P : CochainComplex (ModuleCat.{u} R) ℤ) :
     IsSupported z P ↔ ∃ v : ℕ, ∀ j, (z j) ^ v • 𝟙 ((homotopyQuot R).obj P) = 0 := by
   simp only [IsSupported, nonempty_homotopy_smul_id_zero_iff]
+
+/-- 台の指数は正に取り直せる。 -/
+lemma IsSupported.exists_pos {n : ℕ} {x : Fin n → R}
+    {P : CochainComplex (ModuleCat.{u} R) ℤ} (hP : IsSupported x P) :
+    ∃ v : ℕ, 0 < v ∧ ∀ j, Nonempty (Homotopy (smulId (x j ^ v) P) 0) := by
+  obtain ⟨v, hv⟩ := (isSupported_iff x P).mp hP
+  refine ⟨v + 1, by omega, fun j ↦ ?_⟩
+  exact (nonempty_homotopy_smul_id_zero_iff _ _).mpr
+    (pow_smul_id_eq_zero_of_le (hv j) (by omega : v ≤ v + 1))
+
 
 /-- 各 `j` ごとに冪 `v_j` があって `z_j^{v_j} • 𝟙 P = 0` なら、共通の冪 `v = max_j v_j` で
 `IsSupported z P` が成り立つ。`z_j^v • 𝟙 = z_j^{v - v_j} • (z_j^{v_j} • 𝟙) = 0` だから
@@ -250,10 +273,11 @@ end
 ついて一致することを示す（`isSupported_iff_homologySupport`）。
 
 - `IsSupported w P → HasHomologySupport (w) P` は `IsSupported.le_radical_annihilator`。
-- 逆：Noether 環上の有限加群の複体では `HasHomologySupport I P` は `I ⊆ √(Ann H^i(P))` と同値で、
-  各次数で `I` のある冪がホモロジーを消す。有界なら共通の冪 `I^n` がとれる。すると `w_j^n` は
-  すべてのホモロジーを消すので、有界な有限射影複体についてはその冪が零ホモトピックになる
-  （`HomologicalAlgebra/NullHomotopy.lean` の `exists_pow_nullHomotopy_of_homology_annihilated`）。
+- 逆：各次数で、有限生成な項からホモロジーに入る像は `w_j` のある冪で消える。
+  射影性で境界へ持ち上げ、有界な複体の上の次数から順に零にする
+  （`SupportNullHomotopy.lean` の `exists_pow_nullHomotopy_of_homology_support`）。
+  ホモロジー自身の有限生成性や環の Noether 性は不要。
+- Noether 環での、ホモロジー全体を消す共通の冪についての既存の補題も残す。
 
 これで、ホモロジーの台で定義した条件から Lemma 3.5 の要求する `IsPerfectSupported` が得られる
 （`isPerfectSupported_of_homologySupport`）。Lemma 5.2 で、`D'` 加群 `M` の分解 `P` の基底変更
@@ -274,6 +298,8 @@ variable {T : Type u} [CommRing T]
 「`V(I)` に台をもつ複体」の定義に当たる。 -/
 def HasHomologySupport (I : Ideal T) (P : CochainComplex (ModuleCat.{u} T) ℤ) : Prop :=
   ∀ i, Module.support T (P.homology i) ⊆ PrimeSpectrum.zeroLocus I
+
+section noetherian
 
 variable [IsNoetherianRing T]
 
@@ -323,32 +349,34 @@ theorem exists_common_pow_annihilator_of_homologySupport (I : Ideal T)
     intro x r
     exact Subsingleton.elim _ _
 
-/-! ## 台の条件との関係 -/
+end noetherian
+
+/-! ## 任意の可換環における台の条件との関係 -/
+
+/-- スカラーの冪の零ホモトピーはホモロジーの幾何学的支持を制限する。
+この向きには有界性・有限生成性・射影性も不要。 -/
+lemma IsSupported.homologySupport {e : ℕ} {w : Fin e → T}
+    {P : CochainComplex (ModuleCat.{u} T) ℤ} (hP : IsSupported w P) :
+    HasHomologySupport (Ideal.span (Set.range w)) P := by
+  intro i p hp r hr
+  obtain ⟨n, hn⟩ := hP.le_radical_annihilator i hr
+  exact Ideal.IsPrime.mem_of_pow_mem inferInstance n
+    (Module.annihilator_le_of_mem_support hp hn)
 
 /-- 有界で各項が有限生成射影的な複体では、ホモロジーの台の条件 `HasHomologySupport (w) P` から
-台の条件 `IsSupported w P` が出る。共通の冪 `n` をとると `w_j^n` はすべてのホモロジーを消すので、
-`exists_pow_nullHomotopy_of_homology_annihilated` により `(w_j^n)^m • 𝟙 P` が零ホモトピックになる
-`m` がある。各 `j` の冪 `n m` を `isSupported_of_forall` でまとめる。 -/
+台の条件 `IsSupported w P` が出る。各生成元について有限な像を冪で消去して零ホモトピーを作り、
+`isSupported_of_forall` で共通の冪をとる。Noether 性は仮定しない。 -/
 theorem isSupported_of_homologySupport {e : ℕ} (w : Fin e → T)
     (P : CochainComplex (ModuleCat.{u} T) ℤ)
     (hfinite : ∀ i, Module.Finite T (P.X i)) (hproj : ∀ i, Projective (P.X i))
     (hbound : ∃ a b : ℤ, ∀ i, (i < a ∨ b < i) → IsZero (P.X i))
     (hP : HasHomologySupport (Ideal.span (Set.range w)) P) : IsSupported w P := by
-  classical
-  obtain ⟨n, hn⟩ := exists_common_pow_annihilator_of_homologySupport _ P hfinite hbound hP
-  have each : ∀ j, ∃ v : ℕ, Nonempty (Homotopy (w j ^ v • 𝟙 P) 0) := by
-    intro j
-    have hw : w j ∈ Ideal.span (Set.range w) := Ideal.subset_span (Set.mem_range_self j)
-    have hwN : w j ^ n ∈ (Ideal.span (Set.range w)) ^ n := Ideal.pow_mem_pow hw n
-    have hr : ∀ i, w j ^ n • 𝟙 (P.homology i) = 0 := by
-      intro i
-      ext x
-      exact @hn i x ⟨w j ^ n, hwN⟩
-    obtain ⟨m, hm⟩ := exists_pow_nullHomotopy_of_homology_annihilated P (w j ^ n) hproj hbound hr
-    exact ⟨n * m, by simpa only [pow_mul] using hm⟩
   apply isSupported_of_forall
   intro j
-  obtain ⟨v, hv⟩ := each j
+  have hr : ∀ i, Module.support T (P.homology i) ⊆ PrimeSpectrum.zeroLocus {w j} :=
+    fun i ↦ (hP i).trans (PrimeSpectrum.zeroLocus_anti_mono
+      (Set.singleton_subset_iff.mpr (Ideal.subset_span (Set.mem_range_self j))))
+  obtain ⟨v, hv⟩ := exists_pow_nullHomotopy_of_homology_support P (w j) hfinite hproj hbound hr
   exact ⟨v, (nonempty_homotopy_smul_id_zero_iff _ _).mp hv⟩
 
 /-- 有界で各項が有限生成射影的な複体では、零ホモトピーによる台の条件 `IsSupported w P` と
@@ -360,9 +388,7 @@ theorem isSupported_iff_homologySupport {e : ℕ} (w : Fin e → T)
     (hbound : ∃ a b : ℤ, ∀ i, (i < a ∨ b < i) → IsZero (P.X i)) :
     IsSupported w P ↔ HasHomologySupport (Ideal.span (Set.range w)) P := by
   constructor
-  · intro h
-    exact (homologySupport_iff_le_radical_annihilator _ P hfinite).mpr
-      (h.le_radical_annihilator)
+  · exact IsSupported.homologySupport
   · exact isSupported_of_homologySupport w P hfinite hproj hbound
 
 /-- 有界で各項が有限自由な複体で、ホモロジーの台が `V(w)` に入るものは、`w` に台をもつ完全複体

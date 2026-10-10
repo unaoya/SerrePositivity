@@ -6,9 +6,11 @@ public import Mathlib.LinearAlgebra.Quotient.Basic
 public import Mathlib.LinearAlgebra.TensorProduct.Lift
 public import Mathlib.LinearAlgebra.TensorProduct.Tower
 public import Mathlib.RingTheory.TensorProduct.Basic
+public import Mathlib.RingTheory.TensorProduct.Maps
+public import Mathlib.RingTheory.TensorProduct.Quotient
 
 /-!
-# 表示された加群の係数拡大
+# 表示された加群の係数拡大と代数の積写像の像
 
 ## 概要
 
@@ -132,5 +134,41 @@ lemma baseChangeQuotEquiv_tmul_mk (s : S) (v : ι → R) :
 lemma baseChangeQuotEquiv_symm_mk (w : ι → S) :
     (baseChangeQuotEquiv S r).symm (Submodule.Quotient.mk w) = piToBaseChangeQuot S r w :=
   rfl
+
+
+/-- 係数拡大から環への積写像の像は、係数環上で右因子の像が生成する部分代数である。 -/
+theorem tensorProduct_range_eq_adjoin
+    (S R T C : Type u) [CommRing S] [CommRing R] [CommRing T] [CommRing C]
+    [Algebra S R] [Algebra S T] [Algebra S C] [Algebra R C] [IsScalarTower S R C]
+    (g : T →ₐ[S] C) :
+    (Algebra.TensorProduct.productLeftAlgHom (Algebra.ofId R C) g).range =
+      Algebra.adjoin R (Set.range g) := by
+  apply le_antisymm
+  · rintro x ⟨y, rfl⟩
+    induction y using TensorProduct.inductionOn with
+    | tmul r t =>
+        change algebraMap R C r * g t ∈ _
+        exact (Algebra.adjoin R (Set.range g)).mul_mem
+          (Subalgebra.algebraMap_mem _ r) (Algebra.subset_adjoin (Set.mem_range_self t))
+    | add x y hx hy =>
+        rw [map_add]
+        exact (Algebra.adjoin R (Set.range g)).add_mem hx hy
+  · apply Algebra.adjoin_le
+    rintro x ⟨t, rfl⟩
+    refine ⟨1 ⊗ₜ[S] t, ?_⟩
+    change algebraMap R C 1 * g t = g t
+    rw [map_one, one_mul]
+
+
+/-- 係数拡大の環同型は、右因子のイデアルで割った商にも降りる。
+Mathlib のテンソル積と商の交換を、与えられた代数同型と合成する。 -/
+noncomputable def baseChangeIdealQuotientEquiv
+    (S R T B : Type u) [CommRing S] [CommRing R] [CommRing T] [CommRing B]
+    [Algebra S R] [Algebra S T] [Algebra R B]
+    (e : R ⊗[S] T ≃ₐ[R] B) (I : Ideal T) :
+    R ⊗[S] (T ⧸ I) ≃ₐ[R]
+      B ⧸ I.map (e.toRingHom.comp Algebra.TensorProduct.includeRight.toRingHom) :=
+  (Algebra.TensorProduct.tensorQuotientEquiv (R := S) R T R I).trans
+    (Ideal.quotientEquivAlg _ _ e (I.map_map _ _).symm)
 
 end SerrePositivity

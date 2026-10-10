@@ -181,6 +181,47 @@ namespace SerrePositivity
 
 variable {T : Type u} [CommRing T]
 
+/-- 境界への因子分解があれば、一段の成分をホモトピーで消去できる。
+射影性やホモロジーの消去条件は、因子分解を構成する側でのみ必要となる。 -/
+lemma clear_degree_of_factorization (P : CochainComplex (ModuleCat.{u} T) ℤ)
+    (r : T) (k : ℤ) (f : P ⟶ P) (hf : ∀ i, k < i → f.f i = 0)
+    (h : P.X k ⟶ P.X (k - 1)) (hh : h ≫ P.d (k - 1) k = r • f.f k) :
+    ∃ g : P ⟶ P, (∀ i, k ≤ i → g.f i = 0) ∧
+      (homotopyQuot T).map g = r • (homotopyQuot T).map f := by
+  classical
+  let H : ∀ i j : ℤ, P.X i ⟶ P.X j := fun i j ↦
+    if hi : i = k then
+      if hj : j = k - 1 then
+        eqToHom (congrArg P.X hi) ≫ h ≫ eqToHom (congrArg P.X hj.symm)
+      else 0
+    else 0
+  let n := Homotopy.nullHomotopicMap H
+  have hn : (homotopyQuot T).map n = 0 := by
+    apply (HomotopyCategory.quotient_map_eq_zero_iff _).mpr
+    refine ⟨Homotopy.nullHomotopy H ?_⟩
+    intro i j hij
+    dsimp [H]
+    split_ifs with hi hj
+    · exfalso
+      apply hij
+      change j + 1 = i
+      omega
+    all_goals rfl
+  have hn_f (i : ℤ) : n.f i = P.d i (i + 1) ≫ H (i + 1) i + H i (i - 1) ≫ P.d (i - 1) i :=
+    Homotopy.nullHomotopicMap_f (C := P) (D := P)
+      (k₂ := i - 1) (k₁ := i) (k₀ := i + 1)
+      (by change i - 1 + 1 = i; omega) rfl H
+  refine ⟨r • f - n, ?_, ?_⟩
+  · intro i hi
+    change r • f.f i - n.f i = 0
+    rw [hn_f]
+    by_cases hik : i = k
+    · subst i
+      simp [H, hh, show k + 1 ≠ k by omega]
+    · have hki : k < i := by omega
+      simp [H, hf i hki, hik, show i + 1 ≠ k by omega]
+  · rw [Functor.map_sub, Functor.map_smul, hn, sub_zero]
+
 set_option backward.isDefEq.respectTransparency.types false in
 /-- 一段消去の補題。`P^k` が射影的で、`f : P ⟶ P` が `k` 次より上で零（`hf`）、`r` が `H^k(P)` を
 零化する（`hr`）とき、`k` 次以上で零な `g : P ⟶ P` があって、ホモトピー圏で `g = r • f` となる。
@@ -226,38 +267,7 @@ lemma clear_degree (P : CochainComplex (ModuleCat.{u} T) ℤ) (r : T) (k : ℤ)
     change h ≫ S.f = r • f.f k
     rw [← S.toCycles_i, ← Category.assoc, hB.liftFromProjective_comp,
       Linear.smul_comp, S.liftCycles_i]
-  let H : ∀ i j : ℤ, P.X i ⟶ P.X j := fun i j ↦
-    if hi : i = k then
-      if hj : j = k - 1 then
-        eqToHom (congrArg P.X hi) ≫ h ≫ eqToHom (congrArg P.X hj.symm)
-      else 0
-    else 0
-  let n := Homotopy.nullHomotopicMap H
-  have hn : (homotopyQuot T).map n = 0 := by
-    apply (HomotopyCategory.quotient_map_eq_zero_iff _).mpr
-    refine ⟨Homotopy.nullHomotopy H ?_⟩
-    intro i j hij
-    dsimp [H]
-    split_ifs with hi hj
-    · exfalso
-      apply hij
-      change j + 1 = i
-      omega
-    all_goals rfl
-  have hn_f (i : ℤ) : n.f i = P.d i (i + 1) ≫ H (i + 1) i + H i (i - 1) ≫ P.d (i - 1) i :=
-    Homotopy.nullHomotopicMap_f (C := P) (D := P)
-      (k₂ := i - 1) (k₁ := i) (k₀ := i + 1)
-      (by change i - 1 + 1 = i; omega) rfl H
-  refine ⟨r • f - n, ?_, ?_⟩
-  · intro i hi
-    change r • f.f i - n.f i = 0
-    rw [hn_f]
-    by_cases hik : i = k
-    · subst i
-      simp [H, hh, show k + 1 ≠ k by omega]
-    · have hki : k < i := by omega
-      simp [H, hf i hki, hik, show i + 1 ≠ k by omega]
-  · rw [Functor.map_sub, Functor.map_smul, hn, sub_zero]
+  exact clear_degree_of_factorization P r k f hf h hh
 
 /-- **ホモロジーを消すスカラーの冪は零ホモトピック**。各項が射影的で、`a` 次から `b` 次の範囲に
 乗る複体 `P` について、`r` がすべてのホモロジー `H^i(P)` を零化するなら、`r^n • 𝟙 P` が

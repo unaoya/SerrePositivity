@@ -22,8 +22,9 @@ public import Mathlib.Topology.Instances.ENNReal.ENatENNReal
 像で書き直す補題 `lengthAlgebra_base_values`、`lengthAlgebra_base_values_one`。Corollary 2.6
 （`Paper/Corollary2_6.lean`）と Lemma 3.5 への適用で、(3.9) の形の仮定にするために使う。
 
-Theorem 2.5 そのもの（長さ代数の存在、`sorry`）は `Paper/Section2/Theorem2_5.lean` の
-`Section2.theorem_2_5` にある。塔 `Λ` と `λ_∞` の定義は `Paper/Section2/Tower.lean`、
+Theorem 2.5 は `Paper/Section2/Theorem2_5.lean` の `Section2.theorem_2_5` にある。
+その導出には証明が付いているが、標数別の構成
+（`LengthAlgebraConstruction.lean`）と一般的な重複度公式の未証明入力に依存する。塔 `Λ` と `λ_∞` の定義は `Paper/Section2/Tower.lean`、
 `TowerLength.lean`、Hilbert–Samuel 重複度は `CommutativeAlgebra/HilbertSamuel.lean`。
 以前ここにあった `Inputs.exists_lengthAlgebra` は、塔の作用との両立を欠き、重複度を極限の式で
 書いていたので、2026-10-10 に `theorem_2_5` に置き換えて削除した（`notes/section-2-plan.md`）。

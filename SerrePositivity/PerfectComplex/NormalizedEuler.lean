@@ -4,6 +4,7 @@ public import SerrePositivity.HomologicalAlgebra.ConeLES
 public import SerrePositivity.HomologicalAlgebra.Tor
 public import SerrePositivity.PerfectComplex.Support
 public import SerrePositivity.PerfectComplex.K0
+public import SerrePositivity.LengthAlgebra.ExactSequenceEuler
 public import Mathlib.Basic.ENNReal.Real
 public import Mathlib.Data.Int.Interval
 public import Mathlib.Algebra.FiniteSupport.Basic
@@ -25,12 +26,12 @@ Euler 評価 `lambdaEuler lam P = Σ (-1)^i λ(H^i(P))` と、`Tor` を測った
 
 ## 方針
 
-加法性は写像錐の長完全列（`HomologicalAlgebra/ConeLES.lean`）による。長完全列
-`… → H^i(P) → H^i(Q) → H^i(Cone) → H^{i+1}(P) → …` を三つの短完全列に切り、各項の長さを隣り合う
-射の像の長さ `a_i`、`b_i`、`d_i` の和に分解する（`lambdaLengthReal_eq_add_range`）と、交代和を
-とったときに相殺して `χ(Cone) = χ(Q) - χ(P)` になる。この分解には、各ホモロジーが `J` の冪で消える
-こと（正規化長さの加法性の対象であること）と、長さの有限性が要る。係数環 `C` の Noether 性は
-要らない。
+加法性は、有限長さの冪ねじれ加群の圏に写像錐の長完全列を入れ、
+`LengthAlgebra/ExactSequenceEuler.lean` を通して共通の Euler 定理を適用する。
+像の短完全列と交代和の相殺は `CategoryTheory/ExactSequenceEuler.lean` に集約し、
+抽象的な三角圏の `homologicalEuler_triangle` と同じ証明を使う。
+このファイルでは各ホモロジーの冪ねじれ性・有限性と有界性を確認して渡す。
+係数環の Noether 性や複体の射影性は要求しない。
 
 通常の長さは `NormalizedLength.ordinary` という特殊な正規化長さなので、通常の Euler 評価 `chiOrd`
 の加法性もここから導く（`chiOrd_eq_lambdaEuler_ordinary`、`OrdinaryEuler.lean`）。
@@ -153,7 +154,7 @@ lemma lambdaHomology_shortExact_ne_top
 /-- 完全列 `M →f N →g L` の中央の長さは、二つの射の像の長さの和：`λ(N) = λ(im f) + λ(im g)`
 （実数値）。`λ(N) = λ(ker g) + λ(im g)`（`len_eq_add_ker_range`）と `ker g = im f` による。`N` が `J` の
 冪で消えること（加法性の対象であること）と `λ(N) < ∞`（`toReal` で和が保たれること）が要る。
-長完全列の各項をこの形に分解するのが `lambdaEuler_cone` の要点。 -/
+具体的な射の像の長さを計算するときに使える補題。 -/
 lemma lambdaLengthReal_eq_add_range {M N L : Type u} [AddCommGroup M] [Module C M]
     [AddCommGroup N] [Module C N] [AddCommGroup L] [Module C L]
     (f : M →ₗ[C] N) (g : N →ₗ[C] L) (hfg : Function.Exact f g)
@@ -190,33 +191,10 @@ lemma lambdaEuler_eq_of_homotopyEquiv {P Q : CochainComplex (ModuleCat.{u} C) �
   funext i
   rw [lam.len_congr _ _ (h.toHomologyIso i).toLinearEquiv]
 
-/-- 交代和の添字を一つずらすと符号が反転する：`Σ (-1)^i f(i - 1) = -Σ (-1)^i f(i)`。`finsum` の
-規約（非零項が無限個なら `0`）を含めて成り立つ。 -/
-private lemma alternating_finsum_shift (f : ℤ → ℝ) :
-    (∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * f (i - 1)) =
-      -(∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * f i) := by
-  calc
-    _ = ∑ᶠ i : ℤ, (((i + 1).negOnePow : ℤ) : ℝ) * f i := by
-      have h := finsum_comp_equiv (Equiv.addRight (1 : ℤ))
-        (f := fun i : ℤ ↦ ((i.negOnePow : ℤ) : ℝ) * f (i - 1))
-      simpa using h.symm
-    _ = ∑ᶠ i : ℤ, -(((i.negOnePow : ℤ) : ℝ) * f i) := by
-      congr 1
-      funext i
-      simp [Int.negOnePow_add]
-    _ = _ := finsum_neg_distrib _
-
-set_option maxHeartbeats 800000 in
--- ホモロジーの対象に依存する型を含む三つの完全列の移送に、追加の処理時間を許す。
-/-- **写像錐についての加法性**：`f : P ⟶ Q` について `λ-χ(Cone f) = λ-χ(Q) - λ-χ(P)`。仮定は、`Q` と
-`Cone f` が有界で、`P`、`Q`、`Cone f` の各ホモロジーが `J` の冪で消え、`λ` が有限であること。
-
-証明は長完全列（`Cone.exact₁₂₃`）による。`a_i = λ(im H^i(f))`、`b_i = λ(im H^i(inr))`、
-`d_i = λ(im δ_i)` とおくと、`lambdaLengthReal_eq_add_range` により `λ(H^i(Q)) = a_i + b_i`、
-`λ(H^i(Cone f)) = b_i + d_i`、`λ(H^{i+1}(P)) = d_i + a_{i+1}`。交代和をとると
-`χ(Q) = A + B`、`χ(Cone) = B + D`、`χ(P) = -D + A`（添字のずれで符号が反転、
-`alternating_finsum_shift`）で、`χ(Cone) = χ(Q) - χ(P)`。`finsum` を分配するために各列が有限な台を
-もつことを確かめる。係数環の Noether 性は要らない。 -/
+/-- **写像錐についての加法性**：`f : P ⟶ Q` について `λ-χ(Cone f) = λ-χ(Q) - λ-χ(P)`。
+有限長さの冪ねじれ加群のアーベル圏に長完全列を入れ、共通の Euler 加法性を適用する。
+`Q` と `Cone f` の有界性、各ホモロジーの冪ねじれ性・長さの有限性を使う。
+複体の射影性・有限生成性、環の Noether 性、Koszul 条件は要求しない。 -/
 theorem lambdaEuler_cone {P Q : CochainComplex (ModuleCat.{u} C) ℤ} (f : P ⟶ Q)
     (hQ : ∃ a b : ℤ, ∀ i, (i < a ∨ b < i) → IsZero (Q.X i))
     (hC : ∃ a b : ℤ, ∀ i, (i < a ∨ b < i) → IsZero ((Cone.cone f).X i))
@@ -227,78 +205,21 @@ theorem lambdaEuler_cone {P Q : CochainComplex (ModuleCat.{u} C) ℤ} (f : P ⟶
     (lQ : ∀ i, lam.len (Q.homology i) ≠ ⊤)
     (lC : ∀ i, lam.len ((Cone.cone f).homology i) ≠ ⊤) :
     lambdaEuler lam (Cone.cone f) = lambdaEuler lam Q - lambdaEuler lam P := by
-  let α := fun i ↦ (HomologicalComplex.homologyMap f i).hom
-  let β := fun i ↦ (HomologicalComplex.homologyMap (CochainComplex.mappingCone.inr f) i).hom
-  let δ := fun i ↦ (Cone.δ f i (i + 1) rfl).hom
-  let a := fun i ↦ (lam.len (LinearMap.range (α i))).toReal
-  let b := fun i ↦ (lam.len (LinearMap.range (β i))).toReal
-  let d := fun i ↦ (lam.len (LinearMap.range (δ i))).toReal
-  have ha : Function.HasFiniteSupport a := by
-    apply (lambdaHomology_hasFiniteSupport lam Q hQ).subset
-    intro i hi hz
-    have hz' : lam.len (Q.homology i) = 0 := by
-      have hn := lQ i
-      simpa [ENNReal.toReal_eq_zero_iff, hn] using hz
-    have : lam.len (LinearMap.range (α i)) = 0 :=
-      le_antisymm (hz' ▸ lam.len_submodule_le (tQ i) _) bot_le
-    exact hi (by simp [a, this])
-  have hb : Function.HasFiniteSupport b := by
-    apply (lambdaHomology_hasFiniteSupport lam (Cone.cone f) hC).subset
-    intro i hi hz
-    have hz' : lam.len ((Cone.cone f).homology i) = 0 := by
-      have hn := lC i
-      simpa [ENNReal.toReal_eq_zero_iff, hn] using hz
-    have : lam.len (LinearMap.range (β i)) = 0 :=
-      le_antisymm (hz' ▸ lam.len_submodule_le (tC i) _) bot_le
-    exact hi (by simp [b, this])
-  have hd : Function.HasFiniteSupport d := by
-    apply (lambdaHomology_hasFiniteSupport lam (Cone.cone f) hC).subset
-    intro i hi hz
-    have hz' : lam.len ((Cone.cone f).homology i) = 0 := by
-      have hn := lC i
-      simpa [ENNReal.toReal_eq_zero_iff, hn] using hz
-    have : lam.len (LinearMap.range (δ i)) = 0 :=
-      le_antisymm (hz' ▸ lam.len_range_le (δ i) (tC i)) bot_le
-    exact hi (by simp [d, this])
-  have hQlen : ∀ i, ((lam.len (Q.homology i)).toReal : ℝ) = a i + b i := fun i ↦
-    lambdaLengthReal_eq_add_range lam (α i) (β i)
-      ((ShortComplex.ShortExact.moduleCat_exact_iff_function_exact _).mp
-        (Cone.exact₂ f i)) (tQ i) (lQ i)
-  have hClen : ∀ i, ((lam.len ((Cone.cone f).homology i)).toReal : ℝ) = b i + d i := fun i ↦
-    lambdaLengthReal_eq_add_range lam (β i) (δ i)
-      ((ShortComplex.ShortExact.moduleCat_exact_iff_function_exact _).mp
-        (Cone.exact₃ f i (i + 1) rfl)) (tC i) (lC i)
-  have hPlen : ∀ i, ((lam.len (P.homology i)).toReal : ℝ) = d (i - 1) + a i := by
-    intro i
-    obtain ⟨j, rfl⟩ : ∃ j : ℤ, i = j + 1 := ⟨i - 1, by omega⟩
-    rw [add_sub_cancel_right]
-    exact lambdaLengthReal_eq_add_range lam (δ j) (α (j + 1))
-      ((ShortComplex.ShortExact.moduleCat_exact_iff_function_exact _).mp
-        (Cone.exact₁ f j (j + 1) rfl)) (tP (j + 1)) (lP (j + 1))
-  have haw : Function.HasFiniteSupport (fun i : ℤ ↦ ((i.negOnePow : ℤ) : ℝ) * a i) :=
-    ha.mul_right _
-  have hbw : Function.HasFiniteSupport (fun i : ℤ ↦ ((i.negOnePow : ℤ) : ℝ) * b i) :=
-    hb.mul_right _
-  have hdw : Function.HasFiniteSupport (fun i : ℤ ↦ ((i.negOnePow : ℤ) : ℝ) * d i) :=
-    hd.mul_right _
-  have hds : Function.HasFiniteSupport (fun i : ℤ ↦ ((i.negOnePow : ℤ) : ℝ) * d (i - 1)) := by
-    have hdp : Function.HasFiniteSupport (fun i : ℤ ↦ d (i - 1)) :=
-      hd.preimage (Equiv.subRight (1 : ℤ)).injective.injOn
-    exact hdp.mul_right _
-  have eQ : lambdaEuler lam Q = (∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * a i) +
-      (∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * b i) := by
-    simp_rw [lambdaEuler, hQlen, mul_add]
-    exact finsum_add_distrib haw hbw
-  have eC : lambdaEuler lam (Cone.cone f) = (∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * b i) +
-      (∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * d i) := by
-    simp_rw [lambdaEuler, hClen, mul_add]
-    exact finsum_add_distrib hbw hdw
-  have eP : lambdaEuler lam P = -(∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * d i) +
-      (∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * a i) := by
-    simp_rw [lambdaEuler, hPlen, mul_add]
-    rw [finsum_add_distrib hds haw, alternating_finsum_shift]
-  rw [eC, eQ, eP]
-  ring
+  have h := LengthAlgebra.normalizedLength_euler_exact_sequence lam
+    (fun i ↦ P.homology i) (fun i ↦ Q.homology i) (fun i ↦ (Cone.cone f).homology i)
+    (fun i ↦ HomologicalComplex.homologyMap f i)
+    (fun i ↦ HomologicalComplex.homologyMap (CochainComplex.mappingCone.inr f) i)
+    (fun i ↦ Cone.δ f i (i + 1) rfl)
+    (fun i ↦ Cone.exact₂ f i) (fun i ↦ Cone.exact₃ f i (i + 1) rfl)
+    (fun i ↦ Cone.exact₁ f i (i + 1) rfl) tP tQ tC lP lQ lC
+    (by
+      obtain ⟨a, b, hab⟩ := hQ
+      exact ⟨a, b, fun i hi ↦ isZero_homology_of_isZero_X Q i (hab i hi)⟩)
+    (by
+      obtain ⟨a, b, hab⟩ := hC
+      exact ⟨a, b, fun i hi ↦ isZero_homology_of_isZero_X (Cone.cone f) i (hab i hi)⟩)
+  change lambdaEuler lam Q = lambdaEuler lam P + lambdaEuler lam (Cone.cone f) at h
+  exact (eq_sub_iff_add_eq).mpr (by simpa only [add_comm] using h.symm)
 
 /-- `w` に台をもつ複体のホモロジーは、`J ⊆ √(w)` なる有限生成イデアル `J` の冪で消える。台の条件から
 `(w) ⊆ √(Ann H^i(P))`（`IsSupported.le_radical_annihilator`）なので `J ⊆ √(Ann H^i(P))`、あとは

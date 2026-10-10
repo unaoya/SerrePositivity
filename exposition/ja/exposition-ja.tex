@@ -1,0 +1,1748 @@
+% lualatex でコンパイルする（latexmk -lualatex）
+\documentclass[11pt,a4paper]{ltjsarticle}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[haranoaji]{luatexja-preset}
+\usepackage[margin=25mm]{geometry}
+\usepackage{booktabs,tabularx,array,longtable}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+
+\numberwithin{equation}{section}
+\theoremstyle{plain}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{corollary}[theorem]{系}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{example}[theorem]{例}
+\theoremstyle{definition}
+\newtheorem{remark}[theorem]{注意}
+\renewcommand{\proofname}{証明}
+
+% Lean 宣言の参照
+\usepackage{url}
+\urlstyle{tt}
+\makeatletter\g@addto@macro\UrlBreaks{\do\_\do\.}\makeatother
+\newcommand{\ld}[1]{\path{#1}}
+\newcommand{\lean}[1]{\par\smallskip\noindent{\small\textsf{Lean:} #1}\par\smallskip}
+\newcommand{\orig}[1]{（#1）}
+
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\Tor}{\operatorname{Tor}}
+\providecommand{\Ext}{\operatorname{Ext}}
+\newcommand{\len}{\operatorname{length}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\Frac}{\operatorname{Frac}}
+\newcommand{\Perf}{\operatorname{Perf}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\ord}{\mathrm{ord}}
+
+\sloppy
+\title{Serre の交点重複度の正値性\\[2pt]\large 形式化に基づく解説（草稿）}
+\author{梅崎直也}
+\date{2026年10月11日}
+\begin{document}
+\maketitle
+
+\section*{はじめに}
+
+この文書は、プレプリント \emph{Positivity of Serre's Intersection Multiplicity}
+（OpenAI、2026-09-23。\href{https://github.com/openai/math}{openai/math} のファミリー 193、コミット \ld{adc7f124}）
+の証明を、Lean 4 による形式化
+\href{https://github.com/unaoya/SerrePositivity}{unaoya/SerrePositivity}
+で得た理解に基づいて整理し直した解説である。
+
+この解説では、証明を次のように整理して述べる。
+\begin{itemize}
+  \item Euler 評価、反復錐による消滅、第零次の下界、群作用による共役和比較を共通定理としてまとめる（付録~\ref{sec:planB}）。
+  \item perfect 複体（§\ref{sec:perfect}）とランク無視の圏（§\ref{sec:asymp}）をその二つの実現とする。各節では具体的な圏と関手を作り、共通定理の仮定を確認して適用する。
+  \item 長さの有限性、Koszul ホモロジーの消滅、比較に必要な降下を別々の入力とする。$\lambda$-平坦性・$\lambda$-CM 性（§\ref{sec:length}）は、それらを供給する十分条件として述べる。
+  \item 具体的な代数の構成（§\ref{sec:construction}）と核の場合への適用（§\ref{sec:core}）は別に述べる。今回の形式化の対象は共通理論と二つの実現であり、論文全体の完成や引用結果の証明までは含めない。
+\end{itemize}
+
+\paragraph{表記}
+命題の番号はこの解説の通し番号で、元論文の番号を括弧で併記する。各命題の末尾に対応する Lean の宣言名を \textsf{Lean:} として書き、状況を次のように示す。
+\begin{itemize}
+  \item \textbf{証明済み}：未証明の引用に依存しない。
+  \item \textbf{引用を除いて証明済み}：証明は完成しているが、未証明のまま引用している結果に依存する。
+  \item \textbf{引用}：文献の結果を名前つきの定理として述べ、証明していない。
+  \item \textbf{構成中}：部品はあるが主張としてはまだ完成していない。
+  \item \textbf{未}：まだ形式化していない、または証明が sorry。
+\end{itemize}
+宣言名は名前空間 \ld{SerrePositivity} を省略して書く。抽象論とその適用の記述は 2026-10-11 時点の実装と照合した。条件付き定理の「証明済み」は、明示した仮定から結論までを証明したという意味であり、その仮定を論文の全ての具体例で供給したことまでは意味しない。解説の定式化が Lean と異なる箇所は、その場で注意し、付録~\ref{sec:future} にまとめる。
+
+%======================================================================
+\section{主張と帰着}\label{sec:statement}
+
+$(R,\m)$ を正則局所環、$M, N$ を有限生成 $R$ 加群で $M\otimes_R N$ が有限長とする。$R$ は正則なので Tor は有限個を除いて $0$ であり、Serre の交点重複度
+\[
+  \chi^R(M,N) = \sum_i (-1)^i \len_R \Tor_i^R(M,N)
+\]
+が定まる。
+\lean{\ld{IntersectionMultiplicity.Basic}（$\chi$ の定義）。}
+
+\begin{theorem}\orig{Thm 1.1}\label{thm:main}
+$M, N$ が $0$ でなく $\dim M + \dim N = \dim R$ なら $\chi^R(M,N) > 0$。
+\end{theorem}
+\lean{\ld{Paper.main_statement}（未）。}
+
+\begin{theorem}[核の場合]\label{thm:core}
+$R$ を剰余体が標数 $p>0$ の代数閉体である完備正則局所環、$P, Q$ を $P+Q$ が $\m$-準素である素イデアル、$D = R/P$、$E = R/Q$、$h = \dim D > 0$、$l = \dim E > 0$、$h + l = \dim R$ とする。このとき $\chi^R(D,E) > 0$。
+\end{theorem}
+\lean{\ld{Paper.core_statement}（未）。}
+
+\paragraph{帰着\orig{Lemma 5.1}}
+定理~\ref{thm:core} から定理~\ref{thm:main} が従う。
+\begin{itemize}
+  \item 等標数は Serre の定理。
+  \item 完備化と剰余体の代数閉体への拡大（Lemma 2.1、平坦な局所拡大で長さと次元が保たれる）。
+  \item 素フィルトレーションと $\chi$ の各変数での加法性で、$\chi(R/P_j, R/Q_k)$ の和に分ける。
+  \item 次元の和が $d$ 未満の組は\textbf{消滅定理}（Roberts、Gillet--Soulé）で $0$。次元が相補的な組が少なくとも1つ残る。
+  \item 一方が $0$ 次元なら $\chi = 1$。
+\end{itemize}
+\lean{\ld{IntersectionMultiplicity.Additivity}、\ld{Paper.Section2.Lemma2_1}（未）、\ld{Inputs.intersectionVanishing}（引用）。帰着の組み立て自体は未。}
+
+消滅定理はここと補題~\ref{lem:first}（Lemma 5.2）の2か所で使う。以下、定理~\ref{thm:core} の設定を固定する。
+
+%======================================================================
+\section{証明の方針}\label{sec:strategy}
+
+\paragraph{アイデア：古典的な Cohen--Macaulay の場合}
+$D$ と $E$ がどちらも Cohen--Macaulay なら、高次の Tor が消えて $\chi^R(D,E) = \len(D\otimes_R E) > 0$ となる。論文は本物の CM 加群の代わりに、長さ関数 $\lambda$ の目で CM な巨大代数 $C_D$、$C_E$（\textbf{$\lambda$-CM 代数}、定義~\ref{def:lambdacm}）を使い、次の古典的事実の $\lambda$ 版で高次の項を消す。
+\begin{itemize}
+  \item $D$ 側：CM 加群の射影次元は低い（Auslander--Buchsbaum の公式）。$\lambda$ 版は補題~\ref{lem:lambdaAB}。
+  \item $E$ 側：巨大 CM 代数とテンソルすると、短い有限自由複体の高次ホモロジーが消える（Hochster による新交叉定理の議論）。$\lambda$ 版は補題~\ref{lem:nit} と系~\ref{cor:nitasymp}。
+  \item 残る $0$ 次の項が正であることは、巨大 CM 代数の非自明性 $\m B\ne B$ の $\lambda$ 版（系~\ref{cor:pos}）による。
+\end{itemize}
+
+\paragraph{基底と Galois 閉包：2段階の準備}
+$D$ は正則でないので、比較を直接示せる場所（命題~\ref{prop:35b}：$K_0$ が Koszul 複体で生成される）としても、$\lambda$-平坦性を定義する場所（定義~\ref{def:lengthalg}）としても使えない。そこで次の2段階の準備をする。
+\begin{enumerate}
+  \item \textbf{正則な基底をとる}：$D$ の中に、$D$ がその上有限で $\Frac(D)/\Frac(A_D)$ が分離的になる正則部分環 $A_D$ をとる（補題~\ref{lem:cohengabber}、Cohen--Gabber）。$A_D$ は $k[[t]]$ または $W(k)[[t]]$ の形にとれるので、塔と $\lambda_\infty$ の構成（§\ref{sec:construction}）にも使える。
+  \item \textbf{Galois にする}：比べたい複体は $D$ 上にあって $A_D$ からは来ないので、その類を $A_D$ に戻す必要がある。戻す手段は定理~\ref{thm:descent}（有理 K 理論の降下）で、幾何ファイバーに推移的に作用する群が要る。$D/A_D$ は Galois とは限らないので、$\Frac(D)/\Frac(A_D)$ の Galois 閉包における $A_D$ の整閉包 $D'$ に上げ、Galois 群 $G_D$ を得る。1段目で分離性を課したのはこのためである。代わりに $\chi^R(D,E)$ が $\chi^R(D',E')$ に変わり、ランクの因子 $a_D = \rank_D D'$ がつく。
+\end{enumerate}
+$E$ についても同様に $A_E$、$E'$、$G_E$、$a_E = \rank_E E'$ をとる（詳細は §\ref{sec:core}）。
+
+\paragraph{記号}
+$\sigma\in G_D$ に対し、$C_D$ に $R\to D'\xrightarrow{\sigma}D'\to C_D$ で $R$ 作用を入れたものを $C_D^\sigma$ と書く。$C_E^\gamma$（$\gamma\in G_E$）も同様。
+
+\paragraph{2回の置き換え}
+$\chi$ を変えずに $D$ と $E$ を1つずつ置き換える。個々の値はひねりで変わりうるが、Galois 共役の和をとると変わらない。
+
+\textbf{置き換え 1}（$D'\to C_D$、補題~\ref{lem:first}）．perfect 複体でのノルム比較（§\ref{sec:perfect}）により
+\begin{equation}\label{eq:strategy1}
+  |G_D|\, a_D a_E\, \chi^R(D,E) \;=\; \sum_{\sigma\in G_D}\, \sum_i (-1)^i\, \lambda_D \Tor_i^R(C_D^\sigma, E').
+\end{equation}
+
+\textbf{置き換え 2}（$E'\to C_E$、式~\eqref{eq:second}）．ランク無視の圏でのノルム比較（§\ref{sec:asymp}）により、各 $\sigma$ について
+\begin{equation}\label{eq:strategy2}
+  |G_E|\, \sum_i (-1)^i\, \lambda_D \Tor_i^R(C_D^\sigma, E') \;=\; \sum_{\gamma\in G_E} \chi_{\lambda_E}\bigl(\text{$C_D^\sigma$ の有限近似} \otimes C_E^\gamma\bigr).
+\end{equation}
+右辺の各項は、$C_D^\sigma$ を有限長加群の列で近似し、その分解を $\gamma$ でひねって $C_E$ とテンソルした複体の列について、$\lambda_E$ で測った Euler 特性を列の大きさ $s_n$ で割って超極限をとったものである（§\ref{sec:core}）。直観的には「$C_D^\sigma$ と $C_E^\gamma$ の Tor を、$\lambda_D$ と $\lambda_E$ の両方で測った Euler 特性」である。
+
+\textbf{正値性}（補題~\ref{lem:pos}）．両側が CM もどきなので、\eqref{eq:strategy2} の右辺の各項は $0$ 次の項だけになり、正。したがって
+\[
+  |G_D|\, a_D a_E\, \chi^R(D,E) \;=\; \frac{1}{|G_E|}\sum_{\sigma\in G_D}\sum_{\gamma\in G_E} \chi_{\lambda_E}\bigl(\text{$C_D^\sigma$ の有限近似} \otimes C_E^\gamma\bigr) \;>\; 0.
+\]
+
+\paragraph{ノルム比較の型}
+2回の置き換えは同じ型の議論である。右の因子 $T$ を $C_T$ に置き換えるため、左の因子の自由分解と $T$ のテンソルとして「閉点に台をもつ対象」$X$ を作り、
+\begin{itemize}
+  \item 普通の長さで測ると元の $\chi$（Galois でひねっても変わらない）
+  \item $X\otimes C_T$ を $\lambda$ で測ると置き換えた量（ひねりで変わりうる）
+\end{itemize}
+の2つが、共役の和の上で一致する。一致の理由は「正則な基底 $A$ から来る類では一致する」と「共役の和は有理的に $A$ から来る（定理~\ref{thm:descent}、有理 K 理論の降下）」の組み合わせ。
+
+\begin{center}
+\begin{tabularx}{\textwidth}{>{\raggedright}p{3cm}>{\raggedright}X>{\raggedright\arraybackslash}X}
+\toprule
+ & 置き換え 1 & 置き換え 2 \\
+\midrule
+左の因子 & $E'$ & $C_D^\sigma$ \\
+置き換えるもの & $D' \to C_D$ & $E' \to C_E$ \\
+対象 $X$ & $E'$ の有限自由分解 $\otimes\, D'$ & $C_D^\sigma$ の有限近似の切り詰めた分解 $\otimes\, E'$ の列 \\
+対象が住む圏 & $\Perf_{\m}(D')$ & $P_{E'}^J$（ランク無視の圏） \\
+比較定理 & 命題~\ref{prop:35c} & 定理~\ref{thm:47} \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+置き換え 2 で左の因子 $C_D^\sigma$ が有限加群でないために、有限近似と「ランク $o(s_n)$ を無視する圏」が必要になる。これが論文 §4 の存在理由である。
+
+%======================================================================
+\section{長さ関数と λ-平坦な代数}\label{sec:length}
+
+\begin{definition}[長さ関数]\label{def:lengthfn}
+$C$ を環、$J\subseteq C$ をイデアルとする。$C$ 加群 $M$ が \textbf{$J$-冪ねじれ}であるとは、ある $N$ で $J^N M = 0$ となること。$J$-冪ねじれ加群は部分加群・商・拡大で閉じる（$J^a M' = 0$、$J^b M'' = 0$ なら $J^{a+b}M = 0$）。$J$-冪ねじれ $C$ 加群の上の\textbf{長さ関数}とは、$[0,\infty]$ 値の関数 $\lambda$ で、$\lambda(0)=0$、同型で不変、かつ $J$-冪ねじれ加群の短完全列について加法的なもの。$0$ でない加群の $\lambda$ が $0$ になることを許す。
+\end{definition}
+
+\begin{example}\label{ex:ordinary}
+\begin{enumerate}[label=(\arabic*)]
+  \item 普通の長さ $\len_C$ は全ての $C$ 加群の短完全列について加法的なので、$J = 0$ の長さ関数である（全ての加群は $0$-冪ねじれ）。その制限として、任意の $J$ について長さ関数になる。
+  \item Faltings の正規化長さ $\lambda_\infty$（定義~\ref{def:tower}）は、塔 $\Lambda$ 上の $\m_A\Lambda$-冪ねじれ加群の上の長さ関数である。§\ref{sec:construction} で使う。
+\end{enumerate}
+\end{example}
+\lean{\ld{NormalizedLength}（\ld{PerfectComplex.NormalizedLength}）、普通の長さは \ld{NormalizedLength.ordinary}（$J = \bot$）。Lean の名前は元論文に合わせて「正規化長さ」のまま（付録~\ref{sec:future}）。}
+
+\begin{definition}[$\lambda$-平坦な長さ付き代数]\label{def:lengthalg}
+$(A,\m_A,k)$ を正則局所環とする。\textbf{長さ付き $A$ 代数}とは、$A$ 代数 $C$ と、$\m_A C$-冪ねじれ $C$ 加群の上の長さ関数 $\lambda$ の組 $(C,\lambda)$ のこと。
+
+$V$ を有限長 $A$ 加群（普通の長さで $\len_A V<\infty$）とすると、$\m_A^N V = 0$（$N = \len_A V$）なので、$\Tor_i^A(V,C)$ は $\m_A^N$ で、したがって $(\m_A C)^N$ で消され、$\lambda$ の定義域に入る。特に $V = k$ のとき $\m_A$ で消される。そこで
+\begin{itemize}
+  \item 全ての有限長 $A$ 加群 $V$ と $i>0$ で $\lambda\Tor_i^A(V,C) = 0$ のとき、$(C,\lambda)$ は \textbf{$\lambda$-平坦}であるという。
+  \item 実数 $r\ge 0$ について、全ての有限長 $A$ 加群 $V$ で $\lambda(V\otimes_A C) = r\cdot\len_A V$ のとき、$(C,\lambda)$ は\textbf{ランク $r$} であるという。
+\end{itemize}
+\end{definition}
+正則局所環上の有限生成加群 $M$ が「$\Tor_i(k,M) = 0$（$i>0$）なら自由」となることの $\lambda$ 版で、$C$ は「$\lambda$ の目で Cohen--Macaulay」である（正則局所環上では巨大 CM 代数は平坦）。次の補題により $V = k$ で判定でき、元論文の条件 (3.9) とも同値になる（系~\ref{cor:allv}）。形式化ではこの条件を構造体に束ねず、各定理の仮定として直接書く。具体例の構成は §\ref{sec:construction} で行う。
+
+\begin{lemma}[判定法]\orig{Lemma 3.4}\label{lem:34}
+$(C,\lambda)$ を長さ付き $A$ 代数とする。
+\begin{enumerate}[label=(\alph*)]
+  \item $(C,\lambda)$ が $\lambda$-平坦であることと、全ての $i>0$ で $\lambda\Tor_i^A(k,C) = 0$ であることは同値。
+  \item $(C,\lambda)$ が $\lambda$-平坦のとき、ランク $r$ であることと $\lambda(k\otimes_A C) = r$ は同値。
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+どちらも $V = k$ の場合が必要条件。逆は組成列の長さの帰納法で、$0\to V'\to V\to V''\to 0$ の Tor の長完全列から、$i>0$ では $\lambda\Tor_i(V)\le\lambda\Tor_i(V')+\lambda\Tor_i(V'')=0$、$i=0$ では $\lambda\Tor_1(V'')=0$ より $\lambda(V\otimes C)=\lambda(V'\otimes C)+\lambda(V''\otimes C)$。
+\end{proof}
+この証明は $\lambda$ の加法性と非負性しか使わない。$A$ の完備性も、次節の $T$ の性質も使わない。
+\lean{\ld{Paper.lemma_3_4}、一般形は \ld{normalizedLength_tor_of_isWeaklyRegular}（引用を除いて証明済み。残る引用は「正則パラメータ系は正則列」のみ）。Lean の主張は (3.9) の $v=1$ の形を仮定とする（注意~\ref{rem:leandiff}）。}
+
+\begin{corollary}\label{cor:allv}
+$z_1,\dots,z_e$ を $A$ の正則パラメータ系とする。$(C,\lambda)$ が $\lambda$-平坦でランク $r$ なら、全ての $v\ge 1$ で
+\[
+  \lambda H_i(z_1^v,\dots,z_e^v; C) = 0 \quad (i>0), \qquad \lambda\bigl(C/(z^v)C\bigr) = v^e\cdot r.
+\]
+逆に $v=1$ でこれが成り立てば $(C,\lambda)$ は $\lambda$-平坦でランク $r$ である。特に定義~\ref{def:lengthalg} の条件は元論文の (3.9) と同値。
+\end{corollary}
+\begin{proof}
+$z$ は正則列なので $z^v$ も正則列で、Koszul 複体 $K(z^v)$ は $A/(z^v)$ の自由分解である。よって $H_i(z^v;C) = \Tor_i^A(A/(z^v),C)$ で、$\len_A A/(z^v) = v^e$。定義を $V = A/(z^v)$ に適用する。逆は $K(z)$ が $k$ の分解であることと補題~\ref{lem:34} から。
+\end{proof}
+\lean{未（Lean では (3.9) を直接仮定するので、この系は使っていない）。}
+
+\begin{remark}[仮定の形と形式化の境界]\label{rem:leandiff}
+共通理論では、全ての正の冪についての Koszul 有限性、正次数の Koszul ホモロジーの長さ零、$v=1$ での Koszul Euler 特性の値を別々に指定する。有限性だけで Euler 評価を構成し、消滅と値の計算はそれぞれ必要な定理にだけ加えるためである。
+
+定義~\ref{def:lengthalg} の $\lambda$-平坦性と有限ランクからは、系~\ref{cor:allv} によりこれらの入力が得られる。ただし、この座標によらない定義と Koszul 条件との同値全体はまだ形式化していない。Lean の適用では \ld{KoszulFinite}、高次の長さ零、Koszul Euler 特性の等式を明示的に受け取る。この境界を保ち、共通定理そのものの有限性条件を削除することはしない。
+\end{remark}
+
+\paragraph{$\lambda$-CM 代数}
+\begin{definition}[$\lambda$-CM]\label{def:lambdacm}
+$(D,\m_D)$ を次元 $h$ のネーター局所環とする。$D$ 代数 $C$ と $\m_D C$-冪ねじれ $C$ 加群の上の長さ関数 $\lambda$ の組（長さ付き $D$ 代数）$(C,\lambda)$ が \textbf{$\lambda$-CM} であるとは、$D$ の任意のパラメータ系 $x$ について
+\[
+  \lambda H_i(x; C) = 0 \quad (i>0), \qquad \lambda(C/xC) < \infty
+\]
+となること。さらに $\lambda(C/\m_D C) > 0$ のとき\textbf{非自明}であるという。
+\end{definition}
+$(x)$ は $\m_D$-準素なので $H_i(x;C)$ は $\m_D C$-冪ねじれで、$\lambda$ の定義域に入る。古典的には、$D$ の任意のパラメータ系が $B$ 正則列で $\m_D B\ne B$ となる $D$ 加群 $B$（balanced な巨大 CM 加群）に当たり、非自明性は $\m_D B\ne B$ に当たる。
+
+\begin{proposition}\label{prop:cmflat}
+$A\subseteq D$ を正則局所部分環で $D$ が $A$ 上有限なものとし、$(C,\lambda)$ を $D$ 上の $\lambda$-CM 代数とする。このとき $(C,\lambda)$ は長さ付き $A$ 代数として $\lambda$-平坦で、ランクは $A$ の正則パラメータ系 $z$ について $\lambda(C/zC)$。
+\end{proposition}
+\begin{proof}
+$\m_D^N\subseteq\m_A D$ となる $N$ があるので、$\m_A C$-冪ねじれと $\m_D C$-冪ねじれは同じである。$z$ は $D$ のパラメータ系でもあるので、系~\ref{cor:allv} の逆を適用する。
+\end{proof}
+\lean{未（解説での整理。付録~\ref{sec:future}）。}
+
+\begin{lemma}[$\lambda$ 版の Auslander--Buchsbaum]\label{lem:lambdaAB}
+$R$ を次元 $d$ の正則局所環、$R\to D$ を有限な局所準同型（$D$ は次元 $h$ のネーター局所環）、$(C,\lambda)$ を $D$ 上の $\lambda$-CM 代数とする。$x_1,\dots,x_h\in R$ を $R$ 正則列で像が $D$ のパラメータ系になるものとし、$B = R/(x)$ とおく。このとき有限生成 $B$ 加群 $L$ について
+\[
+  \lambda\Tor_i^R(C,L) = \lambda\Tor_i^B(C/xC, L), \qquad\text{これは } i > d-h \text{ で } 0.
+\]
+\end{lemma}
+\begin{proof}
+まず $K(x;R)$ が $B$ の自由分解であることと、正次数の $H_q(x;C)$ の長さが零であることから、有限表示を用いた次数移動で二つの Tor の長さの一致と有限性を示す（§\ref{sec:planB-param}）。
+
+消滅には、$L$ の $R$ 上の長さ $d$ 以下の有限自由分解 $P$ を使う。$x_jL=0$ なので $x_j$ の作用は $P$ 上で零ホモトピックである。$\lambda$-CM 性から、$x^v$ の正次数の Koszul ホモロジーは全て長さ零になる。項によるフィルトレーションで $K(x^v)\otimes_R P\otimes_R C$ の商値ホモロジーが $[0,d]$ に集中することを確認し、反復錐の消滅定理（補題~\ref{lem:B-nit}、$e=h$、$m=d$）を適用する。
+\end{proof}
+$B$ は次元 $d-h$ の完全交叉局所環だが、一般には正則ではない。次数の上界は $B$ の大域次元ではなく、正則環 $R$ 上の分解と Koszul 消滅から得る。古典的には、有限 CM $R$ 加群 $M$ の射影次元を $d-\dim M$ とする Auslander--Buchsbaum の公式に対応する。
+\lean{\ld{ParamQuot.torClaim}、\ld{ParamQuot.len_torAlg_eq_zero}（正則列・Koszul 消滅・有限自由分解などを明示した形で証明済み）。$\lambda$-CM という定義から全入力を供給する定式化は未。}
+
+%======================================================================
+\section{perfect 複体での比較}\label{sec:perfect}
+
+この節のゴールは命題~\ref{prop:35c}（Lemma 3.5c）である。閉点に台をもつ perfect 複体について、普通の長さで測った Euler 特性と、長さ付き $A$ 代数 $(C,\lambda)$ で測った Euler 特性は、個々には一致しないが Galois 共役の和をとると一致する。§\ref{sec:core} の置き換え 1（補題~\ref{lem:first}）で使うのはこの命題だけである。節の最後の補題~\ref{lem:nit}、\ref{lem:h0bound} は $\lambda$-平坦性の帰結（高次の消滅と $0$ 次の下界）で、§\ref{sec:asymp} の系~\ref{cor:nitasymp} を通して正値性（補題~\ref{lem:pos}）で使う。
+
+\paragraph{適用する共通定理}
+三角圏 $\mathcal K$ から長さ付きアーベル圏 $\mathcal A$ へのホモロジー的関手 $H_*$ が、各対象で有界かつ有限な長さをもてば、Euler 和は $K_0(\mathcal K)$ 上の準同型になる（命題~\ref{prop:B-euler}）。二つの評価が基底から来る類で一致し、不変類の正の整数倍が基底から降下すれば、共役和も一致する（補題~\ref{lem:conjsum}）。群作用は評価元の $K_0$ に置けばよく、評価先の一致や長さの不変性は要らない。
+
+消滅には別の共通定理を使う。$e$ 個のスカラーが $X$ 上で零作用し、その反復錐のホモロジーが $[0,m]$ に集中すれば、$H_i(X)=0$（$i<0$ または $i>m-e$）である。$m=e$ なら第零次だけが残り、そこからの全射が Euler 評価の下界を与える（補題~\ref{lem:B-nit}、\ref{lem:B-h0}）。以下では、これらの仮定を perfect 複体について確認する。
+
+\paragraph{設定}
+$(C,\lambda)$ を正則局所環 $A$ 上の $\lambda$-平坦でランク $r$ の長さ付き $A$ 代数とし、$z$ を $A$ の正則パラメータ系とする。$T$ を $A$ 上有限な局所整域で剰余体が $A$ と同じもの、$r = \rank_A T$ とし、$C$ は $T$ 代数で $A\to T\to C$ が可換とする。$S\in\{A,T\}$ に対し
+\[
+  \mathcal{K}_S = \Perf_{\m}(S) \quad\text{（閉点に台をもつ perfect $S$ 複体の三角圏）}
+\]
+とおく。係数拡大 $-\otimes_A T\colon\mathcal{K}_A\to\mathcal{K}_T$ がある。$P\in\mathcal{K}_T$ に対して
+\[
+  \chi_{\ord}(P) = \sum_i (-1)^i \len_T H_i(P),\qquad
+  \chi_C(P) = \sum_i (-1)^i \lambda\, H_i(P\otimes_T C)
+\]
+とおく（$S = A$、$C = A$、$\lambda = \len$ のときの $\chi_{\ord}$ を $\chi_A$ と書く）。§\ref{sec:asymp} では評価元と評価先を列の圏に取り替え、同じ共通定理を適用する。
+\lean{評価元は \ld{SupportedPerfectHomotopy}、評価は \ld{LengthAlgebra.perfectEulerK0}。局所環上で \ld{K0Supported} と同型になり、\ld{chiOrdHom}・\ld{chiLamHom_of_finite} との一致は \ld{LengthAlgebra.EulerCompatibility}。}
+
+\paragraph{圏・関手の構成に使う仮定}
+普通の側の評価先は有限長 $T$ 加群の圏である。正規化側は、有限な $\lambda$-長さをもつ冪ねじれ $C$ 加群を、長さ零の加群で割った Serre 商 $\mathcal A_\lambda^{\mathrm{fin}}$ とし、$H_i^C(P)=q_{\mathrm{fin}}H_i(P\otimes_T C)$ とする。商の長さは忠実で、元の $\lambda$ と一致する（§\ref{sec:planB-quot}）。
+
+\begin{center}
+\begin{tabularx}{\textwidth}{>{\raggedright}p{4.0cm}>{\raggedright\arraybackslash}X}
+\toprule
+結論 & この実現で確認する入力 \\
+\midrule
+有限な Euler 評価 & 台と Koszul 有限性、シフト・長完全列・有界性 \\
+基底から来る類の公式 & $K(z)$ が剰余体の分解であることと $e_\lambda(z;C)$ の値 \\
+共役和の一致 & 二つの $e_\lambda$ の一致と不変類の降下 \\
+高次の消滅 & 零ホモトピー、自由振幅、正次数の Koszul 長さ零 \\
+第零次の下界 & 極小性による全射と長さの非負性 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+$T$ は有限 $A$ 代数なのでネーターだが、$C$ のネーター性は使わない。付録では任意の可換 $S$ 上の有限射影項まで一般化する。幾何学的な台とスカラーの冪の零ホモトピーとの同値は、その一般性でも証明されている（補題~\ref{lem:C-nil}）。
+
+\begin{lemma}[Koszul 上界]\label{lem:koszulbound}
+$P$ を各項が有限自由（$k$ 次の項のランク $n_k$、有界）な $T$ 複体とし、ある $v$ で全ての $z_j^v$ が $P$ 上ホモトピー的に $0$ とする。
+\[
+  M_v = \sum_j \lambda H_j(z^v; C)
+\]
+とおくと、全ての $i$ で
+\[
+  \lambda H_i(P\otimes_T C) \;\le\; \Bigl(\sum_k n_k\Bigr)\cdot M_v.
+\]
+$C = T$、$\lambda = \len_T$ としても成り立つ。
+\end{lemma}
+\begin{proof}
+零ホモトピーにより、$P\otimes C$ は $K(z^v)\otimes P\otimes C$ の直和因子になる。後者を $P$ の項による愚直なフィルトレーションで分解すると、各段は $K(z^v;C)^{\oplus n_k}$ のシフトで、長完全列と $\lambda$ の劣加法性から上界が出る。
+\end{proof}
+系~\ref{cor:allv} より $M_v = v^e r < \infty$。普通の長さの側でも、$T$ はネーターで $H_j(z^v;T)$ は $(z^v)$ で消される有限生成加群なので $M_v<\infty$。この補題は §\ref{sec:asymp} で列に一様に適用する。
+\lean{\ld{PerfectComplex.KoszulLengthBounds}（\ld{lambdaHomology_le_of_retract}、\ld{lambdaHomology_koszulComplexOn_le_sum} ほか。証明済み）。}
+
+\begin{proposition}\orig{Lemma 3.5a}\label{prop:35a}
+$\chi_{\ord}$、$\chi_C$ は $\mathcal{K}_T$ の全ての対象で有限で、準同型
+\[
+  \chi_{\ord},\ \chi_C\colon K_0(\mathcal{K}_T)\to\R
+\]
+を定める。
+\end{proposition}
+\begin{proof}
+台から共通の $v$ を選んで全ての $z_j^v$ の零ホモトピーを得る。補題~\ref{lem:koszulbound} が各ホモロジーの長さの有限性を与えるので、上の二つの評価先に値をとる関手を構成できる。複体は有界で、商関手は完全だから、ホモロジーの長完全列とシフト同型がそのまま移る。これで (Fin) が確認でき、準同型の存在は共通の命題~\ref{prop:B-euler} の適用である。
+\end{proof}
+\lean{\ld{Paper.lemma_3_5a}、\ld{lemma_3_5a_lam_finite}（証明済み）。}
+
+\begin{proposition}\orig{Lemma 3.5b}\label{prop:35b}
+$Q\in\mathcal{K}_A$ について
+\[
+  \chi_{\ord}(Q\otimes_A T) \;=\; r\cdot\chi_A(Q) \;=\; \chi_C(Q\otimes_A T).
+\]
+\end{proposition}
+\begin{proof}
+命題~\ref{prop:C-base} の共通公式 $\chi_C(Q)=e_\lambda(z;C)\chi_A(Q)$ を二つの評価に適用する。普通の側では Koszul Euler 特性の階数公式により $e_{\len_T}(z;T)=r$、正規化側では系~\ref{cor:allv} により $e_\lambda(z;C)=r$ である。二段階の係数変更 $A\to T\to C$ と直接の $A\to C$ は自然に同型なので結論する。
+\end{proof}
+\lean{\ld{Paper.lemma_3_5b}、生成は \ld{K0.exists_eq_zsmul_koszul}、\ld{K0.hom_ext_koszul}（引用を除いて証明済み。\ld{lemma_3_5b_ord_of_koszul}、\ld{lemma_3_5b_lam_of_koszul} は引用なし）。}
+
+\begin{theorem}\orig{Theorem 3.1、引用}\label{thm:descent}
+$A$ を有限次元ネーター $\Z_{(p)}$ 代数、$J\ni p$、$H$ を連結な dg $A$ 代数とする。$T$ が $A$ 上有限で $\Spec T\to\Spec A$ が全射、有限群 $G$ が幾何ファイバーに推移的に作用するなら、
+\[
+  K^J(H)_\Q \simeq \bigl(K^J(H\otimes^L_A T)_\Q\bigr)^{hG}.
+\]
+特に $K_0^J(H)_\Q \to (K_0^J(H\otimes^L_A T)_\Q)^G$ は全射。
+\end{theorem}
+§\ref{sec:perfect} では $H = A$ として使う（$\mathcal{K}_A = \Perf^J(A)$）。§\ref{sec:asymp} では補題~\ref{lem:dga} の $H$ を使う。正則局所環で剰余標数が $p$ なら「有限次元ネーター $\Z_{(p)}$ 代数」は自動的に満たされる。
+
+証明の流れ（未検証）：$J$ で台をつけた有理 K 理論は truncating になり（Goodwillie）、cdh 降下をもつ（Land--Tamme）。有限平坦被覆では転送で降下し、爆発による平坦化で一般の有限全射に延ばし、切断の $G$ 移動で不変部分を同定する。
+\lean{\ld{Inputs.theorem_3_1_K0}（$H = A$ の場合のみ、引用）。}
+
+\begin{proposition}\orig{Lemma 3.5c}\label{prop:35c}
+さらに $A$ の剰余標数が $p$、有限群 $G$ が $T$ に $A$ 上で作用して幾何ファイバーに推移的、$\Spec T\to\Spec A$ が全射とする。$P\in\mathcal{K}_T$ と、$g$ でひねった $P^g = P\otimes_{T,g} T$ について
+\[
+  \sum_{g\in G} \chi_{\ord}(P^g) \;=\; \sum_{g\in G} \chi_C(P^g).
+\]
+\end{proposition}
+\begin{proof}
+補題~\ref{lem:conjsum} を $f\colon K_0(\mathcal{K}_A)\to K_0(\mathcal{K}_T)$（係数拡大）、$\varphi = \chi_{\ord}$、$\psi = \chi_C$ に適用する。$\varphi\circ f = \psi\circ f$ は命題~\ref{prop:35b}、$f_\Q$ の全射性は定理~\ref{thm:descent}（$H = A$）による。
+\end{proof}
+\lean{\ld{Paper.lemma_3_5c}（引用を除いて証明済み）。}
+
+\begin{lemma}[共役和の形式的補題]\label{lem:conjsum}
+$f\colon K\to K'$ をアーベル群の準同型、有限群 $G$ が $K'$ に群自己同型として作用しているとし、$\varphi,\psi\colon K'\to\R$ を準同型とする。$\varphi\circ f = \psi\circ f$ とし、全ての $G$ 不変な $y\in K'$ について、ある正の整数 $n$ と $a\in K$ で $ny=f(a)$ となるとする。このとき、全ての $x\in K'$ について
+\[
+  \sum_{g\in G}\varphi(g\cdot x) \;=\; \sum_{g\in G}\psi(g\cdot x).
+\]
+\end{lemma}
+\begin{proof}
+$\sum_g g\cdot x$ は $G$ 不変なので、ある正の整数 $m$ で $m\sum_g g\cdot x$ は $f$ の像に入る。そこで $\varphi$ と $\psi$ は一致するので、$m$ で割ればよい。
+\end{proof}
+有理化した $f$ が $G$ 不変部分へ全射であれば、分母と捩れを払うことでこの整数倍の条件が得られる。
+\lean{\ld{GroupTheory.ConjugateSum} の \ld{conjSum_eq}、ホモロジー的評価への適用は \ld{CategoryTheory.EulerComparison}（証明済み）。}
+
+\paragraph{$\lambda$-平坦性の帰結：高次の消滅と $0$ 次の下界}
+\begin{lemma}[新交叉型の消滅]\label{lem:nit}
+$e = \dim A$ とする。$P\in\mathcal{K}_T$ が $0$ 次から $m$ 次に有限自由な項をもつ複体で表されるなら、
+\[
+  \lambda H_i(P\otimes_T C) = 0 \qquad (i > m - e).
+\]
+特に $m = e$ なら $\chi_C(P) = \lambda H_0(P\otimes_T C)$。
+\end{lemma}
+\begin{proof}
+台から $z_j^v$ の零ホモトピーを選び、条件 (Supp) を得る。$P$ の項によるフィルトレーションの各段は $K(z^v;C)$ の有限直和のシフトである。正次数の Koszul ホモロジーの長さは零なので、評価先では各段のホモロジーはその項の次数に集中する。長完全列から $H_n^C(K_v\otimes P)=0$（$n\notin[0,m]$）、すなわち (Kos$_m$) が従う。あとは共通の補題~\ref{lem:B-nit} により零対象としての消滅を得て、その長さをとればよい。
+\end{proof}
+古典的には、$B$ を巨大 CM 代数、$F$ を長さ $m$ で有限長ホモロジーの有限自由複体とすると、同じ議論で $H_i(F\otimes B) = 0$（$i>m-e$）となる。$m = e$ で $\m B\ne B$ と合わせると、Hochster による新交叉定理の証明になる（cf.\ Iyengar--Ma--Schwede--Walker, \emph{Maximal Cohen--Macaulay complexes and their uses}, Thm.~2.4 とその前後）。
+\lean{\ld{LengthAlgebra.PerfectVanishing}（Koszul 消滅を入力として証明済み。有限射影項でも成立し、消滅自体は Koszul 有限性を使わない）。}
+
+\begin{lemma}[$0$ 次の下界]\label{lem:h0bound}
+補題~\ref{lem:nit} の $P$ の $0$ 次の項を $T^{\oplus\beta_0}$ とし、$P$ が $1$ 次で極小（$d_1$ の成分が $\m_T$ に入る）とする。このとき
+\[
+  \lambda H_0(P\otimes_T C) \;\ge\; \beta_0\cdot\lambda(C/\m_T C).
+\]
+\end{lemma}
+\begin{proof}
+$H_0(P\otimes C) = C^{\oplus\beta_0}/\operatorname{im}(d_1\otimes C)$ は極小性により $(C/\m_T C)^{\oplus\beta_0}$ に全射する。
+\end{proof}
+\lean{\ld{LengthAlgebra.PerfectMinimalLowerBound}（極小性から全射を構成し、共通下界を適用。証明済み）。}
+
+%======================================================================
+\section{ランク無視の圏での比較}\label{sec:asymp}
+
+この節では、共通定理の第二の実現を作る。評価元をランク無視の圏 $P_S^J$、評価先を加群列の Serre 商とする。Euler 加法性・共役和比較・消滅・下界は §\ref{sec:perfect} と同じ定理を使う。この実現で新たに必要なのは、支持つき局所化、冪等完備化へのホモロジー関手の延長、一様代表による計算である。
+
+設定は §\ref{sec:perfect} と同じとし、原論文の適用に合わせて $A$ の優秀性も仮定する。共通定理や以下の評価関手の構成自体は、この優秀性を使わない。完備性も不要である。
+
+\begin{center}
+\begin{tabularx}{\textwidth}{>{\raggedright}p{3.6cm}>{\raggedright}X>{\raggedright\arraybackslash}X}
+\toprule
+確認すること & perfect 複体版 & ランク無視版 \\
+\midrule
+ホモロジーの有限性 & 各対象の Koszul 上界 & 共通の台の指数と長さ $O(s_n)$ \\
+全対象での評価 & 有界有限射影代表 & 局所化と直和因子への延長 \\
+基底からの一致 & Koszul 類による生成 & 全対象の一様代表で各段の公式を極限へ移す \\
+消滅の入力 & 零ホモトピーと項の振幅 & 商での零作用と Koszul を掛けた列の振幅 \\
+下界の入力 & 第零次からの全射 & 全射の列と正規化極限 \\
+不変類の降下 & 定理~\ref{thm:descent}、$H=A$ & dg 表示を経由する降下の引用 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\begin{definition}[ランク無視の圏]\label{def:rankquot}
+正の整数の列 $s_n$ と非単項超フィルター $\U$ を固定する。$S = A, T$ について
+\begin{itemize}
+  \item $D_S$：ランク $O(s_n)$ の自由 $S$ 加群の列からなる、共通の有界な次数範囲の複体の列のホモトピー圏
+  \item $N_S$：ランク $o(s_n)$ の列が生成する thick 部分圏
+  \item $P_S = (D_S/N_S)^\natural$：Verdier 商の冪等完備化
+  \item $P_S^J$：ある $v$ で全ての $z_j^v$ が恒等射を消す対象（商をとった後で消えればよい）
+\end{itemize}
+$D_S$ の対象 $F = (F_n)$ が\textbf{一様に台をもつ}とは、$n$ によらない $v$ があって、全ての $z_j^v$ が全ての $F_n$ 上でホモトピー的に $0$ になること。ホモトピー自体は段ごとに選んでよく、その係数の有界性は要らない。
+
+$P\in\Perf_{\m}(S)$ に $(P^{\oplus s_n})_n$ を対応させる関手 $\iota\colon\Perf_{\m}(S)\to P_S^J$ がある。
+\end{definition}
+\lean{\ld{Asymptotic.FreeSequence}、\ld{RankQuotient}、\ld{SupportedKaroubi}、\ld{PaperRankQuotient}、\ld{SequenceSupport}（圏の構成と比較同値は証明済み）。本文は計算モデルの記法で書いた。原論文の完備化と商の順序の圏との線形三角同値も構成されている。$\iota$ の記法による有限版の埋め込みと (c) の式は、ここでは数学的な説明として述べる。}
+
+\begin{remark}\orig{Remark 4.1}
+生のホモロジーの長さは商と両立しない。DVR 上で $s_n = n$ とし、$T/(z^n)$ のランク 1 の分解の列をとると、これは $N_T$ に入る（$P_T$ で $0$）が、$H_0$ の長さの $s_n$ に対する比は $1$。一様に台をもたないことが原因で、Koszul とテンソルした後の長さは $0$ になる。
+\end{remark}
+
+\begin{proposition}\orig{Lemma 4.2}\label{prop:42}
+$P_S^J$ の対象は全て、一様に台をもつ $D_S$ の対象の像の直和因子である。ただし射影子は商をとる前の鎖写像に持ち上がるとは限らない。
+\end{proposition}
+\begin{proof}
+商の対象で零作用するスカラーの Koszul 複体を掛けると、その対象は反復錐の直和因子になる。Koszul を掛けた列は一様に台をもつ。冪等完備化の対象も、もとの商の対象の直和因子であることを合わせる。
+\end{proof}
+\lean{\ld{Asymptotic.SupportedKaroubi}、\ld{PaperRankQuotient}（支持つきの比較同値と直和因子による表示を構成済み）。}
+
+\begin{proposition}\orig{Prop 4.3、命題~\ref{prop:35a} の対応物}\label{prop:43}
+一様に台をもつ $F = (F_n)$ に対し
+\[
+  b_i^{\ord}(F) = \lim_\U \frac{\len H_i(F_n)}{s_n},\qquad
+  b_i^{C}(F) = \lim_\U \frac{\lambda H_i(F_n\otimes_T C)}{s_n}
+\]
+とおく。
+\begin{enumerate}[label=(\alph*)]
+  \item これらは有限で、$F\in N_T$ なら $0$。
+  \item $b_i$ は、直和因子へはホモロジーの列の Serre 商の中で冪等元の像をとって $P_T^J$ の全ての対象 $X$ に延び（$b_i(X)$ と書く）、Euler 和 $\chi_{\ord} = \sum(-1)^i b_i^{\ord}$、$\chi_C = \sum(-1)^i b_i^C$ は準同型
+  \[
+    \chi_{\ord},\ \chi_C\colon K_0(P_T^J)\to\R
+  \]
+  を定める。
+  \item 関手 $\iota$ を通すと命題~\ref{prop:35a} のものと一致する：$P\in\Perf_{\m}(T)$ について $\chi_{\ord}(\iota P) = \chi_{\ord}(P)$、$\chi_C(\iota P) = \chi_C(P)$。
+  \item（Koszul の多項式恒等式、元論文 (4.2)）$F$ を有界な自由列で、その像 $X$ が $P_T^J$ に入るものとし、$z^v$ が $X$ に $0$ で作用するとする（$F$ 自体は一様に台をもたなくてよい）。$e = \dim A$、$K_v = K(z^v;A)$ として、どちらの評価についても
+  \[
+    (1+t)^e\sum_i b_i(X)\,t^i \;=\; \sum_i t^i\,\lim_\U\frac{\lambda H_i(K_v\otimes_A F_n\otimes_T C)}{s_n}.
+  \]
+  （普通の長さの側は $C = T$、$\lambda = \len$。）
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+(a) 共通の $v$ について補題~\ref{lem:koszulbound} を各段に適用する。これによりホモロジー列は共通の冪で消され、長さは $O(s_n)$ となる。一様に台をもつ小ランク列では正規化長さが零になる。
+
+(b) 評価先は、有限な長さ $O(s_n)$ の冪ねじれ加群列を
+\[
+ L(M)=\lim_\U\lambda(M_n)/s_n=0
+\]
+の列で割った Serre 商である。通常の $o(s_n)$ はこの零条件の十分条件である。支持部分の局所化の分母を同型に送ることを確かめてホモロジー関手を降下させ、評価先で射影子の像をとって冪等完備化へ延長する。シフト同型、長完全列、対象ごとの有界性もこの延長と両立する。これで命題~\ref{prop:B-euler} の仮定がそろい、Euler の $K_0$ 評価を得る。一般の小ランク列の生のホモロジーが零だとは仮定しない。
+
+(c) $H_i(P^{\oplus s_n})=H_i(P)^{\oplus s_n}$ なので正規化した長さは定数である。
+
+(d) 商での零作用から反復錐の分裂を適用し、長さをとると左辺の二項係数が得られる。一方、$K_v\otimes F$ は一様に台をもつので、延長した関手の計算公式により右辺となる。元の $F$ の一様支持は使わない。
+\end{proof}
+\lean{\ld{Asymptotic.SequenceHomologyBounds}、\ld{SequenceHomologyLocalization}、\ld{CompletedHomology}、\ld{PaperRankEvaluation}、\ld{PaperBaseChangeEvaluation}。(a)、(b)、(d) は Koszul 有限性を入力として証明済み。Euler の準同型は共通の \ld{homologicalEulerK0} の引き戻しで定義する。}
+
+\begin{corollary}[補題~\ref{lem:nit}、\ref{lem:h0bound} の対応物]\label{cor:nitasymp}
+$e = \dim A$ とし、$F = (F_n)$ を $0$ 次から $m$ 次に有限自由な項をもつ有界な自由列で、像 $X$ が $P_T^J$ に入るものとする。このとき $b_i^C(X) = 0$（$i > m-e$）。特に $m = e$ なら $\chi_C(X) = b_0^C(X)$ で、さらに各 $F_n$ が $1$ 次で極小なら
+\[
+  b_0^C(X) \;\ge\; \Bigl(\lim_\U\frac{\beta_0(F_n)}{s_n}\Bigr)\cdot\lambda(C/\m_T C).
+\]
+\end{corollary}
+\begin{proof}
+(Supp) は $P_T^J$ での零作用である。(Kos$_m$) は $K_v\otimes F$ の各段を項でフィルトレーションし、正次数の Koszul ホモロジーの長さ零を使って確認する。指定範囲外のホモロジー列は各段で長さ零なので、評価先でも零対象になる。補題~\ref{lem:B-nit} から $H_i^C(X)=0$、したがって $b_i^C(X)=0$ が従う。
+
+$m=e$ では第零次だけが残る。各段の極小性は
+\[
+ H_0(K_v\otimes F_n\otimes C)
+ =C^{\oplus\beta_0(F_n)}/(\operatorname{im}d_1+(z^v))
+ \twoheadrightarrow(C/\m_T C)^{\oplus\beta_0(F_n)}
+\]
+を与える。この全射の列を評価先に送り、補題~\ref{lem:B-h0} と正規化極限による長さの計算を使う。
+\end{proof}
+\lean{\ld{Asymptotic.RankVanishing}、\ld{PaperVanishing}、\ld{RankMinimalLowerBound}、\ld{PaperMinimalLowerBound}（Koszul 条件と極小性を入力として証明済み）。}
+
+\begin{proposition}\orig{Prop 4.5、命題~\ref{prop:35b} の対応物}\label{prop:45}
+$X\in P_A^J$ について
+\[
+  \chi_{\ord}(X\otimes_A T) \;=\; r\cdot\chi_A(X) \;=\; \chi_C(X\otimes_A T).
+\]
+\end{proposition}
+\begin{proof}
+$K(z)$ が剰余体の自由分解であることから、$A$ 側の支持つきランク商に有界な t 構造を構成し、冪等完備性を得る。これにより $X$ は一様に台をもつ共通有界な自由複体列 $F$ で表される。単に直和因子であることから評価の一致を推論するのではなく、全対象をこの形で計算できることを使う。
+
+各 $F_n$ に命題~\ref{prop:C-base} を適用し、$s_n$ で割って超極限をとる。共通の有界な次数範囲と Koszul 上界により、有限 Euler 和と極限を交換できる。二つの係数はともに $r$ で、係数変更の合成の自然同型も評価と両立するから結論する。ここでは $K_0(P_A^J)$ の Koszul 一元生成は使わない。
+\end{proof}
+\lean{\ld{Paper.Section4.UniformRepresentative}、\ld{PaperK0Comparison}、\ld{CompletedRankComparison}。明示した Koszul 分解からの一般係数公式は証明済み。正則局所環からその分解を供給する適用は正則パラメータの引用に依存する。}
+
+\begin{lemma}\orig{Lemma 4.6}\label{lem:dga}
+連結な dg $A$ 代数 $H$ で、$P_A\simeq\Perf(H)$、$P_T\simeq\Perf(H\otimes^L_A T)$ となるものがある。$H$ は行列環の積 $\prod_n M_{s_n}(A)$ のランクの小さい部分による DG 商の、生成元の自己準同型として得られる。
+\end{lemma}
+\lean{dg 表示そのものは未。定理~\ref{thm:47} に必要な一般係数の降下への接続を含む帰結を、\ld{Section4.supportedRankK0_descent} として引用している。}
+
+\begin{theorem}\orig{Theorem 4.7、命題~\ref{prop:35c} の対応物}\label{thm:47}
+命題~\ref{prop:35c} と同じ仮定のもと、$X\in P_T^J$ について
+\[
+  \sum_{g\in G} \chi_{\ord}(X^g) \;=\; \sum_{g\in G} \chi_C(X^g).
+\]
+\end{theorem}
+\begin{proof}
+補題~\ref{lem:conjsum} を $f\colon K_0(P_A^J)\to K_0(P_T^J)$、$\varphi = \chi_{\ord}$、$\psi = \chi_C$ に適用する。$\varphi\circ f = \psi\circ f$ は命題~\ref{prop:45}、$f_\Q$ の全射性は補題~\ref{lem:dga} の $H$ についての定理~\ref{thm:descent} による。
+\end{proof}
+\lean{\ld{Section4.normComparison_of_descent} は降下を引数にして証明済み。\ld{Section4.theorem_4_7_K0} は \ld{supportedRankK0_descent} と正則パラメータの引用を除いて証明済み。任意の二つの Koszul Euler 特性の一致からの比較は \ld{symmetricPaperEuler_conjSum_eq}。}
+
+%======================================================================
+\section{$\lambda$-平坦な長さ付き代数の構成}\label{sec:construction}
+
+この節は §\ref{sec:perfect}、§\ref{sec:asymp} の一般論に、具体的な $\lambda$-平坦な長さ付き代数を入力として与える。ほぼ全てが文献からの引用である。
+
+\begin{definition}[塔]\label{def:tower}
+$A = k[[t_1,\dots,t_h]]$ または $W(k)[[t_2,\dots,t_h]]$（$t_1 = p$、$k$ は完全体）に対し $A_n = A[t^{1/p^n}]$、$\Lambda = \bigcup A_n$。$\m_A$ の冪で消される $\Lambda$ 加群に、有限段では $\lambda_\infty(V_n\otimes\Lambda) = p^{-nh}\len(V_n)$、有限生成加群では全射する有限表示加群の下限、一般には有限生成部分加群の上限、として $\lambda_\infty$ を定める（Faltings）。
+\end{definition}
+\lean{\ld{Paper.Section2.Tower}、\ld{TowerLength}、\ld{TowerDescent}、\ld{TowerStage}（塔の段の性質と有限段の公式は証明済み）。下限と上限の一致と加法性は引用（Faltings、Gabber--Ramero）。}
+
+\begin{lemma}\orig{Lemma 2.4}\label{lem:24}
+共通の冪で消される範囲で、長さ $0$ の加群の和・直和・有向余極限は長さ $0$。増大列の合併の $\lambda_\infty$ は $\lambda_\infty$ の上限。$\lambda_\infty(V_a)\to 0$ なら $\lambda_\infty(\varinjlim V_a) = 0$。
+\end{lemma}
+\lean{\ld{Paper.Section2.Lemma2_4}（証明済み）。}
+
+\begin{lemma}\orig{Lemma 2.2、Cohen--Gabber、引用}\label{lem:cohengabber}
+剰余体が完全な完備局所整域 $D$ に対し、定義~\ref{def:tower} の形の正則部分環 $A\subseteq D$ で、$D$ が $A$ 上有限かつ $\Frac(D)/\Frac(A)$ が分離的なものがとれる。
+\end{lemma}
+\lean{未（Kurano--Shimomoto, Thm 1.1）。}
+
+\begin{theorem}\orig{Theorem 2.5、$\lambda$-CM 代数の存在、引用}\label{thm:existence}
+$D$ と $A\subseteq D$ を補題~\ref{lem:cohengabber} のとおりとする。$\Lambda$ 作用をもつ $D$ 代数 $C_D$ があって、$\lambda_D := \lambda_\infty$（係数制限）について次が成り立つ。
+\begin{enumerate}[label=(\alph*)]
+  \item $(C_D,\lambda_D)$ は $D$ 上の $\lambda$-CM 代数で、$D$ の任意のパラメータ系 $z$ について $\lambda_D(C_D/zC_D) = e((z), D)$。
+  \item $(C_D,\lambda_D)$ は $\lambda$-平坦でランク $\rank_A D$ の長さ付き $A$ 代数。
+  \item $\lambda_D$ は塔の上の Faltings の正規化長さ $\lambda_\infty$ の制限で、補題~\ref{lem:24} の性質をもつ。
+\end{enumerate}
+\end{theorem}
+(b) は (a) と命題~\ref{prop:cmflat} から出る。ランクは $A$ の正則パラメータ系 $z$ について $e((z),D) = \rank_A D$。元論文は (a) を全ての $z^v$ についての形で述べるが、$z^v$ もパラメータ系なので同じことである。
+\begin{itemize}
+  \item 標数 $p$：$C_D = D_{\mathrm{perf}}$。Monsky（Hilbert--Kunz 重複度の存在）、Roberts の Frobenius ホモロジー定理（Ma, Thm 2.4）、Koszul の Euler 特性の公式。
+  \item 混標数：$C_D = (D\otimes_A A_\infty)_{\mathrm{perfd}}$。Cai--Lee--Ma--Schwede--Tucker の Cor.~4.0.4、Prop.~4.0.10、4.0.14。
+\end{itemize}
+\lean{\ld{Paper.Section2.theorem_2_5}（引用）。(b) への書き換えは \ld{Inputs.lengthAlgebra_base_values}。}
+
+\begin{corollary}\orig{Corollary 2.6 (3)、非自明性}\label{cor:pos}
+$\lambda_D(C_D/\m_D C_D) > 0$。つまり $C_D$ は非自明な $\lambda$-CM 代数である。
+\end{corollary}
+\lean{\ld{Paper.Section2.Corollary2_6}（定理~\ref{thm:existence} を除いて証明済み）。}
+
+\paragraph{§\ref{sec:core} で使う性質}
+定理~\ref{thm:existence} と系~\ref{cor:pos} のうち、§\ref{sec:core} で使うのは次の4つである。
+\begin{itemize}
+  \item (a) $D$ 上の $\lambda$-CM 性：補題~\ref{lem:lambdaAB}（$\lambda$ 版 Auslander--Buchsbaum）を通して有限近似の 1
+  \item (b) $\lambda$-平坦性：一般論（§\ref{sec:perfect}、§\ref{sec:asymp}）への入力と、系~\ref{cor:nitasymp} を通して補題~\ref{lem:pos}
+  \item (c) 塔の上の加群への $\lambda$ の適用：有限近似の 2
+  \item 系~\ref{cor:pos}（非自明性）：補題~\ref{lem:pos} の正値性
+\end{itemize}
+
+%======================================================================
+\section{核の場合の証明}\label{sec:core}
+
+\paragraph{設定\orig{§5.1}}
+定理~\ref{thm:core} の $D, E$ に対し、補題~\ref{lem:cohengabber} の正則部分環 $A_D\subseteq D$、$A_E\subseteq E$ をとる。$D'$ を $\Frac(D)/\Frac(A_D)$ の Galois 閉包における $A_D$ の整閉包、$G_D$ をその Galois 群とする（$E'$、$G_E$ も同様）。$D'$ は $A_D$ 上有限な局所整域（優秀性）で、$G_D$ は幾何ファイバーに推移的。定理~\ref{thm:existence} を $D'$、$E'$ に適用して $\lambda$-平坦な長さ付き代数 $(C_D,\lambda_D)$、$(C_E,\lambda_E)$ を得る。$a_D = \rank_D D'$、$a_E = \rank_E E'$。
+
+$\sigma\in G_D$ に対し $\iota_\sigma\colon R\to D'\xrightarrow{\sigma} D'$ とし、$C_D$ に $\iota_\sigma$ で $R$ 作用を入れたものを $C_D^\sigma$ と書く。
+\[
+  c_\sigma = \sum_i (-1)^i \lambda_D \Tor_i^R(C_D^\sigma, E')
+\]
+とおく。Tor は $E'$ の自由分解で計算する（形式化では Tor の対称性を使わない）。
+\lean{\ld{Paper.Section5.twistedAlgebraMap}、\ld{twistedEuler}。}
+
+\begin{lemma}\orig{Lemma 5.2、置き換え 1}\label{lem:first}
+\[
+  |G_D|\cdot a_D\cdot a_E\cdot\chi^R(D,E) \;=\; \sum_{\sigma\in G_D} c_\sigma.
+\]
+\end{lemma}
+\begin{proof}
+$E'$ の有限自由 $R$ 分解 $F$ をとり $P_\sigma = F\otimes_{R,\iota_\sigma} D'$ とおく。$P+Q$ が $\m$-準素なので $P_\sigma\in\Perf_{\m}(D')$。$\chi_C(P_\sigma) = c_\sigma$、$\chi_{\ord}(P_\sigma) = \chi^R(D',E')$（$\sigma$ による半線形同型で $\sigma$ によらない）なので、命題~\ref{prop:35c}（$A = A_D$、$T = D'$、$G = G_D$）より
+\[
+  |G_D|\,\chi^R(D',E') = \sum_\sigma c_\sigma.
+\]
+最後に、$D^{a_D}\to D'$ の余核は次元が低いので消滅定理で $\chi$ が $0$ となり、$\chi^R(D',E') = a_D a_E\,\chi^R(D,E)$。
+\end{proof}
+\lean{\ld{Paper.firstComparison}、\ld{Section5.firstComparison_of_resolution}、\ld{normComparison_of_lengthAlgebra}、ランクの因子は \ld{IntersectionMultiplicity.FiniteExtension}（引用を除いて証明済み。引用は消滅定理と定理~\ref{thm:descent}）。環・有限代数・群作用・長さの条件は引数として明示的に受け取る。}
+
+\paragraph{有限近似\orig{§5.2--5.4、置き換え 2 の準備}}
+$\sigma$ を固定し $C = C_D^\sigma$、$\lambda = \lambda_D$ と書く。
+\begin{enumerate}
+  \item \textbf{パラメータ商}（Lemma 5.3）：$Q$ の元 $x_1,\dots,x_h$ で $R$ 正則列かつ $D$ のパラメータ系になるものをとり、$B = R/(x)$、$U = C/\iota_\sigma(x)C$ とおく。$B$ は次元 $l$ の完全交叉局所環で、正則性は使わない。補題~\ref{lem:lambdaAB} を $R\xrightarrow{\iota_\sigma}D'$ と $C$ に適用すると、有限生成 $B$ 加群 $L$ について
+  \[
+    \lambda\Tor_i^R(C,L) = \lambda\Tor_i^B(U,L), \qquad\text{これは } i>l \text{ で } 0.
+  \]
+  また $\lambda$-CM 性と系~\ref{cor:pos}（$U\to C/\m C$ は全射）より $0<\lambda(U)<\infty$。
+  \item \textbf{有限長加群での近似}（Lemma 5.4）：定理~\ref{thm:existence} (c) を使い、共通の $\m_B^a$ で消される有限長 $B$ 加群 $M_n$ と $s_n\to\infty$ で
+  \[
+    \frac{\len\Tor_i^B(M_n,L)}{s_n} \;\to\; \lambda\Tor_i^B(U,L) \qquad (L = k, E')
+  \]
+  となるものをとる。$L = k$ とすると、$i>l$ で Betti 数は $\beta_i(M_n) = o(s_n)$。生成元数の比の極限 $\nu_\sigma = \lim\beta_0(M_n)/s_n$ は $\lambda(U)/\len(B/\m_B^a)$ 以上で、特に正。
+  \item \textbf{切り詰め}（Lemma 5.5）：$M_n$ の極小自由分解を $l$ 次で切り、$\gamma\in G_E$ でひねって $E'$ に持っていった列 $F'_{\gamma} = (F'_{n,\gamma})_n$ は、$0$ 次から $l$ 次に項をもつ有界な自由列で、$1$ 次で極小（$d_1$ の成分は $\m_B$ に入り、$E'$ に移すと $\m_{E'}$ に入る）、$0$ 次の階数は $\beta_0(M_n)$。その像は $P_{E'}^J$ に入り（$l$ 次より上のランクが $o(s_n)$ なので切り詰めの誤差は商で消える）、普通の Euler 特性は $\chi_{\ord}(F'_\gamma) = c_\sigma$。
+\end{enumerate}
+\lean{パラメータ商の長さ比較・消滅は \ld{ParamQuot.torClaim}、\ld{ParamQuot.len_torAlg_eq_zero}。有限近似を入力とした切り詰め・支持・Euler の計算は \ld{Paper.Section5.MinimalApproximation}、\ld{SupportedApproximation}、\ld{ApproximationEuler}。元の環から全ての有限近似データを存在構成する部分とは区別する。}
+
+\paragraph{置き換え 2\orig{式 (5.18)}}
+定理~\ref{thm:47} を $A = A_E$、$T = E'$、$(C_E,\lambda_E)$、$G_E$ と $X = F'_{\mathrm{id}}$ に適用する（$X^\gamma = F'_\gamma$）。$b_{\sigma,\gamma} = \chi_{C_E}(F'_\gamma)$（命題~\ref{prop:43} の $C_E$ と $\lambda_E$ による Euler 特性）とおくと
+\begin{equation}\label{eq:second}
+  |G_E|\cdot c_\sigma \;=\; \sum_{\gamma\in G_E} b_{\sigma,\gamma}.
+\end{equation}
+これが §\ref{sec:strategy} の \eqref{eq:strategy2} である。
+\lean{\ld{Section5.secondComparison_of_approximation}（有限近似・Koszul 分解・降下などを明示的な入力として証明済み）。}
+
+\begin{lemma}\orig{Lemma 5.6、正値性}\label{lem:pos}
+\[
+  b_{\sigma,\gamma} \;\ge\; \nu_\sigma\cdot\lambda_E(C_E/\m_{E'}C_E) \;>\; 0.
+\]
+\end{lemma}
+\begin{proof}
+系~\ref{cor:nitasymp} を $A = A_E$（次元 $e = l$）、$T = E'$、$(C_E,\lambda_E)$、$F = F'_\gamma$（$m = l$）に適用すると、$b_{\sigma,\gamma} = \chi_{C_E}(F'_\gamma) = b_0^{C_E}(F'_\gamma) \ge \nu_\sigma\cdot\lambda_E(C_E/\m_{E'}C_E)$。正値性は $\nu_\sigma>0$ と系~\ref{cor:pos}。
+\end{proof}
+$D$ 側の $\lambda$-CM 性（補題~\ref{lem:lambdaAB}）が複体の長さを $l$ に抑え、$E$ 側の $\lambda$-平坦性（系~\ref{cor:nitasymp}）が長さ $l$ の複体の高次を消す。2つの $l$ が噛み合うのは $h + l = \dim R$ による。
+\lean{\ld{Section5.secondComparison_minimal_lower_bound}、\ld{paperEuler_pos_of_finiteApproximation}（支持・Koszul 条件・有限近似・正の商長さを入力として証明済み）。}
+
+\paragraph{結論}
+補題~\ref{lem:first}、式~\eqref{eq:second}、補題~\ref{lem:pos} を合わせて
+\[
+  |G_D|\, a_D a_E\, \chi^R(D,E) \;=\; \frac{1}{|G_E|}\sum_{\sigma\in G_D}\sum_{\gamma\in G_E} b_{\sigma,\gamma} \;>\; 0.
+\]
+\lean{\ld{Section5.chi_pos_of_comparisons}、\ld{core_of_inputs}（2つの比較と正値性を仮定として受け取る形で証明済み）。}
+
+%======================================================================
+\appendix
+\section{引用した結果と形式化の状況}
+
+\subsection{引用している結果}
+{\small
+\begin{center}
+\begin{tabularx}{\textwidth}{>{\raggedright}X>{\raggedright}X>{\raggedright}p{2.4cm}>{\raggedright\arraybackslash}X}
+\toprule
+結果 & 文献 & 使う場所 & Lean \\
+\midrule
+Serre の正値性（等標数） & Serre, \emph{Local Algebra} V & 帰着 & 未 \\
+消滅定理 & Roberts (1985)、Gillet--Soulé (1987) & 帰着、補題~\ref{lem:first} & \ld{Inputs.intersectionVanishing} \\
+正則パラメータ系は正則列 & 標準的 & 正則基底から Koszul 分解を供給する箇所 & \ld{Inputs.isWeaklyRegular_of_span_eq_maximalIdeal} \\
+正則局所環上の有限自由分解 & Serre & 補題~\ref{lem:first} & \ld{Inputs.regularResolution}（正則列から導出済み） \\
+Cohen--Gabber & Kurano--Shimomoto, Thm 1.1 & 補題~\ref{lem:cohengabber} & 未 \\
+Faltings の正規化長さ（下限と上限の一致、加法性） & Faltings, App.~2、Gabber--Ramero 14.5.74--75 & 定義~\ref{def:tower} & \ld{Paper.Section2} 内の名前つき sorry \\
+$\lambda$-平坦な長さ付き代数の存在 & Monsky、Roberts（Ma, Thm 2.4）、CLMST Cor.~4.0.4, Prop.~4.0.10, 4.0.14 & 定理~\ref{thm:existence} & \ld{Section2.theorem_2_5} \\
+台つき有理 K 理論の降下 & 本論文 Theorem 3.1（Goodwillie、Land--Tamme、Thomason--Trobaugh） & 命題~\ref{prop:35c} & \ld{Inputs.theorem_3_1_K0}（$H = A$） \\
+ランク商の不変 $K_0$ 類の降下 & Lemma 4.6 と一般係数の Theorem 3.1 & 定理~\ref{thm:47} & \ld{Section4.supportedRankK0_descent} \\
+\bottomrule
+\end{tabularx}
+\end{center}
+}
+
+\subsection{状況のまとめ}
+以下の「条件から証明済み」は、Koszul 有限性・消滅・分解・降下などを定理の引数として受け取る形を指す。概念的な $\lambda$-平坦性から全入力を供給する同値は別項目である。
+{\small
+\begin{longtable}{>{\raggedright}p{3.2cm}>{\raggedright}p{3.0cm}>{\raggedright\arraybackslash}p{8.0cm}}
+\toprule
+解説の命題 & 元論文 & 状況 \\
+\midrule
+\endhead
+定理~\ref{thm:main}、\ref{thm:core} と帰着 & Thm 1.1、Lemma 5.1 & 未。論文全体の完成は今回の範囲外 \\
+補題~\ref{lem:34} & Lemma 3.4 & 引用を除いて証明済み \\
+系~\ref{cor:allv}、命題~\ref{prop:cmflat} & (3.9) との同値など & 概念的な $\lambda$-平坦性・$\lambda$-CM 性との接続全体は未 \\
+補題~\ref{lem:lambdaAB} & Lemma 5.3 & 環変更の長さ比較と消滅は、明示した Koszul 条件・有限分解から証明済み \\
+命題~\ref{prop:B-euler}、補題~\ref{lem:B-nit}、\ref{lem:B-h0} & 共通抽象論 & 証明済み。反復錐は二項直和の再帰表示を使う \\
+命題~\ref{prop:B-length-descends}、\ref{prop:B-finite-part} & 長さの商 & 大きな商・有限な商・両者の有限部分の同値まで証明済み \\
+補題~\ref{lem:C-nil}、命題~\ref{prop:C-euler} & perfect 実現 & 任意の可換環の有限射影複体で、支持の対応と有限 Euler 評価を証明済み \\
+補題~\ref{lem:koszulbound}、命題~\ref{prop:35a} & Lemma 3.5a & Koszul 有限性から証明済み \\
+命題~\ref{prop:35b}、\ref{prop:35c} & Lemma 3.5b,c & 具体的な正則基底・降下の引用を除いて証明済み。一般の条件付き公式は引用なし \\
+補題~\ref{lem:conjsum}、定理~\ref{thm:C-norm} & 対称な比較 & 降下・基底の分解を明示した形で証明済み \\
+補題~\ref{lem:nit}、\ref{lem:h0bound} & 消滅と下界 & Koszul 消滅・極小性などから証明済み \\
+定義~\ref{def:rankquot}、命題~\ref{prop:42} & §4.1--4.2 & 圏と支持つきの比較同値、直和因子による表示を構成済み \\
+命題~\ref{prop:43} (a),(b),(d)、系~\ref{cor:nitasymp} & Prop 4.3、(4.2) & 評価の延長・Euler・多項式公式・消滅・下界を条件から証明済み。(c) の $\iota$ は数学的説明 \\
+命題~\ref{prop:45} & Prop 4.5 & 全対象の一様代表による公式を証明済み。正則基底への適用は引用を使う \\
+補題~\ref{lem:dga}、定理~\ref{thm:47} & Lemma 4.6、Thm 4.7 & dg 表示と降下への接続は引用。共役和比較はその引用を除いて証明済み \\
+定義~\ref{def:tower}、補題~\ref{lem:24} & §2.2、Lemma 2.4 & 定義は具体的、補題は証明済み \\
+補題~\ref{lem:cohengabber}、定理~\ref{thm:existence} & Lemma 2.2、Thm 2.5 & 引用結果・具体的な存在構成の完成は今回の範囲外 \\
+系~\ref{cor:pos}、補題~\ref{lem:first} & Cor 2.6 (3)、Lemma 5.2 & 明示した環・長さの条件のもと、引用を除いて証明済み \\
+式~\eqref{eq:second}、補題~\ref{lem:pos} & (5.18)、Lemma 5.6 & 有限近似・支持・Koszul 条件・降下などから証明済み。全データの存在構成とは区別 \\
+結論 & §5 末 & 二つの比較と正値性を仮定した形で証明済み \\
+\bottomrule
+\end{longtable}
+}
+
+\subsection{元論文から変えた点}
+\begin{itemize}
+  \item 比較の議論を「$\lambda$-平坦な長さ付き代数」の抽象的な設定で述べ、一般論（§\ref{sec:perfect}、§\ref{sec:asymp}）と具体的な構成（§\ref{sec:construction}）を分けた。
+  \item $\lambda$-平坦性とランクを全ての有限長加群に対する条件として定義し、$k$ で判定できることを補題とした（定義~\ref{def:lengthalg}、補題~\ref{lem:34}）。元論文の (3.9) との同値は系~\ref{cor:allv}。
+  \item 補題 3.5 を仮定の重さで 3 つに分け、各主張で使う仮定を明示した。
+  \item §\ref{sec:perfect} と §\ref{sec:asymp} を、共通の Euler・比較・消滅・下界の定理の二つの実現として述べ、圏・関手の構成と仮定確認を各節に置いた。
+  \item 命題~\ref{prop:35b}（Lemma 3.5b）を「$K_0$ は Koszul 複体で生成される」で示し、スペクトル系列を使わない。
+  \item $\lambda$-CM 代数を定義し（定義~\ref{def:lambdacm}）、元論文の Lemma 5.3（パラメータ商）と Lemma 5.6（正値性）の中身を、古典的な事実の $\lambda$ 版として抽象的な補題に切り出した（補題~\ref{lem:lambdaAB}、\ref{lem:nit}、\ref{lem:h0bound}、系~\ref{cor:nitasymp}）。
+  \item 命題~\ref{prop:45}（Prop 4.5）を、全対象の一様な自由持ち上げを構成し、その各段への帰着で示した。
+  \item 仮定を構造体やクラスに束ねず、各定理の仮定として明示する。引用は名前つきの定理として置き、公理監査で依存を追えるようにした。
+\end{itemize}
+
+\subsection{残る境界と別の課題}\label{sec:future}
+\begin{itemize}
+  \item \textbf{今回の残作業：概念的な定義との接続}：座標によらない $\lambda$-平坦性・$\lambda$-CM 性と Koszul 条件の対応を形式化する（注意~\ref{rem:leandiff}）。そこから有限性・高次消滅・Koszul Euler 特性の値を導き、二つの実現に必要な入力を供給する。この接続と検証までを今回の抽象化の区切りとする。共通評価に必要な有限性と、消滅に必要な条件は分けて保つ。
+  \item \textbf{引用された降下}：有限版は \ld{Inputs.theorem_3_1_K0}、ランク無視版は \ld{Section4.supportedRankK0_descent} を引用する。後者は補題~\ref{lem:dga} と一般係数の降下への接続を含む。正則パラメータが正則列となる結果も既存の引用である。
+  \item \textbf{論文全体への適用}：正規化基底・ガロア閉包・具体的な長さ代数と有限近似の存在構成、核心定理・主定理の完成は別の課題とする。現在の完了範囲は共通理論と二つの実現、および明示したデータからの適用である。
+\end{itemize}
+
+
+%======================================================================
+\section{長さ付き代数とホモロジー的評価による統一}\label{sec:planB}\label{sec:planC}
+
+この付録は、従来の付録 B の「長さ付きアーベル圏」と付録 C の「長さ付き代数の仮定の整理」を統合する。長さ付き代数 $(C,\lambda)$ を入力として、長さ $0$ の加群で割ったアーベル圏を評価先にとり、
+\[
+  P\longmapsto q\,H_i(P\otimes_S^L C)
+\]
+というホモロジー的評価を作る。Koszul 有限性はこの評価の有限性を与え、Koszul ホモロジーの消滅は新交叉型の消滅を与える。比較のためにはさらに、正則な基底から来る類での評価と有理 K 理論の降下を使う。
+
+以下では共通のホモロジー代数、長さ付き代数による実現、二つの評価の比較、列の圏による実現の順に述べる。実装では共通定理を先に置き、有限版・ランク無視版の既存の証明をその適用へ移した。§\ref{sec:check-perfect}、\ref{sec:check-rank} は各実現での仮定確認、§\ref{sec:planB-todo} は実装との対応と未証明入力の境界をまとめる。
+
+\subsection{共通のホモロジー代数}\label{sec:planB-abs}
+
+\begin{definition}[長さ付きアーベル圏]\label{def:B-lenab}
+アーベル圏 $\mathcal{A}$ と、同型不変な関数 $\ell\colon\mathrm{Ob}\,\mathcal{A}\to[0,\infty]$ で、$\ell(0)=0$、短完全列で加法的、$\ell(X)=0\Rightarrow X\cong0$ となるものの組を長さ付きアーベル圏という。$\ell$ は組成列の長さである必要はない。
+\end{definition}
+
+$\mathcal{K}$ を三角圏とする。加法的関手の族 $H_i\colon\mathcal{K}\to\mathcal{A}$ がシフトの同型 $H_i(X[j])\cong H_{i-j}(X)$ を備え、完全三角から長完全列
+\[
+ \cdots\to H_i(X)\to H_i(Y)\to H_i(Z)\to H_{i-1}(X)\to\cdots
+\]
+を与えるとき、$H_*$ をホモロジー的関手と呼ぶ。
+
+\begin{proposition}[Euler 評価]\label{prop:B-euler}
+各 $X$ の $H_i(X)$ が有限個の次数を除いて零で、全ての $\ell(H_iX)$ が有限であるとする（条件 (Fin)）。このとき
+\[
+ \chi(X)=\sum_i(-1)^i\ell(H_iX)
+\]
+は完全三角で加法的で、準同型 $K_0(\mathcal{K})\to\R$ を定める。
+\end{proposition}
+\begin{proof}
+長完全列を各射の像による短完全列に分ける。像の長さも有限であり、非零項は有限個なので、交代和をとると像の長さが相殺して $\chi(Y)=\chi(X)+\chi(Z)$ を得る。同型不変性と合わせて $K_0$ に降りる。この証明では長さの忠実性は使わない。
+\end{proof}
+
+\lean{\ld{CategoryTheory.ExactSequenceEuler}、\ld{HomologicalEuler}、\ld{TriangulatedK0}（証明済み）。}
+実装の長完全列の定理はさらに一般的で、零対象で零となる同型不変・短完全列に加法的な実数値評価だけを使う。対象ごとの有界性があれば、非負性も忠実性も不要である。拡大実数値の $\lambda$ からこの定理へ移る際には、先に有限長さの部分圏へ制限する。
+
+\paragraph{スカラーの反復錐}
+$A$ を可換環、$z=(z_1,\dots,z_e)$ を有限列とし、$z^v=(z_1^v,\dots,z_e^v)$ と書く。$\mathcal{K}$ を $A$ 線形とし、シフトも $A$ 線形とする。$v\ge1$ に対し $z_j^v$ のスカラー作用の錐を順にとった対象を $K_v\otimes X$ と書く。抽象三角圏でこの記法は反復錐を表し、テンソル積の存在を仮定しない。一般論では $e=\dim A$ や $A$ の正則性も不要である。
+
+\begin{lemma}[零作用と分裂]\label{lem:B-split}
+全ての $j$ で $z_j^v\operatorname{id}_X=0$ なら
+\begin{equation}\label{eq:B-split}
+ K_v\otimes X\cong\bigoplus_{j=0}^eX[j]^{\oplus\binom ej},\qquad
+ H_n(K_v\otimes X)\cong\bigoplus_{j=0}^eH_{n-j}(X)^{\oplus\binom ej}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+零射 $Y\to Y$ の錐は $Y\oplus Y[1]$ と同型である。残りのスカラーもその直和成分上で零なので、シフトの線形性を使って繰り返す。二項係数で成分をまとめ、$H_*$ の加法性を使う。
+\end{proof}
+ここで零なのは三角圏の射としての作用である。ホモロジー上の零作用だけではこの分裂は得られない。
+\lean{\ld{CategoryTheory.IteratedCone} の \ld{iteratedZeroCone_iso} は二項直和の反復として分裂を構成する。実装ではこの再帰表示を使い、二項係数の長さ公式、以下の消滅、第零次同型と下界を証明している。式~\eqref{eq:B-split} はその数学的な表示である。}
+
+\begin{lemma}[新交叉型の消滅]\label{lem:B-nit}
+$m\ge0$ と $X$ について、ある $v\ge1$ で次の二つが成り立つとする。
+\begin{enumerate}[label=(\alph*)]
+ \item 全ての $j$ で $z_j^v\operatorname{id}_X=0$（条件 (Supp)）。
+ \item $H_n(K_v\otimes X)=0$（$n\notin[0,m]$、条件 (Kos$_m$)）。
+\end{enumerate}
+このとき $H_i(X)=0$（$i<0$ または $i>m-e$）。特に $m=e$ で $\ell(H_0X)<\infty$ なら $\chi(X)=\ell(H_0X)$。
+\end{lemma}
+\begin{proof}
+式~\eqref{eq:B-split} の $j=e$ の成分により $H_i(X)$ は $H_{i+e}(K_v\otimes X)$ の直和因子であり、$i+e>m$ なら零である。$i<0$ では $j=0$ の成分を使う。零対象の直和因子は零である。$m=e$ では $0$ 次だけが残る。
+\end{proof}
+消滅に長さの値や (Fin) は要らない。「自由振幅 $[0,m]$」は、具体例で (Kos$_m$) を確かめるための条件である。また、(Supp) を満たす $v$ の存在は仮定に含める。$e=0$ の場合も同じ定理で扱い、$m<e$ なら全次数で消滅する。Lean 内部の cochain 添字は $q=-i$ で本文の $H_i$ に変換する。
+
+\begin{lemma}[$0$ 次の下界]\label{lem:B-h0}
+(Supp) と $H_i(X)=0$（$i<0$）のもとで $H_0(K_v\otimes X)\cong H_0(X)$。有限な長さをもつ対象 $Y$ への全射 $H_0(K_v\otimes X)\twoheadrightarrow Y$ があれば、$\ell(H_0X)\ge\ell(Y)$。さらに $m=e$ の消滅と有限性があれば $\chi(X)\ge\ell(Y)$。
+\end{lemma}
+\begin{proof}
+式~\eqref{eq:B-split} の $n=0$ では $j>0$ の成分が消える。全射の核による短完全列と長さの非負性から不等式が出る。
+\end{proof}
+全射の構成は極小性などの具体的な入力で行う。その下界を Euler 評価の下界にするために、高次の消滅を別に使う。
+
+\subsection{長さ付き代数と評価先}\label{sec:planB-quot}\label{sec:planC-levels}
+
+$A$ を可換環、$z=(z_1,\dots,z_e)$ をその元の有限列とし、$z^v=(z_1^v,\dots,z_e^v)$ と書く。長さ付き $A$ 代数とは、可換 $A$ 代数 $C$ と、$J=(z)C$ のある冪で加群全体が消される $C$ 加群上の長さ関数 $\lambda$ の組である。長さ関数は定義~\ref{def:lengthfn} の意味で、非負の拡大実数値をとり、同型不変で短完全列に加法的である。
+
+$A$ がネーター局所環で $\sqrt{(z)}=\m_A$ なら、$(z)C$-冪ねじれと $\m_A C$-冪ねじれは同じ条件である。実際、$\m_A$ のある冪が $(z)$ に入り、この包含を $C$ に移せばよい。以下の一般論では $A$ のネーター性は仮定せず、有限列 $z$ を固定して使う。
+
+\begin{lemma}\label{lem:B-serre}
+$J$-冪ねじれ $C$ 加群の圏 $\mathcal{T}_J(C)$ はアーベル圏である。その中の
+\[
+ \mathcal{N}_\lambda=\{M\mid\lambda(M)=0\},\qquad
+ \mathcal{T}_J^{\mathrm{fin}}(C)=\{M\mid\lambda(M)<\infty\}
+\]
+は Serre 部分圏である。$\mathrm{fin}$ は $\lambda$ の有限性で、有限生成性や通常の有限長性を意味しない。
+\end{lemma}
+\begin{proof}
+冪ねじれ加群は部分加群・商で閉じ、$J^aM'=0$、$J^bM''=0$ ならその拡大 $M$ は $J^{a+b}$ で消される。したがって加群の圏の Serre 部分圏をなし、包含は完全である。短完全列で $\lambda(M)=\lambda(M')+\lambda(M'')$ なので、非負性から長さ $0$ と有限性のそれぞれについて Serre 条件が従う。
+\end{proof}
+
+\begin{definition}\label{def:B-alambda}
+Serre 商と完全な商関手を
+\[
+ \mathcal{A}_\lambda=\mathcal{T}_J(C)/\mathcal{N}_\lambda,\qquad q\colon\mathcal{T}_J(C)\to\mathcal{A}_\lambda
+\]
+と書く。有限な長さの部分だけの商を $\mathcal{A}_\lambda^{\mathrm{fin}}=\mathcal{T}_J^{\mathrm{fin}}(C)/\mathcal{N}_\lambda$、その商関手を $q_{\mathrm{fin}}$ と書く。圏の構成には宇宙を固定し、必要に応じてより大きい宇宙を使う。
+\end{definition}
+
+\begin{proposition}\label{prop:B-length-descends}
+$\lambda$ は商上の同型不変・短完全列に加法的な長さ $\ell_\lambda$ に降り、
+\[
+ \ell_\lambda(qM)=\lambda(M),\qquad \ell_\lambda(X)=0\iff X\cong0
+\]
+となる。有限な商では長さは $[0,\infty)$ 値である。
+\end{proposition}
+\begin{proof}
+核と余核が長さ $0$ の射 $f\colon M\to N$ は、像を介する短完全列により $\lambda(M)=\lambda(\operatorname{im}f)=\lambda(N)$ を満たす。無限値の引き算は使わない。Serre 商の分数表示と、商で可逆となる射の核・余核の判定から、商で同型な対象の長さは等しい。商の短完全列は代表元を取り替えて元の圏の短完全列の像として表せるので、加法性も降りる。最後に $qM\cong0\iff M\in\mathcal{N}_\lambda$ より忠実性が従う。有限な商でも同じ議論を使う。
+\end{proof}
+
+\begin{proposition}[有限な商と大きな商の有限部分]\label{prop:B-finite-part}
+包含から誘導される関手は、長さを保つ完全な同値
+\[
+ \mathcal A_\lambda^{\mathrm{fin}}\simeq
+ \{X\in\mathcal A_\lambda\mid\ell_\lambda(X)<\infty\}
+\]
+を与える。この同値は元の加群からの二つの商関手と自然に両立する。
+\end{proposition}
+\begin{proof}
+大きな商の射を分数で表すとき、逆にする射は長さを保つ。両端が有限長さなら必要な中間対象も有限長さとなるので、有限な商からの関手は充満忠実である。商の対象は元の加群で表され、その長さは代表元の長さだから、本質的像は有限長さの対象全体になる。包含・商関手の完全性と長さの計算から残りが従う。
+\end{proof}
+\lean{\ld{LengthAlgebra.FiniteQuotientEquivalence} の \ld{finiteQuotientEquivalence}。ホモロジー、零対象、Euler 数と $K_0$ 評価への接続は \ld{PerfectHomologyComparison}（証明済み）。}
+
+$q$ を複体の各項に適用できるのは、その各項が $\mathcal{T}_J(C)$ に入る場合だけである。一般の $K(z;C)$ はこの条件を満たさない。以下では加群の圏でホモロジーを計算し、その冪ねじれと有限性を確かめてから商関手で送る。
+
+\subsection{長さ付き代数による実現}\label{sec:planC-general}
+
+\begin{definition}[Koszul 有限性]\label{def:C-levels}
+長さ付き $A$ 代数 $(C,\lambda)$ が $z$ に関して Koszul 有限であるとは、全ての $v\ge1$ と $0\le j\le e$ について $\lambda H_j(z^v;C)<\infty$ となることをいう。このとき
+\[
+ e_\lambda(z;C)=\sum_{j=0}^e(-1)^j\lambda H_j(z;C)\in\R
+\]
+を Koszul Euler 特性、または $\lambda$-重複度と呼ぶ。この一般性では、その正値性は仮定しない。
+\end{definition}
+
+$S$ を任意の可換 $A$ 代数とする。$\Perf_{(z)}(S)$ は、ホモロジーの幾何学的な台が $V((z)S)$ に入る perfect 複体の三角圏を表す。perfect 複体は有限射影項の有界複体で計算する。
+
+\begin{lemma}[幾何学的な台とスカラーの零作用]\label{lem:C-nil}
+任意の可換環 $S$ 上の有界有限射影複体 $P$ について、次は同値である。
+\begin{enumerate}[label=(\roman*)]
+ \item 全ての $H_i(P)$ の台が $V((z)S)$ に入る。
+ \item ある $v\ge1$ で全ての $z_j^v$ の作用が $P$ 上で零ホモトピックである。
+\end{enumerate}
+これらは全ホモロジーが共通の $(z)S$ の冪で消されることとも同値である。$S$ のネーター性やホモロジーの有限生成性は不要である。
+\end{lemma}
+\begin{proof}
+(ii) なら $z_j^v$ が全ホモロジーを消す。有限列なので $(z)S$ の十分大きな冪も全ホモロジーを消し、(i) を得る。
+
+逆に一つのスカラー $x=z_j$ を固定し、cochain 次数の上から順に恒等射の成分を消す。より上の成分を消した鎖写像の次の成分はサイクルへ写る。そのホモロジーへの像は有限生成な項からの像なので有限生成であり、台が $V(x)$ に入ることから $x$ のある冪で消える。項の射影性により境界への持ち上げを選べるので、その冪を掛けた鎖写像の成分をホモトピーで一段消せる。有界性により有限回で零射となる。有限個の $j$ について指数をそろえれば (ii) を得る。ホモロジー全体が有限生成だとは使っていない。
+\end{proof}
+\lean{\ld{HomologicalAlgebra.SupportNullHomotopy}、\ld{PerfectComplex.Support}、\ld{HomotopyCategory}（任意の可換環上で証明済み）。}
+
+\begin{proposition}[有限性とホモロジー的評価]\label{prop:C-euler}
+$(C,\lambda)$ を Koszul 有限とし、$S\to C$ を $A$ 代数の準同型とする。このとき
+\[
+ H_i^C(P)=q_{\mathrm{fin}}H_i(P\otimes_S^LC)
+ \quad(P\in\Perf_{(z)}(S))
+\]
+は長さ付きアーベル圏 $\mathcal{A}_\lambda^{\mathrm{fin}}$ に値をとるホモロジー的関手を定め、(Fin) を満たす。したがって
+\[
+ \chi_C(P)=\sum_i(-1)^i\lambda H_i(P\otimes_S^LC)
+\]
+は $K_0(\Perf_{(z)}(S))\to\R$ の準同型になる。さらに、$S\to S'\to C$ が与えられれば
+\[
+ \chi_C(P\otimes_S^LS')=\chi_C(P).
+\]
+\end{proposition}
+\begin{proof}
+補題~\ref{lem:C-nil} により全ての $z_j^v$ が $P$ 上で零ホモトピックとなる共通の $v\ge1$ を選べる。係数拡大後の $Q=P\otimes_S C$ でも同じ作用が零なので、ホモロジーは $(z)C$-冪ねじれである。また $Q$ は $K_v\otimes Q$ の直和因子である。
+
+$P$ の有限射影項 $P_k$ を有限自由項 $S^{r_k}$ の直和因子として表す。$K(z^v;C)\otimes_S P_k$ のホモロジーは $K(z^v;C)^{\oplus r_k}$ のホモロジーの直和因子である。項による有限フィルトレーションと長完全列の劣加法性から、補題~\ref{lem:koszulbound} と同じく
+\[
+ \lambda H_i(Q)\le\left(\sum_k r_k\right)
+                 \left(\sum_j\lambda H_j(z^v;C)\right)<\infty
+\]
+となる。この説明は有限自由項に限った上界を有限射影項へ拡張している。
+
+係数拡大は導来圏で完全三角を保ち、ホモロジーの長完全列は全て有限な冪ねじれ加群に入るので、完全な $q_{\mathrm{fin}}$ を適用できる。これによりホモロジー的関手と (Fin) を得る。Euler 評価は命題~\ref{prop:B-euler} による。最後の等式は導来テンソルの結合律から従い、係数拡大した $P$ の台も零作用から保たれる。
+\end{proof}
+この命題では $S$ の局所性、ネーター性、$A$ 上の有限性や平坦性を使わない。大きな商の有限部分を評価先にした場合も、命題~\ref{prop:B-finite-part} の同値により同じ Euler 評価となる。
+\lean{\ld{LengthAlgebra.PerfectHomology}、\ld{PerfectBaseChange}、\ld{PerfectHomologyComparison}。実装は、より一般の有限生成イデアル $J$ と $J\subseteq\sqrt{(z)C}$ を入力にとる。本文の $J=(z)C$ ではこの条件は自動的に満たされる。}
+
+\paragraph{有限性と消滅を分ける}\label{sec:planC-flat}
+$A$ が正則局所環で $z$ が正則パラメータ系のとき、$\lambda$-平坦性は定義~\ref{def:lengthalg} の条件である。これは有限長 $A$ 加群について $q\Tor_i^A(V,C)=0$（$i>0$）と同値であり、$V\mapsto q(V\otimes_A C)$ を完全関手にする。$C$ 自体は冪ねじれとは限らないので、商圏の中の対象 $qC$ の平坦性とは述べない。
+
+$\lambda$-平坦性だけでは $\lambda(C/zC)$ の有限性は出ない。有限ランク $r$ の条件もあれば、系~\ref{cor:allv} によって
+\[
+ \lambda H_j(z^v;C)=0\ (j>0),\qquad
+ \lambda(C/(z^v)C)=v^e r<\infty,
+ \qquad e_\lambda(z;C)=r.
+\]
+したがって Koszul 有限性と消滅の両方を得る。これに対し、$\lambda$-CM 性は $D$ のパラメータ系について同様の消滅と有限性を与える。正則部分環 $A\subseteq D$ 上で使うには、$D$ が $A$ 上有限で、そのパラメータ系が $D$ のパラメータ系にもなる条件を使う（命題~\ref{prop:cmflat}）。
+
+$P$ が $0$ 次から $m$ 次に有限射影項をもつなら、$K_v\otimes P\otimes C$ の項によるフィルトレーションの各段は、$K(z^v;C)$ の有限直和のシフトの直和因子である。正次数の Koszul ホモロジーが商で零であれば、各段はその項の次数だけに集中し、長完全列から (Kos$_m$) が出る。(Supp) は台の条件と補題~\ref{lem:C-nil} から出るので、補題~\ref{lem:B-nit} が使える。
+
+一方、$S=T$ が局所環で $P$ の $0$ 次の項が $T^{\oplus\beta_0}$、$d_1$ の成分が $\m_T$ に入れば
+\[
+ H_0(P\otimes C)\twoheadrightarrow(C/\m_T C)^{\oplus\beta_0}.
+\]
+この全射と長さの単調性は $\lambda$-平坦性を使わない。$\lambda$-平坦性による高次の消滅と組み合わせて初めて、$m=e$ のとき Euler 評価の下界になる。
+
+\begin{example}\label{ex:C-levels}\label{ex:B-lenab}
+普通の評価は $(T,\len_T)$、正規化側は $(C,\lambda)$ という二つの例である。$T$ がネーターで $T/(z)T$ が有限長なら、$H_j(z^v;T)$ は有限生成で $(z^v)$ により消されるので、$(T,\len_T)$ は Koszul 有限である。この有限性には CM 性を使わない。例えば本文の有限局所代数 $T$ が CM でなければ、普通の長さで測る高次の Koszul ホモロジーが残り、$\lambda$-平坦性は満たさない。したがって普通の側にも Euler 評価はあるが、消滅まで結論することはできない。
+\end{example}
+
+\subsection{基底から来る類と対称な比較}\label{sec:planC-comparison}
+
+\begin{proposition}[基底から来る類での評価]\label{prop:C-base}
+$A$ を正則局所環、$z$ を正則パラメータ系とし、$(C,\lambda)$ を Koszul 有限とする。$Q\in\Perf_{\m}(A)$ について
+\[
+ \chi_C(Q)=e_\lambda(z;C)\,\chi_A(Q).
+\]
+ここで $\chi_C(Q)$ は $Q\otimes_A^LC$ のホモロジーによる評価である。
+\end{proposition}
+\begin{proof}
+正則局所環上では各有限長加群が perfect である。切り詰めの三角とホモロジーの組成列を用いると
+\[
+ [Q]=\sum_i(-1)^i\len_A H_i(Q)\,[k]=\chi_A(Q)[k].
+\]
+$K(z)$ は $k$ の自由分解だから $[k]=[K(z)]$、$\chi_A(K(z))=1$ である。両辺の評価は準同型で、$K(z)$ 上の左辺は $e_\lambda(z;C)$ なので結論する。Lean では有限自由モデルの Koszul 生成定理を、局所環上の $K_0$ 比較同型を通して有限射影モデルへ移す。
+\end{proof}
+\lean{\ld{LengthAlgebra.KoszulFormula}。一般の基底公式は \ld{IsKoszulResolution z} を明示的に受け取り、未証明の降下や正則パラメータの定理を呼ばない。}
+$z'$ が $A$ の別のパラメータ系、またはその各元の正の冪からなる列であれば、$K(z')$ は $A/(z')$ の分解である。上の公式を $Q=K(z')$ に使うと
+\[
+ e_\lambda(z';C)=\len_A(A/(z'))\,e_\lambda(z;C)
+\]
+も得られる。左辺の各長さの有限性は命題~\ref{prop:C-euler} により確かめられる。
+
+\begin{theorem}[二つの長さ付き代数のノルム比較]\label{thm:C-norm}
+$A$ を正則局所環、$z$ を正則パラメータ系、$T$ を可換 $A$ 代数とする。有限群 $G$ が $K_0(\Perf_{(z)}(T))$ に群自己同型として作用し、その不変類の正の整数倍が係数拡大
+\[
+ f\colon K_0(\Perf_{\m}(A))\longrightarrow K_0(\Perf_{(z)}(T))
+\]
+の像に入るとする。$T$ 代数 $C_1,C_2$ とそれぞれの長さ関数 $\lambda_1,\lambda_2$ が Koszul 有限で、
+\[
+ e_{\lambda_1}(z;C_1)=e_{\lambda_2}(z;C_2)
+\]
+なら、任意の $y\in K_0(\Perf_{(z)}(T))$ について
+\[
+ \sum_{g\in G}\chi_{C_1}(g\cdot y)=\sum_{g\in G}\chi_{C_2}(g\cdot y).
+\]
+\end{theorem}
+\begin{proof}
+命題~\ref{prop:C-euler} の係数変更と命題~\ref{prop:C-base} から、二つの準同型は $f$ の像上で一致する。あとは補題~\ref{lem:conjsum} を使う。
+\end{proof}
+\lean{\ld{LengthAlgebra.Comparison} の \ld{perfectEuler_conjSum_eq}（Koszul 分解と整数倍の降下を明示的に受け取り、証明済み）。}
+$T$ 上の群作用が $A$ を固定すれば、ひねり $P\mapsto P^g$ がこの $K_0$ 作用を与える。有限射影版での作用、係数変更との両立、有限自由モデルとの同変な比較は \ld{PerfectComplex.K0Functoriality} で構成されている。局所環 $T$ では旧モデルの降下入力も移せる。
+
+幾何的な適用では、剰余標数 $p>0$、$T$ の有限性、幾何ファイバーへの推移的作用と $\Spec T\to\Spec A$ の全射性から、定理~\ref{thm:descent} の引用で降下を供給する。これは上の条件付き比較とは別の段階である。
+
+二つの評価先 $\mathcal{A}_{\lambda_1}^{\mathrm{fin}}$ と $\mathcal{A}_{\lambda_2}^{\mathrm{fin}}$ を同じ圏に同定する必要はない。共通なのは評価元の $K_0$ と、最終的な実数値の Euler 評価である。$T$ が局所でない場合、$\Perf_{(z)}(T)$ の台は閉ファイバー $V(\m_AT)$ であり、一つの閉点に限らない。
+
+本文の比較では $(C_1,\lambda_1)=(T,\len_T)$ と $(C_2,\lambda_2)=(C,\lambda)$ をとる。普通の側の Koszul Euler 特性が $\rank_A T$ であることと、正規化側の $e_\lambda=r=\rank_A T$ をそれぞれ計算すれば命題~\ref{prop:35b}、\ref{prop:35c} が出る。$T$ の局所性と剰余体の一致は前者の長さ・ランクの計算で使い、対称な比較定理そのものには使わない。
+
+\subsection{列の商と漸近版への接続}\label{sec:planB-unify}\label{sec:planC-asymp}
+
+$s_n>0$ と非単項超フィルター $\U$ を固定する。共通の $J$ の冪で消え、各段の $\lambda(M_n)$ が有限で、$\lambda(M_n)=O(s_n)$ となる加群列の圏は、部分商・拡大で閉じるアーベル圏である。正規化超極限
+\[
+ L(M)=\lim_\U\lambda(M_n)/s_n
+\]
+は有限・非負・同型不変で短完全列に加法的である。$L=0$ の列で割った Serre 商を $\mathcal{A}_{\lambda,s,\U}$ と書く。命題~\ref{prop:B-length-descends} と同じ証明で忠実な有限値の長さが入る。
+
+一様に台をもつ自由複体列に Koszul 上界を各段で適用すると、ホモロジー列の長さは $O(s_n)$ となる。ランク $o(s_n)$ の一様に台をもつ列なら正規化長さは零になる。ただし一般のランクの小さい複体列の生のホモロジーをそのまま評価できるわけではない（§\ref{sec:asymp} の Remark 4.1）。支持つきランク商 $P_T^J$ 上の関手は、次の四段階で構成する。
+\begin{enumerate}[label=(\arabic*)]
+ \item 一様に台をもつ代表元で、共通の冪ねじれ条件と長さ $O(s_n)$ を示す。
+ \item 支持部分の局所化で逆にする射を、列の Serre 商の同型に送る。
+ \item シフト・長完全列と両立して関手を降下させ、冪等元の像によって直和因子へ延長する。
+ \item 一様に台をもつ列の像では、延長した関手を元のホモロジー列で計算できることを示す。
+\end{enumerate}
+この接続と有界性を構成すると (Fin) が成立し、命題~\ref{prop:B-euler} が使える。評価先の Serre 商だけでは (2)--(4) は得られないが、これらも実装済みである。
+\lean{\ld{Asymptotic.SequenceHomologyLocalization}、\ld{CompletedHomology}、\ld{RankHomologyShiftNatural}、\ld{CompletedRankEvaluation}、\ld{PaperBaseChangeEvaluation}。}
+
+\paragraph{漸近版の消滅と下界}
+$X$ が $0$ 次から $m$ 次の有界自由列 $F$ の像で、商の中で $z_j^v\operatorname{id}_X=0$ とする。$F$ 自体は一様に台をもたなくてよい。$K_v\otimes F$ は一様に台をもつので、(4) により評価できる。正次数の Koszul ホモロジーの長さが零なら、各段で項によるフィルトレーションを使って $[0,m]$ の外のホモロジーの長さが零と分かる。したがって列の商で (Kos$_m$) が成り立ち、補題~\ref{lem:B-nit} によって高次が消える。
+
+$m=e$ で各 $F_n$ が $1$ 次で極小なら
+\[
+ H_0(K_v\otimes F_n\otimes C)
+ =C^{\oplus\beta_0(F_n)}/(\operatorname{im}d_1+(z^v))
+ \twoheadrightarrow(C/\m_T C)^{\oplus\beta_0(F_n)}.
+\]
+右辺の列も共通の冪で消され、長さ $O(s_n)$ である。補題~\ref{lem:B-h0} により
+\[
+ \chi_C(X)\ge\left(\lim_\U\beta_0(F_n)/s_n\right)
+                   \lambda(C/\m_T C).
+\]
+長さの有限性と階数の上界を使って右辺を計算し、二つの因子の正値性は別に証明する。
+
+\paragraph{漸近版の比較}
+一様に台をもつ $A$ 自由複体列には、命題~\ref{prop:C-base} を各段に適用して正規化超極限をとれる。実装では、基底の Koszul 分解から得られる支持つきランク商の冪等完備性を使い、$P_A^J$ の全対象に一様な代表元を構成してこの計算を適用する。$K_0(P_A^J)$ が一つの Koszul 類で生成されることは仮定しない。全対象上で基底からの一致が得られ、一般の dg 代数での降下の入力も与えられれば、補題~\ref{lem:conjsum} によって対称なノルム比較が成り立つ。この最後の議論でも二つの列の評価先を同じ圏にする必要はない。
+
+段ごとの長さ $0$ は正規化超極限の長さ $0$ を含意するが、逆は成り立たない。「段ごとに商をとり、次に列の商をとる」という説明を圏同値として使うには、射の分数表示の持ち上げと一様な制御を確かめる必要がある。ここではその同値を使わず、元の加群列から直接 Serre 商を作る。
+
+\subsection{パラメータ商と正値性への適用}\label{sec:planB-param}
+
+\paragraph{パラメータ商の比較と次数の上界}
+本文の補題~\ref{lem:lambdaAB} は二つに分ける。$R$ をネーター環、$x$ を $R$ 正則列、$B=R/(x)$、$U=C/xC$ とする。$J$ のある冪が $(x)C$ に入り、$\lambda H_q(x;C)=0$（$q>0$）、$\lambda(U)<\infty$ とする。このとき有限生成 $B$ 加群 $L$ について
+\[
+ \lambda\Tor_i^R(C,L)=\lambda\Tor_i^B(U,L)<\infty.
+\]
+実装は有限表示 $0\to L'\to B^a\to L\to0$ を使う次数移動による。$B^a$ に対する高次 Tor の長さ零を Koszul 分解から得て、二つの長完全列を比較する。零次は $C$ 線形なテンソル積の同型で同定し、次数に関する帰納法で等式と有限性を示す。この証明の結論は長さの一致であり、二つの Tor を長さの商で同定する自然同型の構成までは主張しない。
+\lean{\ld{IntersectionMultiplicity.ParameterQuotientTor} の \ld{ParamQuot.torClaim}（証明済み）。}
+
+次数の上界には、$L$ の $R$ 上の長さ $d$ 以下の有限自由分解と $x_jL=0$ を使う。$x$ の長さを $h$ とし、全ての $x^v$ の Koszul ホモロジーについて正次数の長さが零、$0$ 次の長さが有限とする。$x$ に台をもつ perfect 複体の圏で、$z=x$、$e=h$、$m=d$ として補題~\ref{lem:B-nit} を適用する。分解上の $x_j$ の作用は零ホモトピックであり、(Kos$_d$) は項によるフィルトレーションから出る。したがって $i>d-h$ では $\lambda\Tor_i^R(C,L)=0$ となる。$R$ が次元 $d$ の正則局所環で $L$ が有限生成なら、必要な分解の長さの上界が得られる。
+
+$R$ が正則で $x$ が正則列でも、$B$ は一般には正則局所環ではない。例えば $k[[u,v]]/(u^2)$ がそうである。本文の補題~\ref{lem:lambdaAB} と §\ref{sec:core} でもこの議論を使う。消滅は $B$ の大域次元ではなく $R$ 上の分解の長さから得る。
+
+\paragraph{核の場合の証明での役割}
+補題~\ref{lem:first} は $(D',\len_{D'})$ と $(C_D,\lambda_D)$ の対称な比較である。式~\eqref{eq:second} は $(E',\len_{E'})$ と $(C_E,\lambda_E)$ の漸近版の比較である。$C_D$ の $\lambda$-CM 性はパラメータ商と次数の上界を与え、有限近似を長さ $l$ の複体列にする。$C_E$ の Koszul 消滅はその列の高次を消す。極小性が $0$ 次の下界を与え、生成元数の正規化極限と非自明性が正値性を与える。比較に必要な有限性と、正値性に必要な消滅は、このように別々の入力である。
+
+\subsection{有限版で確認する主張}\label{sec:check-perfect}
+
+解説 §\ref{sec:perfect}（元論文 §3）の議論を、次の三つの確認に分ける。$A$ は正則局所環、$z$ はその正則パラメータ系、$T$ は有限局所 $A$ 代数で剰余体が $A$ と同じものとする。$C$ は $T$ 代数で、$A\to T\to C$ は与えられた $A$ 作用と両立する。普通の長さの側と正規化側は、同じ評価元 $\Perf_{\m}(T)$ を使うが、評価先は別々である。
+
+\begin{proposition}[有限版の評価関手の確認]\label{prop:check-perfect-euler}
+$(C,\lambda)$ が Koszul 有限なら、
+\[
+ H_i^{\ord}(P)=H_i(P),\qquad
+ H_i^C(P)=q_{\mathrm{fin}}H_i(P\otimes_T^LC)
+\]
+は、それぞれ有限長 $T$ 加群の圏と $\mathcal{A}_\lambda^{\mathrm{fin}}$ に値をとるホモロジー的関手で、(Fin) を満たす。命題~\ref{prop:B-euler} により、二つの Euler 評価は $K_0(\Perf_{\m}(T))$ の準同型になる。
+\end{proposition}
+\begin{proof}
+普通の側では $T$ のネーター性と閉点の台が有限長性を与える。正規化側では命題~\ref{prop:C-euler} が冪ねじれ、有限性、ホモロジー的関手の構成を与える。どちらも有界な perfect 代表で計算するので、有界性も得られる。
+\end{proof}
+
+\begin{proposition}[有限版の比較の入力の確認]\label{prop:check-perfect-comparison}
+上の設定で $r=\rank_A T$ とし、$e_\lambda(z;C)=r$ とする。係数拡大が誘導する $f\colon K_0(\Perf_{\m}(A))\to K_0(\Perf_{\m}(T))$ について
+\[
+ \chi_{\ord}\circ f=\chi_C\circ f=r\,\chi_A.
+\]
+さらに有限群 $G$ の作用について、不変な $T$ 側の類の正の整数倍が $f$ の像に入るなら、任意の $P$ の二つの共役和は一致する。
+\end{proposition}
+\begin{proof}
+命題~\ref{prop:C-base} を二つの長さ付き代数に適用する。普通の側は Koszul Euler 特性の階数公式から $r$、正規化側は仮定から $r$ となる。共役和には補題~\ref{lem:conjsum} を使う。本文では正規化側の値を $\lambda$-平坦性とランク条件から計算し、不変類の降下を群作用の幾何的条件と定理~\ref{thm:descent} の引用から供給する。
+\end{proof}
+ここで抽象的な比較に入力するのは「基底からの一致」と「不変類の降下」である。$H_*^C$ の同変性、$C$ 上の群作用や $\lambda$ の不変性は入力にしない。群作用は評価元の $K_0$ に入れ、共役和をとった実数値を比較する。
+
+\begin{proposition}[有限版の消滅と下界の入力の確認]\label{prop:check-perfect-vanishing}
+$P$ が $0$ 次から $m$ 次の有限自由項で表され、全ての $v\ge1$ について正次数の $\lambda H_j(z^v;C)$ が零であるとする。このとき $H_i^C(P)=0$（$i>m-e$ または $i<0$）。$m=e$ で $d_1$ が極小なら
+\[
+ \chi_C(P)=\lambda H_0(P\otimes_T C)
+ \ge\beta_0(P)\lambda(C/\m_TC).
+\]
+\end{proposition}
+\begin{proof}
+台から共通の零ホモトピーの指数を選び、(Supp) を得る。項による Koszul フィルトレーションで (Kos$_m$) を確認し、補題~\ref{lem:B-nit} を適用する。極小性による第零ホモロジーの全射を商関手で送って下界を得る。ここでは前の設定の Koszul 有限性も使い、Euler 評価の有限性を確保する。
+\end{proof}
+普通の評価についても準同型と共役和の比較はあるが、この消滅の入力は一般には満たさない。
+
+\subsection{ランク無視版で確認する主張}\label{sec:check-rank}
+
+解説 §\ref{sec:asymp}（元論文 §4）では、評価元を $P_T^J$ に置き換える。評価先は普通の長さと $\lambda$ のそれぞれについての列の Serre 商である。$J$ は本文と同じ基底の台を指定し、係数環上のイデアルはその像を使う。次の三つの確認が、有限版の三つに対応する。
+
+\begin{proposition}[ランク無視版の評価関手の確認]\label{prop:check-rank-euler}
+Koszul 有限性のもとで、一様に台をもつ自由複体列のホモロジー列を使う評価は $P_T^J$ の全対象に延長され、シフトと長完全列に両立し、各対象で有界となる。したがって二つの評価は (Fin) を満たすホモロジー的関手となり、Euler 評価は $K_0(P_T^J)$ の準同型になる。
+\end{proposition}
+\begin{proof}
+一様な台の指数 $v$ に対し、各段で
+\[
+ \lambda H_i(F_n\otimes_T C)
+ \le\left(\sum_k\rank F_{n,k}\right)M_v,
+ \qquad M_v=\sum_j\lambda H_j(z^v;C)<\infty
+\]
+なので長さ $O(s_n)$ が出る。共通の冪ねじれも零ホモトピーから得られる。直和因子では評価先の射影子の像をとり、長さは元の対象の長さ以下になる。支持つき局所化での分母の可逆化とシフトとの両立は §\ref{sec:planC-asymp} の構成による。長さの有限性は評価先の構成に含まれ、有界性は有界代表とその直和因子への延長から得る。最後に命題~\ref{prop:B-euler} を使う。
+\end{proof}
+この証明で構成するのは、(i) ホモロジー列が評価先に入ること、(ii) 支持つき局所化の分母を同型に送ること、(iii) 直和因子への延長の完全性、(iv) シフトとの自然な同型と有界性、(v) 一様支持の代表での計算公式、である。これらはそれぞれ独立に証明して接続している。任意の小ランク列の生のホモロジーが零となると仮定するものではない。
+
+\begin{proposition}[ランク無視版の比較の入力の確認]\label{prop:check-rank-comparison}
+$K(z)$ が $A$ の剰余体の分解であるとする。このとき $A$ 側の全対象は一様に台をもつ共通有界自由複体列で表され、その Euler 評価と係数変更後の評価を各段の値の正規化超極限で計算できる。二つの長さ付き代数の Koszul Euler 特性が等しければ、係数拡大の $K_0$ 写像 $f\colon K_0(P_A^J)\to K_0(P_T^J)$ の像上で二つの評価は一致する。さらに不変類の正の整数倍が $f$ の像に入るなら、全ての対象の共役和が一致する。
+\end{proposition}
+\begin{proof}
+基底の Koszul 分解から有界な t 構造と冪等完備性を得て、一様代表を構成する。その各段に命題~\ref{prop:C-base} を適用し、基準列 $s_n$ で割って超極限をとる。共通の有界な次数範囲と長さの上界があるので、有限 Euler 和と超極限は交換できる。全対象の代表と計算公式を使って $K_0$ 上の一致を得て、補題~\ref{lem:conjsum} を適用する。
+\end{proof}
+ここでは $K_0(P_A^J)$ の Koszul 一元生成を使わない。直和因子上での比較は、全対象の代表または同等の延長の証明によって確かめる。また二段階の係数変更 $A\to T\to C$ と直接の $A\to C$ の自然な同定が必要である。幾何的条件から不変類を降下させる議論は、これらとは別の入力である。
+
+\begin{proposition}[ランク無視版の消滅と下界の入力の確認]\label{prop:check-rank-vanishing}
+$X$ を $0$ 次から $m$ 次の自由列 $F$ の像とし、商で全ての $z_j^v$ が $X$ に零作用するとする。上の評価関手について、正次数の $\lambda H_j(z^v;C)$ が零なら、$H_i^C(X)=0$（$i>m-e$ または $i<0$）。$m=e$ で各 $F_n$ が $1$ 次で極小なら
+\[
+ \chi_C(X)\ge
+ \left(\lim_\U\frac{\beta_0(F_n)}{s_n}\right)\lambda(C/\m_TC).
+\]
+\end{proposition}
+\begin{proof}
+$F$ 自体の一様支持は使わない。$K_v\otimes F$ の一様支持とその評価の計算公式を使い、各段で Koszul の項によるフィルトレーションをとる。指定範囲外のホモロジー列は各段で長さ零なので評価先で零となり、(Kos$_m$) を得る。(Supp) は商での零作用として与えられている。補題~\ref{lem:B-nit} を適用して消滅を得る。極小性の全射を列の商に送り、補題~\ref{lem:B-h0} で下界を得る。
+\end{proof}
+既存の二項係数の数値公式から非負性を使って長さの消滅を得る方法でも、忠実な長さによって同じ零対象の結論に戻せる。実装では対象としての抽象的消滅を使い、数値の二項係数公式との対応も証明している。
+
+\subsection{仮定の役割と実装の対応}\label{sec:planB-todo}\label{sec:planC-lean}
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright}p{4.1cm}>{\raggedright\arraybackslash}X}
+\toprule
+条件 & 得られるもの \\
+\midrule
+Koszul 有限性と台 & ホモロジー的評価の (Fin)、$K_0$ 上の Euler 評価 \\
+基底の Koszul 分解 & 基底から来る類の評価を $e_\lambda$ 倍で計算 \\
+二つの $e_\lambda$ の一致と降下 & 共役和の一致 \\
+スカラーの零作用と Koszul 消滅 & 新交叉型の消滅 \\
+極小性と長さの単調性 & 第零次の下界 \\
+非自明性と生成元数の下界 & Euler 評価の正値性 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+各行には上で述べた設定も必要である。これは仮定の強弱の階層ではなく、結論ごとの入力の分離である。普通の長さと正規化長さはどちらも有限 Euler 評価を与えるが、高次の Koszul 消滅はそれぞれ別に確認する。
+
+\paragraph{共通層を使う証明経路（2026年10月11日）}
+現在の実装は、共通定理、具体的な実現、論文の主張への適用という順に依存する。共通層は \ld{Paper} や具体的な複体列に依存しない。従来の P1--P8 の計画との対応は次のとおりである。
+\begin{enumerate}[label=(P\arabic*)]
+ \item \textbf{長さ・Euler・比較。}
+ \ld{CategoryTheory.ExactSequenceEuler} と \ld{HomologicalEuler} が長完全列の加法性と \ld{homologicalEulerK0} を与える。\ld{SerreLength} が零長さの商を扱い、\ld{GroupTheory.ConjugateSum} と \ld{EulerComparison} が二つの評価の比較を与える。Euler 評価の一意性・引き戻し・自然同型による一致も証明済みである。
+
+ \item \textbf{反復錐・消滅・下界。}
+ \ld{CategoryTheory.IteratedCone} が二項直和による分裂、零対象としての消滅、第零次の同型と全射による下界を与える。\ld{ConeLengthBinomial} の数値公式とも接続している。消滅と下界はこの再帰表示から得られる。
+
+ \item \textbf{長さ付き代数の評価先。}
+ \ld{LengthAlgebra.SerreQuotient} と \ld{FiniteQuotientEquivalence} が、有限長さの商、大きな商、その有限部分との完全な同値を構成する。長さ・零対象・ホモロジー・Euler・$K_0$ 評価の対応まで証明済みである。有限生成加群だけに制限してはいない。
+
+ \item \textbf{有限射影版の実現。}
+ \ld{SupportedPerfectHomotopy} は任意の可換環上の支持つき有限射影複体の圏である。幾何学的支持とスカラーの冪の零作用の同値、有限射影項の Koszul 上界、商値ホモロジーのシフト・完全性・有界性を確認し、P1・P2 を適用する。
+
+ \item \textbf{基底公式と対称比較。}
+ \ld{LengthAlgebra.KoszulFormula} が任意の実数 $e_\lambda$ による基底公式を与え、\ld{Comparison} が二つの $e_\lambda$ の一致と降下から共役和を比較する。高次消滅や $e_\lambda=\rank$ は一般公式の仮定にしていない。
+
+ \item \textbf{ランク無視版の実現。}
+ \ld{SequenceHomologyLocalization}、\ld{CompletedHomology}、\ld{PaperRankEvaluation}、\ld{PaperBaseChangeEvaluation} により評価を構成する。\ld{Paper.Section4.UniformRepresentative} が $A$ 側の全対象の一様代表を与える。各段の基底公式を極限に移した後、P1 の比較を使う。\ld{PaperVanishing} と \ld{PaperMinimalLowerBound} は P2 の適用である。
+
+ \item \textbf{パラメータ商と明示した有限近似への適用。}
+ \ld{ParamQuot.torClaim} が Tor の長さの環変更を、\ld{ParamQuot.len_torAlg_eq_zero} が上の環の分解と共通消滅から次数の上界を与える。§\ref{sec:core} の比較と正値性も、有限近似・支持・極小性などを明示して共通定理に接続した。元の素イデアル商から必要な全データを存在構成する作業は今回の範囲に含めない。
+
+ \item \textbf{旧評価との接続と本文の整理。}
+ 有限自由版の \ld{lambdaEuler_cone} は、有限な冪ねじれ加群の長完全列を P1 に入力する証明に移した。ランク商・冪等完備化後の $K_0$ 評価も共通の \ld{homologicalEulerK0} で定義する。本文の §\ref{sec:perfect}・§\ref{sec:asymp} と付録の状態一覧をこの証明経路に合わせた。
+\end{enumerate}
+
+\paragraph{新旧のモデルと群作用}
+旧 \ld{K0Supported} は有界有限自由複体の型から関係式で作る群である。新しい有限射影圏の \ld{TriangulatedK0} へは \ld{freeToPerfectK0} があり、局所環上では逆写像をもつ。任意の可換環でこの比較が同型とは主張しない。
+
+\ld{LengthAlgebra.EulerCompatibility} は、通常・正規化の旧評価が、それぞれの有限性・台の仮定のもとで新評価の引き戻しと一致することを示す。旧数値定義が無限長さや無限和に用いる \ld{toReal}・\ld{finsum} の規約は、新しい有限なホモロジー的評価の意味とは区別する。公開入口は具体的計算と従来の仮定を受け付けるために残すが、長完全列の加法性を重複して証明してはいない。
+
+\ld{PerfectComplex.K0Functoriality} は係数変更との可換性と、実際のひねり関手からの群作用を構成する。比較写像の同変性は任意の可換環で成立し、係数環が局所環なら旧降下入力も移せる。降下そのものをこの構成で証明したわけではない。
+
+\paragraph{証明済みの仮定確認と引用入力}
+命題~\ref{prop:check-perfect-euler}--\ref{prop:check-perfect-vanishing} と命題~\ref{prop:check-rank-euler}--\ref{prop:check-rank-vanishing} の確認は、上の圏と関手について実装されている。とくに局所化の分母の可逆化、直和因子への延長、全対象の一様代表を未証明の仮定として追加してはいない。
+
+一方、比較に必要な不変類の降下は独立な入力である。具体的な Lemma 3.5 は \ld{Inputs.theorem_3_1_K0}、定理4.7は \ld{Section4.supportedRankK0_descent} を引用する。後者には dg 表示と一般係数の降下への接続が含まれる。正則局所環から Koszul 分解を供給する経路は \ld{Inputs.isWeaklyRegular_of_span_eq_maximalIdeal} に依存する。これらを引数にとる一般定理と、名前付きの未証明定理を呼ぶ具体的適用を区別する。
+
+\paragraph{検証と現在の到達点}
+直前の Lean の全体ビルドは3478ジョブで成功した。共通層・評価・主要適用先47宣言と、係数変更・群作用21宣言の計68宣言を公理監査し、66宣言は \ld{propext}、\ld{Classical.choice}、\ld{Quot.sound} のみであった。既存の \ld{lemma_3_5} と \ld{Section4.theorem_4_7_K0} の2宣言は、上記の引用に由来する \ld{sorryAx} を含む。これは選んだ宣言の監査であり、リポジトリ全体の未証明入力が消えたという意味ではない。
+
+この抽象化で目指した、同じ Euler・比較・消滅・下界を二つの実現に適用する証明経路はそろった。今回の残作業は、§\ref{sec:future} の概念的な定義から入力を供給する接続である。その証明・適用・検証までを一区切りとする。具体的存在構成や主定理の完成へ作業範囲を広げることとは分けて扱う。
+
+
+%======================================================================
+\section{先行研究との関係}\label{sec:prior}
+
+この付録では、\ref{sec:planB} の枠組み（長さ関数、長さ $0$ の加群による Serre 商、長さ付きアーベル圏に値をとるホモロジー的評価）から、二つの先行研究がどう見えるかを整理する。一つは Cai--Lee--Ma--Schwede--Tucker（以下 CLMST、arXiv:2209.04046v4、Invent.\ Math.\ 244 (2026)）で、もう一つは Bhatt--Hochster--Ma（以下 BHM、arXiv:2410.18372、J.\ Reine Angew.\ Math.\ 835 (2026)）である。番号は CLMST は arXiv v4、BHM は arXiv v1 による（BHM の §6 の番号が Crelle 版でも同じかは未確認）。
+
+以下では、評価の係数（CM な対象）を次の三つの型に分けて呼ぶ。
+\begin{itemize}
+  \item 型 (i)：有限生成加群と普通の長さ（評価先は有限長加群の圏）。
+  \item 型 (ii)：巨大代数と長さ関数 $\lambda$（評価先は $\mathcal{A}_\lambda$）。CLMST の perfectoid 化や $D_{\mathrm{perf}}$ がこれに当たる。
+  \item 型 (iii)：有限加群の列と正規化した長さ $\lim_\U\ell(\cdot)/s_n$（評価先は §\ref{sec:planC-asymp} の列の Serre 商）。
+\end{itemize}
+
+\subsection{CLMST：入力の層}\label{sec:prior-clmst}
+
+CLMST は、混標数の完備局所整域 $R$ と、その中の正則な基底 $A = W(k)[[x_2,\dots,x_d]]$ について、perfectoid 化 $C = R^{A_\infty}_{\mathrm{perfd}} = (R\otimes_A A_\infty)_{\mathrm{perfd}}$ を調べている（Notation 4.0.1）。解説で使うのは次の結果である。
+\begin{itemize}
+  \item \textbf{Def.~2.2.1、Prop.~2.2.3、2.2.6}：Faltings の正規化長さ $\lambda_\infty$ を、$A_\infty^{nc}$ 上の $\m_A$-冪ねじれ加群の上に3段階（有限表示、有限生成、一般）で定義する。短完全列で加法的で、推移写像が単射（または全射で値が有限）の有向余極限と交換する。
+  \item \textbf{Thm.~4.0.3}：$C$ は $A$ 上 $g$-almost flat で、$g$-almost faithful。
+  \item \textbf{Cor.~4.0.4}：$A_n\otimes_A R$ の任意のパラメータ系 $\bar y$ について、$H_i(\bar y; C)$（$i>0$）は $(g)_{\mathrm{perfd}}$ で消える（almost CM）。
+  \item \textbf{Prop.~4.0.10}：almost で同型な加群は $\lambda_\infty$ が等しく、特に almost zero な加群は $\lambda_\infty = 0$。CLMST はこれを「almost 加群に正規化長さが定義できる」と解釈している。逆は一般に成り立たず、$\lambda_\infty = 0$ からは $v$-almost zero しか出ない（Lemma 4.0.13、Shimomoto）。
+  \item \textbf{Prop.~4.0.14}：$\lambda_\infty(C/\bar yC) = p^{-nd}\,e(\bar y; A_n\otimes_A R)$。特に $\lambda_\infty(C/\m_A C) = \rank_A R$。
+  \item \textbf{Cor.~4.0.18}：perfectoid Hilbert--Kunz 重複度 $e_{\mathrm{perfd}}(I) = \lambda_\infty(C/IC)$ は $e(I)$ 以下で、$I$ がパラメータイデアルなら等号。
+\end{itemize}
+CLMST には、複体の Euler 特性、$K_0$、Dutta 重複度、lim CM 列は現れない。
+
+\paragraph{概念の対応}
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright}p{3.6cm}>{\raggedright}X>{\raggedright\arraybackslash}X}
+\toprule
+この解説 & CLMST & 関係 \\
+\midrule
+長さ関数 $\lambda$（定義~\ref{def:lengthfn}） & 正規化長さ $\lambda_\infty$（Def.~2.2.1） & $\lambda_\infty$ はその一例 \\
+長さ $0$ の加群による Serre 商 $\mathcal{A}_\lambda$（定義~\ref{def:B-alambda}） & almost 加群の圏と、その上の正規化長さ（Prop.~4.0.10） & 商は「加群 $\to$ almost 加群 $\to\mathcal{A}_\lambda$」と続く。後半の包含は真（Lemma 4.0.13） \\
+長さ付きアーベル圏（定義~\ref{def:B-lenab}） & なし & CLMST は長さが almost 加群に降りることまで。忠実な長さをもつアーベル圏としての扱いと、ホモロジー的評価はこの解説の視点 \\
+$\lambda$-平坦（定義~\ref{def:lengthalg}） & almost flat（Thm.~4.0.3） & almost flat と Prop.~4.0.10 から $\lambda$-平坦 \\
+$\lambda$-CM（定義~\ref{def:lambdacm}） & almost CM（Cor.~4.0.4） & almost CM と Prop.~4.0.10 から $\lambda$-CM。定理~\ref{thm:existence} の混標数の場合はこの合成 \\
+ランク、$\lambda(C/xC) = e$ & Prop.~4.0.14、Cor.~4.0.18 & そのまま対応 \\
+弱い $\lambda$-CM（$\lambda$-重複度 $=$ $0$ 次の長さ） & パラメータイデアルで $e_{\mathrm{perfd}} = e$（Cor.~4.0.18） & 同じ現象 \\
+複体の評価、$K_0$ 上の準同型、$e_\lambda$ 公式、対称なノルム比較（命題~\ref{prop:C-euler}、\ref{prop:C-base}、定理~\ref{thm:C-norm}） & なし & 元論文 §3--§4 をこの解説で抽象化した層 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\paragraph{まとめ}
+CLMST が与えるのは「$\lambda$-CM で、パラメータ商の長さが重複度に等しい長さ付き代数が存在する」という\textbf{入力の層}であり、そこへ至る論法（almost で消えるなら $\lambda$ でも消える）も Prop.~4.0.10 に書かれている。長さ付きアーベル圏に値をとるホモロジー的評価と、その上の比較の一般論は、先行研究に対応するものが見当たらない。
+
+\subsection{BHM：lim CM 列}\label{sec:prior-bhm}
+
+\paragraph{BHM がやっていること}
+BHM は、正則局所環 $T$ 上の正値性を、両側の商整域 $R = T/P$、$S = T/Q$ の「極限で CM な有限加群の列」に帰着する。
+\begin{itemize}
+  \item \textbf{lim CM 列}（Def.~1.1、4.2）：有限生成 $R$ 加群の列 $(M_n)$ で、あるパラメータ系 $x$ について $\ell H_i(x;M_n) = o(\nu(M_n))$（$i\ge1$）となるもの。$\nu$ は極小生成元数。パラメータ系の取り方によらず（Thm.~4.6）、$R$ が整域なら $\nu$ を階数に替えてもよい（Thm.~4.17）。
+  \item \textbf{弱い lim CM}（§4.1）：$\chi_1(x;M_n) = o(\nu(M_n))$。lim CM なら弱い lim CM（Prop.~4.8）。弱い lim CM なら $\lim\ell H_0(x;M_n)/\rank M_n = e(x;R)$（Lemma 4.16）。
+  \item \textbf{存在}（Thm.~5.4）：標数 $p$ で $R$ が F-有限なら $\{F^e_*R\}$ は lim CM。混標数での存在は限定的。
+  \item \textbf{正値性}（Thm.~6.1）：$R$、$S$ がともに lim CM 列 $(M_n)$、$(N_n)$ をもてば、$\chi(R,S) = \lim\ell(M_n\otimes N_n)/(\rank M_n\cdot\rank N_n)\ge1$。
+\end{itemize}
+Thm.~6.1 の証明は3段である。
+\begin{enumerate}
+  \item 消滅定理と双加法性により、各 $n$ で厳密に $\chi(M_n,N_n) = \rank M_n\cdot\rank N_n\cdot\chi(R,S)$。
+  \item 両側のパラメータ系の Koszul 複体を同時に使う多重 Tor の評価で、$i\ge1$ の $\ell\Tor_i(M_n,N_n)$ は $o(\rank M_n\cdot\rank N_n)$。
+  \item $\ell(M_n\otimes N_n)\ge\nu(M_n)\nu(N_n)\ge\rank M_n\cdot\rank N_n$（Rem.~6.2）。
+\end{enumerate}
+Galois 拡大や K 理論の降下は現れない。
+
+\paragraph{lim CM と $\lambda$-CM}
+\begin{enumerate}
+  \item \textbf{lim CM は列の圏での $\lambda$-CM である。} §\ref{sec:planC-asymp} の列の Serre 商で、長さを $L((V_n)) = \lim_\U\ell(V_n)/\nu(M_n)$ とおく。lim CM は $L(H_i(x;M_n)) = 0$（$i\ge1$）、すなわち列 $(M_n)$ がこの圏で $\lambda$-CM であることに当たり、全ての非単項超フィルターについて成り立つことと同値である。
+  \begin{itemize}
+    \item パラメータ商の長さの有限性は自動的である（$\nu\le\ell H_0\le\ell(R/x)\,\nu$、BHM Rem.~4.13）。
+    \item $\nu$ で正規化すると $L((M_n/\m M_n)) = 1$ で、非自明性も自動的である。BHM で正値性が $\nu\ge\rank$ から出るのはこのためである。
+    \item 弱い lim CM は弱い $\lambda$-CM（$\lambda$-重複度 $=$ $0$ 次の長さ）に当たる。$\lambda$-重複度は Serre の公式から自動的に $\rank\cdot e(x;R)$ で、BHM Lemma 4.16 はこの形である。
+  \end{itemize}
+  BHM の対象は代数ではなく加群の列だが、\ref{sec:planB} の一般論は $C$ の代数構造をほとんど使わないので、この違いは問題にならない。
+  \item \textbf{標数 $p$ では同じものの二つの見方である。} 列として $\{F^e_*R\}$ は lim CM（BHM Thm.~5.4）、極限として $R_{\mathrm{perf}}$ と $\lambda_\infty$ は $\lambda$-CM（Roberts の Frobenius ホモロジー定理、定理~\ref{thm:existence} の標数 $p$ の場合）。正規化は BHM が $\nu$、$\lambda_\infty$ が $p^{ed}$ で、比は Hilbert--Kunz 重複度のような定数である（BHM Lemma 5.3）。
+  \item \textbf{混標数では二つの見方が分かれる。} $\lambda$-CM 代数（型 (ii)）を lim CM 列（型 (iii)）に降ろすには、$\lambda$ が $D$ 上有限な段で計算できる必要がある。Ishiro--Shimomoto（arXiv:2509.06527、Thm.~3.17）は、$D$ 上の perfectoid tower があればその段が lim CM 列になることを示した。CLMST の $\lambda$-CM 代数は正則な基底 $A$ の塔で $\lambda$ を測るので、$D$ 上の lim CM 列には直接は降りない。
+  \item \textbf{列の使い方が逆である。} BHM では列は係数（CM な対象）の側にあり、評価されるのは単一の有限加群どうしの Tor である。元論文の §\ref{sec:asymp} では CM な対象は単一の $\lambda$-CM 代数 $C_E$ で、列は評価される自由複体の側にある。§\ref{sec:planC-asymp} の列の Serre 商は、どちらの使い方も同じ形で扱える。元論文の有限近似で作る有限長 $B$ 加群の列 $M_n$ は $D$ 上の lim CM 列ではなく、$C_D$ の $\lambda$-CM 性をパラメータ商で $B$ に移したもの（$\lambda$ の意味で射影次元 $\le l$、補題~\ref{lem:lambdaAB}）を列の側に映したものである。
+\end{enumerate}
+
+\paragraph{正値性の二つの証明の対比}
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright}p{2.6cm}>{\raggedright}X>{\raggedright\arraybackslash}X}
+\toprule
+ & BHM Thm.~6.1 & 元論文 \\
+\midrule
+CM な対象 & 両側の lim CM 列（有限加群、型 (iii)） & 両側の $\lambda$-CM 代数（有限でない、型 (ii)） \\
+存在 & 混標数では未知 & CLMST により無条件 \\
+$\chi(D,E)$ との比較 & 消滅定理だけで厳密に階数倍 & 有理 K 理論の降下（定理~\ref{thm:C-norm}）と Galois 閉包、ランク無視の圏 \\
+高次の消滅 & 両側の Koszul を同時に使う多重 Tor & $D$ 側の $\lambda$ 版 Auslander--Buchsbaum と $E$ 側の新交叉型の消滅 \\
+正値性 & $\nu\ge\rank$ & 非自明性（系~\ref{cor:pos}）と生成元数の下界 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+CM な対象が有限加群なら、普通の長さで測れるので、二つの評価が基底から来る類で一致すること（定理~\ref{thm:C-norm} の仮定）は消滅定理から自動的に出る。巨大代数ではそうならないので、元論文は降下で補う。この意味で、元論文の主定理は「BHM Thm.~6.1 の $\lambda$-CM 代数版」と読める。BHM では入力（両側の lim CM 列）の存在が混標数で未知であるのに対し、元論文の入力（両側の $\lambda$-CM 代数）は CLMST により存在し、代償として比較に降下とランク無視の圏が要る。
+
+\paragraph{確かめていないこと}
+\begin{itemize}
+  \item BHM Thm.~4.6（パラメータ系への非依存性）の $\lambda$-CM 版が一般の $\lambda$ で成り立つか。BHM の証明は有限加群の長さの評価を使う。解説では「任意のパラメータ系」を定義に入れているので影響はない。
+  \item lim CM 列から巨大 CM 加群が出ること（BHM §9、Dietz 閉包）の $\lambda$-CM 版。
+  \item BHM §6 の番号が Crelle 版でも同じか。
+\end{itemize}
+
+
+\subsection{OpenAI の Lech の論文と、小さな CM 加群の反例}\label{sec:prior-lech}
+
+元論文と同日に、同じ方法を使う論文が二つ公開されている（openai/math の \ld{preprints/} 以下）。
+\begin{itemize}
+  \item OpenAI, \emph{Lech's multiplicity conjecture}（2026-09-23）。以下「Lech の論文」。
+  \item OpenAI, \emph{A Complete Local Domain without a Small Cohen--Macaulay Module}（2026-09-23）。以下「小さな CM 加群の論文」。
+\end{itemize}
+
+\paragraph{Lech の論文の主張と方法}
+主定理は、Noetherian 局所環の平坦な局所準同型 $R\to S$ について $e(R)\le e(S)$（Lech の重複度予想）を、次元・剰余体・標数の制限なしに示すというものである。道具立ては元論文と共通で、この解説の枠組みにかなり近い形で書かれている。
+\begin{itemize}
+  \item \textbf{§2.1（長さの仮定）}：$I = (z_1,\dots,z_h)C$ の冪で消される $C$ 加群の上の加法的な長さ $\lambda$ をとり、$C$ のネーター性は課さない。長さ $0$ の加群の直和と有向余極限が（共通の $I$ の冪で消される範囲で）長さ $0$ であること、$\lambda(C/(z^a)C) = a^h\mu$、$\lambda H_i(z^a;C) = 0$（$i>0$）を仮定する（式 (2.1)）。さらに、長さ $0$ の対象は Serre 部分圏をなすので、その商で核・像・余核・有限スペクトル系列を扱ってよい、と明記している。\ref{sec:planB} の $\mathcal{A}_\lambda$ を、名前をつけずに使っている形である。
+  \item \textbf{Lemma 2.2}：Koszul 複体の分裂 $F\otimes K_a\simeq\bigoplus F[|T|]$ と、Koszul を先にとる二重複体の議論で、短い自由複体の正の次数のホモロジーが長さ $0$ であることを示す。補題~\ref{lem:nit}、\ref{lem:B-nit} と同じ議論である。
+  \item \textbf{§3「Normalized length algebras」、Theorem 3.1}：元論文の Theorem 2.5（定理~\ref{thm:existence}）に、標数 $p$ で $\lambda(C/HC) = e_{\mathrm{HK}}(H,D)$、混標数で $\lambda(C/HC)\le e(H,D)$（CLMST Cor.~4.0.18 による）を加えたもの。Lemma 3.2 は元論文の Lemma 2.4 に当たる。
+  \item \textbf{Theorem 2.1（主な道具）}：長さ $h$ 以下で $V(I)$ の外で可縮、交代階数 $0$ の有限自由複体 $F$ の微分の成分が $I^s$ に入るとき、
+  \[
+    \lambda H_0(F) \;\ge\; \mu s^h\Bigl(b_0 - \frac{A_h}{s}\sum_i b_i\Bigr).
+  \]
+  定数 $A_h$ は $h$ だけによる。爆発と Eisenbud--Schreyer のベクトル束で示される。
+\end{itemize}
+
+\paragraph{Dutta 重複度}
+Lech の論文 §5.1（Cor.~5.4 の証明）は、標数 $p$ の局所環 $R$ 上の短い複体 $G$（長さ $\dim R$ 以下で有限長ホモロジーをもつ有限自由複体）について、$C = R_{\mathrm{perf}}$ と正規化長さで
+\[
+  \lambda H_0(C\otimes_R G) \;=\; \chi^R_\infty(G)\qquad\text{（Dutta 重複度）}
+\]
+を示している。高次の項は Roberts の Frobenius ホモロジー定理で消える。つまり、この解説の言葉で「$R_{\mathrm{perf}}$ による評価は Dutta 重複度である」ことが、短い複体については明記されている。Cor.~5.4 自体は、標数 $p$ の完備局所整域上の短い複体について $\chi_\infty(F)\ge e(R)$ を示しており、Iyengar--Ma--Walker の予想（ANT 16 (2022)、Conjecture 8.1）の整域の場合に当たる。
+
+\paragraph{lim Ulrich 列との関係}
+Ma（Invent.\ Math.\ 231 (2023)）は、弱い lim Ulrich 列（重複度と生成元数の比が $1$ に近づき、高次の Koszul Euler 特性が生成元数に比べて無視できる有限加群の列）を構成して、標準次数付きの場合に Lech 予想を示した。Lech の論文は有限加群の列を使わず、単一の $\lambda$-CM 代数と上の一様な評価で置き換えている（序論では、Ulrich 加群や Ulrich 列を全ての源の環に要求しない方針だと述べている）。これは元論文と BHM の関係（§\ref{sec:prior-bhm}）と同じ構図である。
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright}p{2.8cm}>{\raggedright}X>{\raggedright\arraybackslash}X}
+\toprule
+予想 & 有限加群の列による条件付きの経路 & OpenAI の経路 \\
+\midrule
+Serre の正値性 & BHM の lim CM 列（型 (iii)） & $\lambda$-CM 代数（型 (ii)）と K 理論の降下 \\
+Lech の予想 & Ma の弱い lim Ulrich 列（型 (iii)） & $\lambda$-CM 代数（型 (ii)）と短い複体の一様な評価 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+どちらも有限加群の列の存在問題を迂回しており、lim CM 列や lim Ulrich 列そのものは構成していない。
+
+\paragraph{小さな CM 加群の反例}
+小さな CM 加群の論文の主定理（abstract による）は、剰余体 $\mathbb{C}$ の 3 次元完備 Noetherian 正規局所整域で、$0$ でない有限生成の極大 CM 加群をもたないものが存在する、というもので、小さな CM 加群予想の整域版を否定する。構成は滑らかな射影曲面の切断環 $R(X,H)$ で、小さな CM 加群をもてば $K_X^2 - 2c_2(X)\le 6H^2$ が成り立つ、という障害を使う。Lech の論文はこれを「有限加群を全ての環に要求する方法は普遍的でない」根拠として挙げ、ただしこの障害は弱い lim Ulrich 列の非存在までは意味しない、と注意している。
+
+\paragraph{まとめ}
+長さ付き代数とその Serre 商という枠組みは、OpenAI の Serre と Lech の二つの論文に共通する方法である。\ref{sec:planB} の整理は、この二つに共通する構造を取り出したものと位置づけられる。どちらの論文も有限加群の列の存在を示さずに、それが与えるはずの結論を $\lambda$-CM 代数から直接出す。一般の完備局所整域が lim CM 列や lim Ulrich 列をもつかは開いている。小さな CM 加群は一般には存在しない。
+
+
+
+%======================================================================
+\section{拡大すると高次の項が消える理由（直感的な説明）}\label{sec:intuition}
+
+この付録は、定理~\ref{thm:existence} の $\lambda$-CM 性がなぜ成り立つのかを、直感的な水準で説明する。議論はまだ精密ではなく、確かめていない主張を含む。精密化すべき点は最後にまとめる。
+
+\subsection{何が消え、何が残るのか}
+
+$D = R/P$、$E = R/Q$ は一般には CM でなく、$\Tor_i^R(D,E)$（$i>0$）が残りうる。そのため、$\chi(D,E)$ の各項を見ても正値性はわからない。元論文の証明は、この状況を次の二つに分けて扱う。
+\begin{enumerate}
+  \item \textbf{残る部分}：Euler 特性。$D$、$E$ を $\lambda$-CM 代数 $C_D$、$C_E$ に拡大して $\lambda$ で測ると、Euler 特性はランク倍 $r_D r_E\,\chi(D,E)$ になる。$C_D$ は $R$ 上有限でないので、この等式に K 理論の降下と有限近似（§\ref{sec:perfect}--§\ref{sec:asymp}）が要る。
+  \item \textbf{消える部分}：拡大した側の高次ホモロジー。$C_D$、$C_E$ が $\lambda$-CM なので、新交叉型の消滅（補題~\ref{lem:nit}）と $\lambda$ 版 Auslander--Buchsbaum（補題~\ref{lem:lambdaAB}）により、正の次数のホモロジーは $\lambda$ が $0$ になる。$0$ 次の項は非自明性（系~\ref{cor:pos}）から正である。
+\end{enumerate}
+消えるのは「$\lambda$ で測ると $0$」という意味であり、群として $0$ になるわけではない。また、元の $\Tor_i^R(D,E)$ が消えるわけでもない。元の側に戻すのは Euler 特性という不変量だけである。
+
+以下では、2 の前提である「拡大すると $\lambda$-CM になる」ことを三つの見方で説明する。
+
+\subsection{見方 1：CM でないことは、正則な基底の上で平坦でないこと}
+
+$A$ を $D$ の中の正則な基底（Cohen--Gabber）とし、$D$ は $A$ 上有限とする。
+\begin{itemize}
+  \item Auslander--Buchsbaum により、$D$ が CM であることと、$D$ が $A$ 上自由であることは同値である。
+  \item $A$ のパラメータ系 $t$ について $H_i(t;D) = \Tor^A_i(A/t, D)$ なので、高次 Koszul ホモロジーは $D$ が $A$ 上平坦でない度合いを測っている。
+\end{itemize}
+したがって、拡大の目標は「$D$ を $A$ の塔の上でほぼ平坦にすること」と言い換えられる。CLMST の Thm.~4.0.3（$C$ は $A$ 上 $g$-almost flat）はまさにこの形の主張である。補題~\ref{lem:lambdaAB} は、この見方を $\lambda$ の側で逆向きに使ったもの（$\lambda$-CM なら $\lambda$ の意味で平坦）と読める。
+
+\subsection{見方 2：欠陥は低次元にあり、主要項に比べて小さい}
+
+標数 $p$ では、増大度の比較として理解できる。例として Macaulay の曲線
+\[
+  D = k[[s^4, s^3t, st^3, t^4]]
+\]
+を考える。$\dim D = 2$、$\operatorname{depth} D = 1$ で、$H^1_\m(D)\cong k$ である。
+\begin{itemize}
+  \item パラメータ系 $z$ を $q$ 乗すると、主要項は $\ell(D/z^{[q]})\approx q^2 e(z;D)$ と $q^2$ の速さで増える。
+  \item 一方、高次の項 $\ell H_1(z^{[q]};D)$ は $q$ によらず有界である（一般化 CM 環で、局所コホモロジー $H^1_\m(D)$ の長さで抑えられる。この例での計算は未確認）。
+  \item $D^{1/q}$ の段で $\lambda = \ell/q^h$ と正規化すると、主要項は $e(z;D)$ に収束し、欠陥は $O(q^{-2})\to 0$ となる。
+\end{itemize}
+一般の場合も、Roberts の Frobenius ホモロジー定理 $\ell H_i(z^{[q]};D) = o(q^h)$（$i>0$）が同じことを言っている。CM でない欠陥はパラメータを深くしても主要項ほど速くは増えない。$D^{1/q}$ に移ることは「パラメータを深くして体積で割る」操作であり、$\lambda$ はこの割り算を極限まで済ませた量である。この意味で、$D_{\mathrm{perf}}$ の $\lambda$-CM 性は $\{F^e_*D\}$ が lim CM 列であること（BHM Thm.~5.4、§\ref{sec:prior-bhm}）の極限版である。
+
+ここで効いているのは $D$ のすべての元の $q$ 乗根をとること（$D^{1/q}$）であって、基底 $A$ のパラメータの $q$ 乗根を足すこと（$D\otimes_A A^{1/q}$）ではない。後者は平坦な基底変換で、それだけでは欠陥は減らない（\S\ref{sec:intuition-p}）。
+
+\subsection{見方 2 の補足：ホモロジーの次数ごとの増大度}\label{sec:intuition-growth}
+
+見方 2 で起きていることを、次数ごとに分けて書く。以下は標数 $p$ の話である。
+
+\paragraph{固定したパラメータが、塔の上では深い冪になる}
+$D^{1/q}$ は Frobenius によって環として $D$ と同型であり、この同型で $D$ の元 $z$ は $z^q$ に対応する。言い換えると、$D^{1/q}$ のパラメータ系 $z^{1/q}$ から見れば、最初に固定したパラメータ系 $z$ は $q$ 乗という深い冪である。したがって
+\[
+  \lambda H_i(z; D^{1/q}) = q^{-h}\,\ell_D H_i(z^{[q]}; D)
+\]
+であり、$\lambda$ を計算することは「同じ形の環で、パラメータ系をどんどん深い冪にして Koszul ホモロジーの長さを測り、体積 $q^h$ で割る」ことである。基底の塔 $A^{1/q}$ でも同じで、$A$ のパラメータ $t_j$ は $A^{1/q}$ の上では $(t_j^{1/q})^q$ である。
+
+\paragraph{次数ごとの増大度}
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright}p{2.2cm}>{\raggedright}X>{\raggedright}p{3.2cm}>{\raggedright\arraybackslash}p{2.6cm}}
+\toprule
+次数 & 対応する局所コホモロジー & $\ell_D H_i(z^{[q]};D)$ の増大度 & $q^{-h}$ で割ると \\
+\midrule
+$i = 0$ & $H^h_\m(D)$（最上次。双対は次元 $h$） & $\approx e(z;D)\,q^h$ & $e(z;D)$ \\
+$i\ge 1$ & $H^{h-i}_\m(D)$（最上次より下。双対は次元 $\le h-i$） & $o(q^h)$（Roberts）。目安は $O(q^{h-i})$（未確認） & $0$ \\
+\bottomrule
+\end{tabularx}
+\end{center}
+表の「対応する局所コホモロジー」は次の意味である。Koszul 複体は自己双対で $H_i(z;D)\cong H^{h-i}(z;D)$ であり、$H^j_\m(D) = \varinjlim_t H^j(z^t;D)$ である。したがって、パラメータを深くしたときの $H_i(z^t;D)$ は $H^{h-i}_\m(D)$ を近似している。局所双対により、$H^j_\m(D)$ の Matlis 双対の次元は $j$ 以下である。
+\begin{itemize}
+  \item $i = 0$ の項は最上次の $H^h_\m(D)$ に対応し、$D$ の次元 $h$ をそのまま感じる。だから $q^h$ の速さで増える。
+  \item $i\ge 1$ の項は、それより下の $H^{h-i}_\m(D)$ に対応する。これは「次元 $h-i$ 以下のもの」で、パラメータの $q$ 乗で切り取ると、目安として $q^{h-i}$ 程度にしか増えない。次数が上がるほど増大度は小さくなる。
+\end{itemize}
+CM であることは $H^j_\m(D) = 0$（$j<h$）、つまり最上次以外の局所コホモロジーが消えることだった。正規化した長さ $\lambda$ で見ることは、最上次（次元 $h$）だけを残し、それより下を無視することに当たる。だから $\lambda$ で見ると「CM のように振る舞う」。
+
+Macaulay の曲線（$h = 2$）では、$H^1_\m(D)\cong k$ は有限長（双対の次元 $0$）なので、$\ell H_1(z^{[q]};D)$ は有界である。これは目安 $O(q^{h-1}) = O(q)$ よりさらに小さい。
+
+\paragraph{混標数では仕組みが違う}
+混標数で塔の段 $A_n\otimes_A D$ に移るだけなら、これは平坦な基底変換なので、$\ell H_i(z;A_n\otimes_A D)$ と体積 $p^{nh}$ は同じ割合で増え、正規化した欠陥は減らない（\S\ref{sec:intuition-p}）。混標数では、増大度の差ではなく、perfectoid 化による分岐の希釈（見方 3）が欠陥を消している。上の次数ごとの描像は、そのままでは標数 $p$ の話である。
+
+\subsection{平坦でない場所と Frobenius：Koszul、局所コホモロジー、$W$ の関係}\label{sec:intuition-W}
+
+この小節では、見方 1（平坦性）と見方 2（増大度）を一つの描像にまとめ、Koszul 複体による見方、局所コホモロジーによる見方、平坦でない場所 $W$ による見方がどう対応するかを書く。標数 $p$ で、$A\subseteq D$ を正則な基底、$t$ を $A$ の正則パラメータ系、$r = \rank_A D$ とする。剰余体は perfect とする。
+
+\paragraph{何で割っているのか}
+これまで「体積で割る」と書いたが、正確には次のとおりである。$F^n_*A = A^{1/q}$ は $A$ 上ランク $q^h$ の自由加群である（Kunz）。$D^{1/q} = F^n_*D$ を $A$ 加群として見て、その Betti 数
+\[
+  \beta_i^A(F^n_*D) = \ell\,\Tor_i^A(k, F^n_*D) = \ell\,H_i(t; D^{1/q}) = \ell\,H_i(t^{[q]}; D)
+\]
+を、$F^n_*A$ のランク $q^h$ を単位として測る。$\lambda$ はこの正規化の極限である。
+\begin{itemize}
+  \item $i = 0$：$\beta_0^A(F^n_*D)/q^h = \ell(D/t^{[q]}D)/q^h\to e(t;D) = r$。
+  \item $i\ge 1$：$\beta_i^A(F^n_*D)/q^h\to 0$（Roberts）。
+\end{itemize}
+つまり $F^n_*D$ は、$A$ 上で「ランク $r q^h$ の自由加群に、相対的に小さい誤差を加えたもの」に近づいていく。これが $\lambda$-平坦でランク $r$（定義~\ref{def:lengthalg}）の中身であり、BHM の言葉では $\{F^n_*D\}$ が $A$ 上の lim CM 列であることに当たる。
+
+\paragraph{基底の根と、全ての元の根の違い}
+\begin{itemize}
+  \item 基底の根だけを足すと、$A$ 加群として $D\otimes_A A^{1/q}\cong D^{\oplus q^h}$ である。主要項も欠陥も同じく $q^h$ 倍になるので、比は変わらない。
+  \item 全ての元の根をとる $F^n_*$ は、各部分をその次元に応じて拡大する。次元 $w$ の素イデアル $\mathfrak{p}$ について、$F^n_*(A/\mathfrak{p})$ の $A/\mathfrak{p}$ 上の階数は $q^w$ である（剰余体が perfect なので、超越次数 $w$ の体の $q$ 乗根拡大の次数は $q^w$）。
+\end{itemize}
+$F^n_*$ は次元 $h$ の部分を $q^h$ 倍に、次元 $w<h$ の部分を $q^w$ 倍にする。欠陥がより低い次元にあれば、ランク $q^h$ を単位として測ったときに消えていく。
+
+\paragraph{平坦でない場所 $W$ と、その層別}
+$D$ は $A$ 上有限なので、$A$ 上の有限な自由分解をもつ。$E^c = \Ext^c_A(D,A)$ とおく。
+\begin{itemize}
+  \item $D_\mathfrak{p}$ が $A_\mathfrak{p}$ 上自由であることと、全ての $c>0$ で $E^c_\mathfrak{p} = 0$ であることは同値である。したがって平坦でない場所は $W = \bigcup_{c>0}\operatorname{Supp}E^c$ で、Auslander--Buchsbaum によりこれは $D$ が CM でない場所の像である。
+  \item $E^c_\mathfrak{p}\neq0$ なら $\operatorname{pd}D_\mathfrak{p}\ge c$ で、$\operatorname{pd}D_\mathfrak{p}\le\operatorname{ht}\mathfrak{p}$ なので $\operatorname{ht}\mathfrak{p}\ge c$ である。よって $\dim\operatorname{Supp}E^c\le h-c$。$c$ は「平坦でない度合いの次数」で、次数が高いほど小さい場所に住む。
+  \item $D$ は整域なので生成点で平坦であり、$\dim W<h$ である。$D$ が $S_2$（例えば正規）なら、高さ $2$ 以下の素イデアルで CM なので、$\dim W\le h-3$ である。
+\end{itemize}
+
+\paragraph{局所コホモロジーとの関係}
+正則な $A$ 上の局所双対により、$j<h$ について
+\[
+  H^j_\m(D)^\vee\cong\Ext_A^{h-j}(D,A) = E^{h-j}
+\]
+である（$\m$-冪ねじれは $\m_A$-冪ねじれと同じなので、$H^j_\m(D) = H^j_{\m_A}(D)$）。つまり、$j<h$ の局所コホモロジーは、次数 $c = h-j$ の平坦でない部分 $E^c$ の Matlis 双対である。\S\ref{sec:intuition-growth} の $K^j$ は $E^{h-j}$ のことで、$\dim K^j\le j$ は上の $\dim\operatorname{Supp}E^c\le h-c$ と同じ主張である。CM であること（$H^j_\m(D) = 0$、$j<h$）と、$A$ 上自由であること（$E^c = 0$、$c>0$）が同値であることも、この対応から読める。
+
+\paragraph{Koszul 複体との関係}
+$K(t;A)$ は $k$ の自由分解なので、$H_i(t;D) = \Tor^A_i(k,D)$ は閉点での平坦性の判定である。Auslander--Buchsbaum により、$H_i(t;D)\neq0$ となる最大の $i$ は $h-\operatorname{depth}D$ で、これは $0$ でない最小の局所コホモロジー $H^{\operatorname{depth}D}_\m(D)$ に対応する。より一般に、有限長加群 $V$ について $\Tor_i^A(V,D)^\vee\cong\Ext^i_A(D,V^\vee)$ を $\mathbf{R}\!\operatorname{Hom}_A(D,A)\otimes^{\mathbf{L}}_A V^\vee$ で計算すると、スペクトル系列
+\[
+  \Tor^A_{c-i}(E^c, V^\vee)\ \Longrightarrow\ \Tor_i^A(V,D)^\vee
+\]
+が得られる。$V = A/t^{[q]}$（Gorenstein なので $V^\vee\cong V$）とすると
+\[
+  H_{c-i}(t^{[q]};E^c)\ \Longrightarrow\ H_i(t^{[q]};D)^\vee \qquad (c\ge i)
+\]
+で、\S\ref{sec:intuition-growth} のスペクトル系列は、この形で書くと $W$ の層別と直接つながる。Koszul の次数 $i$ に寄与するのは $c\ge i$ の $E^c$ だけ、すなわち次元 $h-i$ 以下の場所に住む欠陥だけである。「Koszul の次数が上がるほど、効く欠陥の住む場所が小さくなる」というのが、次数と増大度の対応の正体である。
+
+Koszul 複体を深い冪 $t^{[q]}$ にとることは、局所コホモロジー（$H^j_\m(D) = \varinjlim_t H^j(t^t;D)$、$H_i(t;D)\cong H^{h-i}(t;D)$）に近づくことでもある。元論文は局所コホモロジーを表に出さず Koszul 複体で計算しているが、上のスペクトル系列は、Koszul 複体の計算が実質的に「$E^c$ を箱 $A/t^{[q]}$ で切り取った量」を数えていることを示している。
+
+\paragraph{三つの見方の対応}
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright}p{3.0cm}>{\raggedright}X>{\raggedright\arraybackslash}X}
+\toprule
+見方 & 欠陥を表すもの & $F^n_*$（$D^{1/q}$）での振る舞い \\
+\midrule
+Koszul 複体 & $H_i(t;D) = \Tor^A_i(k,D)$（$i\ge1$） & $H_i(t^{[q]};D) = \beta_i^A(F^n_*D)$ \\
+平坦でない場所 & $E^c = \Ext^c_A(D,A)$（$c\ge1$）、台は $W$、$\dim\le h-c$ & 次元の分だけ拡大：おおよそ $q^{\dim E^c}$ 倍 \\
+局所コホモロジー & $H^j_\m(D) = (E^{h-j})^\vee$（$j<h$） & Frobenius 作用で同じく拡大 \\
+対応 & 次数 $i$ に効くのは $c\ge i$、すなわち $j\le h-i$ & 増大度は目安 $q^{h-i}$、正規化すると $O(q^{-i})$ \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\paragraph{まとめ}
+\begin{enumerate}
+  \item 平坦なら高次の Koszul ホモロジーは消える。
+  \item $D$ は平坦ではないが、平坦でない部分 $E^c$ は低次元の場所 $W$ にあり、次数 $c$ が高いほど小さい場所にある。$E^c$ の双対が局所コホモロジーである。
+  \item $F^n_*$ は各部分をその次元の分だけ拡大するので、平坦な主要部分（次元 $h$）に比べて $E^c$ は相対的に小さくなる。
+  \item $F^n_*A$ のランク $q^h$ を単位として測ると、$F^n_*D$ はランク $r$ の自由加群に近づく。Koszul の次数 $i$ の欠陥は次元 $h-i$ 以下の部分から来るので、$O(q^{-i})$ で消える。
+\end{enumerate}
+基底の根だけを足すこと（$D\otimes_A A^{1/q}$）では全体が一様に $q^h$ 倍になるだけで、何も起きない（\S\ref{sec:intuition-p}）。
+
+\paragraph{$W$ は小さくならない}
+冪根をとっても、平坦でない場所 $W$ そのものは変わらない。
+\begin{itemize}
+  \item $D^{1/q}$ は環として $D$ と同型で、Frobenius は $\operatorname{Spec}$ の上で同相なので、$D^{1/q}$ が CM でない場所は $D$ と同じである。$F^n_*D$ は $A$ 上有限なので、Auslander--Buchsbaum により $A$ 上平坦でない場所も同じ $W$ である。
+  \item 極限の $D_{\mathrm{perf}}$ も、$W$ の点では平坦にならない。$\lambda$-平坦は本当の平坦ではない（$\lambda$ で $0$ でも群として $0$ ではない、と同じこと）。
+\end{itemize}
+変わるのは場所ではなく相対的な大きさだけである。平坦な主要部分は $q^h$ 倍、$W$ の上の欠陥は $q^{\dim W}$ 倍程度にしかならないので、ランク $q^h$ を単位として測ると欠陥の割合が $0$ に近づく。測度論で言えば、正方形の中の曲線は空でなくても面積 $0$ である、という状況に近い。$\lambda$ は「次元 $h$ の大きさ」を測る量で、Frobenius の塔はその測り方を有限段で近似している。
+
+\paragraph{確かめていないこと}
+\begin{itemize}
+  \item 「$F^n_*$ が次元 $w$ の部分をおおよそ $q^w$ 倍にする」ことを、高次の Tor（Betti 数）について正確な評価にすること。$0$ 次（生成元数）は Hilbert--Samuel から出るが、高次は \S\ref{sec:intuition-growth} のステップ 2 と同じ問題である。
+  \item スペクトル系列の添字の正確な形（CM の場合と一般化 CM の場合で整合することは確認した）。
+  \item 混標数で perfectoid 化が $p$ を法として $F_*$ の役をする（tilt）とき、同じ描像がどこまで成り立つか。
+\end{itemize}
+
+\subsection{定理 2.5 の証明との対応}\label{sec:intuition-thm25}
+
+ここまでの直感的な議論は、元論文 Theorem 2.5（定理~\ref{thm:existence}）の標数 $p$ の場合の証明に当たる。証明の各ステップと対応を並べる。設定は次のとおり。基底は Lemma 2.2 の $A = k[[t_1,\dots,t_h]]\subseteq D$（有限、生成的に分離的、剰余体は同じ）、塔は $A_n = A^{1/q}$、$\Lambda = \varinjlim A_n$。長さは Lemma 2.3 の $\lambda_\infty$ で、有限段の $A_n$ 加群 $V_n$ について $\lambda_\infty(V_n\otimes\Lambda) = p^{-nh}\,\ell_{A_n}(V_n)$（(2.2)）。$p^{nh}$ は $A_n$ の $A$ 上の階数である。
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright}p{0.6cm}>{\raggedright}X>{\raggedright\arraybackslash}X}
+\toprule
+ & 証明のステップ & 直感的な議論との対応 \\
+\midrule
+(1) & $C_D = D_{\mathrm{perf}}$。$B_q = \Lambda\otimes_{A^{1/q}}D^{1/q}$ は $C_D$ に入り（生成的分離性による線形無関性）、$q$ とともに増えて $C_D$ に至る & 「全ての元の根」は $D^{1/q}$ の部分。$B_q$ は $(A^{1/q}\subset D^{1/q})\cong(A\subset D)$ を $\Lambda$ へ平坦に基底変換したもので、「基底の根」は測るための土台としてだけ入る \\
+(2) & 有限段の公式 $\lambda_\infty(B_q/HB_q) = q^{-h}\,\ell_D(D/H^{[q]})$ & ランク $q^h$ を単位にする（(2.2) の $p^{-nh}$）。Frobenius 同型 $D^{1/q}\cong D$ で、固定した $H$ が $H^{[q]}$（深い冪）に移る \\
+(3) & トレースの分母 $g$（$A[1/g]\to D[1/g]$ が有限エタール）による制御 (2.7)：$g^{1/q}C_D\subseteq B_q$。$B_q/H\to C_D/H$ の核は $g^{1/q}$ で消され、$\lambda\le q^{-h}\ell(D/(H^{[q]},g)) = O(q^{-1})$ & 分岐から来る誤差。$V(g)$（次元 $h-1$）に住むので $q^{h-1}$ でしか増えない。「$F_*$ は次元の分だけ拡大する」原理が論文中で明示的に（Hilbert--Samuel として）使われている箇所。$W\subseteq V(g)$（エタールなら平坦） \\
+(4) & Hilbert--Kunz の極限と Lemma 2.4 から (2.8)：$\lambda(C_D/HC_D) = e_{\mathrm{HK}}(H,D)$ & $0$ 次の主要項（$\beta_0/q^h$ の極限） \\
+(5) & パラメータ系 $z$ について $\lambda_\infty H_i(z;B_q) = q^{-h}\ell_D H_i(z^{[q]};D)$。Roberts により $i>0$ で $0$ に近づく & CM でないことから来る誤差。高次 Koszul $=$ 高次 Betti 数で、$W$ 上の $E^c$ から来る（\S\ref{sec:intuition-W}）。論文は $o(q^h)$ だけを使い、次数ごとの速さ、$W$、局所コホモロジーは表に出さない \\
+(6) & $H_i(z;C_D) = \varinjlim H_i(z;B_q)$。共通の消去イデアル $(z)$ があるので、Lemma 2.4（$\lambda(V_a)\to0$ なら余極限の $\lambda$ は $0$。単射性は不要）から (2.4) & 「$W$ は消えないが $\lambda$ では $0$」の正確な形。有限段で比が $0$ に近づくことを、極限での $\lambda = 0$ に変える \\
+(7) & Koszul の Euler 特性 $\sum(-1)^i\ell H_i(z^{[q]};D) = q^h e$ と (2.8) から (2.5)。$e((t),D) = \rank_A D$ から (2.6) & $F^n_*D$ が「ランク $r q^h$ の自由加群」に近づくことの $r$ の部分 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\paragraph{読み取れること}
+\begin{enumerate}
+  \item 誤差は二種類あり、どちらも有限段で数えている。分岐から来る誤差（ステップ (3)）は $V(g)$ の次元による $O(q^{-1})$ で、論文に明示されている。CM でないことから来る誤差（ステップ (5)）は Roberts の $o(q^h)$ に任されている。
+  \item トレースの制御が要るのは $0$ 次だけである。一般の $H$ で $\lambda(C_D/HC_D)$ の値を正確に出すには、有限段から極限への写像の核を抑える必要がある。高次は $0$ になることだけ言えばよいので、Lemma 2.4 により単射性なしで済む。
+  \item $W$、$E^c$、局所コホモロジー、次数ごとの速さは論文に出てこない。これらは Roberts の定理の中身を開いたときの描像で、論文の証明はそれらを使わずに完結している。
+\end{enumerate}
+混標数では、論文はステップ (1)--(7) を CLMST の Cor.~4.0.4、Prop.~4.0.10、4.0.14 でまとめて置き換えている（定理~\ref{thm:existence}）。
+
+\subsection{見方 3：混標数では分岐が薄まる（almost purity）}
+
+混標数には Frobenius がないので、見方 2 の代わりに次の仕組みが働く。
+\begin{itemize}
+  \item $A[1/g]\to D[1/g]$ が有限エタールとなる $g\neq0$ をとる。$g$ の外では $D$ は $A$ 上平坦であり、平坦でない部分は分岐の場所 $V(g)$ に集中している。
+  \item パラメータの $p$ 冪根をすべて添加した塔 $A_\infty$ への基底変換 $D\otimes_A A_\infty$ は平坦なので、それだけでは平坦でない度合いは変わらない。効くのはその後の perfectoid 化で、これは $D/p$ 上の Frobenius を全射にする操作、つまり「$D$ のすべての元の、$p$ を法とした $p$ 乗根を足す」ことに当たる。これによって分岐は $g^{1/p^n}$ 程度にまで薄まる（almost purity）。原型は、$\mathbb{Q}_p$ に $p$ の冪根を添加していくと分岐がほぼ消える、という Tate の現象である。
+  \item その結果、平坦でない部分は「任意の $n$ について $g^{1/p^n}$ で消える」大きさに押し込められる。これが almost zero である（CLMST Cor.~4.0.4）。群としては残りうるが、体積を測る $\lambda$ では $0$ になる（CLMST Prop.~4.0.10）。
+\end{itemize}
+
+\subsection{冪根の次数が剰余標数と一致することの意味}\label{sec:intuition-p}
+
+見方 2、3 で添加する冪根の次数は、剰余標数 $p$ と一致していなければならない。理由を以下に述べる。
+
+\paragraph{トレースによる分裂}
+$D$ を正規整域、$D'$ をその次数 $d$ の有限拡大とする。$d$ が $D$ で可逆なら、$(1/d)\operatorname{Tr}\colon D'\to D$ は $D$ 線形な分裂を与えるので、$H^i_\m(D)$ は $H^i_\m(D')$ の直和因子になる。したがって、次数が $p$ と素な拡大では、CM でない欠陥は群として必ず残る。
+\begin{itemize}
+  \item 剰余標数 $0$ では全ての有限拡大がこれに当たる。このため $R^+$ は（次元 $3$ 以上で）CM にならない。
+  \item 欠陥を群として消せる可能性があるのは、次数が $p$ で割り切れる拡大だけである。Bhatt による $R^+$ の CM 性や perfectoid 化の almost CM 性は、この分裂が壊れることを利用している。
+\end{itemize}
+
+\paragraph{平坦な基底変換は正規化した欠陥を変えない}
+$\lambda$ で測る場合も、$p$ と素な冪根は役に立たない。$\ell\neq p$ とし、$A_n = A[t^{1/\ell^n}]$ とおくと、$A_n$ は $A$ 上自由で、$D\otimes_A A_n$ は $D$ の平坦な基底変換である。$A_n$ 上で平坦でない度合いは $D$ と同じで、Koszul ホモロジーの長さもランクも同じ割合 $\ell^{nh}$ 倍になるので、正規化した欠陥は減らない。同じことは $p$ 冪根でも、基底 $A$ のパラメータに根を足すだけなら成り立つ。
+
+\paragraph{すべての元の根をとれるのは $p$ のときだけ}
+効いているのは $D$ のすべての元の根をとる操作である。
+\begin{itemize}
+  \item 標数 $p$ では $D^{1/q}$ がそれに当たり、$D\otimes_A A^{1/q}\to D^{1/q}$（相対 Frobenius）は基底変換ではない。環として $D^{1/q}\cong D$ なので、Koszul ホモロジーは $H_i(z^{[q]};D)$ になり、Roberts の定理が使える。
+  \item これは $x\mapsto x^p$ が環準同型であることによる。$x\mapsto x^\ell$（$\ell\neq p$）は加法的でないので、すべての元の $\ell$ 乗根を添加するとランクを制御できない巨大な環になる。
+  \item 混標数でも、perfectoid 化は $D/p$ 上の Frobenius を全射にする操作で、$x\mapsto x^p$ が環準同型になるのは $p$ を法としたときだけである。したがって $p$ は剰余標数でなければならない。塔 $A_\infty$ でも、$t_1 = p$ そのものの冪根 $p^{1/p^n}$ を添加している。
+\end{itemize}
+
+\paragraph{分岐の言葉で}
+馴分岐（$p$ と素な部分）は、$\ell$ 冪根を添加すれば Abhyankar の補題で厳密に消える。しかしそのとき起きているのは平坦な基底変換で、CM でない欠陥には効かない。野生分岐（$p$ の部分）は $p$ 冪根を添加しても厳密には消えず、almost にしか消えない（Tate、Faltings）。それでも、欠陥を $\lambda$ で見えなくする仕組みはこれしかない。剰余標数 $0$ の場合を直接示せず、正標数に帰着するしかないのも同じ理由による（Lech の論文 §7 の帰着はその例である）。
+
+\subsection{まとめと、他の構成との関係}
+
+元の $D$ で高次の項が生きているのは、$D$ が正則な基底の上で平坦でないからである。その欠陥は低次元の場所や分岐の場所に集中している。基底に冪根を足す（平坦な基底変換）だけではこの欠陥は変わらないが、Frobenius や perfectoid 化で $D$ のすべての元の $p$ 乗根をとると、主要項だけが大きくなり、体積で正規化すれば欠陥は見えなくなる。標数 $p$ では見方 2（増大度）が、混標数では見方 3（分岐の希釈）が、同じ結論を与える。
+
+この説明からわかるように、perfectoid 化が担っているのは次の二つを同時に満たすことである。
+\begin{itemize}
+  \item \textbf{CM 性}：欠陥を $\lambda$ で見えなくする（見方 3）。
+  \item \textbf{大きさの有限性}：$C$ は $A_\infty$ 上でほぼランク $r$ なので、$\lambda(C/zC) = e$ が有限である。$R^+$ のような本物の巨大 CM 代数は $A_\infty$ 上で無限ランクなので、$\lambda(R^+/zR^+)$ が無限大になり、そのままでは使えない。
+\end{itemize}
+原理的には、この二つを満たす長さ付き代数なら perfectoid である必要はない。$D$、$E$ が小さな CM 加群をもてば、型 (i) の議論（Hochster）で済み、K 理論の降下は不要になる。しかし一般の $D$ について混標数でこれを供給する方法は、現在のところ perfectoid 化しか知られていないと思われる。perfectoid 化は常に存在する（Bhatt--Scholze）が、$R$ 上有限ではない。元論文の後半（K 理論の降下、Galois 閉包、ランク無視の圏、有限近似）は、この「有限でない」ことの帰結である。
+
+\subsection{精密化すべき点}
+\begin{itemize}
+  \item 見方 1 は $A$ のパラメータ系についての説明である。$\lambda$-CM（定義~\ref{def:lambdacm}）は $D$ の任意のパラメータ系を要求する。$A$ 上の（almost）平坦性から $D$ の任意のパラメータ系の消滅が出る仕組みを確認する（CLMST Cor.~4.0.4 は $A_n\otimes_A D$ の任意のパラメータ系を扱う）。
+  \item 見方 2 の例で $\ell H_1(z^{[q]};D)$ が有界であることを計算で確かめる。一般化 CM 環での評価の正確な形を文献で確認する。
+  \item 標数 $p$ で、$H_i(z;D_{\mathrm{perf}})$（$i>0$）が群として $0$ でない例があるか。almost zero になるか（混標数と同じ形か）を確認する。
+  \item 見方 3 の almost purity の正確な主張（どの塔の上で、どのイデアルについて almost か）と、CLMST Thm.~4.0.3 の証明の中での使われ方を確認する。Tate の例は比喩として正確な形に直す。
+  \item \S\ref{sec:intuition-p} のトレースによる分裂の議論は群としての消滅についてのもので、正規化した欠陥については平坦な基底変換の議論しかしていない。$p$ と素な次数の、基底変換でない有限拡大の列で正規化した欠陥が $0$ に近づかないことは確かめていない。Abhyankar の補題の適用（どの環で、どの分岐因子について）も正確な形にする。
+  \item 「混標数で一般の $D$ に $\lambda$-CM 代数を供給する方法は perfectoid 化しかない」という主張は、文献調査に基づくものではない。
+  \item \S\ref{sec:intuition-growth} の目安 $\ell H_i(z^{[q]};D) = O(q^{h-i})$ は確かめていない。$H_i(z^t;D)$ と $H^{h-i}_\m(D)$ の関係（推移写像の像と核）を正確に追い、文献（Frobenius 関手と有限長ホモロジーの複体の増大度の評価）を確認する。混標数の perfectoid 化について、次数ごとの描像に当たるものがあるかも確認する。
+\end{itemize}
+
+%======================================================================
+\section{$\lambda$-平坦を主役にした整理の検討}\label{sec:lflat}
+
+この付録では、$\lambda$-CM の代わりに $\lambda$-平坦（almost flat の対応物）を基本の概念にして議論を整理できるかを検討する。結論を先に書くと、本文のほとんどの箇所は $\lambda$-平坦だけで足り、$\lambda$-CM が必要なのは $D$ 側のパラメータ商の一箇所だけである。そこを $\lambda$-平坦から導けるかは未解決である。
+
+\subsection{現状の定義}
+\begin{itemize}
+  \item $\lambda$-平坦（定義~\ref{def:lengthalg}）：正則な基底 $A$ の上で、全ての有限長 $A$ 加群 $V$ と $i>0$ について $\lambda\Tor_i^A(V,C)=0$。$k$ で判定でき（補題~\ref{lem:34}）、正則パラメータ系の条件と同値である（系~\ref{cor:allv}）。
+  \item $\lambda$-CM（定義~\ref{def:lambdacm}）：$D$ の任意のパラメータ系 $x$ について $\lambda H_i(x;C)=0$（$i>0$）。
+  \item $\lambda$-CM なら、$D$ 上有限な正則部分環 $A$ の上で $\lambda$-平坦である（命題~\ref{prop:cmflat}）。逆は示していない。
+\end{itemize}
+$\lambda$-平坦は、有限長 $A$ 加群の圏から Serre 商 $\mathcal{A}_\lambda$ への関手 $V\mapsto q(V\otimes_A C)$ が完全関手になることと同じである（\S\ref{sec:planC-flat}）。ランク $r$ は $\lambda\circ q(-\otimes_A C) = r\cdot\ell_A$ という条件である。\ref{sec:planB} の一般論（$K_0$ への準同型、Euler 特性の比較）が使うのは、ほぼこの完全関手の性質だけである。CLMST の対応する結果は almost flat（Thm.~4.0.3）で、almost flat と Prop.~4.0.10 から $\lambda$-平坦が出る（\S\ref{sec:prior-clmst}）。
+
+古典的な対応は次のとおりである。
+\begin{itemize}
+  \item 有限生成加群 $M$ が CM であることと、$M$ が正則な基底 $A$ の上で自由であることは同値である（Auslander--Buchsbaum）。CM 性は深さで決まり、パラメータ系の取り方によらない。
+  \item 巨大加群では、正則な基底の上で平坦であることと、基底から来るパラメータ系が正則列であることは同値である。しかし任意のパラメータ系について正則列になる（balanced）とは限らず、balanced にするには完備化が要る（Bartijn--Strooker、Griffith。文献の主張の正確な形は未確認）。
+\end{itemize}
+$\lambda$-平坦と $\lambda$-CM の差は、後者の「基底によらない」部分にある。
+
+\subsection{本文でどちらの条件を使っているか}
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright}X>{\raggedright\arraybackslash}X}
+\toprule
+使う場所 & 必要な条件 \\
+\midrule
+§\ref{sec:perfect} の比較、§\ref{sec:asymp} のランク無視の圏 & $A$ 上の $\lambda$-平坦とランク $r$ \\
+新交叉型の消滅（補題~\ref{lem:nit}、系~\ref{cor:nitasymp}。$E$ 側） & $A_E$ 上の $\lambda$-平坦（$A_E$ のパラメータ系だけを使う） \\
+パラメータ商と次数の上界（補題~\ref{lem:lambdaAB} とその修正版、\S\ref{sec:planB-param}。$D$ 側） & \textbf{$\lambda$-CM}：$R$ の元 $x$ で像が $D$ のパラメータ系になるものについて、全ての $v$ で $\lambda H_q(x^v;C)=0$（$q>0$） \\
+\bottomrule
+\end{tabularx}
+\end{center}
+$D$ 側で使う $x$ は $R$ から来るもので、正則な基底 $A_D$ の元とは限らない。$\lambda$-平坦だけでは足りないのはここだけである。補題~\ref{lem:lambdaAB} と \S\ref{sec:planB-param} では $R$ 上の分解の長さを使い、$B=R/(x)$ の正則性は仮定しない。$D$ 側に必要なのは、ここでも $x$ とその冪に対する Koszul 消滅である。
+
+\subsection{隙間を埋める方法の候補}
+\begin{enumerate}
+  \item \textbf{$x$ を含むように基底を選ぶ。} 等標数なら $k[[x]]\subseteq D$ は正則で、$D$ はその上で有限である。しかし構成には生成的な分離性（Cohen--Gabber、補題~\ref{lem:cohengabber}）が要り、混標数では $p$ を基底のパラメータに含める必要がある。任意の $x$ では使えない。
+  \item \textbf{「ある $A$ の上で $\lambda$-平坦なら $\lambda$-CM」を補題として示す。} 有限加群なら自明だが、巨大加群の古典版では完備化が要る。一方、CLMST は almost flat の定理（Thm.~4.0.3）の系として almost CM（Cor.~4.0.4、$A_n\otimes_A D$ の任意のパラメータ系）を出している。この論法が $\lambda$ に移るなら、$\lambda$-平坦を主役にできる。
+  \item \textbf{$\lambda$-CM を「$\lambda$-平坦と、パラメータ系への非依存性」として定義し直す。} 古典版の「CM $\Leftrightarrow$ 正則な基底の上で自由」との対応が最も見えやすい形である。ただし 2 を示さない限り、仮定を言い換えているだけである。
+\end{enumerate}
+
+\subsection{CM は絶対的、平坦は相対的}\label{sec:lflat-absolute}
+
+CM は相対的な概念ではない。有限加群 $M$ について depth $M = \dim M$ という条件で、$R\to D$ が有限な局所準同型なら深さも次元も $R$ 上と $D$ 上で同じなので、「$R$ 上 CM」「$D$ 上 CM」「$A$ 上 CM」は全て同じ意味である。一方、平坦（自由）や射影次元は、どの環の上で見るかによる相対的な概念である。
+
+$D$ が正則局所環 $S$ の上で有限なら、Auslander--Buchsbaum により $\operatorname{pd}_S D = \dim S - \operatorname{depth}D\ge\dim S-\dim D$ で、等号は $D$ が CM であることと同値である。一つの絶対的な性質が、基底によって次のように見える。
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright}p{4.2cm}>{\raggedright}p{1.4cm}>{\raggedright\arraybackslash}X}
+\toprule
+基底 $S$ & $\dim S$ & CM の現れ方 \\
+\midrule
+$A$（$D$ の中の正則な基底） & $h$ & $\operatorname{pd}_A D = 0$、すなわち $A$ 上自由（平坦） \\
+$R$（$D = R/P$） & $d>h$ & $\operatorname{pd}_R D = d-h$（perfect）、すなわち $R$ 上の Tor を計算する複体が短い \\
+\bottomrule
+\end{tabularx}
+\end{center}
+$D$ は $R$ の商なので $R$ 上で平坦になることはなく、Serre の Euler 特性で問題になるのは $R$ 上の射影次元である。
+
+欠陥の層も $D$ に内在的で、基底によって添字がずれるだけである。正則な $A$ と $R$ の上の局所双対から
+\[
+  H^j_\m(D)^\vee\cong\Ext^{h-j}_A(D,A)\cong\Ext^{d-j}_R(D,R),\qquad\text{すなわち}\quad \Ext^c_A(D,A)\cong\Ext^{c+(d-h)}_R(D,R)
+\]
+となる。\S\ref{sec:intuition-W} の $E^c$ は、$R$ の側から見れば $d-h$ を超える次数の Ext であり、平坦でない場所 $W$（CM でない場所）も同じである。
+
+$\lambda$ 版では、この絶対性が自動的には成り立たない。$C_D$ は $D$ 上有限でないからである。巨大加群の古典版でも、巨大 CM 加群はもともと「あるパラメータ系が正則列になる」という相対的な定義で、任意のパラメータ系について正則列になる（balanced）には完備化が要る。$\lambda$-CM（定義~\ref{def:lambdacm}）は balanced に当たる絶対的な条件として定義し、$\lambda$-平坦（定義~\ref{def:lengthalg}）は基底 $A$ に相対的な条件である。有限加群なら両者は同値だが、有限でない対象では「相対的な条件から絶対的な条件が出るか」が問題として残る。これが上の隙間の正体である。
+
+\subsection{なぜ両側を取り替えるのか}\label{sec:lflat-twosided}
+
+「$\lambda$-CM が必要なのは $D$ 側だけ」というのは、両側の CM 性の強さが違うという意味であり、$E$ 側に CM 的な性質が要らないという意味ではない。
+
+\paragraph{古典版での役割分担}
+$D$、$E$ がともに CM なら $\Tor^R_i(D,E) = 0$（$i>0$）である。この議論は二つに分かれる。
+\begin{enumerate}
+  \item \textbf{$D$ が CM なら複体が短い。} $D$ の $R$ 上の自由分解 $G$ は長さ $\operatorname{pd}_R D = d-h = l$ で、$\Tor^R(D,E)$ は長さ $l = \dim E$ の複体 $G\otimes E$ のホモロジーである。
+  \item \textbf{$E$ が CM なら短い複体の高次が消える。} $G\otimes E$ は $E$ 上の長さ $\dim E$ の有限自由複体で、ホモロジーは有限長である。$E$ が CM なら、Peskine--Szpiro の acyclicity lemma（新交叉型の議論）により正の次数のホモロジーは消える。
+\end{enumerate}
+$D$ が CM でなければ複体の長さが $\dim E$ を超え、新交叉型の議論は何も言わない。$E$ が CM でなければ、短い複体でも高次が消える保証はない（新交叉定理は「長さが $\dim$ 以上でなければホモロジーは $0$ にならない」という下からの評価で、消滅は $E$ の深さから来る）。二つの $l$ が噛み合うのは $h+l = d$ による。BHM Thm.~6.1 が両側に lim CM 列を要求するのも同じ理由である。
+
+\paragraph{片側の平坦性で Tor が消えるのはいつか}
+片側が平坦なら Tor は消えるが、それは平坦性が Tor を計算する環の上で成り立つときに限る。$D$、$E$ は $R$ の商なので $R$ 上で平坦にはならず、手元にあるのは別の環 $A_D$ の上の平坦性である。それを $R$ 上の情報に翻訳すると「$R$ 上の Tor の複体が短い」ことしか出ない（\S\ref{sec:lflat-absolute} の表）。
+
+片側が最良でも消えない例：$D = R/(x_1,\dots,x_l)$（$x$ は $R$ 正則列で $l = d-h$、$E$ の上でパラメータ系になるもの）とする。$D$ は完全交叉で CM（正則にもできる）だが、$\Tor^R_i(D,E) = H_i(x;E)$ であり、$E$ が CM でなければ高次の Koszul ホモロジーは消えない。この例では $\chi = e(x;E) > 0$ なので正値性は重複度として別の理由で成り立つが、「高次を消して $0$ 次だけ残す」方法は片側だけでは動かない。
+
+\paragraph{元論文での対応}
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright}p{1.4cm}>{\raggedright}X>{\raggedright\arraybackslash}X}
+\toprule
+ & 古典版 & 元論文 \\
+\midrule
+$D$ 側 & $\operatorname{pd}_R D = d-h$ & $\lambda$ 版 Auslander--Buchsbaum（補題~\ref{lem:lambdaAB}、修正版は \S\ref{sec:planB-param}）：$i>d-h$ で $\lambda\Tor^R_i(C_D,L) = 0$。$R$ から来る $x$ を使うので $D$ に内在的な $\lambda$-CM が要る \\
+$E$ 側 & $E$ が CM なら長さ $l$ の複体は acyclic & $C_E$ が $A_E$ 上 $\lambda$-平坦なら新交叉型の消滅（補題~\ref{lem:nit}、系~\ref{cor:nitasymp}）。$A_E$ のパラメータで測れる形に持っていけるので、基底に相対的な $\lambda$-平坦で足りる \\
+\bottomrule
+\end{tabularx}
+\end{center}
+片側の平坦性だけで Tor を消す使い方も元論文にある。それは Tor が基底 $A$ の上で計算される場面で、$\lambda$-平坦の定義そのもの（有限長 $A$ 加群 $V$ について $\lambda\Tor^A_i(V,C) = 0$）や、§\ref{sec:perfect} の perfect 複体での比較とランクの計算がそうである。$R$ 上の Euler 特性の高次を消すには両側が要る。二つの基底 $A_D$、$A_E$ は別々なので、どちらか一方の上で全体を平坦にすることはできない。
+
+取り替えるたびに Euler 特性はランク倍になり、その回収に K 理論の降下と Galois 閉包を使う。本文ではこれが置き換え 1（$D\to C_D$、§\ref{sec:perfect} の命題~\ref{prop:35c}）と置き換え 2（$E\to C_E$、§\ref{sec:asymp} の漸近版）に分かれている。論文の後半が $D$ 側と $E$ 側でほぼ同じ構造を二回繰り返すのは、それぞれの側で「CM 化」と「Euler 特性の回収」を一度ずつ行っているからである。
+
+\subsection{次にすること}
+\begin{itemize}
+  \item CLMST Cor.~4.0.4 の証明を読み、almost flat から任意のパラメータ系の almost CM 性を出す論法が、長さ関数 $\lambda$ の一般論に移るかを確かめる。移るなら、$\lambda$-平坦を基本の定義にし、$\lambda$-CM を系とする書き直し案をこの付録に書く。
+  \item 移らない場合は、本文の $D$ 側の入力を「$R$ の元 $x$ についての Koszul 消滅」として明示的な仮定にし、定理~\ref{thm:existence} がそれを供給する、という形に分ける（形式化でも仮定の形を合わせる）。
+  \item 補題~\ref{lem:lambdaAB} の修正（\S\ref{sec:planB-param} の形への置き換え）と同時に行う。
+\end{itemize}
+
+\subsection{$\lambda$-エタールと $\lambda$ 版の purity（検討課題）}\label{sec:lflat-etale}
+
+元論文は、almost flat を $\lambda$-平坦に、almost CM を $\lambda$-CM に弱めることで結論を得た（弱めた理由は、正値性が数の主張であること、標数 $p$ では almost でなく $\lambda$ の形でしか入力が得られないこと、有限段と比べられること）。同じように、分岐（エタール性）の側も $\lambda$ で測る概念を導入して、別の問題に使えないかを検討する。以下は全て検討段階のアイディアで、確かめた主張ではない。
+
+\paragraph{almost purity も「悪さを薄める」定理である}
+Tate の例 $K_n = \mathbb{Q}_p(p^{1/p^n})$ では、$K_\infty$ の有限次拡大の差積の付値は $n$ とともに $p^{-n}$ 程度の速さで $0$ に近づき、極限で「付値 $0^+$」（almost étale）になる。分岐は消えずに薄まる。標数 $p$ ではほぼ自明で、perfect な環の上では Frobenius が差積を保つので、差積が $t^c$ を含めば $t^{c/p^n}$ を全て含み、almost に単位イデアルになる。これは $\lambda$-CM の議論の「冪根をとるたびに指数が $1/p$ になる」と同じ仕組みである。
+
+\paragraph{元論文の中の $\lambda$ 版 purity}
+定理 2.5 の証明のステップ (3)（\S\ref{sec:intuition-thm25}）は、トレースの分母 $g$ による $g^{1/q}C_D\subseteq B_q$ から、有限段と極限のずれの $\lambda$ が $O(q^{-1})\to0$ となることを出している。これは「分岐によるずれは $\lambda$ で測ると消える」という主張で、標数 $p$ の $\lambda$ 版 almost purity と読める。速さ $q^{-1}$ は分岐の場所 $V(g)$ の余次元 $1$ から来る。
+
+\paragraph{定義の候補}
+$\lambda$ は大きさしか測らないので、エタール性を何かの加群の大きさに翻訳する必要がある。候補は次のとおりで、互いの関係は分かっていない。
+\begin{itemize}
+  \item トレース：$C\to\operatorname{Hom}_A(C,A)$ の余核を $\m_A$ の冪で割ったものの $\lambda$ が $0$。
+  \item 微分：全ての $N$ で $\lambda(\Omega_{C/A}\otimes A/\m_A^N) = 0$。
+  \item 対角：$C\otimes_A C\to C$ が、$\lambda$ が $0$ の核・余核を除いて分裂する。
+\end{itemize}
+強さはエタール $\Rightarrow$ almost étale $\Rightarrow$ $\lambda$-エタールの順になるはずで、$\lambda$-平坦と同じ並びである。「$\lambda$-エタール $\Rightarrow$ $\lambda$-平坦」も期待できる。
+
+ただし、最上次の $\lambda$ だけでは弱すぎる可能性が高い。上のとおり標数 $p$ の完全化（混標数では almost purity による perfectoid 化）の後では、生成的にエタールな有限拡大は全て almost étale になり、したがって $\lambda$-エタールになってしまう。最上次の $\lambda$ は余次元 $1$ の分岐すら見えない。
+
+\paragraph{次元ごとに細分した長さ}
+$\lambda$ で $0$ になる部分にも、有限段では次の位数の大きさがある。\S\ref{sec:intuition-growth} と \S\ref{sec:intuition-thm25} で見たとおり、余次元 $k$ の場所に住む悪さは $q^{h-k}$ の速さで増える。そこで、長さを位数 $q^{h-k}$ ごとに細分した量（$\lambda^{(0)} = \lambda$、$\lambda^{(1)}$、\dots）を考えると、次のような対応が期待できる。
+\begin{itemize}
+  \item 平坦性（CM 性）の側：$\lambda^{(k)}$ まで欠陥が見えないことは、$\dim W\le h-k-1$、すなわち Serre の条件 $S_k$ 型の条件に当たる。
+  \item 分岐の側：分岐の場所は余次元 $1$ なので、$\lambda^{(1)}$ に現れる。分岐の場所の純粋性（Zariski--Nagata）は、「分岐は $\lambda^{(1)}$ で測れる部分に全て現れ、$\lambda^{(2)}$ 以下にだけ住む分岐はない」と読める。
+\end{itemize}
+Hilbert--Kunz 関数の第二係数（Huneke--McDermott--Monsky、Kurano など）は、正規環で $q^{h-1}$ の位数に現れ、因子類や標準因子と関係することが知られている（と理解している。正確な主張は未確認）。有限拡大 $A\subseteq D$ では、標準因子の差は分岐因子（Hurwitz の公式）なので、第二係数が分岐を測る量になっている可能性がある。
+
+\paragraph{先例：局所基本群の有限性}
+「余次元 $1$ でエタールな拡大に対する長さの変換公式」という形の議論には、既に成果がある。標数 $p$ では Carvajal-Rojas--Schwede--Tucker が、F-signature の有限拡大に対する変換公式から、強 F 正則な特異点の局所エタール基本群が有限であること（位数は $1/s(R)$ 以下）を示した。CLMST の論文（題名にある「an application to local fundamental groups」）は、その perfectoid 版を混標数で与えている。これらは $\lambda$ 型の数値不変量と「余次元 $1$ でエタール」という条件を組み合わせた議論であり、ここでの $\lambda$-エタールの発想に最も近い先例である。
+
+\paragraph{使えるかもしれない問題（候補）}
+\begin{itemize}
+  \item 局所基本群の有限性・位数の評価を、より広いクラスの特異点や、F 正則性・BCM 正則性の仮定を弱めた状況に広げること。
+  \item 分岐の場所の純粋性の定量版（$\lambda^{(1)}$ による「分岐の大きさ」と分岐因子の関係）を、混標数や正則でない基底の上で述べること。
+  \item Hilbert--Kunz 重複度、perfectoid Hilbert--Kunz 重複度、Dutta 重複度の、有限拡大に対する変換公式。Lech の論文（Theorem 3.1 (3)）や小さな CM 加群の問題と関係するかもしれない。
+  \item 元論文の Galois 閉包と K 理論の降下（§\ref{sec:perfect}）を、「$\lambda$ が $0$ のものを除いて Galois 不変部分をとる」という形に単純化すること。
+\end{itemize}
+
+\paragraph{注意}
+混標数で perfectoid を使わずに $\lambda$-エタールや $\lambda$-平坦を示す、という方向は見込みが薄い。標数 $p$ で $g$ を $g^{1/q}$ に薄めているのは Frobenius で、混標数でその役をするのは結局 almost purity だからである。$\lambda$ 版の概念が新しく与えうるのは、証明の易しさよりも、(i) almost が成り立たない状況でも数値的な結論を出せること、(ii) 有限段での速さ（次元ごとの位数）という定量的な情報、の二点だと思われる。なお、$\lambda$-CM の議論に分岐が直接は出てこないのは、平坦でない場所 $W$ が分岐の場所 $V(g)$ に含まれる（エタールなら平坦）からである。
+
+\end{document}

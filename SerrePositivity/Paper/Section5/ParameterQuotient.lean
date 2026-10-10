@@ -3,6 +3,7 @@ module
 public import SerrePositivity.IntersectionMultiplicity.ParameterQuotientTorBound
 public import SerrePositivity.Paper.Section2.TowerApproximation
 public import SerrePositivity.Inputs.RegularParameters
+public import SerrePositivity.HomologicalAlgebra.MinimalFreeResolution
 public import SerrePositivity.HomologicalAlgebra.FiniteFreeResolution
 
 /-!
@@ -144,7 +145,11 @@ end beta
 - (5.9) `ℓ_B(M_n) / s_n → λ(U)`、
 - (5.10) `ℓ_B(Tor_i^B(M_n, L_k)) / s_n → τ_i(L_k) = λ(Tor_i^R(C, L_k))`、
 - (5.11) `B` のイデアル `I` が `T` を消し `B/I` が有限長なら `λ(U) ≤ τ_0(k) · ℓ_B(B/I)`
-  （`β₀(M_n) = ℓ_B(Tor_0^B(M_n, k))`。剰余体 `k` の有限自由分解 `G₀` も与える）。
+  （`β₀(M_n) = ℓ_B(Tor_0^B(M_n, k))`）。
+
+剰余体係数の全次数の Tor 極限も、同じ列について結論に含める。
+`L_k` と剰余体の分解は Noether 局所環 `B` 上の極小自由分解から構成する。
+分解の指定や `B` の正則性・分解の有界性を追加の仮定にしない。
 
 証明は `Section2.exists_tower_approximation_B` を `U` に適用し、`θ` の両立から `S` 加群としての長さと
 `C` 加群としての長さが一致すること、`Tor^B(U, L)` の二つの計算（`S` 上の `U ⊗_B G` と `TorAlg ψ`）の
@@ -171,12 +176,7 @@ theorem lemma_5_4 (A : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
     (hUfin : lam.len (U φ x) ≠ ⊤)
     {ι : Type*} (L : ι → Type u) [∀ k, AddCommGroup (L k)] [∀ k, Module R (L k)]
     [∀ k, Module (B x) (L k)] [∀ k, IsScalarTower R (B x) (L k)] [∀ k, Module.Finite (B x) (L k)]
-    (G : ι → CochainComplex (ModuleCat.{u} (B x)) ℤ)
-    (hG : ∀ k, IsResolutionOf (G k) (ModuleCat.of (B x) (L k)))
-    (hfree : ∀ k i, Module.Free (B x) ((G k).X i)) (hfin : ∀ k i, Module.Finite (B x) ((G k).X i))
-    [IsLocalRing (B x)] (G₀ : CochainComplex (ModuleCat.{u} (B x)) ℤ)
-    (hG₀ : IsResolutionOf G₀ (ModuleCat.of (B x) (B x ⧸ maximalIdeal (B x))))
-    (hfree₀ : ∀ i, Module.Free (B x) (G₀.X i)) (hfin₀ : ∀ i, Module.Finite (B x) (G₀.X i)) :
+    [IsLocalRing (B x)] :
     ∃ (M : ℕ → ModuleCat.{u} (B x)) (s : ℕ → ℕ),
       (∀ n, IsFiniteLength (B x) (M n)) ∧ (∀ n, 0 < s n) ∧
       (0 < hA → Filter.Tendsto s Filter.atTop Filter.atTop) ∧
@@ -187,11 +187,26 @@ theorem lemma_5_4 (A : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
       (∀ k (i : ℕ), Filter.Tendsto
         (fun n ↦ (Module.length (B x) (TorModule (B x) i (M n) (L k)) : ℝ≥0∞) / (s n : ℝ≥0∞))
         Filter.atTop (nhds (lam.len (TorAlg φ i (L k))))) ∧
+      (∀ i : ℕ, Filter.Tendsto
+        (fun n ↦ (Module.length (B x)
+          (TorModule (B x) i (M n) (B x ⧸ maximalIdeal (B x))) : ℝ≥0∞) / (s n : ℝ≥0∞))
+        Filter.atTop (nhds (lam.len (TorAlg φ i (B x ⧸ maximalIdeal (B x)))))) ∧
       (∀ (I : Ideal (B x)), (∀ y ∈ I, algebraMap (B x) T y = 0) →
         Module.length (B x) (B x ⧸ I) ≠ ⊤ →
         lam.len (U φ x) ≤ lam.len (TorAlg φ 0 (B x ⧸ maximalIdeal (B x))) *
           (Module.length (B x) (B x ⧸ I) : ℝ≥0∞)) := by
   classical
+  let G (k : ι) := extRes (MinimalFreeResolution.resolution (FGModuleCat.of (B x) (L k)))
+  let hG (k : ι) :=
+    isResolutionOf_extRes (MinimalFreeResolution.resolution (FGModuleCat.of (B x) (L k)))
+  have hfree (k : ι) (i : ℤ) : Module.Free (B x) ((G k).X i) := inferInstance
+  have hfin (k : ι) (i : ℤ) : Module.Finite (B x) ((G k).X i) := inferInstance
+  let G₀ := extRes (MinimalFreeResolution.resolution
+    (FGModuleCat.of (B x) (B x ⧸ maximalIdeal (B x))))
+  let hG₀ := isResolutionOf_extRes (MinimalFreeResolution.resolution
+    (FGModuleCat.of (B x) (B x ⧸ maximalIdeal (B x))))
+  have hfree₀ (i : ℤ) : Module.Free (B x) (G₀.X i) := inferInstance
+  have hfin₀ (i : ℤ) : Module.Finite (B x) (G₀.X i) := inferInstance
   subst hlam
   let lam₀ := (Section2.towerLength A t p).comap (algebraMap (Section2.Tower A t p) C) J hJ'
   let S := Section2.TS A t p T
@@ -269,9 +284,12 @@ theorem lemma_5_4 (A : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
   obtain ⟨M, s, hMfl, hspos, hsinf, hann, hlen, htor⟩ :=
     Section2.exists_tower_approximation_B A t p T ht hTa hresT hresB L' G' hG' hfree' hfin' US hUt
       (hUeq.trans_ne hUfin)
-  refine ⟨M, s, hMfl, hspos, hsinf, hann, hUeq ▸ hlen, fun k i ↦ ?_, fun I hI hIfin ↦ ?_⟩
+  refine ⟨M, s, hMfl, hspos, hsinf, hann, hUeq ▸ hlen,
+    fun k i ↦ ?_, fun i ↦ ?_, fun I hI hIfin ↦ ?_⟩
   · have := htor (some k) i
     rwa [hE2 (L k) (G k) (hG k) i] at this
+  · have := htor none i
+    rwa [hE2 (B x ⧸ maximalIdeal (B x)) G₀ hG₀ i] at this
   · -- (5.11)
     have h0 := htor none 0
     rw [hE2 (B x ⧸ maximalIdeal (B x)) G₀ hG₀ 0] at h0

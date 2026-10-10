@@ -4,6 +4,7 @@ public import SerrePositivity.CommutativeAlgebra.LocalAlgebra
 public import SerrePositivity.CommutativeAlgebra.PowTorsion
 public import Mathlib.Algebra.Exact.Basic
 public import Mathlib.Basic.ENNReal.Basic
+public import Mathlib.Basic.ENNReal.Operations
 public import Mathlib.Basic.Real.ENatENNReal
 public import Mathlib.RingTheory.Length
 
@@ -113,6 +114,26 @@ lemma len_eq_add_ker_range (f : M →ₗ[C] N) (hM : IsPowTorsion J M) :
   rw [lam.len_eq_add_quotient hM (LinearMap.ker f)]
   congr 1
   exact lam.len_congr _ _ (LinearMap.quotKerEquivRange f)
+
+/-- 正規化長さが有限な加群の自己準同型では、核と余核の長さが等しい。
+像の長さを加法性の二つの等式から消去する。有限性はこの消去に必要である。 -/
+lemma len_ker_eq_len_coker (f : M →ₗ[C] M) (hM : IsPowTorsion J M)
+    (hfinite : lam.len M ≠ ⊤) :
+    lam.len (LinearMap.ker f) = lam.len (M ⧸ LinearMap.range f) := by
+  have hr : lam.len (LinearMap.range f) ≠ ⊤ :=
+    ne_top_of_le_ne_top hfinite (lam.len_submodule_le hM _)
+  apply (ENNReal.add_left_inj hr).mp
+  rw [← lam.len_eq_add_ker_range f hM, add_comm, ← lam.len_eq_add_quotient hM]
+
+/-- 写像 `f` の核を自己準同型 `g` が消すなら、その長さは `g` の余核の長さ以下。
+定理2.5では `g` を共通分母による乗法に適用する。 -/
+lemma len_ker_le_len_coker_of_ker_le (f : M →ₗ[C] N) (g : M →ₗ[C] M)
+    (hM : IsPowTorsion J M) (hfinite : lam.len M ≠ ⊤)
+    (hker : LinearMap.ker f ≤ LinearMap.ker g) :
+    lam.len (LinearMap.ker f) ≤ lam.len (M ⧸ LinearMap.range g) := by
+  rw [← lam.len_ker_eq_len_coker g hM hfinite]
+  exact lam.len_le_of_injective (Submodule.inclusion hker)
+    (Submodule.inclusion_injective hker) (hM.submodule _)
 
 /-- `J` 冪ねじれ加群 `M` からの線形写像の像の長さは `λ(M)` 以下。 -/
 lemma len_range_le (f : M →ₗ[C] N) (hM : IsPowTorsion J M) :

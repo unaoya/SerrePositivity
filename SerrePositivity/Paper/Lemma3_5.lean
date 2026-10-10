@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.Paper.Lemma3_5.ConjugateSum
+public import SerrePositivity.GroupTheory.ConjugateSum
 public import SerrePositivity.Paper.Lemma3_5.Normalized
 public import SerrePositivity.Paper.Lemma3_5.Ordinary
 public import SerrePositivity.CommutativeAlgebra.GeometricFiber

@@ -4,6 +4,7 @@ public import SerrePositivity.CommutativeAlgebra.Multiplicity
 public import Mathlib.Algebra.CharP.Defs
 public import Mathlib.FieldTheory.Perfect
 public import Mathlib.FieldTheory.Separable
+public import Mathlib.RingTheory.Localization.FractionRing
 public import Mathlib.RingTheory.AdicCompletion.Basic
 public import Mathlib.RingTheory.LocalRing.ResidueField.Basic
 public import Mathlib.RingTheory.MvPowerSeries.Basic
@@ -36,8 +37,9 @@ Cohen の構造定理（係数環 `W(k) ⊆ D`）による。どちらも深い�
 具体形は Theorem 2.5 の証明（標数 `p` では `Λ = A_perf`、混標数では CLMST の設定 `A = W(k)[[x]]`）
 でしか要らない。利用側はこの連言から必要な性質だけを取り出して使う。
 
-- 生成的分離は `Algebra.IsSeparable A D`（`D` の各元の `A` 上の最小多項式が分離的）で書く。
-  `A` は正則なので正規で、`Frac D / Frac A` の分離性と同じ。
+- 生成的分離は、各元の最小多項式の係数を `FractionRing A` に移した後の分離性で書く。
+  正規な整域 `A` では `Frac D / Frac A` の分離性と同じ条件になる。
+  環上の `Algebra.IsSeparable A D` はこれより強いため、使用しない。
 - 混標数の具体形は、`t ⟨0, _⟩ = p` と、残りの添字 `{i // i ≠ 0}` 上の冪級数環 `W(k)[[X]]` への
   同型で書く。
 -/
@@ -58,7 +60,8 @@ theorem lemma_2_2 (D : Type u) [CommRing D] [IsLocalRing D] [IsNoetherianRing D]
     (p : ℕ) [Fact p.Prime] [CharP (ResidueField D) p] [PerfectField (ResidueField D)] :
     ∃ (A : Type u) (_ : CommRing A) (_ : IsRegularLocalRing A)
       (_ : IsAdicComplete (maximalIdeal A) A) (_ : Algebra A D),
-      Function.Injective (algebraMap A D) ∧ Module.Finite A D ∧ Algebra.IsSeparable A D ∧
+      Function.Injective (algebraMap A D) ∧ Module.Finite A D ∧
+      (∀ d : D, ((minpoly A d).map (algebraMap A (FractionRing A))).Separable) ∧
       Function.Surjective ((residue D).comp (algebraMap A D)) ∧ ringKrullDim A = h ∧
       ∃ t : Fin h → A, Ideal.span (Set.range t) = maximalIdeal A ∧
         IsSystemOfParameters D (algebraMap A D ∘ t) ∧

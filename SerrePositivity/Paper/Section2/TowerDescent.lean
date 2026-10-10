@@ -606,6 +606,21 @@ theorem towerLengthFun_tensor (n : ℕ) (V : Type u) [AddCommGroup V]
   rw [towerLengthFun_eq_fgLength A t p _ (isPowTorsion_tower_tensor A t p n V hVt),
     fgLength_tensor A t p ht n V hV]
 
+include ht in
+/-- 有限長の段加群では、有限段の公式の冪ねじれ条件は自動的に満たされる。
+極大イデアルのある冪が加群を消し、基底の極大イデアルの像はその極大イデアルに入る。 -/
+theorem towerLengthFun_tensor_of_finiteLength (n : ℕ) (V : Type u) [AddCommGroup V]
+    [Module (TowerStage A t p n) V] (hV : IsFiniteLength (TowerStage A t p n) V) :
+    towerLengthFun A t p (Tower A t p ⊗[TowerStage A t p n] V) =
+      (Module.length (TowerStage A t p n) V : ℝ≥0∞) / (stageRank h p n : ℝ≥0∞) := by
+  let := isLocalRing_towerStage A t p ht n
+  apply towerLengthFun_tensor A t p ht n V hV
+  obtain ⟨k, hk⟩ := IsFiniteLength.exists_isTorsionBySet_maximalIdeal_pow hV
+  refine ⟨k, ?_⟩
+  rw [Module.isTorsionBySet_iff_subset_annihilator] at hk ⊢
+  exact (pow_le_pow_left'
+    (le_of_isMaximal_towerStage A t p ht n (maximalIdeal (TowerStage A t p n))).1 k).trans hk
+
 end formula2
 
 end Section2

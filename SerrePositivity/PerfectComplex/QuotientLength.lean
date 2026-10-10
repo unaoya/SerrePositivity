@@ -1,13 +1,14 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.FiniteLength
+public import SerrePositivity.CommutativeAlgebra.ConductorQuotient
 public import SerrePositivity.PerfectComplex.NormalizedLength
 public import Mathlib.LinearAlgebra.TensorProduct.RightExactness
 public import Mathlib.LinearAlgebra.TensorProduct.Tower
 public import Mathlib.RingTheory.TensorProduct.Quotient
 
 /-!
-# 有限長加群のテンソル積の正規化長さ（論文 Corollary 2.6 (3) の中身）
+# 商写像の核とテンソル積の正規化長さ
 
 ## 概要
 
@@ -25,6 +26,9 @@ public import Mathlib.RingTheory.TensorProduct.Quotient
 （`Paper/Section2/Corollary2_6.lean`）。
 
 ## 内容
+
+- `len_ker_quotientToExtension_le`：共通分母の条件から商写像の核の長さを、
+  分母倍写像の余核の長さで評価する（定理2.5の核の評価）。
 
 - `isPowTorsion_tensorProduct`：`m_D^n` で消える `D` 加群との `C` 上のテンソル積は `(m_D C)^n` で
   消える。
@@ -45,6 +49,30 @@ namespace SerrePositivity
 
 variable {D C : Type u} [CommRing D] [CommRing C] [Algebra D C]
 
+/-- 係数環のイデアルの冪で消える商は、代数を拡大しても同じ冪で消える。
+元の商で単位元を消すことから、係数の像がイデアルに入ると分かる。
+平坦性や有限生成性は必要ない。 -/
+lemma isPowTorsion_quotient_extension (R : Type u) [CommRing R]
+    [Algebra R D] [Algebra R C] [IsScalarTower R D C]
+    (J : Ideal R) (I : Ideal D) (hI : IsPowTorsion J (D ⧸ I)) :
+    IsPowTorsion J (C ⧸ I.map (algebraMap D C)) := by
+  obtain ⟨k, hk⟩ := hI
+  refine ⟨k, ?_⟩
+  rw [Module.isTorsionBySet_iff_subset_annihilator] at hk ⊢
+  intro r hr
+  simp only [SetLike.mem_coe, Module.mem_annihilator]
+  intro x
+  obtain ⟨c, rfl⟩ := Ideal.Quotient.mk_surjective x
+  have hz := (Module.mem_annihilator.mp (hk hr)) (1 : D ⧸ I)
+  have hm : algebraMap R D r ∈ I := by
+    apply Ideal.Quotient.eq_zero_iff_mem.mp
+    simpa only [Algebra.smul_def, mul_one, IsScalarTower.algebraMap_apply R D (D ⧸ I),
+      Ideal.Quotient.algebraMap_eq] using hz
+  rw [Algebra.smul_def, ← Ideal.Quotient.mk_algebraMap, ← map_mul]
+  apply Ideal.Quotient.eq_zero_iff_mem.mpr
+  rw [IsScalarTower.algebraMap_apply R D C]
+  exact Ideal.mul_mem_right c _ (Ideal.mem_map_of_mem _ hm)
+
 /-- `D` 加群 `M` がイデアル `J` の `n` 乗で消えるなら `C ⊗_D M` は `(J C)^n` で消える。 -/
 lemma isPowTorsion_tensorProduct_of_isTorsionBySet (J : Ideal D) (M : Type u) [AddCommGroup M]
     [Module D M] {n : ℕ} (hM : Module.IsTorsionBySet D M (J ^ n : Ideal D)) :
@@ -60,6 +88,22 @@ lemma isPowTorsion_tensorProduct_of_isTorsionBySet (J : Ideal D) (M : Type u) [A
   rw [algebraMap_smul, ← TensorProduct.tmul_smul]
   have : a • m = 0 := hM (x := m) (a := ⟨a, ha⟩)
   rw [this, TensorProduct.tmul_zero]
+
+/-- 共通分母による商写像の核の正規化長さの評価。
+長さを測る基底 `R` は `D` と別に取れるので、塔上の正規化長さにも適用できる。
+`g` 倍写像の余核を `D/(I,g)` と同定して、右辺を通常の商の長さで表す。 -/
+theorem len_ker_quotientToExtension_le (R : Type u) [CommRing R]
+    [Algebra R D] [Algebra R C] [IsScalarTower R D C]
+    {J : Ideal R} (lam : NormalizedLength R J)
+    (hinj : Function.Injective (algebraMap D C)) (I : Ideal D) (g : D)
+    (hg : ∀ c : C, ∃ d : D, algebraMap D C d = algebraMap D C g * c)
+    (htors : IsPowTorsion J (D ⧸ I)) (hfinite : lam.len (D ⧸ I) ≠ ⊤) :
+    lam.len (LinearMap.ker ((quotientToExtension (C := C) I).toLinearMap.restrictScalars R)) ≤
+      lam.len (D ⧸ (I ⊔ Ideal.span {g})) := by
+  rw [← lam.len_congr _ _ (quotientSmulCokerEquiv R I g)]
+  apply lam.len_ker_le_len_coker_of_ker_le _ _ htors hfinite
+  intro x hx
+  exact smul_eq_zero_of_quotientToExtension_eq_zero hinj I g hg x hx
 
 variable [IsLocalRing D]
 

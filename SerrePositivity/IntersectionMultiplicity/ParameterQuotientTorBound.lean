@@ -3,6 +3,8 @@ module
 public import SerrePositivity.IntersectionMultiplicity.ParameterQuotientTor
 public import SerrePositivity.PerfectComplex.NormalizedEuler
 public import SerrePositivity.HomologicalAlgebra.NullHomotopy
+public import SerrePositivity.LengthAlgebra.PerfectVanishing
+public import SerrePositivity.PerfectComplex.BaseChange
 
 /-!
 # パラメータ商の `Tor` の消滅（論文 Lemma 5.3 の後半）
@@ -19,18 +21,14 @@ public import SerrePositivity.HomologicalAlgebra.NullHomotopy
 
 ## 方針
 
-論文は導来圏の分解 `K(x; R) ⊗^L L ≃ ⊕_j L[j]^{(h choose j)}` を使う。ここでは `P_C = C ⊗ P_L` に
-係数つき Koszul 複体 `K(z; P_C)`（写像錐の反復、`koszulComplexOn`）をとり、そのホモロジーの `λ` を
-二通りに評価する。
+`P_C = C ⊗ P_L` に対して、`LengthAlgebra.lambdaHomology_projective_vanishing` を適用する。
+`x_j L = 0` から共通の正の冪が `P_C` 上で零ホモトピックとなることを確認し、
+環自身の Koszul 消滅と分解の長さを具体的入力として渡す。
+長さの商におけるホモロジーの消滅は、共通の反復錐定理から従う。
+零作用の錐では消去指数が増えないため、以前の `2^h` 倍の指数は不要。
 
-- **下から**（`len_homology_le_koszulComplexOn`）：各 `c_j` が `P_C` 上で零ホモトピックなら、
-  `z_j = c_j^e`（`e ≥ 2^h`）について `λ(H^{m+h}(P_C)) ≤ λ(H^m(K(z; P_C)))`。一段ごとに
-  `z_j` の作用がホモロジーで零なので、写像錐の長完全列の連結射 `H^m(Cone) → H^{m+1}` が全射。
-- **上から**（`len_homology_koszulComplexOn_eq_zero`）：`P_C` が `a` 次より下で零の有界有限自由複体
-  なら `λ(H^m(K(z; P_C))) = 0`（`m < a`）。項による帰納法（`boundedFiniteFree_induction`）で単一
-  複体に帰着し、単一複体では `λ(H_q(z; C)) = 0`（`q > 0`）を使う。
-- `x_j` は `P_L` 上で冪が零ホモトピック（ホモロジー `L` を消すので、
-  `exists_pow_nullHomotopy_of_homology_annihilated`）。
+下の `TorBound` 名前空間には既存の数値的評価も残す。上からの評価は
+有限射影版の共通振幅補題の特殊例とし、主定理は数値的不等式を反復せずに証明する。
 
 ## 規約
 
@@ -245,27 +243,13 @@ theorem len_homology_koszulComplexOn_eq_zero (Q : CochainComplex (ModuleCat.{u} 
     (hbounded : ∃ a b : ℤ, ∀ i, (i < a ∨ b < i) → IsZero (Q.X i)) (m : ℤ)
     (hm : ∀ i, i ≤ m → IsZero (Q.X i)) :
     lam.len ((koszulComplexOn z Q).homology m) = 0 := by
-  revert m
-  apply boundedFiniteFree_induction (fun Q ↦ ∀ m : ℤ, (∀ i, i ≤ m → IsZero (Q.X i)) →
-    lam.len ((koszulComplexOn z Q).homology m) = 0) ?_ ?_ ?_ Q hfree hfinite hbounded
-  · intro Q hQ m _
-    exact len_koszul_isZero lam z hQ m
-  · intro a M hMfree hMfinite m hm
-    by_cases ham : m < a
-    · exact len_koszul_single lam hfg z hJz hz a m ham M
-    · have hM : IsZero M := (hm a (by omega)).of_iso
-        (HomologicalComplex.singleObjXSelf (ComplexShape.up ℤ) a M).symm
-      exact len_koszul_isZero lam z ((HomologicalComplex.single _ _ a).map_isZero hM) m
-  · intro S hS h₁ h₃ m hm
-    have := hS.mono_f
-    have := hS.epi_g
-    have h₁' := h₁ m fun i hi ↦ (hm i hi).of_mono (S.f.f i)
-    have h₃' := h₃ m fun i hi ↦ (hm i hi).of_epi (S.g.f i)
-    have hK := koszulFunctor_shortExact z S hS
-    exact lam.len_eq_zero_of_exact _ _
-      (LinearMap.exact_iff.mpr (hK.homology_exact₂ m).moduleCat_range_eq_ker.symm)
-      (isPowTorsion_koszul hfg z hJz _ m) (isPowTorsion_koszul hfg z hJz _ m)
-      (isPowTorsion_koszul hfg z hJz _ m) h₁' h₃'
+  obtain ⟨a, b, hab⟩ := hbounded
+  have hp (i : ℤ) : Module.Projective C (Q.X i) := by
+    have := hfree i
+    exact Module.Projective.of_free
+  exact lambdaHomology_koszul_projective_amplitude lam hfg z hJz hz Q hfinite hp
+    (m + 1) b (fun i hi ↦ hi.elim (fun h ↦ hm i (by omega))
+      (fun h ↦ hab i (Or.inr h))) m (Or.inl (by omega))
 
 end upper
 
@@ -327,30 +311,30 @@ theorem len_torAlg_eq_zero (hfg : J.FG) (hJ : J ≤ (Ideal.span (Set.range (φ �
       exact (baseChange_smulId φ P (x j ^ w)).symm
     refine (nonempty_homotopy_smul_id_zero_iff _ PC).mp
       ⟨(Homotopy.ofEq eq1).trans (H''.trans (Homotopy.ofEq (Functor.map_zero _ _ _)))⟩
-  -- `c_k = φ(x_k)^w`、`z_k = c_k^{2^h}`
+  -- (Supp)：共通の冪だけを使う。零作用の錐では追加の冪は不要。
   let c : Fin h → C := fun k ↦ φ (x k) ^ w
-  have hz_eq : (fun k ↦ c k ^ 2 ^ h) = fun k ↦ φ (x k ^ (w * 2 ^ h)) :=
-    funext fun k ↦ by simp only [c, map_pow, pow_mul]
-  -- 下から
-  have hlow := len_homology_le_koszulComplexOn lam hfg hJ PC
-    (fun j ↦ ⟨w, hkill j⟩) c hkill (2 ^ h) le_rfl (-(i : ℤ) - h)
-  -- 上から
-  have hJz : J ≤ (Ideal.span (Set.range fun k ↦ c k ^ 2 ^ h)).radical := by
-    refine hJ.trans ((Ideal.radical_mono (Ideal.span_le.mpr ?_)).trans (Ideal.radical_idem _).le)
-    rintro _ ⟨j, rfl⟩
-    exact ⟨w * 2 ^ h, Ideal.subset_span ⟨j, by simp only [c, Function.comp_apply, pow_mul]⟩⟩
-  have hz : ∀ q : ℕ, 0 < q → lam.len (koszulHomologySelf (fun k ↦ c k ^ 2 ^ h) q) = 0 := by
-    rw [hz_eq]
-    exact hzero _ (Nat.mul_pos hw (pow_pos (by omega) _))
-  have hup := len_homology_koszulComplexOn_eq_zero lam hfg _ hJz hz PC
-    (fun k ↦ free_baseChange φ (P.X k)) (fun k ↦ finite_baseChange φ (P.X k))
-    (baseChange_bounded φ P ⟨-(d : ℤ), 0, fun k hk ↦ hk.elim (hlen k) (hP.isZero_X k)⟩)
-    (-(i : ℤ) - h) (fun k hk ↦ (ModuleCat.extendScalars φ).map_isZero (hlen k (by omega)))
-  -- 合わせる
+  have hJc : J ≤ (Ideal.span (Set.range c)).radical :=
+    le_radical_span_pow (φ ∘ x) hJ w
+  have hz : ∀ q : ℕ, 0 < q → lam.len (koszulHomologySelf c q) = 0 := by
+    have heq : c = fun k ↦ φ (x k ^ w) := by funext k; simp [c]
+    rw [heq]
+    exact hzero w hw
+  have hperfect : strictlyPerfectComplex R P := by
+    refine ⟨⟨-(d : ℤ), 0, ?_, ?_⟩, fun q ↦ ?_⟩
+    · rw [CochainComplex.isStrictlyGE_iff]
+      exact hlen
+    · rw [CochainComplex.isStrictlyLE_iff]
+      exact hP.isZero_X
+    · have := hfree q
+      exact ⟨hfin q, Module.Projective.of_free⟩
+  -- (Kos_d) の確認と共通の反復錐定理により消滅する。
   rw [lam.len_congr _ _ (torIsoCochain φ hP i).toLinearEquiv]
-  have hidx : -(i : ℤ) = -(i : ℤ) - h + (h : ℤ) := by ring
-  rw [hidx]
-  exact le_antisymm (hlow.trans hup.le) zero_le
+  exact LengthAlgebra.lambdaHomology_projective_vanishing lam hfg c hJc hz PC
+    (strictlyPerfectComplex_baseChange φ P hperfect)
+    (fun j ↦ (nonempty_homotopy_smul_id_zero_iff _ PC).mpr (hkill j))
+    (-(d : ℤ)) 0
+    (fun q hq ↦ (ModuleCat.extendScalars φ).map_isZero
+      (hq.elim (hlen q) (hP.isZero_X q))) (-(i : ℤ)) (Or.inl (by omega))
 
 end ParamQuot
 

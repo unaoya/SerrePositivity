@@ -6,7 +6,7 @@
 
 以下は原論文の記述から定義を取り、標準的なホモロジー代数と t 構造の一般論を適用して導いた代替証明である。原論文がこの強化を主張しているという意味ではない。紙上の証明の検証であり、Lean の実装・カーネルによる検証は行っていない。
 
-**形式化の採用範囲（2026-10-08 決定）。** この代替証明の最小範囲は、§7 までの一様持ち上げの存在と、§9 の「既存の有限版 3.5b を再利用する書き方」による Proposition 4.5（M5a）。§4 全体ではさらに Lemma 4.6・Theorem 4.7 と §5 向け評価までを必須とする（M5b）。§8 の K₀ の明示的な計算と §10 の分類は、余裕があれば行う追加課題。実装は商の t 構造と有界 t 構造からの冪等完備性を最初の独立した作業単位とし、[§4 の形式化計画](section-4-plan.md) に従う。
+**形式化の採用範囲（2026-10-08 決定、10-10 実装順改訂）。** この代替証明の最小範囲は、§7 までの一様持ち上げの存在と、§9 の「既存の有限版 3.5b を再利用する書き方」による Proposition 4.5（M5a）。§4 全体ではさらに Lemma 4.6・Theorem 4.7 と §5 向け評価までを必須とする（M5b）。§8 の K₀ の明示的な計算と §10 の分類は追加課題。新たに整備された 3.5a の有限性の証明をランクによる上界へ強める作業を先行し、その後に商の t 構造と冪等完備性を進める。詳細は [§4 の形式化計画](section-4-plan.md) に従う。
 
 ## 1. 設定と主張
 
@@ -248,7 +248,7 @@ Remark 4.1 の Fₙ = [A →^{zⁿ} A]、sₙ = n は、この結果への反例
 
 紙上の証明では、重いスペクトル系列の関手性を、有限長加群の一様な分解と t 構造の標準的一般論へ置き換えられる。Lean での実装が直ちに短くなるかは別問題である。列の圏、支持つき部分圏、Verdier 商、t 構造、冪等完備化の基盤が必要で、現状の有限複体に特化した K₀ の実装だけでは足りない。
 
-採用した実装順は、まず商への t 構造の降下と、有界 t 構造からの冪等完備性を独立に形式化する。その後、有限長加群のランク評価つき自由分解、S_A の切り詰め閉性、W_A のホモロジーによる特徴付けを接続し、既存の有限版 3.5b を再利用する。任意の X ∈ P_A^J に対する Proposition 4.5 までが最小範囲の完成条件であり、K₀ の明示的な同型 G_s/g_s は追加課題とする。Lemma 4.2、Proposition 4.3、Lemma 4.6、Theorem 4.7 は論文の形式化に引き続き必要である。
+2026-10-10 の整備で、Koszul 関手の完全性・シフトとの両立、有限自由複体の項による帰納法、Koszul 複体への retract を用いた 3.5a の有限性が実装された。まずこの有限性をランクに比例する上界へ強め、その後に商への t 構造の降下と有界 t 構造からの冪等完備性を進める。一様自由分解、S_A の切り詰め閉性、W_A のホモロジーによる特徴付けを接続し、有限版 3.5b を再利用する数学的方針は維持する。任意の X ∈ P_A^J に対する Proposition 4.5 までが代替証明の最小範囲で、K₀ の明示計算は追加課題。Lemma 4.2、Proposition 4.3、Lemma 4.6、Theorem 4.7 は引き続き必要であり、Theorem 3.1 は現在の引用方針に従う。
 
 ## 参照
 
@@ -256,4 +256,4 @@ Remark 4.1 の Fₙ = [A →^{zⁿ} A]、sₙ = n は、この結果への反例
 - [既存の議論](section-4.md)：補題 3.5 との対応と、今回再検討した障害。
 - [Antieau–Gepner–Heller](https://arxiv.org/html/1610.07207#S2.SS3)：Proposition 2.20 の商の t 構造、Corollary 2.14 の冪等完備性。ここではこれらの一般論を使い、§4 の固有のランク条件は上で別途確認した。
 - [Stacks Project, Regular rings and global dimension](https://stacks.math.columbia.edu/tag/065U)：正則局所環上の有限自由分解についての標準的な背景。§4 の有限長加群に限った構成は Koszul 分解と Horseshoe だけでも与えられる。
-- 有限版の実装：`SerrePositivity/PerfectComplex/KoszulGeneration.lean`、`SerrePositivity/Paper/Lemma3_5/B_Ordinary.lean`、`SerrePositivity/Paper/Lemma3_5/B_Normalized.lean`。
+- 有限版の実装：`SerrePositivity/PerfectComplex/KoszulGeneration.lean`、`SerrePositivity/Paper/Lemma3_5/Ordinary.lean`、`SerrePositivity/Paper/Lemma3_5/Normalized.lean`。

@@ -398,6 +398,27 @@ theorem isAdicComplete_towerStage [IsNoetherianRing A] [IsAdicComplete (maximalI
   let := towerStage_finite A t p n
   exact isAdicComplete_finite_local_algebra (R := A) (TowerStage A t p n)
 
+include ht in
+/-- パラメータ系が基底の極大イデアルを生成すれば、各段の根がその段の極大イデアルを生成する。 -/
+theorem span_stageX_eq_maximalIdeal
+    (ht' : Ideal.span (Set.range t) = maximalIdeal A) (n : ℕ) :
+    haveI := isLocalRing_towerStage A t p ht n
+    Ideal.span (Set.range (stageX A t p n)) = maximalIdeal (TowerStage A t p n) := by
+  let := isLocalRing_towerStage A t p ht n
+  rw [maximalIdeal_towerStage A t p ht n]
+  apply le_antisymm
+  · rw [Ideal.span_le]
+    rintro _ ⟨i, rfl⟩
+    simp [stageX, RingHom.mem_ker, stageResidue_mk]
+  · apply ker_stageResidue_le A t p ht n
+    · rw [← ht', Ideal.map_span, ← Set.range_comp, Ideal.span_le]
+      rintro _ ⟨i, rfl⟩
+      rw [Function.comp_apply, ← mk_X_pow A t p n i]
+      exact Ideal.pow_mem_of_mem _ (Ideal.subset_span (Set.mem_range_self i)) _
+        (pow_pos_of_prime p n)
+    · intro i
+      exact Ideal.subset_span (Set.mem_range_self i)
+
 end local_ring
 
 /-! ## `Λ` の平坦性
@@ -492,20 +513,8 @@ theorem isRegularLocalRing_towerStage [IsRegularLocalRing A]
     (ringKrullDim_eq_of_integral_of_injective A _
       (FaithfulSMul.algebraMap_injective A _)).trans hdim
   let x : Fin h → TowerStage A t p n := fun i ↦ Ideal.Quotient.mk _ (X i)
-  have hspan : Ideal.span (Set.range x) = maximalIdeal (TowerStage A t p n) := by
-    rw [maximalIdeal_towerStage A t p ht n]
-    apply le_antisymm
-    · rw [Ideal.span_le]
-      rintro _ ⟨i, rfl⟩
-      simp [x, RingHom.mem_ker, stageResidue_mk]
-    · apply ker_stageResidue_le A t p ht n
-      · rw [← ht', Ideal.map_span, ← Set.range_comp, Ideal.span_le]
-        rintro _ ⟨i, rfl⟩
-        rw [Function.comp_apply, ← mk_X_pow A t p n i]
-        exact Ideal.pow_mem_of_mem (Ideal.span (Set.range x))
-          (Ideal.subset_span (Set.mem_range_self i)) _ (pow_pos_of_prime p n)
-      · intro i
-        exact Ideal.subset_span (Set.mem_range_self i)
+  have hspan : Ideal.span (Set.range x) = maximalIdeal (TowerStage A t p n) :=
+    span_stageX_eq_maximalIdeal A t p ht ht' n
   apply IsRegularLocalRing.of_spanFinrank_maximalIdeal_le
   rw [← hspan, hdimn]
   have hgen : (Ideal.span (Set.range x)).spanFinrank ≤ h :=

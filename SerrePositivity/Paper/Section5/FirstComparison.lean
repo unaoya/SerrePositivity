@@ -46,14 +46,14 @@ namespace SerrePositivity
 
 /-- `σ ∈ G` でひねった構造射 `ι_σ : R → D →σ D → C`。論文 §5.1 の `ι_σ` で、`C` を `R` 代数とみる
 やり方を `σ` ごとに変える。 -/
-noncomputable def twistedAlgebraMap (R D C G : Type u) [CommRing R] [CommRing D]
+@[expose] noncomputable def twistedAlgebraMap (R D C G : Type u) [CommRing R] [CommRing D]
     [CommRing C] [Algebra R D] [Algebra D C] [Group G] [MulSemiringAction G D]
     (σ : G) : R →+* C :=
   (algebraMap D C).comp ((MulSemiringAction.toRingHom G D σ).comp (algebraMap R D))
 
 /-- 論文 (5.2) の `c_σ = Σ_i (-1)^i λ(Tor_i^R(C, E))`：`C` を `ι_σ` で `R` 代数とみたときの `Tor` の
 正規化 Euler 評価（`lambdaChi`）。 -/
-noncomputable def twistedEuler (R D E C G : Type u) [CommRing R] [CommRing D]
+@[expose] noncomputable def twistedEuler (R D E C G : Type u) [CommRing R] [CommRing D]
     [CommRing C] [Algebra R D] [Algebra D C] [AddCommGroup E] [Module R E]
     [Group G] [MulSemiringAction G D] {J : Ideal C} (lam : NormalizedLength C J)
     (σ : G) : ℝ :=

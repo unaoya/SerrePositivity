@@ -3,6 +3,7 @@ module
 public import SerrePositivity.HomologicalAlgebra.ConeResolution
 public import SerrePositivity.HomologicalAlgebra.BaseChange
 public import SerrePositivity.HomologicalAlgebra.Tor
+public import SerrePositivity.HomologicalAlgebra.ResolutionNaturality
 public import Mathlib.Algebra.Exact.Basic
 public import Mathlib.RingTheory.Flat.CategoryTheory
 public import Mathlib.Algebra.Homology.HomologySequence
@@ -21,7 +22,8 @@ Mathlib の `Functor.leftDerived` をそのまま使い、分解の持ち上げ�
 Noether 性、正則性、有限生成性は仮定しない。
 
 ここでは、構成した射について完全性と末端の全射性を証明する。
-`α` と `β` が導来関手の標準の射に一致すること、および連結射の自然性はまだ示していない。
+第2変数の `α` と第1変数の `α`・`β` は、導来関手の標準の射に一致する。
+第2変数の `β` の同定と、連結射の自然性はまだ示していない。
 -/
 
 @[expose] public section
@@ -76,6 +78,13 @@ noncomputable def α (i : ℕ) :
     (G.leftDerived i).obj (ModuleCat.of A V₁) ⟶
       (G.leftDerived i).obj (ModuleCat.of A V₂) :=
   (T₁ G (V₁ := V₁) i).hom ≫ HomologicalComplex.homologyMap (ψ G f) (-(i : ℤ)) ≫ (T₂ G i).inv
+
+/-- 分解の持ち上げから作った `α` は、左導来関手の標準の射である。 -/
+lemma α_eq_map (i : ℕ) : α G f i = (G.leftDerived i).map (ModuleCat.ofHom f) := by
+  apply (cancel_mono (T₂ G (V₂ := V₂) i).hom).mp
+  simp only [α, Category.assoc, Iso.inv_hom_id, Category.comp_id]
+  exact (leftDerivedIsoCochain_hom_naturality G _ _ (liftSES f) (ModuleCat.ofHom f)
+    (extLift_homologyZero _ _ _) i).symm
 
 /-- 長完全列の射 `βᵢ : LᵢG(V₂) → LᵢG(V₃)`。写像錐への埋め込みが誘導する射で構成する。 -/
 noncomputable def β (i : ℕ) :
@@ -239,7 +248,7 @@ theorem tensorComplex_shortExact (P : CochainComplex (ModuleCat.{u} R) ℤ)
 /-- 第1変数の短完全列から得られる通常の Tor の長完全列。
 第2変数の射影分解を固定し、その各項の平坦性によって複体の短完全列を作る。
 Mathlib のホモロジー長完全列を分解による計算同型で移送する。正則性・有限生成性は不要である。 -/
-theorem torModule_longExact_left (N : Type u) [AddCommGroup N] [Module R N]
+theorem torModule_longExact_left_with_maps (N : Type u) [AddCommGroup N] [Module R N]
     {M₁ M₂ M₃ : Type u} [AddCommGroup M₁] [Module R M₁]
     [AddCommGroup M₂] [Module R M₂] [AddCommGroup M₃] [Module R M₃]
     (f : M₁ →ₗ[R] M₂) (g : M₂ →ₗ[R] M₃) (hf : Function.Injective f)
@@ -249,7 +258,11 @@ theorem torModule_longExact_left (N : Type u) [AddCommGroup N] [Module R N]
       (δ : ∀ i : ℕ, TorModule R (i + 1) M₃ N →ₗ[R] TorModule R i M₁ N),
       (∀ i, Function.Exact (α i) (β i)) ∧
       (∀ i, Function.Exact (β (i + 1)) (δ i)) ∧
-      (∀ i, Function.Exact (δ i) (α i)) ∧ Function.Surjective (β 0) := by
+      (∀ i, Function.Exact (δ i) (α i)) ∧ Function.Surjective (β 0) ∧
+      (∀ i, α i =
+        (((Tor (ModuleCat R) i).map (ModuleCat.ofHom f)).app (ModuleCat.of R N)).hom) ∧
+      (∀ i, β i =
+        (((Tor (ModuleCat R) i).map (ModuleCat.ofHom g)).app (ModuleCat.of R N)).hom) := by
   let P := resV R N
   let S := ModuleCat.shortComplexOfCompEqZero f g
     (LinearMap.ext (fun x => he.apply_apply_eq_zero x))
@@ -268,7 +281,8 @@ theorem torModule_longExact_left (N : Type u) [AddCommGroup N] [Module R N]
     ht.δ (-((i + 1 : ℕ) : ℤ)) (-(i : ℤ)) (by
       change -((i + 1 : ℕ) : ℤ) + 1 = -(i : ℤ)
       omega) ≫ (e (ModuleCat.of R M₁) i).inv
-  refine ⟨fun i => (α i).hom, fun i => (β i).hom, fun i => (δ i).hom, ?_, ?_, ?_, ?_⟩
+  refine ⟨fun i => (α i).hom, fun i => (β i).hom, fun i => (δ i).hom,
+    ?_, ?_, ?_, ?_, ?_, ?_⟩
   · intro i
     have h := exact_transport (ht.homology_exact₂ (-(i : ℤ)))
       (e (ModuleCat.of R M₁) i).symm (e (ModuleCat.of R M₂) i).symm
@@ -301,6 +315,32 @@ theorem torModule_longExact_left (N : Type u) [AddCommGroup N] [Module R N]
       (ht.homology_exact₃ (-(0 : ℤ)) (-(0 : ℤ) + 1) rfl).epi_f (hz.eq_zero_of_tgt _)
     have : Epi (β 0) := by unfold β; infer_instance
     exact (ModuleCat.epi_iff_surjective _).mp this
+  · intro i
+    apply congrArg ModuleCat.Hom.hom
+    apply (cancel_mono (e (ModuleCat.of R M₂) i).hom).mp
+    simp only [α, Category.assoc, Iso.inv_hom_id, Category.comp_id]
+    exact (leftDerivedIsoCochain_natTrans _ _ ((tensoringLeft _).map (ModuleCat.ofHom f)) _ i).symm
+  · intro i
+    apply congrArg ModuleCat.Hom.hom
+    apply (cancel_mono (e (ModuleCat.of R M₃) i).hom).mp
+    simp only [β, Category.assoc, Iso.inv_hom_id, Category.comp_id]
+    exact (leftDerivedIsoCochain_natTrans _ _ ((tensoringLeft _).map (ModuleCat.ofHom g)) _ i).symm
+
+/-- 第1変数の Tor 長完全列。標準の射との一致を含む版から完全性を取り出す。 -/
+theorem torModule_longExact_left (N : Type u) [AddCommGroup N] [Module R N]
+    {M₁ M₂ M₃ : Type u} [AddCommGroup M₁] [Module R M₁]
+    [AddCommGroup M₂] [Module R M₂] [AddCommGroup M₃] [Module R M₃]
+    (f : M₁ →ₗ[R] M₂) (g : M₂ →ₗ[R] M₃) (hf : Function.Injective f)
+    (hg : Function.Surjective g) (he : Function.Exact f g) :
+    ∃ (α : ∀ i : ℕ, TorModule R i M₁ N →ₗ[R] TorModule R i M₂ N)
+      (β : ∀ i : ℕ, TorModule R i M₂ N →ₗ[R] TorModule R i M₃ N)
+      (δ : ∀ i : ℕ, TorModule R (i + 1) M₃ N →ₗ[R] TorModule R i M₁ N),
+      (∀ i, Function.Exact (α i) (β i)) ∧
+      (∀ i, Function.Exact (β (i + 1)) (δ i)) ∧
+      (∀ i, Function.Exact (δ i) (α i)) ∧ Function.Surjective (β 0) := by
+  obtain ⟨α, β, δ, hab, hbd, hda, hb, _, _⟩ :=
+    torModule_longExact_left_with_maps N f g hf hg he
+  exact ⟨α, β, δ, hab, hbd, hda, hb⟩
 
 end leftVariable
 

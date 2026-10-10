@@ -1,6 +1,8 @@
 module
 
 public import SerrePositivity.PerfectComplex.OrdinaryEuler
+public import SerrePositivity.LengthAlgebra.KoszulFormula
+public import SerrePositivity.LengthAlgebra.Ordinary
 public import SerrePositivity.PerfectComplex.KoszulGeneration
 public import SerrePositivity.PerfectComplex.K0
 public import SerrePositivity.CommutativeAlgebra.FiniteLength
@@ -135,11 +137,8 @@ theorem chiOrd_baseChange_koszulComplex
   funext i
   rw [length_restrictScalars_eq hres]
 
-/-- **Lemma 3.5b、通常の長さの側** (3.14)：`z` が `m_A` を生成し、`K(z)` が `A/(z)` の分解（`hK`）で、
-剰余体が同じ（`hres`）、`χ^A(z; T) = rank_A T`（`hχ`）なら、`z` に台をもつ完全 `A` 複体 `Q` について
-`χ_T(Q ⊗_A T) = rank_A T · χ_A(Q)`。正則局所環なら `hK` は A1、`hχ` は `koszulEulerChar_eq_finrank`
-から出る。二つの準同型 `chiOrdHom_of_radical ∘ K0.map` と `rank_A T • chiOrdHom` が `[K(z)]` で
-一致することを確かめ、`K0.hom_ext_koszul` で全体に延ばす。 -/
+/-- **Lemma 3.5b、通常の長さの側**：共通の Koszul Euler 基底公式に、
+通常長さの Koszul 有限性と、基底変更した Koszul Euler 数の階数の計算を適用する。 -/
 theorem lemma_3_5b_ord_of_koszul (hz' : Ideal.span (Set.range z) = maximalIdeal A)
     (hK : IsKoszulResolution z)
     (hres : Function.Surjective ((residue T).comp (algebraMap A T)))
@@ -149,19 +148,18 @@ theorem lemma_3_5b_ord_of_koszul (hz' : Ideal.span (Set.range z) = maximalIdeal 
   have hz : (Ideal.span (Set.range z)).radical = maximalIdeal A := by
     rw [hz']
     exact (maximalIdeal.isMaximal A).isPrime.radical
-  have := isArtinianRing_quotient_span_of_eq hz'
-  have key : (chiOrdHom_of_radical (T := T) hz).comp (K0.map (algebraMap A T)) =
-      Module.finrank A T • chiOrdHom z :=
-    K0.hom_ext_koszul hz' hK (by
-      rw [AddMonoidHom.comp_apply, K0.map_mk, chiOrdHom_of_radical_mk, AddMonoidHom.smul_apply,
-        chiOrdHom_mk]
-      change chiOrd (baseChange (algebraMap A T) (koszulComplex z)) =
-        Module.finrank A T • chiOrd (koszulComplex z)
-      rw [chiOrd_baseChange_koszulComplex hres, hχ, chiOrd_koszulComplex hK hz', nsmul_eq_mul,
-        mul_one])
-  have h := DFunLike.congr_fun key (K0.mk ⟨Q, hQ⟩)
-  rw [AddMonoidHom.comp_apply, K0.map_mk, chiOrdHom_of_radical_mk, AddMonoidHom.smul_apply,
-    chiOrdHom_mk, nsmul_eq_mul] at h
+  have : IsNoetherianRing T := IsNoetherianRing.of_finite A T
+  have := isArtinianRing_quotient_span_of_finite A T z hz
+  have h := LengthAlgebra.lambdaEuler_baseChange_eq_koszulEuler_mul
+    (algebraMap A T) (NormalizedLength.ordinary T) Submodule.fg_bot z bot_le
+    (fun v _ i ↦ ordinary_koszul_pow_finite (algebraMap A T ∘ z) v i) hz' hK Q hQ
+  have hc : LengthAlgebra.koszulEuler (NormalizedLength.ordinary T) (algebraMap A T ∘ z) =
+      (Module.finrank A T : ℝ) := by
+    change lambdaEuler (NormalizedLength.ordinary T) _ = _
+    rw [← chiOrd_eq_lambdaEuler_ordinary]
+    rw [← chiOrd_eq_of_homotopyEquiv (HomotopyEquiv.ofIso (baseChangeKoszulIso (algebraMap A T) z))]
+    rw [chiOrd_baseChange_koszulComplex hres, hχ]
+  rw [hc, ← chiOrd_eq_lambdaEuler_ordinary] at h
   exact h
 
 end SerrePositivity

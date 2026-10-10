@@ -1,0 +1,544 @@
+% lualatex でコンパイルする（latexmk -lualatex）
+\documentclass[11pt,a4paper]{ltjsarticle}
+\usepackage{amsmath,amssymb,amsthm,mathrsfs}
+\usepackage[haranoaji]{luatexja-preset}
+\usepackage[margin=25mm]{geometry}
+\usepackage{booktabs,tabularx,array}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+
+\theoremstyle{plain}
+\newtheorem{question}{問い}
+\theoremstyle{definition}
+\newtheorem{definition}{定義案}
+\theoremstyle{remark}
+\newtheorem*{remark}{注意}
+\theoremstyle{plain}
+\newtheorem*{proposition*}{命題}
+
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\n}{\mathfrak{n}}
+\newcommand{\Tor}{\operatorname{Tor}}
+\newcommand{\Ext}{\operatorname{Ext}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\Cl}{\operatorname{Cl}}
+\newcommand{\eHK}{e_{\mathrm{HK}}}
+
+\sloppy
+\title{$\lambda$-エタールと次元ごとの長さ\\[2pt]\large 検討ノート（草稿）}
+\author{梅崎直也}
+\date{2026年10月11日}
+\begin{document}
+\maketitle
+
+\section*{このノートの目的}
+
+OpenAI の論文「Positivity of Serre's Intersection Multiplicity」は、almost flat を $\lambda$-平坦に、almost CM を $\lambda$-CM に弱めることで結論を得た（解説 \texttt{exposition-ja} の付録 D、E）。弱めてよかった理由は三つあった。
+\begin{enumerate}
+  \item 正値性は数の主張であり、$\lambda$ は数を返す。
+  \item 標数 $p$ では almost の形の入力は得られないが、$\lambda$ の形なら Roberts の定理から得られる。
+  \item 数の極限なので、塔の有限段と比べられる。
+\end{enumerate}
+このノートでは、同じ発想を分岐（エタール性）の側に適用して、「$\lambda$-エタール」や次元ごとに細分した長さを導入し、別の問題に使えないかを検討する。全体が検討段階で、確かめていない主張には「未確認」と書く。
+
+\section{出発点}
+
+\subsection{almost purity も悪さを薄める定理である}
+Tate の例 $K_n = \mathbb{Q}_p(p^{1/p^n})$ では、$K_\infty$ の有限次拡大の差積の付値は $n$ とともに $p^{-n}$ 程度の速さで $0$ に近づき、極限で付値 $0^+$（almost étale）になる。分岐は消えずに薄まる。標数 $p$ ではほぼ自明で、perfect な環の上では Frobenius が差積を保つので、差積が $t^c$ を含めば $t^{c/p^n}$ を全て含み、almost に単位イデアルになる。
+
+\subsection{Serre の論文の中の $\lambda$ 版 purity}
+Serre の論文の Theorem 2.5 の標数 $p$ の証明では、$A[1/g]\to D[1/g]$ が有限エタールとなる $g$ について $g^{1/q}C_D\subseteq B_q$（式 (2.7)）を示し、有限段 $B_q/HB_q$ と極限 $C_D/HC_D$ のずれの $\lambda$ を
+\[
+  \lambda\le q^{-h}\,\ell\bigl(D/(H^{[q]},g)\bigr) = O(q^{-1})
+\]
+で抑えている。分岐によるずれは $\lambda$ で測ると消え、その速さ $q^{-1}$ は分岐の場所 $V(g)$ の余次元 $1$ から来る。
+
+\subsection{最上次の $\lambda$ だけでは弱すぎる}
+完全化（混標数では almost purity による perfectoid 化）の後では、生成的にエタールな有限拡大は全て almost étale になる。したがって、最上次の $\lambda$ で定義した「$\lambda$-エタール」は自動的に成り立ち、余次元 $1$ の分岐すら見えない。
+
+同じことは重複度でも起きる。整域 $R$ 上の有限加群 $M$ について $\eHK(I;M) = \rank(M)\,\eHK(I;R)$ なので、有限拡大 $R\subseteq S$ について $\eHK(\m;S) = [L:K]\,\eHK(\m;R)$ は分岐と無関係に成り立つ（$S$ を $R$ 加群と見る）。最上次の長さは、分岐を見るには粗すぎる。
+
+\section{二つの方向}
+
+分岐を見るには、最上次より細かい情報が要る。候補は二つある。
+
+\subsection{方向 A：分裂（自由な直和因子）を数える}
+F-signature は、$F^e_*R$ の自由な直和因子の個数の正規化極限である。長さではなく「分裂」を数えるので、余次元 $1$ の分岐が見える。perfectoid signature（CLMST）はその混標数版で、Faltings の正規化長さ $\lambda_\infty$ を使って定義される。つまり、$\lambda$ を使いながら、測る対象を「分裂を妨げる部分」に選ぶことで分岐を見ている。
+
+\subsection{方向 B：次の位数の係数を見る}
+有限段では、$\lambda$ で $0$ になる部分にも次の位数の大きさがある。正規局所環 $R$（標数 $p$、剰余体 perfect、次元 $d$）と有限加群 $M$ について、Huneke--McDermott--Monsky は
+\[
+  \ell(M/I^{[q]}M) = \eHK(I;M)\,q^d + \beta(I;M)\,q^{d-1} + O(q^{d-2})
+\]
+となる実数 $\beta(I;M)$ の存在を示した。Kurano は特異 Riemann--Roch を使い、$R$ が $\mathbb{Q}$-Gorenstein で $M$ が有限射影次元なら $\beta = 0$ であることを示し、$F^e_*\mathcal{O}_X$ の第一 Chern 類が標準因子で書けることも示している（正確な式は未確認）。
+
+ここで二つの関数を区別しておく必要がある。
+\begin{itemize}
+  \item \textbf{基底のパラメータで測る関数}：$D$ を正則な基底 $A$ 上の加群と見て、$\ell(D/t^{[q]}D)$ を考える。Serre の Euler 特性から
+  \[
+    \ell(D/t^{[q]}D) - r\,q^h = \sum_{i\ge1}(-1)^{i-1}\ell H_i(t^{[q]};D)\qquad(r = \rank_A D)
+  \]
+  が厳密に成り立つ。右辺は平坦でないこと（CM でないこと）だけから来るので、この関数は分岐を全く見ない。$D$ が CM なら、どれだけ分岐していても右辺は $0$ である。
+  \item \textbf{$D$ 自身のイデアルで測る関数}：$\ell(D/\n^{[q]})$ を考える。第二係数 $\beta$ は標準因子 $K_D$ と結びつく。$A$ が正則なら局所的に $K_A = 0$ なので、Hurwitz の公式から $K_D$ は分岐因子 $\mathrm{Ram}$ の類である。
+\end{itemize}
+ただし Kurano の結果からは、$\beta$ が見るのは分岐そのものではなく、分岐因子の類（$\mathbb{Q}$-Cartier でないこと、あるいはその数値的な類）であると考えられる。分岐していても $\mathrm{Ram}$ が $\mathbb{Q}$-Cartier なら $\beta = 0$ になりうる。
+
+\section{定義案}
+
+\begin{definition}[$\lambda$-エタール]
+$(C,\lambda)$ を長さ付き $A$ 代数とする。次のいずれかが成り立つとき $\lambda$-エタールと呼ぶ（どれを採るかは未定で、互いの関係は分かっていない）。
+\begin{enumerate}
+  \item トレース：$C\to\Hom_A(C,A)$ の余核を $\m_A$ の冪で割ったものの $\lambda$ が $0$。
+  \item 微分：全ての $N$ で $\lambda(\Omega_{C/A}\otimes A/\m_A^N) = 0$。
+  \item 対角：$C\otimes_A C\to C$ が、$\lambda$ が $0$ の核・余核を除いて分裂する。
+\end{enumerate}
+\end{definition}
+強さはエタール $\Rightarrow$ almost étale $\Rightarrow$ $\lambda$-エタールの順になるはずで、$\lambda$-平坦と同じ並びである。上で見たとおり、完全化の後ではこれは自動的に成り立つ。意味のある概念にするには、次のどちらかが必要である。
+\begin{definition}[位数付きの $\lambda$]
+有限段の量 $\ell_q$ が $\ell_q = c_0 q^h + c_1 q^{h-1} + \cdots$ と展開されるとき、$\lambda^{(k)} = c_k$ とおく（展開の存在が前提）。余次元 $k$ の場所に住む悪さは $\lambda^{(k)}$ に初めて現れる、と期待する。
+\end{definition}
+\begin{definition}[分裂で測る $\lambda$]
+$\lambda$ を、全体の大きさではなく「自由な直和因子にならない部分」の大きさに適用する（F-signature、perfectoid signature の型）。
+\end{definition}
+
+\begin{remark}
+「perfectoid pure」という語は既に使われている（Bhatt--Ma--Patakfalvi--Schwede--Tucker--Waldron--Witaszek の perfectoid pure singularities、Yoshikawa の perfectoid pure threshold など）。そこでの「pure」は純射（分裂）の意味で、分岐の純粋性とは別である。名前が衝突するので、ここでは「$\lambda$-purity」ではなく「$\lambda$-エタール」「位数付きの $\lambda$」と呼ぶ。
+\end{remark}
+
+\section{候補の問題}
+
+\subsection{問題 1：局所エタール基本群と変換公式}
+
+\paragraph{既知の結果}
+Carvajal-Rojas--Schwede--Tucker（Ann.\ Sci.\ ENS 2018）は次を示した。
+\begin{itemize}
+  \item \textbf{変換公式}（Thm.~B）：$R\subseteq S$ を F 有限な $d$ 次元正規局所整域の有限局所拡大で、余次元 $1$ でエタール、$R$ は強 F 正則とする。$S = R^{\oplus f}\oplus M$（$M$ は自由な直和因子をもたない）と書くと $f = [\ell:k]$ で、
+  \[
+    s(S) = \frac{[L:K]}{[\ell:k]}\,s(R).
+  \]
+  仮定がなければ不等式 $f\cdot s(S)\le[L:K]\,s(R)$ しか出ない。
+  \item \textbf{有限性}（Thm.~A）：強 F 正則な狭義 Hensel 正規局所整域（次元 $\ge2$）の穴あきスペクトルのエタール基本群は有限で、位数は $1/s(R)$ 以下、$p$ と素である。
+  \item 系：余次元 $1$ でエタールだがエタールでないなら $s(S)\ge 2s(R)$（Cor.~3.2）。全ての点で $s>1/2$ なら、正規スキームの有限射の分岐の場所は因子である（Cor.~3.3）。
+\end{itemize}
+証明の要は、$R$ が強 F 正則なら $\Tr\colon S\to R$ が全射で $\Hom_R(S,R)$ を生成すること、および余次元 $1$ でのエタール性を使って $F^e_*R\to R$ の分裂を $S$ に延ばすことである。
+
+CLMST（Invent.\ Math.\ 2026）は混標数で perfectoid signature を定義し、それが BCM 正則性を検出すること、quasi-étale 写像のもとで F-signature と同様に変換されること、そして BCM 正則な環の局所エタール基本群と因子類群のねじれ部分が有限であることを示した。
+
+\paragraph{$\lambda$ 版の問い}
+\begin{question}
+BCM 正則（あるいは強 F 正則）より弱い仮定のもとで、方向 B の位数付きの量や、$\lambda$ で測った分裂の欠陥を使って、局所基本群の位数や因子類群のねじれを評価できるか。
+\end{question}
+
+\paragraph{見込み}
+既に $\lambda$ 型の不変量（perfectoid signature）で混標数の結果が出ているので、この方向は筋が良い。一方、分裂を数える部分（方向 A）は既存の理論そのものであり、新しさは「強 F 正則性を外したときに何が残るか」にある。$s(R) = 0$ のとき既存の評価は空になるので、位数付きの量でその穴を埋められるかが問いになる。
+
+\paragraph{次の一歩}
+CRST の Thm.~B の証明で、強 F 正則性がどこで使われているか（$\Tr$ の全射性と $\Hom_R(S,R)$ の生成）を確認する。$s(R) = 0$ の典型例（例えば F 正則でない有理二重点、楕円特異点）で、既知の局所基本群と有限段の量を比べる。
+
+\subsection{問題 2：分岐の場所の純粋性の定量版}
+
+\paragraph{既知の結果}
+Zariski--Nagata の純粋性は、正則な基底の上の有限射の分岐の場所が純粋に余次元 $1$ であることを言う。基底が正則でないと一般には成り立たない。CRST の Cor.~3.3 は「F-signature $>1/2$ なら成り立つ」という数値的な十分条件を与えており、既に定量的な純粋性の一例になっている。
+
+\paragraph{$\lambda$ 版の問い}
+\begin{question}
+分岐の場所が余次元 $\ge2$ の成分をもつことを、位数付きの $\lambda$（$\lambda^{(1)}$ と $\lambda^{(2)}$ の比較）で検出できるか。混標数で、perfectoid 版の数値的な純粋性（「perfectoid signature $>1/2$ なら純粋」）が成り立つか。
+\end{question}
+
+\paragraph{見込み}
+後者は CLMST の変換公式から CRST の議論をそのまま移せる可能性があり、既に知られているか、比較的近いところにあると思われる（未確認）。前者は、方向 B の「どの関数の第二係数が分岐を見るか」が分かっていないので、まず基礎の確認が要る。
+
+\paragraph{次の一歩}
+CLMST に CRST Cor.~3.3 の混標数版が含まれているかを確認する。
+
+\subsection{問題 3：重複度の有限拡大に対する変換公式}
+
+\paragraph{既知の結果}
+上で見たとおり、$\eHK(\m;S) = [L:K]\,\eHK(\m;R)$（$S$ を $R$ 加群と見る）は分岐と無関係に成り立つ。$S$ 自身の $\eHK(\n;S)$ との比較には分岐と剰余体が効く。OpenAI の Lech の論文 Theorem 3.1 (3) は、正規化長さで $\lambda(C/HC) = \eHK(H,D)$（標数 $p$）、$\le e(H,D)$（混標数）を与えている。
+
+\paragraph{$\lambda$ 版の問い}
+\begin{question}
+$\eHK(\n;S)$ と $\eHK(\m;R)$ の比較で、分岐からの寄与を $\lambda$ 型の量として分離できるか。Lech 型の不等式（平坦な局所写像での重複度の比較）の有限拡大版に使えるか。
+\end{question}
+
+\paragraph{見込み}
+問いがまだ曖昧で、具体的な目標が定まっていない。優先度は低い。
+
+\subsection{問題 4：Serre の論文の Galois 降下の単純化}
+
+\paragraph{状況}
+Serre の論文 §4 は、Galois 閉包 $D'$ とその Galois 群 $G_D$ を使い、有理 K 理論の降下（Land--Tamme）で比較を行っている。
+
+\paragraph{$\lambda$ 版の問い}
+\begin{question}
+「$\lambda$ が $0$ のものを除いて Galois 不変部分をとる」形の降下（$C_{D'}^{G_D}$ と $C_D$ の比較を $\lambda$-同型として述べる）で、K 理論の降下を置き換えられるか。
+\end{question}
+
+\paragraph{見込み}
+新しい定理にはならないが、Serre の論文の証明や形式化を簡単にできる可能性がある。$|G_D|$ が $p$ で割り切れるとトレースの分裂が使えないので、そこが障害になる。
+
+\section{問題 1 の詳細検討：分裂比と、その perfectoid 版}\label{sec:p1}
+
+この節では問題 1 を詰める。結論を先に書くと、「位数付きの $\lambda$」は標数 $p$ では \textbf{F 分裂比}（F-splitting ratio）として既に存在し、有限被覆に対する変換公式も知られている。混標数ではその土台（perfectoid 版の分裂素イデアル）までは作られているが、分裂比そのものと変換公式は見当たらない。ここが具体的な目標になる。
+
+\subsection{CRST の証明で強 F 正則性が使われる場所}
+CRST の変換公式（Thm.~B）の証明は次の二点に依存している。
+\begin{enumerate}
+  \item $R$ が強 F 正則なら、$\Tr\colon S\to R$ は全射で $\Hom_R(S,R)$ を $S$ 加群として生成し、$\Tr(\n)\subseteq\m$ となる。これにより、$S$ の $R$ 上の自由な直和因子が「$\Tr$ 直和因子」に対応し、$f = [\ell:k]$ がわかる。
+  \item 余次元 $1$ でのエタール性を使って、$F^e_*R\to R$ の分裂を $S$ の分裂に延ばす。
+\end{enumerate}
+その上で、$F^e_*S$ の $R$ 上の自由な直和因子の個数を $f$ と $S$ 側の個数 $a_e(S)$ で表し、正規化して極限をとる。$s(R) = 0$ のときは $R$ が強 F 正則でないので 1 が崩れ、評価 $|\pi_1|\le 1/s(R)$ も空になる。
+
+\subsection{$s(R) = 0$ では局所基本群は制御できない}
+$s(R) = 0$ の特異点には、局所基本群が有限なものも無限なものもある（どちらも典型例として理解しているもので、細部は未確認）。
+\begin{itemize}
+  \item 通常楕円曲線 $E$ の上の錐：F 純だが強 F 正則でなく $s = 0$。穴あき錐は $E$ 上の $\mathbb{G}_m$ 束なので、局所基本群は $\pi_1(E)$ に全射し、無限である。
+  \item 野生的な商特異点 $k[[x,y]]^{\mathbb{Z}/p}$（擬鏡映を含まない作用）：強 F 正則でなく $s = 0$。局所基本群は $\mathbb{Z}/p$ を含むが、有限でありうる。
+\end{itemize}
+したがって、$s(R) = 0$ の場合に「局所基本群全体の位数」を評価することは目標として正しくない。問うべきは「何の次数なら評価できるか」である。
+
+\subsection{標数 $p$：分裂素イデアルと F 分裂比}
+F 純な F 有限局所環 $R$ について、Aberbach--Enescu は次を導入した。
+\begin{itemize}
+  \item \textbf{分裂素イデアル} $P(R)$：全ての $e$ と全ての $\varphi\colon F^e_*R\to R$ について $\varphi(F^e_*r)\in\m$ となる $r$ 全体。F 純なら素イデアルで、最大の真の両立イデアルである。$V(P(R))$ は F 純性の中心（centers of F-purity）の最大のもの。
+  \item \textbf{分裂次元} $\operatorname{sdim}R = \dim R/P(R)$。自由な直和因子の個数 $a_e$ は $q^{\operatorname{sdim}R+\alpha(R)}$ の位数で増える（$\alpha(R) = \log_p[k:k^p]$）。
+  \item \textbf{F 分裂比} $r_F(R) = \lim_e a_e/q^{\operatorname{sdim}R+\alpha(R)}$。
+\end{itemize}
+Blickle--Schwede--Tucker はこの極限の存在と、F 純なら $r_F(R)>0$ であること（Aberbach--Enescu の問い）を示し、Cartier 部分代数 $\mathscr{D}$ との対について $r_F(R,\mathscr{D}) = s(R/P_\mathscr{D},\mathscr{D}_{P_\mathscr{D}})$（誘導された構造をもつ商の F-signature）を示した。ただし環そのものについては $r_F(R)\neq s(R/P(R))$ となる例がある。
+
+\paragraph{位数付きの $\lambda$ との対応}
+$s(R) = \lim a_e/q^{d+\alpha}$ は最上次の量で、$s(R) = 0$ は「分裂する部分が余次元 $\ge1$ の場所 $V(P)$ にしかない」ことを意味する。$r_F(R)$ はその場所の次元 $\operatorname{sdim}R$ に合わせて正規化した量で、\S 3 の位数付きの $\lambda$ の $\lambda^{(d-\operatorname{sdim}R)}$ に当たる。強 F 正則なら $P(R) = 0$、$\operatorname{sdim} = d$ で $r_F = s$ である。
+
+\paragraph{有限被覆に対する変換公式}
+Carvajal-Rojas--Stäbler（JPAA 2022）は、有限局所拡大 $R\subseteq S$ と、生成的に同型な切断 $\sigma\colon S\to\omega_{S/R}$（$T = \sigma(1)$）について、$T$ が全射、$T(\n)\subseteq\m$、$R$ が $T$ 移入可能（transposable、例えば $\sigma$ が同型）という仮定のもとで
+\[
+  \beta(S)\cap R = \beta(R),\qquad
+  [\kappa(\n):\kappa(\m)]\cdot r(S) = [\kappa(\beta(S)):\kappa(\beta(R))]\cdot r(R)
+\]
+を示した（$\beta$ は分裂素イデアル、$r$ は分裂比。対の形で述べられている）。F 正則の場合は CRST の公式 $[\ell:k]\,s(S) = [L:K]\,s(R)$ に戻る。
+
+ここから、剰余体が代数閉なら $r(S)\le1$ により
+\[
+  [\kappa(\beta(S)):\kappa(\beta(R))]\le\frac{1}{r(R)}
+\]
+が出る。つまり、$s(R) = 0$ でも、\textbf{分裂の中心 $V(\beta)$ の生成点での剰余拡大の次数}は $1/r_F(R)$ で抑えられる。これは「被覆のうち、F 純性の中心に沿って見える部分」の評価で、中心と横断的な方向の分岐（例えば錐の頂点での $\pi_1(E)$ 由来の部分）は見ない。この系が論文に明記されているかは未確認である。
+
+\subsection{混標数：何があり、何がないか}
+\begin{itemize}
+  \item \textbf{ある}：perfectoid signature $s_{\mathrm{perfd}}(R)$（CLMST、$\lambda_\infty$ で定義）。変換公式（CLMST Thm.~C）：(a) $R\subseteq S$ が有限で分裂、(b) ある $\phi\in\Hom_R(S,R)$ が $\Hom_R(S,R)$ を $S$ 加群として生成、(c) $\phi(\n)\subseteq\m$、のもとで $s_{\mathrm{perfd}}(S) = [K(S):K(R)]\,s_{\mathrm{perfd}}(R)$（剰余体代数閉、quasi-étale なら $\phi = \Tr$）。基本群の評価（Thm.~D）：$|\pi_1^{\text{ét}}(U)|\le 1/s_{\mathrm{perfd}}(R)$、$|\Cl(R)_{\mathrm{tors}}|\le 1/s_{\mathrm{perfd}}(R)$（$1/0 = \infty$）。
+  \item \textbf{ある}：perfectoid pure 特異点（Bhatt--Ma--Patakfalvi--Schwede--Tucker--Waldron--Witaszek）。perfectoid 純性の中心と、分裂素イデアルの類似 $\beta(R)$（Fayolle, JÉP 2025）：$\beta(R)\neq R$ と $R$ が perfectoid pure であることは同値で、そのとき $\beta(R)$ は素イデアルで最大の中心、$R/\beta(R)$ は正規。エタール射での振る舞いも調べられている。
+  \item \textbf{見当たらない}：perfectoid 版の分裂比と、有限被覆に対する変換公式（$\beta(S)\cap R = \beta(R)$ と次数の公式）。Fayolle の論文には数値的な不変量は現れず、CLMST にも splitting ratio の語は出てこない（検索の範囲で。網羅的な文献調査ではない）。
+\end{itemize}
+
+\subsection{目標の定式化}
+\begin{question}[perfectoid 分裂比]
+$R$ を剰余体が代数閉な混標数の完備局所整域で perfectoid pure とし、$\beta = \beta(R)$、$\operatorname{sdim}R = \dim R/\beta$ とする。
+\begin{enumerate}
+  \item $R/\beta$ の正則な基底の塔と正規化長さ $\lambda_\infty$ を使って、perfectoid 分裂比 $r_{\mathrm{perfd}}(R)$ を定義できるか（標数 $p$ で $r_F$ に一致するように）。
+  \item perfectoid pure なら $r_{\mathrm{perfd}}(R)>0$ か（Blickle--Schwede--Tucker の混標数版）。
+  \item 有限被覆 $R\subseteq S$ について、CLMST Thm.~C の (a)--(c) の型の仮定のもとで、$\beta(S)\cap R = \beta(R)$ と $r_{\mathrm{perfd}}(S) = [\kappa(\beta(S)):\kappa(\beta(R))]\,r_{\mathrm{perfd}}(R)$ が成り立つか。
+  \item 系として、$[\kappa(\beta(S)):\kappa(\beta(R))]\le 1/r_{\mathrm{perfd}}(R)$ が得られるか。
+\end{enumerate}
+\end{question}
+
+\paragraph{方針の案}
+標数 $p$ の Blickle--Schwede--Tucker の路線（対の分裂比を、商 $R/P$ の誘導された対の F-signature として表す）を、CLMST の perfectoid signature の路線（$\lambda_\infty$ で定義）に載せる。
+\begin{enumerate}
+  \item 誘導される構造：$R/\beta$ 上に、$R$ の「perfectoid な分裂」から誘導される構造を定める。Fayolle の論文 §6.3 の perfectoid 版 Cartier core が候補になる。
+  \item 定義：その構造つきの $R/\beta$ の perfectoid signature として $r_{\mathrm{perfd}}(R)$ を定義する。環そのものについて $r_F(R)\ne s(R/P)$ となる例があるので、最初から対（構造つき）で定義する。
+  \item 変換公式：CLMST Thm.~C の証明（$\phi$ による $\Hom$ の生成と $\phi(\n)\subseteq\m$）を、$R/\beta\subseteq S/\beta(S)$ と誘導構造に対して行う。Carvajal-Rojas--Stäbler の $\beta(S)\cap R = \beta(R)$ に当たる主張がまず必要である。
+\end{enumerate}
+
+\paragraph{予想される障害}
+\begin{itemize}
+  \item $\beta$ が $p$ を含むと $R/\beta$ は標数 $p$ になる。この場合、混標数の $R$ の分裂比を標数 $p$ の商の量で測ることになり、Serre の論文の「両方の標数が要る」状況と同じ型の扱いが要る。
+  \item $\lambda_\infty$ は正則な基底の塔の上で定義されるので、$R/\beta$ に生成的に分離的な正則基底（Cohen--Gabber 型）を取る必要がある。$R/\beta$ は正規（Fayolle）なので、標数 $p$ なら Cohen--Gabber、混標数なら Serre の論文の Lemma 2.2 の構成が使えるはずである。
+  \item 分裂比の正値性（2）は、標数 $p$ では F-signature の正値性（強 F 正則な対）に帰着された。混標数で対応するのは「BCM 正則な対の perfectoid signature の正値性」だが、CLMST は逆向き（$s_{\mathrm{perfd}}>0$ なら BCM 正則な対があるか）を未解決としている。どちら向きが要るかを確かめる必要がある。
+\end{itemize}
+
+\paragraph{次の一歩}
+\begin{enumerate}
+  \item Carvajal-Rojas--Stäbler の主定理（Thm.~4.3、4.8）の正確な仮定と、次数の評価の系が論文にあるかを確認する。
+  \item Fayolle の論文 §6（$\beta(R)$ の定義と perfectoid 版 Cartier core）を読み、誘導構造が定義できるかを確認する。
+  \item CLMST §8 の未解決問題の一覧を確認し、この問いが既に挙げられているか、解かれているかを確かめる。
+  \item 例で試す：非孤立な F 純特異点（例えば強 F 正則な曲面特異点と直線の積を変形したもの）で、$r_F$ と中心に沿った被覆の次数を比べる。
+\end{enumerate}
+
+\subsection{本文で確認したこと（2026-10-11）}
+
+\paragraph{CLMST §8「Further directions and questions」}
+挙げられている問いと予想は次のとおりで、分裂比や分裂素イデアルは現れない。
+\begin{itemize}
+  \item 予想 8.1：perfectoid signature と perfectoid HK 重複度は、Noether--Cohen 正規化 $A\subseteq R$ とパラメータ系 $\underline{x}$ の選び方によらない。パラメータイデアルの HK 重複度は選び方によらない（Cor.~4.0.18）。上限をとった $s^{\sup}_{\mathrm{perfd}}(R)$ を使えば、$\mathbb{Q}$-Gorenstein なら「$>0$ $\Leftrightarrow$ BCM 正則」がすぐ出て、変換公式も $s^{\sup}(R)\,[K(S):K(R)]\le s^{\sup}(S)$ という基本群に使える向きで得られる、と述べている。
+  \item 剰余体が perfect でない場合への拡張（計画）。
+  \item 予想 8.2（局所化）、8.3（忠実平坦拡大）、8.4（半連続性）。
+  \item 定義 8.5：perfectoid signature の対 $(R,\Delta)$ 版の定義案（Gorenstein の場合）。$f^{1/n}$ を含む有限拡大 $S$ をとり、$R\to S^{A_\infty}_{\mathrm{perfd}}$、$1\mapsto xf^{1/n}$ が分裂しない $x$ 全体を $J^{S,\Delta}_\infty$ として
+  \[
+    s^{\underline{x}}_{\mathrm{perfd}}(R,\Delta) = \frac{1}{[K(S):K(R)]}\,\lambda_\infty\bigl(S^{A_\infty}_{\mathrm{perfd}}/J^{S,\Delta}_\infty\bigr).
+  \]
+  「今後の論文で調べる」とあり、Blickle--Schwede--Tucker の対の理論との比較が示唆されている。
+\end{itemize}
+したがって、perfectoid 分裂比は CLMST の問いの一覧にはない。ただし、その前提になる「対の perfectoid signature」は著者たちが計画中の題材である。
+
+\paragraph{Fayolle「Centers of perfectoid purity」§6、§7}
+\begin{itemize}
+  \item 対 $(R,\phi)$（$\phi\in\Hom_R(R^A_\infty,R)$、$R^A_\infty$ は perfectoid 化）について、$\beta_0 = \m$、$\beta_i = \{r\mid\phi((r)^A_\infty)\subseteq\beta_{i-1}\}$ とし、$\beta(R,\phi) = \bigcap_i\beta_i$ と定める（定義 6.2）。一段で定義しないのは、一段の版が $\phi$-両立か分からないからである。
+  \item $\beta(R,\phi)\neq R$ と $\phi$ の全射性は同値で、そのとき $\beta(R,\phi)$ は最大の $\phi$-両立イデアル、素イデアルで、$(R/\beta,\bar\phi)$ は両立イデアルをもたず、$R/\beta$ は正規整域（命題 6.4、系 6.5）。$\beta(R) = \bigcap_\phi\beta(R,\phi)$（定義 6.6、命題 6.7）。
+  \item §6.3 で、イデアル $\mathfrak{a}$ の「両立核」$\beta_{\mathfrak{a}}(R,\phi)$（Cartier core の類似）と、素イデアル $\mathfrak{p}$ に沿った test ideal $\tau_{\mathfrak{p}}(R,\phi)$ を定義している。
+  \item §7 で扱うのは\textbf{有限エタール}な $R\to S$ だけである（almost purity を使う）。そこでは $\beta(R,\phi) = \beta(S,\psi)\cap R$、$\beta(S,\psi) = \beta(R,\phi)S$ など（命題 7.4）。
+  \item 分岐する有限拡大については、「$\Hom_R(S,R)$ の像 $\{\phi(1)\}$ は一様に perfectoid 両立なイデアルか」という標数 $p$ では正しい主張が、混標数では一般に成り立たないことを、$\mathbb{Z}_p[[x,y,z]]/(x^3+y^3+z^3)$（$p\equiv1\bmod 3$、法 $p$ で通常楕円曲線の上の錐）を例に示している。
+\end{itemize}
+
+\paragraph{目標の修正}
+\begin{itemize}
+  \item 問い（3）の前半「$\beta(S)\cap R = \beta(R)$」は、混標数では有限エタールの場合しか知られていない。分岐する有限拡大（quasi-étale を含む）では未解決で、しかも標数 $p$ の論法の一部（$\Hom$ の像の両立性）が混標数では崩れる。ここが最初の壁になる。
+  \item 分裂比の定義には、対の perfectoid signature が要る。CLMST の定義 8.5 は $\mathbb{Q}$ 因子の対で、Fayolle の対 $(R/\beta,\bar\phi)$（$\phi$ による対）とは形が違う。両者をつなぐ定義を作る必要がある。
+  \item 正規化の基底について：$\bar\phi$ は $R$ の基底 $A$（次元 $d$）の塔の上で定義されているが、$R/\beta$ の分裂比は次元 $\operatorname{sdim}$ の基底の塔で測りたい。この基底の取り替えが技術的な核心になりそうである。
+\end{itemize}
+
+\subsection{文献調査の結果（2026-10-11）}
+
+\paragraph{Carvajal-Rojas--Stäbler の主定理（本文の定理環境で確認）}
+設定（Thm.~4.3）：$\theta\colon(R,\m,k)\to(S,\n,l)$ は有限局所拡大、$\mathscr{C}$ は Cartier $R$ 代数、$R$ は整域で $L = S\otimes_R K$。$S$ 加群の生成的同型 $\sigma_R\colon S\to\omega_{S/R}$ があり、$T = \sigma_R(1)$ は全射で $T(\n)\subseteq\m$、さらに $R$ は $T$ 移入可能な Cartier $\mathscr{C}$ 加群（例えば $\sigma$ が同型）。正規性は仮定しない。
+\begin{itemize}
+  \item Thm.~4.3：$[l:k]\,s(S,f^*\mathscr{C}) = [L:K]\,s(R,\mathscr{C})$。
+  \item Thm.~4.8：$\beta(S,f^*\mathscr{C})\cap R = \beta(R,\mathscr{C})$、かつ $[\kappa(\n):\kappa(\m)]\,r(S,f^*\mathscr{C}) = [\kappa(\beta(S)):\kappa(\beta(R))]\,r(R,\mathscr{C})$。F 純性・強 F 正則性は $R$ 側と $S$ 側で同値。
+  \item Example 4.7：$T$ の全射性は外せない。$\Tr$ が全射でない quasi-étale な次数 $2$ の拡大（対数端末で F 純だが強 F 正則でない特異点）が反例。
+  \item 「余次元 $1$ でエタール」「tame」は仮定に現れない。§4 に系はなく、\textbf{被覆の次数や基本群の評価は書かれていない}。
+\end{itemize}
+
+\paragraph{Carvajal-Rojas--Fayolle（tame 分岐と F 純性の中心）}
+\begin{itemize}
+  \item 一般の有限被覆の tame 分岐を、$T$-転置 $\mathfrak{p}^T$（$T$-像が $\mathfrak{p}$ に入る最大のイデアル）を使って $\mathfrak{p}^T = \sqrt{\mathfrak{p}S}$ で定義する（Def.~3.2、3.19）。
+  \item Cor.~6.15：F 純な対の準同型が中心の上で tame なら $\Tr\colon S\to R$ は全射。$L/K$ が Galois なら逆も成り立つ。
+  \item Cor.~6.14、6.17：中心の上で tame であることを、fibered 性（Thm.~5.7、中心の集合の次元が両側で一致）と test ideal の条件 $\tau_{\mathfrak{p}}(R) = T(\tau_{\mathfrak{q}}(S))$ で特徴づける。
+  \item Example 6.18：F 分裂な楕円曲線の錐の上の Artin--Schreier 型の $\mathbb{Z}/p$ トーソルで、test ideal の条件が外せないことを示す。
+  \item 基本群への帰結は書かれていない。
+\end{itemize}
+
+\paragraph{標数 $p$ で直ちに得られる評価（文献には見当たらない）}
+Carvajal-Rojas--Stäbler Thm.~4.8 と $r(S)\le1$（$r = s(R/P,\mathscr{D}_P)\le1$）から、仮定（$T$ 全射など）のもとで
+\[
+  [\kappa(\beta(S)):\kappa(\beta(R))] = \frac{[\kappa(\n):\kappa(\m)]\,r(S)}{r(R)}\le\frac{[\kappa(\n):\kappa(\m)]}{r_F(R)}
+\]
+が出る。Galois 被覆なら、$T = \Tr$ の全射性は「F 純性の中心の上で tame」と同値（Carvajal-Rojas--Fayolle Cor.~6.15）。したがって、
+\begin{quote}
+F 純な $R$ の有限 Galois 被覆で、F 純性の中心の上で tame なものについて、最大の中心 $V(\beta)$ の生成点での剰余拡大の次数は $[\kappa(\n):\kappa(\m)]/r_F(R)$ 以下である。
+\end{quote}
+という形の主張が得られる（$r(S)\le1$ の正規化と、Galois の場合の仮定の対応は本文でもう一度確認する）。CRST の $|\pi_1|\le1/s(R)$ の「中心に沿った版」に当たる。これを「被覆のうち中心に沿って見える部分」の群の言葉（例えば中心の生成点での分解群・惰性群の商）に翻訳することが、標数 $p$ での最初の小さな目標になる。
+
+\paragraph{混標数の状況（追加）}
+\begin{itemize}
+  \item Carvajal-Rojas--Ma--Polstra--Schwede--Tucker（arXiv:1908.01416）：剰余標数 $p>5$ の混標数で、2 次元の有理特異点（Gorenstein）は有理二重点で、正則スキームからの分裂する有限被覆をもつ。$E_8$ の被覆は次数 $120$ で穴あきスペクトル上エタール。$(0,3)$ では反例がある。具体例の供給源になる。
+  \item Bhatt--Ma--Patakfalvi--Schwede--Tucker--Waldron--Witaszek の perfectoid pure 論文：純な写像 $R\to S$ で $S$ が perfectoid pure なら $R$ も perfectoid pure（Lemma 4.6）。基本群の結果はない。
+  \item 混標数の tame 基本群や Abhyankar 型の補題を扱った論文は見つからなかった（未確認）。
+\end{itemize}
+
+\paragraph{quasi-F 分裂の方向}
+quasi-F 分裂（Yobuko、Kawakami--Takamatsu--Yoshikawa、Tanaka--Witaszek--Yobuko、Takamatsu--Yoshikawa）では、数値不変量として知られているのは高さ（整数値）と、混標数での perfectoid pure threshold（Yoshikawa、arXiv:2502.06108：完全交叉で高さ $n$ と ppt の区間が対応）である。「quasi-F-signature」「quasi-F 分裂比」を定義した論文は見つからなかった。quasi-F 分裂は F 分裂の弱化なので、$s = 0$ や $r_F$ が定義されない（F 純でない）特異点に数値を与える第三の方向になりうる。
+
+\paragraph{標数 $0$ の類似}
+\begin{itemize}
+  \item klt 特異点の局所基本群の有限性（Xu、arXiv:1210.5564）、regional fundamental group の有限性（Braun、arXiv:2004.00522）、固定次元での Jordan 性（Braun--Filipazzi--Moraga--Svaldi、arXiv:2006.01253）。
+  \item 正規化体積の次数公式：klt の有限 Galois 射で $f^*(K_X+\Delta) = K_Y+\Delta_Y$ なら $\widehat{\mathrm{vol}}(y) = \deg f\cdot\widehat{\mathrm{vol}}(x)$（Xu--Zhuang、arXiv:2005.08303、Thm.~1.3）。Galois でない場合への拡張が arXiv:2607.27032（Z.~Liu）で主張されている（未確認）。これは CRST、CLMST の「signature $\times$ 次数」と同じ形で、基本群の評価はその系である。
+  \item lc 特異点（$s = 0$ に当たる）について、lc 中心に沿った体積や次数公式があるかは未確認。$r_F$ の標数 $0$ 版に当たる量があるかを調べる価値がある。
+\end{itemize}
+
+\paragraph{更新した次の一歩}
+\begin{enumerate}
+  \item 標数 $p$：上の評価を正確な形にし、$r(S)\le1$ と Galois の場合の仮定を本文で確認する。中心に沿った分解群・惰性群の言葉に翻訳し、例（F 分裂な楕円曲線の錐、Artin--Schreier トーソル、非孤立な F 純特異点）で確かめる。
+  \item 混標数：分岐する有限被覆での $\beta(S)\cap R = \beta(R)$ を、CLMST Thm.~C の仮定（$\phi$ が $\Hom$ を生成、$\phi(\n)\subseteq\m$）のもとで示せるか検討する。Fayolle の反例がどの仮定を破っているかを確認する。
+  \item 標数 $0$：lc 中心に沿った正規化体積や、その次数公式の文献を調べる。
+\end{enumerate}
+
+\section{$p$ 進 Hodge 理論・分岐理論との関係}\label{sec:padic}
+
+この節は、almost purity と $\lambda$ の系譜をたどり、最近の $p$ 進 Hodge 理論（perfectoid、プリズマティック）と分岐理論（Abbes--Saito、斎藤の Frobenius--Witt 微分）が、このノートの話とどう結びつきうるかを整理する。記憶に頼っている部分は「と理解している」と書き、確かめていない推測は「推測」と明記する。
+
+\subsection{系譜：almost purity と $\lambda$ は $p$ 進 Hodge 理論の道具}
+\begin{itemize}
+  \item \textbf{Tate}（$p$ 可除群、1967）：$K_\infty = K(\mu_{p^\infty})$ の塔で差積が $0$ に近づくことと正規化トレースを使い、$\mathbb{C}_p(n)$ の Galois コホモロジーを計算した。Hodge--Tate 分解の出発点である。\textbf{Sen} はこれを $p$ 進 Lie 拡大に広げ、分岐のフィルトレーションと Lie 群のフィルトレーションが線形に対応すること（Sen の定理）を示した。
+  \item \textbf{Faltings}：滑らかな多様体の比較定理のために、局所的な塔の上の Galois コホモロジーを almost purity で計算した。Serre の論文と CLMST が使う正規化長さ $\lambda_\infty$ は、Faltings の「Almost étale extensions」（Astérisque 279）の Appendix 2 にある。$\lambda$ はもともと $p$ 進 Hodge 理論の文脈の道具である（Faltings がそこで何に使ったかは未確認）。
+  \item \textbf{Scholze}：tilt により almost purity を一般の形で示し、剛解析空間の $p$ 進 Hodge 理論に使った。
+  \item \textbf{Bhatt--Morrow--Scholze}（$A_{\mathrm{inf}}$ コホモロジー）：perfectoid な被覆で計算し、almost zero な捩れは $L\eta$（décalage）で取り除く形に置き換わった。
+  \item \textbf{Bhatt--Scholze}（プリズマティック）：定義は $\delta$ 環とプリズムで、perfectoid を使わない。perfect なプリズムが perfectoid 環に対応し、perfectoid は quasisyntomic 位相での局所的な計算の場として現れる。Serre の論文の $C_D = (D\otimes_A A_\infty)_{\mathrm{perfd}}$ の perfectoid 化は Bhatt--Scholze §8 の構成で、Serre の論文はすでにプリズマティックの上に立っている。
+\end{itemize}
+計算の局所的な場としては perfectoid がほぼ万能だが、プリズマティック理論の価値は perfectoid でない環そのものにコホモロジーを与える点にある（Nygaard フィルトレーション、syntomic コホモロジー、Hodge--Tate 比較）。これらは perfectoid に移ると見えにくくなる情報である。
+
+\subsection{「拡大すると CM になる」ことの $p$ 進 Hodge 的な見方}
+Bhatt の「$R^+$ は CM」の証明は、$p$ 進 Riemann--Hilbert 型の比較により、$R^+/p$ の局所コホモロジーを $\operatorname{Spec}R[1/p]$ 上の $\mathbb{F}_p$ 係数のエタールコホモロジーと結びつけ、affine 上の Artin 型の消滅で消す、という流れだと理解している。解説 \texttt{exposition-ja} の付録 D の言葉では、平坦でない欠陥（局所コホモロジー $H^j_\m$）が、perfectoid 化の後には一般ファイバーのエタールコホモロジーで制御され、次元の理由で消える、ということになる。混標数の「分岐の希釈」の描像（付録 D の見方 3）の、より概念的な説明になりうる。CLMST の almost CM（$D\otimes A_\infty$ の perfectoid 化）が同じ論法かは未確認。
+
+\subsection{分岐の純粋性}
+Česnavičius--Scholze「Purity for flat cohomology」（Ann.\ of Math.\ 2024）は perfectoid の方法で平坦コホモロジーの純粋性を示し、系として完全交叉に対する Grothendieck の純粋性予想（穴あきスペクトルの有限エタール被覆が延びる）を得ていると理解している（主張の正確な形は未確認）。問題 2 の、混標数での最も強い既知の結果に当たるはずである。
+
+\subsection{分岐理論との関係}
+
+\paragraph{1 次元：塔での差積の減衰と分岐の break}
+Tate の計算では、塔の段での差積の付値は $p^{-n}$ の速さで $0$ に近づき、その速さの定数は分岐の break（上付き番号）で決まる。Sen の定理はその break が塔の Lie 構造と線形に対応することを言う。これは、このノートの「位数付きの $\lambda$」（$\lambda$ で $0$ になる部分の次の位数の係数）と同じ形の量である。
+
+1 次元では、さらに導手・判別式公式がある：巡回拡大の判別式（差積のノルム）の付値は、指標の Artin 導手の和である。したがって、
+\begin{quote}
+有限被覆 $R\subseteq S$ の差積（トレースの余核）を正規化長さで測った量の次の位数の係数が、被覆に対応する Galois 表現（例えば階数 $1$ の層）の導手の和を測る
+\end{quote}
+という形の「導手・判別式公式の $\lambda$ 版」が、高次元・特異点の上でも成り立つかが自然な問いになる（推測）。
+
+\paragraph{高次元：Abbes--Saito の分岐理論と tilt}
+高次元の野生分岐は、Abbes--Saito の分岐フィルトレーション、Kato の refined Swan 導手、斎藤の特性サイクルで測られる。Hattori「Ramification theory and perfectoid spaces」（Compositio）は、完備離散付値体の拡大が $s^m$ を法として同じ還元をもつなら、$j$ で抑えられた分岐をもつかどうかが一致することを示し、$j$ で抑えられた分岐の拡大の圏の同値（剰余体が perfect でない場合の Deligne の定理の一般化）と、Scholl の高次のノルム体と Abbes--Saito 理論の整合性を得ている。分岐の不変量が tilt（ノルム体）を通して混標数と標数 $p$ の間で比較できる、という点で、「almost purity を tilt で示す」ことの分岐理論版になっている。
+
+\paragraph{斎藤の Frobenius--Witt 微分と $\delta$ 環}
+混標数のスキームには通常の余接束がない（例えば $\Omega_{\mathbb{Z}_{(p)}} = 0$）。斎藤は Frobenius--Witt 微分（FW 微分）を導入して、$p = 0$ の閉部分スキーム上のベクトル束として FW 余接束 $FT^*X$ を定義し、構成可能層の微小台を定義した（「Frobenius-Witt differentials and regularity」Algebra Number Theory 16 (2022)、「Cotangent bundle and micro-supports in mixed characteristic case」）。FW 微分は、Dupuy--Katz--Rabinoff--Zureick-Brown の total $p$-differentials と同じ構成で、Leibniz 則が、積については $w(ab) = a^p\,wb + b^p\,wa$、和については二項係数 $\tfrac{1}{p}\tbinom{p}{i}$ の和と $w(p)$（「$dp$」）を含む補正項つきの形に変わる（和の規則の正確な形は未確認。斎藤の Oberwolfach 2024 報告による）。これは $\delta$ 環の公理
+\[
+  \delta(a+b) = \delta a+\delta b-\sum_{0<i<p}\tfrac{1}{p}\tbinom{p}{i}a^ib^{p-i},\qquad \delta(ab) = a^p\delta b+b^p\delta a+p\,\delta a\,\delta b
+\]
+を $p$ を法として線形化したもの（Buium の $p$ 微分の線形化）と見られる。Ooe（arXiv:2402.06163）は、FW 余接束の上の階数 $1$ の層の F 特性サイクルを算術曲面で調べ、その零切断との交点が「生成ファイバーのコホモロジーの Swan 導手の差の $p$ 倍」に等しいこと（Thm.~0.3）を示している。また FW 微分と剰余体のテンソルが、Frobenius の合成に対する余接複体の $H_1$ と同一視される（Prop.~1.2）。
+
+\paragraph{このノートへの帰結}
+\begin{enumerate}
+  \item \textbf{共通の構造は Frobenius 持ち上げである。} perfectoid 化・プリズム（$\lambda$ の構成に使う）と FW 微分（混標数の分岐を測る）は、どちらも $\delta$ 構造（Frobenius 持ち上げ）の上に立っている。標数 $p$ で「Frobenius が全てを深くする」ことと「Frobenius で分岐を測る」ことの、混標数での共通の言葉になりうる。
+  \item \textbf{$\lambda$-エタールの定義の修正。} \S 3 の定義案 (2)（微分 $\Omega_{C/A}$ の $\lambda$）は、混標数では $\Omega$ では足りないはずで、FW 微分（あるいは Frobenius に関する余接複体）で置き換えるのが自然である。perfectoid 環では（$p$ 進完備化した）余接複体が非常に単純になるので、塔の上で FW 微分が「薄まる」様子が、差積の減衰の高次元版になると期待される（推測）。
+  \item \textbf{導手との比較の舞台。} Ooe の設定（算術曲面、階数 $1$ の層）は、巡回被覆 $S/R$ と階数 $1$ の層の対応を通して、「被覆の差積・FW 微分の正規化長さ」と「Swan 導手・F 特性サイクル」を比べる最初の舞台になりうる。
+\end{enumerate}
+
+\begin{question}[導手・判別式公式の $\lambda$ 版]
+$R\subseteq S$ を（混標数または標数 $p$ の）正規局所整域の有限 Galois 被覆とし、余次元 $1$ で野生分岐を許す。塔の有限段で差積（あるいは FW 微分）の正規化長さを測った量の、次の位数の係数は、被覆に対応する表現の Swan 導手（あるいは特性サイクル）で表されるか。
+\end{question}
+
+\paragraph{次の一歩}
+\begin{enumerate}
+  \item 1 次元で確かめる：局所体の巡回拡大と、Tate、Sen の塔で、差積の減衰の定数を正規化長さの言葉で書き、Artin 導手・Swan 導手との関係（導手・判別式公式）を明示する。
+  \item 斎藤の FW 微分の論文と Ooe の論文で、FW 微分の正確な定義、FW 余接束の階数、余接複体との関係を確認する。perfectoid 化の塔の上で FW 微分がどう振る舞うかを調べる。
+  \item 2 次元の例：算術曲面上の Artin--Schreier--Witt 型・Kummer 型の巡回被覆で、Hilbert--Kunz 型の第二係数（あるいは差積の正規化長さの次の項）と Swan 導手を比べる。
+  \item Hattori の結果（分岐の比較と tilt）を、正規化長さの量に移せるか検討する。
+\end{enumerate}
+
+\section{導手・判別式公式の $\lambda$ 版：標数 $p$ での計算}\label{sec:disc}
+
+この節では、\S\ref{sec:padic} の問いを標数 $p$ で実際に計算する。結論は、正則な基底の上では「トレースの余核の正規化長さの次の位数の係数は、判別式の超曲面の Hilbert--Kunz 重複度に等しい」という、ほぼ初等的な公式になる（以下の命題は証明の概略つきで、細部は要検証）。
+
+\subsection{設定}
+$k$ を代数閉体（標数 $p$）、$A = k[[t_1,\dots,t_h]]$、$D$ を $A$ 上有限な正規局所整域で、商体の拡大 $L/K$ は分離的とする。トレース $\Tr\colon D\to\omega_{D/A} = \Hom_A(D,A)$ は単射で、その余核を
+\[
+  Q = Q_{D/A} = \operatorname{coker}(\Tr\colon D\to\Hom_A(D,A))
+\]
+とおく。$D$ は正規なので、高さ $1$ の素イデアル $\mathfrak{P}\subset D$ で $D_\mathfrak{P}$ は離散付値環であり、$\omega_{D/A,\mathfrak{P}}$ は差積の逆 $\mathfrak{D}^{-1}_\mathfrak{P}$ に等しい。したがって $Q$ の余次元 $1$ の部分は差積因子で、$\ell(Q_\mathfrak{P}) = d_\mathfrak{P}$（$\mathfrak{P}$ での差積の指数）である。$\dim Q\le h-1$。
+
+塔の段では、Frobenius によって組 $(A^{1/q}\subseteq D^{1/q})$ は $(A\subseteq D)$ と同型で、この同型で $t_j\in A$ は $t_j^q$ に移る。段 $q$ でのトレースの余核を $Q_q$ とおくと、Serre の論文の Lemma 2.3 の正規化（$\lambda_\infty(V\otimes_{A_q}\Lambda) = q^{-h}\ell_{A_q}(V)$）から
+\[
+  \lambda_\infty\bigl((Q_q/\m_AQ_q)\otimes_{A_q}\Lambda\bigr) = q^{-h}\,\ell_A\bigl(Q/\m_A^{[q]}Q\bigr)
+\]
+となる。
+
+\subsection{主な計算}
+\begin{proposition*}[命題 A（要検証）]
+上の設定で、判別式イデアル $\Delta_{D/A}\subseteq A$（$A$ は UFD なので単項。生成元も $\Delta$ と書く）について
+\[
+  \lim_{q\to\infty} q\cdot\lambda_\infty\bigl((Q_q/\m_AQ_q)\otimes\Lambda\bigr) = \eHK\bigl(\m_A;\,A/(\Delta_{D/A})\bigr).
+\]
+\end{proposition*}
+\paragraph{証明の概略}
+$Q$ を $A$ 加群と見ると $\dim Q\le h-1$ なので、Hilbert--Kunz の結合法則から
+\[
+  \ell_A(Q/\m_A^{[q]}Q) = \eHK(\m_A;Q)\,q^{h-1}+o(q^{h-1}),\qquad
+  \eHK(\m_A;Q) = \sum_{\mathfrak{q}}\ell_{A_\mathfrak{q}}(Q_\mathfrak{q})\,\eHK(\m_A;A/\mathfrak{q})
+\]
+（和は $A$ の高さ $1$ の素イデアル $\mathfrak{q}$ にわたる）。$A_\mathfrak{q}$ 上では $D_\mathfrak{q}$ は半局所 Dedekind 環で、$\ell_{A_\mathfrak{q}}(Q_\mathfrak{q}) = \sum_{\mathfrak{P}\mid\mathfrak{q}}f_\mathfrak{P}d_\mathfrak{P} = v_\mathfrak{q}(\Delta_{D/A})$（判別式は差積のノルム、$f_\mathfrak{P} = [\kappa(\mathfrak{P}):\kappa(\mathfrak{q})]$）。$A/(\Delta)$ に結合法則を使うと右辺は $\eHK(\m_A;A/(\Delta))$ に等しい。$q^{-h}$ を掛けて $q$ 倍すると主張を得る。\qed
+
+\paragraph{系}
+\begin{enumerate}
+  \item \textbf{位数 $0$ と位数 $1$。} 最上次の $\lambda$（位数 $0$）では常に $\lambda((Q_q/\m_AQ_q)\otimes\Lambda)\to0$ で、分岐は見えない（\S 1.3）。位数 $1$ の係数 $\lambda^{(1)} = \eHK(\m_A;A/(\Delta))$ は分岐を見る。
+  \item \textbf{純粋性。} 各成分で $\eHK\ge1$ なので、$\lambda^{(1)} = 0$ と $\Delta$ が単元であることは同値である。正則な基底の上では Zariski--Nagata の純粋性により、これは $D/A$ がエタールであることと同値。つまり、正則な基底の上では「位数 $1$ の $\lambda$ で $0$」がエタール性をちょうど検出する。
+  \item \textbf{特異な基底での quasi-étale 性の判定。} $A\subseteq R\subseteq D$（$R$ も正規で $A$ 上有限）とすると、判別式の推移律 $\Delta_{D/A} = \Delta_{R/A}^{[L:K_R]}\cdot N_{R/A}(\Delta_{D/R})$（高さ $1$ で局所化して Dedekind 環の推移律を使う）と結合法則から
+  \[
+    \lambda^{(1)}_{D/A} = [L:K_R]\,\lambda^{(1)}_{R/A} + \eHK\bigl(\m_A;\,A/(N_{R/A}\Delta_{D/R})\bigr).
+  \]
+  したがって、$R\subseteq D$ が余次元 $1$ でエタール（quasi-étale）であることと、$\lambda^{(1)}_{D/A} = [L:K_R]\,\lambda^{(1)}_{R/A}$ は同値である。特異な $R$ の quasi-étale 被覆を、正則な基底の上の位数 $1$ の $\lambda$ の加法性で判定できる。
+  \item \textbf{1 次元。} $h = 1$ なら $A/(\Delta) = k[[t]]/(t^{v(\Delta)})$ で $\lambda^{(1)} = v_t(\Delta)$。$D/A$ が全分岐なら差積の指数 $d$ に等しい。Galois なら導手・判別式公式により $\lambda^{(1)} = \sum_\chi a(\chi)$（既約指標にわたり $\dim\chi$ の重みつき、すなわち正則表現の Artin 導手）。段ごとに $q\cdot\lambda = d$ が厳密に成り立ち、極限をとる必要もない。
+\end{enumerate}
+
+\paragraph{位置づけ}
+命題 A は Frobenius 同型と Hilbert--Kunz の結合法則だけから出るので、本質的には既知（あるいは folklore）である可能性が高い（未確認）。意味があるのは次の二点である。
+\begin{itemize}
+  \item 「位数付きの $\lambda$」の最初の具体例として、分岐（エタール性）を正確に検出する量が得られたこと。最上次の $\lambda$（F-signature や perfectoid signature の型）とは別の、長さだけで書ける分岐の不変量である。
+  \item 判別式の超曲面 $A/(\Delta)$ の Hilbert--Kunz 重複度という形で、分岐の重みが特異点の不変量として現れること。$\eHK(A/(\Delta))\le e(A/(\Delta)) = \operatorname{ord}(\Delta)$ で、等号でない分は判別式の超曲面の特異性を反映する。
+\end{itemize}
+
+\subsection{導手との関係：剰余体が不完全な場合}
+$h\ge2$ では、高さ $1$ の素イデアル $\mathfrak{q}$ での剰余体 $\kappa(\mathfrak{q})$ は標数 $p$ の関数体で、完全体ではない。したがって $v_\mathfrak{q}(\Delta)$ を古典的な導手・判別式公式で Artin 導手の和として書くことはできない（剰余拡大が非分離的な、fierce な分岐がありうる）。この場合の導手は Abbes--Saito の（非対数的な）分岐フィルトレーションによる Artin 導手、あるいは Kato の refined Swan 導手で定義される。
+\begin{question}
+剰余体が不完全な完備離散付値体の有限 Galois 拡大について、判別式（差積）の指数と Abbes--Saito の Artin 導手の間に、導手・判別式公式の類似が成り立つか。成り立つなら、命題 A は
+\[
+  \lambda^{(1)} = \sum_{\mathfrak{q}}\eHK(\m_A;A/\mathfrak{q})\cdot a^{\mathrm{AS}}_\mathfrak{q}(\text{正則表現})
+\]
+という「HK 重みつきの導手」の公式になる。
+\end{question}
+斎藤の講演資料（Introduction to wild ramification of schemes and sheaves）は、剰余体が不完全な場合への分岐フィルトレーションの一般化に触れるが、導手・判別式公式は述べていない。Xiao の剰余体が不完全な場合の導手の論文、fierce な巡回拡大の論文（arXiv:1104.3785、Kato の refined Swan 導手を使う）を確認する必要がある（未確認）。
+
+\subsection{混標数の 1 次元：Kummer 塔での計算}
+$A = W(k)$、$D = \mathcal{O}_L$（$L/K$ は全分岐）、塔 $A_n = W(k)[p^{1/p^n}]$ とし、$D_n$ を $LK_n$ の整数環とする。段 $n$ での正規化長さは
+\[
+  \lambda_n := p^{-n}\,\ell_{A_n}(D_n/\mathfrak{D}_{D_n/A_n}) = [L:K]\,v_K(\mathfrak{D}_{LK_n/K_n})
+\]
+（$v_K(p) = 1$ と正規化）である。
+\begin{itemize}
+  \item 馴分岐（$L = K(p^{1/e})$、$p\nmid e$）：$LK_n/K_n$ も次数 $e$ の馴分岐で差積の指数は $e-1$ なので、$p^n\lambda_n = e-1$ が全ての $n$ で成り立ち、標数 $p$ と同じ形になる。
+  \item 野生分岐：$LK_n/K_n$ の分岐の break は、Herbrand 関数 $\psi_{K_n/K}$ を通して $L/K$ の上付きの break から決まり、$n$ が大きいと $K_n$ で正規化した break は安定し、$v_K$ で測った差積は $p^{-n}$ の速さで $0$ に近づく（Tate、Sen の型の計算）。したがって $p^n\lambda_n$ は $L/K$ の上付きの分岐の break で決まる定数に収束すると予想される（Kummer 塔は Galois でないので、Herbrand 関数の扱いには注意が要る。計算は未実行）。
+\end{itemize}
+標数 $p$ では Frobenius 同型により $q\lambda_q$ が段ごとに一定だったのに対し、混標数では極限でだけ安定する。この違いが、混標数で FW 微分や Herbrand 関数のような補正が必要になる理由の、最も簡単な場合だと考えられる。
+
+\subsection{次の一歩}
+\begin{enumerate}
+  \item 命題 A の細部を確認する：正規化（Serre の論文 Lemma 2.3）との整合、$Q$ の余次元 $\ge2$ の部分が $o(q^{h-1})$ であること、判別式の推移律の局所化の議論。命題 A が既知かを文献で調べる。
+  \item 剰余体が不完全な場合の導手・判別式公式（Abbes--Saito、Xiao、Kato）を確認する。
+  \item 混標数 1 次元：Kummer 塔での $p^n\lambda_n$ の極限を、具体例（$\mathbb{Q}_p(\zeta_p)/\mathbb{Q}_p$、Artin--Schreier 型に相当する $p$ 次巡回拡大）で計算し、上付きの break との関係を求める。
+  \item 混標数の高次元：Frobenius 同型がないので、命題 A の類似には perfectoid 化の塔（CLMST）での $\lambda_\infty$ を使う。$\Omega$ を FW 微分に置き換える必要があるか（\S\ref{sec:padic}）を、1 次元の計算と比べて判断する。
+\end{enumerate}
+
+\section{まとめと優先順位}
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright}p{3.2cm}>{\raggedright}X>{\raggedright\arraybackslash}p{2.4cm}}
+\toprule
+問題 & 新しさの所在 & 優先度 \\
+\midrule
+1. 局所基本群 & $s(R) = 0$ のとき、分裂の中心に沿った被覆の次数を perfectoid 分裂比で評価する（\S\ref{sec:p1}） & 高 \\
+2. 純粋性の定量版 & 位数付きの $\lambda$ による余次元 $\ge2$ の分岐の検出 & 中（まず 1 の確認） \\
+3. 重複度の変換公式 & 目標が未定 & 低 \\
+4. Galois 降下 & Serre の論文の証明・形式化の簡略化 & 中（実用的） \\
+5. 導手・判別式公式の $\lambda$ 版（\S\ref{sec:padic}、\S\ref{sec:disc}） & 標数 $p$ では $\lambda^{(1)} = \eHK(A/(\Delta))$（命題 A）。剰余体が不完全な場合の導手との関係と、混標数への移行が課題 & 高 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\paragraph{全体を通じて分かったこと}
+\begin{itemize}
+  \item 最上次の $\lambda$ は、平坦性（CM 性）の悪さは測れるが、分岐の悪さは測れない。分岐を見るには、分裂を数える（方向 A）か、次の位数を見る（方向 B）必要がある。
+  \item 基底のパラメータで測る長さの関数は平坦性しか見ず、分岐は見ない。分岐が現れるのは $D$ 自身のイデアルで測る関数か、分裂を数える量である。
+  \item $\lambda$ 版の概念が新しく与えうるのは、証明の易しさよりも、(i) almost や強 F 正則性が成り立たない状況でも数値的な結論を出せること、(ii) 有限段での速さという定量的な情報、の二点だと思われる。
+\end{itemize}
+
+\section*{参考文献}
+\begin{itemize}
+  \item J.~Carvajal-Rojas, K.~Schwede, K.~Tucker, Fundamental groups of F-regular singularities via F-signature, Ann.\ Sci.\ ÉNS 51 (2018), 993--1016. \url{https://arxiv.org/abs/1606.04088}
+  \item H.~Cai, S.~Lee, L.~Ma, K.~Schwede, K.~Tucker, Perfectoid signature, perfectoid Hilbert--Kunz multiplicity, and an application to local fundamental groups, Invent.\ Math.\ 244 (2026), 357--454. \url{https://arxiv.org/abs/2209.04046}
+  \item C.~Huneke, M.~McDermott, P.~Monsky, Hilbert--Kunz functions for normal rings. \url{https://arxiv.org/abs/math/0404191}
+  \item K.~Kurano, The singular Riemann--Roch theorem and Hilbert--Kunz functions. \url{https://arxiv.org/abs/math/0506492}
+  \item J.~Carvajal-Rojas, A.~Stäbler, On the behavior of F-signatures, splitting primes, and test modules under finite covers, J.\ Pure Appl.\ Algebra (2022). \url{https://arxiv.org/abs/1904.10382}
+  \item M.~Blickle, K.~Schwede, K.~Tucker, F-signature of pairs and the asymptotic behavior of Frobenius splittings. \url{https://arxiv.org/abs/1107.1082}
+  \item J.~Carvajal-Rojas, A.~Fayolle, On tame ramification and centers of F-purity, J.\ London Math.\ Soc. \url{https://arxiv.org/abs/2308.02660}
+  \item A.~Fayolle, Centers of perfectoid purity, J.\ Éc.\ polytech.\ Math.\ 12 (2025), 1381--1415. \url{https://arxiv.org/abs/2504.15569}
+  \item B.~Bhatt, L.~Ma, Z.~Patakfalvi, K.~Schwede, K.~Tucker, J.~Waldron, J.~Witaszek, Perfectoid pure singularities. \url{https://arxiv.org/abs/2409.17965}
+  \item T.~Saito, Frobenius-Witt differentials and regularity, Algebra Number Theory 16 (2022). \url{https://arxiv.org/abs/2008.04728}
+  \item T.~Saito, Cotangent bundle and micro-supports in mixed characteristic case. \url{https://arxiv.org/abs/2006.00448}
+  \item T.~Saito, Singular supports in positive and mixed characteristics, Oberwolfach report (2024). \url{https://www.ms.u-tokyo.ac.jp/~t-saito/talk/Oberwolfach24.pdf}
+  \item R.~Ooe, F-characteristic cycle of a rank one sheaf on an arithmetic surface. \url{https://arxiv.org/abs/2402.06163}
+  \item S.~Hattori, Ramification theory and perfectoid spaces, Compositio Math. \url{https://arxiv.org/abs/1304.5895}
+  \item S.~Yoshikawa, A criterion for perfectoid purity and the rationality of thresholds. \url{https://arxiv.org/abs/2510.19319}
+  \item OpenAI, Positivity of Serre's Intersection Multiplicity；Lech's multiplicity conjecture（openai/math、2026）。
+\end{itemize}
+
+\end{document}

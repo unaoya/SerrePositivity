@@ -1,6 +1,7 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.Tor
+public import SerrePositivity.CategoryTheory.AlternatingSum
+public import SerrePositivity.HomologicalAlgebra.BaseChangeEquivalence
 public import SerrePositivity.HomologicalAlgebra.TorLES
 public import SerrePositivity.CommutativeAlgebra.HomologyLength
 public import SerrePositivity.CommutativeAlgebra.KoszulResolution
@@ -57,34 +58,6 @@ open CategoryTheory Limits
 
 namespace SerrePositivity
 
-/-- 正の添字で `0` になる実数列 `a : ℤ → ℝ` について、交代和 `Σ_{i ∈ ℤ} (-1)^i a_i` は
-`Σ_{n ∈ ℕ} (-1)^n a_{-n}` に等しい。`finsum` の台が `{-n}` に含まれることと、単射 `n ↦ -n` に沿った
-`finsum` の取り直し（`finsum_mem_range`）による。有限台を仮定せず、`finsum` の規約による値も含めて
-成り立つ。 -/
-lemma alternating_finsum_eq_nat (a : ℤ → ℝ) (hpos : ∀ i, 0 < i → a i = 0) :
-    (∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * a i) =
-      ∑ᶠ n : ℕ, (-1 : ℝ) ^ n * a (-(n : ℤ)) := by
-  let f := fun i : ℤ ↦ ((i.negOnePow : ℤ) : ℝ) * a i
-  let g := fun i : ℕ ↦ -(i : ℤ)
-  have hg : Function.Injective g := by
-    intro i j hij
-    dsimp [g] at hij
-    exact_mod_cast neg_injective hij
-  have hs : Function.support f ⊆ Set.range g := by
-    intro i hi
-    have hnonpos : i ≤ 0 := by
-      by_contra hn
-      exact hi (by simp [f, hpos i (by omega)])
-    refine ⟨(-i).toNat, ?_⟩
-    dsimp [g]
-    rw [Int.toNat_of_nonneg (by omega), neg_neg]
-  have hfull : (∑ᶠ i ∈ Set.range g, f i) = ∑ᶠ i : ℤ, f i := by
-    rw [← finsum_mem_inter_support f (Set.range g), Set.inter_eq_right.mpr hs,
-      finsum_mem_support]
-  change (∑ᶠ i : ℤ, f i) = _
-  rw [← hfull, finsum_mem_range hg]
-  simp only [f, g, Int.negOnePow_neg, Int.cast_negOnePow_natCast]
-
 variable {R T C : Type u} [CommRing R] [CommRing T] [CommRing C]
 variable {J : Ideal C} (lam : NormalizedLength C J)
 
@@ -120,14 +93,6 @@ theorem lambdaEuler_baseChange_resolution (φ : R →+* C)
     (baseChange_isZero_X_of_pos φ F hF.isZero_X)
     (fun i ↦ (torIsoCochain φ hF i).toLinearEquiv)
 
-/-- 二段階の係数拡大 `(F ⊗_R T) ⊗_T C` と一段階の係数拡大 `F ⊗_R C`（合成 `ψ ∘ φ : R → C` に沿う）の
-複体の同型。Mathlib の `ModuleCat.extendScalarsComp`（関手の合成の自然同型）を各項に施す。 -/
-noncomputable def baseChangeCompIso (φ : R →+* T) (ψ : T →+* C)
-    (F : CochainComplex (ModuleCat.{u} R) ℤ) :
-    baseChange ψ (baseChange φ F) ≅ baseChange (ψ.comp φ) F :=
-  (Functor.mapHomologicalComplexCompIso (ModuleCat.extendScalarsComp φ ψ).symm
-    (ComplexShape.up ℤ)).app F
-
 /-- 二段階で係数拡大した分解 `(F ⊗_R T) ⊗_T C` の `-i` 次ホモロジーは、合成 `ψ ∘ φ` についての
 `Tor_i^R(C, M)` と `C` 線形同型（`torIsoCochain` と `baseChangeCompIso`）。 -/
 noncomputable def torAlgBaseChangeCompEquiv (φ : R →+* T) (ψ : T →+* C)
@@ -148,15 +113,6 @@ theorem chiLam_baseChange_resolution (φ : R →+* T) (ψ : T →+* C)
   change lambdaEuler lam (baseChange ψ (baseChange φ F)) = _
   rw [lambdaEuler_eq_of_homotopyEquiv lam (HomotopyEquiv.ofIso (baseChangeCompIso φ ψ F))]
   exact lambdaEuler_baseChange_resolution lam (ψ.comp φ) hF
-
-/-- 環自己同型 `σ` に沿った係数制限は、逆 `σ⁻¹` に沿った係数拡大と自然同型：`restrictScalars σ` は
-圏同値で `restrictScalars σ⁻¹` の左随伴、一方 `extendScalars σ⁻¹` も `restrictScalars σ⁻¹` の左随伴
-なので、左随伴の一意性（`Adjunction.leftAdjointUniq`）による。ノルム比較で群の添字に逆元が現れる
-理由。 -/
-noncomputable def restrictScalarsIsoExtendInverse (σ : T ≃+* T) :
-    ModuleCat.restrictScalars.{u} σ.toRingHom ≅ ModuleCat.extendScalars σ.symm.toRingHom :=
-  Adjunction.leftAdjointUniq (ModuleCat.restrictScalarsEquivalenceOfRingEquiv σ).toAdjunction
-    (ModuleCat.extendRestrictScalarsAdj σ.symm.toRingHom)
 
 variable {G : Type u} [Group G] [MulSemiringAction G T]
 
