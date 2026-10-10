@@ -33,7 +33,7 @@ public import Mathlib.RingTheory.Spectrum.Prime.RingHom
   完全 `T` 複体 `P` について `χ_T(P)`、`χ_C(P)` は有限で、`K₀^{m_A}(T)` 上の準同型を定める。
   通常の長さ側は `length_homology_ne_top_of_radical` と `chiOrdHom_of_radical`
   （`Paper/Lemma3_5/Ordinary.lean`）、`λ` 側は `lemma_3_5a_lam_finite`（`Normalized.lean`、
-  このファイル群で唯一の `sorry`）と `chiLamHom_of_finite`（`PerfectComplex/NormalizedEuler.lean`）。
+  証明済み）と `chiLamHom_of_finite`（`PerfectComplex/NormalizedEuler.lean`）。
   `lemma_3_5a` はこれらを論文の形に並べたもの。
 - **3.5b**（節 b：さらに `A` は正則で `z` は正則パラメータ系（`hz'`、`hdim`））：`A` から来る類の上で
   `χ_T(Q ⊗_A T) = χ_C(Q ⊗_A T) = r · χ_A(Q)`（`r = rank_A T`）。二つの等式は独立に示せるので

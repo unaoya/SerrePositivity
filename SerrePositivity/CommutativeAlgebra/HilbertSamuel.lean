@@ -38,8 +38,9 @@ junk value つきのもの）は、2026-10-10 にこの定義に置き換えて�
 
 - `samuelFunction`、`IsSamuelPoly`、`IsSamuelPoly.unique`、`poly`、`isSamuelPoly_poly`。
 - `multiplicity` の定義。
-- 主張（`sorry`）：`samuelFunction_ne_top`（有限性）、`exists_isSamuelPoly`（Hilbert の定理）、
-  `natDegree_poly_eq_dim`（次元定理）、`multiplicity_pos`（正値性）。
+- 証明済み：`samuelFunction_ne_top`（有限性）。
+- 主張（`sorry`）：`exists_isSamuelPoly`（Hilbert の定理）、`natDegree_poly_eq_dim`（次元定理）、
+  `multiplicity_pos`（正値性）。
 -/
 
 @[expose] public section
@@ -102,7 +103,7 @@ noncomputable def multiplicity (I : Ideal D) (M : Type u) [AddCommGroup M] [Modu
   let d := dimToNat (Module.supportDim D M)
   (d.factorial : ℚ) * (poly D I M).coeff d
 
-/-! ## 主張（可換環論の一般論。証明は別トラック、当面 `sorry`） -/
+/-! ## 主張（可換環論の一般論。有限性以外は証明は別トラック、当面 `sorry`） -/
 
 section statements
 

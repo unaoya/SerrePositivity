@@ -21,7 +21,7 @@ public import Mathlib.Basic.ENNReal.Real
 `len_quotient_map_le_length_mul`（`PerfectComplex/QuotientLength.lean`）。
 
 Corollary 2.6 の 1・2（有限長加群の係数拡大）は `Paper/Corollary2_6.lean` の `cor_2_6_tor` で
-証明済み。この定理は接続の段階でそこの `cor_2_6_pos` の `sorry` を置き換える。
+証明済み。そこの `cor_2_6_pos` はこの定理から証明している。
 
 ## 仮定
 
