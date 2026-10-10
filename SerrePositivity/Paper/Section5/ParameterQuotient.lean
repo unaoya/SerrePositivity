@@ -17,8 +17,12 @@ public import SerrePositivity.HomologicalAlgebra.FiniteFreeResolution
   `τ_i(L) := λ(Tor_i^B(U, L)) = λ(Tor_i^R(C, L))`、すべて有限、`i > d − h` で `0`。
   一般論 `ParamQuot.torClaim`、`ParamQuot.len_torAlg_eq_zero` に、正則局所環上の長さ `d` 以下の
   有限自由分解を与える。
-- **Lemma 5.4**（`lemma_5_4`、主張のみ）：塔の近似の一般論
+- **Lemma 5.4**（`lemma_5_4`、証明済み）：塔の近似の一般論
   （`Section2.exists_tower_approximation_B`）を `T = D′/I_σ`、`U = C/I_σ C` に適用したもの。
+  `S = Λ ⊗_A T` の `U` への作用 `θ` の両立から、`S` 加群と `C` 加群としての長さが一致し
+  （`hE1`）、`Tor^B(U, L)` の二つの計算（`U ⊗_S (S ⊗_B G)` と `TorAlg ψ`）が一致する（`hE2`、
+  `extendRestrictScalarsTensorIso` と `extendScalarsComp`）。(5.11) は
+  `ℓ_B(M) ≤ β₀(M) · ℓ_B(B/I)`（`length_le_tor_zero_mul`）の極限。
 
 ## 仮定の形
 
@@ -31,7 +35,7 @@ public import SerrePositivity.HomologicalAlgebra.FiniteFreeResolution
 
 universe u
 
-open IsLocalRing
+open IsLocalRing CategoryTheory
 open scoped ENNReal
 
 namespace SerrePositivity
@@ -80,14 +84,67 @@ theorem lemma_5_3 {d : ℕ} (hd : ringKrullDim R = d)
   exact len_torAlg_eq_zero φ x lam hfg hJrad hzero L hL F hF hFfree hFfin
     (fun k hk ↦ hFb k (Or.inl (by rw [hlen]; exact hk))) i (by rw [hlen] at *; omega)
 
-/-- **Lemma 5.4**（主張のみ）：Lemma 5.3 の設定に、塔の基底 `A`（`t`、`p`）、`T = D′/I_σ`（`A` 上有限な
+/-! ## (5.11) の不等式 -/
+
+section beta
+
+/-- **`ℓ_B(M) ≤ β₀(M) · ℓ_B(B/I)`**：局所環 `B` 上の有限生成加群 `M` をイデアル `I` が消すなら、
+`β₀(M) = ℓ_B(Tor_0^B(M, k)) = dim_k(k ⊗ M)` 個の元で生成され、`(B/I)^{β₀} ↠ M`。 -/
+theorem length_le_tor_zero_mul {B : Type u} [CommRing B] [IsLocalRing B] (M : Type u)
+    [AddCommGroup M] [Module B M] [Module.Finite B M] (I : Ideal B)
+    (hI : ∀ y ∈ I, ∀ m : M, y • m = 0) :
+    (Module.length B M : ℝ≥0∞) ≤
+      (Module.length B (TorModule B 0 M (B ⧸ maximalIdeal B)) : ℝ≥0∞) *
+        (Module.length B (B ⧸ I) : ℝ≥0∞) := by
+  classical
+  let k := ResidueField B
+  let n := Module.finrank k (TensorProduct B k M)
+  let bk := Module.finBasis k (TensorProduct B k M)
+  -- 基底の持ち上げ
+  have hlift : ∀ i, ∃ m : M, (1 : k) ⊗ₜ[B] m = bk i := fun i ↦
+    TensorProduct.mk_surjective B M k Ideal.Quotient.mk_surjective (bk i)
+  choose f hf using hlift
+  have hspan : Submodule.span B (Set.range f) = ⊤ :=
+    IsLocalRing.span_eq_top_of_tmul_eq_basis f bk hf
+  -- `(B/I)^n ↠ M`
+  let gi : Fin n → (B ⧸ I) →ₗ[B] M := fun i ↦
+    I.liftQ (LinearMap.toSpanSingleton B M (f i)) (fun y hy ↦ by
+      rw [LinearMap.mem_ker, LinearMap.toSpanSingleton_apply]
+      exact hI y hy (f i))
+  let g : (Fin n → B ⧸ I) →ₗ[B] M := ∑ i, (gi i).comp (LinearMap.proj i)
+  have hg : Function.Surjective g := by
+    rw [← LinearMap.range_eq_top, eq_top_iff, ← hspan, Submodule.span_le]
+    rintro _ ⟨i, rfl⟩
+    refine ⟨Pi.single i (Submodule.Quotient.mk 1), ?_⟩
+    simp only [g, LinearMap.sum_apply, LinearMap.comp_apply, LinearMap.proj_apply]
+    rw [Finset.sum_eq_single i (fun x _ hx ↦ by rw [Pi.single_eq_of_ne hx, map_zero])
+      (by simp), Pi.single_eq_same, Submodule.liftQ_apply, LinearMap.toSpanSingleton_apply,
+      one_smul]
+  have hle := Module.length_le_of_surjective g hg
+  rw [Module.length_pi_of_fintype, Finset.sum_const, Finset.card_univ, Fintype.card_fin,
+    nsmul_eq_mul] at hle
+  -- `ℓ_B(Tor_0) = n`
+  have htor : Module.length B (TorModule B 0 M (B ⧸ maximalIdeal B)) = n := by
+    rw [((torModuleZeroEquiv B M (B ⧸ maximalIdeal B)).trans
+      (TensorProduct.comm B M (B ⧸ maximalIdeal B))).length_eq]
+    change Module.length B (TensorProduct B k M) = _
+    rw [Module.length_eq_of_surjective (S := B) (R := k) Ideal.Quotient.mk_surjective,
+      Module.length_eq_finrank]
+  rw [htor]
+  have := ENat.toENNReal_le.mpr hle
+  simpa [ENat.toENNReal_mul] using this
+
+end beta
+
+/-- **Lemma 5.4**：Lemma 5.3 の設定に、塔の基底 `A`（`t`、`p`）、`T = D′/I_σ`（`A` 上有限な
 局所環で `m_A^a T = 0`、剰余体は `A` からも `B` からも全射）、`S = Λ ⊗_A T` の `U = C/(x)C` への作用
 `θ`（`Λ` の作用と `B` の作用に両立）を加える。`λ` は `λ_∞` の `Λ → C` に沿った係数制限。このとき
 有限長 `B` 加群の列 `M_n` と `s_n = p^{j_n h_A}` で、`T` を消す `B` のイデアルは `M_n` も消し、
 
 - (5.9) `ℓ_B(M_n) / s_n → λ(U)`、
 - (5.10) `ℓ_B(Tor_i^B(M_n, L_k)) / s_n → τ_i(L_k) = λ(Tor_i^R(C, L_k))`、
-- (5.11) `B` のイデアル `I` が `T` を消すなら `λ(U) ≤ τ_0(k) · ℓ_B(B/I)`（`β₀(M_n) = ℓ_B(Tor_0^B(M_n, k))`）。
+- (5.11) `B` のイデアル `I` が `T` を消し `B/I` が有限長なら `λ(U) ≤ τ_0(k) · ℓ_B(B/I)`
+  （`β₀(M_n) = ℓ_B(Tor_0^B(M_n, k))`。剰余体 `k` の有限自由分解 `G₀` も与える）。
 
 証明は `Section2.exists_tower_approximation_B` を `U` に適用し、`θ` の両立から `S` 加群としての長さと
 `C` 加群としての長さが一致すること、`Tor^B(U, L)` の二つの計算（`S` 上の `U ⊗_B G` と `TorAlg ψ`）の
@@ -117,7 +174,9 @@ theorem lemma_5_4 (A : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
     (G : ι → CochainComplex (ModuleCat.{u} (B x)) ℤ)
     (hG : ∀ k, IsResolutionOf (G k) (ModuleCat.of (B x) (L k)))
     (hfree : ∀ k i, Module.Free (B x) ((G k).X i)) (hfin : ∀ k i, Module.Finite (B x) ((G k).X i))
-    [IsLocalRing (B x)] :
+    [IsLocalRing (B x)] (G₀ : CochainComplex (ModuleCat.{u} (B x)) ℤ)
+    (hG₀ : IsResolutionOf G₀ (ModuleCat.of (B x) (B x ⧸ maximalIdeal (B x))))
+    (hfree₀ : ∀ i, Module.Free (B x) (G₀.X i)) (hfin₀ : ∀ i, Module.Finite (B x) (G₀.X i)) :
     ∃ (M : ℕ → ModuleCat.{u} (B x)) (s : ℕ → ℕ),
       (∀ n, IsFiniteLength (B x) (M n)) ∧ (∀ n, 0 < s n) ∧
       (0 < hA → Filter.Tendsto s Filter.atTop Filter.atTop) ∧
@@ -129,9 +188,104 @@ theorem lemma_5_4 (A : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
         (fun n ↦ (Module.length (B x) (TorModule (B x) i (M n) (L k)) : ℝ≥0∞) / (s n : ℝ≥0∞))
         Filter.atTop (nhds (lam.len (TorAlg φ i (L k))))) ∧
       (∀ (I : Ideal (B x)), (∀ y ∈ I, algebraMap (B x) T y = 0) →
+        Module.length (B x) (B x ⧸ I) ≠ ⊤ →
         lam.len (U φ x) ≤ lam.len (TorAlg φ 0 (B x ⧸ maximalIdeal (B x))) *
           (Module.length (B x) (B x ⧸ I) : ℝ≥0∞)) := by
-  sorry
+  classical
+  subst hlam
+  let lam₀ := (Section2.towerLength A t p).comap (algebraMap (Section2.Tower A t p) C) J hJ'
+  let S := Section2.TS A t p T
+  let _ : Algebra S (U φ x) := θ.toAlgebra
+  let US : ModuleCat.{u} S := ModuleCat.of S (U φ x)
+  -- (E1) `S` 加群としての長さと `C` 加群としての長さ
+  have hE1 : ∀ W : ModuleCat.{u} (U φ x),
+      (Section2.μT A t p T).len ((ModuleCat.restrictScalars θ).obj W) =
+        (lamU φ x lam₀).len W := by
+    intro W
+    change @Section2.towerLengthFun A _ _ t p W _
+        (Module.compHom W (θ.comp (algebraMap (Section2.Tower A t p) S))) =
+      @Section2.towerLengthFun A _ _ t p W _
+        (Module.compHom W ((Ideal.Quotient.mk (IC φ x)).comp
+          (algebraMap (Section2.Tower A t p) C)))
+    rw [hθΛ]
+  -- `U` 自身：自己加群を `C → U` で制限したものは商加群
+  have hUself : (lamU φ x lam₀).len (ModuleCat.of (U φ x) (U φ x)) = lam₀.len (U φ x) := by
+    rw [NormalizedLength.comap_len]
+    congr 1
+  have hUeq : (Section2.μT A t p T).len US = lam₀.len (U φ x) :=
+    (hE1 (ModuleCat.of (U φ x) (U φ x))).trans hUself
+  -- ねじれ
+  have hUt : IsPowTorsion (Section2.JT A t p T) US := by
+    have hle : (Section2.JT A t p T).map θ ≤ J.map (Ideal.Quotient.mk (IC φ x)) := by
+      rw [Section2.JT, Ideal.map_map, hθΛ, ← Ideal.map_map]
+      exact Ideal.map_mono hJ'
+    exact IsPowTorsion.comap θ hle (U φ x) (isPowTorsion_U hJ (U φ x))
+  -- (E2) `Tor^B(U, L)` の二つの計算と Lemma 5.3
+  have hE2 : ∀ (L' : Type u) [AddCommGroup L'] [Module R L'] [Module (B x) L']
+      [IsScalarTower R (B x) L'] [Module.Finite (B x) L']
+      (G' : CochainComplex (ModuleCat.{u} (B x)) ℤ)
+      (_ : IsResolutionOf G' (ModuleCat.of (B x) L')) (i : ℕ),
+      (Section2.μT A t p T).len
+        ((TensorRes.tensorRes (Section2.ψU A t p T (B x)) G' US).homology (-(i : ℤ))) =
+        lam₀.len (TorAlg φ i L') := by
+    intro L' _ _ _ _ _ G' hG' i
+    let ψS := Section2.ψU A t p T (B x)
+    let e₁ := ((Functor.mapHomologicalComplexCompIso
+      (extendRestrictScalarsTensorIso (R := S) (T := U φ x)) (ComplexShape.up ℤ)).app
+        (TensorRes.GS ψS G')).symm
+    let e₂ := (Functor.mapHomologicalComplexCompIso (ModuleCat.extendScalarsComp ψS θ).symm
+      (ComplexShape.up ℤ)).app G'
+    let e := e₁ ≪≫ ((ModuleCat.restrictScalars θ).mapHomologicalComplex _).mapIso e₂
+    let eh := (HomologicalComplex.homologyFunctor _ _ (-(i : ℤ))).mapIso e ≪≫
+      ((baseChange (θ.comp ψS) G').sc (-(i : ℤ))).mapHomologyIso (ModuleCat.restrictScalars θ)
+    refine ((Section2.μT A t p T).len_congr _ _ eh.toLinearEquiv).trans ?_
+    rw [hE1]
+    refine ((lamU φ x lam₀).len_congr _ _
+      (torIsoCochain (θ.comp ψS) hG' i).toLinearEquiv).symm.trans ?_
+    rw [hθB]
+    exact (lemma_5_3 φ x lam₀ hd hreg hfg hJ hJrad hzero hUfin L' i).1
+  -- 剰余体を加えた族
+  let L' : Option ι → Type u := fun o ↦ match o with
+    | none => B x ⧸ maximalIdeal (B x)
+    | some k => L k
+  let iL₁ : ∀ o, AddCommGroup (L' o) := fun o ↦ match o with
+    | none => inferInstanceAs (AddCommGroup (B x ⧸ maximalIdeal (B x)))
+    | some k => inferInstanceAs (AddCommGroup (L k))
+  let iL₂ : ∀ o, Module (B x) (L' o) := fun o ↦ match o with
+    | none => inferInstanceAs (Module (B x) (B x ⧸ maximalIdeal (B x)))
+    | some k => inferInstanceAs (Module (B x) (L k))
+  let G' : Option ι → CochainComplex (ModuleCat.{u} (B x)) ℤ := fun o ↦ match o with
+    | none => G₀
+    | some k => G k
+  have hG' : ∀ o, IsResolutionOf (G' o) (ModuleCat.of (B x) (L' o)) := fun o ↦ match o with
+    | none => hG₀
+    | some k => hG k
+  have hfree' : ∀ o i, Module.Free (B x) ((G' o).X i) := fun o ↦ match o with
+    | none => hfree₀
+    | some k => hfree k
+  have hfin' : ∀ o i, Module.Finite (B x) ((G' o).X i) := fun o ↦ match o with
+    | none => hfin₀
+    | some k => hfin k
+  obtain ⟨M, s, hMfl, hspos, hsinf, hann, hlen, htor⟩ :=
+    Section2.exists_tower_approximation_B A t p T ht hTa hresT hresB L' G' hG' hfree' hfin' US hUt
+      (hUeq.trans_ne hUfin)
+  refine ⟨M, s, hMfl, hspos, hsinf, hann, hUeq ▸ hlen, fun k i ↦ ?_, fun I hI hIfin ↦ ?_⟩
+  · have := htor (some k) i
+    rwa [hE2 (L k) (G k) (hG k) i] at this
+  · -- (5.11)
+    have h0 := htor none 0
+    rw [hE2 (B x ⧸ maximalIdeal (B x)) G₀ hG₀ 0] at h0
+    refine le_of_tendsto_of_tendsto' (hUeq ▸ hlen)
+      (ENNReal.Tendsto.mul_const h0 (Or.inr (ENat.toENNReal_ne_top.mpr hIfin))) fun n ↦ ?_
+    have : Module.Finite (B x) (M n) :=
+      have := (isFiniteLength_iff_isNoetherian_isArtinian.mp (hMfl n)).1
+      Module.IsNoetherian.finite _ _
+    have hb := length_le_tor_zero_mul (M n) I (hann I hI n)
+    calc (Module.length (B x) (M n) : ℝ≥0∞) / (s n : ℝ≥0∞)
+        ≤ ((Module.length (B x) (TorModule (B x) 0 (M n) (B x ⧸ maximalIdeal (B x))) : ℝ≥0∞) *
+            (Module.length (B x) (B x ⧸ I) : ℝ≥0∞)) / (s n : ℝ≥0∞) :=
+          ENNReal.div_le_div_right hb _
+      _ = _ := by rw [div_eq_mul_inv, div_eq_mul_inv, mul_right_comm]
 
 end Section5
 
