@@ -10,16 +10,33 @@ public import SerrePositivity.PerfectComplex.Closure
 public import SerrePositivity.CommutativeAlgebra.FiniteLength
 
 /-!
-# 分解の係数拡大、台、Euler 評価
+# 分解の係数拡大と Euler 評価
 
-射影コチェイン分解の `-i` 次ホモロジーを `Tor_i` に同一視し、Euler 評価を計算する。
-前半では、整数から自然数への添字の変更、係数拡大の合成、自己同型によるひねりを扱う。
-ひねりは係数制限で定義しているので、係数拡大として書き直すと群の逆元が現れる。
+## 概要
 
-後半では、一般の環上の入力 `TorHomologicalAlgebra` を使い、通常の長さでの評価と、
-有限長の交わりから得られる台の条件を示す。通常の評価の等式自体には有界性・有限長性は不要だが、
-台つき完全複体を作る定理では有界有限自由分解とテンソル積の有限長性を仮定する。
-補題3.5や Tor の対称性は用いない。
+加群 `M` の射影 cochain 分解 `F`（`IsResolutionOf F M`、`HomologicalAlgebra/Resolution.lean`）を
+係数拡大した複体の `-i` 次ホモロジーは `Tor_i` である（`torIsoCochain`）。このファイルは、それを使って
+複体の Euler 評価を `Tor` の Euler 評価に書き換える：
+
+- `lambdaEuler lam (F ⊗_R C) = lambdaChi lam φ M`（正規化長さ、`lambdaEuler_baseChange_resolution`）、
+- `chiOrd (F ⊗_R T) = χ^R(T, M)`（通常の長さ。剰余体が同じとき、`chiOrd_baseChange_resolution`）。
+
+また、二段階の係数拡大 `R → T → C` と、ひねり `twist g` を、合成した構造射による一段階の係数拡大に
+書き換える（`baseChangeCompIso`、`twistBaseChangeIso`）。ひねりは係数制限なので、係数拡大として
+書き直すと `g⁻¹` が現れる。これが Lemma 5.2 で `c_σ` の添字に逆元が出る理由である
+（`Paper/Section5/FirstComparison.lean`）。
+
+後半では、有限な局所代数 `T` と、`T ⊗_R M` が有限長な有限生成加群 `M` について、`M` の有界有限自由
+分解の係数拡大 `F ⊗_R T` が `T` の閉点に台をもつ完全複体であることを示す
+（`isPerfectSupported_baseChange_resolution`）。ホモロジー `Tor_i^R(T, M)` が有限長なので `m_T` の
+冪で消え、ホモロジーの台の条件から零ホモトピーの条件に移す（`PerfectComplex/Support.lean`）。
+
+## 規約
+
+cochain の `-i` 次が `Tor_i`。交代和の整数添字から自然数添字への移行は `alternating_finsum_eq_nat`。
+`Tor` は一貫して第 2 変数を分解して計算し、`Tor` の対称性は使わない。Euler 評価の等式には有界性・
+有限長性は要らない（規約による値も含めて成り立つ）が、台つき完全複体を作る定理では要る。
+Lemma 3.5 には依存しない。
 -/
 
 @[expose] public section
@@ -30,8 +47,10 @@ open CategoryTheory Limits
 
 namespace SerrePositivity
 
-/-- 正次数で零になる実数値の列の交代和を、整数添字から `-n` の自然数添字へ移す。
-有限台を仮定せず、`finsum` の定義上の値も含めて成り立つ。 -/
+/-- 正の添字で `0` になる実数列 `a : ℤ → ℝ` について、交代和 `Σ_{i ∈ ℤ} (-1)^i a_i` は
+`Σ_{n ∈ ℕ} (-1)^n a_{-n}` に等しい。`finsum` の台が `{-n}` に含まれることと、単射 `n ↦ -n` に沿った
+`finsum` の取り直し（`finsum_mem_range`）による。有限台を仮定せず、`finsum` の規約による値も含めて
+成り立つ。 -/
 lemma alternating_finsum_eq_nat (a : ℤ → ℝ) (hpos : ∀ i, 0 < i → a i = 0) :
     (∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * a i) =
       ∑ᶠ n : ℕ, (-1 : ℝ) ^ n * a (-(n : ℤ)) := by
@@ -59,9 +78,9 @@ lemma alternating_finsum_eq_nat (a : ℤ → ℝ) (hpos : ∀ i, 0 < i → a i =
 variable {R T C : Type u} [CommRing R] [CommRing T] [CommRing C]
 variable {J : Ideal C} (lam : NormalizedLength C J)
 
-/-- 正次数の項が零のコチェイン複体について、`H^{-i}` と `Tor_i` の線形同値を使い、
-整数添字の Euler 評価を自然数添字の Tor の Euler 評価に同一視する。
-ここでは有限性を仮定しない。無限の長さや無限の台に対する定義上の値も含めた等式である。 -/
+/-- 正の次数の項が零な `C` 複体 `K` で、各 `i` について `Tor_i^R(C, M) ≃ H^{-i}(K)` なら、
+`lambdaEuler lam K = lambdaChi lam φ M`。正の次数のホモロジーは零なので `alternating_finsum_eq_nat` で
+添字を `ℕ` に移し、各項を線形同型で取り替える。有限性は仮定しない（規約による値も含めた等式）。 -/
 theorem lambdaEuler_eq_lambdaChi_of_homologyEquiv (φ : R →+* C)
     (M : Type u) [AddCommGroup M] [Module R M]
     (K : CochainComplex (ModuleCat.{u} C) ℤ)
@@ -80,8 +99,9 @@ theorem lambdaEuler_eq_lambdaChi_of_homologyEquiv (φ : R →+* C)
   have hlen := lam.len_congr _ _ (e i)
   simp only [hlen]
 
-/-- 加群の任意の射影コチェイン分解を係数拡大すると、その正規化 Euler 評価は
-係数拡大の左導来関手で定めた Tor の Euler 評価に一致する。 -/
+/-- `M` の射影 cochain 分解 `F` を `φ : R → C` で係数拡大した複体の正規化 Euler 評価は、`Tor` の
+正規化 Euler 評価 `lambdaChi lam φ M` に等しい（`torIsoCochain` と
+`lambdaEuler_eq_lambdaChi_of_homologyEquiv`）。 -/
 theorem lambdaEuler_baseChange_resolution (φ : R →+* C)
     {M : Type u} [AddCommGroup M] [Module R M]
     {F : CochainComplex (ModuleCat.{u} R) ℤ} (hF : IsResolutionOf F (ModuleCat.of R M)) :
@@ -90,15 +110,16 @@ theorem lambdaEuler_baseChange_resolution (φ : R →+* C)
     (baseChange_isZero_X_of_pos φ F hF.isZero_X)
     (fun i ↦ (torIsoCochain φ hF i).toLinearEquiv)
 
-/-- `R → T → C` に沿う二段階の係数拡大を、合成 `R → C` に沿う係数拡大に同一視する複体の同型。 -/
+/-- 二段階の係数拡大 `(F ⊗_R T) ⊗_T C` と一段階の係数拡大 `F ⊗_R C`（合成 `ψ ∘ φ : R → C` に沿う）の
+複体の同型。Mathlib の `ModuleCat.extendScalarsComp`（関手の合成の自然同型）を各項に施す。 -/
 noncomputable def baseChangeCompIso (φ : R →+* T) (ψ : T →+* C)
     (F : CochainComplex (ModuleCat.{u} R) ℤ) :
     baseChange ψ (baseChange φ F) ≅ baseChange (ψ.comp φ) F :=
   (Functor.mapHomologicalComplexCompIso (ModuleCat.extendScalarsComp φ ψ).symm
     (ComplexShape.up ℤ)).app F
 
-/-- 射影分解を二段階で係数拡大した複体の `-i` 次ホモロジーを、
-合成した環準同型に対する `Tor_i` と線形同値にする。 -/
+/-- 二段階で係数拡大した分解 `(F ⊗_R T) ⊗_T C` の `-i` 次ホモロジーは、合成 `ψ ∘ φ` についての
+`Tor_i^R(C, M)` と `C` 線形同型（`torIsoCochain` と `baseChangeCompIso`）。 -/
 noncomputable def torAlgBaseChangeCompEquiv (φ : R →+* T) (ψ : T →+* C)
     {M : Type u} [AddCommGroup M] [Module R M]
     {F : CochainComplex (ModuleCat.{u} R) ℤ} (hF : IsResolutionOf F (ModuleCat.of R M))
@@ -108,7 +129,8 @@ noncomputable def torAlgBaseChangeCompEquiv (φ : R →+* T) (ψ : T →+* C)
     (HomologicalComplex.homologyFunctor _ _ (-(i : ℤ))).mapIso
       (baseChangeCompIso φ ψ F).symm).toLinearEquiv
 
-/-- 分解の二段階の係数拡大による正規化 Euler 評価を、合成した係数構造での Tor の評価に書き換える。 -/
+/-- `chiLam lam ψ (F ⊗_R T) = lambdaChi lam (ψ ∘ φ) M`：分解を `R → T` で係数拡大した複体の `chiLam`
+（さらに `T → C` で係数拡大して `λ` で測る）は、合成 `R → C` についての `Tor` の評価に等しい。 -/
 theorem chiLam_baseChange_resolution (φ : R →+* T) (ψ : T →+* C)
     {M : Type u} [AddCommGroup M] [Module R M]
     {F : CochainComplex (ModuleCat.{u} R) ℤ} (hF : IsResolutionOf F (ModuleCat.of R M)) :
@@ -117,8 +139,10 @@ theorem chiLam_baseChange_resolution (φ : R →+* T) (ψ : T →+* C)
   rw [lambdaEuler_eq_of_homotopyEquiv lam (HomotopyEquiv.ofIso (baseChangeCompIso φ ψ F))]
   exact lambdaEuler_baseChange_resolution lam (ψ.comp φ) hF
 
-/-- 環自己同型に沿う係数制限を、その逆自己同型に沿う係数拡大に同一視する自然同型。
-ノルム比較で群の添字に逆元が現れる理由となる。 -/
+/-- 環自己同型 `σ` に沿った係数制限は、逆 `σ⁻¹` に沿った係数拡大と自然同型：`restrictScalars σ` は
+圏同値で `restrictScalars σ⁻¹` の左随伴、一方 `extendScalars σ⁻¹` も `restrictScalars σ⁻¹` の左随伴
+なので、左随伴の一意性（`Adjunction.leftAdjointUniq`）による。ノルム比較で群の添字に逆元が現れる
+理由。 -/
 noncomputable def restrictScalarsIsoExtendInverse (σ : T ≃+* T) :
     ModuleCat.restrictScalars.{u} σ.toRingHom ≅ ModuleCat.extendScalars σ.symm.toRingHom :=
   Adjunction.leftAdjointUniq (ModuleCat.restrictScalarsEquivalenceOfRingEquiv σ).toAdjunction
@@ -126,7 +150,9 @@ noncomputable def restrictScalarsIsoExtendInverse (σ : T ≃+* T) :
 
 variable {G : Type u} [Group G] [MulSemiringAction G T]
 
-/-- 係数拡大した複体を `g` でひねることを、元の環準同型に `g⁻¹` を合成した係数拡大に同一視する。 -/
+/-- `g^*(F ⊗_R T) ≅ F ⊗_R T`（後者は `R → T →{g⁻¹} T` に沿った係数拡大）：ひねり `twist g` は `g` に
+沿った係数制限で、これは `g⁻¹` に沿った係数拡大と同型（`restrictScalarsIsoExtendInverse`）、あとは
+`baseChangeCompIso`。 -/
 noncomputable def twistBaseChangeIso (φ : R →+* T) (g : G)
     (F : CochainComplex (ModuleCat.{u} R) ℤ) :
     twist g (baseChange φ F) ≅
@@ -142,8 +168,10 @@ noncomputable def twistBaseChangeIso (φ : R →+* T) (g : G)
     (baseChange φ F) ≪≫ ?_
   simpa only [he] using baseChangeCompIso φ σ.symm.toRingHom F
 
-/-- ひねりと二段階の係数拡大を行った分解のホモロジーを、逆元でひねった係数構造の Tor と同一視する。
-一貫して第2変数の加群を分解するため、Tor の対称性を必要としない。 -/
+/-- ひねって係数拡大した分解 `(g^*(F ⊗_R T)) ⊗_T C` の `-i` 次ホモロジーは、構造射
+`R → T →{g⁻¹} T → C` についての `Tor_i^R(C, M)` と `C` 線形同型（`twistBaseChangeIso` と
+`torAlgBaseChangeCompEquiv`）。一貫して第 2 変数 `M` を分解するので `Tor` の対称性は要らない。
+Lemma 5.2 で `c_σ` の各項が有限であることを言うのに使う。 -/
 noncomputable def torAlgTwistBaseChangeEquiv (φ : R →+* T) (ψ : T →+* C) (g : G)
     {M : Type u} [AddCommGroup M] [Module R M]
     {F : CochainComplex (ModuleCat.{u} R) ℤ} (hF : IsResolutionOf F (ModuleCat.of R M))
@@ -154,7 +182,8 @@ noncomputable def torAlgTwistBaseChangeEquiv (φ : R →+* T) (ψ : T →+* C) (
       (((ModuleCat.extendScalars ψ).mapHomologicalComplex (ComplexShape.up ℤ)).mapIso
         (twistBaseChangeIso φ g F).symm)).toLinearEquiv
 
-/-- ひねった分解の正規化 Euler 評価は、逆元でひねった係数構造の Tor の Euler 評価に一致する。 -/
+/-- `chiLam lam ψ (g^*(F ⊗_R T)) = lambdaChi lam (ψ ∘ g⁻¹ ∘ φ) M`：ひねった分解の正規化 Euler 評価は、
+`g⁻¹` でひねった構造射についての `Tor` の評価に等しい。Lemma 5.2 の `χ_C(σ^*L) = c_{σ⁻¹}`。 -/
 theorem chiLam_twist_baseChange_resolution (φ : R →+* T) (ψ : T →+* C) (g : G)
     {M : Type u} [AddCommGroup M] [Module R M]
     {F : CochainComplex (ModuleCat.{u} R) ℤ} (hF : IsResolutionOf F (ModuleCat.of R M)) :
@@ -172,10 +201,16 @@ end
 /-!
 ## 有限な局所代数への係数拡大
 
-剰余体への写像が全射なら、通常の長さで測った分解の Euler 評価は交点重複度に一致する。
-さらに有界有限自由分解とテンソル積の有限長性があれば、係数拡大した複体は閉点に台をもつ。
-後者は `PerfectComplex/Support.lean` のホモロジーの台と零ホモトピーの対応を用いる。
-いずれも必要な Tor の同一視・有限長性は `Inputs.TorHomologicalAlgebra` から受け取る。
+Noether 環 `R` 上有限な局所環 `T` について：
+
+- 剰余体への写像 `R → T → T/m_T` が全射なら、分解 `F` の係数拡大 `F ⊗_R T` の通常の Euler 評価は
+  交点重複度 `χ^R(T, M)` に一致する（`chiOrd_baseChange_resolution`）。`H^{-i}(F ⊗_R T) ≅ Tor_i^R(T, M)`
+  （`HomologicalAlgebra/Tor.lean` の `ordinaryTorIso`）で、`T` 上の長さと `R` 上の長さが一致する
+  （`length_restrictScalars_eq`）から。
+- さらに `F` が有界有限自由で `T ⊗_R M` が有限長なら、`F ⊗_R T` は `T` の閉点に台をもつ完全複体
+  （`isPerfectSupported_baseChange_resolution`）。`Tor_i^R(T, M)` の有限長性
+  （`CommutativeAlgebra/TorFiniteLength.lean`）から `m_T` の冪で消え、ホモロジーの台と零ホモトピーの
+  対応（`PerfectComplex/Support.lean`）で台の条件に移す。
 -/
 
 public section
@@ -187,12 +222,14 @@ open CategoryTheory Limits IsLocalRing TensorProduct
 namespace SerrePositivity
 
 variable {R T : Type u} [CommRing R] [IsNoetherianRing R]
-  [Inputs.TorHomologicalAlgebra R] [CommRing T] [IsLocalRing T] [Algebra R T]
+  [CommRing T] [IsLocalRing T] [Algebra R T]
   [Module.Finite R T]
 
 omit [IsNoetherianRing R] [Module.Finite R T] in
-/-- 係数環の剰余体への写像が全射なら、係数拡大した分解の通常 Euler 評価は `χ^R(T, M)` に一致する。
-長さの係数制限不変性と入力 `ordinaryTorIso` による。有限長性や分解の有界性はこの等式には不要である。 -/
+/-- 剰余体への写像 `R → T → T/m_T` が全射なら、`M` の分解 `F` の係数拡大 `F ⊗_R T` の通常の Euler 評価は
+交点重複度 `χ^R(T, M)` に等しい。各 `i` で `ℓ_T(H^{-i}(F ⊗_R T)) = ℓ_R(Tor_i^R(T, M))`
+（`ordinaryTorIso` と `length_restrictScalars_eq`）、正の次数は零、あとは交代和の添字の取り直しと
+`ℤ` から `ℝ` への移行。有限長性や分解の有界性は要らない（規約による値も含めた等式）。 -/
 theorem chiOrd_baseChange_resolution
     (M : Type u) [AddCommGroup M] [Module R M] [Module.Finite R M]
     (F : CochainComplex (ModuleCat.{u} R) ℤ) (hF : IsResolutionOf F (ModuleCat.of R M))
@@ -220,9 +257,12 @@ theorem chiOrd_baseChange_resolution
   simp only [hlen, Int.cast_mul,
     Int.cast_pow, Int.cast_neg, Int.cast_one, Int.cast_natCast]
 
-/-- 有限な局所代数 `T` と有限生成加群 `M` のテンソル積が有限長なら、
-`M` の有界有限自由分解を `T` に係数拡大した複体は、閉点に台をもつ完全複体となる。
-Tor の有限長性は入力クラスから受け取り、ホモロジーの台を零ホモトピーの条件に変換する。 -/
+/-- `T ⊗_R M` が有限長なら、`M` の有界有限自由分解 `F` の係数拡大 `F ⊗_R T` は、`√(w) = m_T` なる任意の
+列 `w` に台をもつ完全 `T` 複体である。有界性・有限自由性は係数拡大で保たれる
+（`PerfectComplex/Closure.lean`）。ホモロジーは `Tor_i^R(T, M)`（`ordinaryTorIso`）で、`T ⊗_R M` が
+有限長なら `Tor` も有限長（`isFiniteLength_torModule`）、したがって `m_T` の冪で消える
+（`exists_isTorsionBySet_maximalIdeal_pow`）ので `HasHomologySupport (w) L`、あとは
+`isPerfectSupported_of_homologySupport`。Lemma 5.2 で `L = F ⊗_R D` を Lemma 3.5 に渡すための条件。 -/
 theorem isPerfectSupported_baseChange_resolution
     (M : Type u) [AddCommGroup M] [Module R M] [Module.Finite R M]
     (F : CochainComplex (ModuleCat.{u} R) ℤ) (hF : IsResolutionOf F (ModuleCat.of R M))
@@ -255,7 +295,7 @@ theorem isPerfectSupported_baseChange_resolution
       obtain ⟨e⟩ := Inputs.TorHomologicalAlgebra.ordinaryTorIso T M F hF n
       have ht := Inputs.TorHomologicalAlgebra.finiteTor T M htensor n
       exact finiteLength_of_restrictScalars (L.homology (-(n : ℤ)))
-        (Module.length_ne_top_iff.mp (ne_of_eq_of_ne e.length_eq ht))
+        (e.symm.isFiniteLength ht)
   have supported : HasHomologySupport (Ideal.span (Set.range w)) L := by
     apply (homologySupport_iff_le_radical_annihilator _ L finiteX).mpr
     intro i

@@ -9,21 +9,36 @@ public import Mathlib.RingTheory.Regular.RegularSequence
 public import Mathlib.Topology.Instances.ENNReal.ENatENNReal
 
 /-!
-# 有限長加群の Tor の正規化長さ
+# 有限長加群の `Tor` の正規化長さ
 
-系2.6と補題3.4に共通する一般定理。仮定は
+## 概要
 
-- `z` が `m_A` を生成する弱正則列であること（`A` は局所環）、
-- `C` が `A` 代数であること（`φ : A →+* C`）、
-- `λ` が `m_A C` の冪で消える `C` 加群の上で加法的・非負であること、
-- Koszul ホモロジーの評価：`λ H_i(φ z; C) = 0 (i > 0)`、`λ(C/(φ z)C) = r`
+Corollary 2.6 と Lemma 3.4 に共通する一般定理 `normalizedLength_tor_of_isWeaklyRegular`。仮定は
 
-である。結論は有限長 `A` 加群 `V` に対する公式：
-`λ Tor_i^A(C, V) = 0 (i > 0)`、`λ Tor_0^A(C, V) = r · length_A V`、すべて有限。
+- `A` は局所環で、`z` は極大イデアル `m_A` を生成する弱正則列、
+- `C` は `A` 代数（`φ : A →+* C`）、
+- `λ` は `m_A C` の冪で消える `C` 加群の上で加法的な正規化長さ、
+- Koszul ホモロジーの評価（論文 (3.9)）：`λ(H_i(φ z; C)) = 0 (i > 0)`、`λ(C/(φ z)C) = r`。
 
-証明は組成列の帰納法。`V = k = A/m` のときは Koszul 分解（`torAlgKoszulEquiv`）で
-`Tor_i^A(C, k) ≅ H_i(φ z; C)`。一般の `V` は `0 → N → V → k → 0` の Tor 長完全列
-（`torAlg_longExact`）と、`NormalizedLength` の完全列の評価による。
+結論は、有限長 `A` 加群 `V` に対する公式 `λ(Tor_i^A(C, V)) = 0 (i > 0)`、
+`λ(Tor_0^A(C, V)) = r · ℓ_A(V)`、そしてすべての `λ(Tor_i^A(C, V))` が有限。Corollary 2.6
+（`Paper/Corollary2_6.lean`）と Lemma 3.4（`Paper/Lemma3_4.lean`）は、これを長さ代数の性質
+（Theorem 2.5 の (2.4)、(2.6)）から得た `(C, λ, r)` に適用したものである。
+
+## 証明
+
+組成列についての帰納法（`IsFiniteLength` の帰納原理）。`V = k = A/m_A` では、Koszul 分解により
+`Tor_i^A(C, k) ≅ H_i(φ z; C)`（`CommutativeAlgebra/KoszulResolution.lean` の `torAlgKoszulEquiv`）
+なので仮定そのもの。一般には短完全列 `0 → N → V → V/N → 0`（`V/N` は単純、したがって `≅ k`）の
+`Tor` 長完全列（`HomologicalAlgebra/TorLES.lean` の `torAlg_longExact`）を使う：
+
+- 正次数では両端が `0` なので中央も `0`（`len_eq_zero_of_exact`）。
+- `0` 次では `Tor_1(C, k) = 0` から `Tor_0(C, N) → Tor_0(C, V) → Tor_0(C, k) → 0` の最初の射の核が
+  長さ `0` で、`λ` が加法的（`len_eq_add_of_exact_of_surjective`）、`ℓ_A(V) = ℓ_A(N) + 1`。
+- 有限性は両端の有限性から（`len_ne_top_of_exact`）。
+
+`Tor` が `m_A C` 冪ねじれであること（`CommutativeAlgebra/TorFiniteLength.lean`）で、各項が `λ` の
+加法性の対象になる。
 -/
 
 @[expose] public section
@@ -39,7 +54,11 @@ variable {A C : Type u} [CommRing A] [CommRing C] (φ : A →+* C)
 
 variable [IsLocalRing A]
 
-/-- 弱正則列の Koszul ホモロジーの評価から、有限長加群の Tor の正規化長さを計算する。 -/
+/-- **有限長加群の `Tor` の正規化長さ**：`z` が `m_A` を生成する弱正則列で、Koszul ホモロジーの評価
+`h39a`（`λ(H_i(φ z; C)) = 0 (i > 0)`）と `h39b`（`λ(C/(φ z)C) = r`）が成り立つなら、有限長 `A` 加群
+`V` について `λ(Tor_i^A(C, V)) = 0 (i > 0)`、`λ(Tor_0^A(C, V)) = r · ℓ_A(V)`、すべて有限。
+組成列についての帰納法で、`V = k` の場合は Koszul 分解、一般の場合は `Tor` の長完全列による
+（モジュール docstring 参照）。 -/
 theorem normalizedLength_tor_of_isWeaklyRegular {e : ℕ} (z : Fin e → A)
     (hz : Ideal.span (Set.range z) = maximalIdeal A)
     (hreg : RingTheory.Sequence.IsWeaklyRegular A (List.ofFn z))

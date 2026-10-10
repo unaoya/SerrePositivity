@@ -10,14 +10,32 @@ public import SerrePositivity.CommutativeAlgebra.LocalAlgebra
 /-!
 # 有限拡大による交点重複度の階数倍
 
-有限代数に置き換えたときの交点重複度を、もとの交点重複度と一般点での階数で表す。
-前半の三つの補題は、加法性・直和の評価・余核の消滅を等式として受け取る算術的な整理である。
-有限直和の公式は加法性から証明する。後半の `chi_finite_extensions` は、正則局所環上の一般的な入力クラスを使って
-それらの等式を用意し、各変数の階数を順に取り出す。
+## 概要
 
-数学的な要点は、一般点で基底となる自由部分加群の余核が低次元になることと、
-その余核の交点重複度が Roberts–Gillet–Soulé の定理で消えることである。
-補題3.5、Galois 作用、正規化長さとは独立した議論である。
+論文 Lemma 5.2 の証明の最初の段階：素イデアル商 `R/P`、`R/Q` を、その上の有限代数 `T`、`U` に
+取り替えたときの交点重複度の変化を記述する。結論は
+
+  `χ^R(T, U) = rank_{R/P} T · rank_{R/Q} U · χ^R(R/P, R/Q)`
+
+（`chi_finite_extensions`）。§5 では `T = D`（`R/P` の正規化の有限拡大）、`U = E` にとる。
+
+## 方針
+
+`T` は整域 `R/P` 上の有限生成加群なので、一般点（分数体）での基底をとると自由部分加群
+`(R/P)^a ↪ T`（`a = rank_{R/P} T`）があり、余核 `T/(R/P)^a` はねじれ加群なので台の次元が `dim R/P`
+より真に小さい（`CommutativeAlgebra/LocalAlgebra.lean` の `exists_genericBasis`）。短完全列
+`0 → (R/P)^a → T → coker → 0` に `χ` の加法性を使うと `χ(T, U) = a · χ(R/P, U) + χ(coker, U)`、そして
+`dim coker + dim U < dim R` なので Roberts–Gillet–Soulé の消滅定理により `χ(coker, U) = 0`。
+第 2 変数も同様に処理する。
+
+## 内容
+
+- 前半：加法性・直和の評価・余核の消滅を等式として受け取る算術的な整理
+  （`chi_rank_factor_left/right_of_additivity_and_vanishing`、`chi_rank_factors`）と、`WithBot ℕ∞` 値の
+  次元についての不等式の補題。
+- 有限直和の公式 `χ(M^n, N) = n · χ(M, N)` を加法性から帰納法で示す（`chi_pi_left/right_of_additivity`）。
+- `chi_finite_extensions`：以上を組み合わせる。加法性と消滅定理は入力 class
+  （`Inputs/IntersectionTheory.lean`）に依存する。Lemma 3.5、Galois 作用、正規化長さとは独立の議論。
 -/
 
 public section
@@ -33,9 +51,9 @@ variable {D D' E E' : Type u}
   [AddCommGroup D] [Module R D] [AddCommGroup D'] [Module R D']
   [AddCommGroup E] [Module R E] [AddCommGroup E'] [Module R E']
 
-/-- 第1変数の階数因子を取り出す形式的な計算。
-加法性の等式、自由加群の直和の評価、余核に対する消滅を受け取り、`χ(D′, E) = a χ(D, E)` を得る。
-この補題自体は、与えた写像の単射性や消滅定理を証明するものではない。 -/
+/-- 第 1 変数の階数因子を取り出す算術：`f : D^a → D'` について、加法性 `χ(D', E) = χ(D^a, E) + χ(coker f, E)`、
+直和の評価 `χ(D^a, E) = a χ(D, E)`、余核の消滅 `χ(coker f, E) = 0` を等式として受け取り、
+`χ(D', E) = a χ(D, E)` を得る。三つの等式を代入するだけで、`f` の単射性や消滅定理自体は扱わない。 -/
 theorem chi_rank_factor_left_of_additivity_and_vanishing (a : ℕ)
     (f : (Fin a → D) →ₗ[R] D')
     (hadd : chi R D' E = chi R (Fin a → D) E + chi R (D' ⧸ LinearMap.range f) E)
@@ -44,8 +62,8 @@ theorem chi_rank_factor_left_of_additivity_and_vanishing (a : ℕ)
     chi R D' E = (a : ℤ) * chi R D E := by
   rw [hadd, hfree, hvanish, add_zero]
 
-/-- 第2変数について、加法性・直和の評価・余核の消滅から階数因子を取り出す。
-第1変数と独立に計算し、Tor の対称性は用いない。 -/
+/-- 第 2 変数の階数因子を取り出す算術（`chi_rank_factor_left_of_additivity_and_vanishing` の第 2 変数版）。
+第 1 変数とは独立に計算し、`Tor` の対称性は使わない。 -/
 theorem chi_rank_factor_right_of_additivity_and_vanishing (a : ℕ)
     (f : (Fin a → E) →ₗ[R] E')
     (hadd : chi R D E' = chi R D (Fin a → E) + chi R D (E' ⧸ LinearMap.range f))
@@ -54,15 +72,16 @@ theorem chi_rank_factor_right_of_additivity_and_vanishing (a : ℕ)
     chi R D E' = (a : ℤ) * chi R D E := by
   rw [hadd, hfree, hvanish, add_zero]
 
-/-- 二つの変数で得た階数比較を合成し、`χ(D′, E′) = a_D a_E χ(D, E)` を得る。 -/
+/-- 二つの変数の階数比較を合成する：`χ(D', E') = a_D χ(D, E')` と `χ(D, E') = a_E χ(D, E)` から
+`χ(D', E') = a_D a_E χ(D, E)`。 -/
 theorem chi_rank_factors (aD aE : ℕ)
     (hD : chi R D' E' = (aD : ℤ) * chi R D E')
     (hE : chi R D E' = (aE : ℤ) * chi R D E) :
     chi R D' E' = (aD : ℤ) * aE * chi R D E := by
   rw [hD, hE, mul_assoc]
 
-/-- 拡張自然数値の次元に有限な自然数を加えても、有限な上界に対する狭義不等式は保たれる。
-零加群に対応する値 `⊥` も含めて扱う。 -/
+/-- `WithBot ℕ∞` 値の次元について、`x < a` なら `x + b < a + b`（`a`、`b` は自然数）。零加群の次元 `⊥` も
+含めて成り立つ。`dim coker + dim U < dim R` を作るのに使う。 -/
 lemma dimension_add_nat_lt {x : WithBot ℕ∞} {a b : ℕ}
     (hx : x < (a : WithBot ℕ∞)) : x + (b : WithBot ℕ∞) < ((a + b : ℕ) : WithBot ℕ∞) := by
   cases x with
@@ -76,9 +95,9 @@ section additivity
 
 variable [Inputs.IntersectionAdditivity R]
 
-/-- 第1変数の有限直和の評価は短完全列の加法性から従う。
-各段階でテンソル積の有限長性を有限直和との同型で確認し、
-先頭成分と残りの成分に分ける分裂短完全列に加法性を適用する。 -/
+/-- 第 1 変数の有限直和の公式 `χ(M^n, N) = n · χ(M, N)`（`M ⊗ N` が有限長のとき）。`n` についての帰納法で、
+分裂短完全列 `0 → M^n → M^{n+1} → M → 0`（先頭成分への射影）に加法性 `add_left` を使う。各段階で
+要るテンソル積の有限長性は、`M^{n+1} ⊗ N ≅ (M ⊗ N)^{n+1}` から。 -/
 theorem chi_pi_left_of_additivity
     (M N : Type u) [AddCommGroup M] [Module R M] [AddCommGroup N] [Module R N]
     [Module.Finite R M] [Module.Finite R N]
@@ -123,8 +142,8 @@ theorem chi_pi_left_of_additivity
     push_cast
     ring
 
-/-- 第2変数の有限直和の評価を、その変数の加法性から導く。
-第1変数の公式や Tor の対称性には依存しない。 -/
+/-- 第 2 変数の有限直和の公式 `χ(M, N^n) = n · χ(M, N)`（`chi_pi_left_of_additivity` の第 2 変数版、
+`add_right` を使う）。第 1 変数の公式や `Tor` の対称性には依存しない。 -/
 theorem chi_pi_right_of_additivity
     (M N : Type u) [AddCommGroup M] [Module R M] [AddCommGroup N] [Module R N]
     [Module.Finite R M] [Module.Finite R N]
@@ -174,19 +193,24 @@ end additivity
 section extension
 
 variable [IsRegularLocalRing R] [Inputs.IntersectionAdditivity R]
-  [Inputs.GenericBasis R] [Inputs.IntersectionVanishing R]
+  [Inputs.IntersectionVanishing R]
 
-/-- 有限代数 `T/(R/P)` と `U/(R/Q)` の交点重複度は、それぞれの階数の積を因子にもつ。
-`√(P + Q) = m_R` と次元の和の条件のもとで、一般点の基底から自由加群の単射を取り、
-低次元の余核の寄与を消滅定理で除く。加法性・台の一般論・消滅定理は入力クラスに依存する。
-Galois 拡大や正規化長さは用いない。 -/
+/-- **有限拡大による階数倍**：正則局所環 `R` の素イデアル `P`、`Q` で `√(P + Q) = m_R`、
+`dim R/P + dim R/Q = dim R` なるものと、有限代数 `T/(R/P)`、`U/(R/Q)`（`U` の階数は正）について
+`χ^R(T, U) = rank_{R/P} T · rank_{R/Q} U · χ^R(R/P, R/Q)`。
+
+証明：`exists_genericBasis` で `(R/P)^a ↪ T`、`(R/Q)^b ↪ U` をとる。余核の台の次元はそれぞれ
+`dim R/P`、`dim R/Q` より真に小さいので、`U` の次元（`supportDim_of_quotient_rank_pos` で `dim R/Q`）
+あるいは `R/P` の次元と足すと `dim R` 未満になり、消滅定理 `IntersectionVanishing.vanish` で
+余核の寄与が消える。各テンソル積の有限長性は `length_tensorProduct_ne_top_of_annihilator` から。
+第 1 変数、第 2 変数の順に `chi_rank_factor_*` を適用し、`chi_rank_factors` で合成する。 -/
 theorem chi_finite_extensions
     (P Q : Ideal R) [P.IsPrime] [Q.IsPrime]
     (T U : Type u) [CommRing T] [Algebra R T] [Algebra (R ⧸ P) T]
     [IsScalarTower R (R ⧸ P) T] [Module.Finite R T] [Module.Finite (R ⧸ P) T]
     [CommRing U] [Algebra R U] [Algebra (R ⧸ Q) U]
     [IsScalarTower R (R ⧸ Q) U] [Module.Finite R U] [Module.Finite (R ⧸ Q) U]
-    (hT : 0 < Module.finrank (R ⧸ P) T) (hU : 0 < Module.finrank (R ⧸ Q) U)
+    (hU : 0 < Module.finrank (R ⧸ Q) U)
     (hprimary : (P ⊔ Q).radical = IsLocalRing.maximalIdeal R)
     (h l : ℕ) (hP : ringKrullDim (R ⧸ P) = h) (hQ : ringKrullDim (R ⧸ Q) = l)
     (hsum : ((h + l : ℕ) : WithBot ℕ∞) = ringKrullDim R) :
