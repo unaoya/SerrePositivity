@@ -501,12 +501,12 @@ lemma length_quotient_eq_of_equiv
         simp only [Algebra.smul_def, map_mul, he, Ideal.Quotient.mk_algebraMap] }
   exact length_eq_of_semilinear_bijective eR.toRingHom eR.surjective f e.bijective
 
-/-- 環自己同型 `σ : R ≃+* R` に沿って係数を制限しても（`r • x` を `σ(r) • x` に取り替えても）長さは
+/-- 環同型 `σ : R ≃+* S` に沿って係数を制限しても（`r • x` を `σ(r) • x` に取り替えても）長さは
 変わらない。恒等写像が `σ` 半線形全単射になることと `length_eq_of_semilinear_bijective` による。
 ひねり `g^*P` の通常の Euler 評価が不変であること（`PerfectComplex/OrdinaryEuler.lean` の
 `chiOrd_twist`）に使う。 -/
-lemma length_restrictScalars_equiv (σ : R ≃+* R) (M : ModuleCat.{u} R) :
-    Module.length R ((ModuleCat.restrictScalars σ.toRingHom).obj M) = Module.length R M := by
+lemma length_restrictScalars_equiv (σ : R ≃+* S) (M : ModuleCat.{u} S) :
+    Module.length R ((ModuleCat.restrictScalars σ.toRingHom).obj M) = Module.length S M := by
   let f : (ModuleCat.restrictScalars σ.toRingHom).obj M →ₛₗ[σ.toRingHom] M :=
     { toFun := id, map_add' := fun _ _ ↦ rfl, map_smul' := fun _ _ ↦ rfl }
   exact length_eq_of_semilinear_bijective σ.toRingHom σ.surjective f Function.bijective_id

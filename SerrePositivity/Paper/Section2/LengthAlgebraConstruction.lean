@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.Paper.Section2.TowerLengthOn
 public import SerrePositivity.Paper.Section2.PerfectQuotientLimit
+public import SerrePositivity.Paper.Section2.PerfectKoszulLength
 public import Mathlib.RingTheory.WittVector.Basic
 public import Mathlib.RingTheory.MvPowerSeries.Basic
 
@@ -10,7 +11,9 @@ public import Mathlib.RingTheory.MvPowerSeries.Basic
 
 両分岐とも一つの代数上で全てのパラメータ系を扱い、冪と階数の公式は共通の導出に任せる。
 等標数では perfection・塔の作用・共通分母・商の長さの極限比較まで構成済み。
-`sorry` の内容は極限値の重複度との同定と正次数の Koszul ホモロジーの消滅である。
+Koszul ホモロジーの有限段の長さ公式と一様な冪ねじれも証明済み。
+重複度との同定は、高次 Frobenius ホモロジーの消滅極限を前提として導出した。
+`sorry` にはその消滅極限の供給と、ホモロジーを perfection へ移す部分が残る。
 混標数の `sorry` は CLMST の帰結を現在の塔へ移す部分を含む。
 これらは定理2.5の完成を意味しない。仮定をまとめる独自の構造体やクラスは使わない。
 -/
@@ -31,8 +34,16 @@ namespace SerrePositivity.Section2
 任意の両立する塔作用での `towerLengthOn` への移送も、
 `normalized_frobenius_length_tendsto_towerLengthOn_quotient` で証明済み。
 
-残るのは Monsky・Roberts の結果との接続による極限値の Hilbert–Samuel 重複度との同定、
-正次数の Koszul ホモロジーの正規化長さの消滅。
+`PerfectKoszulLength.lean` は近似環のホモロジーの長さを
+`ℓ_D H^i(z^(p^n); D) / p^(nh)` と同定し、全段・全次数で一様な消去冪も構成する。
+`KoszulMultiplicityLimit.lean` は高次のこの値が零へ収束するという前提から、
+既存の Koszul Euler 公式と冪の重複度公式を使って商の極限値を同定する。
+`towerLengthOn_perfection_parameter_quotient_eq_multiplicity_of_higher_tendsto` は
+それを既存の商の極限比較へ接続する。
+
+残るのは Roberts の高次 Frobenius ホモロジーの消滅極限の供給と、
+ホモロジーと有向極限の可換性による perfection 自体の高次の長さの消滅。
+これらはまだ本定理の仮定から導出しておらず、本体の `sorry` は保持する。
 代数自体の存在ではなく、標準写像で定まる `D_perf` のこれらの性質を未証明入力として残す。 -/
 theorem perfectClosure_length_properties_pending (A D : Type u) [CommRing A] [IsRegularLocalRing A]
     [IsAdicComplete (maximalIdeal A) A]

@@ -3,6 +3,7 @@ module
 public import SerrePositivity.Paper.Section2.PerfectApproximationLength
 public import SerrePositivity.Paper.Section2.TowerLengthOn
 public import SerrePositivity.CommutativeAlgebra.PrimaryParameters
+public import SerrePositivity.CommutativeAlgebra.KoszulMultiplicityLimit
 
 /-! # Perfection の商の長さと Frobenius 極限
 
@@ -12,8 +13,9 @@ public import SerrePositivity.CommutativeAlgebra.PrimaryParameters
 利用側が分母や誤差評価用の元を与える必要はない。
 任意の両立する塔作用は標準作用と一致することを使い、定理2.5の `towerLengthOn` へも移す。
 
-Hilbert–Kunz 極限の値と Hilbert–Samuel 重複度との同定、正次数の Koszul ホモロジーの
-消滅はここでは扱わず、定理2.5の残作業として区別する。
+高次 Frobenius Koszul ホモロジーの消滅極限を前提に、商の極限値と
+Hilbert–Samuel 重複度との同定も行う。消滅極限自体の供給と、
+perfection の高次ホモロジーへの移行は定理2.5の残作業として区別する。
 正則パラメータと正規化長さの既存の引用入力を使うが、新しい未証明入力はない。
 -/
 
@@ -107,5 +109,68 @@ theorem normalized_frobenius_length_tendsto_towerLengthOn_quotient
   rw [hI]
   exact normalized_frobenius_length_tendsto_perfection_quotient_of_primary
     A D p t hbase ht hdimA hdimD hpos hinj hres hsep H hH
+
+set_option backward.isDefEq.respectTransparency false in
+/-- 高次 Frobenius Koszul ホモロジーの正規化長さの零への収束から、
+perfection のパラメータ商の正規化長さを Hilbert–Samuel 重複度と同定する。
+共通分母・有限段の誤差評価・Euler 公式・極限の一意性を組み合わせる。
+高次ホモロジーの消滅極限そのものは、この定理の前提として明示する。 -/
+theorem towerLengthOn_perfection_parameter_quotient_eq_multiplicity_of_higher_tendsto
+    (A D : Type u) [CommRing A] [IsRegularLocalRing A]
+    [IsAdicComplete (maximalIdeal A) A]
+    [CommRing D] [IsDomain D] [IsLocalRing D] [IsNoetherianRing D]
+    [Algebra A D] [Module.Finite A D]
+    (p : ℕ) [Fact p.Prime] [CharP D p]
+    [CharP (ResidueField D) p] [PerfectField (ResidueField D)]
+    {h : ℕ} (t : Fin h → A)
+    (ht : Ideal.span (Set.range t) = maximalIdeal A)
+    (hdimA : ringKrullDim A = h) (hdimD : ringKrullDim D = h) (hpos : 0 < h)
+    (hinj : Function.Injective (algebraMap A D))
+    (hres : Function.Surjective ((residue D).comp (algebraMap A D)))
+    (hsep : ∀ d : D, ((minpoly A d).map (algebraMap A (FractionRing A))).Separable)
+    [Algebra A (PerfectClosure D p)] [Algebra D (PerfectClosure D p)]
+    [Algebra (Tower A t p) (PerfectClosure D p)]
+    [IsScalarTower A D (PerfectClosure D p)]
+    [IsScalarTower A (Tower A t p) (PerfectClosure D p)]
+    (hcanonical : algebraMap D (PerfectClosure D p) = PerfectClosure.of D p)
+    (z : Fin h → D) (hz : IsSystemOfParameters D z)
+    (hlim : ∀ i : ℤ, i < 0 → Filter.Tendsto (fun n : ℕ ↦
+      (Module.length D ((koszulComplex (fun j ↦ z j ^ (p ^ n))).homology i) : ℝ≥0∞) /
+        (stageRank h p n : ℝ≥0∞)) Filter.atTop (nhds 0)) :
+    (towerLengthOn A D hinj t p (PerfectClosure D p)).len
+      ((PerfectClosure D p) ⧸
+        Ideal.span (Set.range fun j ↦ algebraMap D (PerfectClosure D p) (z j))) =
+      ENNReal.ofReal (HilbertSamuel.multiplicity D (Ideal.span (Set.range z)) D : ℝ) := by
+  have hlength := normalized_frobenius_length_tendsto_towerLengthOn_quotient
+    A D p t ht hdimA hdimD hpos hinj hres hsep hcanonical (Ideal.span (Set.range z)) hz.2
+  have he := HilbertSamuel.normalized_parameter_quotient_tendsto_ennreal_of_higher_koszul
+    D z hz (fun n ↦ p ^ n) (fun n ↦ pow_pos (Fact.out : p.Prime).pos n)
+    (fun i hi ↦ by
+      simpa only [stageRank, pow_mul, Nat.cast_pow] using hlim i hi)
+  have hstage (n : ℕ) :
+      Module.length D (D ⧸ (Ideal.span (Set.range z)).map (iterateFrobenius D p n)) =
+        Module.length D (D ⧸ Ideal.span (Set.range fun j ↦ z j ^ (p ^ n))) := by
+    apply congrArg (fun I : Ideal D ↦ Module.length D (D ⧸ I))
+    rw [Ideal.map_span, ← Set.range_comp]
+    rfl
+  have htarget :
+      (towerLengthOn A D hinj t p (PerfectClosure D p)).len
+        ((PerfectClosure D p) ⧸
+          (Ideal.span (Set.range z)).map (algebraMap D (PerfectClosure D p))) =
+      (towerLengthOn A D hinj t p (PerfectClosure D p)).len
+        ((PerfectClosure D p) ⧸
+          Ideal.span (Set.range fun j ↦ algebraMap D (PerfectClosure D p) (z j))) := by
+    apply congrArg (fun I : Ideal (PerfectClosure D p) ↦
+      (towerLengthOn A D hinj t p (PerfectClosure D p)).len ((PerfectClosure D p) ⧸ I))
+    rw [Ideal.map_span, ← Set.range_comp]
+    rfl
+  have hlength' : Filter.Tendsto (fun n : ℕ ↦
+      (Module.length D (D ⧸ Ideal.span (Set.range fun j ↦ z j ^ (p ^ n))) : ℝ≥0∞) /
+        ((p ^ n : ℕ) : ℝ≥0∞) ^ h) Filter.atTop
+      (nhds ((towerLengthOn A D hinj t p (PerfectClosure D p)).len
+        ((PerfectClosure D p) ⧸
+          Ideal.span (Set.range fun j ↦ algebraMap D (PerfectClosure D p) (z j))))) := by
+    simpa only [hstage, htarget, stageRank, pow_mul, Nat.cast_pow] using hlength
+  exact tendsto_nhds_unique hlength' he
 
 end SerrePositivity.Section2

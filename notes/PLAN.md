@@ -42,14 +42,26 @@
    正規化した Frobenius 商の長さが perfection の商の正規化長さへ収束することを
    `PerfectQuotientLimit.lean` で導く。塔作用の一意性により、任意の両立する作用での
    `towerLengthOn` にも接続した。
-   極限値の Hilbert–Samuel 重複度との同定、高次 Koszul ホモロジーの消滅と、
-   混標数の perfectoidization・塔との比較は残る。既存の二つの pending 定理の未証明部分は残す。
+   続いて `PerfectKoszulLength.lean` で、近似環の各次数の Koszul ホモロジーの長さを
+   `ℓ_D H^i(z^(p^n); D) / p^(nh)` と同定し、全段・全次数に共通する消去冪を選んだ。
+   `KoszulMultiplicityLimit.lean` は高次の正規化長さが零へ収束するという前提から、
+   商の極限を Hilbert–Samuel 重複度と同定する。perfection の商への接続も証明した。
+   残る等標数側の境界は Roberts の高次 Frobenius ホモロジーの消滅極限の供給と、
+   ホモロジーと有向極限の可換性による perfection 全体への移行。
+   混標数の perfectoidization・塔との比較も残る。既存の二つの pending 定理の仮定と
+   未証明の本体は維持し、新しい `sorry` や結論を前提にする入力束は追加していない。
 
 ユーザーが今回明示的に許可した Serre の引用を除き、新しい `sorry`・公理・
 結論を仮定する入力束は追加しない。`main_statement` の導出の完成と、
 引用入力も含めた論文全体の形式化の完成は区別する。
 
-今回の検証：全体の `lake build` は3554ジョブで成功。新規・変更12宣言と
+今回の検証（§2 の Koszul 長さ・重複度への接続）：全体の `lake build` は3560ジョブで成功。
+新規・変更25宣言と `main_statement`・`core_statement` の計27宣言を公理監査し、
+16宣言は標準公理のみ、11宣言は既存の未証明入力に由来する `sorryAx` に依存する。
+その他の公理はない。新しい `sorry` は追加せず、直接の `sorry` は17箇所を維持した。
+`git diff --check` も通過した。
+
+前回の検証（`80eb7fc`）：全体の `lake build` は3554ジョブで成功。新規・変更12宣言と
 `core_statement` の計13宣言を公理監査し、6宣言は標準公理のみ、
 7宣言は明示した引用入力に由来する `sorryAx` に依存する。その他の公理はない。
 Serre の引用に一つ `sorry` を追加し、`main_statement` から一つ除去したため、

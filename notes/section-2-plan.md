@@ -19,9 +19,28 @@
 - `PerfectQuotientLimit.lean`：この分母と元の組を構成し、既存の誤差評価により
   Frobenius 商の正規化長さが perfection の商の正規化長さに収束することを導く。
   塔作用の一意性を使い、任意の両立する作用での `towerLengthOn` の値に移すところも証明した。
+- `HomologicalAlgebra/FlatBaseChange.lean` と `TowerKoszulLength.lean`：平坦な基底変更と
+  ホモロジーの可換性を、代数の押し出しを通して有限段の正規化長さの公式へ接続した。
+- `PerfectKoszulLength.lean`：Frobenius 同型と剰余体の一致から、近似環の全次数で
+  `λ_∞ H^i(z; B_(p^n)) = ℓ_D H^i(z^(p^n); D) / p^(nh)` を証明した。
+  パラメータ系から有限段の有限長性も供給し、利用側の仮定には追加していない。
+- `CommutativeAlgebra/KoszulFiniteLength.lean`：パラメータ系のホモロジーの有限長性に加え、
+  任意の係数拡大・全次数に共通する極大イデアルの消去冪を証明した。
+  近似環への適用により、Lemma 2.4 の極限で必要な全段に一様な塔上の冪ねじれも得た。
+- `CommutativeAlgebra/KoszulMultiplicityLimit.lean`：高次の正規化した通常長さが零へ
+  収束するという前提から、有限 Euler 和と既存の重複度公式によって商の極限値を導く。
+  実数値と `ℝ≥0∞` 値の両方で証明し、`PerfectQuotientLimit.lean` で
+  `towerLengthOn` のパラメータ商の長さとの同定まで接続した。
 
-残るのは極限値と Hilbert–Samuel 重複度との同定、正次数の Koszul ホモロジーの消滅、
-混標数の perfectoidization と塔への接続。以下の古い実施記録と区別する。
+等標数で残るのは Roberts の消滅極限の供給と、ホモロジーと有向極限の可換性を使った
+perfection 全体の高次の長さの消滅。上の極限値の同定は消滅極限を前提とした導出であり、
+定理2.5の無条件の証明ではない。混標数の perfectoidization と塔への接続も残る。
+二つの pending 定理の仮定と `sorry` は維持し、新しい未証明入力は追加していない。
+以下の古い実施記録と区別する。
+
+検証：全体の `lake build` は3560ジョブで成功。新規・変更25宣言と主定理・核心定理の
+計27宣言を公理監査し、16宣言は標準公理のみ、11宣言は既存入力の `sorryAx` に依存する。
+追加の公理はなく、直接の `sorry` は17箇所のまま。`git diff --check` も通過した。
 
 方針（2026-10-10 の決定）：
 

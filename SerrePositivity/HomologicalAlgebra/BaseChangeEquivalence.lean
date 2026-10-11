@@ -4,9 +4,9 @@ public import SerrePositivity.HomologicalAlgebra.Tor
 public import SerrePositivity.CommutativeAlgebra.FiniteLength
 public import Mathlib.CategoryTheory.Adjunction.Unique
 
-/-! # 環自己同型による係数変更とホモロジーの長さ
+/-! # 環同型による係数変更とホモロジーの長さ
 
-係数拡大と逆自己同型による係数制限を比較する。
+係数拡大と逆同型による係数制限を比較する。
 通常長さの不変性は任意の複体・全次数の Tor に成り立ち、有限性や有界性を要求しない。
 -/
 
@@ -30,20 +30,20 @@ noncomputable def baseChangeCompIso (φ : R →+* T) (ψ : T →+* C)
   (Functor.mapHomologicalComplexCompIso (ModuleCat.extendScalarsComp φ ψ).symm
     (ComplexShape.up ℤ)).app F
 
-/-- 環自己同型 `σ` に沿った係数制限は、逆 `σ⁻¹` に沿った係数拡大と自然同型：`restrictScalars σ` は
+/-- 環同型 `σ` に沿った係数制限は、逆 `σ⁻¹` に沿った係数拡大と自然同型：`restrictScalars σ` は
 圏同値で `restrictScalars σ⁻¹` の左随伴、一方 `extendScalars σ⁻¹` も `restrictScalars σ⁻¹` の左随伴
 なので、左随伴の一意性（`Adjunction.leftAdjointUniq`）による。ノルム比較で群の添字に逆元が現れる
 理由。 -/
-noncomputable def restrictScalarsIsoExtendInverse (σ : T ≃+* T) :
+noncomputable def restrictScalarsIsoExtendInverse (σ : R ≃+* T) :
     ModuleCat.restrictScalars.{u} σ.toRingHom ≅ ModuleCat.extendScalars σ.symm.toRingHom :=
   Adjunction.leftAdjointUniq (ModuleCat.restrictScalarsEquivalenceOfRingEquiv σ).toAdjunction
     (ModuleCat.extendRestrictScalarsAdj σ.symm.toRingHom)
 
-/-- 自己同型に沿う係数拡大は、各次数のホモロジーの通常長さを保つ。 -/
-lemma length_homology_baseChange_equiv (σ : T ≃+* T)
-    (P : CochainComplex (ModuleCat.{u} T) ℤ) (q : ℤ) :
+/-- 環同型に沿う係数拡大は、各次数のホモロジーの通常長さを保つ。 -/
+lemma length_homology_baseChange_equiv (σ : R ≃+* T)
+    (P : CochainComplex (ModuleCat.{u} R) ℤ) (q : ℤ) :
     Module.length T ((baseChange σ.toRingHom P).homology q) =
-      Module.length T (P.homology q) := by
+      Module.length R (P.homology q) := by
   let F := ModuleCat.restrictScalars.{u} σ.symm.toRingHom
   let e := ((NatIso.mapHomologicalComplex (restrictScalarsIsoExtendInverse σ.symm)
     (.up ℤ)).app P).symm

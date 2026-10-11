@@ -39,8 +39,13 @@ The core connection and the general-to-core/Serre reduction are complete relativ
 Work has resumed on Section 2: `PerfectConductor.lean` now supplies a common denominator from
 regularity, and `PrimaryParameters.lean` supplies the parameters for the error estimate.
 `PerfectQuotientLimit.lean` combines these with the approximation estimates to identify the
-Frobenius length limit with the length of the perfection quotient. Identifying that limit with
-Hilbert–Samuel multiplicity, higher Koszul vanishing, and the mixed-characteristic construction remain.
+Frobenius length limit with the length of the perfection quotient. `PerfectKoszulLength.lean`
+proves the analogous finite-stage formula for all Koszul homology groups and constructs one
+annihilating power for every stage and degree. `KoszulMultiplicityLimit.lean` derives the
+Hilbert–Samuel value from vanishing of the normalized higher Frobenius homology, and
+`PerfectQuotientLimit.lean` connects this conditional result to the perfection quotient.
+Supplying that vanishing limit, transporting homology through the directed limit, and the
+mixed-characteristic construction remain. No new unproved input was added for these connections.
 The cited descent results remain separate work.
 
 The Lean sources are organized as follows (2026-10-11):
