@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.HilbertSamuelBasic
 public import SerrePositivity.CommutativeAlgebra.HilbertSamuelPolynomial
+public import SerrePositivity.CommutativeAlgebra.HilbertSamuelDimension
 
 /-!
 # Hilbert–Samuel 多項式と重複度
@@ -12,7 +13,8 @@ public import SerrePositivity.CommutativeAlgebra.HilbertSamuelPolynomial
 `HilbertSerre.lean` の数値版を実際の随伴次数加群へ適用し、
 `HilbertSamuelPolynomial.lean` で有理型の Hilbert 級数を得る。
 `HilbertSeries.lean` の多項式の構成へ接続して、一般の多項式性を証明する。
-次元定理は未証明として残る。
+`HilbertSamuelDimension.lean` で、パラメータ系による上界と、Artin–Rees・
+素イデアルの鎖による下界から次数と Krull 次元の一致を証明する。
 
 重複度のイデアル冪の公式は多項式性と定義から、正値性は多項式性と次元定理から証明する。
 -/
@@ -59,12 +61,6 @@ theorem multiplicity_pow
   dsimp only [multiplicity]
   rw [heq, comp_C_mul_X_coeff]
   ring
-
-/-- **次元定理**：`I` が `m_D` 準素なら `D` 自身の Samuel 多項式の次数は `dim D`
-（Atiyah–Macdonald Thm 11.14、`d(D) = dim D` の部分）。 -/
-theorem natDegree_poly_eq_dim (I : Ideal D) (hI : I.radical = maximalIdeal D) :
-    (poly D I D).natDegree = dimToNat (ringKrullDim D) := by
-  sorry
 
 /-- **正値性**：`I` が `m_D` 準素なら `0 < e(I, D)`。Samuel 多項式の次数が `dim D` で、
 十分大きな正の整数で正値をとる多項式の最高次係数は正だから。 -/
