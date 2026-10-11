@@ -350,7 +350,7 @@ $X$ が指数 $v$ で $z$ に台をもち、$H_i(X)=0$（$i<0$）であるとき
 この節には二つの役割がある。
 \begin{enumerate}
   \item \textbf{§\ref{sec:abstract} の評価先を作る}（§\ref{sec:planB-quot}）。長さ付き代数 $(C,\lambda)$ から、長さ零の加群で割った Serre 商として、定義~\ref{def:B-lenab} の長さ付きアーベル圏 $(\mathcal{A}_\lambda^{\mathrm{fin}},\ell_\lambda)$ を作る。評価元 $\mathcal{K}$ とホモロジー的関手 $H_*$ は §\ref{sec:perfect}、§\ref{sec:asymp} で作る。
-  \item \textbf{長さ付き代数に課す条件を整理する}（§\ref{sec:length-koszul}、§\ref{sec:length-cm}）。Koszul 有限性、$\lambda$-平坦性とランク、$\lambda$-CM 性を定義し、その間の関係を示す。これは §\ref{sec:abstract} の結果を言い換えたものではなく、§\ref{sec:perfect}、§\ref{sec:asymp} で §\ref{sec:abstract} の結論の仮定を確かめるときの材料になる。
+  \item \textbf{長さ付き代数に課す条件を整理する}（§\ref{sec:length-koszul}、§\ref{sec:length-cm}、§\ref{sec:length-tower}）。Koszul 有限性、$\lambda$-平坦性とランク、$\lambda$-CM 性を定義し、その間の関係を示す。これは §\ref{sec:abstract} の結果を言い換えたものではなく、§\ref{sec:perfect}、§\ref{sec:asymp} で §\ref{sec:abstract} の結論の仮定を確かめるときの材料になる。
 \end{enumerate}
 \begin{center}
 \begin{tabularx}{\textwidth}{>{\raggedright}p{6.4cm}>{\raggedright\arraybackslash}X}
@@ -516,6 +516,26 @@ $A\subseteq D$ を正則局所部分環で $D$ が $A$ 上有限なものとし�
 $\m_D^N\subseteq\m_A D$ となる $N$ があるので、$\m_A C$-冪ねじれと $\m_D C$-冪ねじれは同じである。$z$ は $D$ のパラメータ系でもあるので、系~\ref{cor:allv} の逆を適用する。
 \end{proof}
 \lean{\ld{LengthAlgebra.CohenMacaulay} の \ld{flat_of_cm} と \ld{tor_length_of_cm} で証明済み。有限な単射 $A\to D$ に沿うパラメータの移送と \ld{restrictToBase} を用いる。基底の次元と剰余体の Koszul 分解は明示して受け取る。}
+
+\subsection{塔と整合する長さ}\label{sec:length-tower}
+
+§\ref{sec:asymp-approx} の有限近似列の存在に使う設定を述べる。具体例は §\ref{sec:construction} の塔と Faltings の正規化長さ $\lambda_\infty$ である。
+
+\begin{definition}[塔]\label{def:B-tower}
+可換環 $A$ 上の\textbf{塔}とは、$A$ 代数の増大列 $A=A_0\subseteq A_1\subseteq\cdots$ で、各 $A_j$ が $A$ 上階数 $s_j$ の有限自由加群であり、遷移写像 $A_j\to A_{j'}$ が平坦なものをいう。$\Lambda=\bigcup_j A_j$ と書く。
+\end{definition}
+
+\begin{definition}[塔と整合する長さ]\label{def:B-towerlen}
+$A$ をネーター局所環、$(A_j)$ をその上の塔とする。$\m_A\Lambda$-冪ねじれ $\Lambda$ 加群の上の長さ関数 $\lambda$ が\textbf{塔と整合する}とは、次をみたすことをいう。
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{有限段の公式}：有限長 $A_j$ 加群 $V$ について $\lambda(\Lambda\otimes_{A_j}V)=\len_{A_j}(V)/s_j$。
+  \item \textbf{上限の性質}：$\lambda(M)$ は $M$ の有限生成部分加群の $\lambda$ の上限である。
+  \item \textbf{有限生成加群での一致}：有限生成加群 $M$ について、$\lambda(M)$ は $M$ に全射する有限表示加群の $\lambda$ の下限に等しい。
+  \item \textbf{段への降下}：有限表示の $\Lambda$ 加群は、ある段 $A_j$ 上の有限表示加群の係数拡大である。
+\end{enumerate}
+長さ付き代数 $(C,\lambda_C)$ が塔と整合するとは、$\Lambda$ 代数の構造 $\Lambda\to C$ があって、$\lambda_C$ が塔と整合する長さの係数制限であることをいう。
+\end{definition}
+§\ref{sec:construction} では、具体的な塔の上で $\lambda_\infty$ を構成し、これらの性質を示す（命題~\ref{prop:tower-compatible}）。(i)、(ii)、(iv) は証明済み、(iii) と加法性は引用である。
 
 %======================================================================
 \section{perfect 複体での評価}\label{sec:perfect}\label{sec:check-perfect}
@@ -929,6 +949,43 @@ $m=e$ では第零次だけが残る。各段の極小性は
 
 既存の二項係数の数値公式から非負性を使って長さの消滅を得る方法でも、忠実な長さによって同じ零対象の結論に戻せる。実装では対象としての抽象的消滅を使い、数値の二項係数公式との対応も証明している。
 
+\subsection{有限近似列}\label{sec:asymp-approx}
+
+有限加群でない対象 $U$ を、有限長加群の列で近似する。近似列から、ランク無視の圏の対象とその評価が得られる。
+
+\begin{definition}[有限近似列]\label{def:approx}
+$B$ をネーター局所環、$k$ をその剰余体、$\mathcal{L}$ を有限生成 $B$ 加群の族とする。正の整数の列 $s_n\to\infty$ と有限長 $B$ 加群の列 $(M_n)$ が\textbf{有限近似列}であるとは、ある $a$ で全ての $M_n$ が $\m_B^a$ で消され、全ての $L\in\mathcal{L}\cup\{k\}$ と $i\ge0$ について
+\[
+ \tau_i(L)=\lim_{n}\frac{\len_B\Tor_i^B(M_n,L)}{s_n}
+\]
+が有限な値として存在し、$\lim_n\len_B(M_n)/s_n$ も存在することをいう。
+\end{definition}
+
+\begin{theorem}[有限近似列の存在、Lemma 5.4 の一般形]\label{thm:approx-exist}
+$\lambda$ を $A$ 上の塔と整合する長さ（定義~\ref{def:B-towerlen}）とし、加法的であるとする。$T$ を $A$ 上有限な局所代数で $\m_A^aT=0$ となるもの、$B$ を局所環で $B\to T$ と $A\to T$ がともに剰余体に全射なものとする。$S=\Lambda\otimes_AT$ 加群 $U$ が $\lambda(U)<\infty$ をみたし、$B$ の作用が $S$ を通るとする。このとき有限近似列 $(M_n)$ で、$T$ を消す $B$ のイデアルは全ての $M_n$ を消し、
+\[
+ \lim_n\frac{\len_B(M_n)}{s_n}=\lambda(U),\qquad \tau_i(L)=\lambda\Tor_i^B(U,L)\quad(L\in\mathcal{L})
+\]
+となるものがある。
+\end{theorem}
+\begin{proof}
+上限の性質から $U$ を有限生成部分加群で近似し、有限生成加群での一致から、核と余核の $\lambda$ が小さい有限表示加群 $P_\varepsilon\to U$ をとる。段への降下で $P_\varepsilon$ をある段 $S_j=A_j\otimes_AT$ 上の有限表示加群 $V$ の係数拡大として表す。$S$ は $S_j$ 上平坦なので、Tor は係数拡大と両立する。有限段の公式から $V$ の長さと Tor の長さは $s_j$ で割った値になる。$L$ の有限自由分解の階数で核と余核の寄与を抑え、$\varepsilon\to0$ と $j\to\infty$ の対角線をとる。
+\end{proof}
+\lean{\ld{Section2.exists_tower_approximation_B}（一般部分）と \ld{Section5.lemma_5_4}（§\ref{sec:core} の形）。Lean では具体的な塔 \ld{Tower} と $\lambda_\infty$（\ld{towerLength}）の上で述べており、定義~\ref{def:B-towerlen} の抽象的な設定にはまだ書き直していない。証明が使うのは上の四つの性質と加法性だけである。}
+
+\begin{proposition}[有限近似列から得る対象]\label{prop:approx-object}
+$(M_n)$ を局所環 $B$ 上の有限近似列とし、ある $l$ で $\tau_i(k)=0$（$i>l$）とする。$M_n$ の極小自由分解を $l$ 次で切り詰めた自由複体の列を $F=(F_n)$ とする。
+\begin{enumerate}[label=(\alph*)]
+  \item $F_n$ は $0$ 次から $l$ 次に項をもち、$1$ 次で極小で、$0$ 次の階数は $\beta_0(M_n)$ である。
+  \item $B\to T'$ を有限な局所準同型とし、$T'$ は §\ref{sec:asymp} の設定の代数で、$\m_B$ の像が支持のイデアルの根基に入り、$T'\in\mathcal{L}$ であるとする。このとき $F\otimes_BT'$ の像 $X$ はランク無視の圏 $P_{T'}^J$ に入り、$\chi_{\ord}(X)=\sum_{i=0}^{l}(-1)^i\tau_i(T')$ である。
+  \item $\nu=\lim_\U\beta_0(M_n)/s_n$ は $\lim_n\len_B(M_n)/s_n$ を $\len_B(B/\m_B^a)$ で割った値以上である。
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+(a) は極小分解の性質である。(b) では、$\tau_i(k)=0$（$i>l$）から $l$ 次より上の Betti 数が $o(s_n)$ になるので、切り詰めの誤差はランク無視の圏で消える。分解の各段は $\m_B^a$ の零作用から共通の指数で零ホモトピーをもち、商で $z$ に台をもつ。Euler 評価は各段の Tor の長さの交代和の正規化極限である。(c) は $\len_B(M_n)\le\beta_0(M_n)\,\len_B(B/\m_B^a)$ による。
+\end{proof}
+\lean{切り詰めは \ld{Asymptotic.MinimalResolutionFamily} の \ld{exists_minimal_truncated_sequence} と \ld{Section5.exists_minimal_approximation_sequence}、支持は \ld{exists_supported_minimal_approximation}、評価は \ld{Paper.Section5.ApproximationBetti} と \ld{paperOrdinaryEulerK0_eq_lambdaChi}、(c) は \ld{finiteApproximation_rank_lower_bound} と \ld{length_le_tor_zero_mul}（証明済み）。}
+
 \subsection{$\lambda$-平坦な代数での適用}\label{sec:asymp-flat}
 
 §\ref{sec:perfect-flat} と同じく、$\lambda$-平坦で有限ランクの $(C,\lambda)$ では、この節の比較・消滅・下界に必要な Koszul 条件が §\ref{sec:length-koszul} から得られる。
@@ -1070,6 +1127,14 @@ $A = k[[t_1,\dots,t_h]]$ または $W(k)[[t_2,\dots,t_h]]$（$t_1 = p$、$k$ は
 \end{lemma}
 \lean{\ld{Paper.Section2.Lemma2_4}（証明済み）。}
 
+\begin{proposition}[$\lambda_\infty$ は塔と整合する]\label{prop:tower-compatible}
+定義~\ref{def:tower} の $(A_n)$ は定義~\ref{def:B-tower} の意味の塔（$s_n=p^{nh}$）で、$\lambda_\infty$ は加法的で、定義~\ref{def:B-towerlen} の意味で塔と整合する長さである。
+\end{proposition}
+\begin{proof}
+各段が $A$ 上自由で遷移写像が平坦であることは単項式基底から示す。有限段の公式と段への降下は塔の段の性質から、上限の性質は $\lambda_\infty$ の構成と補題~\ref{lem:24} から出る。有限生成加群での一致（$\lambda=\lambda^*$）と加法性は引用である。
+\end{proof}
+\lean{塔の段は \ld{Paper.Section2.TowerStage}（\ld{flat_tower} など）、有限段の公式と降下は \ld{TowerDescent}（\ld{towerLengthFun_tensor}、\ld{exists_descent}）、上限の性質は \ld{towerLength_hasSup}。有限生成加群での一致は \ld{towerLengthFun_eq_fgLength}、加法性は \ld{towerLengthFun_add_of_exact}（ともに引用、Gabber--Ramero 14.5.74、Faltings App.~2）。}
+
 \begin{lemma}\orig{Lemma 2.2、Cohen--Gabber、引用}\label{lem:cohengabber}
 剰余体が完全な完備局所整域 $D$ に対し、定義~\ref{def:tower} の形の正則部分環 $A\subseteq D$ で、$D$ が $A$ 上有限かつ $\Frac(D)/\Frac(A)$ が分離的なものがとれる。
 \end{lemma}
@@ -1144,12 +1209,8 @@ $\sigma$ を固定し $C = C_D^\sigma$、$\lambda = \lambda_D$ と書く。
     \lambda\Tor_i^R(C,L) = \lambda\Tor_i^B(U,L), \qquad\text{これは } i>l \text{ で } 0,
   \]
   かつ $0<\lambda(U)<\infty$。$C$ が非自明な $\lambda$-CM 代数であることは定理~\ref{thm:existence} (a) と系~\ref{cor:pos} による。
-  \item \textbf{有限長加群での近似}（Lemma 5.4）：定理~\ref{thm:existence} (c) を使い、共通の $\m_B^a$ で消される有限長 $B$ 加群 $M_n$ と $s_n\to\infty$ で
-  \[
-    \frac{\len\Tor_i^B(M_n,L)}{s_n} \;\to\; \lambda\Tor_i^B(U,L) \qquad (L = k, E')
-  \]
-  となるものをとる。$L = k$ とすると、$i>l$ で Betti 数は $\beta_i(M_n) = o(s_n)$。生成元数の比の極限 $\nu_\sigma = \lim\beta_0(M_n)/s_n$ は $\lambda(U)/\len(B/\m_B^a)$ 以上で、特に正。
-  \item \textbf{切り詰め}（Lemma 5.5）：$M_n$ の極小自由分解を $l$ 次で切り、$\gamma\in G_E$ でひねって $E'$ に持っていった列 $F'_{\gamma} = (F'_{n,\gamma})_n$ は、$0$ 次から $l$ 次に項をもつ有界な自由列で、$1$ 次で極小（$d_1$ の成分は $\m_B$ に入り、$E'$ に移すと $\m_{E'}$ に入る）、$0$ 次の階数は $\beta_0(M_n)$。その像は $P_{E'}^J$ に入り（$l$ 次より上のランクが $o(s_n)$ なので切り詰めの誤差は商で消える）、普通の Euler 特性は $\chi_{\ord}(F'_\gamma) = c_\sigma$。
+  \item \textbf{有限長加群での近似}（Lemma 5.4）：$\lambda_D$ は塔と整合する長さの係数制限である（命題~\ref{prop:tower-compatible}）。定理~\ref{thm:approx-exist} を $T=D'/I_\sigma$、$U$ に適用し、$\m_B^a$ で消される有限近似列 $(M_n)$ を $\mathcal{L}=\{E'\}$ についてとる。このとき $\tau_i(L)=\lambda\Tor_i^B(U,L)$（$L=k,E'$）で、パラメータ商の消滅から $\tau_i(k)=0$（$i>l$）である。$\m_B^a$ が $U$ を消すことは §\ref{sec:param} の準備（(5.6)）による。
+  \item \textbf{切り詰め}（Lemma 5.5）：命題~\ref{prop:approx-object} を $T'=E'$ と、$\gamma\in G_E$ でひねった $B\to E'$ に適用する。$M_n$ の極小自由分解を $l$ 次で切った列を $E'$ に移した $F'_\gamma$ は、$0$ 次から $l$ 次に項をもつ $1$ 次で極小な自由列で、その像は $P_{E'}^J$ に入り、普通の Euler 特性は $\chi_{\ord}(F'_\gamma)=\sum_i(-1)^i\tau_i(E')=\sum_i(-1)^i\lambda\Tor_i^B(U,E')=c_\sigma$ である。生成元数の比の極限 $\nu_\sigma=\lim\beta_0(M_n)/s_n$ は $\lambda(U)/\len(B/\m_B^a)$ 以上で、特に正である。
 \end{enumerate}
 \lean{$x$ の選択は \ld{exists_regular_parameters_in}（素イデアル回避。引用は非混合性 \ld{Inputs.Unmixedness} のみ）と、有限拡大へ移す \ld{Section5.exists_regular_parameters_for_finite_extension}。パラメータ商の長さ比較・消滅は \ld{Section5.lemma_5_3}（\ld{ParamQuot.torClaim}、\ld{ParamQuot.len_torAlg_eq_zero}）。有限近似は \ld{Section5.lemma_5_4} が塔の有限段への降下で構成する（$\lambda_\infty$ の二性質の引用を除いて証明済み）。そのための $\m_B^a$ と $\Lambda\otimes_{A}(D'/I_\sigma)$ の作用は \ld{Section5.Preparation}。切り詰め・支持・Euler の計算は \ld{Paper.Section5.MinimalApproximation}、\ld{SupportedApproximation}、\ld{ApproximationEuler}。\ld{Section5.lambdaChi_pos_of_parameter_tower} はこれらを接続し、近似列を内部で構成する。}
 
