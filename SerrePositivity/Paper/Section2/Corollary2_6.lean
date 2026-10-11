@@ -17,7 +17,7 @@ public import Mathlib.Basic.ENNReal.Real
   `0 < e(H, D) = λ_D(C_D/HC_D) ≤ ℓ(D/H) · λ_D(C_D/𝔡 C_D)`。
 
 左の `0 < e(H, D) = λ_D(C_D/HC_D)` は (2.5) の `v = 1` と Hilbert–Samuel 重複度の正値性
-（`HilbertSamuel.multiplicity_pos`、当面 `sorry`）、右の不等式は一般論
+（`HilbertSamuel.multiplicity_pos`、多項式性・次元定理から証明済み）、右の不等式は一般論
 `len_quotient_map_le_length_mul`（`PerfectComplex/QuotientLength.lean`）。
 
 Corollary 2.6 の 1・2（有限長加群の係数拡大）は `Paper/Corollary2_6.lean` の `cor_2_6_tor` で

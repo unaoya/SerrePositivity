@@ -24,14 +24,6 @@ open scoped ENNReal
 
 variable (D : Type u) [CommRing D] [IsLocalRing D] [IsNoetherianRing D]
 
-omit [IsLocalRing D] [IsNoetherianRing D] in
-set_option backward.isDefEq.respectTransparency false in
-/-- 同じ環の上で測った Koszul Euler 数は、通常の複体の Euler 数である。 -/
-lemma koszulEulerChar_self {r : ℕ} (z : Fin r → D) :
-    koszulEulerChar D D z = chiOrd (koszulComplex z) := by
-  unfold koszulEulerChar chiOrd
-  congr 1
-
 /-- パラメータ系の成分ごとの `q` 乗に対する通常の Euler 数は `q^h e((z), D)`。
 二つの既存の重複度の入力を明示的に適用する。 -/
 theorem chiOrd_koszul_pow {h : ℕ} (z : Fin h → D) (hz : IsSystemOfParameters D z)

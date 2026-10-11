@@ -33,6 +33,21 @@
 
 **使う先行研究**：Cohen の構造定理、局所平坦性判定法、剰余体拡大の DVR の構成（標準的）。
 
+**形式化の引用境界（2026-10-11 更新）**：
+
+- `Inputs.exists_complete_flat_local_extension` に、任意の剰余体拡大 `K/k` を持つ
+  完備 Noether 平坦局所拡大の存在だけを置いた。`m_B B′ = m_B′` と、剰余体同型が
+  `k` 上で両立する条件も明記する。基底 `B` の完備性はこの存在定理には不要。
+- 出典は EGA I, 2nd ed., 0, Proposition 6.8.3。
+  [Stacks Tag 03C3](https://stacks.math.columbia.edu/tag/03C3) の拡大を完備化する形であり、
+  完備化の Noether 性・平坦性まで引用の範囲に含める。Tag 03C3 の本文単独が
+  完備 Noether 版を述べているとは扱わない（同ページの Comment #7831 に EGA の参照）。
+- 商と係数拡大の `B′` 線形同型を `quotientBaseChangeEquiv` で構成した。
+  平坦性を使わず、テンソル積の右完全性から証明している。
+- その同型と平坦局所拡大での長さの保存から、任意の加群の Samuel 関数の一致を証明した。
+  正則性と Tor の保存にも既存の証明を適用し、`lemma_2_1` 自身の `sorry` を除去した。
+  正則性の保存の証明には、未証明の Hilbert–Samuel 多項式性・次元定理への依存が残る。
+
 ## §2.2 Lemma 2.2（正則な正規化基底）
 
 **主張**：(D, d, k) を次元 h > 0 の完備ネーター局所整域、k を標数 p > 0 の完全体とする。有限で generically separable な包含 A ⊆ D で、剰余体に恒等写像を誘導し、
@@ -49,6 +64,25 @@
   - これは [21] §3.3 と同じ議論。CLMST の Notation 4.0.1 でも同じ設定（「Cohen's structure theorem により module-finite extension A = W(k)[[x₂, …, x_d]] ⊆ R がある」）を使っている。
 
 **使う先行研究**：Cohen–Gabber（Kurano–Shimomoto）、Cohen の構造定理（係数環の存在）。
+
+**形式化の引用境界（2026-10-11 更新）**：
+
+| 外部から引用する主張 | このリポジトリで証明する帰結 |
+| --- | --- |
+| `Inputs.cohen_gabber_normalization`：等標数の有限正規化基底と分数体拡大の分離性 | 標数の分岐、分数体の分離性から採用した最小多項式の分離性への移送 |
+| `Inputs.cohen_normalization_mixedCharacteristic`：完全剰余体を持つ混標数環の Witt 冪級数部分環による有限正規化 | 標数零から分数体拡大の分離性、その最小多項式条件への移送 |
+| 両引用には、冪級数環の正則性・完備性と標準座標による極大イデアルの生成を含める | 単射な有限整拡大の次元保存、基底の座標の像が `D` のパラメータ系になること |
+
+混標数は係数環の存在だけではなく、外部で証明された **Cohen 正規化の形**
+（[Stacks Lemma 10.160.11、Remark 10.160.9](https://stacks.math.columbia.edu/tag/0323)）を
+引用する。完全剰余体の Cohen 環を `W(k)` と同定する標準事実もこの引用に含む。
+等標数は [Kurano–Shimomoto Theorem 1.1](https://arxiv.org/abs/1510.03573) の整域の場合。
+有限性や冪級数環の正則性そのものを今回証明したとはしない。
+
+`lemma_2_2` の直接の `sorry` は除去した。元の公開ステートメントを保ち、
+上の引用から全条件をそろえる証明へ変更した。
+最小多項式の比較に必要な正規性は `isIntegrallyClosed_of_isRegularLocalRing` を使い、
+その先の正則パラメータの正則性には未証明の標準可換環論への依存が残る。
 
 ## §2.2 塔（式 (2.1)）と Lemma 2.3
 

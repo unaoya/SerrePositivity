@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.CommutativeAlgebra.QuotientBaseChange
 public import SerrePositivity.CommutativeAlgebra.HilbertSamuel
 public import SerrePositivity.CommutativeAlgebra.SupportDimension
 public import Mathlib.RingTheory.LocalRing.Length
@@ -41,6 +42,17 @@ theorem length_baseChange_of_map_maximalIdeal
     isSimpleModule_iff_isCoatom.mpr (Ideal.isMaximal_def.mp (maximalIdeal.isMaximal B))
   rw [IsLocalRing.length_baseChange A B M, hm,
     Module.length_eq_one B (B ⧸ maximalIdeal B), mul_one]
+
+include hm in
+/-- 加群の Samuel 関数も、極大イデアルを保つ平坦局所拡大で保存される。 -/
+theorem samuelFunction_module_baseChange_of_map_maximalIdeal
+    (M : Type u) [AddCommGroup M] [Module A M] (n : ℕ) :
+    HilbertSamuel.samuelFunction B (maximalIdeal B) (B ⊗[A] M) n =
+      HilbertSamuel.samuelFunction A (maximalIdeal A) M n := by
+  unfold HilbertSamuel.samuelFunction
+  rw [← hm, ← Ideal.map_pow,
+    (quotientBaseChangeEquiv A B M ((maximalIdeal A) ^ n)).length_eq]
+  exact length_baseChange_of_map_maximalIdeal A B hm _
 
 include hm in
 /-- 極大イデアルを保つ平坦局所拡大では環自身の Samuel 関数が一致する。 -/

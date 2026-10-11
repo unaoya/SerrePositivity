@@ -1,6 +1,9 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.Multiplicity
+public import SerrePositivity.Inputs.CohenNormalization
+public import SerrePositivity.CommutativeAlgebra.FiniteParameters
+public import SerrePositivity.CommutativeAlgebra.RegularNormality
+public import SerrePositivity.CommutativeAlgebra.SeparableBaseChange
 public import Mathlib.Algebra.CharP.Defs
 public import Mathlib.FieldTheory.Perfect
 public import Mathlib.FieldTheory.Separable
@@ -24,8 +27,11 @@ public import Mathlib.RingTheory.WittVector.Basic
 
 となるものがある。どちらの場合も `t₁, …, t_h` は `D` のパラメータ系かつ `A` の正則パラメータ系。
 
-証明は標数 `p` では Cohen–Gabber の正規化定理（Kurano–Shimomoto [17, Thm 1.1]）、混標数では
-Cohen の構造定理（係数環 `W(k) ⊆ D`）による。どちらも深い定理なので主張だけ置く（`sorry`）。
+標数 `p` では `Inputs.cohen_gabber_normalization`、混標数では
+`Inputs.cohen_normalization_mixedCharacteristic` を引用する。引用する存在定理の範囲と
+出典は `Inputs/CohenNormalization.lean` に明記した。標数の二分、有限拡大による次元の一致と
+パラメータ系の移送、分数体の分離性から最小多項式の条件への移送をここで証明する。
+混標数の分離性は標数零から従う。正規性の導出は既存の正則パラメータの入力に依存する。
 
 ## 主張の形と、下流で使う部分
 
@@ -54,7 +60,7 @@ namespace SerrePositivity
 
 namespace Section2
 
-/-- **Lemma 2.2**（正則な正規化基底、`sorry`：Cohen–Gabber と Cohen の構造定理）。 -/
+/-- **Lemma 2.2**（正則な正規化基底）。二つの正規化の引用から論文の条件を導く。 -/
 theorem lemma_2_2 (D : Type u) [CommRing D] [IsLocalRing D] [IsNoetherianRing D] [IsDomain D]
     [IsAdicComplete (maximalIdeal D) D] {h : ℕ} (hdim : ringKrullDim D = h) (hpos : 0 < h)
     (p : ℕ) [Fact p.Prime] [CharP (ResidueField D) p] [PerfectField (ResidueField D)] :
@@ -71,7 +77,44 @@ theorem lemma_2_2 (D : Type u) [CommRing D] [IsLocalRing D] [IsNoetherianRing D]
           (CharZero D ∧ t ⟨0, hpos⟩ = (p : A) ∧
             ∃ e : A ≃+* MvPowerSeries {i : Fin h // (i : ℕ) ≠ 0} (WittVector p (ResidueField D)),
               ∀ (i : Fin h) (hi : (i : ℕ) ≠ 0), e (t i) = MvPowerSeries.X ⟨i, hi⟩)) := by
-  sorry
+  rcases CharP.exists' D with hzero | ⟨q, hq, hchar⟩
+  · let := hzero
+    obtain ⟨A, aRing, aDomain, aRegular, aComplete, aAlg,
+      hinj, hfinite, hres, t, e, ht, hp, he⟩ :=
+      Inputs.cohen_normalization_mixedCharacteristic D hdim hpos p
+    let := hfinite
+    let : IsIntegrallyClosed A := isIntegrallyClosed_of_isRegularLocalRing A
+    let : CharZero A := (algebraMap A D).charZero
+    let : Module.IsTorsionFree A D := Module.isTorsionFree_iff_algebraMap_injective.mpr hinj
+    let : Algebra (FractionRing A) (FractionRing D) :=
+      FractionRing.liftAlgebra A (FractionRing D)
+    let : IsScalarTower A (FractionRing A) (FractionRing D) :=
+      FractionRing.isScalarTower_liftAlgebra A (FractionRing D)
+    have hA : ringKrullDim A = h :=
+      (ringKrullDim_eq_of_integral_of_injective A D hinj).symm.trans hdim
+    have hsop : IsSystemOfParameters A t :=
+      ⟨hA, by rw [ht]; exact (maximalIdeal.isMaximal A).isPrime.radical⟩
+    refine ⟨A, aRing, aRegular, aComplete, aAlg, hinj, hfinite, ?_, hres, hA,
+      t, ht, hsop.map_finite D hinj, Or.inr ⟨hzero, hp, e, he⟩⟩
+    exact (separable_minpoly_iff_fractionRing A D (FractionRing A) (FractionRing D)).mpr
+      inferInstance
+  · let := hq
+    let := hchar
+    have hqp : p = q := (Nat.dvd_prime hq.out).mp
+      (CharP.dvd_of_ringHom (residue D) q p) |>.resolve_left (Fact.out : p.Prime).ne_one
+    subst q
+    obtain ⟨A, aRing, aDomain, aRegular, aComplete, aAlg,
+      hinj, hfinite, hres, ⟨fracAlg, fracTower, hsep⟩, t, e, ht, he⟩ :=
+      Inputs.cohen_gabber_normalization D hdim p
+    let := hfinite
+    let : IsIntegrallyClosed A := isIntegrallyClosed_of_isRegularLocalRing A
+    have hA : ringKrullDim A = h :=
+      (ringKrullDim_eq_of_integral_of_injective A D hinj).symm.trans hdim
+    have hsop : IsSystemOfParameters A t :=
+      ⟨hA, by rw [ht]; exact (maximalIdeal.isMaximal A).isPrime.radical⟩
+    refine ⟨A, aRing, aRegular, aComplete, aAlg, hinj, hfinite, ?_, hres, hA,
+      t, ht, hsop.map_finite D hinj, Or.inl ⟨hchar, e, he⟩⟩
+    exact (separable_minpoly_iff_fractionRing A D (FractionRing A) (FractionRing D)).mpr hsep
 
 end Section2
 

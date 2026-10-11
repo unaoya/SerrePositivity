@@ -27,7 +27,7 @@ Theorem 2.5 の長さ代数 `(C_D, λ_D)` について、有限長 `A` 加群 `V
 取り替えるには `NormalizedLength.restrictToBase` を使う。
 
 3 は `cor_2_6_pos`：(2.5) の `v = 1` で `λ_D(C_D/(t)C_D) = e((t), D) > 0`（Hilbert–Samuel 重複度の
-正値性 `HilbertSamuel.multiplicity_pos`、可換環論の一般論として当面 `sorry`）、`D/(t)D` の組成列を
+正値性 `HilbertSamuel.multiplicity_pos`、多項式性・次元定理から証明済み）、`D/(t)D` の組成列を
 テンソルして `λ_D(C_D/(t)C_D) ≤ ℓ(D/(t)D) · λ_D(C_D/m_D C_D)`。証明の本体は
 `Paper/Section2/Corollary2_6.lean` の `Section2.cor_2_6_residue_pos`。
 -/
@@ -70,7 +70,7 @@ theorem cor_2_6_tor (A D : Type u) [CommRing A] [IsRegularLocalRing A] [CommRing
   exact ⟨this.1, this.2.1⟩
 
 /-- **Corollary 2.6** の 3：`λ_D(C_D / m_D C_D) > 0`。(2.5) の `v = 1` と Hilbert–Samuel 重複度の
-正値性（`HilbertSamuel.multiplicity_pos`、当面 `sorry`）、`D/(t)D` の組成列を `C` でテンソルする
+正値性（`HilbertSamuel.multiplicity_pos`、多項式性・次元定理から証明済み）、`D/(t)D` の組成列を `C` でテンソルする
 右完全性の議論（`Section2.cor_2_6_residue_pos`）による。(2.5) 以外の性質や、完備性・分離性などは
 要らない。 -/
 theorem cor_2_6_pos (A D C : Type u) [CommRing A] [IsLocalRing A] [CommRing D] [IsLocalRing D]

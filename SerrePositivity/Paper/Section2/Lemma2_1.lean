@@ -1,6 +1,7 @@
 module
 
-public import SerrePositivity.IntersectionMultiplicity.Basic
+public import SerrePositivity.Inputs.ResidueFieldExtension
+public import SerrePositivity.IntersectionMultiplicity.BaseChange
 public import Mathlib.FieldTheory.IsAlgClosed.AlgebraicClosure
 public import Mathlib.RingTheory.AdicCompletion.Basic
 public import Mathlib.RingTheory.Flat.Basic
@@ -21,8 +22,9 @@ public import Mathlib.RingTheory.RegularLocalRing.Defs
 したがって加群の次元と有限長が保たれ、`B` が正則なら `B'` も正則、有限 `B` 加群 `M, N` の
 `Tor` の長さ（したがって交点重複度）も保たれる。
 
-証明は Cohen の構造定理（等標数では係数体、混標数では完備 DVR `V[[X]]/I` の表示と DVR の
-剰余体拡大）と局所平坦性判定法による。深い定理なので主張だけ置く（`sorry`）。
+環の存在は `Inputs.exists_complete_flat_local_extension` として引用する。
+商の長さ・正則性・Tor の長さの保存は、平坦局所拡大の一般論からここで証明する。
+正則性の保存は、既存の Hilbert–Samuel の多項式性・次元定理に依存する。
 
 ## 使われ方
 
@@ -40,7 +42,7 @@ namespace SerrePositivity
 
 namespace Section2
 
-/-- **Lemma 2.1**（剰余体の拡大、`sorry`：Cohen の構造定理と局所平坦性判定法）。 -/
+/-- **Lemma 2.1**（剰余体の拡大）。環の存在の引用から保存則を導く。 -/
 theorem lemma_2_1 (B : Type u) [CommRing B] [IsLocalRing B] [IsNoetherianRing B]
     [IsAdicComplete (maximalIdeal B) B] :
     ∃ (B' : Type u) (_ : CommRing B') (_ : IsLocalRing B') (_ : IsNoetherianRing B')
@@ -62,7 +64,19 @@ theorem lemma_2_1 (B : Type u) [CommRing B] [IsLocalRing B] [IsNoetherianRing B]
         [AddCommGroup N] [Module B N] [Module.Finite B N],
         Module.length B (M ⊗[B] N) ≠ ⊤ → ∀ i : ℕ,
           torLength B i M N = torLength B' i (B' ⊗[B] M) (B' ⊗[B] N)) := by
-  sorry
+  obtain ⟨B', bRing, bLocal, bNoetherian, bComplete, bAlg, bLocalHom,
+    hflat, hm, he⟩ := Inputs.exists_complete_flat_local_extension B
+      (AlgebraicClosure (ResidueField B))
+  let := hflat
+  refine ⟨B', bRing, bLocal, bNoetherian, bComplete, bAlg, bLocalHom,
+    hflat, hm, he, ?_, ?_, ?_⟩
+  · intro V _ _ _ a _
+    exact samuelFunction_module_baseChange_of_map_maximalIdeal B B' hm V a
+  · intro hregular
+    let := hregular
+    exact isRegularLocalRing_of_flat_of_map_maximalIdeal B B' hm
+  · intro M N _ _ _ _ _ _ _ i
+    exact (torLength_baseChange_of_map_maximalIdeal B B' hm M N i).symm
 
 end Section2
 
