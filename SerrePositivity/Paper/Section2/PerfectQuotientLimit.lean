@@ -16,7 +16,7 @@ public import SerrePositivity.CommutativeAlgebra.KoszulMultiplicityLimit
 高次 Frobenius Koszul ホモロジーの消滅極限を前提に、商の極限値と
 Hilbert–Samuel 重複度との同定も行う。perfection の高次ホモロジーへの移行は
 `PerfectKoszulLimit.lean` で証明する。消滅極限自体の供給は定理2.5の残作業である。
-正則パラメータと正規化長さの既存の引用入力を使うが、新しい未証明入力はない。
+証明済みの正則パラメータと正規化長さの既存の引用入力を使い、新しい未証明入力はない。
 -/
 
 public section

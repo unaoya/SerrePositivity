@@ -367,7 +367,7 @@ lemma koszulComplex_isZero_homology_of_pos {n : ℕ} (x : Fin n → R) (i : ℤ)
 論文 (3.14) に現れる量で、`A` が正則局所環、`z` がその正則パラメータ系、`T` が `A` 上有限なら
 `χ^A(z; T) = rank_A T`。この等式は `Inputs/RegularLocalRing.lean` の
 `koszulEulerChar_eq_finrank` で、一般の有限自由分解の Euler–Poincaré 公式と
-正則局所環の性質（こちらは明示的な未証明入力）から導き、
+証明済みの正則局所環の性質から導き、
 Lemma 3.5b の通常の長さ側（`Paper/Lemma3_5/Ordinary.lean`）で使う。 -/
 noncomputable def koszulEulerChar (A T : Type u) [CommRing A] [CommRing T] [Algebra A T] {e : ℕ}
     (z : Fin e → A) : ℝ :=

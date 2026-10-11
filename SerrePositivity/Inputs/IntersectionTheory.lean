@@ -10,7 +10,7 @@ public import Mathlib.RingTheory.KrullDimension.Module
 /-!
 # 交点重複度で用いる正則局所環の定理と消滅定理
 
-`regularResolution` は正則パラメータの正則性という未証明入力から証明する。
+`regularResolution` は証明済みの正則パラメータの正則性から導く。
 分解の構成は `HomologicalAlgebra/FiniteFreeResolution.lean` の一般定理を使う。
 Roberts–Gillet–Soulé の消滅定理 `intersectionVanishing` は文献からの引用として
 名前付きの `sorry` 定理に残す。利用先では各定理を明示的に適用する。
@@ -31,7 +31,7 @@ variable (R : Type u) [CommRing R] [IsRegularLocalRing R]
 
 /-- 正則局所環上の有界有限自由分解の存在。極大イデアルの正則生成列を選び、
 一般定理から自然数添字の有限自由分解を構成し、整数添字へ移す。
-この定理自身に `sorry` はなく、正則パラメータの正則性のみを未証明入力として使う。 -/
+正則パラメータの正則性を含めて証明済み。 -/
 theorem regularResolution (M : Type u) [AddCommGroup M] [Module R M] [Module.Finite R M] :
     ∃ F : CochainComplex (ModuleCat.{u} R) ℤ,
       Nonempty (IsResolutionOf F (ModuleCat.of R M)) ∧

@@ -31,7 +31,7 @@ public import Mathlib.RingTheory.WittVector.Basic
 `Inputs.cohen_normalization_mixedCharacteristic` を引用する。引用する存在定理の範囲と
 出典は `Inputs/CohenNormalization.lean` に明記した。標数の二分、有限拡大による次元の一致と
 パラメータ系の移送、分数体の分離性から最小多項式の条件への移送をここで証明する。
-混標数の分離性は標数零から従う。正規性の導出は既存の正則パラメータの入力に依存する。
+混標数の分離性は標数零から従う。正規性の導出は証明済みの正則パラメータから従う。
 
 ## 主張の形と、下流で使う部分
 

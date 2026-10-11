@@ -81,7 +81,7 @@ theorem perfectionApproximation_conductor_root (g : D)
 
 /-- 等標数で完全な剰余体を持つ完備正則局所環の根の塔は、その perfection と同型。
 各段の Frobenius の全射性から、塔の像が基底環の perfection 全体になる。
-単射性には既存の正則パラメータの入力から得る各段の被約性を使う。 -/
+単射性には証明済みの正則パラメータから得る各段の被約性を使う。 -/
 noncomputable def towerEquivPerfection
     (A : Type u) [CommRing A] [IsRegularLocalRing A]
     [IsAdicComplete (IsLocalRing.maximalIdeal A) A] [CharP A p]
@@ -310,7 +310,7 @@ end InitialConductor
 
 /-- 論文の等標数の設定から、perfection 全体に共通の非零分母を構成する。
 正則基底の正規性と剰余体の完全性を証明内で供給し、追加の仮定にはしない。
-基底の正規性は既存の正則パラメータの引用入力から導かれる。 -/
+基底の正規性は証明済みの正則パラメータから導かれる。 -/
 theorem exists_tower_perfection_conductor
     (A : Type u) [CommRing A] [IsRegularLocalRing A]
     [IsAdicComplete (IsLocalRing.maximalIdeal A) A]

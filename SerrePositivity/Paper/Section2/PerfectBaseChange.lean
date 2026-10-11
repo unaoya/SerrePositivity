@@ -15,7 +15,7 @@ public import SerrePositivity.Inputs.RegularLocalRing
 塔の分数体の純非分離性と、根の段の分数体の分離性を示し、
 平坦性と局所化からテンソル積全体の単射性を導く。
 剰余体が同じ完全体である論文の設定では、近似部分代数との同型が得られる。
-正則な各段の被約性は、既存の正則パラメータの入力定理に依存する。
+正則な各段の被約性は、証明済みの正則パラメータの定理から従う。
 -/
 
 public section
@@ -30,7 +30,7 @@ variable (A D : Type u) [CommRing A] [CommRing D] [Algebra A D]
 
 omit [Algebra A D] [IsReduced D] in
 /-- 正則パラメータから作った塔は、単射な基底写像に沿って perfection に埋め込まれる。
-各段の正則性から被約性を得る部分は、既存の正則パラメータの入力定理に依存する。
+各段の正則性から被約性を得る部分は、証明済みの正則パラメータの定理から従う。
 新しい未証明の仮定は導入しない。 -/
 theorem towerToPerfection_injective_of_regular [IsRegularLocalRing A]
     [Algebra A (PerfectClosure D p)]
@@ -176,7 +176,7 @@ noncomputable local instance rootStageAlgebra (n : ℕ) :
 omit [Algebra A (PerfectClosure D p)] in
 /-- 根の段の分数体は、有限段の分数体上分離的。
 両方の根の段を Frobenius 同型で元の環に戻し、生成的分離性を移す。
-各有限段の被約性の証明のみ、既存の正則パラメータの入力定理に依存する。 -/
+各有限段の被約性も、証明済みの正則パラメータの定理から従う。 -/
 theorem rootStage_fractionRing_isSeparable [IsRegularLocalRing A]
     [IsAdicComplete (IsLocalRing.maximalIdeal A) A] [CharP A p]
     [CharP (IsLocalRing.ResidueField A) p] [PerfectRing (IsLocalRing.ResidueField A) p]

@@ -16,8 +16,8 @@ public import Mathlib.RingTheory.Localization.BaseChange
 分数体へ係数拡大した `R[x]` は分数体そのものであり、そのトレースは `x` である。
 したがって `x` は `R` の像に入る。
 
-正則生成列を明示する一般定理には未証明入力がない。正則局所環への適用だけが、
-既存の正則パラメータの正則性という入力を使う。ガロア正規化と §2 の共通分母に用いる。
+正則生成列を明示する一般定理と、正則局所環への適用はともに証明済み。
+正則パラメータの正則性を通じ、ガロア正規化と §2 の共通分母に用いる。
 -/
 
 public section
@@ -71,7 +71,7 @@ theorem isIntegrallyClosed_of_regular_generators
     (K := K) rs hreg hgen (ModuleCat.of R B) f
   exact ⟨r, hr.trans ht⟩
 
-/-- 正則局所環は整閉である。正則パラメータの正則性だけを既存の未証明入力として使い、
+/-- 正則局所環は整閉である。証明済みの正則パラメータの正則性を使い、
 整域性・有限自由分解・トレースを通じた正規性の導出は証明する。 -/
 theorem isIntegrallyClosed_of_isRegularLocalRing
     (R : Type u) [CommRing R] [IsRegularLocalRing R] : IsIntegrallyClosed R := by

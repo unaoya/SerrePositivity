@@ -107,7 +107,7 @@ end
   剰余体が同じ局所環 `T` 上では `T` 加群の `T` 上の長さと `A` 上の長さが一致する
   （`length_eq_of_common_residueField`）。
 - `χ^A(z; T) = rank_A T` は仮定 `hχ` として受け取る。正則局所環では層 3a の入力
-  `koszulEulerChar_eq_finrank`（正則局所環の未証明の性質からの導出）から出る。
+  `koszulEulerChar_eq_finrank`（証明済みの正則パラメータと有限自由分解からの導出）から出る。
 - `χ_A(K(z)) = 1`（`chiOrd_koszulComplex`）。
 -/
 
