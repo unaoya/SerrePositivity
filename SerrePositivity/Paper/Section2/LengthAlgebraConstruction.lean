@@ -3,6 +3,7 @@ module
 public import SerrePositivity.Paper.Section2.TowerLengthOn
 public import SerrePositivity.Paper.Section2.PerfectQuotientLimit
 public import SerrePositivity.Paper.Section2.PerfectKoszulLimit
+public import SerrePositivity.Paper.Section2.MixedLengthAlgebra
 public import SerrePositivity.Inputs.RobertsFrobenius
 public import Mathlib.RingTheory.WittVector.Basic
 public import Mathlib.RingTheory.MvPowerSeries.Basic
@@ -16,8 +17,10 @@ Koszul ホモロジーの有限段の長さ公式、一様な冪ねじれ、有�
 Roberts の消滅定理を名前付きの引用として適用し、perfection 上の高次の長さの消滅と
 商の長さの重複度との同定を導出した。等標数の構成自身には直接の `sorry` はないが、
 Roberts・正則パラメータ・正規化長さ・重複度の引用入力への依存は残る。
-混標数の `sorry` は CLMST の帰結を現在の塔へ移す部分を含む。
-これらは定理2.5の完成を意味しない。仮定をまとめる独自の構造体やクラスは使わない。
+混標数では根の塔を `p` 進完備化し、基底変更した有限代数の perfectoid 化を取る。
+CLMST の引用と冪ねじれの確認・係数制限を組み合わせて、同じ二性質を導く。
+両標数の接続に直接の `sorry` はないが、外部引用そのものの証明は残る。
+仮定をまとめる独自の構造体やクラスは使わない。
 -/
 
 public section
@@ -207,16 +210,15 @@ theorem lengthAlgebra_equalCharacteristic (A D : Type u) [CommRing A] [IsRegular
   exact perfectClosure_length_properties A D hinj hsep hres t hdimA hdimD
     hpos ht p rfl
 
-/-- 混標数版の引用と接続の未完了部分。
-CLMST（arXiv:2209.04046v4）Notation 4.0.1、Cor. 4.0.4、Prop. 4.0.10、4.0.14 の
-帰結を、非完備の塔に係数制限した形。perfectoidization の構成と完備化の比較は未実装。
-基底は Witt 冪級数環で、最初のパラメータが `p` であることを明示する。 -/
-theorem lengthAlgebra_mixedCharacteristic_pending (A D : Type u) [CommRing A] [IsRegularLocalRing A]
+/-- 混標数の長さ代数を、完備化した塔上の perfectoid 化として構成する。
+Witt 冪級数環とパラメータの情報から塔の perfectoid 性を供給し、
+CLMST の引用から証明した二つの長さの性質を適用する。
+普遍対象の存在と文献の性質は名前付き引用に依存し、この接続に直接の `sorry` はない。 -/
+theorem lengthAlgebra_mixedCharacteristic (A D : Type u) [CommRing A] [IsRegularLocalRing A]
     [IsAdicComplete (maximalIdeal A) A]
     [CommRing D] [IsLocalRing D] [IsNoetherianRing D] [IsDomain D]
     [IsAdicComplete (maximalIdeal D) D] [Algebra A D] [Module.Finite A D]
     (hinj : Function.Injective (algebraMap A D))
-    (hsep : ∀ d : D, ((minpoly A d).map (algebraMap A (FractionRing A))).Separable)
     (hres : Function.Surjective ((residue D).comp (algebraMap A D)))
     {h : ℕ} (t : Fin h → A) (hdimA : ringKrullDim A = h) (hdimD : ringKrullDim D = h)
     (hpos : 0 < h) (ht : Ideal.span (Set.range t) = maximalIdeal A)
@@ -236,6 +238,11 @@ theorem lengthAlgebra_mixedCharacteristic_pending (A D : Type u) [CommRing A] [I
           (C ⧸ Ideal.span (Set.range fun j ↦ algebraMap D C (z j))) =
           ENNReal.ofReal
             (HilbertSamuel.multiplicity D (Ideal.span (Set.range z)) D : ℝ)) := by
-  sorry
+  have hperf := Inputs.completedTower_isIntegralPerfectoid
+    A (ResidueField D) p t hpos htp e he
+  refine ⟨MixedPerfectoid A D t p hperf, inferInstance, inferInstance, inferInstance,
+    inferInstance, inferInstance, inferInstance, ?_⟩
+  exact mixedPerfectoid_length_properties A D hinj hres t hdimA hdimD
+    hpos ht hsop p htp e he hperf
 
 end SerrePositivity.Section2

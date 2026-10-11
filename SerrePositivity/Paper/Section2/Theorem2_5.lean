@@ -9,7 +9,7 @@ public import SerrePositivity.Paper.Section2.LengthAlgebraConsequences
 補題2.2の具体的な基底の情報を明示的に受け取る。
 標数別の存在証明は `LengthAlgebraConstruction`、
 パラメータの冪と階数への共通の導出は `LengthAlgebraConsequences` に分離する。
-等標数の構成は Roberts の名前付き引用から導き、混標数の構成は未完了である。
+等標数は Roberts、混標数は Bhatt–Scholze と CLMST の名前付き引用から構成を導く。
 -/
 
 public section
@@ -21,7 +21,7 @@ namespace Section2
 
 /-- 定理2.5。補題2.2の具体的な基底の情報で標数を分け、標数別の構成を呼ぶ。
 冪への拡張と階数公式は証明済みの共通の導出を使う。この定理自体に直接の `sorry` はないが、
-Roberts の引用・混標数の構成・正規化長さ・重複度公式・正則パラメータの入力に依存する。 -/
+Roberts・Bhatt–Scholze・CLMST・正規化長さ・重複度公式・正則パラメータの入力に依存する。 -/
 theorem theorem_2_5 (A D : Type u) [CommRing A] [IsRegularLocalRing A]
     [IsAdicComplete (maximalIdeal A) A]
     [CommRing D] [IsLocalRing D] [IsNoetherianRing D] [IsDomain D]
@@ -73,7 +73,7 @@ theorem theorem_2_5 (A D : Type u) [CommRing A] [IsRegularLocalRing A]
       exact lengthAlgebra_equalCharacteristic A D hinj hsep hres t hdimA hdimD
         hpos ht p
     · let := hzero
-      exact lengthAlgebra_mixedCharacteristic_pending A D hinj hsep hres t hdimA hdimD
+      exact lengthAlgebra_mixedCharacteristic A D hinj hres t hdimA hdimD
         hpos ht hsop p htp e he
   obtain ⟨C, cRing, aAlg, dAlg, towerAlg, adTower, atTower, hzero, hquot⟩ := hex
   refine ⟨C, cRing, aAlg, dAlg, towerAlg, adTower, atTower, ?_, ?_, ?_⟩

@@ -108,6 +108,15 @@ C_D = D_perf = ∪ D^{1/pⁿ}、Λ = A_perf。B_q = Λ ⊗_{A^{1/q}} D^{1/q}（q
 
 ### 混標数の証明の照合
 
+2026-10-11：以下の外部結果を名前付きの `sorry` として実装し、定理2.5に接続した。
+完備化と普遍性による perfectoid 化を定義し、`Inputs/Perfectoidization.lean` と
+`Inputs/PerfectoidTower.lean` に存在・perfectoid 性の引用、`Inputs/CLMST.lean` に
+Cor. 4.0.4、Prop. 4.0.10、Prop. 4.0.14 の必要な特殊化を分けた。
+Cor. 4.0.4 の引用には Notation 4.0.1 の非零元 `g` の存在も含む。
+Prop. 4.0.10 はその証明に従い任意の非零 `g` に対する零の場合で書いた。
+適用条件である一様な冪ねじれと、係数制限による長さの一致は `CompletedTower.lean` で証明し、
+`MixedLengthAlgebra.lean` で両方の長さの結論へ接続した。外部結果自体は未証明である。
+
 C_D = (D ⊗_A A_∞)_perfd。
 
 - **CLMST Notation 4.0.1**：(R, m) を次元 d の混標数 (0, p) の完備局所整域、剰余体 k は完全。x̄ = p, x₂, …, x_d をパラメータ系。A := W(k)[[x₂, …, x_d]] ⊆ R は Cohen の構造定理で module-finite、剰余体は同じ。A_∞ は A_∞^{nc} の p 進完備化で perfectoid。R_perfd^{A_∞} := (R ⊗_A A_∞)_perfd は Bhatt–Scholze Theorem 10.11 により perfectoid（R ⊗_A A_∞ は A_∞ 上有限で有限表示）。0 ≠ g ∈ A を A[1/g] → R[1/g] が有限エタールになるようにとり、(g)_perfd = ker(A_∞ → (A_∞/g)_perfd)。almost mathematics は (g)_perfd に関して。

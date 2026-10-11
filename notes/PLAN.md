@@ -36,7 +36,7 @@
    ユーザーの指示により Serre の等標数正値性を `Inputs.serrePositivity_of_field` として引用した。
    剰余標数零では、非零整数の単元性から `ℚ` 代数構造を構成し、この引用へ接続する。
    `main_statement` 自身の `sorry` は除去した。引用定理への依存は残る。
-3. **§2の長さ代数の具体的構成：進行中。**
+3. **§2の長さ代数の具体的構成：外部引用を前提とする接続は完了。**
    正則基底の正規性を供給して共通分母を構成し、誤差評価用の `h-1` 個の元を
    準素イデアル内で選ぶところを証明した。これらを既存の核・像の長さ評価に適用し、
    正規化した Frobenius 商の長さが perfection の商の正規化長さへ収束することを
@@ -59,14 +59,30 @@
    旧 `perfectClosure_length_properties_pending` は証明済みの接続へ置き換えた。
    等標数の構成は、Roberts と既存の正則パラメータ・正規化長さ・重複度の引用入力に
    依存する形で完成した。定理2.5の等標数分岐にも接続済み。
-   次は混標数の perfectoidization と塔・完備化の比較であり、
-   `lengthAlgebra_mixedCharacteristic_pending` は未完了のまま残る。
+   混標数では `CompletedTower` を実際の `p` 進完備化として定義し、
+   `MixedPerfectoid` を `CompletedTower ⊗[A] D` の perfectoid 化として構成した。
+   perfectoid 性は Fontaine 写像を用いた定義、perfectoid 化は普遍性で指定する。
+   有限・有限表示性と `A`・`D`・塔の作用の両立を確認した。
+   `Inputs/Perfectoidization.lean`・`PerfectoidTower.lean`・`CLMST.lean` の五つの引用から、
+   一様な冪ねじれと係数制限による長さの一致を証明して二性質を導出した。
+   旧 `lengthAlgebra_mixedCharacteristic_pending` は `lengthAlgebra_mixedCharacteristic` に
+   置き換え、定理2.5に接続済み。冪と階数の公式には既存の共通の証明を使う。
 
-ユーザーが明示的に許可した Serre と Roberts の引用を除き、新しい `sorry`・公理・
-結論を仮定する入力束は追加しない。`main_statement` の導出の完成と、
+ユーザーは Serre・Roberts に加え、混標数で必要な外部論文の結果も、出典を明示した
+名前付きの `sorry` として引用することを許可した（2026-10-11）。今回の追加は
+Bhatt–Scholze の存在・普遍性、CLMST の標準塔の perfectoid 性と三つの長さ関連の結果。
+外部引用以外の接続には新しい `sorry`・公理・結論を仮定する入力束を追加しない。
+`main_statement` の導出の完成と、
 引用入力も含めた論文全体の形式化の完成は区別する。
 
-今回の検証（有向極限・Roberts の引用・等標数の構成への接続）：全体の `lake build` は
+今回の検証（混標数の構成と定理2.5への接続）：全体の `lake build` は3699ジョブで成功。
+新規・変更32宣言と主定理・核心定理の計34宣言を公理監査し、7宣言は標準公理のみ、
+27宣言は明示した引用入力に由来する `sorryAx` に依存する。その他の公理はない。
+直接の `sorry` は17箇所から21箇所になった（外部引用を五つ追加し、混標数の未完了箇所を一つ除去）。
+定理2.5の主張は維持し、混標数の構成に残っていた直接の `sorry` は除去した。
+`git diff --check` も通過した。
+
+前回の検証（`f1875a0`、有向極限・Roberts の引用・等標数の構成への接続）：全体の `lake build` は
 3568ジョブで成功。新規・変更47宣言と主定理・核心定理の計49宣言を公理監査し、
 39宣言は標準公理のみ、10宣言は Roberts または既存の引用入力に由来する `sorryAx` に依存する。
 その他の公理はない。Roberts の引用を一つ追加し、等標数構成の一つを除去したため、

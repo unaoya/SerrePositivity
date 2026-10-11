@@ -11,14 +11,14 @@ including the ramified mixed-characteristic case.
 
 ## Status
 
-Incomplete formalization. Theorem 1.1 and the core case in `SerrePositivity/Paper/Statement.lean` are now derived from named inputs; neither statement has a direct `sorry`. Serre's equal-characteristic positivity is explicitly quoted in `Inputs/SerrePositivity.lean`. Other unproved inputs, including the remaining Section 2 constructions, still occur in their dependencies.
+Incomplete formalization. Theorem 1.1 and the core case in `SerrePositivity/Paper/Statement.lean` are now derived from named inputs; neither statement has a direct `sorry`. Serre's equal-characteristic positivity is explicitly quoted in `Inputs/SerrePositivity.lean`. Other unproved inputs, including the external inputs to the Section 2 constructions, still occur in their dependencies.
 
 `SerrePositivity/Paper/Section5/` contains the twisted Euler evaluations, the application of Lemma 3.5, and the final positivity argument. Lemma 5.2 (`firstComparison` in `Paper/Lemma5_2.lean`) takes its rings, finite algebras, ranks, parameters, group action, and length conditions as explicit arguments. The former `CoreData`, `IsPaperData`, and `Inputs.Core` bundles have been removed. `core_of_twistedEuler_pos` combines Lemma 5.2 with positivity of the twisted Euler values. `Section5.core_of_lengthAlgebras` derives these positive values from the supplied length algebras, and `core_of_normalization_bases` supplies the length algebras from the quoted Section 2 construction. `GaloisNormalization.lean` and `Core.lean` now construct the normalization bases, finite Galois extensions and actions from the original core hypotheses. Ranks are written directly as `Module.finrank`.
 
 The reduction handles arbitrary finite modules over regular local rings of positive residue characteristic (`Section5.positivity_of_residueCharP`), without completeness or an algebraically closed residue field. The zero-dimensional boundary, prime-quotient dévissage, and preservation of length, module dimension and intersection multiplicity under flat local extensions preserving the maximal ideal are proved. The Noetherianity of adic completions is proved using a surjection from a finite-variable power series ring; Lemma 2.1 supplies the residue-field extension. In residue characteristic zero, nonzero integers are units, which constructs a rational algebra structure and connects the main theorem to Serre's quoted result. The former `main_statement` gap has moved to that named classical input; the connection itself is proved.
 
 Unproved inputs are explicit theorems, including `isWeaklyRegular_of_span_eq_maximalIdeal`,
-`Inputs.intersectionVanishing`, and `Section2.theorem_2_5`. Their uses occur in proof bodies,
+`Inputs.intersectionVanishing`, and the cited results in `Inputs/CLMST.lean`. Their uses occur in proof bodies,
 so downstream axiom audits expose `sorryAx`; there are no input classes to instantiate.
 Do not introduce structures or classes to package theorem assumptions. State each needed
 hypothesis directly. The former `Setup34`, `IsRegularNormalizationBase`, `LengthAlgebraProps`,
@@ -56,9 +56,15 @@ a named `sorry` (Ma, Theorem 2.4, after Roberts). `perfectClosure_length_propert
 it and replaces the former equal-characteristic pending declaration; Theorem 2.5 uses this
 proved connection. The equal-characteristic construction is complete relative to this and
 the existing regular-parameter, normalized-length and multiplicity inputs.
-The mixed-characteristic construction remains pending. The direct `sorry` count stays at 17:
-one quoted general theorem replaces the gap in the concrete equal-characteristic construction.
-The cited descent results remain separate work.
+The mixed-characteristic construction is also connected to Theorem 2.5. `CompletedTower.lean`
+defines the actual p-adic completion and proves scalar-restriction compatibility of lengths.
+`MixedPerfectoid.lean` constructs the universal perfectoidization of the finite, finitely presented
+base change and supplies compatible actions. `MixedLengthAlgebra.lean` checks uniform power
+torsion, applies the quoted almost-vanishing and length results, and transports both conclusions
+to `towerLengthOn`. Five named external inputs cite Bhatt–Scholze and CLMST; the former
+`lengthAlgebra_mixedCharacteristic_pending` has been removed. Both characteristic branches
+are now proved relative to named inputs. The direct `sorry` count is 21 (five quotations added,
+one construction gap removed). The cited descent results remain separate work.
 
 The Lean sources are organized as follows (2026-10-11):
 
