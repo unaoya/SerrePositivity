@@ -1,8 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.HilbertSamuelBasic
-public import SerrePositivity.CommutativeAlgebra.HilbertSeries
-public import SerrePositivity.CommutativeAlgebra.ReesPresentation
+public import SerrePositivity.CommutativeAlgebra.HilbertSamuelPolynomial
 
 /-!
 # Hilbert–Samuel 多項式と重複度
@@ -10,9 +9,10 @@ public import SerrePositivity.CommutativeAlgebra.ReesPresentation
 定義と基本性質は `HilbertSamuelBasic.lean`、随伴次数加群と Rees 加群の
 構成は `AssociatedGraded.lean`・`ReesModule.lean`・`ReesPresentation.lean` に置く。
 
-`HilbertSeries.lean` は Hilbert 級数の有理型表示から Samuel 多項式を構成する。
-一般の多項式性に残る未証明箇所は、その有理型表示を有限生成性から得る
-Hilbert–Serre の部分である。次元定理も未証明として残る。
+`HilbertSerre.lean` の数値版を実際の随伴次数加群へ適用し、
+`HilbertSamuelPolynomial.lean` で有理型の Hilbert 級数を得る。
+`HilbertSeries.lean` の多項式の構成へ接続して、一般の多項式性を証明する。
+次元定理は未証明として残る。
 
 重複度のイデアル冪の公式は多項式性と定義から、正値性は多項式性と次元定理から証明する。
 -/
@@ -41,7 +41,8 @@ theorem exists_isSamuelPoly (I : Ideal D) (hI : I.radical = maximalIdeal D)
     {s : ℕ} (x : Fin s → D) (hx : I = Ideal.span (Set.range x))
     (M : Type u) [AddCommGroup M] [Module D M] [Module.Finite D M] :
     ∃ P : ℚ[X], IsSamuelPoly D I M P ∧ P.natDegree ≤ s := by
-  sorry
+  obtain ⟨Q, hQ⟩ := exists_rational_hilbertSeries D I M hI x hx.symm
+  exact exists_isSamuelPoly_of_hilbertSeries D I M hI s Q hQ
 
 /-- イデアル自体の冪について `e(I^v, M) = v^(dim M) e(I, M)`。
 多項式性と定義から従い、次元定理は不要。

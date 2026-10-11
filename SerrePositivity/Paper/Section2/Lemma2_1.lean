@@ -24,7 +24,7 @@ public import Mathlib.RingTheory.RegularLocalRing.Defs
 
 環の存在は `Inputs.exists_complete_flat_local_extension` として引用する。
 商の長さ・正則性・Tor の長さの保存は、平坦局所拡大の一般論からここで証明する。
-正則性の保存は、既存の Hilbert–Samuel の多項式性・次元定理に依存する。
+正則性の保存は、証明済みの Hilbert–Samuel の多項式性と、未証明の次元定理に依存する。
 
 ## 使われ方
 

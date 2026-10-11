@@ -9,7 +9,8 @@ public import Mathlib.RingTheory.Polynomial.HilbertPoly
 `X/(1-X)` 倍となることを証明する。
 Hilbert 級数の有理型表示 `Q(X)/(1-X)^s` が得られれば、次数 s 以下の
 Samuel 多項式を Mathlib の `Polynomial.hilbertPoly` から構成する。
-有理型表示の存在自体（Hilbert–Serre）は、このファイルの前提である。
+有理型表示の存在は `HilbertSamuelPolynomial.lean` で証明する。
+このファイルは有理型表示から多項式への接続を扱う。
 -/
 
 @[expose] public noncomputable section
