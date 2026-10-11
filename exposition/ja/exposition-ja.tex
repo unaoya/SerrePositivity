@@ -364,7 +364,7 @@ $\lambda$-平坦性と有限ランク（系~\ref{cor:allv}）、$\lambda$-CM 性
 \bottomrule
 \end{tabularx}
 \end{center}
-共通定理は上の三つの条件を別々に受け取る。有限性だけで Euler 評価を作り、消滅と値は必要な結論にだけ加えるためである。
+共通定理は上の三つの条件を別々に受け取る。有限性だけで Euler 評価を作り、消滅と値は必要な結論にだけ加えるためである。§\ref{sec:length-tower} では塔と整合する長さを定義し、有限加群でない対象を有限長加群の列で近似できること（定理~\ref{thm:approx-exist}、Lemma 5.4 の一般形）を示す。
 
 \subsection{長さ関数と長さ付き代数}\label{sec:length-def}
 
@@ -519,7 +519,7 @@ $\m_D^N\subseteq\m_A D$ となる $N$ があるので、$\m_A C$-冪ねじれと
 
 \subsection{塔と整合する長さ}\label{sec:length-tower}
 
-§\ref{sec:asymp-approx} の有限近似列の存在に使う設定を述べる。具体例は §\ref{sec:construction} の塔と Faltings の正規化長さ $\lambda_\infty$ である。
+有限加群でない対象を有限長加群の列で近似するための設定と、その存在定理（定理~\ref{thm:approx-exist}、Lemma 5.4 の一般形）を述べる。具体例は §\ref{sec:construction} の塔と Faltings の正規化長さ $\lambda_\infty$ である。近似列からランク無視の圏の対象を作るのは §\ref{sec:asymp-approx} である。
 
 \begin{definition}[塔]\label{def:B-tower}
 可換環 $A$ 上の\textbf{塔}とは、$A$ 代数の増大列 $A=A_0\subseteq A_1\subseteq\cdots$ で、各 $A_j$ が $A$ 上階数 $s_j$ の有限自由加群であり、遷移写像 $A_j\to A_{j'}$ が平坦なものをいう。$\Lambda=\bigcup_j A_j$ と書く。
@@ -536,6 +536,28 @@ $A$ をネーター局所環、$(A_j)$ をその上の塔とする。$\m_A\Lambd
 長さ付き代数 $(C,\lambda_C)$ が塔と整合するとは、$\Lambda$ 代数の構造 $\Lambda\to C$ があって、$\lambda_C$ が塔と整合する長さの係数制限であることをいう。
 \end{definition}
 §\ref{sec:construction} では、具体的な塔の上で $\lambda_\infty$ を構成し、これらの性質を示す（命題~\ref{prop:tower-compatible}）。(i)、(ii)、(iv) は証明済み、(iii) と加法性は引用である。
+
+この設定から、有限加群でない対象を有限長加群の列で近似できる。近似列の定義は、§\ref{sec:asymp-approx} でランク無視の圏の対象を作るときにも使う。
+
+\begin{definition}[有限近似列]\label{def:approx}
+$B$ をネーター局所環、$k$ をその剰余体、$\mathcal{L}$ を有限生成 $B$ 加群の族とする。正の整数の列 $s_n\to\infty$ と有限長 $B$ 加群の列 $(M_n)$ が\textbf{有限近似列}であるとは、ある $a$ で全ての $M_n$ が $\m_B^a$ で消され、全ての $L\in\mathcal{L}\cup\{k\}$ と $i\ge0$ について
+\[
+ \tau_i(L)=\lim_{n}\frac{\len_B\Tor_i^B(M_n,L)}{s_n}
+\]
+が有限な値として存在し、$\lim_n\len_B(M_n)/s_n$ も存在することをいう。
+\end{definition}
+
+\begin{theorem}[有限近似列の存在、Lemma 5.4 の一般形]\label{thm:approx-exist}
+$\lambda$ を $A$ 上の塔と整合する長さ（定義~\ref{def:B-towerlen}）とし、加法的であるとする。$T$ を $A$ 上有限な局所代数で $\m_A^aT=0$ となるもの、$B$ を局所環で $B\to T$ と $A\to T$ がともに剰余体に全射なものとする。$S=\Lambda\otimes_AT$ 加群 $U$ が $\lambda(U)<\infty$ をみたし、$B$ の作用が $S$ を通るとする。このとき有限近似列 $(M_n)$ で、$T$ を消す $B$ のイデアルは全ての $M_n$ を消し、
+\[
+ \lim_n\frac{\len_B(M_n)}{s_n}=\lambda(U),\qquad \tau_i(L)=\lambda\Tor_i^B(U,L)\quad(L\in\mathcal{L})
+\]
+となるものがある。
+\end{theorem}
+\begin{proof}
+上限の性質から $U$ を有限生成部分加群で近似し、有限生成加群での一致から、核と余核の $\lambda$ が小さい有限表示加群 $P_\varepsilon\to U$ をとる。段への降下で $P_\varepsilon$ をある段 $S_j=A_j\otimes_AT$ 上の有限表示加群 $V$ の係数拡大として表す。$S$ は $S_j$ 上平坦なので、Tor は係数拡大と両立する。有限段の公式から $V$ の長さと Tor の長さは $s_j$ で割った値になる。$L$ の有限自由分解の階数で核と余核の寄与を抑え、$\varepsilon\to0$ と $j\to\infty$ の対角線をとる。
+\end{proof}
+\lean{\ld{Section2.exists_tower_approximation_B}（一般部分）と \ld{Section5.lemma_5_4}（§\ref{sec:core} の形）。Lean では具体的な塔 \ld{Tower} と $\lambda_\infty$（\ld{towerLength}）の上で述べており、定義~\ref{def:B-towerlen} の抽象的な設定にはまだ書き直していない。証明が使うのは上の四つの性質と加法性だけである。}
 
 %======================================================================
 \section{perfect 複体での評価}\label{sec:perfect}\label{sec:check-perfect}
@@ -760,37 +782,36 @@ $H_0(P\otimes C) = C^{\oplus\beta_0}/\operatorname{im}(d_1\otimes C)$ は極小�
 $(C,\lambda)$ が $\lambda$-平坦で有限ランクなら、§\ref{sec:length-koszul} により Koszul 有限性、正次数の Koszul ホモロジーの長さ零、$e_\lambda(z;C)=r$ がすべて得られる。したがって、この節の比較・消滅・下界は、Koszul 条件を個別に仮定し直さずに適用できる。$\lambda$-CM 代数についても §\ref{sec:length-cm} を通して同じである。
 \lean{\ld{LengthAlgebra.FlatRealization} の \ld{perfectEuler_conjSum_eq_of_flat}、\ld{lambdaHomology_projective_vanishing_of_flat}、\ld{perfectEuler_minimal_lower_bound_of_flat}（基底の Koszul 分解と降下を明示した形で証明済み）。}
 
-\subsection{パラメータ商}\label{sec:param}
+\subsection{パラメータ商}\label{sec:param}\label{sec:planB-param}
 
-§\ref{sec:core} の置き換え 2 の準備として、$C_D$ を有限加群の代わりに使えるようにする。この小節は §\ref{sec:perfect-vanishing} の消滅を、$(A,z)$ の代わりに $(R,x)$ で使ったものである。$D$ のパラメータ系 $x$ で割った商 $U=C/xC$ は、$\lambda$ の目では $B=R/(x)$ 上の射影次元が低い加群のように振る舞う。この節の補題は、$\lambda$-CM 性（§\ref{sec:length-cm}）と反復錐の消滅（補題~\ref{lem:B-nit}）の適用である。
+§\ref{sec:core} の置き換え 2 の準備として、$C_D$ を有限加群の代わりに使えるようにする。正則列 $x$ で割った商 $U=C/xC$ は、$\lambda$ の目では $B=R/(x)$ 上の射影次元が低い加群のように振る舞う。この小節の二つの補題は、$x$ の Koszul ホモロジーの長さ零を入力にとる一般論である。後半は §\ref{sec:perfect-vanishing} の消滅を $(A,z)$ の代わりに $(R,x)$ で使ったものにあたる。$\lambda$-CM 性からこの入力を供給して論文の Lemma 5.3 を得るのは §\ref{sec:paper-param} である。
 
-\begin{lemma}[$\lambda$ 版の Auslander--Buchsbaum]\label{lem:lambdaAB}
-$R$ を次元 $d$ の正則局所環、$R\to D$ を有限な局所準同型（$D$ は次元 $h$ のネーター局所環）、$(C,\lambda)$ を $D$ 上の $\lambda$-CM 代数とする。$x_1,\dots,x_h\in R$ を $R$ 正則列で像が $D$ のパラメータ系になるものとし、$B = R/(x)$ とおく。このとき有限生成 $B$ 加群 $L$ について
+\begin{lemma}[Tor の長さの一致]\label{lem:torAgree}
+$R$ をネーター環、$x=(x_1,\dots,x_h)$ を $R$ 正則列、$B=R/(x)$ とする。$C$ を $R$ 代数、$\lambda$ を $J$-冪ねじれ $C$ 加群の上の長さ関数とし、$J$ は有限生成で $\sqrt{J}=\sqrt{(x)C}$ とする。$U=C/xC$ について
 \[
-  \lambda\Tor_i^R(C,L) = \lambda\Tor_i^B(C/xC, L), \qquad\text{これは } i > d-h \text{ で } 0.
+ \lambda H_q(x;C)=0\quad(q>0),\qquad \lambda(U)<\infty
 \]
-\end{lemma}
-\begin{proof}
-まず $K(x;R)$ が $B$ の自由分解であることと、正次数の $H_q(x;C)$ の長さが零であることから、有限表示を用いた次数移動で二つの Tor の長さの一致と有限性を示す（§\ref{sec:planB-param}）。
-
-消滅は、補題~\ref{lem:nit} を $(A,z,T)=(R,x,R)$ に当てはめたものである。$L$ の $R$ 上の長さ $d$ 以下の有限自由分解 $P$ をとる。$x_jL=0$ なので $P$ のホモロジーの台は $V((x))$ に入り、$P\in\Perf_{(x)}(R)$ である。$x$ の像は $D$ のパラメータ系なので、$\lambda$-CM 性から全ての $x^v$ について正次数の Koszul ホモロジーの長さは零になる。列の長さ $e=h$、$m=d$ として補題~\ref{lem:nit} を使うと、$\lambda\Tor_i^R(C,L)=\lambda H_i(P\otimes_R C)=0$（$i>d-h$）を得る。
-\end{proof}
-$B$ は次元 $d-h$ の完全交叉局所環だが、一般には正則ではない。次数の上界は $B$ の大域次元ではなく、正則環 $R$ 上の分解と Koszul 消滅から得る。古典的には、有限 CM $R$ 加群 $M$ の射影次元を $d-\dim M$ とする Auslander--Buchsbaum の公式に対応する。
-\lean{\ld{ParamQuot.torClaim}、\ld{ParamQuot.len_torAlg_eq_zero}（正則列・Koszul 消滅・有限自由分解などを明示した形で証明済み）。$\lambda$-CM 性から全ての冪の Koszul 消滅と有限性を得る部分は \ld{LengthAlgebra.CohenMacaulay} の \ld{koszulAcyclic_of_cm}、\ld{koszulFinite_of_cm}（証明済み）。両者を $\lambda$-CM 性を仮定とする一つの定理にまとめたものは置いていない。}
-
-\subsubsection{長さの一致と次数の上界}\label{sec:planB-param}
-
-本文の補題~\ref{lem:lambdaAB} は二つに分ける。$R$ をネーター環、$x$ を $R$ 正則列、$B=R/(x)$、$U=C/xC$ とする。$J$ のある冪が $(x)C$ に入り、$\lambda H_q(x;C)=0$（$q>0$）、$\lambda(U)<\infty$ とする。このとき有限生成 $B$ 加群 $L$ について
+なら、有限生成 $B$ 加群 $L$ について
 \[
  \lambda\Tor_i^R(C,L)=\lambda\Tor_i^B(U,L)<\infty.
 \]
-実装は有限表示 $0\to L'\to B^a\to L\to0$ を使う次数移動による。$B^a$ に対する高次 Tor の長さ零を Koszul 分解から得て、二つの長完全列を比較する。零次は $C$ 線形なテンソル積の同型で同定し、次数に関する帰納法で等式と有限性を示す。この証明の結論は長さの一致であり、二つの Tor を長さの商で同定する自然同型の構成までは主張しない。
+\end{lemma}
+\begin{proof}
+$K(x;R)$ は $B$ の自由分解なので $\Tor_i^R(C,B)=H_i(x;C)$ であり、$i>0$ で長さ零、$i=0$ で $U$ である。有限表示 $0\to L'\to B^a\to L\to0$ をとり、$B^a$ に対する高次 Tor の長さ零を使って二つの Tor の長完全列を比較する。零次は $C$ 線形なテンソル積の同型 $C\otimes_RL\cong U\otimes_BL$ で同定し、次数に関する帰納法で等式と有限性を示す。結論は長さの一致であり、二つの Tor を長さの商で同定する自然同型の構成までは主張しない。
+\end{proof}
 \lean{\ld{IntersectionMultiplicity.ParameterQuotientTor} の \ld{ParamQuot.torClaim}（証明済み）。}
 
-次数の上界は、補題~\ref{lem:nit} を $(R,x)$ に当てはめたものである。入力は、列 $x$ の長さ $h$、全ての $x^v$ について正次数の Koszul ホモロジーの長さ零、$L$ の $R$ 上の長さ $d$ 以下の有限自由分解の三つである。分解上の $x_j$ の作用は $x_jL=0$ から零ホモトピックになり、補題~\ref{lem:nit} の 台の条件と Koszul 振幅 $[0,d]$ の条件がそろう。したがって $i>d-h$ では $\lambda\Tor_i^R(C,L)=0$ となる。$R$ が次元 $d$ の正則局所環で $L$ が有限生成なら、必要な分解の長さの上界が得られる。
-\lean{\ld{ParamQuot.len_torAlg_eq_zero} は、$C\otimes_R P$ に \ld{LengthAlgebra.lambdaHomology_projective_vanishing}（補題~\ref{lem:nit}）を適用して証明している。}
-
-$R$ が正則で $x$ が正則列でも、$B$ は一般には正則局所環ではない。例えば $k[[u,v]]/(u^2)$ がそうである。本文の補題~\ref{lem:lambdaAB} と §\ref{sec:core} でもこの議論を使う。消滅は $B$ の大域次元ではなく $R$ 上の分解の長さから得る。
+\begin{lemma}[$\lambda$ 版の Auslander--Buchsbaum]\label{lem:lambdaAB}
+補題~\ref{lem:torAgree} の設定で、さらに $R$ を次元 $d$ の正則局所環とし、全ての $v\ge1$ と $q>0$ で $\lambda H_q(x^v;C)=0$ とする。このとき有限生成 $B$ 加群 $L$ について
+\[
+  \lambda\Tor_i^R(C,L) = \lambda\Tor_i^B(U, L), \qquad\text{これは } i > d-h \text{ で } 0.
+\]
+\end{lemma}
+\begin{proof}
+等式は補題~\ref{lem:torAgree} である。消滅は、補題~\ref{lem:nit} を $(A,z,T)=(R,x,R)$ に当てはめたものである。$L$ の $R$ 上の長さ $d$ 以下の有限自由分解 $P$ をとる。$x_jL=0$ なので $P$ のホモロジーの台は $V((x))$ に入り、$P\in\Perf_{(x)}(R)$ である。列の長さ $e=h$、$m=d$ として補題~\ref{lem:nit} を使うと、$\lambda\Tor_i^R(C,L)=\lambda H_i(P\otimes_R C)=0$（$i>d-h$）を得る。
+\end{proof}
+$B$ は次元 $d-h$ の完全交叉局所環だが、一般には正則ではない（例えば $k[[u,v]]/(u^2)$）。次数の上界は $B$ の大域次元ではなく、正則環 $R$ 上の分解の長さと Koszul 消滅から得る。古典的には、有限 CM $R$ 加群 $M$ の射影次元を $d-\dim M$ とする Auslander--Buchsbaum の公式に対応する。
+\lean{消滅は \ld{ParamQuot.len_torAlg_eq_zero}。$C\otimes_RP$ に \ld{LengthAlgebra.lambdaHomology_projective_vanishing}（補題~\ref{lem:nit}）を適用して証明している。等式と消滅をまとめた形は \ld{Section5.lemma_5_3}（証明済み）。}
 
 %======================================================================
 \section{ランク無視の圏での評価}\label{sec:asymp}\label{sec:check-rank}
@@ -809,7 +830,7 @@ Euler 評価（命題~\ref{prop:B-euler}） & 共通の台の指数と長さ $O(
 \bottomrule
 \end{tabularx}
 \end{center}
-§\ref{sec:asymp-approx} では、有限加群でない対象を有限長加群の列で近似し、ランク無視の圏の対象を作る。§\ref{sec:asymp-flat} は $\lambda$-平坦な代数での適用である。
+§\ref{sec:asymp-approx} では、有限近似列（定義~\ref{def:approx}）からランク無視の圏の対象を作る。§\ref{sec:asymp-flat} は $\lambda$-平坦な代数での適用である。
 
 設定は §\ref{sec:perfect} と同じとする。原論文の適用では $A$ の優秀性も仮定するが、以下の構成自体は優秀性も完備性も使わない。
 
@@ -953,27 +974,7 @@ $m=e$ では第零次だけが残る。各段の極小性は
 
 \subsection{有限近似列}\label{sec:asymp-approx}
 
-有限加群でない対象 $U$ を、有限長加群の列で近似する。近似列から、ランク無視の圏の対象とその評価が得られる。
-
-\begin{definition}[有限近似列]\label{def:approx}
-$B$ をネーター局所環、$k$ をその剰余体、$\mathcal{L}$ を有限生成 $B$ 加群の族とする。正の整数の列 $s_n\to\infty$ と有限長 $B$ 加群の列 $(M_n)$ が\textbf{有限近似列}であるとは、ある $a$ で全ての $M_n$ が $\m_B^a$ で消され、全ての $L\in\mathcal{L}\cup\{k\}$ と $i\ge0$ について
-\[
- \tau_i(L)=\lim_{n}\frac{\len_B\Tor_i^B(M_n,L)}{s_n}
-\]
-が有限な値として存在し、$\lim_n\len_B(M_n)/s_n$ も存在することをいう。
-\end{definition}
-
-\begin{theorem}[有限近似列の存在、Lemma 5.4 の一般形]\label{thm:approx-exist}
-$\lambda$ を $A$ 上の塔と整合する長さ（定義~\ref{def:B-towerlen}）とし、加法的であるとする。$T$ を $A$ 上有限な局所代数で $\m_A^aT=0$ となるもの、$B$ を局所環で $B\to T$ と $A\to T$ がともに剰余体に全射なものとする。$S=\Lambda\otimes_AT$ 加群 $U$ が $\lambda(U)<\infty$ をみたし、$B$ の作用が $S$ を通るとする。このとき有限近似列 $(M_n)$ で、$T$ を消す $B$ のイデアルは全ての $M_n$ を消し、
-\[
- \lim_n\frac{\len_B(M_n)}{s_n}=\lambda(U),\qquad \tau_i(L)=\lambda\Tor_i^B(U,L)\quad(L\in\mathcal{L})
-\]
-となるものがある。
-\end{theorem}
-\begin{proof}
-上限の性質から $U$ を有限生成部分加群で近似し、有限生成加群での一致から、核と余核の $\lambda$ が小さい有限表示加群 $P_\varepsilon\to U$ をとる。段への降下で $P_\varepsilon$ をある段 $S_j=A_j\otimes_AT$ 上の有限表示加群 $V$ の係数拡大として表す。$S$ は $S_j$ 上平坦なので、Tor は係数拡大と両立する。有限段の公式から $V$ の長さと Tor の長さは $s_j$ で割った値になる。$L$ の有限自由分解の階数で核と余核の寄与を抑え、$\varepsilon\to0$ と $j\to\infty$ の対角線をとる。
-\end{proof}
-\lean{\ld{Section2.exists_tower_approximation_B}（一般部分）と \ld{Section5.lemma_5_4}（§\ref{sec:core} の形）。Lean では具体的な塔 \ld{Tower} と $\lambda_\infty$（\ld{towerLength}）の上で述べており、定義~\ref{def:B-towerlen} の抽象的な設定にはまだ書き直していない。証明が使うのは上の四つの性質と加法性だけである。}
+定義~\ref{def:approx} の有限近似列から、ランク無視の圏の対象とその評価を得る。近似列の存在は定理~\ref{thm:approx-exist}（§\ref{sec:length-tower}）で示した。
 
 \begin{proposition}[有限近似列から得る対象]\label{prop:approx-object}
 $(M_n)$ を局所環 $B$ 上の有限近似列とし、ある $l$ で $\tau_i(k)=0$（$i>l$）とする。$M_n$ の極小自由分解を $l$ 次で切り詰めた自由複体の列を $F=(F_n)$ とする。
@@ -1004,7 +1005,7 @@ $(M_n)$ を局所環 $B$ 上の有限近似列とし、ある $l$ で $\tau_i(k)
 \midrule
 §\ref{sec:perfect-35} Lemma 3.5 & 定理~\ref{thm:C-norm}（比較） & 置き換え 1 \\
 §\ref{sec:asymp-47} Theorem 4.7 & 定理~\ref{thm:asymp-norm}（比較） & 置き換え 2 \\
-§\ref{sec:paper-param} Lemma 5.3 & 補題~\ref{lem:lambdaAB}（消滅による次数の上界） & 有限近似の準備 \\
+§\ref{sec:paper-param} Lemma 5.3 & 補題~\ref{lem:torAgree}、\ref{lem:lambdaAB}（長さの一致と次数の上界） & 有限近似の準備 \\
 §\ref{sec:paper-pos} Lemma 5.6 & 系~\ref{cor:nitasymp}（消滅と下界） & 正値性 \\
 \bottomrule
 \end{tabularx}
@@ -1016,7 +1017,20 @@ $(M_n)$ を局所環 $B$ 上の有限近似列とし、ある $l$ で $\tau_i(k)
   \item $(C,\lambda)$ は $\lambda$-平坦でランク $r$ の長さ付き $A$ 代数で、$C$ は $T$ 代数、$A\to T\to C$ は可換（§\ref{sec:length-koszul}）。
   \item 共役和については、$A$ の剰余標数が $p>0$、有限群 $G$ が $T$ に $A$ 上で作用して幾何ファイバーに推移的、$\Spec T\to\Spec A$ は全射。
 \end{itemize}
-比較定理の入力のうち、(a) は二つの Koszul Euler 特性がともに $r$ であることから、(b) は有理 K 理論の降下（定理~\ref{thm:descent}、引用）から得る。§\ref{sec:paper-param}、§\ref{sec:paper-pos} の設定はそれぞれの命題の中で述べる。いずれも長さ付き代数の性質（$\lambda$-平坦性、$\lambda$-CM 性、非自明性）は仮定として受け取り、それをみたす代数の構成は §\ref{sec:construction} で行う。
+比較定理の入力のうち、(a) は二つの Koszul Euler 特性がともに $r$ であることから、(b) は有理 K 理論の降下（定理~\ref{thm:descent}、引用）から得る。正規化側の $e_\lambda(z;C)=r$ は系~\ref{cor:allv} で、普通の側は次の補題である。
+
+\begin{lemma}[Koszul Euler 特性の階数公式]\label{lem:koszulrank}
+$A$ を次元 $e$ の正則局所環、$z$ を正則パラメータ系、$T$ を $A$ 上有限な局所代数で剰余体が $A$ と同じものとする。このとき
+\[
+ e_{\len_T}(z;T)=\sum_j(-1)^j\len_T H_j(z;T)=\rank_A T.
+\]
+\end{lemma}
+\begin{proof}
+$K(z)$ は $k$ の自由分解なので $H_j(z;T)=\Tor_j^A(k,T)$ である。$T$ の $A$ 上の有限自由分解をとり、$k$ とテンソルして Euler 特性を二通りに数えると、交代階数 $\rank_AT$ になる。剰余体が同じなので $T$ 上と $A$ 上の長さは一致する。
+\end{proof}
+\lean{\ld{Inputs.koszulEulerChar_eq_finrank}。一般の Euler--Poincaré 公式から導出され、正則パラメータが正則列であることの引用に依存する。}
+
+§\ref{sec:paper-param}、§\ref{sec:paper-pos} の設定はそれぞれの命題の中で述べる。いずれも長さ付き代数の性質（$\lambda$-平坦性、$\lambda$-CM 性、非自明性）は仮定として受け取り、それをみたす代数の構成は §\ref{sec:construction} で行う。
 
 \subsection{Lemma 3.5}\label{sec:perfect-35}
 
@@ -1029,7 +1043,7 @@ $Q\in\mathcal{K}_A$ について
 \]
 \end{proposition}
 \begin{proof}
-命題~\ref{prop:C-base} の共通公式 $\chi_C(Q)=e_\lambda(z;C)\chi_A(Q)$ を二つの評価に適用する。普通の側では Koszul Euler 特性の階数公式により $e_{\len_T}(z;T)=r$、正規化側では系~\ref{cor:allv} により $e_\lambda(z;C)=r$ である。二段階の係数変更 $A\to T\to C$ と直接の $A\to C$ は自然に同型なので結論する。
+命題~\ref{prop:C-base} の共通公式 $\chi_C(Q)=e_\lambda(z;C)\chi_A(Q)$ を二つの評価に適用する。普通の側では補題~\ref{lem:koszulrank} により $e_{\len_T}(z;T)=r$、正規化側では系~\ref{cor:allv} により $e_\lambda(z;C)=r$ である。二段階の係数変更 $A\to T\to C$ と直接の $A\to C$ は自然に同型なので結論する。
 \end{proof}
 \lean{\ld{Paper.lemma_3_5b}、生成は \ld{K0.exists_eq_zsmul_koszul}、\ld{K0.hom_ext_koszul}（引用を除いて証明済み。\ld{lemma_3_5b_ord_of_koszul}、\ld{lemma_3_5b_lam_of_koszul} は引用なし）。}
 
@@ -1045,6 +1059,14 @@ $A$ を有限次元ネーター $\Z_{(p)}$ 代数、$J\ni p$、$H$ を連結な 
 証明の流れ（未検証）：$J$ で台をつけた有理 K 理論は truncating になり（Goodwillie）、cdh 降下をもつ（Land--Tamme）。有限平坦被覆では転送で降下し、爆発による平坦化で一般の有限全射に延ばし、切断の $G$ 移動で不変部分を同定する。
 \lean{\ld{Inputs.theorem_3_1_K0}（$H = A$ の場合のみ、引用）。}
 
+\begin{corollary}[降下の $K_0$ での形]\label{cor:descent-K0}
+定理~\ref{thm:descent} の仮定のもとで、$G$ 不変な $y\in K_0^J(H\otimes^L_AT)$ には、正の整数 $n$ と $x\in K_0^J(H)$ があって $ny$ は $x$ の像に等しい。これは命題~\ref{prop:B-compare} の (b) である。
+\end{corollary}
+\begin{proof}
+有理化した写像が不変部分へ全射なので、$y\otimes1$ の原像 $x'\otimes(1/m)$ をとる。$my-f(x')$ は有理化すると零なので捩れであり、その位数を掛けて分母と捩れを払う。
+\end{proof}
+\lean{$H=A$ の場合は \ld{Inputs.theorem_3_1_K0}、§\ref{sec:asymp} の $H$（補題~\ref{lem:dga}）の場合は \ld{Section4.supportedRankK0_descent}。いずれもこの整数倍の形で引用している。}
+
 \begin{proposition}\orig{Lemma 3.5c}\label{prop:35c}\label{prop:check-perfect-comparison}
 さらに $A$ の剰余標数が $p$、有限群 $G$ が $T$ に $A$ 上で作用して幾何ファイバーに推移的、$\Spec T\to\Spec A$ が全射とする。$P\in\mathcal{K}_T$ と、$g$ でひねった $P^g = P\otimes_{T,g} T$ について
 \[
@@ -1052,7 +1074,7 @@ $A$ を有限次元ネーター $\Z_{(p)}$ 代数、$J\ni p$、$H$ を連結な 
 \]
 \end{proposition}
 \begin{proof}
-定理~\ref{thm:C-norm} を $(C_1,\lambda_1)=(T,\len_T)$、$(C_2,\lambda_2)=(C,\lambda)$ に適用する。$G$ の $K_0(\mathcal{K}_T)$ への作用はひねり $P\mapsto P^g$ による。二つの Koszul Euler 特性はともに $r$ である（命題~\ref{prop:35b} の証明）。降下は、剰余標数 $p$、推移性、全射性を仮定として定理~\ref{thm:descent} を $H=A$ に使って得る。
+定理~\ref{thm:C-norm} を $(C_1,\lambda_1)=(T,\len_T)$、$(C_2,\lambda_2)=(C,\lambda)$ に適用する。$G$ の $K_0(\mathcal{K}_T)$ への作用はひねり $P\mapsto P^g$ による。二つの Koszul Euler 特性はともに $r$ である（命題~\ref{prop:35b} の証明）。降下（命題~\ref{prop:B-compare} の (b)）は、剰余標数 $p$、推移性、全射性のもとで系~\ref{cor:descent-K0}（$H=A$）による。
 \end{proof}
 \lean{\ld{Paper.lemma_3_5c}（引用を除いて証明済み）。ただし Lean の証明はこの形になっていない。旧来の有限自由モデル（\ld{K0Supported}、\ld{chiOrdHom}、\ld{chiLamHom_of_finite}）の上で群論の \ld{conjSum_eq} を直接使い、定理~\ref{thm:C-norm}（\ld{perfectEuler_conjSum_eq}）を経由しない。降下の引用 \ld{theorem_3_1_K0} が旧モデルの $K_0$ で述べられているためである。新旧の評価の一致（\ld{LengthAlgebra.EulerCompatibility}）と局所環での降下の移送（\ld{perfectK0_descent_of_free}）は証明済みなので、定理~\ref{thm:C-norm} を経由する形に書き直すことはできる。}
 
@@ -1083,7 +1105,7 @@ $X\in P_A^J$ について
 \]
 \end{theorem}
 \begin{proof}
-定理~\ref{thm:asymp-norm} を $(C_1,\lambda_1)=(T,\len_T)$、$(C_2,\lambda_2)=(C,\lambda)$ に適用する。二つの Koszul Euler 特性はともに $r$ である。降下は、補題~\ref{lem:dga} の $H$ についての定理~\ref{thm:descent} による（引用）。
+定理~\ref{thm:asymp-norm} を $(C_1,\lambda_1)=(T,\len_T)$、$(C_2,\lambda_2)=(C,\lambda)$ に適用する。二つの Koszul Euler 特性はともに $r$ である（補題~\ref{lem:koszulrank}、系~\ref{cor:allv}）。降下は、系~\ref{cor:descent-K0} を補題~\ref{lem:dga} の $H$ について使って得る（引用）。
 \end{proof}
 \lean{\ld{symmetricPaperEuler_conjSum_eq} は二つの Koszul Euler 特性の一致と降下を引数にして証明済み。\ld{Section4.theorem_4_7_K0} はその系であり、\ld{supportedRankK0_descent} と正則パラメータの引用への依存は残る。}
 
@@ -1097,9 +1119,9 @@ $R$ を次元 $d$ の正則局所環、$\iota\colon R\to D'$ を有限な局所�
 \end{enumerate}
 \end{proposition}
 \begin{proof}
-(a) は補題~\ref{lem:lambdaAB} である。(b) の有限性は、$\iota(x)$ がパラメータ系であることと $\lambda$-CM 性から出る。正値性は、全射 $U\to C/\m_{D'}C$ と非自明性から出る。
+$\iota(x)$ は $D'$ のパラメータ系で、その冪 $\iota(x)^v$ もそうである。$\lambda$-CM 性により、全ての $v\ge1$ と $q>0$ で $\lambda H_q(\iota(x)^v;C)=0$、$\lambda(U)=\lambda(C/\iota(x)C)<\infty$ である。$J=\m_{D'}C$ は有限生成で、$I_\sigma$ が $\m_{D'}$-準素なので $\sqrt{J}=\sqrt{\iota(x)C}$ である。これで補題~\ref{lem:lambdaAB} の入力がそろい、(a) を得る。(b) の有限性は上で見た。正値性は、全射 $U\to C/\m_{D'}C$ と非自明性から出る。
 \end{proof}
-\lean{(a) は \ld{Section5.lemma_5_3}（Koszul 条件と有限分解を明示して証明済み）。(b) の正値性は \ld{Paper.Section5.ParameterLengthPositivity} で、重複度の公式から導いている。}
+\lean{$\lambda$-CM 性から Koszul 入力を供給する部分は \ld{LengthAlgebra.CohenMacaulay} の \ld{koszulAcyclic_of_cm}、\ld{koszulFinite_of_cm}。(a) は \ld{Section5.lemma_5_3}（Koszul 条件と有限分解を明示して証明済み）。両者をつなぐ適用は \ld{Paper.Section5.TowerPositivity} の中で行っている。(b) の正値性は \ld{Paper.Section5.ParameterLengthPositivity} で、重複度の公式から導いている。}
 
 \subsection{正値性の評価（Lemma 5.6）}\label{sec:paper-pos}
 
@@ -1348,18 +1370,19 @@ $\lambda$-平坦な長さ付き代数の存在 & Monsky、Roberts（Ma, Thm 2.4�
 命題~\ref{prop:B-length-descends}、\ref{prop:B-finite-part} & 長さの商 & 大きな商・有限な商・両者の有限部分の同値まで証明済み \\
 補題~\ref{lem:34} & Lemma 3.4 & 剰余体での判定と有限長加群の公式は引用なしで証明済み \\
 系~\ref{cor:allv}、命題~\ref{prop:cmflat} & (3.9) との同値など & 正則列・Koszul 分解を明示して証明済み \\
+定理~\ref{thm:approx-exist} & Lemma 5.4 の一般形 & 具体的な塔と $\lambda_\infty$ の上で証明済み（$\lambda_\infty$ の二性質の引用を除く）。抽象的な設定への書き直しは未 \\
 \multicolumn{3}{l}{\textbf{§\ref{sec:perfect} perfect 複体での評価}} \\
 補題~\ref{lem:C-nil}、\ref{lem:koszulbound}、命題~\ref{prop:C-euler}、\ref{prop:C-basechange}、\ref{prop:35a}、系~\ref{cor:C-euler}、\ref{cor:35a} & Lemma 3.5a & 任意の可換環の有限射影複体で、支持の対応と有限 Euler 評価を証明済み \\
 命題~\ref{prop:C-base}、定理~\ref{thm:C-norm} & 基底公式、対称な比較 & 基底の Koszul 分解と降下を明示した形で証明済み \\
 補題~\ref{lem:nit}、\ref{lem:h0bound} & 消滅と下界 & Koszul 消滅・極小性から証明済み \\
-補題~\ref{lem:lambdaAB} & Lemma 5.3 & Koszul 条件・有限分解を明示して証明済み。$\lambda$-CM 性から Koszul 条件を得る部分も証明済み \\
+補題~\ref{lem:torAgree}、\ref{lem:lambdaAB} & Lemma 5.3 の一般形 & Koszul 条件・有限分解を明示して証明済み \\
 \multicolumn{3}{l}{\textbf{§\ref{sec:asymp} ランク無視の圏での評価}} \\
 定義~\ref{def:rankquot}、命題~\ref{prop:42} & §4.1--4.2 & 圏と支持つきの比較同値、直和因子による表示を構成済み \\
 命題~\ref{prop:43} (a),(b),(d)、系~\ref{cor:nitasymp} & Prop 4.3、(4.2) & 評価の延長・Euler・多項式公式・消滅・下界を条件から証明済み。(c) の $\iota$ は数学的説明 \\
 命題~\ref{prop:asymp-base}、定理~\ref{thm:asymp-norm} & 基底公式、対称な比較 & 基底の Koszul 分解と降下を明示した形で証明済み \\
-定理~\ref{thm:approx-exist} & Lemma 5.4 の一般形 & 具体的な塔と $\lambda_\infty$ の上で証明済み（$\lambda_\infty$ の二性質の引用を除く）。抽象的な設定への書き直しは未 \\
 命題~\ref{prop:approx-object} & Lemma 5.5 の一般形 & 証明済み \\
 \multicolumn{3}{l}{\textbf{§\ref{sec:paper-compare} 論文の状況での命題}} \\
+補題~\ref{lem:koszulrank}、系~\ref{cor:descent-K0} & 階数公式、降下の $K_0$ での形 & 前者は正則パラメータの引用を除いて証明済み。後者は引用の形そのもの \\
 命題~\ref{prop:35b}、\ref{prop:35c} & Lemma 3.5b,c & 正則パラメータと降下（定理~\ref{thm:descent}）の引用を除いて証明済み。Lean の 3.5c は旧モデル上の証明で、定理~\ref{thm:C-norm} を経由しない \\
 命題~\ref{prop:45} & Prop 4.5 & 全対象の一様代表による公式を証明済み。正則基底への適用は引用を使う \\
 補題~\ref{lem:dga}、定理~\ref{thm:47} & Lemma 4.6、Thm 4.7 & dg 表示と降下への接続は引用（\ld{supportedRankK0_descent}）。共役和比較はその引用を除いて証明済み \\
