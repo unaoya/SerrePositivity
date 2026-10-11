@@ -298,11 +298,20 @@ $\mathcal{K}$ を三角圏とし、$H^{(1)}_*$、$H^{(2)}_*$ をそれぞれ長�
 \end{itemize}
 $v\ge1$ に対し $z_j^v$ のスカラー作用の錐を順にとった対象を $K_v\otimes X$ と書く。抽象三角圏でこの記法は反復錐を表し、テンソル積の存在を仮定しない。
 
+\begin{definition}[$z$ に台をもつ]\label{def:B-supp}
+対象 $X$ が\textbf{指数 $v$ で $z$ に台をもつ}とは、全ての $j$ で $z_j^v\operatorname{id}_X=0$ となることをいう。ある $v\ge1$ でそうなるとき、単に \textbf{$z$ に台をもつ}という。
+\end{definition}
+ここで零なのは三角圏の射としての作用で、ホモロジー上の零作用より強い。perfect 複体では、この条件はホモロジーの幾何学的な台が $V((z))$ に入ることと同値になる（補題~\ref{lem:C-nil}）。
+
+\begin{definition}[Koszul 振幅]\label{def:B-kos}
+$m\ge0$ とする。対象 $X$ の\textbf{指数 $v$ の Koszul 振幅が $[0,m]$ に入る}とは、$n\notin[0,m]$ で $H_n(K_v\otimes X)=0$ となることをいう。
+\end{definition}
+
 \paragraph{使う場所}
-補題~\ref{lem:B-nit}、\ref{lem:B-h0} は、比較（命題~\ref{prop:35c}、定理~\ref{thm:47}）には使わない。§\ref{sec:perfect-vanishing} と §\ref{sec:asymp-vanishing} で、perfect 複体と列の圏について仮定 (Supp)、(Kos$_m$) と第零次の全射を確かめて適用する。その結果を §\ref{sec:param} の次数の上界と、§\ref{sec:core} の正値性（補題~\ref{lem:pos}）で使う。
+補題~\ref{lem:B-nit}、\ref{lem:B-h0} は、比較（命題~\ref{prop:35c}、定理~\ref{thm:47}）には使わない。§\ref{sec:perfect-vanishing} と §\ref{sec:asymp-vanishing} で、perfect 複体と列の圏について台の条件（定義~\ref{def:B-supp}）、Koszul 振幅の条件（定義~\ref{def:B-kos}）と第零次の全射を確かめて適用する。その結果を §\ref{sec:param} の次数の上界と、§\ref{sec:core} の正値性（補題~\ref{lem:pos}）で使う。
 
 \begin{lemma}[零作用と分裂]\label{lem:B-split}
-全ての $j$ で $z_j^v\operatorname{id}_X=0$ なら
+$X$ が指数 $v$ で $z$ に台をもつなら
 \begin{equation}\label{eq:B-split}
  K_v\otimes X\cong\bigoplus_{j=0}^eX[j]^{\oplus\binom ej},\qquad
  H_n(K_v\otimes X)\cong\bigoplus_{j=0}^eH_{n-j}(X)^{\oplus\binom ej}.
@@ -317,18 +326,18 @@ $v\ge1$ に対し $z_j^v$ のスカラー作用の錐を順にとった対象を
 \begin{lemma}[新交叉型の消滅]\label{lem:B-nit}
 $m\ge0$ と $X$ について、ある $v\ge1$ で次の二つが成り立つとする。
 \begin{enumerate}[label=(\alph*)]
- \item 全ての $j$ で $z_j^v\operatorname{id}_X=0$（条件 (Supp)）。
- \item $H_n(K_v\otimes X)=0$（$n\notin[0,m]$、条件 (Kos$_m$)）。
+ \item $X$ は指数 $v$ で $z$ に台をもつ（定義~\ref{def:B-supp}）。
+ \item $X$ の指数 $v$ の Koszul 振幅は $[0,m]$ に入る（定義~\ref{def:B-kos}）。
 \end{enumerate}
 このとき $H_i(X)=0$（$i<0$ または $i>m-e$）。特に $m=e$ で $\ell(H_0X)<\infty$ なら $\chi(X)=\ell(H_0X)$。
 \end{lemma}
 \begin{proof}
 式~\eqref{eq:B-split} の $j=e$ の成分により $H_i(X)$ は $H_{i+e}(K_v\otimes X)$ の直和因子であり、$i+e>m$ なら零である。$i<0$ では $j=0$ の成分を使う。零対象の直和因子は零である。$m=e$ では $0$ 次だけが残る。
 \end{proof}
-消滅に長さの値や Euler 有限性は要らない。「自由振幅 $[0,m]$」は、具体例で (Kos$_m$) を確かめるための条件である。また、(Supp) を満たす $v$ の存在は仮定に含める。$e=0$ の場合も同じ定理で扱い、$m<e$ なら全次数で消滅する。Lean 内部の cochain 添字は $q=-i$ で本文の $H_i$ に変換する。
+消滅に長さの値や Euler 有限性は要らない。「自由振幅 $[0,m]$」は、具体例で Koszul 振幅の条件を確かめるための条件である。また、$z$ に台をもつ指数 $v$ の存在は仮定に含める。$e=0$ の場合も同じ定理で扱い、$m<e$ なら全次数で消滅する。Lean 内部の cochain 添字は $q=-i$ で本文の $H_i$ に変換する。
 
 \begin{lemma}[$0$ 次の下界]\label{lem:B-h0}
-(Supp) と $H_i(X)=0$（$i<0$）のもとで $H_0(K_v\otimes X)\cong H_0(X)$。有限な長さをもつ対象 $Y$ への全射 $H_0(K_v\otimes X)\twoheadrightarrow Y$ があれば、$\ell(H_0X)\ge\ell(Y)$。さらに $m=e$ の消滅と有限性があれば $\chi(X)\ge\ell(Y)$。
+$X$ が指数 $v$ で $z$ に台をもち、$H_i(X)=0$（$i<0$）であるとき、 $H_0(K_v\otimes X)\cong H_0(X)$。有限な長さをもつ対象 $Y$ への全射 $H_0(K_v\otimes X)\twoheadrightarrow Y$ があれば、$\ell(H_0X)\ge\ell(Y)$。さらに $m=e$ の消滅と有限性があれば $\chi(X)\ge\ell(Y)$。
 \end{lemma}
 \begin{proof}
 式~\eqref{eq:B-split} の $n=0$ では $j>0$ の成分が消える。全射の核による短完全列と長さの非負性から不等式が出る。
@@ -349,7 +358,7 @@ $m\ge0$ と $X$ について、ある $v\ge1$ で次の二つが成り立つと�
 この節で扱う条件 & §\ref{sec:perfect}、§\ref{sec:asymp} で確かめる §\ref{sec:abstract} の仮定 \\
 \midrule
 Koszul 有限性（定義~\ref{def:C-levels}） & Euler 有限性（定義~\ref{def:B-eulerfin}）：Euler 評価が定まること \\
-正次数の Koszul ホモロジーの長さ零 & 補題~\ref{lem:B-nit} の (Kos$_m$)：消滅 \\
+正次数の Koszul ホモロジーの長さ零 & Koszul 振幅の条件（定義~\ref{def:B-kos}）：消滅 \\
 Koszul Euler 特性 $e_\lambda(z;C)$ の値 & 命題~\ref{prop:B-compare} の (a)：基底公式の係数 \\
 $\lambda$-平坦性と有限ランク（系~\ref{cor:allv}）、$\lambda$-CM 性（命題~\ref{prop:cmflat}） & 上の三つをまとめて供給する十分条件 \\
 \bottomrule
@@ -520,7 +529,7 @@ $\m_D^N\subseteq\m_A D$ となる $N$ があるので、$\m_A C$-冪ねじれと
 \midrule
 Euler 評価（命題~\ref{prop:B-euler}） & 台と Koszul 有限性から Euler 有限性（定義~\ref{def:B-eulerfin}）。シフト・長完全列・有界性 & §\ref{sec:perfect-eval} & Euler 有限性は命題~\ref{prop:C-euler}、\ref{prop:35a}。$K_0$ 上の準同型は系~\ref{cor:C-euler}、\ref{cor:35a} \\
 共役和の比較（命題~\ref{prop:B-compare}） & (a) 係数変更との両立（命題~\ref{prop:C-basechange}）、$K(z)$ が剰余体の分解であることと $e_\lambda(z;C)$ の値。(b) 降下は仮定として受け取る & §\ref{sec:planC-comparison} & 命題~\ref{prop:C-base}、定理~\ref{thm:C-norm} \\
-反復錐による消滅（補題~\ref{lem:B-nit}） & (Supp)：零ホモトピー。(Kos$_m$)：自由振幅と正次数の Koszul 長さ零 & §\ref{sec:perfect-vanishing} & 補題~\ref{lem:nit} \\
+反復錐による消滅（補題~\ref{lem:B-nit}） & 台の条件（定義~\ref{def:B-supp}）：零ホモトピー。Koszul 振幅の条件（定義~\ref{def:B-kos}）：自由振幅と正次数の Koszul 長さ零 & §\ref{sec:perfect-vanishing} & 補題~\ref{lem:nit} \\
 第零次の下界（補題~\ref{lem:B-h0}） & 極小性による全射 & §\ref{sec:perfect-vanishing} & 補題~\ref{lem:h0bound} \\
 \bottomrule
 \end{tabularx}
@@ -695,9 +704,9 @@ $T$ 上の群作用が $A$ を固定すれば、ひねり $P\mapsto P^g$ がこ�
 
 \subsection{消滅と下界：補題~\ref{lem:B-nit}、\ref{lem:B-h0} の適用}\label{sec:perfect-vanishing}
 
-ここでは、補題~\ref{lem:B-nit} の仮定 (Supp)、(Kos$_m$) と、補題~\ref{lem:B-h0} の全射を perfect 複体について確かめ、補題~\ref{lem:nit}、\ref{lem:h0bound} を得る。(Supp) は台の条件と補題~\ref{lem:C-nil} から、(Kos$_m$) は次の段落の項によるフィルトレーションから、全射は極小性から出る。
+ここでは、補題~\ref{lem:B-nit} の仮定（台の条件と Koszul 振幅の条件）と、補題~\ref{lem:B-h0} の全射を perfect 複体について確かめ、補題~\ref{lem:nit}、\ref{lem:h0bound} を得る。$z$ に台をもつことは、ホモロジーの幾何学的な台の条件と補題~\ref{lem:C-nil} から、Koszul 振幅の条件は次の段落の項によるフィルトレーションから、全射は極小性から出る。
 
-$P$ が $0$ 次から $m$ 次に有限射影項をもつなら、$K_v\otimes P\otimes C$ の項によるフィルトレーションの各段は、$K(z^v;C)$ の有限直和のシフトの直和因子である。正次数の Koszul ホモロジーが商で零であれば、各段はその項の次数だけに集中し、長完全列から (Kos$_m$) が出る。(Supp) は台の条件と補題~\ref{lem:C-nil} から出るので、補題~\ref{lem:B-nit} が使える。
+$P$ が $0$ 次から $m$ 次に有限射影項をもつなら、$K_v\otimes P\otimes C$ の項によるフィルトレーションの各段は、$K(z^v;C)$ の有限直和のシフトの直和因子である。正次数の Koszul ホモロジーが商で零であれば、各段はその項の次数だけに集中し、長完全列から Koszul 振幅の条件が出る。台の条件は台の条件と補題~\ref{lem:C-nil} から出るので、補題~\ref{lem:B-nit} が使える。
 
 一方、$S=T$ が局所環で $P$ の $0$ 次の項が $T^{\oplus\beta_0}$、$d_1$ の成分が $\m_T$ に入れば
 \[
@@ -713,7 +722,7 @@ $e$ を列 $z$ の長さとし、全ての $v\ge1$ と $j>0$ で $\lambda H_j(z^
 特に $m = e$ なら $\chi_C(P) = \lambda H_0(P\otimes_T C)$。
 \end{lemma}
 \begin{proof}
-台から $z_j^v$ の零ホモトピーを選び、条件 (Supp) を得る。$P$ の項によるフィルトレーションの各段は $K(z^v;C)$ の有限直和のシフトである。正次数の Koszul ホモロジーの長さは零なので、評価先では各段のホモロジーはその項の次数に集中する。長完全列から $H_n^C(K_v\otimes P)=0$（$n\notin[0,m]$）、すなわち (Kos$_m$) が従う。あとは共通の補題~\ref{lem:B-nit} により零対象としての消滅を得て、その長さをとればよい。
+台から $z_j^v$ の零ホモトピーを選び、台の条件を得る。$P$ の項によるフィルトレーションの各段は $K(z^v;C)$ の有限直和のシフトである。正次数の Koszul ホモロジーの長さは零なので、評価先では各段のホモロジーはその項の次数に集中する。長完全列から $H_n^C(K_v\otimes P)=0$（$n\notin[0,m]$）、すなわち Koszul 振幅の条件が従う。あとは共通の補題~\ref{lem:B-nit} により零対象としての消滅を得て、その長さをとればよい。
 \end{proof}
 $A$ が正則局所環、$z$ が正則パラメータ系で $(C,\lambda)$ が $\lambda$-平坦なら、$e=\dim A$ で、Koszul ホモロジーの仮定は系~\ref{cor:allv} から出る。この補題は §\ref{sec:param} で $(A,z,T)=(R,x,R)$ として使う。そこでは列の長さ $e=h$ と $\dim R$ が異なるので、$e$ を列の長さとして述べておく。
 
@@ -765,7 +774,7 @@ $B$ は次元 $d-h$ の完全交叉局所環だが、一般には正則ではな
 実装は有限表示 $0\to L'\to B^a\to L\to0$ を使う次数移動による。$B^a$ に対する高次 Tor の長さ零を Koszul 分解から得て、二つの長完全列を比較する。零次は $C$ 線形なテンソル積の同型で同定し、次数に関する帰納法で等式と有限性を示す。この証明の結論は長さの一致であり、二つの Tor を長さの商で同定する自然同型の構成までは主張しない。
 \lean{\ld{IntersectionMultiplicity.ParameterQuotientTor} の \ld{ParamQuot.torClaim}（証明済み）。}
 
-次数の上界は、補題~\ref{lem:nit} を $(R,x)$ に当てはめたものである。入力は、列 $x$ の長さ $h$、全ての $x^v$ について正次数の Koszul ホモロジーの長さ零、$L$ の $R$ 上の長さ $d$ 以下の有限自由分解の三つである。分解上の $x_j$ の作用は $x_jL=0$ から零ホモトピックになり、補題~\ref{lem:nit} の (Supp) と (Kos$_d$) がそろう。したがって $i>d-h$ では $\lambda\Tor_i^R(C,L)=0$ となる。$R$ が次元 $d$ の正則局所環で $L$ が有限生成なら、必要な分解の長さの上界が得られる。
+次数の上界は、補題~\ref{lem:nit} を $(R,x)$ に当てはめたものである。入力は、列 $x$ の長さ $h$、全ての $x^v$ について正次数の Koszul ホモロジーの長さ零、$L$ の $R$ 上の長さ $d$ 以下の有限自由分解の三つである。分解上の $x_j$ の作用は $x_jL=0$ から零ホモトピックになり、補題~\ref{lem:nit} の 台の条件と Koszul 振幅 $[0,d]$ の条件がそろう。したがって $i>d-h$ では $\lambda\Tor_i^R(C,L)=0$ となる。$R$ が次元 $d$ の正則局所環で $L$ が有限生成なら、必要な分解の長さの上界が得られる。
 \lean{\ld{ParamQuot.len_torAlg_eq_zero} は、$C\otimes_R P$ に \ld{LengthAlgebra.lambdaHomology_projective_vanishing}（補題~\ref{lem:nit}）を適用して証明している。}
 
 $R$ が正則で $x$ が正則列でも、$B$ は一般には正則局所環ではない。例えば $k[[u,v]]/(u^2)$ がそうである。本文の補題~\ref{lem:lambdaAB} と §\ref{sec:core} でもこの議論を使う。消滅は $B$ の大域次元ではなく $R$ 上の分解の長さから得る。
@@ -904,7 +913,7 @@ $A$ を正則局所環、$z$ を正則パラメータ系、$T$ を可換 $A$ 代
 
 \subsection{消滅と下界：補題~\ref{lem:B-nit}、\ref{lem:B-h0} の適用}\label{sec:asymp-vanishing}
 
-§\ref{sec:perfect-vanishing} と同じく、補題~\ref{lem:B-nit} の (Supp)、(Kos$_m$) と補題~\ref{lem:B-h0} の全射を、列の圏について確かめる。(Supp) は商での零作用、(Kos$_m$) は $K_v\otimes F$ の各段のフィルトレーション、全射は各段の極小性から出る。元の列 $F$ の一様な台は使わない。
+§\ref{sec:perfect-vanishing} と同じく、補題~\ref{lem:B-nit} の仮定（台の条件と Koszul 振幅の条件）と補題~\ref{lem:B-h0} の全射を、列の圏について確かめる。台の条件は商での零作用、Koszul 振幅の条件は $K_v\otimes F$ の各段のフィルトレーション、全射は各段の極小性から出る。元の列 $F$ の一様な台は使わない。
 
 \begin{corollary}[補題~\ref{lem:nit}、\ref{lem:h0bound} の対応物]\label{cor:nitasymp}\label{prop:check-rank-vanishing}
 $e$ を列 $z$ の長さとし、全ての $v\ge1$ と $j>0$ で $\lambda H_j(z^v;C)=0$ とする。$F = (F_n)$ を $0$ 次から $m$ 次に有限自由な項をもつ有界な自由列で、像 $X$ が $P_T^J$ に入るものとする。このとき $b_i^C(X) = 0$（$i > m-e$）。特に $m = e$ なら $\chi_C(X) = b_0^C(X)$ で、さらに各 $F_n$ が $1$ 次で極小なら
@@ -913,7 +922,7 @@ $e$ を列 $z$ の長さとし、全ての $v\ge1$ と $j>0$ で $\lambda H_j(z^
 \]
 \end{corollary}
 \begin{proof}
-(Supp) は $P_T^J$ での零作用である。(Kos$_m$) は $K_v\otimes F$ の各段を項でフィルトレーションし、正次数の Koszul ホモロジーの長さ零を使って確認する。指定範囲外のホモロジー列は各段で長さ零なので、評価先でも零対象になる。補題~\ref{lem:B-nit} から $H_i^C(X)=0$、したがって $b_i^C(X)=0$ が従う。
+台の条件は $P_T^J$ での零作用である。Koszul 振幅の条件は $K_v\otimes F$ の各段を項でフィルトレーションし、正次数の Koszul ホモロジーの長さ零を使って確認する。指定範囲外のホモロジー列は各段で長さ零なので、評価先でも零対象になる。補題~\ref{lem:B-nit} から $H_i^C(X)=0$、したがって $b_i^C(X)=0$ が従う。
 
 $m=e$ では第零次だけが残る。各段の極小性は
 \[
