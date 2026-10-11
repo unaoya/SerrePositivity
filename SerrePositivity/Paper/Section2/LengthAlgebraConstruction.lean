@@ -2,29 +2,119 @@ module
 
 public import SerrePositivity.Paper.Section2.TowerLengthOn
 public import SerrePositivity.Paper.Section2.PerfectQuotientLimit
-public import SerrePositivity.Paper.Section2.PerfectKoszulLength
+public import SerrePositivity.Paper.Section2.PerfectKoszulLimit
+public import SerrePositivity.Inputs.RobertsFrobenius
 public import Mathlib.RingTheory.WittVector.Basic
 public import Mathlib.RingTheory.MvPowerSeries.Basic
 
 /-!
-# 定理2.5の標数別の未完了部分
+# 定理2.5の標数別の構成
 
 両分岐とも一つの代数上で全てのパラメータ系を扱い、冪と階数の公式は共通の導出に任せる。
 等標数では perfection・塔の作用・共通分母・商の長さの極限比較まで構成済み。
-Koszul ホモロジーの有限段の長さ公式と一様な冪ねじれも証明済み。
-重複度との同定は、高次 Frobenius ホモロジーの消滅極限を前提として導出した。
-`sorry` にはその消滅極限の供給と、ホモロジーを perfection へ移す部分が残る。
+Koszul ホモロジーの有限段の長さ公式、一様な冪ねじれ、有向極限との同型も証明済み。
+Roberts の消滅定理を名前付きの引用として適用し、perfection 上の高次の長さの消滅と
+商の長さの重複度との同定を導出した。等標数の構成自身には直接の `sorry` はないが、
+Roberts・正則パラメータ・正規化長さ・重複度の引用入力への依存は残る。
 混標数の `sorry` は CLMST の帰結を現在の塔へ移す部分を含む。
 これらは定理2.5の完成を意味しない。仮定をまとめる独自の構造体やクラスは使わない。
 -/
 
 public section
 universe u
-open IsLocalRing
+open IsLocalRing CategoryTheory Limits
 open scoped ENNReal
 namespace SerrePositivity.Section2
 
-/-- 具体的な perfection 上の長さの性質のうち、残る未証明部分。
+/-- 高次 Frobenius Koszul ホモロジーの消滅極限から、等標数の長さ代数の二性質を導く。
+有向極限による高次の消滅と、Euler 公式による零次の重複度との同定を組み合わせる。
+消滅極限そのものは明示した前提であり、ここで新たな未証明入力を導入しない。 -/
+theorem perfectClosure_length_properties_of_higher_tendsto
+    (A D : Type u) [CommRing A] [IsRegularLocalRing A]
+    [IsAdicComplete (maximalIdeal A) A]
+    [CommRing D] [IsLocalRing D] [IsNoetherianRing D] [IsDomain D]
+    [Algebra A D] [Module.Finite A D]
+    (hinj : Function.Injective (algebraMap A D))
+    (hsep : ∀ d : D, ((minpoly A d).map (algebraMap A (FractionRing A))).Separable)
+    (hres : Function.Surjective ((residue D).comp (algebraMap A D)))
+    {h : ℕ} (t : Fin h → A) (hdimA : ringKrullDim A = h) (hdimD : ringKrullDim D = h)
+    (hpos : 0 < h) (ht : Ideal.span (Set.range t) = maximalIdeal A)
+    (p : ℕ) [Fact p.Prime] [CharP (ResidueField D) p] [PerfectField (ResidueField D)]
+    [CharP D p]
+    [Algebra A (PerfectClosure D p)] [Algebra D (PerfectClosure D p)]
+    [Algebra (Tower A t p) (PerfectClosure D p)]
+    [IsScalarTower A D (PerfectClosure D p)]
+    [IsScalarTower A (Tower A t p) (PerfectClosure D p)]
+    (hcanonical : algebraMap D (PerfectClosure D p) = PerfectClosure.of D p)
+    (hlim : ∀ (z : Fin h → D), IsSystemOfParameters D z → ∀ i : ℕ, 0 < i →
+      Filter.Tendsto (fun n : ℕ ↦
+        (Module.length D (koszulHomologySelf (fun j ↦ z j ^ (p ^ n)) i) : ℝ≥0∞) /
+          (stageRank h p n : ℝ≥0∞)) Filter.atTop (nhds 0)) :
+      (∀ (z : Fin h → D), IsSystemOfParameters D z → ∀ i : ℕ, 0 < i →
+        (towerLengthOn A D hinj t p (PerfectClosure D p)).len
+          (koszulHomologySelf (fun j ↦ algebraMap D (PerfectClosure D p) (z j)) i) = 0) ∧
+      (∀ (z : Fin h → D), IsSystemOfParameters D z →
+        (towerLengthOn A D hinj t p (PerfectClosure D p)).len
+          ((PerfectClosure D p) ⧸
+            Ideal.span (Set.range fun j ↦ algebraMap D (PerfectClosure D p) (z j))) =
+          ENNReal.ofReal
+            (HilbertSamuel.multiplicity D (Ideal.span (Set.range z)) D : ℝ)) := by
+  constructor
+  · intro z hz i hi
+    exact towerLengthOn_perfection_koszulHomology_eq_zero_of_tendsto A D p t ht hdimA
+      hinj hres hsep hcanonical z hz i (hlim z hz i hi)
+  · intro z hz
+    apply towerLengthOn_perfection_parameter_quotient_eq_multiplicity_of_higher_tendsto
+      A D p t ht hdimA hdimD hpos hinj hres hsep hcanonical z hz
+    intro i hi
+    obtain ⟨j, rfl⟩ : ∃ j : ℕ, i = -(j : ℤ) := ⟨(-i).toNat, by omega⟩
+    exact hlim z hz j (by omega)
+
+/-- 一般の有限自由複体に対する Roberts 型の消滅定理から、等標数の長さ代数の二性質を導く。
+Koszul 複体への適用条件・Frobenius 基底変更・実数値からの変換を前段の定理で確認する。
+Roberts の定理自体は明示的な仮定であり、既存の未証明入力を増やさない。 -/
+theorem perfectClosure_length_properties_of_roberts
+    (A D : Type u) [CommRing A] [IsRegularLocalRing A]
+    [IsAdicComplete (maximalIdeal A) A]
+    [CommRing D] [IsLocalRing D] [IsNoetherianRing D] [IsDomain D]
+    [Algebra A D] [Module.Finite A D]
+    (hinj : Function.Injective (algebraMap A D))
+    (hsep : ∀ d : D, ((minpoly A d).map (algebraMap A (FractionRing A))).Separable)
+    (hres : Function.Surjective ((residue D).comp (algebraMap A D)))
+    {h : ℕ} (t : Fin h → A) (hdimA : ringKrullDim A = h) (hdimD : ringKrullDim D = h)
+    (hpos : 0 < h) (ht : Ideal.span (Set.range t) = maximalIdeal A)
+    (p : ℕ) [Fact p.Prime] [CharP (ResidueField D) p] [PerfectField (ResidueField D)]
+    [CharP D p]
+    [Algebra A (PerfectClosure D p)] [Algebra D (PerfectClosure D p)]
+    [Algebra (Tower A t p) (PerfectClosure D p)]
+    [IsScalarTower A D (PerfectClosure D p)]
+    [IsScalarTower A (Tower A t p) (PerfectClosure D p)]
+    (hcanonical : algebraMap D (PerfectClosure D p) = PerfectClosure.of D p)
+    (hRoberts : ∀ d : ℕ, ringKrullDim D = d →
+      ∀ K : CochainComplex (ModuleCat.{u} D) ℤ,
+        (∀ j, Module.Free D (K.X j) ∧ Module.Finite D (K.X j)) →
+        (∀ j, j < -(d : ℤ) ∨ 0 < j → IsZero (K.X j)) →
+        (∀ j, IsFiniteLength D (K.homology j)) →
+        ∀ i : ℕ, 0 < i → Filter.Tendsto (fun n : ℕ ↦
+          ((Module.length D
+            ((baseChange (iterateFrobenius D p n) K).homology (-(i : ℤ)))).toNat : ℝ) /
+              (p : ℝ) ^ (n * d)) Filter.atTop (nhds 0)) :
+      (∀ (z : Fin h → D), IsSystemOfParameters D z → ∀ i : ℕ, 0 < i →
+        (towerLengthOn A D hinj t p (PerfectClosure D p)).len
+          (koszulHomologySelf (fun j ↦ algebraMap D (PerfectClosure D p) (z j)) i) = 0) ∧
+      (∀ (z : Fin h → D), IsSystemOfParameters D z →
+        (towerLengthOn A D hinj t p (PerfectClosure D p)).len
+          ((PerfectClosure D p) ⧸
+            Ideal.span (Set.range fun j ↦ algebraMap D (PerfectClosure D p) (z j))) =
+          ENNReal.ofReal
+            (HilbertSamuel.multiplicity D (Ideal.span (Set.range z)) D : ℝ)) := by
+  apply perfectClosure_length_properties_of_higher_tendsto A D hinj hsep hres t
+    hdimA hdimD hpos ht p hcanonical
+  intro z hz i hi
+  simpa only [stageRank, Nat.cast_pow] using
+    normalized_frobenius_koszul_tendsto_of_homology_vanishing D p hRoberts z hz i hi
+
+/-- Roberts の引用定理から導く、具体的な perfection 上の長さの二性質。
 共通分母は `exists_tower_perfection_conductor` で、正則基底の正規性を導いて構成する。
 `PrimaryParameters` は分母と合わせて有限長の商を定める `h-1` 個の元を準素イデアル内で選ぶ。
 `PerfectQuotientLimit.lean` の
@@ -41,11 +131,15 @@ namespace SerrePositivity.Section2
 `towerLengthOn_perfection_parameter_quotient_eq_multiplicity_of_higher_tendsto` は
 それを既存の商の極限比較へ接続する。
 
-残るのは Roberts の高次 Frobenius ホモロジーの消滅極限の供給と、
-ホモロジーと有向極限の可換性による perfection 自体の高次の長さの消滅。
-これらはまだ本定理の仮定から導出しておらず、本体の `sorry` は保持する。
-代数自体の存在ではなく、標準写像で定まる `D_perf` のこれらの性質を未証明入力として残す。 -/
-theorem perfectClosure_length_properties_pending (A D : Type u) [CommRing A] [IsRegularLocalRing A]
+`PerfectKoszulLimit.lean` はホモロジーと有向極限の可換性を証明し、
+消滅極限を任意の両立する塔作用での `λ_D` の消滅へ移す。
+`perfectClosure_length_properties_of_higher_tendsto` が二性質を組み合わせる。
+`FrobeniusKoszulLimit.lean` は Roberts 型の一般定理の適用条件と値域の変換を確認し、
+`perfectClosure_length_properties_of_roberts` が一般定理から二性質までを接続する。
+本定理は `Inputs.frobenius_homology_length_tendsto_zero` を適用し、
+等標数の残っていた未証明の結論を、この文献の一般定理からの導出に置き換える。
+Roberts の定理そのものと既存の一般入力への依存は残る。 -/
+theorem perfectClosure_length_properties (A D : Type u) [CommRing A] [IsRegularLocalRing A]
     [IsAdicComplete (maximalIdeal A) A]
     [CommRing D] [IsLocalRing D] [IsNoetherianRing D] [IsDomain D]
     [IsAdicComplete (maximalIdeal D) D] [Algebra A D] [Module.Finite A D]
@@ -54,11 +148,8 @@ theorem perfectClosure_length_properties_pending (A D : Type u) [CommRing A] [Is
     (hres : Function.Surjective ((residue D).comp (algebraMap A D)))
     {h : ℕ} (t : Fin h → A) (hdimA : ringKrullDim A = h) (hdimD : ringKrullDim D = h)
     (hpos : 0 < h) (ht : Ideal.span (Set.range t) = maximalIdeal A)
-    (hsop : IsSystemOfParameters D (algebraMap A D ∘ t))
     (p : ℕ) [Fact p.Prime] [CharP (ResidueField D) p] [PerfectField (ResidueField D)]
     [CharP D p]
-    (e : A ≃+* MvPowerSeries (Fin h) (ResidueField D))
-    (he : ∀ i, e (t i) = MvPowerSeries.X i)
     [Algebra A (PerfectClosure D p)] [Algebra D (PerfectClosure D p)]
     [Algebra (Tower A t p) (PerfectClosure D p)]
     [IsScalarTower A D (PerfectClosure D p)]
@@ -73,10 +164,12 @@ theorem perfectClosure_length_properties_pending (A D : Type u) [CommRing A] [Is
             Ideal.span (Set.range fun j ↦ algebraMap D (PerfectClosure D p) (z j))) =
           ENNReal.ofReal
             (HilbertSamuel.multiplicity D (Ideal.span (Set.range z)) D : ℝ)) := by
-  sorry
+  exact perfectClosure_length_properties_of_roberts A D hinj hsep hres t hdimA hdimD
+    hpos ht p hcanonical (Inputs.frobenius_homology_length_tendsto_zero D p)
 
 /-- 等標数の長さ代数として Mathlib の `PerfectClosure D p` を選ぶ。
-塔の作用と二つの係数制限の両立は証明済み。長さの性質だけを上の未証明入力から受け取る。 -/
+塔の作用と二つの係数制限の両立を構成し、Roberts の引用から導いた長さの性質を適用する。
+基底の冪級数環との具体的な同型や、基底パラメータの像がパラメータ系であるとの仮定は不要。 -/
 theorem lengthAlgebra_equalCharacteristic (A D : Type u) [CommRing A] [IsRegularLocalRing A]
     [IsAdicComplete (maximalIdeal A) A]
     [CommRing D] [IsLocalRing D] [IsNoetherianRing D] [IsDomain D]
@@ -86,11 +179,8 @@ theorem lengthAlgebra_equalCharacteristic (A D : Type u) [CommRing A] [IsRegular
     (hres : Function.Surjective ((residue D).comp (algebraMap A D)))
     {h : ℕ} (t : Fin h → A) (hdimA : ringKrullDim A = h) (hdimD : ringKrullDim D = h)
     (hpos : 0 < h) (ht : Ideal.span (Set.range t) = maximalIdeal A)
-    (hsop : IsSystemOfParameters D (algebraMap A D ∘ t))
     (p : ℕ) [Fact p.Prime] [CharP (ResidueField D) p] [PerfectField (ResidueField D)]
-    [CharP D p]
-    (e : A ≃+* MvPowerSeries (Fin h) (ResidueField D))
-    (he : ∀ i, e (t i) = MvPowerSeries.X i) :
+    [CharP D p] :
     ∃ (C : Type u) (_ : CommRing C) (_ : Algebra A C) (_ : Algebra D C)
       (_ : Algebra (Tower A t p) C) (_ : IsScalarTower A D C)
       (_ : IsScalarTower A (Tower A t p) C),
@@ -114,8 +204,8 @@ theorem lengthAlgebra_equalCharacteristic (A D : Type u) [CommRing A] [IsRegular
       ((towerToPerfect A (PerfectClosure D p) t p).commutes x).symm
   refine ⟨PerfectClosure D p, inferInstance, inferInstance, inferInstance, inferInstance,
     inferInstance, inferInstance, ?_⟩
-  exact perfectClosure_length_properties_pending A D hinj hsep hres t hdimA hdimD
-    hpos ht hsop p e he rfl
+  exact perfectClosure_length_properties A D hinj hsep hres t hdimA hdimD
+    hpos ht p rfl
 
 /-- 混標数版の引用と接続の未完了部分。
 CLMST（arXiv:2209.04046v4）Notation 4.0.1、Cor. 4.0.4、Prop. 4.0.10、4.0.14 の

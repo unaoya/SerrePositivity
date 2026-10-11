@@ -44,8 +44,20 @@ proves the analogous finite-stage formula for all Koszul homology groups and con
 annihilating power for every stage and degree. `KoszulMultiplicityLimit.lean` derives the
 Hilbert–Samuel value from vanishing of the normalized higher Frobenius homology, and
 `PerfectQuotientLimit.lean` connects this conditional result to the perfection quotient.
-Supplying that vanishing limit, transporting homology through the directed limit, and the
-mixed-characteristic construction remain. No new unproved input was added for these connections.
+`DirectedHomology.lean`, `KoszulDirectedUnion.lean` and `PerfectKoszulLimit.lean` now identify
+perfection's Koszul homology with the directed limit of the approximation homologies and
+transfer the vanishing limit to its normalized length. No injectivity of the homology maps
+is assumed. `FrobeniusKoszulLimit.lean` checks the hypotheses needed to apply a general
+Roberts-type vanishing theorem, identifies Frobenius base change, and converts the real limit
+to `ℝ≥0∞`. `perfectClosure_length_properties_of_roberts` derives both equal-characteristic
+length properties from that general theorem as an explicit hypothesis.
+With the user's approval, `Inputs/RobertsFrobenius.lean` now quotes the general theorem as
+a named `sorry` (Ma, Theorem 2.4, after Roberts). `perfectClosure_length_properties` applies
+it and replaces the former equal-characteristic pending declaration; Theorem 2.5 uses this
+proved connection. The equal-characteristic construction is complete relative to this and
+the existing regular-parameter, normalized-length and multiplicity inputs.
+The mixed-characteristic construction remains pending. The direct `sorry` count stays at 17:
+one quoted general theorem replaces the gap in the concrete equal-characteristic construction.
 The cited descent results remain separate work.
 
 The Lean sources are organized as follows (2026-10-11):

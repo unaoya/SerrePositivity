@@ -31,14 +31,44 @@
   収束するという前提から、有限 Euler 和と既存の重複度公式によって商の極限値を導く。
   実数値と `ℝ≥0∞` 値の両方で証明し、`PerfectQuotientLimit.lean` で
   `towerLengthOn` のパラメータ商の長さとの同定まで接続した。
+- `HomologicalAlgebra/DirectedHomology.lean`：各次数で単射な複体の増大列について、
+  サイクルと境界を有限段に持ち上げ、ホモロジーと有向極限の線形同型を構成した。
+  ホモロジーの遷移写像の単射性は要求しない。
+- `KoszulDirectedLimit.lean`・`KoszulRestriction.lean`・`KoszulDirectedUnion.lean`：
+  部分代数の増大列の Koszul 複体を共通の係数圏で構成し、各段と極限のホモロジーを
+  元の環上の Koszul ホモロジーと同定した。
+- `PerfectComplex/SupProperty.lean`：像が増大して全体を覆う写像の族について、
+  共通の消去冪と各段の長さの零への収束から、全体の長さの消滅を導く。
+  既存の直極限定理はこの一般形の系とした。
+- `PerfectKoszulLimit.lean`：上の一般論を実際の近似環の列に適用し、perfection の
+  ホモロジーの有向極限表示と、消滅極限から `towerLengthOn` の消滅への移送を証明した。
+- `FrobeniusKoszulLimit.lean`：一般の Roberts 型消滅定理を明示的な仮定として、
+  有限自由性・振幅と次元の一致・ホモロジーの有限長性をパラメータ系から確認した。
+  Frobenius 基底変更と冪の Koszul 複体との同定、および実数値から `ℝ≥0∞` 値への
+  極限の変換も証明した。この適用の補題自体に未証明入力への依存はない。
+- `LengthAlgebraConstruction.lean`：`perfectClosure_length_properties_of_higher_tendsto` と
+  `perfectClosure_length_properties_of_roberts` により、消滅極限または一般の消滅定理から、
+  perfection の高次の長さの消滅と商の長さの重複度との同定をまとめて導出した。
+- ユーザーの承認により `Inputs/RobertsFrobenius.lean` に一般の消滅定理を名前付きの
+  `sorry` として引用した。Ma, Theorem 2.4（arXiv:1609.00095v3）と仮定・結論を再照合した。
+  `perfectClosure_length_properties` がこれを適用し、旧等標数 pending 定理を置き換える。
+  `lengthAlgebra_equalCharacteristic` と定理2.5の等標数分岐へ接続した。
+  等標数の構成では不要になった基底の具体的な冪級数環との同型と、基底パラメータの
+  像がパラメータ系であるとの仮定も、当該構成の引数から除いた。
 
-等標数で残るのは Roberts の消滅極限の供給と、ホモロジーと有向極限の可換性を使った
-perfection 全体の高次の長さの消滅。上の極限値の同定は消滅極限を前提とした導出であり、
-定理2.5の無条件の証明ではない。混標数の perfectoidization と塔への接続も残る。
-二つの pending 定理の仮定と `sorry` は維持し、新しい未証明入力は追加していない。
+等標数の構成と本体への接続は、Roberts および既存の一般入力の引用に依存する形で完成した。
+Roberts の深い定理そのものを証明したわけではない。混標数の perfectoidization と
+塔・完備化の比較は残り、混標数の pending 定理は維持する。
+Roberts の引用を一つ追加し、等標数 pending の一つを除いたので、直接の `sorry` は17箇所のまま。
+仮定を束ねる独自の構造・クラスは追加していない。
 以下の古い実施記録と区別する。
 
-検証：全体の `lake build` は3560ジョブで成功。新規・変更25宣言と主定理・核心定理の
+今回の検証：全体の `lake build` は3568ジョブで成功。新規・変更47宣言と主定理・核心定理の
+計49宣言を公理監査し、39宣言は標準公理のみ、10宣言は引用入力の `sorryAx` に依存する。
+その他の公理はなく、直接の `sorry` は17箇所のまま。定理2.5の主張と混標数の pending 定理は
+変更していない。`git diff --check` も通過した。
+
+前回の検証（`79c8fed`）：全体の `lake build` は3560ジョブで成功。新規・変更25宣言と主定理・核心定理の
 計27宣言を公理監査し、16宣言は標準公理のみ、11宣言は既存入力の `sorryAx` に依存する。
 追加の公理はなく、直接の `sorry` は17箇所のまま。`git diff --check` も通過した。
 

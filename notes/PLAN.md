@@ -46,16 +46,34 @@
    `ℓ_D H^i(z^(p^n); D) / p^(nh)` と同定し、全段・全次数に共通する消去冪を選んだ。
    `KoszulMultiplicityLimit.lean` は高次の正規化長さが零へ収束するという前提から、
    商の極限を Hilbert–Samuel 重複度と同定する。perfection の商への接続も証明した。
-   残る等標数側の境界は Roberts の高次 Frobenius ホモロジーの消滅極限の供給と、
-   ホモロジーと有向極限の可換性による perfection 全体への移行。
-   混標数の perfectoidization・塔との比較も残る。既存の二つの pending 定理の仮定と
-   未証明の本体は維持し、新しい `sorry` や結論を前提にする入力束は追加していない。
+   `DirectedHomology.lean`・`KoszulDirectedUnion.lean`・`PerfectKoszulLimit.lean` で、
+   Koszul ホモロジーと有向極限の同型を構成し、高次の消滅極限を perfection 全体の
+   正規化長さの消滅へ移した。ホモロジーの遷移写像に単射性は仮定しない。
+   `FrobeniusKoszulLimit.lean` は Roberts 型の一般定理の適用条件（有限自由性・
+   振幅と次元の一致・有限長ホモロジー）を確認し、Frobenius 基底変更を冪の Koszul
+   複体と同定して、実数値の極限を `ℝ≥0∞` 値へ変換する。
+   `perfectClosure_length_properties_of_roberts` により、この一般定理から等標数の
+   二つの長さの性質まで導出した。ユーザーの追加の承認により、Roberts の定理を
+   `Inputs.frobenius_homology_length_tendsto_zero` として名前付きの `sorry` で引用し、
+   `perfectClosure_length_properties` と `lengthAlgebra_equalCharacteristic` へ適用した。
+   旧 `perfectClosure_length_properties_pending` は証明済みの接続へ置き換えた。
+   等標数の構成は、Roberts と既存の正則パラメータ・正規化長さ・重複度の引用入力に
+   依存する形で完成した。定理2.5の等標数分岐にも接続済み。
+   次は混標数の perfectoidization と塔・完備化の比較であり、
+   `lengthAlgebra_mixedCharacteristic_pending` は未完了のまま残る。
 
-ユーザーが今回明示的に許可した Serre の引用を除き、新しい `sorry`・公理・
+ユーザーが明示的に許可した Serre と Roberts の引用を除き、新しい `sorry`・公理・
 結論を仮定する入力束は追加しない。`main_statement` の導出の完成と、
 引用入力も含めた論文全体の形式化の完成は区別する。
 
-今回の検証（§2 の Koszul 長さ・重複度への接続）：全体の `lake build` は3560ジョブで成功。
+今回の検証（有向極限・Roberts の引用・等標数の構成への接続）：全体の `lake build` は
+3568ジョブで成功。新規・変更47宣言と主定理・核心定理の計49宣言を公理監査し、
+39宣言は標準公理のみ、10宣言は Roberts または既存の引用入力に由来する `sorryAx` に依存する。
+その他の公理はない。Roberts の引用を一つ追加し、等標数構成の一つを除去したため、
+直接の `sorry` は17箇所のまま。定理2.5の主張と混標数の pending 定理は変更していない。
+`git diff --check` も通過した。
+
+前回の検証（`79c8fed`、§2 の Koszul 長さ・重複度への接続）：全体の `lake build` は3560ジョブで成功。
 新規・変更25宣言と `main_statement`・`core_statement` の計27宣言を公理監査し、
 16宣言は標準公理のみ、11宣言は既存の未証明入力に由来する `sorryAx` に依存する。
 その他の公理はない。新しい `sorry` は追加せず、直接の `sorry` は17箇所を維持した。

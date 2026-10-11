@@ -14,8 +14,8 @@ public import SerrePositivity.CommutativeAlgebra.KoszulMultiplicityLimit
 任意の両立する塔作用は標準作用と一致することを使い、定理2.5の `towerLengthOn` へも移す。
 
 高次 Frobenius Koszul ホモロジーの消滅極限を前提に、商の極限値と
-Hilbert–Samuel 重複度との同定も行う。消滅極限自体の供給と、
-perfection の高次ホモロジーへの移行は定理2.5の残作業として区別する。
+Hilbert–Samuel 重複度との同定も行う。perfection の高次ホモロジーへの移行は
+`PerfectKoszulLimit.lean` で証明する。消滅極限自体の供給は定理2.5の残作業である。
 正則パラメータと正規化長さの既存の引用入力を使うが、新しい未証明入力はない。
 -/
 

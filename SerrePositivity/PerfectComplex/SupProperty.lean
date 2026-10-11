@@ -18,6 +18,8 @@ Lemma 2.4（零長さの極限）を一般の形で証明する。`J` 冪ねじ�
 - 部分加群の族で各 `λ = 0` なら、その和 `⨆ V_i` も `λ = 0`（`len_iSup_eq_zero`）。
 - 直和：各 `λ(V_i) = 0` なら `λ(⨁ V_i) = 0`（`len_directSum_eq_zero`）。
 - 有向な族（増大列）では `λ(⨆ V_i) = ⨆ λ(V_i)`（`len_iSup_of_directed`）。
+- 像が増大して `M` を覆う写像 `G_i → M` では、`λ(G_i) → 0` なら `λ(M) = 0`
+  （`len_eq_zero_of_directed_cover`）。添字集合と加群の universe は独立に選べる。
 - 直極限：`λ(V_i) → 0` なら `λ(lim→ V_i) = 0`。遷移写像の単射性は要らない
   （`len_directLimit_eq_zero_of_tendsto`）。
 
@@ -29,7 +31,7 @@ Lemma 2.4（零長さの極限）を一般の形で証明する。`J` 冪ねじ�
 
 - `HasSup`、`len_le_iff_fg`、`exists_fg_lt`。
 - 有限個の和の評価 `len_sup_le`、`len_finset_sup_le`。
-- 上の四つの定理。
+- 上の五つの定理。
 -/
 
 @[expose] public section
@@ -185,35 +187,27 @@ theorem len_iSup_of_directed (hsup : lam.HasSup) (hM : IsPowTorsion J M) {ι : T
   exact (lam.len_le_of_injective (Submodule.inclusion hi) (Submodule.inclusion_injective hi)
     (hM.submodule _)).trans (le_iSup (fun i ↦ lam.len (V i)) i)
 
-/-- 直極限：各 `G_i` が `J^n` で消え、`λ(G_i) → 0` なら `λ(lim→ G_i) = 0`。遷移写像の単射性は
-要らない。各段の像 `W_i = im(of i)` は `j ≥ i` で `W_i ⊆ W_j` なので `λ(W_i) ≤ λ(G_j)`、
-よって `λ(W_i) = 0`。直極限は `⨆ W_i` なので `len_iSup_eq_zero`。 -/
-theorem len_directLimit_eq_zero_of_tendsto (hsup : lam.HasSup) {ι : Type u} [Preorder ι]
-    [IsDirectedOrder ι] [Nonempty ι] [DecidableEq ι] (G : ι → Type u)
-    [∀ i, AddCommGroup (G i)] [∀ i, Module C (G i)] (f : ∀ i j, i ≤ j → G i →ₗ[C] G j)
+/-- 写像の像が有向に増大して全体を覆い、各始域の長さが零へ収束すれば全体の長さは零。
+共通の消去冪から全体の冪ねじれを導く。添字の宇宙は加群の宇宙と独立でよい。 -/
+theorem len_eq_zero_of_directed_cover (hsup : lam.HasSup) {ι : Type*} [Preorder ι]
+    [IsDirectedOrder ι] [Nonempty ι] (G : ι → Type u)
+    [∀ i, AddCommGroup (G i)] [∀ i, Module C (G i)]
+    (g : ∀ i, G i →ₗ[C] M)
+    (hmono : Monotone (fun i ↦ LinearMap.range (g i)))
+    (hcover : ∀ x : M, ∃ i y, g i y = x)
     (n : ℕ) (hn : ∀ i, Module.IsTorsionBySet C (G i) (J ^ n : Ideal C))
     (hlim : Filter.Tendsto (fun i ↦ lam.len (G i)) Filter.atTop (nhds 0)) :
-    lam.len (Module.DirectLimit G f) = 0 := by
-  -- 直極限は `J^n` で消える
-  have htor : IsPowTorsion J (Module.DirectLimit G f) := by
-    refine ⟨n, fun z a ↦ ?_⟩
-    obtain ⟨i, x, rfl⟩ := Module.DirectLimit.exists_of z
-    rw [← map_smul]
-    have : (a : C) • x = 0 := hn i (x := x) (a := a)
-    rw [this, map_zero]
-  let W : ι → Submodule C (Module.DirectLimit G f) := fun i ↦
-    LinearMap.range (Module.DirectLimit.of C ι G f i)
-  -- `W_i ⊆ W_j`（`i ≤ j`）
-  have hmono : ∀ i j, i ≤ j → W i ≤ W j := by
-    rintro i j hij _ ⟨x, rfl⟩
-    exact ⟨f i j hij x, Module.DirectLimit.of_f⟩
-  -- `λ(W_i) ≤ λ(G_j)`（`i ≤ j`）
+    lam.len M = 0 := by
+  have htor : IsPowTorsion J M := by
+    refine ⟨n, fun x a ↦ ?_⟩
+    obtain ⟨i, y, rfl⟩ := hcover x
+    rw [← map_smul, hn i (x := y) (a := a), map_zero]
+  let W : ι → Submodule C M := fun i ↦ LinearMap.range (g i)
   have hle : ∀ i j, i ≤ j → lam.len (W i) ≤ lam.len (G j) := fun i j hij ↦
-    (lam.len_le_of_injective (Submodule.inclusion (hmono i j hij))
+    (lam.len_le_of_injective (Submodule.inclusion (hmono hij))
       (Submodule.inclusion_injective _) (htor.submodule _)).trans
-      (lam.len_le_of_surjective (Module.DirectLimit.of C ι G f j).rangeRestrict
+      (lam.len_le_of_surjective (g j).rangeRestrict
         (LinearMap.surjective_rangeRestrict _) ⟨n, hn j⟩)
-  -- よって `λ(W_i) = 0`
   have hW : ∀ i, lam.len (W i) = 0 := by
     intro i
     refine le_antisymm ?_ zero_le
@@ -223,16 +217,29 @@ theorem len_directLimit_eq_zero_of_tendsto (hsup : lam.HasSup) {ι : Type u} [Pr
       (by exact_mod_cast hε))
     obtain ⟨k, hik, hjk⟩ := directed_of (· ≤ ·) i j₀
     exact (hle i k hik).trans (hj₀ k hjk)
-  -- 直極限は `⨆ W_i`
   have htop : (⨆ i, W i) = ⊤ := by
     rw [eq_top_iff]
-    rintro z -
-    obtain ⟨i, x, rfl⟩ := Module.DirectLimit.exists_of z
-    exact Submodule.mem_iSup_of_mem i ⟨x, rfl⟩
-  have := len_iSup_eq_zero hsup htor W hW
-  rw [htop] at this
-  rw [← this]
+    rintro x -
+    obtain ⟨i, y, rfl⟩ := hcover x
+    exact Submodule.mem_iSup_of_mem i ⟨y, rfl⟩
+  have he := len_iSup_eq_zero hsup htor W hW
+  rw [htop] at he
+  rw [← he]
   exact lam.len_congr _ _ Submodule.topEquiv.symm
+
+/-- 直極限：各 `G_i` が `J^n` で消え、`λ(G_i) → 0` なら `λ(lim→ G_i) = 0`。遷移写像の単射性は
+要らない。各段の像 `W_i = im(of i)` は `j ≥ i` で `W_i ⊆ W_j` なので `λ(W_i) ≤ λ(G_j)`、
+よって `λ(W_i) = 0`。直極限は `⨆ W_i` なので `len_iSup_eq_zero`。 -/
+theorem len_directLimit_eq_zero_of_tendsto (hsup : lam.HasSup) {ι : Type u} [Preorder ι]
+    [IsDirectedOrder ι] [Nonempty ι] [DecidableEq ι] (G : ι → Type u)
+    [∀ i, AddCommGroup (G i)] [∀ i, Module C (G i)] (f : ∀ i j, i ≤ j → G i →ₗ[C] G j)
+    (n : ℕ) (hn : ∀ i, Module.IsTorsionBySet C (G i) (J ^ n : Ideal C))
+    (hlim : Filter.Tendsto (fun i ↦ lam.len (G i)) Filter.atTop (nhds 0)) :
+    lam.len (Module.DirectLimit G f) = 0 := by
+  apply len_eq_zero_of_directed_cover hsup G (Module.DirectLimit.of C ι G f)
+    ?_ Module.DirectLimit.exists_of n hn hlim
+  rintro i j hij _ ⟨x, rfl⟩
+  exact ⟨f i j hij x, Module.DirectLimit.of_f⟩
 
 end NormalizedLength
 

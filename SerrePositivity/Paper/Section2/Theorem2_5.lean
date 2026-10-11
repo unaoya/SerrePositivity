@@ -7,8 +7,9 @@ public import SerrePositivity.Paper.Section2.LengthAlgebraConsequences
 # 定理2.5：標数別の構成からの導出
 
 補題2.2の具体的な基底の情報を明示的に受け取る。
-標数別の未完了の存在証明は `LengthAlgebraConstruction`、
+標数別の存在証明は `LengthAlgebraConstruction`、
 パラメータの冪と階数への共通の導出は `LengthAlgebraConsequences` に分離する。
+等標数の構成は Roberts の名前付き引用から導き、混標数の構成は未完了である。
 -/
 
 public section
@@ -18,9 +19,9 @@ open scoped ENNReal
 namespace SerrePositivity
 namespace Section2
 
-/-- 定理2.5。補題2.2の具体的な基底の情報で標数を分け、標数別の未完了入力を呼ぶ。
+/-- 定理2.5。補題2.2の具体的な基底の情報で標数を分け、標数別の構成を呼ぶ。
 冪への拡張と階数公式は証明済みの共通の導出を使う。この定理自体に直接の `sorry` はないが、
-標数別の構成・標準重複度公式・正則パラメータの正則性に関する未証明入力に依存する。 -/
+Roberts の引用・混標数の構成・正規化長さ・重複度公式・正則パラメータの入力に依存する。 -/
 theorem theorem_2_5 (A D : Type u) [CommRing A] [IsRegularLocalRing A]
     [IsAdicComplete (maximalIdeal A) A]
     [CommRing D] [IsLocalRing D] [IsNoetherianRing D] [IsDomain D]
@@ -67,10 +68,10 @@ theorem theorem_2_5 (A D : Type u) [CommRing A] [IsRegularLocalRing A]
           (C ⧸ Ideal.span (Set.range fun j ↦ algebraMap D C (z j))) =
           ENNReal.ofReal
             (HilbertSamuel.multiplicity D (Ideal.span (Set.range z)) D : ℝ)) := by
-    rcases hbase with ⟨hp, e, he⟩ | ⟨hzero, htp, e, he⟩
+    rcases hbase with ⟨hp, _, _⟩ | ⟨hzero, htp, e, he⟩
     · let := hp
       exact lengthAlgebra_equalCharacteristic A D hinj hsep hres t hdimA hdimD
-        hpos ht hsop p e he
+        hpos ht p
     · let := hzero
       exact lengthAlgebra_mixedCharacteristic_pending A D hinj hsep hres t hdimA hdimD
         hpos ht hsop p htp e he

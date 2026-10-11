@@ -141,6 +141,11 @@ C_D = (D ⊗_A A_∞)_perfd。
 - CLMST の引用番号（Def. 2.2.1、Prop. 2.2.3、2.2.6(a)、Notation 4.0.1、Cor. 4.0.4、Prop. 4.0.10、Prop. 4.0.14）は全て arXiv v4 の番号と一致し、主張の使い方も正確。
 - Kurano–Shimomoto Theorem 1.1 の引用は正確（原典はより一般で、k の完全性も整域性も仮定しない）。
 - Ma Theorem 2.4 の引用は正確。仮定の確認（完備、標数 p、長さ = 次元の有限自由複体、有限長ホモロジー）も論文の通り。
+  2026-10-11 に [arXiv v3 の原文](https://arxiv.org/html/1609.00095v3) を再照合し、
+  `Inputs/RobertsFrobenius.lean` に名前付きの引用として実装した。
+  cochain 次数は `[-d, 0]`、文献の `H_i` は `H^{-i}`、Frobenius 関手はその環準同型に
+  沿う基底変更で表す。Koszul への適用条件と実数値から `ℝ≥0∞` 値への極限の変換は
+  `CommutativeAlgebra/FrobeniusKoszulLimit.lean` で証明した。
 - Bhatt–Scholze の引用番号（Prop. 8.5 vs CLMST の Theorem 10.11）は要確認。
 - Lemma 2.1 の「compare [19, Lemma 2.2]」は類似例の参照で、構成の典拠ではない。
 - 本論文は [21] §3 の記述を圧縮したもの。詳しい証明は [21] にある。
