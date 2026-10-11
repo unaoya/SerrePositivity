@@ -6,7 +6,7 @@ public import SerrePositivity.CommutativeAlgebra.ParameterAvoidance
 /-! # 本文の有限拡大上で使うパラメータの選択
 
 素イデアル回避で `Q` 内の正則列を選び、その像を `R/P` から有限拡大 `D′` へ移す。
-有限拡大への移送自体は標準公理のみ。正則列の選択は既存の非混合性の引用に依存する。
+有限拡大への移送と正則列の選択はともに証明済み。後者は証明済みの非混合性を使う。
 -/
 
 @[expose] public section
