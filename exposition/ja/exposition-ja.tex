@@ -572,21 +572,21 @@ $A$ を可換環、$z$ をその元の有限列、$T$ を可換 $A$ 代数、$C$
 \lean{\ld{HomologicalAlgebra.SupportNullHomotopy}、\ld{PerfectComplex.Support}、\ld{HomotopyCategory}（任意の可換環上で証明済み）。}
 
 \begin{lemma}[Koszul 上界]\label{lem:koszulbound}
-$P$ を各項が有限自由（$k$ 次の項のランク $n_k$、有界）な $T$ 複体とし、ある $v$ で全ての $z_j^v$ が $P$ 上ホモトピー的に $0$ とする。
+$S$ を可換 $A$ 代数、$C$ を $S$ 代数とする。$P$ を有限射影項の有界な $S$ 複体とし、各項 $P_k$ が $S^{r_k}$ の直和因子であるとする。ある $v$ で全ての $z_j^v$ が $P$ 上ホモトピー的に $0$ なら、
 \[
   M_v = \sum_j \lambda H_j(z^v; C)
 \]
-とおくと、全ての $i$ で
+とおいて、全ての $i$ で
 \[
-  \lambda H_i(P\otimes_T C) \;\le\; \Bigl(\sum_k n_k\Bigr)\cdot M_v.
+  \lambda H_i(P\otimes_S C) \;\le\; \Bigl(\sum_k r_k\Bigr)\cdot M_v.
 \]
-$C = T$、$\lambda = \len_T$ としても成り立つ。
+$C = S$、$\lambda = \len_S$ としても成り立つ。
 \end{lemma}
 \begin{proof}
-零ホモトピーにより、$P\otimes C$ は $K(z^v)\otimes P\otimes C$ の直和因子になる。後者を $P$ の項による愚直なフィルトレーションで分解すると、各段は $K(z^v;C)^{\oplus n_k}$ のシフトで、長完全列と $\lambda$ の劣加法性から上界が出る。
+零ホモトピーにより、$P\otimes_S C$ は $K(z^v)\otimes P\otimes_S C$ の直和因子になる。後者を $P$ の項による愚直なフィルトレーションで分解すると、各段は $K(z^v;C)\otimes_S P_k$ のシフトである。$P_k$ は $S^{r_k}$ の直和因子なので、そのホモロジーは $K(z^v;C)^{\oplus r_k}$ のホモロジーの直和因子で、長さは $r_k M_v$ 以下である。長完全列と $\lambda$ の劣加法性から上界が出る。
 \end{proof}
 Koszul 有限性から $M_v<\infty$ である（$\lambda$-平坦でランク $r$ なら、系~\ref{cor:allv} より $M_v = v^e r$）。普通の長さの側でも、$T$ はネーターで $H_j(z^v;T)$ は $(z^v)$ で消される有限生成加群なので $M_v<\infty$。この補題は §\ref{sec:asymp} で列に一様に適用する。
-\lean{\ld{PerfectComplex.KoszulLengthBounds}（\ld{lambdaHomology_le_of_retract}、\ld{lambdaHomology_koszulComplexOn_le_sum} ほか。証明済み）。}
+\lean{\ld{PerfectComplex.KoszulLengthBounds} の \ld{lambdaHomology_koszulComplexOn_le_sum_of_retracts}（直和因子版の上界）と \ld{lambdaHomology_le_of_retract}。有限射影項の有限性への適用は \ld{PerfectComplex.ProjectiveBounds} の \ld{lambdaHomology_supported_projective_ne_top}（証明済み）。}
 
 \begin{proposition}[有限性とホモロジー的関手]\label{prop:C-euler}
 $(C,\lambda)$ を Koszul 有限とし、$S\to C$ を $A$ 代数の準同型とする。このとき
@@ -597,14 +597,7 @@ $(C,\lambda)$ を Koszul 有限とし、$S\to C$ を $A$ 代数の準同型と�
 は長さ付きアーベル圏 $\mathcal{A}_\lambda^{\mathrm{fin}}$ に値をとる Euler 有限なホモロジー的関手である。
 \end{proposition}
 \begin{proof}
-補題~\ref{lem:C-nil} により全ての $z_j^v$ が $P$ 上で零ホモトピックとなる共通の $v\ge1$ を選べる。係数拡大後の $Q=P\otimes_S C$ でも同じ作用が零なので、ホモロジーは $(z)C$-冪ねじれである。また $Q$ は $K_v\otimes Q$ の直和因子である。
-
-$P$ の有限射影項 $P_k$ を有限自由項 $S^{r_k}$ の直和因子として表す。$K(z^v;C)\otimes_S P_k$ のホモロジーは $K(z^v;C)^{\oplus r_k}$ のホモロジーの直和因子である。項による有限フィルトレーションと長完全列の劣加法性から、補題~\ref{lem:koszulbound} と同じく
-\[
- \lambda H_i(Q)\le\left(\sum_k r_k\right)
-                 \left(\sum_j\lambda H_j(z^v;C)\right)<\infty
-\]
-となる。この説明は有限自由項に限った上界を有限射影項へ拡張している。
+補題~\ref{lem:C-nil} により全ての $z_j^v$ が $P$ 上で零ホモトピックとなる共通の $v\ge1$ を選べる。係数拡大後の $P\otimes_S C$ でも同じ作用が零なので、ホモロジーは $(z)C$-冪ねじれである。$P$ の各項は有限射影なので有限自由加群の直和因子であり、補題~\ref{lem:koszulbound} と Koszul 有限性から $\lambda H_i(P\otimes_S C)<\infty$ を得る（長さの有限性）。
 
 係数拡大は導来圏で完全三角を保ち、ホモロジーの長完全列は全て有限な冪ねじれ加群に入るので、完全な $q_{\mathrm{fin}}$ を適用できる。これによりホモロジー的関手を得る。perfect 複体は有界なので、非零の次数は有限個であり（有界性）、上の評価とあわせて Euler 有限性を得る。
 \end{proof}
@@ -639,7 +632,7 @@ $S\to S'\to C$ を $A$ 代数の準同型とし、$(C,\lambda)$ を Koszul 有�
 $T$ がネーターで $T/(z)T$ が有限長とする。$P\in\mathcal{K}_T$ について、有限長 $T$ 加群の圏に値をとる $H_i(P)$ と、$\mathcal{A}_\lambda^{\mathrm{fin}}$ に値をとる $H_i^C(P)$ は、ともに Euler 有限なホモロジー的関手である。
 \end{proposition}
 \begin{proof}
-正規化側は命題~\ref{prop:C-euler}（$S=T$）である。普通の側では、台から共通の $v$ を選んで全ての $z_j^v$ の零ホモトピーを得て、補題~\ref{lem:koszulbound} を $C=T$、$\lambda=\len_T$ で使う（$M_v<\infty$ は例~\ref{ex:C-levels}）。複体は有界で、ホモロジーの長完全列とシフト同型はそのまま有限長加群の圏に入る。
+正規化側は命題~\ref{prop:C-euler}（$S=T$）である。普通の側では、台から共通の $v$ を選んで全ての $z_j^v$ の零ホモトピーを得て、補題~\ref{lem:koszulbound} を $S=C=T$、$\lambda=\len_T$ で使う（$M_v<\infty$ は例~\ref{ex:C-levels}）。複体は有界で、ホモロジーの長完全列とシフト同型はそのまま有限長加群の圏に入る。
 \end{proof}
 
 \begin{corollary}\orig{Lemma 3.5a}\label{cor:35a}
