@@ -304,7 +304,7 @@ $\mathcal{K}$ を三角圏とし、$H^{(1)}_*$、$H^{(2)}_*$ をそれぞれ長�
 基底公式と $e_1=e_2$ から (a) が従う。
 \end{proof}
 二つの実現では、$\chi_A$ を基底 $A$ 上の普通の Euler 評価、$e_i$ を Koszul Euler 特性 $e_{\lambda_i}(z;C_i)$ にとり、基底公式を命題~\ref{prop:C-base}、\ref{prop:asymp-base} で示す。
-\lean{この形の定理はまだ置いていない。二つの実現の比較定理（\ld{perfectEuler_conjSum_eq}、\ld{symmetricPaperEuler_conjSum_eq}）は、それぞれの中で基底公式から (a) を導いて \ld{conjSum_eq} を呼んでいる。}
+\lean{\ld{GroupTheory.ConjugateSum} の \ld{conjSum_eq_of_base_formula}（群論の形）と、\ld{CategoryTheory.EulerComparison} の \ld{homologicalEulerK0_pullback_conjSum_eq_of_base_formula}（二つの Euler 評価を準同型 $u_1$、$u_2$ で引き戻した形。二つの実現では $u_i$ は係数変更が誘導する $K_0$ の写像）。二つの実現の比較定理（\ld{perfectEuler_conjSum_eq}、\ld{symmetricPaperEuler_conjSum_eq}）はこの定理の適用である（いずれも証明済み）。}
 
 \subsection{スカラーの反復錐}\label{sec:abstract-cone}
 
@@ -362,6 +362,7 @@ $X$ が指数 $v$ で $z$ に台をもち、$H_i(X)=0$（$i<0$）であるとき
 式~\eqref{eq:B-split} の $n=0$ では $j>0$ の成分が消える。全射の核による短完全列と長さの非負性から不等式が出る。
 \end{proof}
 全射の構成は極小性などの具体的な入力で行う。その下界を Euler 評価の下界にするために、高次の消滅を別に使う。
+\lean{\ld{CategoryTheory.IteratedCone} の \ld{iteratedZeroCone_homology_zero_iso}（第零次の同型）、\ld{iteratedZeroCone_length_lower_bound}（長さの下界）、\ld{iteratedZeroCone_euler_eq_length_zero}（$m=e$ の消滅の下で $\chi(X)=\ell(H_0(K_v\otimes X))$）、\ld{iteratedZeroCone_euler_lower_bound}（Euler 評価の下界）。いずれも証明済み。}
 
 %======================================================================
 \section{長さ付き代数}\label{sec:length}
@@ -749,7 +750,7 @@ $A$ を正則局所環、$z$ を正則パラメータ系、$T$ を可換 $A$ 代
 \begin{proof}
 系~\ref{cor:C-euler} により、二つの評価は $K_0$ 上の Euler 評価である。命題~\ref{prop:C-basechange} と命題~\ref{prop:C-base} により、$\chi_{C_i}\circ f=e_{\lambda_i}(z;C_i)\,\chi_A$ である（基底公式）。系~\ref{cor:B-compare-base} を適用する。
 \end{proof}
-\lean{\ld{LengthAlgebra.Comparison} の \ld{perfectEuler_conjSum_eq}（Koszul 分解と整数倍の降下を明示的に受け取り、証明済み）。Lean の証明は群論の \ld{conjSum_eq} を直接使い、命題~\ref{prop:B-compare} の \ld{homologicalEulerK0_conjSum_eq} は経由していない。評価そのものは \ld{homologicalEulerK0} として定義されているので、内容は同じである。}
+\lean{\ld{LengthAlgebra.Comparison} の \ld{perfectEuler_conjSum_eq}（Koszul 分解と整数倍の降下を明示的に受け取り、証明済み）。証明は系~\ref{cor:B-compare-base} の \ld{homologicalEulerK0_pullback_conjSum_eq_of_base_formula} に、係数変更の合成 \ld{perfectBaseChangeEulerK0_comp} と基底公式 \ld{perfectBaseChangeEulerK0_eq_koszulEuler_mul} を渡すだけである。}
 $T$ 上の群作用が $A$ を固定すれば、ひねり $P\mapsto P^g$ がこの $K_0$ 作用を与える。有限射影版での作用、係数変更との両立、有限自由モデルとの同変な比較は \ld{PerfectComplex.K0Functoriality} で構成されている。局所環 $T$ では旧モデルの降下入力も移せる。
 
 幾何的な適用では、剰余標数 $p>0$、$T$ の有限性、幾何ファイバーへの推移的作用と $\Spec T\to\Spec A$ の全射性から、定理~\ref{thm:descent} の引用で降下を供給する。これは上の条件付き比較とは別の段階である。
@@ -979,7 +980,7 @@ $A$ を正則局所環、$z$ を正則パラメータ系、$T$ を可換 $A$ 代
 \begin{proof}
 系~\ref{cor:43} により、二つの評価は $K_0$ 上の Euler 評価である。命題~\ref{prop:asymp-basechange} と命題~\ref{prop:asymp-base} により $\chi_{C_i}\circ f=e_{\lambda_i}(z;C_i)\,\chi_A$ である（基底公式）。ここで二段階の係数変更 $A\to T\to C_i$ と直接の $A\to C_i$ の自然な同定を使う。系~\ref{cor:B-compare-base} を適用する。二つの列の評価先を同じ圏にする必要はない。
 \end{proof}
-\lean{\ld{Paper.Section4.SymmetricComparison} の \ld{symmetricPaperEuler_conjSum_eq}（二つの Koszul Euler 特性の一致と降下を引数にして証明済み）。Lean の証明は群論の \ld{conjSum_eq} を直接使い、\ld{homologicalEulerK0_conjSum_eq} は経由していない。}
+\lean{\ld{Paper.Section4.SymmetricComparison} の \ld{symmetricPaperEuler_conjSum_eq}（二つの Koszul Euler 特性の一致と降下を引数にして証明済み）。証明は系~\ref{cor:B-compare-base} の \ld{homologicalEulerK0_pullback_conjSum_eq_of_base_formula} に、二段階の係数変更を一段に直した基底公式 \ld{paperBaseChangeEulerK0_eq_koszulEuler_mul} を渡すだけである。}
 
 \subsection{消滅と下界：補題~\ref{lem:B-nit}、\ref{lem:B-h0} の適用}\label{sec:asymp-vanishing}
 
@@ -1003,7 +1004,7 @@ $e$ を列 $z$ の長さとし、全ての $v\ge1$ と $j>0$ で $\lambda H_j(z^
 \begin{proof}
 台の条件は $P_T^J$ での零作用である。Koszul 振幅の条件は $K_v\otimes F$ の各段を項でフィルトレーションし、正次数の Koszul ホモロジーの長さ零を使って確認する。指定範囲外のホモロジー列は各段で長さ零なので、評価先でも零対象になる。補題~\ref{lem:B-nit} から $H_i^C(X)=0$、したがって $b_i^C(X)=0$ が従う。
 \end{proof}
-\lean{\ld{Asymptotic.RankVanishing}、\ld{PaperVanishing}（Koszul 条件を入力として証明済み）。}
+\lean{\ld{Asymptotic.RankVanishing} の \ld{completedRankHomology_vanishing}（補題~\ref{lem:B-nit} の \ld{iteratedZeroCone_vanishing} を Koszul 塔 \ld{Asymptotic.KoszulTower} に適用）、\ld{PaperVanishing}（Koszul 条件を入力として証明済み）。}
 
 \begin{lemma}[$0$ 次の下界]\orig{補題~\ref{lem:h0bound} の対応物}\label{lem:asymp-h0}
 補題~\ref{cor:nitasymp} の設定で $m=e$ とし、各 $F_n$ が $1$ 次で極小であるとする。このとき
@@ -1020,7 +1021,7 @@ $e$ を列 $z$ の長さとし、全ての $v\ge1$ と $j>0$ で $\lambda H_j(z^
 \]
 を与える。この全射の列を評価先に送り、補題~\ref{lem:B-h0} と正規化極限による長さの計算を使う。
 \end{proof}
-\lean{\ld{Asymptotic.RankMinimalLowerBound}、\ld{PaperMinimalLowerBound}（極小性を入力として証明済み）。}
+\lean{$\chi(X)=\ell(H_0(K_v\otimes X))$ の部分は \ld{Asymptotic.RankVanishing} の \ld{completedRankEuler_eq_koszul_zero_limit_of_koszul}（補題~\ref{lem:B-h0} の \ld{iteratedZeroCone_euler_eq_length_zero} の適用）、全射による下界は \ld{completedRankEuler_koszul_lower_bound}（\ld{iteratedZeroCone_euler_lower_bound} の適用）。極小性から全射を作る部分は \ld{Asymptotic.RankMinimalLowerBound}、\ld{PaperMinimalLowerBound}（証明済み）。}
 
 既存の二項係数の数値公式から非負性を使って長さの消滅を得る方法でも、忠実な長さによって同じ零対象の結論に戻せる。実装では対象としての抽象的消滅を使い、数値の二項係数公式との対応も証明している。
 
@@ -1138,7 +1139,7 @@ $A$ を有限次元ネーター $\Z_{(p)}$ 代数、$J\ni p$、$H$ を連結な 
 \begin{proof}
 系~\ref{cor:perfect-flat} (b) を $(C',\lambda')=(T,\len_T)$ に適用する。$e_{\len_T}(z;T)=r$ は補題~\ref{lem:koszulrank} による。$G$ の $K_0(\mathcal{K}_T)$ への作用はひねり $P\mapsto P^g$ による。降下（命題~\ref{prop:B-compare} の (b)）は、剰余標数 $p$、推移性、全射性のもとで系~\ref{cor:descent-K0}（$H=A$）による。
 \end{proof}
-\lean{\ld{Paper.lemma_3_5c}（引用を除いて証明済み）。ただし Lean の証明はこの形になっていない。旧来の有限自由モデル（\ld{K0Supported}、\ld{chiOrdHom}、\ld{chiLamHom_of_finite}）の上で群論の \ld{conjSum_eq} を直接使い、定理~\ref{thm:C-norm}（\ld{perfectEuler_conjSum_eq}）を経由しない。降下の引用 \ld{theorem_3_1_K0} が旧モデルの $K_0$ で述べられているためである。新旧の評価の一致（\ld{LengthAlgebra.EulerCompatibility}）と局所環での降下の移送（\ld{perfectK0_descent_of_free}）は証明済みなので、定理~\ref{thm:C-norm} を経由する形に書き直すことはできる。}
+\lean{\ld{Paper.lemma_3_5c}（引用を除いて証明済み）。証明はこの形である：定理~\ref{thm:C-norm}（\ld{perfectEuler_conjSum_eq}）を係数環 $A\to T$、$T\to T$（通常の長さ）、$T\to C$（$\lambda$）に適用する。二つの Koszul Euler 特性が $\operatorname{rank}_AT$ で一致すること（補題~\ref{lem:koszulrank}、\ld{koszulEulerChar_eq_finrank}）と、旧来の有限自由モデル（\ld{K0Supported}）で述べられた降下の引用 \ld{theorem_3_1_K0} を有限射影 $K_0$ へ移したもの（\ld{perfectK0_descent_of_free}）を渡し、結論を \ld{freeToPerfectK0} で旧モデルの値 \ld{chiOrd}、\ld{chiLam} に戻す。}
 
 \subsection{Theorem 4.7}\label{sec:asymp-47}
 
@@ -1183,7 +1184,7 @@ $R$ を次元 $d$ の正則局所環、$\iota\colon R\to D'$ を有限な局所�
 \begin{proof}
 $\iota(x)$ は $D'$ のパラメータ系で、その冪 $\iota(x)^v$ もそうである。$\lambda$-CM 性により、全ての $v\ge1$ と $q>0$ で $\lambda H_q(\iota(x)^v;C)=0$、$\lambda(U)=\lambda(C/\iota(x)C)<\infty$ である。$J=\m_{D'}C$ は有限生成で、$I_\sigma$ が $\m_{D'}$-準素なので $\sqrt{J}=\sqrt{\iota(x)C}$ である。これで補題~\ref{lem:lambdaAB} の入力がそろい、(a) を得る。(b) の有限性は上で見た。正値性は、全射 $U\to C/\m_{D'}C$ と非自明性から出る。
 \end{proof}
-\lean{$\lambda$-CM 性から Koszul 入力を供給する部分は \ld{LengthAlgebra.CohenMacaulay} の \ld{koszulAcyclic_of_cm}、\ld{koszulFinite_of_cm}。(a) は \ld{Section5.lemma_5_3}（Koszul 条件と有限分解を明示して証明済み）。両者をつなぐ適用は \ld{Paper.Section5.TowerPositivity} の中で行っている。(b) の正値性は \ld{Paper.Section5.ParameterLengthPositivity} で、重複度の公式から導いている。}
+\lean{$\lambda$-CM 性から Koszul 入力を供給する部分は \ld{LengthAlgebra.CohenMacaulay} の \ld{koszulAcyclic_of_cm}、\ld{koszulFinite_of_cm}。(a) は \ld{Section5.lemma_5_3}（Koszul 条件と有限分解を明示して証明済み）。両者をつないだ形が \ld{Paper.Section5.ParameterQuotientCM} の \ld{Section5.lemma_5_3_of_cm}（$\lambda$-CM 性と $x$ の像がパラメータ系であることから (a) を出す。証明済み）。§\ref{sec:core} の経路（\ld{Paper.Section5.TowerPositivity}）はまだ Koszul 条件を直接の仮定として受け取っている。(b) の正値性は \ld{Paper.Section5.ParameterLengthPositivity} で、重複度の公式から導いている。}
 
 \subsection{正値性の評価（Lemma 5.6）}\label{sec:paper-pos}
 

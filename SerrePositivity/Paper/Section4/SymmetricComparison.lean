@@ -2,12 +2,12 @@ module
 
 public import SerrePositivity.Paper.Section4.PaperK0Comparison
 public import SerrePositivity.Asymptotic.PaperBaseChangeEvaluation
-public import SerrePositivity.GroupTheory.ConjugateSum
+public import SerrePositivity.CategoryTheory.EulerComparison
 
 /-! # 二つの長さ付き代数の対称なランク商比較
 
 二つの係数環で Koszul Euler 数が一致すれば、基底の全対象で評価が一致する。
-不変類の降下を加えると、共通の群論的比較から共役和が一致する。
+不変類の降下を加えると、共通定理 `homologicalEulerK0_pullback_conjSum_eq_of_base_formula` から共役和が一致する。
 群は評価元の K₀ にのみ作用し、係数代数・長さの同変性は要求しない。
 -/
 
@@ -66,9 +66,26 @@ theorem symmetricPaperEuler_conjSum_eq
       ∑ g : G, paperBaseChangeEulerK0 ψ (α ∘ z) mu hIfg hI hfinD U hU hs (g • y) := by
   have hC := paperBaseChangeEulerK0_eq_koszulEuler_mul α φ lam hfg z hJ hfin hz hK U hU hs
   have hD := paperBaseChangeEulerK0_eq_koszulEuler_mul α ψ mu hIfg z hI hfinD hz hK U hU hs
-  have hbase := hC.trans ((congrArg (fun c : ℝ ↦ c •
-    ordinaryPaperEulerK0 z (isArtinianRing_quotient_span_of_eq hz) U hU hs) hc).trans hD.symm)
-  exact conjSum_eq (TriangulatedK0.map (paperSupportedChangeRing α z)) _ _
-    (fun x ↦ DFunLike.congr_fun hbase x) hdesc y
+  -- 共通定理の適用。評価は完備化した商の上の Euler 評価を、係数変更と比較同値で引き戻したもの
+  simp only [paperBaseChangeEulerK0, paperRankEulerK0, AddMonoidHom.comp_assoc]
+  exact homologicalEulerK0_pullback_conjSum_eq_of_base_formula _ _ _ _ _ _ _ _ _ _ _ _
+    ((TriangulatedK0.map (paperSupportedRankEquivalence (s := s) (φ ∘ α ∘ z)).functor).comp
+      (TriangulatedK0.map (paperSupportedChangeRing (s := s) φ (α ∘ z))))
+    ((TriangulatedK0.map (paperSupportedRankEquivalence (s := s) (ψ ∘ α ∘ z)).functor).comp
+      (TriangulatedK0.map (paperSupportedChangeRing (s := s) ψ (α ∘ z))))
+    (TriangulatedK0.map (paperSupportedChangeRing α z))
+    (fun x ↦ ordinaryPaperEulerK0 z (isArtinianRing_quotient_span_of_eq hz) U hU hs x)
+    (LengthAlgebra.koszulEuler lam (φ ∘ α ∘ z)) (LengthAlgebra.koszulEuler mu (ψ ∘ α ∘ z))
+    (fun x ↦ by
+      have := DFunLike.congr_fun hC x
+      simp only [paperBaseChangeEulerK0, paperRankEulerK0, completedRankEulerK0,
+        AddMonoidHom.comp_apply, AddMonoidHom.smul_apply, smul_eq_mul] at this
+      exact this)
+    (fun x ↦ by
+      have := DFunLike.congr_fun hD x
+      simp only [paperBaseChangeEulerK0, paperRankEulerK0, completedRankEulerK0,
+        AddMonoidHom.comp_apply, AddMonoidHom.smul_apply, smul_eq_mul] at this
+      exact this)
+    hc hdesc y
 
 end SerrePositivity.Section4

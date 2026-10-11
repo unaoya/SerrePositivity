@@ -1,6 +1,7 @@
 module
 
-public import SerrePositivity.GroupTheory.ConjugateSum
+public import SerrePositivity.LengthAlgebra.Comparison
+public import SerrePositivity.PerfectComplex.K0Functoriality
 public import SerrePositivity.Paper.Lemma3_5.Normalized
 public import SerrePositivity.Paper.Lemma3_5.Ordinary
 public import SerrePositivity.CommutativeAlgebra.GeometricFiber
@@ -44,9 +45,11 @@ public import Mathlib.RingTheory.Spectrum.Prime.RingHom
   `Paper/Lemma3_5/Ordinary.lean` と `Normalized.lean` の後半。
 - **3.5c**（節 c：さらに剰余標数 `p > 0`、有限群 `G` が `A` 上 `T` に作用し、`Spec T → Spec A` は
   全射（`hsurj`）で幾何ファイバーで推移的（`htrans`））：共役和 `Σ_g χ_T(g^*P) = Σ_g χ_C(g^*P)`。
-  証明は Theorem 3.1 の帰結 `theorem_3_1_K0`（層 2、`sorry`）と形式的補題 `conjSum_eq`
-  （`GroupTheory/ConjugateSum.lean`）、3.5a、3.5b による：3.5a の二つの準同型は 3.5b により `K₀(A)` の
-  像の上で一致し、Theorem 3.1 により `G` 不変な元（共役和）の正の倍数は `K₀(A)` から来る。
+  証明は perfect 複体の実現の比較定理 `LengthAlgebra.perfectEuler_conjSum_eq`
+  （`LengthAlgebra/Comparison.lean`、共通の共役和比較
+  `homologicalEulerK0_pullback_conjSum_eq_of_base_formula` の適用）に、二つの Koszul Euler 数が
+  `rank_A T` で一致することと、Theorem 3.1 の帰結 `theorem_3_1_K0`（層 2、`sorry`）を有限射影 K₀ に
+  移した降下 `perfectK0_descent_of_free` を渡す。3.5a、3.5b は論文の記述に対応する主張として残す。
 
 `lemma_3_5` はこれらの組み合わせ（有限性と共役和の一致）。
 
@@ -140,6 +143,7 @@ theorem lemma_3_5b_ord [IsLocalRing T]
     (koszulEulerChar_eq_finrank A T z hz' hdim) Q hQ
 
 include hz' hdim hkz hq hfin in
+omit [Module.Finite A T] in
 /-- **Lemma 3.5b、正規化長さの側** (3.13)：`z` に台をもつ完全 `A` 複体 `Q` について
 `χ_C(Q ⊗_A T) = rank_A T · χ_A(Q)`。`T` が局所環であることも剰余体が同じことも使わず、(3.9) の
 `v = 1`（`hkz`、`hq`）と有限性 `hfin` を使う。証明は `Paper/Lemma3_5/Normalized.lean` の
@@ -173,30 +177,76 @@ variable [IsLocalRing T] (hres : Function.Surjective ((residue T).comp (algebraM
 include hz' hdim hres hkz hq hfin p hsurj htrans in
 /-- **Lemma 3.5c**：共役和の一致 (3.11)、`Σ_g χ_T(g^*P) = Σ_g χ_C(g^*P)`。
 
-証明：3.5a の準同型 `χ_T`、`χ_C : K₀^{m_A}(T) → ℝ` は、基底変更 `K0.map : K₀(A) → K₀(T)` と合成すると
-3.5b により一致する（`K0.hom_ext` で類ごとに確かめる）。Theorem 3.1 の帰結 `theorem_3_1_K0`（層 2）
-により、`G` 不変な類の正の倍数は `K₀(A)` から来るので、形式的補題 `conjSum_eq` が
-`Σ_g χ_T(g • [P]) = Σ_g χ_C(g • [P])` を与える。`g • [P] = [(g⁻¹)^*P]` なので、最後に `g ↦ g⁻¹` で
-和を取り直す。 -/
+証明：perfect 複体の実現の比較定理 `LengthAlgebra.perfectEuler_conjSum_eq` を、係数環 `A → T` と
+二つの長さ付き代数 `T → T`（通常の長さ）、`T → C`（`λ`）に適用する。入力は三つ。
+(1) 二つの Koszul Euler 数の一致：通常の長さの側は `χ^A(z; T) = rank_A T`
+（`chiOrd_baseChange_koszulComplex`、`koszulEulerChar_eq_finrank`）、`λ` の側は (3.9) の `v = 1`
+（`hkz`、`hq`）から、どちらも `rank_A T`。(2) `λ` の Koszul 有限性（`hfin`）と台の条件。(3) 不変類の
+降下：Theorem 3.1 の帰結 `theorem_3_1_K0`（層 2）を `perfectK0_descent_of_free` で有限射影 K₀ へ移す。
+結論は有限射影 K₀ 上の等式なので、`freeToPerfectK0` で旧有限自由モデルの値 `chiOrd`、`chiLam` に
+戻す。`g • [P] = [(g⁻¹)^*P]` なので、最後に `g ↦ g⁻¹` で和を取り直す。 -/
 theorem lemma_3_5c (P : PerfSupp T (algebraMap A T ∘ z)) :
     ∑ g : G, chiOrd (twist g P.1) = ∑ g : G, chiLam lam (algebraMap T C) (twist g P.1) := by
   have hz := radical_span_eq_maximalIdeal hz'
-  have hfinite := lemma_3_5a_lam_finite (T := T) hz hfin
-  -- 3.5a の準同型 `χ_T`、`χ_C` は `K₀(A)` の像の上で一致する（3.5b）
-  have h1 : ∀ x, chiOrdHom_of_radical (T := T) hz (K0.map (algebraMap A T) x) =
-      chiLamHom_of_finite hz hfinite (K0.map (algebraMap A T) x) := by
-    intro x
-    have : (chiOrdHom_of_radical (T := T) hz).comp (K0.map (algebraMap A T)) =
-        (chiLamHom_of_finite hz hfinite).comp (K0.map (algebraMap A T)) :=
-      K0.hom_ext fun Q ↦ by
-        rw [AddMonoidHom.comp_apply, AddMonoidHom.comp_apply, K0.map_mk, chiOrdHom_of_radical_mk,
-          chiLamHom_of_finite_mk, (lemma_3_5b hz' hdim hkz hq hfin hres Q.1 Q.2).1,
-          (lemma_3_5b hz' hdim hkz hq hfin hres Q.1 Q.2).2]
-    exact DFunLike.congr_fun this x
-  -- Theorem 3.1 の帰結
-  have h2 := theorem_3_1_K0 A T p z hz G hsurj htrans
-  have key := conjSum_eq (K0.map (algebraMap A T)) _ _ h1 h2 (K0.mk P)
-  simp only [K0.smul_mk, chiOrdHom_of_radical_mk, chiLamHom_of_finite_mk] at key
+  have : IsNoetherianRing T := IsNoetherianRing.of_finite A T
+  have := isArtinianRing_quotient_span_of_finite A T z hz
+  have hK := isKoszulResolution_of_regular hz' hdim
+  -- 二段階の係数変更 `A → T → C` を `A → C` に直す
+  have heq : algebraMap T C ∘ algebraMap A T ∘ z = algebraMap A C ∘ z := by
+    funext j
+    exact (IsScalarTower.algebraMap_apply A T C (z j)).symm
+  -- `λ` の側の台の条件と Koszul 有限性
+  have hI : (maximalIdeal A).map (algebraMap A C) ≤
+      (Ideal.span (Set.range (algebraMap T C ∘ algebraMap A T ∘ z))).radical := by
+    rw [heq, ← hz', Ideal.map_span, ← Set.range_comp]
+    exact Ideal.le_radical
+  have hfinD : LengthAlgebra.KoszulFinite lam (algebraMap T C ∘ algebraMap A T ∘ z) := by
+    rw [heq]
+    intro v _ q
+    have hpow : (fun j ↦ algebraMap A C (z j ^ v)) = (fun j ↦ (algebraMap A C (z j)) ^ v) := by
+      ext j
+      exact map_pow _ _ _
+    have h := LengthAlgebra.koszul_finite_of_homologySelf lam
+      (fun j ↦ algebraMap A C (z j ^ v)) (hfin v) q
+    rw [hpow] at h
+    exact h
+  -- 基底公式の係数：二つの Koszul Euler 数はともに `rank_A T`
+  have hc : LengthAlgebra.koszulEuler (NormalizedLength.ordinary T) (algebraMap A T ∘ z) =
+      LengthAlgebra.koszulEuler lam (algebraMap T C ∘ algebraMap A T ∘ z) := by
+    rw [heq, LengthAlgebra.koszulEuler_eq_length_quotient lam (algebraMap A C ∘ z) hkz, hq,
+      ENNReal.toReal_natCast]
+    change lambdaEuler (NormalizedLength.ordinary T) _ = _
+    rw [← chiOrd_eq_lambdaEuler_ordinary,
+      ← chiOrd_eq_of_homotopyEquiv (HomotopyEquiv.ofIso (baseChangeKoszulIso (algebraMap A T) z)),
+      chiOrd_baseChange_koszulComplex hres, koszulEulerChar_eq_finrank A T z hz' hdim]
+  -- 比較定理の適用。降下は Theorem 3.1 の帰結を有限射影 K₀ へ移したもの
+  have key := LengthAlgebra.perfectEuler_conjSum_eq (algebraMap A T) (RingHom.id T)
+    (algebraMap T C) (NormalizedLength.ordinary T) lam Submodule.fg_bot
+    ((maximalIdeal A).fg_of_isNoetherianRing.map (algebraMap A C)) z bot_le hI
+    (fun v _ i ↦ ordinary_koszul_pow_finite (algebraMap A T ∘ z) v i) hfinD hz' hK hc
+    (perfectK0_descent_of_free z (theorem_3_1_K0 A T p z hz G hsurj htrans))
+    (freeToPerfectK0 (K0.mk P))
+  -- 有限射影 K₀ の類を旧有限自由モデルの値に戻す
+  have hterm : ∀ g : G, g • freeToPerfectK0 (K0.mk P) = TriangulatedK0.mk
+      (perfSuppHomotopyObj ⟨twist g⁻¹ P.1, isPerfectSupported_twist z g⁻¹ P.2⟩) := by
+    intro g
+    rw [← freeToPerfectK0_smul, K0.smul_mk, freeToPerfectK0_mk]
+  have hord : ∀ g : G, LengthAlgebra.perfectBaseChangeEulerK0 (RingHom.id T)
+      (NormalizedLength.ordinary T) Submodule.fg_bot (algebraMap A T ∘ z) bot_le
+      (fun v _ i ↦ ordinary_koszul_pow_finite (algebraMap A T ∘ z) v i)
+      (g • freeToPerfectK0 (K0.mk P)) = chiOrd (twist g⁻¹ P.1) := by
+    intro g
+    rw [hterm g]
+    -- 恒等係数変更は評価を変えない。証明項の型に `⇑(RingHom.id T) ∘ w` が残るので `erw` で展開する
+    erw [LengthAlgebra.perfectBaseChangeEulerK0_id, LengthAlgebra.perfectEulerK0_mk,
+      LengthAlgebra.perfectEuler_eq_lambdaEuler, chiOrd_eq_lambdaEuler_ordinary]
+    rfl
+  have hlam : ∀ g : G, LengthAlgebra.perfectBaseChangeEulerK0 (algebraMap T C) lam
+      ((maximalIdeal A).fg_of_isNoetherianRing.map (algebraMap A C)) (algebraMap A T ∘ z) hI hfinD
+      (g • freeToPerfectK0 (K0.mk P)) = chiLam lam (algebraMap T C) (twist g⁻¹ P.1) := by
+    intro g
+    rw [hterm g, LengthAlgebra.perfectBaseChangeEulerK0_free]
+  simp only [hord, hlam] at key
   -- `g ↦ g⁻¹` で和を取り直す
   rw [Fintype.sum_equiv (Equiv.inv G) (fun g ↦ chiOrd (twist g⁻¹ P.1))
       (fun g ↦ chiOrd (twist g P.1)) (fun _ ↦ rfl),

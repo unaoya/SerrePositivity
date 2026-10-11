@@ -124,6 +124,11 @@
 | fa27f87 | 節の並べ替えのみ（新しい見出しを除き文は変えない） |
 | 6a8e3f7 | 重複の統合。§3 の導入、§2 の「証明の骨格」の表。旧付録の確認命題 6 つは対応する命題に吸収し、ラベルはその命題を指す |
 | ca49ad0 | Lean 参照と状況の更新（§7〜§9、付録 A の引用表・状況表・実装の構成表） |
+| 70818e6、3f160c3 | 有限近似の抽象化：塔と整合する長さ、近似列の定義と存在定理を §4.5 に置き、§9 はそれを使う形に |
+| 9b3bbf5 | §9 を主張と証明の列に書き直し |
+| 00bcbd4 | §3〜§6 の一般の主張から論文固有の仮定を外す（Koszul 有限性・λ-平坦性・λ-CM 性を名前のついた条件にし、系で論文の状況へ） |
+| 1988142 | 二つの比較定理を一つの抽象的な系（基底公式つきの共役和比較、系 B-compare-base）の適用として書く |
+| e314f80 | §6 の主張の構成を §5 と揃える（Euler 有限、係数変更との両立、基底公式、比較、消滅と下界、λ-平坦な場合の系） |
 
 計画からの変更：基底から来る類とノルム比較（命題 C-base、定理 C-norm）は §4 ではなく §5「基底から来る類と比較」に置いた。
 perfect 複体の圏と命題 C-euler を前提にしているため。§4 は長さ付き代数そのものの話だけにした。
@@ -133,3 +138,25 @@ perfect 複体の圏と命題 C-euler を前提にしているため。§4 は�
 
 残り：付録 D（λ-平坦を主役にした整理）の「次にすること」は、λ-平坦性・λ-CM 性の接続が形式化された後の状況に合わせて見直す余地がある。
 付録 B〜D の内容自体は今回変更していない。
+
+## Lean 側の改善（2026-10-11、解説の抽象化に合わせたもの）
+
+解説で「抽象論の適用」として書いた箇所のうち、Lean の証明がそうなっていなかったものを直した。
+
+| 項目 | 内容 | ファイル |
+|---|---|---|
+| 1 | 系 B-compare-base の Lean 版 `conjSum_eq_of_base_formula`（群論）と `homologicalEulerK0_pullback_conjSum_eq_of_base_formula`（Euler 評価を準同型 `u₁`、`u₂` で引き戻した形）。`perfectEuler_conjSum_eq`、`symmetricPaperEuler_conjSum_eq` はこの適用に書き換えた（それまでは群論の `conjSum_eq` を直接呼んでいた） | `GroupTheory/ConjugateSum`、`CategoryTheory/EulerComparison`、`LengthAlgebra/Comparison`、`Paper/Section4/SymmetricComparison` |
+| 2 | `lemma_3_5c` を定理 C-norm（`perfectEuler_conjSum_eq`、係数環 `A → T`、`T → T`、`T → C`）の適用に書き換えた。降下の引用 `theorem_3_1_K0` は `perfectK0_descent_of_free` で有限射影 K₀ に移し、結論は `freeToPerfectK0` で旧モデルの値に戻す。恒等係数変更の補題 `perfectBaseChangeEulerK0_id` を追加 | `Paper/Lemma3_5`、`LengthAlgebra/PerfectBaseChange` |
+| 3 | 抽象層に `iteratedZeroCone_euler_eq_length_zero`（振幅 `[-n, 0]` なら Euler 評価は反復錐の第零次の長さ）を置き、`iteratedZeroCone_euler_lower_bound` をその系にした。ランク版は Betti 計算 `completedRankBetti_koszulTower_top` を一つの補題にし、`completedRankEuler_eq_koszul_zero_limit(_of_koszul)` と `completedRankEuler_koszul_lower_bound` を抽象定理の適用にした。抽象論を再証明していた `completedRankEuler_lower_bound_of_vanishing` と、不要になった `completedRankHomology_koszul_zero_iso` は削除。スカラー列は `koszulScalars`（`LengthAlgebra/PerfectVanishing`）を再利用（`koszulPowScalars`） | `CategoryTheory/IteratedCone`、`Asymptotic/RankVanishing`、`Asymptotic/RankMinimalLowerBound` |
+| 5 | `Section5.lemma_5_3_of_cm`：λ-CM 性（`koszulAcyclic_of_cm`、商の有限性）と `x` の像がパラメータ系であることから `lemma_5_3` の Koszul 入力を供給する。それまで λ-CM の補題群は呼び出し元がなかった | `Paper/Section5/ParameterQuotientCM`（新規） |
+
+項目 4（有限近似の抽象化、§4.5 の定義 approx と定理 approx-exist の Lean 版）は保留。
+`Paper/Section2/TowerApproximation.lean`（約 1000 行）の `exists_tower_approximation_B` は具体的な塔 `TS A t p T = Tower A t p ⊗ T` と `μT` に対して述べられており、
+抽象化には (i) 塔と整合する長さ（§4.5 の定義）を `LengthAlgebra` に置く、(ii) 近似列の条件（増大度・消滅・Tor の極限）を塔に依存しない Prop にする、
+(iii) 既存の証明を「塔の各段の長さの公式」と「核の評価」を入力とする形に分ける、の三段階が要る。
+Section2 は並行作業の範囲でもあるので、別の作業として計画する。
+
+検証：全体 `lake build` 成功（3707 ジョブ、変更したファイルに警告なし）。`#print axioms`：新しい宣言と書き換えた比較定理は
+`propext`・`Classical.choice`・`Quot.sound` のみ。`lemma_3_5c`、`theorem_4_7_K0`、`lemma_5_3_of_cm` の `sorryAx` は既存の引用
+（`theorem_3_1_K0`、`supportedRankK0_descent`、正則パラメータ）に由来する。解説の Lean 注記（系 B-compare-base、定理 C-norm、
+定理 asymp-norm、命題 35c、命題 paper-param、補題 B-h0、補題 nitasymp、補題 asymp-h0）を更新し、`\ld{...}` 228 件を確認した。

@@ -3,6 +3,7 @@ module
 public import SerrePositivity.LengthAlgebra.PerfectHomology
 public import SerrePositivity.PerfectComplex.BaseChange
 public import SerrePositivity.PerfectComplex.K0Comparison
+public import SerrePositivity.PerfectComplex.K0Functoriality
 
 /-! # 係数変更による有限射影複体の Euler 評価 -/
 
@@ -57,6 +58,16 @@ lemma perfectBaseChangeEulerK0_comp {A : Type u} [CommRing A] (α : A →+* R)
   dsimp only [perfectBaseChangeEulerK0]
   rw [AddMonoidHom.comp_assoc, ← TriangulatedK0.map_comp]
   rw [TriangulatedK0.map_natIso _ (supportedPerfectChangeRingCompIso α w φ)]
+  rfl
+
+/-- 恒等係数変更後の評価は、元の Euler 評価そのものである。 -/
+lemma perfectBaseChangeEulerK0_id {I : Ideal R} (mu : NormalizedLength R I) (hIfg : I.FG)
+    (hI : I ≤ (Ideal.span (Set.range z)).radical) (hfinite : KoszulFinite mu z) :
+    perfectBaseChangeEulerK0 (RingHom.id R) mu hIfg z hI hfinite =
+      perfectEulerK0 mu hIfg z hI hfinite := by
+  dsimp only [perfectBaseChangeEulerK0]
+  rw [TriangulatedK0.map_natIso _ (supportedPerfectChangeRingIdIso z), TriangulatedK0.map_id,
+    AddMonoidHom.comp_id]
   rfl
 
 end SerrePositivity.LengthAlgebra

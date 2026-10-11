@@ -145,6 +145,20 @@ lemma iteratedZeroCone_length_lower_bound (l : A → ℝ)
   exact additiveLength_le_of_epi l ha hn f
 
 include hT in
+/-- 振幅が錐の個数に等しいとき、初項の Euler 評価は反復錐の第零次の長さに等しい。
+消滅（`iteratedZeroCone_vanishing`）で初項のホモロジーが第零次に集中し、
+第零次は反復錐で変わらない（`iteratedZeroCone_homology_zero_iso`）。 -/
+theorem iteratedZeroCone_euler_eq_length_zero (l : A → ℝ)
+    (hi : ∀ {Y Z : A}, (Y ≅ Z) → l Y = l Z) (hz : ∀ Y, IsZero Y → l Y = 0)
+    (h : ∀ q : ℤ, q < -(n : ℤ) ∨ 0 < q → IsZero ((F.shift q).obj (X n))) :
+    homologicalEuler l F (X 0) = l ((F.shift (0 : ℤ)).obj (X n)) := by
+  have hv (q : ℤ) (hq : q ≠ 0) : IsZero ((F.shift q).obj (X 0)) :=
+    iteratedZeroCone_vanishing X ι π n hT F (-(n : ℤ)) 0 h q (by omega)
+  rw [homologicalEuler_eq_length_zero l F hz (X 0) hv]
+  obtain ⟨e⟩ := iteratedZeroCone_homology_zero_iso X ι π n hT F (fun q hq ↦ hv q (by omega))
+  exact hi e
+
+include hT in
 /-- 振幅が錐の個数に等しいとき、全射の下界は Euler 評価の下界になる。 -/
 theorem iteratedZeroCone_euler_lower_bound (l : A → ℝ)
     (hi : ∀ {Y Z : A}, (Y ≅ Z) → l Y = l Z)
@@ -153,11 +167,8 @@ theorem iteratedZeroCone_euler_lower_bound (l : A → ℝ)
     (h : ∀ q : ℤ, q < -(n : ℤ) ∨ 0 < q → IsZero ((F.shift q).obj (X n)))
     {Y : A} (f : (F.shift (0 : ℤ)).obj (X n) ⟶ Y) [Epi f] :
     l Y ≤ homologicalEuler l F (X 0) := by
-  have hv (q : ℤ) (hq : q ≠ 0) : IsZero ((F.shift q).obj (X 0)) :=
-    iteratedZeroCone_vanishing X ι π n hT F (-(n : ℤ)) 0 h q (by omega)
-  rw [homologicalEuler_eq_length_zero l F hz (X 0) hv]
-  exact iteratedZeroCone_length_lower_bound X ι π n hT F l hi ha hn
-    (fun q hq ↦ hv q (by omega)) f
+  rw [iteratedZeroCone_euler_eq_length_zero X ι π n hT F l hi hz h]
+  exact additiveLength_le_of_epi l ha hn f
 
 section Scalar
 

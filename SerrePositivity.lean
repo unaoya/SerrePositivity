@@ -68,6 +68,7 @@ public import SerrePositivity.Paper.Lemma5_2
 public import SerrePositivity.Paper.Section4.Foundations
 public import SerrePositivity.Paper.Section5.Positivity
 public import SerrePositivity.Paper.Section5.ParameterQuotient
+public import SerrePositivity.Paper.Section5.ParameterQuotientCM
 public import SerrePositivity.Paper.Section5.Preparation
 public import SerrePositivity.Paper.Section5.AsymptoticPositivity
 

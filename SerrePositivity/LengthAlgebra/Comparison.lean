@@ -6,6 +6,8 @@ public import SerrePositivity.CategoryTheory.EulerComparison
 /-! # 二つの長さ付き代数による有限射影版の対称な比較
 
 群は評価元の K₀ にのみ作用する。評価先の環・長さの同変性は要求しない。
+共通定理 `homologicalEulerK0_pullback_conjSum_eq_of_base_formula` に、基底公式
+`perfectBaseChangeEulerK0_eq_koszulEuler_mul` と係数変更の合成 `perfectBaseChangeEulerK0_comp` を入れる。
 -/
 
 @[expose] public section
@@ -38,17 +40,28 @@ theorem perfectEuler_conjSum_eq
     (y : TriangulatedK0 (SupportedPerfectHomotopy (α ∘ z))) :
     ∑ g : G, perfectBaseChangeEulerK0 φ lam hfg (α ∘ z) hJ hfin (g • y) =
       ∑ g : G, perfectBaseChangeEulerK0 ψ mu hIfg (α ∘ z) hI hfinD (g • y) := by
-  apply conjSum_eq (TriangulatedK0.map (supportedPerfectChangeRing α z)) _ _ _ hdesc y
-  intro x
-  change ((perfectBaseChangeEulerK0 φ lam hfg (α ∘ z) hJ hfin).comp
-    (TriangulatedK0.map (supportedPerfectChangeRing α z))) x =
-      ((perfectBaseChangeEulerK0 ψ mu hIfg (α ∘ z) hI hfinD).comp
-        (TriangulatedK0.map (supportedPerfectChangeRing α z))) x
-  rw [perfectBaseChangeEulerK0_comp, perfectBaseChangeEulerK0_comp,
-    perfectBaseChangeEulerK0_eq_koszulEuler_mul (φ.comp α) lam hfg z hJ hfin hz hK,
-    perfectBaseChangeEulerK0_eq_koszulEuler_mul (ψ.comp α) mu hIfg z hI hfinD hz hK]
-  change ((koszulEuler lam (φ ∘ α ∘ z) • ordinaryBaseEulerK0 z hz).comp perfectToFreeK0) x =
-    ((koszulEuler mu (ψ ∘ α ∘ z) • ordinaryBaseEulerK0 z hz).comp perfectToFreeK0) x
-  rw [hc]
+  -- 基底公式：係数変更の合成と、基底上の Koszul 生成による公式
+  have hC := (perfectBaseChangeEulerK0_comp φ lam hfg α z hJ hfin).trans
+    (perfectBaseChangeEulerK0_eq_koszulEuler_mul (φ.comp α) lam hfg z hJ hfin hz hK)
+  have hD := (perfectBaseChangeEulerK0_comp ψ mu hIfg α z hI hfinD).trans
+    (perfectBaseChangeEulerK0_eq_koszulEuler_mul (ψ.comp α) mu hIfg z hI hfinD hz hK)
+  -- 共通定理の適用。評価は `C`、`D` 上の Euler 評価を係数変更で引き戻したもの
+  exact homologicalEulerK0_pullback_conjSum_eq_of_base_formula _ _ _ _ _ _ _ _ _ _ _ _
+    (TriangulatedK0.map (supportedPerfectChangeRing φ (α ∘ z)))
+    (TriangulatedK0.map (supportedPerfectChangeRing ψ (α ∘ z)))
+    (TriangulatedK0.map (supportedPerfectChangeRing α z))
+    (fun x ↦ ordinaryBaseEulerK0 z hz (perfectToFreeK0 x))
+    (koszulEuler lam (φ ∘ α ∘ z)) (koszulEuler mu (ψ ∘ α ∘ z))
+    (fun x ↦ by
+      have := DFunLike.congr_fun hC x
+      simp only [perfectBaseChangeEulerK0, perfectEulerK0, RingHom.coe_comp, Function.comp_assoc,
+        AddMonoidHom.comp_apply, AddMonoidHom.smul_apply, smul_eq_mul] at this
+      exact this)
+    (fun x ↦ by
+      have := DFunLike.congr_fun hD x
+      simp only [perfectBaseChangeEulerK0, perfectEulerK0, RingHom.coe_comp, Function.comp_assoc,
+        AddMonoidHom.comp_apply, AddMonoidHom.smul_apply, smul_eq_mul] at this
+      exact this)
+    hc hdesc y
 
 end SerrePositivity.LengthAlgebra

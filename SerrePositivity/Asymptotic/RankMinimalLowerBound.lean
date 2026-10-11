@@ -6,8 +6,8 @@ public import SerrePositivity.PerfectComplex.MinimalLowerBound
 
 /-! # ランク商の Euler 評価と極小性による下界
 
-共通の反復錐の消滅・第零次同型と、実際の Koszul ホモロジーから構成した全射を接続する。
-元の複体列の一様支持は要求せず、商での支持と零作用だけを使う。
+共通の反復錐定理による第零次への集中（`RankVanishing`）と、実際の Koszul ホモロジーから
+構成した全射を接続する。元の複体列の一様支持は要求せず、商での支持と零作用だけを使う。
 -/
 
 @[expose] public section
@@ -35,41 +35,15 @@ variable {R : Type u} [CommRing R] [Nontrivial R] {s : ℕ → ℕ} {J : Ideal R
 
 include hv hx hzero hbound
 
-/-- 振幅 `[-e,0]` では、Euler 評価は実際の Koszul 第零ホモロジーの正規化極限。 -/
+/-- 振幅 `[-e,0]` では、Euler 評価は実際の Koszul 第零ホモロジーの正規化極限。
+環自身の Koszul 消滅と自由列の振幅から (Kosₘ) を確かめ、共通定理の適用
+`completedRankEuler_eq_koszul_zero_limit_of_koszul` に渡す。 -/
 theorem completedRankEuler_eq_koszul_zero_limit :
     completedRankEuler lam hfg z hJ hfin U hU hs (completedComplexObj z K hK h) =
       normalizedLimit U s (fun t ↦ (lam.len
-        ((koszulComplexOn (fun j ↦ z j ^ v) ((evaluateComplex t).obj K)).homology 0)).toReal) := by
-  let X := completedComplexObj z K hK h
-  have hz (q : ℤ) (hq : q ≠ 0) :
-      IsZero ((completedRankHomology lam hfg z hJ hfin U hU hs q).obj X) :=
-    completedRankHomology_vanishing lam hfg z hJ hfin U hU hs K hK h v hv hx hzero
-      (-(e : ℤ)) 0 hbound q (by omega)
-  obtain ⟨eq⟩ := completedRankHomology_koszul_zero_iso lam hfg z hJ hfin U hU hs
-    K hK h v hx (fun q hq ↦ hz q (by omega))
-  rw [completedRankEuler_eq_homologicalEuler,
-    homologicalEuler_eq_length_zero (lengthQuotientValue lam s U hU hs)
-      (completedRankHomology lam hfg z hJ hfin U hU hs 0)
-      (fun Y hY ↦ (lengthQuotientValue_eq_zero_iff lam s U hU hs Y).mpr hY) X
-      (fun q hq ↦ (hz q hq).of_iso
-        ((completedRankHomologyShiftNatIso lam hfg z hJ hfin U hU hs q).app X))]
-  calc
-    _ = completedRankBetti lam hfg z hJ hfin U hU hs X 0 :=
-      lengthQuotientValue_iso lam s U hU hs
-        ((completedRankHomologyShiftNatIso lam hfg z hJ hfin U hU hs 0).app X)
-    _ = completedRankBetti lam hfg z hJ hfin U hU hs
-        (completedComplexObj z (sequenceKoszul (fun j ↦ z j ^ v) K)
-          (sequenceKoszul_bounded _ K hK)
-          (sequenceKoszul_map_supported completedSequenceFunctor z _ K hK h)) 0 :=
-      lengthQuotientValue_iso lam s U hU hs eq
-    _ = _ := by
-      rw [completedRankBetti_complex z lam hfg hJ hfin U hU hs _ _
-        (sequenceKoszul_pow_supported z v hv K hK)]
-      apply congrArg (normalizedLimit U s)
-      funext t
-      exact congrArg ENNReal.toReal (lam.len_congr _ _
-        (((HomologicalComplex.homologyFunctor _ _ 0).mapIso
-          (evaluateSequenceKoszulIso (fun j ↦ z j ^ v) K t)).toLinearEquiv))
+        ((koszulComplexOn (fun j ↦ z j ^ v) ((evaluateComplex t).obj K)).homology 0)).toReal) :=
+  completedRankEuler_eq_koszul_zero_limit_of_koszul lam hfg z hJ hfin U hU hs K hK h v hv hx
+    (sequenceKoszul_normalizedLimit_amplitude lam hfg z hJ U v hzero K (-(e : ℤ)) 0 hbound)
 
 /-- 極小性の具体的な全射から得られる Euler 下界。
 イデアルは極大イデアルに限らず、微分の座標とパラメータの冪を含めばよい。 -/
