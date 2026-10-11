@@ -182,7 +182,7 @@ $\chi$ を変えずに $D$ と $E$ を1つずつ置き換える。個々の値�
 \toprule
 共通の道具（§\ref{sec:abstract}） & perfect 複体（§\ref{sec:perfect}、§\ref{sec:paper-compare}） & ランク無視の圏（§\ref{sec:asymp}、§\ref{sec:paper-compare}） \\
 \midrule
-Euler 評価 & 命題~\ref{prop:35a} & 命題~\ref{prop:43} \\
+Euler 評価 & 系~\ref{cor:35a} & 命題~\ref{prop:43} \\
 共役和の比較 & 命題~\ref{prop:35c}（置き換え 1） & 定理~\ref{thm:47}（置き換え 2） \\
 反復錐による消滅 & 補題~\ref{lem:nit} & 系~\ref{cor:nitasymp}、補題~\ref{lem:lambdaAB} \\
 第零次の下界 & 補題~\ref{lem:h0bound} & 系~\ref{cor:nitasymp}（正値性） \\
@@ -507,8 +507,8 @@ $\m_D^N\subseteq\m_A D$ となる $N$ があるので、$\m_A C$-冪ねじれと
 \toprule
 §\ref{sec:abstract} の結論 & この実現で確かめる入力 & 場所 & 得られる結論 \\
 \midrule
-Euler 評価（命題~\ref{prop:B-euler}） & 台と Koszul 有限性から (Fin)。シフト・長完全列・有界性 & §\ref{sec:perfect-eval} & 命題~\ref{prop:C-euler}、\ref{prop:35a} \\
-共役和の比較（命題~\ref{prop:B-compare}） & (a) $K(z)$ が剰余体の分解であることと $e_\lambda(z;C)$ の値。(b) 降下は仮定として受け取る & §\ref{sec:planC-comparison} & 命題~\ref{prop:C-base}、定理~\ref{thm:C-norm} \\
+Euler 評価（命題~\ref{prop:B-euler}） & 台と Koszul 有限性から (Fin)。シフト・長完全列・有界性 & §\ref{sec:perfect-eval} & (Fin) は命題~\ref{prop:C-euler}、\ref{prop:35a}。$K_0$ 上の準同型は系~\ref{cor:C-euler}、\ref{cor:35a} \\
+共役和の比較（命題~\ref{prop:B-compare}） & (a) 係数変更との両立（命題~\ref{prop:C-basechange}）、$K(z)$ が剰余体の分解であることと $e_\lambda(z;C)$ の値。(b) 降下は仮定として受け取る & §\ref{sec:planC-comparison} & 命題~\ref{prop:C-base}、定理~\ref{thm:C-norm} \\
 反復錐による消滅（補題~\ref{lem:B-nit}） & (Supp)：零ホモトピー。(Kos$_m$)：自由振幅と正次数の Koszul 長さ零 & §\ref{sec:perfect-vanishing} & 補題~\ref{lem:nit} \\
 第零次の下界（補題~\ref{lem:B-h0}） & 極小性による全射 & §\ref{sec:perfect-vanishing} & 補題~\ref{lem:h0bound} \\
 \bottomrule
@@ -568,20 +568,13 @@ $C = T$、$\lambda = \len_T$ としても成り立つ。
 Koszul 有限性から $M_v<\infty$ である（$\lambda$-平坦でランク $r$ なら、系~\ref{cor:allv} より $M_v = v^e r$）。普通の長さの側でも、$T$ はネーターで $H_j(z^v;T)$ は $(z^v)$ で消される有限生成加群なので $M_v<\infty$。この補題は §\ref{sec:asymp} で列に一様に適用する。
 \lean{\ld{PerfectComplex.KoszulLengthBounds}（\ld{lambdaHomology_le_of_retract}、\ld{lambdaHomology_koszulComplexOn_le_sum} ほか。証明済み）。}
 
-\begin{proposition}[有限性とホモロジー的評価]\label{prop:C-euler}
+\begin{proposition}[有限性とホモロジー的関手]\label{prop:C-euler}
 $(C,\lambda)$ を Koszul 有限とし、$S\to C$ を $A$ 代数の準同型とする。このとき
 \[
  H_i^C(P)=q_{\mathrm{fin}}H_i(P\otimes_S^LC)
  \quad(P\in\Perf_{(z)}(S))
 \]
-は長さ付きアーベル圏 $\mathcal{A}_\lambda^{\mathrm{fin}}$ に値をとるホモロジー的関手を定め、(Fin) を満たす。したがって
-\[
- \chi_C(P)=\sum_i(-1)^i\lambda H_i(P\otimes_S^LC)
-\]
-は $K_0(\Perf_{(z)}(S))\to\R$ の準同型になる。さらに、$S\to S'\to C$ が与えられれば
-\[
- \chi_C(P\otimes_S^LS')=\chi_C(P).
-\]
+は長さ付きアーベル圏 $\mathcal{A}_\lambda^{\mathrm{fin}}$ に値をとるホモロジー的関手で、(Fin) を満たす。
 \end{proposition}
 \begin{proof}
 補題~\ref{lem:C-nil} により全ての $z_j^v$ が $P$ 上で零ホモトピックとなる共通の $v\ge1$ を選べる。係数拡大後の $Q=P\otimes_S C$ でも同じ作用が零なので、ホモロジーは $(z)C$-冪ねじれである。また $Q$ は $K_v\otimes Q$ の直和因子である。
@@ -593,20 +586,51 @@ $P$ の有限射影項 $P_k$ を有限自由項 $S^{r_k}$ の直和因子とし�
 \]
 となる。この説明は有限自由項に限った上界を有限射影項へ拡張している。
 
-係数拡大は導来圏で完全三角を保ち、ホモロジーの長完全列は全て有限な冪ねじれ加群に入るので、完全な $q_{\mathrm{fin}}$ を適用できる。これによりホモロジー的関手と (Fin) を得る。Euler 評価は命題~\ref{prop:B-euler} による。最後の等式は導来テンソルの結合律から従い、係数拡大した $P$ の台も零作用から保たれる。
+係数拡大は導来圏で完全三角を保ち、ホモロジーの長完全列は全て有限な冪ねじれ加群に入るので、完全な $q_{\mathrm{fin}}$ を適用できる。これによりホモロジー的関手を得る。perfect 複体は有界なので、非零の次数は有限個であり、上の評価とあわせて (Fin) を得る。
 \end{proof}
-この命題では $S$ の局所性、ネーター性、$A$ 上の有限性や平坦性を使わない。大きな商の有限部分を評価先にした場合も、命題~\ref{prop:B-finite-part} の同値により同じ Euler 評価となる。
+この命題では $S$ の局所性、ネーター性、$A$ 上の有限性や平坦性を使わない。
+
+\begin{corollary}[Euler 評価]\label{cor:C-euler}
+命題~\ref{prop:C-euler} の設定で、
+\[
+ \chi_C(P)=\sum_i(-1)^i\lambda H_i(P\otimes_S^LC)
+\]
+は準同型 $K_0(\Perf_{(z)}(S))\to\R$ を定める。
+\end{corollary}
+\begin{proof}
+命題~\ref{prop:C-euler} により命題~\ref{prop:B-euler} の仮定がそろう。
+\end{proof}
+大きな商の有限部分を評価先にした場合も、命題~\ref{prop:B-finite-part} の同値により同じ Euler 評価となる。
 \lean{\ld{LengthAlgebra.PerfectHomology}、\ld{PerfectBaseChange}、\ld{PerfectHomologyComparison}。実装は、より一般の有限生成イデアル $J$ と $J\subseteq\sqrt{(z)C}$ を入力にとる。本文の $J=(z)C$ ではこの条件は自動的に満たされる。}
 
-\begin{proposition}\orig{Lemma 3.5a}\label{prop:35a}\label{prop:check-perfect-euler}
-$\chi_{\ord}$、$\chi_C$ は $\mathcal{K}_T$ の全ての対象で有限で、準同型
+\begin{proposition}[係数変更との両立]\label{prop:C-basechange}
+$S\to S'\to C$ を $A$ 代数の準同型とし、$(C,\lambda)$ を Koszul 有限とする。$P\in\Perf_{(z)}(S)$ について $P\otimes_S^LS'\in\Perf_{(z)}(S')$ で、
+\[
+ \chi_C(P\otimes_S^LS')=\chi_C(P).
+\]
+つまり、係数拡大 $K_0(\Perf_{(z)}(S))\to K_0(\Perf_{(z)}(S'))$ と系~\ref{cor:C-euler} の二つの Euler 評価は可換である。
+\end{proposition}
+\begin{proof}
+係数拡大した複体でも $z_j^v$ の作用は零ホモトピックなので、補題~\ref{lem:C-nil} により台は $V((z)S')$ に入る。導来テンソルの結合律 $(P\otimes_S^LS')\otimes_{S'}^LC\cong P\otimes_S^LC$ から、各ホモロジーの長さが一致する。
+\end{proof}
+\lean{\ld{LengthAlgebra.PerfectBaseChange}。\ld{perfectBaseChangeEulerK0} は評価をこの係数拡大と合成して定義し、\ld{perfectBaseChangeEulerK0_comp} が両立を与える（証明済み）。}
+
+\begin{proposition}\orig{Lemma 3.5a の前半}\label{prop:35a}\label{prop:check-perfect-euler}
+$T$ がネーターで $T/(z)T$ が有限長とする。$P\in\mathcal{K}_T$ について、有限長 $T$ 加群の圏に値をとる $H_i(P)$ と、$\mathcal{A}_\lambda^{\mathrm{fin}}$ に値をとる $H_i^C(P)$ は、ともに (Fin) を満たすホモロジー的関手である。
+\end{proposition}
+\begin{proof}
+正規化側は命題~\ref{prop:C-euler}（$S=T$）である。普通の側では、台から共通の $v$ を選んで全ての $z_j^v$ の零ホモトピーを得て、補題~\ref{lem:koszulbound} を $C=T$、$\lambda=\len_T$ で使う（$M_v<\infty$ は例~\ref{ex:C-levels}）。複体は有界で、ホモロジーの長完全列とシフト同型はそのまま有限長加群の圏に入る。
+\end{proof}
+
+\begin{corollary}\orig{Lemma 3.5a}\label{cor:35a}
+$\chi_{\ord}$、$\chi_C$ は準同型
 \[
   \chi_{\ord},\ \chi_C\colon K_0(\mathcal{K}_T)\to\R
 \]
 を定める。
-\end{proposition}
+\end{corollary}
 \begin{proof}
-台から共通の $v$ を選んで全ての $z_j^v$ の零ホモトピーを得る。補題~\ref{lem:koszulbound} が各ホモロジーの長さの有限性を与えるので、上の二つの評価先に値をとる関手を構成できる。複体は有界で、商関手は完全だから、ホモロジーの長完全列とシフト同型がそのまま移る。これで (Fin) が確認でき、準同型の存在は共通の命題~\ref{prop:B-euler} の適用である。
+命題~\ref{prop:35a} により、命題~\ref{prop:B-euler} を二つの評価に適用できる。
 \end{proof}
 \lean{\ld{Paper.lemma_3_5a}、\ld{lemma_3_5a_lam_finite}（証明済み）。}
 
@@ -649,7 +673,7 @@ $A$ を正則局所環、$z$ を正則パラメータ系、$T$ を可換 $A$ 代
 \]
 \end{theorem}
 \begin{proof}
-命題~\ref{prop:C-euler} により、二つの評価は命題~\ref{prop:B-euler} の Euler 評価で、係数変更と両立する。命題~\ref{prop:C-base} により、どちらも $f$ の像の上で $e_{\lambda_i}(z;C_i)\,\chi_A$ に等しいので、仮定から命題~\ref{prop:B-compare} の (a) が成り立つ。(b) は仮定である。命題~\ref{prop:B-compare} を適用する。
+系~\ref{cor:C-euler} により、二つの評価は $K_0$ 上の Euler 評価であり、命題~\ref{prop:C-basechange} により係数変更と両立する。命題~\ref{prop:C-base} により、どちらも $f$ の像の上で $e_{\lambda_i}(z;C_i)\,\chi_A$ に等しいので、仮定から命題~\ref{prop:B-compare} の (a) が成り立つ。(b) は仮定である。命題~\ref{prop:B-compare} を適用する。
 \end{proof}
 \lean{\ld{LengthAlgebra.Comparison} の \ld{perfectEuler_conjSum_eq}（Koszul 分解と整数倍の降下を明示的に受け取り、証明済み）。Lean の証明は群論の \ld{conjSum_eq} を直接使い、命題~\ref{prop:B-compare} の \ld{homologicalEulerK0_conjSum_eq} は経由していない。評価そのものは \ld{homologicalEulerK0} として定義されているので、内容は同じである。}
 $T$ 上の群作用が $A$ を固定すれば、ひねり $P\mapsto P^g$ がこの $K_0$ 作用を与える。有限射影版での作用、係数変更との両立、有限自由モデルとの同変な比較は \ld{PerfectComplex.K0Functoriality} で構成されている。局所環 $T$ では旧モデルの降下入力も移せる。
@@ -1187,7 +1211,7 @@ $\lambda$-平坦な長さ付き代数の存在 & Monsky、Roberts（Ma, Thm 2.4�
 補題~\ref{lem:34} & Lemma 3.4 & 剰余体での判定と有限長加群の公式は引用なしで証明済み \\
 系~\ref{cor:allv}、命題~\ref{prop:cmflat} & (3.9) との同値など & 正則列・Koszul 分解を明示して証明済み \\
 \multicolumn{3}{l}{\textbf{§\ref{sec:perfect} perfect 複体での評価}} \\
-補題~\ref{lem:C-nil}、\ref{lem:koszulbound}、命題~\ref{prop:C-euler}、\ref{prop:35a} & Lemma 3.5a & 任意の可換環の有限射影複体で、支持の対応と有限 Euler 評価を証明済み \\
+補題~\ref{lem:C-nil}、\ref{lem:koszulbound}、命題~\ref{prop:C-euler}、\ref{prop:C-basechange}、\ref{prop:35a}、系~\ref{cor:C-euler}、\ref{cor:35a} & Lemma 3.5a & 任意の可換環の有限射影複体で、支持の対応と有限 Euler 評価を証明済み \\
 命題~\ref{prop:C-base}、定理~\ref{thm:C-norm} & 基底公式、対称な比較 & 基底の Koszul 分解と降下を明示した形で証明済み \\
 補題~\ref{lem:nit}、\ref{lem:h0bound} & 消滅と下界 & Koszul 消滅・極小性から証明済み \\
 補題~\ref{lem:lambdaAB} & Lemma 5.3 & Koszul 条件・有限分解を明示して証明済み。$\lambda$-CM 性から Koszul 条件を得る部分も証明済み \\
