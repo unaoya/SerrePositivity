@@ -671,7 +671,7 @@ $P$ が $0$ 次から $m$ 次に有限射影項をもつなら、$K_v\otimes P\o
 この全射と長さの単調性は $\lambda$-平坦性を使わない。$\lambda$-平坦性による高次の消滅と組み合わせて初めて、$m=e$ のとき Euler 評価の下界になる。
 
 \begin{lemma}[新交叉型の消滅]\label{lem:nit}\label{prop:check-perfect-vanishing}
-$e = \dim A$ とする。$P\in\mathcal{K}_T$ が $0$ 次から $m$ 次に有限自由な項をもつ複体で表されるなら、
+$e$ を列 $z$ の長さとし、全ての $v\ge1$ と $j>0$ で $\lambda H_j(z^v;C)=0$ とする。$P\in\mathcal{K}_T$ が $0$ 次から $m$ 次に有限射影な項をもつ複体で表されるなら、
 \[
   \lambda H_i(P\otimes_T C) = 0 \qquad (i > m - e).
 \]
@@ -680,8 +680,10 @@ $e = \dim A$ とする。$P\in\mathcal{K}_T$ が $0$ 次から $m$ 次に有限�
 \begin{proof}
 台から $z_j^v$ の零ホモトピーを選び、条件 (Supp) を得る。$P$ の項によるフィルトレーションの各段は $K(z^v;C)$ の有限直和のシフトである。正次数の Koszul ホモロジーの長さは零なので、評価先では各段のホモロジーはその項の次数に集中する。長完全列から $H_n^C(K_v\otimes P)=0$（$n\notin[0,m]$）、すなわち (Kos$_m$) が従う。あとは共通の補題~\ref{lem:B-nit} により零対象としての消滅を得て、その長さをとればよい。
 \end{proof}
+$A$ が正則局所環、$z$ が正則パラメータ系で $(C,\lambda)$ が $\lambda$-平坦なら、$e=\dim A$ で、Koszul ホモロジーの仮定は系~\ref{cor:allv} から出る。この補題は §\ref{sec:param} で $(A,z,T)=(R,x,R)$ として使う。そこでは列の長さ $e=h$ と $\dim R$ が異なるので、$e$ を列の長さとして述べておく。
+
 古典的には、$B$ を巨大 CM 代数、$F$ を長さ $m$ で有限長ホモロジーの有限自由複体とすると、同じ議論で $H_i(F\otimes B) = 0$（$i>m-e$）となる。$m = e$ で $\m B\ne B$ と合わせると、Hochster による新交叉定理の証明になる（cf.\ Iyengar--Ma--Schwede--Walker, \emph{Maximal Cohen--Macaulay complexes and their uses}, Thm.~2.4 とその前後）。
-\lean{\ld{LengthAlgebra.PerfectVanishing}（Koszul 消滅を入力として証明済み。有限射影項でも成立し、消滅自体は Koszul 有限性を使わない）。}
+\lean{\ld{LengthAlgebra.PerfectVanishing} の \ld{lambdaHomology_projective_vanishing}（Koszul 消滅を入力として証明済み。$e$ は列の長さで、有限射影項でも成立し、消滅自体は Koszul 有限性を使わない）。}
 
 \begin{lemma}[$0$ 次の下界]\label{lem:h0bound}
 補題~\ref{lem:nit} の $P$ の $0$ 次の項を $T^{\oplus\beta_0}$ とし、$P$ が $1$ 次で極小（$d_1$ の成分が $\m_T$ に入る）とする。このとき
@@ -714,7 +716,7 @@ $R$ を次元 $d$ の正則局所環、$R\to D$ を有限な局所準同型（$D
 \begin{proof}
 まず $K(x;R)$ が $B$ の自由分解であることと、正次数の $H_q(x;C)$ の長さが零であることから、有限表示を用いた次数移動で二つの Tor の長さの一致と有限性を示す（§\ref{sec:planB-param}）。
 
-消滅には、$L$ の $R$ 上の長さ $d$ 以下の有限自由分解 $P$ を使う。$x_jL=0$ なので $x_j$ の作用は $P$ 上で零ホモトピックである。$\lambda$-CM 性から、$x^v$ の正次数の Koszul ホモロジーは全て長さ零になる。項によるフィルトレーションで $K(x^v)\otimes_R P\otimes_R C$ の商値ホモロジーが $[0,d]$ に集中することを確認し、反復錐の消滅定理（補題~\ref{lem:B-nit}、$e=h$、$m=d$）を適用する。
+消滅は、補題~\ref{lem:nit} を $(A,z,T)=(R,x,R)$ に当てはめたものである。$L$ の $R$ 上の長さ $d$ 以下の有限自由分解 $P$ をとる。$x_jL=0$ なので $P$ のホモロジーの台は $V((x))$ に入り、$P\in\Perf_{(x)}(R)$ である。$x$ の像は $D$ のパラメータ系なので、$\lambda$-CM 性から全ての $x^v$ について正次数の Koszul ホモロジーの長さは零になる。列の長さ $e=h$、$m=d$ として補題~\ref{lem:nit} を使うと、$\lambda\Tor_i^R(C,L)=\lambda H_i(P\otimes_R C)=0$（$i>d-h$）を得る。
 \end{proof}
 $B$ は次元 $d-h$ の完全交叉局所環だが、一般には正則ではない。次数の上界は $B$ の大域次元ではなく、正則環 $R$ 上の分解と Koszul 消滅から得る。古典的には、有限 CM $R$ 加群 $M$ の射影次元を $d-\dim M$ とする Auslander--Buchsbaum の公式に対応する。
 \lean{\ld{ParamQuot.torClaim}、\ld{ParamQuot.len_torAlg_eq_zero}（正則列・Koszul 消滅・有限自由分解などを明示した形で証明済み）。$\lambda$-CM 性から全ての冪の Koszul 消滅と有限性を得る部分は \ld{LengthAlgebra.CohenMacaulay} の \ld{koszulAcyclic_of_cm}、\ld{koszulFinite_of_cm}（証明済み）。両者を $\lambda$-CM 性を仮定とする一つの定理にまとめたものは置いていない。}
@@ -728,7 +730,8 @@ $B$ は次元 $d-h$ の完全交叉局所環だが、一般には正則ではな
 実装は有限表示 $0\to L'\to B^a\to L\to0$ を使う次数移動による。$B^a$ に対する高次 Tor の長さ零を Koszul 分解から得て、二つの長完全列を比較する。零次は $C$ 線形なテンソル積の同型で同定し、次数に関する帰納法で等式と有限性を示す。この証明の結論は長さの一致であり、二つの Tor を長さの商で同定する自然同型の構成までは主張しない。
 \lean{\ld{IntersectionMultiplicity.ParameterQuotientTor} の \ld{ParamQuot.torClaim}（証明済み）。}
 
-次数の上界には、$L$ の $R$ 上の長さ $d$ 以下の有限自由分解と $x_jL=0$ を使う。$x$ の長さを $h$ とし、全ての $x^v$ の Koszul ホモロジーについて正次数の長さが零、$0$ 次の長さが有限とする。$x$ に台をもつ perfect 複体の圏で、$z=x$、$e=h$、$m=d$ として補題~\ref{lem:B-nit} を適用する。分解上の $x_j$ の作用は零ホモトピックであり、(Kos$_d$) は項によるフィルトレーションから出る。したがって $i>d-h$ では $\lambda\Tor_i^R(C,L)=0$ となる。$R$ が次元 $d$ の正則局所環で $L$ が有限生成なら、必要な分解の長さの上界が得られる。
+次数の上界は、補題~\ref{lem:nit} を $(R,x)$ に当てはめたものである。入力は、列 $x$ の長さ $h$、全ての $x^v$ について正次数の Koszul ホモロジーの長さ零、$L$ の $R$ 上の長さ $d$ 以下の有限自由分解の三つである。分解上の $x_j$ の作用は $x_jL=0$ から零ホモトピックになり、補題~\ref{lem:nit} の (Supp) と (Kos$_d$) がそろう。したがって $i>d-h$ では $\lambda\Tor_i^R(C,L)=0$ となる。$R$ が次元 $d$ の正則局所環で $L$ が有限生成なら、必要な分解の長さの上界が得られる。
+\lean{\ld{ParamQuot.len_torAlg_eq_zero} は、$C\otimes_R P$ に \ld{LengthAlgebra.lambdaHomology_projective_vanishing}（補題~\ref{lem:nit}）を適用して証明している。}
 
 $R$ が正則で $x$ が正則列でも、$B$ は一般には正則局所環ではない。例えば $k[[u,v]]/(u^2)$ がそうである。本文の補題~\ref{lem:lambdaAB} と §\ref{sec:core} でもこの議論を使う。消滅は $B$ の大域次元ではなく $R$ 上の分解の長さから得る。
 
