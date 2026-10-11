@@ -61,7 +61,7 @@
 この解説では、証明を次のように整理して述べる。
 \begin{itemize}
   \item Euler 評価、反復錐による消滅、第零次の下界、群作用による共役和比較を共通定理としてまとめる（§\ref{sec:abstract}）。評価先は長さ付き代数から作る（§\ref{sec:length}）。
-  \item perfect 複体（§\ref{sec:perfect}）とランク無視の圏（§\ref{sec:asymp}）をその二つの実現とする。各節では具体的な圏と関手を作り、共通定理の仮定を確認して適用する。
+  \item perfect 複体（§\ref{sec:perfect}）とランク無視の圏（§\ref{sec:asymp}）をその二つの実現とする。各節では具体的な圏と関手を作り、共通定理の仮定を確認して適用する。どちらも一般論であり、論文に固有の仮定を入れて論文の命題を導くのは §\ref{sec:paper-compare} である。
   \item 長さの有限性、Koszul ホモロジーの消滅、比較に必要な降下を別々の入力とする。$\lambda$-平坦性・$\lambda$-CM 性（§\ref{sec:length}）は、それらを供給する十分条件として述べる。
   \item 具体的な代数の構成（§\ref{sec:construction}）と核の場合への適用（§\ref{sec:core}）は別に述べる。今回の形式化の対象は共通理論と二つの実現であり、論文全体の完成や引用結果の証明までは含めない。
 \end{itemize}
@@ -176,16 +176,17 @@ $\chi$ を変えずに $D$ と $E$ を1つずつ置き換える。個々の値�
 置き換え 2 で左の因子 $C_D^\sigma$ が有限加群でないために、有限近似と「ランク $o(s_n)$ を無視する圏」が必要になる。これが論文 §4 の存在理由である。
 
 \paragraph{証明の骨格}
-以下では、二つの置き換えと正値性に共通する四つの道具を先に抽象的に述べ（§\ref{sec:abstract}）、評価先を長さ付き代数から作る（§\ref{sec:length}）。その上で、評価元を perfect 複体とランク無視の圏にとった二つの実現を一般論として作る（§\ref{sec:perfect}、§\ref{sec:asymp}）。ここまでが一般論である。そこに論文の状況を入れて、比較・次数の上界・正値性の命題を導き（§\ref{sec:paper-compare}）、具体的な長さ付き代数（§\ref{sec:construction}）を経て核の場合を示す（§\ref{sec:core}）。
+以下では、二つの置き換えと正値性に共通する四つの道具を先に抽象的に述べ（§\ref{sec:abstract}）、評価先を長さ付き代数から作る（§\ref{sec:length}）。その上で、評価元を perfect 複体とランク無視の圏にとった二つの実現を一般論として作る（§\ref{sec:perfect}、§\ref{sec:asymp}）。ここまでが一般論である。そこに論文の状況（有限拡大のランク、Galois 群、降下の引用、$\lambda$-平坦性・$\lambda$-CM 性）を入れて論文の命題を導き（§\ref{sec:paper-compare}）、具体的な長さ付き代数（§\ref{sec:construction}）を経て核の場合を示す（§\ref{sec:core}）。
 \begin{center}
-\begin{tabularx}{\textwidth}{>{\raggedright}p{3.4cm}>{\raggedright}X>{\raggedright\arraybackslash}X}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright}p{2.6cm}>{\raggedright}X>{\raggedright}X>{\raggedright\arraybackslash}X}
 \toprule
-共通の道具（§\ref{sec:abstract}） & perfect 複体（§\ref{sec:perfect}、§\ref{sec:paper-compare}） & ランク無視の圏（§\ref{sec:asymp}、§\ref{sec:paper-compare}） \\
+共通の道具（§\ref{sec:abstract}） & 実現（§\ref{sec:perfect} / §\ref{sec:asymp}） & 論文の状況（§\ref{sec:paper-compare}） & 核の場合（§\ref{sec:core}） \\
 \midrule
-Euler 評価 & 系~\ref{cor:35a} & 命題~\ref{prop:43} \\
-共役和の比較 & 命題~\ref{prop:35c}（置き換え 1） & 定理~\ref{thm:47}（置き換え 2） \\
-反復錐による消滅 & 補題~\ref{lem:nit} & 系~\ref{cor:nitasymp}、補題~\ref{lem:lambdaAB} \\
-第零次の下界 & 補題~\ref{lem:h0bound} & 系~\ref{cor:nitasymp}（正値性） \\
+Euler 評価 & 系~\ref{cor:35a} / 命題~\ref{prop:43} & & \\
+共役和の比較 & 定理~\ref{thm:C-norm} / 定理~\ref{thm:asymp-norm} & 命題~\ref{prop:35c}（Lemma 3.5c） / 定理~\ref{thm:47}（Thm 4.7） & 補題~\ref{lem:first}（置き換え 1） / 命題~\ref{prop:core-second}（置き換え 2） \\
+反復錐による消滅 & 補題~\ref{lem:nit}、\ref{lem:lambdaAB} / 系~\ref{cor:nitasymp} & 命題~\ref{prop:paper-param}（Lemma 5.3） & 補題~\ref{lem:core-param} \\
+第零次の下界 & 補題~\ref{lem:h0bound} / 系~\ref{cor:nitasymp} & 命題~\ref{prop:paper-pos}（Lemma 5.6） & 補題~\ref{lem:pos} \\
 \bottomrule
 \end{tabularx}
 \end{center}
@@ -209,7 +210,7 @@ Euler 評価 & 系~\ref{cor:35a} & 命題~\ref{prop:43} \\
 結論 & 使う場所 \\
 \midrule
 Euler 評価（命題~\ref{prop:B-euler}）：Euler 数が $K_0(\mathcal{K})$ 上の準同型になる & §\ref{sec:perfect}、§\ref{sec:asymp} の評価関手 \\
-共役和の比較（命題~\ref{prop:B-compare}。群論の部分は補題~\ref{lem:conjsum}）：基底から来る類で一致し不変類が降下すれば、共役和が一致する & 命題~\ref{prop:35c}（Lemma 3.5c）、定理~\ref{thm:47}（Theorem 4.7） \\
+共役和の比較（命題~\ref{prop:B-compare}、基底公式つきの形は系~\ref{cor:B-compare-base}。群論の部分は補題~\ref{lem:conjsum}）：基底から来る類で一致し不変類が降下すれば、共役和が一致する & §\ref{sec:perfect}、§\ref{sec:asymp} の比較定理、命題~\ref{prop:35c}（Lemma 3.5c）、定理~\ref{thm:47}（Theorem 4.7） \\
 反復錐による消滅（補題~\ref{lem:B-nit}）：スカラーが零作用する対象では高次のホモロジーが消える & §\ref{sec:perfect}、§\ref{sec:asymp} の消滅、§\ref{sec:param} の次数の上界 \\
 第零次の下界（補題~\ref{lem:B-h0}）：消滅のもとで Euler 数を第零次の長さで下から押さえる & §\ref{sec:perfect}、§\ref{sec:asymp} の下界、§\ref{sec:core} の正値性 \\
 \bottomrule
@@ -286,6 +287,24 @@ $\mathcal{K}$ を三角圏とし、$H^{(1)}_*$、$H^{(2)}_*$ をそれぞれ長�
 \end{proof}
 二つの評価先を同じ圏に同定する必要はなく、$H^{(i)}_*$ の $G$ 同変性や長さの $G$ 不変性も要らない。群作用は評価元の $K_0$ に置けばよい。二つの実現では、(a) を基底の Koszul 分解から（命題~\ref{prop:C-base}）、(b) を有理 K 理論の降下から（定理~\ref{thm:descent}）供給する。
 \lean{\ld{CategoryTheory.EulerComparison} の \ld{homologicalEulerK0_conjSum_eq}（証明済み）。}
+
+二つの実現では、(a) をどちらも「基底から来る類での評価は、基底上の共通の評価の定数倍」という形で確かめる。その形で述べ直しておく。
+
+\begin{corollary}[基底公式つきの共役和比較]\label{cor:B-compare-base}
+命題~\ref{prop:B-compare} の設定で、準同型 $\chi_A\colon K\to\R$ と実数 $e_1,e_2$ があって
+\[
+ \chi_1\circ f=e_1\,\chi_A,\qquad \chi_2\circ f=e_2\,\chi_A
+\]
+とする（\textbf{基底公式}）。$e_1=e_2$ で、(b) の降下が成り立てば、全ての $x\in K_0(\mathcal{K})$ について
+\[
+ \sum_{g\in G}\chi_1(g\cdot x)=\sum_{g\in G}\chi_2(g\cdot x).
+\]
+\end{corollary}
+\begin{proof}
+基底公式と $e_1=e_2$ から (a) が従う。
+\end{proof}
+二つの実現では、$\chi_A$ を基底 $A$ 上の普通の Euler 評価、$e_i$ を Koszul Euler 特性 $e_{\lambda_i}(z;C_i)$ にとり、基底公式を命題~\ref{prop:C-base}、\ref{prop:asymp-base} で示す。
+\lean{この形の定理はまだ置いていない。二つの実現の比較定理（\ld{perfectEuler_conjSum_eq}、\ld{symmetricPaperEuler_conjSum_eq}）は、それぞれの中で基底公式から (a) を導いて \ld{conjSum_eq} を呼んでいる。}
 
 \subsection{スカラーの反復錐}\label{sec:abstract-cone}
 
@@ -728,7 +747,7 @@ $A$ を正則局所環、$z$ を正則パラメータ系、$T$ を可換 $A$ 代
 \]
 \end{theorem}
 \begin{proof}
-系~\ref{cor:C-euler} により、二つの評価は $K_0$ 上の Euler 評価であり、命題~\ref{prop:C-basechange} により係数変更と両立する。命題~\ref{prop:C-base} により、どちらも $f$ の像の上で $e_{\lambda_i}(z;C_i)\,\chi_A$ に等しいので、仮定から命題~\ref{prop:B-compare} の (a) が成り立つ。(b) は仮定である。命題~\ref{prop:B-compare} を適用する。
+系~\ref{cor:C-euler} により、二つの評価は $K_0$ 上の Euler 評価である。命題~\ref{prop:C-basechange} と命題~\ref{prop:C-base} により、$\chi_{C_i}\circ f=e_{\lambda_i}(z;C_i)\,\chi_A$ である（基底公式）。系~\ref{cor:B-compare-base} を適用する。
 \end{proof}
 \lean{\ld{LengthAlgebra.Comparison} の \ld{perfectEuler_conjSum_eq}（Koszul 分解と整数倍の降下を明示的に受け取り、証明済み）。Lean の証明は群論の \ld{conjSum_eq} を直接使い、命題~\ref{prop:B-compare} の \ld{homologicalEulerK0_conjSum_eq} は経由していない。評価そのものは \ld{homologicalEulerK0} として定義されているので、内容は同じである。}
 $T$ 上の群作用が $A$ を固定すれば、ひねり $P\mapsto P^g$ がこの $K_0$ 作用を与える。有限射影版での作用、係数変更との両立、有限自由モデルとの同変な比較は \ld{PerfectComplex.K0Functoriality} で構成されている。局所環 $T$ では旧モデルの降下入力も移せる。
@@ -943,7 +962,7 @@ $A$ を正則局所環、$z$ を正則パラメータ系、$T$ を可換 $A$ 代
 \]
 \end{theorem}
 \begin{proof}
-命題~\ref{prop:43} により、二つの評価は命題~\ref{prop:B-euler} の Euler 評価である。命題~\ref{prop:asymp-base} により、どちらも $f$ の像の上で $e_{\lambda_i}(z;C_i)\,\chi_A$ に等しいので、命題~\ref{prop:B-compare} の (a) が成り立つ。ここで二段階の係数変更 $A\to T\to C_i$ と直接の $A\to C_i$ の自然な同定を使う。(b) は仮定である。命題~\ref{prop:B-compare} を適用する。二つの列の評価先を同じ圏にする必要はない。
+命題~\ref{prop:43} により、二つの評価は命題~\ref{prop:B-euler} の Euler 評価である。命題~\ref{prop:asymp-base} により $\chi_{C_i}\circ f=e_{\lambda_i}(z;C_i)\,\chi_A$ である（基底公式）。ここで二段階の係数変更 $A\to T\to C_i$ と直接の $A\to C_i$ の自然な同定を使う。系~\ref{cor:B-compare-base} を適用する。二つの列の評価先を同じ圏にする必要はない。
 \end{proof}
 \lean{\ld{Paper.Section4.SymmetricComparison} の \ld{symmetricPaperEuler_conjSum_eq}（二つの Koszul Euler 特性の一致と降下を引数にして証明済み）。Lean の証明は群論の \ld{conjSum_eq} を直接使い、\ld{homologicalEulerK0_conjSum_eq} は経由していない。}
 
@@ -1185,12 +1204,12 @@ $\lambda_D(C_D/\m_D C_D) > 0$。つまり $C_D$ は非自明な $\lambda$-CM 代
 \lean{\ld{Paper.Section2.Corollary2_6}（定理~\ref{thm:existence} を除いて証明済み）。}
 
 \paragraph{§\ref{sec:core} で使う性質}
-定理~\ref{thm:existence} と系~\ref{cor:pos} のうち、§\ref{sec:core} で使うのは次の4つである。
+定理~\ref{thm:existence}、系~\ref{cor:pos}、命題~\ref{prop:tower-compatible} のうち、§\ref{sec:core} で使うのは次の四つである。
 \begin{itemize}
-  \item (a) $D$ 上の $\lambda$-CM 性：補題~\ref{lem:lambdaAB}（$\lambda$ 版 Auslander--Buchsbaum）を通して有限近似の 1
-  \item (b) $\lambda$-平坦性：一般論（§\ref{sec:perfect}、§\ref{sec:asymp}）への入力と、系~\ref{cor:nitasymp} を通して補題~\ref{lem:pos}
-  \item (c) 塔の上の加群への $\lambda$ の適用：有限近似の 2
-  \item 系~\ref{cor:pos}（非自明性）：補題~\ref{lem:pos} の正値性
+  \item (a) $D$ 上の $\lambda$-CM 性と系~\ref{cor:pos}（非自明性）：命題~\ref{prop:paper-param}（パラメータ商）の入力。
+  \item (b) $A$ 上の $\lambda$-平坦性と有限ランク：命題~\ref{prop:35c}（Lemma 3.5c）と定理~\ref{thm:47}（Theorem 4.7）の入力。
+  \item (b) と系~\ref{cor:pos}：命題~\ref{prop:paper-pos}（正値性の評価）の入力。
+  \item (c) 塔と整合する長さの係数制限であること（命題~\ref{prop:tower-compatible}）：定理~\ref{thm:approx-exist}（有限近似列の存在）の入力。
 \end{itemize}
 
 %======================================================================
