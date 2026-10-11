@@ -176,7 +176,7 @@ $\chi$ を変えずに $D$ と $E$ を1つずつ置き換える。個々の値�
 置き換え 2 で左の因子 $C_D^\sigma$ が有限加群でないために、有限近似と「ランク $o(s_n)$ を無視する圏」が必要になる。これが論文 §4 の存在理由である。
 
 \paragraph{証明の骨格}
-以下では、二つの置き換えと正値性に共通する四つの道具を先に抽象的に述べ（§\ref{sec:abstract}）、評価先を長さ付き代数から作る（§\ref{sec:length}）。その上で、評価元を perfect 複体とランク無視の圏にとった二つの実現を一般論として作る（§\ref{sec:perfect}、§\ref{sec:asymp}）。ここまでが一般論である。そこに論文の状況を入れて比較命題を導き（§\ref{sec:paper-compare}）、具体的な長さ付き代数（§\ref{sec:construction}）を経て核の場合を示す（§\ref{sec:core}）。
+以下では、二つの置き換えと正値性に共通する四つの道具を先に抽象的に述べ（§\ref{sec:abstract}）、評価先を長さ付き代数から作る（§\ref{sec:length}）。その上で、評価元を perfect 複体とランク無視の圏にとった二つの実現を一般論として作る（§\ref{sec:perfect}、§\ref{sec:asymp}）。ここまでが一般論である。そこに論文の状況を入れて、比較・次数の上界・正値性の命題を導き（§\ref{sec:paper-compare}）、具体的な長さ付き代数（§\ref{sec:construction}）を経て核の場合を示す（§\ref{sec:core}）。
 \begin{center}
 \begin{tabularx}{\textwidth}{>{\raggedright}p{3.4cm}>{\raggedright}X>{\raggedright\arraybackslash}X}
 \toprule
@@ -872,7 +872,7 @@ $A$ を正則局所環、$z$ を正則パラメータ系、$T$ を可換 $A$ 代
 §\ref{sec:perfect-vanishing} と同じく、補題~\ref{lem:B-nit} の (Supp)、(Kos$_m$) と補題~\ref{lem:B-h0} の全射を、列の圏について確かめる。(Supp) は商での零作用、(Kos$_m$) は $K_v\otimes F$ の各段のフィルトレーション、全射は各段の極小性から出る。元の列 $F$ の一様な台は使わない。
 
 \begin{corollary}[補題~\ref{lem:nit}、\ref{lem:h0bound} の対応物]\label{cor:nitasymp}\label{prop:check-rank-vanishing}
-$e = \dim A$ とし、$F = (F_n)$ を $0$ 次から $m$ 次に有限自由な項をもつ有界な自由列で、像 $X$ が $P_T^J$ に入るものとする。このとき $b_i^C(X) = 0$（$i > m-e$）。特に $m = e$ なら $\chi_C(X) = b_0^C(X)$ で、さらに各 $F_n$ が $1$ 次で極小なら
+$e$ を列 $z$ の長さとし、全ての $v\ge1$ と $j>0$ で $\lambda H_j(z^v;C)=0$ とする。$F = (F_n)$ を $0$ 次から $m$ 次に有限自由な項をもつ有界な自由列で、像 $X$ が $P_T^J$ に入るものとする。このとき $b_i^C(X) = 0$（$i > m-e$）。特に $m = e$ なら $\chi_C(X) = b_0^C(X)$ で、さらに各 $F_n$ が $1$ 次で極小なら
 \[
   b_0^C(X) \;\ge\; \Bigl(\lim_\U\frac{\beta_0(F_n)}{s_n}\Bigr)\cdot\lambda(C/\m_T C).
 \]
@@ -898,16 +898,29 @@ $m=e$ では第零次だけが残る。各段の極小性は
 \lean{\ld{Paper.Section4.FlatRealization} の \ld{symmetricPaperEuler_conjSum_eq_of_flat}、\ld{paperBaseChangeHomology_vanishing_of_flat}、\ld{paperBaseChangeEuler_minimal_lower_bound_of_flat}（基底の Koszul 分解と降下を明示した形で証明済み）。係数環は $A\to S\to C$ と一般の $S$ 上の自由複体列で扱う。}
 
 %======================================================================
-\section{論文の比較命題：Lemma 3.5 と Theorem 4.7}\label{sec:paper-compare}
+\section{論文の状況での命題}\label{sec:paper-compare}
 
-この節では、§\ref{sec:perfect}、§\ref{sec:asymp} の比較定理（定理~\ref{thm:C-norm}、\ref{thm:asymp-norm}）に論文の状況を入れて、§\ref{sec:core} の置き換え 1、2 で使う比較命題を導く。ここで初めて次を仮定する。
+この節では、§\ref{sec:perfect}、§\ref{sec:asymp} の一般論に論文の状況を入れて、§\ref{sec:core} で使う四つの命題を導く。
+\begin{center}
+\begin{tabularx}{\textwidth}{>{\raggedright}p{4.2cm}>{\raggedright}X>{\raggedright\arraybackslash}p{3.6cm}}
+\toprule
+命題 & 使う一般論 & §\ref{sec:core} での役割 \\
+\midrule
+§\ref{sec:perfect-35} Lemma 3.5 & 定理~\ref{thm:C-norm}（比較） & 置き換え 1 \\
+§\ref{sec:asymp-47} Theorem 4.7 & 定理~\ref{thm:asymp-norm}（比較） & 置き換え 2 \\
+§\ref{sec:paper-param} Lemma 5.3 & 補題~\ref{lem:lambdaAB}（消滅による次数の上界） & 有限近似の準備 \\
+§\ref{sec:paper-pos} Lemma 5.6 & 系~\ref{cor:nitasymp}（消滅と下界） & 正値性 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+§\ref{sec:perfect-35}、§\ref{sec:asymp-47} では次を仮定する。
 \begin{itemize}
   \item $A$ は正則局所環、$z$ はその正則パラメータ系。
   \item $T$ は $A$ 上有限な局所整域で剰余体が $A$ と同じもの、$r=\rank_A T$。
   \item $(C,\lambda)$ は $\lambda$-平坦でランク $r$ の長さ付き $A$ 代数で、$C$ は $T$ 代数、$A\to T\to C$ は可換（§\ref{sec:length-koszul}）。
   \item 共役和については、$A$ の剰余標数が $p>0$、有限群 $G$ が $T$ に $A$ 上で作用して幾何ファイバーに推移的、$\Spec T\to\Spec A$ は全射。
 \end{itemize}
-比較定理の入力のうち、(a) は二つの Koszul Euler 特性がともに $r$ であることから、(b) は有理 K 理論の降下（定理~\ref{thm:descent}、引用）から得る。
+比較定理の入力のうち、(a) は二つの Koszul Euler 特性がともに $r$ であることから、(b) は有理 K 理論の降下（定理~\ref{thm:descent}、引用）から得る。§\ref{sec:paper-param}、§\ref{sec:paper-pos} の設定はそれぞれの命題の中で述べる。いずれも長さ付き代数の性質（$\lambda$-平坦性、$\lambda$-CM 性、非自明性）は仮定として受け取り、それをみたす代数の構成は §\ref{sec:construction} で行う。
 
 \subsection{Lemma 3.5}\label{sec:perfect-35}
 
@@ -977,6 +990,33 @@ $X\in P_A^J$ について
 定理~\ref{thm:asymp-norm} を $(C_1,\lambda_1)=(T,\len_T)$、$(C_2,\lambda_2)=(C,\lambda)$ に適用する。二つの Koszul Euler 特性はともに $r$ である。降下は、補題~\ref{lem:dga} の $H$ についての定理~\ref{thm:descent} による（引用）。
 \end{proof}
 \lean{\ld{symmetricPaperEuler_conjSum_eq} は二つの Koszul Euler 特性の一致と降下を引数にして証明済み。\ld{Section4.theorem_4_7_K0} はその系であり、\ld{supportedRankK0_descent} と正則パラメータの引用への依存は残る。}
+
+\subsection{パラメータ商（Lemma 5.3）}\label{sec:paper-param}
+
+\begin{proposition}\orig{Lemma 5.3}\label{prop:paper-param}
+$R$ を次元 $d$ の正則局所環、$\iota\colon R\to D'$ を有限な局所準同型（$D'$ は次元 $h$ のネーター局所環）、$(C,\lambda)$ を $D'$ 上の非自明な $\lambda$-CM 代数とし、$R$ は $\iota$ を通して $C$ に作用するとする。$x_1,\dots,x_h\in R$ を $R$ 正則列で $\iota(x)$ が $D'$ のパラメータ系になるものとし、$B=R/(x)$、$U=C/\iota(x)C$、$l=d-h$ とおく。このとき次が成り立つ。
+\begin{enumerate}[label=(\alph*)]
+  \item 有限生成 $B$ 加群 $L$ について $\lambda\Tor_i^R(C,L)=\lambda\Tor_i^B(U,L)$ で、これは $i>l$ で $0$。
+  \item $0<\lambda(U)<\infty$。
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+(a) は補題~\ref{lem:lambdaAB} である。(b) の有限性は、$\iota(x)$ がパラメータ系であることと $\lambda$-CM 性から出る。正値性は、全射 $U\to C/\m_{D'}C$ と非自明性から出る。
+\end{proof}
+\lean{(a) は \ld{Section5.lemma_5_3}（Koszul 条件と有限分解を明示して証明済み）。(b) の正値性は \ld{Paper.Section5.ParameterLengthPositivity} で、重複度の公式から導いている。}
+
+\subsection{正値性の評価（Lemma 5.6）}\label{sec:paper-pos}
+
+\begin{proposition}\orig{Lemma 5.6 の一般形}\label{prop:paper-pos}
+§\ref{sec:asymp} の設定で、$A$ を次元 $e$ の正則局所環、$z$ をその正則パラメータ系、$T$ を局所 $A$ 代数とし、$(C,\lambda)$ を $\lambda$-平坦で $\lambda(C/\m_TC)>0$ となる長さ付き $A$ 代数とする。$F=(F_n)$ を $0$ 次から $e$ 次に有限自由な項をもつ有界な自由 $T$ 複体の列で、像 $X$ が $P_T^J$ に入り、各 $F_n$ が $1$ 次で極小なものとし、$\nu=\lim_\U\beta_0(F_n)/s_n>0$ とする。このとき
+\[
+ \chi_C(X)=b_0^C(X)\;\ge\;\nu\cdot\lambda(C/\m_TC)\;>\;0.
+\]
+\end{proposition}
+\begin{proof}
+$K(z^v)$ は $A/(z^v)$ の自由分解なので、$\lambda$-平坦性から全ての $v\ge1$ と $j>0$ で $\lambda H_j(z^v;C)=\lambda\Tor_j^A(A/(z^v),C)=0$ である。列の長さは $e=\dim A$ なので、系~\ref{cor:nitasymp} を $m=e$ で使えば $\chi_C(X)=b_0^C(X)\ge\nu\cdot\lambda(C/\m_TC)$ を得る。正値性は $\nu>0$ と仮定から出る。
+\end{proof}
+\lean{一般の下界は \ld{Asymptotic.PaperMinimalLowerBound} の \ld{paperBaseChangeEuler_minimal_lower_bound}。$\lambda$-平坦性から入力を供給する形は \ld{Paper.Section4.FlatRealization} の \ld{paperBaseChangeEuler_minimal_lower_bound_of_flat}（証明済み）。}
 
 %======================================================================
 \section{$\lambda$-平坦な長さ付き代数の構成}\label{sec:construction}
@@ -1062,11 +1102,11 @@ $E'$ の有限自由 $R$ 分解 $F$ をとり $P_\sigma = F\otimes_{R,\iota_\sig
 \paragraph{有限近似\orig{§5.2--5.4、置き換え 2 の準備}}
 $\sigma$ を固定し $C = C_D^\sigma$、$\lambda = \lambda_D$ と書く。
 \begin{enumerate}
-  \item \textbf{パラメータ商}（Lemma 5.3）：$Q$ の元 $x_1,\dots,x_h$ で $R$ 正則列かつ $D$ のパラメータ系になるものをとり、$B = R/(x)$、$U = C/\iota_\sigma(x)C$ とおく。$B$ は次元 $l$ の完全交叉局所環で、正則性は使わない。補題~\ref{lem:lambdaAB} を $R\xrightarrow{\iota_\sigma}D'$ と $C$ に適用すると、有限生成 $B$ 加群 $L$ について
+  \item \textbf{パラメータ商}（Lemma 5.3）：$Q$ の元 $x_1,\dots,x_h$ で $R$ 正則列かつ $D$ のパラメータ系になるものをとり、$B = R/(x)$、$U = C/\iota_\sigma(x)C$ とおく。$B$ は次元 $l$ の完全交叉局所環で、正則性は使わない。命題~\ref{prop:paper-param} を $\iota_\sigma\colon R\to D'$ と $C$ に適用すると、有限生成 $B$ 加群 $L$ について
   \[
-    \lambda\Tor_i^R(C,L) = \lambda\Tor_i^B(U,L), \qquad\text{これは } i>l \text{ で } 0.
+    \lambda\Tor_i^R(C,L) = \lambda\Tor_i^B(U,L), \qquad\text{これは } i>l \text{ で } 0,
   \]
-  また $\lambda$-CM 性と系~\ref{cor:pos}（$U\to C/\m C$ は全射）より $0<\lambda(U)<\infty$。
+  かつ $0<\lambda(U)<\infty$。$C$ が非自明な $\lambda$-CM 代数であることは定理~\ref{thm:existence} (a) と系~\ref{cor:pos} による。
   \item \textbf{有限長加群での近似}（Lemma 5.4）：定理~\ref{thm:existence} (c) を使い、共通の $\m_B^a$ で消される有限長 $B$ 加群 $M_n$ と $s_n\to\infty$ で
   \[
     \frac{\len\Tor_i^B(M_n,L)}{s_n} \;\to\; \lambda\Tor_i^B(U,L) \qquad (L = k, E')
@@ -1090,9 +1130,9 @@ $\sigma$ を固定し $C = C_D^\sigma$、$\lambda = \lambda_D$ と書く。
 \]
 \end{lemma}
 \begin{proof}
-系~\ref{cor:nitasymp} を $A = A_E$（次元 $e = l$）、$T = E'$、$(C_E,\lambda_E)$、$F = F'_\gamma$（$m = l$）に適用すると、$b_{\sigma,\gamma} = \chi_{C_E}(F'_\gamma) = b_0^{C_E}(F'_\gamma) \ge \nu_\sigma\cdot\lambda_E(C_E/\m_{E'}C_E)$。正値性は $\nu_\sigma>0$ と系~\ref{cor:pos}。
+命題~\ref{prop:paper-pos} を $A = A_E$（次元 $l$）、$T = E'$、$(C_E,\lambda_E)$、$F = F'_\gamma$ に適用する。$(C_E,\lambda_E)$ は定理~\ref{thm:existence} (b) により $\lambda$-平坦で、系~\ref{cor:pos} により非自明である。$F'_\gamma$ は $0$ 次から $l$ 次に項をもつ $1$ 次で極小な自由列で、$\nu_\sigma>0$ は有限近似から出る。
 \end{proof}
-$D$ 側の $\lambda$-CM 性（補題~\ref{lem:lambdaAB}）が複体の長さを $l$ に抑え、$E$ 側の $\lambda$-平坦性（系~\ref{cor:nitasymp}）が長さ $l$ の複体の高次を消す。2つの $l$ が噛み合うのは $h + l = \dim R$ による。
+$D$ 側の $\lambda$-CM 性（命題~\ref{prop:paper-param}）が複体の長さを $l$ に抑え、$E$ 側の $\lambda$-平坦性（命題~\ref{prop:paper-pos}）が長さ $l$ の複体の高次を消す。2つの $l$ が噛み合うのは $h + l = \dim R$ による。
 \lean{\ld{Section5.exists_secondComparison_pos_of_approximation} が、同じ有限近似から第二比較の対象と全ての共役の正値性を同時に構成する（降下と正則パラメータの引用を除いて証明済み）。個別の入口として \ld{secondComparison_minimal_lower_bound}、\ld{paperEuler_pos_of_finiteApproximation} もある。}
 
 \paragraph{結論}
@@ -1155,10 +1195,12 @@ $\lambda$-平坦な長さ付き代数の存在 & Monsky、Roberts（Ma, Thm 2.4�
 定義~\ref{def:rankquot}、命題~\ref{prop:42} & §4.1--4.2 & 圏と支持つきの比較同値、直和因子による表示を構成済み \\
 命題~\ref{prop:43} (a),(b),(d)、系~\ref{cor:nitasymp} & Prop 4.3、(4.2) & 評価の延長・Euler・多項式公式・消滅・下界を条件から証明済み。(c) の $\iota$ は数学的説明 \\
 命題~\ref{prop:asymp-base}、定理~\ref{thm:asymp-norm} & 基底公式、対称な比較 & 基底の Koszul 分解と降下を明示した形で証明済み \\
-\multicolumn{3}{l}{\textbf{§\ref{sec:paper-compare} 論文の比較命題}} \\
+\multicolumn{3}{l}{\textbf{§\ref{sec:paper-compare} 論文の状況での命題}} \\
 命題~\ref{prop:35b}、\ref{prop:35c} & Lemma 3.5b,c & 正則パラメータと降下（定理~\ref{thm:descent}）の引用を除いて証明済み。Lean の 3.5c は旧モデル上の証明で、定理~\ref{thm:C-norm} を経由しない \\
 命題~\ref{prop:45} & Prop 4.5 & 全対象の一様代表による公式を証明済み。正則基底への適用は引用を使う \\
 補題~\ref{lem:dga}、定理~\ref{thm:47} & Lemma 4.6、Thm 4.7 & dg 表示と降下への接続は引用（\ld{supportedRankK0_descent}）。共役和比較はその引用を除いて証明済み \\
+命題~\ref{prop:paper-param} & Lemma 5.3 & (a) は Koszul 条件・有限分解を明示して証明済み。(b) の正値性は重複度の公式から導出 \\
+命題~\ref{prop:paper-pos} & Lemma 5.6 の一般形 & $\lambda$-平坦性から下界を証明済み \\
 \multicolumn{3}{l}{\textbf{§\ref{sec:construction} 構成}} \\
 定義~\ref{def:tower}、補題~\ref{lem:24} & §2.2、Lemma 2.4 & 定義は具体的、補題は証明済み。$\lambda_\infty$ の二性質は引用 \\
 補題~\ref{lem:cohengabber}、定理~\ref{thm:existence} & Lemma 2.2、Thm 2.5 & 前者は引用。後者は標数別の構成から導出し、構成の一部が未完・引用 \\
