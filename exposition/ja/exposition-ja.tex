@@ -809,6 +809,8 @@ Euler 評価（命題~\ref{prop:B-euler}） & 共通の台の指数と長さ $O(
 \bottomrule
 \end{tabularx}
 \end{center}
+§\ref{sec:asymp-approx} では、有限加群でない対象を有限長加群の列で近似し、ランク無視の圏の対象を作る。§\ref{sec:asymp-flat} は $\lambda$-平坦な代数での適用である。
+
 設定は §\ref{sec:perfect} と同じとする。原論文の適用では $A$ の優秀性も仮定するが、以下の構成自体は優秀性も完備性も使わない。
 
 \subsection{圏}\label{sec:asymp-cat}
@@ -1209,7 +1211,7 @@ $\sigma$ を固定し $C = C_D^\sigma$、$\lambda = \lambda_D$ と書く。
     \lambda\Tor_i^R(C,L) = \lambda\Tor_i^B(U,L), \qquad\text{これは } i>l \text{ で } 0,
   \]
   かつ $0<\lambda(U)<\infty$。$C$ が非自明な $\lambda$-CM 代数であることは定理~\ref{thm:existence} (a) と系~\ref{cor:pos} による。
-  \item \textbf{有限長加群での近似}（Lemma 5.4）：$\lambda_D$ は塔と整合する長さの係数制限である（命題~\ref{prop:tower-compatible}）。定理~\ref{thm:approx-exist} を $T=D'/I_\sigma$、$U$ に適用し、$\m_B^a$ で消される有限近似列 $(M_n)$ を $\mathcal{L}=\{E'\}$ についてとる。このとき $\tau_i(L)=\lambda\Tor_i^B(U,L)$（$L=k,E'$）で、パラメータ商の消滅から $\tau_i(k)=0$（$i>l$）である。$\m_B^a$ が $U$ を消すことは §\ref{sec:param} の準備（(5.6)）による。
+  \item \textbf{有限長加群での近似}（Lemma 5.4）：$\lambda_D$ は塔と整合する長さの係数制限である（命題~\ref{prop:tower-compatible}）。定理~\ref{thm:approx-exist} を $T=D'/I_\sigma$、$U$ に適用し、$\m_B^a$ で消される有限近似列 $(M_n)$ を $\mathcal{L}=\{E'\}$ についてとる。このとき $\tau_i(L)=\lambda\Tor_i^B(U,L)$（$L=k,E'$）で、パラメータ商の消滅から $\tau_i(k)=0$（$i>l$）である。$\m_B^a$ が $D'/I_\sigma$ と $U$ を消すことは論文の (5.6) で、局所準同型 $B\to D'/I_\sigma$ から出る（\ld{Section5.exists_pow_maximalIdeal_map_le}）。
   \item \textbf{切り詰め}（Lemma 5.5）：命題~\ref{prop:approx-object} を $T'=E'$ と、$\gamma\in G_E$ でひねった $B\to E'$ に適用する。$M_n$ の極小自由分解を $l$ 次で切った列を $E'$ に移した $F'_\gamma$ は、$0$ 次から $l$ 次に項をもつ $1$ 次で極小な自由列で、その像は $P_{E'}^J$ に入り、普通の Euler 特性は $\chi_{\ord}(F'_\gamma)=\sum_i(-1)^i\tau_i(E')=\sum_i(-1)^i\lambda\Tor_i^B(U,E')=c_\sigma$ である。生成元数の比の極限 $\nu_\sigma=\lim\beta_0(M_n)/s_n$ は $\lambda(U)/\len(B/\m_B^a)$ 以上で、特に正である。
 \end{enumerate}
 \lean{$x$ の選択は \ld{exists_regular_parameters_in}（素イデアル回避。引用は非混合性 \ld{Inputs.Unmixedness} のみ）と、有限拡大へ移す \ld{Section5.exists_regular_parameters_for_finite_extension}。パラメータ商の長さ比較・消滅は \ld{Section5.lemma_5_3}（\ld{ParamQuot.torClaim}、\ld{ParamQuot.len_torAlg_eq_zero}）。有限近似は \ld{Section5.lemma_5_4} が塔の有限段への降下で構成する（$\lambda_\infty$ の二性質の引用を除いて証明済み）。そのための $\m_B^a$ と $\Lambda\otimes_{A}(D'/I_\sigma)$ の作用は \ld{Section5.Preparation}。切り詰め・支持・Euler の計算は \ld{Paper.Section5.MinimalApproximation}、\ld{SupportedApproximation}、\ld{ApproximationEuler}。\ld{Section5.lambdaChi_pos_of_parameter_tower} はこれらを接続し、近似列を内部で構成する。}
@@ -1293,6 +1295,8 @@ $\lambda$-平坦な長さ付き代数の存在 & Monsky、Roberts（Ma, Thm 2.4�
 定義~\ref{def:rankquot}、命題~\ref{prop:42} & §4.1--4.2 & 圏と支持つきの比較同値、直和因子による表示を構成済み \\
 命題~\ref{prop:43} (a),(b),(d)、系~\ref{cor:nitasymp} & Prop 4.3、(4.2) & 評価の延長・Euler・多項式公式・消滅・下界を条件から証明済み。(c) の $\iota$ は数学的説明 \\
 命題~\ref{prop:asymp-base}、定理~\ref{thm:asymp-norm} & 基底公式、対称な比較 & 基底の Koszul 分解と降下を明示した形で証明済み \\
+定理~\ref{thm:approx-exist} & Lemma 5.4 の一般形 & 具体的な塔と $\lambda_\infty$ の上で証明済み（$\lambda_\infty$ の二性質の引用を除く）。抽象的な設定への書き直しは未 \\
+命題~\ref{prop:approx-object} & Lemma 5.5 の一般形 & 証明済み \\
 \multicolumn{3}{l}{\textbf{§\ref{sec:paper-compare} 論文の状況での命題}} \\
 命題~\ref{prop:35b}、\ref{prop:35c} & Lemma 3.5b,c & 正則パラメータと降下（定理~\ref{thm:descent}）の引用を除いて証明済み。Lean の 3.5c は旧モデル上の証明で、定理~\ref{thm:C-norm} を経由しない \\
 命題~\ref{prop:45} & Prop 4.5 & 全対象の一様代表による公式を証明済み。正則基底への適用は引用を使う \\
@@ -1301,6 +1305,7 @@ $\lambda$-平坦な長さ付き代数の存在 & Monsky、Roberts（Ma, Thm 2.4�
 命題~\ref{prop:paper-pos} & Lemma 5.6 の一般形 & $\lambda$-平坦性から下界を証明済み \\
 \multicolumn{3}{l}{\textbf{§\ref{sec:construction} 構成}} \\
 定義~\ref{def:tower}、補題~\ref{lem:24} & §2.2、Lemma 2.4 & 定義は具体的、補題は証明済み。$\lambda_\infty$ の二性質は引用 \\
+命題~\ref{prop:tower-compatible} & §2.2 & 塔の性質・有限段の公式・降下・上限の性質は証明済み。有限生成加群での一致と加法性は引用 \\
 補題~\ref{lem:cohengabber}、定理~\ref{thm:existence} & Lemma 2.2、Thm 2.5 & 前者は引用。後者は標数別の構成から導出し、構成の一部が未完・引用 \\
 系~\ref{cor:pos} & Cor 2.6 (3) & 定理~\ref{thm:existence} と重複度の正値性の引用を除いて証明済み \\
 \multicolumn{3}{l}{\textbf{§\ref{sec:core} 核の場合}} \\
