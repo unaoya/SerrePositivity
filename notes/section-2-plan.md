@@ -29,6 +29,23 @@
 `sorryAx` に依存する。追加の公理はない。直接の `sorry` は21箇所で、
 引用の分割で一つ増え、正値性の証明で一つ減った。`git diff --check` 通過。
 
+Samuel 多項式に向けた今回の進捗：
+
+- 定義・基本性質を `HilbertSamuelBasic.lean` へ分け、随伴次数加群の構成と多項式性の定理の
+  間の循環 import を避けた。宣言の名前・型は保持する。
+- `AssociatedGraded.lean` で各次数の商、消去イデアル、有限長性、次数一の乗法、
+  Samuel 関数の増分・部分和の公式を証明した。
+- `ReesModule.lean` と `ReesPresentation.lean` で商による全体の構成と直和表示の同型を与え、
+  `(R/I)[X_1,…,X_s]` 上の有限生成性と次数一の変数作用を証明した。
+- `HilbertSeries.lean` で `(1-X)S(X)=XH(X)` を示し、有理型表示から次数 `≤ s` の
+  Samuel 多項式を構成した。冪零イデアルの場合も証明済み。
+- 一般の `exists_isSamuelPoly` は未完了。残る中心は Hilbert–Serre の有理型表示の証明。
+  新しい `sorry` は追加せず、既存の一般の場合の `sorry` も移設していない。
+
+検証：全体ビルド3715ジョブ成功。新規65宣言と移設した基本宣言14個の計79宣言を
+公理監査し、すべて標準公理のみだった。新しい `sorry` はなく、総数は21のまま。
+今回の変更について `git diff --check` 通過。
+
 以前の到達点（定理2.5の具体的構成）：
 
 - `PerfectConductor.lean` の `exists_tower_perfection_conductor`：正則基底の正規性を供給し、

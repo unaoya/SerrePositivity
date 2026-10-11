@@ -45,7 +45,7 @@ Koszul Euler 数の係数制限も証明し、未証明なのは同じ環上の 
 
 | 順序 | 残る主張 | 必要な範囲での進め方 |
 | --- | --- | --- |
-| 1 | `exists_isSamuelPoly`：Samuel 関数の多項式性 | `I^n M / I^(n+1) M` の次数付き加群と有限生成性から始める。Mathlib の `Polynomial.hilbertPoly` は有理型級数から多項式を得る部分だけなので、次数付き加群への適用を証明する |
+| 1 | `exists_isSamuelPoly`：Samuel 関数の多項式性 | 随伴次数加群の構成・多項式環上の有限生成性・有理型級数からの多項式の構成は証明済み。残る中心は有限生成性から Hilbert 級数の有理型表示を得る Hilbert–Serre の数値版 |
 | 2 | `natDegree_poly_eq_dim`：次数と環の次元の一致 | 今回必要な `M = D` の場合を証明する。一般の加群の次元定理への拡張は要求しない |
 | 3 | `isWeaklyRegular_of_span_eq_maximalIdeal`：正則局所環の正則パラメータ | 定義の「極大イデアルの最小生成元数 = 次元」から正則列を得る。一般の Cohen–Macaulay 理論全体は作業範囲にしない |
 | 4 | `ringKrullDim_quotient_add_length_of_mem_associatedPrimes`：正則列で割った環の非混合性 | 正則局所環を正則列で割った場合に限定し、随伴素イデアルの商の次元を計算する |
@@ -59,6 +59,39 @@ Koszul Euler 数の係数制限も証明し、未証明なのは同じ環上の 
 検証：全体の `lake build` は3707ジョブで成功。新規・変更20宣言と主定理・核心定理の
 計22宣言を公理監査し、11宣言は標準公理のみ、11宣言は明示した未証明入力に由来する
 `sorryAx` に依存する。その他の公理はなく、`git diff --check` も通過した。
+
+### Samuel 多項式の証明：随伴次数加群と母関数（進行中）
+
+次の部分を新しい未証明入力なしで実装した。
+
+- `HilbertSamuelBasic.lean`：既存の定義・有限長性・基本性質を切り出した。
+  構成のファイルから多項式性の定理を参照しない依存関係にし、後の接続で循環 import を作らない。
+  公開宣言の名前と型は保持する。
+- `AssociatedGraded.lean`：`I^nM / I^(n+1)M` を部分加群の商として構成し、
+  `I` による消滅、準素イデアルの場合の有限長性、次数一の乗法を証明した。
+  その商を `M/I^(n+1)M → M/I^nM` の核と同定して、Samuel 関数の増分と部分和の公式を得た。
+- `ReesModule.lean`：Mathlib の安定フィルトレーションから Rees 加群を構成し、
+  有限生成性を証明した。随伴次数加群の直和表示と Rees 加群の商表示の線形同型も構成した。
+- `ReesPresentation.lean`：`I=(z_1,…,z_s)` から `X_i ↦ z_i t` の全射を構成し、
+  随伴次数加群が `(R/I)[X_1,…,X_s]` 上有限生成になることと、変数が次数を一つ上げることを証明した。
+- `HilbertSeries.lean`：Hilbert 級数 `H(X)` と Samuel 関数の級数 `S(X)` を定義し、
+  `(1-X)S(X)=XH(X)` を証明した。`H(X)=Q(X)/(1-X)^s` が得られれば、
+  `Polynomial.hilbertPoly (X*Q) (s+1)` が次数 `≤ s` の Samuel 多項式となる。
+  冪零イデアルの場合の定数多項式も証明した。
+
+`exists_isSamuelPoly` の一般の場合の `sorry` はまだ残る。次は長さ値に限定した
+Hilbert–Serre の有理型表示を、変数の個数に関する帰納法で証明する。
+次数一の作用の核・余核を次数付き加群として扱い、少ない変数上の有限生成性を確認し、
+各次数の長さの加法性を母関数の等式へ移す。
+参考は [Stacks Proposition 10.58.7](https://stacks.math.columbia.edu/tag/00K1) と
+[Proposition 10.59.5 の接続](https://stacks.math.columbia.edu/tag/00K4)。
+これらを新たな引用入力にはせず、必要な数値版を証明する。
+既存の主張を別の `sorry` へ移したり、次数付き加群の有限生成性を仮定に追加したりはしていない。
+
+検証：全体の `lake build` は3715ジョブで成功。新規65宣言と移設した基本宣言14個の
+計79宣言を公理監査し、すべて標準公理のみで、`sorryAx` やその他の公理への依存はない。
+今回の追加・移設には `sorry` はなく、直接の `sorry` の総数は21のまま。
+今回の変更について `git diff --check` も通過した。
 
 以下はこの方針に至る前の接続作業の到達点である。
 
