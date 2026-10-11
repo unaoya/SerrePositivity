@@ -327,7 +327,24 @@ $m\ge0$ と $X$ について、ある $v\ge1$ で次の二つが成り立つと�
 %======================================================================
 \section{長さ付き代数}\label{sec:length}
 
-この節では、§\ref{sec:abstract} の評価先 $\mathcal{A}$ を長さ付き代数から作り、二つの実現に共通する代数側の条件を整理する。長さ関数と長さ付き代数を定義し（§\ref{sec:length-def}）、長さ零の加群で割った Serre 商を評価先とする（§\ref{sec:planB-quot}）。評価の有限性を与える Koszul 有限性と、消滅を与える $\lambda$-平坦性・$\lambda$-CM 性を述べ、後者から前者が出ることを確かめる（§\ref{sec:length-koszul}、§\ref{sec:length-cm}）。
+この節には二つの役割がある。
+\begin{enumerate}
+  \item \textbf{§\ref{sec:abstract} の評価先を作る}（§\ref{sec:planB-quot}）。長さ付き代数 $(C,\lambda)$ から、長さ零の加群で割った Serre 商として、定義~\ref{def:B-lenab} の長さ付きアーベル圏 $(\mathcal{A}_\lambda^{\mathrm{fin}},\ell_\lambda)$ を作る。評価元 $\mathcal{K}$ とホモロジー的関手 $H_*$ は §\ref{sec:perfect}、§\ref{sec:asymp} で作る。
+  \item \textbf{長さ付き代数に課す条件を整理する}（§\ref{sec:length-koszul}、§\ref{sec:length-cm}）。Koszul 有限性、$\lambda$-平坦性とランク、$\lambda$-CM 性を定義し、その間の関係を示す。これは §\ref{sec:abstract} の結果を言い換えたものではなく、§\ref{sec:perfect}、§\ref{sec:asymp} で §\ref{sec:abstract} の結論の仮定を確かめるときの材料になる。
+\end{enumerate}
+\begin{center}
+\begin{tabularx}{\textwidth}{>{\raggedright}p{6.4cm}>{\raggedright\arraybackslash}X}
+\toprule
+この節で扱う条件 & §\ref{sec:perfect}、§\ref{sec:asymp} で確かめる §\ref{sec:abstract} の仮定 \\
+\midrule
+Koszul 有限性（定義~\ref{def:C-levels}） & 命題~\ref{prop:B-euler} の (Fin)：Euler 評価が定まること \\
+正次数の Koszul ホモロジーの長さ零 & 補題~\ref{lem:B-nit} の (Kos$_m$)：消滅 \\
+Koszul Euler 特性 $e_\lambda(z;C)$ の値 & 命題~\ref{prop:B-compare} の (a)：基底公式の係数 \\
+$\lambda$-平坦性と有限ランク（系~\ref{cor:allv}）、$\lambda$-CM 性（命題~\ref{prop:cmflat}） & 上の三つをまとめて供給する十分条件 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+共通定理は上の三つの条件を別々に受け取る。有限性だけで Euler 評価を作り、消滅と値は必要な結論にだけ加えるためである。
 
 \subsection{長さ関数と長さ付き代数}\label{sec:length-def}
 
@@ -343,22 +360,14 @@ $C$ を環、$J\subseteq C$ をイデアルとする。$C$ 加群 $M$ が \textb
 \end{example}
 \lean{\ld{NormalizedLength}（\ld{PerfectComplex.NormalizedLength}）、普通の長さは \ld{NormalizedLength.ordinary}（$J = \bot$）。Lean の名前は元論文に合わせて「正規化長さ」のまま（付録~\ref{sec:future}）。}
 
-\begin{definition}[$\lambda$-平坦な長さ付き代数]\label{def:lengthalg}
-$(A,\m_A,k)$ を正則局所環とする。\textbf{長さ付き $A$ 代数}とは、$A$ 代数 $C$ と、$\m_A C$-冪ねじれ $C$ 加群の上の長さ関数 $\lambda$ の組 $(C,\lambda)$ のこと。
-
-$V$ を有限長 $A$ 加群（普通の長さで $\len_A V<\infty$）とすると、$\m_A^N V = 0$（$N = \len_A V$）なので、$\Tor_i^A(V,C)$ は $\m_A^N$ で、したがって $(\m_A C)^N$ で消され、$\lambda$ の定義域に入る。特に $V = k$ のとき $\m_A$ で消される。そこで
-\begin{itemize}
-  \item 全ての有限長 $A$ 加群 $V$ と $i>0$ で $\lambda\Tor_i^A(V,C) = 0$ のとき、$(C,\lambda)$ は \textbf{$\lambda$-平坦}であるという。
-  \item 実数 $r\ge 0$ について、全ての有限長 $A$ 加群 $V$ で $\lambda(V\otimes_A C) = r\cdot\len_A V$ のとき、$(C,\lambda)$ は\textbf{ランク $r$} であるという。
-\end{itemize}
+\begin{definition}[長さ付き代数]\label{def:lenalg-general}
+$A$ を可換環、$z=(z_1,\dots,z_e)$ をその元の有限列とし、$z^v=(z_1^v,\dots,z_e^v)$ と書く。\textbf{長さ付き $A$ 代数}とは、可換 $A$ 代数 $C$ と、$J=(z)C$ のある冪で加群全体が消される $C$ 加群の上の長さ関数 $\lambda$ の組 $(C,\lambda)$ のことである。
 \end{definition}
-正則局所環上の有限生成加群 $M$ が「$\Tor_i(k,M) = 0$（$i>0$）なら自由」となることの $\lambda$ 版で、$C$ は「$\lambda$ の目で Cohen--Macaulay」である（正則局所環上では巨大 CM 代数は平坦）。次の補題により $V = k$ で判定でき、元論文の条件 (3.9) とも同値になる（系~\ref{cor:allv}）。形式化ではこの条件を構造体に束ねず、各定理の仮定として直接書く。具体例の構成は §\ref{sec:construction} で行う。
+$A$ がネーター局所環で $\sqrt{(z)}=\m_A$ なら、$(z)C$-冪ねじれと $\m_A C$-冪ねじれは同じ条件である。実際、$\m_A$ のある冪が $(z)$ に入り、この包含を $C$ に移せばよい。§\ref{sec:planB-quot} と定義~\ref{def:C-levels} では $A$ のネーター性は仮定せず、有限列 $z$ を固定して使う。
 
-\subsection{長さ付き代数と評価先}\label{sec:planB-quot}\label{sec:planC-levels}
+\subsection{評価先：長さ付きアーベル圏の構成}\label{sec:planB-quot}\label{sec:planC-levels}
 
-評価先の構成と以下の一般論では、定義~\ref{def:lengthalg} を次のように広げる。$A$ を可換環、$z=(z_1,\dots,z_e)$ をその元の有限列とし、$z^v=(z_1^v,\dots,z_e^v)$ と書く。長さ付き $A$ 代数とは、可換 $A$ 代数 $C$ と、$J=(z)C$ のある冪で加群全体が消される $C$ 加群上の長さ関数 $\lambda$ の組である。長さ関数は定義~\ref{def:lengthfn} の意味で、非負の拡大実数値をとり、同型不変で短完全列に加法的である。
-
-$A$ がネーター局所環で $\sqrt{(z)}=\m_A$ なら、$(z)C$-冪ねじれと $\m_A C$-冪ねじれは同じ条件である。実際、$\m_A$ のある冪が $(z)$ に入り、この包含を $C$ に移せばよい。以下の一般論では $A$ のネーター性は仮定せず、有限列 $z$ を固定して使う。
+$(C,\lambda)$ を長さ付き $A$ 代数とし、$J=(z)C$ とする。
 
 \begin{lemma}\label{lem:B-serre}
 $J$-冪ねじれ $C$ 加群の圏 $\mathcal{T}_J(C)$ はアーベル圏である。その中の
@@ -406,6 +415,8 @@ $\lambda$ は商上の同型不変・短完全列に加法的な長さ $\ell_\la
 
 $q$ を複体の各項に適用できるのは、その各項が $\mathcal{T}_J(C)$ に入る場合だけである。一般の $K(z;C)$ はこの条件を満たさない。以下では加群の圏でホモロジーを計算し、その冪ねじれと有限性を確かめてから商関手で送る。
 
+これで $(\mathcal{A}_\lambda^{\mathrm{fin}},\ell_\lambda)$ は定義~\ref{def:B-lenab} の長さ付きアーベル圏である。§\ref{sec:perfect}、§\ref{sec:asymp} のホモロジー的関手はここに値をとる。
+
 \subsection{Koszul 有限性と $\lambda$-平坦性}\label{sec:length-koszul}\label{sec:planC-general}
 
 \begin{definition}[Koszul 有限性]\label{def:C-levels}
@@ -415,6 +426,19 @@ $q$ を複体の各項に適用できるのは、その各項が $\mathcal{T}_J(
 \]
 を Koszul Euler 特性、または $\lambda$-重複度と呼ぶ。この一般性では、その正値性は仮定しない。
 \end{definition}
+
+以下この小節の残りでは、$A$ を正則局所環、$z$ をその正則パラメータ系とする。
+
+\begin{definition}[$\lambda$-平坦性とランク]\label{def:lengthalg}
+$(A,\m_A,k)$ を正則局所環、$z$ をその正則パラメータ系とし、$(C,\lambda)$ を長さ付き $A$ 代数とする（$\sqrt{(z)}=\m_A$ なので、定義域は $\m_A C$-冪ねじれ加群である）。
+
+$V$ を有限長 $A$ 加群（普通の長さで $\len_A V<\infty$）とすると、$\m_A^N V = 0$（$N = \len_A V$）なので、$\Tor_i^A(V,C)$ は $\m_A^N$ で、したがって $(\m_A C)^N$ で消され、$\lambda$ の定義域に入る。特に $V = k$ のとき $\m_A$ で消される。そこで
+\begin{itemize}
+  \item 全ての有限長 $A$ 加群 $V$ と $i>0$ で $\lambda\Tor_i^A(V,C) = 0$ のとき、$(C,\lambda)$ は \textbf{$\lambda$-平坦}であるという。
+  \item 実数 $r\ge 0$ について、全ての有限長 $A$ 加群 $V$ で $\lambda(V\otimes_A C) = r\cdot\len_A V$ のとき、$(C,\lambda)$ は\textbf{ランク $r$} であるという。
+\end{itemize}
+\end{definition}
+正則局所環上の有限生成加群 $M$ が「$\Tor_i(k,M) = 0$（$i>0$）なら自由」となることの $\lambda$ 版で、$C$ は「$\lambda$ の目で Cohen--Macaulay」である（正則局所環上では巨大 CM 代数は平坦）。次の補題により $V = k$ で判定でき、元論文の条件 (3.9) とも同値になる（系~\ref{cor:allv}）。形式化ではこの条件を構造体に束ねず、各定理の仮定として直接書く。具体例の構成は §\ref{sec:construction} で行う。
 
 \begin{lemma}[判定法]\orig{Lemma 3.4}\label{lem:34}
 $(C,\lambda)$ を長さ付き $A$ 代数とする。
@@ -447,16 +471,8 @@ $z$ は正則列なので $z^v$ も正則列で、Koszul 複体 $K(z^v)$ は $A/
 定義~\ref{def:lengthalg} の $\lambda$-平坦性と有限ランクからこれらの入力を供給する接続も形式化した。\ld{LengthAlgebra.Flat} が \ld{KoszulFinite}、高次の長さ零、Koszul Euler 特性 $e_\lambda=r$ をそれぞれ導く。\ld{LengthAlgebra.CohenMacaulay} は任意のパラメータ系についての $\lambda$-CM 条件から同じ入力を供給する。一般の共通定理ではこれらを独立に受け取り、平坦性をもたない通常の長さによる Euler 評価も引き続き扱う。
 \end{remark}
 
-\paragraph{有限性と消滅を分ける}\label{sec:planC-flat}
-$A$ が正則局所環で $z$ が正則パラメータ系のとき、$\lambda$-平坦性は定義~\ref{def:lengthalg} の条件である。これは有限長 $A$ 加群について $q\Tor_i^A(V,C)=0$（$i>0$）と同値であり、$V\mapsto q(V\otimes_A C)$ を完全関手にする。$C$ 自体は冪ねじれとは限らないので、商圏の中の対象 $qC$ の平坦性とは述べない。
-
-$\lambda$-平坦性だけでは $\lambda(C/zC)$ の有限性は出ない。有限ランク $r$ の条件もあれば、系~\ref{cor:allv} によって
-\[
- \lambda H_j(z^v;C)=0\ (j>0),\qquad
- \lambda(C/(z^v)C)=v^e r<\infty,
- \qquad e_\lambda(z;C)=r.
-\]
-したがって Koszul 有限性と消滅の両方を得る。これに対し、$\lambda$-CM 性は $D$ のパラメータ系について同様の消滅と有限性を与える。正則部分環 $A\subseteq D$ 上で使うには、$D$ が $A$ 上有限で、そのパラメータ系が $D$ のパラメータ系にもなる条件を使う（命題~\ref{prop:cmflat}）。
+\paragraph{$\lambda$-平坦性の意味}\label{sec:planC-flat}
+$\lambda$-平坦性は、有限長 $A$ 加群について $q\Tor_i^A(V,C)=0$（$i>0$）と同値であり、$V\mapsto q(V\otimes_A C)$ を完全関手にする。$C$ 自体は冪ねじれとは限らないので、商圏の中の対象 $qC$ の平坦性とは述べない。$\lambda$-平坦性だけでは $\lambda(C/zC)$ の有限性は出ず、有限ランクの条件と合わせて初めて、系~\ref{cor:allv} から上の表の三つの条件がそろう。$\lambda$-CM 性を正則部分環 $A\subseteq D$ 上で使うには、$D$ が $A$ 上有限で、そのパラメータ系が $D$ のパラメータ系にもなる条件を使う（命題~\ref{prop:cmflat}）。
 
 \begin{example}\label{ex:C-levels}\label{ex:B-lenab}
 普通の評価は $(T,\len_T)$、正規化側は $(C,\lambda)$ という二つの例である。$T$ がネーターで $T/(z)T$ が有限長なら、$H_j(z^v;T)$ は有限生成で $(z^v)$ により消されるので、$(T,\len_T)$ は Koszul 有限である。この有限性には CM 性を使わない。例えば本文の有限局所代数 $T$ が CM でなければ、普通の長さで測る高次の Koszul ホモロジーが残り、$\lambda$-平坦性は満たさない。したがって普通の側にも Euler 評価はあるが、消滅まで結論することはできない。
