@@ -198,7 +198,7 @@ Euler 評価 & 系~\ref{cor:35a} & 命題~\ref{prop:43} \\
 \paragraph{前提}
 \begin{itemize}
   \item 長さ付きアーベル圏 $(\mathcal{A},\ell)$（定義~\ref{def:B-lenab}）。
-  \item 三角圏 $\mathcal{K}$ と、ホモロジー的関手 $H_*\colon\mathcal{K}\to\mathcal{A}$（§\ref{sec:planB-abs}）。
+  \item 三角圏 $\mathcal{K}$ と、ホモロジー的関手 $H_*\colon\mathcal{K}\to\mathcal{A}$（定義~\ref{def:B-homological}）。Euler 評価にはさらに Euler 有限性（定義~\ref{def:B-eulerfin}）を仮定する。
   \item §\ref{sec:abstract-cone} ではさらに、可換環 $A$ とその元の有限列 $z$ を固定し、$\mathcal{K}$ が $A$ 線形でシフトも $A$ 線形であることを仮定する。
 \end{itemize}
 
@@ -223,14 +223,25 @@ Euler 評価（命題~\ref{prop:B-euler}）：Euler 数が $K_0(\mathcal{K})$ �
 アーベル圏 $\mathcal{A}$ と、同型不変な関数 $\ell\colon\mathrm{Ob}\,\mathcal{A}\to[0,\infty]$ で、$\ell(0)=0$、短完全列で加法的、$\ell(X)=0\Rightarrow X\cong0$ となるものの組を長さ付きアーベル圏という。$\ell$ は組成列の長さである必要はない。
 \end{definition}
 
-$\mathcal{K}$ を三角圏とする。加法的関手の族 $H_i\colon\mathcal{K}\to\mathcal{A}$ がシフトの同型 $H_i(X[j])\cong H_{i-j}(X)$ を備え、完全三角から長完全列
+\begin{definition}[ホモロジー的関手]\label{def:B-homological}
+$\mathcal{K}$ を三角圏、$\mathcal{A}$ をアーベル圏とする。加法的関手の族 $H_i\colon\mathcal{K}\to\mathcal{A}$（$i\in\Z$）がシフトの同型 $H_i(X[j])\cong H_{i-j}(X)$ を備え、完全三角 $X\to Y\to Z\to X[1]$ から長完全列
 \[
  \cdots\to H_i(X)\to H_i(Y)\to H_i(Z)\to H_{i-1}(X)\to\cdots
 \]
-を与えるとき、$H_*$ をホモロジー的関手と呼ぶ。
+を与えるとき、$H_*$ を\textbf{ホモロジー的関手}と呼ぶ。
+\end{definition}
+
+\begin{definition}[Euler 有限]\label{def:B-eulerfin}
+$(\mathcal{A},\ell)$ を長さ付きアーベル圏とする。ホモロジー的関手 $H_*\colon\mathcal{K}\to\mathcal{A}$ が \textbf{Euler 有限}であるとは、$\mathcal{K}$ の各対象 $X$ について次の二つが成り立つことをいう。
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{有界性}：有限個の $i$ を除いて $H_i(X)=0$。
+  \item \textbf{長さの有限性}：全ての $i$ で $\ell(H_iX)<\infty$。
+\end{enumerate}
+このとき交代和 $\chi(X)=\sum_i(-1)^i\ell(H_iX)$ は実数として定まる。
+\end{definition}
 
 \begin{proposition}[Euler 評価]\label{prop:B-euler}
-各 $X$ の $H_i(X)$ が有限個の次数を除いて零で、全ての $\ell(H_iX)$ が有限であるとする（条件 (Fin)）。このとき
+$H_*\colon\mathcal{K}\to\mathcal{A}$ を Euler 有限なホモロジー的関手とする。このとき
 \[
  \chi(X)=\sum_i(-1)^i\ell(H_iX)
 \]
@@ -260,7 +271,7 @@ $\sum_g g\cdot x$ は $G$ 不変なので、ある正の整数 $m$ で $m\sum_g 
 この補題を命題~\ref{prop:B-euler} の二つの Euler 評価に適用したものが、二つの実現で使う比較定理である。
 
 \begin{proposition}[Euler 評価の共役和比較]\label{prop:B-compare}
-$\mathcal{K}$ を三角圏とし、$H^{(1)}_*$、$H^{(2)}_*$ をそれぞれ長さ付きアーベル圏 $(\mathcal{A}_1,\ell_1)$、$(\mathcal{A}_2,\ell_2)$ に値をとる (Fin) を満たすホモロジー的関手、$\chi_1,\chi_2\colon K_0(\mathcal{K})\to\R$ を命題~\ref{prop:B-euler} の Euler 評価とする。アーベル群 $K$ からの準同型 $f\colon K\to K_0(\mathcal{K})$ と、有限群 $G$ の $K_0(\mathcal{K})$ への作用が次をみたすとする。
+$\mathcal{K}$ を三角圏とし、$H^{(1)}_*$、$H^{(2)}_*$ をそれぞれ長さ付きアーベル圏 $(\mathcal{A}_1,\ell_1)$、$(\mathcal{A}_2,\ell_2)$ に値をとる Euler 有限なホモロジー的関手、$\chi_1,\chi_2\colon K_0(\mathcal{K})\to\R$ を命題~\ref{prop:B-euler} の Euler 評価とする。アーベル群 $K$ からの準同型 $f\colon K\to K_0(\mathcal{K})$ と、有限群 $G$ の $K_0(\mathcal{K})$ への作用が次をみたすとする。
 \begin{enumerate}[label=(\alph*)]
  \item \textbf{基底から来る類での一致}：$\chi_1\circ f=\chi_2\circ f$。
  \item \textbf{不変類の降下}：全ての $G$ 不変な $y\in K_0(\mathcal{K})$ について、ある正の整数 $n$ と $a\in K$ で $ny=f(a)$。
@@ -283,7 +294,7 @@ $\mathcal{K}$ を三角圏とし、$H^{(1)}_*$、$H^{(2)}_*$ をそれぞれ長�
 \begin{itemize}
   \item $A$ は可換環、$z=(z_1,\dots,z_e)$ はその元の有限列で、$z^v=(z_1^v,\dots,z_e^v)$ と書く。$e=\dim A$ や $A$ の正則性は要らない。
   \item $\mathcal{K}$ は $A$ 線形な三角圏で、シフトも $A$ 線形である。したがって $a\in A$ と対象 $X$ についてスカラー倍 $a\operatorname{id}_X$ が定まり、その錐がとれる。
-  \item $H_*\colon\mathcal{K}\to\mathcal{A}$ は §\ref{sec:planB-abs} のホモロジー的関手である。補題~\ref{lem:B-split}、\ref{lem:B-nit} は長さを使わず、補題~\ref{lem:B-h0} だけが長さ $\ell$ を使う。
+  \item $H_*\colon\mathcal{K}\to\mathcal{A}$ はホモロジー的関手（定義~\ref{def:B-homological}）である。補題~\ref{lem:B-split}、\ref{lem:B-nit} は長さを使わず、補題~\ref{lem:B-h0} だけが長さ $\ell$ を使う。
 \end{itemize}
 $v\ge1$ に対し $z_j^v$ のスカラー作用の錐を順にとった対象を $K_v\otimes X$ と書く。抽象三角圏でこの記法は反復錐を表し、テンソル積の存在を仮定しない。
 
@@ -314,7 +325,7 @@ $m\ge0$ と $X$ について、ある $v\ge1$ で次の二つが成り立つと�
 \begin{proof}
 式~\eqref{eq:B-split} の $j=e$ の成分により $H_i(X)$ は $H_{i+e}(K_v\otimes X)$ の直和因子であり、$i+e>m$ なら零である。$i<0$ では $j=0$ の成分を使う。零対象の直和因子は零である。$m=e$ では $0$ 次だけが残る。
 \end{proof}
-消滅に長さの値や (Fin) は要らない。「自由振幅 $[0,m]$」は、具体例で (Kos$_m$) を確かめるための条件である。また、(Supp) を満たす $v$ の存在は仮定に含める。$e=0$ の場合も同じ定理で扱い、$m<e$ なら全次数で消滅する。Lean 内部の cochain 添字は $q=-i$ で本文の $H_i$ に変換する。
+消滅に長さの値や Euler 有限性は要らない。「自由振幅 $[0,m]$」は、具体例で (Kos$_m$) を確かめるための条件である。また、(Supp) を満たす $v$ の存在は仮定に含める。$e=0$ の場合も同じ定理で扱い、$m<e$ なら全次数で消滅する。Lean 内部の cochain 添字は $q=-i$ で本文の $H_i$ に変換する。
 
 \begin{lemma}[$0$ 次の下界]\label{lem:B-h0}
 (Supp) と $H_i(X)=0$（$i<0$）のもとで $H_0(K_v\otimes X)\cong H_0(X)$。有限な長さをもつ対象 $Y$ への全射 $H_0(K_v\otimes X)\twoheadrightarrow Y$ があれば、$\ell(H_0X)\ge\ell(Y)$。さらに $m=e$ の消滅と有限性があれば $\chi(X)\ge\ell(Y)$。
@@ -337,7 +348,7 @@ $m\ge0$ と $X$ について、ある $v\ge1$ で次の二つが成り立つと�
 \toprule
 この節で扱う条件 & §\ref{sec:perfect}、§\ref{sec:asymp} で確かめる §\ref{sec:abstract} の仮定 \\
 \midrule
-Koszul 有限性（定義~\ref{def:C-levels}） & 命題~\ref{prop:B-euler} の (Fin)：Euler 評価が定まること \\
+Koszul 有限性（定義~\ref{def:C-levels}） & Euler 有限性（定義~\ref{def:B-eulerfin}）：Euler 評価が定まること \\
 正次数の Koszul ホモロジーの長さ零 & 補題~\ref{lem:B-nit} の (Kos$_m$)：消滅 \\
 Koszul Euler 特性 $e_\lambda(z;C)$ の値 & 命題~\ref{prop:B-compare} の (a)：基底公式の係数 \\
 $\lambda$-平坦性と有限ランク（系~\ref{cor:allv}）、$\lambda$-CM 性（命題~\ref{prop:cmflat}） & 上の三つをまとめて供給する十分条件 \\
@@ -507,7 +518,7 @@ $\m_D^N\subseteq\m_A D$ となる $N$ があるので、$\m_A C$-冪ねじれと
 \toprule
 §\ref{sec:abstract} の結論 & この実現で確かめる入力 & 場所 & 得られる結論 \\
 \midrule
-Euler 評価（命題~\ref{prop:B-euler}） & 台と Koszul 有限性から (Fin)。シフト・長完全列・有界性 & §\ref{sec:perfect-eval} & (Fin) は命題~\ref{prop:C-euler}、\ref{prop:35a}。$K_0$ 上の準同型は系~\ref{cor:C-euler}、\ref{cor:35a} \\
+Euler 評価（命題~\ref{prop:B-euler}） & 台と Koszul 有限性から Euler 有限性（定義~\ref{def:B-eulerfin}）。シフト・長完全列・有界性 & §\ref{sec:perfect-eval} & Euler 有限性は命題~\ref{prop:C-euler}、\ref{prop:35a}。$K_0$ 上の準同型は系~\ref{cor:C-euler}、\ref{cor:35a} \\
 共役和の比較（命題~\ref{prop:B-compare}） & (a) 係数変更との両立（命題~\ref{prop:C-basechange}）、$K(z)$ が剰余体の分解であることと $e_\lambda(z;C)$ の値。(b) 降下は仮定として受け取る & §\ref{sec:planC-comparison} & 命題~\ref{prop:C-base}、定理~\ref{thm:C-norm} \\
 反復錐による消滅（補題~\ref{lem:B-nit}） & (Supp)：零ホモトピー。(Kos$_m$)：自由振幅と正次数の Koszul 長さ零 & §\ref{sec:perfect-vanishing} & 補題~\ref{lem:nit} \\
 第零次の下界（補題~\ref{lem:B-h0}） & 極小性による全射 & §\ref{sec:perfect-vanishing} & 補題~\ref{lem:h0bound} \\
@@ -574,7 +585,7 @@ $(C,\lambda)$ を Koszul 有限とし、$S\to C$ を $A$ 代数の準同型と�
  H_i^C(P)=q_{\mathrm{fin}}H_i(P\otimes_S^LC)
  \quad(P\in\Perf_{(z)}(S))
 \]
-は長さ付きアーベル圏 $\mathcal{A}_\lambda^{\mathrm{fin}}$ に値をとるホモロジー的関手で、(Fin) を満たす。
+は長さ付きアーベル圏 $\mathcal{A}_\lambda^{\mathrm{fin}}$ に値をとる Euler 有限なホモロジー的関手である。
 \end{proposition}
 \begin{proof}
 補題~\ref{lem:C-nil} により全ての $z_j^v$ が $P$ 上で零ホモトピックとなる共通の $v\ge1$ を選べる。係数拡大後の $Q=P\otimes_S C$ でも同じ作用が零なので、ホモロジーは $(z)C$-冪ねじれである。また $Q$ は $K_v\otimes Q$ の直和因子である。
@@ -586,7 +597,7 @@ $P$ の有限射影項 $P_k$ を有限自由項 $S^{r_k}$ の直和因子とし�
 \]
 となる。この説明は有限自由項に限った上界を有限射影項へ拡張している。
 
-係数拡大は導来圏で完全三角を保ち、ホモロジーの長完全列は全て有限な冪ねじれ加群に入るので、完全な $q_{\mathrm{fin}}$ を適用できる。これによりホモロジー的関手を得る。perfect 複体は有界なので、非零の次数は有限個であり、上の評価とあわせて (Fin) を得る。
+係数拡大は導来圏で完全三角を保ち、ホモロジーの長完全列は全て有限な冪ねじれ加群に入るので、完全な $q_{\mathrm{fin}}$ を適用できる。これによりホモロジー的関手を得る。perfect 複体は有界なので、非零の次数は有限個であり（有界性）、上の評価とあわせて Euler 有限性を得る。
 \end{proof}
 この命題では $S$ の局所性、ネーター性、$A$ 上の有限性や平坦性を使わない。
 
@@ -616,7 +627,7 @@ $S\to S'\to C$ を $A$ 代数の準同型とし、$(C,\lambda)$ を Koszul 有�
 \lean{\ld{LengthAlgebra.PerfectBaseChange}。\ld{perfectBaseChangeEulerK0} は評価をこの係数拡大と合成して定義し、\ld{perfectBaseChangeEulerK0_comp} が両立を与える（証明済み）。}
 
 \begin{proposition}\orig{Lemma 3.5a の前半}\label{prop:35a}\label{prop:check-perfect-euler}
-$T$ がネーターで $T/(z)T$ が有限長とする。$P\in\mathcal{K}_T$ について、有限長 $T$ 加群の圏に値をとる $H_i(P)$ と、$\mathcal{A}_\lambda^{\mathrm{fin}}$ に値をとる $H_i^C(P)$ は、ともに (Fin) を満たすホモロジー的関手である。
+$T$ がネーターで $T/(z)T$ が有限長とする。$P\in\mathcal{K}_T$ について、有限長 $T$ 加群の圏に値をとる $H_i(P)$ と、$\mathcal{A}_\lambda^{\mathrm{fin}}$ に値をとる $H_i^C(P)$ は、ともに Euler 有限なホモロジー的関手である。
 \end{proposition}
 \begin{proof}
 正規化側は命題~\ref{prop:C-euler}（$S=T$）である。普通の側では、台から共通の $v$ を選んで全ての $z_j^v$ の零ホモトピーを得て、補題~\ref{lem:koszulbound} を $C=T$、$\lambda=\len_T$ で使う（$M_v<\infty$ は例~\ref{ex:C-levels}）。複体は有界で、ホモロジーの長完全列とシフト同型はそのまま有限長加群の圏に入る。
@@ -821,7 +832,7 @@ $s_n>0$ と非単項超フィルター $\U$ を固定する。共通の $J$ の�
  \item シフト・長完全列と両立して関手を降下させ、冪等元の像によって直和因子へ延長する。
  \item 一様に台をもつ列の像では、延長した関手を元のホモロジー列で計算できることを示す。
 \end{enumerate}
-この接続と有界性を構成すると (Fin) が成立し、命題~\ref{prop:B-euler} が使える。評価先の Serre 商だけでは (2)--(4) は得られないが、これらも実装済みである。
+この接続と有界性を構成すると Euler 有限性が成り立ち、命題~\ref{prop:B-euler} が使える。評価先の Serre 商だけでは (2)--(4) は得られないが、これらも実装済みである。
 \lean{\ld{Asymptotic.SequenceHomologyLocalization}、\ld{CompletedHomology}、\ld{RankHomologyShiftNatural}、\ld{CompletedRankEvaluation}、\ld{PaperBaseChangeEvaluation}。}
 
 段ごとの長さ $0$ は正規化超極限の長さ $0$ を含意するが、逆は成り立たない。「段ごとに商をとり、次に列の商をとる」という説明を圏同値として使うには、射の分数表示の持ち上げと一様な制御を確かめる必要がある。ここではその同値を使わず、元の加群列から直接 Serre 商を作る。
@@ -1267,7 +1278,7 @@ $x$ の選択、有限近似 & (5.4)、Lemma 5.4 & 非混合性と $\lambda_\inf
 \toprule
 条件 & 得られるもの \\
 \midrule
-Koszul 有限性と台 & ホモロジー的評価の (Fin)、$K_0$ 上の Euler 評価 \\
+Koszul 有限性と台 & ホモロジー的評価の Euler 有限性、$K_0$ 上の Euler 評価 \\
 基底の Koszul 分解 & 基底から来る類の評価を $e_\lambda$ 倍で計算 \\
 二つの $e_\lambda$ の一致と降下 & 共役和の一致 \\
 スカラーの零作用と Koszul 消滅 & 新交叉型の消滅 \\
