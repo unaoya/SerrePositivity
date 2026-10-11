@@ -21,7 +21,7 @@ namespace Section2
 
 /-- 定理2.5。補題2.2の具体的な基底の情報で標数を分け、標数別の構成を呼ぶ。
 冪への拡張と階数公式は証明済みの共通の導出を使う。この定理自体に直接の `sorry` はないが、
-Roberts・Bhatt–Scholze・CLMST・正規化長さの引用と、重複度公式の未証明入力に依存する。正則パラメータは証明済み。 -/
+Roberts・Bhatt–Scholze・CLMST・正規化長さの引用に依存する。正則パラメータと重複度公式は証明済み。 -/
 theorem theorem_2_5 (A D : Type u) [CommRing A] [IsRegularLocalRing A]
     [IsAdicComplete (maximalIdeal A) A]
     [CommRing D] [IsLocalRing D] [IsNoetherianRing D] [IsDomain D]

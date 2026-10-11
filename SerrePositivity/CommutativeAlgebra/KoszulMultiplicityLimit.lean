@@ -25,7 +25,7 @@ open scoped ENNReal
 variable (D : Type u) [CommRing D] [IsLocalRing D] [IsNoetherianRing D]
 
 /-- パラメータ系の成分ごとの `q` 乗に対する通常の Euler 数は `q^h e((z), D)`。
-二つの既存の重複度の入力を明示的に適用する。 -/
+二つの証明済み重複度公式を明示的に適用する。 -/
 theorem chiOrd_koszul_pow {h : ℕ} (z : Fin h → D) (hz : IsSystemOfParameters D z)
     (q : ℕ) (hq : 0 < q) :
     chiOrd (koszulComplex (fun j ↦ z j ^ q)) =

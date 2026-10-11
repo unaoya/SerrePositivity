@@ -41,24 +41,67 @@
 重複度の正値性は、多項式性・次元定理からの証明へ置き換えた。
 Koszul Euler 数の係数制限も証明し、未証明なのは同じ環上の Koszul 重複度公式であると明示した。
 
-標準可換環論の多項式性・環自身の Samuel 多項式の次数＝Krull 次元・正則パラメータ・正則列商の非混合性は完了し、残りは二つ。外部の深い引用とは区別し、このリポジトリで証明を進める。
+今回対象にした標準可換環論の六つの主張はすべて証明済み。外部の深い引用と、後回しにした K 理論の未証明箇所は引き続き別に保持する。
 
-| 順序 | 残る主張 | 必要な範囲での進め方 |
+| 順序 | 主張 | 必要な範囲での証明 |
 | --- | --- | --- |
 | 1（完了） | `exists_isSamuelPoly`：Samuel 関数の多項式性 | Hilbert–Serre の数値版を証明し、随伴次数加群へ適用して有理型級数と次数 `≤ s` の Samuel 多項式を構成した。直接の `sorry` を除去済み |
 | 2（完了） | `natDegree_poly_eq_dim`：次数と環の次元の一致 | 次元個のパラメータ系から上界、Artin–Rees と素イデアル鎖への帰納法から下界を証明した。元の名前・仮定・結論を維持し、直接の `sorry` を除去済み |
 | 3（完了） | `isWeaklyRegular_of_span_eq_maximalIdeal`：正則局所環の正則パラメータ | Samuel 次元定理で随伴次数環の多項式表示の単射性を得て、Krull 共通部分と商への帰納法から正則列を証明した。既存の `sorry` を除去済み |
 | 4（完了） | `ringKrullDim_quotient_add_length_of_mem_associatedPrimes`：正則列で割った環の非混合性 | 随伴素イデアルへの深さ上界、商の深さ下界、正則列商の次元公式を接続して証明した。既存の `sorry` を除去済み |
-| 5 | `multiplicity_eq_chiOrd_koszul`：Koszul 重複度公式 | 同じ環上のパラメータ系に限定する。係数制限の部分は証明済みなので再実装しない |
-| 6 | `multiplicity_parameter_pow`：パラメータ各成分の冪 | `(z_1^v,…,z_h^v)` の公式を示す。今回証明したイデアル自体の冪の公式とは区別する |
+| 5（完了） | `multiplicity_eq_chiOrd_koszul`：Koszul 重複度公式 | Rees Koszul ホモロジーの高次消滅、実際の adic tail の完全性、有限長商の Euler–Poincaré 公式、Samuel 多項式の高階差分を接続して証明した |
+| 6（完了） | `multiplicity_parameter_pow`：パラメータ各成分の冪 | 鳩ノ巣評価による理想の冪包含と Samuel 多項式の最高次係数の比較から独立に証明した。イデアル自体の冪の公式とは区別する |
 
-Samuel 多項式の存在・次元定理・正則パラメータ・非混合性の `sorry` を除去し、直接の `sorry` の総数は21から17に減った。
-内訳は外部引用13、標準可換環論2、後回しの K 理論2。
-引用からの接続が証明済みでも、引用先や標準可換環論の未証明箇所への依存は残る。
+標準可換環論の六つの主張を証明し、直接の `sorry` は15箇所になった。
+内訳は外部引用13、後回しの K 理論2。今回対象にした標準可換環論には残らない。
+引用からの接続が証明済みでも、引用先と後回しの K 理論への依存は残る。
 
 以前の検証（引用境界と標準可換環論への着手）：全体の `lake build` は3707ジョブで成功。新規・変更20宣言と主定理・核心定理の
 計22宣言を公理監査し、11宣言は標準公理のみ、11宣言は明示した未証明入力に由来する
 `sorryAx` に依存する。その他の公理はなく、`git diff --check` も通過した。
+
+### 標準可換環論の最後の二つ：証明完了
+
+`MultiplicityFormulas.lean` の二つの公開名・仮定・結論を維持して、既存の `sorry` を
+証明へ置き換えた。新しい未証明入力・公理・入力を束ねる構造体は追加していない。
+
+**パラメータ成分ごとの冪。** `ParameterPowerMultiplicity.lean` で
+`I=(z_i)`、`J=(z_i^v)` の間の `J^n≤I^(vn)` と
+`I^(vn+h(v−1))≤J^n` を単項式の指数の鳩ノ巣評価で証明する。
+Samuel 関数を両側から抑え、最高次係数を比較して `e(J)=v^h e(I)` を得る。
+Koszul 重複度公式には依存しない。
+
+**Koszul 重複度公式。** 今回必要な係数加群 `M=R` を、次の証明済みの接続で扱う。
+
+- `KoszulReesFinite.lean`：Rees 加群の多項式作用・有限生成性。変数の冪で消える
+  有限多項式加群は係数環上有限生成なので、変数列の Koszul ホモロジーも係数環上有限生成。
+- `GradedKoszulHomology.lean`・`ReesModuleGrading.lean`・`GradedKoszul.lean`・
+  `GradedKoszulVanishing.lean`・`GradedReesKoszulVanishing.lean`：各項とホモロジーの
+  次数分解を構成。有限生成性から高次数のホモロジー消滅を得て、同次サイクルの
+  原始元を一つ低い係数次数で選び、全 cochain 次数に共通する境界を供給する。
+- `GradedKoszulEvaluation.lean`・`ReesKoszulEvaluation.lean`：`t=1` の評価による複体射を構成。
+  各項の係数次数 `k` の像が `I^k` 倍に一致し、その次数成分上で評価が単射であることを証明。
+- `ModuleSubcomplex.lean`・`AdicFilteredComplex.lean`・`GradedAdicExactness.lean`・
+  `ReesKoszulAcyclic.lean`：実際の Koszul 複体の `F_n K^q=I^max(n+q,0)K^q` を構成。
+  次数付きのサイクル・境界の持ち上げから十分先の尾部の完全性を得る。
+  尾部・元の複体・商の短完全列から、商への射影が quasi-isomorphism であることを示す。
+- `FiniteLengthComplexEuler.lean`・`AdicModuleProduct.lean`・`AdicTermEuler.lean`・
+  `AdicEulerComparison.lean`：有限長商の Euler–Poincaré 公式と、錐の項の直積表示を使い、
+  項の交代和を `E(n)−E(n−1)` の再帰へ移す。
+- `PolynomialFiniteDifference.lean`・`KoszulAdicEuler.lean`・`KoszulMultiplicityProof.lean`：
+  `h` 階後退差分が `h! × coeff_h` になること、Samuel 次数＝次元を用い、
+  実際の Koszul Euler 数を重複度へ同定する。空列・次数零も処理する。
+
+最終の公開公式では、次数付き評価・消滅・尾部の完全性を新しい仮定にはしていない。
+同じ環上の公式、係数制限、正則基底上の階数公式、パラメータの冪の Euler 公式まで
+証明済みの一般論に接続した。外部の深い引用と K 理論の保留範囲は別に残る。
+
+検証：全体の `lake build` は3790ジョブで成功。新規165宣言と既存14宣言の計179宣言を
+公理監査し、175宣言は標準公理のみ。今回対象にした六つの標準定理、係数制限による
+重複度公式、正則基底上の階数公式、Koszul の冪の Euler 公式、条件付き正規化長さの極限に
+`sorryAx` の依存はない。`firstComparison`・定理2.5・主定理・核心定理の4宣言には
+意図して保持した外部引用または K 理論からの依存が残る。その他の公理はなく、
+新しい `sorry` は追加せず総数は15。`git diff --check` も通過。
 
 ### 正則列商の非混合性：証明完了
 
@@ -81,12 +124,6 @@ Samuel 多項式の存在・次元定理・正則パラメータ・非混合性�
 
 この結果を使う素イデアル回避による正則パラメータの選択と、本文の有限拡大への
 パラメータの移送も、非混合性の未証明入力への依存がなくなる。
-
-残りは Koszul 重複度公式とパラメータ成分ごとの冪。前者は `M=D` の今回必要な範囲で、
-Rees 加群上の Koszul 複体の次数分解を使う方針を調査した。高次の内部次数でホモロジーが
-消えることを示し、元の複体のフィルトレーション部分と同定する。その商の Euler 数を
-Samuel 関数の高階差分として計算し、次数と最高次係数から重複度へ接続する。
-次数付き Koszul ホモロジーとフィルトレーション部分複体の同定が主な追加実装。
 
 検証：全体の `lake build` は3770ジョブで成功。新規18宣言と既存7宣言の計25宣言を
 公理監査し、22宣言は標準公理のみ。非混合性・正則パラメータの選択・有限拡大への
