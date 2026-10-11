@@ -1174,13 +1174,36 @@ $\lambda_D(C_D/\m_D C_D) > 0$。つまり $C_D$ は非自明な $\lambda$-CM 代
 %======================================================================
 \section{核の場合の証明}\label{sec:core}
 
-補題~\ref{lem:first} は $(D',\len_{D'})$ と $(C_D,\lambda_D)$ の対称な比較である。式~\eqref{eq:second} は $(E',\len_{E'})$ と $(C_E,\lambda_E)$ の漸近版の比較である。$C_D$ の $\lambda$-CM 性はパラメータ商と次数の上界を与え、有限近似を長さ $l$ の複体列にする。$C_E$ の Koszul 消滅はその列の高次を消す。極小性が $0$ 次の下界を与え、生成元数の正規化極限と非自明性が正値性を与える。比較に必要な有限性と、正値性に必要な消滅は、このように別々の入力である。
+この節では定理~\ref{thm:core}（核の場合）を証明する。証明は次の段階からなり、各段階は前の節の命題を当てはめる。
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright}p{3.0cm}>{\raggedright}p{3.6cm}>{\raggedright\arraybackslash}X}
+\toprule
+段階 & 主張 & 使う結果 \\
+\midrule
+設定 & 補題~\ref{lem:core-trans}（推移性） & 不変環とノルムの議論 \\
+置き換え 1 & 補題~\ref{lem:first}（Lemma 5.2） & 命題~\ref{prop:35c}（Lemma 3.5c） \\
+置き換え 2 の準備 & 補題~\ref{lem:core-param}、\ref{lem:core-approx}（Lemma 5.3--5.5） & 命題~\ref{prop:paper-param}、定理~\ref{thm:approx-exist}、命題~\ref{prop:approx-object} \\
+置き換え 2 & 命題~\ref{prop:core-second}（(5.18)） & 定理~\ref{thm:47}（Theorem 4.7） \\
+正値性 & 補題~\ref{lem:pos}（Lemma 5.6） & 命題~\ref{prop:paper-pos} \\
+結論 & 定理~\ref{thm:core} の証明 & 上の全て \\
+\bottomrule
+\end{tabularx}
+\end{center}
+置き換え 1 は $(D',\len_{D'})$ と $(C_D,\lambda_D)$ の対称な比較、置き換え 2 は $(E',\len_{E'})$ と $(C_E,\lambda_E)$ の漸近版の比較である。$C_D$ の $\lambda$-CM 性はパラメータ商と次数の上界を与え、有限近似を長さ $l$ の複体列にする。$C_E$ の Koszul 消滅はその列の高次を消す。極小性が $0$ 次の下界を与え、生成元数の正規化極限と非自明性が正値性を与える。
 
-\paragraph{設定\orig{§5.1}}
-定理~\ref{thm:core} の $D, E$ に対し、補題~\ref{lem:cohengabber} の正則部分環 $A_D\subseteq D$、$A_E\subseteq E$ をとる。$D'$ を $\Frac(D)/\Frac(A_D)$ の Galois 閉包における $A_D$ の整閉包、$G_D$ をその Galois 群とする（$E'$、$G_E$ も同様）。$D'$ は $A_D$ 上有限な局所整域（優秀性）で、$G_D$ は幾何ファイバーに推移的。定理~\ref{thm:existence} を $D'$、$E'$ に適用して $\lambda$-平坦な長さ付き代数 $(C_D,\lambda_D)$、$(C_E,\lambda_E)$ を得る。$a_D = \rank_D D'$、$a_E = \rank_E E'$。
+\subsection{設定\orig{§5.1}}\label{sec:core-setting}
 
-幾何ファイバーへの推移性は、$(D')^{G_D}=A_D$ から論文 §5.1 のノルムの議論で導く。$u\in D'\otimes_{A_D}\Omega$ の共役の積 $\prod_g g(u)$ は $\Omega$ に入るので、軌道に対応する冪等元は $0$ か $1$ になる。
-\lean{推移性は \ld{isGeometricallyTransitive_of_fixed}（証明済み）。$D'$ の構成、有限性・局所性、$(D')^{G_D}=A_D$ は未。}
+定理~\ref{thm:core} の $D, E$ に対し、補題~\ref{lem:cohengabber} の正則部分環 $A_D\subseteq D$、$A_E\subseteq E$ をとる。$D'$ を $\Frac(D)/\Frac(A_D)$ の Galois 閉包における $A_D$ の整閉包、$G_D$ をその Galois 群とする（$E'$、$G_E$ も同様）。$D'$ は $A_D$ 上有限な局所整域（優秀性）で、$A_D$ の正規性から $(D')^{G_D}=A_D$ である。定理~\ref{thm:existence} を $D'$、$E'$ に適用して $\lambda$-平坦な長さ付き代数 $(C_D,\lambda_D)$、$(C_E,\lambda_E)$ を得る。$a_D = \rank_D D'$、$a_E = \rank_E E'$ とおく。
+\lean{$D'$ の構成、有限性・局所性、$(D')^{G_D}=A_D$ は未。}
+
+\begin{lemma}[幾何ファイバーへの推移性]\label{lem:core-trans}
+$A\to T$ を有限な環準同型、有限群 $G$ が $T$ に $A$ 上で作用し、$G$ で固定される元が全て $A$ から来るとする。このとき $G$ は $\Spec T\to\Spec A$ の全ての幾何ファイバーに推移的に作用する。特に $(D',A_D,G_D)$ と $(E',A_E,G_E)$ について成り立つ。
+\end{lemma}
+\begin{proof}
+代数閉体 $\Omega$ への $A$ 代数の構造をとり、$S=T\otimes_A\Omega$ とおく。$u=\sum_it_i\otimes\omega_i\in S$ について、共役の積 $\prod_gg(u)$ は $\Omega$ に入る。実際、多項式 $\prod_g\sum_ig(t_i)X_i$ は $G$ 不変なので係数は $A$ から来て、$X_i=\omega_i$ と特殊化すればよい。$S$ は $\Omega$ 上有限な Artin 環なので、$\Spec S$ は離散である。一つの点の軌道に対応する冪等元 $e$ について $\prod_gg(e)$ は冪等なスカラーで、その点で $0$ でないから $1$ に等しい。したがって軌道は $\Spec S$ 全体である。
+\end{proof}
+\lean{\ld{isGeometricallyTransitive_of_fixed}（証明済み）。}
 
 $\sigma\in G_D$ に対し $\iota_\sigma\colon R\to D'\xrightarrow{\sigma} D'$ とし、$C_D$ に $\iota_\sigma$ で $R$ 作用を入れたものを $C_D^\sigma$ と書く。
 \[
@@ -1188,6 +1211,8 @@ $\sigma\in G_D$ に対し $\iota_\sigma\colon R\to D'\xrightarrow{\sigma} D'$ �
 \]
 とおく。Tor は $E'$ の自由分解で計算する（形式化では Tor の対称性を使わない）。
 \lean{\ld{Paper.Section5.twistedAlgebraMap}、\ld{twistedEuler}。}
+
+\subsection{置き換え 1}\label{sec:core-first}
 
 \begin{lemma}\orig{Lemma 5.2、置き換え 1}\label{lem:first}
 \[
@@ -1203,26 +1228,59 @@ $E'$ の有限自由 $R$ 分解 $F$ をとり $P_\sigma = F\otimes_{R,\iota_\sig
 \end{proof}
 \lean{\ld{Paper.firstComparison}、\ld{Section5.firstComparison_of_resolution}、\ld{normComparison_of_lengthAlgebra}、ランクの因子は \ld{IntersectionMultiplicity.FiniteExtension}（引用を除いて証明済み。引用は消滅定理と定理~\ref{thm:descent}）。環・有限代数・群作用・長さの条件は引数として明示的に受け取る。}
 
-\paragraph{有限近似\orig{§5.2--5.4、置き換え 2 の準備}}
-$\sigma$ を固定し $C = C_D^\sigma$、$\lambda = \lambda_D$ と書く。
-\begin{enumerate}
-  \item \textbf{パラメータ商}（Lemma 5.3）：$Q$ の元 $x_1,\dots,x_h$ で $R$ 正則列かつ $D$ のパラメータ系になるものをとり、$B = R/(x)$、$U = C/\iota_\sigma(x)C$ とおく。$B$ は次元 $l$ の完全交叉局所環で、正則性は使わない。命題~\ref{prop:paper-param} を $\iota_\sigma\colon R\to D'$ と $C$ に適用すると、有限生成 $B$ 加群 $L$ について
-  \[
-    \lambda\Tor_i^R(C,L) = \lambda\Tor_i^B(U,L), \qquad\text{これは } i>l \text{ で } 0,
-  \]
-  かつ $0<\lambda(U)<\infty$。$C$ が非自明な $\lambda$-CM 代数であることは定理~\ref{thm:existence} (a) と系~\ref{cor:pos} による。
-  \item \textbf{有限長加群での近似}（Lemma 5.4）：$\lambda_D$ は塔と整合する長さの係数制限である（命題~\ref{prop:tower-compatible}）。定理~\ref{thm:approx-exist} を $T=D'/I_\sigma$、$U$ に適用し、$\m_B^a$ で消される有限近似列 $(M_n)$ を $\mathcal{L}=\{E'\}$ についてとる。このとき $\tau_i(L)=\lambda\Tor_i^B(U,L)$（$L=k,E'$）で、パラメータ商の消滅から $\tau_i(k)=0$（$i>l$）である。$\m_B^a$ が $D'/I_\sigma$ と $U$ を消すことは論文の (5.6) で、局所準同型 $B\to D'/I_\sigma$ から出る（\ld{Section5.exists_pow_maximalIdeal_map_le}）。
-  \item \textbf{切り詰め}（Lemma 5.5）：命題~\ref{prop:approx-object} を $T'=E'$ と、$\gamma\in G_E$ でひねった $B\to E'$ に適用する。$M_n$ の極小自由分解を $l$ 次で切った列を $E'$ に移した $F'_\gamma$ は、$0$ 次から $l$ 次に項をもつ $1$ 次で極小な自由列で、その像は $P_{E'}^J$ に入り、普通の Euler 特性は $\chi_{\ord}(F'_\gamma)=\sum_i(-1)^i\tau_i(E')=\sum_i(-1)^i\lambda\Tor_i^B(U,E')=c_\sigma$ である。生成元数の比の極限 $\nu_\sigma=\lim\beta_0(M_n)/s_n$ は $\lambda(U)/\len(B/\m_B^a)$ 以上で、特に正である。
-\end{enumerate}
-\lean{$x$ の選択は \ld{exists_regular_parameters_in}（素イデアル回避。引用は非混合性 \ld{Inputs.Unmixedness} のみ）と、有限拡大へ移す \ld{Section5.exists_regular_parameters_for_finite_extension}。パラメータ商の長さ比較・消滅は \ld{Section5.lemma_5_3}（\ld{ParamQuot.torClaim}、\ld{ParamQuot.len_torAlg_eq_zero}）。有限近似は \ld{Section5.lemma_5_4} が塔の有限段への降下で構成する（$\lambda_\infty$ の二性質の引用を除いて証明済み）。そのための $\m_B^a$ と $\Lambda\otimes_{A}(D'/I_\sigma)$ の作用は \ld{Section5.Preparation}。切り詰め・支持・Euler の計算は \ld{Paper.Section5.MinimalApproximation}、\ld{SupportedApproximation}、\ld{ApproximationEuler}。\ld{Section5.lambdaChi_pos_of_parameter_tower} はこれらを接続し、近似列を内部で構成する。}
+\subsection{置き換え 2 の準備：パラメータ商と有限近似}\label{sec:core-approx}
 
-\paragraph{置き換え 2\orig{式 (5.18)}}
-定理~\ref{thm:47} を $A = A_E$、$T = E'$、$(C_E,\lambda_E)$、$G_E$ と $X = F'_{\mathrm{id}}$ に適用する（$X^\gamma = F'_\gamma$）。$b_{\sigma,\gamma} = \chi_{C_E}(F'_\gamma)$（命題~\ref{prop:43} の $C_E$ と $\lambda_E$ による Euler 特性）とおくと
+以下、$\sigma\in G_D$ を固定し、$C = C_D^\sigma$、$\lambda = \lambda_D$ と書く。
+
+\begin{lemma}[パラメータ商]\orig{(5.4)、Lemma 5.3}\label{lem:core-param}
+$Q$ の元 $x_1,\dots,x_h$ で、$R$ 正則列かつ像が $D$ のパラメータ系になるものがある。$B = R/(x)$、$I_\sigma=\iota_\sigma(x)D'$、$U = C/\iota_\sigma(x)C$ とおくと、$B$ は次元 $l$ の完全交叉局所環で、次が成り立つ。
+\begin{enumerate}[label=(\alph*)]
+  \item 有限生成 $B$ 加群 $L$ について $\lambda\Tor_i^R(C,L) = \lambda\Tor_i^B(U,L)$ で、これは $i>l$ で $0$。
+  \item $0<\lambda(U)<\infty$。
+  \item ある $a\ge1$ で $\m_B^a$ が $D'/I_\sigma$ と $U$ を消す。
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+$x$ は素イデアル回避で一つずつ選ぶ。$R/(x_1,\dots,x_{i-1})$ の随伴素イデアルは非混合性により高さ $i-1$ で、$Q$ を含まない。$D/(x_1,\dots,x_{i-1})$ で次元を下げるのに避けるべき極小素イデアルも、$P+Q$ が $\m$-準素であることから $Q$ を含まない。$D'$ は $D$ 上有限なので、$\iota_\sigma(x)$ は $D'$ のパラメータ系である。
+
+$C$ は定理~\ref{thm:existence} (a) と系~\ref{cor:pos} により非自明な $\lambda$-CM 代数なので、命題~\ref{prop:paper-param} を $\iota_\sigma\colon R\to D'$ と $C$ に適用して (a)、(b) を得る。(c) は、局所準同型 $B\to D'/I_\sigma$ と、$I_\sigma$ が $\m_{D'}$-準素であることから出る（論文の (5.6)）。
+\end{proof}
+\lean{$x$ の選択は \ld{exists_regular_parameters_in}（引用は非混合性 \ld{Inputs.Unmixedness} のみ）と、有限拡大へ移す \ld{Section5.exists_regular_parameters_for_finite_extension}。(a) は \ld{Section5.lemma_5_3}、(c) は \ld{Section5.exists_pow_maximalIdeal_map_le}。}
+
+\begin{lemma}[有限近似と切り詰め]\orig{Lemma 5.4、5.5}\label{lem:core-approx}
+補題~\ref{lem:core-param} の設定で、正の整数の列 $s_n\to\infty$ と、各 $\gamma\in G_E$ について自由 $E'$ 複体の有界な列 $F'_\gamma=(F'_{n,\gamma})_n$ で、次をみたすものがある。
+\begin{enumerate}[label=(\alph*)]
+  \item $F'_{n,\gamma}$ は $0$ 次から $l$ 次に項をもち、$1$ 次で極小で、$0$ 次の階数 $\beta_0$ は $\gamma$ によらない。
+  \item $F'_\gamma$ の像はランク無視の圏 $P_{E'}^J$ に入り、$F'_{\mathrm{id}}$ の $\gamma$ によるひねりは $F'_\gamma$ である。普通の Euler 特性は $\chi_{\ord}(F'_\gamma)=c_\sigma$。
+  \item $\nu_\sigma=\lim_\U\beta_0/s_n$ は $\lambda(U)/\len(B/\m_B^a)$ 以上で、特に正。
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+$\lambda_D$ は塔と整合する長さの係数制限である（命題~\ref{prop:tower-compatible}）。定理~\ref{thm:approx-exist} を $T=D'/I_\sigma$ と $U$ に適用し、$\m_B^a$ で消される有限近似列 $(M_n)$ を $\mathcal{L}=\{E'\}$ についてとる。$\tau_i(L)=\lambda\Tor_i^B(U,L)$（$L=k,E'$）であり、補題~\ref{lem:core-param} (a) から $\tau_i(k)=0$（$i>l$）、$\lim\len_B(M_n)/s_n=\lambda(U)$ である。
+
+命題~\ref{prop:approx-object} を $T'=E'$ と、$\gamma$ でひねった $B\to E'$ に適用し、$M_n$ の極小自由分解を $l$ 次で切った列を $E'$ に移したものを $F'_{n,\gamma}$ とする。(a) と (c) は命題~\ref{prop:approx-object} (a)、(c) と補題~\ref{lem:core-param} (b) から出る。(b) の Euler 特性は
+\[
+ \chi_{\ord}(F'_\gamma)=\sum_i(-1)^i\tau_i(E')=\sum_i(-1)^i\lambda\Tor_i^B(U,E')=\sum_i(-1)^i\lambda\Tor_i^R(C,E')=c_\sigma
+\]
+で、三つ目の等号は補題~\ref{lem:core-param} (a) による。ひねりは通常の長さを変えないので、$\gamma$ によらない。
+\end{proof}
+\lean{有限近似は \ld{Section5.lemma_5_4}（$\lambda_\infty$ の二性質の引用を除いて証明済み）、そのための作用は \ld{Section5.Preparation}。切り詰め・支持・Euler の計算は \ld{Paper.Section5.MinimalApproximation}、\ld{SupportedApproximation}、\ld{ApproximationEuler}。\ld{Section5.lambdaChi_pos_of_parameter_tower} はこれらを接続し、近似列を内部で構成する。}
+
+\subsection{置き換え 2}\label{sec:core-second}
+
+\begin{proposition}\orig{式 (5.18)}\label{prop:core-second}
+$b_{\sigma,\gamma} = \chi_{C_E}(F'_\gamma)$（命題~\ref{prop:43} の $C_E$ と $\lambda_E$ による Euler 特性）とおくと
 \begin{equation}\label{eq:second}
   |G_E|\cdot c_\sigma \;=\; \sum_{\gamma\in G_E} b_{\sigma,\gamma}.
 \end{equation}
+\end{proposition}
+\begin{proof}
+定理~\ref{thm:47} を $A = A_E$、$T = E'$、$(C_E,\lambda_E)$、$G_E$ と $X = F'_{\mathrm{id}}$ に適用する。仮定は設定と補題~\ref{lem:core-trans} からそろう。$X^\gamma = F'_\gamma$ なので、補題~\ref{lem:core-approx} (b) により左辺の和は $\sum_\gamma\chi_{\ord}(F'_\gamma)=|G_E|\,c_\sigma$ である。
+\end{proof}
 これが §\ref{sec:strategy} の \eqref{eq:strategy2} である。
 \lean{\ld{Section5.secondComparison_of_approximation}（有限近似・Koszul 分解・降下などを明示的な入力として証明済み）。}
+
+\subsection{正値性}\label{sec:core-pos}
 
 \begin{lemma}\orig{Lemma 5.6、正値性}\label{lem:pos}
 \[
@@ -1230,16 +1288,20 @@ $\sigma$ を固定し $C = C_D^\sigma$、$\lambda = \lambda_D$ と書く。
 \]
 \end{lemma}
 \begin{proof}
-命題~\ref{prop:paper-pos} を $A = A_E$（次元 $l$）、$T = E'$、$(C_E,\lambda_E)$、$F = F'_\gamma$ に適用する。$(C_E,\lambda_E)$ は定理~\ref{thm:existence} (b) により $\lambda$-平坦で、系~\ref{cor:pos} により非自明である。$F'_\gamma$ は $0$ 次から $l$ 次に項をもつ $1$ 次で極小な自由列で、$\nu_\sigma>0$ は有限近似から出る。
+命題~\ref{prop:paper-pos} を $A = A_E$（次元 $l$）、$T = E'$、$(C_E,\lambda_E)$、$F = F'_\gamma$ に適用する。$(C_E,\lambda_E)$ は定理~\ref{thm:existence} (b) により $\lambda$-平坦で、系~\ref{cor:pos} により非自明である。$F'_\gamma$ は補題~\ref{lem:core-approx} (a) により $0$ 次から $l$ 次に項をもつ $1$ 次で極小な自由列で、$\nu_\sigma>0$ は補題~\ref{lem:core-approx} (c) による。
 \end{proof}
 $D$ 側の $\lambda$-CM 性（命題~\ref{prop:paper-param}）が複体の長さを $l$ に抑え、$E$ 側の $\lambda$-平坦性（命題~\ref{prop:paper-pos}）が長さ $l$ の複体の高次を消す。2つの $l$ が噛み合うのは $h + l = \dim R$ による。
 \lean{\ld{Section5.exists_secondComparison_pos_of_approximation} が、同じ有限近似から第二比較の対象と全ての共役の正値性を同時に構成する（降下と正則パラメータの引用を除いて証明済み）。個別の入口として \ld{secondComparison_minimal_lower_bound}、\ld{paperEuler_pos_of_finiteApproximation} もある。}
 
-\paragraph{結論}
-補題~\ref{lem:first}、式~\eqref{eq:second}、補題~\ref{lem:pos} を合わせて
+\subsection{結論}\label{sec:core-conclusion}
+
+\begin{proof}[定理~\ref{thm:core} の証明]
+補題~\ref{lem:first}、命題~\ref{prop:core-second}、補題~\ref{lem:pos} を合わせて
 \[
-  |G_D|\, a_D a_E\, \chi^R(D,E) \;=\; \frac{1}{|G_E|}\sum_{\sigma\in G_D}\sum_{\gamma\in G_E} b_{\sigma,\gamma} \;>\; 0.
+  |G_D|\, a_D a_E\, \chi^R(D,E) \;=\; \sum_{\sigma\in G_D}c_\sigma \;=\; \frac{1}{|G_E|}\sum_{\sigma\in G_D}\sum_{\gamma\in G_E} b_{\sigma,\gamma} \;>\; 0.
 \]
+$|G_D|a_Da_E>0$ なので $\chi^R(D,E)>0$ である。
+\end{proof}
 \lean{\ld{chi_pos_of_firstComparison}、\ld{core_of_twistedEuler_pos} が第一比較と各 $c_\sigma>0$ を接続する。\ld{Section5.core_of_lengthAlgebras} は与えられた長さ代数から第二比較と正値性を導き、\ld{core_of_lengthAlgebras_with_parameter_choice} はパラメータの選択も内部で行う。\ld{Section5.core_of_normalization_bases} は、正規化基底 $A_D$、$A_E$ と、不変環が基底になる有限群作用付きの有限局所拡大 $D'$、$E'$ を受け取り、定理~\ref{thm:existence} で長さ代数を作って $\chi^R(D,E)>0$ を出す（引用を除いて証明済み）。基底と Galois 閉包を元の $D$、$E$ から構成して \ld{Paper.core_statement} に接続する部分は未。}
 
 %======================================================================
@@ -1309,10 +1371,10 @@ $\lambda$-平坦な長さ付き代数の存在 & Monsky、Roberts（Ma, Thm 2.4�
 補題~\ref{lem:cohengabber}、定理~\ref{thm:existence} & Lemma 2.2、Thm 2.5 & 前者は引用。後者は標数別の構成から導出し、構成の一部が未完・引用 \\
 系~\ref{cor:pos} & Cor 2.6 (3) & 定理~\ref{thm:existence} と重複度の正値性の引用を除いて証明済み \\
 \multicolumn{3}{l}{\textbf{§\ref{sec:core} 核の場合}} \\
-設定 & §5.1 & 推移性は証明済み。$D'$、$E'$ と Galois 群の構成は未 \\
+設定、補題~\ref{lem:core-trans} & §5.1 & 推移性は証明済み。$D'$、$E'$ と Galois 群の構成は未 \\
 補題~\ref{lem:first} & Lemma 5.2 & 消滅定理と降下の引用を除いて証明済み \\
-$x$ の選択、有限近似 & (5.4)、Lemma 5.4 & 非混合性と $\lambda_\infty$ の二性質の引用を除いて証明済み \\
-式~\eqref{eq:second}、補題~\ref{lem:pos} & (5.18)、Lemma 5.6 & 同じ有限近似から内部で構成し、降下と正則パラメータの引用を除いて証明済み \\
+補題~\ref{lem:core-param}、\ref{lem:core-approx} & (5.4)、Lemma 5.3--5.5 & 非混合性と $\lambda_\infty$ の二性質の引用を除いて証明済み \\
+命題~\ref{prop:core-second}、補題~\ref{lem:pos} & (5.18)、Lemma 5.6 & 同じ有限近似から内部で構成し、降下と正則パラメータの引用を除いて証明済み \\
 結論 & §5 末 & 正規化基底と有限群作用付き拡大を与えれば、引用を除いて証明済み（\ld{Section5.core_of_normalization_bases}）。\ld{Paper.core_statement} への接続は未 \\
 \bottomrule
 \end{longtable}
