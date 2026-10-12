@@ -44,6 +44,18 @@ New and changed APIs follow the Japanese documentation conventions in `notes/PLA
 This is a maintenance convention, not a claim that every existing declaration already satisfies it.
 TeX is the source for explanatory PDFs; temporary compilation files and OS metadata are not retained.
 
+## Mathlib and in-repository foundations
+
+The pinned Mathlib (`lake-manifest.json`) supplies `Module.length` and its additivity
+(`Module.length_eq_add_of_exact`), left derived functors (`CategoryTheory.Tor`, derived in the
+second variable; the comparison with `Tor'` is not in Mathlib), extension of scalars, regular
+local rings, Krull dimension and supports. Koszul complexes, Hilbert–Samuel multiplicity, the Tor
+long exact sequence and symmetry, minimal free resolutions and the length-based Euler
+characteristics are built here (`CommutativeAlgebra/`, `HomologicalAlgebra/`). Conventions:
+`ENat.toNat`, `ENNReal.toReal` and `finsum` send infinite values to zero, so additivity of Euler
+characteristics is only claimed after finiteness is established; `TorAlg φ i V` resolves the
+second variable and is read as `Tor_i^A(C, V)`.
+
 ## Verification
 
 Run `lake build`, then `lake env lean scripts/audit_axioms.lean` and

@@ -34,7 +34,7 @@ Corollary 2.6、§5 の議論で使うのは、同型不変性と短完全列で
 - 構造 `NormalizedLength` と、加法性・非負性から出る基本補題：部分加群・商・単射・全射に対する
   単調性、`len M = len (ker f) + len (range f)`、完全列 `M → N → P` に対する
   `len N ≤ len M + len P`、両端が `0` なら中央も `0`、両端が有限なら中央も有限。Lemma 3.4 の証明
-  （`notes/lemma-3-4.md`）と `NormalizedEuler.lean` で使う。
+  （`Paper/Lemma3_4.lean`）と `NormalizedEuler.lean` で使う。
 - 定義域のイデアルの取り替え `restrict` と、`m_D C` から `m_A C` への取り替え `restrictToBase`。
 - 通常の長さ `Module.length` は `J = ⊥` の正規化長さ `ordinary`。
 

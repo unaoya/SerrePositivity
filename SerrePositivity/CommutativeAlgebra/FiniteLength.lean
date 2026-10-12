@@ -36,7 +36,7 @@ public import Mathlib.Algebra.Category.ModuleCat.ChangeOfRings
    `T / Ann M` 上の有限生成加群なので、Noether かつ Artin、すなわち有限長である。台つき完全複体の
    ホモロジーが有限長であること（`PerfectComplex/OrdinaryEuler.lean`）と、交点が有限長なら
    テンソル積が有限長であること（`length_tensorProduct_ne_top_of_annihilator`）に使う。
-2. **局所環上の組成列**（Lemma 3.4 の帰納法、`notes/lemma-3-4.md`）：単純加群は剰余体 `A ⧸ m` と
+2. **局所環上の組成列**（Lemma 3.4 の帰納法、`Paper/Lemma3_4.lean`）：単純加群は剰余体 `A ⧸ m` と
    同型、`M ⧸ N` が単純なら `ℓ(M) = ℓ(N) + 1`、有限長加群は `m` の冪で消える。また `z` が `m` を
    生成すれば `A ⧸ (z)` は剰余体で、有限生成な非零加群はそこへ全射する
    （`PerfectComplex/KoszulGeneration.lean` のデヴィサージュで使う）。

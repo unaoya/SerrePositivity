@@ -28,7 +28,7 @@ public import Mathlib.RingTheory.Spectrum.Prime.RingHom
 
 ## 構成
 
-`notes/lemma-3-5.md` の方針どおり、仮定の重さで三つに分ける。仮定は構造体に束ねず、節ごとの
+仮定の重さで三つに分ける（解説の Lemma 3.5 の節に同じ分け方と仮定の使われ方を書いた）。仮定は構造体に束ねず、節ごとの
 `variable` と `include` で直接与える。
 
 - **3.5a**（節 a：`A` は Noether 局所環、`z` はパラメータ系 `hz`、`T` は `A` 上有限、`λ` は
