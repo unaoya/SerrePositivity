@@ -34,7 +34,7 @@ Mathlib の `Tor` は左導来関手として圏論的に定義されていて�
   （論文 (5.2) の `c_σ`、Lemma 3.4、Corollary 2.6）に使う。`φ` を取り替えることで、§5.1 のひねり
   `ι_σ` を同じ式で表せる。
 
-## 規約（`notes/PLAN.md` §1.3）
+## 規約
 
 Mathlib の `Tor` は第 2 変数で導来する。第 1 変数で導来した `Tor'` との比較は
 現在の Mathlib に未整備であり、このファイルの計算も第 2 変数の分解による。
@@ -166,7 +166,7 @@ end
 `a ∈ A` が `V` のすべての元を消すなら、`φ(a)` は `Tor_i^A(C, V)`（`TorAlg φ i V`）のすべての元を
 消す（`torAlg_smul_eq_zero`）。`V` が `m` の冪で消えるなら `Tor` も `m C` の冪で消える、という形で
 使い、`Tor` が正規化長さ `λ` の定義域（`m C` 冪ねじれ加群）に入ることを保証する
-（`IntersectionMultiplicity/NormalizedTor.lean`）。`notes/PLAN.md` §11 の B3。
+（`IntersectionMultiplicity/NormalizedTor.lean`）。
 
 証明には `Resolution.lean` の一般定理 `leftDerived_smul_eq_zero` を用いる。
 加法的関手が射のスカラー倍と両立すれば、その左導来関手も両立するため、

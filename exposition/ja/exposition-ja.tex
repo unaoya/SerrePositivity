@@ -1559,6 +1559,34 @@ Lean の実装は、共通定理、具体的な実現、論文の主張への適
 \bottomrule
 \end{tabularx}
 \end{center}
+重複度の公式（命題~\ref{prop:tower-compatible}、定理~\ref{thm:existence} の (2.5)）の証明は \ld{KoszulReesFinite}、\ld{GradedKoszul}／\ld{GradedKoszulVanishing}、\ld{ReesKoszulEvaluation}、\ld{GradedAdicExactness}／\ld{ReesKoszulAcyclic}、\ld{AdicEulerComparison}、\ld{KoszulAdicEuler}、\ld{KoszulMultiplicityProof} の順に依存する。次数付き評価の像・単射性・境界の持ち上げは具体的に確認され、最終公式の仮定には残らない。
+
+\paragraph{実現ごとの入力と確認}
+二つの実現で、共通定理の各仮定を何を入力として受け取り、何を実現側で証明するかをまとめる。
+{\small
+\begin{longtable}{>{\raggedright}p{2.6cm}>{\raggedright}p{4.2cm}>{\raggedright\arraybackslash}p{7.4cm}}
+\toprule
+確認項目 & 入力として指定するもの & 実現側で証明するもの・主な入口 \\
+\midrule
+\endhead
+perfect：支持 & 有界有限射影複体とホモロジーの幾何学的支持 & スカラーの冪の零作用との同値。\ld{PerfectComplex.Support}、\ld{HomotopyCategory}。任意の可換環で成立 \\
+perfect：有限 Euler 評価 & $J$ の有限生成性、支持イデアルの根基への包含、全ての正の冪の Koszul 有限性 & 各ホモロジーの冪ねじれ性・有限性、商値のホモロジー関手、シフト・有界性、旧 Euler 数との一致。\ld{LengthAlgebra.PerfectHomology} \\
+perfect：二つの商の一致 & 同上 & \ld{FiniteQuotientEquivalence}、\ld{PerfectHomologyComparison} が有限商と大きな商の有限部分を同定し、長さ・零対象・Euler・$K_0$ 評価を一致させる \\
+perfect：消滅 & 指定したスカラーの零ホモトピー、項の振幅、環自身の高次 Koszul ホモロジーの長さ零 & 有限射影項のフィルトレーションで振幅を確認し、反復錐から消滅。\ld{lambdaHomology_projective_vanishing} は Koszul 有限性を使わない \\
+perfect：下界 & Euler の有限性、振幅 $[-e,0]$、零次の全射（具体的には微分の極小性と零次項の基底） & 消滅・第零次同型と全射の長さの単調性。極小性からの全射は \ld{PerfectMinimalLowerBound} で構成し、他の項に自由性は要求しない \\
+共通：基底公式 & ネーター局所基底、$(z)=\m$、$K(z)$ の分解、係数側の Koszul 有限性 & \ld{KoszulFormula} により係数 $e_\lambda(z;C)$ の公式。高次消滅や $e_\lambda=r$ はこの一般公式の仮定にしない \\
+共通：対称な比較 & 二つの Koszul Euler 特性の一致、評価元の $K_0$ の有限群作用、不変類の整数倍の降下 & \ld{perfectEuler_conjSum_eq}、\ld{symmetricPaperEuler_conjSum_eq}。共通定理 \ld{homologicalEulerK0_pullback_conjSum_eq_of_base_formula} の適用で、係数環への群作用や長さの不変性は要求しない \\
+perfect：群作用と降下の接続 & 支持パラメータを固定する環の群作用。降下の移送には係数環の局所性と旧 $K_0$ の降下 & \ld{K0Functoriality} が実際の作用を構成し、$K_0$ 比較の同変性・係数変更との可換性から降下を移送する。任意の環で比較写像が同型とは主張しない \\
+ランク：評価先と局所化 & 正の基準列 $s$、$\mathrm{atTop}$ に沿う超フィルター、長さ・根基条件・Koszul 有限性 & \ld{SequenceHomologyBounds} が有限性と $O(s)$・$o(s)$ を証明。\ld{SequenceHomologyLocalization} が分母の可逆化とホモロジー的関手を構成 \\
+ランク：完備化・有界性 & 上の入力と実際のランク商 & \ld{CompletedHomology}、\ld{RankHomologyShiftNatural}、\ld{CompletedRankEvaluation} が冪等完備化への延長、自然なシフト比較、対象ごとの有界性、共通 Euler 評価を与える \\
+ランク：全対象での基底公式 & 基底の Koszul 分解 & \ld{supportedRank_isIdempotentComplete_of_koszul} により一様な代表へ帰着し、各段の有限版公式を正規化極限へ移す。\ld{koszulPaperEulerK0_changeRing} はランク $K_0$ 全体が一つの Koszul 類で生成されるとは仮定しない \\
+ランク：消滅 & 商での支持・スカラーの零作用、共通振幅、各段の Koszul 消滅 & \ld{RankVanishing}、\ld{PaperVanishing} が振幅と反復錐を接続。元の複体列の一様支持は不要で、Koszul を掛けた列の一様支持を証明して使う \\
+ランク：下界 & 上記と微分の極小性、パラメータの冪を含むイデアル & \ld{RankMinimalLowerBound}、\ld{PaperMinimalLowerBound} が第零次全射と正規化極限の単調性から階数の極限による下界を得る \\
+§\ref{sec:core}：有限近似からの正値性 & 有限近似の長さの収束、一様な消去イデアル、係数側の正の商長さ & \ld{paperEuler_pos_of_finiteApproximation} などが生成元数の正の極限を導き、上記の下界を適用。元の素イデアル商からの存在構成は \ld{Core} で引用に相対的に接続済み \\
+\bottomrule
+\end{longtable}
+}
+基底の Koszul 分解を明示する一般比較に未証明入力はない。有限自由／有限射影 $K_0$ の比較同型は局所環上で使い、任意の環では比較写像だけを使う。
 
 \paragraph{§\ref{sec:core} の実装の流れ}
 \ld{Paper.Section5} 以下は次の順に依存する。帰着（\ld{CompletionReduction}、\ld{ResidueFieldReduction}、\ld{PrimeReduction}、\ld{ModuleReduction}、\ld{CharacteristicZeroReduction}）、第一比較（\ld{FirstComparison}、\ld{NormApplication}）、パラメータ商と有限近似（\ld{Preparation}、\ld{ParameterQuotient}、\ld{ParameterQuotientCM}）、近似列からの対象の構成と評価（\ld{MinimalApproximation}、\ld{SupportedApproximation}、\ld{ApproximationHomology}、\ld{ApproximationBetti}、\ld{ApproximationEuler}、\ld{ApproximationLowerBound}）、第二比較と正値性（\ld{ApproximationSecondComparison}、\ld{SecondComparison}、\ld{SecondComparisonLowerBound}、\ld{AsymptoticPositivity}、\ld{ApproximationPositivity}）、長さ付き代数と塔への接続（\ld{LengthAlgebraPositivity}、\ld{RegularLengthAlgebraPositivity}、\ld{TowerPositivity}、\ld{ParameterLengthPositivity}、\ld{TwistedLengthPositivity}、\ld{CoreLengthPositivity}）、パラメータの選択（\ld{ParameterChoice}、\ld{SelectedParameterPositivity}）、正規化基底と Galois 閉包（\ld{NormalizationPositivity}、\ld{GaloisNormalization}、\ld{Core}）、主張（\ld{Positivity}、\ld{Paper.Statement}）。近似列の切り詰め・支持・Betti 評価の一般部分は \ld{Asymptotic} の \ld{MinimalResolutionFamily}、\ld{MinimalSupport}、\ld{MinimalBettiEvaluation}、\ld{KoszulHomologyLimit} にある。
@@ -1675,7 +1703,7 @@ CM な対象が有限加群なら、普通の長さで測れるので、二つ�
 
 
 \subsection{Lech の論文}\label{sec:prior-lech}
-元論文と同日に、同じ方法を使う論文が二つ公開されている。OpenAI, \emph{Lech's multiplicity conjecture} と、OpenAI, \emph{A Complete Local Domain without a Small Cohen--Macaulay Module}（いずれも 2026-09-23、openai/math の \ld{preprints/} 以下）である。前者も長さ付き代数とその Serre 商という同じ枠組みを使い、有限加群の列（Ma の弱い lim Ulrich 列）の代わりに $\lambda$-CM 代数と短い複体の一様な評価を使う。これらとの関係は、Lech の論文のノート（\texttt{notes/lech-overview.md}）にまとめた。
+元論文と同日に、同じ方法を使う論文が二つ公開されている。OpenAI, \emph{Lech's multiplicity conjecture} と、OpenAI, \emph{A Complete Local Domain without a Small Cohen--Macaulay Module}（いずれも 2026-09-23、openai/math の \ld{preprints/} 以下）である。前者も長さ付き代数とその Serre 商という同じ枠組みを使い、有限加群の列（Ma の弱い lim Ulrich 列）の代わりに $\lambda$-CM 代数と短い複体の一様な評価を使う。これらとの関係は、Lech の論文のノート（\texttt{research/lech-overview.md}）にまとめた。
 
 %======================================================================
 \section{拡大すると高次の項が消える理由（直感的な説明）}\label{sec:intuition}
@@ -2086,6 +2114,6 @@ $(C,\lambda)$ が $A$ 上 $\lambda$-平坦なら、$D$（あるいは $A_n\otime
 \end{itemize}
 
 \paragraph{$\lambda$-エタール}
-分岐（エタール性）の側も $\lambda$ で測る概念を導入して別の問題に使えないか、という検討は、別のノート（\texttt{notes/lambda-etale/lambda-etale-ja.tex}）にまとめた。
+分岐（エタール性）の側も $\lambda$ で測る概念を導入して別の問題に使えないか、という検討は、別のノート（\texttt{research/lambda-etale/lambda-etale-ja.tex}）にまとめた。
 
 \end{document}

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Check active repository links and exposition API/module references after lake build.
-Historical documents retain their old API names; only their local links are checked.
+Research notes under research/ are checked for local links only.
 Lean's environment is exported to a temporary directory, never into the repository.
 """
 from pathlib import Path
@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main():
     failures = []
-    docs = [ROOT / 'README.md', *sorted((ROOT / 'notes').rglob('*.md'))]
+    docs = [ROOT / 'README.md', *sorted((ROOT / 'research').rglob('*.md'))]
     for path in docs:
         for target in re.findall(r'(?<!\w)\[[^]\n]*\]\(([^)]+)\)', path.read_text()):
             target = target.strip('<>').split('#', 1)[0]

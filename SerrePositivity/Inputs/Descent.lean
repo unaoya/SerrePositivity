@@ -15,7 +15,7 @@ public import Mathlib.RingTheory.Spectrum.Prime.RingHom
 台つき K 理論の有理化が `G` 不変部分への降下をみたすことを主張する。このプロジェクトで使うのは
 その `K₀` のレベルの帰結 (3.2)「`K_0^J(A) ⊗ ℚ → (K_0^J(T) ⊗ ℚ)^G` は全射」だけである。このファイルは
 それを `H = A`（離散・可換）、`J = m_A` の場合に、`sorry` 付きの定理 `theorem_3_1_K0` として置く
-（`notes/PLAN.md` の層 2）。
+（保留した K 理論）。
 
 ## 定式化
 

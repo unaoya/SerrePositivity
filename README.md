@@ -12,21 +12,41 @@ including the ramified mixed-characteristic case.
 ## Status
 
 The shared Euler, iterated-cone, vanishing, lower-bound and symmetric-comparison theory,
-its perfect-complex and rank-quotient realizations, and the connection to the main theorem
-are implemented. The standard commutative algebra needed here is proved.
+its perfect-complex and rank-quotient realizations, the standard commutative algebra used
+(regular parameters, unmixedness, Hilbert–Samuel theory, the Koszul multiplicity formula) and
+the connection to the main theorem are implemented.
 
 The formalization still depends on **13 external quotations and 2 deferred K-theory proofs**.
 `main_statement` and `core_statement` have no direct `sorry`, but depend on `sorryAx`.
-They are not proofs of the main theorem without those inputs.
-The current input inventory and module map are maintained in [notes/status.md](notes/status.md).
+They are not proofs of the main theorem without those inputs. By section of the preprint:
+
+- §2 (residue fields, normalized length, Theorem 2.5): proved relative to 10 quotations
+  (residue field extension, Cohen–Gabber and Cohen normalization, the two properties of the
+  normalized length λ∞, Roberts' Frobenius theorem, the perfectoid tower, perfectoidization,
+  three results of Cai–Lee–Ma–Schwede–Tucker). These are the results the preprint itself cites.
+- §3 (Lemmas 3.4–3.5): proved, except that Theorem 3.1 (rational K-theory descent) is deferred
+  (`theorem_3_1_K0`).
+- §4 (Theorem 4.7): proved, except that the descent of Lemma 4.6 is deferred
+  (`Section4.supportedRankK0_descent`).
+- §5 (Lemmas 5.2–5.6, the reduction and the core case): proved, with the two classical inputs
+  Serre's equal-characteristic positivity (`Inputs.serrePositivity_of_field`) and the
+  Roberts–Gillet–Soulé vanishing theorem (`Inputs.intersectionVanishing`) quoted.
+
+The table of quotations, the status of every proposition and the module map are kept in
+appendix A of the exposition; the actual dependencies are checked by `scripts/audit_axioms.lean`.
 
 ## Reading order
 
-1. [Japanese exposition](exposition/ja/exposition-ja.tex): shared theory (§3), length algebras (§4),
-   perfect and rank realizations (§5–6), paper applications (§7), constructions (§8), core proof (§9).
-   The [PDF](exposition/ja/exposition-ja.pdf) is generated from that TeX source.
-2. [Section 4 interfaces](notes/section-4-plan.md) and [Section 2 implementation map](notes/section-2-plan.md).
-3. [Current plan and conventions](notes/PLAN.md), then [historical records](notes/history/README.md).
+1. [Japanese exposition](exposition/ja/exposition-ja.tex) (the [PDF](exposition/ja/exposition-ja.pdf)
+   is generated from it): §3 shared theory, §4 length algebras, §5–6 the two realizations,
+   §7 applications to the paper, §8 constructions, §9 core proof. Appendix A lists the
+   quotations, the status and the implementation map; appendices B–D discuss related work,
+   intuition and a λ-flat reformulation. Each statement ends with the Lean declaration it
+   corresponds to.
+2. The module docstrings, which follow the numbering of the paper and of the exposition.
+3. [`research/`](research/): independent research notes (Lech's multiplicity conjecture,
+   λ-étale extensions, λ-homological algebra). They contain conjectural material and are not
+   used for the status of the main theorem.
 
 ## Layout
 
@@ -38,29 +58,74 @@ The current input inventory and module map are maintained in [notes/status.md](n
 - `Paper/`: constructions and applications to the paper, including the main statement.
 - `Inputs/`: named external quotations, deferred descent, and explicitly marked compatibility imports.
 - `paper/`: original preprint and source provenance.
-- `notes/`: current interfaces, mathematical investigations and dated history.
+- `research/`: independent research notes (TeX sources with generated PDFs, and Markdown).
+- `scripts/`: the axiom audit and the documentation check.
 
-New and changed APIs follow the Japanese documentation conventions in `notes/PLAN.md` §18.
-This is a maintenance convention, not a claim that every existing declaration already satisfies it.
-TeX is the source for explanatory PDFs; temporary compilation files and OS metadata are not retained.
+## Conventions
+
+- **Quotations and deferred proofs.** Each external result is a named `sorry` theorem whose
+  docstring states the source and the scope of what is quoted, applied directly where it is used.
+  The two deferred K-theory statements are kept apart from the quotations. Completion is judged
+  with `#print axioms` and `#print sorries`, not by the absence of a direct `sorry`.
+- **No hypothesis bundles.** No structure or class whose fields are unproved statements
+  (`Setup34`, `LengthAlgebraProps`, `LengthAlgebraData` are not to be reintroduced). Mathematical
+  structures (`NormalizedLength`, categories, functors, resolutions) carry their laws, and
+  existence theorems quantify over actual objects.
+- **Direction of dependencies.** `CategoryTheory/` is independent of rings, towers and the paper.
+  The realizations verify support, finiteness, amplitude, shifts and group actions. Proved general
+  results live in `CommutativeAlgebra/` and `HomologicalAlgebra/`; `Inputs/` keeps only quotations
+  and compatibility entries.
+- **Tor, twists, universes.** Mathlib's `CategoryTheory.Tor` is derived in the second variable;
+  `TorAlg φ i V` resolves `V` and is read as `Tor_i^A(C, V)`. The higher naturality of the exchange
+  isomorphism is a separate claim and is not inferred from the linear equivalence. On the old K₀ the
+  left action is `g • [P] = [twist g⁻¹ P]`, and reindexing of group sums is explicit. Rings and
+  modules live in `ModuleCat.{u}`.
+- **Numerical values.** `ENat.toNat`, `ENNReal.toReal` and `finsum` send infinite values to zero.
+  Definitional identities are distinguished from additivity, which is only claimed after
+  finiteness is established. Conversions of ordinary lengths go through `FiniteLengthValue`; cones
+  and alternating sums use the shared categorical API.
+- **Multiplicity.** Defined as the leading coefficient of the Samuel polynomial; (2.5) is stated
+  as in the paper. The Koszul multiplicity formula is proved for the ring itself; its extension to
+  arbitrary finite modules is a separate task and is not hidden in the hypotheses of the current
+  theorems.
+- **Docstrings.** New and changed declarations have Japanese docstrings stating the claim, the
+  role of the hypotheses, the proof idea and the use sites; mathematical structures document their
+  laws and meaning; short compatibility entries name their replacement. This is a maintenance
+  convention, not a claim that every existing declaration already satisfies it.
 
 ## Mathlib and in-repository foundations
 
 The pinned Mathlib (`lake-manifest.json`) supplies `Module.length` and its additivity
-(`Module.length_eq_add_of_exact`), left derived functors (`CategoryTheory.Tor`, derived in the
-second variable; the comparison with `Tor'` is not in Mathlib), extension of scalars, regular
-local rings, Krull dimension and supports. Koszul complexes, Hilbert–Samuel multiplicity, the Tor
-long exact sequence and symmetry, minimal free resolutions and the length-based Euler
-characteristics are built here (`CommutativeAlgebra/`, `HomologicalAlgebra/`). Conventions:
-`ENat.toNat`, `ENNReal.toReal` and `finsum` send infinite values to zero, so additivity of Euler
-characteristics is only claimed after finiteness is established; `TorAlg φ i V` resolves the
-second variable and is read as `Tor_i^A(C, V)`.
+(`Module.length_eq_add_of_exact`), left derived functors (`CategoryTheory.Tor`; the comparison with
+`Tor'` is not in Mathlib), extension of scalars, regular local rings, Krull dimension and supports.
+Koszul complexes, Hilbert–Samuel multiplicity, the Tor long exact sequence and symmetry, minimal
+free resolutions and the length-based Euler characteristics are built here (`CommutativeAlgebra/`,
+`HomologicalAlgebra/`).
+
+## Remaining work
+
+- The two deferred descent proofs: Theorem 3.1 at the level of K₀, and Lemma 4.6 together with
+  descent for general coefficients.
+- Restating the finite approximation (Lemma 5.4) over an abstract tower-compatible length, as in
+  exposition §4.5, instead of the concrete tower.
+- Extending the Koszul multiplicity formula from the ring to arbitrary finite modules (Rees
+  evaluation, boundary lifting, Samuel degree of the support).
+- The 13 external quotations remain quotations.
+
+## Documents and generated files
+
+TeX is the source of the exposition and of the research notes; the PDF next to each source is the
+generated viewing copy. After changing a TeX file, regenerate with
+`latexmk -lualatex -outdir=<temporary directory> <source>`, check warnings, cross-references and the
+changed pages, then update the PDF. Logs, auxiliary files and page images are not tracked, nor is
+OS metadata. `paper/paper.pdf` is kept as the source of the claims.
 
 ## Verification
 
 Run `lake build`, then `lake env lean scripts/audit_axioms.lean` and
-`python3 scripts/check_documentation.py`. The axiom audit checks the shared APIs
-and also reports the remaining dependencies of the main theorem.
+`python3 scripts/check_documentation.py`. The axiom audit checks the shared APIs and reports the
+remaining dependencies of the main theorem; the documentation check verifies the local links of
+the README and the research notes and every Lean name referenced in the exposition.
 
 ## Source and license
 

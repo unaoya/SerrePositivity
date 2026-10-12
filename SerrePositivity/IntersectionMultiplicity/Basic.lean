@@ -14,7 +14,7 @@ Mathlib の `Tor` を加群とみた `TorModule R i M N`、その長さは `torL
 素イデアル `P`、`Q` で `R/P ⊗ R/Q` が有限長かつ `dim R/P + dim R/Q = dim R` なるものについて
 `χ^R(R/P, R/Q) > 0` を主張する。
 
-## 規約（`notes/PLAN.md` §1.4）
+## 規約
 
 和は `finsum` で、値は整数。長さが無限なら `ENat.toNat` で `0`、非零項が無限個なら `finsum` は `0` を
 返す。正則局所環上の有限生成加群では `Tor_i = 0 (i > dim R)` なので有限和になるが、これはここでは

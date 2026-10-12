@@ -42,7 +42,7 @@ Corollary 2.6 と同じ筋道。証明で必要な有限性、パラメータの
 - 論文の `λ` は「`m_A` の冪で消える `C` 加群」の上で定義されるが、ここでは `m_T C` の冪で消える
   加群とする。`T` は `A` 上有限で剰余体が同じなので `m_A T` は `m_T` 準素であり、二つの条件は同じ。
 - `Tor_i^A(C, V)` は `TorAlg (algebraMap A C) i V`、つまり `V` を分解して計算する `C` 加群。論文の
-  `Tor_i^A(V, C)` と変数の順序は逆だが、Mathlib の `Tor` の規約に合わせた（`notes/PLAN.md` §1.3）。
+  `Tor_i^A(V, C)` と変数の順序は逆だが、Mathlib の `Tor` の規約に合わせた（README の規約）。
 - 論文の `V ⊗_A C` は `Tor_0^A(C, V)`、つまり `TorAlg (algebraMap A C) 0 V` で書く。`Tor_0 ≅ C ⊗_A V`
   は右完全性（`Functor.leftDerivedZeroIsoSelf`）で、別の補題にする。`TorAlg` の内部の `C ⊗[A] V` は
   `(algebraMap A C).toAlgebra` 由来の加群構造をもち、環境の `Algebra A C` 由来のものと型の上で

@@ -28,8 +28,7 @@ public import Mathlib.RingTheory.RegularLocalRing.Defs
 混標数で `t₁ = p` の場合もこの形でよい（`p` は `A` の元として扱う）。
 
 論文は「`A_n` は `p` 冪根を固定した代数閉包の中の部分環」として書くが、`A` が正規（正則）なので
-`A[X]/(X^{p^n} − t)` と一致する（`X_i^{p^n} − t_i` は Eisenstein 多項式）。この定義にする理由は
-`notes/section-2-plan.md` §2：塔を抽象的な存在にすると Theorem 2.5 が偽になるので、`(A, t, p)` から
+`A[X]/(X^{p^n} − t)` と一致する（`X_i^{p^n} − t_i` は Eisenstein 多項式）。この定義にする理由：塔を抽象的な存在にすると Theorem 2.5 が偽になるので、`(A, t, p)` から
 決まる対象として定義する。
 
 ## 内容

@@ -28,7 +28,7 @@ public import Mathlib.RingTheory.RegularLocalRing.Defs
 
 ## 使われ方
 
-Lemma 5.1（主定理の核の場合への帰着、`notes/PLAN.md` の M1）で、剰余体を代数閉体にするために
+Lemma 5.1（主定理の核の場合への帰着）で、剰余体を代数閉体にするために
 使う。§2 の他の部分や §3–§5 の議論では使わない。
 -/
 

@@ -27,7 +27,7 @@ Theorem 2.5 は `Paper/Section2/Theorem2_5.lean` の `Section2.theorem_2_5` に�
 （`LengthAlgebraConstruction.lean`）の引用入力に依存する。一般的な重複度公式は証明済み。塔 `Λ` と `λ_∞` の定義は `Paper/Section2/Tower.lean`、
 `TowerLength.lean`、Hilbert–Samuel 重複度は `CommutativeAlgebra/HilbertSamuel.lean`。
 以前ここにあった `Inputs.exists_lengthAlgebra` は、塔の作用との両立を欠き、重複度を極限の式で
-書いていたので、2026-10-10 に `theorem_2_5` に置き換えて削除した（`notes/section-2-plan.md`）。
+書いていたので、2026-10-10 に `theorem_2_5` に置き換えて削除した。
 -/
 
 @[expose] public section
