@@ -1,5 +1,7 @@
 # OpenAI「Lech's multiplicity conjecture」：主張と証明の見取り図
 
+> 数学的な解説・調査記録。記載日の仮定・証明方針を保持し、現在のLean実装と未証明状態は [status.md](status.md) を正本とする。
+
 2026-10-10 作成。OpenAI, *Lech's multiplicity conjecture*（openai/math、`preprints/Lechs-multiplicity-conjecture-September-23-2026`、2026-09-23）を節ごとに読み、各主張を正確に書き出した記録。番号は論文のもの。Serre の正値性の論文（以下「Serre の論文」）と同じリポジトリで形式化することを視野に入れ、共有できる部分を最後に整理する。
 
 ## 全体の構成

@@ -4,7 +4,7 @@ public import SerrePositivity.Paper.Section2.PerfectApproximation
 public import SerrePositivity.CommutativeAlgebra.PresentationBaseChange
 public import SerrePositivity.CommutativeAlgebra.SeparableBaseChange
 public import SerrePositivity.CommutativeAlgebra.LocalAlgebra
-public import SerrePositivity.Inputs.RegularLocalRing
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing
 
 /-!
 # 塔の有限段から perfection の近似への係数拡大

@@ -1,12 +1,14 @@
 module
 
+public import SerrePositivity.LengthAlgebra.OrdinaryKoszulEuler
+
 public import SerrePositivity.PerfectComplex.OrdinaryEuler
 public import SerrePositivity.LengthAlgebra.KoszulFormula
 public import SerrePositivity.LengthAlgebra.Ordinary
 public import SerrePositivity.PerfectComplex.KoszulGeneration
 public import SerrePositivity.PerfectComplex.K0
 public import SerrePositivity.CommutativeAlgebra.FiniteLength
-public import SerrePositivity.Inputs.RegularLocalRing
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing
 public import SerrePositivity.CommutativeAlgebra.Koszul
 
 /-!
@@ -155,10 +157,7 @@ theorem lemma_3_5b_ord_of_koszul (hz' : Ideal.span (Set.range z) = maximalIdeal 
     (fun v _ i ↦ ordinary_koszul_pow_finite (algebraMap A T ∘ z) v i) hz' hK Q hQ
   have hc : LengthAlgebra.koszulEuler (NormalizedLength.ordinary T) (algebraMap A T ∘ z) =
       (Module.finrank A T : ℝ) := by
-    change lambdaEuler (NormalizedLength.ordinary T) _ = _
-    rw [← chiOrd_eq_lambdaEuler_ordinary]
-    rw [← chiOrd_eq_of_homotopyEquiv (HomotopyEquiv.ofIso (baseChangeKoszulIso (algebraMap A T) z))]
-    rw [chiOrd_baseChange_koszulComplex hres, hχ]
+    rw [ordinary_koszulEuler_eq_koszulEulerChar z hres, hχ]
   rw [hc, ← chiOrd_eq_lambdaEuler_ordinary] at h
   exact h
 

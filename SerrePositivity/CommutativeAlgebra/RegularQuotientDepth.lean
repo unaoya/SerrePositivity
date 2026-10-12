@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.Inputs.RegularParameters
+public import SerrePositivity.CommutativeAlgebra.RegularParameters
 public import Mathlib.RingTheory.Depth.Basic
 public import Mathlib.RingTheory.Regular.Category
 

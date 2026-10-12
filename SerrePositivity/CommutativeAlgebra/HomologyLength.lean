@@ -1,5 +1,8 @@
 module
 
+public import SerrePositivity.CommutativeAlgebra.FiniteLengthValue
+public import SerrePositivity.CategoryTheory.AlternatingSum
+
 public import SerrePositivity.HomologicalAlgebra.ConeLES
 public import Mathlib.Tactic.LinearCombination
 public import Mathlib.Data.ENat.BigOperators
@@ -241,13 +244,7 @@ theorem lengthInt_eq_add_range {M N L : Type u} [AddCommGroup M] [Module R M]
     (hn : IsFiniteLength R N) :
     ((Module.length R N).toNat : ℤ) = (Module.length R (LinearMap.range f)).toNat +
       (Module.length R (LinearMap.range g)).toNat := by
-  have hk := hn.of_injective (LinearMap.ker g).injective_subtype
-  have hr := hn.of_surjective g.surjective_rangeRestrict
-  have h := Module.length_eq_add_of_exact (LinearMap.ker g).subtype g.rangeRestrict
-    (LinearMap.ker g).injective_subtype g.surjective_rangeRestrict
-    (by rw [LinearMap.exact_iff]; ext x; simp)
-  rw [h, ENat.toNat_add (Module.length_ne_top_iff.mpr hk) (Module.length_ne_top_iff.mpr hr),
-    Nat.cast_add, ← LinearMap.exact_iff.mp he]
+  exact_mod_cast lengthNat_eq_add_range f g he hn
 
 /-- 自然数で添字づけた長完全列の長さの交代和。
 `C₀` への射が全射で、切断の直上 `Cₙ₊₁` が零なら、中央の交代和は両側の交代和の和となる。
@@ -277,25 +274,14 @@ theorem lengthEuler_longExact
   have eC0 : ((Module.length R (C 0)).toNat : ℤ) = b 0 := by
     dsimp [b]
     rw [LinearMap.range_eq_top.mpr hb, Module.length_top]
-  have hsum : ∀ k : ℕ,
-      (∑ i ∈ Finset.range (k + 1), (-1 : ℤ) ^ i * (Module.length R (B i)).toNat) -
-      (∑ i ∈ Finset.range (k + 1), (-1 : ℤ) ^ i * (Module.length R (A i)).toNat) -
-      (∑ i ∈ Finset.range (k + 1), (-1 : ℤ) ^ i * (Module.length R (C i)).toNat) =
-      -((-1 : ℤ)^k * d k) := by
-    intro k
-    induction k with
-    | zero => simp [eA, eB, eC0]; ring
-    | succ k ih =>
-      simp only [Finset.sum_range_succ (n := k + 1)]
-      rw [eA (k + 1), eB (k + 1), eC k, pow_succ]
-      linear_combination ih
   have hd : d n = 0 := by
     have : Subsingleton (LinearMap.range (δ n)) :=
       Function.Surjective.subsingleton (δ n).surjective_rangeRestrict
     simp [d, Module.length_eq_zero]
-  have h := hsum n
-  rw [hd, mul_zero, neg_zero] at h
-  linarith
+  exact alternatingSum_range_exact
+    (fun i ↦ ((Module.length R (A i)).toNat : ℤ))
+    (fun i ↦ ((Module.length R (B i)).toNat : ℤ))
+    (fun i ↦ ((Module.length R (C i)).toNat : ℤ)) a b d eA eB eC eC0 n hd
 
 /-- 各項が有限長で高次が零となる長完全列では、長さの交代有限和は加法的である。
 三列の消滅次数を共通の上界にまとめて `finsum` を有限和に直し、切断版の定理を適用する。 -/

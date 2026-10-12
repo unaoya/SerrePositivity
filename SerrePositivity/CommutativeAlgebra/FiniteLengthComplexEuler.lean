@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.CommutativeAlgebra.FiniteLengthValue
+
 public import SerrePositivity.PerfectComplex.Basic
 public import SerrePositivity.CategoryTheory.AlternatingSum
 public import Mathlib.Algebra.Homology.ShortComplex.ModuleCat
@@ -59,29 +61,16 @@ theorem shortComplex_length_identity (S : ShortComplex (ModuleCat.{u} R))
       ((Module.length R S.f.hom.range).toNat : ℝ) +
       ((Module.length R S.homology).toNat : ℝ) +
       ((Module.length R S.g.hom.range).toNat : ℝ) := by
-  have hk : IsFiniteLength R S.g.hom.ker :=
-    hfinite.of_injective (Submodule.subtype_injective _)
-  have hbr : IsFiniteLength R S.moduleCatToCycles.range :=
-    hk.of_injective (Submodule.subtype_injective _)
-  have hqr : IsFiniteLength R (S.g.hom.ker ⧸ S.moduleCatToCycles.range) :=
-    hk.of_surjective (Submodule.mkQ_surjective _)
-  have ho : IsFiniteLength R S.g.hom.range :=
-    hfinite.of_surjective S.g.hom.surjective_rangeRestrict
-  have hcy := Module.length_eq_add_of_exact S.moduleCatToCycles.range.subtype
+  have hcy := lengthNat_add_of_exact S.moduleCatToCycles.range.subtype
     S.moduleCatToCycles.range.mkQ (Submodule.subtype_injective _)
     (Submodule.mkQ_surjective _) (LinearMap.exact_subtype_mkQ _)
-  have hX := length_ker_add_range S.g.hom
-  rw [hcy] at hX
-  have hn := congrArg (fun n : ℕ∞ => (n.toNat : ℝ)) hX
+    (hfinite.of_injective S.g.hom.ker.injective_subtype)
+  have hX := lengthNat_ker_add_range S.g.hom hfinite
   have hh := S.moduleCatHomologyIso.toLinearEquiv.length_eq
   change Module.length R S.homology =
     Module.length R (S.g.hom.ker ⧸ S.moduleCatToCycles.range) at hh
-  rw [ENat.toNat_add
-    (by rw [← hcy]; exact Module.length_ne_top_iff.mpr hk)
-    (Module.length_ne_top_iff.mpr ho),
-    ENat.toNat_add (Module.length_ne_top_iff.mpr hbr) (Module.length_ne_top_iff.mpr hqr),
-    Nat.cast_add, Nat.cast_add, length_toCycles_range, ← hh] at hn
-  exact hn
+  rw [hcy, length_toCycles_range, ← hh] at hX
+  exact_mod_cast hX
 
 /-- Ordinary Euler characteristic is invariant under a quasi-isomorphism. -/
 theorem chiOrd_eq_of_quasiIso {P Q : CochainComplex (ModuleCat.{u} R) ℤ}
@@ -143,27 +132,7 @@ theorem chiOrd_eq_alternating_term_lengths
     have hz := length_eq_zero_of_isZero (P.homology q)
       (isZero_homology_of_isZero_X P q (hab q hq))
     simp only [homology, hz, ENat.toNat_zero, Nat.cast_zero]
-  have hbpfin : Function.HasFiniteSupport (fun q : ℤ => boundary (q - 1)) :=
-    hbfin.preimage (Equiv.subRight (1 : ℤ)).injective.injOn
-  have hbweighted : Function.HasFiniteSupport
-      (fun q : ℤ => ((q.negOnePow : ℤ) : ℝ) * boundary q) := hbfin.mul_right _
-  have hbpweighted : Function.HasFiniteSupport
-      (fun q : ℤ => ((q.negOnePow : ℤ) : ℝ) * boundary (q - 1)) := hbpfin.mul_right _
-  have hhweighted : Function.HasFiniteSupport
-      (fun q : ℤ => ((q.negOnePow : ℤ) : ℝ) * homology q) := hhfin.mul_right _
-  symm
-  calc
-    _ = ((∑ᶠ q : ℤ, ((q.negOnePow : ℤ) : ℝ) * boundary (q - 1)) +
-        ∑ᶠ q : ℤ, ((q.negOnePow : ℤ) : ℝ) * homology q) +
-        ∑ᶠ q : ℤ, ((q.negOnePow : ℤ) : ℝ) * boundary q := by
-      simp_rw [hidentity, mul_add]
-      have hfirst := finsum_add_distrib (hbpweighted.add hhweighted) hbweighted
-      simp only [Pi.add_apply] at hfirst
-      rw [hfirst, finsum_add_distrib hbpweighted hhweighted]
-    _ = _ := by
-      rw [alternatingFinsum_sub_one]
-      change ((-(∑ᶠ q : ℤ, ((q.negOnePow : ℤ) : ℝ) * boundary q)) + chiOrd P) +
-        (∑ᶠ q : ℤ, ((q.negOnePow : ℤ) : ℝ) * boundary q) = chiOrd P
-      ring
+  exact alternatingFinsum_eq_of_boundary
+    (fun q ↦ ((Module.length R (P.X q)).toNat : ℝ)) homology boundary hbfin hhfin hidentity
 
 end SerrePositivity.FiniteLengthComplexEuler

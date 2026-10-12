@@ -3,7 +3,7 @@ module
 public import SerrePositivity.CommutativeAlgebra.GaloisNormalization
 public import SerrePositivity.CommutativeAlgebra.RegularNormality
 public import SerrePositivity.CommutativeAlgebra.LocalAlgebra
-public import SerrePositivity.Inputs.RegularLocalRing
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing
 public import SerrePositivity.Paper.Section2.Lemma2_2
 
 /-!

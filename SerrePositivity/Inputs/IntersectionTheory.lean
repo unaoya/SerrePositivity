@@ -3,7 +3,7 @@ module
 public import SerrePositivity.IntersectionMultiplicity.Basic
 public import Mathlib.RingTheory.RegularLocalRing.Defs
 public import SerrePositivity.HomologicalAlgebra.FiniteFreeResolution
-public import SerrePositivity.Inputs.RegularParameters
+public import SerrePositivity.HomologicalAlgebra.RegularLocalResolution
 public import SerrePositivity.PerfectComplex.Basic
 public import Mathlib.RingTheory.KrullDimension.Module
 
@@ -36,13 +36,8 @@ theorem regularResolution (M : Type u) [AddCommGroup M] [Module R M] [Module.Fin
     ∃ F : CochainComplex (ModuleCat.{u} R) ℤ,
       Nonempty (IsResolutionOf F (ModuleCat.of R M)) ∧
       (∃ a b : ℤ, ∀ i, (i < a ∨ b < i) → CategoryTheory.Limits.IsZero (F.X i)) ∧
-      (∀ i, Module.Free R (F.X i)) ∧ (∀ i, Module.Finite R (F.X i)) := by
-  obtain ⟨rs, hreg, hgen, _⟩ := exists_regular_generators R
-  obtain ⟨P, hb, hfree, hfinite⟩ :=
-    exists_finite_free_resolution_of_regular_generators rs hreg hgen (ModuleCat.of R M)
-  obtain ⟨F, hF, hbound, hfree, hfinite⟩ :=
-    bounded_finite_free_cochain_of_projectiveResolution P rs.length hb hfree hfinite
-  exact ⟨F, hF, ⟨-(rs.length : ℤ), 0, hbound⟩, hfree, hfinite⟩
+      (∀ i, Module.Free R (F.X i)) ∧ (∀ i, Module.Finite R (F.X i)) :=
+  SerrePositivity.regularResolution R M
 
 /-- Roberts–Gillet–Soulé の消滅定理（引用、未証明、論文 (5.1)）。
 `M ⊗ N` が有限長で `dim Supp M + dim Supp N < dim R` なら交点重複度は零。

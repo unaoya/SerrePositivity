@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.IntersectionMultiplicity.NormalizedTor
-public import SerrePositivity.Inputs.RegularLocalRing
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing
 public import SerrePositivity.CommutativeAlgebra.Koszul
 public import SerrePositivity.CommutativeAlgebra.LocalAlgebra
 public import SerrePositivity.PerfectComplex.NormalizedLength
@@ -32,7 +32,7 @@ public import Mathlib.Topology.Instances.ENNReal.ENatENNReal
 
 一般定理 `normalizedLength_tor_of_isWeaklyRegular`（`IntersectionMultiplicity/NormalizedTor.lean`）
 を、`r = rank_A T` と (3.9) の `v = 1` で適用する。`z` が弱正則列であることは A1
-（`Inputs/RegularLocalRing.lean`、`sorry`）から。`λ` の定義域を `m_T C` から `m_A C` に取り替えるのに
+（`CommutativeAlgebra/RegularLocalRing.lean`、証明済み）から。`λ` の定義域を `m_T C` から `m_A C` に取り替えるのに
 `maximalIdeal_pow_le_map_of_finite`（`m_T^N ⊆ m_A T`）と `NormalizedLength.restrict` を使う。
 Corollary 2.6 と同じ筋道。証明で必要な有限性、パラメータの条件、(3.9) を個別の引数にする。
 完備性・剰余標数・T の整域性・剰余体の一致は、この主張には要求しない。

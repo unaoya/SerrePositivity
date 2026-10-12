@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.CommutativeAlgebra.FiniteLengthValue
+
 public import SerrePositivity.CommutativeAlgebra.GradedLinearMap
 public import Mathlib.RingTheory.PowerSeries.WellKnown
 
@@ -75,25 +77,16 @@ lemma component_length_identity (n : ℕ) :
       ((Module.length R (quotientGrade N f.range (n + 1))).toNat : ℚ) := by
   let d := componentMap N f hdegree n
   let g := quotientComponent N f (n + 1)
-  have hk : IsFiniteLength R d.ker :=
-    (hfinite n).of_injective (f := d.ker.subtype) (Submodule.subtype_injective _)
-  have hr : IsFiniteLength R d.range :=
-    (hfinite n).of_surjective (f := d.rangeRestrict) d.surjective_rangeRestrict
-  have hc := finiteLength_quotientGrade N hfinite f.range (n + 1)
-  have h1 := Module.length_eq_add_of_exact d.rangeRestrict.ker.subtype d.rangeRestrict
-    (Submodule.subtype_injective _) d.surjective_rangeRestrict
-    (LinearMap.exact_subtype_ker_map d.rangeRestrict)
-  rw [LinearMap.ker_rangeRestrict] at h1
-  have h2 := Module.length_eq_add_of_exact g.ker.subtype g
-    (Submodule.subtype_injective _) (quotientComponent_surjective N f (n + 1))
-    (LinearMap.exact_subtype_ker_map g)
-  rw [(componentMap_quotientComponent_exact N f hdegree n).linearMap_ker_eq] at h2
-  have h1q := congrArg (fun x : ℕ∞ => (x.toNat : ℚ)) h1
-  have h2q := congrArg (fun x : ℕ∞ => (x.toNat : ℚ)) h2
-  rw [ENat.toNat_add (Module.length_ne_top_iff.mpr hk) (Module.length_ne_top_iff.mpr hr),
-    Nat.cast_add] at h1q
-  rw [ENat.toNat_add (Module.length_ne_top_iff.mpr hr) (Module.length_ne_top_iff.mpr hc),
-    Nat.cast_add] at h2q
+  have h1q : ((Module.length R (N n)).toNat : ℚ) =
+      ((Module.length R d.ker).toNat : ℚ) + ((Module.length R d.range).toNat : ℚ) := by
+    exact_mod_cast lengthNat_ker_add_range d (hfinite n)
+  have h2q : ((Module.length R (N (n + 1))).toNat : ℚ) =
+      ((Module.length R g.ker).toNat : ℚ) +
+        ((Module.length R (quotientGrade N f.range (n + 1))).toNat : ℚ) := by
+    exact_mod_cast lengthNat_add_of_exact g.ker.subtype g
+      (Submodule.subtype_injective _) (quotientComponent_surjective N f (n + 1))
+      (LinearMap.exact_subtype_ker_map g) (hfinite (n + 1))
+  rw [(componentMap_quotientComponent_exact N f hdegree n).linearMap_ker_eq] at h2q
   rw [(kernelGradeEquiv N f hdegree n).length_eq]
   linarith
 

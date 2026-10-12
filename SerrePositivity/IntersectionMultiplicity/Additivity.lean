@@ -14,7 +14,7 @@ Noether 環上の有限生成加群では、中央のテンソル積の有限長
 第2変数では左導来関手の長完全列、第1変数では固定した第2変数の射影分解と平坦性から
 作った長完全列を使う。Tor の対称性や連結射の自然性は、この数値の等式には不要である。
 
-最後に正則局所環へ適用する。一般論の引用は `Inputs.regularResolution`（有界有限自由分解の存在）
+最後に正則局所環へ適用する。一般論の引用は `regularResolution`（有界有限自由分解の存在）
 だけで、加法性そのものを仮定するクラスは使わない。
 -/
 
@@ -102,12 +102,12 @@ section regular
 
 variable [IsRegularLocalRing R]
 /-- 有限生成な第2変数の有界有限自由分解から、高次 Tor の消滅を得る。
-分解の存在だけを `Inputs.regularResolution` から受け取り、消滅自体は一般の左導来関手の定理による。
+分解の存在だけを `regularResolution` から受け取り、消滅自体は一般の左導来関手の定理による。
 第1変数には有限生成性を要求しない。 -/
 theorem torModule_eventually_subsingleton (M N : Type u) [AddCommGroup M] [Module R M]
     [AddCommGroup N] [Module R N] [Module.Finite R N] :
     ∃ n, ∀ i, n < i → Subsingleton (TorModule R i M N) := by
-  obtain ⟨F, ⟨hF⟩, ⟨a, b, hb⟩, _, _⟩ := Inputs.regularResolution R N
+  obtain ⟨F, ⟨hF⟩, ⟨a, b, hb⟩, _, _⟩ := regularResolution R N
   obtain ⟨n, hn⟩ := isZero_leftDerived_eventually_of_resolution
     (tensorLeft (ModuleCat.of R M)) hF a (fun i hi => hb i (Or.inl hi))
   exact ⟨n, fun i hi => ModuleCat.subsingleton_of_isZero (hn i hi)⟩

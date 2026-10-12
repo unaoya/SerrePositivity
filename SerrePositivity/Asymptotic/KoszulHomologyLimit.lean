@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.KoszulHomologyLength
+public import SerrePositivity.LengthAlgebra.KoszulHomologyLength
 public import SerrePositivity.Asymptotic.NormalizedLimit
 
 /-! # Koszul ホモロジーの二項公式と正規化極限

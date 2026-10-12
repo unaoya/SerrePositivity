@@ -23,7 +23,7 @@ public import Mathlib.Algebra.CharP.Algebra
 
 1. 有限拡大の階数倍（`IntersectionMultiplicity/FiniteExtension.lean`）：
    `χ^R(D, E) = rank_{R/P} D · rank_{R/Q} E · χ^R(R/P, R/Q)`。
-2. `E` の有界有限自由分解 `F`（未証明定理 `Inputs.regularResolution`）をとり、`L = F ⊗_R D` とする。`D ⊗_R E` が
+2. `E` の有界有限自由分解 `F`（未証明定理 `regularResolution`）をとり、`L = F ⊗_R D` とする。`D ⊗_R E` が
    有限長（`√(P + Q) = m_R` から）なので、`L` は `D` の閉点、すなわち `z` の像に台をもつ完全複体
    （`isPerfectSupported_baseChange_resolution`）。
 3. `χ_D(L) = χ^R(D, E)`（`chiOrd_baseChange_resolution`。`R` と `D` の剰余体が同じことを使う）。
@@ -97,7 +97,7 @@ theorem firstComparison
   have hRanks := chi_finite_extensions P Q D E rankE hprimary h l hPdim hQdim dimR
   have htensor := length_tensorProduct_ne_top_of_annihilator P Q D E
     (quotient_action_annihilator P D) (quotient_action_annihilator Q E) hprimary
-  obtain ⟨F, ⟨hF⟩, hbound, hfree, hfinite⟩ := Inputs.regularResolution R E
+  obtain ⟨F, ⟨hF⟩, hbound, hfree, hfinite⟩ := regularResolution R E
   let L := baseChange (algebraMap R D) F
   have hL : IsPerfectSupported (algebraMap A D ∘ z) L :=
     isPerfectSupported_baseChange_resolution E F hF hbound hfree hfinite htensor

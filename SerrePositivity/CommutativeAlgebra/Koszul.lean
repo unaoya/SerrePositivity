@@ -58,7 +58,7 @@ public import Mathlib.Algebra.Homology.HomotopyCategory.ShiftSequence
 - 項の性質：正の次数と `-n` 次より下で零、各項は有限自由で射影的、正の次数のホモロジーは零。
 - `koszulEulerChar A T z`：`A` 上の代数 `T` について、`K(z; T)` のホモロジーを `A` 加群として測った
   Euler 標数 `χ^A(z; T) = Σ (-1)^i ℓ_A(H_i(z; T))`。論文 (3.14) に現れ、正則局所環なら `rank_A T` に
-  等しい（Serre の定理。`Inputs/RegularLocalRing.lean` の入力）。
+  等しい（Serre の定理。`CommutativeAlgebra/RegularLocalRing.lean` の入力）。
 - 基底変更との両立 `K(z; A) ⊗_A C ≅ K(φ z; C)`。
 
 完全性（正則列なら分解）は `KoszulResolution.lean`。
@@ -365,7 +365,7 @@ lemma koszulComplex_isZero_homology_of_pos {n : ℕ} (x : Fin n → R) (i : ℤ)
 として作り、各ホモロジーを係数制限で `A` 加群とみる。無限長の項は `0` と数える（`toNat`）。
 
 論文 (3.14) に現れる量で、`A` が正則局所環、`z` がその正則パラメータ系、`T` が `A` 上有限なら
-`χ^A(z; T) = rank_A T`。この等式は `Inputs/RegularLocalRing.lean` の
+`χ^A(z; T) = rank_A T`。この等式は `CommutativeAlgebra/RegularLocalRing.lean` の
 `koszulEulerChar_eq_finrank` で、一般の有限自由分解の Euler–Poincaré 公式と
 証明済みの正則局所環の性質から導き、
 Lemma 3.5b の通常の長さ側（`Paper/Lemma3_5/Ordinary.lean`）で使う。 -/

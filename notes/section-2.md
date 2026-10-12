@@ -1,5 +1,7 @@
 # §2 剰余体と正規化長さ：主張の確認と引用元の照合
 
+> 文献・主張の照合資料。現在のLean実装と引用の一覧は [status.md](status.md) を正本とする。以下の論文の引用と、Leanで残る引用は区別する。
+
 2026-10-08 作成。論文 §2（p.4–9）の各主張を正確に書き、引用されている文献の該当箇所を原典で確認した記録。
 
 ## 引用元の一覧
@@ -46,7 +48,7 @@
   平坦性を使わず、テンソル積の右完全性から証明している。
 - その同型と平坦局所拡大での長さの保存から、任意の加群の Samuel 関数の一致を証明した。
   正則性と Tor の保存にも既存の証明を適用し、`lemma_2_1` 自身の `sorry` を除去した。
-  正則性の保存は、証明済みの Hilbert–Samuel 多項式性と、未証明の次元定理に依存する。
+  正則性の保存は、証明済みの Hilbert–Samuel 多項式性と、証明済みの次元定理に依存する。
 
 ## §2.2 Lemma 2.2（正則な正規化基底）
 
@@ -198,4 +200,4 @@ C_D = (D ⊗_A A_∞)_perfd。
 - Lemma 2.3 の λ_∞ の構成と加法性は、Faltings Appendix 2 の Lemma が原典。CLMST も証明を委ねているので、形式化するなら Faltings または Gabber–Ramero 14.5.75 を読む必要がある。有限段の長さを p^{−nh} 倍するところまでは初等的で、下限・上限で延ばしたときの加法性が本体。
 - 標数 p の Theorem 2.5 は、Monsky（Hilbert–Kunz の存在）、Ma Theorem 2.4（Roberts）、Stacks 0AZZ（Koszul の Euler 特性）、Cohen–Gabber の4つを入力にすれば、残りは [21] §3.2 の初等的な議論（トレース、塔の有限段、Lemma 2.4）。
 - 混標数の Theorem 2.5 は CLMST の Cor. 4.0.4、Prop. 4.0.10、Prop. 4.0.14 を入力にする。これらは Bhatt–Scholze の perfectoid 化と almost purity に依存するので、証明せずに引用する（層 3b）。
-- 引用する文献：Kurano–Shimomoto Thm 1.1（Cohen–Gabber）、Cohen の構造定理（係数環）、Monsky、Ma Thm 2.4（Roberts）、Stacks 0AZZ（Koszul の Euler 特性）、Faltings Appendix 2（Lemma 2.3）、CLMST（Cor. 4.0.4、Prop. 4.0.10、4.0.14）。どれも入力の束にはせず、名前付きの `sorry` 定理として置く（`PLAN.md` §1.1）。実際に置いた引用の一覧は `section-2-plan.md`。
+- 引用する文献：Kurano–Shimomoto Thm 1.1（Cohen–Gabber）、Cohen の構造定理（係数環）、Monsky、Ma Thm 2.4（Roberts）、Stacks 0AZZ（Koszul の Euler 特性）、Faltings Appendix 2（Lemma 2.3）、CLMST（Cor. 4.0.4、Prop. 4.0.10、4.0.14）。どれも入力の束にはせず、名前付きの `sorry` 定理として置く（`PLAN.md` §1.1）。現在実際に残る引用の一覧は [status.md](status.md)。Monsky・Koszul重複度の文献参照を、直接のLean引用として数えない。

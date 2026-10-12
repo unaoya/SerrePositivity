@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.LengthAlgebra.OrdinaryKoszulEuler
+
 public import SerrePositivity.Paper.Lemma3_5.Ordinary
 public import SerrePositivity.CommutativeAlgebra.FiniteLocalSupport
 public import SerrePositivity.PerfectComplex.QuotientLength
@@ -118,10 +120,8 @@ lemma koszulEuler_eq_of_lengthAlgebra_values
       LengthAlgebra.koszulEuler nu (algebraMap T C ∘ algebraMap A T ∘ a) := by
   apply Eq.trans ?_ (koszulEuler_of_lengthAlgebra_values nu
     (algebraMap T C ∘ algebraMap A T ∘ a) (Module.finrank A T) hz hvalues).symm
-  change lambdaEuler (NormalizedLength.ordinary T) _ = _
-  rw [← chiOrd_eq_lambdaEuler_ordinary,
-    ← chiOrd_eq_of_homotopyEquiv (HomotopyEquiv.ofIso (baseChangeKoszulIso (algebraMap A T) a)),
-    chiOrd_baseChange_koszulComplex hres, hχ]
+  rw [ordinary_koszulEuler_eq_koszulEulerChar a hres, hχ]
+
 
 end finite
 

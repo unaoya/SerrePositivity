@@ -1,5 +1,7 @@
 module
 
+public import Mathlib.Data.Int.Interval
+
 public import SerrePositivity.HomologicalAlgebra.AdicFilteredComplex
 
 /-!

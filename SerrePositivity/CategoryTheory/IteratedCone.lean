@@ -191,6 +191,18 @@ lemma iteratedScalarCone_smul_zero (k : ℕ) (hk : k ≤ n) :
         (x j) (hz j hj) (hz j hj)
 
 include hS hx in
+/-- 初項を消す任意のスカラーは、零作用スカラーの錐を取った全段を消す。
+このスカラー自身が錐を作る列に含まれることは要求しない。 -/
+lemma iteratedScalarCone_smul_zero_of_smul_zero (a : R)
+    (ha : a • 𝟙 (X 0) = 0) (k : ℕ) (hk : k ≤ n) : a • 𝟙 (X k) = 0 := by
+  induction k with
+  | zero => exact ha
+  | succ k ih =>
+    exact scalar_zero_on_zero_cone _ (hS k (by omega))
+      (iteratedScalarCone_smul_zero X ι π n x hS hx k (by omega) k (by omega))
+      a (ih (by omega)) (ih (by omega))
+
+include hS hx in
 /-- (Supp) を満たすスカラーの錐の列を、零射の錐の列として扱う。 -/
 lemma iteratedScalarCone_zero_triangles :
     ∀ k < n, Triangle.mk (0 : X k ⟶ X k) (ι k) (π k) ∈ distTriang C := by

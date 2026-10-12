@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.FiniteResolutionTrace
-public import SerrePositivity.Inputs.RegularParameters
+public import SerrePositivity.CommutativeAlgebra.RegularParameters
 public import Mathlib.RingTheory.IntegralClosure.IntegrallyClosed
 public import Mathlib.RingTheory.Flat.Localization
 public import Mathlib.RingTheory.Localization.BaseChange

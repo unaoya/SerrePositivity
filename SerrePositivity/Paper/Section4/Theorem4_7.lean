@@ -1,12 +1,14 @@
 module
 
+public import SerrePositivity.LengthAlgebra.OrdinaryKoszulEuler
+
 public import SerrePositivity.Paper.Section4.SymmetricComparison
 public import SerrePositivity.Paper.Section4.LengthAlgebraRealization
 public import SerrePositivity.LengthAlgebra.Flat
 public import SerrePositivity.Asymptotic.PaperComplexBaseChange
 public import SerrePositivity.Paper.Section4.SupportedDescent
 public import SerrePositivity.Paper.Section4.LengthHypotheses
-public import SerrePositivity.Inputs.RegularLocalRing
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing
 
 /-!
 # 定理4.7：漸近ノルム比較
@@ -97,10 +99,8 @@ theorem theorem_4_7_K0
       LengthAlgebra.koszulEuler lam (algebraMap T C ∘ algebraMap A T ∘ z) := by
     apply Eq.trans ?_ (koszulEuler_of_lengthAlgebra_values lam
       (algebraMap T C ∘ algebraMap A T ∘ z) (Module.finrank A T) hzero hquot).symm
-    change lambdaEuler (NormalizedLength.ordinary T) _ = _
-    rw [← chiOrd_eq_lambdaEuler_ordinary,
-      ← chiOrd_eq_of_homotopyEquiv (HomotopyEquiv.ofIso (baseChangeKoszulIso (algebraMap A T) z)),
-      chiOrd_baseChange_koszulComplex hres, koszulEulerChar_eq_finrank A T z hz hdim]
+    rw [ordinary_koszulEuler_eq_koszulEulerChar z hres,
+      koszulEulerChar_eq_finrank A T z hz hdim]
   have he := symmetricPaperEuler_conjSum_eq (algebraMap A T) (RingHom.id T) (algebraMap T C)
     (NormalizedLength.ordinary T) lam Submodule.fg_bot
     (LengthAlgebra.parameterIdeal_fg ((algebraMap T C).comp (algebraMap A T))) z bot_le
@@ -113,7 +113,7 @@ theorem theorem_4_7_K0
 
 include hdim hres p hsurj htrans hderived in
 /-- 定理4.7：論文の支持圏の対象について、二つの Euler 評価の共役和は一致する。
-K₀ 版を対象の類へ適用する。既存の降下と正則パラメータの引用への依存は残る。 -/
+K₀ 版を対象の類へ適用する。既存の降下と正則パラメータは証明済みで、保留した降下への依存は残る。 -/
 theorem theorem_4_7
     (X : (paperSupportedRank (s := s) (algebraMap A T ∘ z)).FullSubcategory) :
     let : Nontrivial C := section4_nontrivial z lam hquot hsurj

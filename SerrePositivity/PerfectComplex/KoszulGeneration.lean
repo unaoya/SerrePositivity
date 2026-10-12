@@ -19,7 +19,7 @@ public import SerrePositivity.PerfectComplex.OrdinaryEuler
 
 これは論文 Lemma 3.5b の証明の核心「`K_0^{m}(A)` は `[K(z)]` で生成される」で、通常の長さ版
 （`Paper/Lemma3_5/Ordinary.lean`）と正規化長さ版（`Paper/Lemma3_5/Normalized.lean`）の共通の入力に
-なる。正則局所環の正則パラメータ系なら `IsKoszulResolution z` は `Inputs/RegularLocalRing.lean` の
+なる。正則局所環の正則パラメータ系なら `IsKoszulResolution z` は `CommutativeAlgebra/RegularLocalRing.lean` の
 A1（正則列）から出る（`CommutativeAlgebra/KoszulResolution.lean`）。正則性はこの仮定を通してだけ使う。
 
 ## 証明（デヴィサージュ）

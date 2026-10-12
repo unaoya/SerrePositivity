@@ -11,95 +11,44 @@ including the ramified mixed-characteristic case.
 
 ## Status
 
-Incomplete formalization. Theorem 1.1 and the core case in `SerrePositivity/Paper/Statement.lean` are now derived from named inputs; neither statement has a direct `sorry`. Serre's equal-characteristic positivity is explicitly quoted in `Inputs/SerrePositivity.lean`. Other unproved inputs, including the external inputs to the Section 2 constructions, still occur in their dependencies.
+The shared Euler, iterated-cone, vanishing, lower-bound and symmetric-comparison theory,
+its perfect-complex and rank-quotient realizations, and the connection to the main theorem
+are implemented. The standard commutative algebra needed here is proved.
 
-`SerrePositivity/Paper/Section5/` contains the twisted Euler evaluations, the application of Lemma 3.5, and the final positivity argument. Lemma 5.2 (`firstComparison` in `Paper/Lemma5_2.lean`) takes its rings, finite algebras, ranks, parameters, group action, and length conditions as explicit arguments. The former `CoreData`, `IsPaperData`, and `Inputs.Core` bundles have been removed. `core_of_twistedEuler_pos` combines Lemma 5.2 with positivity of the twisted Euler values. `Section5.core_of_lengthAlgebras` derives these positive values from the supplied length algebras, and `core_of_normalization_bases` supplies the length algebras from the quoted Section 2 construction. `GaloisNormalization.lean` and `Core.lean` now construct the normalization bases, finite Galois extensions and actions from the original core hypotheses. Ranks are written directly as `Module.finrank`.
+The formalization still depends on **13 external quotations and 2 deferred K-theory proofs**.
+`main_statement` and `core_statement` have no direct `sorry`, but depend on `sorryAx`.
+They are not proofs of the main theorem without those inputs.
+The current input inventory and module map are maintained in [notes/status.md](notes/status.md).
 
-The reduction handles arbitrary finite modules over regular local rings of positive residue characteristic (`Section5.positivity_of_residueCharP`), without completeness or an algebraically closed residue field. The zero-dimensional boundary, prime-quotient dévissage, and preservation of length, module dimension and intersection multiplicity under flat local extensions preserving the maximal ideal are proved. The Noetherianity of adic completions is proved using a surjection from a finite-variable power series ring; Lemma 2.1 supplies the residue-field extension. In residue characteristic zero, nonzero integers are units, which constructs a rational algebra structure and connects the main theorem to Serre's quoted result. The former `main_statement` gap has moved to that named classical input; the connection itself is proved.
+## Reading order
 
-Unproved inputs are explicit theorems, including `isWeaklyRegular_of_span_eq_maximalIdeal`,
-`Inputs.intersectionVanishing`, and the cited results in `Inputs/CLMST.lean`. Their uses occur in proof bodies,
-so downstream axiom audits expose `sorryAx`; there are no input classes to instantiate.
-Do not introduce structures or classes to package theorem assumptions. State each needed
-hypothesis directly. The former `Setup34`, `IsRegularNormalizationBase`, `LengthAlgebraProps`,
-and `LengthAlgebraData` bundles have also been removed. Theorem 2.5 now explicitly quantifies
-its output algebra and normalized length and lists its conclusions.
-The domain property, integral closedness and bounded finite free resolution existence are proved from regular generators
-of the maximal ideal. Only regularity of regular parameters remains an unproved regular-local input
-(`Inputs/RegularParameters.lean`). The general resolution has length at most the number of generators.
-Lemma 3.5a's normalized-length finiteness follows from the common finite-projective Koszul bounds
-and the retract furnished by scalar null-homotopies. This proof uses no unproved inputs.
-Lemmas 3.2 and 3.3 and their K-theory foundations remain deferred.
-Section 2 (`Paper/Section2/`, 2026-10-10): the tower `Λ = lim A[t^{1/p^n}]`, its normalized length `λ_∞` (Faltings' three-step definition) and the Hilbert–Samuel multiplicity (leading coefficient of the Samuel polynomial, `CommutativeAlgebra/HilbertSamuel.lean`) are defined concretely rather than assumed. Lemma 2.4 and Corollary 2.6 (3) are proved from the sup property and the composition-series argument. The standard facts on the tower stages (monomial bases, free transition maps of rank `p^{(b−a)h}`, locality with residue field `k`, completeness, regularity, flatness of `Λ`; `Paper/Section2/MonomialBasis.lean`, `TowerStage.lean`) and the finite-stage formula and descent for `λ_∞` (`TowerDescent.lean`, with the base change of presented modules in `CommutativeAlgebra/PresentationBaseChange.lean`) are proved. Lemma 2.1, 2.2, Theorem 2.5 (now with the compatible `Λ`-action and `λ_D := λ_∞` by restriction of scalars), the two cited properties of `λ_∞` (`λ = λ*` on finitely generated modules and additivity, after Gabber–Ramero and Faltings), and the Hilbert–Samuel theorems (polynomiality, dimension, positivity) remain named `sorry`s. See `notes/section-2-plan.md`.
-The current milestone is complete: the shared Euler, iterated-cone and symmetric-comparison theory,
-its perfect-complex and rank-quotient realizations, and the connection from λ-flatness and λ-CM
-conditions to the required Koszul inputs. Obsolete comparison layers and duplicated finiteness
-and vanishing proofs have been removed; see `notes/cleanup-candidates-2026-10-11.md`.
-The core connection and the general-to-core/Serre reduction are complete relative to named inputs.
-Work has resumed on Section 2: `PerfectConductor.lean` now supplies a common denominator from
-regularity, and `PrimaryParameters.lean` supplies the parameters for the error estimate.
-`PerfectQuotientLimit.lean` combines these with the approximation estimates to identify the
-Frobenius length limit with the length of the perfection quotient. `PerfectKoszulLength.lean`
-proves the analogous finite-stage formula for all Koszul homology groups and constructs one
-annihilating power for every stage and degree. `KoszulMultiplicityLimit.lean` derives the
-Hilbert–Samuel value from vanishing of the normalized higher Frobenius homology, and
-`PerfectQuotientLimit.lean` connects this conditional result to the perfection quotient.
-`DirectedHomology.lean`, `KoszulDirectedUnion.lean` and `PerfectKoszulLimit.lean` now identify
-perfection's Koszul homology with the directed limit of the approximation homologies and
-transfer the vanishing limit to its normalized length. No injectivity of the homology maps
-is assumed. `FrobeniusKoszulLimit.lean` checks the hypotheses needed to apply a general
-Roberts-type vanishing theorem, identifies Frobenius base change, and converts the real limit
-to `ℝ≥0∞`. `perfectClosure_length_properties_of_roberts` derives both equal-characteristic
-length properties from that general theorem as an explicit hypothesis.
-With the user's approval, `Inputs/RobertsFrobenius.lean` now quotes the general theorem as
-a named `sorry` (Ma, Theorem 2.4, after Roberts). `perfectClosure_length_properties` applies
-it and replaces the former equal-characteristic pending declaration; Theorem 2.5 uses this
-proved connection. The equal-characteristic construction is complete relative to this and
-the existing regular-parameter, normalized-length and multiplicity inputs.
-The mixed-characteristic construction is also connected to Theorem 2.5. `CompletedTower.lean`
-defines the actual p-adic completion and proves scalar-restriction compatibility of lengths.
-`MixedPerfectoid.lean` constructs the universal perfectoidization of the finite, finitely presented
-base change and supplies compatible actions. `MixedLengthAlgebra.lean` checks uniform power
-torsion, applies the quoted almost-vanishing and length results, and transports both conclusions
-to `towerLengthOn`. Five named external inputs cite Bhatt–Scholze and CLMST; the former
-`lengthAlgebra_mixedCharacteristic_pending` has been removed. Both characteristic branches
-are now proved relative to named inputs. The direct `sorry` count is 21 (five quotations added,
-one construction gap removed). The cited descent results remain separate work.
-
-The Lean sources are organized as follows (2026-10-11):
-
-- `CategoryTheory/`: shared Euler additivity, homological evaluations, iterated cones, symmetric comparison, and triangulated K₀.
-- `LengthAlgebra/`: length quotients, perfect-complex evaluations and comparison, vanishing and lower bounds, and the λ-flat/λ-CM input criteria.
-- `Asymptotic/`: sequence categories, rank quotients, homological evaluations and their extension to the paper’s categories.
-- `HomologicalAlgebra/`: general homological algebra over a ring (basic lemmas on complexes and finite free terms in `Basic`, mapping-cone long exact sequences in `ConeLES`, resolutions indexed by `ℤ` in `Resolution`, base change of complexes, `Tor` with resolution computations and annihilator actions, its long exact sequence, scalar null-homotopies (`NullHomotopy`), K-projective lifts).
-- `CommutativeAlgebra/`: general commutative algebra (finite length, modules killed by a power of an ideal, finite local algebras, Hilbert–Samuel multiplicity, base change of presented modules (`PresentationBaseChange`), Koszul complexes and base change (`Koszul`), exactness, resolutions and Tor computations (`KoszulResolution`), length comparison over a common residue field and along automorphisms (`FiniteLength`), geometric transitivity, sums of homology lengths and truncation of complexes over a local ring).
-- `PerfectComplex/`: supported perfect complexes (`Basic`, homology support in `Support` and closure properties in `Closure`), their `K₀` (`K0`, including functoriality), normalized lengths (`NormalizedLength`) and the two Euler evaluations (`NormalizedEuler`, with the ordinary length as the special case `NormalizedLength.ordinary` in `OrdinaryEuler`), and generation of `K₀^{m}(A)` by the Koszul complex (`KoszulGeneration`).
-- `Paper/`: the main statements (`Statement`), the explicit comparisons and supporting arguments of §5 (`Section5/`), and the paper's lemmas (`Corollary2_6`, `Lemma3_4`, `Lemma3_5` with `Ordinary` and `Normalized`, `Lemma5_2`). The common conjugate-sum theorem is in `GroupTheory/ConjugateSum`.
-- `Paper/Section2/`: §2 of the paper: the tower, its stages and their normalized length (`Tower`, `MonomialBasis`, `TowerStage`, `TowerLength`, `TowerDescent`), Lemma 2.1, 2.2, 2.4, Theorem 2.5 and Corollary 2.6 (3).
-- `Inputs/`: theorems from outside the paper and standard facts not yet in Mathlib, stated as named theorems with `sorry` (Theorem 3.1, facts on regular local rings, the intersection-theory inputs of Lemma 5.2), and the rewriting of (2.4), (2.6) in terms of the base parameters (`LengthAlgebra`).
-- `IntersectionMultiplicity/`: Serre's intersection multiplicity (`Basic`), normalized Tor lengths of finite-length modules (`NormalizedTor`, shared by Corollary 2.6 and Lemma 3.4), and the ingredients of Lemma 5.2 (rank factors of `χ`, base change of a finite free resolution, Euler evaluations of resolutions).
-
-Every file has a Japanese module docstring (purpose, background, proof strategy, conventions, where it is used) and every declaration a Japanese docstring stating the claim in words, the role of its hypotheses and the idea of the proof; the conventions are recorded in `notes/PLAN.md` §18.
-
-The general theorem `normalizedLength_tor_of_isWeaklyRegular`, its application in Lemma 3.4, Lemma 3.5b, 3.5c and Lemma 5.2 (`firstComparison`, modulo the general inputs of `Inputs/IntersectionTheory.lean`) are proved modulo the inputs; Lemma 3.5a, including `lemma_3_5a_lam_finite`, is proved without unproved inputs. Corollary 2.6 (`cor_2_6_pos`) is proved from `Section2.cor_2_6_residue_pos`, which depends on the positivity of the Hilbert–Samuel multiplicity. Direct `sorry` declarations in the paper part remain in the cited theorems of Section 2 and `supportedRankK0_descent`. Serre's classical positivity remains a separate named input. See `notes/PLAN.md` §11–12.
-
-The Koszul Euler/rank identity now has an explicit derivation: the rank calculation for finite resolutions, the Koszul/Tor identification, and the general Euler–Poincaré formula for tensoring a finite free resolution are proved. The only remaining regular-local dependency is the named `sorry` theorem that regular parameters form a regular sequence. The domain property and finite free resolutions are now derived from it, using general theorems in `CommutativeAlgebra/RegularSequence.lean` and `HomologicalAlgebra/FiniteFreeResolution.lean`.
-
-The plan has three layers:
-
-1. **Paper-specific argument** (§5 and the formal parts of Lemma 3.4/3.5): to be formalized sorry-free first.
-2. **New general theorems of the paper** (Theorem 3.1, rational K-theory descent; Theorem 4.7, asymptotic norm comparison): stated as named theorems with `sorry` at first, and checked by hand with priority.
-3. **Inputs from the literature** (Serre, Roberts–Gillet–Soulé, Cohen–Gabber, Monsky, Roberts, Cai–Lee–Ma–Schwede–Tucker, Land–Tamme, Bhatt–Scholze): quoted as named theorems with `sorry`.
-
-The first milestone is a sorry-free derivation of Theorem 1.1 in which `#print axioms` shows only the standard axioms once all required proofs are supplied; while quoted theorems remain unproved, dependent results explicitly carry `sorryAx`.
+1. [Japanese exposition](exposition/ja/exposition-ja.tex): shared theory (§3), length algebras (§4),
+   perfect and rank realizations (§5–6), paper applications (§7), constructions (§8), core proof (§9).
+   The [PDF](exposition/ja/exposition-ja.pdf) is generated from that TeX source.
+2. [Section 4 interfaces](notes/section-4-plan.md) and [Section 2 implementation map](notes/section-2-plan.md).
+3. [Current plan and conventions](notes/PLAN.md), then [historical records](notes/history/README.md).
 
 ## Layout
 
-- `paper/` — the preprint and its source (`SOURCE.md`)
-- `notes/MEMO.md` — full investigation memo (in Japanese)
-- `notes/PLAN.md` — current priorities, design conventions, dependency graph, interfaces, and links to the per-section notes (in Japanese)
-- `notes/mathlib-review-2026-10-10.md` — comparison with the pinned Mathlib version and caveats on the scope of the formalization (in Japanese)
-- `SerrePositivity/` — Lean sources
+- `CategoryTheory/`: ring-independent Euler theory, iterated cones, comparison and triangulated K₀.
+- `LengthAlgebra/`: length quotients, evaluations and concrete verification of the common hypotheses.
+- `PerfectComplex/`: supported finite projective complexes and the older finite free model, with comparison APIs.
+- `Asymptotic/`: sequence categories, rank quotients, localization and completed homological evaluations.
+- `CommutativeAlgebra/`, `HomologicalAlgebra/`: proved general results, including regular parameters and resolutions.
+- `Paper/`: constructions and applications to the paper, including the main statement.
+- `Inputs/`: named external quotations, deferred descent, and explicitly marked compatibility imports.
+- `paper/`: original preprint and source provenance.
+- `notes/`: current interfaces, mathematical investigations and dated history.
+
+New and changed APIs follow the Japanese documentation conventions in `notes/PLAN.md` §18.
+This is a maintenance convention, not a claim that every existing declaration already satisfies it.
+TeX is the source for explanatory PDFs; temporary compilation files and OS metadata are not retained.
+
+## Verification
+
+Run `lake build`, then `lake env lean scripts/audit_axioms.lean` and
+`python3 scripts/check_documentation.py`. The axiom audit checks the shared APIs
+and also reports the remaining dependencies of the main theorem.
 
 ## Source and license
 

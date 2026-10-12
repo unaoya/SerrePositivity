@@ -45,10 +45,10 @@ lemma coneLength_binomial (n : ℕ) (f : ℤ → ℝ) (q : ℤ) :
     Module.End.mul_apply, Module.End.natCast_apply,
     cochainLengthShift_pow_apply, nsmul_eq_mul, Pi.mul_apply, Pi.natCast_apply]
 
-/-- 各段が錐の漸化式を満たせば、最後の係数は二項公式で与えられる。 -/
-lemma coneLength_binomial_of_recurrence (b : ℕ → ℤ → ℝ) (n : ℕ)
-    (hb : ∀ k < n, ∀ q, b (k + 1) q = b k q + b k (q + 1)) (q : ℤ) :
-    b n q = ∑ j ∈ Finset.range (n + 1), (n.choose j : ℝ) * b 0 (q + j) := by
+/-- 錐の漸化式は、次数移動作用素の冪と一致する。 -/
+lemma coneLength_pow_of_recurrence (b : ℕ → ℤ → ℝ) (n : ℕ)
+    (hb : ∀ k < n, ∀ q, b (k + 1) q = b k q + b k (q + 1)) :
+    b n = ((cochainLengthShift + 1) ^ n) (b 0) := by
   have hi : ∀ k ≤ n, b k = ((cochainLengthShift + 1) ^ k) (b 0) := by
     intro k hk
     induction k with
@@ -58,7 +58,13 @@ lemma coneLength_binomial_of_recurrence (b : ℕ → ℤ → ℝ) (n : ℕ)
         funext q
         simpa only [LinearMap.add_apply, cochainLengthShift_apply, Module.End.one_apply,
           Pi.add_apply, add_comm] using hb k (by omega) q
-  rw [hi n le_rfl]
+  exact hi n le_rfl
+
+/-- 各段が錐の漸化式を満たせば、最後の係数は二項公式で与えられる。 -/
+lemma coneLength_binomial_of_recurrence (b : ℕ → ℤ → ℝ) (n : ℕ)
+    (hb : ∀ k < n, ∀ q, b (k + 1) q = b k q + b k (q + 1)) (q : ℤ) :
+    b n q = ∑ j ∈ Finset.range (n + 1), (n.choose j : ℝ) * b 0 (q + j) := by
+  rw [coneLength_pow_of_recurrence b n hb]
   exact coneLength_binomial n (b 0) q
 
 /-- homological 添字では右辺は i-j となり、(1+t)^n の係数と一致する。 -/

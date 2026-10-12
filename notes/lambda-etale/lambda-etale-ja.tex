@@ -37,7 +37,7 @@
 
 \section*{このノートの目的}
 
-OpenAI の論文「Positivity of Serre's Intersection Multiplicity」は、almost flat を $\lambda$-平坦に、almost CM を $\lambda$-CM に弱めることで結論を得た（解説 \texttt{exposition-ja} の付録 C、D）。弱めてよかった理由は三つあった。
+OpenAI の論文「Positivity of Serre's Intersection Multiplicity」は、almost flat を $\lambda$-平坦に、almost CM を $\lambda$-CM に弱めることで結論を得た（解説 \texttt{exposition-ja} の付録 C、D（現在の共通抽象論は §3〜§6））。弱めてよかった理由は三つあった。
 \begin{enumerate}
   \item 正値性は数の主張であり、$\lambda$ は数を返す。
   \item 標数 $p$ では almost の形の入力は得られないが、$\lambda$ の形なら Roberts の定理から得られる。
@@ -110,7 +110,7 @@ $\lambda$ を、全体の大きさではなく「自由な直和因子になら�
 \end{definition}
 
 \begin{remark}
-「perfectoid pure」という語は既に使われている（Bhatt--Ma--Patakfalvi--Schwede--Tucker--Waldron--Witaszek の perfectoid pure singularities、Yoshikawa の perfectoid pure threshold など）。そこでの「pure」は純射（分裂）の意味で、分岐の純粋性とは別である。名前が衝突するので、ここでは「$\lambda$-purity」ではなく「$\lambda$-エタール」「位数付きの $\lambda$」と呼ぶ。
+「perfectoid pure」という語は既に使われている（Bhatt--\allowbreak Ma--\allowbreak Patakfalvi--\allowbreak Schwede--\allowbreak Tucker--\allowbreak Waldron--\allowbreak Witaszek の perfectoid pure singularities、Yoshikawa の perfectoid pure threshold など）。そこでの「pure」は純射（分裂）の意味で、分岐の純粋性とは別である。名前が衝突するので、ここでは「$\lambda$-purity」ではなく「$\lambda$-エタール」「位数付きの $\lambda$」と呼ぶ。
 \end{remark}
 
 \section{候補の問題}
@@ -234,7 +234,7 @@ Carvajal-Rojas--Stäbler（JPAA 2022）は、有限局所拡大 $R\subseteq S$ �
 \subsection{混標数：何があり、何がないか}
 \begin{itemize}
   \item \textbf{ある}：perfectoid signature $s_{\mathrm{perfd}}(R)$（CLMST、$\lambda_\infty$ で定義）。変換公式（CLMST Thm.~C）：(a) $R\subseteq S$ が有限で分裂、(b) ある $\phi\in\Hom_R(S,R)$ が $\Hom_R(S,R)$ を $S$ 加群として生成、(c) $\phi(\n)\subseteq\m$、のもとで $s_{\mathrm{perfd}}(S) = [K(S):K(R)]\,s_{\mathrm{perfd}}(R)$（剰余体代数閉、quasi-étale なら $\phi = \Tr$）。基本群の評価（Thm.~D）：$|\pi_1^{\text{ét}}(U)|\le 1/s_{\mathrm{perfd}}(R)$、$|\Cl(R)_{\mathrm{tors}}|\le 1/s_{\mathrm{perfd}}(R)$（$1/0 = \infty$）。
-  \item \textbf{ある}：perfectoid pure 特異点（Bhatt--Ma--Patakfalvi--Schwede--Tucker--Waldron--Witaszek）。perfectoid 純性の中心と、分裂素イデアルの類似 $\beta(R)$（Fayolle, JÉP 2025）：$\beta(R)\neq R$ と $R$ が perfectoid pure であることは同値で、そのとき $\beta(R)$ は素イデアルで最大の中心、$R/\beta(R)$ は正規。エタール射での振る舞いも調べられている。
+  \item \textbf{ある}：perfectoid pure 特異点（Bhatt--\allowbreak Ma--\allowbreak Patakfalvi--\allowbreak Schwede--\allowbreak Tucker--\allowbreak Waldron--\allowbreak Witaszek）。perfectoid 純性の中心と、分裂素イデアルの類似 $\beta(R)$（Fayolle, JÉP 2025）：$\beta(R)\neq R$ と $R$ が perfectoid pure であることは同値で、そのとき $\beta(R)$ は素イデアルで最大の中心、$R/\beta(R)$ は正規。エタール射での振る舞いも調べられている。
   \item \textbf{見当たらない}：perfectoid 版の分裂比と、有限被覆に対する変換公式（$\beta(S)\cap R = \beta(R)$ と次数の公式）。Fayolle の論文には数値的な不変量は現れず、CLMST にも splitting ratio の語は出てこない（検索の範囲で。網羅的な文献調査ではない）。
 \end{itemize}
 
@@ -338,7 +338,7 @@ F 純な $R$ の有限 Galois 被覆で、F 純性の中心の上で tame なも
 \paragraph{混標数の状況（追加）}
 \begin{itemize}
   \item Carvajal-Rojas--Ma--Polstra--Schwede--Tucker（arXiv:1908.01416）：剰余標数 $p>5$ の混標数で、2 次元の有理特異点（Gorenstein）は有理二重点で、正則スキームからの分裂する有限被覆をもつ。$E_8$ の被覆は次数 $120$ で穴あきスペクトル上エタール。$(0,3)$ では反例がある。具体例の供給源になる。
-  \item Bhatt--Ma--Patakfalvi--Schwede--Tucker--Waldron--Witaszek の perfectoid pure 論文：純な写像 $R\to S$ で $S$ が perfectoid pure なら $R$ も perfectoid pure（Lemma 4.6）。基本群の結果はない。
+  \item Bhatt--\allowbreak Ma--\allowbreak Patakfalvi--\allowbreak Schwede--\allowbreak Tucker--\allowbreak Waldron--\allowbreak Witaszek の perfectoid pure 論文：純な写像 $R\to S$ で $S$ が perfectoid pure なら $R$ も perfectoid pure（Lemma 4.6）。基本群の結果はない。
   \item 混標数の tame 基本群や Abhyankar 型の補題を扱った論文は見つからなかった（未確認）。
 \end{itemize}
 
@@ -499,6 +499,58 @@ $A = W(k)$、$D = \mathcal{O}_L$（$L/K$ は全分岐）、塔 $A_n = W(k)[p^{1/
   \item 剰余体が不完全な場合の導手・判別式公式（Abbes--Saito、Xiao、Kato）を確認する。
   \item 混標数 1 次元：Kummer 塔での $p^n\lambda_n$ の極限を、具体例（$\mathbb{Q}_p(\zeta_p)/\mathbb{Q}_p$、Artin--Schreier 型に相当する $p$ 次巡回拡大）で計算し、上付きの break との関係を求める。
   \item 混標数の高次元：Frobenius 同型がないので、命題 A の類似には perfectoid 化の塔（CLMST）での $\lambda_\infty$ を使う。$\Omega$ を FW 微分に置き換える必要があるか（\S\ref{sec:padic}）を、1 次元の計算と比べて判断する。
+\end{enumerate}
+
+\section{区切り：ここまでの成果と今後の計画（2026-10-11）}\label{sec:plan}
+
+\subsection{ここまでで分かったこと}
+\begin{enumerate}
+  \item \textbf{最上次の $\lambda$ は分岐を見ない。} 完全化・perfectoid 化の後では生成的にエタールな拡大は全て almost étale になり、$\eHK(\m;S) = [L:K]\,\eHK(\m;R)$ も分岐と無関係に成り立つ。基底のパラメータで測る長さは平坦性しか見ない（\S 2）。
+  \item \textbf{分岐を見る方法は二つ。} 分裂を数える（F-signature、perfectoid signature、F 分裂比）か、次の位数の係数を見る（命題 A）。
+  \item \textbf{標数 $p$ の具体的な結果。}
+  \begin{itemize}
+    \item 命題 A：$\lambda^{(1)}(\text{トレースの余核}) = \eHK(\m_A;A/(\Delta_{D/A}))$。系として、正則な基底の上で $\lambda^{(1)} = 0$ とエタール性が同値、特異な基底の quasi-étale 性が $\lambda^{(1)}$ の加法性で判定できる（\S\ref{sec:disc}）。
+    \item F 分裂比による中心に沿った被覆の次数の評価 $[\kappa(\beta_S):\kappa(\beta_R)]\le[\kappa(\n):\kappa(\m)]/r_F(R)$（Carvajal-Rojas--Stäbler Thm.~4.8 から直ちに出るが、文献には書かれていない。\S\ref{sec:p1}）。
+  \end{itemize}
+  \item \textbf{混標数で欠けているもの。} perfectoid 分裂比、分岐する被覆での $\beta(S)\cap R = \beta(R)$、命題 A の類似（Frobenius 同型の代わり）。
+  \item \textbf{$p$ 進 Hodge 理論・分岐理論との接点。} $\lambda_\infty$ は Faltings の道具で、perfectoid 化は Bhatt--Scholze のプリズマティックな構成。$\delta$ 構造（Frobenius 持ち上げ）が perfectoid 化と斎藤の FW 微分の共通の土台で、混標数で分岐を $\lambda$ 型の量で測るなら FW 微分が自然な候補（\S\ref{sec:padic}）。
+\end{enumerate}
+
+\subsection{今後の計画（段階ごと）}
+\paragraph{段階 1：すぐ確かめられること}
+\begin{enumerate}
+  \item 命題 A の細部（正規化の整合、余次元 $\ge2$ の部分の評価、判別式の推移律）を確認し、既知の結果かを文献で調べる。
+  \item 標数 $p$ の中心に沿った次数の評価を正確な主張にする（$r\le1$ の正規化、Galois の場合の tame 性との対応、分解群・惰性群の言葉への翻訳）。例（F 分裂な楕円曲線の錐、Artin--Schreier トーソル、非孤立な F 純特異点）で確かめる。
+  \item 混標数 1 次元：Kummer 塔での $p^n\lambda_n$ の極限を具体例（$\mathbb{Q}_p(\zeta_p)/\mathbb{Q}_p$ など）で計算し、上付きの break との関係を求める。
+\end{enumerate}
+\paragraph{段階 2：文献で決着をつけること}
+\begin{enumerate}
+  \item 剰余体が不完全な場合の導手・判別式公式（Abbes--Saito、Xiao、Kato の refined Swan 導手）。成り立つなら命題 A を「HK 重みつきの導手」の公式として述べ直す。
+  \item 斎藤の FW 微分の正確な定義と、perfectoid 化の塔の上での振る舞い。Ooe の F 特性サイクルの公式との比較。
+  \item Česnavičius--Scholze の純粋性、Bhatt の $R^+$ の CM 性の証明（$p$ 進 Riemann--Hilbert）の主張を確認し、付録 D の混標数の描像と結びつける。
+\end{enumerate}
+\paragraph{段階 3：研究課題}
+\begin{enumerate}
+  \item \textbf{perfectoid 分裂比}：対の perfectoid signature（CLMST 定義 8.5、Fayolle の対 $(R/\beta,\bar\phi)$）を使って定義し、正値性と有限被覆に対する変換公式を示す。最初の壁は、分岐する被覆での $\beta(S)\cap R = \beta(R)$（Fayolle の反例がどの仮定を破るかの確認から）。
+  \item \textbf{命題 A の混標数版}：CLMST の perfectoid 化の塔で、トレースの余核（あるいは FW 微分）の $\lambda_\infty$ の次の位数を求める。1 次元の Kummer 塔の計算を手がかりにする。
+  \item \textbf{導手・判別式公式の $\lambda$ 版}：特異点の上の野生分岐について、「位数 $1$ の $\lambda$ $=$ HK 重みつきの Swan 導手（特性サイクル）」の形の公式を目指す。
+\end{enumerate}
+\paragraph{段階 4：長期的な方向}
+\begin{itemize}
+  \item tilt を通した分岐の比較（Hattori）の、正規化長さの量への移植。
+  \item quasi-F 分裂の高さや perfectoid pure threshold と、ここでの数値不変量の関係。
+  \item 標数 $0$ の正規化体積（Xu--Zhuang の次数公式）との比較、lc 中心に沿った体積。
+  \item Serre の論文の Galois 降下の単純化（問題 4）。
+\end{itemize}
+
+\subsection{読むべき文献（優先順）}
+\begin{enumerate}
+  \item CLMST（perfectoid signature）：別トピックとして精読を始める。
+  \item Fayolle（Centers of perfectoid purity）§2、§6、§7。
+  \item Carvajal-Rojas--Stäbler §3--§4、Carvajal-Rojas--Fayolle §3、§6。
+  \item Blickle--Schwede--Tucker（F-signature of pairs）§3--§4。
+  \item 斎藤（FW 微分、余接束と微小台）、Ooe（F 特性サイクル）、Hattori（分岐理論と perfectoid）。
+  \item Česnavičius--Scholze、Bhatt（$R^+$ の CM 性）。
 \end{enumerate}
 
 \section{まとめと優先順位}

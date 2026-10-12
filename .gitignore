@@ -1,1 +1,11 @@
 /.lake
+
+# OS metadata and temporary TeX compilation output
+.DS_Store
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.out
+*.toc
+*.synctex.gz

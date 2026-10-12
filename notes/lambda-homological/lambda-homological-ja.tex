@@ -1,0 +1,430 @@
+% lualatex でコンパイルする（latexmk -lualatex）
+\documentclass[11pt,a4paper]{ltjsarticle}
+\usepackage{amsmath,amssymb,amsthm,mathrsfs}
+\usepackage[haranoaji]{luatexja-preset}
+\usepackage[margin=25mm]{geometry}
+\usepackage{booktabs,tabularx,array}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+
+\theoremstyle{plain}
+\newtheorem{question}{問い}
+\theoremstyle{definition}
+\newtheorem{definition}{定義}
+\theoremstyle{remark}
+\newtheorem*{remark}{注意}
+\theoremstyle{plain}
+\newtheorem*{proposition*}{命題}
+
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\Tor}{\operatorname{Tor}}
+\newcommand{\Ext}{\operatorname{Ext}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\pd}{\operatorname{pd}}
+\newcommand{\depth}{\operatorname{depth}}
+\newcommand{\eHK}{e_{\mathrm{HK}}}
+
+\sloppy
+\title{$\lambda$ 付きのホモロジー代数\\[2pt]\large 可換環論のホモロジー代数的手法は $\lambda$ 版に延びるか（検討ノート、草稿）}
+\author{梅崎直也}
+\date{2026年10月11日}
+\begin{document}
+\maketitle
+
+\section*{このノートの問い}
+
+実装の現在状態と引用境界の正本は \texttt{notes/status.md} である。このノートは研究課題の検討であり、形式化の到達点を示す資料ではない。
+
+可換環論には、平坦性、深さ、Cohen--Macaulay 性、Auslander--Buchsbaum の公式、局所コホモロジー、Koszul 複体、新交叉定理など、ホモロジー代数で表される一連の手法がある。OpenAI の Serre の正値性の論文と CLMST の perfectoid signature は、これらを「長さ関数 $\lambda$ で $0$ になるものを無視した形」で使っている。
+\begin{question}[根本的な問い]
+可換環論のホモロジー代数的手法は、長さ関数 $\lambda$ 付きの形（$\lambda$ で $0$ になる加群による Serre 商の中のホモロジー代数）に、どこまで系統的に延ばせるか。
+\end{question}
+このノートは、この問いの見取り図を作る。全体が検討段階で、記憶に基づく主張や推測には「未確認」「推測」と書く。関連する文書は、解説 \texttt{exposition-ja}（§3〜§6「共通抽象論と二つの実現」、付録 D「$\lambda$-平坦を主役にした整理の検討」）と、\texttt{notes/lambda-etale}（$\lambda$-エタールの検討ノート）、MathWithAI の \texttt{perfectoid-signature}（CLMST の精読記録）である。
+
+\section{almost と $\lambda$：何が違うか}
+
+\subsection{almost は長さを使わない}
+Gabber--Ramero の almost 数学は、$\m = \m^2$ かつ $\m\otimes\m$ が平坦という設定で、$\m$ で消される加群のなす Serre 部分圏による商である。この部分圏は局所化部分圏かつテンソルイデアルで、商関手は両側に随伴（$\m\otimes-$ と $\mathrm{alHom}(\m,-)$）をもち、recollement になる。三角圏では、冪等なイデアル $\m$（$\m\otimes^{\mathbf{L}}\m\cong\m$）による smashing な局所化である。必要なのはモノイダル構造と冪等な対象だけで、長さは要らない。
+
+\subsection{$\lambda$ は次元関数を足す}
+長さ付きアーベル圏は、$0$ でない対象で正の値をとる加法的な関数 $\lambda$（値は $[0,\infty]$）をもつアーベル圏である。$\lambda$ で $0$ になる対象のなす Serre 部分圏で割って得る。almost が「何を無視するか」だけを決めるのに対し、$\lambda$ は数を返す。perfectoid の場合は、
+\[
+  \text{加群の圏}\ \to\ \text{almost 加群の圏}\ \to\ \mathscr{A}_\lambda
+\]
+と粗くなり、後半の包含は真である（CLMST Lemma~4.0.13：$\lambda = 0$ からは $v$-almost zero しか出ない）。
+
+\subsection{$\lambda$ のほうが弱いことの利点と欠点}
+\begin{itemize}
+  \item \textbf{利点}：(i) 数を返すので、Euler 特性、重複度、正値性が書ける。(ii) almost の形の入力が得られない場面（標数 $p$ の完全化、Roberts の定理）でも $\lambda$ の形なら得られる。(iii) 塔の有限段と比べられる。
+  \item \textbf{欠点}：抽象的な長さは全加群に値を持つが、加法性を保証するのは $\m$ の固定した冪で消される加群だけなので、局所コホモロジーのような一つの冪で消えない加群を直接扱えない。解説の付録 D で「$\lambda$-平坦 $\Rightarrow$ $\lambda$-CM」が隙間として残ったのは、このためだと考えられる。定義域を有限生成部分加群の上限で延ばせば解消できる見込みがある（解説 付録 D「局所コホモロジーを経由する方法」）。
+\end{itemize}
+
+\section{他分野の対応物}
+
+長さ付きアーベル圏とホモロジー的評価に近い構造は、他の分野で確立している（以下は記憶に基づき、細部は未確認）。
+\begin{itemize}
+  \item \textbf{Lück の次元論}：有限 von Neumann 代数 $\mathcal{N}(G)$ 上の加群の次元を、有限生成射影加群から任意の加群へ「有限生成部分加群の上限」で延ばす。Faltings の正規化長さの三段階の定義と同じ形である。次元 $0$ の加群は Serre 部分圏をなす。
+  \item \textbf{Lück の近似定理}：$L^2$ Betti 数は、有限被覆の塔で被覆の次数で正規化した Betti 数の極限である。塔の段の長さを $p^{nd}$ で割って極限をとる $\lambda_\infty$ と同じ形である。
+  \item \textbf{次元平坦性}：従順群 $G$ について、$\mathcal{N}(G)$ は $\mathbb{C}[G]$ 上「次元平坦」（高次の Tor の次元が $0$）である。$\lambda$-平坦性の直接の類似。
+  \item \textbf{有理性の問題}：$L^2$ Betti 数の有理性（Atiyah の問題）には反例があり、Hilbert--Kunz 重複度にも無理数の例がある（Brenner）。
+  \item \textbf{Sylvester の階数関数}：環上の加群の階数関数（Malcolmson、Schofield、Jaikin-Zapirain）。
+  \item \textbf{三角圏の階数関数}（Chuang--Lazarev、Conde--Gorsky--Marks--Zvonareva）：三角圏 $\mathscr{T}$ の階数関数は、普遍的なホモロジー関手 $\mathscr{T}\to\mathrm{mod}\,\mathscr{T}$（Freyd の圏）を通して $\mathrm{mod}\,\mathscr{T}$ 上の加法的な関数と対応する、と理解している。「ホモロジー的評価 $+$ 長さ付きアーベル圏」とほぼ同じ構図である。
+\end{itemize}
+一般のアベル圏・三角圏には長さがないので、「長さ付きアーベル圏へのホモロジー的評価」を構造として与える、というのが Serre の解説の§3〜§6 の方法だった。三角圏の階数関数の理論は、その一般論として使える可能性がある。
+
+\section{古典的な手法の $\lambda$ 版：辞書}
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright}p{3.4cm}>{\raggedright}X>{\raggedright\arraybackslash}p{3.6cm}}
+\toprule
+古典的な手法 & $\lambda$ 版 & 状況 \\
+\midrule
+平坦性（正則な基底上） & $\lambda$-平坦：$\lambda\Tor^A_i(V,C) = 0$（有限長 $V$、$i>0$） & 解説 §4（$\lambda$-平坦な長さ付き代数）。$k$ で判定できる \\
+自由加群の階数 & ランク $r$：$\lambda(V\otimes_A C) = r\,\ell(V)$ & 解説 §4 \\
+深さ、CM 性 & $\lambda$-CM：任意のパラメータ系で $\lambda H_i(y;C) = 0$ & 解説 §4（$\lambda$-CM）。$\lambda$-平坦から出る見込み \\
+局所コホモロジー & $\lambda^{\mathrm{ext}}H^j_\m(C)$（定義域を延ばした $\lambda$） & 推測（解説 付録 D） \\
+Auslander--Buchsbaum & $\lambda\Tor^R_i(C,L) = 0$（$i>d-h$） & 解説 §4（$\lambda$ 版 Auslander--Buchsbaum、修正版は§3〜§6） \\
+新交叉定理・acyclicity lemma & 長さ $\le\dim$ の複体の高次の $\lambda$ が $0$ & 解説 §5（新交叉型の消滅） \\
+Serre の重複度公式 & $\lambda$-重複度 $= r\cdot e$ & 解説 §3〜§6 \\
+Kunz の定理（正則性の判定） & $\lambda\Tor_i^R(C,k) = 0$ $\Rightarrow$ 正則 & CLMST Lemma 4.1.2（Bhatt--Iyengar--Ma の $\lambda$ 版） \\
+Hilbert--Kunz 重複度 & $\lambda(C/IC)$ & CLMST、Serre の論文 \\
+Dutta 重複度 & $\lambda H_0(C\otimes G)$（短い複体 $G$） & Lech の論文 §5 \\
+直和因子定理・分裂 & 分裂を数える（signature 型） & $\lambda$ だけでは書けない（$\lambda$-エタールのノート方向 A） \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{問いのリスト}
+
+\begin{question}[$\lambda$-深さ]
+$\lambda$ 版の深さ $\depth_\lambda C$ を（$\lambda^{\mathrm{ext}}H^i_\m(C) = 0$ となる最大の範囲、あるいは $\lambda\Ext$ で）定義し、パラメータ系の取り方によらないこと、Auslander--Buchsbaum 型の公式 $\pd_\lambda + \depth_\lambda = \dim$ を示せるか。
+\end{question}
+
+\begin{question}[$\lambda$-平坦 $\Rightarrow$ $\lambda$-CM]
+局所コホモロジーを経由する CLMST の論法で、$\lambda$-平坦から任意のパラメータ系での $\lambda$-CM が出るか（解説 付録 D の見込み）。
+\end{question}
+
+\begin{question}[ホモロジー予想の $\lambda$ 版]
+新交叉定理、単項式予想（直和因子定理）、Serre の消滅予想（Roberts、Gillet--Soulé）、Dutta 重複度の正値性などについて、$\lambda$ 付きの形の主張と証明の枠組みがあるか。特に、$\lambda$-CM 代数の存在から機械的に出る主張の範囲はどこまでか。
+\end{question}
+
+\begin{question}[近似定理と有理性]
+Lück の近似定理の類似として、$\lambda_\infty$ の値が塔の有限段の量の極限として、どの程度一般に計算できるか。値の有理性（HK 重複度は無理数になりうる）について、$L^2$ 理論の手法が使えるか。
+\end{question}
+
+\begin{question}[三角圏の階数関数との関係]
+Serre の解説の「長さ付きアーベル圏へのホモロジー的評価」を、三角圏の階数関数（Freyd の圏の上の加法的関数）の言葉で書き直せるか。比較の議論（K 理論の降下）が、階数関数の一般論で扱えるか。
+\end{question}
+
+\begin{question}[分裂の構造]
+$\lambda$ だけでは書けない情報（分裂、純性、正則性の判定）を、$\lambda$ 付きの一般論にどう組み込むか（$\lambda$-エタールのノートの方向 A、F-signature、perfectoid signature）。
+\end{question}
+
+\section{一般論と入力の分離：CLMST \S 4 を例に}\label{sec:separation}
+
+目標は、証明を次の三層に分けることである。
+\begin{itemize}
+  \item \textbf{(G) 一般論}：公理（下の (N)(L)(F)(V)(K)）だけから、ホモロジー代数で出る定理。
+  \item \textbf{(B) 基底の古典的な可換環論}：ネーター局所環 $R$ そのものについての事実。$\lambda$ も $S$ も現れない。
+  \item \textbf{(P) 実現の検証}：具体的な $S$（perfectoid 化、完全化など）が公理を満たすことの確認。
+\end{itemize}
+最初に考えていた「一般論」と「環論の仮定への翻訳とその検証」の二つの分け方を、(B) と (P) に細かくしたものである。(B) は (G) の定理の仮定にも結論にも現れ、実現によらない。
+
+\subsection{抽象的な設定（案）}
+$(R,\m)$ は $d$ 次元のネーター局所環で、$A\subseteq R$ は正則な部分環、$R$ は $A$ 上の階数 $r$ の有限加群とする。$S$ は $R$ 代数（ネーター的でなくてよい）。次のデータと公理を考える。
+\begin{description}
+  \item[(N) 無視できる加群] $S$ 加群の圏の Serre 部分圏 $\mathcal{N}$ で、帰納極限で閉じるもの（例：$g$-almost zero）。
+  \item[(L) 長さ] $\m$ の冪で消される $S$ 加群の上の関数 $\lambda\ge0$。次を満たす。
+  \begin{itemize}
+    \item (L1) 短完全列で加法的。
+    \item (L2) 増大列の和で連続（CLMST Prop.~2.2.6）。
+    \item (L3) $\mathcal{N}$ の対象では $\lambda = 0$（CLMST Prop.~4.0.10）。
+  \end{itemize}
+  \item[(F) 平坦性] $S$ は $A$ 上 $\mathcal{N}$-平坦かつ $\mathcal{N}$-忠実（Thm.~4.0.3）。
+  \item[(V) 正規化] $\lambda(S/\m_A S) = r$（Prop.~4.0.14）。
+  \item[(K) 冪根] 元 $x_i^{1/p^n}\in S$ があり、Koszul 複体 $R_n = K(x^{1/p^n};S)$ について次の二つが成り立つ。
+  \begin{itemize}
+    \item $\lambda H_0(R_n) > 0$。
+    \item $R$ が正則でなければ、$n\gg0$ で $\Tor^R_{d+1}(R_n,k)\cong H_0(R_n)\otimes_k\Tor^R_{d+1}(k,k)$（BIM19 Thm.~5.2 Claim 5）。
+  \end{itemize}
+\end{description}
+
+\subsection{CLMST \S 4 の各主張の分類}
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright}p{3.2cm}>{\raggedright}X>{\raggedright\arraybackslash}p{3.6cm}}
+\toprule
+主張 & 層と使うもの & 備考 \\
+\midrule
+Cor.~4.0.4（CM の almost 版） & (G)：(F) と局所コホモロジーのスペクトル系列 & $\mathcal{N}$ で行う。$\lambda$ では解説 付録 D の隙間に当たる \\
+Lemma 4.0.7（$I_\infty$ の記述） & (G)：純性の判定（\S 2.1）と Cor.~4.0.4 & (B)：近似 Gorenstein \\
+Prop.~4.0.14（$\lambda(S/\m_A S) = r$） & (P) & isogeny、Frobenius、Euler 特性 \\
+Prop.~4.0.20（$e\ge1$） & (G)：(F)(V)(L1) & (B)：極限閉包、直和因子定理、MQS20 Thm.~9 \\
+Lemma 4.0.21、Prop.~4.0.22、4.0.23 & (G)：(L1)(L2)(V) と純性の定義 & F-signature の議論そのまま \\
+Cor.~4.0.18（$e\le$ 重複度） & (G) と (P) & 剰余体が有限なら \S 6 に依存 \\
+Lemma 4.1.2（$\lambda$ 版 Kunz） & (G)：(K) と Koszul の錐の長完全列 & (B)：非正則なら $\Tor_{d+1}(k,k)\ne0$（Serre）\\
+Prop.~4.1.3（正則 $\Leftrightarrow$ $\mathcal{N}$-平坦） & (G)：(F)、素イデアルの filtration、帰納極限 & $\mathcal{N}$ が必要（$R/P$ は有限長でない） \\
+Prop.~4.1.4（$e = 1$ $\Leftrightarrow$ 正則） & (G)：(V)(L)(K)、Cor.~4.0.4 & (B)：MQS20 Thm.~9（CM の判定） \\
+Cor.~4.1.5（$s = 1$ $\Leftrightarrow$ 正則） & (G)：不等式の連鎖 & \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsection{分けてみて分かること}
+\begin{enumerate}
+  \item \textbf{$\lambda$ だけでは足りず、$\mathcal{N}$ と $\lambda$ の組が要る。} Prop.~4.1.3 では、有限長でない $R/P$ との Tor を扱う。CM の almost 版（Cor.~4.0.4）では、一つの冪で消えない局所コホモロジーを扱う。どちらも $\lambda$ の定義域の外で、帰納極限で閉じた $\mathcal{N}$ が必要になる。一般論の枠組みは「Serre 部分圏 $\mathcal{N}$ と、それと整合する長さ $\lambda$」の組にするのがよさそうである。$\lambda^{\mathrm{ext}}$ が $\mathcal{N}$ の代わりになるのは、$\m$ 冪ねじれの加群の範囲だけである。
+  \item \textbf{(P) の入力は少ない。} (F)、(V)、(L3)、(K) の四つにまとまる。標数 $p$ の完全化では、Kunz の定理、HK 関数、Frobenius の冪根がそれぞれに当たり、どれも古典的である。混標数ではそれぞれが perfectoid の定理（André の平坦性補題、Prop.~4.0.14、Prop.~4.0.10）になる。
+  \item \textbf{(B) は $\lambda$ と独立に使える。} 極限閉包、直和因子定理、CM の判定（Cuong--Nhan、MQS）、Serre の正則性の判定はネーター環 $R$ の事実である。一般論の定理の仮定として、そのまま参照できる。
+  \item \textbf{(K) は性質が違う。} 他の公理は「$S$ が $A$ 上どう見えるか」で、(K) は「$S$ の中にパラメータの十分小さい冪根がある」という構造的な入力である。BIM の Claim 5 の証明（未確認）を読んで、より抽象的な条件（例えば、$x_i^{1/p^n}$ が $\Tor$ の上で $0$ として作用する）に置き換えられるかを確かめたい。
+\end{enumerate}
+
+\subsection{形式化への含意}
+Lean では、(G) を「$(\mathcal{N},\lambda)$ 付きの $S$ 加群」の一般論として、具体的な $S$ と独立に書ける。(B) は Mathlib の可換環論（一部は未整備）に頼る。(P) は perfectoid の重い入力で、当面は公理として仮定に置く。Serre の正値性の形式化での「長さ付き代数」の設計（解説 §3〜§6）と同じ方針である。
+
+\section{公理からの書き直し：CLMST \S 4 の検証}\label{sec:verify}
+
+\S\ref{sec:separation} の公理だけから CLMST \S 4 の主張が出るかを、一つずつ確かめる。結論を先に書くと、Cor.~4.0.18（\S 6 に依存するので扱わない）を除き、全て通った。途中で、公理を少し正確にする必要と、論文より弱い入力で済む箇所が見つかった。
+
+\subsection{設定と公理（精密化）}
+$(R,\m,k)$ は $d$ 次元のネーター局所環で、近似 Gorenstein とする。$A\subseteq R$ は正則局所環で、剰余体は $k$（CLMST の設定 $A = W(k)[[x_2,\dots,x_d]]$ ではそうなる）。$x = x_1,\dots,x_d$ は $A$ の正則パラメータ系、$R$ は $A$ 上有限で階数 $r\ge1$。$S$ は $R$ 代数とする。$\mathcal{M}$ を、$\m$ のある冪で消される $S$ 加群のなす圏とする。
+\begin{description}
+  \item[(N)] $\mathcal{N}\subseteq\mathrm{Mod}_S$ は Serre 部分圏で、帰納極限で閉じる。
+  \item[(L1)] $\lambda\colon\mathrm{Ob}\,\mathcal{M}\to[0,\infty]$ は短完全列で加法的。特に、部分商で単調。
+  \item[(L2)] $M\in\mathcal{M}$ が部分加群の増大列の和 $\bigcup_i M_i$ なら、$\lambda(M) = \sup_i\lambda(M_i)$。
+  \item[(L3)] $M\in\mathcal{M}\cap\mathcal{N}$ なら $\lambda(M) = 0$。
+  \item[(F)] 全ての $A$ 加群 $M$ と $i>0$ で $\Tor^A_i(M,S)\in\mathcal{N}$。
+  \item[(V)] $\lambda(S/\m_A S) = r$。
+  \item[(K)] \S\ref{sec:separation} のとおり（Lemma 4.1.2 だけで使う）。
+\end{description}
+\textbf{記法}：$f\colon M\to M'$ の核と余核が $\mathcal{N}$ に入るとき、$f$ を $\mathcal{N}$-同型と呼ぶ。(L1)(L3) より、$\mathcal{M}$ の中の $\mathcal{N}$-同型は $\lambda$ を保つ。核だけが $\mathcal{N}$ に入るなら $\lambda(M)\le\lambda(M')$。
+
+\textbf{有限性}：$\m$ 準素イデアル $J$ について $\lambda(S/JS)<\infty$。$\m_A^c\subseteq J$ を取ると、$A/\m_A^c$ の組成列から、$S/\m_A^cS$ の filtration で、各段が $S/\m_AS$ の商になるものができる。よって $\lambda(S/JS)\le\ell(A/\m_A^c)\,r$。
+
+\subsection{一般論の補題}
+\begin{proposition*}[G1：Koszul の単項式補題]
+$y = y_1,\dots,y_d\in R$ について $H_1(y;S)\in\mathcal{N}$ なら、$(y_1\cdots y_d)^{t-1}$ 倍の写像 $S/(y)S\to S/(y^t)S$ の核は $\mathcal{N}$ に入る。
+\end{proposition*}
+\begin{proof}
+$B = \mathbb{Z}[Y_1,\dots,Y_d]$ とし、$Y_i\mapsto y_i$ で $S$ を $B$ 加群とみる。$B$ 上で $B/(Y)\to B/(Y^t)$（$(\prod Y_i)^{t-1}$ 倍）は単射で、余核を $C_t = B/(Y^t,\prod Y_i^{t-1})$ とおく。$\otimes_BS$ をとると、求める核は $\Tor^B_1(C_t,S)$ の像である。$C_t$ は単項式イデアルの列で filtration をもち、各段は $B/(Y)$ に同型である。$K(Y;B)$ が $B/(Y)$ の自由分解なので $\Tor_1^B(B/(Y),S) = H_1(y;S)\in\mathcal{N}$。長完全列と Serre 性から $\Tor_1^B(C_t,S)\in\mathcal{N}$。
+\end{proof}
+これは CLMST Remark~4.0.5 の抽象版で、使うのは $H_1$ だけである。$y = x$ のとき、仮定は (F) から出る（$H_1(x;S) = \Tor_1^A(A/\m_A,S)$）。
+
+\begin{proposition*}[G2：$\mathcal{N}$-CM]
+(N)(F) のもとで、$R$ の任意のパラメータ系 $y$ と $i>0$ について $H_i(y;S)\in\mathcal{N}$。
+\end{proposition*}
+\begin{proof}
+$\check{C} = \check{C}(x;S)$ を Čech 複体とする。$x$ は $\m$ 準素イデアルを生成するので、$H^b(\check{C}) = H^b_\m(S) = \varinjlim_t\Tor^A_{d-b}(A/(x^t),S)$。(F) と (N) より、$b<d$ で $H^b_\m(S)\in\mathcal{N}$。
+
+$\check{C}\to S$ の錐は局所化 $S_{x_J}$（$J\neq\emptyset$）でできている。$(y)$ は $\m$ 準素なので、$x_j$ の冪が $(y)$ に入る。よって $K(y;S_{x_j})$ は非輪状で、$K(y;S)\simeq K(y)\otimes\check{C}$。この二重複体を Čech 方向から計算すると、$E_2 = H_a(y;H^b_\m S)\Rightarrow H_{a-b}(y;S)$ という有限なスペクトル系列を得る。
+
+$a-b = i>0$ のとき、$b = d$ なら $a = i+d>d$ なのでその項は $0$。$b<d$ なら $H^b_\m S\in\mathcal{N}$ の Koszul ホモロジーなので $\mathcal{N}$ に入る。$H_i(y;S)$ はこれらの部分商の有限回の拡大なので、$\mathcal{N}$ に入る。
+\end{proof}
+
+\begin{proposition*}[G3：純性]
+$I_\infty := \{z\in S\mid R\to S,\ 1\mapsto z\text{ が純でない}\}$ とおく。
+\begin{enumerate}
+  \item $\m S\subseteq I_\infty$、かつ $I_\infty = \bigcup_t(I_tS:u_t)$（増大列）。ここで $I_t$ は Gorenstein な $\m$ 準素イデアルの共終列、$u_t$ は socle の代表（Lemma 2.1.1、(B)）。各 $(I_tS:u_t)\supseteq\m S$。
+  \item $y\notin I$ なら $(IS:_Sy)\subseteq I_\infty$。
+\end{enumerate}
+\end{proposition*}
+\begin{proof}
+1：$z = \sum m_is_i$ なら $\phi(z) = \sum m_i\phi(s_i)\in\m$。$\m u_t\subseteq I_t$ より $\m\subseteq(I_tS:u_t)$。
+
+2：$zy\in IS$ で $1\mapsto z$ が純なら、$R/I\to S/IS$ は単射で、$y\mapsto zy = 0$。よって $y\in I$ となり矛盾する。
+\end{proof}
+
+\subsection{CLMST \S 4 の主張の検証}
+$s := \lambda(S/I_\infty)$、$e(J) := \lambda(S/JS)$、$e := e(\m)$ とおく（G3 の 1 より $S/I_\infty\in\mathcal{M}$）。
+
+\paragraph{Lemma 4.0.7（Gorenstein の場合）}
+$R$ が Gorenstein なら、任意のパラメータ系 $y$ について $I_\infty/((y)S:u)\in\mathcal{N}$。
+\begin{proof}
+$I_t = (y^t)$、$u_t = (\prod y)^{t-1}u$ とする。$z\mapsto zu$ は、$((y^t)S:u_t)$ から G1 の核 $K_t$ への写像を与え、その核は $((y)S:u)$ である。G2 より $H_1(y;S)\in\mathcal{N}$ なので $K_t\in\mathcal{N}$。G3 の 1 と (N)（帰納極限）を使う。\quad 依存：G1、G2、(N)、(B)。
+\end{proof}
+
+\paragraph{Prop.~4.0.20（$e\ge1$）} 通る。依存：(L1)(L3)(F)(V)、G1、(B)。
+\begin{proof}
+(B) より、$n\gg0$ で $(\m_AR)^{\lim} = (x^n):_R(\prod x)^{n-1}$。これは $\m$ 準素で、余長は $t\le r$。
+
+組成列の各段 $I_{j+1}S/I_jS$ は $S/\m S$ の商なので、$\lambda(S/(\m_AR)^{\lim}S)\le t\,e$。
+
+G1（$y = x$）より、$((x^n)S:(\prod x)^{n-1})/\m_AS\in\mathcal{N}$。これは $(\m_AR)^{\lim}S/\m_AS$ を含む。よって $r = \lambda(S/\m_AS) = \lambda(S/(\m_AR)^{\lim}S)\le te\le re$。
+\end{proof}
+
+\paragraph{Lemma 4.0.21} 通る。依存は (L1) と G3 の 2 だけ。組成列の各段に全射 $I_{j+1}S/I_jS\twoheadrightarrow S/I_\infty$ がある。
+
+\paragraph{Prop.~4.0.22（$s\le1$）} 通る。依存：Lemma 4.0.21、(V)、(B)。(B) の部分は $n = \ell_R(R/\m_AR) = \dim_k R/\m_AR\ge\mu_A(R)\ge r$ で、剰余体が等しいことを使う。一般には $[k:k_A]$ の補正が入る。
+
+\paragraph{Prop.~4.0.23} 通る。$\ge$ の向きでは、$S/\m S$ の中で (L2) を使う。$\lambda(S/\m S)\le r<\infty$ なので引き算ができ、$\lambda(S/\bigcup J_t) = \inf_t\lambda(S/J_t)$ となる。あとは $S/(I_tS:u_t)\cong(I_t+(u_t))S/I_tS$。Gorenstein の場合は Lemma 4.0.7 と (L3) を使う。
+
+\paragraph{Lemma 4.1.2} 通る。依存：(L1)、(K)、(B)。
+\begin{proof}
+錐の長完全列による帰納法は (L1) だけで通る。$\Tor$ は $\m$ で消されるので $\mathcal{M}$ に入る。非正則なら $\Tor^R_{d+1}(k,k)\neq0$ である（Tate：非正則なら Betti 数は全て正、(B)）。(K) と合わせて矛盾。
+\end{proof}
+
+\paragraph{Prop.~4.1.3} 通る。
+\begin{itemize}
+  \item 正則 $\Rightarrow$ $\mathcal{N}$-平坦：依存は (F)、(N)、(B)。(B) の部分は、大域次元が $d$、$R$ が $A$ 上自由、going-down により $P$ が $(P\cap A)R$ 上極小であること。
+  \item $\mathcal{N}$-忠実：Prop.~4.0.20 と (L3) から $S/\m S\notin\mathcal{N}$。有限生成の $M\ne0$ は $k$ に全射するので $M\otimes S\notin\mathcal{N}$。一般の $M$ は、有限生成部分加群と $\mathcal{N}$-平坦性から出る。
+  \item 逆向き：(L3) と Lemma 4.1.2。
+\end{itemize}
+
+\paragraph{Prop.~4.1.4（$e = 1\Leftrightarrow$ 正則）} 通る。
+\begin{itemize}
+  \item $\Leftarrow$：$\mathcal{N}$-平坦性から各段が $S/\m S$ と $\mathcal{N}$-同型。よって $r = re$。
+  \item $\Rightarrow$、CM 性：Prop.~4.0.20 の議論から $t = r$。Cuong--Nhan / MQS（(B)）により CM。
+  \item $\Rightarrow$、$\lambda$-消滅：$x$ は $R$ 正則列なので、$\Tor^R_i(R/\m_AR,S) = H_i(x;S) = \Tor^A_i(A/\m_A,S)\in\mathcal{N}$。\textbf{(F) だけで足りる}（論文は Cor.~4.0.4 を引くが、G2 は不要）。各段の $\lambda$ は $1$ 以下で総和が $r$ なので、全て $1$。長完全列で $\lambda\Tor_1^R(S,R/I_j) = 0$ を帰納的に示す。$N = \m/\m_AR$ による帰納法で全ての $i$ に延ばし、Lemma 4.1.2 を使う。
+\end{itemize}
+
+\paragraph{Cor.~4.1.5（$s = 1\Leftrightarrow$ 正則）} 通る。
+\begin{itemize}
+  \item $\Leftarrow$：$y$ を $\m$ の正則パラメータ系、$u = 1$ として Lemma 4.0.7 を使う。必要な $H_1(y;S)\in\mathcal{N}$ は、G2 の代わりに Prop.~4.1.3（$\mathcal{N}$-平坦性）からも出る。
+  \item $\Rightarrow$：$r\ge e+(n-1)s\ge n\ge r$ の不等式の連鎖。
+\end{itemize}
+
+\subsection{検証から分かったこと}
+\begin{enumerate}
+  \item \textbf{CLMST \S 4 の (G) の部分は、公理から機械的に再現できた。} (P) の入力は (F)(V)(L3)(K) だけである。
+  \item \textbf{$\mathcal{N}$-忠実性（Thm.~4.0.3 (b)）は、ここでは使わなかった。} $R$ 上の忠実性は、Prop.~4.0.20 から出る。
+  \item \textbf{G2（$\mathcal{N}$-CM）が要るのは Lemma 4.0.7 の Gorenstein の場合だけ。} それも Prop.~4.0.23 の後半と、正則の場合の Cor.~4.1.5 だけで、後者は G2 なしで済む。主定理の同値は、$A$ のパラメータ系 $x$ についての (F) だけで通る。
+  \item \textbf{G1 が技術的な要。} 「単項式イデアルに帰着して Koszul の $H_1$ だけを使う」という形で、Remark~4.0.5 と Prop.~4.0.20 の almost な議論を一般化している。
+  \item \textbf{$\mathcal{N}$ が本当に要る箇所}は三つ。G2（局所コホモロジー）、Lemma 4.0.7（帰納極限）、Prop.~4.1.3（$R/P$ との Tor と帰納極限）。それ以外は、(F) を入力として受け取れば $\lambda$ だけで済む。
+  \item \textbf{(B) で隠れていた仮定}：剰余体 $k_A = k$（Prop.~4.0.22、4.1.4、4.1.5）。
+  \item \textbf{未検証}：Cor.~4.0.18（\S 6）と、(K) を抽象化できるか（BIM19 Claim 5）。
+\end{enumerate}
+
+\section{公理 (K) の抽象化：BIM19 \S 5 を読む}\label{sec:K}
+
+CLMST Lemma 4.1.2 は、Bhatt--Iyengar--Ma（BIM19、arXiv:1803.03229）の Thm.~5.2 の変種である。BIM の証明を読み、\S\ref{sec:separation} の (K) を一般論と入力に分ける。
+
+\subsection{BIM19 の構成}
+\begin{itemize}
+  \item \textbf{Thm.~2.1（一般論）}：$(R,\m,k)$ をネーター局所環、$S$ を $R$ 代数、$J\subseteq S$ を $\m S\subseteq J$ かつ $d := \mathrm{fd}_S(S/J)<\infty$ となるイデアル、$U$ を $JU\ne U$ となる $S$ 加群とする。このとき、$i = s,\dots,s+d$ で $\Tor^R_i(U,M) = 0$ なら $\Tor^R_{s+d}(k,M) = 0$。
+
+  証明：$V = (S/J)\otimes^{\mathbf L}_SU$ とおく。$R$ は $V$ に $k$ を通して作用するので、$V\otimes^{\mathbf L}_RM\simeq V\otimes_k(k\otimes^{\mathbf L}_RM)$。Künneth の公式で $H_0(V) = U/JU\neq0$ の項を取り出す。
+  \item \textbf{Thm.~4.1}：perfectoid な $A$ について、$J = \sqrt{(x)A}$ とすると $\mathrm{fd}\le n+1$（Lemma 3.7）。Thm.~2.1 を使う。
+  \item \textbf{Thm.~4.7}：$p$ 進版の Kunz の定理。$R$ が正則であることと、perfectoid な $A$ への忠実平坦な $R\to A$ があることは同値。
+  \item \textbf{Thm.~5.2、5.3、Cor.~5.7}：almost 版。Tor が almost zero なら正則。付値条件 5.1 を仮定する。
+\end{itemize}
+
+\subsection{Thm.~5.2 の証明の構造}
+$g_1 = p$ とし、$g_i$ は $p$ 冪根の整合系 $g_i^{1/p^n}$ をもつ元で、$(g) = (f)$（$f$ は $\m$ の根基生成系）となるものとする。$A_n = K(g^{1/p^n};A)$ は dg $A$ 代数で、$y_{n,i}\mapsto g_i^{1/p^n-1/p^{n+1}}y_{n+1,i}$ で $A_n\to A_{n+1}$ が定まる。$A_\infty = \varinjlim A_n$ とおく。
+\begin{description}
+  \item[Claim 2] Tor の消滅は、$d$ 回の錐を通して $A_n$ に移る（一般論）。
+  \item[Claim 3] $H_{>0}(A_\infty) = 0$、$H_0(A_\infty) = A/(g^{1/p^\infty}) = (A/\m A)_{\mathrm{perf}}$。ここで perfectoid 性を使う。$A/\sqrt{pA}$ が完全環であることと、完全環の Lemma 3.2 による。
+  \item[Claim 4] $R[X]$ を $k$ の Tate の resolvent（$X_i$ は有限、$R$ のネーター性を使う）とする。dg 写像 $R[X]\to A_\infty\simeq H_0(A_\infty)$ があり、$n\gg0$ で $A_n$ を通る。$A_n$ は次数 $[0,d]$ にあるので、$X_{>d}$ の行き先は $0$ になり、有限個の $X_i$ だけが問題になる（一般論）。
+  \item[Claim 5] $\Tor^R(A_n,M)\cong H(A_n)\otimes_k\Tor^R(k,M)$（一般論）。$A_n$ は dg $R[X]$ 加群になり、$H(R[X]) = k$ が体なので Künneth が使える。
+  \item[Claim 1] Claim 5 から、$H_0(A_n) = A/(g^{1/p^n})$ は almost zero でなければならない。これは付値条件と矛盾する。
+\end{description}
+
+\subsection{なぜ Thm.~2.1 では足りないのか}
+$\lambda$ で議論する場合も、BIM が almost で議論する場合も、同じ二律背反がある。
+\begin{itemize}
+  \item Thm.~2.1 には \textbf{有限平坦次元}が要る。perfectoid 環でそれが言えるのは根基 $J = \sqrt{(x)S} = (x^{1/p^\infty})$ のときである。
+  \item 矛盾を出すには、検出する加群が\textbf{無視できない}必要がある。ところが $S/(x^{1/p^\infty})$ は、almost の意味では $0$（$\sqrt{pS}$ で消える）で、$\lambda$ でも $0$ である（任意の $n$ で $\lambda(S/(x^{1/p^\infty}))\le\lambda(S/(x^{1/p^n})) = r/p^{nd}$）。
+  \item 有限段 $n$ の $S/(x^{1/p^n})$ は無視できないが、有限平坦次元をもたない。
+\end{itemize}
+Claims 3--5 はこの間をつなぐ。極限 $A_\infty$ で次数 $0$ への集中（有限平坦次元の代わり）を確かめ、dg 写像を有限段 $A_n$ に降ろして、そこで Künneth を使う。
+
+\subsection{(K) の精密化}
+\begin{description}
+  \item[(K1)] $R$ の元 $g_1,\dots,g_d$（CLMST では $x$）の像が $S$ の中で $p$ 冪根の整合系 $g_i^{1/p^n}$ をもち、$\m\subseteq\sqrt{(g)R}$。
+  \item[(K2)] 推移写像 $y_i\mapsto g_i^{1/p^n-1/p^{n+1}}y_i$ による $\varinjlim_nK(g^{1/p^n};S)$ は正の次数で非輪状で、$H_0 = S/(g^{1/p^\infty})$ は $\m$ で消される。
+  \item[(K3)] 全ての $n$ で $\lambda\bigl(S/(g^{1/p^n})S\bigr)>0$。
+\end{description}
+\begin{proposition*}[(G)：Claims 4、5 の一般化]
+$(R,\m,k)$ をネーター局所環とし、(K1)(K2) を仮定する。$R$ が正則でなければ、$n\gg0$ で $\Tor^R_{d+1}(K(g^{1/p^n};S),k)$ は $H_0 = S/(g^{1/p^n})$ の $\beta_{d+1}(k)>0$ 個の直和を直和因子に含む。
+\end{proposition*}
+証明は BIM の Claims 4、5 をそのまま使う。dg 代数の言葉が要るが、使うのは $R$ のネーター性と $K(g^{1/p^n};S)$ の振幅が $[0,d]$ であることだけである。Lemma 4.1.2 は、この命題と (K3)、(L1) と、錐の帰納法で出る。
+\begin{itemize}
+  \item \textbf{CLMST の実現}：(K1) は $A_\infty\subseteq S$ から出る。(K2) は BIM の Claim 3 で、CLMST の脚注によれば付値条件は使わない（$p$ 捻れのない場合への帰着は要確認）。(K3) は Prop.~4.0.14 から出る。
+  \item \textbf{標数 $p$ の実現}（$S = R_{\mathrm{perf}}$、$g = x$）：(K2) は完全環についての BIM Lemma 3.2 から出る。(K3) は Hilbert--Kunz 関数の正値性から出る。
+\end{itemize}
+(K2) は「冪根の Koszul 塔が極限で正則列のように振る舞う」という条件で、lim CM 列（BHM）や perfectoid 塔（Ishiro--Shimomoto）と同じ系統の条件に見える。この関係は、BHM を読むときに確かめる。
+
+\section{解説の公理系との統合}\label{sec:merge}
+
+Serre の解説（\S 3「共通の抽象論」、\S 4「長さ付き代数」）の公理と、ここでの (N)(L)(F)(V)(K) を段階に並べる。
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright}p{2.6cm}>{\raggedright}X>{\raggedright\arraybackslash}p{4.2cm}}
+\toprule
+段階 & 公理 & 出るもの \\
+\midrule
+0：長さ付き代数 & (L1)：$J$-冪ねじれ加群の上の加法的な $\lambda$（解説「長さ関数」「長さ付き代数」の定義） & Serre 商 $\mathcal{A}_\lambda$、長さ付きアーベル圏、Euler 評価（解説 \S 3） \\
+1：$\lambda$-平坦、$\lambda$-CM & $\lambda\Tor^A_i(k,C) = 0$、ランク $r$。あるいは任意のパラメータ系での $\lambda$-消滅（解説「$\lambda$-平坦性とランク」「$\lambda$-CM」の定義） & Serre の正値性の議論（解説の perfect 複体での評価、ランク無視の圏での評価、核の場合の証明） \\
+2：無視できる加群 & (N)、(L3)、(F)、(V) & 段階 1 が出る。(F)(L3)(V) から $\lambda$-平坦でランク $r$、G2 と (L3) から $\lambda$-CM。解説 付録 D の隙間（$\lambda$-平坦 $\Rightarrow$ $\lambda$-CM）は、$\lambda$-平坦性が $\mathcal{N}$-平坦性から来る場合には埋まる \\
+3：連続性と純性 & (L2)、近似 Gorenstein & signature の理論（Lemma 4.0.21--Prop.~4.0.23） \\
+4：冪根 & (K1)--(K3) & 正則性の判定（Lemma 4.1.2--Cor.~4.1.5） \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\paragraph{注意}
+\begin{enumerate}
+  \item \textbf{段階 2 は段階 1 より真に強い。} 標数 $p$ で $R$ が CM でないとき、$R_{\mathrm{perf}}$ は $A$ 上平坦ではない。$\lambda$-CM 性は Roberts の定理（$\lambda$ だけの主張）から出るが、帰納極限で閉じた $\mathcal{N}$ で $A$ 上 $\mathcal{N}$-平坦にする自然な候補は見当たらない（未確認）。Serre の正値性では、段階 1 だけで足りる一般性が要る。
+  \item \textbf{塔と整合する長さ}（解説「塔と整合する長さ」の定義）は、(L2) と同じ種類の連続性（上限の性質）を含む。段階 3 の (L2) は、解説の (ii)「上限の性質」と、有限値での引き算から出るはずである。
+  \item \textbf{lim CM 列}（型 (iii)、BHM）は、列の Serre 商の上の段階 1 である（解説の付録「先行研究との関係」）。段階 2 の $\mathcal{N}$ に当たるものが列の側にあるかは、BHM を読むときの問いになる。
+\end{enumerate}
+
+\section{後続研究の調査（2026-10-11）}\label{sec:followup}
+
+CLMST、BIM19、BHM を引用している研究と、その周辺を調べた。引用リストは Semantic Scholar（CLMST 23 件、BIM19 42 件）、要旨は arXiv で確認した。BHM の引用リストは取得できず、arXiv の全文検索も使えなかったので、網羅的ではない。本文まで確認したのは OpenAI の 3 本と Ishiro--Shimomoto の Thm.~3.17 だけで、他は要旨による。
+
+\subsection{このノートの枠組みに直接関係するもの}
+\begin{itemize}
+  \item \textbf{OpenAI, Lech's multiplicity conjecture}（openai/math、2026-09-23）。Thm.~2.1 は短い自由複体の $H_0$ の下界で、ここでの公理系とよく似た形をしている。$C$ は非ネーター的でよく、$I = (z_1,\dots,z_h)$、$\lambda$ は $I$-冪ねじれ加群の上の加法的な関数とする。仮定は次のとおり（本文で確認）。
+  \begin{itemize}
+    \item $0<\lambda(C/I)<\infty$、$\lambda(C/(z^a)) = a^h\lambda(C/I)$、$\lambda H_i(z^a;C) = 0$（$i>0$）。
+    \item \textbf{共通の $I$ の冪で消される長さ $0$ の加群の直和と filtered colimit は長さ $0$}。
+  \end{itemize}
+  長さ $0$ の加群の Serre 商で議論し、有限のスペクトル系列と filtration を使う。最後の仮定は \S\ref{sec:merge} の段階 1 と段階 2 の中間にある（段階 1.5）。帰納極限で閉じるが、それは冪ねじれの指数が有界な範囲に限られる。局所コホモロジーや $R/P$ との Tor は扱わず、$A$ のパラメータの冪の Koszul だけを使うので、段階 2 の $\mathcal{N}$ は要らない。$\lambda_\infty$ についてこの仮定を確かめる Lemma 3.2 は、上限の性質（\S\ref{sec:verify} の (L2)）から出している。
+  \item \textbf{OpenAI, Positivity of Serre's Intersection Multiplicity}（\S 4.3）。列の圏の Serre 商と超極限の長さを使い、BHM Thm.~6.1 と Ishiro--Shimomoto Thm.~3.17 を「有限加群を通る条件付きの経路」と位置づけている。
+  \item \textbf{OpenAI, A Complete Local Domain without a Small Cohen--Macaulay Module}。小さい CM 加群のない 3 次元完備正規局所 $\mathbb{C}$ 整域を作り、整域についての小さい CM 加群の予想を否定する。lim CM 列や弱い lim Ulrich 列を否定するものではない。BHM の「単独の加群ではなく列」という方針を支持する例になっている。
+  \item \textbf{Ishiro--Shimomoto}（arXiv:2509.06527）。perfectoid 塔があれば、その段が lim CM 列（代数の列）になる（Thm.~3.17、tilt と BHM を使う）。系として、$R/p$ が被約な $\delta$ 環にも成り立つ（Cor.~3.18）。\S\ref{sec:K} の (K2) との関係を見るのに最適である。
+\end{itemize}
+OpenAI の 3 本は GitHub 上のプレプリントで、査読を経ていない。
+
+\subsection{lim CM・lim Ulrich の系列}
+\begin{itemize}
+  \item Ma, Lim Ulrich sequences and Lech's conjecture（arXiv:2005.02338、Invent.\ Math.\ 2023）：弱い lim Ulrich 列を導入し、Lech の予想を標準次数付きの場合に示した。
+  \item Iyengar--Ma--Walker（arXiv:2104.10140、ANT 2022）：短い複体の重複度。その Conj.~8.1（Dutta 重複度 $\ge e$）は、OpenAI の Lech の論文の Cor.~5.4 で、標数 $p$ の完備整域の場合が示された。後続として Boij--Söderberg 錐（2023）、2 次元の Ulrich 加群（arXiv:2510.02698）がある。
+  \item Yhee（arXiv:2104.05766）：弱い lim Ulrich 列をもたない 2 次元の（正規でない）完備局所整域。
+  \item Hochster の解説 \emph{Homological conjectures and lim Cohen--Macaulay sequences}（本人の web ページ、未読）。
+\end{itemize}
+
+\subsection{CLMST の系列}
+\begin{itemize}
+  \item \textbf{CLMST の未解決問題}（Q~4.0.19 の $(1/d!)e\le e_{\mathrm{perfd}}$、選び方への依存）に答えた論文は見つからなかった。
+  \item perfectoid 純性：Bhatt--Ma--Patakfalvi--Schwede--Tucker--Waldron--Witaszek（arXiv:2409.17965）、Fayolle（arXiv:2504.15569、中心）、Yoshikawa（arXiv:2502.06108、quasi-F 分裂）、Ishizuka--Yoshikawa（arXiv:2604.25265）、Baily--Dovgodko--Simpson--Westbrook（arXiv:2504.02966、変形）。
+  \item BCM 閾値・plus-pure 閾値：Cai--Pande--Quinlan-Gallego--Schwede--Tucker（arXiv:2501.07528）、Rodríguez-Villalobos--Schwede（arXiv:2501.16773）、Benozzo ほか（arXiv:2509.07217）、Yamaguchi（arXiv:2605.22419）、Iwane（arXiv:2609.02561）。
+  \item 基本群・分岐：Carvajal-Rojas--Fayolle（arXiv:2308.02660、標数 $p$）、Zelich（arXiv:2603.17760、分岐の純粋性）。混標数の局所基本群の新しい有限性定理は見つからなかった。
+\end{itemize}
+
+\subsection{BIM19 の系列（正則性の判定）}
+\begin{itemize}
+  \item Ma--Schwede（arXiv:1810.08172）：alteration による Kunz 型の判定。
+  \item Ishizuka--Nakazato（arXiv:2402.06207）：プリズマティックな Kunz の定理。
+  \item Hayashi（arXiv:2605.27337）：perfectoid 塔への平坦写像による正則性の判定。perfectoid 代数との一つの Tor の消滅で判定する。
+  \item Asgharzadeh--Ishizuka（arXiv:2607.17801）：perfectoid 代数による射影次元・入射次元の検出。Gorenstein、CM、正則の判定。BIM19 の最も直接的な拡張に見える。
+\end{itemize}
+
+\subsection{ここでの問いとの関係}
+\begin{enumerate}
+  \item OpenAI の Lech の論文の Thm.~2.1 は、段階 1.5 の公理系の実例である。CLMST \S 4 の書き直し（\S\ref{sec:verify}）では段階 2 が三箇所で要った。それらを段階 1.5 で済ませられるかが次の問いになる。Prop.~4.1.3 の正則 $\Rightarrow$ $\mathcal{N}$-平坦は、$R/P$ を使うので難しそうである。
+  \item Ishiro--Shimomoto の Thm.~3.17 と (K2) を比べる。perfectoid 塔の段が lim CM になることと、冪根の Koszul の極限が非輪状であることは、同じ現象の二つの見方かもしれない（推測）。
+  \item Hayashi と Asgharzadeh--Ishizuka は、Lemma 4.1.2 型の判定（一つの Tor）を $\lambda$ なしで扱っている。$\lambda$ 版との比較は今後の課題。
+\end{enumerate}
+
+\section{次の一歩}
+\begin{enumerate}
+  \item 解説 付録 D の「$\lambda$-平坦 $\Rightarrow$ $\lambda$-CM」の見込みを確かめる（$\lambda^{\mathrm{ext}}$ の性質、スペクトル系列の構成）。成り立てば、解説と形式化の両方で $\lambda$-CM の仮定を外せる。
+  \item $\lambda$-深さの定義を試み、Auslander--Buchsbaum 型の公式の $\lambda$ 版を検討する。
+  \item 他分野の対応物（Lück の次元論と近似定理、Sylvester の階数関数、三角圏の階数関数）の文献を確認し、使える一般論を拾う。
+  \item \S\ref{sec:merge} の段階 2 に当たるものが、標数 $p$ の完全化や lim CM 列の側にあるかを調べる。(K2) と lim CM 列・perfectoid 塔の関係を、BHM と Ishiro--Shimomoto で確かめる。
+\end{enumerate}
+
+\end{document}

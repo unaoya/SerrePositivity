@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.Inputs.Unmixedness
+public import SerrePositivity.CommutativeAlgebra.Unmixedness
 public import Mathlib.RingTheory.KrullDimension.Regular
 public import Mathlib.RingTheory.KrullDimension.NonZeroDivisors
 public import Mathlib.RingTheory.Ideal.AssociatedPrime.Finiteness

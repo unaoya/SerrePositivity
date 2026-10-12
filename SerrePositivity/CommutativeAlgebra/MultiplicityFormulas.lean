@@ -3,7 +3,7 @@ module
 public import SerrePositivity.CommutativeAlgebra.HilbertSamuel
 public import SerrePositivity.CommutativeAlgebra.ParameterPowerMultiplicity
 public import SerrePositivity.CommutativeAlgebra.KoszulMultiplicityProof
-public import SerrePositivity.Inputs.RegularLocalRing
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing
 
 /-!
 # パラメータイデアルの重複度公式

@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.LengthAlgebra.OrdinaryKoszulEuler
+
 public import SerrePositivity.LengthAlgebra.Comparison
 public import SerrePositivity.PerfectComplex.K0Functoriality
 public import SerrePositivity.Paper.Lemma3_5.Normalized
@@ -124,7 +126,8 @@ variable [IsRegularLocalRing A] [Module.Finite A T]
 
 include hz' hdim in
 /-- 正則局所環の正則パラメータ系 `z` の Koszul 複体は `A/(z) = k` の分解である。A1（`z` は弱正則列、
-`Inputs/RegularLocalRing.lean`）と Koszul 複体の完全性（`CommutativeAlgebra/KoszulResolution.lean`）
+`CommutativeAlgebra/RegularLocalRing.lean`）と Koszul 複体の完全性
+（`CommutativeAlgebra/KoszulResolution.lean`）
 による。3.5b の両側が共通に使う。 -/
 lemma isKoszulResolution_of_regular : IsKoszulResolution z :=
   isKoszulResolution_of_isWeaklyRegular z (isWeaklyRegular_of_span_eq_maximalIdeal A z hz' hdim)
@@ -215,10 +218,8 @@ theorem lemma_3_5c (P : PerfSupp T (algebraMap A T ∘ z)) :
       LengthAlgebra.koszulEuler lam (algebraMap T C ∘ algebraMap A T ∘ z) := by
     rw [heq, LengthAlgebra.koszulEuler_eq_length_quotient lam (algebraMap A C ∘ z) hkz, hq,
       ENNReal.toReal_natCast]
-    change lambdaEuler (NormalizedLength.ordinary T) _ = _
-    rw [← chiOrd_eq_lambdaEuler_ordinary,
-      ← chiOrd_eq_of_homotopyEquiv (HomotopyEquiv.ofIso (baseChangeKoszulIso (algebraMap A T) z)),
-      chiOrd_baseChange_koszulComplex hres, koszulEulerChar_eq_finrank A T z hz' hdim]
+    rw [ordinary_koszulEuler_eq_koszulEulerChar z hres,
+      koszulEulerChar_eq_finrank A T z hz' hdim]
   -- 比較定理の適用。降下は Theorem 3.1 の帰結を有限射影 K₀ へ移したもの
   have key := LengthAlgebra.perfectEuler_conjSum_eq (algebraMap A T) (RingHom.id T)
     (algebraMap T C) (NormalizedLength.ordinary T) lam Submodule.fg_bot

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.AdicFilteredComplex
+public import SerrePositivity.CommutativeAlgebra.AdicFilteredLength
 public import SerrePositivity.CommutativeAlgebra.AdicTermEuler
 public import SerrePositivity.CommutativeAlgebra.FiniteLengthComplexEuler
 

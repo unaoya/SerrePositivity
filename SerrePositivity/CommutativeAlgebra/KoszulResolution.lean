@@ -63,7 +63,7 @@ variable {R : Type u} [CommRing R]
 
 /-- `K(x; R)` が `R/(x)` の分解であること：`0` 以外の次数でホモロジーが零で、`0` 次のホモロジーは
 `R/(x)`（`x` の生成するイデアルによる商環）と線形同型。同型を `Nonempty` で包んでいるので `Prop`
-である。正則局所環の正則パラメータ系についてはこれが成り立つ（A1、`Inputs/RegularLocalRing.lean`
+である。正則局所環の正則パラメータ系についてはこれが成り立つ（A1、`CommutativeAlgebra/RegularLocalRing.lean`
 から `isKoszulResolution_of_isWeaklyRegular` で）が、Lemma 3.5b の証明はこの性質だけを使うので、
 仮定としてこの形で受け取る。 -/
 structure IsKoszulResolution {n : ℕ} (x : Fin n → R) : Prop where
@@ -232,7 +232,7 @@ theorem isKoszulResolution_succ {n : ℕ} (x : Fin (n + 1) → R)
 
 /-- **Koszul 複体の完全性**：`x` が弱正則列なら `K(x; R)` は `R/(x)` の分解である。`n` についての
 帰納法で、`isWeaklyRegular_init_and_isSMulRegular_last` で仮定を分解し、`isKoszulResolution_succ` を
-使う。正則局所環の正則パラメータ系は弱正則列（A1、`Inputs/RegularLocalRing.lean`）なので、
+使う。正則局所環の正則パラメータ系は弱正則列（A1、`CommutativeAlgebra/RegularLocalRing.lean`）なので、
 Lemma 3.5b の前提 `IsKoszulResolution z` がここから出る。 -/
 theorem isKoszulResolution_of_isWeaklyRegular {n : ℕ} (x : Fin n → R)
     (hx : RingTheory.Sequence.IsWeaklyRegular R (List.ofFn x)) : IsKoszulResolution x := by

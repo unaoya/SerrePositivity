@@ -1,5 +1,7 @@
 # Serre の交点重複度の正値性（OpenAI math 193）：調査メモ
 
+> 数学的な解説・調査記録。記載日の仮定・証明方針を保持し、現在のLean実装と未証明状態は [status.md](status.md) を正本とする。
+
 2026-10-07 作成。原本は Claude Doc（https://claude.ai/code/artifact/d6a6ee1c-2a1d-4a8f-87e5-45a3dcd889d4）。これはその写しで、図は文章に置き換えている。
 
 ## 論文と主張

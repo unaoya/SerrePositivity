@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Paper.Section5.LengthAlgebraPositivity
 public import SerrePositivity.Paper.Section4.SupportedDescent
 public import SerrePositivity.Paper.Section4.LengthHypotheses
-public import SerrePositivity.Inputs.RegularLocalRing
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing
 
 /-! # 正則基底と幾何的群作用における長さ代数の正値性
 

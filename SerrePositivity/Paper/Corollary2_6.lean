@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Inputs.LengthAlgebra
-public import SerrePositivity.Inputs.RegularLocalRing
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing
 public import SerrePositivity.CommutativeAlgebra.LocalAlgebra
 public import SerrePositivity.IntersectionMultiplicity.NormalizedTor
 public import SerrePositivity.Paper.Section2.Corollary2_6
@@ -23,7 +23,7 @@ Theorem 2.5 の長さ代数 `(C_D, λ_D)` について、有限長 `A` 加群 `V
 （`IntersectionMultiplicity/NormalizedTor.lean`）を、`z = t`（`A` の正則パラメータ系）、
 `r = rank_A D` に適用する。(3.9) に当たる仮定は Theorem 2.5 の (2.4)、(2.6) の `v = 1`
 （`lengthAlgebra_base_values_one`）から、`t` が弱正則列であることは A1
-（`Inputs/RegularLocalRing.lean`、`sorry`）から得る。`λ_D` の定義域を `m_D C` から `m_A C` に
+（`CommutativeAlgebra/RegularLocalRing.lean`、証明済み）から得る。`λ_D` の定義域を `m_D C` から `m_A C` に
 取り替えるには `NormalizedLength.restrictToBase` を使う。
 
 3 は `cor_2_6_pos`：(2.5) の `v = 1` で `λ_D(C_D/(t)C_D) = e((t), D) > 0`（Hilbert–Samuel 重複度の

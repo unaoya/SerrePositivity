@@ -1,14 +1,12 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.ModuleSubcomplex
-public import SerrePositivity.CommutativeAlgebra.HilbertSamuelBasic
 public import SerrePositivity.HomologicalAlgebra.Basic
 
 /-! # The shifted adic filtration of a complex
 
 For a differential with image in `I` times the next term, the submodules
-`I^max(n+q,0) P^q` form a subcomplex. Its quotient has finite-length terms when
-`I` is primary in a Noetherian local ring and the original terms are finite.
+`I^max(n+q,0) P^q` form a subcomplex. 商の有限長性は `CommutativeAlgebra.AdicFilteredLength` で別に供給する。
 -/
 
 @[expose] public noncomputable section
@@ -17,7 +15,7 @@ universe u
 
 namespace SerrePositivity.AdicFilteredComplex
 
-open CategoryTheory CategoryTheory.Limits IsLocalRing
+open CategoryTheory CategoryTheory.Limits
 
 variable {R : Type u} [CommRing R]
 variable (P : CochainComplex (ModuleCat.{u} R) ℤ) (I : Ideal R)
@@ -62,9 +60,5 @@ theorem quasiIso_projection (n : ℤ) (hacyclic : ∀ q, IsZero ((tail P I hd n)
     QuasiIso (projection P I hd n) :=
   ModuleSubcomplex.quasiIso_projection P (term P I n) (stable P I hd n) hacyclic
 
-theorem finiteLength_quotient_term [IsNoetherianRing R] [IsLocalRing R]
-    (hI : I.radical = maximalIdeal R) (q n : ℤ) [Module.Finite R (P.X q)] :
-    IsFiniteLength R ((quotient P I hd n).X q) :=
-  Module.length_ne_top_iff.mp (HilbertSamuel.samuelFunction_ne_top R I hI (P.X q) (n + q).toNat)
 
 end SerrePositivity.AdicFilteredComplex
