@@ -12,7 +12,8 @@ Proposition 4.0.10 から高次 Koszul ホモロジーの正規化長さが零�
 零次のパラメータ商には Proposition 4.0.14 を使う。
 
 両方の長さを完備化前の塔へ制限し、既存の `towerLengthOn` と同定する。
-このファイルに直接の `sorry` はない。文献の定理への依存は `Inputs.CLMST` に明示する。
+このファイルに直接の `sorry` はない。`Inputs.CLMST` は共通層の原典入力への適用を証明した互換入口であり、
+文献の未証明入力そのものは `CLMST/Inputs/` に明示する。
 -/
 
 public section

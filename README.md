@@ -36,6 +36,10 @@ The CLMST almost-length comparison is also implemented using explicit quotations
 cyclic length estimate and the idempotence of the ideal modulo p powers. The latter quotation
 is used by that comparison, but is not an additional dependency of the main theorem.
 
+The three legacy CLMST entry points are now proved specializations of the independent
+inputs in `CLMST/Inputs/`: cyclic vanishing, all-stage cohomology vanishing and the
+all-stage parameter quotient formula. Their literature dependencies remain explicit.
+
 The table of quotations, the status of every proposition and the module map are kept in
 appendix A of the exposition; the actual dependencies are checked by `scripts/audit_axioms.lean`.
 
