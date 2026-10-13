@@ -3,6 +3,7 @@ module
 public import SerrePositivity.Paper.Section2.MixedPerfectoid
 public import SerrePositivity.Inputs.PerfectoidTower
 public import SerrePositivity.CLMST.NormalizedAlmostLength
+public import SerrePositivity.CLMST.CohomologyVanishing
 
 /-! # CLMST の混標数の定理（文献からの引用）
 
@@ -11,7 +12,8 @@ and an application to local fundamental groups*, arXiv:2209.04046v4。
 出典：https://arxiv.org/html/2209.04046v4
 
 `C_D = (R∞ ⊗[A] D)_perfd` と `(g)_perfd = ker(R∞ → (R∞/g)_perfd)` は
-普遍性による定義を使う。Corollary 4.0.4 と Proposition 4.0.14 の `n = 0` の場合を引用する。
+普遍性による定義を使う。Corollary 4.0.4 の両成分・全段を Paper 非依存の層で引用し、
+非零 g の選択と n=0 への適用は証明する。Proposition 4.0.14 は `n = 0` の場合を引用する。
 Proposition 4.0.10 については Paper 非依存の巡回評価を引用し、
 このファイルの一般加群の長さ零はその評価への帰着として証明する。
 これらの適用に必要な Koszul ホモロジーの冪ねじれと、完備化前の塔への長さの移送は
@@ -64,8 +66,9 @@ variable (A D : Type u) [CommRing A] [IsRegularLocalRing A]
 
 include hinj hres hdimA hdimD hpos ht hsop htp e he in
 /-- 一つの非零 `g ∈ A` の perfectoid イデアルが、全パラメータ系の高次 Koszul ホモロジーを消す。
-引用：CLMST Notation 4.0.1 における étale locus を切り出す `g` の存在と、Corollary 4.0.4
-の `n = 0` の場合を合わせた主張。非零元の存在もこの名前付き引用に含める。
+Corollary 4.0.4 の全段の主張を `CLMST.Inputs.CohomologyVanishing` で引用する。
+非零 g の有限エタール化による選択と、零段の同型・パラメータの移送は
+`CLMST.CohomologyVanishing` で証明する。ここはその既存利用先への互換入口である。
 ここでは正規化長さの消滅はまだ結論にしない。 -/
 theorem clmst_exists_perfectoidIdeal_annihilates_koszul :
     ∃ g : A, g ≠ 0 ∧ ∀ (z : Fin h → D), IsSystemOfParameters D z →
@@ -78,7 +81,8 @@ theorem clmst_exists_perfectoidIdeal_annihilates_koszul :
           Module.annihilator (CompletedTower A t p)
             (koszulHomologySelf
               (fun j ↦ algebraMap D (MixedPerfectoid A D t p hperf) (z j)) i) := by
-  sorry
+  exact CLMST.exists_perfectoidIdeal_annihilates_koszul
+    A D hinj hres t hdimA hdimD hpos ht hsop p htp e he hperf
 
 include hinj hres hdimA hdimD hpos ht hsop htp e he in
 /-- パラメータ商の完備化した塔上の正規化長さは Hilbert–Samuel 重複度。

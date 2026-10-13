@@ -19,7 +19,8 @@ public import Mathlib.RingTheory.TensorProduct.Finite
 
 既存の `SerrePositivity.Section2` の宣言名・定義・証明を保持する。
 `CLMST.RPerfd` は同じ選択を再利用する透明な別名で、テンソル積の順序も
-既存の `A∞ ⊗[A] D` と一致させる。原典の `D ⊗[A] A∞` との交換同型は別途扱う。
+既存の `A∞ ⊗[A] D` と一致させる。原典の `D ⊗[A] A∞` との交換同型と
+同じ perfectoid 化への普遍写像・D の作用の比較は `CLMST/TensorOrder.lean` で証明する。
 -/
 
 @[expose] public section
