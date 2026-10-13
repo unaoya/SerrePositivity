@@ -7,7 +7,7 @@ public import SerrePositivity.CommutativeAlgebra.RegularLocalRing
 
 /-! # 正則基底と幾何的群作用における長さ代数の正値性
 
-正則パラメータの正則性と不変 K₀ 類の降下について、既存の引用を適用する。
+正則パラメータの正則性は証明済み。不変 K₀ 類の降下について、既存の引用を適用する。
 比較・下界・正値性の証明は `LengthAlgebraPositivity` の構成定理による。
 このファイルの結論には、引用した未証明入力による `sorryAx` 依存が残る。
 -/
@@ -57,10 +57,11 @@ variable {A B T C R D : Type u}
     atTop (𝓝 (mu.len (TorAlg ι i T))))
 
 set_option maxHeartbeats 1800000 in
--- 正則性と幾何的条件の引用を、証明済みの長さ代数への適用へ接続する。
+-- 証明済みの正則性と不変 K₀ 類の降下の引用を、長さ代数への適用へ接続する。
 include hresA hresB hτfin hτzero hτlim hI₀ hI₀fin hL₀fin hL₀pos hlen hfinite hlim in
 /-- 正則基底と幾何的群作用の下での有限近似の正値性。
-正則パラメータの正則性と、補題4.6・定理3.1による `supportedRankK0_descent` を引用する。
+証明済みの正則パラメータの正則性と、補題4.6・定理3.1による
+`supportedRankK0_descent` の引用を使う。
 比較と正値性を新たな未証明入力にはしない。 -/
 theorem exists_secondComparison_pos_of_regular
     (hdim : ringKrullDim A = e) (p : ℕ) [Fact p.Prime] [CharP (ResidueField A) p]

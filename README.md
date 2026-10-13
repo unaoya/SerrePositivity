@@ -16,13 +16,13 @@ its perfect-complex and rank-quotient realizations, the standard commutative alg
 (regular parameters, unmixedness, Hilbert–Samuel theory, the Koszul multiplicity formula) and
 the connection to the main theorem are implemented.
 
-The formalization still depends on **12 external quotations and 2 deferred K-theory proofs**.
+The formalization still depends on **11 external quotations and 2 deferred K-theory proofs**.
 `main_statement` and `core_statement` have no direct `sorry`, but depend on `sorryAx`.
 They are not proofs of the main theorem without those inputs. By section of the preprint:
 
 - §2 (residue fields, normalized length, Theorem 2.5): proved relative to 9 quotations
-  (residue field extension, Cohen–Gabber and Cohen normalization, additivity of the
-  normalized length λ∞, Roberts' Frobenius theorem, the perfectoid tower, perfectoidization,
+  (residue field extension, Cohen–Gabber and Cohen normalization, Roberts' Frobenius
+  theorem, the perfectoid tower, perfectoidization,
   three results of Cai–Lee–Ma–Schwede–Tucker). These are the results the preprint itself cites.
 - §3 (Lemmas 3.4–3.5): proved, except that Theorem 3.1 (rational K-theory descent) is deferred
   (`theorem_3_1_K0`).
@@ -118,7 +118,7 @@ free resolutions and the length-based Euler characteristics are built here (`Com
   exposition §4.5, instead of the concrete tower.
 - Extending the Koszul multiplicity formula from the ring to arbitrary finite modules (Rees
   evaluation, boundary lifting, Samuel degree of the support).
-- The 12 external quotations remain quotations.
+- The 11 external quotations remain quotations.
 
 ## Documents and generated files
 

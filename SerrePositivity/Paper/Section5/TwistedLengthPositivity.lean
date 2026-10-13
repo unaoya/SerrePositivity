@@ -43,10 +43,12 @@ theorem twistedEuler_pos_of_lengthAlgebras
     [IsScalarTower A₀ D C₀] [IsScalarTower A₀ (Section2.Tower A₀ t p₀) C₀]
     (hzeroD : ∀ (z : Fin h → D), IsSystemOfParameters D z →
       ∀ v : ℕ, 0 < v → ∀ q : ℕ, 0 < q →
-      (Section2.towerLengthOn A₀ D hinj t p₀ C₀).len
+      (Section2.towerLengthOn A₀ D hinj t p₀
+        (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) C₀).len
         (koszulHomologySelf (fun j ↦ algebraMap D C₀ (z j ^ v)) q) = 0)
     (hquotD : ∀ (z : Fin h → D), IsSystemOfParameters D z →
-      (Section2.towerLengthOn A₀ D hinj t p₀ C₀).len
+      (Section2.towerLengthOn A₀ D hinj t p₀
+        (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) C₀).len
         (C₀ ⧸ Ideal.span (Set.range fun j ↦ algebraMap D C₀ (z j ^ 1))) =
       ENNReal.ofReal ((1 : ℝ) ^ h *
         (HilbertSamuel.multiplicity D (Ideal.span (Set.range z)) D : ℝ)))
@@ -70,7 +72,8 @@ theorem twistedEuler_pos_of_lengthAlgebras
     (hsurj : Function.Surjective (PrimeSpectrum.comap (algebraMap A T)))
     (htrans : IsGeometricallyTransitive A T G) :
     ∀ σ : G₀, 0 < twistedEuler R D T C₀ G₀
-      (Section2.towerLengthOn A₀ D hinj t p₀ C₀) σ := by
+      (Section2.towerLengthOn A₀ D hinj t p₀
+        (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) C₀) σ := by
   intro σ
   let τ := MulSemiringAction.toRingEquiv G₀ D σ
   let ι := τ.toRingHom.comp (algebraMap R D)

@@ -39,7 +39,8 @@ theorem clmst_length_eq_zero_of_perfectoidIdeal_annihilates
     (hM : IsPowTorsion (completedTowerMaxIdeal A t p) M)
     (hann : perfectoidIdeal (CompletedTower A t p) p hperf
       (algebraMap A (CompletedTower A t p) g) ≤ Module.annihilator (CompletedTower A t p) M) :
-    (completedTowerLength A t p).len M = 0 := by
+    (completedTowerLength A t p
+      (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i))).len M = 0 := by
   sorry
 
 variable (A D : Type u) [CommRing A] [IsRegularLocalRing A]
@@ -85,7 +86,7 @@ theorem clmst_parameter_quotient_length
       ((MixedPerfectoid A D t p hperf) ⧸
         Ideal.span (Set.range fun j ↦ algebraMap D (MixedPerfectoid A D t p hperf) (z j)))
       (algebraMap (CompletedTower A t p) (MixedPerfectoid A D t p hperf))
-    (completedTowerLength A t p).len
+    (completedTowerLength A t p (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i))).len
       ((MixedPerfectoid A D t p hperf) ⧸
         Ideal.span (Set.range fun j ↦ algebraMap D (MixedPerfectoid A D t p hperf) (z j))) =
       ENNReal.ofReal (HilbertSamuel.multiplicity D (Ideal.span (Set.range z)) D : ℝ) := by

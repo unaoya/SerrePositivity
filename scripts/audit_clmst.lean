@@ -7,6 +7,8 @@ import SerrePositivity.LengthAlgebra.AlmostQuotient
 import SerrePositivity.CLMST.ModuleCompletion
 import SerrePositivity.LengthAlgebra.RootTowerLength.Normalized
 import SerrePositivity.CLMST.AlmostLength
+import SerrePositivity.Paper.Section2.CompletedTower
+import SerrePositivity.Paper.Section2.TowerApproximation
 import Mathlib.Util.AssertNoSorry
 
 -- 共通の根の塔と数値関数に、長さの一致・加法性の引用を持ち込まない。
@@ -66,3 +68,14 @@ assert_no_sorry SerrePositivity.IsPerfectoidization.map_map
 -- 選択した perfectoid 化の型には既存の存在引用が到達することを区別する。
 #print axioms SerrePositivity.perfectoidIdeal_mono
 #print axioms SerrePositivity.CLMST.length_eq_of_perfectoid_mod_full_almost_iso
+
+-- 論文の互換入口も、証明済みの構成だけから組み立てる。
+#print axioms SerrePositivity.Section2.towerLength
+#print axioms SerrePositivity.Section2.towerLengthOn
+#print axioms SerrePositivity.Section2.completedTowerLength
+assert_no_sorry SerrePositivity.Section2.towerLengthFun_add_of_exact
+assert_no_sorry SerrePositivity.Section2.towerLength
+assert_no_sorry SerrePositivity.Section2.towerLength_hasSup
+assert_no_sorry SerrePositivity.Section2.towerLengthOn
+assert_no_sorry SerrePositivity.Section2.completedTowerLength
+assert_no_sorry SerrePositivity.Section2.μT

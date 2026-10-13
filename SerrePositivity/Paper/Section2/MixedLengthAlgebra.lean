@@ -39,10 +39,12 @@ theorem mixedPerfectoid_length_properties
     (he : ∀ (i : Fin h) (hi : (i : ℕ) ≠ 0), e (t i) = MvPowerSeries.X ⟨i, hi⟩)
     (hperf : IsIntegralPerfectoid (CompletedTower A t p) p) :
     (∀ (z : Fin h → D), IsSystemOfParameters D z → ∀ i : ℕ, 0 < i →
-      (towerLengthOn A D hinj t p (MixedPerfectoid A D t p hperf)).len
+      (towerLengthOn A D hinj t p
+        (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) (MixedPerfectoid A D t p hperf)).len
         (koszulHomologySelf (fun j ↦ algebraMap D (MixedPerfectoid A D t p hperf) (z j)) i) = 0) ∧
     (∀ (z : Fin h → D), IsSystemOfParameters D z →
-      (towerLengthOn A D hinj t p (MixedPerfectoid A D t p hperf)).len
+      (towerLengthOn A D hinj t p
+        (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) (MixedPerfectoid A D t p hperf)).len
         ((MixedPerfectoid A D t p hperf) ⧸
           Ideal.span (Set.range fun j ↦ algebraMap D (MixedPerfectoid A D t p hperf) (z j))) =
         ENNReal.ofReal (HilbertSamuel.multiplicity D (Ideal.span (Set.range z)) D : ℝ)) := by
@@ -50,7 +52,8 @@ theorem mixedPerfectoid_length_properties
     A D hinj hres t hdimA hdimD hpos ht hsop p htp e he hperf
   constructor
   · intro z hz i hi
-    rw [towerLengthOn_eq_completedTowerLength A t p D hinj]
+    rw [towerLengthOn_eq_completedTowerLength A t p
+      (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) D hinj]
     let := Module.compHom
       (koszulHomologySelf (fun j ↦ algebraMap D (MixedPerfectoid A D t p hperf) (z j)) i)
       (algebraMap (CompletedTower A t p) (MixedPerfectoid A D t p hperf))
@@ -59,7 +62,8 @@ theorem mixedPerfectoid_length_properties
       (isPowTorsion_completedTower_koszul A t p D hinj (MixedPerfectoid A D t p hperf) z hz i)
       (hann z hz i hi)
   · intro z hz
-    rw [towerLengthOn_eq_completedTowerLength A t p D hinj]
+    rw [towerLengthOn_eq_completedTowerLength A t p
+      (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) D hinj]
     exact Inputs.clmst_parameter_quotient_length
       A D hinj hres t hdimA hdimD hpos ht hsop p htp e he hperf z hz
 

@@ -33,7 +33,7 @@ public import Mathlib.Algebra.Category.ModuleCat.Descent
 ## 仮定
 
 `A` は Noether 局所環、`t_i ∈ m_A`、`p` は素数、`T` は `A` 上有限な局所環で `m_A^a T = 0`、
-`A → T`、`B → T` は剰余体で全射。`λ_∞` の加法性と `λ = λ*` は引用（`TowerLength.lean` の (C1)、(C2)）。
+`A → T`、`B → T` は剰余体で全射。`λ_∞` の加法性と `λ = λ*` は共通層で証明済み。
 -/
 
 @[expose] public section
@@ -625,8 +625,11 @@ noncomputable abbrev JT : Ideal (TS A t p T) :=
   (towerMaxIdeal A t p).map (algebraMap (Tower A t p) (TS A t p T))
 
 /-- `S` 加群の正規化長さ（`λ_∞` の `Λ → S` に沿った係数制限）。 -/
-noncomputable abbrev μT : NormalizedLength (TS A t p T) (JT A t p T) :=
-  (towerLength A t p).comap (algebraMap (Tower A t p) (TS A t p T)) _ le_rfl
+noncomputable abbrev μT [IsNoetherianRing A] [Fact p.Prime]
+    (ht : ∀ i, t i ∈ maximalIdeal A)
+    (T : Type u) [CommRing T] [Algebra A T] :
+    NormalizedLength (TS A t p T) (JT A t p T) :=
+  (towerLength A t p ht).comap (algebraMap (Tower A t p) (TS A t p T)) _ le_rfl
 
 variable [IsNoetherianRing A] [Fact p.Prime] (ht : ∀ i, t i ∈ maximalIdeal A)
 
@@ -635,16 +638,16 @@ include ht
 /-- **部分加群による近似**：`J` 冪ねじれで `μ(M) < ∞` の `S` 加群 `M` と `ε > 0` について、有限生成な
 部分 `S` 加群 `V` で `μ(M / V) ≤ ε` となるものがある。`λ_∞` の上限の性質 (2.3) による。 -/
 theorem exists_fg_quotient_le (M : Type u) [AddCommGroup M] [Module (TS A t p T) M]
-    (hM : IsPowTorsion (JT A t p T) M) (hMfin : (μT A t p T).len M ≠ ⊤) (ε : ℝ≥0∞)
+    (hM : IsPowTorsion (JT A t p T) M) (hMfin : (μT A t p ht T).len M ≠ ⊤) (ε : ℝ≥0∞)
     (hε : 0 < ε) :
-    ∃ V : Submodule (TS A t p T) M, V.FG ∧ (μT A t p T).len (M ⧸ V) ≤ ε := by
-  by_cases hlt : ε < (μT A t p T).len M
+    ∃ V : Submodule (TS A t p T) M, V.FG ∧ (μT A t p ht T).len (M ⧸ V) ≤ ε := by
+  by_cases hlt : ε < (μT A t p ht T).len M
   · let _ : Module (Tower A t p) M := Module.compHom M (algebraMap (Tower A t p) (TS A t p T))
     have : IsScalarTower (Tower A t p) (TS A t p T) M :=
       IsScalarTower.of_algebraMap_smul fun _ _ ↦ rfl
     have hMΛ : IsPowTorsion (towerMaxIdeal A t p) M :=
       IsPowTorsion.comap (algebraMap (Tower A t p) (TS A t p T)) le_rfl M hM
-    have hc : (μT A t p T).len M - ε < (towerLength A t p).len M :=
+    have hc : (μT A t p ht T).len M - ε < (towerLength A t p ht).len M :=
       ENNReal.sub_lt_self hMfin (ne_of_gt (lt_of_le_of_lt zero_le hlt)) hε.ne'
     obtain ⟨N, hNfg, hN⟩ := NormalizedLength.exists_fg_lt (towerLength_hasSup A t p ht) hMΛ hc
     obtain ⟨S₀, hS₀⟩ := hNfg
@@ -652,7 +655,7 @@ theorem exists_fg_quotient_le (M : Type u) [AddCommGroup M] [Module (TS A t p T)
     refine ⟨V, ⟨S₀, rfl⟩, ?_⟩
     -- `λ(N) ≤ μ(V)`
     have hVt : IsPowTorsion (JT A t p T) V := hM.submodule V
-    have hNV : (towerLength A t p).len N ≤ (μT A t p T).len V := by
+    have hNV : (towerLength A t p ht).len N ≤ (μT A t p ht T).len V := by
       let _ : Module (Tower A t p) V := Module.compHom V (algebraMap (Tower A t p) (TS A t p T))
       let ι : N →ₗ[Tower A t p] V :=
         { toFun := fun n ↦ ⟨n, by
@@ -660,33 +663,33 @@ theorem exists_fg_quotient_le (M : Type u) [AddCommGroup M] [Module (TS A t p T)
             exact Submodule.span_le_restrictScalars (Tower A t p) (TS A t p T) _ this⟩
           map_add' := fun _ _ ↦ rfl
           map_smul' := fun _ _ ↦ rfl }
-      exact (towerLength A t p).len_le_of_injective ι (fun x y hxy ↦ Subtype.ext
+      exact (towerLength A t p ht).len_le_of_injective ι (fun x y hxy ↦ Subtype.ext
         (congrArg (fun z : V ↦ (z : M)) hxy))
         (IsPowTorsion.comap (algebraMap (Tower A t p) (TS A t p T)) le_rfl V hVt)
-    have hsum := (μT A t p T).len_eq_add_quotient hM V
-    have hVfin : (μT A t p T).len V ≠ ⊤ :=
+    have hsum := (μT A t p ht T).len_eq_add_quotient hM V
+    have hVfin : (μT A t p ht T).len V ≠ ⊤ :=
       ne_top_of_le_ne_top hMfin (hsum ▸ le_self_add)
     -- `μ(M) < μ(V) + ε`
-    have h1 : (μT A t p T).len M < (μT A t p T).len V + ε := by
+    have h1 : (μT A t p ht T).len M < (μT A t p ht T).len V + ε := by
       have := hN.trans_le hNV
       rwa [ENNReal.sub_lt_iff_lt_right (ne_top_of_lt hlt) hlt.le] at this
     rw [hsum] at h1
     exact ((ENNReal.add_lt_add_iff_left hVfin).mp h1).le
   · refine ⟨⊥, Submodule.fg_bot, ?_⟩
-    rw [(μT A t p T).len_congr _ _ (Submodule.quotEquivOfEqBot ⊥ rfl)]
+    rw [(μT A t p ht T).len_congr _ _ (Submodule.quotEquivOfEqBot ⊥ rfl)]
     exact not_lt.mp hlt
 
 /-- **有限表示による近似**（論文 Lemma 5.4 の証明の `P_ε`）：`J` 冪ねじれで `μ(U) < ∞` の `S` 加群 `U`
 と `ε > 0` について、有限表示な `S` 加群 `P` と `S` 線形写像 `f : P → U` で `μ(ker f) ≤ ε`、
 `μ(coker f) ≤ ε` となるものがある。`S` が `J` 冪ねじれで、`μ(S^r) < ∞` を仮定する。 -/
 theorem exists_finitePresentation_approx (U : Type u) [AddCommGroup U] [Module (TS A t p T) U]
-    (hU : IsPowTorsion (JT A t p T) U) (hUfin : (μT A t p T).len U ≠ ⊤)
+    (hU : IsPowTorsion (JT A t p T) U) (hUfin : (μT A t p ht T).len U ≠ ⊤)
     (hS : IsPowTorsion (JT A t p T) (TS A t p T))
-    (hSfin : ∀ r : ℕ, (μT A t p T).len (Fin r → TS A t p T) ≠ ⊤) (ε : ℝ≥0∞) (hε : 0 < ε) :
+    (hSfin : ∀ r : ℕ, (μT A t p ht T).len (Fin r → TS A t p T) ≠ ⊤) (ε : ℝ≥0∞) (hε : 0 < ε) :
     ∃ (P : Type u) (_ : AddCommGroup P) (_ : Module (TS A t p T) P)
       (_ : Module.FinitePresentation (TS A t p T) P) (f : P →ₗ[TS A t p T] U),
-      IsPowTorsion (JT A t p T) P ∧ (μT A t p T).len (LinearMap.ker f) ≤ ε ∧
-        (μT A t p T).len (U ⧸ LinearMap.range f) ≤ ε := by
+      IsPowTorsion (JT A t p T) P ∧ (μT A t p ht T).len (LinearMap.ker f) ≤ ε ∧
+        (μT A t p ht T).len (U ⧸ LinearMap.range f) ≤ ε := by
   obtain ⟨V, hVfg, hV⟩ := exists_fg_quotient_le A t p T ht U hU hUfin ε hε
   obtain ⟨r, s, hs⟩ := Submodule.fg_iff_exists_fin_generating_family.mp hVfg
   let g : (Fin r → TS A t p T) →ₗ[TS A t p T] U := Fintype.linearCombination (TS A t p T) s
@@ -698,8 +701,8 @@ theorem exists_finitePresentation_approx (U : Type u) [AddCommGroup U] [Module (
     exact ⟨n, fun v c ↦ funext fun i ↦ hn (x := v i) (a := c)⟩
   let K := LinearMap.ker g
   have hKt : IsPowTorsion (JT A t p T) K := hFt.submodule K
-  have hKfin : (μT A t p T).len K ≠ ⊤ :=
-    ne_top_of_le_ne_top (hSfin r) ((μT A t p T).len_submodule_le hFt K)
+  have hKfin : (μT A t p ht T).len K ≠ ⊤ :=
+    ne_top_of_le_ne_top (hSfin r) ((μT A t p ht T).len_submodule_le hFt K)
   obtain ⟨K₀, hK₀fg, hK₀⟩ := exists_fg_quotient_le A t p T ht K hKt hKfin ε hε
   let L₀ := K₀.map K.subtype
   have hL₀ : L₀ ≤ LinearMap.ker g := Submodule.map_subtype_le K K₀
@@ -723,9 +726,9 @@ theorem exists_finitePresentation_approx (U : Type u) [AddCommGroup U] [Module (
       rw [Submodule.ker_liftQ] at hy
       obtain ⟨x, hx, rfl⟩ := hy
       exact ⟨Submodule.Quotient.mk ⟨x, hx⟩, rfl⟩
-    exact ((μT A t p T).len_le_of_surjective _ hsurj (hKt.quotient K₀)).trans hK₀
+    exact ((μT A t p ht T).len_le_of_surjective _ hsurj (hKt.quotient K₀)).trans hK₀
   · have hr : LinearMap.range f = V := by rw [Submodule.range_liftQ, hg]
-    rw [(μT A t p T).len_congr _ _ (Submodule.quotEquivOfEq _ _ hr)]
+    rw [(μT A t p ht T).len_congr _ _ (Submodule.quotEquivOfEq _ _ hr)]
     exact hV
 
 end approx
@@ -760,10 +763,10 @@ lemma isPowTorsion_TS : IsPowTorsion (JT A t p T) (TS A t p T) := by
     exact (Ideal.mem_bot).mp (this hc)
   rw [hc, zero_smul]
 
-omit [IsNoetherianRing A] [Fact p.Prime] [IsLocalRing T] [Module.Finite A T] in
+omit [IsLocalRing T] [Module.Finite A T] in
 /-- `S ⊗_{S_j} V` 上の `Λ` の作用は、`S` 加群としての係数制限と左因子への作用で一致する。 -/
 lemma μT_tensor_eq (j : ℕ) (V : Type u) [AddCommGroup V] [Module (TSj A t p T j) V] :
-    (μT A t p T).len (TS A t p T ⊗[TSj A t p T j] V) =
+    (μT A t p ht T).len (TS A t p T ⊗[TSj A t p T j] V) =
       towerLengthFun A t p (TS A t p T ⊗[TSj A t p T j] V) := by
   have hinst : (Module.compHom (TS A t p T ⊗[TSj A t p T j] V)
       (algebraMap (Tower A t p) (TS A t p T)) : Module (Tower A t p) _) =
@@ -780,7 +783,7 @@ lemma μT_tensor_eq (j : ℕ) (V : Type u) [AddCommGroup V] [Module (TSj A t p T
 
 include ht hTa hresT in
 /-- `μ(S) < ∞`：`S ≃ S ⊗_{S_0} S_0` と有限段の公式。 -/
-lemma μT_TS_ne_top : (μT A t p T).len (TS A t p T) ≠ ⊤ := by
+lemma μT_TS_ne_top : (μT A t p ht T).len (TS A t p T) ≠ ⊤ := by
   let r := TensorProduct.rid (TSj A t p T 0) (TS A t p T)
   let e : (TS A t p T ⊗[TSj A t p T 0] TSj A t p T 0) ≃ₗ[TS A t p T] TS A t p T :=
     { toFun := r
@@ -796,7 +799,7 @@ lemma μT_TS_ne_top : (μT A t p T).len (TS A t p T) ≠ ⊤ := by
         | add x y hx hy => rw [smul_add, map_add, hx, hy, map_add, smul_add]
       left_inv := r.left_inv
       right_inv := r.right_inv }
-  rw [← (μT A t p T).len_congr _ _ e, μT_tensor_eq,
+  rw [← (μT A t p ht T).len_congr _ _ e, μT_tensor_eq,
     towerLengthFun_baseChangeT A t p T ht hTa hresT T
       (by simpa using IsLocalRing.residue_surjective) 0 (TSj A t p T 0)]
   refine ENNReal.div_ne_top ?_ (by simp [stageRank])
@@ -805,8 +808,8 @@ lemma μT_TS_ne_top : (μT A t p T).len (TS A t p T) ≠ ⊤ := by
 
 include ht hTa hresT in
 /-- `μ(S^r) < ∞`。 -/
-lemma μT_pi_ne_top : ∀ r : ℕ, (μT A t p T).len (Fin r → TS A t p T) ≠ ⊤
-  | 0 => by rw [(μT A t p T).len_eq_zero_of_subsingleton]; exact ENNReal.zero_ne_top
+lemma μT_pi_ne_top : ∀ r : ℕ, (μT A t p ht T).len (Fin r → TS A t p T) ≠ ⊤
+  | 0 => by rw [(μT A t p ht T).len_eq_zero_of_subsingleton]; exact ENNReal.zero_ne_top
   | r + 1 => by
     let e : (Fin (r + 1) → TS A t p T) ≃ₗ[TS A t p T] TS A t p T × (Fin r → TS A t p T) :=
       (Fin.consLinearEquiv (TS A t p T) (fun _ ↦ TS A t p T)).symm
@@ -814,7 +817,7 @@ lemma μT_pi_ne_top : ∀ r : ℕ, (μT A t p T).len (Fin r → TS A t p T) ≠ 
     have hF : IsPowTorsion (JT A t p T) (Fin r → TS A t p T) := by
       obtain ⟨n, hn⟩ := hS
       exact ⟨n, fun v c ↦ funext fun i ↦ hn (x := v i) (a := c)⟩
-    rw [(μT A t p T).len_congr _ _ e, TensorRes.len_prod _ _ _ hS hF]
+    rw [(μT A t p ht T).len_congr _ _ e, TensorRes.len_prod _ _ _ hS hF]
     exact ENNReal.add_ne_top.mpr ⟨μT_TS_ne_top A t p T ht hTa hresT, μT_pi_ne_top r⟩
 
 end selfLength
@@ -863,16 +866,16 @@ include ht hTa hresT hresB in
 theorem exists_stage_step {ι : Type*} (G : ι → CochainComplex (ModuleCat.{u} B) ℤ)
     (hfree : ∀ k i, Module.Free B ((G k).X i)) (hfin : ∀ k i, Module.Finite B ((G k).X i))
     (U : ModuleCat.{u} (TS A t p T)) (hU : IsPowTorsion (JT A t p T) U)
-    (hUfin : (μT A t p T).len U ≠ ⊤) (n : ℕ) (ε : ℝ≥0∞) (hε : 0 < ε) :
+    (hUfin : (μT A t p ht T).len U ≠ ⊤) (n : ℕ) (ε : ℝ≥0∞) (hε : 0 < ε) :
     ∃ (j : ℕ) (_ : n ≤ j) (V : ModuleCat.{u} (TSj A t p T j))
       (_ : Module.Finite (TSj A t p T j) V),
-      (lenB A t p T B j V ≤ (μT A t p T).len U + ε ∧
-        (μT A t p T).len U ≤ lenB A t p T B j V + ε) ∧
+      (lenB A t p T B j V ≤ (μT A t p ht T).len U + ε ∧
+        (μT A t p ht T).len U ≤ lenB A t p T B j V + ε) ∧
       ∀ k (m : ℤ),
         lenB A t p T B j ((tensorRes (φB A t p T B j) (G k) V).homology m) ≤
-            (μT A t p T).len ((tensorRes (ψU A t p T B) (G k) U).homology m) +
+            (μT A t p ht T).len ((tensorRes (ψU A t p T B) (G k) U).homology m) +
               ((rk (ψU A t p T B) (G k) m : ℝ≥0∞) + rk (ψU A t p T B) (G k) (m - 1)) * ε ∧
-          (μT A t p T).len ((tensorRes (ψU A t p T B) (G k) U).homology m) ≤
+          (μT A t p ht T).len ((tensorRes (ψU A t p T B) (G k) U).homology m) ≤
             lenB A t p T B j ((tensorRes (φB A t p T B j) (G k) V).homology m) +
               ((rk (ψU A t p T B) (G k) (m + 1) : ℝ≥0∞) + rk (ψU A t p T B) (G k) m) * ε := by
   obtain ⟨P, _, _, _, f, hPt, hK, hW⟩ := exists_finitePresentation_approx A t p T ht U hU hUfin
@@ -881,14 +884,14 @@ theorem exists_stage_step {ι : Type*} (G : ι → CochainComplex (ModuleCat.{u}
   let VM := ModuleCat.of (TSj A t p T j) V
   refine ⟨j, hnj, VM, hVfin, ?_, fun k m ↦ ?_⟩
   · -- `μ(P) = ℓ_B(V)/p^{jh}`
-    have hP : (μT A t p T).len P = lenB A t p T B j V := by
-      rw [(μT A t p T).len_congr _ _ e, μT_tensor_eq,
+    have hP : (μT A t p ht T).len P = lenB A t p T B j V := by
+      rw [(μT A t p ht T).len_congr _ _ e, μT_tensor_eq,
         towerLengthFun_baseChangeT A t p T ht hTa hresT B hresB j V]
       rfl
-    have h1 := (μT A t p T).len_eq_add_ker_range f hPt
-    have h2 := (μT A t p T).len_eq_add_quotient hU (LinearMap.range f)
-    have hR : (μT A t p T).len (LinearMap.range f) ≤ (μT A t p T).len U :=
-      (μT A t p T).len_submodule_le hU _
+    have h1 := (μT A t p ht T).len_eq_add_ker_range f hPt
+    have h2 := (μT A t p ht T).len_eq_add_quotient hU (LinearMap.range f)
+    have hR : (μT A t p ht T).len (LinearMap.range f) ≤ (μT A t p ht T).len U :=
+      (μT A t p ht T).len_submodule_le hU _
     rw [← hP]
     constructor
     · rw [h1, add_comm]
@@ -898,7 +901,7 @@ theorem exists_stage_step {ι : Type*} (G : ι → CochainComplex (ModuleCat.{u}
       rw [h1]
       exact le_add_self
   · -- `Tor` の比較
-    let μ := μT A t p T
+    let μ := μT A t p ht T
     let fM : ModuleCat.of (TS A t p T) P ⟶ U := ModuleCat.ofHom f
     obtain ⟨hle1, hle2⟩ := len_tensorRes_le_of_hom μ (ψU A t p T B) (G k) (hfree k) fM hPt hU m
     have hKt : IsPowTorsion (JT A t p T) (LinearMap.ker f) := hPt.submodule _
@@ -968,14 +971,15 @@ include ht hTa hresT hresB in
 theorem exists_tower_approximation {ι : Type*} (G : ι → CochainComplex (ModuleCat.{u} B) ℤ)
     (hfree : ∀ k i, Module.Free B ((G k).X i)) (hfin : ∀ k i, Module.Finite B ((G k).X i))
     (U : ModuleCat.{u} (TS A t p T)) (hU : IsPowTorsion (JT A t p T) U)
-    (hUfin : (μT A t p T).len U ≠ ⊤) :
+    (hUfin : (μT A t p ht T).len U ≠ ⊤) :
     ∃ (j : ℕ → ℕ) (V : (n : ℕ) → ModuleCat.{u} (TSj A t p T (j n))),
       (∀ n, n ≤ j n) ∧ (∀ n, Module.Finite (TSj A t p T (j n)) (V n)) ∧
       Filter.Tendsto (fun n ↦ lenB A t p T B (j n) (V n)) Filter.atTop
-        (nhds ((μT A t p T).len U)) ∧
+        (nhds ((μT A t p ht T).len U)) ∧
       ∀ k (m : ℤ), Filter.Tendsto
         (fun n ↦ lenB A t p T B (j n) ((tensorRes (φB A t p T B (j n)) (G k) (V n)).homology m))
-        Filter.atTop (nhds ((μT A t p T).len ((tensorRes (ψU A t p T B) (G k) U).homology m))) := by
+        Filter.atTop (nhds ((μT A t p ht T).len
+          ((tensorRes (ψU A t p T B) (G k) U).homology m))) := by
   let ε : ℕ → ℝ≥0∞ := fun n ↦ ((n + 1 : ℕ) : ℝ≥0∞)⁻¹
   have hε : ∀ n, 0 < ε n := fun n ↦ ENNReal.inv_pos.mpr (ENNReal.natCast_ne_top _)
   choose j hj V hV hlen htor using fun n ↦
@@ -983,7 +987,7 @@ theorem exists_tower_approximation {ι : Type*} (G : ι → CochainComplex (Modu
   refine ⟨j, V, hj, hV, ?_, fun k m ↦ ?_⟩
   · simpa using tendsto_of_le_add_of_le_add hUfin (tendsto_const_mul_inv_succ 1 ENNReal.one_ne_top)
       (fun n ↦ by simpa [ε] using (hlen n).1) (fun n ↦ by simpa [ε] using (hlen n).2)
-  · have hfinU : (μT A t p T).len ((tensorRes (ψU A t p T B) (G k) U).homology m) ≠ ⊤ :=
+  · have hfinU : (μT A t p ht T).len ((tensorRes (ψU A t p T B) (G k) U).homology m) ≠ ⊤ :=
       ne_top_of_le_ne_top (ENNReal.mul_ne_top (ENNReal.natCast_ne_top _) hUfin)
         (len_homology_tensorRes_le _ _ (G k) (hfree k) (hfin k) U hU m)
     let K : ℝ≥0∞ := (rk (ψU A t p T B) (G k) (m + 1) : ℝ≥0∞) + rk (ψU A t p T B) (G k) m +
@@ -1009,17 +1013,17 @@ theorem exists_tower_approximation_B {ι : Type*} (L : ι → Type u) [∀ k, Ad
     (hG : ∀ k, IsResolutionOf (G k) (ModuleCat.of B (L k)))
     (hfree : ∀ k i, Module.Free B ((G k).X i)) (hfin : ∀ k i, Module.Finite B ((G k).X i))
     (U : ModuleCat.{u} (TS A t p T)) (hU : IsPowTorsion (JT A t p T) U)
-    (hUfin : (μT A t p T).len U ≠ ⊤) :
+    (hUfin : (μT A t p ht T).len U ≠ ⊤) :
     ∃ (M : ℕ → ModuleCat.{u} B) (s : ℕ → ℕ),
       (∀ n, IsFiniteLength B (M n)) ∧ (∀ n, 0 < s n) ∧
       (0 < h → Filter.Tendsto s Filter.atTop Filter.atTop) ∧
       (∀ (I : Ideal B), (∀ x ∈ I, algebraMap B T x = 0) → ∀ n, ∀ x ∈ I, ∀ y : M n, x • y = 0) ∧
       Filter.Tendsto (fun n ↦ (Module.length B (M n) : ℝ≥0∞) / (s n : ℝ≥0∞)) Filter.atTop
-        (nhds ((μT A t p T).len U)) ∧
+        (nhds ((μT A t p ht T).len U)) ∧
       ∀ k (i : ℕ), Filter.Tendsto
         (fun n ↦ (Module.length B (TorModule B i (M n) (L k)) : ℝ≥0∞) / (s n : ℝ≥0∞))
         Filter.atTop
-        (nhds ((μT A t p T).len ((tensorRes (ψU A t p T B) (G k) U).homology (-(i : ℤ))))) := by
+        (nhds ((μT A t p ht T).len ((tensorRes (ψU A t p T B) (G k) U).homology (-(i : ℤ))))) := by
   obtain ⟨j, V, hj, hV, hlen, htor⟩ :=
     exists_tower_approximation A t p T ht hTa hresT hresB G hfree hfin U hU hUfin
   refine ⟨fun n ↦ (ModuleCat.restrictScalars (φB A t p T B (j n))).obj (V n),

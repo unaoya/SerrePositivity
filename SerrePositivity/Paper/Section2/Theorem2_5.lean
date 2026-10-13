@@ -44,27 +44,27 @@ theorem theorem_2_5 (A D : Type u) [CommRing A] [IsRegularLocalRing A]
       (_ : IsScalarTower A (Tower A t p) C),
       -- (2.4)
       (∀ (z : Fin h → D), IsSystemOfParameters D z → ∀ v : ℕ, 0 < v → ∀ i : ℕ, 0 < i →
-        (towerLengthOn A D hinj t p C).len
+        (towerLengthOn A D hinj t p (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) C).len
           (koszulHomologySelf (fun j ↦ algebraMap D C (z j ^ v)) i) = 0) ∧
       -- (2.5)
       (∀ (z : Fin h → D), IsSystemOfParameters D z → ∀ v : ℕ, 0 < v →
-        (towerLengthOn A D hinj t p C).len
+        (towerLengthOn A D hinj t p (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) C).len
           (C ⧸ Ideal.span (Set.range fun j ↦ algebraMap D C (z j ^ v))) =
           ENNReal.ofReal ((v : ℝ) ^ h *
             (HilbertSamuel.multiplicity D (Ideal.span (Set.range z)) D : ℝ))) ∧
       -- (2.6)
       (∀ v : ℕ, 0 < v →
-        (towerLengthOn A D hinj t p C).len
+        (towerLengthOn A D hinj t p (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) C).len
           (C ⧸ Ideal.span (Set.range fun j ↦ algebraMap D C (algebraMap A D (t j) ^ v))) =
           ((v ^ h * Module.finrank A D : ℕ) : ℝ≥0∞)) := by
   have hex : ∃ (C : Type u) (_ : CommRing C) (_ : Algebra A C) (_ : Algebra D C)
       (_ : Algebra (Tower A t p) C) (_ : IsScalarTower A D C)
       (_ : IsScalarTower A (Tower A t p) C),
       (∀ (z : Fin h → D), IsSystemOfParameters D z → ∀ i : ℕ, 0 < i →
-        (towerLengthOn A D hinj t p C).len
+        (towerLengthOn A D hinj t p (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) C).len
           (koszulHomologySelf (fun j ↦ algebraMap D C (z j)) i) = 0) ∧
       (∀ (z : Fin h → D), IsSystemOfParameters D z →
-        (towerLengthOn A D hinj t p C).len
+        (towerLengthOn A D hinj t p (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) C).len
           (C ⧸ Ideal.span (Set.range fun j ↦ algebraMap D C (z j))) =
           ENNReal.ofReal
             (HilbertSamuel.multiplicity D (Ideal.span (Set.range z)) D : ℝ)) := by
@@ -79,10 +79,12 @@ theorem theorem_2_5 (A D : Type u) [CommRing A] [IsRegularLocalRing A]
   refine ⟨C, cRing, aAlg, dAlg, towerAlg, adTower, atTower, ?_, ?_, ?_⟩
   · intro z hz v hv i hi
     exact hzero (fun j ↦ z j ^ v) (hz.pow D v hv) i hi
-  · exact parameter_quotient_values_pow D C (towerLengthOn A D hinj t p C) hquot
+  · exact parameter_quotient_values_pow D C (towerLengthOn A D hinj t p
+    (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) C) hquot
   · exact base_parameter_values_of_multiplicity A D C hinj hres t ht hdimA hsop
-      (towerLengthOn A D hinj t p C)
-      (parameter_quotient_values_pow D C (towerLengthOn A D hinj t p C) hquot)
+      (towerLengthOn A D hinj t p (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) C)
+      (parameter_quotient_values_pow D C (towerLengthOn A D hinj t p
+        (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) C) hquot)
 
 end Section2
 

@@ -104,7 +104,7 @@ theorem towerLengthFun_quotientImage_tendsto (J : Ideal (PerfectClosure D p))
   rw [towerLengthFun_quotient_eq_iSup_image A D p t htm J hJ]
   apply tendsto_atTop_iSup
   intro n m hnm
-  exact (towerLength A t p).len_le_of_injective
+  exact (towerLength A t p htm).len_le_of_injective
     (Submodule.inclusion (perfectionQuotientImage_monotone D p (Tower A t p) J hnm))
     (Submodule.inclusion_injective _) (hJ.submodule _)
 
@@ -219,7 +219,8 @@ theorem towerLengthFun_perfectionApproximation_kernel_le (n : ℕ)
     rw [towerLengthFun_perfectionApproximation_quotient A D p t hbase ht hdim hinj hres hsep n I hI]
     apply ENNReal.div_ne_top (ENat.toENNReal_ne_top.mpr (Module.length_ne_top_iff.mpr hI))
     exact_mod_cast pow_ne_zero (n * h) (Fact.out : p.Prime).ne_zero
-  have hb := perfectionApproximation_kernel_bound D p (Tower A t p) (towerLength A t p)
+  have hb := perfectionApproximation_kernel_bound D p (Tower A t p)
+    (towerLength A t p (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)))
     n (I.map (rootStageToApproximation A D p t n))
     (rootStageToApproximation A D p t n (perfectionRootStageEquiv D p n g))
     (by simpa only [rootStageToApproximation_coe, perfectionRootStageEquiv_coe] using hg)
@@ -335,7 +336,8 @@ theorem towerLengthFun_perfectionApproximation_kernel_add_range [IsNoetherianRin
         (stageRank h p n : ℝ≥0∞) := by
   intro f
   have hI := isFiniteLength_rootStage_base_quotient A D p t ht hdim hinj hres n H hH
-  have hs := (towerLength A t p).len_eq_add_ker_range f
+  have hs := (towerLength A t p
+    (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i))).len_eq_add_ker_range f
     (isPowTorsion_perfectionApproximation_quotient A D p t hbase ht hdim hinj hres hsep n _ hI)
   rw [towerLength_len, towerLength_len, towerLength_len] at hs
   rw [← hs, towerLengthFun_perfectionApproximation_quotient

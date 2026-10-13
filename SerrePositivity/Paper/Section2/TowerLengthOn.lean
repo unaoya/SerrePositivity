@@ -19,7 +19,7 @@ public import Mathlib.RingTheory.RegularLocalRing.Defs
 `λ_D` を `λ_∞` の係数制限として定義する。
 `m_A C ≤ m_D C` により、定義域の冪ねじれ条件も移る。
 代数 `C` の存在や定理2.5のホモロジー・重複度公式は、このファイルでは仮定しない。
-加法性は `TowerLength` の名前付き未証明入力に依存する。
+加法性は共通層で証明した塔の正規化長さから従う。
 -/
 
 @[expose] public section
@@ -33,18 +33,20 @@ namespace SerrePositivity
 
 namespace Section2
 
-variable (A D : Type u) [CommRing A] [IsLocalRing A] [CommRing D] [IsLocalRing D] [Algebra A D]
+variable (A D : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
+  [CommRing D] [IsLocalRing D] [Algebra A D]
   [Module.Finite A D] (hinj : Function.Injective (algebraMap A D)) {h : ℕ} (t : Fin h → A) (p : ℕ)
+  [Fact p.Prime] (ht : ∀ i, t i ∈ maximalIdeal A)
   (C : Type u) [CommRing C] [Algebra A C] [Algebra D C] [Algebra (Tower A t p) C]
   [IsScalarTower A D C] [IsScalarTower A (Tower A t p) C]
 
 /-- **`λ_D`**：`λ_∞` の `Λ → C` に沿った係数制限。`𝔡 C` 冪ねじれ `C` 加群の上の正規化長さ。 -/
 noncomputable def towerLengthOn : NormalizedLength C ((maximalIdeal D).map (algebraMap D C)) :=
-  (towerLength A t p).comap (algebraMap (Tower A t p) C) _ (towerMaxIdeal_map_le A D hinj t p C)
+  (towerLength A t p ht).comap (algebraMap (Tower A t p) C) _ (towerMaxIdeal_map_le A D hinj t p C)
 
 /-- `λ_D(M)` は `M` を `Λ` 加群とみた `λ_∞(M)`。 -/
 lemma towerLengthOn_len (M : Type u) [AddCommGroup M] [Module C M] :
-    (towerLengthOn A D hinj t p C).len M =
+    (towerLengthOn A D hinj t p ht C).len M =
       (letI := Module.compHom M (algebraMap (Tower A t p) C); towerLengthFun A t p M) := rfl
 
 end Section2

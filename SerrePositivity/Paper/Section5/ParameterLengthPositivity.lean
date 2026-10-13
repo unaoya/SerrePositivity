@@ -8,7 +8,8 @@ public import SerrePositivity.Paper.Section2.TowerLengthOn
 
 `Z = D′/(ι(x))` と塔の作用 `θ` を構成し、パラメータ系の支持と定理2.5の公式から
 `TowerPositivity` の仮定を確認する。商の正の有限な長さは重複度公式から得る。
-新たな未証明入力は置かず、重複度の正値性と既存の塔・降下の引用に依存する。
+塔の長さと重複度の正値性は証明済み。新たな未証明入力は置かず、
+不変 K₀ 類の降下に関する既存の引用へ依存する。
 -/
 
 @[expose] public section
@@ -61,9 +62,11 @@ theorem lambdaChi_pos_of_parameter_lengthAlgebras
     [Algebra A₀ C₀] [Algebra (Section2.Tower A₀ t p₀) C₀]
     [IsScalarTower A₀ D C₀] [IsScalarTower A₀ (Section2.Tower A₀ t p₀) C₀]
     (hzeroD : ∀ v : ℕ, 0 < v → ∀ q : ℕ, 0 < q →
-      (Section2.towerLengthOn A₀ D hinj t p₀ C₀).len
+      (Section2.towerLengthOn A₀ D hinj t p₀
+        (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) C₀).len
         (koszulHomologySelf (fun j ↦ algebraMap D C₀ (ι (x j) ^ v)) q) = 0)
-    (hquotD : (Section2.towerLengthOn A₀ D hinj t p₀ C₀).len
+    (hquotD : (Section2.towerLengthOn A₀ D hinj t p₀
+        (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) C₀).len
         (C₀ ⧸ Ideal.span (Set.range fun j ↦ algebraMap D C₀ (ι (x j) ^ 1))) =
       ENNReal.ofReal ((1 : ℝ) ^ h *
         (HilbertSamuel.multiplicity D (Iσ ι x) D : ℝ)))
@@ -86,8 +89,10 @@ theorem lambdaChi_pos_of_parameter_lengthAlgebras
     (p : ℕ) [Fact p.Prime] [CharP (ResidueField A) p]
     (hsurj : Function.Surjective (PrimeSpectrum.comap (algebraMap A T)))
     (htrans : IsGeometricallyTransitive A T G) :
-    0 < lambdaChi (Section2.towerLengthOn A₀ D hinj t p₀ C₀) (φσ (C := C₀) ι) T := by
-  let mu := Section2.towerLengthOn A₀ D hinj t p₀ C₀
+    0 < lambdaChi (Section2.towerLengthOn A₀ D hinj t p₀
+        (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) C₀) (φσ (C := C₀) ι) T := by
+  let mu := Section2.towerLengthOn A₀ D hinj t p₀
+        (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) C₀
   have : IsNoetherianRing D := IsNoetherianRing.of_finite A₀ D
   let := isLocalHom_of_residue_surjective ι hresR
   let := isLocalHom_of_residue_surjective (algebraMap A₀ D) hresD

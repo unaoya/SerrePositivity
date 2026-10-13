@@ -107,7 +107,8 @@ theorem core_of_normalization_bases
     Section2.theorem_2_5 A₀ D hinjD hsepD hresD t hdimA₀ htD.1 hh ht htD p hbaseD
   obtain ⟨C, cRing, aAlg, tAlg, towerAlg, atTower, aTower, hzeroT, _, hquotT⟩ :=
     Section2.theorem_2_5 A T hinjT hsepT hresT a hdimA haT.1 he ha haT p hbaseT
-  let lam := Section2.towerLengthOn A T hinjT a p C
+  let lam := Section2.towerLengthOn A T hinjT a p
+    (fun i ↦ ha ▸ Ideal.subset_span (Set.mem_range_self i)) C
   have : Module.IsTorsionFree (R ⧸ P) D :=
     Module.isTorsionFree_iff_algebraMap_injective.mpr hinjPD
   have : Module.IsTorsionFree (R ⧸ Q) T :=

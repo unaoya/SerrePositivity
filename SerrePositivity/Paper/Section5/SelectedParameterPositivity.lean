@@ -44,10 +44,12 @@ theorem core_of_lengthAlgebras_with_parameter_choice
     [IsScalarTower A₀ D C₀] [IsScalarTower A₀ (Section2.Tower A₀ t p₀) C₀]
     (hzeroD : ∀ (z : Fin h → D), IsSystemOfParameters D z →
       ∀ v : ℕ, 0 < v → ∀ q : ℕ, 0 < q →
-      (Section2.towerLengthOn A₀ D hinj t p₀ C₀).len
+      (Section2.towerLengthOn A₀ D hinj t p₀
+        (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) C₀).len
         (koszulHomologySelf (fun j ↦ algebraMap D C₀ (z j ^ v)) q) = 0)
     (hquotD : ∀ (z : Fin h → D), IsSystemOfParameters D z → ∀ v : ℕ, 0 < v →
-      (Section2.towerLengthOn A₀ D hinj t p₀ C₀).len
+      (Section2.towerLengthOn A₀ D hinj t p₀
+        (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) C₀).len
         (C₀ ⧸ Ideal.span (Set.range fun j ↦ algebraMap D C₀ (z j ^ v))) =
       ENNReal.ofReal ((v : ℝ) ^ h *
         (HilbertSamuel.multiplicity D (Ideal.span (Set.range z)) D : ℝ)))

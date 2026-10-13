@@ -8,7 +8,8 @@ public import SerrePositivity.Paper.Section5.ParameterQuotient
 Lemma 5.4 により同じ近似列と全ての Tor 極限を構成し、Lemma 5.3 で極限の有限性・
 高次消滅を確認する。その列を長さ代数への抽象比較の適用へ渡す。
 近似列・複体・比較等式・Euler 正値性を入力として要求しない。
-既存の塔の長さ、正則パラメータ、不変 K₀ 類の降下に関する引用に依存する。
+塔の長さの加法性と正則パラメータの正則性は証明済み。
+未証明入力への依存は、不変 K₀ 類の降下に残る。
 -/
 
 @[expose] public section
@@ -42,7 +43,7 @@ theorem lambdaChi_pos_of_parameter_tower
     (hresBZ : Function.Surjective ((residue Z).comp (algebraMap (B x) Z)))
     [Algebra (Section2.Tower A₀ t p₀) D]
     (hJ' : (Section2.towerMaxIdeal A₀ t p₀).map (algebraMap (Section2.Tower A₀ t p₀) D) ≤ J)
-    (hmu : mu = (Section2.towerLength A₀ t p₀).comap
+    (hmu : mu = (Section2.towerLength A₀ t p₀ ht).comap
       (algebraMap (Section2.Tower A₀ t p₀) D) J hJ')
     (θ : Section2.TS A₀ t p₀ Z →+* U φ x)
     (hθΛ : θ.comp (algebraMap (Section2.Tower A₀ t p₀) (Section2.TS A₀ t p₀ Z)) =

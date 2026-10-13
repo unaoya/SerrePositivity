@@ -88,6 +88,8 @@ theorem towerLengthFun_perfection_koszulHomology_eq_zero_of_tendsto
     letI := Module.compHom ((koszulComplex (PerfectClosure.of D p ∘ z)).homology i)
       (algebraMap (Tower A t p) (PerfectClosure D p))
     towerLengthFun A t p ((koszulComplex (PerfectClosure.of D p ∘ z)).homology i) = 0 := by
+  have htm : ∀ j, t j ∈ maximalIdeal A :=
+    fun j ↦ ht ▸ Ideal.subset_span (Set.mem_range_self j)
   let R := Tower A t p
   let C := PerfectClosure D p
   let B := perfectionApproximation D p R
@@ -99,7 +101,7 @@ theorem towerLengthFun_perfection_koszulHomology_eq_zero_of_tendsto
     exact perfectionApproximation_stageBaseMap A D p t n (z j)
   obtain ⟨N, hN⟩ := exists_uniform_pow_torsion_perfectionApproximation_koszul
     A D p t hinj hbase z hz
-  have hstage (n : ℕ) : (towerLength A t p).len
+  have hstage (n : ℕ) : (towerLength A t p htm).len
       ((ModuleCat.restrictScalars (algebraMap R (B n))).obj
         ((koszulComplex (subalgebraStageBaseMap R C B hB n ∘ z₀)).homology i)) =
       (Module.length D ((koszulComplex (fun j ↦ z j ^ (p ^ n))).homology i) : ℝ≥0∞) /
@@ -108,12 +110,11 @@ theorem towerLengthFun_perfection_koszulHomology_eq_zero_of_tendsto
     exact (perfectionApproximation_koszulHomology_length
       A D p t ht hdim hinj hres hbase hsep n z hz i).1
   have hzlim := subalgebraKoszulHomology_len_eq_zero R C B hB z₀
-    (exists_mem_perfectionApproximation D p R) (towerLength A t p)
-    (towerLength_hasSup A t p
-      (fun i ↦ by rw [← ht]; exact Ideal.subset_span (Set.mem_range_self i))) i N (fun n ↦ by
+    (exists_mem_perfectionApproximation D p R) (towerLength A t p htm)
+    (towerLength_hasSup A t p htm) i N (fun n ↦ by
       rw [he]
       exact hN n i) (by
-        have heq : (fun n ↦ (towerLength A t p).len
+        have heq : (fun n ↦ (towerLength A t p htm).len
             ((ModuleCat.restrictScalars (algebraMap R (B n))).obj
               ((koszulComplex (subalgebraStageBaseMap R C B hB n ∘ z₀)).homology i))) =
             (fun n ↦ (Module.length D
@@ -142,7 +143,8 @@ theorem towerLengthOn_perfection_koszulHomology_eq_zero_of_tendsto
     (hlim : Filter.Tendsto (fun n : ℕ ↦
       (Module.length D (koszulHomologySelf (fun j ↦ z j ^ (p ^ n)) i) : ℝ≥0∞) /
         (stageRank h p n : ℝ≥0∞)) Filter.atTop (nhds 0)) :
-    (towerLengthOn A D hinj t p (PerfectClosure D p)).len
+    (towerLengthOn A D hinj t p
+      (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) (PerfectClosure D p)).len
       (koszulHomologySelf (algebraMap D (PerfectClosure D p) ∘ z) i) = 0 := by
   have heq : instTower = towerPerfectionAlgebra A D p t := by
     apply Algebra.algebra_ext

@@ -10,7 +10,7 @@ public import SerrePositivity.CommutativeAlgebra.RootTower.Koszul
 `CommutativeAlgebra/RootTower/Completion.lean` に抽出した。
 長さの係数制限の比較をこのファイルで扱い、有限局所包含に対する
 Koszul ホモロジーの冪ねじれは `RootTower/Koszul.lean` を再公開する。
-既存の長さの引用依存は残るが、純粋な完備化の共通層には持ち込まない。
+長さの加法性も共通層で証明済みであり、純粋な完備化の環の定義とは分離している。
 -/
 
 @[expose] public section
@@ -19,12 +19,12 @@ open IsLocalRing
 namespace SerrePositivity.Section2
 
 variable (A : Type u) [CommRing A] {h : ℕ} (t : Fin h → A) (p : ℕ)
-    [IsLocalRing A]
+    [IsLocalRing A] [IsNoetherianRing A] [Fact p.Prime] (ht : ∀ i, t i ∈ maximalIdeal A)
 
 /-- 完備化上の正規化長さ：非完備な塔に制限して測る。 -/
 noncomputable def completedTowerLength :
     NormalizedLength (CompletedTower A t p) (completedTowerMaxIdeal A t p) :=
-  completedLengthOf A t p (towerLength A t p)
+  completedLengthOf A t p (towerLength A t p ht)
 
 variable (D : Type u) [CommRing D] [IsLocalRing D] [Algebra A D] [Module.Finite A D]
     (hinj : Function.Injective (algebraMap A D))
@@ -38,9 +38,9 @@ omit [IsScalarTower A (CompletedTower A t p) C] in
 /-- 完備化を経由して係数を制限しても、長さ代数の長さは変わらない。 -/
 theorem towerLengthOn_eq_completedTowerLength
     (M : Type u) [AddCommGroup M] [Module C M] :
-    (towerLengthOn A D hinj t p C).len M =
+    (towerLengthOn A D hinj t p ht C).len M =
       (letI := Module.compHom M (algebraMap (CompletedTower A t p) C)
-       (completedTowerLength A t p).len M) := by
-  exact completedLengthOf_restrictScalars A t p (towerLength A t p) C M
+       (completedTowerLength A t p ht).len M) := by
+  exact completedLengthOf_restrictScalars A t p (towerLength A t p ht) C M
 
 end SerrePositivity.Section2

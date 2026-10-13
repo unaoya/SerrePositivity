@@ -48,10 +48,12 @@ theorem core_of_lengthAlgebras
     [IsScalarTower A₀ D C₀] [IsScalarTower A₀ (Section2.Tower A₀ t p₀) C₀]
     (hzeroD : ∀ (z : Fin h → D), IsSystemOfParameters D z →
       ∀ v : ℕ, 0 < v → ∀ q : ℕ, 0 < q →
-      (Section2.towerLengthOn A₀ D hinj t p₀ C₀).len
+      (Section2.towerLengthOn A₀ D hinj t p₀
+        (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) C₀).len
         (koszulHomologySelf (fun j ↦ algebraMap D C₀ (z j ^ v)) q) = 0)
     (hquotD : ∀ (z : Fin h → D), IsSystemOfParameters D z → ∀ v : ℕ, 0 < v →
-      (Section2.towerLengthOn A₀ D hinj t p₀ C₀).len
+      (Section2.towerLengthOn A₀ D hinj t p₀
+        (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) C₀).len
         (C₀ ⧸ Ideal.span (Set.range fun j ↦ algebraMap D C₀ (z j ^ v))) =
       ENNReal.ofReal ((v : ℝ) ^ h *
         (HilbertSamuel.multiplicity D (Ideal.span (Set.range z)) D : ℝ)))
@@ -85,7 +87,8 @@ theorem core_of_lengthAlgebras
     (pR : ℕ) [Fact pR.Prime] [CharP (ResidueField R) pR] :
     0 < chi R (R ⧸ P) (R ⧸ Q) := by
   have : IsNoetherianRing D := IsNoetherianRing.of_finite A₀ D
-  let mu := Section2.towerLengthOn A₀ D hinj t p₀ C₀
+  let mu := Section2.towerLengthOn A₀ D hinj t p₀
+        (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) C₀
   have hc := twistedEuler_pos_of_lengthAlgebras G₀ x hx hreg hresR A₀ hinj hresD t ht p₀
     hzeroD (fun z hz ↦ by simpa only [Nat.cast_one] using hquotD z hz 1 one_pos)
     A T C G lam a ha hdim hd

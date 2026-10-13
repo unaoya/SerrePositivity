@@ -162,7 +162,7 @@ theorem lemma_5_4 (A : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
     [Algebra (B x) T] (hresB : Function.Surjective ((residue T).comp (algebraMap (B x) T)))
     [Algebra (Section2.Tower A t p) C]
     (hJ' : (Section2.towerMaxIdeal A t p).map (algebraMap (Section2.Tower A t p) C) ≤ J)
-    (hlam : lam = (Section2.towerLength A t p).comap (algebraMap (Section2.Tower A t p) C) J hJ')
+    (hlam : lam = (Section2.towerLength A t p ht).comap (algebraMap (Section2.Tower A t p) C) J hJ')
     (θ : Section2.TS A t p T →+* U φ x)
     (hθΛ : θ.comp (algebraMap (Section2.Tower A t p) (Section2.TS A t p T)) =
       (Ideal.Quotient.mk (IC φ x)).comp (algebraMap (Section2.Tower A t p) C))
@@ -208,13 +208,13 @@ theorem lemma_5_4 (A : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
   have hfree₀ (i : ℤ) : Module.Free (B x) (G₀.X i) := inferInstance
   have hfin₀ (i : ℤ) : Module.Finite (B x) (G₀.X i) := inferInstance
   subst hlam
-  let lam₀ := (Section2.towerLength A t p).comap (algebraMap (Section2.Tower A t p) C) J hJ'
+  let lam₀ := (Section2.towerLength A t p ht).comap (algebraMap (Section2.Tower A t p) C) J hJ'
   let S := Section2.TS A t p T
   let _ : Algebra S (U φ x) := θ.toAlgebra
   let US : ModuleCat.{u} S := ModuleCat.of S (U φ x)
   -- (E1) `S` 加群としての長さと `C` 加群としての長さ
   have hE1 : ∀ W : ModuleCat.{u} (U φ x),
-      (Section2.μT A t p T).len ((ModuleCat.restrictScalars θ).obj W) =
+      (Section2.μT A t p ht T).len ((ModuleCat.restrictScalars θ).obj W) =
         (lamU φ x lam₀).len W := by
     intro W
     change @Section2.towerLengthFun A _ _ t p W _
@@ -227,7 +227,7 @@ theorem lemma_5_4 (A : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
   have hUself : (lamU φ x lam₀).len (ModuleCat.of (U φ x) (U φ x)) = lam₀.len (U φ x) := by
     rw [NormalizedLength.comap_len]
     congr 1
-  have hUeq : (Section2.μT A t p T).len US = lam₀.len (U φ x) :=
+  have hUeq : (Section2.μT A t p ht T).len US = lam₀.len (U φ x) :=
     (hE1 (ModuleCat.of (U φ x) (U φ x))).trans hUself
   -- ねじれ
   have hUt : IsPowTorsion (Section2.JT A t p T) US := by
@@ -240,7 +240,7 @@ theorem lemma_5_4 (A : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
       [IsScalarTower R (B x) L'] [Module.Finite (B x) L']
       (G' : CochainComplex (ModuleCat.{u} (B x)) ℤ)
       (_ : IsResolutionOf G' (ModuleCat.of (B x) L')) (i : ℕ),
-      (Section2.μT A t p T).len
+      (Section2.μT A t p ht T).len
         ((TensorRes.tensorRes (Section2.ψU A t p T (B x)) G' US).homology (-(i : ℤ))) =
         lam₀.len (TorAlg φ i L') := by
     intro L' _ _ _ _ _ G' hG' i
@@ -253,7 +253,7 @@ theorem lemma_5_4 (A : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
     let e := e₁ ≪≫ ((ModuleCat.restrictScalars θ).mapHomologicalComplex _).mapIso e₂
     let eh := (HomologicalComplex.homologyFunctor _ _ (-(i : ℤ))).mapIso e ≪≫
       ((baseChange (θ.comp ψS) G').sc (-(i : ℤ))).mapHomologyIso (ModuleCat.restrictScalars θ)
-    refine ((Section2.μT A t p T).len_congr _ _ eh.toLinearEquiv).trans ?_
+    refine ((Section2.μT A t p ht T).len_congr _ _ eh.toLinearEquiv).trans ?_
     rw [hE1]
     refine ((lamU φ x lam₀).len_congr _ _
       (torIsoCochain (θ.comp ψS) hG' i).toLinearEquiv).symm.trans ?_

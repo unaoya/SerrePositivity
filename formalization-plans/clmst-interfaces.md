@@ -27,7 +27,7 @@
 | `TowerStage`・`Tower` | 商による有限段、遷移、有限自由性、局所性、標準剰余体、正則な有限段等 | CLMST の標準的な根の塔との表示の対応を確認 |
 | `TowerDescent.exists_descent` | 有限表示加群の有限段への降下 | 数値定義の層へ切り出す |
 | `TowerDescent.fgLength_tensor` | 有限段の λ* の公式 | λ∞ の公式は C1 に依存するので区別 |
-| `TowerLength` の三つの数値関数 | λ** の下限、λ* の下限、λ∞ の上限 | C1・C2 は直接の sorry。数値関数を定義したことと加法性を証明したことは別 |
+| `TowerLength` の三つの数値関数 | λ** の下限、λ* の下限、λ∞ の上限 | 数値定義は引用非依存。C1・C2 は Noether 局所基底・素数・座標条件の下で証明済み |
 | `length_eq_of_common_residueField` | A と A_n 上の長さの比較 | `residue_surjective_towerStage` から仮定を供給 |
 | `CompletedTower` | p 進完備化の環と作用 | 現在は長さ比較・D に関する Koszul 冪ねじれと同居している |
 | `IsIntegralPerfectoid`・`IsPerfectoidization` | 環の条件と普遍性の具体的な定義 | 原典の対象・完備化・宇宙との対応を監査 |
@@ -44,7 +44,7 @@
 ### T0-a：標準基底と長さの一般性
 
 CLMST §2.2 の基底は、完全剰余体を持つ標準的な等標数または非分岐混標数の正則完備局所環。
-現在の C1・C2 は、型上では `IsLocalRing A` だけの、さらに広い範囲で述べられている。
+初回監査時の C1・C2 は、型上では `IsLocalRing A` だけの、さらに広い範囲で述べられていた。
 
 原典の正確な引用をこの広い型へ移すことはしない。最初に次を監査する。
 
@@ -247,16 +247,19 @@ Cor 4.0.4 の全ステートメントを作る際に局所コホモロジーの�
 - 対象モジュールと全体のビルド、[公理監査](../scripts/audit_axioms.lean)と引用台帳で利用先まで確認する。
 
 T0-a の初回監査、T1 の共通層抽出、T3-a の一般定理に加え、C1 と有限表示の場合の一致も証明した。
-[長さの監査](clmst-length-audit.md)をもとに、次は原典の標準基底へ前提を伝播する設計を確定する。
+[長さの監査](clmst-length-audit.md)をもとに、Noether 局所基底・素数・座標条件を明示する。
+C1・C2 の証明には標準冪級数表示は不要である。
 almost 同型は実際の Serre 局所化で、導来完備性は実導来圏の射の消滅で定義した。
-次は perfectoid ideal の mod p^N の条件の接続と、C2・導来完備化関手を扱う。
+次は perfectoid ideal の mod p^N の条件の接続と、導来完備化関手を扱う。
 CLMST の原典引用の新配置と、それを使う接続 T3-b〜e はまだ実装していない。
 
 ## 続きの実装状況
 
 一般加法性を Noether 局所基底の下で証明し、
 `LengthAlgebra/RootTowerLength/Normalized.lean` に引用に依存しない長さの構造と HasSup を構成した。
-旧構成の広い署名をそのまま証明したという意味ではなく、その切替は次の工程である。
+旧構成の広い署名をそのまま証明したという意味ではない。
+旧 C2 はこの一般定理への適用に置き換え、長さの四つの入口と Section 2・5 の利用先を、
+Noether 局所基底・素数・座標所属を明示する構成へ切り替えた。
 
 almost 条件を商環へ移す比較は `Almost/Quotient.lean`、
 全加群の局所化と冪ねじれ局所化の同型の比較は `Almost/SerreComparison.lean`。

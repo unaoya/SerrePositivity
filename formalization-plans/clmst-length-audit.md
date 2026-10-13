@@ -10,8 +10,11 @@
 旧 `towerLengthFun_eq_fgLength` の `sorry` を除去した。
 現在は Noether 局所基底・素数 p・座標の極大イデアル所属を明示し、利用先へ渡す。
 有限表示の場合の一致も証明済みである。
-そのため、標準冪級数表示の情報を伝播する案は C1 には不要となった。
-C2 の加法性とその仮定の一般性は依然未解消。下記の70宣言・28モジュールという件数は初回監査の値である。
+C2 の一般加法性も同じ条件で証明し、旧 `towerLengthFun_add_of_exact` の `sorry` を除去した。
+`towerLength`・`towerLengthOn`・`completedTowerLength`・`μT` と、Section 2・5 の利用先を
+条件つきの証明済み構成へ移した。標準冪級数表示の情報の伝播は C1・C2 とも不要となった。
+以下の広い署名・引用依存の記述と70宣言・28モジュールという件数は初回監査の記録であり、
+現行の署名ではない。現在の依存は `scripts/audit_clmst.lean` と `scripts/audit_axioms.lean` で確認する。
 
 ## 1. 結論と確認範囲
 

@@ -92,7 +92,8 @@ theorem normalized_frobenius_length_tendsto_towerLengthOn_quotient
     Filter.Tendsto (fun n : ℕ ↦
       (Module.length D (D ⧸ H.map (iterateFrobenius D p n)) : ℝ≥0∞) /
         (stageRank h p n : ℝ≥0∞)) Filter.atTop
-      (nhds ((towerLengthOn A D hinj t p (PerfectClosure D p)).len
+      (nhds ((towerLengthOn A D hinj t p
+      (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) (PerfectClosure D p)).len
         ((PerfectClosure D p) ⧸ H.map (algebraMap D (PerfectClosure D p))))) := by
   have heq : instTower = towerPerfectionAlgebra A D p t := by
     apply Algebra.algebra_ext
@@ -137,7 +138,8 @@ theorem towerLengthOn_perfection_parameter_quotient_eq_multiplicity_of_higher_te
     (hlim : ∀ i : ℤ, i < 0 → Filter.Tendsto (fun n : ℕ ↦
       (Module.length D ((koszulComplex (fun j ↦ z j ^ (p ^ n))).homology i) : ℝ≥0∞) /
         (stageRank h p n : ℝ≥0∞)) Filter.atTop (nhds 0)) :
-    (towerLengthOn A D hinj t p (PerfectClosure D p)).len
+    (towerLengthOn A D hinj t p
+      (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) (PerfectClosure D p)).len
       ((PerfectClosure D p) ⧸
         Ideal.span (Set.range fun j ↦ algebraMap D (PerfectClosure D p) (z j))) =
       ENNReal.ofReal (HilbertSamuel.multiplicity D (Ideal.span (Set.range z)) D : ℝ) := by
@@ -154,20 +156,25 @@ theorem towerLengthOn_perfection_parameter_quotient_eq_multiplicity_of_higher_te
     rw [Ideal.map_span, ← Set.range_comp]
     rfl
   have htarget :
-      (towerLengthOn A D hinj t p (PerfectClosure D p)).len
+      (towerLengthOn A D hinj t p
+      (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) (PerfectClosure D p)).len
         ((PerfectClosure D p) ⧸
           (Ideal.span (Set.range z)).map (algebraMap D (PerfectClosure D p))) =
-      (towerLengthOn A D hinj t p (PerfectClosure D p)).len
+      (towerLengthOn A D hinj t p
+      (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) (PerfectClosure D p)).len
         ((PerfectClosure D p) ⧸
           Ideal.span (Set.range fun j ↦ algebraMap D (PerfectClosure D p) (z j))) := by
     apply congrArg (fun I : Ideal (PerfectClosure D p) ↦
-      (towerLengthOn A D hinj t p (PerfectClosure D p)).len ((PerfectClosure D p) ⧸ I))
+      (towerLengthOn A D hinj t p
+        (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) (PerfectClosure D p)).len
+          ((PerfectClosure D p) ⧸ I))
     rw [Ideal.map_span, ← Set.range_comp]
     rfl
   have hlength' : Filter.Tendsto (fun n : ℕ ↦
       (Module.length D (D ⧸ Ideal.span (Set.range fun j ↦ z j ^ (p ^ n))) : ℝ≥0∞) /
         ((p ^ n : ℕ) : ℝ≥0∞) ^ h) Filter.atTop
-      (nhds ((towerLengthOn A D hinj t p (PerfectClosure D p)).len
+      (nhds ((towerLengthOn A D hinj t p
+      (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) (PerfectClosure D p)).len
         ((PerfectClosure D p) ⧸
           Ideal.span (Set.range fun j ↦ algebraMap D (PerfectClosure D p) (z j))))) := by
     simpa only [hstage, htarget, stageRank, pow_mul, Nat.cast_pow] using hlength

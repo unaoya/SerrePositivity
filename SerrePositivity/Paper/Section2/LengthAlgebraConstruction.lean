@@ -16,7 +16,7 @@ public import Mathlib.RingTheory.MvPowerSeries.Basic
 Koszul ホモロジーの有限段の長さ公式、一様な冪ねじれ、有向極限との同型も証明済み。
 Roberts の消滅定理を名前付きの引用として適用し、perfection 上の高次の長さの消滅と
 商の長さの重複度との同定を導出した。等標数の構成自身には直接の `sorry` はないが、
-Roberts・正規化長さの引用への依存は残る。正則パラメータと重複度公式は証明済み。
+Roberts の引用への依存は残る。正規化長さの法則は証明済みである。正則パラメータと重複度公式は証明済み。
 混標数では根の塔を `p` 進完備化し、基底変更した有限代数の perfectoid 化を取る。
 CLMST の引用と冪ねじれの確認・係数制限を組み合わせて、同じ二性質を導く。
 両標数の接続に直接の `sorry` はないが、外部引用そのものの証明は残る。
@@ -54,10 +54,12 @@ theorem perfectClosure_length_properties_of_higher_tendsto
         (Module.length D (koszulHomologySelf (fun j ↦ z j ^ (p ^ n)) i) : ℝ≥0∞) /
           (stageRank h p n : ℝ≥0∞)) Filter.atTop (nhds 0)) :
       (∀ (z : Fin h → D), IsSystemOfParameters D z → ∀ i : ℕ, 0 < i →
-        (towerLengthOn A D hinj t p (PerfectClosure D p)).len
+        (towerLengthOn A D hinj t p
+          (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) (PerfectClosure D p)).len
           (koszulHomologySelf (fun j ↦ algebraMap D (PerfectClosure D p) (z j)) i) = 0) ∧
       (∀ (z : Fin h → D), IsSystemOfParameters D z →
-        (towerLengthOn A D hinj t p (PerfectClosure D p)).len
+        (towerLengthOn A D hinj t p
+          (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) (PerfectClosure D p)).len
           ((PerfectClosure D p) ⧸
             Ideal.span (Set.range fun j ↦ algebraMap D (PerfectClosure D p) (z j))) =
           ENNReal.ofReal
@@ -103,10 +105,12 @@ theorem perfectClosure_length_properties_of_roberts
             ((baseChange (iterateFrobenius D p n) K).homology (-(i : ℤ)))).toNat : ℝ) /
               (p : ℝ) ^ (n * d)) Filter.atTop (nhds 0)) :
       (∀ (z : Fin h → D), IsSystemOfParameters D z → ∀ i : ℕ, 0 < i →
-        (towerLengthOn A D hinj t p (PerfectClosure D p)).len
+        (towerLengthOn A D hinj t p
+          (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) (PerfectClosure D p)).len
           (koszulHomologySelf (fun j ↦ algebraMap D (PerfectClosure D p) (z j)) i) = 0) ∧
       (∀ (z : Fin h → D), IsSystemOfParameters D z →
-        (towerLengthOn A D hinj t p (PerfectClosure D p)).len
+        (towerLengthOn A D hinj t p
+          (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) (PerfectClosure D p)).len
           ((PerfectClosure D p) ⧸
             Ideal.span (Set.range fun j ↦ algebraMap D (PerfectClosure D p) (z j))) =
           ENNReal.ofReal
@@ -159,10 +163,12 @@ theorem perfectClosure_length_properties (A D : Type u) [CommRing A] [IsRegularL
     [IsScalarTower A (Tower A t p) (PerfectClosure D p)]
     (hcanonical : algebraMap D (PerfectClosure D p) = PerfectClosure.of D p) :
       (∀ (z : Fin h → D), IsSystemOfParameters D z → ∀ i : ℕ, 0 < i →
-        (towerLengthOn A D hinj t p (PerfectClosure D p)).len
+        (towerLengthOn A D hinj t p
+          (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) (PerfectClosure D p)).len
           (koszulHomologySelf (fun j ↦ algebraMap D (PerfectClosure D p) (z j)) i) = 0) ∧
       (∀ (z : Fin h → D), IsSystemOfParameters D z →
-        (towerLengthOn A D hinj t p (PerfectClosure D p)).len
+        (towerLengthOn A D hinj t p
+          (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) (PerfectClosure D p)).len
           ((PerfectClosure D p) ⧸
             Ideal.span (Set.range fun j ↦ algebraMap D (PerfectClosure D p) (z j))) =
           ENNReal.ofReal
@@ -188,10 +194,10 @@ theorem lengthAlgebra_equalCharacteristic (A D : Type u) [CommRing A] [IsRegular
       (_ : Algebra (Tower A t p) C) (_ : IsScalarTower A D C)
       (_ : IsScalarTower A (Tower A t p) C),
       (∀ (z : Fin h → D), IsSystemOfParameters D z → ∀ i : ℕ, 0 < i →
-        (towerLengthOn A D hinj t p C).len
+        (towerLengthOn A D hinj t p (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) C).len
           (koszulHomologySelf (fun j ↦ algebraMap D C (z j)) i) = 0) ∧
       (∀ (z : Fin h → D), IsSystemOfParameters D z →
-        (towerLengthOn A D hinj t p C).len
+        (towerLengthOn A D hinj t p (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) C).len
           (C ⧸ Ideal.span (Set.range fun j ↦ algebraMap D C (z j))) =
           ENNReal.ofReal
             (HilbertSamuel.multiplicity D (Ideal.span (Set.range z)) D : ℝ)) := by
@@ -231,10 +237,10 @@ theorem lengthAlgebra_mixedCharacteristic (A D : Type u) [CommRing A] [IsRegular
       (_ : Algebra (Tower A t p) C) (_ : IsScalarTower A D C)
       (_ : IsScalarTower A (Tower A t p) C),
       (∀ (z : Fin h → D), IsSystemOfParameters D z → ∀ i : ℕ, 0 < i →
-        (towerLengthOn A D hinj t p C).len
+        (towerLengthOn A D hinj t p (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) C).len
           (koszulHomologySelf (fun j ↦ algebraMap D C (z j)) i) = 0) ∧
       (∀ (z : Fin h → D), IsSystemOfParameters D z →
-        (towerLengthOn A D hinj t p C).len
+        (towerLengthOn A D hinj t p (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) C).len
           (C ⧸ Ideal.span (Set.range fun j ↦ algebraMap D C (z j))) =
           ENNReal.ofReal
             (HilbertSamuel.multiplicity D (Ideal.span (Set.range z)) D : ℝ)) := by
