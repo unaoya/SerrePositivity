@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.PerfectComplex.NormalizedEuler
+public import SerrePositivity.LengthAlgebra.HomologyExactBounds
 public import Mathlib.LinearAlgebra.TensorProduct.Basis
 
 /-!
@@ -32,18 +33,6 @@ open scoped ENNReal BigOperators
 namespace SerrePositivity
 
 variable {C : Type u} [CommRing C] {J : Ideal C} (lam : NormalizedLength C J)
-
-/-- 短完全列の中央のホモロジーの長さは両端の和以下。
-ホモロジーの長完全列と、冪ねじれ加群上の長さの劣加法性を使う。 -/
-lemma lambdaHomology_shortExact_le
-    (S : ShortComplex (CochainComplex (ModuleCat.{u} C) ℤ)) (hS : S.ShortExact) (q : ℤ)
-    (t₁ : IsPowTorsion J (S.X₁.homology q))
-    (t₂ : IsPowTorsion J (S.X₂.homology q))
-    (t₃ : IsPowTorsion J (S.X₃.homology q)) :
-    lam.len (S.X₂.homology q) ≤ lam.len (S.X₁.homology q) + lam.len (S.X₃.homology q) :=
-  lam.len_le_add_of_exact (HomologicalComplex.homologyMap S.f q).hom
-    (HomologicalComplex.homologyMap S.g q).hom
-    (LinearMap.exact_iff.mpr (hS.homology_exact₂ q).moduleCat_range_eq_ker.symm) t₁ t₂ t₃
 
 /-- 複体の直和因子のホモロジーの長さは元の長さ以下。
 ホモロジー関手が分裂を保つことと長さの単射に対する単調性による。 -/
