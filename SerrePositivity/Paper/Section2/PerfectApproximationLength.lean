@@ -75,9 +75,12 @@ theorem isPowTorsion_quotient_of_baseChange
 section QuotientImages
 attribute [local instance] towerPerfectionAlgebra
 
-variable (A D : Type u) [CommRing A] [IsLocalRing A] [CommRing D]
+variable (A D : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A] [CommRing D]
     (p : ℕ) [Fact p.Prime] [CharP D p] {h : ℕ} (t : Fin h → A)
+    (htm : ∀ i, t i ∈ maximalIdeal A)
     [Algebra A (PerfectClosure D p)]
+
+include htm
 
 /-- 冪ねじれな perfection の商の長さは、近似部分代数から来る像の長さの上限。
 像の増大・被覆と、既存の正規化長さの上限性を組み合わせる。 -/
@@ -85,7 +88,7 @@ theorem towerLengthFun_quotient_eq_iSup_image (J : Ideal (PerfectClosure D p))
     (hJ : IsPowTorsion (towerMaxIdeal A t p) ((PerfectClosure D p) ⧸ J)) :
     towerLengthFun A t p ((PerfectClosure D p) ⧸ J) =
       ⨆ n, towerLengthFun A t p (perfectionQuotientImage D p (Tower A t p) J n) := by
-  have he := NormalizedLength.len_iSup_of_directed (towerLength_hasSup A t p) hJ
+  have he := NormalizedLength.len_iSup_of_directed (towerLength_hasSup A t p htm) hJ
     (perfectionQuotientImage D p (Tower A t p) J)
     (perfectionQuotientImage_monotone D p (Tower A t p) J).directed_le
   rw [iSup_perfectionQuotientImage] at he
@@ -98,7 +101,7 @@ theorem towerLengthFun_quotientImage_tendsto (J : Ideal (PerfectClosure D p))
     Filter.Tendsto (fun n ↦ towerLengthFun A t p
       (perfectionQuotientImage D p (Tower A t p) J n)) Filter.atTop
         (nhds (towerLengthFun A t p ((PerfectClosure D p) ⧸ J))) := by
-  rw [towerLengthFun_quotient_eq_iSup_image A D p t J hJ]
+  rw [towerLengthFun_quotient_eq_iSup_image A D p t htm J hJ]
   apply tendsto_atTop_iSup
   intro n m hnm
   exact (towerLength A t p).len_le_of_injective
@@ -273,7 +276,8 @@ theorem towerLengthFun_perfection_quotientImage_tendsto [IsNoetherianRing D]
       (perfectionQuotientImage D p (Tower A t p) (H.map (PerfectClosure.of D p)) n))
       Filter.atTop (nhds (towerLengthFun A t p
         ((PerfectClosure D p) ⧸ H.map (PerfectClosure.of D p)))) :=
-  towerLengthFun_quotientImage_tendsto A D p t _
+  towerLengthFun_quotientImage_tendsto A D p t
+    (fun i ↦ by rw [← ht]; exact Ideal.subset_span (Set.mem_range_self i)) _
     (isPowTorsion_perfection_quotient A D p t hbase ht hdim hinj hres hsep H hH)
 
 omit [IsRegularLocalRing A] [IsAdicComplete (maximalIdeal A) A]

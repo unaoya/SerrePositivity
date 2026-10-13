@@ -4,12 +4,12 @@ public import SerrePositivity.LengthAlgebra.RootTowerLength.FiniteStage
 public import SerrePositivity.Paper.Section2.TowerLength
 
 /-!
-# λ∞ の有限段公式への引用の適用
+# λ∞ の有限段公式への有限生成一致の適用
 
 有限表示の降下、λ* の有限段公式、係数拡大の冪ねじれは
 `LengthAlgebra/RootTowerLength/FiniteStage.lean` に抽出した。
 ここには、C1（有限生成加群で λ∞ = λ*）を使う二つの有限段公式を残す。
-既存の宣言名・仮定・結論・証明を保持する。
+宣言名・仮定・結論を保持し、証明済み C1 を適用する。
 -/
 
 @[expose] public section
@@ -39,7 +39,7 @@ theorem towerLengthFun_tensor (n : ℕ) (V : Type u) [AddCommGroup V]
       (Module.length (TowerStage A t p n) V : ℝ≥0∞) / (stageRank h p n : ℝ≥0∞) := by
   haveI : IsNoetherian (TowerStage A t p n) V :=
     (isFiniteLength_iff_isNoetherian_isArtinian.mp hV).1
-  rw [towerLengthFun_eq_fgLength A t p _ (isPowTorsion_tower_tensor A t p n V hVt),
+  rw [towerLengthFun_eq_fgLength A t p ht _ (isPowTorsion_tower_tensor A t p n V hVt),
     fgLength_tensor A t p ht n V hV]
 
 include ht in

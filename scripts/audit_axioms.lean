@@ -3,6 +3,8 @@ import SerrePositivity
 import Mathlib.Util.PrintSorries
 import Mathlib.Util.AssertNoSorry
 #print axioms SerrePositivity.lengthNat_add_of_exact
+#print axioms SerrePositivity.Section2.towerLengthFun_eq_fgLength
+#print axioms SerrePositivity.Section2.towerLengthFun_tensor
 #print axioms SerrePositivity.lengthNat_ker_add_range
 #print axioms SerrePositivity.lengthNat_eq_add_range
 #print axioms SerrePositivity.lengthInt_eq_add_range
@@ -47,6 +49,8 @@ import Mathlib.Util.AssertNoSorry
 
 -- 共通層・仮定確認・標準可換環論には未証明依存を認めない。
 assert_no_sorry SerrePositivity.lengthNat_add_of_exact
+assert_no_sorry SerrePositivity.Section2.towerLengthFun_eq_fgLength
+assert_no_sorry SerrePositivity.Section2.towerLengthFun_tensor
 assert_no_sorry SerrePositivity.lengthNat_ker_add_range
 assert_no_sorry SerrePositivity.lengthNat_eq_add_range
 assert_no_sorry SerrePositivity.lengthInt_eq_add_range

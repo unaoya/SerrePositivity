@@ -109,7 +109,8 @@ theorem towerLengthFun_perfection_koszulHomology_eq_zero_of_tendsto
       A D p t ht hdim hinj hres hbase hsep n z hz i).1
   have hzlim := subalgebraKoszulHomology_len_eq_zero R C B hB z₀
     (exists_mem_perfectionApproximation D p R) (towerLength A t p)
-    (towerLength_hasSup A t p) i N (fun n ↦ by
+    (towerLength_hasSup A t p
+      (fun i ↦ by rw [← ht]; exact Ideal.subset_span (Set.mem_range_self i))) i N (fun n ↦ by
       rw [he]
       exact hN n i) (by
         have heq : (fun n ↦ (towerLength A t p).len

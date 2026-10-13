@@ -628,6 +628,10 @@ noncomputable abbrev JT : Ideal (TS A t p T) :=
 noncomputable abbrev μT : NormalizedLength (TS A t p T) (JT A t p T) :=
   (towerLength A t p).comap (algebraMap (Tower A t p) (TS A t p T)) _ le_rfl
 
+variable [IsNoetherianRing A] [Fact p.Prime] (ht : ∀ i, t i ∈ maximalIdeal A)
+
+include ht
+
 /-- **部分加群による近似**：`J` 冪ねじれで `μ(M) < ∞` の `S` 加群 `M` と `ε > 0` について、有限生成な
 部分 `S` 加群 `V` で `μ(M / V) ≤ ε` となるものがある。`λ_∞` の上限の性質 (2.3) による。 -/
 theorem exists_fg_quotient_le (M : Type u) [AddCommGroup M] [Module (TS A t p T) M]
@@ -642,7 +646,7 @@ theorem exists_fg_quotient_le (M : Type u) [AddCommGroup M] [Module (TS A t p T)
       IsPowTorsion.comap (algebraMap (Tower A t p) (TS A t p T)) le_rfl M hM
     have hc : (μT A t p T).len M - ε < (towerLength A t p).len M :=
       ENNReal.sub_lt_self hMfin (ne_of_gt (lt_of_le_of_lt zero_le hlt)) hε.ne'
-    obtain ⟨N, hNfg, hN⟩ := NormalizedLength.exists_fg_lt (towerLength_hasSup A t p) hMΛ hc
+    obtain ⟨N, hNfg, hN⟩ := NormalizedLength.exists_fg_lt (towerLength_hasSup A t p ht) hMΛ hc
     obtain ⟨S₀, hS₀⟩ := hNfg
     let V := Submodule.span (TS A t p T) (S₀ : Set M)
     refine ⟨V, ⟨S₀, rfl⟩, ?_⟩
@@ -683,7 +687,7 @@ theorem exists_finitePresentation_approx (U : Type u) [AddCommGroup U] [Module (
       (_ : Module.FinitePresentation (TS A t p T) P) (f : P →ₗ[TS A t p T] U),
       IsPowTorsion (JT A t p T) P ∧ (μT A t p T).len (LinearMap.ker f) ≤ ε ∧
         (μT A t p T).len (U ⧸ LinearMap.range f) ≤ ε := by
-  obtain ⟨V, hVfg, hV⟩ := exists_fg_quotient_le A t p T U hU hUfin ε hε
+  obtain ⟨V, hVfg, hV⟩ := exists_fg_quotient_le A t p T ht U hU hUfin ε hε
   obtain ⟨r, s, hs⟩ := Submodule.fg_iff_exists_fin_generating_family.mp hVfg
   let g : (Fin r → TS A t p T) →ₗ[TS A t p T] U := Fintype.linearCombination (TS A t p T) s
   have hg : LinearMap.range g = V := by
@@ -696,7 +700,7 @@ theorem exists_finitePresentation_approx (U : Type u) [AddCommGroup U] [Module (
   have hKt : IsPowTorsion (JT A t p T) K := hFt.submodule K
   have hKfin : (μT A t p T).len K ≠ ⊤ :=
     ne_top_of_le_ne_top (hSfin r) ((μT A t p T).len_submodule_le hFt K)
-  obtain ⟨K₀, hK₀fg, hK₀⟩ := exists_fg_quotient_le A t p T K hKt hKfin ε hε
+  obtain ⟨K₀, hK₀fg, hK₀⟩ := exists_fg_quotient_le A t p T ht K hKt hKfin ε hε
   let L₀ := K₀.map K.subtype
   have hL₀ : L₀ ≤ LinearMap.ker g := Submodule.map_subtype_le K K₀
   let f := L₀.liftQ g hL₀
@@ -871,7 +875,7 @@ theorem exists_stage_step {ι : Type*} (G : ι → CochainComplex (ModuleCat.{u}
           (μT A t p T).len ((tensorRes (ψU A t p T B) (G k) U).homology m) ≤
             lenB A t p T B j ((tensorRes (φB A t p T B j) (G k) V).homology m) +
               ((rk (ψU A t p T B) (G k) (m + 1) : ℝ≥0∞) + rk (ψU A t p T B) (G k) m) * ε := by
-  obtain ⟨P, _, _, _, f, hPt, hK, hW⟩ := exists_finitePresentation_approx A t p T U hU hUfin
+  obtain ⟨P, _, _, _, f, hPt, hK, hW⟩ := exists_finitePresentation_approx A t p T ht U hU hUfin
     (isPowTorsion_TS A t p T hTa) (μT_pi_ne_top A t p T ht hTa hresT) ε hε
   obtain ⟨j, hnj, V, _, _, hVfin, ⟨e⟩⟩ := exists_descentT A t p T P n
   let VM := ModuleCat.of (TSj A t p T j) V

@@ -28,7 +28,10 @@ namespace SerrePositivity
 
 namespace Section2
 
-variable (A : Type u) [CommRing A] [IsLocalRing A] {h : ℕ} (t : Fin h → A) (p : ℕ)
+variable (A : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
+  {h : ℕ} (t : Fin h → A) (p : ℕ) [Fact p.Prime] (ht : ∀ i, t i ∈ maximalIdeal A)
+
+include ht
 
 /-- **Lemma 2.4 (1)、和**：`m_A Λ` 冪ねじれ加群 `M` の部分加群の族で各 `λ_∞(V_i) = 0` なら
 `λ_∞(⨆ V_i) = 0`。 -/
@@ -36,7 +39,7 @@ theorem lemma_2_4_iSup (M : Type u) [AddCommGroup M] [Module (Tower A t p) M]
     (hM : IsPowTorsion (towerMaxIdeal A t p) M) {ι : Type*}
     (V : ι → Submodule (Tower A t p) M) (hV : ∀ i, towerLengthFun A t p (V i) = 0) :
     towerLengthFun A t p (⨆ i, V i : Submodule (Tower A t p) M) = 0 :=
-  NormalizedLength.len_iSup_eq_zero (towerLength_hasSup A t p) hM V hV
+  NormalizedLength.len_iSup_eq_zero (towerLength_hasSup A t p ht) hM V hV
 
 /-- **Lemma 2.4 (1)、直和**：各 `V_i` が `(m_A Λ)^n` で消え `λ_∞(V_i) = 0` なら
 `λ_∞(⨁ V_i) = 0`。 -/
@@ -45,7 +48,7 @@ theorem lemma_2_4_directSum {ι : Type u} (V : ι → Type u)
     (hn : ∀ i, Module.IsTorsionBySet (Tower A t p) (V i) (towerMaxIdeal A t p ^ n : Ideal _))
     (hV : ∀ i, towerLengthFun A t p (V i) = 0) :
     towerLengthFun A t p (⨁ i, V i) = 0 :=
-  NormalizedLength.len_directSum_eq_zero (towerLength_hasSup A t p) V n hn hV
+  NormalizedLength.len_directSum_eq_zero (towerLength_hasSup A t p ht) V n hn hV
 
 /-- **Lemma 2.4 (2)、増大列の合併**：有向な部分加群の族で `λ_∞(⨆ V_i) = ⨆ λ_∞(V_i)`。 -/
 theorem lemma_2_4_iSup_of_directed (M : Type u) [AddCommGroup M] [Module (Tower A t p) M]
@@ -53,7 +56,7 @@ theorem lemma_2_4_iSup_of_directed (M : Type u) [AddCommGroup M] [Module (Tower 
     (V : ι → Submodule (Tower A t p) M) (hdir : Directed (· ≤ ·) V) :
     towerLengthFun A t p (⨆ i, V i : Submodule (Tower A t p) M) =
       ⨆ i, towerLengthFun A t p (V i) :=
-  NormalizedLength.len_iSup_of_directed (towerLength_hasSup A t p) hM V hdir
+  NormalizedLength.len_iSup_of_directed (towerLength_hasSup A t p ht) hM V hdir
 
 /-- **Lemma 2.4 (3)、有向余極限**：各 `V_i` が `(m_A Λ)^n` で消え `λ_∞(V_i) → 0` なら
 `λ_∞(lim→ V_i) = 0`。遷移写像の単射性は要らない。 -/
@@ -63,7 +66,7 @@ theorem lemma_2_4_directLimit {ι : Type u} [Preorder ι] [IsDirectedOrder ι] [
     (hn : ∀ i, Module.IsTorsionBySet (Tower A t p) (V i) (towerMaxIdeal A t p ^ n : Ideal _))
     (hlim : Filter.Tendsto (fun i ↦ towerLengthFun A t p (V i)) Filter.atTop (nhds 0)) :
     towerLengthFun A t p (Module.DirectLimit V f) = 0 :=
-  NormalizedLength.len_directLimit_eq_zero_of_tendsto (towerLength_hasSup A t p) V f n hn hlim
+  NormalizedLength.len_directLimit_eq_zero_of_tendsto (towerLength_hasSup A t p ht) V f n hn hlim
 
 end Section2
 
