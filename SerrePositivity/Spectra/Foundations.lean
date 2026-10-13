@@ -19,6 +19,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.Free
 public import SerrePositivity.Spectra.SymmetricSpectrum.Evaluation
 public import SerrePositivity.Spectra.SymmetricSpectrum.Limits
 public import SerrePositivity.Spectra.SymmetricSpectrum.FreeLevels
+public import SerrePositivity.Spectra.SymmetricSpectrum.FreeLevelInduction
 
 /-!
 # スペクトルの具体的基盤の入口
@@ -66,10 +67,13 @@ convolutionの乗法の可換性を証明し、球面対称列を可換モノイ
 各段の評価の左随伴を構成し、基点付き単体的集合から第n段を生成する自由スペクトルへ接続した。
 内部加群の極限・余極限を共通層で構成し、対称スペクトルの各段の比較同型まで接続した。
 自由スペクトルの各段の分解図式・生成元・ブロック作用の関係式と、n未満の段の零対象性を構成した。
+生成元の関係式を満たす射の族からの延長と一意性を証明し、各段からの射とのHom同値を構成した。
+第二ブロックをnに固定した誘導図式の余極限と、自由スペクトルの各段との比較同型を構成した。
+各項はm−n次球面と入力のsmashであり、比較同型の両方向を生成元・標準包含と比較した。
 
 ## 未構成の範囲
 
-球面上のテンソル積、自由スペクトルの各段の誘導表示との比較、モデル構造と導来演算は引き続き実装する。
+球面上のテンソル積、誘導図式と対称群の明示的な商表示との比較、モデル構造と導来演算は引き続き実装する。
 この入口は完成済みの§4の降下入力を変更せず、基盤を独立に検証するためのもの。
 現在の構成に新しい未証明入力はない。
 -/

@@ -38,6 +38,32 @@ lemma freeInduction_card (n m : ℕ)
   have h : FiniteBijection.card d.left + n = m := FiniteBijection.card_eq_of_hom d.hom
   omega
 
+omit [MonoidalClosed C] [HasColimitsOfSize.{0, 0} C] in
+/-- 誘導図式の各項は、次数m−nの段と入力のテンソル積。 -/
+lemma freeInductionDiagram_obj (F : SymmetricSequence C) (n : ℕ) (X : C) (m : ℕ)
+    (d : CostructuredArrow (FiniteBijection.addRight n) (FiniteBijection.of m)) :
+    (freeInductionDiagram F n X m).obj d = F.obj (FiniteBijection.of (m - n)) ⊗ X := by
+  change F.obj d.left ⊗ X = _
+  have h : d.left = FiniteBijection.of (m - n) := by
+    rw [← FiniteBijection.of_card d.left, freeInduction_card n m d]
+  rw [h]
+
+/-- 射の決定には第一ブロックm−nの生成元だけで十分。 -/
+lemma freeConvolutionLevel_hom_ext_standard (F : SymmetricSequence C) (n : ℕ) (X : C)
+    (m : ℕ) {Y : C} (f g : level (convolution F ((freeAt n).obj X)) m ⟶ Y)
+    (h : ∀ k : FiniteBijection.sumObj (FiniteBijection.of (m - n))
+        (FiniteBijection.of n) ⟶ FiniteBijection.of m,
+      freeConvolutionGenerator F n X m (FiniteBijection.of (m - n)) k ≫ f =
+        freeConvolutionGenerator F n X m (FiniteBijection.of (m - n)) k ≫ g) : f = g := by
+  apply freeConvolutionLevel_hom_ext
+  intro a k
+  have ha : a = FiniteBijection.of (m - n) := by
+    have hc : FiniteBijection.card a = m - n :=
+      freeInduction_card n m (CostructuredArrow.mk (Y := a) k)
+    exact (FiniteBijection.of_card a).symm.trans (congrArg FiniteBijection.of hc)
+  subst a
+  exact h k
+
 /-- 誘導図式の余錐を、関係式を満たす射の族として読む。 -/
 def freeInductionFamily (F : SymmetricSequence C) (n : ℕ) (X : C) (m : ℕ)
     (c : Cocone (freeInductionDiagram F n X m)) : FreeConvolutionFamily F n X m c.pt where
@@ -59,7 +85,9 @@ def freeInductionCocone (F : SymmetricSequence C) (n : ℕ) (X : C) (m : ℕ) :
     change F.map φ.left ▷ X ≫ freeConvolutionGenerator F n X m e.left e.hom =
       freeConvolutionGenerator F n X m d.left d.hom ≫ 𝟙 _
     erw [Category.comp_id, freeConvolutionGenerator_left_relation]
-    rw [CostructuredArrow.w φ]
+    have h := CostructuredArrow.w φ
+    change FiniteBijection.sumMap φ.left (𝟙 (FiniteBijection.of n)) ≫ e.hom = d.hom at h
+    exact congrArg (freeConvolutionGenerator F n X m d.left) h
 
 /-- 各段は誘導図式の余極限の普遍性を持つ。 -/
 def freeInductionCoconeIsColimit (F : SymmetricSequence C) (n : ℕ) (X : C) (m : ℕ) :
@@ -86,5 +114,15 @@ def freeConvolutionLevelIsoInduction (F : SymmetricSequence C) (n : ℕ) (X : C)
         colimit.ι (freeInductionDiagram F n X m) d :=
   (freeInductionCoconeIsColimit F n X m).comp_coconePointUniqueUpToIso_hom
     (colimit.isColimit _) d
+
+/-- 誘導表示の逆同型は標準包含を各段の生成元へ戻す。 -/
+@[reassoc (attr := simp)] lemma freeConvolutionLevelIsoInduction_inclusion
+    (F : SymmetricSequence C) (n : ℕ) (X : C) (m : ℕ)
+    (d : CostructuredArrow (FiniteBijection.addRight n) (FiniteBijection.of m)) :
+    colimit.ι (freeInductionDiagram F n X m) d ≫
+      (freeConvolutionLevelIsoInduction F n X m).inv =
+        freeConvolutionGenerator F n X m d.left d.hom := by
+  rw [← freeConvolutionLevelIsoInduction_generator, Category.assoc, Iso.hom_inv_id,
+    Category.comp_id]
 
 end SerrePositivity.SymmetricSequence

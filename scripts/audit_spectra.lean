@@ -18,6 +18,7 @@ run_cmd do
         `SerrePositivity.GroupTheory.Coxeter, `SerrePositivity.CategoryTheory.FiniteBijection,
         `SerrePositivity.CategoryTheory.FiniteBijectionAction,
         `SerrePositivity.CategoryTheory.FiniteBijectionSum,
+        `SerrePositivity.CategoryTheory.FiniteBijectionShift,
         `SerrePositivity.CategoryTheory.FiniteBlockEquiv].any (·.isPrefixOf mod) do continue
     let axioms ← collectAxioms name
     let unexpected := axioms.filter fun ax ↦
