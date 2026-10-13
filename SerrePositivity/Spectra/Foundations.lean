@@ -1,0 +1,75 @@
+module
+
+public import SerrePositivity.Spectra.Pointed.AdjoinBasepoint
+public import SerrePositivity.Spectra.Pointed.Smash
+public import SerrePositivity.Spectra.PointedSimplicialSet.Monoidal
+public import SerrePositivity.Spectra.SymmetricSequence.Pointed
+public import SerrePositivity.Spectra.SymmetricSequence.SphereSequence
+public import SerrePositivity.Spectra.SymmetricSequence.SpherePowerCoherence
+public import SerrePositivity.Spectra.SymmetricSequence.SphereMultiplication
+public import SerrePositivity.Spectra.SymmetricSequence.SphereUnit
+public import SerrePositivity.Spectra.SymmetricSequence.SphereMonoid
+public import SerrePositivity.Spectra.SymmetricSequence.SphereCommutativity
+public import SerrePositivity.Spectra.SymmetricSequence.SphereFirstCrossing
+public import SerrePositivity.Spectra.SymmetricSequence.SphereSingleBlockSwap
+public import SerrePositivity.Spectra.SymmetricSequence.SphereCommMonoid
+public import SerrePositivity.Spectra.SymmetricSpectrum.Suspension
+public import SerrePositivity.Spectra.SymmetricSpectrum.Sphere
+public import SerrePositivity.Spectra.SymmetricSpectrum.Free
+public import SerrePositivity.Spectra.SymmetricSpectrum.Evaluation
+public import SerrePositivity.Spectra.SymmetricSpectrum.Limits
+public import SerrePositivity.Spectra.SymmetricSpectrum.FreeLevels
+
+/-!
+# スペクトルの具体的基盤の入口
+
+## 構成済みの範囲
+
+直積モノイダル圏の終対象の下の圏として、基点付き対象を構成した。
+零対象、直積、自由な基点の追加と忘却の随伴、wedge と通常の smash 積の普遍性を含む。
+smash 積は二変数関手として構成済みであり、単体的集合へ特殊化できる。
+基点付き単体的集合の各次数の基点と、単体的な基点付き集合との圏同値も含む。
+境界を基点へ潰す商の普遍性を証明し、単体的球面と円を定義した。
+smash の交換同型、左右単位の自然同型を構成した。
+閉直積圏の直積の余積保存を使い、単体的集合の閉構造から単位の仮定を供給する。
+等化子で基点付き内部 Hom を構成し、smash との Hom 同値・随伴・余極限保存を証明した。
+直積の pushout 保存と三変数の普遍性から、smash の結合同型とその自然性を構成した。
+四変数の標準射による pentagon と、三変数の交換による二つの hexagon も証明した。
+零次球面の二成分で triangle を証明し、通常の smash の閉対称モノイダル構造を登録した。
+有限集合の全単射亜群上の対称列、各段の置換作用、直和の二変数関手を構成した。
+外部テンソル積の左 Kan 拡張として convolution とその普遍性・各段の余極限表示を得た。
+添字圏の直和と convolution の対称モノイダル構造を登録した。
+convolution の内部 Hom の end、関手性、評価・余評価と随伴を構成し、閉構造を登録した。
+反復テンソルの関手性と次数の連結同型、最初の二因子の交換を構成し、
+円の反復 smash による球面対称列の各段へ特殊化した。
+各位置の隣接交換、対合性、離れた交換の可換性、braid 関係も証明した。
+共通の群論基盤へ移植した型 A と対称群の同型を使い、全次数の置換作用を構成した。
+反復テンソルの一般論は `CategoryTheory.Monoidal`、型 A の一般論は `GroupTheory.Coxeter` に置く。
+各段の作用を全単射圏上の関手へまとめ、円の反復 smash による球面対称列を構成した。
+次数の連結の単位・結合の整合性と、左右ブロックの隣接交換との両立も証明した。
+隣接互換による帰納を使い、任意の左右ブロック置換に関する連結の同変性も証明した。
+連結を全単射圏上の自然変換へまとめ、convolutionの普遍性から乗法を構成した。
+乗法の因子化と一意性を証明し、球面対称列へ特殊化した。
+空集合からの左 Kan 拡張の普遍性で単位射を構成し、因子化と一意性を証明した。
+乗法と単位射を組み合わせた、左右の標準射上の単位比較も証明した。
+二段の左 Kan 拡張の普遍性で、その比較をconvolution全体の左右単位則へ持ち上げた。
+三重convolutionの普遍性で乗法の結合則も証明し、球面対称列をモノイド対象として構成した。
+乗法の可換性を各次数のブロック全体の交換へ帰着し、第0段を含む場合を証明した。
+先頭因子を末尾へ送る巡回置換の作用を、隣接交換の列とbraidingによる射の両方と比較した。
+その比較を、第1段と任意の段の左右のブロック交換と連結の両立へ接続した。
+反復テンソル関手のbraidingの保存を帰納で証明し、一般の二ブロックの交換へ拡張した。
+convolutionの乗法の可換性を証明し、球面対称列を可換モノイド対象として構成した。
+球面モノイド上の内部加群として対称スペクトルの対象・射・圏と忠実な忘却関手を構成した。
+各次数の構造射、置換の同変性、射との両立、単位・結合の整合性を証明した。
+円のsmashによる懸垂構造射と、正則加群としての球面スペクトルも構成した。
+自由内部加群の一般論を球面へ特殊化し、自由スペクトル・忘却関手の随伴と延長の一意性を構成した。
+各段の評価の左随伴を構成し、基点付き単体的集合から第n段を生成する自由スペクトルへ接続した。
+内部加群の極限・余極限を共通層で構成し、対称スペクトルの各段の比較同型まで接続した。
+自由スペクトルの各段の分解図式・生成元・ブロック作用の関係式と、n未満の段の零対象性を構成した。
+
+## 未構成の範囲
+
+球面上のテンソル積、自由スペクトルの各段の誘導表示との比較、モデル構造と導来演算は引き続き実装する。
+この入口は完成済みの§4の降下入力を変更せず、基盤を独立に検証するためのもの。
+現在の構成に新しい未証明入力はない。
+-/
