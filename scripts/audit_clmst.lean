@@ -1,0 +1,29 @@
+-- lake build の後、lake env lean scripts/audit_clmst.lean で実行する。
+import SerrePositivity.CommutativeAlgebra.GenericEtale
+import SerrePositivity.CommutativeAlgebra.RootTower.Koszul
+import SerrePositivity.LengthAlgebra.RootTowerLength.FiniteStage
+import SerrePositivity.LengthAlgebra.RootTowerLength.Completion
+import Mathlib.Util.AssertNoSorry
+
+-- 共通の根の塔と数値関数に、長さの一致・加法性の引用を持ち込まない。
+#print axioms SerrePositivity.Section2.towerMap_towerMap
+#print axioms SerrePositivity.Section2.residue_surjective_towerStage
+#print axioms SerrePositivity.Section2.exists_descent
+#print axioms SerrePositivity.Section2.fgLength_tensor
+#print axioms SerrePositivity.Section2.fgLength_le_of_surjective
+#print axioms SerrePositivity.Section2.fgLength_le_presentedLength
+#print axioms SerrePositivity.Section2.completedLengthOf_restrictScalars
+#print axioms SerrePositivity.Section2.isPowTorsion_completedTower_koszul
+#print axioms SerrePositivity.GenericEtale.exists_finite_etale_away_of_separable_fractionRing
+
+assert_no_sorry SerrePositivity.Section2.towerMap_towerMap
+assert_no_sorry SerrePositivity.Section2.residue_surjective_towerStage
+assert_no_sorry SerrePositivity.Section2.exists_descent
+assert_no_sorry SerrePositivity.Section2.fgLength_tensor
+assert_no_sorry SerrePositivity.Section2.fgLength_le_of_surjective
+assert_no_sorry SerrePositivity.Section2.fgLength_le_presentedLength
+assert_no_sorry SerrePositivity.Section2.completedLengthOf_restrictScalars
+assert_no_sorry SerrePositivity.Section2.isPowTorsion_completedTower_koszul
+assert_no_sorry SerrePositivity.GenericEtale.exists_finite_etale_away_of_separable_fractionRing
+assert_no_sorry SerrePositivity.GenericEtale.exists_finite_etale_away_of_separable_minpoly
+assert_no_sorry SerrePositivity.GenericEtale.exists_finite_etale_away_of_charZero

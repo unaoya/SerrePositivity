@@ -3,6 +3,7 @@ module
 public import SerrePositivity.CommutativeAlgebra.HilbertSamuel
 public import SerrePositivity.CommutativeAlgebra.Koszul
 public import SerrePositivity.Paper.Section2.TowerLength
+public import SerrePositivity.CommutativeAlgebra.RootTower.Restriction
 public import SerrePositivity.PerfectComplex.NormalizedLengthComap
 public import Mathlib.Algebra.CharP.Defs
 public import Mathlib.FieldTheory.Perfect
@@ -32,33 +33,10 @@ namespace SerrePositivity
 
 namespace Section2
 
-/-- 局所環 `A` 上有限な局所環 `D` で `A → D` が単射なら `m_A D ⊆ m_D`（`A → D` は整拡大なので
-局所準同型）。 -/
-lemma maximalIdeal_map_le_of_finite_of_injective (A D : Type u) [CommRing A] [IsLocalRing A]
-    [CommRing D] [IsLocalRing D] [Algebra A D] [Module.Finite A D]
-    (hinj : Function.Injective (algebraMap A D)) :
-    (maximalIdeal A).map (algebraMap A D) ≤ maximalIdeal D := by
-  have : FaithfulSMul A D := (faithfulSMul_iff_algebraMap_injective A D).mpr hinj
-  rw [Ideal.map_le_iff_le_comap]
-  intro a ha
-  rw [Ideal.mem_comap, mem_maximalIdeal, mem_nonunits_iff]
-  intro hu
-  exact (mem_nonunits_iff.mp ((mem_maximalIdeal a).mp ha)) (IsLocalHom.map_nonunit a hu)
-
 variable (A D : Type u) [CommRing A] [IsLocalRing A] [CommRing D] [IsLocalRing D] [Algebra A D]
   [Module.Finite A D] (hinj : Function.Injective (algebraMap A D)) {h : ℕ} (t : Fin h → A) (p : ℕ)
   (C : Type u) [CommRing C] [Algebra A C] [Algebra D C] [Algebra (Tower A t p) C]
   [IsScalarTower A D C] [IsScalarTower A (Tower A t p) C]
-
-include hinj in
-/-- `m_A C ≤ 𝔡 C`：`m_A Λ` の `C` での像は `m_D C` に入る。 -/
-lemma towerMaxIdeal_map_le :
-    (towerMaxIdeal A t p).map (algebraMap (Tower A t p) C) ≤
-      (maximalIdeal D).map (algebraMap D C) := by
-  dsimp only [towerMaxIdeal]
-  rw [Ideal.map_map, ← IsScalarTower.algebraMap_eq, IsScalarTower.algebraMap_eq A D C,
-    ← Ideal.map_map]
-  exact Ideal.map_mono (maximalIdeal_map_le_of_finite_of_injective A D hinj)
 
 /-- **`λ_D`**：`λ_∞` の `Λ → C` に沿った係数制限。`𝔡 C` 冪ねじれ `C` 加群の上の正規化長さ。 -/
 noncomputable def towerLengthOn : NormalizedLength C ((maximalIdeal D).map (algebraMap D C)) :=
