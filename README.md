@@ -27,7 +27,8 @@ map, parameters, finite power-series evaluation and injectivity. By section of t
 - §2 (residue fields, normalized length, Theorem 2.5): proved relative to 7 quotations
   (Cohen–Gabber normalization, Roberts' Frobenius
   theorem, the perfectoid tower, perfectoidization,
-  three results of Cai–Lee–Ma–Schwede–Tucker). These are the results the preprint itself cites.
+  three results of Cai–Lee–Ma–Schwede–Tucker: the cyclic length estimate,
+  cohomology vanishing and perfectoidization isogeny).
 - §3 (Lemmas 3.4–3.5): proved, except that Theorem 3.1 (rational K-theory descent) is deferred
   (`theorem_3_1_K0`).
 - §4 (Theorem 4.7): proved, except that the descent of Lemma 4.6 is deferred
@@ -43,6 +44,12 @@ is used by that comparison, but is not an additional dependency of the main theo
 The three legacy CLMST entry points are now proved specializations of the independent
 inputs in `CLMST/Inputs/`: cyclic vanishing, all-stage cohomology vanishing and the
 all-stage parameter quotient formula. Their literature dependencies remain explicit.
+
+The all-stage parameter quotient formula (CLMST Proposition 4.0.14) is now proved from
+the shared Euler and cone theory, flat base change and finite-stage normalized length
+calculations. Its remaining quotations are perfectoidization existence, Proposition 2.4.7,
+Corollary 4.0.4 and Proposition 4.0.10. Proposition 2.4.7 replaces Proposition 4.0.14 in the
+main theorem’s dependencies; the total quotation count stays unchanged.
 
 The table of quotations, the status of every proposition and the module map are kept in
 appendix A of the exposition; the actual dependencies are checked by `scripts/audit_axioms.lean`.

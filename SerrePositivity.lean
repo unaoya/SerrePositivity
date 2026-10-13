@@ -61,6 +61,11 @@ public import SerrePositivity.CLMST.StagePowerMembership
 public import SerrePositivity.CLMST.SelectedParameterEuler
 public import SerrePositivity.CLMST.CompletedParameterFiniteness
 public import SerrePositivity.CLMST.ParameterLastPowerLength
+public import SerrePositivity.CLMST.StageResidueLength
+public import SerrePositivity.CLMST.SourceEulerEvaluation
+public import SerrePositivity.CLMST.ParameterFormulaDescent
+public import SerrePositivity.CommutativeAlgebra.AdicCompletionTorsionTensor
+public import SerrePositivity.LengthAlgebra.RootTowerLength.CompletedTensorEvaluation
 public import SerrePositivity.CommutativeAlgebra.ParameterLastPowerMultiplicity
 public import SerrePositivity.CLMST.PerfectoidCokernelEuler
 public import SerrePositivity.CLMST.StageParameterChange
