@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.Paper.Section2.MixedPerfectoid
 public import SerrePositivity.Inputs.PerfectoidTower
+public import SerrePositivity.CLMST.NormalizedAlmostLength
 
 /-! # CLMST の混標数の定理（文献からの引用）
 
@@ -10,8 +11,9 @@ and an application to local fundamental groups*, arXiv:2209.04046v4。
 出典：https://arxiv.org/html/2209.04046v4
 
 `C_D = (R∞ ⊗[A] D)_perfd` と `(g)_perfd = ker(R∞ → (R∞/g)_perfd)` は
-普遍性による定義を使う。引用するのは Corollary 4.0.4、Proposition 4.0.10 の零の場合、
-Proposition 4.0.14 の `n = 0` の場合である。
+普遍性による定義を使う。Corollary 4.0.4 と Proposition 4.0.14 の `n = 0` の場合を引用する。
+Proposition 4.0.10 については Paper 非依存の巡回評価を引用し、
+このファイルの一般加群の長さ零はその評価への帰着として証明する。
 これらの適用に必要な Koszul ホモロジーの冪ねじれと、完備化前の塔への長さの移送は
 引用に含めず、`CompletedTower` と `MixedLengthAlgebra` で証明する。
 -/
@@ -24,7 +26,8 @@ namespace SerrePositivity.Inputs
 open Section2
 
 /-- `(g)_perfd` に消される `m_A` 冪ねじれ加群は正規化長さ零。
-引用：CLMST Proposition 4.0.10 の `N = 0` の場合。その証明は任意の非零 `g ∈ A` に適用でき、
+CLMST Proposition 4.0.10 の零の場合への互換入口。巡回商の評価だけを
+`CLMST.Inputs.AlmostLength` で引用し、一般加群への帰着は証明する。任意の非零 `g ∈ A` に適用でき、
 有限拡大が `g` の外で étale であるという条件はこの命題には不要。 -/
 theorem clmst_length_eq_zero_of_perfectoidIdeal_annihilates
     (A k : Type u) [CommRing A] [IsRegularLocalRing A] [Field k]
@@ -41,7 +44,8 @@ theorem clmst_length_eq_zero_of_perfectoidIdeal_annihilates
       (algebraMap A (CompletedTower A t p) g) ≤ Module.annihilator (CompletedTower A t p) M) :
     (completedTowerLength A t p
       (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i))).len M = 0 := by
-  sorry
+  exact CLMST.completedLength_eq_zero_of_perfectoidIdeal_annihilates
+    A k p t hpos htp ht hdim e he hperf g hg M hM hann
 
 variable (A D : Type u) [CommRing A] [IsRegularLocalRing A]
     [IsAdicComplete (maximalIdeal A) A]

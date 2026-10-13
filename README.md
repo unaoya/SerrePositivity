@@ -16,7 +16,7 @@ its perfect-complex and rank-quotient realizations, the standard commutative alg
 (regular parameters, unmixedness, Hilbert–Samuel theory, the Koszul multiplicity formula) and
 the connection to the main theorem are implemented.
 
-The formalization still depends on **11 external quotations and 2 deferred K-theory proofs**.
+The main theorem still depends on **11 external quotations and 2 deferred K-theory proofs**.
 `main_statement` and `core_statement` have no direct `sorry`, but depend on `sorryAx`.
 They are not proofs of the main theorem without those inputs. By section of the preprint:
 
@@ -31,6 +31,10 @@ They are not proofs of the main theorem without those inputs. By section of the 
 - §5 (Lemmas 5.2–5.6, the reduction and the core case): proved, with the two classical inputs
   Serre's equal-characteristic positivity (`Inputs.serrePositivity_of_field`) and the
   Roberts–Gillet–Soulé vanishing theorem (`Inputs.intersectionVanishing`) quoted.
+
+The CLMST almost-length comparison is also implemented using explicit quotations for the
+cyclic length estimate and the idempotence of the ideal modulo p powers. The latter quotation
+is used by that comparison, but is not an additional dependency of the main theorem.
 
 The table of quotations, the status of every proposition and the module map are kept in
 appendix A of the exposition; the actual dependencies are checked by `scripts/audit_axioms.lean`.

@@ -61,4 +61,25 @@ theorem isIso_perfectoidIdealMod_localization_iff (N : ℕ)
   Almost.isIso_quotient_localization_map_iff (Ideal.span {(p : R) ^ N})
     (perfectoidIdeal R p hR g) hM hM' f
 
+omit [Fact p.Prime] in
+/-- p が J に属すれば、一様な J 冪ねじれの二つの加群を同じ p の冪で零化できる。
+mod p^N の almost 圏へ移す指数は仮定ではなく、各加群の冪ねじれから供給する。 -/
+theorem exists_common_p_pow_annihilates (J : Ideal R) (hp : (p : R) ∈ J)
+    (M M' : ModuleCat.{u} R) (hM : IsPowTorsion J M) (hM' : IsPowTorsion J M') :
+    ∃ N : ℕ, Almost.IsAlmostZero (Ideal.span {(p : R) ^ N}) M ∧
+      Almost.IsAlmostZero (Ideal.span {(p : R) ^ N}) M' := by
+  obtain ⟨n, hn⟩ := hM
+  obtain ⟨n', hn'⟩ := hM'
+  refine ⟨n + n', ?_, ?_⟩
+  · change Ideal.span {(p : R) ^ (n + n')} ≤ Module.annihilator R M
+    rw [Ideal.span_singleton_le_iff_mem, Module.mem_annihilator]
+    intro m
+    rw [pow_add, mul_smul]
+    exact hn (a := ⟨(p : R) ^ n, Ideal.pow_mem_pow hp n⟩)
+  · change Ideal.span {(p : R) ^ (n + n')} ≤ Module.annihilator R M'
+    rw [Ideal.span_singleton_le_iff_mem, Module.mem_annihilator]
+    intro m
+    rw [Nat.add_comm n n', pow_add, mul_smul]
+    exact hn' (a := ⟨(p : R) ^ n', Ideal.pow_mem_pow hp n'⟩)
+
 end SerrePositivity.CLMST

@@ -250,8 +250,10 @@ T0-a の初回監査、T1 の共通層抽出、T3-a の一般定理に加え、C
 [長さの監査](clmst-length-audit.md)をもとに、Noether 局所基底・素数・座標条件を明示する。
 C1・C2 の証明には標準冪級数表示は不要である。
 almost 同型は実際の Serre 局所化で、導来完備性は実導来圏の射の消滅で定義した。
-次は perfectoid ideal の mod p^N の条件の接続と、導来完備化関手を扱う。
-CLMST の原典引用の新配置と、それを使う接続 T3-b〜e はまだ実装していない。
+mod p^N の冪等性の文献入力と almost 消滅への接続は下記の続きに記す。
+導来完備化関手の整備は残る。
+原典引用の新配置は巡回評価から着手し、T3-c の長さ零の帰着を実装した。
+Cor 4.0.4 と Prop 4.0.14 の新配置・一般 n の接続は引き続き残る。
 
 ## 続きの実装状況
 
@@ -266,6 +268,17 @@ almost 条件を商環へ移す比較は `Almost/Quotient.lean`、
 `LengthAlgebra/AlmostBaseChange.lean` と `CLMST/AlmostLength.lean` は、
 全加群の almost 圏の同型から、係数制限して測る長さの一致を導く。
 像イデアルの冪等性と零長さの条件を明示し、basic setup の証明に置き換えたとは扱わない。
+
+### 巡回評価・mod p^N の almost 比較
+
+- `CompletedNormalized` と `SupPropertyComap`：完備塔の長さと係数制限での上限を引用なしに構成。
+- `AlmostVanishing`：巡回商の長さ零と、一般の冪ねじれ almost zero 加群の長さ零の同値を証明。
+- `CLMST/Inputs/AlmostLength`：Prop 4.0.10 の証明中の巡回評価を引用。命題全体の引用とは区別。
+- `CLMST/Inputs/BasicSetup`：mod p^N の像イデアルの冪等性のみを引用。平坦性は未実装。
+- `CLMST/BasicSetup`：文献入力を局所的に供給する具体的な almost 圏。全域の instance は追加しない。
+- `AlmostQuotientAction`：元の加群へ実際の商環作用を与え、全 almost 圏の同型から元の長さ一致を証明。
+- `CLMST/NormalizedAlmostLength`：未知の長さ零・冪等性を前提にせず、二つの文献入力と一般論を接続。
+  旧長さ零宣言はこの層への適用であり、直接の sorry はない。
 
 ## 9. 根拠資料
 

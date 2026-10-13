@@ -9,7 +9,10 @@ import SerrePositivity.LengthAlgebra.RootTowerLength.Normalized
 import SerrePositivity.CLMST.AlmostLength
 import SerrePositivity.Paper.Section2.CompletedTower
 import SerrePositivity.Paper.Section2.TowerApproximation
+import SerrePositivity.CLMST.NormalizedAlmostLength
+import SerrePositivity.Inputs.CLMST
 import Mathlib.Util.AssertNoSorry
+import Mathlib.Util.PrintSorries
 
 -- 共通の根の塔と数値関数に、長さの一致・加法性の引用を持ち込まない。
 #print axioms SerrePositivity.Section2.towerMap_towerMap
@@ -79,3 +82,20 @@ assert_no_sorry SerrePositivity.Section2.towerLength_hasSup
 assert_no_sorry SerrePositivity.Section2.towerLengthOn
 assert_no_sorry SerrePositivity.Section2.completedTowerLength
 assert_no_sorry SerrePositivity.Section2.μT
+
+-- 巡回評価以外の消滅への帰着・係数制限は証明する。
+assert_no_sorry SerrePositivity.NormalizedLength.HasSup.comap
+assert_no_sorry SerrePositivity.RootTowerLength.completedNormalizedLength
+assert_no_sorry SerrePositivity.RootTowerLength.completedNormalizedLength_hasSup
+assert_no_sorry SerrePositivity.LengthAlgebra.length_eq_zero_of_cyclic_quotient
+assert_no_sorry SerrePositivity.LengthAlgebra.length_eq_zero_of_cyclic_quotients
+assert_no_sorry SerrePositivity.LengthAlgebra.length_eq_zero_for_almost_zero_iff
+#print axioms SerrePositivity.CLMST.completedLength_eq_zero_of_perfectoidIdeal_annihilates
+#print sorries SerrePositivity.Inputs.clmst_length_eq_zero_of_perfectoidIdeal_annihilates
+
+assert_no_sorry SerrePositivity.LengthAlgebra.quotient_comap_len
+assert_no_sorry SerrePositivity.LengthAlgebra.isPowTorsion_quotientModule_iff
+assert_no_sorry SerrePositivity.LengthAlgebra.length_eq_of_quotient_almost_iso
+assert_no_sorry SerrePositivity.CLMST.exists_common_p_pow_annihilates
+assert_no_sorry SerrePositivity.CLMST.exists_common_completedTower_p_pow_annihilates
+#print sorries SerrePositivity.CLMST.completedLength_eq_of_perfectoid_mod_almost_iso

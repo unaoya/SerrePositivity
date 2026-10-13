@@ -99,6 +99,47 @@ Section 2 の perfection・混標数構成・定理2.5、Section 5 の有限近�
 次の着手点は原典の basic setup と almost zero からの長さ零の接続である。
 導来完備化関手とその比較、原典引用の新配置 T2 と接続 T3-b〜e は引き続き残る。
 
+### 続き：巡回評価から almost 消滅・長さ比較への接続
+
+`SupPropertyComap` で、任意の環準同型による係数制限が HasSup を保つことを証明した。
+`RootTowerLength/CompletedNormalized` は完備塔上の正規化長さと HasSup を Paper 非依存で構成する。
+Paper の `completedTowerLength` はこの構成への互換入口となった。
+
+`LengthAlgebra/AlmostVanishing` は、任意の可換環・イデアル I,J と HasSup を持つ長さについて、
+各巡回商 `R/(J^n + I)` の長さ零から、一様な J 冪ねじれの I-almost zero 加群の長さ零を導く。
+逆向きも証明した。この帰着には Noether 性・I の冪等性は不要で、
+各元の巡回像による被覆と長さの上限を使う。
+
+文献入力 `CLMST/Inputs/AlmostLength` では、Prop 4.0.10 全体を引用する代わりに、
+その証明中の標準混標数基底上の巡回商の長さ評価を明示して引用する。
+ここには g=p の評価、mod p の Frobenius 比較と増大評価、g=p^c g' の扱いが残る。
+`CLMST/NormalizedAlmostLength` が一般加群へ適用し、
+旧 `Inputs.clmst_length_eq_zero_of_perfectoidIdeal_annihilates` の直接の `sorry` を除く。
+引用を消したという意味ではなく、引用と帰着の境界を狭めたものである。
+
+mod p^N の perfectoid ideal の冪等性は、別の `CLMST/Inputs/BasicSetup` で名前付きに引用する。
+根拠は CLMST §2.4 の Lemma 2.4.3 直前の段落と Bhatt–Scholze Remark 10.7。
+引用するのは冪等性だけであり、basic setup の平坦性等を実装済みとは扱わない。
+指数ゼロは零環の命題として証明した。
+`CLMST/BasicSetup` は局所的な Fact で全加群の almost 圏と局所化関手を構成する。
+全域の instance は登録しない。
+
+`AlmostQuotientAction` は、元の加群に p^N を法とする作用を実際に与え、
+商環の全 almost 圏での同型から元の加群の長さの一致を導く。
+一様な冪ねじれの二つの加群に共通の p^N を選べることも証明した。
+これにより Prop 4.0.10 の比較は、未知の長さ零条件や冪等性を引数として要求せず、
+二つの明示した文献入力から証明する。単一の線形写像の存在には弱めていない。
+
+検証：全体ビルド3900ジョブと両公理監査が成功。一般の帰着・係数制限・商環作用・
+共通指数の定理は標準3公理のみ。新しい6入口から辿る139モジュールに Paper import はない。
+旧零長さ宣言に直接の sorry はなく、巡回評価と既存の perfectoid 化の存在入力へ到達する。
+一般の almost 比較には、これらに加えて冪等性の名前付き入力が到達する。
+主定理に到達する未証明入力は13件のままである。
+
+main の消滅への接続は冪等性の新引用を使わない。従来の零長さ引用を巡回評価へ置き換えるため、
+主定理に到達する引用の件数は変わらない。原典の Cor 4.0.4 の一般形と g の選択、
+Prop 4.0.14 の一般 n の商比較、導来完備化関手の整備は後続工程である。
+
 ## 1. 目的と二つの前提
 
 最終目標は、本論文の定理2.5（混標数の長さ代数の二つの長さの性質、
