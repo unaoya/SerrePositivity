@@ -66,4 +66,22 @@ theorem lambdaKoszul_algebraMap_eq_of_cokernel_length_zero
   · simpa only [hprev, zero_add] using hb.2
   · simpa only [hcurrent, add_zero] using hb.1
 
+/-- 比較先の同次数と比較元の次次数が有限なら、余核の Koszul 長も有限。 -/
+theorem lambdaKoszul_algebraMap_cokernel_ne_top
+    (C : Type u) [CommRing C] [Algebra S C]
+    (hinj : Function.Injective (algebraMap S C)) (hfg : J.FG)
+    {e : ℕ} (z : Fin e → S) (hJ : J ≤ (Ideal.span (Set.range z)).radical) (q : ℤ)
+    (hC : lam.len (((koszulModuleFunctor z).obj (ModuleCat.of S C)).homology q) ≠ ⊤)
+    (hSnext : lam.len (((koszulModuleFunctor z).obj (ModuleCat.of S S)).homology (q + 1)) ≠ ⊤) :
+    lam.len (((koszulModuleFunctor z).obj
+      (ModuleCat.of S (AlgebraMapCokernel S C))).homology q) ≠ ⊤ := by
+  let sc := (algebraMapCokernelShortComplex S C).map (koszulModuleFunctor z)
+  have hs := koszulModuleFunctor_shortExact z (algebraMapCokernelShortComplex S C)
+    (algebraMapCokernelShortComplex_shortExact S C hinj)
+  exact lambdaHomology_shortExact_right_ne_top lam sc hs q
+    (isPowTorsion_koszulModuleHomology hfg z hJ (ModuleCat.of S C) q)
+    (isPowTorsion_koszulModuleHomology hfg z hJ
+      (ModuleCat.of S (AlgebraMapCokernel S C)) q)
+    (isPowTorsion_koszulModuleHomology hfg z hJ (ModuleCat.of S S) (q + 1)) hC hSnext
+
 end SerrePositivity

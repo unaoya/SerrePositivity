@@ -90,4 +90,31 @@ theorem completedTensor_parameter_koszul_length_bounds
     (Algebra.TensorProduct.includeRight.toRingHom ∘ z)
     (completedTensorMaxIdeal_le_parameter_radical A D t p hinj z hz) q
 
+/-- 具体的な長さについて、比較先の同次数と比較元の次次数から余核の有限性を導く。 -/
+theorem completedTensor_parameter_cokernel_length_ne_top
+    [IsLocalRing D] [Module.Finite A D] [IsDomain D] [CharZero D]
+    (hperf : IsIntegralPerfectoid (CompletedTower A t p) p)
+    (hinj : Function.Injective (algebraMap A D)) (g : A) (hg : g ≠ 0)
+    (hEtale : let _ := GenericEtale.awayAlgebra A D g
+      Algebra.Etale (Localization.Away g) (Localization.Away (algebraMap A D g)))
+    (z : Fin h → D) (hz : IsSystemOfParameters D z) (q : ℤ)
+    (hC : (completedTensorLength A D t p ht).len
+      (((koszulModuleFunctor (Algebra.TensorProduct.includeRight.toRingHom ∘ z)).obj
+        (ModuleCat.of ((CompletedTower A t p) ⊗[A] D) (RPerfd A D t p hperf))).homology q) ≠ ⊤)
+    (hSnext : (completedTensorLength A D t p ht).len
+      (((koszulModuleFunctor (Algebra.TensorProduct.includeRight.toRingHom ∘ z)).obj
+        (ModuleCat.of ((CompletedTower A t p) ⊗[A] D)
+          ((CompletedTower A t p) ⊗[A] D))).homology (q + 1)) ≠ ⊤) :
+    (completedTensorLength A D t p ht).len
+      (((koszulModuleFunctor (Algebra.TensorProduct.includeRight.toRingHom ∘ z)).obj
+        (ModuleCat.of ((CompletedTower A t p) ⊗[A] D)
+          (AlgebraMapCokernel ((CompletedTower A t p) ⊗[A] D)
+            (RPerfd A D t p hperf)))).homology q) ≠ ⊤ := by
+  let : Module.FinitePresentation A D := Module.finitePresentation_of_finite A D
+  exact lambdaKoszul_algebraMap_cokernel_ne_top (completedTensorLength A D t p ht)
+    (RPerfd A D t p hperf) (toMixedPerfectoid_injective_of_domain A D t p hperf hinj g hg hEtale)
+    (completedTensorMaxIdeal_fg A D t p)
+    (Algebra.TensorProduct.includeRight.toRingHom ∘ z)
+    (completedTensorMaxIdeal_le_parameter_radical A D t p hinj z hz) q hC hSnext
+
 end SerrePositivity.CLMST

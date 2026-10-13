@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.KoszulTower
+public import SerrePositivity.LengthAlgebra.ConeHomologyLength
 public import SerrePositivity.CategoryTheory.ConeLengthBinomial
 public import SerrePositivity.CommutativeAlgebra.PowTorsionCategory
 public import SerrePositivity.PerfectComplex.NormalizedEuler
@@ -25,29 +26,16 @@ variable {R : Type u} [CommRing R]
 
 variable {J : Ideal R} (lam : NormalizedLength R J)
 
-/-- 零ホモトピックな射の錐では、冪ねじれ性と長さの加法性が得られる。 -/
+/-- 零ホモトピックな射の錐の長さ公式。ホモロジー零の一般定理への互換入口。 -/
 lemma lambdaHomology_null_cone {P Q : CochainComplex (ModuleCat.{u} R) ℤ}
     (f : P ⟶ Q) (hf : Homotopy f 0) (q : ℤ)
     (hQ : IsPowTorsion J (Q.homology q)) (hP : IsPowTorsion J (P.homology (q + 1))) :
     IsPowTorsion J ((Cone.cone f).homology q) ∧
       lam.len ((Cone.cone f).homology q) =
-        lam.len (Q.homology q) + lam.len (P.homology (q + 1)) := by
-  have hz (i : ℤ) : HomologicalComplex.homologyMap f i = 0 := by
-    simpa only [HomologicalComplex.homologyMap_zero] using hf.homologyMap_eq i
-  let S := ShortComplex.mk _ _
-    (comp_eq_zero_transport (Cone.S₃ f q (q + 1) rfl)
-      (Cone.e q Q) (Cone.e q (Cone.cone f)) (Cone.e (q + 1) P)
-      _ (Cone.δ f q (q + 1) rfl)
-      (Cone.e_naturality q (CochainComplex.mappingCone.inr f)) (Cone.δ_square f q (q + 1) rfl))
-  have : Mono S.f := (Cone.exact₂ f q).mono_g (hz q)
-  have : Epi S.g := (Cone.exact₁ f q (q + 1) rfl).epi_f (hz (q + 1))
-  have hs : S.ShortExact := ⟨Cone.exact₃ f q (q + 1) rfl⟩
-  have ht : IsPowTorsion J ((Cone.cone f).homology q) :=
-    (powTorsionModule J).prop_X₂_of_shortExact hs hQ hP
-  exact ⟨ht, lam.len_add_of_exact _ _ _ S.f.hom S.g.hom
-    ((ModuleCat.mono_iff_injective _).mp inferInstance)
-    ((ModuleCat.epi_iff_surjective _).mp inferInstance)
-    (LinearMap.exact_iff.mpr hs.exact.moduleCat_range_eq_ker.symm) ht⟩
+        lam.len (Q.homology q) + lam.len (P.homology (q + 1)) :=
+  lambdaHomology_cone_of_homologyMap_eq_zero lam f
+    (fun i ↦ by simpa only [HomologicalComplex.homologyMap_zero] using hf.homologyMap_eq i)
+    q hQ hP
 
 /-- 零スカラーの Koszul 構成は、各次数の冪ねじれ性と長さの有限性を保つ。
 有界性・射影性を使わず、各段の短完全列だけを用いる。 -/

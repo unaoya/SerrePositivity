@@ -59,4 +59,30 @@ theorem lambdaHomology_shortExact_eq_of_error_zero
   · simpa only [hcurrent, add_zero] using
       lambdaHomology_shortExact_le lam S hS q t₁ t₂ t₃
 
+/-- 誤差側のホモロジーの長さは、中央の同次数と左の次の次数の和以下。 -/
+theorem lambdaHomology_shortExact_right_le
+    (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ)) (hS : S.ShortExact) (q : ℤ)
+    (t₂ : IsPowTorsion J (S.X₂.homology q))
+    (t₃ : IsPowTorsion J (S.X₃.homology q))
+    (t₁next : IsPowTorsion J (S.X₁.homology (q + 1))) :
+    lam.len (S.X₃.homology q) ≤ lam.len (S.X₂.homology q) +
+      lam.len (S.X₁.homology (q + 1)) := by
+  have hrel : (ComplexShape.up ℤ).Rel q (q + 1) := by simp
+  exact lam.len_le_add_of_exact (HomologicalComplex.homologyMap S.g q).hom
+    (hS.δ q (q + 1) hrel).hom
+    (LinearMap.exact_iff.mpr (hS.homology_exact₃ q (q + 1) hrel).moduleCat_range_eq_ker.symm)
+    t₂ t₃ t₁next
+
+/-- 中央の同次数と左の次の次数の長さが有限なら、誤差側の長さも有限。 -/
+theorem lambdaHomology_shortExact_right_ne_top
+    (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ)) (hS : S.ShortExact) (q : ℤ)
+    (t₂ : IsPowTorsion J (S.X₂.homology q))
+    (t₃ : IsPowTorsion J (S.X₃.homology q))
+    (t₁next : IsPowTorsion J (S.X₁.homology (q + 1)))
+    (h₂ : lam.len (S.X₂.homology q) ≠ ⊤)
+    (h₁next : lam.len (S.X₁.homology (q + 1)) ≠ ⊤) :
+    lam.len (S.X₃.homology q) ≠ ⊤ :=
+  ne_top_of_le_ne_top (ENNReal.add_ne_top.mpr ⟨h₂, h₁next⟩)
+    (lambdaHomology_shortExact_right_le lam S hS q t₂ t₃ t₁next)
+
 end SerrePositivity
