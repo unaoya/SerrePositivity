@@ -3,7 +3,7 @@ module
 public import Mathlib.RingTheory.AdicCompletion.Completeness
 public import Mathlib.RingTheory.AdicCompletion.Functoriality
 public import Mathlib.RingTheory.AdicCompletion.Topology
-public import Mathlib.RingTheory.MvPowerSeries.Evaluation
+public import SerrePositivity.CommutativeAlgebra.AdicPowerSeries
 public import Mathlib.RingTheory.MvPowerSeries.Equiv
 
 /-! # Noether 環のイデアル進完備化の Noether 性
@@ -30,40 +30,11 @@ theorem isNoetherianRing_of_adicComplete_of_surjective_quotient
   let x : s → S := fun i ↦ i.val
   have hx : Ideal.span (Set.range x) = J := by
     simpa [x] using hs
-  let : UniformSpace R := ⊥
-  let : WithIdeal S := ⟨J⟩
-  let : CompleteSpace S := (IsAdic.isPrecomplete_iff (show IsAdic J from rfl)).mp inferInstance
-  let : T2Space S := (IsAdic.isHausdorff_iff (show IsAdic J from rfl)).mp inferInstance
-  have he : MvPowerSeries.HasEval x := by
-    constructor
-    · intro i
-      apply WithIdeal.isTopologicallyNilpotent_of_mem
-      change x i ∈ J
-      rw [← hx]
-      exact Ideal.subset_span ⟨i, rfl⟩
-    · simp
-  let g : MvPowerSeries s R →+* S :=
-    MvPowerSeries.eval₂Hom (φ := f) continuous_of_discreteTopology he
-  let I : Ideal (MvPowerSeries s R) := Ideal.span (Set.range MvPowerSeries.X)
-  have hgX (i : s) : g (MvPowerSeries.X i) = x i := by
-    simp [g, MvPowerSeries.coe_eval₂Hom]
-  have hgC (r : R) : g (MvPowerSeries.C r) = f r := by
-    simp [g, MvPowerSeries.coe_eval₂Hom]
-  have hmap : I.map g = J := by
-    change (Ideal.span (Set.range MvPowerSeries.X)).map g = J
-    rw [Ideal.map_span, ← Set.range_comp]
-    simpa only [Function.comp_def, hgX] using hx
-  have hsurj : Function.Surjective g := by
-    have : IsHausdorff (I.map g) S := hmap ▸ inferInstance
-    apply surjective_of_mk_map_comp_surjective (I := I) g
-    intro z
-    obtain ⟨y, rfl⟩ := Ideal.Quotient.mk_surjective z
-    obtain ⟨r, hr⟩ := hf (Ideal.Quotient.mk J y)
-    refine ⟨MvPowerSeries.C r, ?_⟩
-    change Ideal.Quotient.mk (I.map g) (g (MvPowerSeries.C r)) = _
-    rw [hgC, Ideal.Quotient.eq]
-    rw [hmap]
-    exact Ideal.Quotient.eq.mp hr
+  have hmem (i : s) : x i ∈ J := by
+    rw [← hx]
+    exact Ideal.subset_span ⟨i, rfl⟩
+  let g := adicPowerSeriesEval f J x hmem
+  have hsurj : Function.Surjective g := adicPowerSeriesEval_surjective f J x hmem hx hf
   exact isNoetherianRing_of_surjective _ _ g hsurj
 
 /-- Noether 環の任意のイデアルに関するイデアル進完備化は Noether 環である。 -/
