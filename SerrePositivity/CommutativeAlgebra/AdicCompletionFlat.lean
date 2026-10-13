@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.AdicCompletionTensor
+public import SerrePositivity.CommutativeAlgebra.AdicCompletionScalarRestriction
 public import Mathlib.RingTheory.Flat.EquationalCriterion
 
 /-! # Noether 基底上の平坦加群の完備化の平坦性
@@ -29,5 +30,14 @@ theorem flat_adicCompletion_of_flat
     adicCompletionTensorComparison I J P) at hinj
   rw [adicCompletionTensorComparison_natural] at hinj
   exact Function.Injective.of_comp hinj
+
+/-- Noether 基底上の平坦代数を、基底から拡張したイデアルで完備化しても基底上平坦。
+代数 S 自身の Noether 性・有限性・局所性は不要。 -/
+theorem flat_adicCompletion_algebra_of_flat
+    {A S : Type u} [CommRing A] [IsNoetherianRing A]
+    [CommRing S] [Algebra A S] [Module.Flat A S] (I : Ideal A) :
+    Module.Flat A (AdicCompletion (I.map (algebraMap A S)) S) :=
+  (Module.Flat.equiv_iff (adicCompletionScalarRestrictionEquiv (S := S) (M := S) I)).mpr
+    (flat_adicCompletion_of_flat I)
 
 end SerrePositivity

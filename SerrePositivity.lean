@@ -42,6 +42,7 @@ public import SerrePositivity.CLMST.StageDimension
 public import SerrePositivity.CLMST.StageLocality
 public import SerrePositivity.CLMST.PerfectoidIsogeny
 public import SerrePositivity.CLMST.TensorIsogeny
+public import SerrePositivity.CLMST.CompletedTensorIsogeny
 public import SerrePositivity.CommutativeAlgebra.RootTower.CompletionFlat
 public import SerrePositivity.CommutativeAlgebra.AdicCompletionInjective
 public import SerrePositivity.CommutativeAlgebra.FlatTensorFiltration
