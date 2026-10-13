@@ -51,5 +51,21 @@ theorem flat_completedTower_over_base [IsNoetherianRing A] :
   rw [hI] at hf
   exact hf
 
+/-- Noether基底では、完備塔は任意の有限段A_n上でも平坦。
+有限段のNoether性と、未完備塔の各段上の平坦性を使う。 -/
+theorem flat_completedTower_over_stage [IsNoetherianRing A] (n : ℕ) :
+    Module.Flat (TowerStage A t p n) (CompletedTower A t p) := by
+  let := towerStage_finite A t p n
+  let : IsNoetherianRing (TowerStage A t p n) :=
+    IsNoetherianRing.of_finite A (TowerStage A t p n)
+  let := flat_tower A t p n
+  have hf := flat_adicCompletion_algebra_of_flat (S := Tower A t p)
+    (Ideal.span {(p : TowerStage A t p n)})
+  have hI : (Ideal.span {(p : TowerStage A t p n)}).map
+      (algebraMap (TowerStage A t p n) (Tower A t p)) = Ideal.span {(p : Tower A t p)} := by
+    rw [Ideal.map_span, Set.image_singleton, map_natCast]
+  rw [hI] at hf
+  exact hf
+
 end Section2
 end SerrePositivity

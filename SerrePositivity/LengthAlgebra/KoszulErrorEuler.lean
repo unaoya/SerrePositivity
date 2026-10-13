@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.LengthAlgebra.ConeHomologyLength
 public import SerrePositivity.HomologicalAlgebra.KoszulModuleBounds
+public import SerrePositivity.HomologicalAlgebra.KoszulIdealAction
 
 /-! # 最後の元がホモロジー上で零作用する Koszul 複体の Euler 評価
 
@@ -43,5 +44,18 @@ theorem lambdaEuler_koszulModule_eq_zero_of_last_homology_action_zero
   exact lambdaEuler_self_cone_eq_zero_of_homologyMap_eq_zero lam f hz
     (koszulModuleFunctor_bounded (Fin.init z) M) (koszulModuleFunctor_bounded z M)
     tP tFull lFull
+
+/-- 最後の元が前の列と係数の零化元の生成イデアルに属すれば、Euler評価は零。
+ホモロジー上の零作用は所属条件から証明し、未知の条件として渡さない。 -/
+theorem lambdaEuler_koszulModule_eq_zero_of_last_mem_span_sup
+    {e : ℕ} (z : Fin (e + 1) → R) (M : ModuleCat.{u} R) (a : R)
+    (ha : ∀ m : M, a • m = 0)
+    (hz : z (Fin.last e) ∈ Ideal.span (Set.range (Fin.init z)) ⊔ Ideal.span {a})
+    (tFull : ∀ q, IsPowTorsion J (((koszulModuleFunctor z).obj M).homology q))
+    (lNegative : ∀ q : ℤ, q < 0 →
+      lam.len (((koszulModuleFunctor z).obj M).homology q) ≠ ⊤) :
+    lambdaEuler lam ((koszulModuleFunctor z).obj M) = 0 :=
+  lambdaEuler_koszulModule_eq_zero_of_last_homology_action_zero lam z M
+    (koszul_last_homologyMap_eq_zero_of_mem_span_sup z M a ha hz) tFull lNegative
 
 end SerrePositivity

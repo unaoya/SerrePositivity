@@ -3,7 +3,7 @@ module
 public import SerrePositivity.CLMST.CompletedTensorIsogeny
 public import SerrePositivity.CLMST.PerfectoidCokernel
 public import SerrePositivity.LengthAlgebra.KoszulCokernelBounds
-public import SerrePositivity.LengthAlgebra.RootTowerLength.CompletedNormalized
+public import SerrePositivity.LengthAlgebra.RootTowerLength.CompletedFiniteLength
 public import SerrePositivity.CommutativeAlgebra.RootTower.Restriction
 public import SerrePositivity.CommutativeAlgebra.Multiplicity
 
@@ -116,5 +116,25 @@ theorem completedTensor_parameter_cokernel_length_ne_top
     (completedTensorMaxIdeal_fg A D t p)
     (Algebra.TensorProduct.includeRight.toRingHom ∘ z)
     (completedTensorMaxIdeal_le_parameter_radical A D t p hinj z hz) q hC hSnext
+
+/-- 完備塔上で有限生成な冪ねじれ加群なら、具体的なテンソル代数の長さも有限。
+有限生成性を完備塔上の構造条件として使い、その環のNoether性は要求しない。 -/
+theorem completedTensorLength_ne_top_of_finite
+    (hp : (p : A) ∈ maximalIdeal A)
+    (M : Type u) [AddCommGroup M] [Module ((CompletedTower A t p) ⊗[A] D) M]
+    (hfinite :
+      let _ := Module.compHom M
+        (algebraMap (CompletedTower A t p) ((CompletedTower A t p) ⊗[A] D))
+      Module.Finite (CompletedTower A t p) M)
+    (hM : IsPowTorsion (completedTensorMaxIdeal A D t p) M) :
+    (completedTensorLength A D t p ht).len M ≠ ⊤ := by
+  let := Module.compHom M (algebraMap (CompletedTower A t p) ((CompletedTower A t p) ⊗[A] D))
+  let : Module.Finite (CompletedTower A t p) M := hfinite
+  have htM : IsPowTorsion (completedTowerMaxIdeal A t p) M :=
+    IsPowTorsion.comap (algebraMap (CompletedTower A t p) ((CompletedTower A t p) ⊗[A] D))
+      (by
+        dsimp only [completedTowerMaxIdeal, completedTensorMaxIdeal]
+        rw [Ideal.map_map, ← IsScalarTower.algebraMap_eq]) M hM
+  exact RootTowerLength.completedNormalizedLength_ne_top_of_finite A t p ht hp M htM
 
 end SerrePositivity.CLMST
