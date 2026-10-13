@@ -6,6 +6,8 @@
 
 具体的な型の設計、共通基盤の抽出順、接続の受入条件は
 [実装境界と作業単位](clmst-interfaces.md)にまとめる。
+完備化の平坦性と剰余体拡大側との共通工程は、
+[完備化の統合計画](adic-completion-integration.md)を正本とする。
 
 対象とする版：Cai–Lee–Ma–Schwede–Tucker, *Perfectoid signature, perfectoid Hilbert–Kunz
 multiplicity, and an application to local fundamental groups*, arXiv:2209.04046v4
