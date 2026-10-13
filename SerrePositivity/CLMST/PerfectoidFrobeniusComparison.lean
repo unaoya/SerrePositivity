@@ -3,6 +3,7 @@ module
 public import SerrePositivity.CommutativeAlgebra.PerfectoidFrobeniusKernel
 public import SerrePositivity.CLMST.PerfectoidIdealRoots
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationUniqueness
+public import SerrePositivity.CommutativeAlgebra.RootTower.CompletedRepresentatives
 
 public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
 public import Mathlib.Algebra.CharP.Frobenius
@@ -202,5 +203,91 @@ theorem exists_completed_root_mem_sup_perfectoidIdeal_of_surjective
     (fun m ↦ completedTowerRoot A t p m i) ?_
     (fun m ↦ completedTowerRoot_succ_pow A t p m i) n x hx⟩
   rw [completedTowerRoot_zero, hti, map_natCast]
+
+/-- mod pで等しい代表元は、任意の冪を取ってもmod pで等しい。 -/
+theorem pow_sub_mem_of_sub_mem {R : Type u} [CommRing R]
+    (I : Ideal R) (x y : R) (k : ℕ) (hxy : x - y ∈ I) : x ^ k - y ^ k ∈ I := by
+  have hq : Ideal.Quotient.mk I x = Ideal.Quotient.mk I y := Ideal.Quotient.eq.mpr hxy
+  apply Ideal.Quotient.eq_zero_iff_mem.mp
+  rw [map_sub, map_pow, map_pow, hq, sub_self]
+
+/-- 基底環の元のmod pのp冪根は、指定した段以降の有限段で合同式ごと代表できる。
+この入口はperfectoid化への全射性を使わない。段の番号はFrobeniusの反復数と区別する。 -/
+theorem exists_stage_root_mod_p_of_perfectoid
+    (A : Type u) [CommRing A] {h : ℕ} (t : Fin h → A) (p : ℕ) [Fact p.Prime]
+    (hperf : IsIntegralPerfectoid (CompletedTower A t p) p) (g : A) (n m₀ : ℕ) :
+    ∃ (m : ℕ) (_ : m₀ ≤ m) (z : TowerStage A t p m),
+      z ^ (p ^ n) - algebraMap A (TowerStage A t p m) g ∈
+        Ideal.span {(p : TowerStage A t p m)} := by
+  obtain ⟨x, hx⟩ := exists_root_mod_p_of_perfectoid _ p hperf n
+    (algebraMap A (CompletedTower A t p) g)
+  obtain ⟨m, hm, z, hz⟩ := exists_completedTower_stage_representative A t p x 1 m₀
+  rw [pow_one] at hz
+  have hpow := pow_sub_mem_of_sub_mem _ _ _ (p ^ n) hz
+  have heq : algebraMap (TowerStage A t p m) (CompletedTower A t p)
+      (z ^ (p ^ n) - algebraMap A (TowerStage A t p m) g) ∈
+        Ideal.span {(p : CompletedTower A t p)} ^ 1 := by
+    rw [pow_one, map_sub, map_pow,
+      ← IsScalarTower.algebraMap_apply A (TowerStage A t p m) (CompletedTower A t p)]
+    simpa only [sub_add_sub_cancel] using (Ideal.span {(p : CompletedTower A t p)}).add_mem hpow hx
+  obtain ⟨l, hml, hl⟩ := exists_towerMap_mem_p_pow_of_completed A t p m 1 _ heq
+  refine ⟨l, hm.trans hml, towerMap A t p m l hml z, ?_⟩
+  simpa only [pow_one, map_sub, map_pow, AlgHom.commutes] using hl
+
+/-- 有限段の根の合同式と、完備塔での式(4.0.10.1)の所属を同じ代表元で得る。
+根の指数nと有限段mは区別し、mをnおよび指定した段以降に取る。 -/
+theorem exists_stage_root_mem_sup_perfectoidIdeal_of_surjective
+    (A : Type u) [CommRing A] {h : ℕ} (t : Fin h → A) (p : ℕ) [Fact p.Prime]
+    (hperf : IsIntegralPerfectoid (CompletedTower A t p) p) (g : A)
+    (hsurj :
+      letI : Algebra.FinitePresentation (CompletedTower A t p)
+          (CompletedTower A t p ⧸ Ideal.span {algebraMap A (CompletedTower A t p) g}) :=
+        Algebra.FinitePresentation.quotient
+          (Submodule.fg_span_singleton (algebraMap A (CompletedTower A t p) g))
+      Function.Surjective (toPerfectoidization (CompletedTower A t p)
+        (CompletedTower A t p ⧸ Ideal.span {algebraMap A (CompletedTower A t p) g}) p hperf))
+    (i : Fin h) (hti : t i = (p : A)) (n m₀ : ℕ) :
+    ∃ (m : ℕ) (_ : m₀ ≤ m) (_ : n ≤ m) (z : TowerStage A t p m),
+      z ^ (p ^ n) - algebraMap A (TowerStage A t p m) g ∈
+        Ideal.span {(p : TowerStage A t p m)} ∧
+      algebraMap (TowerStage A t p m) (CompletedTower A t p) z ∈
+        Ideal.span {completedTowerRoot A t p n i} ⊔
+          perfectoidIdeal (CompletedTower A t p) p hperf
+            (algebraMap A (CompletedTower A t p) g) := by
+  obtain ⟨m, hm, z, hz⟩ := exists_stage_root_mod_p_of_perfectoid A t p hperf g n (max m₀ n)
+  refine ⟨m, (le_max_left _ _).trans hm, (le_max_right _ _).trans hm, z, hz, ?_⟩
+  have hmap := Ideal.mem_map_of_mem
+    (algebraMap (TowerStage A t p m) (CompletedTower A t p)) hz
+  rw [Ideal.map_span, Set.image_singleton, map_natCast, map_sub, map_pow,
+    ← IsScalarTower.algebraMap_apply A (TowerStage A t p m) (CompletedTower A t p)] at hmap
+  exact root_mem_sup_perfectoidIdeal_of_surjective _ p hperf _ hsurj
+    (fun l ↦ completedTowerRoot A t p l i)
+    (by rw [completedTowerRoot_zero, hti, map_natCast])
+    (fun l ↦ completedTowerRoot_succ_pow A t p l i) n _ hmap
+
+/-- perfectoid環で二つのp冪根がmod pで同じ値を持てば、その差は対応するp冪根に属する。
+代表元を有限段で選び直す際の曖昧さを、同じ根イデアルの中で制御する。 -/
+theorem sub_mem_root_span_of_pow_sub_mem_p
+    (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
+    (hR : IsIntegralPerfectoid R p) (ρ : ℕ → R) (hρ₀ : ρ 0 = (p : R))
+    (hρ : ∀ m, ρ (m + 1) ^ p = ρ m) (n : ℕ) (x y : R)
+    (hxy : x ^ (p ^ n) - y ^ (p ^ n) ∈ Ideal.span {(p : R)}) :
+    x - y ∈ Ideal.span {ρ n} := by
+  rcases hR with hsub | hnonzero
+  · let : Subsingleton R := hsub
+    rw [Subsingleton.elim (x - y) 0]
+    exact Ideal.zero_mem _
+  · let : Fact (¬ IsUnit (p : R)) := ⟨hnonzero.1⟩
+    have hR : IsIntegralPerfectoid R p := Or.inr hnonzero
+    let q := Ideal.Quotient.mk (Ideal.span {(p : R)})
+    let F := iterateFrobenius (R ⧸ Ideal.span {(p : R)}) p n
+    have hpow : F (q x) = F (q y) := by
+      apply sub_eq_zero.mp
+      simpa only [q, F, iterateFrobenius_def, map_sub, map_pow] using
+        Ideal.Quotient.eq_zero_iff_mem.mpr hxy
+    apply (hR.pow_kernel_of_compatible_roots R p ρ hρ₀ hρ n (x - y)).mp
+    apply Ideal.Quotient.eq_zero_iff_mem.mp
+    change F (q (x - y)) = 0
+    rw [map_sub, map_sub, hpow, sub_self]
 
 end SerrePositivity.CLMST

@@ -58,4 +58,24 @@ noncomputable def adicCompletionPowQuotientEquiv (n : ℕ) :
     AdicCompletion.evalₐ_of]
   simp
 
+/-- 完備化の元は、任意の冪商で元の環からの像によって代表できる。 -/
+theorem exists_adicCompletion_algebraMap_sub_mem (n : ℕ) (x : AdicCompletion I R) :
+    ∃ r : R, algebraMap R (AdicCompletion I R) r - x ∈
+      (I ^ n).map (algebraMap R (AdicCompletion I R)) := by
+  obtain ⟨r, hr⟩ := Ideal.Quotient.mk_surjective (AdicCompletion.evalₐ I n x)
+  refine ⟨r, ?_⟩
+  rw [← adicCompletion_ker_eval_eq_map I hI n]
+  change AdicCompletion.evalₐ I n (algebraMap R (AdicCompletion I R) r - x) = 0
+  rw [map_sub, AdicCompletion.algebraMap_apply, AdicCompletion.evalₐ_of]
+  exact sub_eq_zero.mpr hr
+
+/-- 元環の元について、完備化後の拡大冪イデアルへの所属は元環での所属と同値。 -/
+theorem adicCompletion_algebraMap_mem_map_pow_iff (n : ℕ) (r : R) :
+    algebraMap R (AdicCompletion I R) r ∈
+      (I ^ n).map (algebraMap R (AdicCompletion I R)) ↔ r ∈ I ^ n := by
+  rw [← adicCompletion_ker_eval_eq_map I hI n]
+  change AdicCompletion.evalₐ I n (algebraMap R (AdicCompletion I R) r) = 0 ↔ _
+  rw [AdicCompletion.algebraMap_apply, AdicCompletion.evalₐ_of]
+  simpa using (Ideal.Quotient.eq_zero_iff_mem (I := I ^ n) (a := r))
+
 end SerrePositivity
