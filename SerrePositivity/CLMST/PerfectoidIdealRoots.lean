@@ -39,6 +39,34 @@ abbrev perfectoidQuotient (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
     Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
   Perfectoidization R (R ⧸ Ideal.span {g}) p hR
 
+/-- 標準写像が全射なら、核で割った環は選ばれたperfectoid化そのものになる。
+存在と普遍性だけで全射性が従うとは主張しない。 -/
+def perfectoidIdealQuotientEquiv
+    (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
+    (hR : IsIntegralPerfectoid R p) (g : R)
+    (hsurj : letI : Algebra.FinitePresentation R (R ⧸ Ideal.span {g}) :=
+      Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
+      Function.Surjective (toPerfectoidization R (R ⧸ Ideal.span {g}) p hR)) :
+    R ⧸ perfectoidIdeal R p hR g ≃+* perfectoidQuotient R p hR g :=
+  letI : Algebra.FinitePresentation R (R ⧸ Ideal.span {g}) :=
+    Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
+  RingHom.quotientKerEquivOfSurjective
+    (hsurj.comp Ideal.Quotient.mk_surjective)
+
+/-- 上の同型は元環からの二つの標準写像と両立する。 -/
+@[simp] theorem perfectoidIdealQuotientEquiv_mk
+    (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
+    (hR : IsIntegralPerfectoid R p) (g : R)
+    (hsurj : letI : Algebra.FinitePresentation R (R ⧸ Ideal.span {g}) :=
+      Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
+      Function.Surjective (toPerfectoidization R (R ⧸ Ideal.span {g}) p hR)) (x : R) :
+    perfectoidIdealQuotientEquiv R p hR g hsurj
+      (Ideal.Quotient.mk (perfectoidIdeal R p hR g) x) =
+      (letI : Algebra.FinitePresentation R (R ⧸ Ideal.span {g}) :=
+        Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
+       toPerfectoidization R (R ⧸ Ideal.span {g}) p hR
+         (Ideal.Quotient.mk (Ideal.span {g}) x)) := rfl
+
 /-- 選ばれた perfectoid 化の被約性が与えられれば、冪の所属から perfectoid ideal への所属が従う。
 被約性は現在未供給の条件であり、型クラスの大域的登録では隠さない。 -/
 theorem mem_perfectoidIdeal_of_pow_mem_span_of_reduced
@@ -88,6 +116,24 @@ omit [Fact p.Prime] in
   change algebraMap (TowerStage A t p n) (CompletedTower A t p)
     (Ideal.Quotient.mk (towerRel A t p n) (MvPolynomial.X i) ^ (p ^ n)) = _
   rw [mk_X_pow, ← IsScalarTower.algebraMap_apply A (TowerStage A t p n) (CompletedTower A t p)]
+
+omit [Fact p.Prime] in
+/-- 根の座標は、段を進めるとp乗によって元の座標に戻る。 -/
+@[simp] theorem completedTowerRoot_succ_pow (n : ℕ) (i : Fin h) :
+    completedTowerRoot A t p (n + 1) i ^ p = completedTowerRoot A t p n i := by
+  have hstage : towerMap A t p n (n + 1) (Nat.le_succ n) (stageX A t p n i) =
+      stageX A t p (n + 1) i ^ p := by
+    simpa using towerMap_mk_X A t p n (n + 1) (Nat.le_succ n) i
+  have htower := congrArg (algebraMap (Tower A t p) (CompletedTower A t p))
+    (towerOf_towerMap A t p n (n + 1) (Nat.le_succ n) (stageX A t p n i))
+  rw [hstage, map_pow] at htower
+  exact htower
+
+omit [Fact p.Prime] in
+/-- 初段の座標は、基底環の対応する元の像である。 -/
+@[simp] theorem completedTowerRoot_zero (i : Fin h) :
+    completedTowerRoot A t p 0 i = algebraMap A (CompletedTower A t p) (t i) := by
+  simpa using completedTowerRoot_pow A t p 0 i
 
 /-- 基底の座標が p であるとき、完備塔のその根は `(p)_perfd` に属する。
 選ばれた `(C/p)_perfd` の被約性を明示的に受け取り、他の入力は用いない。 -/

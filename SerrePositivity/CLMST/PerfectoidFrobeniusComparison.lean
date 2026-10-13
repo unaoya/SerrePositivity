@@ -1,6 +1,8 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.PerfectoidFrobeniusKernel
+public import SerrePositivity.CLMST.PerfectoidIdealRoots
+public import SerrePositivity.CommutativeAlgebra.PerfectoidizationUniqueness
 
 public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
 public import Mathlib.Algebra.CharP.Frobenius
@@ -9,13 +11,14 @@ public import Mathlib.RingTheory.Ideal.Quotient.Operations
 /-! # perfectoid 商の Frobenius 比較への具体的な接続
 
 mod p の Frobenius 全射性から根の代表元を取り、実際の商 Frobenius の単射性から
-その代表元のイデアル所属を導く。後者の単射性を perfectoid の四条件から導く
-BMS Lemma 3.10 の部分は未実装であり、このファイルでは証明済みと扱わない。
+その代表元のイデアル所属を導く。反復Frobeniusの核はperfectoidの四条件から供給する。
+選ばれたperfectoid化への全射性は別の条件として残し、普遍性と混同しない。
 -/
 
 @[expose] public noncomputable section
 universe u
 namespace SerrePositivity.CLMST
+open Section2
 
 /-- 冪写像の反復は、指数を反復した冪写像。 -/
 theorem iterate_pow_apply {S : Type u} [Monoid S] (p m : ℕ) (x : S) :
@@ -125,5 +128,79 @@ theorem quotientRootFrobenius_injective_of_integralPerfectoid
   have hz0 : Ideal.Quotient.mk (Ideal.span {ρ n}) z = 0 :=
     Ideal.Quotient.eq_zero_iff_mem.mpr hroot
   exact sub_eq_zero.mp (hrep.symm.trans hz0)
+
+/-- 全射先がperfectoidなら、根の代表元はp冪根と写像の核が生成するイデアルに入る。
+零環も含め、全射性によって根の係数を元環へ持ち上げる。 -/
+theorem root_mem_sup_of_surjective_perfectoid
+    {R S : Type u} [CommRing R] [CommRing S] (p : ℕ) [Fact p.Prime]
+    (f : R →+* S) (hf : Function.Surjective f) (hS : IsIntegralPerfectoid S p)
+    (ρ : ℕ → R) (hρ₀ : ρ 0 = (p : R)) (hρ : ∀ m, ρ (m + 1) ^ p = ρ m)
+    (n : ℕ) (g x : R) (hg : f g = 0)
+    (hx : x ^ (p ^ n) - g ∈ Ideal.span {(p : R)}) :
+    x ∈ Ideal.span {ρ n} ⊔ RingHom.ker f := by
+  rcases hS with hsub | hnonzero
+  · let : Subsingleton S := hsub
+    apply (show RingHom.ker f ≤ Ideal.span {ρ n} ⊔ RingHom.ker f from le_sup_right)
+    exact Subsingleton.elim (f x) 0
+  · let : Fact (¬ IsUnit (p : S)) := ⟨hnonzero.1⟩
+    have hS : IsIntegralPerfectoid S p := Or.inr hnonzero
+    have hxS : f x ^ (p ^ n) ∈ Ideal.span {(p : S)} := by
+      have hmap := Ideal.mem_map_of_mem f hx
+      rw [Ideal.map_span, Set.image_singleton, map_natCast] at hmap
+      simpa only [map_sub, map_pow, hg, sub_zero] using hmap
+    have hmem := (hS.pow_kernel_of_compatible_roots S p (fun m ↦ f (ρ m))
+      (by rw [hρ₀, map_natCast]) (fun m ↦ by rw [← map_pow, hρ m]) n (f x)).mp hxS
+    have hmem' : f x ∈ (Ideal.span {ρ n}).map f := by
+      simpa only [Ideal.map_span, Set.image_singleton] using hmem
+    change x ∈ Ideal.comap f ((Ideal.span {ρ n}).map f) at hmem'
+    rwa [Ideal.comap_map_of_surjective f hf] at hmem'
+
+/-- 選ばれたperfectoid化の標準写像が全射なら、式(4.0.10.1)が従う。
+全射性は未供給の原典入力であり、ここでは明示的な仮定として扱う。 -/
+theorem root_mem_sup_perfectoidIdeal_of_surjective
+    (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
+    (hR : IsIntegralPerfectoid R p) (g : R)
+    (hsurj : letI : Algebra.FinitePresentation R (R ⧸ Ideal.span {g}) :=
+      Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
+      Function.Surjective
+      (toPerfectoidization R (R ⧸ Ideal.span {g}) p hR))
+    (ρ : ℕ → R) (hρ₀ : ρ 0 = (p : R)) (hρ : ∀ m, ρ (m + 1) ^ p = ρ m)
+    (n : ℕ) (x : R) (hx : x ^ (p ^ n) - g ∈ Ideal.span {(p : R)}) :
+    x ∈ Ideal.span {ρ n} ⊔ perfectoidIdeal R p hR g := by
+  let : Algebra.FinitePresentation R (R ⧸ Ideal.span {g}) :=
+    Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
+  let f := (toPerfectoidization R (R ⧸ Ideal.span {g}) p hR).comp
+    (Ideal.Quotient.mk (Ideal.span {g}))
+  exact root_mem_sup_of_surjective_perfectoid p f
+    (hsurj.comp Ideal.Quotient.mk_surjective)
+    (isPerfectoidization_toPerfectoidization R (R ⧸ Ideal.span {g}) p hR).1
+    ρ hρ₀ hρ n g x
+    (by change toPerfectoidization R (R ⧸ Ideal.span {g}) p hR
+          (Ideal.Quotient.mk (Ideal.span {g}) g) = 0
+        rw [Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.subset_span (Set.mem_singleton _)), map_zero])
+    hx
+
+/-- pを座標に含む実際の完備塔では、全射性を供給すれば根の代表元と所属を同時に得る。
+互換的な根の列は塔の構成から確認する。 -/
+theorem exists_completed_root_mem_sup_perfectoidIdeal_of_surjective
+    (A : Type u) [CommRing A] {h : ℕ} (t : Fin h → A) (p : ℕ) [Fact p.Prime]
+    (hperf : IsIntegralPerfectoid (CompletedTower A t p) p)
+    (g : CompletedTower A t p)
+    (hsurj :
+      letI : Algebra.FinitePresentation (CompletedTower A t p)
+          (CompletedTower A t p ⧸ Ideal.span {g}) :=
+        Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
+      Function.Surjective (toPerfectoidization (CompletedTower A t p)
+        (CompletedTower A t p ⧸ Ideal.span {g}) p hperf))
+    (i : Fin h) (hti : t i = (p : A)) (n : ℕ) :
+    ∃ x : CompletedTower A t p,
+      x ^ (p ^ n) - g ∈ Ideal.span {(p : CompletedTower A t p)} ∧
+      x ∈ Ideal.span {completedTowerRoot A t p n i} ⊔
+        perfectoidIdeal (CompletedTower A t p) p hperf g := by
+  obtain ⟨x, hx⟩ := exists_root_mod_p_of_perfectoid _ p hperf n g
+  refine ⟨x, hx, root_mem_sup_perfectoidIdeal_of_surjective _ p hperf g hsurj
+    (fun m ↦ completedTowerRoot A t p m i) ?_
+    (fun m ↦ completedTowerRoot_succ_pow A t p m i) n x hx⟩
+  rw [completedTowerRoot_zero, hti, map_natCast]
 
 end SerrePositivity.CLMST
