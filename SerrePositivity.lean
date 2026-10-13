@@ -45,6 +45,10 @@ public import SerrePositivity.CLMST.TensorIsogeny
 public import SerrePositivity.CLMST.CompletedTensorIsogeny
 public import SerrePositivity.CLMST.CompletedCokernelKoszul
 public import SerrePositivity.CLMST.CompletedCokernelLength
+public import SerrePositivity.CLMST.CompletedStageBaseChange
+public import SerrePositivity.CLMST.CompletedSourceLength
+public import SerrePositivity.CLMST.CompletedCokernelFiniteEuler
+public import SerrePositivity.CLMST.CompletedTargetLength
 public import SerrePositivity.CLMST.PerfectoidCokernelEuler
 public import SerrePositivity.CLMST.StageParameterChange
 public import SerrePositivity.LengthAlgebra.KoszulErrorEuler
