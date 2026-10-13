@@ -22,6 +22,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.FreeLevels
 public import SerrePositivity.Spectra.SymmetricSpectrum.FreeLevelInduction
 public import SerrePositivity.Spectra.SymmetricSpectrum.FreeLevelAction
 public import SerrePositivity.Spectra.SymmetricSpectrum.FreeLevelQuotient
+public import SerrePositivity.Spectra.SymmetricSpectrum.FreeLevelQuotientAction
 
 /-!
 # スペクトルの具体的基盤の入口
@@ -76,10 +77,12 @@ convolutionの乗法の可換性を証明し、球面対称列を可換モノイ
 出力の対称群作用と入力の同変射を関手へまとめ、自由スペクトルの作用付き各段との自然同型を構成した。
 第一ブロックをm−nに固定した生成元の余積と、対称群の関係式を表す二つの射を構成した。
 自由スペクトルの各段をその余等化子として表し、比較同型の両方向と既存の誘導図式を比較した。
+明示的な商の生成元上の射を余等化子から降ろし、出力の対称群作用と入力の同変射を構成した。
+各段および誘導図式との比較を作用付き自然同型へまとめ、比較同型の合成の一致も証明した。
 
 ## 未構成の範囲
 
-球面上のテンソル積、明示的な商表示上の対称群作用・自然性、モデル構造と導来演算は引き続き実装する。
+球面上のテンソル積、対称群そのもので添字付けた商への移送、モデル構造と導来演算は引き続き実装する。
 この入口は完成済みの§4の降下入力を変更せず、基盤を独立に検証するためのもの。
 現在の構成に新しい未証明入力はない。
 -/
