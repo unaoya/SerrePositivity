@@ -16,6 +16,7 @@ import SerrePositivity.CLMST.ParameterLength
 import SerrePositivity.CLMST.PerfectoidIsogeny
 import SerrePositivity.CLMST.TensorIsogeny
 import SerrePositivity.CommutativeAlgebra.RootTower.CompletionFlat
+import SerrePositivity.CommutativeAlgebra.AdicCompletionInjective
 import SerrePositivity.Inputs.CLMST
 import Mathlib.Util.AssertNoSorry
 import Mathlib.Util.PrintSorries
@@ -177,3 +178,6 @@ assert_no_sorry SerrePositivity.Section2.isSMulRegular_p_completedTower
 assert_no_sorry SerrePositivity.isSMulRegular_tensorProduct_of_flat
 assert_no_sorry SerrePositivity.exists_pow_torsion_bound_of_isSMulRegular
 #print sorries SerrePositivity.CLMST.tensor_injective_and_exists_pow_annihilates_coker
+
+assert_no_sorry SerrePositivity.adicCompletion_map_injective_of_uniform_filtration_bound
+assert_no_sorry SerrePositivity.exists_uniform_filtration_bound_of_finite

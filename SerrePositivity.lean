@@ -23,6 +23,7 @@ public import SerrePositivity.CLMST.StageLocality
 public import SerrePositivity.CLMST.PerfectoidIsogeny
 public import SerrePositivity.CLMST.TensorIsogeny
 public import SerrePositivity.CommutativeAlgebra.RootTower.CompletionFlat
+public import SerrePositivity.CommutativeAlgebra.AdicCompletionInjective
 public import SerrePositivity.BhattScholze.Perfectoidization
 public import SerrePositivity.HomologicalAlgebra.DerivedModuleCone
 public import SerrePositivity.CommutativeAlgebra.HilbertSamuelEquiv
