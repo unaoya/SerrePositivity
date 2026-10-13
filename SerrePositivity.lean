@@ -66,6 +66,7 @@ public import SerrePositivity.CLMST.SourceEulerEvaluation
 public import SerrePositivity.CLMST.ParameterFormulaDescent
 public import SerrePositivity.CLMST.PerfectoidIdealRoots
 public import SerrePositivity.CLMST.PerfectoidFrobeniusComparison
+public import SerrePositivity.CLMST.CyclicRootEstimate
 public import SerrePositivity.CLMST.CyclicPLength
 public import SerrePositivity.CommutativeAlgebra.PerfectionIdempotents
 public import SerrePositivity.CommutativeAlgebra.WittCoefficientOne

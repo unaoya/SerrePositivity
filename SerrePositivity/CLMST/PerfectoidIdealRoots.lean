@@ -4,6 +4,7 @@ public import SerrePositivity.CommutativeAlgebra.Perfectoidization
 public import SerrePositivity.CommutativeAlgebra.RootTower.Completion
 public import SerrePositivity.CommutativeAlgebra.RootTower.Stage
 public import SerrePositivity.CommutativeAlgebra.PerfectoidCharacteristicP
+public import SerrePositivity.CommutativeAlgebra.FrobeniusRootKernels
 public import Mathlib.RingTheory.Nilpotent.Basic
 
 /-! # 被約な目標への核と根の所属
@@ -134,6 +135,14 @@ omit [Fact p.Prime] in
 @[simp] theorem completedTowerRoot_zero (i : Fin h) :
     completedTowerRoot A t p 0 i = algebraMap A (CompletedTower A t p) (t i) := by
   simpa using completedTowerRoot_pow A t p 0 i
+
+omit [Fact p.Prime] in
+/-- n段の根をm段で表すとき、指数はp^(m-n)になる。 -/
+theorem completedTowerRoot_pow_of_le (n m : ℕ) (hnm : n ≤ m) (i : Fin h) :
+    completedTowerRoot A t p m i ^ (p ^ (m - n)) = completedTowerRoot A t p n i := by
+  have heq := compatibleRoots_pow p (fun l ↦ completedTowerRoot A t p l i)
+    (fun l ↦ completedTowerRoot_succ_pow A t p l i) n (m - n)
+  simpa only [Nat.add_sub_of_le hnm] using heq
 
 /-- 基底の座標が p であるとき、完備塔のその根は `(p)_perfd` に属する。
 選ばれた `(C/p)_perfd` の被約性を明示的に受け取り、他の入力は用いない。 -/

@@ -21,21 +21,20 @@ namespace SerrePositivity
 
 variable (R : Type u) [CommRing R]
 
-/-- 一つの生成元を積 `xy` にすると、商の長さは `x` と `y` の場合の長さの和以下。
-`y` 倍写像と自然な商写像による右完全列を使う。 -/
-theorem length_quotient_sup_span_mul_le (I : Ideal R) (x y : R) :
-    Module.length R (R ⧸ (I ⊔ Ideal.span {x * y})) ≤
-      Module.length R (R ⧸ (I ⊔ Ideal.span {x})) +
-        Module.length R (R ⧸ (I ⊔ Ideal.span {y})) := by
+/-- 積xyを関係式に持つ商から、yを関係式に持つ商への自然な射を定める包含。 -/
+theorem quotientSupSpanMul_le (I : Ideal R) (x y : R) :
+    I ⊔ Ideal.span {x * y} ≤ I ⊔ Ideal.span {y} := by
+  apply sup_le le_sup_left
+  rw [Ideal.span_le]
+  rintro _ rfl
+  exact (show Ideal.span {y} ≤ I ⊔ Ideal.span {y} from le_sup_right)
+    (Ideal.mul_mem_left _ x (Ideal.subset_span (Set.mem_singleton y)))
+
+/-- 右完全列の最初の射：y倍によって、xの関係式をxyの関係式へ送る。 -/
+def quotientSupSpanMulMap (I : Ideal R) (x y : R) :
+    R ⧸ (I ⊔ Ideal.span {x}) →ₗ[R] R ⧸ (I ⊔ Ideal.span {x * y}) := by
   let J := I ⊔ Ideal.span {x * y}
   let X := I ⊔ Ideal.span {x}
-  let Y := I ⊔ Ideal.span {y}
-  have hJY : J ≤ Y := by
-    apply sup_le le_sup_left
-    rw [Ideal.span_le]
-    rintro _ rfl
-    exact (show Ideal.span {y} ≤ Y from le_sup_right)
-      (Ideal.mul_mem_left _ x (Ideal.subset_span (Set.mem_singleton y)))
   let m : R →ₗ[R] R ⧸ J := (LinearMap.lsmul R (R ⧸ J) y).comp J.mkQ
   have hm : X ≤ LinearMap.ker m := by
     intro a ha
@@ -50,31 +49,53 @@ theorem length_quotient_sup_span_mul_le (I : Ideal R) (x y : R) :
       convert J.mul_mem_left b hh using 1
       ring
     · exact (show I ≤ J from le_sup_left) (I.mul_mem_left y hc)
-  let f : R ⧸ X →ₗ[R] R ⧸ J := X.liftQ m hm
-  let g : R ⧸ J →ₗ[R] R ⧸ Y := (Ideal.Quotient.factorₐ R hJY).toLinearMap
-  have he : Function.Exact f g := by
-    intro a
-    obtain ⟨a, rfl⟩ := Ideal.Quotient.mk_surjective a
-    constructor
-    · intro ha
-      have ha' : a ∈ Y := Ideal.Quotient.eq_zero_iff_mem.mp ha
-      obtain ⟨b, c, hc, rfl⟩ := (Ideal.mem_span_singleton_sup.mp (by
-        simpa only [Y, sup_comm] using ha'))
-      refine ⟨Ideal.Quotient.mk X b, ?_⟩
-      change Ideal.Quotient.mk J (y * b) = Ideal.Quotient.mk J (b * y + c)
-      rw [map_add, Ideal.Quotient.eq_zero_iff_mem.mpr ((show I ≤ J from le_sup_left) hc),
-        add_zero, mul_comm]
-    · rintro ⟨b, hb⟩
-      obtain ⟨b, rfl⟩ := Ideal.Quotient.mk_surjective b
-      rw [← hb]
-      apply Ideal.Quotient.eq_zero_iff_mem.mpr
-      exact (show Ideal.span {y} ≤ Y from le_sup_right)
-        (Ideal.mul_mem_right b _ (Ideal.subset_span (Set.mem_singleton y)))
+  exact X.liftQ m hm
+
+/-- 右完全列の二番目の射：yを関係式へ追加する自然な商写像。 -/
+def quotientSupSpanMulProjection (I : Ideal R) (x y : R) :
+    R ⧸ (I ⊔ Ideal.span {x * y}) →ₗ[R] R ⧸ (I ⊔ Ideal.span {y}) :=
+  (Ideal.Quotient.factorₐ R (quotientSupSpanMul_le R I x y)).toLinearMap
+
+/-- y倍写像と自然な商写像は完全列をなす。零因子に関する仮定は不要。 -/
+theorem quotientSupSpanMul_exact (I : Ideal R) (x y : R) :
+    Function.Exact (quotientSupSpanMulMap R I x y)
+      (quotientSupSpanMulProjection R I x y) := by
+  let J := I ⊔ Ideal.span {x * y}
+  let X := I ⊔ Ideal.span {x}
+  let Y := I ⊔ Ideal.span {y}
+  let f := quotientSupSpanMulMap R I x y
+  let g := quotientSupSpanMulProjection R I x y
+  intro a
+  obtain ⟨a, rfl⟩ := Ideal.Quotient.mk_surjective a
+  constructor
+  · intro ha
+    have ha' : a ∈ Y := Ideal.Quotient.eq_zero_iff_mem.mp ha
+    obtain ⟨b, c, hc, rfl⟩ := (Ideal.mem_span_singleton_sup.mp (by
+      simpa only [Y, sup_comm] using ha'))
+    refine ⟨Ideal.Quotient.mk X b, ?_⟩
+    change Ideal.Quotient.mk J (y * b) = Ideal.Quotient.mk J (b * y + c)
+    rw [map_add, Ideal.Quotient.eq_zero_iff_mem.mpr ((show I ≤ J from le_sup_left) hc),
+      add_zero, mul_comm]
+  · rintro ⟨b, hb⟩
+    obtain ⟨b, rfl⟩ := Ideal.Quotient.mk_surjective b
+    rw [← hb]
+    apply Ideal.Quotient.eq_zero_iff_mem.mpr
+    exact (show Ideal.span {y} ≤ Y from le_sup_right)
+      (Ideal.mul_mem_right b _ (Ideal.subset_span (Set.mem_singleton y)))
+
+/-- 一つの生成元を積xyにすると、商の長さはxとyの場合の長さの和以下。 -/
+theorem length_quotient_sup_span_mul_le (I : Ideal R) (x y : R) :
+    Module.length R (R ⧸ (I ⊔ Ideal.span {x * y})) ≤
+      Module.length R (R ⧸ (I ⊔ Ideal.span {x})) +
+        Module.length R (R ⧸ (I ⊔ Ideal.span {y})) := by
+  let f := quotientSupSpanMulMap R I x y
+  let g := quotientSupSpanMulProjection R I x y
   rw [Module.length_eq_add_of_exact (LinearMap.ker g).subtype g
-    (Submodule.subtype_injective _) (Ideal.Quotient.factor_surjective hJY)
+    (Submodule.subtype_injective _)
+    (Ideal.Quotient.factor_surjective (quotientSupSpanMul_le R I x y))
     (LinearMap.exact_subtype_ker_map g)]
   apply add_le_add _ le_rfl
-  rw [LinearMap.exact_iff.mp he]
+  rw [LinearMap.exact_iff.mp (quotientSupSpanMul_exact R I x y)]
   exact Module.length_le_of_surjective f.rangeRestrict f.surjective_rangeRestrict
 
 /-- 一つの生成元を `n` 乗すると、商の長さは高々 `n` 倍になる。
