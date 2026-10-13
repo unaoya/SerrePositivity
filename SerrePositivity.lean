@@ -21,6 +21,8 @@ public import SerrePositivity.CLMST.StageBaseChange
 public import SerrePositivity.CLMST.StageDimension
 public import SerrePositivity.CLMST.StageLocality
 public import SerrePositivity.CLMST.PerfectoidIsogeny
+public import SerrePositivity.CLMST.TensorIsogeny
+public import SerrePositivity.CommutativeAlgebra.RootTower.CompletionFlat
 public import SerrePositivity.BhattScholze.Perfectoidization
 public import SerrePositivity.HomologicalAlgebra.DerivedModuleCone
 public import SerrePositivity.CommutativeAlgebra.HilbertSamuelEquiv

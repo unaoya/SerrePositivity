@@ -13,8 +13,8 @@ public import Mathlib.RingTheory.TensorProduct.Finite
 このモジュールは `Paper/`、正規化長さ、CLMST の長さやホモロジーの引用を import しない。
 
 対象の存在は `Inputs.exists_perfectoidization_of_finite`（現行引用在庫の Input 8）に依存する。
-これは Bhatt–Scholze Theorem 10.11、Proposition 8.5、CLMST Notation 4.0.1 を
-合わせた有限・有限表示な代数の場合の名前付き引用であり、この抽出で証明済みにしない。
+この有限代数版は、Bhatt–Scholze Theorem 1.17(1) の整代数の存在引用から証明して導く。
+存在引用そのものを証明済みとは扱わない。
 普遍性で選んだ環への作用の整合性は、その存在引用に相対的に証明済みである。
 
 既存の `SerrePositivity.Section2` の宣言名・定義・証明を保持する。
