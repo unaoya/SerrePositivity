@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.CommutativeAlgebra.PerfectoidFrobeniusKernel
+
 public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
 public import Mathlib.Algebra.CharP.Frobenius
 public import Mathlib.RingTheory.Ideal.Quotient.Operations
@@ -102,5 +104,26 @@ theorem root_mem_sup_of_quotient_frobenius_injective
   change x ∈ Ideal.span {π} ⊔ RingHom.ker f at hpre
   rw [Ideal.mk_ker] at hpre
   exact hpre
+
+/-- 実際の整perfectoid環と互換的なp冪根では、商の反復Frobeniusの単射性を四条件から供給できる。
+零環は別に処理するため、pの非可逆性を明示する。 -/
+theorem quotientRootFrobenius_injective_of_integralPerfectoid
+    (S : Type u) [CommRing S] (p : ℕ) [Fact p.Prime] [Fact (¬ IsUnit (p : S))]
+    (hS : IsIntegralPerfectoid S p) (ρ : ℕ → S) (hρ₀ : ρ 0 = (p : S))
+    (hρ : ∀ m, ρ (m + 1) ^ p = ρ m) (n : ℕ) :
+    Function.Injective (quotientRootFrobenius S p n (ρ n)
+      (by simpa only [zero_add, hρ₀] using compatibleRoots_pow p ρ hρ 0 n)) := by
+  let hpRoot : ρ n ^ (p ^ n) = (p : S) := by
+    simpa only [zero_add, hρ₀] using compatibleRoots_pow p ρ hρ 0 n
+  let F := quotientRootFrobenius S p n (ρ n) hpRoot
+  intro x y hxy
+  have hz : F (x - y) = 0 := by rw [map_sub, hxy, sub_self]
+  obtain ⟨z, hrep⟩ := Ideal.Quotient.mk_surjective (x - y)
+  rw [← hrep, quotientRootFrobenius_mk] at hz
+  have hmem : z ^ (p ^ n) ∈ Ideal.span {(p : S)} := Ideal.Quotient.eq_zero_iff_mem.mp hz
+  have hroot := (hS.pow_kernel_of_compatible_roots S p ρ hρ₀ hρ n z).mp hmem
+  have hz0 : Ideal.Quotient.mk (Ideal.span {ρ n}) z = 0 :=
+    Ideal.Quotient.eq_zero_iff_mem.mpr hroot
+  exact sub_eq_zero.mp (hrep.symm.trans hz0)
 
 end SerrePositivity.CLMST

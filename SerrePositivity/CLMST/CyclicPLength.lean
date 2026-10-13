@@ -7,8 +7,8 @@ public import SerrePositivity.LengthAlgebra.RootTowerLength.CoordinateVanishing
 
 完備塔の p の全根が perfectoid ideal に属することを、選んだ商の被約性から確認し、
 有限段の単項式の上界から巡回商の長さ零へ接続する。
-被約性は未実装の perfectoid 基礎定理に依存する条件として明示し、
-この条件付き結果を無条件の命題4.0.10の証明とは扱わない。
+被約性は標数pのperfectoid環がperfectであるという証明済みの結果から供給する。
+g=pの場合を証明し、一般のgの命題4.0.10とは区別する。
 -/
 
 @[expose] public noncomputable section
@@ -40,5 +40,15 @@ theorem completedLength_cyclic_p_eq_zero_of_reduced
     (fun m ↦ (le_sup_right : perfectoidIdeal (CompletedTower A t p) p hperf
       (p : CompletedTower A t p) ≤ _) (completedTowerRoot_mem_perfectoidIdeal_p_of_reduced
         A t p hperf hred m i hti))
+
+/-- 標数pのperfectoid商の被約性を定義から供給し、pの場合の全巡回評価を得る。 -/
+theorem completedLength_cyclic_p_eq_zero
+    (i : Fin h) (hti : t i = (p : A))
+    (hperf : IsIntegralPerfectoid (CompletedTower A t p) p) (n : ℕ) :
+    (RootTowerLength.completedNormalizedLength A t p ht).len
+      (CompletedTower A t p ⧸ ((completedTowerMaxIdeal A t p) ^ n ⊔
+        perfectoidIdeal (CompletedTower A t p) p hperf (p : CompletedTower A t p))) = 0 :=
+  completedLength_cyclic_p_eq_zero_of_reduced A t p ht i hti hperf
+    (perfectoidQuotient_p_isReduced (CompletedTower A t p) p hperf) n
 
 end SerrePositivity.CLMST
