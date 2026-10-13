@@ -1,0 +1,1007 @@
+% lualatex でコンパイルする（latexmk -lualatex）
+\documentclass[11pt,a4paper]{ltjsarticle}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[haranoaji]{luatexja-preset}
+\usepackage[margin=25mm]{geometry}
+\usepackage{booktabs,tabularx,array,longtable}
+\usepackage{enumitem,needspace}
+\usepackage[hidelinks,hypertexnames=false]{hyperref}
+\usepackage{xcolor}
+
+% 命題は論文の番号で書く（\begin{stmt}{定理 2.1} … \end{stmt}）
+\newcommand{\stmtname}{}
+\theoremstyle{plain}
+\newtheorem*{stmtgen}{\stmtname}
+\newenvironment{stmt}[1]{\renewcommand{\stmtname}{#1}\begin{stmtgen}}{\end{stmtgen}}
+\theoremstyle{definition}
+\newtheorem*{dstmtgen}{\stmtname}
+\newenvironment{dstmt}[1]{\renewcommand{\stmtname}{#1}\begin{dstmtgen}}{\end{dstmtgen}}
+\newtheorem*{remark*}{注意}
+\renewcommand{\proofname}{証明}
+
+\usepackage{url}
+\urlstyle{tt}
+\makeatletter\g@addto@macro\UrlBreaks{\do\_\do\.}\makeatother
+\newcommand{\ld}[1]{\path{#1}}
+
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\n}{\mathfrak{n}}
+\newcommand{\dd}{\mathfrak{d}}
+\newcommand{\tf}{\mathfrak{t}}
+\newcommand{\bb}{\mathfrak{b}}
+\newcommand{\Tor}{\operatorname{Tor}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\Frac}{\operatorname{Frac}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\Proj}{\operatorname{Proj}}
+\newcommand{\Min}{\operatorname{Min}}
+\newcommand{\gr}{\operatorname{gr}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\pd}{\operatorname{pd}}
+\newcommand{\grade}{\operatorname{grade}}
+\newcommand{\eHK}{e_{\mathrm{HK}}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\perf}{\mathrm{perf}}
+\newcommand{\perfd}{\mathrm{perfd}}
+
+\sloppy
+\title{Lech の重複度予想\\[2pt]\large OpenAI のプレプリントの解説（草稿）}
+\author{梅崎直也}
+\date{2026年10月13日}
+\begin{document}
+\maketitle
+
+\section*{はじめに}
+
+この文書は、プレプリント \emph{Lech's multiplicity conjecture}
+（OpenAI、2026-09-23、41 ページ。\href{https://github.com/openai/math}{openai/math}、コミット \ld{adc7f124}。
+リポジトリの \ld{paper/lech.pdf}）の内容を、節を追って整理し直した解説である。
+同じ日に公開された \emph{Positivity of Serre's Intersection Multiplicity}（以下「Serre の論文」）の形式化
+\href{https://github.com/unaoya/SerrePositivity}{unaoya/SerrePositivity} と同じリポジトリで、
+この論文も形式化することを目標にしている。形式化の方針は \ld{formalization-plans/lech.md} に書く。
+
+\paragraph{表記と、この文書の位置付け}
+\begin{itemize}
+  \item 命題・式の番号は論文のものをそのまま使う。
+  \item 証明は論文の議論に沿って再構成したもので、形式化はまだしていない。
+  論文を読んで確かめた範囲と、概略にとどめた範囲は、その場で明記する。
+  \item 論文が引用している外部の結果は、引用として述べ、証明しない。一覧は\ref{app:status} にある。
+  \item \ref{app:algebraic} は、§2 の議論をスキーム論を使わずに次数付き環と加群の言葉で書き直したもので、
+  論文にはない。形式化に向けた書き直しで、論文の議論の正しさとは別に検討が要る点を含む。
+  \item 環は単位元をもつ可換環とする。局所環は、長さ関数のための補助環（\S2、\S3 の $C$）を除いて Noether 的とする。
+  $e(H,A)$ は $\mathfrak{a}$-準素イデアル $H$ の Hilbert--Samuel 重複度、$e(A) = e(\mathfrak{a},A)$。
+  複体はホモロジーの添字で書く。層のコホモロジーの次数 $v$ は、複体の次数 $i$ の項から全次数 $i-v$ に寄与する。
+\end{itemize}
+
+%======================================================================
+\section{主張と先行研究}\label{sec:intro}
+
+次元 $d$ の $0$ でない Noether 局所環 $(A,\mathfrak{a})$ の Hilbert--Samuel 重複度は
+\[
+  e(A) = \lim_{N\to\infty}\frac{d!\,\ell_A(A/\mathfrak{a}^N)}{N^d}
+\]
+である。次元 $0$ では $A$ の長さになる。
+
+\begin{stmt}{定理 1.1（Lech の予想）}
+$(R,\m)\to(S,\n)$ を $0$ でない Noether 局所環の平坦な局所準同型とする。このとき $e(R)\le e(S)$。
+次元、剰余体、標数に制限はない。
+\end{stmt}
+
+難しさは次の点にある。平坦性で比べられるのは $\m^NS$ による商だが、$e(S)$ は $\n$ の冪で決まる。
+閉ファイバーが $0$ 次元で両方のフィルトレーションが有限余長でも、主要項を直接比べることはできない。
+
+\subsection{先行研究（論文の序論による）}
+\begin{itemize}
+  \item Lech：源の次元が $2$ 以下の場合と、閉ファイバーが完全交叉の重要な場合。
+  \item Ma（\emph{Lech's conjecture in dimension three}）：等標数で源の次元が $3$ の場合。等標数で一般の次元について $e(R)\le\max\{1,d!/2^d\}\,e(S)$。
+  Cohen 分解と Hilbert--Kunz 重複度の使い方は、この論文の標数 $p$ の議論の中心でもある。
+  \item Ma（\emph{Lim Ulrich sequences and Lech's conjecture}）：源が完全体上の標準次数付き代数（斉次極大イデアルで局所化）の場合を、任意の次元で示した（目標は次数付きでなくてよい）。正標数で弱い lim Ulrich 列を構成し、標数 $0$ は特殊化による。
+  \item Meng：等しい次元の平坦な局所写像で、完備化して目標が体上の標準次数付きで、源の極大イデアルの拡大が斉次な場合。
+  \item Ulrich 加群の方法（Hanes）。Ulrich 加群は、重複度が極小生成元の数に等しい極大 Cohen--Macaulay 加群である。
+  Ma の弱い lim Ulrich 列は、加群自体は CM でなくてよく、重複度と生成元数の比が $1$ に近づき、最初の高次のパラメータ Koszul Euler 標数が生成元数に比べて無視できる有限加群の列である。
+  局所整域がそのような列をもてば、任意の平坦な局所写像の目標について不等式が出る。
+  \item その限界：弱い lim Ulrich 列をもたない $2$ 次元の（正規でない）完備局所整域がある（Yhee）。
+  正規な場合も、$0$ でない有限生成の極大 CM 加群をもたない $3$ 次元完備正規局所 $\mathbb{C}$ 整域がある
+  （OpenAI, \emph{A Complete Local Domain without a Small Cohen--Macaulay Module}）。
+  後者は弱い lim Ulrich 列の非存在までは意味しない。
+  \item 加群から複体へ：Iyengar--Ma--Walker は短い自由複体の重複度と Betti 数の不等式を lim Ulrich の方法で調べ、
+  Cohen 分解と、有限自由分解とパラメータの Koszul 複体のテンソル積を使う Lech の予想への方針を出した（IMW, Prop.~8.3）。
+  この論文の構成の前身である。
+\end{itemize}
+
+\subsection{証明の流れ}
+\begin{enumerate}
+  \item \textbf{一様な評価（\S\ref{sec:estimate}）。}
+  Noether でない環 $C$ と、加法的な長さ $\lambda$ について、短い自由複体の $H_0$ を下から評価する（定理 2.1）。
+  定数は $h$ と階数だけによる。
+  \item \textbf{長さの入力（\S\ref{sec:length}）。}
+  標数 $p$ では完全化、混標数では CLMST の perfectoid 化と正規化長さで、定理 2.1 の仮定を満たす $(C,\lambda)$ を作る（定理 3.1）。
+  \item \textbf{帰着と補助環（\S\ref{sec:reduction}）。}
+  完備、源が整域、同じ次元、目標の剰余体が代数閉の場合に帰着し、Cohen 分解で $R\to T\twoheadrightarrow S = T/J$（$e(T) = e(R)$）と、
+  $T$ 上の短い自由複体 $F = P\otimes_TK(x;T)$ を作る（命題 4.3）。
+  \item \textbf{標数 $p$（\S\ref{sec:charp}）。} Frobenius で $F$ の成分を深くし、定理 2.1 と Hilbert--Kunz 重複度で比べる（定理 5.2）。
+  同じ議論で、標数 $p$ の完備局所整域上の短い複体の Dutta 重複度 $\ge e(R)$ が出る（系 5.4）。
+  \item \textbf{混標数（\S\ref{sec:mixed}）。} パラメータの冪根と Heitmann の Briançon--Skoda で成分を深くし、
+  素フィルトレーションによる上界と合わせる（定理 6.3）。
+  \item \textbf{剰余標数 $0$（\S\ref{sec:charzero}）。} 反例を有限個の多項式方程式に符号化し、Artin 近似と特殊化で標数 $p$ の反例に移す（定理 7.4）。
+\end{enumerate}
+
+%======================================================================
+\section{長さ付きの一様な評価}\label{sec:estimate}
+
+この節が論文の技術的な中心である。読んで、各段階の議論を確かめた。
+
+\subsection{長さの仮定と評価}
+$C$ を可換環、$h\ge1$、$I = (z_1,\dots,z_h)C$ とする。$\cT_I$ を $I$ のある冪で消される $C$ 加群のアーベル圏とし、
+\[
+  \lambda\colon\cT_I\longrightarrow[0,\infty]
+\]
+は短完全列で加法的で $\lambda(0)=0$ とする。さらに、\textbf{共通の $I$ の冪で消される長さ $0$ の加群の直和と有向余極限は長さ $0$} と仮定する。標準的な数値とホモロジーの仮定は
+\begin{equation}\tag{2.1}
+  \begin{gathered}
+  0<\mu := \lambda(C/I)<\infty,\qquad
+  \lambda\bigl(C/(z_1^a,\dots,z_h^a)C\bigr) = a^h\mu\quad(a\ge1),\\
+  \lambda H_i(z_1^a,\dots,z_h^a;C) = 0\quad(a\ge1,\ i>0)
+  \end{gathered}
+\end{equation}
+である。$C$ の Noether 性は仮定しない。
+
+核と余核が長さ $0$ の写像を\textbf{長さ $0$ を法とした同型}と呼ぶ。長さ $0$ の対象は Serre 部分圏をなすので、
+核・像・余核・有限なスペクトル系列は、その商圏で扱ってよい。
+特に、縦の二つの写像が長さ $0$ を法とした同型である可換な四角形は、横の写像の像の間に長さ $0$ を法とした同型を誘導する。
+
+\paragraph{フィルトレーションについての観察}
+共通の添字範囲の有限で網羅的なフィルトレーションをもつ複体の間の、フィルトレーションを保つ写像が、
+スペクトル系列の $E_1$ で $0$ なら、ホモロジーの随伴次数で $0$ なので、ホモロジーのフィルトレーションを一段下げる。
+フィルトレーションの段数だけ合成すると、ホモロジーで $0$ になる。$E_1$ の項が $\cT_I$ に入るなら、長さ $0$ を法として同じことが言える。
+
+\begin{stmt}{定理 2.1}
+上の仮定と (2.1) のもとで、$F$ を $0,\dots,h$ 次に集中した有限自由 $C$ 加群の複体で、$\Spec C\setminus V(I)$ 上で局所的に可縮なものとし、$b_i = \rank_CF_i$ とおく。このとき $H_i(F)$ は $I$ の冪で消され、
+\[
+  \lambda H_i(F) = 0\quad(i>0),\qquad \lambda H_0(F)<\infty.
+\]
+さらに $\sum_{i=0}^h(-1)^ib_i = 0$ で、微分の成分が全て $I^s$（$s\ge1$）に入るなら、$h$ だけによる定数 $A_h$ があって
+\begin{equation}\tag{2.2}
+  \lambda H_0(F)\ \ge\ \mu s^h\Bigl(b_0-\frac{A_h}{s}\sum_{i=0}^hb_i\Bigr).
+\end{equation}
+特に、$h$ と階数を固定すれば誤差は $O_h(1/s)$ で、$C$、$I$、$\lambda$、$F$ によらない。
+\end{stmt}
+
+序論が強調するとおり、$\lambda$ の仮定は評価の一部で、加法性だけでは足りない。
+高次の Koszul ホモロジーは長さ $0$ であればよく、消える必要はない。
+
+\subsection{長さ $0$ を法とした Koszul 非輪状性}
+
+\begin{stmt}{補題 2.2}
+上の仮定のもとで、$F$ を $0,\dots,h$ 次の有限自由複体で $V(I)$ の外で局所的に可縮なものとする。各 $H_i(F)$ は $I$ の一つの冪で消され、長さは有限で、$i>0$ なら長さ $0$。
+\end{stmt}
+\begin{proof}
+各 $j$ について $F[1/z_j]$ は完全である。有界な射影加群の完全複体は可縮なので、可縮化ホモトピーの有限個の分母を払うと、$z_j$ のある冪が $F$ 上で零ホモトピーになる。共通の指数 $a_0$ をとると $(z_1^{a_0},\dots,z_h^{a_0})$ は全ての $H_i(F)$ を消し、したがって $I^{h(a_0-1)+1}$ も消す。
+
+$K_a = K(z_1^a,\dots,z_h^a;C)$ とおく。$a\ge a_0$ なら各 $z_j^a$ 倍は $F$ 上で、したがって他の Koszul 因子とのテンソル積上でも零ホモトピーである。写像錐を分裂させて
+\begin{equation}\tag{2.3}
+  F\otimes_CK_a\ \simeq\ \bigoplus_{T\subseteq\{1,\dots,h\}}F[|T|]
+\end{equation}
+を得る。分裂は、Koszul 次数 $0$ の $F$ の包含を保つようにとれる。
+
+$F\otimes K_a$ のホモロジーは $(z_1^a,\dots,z_h^a)$ で消える。Koszul ホモロジーを先にとる有界な二重複体のスペクトル系列で、正の Koszul 行は (2.1) により長さ $0$。残る行の項は $F_i\otimes C/(z^a)$（$0\le i\le h$）で長さ有限。よって各 $H_n(F\otimes K_a)$ は長さ有限で、$n>h$ なら長さ $0$。(2.3) の直和因子 $F[h]$ により、$H_0(F)$ は $H_h(F\otimes K_a)$ の、$H_i(F)$（$i>0$）は $H_{h+i}(F\otimes K_a)$ の直和因子である。
+\end{proof}
+
+\subsection{爆発と例外因子}
+長さが有限になったので、$I$ が可逆になる空間に移って評価する。
+\[
+  Y = \Proj_C\bigoplus_{n\ge0}I^n,\qquad L = I\cO_Y = \cO_Y(1),\qquad E = V(L)
+\]
+とおく。$z_i$ に対応する標準チャートの環は $C[I/z_i]\subseteq C[1/z_i]$ で、そこで $I = (z_i)$、$z_i$ は非零因子である。よって $C$ が Noether でなくても $L$ は可逆イデアルで、$E$ は有効 Cartier 因子である（空のチャートは省いてよい）。$I$ の生成元から閉埋め込み $Y\to\PP^{h-1}_C$ ができ、
+$E = \Proj(\gr_IC)\to\PP^{h-1}_{C/I}$
+である。$\PP^{h-1}_\Z$ 上のベクトル束 $V$ の引き戻しも同じ記号で書き、$V(t) = V\otimes\cO(t)$ とおく。
+
+\begin{stmt}{補題 2.3}
+次数付き全射
+\begin{equation}\tag{2.4}
+  (C/I)[Z_1,\dots,Z_h]\longrightarrow\gr_IC
+\end{equation}
+の核は各次数で長さ $0$。$\PP^{h-1}_\Z$ 上の任意のベクトル束 $V$ と整数 $t$ について、制限は長さ $0$ を法とした同型
+$H^v(\PP^{h-1}_{C/I},V(t))\to H^v(E,V(t))$ を誘導し、これらは全て長さ有限である。さらに $t\ge0$ なら $\gr_I^tC\to H^0(E,\cO_E(t))$ は長さ $0$ を法とした同型で、$v>0$ の $H^v(E,\cO_E(t))$ は長さ $0$。
+\end{stmt}
+\begin{proof}
+$J_a = (z_1^a,\dots,z_h^a)$ とおく。$I^{h(a-1)+1}\subseteq J_a$ なので $C/J_a$ の $I$ 進フィルトレーションは有限で、次数付き全射
+$(C/I)[Z]/(Z_1^a,\dots,Z_h^a)\to\gr_I(C/J_a)$
+がある。両辺の斉次成分の長さの和はどちらも $a^h\mu$ なので、加法性と非負性から核の各斉次成分は長さ $0$。次数 $n$ について $a>n$ をとれば、関係 $Z_i^a$ は次数 $n$ に影響せず $J_a\subseteq I^{n+1}$ なので、次数 $n$ の写像はちょうど (2.4) になる。これで前半が出て、同時に
+\begin{equation}\tag{2.5}
+  \lambda(C/I^M) = \mu\binom{M+h-1}{h}\qquad(M\ge1)
+\end{equation}
+が出る。
+
+$P = (C/I)[Z]$、$N$ を (2.4) の核とする。標準チャートやその共通部分で使う斉次局所化の次数 $0$ 部分は、$N$ の斉次成分の有向余極限である。それらは全て $I$ で消され長さ $0$ なので、仮定した余極限の性質から、局所化した各成分も長さ $0$。$V(t)$ の制限はチャート環上で有限射影なので、テンソルしても保たれる。よって射影空間と $E$ の有限な標準 Čech 複体は項ごとに核が長さ $0$ で、制限はコホモロジーで長さ $0$ を法とした同型である。
+
+有限性：$V(t)$ を $\PP^{h-1}_\Z$ 上で構造層のひねりの有限和の有限複体で分解する（$V(t)$ を表す有限生成次数付き $\Z[Z]$ 加群の有限次数付き自由分解。$\Z[Z]$ は有限次元の正則環で大域次元有限、有限生成の次数付き射影加群は次数付き自由）。最後の余核がベクトル束なので層の分解は局所分裂し、任意の底変換で完全なままである。$\PP^{h-1}_{C/I}$ 上の各ひねりのコホモロジーは有限自由 $C/I$ 加群で、有限なスペクトル系列から有限性が出る。最後に $t\ge0$ では多項式環の次数 $t$ 部分が $\cO(t)$ の大域切断で高次コホモロジーは消えるので、(2.4) と合わせて残りの主張が出る。
+\end{proof}
+
+\subsection{爆発上の Euler 標数}
+$Y$ 上の準連接層の有界複体 $D$ について $H_k(Y,D) = H_kR\Gamma(Y,D)$ と書く。有限な標準アフィン Čech 被覆（共通部分はアフィン）で計算できる。これらが $I$ 冪ねじれで長さ有限のとき
+$\chi_\lambda(D) = \sum_k(-1)^k\lambda H_k(Y,D)$
+とおく。
+
+$F$ の $Y$ への引き戻しを $F_Y$ とする。微分の成分が $I^s$ に入るとき、
+\begin{equation}\tag{2.6}
+  G_i = L^{-is}\otimes_CF_i = \cO_Y(-is)^{b_i}
+\end{equation}
+とおく。微分は $L$ を逆元にした $F_Y$ の微分から誘導される。$L = (z_j)$ となるチャートでは、基底 $z_j^{-is}F_i$ での行列は $z_j^{-s}d_i$ で、$d_i$ の成分が $L^s$ に入るので正則である。包含 $F_i\to L^{-is}\otimes F_i$ から複体の包含 $F_Y\subseteq G$ ができ、次数 $i$ の商 $G/F_Y$ は層 $\cO_E(l)^{b_i}$（$l = -is,\dots,-1$）を順に商にもつ。
+
+\begin{stmt}{補題 2.4}
+$D$ を $F_Y\otimes V$ または $G\otimes V$（$V$ は $\PP^{h-1}_\Z$ から引き戻したベクトル束）とする。整数 $M_D$ があって、全ての整数 $j$ と $M\ge M_D$ について、包含 $D(j+M)\to D(j)$ は超ホモロジーで $0$ を誘導する。$D(j)$ の超ホモロジーは全て $I$ の冪で消され、長さ有限である。
+\end{stmt}
+\begin{proof}
+標準チャート $U_i$ では $L$ は非零因子 $z_i$ で生成される。$D$ のチャート上の複体は有限射影加群からなり、$z_i$ を逆元にすると可縮になる（$E$ の外では $F_Y$ も $G$ も $F$ の引き戻しと一致する）。可縮化ホモトピーの分母を払って、$z_i^{m_i}$ 倍がこのチャートで零ホモトピーになる指数 $m_i$ をとる。$L$ を自明化すれば、同じ指数が全てのひねりで、またこのチャートに含まれる全ての共通部分で通用する。$m\ge m_i$ を全ての $i$ についてとる。
+
+$D(j+m)\to D(j)$ は Čech 二重複体の内部ホモロジーのページで $0$ である（各共通部分で局所方程式の $m$ 乗による零ホモトピーな乗法と同一視される）。Čech フィルトレーションは高々 $h$ 段なので、上の観察から $D(j+hm)\to D(j)$ は超ホモロジーで $0$。より大きなひねりの写像はこれを通るので $M_D = hm$ でよい。
+
+$a\in I^{M_D}$ の乗法は $D(j)\xrightarrow{a}D(j+M_D)\to D(j)$ と分解するので、$I^{M_D}$ は超ホモロジーを消す。$M\ge M_D$ なら、$0\to D(j+M)\to D(j)\to D(j)/D(j+M)\to0$ の長完全列で $H_k(Y,D(j))$ は商の超ホモロジーに埋め込まれる。商は $E$ の層による有限フィルトレーションをもち、各項は $V(t)|_E$ の有限和である。それらの層コホモロジーは補題 2.3 で長さ有限なので、層ごとと、フィルトレーションの、二つの有限なスペクトル系列で有限性が出る。
+\end{proof}
+
+有限の厚みの Euler 標数は $F$ の Euler 標数を回復しない。例えば交代階数 $0$ の場合
+$\sum_k(-1)^k\lambda H_k(F/I^MF) = \lambda(C/I^M)\sum_i(-1)^ib_i = 0$
+である。そこで、十分大きな厚みから固定した小さな厚みへのホモロジーの写像の像を比べる。
+
+\begin{stmt}{補題 2.5}
+\begin{equation}\tag{2.7}
+  \chi_\lambda(F_Y) = \sum_i(-1)^i\lambda H_i(F) = \lambda H_0(F).
+\end{equation}
+$\sum_i(-1)^ib_i = 0$ なら、$\PP^{h-1}_\Z$ から引き戻した任意のベクトル束 $V$ について
+\begin{equation}\tag{2.8}
+  \chi_\lambda(F_Y\otimes V) = (\rank V)\,\chi_\lambda(F_Y).
+\end{equation}
+\end{stmt}
+\begin{proof}
+\textbf{有限の厚みでの比較。} 各 $M\ge1$ について自然な比較
+\begin{equation}\tag{2.9}
+  F/I^MF\longrightarrow R\Gamma(Y,F_Y/L^MF_Y)
+\end{equation}
+がある。両辺を $I$ と $L$ の冪でフィルトレーションすると、第 $l$ 層（$0\le l<M$）での比較は各自由因子について $\gr^l_IC\to R\Gamma(E,\cO_E(l))$ で、補題 2.3 によりホモロジーで長さ $0$ を法とした同型である。有限フィルトレーションと有限複体 $F$ から、(2.9) も同じ。これらの比較は $M$ を増やすときの推移写像と可換である。
+
+\textbf{幾何の塔。} $A = R\Gamma(Y,F_Y)$、$B_M = R\Gamma(Y,F_Y/L^MF_Y)$ とおく。三角
+\begin{equation}\tag{2.10}
+  A\to B_M\to R\Gamma(Y,F_Y\otimes L^M)[1]\to A[1]
+\end{equation}
+は $N\ge M$ の推移と両立する。補題 2.4 により、$M$ が十分大きければ $H_k(A)\to H_k(B_M)$ は単射で、$N-M$ が十分大きければ第三項の推移はホモロジーで $0$。完全性から
+\begin{equation}\tag{2.11}
+  \im\bigl(H_k(B_N)\to H_k(B_M)\bigr) = \im\bigl(H_k(A)\to H_k(B_M)\bigr)\cong H_k(A).
+\end{equation}
+逆の包含は、$A$ から全ての $B_N$ への両立する写像だけを使う。
+
+\textbf{Koszul の塔。} 代数の側では、まず $J_a = (z^a)$ と $A_a = F\otimes K_a$ を使う。Koszul の添加写像 $A_a\to F/J_aF$ は両立し、ホモロジーで長さ $0$ を法とした同型である（錐は $F$ と $K_a\to C/J_a$ の錐のテンソル積で、後者のホモロジーは (2.1) で全て長さ $0$）。包含 $F\subseteq A_a$ は Koszul 次数 $0$ の部分複体で、$a\ge a_0$ なら (2.3) でホモロジー上分裂する。$Q_a = A_a/F$ とおく。標準の推移 $K_b\to K_a$（$b\ge a$）は次数 $0$ で恒等写像、添字 $T$ の基底を $\prod_{j\in T}z_j^{b-a}$ 倍する。$Q_a$ を Koszul 次数 $1,\dots,p$（$p = 1,\dots,h$）で増大的にフィルトレーションすると、随伴次数は $F$ のずらしのコピーで、各片での推移は空でない $T$ をもつ。補題 2.2 のように $I^tH(F) = 0$ となる $t$ をとると、$b-a\ge t$ なら全ての推移はこれらの片のホモロジーで $0$。$h$ 回の合成は $H(Q_a)$ 上で $0$ で、例えば $b-a\ge ht$ なら $H(Q_b)\to H(Q_a)$ は $0$。$0\to F\to A_a\to Q_a\to0$ の長完全列から、$a$ を十分大きく、次に $b$ を十分大きくとれば
+\[
+  \im\bigl(H_k(A_b)\to H_k(A_a)\bigr) = \im\bigl(H_k(F)\to H_k(A_a)\bigr)\cong H_k(F).
+\]
+Koszul の添加写像を通して、塔 $F/J_aF$ についても長さ $0$ を法として同じ主張が出る。
+
+\textbf{Koszul の冪から普通の冪へ。} 包含
+\begin{equation}\tag{2.12}
+  I^{h(a-1)+1}\subseteq J_a\subseteq I^a
+\end{equation}
+が必要な商写像を全て与える。$P_M = F/I^MF$ とおく。十分大きな $a$ を一つとり、$M\ge h(a-1)+1$ とすれば、合成 $H_k(F)\to H_k(P_M)\to H_k(F/J_aF)$ から、第一の写像は長さ $0$ を法として単射。次にそのような $M$ を固定し、$a\ge M$ を大きく、$J$ の塔で段 $b$ から段 $a$ への像が $H_k(F)$ の像になるように $b\ge a$ をとる。$N\ge h(b-1)+1$ なら推移は $P_N\to F/J_bF\to F/J_aF\to P_M$ を通るので、そのホモロジーの像は長さ $0$ を法として $H_k(F)$ の像に含まれる。逆の包含は両立性から。よって $P$ の塔の最終的な像は、長さ $0$ を法として $H_k(F)$ と同一視される。
+
+$M$ と、次に $N$ を、この記述と (2.11) の両方が成り立つように大きくとる。(2.9) の両立する比較 $P_N\to B_N$、$P_M\to B_M$ は、$P_N\to P_M$ と $B_N\to B_M$ のホモロジーの像を長さ $0$ を法として同一視し、それらはそれぞれ $H_k(F)$、$H_k(A)$ と同一視される。長さは補題 2.2、(2.5)、補題 2.4 で全て有限なので、全ての $k$ で $\lambda H_k(Y,F_Y) = \lambda H_k(F)$。これが (2.7) である。
+
+\textbf{ベクトル束とのテンソル。} 連続するひねりを比べる。$F_Y(j)/F_Y(j+1)$ の次数 $i$ の項は $\cO_E(j)^{b_i}$ なので、Euler 標数は $\bigl(\sum_i(-1)^ib_i\bigr)\bigl(\sum_v(-1)^v\lambda H^v(E,\cO_E(j))\bigr) = 0$。Euler 標数の加法性から $\chi_\lambda(F_Y(j))$ は $j\in\Z$ によらない。最後に $V$ を補題 2.3 のようにひねりの有限和の有限複体で分解すると、分解は $Y$ 上で完全なままで、$F_Y$ とテンソルして Euler 標数をとれば $\chi_\lambda(F_Y\otimes V)$ はひねりの Euler 標数の交代和になる。分解の階数の交代和は $\rank V$ なので (2.8) が出る。
+\end{proof}
+
+\subsection{指定したコホモロジーの根をもつベクトル束}
+
+\begin{stmt}{補題 2.6（Eisenbud--Schreyer の構成）}
+整数 $r_1>\dots>r_{h-1}$ に対し、$\PP^{h-1}_\Z$ 上の階数 $(h-1)!$ のベクトル束 $V$ で次を満たすものがある。任意の環 $A$ と整数 $a$ について、$\PP^{h-1}_A$ 上の $V(a)$ は、ある $j$ で $a = r_j$ なら非輪状。そうでなければコホモロジーは単一の次数
+$v(a) = \#\{j: r_j>a\}$
+にある有限自由 $A$ 加群で、階数による Euler 標数は $\prod_{j=1}^{h-1}(a-r_j)$。
+$A = C/I$ なら $\lambda$ による Euler 標数は $\mu\prod_j(a-r_j)$ で、同じ Euler 標数とコホモロジーの消滅の主張が、長さ $0$ を法として $E$ 上でも成り立つ。
+\end{stmt}
+\begin{proof}[証明の概略]
+$n = h-1$ とする（$n = 0$ なら $\PP^0_\Z$ 上の階数 $1$ の束）。2 元 1 次形式の積で
+$f\colon(\PP^1_\Z)^n\to\PP^n_\Z$、$f^*\cO(1) = \cO(1,\dots,1)$
+を定める。$f$ は固有で幾何的ファイバーが有限なので有限。各体のファイバーで源と目標は $n$ 次元滑らかで、対応する局所環の次元は等しいので、源は CM で正則な目標上の平坦性の次元判定法を満たす。両方が $\Z$ 上平坦なので、ファイバーごとの平坦性判定法で $f$ は平坦。$\Q$ 上で関数体の有限拡大は分離的で、幾何的生成的な形式は $n$ 個の相異なる因子をもち順序付き分解はちょうど $n!$ 個なので、$f$ の階数は $n!$。
+$V = f_*\cO(-1-r_1,\dots,-1-r_n)$
+とおけば、有限平坦性から階数 $n!$ のベクトル束で、その形成は任意の底変換と両立する。射影公式で $V(a)$ のコホモロジーは $(\PP^1_A)^n$ 上の $\cO(a-1-r_1,\dots,a-1-r_n)$ のコホモロジーになり、$\PP^1_A$ 上の $\cO(m)$ の計算（$m\ge0$ で次数 $0$ だけ、$m\le-2$ で次数 $1$ だけ、$m = -1$ で $0$、Euler 標数 $m+1$）のテンソル積で主張が出る。$E$ 上の主張は補題 2.3 から。
+\end{proof}
+この補題は論文の中で証明されているが、平坦性の判定などに一般的なスキーム論を使う。形式化では当面引用にする（\ref{app:algebraic} の (W)）。
+
+\subsection{符号と主要係数：定理 2.1 の証明}
+\begin{proof}[定理 2.1 の証明]
+ホモロジーの主張は補題 2.2。評価を示す。束の根の位置で $G\otimes V$ の超ホモロジーを長さ $0$ を法として次数 $0$ に押し込み、根の極限値で $1\le i\le h$ の全ての層の和の主要項を $(h-1)!s^h$ に揃える。交代階数の関係式が $b_0$ を取り出す。
+
+$H(x) = \prod_{i=1}^h(x+i)$ とし、$H'(x)$ の根を $\rho_1>\dots>\rho_{h-1}$ とする。Rolle の定理から $-(j+1)<\rho_j<-j$。$h$ だけによる十分大きな $s$ について、$s\rho_j$ を整数 $r_j$ に丸めて
+\begin{equation}\tag{2.13}
+  -(j+1)s<r_j<-js,\qquad |r_j-s\rho_j|\le1
+\end{equation}
+とする。$V$ を補題 2.6 の束とし、$D = G\otimes V$ とおく。
+
+\textbf{主張：}
+\begin{equation}\tag{2.14}
+  \chi_\lambda(D)\ge0.
+\end{equation}
+$D$ のひねりの第 $l$ 層で、ホモロジー次数 $i$ の項は $V(l-is)|_E^{b_i}$ である。$l\ge0$ なら (2.13) から $\#\{j: r_j>l-is\}\le i$（$j\ge i$ の根は $-is$ より真に小さく、$i = 0$ なら全ての根は負）。よって層の次数 $v>i$ のコホモロジーは長さ $0$ で、有限な超ホモロジーのスペクトル系列で負の全次数 $i-v$ の項は長さ $0$ を法として残らない。層 $l = 0,\dots,M-1$ でフィルトレーションして $\lambda H_k(Y,D/D(M)) = 0$（$k<0$）。$M$ が大きければ補題 2.4 で $D(M)\to D$ は超ホモロジーで $0$ なので、商の長完全列で $H_k(Y,D)\hookrightarrow H_k(Y,D/D(M))$ となり、$k<0$ で長さ $0$。
+
+$l<0$ なら $\#\{j: r_j>l-is\}\ge i-1$（$i\ge1$ なら $j\le i-1$ の全ての $j$ で $r_j>-(j+1)s\ge-is>l-is$。$i = 0$ なら自明）。よってその層の超ホモロジーは全次数 $>1$ で長さ $0$。層 $l = -M,\dots,-1$ で商をフィルトレーションして $\lambda H_k(Y,D(-M)/D) = 0$（$k>1$）。$M$ が大きければ $D\to D(-M)$ は超ホモロジーで $0$ なので、長完全列から全射 $H_{k+1}(Y,D(-M)/D)\to H_k(Y,D)$ を得て、$k>0$ で長さ $0$。補題 2.4 で全ての次数の長さが有限なので $\chi_\lambda(D) = \lambda H_0(Y,D)\ge0$。
+
+包含 $F_Y\otimes V\subseteq G\otimes V$ の次数 $i$ の商は $(L^{-is}/\cO_Y)\otimes V^{b_i}$ で、層 $V(l)|_E^{b_i}$（$l = -is,\dots,-1$）を順にもつ。全ての Euler 標数は有限で、加法性、補題 2.5、補題 2.6 から
+\begin{equation}\tag{2.15}
+  0\le(h-1)!\,\lambda H_0(F)+\mu\sum_{i=0}^h(-1)^ib_i\sum_{l=-is}^{-1}\prod_{j=1}^{h-1}(l-r_j).
+\end{equation}
+$i = 0$ の和は空である。
+
+誤差を明示する。$P_s(x) = \prod_j(x-r_j/s)$、$P(x) = \prod_j(x-\rho_j) = H'(x)/h$ とおく。区間 $[-h,0]$ で (2.13) から $\|P_s-P\|_\infty = O_h(s^{-1})$、$P$ とその導関数は $h$ だけで抑えられる。左端点の Riemann 和の誤差評価から、$i = 1,\dots,h$ で一様に
+\begin{align*}
+  s^{-h}\sum_{l=-is}^{-1}\prod_j(l-r_j) &= \frac1s\sum_{l=-is}^{-1}P_s(l/s)
+  = \int_{-i}^0P(x)\,dx+O_h(s^{-1})\\
+  &= \frac{H(0)-H(-i)}{h}+O_h(s^{-1}) = (h-1)!+O_h(s^{-1}).
+\end{align*}
+（$H(-i) = 0$、$H(0) = h!$ を使う。）$\sum_{i=1}^h(-1)^ib_i = -b_0$ を (2.15) に代入して
+$\lambda H_0(F)\ge\mu s^h\bigl(b_0-O_h\bigl(\sum_ib_i/s\bigr)\bigr)$
+を得る。誤差と $s$ の閾値は $h$ だけによる。前半で使ったホモトピーの指数や切り詰めの段は $C$、$F$、$V$ によってよい（長さ $0$ を法とした比較と消滅を確立するだけで、数値の誤差には入らない）。$A_h$ を閾値以上に大きくとれば、残りの $s$ では右辺は $b_0\le\sum_ib_i$ により非正で、長さの非負性から同じ不等式が出る。$h = 1$ なら空積の約束で、誤差なしに同じ議論が通る。
+\end{proof}
+%======================================================================
+\section{正規化長さの代数}\label{sec:length}
+
+\begin{stmt}{定理 3.1}
+$(D,\dd,k)$ を次元 $h>0$ の完備 Noether 局所整域で、剰余体 $k$ は標数 $p>0$ の完全体とする。$D$ 代数 $C$ と、$\dd$ のある冪で消される $C$ 加群の上の $[0,\infty]$ に値をとる関数 $\lambda$ で、次を満たすものがある。
+\begin{enumerate}
+  \item 短完全列で加法的で、零加群で $0$。考える全ての加群が $\dd$ の一つの冪で消されるなら、長さ $0$ の加群の直和・和・有向余極限は長さ $0$。
+  \item $D$ の任意のパラメータ系 $z_1,\dots,z_h$ と整数 $a\ge1$ について
+  \[
+    \lambda\bigl(C/(z_1^a,\dots,z_h^a)C\bigr) = a^he\bigl((z_1,\dots,z_h),D\bigr),\qquad
+    \lambda H_i(z_1^a,\dots,z_h^a;C) = 0\quad(i>0).
+  \]
+  特に $\mu = \lambda(C/(z)C)$ は正で有限。
+  \item $H$ が $\dd$-準素なら
+  \[
+    \lambda(C/HC) = \eHK(H,D)\quad(\mathrm{char}\,D = p),\qquad
+    \lambda(C/HC)\le e(H,D)\quad(\mathrm{char}\,D = 0).
+  \]
+\end{enumerate}
+$\dd$-準素イデアルから拡大したイデアルの一つの冪で消される加群についても、同じ長さ $0$ の安定性が成り立つ。
+\end{stmt}
+$I = (z)C$ について、(1)(2) が定理 2.1 の安定性・パラメータの長さ・Koszul の仮定を $\mu = e((z),D)$ で与え、(3) が $H_0$ の評価を普通の重複度に結びつける。ここで Hilbert--Kunz 重複度は
+$\eHK(H,D) = \lim_{q = p^n\to\infty}\ell_D(D/H^{[q]})/q^{\dim D}$（Monsky の定理で極限は存在する）。
+
+この定理は Serre の論文の定理 2.5 と同じ対象に (3) を加えたものである（\S\ref{sec:serre}）。
+
+\subsection{正規化長さの形式}
+Faltings の正規化長さ（Shimomoto、CLMST \S2.2 の定式化）を使う。$(A,\m_A,k)$ を
+$A = k[[t_1,\dots,t_h]]$ または $A = W(k)[[t_2,\dots,t_h]]$（後者では $t_1 = p$）とし、整合的な $p$ 冪根をとって
+$A_n = A[t_1^{1/p^n},\dots,t_h^{1/p^n}]$、$\Lambda = \varinjlim_nA_n$
+とおく。標数 $p$ では $\Lambda = A_{\perf}$。混標数では $\Lambda$ は完備化していない塔で、その $p$ 進完備化を $A_\infty$ と書く。
+
+$\m_A^N$（$N$ は加群による）で消される $\Lambda$ 加群のアーベル圏を考える。どちらの構成でも $\m_A\subseteq\dd$ となる $A\subseteq D$ をとり、スカラーの制限で長さを測るので、$\dd$ の冪で消される $C$ 加群は全てこの圏に入る。この圏の有限表示な加群は有限長の $A_n$ 加群 $M_n$ に降り、
+\begin{equation}\tag{3.1}
+  \lambda_\infty(M_n\otimes_{A_n}\Lambda) = p^{-nh}\ell_{A_n}(M_n).
+\end{equation}
+（$A_n$ と $A$ は剰余体が同じなので、$A$ 上の長さと $A_n$ 上の長さは一致する。）有限生成加群の長さは、それに全射する有限表示加群の長さの下限、一般の加群では
+\begin{equation}\tag{3.2}
+  \lambda_\infty(M) = \sup\{\lambda_\infty(N): N\subseteq M\text{ は有限生成}\}.
+\end{equation}
+これらは整合し、短完全列で加法的である（CLMST Def.~2.2.1、Prop.~2.2.3、2.2.6(a)）。特に部分加群と商で単調。
+
+\begin{stmt}{補題 3.2}
+以下の加群は全て $\m_A$ の一つの冪で消されるとする。
+\begin{enumerate}
+  \item 長さ $0$ の加群の直和・和・有向余極限は長さ $0$。
+  \item $M = \bigcup_nM_n$ が部分加群の増大列の和なら $\lambda_\infty(M) = \sup_n\lambda_\infty(M_n)$。
+  \item $M = \varinjlim_nM_n$ で $\lambda_\infty(M_n)\to0$ なら $\lambda_\infty(M) = 0$。推移写像の単射性は要らない。
+\end{enumerate}
+\end{stmt}
+\begin{proof}
+直和の有限生成部分加群は有限個の和に入るので、加法性と (3.2) から (1) の直和が出る。和と有向余極限は直和の商なので (1) が出る（共通の冪で消されるので直和もこの圏に入る）。(2) は、$M$ の有限生成部分加群はある $M_n$ に入ることと (3.2)、単調性から。(3) は、有限生成の $N\subseteq M$ の生成元の代表がある段 $M_{n_0}$ に入るので、$n\ge n_0$ で $N$ は $M_n$ の $M$ での像に含まれ、$0\le\lambda_\infty(N)\le\lambda_\infty(M_n)\to0$。$N$ について上限をとる。
+\end{proof}
+
+\subsection{標数 $p$}
+$D$ が標数 $p$ とする。Cohen--Gabber の正規化定理（Kurano--Shimomoto）で係数体 $k\subseteq D$ とパラメータ系 $t_1,\dots,t_h$ をとり、$A = k[[t]]\subseteq D$ を加群有限かつ生成的に分離的にする。$\Frac(D)$ の代数閉包の中で
+$A' = A_\perf$、$C = D_\perf$、$K = \Frac(A)$、$L = \Frac(D)$、$K' = K_\perf = \Frac(A')$
+とおき、$C$ 加群に $A'$ へのスカラー制限で $\lambda_\infty$ を当てる。$q = p^n$ について
+$B_q = A'\otimes_{A^{1/q}}D^{1/q}$
+とおく。$D^{1/q}$ は $A^{1/q}$ 上ねじれなし、$A'$ は $A^{1/q}$ 上平坦（正則冪級数環の拡大は自由）なので、$B_q\to C$ は単射で、$B_q$ は $K'\otimes_{K^{1/q}}L^{1/q}$ に入る。これは体である（有限分離拡大 $L^{1/q}/K^{1/q}$ と純非分離拡大 $K'/K^{1/q}$ は線形無関連）。よって $B_q$ は $C$ の部分環 $A'D^{1/q}$ と同一視され、$q$ について増大し $C$ を尽くす。
+
+以下の補題 3.3 と (3.3)、(3.4) は、CLMST の \S3 と Thm.~3.0.7 の有限段の比較を自己完結した形で述べたもので、導手の評価のトレース双対による証明は Polstra--Tucker の Lemma 2.3 による（Cohen--Gabber の設定も CLMST \S3 と同じ）。
+
+\begin{stmt}{補題 3.3（導手の評価）}
+ある $0\ne g\in A$ で $gC\subseteq B_1$、$g^{1/q}C\subseteq B_q$（$q = p^n$）。
+\end{stmt}
+\begin{proof}
+$E = LK'$ は完全体 $K'$ の有限分離拡大なので完全で、$L$ を含み $L_\perf$ に含まれるので $L_\perf$ に等しい。$A'$ は正規（整方程式と有限個の分数はある正規環 $A^{1/q}$ に降りる）。$D$ の元からなる $L$ の $K$ 基底 $b_1,\dots,b_r$ をとり、分離性からトレース双対基底 $\beta_j$ をとる。$(A\setminus0)^{-1}D = L$ なので $g\beta_j\in D$ となる $0\ne g\in A$ がある。二つの基底は $K'$ に係数拡大してもトレース双対。$c\in C$ と $g\beta_j$ は $A'$ 上整なので $\mathrm{Tr}_{E/K'}(g\beta_jc)$ は $A'$ 上整で $K'$ に入り、正規性から $A'$ に入る。よって
+$gc = \sum_j\mathrm{Tr}_{E/K'}(g\beta_jc)\,b_j\in A'D = B_1$。
+完全環 $C$ の中で $q$ 乗根をとれば、$(A'D)^{1/q} = A'D^{1/q} = B_q$ から第二の包含が出る。
+\end{proof}
+
+$H$ を $\dd$-準素とし、$M_q = B_q/HB_q$、$N_q = \im(M_q\to C/HC)$ とおく。有限段の正規化から
+\begin{equation}\tag{3.3}
+  \lambda_\infty(M_q) = q^{-h}\ell_D(D/H^{[q]}).
+\end{equation}
+（$M_q$ は $D^{1/q}/HD^{1/q}$ の $A^{1/q}$ から $A'$ への平坦な係数拡大で、$q$ 乗写像 $D^{1/q}\to D$ はそれを $D/H^{[q]}$ と長さを保って同一視する。）$M_q\to N_q$ の核は $g^{1/q}$ で消える（$B_q\cap HC$ の元に $g^{1/q}$ を掛けると、補題 3.3 で $HB_q$ に入る）。有限な正規化長さの加群の自己準同型では核と余核の長さが等しいので、$g^{1/q}$ 倍に当てて
+\begin{equation}\tag{3.4}
+  \lambda_\infty\ker(M_q\to N_q)\le\lambda_\infty(0:_{M_q}g^{1/q}) = \lambda_\infty(M_q/g^{1/q}M_q) = q^{-h}\ell_D\bigl(D/(H^{[q]},g)\bigr).
+\end{equation}
+これは $O(q^{-1})$ である（$H^{t(q-1)+1}\subseteq H^{[q]}$ から $H^{[q]}$ は指数 $O(q)$ の $\dd$ の冪を含み、$g$ が非単元なら $\dim D/(g)\le h-1$ なので Hilbert--Samuel の増大度から $O(q^{h-1})$）。よって
+$q^{-h}\ell_D(D/H^{[q]})-O(q^{-1})\le\lambda_\infty(N_q)\le q^{-h}\ell_D(D/H^{[q]})$。
+$N_q$ は増大して $C/HC$ を尽くし、全て $H$ で、したがって $\m_A$ の一つの冪で消されるので、Hilbert--Kunz の極限と補題 3.2 から
+\begin{equation}\tag{3.5}
+  \lambda_\infty(C/HC) = \eHK(H,D).
+\end{equation}
+
+パラメータ系 $z$ を固定する。各段の平坦性と $q$ 乗の同型から
+\begin{equation}\tag{3.6}
+  \lambda_\infty H_i(z_1,\dots,z_h;B_q) = q^{-h}\ell_DH_i(z_1^q,\dots,z_h^q;D).
+\end{equation}
+$K(z;D)$ は $0,\dots,h$ 次の有限自由加群からなり、ホモロジーは有限長なので、\textbf{Roberts の Frobenius ホモロジー評価}（Ma, \emph{Lech's conjecture in dimension three}, Thm.~2.4 の形）から $i>0$ で $q^{-h}\ell_DH_i(z^q;D)\to0$。有向余極限は完全なので $H_i(z;C) = \varinjlim_qH_i(z;B_q)$ で、各加群は $(z)$ で消されるので、補題 3.2 (3) から
+\begin{equation}\tag{3.7}
+  \lambda_\infty H_i(z_1,\dots,z_h;C) = 0\quad(i>0).
+\end{equation}
+冪 $z^a$ についても同じ。最後に Koszul Euler 標数の公式 $\sum_i(-1)^i\ell_DH_i(z^q;D) = e((z^q),D) = q^he((z),D)$ を $q^h$ で割り、高次の極限を使えば $\eHK((z),D) = e((z),D)$。(3.5) とパラメータの重複度の冪の規則と合わせて、標数 $p$ の定理 3.1 が出る。
+
+\begin{stmt}{補題 3.4}
+上の標数 $p$ の設定で、$M$ を有限長 $D$ 加群とする。右辺の極限が存在すれば
+\[
+  \lambda_\infty(C\otimes_DM) = \lim_{q = p^n\to\infty}q^{-h}\ell_D\bigl(\Phi^n_D(M)\bigr).
+\]
+ここで $\Phi^n_D(M) = D\otimes_{D,\varphi^n}M$ は $n$ 回の Frobenius に沿った係数拡大。
+\end{stmt}
+\begin{proof}[証明の概略]
+$M\ne0$ とし、$J = \mathrm{Ann}_DM$（$\dd$-準素）、$b$ を $M$ の生成元の数とする。$M_q = B_q\otimes_DM$、$N_q = \im(M_q\to C\otimes_DM)$ とおくと、(3.3) と同様に $\lambda_\infty(M_q) = q^{-h}\ell_D(\Phi^n_D(M))$。補題 3.3 から $g^{1/q}$ 倍は $C\to B_q$ を定め、核 $K_q = \ker(M_q\to N_q)$ は $g^{1/q}$ で消える。(3.4) と同じ計算で
+$\lambda_\infty(K_q)\le b\,\lambda_\infty(B_q/(J,g^{1/q})B_q) = bq^{-h}\ell_D(D/(J^{[q]},g)) = O(q^{-1})$。
+$N_q$ は $C\otimes_DM$ に増大し、$J$ で消えるので、加法性と補題 3.2 から極限をとって主張が出る。
+\end{proof}
+
+\subsection{混標数}
+$D$ が標数 $0$ とする。$p$ をパラメータ系 $p,t_2,\dots,t_h$ に延ばし、Cohen 構造定理で剰余体が同じ加群有限な包含 $A = W(k)[[t_2,\dots,t_h]]\subseteq D$ をとる（分数体が標数 $0$ なので生成的に分離的）。$A_\infty$ を上の塔の $p$ 進完備化とし
+\[
+  C = D^{A_\infty}_\perfd := (D\otimes_AA_\infty)_\perfd
+\]
+とおく。Bhatt--Scholze の perfectoid 化（\S8、Thm.~10.11）を使う。$C$ は CLMST の Notation 4.0.1 の perfectoid 代数である。その正規化長さ $\lambda_\infty$ を使う。同じことだが、有界な $\m_A$ 冪ねじれ加群は完備化していない塔 $\Lambda$ に制限して測る。実際 $\Lambda$ は $p$ ねじれなしで $\Lambda/p^N\cong A_\infty/p^N$ なので、$\m_A^N$ で消される加群は $p^N$ で消され、部分加群も有限生成系も二つの長さの底で同じである。
+
+使う perfectoid の帰結は次のとおり（いずれも CLMST の結果。この解説では引用として扱う）。$A[1/g]\to D[1/g]$ が有限エタールとなる $0\ne g\in A$ をとり、$(g)_\perfd$ を CLMST Notation 4.0.1 の almost イデアルとする。
+\begin{itemize}
+  \item CLMST Cor.~4.0.4：$A_n\otimes_AD$ の任意のパラメータ系の $C$ 上の正の次数の Koszul ホモロジーは $(g)_\perfd$ で消える。$n = 0$ で $D$ の任意のパラメータ系が扱える（$A$ のパラメータに限らない）。
+  \item CLMST Prop.~4.0.10：$(g)_\perfd$ に関して almost 同型な $\m_A$ 冪ねじれ加群は正規化長さが等しい。特に上の Koszul ホモロジーは長さ $0$。
+  \item CLMST Def.~4.0.8、Cor.~4.0.18：$\dd$-準素な $H$ について $\lambda_\infty(C/HC) = e_\perfd(H,D)\le e(H,D)$、$H$ がパラメータイデアルなら等号。後者は Prop.~4.0.14 の $n = 0$ の場合でもある。
+\end{itemize}
+$(z^a)$ に当ててパラメータの重複度の冪の規則を使えば $\lambda_\infty(C/(z^a)C) = a^he((z),D)$。これらは全て同じ $C$ と同じ正規化長さについての主張で、$z$ は $D$ のパラメータ系全体を動く。
+
+最後に圏と安定性の主張を確かめる。$\dd$ の冪で消される加群は $\m_A$ の冪で消されるので、上の長さが定義され加法的である。$H$ が $\dd$-準素で $H^NM = 0$ なら、$\dd^r\subseteq H$ となる $r$ について $\m_A^{rN}M = 0$ なので、$H$ の一つの冪が補題 3.2 に必要な共通の冪を与える。$e((z),D)$ は正で有限。これで定理 3.1 の残りの主張が全て出る。
+
+%======================================================================
+\section{帰着と有限自由複体}\label{sec:reduction}
+
+剰余標数が正の写像について、$e(T) = e(R)$ となる分解 $R\to T\twoheadrightarrow S$ と、閉点に台をもつ $T$ 上の短い自由複体を作ることが目標である。最初の帰着は全ての標数で通用し、任意の次元と剰余体を扱う。
+
+\subsection{完備化、成分、剰余体}
+\textbf{Nagata の局所化定理}（Ma の Thm.~2.1 の形）：$(B,\bb)$ が excellent な局所環で、$q\in\Spec B$ が $\dim(B/q)+\dim B_q = \dim B$ を満たすなら $e(B_q)\le e(B)$。$B$ の等次元性は要らない。
+
+\begin{stmt}{補題 4.1}
+完備 Noether 局所環 $(B,\bb,k)$ と $k$ の代数閉包 $\bar k$ に対し、完備 Noether 局所環 $B'$ と平坦な局所写像 $B\to B'$ で
+$\bb B'$ が $B'$ の極大イデアル、$B'/\bb B'\cong\bar k$、$e(B') = e(B)$
+となるものがある。
+\end{stmt}
+\begin{proof}
+等標数では係数体をとって $B = k[[X_1,\dots,X_t]]/I$ と表示し、$B' = \bar k[[X]]/I\bar k[[X]]$ とする。冪級数環の写像は平坦（$(X)$ を法とした局所平坦性判定法）。
+剰余標数 $p>0$ では Cohen 構造定理で $B = V[[X]]/I$（$V$ は一意化元 $p$、剰余体 $k$ の完備離散付値環）とする。$k$ が非完全でも、$V$ には一意化元が同じで剰余体が $\bar k$ の完備離散付値環 $V'$ への拡大がある：単純代数拡大の既約な最小多項式 $f$ をモニックに持ち上げると、$V[X]/(f)$ は $V$ 上有限自由で、$p$ を法として求める剰余体になり、局所で極大イデアルは $p$ で生成され、$p$ は非零因子で次元 $1$ なので離散付値環（$f$ の分離性は要らない）。単純代数拡大の塔に沿って繰り返し、極限の段では和をとり（和の $0$ でない元は $p^a\times$単元）、最後に完備化する。$V\to V'$ はねじれなしなので平坦。$B' = V'[[X]]/IV'[[X]]$ とおく。
+最後に、極大イデアルを拡大する平坦な局所写像では有限長加群の組成列は組成列のままなので $\ell_{B'}(B'/\bb^NB') = \ell_B(B/\bb^N)$。Hilbert--Samuel 関数が一致し、重複度が一致する。
+\end{proof}
+
+\begin{stmt}{補題 4.2}
+全ての $0$ でない Noether 局所環の平坦な局所写像について $e(R)\le e(S)$ を示すには、$R$、$S$ が完備、$R$ が整域、$\dim R = \dim S>0$、$S$ の剰余体が代数閉の場合を示せば足りる。もとの二つの環が標数 $p$ なら、帰着は標数 $p$ を保つ。
+\end{stmt}
+\begin{proof}
+完備化は次元と重複度を保ち、平坦な局所写像は完備化の平坦な写像を誘導する。$d = \dim R$、$f = \dim(S/\m S)$ とすると $\dim S = d+f$。$\m S$ 上極小で $\dim S/Q = f$ の $Q$ をとる。going-down で $\dim S_Q\ge d$ で、$\dim S\ge\dim S/Q+\dim S_Q\ge f+d = \dim S$ なので全て等号。$S$ は excellent なので Nagata の定理で $e(S_Q)\le e(S)$。$R\to S_Q$ は平坦局所で閉ファイバーは $0$ 次元、$\dim S_Q = d$。完備化してもこれらは保たれる。
+
+$R$ の有限な素フィルトレーション（因子 $R/p_j$、重複を許す）をとると、平坦性から $S$ に因子 $S/p_jS$ のフィルトレーションができる。$R/p_j\to S/p_jS$ は閉ファイバーが同じ $0$ 次元の平坦局所写像なので源と目標は同じ次元。重複度の加法性から
+$e(R) = \sum_{\dim R/p_j = d}e(R/p_j)$、$e(S) = \sum_{\dim R/p_j = d}e(S/p_jS)$
+なので整域の源について示せばよい。$d = 0$ なら源は体で重複度 $1$、目標は正の長さ。$d>0$ なら目標に補題 4.1 を当てる。この議論は Ma の Lemma 2.2 にもある。
+\end{proof}
+
+\subsection{perfect な核をもつ分解}
+Noether 局所環 $T$ のイデアル $J$ が \textbf{perfect} とは、$T/J$ の射影次元が有限で $\pd_T(T/J) = \grade_TJ$ となること。
+
+\begin{stmt}{命題 4.3}
+$(R,\m)\to(S,\n)$ を完備 Noether 局所環の平坦な局所写像とし、$R$ は整域、$\dim R = \dim S = d>0$、剰余標数 $p>0$、$S$ の剰余体 $L$ は代数閉とする。分解
+$R\to(T,\tf)\to S = T/J$
+で、$b = \dim(T/\m T)$、$h = d+b$ として次を満たすものがある。
+\begin{enumerate}[label=(\roman*)]
+  \item $T$ は完備で剰余体は $L$、$R\to T$ は平坦で閉ファイバーは正則。$\dim T = h$、$e(T) = e(R)$。
+  \item $T$ の全ての既約成分は次元 $h$。$J$ は grade $b$ の perfect イデアルで、$S$ は $0,\dots,b$ 次の極小有限自由 $T$ 分解 $P_\bullet$（$P_0 = T$）をもつ。
+  \item $\n$ の極小 reduction の持ち上げ $x_1,\dots,x_d\in\tf$ について、$F_\bullet = P_\bullet\otimes_TK_\bullet(x;T)$ は $0,\dots,h$ 次の有限自由複体で、$F_0 = T$、$\Spec T\setminus\{\tf\}$ 上で局所的に可縮、微分の成分は $\tf$ に入り、階数の交代和は $0$。
+  \item $R$ で $0$ に縮約する $Q\in\Spec T$ について $T_Q$ は完全交叉で、混標数なら正則。$J$ 上極小な $T$ の素イデアルは全て $R$ で $0$ に縮約する。混標数では $T$ は generically reduced で、$J$ 上極小な素イデアル $Q$ は $T$ の極小素イデアルをただ一つ含む。
+\end{enumerate}
+\end{stmt}
+(i)--(iii) は源の重複度を保ち、定理 2.1 を当てる複体を作る。(iv) は $J$ 上極小な素イデアルでの標数ごとの比較を与える：標数 $p$ では補題 5.1 で $\eHK(JT_Q,T_Q) = \ell(T_Q/JT_Q)$ を出し、混標数では各素イデアルがただ一つの成分に乗るので、後の和で一度しか数えない。
+\begin{proof}[証明]
+\textbf{$T$ の構成。} $R$ の剰余体を $k$ とし、剰余体 $k$ の完備正則な正規化 $A\subset R$ で $R$ が $A$ 上有限なものをとる（等標数では係数体とパラメータ系で $A = k[[a]]$、混標数では係数 Cohen 環 $V$ とパラメータ系 $p,a_2,\dots,a_d$ で $A = V[[a_2,\dots,a_d]]$。生成的分離性は要らない）。$A\to S$ に \textbf{Avramov--Foxby--Herzog の Cohen 分解}を当て $A\to(U,u)\twoheadrightarrow S$（$U$ は完備、$A\to U$ は平坦局所で閉ファイバーは正則。Ma の Thm.~3.1）。$A$ と閉ファイバーが正則なので $U$ は正則で、剰余体は $L$。
+
+$T = R\otimes_AU$ とおく。$U$ 上有限で、二つの写像の積から全射 $T\to S$ ができる。$U$ 上の閉ファイバー $T/uT = (R/\m_AR)\otimes_kL$ は剰余体 $L$ の局所 Artin 環なので、完備局所環上の有限代数（完備局所環の積）として $T$ は完備局所で剰余体は $L$。底変換で $R\to T$ は平坦で $T/\m T\cong U/\m_AU$、閉ファイバーは次元 $b$ の正則環で、$\dim T = d+b = h = \dim U$。
+
+\textbf{重複度の保存。} $T/\m T$ の正則パラメータ系を $w_1,\dots,w_b\in\tf$ に持ち上げる。平坦局所写像での正則列の持ち上げで $w$ は $T$ 正則列で $T/(w)$ は $R$ 上平坦。完備性から評価写像 $R[[W_1,\dots,W_b]]\to T$ ができ、変数を法とした局所平坦性判定法で平坦、極大イデアルの拡大は $\tf$。補題 4.1 の最後と同様に Hilbert--Samuel 関数が保たれ、形式的な変数の添加は重複度を保つので $e(T) = e(R[[W]]) = e(R)$。
+
+\textbf{分解と perfect な核。} $S$ の極小自由 $T$ 分解をとる。各 syzygy は $R$ 上平坦なので、$k$ とのテンソルで正則局所環 $T/\m T$ 上の $S/\m S$ の極小分解になる。大域次元は $b$ なので極小性から $\pd_TS\le b$。$S/\m S$ は $0$ 次元なので $J$ の $T/\m T$ での像は準素で、$b$ 個のパラメータを $J$ に持ち上げると（ファイバーが正則なので）$T$ 正則列になる。よって $b\le\grade_TJ\le\pd_TS\le b$。
+
+\textbf{成分と台付きの複体。} $R$ は有限なねじれなし $A$ 加群なので有限自由 $A$ 加群に埋め込め、平坦性から $T$ は有限自由 $U$ 加群に埋め込める。よって $T$ の随伴素イデアルの $U$ への縮約は $0$ で、極小素イデアル $P$ について $T/P$ は $U$ 上有限整で $\dim T/P = h$。$L$ は無限なので $d$ 個の元で生成される $\n$ の極小 reduction があり、その持ち上げ $x$ について $J+(x)$ は $\tf$-準素。その零点集合の外の素イデアルでは、局所化した分解が $0$ を分解して分裂完全になるか、ある $x_i$ が単元で Koszul 複体が可縮になる。極小性と $x_i\in\tf$ から微分の成分は $\tf$ に入り、$F_0 = T$、
+$\sum_i(-1)^i\rank F_i = \bigl(\sum_i(-1)^i\rank P_i\bigr)(1-1)^d = 0$（$d>0$ を使う）。
+
+\textbf{$R$ の生成点の上の局所環。} $K = \Frac(A)$、$K_R = \Frac(R)$ とおくと $T\otimes_AK\cong(U\otimes_AK)\otimes_KK_R$。$U\otimes_AK$ は正則で $K_R/K$ は有限拡大である。単純代数拡大の塔に分け、各段は（中間の環が被約でなくても非零因子である）モニック多項式で定まるので、局所環は正則局所環の正則列による商、つまり完全交叉。混標数では $K_R/K$ は分離的で、拡大は有限エタール、局所環は正則。平坦な going-down で $S$ の極小素イデアルは $R$ の $0$ に縮約し、$J$ 上極小な $T$ の素イデアルも同様。混標数では $T$ の極小素イデアルの局所化は $0$ 次元の正則局所環、つまり体なので $T$ は generically reduced。$J$ 上極小な $Q$ で $T_Q$ は正則局所整域なので、$Q$ はただ一つの極小素イデアルを含む。
+\end{proof}
+
+\begin{remark*}[論文の Remark 4.4]
+$T$ は完備で等次元なので catenary で、$\dim T_Q+\dim T/Q = h$（$Q\in\Spec T$）。特に $J$ を含み $\dim T/Q = d$ の素イデアル $Q$ は $J$ 上極小で $\dim T_Q = b$。混標数ではその局所化は正則である。
+\end{remark*}
+%======================================================================
+\section{標数 $p$ の議論}\label{sec:charp}
+
+標数 $p$ では Frobenius で命題 4.3 の複体の成分を任意に深くできる。$T$ の各成分に定理 2.1 を別々に当てて足す。和を $e(S)$ と同一視するのが次の Hilbert--Kunz の等式である。
+
+\begin{stmt}{補題 5.1（Ma の Hilbert--Kunz の等式）}
+$(T,\tf)$ を剰余体が完全な標数 $p>0$ の完備局所環、$J$ を perfect イデアル、$S = T/J$ とする。$S$ の任意のパラメータ系 $x_1,\dots,x_d$ について
+\[
+  \eHK(J+(x),T) = \sum_{\substack{Q\supseteq J\text{ 極小}\\ \dim T/Q = d}}e((x),T/Q)\,\eHK(JT_Q,T_Q).
+\]
+この和に現れる各 $T_Q$ が完全交叉なら $\eHK(J+(x),T) = e((x),S)$。
+\end{stmt}
+\begin{proof}
+前半は Ma の Lemma 4.2（引用）。後半には、Ma の \S2.3 と Lemma 4.2 の完全交叉の帰結（標数 $p$ の局所完全交叉で、射影次元有限の準素イデアルの Hilbert--Kunz 重複度は余長に等しい）を使う。$J$ は perfect なので $JT_Q$ はそのようなイデアルで、$\eHK(JT_Q,T_Q) = \ell_{T_Q}(T_Q/JT_Q)$。Hilbert--Samuel の結合公式から結論が出る。$x$ が $T$ のパラメータ系に延びることは仮定しない。
+\end{proof}
+
+\begin{stmt}{定理 5.2}
+標数 $p>0$ の $0$ でない Noether 局所環の任意の平坦な局所写像 $(R,\m)\to(S,\n)$ について $e(R)\le e(S)$。
+\end{stmt}
+\begin{proof}
+補題 4.2 で、同じ正の次元の完備環で $R$ が整域、$S$ の剰余体が代数閉の場合に帰着する。命題 4.3 から $T,J,P_\bullet,F_\bullet$ と $d,b,h = d+b$ をとり、$\tf$-準素イデアル $H = J+(x_1,\dots,x_d)T$ をおく。
+
+$T$ の極小素イデアル $P$ を固定し、$D = T/P$（極大イデアル $\dd$）とする。次元 $h$ の完備局所整域で剰余体は同じ代数閉体。$\dd$ の極小 reduction $(z_1,\dots,z_h)$ をとると、ある $c\ge0$ で $\dd^n = (z)^{n-c}\dd^c\subseteq(z)^{n-c}$（$n\ge c$）。定理 3.1 の $D$ 代数 $C$ と正規化長さ $\lambda$ をとると、$I = (z)C$ について定理 2.1 の長さの仮定が $\mu = e((z),D) = e(D)$ で成り立つ。
+
+$q = p^n$ について、$F_\bullet$ の微分の行列の成分を全て $q$ 乗した複体を $F_\bullet(q)$ とする。これは $T$ の $n$ 回の Frobenius による係数拡大で、階数は同じ、成分は $\tf^{[q]}$ に入り、$C$ での像は $\dd^{[q]}C\subseteq\dd^qC\subseteq I^{q-c}$ に入る。Frobenius は $F_\bullet$ が可縮な局所化での可縮化ホモトピーの等式を保ち、その後の係数拡大も保つ。$(z)$ は $\dd$-準素なので $I$ と $\tf C$ の根基は等しく、$F_\bullet(q)\otimes_TC$ は $V(I)$ の外で局所的に可縮。$P_\bullet$ の第一の微分の成分は $J$ を生成し $P_0 = T$ なので $H_0(F_\bullet(q)\otimes_TC) = C/H^{[q]}C$。
+
+$q>c$ で $s = q-c$ として定理 2.1 を当てる。次数 $0$ の階数は $1$ で、全ての項の階数は $q$ によらない。定理 3.1 の Hilbert--Kunz の商の公式と Frobenius による拡大縮小から
+\[
+  q^h\eHK(HD,D) = \eHK((HD)^{[q]},D) = \lambda(C/H^{[q]}C)\ge e(D)(q-c)^h(1-o(1)).
+\]
+$q^h$ で割って $q\to\infty$ として $\eHK(HD,D)\ge e(D)$。
+
+命題 4.3 で $T$ の全ての成分は次元 $h$。Hilbert--Kunz（Huneke の Thm.~3.14）と Hilbert--Samuel の結合公式の生成的な長さの係数は同じなので
+\[
+  \eHK(H,T) = \sum_{P\in\Min(T)}\ell_{T_P}(T_P)\,\eHK(H(T/P),T/P)\ge\sum_{P\in\Min(T)}\ell_{T_P}(T_P)\,e(T/P) = e(T).
+\]
+$T$ の被約性は仮定していない。補題 5.1 の仮定を確かめる：$T$ は標数 $p$ の完備局所環、剰余体は代数閉で完全、$J$ は perfect。$J$ 上極小で $\dim T/Q = d$ の $Q$ について命題 4.3 で $T_Q$ は完全交叉。$x$ は $S = T/J$ のパラメータ系でそのイデアルは $\n$ の reduction。よって
+$e(S) = e((x),S) = \eHK(H,T)\ge e(T) = e(R)$。
+\end{proof}
+
+\subsection{短い複体の Dutta 重複度}
+次の系では $H_0$ が巡回的とは限らないので、Hilbert--Kunz の商の公式の代わりに補題 3.4 を使う。Iyengar--Ma--Walker の用語に従う。
+
+\begin{dstmt}{定義 5.3}
+$(R,\m)$ を標数 $p>0$、次元 $d$ の Noether 局所環とする。$R$ 上の\textbf{短い複体}とは、有限自由加群の複体 $F = (0\to F_d\to\dots\to F_0\to0)$ で、ホモロジーが有限長で $H_0(F)\ne0$ のもの。有限長のホモロジーをもつ有界複体 $G$ について $\chi^R(G) = \sum_i(-1)^i\ell_RH_i(G)$ とおく。$G$ が有限自由なら $\Phi^n_RG$ を $n$ 回の Frobenius による係数拡大とし、\textbf{Dutta 重複度}を $\chi^R_\infty(G) = \lim_{n\to\infty}p^{-nd}\chi^R(\Phi^n_RG)$ とする。
+\end{dstmt}
+極限は存在する（IMW \S4.17）。完備な標数 $p$ の局所環上の短い複体について、Roberts の Frobenius ホモロジー定理（Ma の Thm.~2.4）は $i>0$ で $p^{-nd}\ell_RH_i(\Phi^n_RF)\to0$ を与えるので
+\begin{equation}\tag{5.1}
+  \chi^R_\infty(F) = \lim_{n\to\infty}p^{-nd}\ell_RH_0(\Phi^n_RF).
+\end{equation}
+これは $H_0$ が巡回的でない短い複体にも成り立つ。Iyengar--Ma--Walker は次の系の下界を全ての完備局所環上の短い複体について予想した（IMW Conj.~8.1）。その全体は Lech の予想を導く（IMW Prop.~8.3）。
+
+\begin{stmt}{系 5.4（正標数の整域上の Dutta 重複度）}
+$(R,\m)$ を標数 $p>0$ の完備 Noether 局所整域、$F$ を $R$ 上の短い複体とする。このとき $\chi^R_\infty(F)\ge e(R)$。
+\end{stmt}
+\begin{proof}
+$d = \dim R$。$d = 0$ なら $R$ は体で $\chi^R_\infty(F) = \rank F_0\ge1 = e(R)$。$d>0$ とする。可縮な自由直和因子を分離すれば、ホモロジーも Dutta 重複度も変えずに $F$ を極小にできる。$b_i = \rank F_i$、特に $b_0\ge1$。
+
+\textbf{剰余体が代数閉の場合。} $\m$ の極小 reduction $I = (z_1,\dots,z_d)$ をとると、定理 5.2 の証明と同様に固定した $c\ge0$ で $\m^q\subseteq I^{q-c}$（$q\ge c$）。定理 3.1 の標数 $p$ の代数 $C = R_\perf$ と正規化長さ $\lambda$ を使う。$R$ 上の任意の短い複体 $G$ について、右完全性から $C\otimes_RH_0(G) = H_0(C\otimes_RG)$、$\Phi^n_R(H_0(G)) = H_0(\Phi^n_RG)$ なので、補題 3.4 と (5.1) から
+$\lambda H_0(C\otimes_RG) = \chi^R_\infty(G)$。
+$q = p^n$ とする。$\Phi^n_RF$ の微分の成分は $\m^{[q]}\subseteq\m^q\subseteq I^{q-c}$ に入る。Frobenius は $F$ が可縮な局所化での可縮化ホモトピーを保つので $\Phi^n_RF$ のホモロジーも有限長で、極小で $H_0\ne0$ なので短い複体である。$C$ への係数拡大も同じホモトピーを保ち、$I$ は $\m$-準素なので拡大した複体は $V(IC)$ の外で局所的に可縮。Dutta の極限の添字を $n$ ずらして
+$\lambda H_0(C\otimes_R\Phi^n_RF) = \chi^R_\infty(\Phi^n_RF) = q^d\chi^R_\infty(F)$。
+さらに $F$ は $R$ の分数体上で完全になるので $\sum_i(-1)^ib_i = 0$。$C\otimes_R\Phi^n_RF$ にパラメータイデアル $IC$、$s = q-c$、$\mu = e(I,R) = e(R)$ で定理 2.1 を当てると、$q>c$ で
+\[
+  q^d\chi^R_\infty(F)\ge e(R)(q-c)^d\Bigl(b_0-\frac{A_d}{q-c}\sum_{i=0}^db_i\Bigr).
+\]
+$q^d$ で割れば右辺は $b_0e(R)$ に近づき、$b_0\ge1$ から主張が出る。
+
+\textbf{一般の剰余体。} 補題 4.1 で $\n = \m S$、剰余体が代数閉、$\dim S = d$、$e(S) = e(R)$ の完備平坦局所拡大 $R\to S$ をとり、$G = S\otimes_RF$ とおく。これも極小な短い複体で、Frobenius の係数拡大はこの底変換と可換、有限長加群の長さは保たれるので $\chi^S_\infty(G) = \chi^R_\infty(F)$（IMW \S4.17 にもある）。$S$ は整域とは限らないので、前の場合を直接当てずに素フィルトレーションで成分に移る。
+
+$S$ 加群 $S$ の有限な素フィルトレーション（因子 $D_j = S/P_j$、$h_j = \dim D_j$）をとる。有界な自由複体 $\Phi^n_SG$ の Euler 標数の加法性から $\chi^S(\Phi^n_SG) = \sum_j\chi^S(D_j\otimes_S\Phi^n_SG)$。右辺の複体は、$\n$ の外の可縮化ホモトピーがテンソル後も残るので、ホモロジーは有限長。\textbf{Hochster--Huneke の Frobenius ホモロジー評価}（BHM Thm.~5.2 の形）から定数 $C_j$ があって
+$\ell_SH_i(D_j\otimes_S\Phi^n_SG)\le C_jp^{n\min\{h_j,d-i\}}$（$0\le i\le d$）。
+実際その複体は長さ $d$ でホモロジーは有限長、係数加群 $D_j$ の次元は $h_j$ である。$h_j<d$ なら、この因子のホモロジーの長さは全て $O(p^{nh_j})$ で、$p^{nd}$ で割った寄与は $0$ に近づく。
+
+$h_j = d$ なら $D_j$ は剰余体が同じ代数閉体の完備局所整域で、$D_j\otimes_SG$ は $D_j$ 上の短い複体である（局所化した可縮化ホモトピーが残るのでホモロジーは極大イデアルに台をもち、行列は極小のままで $b_0\ge1$ なので $H_0\ne0$）。微分の行列を見れば $D_j\otimes_S\Phi^n_SG\cong\Phi^n_{D_j}(D_j\otimes_SG)$ で、ホモロジーの長さは $S$ 上と $D_j$ 上で一致する。極限をとり、既に示した整域の場合をこれらの因子に当て、素フィルトレーションに沿った最高次元の Hilbert--Samuel 重複度の加法性を使えば
+\[
+  \chi^R_\infty(F) = \chi^S_\infty(G) = \sum_{h_j = d}\chi^{D_j}_\infty(D_j\otimes_SG)\ge\sum_{h_j = d}e(D_j) = e(S) = e(R).
+\qedhere
+\]
+\end{proof}
+
+%======================================================================
+\section{混標数}\label{sec:mixed}
+
+既約成分ごとに議論する。有限整拡大で微分の成分を一様な評価に十分なほど深くする。得られる正規化長さの上界は素フィルトレーションから出し、別のパラメータの冪の極限をとれば拡大によらない。上界を与えるのが次の二つの重複度の評価である。商環の上でイデアルを使うときは、その像を考える。
+
+\begin{stmt}{補題 6.1}
+$(A,\mathfrak{a})$ を正の次元 $t$ の Noether 局所環、$H$ を $\mathfrak{a}$-準素イデアル、$f\in H$ とする。$\dim A/(f) = t-1$ なら $e(H,A)\le e(H,A/(f))$。
+\end{stmt}
+\begin{proof}
+$f$ 倍は余核 $A/(H^j,f)$ の写像 $A/H^{j-1}\to A/H^j$ を誘導するので
+$\ell_A(A/(H^j,f))\ge\ell_A(A/H^j)-\ell_A(A/H^{j-1})$。
+$j$ が大きければこれらは Hilbert--Samuel 多項式で、右辺の主係数は $e(H,A)/(t-1)!$、左辺は $e(H,A/(f))/(t-1)!$。比べれば主張が出る（$t = 1$ も含む）。
+\end{proof}
+
+\begin{stmt}{補題 6.2}
+$(B,\bb)$ を次元 $h$ の完備 Noether 局所整域、$1\le d\le h$ とし、イデアル $L\subseteq\bb$ と元 $x_1,\dots,x_d\in\bb$ が $\sqrt{L+(x_1,\dots,x_d)} = \bb$ を満たすとする。$H_N = L+(x_1^N,\dots,x_d^N)$（$N\ge1$）とおく。
+\begin{enumerate}
+  \item $\dim B/L<d$ なら $e(H_N,B) = O(N^{d-1})$。
+  \item $L = \mathfrak{q}$ が素イデアルで $\dim B/\mathfrak{q} = d$、$B_\mathfrak{q}$ が正則なら
+  $e(H_N,B)\le N^de((x_1,\dots,x_d),B/\mathfrak{q})+O(N^{d-1})$。
+\end{enumerate}
+定数は固定したデータ $B$、$L$、$x$ だけにより、$N$ によらない。
+\end{stmt}
+\begin{proof}
+仮定から $\bb^a\subseteq L+(x_1,\dots,x_d)$ となる $a\ge1$ がとれる。それをとり、$r_N = d(N-1)+1$ とおく。単項式の鳩の巣原理から
+\begin{equation}\tag{6.1}
+  \bb^{ar_N}\subseteq\bigl(L+(x_1,\dots,x_d)\bigr)^{r_N}\subseteq L+(x_1^N,\dots,x_d^N) = H_N.
+\end{equation}
+特に、次元 $t\le d-1$ の $B$ の固定した $0$ でない商 $A$ では、準素イデアルの包含に対する重複度の単調性から
+\begin{equation}\tag{6.2}
+  e(H_N,A)\le e(\bb^{ar_N},A) = (ar_N)^te(\bb,A) = O(N^{d-1})
+\end{equation}
+（$t = 0$ でも成り立つ）。
+
+この評価を使うため、$B$ から次元の小さい固定した商へ移る。次元を一つ下げる $L$ の元による商は、補題 6.1 で $H_N$ の重複度を増やすだけである。(1) では次元 $d-1$ まで下げる。(2) ではまず次元 $d$ まで、$\mathfrak{q}$ での局所化が $B_\mathfrak{q}$ の剰余体になるように下げる。すると成分 $B/\mathfrak{q}$ の結合公式での係数は $1$ で、その商の他の成分はもう一段下げられる。
+
+$B$ は catenary で等次元なので、全ての素イデアル $p$ で $\dim B/p = h-\mathrm{ht}\,p$。$j$ 個の部分パラメータの極小素イデアルは全て高さ $j$（商の次元が $h-j$ なので下からの評価、一般化された単項イデアル定理で上からの評価）で、商は等次元。
+
+(1)：$L$ の中に $h-d+1$ 個の部分パラメータ $v_1,\dots,v_{h-d+1}$ を選ぶ。$j<h-d+1$ 個選んだ後、前のイデアルの極小素イデアルは高さ $j$、商の次元 $h-j\ge d$ なので $L$ を含まない（$\dim B/L<d$）。prime avoidance で次の元を $L$ の中でそれらの外にとれる。各選択で次元が一つ下がる。$H_N$ を固定して補題 6.1 を繰り返し当て
+$e(H_N,B)\le e(H_N,B/(v_1,\dots,v_{h-d+1}))$。右辺の商は次元 $d-1$ で固定なので (6.2) から (1)。
+
+(2)：$c = h-d = \mathrm{ht}\,\mathfrak{q}$ とする。$B$ の部分パラメータで正則局所環 $B_\mathfrak{q}$ の極大イデアルを生成する $v_1,\dots,v_c\in\mathfrak{q}$ を選ぶ。$j<c$ 個を、$\mathfrak{q}B_\mathfrak{q}/(\mathfrak{q}B_\mathfrak{q})^2$ での像が $\kappa(\mathfrak{q})$ 上一次独立になるように選んだとする。$E_j$ を $(v_1,\dots,v_j)B_\mathfrak{q}+(\mathfrak{q}B_\mathfrak{q})^2$ の $B$ への縮約とする。余接空間の次元は $c$ なので $\mathfrak{q}\not\subseteq E_j$。高さ $j<c$ の $(v_1,\dots,v_j)$ の極小素イデアルにも含まれない。素でないかもしれないイデアル $E_j$ を一つだけ含む prime avoidance で、それらの和の外に $v_{j+1}\in\mathfrak{q}$ がとれ、両方の条件が保たれる。最後に Nakayama で $(v_1,\dots,v_c)B_\mathfrak{q} = \mathfrak{q}B_\mathfrak{q}$（$c = 0$ なら空列）。
+
+$A = B/(v_1,\dots,v_c)$ は次元 $d$ の等次元環である。補題 6.1 を繰り返し、結合公式を使って
+\begin{equation}\tag{6.3}
+  e(H_N,B)\le e(H_N,A) = \sum_{p\in\Min(A)}\ell_{B_p}(A_p)\,e(H_N,B/p).
+\end{equation}
+$\mathfrak{q}$ はこれらの極小素イデアルの一つで、係数は $\ell_{B_\mathfrak{q}}(A_\mathfrak{q}) = \ell(B_\mathfrak{q}/\mathfrak{q}B_\mathfrak{q}) = 1$。この成分で $H_N$ は $(x_1^N,\dots,x_d^N)$ になり、パラメータイデアルの冪の公式で寄与はちょうど $N^de((x),B/\mathfrak{q})$。(6.3) の他の素イデアル $p$ は $\mathfrak{q}$ と同じ高さ $c$ で比較不能なので、$w_p\in\mathfrak{q}\setminus p$ がとれる。その像は次元 $d$ の完備局所整域 $B/p$ で $0$ でなく、商は次元 $d-1$ で、$w_p$ は全ての $H_N$ の像に入る。補題 6.1 と (6.2) から $e(H_N,B/p)\le e(H_N,B/(p,w_p)) = O(N^{d-1})$。成分の数と係数は固定なので、足せば (2) が出る。
+\end{proof}
+
+\begin{stmt}{定理 6.3}
+命題 4.3 の記号と結論を仮定し、源の整域 $R$ は混標数とする。このとき $e(S)\ge e(T) = e(R)$。
+\end{stmt}
+\begin{proof}
+$T$ の極大イデアルを $\tf$、$\dim T = h$、$\dim S = d>0$、$S = T/J$、$F = P\otimes_TK(x_1,\dots,x_d;T)$（$P$ は $S$ の長さ $h-d$ 以下の有限自由分解）とする。$F$ の長さは $h$ 以下、$F_0 = T$、閉点の外で可縮、微分の成分は $\tf$ に入り、階数の交代和は $0$。$x$ の像は $S$ の極大イデアルの極小 reduction で、特に $\sqrt{J+(x)} = \tf$。剰余体 $k$ は代数閉。
+
+$T$ の極小素イデアル $P_0$ を固定し、$B = T/P_0$（極大イデアル $\bb$）とする。命題 4.3 から $B$ は混標数の完備局所整域で、次元 $h$、剰余体 $k$。$\bb$ を reduce するパラメータイデアル $(u_1,\dots,u_h)$ をとる。
+
+\textbf{微分を深くする有限拡大。} 整数 $q>h$ を固定し、$\Frac(B)$ の代数閉包の中で根 $z_i = u_i^{1/q}$ をとる。$B' = B[z_1,\dots,z_h]$ は $B$ の有限整域拡大で、完備局所、剰余体 $k$、次元 $h$、$(z)$ は極大イデアルの準素イデアル。$\bb$ は $(u)$ 上整なので、$\bb$ の全ての元は $(z)^qB'$ 上整。$p^a\in(z)B'$ となる $a\ge1$ をとる（$p$ は剰余標数）。イデアル $I = (z_1,\dots,z_h)B'$ の生成系 $p^a,z_1,\dots,z_h$（$n = h+1$ 個。$p^a\in(z)B'$ なので $I$ を生成する。定理の仮定 $p\in\sqrt{(p^a,z_1)B'}$ を満たす）に \textbf{Heitmann の整拡大版 Briançon--Skoda の定理}（Heitmann--Ma の Prop.~2.8 の形）を当てる。$k' = q-h-1\ge0$ とすると、結論は $I^{n+k'} = I^q$ 上整な元を整拡大の後で $I^{k'+1} = I^{q-h}$ に送る（冗長な生成元は許される）。$\bb$ の有限生成系に当て、必要なら各拡大で $0$ の上の素イデアルをとって整域拡大にし、$\Frac(B)$ の共通の代数閉包に埋め込む。所属の証拠となる有限個の整な係数を添加して、$B$ 上有限な整域 $D$ で
+\begin{equation}\tag{6.4}
+  \bb D\subseteq(z_1,\dots,z_h)^{q-h}D
+\end{equation}
+となるものを得る。$D$ を正規化に置き換えてよい（excellence で有限のまま、包含も保たれる）。完備局所環上の有限代数は完備局所環の積で、$D$ は整域なので因子は一つ。よって $D$ は次元 $h$ の完備局所環で、剰余体は代数閉体 $k$ 上有限なので $k$。
+
+$r = \rank_BD$ とおく。任意の $\bb$-準素イデアル $H$ について、有限加群の重複度の公式と剰余体の一致から
+\begin{equation}\tag{6.5}
+  e(HD,D) = r\,e(H,B).
+\end{equation}
+（$D\otimes_B\Frac(B)$ の $\Frac(B)$ 基底の分母を払えば、ねじれ余核をもつ単射 $B^r\to D$ ができ、余核は次元 $<h$ で重複度に寄与しない。剰余体が同じなので有限長 $D$ 加群の長さは $B$ 上と $D$ 上で同じ。）$(u)$ に当ててパラメータイデアルの冪の公式を使えば
+\begin{equation}\tag{6.6}
+  q^he((z_1,\dots,z_h),D) = e((u_1,\dots,u_h),D) = r\,e(B).
+\end{equation}
+
+\textbf{正規化長さの下界。} 定理 3.1 が $D$ に与える代数 $C$ と加法的な長さ $\lambda$ を使い、$\mu = e((z),D)$ とおく。$F$ を $T\to B\to D\to C$ に沿って拡大する。(6.4) で成分は $(z)^{q-h}C$ に入る。局所的な可縮化はこの底変換で残る。$\tf D$ と $(z)D$ は根基が同じなので台の条件も保たれる。$s = q-h$、次数 $0$ の階数 $1$ で定理 2.1 から、$h$ と $F$ の固定した階数だけによる定数 $K$ があって、十分大きな $q$ で
+$\lambda(C/(J,x_1,\dots,x_d)C)\ge\mu(q-h)^h\bigl(1-K/(q-h)\bigr)$。
+(6.6) と合わせて
+\begin{equation}\tag{6.7}
+  \frac{\lambda(C/(J,x_1,\dots,x_d)C)}{r}\ \ge\ e(B)\Bigl(1-\frac hq\Bigr)^h\Bigl(1-\frac K{q-h}\Bigr).
+\end{equation}
+$q$ を動かしても、$K$ は $D$、$C$、$\lambda$ の選び方によらない。
+
+\textbf{商の長さの冪の規則。} しばらく $q$、$D$、$C$、$\lambda$ を固定する。正の整数の列 $a_1,\dots,a_d$ について $F(a) = P_C\otimes_CK(x_1^{a_1},\dots,x_d^{a_d};C)$ を考える。底変換の前は閉点の外で可縮（$V(J)$ の外で $P$ は分裂完全、$V(x)$ の外で Koszul 複体は可縮）で、長さは $h$ 以下。補題 2.2 から正のホモロジーは $\lambda$ で長さ $0$、次数 $0$ のホモロジーは長さ有限なので
+$\chi_\lambda(F(a)) := \sum_i(-1)^i\lambda H_i(F(a)) = \lambda(C/(J,x_1^{a_1},\dots,x_d^{a_d})C)$。
+部分的な Koszul 複体の有限性を仮定せずに冪の規則を示すため、$a_i$ 以外の指数を固定し、$E$ を $P_C$ と残りの Koszul 因子のテンソル積とする。正の整数 $v,w$ について、$E$ 上のスカラー写像 $x_i^v$、$x_i^w$ から写像錐の三角
+$\mathrm{Cone}(x_i^v)\to\mathrm{Cone}(x_i^{v+w})\to\mathrm{Cone}(x_i^w)\to\mathrm{Cone}(x_i^v)[1]$
+ができる。どの錐も各 $x_j$ の正の冪を含むので、前の議論でホモロジーの長さは有限で、長完全列での $\lambda$ の加法性から Euler 標数は加法的、よって各指数について線形。$d$ 個の指数全てに当てて
+\begin{equation}\tag{6.8}
+  \lambda(C/(J,x_1^N,\dots,x_d^N)C) = N^d\lambda(C/(J,x_1,\dots,x_d)C)\qquad(N\ge1).
+\end{equation}
+$E$ 自身のホモロジーの有限性は要らない。
+
+\textbf{素フィルトレーションからの上界。} 有限な素フィルトレーション $0 = S_0\subset S_1\subset\dots\subset S_m = S$、$S_j/S_{j-1}\simeq T/Q_j$ を固定する。$Q_j$ は全て $J$ を含む（重複を許す）。
+$M_N = C/(x_1^N,\dots,x_d^N)C$、$H_{j,N} = Q_jB+(x_1^N,\dots,x_d^N)B$
+とおく。各フィルトレーションの列と $M_N$ のテンソルで右完全列
+$S_{j-1}\otimes_TM_N\to S_j\otimes_TM_N\to C/H_{j,N}C\to0$
+ができる。ここの加群は全て $J+(x^N)$ で消え、その $D$ への拡大は極大イデアルの準素イデアル。長さは有限（例えば $S_j\otimes_TM_N$ は $C/(J,x^N)C$ の有限直和の商）。第一の矢印の像はその源の商なので、加法性と非負性から
+$\lambda(S_j\otimes_TM_N)\le\lambda(S_{j-1}\otimes_TM_N)+\lambda(C/H_{j,N}C)$。
+これらを足し、定理 3.1 の準素イデアルの上界、次に (6.5) を当てて
+\begin{equation}\tag{6.9}
+  \lambda(C/(J,x_1^N,\dots,x_d^N)C)\le\sum_{j=1}^m\lambda(C/H_{j,N}C)\le r\sum_{j=1}^me(H_{j,N},B).
+\end{equation}
+素フィルトレーションのこの使い方は、テンソル積の右完全性だけを使い、$C$ の $T$ 上の平坦性は使わない。
+
+最後の和の各項に補題 6.2 を当てる。$Q_j\supseteq J$ なので $\dim T/Q_j\le d$。$\dim T/Q_j<d$ なら $\dim B/Q_jB<d$。$P_0\not\subseteq Q_j$ なら、その像は整域 $T/Q_j$ で $0$ でないので $\dim B/Q_jB = \dim T/(P_0+Q_j)<\dim T/Q_j\le d$。どちらの場合も補題 6.2 (1) で $e(H_{j,N},B) = O(N^{d-1})$。残る場合は $\dim T/Q_j = d$ かつ $P_0\subseteq Q_j$。このとき $Q_j$ は $J$ 上極小で（$J$ 上の真に小さい素イデアルは次元 $>d$ の商を与える）、命題 4.3 の生成的な正則性で $T_{Q_j}$ は正則。よって $Q_j$ は $T$ の極小素イデアルを $P_0$ ただ一つだけ含み、$B_{Q_jB} = T_{Q_j}$（$P_0$ の局所化は正則局所整域 $T_{Q_j}$ のただ一つの極小素イデアルなので $0$）。補題 6.2 (2) から
+\begin{equation}\tag{6.10}
+  e(H_{j,N},B)\le N^de((x_1,\dots,x_d),T/Q_j)+O(N^{d-1}).
+\end{equation}
+
+\textbf{二つの極限と成分の和。} (6.9) を $rN^d$ で割り (6.8) を使う。$q$、$D$、$C$、$\lambda$ を固定したまま $N\to\infty$ として
+\begin{equation}\tag{6.11}
+  \frac{\lambda(C/(J,x_1,\dots,x_d)C)}{r}\le\sum_{\substack{1\le j\le m:\ \dim T/Q_j = d\\ P_0\subseteq Q_j}}e((x_1,\dots,x_d),T/Q_j).
+\end{equation}
+右辺は補助拡大にも長さ代数にもよらない。(6.7) と合わせて $q\to\infty$ とすれば、$K$ の一様性から
+\begin{equation}\tag{6.12}
+  e(T/P_0)\le\sum_{\substack{1\le j\le m:\ \dim T/Q_j = d\\ P_0\subseteq Q_j}}e((x_1,\dots,x_d),T/Q_j).
+\end{equation}
+極限の交換はしていない：$N$ の極限は $q$ に属するデータを固定するごとに別々にとった。
+
+最後に (6.12) を $T$ の極小素イデアル $P_0$ について足す。命題 4.3 で $T$ は等次元で generically reduced なので生成的な局所長さは全て $1$ で、結合公式から $e(T) = \sum_{P_0\in\Min(T)}e(T/P_0)$。$T_{Q_j}$ が正則なので、次元 $d$ の $Q_j$ はちょうど一つの成分に属し、和はフィルトレーションでの $Q_j$ の各出現をちょうど一度数える。固定した素イデアル $Q$ の出現回数は（フィルトレーションを $Q$ で局所化して）$\ell_{T_Q}(S_Q)$ なので、$S$ の重複度の公式から
+$e(T)\le\sum_{\dim T/Q_j = d}e((x),T/Q_j) = e((x),S) = e(S)$。
+命題 4.3 の $e(T) = e(R)$ で証明が終わる。
+\end{proof}
+
+%======================================================================
+\section{剰余標数 $0$}\label{sec:charzero}
+
+剰余標数 $0$ の場合は、仮想的な真の反例を有限個の多項式方程式に符号化して、定理 5.2 から導く（Ma の \S5 の帰着と近似の方針に従い、Ma の Lemma 5.1 の有限自由な帰着から始める）。移すときには、源の重複度の下界と目標の重複度の上界だけを保てばよい。そのため、表示行列と有限個の初項関係を使い、分解のホモロジーは追わない。この節は読んで論理の流れを確かめたが、符号化の細部（各条件が実際に有限個の多項式等式になること）は概略の確認にとどめた。
+
+\begin{stmt}{補題 7.1}
+$(R,\m)\to(S,\n)$ を、等しい次元で剰余標数 $0$ の完備 Noether 局所環の平坦な局所写像とする。分解 $R\to R'\to S$ で、$R'$ は完備局所、$e(R') = e(R)$、$R'\to S$ は有限自由、$R'$ と $S$ は同じ係数体と同じ剰余体をもつものがある。
+\end{stmt}
+\begin{proof}[証明の概略]
+$R$ の係数体 $k$ をとり $S$ での像と同一視し、$L = S/\n$ とする。$k$ を含む $S$ の係数体を選ぶ：$L/k$ の超越基底を $S$ に持ち上げると対応する有理関数体のコピーを生成し（剰余が $0$ でない多項式は分母として単元）、残る剰余体の代数拡大は分離的なので、Hensel の補題で単純な代数的根を持ち上げ、Zorn の補題で極大な整合的選択をとれば $L$ 全体が持ち上がる。$R = k[[X]]/I$ と表示し $R' = L[[X]]/IL[[X]]$ とする。冪級数環の係数体の拡大は平坦なので $R\to R'$ は平坦で、$\m' = \m R'$、剰余体は $L$、$\gr_{\m'}R'\cong(\gr_\m R)\otimes_kL$ から $\dim R' = \dim R$、$e(R') = e(R)$。平坦な写像の次元公式から $S/\m S$ は Artin で、$\m'S = \m S$ なので有限次元 $L$ ベクトル空間である。$L$ 基底を $S$ に持ち上げ、$\m'S$ を法とした剰余、$(\m'S)^2$ を法とした剰余と順に展開すると、係数の修正は収束し（$\m'S$ 進位相と $\n$ 進位相は一致）、$S$ は $R'$ 上有限。$R$ 上の $k$ の自由分解 $P_\bullet$ について、$R'$ の平坦性から $P_\bullet\otimes_RR'$ は $R'$ 上の $L$ の自由分解なので $\Tor_1^{R'}(L,S) = \Tor_1^R(k,S) = 0$。この消滅をもつ有限加群は自由なので $R'\to S$ は有限自由（階数は正）。
+\end{proof}
+
+\begin{stmt}{補題 7.2}
+$(R_0,\m_0)\to(S_0,\n_0)$ を、共通の無限係数体 $L$ と剰余体 $L$ をもつ次元 $d>0$ の完備局所環の有限自由な局所写像とし、$r = e(R_0)$ とおく。$\Z$ 上の多項式の有限な連立方程式
+$F(t_1,\dots,t_d,Y_1,\dots,Y_N) = 0$
+で、$L[[t_1,\dots,t_d]]$ に解をもち、次の性質をもつものがある：任意の体 $K$ と $A = K[[t]]$ での任意の解は、剰余体 $K$ で次元 $d$ の $0$ でない完備局所環の有限自由な局所写像 $(R,\mathfrak{a})\to(S,\bb)$ で $e(R)\ge r$、$e(S)\le e(S_0)$ を満たすものを定める。
+\end{stmt}
+\begin{proof}[証明の概略]
+$\m_0$ の極小 reduction $t_1,\dots,t_d$ をとると $A_0 = L[[t]]\to R_0$ は有限かつ単射で、剰余体が同じなので
+\begin{equation}\tag{7.1}
+  r = e(R_0) = e((t),R_0) = \rank_{A_0}R_0
+\end{equation}
+（整域性・CM 性は要らない）。連立方程式は次を記録する。
+\begin{itemize}
+  \item \textbf{源の代数と生成的な階数。} 表示 $A_0^{v_0}\xrightarrow{U_0}A_0^{u_0}\to R_0\to0$ と同じ大きさの未知の行列 $U$、$A^u$ 上の乗法表と単位ベクトル、$\im U$ を法とした可換・結合・単位の等式、関係の列に基底を掛けても $\im U$ に入ること。これで $R = \mathrm{coker}\,U$ は単位的可換 $A$ 代数になる。さらに $U$ の全ての $(u-r+1)$ 小行列式の消滅を課すと、$A$ の分数体上で
+  \begin{equation}\tag{7.2}
+    \rank_AR = u-\rank U\ge r>0.
+  \end{equation}
+  \item \textbf{自由な源加群としての目標。} $S = R^n$（$n$ はもとの階数）に、乗法表と単位を $A$ 上のベクトルで与え、$R$ 基底上で可換・結合・単位の等式を課す。
+  \item \textbf{局所イデアルと源の reduction。} $\m_0$、$\n_0$ の $t$ の像を含む有限生成系に対応する未知のリストで $\mathfrak{a}$、$\bb$ を定め、もとの環で成り立つ指数で
+  \begin{equation}\tag{7.3}
+    \mathfrak{a}^{N_R}\subseteq(t)R,\qquad\bb^{N_S}\subseteq(t)S,\qquad\mathfrak{a}^{j+1}\subseteq(t)\mathfrak{a}^j
+  \end{equation}
+  を課す。また $R/\mathfrak{a}$、$S/\bb$ が単位で $A$ 上張られることを課す。これらから $\mathfrak{a}$、$\bb$ はただ一つの極大イデアル、剰余体は $K$、$R\to S$ は局所かつ単射、$\dim R = \dim S = d$、両方とも完備。$(t)$ は $\mathfrak{a}$ の reduction なので
+  \begin{equation}\tag{7.4}
+    e(R) = e((t),R) = \rank_AR\ge r.
+  \end{equation}
+  \item \textbf{目標の Hilbert 関数の上界。} 次数付き全射 $L[Z_1,\dots,Z_q]\to\gr_{\n_0}S_0$ の斉次核 $I$ の初項イデアル $J = \mathrm{in}(I)$ を生成するモニックな斉次多項式 $f_\ell = Z^{\alpha_\ell}+\sum_\beta c_{\ell\beta}Z^\beta$ をとり、係数を未知数 $C_{\ell\beta}$ に置き換えて
+  \begin{equation}\tag{7.5}
+    b^{\alpha_\ell}+\sum_{\beta}C_{\ell\beta}b^\beta\in\bb^{a_\ell+1}
+  \end{equation}
+  を課す。移した解では新しい初項イデアルが $J$ を含むので、$\dim_K\bb^a/\bb^{a+1}\le\dim_L\n_0^a/\n_0^{a+1}$、よって
+  \begin{equation}\tag{7.6}
+    e(S)\le e(S_0).
+  \end{equation}
+\end{itemize}
+全ての係数は未知数で、固定したのは大きさ・指数・単項式と係数 $1$ だけなので、全体は $\Z[t]$ 係数の有限な連立方程式で、もとのデータが $A_0$ で解を与える。
+\end{proof}
+
+\begin{stmt}{補題 7.3}
+$L$ を標数 $0$ の体とする。$\Z[t_1,\dots,t_d]$ 上の有限な連立多項式方程式が $L[[t_1,\dots,t_d]]$ に解をもてば、正標数のある代数閉体 $K$ について $K[[t_1,\dots,t_d]]$ にも解をもつ。
+\end{stmt}
+\begin{proof}[証明の概略]
+$B = (L[t]_{(t)})^h$（完備化は $L[[t]]$）とおく。\textbf{Artin 近似}（Artin, Thm.~1.10）で $B$ に解がある。ヘンゼル化は原点の点付きエタール近傍の有向極限なので、有限個の解の成分と等式は、$t = 0$ の上に $L$ 有理点をもつ一つの近傍に降りる（Artin, Cor.~2.1）。その点のまわりで縮めると、エタールな表示 $E = L[t,z]/(G_1,\dots,G_m)[1/(g\Delta)]$（$\Delta$ はヤコビアン）がとれる。解の成分の多項式代表と、各等式のイデアル所属の証拠を選び、それらの係数、$G_i$ と $g$ の係数、点の座標、$g\Delta$ の点での値の逆元で生成される $\Z$ 代数 $W\subseteq L$ をとる。同じ表示がエタールな $W[t]$ 代数 $E_W$ を定め、全ての等式が成り立つ。$W$ の極大イデアルの剰余体 $k_0$ は有限体である（有限生成 $\Z$ 代数である体。標数 $0$ なら Zariski の補題で数体になるが、数体の有限個の生成元は一つの整数を逆にした整数環に入り、全ての素数の逆元を含めないので矛盾）。$K = \bar k_0$ とすれば点は特殊化し、ヤコビアンと分母は $0$ でないままなので、エタールな持ち上げ（多変数 Hensel）で $E_W\otimes_WK\to K[[t]]$ ができ、解の成分に当てれば全ての等式が保たれる。
+\end{proof}
+
+\begin{stmt}{定理 7.4}
+剰余体が標数 $0$ の $0$ でない Noether 局所環の任意の平坦な局所準同型 $(R,\m)\to(S,\n)$ について $e(R)\le e(S)$。
+\end{stmt}
+\begin{proof}
+補題 4.2 で、目標の剰余体が代数閉の同じ次元の完備環に帰着する。補題 7.1 で写像は有限自由で、両方の環は同じ代数閉な係数体 $L$ をもつとしてよい。次元 $0$ なら剰余体が等しく階数 $n\ge1$ の自由性から $e(S) = \ell_SS = n\,\ell_RR\ge e(R)$。$d>0$ で $e(R)>e(S)$ と仮定すると、補題 7.2 の連立方程式は $L[[t]]$ に解をもち、補題 7.3 で正標数の代数閉体 $K$ 上の $K[[t]]$ に解をもつ。得られる有限自由な局所写像 $\tilde R\to\tilde S$ は $e(\tilde R)\ge e(R)>e(S)\ge e(\tilde S)$ を満たし、定理 5.2 に矛盾する。
+\end{proof}
+
+%======================================================================
+\section{主定理の証明}\label{sec:main}
+\begin{proof}[定理 1.1 の証明]
+\S\ref{sec:reduction} の帰着で、源が整域、目標の剰余体が代数閉の、完備で等しい次元の平坦な局所写像に帰着する（次元 $0$ は直ちに出る）。源が正標数なら定理 5.2、混標数なら定理 6.3、剰余標数 $0$ なら定理 7.4。これで全ての場合が尽きる。各帰着は源の重複度を保ち、目標の重複度を保つか減らすか、加法性で不等式を組み直すだけなので、もとの写像について不等式が成り立つ。
+\end{proof}
+%======================================================================
+\section{Serre の論文との関係}\label{sec:serre}
+
+\paragraph{枠組みの対応}
+\begin{itemize}
+  \item \S2.1 の長さの仮定は、$I = (z_1,\dots,z_h)C$ の冪で消される $C$ 加群の上の加法的な長さ $\lambda$ をとり、$C$ の Noether 性を課さない。長さ $0$ の対象が Serre 部分圏をなすので、その商で核・像・余核・有限スペクトル系列を扱ってよい、と明記している。Serre の論文の解説（\ld{exposition/ja/exposition-ja.tex}）\S4 の評価先 $\mathcal{A}_\lambda$（長さ $0$ の加群で割った Serre 商）を、名前をつけずに使っている形である。
+  \item 補題 2.2（分裂 (2.3) と、Koszul を先にとる二重複体）は、Serre の解説 \S3 の反復錐による消滅、\S5 の新交叉型の消滅と同じ議論である。
+  \item 定理 3.1 は Serre の論文の Theorem 2.5 に、(3)（標数 $p$ で $\lambda(C/HC) = \eHK(H,D)$、混標数で $\lambda(C/HC)\le e(H,D)$）を加えたもの。補題 3.2 は Serre の論文の Lemma 2.4 に当たる。標数 $p$ の構成（補題 3.3、(3.3)--(3.7)）と混標数の CLMST の入力も共通である。
+  \item 補題 4.1 は Serre の論文の Lemma 2.1 と同じ主張である（Serre の版は長さ・次元・Tor を保つ形で、重複度の保存はその系）。
+\end{itemize}
+
+\paragraph{有限加群の列による経路との対比}
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+予想 & 有限加群の列による条件付きの経路 & OpenAI の経路 \\
+\midrule
+Serre の正値性 & BHM の lim CM 列 & $\lambda$-CM 代数と K 理論の降下 \\
+Lech の予想 & Ma の弱い lim Ulrich 列 & $\lambda$-CM 代数と短い複体の一様な評価 \\
+\bottomrule
+\end{tabular}
+\end{center}
+どちらの論文も有限加群の列の存在を示さず、それが与えるはずの結論を単一の $\lambda$-CM 代数から直接出している。lim CM 列や lim Ulrich 列そのものは構成していない。一般の完備局所整域がそれらの列をもつかは開いている。小さな CM 加群は一般には存在しない（OpenAI, \emph{A Complete Local Domain without a Small Cohen--Macaulay Module}。剰余体 $\mathbb{C}$ の $3$ 次元完備正規局所整域で、$0$ でない有限生成の極大 CM 加群をもたないもの。構成は滑らかな射影曲面の切断環 $R(X,H)$ で、小さな CM 加群があれば $K_X^2-2c_2(X)\le6H^2$ となる、という障害を使う。要旨による）。
+
+長さ付き代数とその Serre 商という枠組みは、二つの論文に共通する方法である。Serre の解説 \S3--\S4 の整理は、この共通の構造を取り出したものと位置づけられる。
+
+%======================================================================
+\appendix
+\section{\S2 の代数的な書き直し（形式化に向けて）}\label{app:algebraic}
+
+定理 2.1 (b) の証明（\S2.3--2.6）を、スキーム論を使わずに次数付き環と加群の言葉で書き直す。論文にはない整理で、形式化の設計の土台にする。
+
+\subsection{結論}
+\begin{itemize}
+  \item スキーム論は要らない。\S2 のコホモロジーは全て有限個の標準アフィン被覆の Čech 複体で計算され、被覆の開集合は次数 $1$ の元の非零点なので、次数付き加群の Čech 複体とそのホモロジーで書ける。
+  \item $C$ の非 Noether 性は問題にならない。論文自身が、有限フィルトレーション、切り詰め写像の安定像、余極限という代数的な議論で証明している。
+  \item ベクトル束 $V$ を、$\PP^{h-1}_\Z$ 上の直線束の有限直和からなる有限複体 $W$ に置き換える（\S\ref{app:W}）。これで局所自由性と (2.8) の一般形が不要になり、扱う対象は全て次数付き自由加群になる。論文も補題 2.3 と (2.8) の証明で $V$ を直線束の和の有限複体で分解しているので、この置き換えは論文の議論の中にすでにある。
+  \item 残る本質的な難所は二つ：補題 2.5 前半（二つの塔の比較）と、$W$ の存在（補題 2.6 の書き換え）。後者は当面引用にできる。
+\end{itemize}
+
+\subsection{辞書}
+{\small
+\begin{center}
+\begin{tabularx}{\textwidth}{>{\raggedright}p{5.2cm}>{\raggedright\arraybackslash}X}
+\toprule
+論文の幾何的対象 & 次数付き環論での言い換え \\
+\midrule
+爆発 $Y = \Proj\bigoplus I^n$ & Rees 代数 $\cR = C[It] = \bigoplus_{n\ge0}I^nt^n$、$y_i = z_it\in\cR_1$ \\
+標準アフィン被覆 $D_+(y_i)$ と共通部分 & 次数付き局所化の次数 $0$ 部分 $(\cR_{y_T})_0$（$T\subseteq\{1,\dots,h\}$）。$(\cR_{y_i})_0 = C[I/z_i]$ \\
+$\cO_Y(j)$ & 次数をずらした $\cR(j)$ \\
+$L = I\cO_Y\subseteq\cO_Y$ & $I\cR = \bigoplus I^{n+1}t^n\cong\cR(1)$ と包含 $I\cR\subseteq\cR$ \\
+$L^MF_Y\subseteq F_Y$ & $F\otimes I^M\cR\subseteq F\otimes\cR$ \\
+例外因子 $E$ と $\cO_E(l)$ & $\gr_IC = \bigoplus I^n/I^{n+1}$ とその $l$ 次ずらし \\
+$F_Y = F\otimes\cO_Y$ & $F\otimes_C\cR$（次数 $0$ に置いた次数付き自由複体） \\
+$G_i = L^{-is}\otimes F_i$ & $\cR(-is)^{b_i}$。微分の成分が $I^s = \cR_s$ に入るので、$d$ 自体が次数 $s$ の写像として次数付き自由複体を定める \\
+$F_Y\subseteq G$ と商の層 $\cO_E(l)^{b_i}$ & $\cR^{b_i}\subseteq\cR(-is)^{b_i}$ と、商のフィルトレーションの各段 $\gr_IC(l)^{b_i}$（$l = -is,\dots,-1$） \\
+$\PP^{h-1}_A$ と $\cO(t)$ & 多項式環 $A[Z_1,\dots,Z_h]$ と $A[Z](t)$ \\
+$E\to\PP^{h-1}_{C/I}$ & 次数付き全射 $(C/I)[Z]\to\gr_IC$（(2.4)） \\
+超ホモロジー $H_k(Y,D)$ & 次数付き複体 $D$ の Čech 二重複体の全複体の次数 $0$ 部分のホモロジー \\
+\bottomrule
+\end{tabularx}
+\end{center}
+}
+
+\subsection{基本の道具：次数付き Čech 複体}
+$\mathcal{S} = \bigoplus_{n\in\Z}\mathcal{S}_n$ を次数付き可換環、$y_1,\dots,y_h\in\mathcal{S}_1$、$N$ を次数付き $\mathcal{S}$ 加群とする。
+\[
+  \check C^p(y;N)_j = \bigoplus_{|T| = p+1}(N_{y_T})_j\qquad(p = 0,\dots,h-1)
+\]
+を、$y_T = \prod_{i\in T}y_i$ による局所化の $j$ 次部分とし、通常の交代和の微分を入れる。そのコホモロジー $\check H^v(y;N)_j$ が「射影空間上の $\tilde N(j)$ の $H^v$」に当たる。有界な次数付き複体 $D$ には二重複体の全複体をとる。必要な性質は次のとおり。
+\begin{enumerate}
+  \item \textbf{完全性}：局所化は完全なので、$N$ の短完全列や複体の写像錐から長完全列が出る。
+  \item \textbf{有限フィルトレーション}：Čech 複体は $h$ 段の有限フィルトレーションをもつ。\S2.1 のフィルトレーションの観察がそのまま使える（補題 2.4）。
+  \item \textbf{余極限}：局所化の次数 $0$ 部分は $N$ の斉次成分の有向余極限である。これと $\lambda$ の余極限の性質から、$N$ の各斉次成分が長さ $0$ なら $\check C(y;N)$ の各項が長さ $0$（補題 2.3）。
+  \item \textbf{多項式環の計算}：$A[Z_1,\dots,Z_h]$ について、$t\ge0$ で $\check H^0(Z;A[Z])_t = A[Z]_t$、$\check H^v(Z;A[Z])_t = 0$（$v>0$）。Čech 複体は Koszul（余）複体 $K(Z^v)$ の有向極限なので、$Z^v$ が正則列であることから出る。局所コホモロジー $H^h_{(Z)}(A[Z])$ が次数 $\le-h$ にしかないことからも出る。
+  \item \textbf{底変換}：$A[Z]$ の Čech 複体は各項が自由 $\Z$ 加群（無限階数）の有界複体である。$\Z$ 上のコホモロジーが自由なら、任意の $A$ への底変換と両立する。
+\end{enumerate}
+
+\subsection{各補題の書き直し}
+\paragraph{補題 2.3}
+前半（(2.4) の核が各次数で長さ $0$）はもともと代数の主張である。後半の比較は性質 3 から出る：核 $N$ の Čech 複体の各項が長さ $0$ なので、$(C/I)[Z]$ と $\gr_IC$ の Čech 複体は長さ $0$ を法として同型。$t\ge0$ での $\gr^t_IC\to\check H^0$ の同型と高次の消滅は、$(C/I)[Z]$ の側で性質 4 を使って移す。$W$ への置き換えで、$V$ 一般ではなく $\cO(t)$ についてだけ示せばよく、有限性は性質 4 の明示計算（$C/I$ 上の有限階数自由加群で、$\lambda$ は階数 $\times\mu$）から出る。
+
+\paragraph{補題 2.4}
+各チャート $(D_{y_i})_0$ の複体は有限射影加群の複体で、$z_i$ を逆にすると可縮になる。可縮化ホモトピーの分母を払って $z_i$ の冪が零ホモトピーになり、性質 2 で $D(j+hm)\to D(j)$ は超ホモロジーで $0$。$W$ への置き換えで $D$ は次数付き自由加群の有界複体だけになる。
+
+\paragraph{補題 2.5}
+前半 (2.7) の証明は二つの塔の比較で、全て代数的である。
+\begin{itemize}
+  \item 比較写像 (2.9) は $F/I^MF\to\check C(y;F\otimes\cR/I^M\cR)_0$。両辺を $I$ と $L$ の冪でフィルトレーションすると各段は $\gr^l_IC\to\check H(\gr_IC)_l$（補題 2.3）。
+  \item 幾何の塔：$A = \check C(F\otimes\cR)_0$、$B_M = \check C(F\otimes\cR/I^M\cR)_0$ と三角 $A\to B_M\to\check C(F\otimes I^M\cR)[1]$。補題 2.4 で最終的な像は $H(A)$。
+  \item Koszul の塔：$A_a = F\otimes K_a$ と $F/J_aF$。分裂 (2.3) で最終的な像は $H(F)$。
+  \item (2.12) で Koszul の冪と普通の冪の塔を行き来する。
+\end{itemize}
+難所は、複数の塔の最終的な像を長さ $0$ を法として同一視する議論である。長さ $0$ の加群による Serre 商の中で「長さ $0$ を法とした同型」を扱えば見通しがよくなる。
+
+後半 (2.8) は、交代階数 $0$ なら $F_Y(j)/F_Y(j+1)$ の各項が $\gr^j_IC^{b_i}$ で Euler 標数が $0$ なので、$\chi_\lambda(F_Y(j))$ が $j$ によらない、という部分だけが要る。
+
+\paragraph{\S2.6}
+根の選び方、層ごとの消滅の数え上げ、Riemann 和の評価は、既に純粋な計算である。$G\otimes V$ の代わりに $G\otimes W$ を使うと、各層の項が $W(l-is)|_E^{b_i}$ という複体になる。$W(a)$ の超コホモロジーは（長さ $0$ を法として）単一の次数 $v(a)$ に集中するので、層ごとの超コホモロジーのスペクトル系列で (2.14) の数え上げがそのまま動く。$E$ への制限は、$W$ がひねりの和の複体なので、補題 2.3（$\cO(t)$ の場合）と有限スペクトル系列で扱える。
+
+\subsection{ベクトル束を直線束の複体に置き換える}\label{app:W}
+論文が $V$ に要求している性質は三つである：(i) $V(a)$ のコホモロジーが単一の次数 $v(a)$ にあり、自由で、Euler 標数が $\prod_j(a-r_j)$、任意の底変換と両立する。(ii) $Y$ への引き戻しが局所自由（補題 2.3、2.4 でチャート上の有限射影性に使う）。(iii) (2.8)。
+
+\begin{dstmt}{(W)}
+$W$ は $\Z[Z_1,\dots,Z_h]$ 上の次数付き自由加群（有限個の $\Z[Z](-c)$ の直和）の有界複体で、全ての整数 $a$ について Čech 超コホモロジー $\check H^*(Z;W(a))$ は単一の次数 $v(a) = \#\{j: r_j>a\}$ にあり、有限階数の自由 $\Z$ 加群で、階数の Euler 標数は $\prod_{j=1}^{h-1}(a-r_j)$。
+\end{dstmt}
+補題 2.6 の $V$ を表す次数付き加群の有限自由分解をとれば (W) を満たすので、(W) は補題 2.6 から出る。置き換えの効果は次のとおり。
+\begin{itemize}
+  \item (ii) は自動的（直線束はチャート上で自由）。
+  \item (iii) は、$W$ の各項が $\cO(-c)$ の直和なので、(2.8) の後半（$j$ 不変性）から直ちに $\chi_\lambda(F_Y\otimes W) = \bigl(\sum_k(-1)^k\rank W_k\bigr)\chi_\lambda(F_Y) = (h-1)!\,\chi_\lambda(F_Y)$。
+  \item (i) の底変換は性質 5 から出る。
+\end{itemize}
+
+\paragraph{(W) の扱いの選択肢}
+\begin{enumerate}[label=(\alph*)]
+  \item \textbf{引用にする}（最初の段階）。根拠は Eisenbud--Schreyer, Thm.~6.1、論文の補題 2.6、Hilbert の syzygy 定理。
+  \item \textbf{論文の構成を代数化する}。$\mathcal{S} = \Z[s_1,t_1,\dots,s_n,t_n]$（$n = h-1$）を多重次数付きとし、$Z_k$ を $\prod_i(s_iX+t_iY)$ の $X^{n-k}Y^k$ の係数に送り、$M = \bigoplus_a\mathcal{S}_{(a-1-r_1,\dots,a-1-r_n)}$ を $\Z[Z]$ 加群とみる。
+  コホモロジーは $\PP^1_A$ 上の $\cO(m)$ の明示計算とその Künneth で出せる。押し出しでコホモロジーが変わらないことは、$(Z)\mathcal{S}$ と $\prod_i(s_i,t_i)$ の根基が等しいので Čech 複体のコホモロジーが一致する、という主張になる（Čech 複体の根基不変性が要る）。
+  問題は、論文が $f$ の平坦性を CM 性と次元の判定法、ファイバーごとの平坦性判定法で示していることである。チャート $Z_0\ne0$ では $\Z[e_1,\dots,e_n]\to\Z[x_1,\dots,x_n]$（対称式の環の上の階数 $n!$ の自由加群）に帰着できるが、他のチャートは積のチャートにならない。$SL_2(\Z)$ の作用でチャートを動かす方法は、剰余体が小さい有限体では被覆にならないので使えない。(W) の形なら局所自由性は直接は要らないが、$M$ の有限自由分解の存在に次数付きの Hilbert の syzygy 定理が要る。
+  \item \textbf{(W) を満たす複体を直接構成する}。Eisenbud--Schreyer の supernatural bundle と純な自由分解の対応（Boij--Söderberg 理論）から明示的な複体が得られる可能性があるが、未検討。
+\end{enumerate}
+
+\subsection{形式化の前に紙の上で確かめること}
+\begin{itemize}
+  \item 補題 2.5 前半の、二つの塔の最終的な像の同一視を、長さ $0$ による Serre 商の中で書き直したときの正確な主張。
+  \item $(C/I)[Z]\to\gr_IC$ の核の Čech 複体が長さ $0$ になる議論で、各項が「共通の $I$ の冪で消される」条件（$\lambda$ の余極限の性質の前提）を満たしていること。核の斉次成分は $I$ で消されるので満たすはずだが、局所化の次数 $0$ 部分での消され方を確かめる。
+  \item (W) を使った \S2.6 の数え上げを、層ごとの超コホモロジーのスペクトル系列として正確に書くこと。
+\end{itemize}
+
+%======================================================================
+\section{引用している結果と形式化の状況}\label{app:status}
+
+\subsection{論文が引用している外部の結果}
+{\small
+\begin{longtable}{>{\raggedright}p{4.6cm}>{\raggedright}p{6.2cm}>{\raggedright\arraybackslash}p{3.6cm}}
+\toprule
+結果 & 文献 & 使う場所 \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+Faltings の正規化長さ（定義、well-defined 性、加法性） & Faltings Appendix 2、Shimomoto \S2、CLMST \S2.2（Def.~2.2.1、Prop.~2.2.3、2.2.6(a)） & \S3.1 \\
+perfectoid 化 & Bhatt--Scholze \S8、Thm.~10.11 & \S3.3 \\
+almost CM 性、almost 同型の長さ、$e_\perfd\le e$ & CLMST Cor.~4.0.4、Prop.~4.0.10、Def.~4.0.8、Cor.~4.0.18（Prop.~4.0.14） & \S3.3 \\
+Cohen--Gabber の正規化 & Kurano--Shimomoto Thm.~1.1 & \S3.2 \\
+有限段の比較、導手の評価 & CLMST \S3、Thm.~3.0.7、Polstra--Tucker Lemma 2.3（論文は自己完結した形で証明） & 補題 3.3、(3.3)、(3.4) \\
+Monsky の定理（Hilbert--Kunz の極限の存在） & Monsky、Ma \S2.2 & \S3 \\
+Roberts の Frobenius ホモロジー評価 & Roberts、Ma Thm.~2.4 の形 & (3.7)、(5.1) \\
+Koszul Euler 標数の公式 & Stacks 0AZZ & \S3.2 \\
+Nagata の局所化定理 & Ma Thm.~2.1 の形 & 補題 4.2 \\
+帰着の議論 & Ma Lemma 2.2 & 補題 4.2 \\
+Cohen 分解 & Avramov--Foxby--Herzog、Ma Thm.~3.1 & 命題 4.3 \\
+短い複体による構成の前身 & IMW Prop.~8.3 & 命題 4.3 \\
+Hilbert--Kunz の等式 & Ma Lemma 4.2、\S2.3 & 補題 5.1 \\
+Hilbert--Kunz の結合公式 & Huneke Thm.~3.14 & 定理 5.2 \\
+短い複体の用語、Dutta 重複度の極限の存在、底変換不変性 & IMW \S\S2.5--2.6、\S4.17 & \S5.1 \\
+Hochster--Huneke の Frobenius ホモロジー評価 & BHM Thm.~5.2 & 系 5.4 \\
+Heitmann の整拡大版 Briançon--Skoda & Heitmann、Heitmann--Ma Prop.~2.8 & 定理 6.3 \\
+excellence（正規化の有限性）、catenary 性 & 標準 & 定理 6.3、補題 6.2 \\
+可換環論の標準的な事実 & Stacks 07NF、00OE、00R4、039D、032A、031E、00MG、00ML & 補題 2.3、2.6、4.1、命題 4.3 \\
+帰着と近似の方針、有限自由な帰着 & Ma \S5、Lemma 5.1 & \S7 \\
+Artin 近似 & Artin Thm.~1.10、Cor.~2.1 & 補題 7.3 \\
+Eisenbud--Schreyer のベクトル束 & Eisenbud--Schreyer Thm.~6.1（論文の補題 2.6 で証明） & 補題 2.6 \\
+\end{longtable}
+}
+これらの引用の該当箇所は、CLMST（\ld{paper/refs/} の手元の版で確認）を除いて、原典では照合していない。
+
+\subsection{リポジトリの現状との対応（2026-10-13）}
+Serre の論文の形式化のうち、この論文に使えるもの。宣言名は名前空間 \ld{SerrePositivity} を省略する。
+{\small
+\begin{longtable}{>{\raggedright}p{3.6cm}>{\raggedright}p{7.2cm}>{\raggedright\arraybackslash}p{3.8cm}}
+\toprule
+この論文 & リポジトリ & 評価 \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\S2.1 の設定（$\lambda$、余極限の安定性） & \ld{PerfectComplex/NormalizedLength}、\ld{PerfectComplex/SupProperty} & そのまま使える \\
+(2.1) & \ld{KoszulFinite}、\ld{KoszulAcyclic} & そのまま使える \\
+補題 2.2 & \ld{lambdaHomology_projective_vanishing}、\ld{homology_mem_finiteLengthTorsion} & ほぼそのまま。$V(I)$ の外の局所可縮性から零ホモトピーを作る小さな補題が要る \\
+定理 2.1 (b)、補題 2.3--2.6 & なし & 新規（\ref{app:algebraic}） \\
+定理 3.1 (1)(2)、標数 $p$ & \ld{Paper/Section2} の \ld{PerfectConductor}、\ld{PerfectApproximationLength}、\ld{CommutativeAlgebra/TraceConductor}、\ld{perfectClosure_length_properties_of_higher_tendsto} & 直接の \texttt{sorry} なし。Roberts の評価（引用。Frobenius ホモロジーの計画）に依存 \\
+定理 3.1 (1)(2)、混標数 & \ld{mixedPerfectoid_length_properties}（\ld{Inputs/CLMST} の引用に依存） & 共有（CLMST の計画） \\
+補題 3.2 & \ld{Section2.lemma_2_4_*}（(3) の \ld{lemma_2_4_directLimit} は単射性不要の形） & そのまま使える \\
+定理 3.1 (3) & 標数 $p$ は \ld{PerfectApproximationLength} に (3.3) に近い形。Hilbert--Kunz の定義はない。混標数の $e_\perfd\le e$ はない & 一部ある \\
+補題 3.4 & \ld{PerfectApproximationLength} に近い形 & 一部ある \\
+補題 4.1 & \ld{Section2.lemma_2_1}（剰余体拡大の引用に依存） & 同じ主張。重複度の保存は系として示す \\
+補題 4.2 & Nagata なし。重複度の加法性なし & 新規（Nagata は引用） \\
+命題 4.3 & 極小自由分解、Koszul、正則列はある。Cohen 分解、極小 reduction、完全交叉はない & 部品は一部ある \\
+Hilbert--Samuel 重複度 & \ld{CommutativeAlgebra/HilbertSamuel*}（多項式性）、\ld{MultiplicityFormulas}（冪の公式、Koszul Euler 標数の公式） & 土台はある。結合公式、補題 6.1、6.2 は新規 \\
+補題 5.1 & なし & 引用 \\
+定理 5.2 & 定理 2.1 と 3.1 があれば組み立ては軽い & 新規 \\
+系 5.4 & 下界の一般論（\ld{PerfectComplex/MinimalLowerBound} など）。Dutta 重複度の定義はない & 一部ある \\
+\S6 & 写像錐の長完全列（\ld{HomologicalAlgebra/ConeLES}）。Heitmann なし & Heitmann は引用。補題 6.1、6.2 は新規 \\
+\S7 & なし & 符号化は新規、Artin 近似は引用 \\
+\end{longtable}
+}
+形式化の段階と完了条件は \ld{formalization-plans/lech.md} にまとめる。
+
+\end{document}

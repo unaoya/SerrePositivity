@@ -1,6 +1,6 @@
 # CLMST とその準備の形式化計画
 
-作成日：2026-10-13。状態：設計段階（原典の主張の書き写し前）。
+作成日：2026-10-13。状態：設計段階。§3.3 の主張は原典（`paper/refs/CLMST-2209.04046v4.pdf`、手元のみ）で確認済み。
 
 対象とする版：Cai–Lee–Ma–Schwede–Tucker, *Perfectoid signature, perfectoid Hilbert–Kunz
 multiplicity, and an application to local fundamental groups*, arXiv:2209.04046v4
@@ -61,7 +61,8 @@ CLMST 全体（signature の理論、局所基本群への応用）は対象外�
 
 | CLMST | Lean | 備考 |
 | --- | --- | --- |
-| Def 2.2.1（λ**、λ*、λ_∞） | `CLMST.normalizedLength`（`A^nc_∞` 加群で `m_A` 冪ねじれのもの） | 現在の `presentedLength`・`fgLength`・`towerLengthFun`（`Paper/Section2/TowerLength.lean`）を移す |
+| Def 2.2.1（λ**、λ*、λ_∞） | `CLMST.normalizedLength`（`A^nc_∞` 加群で `m_A` 冪ねじれのもの） | 現在の `presentedLength`・`fgLength`・`towerLengthFun`（`Paper/Section2/TowerLength.lean`）を移す。原典の λ** は `length_A(M_n)/p^{nd}`（A 上の長さ）、現在の実装は `A_n` 上の長さ。剰余体が同じなので一致するが、その補題が要る |
+| §4 での `A_∞` 加群の λ_∞ | `CLMST.normalizedLengthA∞`：`A_∞` 加群を `A^nc_∞` に制限して測る | 原典は §4 で `A_∞ - Mod_{m_A}` 上の λ_∞ を断りなく使う。制限で定めることを「原典との差」に書く（Lech §3.3 が同じ説明：`Λ/p^N ≅ A_∞/p^N`） |
 | §4 の `(g)_perfd` | `CLMST.perfdIdeal g := ker(A_∞ → (A_∞/g)_perfd)` | 現在の `perfectoidIdeal`（`CommutativeAlgebra/Perfectoidization.lean`）を移すか別名にする |
 | almost zero、almost flat、almost faithful | `CLMST.AlmostZero`・`AlmostFlat`・`AlmostFaithful` | 「`(g)_perfd` で消える」と、Tor・テンソル積での定義 |
 | `R^{A_∞}_perfd` | `CLMST.RPerfd S := (R ⊗_A A_∞)_perfd` | 現在の `MixedPerfectoid` と定義上一致させる |
@@ -80,15 +81,19 @@ G：後で L1 の中で、P の項目と一般論から証明する候補。
 | Ex 2.4.2(1) | `A_∞`（`A^nc_∞` の p 進完備化）は perfectoid | P | |
 | Prop 2.4.7 | Thm 2.4.5 の設定で `S` の p^∞ 捩れが有界なら `S → S_perfd` は J-isogeny（各 `g ∈ J` で `g^N` が錐を殺す） | P | |
 | Thm 4.0.3 | (a) 全ての `i > 0` と A 加群 `M` で `(g)_perfd · Tor_i^A(RPerfd, M) = 0`。(b) almost faithful | P | |
-| Cor 4.0.4 | almost CM 性（正確な形は要確認） | G | Thm 4.0.3 と、局所コホモロジーと Koszul の比較 |
-| Prop 4.0.10 | almost zero ⇒ λ_∞ = 0（正確な形は要確認） | G | Prop 2.2.x と `(g)_perfd` の構造 |
-| Prop 4.0.14 | パラメータ商の正規化長さ = p^{-nd}·e（正確な形は要確認） | G | Prop 2.4.7、Prop 2.2.6、Euler 標数 |
+| Cor 4.0.4 | `i < d` で `(g)_perfd · H^i_m(RPerfd) = 0`。したがって `A_n ⊗_A R` の任意のパラメータ系 y で、`i > 0` について `(g)_perfd · H_i(y; RPerfd) = 0` | G | Thm 4.0.3、局所コホモロジーの Koszul による表示、Koszul と RΓ_m のスペクトル系列 |
+| Prop 4.0.10 | `M, N ∈ A_∞ - Mod_{m_A}` で `M^a ≃ N^a`（`(g)_perfd` に関して）なら `λ_∞(M) = λ_∞(N)` | G | Prop 2.2.6(a) で `M^a = 0` に帰着。巡回加群 `A_∞/(m_A + (g)_perfd)` に帰着し、`g = p` の場合は Faltings Appendix 2 |
+| Prop 4.0.14 | `A_n ⊗_A R` のパラメータ系 y で `λ_∞(RPerfd/(y)) = p^{-nd} e(y, A_n ⊗_A R)`。特に `λ_∞(RPerfd/m_A RPerfd) = rank_A R` | G | Prop 2.4.7、Prop 2.2.6、Cor 4.0.4、Prop 4.0.10 |
+| Def 4.0.8、Cor 4.0.18 | `e_perfd(J; R) := λ_∞(RPerfd/J RPerfd)`。m 準素な I で `e_perfd(I) ≤ e(I)`、パラメータ系で生成されれば等号 | G | Prop 4.0.14、極小 reduction（剰余体が有限のときは剰余体の拡大、Prop 4.0.17） |
 
 Bhatt–Scholze の perfectoid 化の存在（Thm 10.11、Prop 8.5。現在の `Inputs/Perfectoidization.lean`）も、
 同じ規律で `BhattScholze/` に置く（タグ P）。
 
-**未確認**：Cor 4.0.4、Prop 4.0.10、Prop 4.0.14 の正確な仮定と結論は、まだ原典で確認できていない
-（arXiv の PDF は Thm 4.0.3 の証明の途中までしか読めていない）。M0 で確定させる。
+Def 4.0.8 と Cor 4.0.18 は本論文では使わず、Lech の論文の Theorem 3.1 (3)（混標数の `λ(C/HC) ≤ e(H, D)`）で使う。
+CLMST の層は Lech の論文の形式化と共有する（[Lech の計画](lech.md)）。
+
+**確認状況（2026-10-13）**：上の表の主張は原典の該当箇所で確認した。
+Lean の主張の草案との一字一句の突き合わせは M0 で行う。
 
 ### 3.4 主張の書き方の規則
 
@@ -112,8 +117,8 @@ Bhatt–Scholze の perfectoid 化の存在（Thm 10.11、Prop 8.5。現在の `
 | B1 設定の変換 | リポジトリの仮定 `(A, D, t, e, he, hres, hinj, …)` から `CLMST.Setup` を作る（`R := D`、`x := t`、`k := ResidueField D`） | 軽い。ただし g の存在が要る（注意 1） |
 | B2 環の同一視 | `CLMST.RPerfd = MixedPerfectoid` | 定義上の一致にすれば `rfl` |
 | B3 長さの同一視 | CLMST の λ_∞（`A^nc_∞` 上）と `completedTowerLength`・`towerLengthOn` の比較 | 中くらい。既存の `towerLengthOn_eq_completedTowerLength` を使う |
-| B4 almost から λ へ | Prop 4.0.10 を特殊化して、現在の `clmst_length_eq_zero_of_perfectoidIdeal_annihilates` を出す | 軽い |
-| B5 任意のパラメータ系での Koszul の almost 消滅 | Cor 4.0.4（または Thm 4.0.3）から、現在の `clmst_exists_perfectoidIdeal_annihilates_koszul` を出す | 原典の形しだい（注意 2） |
+| B4 almost から λ へ | Prop 4.0.10 を `N = 0` にして、現在の `clmst_length_eq_zero_of_perfectoidIdeal_annihilates` を出す（`M^a ≃ 0` は「`(g)_perfd` で消える」こと） | 軽い。almost 同型の定義との整合だけ |
+| B5 任意のパラメータ系での Koszul の almost 消滅 | Cor 4.0.4 の後半を `n = 0`（`A_0 ⊗_A R = R`）にして、現在の `clmst_exists_perfectoidIdeal_annihilates_koszul` を出す | 軽い（注意 2） |
 | B6 重複度 | Prop 4.0.14 を `n = 0` にし、CLMST の e とリポジトリの `HilbertSamuel.multiplicity` を同一視する | 軽いか中くらい |
 | B7 冪ねじれ | `isPowTorsion_completedTower_koszul` | 証明済み |
 
@@ -126,13 +131,11 @@ B1〜B7 が揃えば、現在の `Inputs/CLMST.lean` の三つの定理は L2 �
    現在の存在命題は `g ≠ 0` だけを主張している。標数 0 では分離性が自動なので、generic étaleness から g は取れる。
    これは CLMST ではなく古典的な可換環論の事実で、証明するか、
    別の引用ファイル（`Inputs/GenericEtale.lean`）に置くかを決める。Mathlib の現状は未調査。
-2. **B5 が接続層で一番の危険。**
-   - Cor 4.0.4 が「D の任意のパラメータ系 y で `H_i(y; RPerfd)` が almost zero」という形なら、B5 は特殊化だけで済む。
-   - 局所コホモロジーの形（`H^i_m` が almost zero、`i < d`）なら、Čech と Koszul の比較が接続層に入り、重くなる。
-   - Thm 4.0.3 から直接出るのは、A のパラメータ x について `H_i(x;C) = Tor^A_i(A/(x), C)` が almost zero、ということまで。
-     そこから任意の y へ移るところが問題になる。
-   - 逃げ道：本論文の側が本当に「任意のパラメータ系 z」を必要としているかを下流で確かめる。
-     特定の z で足りれば、B5 は軽くなる。
+2. **B5 は軽い。** Cor 4.0.4 は局所コホモロジーの almost 消滅に加えて、
+   `A_n ⊗_A R` の任意のパラメータ系の Koszul ホモロジーの almost 消滅まで主張している（原典で確認）。
+   `n = 0` で R の任意のパラメータ系になるので、接続層に Čech と Koszul の比較は入らない。
+   その比較は、Cor 4.0.4 自身を L1 の中で証明するとき（M4）に要る。
+   以前この点を接続層の最大の危険としていたが、原典の確認でなくなった。
 
 ## 5. ファイル配置
 
@@ -175,18 +178,16 @@ L1 は `Paper/` を import しないので、塔の定義を `Paper/Section2` �
 
 ## 8. 決めること
 
-1. **原典の入手。** CLMST の PDF を手元から添付するか、ブラウザで読む。
+1. **原典の入手。** 済み（`paper/refs/CLMST-2209.04046v4.pdf`。`.gitignore` で除外し、commit しない）。
 2. **A の書き方。** 同型付き（§3.1 の (i)、推奨）か、字義どおりの冪級数環か。
 3. **塔の定義の置き場所。** `CLMST/` に移すか、`CommutativeAlgebra/` に置いて両方から使うか。
-4. **「任意のパラメータ系 z」の必要性。** 本論文の下流が全ての z を使うか（B5 の重さに直結）。
-5. **generic étaleness。** 証明するか、古典的な引用として置くか。
+4. **generic étaleness。** 証明するか、古典的な引用として置くか。
 
 ## 9. 次の具体的な作業
 
-1. M0：原典から Def 2.2.1、Prop 2.2.3、Prop 2.2.6、Ex 2.4.2、Prop 2.4.7、Notation 4.0.1、
-   Thm 4.0.3、Cor 4.0.4、Prop 4.0.10、Prop 4.0.14 を書き写し、Lean の主張の草案を付けた表を作る。
-2. 決定事項 4 を、下流（定理2.5 以降で `mixedPerfectoid_length_properties` を使う箇所）を読んで確かめる。
-3. M1 と M2 の形式化担当への指示文（完全な形）を作る。
+1. M0：原典（`paper/refs/`）から Def 2.2.1、Prop 2.2.3、Prop 2.2.6、Ex 2.4.2、Prop 2.4.7、Notation 4.0.1、
+   Thm 4.0.3、Cor 4.0.4、Prop 4.0.10、Prop 4.0.14、Def 4.0.8、Cor 4.0.18 を書き写し、Lean の主張の草案を付けた表を作る。
+2. M1 と M2 の形式化担当への指示文（完全な形）を作る。
 
 ## 10. 参照資料
 

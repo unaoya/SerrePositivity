@@ -44,9 +44,14 @@ appendix A of the exposition; the actual dependencies are checked by `scripts/au
    intuition and a λ-flat reformulation. Each statement ends with the Lean declaration it
    corresponds to.
 2. The module docstrings, which follow the numbering of the paper and of the exposition.
-3. [`research/`](research/): independent research notes (Lech's multiplicity conjecture,
-   λ-étale extensions, λ-homological algebra). They contain conjectural material and are not
-   used for the status of the main theorem.
+3. [`research/`](research/): independent research notes (λ-étale extensions, λ-homological
+   algebra). They contain conjectural material and are not used for the status of the main theorem.
+4. [Exposition of *Lech's multiplicity conjecture*](exposition/ja/lech-ja.tex) (the
+   [PDF](exposition/ja/lech-ja.pdf) is generated from it), the companion preprint
+   [`paper/lech.pdf`](paper/lech.pdf), which uses the same length-algebra method. It is not
+   formalized yet.
+5. [`formalization-plans/`](formalization-plans/): plans for the remaining formalization
+   (external quotations, K-theory, CLMST, Frobenius homology, Lech's conjecture).
 
 ## Layout
 
@@ -57,7 +62,9 @@ appendix A of the exposition; the actual dependencies are checked by `scripts/au
 - `CommutativeAlgebra/`, `HomologicalAlgebra/`: proved general results, including regular parameters and resolutions.
 - `Paper/`: constructions and applications to the paper, including the main statement.
 - `Inputs/`: named external quotations, deferred descent, and explicitly marked compatibility imports.
-- `paper/`: original preprint and source provenance.
+- `paper/`: original preprint, the Lech preprint and source provenance (`paper/refs/` holds
+  local copies of cited papers and is not tracked).
+- `formalization-plans/`: plans for the remaining formalization (Markdown).
 - `research/`: independent research notes (TeX sources with generated PDFs, and Markdown).
 - `scripts/`: the axiom audit and the documentation check.
 
@@ -118,14 +125,15 @@ TeX is the source of the exposition and of the research notes; the PDF next to e
 generated viewing copy. After changing a TeX file, regenerate with
 `latexmk -lualatex -outdir=<temporary directory> <source>`, check warnings, cross-references and the
 changed pages, then update the PDF. Logs, auxiliary files and page images are not tracked, nor is
-OS metadata. `paper/paper.pdf` is kept as the source of the claims.
+OS metadata. `paper/paper.pdf` and `paper/lech.pdf` are kept as the sources of the claims.
 
 ## Verification
 
 Run `lake build`, then `lake env lean scripts/audit_axioms.lean` and
 `python3 scripts/check_documentation.py`. The axiom audit checks the shared APIs and reports the
 remaining dependencies of the main theorem; the documentation check verifies the local links of
-the README and the research notes and every Lean name referenced in the exposition.
+the README, the research notes and the formalization plans, and every Lean name referenced in
+the two expositions.
 
 ## Source and license
 

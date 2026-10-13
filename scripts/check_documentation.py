@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Check active repository links and exposition API/module references after lake build.
-Research notes under research/ are checked for local links only.
+Research notes under research/ and plans under formalization-plans/ are checked for local links only.
 Lean's environment is exported to a temporary directory, never into the repository.
 """
 from pathlib import Path
@@ -13,7 +13,8 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main():
     failures = []
-    docs = [ROOT / 'README.md', *sorted((ROOT / 'research').rglob('*.md'))]
+    docs = [ROOT / 'README.md', *sorted((ROOT / 'research').rglob('*.md')),
+            *sorted((ROOT / 'formalization-plans').glob('*.md'))]
     for path in docs:
         for target in re.findall(r'(?<!\w)\[[^]\n]*\]\(([^)]+)\)', path.read_text()):
             target = target.strip('<>').split('#', 1)[0]
@@ -37,8 +38,9 @@ def main():
                for p in (ROOT / 'SerrePositivity').rglob('*.lean')}
     directories = {str(p.relative_to(ROOT)).replace('/', '.')
                    for p in (ROOT / 'SerrePositivity').rglob('*') if p.is_dir()}
-    labels = set(re.findall(r'\\ld\{([^}]+)\}',
-                           (ROOT / 'exposition/ja/exposition-ja.tex').read_text()))
+    labels = set()
+    for exposition in ('exposition/ja/exposition-ja.tex', 'exposition/ja/lech-ja.tex'):
+        labels |= set(re.findall(r'\\ld\{([^}]+)\}', (ROOT / exposition).read_text()))
     candidates = names | modules | directories
     references = 0
     for label in sorted(labels):

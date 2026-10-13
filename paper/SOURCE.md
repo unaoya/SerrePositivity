@@ -37,5 +37,5 @@ curl -L -o lech.pdf "https://raw.githubusercontent.com/openai/math/adc7f1241b42e
 - CLMST: H. Cai, S. Lee, L. Ma, K. Schwede, K. Tucker, *Perfectoid signature, perfectoid
   Hilbert–Kunz multiplicity, and an application to local fundamental groups*.
   arXiv:2209.04046（形式化で参照する版は v4、2025-07-03）。https://arxiv.org/abs/2209.04046v4
-  掲載誌: Invent. Math.（DOI 10.1007/s00222-025-01399-w）。
+  掲載誌: Invent. Math. 244 (2026), 357–454（Lech の論文の文献表による）。DOI 10.1007/s00222-025-01399-w（検索結果から。未確認）。
   手元のファイル名: `paper/refs/CLMST-2209.04046v4.pdf`
