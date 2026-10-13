@@ -1,0 +1,96 @@
+module
+
+public import SerrePositivity.CommutativeAlgebra.Perfectoidization
+
+/-! # perfectoid 化の普遍性による射とイデアルの比較
+
+普遍写像を固定した perfectoid 化に、環準同型から誘導される射を構成する。
+恒等射・合成との両立は一意性から証明する。perfectoid 化の存在は既存の引用に依存するが、
+射の一意性を新たに引用しない。
+-/
+
+@[expose] public noncomputable section
+universe u
+namespace SerrePositivity
+namespace IsPerfectoidization
+
+variable {S C T D U E : Type u}
+    [CommRing S] [CommRing C] [CommRing T] [CommRing D] [CommRing U] [CommRing E]
+    {p : ℕ} [Fact p.Prime] {f : S →+* C} {g : T →+* D} {h : U →+* E}
+
+/-- perfectoid 化の普遍性で保証される因子分解を選ぶ。 -/
+def lift (hf : IsPerfectoidization p f) (hD : IsIntegralPerfectoid D p) (k : S →+* D) :
+    C →+* D := (hf.2 D hD k).choose
+
+/-- 選んだ因子分解は元の写像と両立する。 -/
+theorem lift_comp (hf : IsPerfectoidization p f) (hD : IsIntegralPerfectoid D p) (k : S →+* D) :
+    (lift hf hD k).comp f = k := (hf.2 D hD k).choose_spec.1
+
+/-- 普遍写像との合成が同じ射は、選んだ因子分解に一致する。 -/
+theorem lift_unique (hf : IsPerfectoidization p f) (hD : IsIntegralPerfectoid D p)
+    (k : S →+* D) (l : C →+* D) (hl : l.comp f = k) : l = lift hf hD k :=
+  (hf.2 D hD k).choose_spec.2 l hl
+
+/-- 環準同型を、固定した二つの perfectoid 化の間の射へ移す。 -/
+def map (hf : IsPerfectoidization p f) (hg : IsPerfectoidization p g) (k : S →+* T) :
+    C →+* D := lift hf hg.1 (g.comp k)
+
+/-- 誘導射は二つの普遍写像と元の環準同型の図式を可換にする。 -/
+theorem map_comp (hf : IsPerfectoidization p f) (hg : IsPerfectoidization p g) (k : S →+* T) :
+    (map hf hg k).comp f = g.comp k := lift_comp hf hg.1 _
+
+/-- perfectoid 化の恒等射への誘導射は恒等射。 -/
+theorem map_id (hf : IsPerfectoidization p f) : map hf hf (RingHom.id S) = RingHom.id C := by
+  apply Eq.symm
+  apply lift_unique hf hf.1 (f.comp (RingHom.id S))
+  ext x
+  rfl
+
+/-- perfectoid 化への誘導射は合成と両立する。 -/
+theorem map_map (hf : IsPerfectoidization p f) (hg : IsPerfectoidization p g)
+    (hh : IsPerfectoidization p h) (k : S →+* T) (l : T →+* U) :
+    (map hg hh l).comp (map hf hg k) = map hf hh (l.comp k) := by
+  apply lift_unique hf hh.1 (h.comp (l.comp k))
+  rw [RingHom.comp_assoc, map_comp, ← RingHom.comp_assoc, map_comp, RingHom.comp_assoc]
+
+end IsPerfectoidization
+
+variable (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
+    (hR : IsIntegralPerfectoid R p)
+
+/-- 元の主イデアルは、その perfectoid イデアルに含まれる。 -/
+theorem span_le_perfectoidIdeal (g : R) : Ideal.span {g} ≤ perfectoidIdeal R p hR g := by
+  let : Algebra.FinitePresentation R (R ⧸ Ideal.span {g}) :=
+    Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
+  apply Ideal.span_le.mpr
+  intro x hx
+  have hxg : x = g := Set.mem_singleton_iff.mp hx
+  subst x
+  change toPerfectoidization R (R ⧸ Ideal.span {g}) p hR
+    (Ideal.Quotient.mk (Ideal.span {g}) g) = 0
+  have hz : Ideal.Quotient.mk (Ideal.span {g}) g = 0 :=
+    Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.subset_span (Set.mem_singleton g))
+  rw [hz, map_zero]
+
+/-- 主イデアルの包含は perfectoid イデアルの包含を与える。
+商環間の写像を普遍性で perfectoid 化へ移し、核の包含を証明する。 -/
+theorem perfectoidIdeal_mono {g k : R} (h : Ideal.span {g} ≤ Ideal.span {k}) :
+    perfectoidIdeal R p hR g ≤ perfectoidIdeal R p hR k := by
+  let : Algebra.FinitePresentation R (R ⧸ Ideal.span {g}) :=
+    Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
+  let : Algebra.FinitePresentation R (R ⧸ Ideal.span {k}) :=
+    Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton k)
+  let q : R ⧸ Ideal.span {g} →+* R ⧸ Ideal.span {k} := Ideal.Quotient.factor h
+  let hg := isPerfectoidization_toPerfectoidization R (R ⧸ Ideal.span {g}) p hR
+  let hk := isPerfectoidization_toPerfectoidization R (R ⧸ Ideal.span {k}) p hR
+  intro x hx
+  change toPerfectoidization R (R ⧸ Ideal.span {g}) p hR
+    (Ideal.Quotient.mk (Ideal.span {g}) x) = 0 at hx
+  change toPerfectoidization R (R ⧸ Ideal.span {k}) p hR
+    (Ideal.Quotient.mk (Ideal.span {k}) x) = 0
+  have he := RingHom.congr_fun (IsPerfectoidization.map_comp hg hk q)
+    (Ideal.Quotient.mk (Ideal.span {g}) x)
+  rw [RingHom.comp_apply, hx, map_zero] at he
+  exact he.symm
+
+end SerrePositivity

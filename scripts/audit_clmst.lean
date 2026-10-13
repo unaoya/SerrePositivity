@@ -5,6 +5,8 @@ import SerrePositivity.LengthAlgebra.RootTowerLength.FiniteGeneration
 import SerrePositivity.LengthAlgebra.RootTowerLength.Completion
 import SerrePositivity.LengthAlgebra.AlmostQuotient
 import SerrePositivity.CLMST.ModuleCompletion
+import SerrePositivity.LengthAlgebra.RootTowerLength.Normalized
+import SerrePositivity.CLMST.AlmostLength
 import Mathlib.Util.AssertNoSorry
 
 -- 共通の根の塔と数値関数に、長さの一致・加法性の引用を持ち込まない。
@@ -47,3 +49,20 @@ assert_no_sorry SerrePositivity.LengthAlgebra.length_eq_of_almost_iso
 assert_no_sorry SerrePositivity.DerivedCompletion.isComplete_of_scalar_pow_zero
 assert_no_sorry SerrePositivity.DerivedCompletion.isModuleComplete_of_pow_smul_zero
 assert_no_sorry SerrePositivity.CLMST.isModuleComplete_of_completedTower_powTorsion
+
+-- 加法性と証明済みの長さ構造を、旧C2の引用から独立に監査する。
+#print axioms SerrePositivity.Section2.towerLengthFun_add_of_exact_of_noetherian
+#print axioms SerrePositivity.RootTowerLength.normalizedLength
+#print axioms SerrePositivity.RootTowerLength.normalizedLength_hasSup
+assert_no_sorry SerrePositivity.Section2.towerLengthFun_add_of_exact_of_noetherian
+assert_no_sorry SerrePositivity.RootTowerLength.normalizedLength
+assert_no_sorry SerrePositivity.RootTowerLength.normalizedLength_hasSup
+assert_no_sorry SerrePositivity.Almost.isAlmostZero_quotient_iff
+assert_no_sorry SerrePositivity.Almost.isAlmostIso_quotientLinearMap_iff
+assert_no_sorry SerrePositivity.Almost.isTorsionIsomorphic_of_iso
+assert_no_sorry SerrePositivity.LengthAlgebra.length_eq_of_full_almost_iso_baseChange
+assert_no_sorry SerrePositivity.IsPerfectoidization.map_id
+assert_no_sorry SerrePositivity.IsPerfectoidization.map_map
+-- 選択した perfectoid 化の型には既存の存在引用が到達することを区別する。
+#print axioms SerrePositivity.perfectoidIdeal_mono
+#print axioms SerrePositivity.CLMST.length_eq_of_perfectoid_mod_full_almost_iso

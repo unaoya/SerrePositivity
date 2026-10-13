@@ -252,6 +252,18 @@ almost 同型は実際の Serre 局所化で、導来完備性は実導来圏の
 次は perfectoid ideal の mod p^N の条件の接続と、C2・導来完備化関手を扱う。
 CLMST の原典引用の新配置と、それを使う接続 T3-b〜e はまだ実装していない。
 
+## 続きの実装状況
+
+一般加法性を Noether 局所基底の下で証明し、
+`LengthAlgebra/RootTowerLength/Normalized.lean` に引用に依存しない長さの構造と HasSup を構成した。
+旧構成の広い署名をそのまま証明したという意味ではなく、その切替は次の工程である。
+
+almost 条件を商環へ移す比較は `Almost/Quotient.lean`、
+全加群の局所化と冪ねじれ局所化の同型の比較は `Almost/SerreComparison.lean`。
+`LengthAlgebra/AlmostBaseChange.lean` と `CLMST/AlmostLength.lean` は、
+全加群の almost 圏の同型から、係数制限して測る長さの一致を導く。
+像イデアルの冪等性と零長さの条件を明示し、basic setup の証明に置き換えたとは扱わない。
+
 ## 9. 根拠資料
 
 - [CLMST v4](https://arxiv.org/html/2209.04046v4)：§2.2、§2.3、Caution 2.4.4、Prop 2.4.7、Notation 4.0.1、Cor 4.0.4、Prop 4.0.10・4.0.14。

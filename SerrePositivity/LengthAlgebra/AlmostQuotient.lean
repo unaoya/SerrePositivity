@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.Almost.TorsionCategory
+public import SerrePositivity.CommutativeAlgebra.Almost.SerreComparison
 public import SerrePositivity.LengthAlgebra.SerreQuotient
 
 /-! # almost 同型に対する長さの不変性
@@ -36,5 +36,15 @@ theorem length_eq_of_almost_isomorphic
     lam.len M.obj = lam.len N.obj := by
   obtain ⟨e⟩ := h
   exact length_eq_of_almost_iso I J lam hzero e
+
+/-- 全加群の almost 圏での同型からも、冪ねじれ対象の長さの一致が従う。
+冪ねじれ部分圏の局所化への同型の移送を証明して用いる。 -/
+theorem length_eq_of_full_almost_iso
+    (hzero : ∀ M : PowTorsionModule J, Almost.IsAlmostZero I M.obj → lam.len M.obj = 0)
+    {M N : PowTorsionModule J}
+    (e : (Almost.localization I).obj M.obj ≅ (Almost.localization I).obj N.obj) :
+    lam.len M.obj = lam.len N.obj :=
+  length_eq_of_almost_isomorphic I J lam hzero
+    (Almost.isTorsionIsomorphic_of_iso I J M N e)
 
 end SerrePositivity.LengthAlgebra
