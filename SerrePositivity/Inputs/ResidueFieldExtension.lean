@@ -1,13 +1,10 @@
 module
 
-public import Mathlib.RingTheory.AdicCompletion.Basic
-public import Mathlib.RingTheory.Flat.Basic
-public import Mathlib.RingTheory.LocalRing.ResidueField.Basic
-public import Mathlib.RingTheory.Noetherian.Defs
+public import SerrePositivity.CommutativeAlgebra.ResidueFieldGeneralCompletion
 
-/-! # 引用：指定した剰余体を持つ完備平坦局所拡大
+/-! # 指定した剰余体を持つ完備平坦局所拡大（証明済み）
 
-引用するのは環の存在のみ。加群の長さ、次元、正則性、Tor の保存は含めない。
+既存入口の型を保ち、環の存在を実構成から証明する。加群の長さ、次元、正則性、Tor の保存は含めない。
 それらは `CommutativeAlgebra/FlatLocalDimension` と
 `IntersectionMultiplicity/BaseChange` から補題2.1で導く。
 -/
@@ -20,10 +17,11 @@ namespace SerrePositivity.Inputs
 
 open IsLocalRing
 
-/-- **引用：剰余体拡大の持ち上げ（完備 Noether 版）。**
+/-- **証明済み：剰余体拡大の持ち上げ（完備 Noether 版）。**
 EGA I, 2nd ed., 0, Proposition 6.8.3（gonflement）。
 Stacks Project, Tag 03C3 の平坦局所拡大を完備化した形である。
-完備化の Noether 性・平坦性もこの引用の範囲に含む。
+現在は一般拡大の実図式、adic Noether判定、共通の完備化の平坦性から証明する。
+上の文献は元の引用の参照先であり、この入口の未証明入力ではない。
 Tag 03C3 単独では拡大環の完備性・Noether 性まで主張していない。
 出典：https://stacks.math.columbia.edu/tag/03C3
 
@@ -38,6 +36,6 @@ theorem exists_complete_flat_local_extension
       ∃ e : ResidueField B' ≃+* K,
         ∀ x, e (ResidueField.map (algebraMap B B') x) =
           algebraMap (ResidueField B) K x := by
-  sorry
+  exact SerrePositivity.exists_complete_flat_local_extension_of_residueField B K
 
 end SerrePositivity.Inputs

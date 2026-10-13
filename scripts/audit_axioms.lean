@@ -86,3 +86,13 @@ assert_no_sorry SerrePositivity.HilbertSerre.component_length_identity
 assert_no_sorry SerrePositivity.LengthAlgebra.perfectEuler_conjSum_eq
 assert_no_sorry SerrePositivity.Section4.symmetricPaperEuler_conjSum_eq
 assert_no_sorry SerrePositivity.KoszulMultiplicityProof.multiplicity_eq_chiOrd_koszul
+
+-- 引用1の型を保った実構成と、その剰余体還元への適用。
+#print axioms SerrePositivity.Inputs.exists_complete_flat_local_extension
+assert_no_sorry SerrePositivity.Inputs.exists_complete_flat_local_extension
+#print axioms SerrePositivity.Section2.lemma_2_1
+assert_no_sorry SerrePositivity.Section2.lemma_2_1
+
+-- 引用3の既存型を保持した混標数Cohen正規化の実構成。
+#print axioms SerrePositivity.Inputs.cohen_normalization_mixedCharacteristic
+assert_no_sorry SerrePositivity.Inputs.cohen_normalization_mixedCharacteristic

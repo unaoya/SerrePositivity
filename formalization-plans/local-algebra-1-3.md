@@ -1,8 +1,14 @@
 # 外部引用1〜3：剰余体拡大と有限正規化の詳細計画
 
-作成・更新：2026-10-13。状態：P1・R3・R4前半と、A4の随伴次数のNoether性／有限な初期形式の持ち上げ／近似の極限まで実装済み。
-現在の到達点と検証結果は§12。次は有限なRees生成元から次数を制御した近似を供給し、A4のNoether判定を完成する。
-未実装のステートメント案は計画として扱い、存在引用1〜3の一般形は未解消。
+作成・更新：2026-10-13。状態：P1・R3・R4の完備Noether局所実現と、A4の一般Noether判定まで実装済み。
+現在の到達点と検証結果は§12。引用1と引用3を既存の公開型を保って実構成へ置換した。
+次は引用2の任意剰余体の係数体とCohen–Gabberの分離的選択。
+引用2は微分を軸にしたGabberの原証明を採用する。
+詳細な証明順と受入条件は [微分経路の計画](cohen-gabber-differentials.md) を正本とする。
+未実装のステートメント案は計画として扱い、引用1・3は解消済み。引用2の一般形は未解消。
+
+共通の完備化の平坦性・係数制限の比較・分担は、[完備化の統合計画](adic-completion-integration.md)を正本とする。
+この計画ではA4のNoether判定と剰余体拡大への固有の適用を担当する。共通平坦性はCLMST側の一般完全性からの流れで進める。
 
 対象は会話の外部引用番号1〜3。論文の節番号ではない。
 4〜5は [交点重複度の計画](intersection-inputs-4-5.md)、6は [Frobeniusの計画](frobenius-homology.md)で扱う。
@@ -14,11 +20,12 @@
 | --- | --- | --- |
 | 1 | `Inputs.exists_complete_flat_local_extension` | 任意のNoether局所環Bと任意の剰余体拡大Kに、同じ宇宙の完備Noether平坦局所拡大B′を構成。極大イデアルの拡張と、剰余体同型のBの剰余体上の両立まで証明 |
 | 2 | `Inputs.cohen_gabber_normalization` | 完備Noether局所整域D、標数p、任意の剰余体について、標準座標付きの正則冪級数基底と有限単射を構成。分数体拡大の分離性まで証明 |
-| 3 | `Inputs.cohen_normalization_mixedCharacteristic` | 標数零・剰余標数p・完全剰余体の完備Noether局所整域Dに、W(k)を係数とする標準冪級数基底と有限単射を構成。pと残りの変数による極大イデアル生成まで証明 |
+| 3（解消済み） | `Inputs.cohen_normalization_mixedCharacteristic` | Witt係数、パラメータ、標準冪級数基底、同じ評価の有限性と単射性を実構成。既存の公開型に接続済み |
 
 所在は [ResidueFieldExtension](../SerrePositivity/Inputs/ResidueFieldExtension.lean)、
 [CohenNormalization](../SerrePositivity/Inputs/CohenNormalization.lean)。
-現在の三つの入口には直接 `sorry` がある。この作業では新しい引用をコードへ追加しない。
+現在、直接 `sorry` が残るのは2だけで、1・3は型を保った実構成の適用になっている。
+この作業では新しい引用をコードへ追加しない。
 
 **限定版の区切り**も設ける：1の単生成／有限生成体拡大版、2の完全剰余体版、
 または係数環・パラメータを既に与えた条件付き有限正規化。
@@ -33,8 +40,8 @@ A：adic・冪級数・有限性・標準基底の一般API
   ├─ C：係数体のsection → 有限正規化 → 分離的選択（2）
   └─ W：Witt係数の埋め込み → pと残りのパラメータ → 有限正規化（3）
 
-Rの一般拡大・完備化は、一般Cohen環の構成を採用する場合にWとも共有する。
-Witt環から直接持ち上げる場合の依存は、W0で別に確定する。
+Wは標数pの冪零核の持ち上げ、D/(p)の完備性、既存のθ写像を使う。
+Rの一般拡大を経由する一般Cohen環の構成は採用していない。
 Cの非完全剰余体の場合は、指定p-basisの持ち上げと係数体の変更が必要になる。
 ```
 
@@ -58,7 +65,7 @@ Cの非完全剰余体の場合は、指定p-basisの持ち上げと係数体の
 | Witt環 | Mathlib `WittVector/DiscreteValuationRing`：`isDiscreteValuationRing`。`Complete`：`quotientPEquiv`、`isAdicCompleteIdealSpanP` | 完全剰余体から `PerfectRing k p` を供給し、(p)と極大イデアルを同定。W(k)→Dの存在とは分ける |
 | 多変数冪級数のNoether性 | Mathlib `MvPowerSeries/Equiv`：有限変数の `isNoetherianRing` | 局所性・次元・正則性・混標数の(p,X)完備性は別に確認 |
 | モニック多項式の商 | Mathlib `AdjoinRoot`：`powerBasisAux'`、モニック性からの整性等 | 1の代数的単生成拡大の有限自由性・平坦性に適用 |
-| Weierstrass | Mathlib `PowerSeries/WeierstrassPreparation`に定理と分解の計算式がある | 2の原証明で使う係数環・変数変更に適用できる仮定を確認 |
+| Weierstrass | Mathlib `PowerSeries/WeierstrassPreparation`に定理と分解の計算式がある | 再利用候補として保持。採用した微分経路の必須工程には置かない |
 
 **Noether性の注意。** 既存の `isNoetherianRing_of_adicComplete_of_surjective_quotient` は
 Noether環RからSへの写像と、R→S/Jの全射を要求する。
@@ -140,12 +147,18 @@ AのI進完備性とDのID進分離性を確認し、A2からDのA上有限性�
   `fg_of_shifted_adic_approximation`は有限な係数加群PについてN.FGを導く。
   Nの閉性・前完備性・有限性やRのNoether性を仮定しない。
 
-この近似条件は、有限個の初期形式が各次数を生成することから供給すべき入力であり、
-現時点で全てのJについて供給したわけではない。A4そのものは未証明。
-次は、有限個のz_iの係数を元のJの有限生成元候補に採用し、次数の上界cを取る。
-Mathlibの`mem_map_algebraMap_reesAlgebra_iff`により、商での生成の誤差が
-I^(n+1)へ入ることを読み取る。Rees係数の冪への所属から係数側のI^(n-c)を確認し、
-上の持ち上げを各Jへ適用して全イデアルの有限生成性を証明する。
+この近似条件も全てのJについて実際に供給し、A4を完成した。
+`exists_shifted_approximation_of_rees_lifts`は有限個のz_iの次数の上界cを取り、
+各z_iの0次からc次までの係数を有限な生成元候補に採用する。
+Rees係数はI^(n-d)に入り、d≤cからI^(n-c)への所属を確認する。
+Mathlibの`mem_map_algebraMap_reesAlgebra_iff`で商の誤差をI^(n+1)へ移し、
+`fg_of_shifted_adic_approximation`を各Jへ適用する。
+
+`isNoetherianRing_of_adicComplete_of_noetherian_quotient`は、I.FG、I進完備性、
+R/IのNoether性だけからRのNoether性を結論する。係数section・RのNoether性は不要。
+`isNoetherianRing_of_complete_local_of_fg`が局所版、
+`isNoetherianRing_adicCompletion_of_noetherian_quotient`が非Noether環の完備化版。
+既存の係数環からの全射による判定とNoether環の完備化も、この一般判定の適用へ整理した。
 
 
 ### A5：標準冪級数基底の性質
@@ -155,11 +168,16 @@ I^(n+1)へ入ることを読み取る。Rees係数の冪への所属から係数
 
 - 体係数：極大イデアルは(X)、次元は変数の個数。
 - Witt係数：極大イデアルは(p,X)、次元は変数の個数+1。
-- Witt係数のX進完備性だけで(p,X)進完備性を供給したとはしない。
+- Witt係数の(p,X)進完備性は完成。係数のp進完備性とMathlibのX進完備性を、
+  `AdicCompletenessSup`の和の完備性へ実際に接続した。
 - 正則性を先に仮定して、生成元数＝次元からその正則性を結論してしまわない。
 
 必要な性質は [Stacks 0323 Remark 10.160.9](https://stacks.math.columbia.edu/tag/0323)に対応する。
-Mathlibの局所性・次元・regular local APIの正確な不足はP0で確認する。
+有限変数でのNoether性と局所性はMathlibのインスタンスを再利用する。
+`PowerSeriesLocalStructure`で定数係数の核・極大イデアル・極大イデアル進完備性を供給済み。
+`PowerSeriesRegular`で次元公式と正則局所性も供給済み。
+一変数のXによる商から次元を求め、生成数の上界から正則性を導き、有限変数へ帰納する。
+一般の次元公式には係数環の正則性・整域性・完備性を要求しない。
 
 ## 5. R：1の剰余体拡大
 
@@ -309,7 +327,7 @@ B→Sの平坦局所拡大、m_B S=m_S、m_Bの有限生成性、指定剰余体
 全てのn∈ℕについてC/m_B^n CのB/m_B^n上の平坦性を証明する。
 SのNoether性は要求しない。基底BのNoether性を使ってm_Bの有限生成性を供給し、
 R3を適用する最終入口は`exists_complete_local_extension_of_residueField_with_flat_quotients`。
-この段階ではCのNoether性とB上の平坦性はまだ結論していない。
+A4を適用してCのNoether性も結論に加えた。B上の平坦性も共通の代数版を適用して証明済み。
 
 `adicCompletion_ker_eval_eq_map`はMathlibの`pow_smul_top_eq_ker_eval`から評価の核を計算する。
 `adicCompletionPowQuotientEquiv`と`adicCompletionBasePowQuotientEquiv`は冪商の同型を供給する。
@@ -320,22 +338,24 @@ n=0の零商も同じ型と証明で扱う。
 `adicCompletionTargetResidueEquiv`とその自然性は有限生成な極大イデアルだけで構成し、
 既存のNoether中間環の完備化もこの共通APIを適用するよう整理した。
 
-以下は残る二つの判定までを含む証明経路。
+残る工程は、独立に進めるA4のNoether判定と、共通の完備化の平坦性の適用。
+共通工程の型・証明手順・受入条件は[統合計画§2〜§5](adic-completion-integration.md#2-統合する中心定理)に集約する。
 
-Sのn進完備化をB′とする。nは有限生成なので、MathlibのFG版からB′の完備性・局所性・
-極大イデアル・剰余体を確認する。A4からB′のNoether性を得る。
+- 可換環論側：Sの有限生成な極大イデアルに沿う完備化Cについて、A4からNoether性を導く。
+  随伴次数・初期形式・近似持上げの残る接続を進め、共通平坦性の完成を待たない。
+- CLMST側：Noether基底B上の任意の平坦加群の完備化の平坦性を証明し、
+  拡張イデアルに沿う代数の完備化への係数制限の比較と代数版を供給する。
+  中間環Sや完備化CのNoether性を平坦性証明の仮定にしない。
+- 可換環論側：R3で構成したSに代数版を適用し、m_B S=m_Sを使って完備化のイデアルを合わせる。
+  具体的な`C := AdicCompletion (maximalIdeal S) S`を固定して、同じCにNoether性・平坦性を接続する。
+  既存の完備局所実現の存在定理はCがその完備化であるという同定を公開していないため、
+  その結論のCだけを取り出して新しい一般平坦性定理を適用したとは扱わない。
 
-平坦性は、S→B′が非Noether環の完備化だから平坦だ、としてはいけない。
-各r≥1について `B′/m_B^r B′ ≃ S/m_B^r S`を**B/m_B^r上で**構成し、
-SのB上の平坦性から右辺の平坦性を得る。
-その後 [Stacks 0523](https://stacks.math.columbia.edu/tag/0523)の判定に、
-基底B、Noether局所環B′、B′上の有限加群M=B′を適用し、B→B′の平坦性を導く。
-この判定はArtin–Reesを用いる。固定Mathlibの対応APIと不足補題はR0で確認する。
-
-商同型とその上の平坦性は実装済み。Noether判定と平坦性判定は未証明。
-今回の固定MathlibのNoetherian／Flat／AdicCompletionを調べた範囲では、
-この形の二つの判定を直接適用できる入口はまだ確認できていない。
-原典を組み合わせた証明経路であり、EGA 0.6.8.3.1の原証明の逐条形式化ではない。
+全冪商の同型と平坦性は証明済みの成果として保持する。
+旧案のStacks 0523による「Noether局所拡大の全冪商からの平坦性判定」は、代替経路の記録に留め、
+今回の必須工程から外す。共通の完備化の平坦性と並行して独立に実装しない。
+非Noether環Sの完備化写像が一般に平坦だという主張で代用しない。
+採用経路は原典を組み合わせたもので、EGA 0.6.8.3.1の原証明の逐条形式化ではない。
 
 ### R5：利用先へ戻す
 
@@ -348,8 +368,27 @@ SのB上の平坦性から右辺の平坦性を得る。
 ### W0：既存Witt APIと係数写像の経路
 
 完全体kについてDVR性、`W(k)/(p)≃k`、p進完備性は既存結果を使用する。
-残る核心はW(k)→Dで、D→kとの合成が定数係数写像になること。
-二案をP0で比較する。
+W(k)→Dと、D→kとの合成が定数係数写像になることは、
+`WittCoefficientConstruction.lean`の `exists_wittVector_residue_lift`で証明済み。
+採用した経路は次の通り。
+
+1. `PerfectNilpotentLifting.lean`で、完全環からの写像を冪零核の全射に沿って一意に持ち上げる。
+   核を消すFrobenius冪を全射に沿って降ろし、源の逆Frobeniusを合成する。
+2. 各正の冪商への持ち上げの一意性から、商写像との両立を証明する。
+   `IsAdicComplete.StrictMono.liftRingHom`の正の次数の逆極限で、完備環への実際の写像を得る。
+   共通定理は任意の完全環を源にでき、局所性・Noether性・有限生成性を要求しない。
+3. D/(p)をD上の有限加群として扱い、既存の有限加群の完備性から、
+   D/(p)→kの核に沿う完備性を供給する。この適用でDのNoether性を使う。
+   2を適用し、指定された剰余写像のsection k→D/(p)を構成する。
+4. Mathlib `Perfection.lift`でk→PreTilt D pへ持ち上げ、
+   `WittVector.map`と `WittVector.fontaineTheta`を合成する。
+   θの剰余公式とsectionの等式から、D→kとの両立を計算する。
+
+θはDのp進完備性を要求するが、perfectoid性を要求しない。
+対象のp進完備性はW1の一般定理を再利用した。
+Dの標数零・整域性は、この存在の構成には不要。
+
+採用前の比較案（現在の残作業ではない）：
 
 - **直接持ち上げ案（最初の調査対象）**：n≥1についてW(k)/p^n→D/m_D^nを両立して構成し、逆極限から環写像を得る。
   始域をW(k)に戻した両立射を使い、n=0の零商も補って `liftRingHom` に渡す。
@@ -359,20 +398,63 @@ SのB上の平坦性から右辺の平坦性を得る。
   一般Cohen環の存在にRの結果を使うなら、その依存を明示する。
 
 Witt環がDVRであることだけで、任意のDへのこの埋め込みは得られない。
-両案を同時に全面実装しない。必要な持ち上げ／同定のAPIを調べて採用案を決める。
+一般Cohen環の存在全体を新たに実装する案は採用していない。
+
+2026-10-13のローカルAPI確認：`IsAdicComplete.liftRingHom`は既に両立する
+冪商への環写像を引数に取り、その存在を供給しない。
+`Algebra.FormallySmooth.of_perfectField`（Mathlib `Smooth/Field.lean`）は
+`Algebra.EssFiniteType K L`を要求するので、任意の完全剰余体にそのまま適用する経路にはならない。
+`WittVector.teichmuller`は乗法的な写像であり、係数環の環写像として代用しない。
+これらを代用品にせず、上記の冪零核の持ち上げとθの既存構成を使った。
 
 ### W1：係数の埋め込みと非零性
 
-φ : W(k)→Dを構成し、定数係数写像との剰余体上の可換性を証明する。
-φ(p)=p_D、Dが標数零なのでp_D≠0。
-W(k)の非零元がpの冪×単元であることからφの単射性を導く。
-この過程でDの整域性・標数零を使う場所を明示する。
+W0の実構成と下の検証を `exists_wittVector_coefficient_embedding`で合成した。
+標数零の完備Noether局所環と完全剰余体について、局所的な係数埋め込みと
+指定剰余写像との両立を証明済み。以下の共通定理を再利用する。
+
+- `WittCoefficientEmbedding.lean`の `SerrePositivity.wittVector_ringHom_injective` は、
+  任意のφについて、φ(p)=p_DとDの標数零からp_Dの全冪の非零性を供給し、
+  DVRの単元×一様化元の冪への分解から単射性を証明した。
+  終域Dの整域性・局所性・Noether性・完備性はこの証明では不要。
+  共通入口 `ringHom_injective_of_dvr_uniformizer_powers` は、
+  任意のDVRから任意の環への写像に同じ証明を適用する。
+- `wittVector_map_maximalIdeal`はφによる源の極大イデアルの像が(p_D)であることを計算する。
+  `wittVector_ringHom_isLocalHom`は、Dが局所環で剰余標数pならφが局所準同型であることを証明する。
+  指定剰余写像との両立はW0の実構成で別に証明する。
+- `isAdicComplete_span_residue_characteristic`は完備Noether局所環Dのp進完備性を供給する。
+  Dの整域性・標数零・剰余体の完全性は不要。
+  `AdicCompletenessClosedQuotient.lean`の共通定理はI≤Jについて、J進完備性と
+  各I冪商のJ進分離性からI進完備性を導く。
+  Noether性と有限生成性は、有限加群への適用で冪商の分離性を供給するために使う。
+
+W0・W1・W2は完成。Witt冪級数環の(p,X)進完備性と極大イデアルの計算も完成。
+W3の基底の次元・正則性と標準座標も完成。
+評価の有限性・単射性と既存の公開型への接続も完成し、引用3を解消した。
 
 ### W2：pを含むパラメータ
 
-dim D=h>0。D/pDの次元h−1を証明し、そこからh−1個のパラメータを選ぶ。
-pが非零因子で極大イデアルに入ること、商の次元、持ち上げ後の根基がm_Dになることを確認する。
-パラメータの存在・次元に必要な一般論は既存 `PrimaryParameterExistence`・Mathlibと照合する。
+完成。`PrescribedParameter.lean`で、Noether局所環の極大イデアル内の
+指定非零因子xを先頭に置くパラメータ系を構成した。
+
+- `ringKrullDim_quotient_eq_of_nonZeroDivisor`は、dim R=r+1ならdim R/(x)=rを証明する。
+  Mathlibの非零因子による次元降下の等式を適用し、有限次元を自然数化せず等式からrを得る。
+- `exists_parameters_completing_nonZeroDivisor`は、商R/(x)で既存の
+  `PrimaryParameterExistence.exists_parameters_in_primary`を適用し、r個の元をRへ持ち上げる。
+  商写像の局所性から持ち上げが極大イデアルに入ることを確認する。
+  生成イデアルの像と核の包含を計算し、根基のcomapから
+  √((x)+(y))=m_Rを導く。根基の等式を未証明入力にしていない。
+- `exists_systemOfParameters_with_first_nonZeroDivisor`はこの列の先頭にxを置き、
+  次元と根基の等式から `IsSystemOfParameters` を供給する。
+  一般定理には整域性・正則性・Cohen–Macaulay性・完備性を要求しない。
+- `radical_span_eq_maximalIdeal_of_nonZeroDivisor_of_dim_one`はr=0の空列の境界。
+
+`MixedCharacteristicParameters.lean`の `exists_mixedCharacteristic_systemOfParameters`は
+dim D=h>0に対し、pを先頭とするFin hの列とパラメータ系の条件を供給する。
+整域性と標数零はp≠0から非零因子性を供給する箇所に使い、
+剰余標数pはp∈m_Dを証明する箇所に使う。
+`ringKrullDim_quotient_span_residue_characteristic`で商の次元も別に公開した。
+完全剰余体・完備性・Witt係数写像はW2の仮定ではない。
 
 ### W3：標準基底から有限単射
 
@@ -381,6 +463,58 @@ A5、A2、A3を使って正則性・完備性・有限性・単射性を供給�
 `t_0=p`、`t_i=X_i`、Aの極大イデアル生成を計算し、現行の引用へ接続する。
 h=1では変数が空で、A=W(k)への同型と同じ計算になる。
 `MvPowerSeries`の空変数版と係数環を定義的に同一視せず、同型を使う。
+
+W3/A5の完備性・極大イデアルの部分は完成：
+
+- `AdicCompletenessSup.lean`の `SerrePositivity.isAdicComplete_sup_of_complete_quotients`は、
+  I進完備性と全I冪商のJ進完備性から、商でのJ進極限を両立させ、
+  代表元のI進極限を取り、I+J進完備性を実構成する。
+  一般定理にNoether性・局所性・有限生成性は不要。
+  Noether局所環の適用では有限加群の前完備性とKrull分離性から全冪商の完備性を供給する。
+- `PowerSeriesCoefficientCompleteness.lean`では、有限生成IについてMathlibの
+  `mem_map_C_iff_of_fg`を再利用し、I冪の合同を全係数の合同へ移して極限を取る。
+  この係数方向の完備性には変数の有限性・環のNoether性を要求しない。
+- `PowerSeriesMixedCompleteness.lean`では有限変数、Noether局所係数環について、
+  係数イデアルの完備性と変数イデアルの完備性を和の定理へ適用する。
+  `isAdicComplete_wittPowerSeries_p_sup_variables`がWitt係数の(p,X)進完備性。
+- `PowerSeriesLocalStructure.lean`では、Mathlibの変数進完備化との同型と評価の核を使い、
+  全変数が定数係数の核を生成することを証明する。
+  分裂する定数係数写像のcomapから極大イデアルの生成を計算し、
+  `wittPowerSeries_maximalIdeal_eq`と `isAdicComplete_powerSeries_maximalIdeal`へ接続する。
+
+次元・正則性と具体的な標準座標も完成：
+
+- `PowerSeriesRegular.lean`では、一変数の定数係数の核を(X)と計算し、
+  Xによる商を係数環へ明示的に同定する。Xの非零因子性と極大イデアルへの所属を供給して、
+  Mathlibの次元降下の等式を適用する。dim R[[X]]=dim R+1。
+- Mathlibの極大イデアルの生成数の上界を使い、係数環が正則局所環なら
+  冪級数環の生成数がその次元以下であることから正則性を証明する。
+  冪級数環の正則性を先に仮定していない。
+- `finSuccEquiv`による帰納と `renameEquiv`による添字の移送で、
+  任意の有限変数の次元公式と正則局所性を供給する。
+  空変数は `isEmptyEquiv` を使用する。Witt係数には既存のDVRの次元1と正則性を再利用する。
+- `WittNormalizationBase.lean`では、引用3と同じ変数集合
+  `{i : Fin h // (i : ℕ) ≠ 0}`について標準列 `wittPowerSeriesParameter`を定義する。
+  零座標のpと各非零座標のXを計算し、列の像、極大イデアル生成、次元hを証明する。
+  `wittNormalizationBase_one_equiv`でh=1の基底をW(k)へ同定する。
+
+評価・有限性・単射性と引用3の型への接続も完成：
+
+- `FiniteNormalizationTools.lean`の `finite_quotient_of_common_residue_primary`を使う。
+  Dの準素商がArtin局所環であることと指定剰余体への全射性を実際に確認し、
+  既存の共通剰余体による長さの一致から係数環上の有限性を導く。
+  係数環のNoether性・局所性は不要。
+- `ringHom_injective_of_finite_of_equal_dimension`は有限写像の核による商を係数環とし、
+  整性による次元上界と、非零核元による次元降下を合わせる。
+  始域は有限Krull次元の整域。終域の整域性・局所性、始域のNoether性・正則性は不要。
+- `exists_finite_wittPowerSeries_map_of_parameters`はJ=(z)を評価先の完備イデアルにする。
+  J進完備性は完備Noether局所環の小さいイデアルへの完備性の移行から供給する。
+  同じ評価Fについて、F(t_i)=z_i、m_Aの像がJであること、閉ファイバーの有限性、
+  既存adic有限生成判定によるFの有限性、剰余写像への全射性を証明する。
+- `exists_cohen_normalization_mixedCharacteristic`はW0・W2の実構成をこれへ適用し、
+  dim A=dim D=hから同じFの単射性を供給する。
+  Aは引用3と同じWitt冪級数環を選び、Fから代数構造を作る。
+  `Inputs.cohen_normalization_mixedCharacteristic`は公開型を保持した適用へ置換済み。
 
 混標数の分数体分離性は標数零から利用側で証明済み。
 正規化の構成の前提として分離性を追加しない。
@@ -392,7 +526,8 @@ h=1では変数が空で、A=W(k)への同型と同じ計算になる。
 `κ : k→D`で `residue D ∘ κ=id_k`を構成する。
 完全剰余体での先行成果と、現行引用が要求する任意の剰余体を区別する。
 任意剰余体の経路には指定したp-basisの持ち上げが現れ、Cohen–Gabberで係数体を変更する際にも使う。
-`k`の形式的滑らかさ、持ち上げ、p-basisの正確なMathlib APIは未調査。
+通常の微分・分離性・完備化のAPIの調査結果と、p-basis／連続微分の不足は
+[微分経路の台帳](cohen-gabber-differentials.md#3-確認済みapiと確認していない接続)に集約する。
 存在するものとしてsectionを全定理の入力に渡しただけでは2の完了としない。
 
 ### C1：分離性を要求しない有限正規化
@@ -404,18 +539,16 @@ h=0の入力ではDが体となり、空変数の基底と剰余体同型で扱�
 
 ### C2：分離的選択の原証明を実装単位へ分割
 
-採用候補は [Kurano–Shimomoto v2](https://arxiv.org/html/1510.03573v2)の整域版。
-原証明の主張を現行の整域に特殊化してから、次を依存表にする。
+採用経路はGabberの微分による原証明の整域版。
+訂正版Exposé IVの係数体変更を正本とし、p-basis、連続微分、
+体の微分の階数安定、独立な微分を持つ持ち上げ、パラメータ `τ_i^p*(1+f_i)`、
+同じ評価の有限性・分離性の順に接続する。
+具体的な型案・原典の訂正・G0〜G6の受入条件は [微分経路の計画](cohen-gabber-differentials.md) を参照。
+最初の範囲は整域版であり、複数成分での同時選択は最終目標に必要になるまで追加しない。
 
-1. 冪級数のWeierstrass分解、有限性、超曲面表示。
-2. 有限個の素イデアルを避けるパラメータ・座標変更と、パラメータ条件の保存。
-3. 偏微分が非零になる座標変更と、有限分数体拡大の分離性判定。
-4. 非完全剰余体では、p-basisの指定持ち上げと係数体の変更。
-5. 超曲面の場合から生成元の余剰個数への帰納と、分数体の塔における分離性の合成。
-
-これらはすべて必要性と正確な仮定を原典と照合する。非整域の場合の最小成分への還元は、
-現行の整域版に不要なら初期対象に含めない。
-完全剰余体版では4を簡略化できる可能性があるが、座標の選択は依然必要。
+過去に候補とした [Kurano–Shimomoto v2](https://arxiv.org/html/1510.03573v2)の
+超曲面・Weierstrass・偏微分による座標変更の経路は比較資料として保持する。
+両経路の完全な証明を並行実装しない。完全剰余体でもパラメータの選択は必要。
 例えば完全体k上でもk[[t^p]]⊂k[[t]]は有限な純非分離拡大なので、
 任意のパラメータによる有限正規化の分離性を完全性だけから推論しない。
 
@@ -431,11 +564,11 @@ C2の分離性をこの写像について述べ、現行の引用と同じ型へ
 
 | 区切り | 具体的な成果物 | 終了時に確認すること |
 | --- | --- | --- |
-| P0 | 下の最初の作業指示とAPI台帳、R4の平坦性判定、W0の採用経路、C2の依存表 | 存在するAPI、未確認の接続、新しい証明課題を混ぜない |
+| P0 | 下の最初の作業指示とAPI台帳、統合計画の完備化の平坦性、W0の採用経路、C2の依存表 | 存在するAPI、未確認の接続、新しい証明課題を混ぜない |
 | P1 | adic評価の必要部分とA2の有限生成判定 | 対象環のNoether性・係数section・Mの有限性を不当に追加しない |
 | P2 | A5の標準冪級数基底、条件付き有限正規化 | 等標数／混標数の完備イデアルと座標、h=0／h=1を確認 |
 | R1/R2 | 代数的・超越的単生成拡大とそのNoether完備版 | 不分離代数拡大も含める。剰余体上の写像を確認 |
-| R3/R4 | 一般拡大、A4、全冪の平坦性判定、完備Noether版 | 一般K・非完備Bのまま1に到達。宇宙・商の代数構造も確認 |
+| R3/R4 | 一般拡大、A4、共通の完備化の平坦性の適用、完備Noether版 | 一般K・非完備Bのまま1に到達。宇宙・商の代数構造も確認 |
 | W1/W2/W3 | 係数写像、パラメータ、条件付き有限正規化への適用 | 完全剰余体の混標数版として3に到達 |
 | C0/C1 | 係数体と通常有限正規化 | 係数体を仮定する条件付き版と、存在を証明した版を区別 |
 | C2/C3 | 分離的選択と分数体の両立 | 任意剰余体の整域版として2に到達 |
@@ -465,10 +598,10 @@ R1/R2はA4を待たずに進められる。WとCは共通基盤を使うが、�
 
 ## 10. 実装前に確定する調査と検証
 
-- R4：FG理想の完備化の全冪商同型は実装済み。残る調査は0523の平坦性判定のMathlib接続と、商からのNoether判定の証明。
-- W0：W(k)/p^nの持ち上げか、Cohen環の存在・同定か。実際の補題と依存で決める。
-- C0/C2：指定p-basisの持ち上げ、係数体変更、Weierstrass・偏微分・分離性のAPI。
-- A5：Noether性は既存。局所性・次元・正則性・(p,X)完備性の正確な不足を調べる。
+- R4：A4のNoether判定と、共通の代数版の完備化の平坦性の適用まで完成。
+- W0：冪零核の持ち上げとθの経路を採用し、指定剰余写像と両立するWitt係数埋め込みまで完成。
+- C0/C2：微分経路のG0で、指定p-basisの持ち上げ、連続微分のモデル、係数体変更、分離性のAPIを確定する。
+- A5：冪級数の局所性・次元・正則性・(p,X)完備性は実装済み。微分基底の計算は新計画のG3へ置く。
 
 新規定理の検証は、対象モジュールのビルド、`#print axioms`、明示的な仮定の確認、
 接続時の全体ビルド・下流監査。文書だけの変更ではローカルリンク・参照名・差分を確認する。
@@ -480,7 +613,7 @@ R1/R2はA4を待たずに進められる。WとCは共通基盤を使うが、�
 - [Stacks 03C3](https://stacks.math.columbia.edu/tag/03C3)：単生成と一般体拡大の構成。本文を確認。
 - EGA I, 2nd ed., 0.6.8.3・0.6.8.3.1：現行1の出典。原証明の全逐条照合は未実施。
 - [Stacks 05GH](https://stacks.math.columbia.edu/tag/05GH)：FG理想とNoether商によるNoether完備化。
-- [Stacks 0523](https://stacks.math.columbia.edu/tag/0523)：Noetherな基底・終域、有限終域加群、全冪の平坦性による判定。
+- [Stacks 0523](https://stacks.math.columbia.edu/tag/0523)：旧案の全冪商からの平坦性判定。統合後は代替経路の記録とし、今回の必須工程では実装しない。
 - [Stacks 0315](https://stacks.math.columbia.edu/tag/0315)、[031D](https://stacks.math.columbia.edu/tag/031D)：商からの全射と有限生成判定。
 - [Stacks 0323](https://stacks.math.columbia.edu/tag/0323)：係数環、正規化、標準基底。Cohen環の持ち上げを含む。
 - [Kurano–Shimomoto v2](https://arxiv.org/html/1510.03573v2)：Cohen–Gabberの定理1.1、係数体の定理2.2、§3の構成を確認。全補題のLean依存表は今後作成。
@@ -489,7 +622,7 @@ R1/R2はA4を待たずに進められる。WとCは共通基盤を使うが、�
 
 ## 12. 実装の到達点（2026-10-13）
 
-P1・有限生成版・R3・R4前半に加え、A4の随伴次数・有限な初期形式・近似の極限まで実装した。
+P1・有限生成版・R3・R4前半に加え、A4の一般Noether判定と具体的な完備化への適用まで実装した。
 新しい引用・恒久的公理・入力束は追加しない。既存の三つの存在引用そのものは、この段階で置換していない。
 
 | 成果物 | 実装と確認する範囲 |
@@ -542,49 +675,187 @@ P1・有限生成版・R3・R4前半に加え、A4の随伴次数・有限な初
 | 基底冪商上の同型 | [AdicCompletionBaseQuotient](../SerrePositivity/CommutativeAlgebra/AdicCompletionBaseQuotient.lean)：`adicCompletionBasePowQuotientEquiv`。Mathlibの標準的な商代数構造でB/I^n上の同型を構成 |
 | 冪商の平坦性 | [AdicCompletionFlatQuotient](../SerrePositivity/CommutativeAlgebra/AdicCompletionFlatQuotient.lean)：`flat_quotient_of_flat_algebra`と`adicCompletionBasePowQuotient_flat`。基底変換と同型で導く。C全体の平坦性は結論しない |
 | 有限生成版の剰余体の保存 | [AdicCompletionResidue](../SerrePositivity/CommutativeAlgebra/AdicCompletionResidue.lean)：`adicCompletionTargetResidueEquiv`・`_apply`・`_base_map`。SのNoether性なしで指定体へ移送。既存のNoether版もこのAPIへ移行 |
-| 一般拡大の完備局所実現 | [ResidueFieldGeneralCompletion](../SerrePositivity/CommutativeAlgebra/ResidueFieldGeneralCompletion.lean)：完備局所C、有限生成なm_C、m_B C=m_C、指定剰余体の同型、全冪商の平坦性を供給。CのNoether性・B上の平坦性は未証明 |
+| 一般拡大の完備局所実現 | [ResidueFieldGeneralCompletion](../SerrePositivity/CommutativeAlgebra/ResidueFieldGeneralCompletion.lean)：完備局所C、有限生成なm_C、m_B C=m_C、指定剰余体の同型、全冪商の平坦性を供給。CのNoether性は証明済み。B上の平坦性も共通の代数版を適用して証明済み |
 | 随伴次数環のNoether性 | [GradedReesNoetherian](../SerrePositivity/CommutativeAlgebra/GradedReesNoetherian.lean)：商のNoether性とI.FGからMathlibのRees商の定理を適用。元の環のNoether性・完備性は不要 |
 | 有限な初期形式の持ち上げ | [ReesIdealLifts](../SerrePositivity/CommutativeAlgebra/ReesIdealLifts.lean)：`reesCoefficientIdeal`・`exists_finite_reesCoefficientIdeal_lifts`。Jの係数を持つ有限なRees多項式で初期形式の像を生成 |
-| 次数を制御した近似の極限 | [AdicApproximationLifting](../SerrePositivity/CommutativeAlgebra/AdicApproximationLifting.lean)：一様な次数のずれcを許す近似からrangeへの所属と有限生成性を導く。全Jへの近似の供給は未完 |
+| 次数を制御した近似の極限 | [AdicApproximationLifting](../SerrePositivity/CommutativeAlgebra/AdicApproximationLifting.lean)：一様な次数のずれcを許す近似からrangeへの所属と有限生成性を導く。全Jへの近似は`ReesCoefficientApproximation`で供給済み |
+| 次数付き近似の実構成 | [ReesCoefficientApproximation](../SerrePositivity/CommutativeAlgebra/ReesCoefficientApproximation.lean)：有限なRees生成元の係数と次数の上界から、全Jの近似を供給。完備性・Noether性は仮定しない |
+| A4の一般Noether判定 | [AdicNoetherianCriterion](../SerrePositivity/CommutativeAlgebra/AdicNoetherianCriterion.lean)：`isNoetherianRing_of_adicComplete_of_noetherian_quotient`・局所版・完備化版。元の環のNoether性や係数sectionを要求しない |
+| 引用1の解消と利用先 | [ResidueFieldGeneralCompletion](../SerrePositivity/CommutativeAlgebra/ResidueFieldGeneralCompletion.lean)：具体的なCの公開仕様と完備Noether平坦版。`Inputs.exists_complete_flat_local_extension`と`Section2.lemma_2_1`のsorry依存を解消 |
+| 完全環からの一意な持ち上げ | [PerfectNilpotentLifting](../SerrePositivity/CommutativeAlgebra/PerfectNilpotentLifting.lean)：冪零核・完備な核を越える環写像を実構成。冪商での一意性から両立性を供給。局所性・Noether性・有限性は不要 |
+| Witt係数埋め込み | [WittCoefficientConstruction](../SerrePositivity/CommutativeAlgebra/WittCoefficientConstruction.lean)：`exists_wittVector_residue_lift`・`exists_wittVector_coefficient_embedding`。指定剰余写像との両立と、標数零での局所的な単射性まで証明 |
+| 指定非零因子を含むパラメータ | [PrescribedParameter](../SerrePositivity/CommutativeAlgebra/PrescribedParameter.lean)：商の次元、商での選択、持ち上げ、根基の等式。整域性・完備性・正則性は不要 |
+| pを先頭に置くパラメータ | [MixedCharacteristicParameters](../SerrePositivity/CommutativeAlgebra/MixedCharacteristicParameters.lean)：`exists_mixedCharacteristic_systemOfParameters`。指定非零因子の一般定理を実現し、完全剰余体・係数埋め込み・完備性を要求しない |
+| 和に沿う完備性 | [AdicCompletenessSup](../SerrePositivity/CommutativeAlgebra/AdicCompletenessSup.lean)：I進完備性と各I冪商のJ進完備性からI+J進完備性。Noether局所版では有限加群の完備性を実際に供給 |
+| 係数方向の冪級数完備性 | [PowerSeriesCoefficientCompleteness](../SerrePositivity/CommutativeAlgebra/PowerSeriesCoefficientCompleteness.lean)：有限生成イデアルへの係数ごとの合同と極限。変数の有限性は不要 |
+| 混合イデアルの冪級数完備性 | [PowerSeriesMixedCompleteness](../SerrePositivity/CommutativeAlgebra/PowerSeriesMixedCompleteness.lean)：係数と全変数の和について完備。Witt係数の(p,X)版も証明 |
+| 冪級数の局所構造 | [PowerSeriesLocalStructure](../SerrePositivity/CommutativeAlgebra/PowerSeriesLocalStructure.lean)：定数係数の核、係数極大イデアルと全変数による生成、極大イデアル進完備性 |
+| 冪級数の次元と正則性 | [PowerSeriesRegular](../SerrePositivity/CommutativeAlgebra/PowerSeriesRegular.lean)：Xによる商の同型、dim R[[X]]=dim R+1、生成数による正則性、有限変数への帰納と添字の移送 |
+| 引用3の具体的な基底と座標 | [WittNormalizationBase](../SerrePositivity/CommutativeAlgebra/WittNormalizationBase.lean)：零以外のFin hを変数とする基底の次元h、pと全変数の標準列、極大イデアル生成、h=1の明示的同型 |
+| 閉ファイバーと単射性 | [FiniteNormalizationTools](../SerrePositivity/CommutativeAlgebra/FiniteNormalizationTools.lean)：共通剰余体と準素商から係数環上の有限性。有限写像の次元一致から単射性 |
+| 混標数Cohen正規化の実構成 | [WittNormalizationConstruction](../SerrePositivity/CommutativeAlgebra/WittNormalizationConstruction.lean)：同じ評価写像に有限性・単射性・指定剰余写像への全射性を供給。引用3の既存型へ接続 |
 
 
 
 
 
-混標数の(p,X)進完備性、係数環の埋め込み、正規化の単射性・分離的選択は未完。
+
+
+混標数の(p,X)進完備性と極大イデアルの計算は完成。
+基底の次元・正則性と標準座標は完成。
+混標数の有限正規化の評価・有限性・単射性も完成。Cohen–Gabberの分離的選択は未完。
+W2のpを含むパラメータは完成。
 明示したHについての前完備性を受け取る共通有限性定理と、その実現条件を供給する証明を区別する。
-R3は完成。R4は完備局所実現・基底冪商上の同型・全冪商の平坦性まで実装済み。
-CのNoether性・B上の平坦性は未証明。Wの係数埋め込み・Cohen–Gabberの選択は未着手。
-この完成は、任意の体拡大を扱う外部引用1の完備Noether版の完成を意味しない。
+R3は完成。R4は完備Noether局所実現・基底冪商上の同型・全冪商の平坦性まで実装済み。
+CのNoether性は証明済み。B上の平坦性も共通の代数版を適用して証明済み。
+Wの係数埋め込みは完成。Cohen–Gabberの分離的選択は未完。
+任意の体拡大を扱う外部引用1の完備Noether平坦版も完成し、既存のInputs入口は引用非依存になった。
 
-R4の前半は実装済み。次は、以下の二つの判定を証明する。
+R4・R5は完成。`adicCompletion_local_residue_properties`で具体的なCの性質を供給し、
+`exists_complete_flat_local_extension_of_noetherian_base`で同じCに共通の平坦性を適用する。
+`exists_complete_flat_local_extension_of_residueField`はR3とこれを合成し、
+基底の完備性や体拡大の有限性・分離性・完全性を要求せず、既存引用1と同じ型を証明する。
+`Inputs.exists_complete_flat_local_extension`はその適用へ置換し、補題2.1の保存則も標準公理だけで証明した。
 
-1. 有限生成な極大イデアルmを持つm進完備局所環CのNoether性。
-   局所版の共通ステートメントは`[IsLocalRing C] [IsAdicComplete (maximalIdeal C) C]`
-   と`(maximalIdeal C).FG`から`IsNoetherianRing C`を導く形。剰余体は既に体なのでNoether。
-   現在の`isNoetherianRing_of_adicComplete_of_surjective_quotient`は、Noetherな係数環から
-   C/mへの全射を要求する。一般拡大KではB→Kは全射とは限らず、K→Cの係数sectionも
-   まだ供給していないため、その定理の直接適用でA4を済ませてはいけない。
-   随伴次数環のNoether性、Jの初期形式の有限な持ち上げ、次数を制御した近似からの
-   有限生成への移行は実装済み。残るのはRees生成元の次数の上界から、各Jでその近似を供給する接続。
-2. Noether局所基底BとNoether局所拡大Cについて、全冪商の平坦性からB→Cの平坦性。
-   全冪商の平坦性は実構成から供給済み。判定に必要な有限性・分離性・局所性の条件を
-   確定し、MathlibのArtin–Rees・平坦性の判定APIとの接続を調べる。
-3. この二つを適用して完備Noether平坦版を得た後、外部引用1の既存型に戻し、利用先を再監査する。
-
-非Noether環Sの完備化写像が一般に平坦だという主張で代用しない。
-新しい完備局所実現の定理の結論にはCのNoether性・B上の平坦性をまだ含めていない。
+Noether性と平坦性を別々に存在する環へ適用したのではなく、Sの極大イデアル進完備化Cを固定して合成する。
+共通の代数版の平坦性はCLMST側の実装を再利用し、ここで重複実装していない。
+主定理には外部引用9件と保留K理論2件が残る。次の固有作業は引用2の係数体と分離的正規化。
 
 検証は `lake build` と `lake env lean scripts/audit_local_algebra.lean`。
 この監査は共通APIと既存Noether性の適用、R1/R2・有限生成体拡大・R3の極限段を直接importし、他作業の入力と区別する。
+以下は引用1の解消時点の検証記録。その後の引用3の解消と最新監査は本節末尾を参照。
 検証結果：
 
-- 対象モジュールのビルド：随伴次数のNoether性、Jの初期形式の有限な持ち上げ、ずれを許す近似の極限と有限生成への移行、全て成功。新規・変更モジュールの警告・エラーなし。
-- 全体 `lake build`：3957ジョブで成功。
-- `audit_local_algebra.lean`：A4の上記準備を含む211宣言すべて `propext`・`Classical.choice`・`Quot.sound` のみ。`assert_no_sorry`も成功。冪商の同型と平坦性に局所性・Noether性が不要なこと、一般完備化の中間環SにNoether性を要求しないこと、全冪商の平坦性がC全体の平坦性とは別の結論であることを公開型で確認。
-- `audit_axioms.lean`：既存の監査を再実行して成功。主定理には既存入力に由来する `sorryAx` が残る。
+- 対象モジュールのビルド：具体的なCの公開仕様、同じCへの共通平坦性の適用、引用1の既存型の証明、補題2.1への接続、全て成功。新規・変更モジュールの警告・エラーなし。
+- 全体 `lake build`：3964ジョブで成功。
+- `audit_local_algebra.lean`：引用1の実構成を含む221宣言すべて `propext`・`Classical.choice`・`Quot.sound` のみ。`assert_no_sorry`も成功。冪商の同型と平坦性に局所性・Noether性が不要なこと、一般完備化の中間環SにNoether性を要求しないこと、全冪商の平坦性がC全体の平坦性とは別の結論であることを公開型で確認。
+- `audit_axioms.lean`：引用1の入口と補題2.1の`assert_no_sorry`も成功。主定理に残るsorriesは外部引用10件と保留K理論2件で、引用1は含まれない。主定理の`sorryAx`依存そのものは残る。
 - 文書検査：13個のMarkdownと293個の解説参照、失敗0。
 - `git diff --check`：成功。
 
 この区切りのコミット対象は、環の存在構成の計画整理・共通adic API・剰余体拡大・R4前半・A4の上記準備とその監査。
 別作業の未コミットファイルは含めない。
+
+### W1の検証補題（2026-10-13）
+
+`AdicCompletenessClosedQuotient.lean`と `WittCoefficientEmbedding.lean`に上記7定理を実装した。
+引用2・3の入口はまだ変更しておらず、外部引用の残数は10件、保留K理論は2件のまま。
+この区切りの時点ではφの構成が未完だった。その後のW0の実装は次の記録を参照。
+
+- 共通APIの対象ビルドは成功。新規2モジュールの警告・エラーなし。
+- `audit_local_algebra.lean`の228宣言の `assert_no_sorry` が成功。
+  追加7定理の公理は `propext`・`Classical.choice`・`Quot.sound` のみ。
+  一般完備性の定理ではNoether性・有限生成性を要求しないこと、
+  Witt写像の単射性では対象の整域性を要求しないことを公開型でも確認した。
+- 全体 `lake build` は3974ジョブで成功。
+- 文書検査は13個のMarkdownと293個の解説参照、失敗0。
+- 主定理の公理監査は成功。外部引用10件・保留K理論2件が残ることを再確認した。
+- `git diff --check` は成功。この追加分は未コミット。
+
+### W0・W1の実構成（2026-10-13）
+
+`PerfectNilpotentLifting.lean`の4定理で、冪零核を越える一意な持ち上げと、
+その冪商での両立性からの完備環への持ち上げを証明した。
+`WittCoefficientConstruction.lean`の2定理はこれとMathlibのθ写像を使って、
+指定剰余写像と両立するWitt係数写像を実構成し、標数零の下で局所的な単射性まで供給する。
+この段階ではDの整域性、次元、パラメータ、有限正規化を仮定しない。
+
+- 対象ビルドは成功。新規2モジュールの警告・エラーなし。
+- `audit_local_algebra.lean`の234宣言の `assert_no_sorry` が成功。
+  追加6定理は `propext`・`Classical.choice`・`Quot.sound` のみに依存する。
+- 引用3の入口は未置換で、W2・W3のパラメータ・標準冪級数基底・有限正規化が残る。
+  引用2では任意剰余体の係数体とCohen–Gabberの分離的選択が残る。
+- 全体 `lake build` は3983ジョブで成功。
+  初回は並行作業によるKoszulモジュールの更新中に`.olean`未検出で失敗したが、
+  現在の依存関係で再実行して成功した。
+- 主定理の公理監査は成功。外部引用10件・保留K理論2件の依存は変わらない。
+- 文書検査は13個のMarkdownと293個の解説参照、失敗0。
+- `git diff --check` は成功。この追加分は未コミット。
+
+### W2の指定パラメータ（2026-10-13）
+
+`PrescribedParameter.lean`の4定理と `MixedCharacteristicParameters.lean`の2定理で、
+指定非零因子による正確な次元降下、商でのパラメータ選択と持ち上げ、
+根基の等式、pを先頭とするFin hのパラメータ系を証明した。
+次元1では残りがFin 0の空列となることも一般定理として確認した。
+商のNoether性・非自明性・局所性を実際に供給し、既存の選択定理を適用している。
+
+- 対象ビルドは2441ジョブで成功。新規2モジュールの警告・エラーなし。
+- `audit_local_algebra.lean`の240宣言の `assert_no_sorry` が成功。
+  追加6定理の公理は `propext`・`Classical.choice`・`Quot.sound` のみ。
+- W2は完成。引用3の入口はまだ未置換で、W3の標準冪級数基底の性質、
+  有限性、単射性、引用の型への接続が残る。
+- 全体 `lake build` は、並行作業中の `HomologicalAlgebra/KoszulCoordinateControl.lean`
+  の108・117行の未解決ゴールで失敗。再実行でも同じ箇所で停止した。
+  当該ファイルには変更を加えていない。
+- 主定理の公理監査と文書の解説宣言参照の検査も、同モジュールの`.olean`不足で実行未完了。
+  前回の全体成功・引用依存監査と、今回の対象ビルド・直接importによる公理監査を区別する。
+- Markdown13文書のローカルリンク検査は失敗0。`git diff --check`は成功。
+  この追加分は未コミット。
+
+### W3/A5の完備性と極大イデアル（2026-10-13）
+
+`AdicCompletenessSup`、`PowerSeriesCoefficientCompleteness`、
+`PowerSeriesMixedCompleteness`、`PowerSeriesLocalStructure`に計13定理を実装した。
+Witt係数の(p,X)進完備性、全変数による定数係数の核の生成、
+係数極大イデアルと全変数による極大イデアルの生成を証明した。
+Noether性と局所性はMathlibの既存インスタンスを使う。
+基底の次元・正則性と有限正規化は未完なので、引用3の入口は置換していない。
+
+- 対象ビルドは2365ジョブで成功。新規4モジュールの警告・エラーなし。
+- 全体 `lake build` は3994ジョブで成功。前回停止したKoszul側も現在の作業ツリーで成功。
+- `audit_local_algebra.lean`の253宣言の `assert_no_sorry` が成功。
+  追加13定理は `propext`・`Classical.choice`・`Quot.sound` のみに依存する。
+  係数方向の完備性に変数の有限性を要求しないことと、和の一般定理にNoether性を要求しないことを公開型でも確認。
+- 主定理の公理監査は成功。外部引用10件・保留K理論2件は残る。
+- 文書検査は13個のMarkdownと293個の解説参照、失敗0。`git diff --check`は成功。
+- この追加分は未コミット。次は基底の次元・正則性を供給し、既存adic評価と有限生成判定へ接続する。
+
+### W3/A5の次元・正則性と標準座標（2026-10-13）
+
+`PowerSeriesRegular.lean`と `WittNormalizationBase.lean`に計21宣言を実装した。
+一変数の商の同型と次元、正則性、有限変数への帰納・添字の移送、
+引用3と同じ変数集合についての標準座標・極大イデアル生成・次元hを証明した。
+一般の次元公式は係数環のNoether性・局所性だけを使い、正則性・整域性・完備性を要求しない。
+正則性の定理は係数環の正則性を仮定し、冪級数環の正則性を生成数から証明する。
+h=1の基底は明示的な同型 `wittNormalizationBase_one_equiv`でW(k)へ戻す。
+
+Witt基底の整域性も、Mathlibの `MvPowerSeries.NoZeroDivisors`を公開importし、
+既存の零因子なしのインスタンスを `NoZeroDivisors.to_isDomain` で束ねて供給する。
+`isDomain_mvPowerSeries`は変数の有限性を要求しない。
+次はW0の係数写像とW2のパラメータに既存のadic評価を適用し、
+同じ評価写像について有限性・単射性・剰余写像の全射性を供給する。
+引用3の入口の証明はまだ置換していない。
+
+- 新規2モジュールのビルドは成功。警告・エラーなし。
+- 全体 `lake build` は4000ジョブで成功。
+- `audit_local_algebra.lean`の274宣言の `assert_no_sorry` が成功。
+  追加21宣言は標準公理のみ。引用3の実際の基底の整域性・Noether性も `#synth` で確認した。
+- 主定理の公理監査は成功。外部引用10件・保留K理論2件が残る。
+- 文書検査は13個のMarkdownと293個の解説参照、失敗0。`git diff --check`は成功。
+- この追加分は未コミット。
+
+### 引用3の解消：同じ評価の有限性・単射性（2026-10-13）
+
+`FiniteNormalizationTools.lean`と `WittNormalizationConstruction.lean`に計4定理を実装した。
+W0の実際の係数写像とW2のパラメータをJ=(z)進の冪級数評価へ接続し、
+F(t_i)=z_iとm_Aの像がJであることを計算した。
+共通剰余体の長さの一致からW(k)上の閉ファイバーの有限性を導き、
+基底の極大イデアル進完備性と既存の有限生成判定から同じFの有限性を証明した。
+有限写像の次元一致の一般定理を同じFへ適用して単射性を供給し、
+`Inputs.cohen_normalization_mixedCharacteristic`を公開型を保持した証明へ置換した。
+
+この接続は、新たな未証明入力・有限性を仮定する構造体・恒久的公理を導入していない。
+主定理に残る入力は外部引用9件と保留K理論2件。引用1・3は含まれない。
+引用1〜3の範囲で残るのは、引用2の任意剰余体の係数体と分離的正規化の選択。
+
+- 新規2モジュールと引用3の入口のビルドは成功。新規モジュールの警告・エラーなし。
+- 全体 `lake build` は4002ジョブで成功。
+- `audit_local_algebra.lean`の278宣言の `assert_no_sorry` が成功。
+  追加4定理は `propext`・`Classical.choice`・`Quot.sound` のみに依存する。
+- 主定理の公理監査は成功。引用3の旧入口の `assert_no_sorry`も成功。
+  主定理のsorriesは外部引用9件と保留K理論2件で、引用3は含まれない。
+- 文書検査は13個のMarkdownと295個の解説参照、失敗0。
+- 解説TeXの引用表・件数・混標数の適用説明を更新し、PDFを再生成した。
+  冒頭、補題2.2の説明、付録の引用表と構成説明の表示を確認した。
+- `git diff --check`は成功。この追加分は未コミット。

@@ -22,7 +22,7 @@ public import Mathlib.RingTheory.RegularLocalRing.Defs
 したがって加群の次元と有限長が保たれ、`B` が正則なら `B'` も正則、有限 `B` 加群 `M, N` の
 `Tor` の長さ（したがって交点重複度）も保たれる。
 
-環の存在は `Inputs.exists_complete_flat_local_extension` として引用する。
+環の存在は実構成を証明した `Inputs.exists_complete_flat_local_extension` を適用する。
 商の長さ・正則性・Tor の長さの保存は、平坦局所拡大の一般論からここで証明する。
 正則性の保存は、証明済みの Hilbert–Samuel の多項式性と次元定理から従う。
 
@@ -42,7 +42,7 @@ namespace SerrePositivity
 
 namespace Section2
 
-/-- **Lemma 2.1**（剰余体の拡大）。環の存在の引用から保存則を導く。 -/
+/-- **Lemma 2.1**（剰余体の拡大）。環の実構成から保存則を導く。 -/
 theorem lemma_2_1 (B : Type u) [CommRing B] [IsLocalRing B] [IsNoetherianRing B]
     [IsAdicComplete (maximalIdeal B) B] :
     ∃ (B' : Type u) (_ : CommRing B') (_ : IsLocalRing B') (_ : IsNoetherianRing B')

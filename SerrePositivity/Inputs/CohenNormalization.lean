@@ -9,16 +9,19 @@ public import Mathlib.RingTheory.LocalRing.ResidueField.Basic
 public import Mathlib.RingTheory.MvPowerSeries.Basic
 public import Mathlib.RingTheory.RegularLocalRing.Defs
 public import Mathlib.RingTheory.WittVector.Basic
+public import SerrePositivity.CommutativeAlgebra.WittNormalizationConstruction
 
-/-! # 引用：Cohen–Gabber と Cohen による正規化
+/-! # Cohen–Gabber の引用と証明済みの混標数Cohen正規化
 
 引用の範囲は、標準座標を持つ完備正則局所部分環の存在である。
 等標数では分数体拡大の分離性も Cohen–Gabber の結論として引用する。
-混標数では分離性を引用に含めず、標数零から導く。
+混標数の正規化はWitt係数写像・パラメータ・実際の冪級数評価から証明済み。
+混標数の分離性は利用側で標数零から導く。
 基底の次元と、座標の像がパラメータ系になることも利用側で証明する。
 
 正則性・完備性・標準座標による極大イデアルの生成は、形式冪級数環の標準的な
-性質を合わせた形で引用している。このファイルはそれらの独立した形式化ではない。
+性質を合わせた形で等標数側の引用に含める。
+混標数側の公開型は互換入口として保持し、証明済みの構成を適用する。
 -/
 
 public section
@@ -54,12 +57,13 @@ theorem cohen_gabber_normalization
         ∀ i, e (t i) = MvPowerSeries.X i := by
   sorry
 
-/-- **引用：Cohen 正規化（混標数、完全剰余体の場合）。**
+/-- **証明済み：Cohen 正規化（混標数、完全剰余体の場合）。**
 Stacks Project, Lemma 10.160.11 の混標数分岐と Remark 10.160.9。
 https://stacks.math.columbia.edu/tag/0323
 完全剰余体の場合の Cohen 環を `W(k)` と同定し、`p` と残りの形式変数を座標とする形。
-この同定も引用に含む（対象論文 Lemma 2.2 の Cohen 構造定理の適用）。
-生成的分離性・次元の一致・`D` のパラメータ系は、この引用には含めない。 -/
+Witt係数写像と指定剰余体の両立、pを含むパラメータ、冪級数基底の構造、
+評価の有限性、次元一致による単射性を実構成して証明した。
+生成的分離性・`D` のパラメータ系への利用側の移送は別に証明する。 -/
 theorem cohen_normalization_mixedCharacteristic
     (D : Type u) [CommRing D] [IsLocalRing D] [IsNoetherianRing D] [IsDomain D]
     [CharZero D] [IsAdicComplete (maximalIdeal D) D]
@@ -73,6 +77,6 @@ theorem cohen_normalization_mixedCharacteristic
         (e : A ≃+* MvPowerSeries {i : Fin h // (i : ℕ) ≠ 0} (WittVector p (ResidueField D))),
         Ideal.span (Set.range t) = maximalIdeal A ∧ t ⟨0, hpos⟩ = (p : A) ∧
         ∀ (i : Fin h) (hi : (i : ℕ) ≠ 0), e (t i) = MvPowerSeries.X ⟨i, hi⟩ := by
-  sorry
+  exact SerrePositivity.exists_cohen_normalization_mixedCharacteristic D hdim hpos p
 
 end SerrePositivity.Inputs
