@@ -20,6 +20,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.Evaluation
 public import SerrePositivity.Spectra.SymmetricSpectrum.Limits
 public import SerrePositivity.Spectra.SymmetricSpectrum.FreeLevels
 public import SerrePositivity.Spectra.SymmetricSpectrum.FreeLevelInduction
+public import SerrePositivity.Spectra.SymmetricSpectrum.FreeLevelAction
 
 /-!
 # スペクトルの具体的基盤の入口
@@ -70,6 +71,8 @@ convolutionの乗法の可換性を証明し、球面対称列を可換モノイ
 生成元の関係式を満たす射の族からの延長と一意性を証明し、各段からの射とのHom同値を構成した。
 第二ブロックをnに固定した誘導図式の余極限と、自由スペクトルの各段との比較同型を構成した。
 各項はm−n次球面と入力のsmashであり、比較同型の両方向を生成元・標準包含と比較した。
+誘導表示上の出力の全単射と入力の射を余極限の普遍性から構成し、比較同型の自然性を証明した。
+出力の対称群作用と入力の同変射を関手へまとめ、自由スペクトルの作用付き各段との自然同型を構成した。
 
 ## 未構成の範囲
 
