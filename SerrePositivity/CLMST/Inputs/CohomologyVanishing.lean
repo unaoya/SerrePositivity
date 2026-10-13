@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CLMST.StageAlgebra
+public import SerrePositivity.CLMST.StageLocality
 public import SerrePositivity.CLMST.EtaleLocus
 public import SerrePositivity.HomologicalAlgebra.LocalCohomologyAction
 public import SerrePositivity.CommutativeAlgebra.Multiplicity
@@ -17,7 +17,7 @@ g を反転した有限エタール性を明示する。g の存在・選択は�
 局所コホモロジーは D 上の Mathlib の Ext 余極限の定義を使い、
 perfectoid ideal の各元による誘導乗法射が零と述べる。
 Mathlib に未実装の局所コホモロジーの線形性を使って加群作用を仮定しない。
-有限段の局所性を引用の結論とは混ぜず、その実際の局所環構造の下で述べる。
+有限段の局所性は構成から証明し、その局所環構造の下で述べる。
 
 出典：https://arxiv.org/html/2209.04046v4 （Notation 4.0.1, Corollary 4.0.4）。
 -/
@@ -51,8 +51,8 @@ theorem corollary_4_0_4
       (algebraMap A (CompletedTower A t p) g),
       HomologicalAlgebra.localCohomologyScalarEndomorphism (maximalIdeal D) i
         (RPerfd A D t p hperf) (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) a) = 0) ∧
-    (∀ (n : ℕ) (hlocal : IsLocalRing (StageAlgebra A D t p n)),
-      let _ := hlocal
+    (∀ n : ℕ,
+      let _ := stageAlgebra_isLocalRing_of_parameters A D t p hsop n
       ∀ (y : Fin h → StageAlgebra A D t p n),
         IsSystemOfParameters (StageAlgebra A D t p n) y → ∀ i : ℕ, 0 < i →
           let _ := Module.compHom

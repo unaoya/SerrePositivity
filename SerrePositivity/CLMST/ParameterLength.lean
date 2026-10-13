@@ -36,6 +36,34 @@ variable (A D : Type u) [CommRing A] [IsRegularLocalRing A]
 
 
 include hinj hres hdimA hdimD hpos ht hsop htp e he in
+/-- D のパラメータ系を任意の有限段へ移し、同じ商の長さをその段の重複度で評価する。
+有限段の局所性やパラメータの移送を利用者に仮定として要求しない。 -/
+theorem parameter_quotient_length_at_stage (n : ℕ)
+    (z : Fin h → D) (hz : IsSystemOfParameters D z) :
+    let _ := Module.compHom
+      ((RPerfd A D t p hperf) ⧸
+        Ideal.span (Set.range fun j ↦ algebraMap D (RPerfd A D t p hperf) (z j)))
+      (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))
+    (RootTowerLength.completedNormalizedLength A t p
+      (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i))).len
+      ((RPerfd A D t p hperf) ⧸
+        Ideal.span (Set.range fun j ↦ algebraMap D (RPerfd A D t p hperf) (z j))) =
+      ENNReal.ofReal
+        (HilbertSamuel.multiplicity (StageAlgebra A D t p n)
+          (Ideal.span (Set.range (algebraMap D (StageAlgebra A D t p n) ∘ z)))
+          (StageAlgebra A D t p n) : ℝ) / (stageRank h p n : ℝ≥0∞) := by
+  have hzN := isSystemOfParameters_stageAlgebra A D t p hsop n z hz
+  have hlen := Inputs.proposition_4_0_14 A D hinj hres t hdimA hdimD hpos ht hsop
+    p htp e he hperf n (algebraMap D _ ∘ z) hzN
+  have hseq : (fun j ↦ toRPerfd A D t p hperf n
+      ((algebraMap D (StageAlgebra A D t p n) ∘ z) j)) =
+      (fun j ↦ algebraMap D (RPerfd A D t p hperf) (z j)) := by
+    funext j
+    exact toRPerfd_algebraMap_D A D t p hperf n (z j)
+  rw [hseq] at hlen
+  exact hlen
+
+include hinj hres hdimA hdimD hpos ht hsop htp e he in
 /-- 一般段の公式を零段へ適用し、D のパラメータ商の長さを重複度に同定する。 -/
 theorem parameter_quotient_length
     (z : Fin h → D) (hz : IsSystemOfParameters D z) :
@@ -48,16 +76,8 @@ theorem parameter_quotient_length
       ((RPerfd A D t p hperf) ⧸
         Ideal.span (Set.range fun j ↦ algebraMap D (RPerfd A D t p hperf) (z j))) =
       ENNReal.ofReal (HilbertSamuel.multiplicity D (Ideal.span (Set.range z)) D : ℝ) := by
-  have hz0 := hz.map_finite (StageAlgebra A D t p 0)
-    (stage0_algebraMap_injective A D t p)
-  have hlen := Inputs.proposition_4_0_14 A D hinj hres t hdimA hdimD hpos ht hsop
-    p htp e he hperf 0 inferInstance (algebraMap D _ ∘ z) hz0
-  have hseq : (fun j ↦ toRPerfd A D t p hperf 0
-      ((algebraMap D (StageAlgebra A D t p 0) ∘ z) j)) =
-      (fun j ↦ algebraMap D (RPerfd A D t p hperf) (z j)) := by
-    funext j
-    exact toRPerfd_algebraMap_D A D t p hperf 0 (z j)
-  rw [hseq] at hlen
+  have hlen := parameter_quotient_length_at_stage A D hinj hres t hdimA hdimD hpos ht hsop
+    p htp e he hperf 0 z hz
   have hsymm : (⇑(stage0Equiv A D t p).symm.toRingEquiv : D → StageAlgebra A D t p 0) =
       algebraMap D (StageAlgebra A D t p 0) := by
     funext d

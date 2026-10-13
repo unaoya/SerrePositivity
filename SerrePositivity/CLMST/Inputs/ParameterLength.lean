@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CLMST.StageFiniteness
+public import SerrePositivity.CLMST.StageLocality
 public import SerrePositivity.LengthAlgebra.RootTowerLength.CompletedNormalized
 public import SerrePositivity.CommutativeAlgebra.HilbertSamuel
 public import Mathlib.RingTheory.WittVector.Basic
@@ -40,8 +40,8 @@ theorem proposition_4_0_14
     (e : A ≃+* MvPowerSeries {i : Fin h // (i : ℕ) ≠ 0} (WittVector p (ResidueField D)))
     (he : ∀ (i : Fin h) (hi : (i : ℕ) ≠ 0), e (t i) = MvPowerSeries.X ⟨i, hi⟩)
     (hperf : IsIntegralPerfectoid (CompletedTower A t p) p)
-    (n : ℕ) (hlocal : IsLocalRing (StageAlgebra A D t p n)) :
-    let _ := hlocal
+    (n : ℕ) :
+    let _ := stageAlgebra_isLocalRing_of_parameters A D t p hsop n
     ∀ (y : Fin h → StageAlgebra A D t p n),
       IsSystemOfParameters (StageAlgebra A D t p n) y →
       let _ := Module.compHom
