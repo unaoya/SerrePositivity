@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.Paper.Section2.CompletedTower
+public import SerrePositivity.CommutativeAlgebra.RootTower.Completion
 public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
 public import Mathlib.RingTheory.WittVector.Basic
 public import Mathlib.RingTheory.MvPowerSeries.Basic

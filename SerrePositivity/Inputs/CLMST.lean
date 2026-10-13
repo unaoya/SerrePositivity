@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.Paper.Section2.MixedPerfectoid
+public import SerrePositivity.Paper.Section2.CompletedTower
 public import SerrePositivity.Inputs.PerfectoidTower
 public import SerrePositivity.CLMST.NormalizedAlmostLength
 public import SerrePositivity.CLMST.CohomologyVanishing

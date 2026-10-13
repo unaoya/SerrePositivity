@@ -251,6 +251,50 @@ import 閉包に Paper 依存はない。主定理の未証明入力は13件（�
 原典の消滅・長さ比較や、Bhatt–Scholze の深い結果自身の証明は引き続き残る。
 次は perfectoid 化の存在入力の原典との対応と、導来圏の錐の制御の入力を整理する。
 
+### 続き：存在入力の原典単位への分離と実導来錐の制御
+
+Bhatt–Scholze の著者公開版を照合した。Theorem 1.17(1) は任意の整 R 代数 S の
+普遍 perfectoid 環の存在を直接述べる。Theorem 10.11 は整射の p 進完備化の
+prismatic perfection の離散性、Proposition 8.5 は派生的な構成の普遍性を述べる。
+有限表示性や有界 p∞ねじれを Theorem 1.17(1) の仮定へ追加しない。
+
+`BhattScholze/Inputs/Perfectoidization` に Theorem 1.17(1) の環としての普遍性を引用した。
+`BhattScholze/Perfectoidization` は有限代数の整性を供給し、旧存在入力へ適用する。
+`Inputs.exists_perfectoidization_of_finite` の直接の sorry は除き、
+有限表示の引数は既存利用先との互換性のため維持した。既存の選択の定義は変えない。
+`Inputs/PerfectoidTower` は原典の Example 2.4.2 の入力を保持し、
+依存を純粋な完備化の定義へ切り替えて Paper import を除いた。
+
+`PerfectoidizationCompletion` は任意の環から整 perfectoid 環への写像の
+古典 p 進完備化への一意延長を証明する。環準同型が p の冪を保存するので、
+連続性を未知の追加条件として受け取らない。零環も扱う。
+完備化と元の環の間で、同じ目標環を使って perfectoid 化の普遍性を両方向へ移せる。
+これから整代数の古典完備化の普遍 perfectoid 環の存在も導く。
+古典完備化と導来完備化の一致や prismatic perfection 本体を定義したとはしない。
+
+`DerivedModuleCone` は加群写像を零次数の複体に入れ、標準 mapping cone の導来像を構成する。
+完全三角形・スカラー自己射を実際の圏で定義し、導来射の零性から
+核・余核を同じ冪で零化することを証明した。始域で g が正則なら単射性も導く。
+`CLMST/PerfectoidizationCone` は選んだ標準 perfectoid 化への線形写像とこの錐を構成する。
+
+`CLMST/Inputs/PerfectoidIsogeny` は Prop 2.4.7 を、R perfectoid、J 有限生成、
+S 有限かつ有限表示、V(J) の外での有限エタール性、S の有界 p∞ねじれを明示して引用する。
+結論は各 g∈J に対する実際の D(R) のスカラー射の零性であり、
+ホモロジーの零化だけへ弱めない。単射性や p ねじれなしも引用の仮定に追加しない。
+`CLMST/PerfectoidIsogeny` は、原典入力から核・余核の消去と、正則性を別途確認した場合の
+単射性・余核の消去を証明して導く。
+
+検証：全体ビルド3937ジョブと両公理監査が成功。完備化との普遍性の移送、実導来錐と
+その核・余核への帰結は標準3公理のみ。新しい4入口の84モジュールの import 閉包に
+Paper 依存はない。主定理の未証明入力は13件のままで、旧有限存在の引用は
+`BhattScholze.Inputs.exists_perfectoidization_of_integral` に置き換わった。
+Prop 2.4.7 の新しい引用は主定理の依存先には入っていない。
+
+この新しい isogeny 入力は独立した後続 API で、まだ主定理の証明へ組み込んでいない。
+主定理では旧有限存在引用が整代数の原典入力へ置き換わり、未証明入力の件数は変わらない。
+次は混標数の具体的テンソル代数に対する p∞ねじれの有界性・g の正則性・エタール性の確認、
+Prop 4.0.14 の証明への利用、導来完備化関手や prismatic perfection の基礎を整理する。
+
 ## 1. 目的と二つの前提
 
 最終目標は、本論文の定理2.5（混標数の長さ代数の二つの長さの性質、
