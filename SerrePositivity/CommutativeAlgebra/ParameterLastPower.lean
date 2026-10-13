@@ -27,6 +27,22 @@ theorem radical_span_snoc_pow {r : ℕ} (y : Fin r → R) (a : R) (k : ℕ) (hk 
       rw [Ideal.radical_pow _ (Nat.ne_of_gt hk)]
     _ = _ := (Ideal.radical_sup _ _).symm
 
+/-- 最後の生成元を正の冪にしたイデアルは、元の生成イデアルに含まれる。
+パラメータ条件や局所性・Noether 性は不要。 -/
+theorem span_snoc_pow_le {D : Type u} [CommRing D] {e : ℕ}
+    (y : Fin e → D) (a : D) (k : ℕ) (hk : 0 < k) :
+    Ideal.span (Set.range (Fin.snoc y (a ^ k))) ≤ Ideal.span (Set.range (Fin.snoc y a)) := by
+  simp only [Fin.range_snoc, Ideal.span_insert]
+  rw [← Ideal.span_singleton_pow]
+  exact sup_le_sup (Ideal.pow_le_self (Nat.ne_of_gt hk)) le_rfl
+
+/-- 列の最後を正の冪にする操作は、その生成イデアルを小さくする。 -/
+theorem span_last_pow_le {D : Type u} [CommRing D] {e : ℕ}
+    (z : Fin (e + 1) → D) (k : ℕ) (hk : 0 < k) :
+    Ideal.span (Set.range (Fin.snoc (Fin.init z) (z (Fin.last e) ^ k))) ≤
+      Ideal.span (Set.range z) := by
+  simpa only [Fin.snoc_init_self] using span_snoc_pow_le (Fin.init z) (z (Fin.last e)) k hk
+
 /-- パラメータ系の最後だけを正の冪にしてもパラメータ系となる。 -/
 theorem IsSystemOfParameters.pow_last [IsLocalRing R] {r : ℕ} {y : Fin (r + 1) → R}
     (hy : IsSystemOfParameters R y) (k : ℕ) (hk : 0 < k) :
