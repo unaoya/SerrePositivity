@@ -509,3 +509,26 @@ G1による元のfの全射性の降下、引用なしの必要な根付き拡�
 最新検証：標準mod p比較まで対象ビルド・B4専用監査成功。
 全体4510ジョブ成功。新規2公開定理と既存APIの再検証は標準3公理のみ。
 プロジェクト内import閉包159件にInputs・CLMST・Paper・RootTowerなし。
+
+## B4-5：B3の普遍性の通常テンソルによる基底変更（2026-10-15）
+
+`PerfectoidizationBaseChange`で、f:S→ₐ[R]Cのperfectoid化と、
+F:C⊗[R]T→Eのperfectoid化から、具体的な合成
+F∘(f⊗id):S⊗[R]T→EのIsPerfectoidizationを証明。
+この形式的な普遍性の補題にはR,S,Tのperfectoid性や完備性を仮定しない。
+共通基底上での一致はfのAlgHom性と元の普遍性から証明した。
+新しいperfectoid化の定義や一意性の重複実装はない。
+
+`exists_perfectoidizationTensorBaseChange`では、任意perfectoid基底R、
+任意perfectoid R-代数Tと任意のf:S→ₐ[R]CのIsPerfectoidizationを入力し、
+具体的E・環構造・F・IsPerfectoidization p F・標準mod p全単射性・
+上記合成射のIsPerfectoidizationを同時に結論する。
+有限性・p正則性・非零性は不要。S自体の完備性もこの定理に仮定しない。
+3公開宣言の対象ビルドとB4専用監査を行う。
+残件は全射商の通常底変換と根付き商の全射性の接続、G1の剰余テンソル図式、
+引用なしの必要な根付き拡大。一般B4の全射性・B-S引用解消は未完了。
+
+基底変更までの最新検証：対象3235ジョブ、B4専用全公開宣言監査、
+全体4512ジョブ成功。新定理は標準3公理のみでsorry依存なし。
+新規モジュールのプロジェクト内import閉包160件に
+Inputs・CLMST・Paper・RootTowerなし。
