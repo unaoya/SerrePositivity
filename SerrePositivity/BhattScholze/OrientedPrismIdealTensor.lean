@@ -3,7 +3,7 @@ module
 public import SerrePositivity.BhattScholze.OrientedPrismHomRigidity
 public import Mathlib.LinearAlgebra.TensorProduct.Lift
 
-/-! # 完全oriented prism射のイデアルのテンソル基底変換
+/-! # oriented prism射のイデアルのテンソル基底変換
 
 著者公開版Lemma 3.5の主イデアルの場合。標準的なB⊗A Iの順序で
 自然な乗法写像を構成し、それがB線形同型であると証明する。
@@ -55,12 +55,10 @@ def idealTensorMap (f : Hom P Q) (hf : f.toRingHom = algebraMap A B) :
     (b : B) (x : P.ideal) :
     (f.idealTensorMap hf (b ⊗ₜ[A] x) : B) = b * f.toRingHom x := rfl
 
-/-- 完全oriented prism間の標準イデアル基底変換写像は全単射。
-正則生成元による自明化と、生成元の像の一意な単元係数から証明する。 -/
-theorem idealTensorMap_bijective (f : Hom P Q) (hf : f.toRingHom = algebraMap A B)
-    (hP : P.deltaStructure.IsPerfect) (hQ : Q.deltaStructure.IsPerfect) :
+/-- 生成元像の単元係数から標準イデアル基底変換写像の全単射性を得る。 -/
+theorem idealTensorMap_bijective_of_generator_unit (f : Hom P Q) (hf : f.toRingHom = algebraMap A B)
+    (u : Bˣ) (hu : f.toRingHom P.generator = Q.generator * u) :
     Function.Bijective (f.idealTensorMap hf) := by
-  obtain ⟨u, hu, _⟩ := f.existsUnique_generator_unit hP hQ
   let e₁ := (P.generatorLinearEquiv.symm.baseChange A B P.ideal A).trans
     (TensorProduct.AlgebraTensorModule.rid A B B)
   let e₂ := (LinearEquiv.smulOfUnit u : B ≃ₗ[B] B).trans Q.generatorLinearEquiv
@@ -80,6 +78,32 @@ theorem idealTensorMap_bijective (f : Hom P Q) (hf : f.toRingHom = algebraMap A 
     ring
   rw [he]
   exact (e₁.trans e₂).bijective
+
+/-- 完全oriented prism間の標準イデアル基底変換写像は全単射。 -/
+theorem idealTensorMap_bijective (f : Hom P Q) (hf : f.toRingHom = algebraMap A B)
+    (hP : P.deltaStructure.IsPerfect) (hQ : Q.deltaStructure.IsPerfect) :
+    Function.Bijective (f.idealTensorMap hf) := by
+  obtain ⟨u, hu, _⟩ := f.existsUnique_generator_unit hP hQ
+  exact f.idealTensorMap_bijective_of_generator_unit hf u hu
+
+/-- p正則なoriented prism間でも標準イデアル基底変換写像は全単射。
+源・終域のFrobeniusの全単射性は要求しない。 -/
+theorem idealTensorMap_bijective_of_p_regular (f : Hom P Q)
+    (hf : f.toRingHom = algebraMap A B)
+    (hP : Function.Injective (fun x : A ↦ (p : A) * x))
+    (hQ : Function.Injective (fun x : B ↦ (p : B) * x)) :
+    Function.Bijective (f.idealTensorMap hf) := by
+  obtain ⟨u, hu, _⟩ := f.existsUnique_generator_unit_of_p_regular hP hQ
+  exact f.idealTensorMap_bijective_of_generator_unit hf u hu
+
+/-- p正則なoriented prism間の標準テンソル写像を台写像とするB線形同型が存在する。 -/
+theorem exists_idealTensorEquiv_of_p_regular (f : Hom P Q)
+    (hf : f.toRingHom = algebraMap A B)
+    (hP : Function.Injective (fun x : A ↦ (p : A) * x))
+    (hQ : Function.Injective (fun x : B ↦ (p : B) * x)) :
+    ∃ e : B ⊗[A] P.ideal ≃ₗ[B] Q.ideal, e.toLinearMap = f.idealTensorMap hf :=
+  ⟨LinearEquiv.ofBijective (f.idealTensorMap hf)
+    (f.idealTensorMap_bijective_of_p_regular hf hP hQ), rfl⟩
 
 /-- 標準イデアル基底変換写像そのものを台写像とする具体的なB線形同型。 -/
 def idealTensorEquiv (f : Hom P Q) (hf : f.toRingHom = algebraMap A B)

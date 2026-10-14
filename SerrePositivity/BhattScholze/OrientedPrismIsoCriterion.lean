@@ -4,11 +4,11 @@ public import SerrePositivity.BhattScholze.OrientedPrismHomRigidity
 public import SerrePositivity.BhattScholze.PerfectDeltaFrobenius
 public import Mathlib.RingTheory.AdicCompletion.Functoriality
 
-/-! # 完全oriented prismの商による同型判定
+/-! # oriented prismの商による同型判定
 
 著者公開版Theorem 3.10の最後のd進完備な環の比較に使う。
 既存の完備性による全射判定を使い、核の元の反復除算とd進分離性で単射性を証明する。
-perfectoid/prism比較射の存在はこの定理の対象外。
+p正則なprismへの適用も公開する。perfectoid/prism比較射の存在はこの定理の対象外。
 -/
 
 @[expose] public noncomputable section
@@ -20,18 +20,13 @@ variable {P : OrientedPrism p A} {Q : OrientedPrism p B}
 /-- 完全oriented prism射の生成元の像は非零因子。 -/
 theorem map_generator_mul_injective (f : Hom P Q)
     (hP : P.deltaStructure.IsPerfect) (hQ : Q.deltaStructure.IsPerfect) :
-    Function.Injective (fun x : B ↦ f.toRingHom P.generator * x) := by
-  obtain ⟨u, hu, _⟩ := f.existsUnique_generator_unit hP hQ
-  intro x y hxy
-  change f.toRingHom P.generator * x = f.toRingHom P.generator * y at hxy
-  rw [hu, mul_assoc, mul_assoc] at hxy
-  have h := Q.generator_regular hxy
-  exact (IsUnit.isUnit_iff_mulLeft_bijective.mp u.isUnit).1 h
+    Function.Injective (fun x : B ↦ f.toRingHom P.generator * x) :=
+  f.map_generator_mul_injective_of_p_regular hP.p_mul_injective hQ.p_mul_injective
 
 /-- 商射が単射なら台環射も単射。
 核の元を生成元で繰り返し割り、d進分離性で零と判定する。 -/
-theorem injective_of_quotientMap_injective (f : Hom P Q)
-    (hP : P.deltaStructure.IsPerfect) (hQ : Q.deltaStructure.IsPerfect)
+theorem injective_of_quotientMap_injective_of_generator_regular (f : Hom P Q)
+    (hgen : Function.Injective (fun x : B ↦ f.toRingHom P.generator * x))
     (hf : Function.Injective f.quotientMap) : Function.Injective f.toRingHom := by
   have hfirst (x : A) (hx : f.toRingHom x = 0) : x ∈ P.ideal := by
     apply Ideal.Quotient.eq_zero_iff_mem.mp
@@ -43,7 +38,7 @@ theorem injective_of_quotientMap_injective (f : Hom P Q)
     | succ n ih =>
       obtain ⟨y, hy⟩ := Ideal.mem_span_singleton.mp (hfirst x hx)
       have hyker : f.toRingHom y = 0 := by
-        apply f.map_generator_mul_injective hP hQ
+        apply hgen
         change f.toRingHom P.generator * f.toRingHom y = f.toRingHom P.generator * 0
         rw [mul_zero, ← map_mul, ← hy, hx]
       rw [hy, pow_succ']
@@ -56,20 +51,61 @@ theorem injective_of_quotientMap_injective (f : Hom P Q)
   apply SModEq.sub_mem.mpr
   simpa only [sub_zero, smul_eq_mul, Ideal.mul_top] using hpow n x hx
 
+/-- 完全prismの商射が単射なら台環射も単射。既存公開入口を保持する。 -/
+theorem injective_of_quotientMap_injective (f : Hom P Q)
+    (hP : P.deltaStructure.IsPerfect) (hQ : Q.deltaStructure.IsPerfect)
+    (hf : Function.Injective f.quotientMap) : Function.Injective f.toRingHom :=
+  f.injective_of_quotientMap_injective_of_generator_regular
+    (f.map_generator_mul_injective hP hQ) hf
+
+/-- p正則なoriented prismの商射が単射なら、台環射も単射。 -/
+theorem injective_of_quotientMap_injective_of_p_regular (f : Hom P Q)
+    (hP : Function.Injective (fun x : A ↦ (p : A) * x))
+    (hQ : Function.Injective (fun x : B ↦ (p : B) * x))
+    (hf : Function.Injective f.quotientMap) : Function.Injective f.toRingHom :=
+  f.injective_of_quotientMap_injective_of_generator_regular
+    (f.map_generator_mul_injective_of_p_regular hP hQ) hf
+
 /-- 商射が全射なら台環射も全射。
 既存の主イデアル進完備性による全射判定にイデアル像の一致を供給する。 -/
-theorem surjective_of_quotientMap_surjective (f : Hom P Q)
-    (hP : P.deltaStructure.IsPerfect) (hQ : Q.deltaStructure.IsPerfect)
+theorem surjective_of_quotientMap_surjective_of_map_ideal_eq (f : Hom P Q)
+    (heq : P.ideal.map f.toRingHom = Q.ideal)
     (hf : Function.Surjective f.quotientMap) : Function.Surjective f.toRingHom := by
   let : IsAdicComplete P.ideal A := P.isAdicComplete_generator
   let : IsAdicComplete Q.ideal B := Q.isAdicComplete_generator
-  have heq := f.map_ideal_eq_of_perfect hP hQ
   let : IsHausdorff (P.ideal.map f.toRingHom) B := by
     rw [heq]
     infer_instance
   apply surjective_of_mk_map_comp_surjective (I := P.ideal) f.toRingHom
   rw [heq, ← f.quotientMap_comp_mk]
   exact hf.comp Ideal.Quotient.mk_surjective
+
+/-- 完全prismの商射が全射なら台環射も全射。既存公開入口を保持する。 -/
+theorem surjective_of_quotientMap_surjective (f : Hom P Q)
+    (hP : P.deltaStructure.IsPerfect) (hQ : Q.deltaStructure.IsPerfect)
+    (hf : Function.Surjective f.quotientMap) : Function.Surjective f.toRingHom :=
+  f.surjective_of_quotientMap_surjective_of_map_ideal_eq (f.map_ideal_eq_of_perfect hP hQ) hf
+
+/-- p正則なoriented prismの商射が全射なら、台環射も全射。 -/
+theorem surjective_of_quotientMap_surjective_of_p_regular (f : Hom P Q)
+    (hP : Function.Injective (fun x : A ↦ (p : A) * x))
+    (hQ : Function.Injective (fun x : B ↦ (p : B) * x))
+    (hf : Function.Surjective f.quotientMap) : Function.Surjective f.toRingHom :=
+  f.surjective_of_quotientMap_surjective_of_map_ideal_eq (f.map_ideal_eq_of_p_regular hP hQ) hf
+
+/-- p正則なoriented prism射は、標準商射が全単射であることと同値に全単射。
+完全性を仮定せず、p正則性と実導来完備性の共通比較を使う。 -/
+theorem bijective_iff_quotientMap_bijective_of_p_regular (f : Hom P Q)
+    (hP : Function.Injective (fun x : A ↦ (p : A) * x))
+    (hQ : Function.Injective (fun x : B ↦ (p : B) * x)) :
+    Function.Bijective f.toRingHom ↔ Function.Bijective f.quotientMap := by
+  constructor
+  · intro hf
+    exact (Ideal.quotientEquiv P.ideal Q.ideal (RingEquiv.ofBijective f.toRingHom hf)
+      (f.map_ideal_eq_of_p_regular hP hQ).symm).bijective
+  · intro hf
+    exact ⟨f.injective_of_quotientMap_injective_of_p_regular hP hQ hf.1,
+      f.surjective_of_quotientMap_surjective_of_p_regular hP hQ hf.2⟩
 
 /-- 完全oriented prism射は、標準商射が全単射であることと同値に全単射。 -/
 theorem bijective_iff_quotientMap_bijective (f : Hom P Q)

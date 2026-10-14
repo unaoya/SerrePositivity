@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.OrientedPrismHom
+public import SerrePositivity.BhattScholze.OrientedPrismRegularRigidity
 
 /-! # 完全oriented prism射の生成元と商同型
 
@@ -17,25 +17,8 @@ variable {P : OrientedPrism p A} {Q : OrientedPrism p B}
 /-- 完全oriented prism射は、源の生成元を終域の生成元の一意な単元倍へ送る。 -/
 theorem existsUnique_generator_unit (f : Hom P Q)
     (hP : P.deltaStructure.IsPerfect) (hQ : Q.deltaStructure.IsPerfect) :
-    ∃! u : Bˣ, f.toRingHom P.generator = Q.generator * u := by
-  obtain ⟨r, hr⟩ := Ideal.mem_span_singleton.mp f.map_generator_mem
-  have hdist := f.map_delta.map_isDistinguished (P.isDistinguished_of_perfect hP)
-  rw [hr] at hdist
-  let := Q.isAdicComplete_generator
-  let := Q.isAdicComplete_p_of_perfect hQ
-  have hru : IsUnit r :=
-    (Q.deltaStructure.isDistinguished_factor Q.generator r hdist
-      (IsAdicComplete.le_jacobson_bot (Ideal.span {Q.generator})
-        (Ideal.subset_span (by simp)))
-      (IsAdicComplete.le_jacobson_bot (Ideal.span {(p : B)})
-        (Ideal.subset_span (by simp)))).2
-  obtain ⟨u, hu⟩ := hru
-  refine ⟨u, by simpa only [hu] using hr, ?_⟩
-  intro v hv
-  apply Units.ext
-  apply Q.generator_regular
-  change Q.generator * (v : B) = Q.generator * (u : B)
-  exact hv.symm.trans (by simpa only [hu] using hr)
+    ∃! u : Bˣ, f.toRingHom P.generator = Q.generator * u :=
+  f.existsUnique_generator_unit_of_p_regular hP.p_mul_injective hQ.p_mul_injective
 
 /-- 台環射が全単射の完全oriented prism射は、具体的な標準商同型を与える。 -/
 def quotientEquiv (f : Hom P Q) (hP : P.deltaStructure.IsPerfect)
