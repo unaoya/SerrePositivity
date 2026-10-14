@@ -3322,6 +3322,16 @@ K₀ の類への移送と重みつき乗法性は次の小段。
   公理は標準三公理のみ。ルート公開は統合段。
 - S10.8b.1 の自然性は受入完了。台拡大・単位、Koszul 正規化、族、S10.9、S11 は後続段。
 
+### S10.8b.2a：台拡大との可換性
+
+- `Adams/CubicSupportNaturality.tensorCubeClass_enlarge` は同じ複体と射影像の
+  台だけを拡大し、係数つき類の等式を証明する。
+- `cyclicThreeValue_enlarge`、`cyclicThree_enlarge` は K₀ の外延性と係数テンソルの
+  帰納法を使い、任意の Z≤W と任意の係数つき類で台拡大との可換性を証明する。
+- `lake build SerrePositivity.KTheory.Adams.CubicSupportNaturality` が成功（3275 jobs）。
+  `lake env lean scripts/audit_adams_cubic_support.lean` の三定理の監査が成功。
+  公理は標準三公理のみ。単位と Koszul 正規化・族・S10.9・S11 は未完了。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
