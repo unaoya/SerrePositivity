@@ -1,4 +1,4 @@
-import SerrePositivity.KTheory.Adams.TensorCubeHighMixedSections
+import SerrePositivity.KTheory.Adams.TensorCubeHighMixedEpi
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixedSplitting_f_g
@@ -66,3 +66,30 @@ assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixedSection2X_component1
 
 assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixedSection2X_component2
 #print axioms SerrePositivity.Adams.tensorCubeHighMixedSection2X_component2
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixedProjection0X
+#print axioms SerrePositivity.Adams.tensorCubeHighMixedProjection0X
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixedProjection1X
+#print axioms SerrePositivity.Adams.tensorCubeHighMixedProjection1X
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixedProjection2X
+#print axioms SerrePositivity.Adams.tensorCubeHighMixedProjection2X
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixedMap_projection0X
+#print axioms SerrePositivity.Adams.tensorCubeHighMixedMap_projection0X
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixedMap_projection1X
+#print axioms SerrePositivity.Adams.tensorCubeHighMixedMap_projection1X
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixedMap_projection2X
+#print axioms SerrePositivity.Adams.tensorCubeHighMixedMap_projection2X
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixedSectionX
+#print axioms SerrePositivity.Adams.tensorCubeHighMixedSectionX
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixedSectionX_section
+#print axioms SerrePositivity.Adams.tensorCubeHighMixedSectionX_section
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixedMap_epi
+#print axioms SerrePositivity.Adams.tensorCubeHighMixedMap_epi
