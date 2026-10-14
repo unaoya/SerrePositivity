@@ -28,6 +28,7 @@ run_cmd do
       `SerrePositivity.Spectra.General.Limits,
       `SerrePositivity.Spectra.General.TensorClosed,
       `SerrePositivity.Spectra.General.PointwiseTensor,
+      `SerrePositivity.Spectra.General.PointwiseTensorCoherence,
       `SerrePositivity.Spectra.General.Cotensor,
       `SerrePositivity.Spectra.General.MappingObject,
       `SerrePositivity.Spectra.General.SimplicialComparison] do

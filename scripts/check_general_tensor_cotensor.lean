@@ -47,6 +47,19 @@ example (X : C) (E : GeneralSymmetricSpectrum C K) :
       (pointwiseTensorCotensorAdjunction X).counit.app ((pointwiseTensorFunctor X).obj E) =
         𝟙 _ := tensorCotensor_triangle X E
 
+example {X Y : C} (f : X ⟶ Y) (E : GeneralSymmetricSpectrum C K) (n : ℕ) :
+    (pointwiseTensorPost f E).hom.app (FiniteBijection.of n) = f ▷ level E n :=
+  pointwiseTensorPost_level f E n
+
+example (X Y Z : C) (E : GeneralSymmetricSpectrum C K) :
+    pointwiseTensorPentagonLaw X Y Z E := pointwiseTensor_pentagon X Y Z E
+
+example (X : C) (E : GeneralSymmetricSpectrum C K) :
+    pointwiseTensorTriangleLaw X E := pointwiseTensor_triangle X E
+
+example (X : C) (E : GeneralSymmetricSpectrum C K) :
+    pointwiseTensorLeftUnitLaw X E := pointwiseTensor_left_unit X E
+
 open Lean in
 run_cmd do
   let env ← getEnv
