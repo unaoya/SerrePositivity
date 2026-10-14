@@ -3,6 +3,7 @@ import SerrePositivity.HomologicalAlgebra.DerivedTensorBaseChange
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletionNaturality
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ConstantTower
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.LocalizationResolution
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.LocalizationHomCoordinates
 import Mathlib.Util.AssertNoSorry
 
 -- G2-1: every explicit public declaration, including the maps and natural comparisons.
@@ -222,3 +223,22 @@ example (R : Type) [CommRing R] (a : R) :
 
 #print axioms SerrePositivity.DerivedCompletion.localizationResolutionHomologyEquiv
 #print axioms SerrePositivity.DerivedCompletion.isComplete_iff_localizationResolutionHom_acyclic
+
+-- Coordinates of the telescope Hom complex, including the signed differential.
+assert_no_sorry SerrePositivity.mappingConeSourceCochainEquiv
+assert_no_sorry SerrePositivity.mappingConeSourceCochainEquiv_symm_apply
+assert_no_sorry SerrePositivity.mappingConeSourceCochainEquiv_symm_δ
+assert_no_sorry SerrePositivity.DerivedCompletion.localizationFreeCochainEquiv
+assert_no_sorry SerrePositivity.DerivedCompletion.localizationFreeCochainEquiv_fromSingleMk
+assert_no_sorry SerrePositivity.DerivedCompletion.localizationFreeCochainEquiv_δ
+assert_no_sorry SerrePositivity.DerivedCompletion.localizationFreeCochainEquiv_precomp
+assert_no_sorry SerrePositivity.DerivedCompletion.localizationResolutionCochainEquiv
+assert_no_sorry SerrePositivity.DerivedCompletion.localizationResolutionCochainEquiv_symm_apply
+assert_no_sorry SerrePositivity.DerivedCompletion.localizationResolutionCochainEquiv_symm_δ
+
+example (R : Type) [CommRing R] (a : R) (K : CochainComplex (ModuleCat R) ℤ) :
+    CochainComplex.HomComplex.Cochain (localizationResolutionComplex R a) K 0 ≃ₗ[R]
+      (ℕ → K.X (-1)) × (ℕ → K.X 0) :=
+  localizationResolutionCochainEquiv R a K (-1) 0 (by norm_num)
+
+#print axioms SerrePositivity.DerivedCompletion.localizationResolutionCochainEquiv_symm_δ
