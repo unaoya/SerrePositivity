@@ -126,7 +126,8 @@ lemma restrictedDerivedQuotientKoszulIso_naturality (a : R) (ha : IsSMulRegular 
     (boundedAboveDerivedBaseChangeTensorIso_naturality (Ideal.Quotient.mk (Ideal.span {a})) f)
   simp only [ObjectProperty.FullSubcategory.comp_hom] at hn
   simp only [restrictedDerivedQuotientKoszulIso, Iso.trans_hom, Functor.mapIso_hom]
-  change _ ≫ (boundedAboveDerivedBaseChangeTensorIso (Ideal.Quotient.mk (Ideal.span {a})) Y).hom.hom ≫
+  change _ ≫
+      (boundedAboveDerivedBaseChangeTensorIso (Ideal.Quotient.mk (Ideal.span {a})) Y).hom.hom ≫
       (boundedAboveDerivedTensorQuotientKoszulIso a ha Y).hom = _
   rw [← Category.assoc, hn, Category.assoc, boundedAboveDerivedTensorQuotientKoszulIso_naturality]
   simp only [Category.assoc]

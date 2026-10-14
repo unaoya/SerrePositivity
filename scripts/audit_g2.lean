@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionQuotient
 import SerrePositivity.HomologicalAlgebra.DerivedQuotientKoszul
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedKoszulReduction
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ScalarTowerInversion
@@ -712,3 +713,47 @@ assert_no_sorry SerrePositivity.restrictedDerivedQuotientKoszulIso_naturality
 assert_no_sorry SerrePositivity.restrictedDerivedQuotientKoszulNatIso
 
 #print axioms SerrePositivity.restrictedDerivedQuotientKoszulNatIso
+
+-- G2-4: canonical completion quotient comparison and completed tensor base change.
+assert_no_sorry SerrePositivity.derivedRestrictScalars_reflectsIsomorphisms
+assert_no_sorry SerrePositivity.boundedAboveDerivedRestrictScalars_reflectsIsomorphisms
+assert_no_sorry SerrePositivity.DerivedCompletion.complexTowerProduct_isStrictlyLE
+assert_no_sorry SerrePositivity.DerivedCompletion.complexTowerHomotopyLimit_isStrictlyLE
+assert_no_sorry SerrePositivity.DerivedCompletion.complexCompletion_isStrictlyLE
+assert_no_sorry SerrePositivity.DerivedCompletion.derivedComplexCompletionFunctor_isBoundedAbove
+assert_no_sorry SerrePositivity.DerivedCompletion.boundedAboveDerivedCompletionFunctor
+assert_no_sorry SerrePositivity.DerivedCompletion.boundedAboveDerivedCompletionInclusionIso
+assert_no_sorry SerrePositivity.DerivedCompletion.boundedAboveDerivedCompletionUnit
+assert_no_sorry SerrePositivity.DerivedCompletion.boundedAboveDerivedCompletion_quotient_unit_isIso
+assert_no_sorry SerrePositivity.DerivedCompletion.boundedAboveDerivedCompletionQuotientIso
+assert_no_sorry SerrePositivity.DerivedCompletion.boundedAboveDerivedCompletionQuotientIso_naturality
+assert_no_sorry SerrePositivity.DerivedCompletion.boundedAboveDerivedCompletionQuotientNatIso
+assert_no_sorry SerrePositivity.DerivedCompletion.boundedAboveDerivedCompletedTensorBaseChangeNatIso
+assert_no_sorry SerrePositivity.DerivedCompletion.boundedAboveDerivedCompletedTensorQuotientAlgebraIso
+assert_no_sorry SerrePositivity.DerivedCompletion.completedModuleTensorRealizationIso
+assert_no_sorry SerrePositivity.DerivedCompletion.completedModuleTensorRealizationIso_unit
+assert_no_sorry SerrePositivity.DerivedCompletion.boundedAboveDerivedCompletedTensorQuotientAlgebraIso_naturality
+
+#print axioms SerrePositivity.DerivedCompletion.boundedAboveDerivedCompletionQuotientNatIso
+#print axioms SerrePositivity.DerivedCompletion.boundedAboveDerivedCompletedTensorQuotientAlgebraIso_naturality
+
+-- The BS mod-p functor signature: no flatness or Tor assumptions for derived factors.
+section
+open CategoryTheory SerrePositivity SerrePositivity.DerivedCompletion
+attribute [local instance] HasDerivedCategory.standard
+universe u
+variable {R : Type u} [CommRing R]
+example (p : ℕ) (hp : IsSMulRegular R (p : R)) :
+    boundedAboveDerivedTensor ⋙ boundedAboveDerivedCompletionFunctor R (p : R) ⋙
+        boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {(p : R)})) ≅
+      ((boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {(p : R)}))).prod
+        (boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {(p : R)})))) ⋙
+          boundedAboveDerivedTensor := by
+  let B := fun b : R => boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {b}))
+  let F := fun b : R =>
+    boundedAboveDerivedTensor ⋙ boundedAboveDerivedCompletionFunctor R (p : R) ⋙ B b ≅
+      ((B b).prod (B b)) ⋙ boundedAboveDerivedTensor
+  have h : F ((p : R) ^ 1) :=
+    boundedAboveDerivedCompletedTensorBaseChangeNatIso R (p : R) hp 1
+  exact (congrArg F (_root_.pow_one (p : R))).mp h
+end
