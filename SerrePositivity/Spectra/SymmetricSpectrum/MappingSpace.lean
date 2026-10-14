@@ -5,6 +5,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomFunctor
 public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorCurryNaturality
 public import Mathlib.CategoryTheory.Whiskering
 public import SerrePositivity.CategoryTheory.AdjunctionHomLaws
+public import SerrePositivity.CategoryTheory.Monoidal.MappingAdjunction
 
 /-! # 基点付き写像対象と各段のsmashの表現性 -/
 
@@ -61,9 +62,8 @@ lemma mappingTensorFunctor_map {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y)
 /-- 各段のsmashと基点付き写像対象の随伴。 -/
 def pointedMappingSpaceAdjunction (E : SymmetricSpectrum.{u}) :
     mappingTensorFunctor E ⊣ pointedMappingSpaceFunctor E :=
-  ((freeAtAdjunction 0).comp
-    ((sphereTensorInternalHomAdjunction E).ofNatIsoLeft
-      (BraidedCategory.tensorLeftIsoTensorRight E))).ofNatIsoLeft (mappingTensorNatIso E)
+  (MonoidalMappingAdjunction.adjunction (freeAtAdjunction 0) E).ofNatIsoLeft
+    (mappingTensorNatIso E)
 
 /-- 各段のsmashからの射と写像対象への基点付き射の自然なHom同値。 -/
 def pointedMappingSpaceHomEquiv (X : PointedSimplicialSet.{u}) (E F : SymmetricSpectrum.{u}) :

@@ -64,6 +64,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorAssociato
 public import SerrePositivity.Spectra.SymmetricSpectrum.SuspensionLoop
 public import SerrePositivity.Spectra.SymmetricSpectrum.AdjointStructureMaps
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpace
+public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceNaturality
 public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorMapLevels
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomUnderlying
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeLeft
@@ -268,6 +269,8 @@ F_0 S^0と球面スペクトルの比較を構成し、各段のsmashによる�
 内部Homスペクトルの第0段を基点付き写像対象とし、各段のsmashのパラメータ関手との随伴を構成した。
 写像対象の両変数関手、評価・転置・逆転置、パラメータと値域に関する自然性の法則を公開した。
 写像対象の合成・単位と豊穣構造は引き続き構成する。
+
+写像対象への転置と逆転置の原変数スペクトルの射に関する自然性も証明した。
 
 ## 未構成の範囲
 

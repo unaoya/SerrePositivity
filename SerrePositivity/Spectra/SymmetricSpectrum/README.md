@@ -4,6 +4,7 @@ Mathlibの `CategoryTheory.Mod` を、構成済みの球面対称列へ適用す
 基礎圏は基点付き単体的集合の対称列、テンソル積は登録済みのconvolutionである。
 各段の対象は基点付き単体的集合であり、球面の作用から和次数への構造射を得る。
 
+- [MappingSpaceNaturality](MappingSpaceNaturality.lean)：原変数スペクトルの射による写像対象の前合成と、転置・逆転置の原変数の自然性の法則。
 - [MappingSpace](MappingSpace.lean)：内部Homの第0段の基点付き写像対象、二変数関手、各段のsmashとの随伴・表現性と評価・転置・逆転置の法則。
 - [AdjointStructureMaps](AdjointStructureMaps.lean)：懸垂構造射の各段の通常のループへの随伴表示、逆転置による既存の構造射との一致と自然性。
 - [SuspensionLoop](SuspensionLoop.lean)：円による懸垂・ループの関手、随伴・自然なHom同値、単位・余単位・triangle則と各段の対象の公式。
