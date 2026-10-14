@@ -1,4 +1,4 @@
-import SerrePositivity.PerfectComplex.TensorSixShuffle
+import SerrePositivity.PerfectComplex.TensorSixHomogeneous
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.cochainTensorSixShuffle
@@ -15,3 +15,15 @@ assert_no_sorry SerrePositivity.cochainTensorSixShuffle_hom_apply_ι
 
 assert_no_sorry SerrePositivity.cochainTensorSixShuffle_rotation_sign
 #print axioms SerrePositivity.cochainTensorSixShuffle_rotation_sign
+
+assert_no_sorry SerrePositivity.cochainTensorX_whiskerRight_twice_hom_ext
+#print axioms SerrePositivity.cochainTensorX_whiskerRight_twice_hom_ext
+
+assert_no_sorry SerrePositivity.cochainTensorX_whiskerLeft_right_hom_ext
+#print axioms SerrePositivity.cochainTensorX_whiskerLeft_right_hom_ext
+
+assert_no_sorry SerrePositivity.cochainTensorSix_hom_ext
+#print axioms SerrePositivity.cochainTensorSix_hom_ext
+
+assert_no_sorry SerrePositivity.tensorProductSix_ext_pairs
+#print axioms SerrePositivity.tensorProductSix_ext_pairs
