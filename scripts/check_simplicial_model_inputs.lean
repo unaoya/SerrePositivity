@@ -41,6 +41,13 @@ example : MorphismProperty.IsWeakFactorizationSystem
     (cofibrations PointedSimplicialSet.{u}) pointedI.rlp := pointedI_weakFactorizationSystem
 example : (cofibrations PointedSimplicialSet.{u}).HasFunctorialFactorization pointedI.rlp :=
   pointedI_functorialFactorization
+example : pointedJ.{u}.rlp.llp =
+    SSet.anodyneExtensions.inverseImage PointedSimplicialSet.forget := pointedJ_leftClass
+example : MorphismProperty.IsWeakFactorizationSystem
+    (SSet.anodyneExtensions.inverseImage PointedSimplicialSet.forget.{u})
+    (fibrations PointedSimplicialSet.{u}) := pointedJ_weakFactorizationSystem
+example : (SSet.anodyneExtensions.inverseImage PointedSimplicialSet.forget.{u}).HasFunctorialFactorization
+    (fibrations PointedSimplicialSet.{u}) := pointedJ_functorialFactorization
 
 open Lean in
 run_cmd do

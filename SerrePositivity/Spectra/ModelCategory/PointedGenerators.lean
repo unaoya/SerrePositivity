@@ -136,4 +136,36 @@ lemma pointedI_functorialFactorization :
   rw [← pointedI_leftClass]
   infer_instance
 
+/-- Pointed horn generation detects anodyne underlying maps. This does not
+identify them with trivial cofibrations until the weak-equivalence input is supplied. -/
+lemma pointedJ_leftClass : pointedJ.{u}.rlp.llp =
+    SSet.anodyneExtensions.inverseImage PointedSimplicialSet.forget := by
+  rw [pointedGenerators_rlp]
+  change (J.{u}.rlp.under (X := 𝟙_ SSet.{u})).llp =
+    J.{u}.rlp.llp.under
+  have hret : (J.{u}.rlp.llp.under (X := 𝟙_ SSet.{u})).IsStableUnderRetracts := by
+    rw [MorphismProperty.under_eq_inverseImage]
+    infer_instance
+  let : (J.{u}.rlp.llp.under (X := 𝟙_ SSet.{u})).IsStableUnderRetracts := hret
+  apply MorphismProperty.llp_eq_of_le_llp_of_hasFactorization_of_isStableUnderRetracts
+  intro A B i hi X Y p hp
+  let : HasLiftingProperty i.right p.right := hi _ hp
+  exact HasLiftingProperty.under i p
+
+/-- The pointed anodyne/Kan-fibration pair is a concrete weak factorization system. -/
+lemma pointedJ_weakFactorizationSystem :
+    MorphismProperty.IsWeakFactorizationSystem
+      (SSet.anodyneExtensions.inverseImage PointedSimplicialSet.forget.{u})
+      (fibrations PointedSimplicialSet.{u}) := by
+  let : pointedJ.{u}.HasSmallObjectArgument.{u} := pointedJ_smallObjectArgument
+  rw [← pointedJ_leftClass, ← pointedJ_rlp]
+  infer_instance
+
+lemma pointedJ_functorialFactorization :
+    (SSet.anodyneExtensions.inverseImage PointedSimplicialSet.forget.{u}).HasFunctorialFactorization
+      (fibrations PointedSimplicialSet.{u}) := by
+  let : pointedJ.{u}.HasSmallObjectArgument.{u} := pointedJ_smallObjectArgument
+  rw [← pointedJ_leftClass, ← pointedJ_rlp]
+  infer_instance
+
 end SerrePositivity.SimplicialModelInputs
