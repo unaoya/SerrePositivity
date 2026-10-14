@@ -2,6 +2,8 @@ module
 
 public import SerrePositivity.PerfectComplex.TensorShuffleEquivariance
 public import SerrePositivity.KTheory.Adams.TensorSquareEigenspaces
+public import SerrePositivity.PerfectComplex.InvolutionTensor
+public import SerrePositivity.PerfectComplex.IdempotentImageIso
 
 /-! # The equivariant shuffle used for multiplicativity of the cyclic square -/
 
@@ -49,6 +51,38 @@ lemma tensorSquareDiagonal_support
     HasHomologySupportOn (Y ⊓ Z) (cochainTensor (tensorSquare P) (tensorSquare Q)) :=
   (tensorSquare_support hp hsP).cochainTensor (tensorSquare_support hq hsQ)
     (tensorSquare_perfect P hp) (tensorSquare_perfect Q hq)
+
+variable [Invertible (2 : R)]
+
+def tensorSquareTensorPositiveIso (P Q : CochainComplex (ModuleCat.{u} R) ℤ) :
+    tensorSquarePositive (cochainTensor P Q) ≅
+      ((tensorSquareInvolution P).tensor (tensorSquareInvolution Q)).positive.image :=
+  CochainIdempotent.imageIso (tensorSquarePositiveProjector (cochainTensor P Q))
+    (((tensorSquareInvolution P).tensor (tensorSquareInvolution Q)).positive)
+    (tensorSquareTensorIso P Q)
+    (CochainInvolution.positive_naturality _ _ _ (tensorSquareTensorIso_swap P Q))
+
+def tensorSquareTensorNegativeIso (P Q : CochainComplex (ModuleCat.{u} R) ℤ) :
+    tensorSquareNegative (cochainTensor P Q) ≅
+      ((tensorSquareInvolution P).tensor (tensorSquareInvolution Q)).negative.image :=
+  CochainIdempotent.imageIso (tensorSquareNegativeProjector (cochainTensor P Q))
+    (((tensorSquareInvolution P).tensor (tensorSquareInvolution Q)).negative)
+    (tensorSquareTensorIso P Q)
+    (CochainInvolution.negative_naturality _ _ _ (tensorSquareTensorIso_swap P Q))
+
+def tensorSquarePositiveFourIso (P Q : CochainComplex (ModuleCat.{u} R) ℤ) :
+    cochainTensor (tensorSquarePositive P) (tensorSquarePositive Q) ⊞
+      cochainTensor (tensorSquareNegative P) (tensorSquareNegative Q) ≅
+        tensorSquarePositive (cochainTensor P Q) :=
+  (CochainInvolution.positiveTensorIso (tensorSquareInvolution P) (tensorSquareInvolution Q)) ≪≫
+    (tensorSquareTensorPositiveIso P Q).symm
+
+def tensorSquareNegativeFourIso (P Q : CochainComplex (ModuleCat.{u} R) ℤ) :
+    cochainTensor (tensorSquarePositive P) (tensorSquareNegative Q) ⊞
+      cochainTensor (tensorSquareNegative P) (tensorSquarePositive Q) ≅
+        tensorSquareNegative (cochainTensor P Q) :=
+  (CochainInvolution.negativeTensorIso (tensorSquareInvolution P) (tensorSquareInvolution Q)) ≪≫
+    (tensorSquareTensorNegativeIso P Q).symm
 
 end Adams
 end SerrePositivity

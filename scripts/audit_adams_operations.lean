@@ -53,3 +53,10 @@ assert_no_sorry SerrePositivity.Adams.tensorSquareDiagonal_support
 #print axioms SerrePositivity.cochainTensorShuffle_symmetry
 #print axioms SerrePositivity.Adams.tensorSquareTensorIso_swap
 #print axioms SerrePositivity.Adams.tensorSquareDiagonal_support
+
+assert_no_sorry SerrePositivity.Adams.tensorSquareTensorPositiveIso
+assert_no_sorry SerrePositivity.Adams.tensorSquareTensorNegativeIso
+assert_no_sorry SerrePositivity.Adams.tensorSquarePositiveFourIso
+assert_no_sorry SerrePositivity.Adams.tensorSquareNegativeFourIso
+#print axioms SerrePositivity.Adams.tensorSquarePositiveFourIso
+#print axioms SerrePositivity.Adams.tensorSquareNegativeFourIso
