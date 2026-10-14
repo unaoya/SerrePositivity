@@ -67,4 +67,48 @@ theorem witt_distinguished_dvd_p_mul_of_dvd_p_pow_mul (ξ b : WittVector p R)
         rw [mul_comm, mul_sub, heq, sub_self]
       exact ih (Nat.pos_of_ne_zero hn0) ⟨a', hcancel.symm⟩
 
+/-- p+[q]^N aという関係式でaの第0係数が単元なら、pねじれは[q]で消える。 -/
+theorem witt_teichmuller_mul_dvd_of_p_mul_dvd (q : R) (a b : WittVector p R)
+    (N : ℕ) (hN : 0 < N) (ha : IsUnit (a.coeff 0))
+    (hdiv : (p : WittVector p R) + WittVector.teichmuller p q ^ N * a ∣
+      (p : WittVector p R) * b) :
+    (p : WittVector p R) + WittVector.teichmuller p q ^ N * a ∣
+      WittVector.teichmuller p q * b := by
+  let ξ := (p : WittVector p R) + WittVector.teichmuller p q ^ N * a
+  obtain ⟨d, hd⟩ := hdiv
+  have hco : q ^ N * d.coeff 0 = 0 := by
+    have hh := congrArg (WittVector.constantCoeff : WittVector p R →+* R) hd
+    change _ = WittVector.constantCoeff (ξ * d) at hh
+    simp only [ξ, map_mul, map_add, map_pow, map_natCast, CharP.cast_eq_zero, zero_mul,
+      zero_add, WittVector.constantCoeff, RingHom.coe_mk, MonoidHom.coe_mk,
+      OneHom.coe_mk, WittVector.teichmuller_coeff_zero] at hh
+    apply ha.mul_right_eq_zero.mp
+    calc
+      _ = (q ^ N * a.coeff 0) * d.coeff 0 := by ac_rfl
+      _ = 0 := hh.symm
+  have hqd : q * d.coeff 0 = 0 := by
+    apply IsReduced.eq_zero
+    refine ⟨N, ?_⟩
+    obtain ⟨n, hn⟩ := Nat.exists_eq_succ_of_ne_zero (Nat.ne_of_gt hN)
+    rw [hn] at hco ⊢
+    calc
+      _ = (q ^ (n + 1) * d.coeff 0) * d.coeff 0 ^ n := by
+        rw [mul_pow, pow_succ (d.coeff 0)]
+        ac_rfl
+      _ = 0 := by rw [hco, zero_mul]
+  obtain ⟨v, hv⟩ := Ideal.mem_span_singleton.mp
+    ((WittVector.mem_span_p_iff_coeff_zero_eq_zero (WittVector.teichmuller p q * d)).mpr
+      (by simpa only [WittVector.mul_coeff_zero, WittVector.teichmuller_coeff_zero] using hqd))
+  have heq : (p : WittVector p R) * (WittVector.teichmuller p q * b) =
+      (p : WittVector p R) * (ξ * v) := by
+    calc
+      _ = WittVector.teichmuller p q * ((p : WittVector p R) * b) := by ac_rfl
+      _ = ξ * (WittVector.teichmuller p q * d) := by rw [hd]; dsimp only [ξ]; ac_rfl
+      _ = _ := by rw [hv]; ac_rfl
+  have hcancel : WittVector.teichmuller p q * b = ξ * v := by
+    apply sub_eq_zero.mp
+    apply WittVector.eq_zero_of_p_mul_eq_zero
+    rw [mul_comm, mul_sub, heq, sub_self]
+  exact ⟨v, hcancel⟩
+
 end SerrePositivity

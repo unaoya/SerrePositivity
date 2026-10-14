@@ -70,6 +70,7 @@ public import SerrePositivity.CLMST.CyclicRootEstimate
 public import SerrePositivity.CLMST.CyclicNormalizedBound
 public import SerrePositivity.CLMST.CyclicFactorReduction
 public import SerrePositivity.CLMST.CyclicPPowerLength
+public import SerrePositivity.CLMST.CyclicTorsionComparison
 public import SerrePositivity.CLMST.ModPHypersurfaceGrowth
 public import SerrePositivity.CLMST.StageModPImageLength
 public import SerrePositivity.CLMST.StageModPLengthBound

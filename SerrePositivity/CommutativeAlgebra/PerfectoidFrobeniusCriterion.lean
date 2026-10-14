@@ -102,20 +102,29 @@ theorem coeff_zero_pow_eq_zero_of_untilt_pow_mem_p
   exact Ideal.Quotient.eq_zero_iff_mem.mpr hq
 
 omit [IsAdicComplete (Ideal.span {(p : S)}) S] in
-/-- `p+[q]^p x` の第1係数の mod p 投影は1。
+/-- `p+[q]^N x` の第1係数のmod p投影は1。
 Witt の係数加算公式を展開せず、第零 tilt 成分への Witt.map がこの元を p に送ることを使う。 -/
-theorem primitive_shape_firstCoeff_eq_one
+theorem primitive_shape_firstCoeff_eq_one_of_power
     (q : PreTilt S p) (x : WittVector p (PreTilt S p))
-    (hq : (PreTilt.coeff 0 q) ^ p = 0) :
+    (N : ℕ) (hq : (PreTilt.coeff 0 q) ^ N = 0) :
     PreTilt.coeff 0
-      (((p : WittVector p (PreTilt S p)) + WittVector.teichmuller p q ^ p * x).coeff 1) = 1 := by
+      (((p : WittVector p (PreTilt S p)) + WittVector.teichmuller p q ^ N * x).coeff 1) = 1 := by
   have hmap : WittVector.map (PreTilt.coeff 0)
-      ((p : WittVector p (PreTilt S p)) + WittVector.teichmuller p q ^ p * x) =
+      ((p : WittVector p (PreTilt S p)) + WittVector.teichmuller p q ^ N * x) =
         (p : WittVector p (ModP S p)) := by
     simp only [map_add, map_natCast, map_mul, map_pow, WittVector.map_teichmuller]
     rw [← map_pow, hq, WittVector.teichmuller_zero, zero_mul, add_zero]
   have hcoeff := congrArg (fun w : WittVector p (ModP S p) ↦ w.coeff 1) hmap
   simpa only [WittVector.map_coeff, WittVector.coeff_p_one] using hcoeff
+
+omit [IsAdicComplete (Ideal.span {(p : S)}) S] in
+/-- p乗の場合の互換入口。 -/
+theorem primitive_shape_firstCoeff_eq_one
+    (q : PreTilt S p) (x : WittVector p (PreTilt S p))
+    (hq : (PreTilt.coeff 0 q) ^ p = 0) :
+    PreTilt.coeff 0
+      (((p : WittVector p (PreTilt S p)) + WittVector.teichmuller p q ^ p * x).coeff 1) = 1 :=
+  primitive_shape_firstCoeff_eq_one_of_power S p q x p hq
 
 /-- 上記の特別な核の元は、単項な Fontaine 核を生成する。
 `q.untilt^p∈(p)` から第1係数の単元性を実証明し、生成元の同定へ接続する。 -/
@@ -143,39 +152,46 @@ theorem exists_untilt_eq_mod_p
   rw [PreTilt.mk_untilt_eq_coeff_zero]
   exact hq
 
-/-- p が π^p の単元倍なら、π の単元倍は実際の tilt の untilt として選べる。
+/-- pがπ^Nの単元倍（N>1）なら、πの単元倍はtiltのuntiltとして選べる。
 誤差が p の倍であることと、p 進完備性から π が Jacobson 根基に入ることを使う。 -/
-theorem exists_untilt_unit_mul
+theorem exists_untilt_unit_mul_of_power
     (hF : Function.Surjective (frobenius (ModP S p) p))
-    (π : S) (u : Sˣ) (hpEq : (p : S) = u * π ^ p) :
+    (π : S) (u : Sˣ) (N : ℕ) (hN : 1 < N) (hpEq : (p : S) = u * π ^ N) :
     ∃ (q : PreTilt S p) (v : Sˣ), q.untilt = v * π := by
   obtain ⟨q, hq⟩ := exists_untilt_eq_mod_p S p hF π
   obtain ⟨a, ha⟩ := Ideal.mem_span_singleton.mp hq
   have hpJac : (p : S) ∈ (⊥ : Ideal S).jacobson :=
     IsAdicComplete.le_jacobson_bot (Ideal.span {(p : S)})
       (Ideal.subset_span (Set.mem_singleton _))
-  have hπpow : π ^ p ∈ (⊥ : Ideal S).jacobson := by
+  have hπpow : π ^ N ∈ (⊥ : Ideal S).jacobson := by
     rw [hpEq] at hpJac
     simpa [mul_assoc] using (⊥ : Ideal S).jacobson.mul_mem_left (↑(u⁻¹) : S) hpJac
   have hπ : π ∈ (⊥ : Ideal S).jacobson :=
-    Ideal.isRadical_jacobson (⊥ : Ideal S) (Ideal.mem_radical_iff.mpr ⟨p, hπpow⟩)
-  have hpositive : 0 < p - 1 := Nat.sub_pos_of_lt (Fact.out : p.Prime).one_lt
-  have hunit : IsUnit (1 + (u : S) * π ^ (p - 1) * a) := by
+    Ideal.isRadical_jacobson (⊥ : Ideal S) (Ideal.mem_radical_iff.mpr ⟨N, hπpow⟩)
+  have hpositive : 0 < N - 1 := Nat.sub_pos_of_lt hN
+  have hunit : IsUnit (1 + (u : S) * π ^ (N - 1) * a) := by
     apply Ideal.isUnit_of_sub_one_mem_jacobson_bot
     simpa only [add_sub_cancel_left] using
       (⊥ : Ideal S).jacobson.mul_mem_right a
         ((⊥ : Ideal S).jacobson.mul_mem_left (u : S)
-          (Ideal.pow_mem_of_mem _ hπ (p - 1) hpositive))
+          (Ideal.pow_mem_of_mem _ hπ (N - 1) hpositive))
   obtain ⟨v, hv⟩ := hunit
   refine ⟨q, v, ?_⟩
-  have hpower : π ^ (p - 1) * π = π ^ p := by
+  have hpower : π ^ (N - 1) * π = π ^ N := by
     rw [← pow_succ]
     congr 1
-    exact Nat.sub_add_cancel (Nat.le_of_lt (Fact.out : p.Prime).one_lt)
+    exact Nat.sub_add_cancel (Nat.le_of_lt hN)
   rw [← hpower] at hpEq
   rw [hpEq] at ha
   rw [hv]
   linear_combination ha
+
+/-- p乗根の場合の互換入口。一般の指数N>1の補題に帰着する。 -/
+theorem exists_untilt_unit_mul
+    (hF : Function.Surjective (frobenius (ModP S p) p))
+    (π : S) (u : Sˣ) (hpEq : (p : S) = u * π ^ p) :
+    ∃ (q : PreTilt S p) (v : Sˣ), q.untilt = v * π :=
+  exists_untilt_unit_mul_of_power S p hF π u p (Fact.out : p.Prime).one_lt hpEq
 
 /-- `q.untilt^p` が p を割れば、`p+[q]^p x` という形の Fontaine 核の元が存在する。
 剰余 Frobenius の全射性から既存の Fontaine 全射性を適用して係数 x を選ぶ。 -/
