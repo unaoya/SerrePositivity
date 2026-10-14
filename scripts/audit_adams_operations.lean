@@ -1,5 +1,6 @@
 import SerrePositivity.KTheory.Adams.CyclicTwo
 import SerrePositivity.KTheory.Adams.TensorSquareShuffle
+import SerrePositivity.KTheory.Adams.TensorSquareMultiplicativity
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.Adams.tensorSquareClass_eq_of_quasiIso
@@ -60,3 +61,14 @@ assert_no_sorry SerrePositivity.Adams.tensorSquarePositiveFourIso
 assert_no_sorry SerrePositivity.Adams.tensorSquareNegativeFourIso
 #print axioms SerrePositivity.Adams.tensorSquarePositiveFourIso
 #print axioms SerrePositivity.Adams.tensorSquareNegativeFourIso
+
+assert_no_sorry SerrePositivity.K0WithSupport.mk_biprod
+assert_no_sorry SerrePositivity.K0WithSupport.mk_tensor
+assert_no_sorry SerrePositivity.CochainInvolution.positive_tensor_class
+assert_no_sorry SerrePositivity.CochainInvolution.negative_tensor_class
+assert_no_sorry SerrePositivity.CochainInvolution.k0Class_tensor
+assert_no_sorry SerrePositivity.Adams.tensorSquareClass_tensor
+assert_no_sorry SerrePositivity.Adams.cyclicTwo_cup
+#print axioms SerrePositivity.CochainInvolution.k0Class_tensor
+#print axioms SerrePositivity.Adams.tensorSquareClass_tensor
+#print axioms SerrePositivity.Adams.cyclicTwo_cup
