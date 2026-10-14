@@ -3840,3 +3840,46 @@ cotensorの二変数の射を、基礎対称列と各段の通常の内部Homの
 ドキュメントのローカルリンクとgit diff --checkも確認した。
 集約SerrePositivity.Spectra.Foundationsのビルドは2048ジョブで成功した。
 公理監査は193モジュール・2050宣言で成功し、標準公理のみでsorry依存なしを確認した。
+
+## 82. 実施記録：各段のsmashを持つテンソル・スペクトルの全体の比較（2026-10-14）
+
+### 共通の作用の移送と係数加群
+
+[ModuleTransport](../SerrePositivity/CategoryTheory/Monoidal/ModuleTransport.lean)で、
+基礎対象の同型から内部加群の作用を移し、元の加群との全体の同型を構成した。
+順逆の基礎射と移送した作用の公式も証明した。
+
+[PointwiseTensorModule](../SerrePositivity/Spectra/SymmetricSequence/PointwiseTensorModule.lean)で、
+自由零生成対称列とのconvolutionから各段の通常のテンソル積へ係数作用を移した。
+移送した係数加群の値域関手を構成し、基礎射と各段の射が通常のテンソルの射になることを証明した。
+左自由因子の比較と合成し、自由零生成加群との釣り合いテンソル積からの全体の自然同型を構成した。
+全体の比較を各段に評価すると、既存の各段のテンソル比較に一致する。
+
+### 対称スペクトルへの接続
+
+[PointwiseTensor](../SerrePositivity/Spectra/SymmetricSpectrum/PointwiseTensor.lean)で、
+第q段がXとEの第q段の通常のsmashとなるpointwiseTensor X Eを構成した。
+各段の置換はEの同じ段の置換とのsmashである。
+F_0 Xとの球面上のテンソル積からの比較を、値域スペクトルに関する自然同型へまとめた。
+その各成分は全体の比較に一致し、各段への評価は既存の各段のsmashとの比較に一致する。
+値域関手の各段の射の通常のsmashの法則も公開した。
+
+集約Foundationsと共通層・スペクトルのREADMEに入口と到達点を追加した。
+
+### 到達点と次の範囲
+
+各段の通常のsmashを持つスペクトルと、F_0とのテンソル積との全体の自然比較を利用できる。
+次は生成対象Xに関する共変性と二変数関手、pointwiseTensorとcotensorの随伴、
+各段の転置・逆転置の法則を整える。
+弱同値・モデル構造・導来演算・安定ホモトピー群は引き続き未実装である。
+共有ルートimport・依存設定・並行作業の可換環・CLMST関連ファイルは変更していない。
+定理3.1・補題4.6の二つの降下入力は未変更である。
+
+### 検証
+
+新しい三つのLeanソースの行長・末尾空白・未完了の証明用マーカーを確認した。
+ドキュメントのローカルリンクとgit diff --checkも確認した。
+具体的な係数加群の等式の再展開を避けるため、各段の射の法則を命題として公開した。
+すべて標準の計算上限で検証し、未検証の証明や計算上限を増やす設定は残していない。
+集約SerrePositivity.Spectra.Foundationsのビルドは2051ジョブで成功した。
+公理監査は196モジュール・2081宣言で成功し、標準公理のみでsorry依存なしを確認した。

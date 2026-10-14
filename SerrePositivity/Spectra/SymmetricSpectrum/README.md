@@ -4,6 +4,7 @@ Mathlibの `CategoryTheory.Mod` を、構成済みの球面対称列へ適用す
 基礎圏は基点付き単体的集合の対称列、テンソル積は登録済みのconvolutionである。
 各段の対象は基点付き単体的集合であり、球面の作用から和次数への構造射を得る。
 
+- [PointwiseTensor](PointwiseTensor.lean)：各段が通常のsmashとなるスペクトル、値域関手、F_0とのテンソル積からの全体の自然同型と各段の比較との一致。
 - [CotensorMapLevels](CotensorMapLevels.lean)：cotensorの二変数の射と全体の比較の公式、基礎対称列・各段の通常の前合成・後合成の法則。
 - [CotensorLevelEvaluation](CotensorLevelEvaluation.lean)：各段の逆比較の下で、cotensorの余単位の評価が通常の内部Homの評価法則を満たすことの証明。
 - [FreeLeftUncurry](FreeLeftUncurry.lean)：左自由因子の比較の下での逆転置と、cotensorの全体の逆比較の相殺公式。
@@ -139,6 +140,10 @@ F_0 Xとの球面上のテンソル積の第q段を、通常のXとEの第q段�
 法則を命題として公開し、具体的な係数加群の型を再展開せずに利用できる。
 cotensorの二変数の射は、全体の比較の順逆で内部Homの射を移した射である。
 基礎対称列と各段で、通常の内部Homの前合成・後合成の法則を満たす。
+
+各段が通常のsmashとなるpointwiseTensorを球面作用の移送で構成した。
+F_0 Xとの球面上のテンソル積との比較を、値域スペクトルに関する自然同型へまとめた。
+全体の比較の各段は既存の各段の比較に一致し、置換作用と関手の射は第二因子との通常のsmashである。
 
 球面の第n段は円の反復smashである。境界を潰した単体的球面との比較は別の課題として扱う。
 弱同値、モデル構造、導来smash、安定ホモトピー群はまだ登録していない。

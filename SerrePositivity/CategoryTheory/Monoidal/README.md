@@ -29,6 +29,7 @@
 - [ModuleClosed](ModuleClosed.lean)：釣り合いテンソル積との自然なHom同値・随伴、内部Hom関手、閉モノイダル構造。
 - [ModuleInternalHomAction](ModuleInternalHomAction.lean)：可換係数上の内部Homの作用、単位・結合則、釣り合いテンソル積からの加群としての評価。
 - [ModuleInternalHom](ModuleInternalHom.lean)：作用の等化子、評価、線形射と右テンソル加群の射のHom同値。
+- [ModuleTransport](ModuleTransport.lean)：任意の基礎対象の同型による内部加群の作用の移送、全体の同型と基礎射・作用の公式。
 - [ModuleLimits](ModuleLimits.lean)：内部加群の極限錐の構成、忘却関手による極限の創出と同型の反映。
 - [ModuleColimits](ModuleColimits.lean)：左テンソルの余極限保存を仮定した内部加群の余極限と創出。
 - [BalancedTensor](BalancedTensor.lean)：二つの加群作用を同一視する余等化子、釣り合い射とのHom同値、標準射のエピ性と二変数の関手性。
