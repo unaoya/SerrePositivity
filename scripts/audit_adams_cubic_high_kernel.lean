@@ -1,0 +1,29 @@
+import SerrePositivity.KTheory.Adams.TensorCubeHighMixedKernel
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerToKernel_highMixed1
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerToKernel_highMixed1
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerToKernel_highMixed2
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerToKernel_highMixed2
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerToKernel_highMixedMap
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerToKernel_highMixedMap
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixedMap_kernel_pair_zero
+#print axioms SerrePositivity.Adams.tensorCubeHighMixedMap_kernel_pair_zero
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixedKernelLift
+#print axioms SerrePositivity.Adams.tensorCubeHighMixedKernelLift
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixedKernelLift_fac
+#print axioms SerrePositivity.Adams.tensorCubeHighMixedKernelLift_fac
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixedShortComplex
+#print axioms SerrePositivity.Adams.tensorCubeHighMixedShortComplex
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixedIsKernel
+#print axioms SerrePositivity.Adams.tensorCubeHighMixedIsKernel
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixedShortComplex_shortExact
+#print axioms SerrePositivity.Adams.tensorCubeHighMixedShortComplex_shortExact
