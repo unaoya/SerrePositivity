@@ -1,4 +1,4 @@
-import SerrePositivity.KTheory.G0Functoriality
+import SerrePositivity.KTheory.G0Torsion
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.finiteModuleSupportedOn.of_iso
@@ -35,3 +35,17 @@ assert_no_sorry SerrePositivity.G0WithSupport.enlarge_map
 assert_no_sorry SerrePositivity.G0WithSupport.localize
 #print axioms SerrePositivity.G0WithSupport.map_comp
 #print axioms SerrePositivity.G0WithSupport.localize
+assert_no_sorry SerrePositivity.IsModuleSTorsion.iff_localized_zero
+assert_no_sorry SerrePositivity.IsModuleSTorsion.of_injective
+assert_no_sorry SerrePositivity.IsModuleSTorsion.of_surjective
+assert_no_sorry SerrePositivity.IsModuleSTorsion.of_exact
+assert_no_sorry SerrePositivity.IsModuleSTorsion.submodule
+assert_no_sorry SerrePositivity.IsModuleSTorsion.quotient
+assert_no_sorry SerrePositivity.IsModuleSTorsion.of_zero_mem
+assert_no_sorry SerrePositivity.IsModuleSTorsion.iff_tensor_zero
+assert_no_sorry SerrePositivity.localizationTorsionSubgroup
+assert_no_sorry SerrePositivity.mk_mem_localizationTorsionSubgroup
+assert_no_sorry SerrePositivity.G0WithSupport.localize_mk_eq_zero
+assert_no_sorry SerrePositivity.G0WithSupport.localizationTorsionSubgroup_le_ker
+#print axioms SerrePositivity.IsModuleSTorsion.of_exact
+#print axioms SerrePositivity.G0WithSupport.localizationTorsionSubgroup_le_ker
