@@ -60,7 +60,11 @@ lemma cochainTensorSingleLeftIso_module_naturality {V W : ModuleCat.{u} R} (f : 
     rw [cochainTensorMap_homogeneous_assoc, ι_tensorSingleLeftDesc,
       ι_tensorSingleLeftDesc_assoc]
     simp only [HomologicalComplex.id_f, tensorHom_id, ← comp_whiskerRight]
-    congr 1
+    have hs : ((CochainComplex.singleFunctor (ModuleCat R) 0).map f).f 0 ≫
+        (singleObjXSelf (.up ℤ) 0 W).hom = (singleObjXSelf (.up ℤ) 0 V).hom ≫ f := by
+      rw [HomologicalComplex.single_map_f_self]
+      simp
+    exact congrArg (fun g => g ▷ P.X n) hs
   · have hz := isZero_single_obj_X (.up ℤ) 0 V i hi
     exact ((tensorRight (P.X j)).map_isZero hz).eq_of_src _ _
 
