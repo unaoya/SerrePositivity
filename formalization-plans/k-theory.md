@@ -3789,3 +3789,54 @@ F_0とのテンソル積の各段の通常のsmashとの比較を、cotensorの�
 ドキュメントのローカルリンクとgit diff --checkも確認した。
 集約SerrePositivity.Spectra.Foundationsのビルドは2045ジョブで成功した。
 公理監査は190モジュール・2027宣言で成功し、標準公理のみでsorry依存なしを確認した。
+
+## 81. 実施記録：cotensorの各段の射と両変数の自然性（2026-10-14）
+
+### 自由零生成対称列の内部Homの自然性
+
+[FreeZeroInternalHomNaturality](../SerrePositivity/Spectra/SymmetricSequence/FreeZeroInternalHomNaturality.lean)で、
+各段の通常の内部Homの前合成・後合成から対称列の射を構成した。
+生成次数零のずれを除く比較の両変数の自然性と、
+自由零生成対称列からの内部Homの比較の自然性・順逆で移す公式を証明した。
+これにより、次数の移送を含む射から同じ次数への通常の内部Homの射へ自然に比較できる。
+
+[FunctorTransport](../SerrePositivity/CategoryTheory/FunctorTransport.lean)に、
+二変数関手の自然比較と両変数の射との両立、自然比較の順逆で射を移す一般公式を追加した。
+この公式で、cotensorの二変数の射を既存の内部Homの射との比較で記述した。
+
+### 係数加群からスペクトルへの接続
+
+[FreeZeroModuleMap](../SerrePositivity/Spectra/SymmetricSequence/FreeZeroModuleMap.lean)で、
+自由原変数の内部Homの係数加群の比較の順逆で移した射の基礎射を計算した。
+比較の順逆の基礎射の条件から、通常の内部Homの前合成・後合成の法則を導いた。
+対称列全体の射の法則と各段の射の法則を命題として公開し、
+全体の法則から各段の具体式を得る入口も構成した。
+
+[CotensorMapLevels](../SerrePositivity/Spectra/SymmetricSpectrum/CotensorMapLevels.lean)で、
+cotensorMapが全体の比較の順逆で内部Homの射を移した射に一致することを証明した。
+既存の逆比較の分解と、順比較の基礎射の分解を一般の係数加群の法則へ渡し、
+cotensorMapLawとcotensorMapLevelLawを証明した。
+第q段の射は、生成対象の射による前合成と値域スペクトルの同じ第q段の射による後合成である。
+各段の通常の内部Homの射を直接記述するcotensorLevelMapも公開した。
+
+具体的な係数加群の等式を再展開すると型の照合が重くなるため、
+検証済みの射の法則を命題として公開している。
+既存のcotensorと二変数関手・随伴・余単位の定義は変更していない。
+新しい証明はすべて標準の計算上限で検証し、未検証の証明や計算上限を増やす設定は残していない。
+集約Foundationsと共通層・スペクトルのREADMEに入口と到達点を追加した。
+
+### 到達点と次の範囲
+
+cotensorの二変数の射を、基礎対称列と各段の通常の内部Homの前合成・後合成として利用できる。
+次は各段の通常のsmashを持つテンソルのスペクトル全体の比較と、
+各段の転置・逆転置の法則を整える。
+弱同値・モデル構造・導来演算・安定ホモトピー群は引き続き未実装である。
+共有ルートimport・依存設定・並行作業の可換環・CLMST関連ファイルは変更していない。
+定理3.1・補題4.6の二つの降下入力は未変更である。
+
+### 検証
+
+新しい三つのLeanソースと共通の関手移送の行長・末尾空白・未完了の証明用マーカーを確認した。
+ドキュメントのローカルリンクとgit diff --checkも確認した。
+集約SerrePositivity.Spectra.Foundationsのビルドは2048ジョブで成功した。
+公理監査は193モジュール・2050宣言で成功し、標準公理のみでsorry依存なしを確認した。
