@@ -1,0 +1,44 @@
+import SerrePositivity.KTheory.Adams.TensorCubeEvaluation
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.CochainCubicAction.eigenK0Class_eq_of_quasiIso
+#print axioms SerrePositivity.CochainCubicAction.eigenK0Class_eq_of_quasiIso
+
+assert_no_sorry SerrePositivity.CochainCubicAction.weightedK0Class_eq_of_quasiIso
+#print axioms SerrePositivity.CochainCubicAction.weightedK0Class_eq_of_quasiIso
+
+assert_no_sorry SerrePositivity.CochainCubicAction.eigenK0Class_eq_zero_of_acyclic
+#print axioms SerrePositivity.CochainCubicAction.eigenK0Class_eq_zero_of_acyclic
+
+assert_no_sorry SerrePositivity.CochainCubicAction.weightedK0Class_eq_zero_of_acyclic
+#print axioms SerrePositivity.CochainCubicAction.weightedK0Class_eq_zero_of_acyclic
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeClass_eq_of_quasiIso
+#print axioms SerrePositivity.Adams.tensorCubeClass_eq_of_quasiIso
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeClass_eq_of_homotopyEquiv
+#print axioms SerrePositivity.Adams.tensorCubeClass_eq_of_homotopyEquiv
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeClass_eq_zero_of_acyclic
+#print axioms SerrePositivity.Adams.tensorCubeClass_eq_zero_of_acyclic
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeEvaluation
+#print axioms SerrePositivity.Adams.tensorCubeEvaluation
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeEvaluation_concrete
+#print axioms SerrePositivity.Adams.tensorCubeEvaluation_concrete
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeEvaluation_iso
+#print axioms SerrePositivity.Adams.tensorCubeEvaluation_iso
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeEvaluation_shortExactAdditive
+#print axioms SerrePositivity.Adams.tensorCubeEvaluation_shortExactAdditive
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeClass_shift_one
+#print axioms SerrePositivity.Adams.tensorCubeClass_shift_one
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeClass_cone
+#print axioms SerrePositivity.Adams.tensorCubeClass_cone
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeEvaluation_triangle
+#print axioms SerrePositivity.Adams.tensorCubeEvaluation_triangle

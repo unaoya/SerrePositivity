@@ -3089,6 +3089,19 @@ heartbeat 上限を設定している。数学的な分裂仮定・追加公理�
 `scripts/audit_adams_coefficient_extension.lean` の三成果物で `assert_no_sorry` が通り、
 公理は `propext` と `Quot.sound` のみ。E 線形延長の基盤の受入が完了。
 
+### S10.7c.4・S10.7d.1：不変性・完全複体の零性・シフト・錐・三角形
+
+`CubicActionClassMaps.lean` に一般の同変擬同型による固有部分の K₀ 類の不変性と、
+完全な複体の固有部分・重みつき類の零性を追加した。
+`TensorCubeEvaluation.lean` で三乗写像の擬同型保存へ接続し、ホモトピー同値での
+不変性、完全な複体の三乗評価零、台つきホモトピー対象での評価を構成した。
+短完全列の加法性と既存の一般契約から、シフト 1 の符号、錐の差の式、
+任意の distinguished triangle の加法性を得た。三乗のシフトを直接展開する必要はなかった。
+
+**検証**：評価モジュールのビルド成功（3272 jobs）。専用監査
+`scripts/audit_adams_cubic_evaluation.lean` の十四成果物で `assert_no_sorry` が通り、
+公理は標準三公理のみ。三角形の関係の受入が完了。次は K₀ への降下と E 線形作用素の公開。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
