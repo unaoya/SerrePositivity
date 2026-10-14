@@ -1,6 +1,6 @@
 # 外部引用5：交点重複度の消滅定理を Adams 作用素で証明する計画
 
-作成：2026-10-14。改訂：2026-10-14（S1–S11 全段の小段・証明契約・実装順序を具体化）。状態：S1.1–S1.6、S2.1–S2.4、S3.1–S3.7 実装・検証済み。S4.1–S4.7 も実装・検証済み（§4.23）。S5.1–S5.2 は実装・検証済み。S5.3–S5.7 は実装中、S6–S11 は計画。
+作成：2026-10-14。改訂：2026-10-14（S1–S11 全段の小段・証明契約・実装順序を具体化）。状態：S1.1–S1.6、S2.1–S2.4、S3.1–S3.7 実装・検証済み。S4.1–S4.7 も実装・検証済み（§4.23）。S5.1–S5.3 は実装・検証済み。S5.4–S5.7 は実装中、S6–S11 は計画。
 対象は [Inputs/IntersectionTheory.lean](../SerrePositivity/Inputs/IntersectionTheory.lean) の
 `Inputs.intersectionVanishing`（Roberts–Gillet–Soulé の消滅定理）。
 並行する Chow 群の経路は [サイクルの計画](intersection-vanishing-cycles.md)。
@@ -1217,8 +1217,9 @@ S4 の完了は K2 の分解・比較・局所化・dévissage の完成。
 | 小段 | 実装・主要 API | 状態 |
 | --- | --- | --- |
 | S5.1 | `CommutativeAlgebra/PrimeDimensionBounds`：素イデアル商の次元と coheight、`primeHeight_add_quotientDimension_le`、有限次元での自然数化、厳密包含による高さの増加 | 完了。コミット `a48fac0` |
-| S5.2 | `CommutativeAlgebra/MaximalRegularSequence`：最長正則列、延長不能性、関連素イデアル回避、局所化した列の長さの高さ上界、`exists_regularSequence_associatedPrime_above` | 完了。この記録を含むコミット |
-| S5.3–S5.7 | §4.11・§4.13 の証明契約 | 未完了 |
+| S5.2 | `CommutativeAlgebra/MaximalRegularSequence`：最長正則列、延長不能性、関連素イデアル回避、局所化した列の長さの高さ上界、`exists_regularSequence_associatedPrime_above` | 完了。コミット `9fb52df` |
+| S5.3 | `CommutativeAlgebra/RegularPrimeDimension`：素イデアルの高さ・次元公式、`supportCodimension`、台の次元と余次元の公式 | 完了。この記録を含むコミット |
+| S5.4–S5.7 | §4.11・§4.13 の証明契約 | 未完了 |
 
 S5.1 の高さと商の次元の和の不等式は任意の可換環で証明。
 商のスペクトルと素イデアル以上の区間の順序同型を使い、
@@ -1235,6 +1236,13 @@ S5.2 は正則局所環内の正則列の長さを次元で抑えて最大値を
 長さの高さ上界は平坦局所化と一般の Noether 局所環での正則列商の次元公式から証明。
 局所化先の正則性は使用せず、S5.7 への依存の循環はない。
 対象ビルド（3050 jobs）と専用監査が成功。主要命題の依存公理は標準三公理のみ。
+S5.3 は S5.1 の鎖の不等式、S5.2 の最長列と高さ上界、
+既存の `RegularSequenceUnmixedness.dimension_eq` を合わせて等号を証明。
+台の余次元は台上の高さの下限として定義し、空台では無限大。
+非零加群の台で最小高さを実現する素イデアルを選び、その商の次元が台次元を実現することを証明。
+したがって有限生成加群を含む非零の任意の加群で次元・余次元の公式が得られる。
+零加群は数値化の公式の対象に入れていない。
+対象ビルド（3051 jobs）と専用監査が成功。主要命題の依存公理は標準三公理のみ。
 S5 全体の統合ビルドは後続小段の完成後に行う。
 
 ## 5. 受入条件
