@@ -1,4 +1,4 @@
-import SerrePositivity.KTheory.Adams.KoszulTensor
+import SerrePositivity.KTheory.Adams.UnitNormalization
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.Adams.oneKoszulComplex_perfect
@@ -138,3 +138,14 @@ assert_no_sorry SerrePositivity.Adams.koszulSuccTensorIso
 #print axioms SerrePositivity.Adams.koszulClosedSupport_succ
 #print axioms SerrePositivity.Adams.oneKoszulTensorConeIso
 #print axioms SerrePositivity.Adams.koszulSuccTensorIso
+
+assert_no_sorry SerrePositivity.Adams.tensorSquareUnit_swap
+assert_no_sorry SerrePositivity.Adams.tensorSquareUnit_positive_map
+assert_no_sorry SerrePositivity.Adams.tensorSquareUnit_negative_map
+assert_no_sorry SerrePositivity.Adams.tensorSquareUnitPositiveIso
+assert_no_sorry SerrePositivity.Adams.tensorSquareUnitNegative_isZero
+assert_no_sorry SerrePositivity.Adams.tensorSquareClass_unit
+assert_no_sorry SerrePositivity.Adams.cyclicTwo_unit
+#print axioms SerrePositivity.Adams.tensorSquareUnit_swap
+#print axioms SerrePositivity.Adams.tensorSquareUnitPositiveIso
+#print axioms SerrePositivity.Adams.cyclicTwo_unit
