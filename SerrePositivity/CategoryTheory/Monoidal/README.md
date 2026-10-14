@@ -32,6 +32,8 @@
 - [BalancedTensorIterated](BalancedTensorIterated.lean)：釣り合い商の左右テンソル後の降下、商の右作用の公式と三因子の標準射・エピ性・自然性。
 - [BalancedTensorAssociator](BalancedTensorAssociator.lean)：二段の釣り合い商の結合比較、順逆の標準射の公式、加群の結合同型と三変数の自然同型。
 - [BalancedTensorTriangle](BalancedTensorTriangle.lean)：結合同型と左右の単位比較のtriangle整合性、逆結合同型を使う経路の一致。
+- [BalancedTensorPentagon](BalancedTensorPentagon.lean)：四因子の五つの結合順の標準射、五辺の結合比較とpentagon整合性。
+- [BalancedTensorMonoidal](BalancedTensorMonoidal.lean)：釣り合いテンソル積と正則加群単位による内部加群圏のモノイダル構造の登録。
 
 極限の構成にはテンソル積の極限保存を仮定しない。
 余極限の構成では、全ての左テンソルが対象とする図式の形の余極限を保存することを仮定する。
@@ -45,7 +47,8 @@
 対称構造から商上の交換自然同型を構成し、二回の交換の恒等性と単位比較との両立も証明した。
 左右のテンソルの余等化子保存から、反復釣り合い商の結合自然同型も構成した。
 結合同型と左右の単位比較のtriangle整合性も証明した。
-pentagon・hexagonの整合性と加群圏のモノイダル構造は今後登録する。
+四因子の標準射からpentagonを証明し、加群圏のモノイダル構造を登録した。
+交換同型のhexagon整合性とbraided・symmetric構造の登録は今後進める。
 
 モノイダル構造を使わない補助結果として、
 [InitialColimits](../Limits/InitialColimits.lean) に始対象の図式の余極限の始対象性を置く。

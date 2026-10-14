@@ -27,6 +27,8 @@ Mathlibの `CategoryTheory.Mod` を、構成済みの球面対称列へ適用す
 - [TensorSymmetry](TensorSymmetry.lean)：球面上のテンソル積の交換自然同型、標準射の公式・二回交換の恒等性と左右の単位比較との両立。
 - [TensorAssociator](TensorAssociator.lean)：球面上の三重テンソル積の結合自然同型、左右の標準射・エピ性と結合子の順逆の公式。
 - [TensorTriangle](TensorTriangle.lean)：球面を中央に置いた結合同型と左右の単位比較のtriangle整合性、逆結合同型を使う形。
+- [TensorPentagon](TensorPentagon.lean)：球面上のテンソル積のpentagon整合性と四因子の標準射のエピ性。
+- [TensorMonoidal](TensorMonoidal.lean)：球面単位のモノイダル構造の登録、テンソル積・射・単位・比較同型と既存の構成との一致。
 
 通常の極限・余極限はunderlying対称列から作用を誘導して構成する。
 第n段への評価が両方を保存するため、各段での極限・余極限の計算が可能である。
@@ -56,8 +58,8 @@ n以上の段では全単射の添字をΣ_mへ移送した余等化子と、各
 球面上のテンソル積の交換自然同型と、二回の交換の恒等性・単位比較との両立も構成した。
 三重テンソル積の結合自然同型を構成し、標準射上で基礎対称列の結合子とその逆を比較した。
 結合同型と左右の単位比較のtriangle整合性も証明した。
-自由加群を左因子とする一般の比較、pentagon・hexagonの整合性と
-スペクトル圏のモノイダル構造は今後登録する。
+pentagon整合性を証明し、球面単位のモノイダル構造を登録した。
+自由加群を左因子とする一般の比較、hexagon整合性とbraided・symmetric構造の登録は今後進める。
 
 球面の第n段は円の反復smashである。境界を潰した単体的球面との比較は別の課題として扱う。
 弱同値、モデル構造、導来smash、安定ホモトピー群はまだ登録していない。

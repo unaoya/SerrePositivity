@@ -2751,3 +2751,55 @@ pentagonとhexagonの整合性を証明して対称モノイダル構造を登�
 ドキュメントのローカルリンク、共通層からのimport方向とgit diff --checkも確認した。
 集約SerrePositivity.Spectra.Foundationsのビルドは1989ジョブで成功した。
 公理監査は136モジュール・1514宣言で成功し、標準公理のみでsorry依存なしを確認した。
+
+## 60. 実施記録：pentagon整合性と球面単位のモノイダル構造の登録（2026-10-14）
+
+### 四因子の結合順とpentagon
+
+[BalancedTensorPentagon](../SerrePositivity/CategoryTheory/Monoidal/BalancedTensorPentagon.lean)で、
+四つの加群の反復釣り合いテンソル積の五つの結合順への標準射を構成した。
+全て左結合した商への標準射は、右テンソルの余等化子保存からエピ射となる。
+
+pentagonの上側の三辺と下側の二辺について、それぞれの結合変更を標準射上で計算した。
+商の射の因子化、三因子の結合比較の公式と基礎圏の結合子の自然性を使い、
+各辺の計算を基礎圏の結合子による射へ帰着した。
+五辺の計算の後、基礎圏のpentagonと四因子の標準射のエピ性から、
+二つの経路の加群の射としての一致を証明した。
+
+### 共通層のモノイダル構造
+
+[BalancedTensorMonoidal](../SerrePositivity/CategoryTheory/Monoidal/BalancedTensorMonoidal.lean)で、
+可換モノイド上の内部加群圏にモノイダル構造を登録した。
+テンソル積・射は構成済みの釣り合いテンソル積の二変数関手、単位は正則加群である。
+結合子・左右の単位同型は構成済みの加群の比較同型を使う。
+
+恒等射・合成の保存、三変数の結合子の自然性、左右の単位比較の自然性、
+pentagon・triangleを既存の証明から供給し、MathlibのofTensorHomへ接続した。
+仮定はbraiding、係数の可換性、余等化子と左右のテンソルによるその保存である。
+この段階ではbraided・symmetric構造を登録しない。
+
+### 対称スペクトルへの特殊化
+
+[TensorPentagon](../SerrePositivity/Spectra/SymmetricSpectrum/TensorPentagon.lean)で、
+pentagonと四因子の標準射のエピ性を球面上のテンソル積へ特殊化した。
+[TensorMonoidal](../SerrePositivity/Spectra/SymmetricSpectrum/TensorMonoidal.lean)で、
+球面単位の対称スペクトル圏のモノイダル構造を登録した。
+登録したテンソル積・テンソル射・単位・結合子・左右の単位同型が、
+既存のsphereTensorと球面スペクトルおよび比較同型に一致することを証明した。
+集約Foundationsと共通層・スペクトルのREADMEに新しい入口を追加した。
+
+### 到達点と次の範囲
+
+球面上の対称スペクトル圏はモノイダル圏として利用できる。
+構成済みの交換同型のhexagon整合性を証明し、braided・symmetric構造を登録する作業が残る。
+自由加群を左因子とする一般の比較も今後公開する。
+弱同値・モデル構造・導来演算・安定ホモトピー群は引き続き未実装である。
+共有ルートimport・依存設定・並行作業の可換環・CLMST関連ファイルは変更していない。
+定理3.1・補題4.6の二つの降下入力は未変更である。
+
+### 検証
+
+新しい四つのLeanソースの行長・末尾空白・未完了の証明用マーカーを確認した。
+ドキュメントのローカルリンク、共通層からのimport方向とgit diff --checkも確認した。
+集約SerrePositivity.Spectra.Foundationsのビルドは1993ジョブで成功した。
+公理監査は140モジュール・1544宣言で成功し、標準公理のみでsorry依存なしを確認した。
