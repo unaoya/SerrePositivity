@@ -3,10 +3,10 @@
 作成日：2026-10-13。計画更新日：2026-10-14。
 M1・M2の圏論的構成と閉対称モノイダル構造、段階1・2のA1〜C2まで実装・検証済み。
 ホモトピー論の構成、非連結K理論、定理3.1・補題4.6への接続は未完成である。
-最新の完了確認は§127（共有ホモトピー論H0〜H5）と§122（段階2）。次の対象構成単位はH6。
+最新の完了確認は§128（一般対象H6）、§127（共有ホモトピー論H0〜H5）と§122（段階2）。
 mathlibへの追加・登録は今回の完了条件に含めず、必要な構造と法則をこのリポジトリ内に実装する。
 検証済みのステップごとにコミットする。
-P1・P2と共有一般論H0〜H5は完了。M5は別チャットで進め、この系列はH6とG5/G6の残る一般論へ進む。
+P1・P2、共有一般論H0〜H5と一般スペクトルの対象・free/evaluation（H6）は完了。M5は別チャットで進め、この系列はG5/G6の残る一般論とレベル構造へ進む。
 
 ## 0. 現在地と残作業の実行計画（2026-10-14更新）
 
@@ -5118,3 +5118,41 @@ G4局所化の二案は未選択で、M3の安定モデル構造も未完成の�
 
 コミット：H5a `3706d4a`、H5b `00604a2`、H5c `547fcb6`。
 共有ルートimport、M5、可換環論・CLMSTの担当ファイルは変更していない。
+
+## 128. 実施記録：一般対称スペクトルの対象と自由・評価H6の完了（2026-10-15）
+
+H6（§123.6）の受入条件を実装・検証した。入口は
+`SerrePositivity.Spectra.General.Foundations`。比較入口は`General.SimplicialComparison`。
+
+| 受入条件 | 成果物・証拠 |
+| --- | --- |
+| 一般C,KのSym(K)加群 | `General/Basic.lean`の`GeneralSymmetricSpectrum C K`。既存の`Mod (SymmetricSequence C) (tensorPowerSequence K)`をそのまま使用。作用の単位・結合・射との両立、各段・射のext、構成API |
+| free/evaluation | `General/Free.lean`, `General/Evaluation.lean`。自由Sym(K)加群と忘却、第n段の自由対象F_nと評価の随伴。生成元・延長・Hom同値・一意性・unit/counitと両延長の合成表示 |
+| 旧特殊化の比較 | `General/SimplicialComparison.lean`。C=PSS、K=circleで旧対象・忘却・作用・free/evaluation・両随伴との等式をすべてrflで証明。instance経路を含む定義上の一致 |
+| 旧API・StageTwo・公理監査の保存 | 旧実装ファイルを変更せず一般入口を追加。旧StageTwoと共有H5入口を同時importした利用例、既存StageTwo検証、公理監査を成功確認 |
+
+Cの対象と射の宇宙は独立。対称monoidal・閉構造と小さい余極限を要求し、
+モデル構造・基点・零対象・Kのcofibrancyは対象の定義に要求しない。
+一般入口はSSet/PSSをimportせず、具体的比較だけを別入口に置いた。
+既存テンソル冪の括弧・置換作用の規約、共有ルートimport、M5・可換環論・CLMSTの担当を保持した。
+
+追加の`General/Limits.lean`は、Cの指定した形の極限を加群圏へ継承し、
+忘却による創出、評価の保存、各段比較と射影法則を提供する。
+余極限側はCの小さい極限も要求し、既存Day閉構造からtensorの余極限保存を得る。
+各段の余極限比較は包含と両立する。自由関手の余極限保存は随伴から得る。
+
+検証：一般入口・具体的比較・旧StageTwo・Spectra.Foundationsの集約ビルド2125ジョブ。
+`check_general_spectra`, `check_spectra_stage2`, `check_homotopical_foundations`が成功。
+一般C,Kの利用例は、モデル構造なしで随伴・延長・自然性・極限余極限を使えることを検証する。
+`audit_general_spectra`は内部補助を含む5実装モジュール78宣言を全監査し、
+`audit_spectra`は一般化分を含む266モジュール2679公開宣言を監査した。
+ともに標準公理のみでsorry・引用依存なし。必須の一般化モジュールが監査されたことも検証する。
+
+コミット：H6a `6321c83`、H6b `94c092b`。
+詳細な入力契約・検証コマンドは`Spectra/General/README.md`。
+
+H6は一般対象・free/evaluation・旧特殊化比較の完了単位であり、§123.4のS0/S1の入口を供給する。
+S2の一般構造射と各段の誘導表示、S3のtensor/closed/cotensor公開API、S4の豊穣、
+S5のレベル・安定モデル構造は後続。H6完了からM3の安定モデル構造完成を主張しない。
+次の主な共有ゲートはG5/G6のmonoid axiom・加群転送・具体的SM7であり、
+一般スペクトルの後続構成とレベル転送へ接続する。G4局所化の二案は引き続き未選択。
