@@ -1,0 +1,15 @@
+import SerrePositivity.KTheory.Adams.LagrangeProjectors
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.Adams.lagrange_factor
+assert_no_sorry SerrePositivity.Adams.lagrangeProjector
+assert_no_sorry SerrePositivity.Adams.lagrangeProjector_eigen
+assert_no_sorry SerrePositivity.Adams.sum_lagrangeProjector
+assert_no_sorry SerrePositivity.Adams.polynomial_on_eigenvector
+assert_no_sorry SerrePositivity.Adams.lagrangeProjector_on_eigenvector_self
+assert_no_sorry SerrePositivity.Adams.lagrangeProjector_on_eigenvector_ne
+assert_no_sorry SerrePositivity.Adams.lagrangeProjector_idem
+assert_no_sorry SerrePositivity.Adams.lagrangeProjector_orthogonal
+#print axioms SerrePositivity.Adams.lagrangeProjector_eigen
+#print axioms SerrePositivity.Adams.lagrangeProjector_idem
+#print axioms SerrePositivity.Adams.lagrangeProjector_orthogonal
