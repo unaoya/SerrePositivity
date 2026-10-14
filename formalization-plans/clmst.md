@@ -2533,17 +2533,38 @@ F5だけで主定理の引用数が減るとは予告しない。実装時間は
 
 ### 9.4. F4：strict p環のWitt復元
 
-p正則・p進完備でA/(p)が完全な任意の可換環Aについて、
-`WittVector p (A/(p)) ≃+* A`を構成する。
-標準商写像との可換性と、同じmod p写像を持つ持上げの一意性も証明する。
+状態：証明経路とステップを確定（2026-10-14）、実装未着手。
+任意の可換環Aについてp正則性・p進完備性・A/(p)の完全性から
+`WittVector p (A/(p)) ≃+* A`を構成する。商写像qについて
+`q.comp e.toRingHom = WittVector.constantCoeff`、同じ剰余条件を持つ任意の二つの
+環準同型の一致まで証明する。Noether性・局所性・整域性を追加しない。
 
-既存のFontaine θ・Perfection・Witt完備性を再利用し、
-比較射の全単射性とmod pでの一致を独立に確認する。
-完備Noether局所環へのWitt係数写像を、この一般環の復元と同一視しない。
-零環も対象に含め、A/(p)の`CharP p`を無条件に要求しない。
+構成経路：非零の場合に`CharP (A/(p)) p`を供給し、
+`Perfection.lift`と既存の`WittVector.fontaineTheta`を合成する。
+一般の完全標数p環kからA/(p)への写像についてもWitt持上げを公開する。
+存在にAのp正則性は使わず、復元写像の単射性に使う。
+全射性はW(k)のp進完備性とmod p全射性を用いる既存のadic持上げ判定を再利用する。
+単射性は、核元を繰り返しpで割り、Aのp正則性で核に留まることを確認し、
+W(k)のp進分離性から零とする。体のWitt環のDVR分解には頼らない。
 
-成果物は復元同型・剰余図式・一意性。
-BSの完全δ環とWitt環の対応、完全prismとの比較へ適用する。
+一意性はTeichmüller元を比較する。完全性からp^n根を選び、
+mod pで一致する持上げのp^n乗がmod p^(n+1)で一致する既存の
+`SModEq.pow_pow_add_one`を使う。WittのTeichmüller展開により全元へ広げ、
+Aのp進分離性で等号を得る。環準同型の連続性を追加仮定にしない。
+
+| 段階 | 成果物と配置（予定） | 完了条件 |
+| --- | --- | --- |
+| F4-1 | `CommutativeAlgebra/WittLiftUniqueness.lean` | 完全標数p環kからp進分離環AへのWitt写像の、同じ剰余写像による一意性。Teichmüller比較と全元の比較を分ける |
+| F4-2 | `CommutativeAlgebra/WittLiftConstruction.lean` | Fontaine θとの合成による一般持上げとmod p図式。一意な持上げの存在を公開 |
+| F4-3 | `CommutativeAlgebra/StrictPRecovery.lean`の非零版 | 標準復元写像の単射・全射・環同型、商写像の可換性 |
+| F4-4 | 同ファイルの零環を含む公開版 | A/(p)のCharPを公開仮定に加えず、零環の枝を処理。同型の存在・定義と任意の二写像の一意性 |
+| F4-5 | ルートimport・`scripts/audit_f4.lean`・計画更新 | BSの正確な仮定で型検査、零環と一般持上げの確認、全体ビルドと既存監査 |
+
+各段階で対象ビルドと公開宣言の`assert_no_sorry`を成功させ、計画・監査と共にコミットする。
+最後に全体ビルド、`scripts/audit_clmst.lean`、`scripts/audit_axioms.lean`、
+`scripts/audit_f4.lean`を実行する。共通層にBSのδ環や引用入力への依存を入れない。
+Mathlibの`CharP`は零環の標数を1とするので、公開版は零環を明示的に分岐する。
+F4はWitt復元と持上げまでで、δ構造の対応・完全prismの同値はBS側の別工程。
 
 ### 9.5. F6：一般主イデアル商のperfection射影核
 
