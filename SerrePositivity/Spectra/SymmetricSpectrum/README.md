@@ -4,6 +4,7 @@ Mathlibの `CategoryTheory.Mod` を、構成済みの球面対称列へ適用す
 基礎圏は基点付き単体的集合の対称列、テンソル積は登録済みのconvolutionである。
 各段の対象は基点付き単体的集合であり、球面の作用から和次数への構造射を得る。
 
+- [InternalHomShiftSuspension](InternalHomShiftSuspension.lean)：値域の懸垂構造射による内部Homの直接公式、次数移送と第一球面の公式との一致。
 - [InternalHomShiftStructure](InternalHomShiftStructure.lean)：値域の構造射と添字のブロック交換による内部Homの構造射の直接公式。
 - [InternalHomShift](InternalHomShift.lean)：次数をずらした内部Homスペクトル、F_nからの内部Homとの同型、構造射・懸垂構造射との両立と移送公式。
 - [InternalHomFreePermutation](InternalHomFreePermutation.lean)：F_nからの内部Homの各段の比較と後ろのブロックの置換作用、作用付き対象としての同型。
@@ -102,6 +103,10 @@ F_nからの内部Homとのスペクトル同型の成分が既存の各段の�
 各段の構造射は、通常の評価・値域の構造射・添字のブロック交換を合成して転置した射に一致する。
 ブロック交換はp+(n+q)からn+(p+q)へ球面のp要素と生成元のn要素を交換する。
 F_nからの内部Homの構造射も各段の比較を介してこの公式で計算できる。
+円による懸垂構造射も、通常の評価・値域の懸垂構造射・添字のブロック交換を転置した射に一致する。
+この添字の射は(n+q)+1からn+(q+1)へ、懸垂の一要素を生成元のn要素の後ろへ移す。
+次数の等式による移送は値域の移送による後合成であり、第一球面の直接公式との一致も証明した。
+F_nからの内部Homの懸垂構造射にも各段の比較を介して適用できる。
 
 球面の第n段は円の反復smashである。境界を潰した単体的球面との比較は別の課題として扱う。
 弱同値、モデル構造、導来smash、安定ホモトピー群はまだ登録していない。

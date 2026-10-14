@@ -46,6 +46,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomFreeLevels
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomFreePermutation
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomShift
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomShiftStructure
+public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomShiftSuspension
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomUnderlying
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeLeft
 
@@ -181,9 +182,13 @@ F_nからの内部Homとのスペクトル同型、構造射・懸垂構造射�
 次数をずらした内部Homの構造射を値域の構造射と添字のブロック交換から直接記述した。
 F_nからの内部Homの構造射にも各段の比較を介してこの直接公式を適用できる。
 
+円による懸垂構造射も、値域の懸垂構造射と添字のブロック交換から直接記述した。
+次数の等式による内部Homの移送が、値域の移送による後合成と一致することを証明した。
+第一球面の直接公式との一致と、F_nからの内部Homへの適用も証明した。
+
 ## 未構成の範囲
 
-懸垂構造射の直接公式、モデル構造と導来演算は引き続き実装する。
+各段の直接公式の自然性と第零次数への特殊化、モデル構造と導来演算は引き続き実装する。
 この入口は完成済みの§4の降下入力を変更せず、基盤を独立に検証するためのもの。
 現在の構成に新しい未証明入力はない。
 -/
