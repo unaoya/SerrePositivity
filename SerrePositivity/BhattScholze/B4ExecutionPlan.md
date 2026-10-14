@@ -276,3 +276,16 @@ G1は共通計画§9.7cでG1-1〜4の公開・監査まで完了したことを�
 `PrincipalAdicFaithfulDescent.surjective_algHom_of_principal_residue_baseChange`が
 要求した環商の署名を供給する。BS側は再監査・適用し、同等の一般降下補題を作らない。
 G2の完備テンソル比較とBS側のperfectoid性・Tor計算は別に残る。
+
+## B4-6の条件付き入力（2026-10-14）
+
+`AndreCompatibleRootsConditional.lean`で既存André入力から、任意σ:Type uの元族について
+p完全忠実平坦なperfectoid拡大とその像の両立するp冪根を選ぶ補題を公開した。
+絶対整閉からの根列の選択は既存の証明済み一般補題を使う。
+新しいsorry・公理・外部引用は追加していない。
+
+この補題の依存には既存
+`Inputs.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed`のsorryAxが残る。
+専用`scripts/audit_bhatt_scholze_andre_conditional.lean`でその名前付き境界を確認した。
+純粋なB4監査にはこのimportを混ぜない。これは条件付き入力だけであり、
+引用なしのB4c・一般B4の全射性・B-S引用の解消は未完了。

@@ -1,0 +1,10 @@
+import SerrePositivity.BhattScholze.AndreCompatibleRootsConditional
+import Mathlib.Util.AssertNoSorry
+
+-- 根の存在から両立する根列を選ぶ一般補題は証明済み。
+assert_no_sorry SerrePositivity.IsAbsolutelyIntegrallyClosed.exists_compatible_pow_roots
+#print axioms SerrePositivity.IsAbsolutelyIntegrallyClosed.exists_compatible_pow_roots
+
+-- 以下は既存Andréの名前付きsorryに相対的。assert_no_sorryの対象にしない。
+#print axioms SerrePositivity.BhattScholze.exists_completelyFaithfullyFlat_compatibleRoots_of_andre
+#print sorries SerrePositivity.BhattScholze.exists_completelyFaithfullyFlat_compatibleRoots_of_andre
