@@ -4728,3 +4728,31 @@ C2までの全体目標は未完了であり、モデル構造には進まない
 検証：新規・変更ソースの書式・証明マーカー、文書のリンク、git diff --checkを確認した。
 集約ビルドは2102ジョブ、公理監査は245モジュール・2469宣言で成功した。
 標準公理のみでsorry依存なし。新しい証明は標準の計算上限で検証した。
+
+## 114. 実施記録：通常の単体的集合によるtensor・cotensorとHom同値（2026-10-14）
+
+[AdjoinBasepoint](../SerrePositivity/Spectra/PointedSimplicialSet/AdjoinBasepoint.lean)で、
+通常の単体的集合への自由な基点の追加とその関手・忘却との随伴を公開した。
+終単体的集合への基点の追加はsmashの単位と同型である。
+
+[SimplicialTensorCotensor](../SerrePositivity/Spectra/SymmetricSpectrum/SimplicialTensorCotensor.lean)で、
+K⊗ₛEをK_+∧E、E^Kをcotensor(K_+,E)として構成し、それぞれのスペクトルに関する関手を公開した。
+スペクトルを固定した単体的集合パラメータの関手と、通常の単体的写像対象の関手も構成した。
+自由な基点の追加の随伴を写像対象の随伴へ合成し、
+Hom_Sp(K⊗ₛE,F)≃Hom_SSet(K,Map(E,F))を得た。
+既存の作用とcotensorの随伴からHom_Sp(K⊗ₛE,F)≃Hom_Sp(E,F^K)を構成し、
+合成してHom_SSet(K,Map(E,F))≃Hom_Sp(E,F^K)も公開した。
+三つのHom同値の順写像が整合することを証明した。
+
+tensor・cotensorの評価と余評価、通常の写像対象の評価と余評価を構成した。
+tensor・cotensorの評価と余評価の二つの三角形の法則も証明した。
+写像対象へのHom同値のK・Fの自然性と、cotensorへのHom同値のE・Fの自然性を公開した。
+
+B4の対象・随伴・三つのHom同値・評価・余評価の構成を検証した。
+残る変数の自然性と三つのHom同値への自然性の接続、Δ[0]の単位、
+K×Lの反復tensor・cotensorの比較は引き続き必要であり、B4全体は未完了である。
+モデル構造には進まない。
+
+検証：新規ソースの書式・証明マーカー、文書のリンク、git diff --checkを確認した。
+集約ビルドは2104ジョブ、公理監査は247モジュール・2495宣言で成功した。
+標準公理のみでsorry依存なし。新しい証明は標準の計算上限で検証した。
