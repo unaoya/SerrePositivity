@@ -1,4 +1,5 @@
 import SerrePositivity.KTheory.Adams.CyclicTwo
+import SerrePositivity.PerfectComplex.TensorShuffle
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.Adams.tensorSquareClass_eq_of_quasiIso
@@ -20,3 +21,9 @@ assert_no_sorry SerrePositivity.Adams.cyclicTwo_mk_concrete
 assert_no_sorry SerrePositivity.Adams.cyclicTwo_unique
 #print axioms SerrePositivity.Adams.cyclicTwo
 #print axioms SerrePositivity.Adams.cyclicTwo_mk_concrete
+assert_no_sorry SerrePositivity.ιTensorObj_cochainTensorAssociator_hom
+assert_no_sorry SerrePositivity.ιTensorObj_cochainTensorAssociator_inv
+assert_no_sorry SerrePositivity.cochainTensorIso
+assert_no_sorry SerrePositivity.cochainTensorShuffle
+#print axioms SerrePositivity.ιTensorObj_cochainTensorAssociator_hom
+#print axioms SerrePositivity.cochainTensorShuffle
