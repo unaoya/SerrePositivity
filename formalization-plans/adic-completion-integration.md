@@ -20,6 +20,7 @@
 | `AdicCompletionBaseQuotient` | 上の同型を基底の冪商上の代数同型にする | 係数の両立を含む拡張 |
 | `AdicCompletionFlatQuotient` | 平坦代数の完備化の各冪商の平坦性 | 商ごとの平坦性。環全体の平坦性とは別 |
 | `AdicCompletionResidue` | 完備化の剰余体と指定体の同定、係数写像の両立 | 局所的な適用の共通 API |
+| `AdicCompletionChangeIdeal` | 二つの完備化が相手のイデアルについても完備なら、元の加群の像を保つ線形同型。元の加群の有限性は不要 | 二つのイデアル進完備化を比較する共通API。Cohen–Gabberのパラメータ進・極大イデアル進微分へ適用済み（2026-10-14） |
 | `AdicApproximationLifting` | 次数のずれを持つ近似を、前完備な係数加群の極限で実際の像へ持ち上げる | 完備環の Noether 性の準備 |
 | `RootTower/CompletionFlat` | 主イデアル完備化での生成元の正則性、未完備塔の平坦性 | 一般正則性と塔への適用が同居 |
 | `ResidueFieldGeneralCompletion` | 指定剰余体を持つ完備局所環と、全冪商の平坦性の構成 | 剰余体拡大への適用 |

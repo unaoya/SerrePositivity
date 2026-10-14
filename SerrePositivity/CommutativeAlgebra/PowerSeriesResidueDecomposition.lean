@@ -44,12 +44,14 @@ theorem powerSeries_exponent_division (q : ℕ) (hq : 0 < q) (d : σ →₀ ℕ)
     powerSeriesResidueExponent_apply, powerSeriesResidueIndex]
   exact Nat.div_add_mod (d i) q
 
-theorem coeff_powerSeriesResidueTerm (q : ℕ) (hq : 0 < q) (e : σ → Fin q)
+/-- 剰余単項式と指数展開の係数。入力は任意の冪級数。 -/
+theorem coeff_powerSeriesResidueExpansion (q : ℕ) (hq : 0 < q) (e : σ → Fin q)
     (φ : MvPowerSeries σ R) (d : σ →₀ ℕ) :
     MvPowerSeries.coeff d
       (MvPowerSeries.monomial (powerSeriesResidueExponent q e) 1 *
-        MvPowerSeries.expand q (Nat.ne_of_gt hq) (powerSeriesResidueComponent q e φ)) =
-      if e = powerSeriesResidueIndex q hq d then MvPowerSeries.coeff d φ else 0 := by
+        MvPowerSeries.expand q (Nat.ne_of_gt hq) φ) =
+      if e = powerSeriesResidueIndex q hq d then
+        MvPowerSeries.coeff (powerSeriesQuotientExponent q d) φ else 0 := by
   classical
   rw [MvPowerSeries.coeff_monomial_mul]
   by_cases he : e = powerSeriesResidueIndex q hq d
@@ -71,10 +73,6 @@ theorem coeff_powerSeriesResidueTerm (q : ℕ) (hq : 0 < q) (e : σ → Fin q)
             (powerSeriesResidueIndex q hq d)) hdiv.symm
         _ = _ := add_tsub_cancel_right _ _
     rw [ite_eq_left hle, hsub, MvPowerSeries.coeff_expand_smul, ite_eq_left rfl, one_mul]
-    change MvPowerSeries.coeff
-      (q • powerSeriesQuotientExponent q d +
-        powerSeriesResidueExponent q (powerSeriesResidueIndex q hq d)) φ = _
-    rw [hdiv]
   · rw [ite_eq_right he]
     split_ifs with hle
     · obtain ⟨i, hi⟩ : ∃ i, e i ≠ powerSeriesResidueIndex q hq d i := by
@@ -95,6 +93,40 @@ theorem coeff_powerSeriesResidueTerm (q : ℕ) (hq : 0 < q) (e : σ → Fin q)
         exact hi' hsum.symm
       rw [MvPowerSeries.coeff_expand_of_not_dvd q (Nat.ne_of_gt hq) _ hnot, mul_zero]
     · rfl
+
+
+theorem coeff_powerSeriesResidueTerm (q : ℕ) (hq : 0 < q) (e : σ → Fin q)
+    (φ : MvPowerSeries σ R) (d : σ →₀ ℕ) :
+    MvPowerSeries.coeff d
+      (MvPowerSeries.monomial (powerSeriesResidueExponent q e) 1 *
+        MvPowerSeries.expand q (Nat.ne_of_gt hq) (powerSeriesResidueComponent q e φ)) =
+      if e = powerSeriesResidueIndex q hq d then MvPowerSeries.coeff d φ else 0 := by
+  classical
+  rw [coeff_powerSeriesResidueExpansion q hq]
+  split_ifs with he
+  · subst e
+    change MvPowerSeries.coeff
+      (q • powerSeriesQuotientExponent q d +
+        powerSeriesResidueExponent q (powerSeriesResidueIndex q hq d)) φ = _
+    rw [powerSeries_exponent_division]
+  · rfl
+
+/-- 剰余と商から組み立てた指数の剰余を抽出する。 -/
+@[simp] theorem powerSeriesResidueIndex_scale_add (q : ℕ) (hq : 0 < q)
+    (d : σ →₀ ℕ) (r : σ → Fin q) :
+    powerSeriesResidueIndex q hq (q • d + powerSeriesResidueExponent q r) = r := by
+  funext i
+  apply Fin.ext
+  change (q * d i + (r i : ℕ)) % q = (r i : ℕ)
+  simp [Nat.add_mod, Nat.mod_eq_of_lt (r i).isLt]
+
+/-- 剰余と商から組み立てた指数の商を抽出する。 -/
+@[simp] theorem powerSeriesQuotientExponent_scale_add (q : ℕ) (hq : 0 < q)
+    (d : σ →₀ ℕ) (r : σ → Fin q) :
+    powerSeriesQuotientExponent q (q • d + powerSeriesResidueExponent q r) = d := by
+  ext i
+  change (q * d i + (r i : ℕ)) / q = d i
+  rw [Nat.mul_add_div hq, Nat.div_eq_of_lt (r i).isLt, add_zero]
 
 open Classical in
 /-- 冪級数の指数剰余分解。係数環の完全性はまだ必要ない。 -/

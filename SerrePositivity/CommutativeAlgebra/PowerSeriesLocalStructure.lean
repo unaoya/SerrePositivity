@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.PowerSeriesMixedCompleteness
+public import SerrePositivity.CommutativeAlgebra.PowerSeriesAdicTopology
 
 /-! # 有限変数冪級数環の極大イデアル
 
@@ -16,48 +17,9 @@ open IsLocalRing
 theorem powerSeries_ker_constantCoeff (σ R : Type*) [Finite σ] [CommRing R] :
     RingHom.ker (MvPowerSeries.constantCoeff (σ := σ) (R := R)) =
       Ideal.span (Set.range (MvPowerSeries.X (σ := σ) (R := R))) := by
-  classical
-  let P := MvPolynomial.idealOfVars σ R
-  let e := (MvPowerSeries.toAdicCompletionAlgEquiv σ R).toRingEquiv
-  have he : (Ideal.span (Set.range (MvPowerSeries.X (σ := σ) (R := R)))).map e =
-      P.map (algebraMap (MvPolynomial σ R) (AdicCompletion P (MvPolynomial σ R))) := by
-    change (Ideal.span (Set.range (MvPowerSeries.X (σ := σ) (R := R)))).map e =
-      (Ideal.span (Set.range (MvPolynomial.X (σ := σ) (R := R)))).map
-        (algebraMap (MvPolynomial σ R) (AdicCompletion P (MvPolynomial σ R)))
-    simp_rw [Ideal.map_span, ← Set.range_comp]
-    congr 2
-    ext i
-    simp [e, P, MvPolynomial.idealOfVars, AdicCompletion.algebraMap_apply,
-      ← MvPolynomial.coe_X, MvPowerSeries.toAdicCompletion_coe]
-  apply le_antisymm
-  · intro f hf
-    have hf0 : MvPowerSeries.constantCoeff f = 0 := hf
-    have ht : MvPowerSeries.truncTotal 1 f = 0 := by
-      ext d
-      rw [MvPowerSeries.coeff_truncTotal_eq_ite]
-      split_ifs with h
-      · have hd : d = 0 := (Finsupp.degree_eq_zero_iff d).mp (by omega)
-        subst d
-        change MvPowerSeries.coeff 0 f = 0
-        exact hf0
-      · simp
-    have hm : e f ∈ P.map (algebraMap (MvPolynomial σ R)
-        (AdicCompletion P (MvPolynomial σ R))) := by
-      rw [← AdicCompletion.ker_evalOneₐ_eq_map P (MvPolynomial.idealOfVars_fg σ R)]
-      change AdicCompletion.evalOneₐ P (MvPowerSeries.toAdicCompletion σ R f) = 0
-      have hz : (MvPowerSeries.toAdicCompletion σ R f).val 1 = 0 := by
-        rw [MvPowerSeries.toAdicCompletion_apply_eq_mk_truncTotal, ht]
-        rfl
-      rw [AdicCompletion.evalOneₐ, AlgHom.comp_apply,
-        ← AdicCompletion.factor_eval_eq_evalₐ P (MvPowerSeries.toAdicCompletion σ R f)
-          (by simp only [smul_eq_mul, Ideal.mul_top]; exact le_rfl)]
-      simp only [AdicCompletion.eval_apply, hz, map_zero]
-    rw [← he] at hm
-    obtain ⟨g, hg, hgf⟩ := (Ideal.mem_map_of_equiv e (e f)).mp hm
-    exact e.injective hgf ▸ hg
-  · rw [Ideal.span_le]
-    rintro _ ⟨i, rfl⟩
-    exact RingHom.mem_ker.mpr (MvPowerSeries.constantCoeff_X i)
+  ext f
+  simpa [RingHom.mem_ker, Nat.lt_one_iff, Finsupp.degree_eq_zero_iff] using
+    (mem_powerSeries_variables_pow_iff 1 f).symm
 
 /-- 局所係数環の有限変数冪級数の極大イデアルは、係数極大イデアルと全変数の和。 -/
 theorem powerSeries_maximalIdeal_eq (σ R : Type*) [Finite σ] [CommRing R] [IsLocalRing R] :

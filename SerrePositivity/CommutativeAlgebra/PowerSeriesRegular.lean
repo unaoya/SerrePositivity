@@ -1,7 +1,7 @@
 module
 
 public import Mathlib.RingTheory.MvPowerSeries.Equiv
-public import Mathlib.RingTheory.MvPowerSeries.NoZeroDivisors
+public import SerrePositivity.CommutativeAlgebra.PowerSeriesDomain
 public import Mathlib.RingTheory.PowerSeries.Ideal
 public import Mathlib.RingTheory.KrullDimension.Regular
 public import Mathlib.RingTheory.RegularLocalRing.Defs
@@ -19,10 +19,6 @@ public import Mathlib.FieldTheory.Perfect
 public section
 namespace SerrePositivity
 open IsLocalRing
-
-/-- 整域係数の多変数冪級数環は整域。Mathlibの零因子なしのインスタンスを使う。 -/
-instance isDomain_mvPowerSeries (σ R : Type*) [CommRing R] [IsDomain R] :
-    IsDomain (MvPowerSeries σ R) := NoZeroDivisors.to_isDomain _
 
 /-- 一変数冪級数の定数係数の核は(X)。 -/
 theorem powerSeries_ker_constantCoeff_single (R : Type*) [CommRing R] :

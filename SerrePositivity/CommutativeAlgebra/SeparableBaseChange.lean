@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.CommutativeAlgebra.FractionRingBasis
 public import Mathlib.FieldTheory.PurelyInseparable.Tower
 public import Mathlib.FieldTheory.Minpoly.IsIntegrallyClosed
 public import Mathlib.LinearAlgebra.TensorProduct.Basis
@@ -132,45 +133,6 @@ theorem finrank_perfectBaseChange : Module.finrank E Ω = Module.finrank K L := 
     (basisOfPerfectBaseChange K E L Ω p (Module.finBasis K L))
 
 end PerfectBasis
-
-set_option backward.isDefEq.respectTransparency false in
-/-- 代数的な整域拡大 `A → D` では、`D` の像が `Frac(D)` を `Frac(A)` 上張る。
-Mathlib の、分母を底環側へ移して線形包を比較する定理を単位イデアルに適用する。 -/
-theorem span_range_fractionRing_eq_top
-    (A D K L : Type u) [CommRing A] [IsDomain A] [CommRing D] [IsDomain D]
-    [Field K] [Field L] [Algebra A D] [Algebra.IsAlgebraic A D]
-    [Algebra A K] [IsFractionRing A K] [Algebra D L] [IsFractionRing D L]
-    [Algebra A L] [Algebra K L] [IsScalarTower A D L] [IsScalarTower A K L] :
-    Submodule.span K (Set.range (algebraMap D L)) = ⊤ := by
-  have hinj : Function.Injective (algebraMap A L) := by
-    rw [IsScalarTower.algebraMap_eq A K L]
-    exact (algebraMap K L).injective.comp (IsFractionRing.injective A K)
-  have hh := IsFractionRing.ideal_span_singleton_map_subset (R := A) (S := D) (K := K) (L := L)
-    (a := 1) (b := Set.univ) hinj (by simp)
-  apply top_unique
-  intro x _
-  have hx : x ∈ (Ideal.span {(algebraMap D L) 1} : Ideal L) := by simp
-  simpa only [Set.image_univ, SetLike.mem_coe] using hh hx
-
-/-- 有限な整域拡大の分数体拡大は有限次元である。
-有限加群の係数拡大から分数体への全射を、元の環の像が張ることから構成する。 -/
-theorem finiteDimensional_fractionRing_of_finite
-    (A D K L : Type u) [CommRing A] [IsDomain A] [CommRing D] [IsDomain D]
-    [Field K] [Field L] [Algebra A D] [Module.Finite A D]
-    [Algebra A K] [IsFractionRing A K] [Algebra D L] [IsFractionRing D L]
-    [Algebra A L] [Algebra K L] [IsScalarTower A D L] [IsScalarTower A K L] :
-    FiniteDimensional K L := by
-  let f : K ⊗[A] D →ₐ[K] L := Algebra.TensorProduct.productLeftAlgHom
-    (Algebra.ofId K L) (IsScalarTower.toAlgHom A D L)
-  apply Module.Finite.of_surjective f.toLinearMap
-  rw [← LinearMap.range_eq_top]
-  apply top_unique
-  rw [← span_range_fractionRing_eq_top A D K L]
-  apply Submodule.span_le.mpr
-  rintro _ ⟨d, rfl⟩
-  refine ⟨1 ⊗ₜ[A] d, ?_⟩
-  change algebraMap K L 1 * algebraMap D L d = _
-  rw [map_one, one_mul]
 
 /-- 分数体の基底は、元の整域の像の中から選べる。
 有限拡大に限らず、代数的な整域拡大について成立する。 -/

@@ -5,6 +5,8 @@ public import Mathlib.RingTheory.Ideal.Maps
 public import Mathlib.RingTheory.AdicCompletion.RingHom
 public import Mathlib.Algebra.CharP.Quotient
 public import Mathlib.Algebra.CharP.Algebra
+public import SerrePositivity.CommutativeAlgebra.NilpotentFrobenius
+public import SerrePositivity.CommutativeAlgebra.FrobeniusKernelLift
 
 /-! # 完全環からの写像の冪零核を越える持ち上げ
 
@@ -25,17 +27,9 @@ theorem exists_unique_ringHom_lift_of_frobenius_kernel
     (f : A →+* B) (hf : Function.Surjective f) (n : ℕ)
     (hkill : ∀ x : A, f x = 0 → x ^ p ^ n = 0) (g : k →+* B) :
     ∃! l : k →+* A, f.comp l = g := by
-  let F := iterateFrobenius A p n
-  have hker : RingHom.ker f ≤ RingHom.ker F := by
-    intro x hx
-    exact hkill x hx
-  let T : B →+* A := f.liftOfSurjective hf ⟨F, hker⟩
-  have hT (x : A) : T (f x) = F x :=
-    RingHom.liftOfSurjective_comp_apply f hf ⟨F, hker⟩ x
+  let T := liftFrobeniusOfSurjective p f hf n hkill
   have hfT (b : B) : f (T b) = iterateFrobenius B p n b := by
-    obtain ⟨x, rfl⟩ := hf b
-    rw [hT]
-    exact f.map_iterateFrobenius p x n
+    exact map_liftFrobeniusOfSurjective p f hf n hkill b
   let e := iterateFrobeniusEquiv k p n
   let l : k →+* A := T.comp (g.comp e.symm.toRingHom)
   have hl : f.comp l = g := by
@@ -64,15 +58,8 @@ theorem exists_unique_ringHom_lift_of_nilpotent_kernel
     (f : A →+* B) (hf : Function.Surjective f)
     (hker : IsNilpotent (RingHom.ker f)) (g : k →+* B) :
     ∃! l : k →+* A, f.comp l = g := by
-  obtain ⟨N, hN⟩ := hker
-  have hn : N < p ^ N := Nat.lt_pow_self hp.out.one_lt
-  apply exists_unique_ringHom_lift_of_frobenius_kernel p f hf N
-  intro x hx
-  have hm := Ideal.pow_mem_pow (show x ∈ RingHom.ker f from hx) (p ^ N)
-  have he : RingHom.ker f ^ p ^ N = ⊥ :=
-    le_bot_iff.mp (by simpa only [hN, Ideal.zero_eq_bot] using
-      (Ideal.pow_le_pow_right (I := RingHom.ker f) hn.le))
-  simpa only [he, Ideal.mem_bot] using hm
+  obtain ⟨n, hn⟩ := exists_pow_exp_eq_zero_of_nilpotent_ideal p (RingHom.ker f) hker
+  exact exists_unique_ringHom_lift_of_frobenius_kernel p f hf n (fun x hx ↦ hn x hx) g
 
 /-- 標数pのI進完備環では、完全環からI商への写像は一意に持ち上がる。
 各正の冪商での一意な持ち上げを両立させて逆極限を取る。 -/
