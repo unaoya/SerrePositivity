@@ -19,20 +19,30 @@ open CategoryTheory HomotopicalAlgebra CategoryTheory.MonoidalCategory
 namespace SerrePositivity.Quillen
 variable {C : Type u} [Category.{v} C] [MonoidalCategory C]
 
-/-- Images of P under right tensor with all objects, on Mathlib morphism classes. -/
+/-- Images of P under right tensor with all objects, allowing arrow isomorphisms
+as in Mathlib `MorphismProperty.map`. -/
 def tensorRightImages (P : MorphismProperty C) : MorphismProperty C :=
-  ⨆ X : C, P.strictMap (tensorRight X)
+  ⨆ X : C, P.map (tensorRight X)
 
 lemma tensorRightImages_monotone : Monotone (tensorRightImages (C := C)) := by
   intro P Q h
   apply iSup_le
   intro X
-  exact (MorphismProperty.monotone_strictMap (tensorRight X) h).trans
-    (le_iSup (fun X : C ↦ Q.strictMap (tensorRight X)) X)
+  exact (MorphismProperty.monotone_map (tensorRight X) h).trans
+    (le_iSup (fun X : C ↦ Q.map (tensorRight X)) X)
 
 lemma tensorRight_mem {P : MorphismProperty C} {A B : C} (f : A ⟶ B) (hf : P f)
     (X : C) : tensorRightImages P (f ▷ X) :=
-  (le_iSup (fun X : C ↦ P.strictMap (tensorRight X)) X) _ (P.map_mem_strictMap _ f hf)
+  (le_iSup (fun X : C ↦ P.map (tensorRight X)) X) _ (P.map_mem_map _ f hf)
+
+/-- Braiding transports left tensor generators into the same right tensor class. -/
+lemma tensorLeft_mem [BraidedCategory C] {P : MorphismProperty C}
+    {A B : C} (f : A ⟶ B) (hf : P f) (X : C) : tensorRightImages P (X ◁ f) := by
+  have h : (P.map (tensorRight X)) (X ◁ f) := by
+    apply ((P.map (tensorRight X)).arrow_mk_iso_iff
+      (Arrow.isoMk (β_ A X) (β_ B X) (BraidedCategory.braiding_naturality_left f X).symm)).1
+    exact P.map_mem_map (tensorRight X) f hf
+  exact (le_iSup (fun X : C ↦ P.map (tensorRight X)) X) _ h
 
 /-- Relative cell complexes with explicit coproduct and ordinal universes. -/
 abbrev relativeCells (P : MorphismProperty C) : MorphismProperty C :=

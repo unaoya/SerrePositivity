@@ -8,6 +8,7 @@ public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.ModelCategory
+public import SerrePositivity.HomotopicalAlgebra.Monoidal.ModuleTransfer
 public import SerrePositivity.HomotopicalAlgebra.Enriched.TensorCotensor
 public import SerrePositivity.CategoryTheory.Enriched.EnrichedRepresentability
 
