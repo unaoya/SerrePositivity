@@ -1,5 +1,8 @@
-import SerrePositivity.KTheory.Adams.CupVanishing
+import SerrePositivity.IntersectionMultiplicity.AdamsVanishing
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.Adams.LocalizationAdamsFamily.cup_enlarge_eq_zero
 #print axioms SerrePositivity.Adams.LocalizationAdamsFamily.cup_enlarge_eq_zero
+
+assert_no_sorry SerrePositivity.intersectionVanishing_of_adamsFamily
+#print axioms SerrePositivity.intersectionVanishing_of_adamsFamily
