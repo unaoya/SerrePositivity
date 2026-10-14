@@ -153,6 +153,8 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleResolut
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerComplete
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleClosure
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerHomologyComplete
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleHomComplete
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ReflectionRing
 public import SerrePositivity.CommutativeAlgebra.WittAdditionCarry
 public import SerrePositivity.CategoryTheory.EulerTheory
 public import SerrePositivity.LengthAlgebra.Foundations
