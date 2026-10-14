@@ -1,4 +1,4 @@
-import SerrePositivity.IntersectionMultiplicity.AdamsVanishing
+import SerrePositivity.IntersectionMultiplicity.AdamsVanishingTwo
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.Adams.LocalizationAdamsFamily.cup_enlarge_eq_zero
@@ -6,3 +6,8 @@ assert_no_sorry SerrePositivity.Adams.LocalizationAdamsFamily.cup_enlarge_eq_zer
 
 assert_no_sorry SerrePositivity.intersectionVanishing_of_adamsFamily
 #print axioms SerrePositivity.intersectionVanishing_of_adamsFamily
+
+assert_no_sorry SerrePositivity.isUnit_two_of_residue_ne_zero
+#print axioms SerrePositivity.isUnit_two_of_residue_ne_zero
+assert_no_sorry SerrePositivity.intersectionVanishing_of_residue_two_ne_zero
+#print axioms SerrePositivity.intersectionVanishing_of_residue_two_ne_zero
