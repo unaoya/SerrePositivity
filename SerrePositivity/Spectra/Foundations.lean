@@ -59,6 +59,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorAdjunctio
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorLevelEvaluation
 public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorCurryNaturality
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorMapLevels
+public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorUnit
 public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorMapLevels
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomUnderlying
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeLeft
@@ -248,6 +249,9 @@ F_0との比較と内部Homとの比較の生成対象に関する自然性を�
 cotensorの前合成の各段は通常の内部Homの前合成になる。
 恒等射の転置とこの前合成の逆転置から、生成対象のテンソル射の各段を計算した。
 両変数のテンソル・スペクトル射の各段は通常のsmashの射の法則を満たす。
+
+F_0 S^0と球面スペクトルの比較を構成し、各段のsmashによる作用の単位自然同型を構成した。
+各段の通常の左単位子との一致と、作用の結合の整合性は引き続き証明する。
 
 ## 未構成の範囲
 
