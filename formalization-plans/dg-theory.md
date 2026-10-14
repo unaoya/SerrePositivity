@@ -1,7 +1,7 @@
 # dg 理論（M5）の独立実装計画
 
-作成・調査：2026-10-14。更新：2026-10-15。状態：U0〜U3 を実装・検証済み。
-実装記録・検証・共有系列への契約・U4/U5 の引継ぎは§11。D0〜D10全体の完了ではない。
+作成・調査：2026-10-14。更新：2026-10-15。状態：U0〜U5 を実装・検証済み。
+U0〜U3の記録は§11、U4/U5の実績と後続契約は§12。D0〜D10全体の完了ではない。
 この計画だけを受け取る実装担当者向けの仕様である。
 ホモトピー論の共有契約は [k-theory.md §123](k-theory.md#123-次段階の設計i抽象モデル圏とその当てはめ2026-10-14)。
 以下のD0〜D10、ファイル配置、API案は、既存又は§11で実装済みと明記したもの以外は予定名。
@@ -368,10 +368,10 @@ dg加群・semifree解像度・非有界K-flat・導来tensor・dg商・Morita�
 従ってD0〜D10の全受入、M5完了、M6入力、M9当てはめの完了とは報告しない。
 U4/U5の実装実績後に§9の長期見積もりを再評価する。
 
-## 12. U4/U5 の継続実装（2026-10-15、進行中）
+## 12. U4/U5 の実装実績（2026-10-15、受入済み）
 
-目標はU4とU5の全受入条件であり、以下の区切りをU4/U5全体の完了とは数えない。
-検証した単位ごとに担当範囲だけをコミットする。
+以下は検証・コミットの区切り。U4全受入は§12.3、U5全受入は§12.7で確認した。
+D3全体やM5全体の完了とは数えない。
 
 ### 12.1 U4a：signed braiding
 
@@ -452,3 +452,66 @@ end の成分による ext から両単位則と結合則を証明する。
 `moduleEvaluation` は閉零圏から既存の非有界 chain map 圏への評価関手。
 通常の enrichedFunctor 圏の弱い自然性には置き換えていない。
 両ファイルはビルド成功。一対象比較・後続契約と総合検証は引き続き行う。
+
+### 12.7 U5d：一対象環 A の比較と U5 受入
+
+`Module/Ring.lean` の `ringModuleObjEquiv` は加群対象と既存 Ch(A) の同値。
+単位保存から作用が一意に定まることを証明し、`ringModule_recover` は厳密な対象復元。
+`ringModuleHomIso` は任意の一対象加群対の全次数 Hom end と通常の `linearHomComplex` の chain iso。
+`ringModuleEquivalence` は閉零加群圏と既存非有界複体圏の同値であり、評価関手の
+充満・忠実・本質的全射を証明する。一般可換環のままで、体の仮定はない。
+
+独立入口は `DifferentialGraded/StageTwo.lean`。
+`Checks/ModulesAcceptance.lean` は任意 A、独立対象宇宙 v と明示 smallness、
+全次数パラメータ Yoneda、次数 1 の変換と次数 −1 の作用、ℤ と ZMod 2 の一対象比較を検証した。
+`Checks/Modules.lean` の主要16宣言は標準公理のみ。新規 sorry・引用 axiom はなし。
+U4/U5 に追加した監査は38宣言、U0〜U5合計79宣言。
+
+これで U5 の dg opposite 符号、代表加群、全次数 Hom/変換、dg Yoneda、
+一対象 A と普通複体の比較、後続契約の条件を満たす。
+`moduleEnrichment` と Hom end を G6 の Ch(A) 具体例に供給できる。
+
+### 12.8 次の独立実装と共有系列への型契約
+
+以下は**未実装の後続 API の仕様**。Lean の定理・存在仮定・引用 axiom にはしていない。
+`A : Type u`, `[CommRing A]`, `D : Type v`, `[DGCategory A D]`, `[Small.{u} D]` を保つ。
+`RightModule A D : Type (max (u+1) v)`、その Hom 複体は依然 `Complex A : Type (u+1)`。
+任意の大きい D の end を黙って仮定しない。
+
+| 所有・次の範囲 | 固定する型・仮定・使用箇所 |
+| --- | --- |
+| M5：free/forget | `freeAt x : Complex A ⥤ ModuleCategory A D`、値は `K ⊗ Hom_D(y,x)`。次数 p の右作用を K の次数 k と交換すると `(-1)^(pk)`。`freeAt x ⊣ moduleEvaluation A D x` を通常 chain map の随伴として証明し、豊穣 Hom の `Hom(freeAt x K,M) ≅ homComplex A K (M(x))` も保持する。現在実装した `representable`/`dgYonedaIso`/`moduleEvaluationDG` を使う |
+| M5：underlying family | `ModuleCategory A D ⥤ (Discrete D ⥤ Complex A)`。射は `moduleEvaluation` の全成分。これは忘却先であって、右 dg 加群を通常 Dᵒᵖ の関手圏に置き換えるものではない |
+| M5：resolution/導来圏 | `K(D) := HomotopyCategory A (RightModule A D)` は既存境界商の入口。閉零圏の射 f に対し `W_D f := ∀ x, QuasiIso ((moduleEvaluation A D x).map f)` を Mathlib `MorphismProperty` として定義し、2-out-of-3・retractを証明する。先にこの W の局所化を構成し、shift/cone・極限余極限・semifreeの実装を続ける |
+| M5 → G2/G5 | `freeAt x` で球/円盤の生成射を移し、対象族・次数・射の宇宙を u/v とともに固定。free(J)-cell が objectwise W_D に入ることと smallness の具体的証拠は M5 側。一般 small object・多対象転送・モデル認識は共有側 |
+| M5 → G1 | free/eval・restriction/extensionの実際の随伴と objectwise W/Fib の保存条件を供給後、通常 Mathlib Quillen/derived adjunction API へ接続する。U4/U5ではモデル構造の存在を仮定していない |
+| M5 → G6 | `complexSymmetricCategory`, `complexMonoidalClosed`, `complexEnrichment_eq_closed`, `moduleEnrichment`, `moduleHomEquiv` と明示 smallness。任意VのSM7・pullback-hom/pushout-product一般同値は共有側 |
+
+未完成は D3 の free_x・shift/cone・極限余極限・objectwise W、D4 の局所化・解像度、
+D4m の射影モデル比較、D5以降の K-flat・導来 tensor・dg 商・Morita・Perf/既存 perfect 比較。
+この段階で M5全体、M6入力、M9当てはめの完成は主張しない。
+共有 G API の不足による現在のブロックはない。対象ファイル・共有ルート import・既存 PerfectComplex は保持した。
+
+### 12.9 総合検証と保存
+
+2026-10-15、固定 Mathlib HEAD と `lake-manifest.json` の SHA 一致を再確認。
+次のビルド対象を同時に指定して成功した：
+
+- `DifferentialGraded.Checks.Axioms`（U0〜U3、41宣言）
+- `DifferentialGraded.Checks.Braiding`（5宣言）
+- `DifferentialGraded.Checks.Closed`（14宣言）
+- `DifferentialGraded.Checks.Enrichment`（3宣言）
+- `DifferentialGraded.Checks.Modules`（16宣言、`ModulesAcceptance`/`StageTwo` を含む）
+- 既存 `SerrePositivity.Spectra.StageTwo`
+
+上の5つの dg 監査ファイルをそれぞれ `lake env lean` で直接実行した。
+79宣言の公理はすべて `propext`・`Classical.choice`・`Quot.sound` のみ。
+担当 Lean ファイルの `sorry`/`admit`/新規 `axiom` 検索は0件。
+`lake env lean scripts/check_spectra_stage2.lean` も成功。
+`python3 scripts/check_documentation.py` は Markdown 21ファイル・exposition参照306件、失敗0件。
+担当ファイルの `git diff --check` も成功。
+StageTwo のローカル import 閉包は63モジュール（うちdg実装29）で、Spectra・Paper・Inputsへの依存はない。
+共有ルート import・既存 PerfectComplex・並行作業ファイルは編集していない。
+
+U4は3区切り、U5は4区切りに分け、担当ファイルのみをコミットした。
+後続作業は§12.8の具体的契約から始める。採用済み引用は引き続き0件。

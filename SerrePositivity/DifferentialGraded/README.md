@@ -1,8 +1,8 @@
 # M5：dg 理論の独立入口
 
-U0〜U4 実装・検証（U5進行中）：2026-10-15。計画は
+U0〜U5 実装・検証：2026-10-15。計画は
 [ dg-theory.md ](../../formalization-plans/dg-theory.md)。
-入口は [StageOne.lean](StageOne.lean)。共有ルート import は変更しない。
+入口は [StageTwo.lean](StageTwo.lean)（U0〜U5）、[StageOne.lean](StageOne.lean)（U0〜U3）。共有ルート import は変更しない。
 
 Lean `v4.35.0-rc4`、Mathlib `e6bbacd0e1b7307ff6e17da09cd2455f60804fa6`。
 Mathlib HEAD と lake-manifest を再照合済み。依存更新なし。
@@ -13,8 +13,8 @@ Mathlib HEAD と lake-manifest を再照合済み。依存更新なし。
 `A : Type u`、`[CommRing A]`、`Complex A = CochainComplex (ModuleCat.{u} A) ℤ`。
 環と Hom 加群の宇宙は初期 API では同じ `u`、dg 圏の対象 `D : Type v` は独立。
 `Complex A : Type (u + 1)`、各斉次 Hom と Z⁰/H⁰ の Hom は `Type u`。
-より大きい Hom 宇宙、加群圏・局所化の宇宙は後続で個別に指定する。
-この入口から smallness・局所小性・解像度の存在は推論しない。
+加群対象の宇宙は `Type (max (u+1) v)`。Hom end とその豊穣圏には `[Small.{u} D]` を明示する。
+より大きい Hom 宇宙・局所化・解像度の存在は後続で個別に指定する。
 
 複体は非有界。noetherian・体・標数・有限次元・有限生成の仮定なし。
 微分はコチェイン次数 +1、contracting homotopy は −1。
@@ -42,6 +42,14 @@ Ch(A) の `enrichedComposition` は既存 signed symmetry の後に通常順 `co
 | [Category/Comparison.lean](Category/Comparison.lean) | Ch(A) の H⁰ 等式と既存 chain homotopy の一致 |
 | [Functor/Basic.lean](Functor/Basic.lean)、[QuasiEquivalence.lean](Functor/QuasiEquivalence.lean) | Mathlib `EnrichedFunctor`、A 線形 H⁰ 関手、準同値と identity/comp |
 
+| [Complexes/Braiding.lean](Complexes/Braiding.lean) | signed braiding の自然性・両hexagon、`SymmetricCategory` |
+| [Complexes/Currying.lean](Complexes/Currying.lean)、[Closed.lean](Complexes/Closed.lean)、[Enrichment.lean](Complexes/Enrichment.lean) | 全次数 tensor–Hom 随伴・三変数自然性・閉構造・自己豊穣との一致 |
+| [Module/Basic.lean](Module/Basic.lean)、[Representable.lean](Module/Representable.lean) | 豊穣右加群、opposite の符号、右代表加群 |
+| [Module/Hom.lean](Module/Hom.lean)、[Action.lean](Module/Action.lean) | 全次数自然性の Hom end、`GradedNatTrans` とのパラメータ同値、作用の成分公式 |
+| [Module/Composition.lean](Module/Composition.lean)、[Category.lean](Module/Category.lean) | Hom end の単位・合成、Mathlib 豊穣加群圏、閉零圏・評価関手 |
+| [Module/Yoneda.lean](Module/Yoneda.lean) | 全パラメータ dg Yoneda と Hom 複体の chain iso |
+| [Module/Ring.lean](Module/Ring.lean) | 一対象 A の対象復元、Hom 複体比較、通常非有界複体圏との同値 |
+
 `PerfectComplex/Tensor.lean` と `TensorSymmetry.lean` を import して再利用する。
 既存ファイルは編集しない。通常の PerfectHomotopy は後続 D6 の比較先として維持する。
 Z⁰ は `ForgetEnrichment` の単位からの射の圏であり、`closedHomEquiv` が閉零次数の元と同一視する。
@@ -54,6 +62,8 @@ H⁰ はその射の差が `d : Hom⁻¹ → Hom⁰` の像に入る関係の商
 ```sh
 lake build SerrePositivity.DifferentialGraded.Checks.Axioms
 lake env lean SerrePositivity/DifferentialGraded/Checks/Axioms.lean
+lake build SerrePositivity.DifferentialGraded.Checks.Modules
+lake env lean SerrePositivity/DifferentialGraded/Checks/Modules.lean
 ```
 
 [Acceptance.lean](Checks/Acceptance.lean) は任意 A、次数 0/−1/1、ZMod 2、H⁰ の A 線形性を検証する。
@@ -68,7 +78,13 @@ SymmetricCategory/MonoidalClosed 登録は完成した。
 `Complexes/Enrichment.lean` の `complexEnrichment_eq_closed` は、閉構造由来の
 Mathlib 自己豊穣とU1の単位・合成の一致を証明する。
 `Checks/Braiding.lean`、`Checks/Closed.lean`、`Checks/Enrichment.lean` で検証・公理監査済み。
-U5 はその braiding を使う dg opposite、右代表加群・Yoneda・Hom end。
-dg 加群・導来圏・射影モデル・dg 商・Morita・Perf はまだ構成していない。
+U5 は dg opposite、右代表加群、全次数 Hom end による主豊穣加群圏、
+`moduleHom (representable x) M ≅ M(x)`、一対象 A の普通複体との比較まで完成した。
+Mathlib の現行 `EnrichedNatTrans.out` は閉零の通常自然性なので、全次数の代用には使わない。
+[ModulesAcceptance.lean](Checks/ModulesAcceptance.lean) は正負次数・任意 A・ℤ・ZMod 2 を検証する。
+U4/U5の追加監査38宣言、合計79宣言は標準公理のみ。
+次は free/forget の随伴、shift/cone、objectwise quasiIso・局所化・semifree。
+API契約と共有 G1/G2/G5/G6 への引継ぎは計画§12.8。
+導来圏・射影モデル・dg 商・Morita・Perf と M5全体は未完成。
 一般モデル圏・Quillen・転送・SM7 は共有系列が所有し、この入口には置かない。
 引用候補の採用状況は [Inputs の台帳](../Inputs/DifferentialGraded/README.md)。
