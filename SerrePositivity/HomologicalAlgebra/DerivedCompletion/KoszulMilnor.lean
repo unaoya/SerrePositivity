@@ -48,20 +48,26 @@ def powerKoszulH0LimitEquiv {e : ℕ} (a : Fin e → R) :
   map_add' x y := by apply Subtype.ext; funext n; exact map_add _ _ _
   map_smul' r x := by apply Subtype.ext; funext n; exact map_smul _ _ _
 
-/-- 完備化候補のH⁰から標準商環列の逆極限への線形写像。 -/
+/-- 完備化候補のH⁰から標準商環列の逆極限への線形写像。
+標準三角形の連結射の負を使い、標準包含の元を保つ符号に正規化する。 -/
 def koszulCompletionH0Projection {e : ℕ} (a : Fin e → R) :
     (koszulCompletionComplex R a).homology 0 →ₗ[R]
       moduleTowerLimit R (fun n ↦ R ⧸ powerKoszulIdeal R a n)
         (powerKoszulQuotientTransitionLinear R a) :=
-  (powerKoszulH0LimitEquiv R a).toLinearMap.comp
-    (complexTowerMilnorProjection R (powerKoszulTower R a) (powerKoszulTransition R a) 0)
+  -((powerKoszulH0LimitEquiv R a).toLinearMap.comp
+    (complexTowerMilnorProjection R (powerKoszulTower R a) (powerKoszulTransition R a) 0))
 
 /-- 標準商環列の逆極限への写像は全射。単射性は主張しない。 -/
 theorem koszulCompletionH0Projection_surjective {e : ℕ} (a : Fin e → R) :
-    Function.Surjective (koszulCompletionH0Projection R a) :=
-  (powerKoszulH0LimitEquiv R a).surjective.comp
+    Function.Surjective (koszulCompletionH0Projection R a) := by
+  intro y
+  obtain ⟨x, hx⟩ := (powerKoszulH0LimitEquiv R a).surjective.comp
     (complexTowerMilnorProjection_surjective R (powerKoszulTower R a)
-      (powerKoszulTransition R a) 0)
+      (powerKoszulTransition R a) 0) (-y)
+  change (powerKoszulH0LimitEquiv R a)
+    (complexTowerMilnorProjection R (powerKoszulTower R a)
+      (powerKoszulTransition R a) 0 x) = -y at hx
+  exact ⟨x, by change -((powerKoszulH0LimitEquiv R a) _) = y; rw [hx, neg_neg]⟩
 
 /-- KoszulのH⁰のMilnor列。左端はH⁻¹の差分の余核。 -/
 def koszulCompletionH0MilnorSequence {e : ℕ} (a : Fin e → R) :
@@ -69,8 +75,8 @@ def koszulCompletionH0MilnorSequence {e : ℕ} (a : Fin e → R) :
   ShortComplex.moduleCatMk
     (complexTowerMilnorInclusion R (powerKoszulTower R a) (powerKoszulTransition R a) 0)
     (koszulCompletionH0Projection R a) (by
-      rw [koszulCompletionH0Projection, LinearMap.comp_assoc, complexTowerMilnor_comp,
-        LinearMap.comp_zero])
+      rw [koszulCompletionH0Projection, LinearMap.neg_comp, LinearMap.comp_assoc,
+        complexTowerMilnor_comp, LinearMap.comp_zero, neg_zero])
 
 /-- 0 → lim¹ H⁻¹(K_n) → H⁰(holim K_n) → lim R/(a₁ⁿ,…,aₑⁿ) → 0。 -/
 theorem koszulCompletionH0MilnorSequence_shortExact {e : ℕ} (a : Fin e → R) :
@@ -81,7 +87,7 @@ theorem koszulCompletionH0MilnorSequence_shortExact {e : ℕ} (a : Fin e → R) 
     have hx' : complexTowerMilnorProjection R (powerKoszulTower R a)
         (powerKoszulTransition R a) 0 x = 0 := by
       apply (powerKoszulH0LimitEquiv R a).injective
-      exact hx.trans (map_zero _).symm
+      exact (neg_eq_zero.mp hx).trans (map_zero _).symm
     exact (ShortComplex.moduleCat_exact_iff _).mp
       (complexTowerMilnorSequence_shortExact R (powerKoszulTower R a)
         (powerKoszulTransition R a) 0).exact x hx'
