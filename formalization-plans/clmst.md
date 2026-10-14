@@ -925,6 +925,43 @@ pがgを割らずgが極大イデアルに入り、n≤mかつz^(p^n)≡g mod p�
 PaperやInputsへの依存はない。
 新しい引用・sorryは追加していない。
 
+### 続き：C/p^n上界、条件付き巡回長さ零、単元の場合（2026-10-14）
+
+`RootTowerLength/StageDecay.root_stage_normalization`で、
+p^n × (p^(m-n) × (p^(m-n) × p^(mr)c)) / p^(m(r+2)) = c/p^n
+を拡張非負実数のまま証明した。分母は零でも無限大でもなく、
+指数nと有限段mを混同せずに任意のn≤mで使える。
+`CyclicNormalizedBound.exists_stage_root_normalized_bound`は、実際の有限段の通常長さ上界と
+根の冪によるフィルトレーションを接続し、同じ有限定数cでこの正規化上界を証明する。
+この二宣言の証明は引用に依存しない。
+
+perfectoid化への写像が全射であることを明示的に受けると、
+`exists_completed_cyclic_div_pow_bound_of_surjective`が完備巡回商のc/p^n上界を供給する。
+幾何的減衰の共通補題で一次の巡回長さ零を導き、
+`completedLength_cyclic_pow_eq_zero_of_surjective`で基底極大イデアルの全ての冪の評価へ移す。
+その冪への還元は、完備塔のNoether性を仮定せず、基底極大イデアルの拡大の有限生成性だけを使う。
+標準Witt冪級数表示からこの条件付き定理を直接使う接続
+`completedLength_cyclic_pow_eq_zero_of_witt_of_surjective`も証明した。
+適用範囲はdim(A)≥2、gが非単元、pがgを割らない場合である。
+これらの接続には、選んだperfectoid化の型を構成する既存のBhatt–Scholzeの存在引用が到達する。
+一般gのCLMST巡回評価の引用は使わず、新しい引用を追加していない。
+
+単元については`perfectoidIdeal_eq_top_of_isUnit`と`CyclicUnitLength`で、
+perfectoidイデアルが全体であることから任意の冪に対する巡回長さ零を証明した。
+全射性・次元・Witt表示はこの場合に必要ない。
+`Inputs/AlmostLength.cyclic_length_eq_zero`の単元の枝をこの証明へ置き換えた。
+g=pの既存の証明済みの枝も保持する。
+
+残る主な境界は、標準perfectoid化への写像の全射性、dim(A)≤1の場合、
+および一般g=p^c g'からの帰着である。
+非単元・pを因子に持たないgの数値評価は条件付きで完了したが、
+全射性を証明済みの仮定と偽って一般gの引用を削除してはいない。
+
+検証：全体ビルド4099ジョブと両公理監査が成功。追加8宣言のうち、
+正規化の二宣言はsorry非依存であり、perfectoid化を使う残り六宣言に到達する
+引用は既存のBhatt–Scholzeの存在引用だけである。
+新しいsorry・引用は追加していない。
+
 ## 1. 目的と二つの前提
 
 最終目標は、本論文の定理2.5（混標数の長さ代数の二つの長さの性質、

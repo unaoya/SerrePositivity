@@ -72,6 +72,13 @@ theorem span_le_perfectoidIdeal (g : R) : Ideal.span {g} ≤ perfectoidIdeal R p
     Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.subset_span (Set.mem_singleton g))
   rw [hz, map_zero]
 
+/-- 単元のperfectoidイデアルは全体。全射性や商の被約性は必要ない。 -/
+theorem perfectoidIdeal_eq_top_of_isUnit (g : R) (hg : IsUnit g) :
+    perfectoidIdeal R p hR g = ⊤ := by
+  apply top_unique
+  have hh := span_le_perfectoidIdeal R p hR g
+  rwa [Ideal.span_singleton_eq_top.mpr hg] at hh
+
 /-- 主イデアルの包含は perfectoid イデアルの包含を与える。
 商環間の写像を普遍性で perfectoid 化へ移し、核の包含を証明する。 -/
 theorem perfectoidIdeal_mono {g k : R} (h : Ideal.span {g} ≤ Ideal.span {k}) :

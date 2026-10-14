@@ -6,6 +6,7 @@ public import Mathlib.RingTheory.RegularLocalRing.Defs
 public import Mathlib.RingTheory.WittVector.Basic
 public import Mathlib.RingTheory.MvPowerSeries.Basic
 public import SerrePositivity.CLMST.CyclicPLength
+public import SerrePositivity.CLMST.CyclicUnitLength
 
 /-! # CLMST の巡回加群の長さ評価（文献入力）
 
@@ -13,8 +14,10 @@ CLMST arXiv:2209.04046v4, Proposition 4.0.10 の証明で使う
 `A∞ / (m_A^n + (g)_perfd)` の長さ零だけを引用する。
 これは命題全体の almost 同型不変性のステートメントではなく、その証明の中間評価である。
 一般加群への帰着と almost 圏への接続は別のモジュールで証明する。
-g=p の評価は、四条件から標数pのperfectoid商の被約性を供給して証明する。
-残る引用は一般gのmod pの比較・増大評価と、g=p^c g'への分解の接続。
+単元とg=pの評価は証明済み。pがgを割らない非単元のmod p比較・正規化評価は
+`CyclicNormalizedBound`でperfectoid化の全射性を条件として証明済み。
+標準Witt表示からこの条件付き評価への接続もある。残る引用には、その全射性の確認、低次元の場合、
+およびg=p^c g'への分解の接続が含まれる。
 原典の閉包付きperfectoid idealをkernelの定義で保持する。
 
 出典：https://arxiv.org/html/2209.04046v4 （Proposition 4.0.10 の証明）。
@@ -44,12 +47,15 @@ theorem cyclic_length_eq_zero
         ((completedTowerMaxIdeal A t p) ^ n ⊔
           perfectoidIdeal (CompletedTower A t p) p hperf
             (algebraMap A (CompletedTower A t p) g))) = 0 := by
-  by_cases hgp : g = (p : A)
-  · subst g
-    rw [show algebraMap A (CompletedTower A t p) (p : A) = (p : CompletedTower A t p)
-      from map_natCast _ _]
-    exact completedLength_cyclic_p_eq_zero A t p
-      (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) ⟨0, hpos⟩ htp hperf n
-  · sorry
+  by_cases hgu : IsUnit g
+  · exact completedLength_cyclic_unit_eq_zero A t p
+      (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) hperf g hgu n
+  · by_cases hgp : g = (p : A)
+    · subst g
+      rw [show algebraMap A (CompletedTower A t p) (p : A) = (p : CompletedTower A t p)
+        from map_natCast _ _]
+      exact completedLength_cyclic_p_eq_zero A t p
+        (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) ⟨0, hpos⟩ htp hperf n
+    · sorry
 
 end SerrePositivity.CLMST.Inputs
