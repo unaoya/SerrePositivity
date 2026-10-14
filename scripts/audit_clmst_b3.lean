@@ -7,6 +7,7 @@ import SerrePositivity.CommutativeAlgebra.PerfectoidTorsionQuotient
 import SerrePositivity.CLMST.PerfectoidIdealRoots
 import SerrePositivity.CLMST.PerfectoidFrobeniusComparison
 import SerrePositivity.CLMST.CyclicLength
+import SerrePositivity.CLMST.NormalizedAlmostLength
 import Mathlib.Util.PrintSorries
 import Mathlib.Util.AssertNoSorry
 
@@ -131,7 +132,53 @@ assert_no_sorry SerrePositivity.CLMST.exists_p_power_unit_of_fin_one
 assert_no_sorry SerrePositivity.CLMST.perfectoidIdeal_le_of_p_power_factor
 assert_no_sorry SerrePositivity.CLMST.completedLength_cyclic_unit_eq_zero
 
--- Only the named B-S input should remain in these actual public proof paths.
-#print sorries SerrePositivity.CLMST.toPerfectoidization_cyclic_surjective_of_not_dvd
-#print sorries SerrePositivity.CLMST.cyclic_length_eq_zero_of_not_dvd
-#print sorries SerrePositivity.CLMST.cyclic_length_eq_zero
+
+-- C2-5: inspect proof constants, not merely the source imports.
+meta section
+open Lean Elab Command
+private partial def checkDependencies (todo : List Name) (visited : NameSet)
+    (allowed : List Name) (forbidden : List Name) : CoreM NameSet := do
+  match todo with
+  | [] => return visited
+  | n :: todo =>
+    if visited.contains n then return ← checkDependencies todo visited allowed forbidden
+    if forbidden.contains n then throwError "Forbidden dependency: {n}"
+    let visited := visited.insert n
+    let some info := (← getEnv).find? n
+      | return ← checkDependencies todo visited allowed forbidden
+    let mut deps := info.type.getUsedConstants
+    if let some value := info.value? (allowOpaque := true) then
+      deps := deps ++ value.getUsedConstants
+    if deps.contains ``sorryAx && !allowed.contains n then
+      throwError "Unapproved sorry in {n}"
+    checkDependencies (deps.toList ++ todo) visited allowed forbidden
+
+elab "assert_cyclic_B3_dependencies" : command => do
+  let roots := [``SerrePositivity.CLMST.toPerfectoidization_cyclic_surjective_of_not_dvd,
+    ``SerrePositivity.CLMST.cyclic_length_eq_zero_of_not_dvd,
+    ``SerrePositivity.CLMST.cyclic_length_eq_zero,
+    ``SerrePositivity.CLMST.completedLength_eq_zero_of_perfectoidIdeal_annihilates]
+  let allowed := [``SerrePositivity.BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotient]
+  let forbidden := [`SerrePositivity.BhattScholze.Inputs.exists_perfectoidization_of_integral,
+    `SerrePositivity.Inputs.exists_perfectoidization_of_finite,
+    `SerrePositivity.Perfectoidization, `SerrePositivity.toPerfectoidization]
+  let seen ← liftCoreM <| checkDependencies roots {} allowed forbidden
+  unless seen.contains allowed.head! do throwError "Expected B-S dependency is missing"
+  logInfo "Cyclic proof paths: old B-I absent; only B-S contains sorry."
+
+elab "assert_almost_B3_dependencies" : command => do
+  let roots := [``SerrePositivity.CLMST.completedLength_eq_of_perfectoid_mod_almost_iso]
+  let allowed := [
+    ``SerrePositivity.BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotient,
+    ``SerrePositivity.CLMST.Inputs.perfectoidIdealMod_idempotent]
+  let forbidden := [`SerrePositivity.BhattScholze.Inputs.exists_perfectoidization_of_integral,
+    `SerrePositivity.Inputs.exists_perfectoidization_of_finite,
+    `SerrePositivity.Perfectoidization, `SerrePositivity.toPerfectoidization]
+  let seen ← liftCoreM <| checkDependencies roots {} allowed forbidden
+  for n in allowed do
+    unless seen.contains n do throwError "Expected dependency is missing: {n}"
+  logInfo "Almost length comparison: old B-I absent; only B-S and B-R contain sorry."
+end
+
+assert_cyclic_B3_dependencies
+assert_almost_B3_dependencies

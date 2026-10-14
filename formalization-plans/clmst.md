@@ -26,8 +26,8 @@ multiplicity, and an application to local fundamental groups*, arXiv:2209.04046v
 | --- | --- | --- |
 | 共通の正規化長さ | 有限段、有限生成・有限表示一致、必要な加法性・近似・係数制限を実装 | 旧C1/C2の直接の引用を除去。共通層の証明を使う |
 | 完備化と有限代数 | 平坦性、有限表示テンソル比較、具体的な塔への適用を実装 | 共通可換環論として証明。古い「完備塔の平坦性が残る」は解消済み |
-| perfectoid環のpねじれ商 | S/S[p]のperfectoid性と一般のp因子除去を実装 | Fontaine核を含む定義条件から証明。選択されたperfectoid化を使う箇所には存在引用が到達する |
-| 命題4.0.10の数値部分 | 非零gの巡回長さ零、一般加群への帰着、almost比較からの長さ一致を実装 | 巡回評価の直接のsorryを除去。BSの存在・全射性を使う。実際のalmost局所化圏の同型版は別途イデアル冪等性の引用も使う |
+| perfectoid環のpねじれ商 | S/S[p]のperfectoid性と一般のp因子除去を実装 | Fontaine核を含む定義条件から証明。巡回商の選択はB3へ移行済み。一般有限代数の選択は別途存在引用に依存する |
+| 命題4.0.10の数値部分 | 非零gの巡回長さ零、一般加群への帰着、almost比較からの長さ一致を実装 | 巡回評価の直接のsorryを除去。B3の証明済み存在とB-Sの全射性引用を使う。実際のalmost局所化圏の同型版は別途イデアル冪等性の引用も使う |
 | 命題4.0.14 | 任意の有限段・パラメータ系について長さと重複度の公式を実装 | 共通Euler・錐の理論から証明。Prop 2.4.7、Cor 4.0.4等の明示引用に相対的な証明 |
 | 標準完備塔のperfectoid性 | 元のWitt係数表示と添字のまま証明済み | 有限段Frobenius核・tilt核・Fontaine核を共通層で証明。旧Inputsは引用非依存の互換入口 |
 | Serreへの接続 | 上記から混標数の長さ代数の性質を供給する接続を実装 | 接続そのものに直接のsorryを置かず、基礎入力へ依存を分離 |
@@ -40,8 +40,8 @@ multiplicity, and an application to local fundamental groups*, arXiv:2209.04046v
 
 | 入力 | 所在 | 現在の使われ方 |
 | --- | --- | --- |
-| BS Thm 1.17(1)：整代数の普遍perfectoid化の存在 | `BhattScholze/Inputs/Perfectoidization.lean` | 主定理へ到達 |
-| BS Cor 7.3 / Thm 7.4：pねじれのない完備商のperfectoid化の全射性 | `BhattScholze/Inputs/SemiperfectoidSurjectivity.lean` | 主定理へ到達。原典の適用形。p正則な場合の古典的／導来p完備性の同値は共通層で証明済み |
+| BS Thm 1.17(1)：整代数の普遍perfectoid化の存在 | `BhattScholze/Inputs/Perfectoidization.lean` | 一般有限代数の選択を通じ主定理へ到達。巡回評価・almost長さ比較からは除去済み |
+| BS Thm 7.4：pねじれのない完備商のperfectoid化の全射性 | `BhattScholze/Inputs/SemiperfectoidSurjectivity.lean` | 主定理へ到達。原典の適用形。p正則な場合の古典的／導来p完備性の同値は共通層で証明済み |
 | CLMST Prop 2.4.7：perfectoid化の錐のg冪による消滅 | `CLMST/Inputs/PerfectoidIsogeny.lean` | 主定理へ到達 |
 | CLMST Cor 4.0.4：局所コホモロジー・Koszulホモロジーのalmost消滅 | `CLMST/Inputs/CohomologyVanishing.lean` | 主定理へ到達。Thm 4.0.3は別の直接引用としては置いていない |
 | perfectoid idealのmod p^N像の冪等性 | `CLMST/Inputs/BasicSetup.lean` | 一般のalmost局所化圏を使う。直近の主定理監査には到達しない |
@@ -49,7 +49,8 @@ multiplicity, and an application to local fundamental groups*, arXiv:2209.04046v
 BS全射性の具体的な適用条件（巡回商のp正則性・p進完備性・商写像の全射性）と、
 選んだ普遍対象への移送は証明済み。上記完備性の同値も、p正則な場合に共通層で証明済み。
 B3の一般商のperfectoid化の存在・普遍性はBS側で証明済み（2026-10-14）。
-CLMST側の選択対象と巡回評価はまだ旧存在入力を使っており、§9.7bで接続する。
+CLMST側の主イデアル商の選択・巡回評価・almost長さ比較は§9.7bのC2で接続済み。
+巡回評価の未証明入力はB-Sのみ、実almost同型による長さ比較はB-SとB-Rのみ。
 B4の全射性・B5の冪等性、一般整代数のB-I/B6は引き続き未解消である。
 
 主定理全体の現在の`#print sorries`では、上表の4件に加え、
@@ -2409,7 +2410,7 @@ C1・F1・F2を再実装する工程はない。既存の共通定義・公開�
 
 共通要求F1〜F7と§9.7aのE1〜E5は完了した。
 深い入力を使わないClaim 2.4.8の一般加群版と実導来錐の零化を供給済み。
-B3受領後の最優先は§9.7bのC2接続。完了後に§9.7a Bの降下補題を細分化する。
+B3受領後の§9.7b C2-1〜C2-5も完了した。次は§9.7a Bの降下補題を細分化する。
 BS側のB3・B4・B5の完成前にも進める。完成したBS成果の接続は§9.7に従う。
 BSのδ構造・prism・超限反復をこの側で重複実装しない。受渡し前は既存引用を維持する。
 新しい引用を追加して待合せを解除したことにはしない。
@@ -2687,7 +2688,7 @@ BSの条件付きFontaine比較射の全射性と全単射性を導いた。
 
 | 相手の成果 | この側の作業 | 完了の判定 |
 | --- | --- | --- |
-| B3：必要な商の存在と普遍性 | C2：巡回商の選択・写像・核・作用を新しい構成へ移す | 巡回評価の実経路から旧B-Iの依存が外れる。有限代数側に残るB-Iは別記する |
+| B3：必要な商の存在と普遍性（受領済み） | C2-1〜5完了：巡回商の選択・写像・核・作用を移行 | 巡回評価とalmost長さ比較から旧B-Iを除去済み。一般有限代数側・主定理にはB-Iが残る |
 | B4：全射性 | 既存のp正則・完備な巡回商への適用と選択対象への移送 | B-Sと未証明André入力に依存しない証明を確認し、B-S引用を置換する |
 | B5：mod p^Nのイデアル冪等性 | `CLMST/Inputs/BasicSetup`を証明へ置換し、almost圏と長さ比較へ適用 | 任意g・全Nを扱い、B-Rの依存が外れる。主定理の引用件数とalmost圏の件数を区別する |
 
@@ -2697,7 +2698,8 @@ B6の有限代数の存在・Andréの証明経路・有限表示版への引用
 既存の受入条件を保って保留する。
 
 B3の存在・普遍性は受領済み。以下のE1〜E5も完了したため、
-次の実装は§9.7bのC2接続を優先する。B4・B5は未受領として扱う。
+§9.7bのC2接続も完了した。次は§9.7a Bの降下補題を細分化する。
+B4・B5は未受領として扱う。
 
 ### 9.7a. 深い入力を使わない固有定理の準備（2026-10-14追加）
 
@@ -2820,18 +2822,32 @@ B・Cについても、実装へ着手する前に細分化し、同じ検証・
 
 ### 9.7b. B3受領後のC2接続計画（2026-10-14）
 
-状態：C2-1〜C2-4を実装。C2-5の最終監査・台帳更新は未完了。
+状態：C2-1〜C2-5を実装・監査済み（2026-10-14）。
+B3選択と一般核・根・因子比較は引用非依存。巡回評価の実証明経路から旧B-Iを除去した。
+専用監査`scripts/audit_clmst_b3.lean`は、定数の型・証明値を推移的に走査し、
+旧選択対象・旧標準写像・旧B-Iへの依存を拒否する。
+巡回長さ入口と一般加群の長さ零にはB-Sのみ、実almost同型の長さ比較には
+B-SとB-Rのみを許可し、期待した引用が実際に到達することも確認する。
+一般普遍性APIのソースimport閉包は4モジュール、巡回長さは522モジュールで、
+いずれも旧存在入力・旧有限代数選択・互換比較モジュールへのimportを持たない。
+一般普遍性APIにはBS・CLMST・Paperへのimportもない。
+全体ビルド4450ジョブ、CLMST・公理・B3専用・E1〜E5専用監査が成功。
+主定理へのsorryは7宣言（外部引用5・K理論2）のまま。一般有限代数側に旧B-Iが残る。
+旧有限代数選択との標準写像を保つ同型・核の一致は
+`CommutativeAlgebra/PerfectoidIdealCompatibility.lean`へ分離し、旧B-Iに相対的。
+その専用監査`scripts/audit_clmst_b3_compat.lean`と、引用を除去した実経路の監査を分ける。
+C2-1 `ea2c917`、C2-2 `81bc174`、C2-3 `82d99c7`、C2-4 `98057f1`。
 C2-4は巡回評価の全射性・根の見積り・正規化上界・p因子比較をB3の対象へ移した。
 `CyclicLength`の対象ビルドを検証。B-Sの任意普遍対象への既存移送を利用し、
 全射性入力自体は引用として維持する。
 C2-3では`perfectoidIdeal`を専用モジュールへ移し、B3標準写像の核で再定義した。
 `perfectoidQuotient`、核の比較、根・p商の被約性、p冪・因子除去、Frobenius比較を移行。
-一般有限代数の選択は従来どおり保持し、巡回長さの実経路の移行はC2-4へ残す。
+一般有限代数の選択は従来どおり保持した。巡回長さの実経路はC2-4で移行済み。
 C2-2はBS接続層`BhattScholze/QuotientPerfectoidization.lean`に任意イデアル商の
-選択対象・標準写像・普遍性・作用を公開した。零元・単元・零環・pを含む商を専用監査する。
+選択対象・標準写像・普遍性・作用を公開した。零元・単元・零環・pを含む商を専用監査済み。
 C2-1では`PerfectoidizationFunctor.lean`へ一般lift/mapを分離し、
 既存の一意同型・全射性移送・核の一致を再利用した。元環からの合成の核の一致も公開。
-対象ビルドと専用監査で、旧存在入力を使わない公開11宣言を検証する。
+対象ビルドと専用監査で、旧存在入力を使わない公開11宣言を検証済み。
 B3の公開入口`BhattScholze/SemiperfectoidPerfectoidization.lean`の対象ビルドと、
 以下の2宣言の`assert_no_sorry`・公理監査を受渡し時に再実行した。
 
@@ -2844,10 +2860,10 @@ B3の公開入口`BhattScholze/SemiperfectoidPerfectoidization.lean`の対象ビ
 主イデアル商は後者を`Ideal.Quotient.mk_surjective`に適用できる。
 B3の証明をこの側で作り直さず、全射性はB4、冪等性はB5に残す。
 
-#### 最初の完了目標：巡回評価から旧B-Iを外す
+#### 完了した目標：巡回評価から旧B-Iを外す
 
-現在の`perfectoidIdeal R p hR g`と`CLMST.perfectoidQuotient`は、
-一般有限代数用の`Perfectoidization R (R/(g))`を選び、その存在は旧B-Iに依存する。
+移行前の`perfectoidIdeal R p hR g`と`CLMST.perfectoidQuotient`は、
+一般有限代数用の`Perfectoidization R (R/(g))`を選び、その存在は旧B-Iに依存していた。
 新しいB3対象との同型だけを証明しても、旧対象を定義に残せば依存削減は完了しない。
 主イデアル商の選択・標準写像・核をB3へ移し、巡回評価の実経路を移行する。
 一般有限代数Sの`Perfectoidization R S`と`toPerfectoidization`は維持し、
