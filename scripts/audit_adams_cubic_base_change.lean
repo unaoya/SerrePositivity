@@ -1,0 +1,5 @@
+import SerrePositivity.IntersectionMultiplicity.CubicCyclotomicBaseChange
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.cubicCyclotomicLocalRing_vanishing_data
+#print axioms SerrePositivity.cubicCyclotomicLocalRing_vanishing_data
