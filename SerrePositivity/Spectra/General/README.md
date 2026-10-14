@@ -80,3 +80,16 @@ ordinary HomはCの単位からの点と同値。cotensorとのHom同値も一�
 一般監査14モジュール206宣言、全スペクトル監査284モジュール2832公開宣言が標準公理のみで通過。
 新規利用例はcheck_general_tensor_cotensor.lean。コミット6c49348と026a1eb。
 パラメータ自然性・全作用整合性と豊穣登録・H5/SM7接続は後続の証明対象。
+
+## 一般C値の豊穣構造（§134）
+
+`PointwiseTensorCoherence`はパラメータ射の各段公式、結合子の両パラメータ自然性、
+pentagon・triangle・左単位則を提供する。
+`MappingEnrichment`は既存のC値写像対象の評価を転置し、合成・単位・単位則・結合則を構成する。
+`mappingEnrichedOrdinaryCategory`は既存の通常の加群圏との接続を含むMathlibの構造。
+必要な箇所で`letI := mappingEnrichedOrdinaryCategory (C := C) (K := K)`として利用する。
+そのHom対象はmappingObjectで、射の同値はordinaryHomEquivと定義上で一致する。
+一般入口に含むが、グローバルinstanceとしては登録しない。
+
+モデル構造は不要。豊穣Hom対象のtensor/cotensor表現性とH5 receiverへの接続、
+スペクトル側SM7と具体的PSSモデル入力の検証は引き続き後続。

@@ -60,6 +60,34 @@ example (X : C) (E : GeneralSymmetricSpectrum C K) :
 example (X : C) (E : GeneralSymmetricSpectrum C K) :
     pointwiseTensorLeftUnitLaw X E := pointwiseTensor_left_unit X E
 
+example : EnrichedOrdinaryCategory C (GeneralSymmetricSpectrum C K) :=
+  mappingEnrichedOrdinaryCategory
+
+example (E F : GeneralSymmetricSpectrum C K) :
+    mappingObjectArrowEquiv E F = ordinaryHomEquiv E F :=
+  mappingObjectArrowEquiv_eq_ordinaryHomEquiv E F
+
+example (E : GeneralSymmetricSpectrum C K) :
+    (mappingEnrichedCategory (K := K)).id E = mappingObjectUnit E :=
+  mappingEnrichedCategory_id E
+
+example (E F G : GeneralSymmetricSpectrum C K) :
+    (mappingEnrichedCategory (K := K)).comp E F G =
+      ReverseComposition.reverse (mappingObjectComposition E F G) :=
+  mappingEnrichedCategory_comp E F G
+
+section
+local instance : EnrichedOrdinaryCategory C (GeneralSymmetricSpectrum C K) :=
+  mappingEnrichedOrdinaryCategory
+
+example (E F : GeneralSymmetricSpectrum C K) :
+    (E ⟶[C] F) = mappingObject E F := rfl
+
+example (E : GeneralSymmetricSpectrum C K) :
+    (EnrichedOrdinaryCategory.homEquiv (V := C) (𝟙 E)) = mappingObjectUnit E := by
+  exact mappingObjectArrow_identity E
+end
+
 open Lean in
 run_cmd do
   let env ← getEnv
