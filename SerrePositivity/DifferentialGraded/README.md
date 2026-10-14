@@ -96,7 +96,10 @@ U7a2の `Module/Biproduct.lean` は objectwise 二項直和の全次数対角作
 受入入口は `Checks/Biproduct.lean`。shift/cone・残る極限余極限は引き続き未完。
 U7b1では `Complexes/Shift.lean` に次数 p の符号 `(-1)^(sp)` を持つ shift dg 関手、
 `Module/Shift.lean` に整数ごとの加群 shift 関手と評価自然同型を構成した。
-受入入口は `Checks/Shift.lean`。零・加法 shift の coherence と cone は次の区切り。
+受入入口は `Checks/Shift.lean`。
+U7b2の `Module/ShiftCoherence.lean` は零・加法比較の全次数自然性・結合/零の整合性から
+`HasShift ℤ` を登録し、加法性と評価の `CommShift ℤ` を証明する。
+受入入口は `Checks/ShiftCoherence.lean`。cone と必要な残る極限余極限は未完。
 API契約と共有 G1/G2/G5/G6 への引継ぎは計画§12.8。
 導来圏・射影モデル・dg 商・Morita・Perf と M5全体は未完成。
 一般モデル圏・Quillen・転送・SM7 は共有系列が所有し、この入口には置かない。

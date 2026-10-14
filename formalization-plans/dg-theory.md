@@ -747,3 +747,31 @@ U7b1の受入入口と既存 `Spectra.StageTwo` の同時ビルド、受入入�
 主要16宣言の公理はすべて `propext`・`Classical.choice`・`Quot.sound` のみ。
 新規 sorry・admit・axiom は0件。文書検査（21 Markdown・311参照・失敗0）、
 担当差分の whitespace 検査も成功。共有ルート・並行作業ファイルは編集していない。
+
+### 13.9 U7b2：shift の整合性と HasShift/CommShift
+
+`Complexes/ShiftCoherence.lean` は Mathlib の `shiftFunctorZero`/`shiftFunctorAdd` の
+比較が全次数 Hom に対して自然であることを証明する。
+加法比較では `(s+t)p = tp+sp` の符号と既存 `XIsoOfEq` による次数輸送を照合した。
+
+`Module/Isomorphism.lean` の `moduleIsoMk` は全次数自然な複体同型族を主 Hom end の
+閉零加群同型へ持ち上げる。逆射の全次数自然性と両逆式も証明済み。
+一般圏の同型・shift構造を新しく作らず、Mathlib の同型を再利用する。
+
+`Module/ShiftCoherence.lean` は零・加法比較を加群自然同型に持ち上げ、
+忠実な全評価による射の判定を使い、複体の比較から結合・零の整合性を証明する。
+`moduleShiftMkCore`/`moduleHasShift` は Mathlib `ShiftMkCore`/`hasShiftMk` に接続する。
+登録された関手・零・加法比較と明示構成の一致を公開した。
+整数 shift は加法的で、`moduleEvaluationCommShift` は評価比較の零・加法の整合性を供給する。
+負 shift は Mathlib の加群圏 `HasShift ℤ` の一般APIから逆関手を得る。
+閉零加群圏には `[Small.{u} D]` を明示し、複体の全次数比較には D の仮定を置かない。
+
+受入入口は `Checks/ShiftCoherence.lean`。任意可換環・非有界複体、
+零/加法/負 shift、加法性、評価と比較射、一対象 ℤ、ZMod 2 を検証する。
+主要28宣言を公理監査する。次は U7b3 の cone とその全次数作用・評価比較。
+必要な残る極限余極限、U8〜U10は未完であり、U10までの目標を保持する。
+
+U7b2の受入入口と既存 `Spectra.StageTwo` の同時ビルド、受入入口の直接実行は成功。
+主要28宣言の公理は標準公理 `propext`・`Classical.choice`・`Quot.sound` の範囲内。
+新規 sorry・admit・axiom は0件。文書検査（21 Markdown・311参照・失敗0）、
+担当差分の whitespace 検査も成功。共有ルート・既存 PerfectComplex・並行作業ファイルは編集していない。
