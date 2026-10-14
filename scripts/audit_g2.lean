@@ -1,5 +1,6 @@
 import SerrePositivity.HomologicalAlgebra.DerivedTensorRealization
 import SerrePositivity.HomologicalAlgebra.DerivedTensorBaseChange
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletion
 import Mathlib.Util.AssertNoSorry
 
 -- G2-1: every explicit public declaration, including the maps and natural comparisons.
@@ -91,3 +92,37 @@ example (R : Type) [CommRing R] (J : Ideal R) (M : ModuleCat R) :
 
 #print axioms SerrePositivity.derivedModuleBaseChangeTorIso
 #print axioms SerrePositivity.derivedModuleBaseChangeResolutionIso_naturality
+
+-- G2-3a: arbitrary complexes, including unbounded and nonprojective ones.
+assert_no_sorry SerrePositivity.DerivedCompletion.complexPowerKoszulStage
+assert_no_sorry SerrePositivity.DerivedCompletion.complexPowerKoszulTransition
+assert_no_sorry SerrePositivity.DerivedCompletion.complexPowerKoszulTransition_naturality
+assert_no_sorry SerrePositivity.DerivedCompletion.complexPowerKoszulProductFunctor
+assert_no_sorry SerrePositivity.DerivedCompletion.complexPowerKoszulDifferenceFunctor
+assert_no_sorry SerrePositivity.DerivedCompletion.cochainMappingConeFunctor
+assert_no_sorry SerrePositivity.DerivedCompletion.complexCompletionFunctor
+assert_no_sorry SerrePositivity.DerivedCompletion.complexCompletionObject
+assert_no_sorry SerrePositivity.DerivedCompletion.complexPowerKoszulStage_isComplete
+assert_no_sorry SerrePositivity.DerivedCompletion.complexCompletionObject_isComplete
+assert_no_sorry SerrePositivity.DerivedCompletion.complexPowerKoszulInclusion_compatible
+assert_no_sorry SerrePositivity.DerivedCompletion.complexCompletionUnit
+assert_no_sorry SerrePositivity.DerivedCompletion.complexCompletionUnit_comp_projection
+assert_no_sorry SerrePositivity.DerivedCompletion.complexCompletionUnitObject
+
+open SerrePositivity.DerivedCompletion
+
+-- No regularity of a or termwise completeness of K is assumed, also at n = 0.
+example (R : Type) [CommRing R] (a : R) (K : CochainComplex (ModuleCat R) ℤ) :
+    IsComplete R a (complexCompletionObject R a K) :=
+  complexCompletionObject_isComplete R a K
+
+example (R : Type) [CommRing R] (a : R) (K : CochainComplex (ModuleCat R) ℤ) :
+    complexCompletionUnit R a K ≫
+      complexTowerProjection R (complexPowerKoszulStage R a K)
+        (complexPowerKoszulTransition R a K) ≫
+          CategoryTheory.Limits.Pi.π (complexPowerKoszulStage R a K) 0 =
+            CochainComplex.mappingCone.inr (smulId (a ^ 0) K) :=
+  complexCompletionUnit_comp_projection R a K 0
+
+#print axioms SerrePositivity.DerivedCompletion.complexCompletionObject_isComplete
+#print axioms SerrePositivity.DerivedCompletion.complexCompletionUnit_comp_projection
