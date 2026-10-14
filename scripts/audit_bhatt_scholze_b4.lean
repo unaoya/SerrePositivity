@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.RootedKernelSurjectivity
 import SerrePositivity.BhattScholze.PerfectoidizationBaseChange
 import SerrePositivity.BhattScholze.WittPresentedPerfectoidTensorModP
 import SerrePositivity.BhattScholze.PerfectoidWittPushoutModP
@@ -269,3 +270,6 @@ assert_no_sorry SerrePositivity.BhattScholze.perfectoidizationTensorBaseChangeMa
 
 assert_no_sorry SerrePositivity.BhattScholze.exists_perfectoidizationTensorBaseChange
 #print axioms SerrePositivity.BhattScholze.exists_perfectoidizationTensorBaseChange
+
+assert_no_sorry SerrePositivity.BhattScholze.surjective_of_isPerfectoidization_of_rootedKernel
+#print axioms SerrePositivity.BhattScholze.surjective_of_isPerfectoidization_of_rootedKernel

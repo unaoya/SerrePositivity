@@ -532,3 +532,14 @@ F∘(f⊗id):S⊗[R]T→EのIsPerfectoidizationを証明。
 全体4512ジョブ成功。新定理は標準3公理のみでsorry依存なし。
 新規モジュールのプロジェクト内import閉包160件に
 Inputs・CLMST・Paper・RootTowerなし。
+
+## B4-5：根を持つ実際の核への接続（2026-10-15）
+
+予定BS専用モジュール`RootedKernelSurjectivity.lean`、
+`RootedTensorBaseChangeSurjectivity.lean`をこの工程で追加する。
+前者で、任意の全射q:R→Sの実際の核の各元が両立する根を持つ場合の
+任意IsPerfectoidization f:S→Cの全射性を証明した。
+qの標準核商同型を使い、既存の根付きイデアル商の全射性へ接続する。
+商の完備性・p正則性・有限生成性は不要。対象ビルド3289ジョブ成功。
+B4専用公開宣言監査を行い、次に通常テンソルの標準全射へ適用する。
+核の根を供給する工程はこの定理に仮定として残り、一般B4の全射性とは区別する。
