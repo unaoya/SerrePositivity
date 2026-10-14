@@ -60,3 +60,15 @@ example (n : ℕ) :
 example (X : PointedSimplicialSet.{u}) :
     SymmetricSpectrum.pointwiseTensorFunctor X ⊣ SymmetricSpectrum.cotensorFunctor X :=
   SymmetricSpectrum.pointwiseTensorCotensorAdjunction X
+
+section Closed
+variable [HasLimitsOfSize.{0, 0} C]
+example : MonoidalClosed (GeneralSymmetricSpectrum C K) := inferInstance
+example : SymmetricCategory (GeneralSymmetricSpectrum C K) := inferInstance
+example (E X F : GeneralSymmetricSpectrum C K) :
+    (tensor E X ⟶ F) ≃ (X ⟶ internalHom E F) := tensorHomEquiv E X F
+example {E X F : GeneralSymmetricSpectrum C K} (f : tensor E X ⟶ F) :
+    uncurry (curry f) = f := uncurry_curry f
+example {E X F : GeneralSymmetricSpectrum C K} (f : X ⟶ internalHom E F) :
+    curry (uncurry f) = f := curry_uncurry f
+end Closed

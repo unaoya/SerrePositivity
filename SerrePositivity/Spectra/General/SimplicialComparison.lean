@@ -1,6 +1,8 @@
 module
 
 public import SerrePositivity.Spectra.General.Evaluation
+public import SerrePositivity.Spectra.General.TensorClosed
+public import SerrePositivity.Spectra.SymmetricSpectrum.Closed
 public import SerrePositivity.Spectra.SymmetricSpectrum.Evaluation
 
 /-! # Compatibility with the existing circle-based simplicial spectra
@@ -46,4 +48,12 @@ lemma simplicial_freeAt (n : ℕ) :
 lemma simplicial_freeAtAdjunction (n : ℕ) :
     freeAtAdjunction (K := (circle : PointedSimplicialSet.{u})) n =
       SymmetricSpectrum.freeAtAdjunction.{u} n := rfl
+lemma simplicial_tensor (E F : SymmetricSpectrum.{u}) :
+    tensor (C := PointedSimplicialSet.{u}) (K := circle) E F =
+      SymmetricSpectrum.sphereTensor E F := rfl
+
+lemma simplicial_internalHom (E F : SymmetricSpectrum.{u}) :
+    internalHom (C := PointedSimplicialSet.{u}) (K := circle) E F =
+      SymmetricSpectrum.internalHom E F := rfl
+
 end SerrePositivity.GeneralSymmetricSpectrum

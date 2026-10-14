@@ -21,6 +21,7 @@ run_cmd do
   for expected in #[`SerrePositivity.Spectra.General.Basic,
       `SerrePositivity.Spectra.General.Free, `SerrePositivity.Spectra.General.Evaluation,
       `SerrePositivity.Spectra.General.Limits,
+      `SerrePositivity.Spectra.General.TensorClosed,
       `SerrePositivity.Spectra.General.SimplicialComparison] do
     unless modules.contains expected do throwError "Required module missing: {expected}"
   logInfo m!"General spectra audit passed: {declarations} declarations in {modules.size} modules."
