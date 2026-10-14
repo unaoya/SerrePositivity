@@ -762,3 +762,45 @@ Module.FaithfullyFlatを証明。任意個の変数を含む。
 予定BS専用`FreeDeltaFrobeniusModPFlat.lean`で、素数体のexpand作用との
 半線形同値を通して実際の剰余Frobeniusの自由性・忠実平坦性へ移す。
 混標数・実完備化後の完全平坦性、必要な根付き拡大の存在はまだ未実装。
+
+## B4-6：実際の自由δ環のmod p Frobeniusの自由性（2026-10-15）
+
+`FreeDeltaFrobeniusModPFlat`で、標準商同型が実際のmodPMap p freeDeltaFrobeniusを
+素数体のexpand射へ移す図式を証明。
+標準ULiftの作用と素数体のexpand作用を結ぶ具体的半線形同値を構成し、
+MathlibのModule.Freeの半線形同値による移送を使って自由性を証明した。
+剰余環の非零性と既存APIから忠実平坦性も証明した。
+公開結果は実際の剰余環の実際の剰余Frobenius作用に関するものであり、
+素数体モデルだけを仮定した条件付き平坦性ではない。
+9公開宣言の対象3209ジョブ成功。pure B4専用監査を行う。
+一般pねじれperfectoid環のp正則性を要求する結果とは区別する。
+
+## 共通基盤への要求 G3：正則主元と剰余平坦性からの完全平坦性
+
+対象：R:Type u可換環、a:R、M:Type u加法群、Module R M。
+正確な仮定：Function.Injective (fun r:R↦a*r)、
+Function.Injective (fun m:M↦a•m)、
+Module.Flat (R/span{a}) ((R/span{a})⊗[R]M)。
+必要な結論：既存IsCompletelyFlat (Ideal.span {a}) M。
+すなわちaで消える任意のR加群Nについて、既存derivedTensor R M Nが
+次数0に集中することを証明する主元のTor基底変更判定。
+剰余テンソルがModule.FaithfullyFlatなら、上の結論と既存定義を組み合わせて
+IsCompletelyFaithfullyFlat (Ideal.span {a}) Mへ接続できる。
+完備性・Noether性・有限生成性を要求しない形を使う。
+
+利用：B4-6の自由δ環のFrobeniusの混標数完全平坦性への接続。
+この工程の係数環は自由整数δ環でp正則、Frobeniusによるpの作用も通常のp作用。
+元の一般perfectoid環Rがp正則という仮定は追加しない。
+不足：既存CompletelyFlatPowerTorsionには完全平坦性から剰余平坦性への
+方向があるが、この逆方向の主元正則性を使う公開入口は調査で確認できなかった。
+共通Torと完全平坦性の定義・一般補題をBS内に重複して実装しない。
+待つ工程：この混標数Tor判定の適用のみ。
+独立作業：有限段モニック関係式、δ除算包の剰余表示・正則性、
+根の具体的な構成と、その後の完備化に必要な比較条件の計算を進める。
+要求の記録を外部への依頼メッセージや受領済み証明と同一視しない。
+
+この区切りの最終検証：新規34公開宣言の対象ビルドとpure B4専用
+全公開宣言監査成功。新規sorry・公理・引用依存なし、標準3公理のみ。
+全体4536ジョブ成功。実際のmod p Frobeniusのモジュールの
+プロジェクト内import閉包17件にInputs・CLMST・Paper・RootTowerなし。
+BS専用6ステップとして検証済み変更のみコミットする。
