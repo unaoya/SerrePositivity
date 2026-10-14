@@ -1,9 +1,9 @@
 # K理論・スペクトル・dg 理論の形式化計画
 
 作成日：2026-10-13。計画更新日：2026-10-14。
-M1・M2の圏論的構成と閉対称モノイダル構造、テンソル・cotensorの各段の計算まで実装済み。
+M1・M2の圏論的構成と閉対称モノイダル構造、段階1・2のA1〜C2まで実装・検証済み。
 ホモトピー論の構成、非連結K理論、定理3.1・補題4.6への接続は未完成である。
-最新の実装は§86、全体の見通しは§87、段階2までの実行計画は§88を参照する。
+最新の完了確認は§122、段階2までの実行計画と終了条件は§0.3、全体の見通しは§0.2を参照する。
 mathlibへの追加・登録は今回の完了条件に含めず、必要な構造と法則をこのリポジトリ内に実装する。
 検証済みのステップごとにコミットする。
 当面の完了目標はP1・P2のみ。終了後にモデル構造の導入方法を検討し、P3の実装には進まない。
@@ -13,23 +13,23 @@ mathlibへの追加・登録は今回の完了条件に含めず、必要な構�
 ### 0.1 現在地
 
 [Foundations](../SerrePositivity/Spectra/Foundations.lean)を独立した入口として、
-203モジュール・2140宣言を監査済み。集約ビルドは2058ジョブで成功し、
+261モジュール・2612宣言を監査済み。集約ビルドは2119ジョブで成功し、
 この入口は標準公理のみで、sorry依存を持たない。
 この数はスペクトルと共通基盤の宣言数であり、最終目標の完成率ではない。
 
 | 層 | 検証済みの到達点 | 残る範囲 |
 | --- | --- | --- |
 | M0：仕様 | 基点付き単体的集合、対称スペクトルの主モデル、基本の次数と宇宙 | 安定同値・置換の定義、上位モデルとの比較、引用の正確な型 |
-| M1：基点付き単体的集合 | 対象・射、smash、円・球面、閉対称モノイダル構造 | Kan–Quillenとの接続、必要な豊穣構造とモデル圏公理 |
-| M2：対称スペクトル | 球面加群、自由対象F_n、評価随伴、極限・余極限、閉対称モノイダル構造 | 基点付き単体的集合による作用の単位・結合、写像対象・豊穣構造 |
-| 各段の計算 | F_0との比較、pointwiseTensor・cotensor、随伴、両変数の射と転置・逆転置・評価 | 単位・結合の各段との比較、懸垂・ループとの接続 |
+| M1：基点付き単体的集合 | 対象・射、smash、円・球面、閉対称モノイダル構造 | Kan–Quillenとの接続とモデル圏公理 |
+| M2：対称スペクトル | 球面加群、自由対象F_n、評価随伴、極限・余極限、閉対称モノイダル構造、作用・写像対象・単体的豊穣構造 | レベル・安定モデル構造との接続 |
+| 各段の計算 | F_0との比較、作用の単位・結合、随伴・転置・評価、懸垂・ループ・構造射の随伴表示 | モデル構造の検討後に必要となる追加計算 |
 | M3・M4：ホモトピー論 | 共通の圏論的な対象・演算が利用可能 | 安定モデル、導来演算、π_n、図式・固定点・有理化 |
 | M5・M6：dg・K理論 | 既存の複体・三角圏・K₀を比較先として利用可能 | dg表示と上位モデル、環・加群、非連結K理論の具体的入力と比較 |
 | M7〜M10：本文への接続 | 既存の本文の帰結と利用先 | 支持つき降下、定理3.1、補題4.6、二つのK₀比較と保留入力の解消 |
 
 スペクトルどうしの球面上のsmashの単位・結合・対称性は既に構成済みである。
-直近で仕上げる単位・結合は、基点付き単体的集合Xによる作用X∧Eのものであり、
-スペクトル圏のモノイダル構造を作り直す作業ではない。
+基点付き単体的集合Xによる作用X∧Eの単位・結合の整合性も検証済みである。
+段階2の対象・射・自然な随伴は[StageTwo](../SerrePositivity/Spectra/StageTwo.lean)から利用できる。
 
 ### 0.2 全体の見通しと今回の範囲
 
@@ -60,7 +60,8 @@ P1・P2が通った時点でホモトピー論への入口を一区切りとす�
 
 当面の成果物は、モデル構造の選択に依存しない対称スペクトルの
 単体的なtensor・cotensor・写像対象と、その法則である。
-A1は§98、A2は§103、A3は§104、B2は§108、B3は§113で完了。B4は引き続き実装する。
+A1は§98、A2は§103、A3は§104、B2は§108、B3は§113、B4は§121までで完了。
+B1・C1・C2を含め、全受入条件と引継ぎAPIを§122で最終確認した。
 以下のA1〜A3が段階1、B1〜B4とC1〜C2が段階2に相当する。
 番号は検証可能な作業単位を表し、一単位が一コミットで終わるとは限らない。
 記載する追加API名は実装時の候補であり、既存の宣言としては扱わない。
@@ -4892,3 +4893,39 @@ C1・C2との接続、検証例、一つの入口と引継ぎAPIの最終確認�
 検証：新規ソースの書式・証明マーカー、文書のリンク、git diff --checkを確認した。
 集約ビルドは2118ジョブ、公理監査は261モジュール・2611宣言で成功した。
 標準公理のみでsorry依存なし。新しい証明は標準の計算上限で検証した。
+
+## 122. 最終確認：段階1・2のA1〜C2と引継ぎAPI（2026-10-14）
+
+実行計画§0.3の各受入条件を、現在のソースと証明に照合した。
+完成の範囲はP1・P2であり、K理論全体・モデル構造・導来演算の完成とはしない。
+
+| 単位 | 確認した受入条件 | 現在の証拠となるAPI・ソース |
+| --- | --- | --- |
+| A1 | S⁰∧E≅E、Eの自然性、各段の左単位子 | [PointwiseTensorUnit](../SerrePositivity/Spectra/SymmetricSpectrum/PointwiseTensorUnit.lean)の単位自然同型・自然性・各段の法則。`pointwiseTensorUnitIso_app`は通常の単位子との等式 |
+| A2 | 作用の結合同型、三変数の自然性、順逆の各段の結合子 | [PointwiseTensorAssociator](../SerrePositivity/Spectra/SymmetricSpectrum/PointwiseTensorAssociator.lean)と[各段の比較](../SerrePositivity/Spectra/SymmetricSpectrum/PointwiseTensorAssociatorLevels.lean)。全体の同型と各段の等式を検証 |
+| A3 | 五角形、右単位の三角形、左単位との整合性 | [PointwiseTensorCoherence](../SerrePositivity/Spectra/SymmetricSpectrum/PointwiseTensorCoherence.lean)の三つの法則。共通の係数加群の各段の等式から導く証明を確認 |
+| B1 | Map_*の二変数関手、三変数に自然な表現性、評価・転置・逆転置 | [MappingSpace](../SerrePositivity/Spectra/SymmetricSpectrum/MappingSpace.lean)の随伴・Hom同値・評価と逆性、[原変数の自然性](../SerrePositivity/Spectra/SymmetricSpectrum/MappingSpaceNaturality.lean) |
+| B2 | 合成・単位、結合・左右単位則、通常の恒等射・合成との一致 | [MappingSpaceComposition](../SerrePositivity/Spectra/SymmetricSpectrum/MappingSpaceComposition.lean)、[左右単位](../SerrePositivity/Spectra/SymmetricSpectrum/MappingSpaceUnitLaws.lean)、[結合](../SerrePositivity/Spectra/SymmetricSpectrum/MappingSpaceAssociativity.lean)、[通常の合成](../SerrePositivity/Spectra/SymmetricSpectrum/MappingSpaceArrowComposition.lean)。各法則が実際の射の等式であることを確認 |
+| B3 | 直積からの単体的な合成、0単体とHom、既存の圏構造との一致 | [MappingSpaceSimplicialOrdinary](../SerrePositivity/Spectra/SymmetricSpectrum/MappingSpaceSimplicialOrdinary.lean)の`mappingSpaceSimplicialCategory`、既存の写像対象・豊穣構造との比較、零次単体の恒等射・合成の法則。上流登録を必要としないスコープ内での利用を検証 |
+| B4 | K_+によるtensor・cotensor、三つの自然なHom同値、評価・余評価、Δ[0]と直積の反復比較 | [SimplicialTensorCotensor](../SerrePositivity/Spectra/SymmetricSpectrum/SimplicialTensorCotensor.lean)、[Homの自然性](../SerrePositivity/Spectra/SymmetricSpectrum/SimplicialTensorNaturality.lean)、[単位](../SerrePositivity/Spectra/SymmetricSpectrum/SimplicialTensorUnit.lean)、[直積](../SerrePositivity/Spectra/SymmetricSpectrum/SimplicialTensorProduct.lean)、[tensorの自然性](../SerrePositivity/Spectra/SymmetricSpectrum/SimplicialTensorProductNaturality.lean)、[cotensorの自然性](../SerrePositivity/Spectra/SymmetricSpectrum/SimplicialCotensorProductNaturality.lean)。いずれも三変数の自然性を確認 |
+| C1 | 円によるΣ・Ωの関手と随伴、自然なHom同値、単位・余単位、各段の公式 | [SuspensionLoop](../SerrePositivity/Spectra/SymmetricSpectrum/SuspensionLoop.lean)と[各段の評価・転置](../SerrePositivity/Spectra/SymmetricSpectrum/PointwiseTensorLevelEvaluation.lean)。通常の随伴の単位・余単位と両triangleも確認 |
+| C2 | 構造射の随伴表示、相互逆な転置、スペクトル射の自然性、添字移送 | [AdjointStructureMaps](../SerrePositivity/Spectra/SymmetricSpectrum/AdjointStructureMaps.lean)の転置・逆転置・自然性。[Suspension](../SerrePositivity/Spectra/SymmetricSpectrum/Suspension.lean)の`Nat.one_add`による1+nからn+1への移送を確認 |
+
+[StageTwo](../SerrePositivity/Spectra/StageTwo.lean)を段階2までの一つの入口として追加した。
+[引継ぎAPI一覧](../SerrePositivity/Spectra/SymmetricSpectrum/README.md)を更新し、
+通常の対象・射・随伴、豊穣構造のスコープ内での利用と、次の検討に残る項目を整理した。
+[Foundations](../SerrePositivity/Spectra/Foundations.lean)の現在地の記述も実装と一致させた。
+
+[check_spectra_stage2](../scripts/check_spectra_stage2.lean)はこの入口だけをimportする。
+一般の宇宙で、通常の射と零次単体の対応、恒等射・合成、三つのHom同値の整合性、
+Δ[0]の単位、直積による反復比較、円の随伴、構造射の相互逆な転置と自然性を検証した。
+作用の各段の単位・結合子とpentagon・triangle・左単位、円の各段と両triangleも確認した。
+
+最終検証：StageTwoのビルド、上記の検証例、Foundationsの集約ビルドが成功した。
+集約ビルドは2119ジョブ、公理監査は261モジュール・2612宣言で成功した。
+標準公理のみ・sorry依存なし。新規ソースの書式、証明マーカー、文書のリンク、
+git diff --checkも確認した。検証済みのステップごとにコミットした。
+
+段階2までの目標を完了し、ここで実装を一区切りにする。
+レベル・安定モデル構造の方式、射の三つのクラスと置換、Quillen・pushout-product公理、
+導来演算と安定ホモトピー群は、モデル構造の方法を検討する次段階に残す。

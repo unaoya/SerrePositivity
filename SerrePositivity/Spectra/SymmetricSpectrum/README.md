@@ -4,6 +4,45 @@ Mathlibの `CategoryTheory.Mod` を、構成済みの球面対称列へ適用す
 基礎圏は基点付き単体的集合の対称列、テンソル積は登録済みのconvolutionである。
 各段の対象は基点付き単体的集合であり、球面の作用から和次数への構造射を得る。
 
+段階2までの入口は [StageTwo](../StageTwo.lean)。基点付きの作用、単体的写像対象と豊穣構造、
+tensor・cotensor、懸垂・ループ、構造射の随伴表示をこの一つのimportから利用できる。
+一般の球面加群と各段の計算の詳細も含めた入口は [Foundations](../Foundations.lean)。
+
+```lean
+import SerrePositivity.Spectra.StageTwo
+```
+
+豊穣構造は `mappingSpaceSimplicialCategory` に置く。mathlibの型クラスを利用するスコープで
+`let : SimplicialCategory SymmetricSpectrum := mappingSpaceSimplicialCategory` として使える。
+構成済みの対象・射・随伴と引継ぎAPIは次のとおり。
+
+| 用途 | 主なAPI | 法則・比較 |
+| --- | --- | --- |
+| 基点付きの作用 | `pointwiseTensorFunctor`, `cotensorFunctor` | `pointwiseTensorCotensorAdjunction`、各段のsmash・内部Homとの一致 |
+| 作用の単位・結合 | `pointwiseTensorUnitNatIso`, `pointwiseTensorAssociatorNatIso` | 各段の通常の比較、三変数の自然性、pentagon・triangle・左単位 |
+| 基点付き写像対象 | `pointedMappingSpace`, `pointedMappingSpaceHomEquiv` | 評価・転置・逆転置、三変数の自然性 |
+| 写像の合成・単位 | `mappingSpaceComposition`, `mappingSpaceUnit` | 結合・左右単位則、通常の射の恒等射・合成との一致 |
+| 単体的豊穣構造 | `simplicialMappingSpace`, `mappingSpaceSimplicialCategory` | `simplicialMappingVertexEquiv`、既存の圏構造との一致 |
+| 通常の単体的作用 | `simplicialTensorFunctor`, `simplicialCotensorFunctor` | 三つのHom同値の三変数の自然性、評価・余評価 |
+| 単位と反復作用 | `simplicialTensorUnitNatIso`, `simplicialCotensorUnitNatIso`, `simplicialTensorProductNatIso`, `simplicialCotensorProductNatIso` | Δ[0]の単位、直積による反復比較の三変数の自然性、評価・転置との両立 |
+| 懸垂・ループ | `suspensionFunctor`, `loopFunctor`, `suspensionLoopAdjunction` | 自然なHom同値、単位・余単位・triangle、各段の公式 |
+| 構造射の随伴表示 | `adjointStructureMap` | `uncurry_adjointStructureMap`、`curry_uncurry_adjointStructureMap`、自然性。添字の移送は `suspensionMap` の `Nat.one_add` |
+
+計画の最終検証例は [check_spectra_stage2](../../../scripts/check_spectra_stage2.lean)、
+標準公理のみ・sorry依存なしの監査は [audit_spectra](../../../scripts/audit_spectra.lean) に置く。
+集約ビルドの後、次のコマンドで再確認できる。
+
+```sh
+lake build SerrePositivity.Spectra.Foundations
+lake env lean scripts/check_spectra_stage2.lean
+lake env lean scripts/audit_spectra.lean
+```
+
+モデル構造の選定、レベル・安定弱同値とfibration・cofibration、関手的な置換、
+Quillen公理とpushout-product公理、導来演算、安定ホモトピー群、次数シフトは次の検討に残る。
+その検討では、採用する定義と既存の自由対象・各段の極限余極限・作用・写像対象との接続を確認する。
+段階2の構成にはモデル構造を仮定する入力を加えていない。
+
 - [MappingSpaceNaturality](MappingSpaceNaturality.lean)：原変数スペクトルの射による写像対象の前合成と、転置・逆転置の原変数の自然性の法則。
 - [MappingSpace](MappingSpace.lean)：内部Homの第0段の基点付き写像対象、二変数関手、各段のsmashとの随伴・表現性と評価・転置・逆転置の法則。
 - [MappingSpaceComposition](MappingSpaceComposition.lean)：二回の評価からの合成、作用の単位比較からの単位、その評価の法則。通常の射と写像対象の単位からの射の同値、恒等射と単位の対応。
@@ -17,6 +56,9 @@ Mathlibの `CategoryTheory.Mod` を、構成済みの球面対称列へ適用す
 - [MappingSpaceSimplicialOrdinary](MappingSpaceSimplicialOrdinary.lean)：既存の圏構造と整合するSimplicialCategoryのデータ、零次単体のHom同値との一致と恒等射・合成の保存。
 - [SimplicialTensorCotensor](SimplicialTensorCotensor.lean)：通常の単体的集合への自由な基点の追加によるtensor・cotensor、二つの随伴と三つのHom同値、評価・余評価と三角形の法則。
 - [SimplicialTensorNaturality](SimplicialTensorNaturality.lean)：単体的集合のtensor・cotensorの射と、三つのHom同値の三変数の自然性。
+- [SimplicialTensorProduct](SimplicialTensorProduct.lean)：直積による反復tensor・cotensorの自然同型、合成随伴、評価・転置との両立。
+- [SimplicialTensorProductNaturality](SimplicialTensorProductNaturality.lean)：反復tensorの比較の単体的集合の両変数の自然性。
+- [SimplicialCotensorProductNaturality](SimplicialCotensorProductNaturality.lean)：反復転置と反復cotensorの比較の単体的集合の両変数の自然性。
 - [SimplicialTensorUnit](SimplicialTensorUnit.lean)：Δ[0]によるtensor・cotensorの単位自然同型、cotensorの比較の評価による公式。
 - [AdjointStructureMaps](AdjointStructureMaps.lean)：懸垂構造射の各段の通常のループへの随伴表示、逆転置による既存の構造射との一致と自然性。
 - [SuspensionLoop](SuspensionLoop.lean)：円による懸垂・ループの関手、随伴・自然なHom同値、単位・余単位・triangle則と各段の対象の公式。
