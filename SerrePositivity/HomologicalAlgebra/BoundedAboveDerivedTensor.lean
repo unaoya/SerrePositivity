@@ -125,4 +125,33 @@ def boundedAboveDerivedTensorComplexComparison :
   exact DerivedCategory.Q_map_eq_of_homotopy (ModuleCat.{u} R)
     ((cochainTensorHomotopyLeft h₁ _).trans (cochainTensorHomotopyRight _ h₂))
 
+/-- Model computation respects arbitrary chain representatives of the two derived morphisms. -/
+lemma boundedAboveDerivedTensorModelIso_naturality
+    {X X' Y Y' : DerivedCategory.Minus (ModuleCat.{u} R)}
+    (P : BoundedAboveDerivedModel X.obj) (P' : BoundedAboveDerivedModel X'.obj)
+    (Q : BoundedAboveDerivedModel Y.obj) (Q' : BoundedAboveDerivedModel Y'.obj)
+    (f : X ⟶ X') (g : Y ⟶ Y') (h : P.complex ⟶ P'.complex) (k : Q.complex ⟶ Q'.complex)
+    (hh : DerivedCategory.Q.map h ≫ P'.iso.hom = P.iso.hom ≫ f.hom)
+    (hk : DerivedCategory.Q.map k ≫ Q'.iso.hom = Q.iso.hom ≫ g.hom) :
+    (boundedAboveDerivedTensor.map (f, g)).hom ≫
+        (boundedAboveDerivedTensorModelIso X' Y' P' Q').hom =
+      (boundedAboveDerivedTensorModelIso X Y P Q).hom ≫
+        DerivedCategory.Q.map (cochainTensorMap h k) := by
+  let A := boundedAboveDerivedChosenModel X
+  let B := boundedAboveDerivedChosenModel X'
+  let C := boundedAboveDerivedChosenModel Y
+  let D := boundedAboveDerivedChosenModel Y'
+  have h₁ := (A.mapSquareHomotopy P B P' f.hom).trans
+    ((P.mapHomotopyOfNaturality P' f.hom h hh).compLeft (A.map P (𝟙 _)))
+  have h₂ := (C.mapSquareHomotopy Q D Q' g.hom).trans
+    ((Q.mapHomotopyOfNaturality Q' g.hom k hk).compLeft (C.map Q (𝟙 _)))
+  change DerivedCategory.Q.map (cochainTensorMap (A.map B f.hom) (C.map D g.hom)) ≫
+      DerivedCategory.Q.map (cochainTensorMap (B.map P' (𝟙 _)) (D.map Q' (𝟙 _))) =
+    DerivedCategory.Q.map (cochainTensorMap (A.map P (𝟙 _)) (C.map Q (𝟙 _))) ≫
+      DerivedCategory.Q.map (cochainTensorMap h k)
+  rw [← CategoryTheory.Functor.map_comp, ← CategoryTheory.Functor.map_comp,
+    cochainTensorMap_comp, cochainTensorMap_comp]
+  exact DerivedCategory.Q_map_eq_of_homotopy (ModuleCat.{u} R)
+    ((cochainTensorHomotopyLeft h₁ _).trans (cochainTensorHomotopyRight _ h₂))
+
 end SerrePositivity

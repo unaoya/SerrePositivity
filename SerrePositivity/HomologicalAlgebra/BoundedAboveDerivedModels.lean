@@ -103,6 +103,15 @@ def ofResolutionMapHomotopy {K L : CochainComplex C ℤ}
   exact (map_naturality (ofResolution P) (ofResolution Q) (DerivedCategory.Q.map f)).trans
     (P.map_naturality Q f).symm
 
+/-- Any chain map inducing the specified derived morphism agrees with its chosen lift. -/
+def mapHomotopyOfNaturality (P : BoundedAboveDerivedModel X) (Q : BoundedAboveDerivedModel Y)
+    (f : X ⟶ Y) (h : P.complex ⟶ Q.complex)
+    (hh : DerivedCategory.Q.map h ≫ Q.iso.hom = P.iso.hom ≫ f) :
+    Homotopy (map P Q f) h := by
+  apply homotopyOfDerivedMapEq
+  apply (cancel_mono Q.iso.hom).mp
+  exact (map_naturality P Q f).trans hh.symm
+
 end BoundedAboveDerivedModel
 
 /-- Choose a projective model for each object of Mathlib's actual bounded-above derived category. -/
