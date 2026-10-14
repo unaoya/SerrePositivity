@@ -1,0 +1,13 @@
+import SerrePositivity.KTheory.Adams.TensorSquareBaseChange
+import SerrePositivity.PerfectComplex.IdempotentImageFunctor
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.CochainIdempotent.imageFunctorIso
+assert_no_sorry SerrePositivity.CochainIdempotent.imageFunctorIso_naturality
+assert_no_sorry SerrePositivity.extendScalars_braiding_delta
+assert_no_sorry SerrePositivity.cochainTensorBaseChangeIso_symmetry
+assert_no_sorry SerrePositivity.Adams.tensorSquareBaseChangeIso_swap
+
+#print axioms SerrePositivity.extendScalars_braiding_delta
+#print axioms SerrePositivity.cochainTensorBaseChangeIso_symmetry
+#print axioms SerrePositivity.Adams.tensorSquareBaseChangeIso_swap
