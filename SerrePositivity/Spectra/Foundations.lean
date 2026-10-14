@@ -31,6 +31,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.TensorLeftUnit
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeRight
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreePair
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeAtSum
+public import SerrePositivity.Spectra.SymmetricSpectrum.TensorSymmetry
 
 /-!
 # スペクトルの具体的基盤の入口
@@ -110,9 +111,12 @@ n以上の段の商を対称群そのもので添字付けた余等化子へ移�
 二つの自由対称列のconvolutionをm+n次の自由生成へ比較し、生成元の公式と自然性を証明した。
 F_m XとF_n Yの球面上のテンソル積をF_(m+n)(X⊗Y)へ比較する自然同型も構成した。
 
+球面上のテンソル積の交換自然同型と、二回の交換の恒等性を証明した。
+標準射上のbraidingの公式と、左右の単位比較との両立も構成した。
+
 ## 未構成の範囲
 
-球面上のテンソル積の自由加群を左因子とする比較・結合子・対称性とモノイダル構造、
+球面上のテンソル積の自由加群を左因子とする比較・結合子・交換の整合性とモノイダル構造、
 モデル構造と導来演算は引き続き実装する。
 この入口は完成済みの§4の降下入力を変更せず、基盤を独立に検証するためのもの。
 現在の構成に新しい未証明入力はない。
