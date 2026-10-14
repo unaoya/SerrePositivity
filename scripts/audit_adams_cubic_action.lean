@@ -1,4 +1,4 @@
-import SerrePositivity.KTheory.Adams.TensorCube
+import SerrePositivity.KTheory.Adams.TensorCubeEigenspaces
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.cochainTensorTriple_hom_ext
@@ -29,3 +29,33 @@ assert_no_sorry SerrePositivity.Adams.tensorCube_support
 #print axioms SerrePositivity.Adams.tensorCube_support
 assert_no_sorry SerrePositivity.Adams.tensorCubeRotation_apply_ι
 #print axioms SerrePositivity.Adams.tensorCubeRotation_apply_ι
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeAction
+#print axioms SerrePositivity.Adams.tensorCubeAction
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeDecompositionIso
+#print axioms SerrePositivity.Adams.tensorCubeDecompositionIso
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeEigenspace_perfect
+#print axioms SerrePositivity.Adams.tensorCubeEigenspace_perfect
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeEigenspace_support
+#print axioms SerrePositivity.Adams.tensorCubeEigenspace_support
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeEigenspace_inclusion_rotation
+#print axioms SerrePositivity.Adams.tensorCubeEigenspace_inclusion_rotation
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeProjector_naturality
+#print axioms SerrePositivity.Adams.tensorCubeProjector_naturality
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeEigenspaceMap
+#print axioms SerrePositivity.Adams.tensorCubeEigenspaceMap
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeEigenspaceMap_inclusion
+#print axioms SerrePositivity.Adams.tensorCubeEigenspaceMap_inclusion
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeEigenspaceMap_id
+#print axioms SerrePositivity.Adams.tensorCubeEigenspaceMap_id
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeEigenspaceMap_comp
+#print axioms SerrePositivity.Adams.tensorCubeEigenspaceMap_comp
