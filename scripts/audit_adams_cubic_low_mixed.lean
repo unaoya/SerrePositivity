@@ -1,4 +1,4 @@
-import SerrePositivity.KTheory.Adams.TensorCubeLowMixed
+import SerrePositivity.KTheory.Adams.TensorCubeLowMixedInclusions
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.Adams.tensorCubeLowMixed0Partial
@@ -35,3 +35,15 @@ assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerFirstMap_lowMixed2
 #print axioms SerrePositivity.Adams.tensorCubeFirstLayerFirstMap_lowMixed2
 assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerFirstMap_lowMixedMap
 #print axioms SerrePositivity.Adams.tensorCubeFirstLayerFirstMap_lowMixedMap
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeLowMixed1_inclusion
+#print axioms SerrePositivity.Adams.tensorCubeLowMixed1_inclusion
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeLowMixed2_inclusion
+#print axioms SerrePositivity.Adams.tensorCubeLowMixed2_inclusion
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeLowMixed1_target_inclusion_mono
+#print axioms SerrePositivity.Adams.tensorCubeLowMixed1_target_inclusion_mono
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeLowMixed2_target_inclusion_mono
+#print axioms SerrePositivity.Adams.tensorCubeLowMixed2_target_inclusion_mono
