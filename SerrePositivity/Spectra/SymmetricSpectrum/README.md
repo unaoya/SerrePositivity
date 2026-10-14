@@ -10,6 +10,7 @@ Mathlibの `CategoryTheory.Mod` を、構成済みの球面対称列へ適用す
 - [MappingSpaceUnitLaws](MappingSpaceUnitLaws.lean)：基点付き写像対象の合成の左右単位則と、単位を合成した後の評価の法則。
 - [MappingSpaceAssociativity](MappingSpaceAssociativity.lean)：基点付き写像対象の合成の結合則と、三回の評価への帰着。
 - [MappingSpaceArrowComposition](MappingSpaceArrowComposition.lean)：通常のスペクトル射に対応する点の評価と、通常の射の合成と写像対象の点の合成の一致。
+- [MappingSpaceSimplicial](MappingSpaceSimplicial.lean)：基点を忘れた単体的写像対象、直積からの合成と単位、零次単体と通常のスペクトル射の同値。
 - [AdjointStructureMaps](AdjointStructureMaps.lean)：懸垂構造射の各段の通常のループへの随伴表示、逆転置による既存の構造射との一致と自然性。
 - [SuspensionLoop](SuspensionLoop.lean)：円による懸垂・ループの関手、随伴・自然なHom同値、単位・余単位・triangle則と各段の対象の公式。
 - [PointwiseTensorAssociator](PointwiseTensorAssociator.lean)：F_0の積の比較による作用の結合同型、生成対象の両変数と値域スペクトルを含む三変数の自然性。
