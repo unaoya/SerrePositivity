@@ -5713,3 +5713,39 @@ cofibrantである。恒等置換を使ってsmashのHasUnitAxiomを構成した
 cofibration性とtrivialの場合の弱同値性を証明する。単位公理だけではmonoidalモデル互換性を完成扱いにしない。
 スペクトル側monoidal/SM7、具体的PSS/円のKan–Quillen入力への接続も残る。
 段階1〜3の全体目標は継続中。
+
+
+## 144. 段階1〜3の実行記録：既存smashのpushout-productとSM7（2026-10-15）
+
+`Spectra/Pointed/SmashPushoutProduct`で、直積とsmashの二つのpushout-productの境界と商射を構成した。
+比較と両立する直積上の射は、B×Xの境界から第一軸、A×Yの境界から第二軸を零にする。
+smashの普遍性で降下させ、比較正方形の存在・一意性を証明した。
+smash pushout-productは直積pushout-productの実際のpushoutであり、モデル構造を仮定しない。
+境界の標準射・正方形・包含公式を同じ選択済み余極限上で公開し、
+モデル導入後の別のHasPushoutインスタンスに置き換えて型だけを比較しない。
+
+共有`HomotopicalAlgebra/Pointed/SmashModel`を追加した。
+Underの忘却によるpushout保存で、直積境界の基礎射をCのcurriedTensorのPushoutObjObjへ接続した。
+基礎圏のpushout-product条件から直積側のcofibration性とtrivialの場合の弱同値性を得て、
+上記正方形とcofibration/trivial cofibrationのpushout閉性でsmash側へ移した。
+弱同値単独のpushout閉性は仮定していない。
+
+閉直積monoidal圏Cの既存モデルとIsQuillenBifunctor(curriedTensor C)を入力すると、
+既存PointedObjectのsmashもIsQuillenBifunctorである。
+Mathlibのpushout-productの射の同型で任意の正方形の選択へ移し、標準の一つだけに限定しない。
+基礎圏単位のcofibrancyを追加すれば§143の単位公理と合わせてsmash_monoidalModelを得る。
+smash_hasQuillenPullbackHomは既存の閉内部Homに対するSM7を証明する。
+このSM7には基礎圏単位のcofibrancyを追加要求しない。
+
+対象・集約ビルド成功、新規ソース警告なし。check_pointed_modelは実際のpushout比較、
+smashのcof/trivial条件、任意PushoutObjObjに対応したQuillen bifunctor、monoidalモデルとSM7を検証する。
+新規比較と基点付きモデルの63宣言（内部補助込み）の公理監査が成功。
+共有基盤26モジュール381宣言、全スペクトル・共有基盤304モジュール2979公開宣言の監査が成功。
+既存general tensor/cotensorと旧StageTwoの同時import利用例も330宣言監査込みで成功。
+標準公理のみ、sorry・引用依存なし。
+コミット：smashのpushout比較`0eaec83`、モデル互換性・SM7`6c48f0f`。
+
+基点付きsmashの一般的なmodel互換性は、上記の明示した仮定の下で証明済み。
+次は固定版の具体的SSet/Kan–Quillen入力・生成射・presentability・円のcofibrancyへの接続と、
+スペクトル側のmonoidal/SM7条件を検証する。今回の一般的帰結だけで具体的PSSモデルを完成扱いにしない。
+段階1〜3の全体目標は継続中。

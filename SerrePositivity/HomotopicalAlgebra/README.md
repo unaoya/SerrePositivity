@@ -220,3 +220,14 @@ cofibrancyは基点射のcofibration性と同値で、forget/adjoinはQuillen随
 cofibrantな基礎圏単位の自由基点追加が、cofibrantな既存smash単位を与える。
 その恒等置換からHasUnitAxiomを構成済み。pushout-product互換性は次の証明対象。
 check_pointed_model.leanが一般Cの利用例・10宣言の公理監査を含む。コミット844a563。
+
+## 既存smashのmodel互換性（§144）
+
+Spectra/Pointed/SmashPushoutProductはsmash pushout-productが直積側のpushoutであることを普遍性から証明する。
+Pointed/SmashModelは基礎圏Cのcartesian pushout-product条件を既存smashへ移す。
+任意のPushoutObjObjの選択を扱い、cofibration/trivial cofibrationのpushout閉性を使う。
+smash_hasQuillenPullbackHomは既存内部HomのSM7。
+cofibrantな基礎圏単位を追加するとsmash_monoidalModelを構成する。
+具体的SSetモデル入力やスペクトル側SM7はこの一般定理とは別の接続作業である。
+check_pointed_modelは比較・保存条件・monoidalモデル・SM7と63宣言の監査を含む。
+コミット0eaec83・6c48f0f。
