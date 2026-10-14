@@ -2625,7 +2625,7 @@ F6公開API：`perfection_lift_principal_quotient_kernel`はBS要求の
 
 ### 9.6. F7：Fontaine核イデアル進分離性
 
-状態：F7-1完了（2026-10-14）。tiltの互換根評価、pの根に対応する元の分離性と正則性を証明。対象ビルドと全6宣言の`assert_no_sorry`成功。F7-2以降は未完了。
+状態：F7-1・2完了（2026-10-14）。tilt元の分離性・正則性と、第0係数からのWitt元の主イデアル進分離性を証明。対象ビルドと全7宣言の`assert_no_sorry`成功。F7-3以降は未完了。
 p非単元・p進完備な任意の可換環Sについて、整perfectoid性とp正則性から
 `IsHausdorff (RingHom.ker (WittVector.fontaineTheta S p)) (WittVector p (PreTilt S p))`
 を証明する。Noether性・局所性・整域性を追加しない。今回の受渡しは核進分離性まで。

@@ -103,6 +103,7 @@ import SerrePositivity.CommutativeAlgebra.PerfectionIdealCorrection
 import SerrePositivity.CommutativeAlgebra.PerfectAnnihilator
 import SerrePositivity.CommutativeAlgebra.PerfectionPrincipalQuotientKernel
 import SerrePositivity.CommutativeAlgebra.TiltRootSeparation
+import SerrePositivity.CommutativeAlgebra.WittPrincipalSeparation
 import Mathlib.Util.AssertNoSorry
 import Mathlib.Util.PrintSorries
 
@@ -1418,3 +1419,6 @@ assert_no_sorry SerrePositivity.tiltRootEvaluation_pow
 assert_no_sorry SerrePositivity.tiltRootEvaluation_zero
 assert_no_sorry SerrePositivity.tilt_isHausdorff_of_unit_untilt_root
 assert_no_sorry SerrePositivity.tilt_mul_injective_of_untilt_regular
+
+-- F7-2：Witt元の主イデアル進分離性。
+assert_no_sorry SerrePositivity.witt_isHausdorff_of_constantCoeff
