@@ -1,6 +1,6 @@
 # 外部引用5：交点重複度の消滅定理を Adams 作用素で証明する計画
 
-作成：2026-10-14。改訂：2026-10-14（S1–S11 全段の小段・証明契約・実装順序を具体化）。状態：S1.1–S1.6、S2.1–S2.4、S3.1–S3.7 実装・検証済み。S4.1–S4.7 も実装・検証済み（§4.23）。S5.1–S5.5 は実装・検証済み。S5.6–S5.7 は実装中、S6–S11 は計画。
+作成：2026-10-14。改訂：2026-10-14（S1–S11 全段の小段・証明契約・実装順序を具体化）。状態：S1.1–S1.6、S2.1–S2.4、S3.1–S3.7 実装・検証済み。S4.1–S4.7 も実装・検証済み（§4.23）。S5.1–S5.6 は実装・検証済み。S5.7 は実装中、S6–S11 は計画。
 対象は [Inputs/IntersectionTheory.lean](../SerrePositivity/Inputs/IntersectionTheory.lean) の
 `Inputs.intersectionVanishing`（Roberts–Gillet–Soulé の消滅定理）。
 並行する Chow 群の経路は [サイクルの計画](intersection-vanishing-cycles.md)。
@@ -1220,8 +1220,9 @@ S4 の完了は K2 の分解・比較・局所化・dévissage の完成。
 | S5.2 | `CommutativeAlgebra/MaximalRegularSequence`：最長正則列、延長不能性、関連素イデアル回避、局所化した列の長さの高さ上界、`exists_regularSequence_associatedPrime_above` | 完了。コミット `9fb52df` |
 | S5.3 | `CommutativeAlgebra/RegularPrimeDimension`：素イデアルの高さ・次元公式、`supportCodimension`、台の次元と余次元の公式 | 完了。コミット `883506b` |
 | S5.4 | `HomologicalAlgebra/AuslanderBuchsbaum`：固定ソースの移植、Ext の零性、有限自由加群の深さ、射影次元による帰納、公開 `auslanderBuchsbaum` | 完了。コミット `0cc0d9f` |
-| S5.5 | `HomologicalAlgebra/RegularQuotientProjectiveDimension`：商の完全性、有限自由性の持ち上げ、`projectiveDimension_eq_regularQuotient` | 完了。この記録を含むコミット |
-| S5.6–S5.7 | §4.11・§4.13 の証明契約 | 未完了 |
+| S5.5 | `HomologicalAlgebra/RegularQuotientProjectiveDimension`：商の完全性、有限自由性の持ち上げ、`projectiveDimension_eq_regularQuotient` | 完了。コミット `4878c8c` |
+| S5.6 | `CommutativeAlgebra/RegularLocalCriterion`：正則元と m² の回避、商の極大イデアルの retract、余接次元の帰納、`isRegularLocalRing_of_maximalIdeal_projectiveDimension` | 完了。この記録を含むコミット |
+| S5.7 | §4.11・§4.13 の証明契約 | 未完了 |
 
 S5.1 の高さと商の次元の和の不等式は任意の可換環で証明。
 商のスペクトルと素イデアル以上の区間の順序同型を使い、
@@ -1257,6 +1258,12 @@ S5.5 は同じ固定ソースの共通正則元による射影次元比較を移
 入力に環・加群の両方での正則性と極大イデアルへの所属を明記。
 零加群・無限射影次元も含む等式として証明済みで、S5.6 では極大イデアルの加群へ適用する。
 対象ビルド（2636 jobs）と専用監査が成功。依存公理は標準三公理のみ。
+S5.6 は固定ソースの正則生成列の構成を現行の余接空間・極大イデアル API に接続。
+有限剰余体も含み、剰余体の無限性は仮定しない。
+`m/(xm)` の中の商環の極大イデアルの retract を明示し、S5.5 を `M=m` に適用。
+正則性判定の最後の次元上界は一般の正則列商の次元公式を使用し、Ischebeck と global dimension を移植していない。
+対象ビルド（2709 jobs）と専用監査が成功。依存公理は標準三公理のみ。
+S5.4–S5.6 の外部ソース接続は P2・P3・P4 を通過した。
 S5 全体の統合ビルドは後続小段の完成後に行う。
 
 ## 5. 受入条件
