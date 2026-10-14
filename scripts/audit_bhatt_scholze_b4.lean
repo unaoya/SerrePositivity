@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.FreeDeltaModP
 import SerrePositivity.BhattScholze.PrimePolynomialFrobeniusFlat
 import SerrePositivity.BhattScholze.PolynomialExpandFree
 import SerrePositivity.BhattScholze.PolynomialExpandDecomposition
@@ -388,3 +389,21 @@ assert_no_sorry SerrePositivity.BhattScholze.primePolynomial_frobenius_moduleFre
 
 assert_no_sorry SerrePositivity.BhattScholze.primePolynomial_frobenius_moduleFaithfullyFlat
 #print axioms SerrePositivity.BhattScholze.primePolynomial_frobenius_moduleFaithfullyFlat
+
+assert_no_sorry SerrePositivity.BhattScholze.freeDeltaModPMap
+#print axioms SerrePositivity.BhattScholze.freeDeltaModPMap
+
+assert_no_sorry SerrePositivity.BhattScholze.freeDeltaModPMap_surjective
+#print axioms SerrePositivity.BhattScholze.freeDeltaModPMap_surjective
+
+assert_no_sorry SerrePositivity.BhattScholze.freeDeltaModPMap_ker
+#print axioms SerrePositivity.BhattScholze.freeDeltaModPMap_ker
+
+assert_no_sorry SerrePositivity.BhattScholze.freeDeltaModPEquiv
+#print axioms SerrePositivity.BhattScholze.freeDeltaModPEquiv
+
+assert_no_sorry SerrePositivity.BhattScholze.freeDeltaModPEquiv_mk
+#print axioms SerrePositivity.BhattScholze.freeDeltaModPEquiv_mk
+
+assert_no_sorry SerrePositivity.BhattScholze.freeDeltaModPEquiv_frobenius_mk
+#print axioms SerrePositivity.BhattScholze.freeDeltaModPEquiv_frobenius_mk
