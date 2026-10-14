@@ -7,7 +7,7 @@ public import SerrePositivity.CommutativeAlgebra.Koszul
 
 指定した元の各冪のKoszul複体と、冪を一段下げる実際の鎖写像を構成する。
 その直積とmapping coneから完備化の候補複体を作る。
-導来完備性・H⁰の環構造・普遍性はまだ別途証明が必要である。
+導来完備性はTowerCompleteで証明する。H⁰の環構造・普遍性はまだ別途証明が必要である。
 -/
 
 @[expose] public noncomputable section
