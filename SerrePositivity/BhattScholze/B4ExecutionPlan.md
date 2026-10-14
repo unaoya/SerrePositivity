@@ -397,3 +397,17 @@ Dが零環になることを既存APIで示して処理。K自体のCharPを仮�
 基底Witt射の一致と、p Hausdorff終域への射の忠実性も証明した。
 4公開宣言を対象ビルドとB4専用監査で検証。
 これはまだdistinguished商の余積ではなく、商への降下とmod p比較が残る。
+
+## B4-5：共通distinguished元によるWitt商の余積（2026-10-14）
+
+`PerfectoidWittPushout`に、共通基底Witt元dの像による具体的な商
+`WittCoefficientPushout p R A B d`と左右の標準射を定義。
+標準射の代表元の式、基底Witt環上の一致を証明した。
+dがdistinguishedなら候補はperfectoidであり、係数テンソルが零環になる場合も含む。
+任意のp完備環Dへの、両因子の商からの両立する射の一意な延長を証明。
+試験環のp正則性・非零性は不要。普遍性自体にはdのdistinguished性も不要。
+
+8公開宣言を対象ビルドとB4専用監査で検証する。
+これは具体的な係数Witt商の余積であり、一般perfectoid環のFontaine商表示との
+接続・原環のテンソルからの標準射・mod p図式は引き続き残る。
+導来完備テンソルとの比較を主張せず、一般B4の全射性を完成とは数えない。
