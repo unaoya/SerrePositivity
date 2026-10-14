@@ -65,4 +65,15 @@ lemma mappingHom_compatibility (X : C) (E F : GeneralSymmetricSpectrum C K)
     cotensorMappingHomEquiv X E F (pointwiseTensorHomEquiv X E F f) =
       mappingObjectHomEquiv X E F f := by
   simp [cotensorMappingHomEquiv]
+lemma mappingObjectHomEquiv_naturality_parameter {X Y : C} (a : X ⟶ Y)
+    (E F : GeneralSymmetricSpectrum C K) (f : pointwiseTensor Y E ⟶ F) :
+    mappingObjectHomEquiv X E F ((pointwiseTensorBifunctor.map a).app E ≫ f) =
+      a ≫ mappingObjectHomEquiv Y E F f :=
+  (mappingObjectAdjunction E).homEquiv_naturality_left a f
+
+lemma mappingObjectHomEquiv_naturality_target (X : C) (E : GeneralSymmetricSpectrum C K)
+    {F F' : GeneralSymmetricSpectrum C K} (b : F ⟶ F') (f : pointwiseTensor X E ⟶ F) :
+    mappingObjectHomEquiv X E F' (f ≫ b) =
+      mappingObjectHomEquiv X E F f ≫ (mappingObjectFunctor E).map b :=
+  (mappingObjectAdjunction E).homEquiv_naturality_right f b
 end SerrePositivity.GeneralSymmetricSpectrum
