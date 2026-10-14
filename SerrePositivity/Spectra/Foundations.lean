@@ -25,6 +25,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.FreeLevelQuotient
 public import SerrePositivity.Spectra.SymmetricSpectrum.FreeLevelQuotientAction
 public import SerrePositivity.Spectra.SymmetricSpectrum.FreeLevelPermutation
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorQuotient
+public import SerrePositivity.Spectra.SymmetricSpectrum.Tensor
 
 /-!
 # スペクトルの具体的基盤の入口
@@ -85,10 +86,13 @@ convolutionの乗法の可換性を証明し、球面対称列を可換モノイ
 n以上の段の商を対称群そのもので添字付けた余等化子へ移し、各段との作用付き自然同型を構成した。
 球面上のテンソル積の基礎となる釣り合い商を対称列の圏の余等化子として構成した。
 釣り合い射の降下・一意性・Hom同値、二変数の関手性と各段での余等化子表示を証明した。
+可換係数の左右の作用の整合性から関係式を加群の射へ持ち上げ、釣り合い商上へ球面作用を降ろした。
+作用の単位・結合則を証明し、対称スペクトルとしてのテンソル積とその二変数関手を構成した。
+球面作用と両立する釣り合い射のスペクトルとしての降下、標準射上の因子化と一意性も証明した。
 
 ## 未構成の範囲
 
-釣り合い商上の球面作用、球面上のテンソル積のモノイダル構造、モデル構造と導来演算は引き続き実装する。
+球面上のテンソル積の単位・結合子・対称性とモノイダル構造、モデル構造と導来演算は引き続き実装する。
 この入口は完成済みの§4の降下入力を変更せず、基盤を独立に検証するためのもの。
 現在の構成に新しい未証明入力はない。
 -/
