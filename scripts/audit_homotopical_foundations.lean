@@ -8,6 +8,7 @@ run_cmd do
   let env ← getEnv
   let expected := #[`SerrePositivity.HomotopicalAlgebra.Quillen.Adjunction,
     `SerrePositivity.HomotopicalAlgebra.Under.ModelCategory,
+    `SerrePositivity.HomotopicalAlgebra.Pointed.Basic,
     `SerrePositivity.CategoryTheory.MorphismProperty.UnderFactorization,
     `SerrePositivity.CategoryTheory.LiftingProperties.Under,
     `SerrePositivity.HomotopicalAlgebra.Generated.Basic,
