@@ -128,3 +128,39 @@ N3の標数p特殊場合のIsPerfectoidizationは独立した証明済み成果�
 P2で一般完備性比較が不足しても、具体的W₂短完全列とP1は完成させて正確な不足を記録する。
 不足した補題だけを待ち、関係のない工程は停止しない。他チャットへの送信は行わない。
 受領済みF3の実装をBS側で作り直さない。
+
+## P1〜P3の実装完了（2026-10-14）
+
+最初の区切りを実装した。F3本体の実際のH⁰をそのまま使用し、
+一般のδ基底について、標準射をδ射とするδ構造の一意存在と
+p,g(d)実導来完備δ環への一意延長を証明した。
+
+- P1：`PDCompletionInterface.lean`。H⁰自身の作用のp,j(d)完備性、
+  試験環自身の作用を使う環延長と外延性。コミット`9a86ace`。
+- P2：`WittTwoModuleSequence.lean`、`WittTwoModuleComplete.lean`、
+  `DeltaFrobeniusComplete.lean`、`WittTwoPDComplete.lean`。
+  核と第1座標の加法群同型、φねじれ作用、実導来完備性。
+  コミット`ea0ba86`。
+- P3：`DeltaPDCompletion.lean`、`DeltaPDCompletionUniversal.lean`。
+  `existsUnique_deltaPDCompletionStructure`、`deltaPDCompletionStructure`、
+  `pdCompletionUnit_isDeltaHom`、`deltaPDCompletionStructure_unique`。
+  `pdCompletionRingHom_isDeltaHom`、`existsUnique_deltaPDCompletionHom`、
+  `deltaPDCompletionLift`とそのδ性・標準射との合成図式。
+
+P2のφ(d)完備性は実装済み。既存の漸化式判定と完備列のAPIから、
+逆漸化式と線形自己準同型による逆作用素をBS内の非公開補助証明として構成した。
+公開APIはδ基底像のφ(d)に限定し、同等の一般完備性定義を作らない。
+`deltaImage_frobenius_isModuleComplete`でp,f(d)完備性からf(φ(d))完備性を得る。
+この比較は追加の共通入力を仮定しない。
+W₂の第0座標核の短完全列はMathlibの`LinearMap.shortComplexKer`を再利用し、
+`isModuleComplete_extension`で完備性を供給する。
+
+すべてpねじれ・非Noether環・零環を許し、p正則性や有界ねじれ、
+古典的完備性を追加していない。試験δ環は既存F3と同じ宇宙uの環。
+元のKoszul標準射は変更せず、標準射のδ性とH⁰上のδ構造の一意性を証明した。
+P4〜P7、prism性・perfectoid化の一般存在・全射性はこの区切りの結論ではない。
+
+P1〜P3の7新規Leanモジュールを個別ビルドし、全25公開宣言のBS専用監査が成功。
+公理依存はpropext・Classical.choice・Quot.soundのみ、全体ビルドは4323ジョブ成功。
+最終import閉包83モジュールにInputs・CLMST・Paper・RootTower依存なし。
+新規sorry・公理・外部引用なし。共有コード・ルートimport・共有監査は変更していない。
