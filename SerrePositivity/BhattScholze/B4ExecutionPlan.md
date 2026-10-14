@@ -384,3 +384,16 @@ G2の導来比較と一般Tor独立性は引き続き別に必要な工程とし
 非単元p・p完備性・mod p Frobenius全射性・Fontaine核の単項性を明示した
 3公開宣言を対象ビルドとB4専用監査で検証する。
 余積の構成・普遍性・mod p比較は次工程。一般B4の全射性は未完了。
+
+## B4-5：係数Witt余積の完備試験環への普遍性（2026-10-14）
+
+BS専用`WittCoefficientPushout.lean`を追加。既存の
+`existsUnique_wittResidueLift_of_complete`と`wittLift_unique`を使い、
+完全標数p環A←R→Bの両立するWitt射をW(A⊗[R]B)から任意の
+p完備環Dへ一意に延長することを証明した。終域のp正則性・非零性は不要。
+係数テンソルが零環になる場合は剰余環D/pが零環になり、p完備性から
+Dが零環になることを既存APIで示して処理。K自体のCharPを仮定する
+入口と、零環Kも含む完全係数の入口を分けて公開した。
+基底Witt射の一致と、p Hausdorff終域への射の忠実性も証明した。
+4公開宣言を対象ビルドとB4専用監査で検証。
+これはまだdistinguished商の余積ではなく、商への降下とmod p比較が残る。
