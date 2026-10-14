@@ -1,0 +1,62 @@
+import SerrePositivity.Spectra.General.Foundations
+import SerrePositivity.Spectra.General.SimplicialComparison
+import SerrePositivity.Spectra.StageTwo
+import SerrePositivity.HomotopicalAlgebra.Foundations
+
+universe v u w w'
+noncomputable section
+open CategoryTheory CategoryTheory.Limits
+open SerrePositivity SerrePositivity.GeneralSymmetricSpectrum
+
+variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C]
+  [MonoidalClosed C] [HasColimitsOfSize.{0, 0} C] (K : C)
+
+-- No model structure, pointing, simplicial enrichment, or zero object is needed.
+example : Category (GeneralSymmetricSpectrum C K) := inferInstance
+example : (forget K).Faithful := inferInstance
+example : freeFunctor K ⊣ forget K := freeForgetAdjunction K
+example (n : ℕ) : freeAt (K := K) n ⊣ evaluation (K := K) n := freeAtAdjunction n
+
+example (n : ℕ) {X : C} (E : GeneralSymmetricSpectrum C K) (f : X ⟶ level E n) :
+    freeAtGenerator (K := K) n X ≫ levelMap (freeAtLift n E f) n = f :=
+  freeAtGenerator_lift n E f
+
+-- Naturality in the input and the output uses the actual selected adjunction.
+example (n : ℕ) {X X' : C} (a : X ⟶ X') (E : GeneralSymmetricSpectrum C K)
+    (f : (freeAt n).obj X' ⟶ E) :
+    freeAtHomEquiv n X E ((freeAt n).map a ≫ f) = a ≫ freeAtHomEquiv n X' E f :=
+  (freeAtAdjunction n).homEquiv_naturality_left a f
+
+example (n : ℕ) (X : C) {E E' : GeneralSymmetricSpectrum C K} (b : E ⟶ E')
+    (f : (freeAt n).obj X ⟶ E) :
+    freeAtHomEquiv n X E' (f ≫ b) = freeAtHomEquiv n X E f ≫ levelMap b n :=
+  (freeAtAdjunction n).homEquiv_naturality_right f b
+
+variable {J : Type w} [Category.{w'} J]
+example : CreatesLimitsOfSize.{w', w} (forget K) := inferInstance
+example [HasLimitsOfSize.{0, 0} C] : CreatesColimitsOfSize.{w', w} (forget K) := inferInstance
+example [HasLimitsOfShape J C] : HasLimitsOfShape J (GeneralSymmetricSpectrum C K) :=
+  inferInstance
+example [HasLimitsOfSize.{0, 0} C] [HasColimitsOfShape J C] : HasColimitsOfShape J (GeneralSymmetricSpectrum C K) :=
+  inferInstance
+example [HasLimitsOfShape J C] (F : J ⥤ GeneralSymmetricSpectrum C K) (n : ℕ) (j : J) :
+    (limitLevelIso F n).hom ≫ limit.π (F ⋙ evaluation n) j = levelMap (limit.π F j) n :=
+  limitLevelIso_hom_π F n j
+example [HasLimitsOfSize.{0, 0} C] [HasColimitsOfShape J C] (F : J ⥤ GeneralSymmetricSpectrum C K) (n : ℕ) (j : J) :
+    levelMap (colimit.ι F j) n ≫ (colimitLevelIso F n).hom = colimit.ι (F ⋙ evaluation n) j :=
+  colimitLevelIso_ι_hom F n j
+
+-- Coercion-free reuse of the old category, morphisms, free objects and adjunctions.
+example (E : SymmetricSpectrum.{u}) :
+    GeneralSymmetricSpectrum PointedSimplicialSet.{u} PointedSimplicialSet.circle := E
+example {E F : SymmetricSpectrum.{u}} (f : E ⟶ F) :
+    levelMap (C := PointedSimplicialSet.{u}) (K := PointedSimplicialSet.circle) f 0 =
+      SymmetricSpectrum.levelMap f 0 := rfl
+example (n : ℕ) :
+    freeAtAdjunction (K := (PointedSimplicialSet.circle : PointedSimplicialSet.{u})) n =
+      SymmetricSpectrum.freeAtAdjunction n := simplicial_freeAtAdjunction n
+
+-- Old enrichment and suspension-loop APIs coexist with the generic entry.
+example (X : PointedSimplicialSet.{u}) :
+    SymmetricSpectrum.pointwiseTensorFunctor X ⊣ SymmetricSpectrum.cotensorFunctor X :=
+  SymmetricSpectrum.pointwiseTensorCotensorAdjunction X
