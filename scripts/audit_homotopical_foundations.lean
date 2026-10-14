@@ -1,4 +1,4 @@
--- Audit every declaration belonging to the four H1-H2 implementation modules.
+-- Audit every declaration belonging to the shared homotopical implementation modules.
 import SerrePositivity.HomotopicalAlgebra.Foundations
 import Lean.Util.CollectAxioms
 
@@ -9,7 +9,10 @@ run_cmd do
   let expected := #[`SerrePositivity.HomotopicalAlgebra.Quillen.Adjunction,
     `SerrePositivity.HomotopicalAlgebra.Under.ModelCategory,
     `SerrePositivity.CategoryTheory.MorphismProperty.UnderFactorization,
-    `SerrePositivity.CategoryTheory.LiftingProperties.Under]
+    `SerrePositivity.CategoryTheory.LiftingProperties.Under,
+    `SerrePositivity.HomotopicalAlgebra.Generated.Basic,
+    `SerrePositivity.HomotopicalAlgebra.Transfer.Recognition,
+    `SerrePositivity.HomotopicalAlgebra.Transfer.Right]
   let mut declarations : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
