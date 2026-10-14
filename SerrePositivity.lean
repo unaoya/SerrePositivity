@@ -323,6 +323,7 @@ public import SerrePositivity.PerfectComplex.Basic
 public import SerrePositivity.PerfectComplex.Support
 public import SerrePositivity.PerfectComplex.ClosedSupport
 public import SerrePositivity.PerfectComplex.ClosedSupportK0
+public import SerrePositivity.PerfectComplex.ClosedSupportComparison
 public import SerrePositivity.PerfectComplex.Closure
 public import SerrePositivity.PerfectComplex.K0
 public import SerrePositivity.PerfectComplex.NormalizedEuler

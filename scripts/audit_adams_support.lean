@@ -1,4 +1,4 @@
-import SerrePositivity.PerfectComplex.ClosedSupportK0
+import SerrePositivity.PerfectComplex.ClosedSupportComparison
 import Mathlib.Util.AssertNoSorry
 
 -- S1.1: closed support and comparison with the existing ideal support.
@@ -21,3 +21,9 @@ assert_no_sorry SerrePositivity.K0WithSupport.lift
 assert_no_sorry SerrePositivity.K0WithSupport.hom_ext
 assert_no_sorry SerrePositivity.K0WithSupport.mk_triangle
 assert_no_sorry SerrePositivity.K0WithSupport.mk_shift_one
+
+-- S1.4: comparison with the existing scalar and finite-free models.
+assert_no_sorry SerrePositivity.supportedPerfectClosedEquivalence
+assert_no_sorry SerrePositivity.scalarClosedSupportK0Equiv
+assert_no_sorry SerrePositivity.freeToClosedSupportK0
+assert_no_sorry SerrePositivity.freeClosedSupportK0Equiv
