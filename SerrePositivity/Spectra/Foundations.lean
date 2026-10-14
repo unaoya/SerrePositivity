@@ -62,6 +62,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorMapLevels
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorUnit
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorAssociator
 public import SerrePositivity.Spectra.SymmetricSpectrum.SuspensionLoop
+public import SerrePositivity.Spectra.SymmetricSpectrum.AdjointStructureMaps
 public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorMapLevels
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomUnderlying
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeLeft
@@ -259,6 +260,9 @@ F_0 S^0と球面スペクトルの比較を構成し、各段のsmashによる�
 
 円の各段のsmashによる懸垂とcotensorによるループを関手として構成し、
 随伴・自然なHom同値・単位・余単位・triangle則と各段の対象の公式を証明した。
+
+既存の各段の懸垂構造射を次の段の通常のループへの射へ転置し、
+元の構造射への逆転置と、スペクトル射に関する自然性を証明した。
 
 ## 未構成の範囲
 
