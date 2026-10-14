@@ -119,6 +119,7 @@ public import SerrePositivity.LengthAlgebra.OrdinaryKoszulEuler
 
 public import SerrePositivity.Paper.Statement
 public import SerrePositivity.CommutativeAlgebra.RootTower.CompletedFrobenius
+public import SerrePositivity.CommutativeAlgebra.AdicRecurrence
 public import SerrePositivity.CommutativeAlgebra.WittAdditionCarry
 public import SerrePositivity.CategoryTheory.EulerTheory
 public import SerrePositivity.LengthAlgebra.Foundations
