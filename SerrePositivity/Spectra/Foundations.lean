@@ -33,6 +33,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreePair
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeAtSum
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorSymmetry
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorAssociator
+public import SerrePositivity.Spectra.SymmetricSpectrum.TensorTriangle
 
 /-!
 # スペクトルの具体的基盤の入口
@@ -118,10 +119,12 @@ F_m XとF_n Yの球面上のテンソル積をF_(m+n)(X⊗Y)へ比較する自�
 反復釣り合い商の左右の標準射と、そのエピ性を構成した。
 二段の商へ結合子の順逆を降ろし、球面作用と両立する三変数の結合自然同型を証明した。
 
+結合同型と左右の単位比較のtriangle整合性、および逆結合同型を使う形も証明した。
+
 ## 未構成の範囲
 
 球面上のテンソル積の自由加群を左因子とする比較、
-pentagon・triangle・hexagonの整合性とモノイダル構造、
+pentagon・hexagonの整合性とモノイダル構造、
 モデル構造と導来演算は引き続き実装する。
 この入口は完成済みの§4の降下入力を変更せず、基盤を独立に検証するためのもの。
 現在の構成に新しい未証明入力はない。
