@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedBaseChange
 import SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedUnit
 import SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedAssociator
 import SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedTensor
@@ -451,3 +452,29 @@ assert_no_sorry SerrePositivity.boundedAboveDerivedTensorRightUnitorNatIso
 
 #print axioms SerrePositivity.boundedAboveDerivedTensorLeftUnitorNatIso
 #print axioms SerrePositivity.boundedAboveDerivedTensorRightUnitorNatIso
+
+-- G2-2b: derived scalar extension and tensor base change require no flatness.
+assert_no_sorry SerrePositivity.mapCochain_quasiIso_of_KProjective
+assert_no_sorry SerrePositivity.boundedAboveLeftDerived
+assert_no_sorry SerrePositivity.boundedAboveLeftDerivedModelIso
+assert_no_sorry SerrePositivity.boundedAboveLeftDerivedModelIso_naturality
+assert_no_sorry SerrePositivity.cochainTensorMap_homogeneous
+assert_no_sorry SerrePositivity.cochainTensorBaseChangeIso_naturality
+assert_no_sorry SerrePositivity.boundedAboveDerivedBaseChange
+assert_no_sorry SerrePositivity.boundedAboveDerivedBaseChangeModelIso
+assert_no_sorry SerrePositivity.boundedAboveDerivedBaseChangeModel
+assert_no_sorry SerrePositivity.boundedAboveDerivedTensorBaseChangeIso
+assert_no_sorry SerrePositivity.boundedAboveDerivedTensorBaseChangeIso_naturality
+assert_no_sorry SerrePositivity.boundedAboveDerivedTensorBaseChangeNatIso
+
+example (R : Type) [CommRing R] (I : Ideal R)
+    (X Y : DerivedCategory.Minus (ModuleCat R)) :
+    (SerrePositivity.boundedAboveDerivedBaseChange (Ideal.Quotient.mk I)).obj
+        (SerrePositivity.boundedAboveDerivedTensor.obj (X, Y)) ≅
+      SerrePositivity.boundedAboveDerivedTensor.obj
+        ((SerrePositivity.boundedAboveDerivedBaseChange (Ideal.Quotient.mk I)).obj X,
+          (SerrePositivity.boundedAboveDerivedBaseChange (Ideal.Quotient.mk I)).obj Y) :=
+  SerrePositivity.boundedAboveDerivedTensorBaseChangeIso (Ideal.Quotient.mk I) X Y
+
+#print axioms SerrePositivity.boundedAboveLeftDerived
+#print axioms SerrePositivity.boundedAboveDerivedTensorBaseChangeNatIso
