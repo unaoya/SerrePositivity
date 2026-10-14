@@ -1987,3 +1987,21 @@ p^(n+1)*(b_(n+1)-X_(n+1))=initialMap(lower_n)-
 最高δ変数係数1の全段三角形表示へ進む。
 全段三角形比較と実際のδ除算包の表示・平坦性、実完備化/perfectionの
 完全忠実平坦性、必要なperfectoid拡大と一般B4はまだ未実装。
+
+次のBS専用予定`RelativeFreeWittGhostTriangular.lean`で、今回の全段下位変数
+所属から既存exists_rename_eq_of_vars_subset_rangeを用い、初期n段の有限
+多項式c_nを取り出し、b_n=X_n+initialMap(n)(c_n)を全nで証明する。
+具体的なc_nを選択して定義し、表示の一意性と第0段のc₀=0を証明する。
+任意基底・任意添字族でp乗算単射以外の仮定は追加しない。
+G4や全Witt環射性を待たない、実際の全段三角形座標表示である。
+
+## B4-6：全Witt係数の下位変数所属（2026-10-15）
+
+`RelativeFreeWittGhostSupport.lean`で、基底のp乗算単射だけを仮定し、
+全nについてb_n-X_nが第n段未満の変数のsupported部分代数に属すことを証明した。
+p冪係数の乗算で多項式係数の零判定が保たれることを内部で示し、
+全段再帰式をsupported部分代数の加法・積・冪・和の閉性で強帰納した。
+各b_nの変数段数≤nも証明した。NoZeroDivisors・非零性・G4・環射性は不要。
+2公開定理の対象2064ジョブ、pure B4全公開宣言監査成功。
+標準3公理のみ。新sorry・公理・引用なし。
+この所属から具体的な有限下位多項式を取り出す。
