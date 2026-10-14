@@ -2875,3 +2875,26 @@ p正則性・ghost射単射・単元条件・完備性は不要。
 その後、根添加族について必要な相対正則性・Tor条件と
 ねじれ除去・古典的／導来完備化・perfectionの比較へ進む。
 G4への接続と一般B4・André引用の解消は未完成。
+
+## B4-6：既存DeltaAdjoinDivisionのraw残余商の標準係数射と忠実平坦性（2026-10-15）
+
+`DeltaAdjoinDivisionResidueFlat.lean`で、二重商表示と既存全段表示を合成し、
+既存DeltaAdjoinDivisionのraw (p,d)商と全段環の具体的環同型を構成した。
+元の基底係数の標準商像が全段係数射に一致する図式を証明し、適切な
+共通係数商からの係数射と代数構造を置いた。この係数射が既存
+ deltaAdjoinDivisionMapの標準残余商像であることも証明した。
+全段表示を標準係数射についての代数同型へ整え、忠実平坦性・平坦性を
+移した。基底・自由環p乗算単射、自由環ghost単射、u=δdは明示仮定。
+8公開宣言の対象3262ジョブ、pure B4監査、全体4722ジョブ成功。
+全体は共有側の既存警告を含む。標準3公理のみ、新sorry・公理・引用なし。
+raw残余商の二重商表示は8ff81eaで個別コミット済み。
+この結論はraw段階であり、ねじれ除去後や導来完備化の結論は未実装。
+
+次のBS専用予定`DeltaRootRelationCoefficientQuotient.lean`で、任意元族b_s∈Aに
+対し、既存rank-one多項式δ環A[X_s]に置く根関係X_s^p-C(b_s)を具体化する。
+(p,Cd,根関係)による係数商が、既存MonicPowerFamilyCoverによる
+A/(p,d)上の根添加環と同型であることを構成し、係数と根上の図式を証明する。
+既存deltaDivisionFirstBaseIdeal・モニック根添加APIを再利用する。
+その後、源多項式δ環のdistinguished生成元の単元条件、原典に必要な
+相対正則性・Tor条件、実際のδ除算包への根の写像を進める。
+G4、ねじれ除去・導来完備化/perfectionと一般B4は未実装。
