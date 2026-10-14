@@ -1,5 +1,6 @@
 import SerrePositivity.CommutativeAlgebra.LocalizationPowerBound
 import SerrePositivity.CommutativeAlgebra.LocalizationInverse
+import SerrePositivity.CommutativeAlgebra.ReducedFiniteFreeIsogeny
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.exists_uniform_pow_smul_zero
@@ -18,3 +19,15 @@ example {R M : Type*} [CommRing R] [AddCommGroup M] [Module R M]
 
 assert_no_sorry SerrePositivity.exists_clear_denominators
 assert_no_sorry SerrePositivity.exists_away_inverse
+
+assert_no_sorry SerrePositivity.mul_eq_zero_of_pow_mul_eq_zero
+assert_no_sorry SerrePositivity.smul_eq_zero_of_free_localized_zero
+assert_no_sorry SerrePositivity.exists_pow_ker_coker_annihilator
+
+-- In particular the theorem accepts zero g and rank zero.
+example {R M : Type*} [CommRing R] [IsReduced R] [AddCommGroup M] [Module R M]
+    [Module.Finite R M] (f : M →ₗ[R] (Fin 0 → R))
+    (hf : Function.Bijective (SerrePositivity.awayModuleMap (0 : R) f)) :
+    ∃ a b : ℕ, (∀ x : M, f x = 0 → (0 : R) ^ a • x = 0) ∧
+      (∀ y : (Fin 0 → R) ⧸ LinearMap.range f, (0 : R) ^ b • y = 0) :=
+  SerrePositivity.exists_pow_ker_coker_annihilator 0 0 f hf
