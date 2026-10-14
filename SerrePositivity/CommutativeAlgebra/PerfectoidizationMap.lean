@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.Perfectoidization
+public import SerrePositivity.CommutativeAlgebra.PerfectoidizationFunctor
 
 /-! # perfectoid 化の普遍性による射とイデアルの比較
 
@@ -12,48 +13,7 @@ public import SerrePositivity.CommutativeAlgebra.Perfectoidization
 @[expose] public noncomputable section
 universe u
 namespace SerrePositivity
-namespace IsPerfectoidization
 
-variable {S C T D U E : Type u}
-    [CommRing S] [CommRing C] [CommRing T] [CommRing D] [CommRing U] [CommRing E]
-    {p : ℕ} [Fact p.Prime] {f : S →+* C} {g : T →+* D} {h : U →+* E}
-
-/-- perfectoid 化の普遍性で保証される因子分解を選ぶ。 -/
-def lift (hf : IsPerfectoidization p f) (hD : IsIntegralPerfectoid D p) (k : S →+* D) :
-    C →+* D := (hf.2 D hD k).choose
-
-/-- 選んだ因子分解は元の写像と両立する。 -/
-theorem lift_comp (hf : IsPerfectoidization p f) (hD : IsIntegralPerfectoid D p) (k : S →+* D) :
-    (lift hf hD k).comp f = k := (hf.2 D hD k).choose_spec.1
-
-/-- 普遍写像との合成が同じ射は、選んだ因子分解に一致する。 -/
-theorem lift_unique (hf : IsPerfectoidization p f) (hD : IsIntegralPerfectoid D p)
-    (k : S →+* D) (l : C →+* D) (hl : l.comp f = k) : l = lift hf hD k :=
-  (hf.2 D hD k).choose_spec.2 l hl
-
-/-- 環準同型を、固定した二つの perfectoid 化の間の射へ移す。 -/
-def map (hf : IsPerfectoidization p f) (hg : IsPerfectoidization p g) (k : S →+* T) :
-    C →+* D := lift hf hg.1 (g.comp k)
-
-/-- 誘導射は二つの普遍写像と元の環準同型の図式を可換にする。 -/
-theorem map_comp (hf : IsPerfectoidization p f) (hg : IsPerfectoidization p g) (k : S →+* T) :
-    (map hf hg k).comp f = g.comp k := lift_comp hf hg.1 _
-
-/-- perfectoid 化の恒等射への誘導射は恒等射。 -/
-theorem map_id (hf : IsPerfectoidization p f) : map hf hf (RingHom.id S) = RingHom.id C := by
-  apply Eq.symm
-  apply lift_unique hf hf.1 (f.comp (RingHom.id S))
-  ext x
-  rfl
-
-/-- perfectoid 化への誘導射は合成と両立する。 -/
-theorem map_map (hf : IsPerfectoidization p f) (hg : IsPerfectoidization p g)
-    (hh : IsPerfectoidization p h) (k : S →+* T) (l : T →+* U) :
-    (map hg hh l).comp (map hf hg k) = map hf hh (l.comp k) := by
-  apply lift_unique hf hh.1 (h.comp (l.comp k))
-  rw [RingHom.comp_assoc, map_comp, ← RingHom.comp_assoc, map_comp, RingHom.comp_assoc]
-
-end IsPerfectoidization
 
 variable (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
     (hR : IsIntegralPerfectoid R p)
