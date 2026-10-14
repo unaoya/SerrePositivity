@@ -1,4 +1,4 @@
-import SerrePositivity.PerfectComplex.ClosedSupportComparison
+import SerrePositivity.PerfectComplex.ClosedSupportFunctoriality
 import Mathlib.Util.AssertNoSorry
 
 -- S1.1: closed support and comparison with the existing ideal support.
@@ -27,3 +27,12 @@ assert_no_sorry SerrePositivity.supportedPerfectClosedEquivalence
 assert_no_sorry SerrePositivity.scalarClosedSupportK0Equiv
 assert_no_sorry SerrePositivity.freeToClosedSupportK0
 assert_no_sorry SerrePositivity.freeClosedSupportK0Equiv
+
+-- S1.5: arbitrary base change, support enlargement, and functorial identities.
+assert_no_sorry SerrePositivity.HasHomologySupportOn.baseChange
+assert_no_sorry SerrePositivity.K0WithSupport.enlarge_refl
+assert_no_sorry SerrePositivity.K0WithSupport.enlarge_comp
+assert_no_sorry SerrePositivity.K0WithSupport.map_comp
+assert_no_sorry SerrePositivity.K0WithSupport.map_id
+assert_no_sorry SerrePositivity.K0WithSupport.enlarge_map
+assert_no_sorry SerrePositivity.freeToClosedSupportK0_map

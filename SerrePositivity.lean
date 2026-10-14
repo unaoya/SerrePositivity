@@ -286,6 +286,8 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ReflectionTra
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalTowerPresentation
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalKoszulRing
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedKoszulRing
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PairTowerUniqueness
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PairKoszulComparison
 public import SerrePositivity.CommutativeAlgebra.WittAdditionCarry
 public import SerrePositivity.CategoryTheory.EulerTheory
 public import SerrePositivity.LengthAlgebra.Foundations
@@ -324,6 +326,7 @@ public import SerrePositivity.PerfectComplex.Support
 public import SerrePositivity.PerfectComplex.ClosedSupport
 public import SerrePositivity.PerfectComplex.ClosedSupportK0
 public import SerrePositivity.PerfectComplex.ClosedSupportComparison
+public import SerrePositivity.PerfectComplex.ClosedSupportFunctoriality
 public import SerrePositivity.PerfectComplex.Closure
 public import SerrePositivity.PerfectComplex.K0
 public import SerrePositivity.PerfectComplex.NormalizedEuler
