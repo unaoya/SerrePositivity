@@ -60,6 +60,7 @@ P1・P2が通った時点でホモトピー論への入口を一区切りとす�
 
 当面の成果物は、モデル構造の選択に依存しない対称スペクトルの
 単体的なtensor・cotensor・写像対象と、その法則である。
+A1は§98で完了。A2・A3とB2〜B4は引き続き実装する。
 以下のA1〜A3が段階1、B1〜B4とC1〜C2が段階2に相当する。
 番号は検証可能な作業単位を表し、一単位が一コミットで終わるとは限らない。
 記載する追加API名は実装時の候補であり、既存の宣言としては扱わない。
@@ -4357,4 +4358,31 @@ C2までの全体目標は未完了であり、モデル構造には進まない
 
 検証：新規ソースの書式・証明マーカー、文書のリンク、git diff --checkを確認した。
 集約ビルドは2070ジョブ、公理監査は215モジュール・2234宣言で成功した。
+標準公理のみでsorry依存なし。新しい証明は標準の計算上限で検証した。
+
+## 98. 実施記録：A1の作用の単位比較の各段の公式（2026-10-14）
+
+[FreeZeroModuleUnit](../SerrePositivity/Spectra/SymmetricSequence/FreeZeroModuleUnit.lean)で、
+自由零生成の単位比較を一般の係数加群の単位比較へ移した。
+生成元を係数の単位へ送る全体の公式と、第0段の生成元の単位射との対応を証明した。
+球面スペクトルへの比較に特殊化し、F_0 S^0の生成元の単位射の法則も公開した。
+
+[BalancedTensorFreeUnit](../SerrePositivity/CategoryTheory/Monoidal/BalancedTensorFreeUnit.lean)で、
+単位と同型な対象からの自由加群の単位比較を構成した。
+左自由因子の逆比較とこの単位比較を合成すると、基礎圏の通常の左単位子になる。
+
+[PointwiseTensorModuleUnit](../SerrePositivity/Spectra/SymmetricSequence/PointwiseTensorModuleUnit.lean)で、
+各段のテンソルの係数加群の単位自然同型を構成した。
+基礎射をconvolutionの逆比較と基礎対称列の単位比較・左単位子へ分解した。
+各段の逆比較の生成元による公式、単位比較の生成元の公式、convolutionの左単位子の公式を使い、
+各段が通常の左単位子に一致することを証明した。
+[PointwiseTensorUnit](../SerrePositivity/Spectra/SymmetricSpectrum/PointwiseTensorUnit.lean)をこの一般論から構成し、
+スペクトルの作用の単位比較が各段のsmashの左単位子の法則を満たすことを公開した。
+
+A1の同型・自然性・各段の比較の受入条件はすべて検証した。
+A2の生成対象の自然性・各段の結合子との一致、A3の整合性、B2〜B4は引き続き実装する。
+B1とC1・C2の既存の構成も維持している。C2までの全体目標は未完了である。
+
+検証：新規・変更ソースの書式・証明マーカー、文書のリンク、git diff --checkを確認した。
+集約ビルドは2073ジョブ、公理監査は218モジュール・2255宣言で成功した。
 標準公理のみでsorry依存なし。新しい証明は標準の計算上限で検証した。
