@@ -12,7 +12,9 @@ run_cmd do
     `SerrePositivity.CategoryTheory.LiftingProperties.Under,
     `SerrePositivity.HomotopicalAlgebra.Generated.Basic,
     `SerrePositivity.HomotopicalAlgebra.Transfer.Recognition,
-    `SerrePositivity.HomotopicalAlgebra.Transfer.Right]
+    `SerrePositivity.HomotopicalAlgebra.Transfer.Right,
+    `SerrePositivity.HomotopicalAlgebra.Quillen.Brown,
+    `SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor]
   let mut declarations : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
