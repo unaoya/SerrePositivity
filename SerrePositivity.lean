@@ -68,6 +68,7 @@ public import SerrePositivity.CLMST.PerfectoidIdealRoots
 public import SerrePositivity.CLMST.PerfectoidFrobeniusComparison
 public import SerrePositivity.CLMST.CyclicRootEstimate
 public import SerrePositivity.CLMST.CyclicNormalizedBound
+public import SerrePositivity.CLMST.CyclicFactorReduction
 public import SerrePositivity.CLMST.ModPHypersurfaceGrowth
 public import SerrePositivity.CLMST.StageModPImageLength
 public import SerrePositivity.CLMST.StageModPLengthBound
