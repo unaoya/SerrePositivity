@@ -81,6 +81,27 @@ theorem pairTowerQuotientEvaluation_unit (f d : R) (N : ModuleCat.{u} R)
   rw [pairTowerCycleEvaluation_apply, pairTowerConstantCycle_val]
   simp
 
+/-- 標準ホモロジーを、具体的なサイクルの商へ同定する。 -/
+def pairTowerHomologyQuotientEquiv (f d : R) :
+    (pairTowerShortComplex R f d).homology ≃ₗ[R]
+      (PairTowerCycles R f d ⧸ (pairTowerBoundary R f d).range) :=
+  (pairTowerShortComplex R f d).moduleCatHomologyIso.toLinearEquiv
+
+/-- サイクルの商との同定は、標準写像を保つ。 -/
+theorem pairTowerHomologyQuotientEquiv_unit (f d r : R) :
+    pairTowerHomologyQuotientEquiv R f d (pairTowerHomologyUnit R f d r) =
+      Submodule.Quotient.mk (pairTowerConstantCycle R f d r) := by
+  let S := pairTowerShortComplex R f d
+  let c := pairTowerConstantCycle R f d r
+  have h := congrArg (fun g ↦ g.hom (S.moduleCatCyclesIso.inv c))
+    S.π_moduleCatCyclesIso_hom
+  change S.moduleCatHomologyIso.hom (S.homologyπ (S.moduleCatCyclesIso.inv c)) =
+    Submodule.Quotient.mk (S.moduleCatCyclesIso.hom (S.moduleCatCyclesIso.inv c)) at h
+  have hi := congrArg (fun g ↦ g.hom c) S.moduleCatCyclesIso.inv_hom_id
+  change S.moduleCatCyclesIso.hom (S.moduleCatCyclesIso.inv c) = c at hi
+  rw [hi] at h
+  exact h
+
 /-- 三項モデルの実際のホモロジーから、完備加群への線形評価。 -/
 def pairTowerHomologyEvaluation (f d : R) (N : ModuleCat.{u} R)
     (hf : IsModuleComplete R f N) (hd : IsModuleComplete R d N) (t : N) :
@@ -93,18 +114,9 @@ theorem pairTowerHomologyEvaluation_unit (f d : R) (N : ModuleCat.{u} R)
     (hf : IsModuleComplete R f N) (hd : IsModuleComplete R d N) (t : N) (r : R) :
     pairTowerHomologyEvaluation R f d N hf hd t (pairTowerHomologyUnit R f d r) =
       r • t := by
-  let S := pairTowerShortComplex R f d
-  let c := pairTowerConstantCycle R f d r
-  have h := congrArg (fun g ↦ g.hom (S.moduleCatCyclesIso.inv c))
-    S.π_moduleCatCyclesIso_hom
-  change S.moduleCatHomologyIso.hom (S.homologyπ (S.moduleCatCyclesIso.inv c)) =
-    Submodule.Quotient.mk (S.moduleCatCyclesIso.hom (S.moduleCatCyclesIso.inv c)) at h
-  have hi := congrArg (fun g ↦ g.hom c) S.moduleCatCyclesIso.inv_hom_id
-  change S.moduleCatCyclesIso.hom (S.moduleCatCyclesIso.inv c) = c at hi
-  rw [hi] at h
   change pairTowerQuotientEvaluation R f d N hf hd t
-    (S.moduleCatHomologyIso.hom (S.homologyπ (S.moduleCatCyclesIso.inv c))) = _
-  rw [h]
+    (pairTowerHomologyQuotientEquiv R f d (pairTowerHomologyUnit R f d r)) = _
+  rw [pairTowerHomologyQuotientEquiv_unit]
   exact pairTowerQuotientEvaluation_unit R f d N hf hd t r
 
 /-- 任意の標準元の像を持つ、三項モデルのH⁰からの延長が存在する。 -/
