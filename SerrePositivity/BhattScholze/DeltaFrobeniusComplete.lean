@@ -14,7 +14,8 @@ W₂のねじれた作用に必要な、p,d完備からp,φ(d)完備への具体
 universe u
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze
-open SerrePositivity.DerivedCompletion
+open SerrePositivity.DerivedCompletion CategoryTheory CategoryTheory.Limits
+attribute [local instance] HasDerivedCategory.standard
 
 private theorem neumann_bijective (R : Type u) [CommRing R] (b : R)
     (M : ModuleCat.{u} R) (hb : IsModuleComplete R b M) (L : Module.End R M) :
@@ -77,6 +78,27 @@ private theorem complete_add (R : Type u) [CommRing R] (a b : R)
   funext x
   exact he x
 
+private theorem complete_of_power (R : Type u) [CommRing R] (f : R) (n : ℕ) (hn : n ≠ 0)
+    (M : ModuleCat.{u} R) (h : IsModuleComplete R (f ^ n) M) : IsModuleComplete R f M := by
+  let S := Localization.Away (f ^ n)
+  have hu : IsUnit (algebraMap R S f) := (isUnit_pow_iff hn).mp (by
+    rw [← map_pow]
+    exact IsLocalization.Away.algebraMap_isUnit (f ^ n))
+  have hle : Submonoid.powers (f ^ n) ≤ Submonoid.powers f :=
+    Submonoid.powers_le.mpr ⟨n, rfl⟩
+  let : IsLocalization (Submonoid.powers f) S :=
+    IsLocalization.of_le (Submonoid.powers (f ^ n)) (Submonoid.powers f) hle (by
+      rintro _ ⟨k, rfl⟩
+      simpa only [map_pow] using hu.pow k)
+  let e := IsLocalization.algEquiv (Submonoid.powers f) (Localization.Away f) S
+  let E : localizationObject R f ≅ localizationObject R (f ^ n) :=
+    (moduleObjectFunctor R).mapIso e.toLinearEquiv.toModuleIso
+  change IsComplete R f ((moduleObjectFunctor R).obj M)
+  change IsComplete R (f ^ n) ((moduleObjectFunctor R).obj M) at h
+  intro q g
+  apply (cancel_epi E.inv).mp
+  simpa only [comp_zero] using h q (E.inv ≫ g)
+
 /-- p,f(d)導来完備な終域はf(φ(d))導来完備。pねじれ・非Noether環を許す。 -/
 theorem deltaImage_frobenius_isModuleComplete {p : ℕ} [Fact p.Prime]
     {A B : Type u} [CommRing A] [CommRing B] (D : DeltaStructure p A) (f : A →+* B) (d : A)
@@ -90,5 +112,19 @@ theorem deltaImage_frobenius_isModuleComplete {p : ℕ} [Fact p.Prime]
   have hmul := isModuleComplete_mul_right B (p : B) (f (D.delta d)) _ hp
   have h := complete_add B (f d ^ p) ((p : B) * f (D.delta d)) _ hpow hmul
   simpa only [D.frobeniusLift_apply, map_add, map_pow, map_mul, map_natCast] using h
+
+/-- p,f(φ(d))導来完備ならf(d)導来完備。完備化で逆Frobeniusを延長するための逆向き。 -/
+theorem deltaImage_isModuleComplete_of_frobenius {p : ℕ} [Fact p.Prime]
+    {A B : Type u} [CommRing A] [CommRing B] (D : DeltaStructure p A) (f : A →+* B) (d : A)
+    (hp : IsModuleComplete B (p : B) (ModuleCat.of B B))
+    (hd : IsModuleComplete B (f (D.frobeniusLift d)) (ModuleCat.of B B)) :
+    IsModuleComplete B (f d) (ModuleCat.of B B) := by
+  have hm := isModuleComplete_mul_right B (p : B) (-f (D.delta d)) _ hp
+  have hs := complete_add B (f (D.frobeniusLift d)) ((p : B) * -f (D.delta d)) _ hd hm
+  have he : f (D.frobeniusLift d) + (p : B) * -f (D.delta d) = f d ^ p := by
+    rw [D.frobeniusLift_apply, map_add, map_pow, map_mul, map_natCast]
+    ring
+  rw [he] at hs
+  exact complete_of_power B (f d) p (Fact.out : p.Prime).ne_zero _ hs
 
 end SerrePositivity.BhattScholze
