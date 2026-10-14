@@ -4,6 +4,7 @@ import SerrePositivity.Spectra.Foundations
 import SerrePositivity.Spectra.Pointed.SmashPushoutProduct
 import SerrePositivity.Spectra.ModelCategory.PointedGenerators
 import SerrePositivity.Spectra.ModelCategory.SimplicialMonoidal
+import SerrePositivity.Spectra.ModelCategory.SimplicialLevel
 import SerrePositivity.Spectra.General.Foundations
 import SerrePositivity.Spectra.General.SimplicialComparison
 import SerrePositivity.Spectra.ModelCategory.LevelClasses
@@ -40,7 +41,8 @@ run_cmd do
       throwError "Unexpected axioms in {name}: {unexpected}"
     declarations := declarations + 1
     unless modules.contains mod do modules := modules.push mod
-  for expected in #[`SerrePositivity.Spectra.ModelCategory.SimplicialMonoidal,
+  for expected in #[`SerrePositivity.Spectra.ModelCategory.SimplicialLevel,
+      `SerrePositivity.Spectra.ModelCategory.SimplicialMonoidal,
       `SerrePositivity.Spectra.ModelCategory.PointedGenerators,
       `SerrePositivity.Spectra.ModelCategory.SimplicialGenerators,
       `SerrePositivity.Spectra.ModelCategory.SimplicialCofibrancy,

@@ -129,5 +129,30 @@ lemma pointedSimplicial_SM7 :
   let : IsQuillenBifunctor (curriedTensor SSet.{u}) := simplicial_isQuillenBifunctor hCof hFib
   exact SerrePositivity.PointedModel.smash_hasQuillenPullbackHom
 
+include hCof in
+/-- Cofibrancy for the supplied model, using its explicit monomorphism class. -/
+lemma pointedSimplicial_isCofibrant (X : PointedSimplicialSet.{u}) : IsCofibrant X := by
+  apply (SerrePositivity.PointedModel.isCofibrant_iff_basepoint X).2
+  apply (HomotopicalAlgebra.cofibration_iff _).2
+  rw [hCof]
+  exact pointed_basepoint_mono X
+
+include hCof hFib in
+/-- The free pointed boundary/horn maps generate the inherited model. -/
+lemma pointedSimplicial_cofibrantlyGenerated :
+    SerrePositivity.ModelGeneration.CofibrantlyGenerated.{u} pointedI.{u} pointedJ.{u} := by
+  let : SerrePositivity.ModelGeneration.CofibrantlyGenerated.{u}
+      SSet.modelCategoryQuillen.I.{u} SSet.modelCategoryQuillen.J.{u} :=
+    simplicial_cofibrantlyGenerated hCof hFib
+  constructor
+  · exact pointedI_smallObjectArgument
+  · exact pointedJ_smallObjectArgument
+  · rw [pointedGenerators_rlp,
+      SerrePositivity.ModelGeneration.CofibrantlyGenerated.rlp_I
+        (I := SSet.modelCategoryQuillen.I) (J := SSet.modelCategoryQuillen.J),
+      trivialFibrations_under_eq, MorphismProperty.under_eq_inverseImage]
+  · rw [pointedGenerators_rlp, ← hFib, fibrations_under_def,
+      MorphismProperty.under_eq_inverseImage]
+
 end Model
 end SerrePositivity.SimplicialModelInputs
