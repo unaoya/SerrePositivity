@@ -91,7 +91,9 @@ U6の追加監査35宣言、U0〜U6合計114宣言。検証と引継ぎは計画
 次は shift/cone・極限余極限、objectwise quasiIso・局所化・semifree。
 U7a1では `Module/Zero.lean` に全次数零加群・零対象・評価による零対象性の判定を追加した。
 `Complexes/Zero.lean` の零 Hom 複体とともに `Checks/Zero.lean` で検証する。
-U7の直和・shift/cone・極限余極限は引き続き未完。
+U7a2の `Module/Biproduct.lean` は objectwise 二項直和の全次数対角作用、
+射影・包含、積と余積の普遍性、有限直和の存在と評価比較を供給する。
+受入入口は `Checks/Biproduct.lean`。shift/cone・残る極限余極限は引き続き未完。
 API契約と共有 G1/G2/G5/G6 への引継ぎは計画§12.8。
 導来圏・射影モデル・dg 商・Morita・Perf と M5全体は未完成。
 一般モデル圏・Quillen・転送・SM7 は共有系列が所有し、この入口には置かない。

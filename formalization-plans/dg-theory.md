@@ -685,3 +685,36 @@ U7a1の受入入口と既存 `Spectra.StageTwo` の同時ビルド、受入入�
 主要17宣言の公理はすべて `propext`・`Classical.choice`・`Quot.sound` のみ。
 新規 sorry・admit・axiom は0件。文書検査は21 Markdown・311参照、失敗0件。
 担当差分の whitespace 検査も成功。共有ルート・並行作業ファイルは編集していない。
+
+### 13.7 U7a2：全次数作用を保持した有限直和
+
+`Complexes/Biproduct.lean` の `biprodHomMap` は二つの Hom chain map を
+既存複体の二項直和上の対角作用へ移す。全斉次成分、単位保存、
+Koszul 符号付き豊穣合成保存、両射影・両包含との可換式を証明した。
+`homComplex_biprod_ext` は直和への全次数 Hom を射影後の成分で判定する。
+
+`Module/Biproduct.lean` の `biprodModule` は各対象で既存複体の直和を取り、
+この対角 Hom を作用とする既存 `EnrichedFunctor`。単位・合成則は全次数で成立する。
+`moduleBiprodFst`/`Snd`/`Inl`/`Inr` は全次数自然な chain map 族から構成した閉零射。
+`moduleBinaryBiconeIsBilimit` は積・余積両方の普遍性を証明する。
+Mathlib の零対象・二項積から有限積を作る一般論を再利用して
+`moduleHasFiniteBiproducts` を登録した。共有一般論の複製はない。
+
+`moduleBiprodIso` は具体的 objectwise 構成と選ばれた圏の直和の同型。
+`moduleEvaluationBiprodIso` と両射影の可換式は、評価と既存複体の直和の比較。
+評価の加法性から Mathlib の有限直和保存を使うので、有限族の評価比較も利用できる。
+一対象 A の場合にも同じ評価比較が既存の通常複体の直和へ接続する。
+対象の直和構成は任意 D、閉零圏の普遍性には `[Small.{u} D]` を明示する。
+
+受入入口は `Checks/Biproduct.lean`。任意可換環・非有界複体、次数 −1、有限族、
+ℤの一対象環と ZMod 2 を検証する。主要31宣言を公理監査する。
+これで U7a の零対象・有限直和が揃った。U7の shift/cone・必要な残る極限余極限、
+U8〜U10は未完であり、U10までの目標を保持する。
+
+U7a2の受入入口と既存 `Spectra.StageTwo` の同時ビルド、受入入口の直接実行は成功。
+主要31宣言の公理はすべて `propext`・`Classical.choice`・`Quot.sound` のみ。
+新規 sorry・admit・axiom は0件。既存 `check_spectra_stage2.lean`、文書検査
+（21 Markdown・311参照・失敗0）、担当差分の whitespace 検査も成功。
+次の U7b では既存 `PerfectComplex/TensorShift.lean` と Mathlib の HomComplexShift を
+再利用候補として照合し、全次数の shift 作用と既存複体の shift の比較を構成する。
+共有ルート・既存 PerfectComplex・並行作業ファイルは編集していない。
