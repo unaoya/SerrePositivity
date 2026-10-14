@@ -1762,7 +1762,16 @@ S7.2 共通層 → S7 の全公理 → S8 → S9 → S10 前半 → S10 後半 �
 検証：対象ビルド（2756 jobs）、`scripts/audit_adams_cyclic.lean`、
 ルートを含むビルド（4521 jobs）が成功。監査対象に `sorryAx` はなく、
 主要三定理の依存公理は `propext`・`Classical.choice`・`Quot.sound` のみ。
-ルートへ公開 import を追加した。この記録を含むコミットが S7.1 の小段コミット。
+ルートへ公開 import を追加した。小段コミット `f60c412`。
+
+### S7.2a：冪等鎖写像の像と自然な射
+
+`PerfectComplex/IdempotentImage.lean` に `CochainIdempotent` と等化子による像を追加した。
+包含・射影の二つの合成、包含上での冪等射の恒等性、可換する鎖写像の像への制限を証明した。
+制限は恒等・合成を保ち、包含・射影と可換する。環の単元性や巡回作用は仮定しない。
+対象ビルド（2717 jobs）、専用 `audit_adams_idempotents.lean`、
+公開 import を含むルートビルド（4522 jobs）が成功。監査対象に `sorryAx` はなく、
+包含・射影の逆性と制限の合成の公理は標準三公理のみ。この記録を含むコミットが小段コミット。
 
 ## 5. 受入条件
 
