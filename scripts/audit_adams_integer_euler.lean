@@ -1,0 +1,10 @@
+import SerrePositivity.PerfectComplex.IntegerEuler
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.maximalSupportedModule_finiteLength
+assert_no_sorry SerrePositivity.maximalSupportLengthMap
+assert_no_sorry SerrePositivity.K0WithSupport.integerEuler
+assert_no_sorry SerrePositivity.K0WithSupport.integerEuler_mk
+assert_no_sorry SerrePositivity.K0WithSupport.integerEuler_mk_complex_real
+#print axioms SerrePositivity.K0WithSupport.integerEuler
+#print axioms SerrePositivity.K0WithSupport.integerEuler_mk_complex_real
