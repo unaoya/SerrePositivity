@@ -29,6 +29,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.Tensor
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorRightUnit
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorLeftUnit
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeRight
+public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreePair
 
 /-!
 # スペクトルの具体的基盤の入口
@@ -101,6 +102,9 @@ n以上の段の商を対称群そのもので添字付けた余等化子へ移�
 
 自由球面加群との右テンソル積を、生成対称列とのconvolutionへ比較する加群の自然同型を構成した。
 順逆の射を右作用・生成元と比較し、第n段からの自由スペクトルとの比較にも特殊化した。
+
+二つの自由球面加群のテンソル積を、生成対称列のconvolutionの自由球面加群と自然同型で比較した。
+比較の順逆を生成元と比較し、F_mとF_nの積にも特殊化した。
 
 ## 未構成の範囲
 
