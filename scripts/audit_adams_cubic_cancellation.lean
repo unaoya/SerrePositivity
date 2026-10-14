@@ -1,0 +1,20 @@
+import SerrePositivity.KTheory.Adams.TensorCubeMixedCancellation
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.CochainCubicAction.eigenK0Class
+#print axioms SerrePositivity.CochainCubicAction.eigenK0Class
+
+assert_no_sorry SerrePositivity.CochainCubicAction.weightedK0Class
+#print axioms SerrePositivity.CochainCubicAction.weightedK0Class
+
+assert_no_sorry SerrePositivity.cochainTensorCyclicSum_eigenK0Class
+#print axioms SerrePositivity.cochainTensorCyclicSum_eigenK0Class
+
+assert_no_sorry SerrePositivity.cochainTensorCyclicSum_weightedK0Class_eq_zero
+#print axioms SerrePositivity.cochainTensorCyclicSum_weightedK0Class_eq_zero
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeLowMixed_weightedK0Class_eq_zero
+#print axioms SerrePositivity.Adams.tensorCubeLowMixed_weightedK0Class_eq_zero
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixed_weightedK0Class_eq_zero
+#print axioms SerrePositivity.Adams.tensorCubeHighMixed_weightedK0Class_eq_zero
