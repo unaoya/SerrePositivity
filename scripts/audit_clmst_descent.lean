@@ -1,6 +1,7 @@
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.MilnorAnnihilator
 import SerrePositivity.HomologicalAlgebra.TwoCohomologyAnnihilator
 import SerrePositivity.CommutativeAlgebra.CompletelyFlatPowerTorsion
+import SerrePositivity.CommutativeAlgebra.CompletelyFaithfullyFlatPowers
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.DerivedCompletion.complexTowerHomologyLimOne_annihilated
@@ -66,3 +67,44 @@ example (R M : Type) [CommRing R] [AddCommGroup M] [Module R M]
 #print axioms SerrePositivity.torModule_subsingleton_of_completelyFlat_powerTorsion
 #print axioms SerrePositivity.flat_residueTensor_of_completelyFlat
 #print axioms SerrePositivity.flat_power_algebraQuotient_of_completelyFlat
+
+-- D2: faithful power quotients, object detection, and original base-linear maps.
+assert_no_sorry SerrePositivity.subsingleton_of_principal_power_torsion_of_reduction
+assert_no_sorry SerrePositivity.subsingleton_of_power_torsion_of_residueTensor
+assert_no_sorry SerrePositivity.faithfullyFlat_power_residueTensor_of_completelyFaithfullyFlat
+assert_no_sorry SerrePositivity.power_residue_lTensor_eq_zero_iff
+assert_no_sorry SerrePositivity.power_residue_lTensor_surjective_iff
+assert_no_sorry SerrePositivity.faithfullyFlat_power_algebraQuotient_of_completelyFaithfullyFlat
+assert_no_sorry SerrePositivity.principalPowerTorsionModule
+assert_no_sorry SerrePositivity.principalPowerTorsionLinearMap
+assert_no_sorry SerrePositivity.principalPowerTorsionLinearMap_apply
+assert_no_sorry SerrePositivity.principalPowerTorsionLinearMap_eq_zero_iff
+assert_no_sorry SerrePositivity.power_torsion_lTensor_eq_zero_iff
+assert_no_sorry SerrePositivity.power_torsion_lTensor_surjective_iff
+
+-- The original coefficient module has no ordinary R-faithfully-flat assumption.
+example (R M : Type) [CommRing R] [AddCommGroup M] [Module R M]
+    (a : R) (hM : IsCompletelyFaithfullyFlat (Ideal.span {a}) M) (n : ℕ) :
+    Module.FaithfullyFlat (R ⧸ Ideal.span {a ^ n}) ((R ⧸ Ideal.span {a ^ n}) ⊗[R] M) :=
+  faithfullyFlat_power_residueTensor_of_completelyFaithfullyFlat a M hM n
+
+-- The zero-th stage is the zero ring; it is included without a Nontrivial hypothesis.
+example (R M : Type) [CommRing R] [AddCommGroup M] [Module R M]
+    (a : R) (hM : IsCompletelyFaithfullyFlat (Ideal.span {a}) M) :
+    Module.FaithfullyFlat (R ⧸ Ideal.span {a ^ 0}) ((R ⧸ Ideal.span {a ^ 0}) ⊗[R] M) :=
+  faithfullyFlat_power_residueTensor_of_completelyFaithfullyFlat a M hM 0
+
+-- The map starts as an R-linear map, and the quotient actions are explicit local data.
+example (R M N N' : Type) [CommRing R] [AddCommGroup M] [Module R M]
+    [AddCommGroup N] [Module R N] [AddCommGroup N'] [Module R N']
+    (a : R) (hM : IsCompletelyFaithfullyFlat (Ideal.span {a}) M) (n : ℕ)
+    (hN : ∀ x : N, a ^ n • x = 0) (hN' : ∀ x : N', a ^ n • x = 0) (f : N →ₗ[R] N') :
+    let _ := principalPowerTorsionModule a n N hN
+    let _ := principalPowerTorsionModule a n N' hN'
+    (principalPowerTorsionLinearMap a n hN hN' f).lTensor
+      ((R ⧸ Ideal.span {a ^ n}) ⊗[R] M) = 0 ↔ f = 0 :=
+  power_torsion_lTensor_eq_zero_iff a M hM n hN hN' f
+
+#print axioms SerrePositivity.subsingleton_of_power_torsion_of_residueTensor
+#print axioms SerrePositivity.faithfullyFlat_power_residueTensor_of_completelyFaithfullyFlat
+#print axioms SerrePositivity.power_torsion_lTensor_surjective_iff
