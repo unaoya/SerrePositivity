@@ -25,6 +25,7 @@
 - [TensorRightModule](TensorRightModule.lean)：第一因子から得る右テンソルの加群作用、加群の射・結合子、可換係数の左右の作用の整合性。
 - [BalancedTensorModule](BalancedTensorModule.lean)：釣り合い商上の加群作用、作用の法則、加群圏の二変数関手と線形な釣り合い射の降下。
 - [BalancedTensorRightUnit](BalancedTensorRightUnit.lean)：正則加群との右テンソル積の単位同型、順逆の基礎射の公式と自然同型。
+- [BalancedTensorLeftUnit](BalancedTensorLeftUnit.lean)：正則加群との左テンソル積の単位同型、作用・単位射との比較と自然同型。
 
 極限の構成にはテンソル積の極限保存を仮定しない。
 余極限の構成では、全ての左テンソルが対象とする図式の形の余極限を保存することを仮定する。
@@ -32,8 +33,8 @@
 
 釣り合いテンソル積の基礎対象はbraidingと余等化子から構成する。
 係数の可換性と左テンソルの余等化子保存から、基礎対象上の加群作用と二変数関手も構成した。
-正則加群との右テンソル積の単位同型と自然性も証明した。
-左単位比較・結合子・対称性と加群圏のモノイダル構造は今後登録する。
+正則加群との左右のテンソル積の単位同型と自然性も証明した。
+結合子・対称性と加群圏のモノイダル構造は今後登録する。
 
 モノイダル構造を使わない補助結果として、
 [InitialColimits](../Limits/InitialColimits.lean) に始対象の図式の余極限の始対象性を置く。
