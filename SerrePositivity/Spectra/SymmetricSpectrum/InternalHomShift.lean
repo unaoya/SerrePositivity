@@ -8,7 +8,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.Suspension
 /-! # 次数をずらした内部Homスペクトル
 
 各段の比較を対称列全体でまとめ、球面作用を移送してスペクトルとして比較する。
-構造射を値域Eの構造射から直接記述する公式は後続の段階で整える。
+構造射を値域Eの構造射から直接記述する公式はInternalHomShiftStructureで証明する。
 -/
 
 @[expose] public section
@@ -40,8 +40,8 @@ abbrev homBySequenceShiftIso (n : ℕ) (X : PointedSimplicialSet.{u}) (E : Symme
 /-- 次数をずらした内部Homを球面加群として束ねる。 -/
 def shiftedHom (n : ℕ) (X : PointedSimplicialSet.{u}) (E : SymmetricSpectrum.{u}) :
     SymmetricSpectrum.{u} :=
-  letI := shiftedHomAction n X E
-  ⟨SymmetricSequence.shiftedInternalHom n X E.X⟩
+  MonoidalModuleInternalHom.transportedObj (C := PointedSymmetricSequence.{u})
+    sphereSequence.{u} ((SymmetricSequence.freeAt n).obj X) E (homBySequenceShiftIso n X E)
 
 /-- 次数をずらした内部Homスペクトルの第m段。 -/
 lemma shiftedHom_level (n m : ℕ) (X : PointedSimplicialSet.{u}) (E : SymmetricSpectrum.{u}) :

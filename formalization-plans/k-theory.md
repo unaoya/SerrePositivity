@@ -3410,3 +3410,50 @@ shiftedHomからの評価も構成し、作用との評価公式は共通層のA
 ドキュメントのローカルリンクとgit diff --checkも確認した。
 集約SerrePositivity.Spectra.Foundationsのビルドは2020ジョブで成功した。
 公理監査は167モジュール・1854宣言で成功し、標準公理のみでsorry依存なしを確認した。
+
+## 73. 実施記録：値域の構造射による内部Homの直接公式（2026-10-14）
+
+### 三重convolutionのブロック交換
+
+[ConvolutionMiddleExchange](../SerrePositivity/Spectra/SymmetricSequence/ConvolutionMiddleExchange.lean)で、
+三重convolutionの生成元と結合子・対称子の合成の両立を証明した。
+第一・第二因子を交換する際、添字にも逆向きのブロック交換が入る。
+[ConvolutionActionEvaluation](../SerrePositivity/Spectra/SymmetricSequence/ConvolutionActionEvaluation.lean)で、
+作用と評価の対称列全体の等式を各段の等式へ制限する一般公式を証明した。
+
+### 生成元に制限した評価
+
+[FreeInternalHomShiftEvaluation](../SerrePositivity/Spectra/SymmetricSequence/FreeInternalHomShiftEvaluation.lean)で、
+次数をずらした内部Homの評価を第n段の自由生成元に制限すると、
+Xから値域の第n+q段への通常の内部Homの評価に一致することを証明した。
+一般の可換係数加群について、生成元への制限後の作用・評価の公式を公開した。
+
+### スペクトルの構造射の直接公式
+
+[InternalHomShiftStructure](../SerrePositivity/Spectra/SymmetricSpectrum/InternalHomShiftStructure.lean)で、
+球面係数への特殊化と通常の内部Homの転置により、shiftedHomの構造射の直接公式を証明した。
+公式は通常の評価、値域Eの構造射、添字のブロック交換から射を作る。
+添字の射はp+(n+q)からn+(p+q)へのブロック交換であり、
+生成元のn要素と球面のp要素を交換して後ろのq要素を保持する。
+
+F_nからの内部Homの構造射も各段の比較の順逆とこの直接公式の合成で計算できる。
+shiftedHomの定義を共通層の移送済み加群対象で直接記述する形に整理した。
+球面係数への特殊化の定義照合を、移送済み加群の一致と構造射の次数成分の一致に分けた。
+この二つの一致を先に使い、直接公式を一般の係数加群の公式へ接続する。
+集約FoundationsとスペクトルのREADMEに入口と到達点を追加した。
+
+### 到達点と次の範囲
+
+次数をずらした内部Homの構造射を値域Eの構造射から直接計算できるようになった。
+次は円による懸垂構造射への特殊化と、その添字の移送公式を整える。
+弱同値・モデル構造・導来演算・安定ホモトピー群は引き続き未実装である。
+共有ルートimport・依存設定・並行作業の可換環・CLMST関連ファイルは変更していない。
+定理3.1・補題4.6の二つの降下入力は未変更である。
+
+### 検証
+
+新しい四つのLeanソースと変更したInternalHomShiftの行長・末尾空白・未完了の証明用マーカーを確認した。
+ドキュメントのローカルリンクとgit diff --checkも確認した。
+集約SerrePositivity.Spectra.Foundationsのビルドは2024ジョブで成功した。
+公理監査は171モジュール・1880宣言で成功し、標準公理のみでsorry依存なしを確認した。
+証明の計算上限の変更は残していない。
