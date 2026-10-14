@@ -20,7 +20,7 @@ perfect 複体・ランク商による実現を実装している。
 利用する標準可換環論と、具体的な長さ代数から論文の主定理への接続も実装されている。
 
 ただし、[README](../README.md) と現在の Lean ソースに記載された未証明依存は、
-**外部引用9件と、保留中のK理論の証明2件**である。
+**外部引用8件と、保留中のK理論の証明2件**である。
 `main_statement` と `core_statement` に直接の `sorry` はないが、これらの入力に依存する。
 全ての外部定理を標準公理だけで証明した、という状態ではない。
 
@@ -39,7 +39,7 @@ pを含むパラメータ、冪級数基底の構造、評価の有限性、次�
 | 4 | Serre の体を含む場合の正値性 | 等標数の古典的正値性。§5の剰余標数零の場合の還元で使う | [4〜5の計画](intersection-inputs-4-5.md) |
 | 5 | Roberts–Gillet–Soulé の交点重複度消滅 | 次元和が環の次元より小さい項の交点重複度を零にする | 同上。大きな基礎理論の経路を別途選ぶ |
 | 6 | Roberts の Frobenius 高次ホモロジー消滅 | 等標数の長さ代数の二性質を支える | [専用計画](frobenius-homology.md)。詳細はここで再掲しない |
-| 7 | 標準パラメータ根の塔の完備化が integral perfectoid | 混標数の係数環を作る | 別作業。位置付けのみ |
+| 7（解消済み） | 標準パラメータ根の塔の完備化が integral perfectoid | Witt係数表示から条件を供給し、有限段Frobenius核・実際のtilt・Fontaine核から証明 | `RootTower/WittPresentation`。旧Inputsは証明済みの互換入口 |
 | 8 | 有限代数の perfectoidization の存在 | 混標数の具体的な代数を作る | 同上 |
 | 9 | perfectoid ideal による零化から正規化長さ零 | almost の性質を長さの性質へ変換する | 同上 |
 | 10 | 高次 Koszul ホモロジーを消す perfectoid ideal の存在 | 混標数の高次ホモロジーに対する制御 | 同上 |

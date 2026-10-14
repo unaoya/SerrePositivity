@@ -28,6 +28,7 @@ multiplicity, and an application to local fundamental groups*, arXiv:2209.04046v
 | perfectoid環のpねじれ商 | S/S[p]のperfectoid性と一般のp因子除去を実装 | Fontaine核を含む定義条件から証明。選択されたperfectoid化を使う箇所には存在引用が到達する |
 | 命題4.0.10の数値部分 | 非零gの巡回長さ零、一般加群への帰着、almost比較からの長さ一致を実装 | 巡回評価の直接のsorryを除去。BSの存在・全射性を使う。実際のalmost局所化圏の同型版は別途イデアル冪等性の引用も使う |
 | 命題4.0.14 | 任意の有限段・パラメータ系について長さと重複度の公式を実装 | 共通Euler・錐の理論から証明。Prop 2.4.7、Cor 4.0.4等の明示引用に相対的な証明 |
+| 標準完備塔のperfectoid性 | 元のWitt係数表示と添字のまま証明済み | 有限段Frobenius核・tilt核・Fontaine核を共通層で証明。旧Inputsは引用非依存の互換入口 |
 | Serreへの接続 | 上記から混標数の長さ代数の性質を供給する接続を実装 | 接続そのものに直接のsorryを置かず、基礎入力へ依存を分離 |
 
 したがって現在の区切りは「必要なCLMSTの数値結果と本論文への接続を、
@@ -38,7 +39,6 @@ multiplicity, and an application to local fundamental groups*, arXiv:2209.04046v
 
 | 入力 | 所在 | 現在の使われ方 |
 | --- | --- | --- |
-| CLMST Ex 2.4.2(1)：標準完備塔のperfectoid性 | `Inputs/PerfectoidTower.lean` | 主定理へ到達 |
 | BS Thm 1.17(1)：整代数の普遍perfectoid化の存在 | `BhattScholze/Inputs/Perfectoidization.lean` | 主定理へ到達 |
 | BS Cor 7.3 / Thm 7.4：pねじれのない完備商のperfectoid化の全射性 | `BhattScholze/Inputs/SemiperfectoidSurjectivity.lean` | 主定理へ到達。原典の適用形。p正則な場合の古典的／導来p完備性の同値は共通層で証明済み |
 | CLMST Prop 2.4.7：perfectoid化の錐のg冪による消滅 | `CLMST/Inputs/PerfectoidIsogeny.lean` | 主定理へ到達 |
@@ -49,10 +49,10 @@ BS全射性の具体的な適用条件（巡回商のp正則性・p進完備性�
 選んだ普遍対象への移送は証明済み。上記完備性の同値も、p正則な場合に共通層で証明済み。
 BSのprismatic構成・一般の商の存在・全射性自体は未完了である。
 
-主定理全体の直近の`#print sorries`では、上表の5件に加え、
+主定理全体の直近の`#print sorries`では、上表の4件に加え、
 `intersectionVanishing`、`cohen_gabber_normalization`、
 `frobenius_homology_length_tendsto_zero`、`serrePositivity_of_field`、
-`theorem_3_1_K0`、`supportedRankK0_descent`が到達する。計11宣言であり、
+`theorem_3_1_K0`、`supportedRankK0_descent`が到達する。計10宣言であり、
 これは引用宣言の数で、独立した原典定理の数ではない。
 K群の二つの降下は従来どおり別作業に保留する。
 
@@ -78,7 +78,7 @@ mod p^Nのイデアル冪等性を指す。
 
 | 作業 | 正本・配置 | この側で行うこと |
 | --- | --- | --- |
-| 標準完備塔のperfectoid性 | 本計画。具体的な塔は`CommutativeAlgebra/RootTower/` | mod p Frobeniusとtilt核を確認し、既存Fontaine核判定で四条件へ接続する |
+| 標準完備塔のperfectoid性 | 本計画。具体的な塔は`CommutativeAlgebra/RootTower/` | 証明済み。有限段Frobenius核・tilt核・Fontaine核を通じ、元の表示の互換入口へ接続した |
 | δ環・完全prism・semiperfectoid化 | BS計画B0〜B3。原典固有の構成は`BhattScholze/` | CLMST側では別の普遍perfectoid化の存在証明を作らず、BSの成果を適用する |
 | perfectoid化の全射性 | BS計画B4a〜B4c・B4 | CLMSTの具体的な商の正則性・完備性の証明を維持し、B-Sの証明へ接続する |
 | mod p^Nのイデアル冪等性 | BS計画B5 | BSの一般定理を適用して`CLMST/Inputs/BasicSetup`の引用を置換する。独立した第二の証明は作らない |
@@ -363,6 +363,29 @@ mod p Frobeniusの全射性も供給し、perfectoid性を証明する。
 したがって、その引用はまだ未証明入力として維持する。F2は証明済み、F3は別工程である。
 検証：全体ビルド4196ジョブ、追加6宣言の`assert_no_sorry`、主定理とCLMSTの両公理監査が成功。
 新しい引用・公理・sorryはなく、主定理の未証明入力11宣言は変わらない。
+
+### C1の完成：標準完備塔の引用を証明へ置換（2026-10-14）
+
+`RootTower/WittPresentation`で、標準表示からpの正則性・局所性・Noether性・
+次元・極大イデアルのパラメータ生成を供給した。
+零番以外の座標の添字を`Fin r`へ移す同値も構成し、
+`completedTower_isIntegralPerfectoid_of_standard_wittPresentation`は元の引用と
+同じ表示・添字・仮定だけからperfectoid性を証明する。
+
+`Inputs.completedTower_isIntegralPerfectoid`は宣言名と型を保ち、
+上記共通定理を適用する証明済みの互換入口へ置換した。
+新しい仮定を利用先へ伝播せず、BS・CLMSTの引用を使う循環もない。
+有限段の核計算から実際のtilt射影の核・Fontaine核の生成までを使う証明である。
+
+これでC1の完了条件を満たす。前節の最終接続は解消し、
+標準完備塔のperfectoid性は未証明入力として残らない。
+残る主定理への入力はBSの存在・全射性、CLMST Prop 2.4.7とCor 4.0.4、
+Cohen–Gabber、RobertsのFrobenius消滅、交点重複度消滅、Serreの体を含む場合の正値性、
+二つのK理論降下である。F2も証明済み、F3の導来(p,d)完備化は引き続き共通側の残作業。
+
+検証：全体ビルド4199ジョブと追加4宣言の`assert_no_sorry`、主定理とCLMSTの両公理監査が成功。
+塔の旧Inputs入口は標準公理3種だけに依存し、主定理の未証明入力は11宣言から10宣言へ減った。
+新しい引用・公理・sorryは追加していない。
 
 ### 保留する選択と引用依存の受入条件
 

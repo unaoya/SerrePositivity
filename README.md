@@ -16,17 +16,19 @@ its perfect-complex and rank-quotient realizations, the standard commutative alg
 (regular parameters, unmixedness, Hilbert–Samuel theory, the Koszul multiplicity formula) and
 the connection to the main theorem are implemented.
 
-The main theorem still depends on **9 external quotations and 2 deferred K-theory proofs**.
+The main theorem still depends on **8 external quotations and 2 deferred K-theory proofs**.
 `main_statement` and `core_statement` have no direct `sorry`, but depend on `sorryAx`.
 They are not proofs of the main theorem without those inputs. The complete Noetherian flat
 residue-field extension is now constructed without quotations; its legacy `Inputs` entry point
 and Lemma 2.1 depend only on the standard axioms. Mixed-characteristic Cohen normalization
 with perfect residue field is also constructed without quotations, including the Witt coefficient
-map, parameters, finite power-series evaluation and injectivity. By section of the preprint:
+map, parameters, finite power-series evaluation and injectivity. The standard completed root tower
+is now proved integral perfectoid via finite-stage Frobenius kernels and the actual tilt and Fontaine
+kernel. By section of the preprint:
 
-- §2 (residue fields, normalized length, Theorem 2.5): proved relative to 7 quotations
+- §2 (residue fields, normalized length, Theorem 2.5): proved relative to 6 quotations
   (Cohen–Gabber normalization, Roberts' Frobenius
-  theorem, the perfectoid tower, Bhatt–Scholze perfectoidization existence and
+  theorem, Bhatt–Scholze perfectoidization existence and
   surjectivity, and CLMST cohomology vanishing and perfectoidization isogeny).
 - §3 (Lemmas 3.4–3.5): proved, except that Theorem 3.1 (rational K-theory descent) is deferred
   (`theorem_3_1_K0`).

@@ -1,11 +1,11 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.RootTower.Completion
+public import SerrePositivity.CommutativeAlgebra.RootTower.WittPresentation
 public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
 public import Mathlib.RingTheory.WittVector.Basic
 public import Mathlib.RingTheory.MvPowerSeries.Basic
 
-/-! # 標準的な根の塔の perfectoid 性（文献からの引用）
+/-! # 標準的な根の塔の perfectoid 性（証明済みの互換入口）
 
 CLMST Example 2.4.2 (1) の塔を、有限段の商環と有向極限の `p` 進完備化で表す。
 係数環との同型とパラメータの像を明記する。
@@ -19,7 +19,7 @@ namespace SerrePositivity.Inputs
 open Section2
 
 /-- Witt 係数の形式冪級数環で全パラメータの `p` 冪根を添加した塔の完備化は perfectoid。
-引用：CLMST Example 2.4.2 (1)。 -/
+CLMST Example 2.4.2 (1) の主張を、共通の塔・Frobenius・tilt核の証明から導く。 -/
 theorem completedTower_isIntegralPerfectoid
     (A k : Type u) [CommRing A] [Field k]
     (p : ℕ) [Fact p.Prime] [CharP k p] [PerfectField k]
@@ -27,6 +27,6 @@ theorem completedTower_isIntegralPerfectoid
     (e : A ≃+* MvPowerSeries {i : Fin h // (i : ℕ) ≠ 0} (WittVector p k))
     (he : ∀ i hi, e (t i) = MvPowerSeries.X ⟨i, hi⟩) :
     IsIntegralPerfectoid (CompletedTower A t p) p := by
-  sorry
+  exact completedTower_isIntegralPerfectoid_of_standard_wittPresentation A k p t hpos htp e he
 
 end SerrePositivity.Inputs

@@ -96,3 +96,7 @@ assert_no_sorry SerrePositivity.Section2.lemma_2_1
 -- 引用3の既存型を保持した混標数Cohen正規化の実構成。
 #print axioms SerrePositivity.Inputs.cohen_normalization_mixedCharacteristic
 assert_no_sorry SerrePositivity.Inputs.cohen_normalization_mixedCharacteristic
+
+-- 標準完備塔の旧Inputs入口は実際のtiltとFontaine核から証明済み。
+#print axioms SerrePositivity.Inputs.completedTower_isIntegralPerfectoid
+assert_no_sorry SerrePositivity.Inputs.completedTower_isIntegralPerfectoid

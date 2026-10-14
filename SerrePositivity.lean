@@ -126,6 +126,7 @@ public import SerrePositivity.CommutativeAlgebra.CompatibleRootsPerfectoid
 public import SerrePositivity.CommutativeAlgebra.RootTower.CompletedTilt
 public import SerrePositivity.CommutativeAlgebra.RegularPowerDivisibility
 public import SerrePositivity.CommutativeAlgebra.RootTower.FrobeniusKernel
+public import SerrePositivity.CommutativeAlgebra.RootTower.WittPresentation
 public import SerrePositivity.CommutativeAlgebra.AdicRecurrence
 public import SerrePositivity.CommutativeAlgebra.LocalizationTelescope
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.LocalizationPresentation
