@@ -41,9 +41,13 @@ B3の一般商の存在・普遍性を受領し、[主計画§9.7b](clmst.md)の
 巡回評価にはB-Sのみ、実almost同型の長さ比較にはB-SとB-Rのみが残る。
 一般有限代数側のB-Iは維持するため、主定理の7宣言という台帳は変わらない。
 旧選択との互換比較は`PerfectoidIdealCompatibility.lean`と専用監査へ分離した。
-次はBS共通要求G1を[主計画§9.7c](clmst.md)のG1-1〜4で実装する計画。
-mod Iの忠実平坦性による全射性検出と、既存adic全射判定を接続する。
-その後に§9.7a Bの降下補題を細分化する。
+BS共通要求G1も[主計画§9.7c](clmst.md)のG1-1〜4で完了した。
+公開入口は`CommutativeAlgebra/PrincipalAdicFaithfulDescent.lean`の
+`SerrePositivity.surjective_algHom_of_principal_residue_baseChange`。
+BSのS/(p)、C/(p)を直接使い、mod pでのみ忠実平坦な底変換後の全射性を降ろす。
+適用時はMathlibの標準構造を公開する`principalAdicQuotientAlgebra`を局所instanceとして使う。
+一般Iの加群版・環商版、公開22宣言と境界例を`scripts/audit_g1.lean`で監査済み。
+次はG2の実導来完備テンソル比較を具体化する。§9.7a Bのmod p^n降下は別工程。
 降下とCor 4.0.4への含意は後続の別工程とし、既存引用を維持する。
 現在の型・成果物・優先順・受入条件は[主計画§9](clmst.md#9-次の具体的な作業2026-10-14更新)を参照。
 主定理へ到達する未証明入力は7宣言（外部引用5件・K理論2件）。
