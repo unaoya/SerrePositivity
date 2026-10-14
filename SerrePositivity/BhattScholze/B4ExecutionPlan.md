@@ -375,3 +375,12 @@ K=S♭⊗[R♭]T♭と、Rのdistinguished Fontaine核生成元の像ξを用い
 G2の導来比較と一般Tor独立性は引き続き別に必要な工程として記録する。
 引用なしの必要な根付き拡大も未完了であり、André条件付き入力からの成果で
 一般B4の完成を宣言しない。
+
+## B4-5：源の生成元によるWitt商表示（2026-10-14）
+
+`PerfectoidWittBasePresentation`で、源のdistinguished Fontaine核元の像を
+生成元とする終域の具体的なWitt商同型を構成し、標準商射とFontaine写像、
+逆射との合成図式を証明した。p正則性は要求しない。
+非単元p・p完備性・mod p Frobenius全射性・Fontaine核の単項性を明示した
+3公開宣言を対象ビルドとB4専用監査で検証する。
+余積の構成・普遍性・mod p比較は次工程。一般B4の全射性は未完了。
