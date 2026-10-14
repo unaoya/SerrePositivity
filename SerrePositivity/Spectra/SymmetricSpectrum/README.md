@@ -4,6 +4,7 @@ Mathlibの `CategoryTheory.Mod` を、構成済みの球面対称列へ適用す
 基礎圏は基点付き単体的集合の対称列、テンソル積は登録済みのconvolutionである。
 各段の対象は基点付き単体的集合であり、球面の作用から和次数への構造射を得る。
 
+- [InternalHomFreePermutation](InternalHomFreePermutation.lean)：F_nからの内部Homの各段の比較と後ろのブロックの置換作用、作用付き対象としての同型。
 - [InternalHomFreeLevels](InternalHomFreeLevels.lean)：F_nからの内部Homの第m段と、第n+m段への基点付き内部Homの比較・第零段の特殊化。
 - [InternalHomFreeNaturality](InternalHomFreeNaturality.lean)：通常の内部Hom上のスペクトル射、自由原変数の比較とF_nの比較の自然性。
 - [InternalHomFree](InternalHomFree.lean)：自由原変数の内部Homと生成対称列からの通常の内部Homの比較、球面作用の移送、F_nへの特殊化。
@@ -91,7 +92,8 @@ pentagon整合性を証明し、球面単位のモノイダル構造を登録し
 
 F_nを原変数とする内部Homの第m段を、生成元から値域の第n+m段への基点付き内部Homへ比較した。
 対称列側の各段の比較は値域に関して自然であり、第零段のスペクトルの比較も使える。
-各段の置換作用と球面作用の具体式は次の段階で整える。
+各段の比較は、第m段の置換と値域の後ろのm要素の置換を対応させる。
+比較を対称群作用を持つ基点付き単体的集合の同型へ持ち上げた。球面作用・構造射の具体式は次の段階で整える。
 
 球面の第n段は円の反復smashである。境界を潰した単体的球面との比較は別の課題として扱う。
 弱同値、モデル構造、導来smash、安定ホモトピー群はまだ登録していない。
