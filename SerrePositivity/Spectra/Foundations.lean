@@ -38,6 +38,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.TensorMonoidal
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorSymmetric
 public import SerrePositivity.Spectra.SymmetricSpectrum.FreeMonoidal
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHom
+public import SerrePositivity.Spectra.SymmetricSpectrum.Closed
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomUnderlying
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeLeft
 
@@ -145,9 +146,13 @@ F_m XとF_n Yの球面上のテンソル積をF_(m+n)(X⊗Y)へ比較する自�
 内部Homの等化子に球面作用を与え、単位則・結合則を証明した。
 評価を球面上のテンソル積からのスペクトル射へ降ろし、標準射上の公式を証明した。
 
+テンソル積からの射と内部Homへの射の自然なHom同値・随伴を構成した。
+閉モノイダル構造を登録し、登録した評価・curryingを構成済みの射と比較した。
+既存の対称構造と合わせて閉対称モノイダル圏として利用できる。
+
 ## 未構成の範囲
 
-球面上のテンソル積と内部Homの随伴・スペクトル圏の閉構造、
+内部Homの原変数に関する反変関手性の明示的なAPI、
 モデル構造と導来演算は引き続き実装する。
 この入口は完成済みの§4の降下入力を変更せず、基盤を独立に検証するためのもの。
 現在の構成に新しい未証明入力はない。

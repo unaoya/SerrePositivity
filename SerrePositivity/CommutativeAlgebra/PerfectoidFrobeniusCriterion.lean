@@ -232,6 +232,42 @@ theorem exists_untilt_unit_mul_and_primitive_kernel
   obtain ⟨x, hx⟩ := exists_primitive_shape_mem_fontaineTheta_kernel S p hF q hdiv
   exact ⟨q, v, x, hq, hx⟩
 
+/-- 単元係数を明示したFontaine核の生成元。ねじれ元のTeichmuller表示に用いる。 -/
+theorem exists_untilt_unit_mul_and_unit_coefficient_kernel_generator
+    (hF : Function.Surjective (frobenius (ModP S p) p))
+    (hker : (RingHom.ker (WittVector.fontaineTheta S p)).IsPrincipal)
+    (π : S) (u : Sˣ) (hpEq : (p : S) = u * π ^ p) :
+    ∃ (q : PreTilt S p) (v : Sˣ) (a : WittVector p (PreTilt S p)),
+      q.untilt = v * π ∧ IsUnit (a.coeff 0) ∧
+      RingHom.ker (WittVector.fontaineTheta S p) =
+        Ideal.span {(p : WittVector p (PreTilt S p)) + WittVector.teichmuller p q ^ p * a} := by
+  obtain ⟨q, v, hq⟩ := exists_untilt_unit_mul S p hF π u hpEq
+  let w : Sˣ := u * (v⁻¹) ^ p
+  have hpq : (p : S) = (w : S) * q.untilt ^ p := by
+    rw [hq, mul_pow, hpEq]
+    change (u : S) * π ^ p =
+      ((u : S) * (↑(v⁻¹) : S) ^ p) * ((v : S) ^ p * π ^ p)
+    calc
+      _ = (u : S) * (((↑(v⁻¹) : S) * (v : S)) ^ p * π ^ p) := by simp
+      _ = _ := by simp only [mul_pow]; ring
+  obtain ⟨a, ha⟩ := surjective_fontaineTheta hF (-(w : S))
+  have ha0 : IsUnit (a.coeff 0) := by
+    apply perfection_isUnit_of_coeff_zero (ModP S p) p
+    change IsUnit (PreTilt.coeff 0 (a.coeff 0))
+    rw [← WittVector.mk_fontaineTheta, ha]
+    exact (w.isUnit.neg).map (Ideal.Quotient.mk (Ideal.span {(p : S)}))
+  have hξ : (p : WittVector p (PreTilt S p)) + WittVector.teichmuller p q ^ p * a ∈
+      RingHom.ker (WittVector.fontaineTheta S p) := by
+    change WittVector.fontaineTheta S p _ = 0
+    rw [map_add, map_natCast, map_mul, map_pow, WittVector.fontaineTheta_teichmuller, ha, hpq]
+    ring
+  have hqpow : q.untilt ^ p ∈ Ideal.span {(p : S)} := by
+    have hm : (w : S) * q.untilt ^ p ∈ Ideal.span {(p : S)} := by
+      rw [← hpq]
+      exact Ideal.subset_span (Set.mem_singleton _)
+    simpa [mul_assoc] using (Ideal.span {(p : S)}).mul_mem_left (↑(w⁻¹) : S) hm
+  exact ⟨q, v, a, hq, ha0, ker_fontaineTheta_eq_span_primitive_shape S p hker q a hqpow hξ⟩
+
 /-- 四条件に現れる Frobenius 全射性、単項核、p=unit·π^p から、実際の compatible roots
 をもつ π の単元倍と、Fontaine 核を生成する `p+[q]^p x` を同時に選べる。
 BMS 判定の核の生成元同定までを、被約性や Frobenius 単射性を仮定せずに供給する。 -/
@@ -242,17 +278,9 @@ theorem exists_untilt_unit_mul_and_kernel_generator
     ∃ (q : PreTilt S p) (v : Sˣ) (x : WittVector p (PreTilt S p)),
       q.untilt = v * π ∧ RingHom.ker (WittVector.fontaineTheta S p) =
         Ideal.span {(p : WittVector p (PreTilt S p)) + WittVector.teichmuller p q ^ p * x} := by
-  obtain ⟨q, v, x, hq, hx⟩ := exists_untilt_unit_mul_and_primitive_kernel S p hF π u hpEq
-  have hπpow : π ^ p ∈ Ideal.span {(p : S)} := by
-    have hpMem : (u : S) * π ^ p ∈ Ideal.span {(p : S)} := by
-      rw [← hpEq]
-      exact Ideal.subset_span (Set.mem_singleton _)
-    simpa [mul_assoc] using
-      (Ideal.span {(p : S)}).mul_mem_left (↑(u⁻¹) : S) hpMem
-  have hqpow : q.untilt ^ p ∈ Ideal.span {(p : S)} := by
-    rw [hq, mul_pow]
-    exact (Ideal.span {(p : S)}).mul_mem_left ((v : S) ^ p) hπpow
-  exact ⟨q, v, x, hq, ker_fontaineTheta_eq_span_primitive_shape S p hker q x hqpow hx⟩
+  obtain ⟨q, v, a, hq, _, hgen⟩ :=
+    exists_untilt_unit_mul_and_unit_coefficient_kernel_generator S p hF hker π u hpEq
+  exact ⟨q, v, a, hq, hgen⟩
 
 end Fontaine
 end SerrePositivity.PerfectoidFrobeniusCriterion

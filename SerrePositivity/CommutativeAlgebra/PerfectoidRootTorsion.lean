@@ -155,4 +155,29 @@ theorem IsIntegralPerfectoid.pow_injective_on_p_torsion
   change q ((x - y) ^ p) = 0
   rw [map_pow, map_sub, sub_pow_char, ← map_pow, ← map_pow, hxy, sub_self]
 
+/-- pねじれ元が冪零なら零。p冪乗による零化を反復して降ろす。 -/
+theorem IsIntegralPerfectoid.eq_zero_of_p_mul_eq_zero_of_isNilpotent
+    (S : Type u) [CommRing S] (p : ℕ) [Fact p.Prime] (hS : IsIntegralPerfectoid S p)
+    (x : S) (hx : (p : S) * x = 0) (hn : IsNilpotent x) : x = 0 := by
+  have hdesc : ∀ n : ℕ, x ^ (p ^ n) = 0 → x = 0 := by
+    intro n
+    induction n with
+    | zero =>
+        intro h
+        simpa only [pow_zero, pow_one] using h
+    | succ n ih =>
+        intro hpow
+        have hpt : (p : S) * x ^ (p ^ n) = 0 := by
+          obtain ⟨k, hk⟩ := Nat.exists_eq_succ_of_ne_zero
+            (Nat.ne_of_gt (pow_pos (Fact.out : p.Prime).pos n))
+          rw [hk, pow_succ, mul_left_comm, hx, mul_zero]
+        apply ih
+        apply hS.eq_zero_of_p_mul_eq_zero_of_pow_eq_zero S p _ hpt
+        simpa only [pow_succ, pow_mul] using hpow
+  obtain ⟨n, hn⟩ := hn
+  apply hdesc n
+  have hnp : n < 2 ^ n := Nat.lt_two_pow_self
+  exact pow_eq_zero_of_le
+    (hnp.le.trans (Nat.pow_le_pow_left (Fact.out : p.Prime).two_le n)) hn
+
 end SerrePositivity

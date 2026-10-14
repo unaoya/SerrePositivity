@@ -67,15 +67,14 @@ theorem witt_distinguished_dvd_p_mul_of_dvd_p_pow_mul (ξ b : WittVector p R)
         rw [mul_comm, mul_sub, heq, sub_self]
       exact ih (Nat.pos_of_ne_zero hn0) ⟨a', hcancel.symm⟩
 
-/-- p+[q]^N aという関係式でaの第0係数が単元なら、pねじれは[q]で消える。 -/
-theorem witt_teichmuller_mul_dvd_of_p_mul_dvd (q : R) (a b : WittVector p R)
+omit [PerfectRing R p] in
+/-- p b=(p+[q]^N a)dという関係式では、qがdの第0係数を消す。 -/
+theorem witt_relation_factor_coeff_zero_annihilated (q : R) (a b d : WittVector p R)
     (N : ℕ) (hN : 0 < N) (ha : IsUnit (a.coeff 0))
-    (hdiv : (p : WittVector p R) + WittVector.teichmuller p q ^ N * a ∣
-      (p : WittVector p R) * b) :
-    (p : WittVector p R) + WittVector.teichmuller p q ^ N * a ∣
-      WittVector.teichmuller p q * b := by
+    (hd : (p : WittVector p R) * b =
+      ((p : WittVector p R) + WittVector.teichmuller p q ^ N * a) * d) :
+    q * d.coeff 0 = 0 := by
   let ξ := (p : WittVector p R) + WittVector.teichmuller p q ^ N * a
-  obtain ⟨d, hd⟩ := hdiv
   have hco : q ^ N * d.coeff 0 = 0 := by
     have hh := congrArg (WittVector.constantCoeff : WittVector p R →+* R) hd
     change _ = WittVector.constantCoeff (ξ * d) at hh
@@ -86,16 +85,26 @@ theorem witt_teichmuller_mul_dvd_of_p_mul_dvd (q : R) (a b : WittVector p R)
     calc
       _ = (q ^ N * a.coeff 0) * d.coeff 0 := by ac_rfl
       _ = 0 := hh.symm
-  have hqd : q * d.coeff 0 = 0 := by
-    apply IsReduced.eq_zero
-    refine ⟨N, ?_⟩
-    obtain ⟨n, hn⟩ := Nat.exists_eq_succ_of_ne_zero (Nat.ne_of_gt hN)
-    rw [hn] at hco ⊢
-    calc
-      _ = (q ^ (n + 1) * d.coeff 0) * d.coeff 0 ^ n := by
-        rw [mul_pow, pow_succ (d.coeff 0)]
-        ac_rfl
-      _ = 0 := by rw [hco, zero_mul]
+  apply IsReduced.eq_zero
+  refine ⟨N, ?_⟩
+  obtain ⟨n, hn⟩ := Nat.exists_eq_succ_of_ne_zero (Nat.ne_of_gt hN)
+  rw [hn] at hco ⊢
+  calc
+    _ = (q ^ (n + 1) * d.coeff 0) * d.coeff 0 ^ n := by
+      rw [mul_pow, pow_succ (d.coeff 0)]
+      ac_rfl
+    _ = 0 := by rw [hco, zero_mul]
+
+/-- p+[q]^N aという関係式でaの第0係数が単元なら、pねじれは[q]で消える。 -/
+theorem witt_teichmuller_mul_dvd_of_p_mul_dvd (q : R) (a b : WittVector p R)
+    (N : ℕ) (hN : 0 < N) (ha : IsUnit (a.coeff 0))
+    (hdiv : (p : WittVector p R) + WittVector.teichmuller p q ^ N * a ∣
+      (p : WittVector p R) * b) :
+    (p : WittVector p R) + WittVector.teichmuller p q ^ N * a ∣
+      WittVector.teichmuller p q * b := by
+  let ξ := (p : WittVector p R) + WittVector.teichmuller p q ^ N * a
+  obtain ⟨d, hd⟩ := hdiv
+  have hqd := witt_relation_factor_coeff_zero_annihilated R p q a b d N hN ha hd
   obtain ⟨v, hv⟩ := Ideal.mem_span_singleton.mp
     ((WittVector.mem_span_p_iff_coeff_zero_eq_zero (WittVector.teichmuller p q * d)).mpr
       (by simpa only [WittVector.mul_coeff_zero, WittVector.teichmuller_coeff_zero] using hqd))
@@ -110,5 +119,40 @@ theorem witt_teichmuller_mul_dvd_of_p_mul_dvd (q : R) (a b : WittVector p R)
     apply WittVector.eq_zero_of_p_mul_eq_zero
     rw [mul_comm, mul_sub, heq, sub_self]
   exact ⟨v, hcancel⟩
+
+/-- 関係式による商のpねじれには、qで消える元のTeichmuller代表がある。 -/
+theorem witt_exists_teichmuller_representative_of_p_mul_dvd
+    (q : R) (a b : WittVector p R) (N : ℕ) (hN : 0 < N) (ha : IsUnit (a.coeff 0))
+    (hdiv : (p : WittVector p R) + WittVector.teichmuller p q ^ N * a ∣
+      (p : WittVector p R) * b) :
+    ∃ r : R, q * r = 0 ∧
+      ((p : WittVector p R) + WittVector.teichmuller p q ^ N * a) ∣
+        b - WittVector.teichmuller p r := by
+  let ξ := (p : WittVector p R) + WittVector.teichmuller p q ^ N * a
+  obtain ⟨d, hd⟩ := hdiv
+  have hqd := witt_relation_factor_coeff_zero_annihilated R p q a b d N hN ha hd
+  obtain ⟨e, he⟩ := Ideal.mem_span_singleton.mp
+    ((WittVector.mem_span_p_iff_coeff_zero_eq_zero
+      (d - WittVector.teichmuller p (d.coeff 0))).mpr (by
+        change (WittVector.constantCoeff : WittVector p R →+* R)
+          (d - WittVector.teichmuller p (d.coeff 0)) = 0
+        rw [map_sub, WittVector.constantCoeff_apply, WittVector.constantCoeff_apply,
+          WittVector.teichmuller_coeff_zero, sub_self]))
+  have hqteich : WittVector.teichmuller p q * WittVector.teichmuller p (d.coeff 0) = 0 := by
+    rw [← map_mul, hqd, WittVector.teichmuller_zero]
+  have hξteich : ξ * WittVector.teichmuller p (d.coeff 0) =
+      (p : WittVector p R) * WittVector.teichmuller p (d.coeff 0) := by
+    dsimp only [ξ]
+    rw [add_mul]
+    have hz : WittVector.teichmuller p q ^ N * WittVector.teichmuller p (d.coeff 0) = 0 := by
+      obtain ⟨n, rfl⟩ := Nat.exists_eq_succ_of_ne_zero (Nat.ne_of_gt hN)
+      rw [pow_succ, mul_assoc, hqteich, mul_zero]
+    rw [mul_right_comm _ a, hz, zero_mul, add_zero]
+  have hcancel : b - WittVector.teichmuller p (d.coeff 0) = ξ * e := by
+    apply sub_eq_zero.mp
+    apply WittVector.eq_zero_of_p_mul_eq_zero
+    rw [mul_comm, mul_sub, mul_sub, hd, ← hξteich, ← mul_sub, he]
+    ring
+  exact ⟨d.coeff 0, hqd, e, hcancel⟩
 
 end SerrePositivity

@@ -21,9 +21,9 @@ namespace SerrePositivity
 /-- 正則な p 乗根と具体的な Frobenius 核条件、p 進分離性から環は reduced。
 x^p=0 の場合を正則 π で繰り返し割り、p の全冪に入ることを示す。
 p ねじれを許す perfectoid 環の一般の reduced 定理とは区別する。 -/
-theorem isReduced_of_regular_root_frobenius_kernel
+theorem isReduced_of_regular_unit_root_frobenius_kernel
     (R : Type u) [CommRing R] (p : ℕ) (hp : 1 < p)
-    (π : R) (hπ : π ^ p = (p : R)) (hregular : IsSMulRegular R π)
+    (π : R) (u : Rˣ) (hπ : (p : R) = u * π ^ p) (hregular : IsSMulRegular R π)
     (hsep : IsHausdorff (Ideal.span {(p : R)}) R)
     (hF : ∀ x : R, x ^ p ∈ Ideal.span {(p : R)} → x ∈ Ideal.span {π}) :
     IsReduced R := by
@@ -49,8 +49,21 @@ theorem isReduced_of_regular_root_frobenius_kernel
   rw [Ideal.smul_eq_mul, Ideal.mul_top, Ideal.span_singleton_pow]
   obtain ⟨y, hxy, _⟩ := hfactor (p * n)
   apply Ideal.mem_span_singleton.mpr
-  refine ⟨y, ?_⟩
-  simpa only [pow_mul, hπ] using hxy
+  have hπp : π ^ p = (↑(u⁻¹) : R) * (p : R) := by
+    rw [hπ]
+    simp
+  refine ⟨(↑(u⁻¹) : R) ^ n * y, ?_⟩
+  simpa only [pow_mul, hπp, mul_pow, mul_assoc, mul_comm, mul_left_comm] using hxy
+
+/-- p乗がpに等しい場合の互換入口。単元倍を許す共通判定へ適用する。 -/
+theorem isReduced_of_regular_root_frobenius_kernel
+    (R : Type u) [CommRing R] (p : ℕ) (hp : 1 < p)
+    (π : R) (hπ : π ^ p = (p : R)) (hregular : IsSMulRegular R π)
+    (hsep : IsHausdorff (Ideal.span {(p : R)}) R)
+    (hF : ∀ x : R, x ^ p ∈ Ideal.span {(p : R)} → x ∈ Ideal.span {π}) :
+    IsReduced R :=
+  isReduced_of_regular_unit_root_frobenius_kernel R p hp π 1
+    (by simpa only [Units.val_one, one_mul] using hπ.symm) hregular hsep hF
 
 /-- 正則なp乗根を持つ整perfectoid環では、四条件から被約性を供給する。
 一般のpねじれを持つ場合の分解は、この結果には含めない。 -/
