@@ -1,4 +1,4 @@
-import SerrePositivity.KTheory.Adams.TensorSquareEvaluation
+import SerrePositivity.KTheory.Adams.CyclicTwo
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.Adams.tensorSquareClass_eq_of_quasiIso
@@ -13,3 +13,10 @@ assert_no_sorry SerrePositivity.Adams.tensorSquareEvaluation_triangle
 #print axioms SerrePositivity.Adams.tensorSquareClass_eq_of_quasiIso
 #print axioms SerrePositivity.Adams.tensorSquareClass_cone
 #print axioms SerrePositivity.Adams.tensorSquareEvaluation_triangle
+
+assert_no_sorry SerrePositivity.Adams.cyclicTwo
+assert_no_sorry SerrePositivity.Adams.cyclicTwo_mk
+assert_no_sorry SerrePositivity.Adams.cyclicTwo_mk_concrete
+assert_no_sorry SerrePositivity.Adams.cyclicTwo_unique
+#print axioms SerrePositivity.Adams.cyclicTwo
+#print axioms SerrePositivity.Adams.cyclicTwo_mk_concrete
