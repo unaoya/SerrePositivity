@@ -141,3 +141,10 @@ H5の豊穣Hom関手からpowerHomへの二変数自然同型。
 一般監査25モジュール304宣言、共有比較込み利用例監査309宣言が成功。
 コミット6564adf・0f2d8fd。Xの反変自然性とordinary Hom点の両立を証明し、
 EnrichedRepresentabilityへ登録する作業が残る。
+
+## Hom対象比較のパラメータ反変自然性（§139）
+
+TensorMappingParameter・CotensorMappingParameterは既存Hom対象同型のXに関する反変自然性を証明する。
+EnrichedMappingParameterは各成分の比較と、H5のtensor_parameter・cotensor_parameterの法則を提供する。
+残るEnrichedRepresentabilityの登録条件は通常の射の点についてのtensor_points・cotensor_points。
+一般監査28モジュール314宣言、共有比較込み利用例監査319宣言が成功。コミットa7c54df。
