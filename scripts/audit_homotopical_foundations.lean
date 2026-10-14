@@ -23,6 +23,8 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Monoidal.MonoidAxiom,
     `SerrePositivity.HomotopicalAlgebra.Transfer.CellMap,
     `SerrePositivity.HomotopicalAlgebra.Monoidal.ModuleTransfer,
+    `SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationFamily,
+    `SerrePositivity.HomotopicalAlgebra.Monoidal.ManyObjectTransfer,
     `SerrePositivity.HomotopicalAlgebra.Enriched.TensorCotensor,
     `SerrePositivity.CategoryTheory.Enriched.TensorCotensor,
     `SerrePositivity.CategoryTheory.Enriched.EnrichedRepresentability]
