@@ -86,6 +86,33 @@ example (E F : GeneralSymmetricSpectrum C K) :
 example (E : GeneralSymmetricSpectrum C K) :
     (EnrichedOrdinaryCategory.homEquiv (V := C) (𝟙 E)) = mappingObjectUnit E := by
   exact mappingObjectArrow_identity E
+
+example (E : GeneralSymmetricSpectrum C K) {F G : GeneralSymmetricSpectrum C K} (g : F ⟶ G) :
+    eHomWhiskerLeft C E g = (mappingObjectFunctor E).map g :=
+  eHomWhiskerLeft_eq_mappingObjectMap E g
+
+example {E F : GeneralSymmetricSpectrum C K} (f : E ⟶ F) (G : GeneralSymmetricSpectrum C K) :
+    eHomWhiskerRight C f G = (mappingObjectBifunctor.map f.op).app G :=
+  eHomWhiskerRight_eq_mappingObjectMap f G
+
+example : eHomFunctor C (GeneralSymmetricSpectrum C K) ≅ mappingObjectBifunctor :=
+  mappingEnrichedHomFunctorIso
+
+example : SerrePositivity.Enriched.TensorCotensor C (GeneralSymmetricSpectrum C K) :=
+  spectrumTensorCotensor
+
+example (X : C) (E F : GeneralSymmetricSpectrum C K) (f : pointwiseTensor X E ⟶ F) :
+    spectrumTensorCotensor.tensorHomEquiv X E F f = mappingObjectHomEquiv X E F f :=
+  spectrumTensorCotensor_tensorHomEquiv X E F f
+
+section ModelCompatibility
+variable [HomotopicalAlgebra.ModelCategory C]
+  [HomotopicalAlgebra.ModelCategory (GeneralSymmetricSpectrum C K)]
+example : SerrePositivity.Quillen.IsQuillenBifunctor (pointwiseTensorBifunctor (K := K)) ↔
+    SerrePositivity.Quillen.HasQuillenPullbackHom
+      (eHomFunctor C (GeneralSymmetricSpectrum C K)) :=
+  SerrePositivity.Enriched.tensor_iff_mapping_model spectrumTensorCotensor
+end ModelCompatibility
 end
 
 example : pointwiseTensorBifunctor (K := K) ⊣₂ cotensorBifunctor :=
@@ -114,7 +141,8 @@ run_cmd do
     let some idx := env.getModuleIdxFor? name | continue
     let mod := env.header.modules[idx.toNat]!.module
     unless (`SerrePositivity.Spectra.General).isPrefixOf mod ||
-        mod == `SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport do continue
+        mod == `SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport ||
+        mod == `SerrePositivity.CategoryTheory.Monoidal.MappingWhiskering do continue
     let axioms ← collectAxioms name
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
       throwError "Unexpected axioms in {name}: {axioms}"
