@@ -1,0 +1,24 @@
+import SerrePositivity.KTheory.Adams.TensorCubeHighMixed
+import SerrePositivity.PerfectComplex.TensorTripleCyclicSum
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.cochainTensorCyclicSumRotation
+#print axioms SerrePositivity.cochainTensorCyclicSumRotation
+
+assert_no_sorry SerrePositivity.cochainTensorCyclicSumRotation_cube
+#print axioms SerrePositivity.cochainTensorCyclicSumRotation_cube
+
+assert_no_sorry SerrePositivity.cochainTensorCyclicSumAction
+#print axioms SerrePositivity.cochainTensorCyclicSumAction
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixed0
+#print axioms SerrePositivity.Adams.tensorCubeHighMixed0
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixed0_inclusion
+#print axioms SerrePositivity.Adams.tensorCubeHighMixed0_inclusion
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixed0_target_inclusion_mono
+#print axioms SerrePositivity.Adams.tensorCubeHighMixed0_target_inclusion_mono
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerToKernel_highMixed0
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerToKernel_highMixed0
