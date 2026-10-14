@@ -104,6 +104,7 @@ import SerrePositivity.CommutativeAlgebra.PerfectAnnihilator
 import SerrePositivity.CommutativeAlgebra.PerfectionPrincipalQuotientKernel
 import SerrePositivity.CommutativeAlgebra.TiltRootSeparation
 import SerrePositivity.CommutativeAlgebra.WittPrincipalSeparation
+import SerrePositivity.CommutativeAlgebra.PerfectoidFontaineSeparation
 import Mathlib.Util.AssertNoSorry
 import Mathlib.Util.PrintSorries
 
@@ -1422,3 +1423,8 @@ assert_no_sorry SerrePositivity.tilt_mul_injective_of_untilt_regular
 
 -- F7-2：Witt元の主イデアル進分離性。
 assert_no_sorry SerrePositivity.witt_isHausdorff_of_constantCoeff
+
+-- F7-3：p正則な整perfectoid環のFontaine核進分離性。
+assert_no_sorry SerrePositivity.witt_primitive_isHausdorff_of_tilt_root
+assert_no_sorry SerrePositivity.fontaine_kernel_isHausdorff_of_unit_root
+assert_no_sorry SerrePositivity.IsIntegralPerfectoid.fontaine_kernel_isHausdorff
