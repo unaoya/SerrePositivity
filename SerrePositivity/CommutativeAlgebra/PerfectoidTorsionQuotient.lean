@@ -2,11 +2,12 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.PerfectoidRootTorsion
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealPowers
+public import SerrePositivity.CommutativeAlgebra.AdicKernelQuotient
 
 /-! # pねじれを除く商とperfectoidイデアルの比較
 
-pねじれのイデアルを実際に定義し、その商のpの非零因子性を証明する。
-商がperfectoidであることは別の条件として明示し、普遍性による比較に必要な境界を保つ。
+pねじれのイデアルを実際に定義し、その商の完備性・pの非零因子性を証明する。
+商のperfectoid性はFontaine核の単項性の確認へ還元し、普遍性による比較の境界を保つ。
 -/
 
 @[expose] public noncomputable section
@@ -32,6 +33,47 @@ def pTorsionIdeal (S : Type u) [CommRing S] (p : ℕ) : Ideal S where
 @[simp] theorem mem_pTorsionIdeal (S : Type u) [CommRing S] (p : ℕ) (x : S) :
     x ∈ pTorsionIdeal S p ↔ (p : S) * x = 0 := Iff.rfl
 
+/-- p進完備な環のpねじれ商はp進完備。perfectoid性やNoether性は不要。 -/
+theorem pTorsionQuotient_isAdicComplete
+    (S : Type u) [CommRing S] (p : ℕ)
+    [IsAdicComplete (Ideal.span {(p : S)}) S] :
+    IsAdicComplete (Ideal.span {(p : S ⧸ pTorsionIdeal S p)})
+      (S ⧸ pTorsionIdeal S p) := by
+  have hker : pTorsionIdeal S p = LinearMap.ker (LinearMap.mulLeft S (p : S)) := rfl
+  let : IsAdicComplete (Ideal.span {(p : S)}) (S ⧸ pTorsionIdeal S p) := by
+    rw [hker]
+    exact isAdicComplete_quotient_ker (Ideal.span {(p : S)})
+      (LinearMap.mulLeft S (p : S))
+  have hmap : (Ideal.span {(p : S)}).map
+      (algebraMap S (S ⧸ pTorsionIdeal S p)) =
+      Ideal.span {(p : S ⧸ pTorsionIdeal S p)} := by
+    rw [Ideal.map_span, Set.image_singleton, map_natCast]
+  rw [← hmap]
+  exact (IsAdicComplete.map_algebraMap_iff _ _).mpr inferInstance
+
+/-- perfectoid環のpねじれ商の完備性。零環の場合も含む。 -/
+theorem IsIntegralPerfectoid.pTorsionQuotient_isAdicComplete
+    (S : Type u) [CommRing S] (p : ℕ) [Fact p.Prime] (hS : IsIntegralPerfectoid S p) :
+    IsAdicComplete (Ideal.span {(p : S ⧸ pTorsionIdeal S p)})
+      (S ⧸ pTorsionIdeal S p) := by
+  rcases hS with hsub | ⟨_, hc, _⟩
+  · let : Subsingleton S := hsub
+    infer_instance
+  · let := hc
+    exact SerrePositivity.pTorsionQuotient_isAdicComplete S p
+
+/-- 単元倍のp乗根という関係式は商へ移る。 -/
+theorem IsIntegralPerfectoid.exists_unit_p_root_quotient
+    (S : Type u) [CommRing S] (p : ℕ) [Fact p.Prime] (hS : IsIntegralPerfectoid S p)
+    (I : Ideal S) : ∃ (π : S ⧸ I) (u : (S ⧸ I)ˣ), (p : S ⧸ I) = u * π ^ p := by
+  rcases hS with hsub | ⟨_, _, ⟨π, u, hπ⟩, _⟩
+  · let : Subsingleton S := hsub
+    exact ⟨0, 1, Subsingleton.elim _ _⟩
+  · let q := Ideal.Quotient.mk I
+    refine ⟨q π, Units.map q.toMonoidHom u, ?_⟩
+    change (p : S ⧸ I) = q (u : S) * (q π) ^ p
+    simpa only [map_mul, map_pow, map_natCast] using congrArg q hπ
+
 /-- perfectoid環のpねじれを除いた商では、pは非零因子として作用する。 -/
 theorem IsIntegralPerfectoid.pTorsionQuotient_p_mul_injective
     (S : Type u) [CommRing S] (p : ℕ) [Fact p.Prime] (hS : IsIntegralPerfectoid S p) :
@@ -52,6 +94,19 @@ theorem IsIntegralPerfectoid.pTorsionQuotient_p_mul_injective
   apply sub_eq_zero.mp
   apply hzero
   rw [mul_sub, hxy, sub_self]
+
+/-- pねじれ商では、p=unit·π^Nの任意の正冪根も非零因子。 -/
+theorem IsIntegralPerfectoid.pTorsionQuotient_root_mul_injective
+    (S : Type u) [CommRing S] (p : ℕ) [Fact p.Prime] (hS : IsIntegralPerfectoid S p)
+    (π : S ⧸ pTorsionIdeal S p) (u : (S ⧸ pTorsionIdeal S p)ˣ)
+    (N : ℕ) (hN : 0 < N) (hπ : (p : S ⧸ pTorsionIdeal S p) = u * π ^ N) :
+    Function.Injective (fun x : S ⧸ pTorsionIdeal S p ↦ π * x) := by
+  intro x y hxy
+  change π * x = π * y at hxy
+  apply hS.pTorsionQuotient_p_mul_injective S p
+  dsimp only
+  obtain ⟨n, rfl⟩ := Nat.exists_eq_succ_of_ne_zero (Nat.ne_of_gt hN)
+  simp only [hπ, pow_succ, mul_assoc, hxy]
 
 /-- 任意の商でもmod pのFrobeniusの全射性は引き継がれる。完備性やFontaine核は別途必要。 -/
 theorem IsIntegralPerfectoid.surjective_pow_mod_p_quotient
@@ -75,6 +130,30 @@ theorem IsIntegralPerfectoid.surjective_pow_mod_p_quotient
     change (f z) ^ p = x
     change z ^ p = y at hz
     rw [← map_pow, hz, hy]
+
+/-- pねじれ商のperfectoid性の確認をFontaine核の単項性だけに還元する。
+完備性・p乗根・mod p Frobeniusの全射性は元の四条件から供給する。 -/
+theorem IsIntegralPerfectoid.pTorsionQuotient_perfectoid_of_fontaine_kernel
+    (S : Type u) [CommRing S] (p : ℕ) [Fact p.Prime] (hS : IsIntegralPerfectoid S p)
+    (hker : ∀ (hp : ¬ IsUnit (p : S ⧸ pTorsionIdeal S p))
+      (hc : IsAdicComplete (Ideal.span {(p : S ⧸ pTorsionIdeal S p)})
+        (S ⧸ pTorsionIdeal S p)),
+      letI : Fact (¬ IsUnit (p : S ⧸ pTorsionIdeal S p)) := ⟨hp⟩
+      letI := hc
+      (RingHom.ker (WittVector.fontaineTheta (S ⧸ pTorsionIdeal S p) p)).IsPrincipal) :
+    IsIntegralPerfectoid (S ⧸ pTorsionIdeal S p) p := by
+  let Q := S ⧸ pTorsionIdeal S p
+  let hc : IsAdicComplete (Ideal.span {(p : Q)}) Q :=
+    hS.pTorsionQuotient_isAdicComplete S p
+  by_cases hsub : Subsingleton Q
+  · exact Or.inl hsub
+  · have hp : ¬ IsUnit (p : Q) := by
+      intro hu
+      have ht : Ideal.span {(p : Q)} = ⊤ := Ideal.span_singleton_eq_top.mpr hu
+      have hh : IsHausdorff (⊤ : Ideal Q) Q := ht ▸ hc.toIsHausdorff
+      exact hsub hh.subsingleton
+    exact Or.inr ⟨hp, hc, hS.exists_unit_p_root_quotient S p _,
+      hS.surjective_pow_mod_p_quotient S p _, hker hp hc⟩
 
 /-- perfectoidなpねじれ商があれば、p^c g'で消える射からg'のperfectoidイデアルの像はpねじれ。
 商のperfectoid性を単にpの非零因子性から推論しない。 -/

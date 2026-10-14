@@ -1081,6 +1081,36 @@ sorry非依存で、普遍対象を選ぶ二宣言に到達する引用は既存
 根によるねじれ零化と座標根の長さ比較のimport閉包にPaperやInputsへの依存はない。
 新しいsorry・引用は追加していない。
 
+### 続き：pねじれ商の完備性とFontaine核への還元
+
+`AdicKernelQuotient`で、前完備加群Mから分離加群Nへの線形写像fについて、
+M/ker(f)が完備であることを証明した。前完備性は既存の
+`AdicCompleteness.isPrecomplete_of_surjective`を再利用し、
+分離性は商からNへの単射と合同の移送で確認する。
+Noether性・核の有限生成性・新たな完備化モデルは必要ない。
+この共通定理にSのp倍写像を適用し、p進完備な任意の環SのS/S[p]が
+p進完備であることを証明した。perfectoid環への適用では零環も処理する。
+
+`PerfectoidTorsionQuotient`で、単元倍のp乗根の関係式を任意の商へ移した。
+S/S[p]ではpの非零因子性から、その任意の正冪根も非零因子となる。
+既存のmod p Frobenius全射性と合わせ、S/S[p]のperfectoid性の確認は
+Fontaine写像の核の単項性だけに還元できた。
+`pTorsionQuotient_perfectoid_of_fontaine_kernel`は、この最後の条件を明示して
+四条件を組み立てる。核の単項性そのものはまだ証明していない。
+
+`PerfectoidRootTorsion`では、pの正冪根πについて、p(πx)=0ならπx=0を証明した。
+したがって(π)とS[p]の交わりは零である。
+既存のFrobenius核の計算と合わせ、px=0かつx^p∈(p)ならx=0を導き、
+mod pで差のp乗を計算して、S[p]上のp乗写像の単射性を証明した。
+その全射性、S全体の被約性、ねじれ商のFontaine核の単項性まで
+証明したとは扱わない。
+
+残る中心課題は、標準perfectoid化写像の全射性と、S/S[p]のFontaine核の単項性。
+一般gの巡回長さの無条件の証明への移行はまだ未完了である。
+
+検証：全体ビルド4130ジョブと両公理監査が成功。
+追加11宣言は全て`assert_no_sorry`が通り、新しいsorry・公理・引用は追加していない。
+
 ## 1. 目的と二つの前提
 
 最終目標は、本論文の定理2.5（混標数の長さ代数の二つの長さの性質、

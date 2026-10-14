@@ -99,4 +99,60 @@ theorem IsIntegralPerfectoid.p_power_root_mul_eq_zero_of_pow_mul_eq_zero
       (one_lt_pow₀ (Fact.out : p.Prime).one_lt hn)
       (by simpa only [Units.val_one, one_mul] using hρ.symm) m x hx
 
+/-- pの正冪根の倍数がpねじれなら、その倍数は零。
+根の主イデアルとpねじれの交わりを、p冪ねじれの有界性で制御する。 -/
+theorem IsIntegralPerfectoid.root_mul_eq_zero_of_p_mul_root_mul_eq_zero
+    (S : Type u) [CommRing S] (p : ℕ) [Fact p.Prime] (hS : IsIntegralPerfectoid S p)
+    (π : S) (u : Sˣ) (N : ℕ) (hN : 1 < N) (hpEq : (p : S) = u * π ^ N)
+    (x : S) (hx : (p : S) * (π * x) = 0) : π * x = 0 := by
+  obtain ⟨n, hn⟩ := Nat.exists_eq_succ_of_ne_zero (Nat.ne_of_gt (Nat.zero_lt_of_lt hN))
+  have hp2 : (p : S) ^ 2 * x = 0 := by
+    calc
+      _ = (u : S) * π ^ n * ((p : S) * (π * x)) := by
+        nth_rw 1 [pow_two, hpEq]
+        rw [hn, pow_succ]
+        ring
+      _ = 0 := by rw [hx]; simp
+  exact hS.root_mul_eq_zero_of_pow_mul_eq_zero S p π u N hN hpEq 2 x hp2
+
+/-- pねじれ元のp乗がpで割れるなら、その元は零。
+全環の被約性を仮定せず、Frobenius核と根の主イデアルの交わりから導く。 -/
+theorem IsIntegralPerfectoid.eq_zero_of_p_mul_eq_zero_of_pow_mem_p
+    (S : Type u) [CommRing S] (p : ℕ) [Fact p.Prime] (hS : IsIntegralPerfectoid S p)
+    (x : S) (hx : (p : S) * x = 0) (hxp : x ^ p ∈ Ideal.span {(p : S)}) : x = 0 := by
+  rcases hS with hsub | ⟨hp, hc, ⟨π, u, hpEq⟩, hF, hker⟩
+  · exact hsub.elim _ _
+  · have hS : IsIntegralPerfectoid S p := Or.inr ⟨hp, hc, ⟨π, u, hpEq⟩, hF, hker⟩
+    have hm : x ∈ Ideal.span {π} :=
+      hS.frobenius_kernel_of_unit_root S p π u hpEq x (by
+        rwa [hpEq, Ideal.span_singleton_mul_left_unit u.isUnit] at hxp)
+    obtain ⟨y, hy⟩ := Ideal.mem_span_singleton.mp hm
+    rw [hy] at hx ⊢
+    exact hS.root_mul_eq_zero_of_p_mul_root_mul_eq_zero S p π u p
+      (Fact.out : p.Prime).one_lt hpEq y hx
+
+/-- pねじれ元に対するFrobeniusの核は零。 -/
+theorem IsIntegralPerfectoid.eq_zero_of_p_mul_eq_zero_of_pow_eq_zero
+    (S : Type u) [CommRing S] (p : ℕ) [Fact p.Prime] (hS : IsIntegralPerfectoid S p)
+    (x : S) (hx : (p : S) * x = 0) (hxp : x ^ p = 0) : x = 0 :=
+  hS.eq_zero_of_p_mul_eq_zero_of_pow_mem_p S p x hx (hxp ▸ Ideal.zero_mem _)
+
+/-- pねじれ元に対するp乗写像は単射。mod pで差のp乗を計算する。 -/
+theorem IsIntegralPerfectoid.pow_injective_on_p_torsion
+    (S : Type u) [CommRing S] (p : ℕ) [Fact p.Prime] (hS : IsIntegralPerfectoid S p)
+    (x y : S) (hx : (p : S) * x = 0) (hy : (p : S) * y = 0)
+    (hxy : x ^ p = y ^ p) : x = y := by
+  rcases hS with hsub | hdata
+  · exact hsub.elim _ _
+  have hS : IsIntegralPerfectoid S p := Or.inr hdata
+  obtain ⟨hp, _, _⟩ := hdata
+  let : Fact (¬ IsUnit (p : S)) := ⟨hp⟩
+  apply sub_eq_zero.mp
+  apply hS.eq_zero_of_p_mul_eq_zero_of_pow_mem_p S p (x - y)
+    (by rw [mul_sub, hx, hy, sub_self])
+  let q := Ideal.Quotient.mk (Ideal.span {(p : S)})
+  apply Ideal.Quotient.eq_zero_iff_mem.mp
+  change q ((x - y) ^ p) = 0
+  rw [map_pow, map_sub, sub_pow_char, ← map_pow, ← map_pow, hxy, sub_self]
+
 end SerrePositivity
