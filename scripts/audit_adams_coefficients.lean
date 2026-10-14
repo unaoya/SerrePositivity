@@ -1,4 +1,4 @@
-import SerrePositivity.KTheory.Adams.Family
+import SerrePositivity.KTheory.Adams.CyclicTwoFamily
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.integerPairing
@@ -26,3 +26,15 @@ assert_no_sorry SerrePositivity.Adams.LocalizationAdamsFamily
 assert_no_sorry SerrePositivity.Adams.koszulClass_zero_enlarge
 assert_no_sorry SerrePositivity.Adams.SupportedAdams.koszul
 #print axioms SerrePositivity.Adams.SupportedAdams.koszul
+
+assert_no_sorry SerrePositivity.Adams.coefficientCyclicTwo
+assert_no_sorry SerrePositivity.Adams.coefficientCyclicTwo_tmul
+assert_no_sorry SerrePositivity.Adams.coefficientCyclicTwo_enlarge
+assert_no_sorry SerrePositivity.Adams.coefficientCyclicTwo_cup
+assert_no_sorry SerrePositivity.Adams.coefficientCyclicTwo_map
+assert_no_sorry SerrePositivity.Adams.supportedCyclicTwo
+assert_no_sorry SerrePositivity.Adams.coefficientCyclicTwo_koszul
+assert_no_sorry SerrePositivity.Adams.algebraInvertibleTwo
+assert_no_sorry SerrePositivity.Adams.cyclicTwoFamily
+#print axioms SerrePositivity.Adams.supportedCyclicTwo
+#print axioms SerrePositivity.Adams.cyclicTwoFamily
