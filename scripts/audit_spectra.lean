@@ -1,6 +1,7 @@
 -- lake build SerrePositivity.Spectra.Foundations の後に実行する。
 -- スペクトルと、そのための共通圏論・群論の公開宣言を標準公理のみで監査する。
 import SerrePositivity.Spectra.Foundations
+import SerrePositivity.Spectra.Pointed.SmashPushoutProduct
 import SerrePositivity.Spectra.General.Foundations
 import SerrePositivity.Spectra.General.SimplicialComparison
 import SerrePositivity.Spectra.ModelCategory.LevelClasses
@@ -37,7 +38,8 @@ run_cmd do
       throwError "Unexpected axioms in {name}: {unexpected}"
     declarations := declarations + 1
     unless modules.contains mod do modules := modules.push mod
-  for expected in #[`SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport,
+  for expected in #[`SerrePositivity.Spectra.Pointed.SmashPushoutProduct,
+      `SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport,
       `SerrePositivity.Spectra.General.ParametrizedCotensor,
       `SerrePositivity.Spectra.General.ParametrizedMapping,
       `SerrePositivity.CategoryTheory.Monoidal.MappingWhiskering,

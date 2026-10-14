@@ -9,6 +9,7 @@ run_cmd do
   let expected := #[`SerrePositivity.HomotopicalAlgebra.Quillen.Adjunction,
     `SerrePositivity.HomotopicalAlgebra.Under.ModelCategory,
     `SerrePositivity.HomotopicalAlgebra.Pointed.Basic,
+    `SerrePositivity.HomotopicalAlgebra.Pointed.SmashModel,
     `SerrePositivity.CategoryTheory.MorphismProperty.UnderFactorization,
     `SerrePositivity.CategoryTheory.LiftingProperties.Under,
     `SerrePositivity.HomotopicalAlgebra.Generated.Basic,

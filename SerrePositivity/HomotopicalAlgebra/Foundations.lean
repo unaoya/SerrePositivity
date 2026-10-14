@@ -4,6 +4,7 @@ public import Mathlib.AlgebraicTopology.ModelCategory.Basic
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Adjunction
 public import SerrePositivity.HomotopicalAlgebra.Under.ModelCategory
 public import SerrePositivity.HomotopicalAlgebra.Pointed.Basic
+public import SerrePositivity.HomotopicalAlgebra.Pointed.SmashModel
 public import SerrePositivity.HomotopicalAlgebra.Transfer.Right
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence
