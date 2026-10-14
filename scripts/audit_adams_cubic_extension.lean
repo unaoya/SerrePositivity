@@ -1,5 +1,5 @@
 import SerrePositivity.CommutativeAlgebra.CoprimeFactorLocalization
-import SerrePositivity.CommutativeAlgebra.CubicCyclotomicClosedFiber
+import SerrePositivity.CommutativeAlgebra.CubicCyclotomicLocalFiber
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.cubicCyclotomicPolynomial_monic
@@ -134,3 +134,18 @@ assert_no_sorry SerrePositivity.cubicCyclotomicClosedFiberEquiv_comp
 
 assert_no_sorry SerrePositivity.cubicCyclotomicFiberMap_ker
 #print axioms SerrePositivity.cubicCyclotomicFiberMap_ker
+
+assert_no_sorry SerrePositivity.cubicCyclotomicFactorPoint
+#print axioms SerrePositivity.cubicCyclotomicFactorPoint
+
+assert_no_sorry SerrePositivity.cubicCyclotomicFactorPoint_isMaximal
+#print axioms SerrePositivity.cubicCyclotomicFactorPoint_isMaximal
+
+assert_no_sorry SerrePositivity.cubicCyclotomicFactorPoint_comap
+#print axioms SerrePositivity.cubicCyclotomicFactorPoint_comap
+
+assert_no_sorry SerrePositivity.cubicCyclotomicLocalFiber_isField
+#print axioms SerrePositivity.cubicCyclotomicLocalFiber_isField
+
+assert_no_sorry SerrePositivity.cubicCyclotomicLocal_map_maximalIdeal
+#print axioms SerrePositivity.cubicCyclotomicLocal_map_maximalIdeal
