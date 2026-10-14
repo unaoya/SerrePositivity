@@ -68,6 +68,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceNaturality
 public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroEvaluationGenerators
 public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroConvolutionNaturality
 public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroUnitGenerators
+public import SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeAssociator
 public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorMapLevels
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomUnderlying
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeLeft
@@ -287,6 +288,9 @@ F_0の基礎対称列のconvolutionの各段の逆比較を生成元からの標
 
 作用の結同比較の生成対象の両変数の自然性を証明し、
 値域スペクトルの自然性と合わせて三変数の自然性へまとめた。
+
+二つの左自由因子を通常のテンソルへ比較した結合同型の基礎射が、
+基礎圏の結合子・逆結合子に一致することを証明した。
 
 ## 未構成の範囲
 
