@@ -43,6 +43,8 @@ run_cmd do
       `SerrePositivity.CategoryTheory.Monoidal.MappingWhiskering,
       `SerrePositivity.Spectra.General.MappingFunctorComparison,
       `SerrePositivity.Spectra.General.TensorCotensorEnriched,
+      `SerrePositivity.Spectra.General.TensorMappingObject,
+      `SerrePositivity.Spectra.General.CotensorMappingObject,
       `SerrePositivity.Spectra.ModelCategory.LevelClasses,
       `SerrePositivity.Spectra.ModelCategory.LevelRecognition,
       `SerrePositivity.Spectra.ModelCategory.LevelAcyclicity,

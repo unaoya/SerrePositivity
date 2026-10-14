@@ -133,6 +133,28 @@ example (X : C) {E E' : GeneralSymmetricSpectrum C K} (a : E ⟶ E')
       mappingObjectHomEquiv X E' F g ≫ (mappingObjectBifunctor.map a.op).app F :=
   mappingObjectHomEquiv_naturality_source X a F g
 
+example (X : C) (E F : GeneralSymmetricSpectrum C K) :
+    mappingObject (pointwiseTensor X E) F ≅ (ihom X).obj (mappingObject E F) :=
+  tensorMappingIso X E F
+
+example (X : C) (E F : GeneralSymmetricSpectrum C K) :
+    mappingObject E (cotensor X F) ≅ (ihom X).obj (mappingObject E F) :=
+  cotensorMappingIso X E F
+
+example (X Z : C) (E F : GeneralSymmetricSpectrum C K)
+    (f : pointwiseTensor (Z ⊗ X) E ⟶ F) :
+    mappingObjectHomEquiv Z (pointwiseTensor X E) F
+        ((pointwiseTensorAssociator Z X E).inv ≫ f) ≫ (tensorMappingIso X E F).hom =
+      (tensorMappingPowerAdjunction X E).homEquiv Z F f :=
+  tensorMappingNatIso_homEquiv X Z E F f
+
+example (X Z : C) (E F : GeneralSymmetricSpectrum C K)
+    (f : pointwiseTensor (X ⊗ Z) E ⟶ F) :
+    (cotensorMappingAdjunction X E).homEquiv Z F
+        ((pointwiseTensorAssociator X Z E).inv ≫ f) ≫ (cotensorMappingIso X E F).hom =
+      (cotensorMappingPowerAdjunction X E).homEquiv Z F f :=
+  cotensorMappingNatIso_homEquiv X Z E F f
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -142,7 +164,8 @@ run_cmd do
     let mod := env.header.modules[idx.toNat]!.module
     unless (`SerrePositivity.Spectra.General).isPrefixOf mod ||
         mod == `SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport ||
-        mod == `SerrePositivity.CategoryTheory.Monoidal.MappingWhiskering do continue
+        mod == `SerrePositivity.CategoryTheory.Monoidal.MappingWhiskering ||
+        mod == `SerrePositivity.CategoryTheory.Monoidal.ActionComparisonAdjunction do continue
     let axioms ← collectAxioms name
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
       throwError "Unexpected axioms in {name}: {axioms}"
