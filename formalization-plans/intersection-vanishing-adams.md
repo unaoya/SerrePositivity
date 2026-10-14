@@ -1,6 +1,6 @@
 # 外部引用5：交点重複度の消滅定理を Adams 作用素で証明する計画
 
-作成：2026-10-14。改訂：2026-10-14（S1–S11 全段の小段・証明契約・実装順序を具体化）。状態：S1.1–S1.6、S2.1–S2.4、S3.1–S3.7 実装・検証済み。S4.1–S4.7 も実装・検証済み（§4.23）。S5.1–S5.4 は実装・検証済み。S5.5–S5.7 は実装中、S6–S11 は計画。
+作成：2026-10-14。改訂：2026-10-14（S1–S11 全段の小段・証明契約・実装順序を具体化）。状態：S1.1–S1.6、S2.1–S2.4、S3.1–S3.7 実装・検証済み。S4.1–S4.7 も実装・検証済み（§4.23）。S5.1–S5.5 は実装・検証済み。S5.6–S5.7 は実装中、S6–S11 は計画。
 対象は [Inputs/IntersectionTheory.lean](../SerrePositivity/Inputs/IntersectionTheory.lean) の
 `Inputs.intersectionVanishing`（Roberts–Gillet–Soulé の消滅定理）。
 並行する Chow 群の経路は [サイクルの計画](intersection-vanishing-cycles.md)。
@@ -1219,8 +1219,9 @@ S4 の完了は K2 の分解・比較・局所化・dévissage の完成。
 | S5.1 | `CommutativeAlgebra/PrimeDimensionBounds`：素イデアル商の次元と coheight、`primeHeight_add_quotientDimension_le`、有限次元での自然数化、厳密包含による高さの増加 | 完了。コミット `a48fac0` |
 | S5.2 | `CommutativeAlgebra/MaximalRegularSequence`：最長正則列、延長不能性、関連素イデアル回避、局所化した列の長さの高さ上界、`exists_regularSequence_associatedPrime_above` | 完了。コミット `9fb52df` |
 | S5.3 | `CommutativeAlgebra/RegularPrimeDimension`：素イデアルの高さ・次元公式、`supportCodimension`、台の次元と余次元の公式 | 完了。コミット `883506b` |
-| S5.4 | `HomologicalAlgebra/AuslanderBuchsbaum`：固定ソースの移植、Ext の零性、有限自由加群の深さ、射影次元による帰納、公開 `auslanderBuchsbaum` | 完了。この記録を含むコミット |
-| S5.5–S5.7 | §4.11・§4.13 の証明契約 | 未完了 |
+| S5.4 | `HomologicalAlgebra/AuslanderBuchsbaum`：固定ソースの移植、Ext の零性、有限自由加群の深さ、射影次元による帰納、公開 `auslanderBuchsbaum` | 完了。コミット `0cc0d9f` |
+| S5.5 | `HomologicalAlgebra/RegularQuotientProjectiveDimension`：商の完全性、有限自由性の持ち上げ、`projectiveDimension_eq_regularQuotient` | 完了。この記録を含むコミット |
+| S5.6–S5.7 | §4.11・§4.13 の証明契約 | 未完了 |
 
 S5.1 の高さと商の次元の和の不等式は任意の可換環で証明。
 商のスペクトルと素イデアル以上の区間の順序同型を使い、
@@ -1251,6 +1252,11 @@ Apache-2.0 ライセンス、原著者表記、固定コミットをソースに
 対象ビルド（2633 jobs）と `scripts/audit_adams_regular_localization.lean` が成功。
 補助層から公開定理まで `assert_no_sorry` が通り、依存公理は標準三公理のみ。
 S5.4 について P2・P3・P4 を通過。S5.5–S5.6 の接続は別途検証する。
+S5.5 は同じ固定ソースの共通正則元による射影次元比較を移植。
+`Regular.Free` の有限自由性の持ち上げと、商の短完全列の dimension shifting を使用。
+入力に環・加群の両方での正則性と極大イデアルへの所属を明記。
+零加群・無限射影次元も含む等式として証明済みで、S5.6 では極大イデアルの加群へ適用する。
+対象ビルド（2636 jobs）と専用監査が成功。依存公理は標準三公理のみ。
 S5 全体の統合ビルドは後続小段の完成後に行う。
 
 ## 5. 受入条件

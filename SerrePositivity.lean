@@ -242,6 +242,7 @@ public import SerrePositivity.CommutativeAlgebra.PrimeDimensionBounds
 public import SerrePositivity.CommutativeAlgebra.MaximalRegularSequence
 public import SerrePositivity.CommutativeAlgebra.RegularPrimeDimension
 public import SerrePositivity.HomologicalAlgebra.AuslanderBuchsbaum
+public import SerrePositivity.HomologicalAlgebra.RegularQuotientProjectiveDimension
 public import SerrePositivity.CommutativeAlgebra.RegularParameters
 public import SerrePositivity.CommutativeAlgebra.Unmixedness
 public import SerrePositivity.HomologicalAlgebra.KoszulTower
