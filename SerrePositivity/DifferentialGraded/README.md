@@ -89,6 +89,9 @@ U4/U5の追加監査38宣言、合計79宣言は標準公理のみ。
 U6の free/forget、自由評価随伴、全次数 Hom 同型と自然性は完成した。
 U6の追加監査35宣言、U0〜U6合計114宣言。検証と引継ぎは計画§13。
 次は shift/cone・極限余極限、objectwise quasiIso・局所化・semifree。
+U7a1では `Module/Zero.lean` に全次数零加群・零対象・評価による零対象性の判定を追加した。
+`Complexes/Zero.lean` の零 Hom 複体とともに `Checks/Zero.lean` で検証する。
+U7の直和・shift/cone・極限余極限は引き続き未完。
 API契約と共有 G1/G2/G5/G6 への引継ぎは計画§12.8。
 導来圏・射影モデル・dg 商・Morita・Perf と M5全体は未完成。
 一般モデル圏・Quillen・転送・SM7 は共有系列が所有し、この入口には置かない。

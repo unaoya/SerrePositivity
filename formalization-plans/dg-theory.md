@@ -659,3 +659,29 @@ U6全体の5受入入口と既存 `SerrePositivity.Spectra.StageTwo` の同時�
 担当 Lean ファイルの `sorry`/`admit`/新規 `axiom` は0件。
 既存 `scripts/check_spectra_stage2.lean`、文書検査（21 Markdown・306参照・失敗0）、
 担当差分の whitespace 検査も成功。共有ルート import・並行作業ファイルは編集していない。
+
+### 13.6 U7a1：零加群と全次数零 Hom
+
+`Complexes/Zero.lean` は `IsZero P` または `IsZero Q` から、任意次数の
+`Homogeneous P Q n` が零となることと、`homComplex A P Q` の零対象性を証明する。
+既存の複体評価・`IsZero` を再利用し、複体の零対象を再実装しない。
+閉零複体と通常複体の比較関手の加法性も、この補助ファイルに登録した。
+
+`Module/Zero.lean` の `zeroModule` は全対象で零複体、全次数の Hom 作用で零となる
+既存 `EnrichedFunctor` の具体的対象。`moduleZeroTo`/`moduleToZero` は全次数自然な
+chain map 族から構成した射であり、各評価が零射となる。
+`moduleZero_isZero` は射の一意性、`moduleHasZeroObject` は通常圏の零対象を供給する。
+`module_isZero_iff` は全評価での零対象性との同値、`moduleEvaluationZeroIso` は
+選ばれた圏の零対象の評価と零複体の同型。
+`moduleHom_isZero_src`/`moduleHom_isZero_tgt` は Hom end 自体の零複体性を証明する。
+零加群の対象構成は任意 D、Hom end と閉零圏の結果には `[Small.{u} D]` を明示する。
+
+受入入口は `Checks/Zero.lean`。任意可換環・非有界複体・独立対象宇宙、
+次数 −1/+1、ℤ、一対象 A、ZMod 2 を検証する。
+U7の直和・shift/cone・必要な極限余極限は残っており、U7全受入とはしない。
+U8〜U10も未完で、U10までの目標を保持する。
+
+U7a1の受入入口と既存 `Spectra.StageTwo` の同時ビルド、受入入口の直接実行は成功。
+主要17宣言の公理はすべて `propext`・`Classical.choice`・`Quot.sound` のみ。
+新規 sorry・admit・axiom は0件。文書検査は21 Markdown・311参照、失敗0件。
+担当差分の whitespace 検査も成功。共有ルート・並行作業ファイルは編集していない。
