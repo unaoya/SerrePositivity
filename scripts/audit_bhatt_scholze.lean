@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.PDCompletionInterface
 import SerrePositivity.BhattScholze.CharacteristicPQuotient
 import SerrePositivity.BhattScholze.CharacteristicPPerfectoid
 import SerrePositivity.BhattScholze.CompatibleRootQuotient
@@ -1222,3 +1223,13 @@ assert_no_sorry SerrePositivity.BhattScholze.exists_perfectoidization_of_perfect
 #print axioms SerrePositivity.BhattScholze.exists_perfectoidization_of_perfect_p_eq_zero_quotient
 
 #print sorries SerrePositivity.BhattScholze.characteristicPQuotientPerfectoidizationMap_isPerfectoidization
+
+-- F3 BS P1
+assert_no_sorry SerrePositivity.BhattScholze.pdCompletionH0_self_complete_p
+#print axioms SerrePositivity.BhattScholze.pdCompletionH0_self_complete_p
+assert_no_sorry SerrePositivity.BhattScholze.pdCompletionH0_self_complete_d
+#print axioms SerrePositivity.BhattScholze.pdCompletionH0_self_complete_d
+assert_no_sorry SerrePositivity.BhattScholze.existsUnique_pdCompletionRingHom
+#print axioms SerrePositivity.BhattScholze.existsUnique_pdCompletionRingHom
+assert_no_sorry SerrePositivity.BhattScholze.pdCompletionRingHom_ext
+#print axioms SerrePositivity.BhattScholze.pdCompletionRingHom_ext
