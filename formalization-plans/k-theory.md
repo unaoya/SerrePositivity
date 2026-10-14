@@ -5865,3 +5865,35 @@ sorry・引用依存なし、diff --check成功。コミット`63799f8`。
 次は正確な弱同値の定義と存在入力、その三クラスを今回のhCof/hFibと接続し、
 具体的PSS/円のレベルモデルへ適用する。スペクトル側monoidal/SM7も必要であり、
 段階1〜3の全体目標は継続中。
+
+
+## 149. 段階1〜3の実行記録：既存円スペクトルのレベルモデルへの適用（2026-10-15）
+
+`SimplicialMonoidal.pointedSimplicial_isCofibrant`は明示モデルのhCofから全PSSの
+cofibrancyを証明する。固定scopedクラスのcofibrancyとモデルのそれを混同しない。
+pointedSimplicial_cofibrantlyGeneratedは実際の自由基点追加I/Jのrlp比較と
+Underの三クラス比較から、明示モデルを継承したPSSのcofibrant generationを証明する。
+
+`ModelCategory/SimplicialLevel.simplicialLevelModelCategory`は既存の
+SymmetricSpectrum（既存circleの球面モノイド加群）上にレベルモデルを構成する。
+入力はSSetのModelCategoryとCof=mono・Fib=固定J.rlpの二つの一致だけである。
+PSSモデル・monoidal性・全PSSと円とsmash単位のcofibrancy、共通aleph0-presentabilityを
+既に証明した具体的入力で満たし、§132の自由各段のacyclicityと§142のsmallnessを適用した。
+スペクトルのLocallySmallや余極限、image SOA・cell acyclicityを追加仮定しない。
+モデルはグローバルinstanceとして登録せず、局所選択するinstance_reducible defとした。
+
+実際の宇宙uの旧スペクトル型に合わせてsimplicialLevelI/Jを公開した。
+レベルW/Fibは各段で検出するクラスに一致し、生成条件を証明した。
+既存SymmetricSpectrum.freeAt/evaluationはこのモデルについてleft/right Quillenであり、
+両方の関手的モデル分解が得られる。
+
+対象・依存ビルド成功、新規警告なし。check_simplicial_levelはSSetモデルと二つの
+クラス一致だけを入力し、既存型上のモデル、生成条件、free/evaluation、両分解、
+旧levelMapによるW/Fib判定をGeneral/StageTwoと同時importで検証。
+新接続の29宣言（内部補助込み）と、全スペクトル309モジュール3027公開宣言の
+公理監査が標準公理のみで成功。既存simplicial monoidal利用例も10宣言監査込みで成功。
+sorry・引用依存なし、diff --check成功。コミット`643af59`。
+
+具体的円スペクトルへの適用の技術入力は今回証明したが、SSetの弱同値の定義と
+Kan–Quillenモデルの存在入力は未接続である。条件付き構成だけで段階3完了とはしない。
+スペクトル自身のmonoidal/SM7も残る。段階1〜3の全体目標は継続中。
