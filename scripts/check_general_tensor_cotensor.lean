@@ -115,6 +115,20 @@ example (X : C) :
       SerrePositivity.Enriched.powerHom (C := GeneralSymmetricSpectrum C K) X :=
   cotensorEnrichedMappingIso X
 
+example {X Y : C} (f : X ⟶ Y) (E F : GeneralSymmetricSpectrum C K) :
+    eHomWhiskerRight C ((pointwiseTensorBifunctor.map f).app E) F ≫
+        ((tensorEnrichedMappingIso X).hom.app (Opposite.op E)).app F =
+      ((tensorEnrichedMappingIso Y).hom.app (Opposite.op E)).app F ≫
+        (MonoidalClosed.pre f).app (E ⟶[C] F) :=
+  tensorEnrichedMappingIso_parameter f E F
+
+example {X Y : C} (f : X ⟶ Y) (E F : GeneralSymmetricSpectrum C K) :
+    eHomWhiskerLeft C E ((cotensorBifunctor.map f.op).app F) ≫
+        ((cotensorEnrichedMappingIso X).hom.app (Opposite.op E)).app F =
+      ((cotensorEnrichedMappingIso Y).hom.app (Opposite.op E)).app F ≫
+        (MonoidalClosed.pre f).app (E ⟶[C] F) :=
+  cotensorEnrichedMappingIso_parameter f E F
+
 section ModelCompatibility
 variable [HomotopicalAlgebra.ModelCategory C]
   [HomotopicalAlgebra.ModelCategory (GeneralSymmetricSpectrum C K)]
