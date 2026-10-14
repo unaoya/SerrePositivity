@@ -5444,3 +5444,46 @@ pointwiseTensorBifunctor.flip ⊣₂ mappingObjectBifunctorを構成する。
 今回の両ordinary parametrized adjunctionだけでC値Hom対象のtensor/cotensor表現性を完成扱いにしない。
 その自然同型・パラメータ反変性・一般化された点の両立、スペクトル側SM7/monoidal条件、
 多対象加群転送、具体的PSS/円へのモデル入力接続が残る。段階1〜3の全体目標は継続中。
+
+
+## 136. 段階1〜3の実行記録：豊穣写像関手との自然な比較とH5接続（2026-10-15）
+
+### 136.1 関手全体の比較
+
+共有`CategoryTheory/Monoidal/MappingWhiskering`を追加した。
+通常の射に対応する点を片側に入れた合成の評価を、任意の写像対象パラメータについて計算した。
+後合成は既存の右随伴のmap、前合成は作用による前合成の転置として特徴付ける。
+随伴の評価による一意性を使い、単位からの点が全ての射を検出するとは仮定しない。
+任意の豊穣基礎圏Vと通常の圏Dで使える一般補題とした。
+
+`General/MappingFunctorComparison`で、前合成・後合成を一般スペクトルに適用した。
+§134の豊穣構造のeHomWhiskerRight/eHomWhiskerLeftは既存mappingObjectBifunctorの射と一致する。
+これから両スペクトル変数で自然な`mappingEnrichedHomFunctorIso`を構成した。
+同型の各対象成分は恒等射だが、射の一致は作用の自然性・単位法則・随伴から証明している。
+
+`General/TensorCotensorEnriched`でこの同型を使い、§135のmapping随伴を
+MathlibのeHomFunctorへのparametrized adjunctionへ移送した。
+`spectrumTensorCotensor`はH5の既存Enriched.TensorCotensorを具体的に構成する。
+そのtensor/cotensor Hom同値は既存pointwiseTensorHomEquiv、tensor/mapping Hom同値は
+既存mappingObjectHomEquivに一致する。構成した豊穣構造を局所instanceとして利用する。
+
+### 136.2 検証とコミット
+
+一般集約ビルド・新規対象ビルドが成功し、ソース警告なし。
+`check_general_tensor_cotensor`で両whiskeringの一致、自然同型、H5 receiver、Hom同値の一致を検証した。
+モデル構造を装備した際に共有tensor_iff_mapping_modelがこのreceiverへ適用できることも検証。
+これをスペクトル側pushout-product/SM7自体の証明と読み替えない。
+同スクリプトは共有随伴移送・MappingWhiskeringを含む270宣言を公理監査。
+一般スペクトル監査は20モジュール277宣言、全スペクトル・共有基盤公開監査は292モジュール2903宣言。
+標準公理のみ、sorry・引用依存なし。既存StageTwoの利用例も成功。
+
+コミット：共有whiskering評価`e01e093`、関手比較とH5 receiver`174b3b5`。
+
+### 136.3 残る受入条件
+
+豊穣写像関手の自然比較とordinary parametrized adjunctionによるH5 receiver接続は完了した。
+次はC値Hom対象そのもののtensor/cotensor表現性の自然同型、パラメータ反変性、
+一般化された点での既存Hom同値との両立をEnrichedRepresentabilityへ接続する。
+多対象加群転送、スペクトル側pushout-product/monoidal/SM7の証明、
+具体的PSS/円のKan–Quillen入力・生成射・presentabilityへの接続も必要。
+段階1〜3の全体目標は継続中。一般の条件付きmodel互換性の利用例だけでは完了扱いにしない。

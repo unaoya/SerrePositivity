@@ -104,3 +104,16 @@ pentagon・triangle・左単位則を提供する。
 eHomFunctorとの自然な比較によるH5 receiverへの接続と、C値Hom対象の表現性は引き続き後続。
 一般スペクトル監査18モジュール265宣言、共有移送込み利用例監査254宣言が成功。
 コミット31b0b5f・1e9b0ea。
+
+## 豊穣写像関手の比較とH5 receiver（§136）
+
+`MappingFunctorComparison`で構成した豊穣構造の両whiskeringが既存mappingObjectBifunctorの射と一致する。
+`mappingEnrichedHomFunctorIso`はその両変数の自然な比較。
+`TensorCotensorEnriched.spectrumTensorCotensor`は同じ作用・cotensor・豊穣構造上で
+H5のEnriched.TensorCotensorを構成し、既存Hom同値との一致を証明する。
+利用時にはmappingEnrichedOrdinaryCategoryを局所instanceとして装備する。
+
+共有MappingWhiskeringは任意のVで評価の一意性から関手の射を比較する。
+新規利用例・公理監査はcheck_general_tensor_cotensor.leanに含む。
+一般監査20モジュール277宣言、共有補題込み利用例監査270宣言が成功。
+コミットe01e093・174b3b5。Hom対象のEnrichedRepresentabilityと具体的SM7は引き続き後続。
