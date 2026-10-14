@@ -3294,6 +3294,21 @@ K₀ の類への移送と重みつき乗法性は次の小段。
 - 次は S10.8b.1c の三因子テンソルの基底変更同型と巡回の同変性。
   K₀ 全体の基底変更自然性・台拡大・単位・Koszul 正規化・S10.9・S11 は未完了。
 
+### S10.8b.1c：三因子の基底変更・巡回同変性・三固有複体の比較
+
+- `PerfectComplex/TensorTripleBaseChange` に二因子の比較を二回使う三因子の鎖同型、
+  基底変更後の同次包含による射の外延性、純テンソルでの比較式を追加した。
+- `cochainTensorTripleBaseChangeIso_rotation` は拡大・制限の随伴による外延性と
+  同次純テンソル上の既存巡回公式で同変性を証明する。Koszul 符号を保持している。
+- `Adams/TensorCubeBaseChangeEigenspaces` は三乗への特殊化と各指標像の比較同型を公開する。
+  根は元の環の根の像であり、任意の環準同型で成立する。
+- `lake build SerrePositivity.KTheory.Adams.TensorCubeBaseChangeEigenspaces` が成功（2781 jobs）。
+  `scripts/audit_adams_triple_basechange.lean` の六定数と
+  `scripts/audit_adams_cube_basechange_eigen.lean` の四定数の `assert_no_sorry` が成功。
+  依存公理は標準三公理のみ。
+- この小段は受入完了、ルート公開は S10.8b の統合段。
+  次は S10.8b.1d の K₀ への自然性と S10.8b.2 の台拡大・単位。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
