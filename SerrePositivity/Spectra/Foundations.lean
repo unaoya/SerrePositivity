@@ -66,6 +66,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.AdjointStructureMaps
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpace
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceNaturality
 public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroEvaluationGenerators
+public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroConvolutionNaturality
 public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorMapLevels
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomUnderlying
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeLeft
@@ -275,6 +276,8 @@ F_0 S^0と球面スペクトルの比較を構成し、各段のsmashによる�
 
 F_0の基礎対称列のconvolutionの各段の逆比較を生成元からの標準射として記述し、
 生成元上の評価・逆転置が各段の通常の内部Homの評価・逆転置になることを証明した。
+
+生成次数零のconvolutionの各段の順逆の比較の両変数の自然性も証明した。
 
 ## 未構成の範囲
 
