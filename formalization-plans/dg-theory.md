@@ -399,3 +399,17 @@ tensor–Hom随伴・閉構造・豊穣計算、右代表加群・Hom end・Yone
 [Checks/Closed.lean](../SerrePositivity/DifferentialGraded/Checks/Closed.lean) がビルド成功。
 任意A・ZMod 2・既存tensor/Homの一致・転置の往復・随伴の両三角恒等式を検証。
 主要14宣言は標準公理のみ。次は既存dg豊穣合成と閉構造由来合成の比較、U5の右加群とYoneda。
+
+### 12.3 U4c：閉構造と主dg豊穣の一致、U4受入
+
+[Complexes/Enrichment.lean](../SerrePositivity/DifferentialGraded/Complexes/Enrichment.lean) の
+`closedComposition_eq`、`closedIdentity_eq`、`complexEnrichment_eq_closed` は
+閉構造由来のMathlib自己豊穣とU1/U2の主dg豊穣の一致を証明する。
+評価の全次数の符号を計算し、豊穣合成の符号と同じことを確認した。
+[Checks/Enrichment.lean](../SerrePositivity/DifferentialGraded/Checks/Enrichment.lean) はビルド成功、
+主要3宣言は標準公理のみ。
+
+これでU4の随伴・自然性・signed braiding整合性・既存tensor/symmetry比較を満たす。
+G6には `complexSymmetricCategory`、`complexMonoidalClosed`、三変数自然性と
+`complexEnrichment_eq_closed` を具体的Ch(A)入力として渡せる。
+U5全体は継続中であり、右代表加群・Hom end・Yonedaと一対象比較の完了を引き続き要求する。

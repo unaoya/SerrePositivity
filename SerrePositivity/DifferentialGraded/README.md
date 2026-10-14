@@ -1,6 +1,6 @@
 # M5：dg 理論の独立入口
 
-U0〜U3 実装・検証：2026-10-15。計画は
+U0〜U4 実装・検証（U5進行中）：2026-10-15。計画は
 [ dg-theory.md ](../../formalization-plans/dg-theory.md)。
 入口は [StageOne.lean](StageOne.lean)。共有ルート import は変更しない。
 
@@ -63,8 +63,11 @@ lake env lean SerrePositivity/DifferentialGraded/Checks/Axioms.lean
 `propext`・`Classical.choice`・`Quot.sound` のみ。新規 sorry・引用 axiom なし。
 ローカル import の推移的閉包に Spectra・Paper・Inputs は含まれない。
 
-U4 は全整数次数 tensor–Hom 随伴、signed braiding の自然性・hexagon・SymmetricCategory 登録。
-現時点の signed symmetry と合成法則を braiding 全整合性の完成とは数えない。
+U4 の全整数次数 tensor–Hom 随伴、三変数自然性、signed braiding の自然性・両hexagon、
+SymmetricCategory/MonoidalClosed 登録は完成した。
+`Complexes/Enrichment.lean` の `complexEnrichment_eq_closed` は、閉構造由来の
+Mathlib 自己豊穣とU1の単位・合成の一致を証明する。
+`Checks/Braiding.lean`、`Checks/Closed.lean`、`Checks/Enrichment.lean` で検証・公理監査済み。
 U5 はその braiding を使う dg opposite、右代表加群・Yoneda・Hom end。
 dg 加群・導来圏・射影モデル・dg 商・Morita・Perf はまだ構成していない。
 一般モデル圏・Quillen・転送・SM7 は共有系列が所有し、この入口には置かない。

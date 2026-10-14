@@ -125,4 +125,19 @@ lemma evaluation_component (P T : Complex A) (i q n : ℤ) (hn : i + q = n)
   change ((tensorHomEquiv P (homComplex A P T) T).symm (𝟙 _)).f n _ = _
   rw [tensorHomEquiv_symm_component]
   rfl
+/-- 線形 Hom 複体を源に明示した evaluation。 -/
+abbrev evaluation (P T : Complex A) : P ⊗ homComplex A P T ⟶ T :=
+  (tensorHomEquiv P (homComplex A P T) T).symm (𝟙 _)
+
+/-- 明示した評価は Mathlib の counit と同じ。 -/
+lemma evaluation_eq (P T : Complex A) : evaluation P T = (ihom.ev P).app T :=
+  (ihom.adjunction P).homEquiv_symm_id T
+
+/-- 明示した評価の斉次成分。 -/
+lemma evaluation_apply (P T : Complex A) (i q n : ℤ) (hn : i + q = n)
+    (y : P.X i) (f : Homogeneous P T q) :
+    (evaluation P T).f n
+      (HomologicalComplex.ιTensorObj P (homComplex A P T) i q n hn (y ⊗ₜ[A] f)) =
+      (i * q).negOnePow • f.v i n hn y :=
+  tensorHomEquiv_symm_component P (homComplex A P T) T (𝟙 _) i q n hn y f
 end SerrePositivity.DifferentialGraded
