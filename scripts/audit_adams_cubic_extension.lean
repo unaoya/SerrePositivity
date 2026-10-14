@@ -1,5 +1,5 @@
 import SerrePositivity.CommutativeAlgebra.CoprimeFactorLocalization
-import SerrePositivity.CommutativeAlgebra.LocalizedSurjectiveQuotient
+import SerrePositivity.CommutativeAlgebra.CubicCyclotomicClosedFiber
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.cubicCyclotomicPolynomial_monic
@@ -119,3 +119,18 @@ assert_no_sorry SerrePositivity.localizedSurjectiveQuotientAlgebra_commutes
 
 assert_no_sorry SerrePositivity.isLocalization_localizedSurjectiveQuotient
 #print axioms SerrePositivity.isLocalization_localizedSurjectiveQuotient
+
+assert_no_sorry SerrePositivity.cubicCyclotomicFiberMap
+#print axioms SerrePositivity.cubicCyclotomicFiberMap
+
+assert_no_sorry SerrePositivity.cubicCyclotomicFiberMap_surjective
+#print axioms SerrePositivity.cubicCyclotomicFiberMap_surjective
+
+assert_no_sorry SerrePositivity.cubicCyclotomicClosedFiberEquiv
+#print axioms SerrePositivity.cubicCyclotomicClosedFiberEquiv
+
+assert_no_sorry SerrePositivity.cubicCyclotomicClosedFiberEquiv_comp
+#print axioms SerrePositivity.cubicCyclotomicClosedFiberEquiv_comp
+
+assert_no_sorry SerrePositivity.cubicCyclotomicFiberMap_ker
+#print axioms SerrePositivity.cubicCyclotomicFiberMap_ker
