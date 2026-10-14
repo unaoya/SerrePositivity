@@ -61,6 +61,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorCurryNaturality
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorMapLevels
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorUnit
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorAssociator
+public import SerrePositivity.Spectra.SymmetricSpectrum.SuspensionLoop
 public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorMapLevels
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomUnderlying
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeLeft
@@ -255,6 +256,9 @@ F_0 S^0と球面スペクトルの比較を構成し、各段のsmashによる�
 各段の通常の左単位子との一致と、作用の結合の整合性は引き続き証明する。
 
 各段のsmashによる作用の結合同型と値域スペクトルに関する自然性も構成した。
+
+円の各段のsmashによる懸垂とcotensorによるループを関手として構成し、
+随伴・自然なHom同値・単位・余単位・triangle則と各段の対象の公式を証明した。
 
 ## 未構成の範囲
 
