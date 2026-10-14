@@ -40,14 +40,14 @@ multiplicity, and an application to local fundamental groups*, arXiv:2209.04046v
 | --- | --- | --- |
 | CLMST Ex 2.4.2(1)：標準完備塔のperfectoid性 | `Inputs/PerfectoidTower.lean` | 主定理へ到達 |
 | BS Thm 1.17(1)：整代数の普遍perfectoid化の存在 | `BhattScholze/Inputs/Perfectoidization.lean` | 主定理へ到達 |
-| BS Cor 7.3 / Thm 7.4：pねじれのない完備商のperfectoid化の全射性 | `BhattScholze/Inputs/SemiperfectoidSurjectivity.lean` | 主定理へ到達。原典の適用形であり、古典的／導来p完備性の同値も引用境界に含む |
+| BS Cor 7.3 / Thm 7.4：pねじれのない完備商のperfectoid化の全射性 | `BhattScholze/Inputs/SemiperfectoidSurjectivity.lean` | 主定理へ到達。原典の適用形。p正則な場合の古典的／導来p完備性の同値は共通層で証明済み |
 | CLMST Prop 2.4.7：perfectoid化の錐のg冪による消滅 | `CLMST/Inputs/PerfectoidIsogeny.lean` | 主定理へ到達 |
 | CLMST Cor 4.0.4：局所コホモロジー・Koszulホモロジーのalmost消滅 | `CLMST/Inputs/CohomologyVanishing.lean` | 主定理へ到達。Thm 4.0.3は別の直接引用としては置いていない |
 | perfectoid idealのmod p^N像の冪等性 | `CLMST/Inputs/BasicSetup.lean` | 一般のalmost局所化圏を使う。直近の主定理監査には到達しない |
 
 BS全射性の具体的な適用条件（巡回商のp正則性・p進完備性・商写像の全射性）と、
-選んだ普遍対象への移送は証明済み。BSのprismatic構成や上記完備性の同値を
-形式化したとは扱わない。
+選んだ普遍対象への移送は証明済み。上記完備性の同値も、p正則な場合に共通層で証明済み。
+BSのprismatic構成・一般の商の存在・全射性自体は未完了である。
 
 主定理全体の直近の`#print sorries`では、上表の5件に加え、
 `intersectionVanishing`、`cohen_gabber_normalization`、
@@ -285,6 +285,27 @@ Ext⁰・Ext¹の消滅を実導来圏の全整数次数のShiftedHomの消滅�
 その後、`AdicRecurrence`の同値を使ってf正則な加群の古典的／導来完備性を比較する。
 BS側はこの途中成果だけで`IsModuleComplete`との同値を使用しない。
 塔のtilt核とF3は引き続き別の未完了工程である。
+
+### 共通要求F2の完成：古典的／導来完備性の比較（2026-10-14）
+
+`HomologicalAlgebra/DerivedCompletion/AdicComparison`で、実導来圏の
+`IsModuleComplete`と列の差分作用の全単射性の同値を証明した。
+Ext⁰を自由加群の基底上の値へ同定し、Ext⁰の消滅を差分作用の単射性へ、
+Ext¹の消滅を全射性へ移す。負次数は標準t構造で消滅し、次数2以上は
+前回の長さ一の自由分解で消滅する。全整数次数の条件を満たす実際の証明である。
+
+`isModuleComplete_of_isAdicComplete`は、正則性を仮定せず
+古典的f進完備加群の導来f完備性を与える。
+`isModuleComplete_iff_isAdicComplete_of_regular`は、fが単射に作用する場合の同値を与える。
+環についての`isRingModuleComplete_iff_isAdicComplete_natCast`は、BS共通要求F2の型を満たす。
+p正則性は必要だが、素数性・Noether性・有限生成性は不要。
+
+これにより、前二節に記したF2の残りの接続は解消した。
+BS側はこの共通APIをそのまま使用できる。任意のpねじれのある商での逆方向の
+古典的完備性は本定理の範囲に含めず、F3の導来(p,d)完備化のH⁰・
+BSの一般存在と全射性・標準完備塔のtilt核は引き続き未完了である。
+検証：全体ビルド4182ジョブ、追加11宣言の`assert_no_sorry`、主定理とCLMSTの両公理監査が成功。
+新しい引用・公理・sorryはなく、主定理の未証明入力11宣言は変わらない。
 
 ### 保留する選択と引用依存の受入条件
 

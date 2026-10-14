@@ -64,7 +64,7 @@ BSの商の存在B3が完成した段階で、巡回商を一般整代数の存�
 | --- | --- | --- |
 | 標準完備塔のperfectoid性 | `RootTower/CompletionFlat`のp正則性、有限段の`ModPSurjectivity`・`ModPEquiv`、`PerfectoidFontainePrincipal.isIntegralPerfectoid_of_regular_of_tilt_coeff_kernel` | 有限段の射を塔・完備塔のmod p Frobeniusへ移す。実際のtilt係数射の核をcompatibleなp根で生成することを証明する。完備性・pの非可逆性・p根を供給して四条件へ接続する |
 | 任意gのmod p^N像イデアル冪等性 | almost局所化圏と長さ不変性の接続、引用のN=0の証明 | 普遍perfectoid化の核に関する任意gの一般論が必要。根を持つ特別なgの根生成イデアルの冪等性だけでは、現行の引用を置き換えられない |
-| BS全射性入力中の完備性比較 | 古典的p進完備性、p正則性、冪ねじれ対象の導来完備性 | pねじれのない完備加群一般の導来p完備性を証明する。既存の冪ねじれの場合だけでは不足する |
+| BS全射性入力中の完備性比較 | `DerivedCompletion/AdicComparison`で任意の古典的主元進完備加群の導来完備性と、p正則な場合の同値を証明済み | 共通要求F2は解消。一般の商の存在・全射性自体と導来(p,d)完備化は別工程 |
 
 まず標準完備塔のmod p Frobeniusを、独立した共通補題として切り出す候補を優先する。
 有限段の射はA/pへの反復Frobenius射であり、完備塔のmod p上のFrobeniusとは
@@ -164,7 +164,8 @@ Mathlib の導来圏と既存の錐の基盤を調査し、degree-zero の環・
 
 現在の存在入力はBS Thm 1.17(1)の整代数についての普遍性を引用する。
 全射性はBS Cor 7.3 / Thm 7.4のpねじれのない完備商への適用形を別に引用する。
-全射性に必要な古典的／導来p完備性の同値も、この引用の境界に含む。
+全射性に必要な古典的／導来p完備性の比較は、`AdicComparison`でp正則な場合に証明済み。
+全射性自体は引き続き名前付き引用として残る。
 古典的な p 完備化、導来 p 完備性、普遍写像への接続のそれぞれを台帳に記す。
 
 同じ普遍対象を一度選び、CLMST と Serre の両方が参照する。
