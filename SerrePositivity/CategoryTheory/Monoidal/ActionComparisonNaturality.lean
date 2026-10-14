@@ -6,7 +6,7 @@ public import SerrePositivity.CategoryTheory.Monoidal.ActionComparisonAdjunction
 
 @[expose] public section
 
-universe v u
+universe v w u u'
 
 noncomputable section
 
@@ -14,14 +14,14 @@ namespace SerrePositivity.ActionComparisonNaturality
 
 open CategoryTheory
 
-variable {C : Type u} [Category.{v} C]
-  {L L' M M' R R' S S' : C ⥤ C}
+variable {C : Type u} {D : Type u'} [Category.{v} C] [Category.{w} D]
+  {L L' M M' : C ⥤ D} {R R' S S' : D ⥤ C}
   (a : L ⊣ R) (a' : L' ⊣ R') (b : M ⊣ S) (b' : M' ⊣ S')
   (e : L ≅ M) (e' : L' ≅ M')
 
 /-- 二つの左随伴の比較の自然性に対応する、右随伴の比較の自然性の等式。 -/
 def parameterLaw (q : ∀ Y, R'.obj Y ⟶ R.obj Y) (r : ∀ Y, S'.obj Y ⟶ S.obj Y)
-    (Y : C) : Prop :=
+    (Y : D) : Prop :=
   q Y ≫ (ActionComparisonAdjunction.rightIso a b e).hom.app Y =
     (ActionComparisonAdjunction.rightIso a' b' e').hom.app Y ≫ r Y
 
@@ -32,7 +32,7 @@ lemma parameter (p : ∀ X, L.obj X ⟶ L'.obj X) (q : ∀ Y, R'.obj Y ⟶ R.obj
       a'.homEquiv X Y f ≫ q Y)
     (hb : ∀ X Y (f : M'.obj X ⟶ Y), b.homEquiv X Y (t X ≫ f) =
       b'.homEquiv X Y f ≫ r Y)
-    (he : ∀ X, p X ≫ e'.hom.app X = e.hom.app X ≫ t X) (Y : C) :
+    (he : ∀ X, p X ≫ e'.hom.app X = e.hom.app X ≫ t X) (Y : D) :
     parameterLaw a a' b b' e e' q r Y := by
   let X := R'.obj Y
   let f : M'.obj X ⟶ Y := e'.inv.app X ≫ (a'.homEquiv X Y).symm (𝟙 X)
