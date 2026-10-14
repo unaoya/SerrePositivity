@@ -119,6 +119,11 @@ public import SerrePositivity.LengthAlgebra.OrdinaryKoszulEuler
 
 public import SerrePositivity.Paper.Statement
 public import SerrePositivity.CommutativeAlgebra.RootTower.CompletedFrobenius
+public import SerrePositivity.CommutativeAlgebra.PerfectionPrincipalKernel
+public import SerrePositivity.CommutativeAlgebra.PrincipalQuotientAnnihilator
+public import SerrePositivity.CommutativeAlgebra.CompatibleRootsTilt
+public import SerrePositivity.CommutativeAlgebra.CompatibleRootsPerfectoid
+public import SerrePositivity.CommutativeAlgebra.RootTower.CompletedTilt
 public import SerrePositivity.CommutativeAlgebra.AdicRecurrence
 public import SerrePositivity.CommutativeAlgebra.LocalizationTelescope
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.LocalizationPresentation

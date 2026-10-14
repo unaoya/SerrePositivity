@@ -307,6 +307,36 @@ BSの一般存在と全射性・標準完備塔のtilt核は引き続き未完�
 検証：全体ビルド4182ジョブ、追加11宣言の`assert_no_sorry`、主定理とCLMSTの両公理監査が成功。
 新しい引用・公理・sorryはなく、主定理の未証明入力11宣言は変わらない。
 
+### C1：tilt核を最初のFrobenius核へ帰着（2026-10-14）
+
+`PerfectionPrincipalKernel`は、成分ごとの割り算を両立する商の列へまとめる。
+正の段の生成元の零化元がFrobeniusで消えれば、商を一段先で選びp乗することで
+選択の誤差が消える。Frobeniusが全射で最初の核が指定した根で生成されるとき、
+反復の核の既存計算と組み合わせて第0射影の核を主イデアルとして同定する。
+
+`PrincipalQuotientAnnihilator`は、正則元rの冪r^Nによる商でrを零化する元の
+指定した冪が零になる条件を証明する。`CompatibleRootsTilt`はpの正則性から
+必要な零化条件を供給し、環内の両立する根の列ρをmod pへ移した実際のtiltの元を構成する。
+そのuntiltはρ₀であり、最初のmod p Frobenius核が(ρ₁)ならtiltの第0射影の核は
+このtiltの元で生成される。Fontaine核の単項性を前提にしない。
+
+`CompatibleRootsPerfectoid`は、ρ₀=pの場合に、ρ₁から始まるtiltの元qについて
+Fontaine核の生成元を`p - teichmuller(q)^p`と明示する。
+これで既存判定の「すべてのuntiltの単元倍に対する核の計算」という条件を、
+指定した両立する根と最初のFrobenius核の条件へ置き換えられる。
+
+`RootTower/CompletedTilt`で実際の座標からtiltの元を構成した。
+基底環のp正則性を完備塔へ移し、自身のpイデアルについての完備性を登録した。
+最初のmod p Frobenius核を仮定すれば、tilt核の生成とperfectoid性まで導ける。
+
+残る具体的な核の工程は、完備塔のmod pで`z^p=0`となる元が、最初のp根の倍数であること。
+有限段の代表、完備化によるpイデアル所属の反映、有限段のFrobenius商射の単射性を
+使ってこの条件を証明する。p非可逆性とFrobenius全射性も適用時に供給する。
+条件付き接続を証明した段階なので、`Inputs.completedTower_isIntegralPerfectoid`の引用はまだ残る。
+F2は証明済み、F3は別の未完了工程である。
+検証：全体ビルド4189ジョブ、追加16宣言の`assert_no_sorry`、主定理とCLMSTの両公理監査が成功。
+新しい引用・公理・sorryはなく、主定理の未証明入力11宣言は変わらない。
+
 ### 保留する選択と引用依存の受入条件
 
 Andréについては、B4に必要な「指定元が両立するp冪根を持つp完全忠実平坦な
