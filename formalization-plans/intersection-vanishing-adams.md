@@ -1294,9 +1294,10 @@ S5 で局所正則性・高さと次元・台の余次元の前提を完成し�
 | --- | --- | --- |
 | S6.1 | `PerfectComplex/Tensor`・`TensorPerfect`・`TensorSymmetry`、`HomologicalAlgebra/FiniteSupportCoproduct`：整数添字テンソル、微分の符号、有限直和モデル、有界有限射影性、結合・単位・符号つき交換 | 完了。コミット `7ed5c5f` |
 | S6.2 | `PerfectComplex/TensorHomotopy`・`TensorSupport`：ホモトピー・擬同型の保存、スカラー零ホモトピーの移送、台の交わり | 完了。コミット `1e83665` |
-| S6.3 | §4.14・§4.22 の証明契約：積と比較 | 未完了 |
+| S6.3a | `PerfectComplex/TensorShift`・`TensorCone`：左右のシフト比較、射の加法性、具体的錐同型と錐三角形の比較 | 完了。この記録を含むコミット |
+| S6.3b–c | K₀ の積への降下、類の結合・交換、台の拡大・平坦基底変更との自然性 | 未完了 |
 | S6.4 | `PerfectComplex/IntegerEuler`：極大点の台の有限長性、整数値の長さ写像、整数 Euler、既存 `chiOrd` への実数化 | 完了。この記録を含むコミット |
-| S6.5 | `PerfectComplex/IntegerEulerIso`：Koszul 生成の移送、整数 Euler 値 1、両逆性、`K0WithSupport.integerEulerEquiv`、零の検出 | 完了。この記録を含むコミット |
+| S6.5 | `PerfectComplex/IntegerEulerIso`：Koszul 生成の移送、整数 Euler 値 1、両逆性、`K0WithSupport.integerEulerEquiv`、零の検出 | 完了。コミット `d77e4a8` |
 | S6.6 | §4.14・§4.22・§4.26 の Tor 比較の証明契約 | 未完了 |
 
 S6.1 は mathlib の `HomologicalComplex.tensorObj` を唯一の公開テンソルのモデルに採用。
@@ -1334,7 +1335,17 @@ S6.5 は列版の Koszul 生成を閉集合版の比較同型で移送し、整�
 空のパラメータ列を含み、次元が正であるという追加仮定はない。
 対象ビルド（3169 jobs）、専用監査、公開 import と既存利用先の統合ビルド（4494 jobs）が成功。
 同型・両逆性・零の検出の依存公理は標準三公理のみ。
-S6.3 の積・錐・シフト・基底変更と S6.6 の Tor 比較は未完了。
+S6.3a は左右のシフト比較の同次公式と自然性を既存 totalization のシフト同型へ接続。
+左因子では符号なし、右因子では `(-1)^(i*s)`。固定因子のテンソル関手の加法性と
+整数シフトの整合性も公開した。
+錐の比較は `Cone(f)⊗Q` の第一・第二射影、左・右包含を各次数の coproduct から構成。
+包含と射影の合成で各次数の同型の両逆性を示し、微分との二つの可換等式から鎖同型を得た。
+この同型が右包含を保ち、錐の三角形の最後の射を左シフト比較とともに保つことを証明。
+最後に `cochainTensorConeTriangleIso` として三角形全体の同型にまとめた。
+任意の可換環と任意の整数添字複体で成立し、Noether 性・有界性・射影性を仮定しない。
+対象ビルド（2749 jobs）と専用 `assert_no_sorry` 監査が成功。
+公開 import と既存利用先の統合ビルドも成功。主要同型の依存公理は標準三公理のみ。
+S6.3b–c の K₀ の積・類の等式・台の拡大と基底変更、S6.6 の Tor 比較は未完了。
 S6 全体の統合ビルドと完了宣言は後続小段の後に行う。
 
 ## 4.26 残計画の確定版：S6 の残部から S11 まで
