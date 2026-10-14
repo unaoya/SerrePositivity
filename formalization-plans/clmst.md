@@ -2625,15 +2625,29 @@ F6公開API：`perfection_lift_principal_quotient_kernel`はBS要求の
 
 ### 9.6. F7：Fontaine核イデアル進分離性
 
-p正則・p進完備な整perfectoid環Sについて、
-`WittVector p (PreTilt S p)`が`ker (WittVector.fontaineTheta S p)`進分離であることを証明する。
-BS要求のp非単元条件を含む型を維持し、Noether性・局所性・整域性を追加しない。
+状態：証明経路と4ステップを確定（2026-10-14）、実装未着手。
+p非単元・p進完備な任意の可換環Sについて、整perfectoid性とp正則性から
+`IsHausdorff (RingHom.ker (WittVector.fontaineTheta S p)) (WittVector p (PreTilt S p))`
+を証明する。Noether性・局所性・整域性を追加しない。今回の受渡しは核進分離性まで。
 
-既存の核の単項生成とWitt側のp進フィルトレーションを比較し、
-核の各冪の共通部分が零であることを示す経路を調べる。
-p進分離性やθの全射性だけから、核進分離性を自動生成しない。
-成果物は分離性の公開定理。BS側の条件付きFontaine比較射の全射性へ適用する。
-一般のpねじれ商への拡張とは分ける。
+既存の`exists_untilt_unit_mul_and_unit_coefficient_kernel_generator`で
+`ξ = p + [q]^p * a`、aの第0係数が単元、q.untiltがpの根πの単元倍となる表示を選ぶ。
+まずtiltのq進分離性を示す。無限にqで割れるxの全Frobenius逆像も同じ性質を持ち、
+untiltがpの全冪で割れるため零となる。各逆像のuntiltのmod p像から全座標が零となる。
+p正則性からπとその全冪根が正則なので、同じ座標比較でqの正則性も得る。
+Witt側では第0係数でξの全冪による割り切れ性を検出し、tiltの分離性で第0係数を零にする。
+x=p*yと書き、ξの第0係数の正則性とWitt側のp正則性でyもξの全冪で割れることを示す。
+反復してxがpの全冪に入り、既存のWittのp進分離性でx=0を結論する。
+
+| 段階 | 配置・成果物（予定） | 完了条件 |
+| --- | --- | --- |
+| F7-1 | `CommutativeAlgebra/TiltRootSeparation.lean` | untiltがpの単元倍の根であるtilt元の主イデアル進分離性、untilt正則性からtilt元の正則性 |
+| F7-2 | `CommutativeAlgebra/WittPrincipalSeparation.lean` | 第0係数が正則でその主イデアルに関して分離なとき、Witt元の主イデアル進分離性 |
+| F7-3 | `CommutativeAlgebra/PerfectoidFontaineSeparation.lean` | 既存の核生成元表示とp正則性を接続し、BSの正確な署名を公開 |
+| F7-4 | ルートimport・`scripts/audit_f7.lean`・計画更新 | 一般署名と条件付きFontaine比較への適用を検証し、全体ビルド・CLMST・公理・F7監査 |
+
+各段階で対象ビルドと全公開宣言の`assert_no_sorry`を成功させ、監査・計画と共にコミットする。
+共通層にBS・Inputs・Paper層への依存を入れない。pねじれ商への拡張や核進完備性は別工程。
 
 ### 次の実装単位と検証の進め方
 
