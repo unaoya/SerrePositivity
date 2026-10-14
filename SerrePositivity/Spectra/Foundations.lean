@@ -67,6 +67,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpace
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceNaturality
 public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroEvaluationGenerators
 public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroConvolutionNaturality
+public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroConvolutionAssociator
 public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroUnitGenerators
 public import SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeAssociator
 public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorMapLevels
