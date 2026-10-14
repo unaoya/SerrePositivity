@@ -1847,3 +1847,21 @@ p正則性・完備性を存在には要求しない。
 G4単射を用いた環射性比較を待つ間、p乗算単射の仮定で第1係数が
 δ(a)に一致することなど、座標の比較は独立に進められる。
 全段正規化・モニック表示、実完備化/perfectionの完全忠実平坦性と一般B4は未実装。
+
+次のBS専用予定`DeltaWittGhostLowCoefficients.lean`で、p乗算単射の仮定から
+構成済みWitt元の第1係数がδ(a)に一致し、長さ2切り詰めが
+既存DeltaStructure.sectionHomに一致することを証明する。
+既存第1ghost係数公式とpのキャンセルを使い、G4や全Witt環射性は待たない。
+次のBS専用予定`DeltaWittGhostRingHom.lean`では、ghostMap単射を明示仮定として
+構成済み点ごとのWitt写像の環射性と第0係数射の断面性を証明する。
+これはG4を仮定に接続する前は条件付きAPIとして区別する。
+
+## B4-6：全Witt元と既存W₂断面の低次比較（2026-10-15）
+
+`DeltaWittGhostLowCoefficients.lean`で、p乗算単射の仮定のみから
+構成済みWitt元の第1係数がδ(a)に一致し、長さ2切り詰めが
+既存DeltaStructure.sectionHomに一致することを証明した。
+既存第1ghost公式とpキャンセルを使用し、G4を要求しない。
+2公開定理の対象2054ジョブ、pure B4全公開宣言監査成功。
+標準3公理のみ。新sorry・公理・引用なし。
+全Witt環射性の単射仮定の供給と全段座標比較は別工程である。
