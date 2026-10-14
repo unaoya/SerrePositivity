@@ -35,3 +35,15 @@ smallnessの宇宙w、対象の宇宙u、射の宇宙vは独立。
 `check_monoidal_level_model`は構成・生成性・評価のQuillen性・関手的分解と空の場合も含む添字のthin性を検証。
 共通補題とレベル実装の全72宣言が標準公理のみで監査成功。
 コミット`9c86d7f`, `2165b14`。具体的PSSとSM7・作用・豊穣の接続は後続。
+
+## 具体的単体的入力と基点付き生成射（§145〜§146）
+
+SimplicialGeneratorsは実際の境界I・horn Jの共通aleph0-presentabilityとSOAを提供する。
+SimplicialCofibrancyは固定mono cofibrationクラスで全PSSと既存circleのcofibrancyを証明する。
+PointedGeneratorsは自由基点追加のstrict像pointedI/Jのrlp、共通presentabilityとSOAを接続する。
+忘却のfiltered colimit保存を使い、全余極限保存を仮定しない。
+
+これらは完成したKan–Quillen ModelCategoryを仮定せず、Wも導入しない。
+ModelCategory全体とanodyne/trivial cofibration比較は固定MathlibでTODOのため、後続の接続が必要。
+check_simplicial_model_inputs.leanはその区別を保った利用例と26宣言の公理監査を含む。
+コミット73e55b0・51d0f66・a5d2575。

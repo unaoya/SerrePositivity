@@ -5777,3 +5777,29 @@ Iの小ささ・IsCardinalForSmallObjectArgument・HasSmallObjectArgumentを構�
 次は基点付きI/J生成射のfree/forgetによるlifting・smallnessの接続と、
 具体的なKan–QuillenのW・モデル存在・anodyne比較の入力を正確に固定する。
 スペクトル側monoidal/SM7の証明も残る。段階1〜3の全体目標は継続中。
+
+
+## 146. 段階1〜3の実行記録：基点付き生成射のliftingとsmallness（2026-10-15）
+
+共有EvaluationSmallnessへgenerators_smallObjectArgument_of_accessibleを追加した。
+右随伴のκ-accessibilityだけでpresentabilityを移してfree像のSOAを構成できる。
+従来の全余極限保存を入力するgenerators_smallObjectArgumentは、その特殊例として同じAPIを保持する。
+
+`ModelCategory/PointedGenerators`で実際の自由基点追加のstrict像としてpointedI・pointedJを定義した。
+任意Pのfree像のrlpは、忘却で検出するP.rlpと一致する。pointedJ.rlpは固定のKan fibrationsに一致。
+Under.forgetのconnected colimit保存とaleph0-filtered⇒filtered⇒connectedから、
+実際のPSS忘却関手のaleph0-accessibilityを証明した。全余極限保存を仮定していない。
+自由像のI/J始域の共通aleph0-presentabilityと両SOAを証明した。
+この構成はModelCategory SSetや弱同値クラスを仮定しない。
+
+集約・対象ビルド成功、新規ソース警告なし。
+check_simplicial_model_inputsでpointedI/JのSOA・presentability・rlp比較を検証し、
+具体的入力26宣言の公理監査が成功。共有基盤26モジュール382宣言、
+全スペクトル307モジュール3001公開宣言の監査も成功。
+既存monoidal levelの利用例と72宣言監査を再実行成功し、旧APIの互換性を確認した。
+全て標準公理のみ、sorry・引用依存なし。
+コミット：accessible版smallness`51d0f66`、基点付き生成射`a5d2575`。
+
+次は生成cofibrationクラスと実際のmonoクラスの一致、anodyne/trivial cofibrationの接続、
+具体的Kan–QuillenのWとモデル存在の入力を精査する。
+スペクトル側monoidal/SM7も残り、段階1〜3の全体目標は継続中。
