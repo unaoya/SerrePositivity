@@ -600,3 +600,34 @@ B4-6の引用なしの必要な根付き完全忠実平坦perfectoid拡大の存
 既存André引用をこの入口に供給する一般形は、予定BS専用
 `AndreSurjectivityConditional.lean`に分け、既存の条件付き監査だけで監査する。
 これを一般B4の引用なし完成やB-S引用解消とは数えない。
+
+## B4の一般全射性：既存André入力に相対的な接続（2026-10-15）
+
+`AndreSurjectivityConditional`に、具体的q:R→S、f:S→Cと全射q、
+RのIsIntegralPerfectoid、Sの実導来p完備性、fのIsPerfectoidizationを入力する
+`surjective_of_isPerfectoidization_of_andre`を公開した。
+既存Andréの名前付き引用で得たT・p完全忠実平坦性・perfectoid性・
+IsAbsolutelyIntegrallyClosedを、上の証明済み降下定理へ供給した。
+一般pねじれ商・零環を含み、有限性・p正則性・古典的完備性を課さない。
+これは既存引用に相対的な途中成果であり、B4の引用なし完成ではない。
+専用条件付き監査だけに加え、pure B4監査のimportには加えない。
+既存のB-S引用や公開APIを先行して変更・削除しない。
+
+### 引用なしの完成に必要な残件
+
+任意perfectoid Rと全射商q:R→Sについて、perfectoid R-代数Tで
+IsCompletelyFaithfullyFlat (span p) Tを満たし、
+T→S⊗[R]Tの核の各元が両立するp冪根を持つ拡大を構成・証明すれば、
+公開されたpure降下定理が一般B4を供給する。
+全元が根を持つTやAICは十分条件であり、それ自体を必要条件としない。
+元の核Jの生成元の像の根だけを構成する経路なら、
+ker(T→S⊗[R]T)=J.map(algebraMap R T)と根付き生成族版への接続がさらに必要。
+根付き拡大の古典候補・制限されたprismatic envelope候補は、
+perfectoid性とp完全忠実平坦性を証明するまで成立・採用済みとはしない。
+一般B4・B-S引用解消は未完了。
+
+今回の最終検証：pure B4全公開宣言監査成功。根付き降下は標準3公理のみ。
+条件付き監査は既存Andréの名前付きsorryだけが残ることを公理表示・sorry表示で確認。
+全体4514ジョブ成功。pure降下のプロジェクト内import閉包230件に
+Inputs・CLMST・Paper・RootTowerなし。
+André入力の古い「未使用」記述を、実際の条件付き依存と残件を示す記述に更新した。

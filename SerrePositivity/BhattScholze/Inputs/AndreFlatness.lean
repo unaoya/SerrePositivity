@@ -30,8 +30,11 @@ perfectoid 環は `IsIntegralPerfectoid` で、BS が採用する [BMS18, §3] �
 
 ## 使われ方
 
-Thm 7.4（semiperfectoid 環の perfectoid 化の全射性）の証明に使う予定である。
-2026-10-14 の時点では、まだどの宣言からも使われていない。
+Thm 7.4（semiperfectoid 環の perfectoid 化の全射性）に関する条件付き途中成果に使う。
+2026-10-15 時点では `AndreCompatibleRootsConditional` の根付き拡大と
+`AndreSurjectivityConditional.surjective_of_isPerfectoidization_of_andre` が依存する。
+これらはこの既存sorryに相対的であり、B4の引用なし完成・B-S引用解消とは数えない。
+引用なしの全射性降下は `RootedPerfectoidSurjectivityDescent` にあり、拡大データを入力する。
 
 出典：https://people.mpim-bonn.mpg.de/scholze/prisms.pdf （Theorem 7.14、印刷 p.61）。
 -/

@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.AndreSurjectivityConditional
 import SerrePositivity.BhattScholze.AndreCompatibleRootsConditional
 import Mathlib.Util.AssertNoSorry
 
@@ -8,3 +9,7 @@ assert_no_sorry SerrePositivity.IsAbsolutelyIntegrallyClosed.exists_compatible_p
 -- 以下は既存Andréの名前付きsorryに相対的。assert_no_sorryの対象にしない。
 #print axioms SerrePositivity.BhattScholze.exists_completelyFaithfullyFlat_compatibleRoots_of_andre
 #print sorries SerrePositivity.BhattScholze.exists_completelyFaithfullyFlat_compatibleRoots_of_andre
+
+-- 一般全射性も既存André入力に相対的。B-S引用解消とは数えない。
+#print axioms SerrePositivity.BhattScholze.surjective_of_isPerfectoidization_of_andre
+#print sorries SerrePositivity.BhattScholze.surjective_of_isPerfectoidization_of_andre
