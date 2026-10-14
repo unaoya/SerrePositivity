@@ -5,6 +5,8 @@ import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ConstantTower
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.LocalizationResolution
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.LocalizationHomCoordinates
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.LocalizationTowerComparison
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerExact
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ConeShortExact
 import Mathlib.Util.AssertNoSorry
 
 -- G2-1: every explicit public declaration, including the maps and natural comparisons.
@@ -273,3 +275,30 @@ example (R : Type) [CommRing R] (a : R) (K : CochainComplex (ModuleCat R) ℤ)
 
 #print axioms SerrePositivity.DerivedCompletion.localizationHomTowerIso
 #print axioms SerrePositivity.DerivedCompletion.scalarComplexTowerHomotopyLimitObject_isZero_of_isComplete
+
+-- Arbitrary tower maps, compatibility with the standard lifts, and short exactness of holim.
+assert_no_sorry SerrePositivity.DerivedCompletion.complexTowerDifferenceArrowMap
+assert_no_sorry SerrePositivity.DerivedCompletion.complexTowerHomotopyLimitMap
+assert_no_sorry SerrePositivity.DerivedCompletion.complexProductDegreeEquiv_map
+assert_no_sorry SerrePositivity.DerivedCompletion.complexTowerHomotopyLimitDegreeIso_map
+assert_no_sorry SerrePositivity.DerivedCompletion.complexTowerHomotopyLimitDegreeEquiv_map_fst
+assert_no_sorry SerrePositivity.DerivedCompletion.complexTowerHomotopyLimitDegreeEquiv_map_snd
+assert_no_sorry SerrePositivity.DerivedCompletion.complexTowerHomotopyLimitLift_map
+assert_no_sorry SerrePositivity.DerivedCompletion.complexTowerCompatibleLift_map
+assert_no_sorry SerrePositivity.DerivedCompletion.complexTowerHomotopyLimitMap_comp_zero
+assert_no_sorry SerrePositivity.DerivedCompletion.complexTowerHomotopyLimitShortComplex
+assert_no_sorry SerrePositivity.DerivedCompletion.complexTowerHomotopyLimitShortComplex_shortExact
+assert_no_sorry SerrePositivity.DerivedCompletion.coneStandardProjection
+assert_no_sorry SerrePositivity.DerivedCompletion.coneStandardProjection_inl
+assert_no_sorry SerrePositivity.DerivedCompletion.coneStandardProjection_inr
+assert_no_sorry SerrePositivity.DerivedCompletion.coneStandardShortComplex
+assert_no_sorry SerrePositivity.DerivedCompletion.coneStandardShortComplexSplitting
+assert_no_sorry SerrePositivity.DerivedCompletion.coneStandardShortComplex_shortExact
+
+-- The stagewise exact sequence uses the actual shifted source, for every cochain map.
+example (R : Type) [CommRing R] {P Q : CochainComplex (ModuleCat R) ℤ} (f : P ⟶ Q) :
+    (coneStandardShortComplex R f).ShortExact := coneStandardShortComplex_shortExact R f
+
+#print axioms SerrePositivity.DerivedCompletion.complexTowerCompatibleLift_map
+#print axioms SerrePositivity.DerivedCompletion.complexTowerHomotopyLimitShortComplex_shortExact
+#print axioms SerrePositivity.DerivedCompletion.coneStandardShortComplex_shortExact
