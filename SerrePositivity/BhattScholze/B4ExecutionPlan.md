@@ -46,9 +46,9 @@ Andréの平坦性補題はThm 7.14（p.61、arXiv v3では7.12）。
 | 根イデアル商・完備化の制限付き普遍性 | `CompatibleRootQuotient`で証明済み | 被約性とp完備性を供給して一般perfectoid試験環に適用 |
 | 全射による前完備性の移送 | 共通`AdicCompleteness.isPrecomplete_of_surjective` | 完備化射の全射性に使用 |
 | 普遍対象間の同型・核一致・全射性移送 | 共通`PerfectoidizationUniqueness` | 重複定義を作らない |
-| 根イデアル商の完備化のperfectoid性 | 未実装 | B4aの中心 |
-| 完備テンソルのperfectoid性・底変換比較 | 未実装 | B4b。BSの定理と共通導来基盤を分担 |
-| 全射性の忠実平坦降下 | この適用形は未実装 | mod pの降下とadic全射判定を合成 |
+| 根イデアル商の完備化のperfectoid性 | 単項・任意根族で証明済み | B4aに使用 |
+| 底変換候補のperfectoid性・標準mod p比較 | Witt通常余積経路で証明済み | B4bの現在の降下経路。導来比較は別工程 |
+| 全射性の忠実平坦降下 | 根付き拡大データを明示して証明済み | G1と既存adic全射判定を合成 |
 | Andréの引用なしの必要部分 | 未実装・経路未確定 | B4cの成立性を先に確認 |
 
 B3で証明したWitt比較射の全射性は、S→S_perfdの全射性とは別である。
@@ -659,3 +659,47 @@ compatibleRootFamilyZeroIdeal ρと一致する場合、任意IsPerfectoidizatio
 標準核商同型と既証明の根族商の全射性を使用する。
 1公開定理の対象3288ジョブ成功。B4専用監査を行う。
 次に元の核の生成族の像の根だけを入力する降下定理へ接続する。
+
+## B4-6：元の核の生成族の根だけを要求する降下（2026-10-15）
+
+`RootedFamilyPerfectoidSurjectivityDescent`で、任意生成族a:σ→R、
+ker(algebraMap R S)=span(range a)と、各algebraMap R T(a s)を初項とする
+両立する根族ρを入力し、底変換した合成射の全射性を証明した。
+公開`surjective_of_isPerfectoidization_of_rootedGeneratingFamilyBaseChange`は、
+R,Tのperfectoid性・R→S全射・Sの実導来p完備性・Tのp完全忠実平坦性と
+f:S→ₐ[R]CのIsPerfectoidizationから、元のfの全射性を結論する。
+Witt余積の候補・比較・G1の自然性と降下を内部で供給する。
+核の全元の根、拡大のAIC、生成族の有限性、p正則性は要求しない。
+2公開定理の対象3309ジョブ成功。B4専用監査を行う。
+
+引用なしの根付き拡大の必要部分は、任意perfectoid Rと元族a:σ→Rについて
+p完全忠実平坦perfectoid Tと各a_sの像の両立する根を供給する型で足りる。
+後続の一般B4へはこの証明済みの弱い入力の降下を使う。
+拡大の全元の根やAICを無用に構成目標へ追加しない。
+拡大の存在そのものは未実装であり、B4完成ではない。
+
+具体的q:R→Sとf:S→Cを入力する
+`surjective_of_isPerfectoidization_of_sourceKernelRoots`も公開。
+元の核Jの各元の像に根を供給するTだけで降下できる。
+呼出側にR-代数構造を新しく要求せず、qとf∘qから内部で供給する。
+この3公開定理により、B4-6の予定入力（元族の像の根）と一般降下の接続が揃った。
+引用なしの拡大の存在を仮定して結果を完成扱いにしない。
+
+最新検証：3公開定理の対象3309ジョブとB4専用全公開宣言監査成功。
+標準3公理のみ。pure降下のプロジェクト内import閉包228件に
+Inputs・CLMST・Paper・RootTowerなし。
+
+引用なしの拡大構成に向けて著者版Prop 3.13（pp.33–35）と
+Rem 7.15（p.62）を再確認した。Rem 7.15のcoverはProp 7.10に依存し、
+pd表示だけから忠実性を既証明とは扱えない。正本§5もこの点を明示した。
+次のBS専用計算候補は`FreeDeltaFrobeniusFlat.lean`：既存
+FreeDeltaRing σ=MvPolynomial (σ×ℕ) ℤと
+freeDeltaFrobenius p σ（X(s,n)↦X(s,n)^p+p X(s,n+1)）について、
+有限段のモニック関係式による加群表示とFrobenius射の平坦性を調べる。
+その計算の成立、完備化後の保存、δ除算包のp,d完全平坦性・忠実性が
+証明されるまで、Prop 3.13の必要な制限版を供給済みとはしない。
+共有のTor・完備性・完全平坦性の定義は再利用し、同等の定義を作らない。
+
+この区切りの最終検証：対象ビルド・pure B4専用全公開宣言監査成功、
+全体4519ジョブ成功。公開されたpure定理は標準3公理のみ。
+生成族を使う降下のimport閉包228件にInputs・CLMST・Paper・RootTowerなし。
