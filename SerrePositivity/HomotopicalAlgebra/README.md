@@ -212,3 +212,11 @@ free/evaluationのtensor公式とmonoid axiomからモデルを構成し、image
 具体的dg加群の入力はM5が所有する。専用check_many_object_presentability.leanはそれらの追加仮定を
 与えずに三クラス・生成性・Quillen性・分解を検証し、新規12宣言を監査する。
 コミットac36b45・ea3ed40。
+
+## 基点付きモデルとsmash単位（§143）
+
+Pointed/Basicは既存Underモデル上のPointedObjectを使用する。
+cofibrancyは基点射のcofibration性と同値で、forget/adjoinはQuillen随伴。
+cofibrantな基礎圏単位の自由基点追加が、cofibrantな既存smash単位を与える。
+その恒等置換からHasUnitAxiomを構成済み。pushout-product互換性は次の証明対象。
+check_pointed_model.leanが一般Cの利用例・10宣言の公理監査を含む。コミット844a563。

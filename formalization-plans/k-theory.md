@@ -5688,3 +5688,28 @@ M5は実際のdg加群の自由・評価随伴、自然なtensor公式、保存�
 κ-presentabilityを供給する。今回の共有定理だけで具体的dgモデルの存在を主張しない。
 次は基点付きsmashのmodel互換性と、スペクトル側monoidal/SM7、具体的PSS/円へのモデル入力接続。
 段階1〜3の全体目標は継続中。
+
+
+## 143. 段階1〜3の実行記録：基点付きモデルとsmash単位公理（2026-10-15）
+
+共有`HomotopicalAlgebra/Pointed/Basic`を追加した。既存PointedObject C = Under(𝟙_C)上の
+モデル構造を使い、Cof/Fib/Wが基礎圏の射で検出されることを公開した。
+point_isZeroの始対象性から、基点付き対象XのcofibrancyはXの基点射𝟙_C→X.rightの
+cofibration性と同値であることを証明した。基礎対象だけのcofibrancyと混同しない。
+
+既存adjoinForgetAdjunctionにより、forgetはright Quillen、自由基点追加adjoinFunctorは
+left Quillenである。自由基点追加はcofibrant対象を保存する。
+cofibrantな基礎圏の単位を仮定すると、sphereZeroと既存smash monoidal構造の実際の単位が
+cofibrantである。恒等置換を使ってsmashのHasUnitAxiomを構成した。
+この単位公理の証明に、smashのpushout-product条件や具体的SSetモデルは仮定していない。
+
+共有入口・必須モジュール監査へ接続した。対象・集約ビルド成功、新規ソース警告なし。
+`check_pointed_model`で三クラス、基点cofibrancy、両Quillen関手、cofibrancy保存、
+実際のsmash単位と単位公理を、既存General/StageTwoと同時importして検証。
+新規10宣言の公理監査、共有基盤25モジュール367宣言監査が標準公理のみで成功した。
+既存general tensor/cotensor利用例・330宣言監査も成功。コミット`844a563`。
+
+次は基点付きsmashのpushout-productを基礎圏の直積pushout-productへ比較し、
+cofibration性とtrivialの場合の弱同値性を証明する。単位公理だけではmonoidalモデル互換性を完成扱いにしない。
+スペクトル側monoidal/SM7、具体的PSS/円のKan–Quillen入力への接続も残る。
+段階1〜3の全体目標は継続中。
