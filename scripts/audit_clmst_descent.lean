@@ -1,5 +1,6 @@
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.MilnorAnnihilator
 import SerrePositivity.HomologicalAlgebra.TwoCohomologyAnnihilator
+import SerrePositivity.HomologicalAlgebra.CompleteTwoCohomologyAnnihilator
 import SerrePositivity.CommutativeAlgebra.CompletelyFlatPowerTorsion
 import SerrePositivity.CommutativeAlgebra.CompletelyFaithfullyFlatPowers
 import Mathlib.Util.AssertNoSorry
@@ -32,6 +33,36 @@ example (R : Type) [CommRing R] (X : DerivedCategory (ModuleCat.{0} R))
 
 #print axioms SerrePositivity.two_cohomology_scalar_product_eq_zero
 #print axioms SerrePositivity.moduleMapConeScalar_pow_eq_zero_of_iso_homotopyLimit
+
+-- D4: the standard holim comparison is supplied by completeness, rather than an input iso.
+assert_no_sorry SerrePositivity.DerivedCompletion.completeComplexKoszulHomologyEquiv
+assert_no_sorry SerrePositivity.DerivedCompletion.completeComplex_homology_pow_annihilated
+assert_no_sorry SerrePositivity.DerivedCompletion.completeDerivedKoszulHomotopyLimitIso
+assert_no_sorry SerrePositivity.DerivedCompletion.completeDerived_homology_pow_annihilated
+assert_no_sorry SerrePositivity.complete_two_cohomology_scalar_pow_eq_zero
+assert_no_sorry SerrePositivity.complete_moduleMapConeScalar_pow_eq_zero
+
+-- General derived objects have no chosen strict or projective representative as input.
+example (R : Type) [CommRing R] (p : R) (X : DerivedCompletion.ConcreteDerivedCategory R)
+    (hX : DerivedCompletion.IsComplete R p X) (i : ℤ) (g : R) (N : ℕ)
+    (h : ∀ n,
+      (∀ x : (DerivedCompletion.complexPowerKoszulStage R p
+        (DerivedCategory.Q.objPreimage X) n).homology i, g ^ N • x = 0) ∧
+      (∀ x : (DerivedCompletion.complexPowerKoszulStage R p
+        (DerivedCategory.Q.objPreimage X) n).homology (i - 1), g ^ N • x = 0))
+    (x : (DerivedCategory.homologyFunctor (ModuleCat R) i).obj X) : g ^ (2 * N) • x = 0 :=
+  DerivedCompletion.completeDerived_homology_pow_annihilated R p X hX i g N h x
+
+-- Scalar multiplication is transported by the actual R-linear standard comparison.
+example (R : Type) [CommRing R] (p : R) (K : CochainComplex (ModuleCat R) ℤ)
+    (hK : DerivedCompletion.IsComplete R p (DerivedCategory.Q.obj K)) (i : ℤ)
+    (r : R) (x : K.homology i) :
+    DerivedCompletion.completeComplexKoszulHomologyEquiv R p K hK i (r • x) =
+      r • DerivedCompletion.completeComplexKoszulHomologyEquiv R p K hK i x :=
+  (DerivedCompletion.completeComplexKoszulHomologyEquiv R p K hK i).map_smul r x
+
+#print axioms SerrePositivity.DerivedCompletion.completeDerived_homology_pow_annihilated
+#print axioms SerrePositivity.complete_moduleMapConeScalar_pow_eq_zero
 
 -- D1: arbitrary rings and arbitrary torsion test modules, all exponents including zero.
 assert_no_sorry SerrePositivity.torModule_subsingleton_of_completelyFlat_powerTorsion
