@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.CommutativeAlgebra.ParameterKoszulGrowth
 public import SerrePositivity.Paper.Section2.TowerLengthOn
 public import SerrePositivity.Paper.Section2.PerfectQuotientLimit
 public import SerrePositivity.Paper.Section2.PerfectKoszulLimit
@@ -143,9 +144,10 @@ theorem perfectClosure_length_properties_of_roberts
 `perfectClosure_length_properties_of_higher_tendsto` が二性質を組み合わせる。
 `FrobeniusKoszulLimit.lean` は Roberts 型の一般定理の適用条件と値域の変換を確認し、
 `perfectClosure_length_properties_of_roberts` が一般定理から二性質までを接続する。
-本定理は `Inputs.frobenius_homology_length_tendsto_zero` を適用し、
-等標数の残っていた未証明の結論を、この文献の一般定理からの導出に置き換える。
-Roberts の定理そのものと既存の一般入力への依存は残る。 -/
+本定理はその代わりに、パラメータ Koszul 複体に限った初等的な消滅
+`tendsto_length_koszulHomologySelf_frobenius_pow`（`CommutativeAlgebra/ParameterKoszulGrowth.lean`）を
+`perfectClosure_length_properties_of_higher_tendsto` に渡す。
+Roberts の一般定理 `Inputs.frobenius_homology_length_tendsto_zero` には依存しない。 -/
 theorem perfectClosure_length_properties (A D : Type u) [CommRing A] [IsRegularLocalRing A]
     [IsAdicComplete (maximalIdeal A) A]
     [CommRing D] [IsLocalRing D] [IsNoetherianRing D] [IsDomain D]
@@ -173,8 +175,11 @@ theorem perfectClosure_length_properties (A D : Type u) [CommRing A] [IsRegularL
             Ideal.span (Set.range fun j ↦ algebraMap D (PerfectClosure D p) (z j))) =
           ENNReal.ofReal
             (HilbertSamuel.multiplicity D (Ideal.span (Set.range z)) D : ℝ)) := by
-  exact perfectClosure_length_properties_of_roberts A D hinj hsep hres t hdimA hdimD
-    hpos ht p hcanonical (Inputs.frobenius_homology_length_tendsto_zero D p)
+  apply perfectClosure_length_properties_of_higher_tendsto A D hinj hsep hres t hdimA hdimD
+    hpos ht p hcanonical
+  intro z hz i hi
+  simpa only [stageRank, Nat.cast_pow] using
+    tendsto_length_koszulHomologySelf_frobenius_pow D p hpos z hz i hi
 
 /-- 等標数の長さ代数として Mathlib の `PerfectClosure D p` を選ぶ。
 塔の作用と二つの係数制限の両立を構成し、Roberts の引用から導いた長さの性質を適用する。

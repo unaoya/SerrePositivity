@@ -20,6 +20,11 @@ Ma, *Lech's conjecture in dimension three*, Theorem 2.4
 `[-d, 0]` の外で零と書く。Frobenius 関手は `iterateFrobenius` に沿う基底変更である。
 Koszul 複体への適用条件、パラメータの冪との同定、perfection への移送は引用に含めず、
 `CommutativeAlgebra/FrobeniusKoszulLimit.lean` と `Paper/Section2/` で証明する。
+**主定理の経路では使わない。** 等標数の長さ代数で必要なのはパラメータ Koszul 複体の場合だけで、
+それは `CommutativeAlgebra/ParameterKoszulGrowth.lean` の
+`tendsto_length_koszulHomologySelf_frobenius_pow` が Frobenius の性質を使わずに証明する
+（`formalization-plans/frobenius-koszul-elementary.md`）。この一般形の引用は、
+tight closure などによる証明の対象として残す（`formalization-plans/frobenius-homology.md`）。
 -/
 
 public section

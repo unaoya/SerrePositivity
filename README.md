@@ -16,7 +16,7 @@ its perfect-complex and rank-quotient realizations, the standard commutative alg
 (regular parameters, unmixedness, Hilbert–Samuel theory, the Koszul multiplicity formula) and
 the connection to the main theorem are implemented.
 
-The main theorem still depends on **8 external quotations and 2 deferred K-theory proofs**.
+The main theorem still depends on **7 external quotations and 2 deferred K-theory proofs**.
 `main_statement` and `core_statement` have no direct `sorry`, but depend on `sorryAx`.
 They are not proofs of the main theorem without those inputs. The complete Noetherian flat
 residue-field extension is now constructed without quotations; its legacy `Inputs` entry point
@@ -24,11 +24,14 @@ and Lemma 2.1 depend only on the standard axioms. Mixed-characteristic Cohen nor
 with perfect residue field is also constructed without quotations, including the Witt coefficient
 map, parameters, finite power-series evaluation and injectivity. The standard completed root tower
 is now proved integral perfectoid via finite-stage Frobenius kernels and the actual tilt and Fontaine
-kernel. By section of the preprint:
+kernel. Roberts' Frobenius homology vanishing is no longer used: the equal-characteristic
+construction only needs it for Koszul complexes on a system of parameters, which is proved
+elementarily in `CommutativeAlgebra/ParameterKoszulGrowth.lean` (a uniform annihilator of Tor over
+a power series ring and a fixed finite free resolution give `ℓ H_i(z^q; D) = O(q^{h-1})`;
+see [the plan](formalization-plans/frobenius-koszul-elementary.md)). By section of the preprint:
 
-- §2 (residue fields, normalized length, Theorem 2.5): proved relative to 6 quotations
-  (Cohen–Gabber normalization, Roberts' Frobenius
-  theorem, Bhatt–Scholze perfectoidization existence and
+- §2 (residue fields, normalized length, Theorem 2.5): proved relative to 5 quotations
+  (Cohen–Gabber normalization, Bhatt–Scholze perfectoidization existence and
   surjectivity, and CLMST cohomology vanishing and perfectoidization isogeny).
 - §3 (Lemmas 3.4–3.5): proved, except that Theorem 3.1 (rational K-theory descent) is deferred
   (`theorem_3_1_K0`).
@@ -141,7 +144,7 @@ free resolutions and the length-based Euler characteristics are built here (`Com
   exposition §4.5, instead of the concrete tower.
 - Extending the Koszul multiplicity formula from the ring to arbitrary finite modules (Rees
   evaluation, boundary lifting, Samuel degree of the support).
-- The 11 external quotations remain quotations.
+- The 7 external quotations remain quotations.
 
 ## Documents and generated files
 

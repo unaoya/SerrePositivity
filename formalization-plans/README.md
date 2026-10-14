@@ -10,12 +10,14 @@
 | [Cohen–Gabberの微分経路](cohen-gabber-differentials.md) | p-basis・係数体・連続微分の再利用可能な基盤から引用2を証明する | Gabber原証明の訂正版を採用。G0の契約・型照合とG1の一般補題から開始 |
 | [完備化の共通基盤と二つの適用](adic-completion-integration.md) | 共通のテンソル比較・完備化の平坦性、独立したNoether判定、CLMST／剰余体拡大への適用と分担を確定する | 分担を反映済み。A4は完成、共通の平坦性と係数制限の進捗は正本の実施記録を参照 |
 | [外部引用4〜5：交点重複度](intersection-inputs-4-5.md) | 対角線による正値性とChern／Adamsによる消滅の証明経路を比較する | 調査・設計段階 |
+| [外部引用5：消滅定理をサイクルで](intersection-vanishing-cycles.md) | 局所 Chern 指標と Riemann–Roch（Fulton、Roberts）で `intersectionVanishing` を証明する。サイクルの基盤は別プロジェクトと共有 | 計画のみ。未着手 |
 | [K理論・スペクトル・dg 理論の形式化](k-theory.md) | 定理3.1と補題4.6を形式化し、既存の二つの降下入力の直接の `sorry` を解消する | 設計・調査段階 |
 | [CLMST とその準備の形式化](clmst.md) | CLMST の結果を原典の形で引用し、定理2.5への接続を `sorry` なしで証明する | 必要な数値結果と接続は明示引用から証明済み。BSとの分担・引用切離しの順序を主計画§0.2へ統合 |
 | [CLMST の長さの引用監査](clmst-length-audit.md) | C1/C2 の仮定と利用先を調べ、原典の標準基底への移行条件を整理する | 初回監査済み |
 | [CLMST の実装境界と作業単位](clmst-interfaces.md) | 型と引用の境界、共通層の抽出順、接続の受入条件を具体化する | 接続実装・旧APIの初回整理済み。追加証明をBSと分担 |
 | [Lech の重複度予想の形式化](lech.md) | Lech の論文の定理1.1を、外部引用を原典の形で置いて形式化する | 設計段階 |
 | [Frobenius 高次ホモロジー消滅](frobenius-homology.md) | 引用6の証明経路を比較し、まず必要な Koszul 版の正規化消滅を形式化する | 調査・設計段階 |
+| [引用6を主定理から外す（初等版）](frobenius-koszul-elementary.md) | パラメータ Koszul 複体の場合を tight closure なしで証明し、主定理の経路から Roberts の引用を外す | 完了。主定理は引用6に依存しない |
 
 リポジトリ全体の現状は [README](../README.md)、論文と実装の対応は
 [日本語解説](../exposition/ja/exposition-ja.tex)、現在の未証明依存は
