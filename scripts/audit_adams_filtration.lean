@@ -1,4 +1,4 @@
-import SerrePositivity.KTheory.Adams.TensorSquareMixedSplitting
+import SerrePositivity.KTheory.Adams.TensorSquareFiltrationImages
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.cochainTensorDegreeMap
@@ -81,3 +81,11 @@ assert_no_sorry SerrePositivity.Adams.tensorSquareMixedCokernelIso_π_hom
 #print axioms SerrePositivity.Adams.tensorSquareMixedSplitting_total
 #print axioms SerrePositivity.Adams.tensorSquareMixedShortComplex_shortExact
 #print axioms SerrePositivity.Adams.tensorSquareMixedCokernelIso
+
+assert_no_sorry SerrePositivity.Adams.tensorSquareKernelPartialLeft
+assert_no_sorry SerrePositivity.Adams.tensorSquareKernelPartialRight
+assert_no_sorry SerrePositivity.Adams.tensorSquareKernelPartialLeft_inclusion
+assert_no_sorry SerrePositivity.Adams.tensorSquareKernelPartialRight_inclusion
+assert_no_sorry SerrePositivity.Adams.tensorSquareKernelInclusion_decomposition
+assert_no_sorry SerrePositivity.Adams.tensorSquareKernelInclusion_range
+#print axioms SerrePositivity.Adams.tensorSquareKernelInclusion_range
