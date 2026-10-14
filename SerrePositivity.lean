@@ -239,6 +239,7 @@ public import SerrePositivity.PerfectComplex.SupPropertyComap
 public import SerrePositivity.LengthAlgebra.RootTowerLength.CompletedNormalized
 public import SerrePositivity.CommutativeAlgebra.RegularLocalRing
 public import SerrePositivity.CommutativeAlgebra.PrimeDimensionBounds
+public import SerrePositivity.CommutativeAlgebra.MaximalRegularSequence
 public import SerrePositivity.CommutativeAlgebra.RegularParameters
 public import SerrePositivity.CommutativeAlgebra.Unmixedness
 public import SerrePositivity.HomologicalAlgebra.KoszulTower

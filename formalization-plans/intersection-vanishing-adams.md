@@ -1,6 +1,6 @@
 # 外部引用5：交点重複度の消滅定理を Adams 作用素で証明する計画
 
-作成：2026-10-14。改訂：2026-10-14（S1–S11 全段の小段・証明契約・実装順序を具体化）。状態：S1.1–S1.6、S2.1–S2.4、S3.1–S3.7 実装・検証済み。S4.1–S4.7 も実装・検証済み（§4.23）。S5.1 は実装・検証済み。S5.2–S5.7 は実装中、S6–S11 は計画。
+作成：2026-10-14。改訂：2026-10-14（S1–S11 全段の小段・証明契約・実装順序を具体化）。状態：S1.1–S1.6、S2.1–S2.4、S3.1–S3.7 実装・検証済み。S4.1–S4.7 も実装・検証済み（§4.23）。S5.1–S5.2 は実装・検証済み。S5.3–S5.7 は実装中、S6–S11 は計画。
 対象は [Inputs/IntersectionTheory.lean](../SerrePositivity/Inputs/IntersectionTheory.lean) の
 `Inputs.intersectionVanishing`（Roberts–Gillet–Soulé の消滅定理）。
 並行する Chow 群の経路は [サイクルの計画](intersection-vanishing-cycles.md)。
@@ -1216,8 +1216,9 @@ S4 の完了は K2 の分解・比較・局所化・dévissage の完成。
 
 | 小段 | 実装・主要 API | 状態 |
 | --- | --- | --- |
-| S5.1 | `CommutativeAlgebra/PrimeDimensionBounds`：素イデアル商の次元と coheight、`primeHeight_add_quotientDimension_le`、有限次元での自然数化、厳密包含による高さの増加 | 完了。この記録を含むコミット |
-| S5.2–S5.7 | §4.11・§4.13 の証明契約 | 未完了 |
+| S5.1 | `CommutativeAlgebra/PrimeDimensionBounds`：素イデアル商の次元と coheight、`primeHeight_add_quotientDimension_le`、有限次元での自然数化、厳密包含による高さの増加 | 完了。コミット `a48fac0` |
+| S5.2 | `CommutativeAlgebra/MaximalRegularSequence`：最長正則列、延長不能性、関連素イデアル回避、局所化した列の長さの高さ上界、`exists_regularSequence_associatedPrime_above` | 完了。この記録を含むコミット |
+| S5.3–S5.7 | §4.11・§4.13 の証明契約 | 未完了 |
 
 S5.1 の高さと商の次元の和の不等式は任意の可換環で証明。
 商のスペクトルと素イデアル以上の区間の順序同型を使い、
@@ -1229,6 +1230,11 @@ order height と coheight の和の一般的な次元上界へ接続した。
 `lake env lean scripts/audit_adams_dimension.lean` が成功。
 全七 API を `assert_no_sorry` で監査。主要三命題の依存公理は
 `propext`、`Classical.choice`、`Quot.sound` のみ。
+S5.2 は正則局所環内の正則列の長さを次元で抑えて最大値を選び、
+延長不能性と有限素イデアル回避で商の関連素イデアルを得た。
+長さの高さ上界は平坦局所化と一般の Noether 局所環での正則列商の次元公式から証明。
+局所化先の正則性は使用せず、S5.7 への依存の循環はない。
+対象ビルド（3050 jobs）と専用監査が成功。主要命題の依存公理は標準三公理のみ。
 S5 全体の統合ビルドは後続小段の完成後に行う。
 
 ## 5. 受入条件
