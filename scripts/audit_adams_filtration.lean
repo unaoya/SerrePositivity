@@ -1,4 +1,4 @@
-import SerrePositivity.KTheory.Adams.TensorSquareMixedCancellation
+import SerrePositivity.KTheory.Adams.TensorSquareAdditivity
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.cochainTensorDegreeMap
@@ -106,3 +106,9 @@ assert_no_sorry SerrePositivity.Adams.tensorSquareMixed_support
 assert_no_sorry SerrePositivity.Adams.tensorSquareMixed_k0Class_eq_zero
 #print axioms SerrePositivity.CochainInvolution.positiveNegativeIso
 #print axioms SerrePositivity.Adams.tensorSquareMixed_k0Class_eq_zero
+
+assert_no_sorry SerrePositivity.CochainInvolution.k0Class_shortExact
+assert_no_sorry SerrePositivity.Adams.tensorSquareClass
+assert_no_sorry SerrePositivity.Adams.tensorSquareClass_shortExact
+#print axioms SerrePositivity.CochainInvolution.k0Class_shortExact
+#print axioms SerrePositivity.Adams.tensorSquareClass_shortExact
