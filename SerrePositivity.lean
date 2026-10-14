@@ -380,7 +380,7 @@ public import SerrePositivity.PerfectComplex.TensorTorComparison
 public import SerrePositivity.PerfectComplex.IntegerEulerIso
 public import SerrePositivity.KTheory.Adams.TensorSquareMaps
 public import SerrePositivity.PerfectComplex.InvolutionShortExact
-public import SerrePositivity.KTheory.Adams.KoszulNormalization
+public import SerrePositivity.KTheory.Adams.KoszulTensor
 public import SerrePositivity.KTheory.Adams.TensorSquareMultiplicativity
 public import SerrePositivity.PerfectComplex.IdempotentTensor
 public import SerrePositivity.KTheory.LocalizationCoefficients
