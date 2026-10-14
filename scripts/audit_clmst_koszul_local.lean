@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.LocalCohomologyKoszulPowers
 import SerrePositivity.CommutativeAlgebra.IdempotentImageAnnihilator
 import SerrePositivity.HomologicalAlgebra.KoszulTorComparison
 import SerrePositivity.HomologicalAlgebra.KoszulTensorConeComparison
@@ -119,3 +120,15 @@ example (R C : Type) [CommRing R] [CommRing C] [Algebra R C]
 #print axioms SerrePositivity.algebraKoszulTorComparison_coefficient_scalar
 #print axioms SerrePositivity.algebraKoszulHomology_annihilated_of_tor_annihilated
 #print axioms SerrePositivity.algebraKoszulHomology_powers_annihilated_of_tor_annihilated
+
+-- KL2b: coordinate-power ideals and the actual Ext-colimit local cohomology functor.
+assert_no_sorry SerrePositivity.powerKoszulIdeal_le_span_pow
+assert_no_sorry SerrePositivity.span_le_powerKoszulIdeal_radical
+assert_no_sorry SerrePositivity.exists_span_pow_le_powerKoszulIdeal
+assert_no_sorry SerrePositivity.powerKoszulIdealDiagram
+assert_no_sorry SerrePositivity.powerKoszulToSelfLERadical
+assert_no_sorry SerrePositivity.powerKoszulToSelfLERadical_initial
+assert_no_sorry SerrePositivity.localCohomologyPowerKoszulIdealNatIso
+assert_no_sorry SerrePositivity.powerKoszulIdealDiagram_quotient_transition
+
+#print axioms SerrePositivity.localCohomologyPowerKoszulIdealNatIso
