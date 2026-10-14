@@ -1,4 +1,5 @@
 import SerrePositivity.CommutativeAlgebra.CoprimeFactorLocalization
+import SerrePositivity.CommutativeAlgebra.LocalizedSurjectiveQuotient
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.cubicCyclotomicPolynomial_monic
@@ -109,3 +110,12 @@ assert_no_sorry SerrePositivity.coprimeFactorLocalizationEquiv
 
 assert_no_sorry SerrePositivity.isField_coprimeFactorLocalization
 #print axioms SerrePositivity.isField_coprimeFactorLocalization
+
+assert_no_sorry SerrePositivity.localizedSurjectiveQuotientAlgebra
+#print axioms SerrePositivity.localizedSurjectiveQuotientAlgebra
+
+assert_no_sorry SerrePositivity.localizedSurjectiveQuotientAlgebra_commutes
+#print axioms SerrePositivity.localizedSurjectiveQuotientAlgebra_commutes
+
+assert_no_sorry SerrePositivity.isLocalization_localizedSurjectiveQuotient
+#print axioms SerrePositivity.isLocalization_localizedSurjectiveQuotient
