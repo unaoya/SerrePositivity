@@ -45,12 +45,12 @@ lemma generators_isSmall (P : MorphismProperty C) [P.IsSmall.{w}] :
   exact MorphismProperty.isSmall_iSup _
 
 variable [LocallySmall.{w} D] [HasColimitsOfSize.{w, w} D]
-  [∀ i, PreservesColimitsOfSize.{w, w} (R i)]
 
 include adj in
 /-- Prove image generator smallness from presentability, not an image-SOA assumption. -/
-lemma generators_smallObjectArgument (P : MorphismProperty C) [P.IsSmall.{w}]
+lemma generators_smallObjectArgument_of_accessible (P : MorphismProperty C) [P.IsSmall.{w}]
     (κ : Cardinal.{w}) [Fact κ.IsRegular] [OrderBot κ.ord.ToType]
+    [∀ i, (R i).IsCardinalAccessible κ]
     (hP : ∀ {A B : C} (f : A ⟶ B), P f → IsCardinalPresentable A κ) :
     (generators L P).HasSmallObjectArgument.{w} := by
   have : (generators L P).IsSmall.{w} := generators_isSmall L P
@@ -69,5 +69,16 @@ lemma generators_smallObjectArgument (P : MorphismProperty C) [P.IsSmall.{w}]
         (coyoneda.obj (op ((L i).obj A))) κ κ.ord.ToType
       infer_instance
   exact ⟨κ, inferInstance, inferInstance, inferInstance⟩
+
+variable [∀ i, PreservesColimitsOfSize.{w, w} (R i)]
+
+include adj in
+/-- Colimit-preserving evaluations are a sufficient special case of accessibility. -/
+lemma generators_smallObjectArgument (P : MorphismProperty C) [P.IsSmall.{w}]
+    (κ : Cardinal.{w}) [Fact κ.IsRegular] [OrderBot κ.ord.ToType]
+    (hP : ∀ {A B : C} (f : A ⟶ B), P f → IsCardinalPresentable A κ) :
+    (generators L P).HasSmallObjectArgument.{w} := by
+  let : ∀ i, (R i).IsCardinalAccessible κ := fun _ ↦ inferInstance
+  exact generators_smallObjectArgument_of_accessible L R adj P κ hP
 
 end SerrePositivity.ModelGeneration.EvaluationFamily
