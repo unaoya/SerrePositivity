@@ -424,3 +424,20 @@ S⊗[R]Tから具体的なWitt係数余積への射Fを構成し、左右の標�
 仮定・主張しない。Fontaine表示を実際のperfectoid入力から供給する工程と
 mod p比較、降下、引用なしの根付き拡大は残る。
 対象ビルドとB4専用監査で検証する。
+
+## B4-5：任意perfectoid入力からの係数余積の実供給（2026-10-14）
+
+BS専用`PerfectoidTensorPerfectoidization.lean`を追加。
+`exists_perfectoidTensorPerfectoidization`は、任意のperfectoid環R,S,Tと
+R-代数構造を入力し、具体的な環E・CommRing構造・F:S⊗[R]T→Eと
+`IsPerfectoidization p F`を存在結論として証明する。
+通常テンソルが零環の場合は恒等射、それ以外は各環の非零枝から
+標準Fontaine表示を供給して、上の具体的Witt係数余積を使う。
+有限性・p正則性・基底や因子の非零性を仮定しない。
+源の生成元による商表示とFontaine自然性の図式を実際に供給し、
+抽象な表示データを未証明の仮定として残していない。
+
+対象ビルドとB4専用監査で検証。
+通常テンソルのmod pとの比較・その自然な図式・G1への接続・
+引用なしの根付き拡大は残る。導来テンソルとの比較は別工程。
+全体ビルドはWitt商余積まで4498ジョブ成功、引用依存のない公開宣言は標準3公理のみ。
