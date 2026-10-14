@@ -154,3 +154,18 @@ import閉包104モジュールにInputs・CLMST・Paper・RootTower依存なし�
 一般のpねじれ商と零環を含み、F7や引用に依存しない。
 3公開定理の対象ビルド・BS専用監査が成功。公理依存は標準3公理のみ。
 任意perfectoid環の逆対応・射・一般IsPerfectoidizationは未完了。
+
+## B3-4追加：任意perfectoid試験環の商表示（2026-10-14）
+
+`PerfectoidDistinguishedKernel`で既存Fontaine核判定を再利用し、
+非零perfectoidの四条件からdistinguished核生成元を選んだ。
+`PerfectDeltaPDQuotientEquiv`で、完全δ環のdistinguished商がp進完備であれば
+実PD完備化前後の商が同型であることを証明。実H⁰の環普遍性を使い、
+古典的完備化へ置き換えない。商のp正則性は不要。
+`PerfectoidTrialPrism`で任意の非零perfectoid試験環の具体的完全prism商表示を得た。
+源はWitt(tilt)、環は実PDCompletionH0、標準射とFontaine射の図式を公開した。
+零試験環は最終普遍性で自明な一意射として扱う。
+
+新規3公開定理の対象ビルド・BS専用監査と全体ビルド（4350ジョブ）成功。
+公理依存は標準3公理のみ。F7・既存引用なし。
+射の持上げと一般B3のIsPerfectoidizationは引き続き未完了。
