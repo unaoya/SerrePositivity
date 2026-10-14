@@ -1,4 +1,4 @@
-import SerrePositivity.KTheory.Adams.KoszulOneModel
+import SerrePositivity.KTheory.Adams.KoszulOneBasis
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.Adams.oneKoszulComplex_perfect
@@ -12,3 +12,11 @@ assert_no_sorry SerrePositivity.Adams.oneKoszulUnitMul_class
 #print axioms SerrePositivity.Adams.oneKoszulComplex_support
 #print axioms SerrePositivity.Adams.oneKoszulUnitMulIso
 #print axioms SerrePositivity.Adams.oneKoszulUnitMul_class
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulXZeroIso
+assert_no_sorry SerrePositivity.Adams.oneKoszulXNegOneIso
+assert_no_sorry SerrePositivity.Adams.oneKoszul_isZero_X_other
+assert_no_sorry SerrePositivity.Adams.oneKoszul_generator_d
+#print axioms SerrePositivity.Adams.oneKoszulXZeroIso
+#print axioms SerrePositivity.Adams.oneKoszulXNegOneIso
+#print axioms SerrePositivity.Adams.oneKoszul_generator_d
