@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.DeltaWittGhostCoefficients
 import SerrePositivity.BhattScholze.DeltaWittGhostStep
 import SerrePositivity.BhattScholze.WittDivisionTriangular
 import SerrePositivity.BhattScholze.RelativeFreeFiniteDeltaIterate
@@ -1568,3 +1569,21 @@ assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.ghost_next_dvd
 
 assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.exists_next_ghost_coefficient
 #print axioms SerrePositivity.BhattScholze.DeltaStructure.exists_next_ghost_coefficient
+
+assert_no_sorry SerrePositivity.BhattScholze.deltaWittGhostPrefix
+#print axioms SerrePositivity.BhattScholze.deltaWittGhostPrefix
+
+assert_no_sorry SerrePositivity.BhattScholze.deltaWittGhostCoefficients
+#print axioms SerrePositivity.BhattScholze.deltaWittGhostCoefficients
+
+assert_no_sorry SerrePositivity.BhattScholze.deltaWittGhostCoefficients_ghost
+#print axioms SerrePositivity.BhattScholze.deltaWittGhostCoefficients_ghost
+
+assert_no_sorry SerrePositivity.BhattScholze.deltaWittGhostVector
+#print axioms SerrePositivity.BhattScholze.deltaWittGhostVector
+
+assert_no_sorry SerrePositivity.BhattScholze.deltaWittGhostVector_ghostComponent
+#print axioms SerrePositivity.BhattScholze.deltaWittGhostVector_ghostComponent
+
+assert_no_sorry SerrePositivity.BhattScholze.deltaWittGhostVector_coeff_zero
+#print axioms SerrePositivity.BhattScholze.deltaWittGhostVector_coeff_zero
