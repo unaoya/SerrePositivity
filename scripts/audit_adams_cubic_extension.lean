@@ -1,4 +1,4 @@
-import SerrePositivity.CommutativeAlgebra.CubicCyclotomicClosedPoint
+import SerrePositivity.CommutativeAlgebra.CoprimeFactorLocalization
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.cubicCyclotomicPolynomial_monic
@@ -67,3 +67,45 @@ assert_no_sorry SerrePositivity.cubicCyclotomicResidueMap_ker_comap
 
 assert_no_sorry SerrePositivity.exists_cubicCyclotomicClosedPoint
 #print axioms SerrePositivity.exists_cubicCyclotomicClosedPoint
+
+assert_no_sorry SerrePositivity.adjoinRootFactorMap
+#print axioms SerrePositivity.adjoinRootFactorMap
+
+assert_no_sorry SerrePositivity.adjoinRootFactorIdeal
+#print axioms SerrePositivity.adjoinRootFactorIdeal
+
+assert_no_sorry SerrePositivity.adjoinRootFactorIdeal_isMaximal
+#print axioms SerrePositivity.adjoinRootFactorIdeal_isMaximal
+
+assert_no_sorry SerrePositivity.adjoinRootFactorMap_mk
+#print axioms SerrePositivity.adjoinRootFactorMap_mk
+
+assert_no_sorry SerrePositivity.cofactor_mem_primeCompl
+#print axioms SerrePositivity.cofactor_mem_primeCompl
+
+assert_no_sorry SerrePositivity.factor_eq_zero_in_localization
+#print axioms SerrePositivity.factor_eq_zero_in_localization
+
+assert_no_sorry SerrePositivity.factorRoot_relation
+#print axioms SerrePositivity.factorRoot_relation
+
+assert_no_sorry SerrePositivity.factorLocalizationInverse
+#print axioms SerrePositivity.factorLocalizationInverse
+
+assert_no_sorry SerrePositivity.factorLocalizationInverse_comp
+#print axioms SerrePositivity.factorLocalizationInverse_comp
+
+assert_no_sorry SerrePositivity.factorLocalizationMap
+#print axioms SerrePositivity.factorLocalizationMap
+
+assert_no_sorry SerrePositivity.factorLocalizationMap_comp
+#print axioms SerrePositivity.factorLocalizationMap_comp
+
+assert_no_sorry SerrePositivity.factorLocalizationMap_inverse_comp
+#print axioms SerrePositivity.factorLocalizationMap_inverse_comp
+
+assert_no_sorry SerrePositivity.coprimeFactorLocalizationEquiv
+#print axioms SerrePositivity.coprimeFactorLocalizationEquiv
+
+assert_no_sorry SerrePositivity.isField_coprimeFactorLocalization
+#print axioms SerrePositivity.isField_coprimeFactorLocalization
