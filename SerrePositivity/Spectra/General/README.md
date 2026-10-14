@@ -53,3 +53,18 @@ tensor/closed/cotensor/作用の公開API一般化（S3）、豊穣構造（S4�
 モデル圏の懸垂とK-tensorを同一視せず、安定性はここでは主張しない。
 
 コミット：H6a `6321c83`、H6b `94c092b`。
+
+## 後続実装：構造射と自由各段（2026-10-15）
+
+`StructureMaps`は一般Kの構造射と同変性・単位・結合・射との両立を提供する。
+`FreeLevels`, `FreeLevelInduction`, `FreeLevelQuotient`は自由各段の分解・誘導・商と生成元の比較を提供する。
+m<nの段は一般には始対象。零対象の主張にはHasZeroObject Cを要求する。
+円への構造射・ブロック商比較の特殊化は旧APIと定義上で一致する。
+
+入口と利用例を更新済み。一般公理監査は10モジュール138宣言（内部補助を含む）。
+コミット`320ff01`, `0f85627`。段階2の作用・cotensor・豊穣の接続は後続。
+
+レベルモデルの別入口は`SerrePositivity.Spectra.ModelCategory.LevelClasses`。
+任意Pの全次数free像のrlpを各段のP.rlpと同定する。
+この計算だけではモデル構造の存在は得られず、smallness・cell acyclicityの検証が後続に必要。
+コミット`ae733ed`。専用利用例・全宣言公理監査は`check_spectrum_level_classes.lean`。

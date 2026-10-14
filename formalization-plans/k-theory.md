@@ -5200,3 +5200,35 @@ M5・可換環論・CLMST・共有ルートimportは変更していない。
 | 3：レベル構造 | free/evaluationからの生成射、smallnessとcell acyclicityの検証、レベルW/Fibの一致、Mathlib ModelCategoryと関手的置換、具体的PSS特殊化・SM7/monoidal接続の検証。一般の条件付き転送APIだけで具体的存在を完成扱いにしない |
 
 安定化（前回説明の段階4）は今回の目標の後。左Bousfield局所化の二案はまだ選択しない。
+
+## 130. 段階1〜3の実行記録：構造射・自由各段表示・レベルlifting（2026-10-15）
+
+### 130.1 この単位の成果
+
+- `General/StructureMaps.lean`：任意C,Kの構造射K^p⊗E_q→E_(p+q)、
+  ブロック置換との同変性、スペクトル射との両立、0次単位則と反復の結合則。
+  既存Day convolutionの標準射とSym(K)加群作用から証明。
+- `General/FreeLevels.lean`, `FreeLevelInduction.lean`, `FreeLevelQuotient.lean`：
+  F_nの各段の分解図式・誘導図式・ブロック商、比較の両方向と生成元の計算則。
+  m<nの段は一般Cで始対象。IsZeroを述べる補題だけにHasZeroObject Cを追加した。
+- `General/SimplicialComparison.lean`：構造射と各段のブロック商比較の円への特殊化を
+  旧APIとrflで比較。既存のnamespace・宣言は変更していない。
+- `Spectra/ModelCategory/LevelClasses.lean`：levelProperty、全次数のF_nによるlevelGenerators、
+  `(levelGenerators K P).rlp = levelProperty K P.rlp`を任意Pで証明。
+  Cのcofibrant generationからI/Jの右クラスがレベルtrivialFib/Fibであることを証明。
+  スペクトル側のモデル構造、smallness、cell acyclicityをこの計算に仮定していない。
+
+### 130.2 検証・コミットと残る範囲
+
+一般入口・具体的比較の集約ビルドが成功し、新規ソース警告を修正済み。
+`check_general_spectra`, `check_spectrum_level_classes`, `check_spectra_stage2`が成功。
+一般監査は10モジュール138宣言（内部補助込み）、レベルclass専用監査は6宣言。
+全スペクトル・共通基盤監査は272モジュール2737公開宣言。
+すべて標準公理のみ、sorry・引用依存なし。
+
+コミット：構造射・各段表示 `320ff01`、利用例のK指定修正 `0f85627`、レベルlifting `ae733ed`。
+
+全体目標（段階1〜3）は引き続き実行中。段階1の多対象加群・具体的SM7、
+段階2のCによる作用・cotensor・豊穣との表現性、段階3の生成射smallness・cell acyclicity・
+レベルモデル構造と具体的PSSへの接続が必要である。
+レベルlifting計算だけでレベルモデル構造の存在や関手的置換を完成扱いにしない。
