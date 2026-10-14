@@ -392,7 +392,7 @@ public import SerrePositivity.KTheory.Adams.SupportNaturality
 public import SerrePositivity.KTheory.Adams.BaseChangeNaturality
 public import SerrePositivity.KTheory.Adams.CyclicTwoFamily
 public import SerrePositivity.KTheory.Adams.MaximalPureWeight
-public import SerrePositivity.KTheory.Adams.SupportHeight
+public import SerrePositivity.KTheory.Adams.SemilocalSupport
 public import SerrePositivity.KTheory.Adams.TensorSquareMultiplicativity
 public import SerrePositivity.PerfectComplex.IdempotentTensor
 public import SerrePositivity.PerfectComplex.IdempotentImageFunctor

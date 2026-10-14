@@ -1,5 +1,5 @@
 import SerrePositivity.KTheory.Adams.MaximalPureWeight
-import SerrePositivity.KTheory.Adams.SupportHeight
+import SerrePositivity.KTheory.Adams.SemilocalSupport
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.Adams.maximalParameterKoszulClass
@@ -23,3 +23,13 @@ assert_no_sorry SerrePositivity.Adams.HeightAtLeast.succ_of_heightStratum_empty
 assert_no_sorry SerrePositivity.Adams.HeightAtLeast.eq_bot_of_dimension_bound
 #print axioms SerrePositivity.Adams.HeightAtLeast.finite_heightStratum
 #print axioms SerrePositivity.Adams.HeightAtLeast.cut_succ_of_mem_complement
+
+assert_no_sorry SerrePositivity.Adams.HeightAtLeast.disjoint_complement_iff
+assert_no_sorry SerrePositivity.Adams.HeightAtLeast.mem_pullback_iff_heightStratum
+assert_no_sorry SerrePositivity.Adams.HeightAtLeast.isMax_iff_heightStratum
+assert_no_sorry SerrePositivity.Adams.HeightAtLeast.mem_pullback_iff_isMax
+assert_no_sorry SerrePositivity.Adams.HeightAtLeast.mem_pullback_iff_isMaximal
+assert_no_sorry SerrePositivity.Adams.HeightAtLeast.finite_localized_maximal_points
+assert_no_sorry SerrePositivity.Adams.HeightAtLeast.localizedMaximalPointsEquiv
+#print axioms SerrePositivity.Adams.HeightAtLeast.isMax_iff_heightStratum
+#print axioms SerrePositivity.Adams.HeightAtLeast.localizedMaximalPointsEquiv
