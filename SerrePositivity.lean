@@ -356,7 +356,7 @@ public import SerrePositivity.PerfectComplex.ClosedSupportRelations
 public import SerrePositivity.PerfectComplex.TensorTorComparison
 public import SerrePositivity.PerfectComplex.IntegerEulerIso
 public import SerrePositivity.KTheory.Adams.TensorSquare
-public import SerrePositivity.PerfectComplex.IdempotentImage
+public import SerrePositivity.PerfectComplex.IdempotentImagePerfect
 public import SerrePositivity.KTheory.LocalizationCoefficients
 public import SerrePositivity.KTheory.Devissage
 public import SerrePositivity.PerfectComplex.Closure

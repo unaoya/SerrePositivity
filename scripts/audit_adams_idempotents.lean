@@ -1,4 +1,4 @@
-import SerrePositivity.PerfectComplex.IdempotentImage
+import SerrePositivity.PerfectComplex.IdempotentImagePerfect
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.CochainIdempotent.image
@@ -12,3 +12,15 @@ assert_no_sorry SerrePositivity.CochainIdempotent.imageMap_id
 assert_no_sorry SerrePositivity.CochainIdempotent.imageMap_comp
 #print axioms SerrePositivity.CochainIdempotent.inclusion_projection
 #print axioms SerrePositivity.CochainIdempotent.imageMap_comp
+
+assert_no_sorry SerrePositivity.CochainIdempotent.inclusion_projection_f
+assert_no_sorry SerrePositivity.CochainIdempotent.projection_f_surjective
+assert_no_sorry SerrePositivity.CochainIdempotent.image_finite_X
+assert_no_sorry SerrePositivity.CochainIdempotent.image_projective_X
+assert_no_sorry SerrePositivity.CochainIdempotent.image_isZero_X
+assert_no_sorry SerrePositivity.CochainIdempotent.image_strictlyPerfect
+assert_no_sorry SerrePositivity.CochainIdempotent.homology_inclusion_projection
+assert_no_sorry SerrePositivity.CochainIdempotent.homology_inclusion_injective
+assert_no_sorry SerrePositivity.CochainIdempotent.image_support
+#print axioms SerrePositivity.CochainIdempotent.image_strictlyPerfect
+#print axioms SerrePositivity.CochainIdempotent.image_support
