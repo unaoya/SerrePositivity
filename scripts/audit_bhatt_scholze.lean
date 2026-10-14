@@ -1,3 +1,7 @@
+import SerrePositivity.BhattScholze.WittTwoPDComplete
+import SerrePositivity.BhattScholze.DeltaFrobeniusComplete
+import SerrePositivity.BhattScholze.WittTwoModuleComplete
+import SerrePositivity.BhattScholze.WittTwoModuleSequence
 import SerrePositivity.BhattScholze.PDCompletionInterface
 import SerrePositivity.BhattScholze.CharacteristicPQuotient
 import SerrePositivity.BhattScholze.CharacteristicPPerfectoid
@@ -1233,3 +1237,35 @@ assert_no_sorry SerrePositivity.BhattScholze.existsUnique_pdCompletionRingHom
 #print axioms SerrePositivity.BhattScholze.existsUnique_pdCompletionRingHom
 assert_no_sorry SerrePositivity.BhattScholze.pdCompletionRingHom_ext
 #print axioms SerrePositivity.BhattScholze.pdCompletionRingHom_ext
+
+-- F3 BS P2 WittTwoModuleSequence
+assert_no_sorry SerrePositivity.BhattScholze.wittTwoZeroFirst
+#print axioms SerrePositivity.BhattScholze.wittTwoZeroFirst
+assert_no_sorry SerrePositivity.BhattScholze.wittTwoZeroFirst_coeff
+#print axioms SerrePositivity.BhattScholze.wittTwoZeroFirst_coeff
+assert_no_sorry SerrePositivity.BhattScholze.wittTwoBaseMap
+#print axioms SerrePositivity.BhattScholze.wittTwoBaseMap
+assert_no_sorry SerrePositivity.BhattScholze.wittTwoProjectionLinear
+#print axioms SerrePositivity.BhattScholze.wittTwoProjectionLinear
+assert_no_sorry SerrePositivity.BhattScholze.wittTwoKernelEquiv
+#print axioms SerrePositivity.BhattScholze.wittTwoKernelEquiv
+assert_no_sorry SerrePositivity.BhattScholze.wittTwoKernelEquiv_smul
+#print axioms SerrePositivity.BhattScholze.wittTwoKernelEquiv_smul
+
+-- F3 BS P2 WittTwoModuleComplete
+assert_no_sorry SerrePositivity.BhattScholze.wittTwoKernel_isModuleComplete
+#print axioms SerrePositivity.BhattScholze.wittTwoKernel_isModuleComplete
+assert_no_sorry SerrePositivity.BhattScholze.wittTwoProjectionLinear_surjective
+#print axioms SerrePositivity.BhattScholze.wittTwoProjectionLinear_surjective
+assert_no_sorry SerrePositivity.BhattScholze.wittTwo_isModuleComplete
+#print axioms SerrePositivity.BhattScholze.wittTwo_isModuleComplete
+assert_no_sorry SerrePositivity.BhattScholze.wittTwo_isModuleComplete_p
+#print axioms SerrePositivity.BhattScholze.wittTwo_isModuleComplete_p
+
+-- F3 BS P2 DeltaFrobeniusComplete
+assert_no_sorry SerrePositivity.BhattScholze.deltaImage_frobenius_isModuleComplete
+#print axioms SerrePositivity.BhattScholze.deltaImage_frobenius_isModuleComplete
+
+-- F3 BS P2 WittTwoPDComplete
+assert_no_sorry SerrePositivity.BhattScholze.wittTwo_isModuleComplete_d
+#print axioms SerrePositivity.BhattScholze.wittTwo_isModuleComplete_d
