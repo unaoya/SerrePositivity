@@ -1,4 +1,4 @@
-import SerrePositivity.KTheory.ResolutionAdditivity
+import SerrePositivity.KTheory.HomologyEuler
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.exists_finitePresentation_descent
@@ -27,3 +27,14 @@ assert_no_sorry SerrePositivity.G0WithSupport.resolutionMap
 assert_no_sorry SerrePositivity.G0WithSupport.resolutionMap_mk
 #print axioms SerrePositivity.resClass_shortExact
 #print axioms SerrePositivity.G0WithSupport.resolutionMap
+assert_no_sorry SerrePositivity.G0WithSupport.mk_exact_images
+assert_no_sorry SerrePositivity.alternatingGroupFinsum_sub_one
+assert_no_sorry SerrePositivity.supportedModuleEuler_exact_sequence
+assert_no_sorry SerrePositivity.supportedPerfectHomology_finite
+assert_no_sorry SerrePositivity.supportedPerfectHomology_bounded
+assert_no_sorry SerrePositivity.supportedHomologyEuler_triangle
+assert_no_sorry SerrePositivity.K0WithSupport.homologyEuler
+assert_no_sorry SerrePositivity.K0WithSupport.homologyEuler_resolution
+assert_no_sorry SerrePositivity.K0WithSupport.homologyEuler_resolutionMap
+#print axioms SerrePositivity.K0WithSupport.homologyEuler
+#print axioms SerrePositivity.K0WithSupport.homologyEuler_resolutionMap
