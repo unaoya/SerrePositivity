@@ -3355,6 +3355,17 @@ K₀ の類への移送と重みつき乗法性は次の小段。
   `lake env lean scripts/audit_adams_cube_unit_rotation.lean` の四定数の監査が成功。
   公理は標準三公理のみ。単位類の保存への接続とルート公開は後続小段。
 
+### S10.8b.2b.2：恒等三乗作用の指標像と重みつき類
+
+- `PerfectComplex/CubicActionIdentityClass` は恒等作用について指標 0 の射影が恒等、
+  他二指標の射影が零であることを証明する。後者は既存の指標射影の直交性から導く。
+- 指標 0 の像と元の複体の同型、他二像の零性を K₀ に移し、
+  `weightedK0Class_of_map_eq_id` で重みつき類を `1⊗[K]` として計算する。
+  係数の根の関係式は、この恒等作用の計算には不要。
+- 対象を含む `lake build SerrePositivity.KTheory.Adams.CubicUnitNormalization` が成功（3317 jobs）。
+  `lake env lean scripts/audit_adams_cubic_identity_class.lean` の七定数の監査が成功。
+  公理は標準三公理のみ。単位類の保存への接続は次の小段。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
