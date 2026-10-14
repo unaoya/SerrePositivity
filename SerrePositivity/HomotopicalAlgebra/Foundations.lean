@@ -2,6 +2,7 @@ module
 
 public import Mathlib.AlgebraicTopology.ModelCategory.Basic
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Adjunction
+public import SerrePositivity.HomotopicalAlgebra.Under.ModelCategory
 
 /-!
 # 共有モデル圏一般論の入口

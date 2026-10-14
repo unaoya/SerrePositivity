@@ -1,4 +1,4 @@
--- Audit all non-internal declarations belonging to the new H0-H2 modules.
+-- Audit every declaration belonging to the four H1-H2 implementation modules.
 import SerrePositivity.HomotopicalAlgebra.Foundations
 import Lean.Util.CollectAxioms
 
@@ -6,10 +6,13 @@ open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
+  let expected := #[`SerrePositivity.HomotopicalAlgebra.Quillen.Adjunction,
+    `SerrePositivity.HomotopicalAlgebra.Under.ModelCategory,
+    `SerrePositivity.CategoryTheory.MorphismProperty.UnderFactorization,
+    `SerrePositivity.CategoryTheory.LiftingProperties.Under]
   let mut declarations : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
-    if name.isInternalDetail then continue
     let some idx := env.getModuleIdxFor? name | continue
     let mod := env.header.modules[idx.toNat]!.module
     unless #[`SerrePositivity.HomotopicalAlgebra,
@@ -23,5 +26,7 @@ run_cmd do
     declarations := declarations + 1
     unless modules.contains mod do modules := modules.push mod
   if declarations == 0 then throwError "No homotopical foundations declarations were audited"
+  for mod in expected do
+    unless modules.contains mod do throwError "Required module was not audited: {mod}"
   logInfo m!"Homotopical foundations audit passed: {declarations} declarations in {modules.size} modules."
   logInfo "Standard axioms only; no sorry or citation dependencies."
