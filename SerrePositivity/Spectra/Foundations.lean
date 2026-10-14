@@ -40,6 +40,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.FreeMonoidal
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHom
 public import SerrePositivity.Spectra.SymmetricSpectrum.Closed
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomFunctor
+public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomFree
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomUnderlying
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeLeft
 
@@ -154,9 +155,12 @@ F_m XとF_n Yの球面上のテンソル積をF_(m+n)(X⊗Y)へ比較する自�
 内部Homの前合成と二変数関手性を公開し、評価・転置との両立を証明した。
 球面からの内部Hom関手と恒等関手の自然同型、順逆の比較の公式を構成した。
 
+自由スペクトルからの内部Homの基礎対称列を、生成対称列からの通常の内部Homへ比較した。
+比較で球面作用を移送し、スペクトルとしての同型とF_nへの特殊化を構成した。
+
 ## 未構成の範囲
 
-自由スペクトルとの内部Homの比較、
+自由原変数の内部Hom比較の両変数に関する自然性と移送した作用の簡約、
 モデル構造と導来演算は引き続き実装する。
 この入口は完成済みの§4の降下入力を変更せず、基盤を独立に検証するためのもの。
 現在の構成に新しい未証明入力はない。
