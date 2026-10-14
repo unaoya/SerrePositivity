@@ -3005,3 +3005,26 @@ raw根変数のδ値零と根関係を使い、最初の根のp乗と零段の�
 この射を既存完備化/perfection・完全prism候補へ適用する工程と、
 標準射の完全忠実平坦性を証明する工程は区別する。
 一般B4、相対正則性・Torと完備化/perfectionのCFFは未完成。
+
+## B4-6：根δ除算包から完全δ環の通常商への互換根族（2026-10-15）
+
+`DeltaRootAdjoinCompatibleRoots.lean`で、raw根添加環から指定した完全δ環への
+δ射と、その先の通常環射を入力とする具体的根族を構成した。
+零段を指定元の係数像とし、以降をraw根変数の像への逆Frobenius列の像とした。
+raw根変数のδ値零がδ射で保存されること、零段・後続段の具体式を証明した。
+dの像が通常環射で零となる仮定の下、最初の根のp乗は零段に一致し、
+以降も全段で互換p冪根条件を満たすことを証明した。
+商にδ構造は仮定せず、根列の同等の述語も新設していない。
+5公開宣言の対象3272ジョブ、pure B4監査、全体4750ジョブ成功。
+全体は共有側の既存警告を含む。標準3公理のみ、新sorry・公理・引用なし。
+完全δ環の具体的根列はcda9c6aで個別コミット済み。
+これは実際の根列の構成であり、標準射の完全忠実平坦性はまだ結論していない。
+
+次のBS専用予定`DeltaRootPerfectoidCandidate.lean`で、既存PCompletedDeltaDivision、
+perfectDeltaPDPrismおよびそのperfectoid商APIを用いて、根族を持つ具体的
+perfectoid候補と基底射を構成する。源rank-one多項式δ環のCdのdistinguished性、
+各標準δ射との図式を供給し、今回の根族をその商に適用する。
+既存の完備化・prism・IsIntegralPerfectoidを再利用し、一般定義は重複しない。
+候補のperfectoid性・根列の存在と、基底射のCFFは分けて報告する。
+CFFに必要な相対正則性・Koszul/DerivedTensorの比較と完備化/perfectionの
+性質を証明する工程、一般B4・André引用解消は未完成。
