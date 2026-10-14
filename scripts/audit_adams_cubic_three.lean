@@ -1,4 +1,4 @@
-import SerrePositivity.PerfectComplex.CochainCyclicThree
+import SerrePositivity.PerfectComplex.TensorTripleCyclicSumEigen
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.CochainCubicAction.eigenvector_comp_projectorMap
@@ -36,3 +36,12 @@ assert_no_sorry SerrePositivity.cochainCyclicThreeVector_reconstruction
 
 assert_no_sorry SerrePositivity.cochainCyclicThreeEigenIso
 #print axioms SerrePositivity.cochainCyclicThreeEigenIso
+
+assert_no_sorry SerrePositivity.cochainTensorCyclicSumStandardIso
+#print axioms SerrePositivity.cochainTensorCyclicSumStandardIso
+
+assert_no_sorry SerrePositivity.cochainTensorCyclicSumStandardIso_rotation
+#print axioms SerrePositivity.cochainTensorCyclicSumStandardIso_rotation
+
+assert_no_sorry SerrePositivity.cochainTensorCyclicSumEigenIso
+#print axioms SerrePositivity.cochainTensorCyclicSumEigenIso
