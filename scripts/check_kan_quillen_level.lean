@@ -22,6 +22,11 @@ example : HasQuillenPullbackHom
   pointedSimplicial_SM7 kanQuillenModel_cofibrations kanQuillenModel_fibrations
 example : ModelCategory SymmetricSpectrum.{u} := circleSpectrumLevelModel
 example : let := circleSpectrumLevelModel.{u}
+    MonoidalModelCategory SymmetricSpectrum.{u} := circleSpectrumLevelModel_monoidal
+example : let := circleSpectrumLevelModel.{u}
+    HasQuillenPullbackHom (MonoidalClosed.internalHom (C := SymmetricSpectrum.{u})) :=
+  circleSpectrumLevelModel_SM7
+example : let := circleSpectrumLevelModel.{u}
     ModelGeneration.CofibrantlyGenerated.{u} simplicialLevelI.{u} simplicialLevelJ.{u} :=
   circleSpectrumLevelModel_generated
 example (n : ℕ) : let := circleSpectrumLevelModel.{u}

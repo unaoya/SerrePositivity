@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.Inputs.Homotopy.KanQuillen
 public import SerrePositivity.Spectra.ModelCategory.SimplicialLevel
+public import SerrePositivity.Spectra.ModelCategory.SimplicialLevelTensor
 
 /-! # Applying HT-KQ to the proved simplicial level construction
 
@@ -28,5 +29,19 @@ lemma circleSpectrumLevelModel_generated :
   let : ModelCategory SSet.{u} := kanQuillenModel
   exact simplicialLevelModelCategory_generated
     kanQuillenModel_cofibrations kanQuillenModel_fibrations
+
+lemma circleSpectrumLevelModel_monoidal :
+    let := circleSpectrumLevelModel.{u}
+    Quillen.MonoidalModelCategory SymmetricSpectrum.{u} := by
+  let : ModelCategory SSet.{u} := kanQuillenModel
+  exact simplicialLevelTensor_monoidalModel
+    kanQuillenModel_cofibrations kanQuillenModel_fibrations
+
+lemma circleSpectrumLevelModel_SM7 :
+    let := circleSpectrumLevelModel.{u}
+    Quillen.HasQuillenPullbackHom
+      (MonoidalClosed.internalHom (C := SymmetricSpectrum.{u})) := by
+  let : ModelCategory SSet.{u} := kanQuillenModel
+  exact simplicialLevelTensor_SM7 kanQuillenModel_cofibrations kanQuillenModel_fibrations
 
 end SerrePositivity.Inputs.Homotopy
