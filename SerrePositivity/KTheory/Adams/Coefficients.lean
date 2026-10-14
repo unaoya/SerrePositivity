@@ -72,6 +72,19 @@ lemma coefficientEnlarge_comp {V : TopologicalSpace.Closeds (PrimeSpectrum R)}
   unfold coefficientEnlarge
   rw [g0CoefficientMap_comp, enlarge_comp]
 
+lemma coefficientEnlarge_refl : coefficientEnlarge E (le_refl Y) = LinearMap.id := by
+  unfold coefficientEnlarge
+  rw [enlarge_refl]
+  ext a
+  rfl
+
+lemma coefficientEnlarge_injective_of_eq (h : Y ≤ Y') (he : Y = Y') :
+    Function.Injective (coefficientEnlarge E h) := by
+  subst Y'
+  change Function.Injective (coefficientEnlarge E (le_refl Y))
+  rw [coefficientEnlarge_refl]
+  exact fun _ _ h => h
+
 lemma coefficientMap_comp {T : Type u} [CommRing T] (φ : R →+* S) (ψ : S →+* T)
     (Y : TopologicalSpace.Closeds (PrimeSpectrum R))
     (W : TopologicalSpace.Closeds (PrimeSpectrum S))

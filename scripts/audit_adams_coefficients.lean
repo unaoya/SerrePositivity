@@ -1,4 +1,4 @@
-import SerrePositivity.KTheory.Adams.Coefficients
+import SerrePositivity.KTheory.Adams.Family
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.integerPairing
@@ -18,3 +18,11 @@ assert_no_sorry SerrePositivity.K0WithSupport.coefficientEuler_tmul
 #print axioms SerrePositivity.K0WithSupport.coefficientCup_tmul
 #print axioms SerrePositivity.K0WithSupport.coefficientCup_map
 #print axioms SerrePositivity.K0WithSupport.coefficientEuler_tmul
+
+assert_no_sorry SerrePositivity.K0WithSupport.coefficientEnlarge_refl
+assert_no_sorry SerrePositivity.K0WithSupport.coefficientEnlarge_injective_of_eq
+assert_no_sorry SerrePositivity.Adams.SupportedAdams
+assert_no_sorry SerrePositivity.Adams.LocalizationAdamsFamily
+assert_no_sorry SerrePositivity.Adams.koszulClass_zero_enlarge
+assert_no_sorry SerrePositivity.Adams.SupportedAdams.koszul
+#print axioms SerrePositivity.Adams.SupportedAdams.koszul

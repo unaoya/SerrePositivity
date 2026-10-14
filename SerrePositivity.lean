@@ -388,7 +388,7 @@ public import SerrePositivity.PerfectComplex.InvolutionShortExact
 public import SerrePositivity.KTheory.Adams.KoszulSequenceNormalization
 public import SerrePositivity.KTheory.Adams.SupportNaturality
 public import SerrePositivity.KTheory.Adams.BaseChangeNaturality
-public import SerrePositivity.KTheory.Adams.Coefficients
+public import SerrePositivity.KTheory.Adams.Family
 public import SerrePositivity.KTheory.Adams.TensorSquareMultiplicativity
 public import SerrePositivity.PerfectComplex.IdempotentTensor
 public import SerrePositivity.PerfectComplex.IdempotentImageFunctor
