@@ -329,6 +329,7 @@ public import SerrePositivity.PerfectComplex.ClosedSupportK0
 public import SerrePositivity.PerfectComplex.ClosedSupportComparison
 public import SerrePositivity.PerfectComplex.ClosedSupportFunctoriality
 public import SerrePositivity.PerfectComplex.ClosedSupportRelations
+public import SerrePositivity.KTheory.SupportedModule
 public import SerrePositivity.PerfectComplex.Closure
 public import SerrePositivity.PerfectComplex.K0
 public import SerrePositivity.PerfectComplex.NormalizedEuler
