@@ -48,6 +48,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomShift
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomShiftStructure
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomShiftSuspension
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomShiftNaturality
+public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomShiftZero
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomUnderlying
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeLeft
 
@@ -192,9 +193,13 @@ F_nからの内部Homの構造射にも各段の比較を介してこの直接�
 比較の自然性は一般の係数加群の各段の補題として公開した。
 球面係数について、構造射・懸垂射の直接公式の両変数自然性を証明した。
 
+空の生成ブロックの交換を、左単位子と零加法による次数移送へ簡約した。
+生成次数n=0では各段を値域の同じ段への通常の内部Homへ比較し、
+構造射・懸垂射を添字の置換を含まない直接公式で記述した。F_0からの内部Homにも接続した。
+
 ## 未構成の範囲
 
-生成次数n=0の場合の直接公式への特殊化、モデル構造と導来演算は引き続き実装する。
+各段の通常の内部Homの対称列を使ったスペクトル全体の比較、モデル構造と導来演算は引き続き実装する。
 この入口は完成済みの§4の降下入力を変更せず、基盤を独立に検証するためのもの。
 現在の構成に新しい未証明入力はない。
 -/

@@ -4,6 +4,7 @@ Mathlibの `CategoryTheory.Mod` を、構成済みの球面対称列へ適用す
 基礎圏は基点付き単体的集合の対称列、テンソル積は登録済みのconvolutionである。
 各段の対象は基点付き単体的集合であり、球面の作用から和次数への構造射を得る。
 
+- [InternalHomShiftZero](InternalHomShiftZero.lean)：生成次数零の各段の比較、添字の置換を含まない構造射・懸垂射の直接公式とF_0への適用。
 - [InternalHomShiftNaturality](InternalHomShiftNaturality.lean)：次数をずらした内部Homの両変数の射、構造射・懸垂射の直接公式の自然性。
 - [InternalHomShiftSuspension](InternalHomShiftSuspension.lean)：値域の懸垂構造射による内部Homの直接公式、次数移送と第一球面の公式との一致。
 - [InternalHomShiftStructure](InternalHomShiftStructure.lean)：値域の構造射と添字のブロック交換による内部Homの構造射の直接公式。
@@ -112,6 +113,9 @@ F_nからの内部Homの懸垂構造射にも各段の比較を介して適用�
 各段の成分は通常の内部Homの前合成と後合成である。
 比較の自然性は対称列側の一般の係数加群の各段の補題で公開する。
 構造射・懸垂構造射の直接公式の両変数に関する自然性も証明した。
+生成次数零では空のブロックとの交換を次数の等式による移送へ簡約できる。
+各段を値域の同じ段への通常の内部Homへ比較すると、構造射・懸垂射の直接公式に添字の置換は入らない。
+F_0からの内部Homの各段の比較も構成し、その構造射・懸垂射がこの直接公式に移ることを証明した。
 
 球面の第n段は円の反復smashである。境界を潰した単体的球面との比較は別の課題として扱う。
 弱同値、モデル構造、導来smash、安定ホモトピー群はまだ登録していない。
