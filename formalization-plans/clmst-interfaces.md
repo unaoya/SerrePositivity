@@ -17,14 +17,16 @@ T0〜T3は達成した設計・工程の記録として読む。末尾の「続�
 
 ## 現在の受渡し状況（2026-10-14更新）
 
-C1（標準完備塔）・F1・F2・F3・F4・F5は完了済み。
+C1（標準完備塔）・F1〜F6は完了済み。
 F3は元の二座標Koszul完備化の実際のH⁰に可換環構造を与え、
 元の標準写像との一致、標準作用に関する両座標の導来完備性、
 完備離散環への任意の環準同型の一意延長、反復環との比較を証明した。
 公開入口は[`PDCompletion.lean`](../SerrePositivity/HomologicalAlgebra/DerivedCompletion/PDCompletion.lean)。
 一般の三座標以上への拡張とδ構造の延長は別工程。
 F4は`StrictPRecovery`で零環を含むWitt復元、標準商図式、一意性を供給済み。
-検証は`scripts/audit_f4.lean`。残る追加要求F6・F7も共通側が担当する。
+検証は`scripts/audit_f4.lean`。
+F6は`PerfectionPrincipalQuotientKernel`で一般主イデアル商の核を生成する公式まで供給済み。
+標準写像の署名、非正則元、零環の商の検証は`scripts/audit_f6.lean`。残る追加要求F7は共通側が担当する。
 F5は[主計画§9.3](clmst.md)で
 一般加群の分離性、導来／古典的比較、主イデアル商、BS適用監査の5単位を完了した。
 公開入口は`AdicBoundedTorsionQuotient`、BSの既存ねじれ入力との接続は`scripts/audit_f5.lean`で監査する。

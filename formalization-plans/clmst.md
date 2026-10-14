@@ -1,6 +1,6 @@
 # CLMST とその準備の形式化計画
 
-作成日：2026-10-13。更新日：2026-10-14。状態：必要な数値結果・Serre接続・標準完備塔を実装済み。F3・F4・F5の公開APIまで実装済み。次はF6・F7とBS成果の接続。
+作成日：2026-10-13。更新日：2026-10-14。状態：必要な数値結果・Serre接続・標準完備塔を実装済み。F3〜F6の公開APIまで実装済み。次はF7とBS成果の接続。
 原典は `paper/refs/CLMST-2209.04046v4.pdf`（手元のみ）と
 [同じ版の HTML](https://arxiv.org/html/2209.04046v4)。実装の到達点は §0 に記す。
 
@@ -76,15 +76,20 @@ K群の二つの降下は従来どおり別作業に保留する。
   公開入口は[`StrictPRecovery.lean`](../SerrePositivity/CommutativeAlgebra/StrictPRecovery.lean)。
   零環を含み、剰余環のCharP・非零性・非単元性を公開仮定に追加しない。
   一般の完全標数p環からの指定した剰余写像の一意なWitt持上げも提供する。
-- BSからの追加要求F6（一般主イデアル商のperfection核）、F7（Fontaine核進分離性）を共通側の作業へ登録する。
+- F6は任意の主イデアル商のperfection第0射影核を、標準Perfection.liftの像で生成する公式まで証明済み。
+  公開入口は[`PerfectionPrincipalQuotientKernel.lean`](../SerrePositivity/CommutativeAlgebra/PerfectionPrincipalQuotientKernel.lean)。
+  生成元の正則性・Noether性・整域性を要求せず、互換商の列をイデアル内の根で補正した。
+  零環の商はCharPを追加せず、元の互換列の核と割り切れ性を別の公開定理で扱う。
+- BSからの追加要求F7（Fontaine核進分離性）を共通側の作業へ登録する。
   型・受入条件・優先順は§9に記す。要求の登録を証明の受領とは扱わない。
 - 導来テンソル・完全平坦性・絶対整閉と両立冪根の一般APIを準備した。
   André拡大そのものは別の名前付き引用であり、主定理へ到達しない。
   これをB4の無条件な証明として数えない。
 
-2026-10-14のF4完成確認：全体ビルド4327ジョブ、`scripts/audit_clmst.lean`と
-`scripts/audit_axioms.lean`とF4適用用の`scripts/audit_f4.lean`が成功した。
-F4の全18公開宣言と適用監査5宣言の`assert_no_sorry`も成功。
+2026-10-14のF6完成確認：全体ビルド4333ジョブ、`scripts/audit_clmst.lean`と
+`scripts/audit_axioms.lean`とF6適用用の`scripts/audit_f6.lean`が成功した。
+F6の全19公開宣言と適用監査7宣言の`assert_no_sorry`も成功。
+F4の全18公開宣言と適用監査5宣言も引き続き証明済み。
 F5の全13公開宣言と適用監査4宣言も引き続き証明済み。
 主定理の未証明入力は上記7宣言。
 抽象化レビューと旧条件付きAPIの整理の記録は
@@ -2397,7 +2402,7 @@ L1 は推移的にも `Paper/` を import しない。
 BS側はδ環・prism・商のperfectoid化の存在B3、全射性B4、冪等性B5を担当する。
 C1・F1・F2を再実装する工程はない。既存の共通定義・公開入口を維持する。
 
-F3・F4・F5は完了した。次の主作業はF6とし、その後にF7を進める。
+F3〜F6は完了した。次の主作業はF7とする。
 これは着手の優先順であって、F4・F6・F7がすべてF3の完成を数学的に要するという意味ではない。
 各要求に具体的な障害がある場合はその不足を記録し、独立した要求を進められる。
 新しい引用を追加して待合せを解除したことにはしない。
@@ -2579,9 +2584,9 @@ F4-3 `0ac751f`、F4-4 `d0676da`。
 公開入口の共通側importは3モジュールで、BS・Inputs・Paper層への依存なし。
 新しい引用・公理・sorryを追加していない。
 
-### 9.5. F6：一般主イデアル商のperfection射影核
+### 9.5. F6：一般主イデアル商のperfection射影核（完了）
 
-状態：F6-1〜3完了（2026-10-14）。一般主イデアル商の核の両包含、標準Perfection.liftとの一致、CharPを追加しない零環の商の枝まで証明。対象ビルドと全公開宣言の`assert_no_sorry`成功。F6-4の適用・全体監査は未完了。
+状態：F6-1〜4完了（2026-10-14）。一般主イデアル商の核の両包含、標準Perfection.liftとの一致、CharPを追加しない零環の商の枝まで証明。公開19宣言と専用監査7宣言の`assert_no_sorry`、全体ビルド4333ジョブ、CLMST・公理・F6適用監査が成功。
 完全標数p可換環kの任意の元aとQ=k/(a)、商写像qについて、
 `L := Perfection.lift p k Q q`とし、
 `RingHom.ker (Perfection.coeff Q p 0) = Ideal.span {L a}`を証明する。
@@ -2608,6 +2613,16 @@ J内のp乗根を再帰的に選び、この誤差を補正することでperfec
 BS・Inputs・Paper層の証明を共通層へ依存させない。証明経路はLeanの各ステップで検証し、
 互換列の存在を未証明の仮定として残さない。
 
+F6公開API：`perfection_lift_principal_quotient_kernel`はBS要求の
+`Perfection.lift p k Q q`をそのまま使う署名。
+`perfection_principal_quotient_coeff_zero_kernel_eq_span`は名前付き標準写像版、
+`perfection_principal_quotient_zero_branch`はCharPのない零環の商の互換列版。
+専用監査[`scripts/audit_f6.lean`](../scripts/audit_f6.lean)でBS署名、零環の商、
+積環の非正則元(1,0)、旧APIへの特殊化を確認した。
+ステップコミット：計画`e658c8d`、F6-1 `b2adb98`、F6-2 `96853fa`、F6-3 `d8f5e1a`。
+公開入口の共通側importは3モジュールで、BS・Inputs・Paper層への依存なし。
+新しい引用・公理・sorryを追加していない。次はF7のFontaine核進分離性。
+
 ### 9.6. F7：Fontaine核イデアル進分離性
 
 p正則・p進完備な整perfectoid環Sについて、
@@ -2628,7 +2643,7 @@ p進分離性やθの全射性だけから、核進分離性を自動生成し�
 | 2：F5-b（完了） | p正則・p進完備なAの正則商A/(d)へ適用 | cokernelの導来完備性、係数制限、環の古典的完備性を接続。BS側の有界ねじれ入力だけを残す |
 | 3：F4-a（完了） | 完全なA/(p)からWitt持上げを構成 | Teichmüller代表とp進展開の両立、mod p図式、既存Fontaine写像との整合を証明 |
 | 4：F4-b（完了） | Witt復元同型と一意性 | p正則性と完備性から単射・全射を証明し、零環を含む。持上げの一意性を公開 |
-| 5：F6 | 非正則元の主イデアル商のperfection核 | 座標ごとの割り切れ性から互換列を構成し、核の両包含を証明。零環の枝を明示 |
+| 5：F6（完了） | 非正則元の主イデアル商のperfection核 | 座標ごとの割り切れ性から互換列を構成し、核の両包含を証明。零環の枝を明示 |
 | 6：F7 | Fontaine核進分離性 | 核生成元の冪のフィルトレーションを比較し、冪の共通部分が零であることを証明 |
 
 各単位で対象ビルドと公開宣言の`assert_no_sorry`を実行し、証明・監査・計画を

@@ -246,6 +246,7 @@ public import SerrePositivity.LengthAlgebra.OrdinaryKoszulEuler
 public import SerrePositivity.Paper.Statement
 public import SerrePositivity.CommutativeAlgebra.RootTower.CompletedFrobenius
 public import SerrePositivity.CommutativeAlgebra.PerfectionPrincipalKernel
+public import SerrePositivity.CommutativeAlgebra.PerfectionPrincipalQuotientKernel
 public import SerrePositivity.CommutativeAlgebra.PrincipalQuotientAnnihilator
 public import SerrePositivity.CommutativeAlgebra.CompatibleRootsTilt
 public import SerrePositivity.CommutativeAlgebra.CompatibleRootsPerfectoid
