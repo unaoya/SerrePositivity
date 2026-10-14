@@ -19,7 +19,7 @@ variable (R : Type u) [CommRing R]
 
 /-- 任意の複体の第n主元Koszul剰余。環商による導来底変換とは区別する。 -/
 abbrev complexPowerKoszulStage (a : R) (K : CochainComplex (ModuleCat.{u} R) ℤ) (n : ℕ) :=
-  (scalarConeFunctor (a ^ n)).obj K
+  CochainComplex.mappingCone (smulId (a ^ n) K)
 
 /-- 冪を一段下げる標準のKoszul遷移。 -/
 def complexPowerKoszulTransition (a : R) (K : CochainComplex (ModuleCat.{u} R) ℤ) (n : ℕ) :
@@ -42,11 +42,14 @@ def complexPowerKoszulTransition (a : R) (K : CochainComplex (ModuleCat.{u} R) �
 def complexPowerKoszulProductFunctor (a : R) :
     CochainComplex (ModuleCat.{u} R) ℤ ⥤ CochainComplex (ModuleCat.{u} R) ℤ where
   obj K := piObj (complexPowerKoszulStage R a K)
-  map f := complexTowerProductMap R (fun n ↦ (scalarConeFunctor (a ^ n)).map f)
+  map {K L} f := complexTowerProductMap R
+    (K := complexPowerKoszulStage R a K) (L := complexPowerKoszulStage R a L)
+    (fun n ↦ (scalarConeFunctor (a ^ n)).map f)
   map_id K := by
     apply Pi.hom_ext
     intro n
-    simp [complexTowerProductMap_projection]
+    simp only [complexTowerProductMap_projection, CategoryTheory.Functor.map_id]
+    exact Category.comp_id _
   map_comp f g := by
     apply Pi.hom_ext
     intro n

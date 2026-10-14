@@ -1,6 +1,6 @@
 import SerrePositivity.HomologicalAlgebra.DerivedTensorRealization
 import SerrePositivity.HomologicalAlgebra.DerivedTensorBaseChange
-import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletion
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletionNaturality
 import Mathlib.Util.AssertNoSorry
 
 -- G2-1: every explicit public declaration, including the maps and natural comparisons.
@@ -126,3 +126,43 @@ example (R : Type) [CommRing R] (a : R) (K : CochainComplex (ModuleCat R) ℤ) :
 
 #print axioms SerrePositivity.DerivedCompletion.complexCompletionObject_isComplete
 #print axioms SerrePositivity.DerivedCompletion.complexCompletionUnit_comp_projection
+
+-- G2-3b, first part: quasi-isomorphism invariance and the actual derived functor and unit.
+assert_no_sorry SerrePositivity.DerivedCompletion.cochainMappingConeFunctor_map_eq
+assert_no_sorry SerrePositivity.DerivedCompletion.cochainMappingConeFunctor_inl
+assert_no_sorry SerrePositivity.DerivedCompletion.cochainMappingConeFunctor_map_quasiIso
+assert_no_sorry SerrePositivity.DerivedCompletion.complexTowerProductMap_homology
+assert_no_sorry SerrePositivity.DerivedCompletion.complexTowerProductMap_quasiIso
+assert_no_sorry SerrePositivity.DerivedCompletion.scalarConeFunctor_map_quasiIso
+assert_no_sorry SerrePositivity.DerivedCompletion.complexCompletionFunctor_map_quasiIso
+assert_no_sorry SerrePositivity.DerivedCompletion.complexCompletionFunctor_inverts_quasiIso
+assert_no_sorry SerrePositivity.DerivedCompletion.derivedComplexCompletionFunctor
+assert_no_sorry SerrePositivity.DerivedCompletion.derivedComplexCompletionComparison
+assert_no_sorry SerrePositivity.DerivedCompletion.derivedComplexCompletionComparison_naturality
+assert_no_sorry SerrePositivity.DerivedCompletion.derivedComplexCompletionFunctor_isComplete
+assert_no_sorry SerrePositivity.DerivedCompletion.complexPowerKoszulProductInclusion_naturality
+assert_no_sorry SerrePositivity.DerivedCompletion.complexCompletionUnit_naturality
+assert_no_sorry SerrePositivity.DerivedCompletion.complexCompletionUnitNatTrans
+assert_no_sorry SerrePositivity.DerivedCompletion.complexCompletionUnitDerivedInput
+assert_no_sorry SerrePositivity.DerivedCompletion.derivedComplexCompletionUnit
+assert_no_sorry SerrePositivity.DerivedCompletion.derivedComplexCompletionUnit_comparison
+
+-- The output and unit live in the actual derived category, for every derived object.
+example (R : Type) [CommRing R] (a : R) (X : ConcreteDerivedCategory R) :
+    IsComplete R a ((derivedComplexCompletionFunctor R a).obj X) :=
+  derivedComplexCompletionFunctor_isComplete R a X
+
+example (R : Type) [CommRing R] (a : R) {X Y : ConcreteDerivedCategory R} (f : X ⟶ Y) :
+    f ≫ (derivedComplexCompletionUnit R a).app Y =
+      (derivedComplexCompletionUnit R a).app X ≫ (derivedComplexCompletionFunctor R a).map f :=
+  (derivedComplexCompletionUnit R a).naturality f
+
+example (R : Type) [CommRing R] (a : R) (K : CochainComplex (ModuleCat R) ℤ) :
+    (derivedComplexCompletionUnit R a).app (DerivedCategory.Q.obj K) ≫
+      (derivedComplexCompletionComparison R a).hom.app K =
+        DerivedCategory.Q.map (complexCompletionUnit R a K) :=
+  derivedComplexCompletionUnit_comparison R a K
+
+#print axioms SerrePositivity.DerivedCompletion.complexCompletionFunctor_map_quasiIso
+#print axioms SerrePositivity.DerivedCompletion.derivedComplexCompletionFunctor_isComplete
+#print axioms SerrePositivity.DerivedCompletion.derivedComplexCompletionUnit_comparison
