@@ -19,6 +19,7 @@
 - [PowerBijectionAppend](PowerBijectionAppend.lean)：連結を全単射圏上の一つの自然変換へまとめる。
 - [BraidingPreservation](BraidingPreservation.lean)：モノイダル関手のbraidingの保存をテンソル積へ拡張する。
 - [FreeModule](FreeModule.lean)：一般のモノイド対象上の自由内部加群、生成元によるHom同値、忘却関手との随伴。
+- [ModuleInternalHomTransportComparison](ModuleInternalHomTransportComparison.lean)：比較同型の合成による二段階の作用移送の加群比較、順逆の基礎射の公式。
 - [ModuleInternalHomTransport](ModuleInternalHomTransport.lean)：通常の内部Homの作用の同型による移送、加群の同型、移送後の評価と値域の作用の公式。
 - [ModuleInternalHomFreeNaturality](ModuleInternalHomFreeNaturality.lean)：自由原変数の比較の反変・共変自然性、通常の内部Homへの射の移送、値域の作用による作用公式。
 - [ModuleInternalHomFree](ModuleInternalHomFree.lean)：自由原変数の内部Homの基礎対象の比較、生成元上の評価公式、作用の移送と加群の同型。

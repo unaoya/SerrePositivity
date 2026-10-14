@@ -3590,3 +3590,52 @@ F_0からの内部Homの実際の構造射・懸垂射も、各段の比較の�
 ドキュメントのローカルリンクとgit diff --checkも確認した。
 集約SerrePositivity.Spectra.Foundationsのビルドは2030ジョブで成功した。
 公理監査は177モジュール・1944宣言で成功し、標準公理のみでsorry依存なしを確認した。
+
+## 77. 実施記録：各段の通常の内部Homを持つcotensorスペクトル（2026-10-14）
+
+### 次数をずらさない対称列全体の比較
+
+[UnshiftedInternalHom](../SerrePositivity/Spectra/SymmetricSequence/UnshiftedInternalHom.lean)で、
+各段でXからの通常の内部Homを取る対称列unshiftedInternalHomを構成した。
+添字圏の左単位子を値域の関手と内部Homの関手で写し、
+生成次数零のshiftedInternalHomからの対称列全体の同型を構成した。
+自然性は添字圏の左単位子の自然性から導く。
+各段の順逆の成分は零加法による値域の次数移送の後合成に一致する。
+
+### 二つの比較同型による作用移送
+
+[ModuleInternalHomTransportComparison](../SerrePositivity/CategoryTheory/Monoidal/ModuleInternalHomTransportComparison.lean)で、
+最初の同型で作用を移した加群と、二つの同型を合成して作用を移した加群の比較を構成した。
+その基礎射の順逆が二段目の同型の順逆に一致することを証明した。
+この一般論は余等化子やその保存を要求しない。
+
+### cotensorスペクトルとF_0からの内部Hom
+
+[Cotensor](../SerrePositivity/Spectra/SymmetricSpectrum/Cotensor.lean)で、
+各段の通常の内部Homの対称列へ球面作用を移し、cotensor X Eをスペクトルとして構成した。
+その第q段はXからEの第q段への通常の内部Homと定義的に一致する。
+置換作用は値域の同じ段の置換による後合成として記述した。
+
+shiftedHom 0 X Eとcotensor X Eのスペクトル全体の同型を構成した。
+既存の比較と合成し、F_0 Xからの内部Homとのスペクトル全体の同型を構成した。
+両方の比較の順逆の第q成分が、前段階の各段の比較の順逆に一致することを証明した。
+
+比較の構造射・懸垂射との両立と、各段の比較の直接公式を使い、
+cotensorの実際の構造射・懸垂射が値域の対応する射と通常の評価から作る直接公式に一致すると証明した。
+集約Foundationsと共通層・スペクトルのREADMEに入口と到達点を追加した。
+
+### 到達点と次の範囲
+
+各段の通常の内部Homを持つ対称列を、球面作用を持つスペクトルとして束ねられた。
+F_0からの内部Homとの比較を全体の同型へ持ち上げ、構造射・懸垂射の直接公式も接続した。
+次はcotensorの両変数の射と比較の自然性、tensor/cotensorの随伴を整える。
+弱同値・モデル構造・導来演算・安定ホモトピー群は引き続き未実装である。
+共有ルートimport・依存設定・並行作業の可換環・CLMST関連ファイルは変更していない。
+定理3.1・補題4.6の二つの降下入力は未変更である。
+
+### 検証
+
+新しい三つのLeanソースの行長・末尾空白・未完了の証明用マーカーを確認した。
+ドキュメントのローカルリンクとgit diff --checkも確認した。
+集約SerrePositivity.Spectra.Foundationsのビルドは2033ジョブで成功した。
+公理監査は180モジュール・1966宣言で成功し、標準公理のみでsorry依存なしを確認した。
