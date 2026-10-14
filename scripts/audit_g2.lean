@@ -1,6 +1,7 @@
 import SerrePositivity.HomologicalAlgebra.DerivedTensorRealization
 import SerrePositivity.HomologicalAlgebra.DerivedTensorBaseChange
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletionNaturality
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ConstantTower
 import Mathlib.Util.AssertNoSorry
 
 -- G2-1: every explicit public declaration, including the maps and natural comparisons.
@@ -166,3 +167,30 @@ example (R : Type) [CommRing R] (a : R) (K : CochainComplex (ModuleCat R) ℤ) :
 #print axioms SerrePositivity.DerivedCompletion.complexCompletionFunctor_map_quasiIso
 #print axioms SerrePositivity.DerivedCompletion.derivedComplexCompletionFunctor_isComplete
 #print axioms SerrePositivity.DerivedCompletion.derivedComplexCompletionUnit_comparison
+
+-- G2-3b-ii, preparation: reconstruct every complex from the identity-transition tower.
+assert_no_sorry SerrePositivity.DerivedCompletion.constantComplexTower
+assert_no_sorry SerrePositivity.DerivedCompletion.constantComplexTowerUnit
+assert_no_sorry SerrePositivity.DerivedCompletion.constantComplexTowerUnit_comp_projection
+assert_no_sorry SerrePositivity.DerivedCompletion.constantComplexTowerHomologyDifference_surjective
+assert_no_sorry SerrePositivity.DerivedCompletion.constantComplexTowerUnit_boundary
+assert_no_sorry SerrePositivity.DerivedCompletion.constantComplexTowerUnit_homology_bijective
+assert_no_sorry SerrePositivity.DerivedCompletion.constantComplexTowerUnit_quasiIso
+assert_no_sorry SerrePositivity.DerivedCompletion.constantComplexTowerUnitIso
+assert_no_sorry SerrePositivity.DerivedCompletion.constantComplexTowerUnitIso_inv
+
+-- Reconstruction uses the standard diagonal map and the actual degree-zero projection.
+example (R : Type) [CommRing R] (K : CochainComplex (ModuleCat R) ℤ) :
+    DerivedCategory.Q.obj K ≅ complexTowerHomotopyLimitObject R
+      (constantComplexTower R K) (fun _ ↦ 𝟙 K) :=
+  constantComplexTowerUnitIso R K
+
+example (R : Type) [CommRing R] (K : CochainComplex (ModuleCat R) ℤ) :
+    (constantComplexTowerUnitIso R K).inv =
+      DerivedCategory.Q.map
+        (complexTowerProjection R (constantComplexTower R K) (fun _ ↦ 𝟙 K) ≫
+          CategoryTheory.Limits.Pi.π (constantComplexTower R K) 0) :=
+  constantComplexTowerUnitIso_inv R K
+
+#print axioms SerrePositivity.DerivedCompletion.constantComplexTowerUnit_quasiIso
+#print axioms SerrePositivity.DerivedCompletion.constantComplexTowerUnitIso_inv
