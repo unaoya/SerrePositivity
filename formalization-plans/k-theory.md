@@ -4856,3 +4856,19 @@ B4全体とC2までの全体目標は未完了であり、モデル構造には�
 検証：新規ソースの書式・証明マーカー、文書のリンク、git diff --checkを確認した。
 集約ビルドは2114ジョブ、公理監査は257モジュール・2597宣言で成功した。
 標準公理のみでsorry依存なし。新しい証明は標準の計算上限で検証した。
+
+## 120. 実施記録：反復tensorの比較のパラメータ自然性（2026-10-14）
+
+[ActionProductComparison](../SerrePositivity/CategoryTheory/Monoidal/ActionProductComparison.lean)で、
+パラメータの積の比較と作用の結同比較を合成した反復作用の自然同型を一般の圏で構成した。
+積の比較の自然性と作用の結同比較の自然性から、反復比較の両変数の自然性を証明した。
+
+[SimplicialTensorProductNaturality](../SerrePositivity/Spectra/SymmetricSpectrum/SimplicialTensorProductNaturality.lean)で、
+この結果を自由基点追加とスペクトルの作用へ適用した。
+(K×L)⊗ₛE≅K⊗ₛ(L⊗ₛE)の比較は、単体的集合K・Lの両方の射について自然となる。
+前節のスペクトルの射に関する自然性と合わせ、反復tensorの比較の三変数の自然性を検証した。
+反復cotensorの比較のパラメータ自然性と、C2までの最終確認を続ける。
+
+検証：新規ソースの書式・証明マーカー、文書のリンク、git diff --checkを確認した。
+集約ビルドは2116ジョブ、公理監査は259モジュール・2602宣言で成功した。
+標準公理のみでsorry依存なし。新しい証明は標準の計算上限で検証した。
