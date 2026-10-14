@@ -1061,3 +1061,25 @@ RelativeFreeDeltaRing σ A ≃ MvPolynomial (σ×ℕ) (MvPolynomial σ A)を証�
 係数の商と変数の商の比較には既存Mathlibの多項式商APIを優先する。
 全δ段の三角形表示、実完備化/perfectionの完全忠実平坦性、
 根付きperfectoid拡大と一般B4完成は未実装。
+
+## B4-6：初期商を係数とする後続多項式の表示（2026-10-15）
+
+`DeltaDivisionFirstResiduePowerPresentation.lean`で、初期変数のみの多項式環に
+p,C(d),C(a_s)とX_s^p-C(δ(d)^{-1}δ(a_s))のイデアルを具体的に定義した。
+変数分離同型が実際の初期δ剰余イデアルを、この係数イデアルの延長へ送ることを
+証明した。Mathlib quotientEquivQuotientMvPolynomialを再利用し、
+実際の初期δ剰余と、初期多項式商上の後続変数の多項式環の同型を構成した。
+標準商射、元の係数、初期変数、後続変数上の図式も証明済み。
+同等の一般多項式商比較を作り直していない。
+8公開宣言の対象2075ジョブ、pure B4全公開宣言監査成功。
+全体4590ジョブ成功。標準3公理のみ。新sorry・公理・外部引用なし。
+
+初期多項式商をMonicPowerFamilyCoverと同定する比較はまだ必要である。
+次のBS専用予定`DeltaDivisionFirstCoefficientPowerEquiv.lean`で、
+係数イデアルI=span{p,d}⊔span{a_s}とc_s=mk_I(δ(d)^{-1}δ(a_s))を定め、
+初期多項式商とMonicPowerFamilyCover p σ (A/I) cの標準同型を証明する。
+既存の指定根の普遍性と標準商射の降下を使い、係数・根の図式を含める。
+その後、後続多項式表示へ同型を適用して、既証明の通常自由性・忠実平坦性を
+適切な係数商について接続する。元のA上の平坦性とは同一視しない。
+全δ段の三角形表示、実完備化/perfectionの完全忠実平坦性と
+根付きperfectoid拡大、一般B4の引用解消は未実装。
