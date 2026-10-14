@@ -29,6 +29,8 @@
 - [BalancedTensorFreeRight](BalancedTensorFreeRight.lean)：自由加群との右テンソル積を通常の右テンソルへ比較する加群同型、生成元の公式と二変数の自然同型。
 - [BalancedTensorFreePair](BalancedTensorFreePair.lean)：二つの自由加群の積を生成対象の積の自由加群へ比較する自然同型、結合子と生成元の公式。
 - [BalancedTensorSymmetry](BalancedTensorSymmetry.lean)：対称構造による釣り合い商の交換同型、加群作用との両立・自然性・二回交換の恒等性と単位比較との両立。
+- [BalancedTensorIterated](BalancedTensorIterated.lean)：釣り合い商の左右テンソル後の降下、商の右作用の公式と三因子の標準射・エピ性・自然性。
+- [BalancedTensorAssociator](BalancedTensorAssociator.lean)：二段の釣り合い商の結合比較、順逆の標準射の公式、加群の結合同型と三変数の自然同型。
 
 極限の構成にはテンソル積の極限保存を仮定しない。
 余極限の構成では、全ての左テンソルが対象とする図式の形の余極限を保存することを仮定する。
@@ -40,7 +42,8 @@
 自由加群を右因子とする場合、通常の右テンソルとの比較も二変数の自然同型として構成した。
 二つの自由加群の釣り合いテンソル積と、生成対象の積の自由加群との自然同型も構成した。
 対称構造から商上の交換自然同型を構成し、二回の交換の恒等性と単位比較との両立も証明した。
-結合子・交換の整合性と加群圏のモノイダル構造は今後登録する。
+左右のテンソルの余等化子保存から、反復釣り合い商の結合自然同型も構成した。
+pentagon・triangle・hexagonの整合性と加群圏のモノイダル構造は今後登録する。
 
 モノイダル構造を使わない補助結果として、
 [InitialColimits](../Limits/InitialColimits.lean) に始対象の図式の余極限の始対象性を置く。
