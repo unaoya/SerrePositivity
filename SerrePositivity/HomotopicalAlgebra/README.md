@@ -123,3 +123,50 @@ lake env lean scripts/check_homotopical_derived.lean
 コミット：H3 `7d742b4`、H4前半 `8bdb3a8`、H4後半 `8825133`。
 次はH5：Quillen bifunctor、pushout-product/pullback-hom、unit、豊穣tensor/cotensorの共有API。
 M5の具体的な複体の証明を取り込まず、任意Vの一般論として進める。
+
+## monoidal・豊穣の共有基盤H5の完了（2026-10-15）
+
+### 受入条件と実装
+
+H5（§123.6）の四つの受入条件を実装・検証した。入口は
+`SerrePositivity.HomotopicalAlgebra.Foundations`。Mathlib固定版は変更していない。
+
+| 受入条件 | 成果物・証拠 |
+| --- | --- |
+| pushout-product / pullback-hom の同値 | `Monoidal/QuillenBifunctor.lean`の`isQuillenBifunctor_iff_pullbackHom`。Mathlibの通常のparametrized adjunctionと任意のpushout/pullback square上で証明。両方のtrivial入力を扱い、flipとcofibrant対象固定によるQuillen性も証明 |
+| unit公理を独立した条件にする | `Monoidal/ModelCategory.lean`の`UnitReplacementAxiom`, `HasUnitAxiom`, `MonoidalModelCategory`。指定したcofibrant単位置換と左右tensorの弱同値を記録。cofibrant unitならidentity置換で成立。閉圏でのpullback-hom判定にもunit条件を明示 |
+| 任意Vのtensor/cotensor表現性と両立 | `CategoryTheory/Enriched/TensorCotensor.lean`。既存`EnrichedOrdinaryCategory`・`eHomFunctor`・二つのparametrized adjunctionを束ね、三つのHom同値、各三変数の自然性、相互の一致、評価・余評価・三角恒等式を証明 |
+| 一般論にSSet/Chを埋め込まない | `HomotopicalAlgebra/Enriched/TensorCotensor.lean`の二つのmodel criterionと四つの固定対象Quillen補題。V,Cは独立した宇宙の任意モデル圏。具体的圏・M5・Spectraをimportしない |
+
+普通のHom集合による表現性とV値のHom対象の表現性は別契約にした。
+`CategoryTheory/Enriched/EnrichedRepresentability.lean`は閉なVにおける
+二変数自然同型、Vパラメータの自然性、単位からの点での随伴との一致を入力とする。
+`homObjectComparison_points`はこのHom対象の比較が選んだtensor/cotensor随伴と一致することを証明する。
+普通のHom同値だけから、単位がgeneratorでない一般VでHom対象の同型を推論しない。
+
+### M5への契約と残る範囲
+
+M5はCh(A)の閉monoidal構造、具体的tensor/cotensorと既存enrichmentの表現性を供給する。
+`IsQuillenBifunctor`の証拠を供給すれば、cotensorとmappingのpullback-hom条件と、
+cofibrant対象を固定した左右Quillen性をこの共有層から得られる。
+単位がcofibrantなら`unitAxiom_of_cofibrant_unit`を使える。
+任意のdg圏にSSet豊穣構造を要求する条件は追加していない。
+
+H5完了はG5/G6全体の完了を意味しない。monoid axiom、多対象加群転送、
+基点付きsmashへのモデル構造の接続、具体的SSet/スペクトルのSM7は後続の証明対象。
+次の独立した対象構成単位はH6（一般C,KのSym(K)加群と旧特殊化比較）。
+G4局所化の二案は未選択で、M3の安定モデル構造も未完成のままである。
+
+### 検証とコミット
+
+共有入口、`Spectra.StageTwo`、`Spectra.Foundations`のビルドが成功。
+以下の利用例・監査をすべて成功確認した。
+
+- `scripts/check_homotopical_monoidal.lean`：任意squareでの双対判定、flip、canonical pushout-product/pullback-hom、別unit条件。
+- `scripts/check_enriched_tensor_cotensor.lean`：Hom同値の一致・自然性・三角恒等式、Hom対象比較の点での一致、二つのmodel criterion、四つの固定対象Quillen性。
+- 既存`check_homotopical_foundations`, `check_homotopical_transfer`, `check_homotopical_derived`, `check_spectra_stage2`を再実行。
+- `audit_homotopical_foundations`：16モジュール276宣言。任意Vの新規2モジュールも全宣言を監査対象に含む。
+- `audit_spectra`：261モジュール2612宣言。両監査とも標準公理のみでsorry・引用依存なし。
+
+コミット：H5a `3706d4a`、H5b `00604a2`、H5c `547fcb6`。
+共有ルートimport、M5、可換環論・CLMSTの担当ファイルは変更していない。

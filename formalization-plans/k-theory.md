@@ -3,10 +3,10 @@
 作成日：2026-10-13。計画更新日：2026-10-14。
 M1・M2の圏論的構成と閉対称モノイダル構造、段階1・2のA1〜C2まで実装・検証済み。
 ホモトピー論の構成、非連結K理論、定理3.1・補題4.6への接続は未完成である。
-最新の完了確認は§126（共有ホモトピー論H0〜H4）と§122（段階2）。次の実装範囲はH5。
+最新の完了確認は§127（共有ホモトピー論H0〜H5）と§122（段階2）。次の対象構成単位はH6。
 mathlibへの追加・登録は今回の完了条件に含めず、必要な構造と法則をこのリポジトリ内に実装する。
 検証済みのステップごとにコミットする。
-P1・P2と共有一般論H0〜H4は完了。M5は別チャットで進め、この系列はH5へ進む。
+P1・P2と共有一般論H0〜H5は完了。M5は別チャットで進め、この系列はH6とG5/G6の残る一般論へ進む。
 
 ## 0. 現在地と残作業の実行計画（2026-10-14更新）
 
@@ -23,7 +23,7 @@ P1・P2と共有一般論H0〜H4は完了。M5は別チャットで進め、こ�
 | M1：基点付き単体的集合 | 対象・射、smash、円・球面、閉対称モノイダル構造 | Kan–Quillenとの接続とモデル圏公理 |
 | M2：対称スペクトル | 球面加群、自由対象F_n、評価随伴、極限・余極限、閉対称モノイダル構造、作用・写像対象・単体的豊穣構造 | レベル・安定モデル構造との接続 |
 | 各段の計算 | F_0との比較、作用の単位・結合、随伴・転置・評価、懸垂・ループ・構造射の随伴表示 | モデル構造の検討後に必要となる追加計算 |
-| M3・M4：ホモトピー論 | 共通の圏論的演算、Quillen・Under・生成/右転送・導来随伴（H0〜H4） | monoidal/豊穣モデル、安定モデル、π_n、図式・固定点・有理化 |
+| M3・M4：ホモトピー論 | 共通の圏論的演算、Quillen・Under・生成/右転送・導来随伴、monoidal/豊穣の共有条件（H0〜H5） | monoid公理・加群転送・具体的SM7、安定モデル、π_n、図式・固定点・有理化 |
 | M5・M6：dg・K理論 | 既存の複体・三角圏・K₀を比較先として利用可能 | dg表示と上位モデル、環・加群、非連結K理論の具体的入力と比較 |
 | M7〜M10：本文への接続 | 既存の本文の帰結と利用先 | 支持つき降下、定理3.1、補題4.6、二つのK₀比較と保留入力の解消 |
 
@@ -5071,3 +5071,50 @@ H4利用例はMathlibの実際のtotal derived functor、任意後合成、導�
 任意Vの豊穣tensor/cotensorの共有API。G5/G6の残るmonoid axiom・加群転送・SM7へ続く。
 H6の一般スペクトルの対象定義は先行可能だが、次の主要単位はM5も利用するH5とする。
 G4局所化の二案は引き続き未選択。今回の実績だけで§123の全体工数を縮小しない。
+
+## 127. 実施記録：monoidal・豊穣の共有基盤H5の完了（2026-10-15）
+
+### 127.1 受入条件と実装
+
+H5（§123.6）の四つの受入条件を実装・検証した。入口は
+`SerrePositivity.HomotopicalAlgebra.Foundations`。Mathlib固定版は変更していない。
+
+| 受入条件 | 成果物・証拠 |
+| --- | --- |
+| pushout-product / pullback-hom の同値 | `Monoidal/QuillenBifunctor.lean`の`isQuillenBifunctor_iff_pullbackHom`。Mathlibの通常のparametrized adjunctionと任意のpushout/pullback square上で証明。両方のtrivial入力を扱い、flipとcofibrant対象固定によるQuillen性も証明 |
+| unit公理を独立した条件にする | `Monoidal/ModelCategory.lean`の`UnitReplacementAxiom`, `HasUnitAxiom`, `MonoidalModelCategory`。指定したcofibrant単位置換と左右tensorの弱同値を記録。cofibrant unitならidentity置換で成立。閉圏でのpullback-hom判定にもunit条件を明示 |
+| 任意Vのtensor/cotensor表現性と両立 | `CategoryTheory/Enriched/TensorCotensor.lean`。既存`EnrichedOrdinaryCategory`・`eHomFunctor`・二つのparametrized adjunctionを束ね、三つのHom同値、各三変数の自然性、相互の一致、評価・余評価・三角恒等式を証明 |
+| 一般論にSSet/Chを埋め込まない | `HomotopicalAlgebra/Enriched/TensorCotensor.lean`の二つのmodel criterionと四つの固定対象Quillen補題。V,Cは独立した宇宙の任意モデル圏。具体的圏・M5・Spectraをimportしない |
+
+普通のHom集合による表現性とV値のHom対象の表現性は別契約にした。
+`CategoryTheory/Enriched/EnrichedRepresentability.lean`は閉なVにおける
+二変数自然同型、Vパラメータの自然性、単位からの点での随伴との一致を入力とする。
+`homObjectComparison_points`はこのHom対象の比較が選んだtensor/cotensor随伴と一致することを証明する。
+普通のHom同値だけから、単位がgeneratorでない一般VでHom対象の同型を推論しない。
+
+### 127.2 M5への契約と残る範囲
+
+M5はCh(A)の閉monoidal構造、具体的tensor/cotensorと既存enrichmentの表現性を供給する。
+`IsQuillenBifunctor`の証拠を供給すれば、cotensorとmappingのpullback-hom条件と、
+cofibrant対象を固定した左右Quillen性をこの共有層から得られる。
+単位がcofibrantなら`unitAxiom_of_cofibrant_unit`を使える。
+任意のdg圏にSSet豊穣構造を要求する条件は追加していない。
+
+H5完了はG5/G6全体の完了を意味しない。monoid axiom、多対象加群転送、
+基点付きsmashへのモデル構造の接続、具体的SSet/スペクトルのSM7は後続の証明対象。
+次の独立した対象構成単位はH6（一般C,KのSym(K)加群と旧特殊化比較）。
+G4局所化の二案は未選択で、M3の安定モデル構造も未完成のままである。
+
+### 127.3 検証とコミット
+
+共有入口、`Spectra.StageTwo`、`Spectra.Foundations`のビルドが成功。
+以下の利用例・監査をすべて成功確認した。
+
+- `scripts/check_homotopical_monoidal.lean`：任意squareでの双対判定、flip、canonical pushout-product/pullback-hom、別unit条件。
+- `scripts/check_enriched_tensor_cotensor.lean`：Hom同値の一致・自然性・三角恒等式、Hom対象比較の点での一致、二つのmodel criterion、四つの固定対象Quillen性。
+- 既存`check_homotopical_foundations`, `check_homotopical_transfer`, `check_homotopical_derived`, `check_spectra_stage2`を再実行。
+- `audit_homotopical_foundations`：16モジュール276宣言。任意Vの新規2モジュールも全宣言を監査対象に含む。
+- `audit_spectra`：261モジュール2612宣言。両監査とも標準公理のみでsorry・引用依存なし。
+
+コミット：H5a `3706d4a`、H5b `00604a2`、H5c `547fcb6`。
+共有ルートimport、M5、可換環論・CLMSTの担当ファイルは変更していない。
