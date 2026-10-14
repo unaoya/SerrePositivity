@@ -5232,3 +5232,49 @@ M5・可換環論・CLMST・共有ルートimportは変更していない。
 段階2のCによる作用・cotensor・豊穣との表現性、段階3の生成射smallness・cell acyclicity・
 レベルモデル構造と具体的PSSへの接続が必要である。
 レベルlifting計算だけでレベルモデル構造の存在や関手的置換を完成扱いにしない。
+
+## 131. 段階1〜3の実行記録：レベル認識と生成射からの構成（2026-10-15）
+
+### 131.1 レベルモデルの一般的な構成
+
+`ModelCategory/LevelRecognition.lean`を追加した。levelPropertyは2-out-of-3とretract閉性を
+Cから継承する。定義したレベルW/Fibと、free像Iのrlp.llpによるCofの三クラス上に、
+像のsmall-object仮定とJ-cell acyclicityからMathlib ModelCategoryを構成する。
+構成後のW/Fibの一致、生成性、各段評価のright Quillen性、F_nのleft Quillen性、
+両方の関手的分解を同じモデル構造上で証明した。
+
+続いて認識定理の二つの入力を生成射のデータから導いた。
+
+| ファイル | 証明した入力 |
+| --- | --- |
+| LevelAcyclicity | 各m,nでevaluation_m(F_n(J))がtrivial cofibrationなら、free J-cell全体がレベル弱同値。評価のcolimit保存とtrivial cofibrationのcoproduct/pushout/transfinite閉性を使う。弱同値だけの閉性を仮定しない |
+| LevelSmallness | 小さい生成射クラスのstrict imageと全次数の和の集合性。生成射の始域が共通の正則κでpresentableなら、評価がκ-filtered colimitを保存するため、随伴でF_nの始域もκ-presentable。実際のIsCardinalForSmallObjectArgumentとHasSmallObjectArgumentを構成 |
+| LevelFromGenerators | 源Cの生成モデル構造、両生成射の始域のpresentability、評価した自由J生成射のtrivial cofibration性からレベルモデルを構成。像のSOAとcell acyclicityを追加仮定にしない。W/Fibの一致と生成性を公開 |
+
+Cには小さい極限余極限とwサイズ余極限、スペクトル圏にはLocallySmall.{w}を明示する。
+κはCardinal.{w}でregularとOrderBot κ.ord.ToTypeを要求する。対象・射・補助smallnessの宇宙を同一視しない。
+共通κでのpresentabilityと評価した生成射のテストは、具体的当てはめ側が検証する条件のまま。
+
+### 131.2 検証とコミット
+
+新規モジュールのビルドが成功し、ソース警告なし。
+`check_spectrum_level_model`はスペクトルモデル未装備の状態から構成し、
+三クラス・生成性・Quillen条件・関手的分解を利用する。StageTwo・H5と同時importした互換検証を含む。
+`check_spectrum_level_generators`は像のSOA/cell acyclicityを仮定せず、生成射データからの構成・生成性・関手的分解を検証する。
+同スクリプトはModelCategory配下の内部補助を含む39宣言の公理監査に成功。
+既存level class/model・一般スペクトル・StageTwoの利用例も再実行成功。
+スペクトル全体の監査は276モジュール2759公開宣言。すべて標準公理のみ、sorry・引用依存なし。
+
+コミット：レベル認識 `3e928f5`、smallness/cellと生成射からの構成 `4dbdaf1`。
+
+### 131.3 全体完了に必要な次の検証
+
+段階3の具体的完成には、自由各段の誘導・商表示を使い、cofibrantなKの冪と
+自由なブロック添字から評価した自由J生成射のtrivial cofibration性を実証する。
+PSS/円への具体的入力では、Kan–Quillenの定義済み三クラス、生成射の正確な宇宙と
+始域のpresentabilityを固定して、上記一般定理へ接続する。
+固定版ではhornのJにIsCardinalForSmallObjectArgumentの実装はあるが、
+それをSSetのModelCategory完成と読み替えない。
+
+段階1の多対象加群・具体的SM7と、段階2の作用・cotensor・豊穣との表現性も残っている。
+今回の一般的・条件付きレベル構成をもって段階1〜3全体の完了扱いにしない。
