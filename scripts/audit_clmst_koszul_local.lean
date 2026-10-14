@@ -1,5 +1,6 @@
 import SerrePositivity.CommutativeAlgebra.IdempotentImageAnnihilator
 import SerrePositivity.HomologicalAlgebra.KoszulTorComparison
+import SerrePositivity.HomologicalAlgebra.KoszulTensorConeComparison
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.ideal_le_pow_sup_of_quotient_image_idempotent
@@ -54,3 +55,42 @@ example (R : Type) [CommRing R] {n : ℕ} (z : Fin n → R) (hz : IsKoszulResolu
 #print axioms SerrePositivity.koszulTorComparison
 #print axioms SerrePositivity.koszulTorComparison_coefficient_scalar
 #print axioms SerrePositivity.koszulTorPowersComparison
+
+-- KL1b: cone comparison, coefficient actions, and the coefficient transition maps.
+assert_no_sorry SerrePositivity.additiveFunctorCofiberIsoOfEq
+assert_no_sorry SerrePositivity.additiveFunctorCofiberIsoOfEq_inv_inl
+assert_no_sorry SerrePositivity.additiveFunctorCofiberIsoOfEq_inv_inr
+assert_no_sorry SerrePositivity.linearFunctorScalarConeIso
+assert_no_sorry SerrePositivity.linearFunctorScalarConeIso_natTrans
+assert_no_sorry SerrePositivity.koszulTensorConeIso
+assert_no_sorry SerrePositivity.koszulTensorConeIso_naturality
+assert_no_sorry SerrePositivity.koszulTensorConeNatIso
+assert_no_sorry SerrePositivity.koszulModuleTorComparison
+assert_no_sorry SerrePositivity.koszulTensorCoefficientMapOfComplexMap
+assert_no_sorry SerrePositivity.koszulModuleCoefficientMapOfComplexMap
+assert_no_sorry SerrePositivity.koszulTensorConeNatIso_complex_map_compatibility
+assert_no_sorry SerrePositivity.koszulModuleCoefficientMapOfComplexMap_id
+assert_no_sorry SerrePositivity.koszulModuleCoefficientMapOfComplexMap_comp
+assert_no_sorry SerrePositivity.powerKoszulModuleTransition
+assert_no_sorry SerrePositivity.koszulTensorConeNatIso_power_transition
+assert_no_sorry SerrePositivity.koszulModuleTorComparison_naturality
+assert_no_sorry SerrePositivity.koszulModuleTorComparison_map_eq_zero_iff
+assert_no_sorry SerrePositivity.koszulModuleHomology_coefficient_scalar_eq_zero_of_tor_annihilated
+assert_no_sorry SerrePositivity.koszulModuleTorPowersComparison
+
+-- Arbitrary module maps, including endomorphisms coming from a coefficient algebra.
+example (R : Type) [CommRing R] {n : ℕ} (z : Fin n → R)
+    (M N : ModuleCat.{0} R) (f : M ⟶ N) :
+    (koszulTensorModuleFunctor z).map f ≫ (koszulTensorConeIso z N).hom =
+      (koszulTensorConeIso z M).hom ≫ (koszulModuleFunctor z).map f :=
+  koszulTensorConeIso_naturality z f
+
+-- The zero stage of the power tower is allowed; no regular sequence assumption is needed.
+example (R : Type) [CommRing R] {n : ℕ} (z : Fin n → R) :
+    koszulModuleFunctor (fun j ↦ z j ^ 1) ⟶ koszulModuleFunctor (fun j ↦ z j ^ 0) :=
+  powerKoszulModuleTransition z 0
+
+#print axioms SerrePositivity.linearFunctorScalarConeIso_natTrans
+#print axioms SerrePositivity.koszulTensorConeIso_naturality
+#print axioms SerrePositivity.koszulModuleTorComparison
+#print axioms SerrePositivity.koszulTensorConeNatIso_power_transition

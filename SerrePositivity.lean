@@ -317,6 +317,7 @@ public import SerrePositivity.HomologicalAlgebra.Tor
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorRealization
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorBaseChange
 public import SerrePositivity.HomologicalAlgebra.KoszulTorComparison
+public import SerrePositivity.HomologicalAlgebra.KoszulTensorConeComparison
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.MilnorAnnihilator
 public import SerrePositivity.HomologicalAlgebra.TwoCohomologyAnnihilator
 public import SerrePositivity.HomologicalAlgebra.ConeResolution
