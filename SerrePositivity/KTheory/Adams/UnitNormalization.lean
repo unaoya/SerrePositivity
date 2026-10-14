@@ -94,23 +94,28 @@ lemma tensorSquareUnitNegative_isZero :
     rw [← e.inclusion_map, tensorSquareUnit_negative_map, comp_zero]
   rw [IsZero.iff_id_eq_zero, ← e.inclusion_projection, hi, zero_comp]
 
-lemma tensorSquareClass_unit :
-    tensorSquareClass (oneKoszulUnit (R := R)) ⊤ oneKoszulUnit_perfect oneKoszulUnit_support =
-      cyclicUnitClass := by
-  have hpos := K0WithSupport.mk_eq_of_quasiIso ⊤
+lemma tensorSquareClass_unit_on (Z : TopologicalSpace.Closeds (PrimeSpectrum R))
+    (hs : HasHomologySupportOn Z (oneKoszulUnit (R := R))) :
+    tensorSquareClass (oneKoszulUnit (R := R)) Z oneKoszulUnit_perfect hs =
+      K0WithSupport.mk Z (supportedPerfectOnObj Z oneKoszulUnit oneKoszulUnit_perfect hs) := by
+  have hpos := K0WithSupport.mk_eq_of_quasiIso Z
     (tensorSquarePositive (oneKoszulUnit (R := R))) oneKoszulUnit
     (tensorSquarePositive_perfect _ oneKoszulUnit_perfect) oneKoszulUnit_perfect
-    (tensorSquarePositive_support oneKoszulUnit_perfect oneKoszulUnit_support)
-    oneKoszulUnit_support (tensorSquareUnitPositiveIso (R := R)).hom
+    (tensorSquarePositive_support oneKoszulUnit_perfect hs) hs
+    (tensorSquareUnitPositiveIso (R := R)).hom
   have hac : (tensorSquareNegative (oneKoszulUnit (R := R))).Acyclic :=
     (cochainAcyclic_iff_support_bot _).mpr
       (hasHomologySupportOn_of_isZero tensorSquareUnitNegative_isZero)
-  have hneg := K0WithSupport.mk_eq_zero_of_acyclic ⊤
+  have hneg := K0WithSupport.mk_eq_zero_of_acyclic Z
     (tensorSquareNegative_perfect _ oneKoszulUnit_perfect)
-    (tensorSquareNegative_support oneKoszulUnit_perfect oneKoszulUnit_support) hac
-  have he := congrArg₂ (fun x y : K0WithSupport (⊤ : TopologicalSpace.Closeds (PrimeSpectrum R)) =>
-    x - y) hpos hneg
-  exact he.trans (by simp [cyclicUnitClass])
+    (tensorSquareNegative_support oneKoszulUnit_perfect hs) hac
+  have he := congrArg₂ (fun x y : K0WithSupport Z => x - y) hpos hneg
+  exact he.trans (by simp)
+
+lemma tensorSquareClass_unit :
+    tensorSquareClass (oneKoszulUnit (R := R)) ⊤ oneKoszulUnit_perfect oneKoszulUnit_support =
+      cyclicUnitClass :=
+  tensorSquareClass_unit_on ⊤ oneKoszulUnit_support
 
 lemma cyclicTwo_unit : cyclicTwo ⊤ (cyclicUnitClass (R := R)) = cyclicUnitClass :=
   (cyclicTwo_mk_concrete ⊤ (oneKoszulUnit (R := R)) oneKoszulUnit_perfect
