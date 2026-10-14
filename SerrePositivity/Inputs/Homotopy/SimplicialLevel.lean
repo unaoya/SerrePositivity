@@ -3,6 +3,7 @@ module
 public import SerrePositivity.Inputs.Homotopy.KanQuillen
 public import SerrePositivity.Spectra.ModelCategory.SimplicialLevel
 public import SerrePositivity.Spectra.ModelCategory.SimplicialLevelTensor
+public import SerrePositivity.Spectra.ModelCategory.SimplicialLevelEnriched
 
 /-! # Applying HT-KQ to the proved simplicial level construction
 
@@ -43,5 +44,26 @@ lemma circleSpectrumLevelModel_SM7 :
       (MonoidalClosed.internalHom (C := SymmetricSpectrum.{u})) := by
   let : ModelCategory SSet.{u} := kanQuillenModel
   exact simplicialLevelTensor_SM7 kanQuillenModel_cofibrations kanQuillenModel_fibrations
+
+lemma circleSpectrumLevelModel_pointedMapping_SM7 :
+    let : ModelCategory SSet.{u} := kanQuillenModel
+    let := circleSpectrumLevelModel.{u}
+    Quillen.HasQuillenPullbackHom pointedSpectrumMapping.{u} := by
+  let : ModelCategory SSet.{u} := kanQuillenModel
+  exact pointedSpectrumMapping_SM7 kanQuillenModel_cofibrations kanQuillenModel_fibrations
+
+lemma circleSpectrumLevelModel_simplicialTensor_isQuillen :
+    let : ModelCategory SSet.{u} := kanQuillenModel
+    let := circleSpectrumLevelModel.{u}
+    Quillen.IsQuillenBifunctor ordinarySpectrumTensor.{u} := by
+  let : ModelCategory SSet.{u} := kanQuillenModel
+  exact ordinarySpectrumTensor_isQuillen kanQuillenModel_cofibrations kanQuillenModel_fibrations
+
+lemma circleSpectrumLevelModel_simplicialCotensor_SM7 :
+    let : ModelCategory SSet.{u} := kanQuillenModel
+    let := circleSpectrumLevelModel.{u}
+    Quillen.HasQuillenPullbackHom ordinarySpectrumCotensor.{u} := by
+  let : ModelCategory SSet.{u} := kanQuillenModel
+  exact ordinarySpectrumCotensor_SM7 kanQuillenModel_cofibrations kanQuillenModel_fibrations
 
 end SerrePositivity.Inputs.Homotopy

@@ -27,6 +27,12 @@ example : let := circleSpectrumLevelModel.{u}
     HasQuillenPullbackHom (MonoidalClosed.internalHom (C := SymmetricSpectrum.{u})) :=
   circleSpectrumLevelModel_SM7
 example : let := circleSpectrumLevelModel.{u}
+    HasQuillenPullbackHom pointedSpectrumMapping.{u} := circleSpectrumLevelModel_pointedMapping_SM7
+example : let := circleSpectrumLevelModel.{u}
+    IsQuillenBifunctor ordinarySpectrumTensor.{u} := circleSpectrumLevelModel_simplicialTensor_isQuillen
+example : let := circleSpectrumLevelModel.{u}
+    HasQuillenPullbackHom ordinarySpectrumCotensor.{u} := circleSpectrumLevelModel_simplicialCotensor_SM7
+example : let := circleSpectrumLevelModel.{u}
     ModelGeneration.CofibrantlyGenerated.{u} simplicialLevelI.{u} simplicialLevelJ.{u} :=
   circleSpectrumLevelModel_generated
 example (n : ℕ) : let := circleSpectrumLevelModel.{u}
