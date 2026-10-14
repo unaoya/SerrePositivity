@@ -1,4 +1,4 @@
-import SerrePositivity.KTheory.Adams.LagrangeProjectors
+import SerrePositivity.KTheory.Adams.WeightDecomposition
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.Adams.lagrange_factor
@@ -13,3 +13,14 @@ assert_no_sorry SerrePositivity.Adams.lagrangeProjector_orthogonal
 #print axioms SerrePositivity.Adams.lagrangeProjector_eigen
 #print axioms SerrePositivity.Adams.lagrangeProjector_idem
 #print axioms SerrePositivity.Adams.lagrangeProjector_orthogonal
+
+assert_no_sorry SerrePositivity.Adams.natPow_injective
+assert_no_sorry SerrePositivity.Adams.SupportedAdams.weightProjector
+assert_no_sorry SerrePositivity.Adams.SupportedAdams.sum_weightProjector
+assert_no_sorry SerrePositivity.Adams.SupportedAdams.weightProjector_enlarge
+assert_no_sorry SerrePositivity.Adams.LocalizationAdamsFamily.weightProjector_eigen
+assert_no_sorry SerrePositivity.Adams.LocalizationAdamsFamily.weightProjector_idem
+assert_no_sorry SerrePositivity.Adams.LocalizationAdamsFamily.weightProjector_orthogonal
+assert_no_sorry SerrePositivity.Adams.LocalizationAdamsFamily.weightDecomposition
+#print axioms SerrePositivity.Adams.LocalizationAdamsFamily.weightDecomposition
+#print axioms SerrePositivity.Adams.LocalizationAdamsFamily.weightProjector_idem
