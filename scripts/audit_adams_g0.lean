@@ -1,4 +1,4 @@
-import SerrePositivity.KTheory.SupportedModule
+import SerrePositivity.KTheory.G0Supported
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.finiteModuleSupportedOn.of_iso
@@ -11,3 +11,15 @@ assert_no_sorry SerrePositivity.finiteModuleSupportedOn.bot_iff
 assert_no_sorry SerrePositivity.finiteModuleSupportedOn.top_iff
 #print axioms SerrePositivity.finiteModuleSupportedOn.of_exact
 #print axioms SerrePositivity.finiteModuleSupportedOn.of_injective
+
+assert_no_sorry SerrePositivity.G0WithSupport.mk_iso
+assert_no_sorry SerrePositivity.G0WithSupport.mk_shortExact
+assert_no_sorry SerrePositivity.G0WithSupport.lift
+assert_no_sorry SerrePositivity.G0WithSupport.lift_mk
+assert_no_sorry SerrePositivity.G0WithSupport.hom_ext
+assert_no_sorry SerrePositivity.G0WithSupport.mk_zero
+assert_no_sorry SerrePositivity.G0WithSupport.mk_directSum
+assert_no_sorry SerrePositivity.G0WithSupport.mk_empty
+assert_no_sorry SerrePositivity.G0WithSupport.eq_zero_of_empty_support
+#print axioms SerrePositivity.G0WithSupport.lift
+#print axioms SerrePositivity.G0WithSupport.mk_shortExact
