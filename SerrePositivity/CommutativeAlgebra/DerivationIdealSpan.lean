@@ -83,4 +83,24 @@ theorem exists_linearIndependent_derivation_perturbation
   refine ⟨m, hm, ?_⟩
   simpa only [hdm] using hind
 
+/-- 有限添字の指定ベクトルを非零イデアル内の微分で独立に摂動する。 -/
+theorem exists_linearIndependent_derivation_perturbation_fintype
+    {R S L V ι : Type*} [CommRing R] [CommRing S] [IsDomain S] [Field L]
+    [Algebra R S] [Algebra S L] [IsFractionRing S L]
+    [AddCommGroup V] [Module R V] [Module S V] [Module L V]
+    [IsScalarTower S L V] [FiniteDimensional L V] [Fintype ι]
+    (δ : Derivation R S V) (H : Ideal S) (hH : H ≠ ⊥)
+    (hδ : Submodule.span L (Set.range δ) = ⊤)
+    (b : ι → V) (hn : Fintype.card ι ≤ Module.finrank L V) :
+    ∃ m : ι → S, (∀ i, m i ∈ H) ∧
+      LinearIndependent L (fun i ↦ b i + δ (m i)) := by
+  classical
+  let e := Fintype.equivFin ι
+  obtain ⟨m, hm, hind⟩ := exists_linearIndependent_derivation_perturbation
+    δ H hH hδ (b ∘ e.symm) hn
+  refine ⟨m ∘ e, fun i ↦ hm (e i), ?_⟩
+  have hi := hind.comp e e.injective
+  change LinearIndependent L (fun i ↦ b (e.symm (e i)) + δ (m (e i))) at hi
+  simpa only [Function.comp_def, Equiv.symm_apply_apply] using hi
+
 end SerrePositivity
