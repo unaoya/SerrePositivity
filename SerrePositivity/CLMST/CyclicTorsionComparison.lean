@@ -17,17 +17,15 @@ universe u
 namespace SerrePositivity.CLMST
 open IsLocalRing Section2 RootTowerLength
 
-/-- pねじれを除いた商がperfectoidなら、p因子を除去しても全巡回長さは変わらない。 -/
-theorem completedLength_cyclic_pow_eq_of_torsionQuotient_perfectoid
+/-- p因子を除去しても、任意の冪の巡回商の正規化長さは変わらない。
+pねじれ商のperfectoid性を内部で供給し、座標根による共通の長さ零判定を適用する。 -/
+theorem completedLength_cyclic_pow_eq_of_p_factor
     (A : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
     {h : ℕ} (t : Fin h → A) (p : ℕ) [Fact p.Prime]
     (ht : ∀ j, t j ∈ maximalIdeal A) (i : Fin h) (hti : t i = (p : A))
     (hperf : IsIntegralPerfectoid (CompletedTower A t p) p)
     (g g' : A) (c : ℕ) (hg : g = (p : A) ^ c * g')
-    (hQ :
-      let S := perfectoidQuotient (CompletedTower A t p) p hperf
-        (algebraMap A (CompletedTower A t p) g)
-      IsIntegralPerfectoid (S ⧸ pTorsionIdeal S p) p) (a : ℕ) :
+    (a : ℕ) :
     (completedNormalizedLength A t p ht).len (CompletedTower A t p ⧸
       ((completedTowerMaxIdeal A t p) ^ a ⊔
         perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))) =
@@ -43,6 +41,8 @@ theorem completedLength_cyclic_pow_eq_of_torsionQuotient_perfectoid
     (Ideal.Quotient.mk (Ideal.span {algebraMap A C g}))
   have hS : IsIntegralPerfectoid S p :=
     (isPerfectoidization_toPerfectoidization C (C ⧸ Ideal.span {algebraMap A C g}) p hperf).1
+  have hQ : IsIntegralPerfectoid (S ⧸ pTorsionIdeal S p) p :=
+    hS.pTorsionQuotient_isIntegralPerfectoid S p
   have hgzero : (p : S) ^ c * κ (algebraMap A C g') = 0 := by
     have hh := (span_le_perfectoidIdeal C p hperf (algebraMap A C g))
       (Ideal.subset_span (Set.mem_singleton _))
@@ -60,28 +60,5 @@ theorem completedLength_cyclic_pow_eq_of_torsionQuotient_perfectoid
   rw [map_mul]
   exact hS.p_power_root_mul_eq_zero_of_pow_mul_eq_zero S p _ n hρ 1 (κ b)
     (by simpa only [pow_one] using hpb)
-
-/-- p因子を除去しても、任意の冪の巡回商の正規化長さは変わらない。 -/
-theorem completedLength_cyclic_pow_eq_of_p_factor
-    (A : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
-    {h : ℕ} (t : Fin h → A) (p : ℕ) [Fact p.Prime]
-    (ht : ∀ j, t j ∈ maximalIdeal A) (i : Fin h) (hti : t i = (p : A))
-    (hperf : IsIntegralPerfectoid (CompletedTower A t p) p)
-    (g g' : A) (c : ℕ) (hg : g = (p : A) ^ c * g')
-    (a : ℕ) :
-    (completedNormalizedLength A t p ht).len (CompletedTower A t p ⧸
-      ((completedTowerMaxIdeal A t p) ^ a ⊔
-        perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))) =
-    (completedNormalizedLength A t p ht).len (CompletedTower A t p ⧸
-      ((completedTowerMaxIdeal A t p) ^ a ⊔
-        perfectoidIdeal (CompletedTower A t p) p hperf
-          (algebraMap A (CompletedTower A t p) g'))) := by
-  apply completedLength_cyclic_pow_eq_of_torsionQuotient_perfectoid A t p ht i hti
-    hperf g g' c hg _ a
-  let C := CompletedTower A t p
-  let : Algebra.FinitePresentation C (C ⧸ Ideal.span {algebraMap A C g}) :=
-    Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton (algebraMap A C g))
-  exact IsIntegralPerfectoid.pTorsionQuotient_isIntegralPerfectoid _ p
-    (isPerfectoidization_toPerfectoidization C (C ⧸ Ideal.span {algebraMap A C g}) p hperf).1
 
 end SerrePositivity.CLMST

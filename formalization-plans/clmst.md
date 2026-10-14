@@ -61,6 +61,11 @@ K群の二つの降下は従来どおり別作業に保留する。
 本見直しはその監査ログと現在のソースを照合したものであり、
 他作業の未コミット変更まで全体検証済みとは扱わない。
 
+今回の見直し後、README・実装境界・長さ監査・Leanのコメントを現在の引用境界へ更新し、
+未使用の条件付き巡回比較を整理した。[今回の確認](clmst-interfaces.md#0-今回の抽象化レビューと整理2026-10-14)を参照。
+全体ビルド4157ジョブと両監査が成功し、主定理の未証明入力11宣言は変わらない。
+追加証明の初回調査も記録した。次の具体的な候補は、有限段から完備塔のmod p Frobeniusへの接続である。
+
 ## 0.1. 実装の経過記録（開始：2026-10-13）
 
 初回の共通層抽出を実装した。有限段・塔・有限表示降下・λ**／λ*／λ∞の数値定義、
@@ -1301,11 +1306,17 @@ CLMST 全体（signature の理論、局所基本群への応用）は対象外�
 
 ## 2. 三層の構成
 
+`Bridge/CLMSTToSerre.lean`は当初案のファイル名で、現行には存在しない。
+CLMSTの数値結果は`CLMST/`で証明し、Paper側への互換接続は
+`Inputs/CLMST.lean`と`Paper/Section2/MixedLengthAlgebra.lean`が担う。
+互換入口は既存のPaper側の表示をimportする。Paper非依存を確認した範囲は
+共通層とCLMST層であり、この互換入口まで非依存と主張しない。
+
 | 層 | 中身 | `sorry` の扱い | import してよいもの |
 | --- | --- | --- | --- |
 | L0 共通の土台 | 塔 `A_n`・`A^nc_∞`・`A_∞`、perfectoid の定義、Koszul、パラメータ系、重複度、三つの数値関数の定義 | 数値関数の定義と証明済み API。具体的な `NormalizedLength` の組立と perfectoid 化の選択の引用依存は別に管理 | Mathlib、論文非依存の一般層 |
 | L1 CLMST 層（`SerrePositivity/CLMST/`、namespace `CLMST`） | CLMST の定義と、引用する主張を原典の形で述べたもの | 引用文は `sorry`。P/G のタグを付ける | L0 と Bhatt–Scholze の入力・構成。`Paper/` は import しない |
-| L2 接続層（`SerrePositivity/Bridge/CLMSTToSerre.lean`） | L1 の主張から定理2.5の二つの長さの性質を導く | 直接の **`sorry` なし** | L0、L1。必要な長さ比較も先に共通層へ抽出し、最終的に `Paper/` を import しない |
+| L2 接続層（現在の互換入口は`SerrePositivity/Inputs/CLMST.lean`） | L1 の主張から定理2.5の二つの長さの性質を導く | 直接の **`sorry` なし** | L0、L1と既存Paperの互換表示。数学的な数値評価の証明はPaper非依存のCLMST層に置く |
 
 `Paper/Section2/MixedLengthAlgebra.lean` はそのまま残し、依存先を `Inputs.CLMST` から L2 に変える。
 

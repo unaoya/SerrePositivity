@@ -7,7 +7,8 @@ public import SerrePositivity.LengthAlgebra.AlmostBaseChange
 
 perfectoid ideal による零化から長さ零への条件を明示して受け取り、
 その像イデアルに関する実 almost 同型から、元の環に制限して測る長さの一致を導く。
-零化から長さ零の文献結果と mod p^N の basic setup の冪等性は、独立した入力として保持する。
+この一般入口では長さ零とmod p^Nの冪等性の証拠を引数で受ける。
+具体的な完備塔への供給はNormalizedAlmostLengthで行う。
 -/
 
 @[expose] public section

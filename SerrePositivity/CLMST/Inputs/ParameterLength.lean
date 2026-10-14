@@ -17,7 +17,8 @@ perfectoid 化の商の正規化長さが `p^(-nh)` 倍の Hilbert–Samuel 重�
 
 出典：https://arxiv.org/html/2209.04046v4 （Proposition 4.0.14）。
 依存する文献入力は Bhatt–Scholze の perfectoid 化の存在、CLMST Prop 2.4.7、
-Cor 4.0.4、Prop 4.0.10。パラメータの変更、余核の Euler 消去、数値評価は証明済み。
+Cor 4.0.4、および巡回評価で使うBSの全射性。Prop 4.0.10はこれらから証明済み。
+パラメータの変更、余核のEuler消去、数値評価も証明済み。
 `Inputs` 名前空間と宣言名は既存利用先の互換性のために保つ。
 -/
 

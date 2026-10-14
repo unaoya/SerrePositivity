@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CLMST.Inputs.AlmostLength
+public import SerrePositivity.CLMST.CyclicLength
 public import SerrePositivity.CLMST.AlmostLength
 public import SerrePositivity.LengthAlgebra.AlmostVanishing
 public import SerrePositivity.LengthAlgebra.AlmostQuotientAction
@@ -8,7 +8,8 @@ public import SerrePositivity.CLMST.BasicSetup
 
 /-! # CLMST の巡回評価から一般加群と almost 同型への接続
 
-文献入力は巡回商の長さ零に限る。上限の性質で一般加群への帰着を証明し、
+巡回商の長さ零はBSの存在・全射性からCyclicLengthで証明する。
+上限の性質で一般加群への帰着を証明し、
 実際の mod p^N の almost 圏での同型から正規化長さの一致を導く。
 mod p^N のイデアルの冪等性は almost 圏を作るための別入力であり、
 長さ零への帰着には不要である。
@@ -30,7 +31,7 @@ variable (A k : Type u) [CommRing A] [IsRegularLocalRing A] [Field k]
 
 include hpos htp hdim e he hg in
 /-- 巡回商の長さ評価から、一様な極大イデアル冪ねじれの almost zero 加群の長さ零を証明。
-引用した評価を一般加群へ使う部分は、上限と巡回像による被覆の一般論である。 -/
+証明済みの巡回評価を一般加群へ使う部分は、上限と巡回像による被覆の一般論である。 -/
 theorem completedLength_eq_zero_of_perfectoidIdeal_annihilates
     (M : Type u) [AddCommGroup M] [Module (CompletedTower A t p) M]
     (hM : IsPowTorsion (completedTowerMaxIdeal A t p) M)
@@ -43,7 +44,7 @@ theorem completedLength_eq_zero_of_perfectoidIdeal_annihilates
     (RootTowerLength.completedNormalizedLength_hasSup A t p
       (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i))) _ M hM hann
   intro n
-  exact Inputs.cyclic_length_eq_zero A k p t hpos htp ht hdim e he hperf g hg n
+  exact cyclic_length_eq_zero A k p t hpos htp ht hdim e he hperf g hg n
 
 include hpos htp ht in
 omit [Fact p.Prime] in
@@ -66,7 +67,8 @@ theorem exists_common_completedTower_p_pow_annihilates
 include hpos htp hdim e he hg in
 /-- CLMST Proposition 4.0.10 の mod p^N における実際の almost 同型から長さの一致。
 M、M' は元の完備塔上の任意の冪ねじれ加群であり、商環作用を明示的に構成する。
-外部入力は巡回商の評価と mod p^N のイデアルの冪等性のみで、比較は一般論で証明する。 -/
+巡回商の評価にはBSの存在・全射性を使い、mod p^Nのイデアル冪等性を別に引用する。
+比較自体は一般論で証明する。 -/
 theorem completedLength_eq_of_perfectoid_mod_almost_iso
     (N : ℕ) (M M' : ModuleCat.{u} (CompletedTower A t p))
     (hM : IsPowTorsion (completedTowerMaxIdeal A t p) M)

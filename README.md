@@ -26,9 +26,8 @@ map, parameters, finite power-series evaluation and injectivity. By section of t
 
 - §2 (residue fields, normalized length, Theorem 2.5): proved relative to 7 quotations
   (Cohen–Gabber normalization, Roberts' Frobenius
-  theorem, the perfectoid tower, perfectoidization,
-  three results of Cai–Lee–Ma–Schwede–Tucker: the cyclic length estimate,
-  cohomology vanishing and perfectoidization isogeny).
+  theorem, the perfectoid tower, Bhatt–Scholze perfectoidization existence and
+  surjectivity, and CLMST cohomology vanishing and perfectoidization isogeny).
 - §3 (Lemmas 3.4–3.5): proved, except that Theorem 3.1 (rational K-theory descent) is deferred
   (`theorem_3_1_K0`).
 - §4 (Theorem 4.7): proved, except that the descent of Lemma 4.6 is deferred
@@ -37,19 +36,22 @@ map, parameters, finite power-series evaluation and injectivity. By section of t
   Serre's equal-characteristic positivity (`Inputs.serrePositivity_of_field`) and the
   Roberts–Gillet–Soulé vanishing theorem (`Inputs.intersectionVanishing`) quoted.
 
-The CLMST almost-length comparison is also implemented using explicit quotations for the
-cyclic length estimate and the idempotence of the ideal modulo p powers. The latter quotation
-is used by that comparison, but is not an additional dependency of the main theorem.
+The cyclic length estimate used in CLMST Proposition 4.0.10 is proved from finite-stage
+Frobenius bounds and low-dimensional length growth, with Bhatt–Scholze existence and
+surjectivity as named inputs. The all-stage parameter quotient formula (Proposition 4.0.14)
+is proved from the shared Euler and cone theory, flat base change and finite-stage length
+calculations. Its remaining inputs are those two Bhatt–Scholze results, CLMST Proposition
+2.4.7 and Corollary 4.0.4; neither numerical proposition is directly admitted.
 
-The three legacy CLMST entry points are now proved specializations of the independent
-inputs in `CLMST/Inputs/`: cyclic vanishing, all-stage cohomology vanishing and the
-all-stage parameter quotient formula. Their literature dependencies remain explicit.
+The almost-category isomorphism version also uses the quoted idempotence of the ideal
+modulo p powers. That quotation is not a dependency of the main theorem. The surjectivity
+input includes the classical/derived p-completeness equivalence for p-torsion-free rings;
+the concrete quotient's regularity and completeness, and transport to the chosen universal
+object, are proved.
 
-The all-stage parameter quotient formula (CLMST Proposition 4.0.14) is now proved from
-the shared Euler and cone theory, flat base change and finite-stage normalized length
-calculations. Its remaining quotations are perfectoidization existence, Proposition 2.4.7,
-Corollary 4.0.4 and Proposition 4.0.10. Proposition 2.4.7 replaces Proposition 4.0.14 in the
-main theorem’s dependencies; the total quotation count stays unchanged.
+The three legacy CLMST entry points in `Inputs/CLMST.lean` are proved compatibility
+wrappers around the Paper-independent CLMST layer. Current boundaries and subsequent
+review tasks are recorded in [the CLMST plan](formalization-plans/clmst.md).
 
 The table of quotations, the status of every proposition and the module map are kept in
 appendix A of the exposition; the actual dependencies are checked by `scripts/audit_axioms.lean`.

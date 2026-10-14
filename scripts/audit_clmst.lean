@@ -10,6 +10,7 @@ import SerrePositivity.CLMST.AlmostLength
 import SerrePositivity.Paper.Section2.CompletedTower
 import SerrePositivity.Paper.Section2.TowerApproximation
 import SerrePositivity.CLMST.NormalizedAlmostLength
+import SerrePositivity.CLMST.Inputs.AlmostLength
 import SerrePositivity.CLMST.CohomologyVanishing
 import SerrePositivity.CLMST.TensorOrder
 import SerrePositivity.CLMST.ParameterLength
@@ -22,6 +23,7 @@ import SerrePositivity.CLMST.CompletedTargetLength
 import SerrePositivity.CLMST.ParameterLastPowerLength
 import SerrePositivity.CLMST.CyclicPLength
 import SerrePositivity.CommutativeAlgebra.PerfectoidReduced
+import SerrePositivity.LengthAlgebra.AlmostFactorQuotient
 import SerrePositivity.LengthAlgebra.CyclicPowerReduction
 import SerrePositivity.CLMST.PerfectoidFrobeniusComparison
 import SerrePositivity.CLMST.CyclicRootEstimate
@@ -636,10 +638,7 @@ assert_no_sorry SerrePositivity.LengthAlgebra.length_quotient_eq_of_factor_kerne
 assert_no_sorry SerrePositivity.LengthAlgebra.length_quotient_sup_eq_of_almost_factor
 assert_no_sorry SerrePositivity.CLMST.exists_p_power_factor_of_nonzero
 assert_no_sorry SerrePositivity.CLMST.exists_p_power_unit_of_fin_one
-#print sorries SerrePositivity.CLMST.completedLength_cyclic_fin_one_eq_zero_of_not_dvd
 #print sorries SerrePositivity.CLMST.perfectoidIdeal_le_of_p_power_factor
-#print sorries SerrePositivity.CLMST.completedLength_cyclic_first_eq_of_p_power_factor
-#print sorries SerrePositivity.CLMST.completedLength_cyclic_pow_eq_zero_of_p_power_factor
 
 -- distinguished Witt核からp冪ねじれをpで消し、p冪・単元倍・一元パラメータ系を評価する。
 assert_no_sorry SerrePositivity.witt_factor_coeff_zero_of_distinguished
@@ -666,7 +665,6 @@ assert_no_sorry SerrePositivity.mem_pTorsionIdeal
 assert_no_sorry SerrePositivity.IsIntegralPerfectoid.pTorsionQuotient_p_mul_injective
 assert_no_sorry SerrePositivity.IsIntegralPerfectoid.surjective_pow_mod_p_quotient
 #print sorries SerrePositivity.perfectoidIdeal_image_p_mul_eq_zero_of_torsionQuotient_perfectoid
-#print sorries SerrePositivity.CLMST.completedLength_cyclic_pow_eq_of_torsionQuotient_perfectoid
 
 -- pねじれ商の完備性と、残るFontaine核条件への還元。
 assert_no_sorry SerrePositivity.isHausdorff_of_injective_linearMap
