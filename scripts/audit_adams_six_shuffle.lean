@@ -1,4 +1,4 @@
-import SerrePositivity.PerfectComplex.TensorSixHomogeneous
+import SerrePositivity.PerfectComplex.TensorSixShuffleEquivariance
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.cochainTensorSixShuffle
@@ -27,3 +27,24 @@ assert_no_sorry SerrePositivity.cochainTensorSix_hom_ext
 
 assert_no_sorry SerrePositivity.tensorProductSix_ext_pairs
 #print axioms SerrePositivity.tensorProductSix_ext_pairs
+
+assert_no_sorry SerrePositivity.cochainTensorRotation_apply_ι_of_sum
+#print axioms SerrePositivity.cochainTensorRotation_apply_ι_of_sum
+
+assert_no_sorry SerrePositivity.cochainTensorSix_apply_of_sum
+#print axioms SerrePositivity.cochainTensorSix_apply_of_sum
+
+assert_no_sorry SerrePositivity.cochainTensorSixSeparated_apply_of_sum
+#print axioms SerrePositivity.cochainTensorSixSeparated_apply_of_sum
+
+assert_no_sorry SerrePositivity.cochainTensorSix_sourceRotation_apply_ι
+#print axioms SerrePositivity.cochainTensorSix_sourceRotation_apply_ι
+
+assert_no_sorry SerrePositivity.cochainTensorSix_diagonalRotation_apply_ι
+#print axioms SerrePositivity.cochainTensorSix_diagonalRotation_apply_ι
+
+assert_no_sorry SerrePositivity.cochainTensorSixShuffle_rotation
+#print axioms SerrePositivity.cochainTensorSixShuffle_rotation
+
+assert_no_sorry SerrePositivity.cochainTensorSixShuffle_rotation_assoc
+#print axioms SerrePositivity.cochainTensorSixShuffle_rotation_assoc
