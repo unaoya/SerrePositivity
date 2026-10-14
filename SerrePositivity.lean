@@ -349,7 +349,7 @@ public import SerrePositivity.PerfectComplex.ClosedSupportK0
 public import SerrePositivity.PerfectComplex.ClosedSupportComparison
 public import SerrePositivity.PerfectComplex.ClosedSupportFunctoriality
 public import SerrePositivity.PerfectComplex.ClosedSupportRelations
-public import SerrePositivity.PerfectComplex.TensorK0
+public import SerrePositivity.PerfectComplex.TensorEnlarge
 public import SerrePositivity.PerfectComplex.IntegerEulerIso
 public import SerrePositivity.KTheory.LocalizationCoefficients
 public import SerrePositivity.KTheory.Devissage

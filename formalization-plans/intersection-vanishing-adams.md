@@ -1295,8 +1295,9 @@ S5 で局所正則性・高さと次元・台の余次元の前提を完成し�
 | S6.1 | `PerfectComplex/Tensor`・`TensorPerfect`・`TensorSymmetry`、`HomologicalAlgebra/FiniteSupportCoproduct`：整数添字テンソル、微分の符号、有限直和モデル、有界有限射影性、結合・単位・符号つき交換 | 完了。コミット `7ed5c5f` |
 | S6.2 | `PerfectComplex/TensorHomotopy`・`TensorSupport`：ホモトピー・擬同型の保存、スカラー零ホモトピーの移送、台の交わり | 完了。コミット `1e83665` |
 | S6.3a | `PerfectComplex/TensorShift`・`TensorCone`：左右のシフト比較、射の加法性、具体的錐同型と錐三角形の比較 | 完了。コミット `3dcee40` |
-| S6.3b | `PerfectComplex/TensorK0`・`ConeAdditivity`・`ClosedSupportCongr`：同型不変性、錐関係からの降下、双加法的カップ積、交換・結合則 | 完了。この記録を含むコミット |
-| S6.3c | 台の拡大・平坦基底変更との自然性 | 未完了 |
+| S6.3b | `PerfectComplex/TensorK0`・`ConeAdditivity`・`ClosedSupportCongr`：同型不変性、錐関係からの降下、双加法的カップ積、交換・結合則 | 完了。コミット `3365a26` |
+| S6.3c.1 | `PerfectComplex/TensorEnlarge`：両側・片側の台の拡大と積の可換性 | 完了。この記録を含むコミット |
+| S6.3c.2 | 基底変更とテンソルの鎖同型、基底変更と積の可換性 | 未完了 |
 | S6.4 | `PerfectComplex/IntegerEuler`：極大点の台の有限長性、整数値の長さ写像、整数 Euler、既存 `chiOrd` への実数化 | 完了。この記録を含むコミット |
 | S6.5 | `PerfectComplex/IntegerEulerIso`：Koszul 生成の移送、整数 Euler 値 1、両逆性、`K0WithSupport.integerEulerEquiv`、零の検出 | 完了。コミット `d77e4a8` |
 | S6.6 | §4.14・§4.22・§4.26 の Tor 比較の証明契約 | 未完了 |
@@ -1360,7 +1361,13 @@ S6.3b は支持対象の具体的代表のテンソルを使って `tensorClass`
 任意の可換環で成立し、局所性・Noether 性・分解存在を仮定しない。
 対象ビルド（2752 jobs）、`scripts/audit_adams_cup.lean`、公開 import と既存利用先の統合ビルド（4510 jobs）が成功。
 積・交換則・結合則の依存公理は標準三公理のみ。
-S6.3c の台の拡大と基底変更、S6.6 の Tor 比較は未完了。
+S6.3c.1 は両側の台の拡大と積の可換図式を二変数の類上の外延性から証明。
+具体的対象では台条件だけが変わり、同じホモトピー対象の同じテンソルを使うことを確認した。
+片側だけを拡大する二つの公開補題も追加。
+対象ビルド（2753 jobs）、カップ積の専用監査、統合ビルド（4511 jobs）が成功。
+`cup_enlarge` の依存公理は標準三公理のみ。
+S6.3c の親段は未完了。残る S6.3c.2 は基底変更の比較と積の自然性。
+S6.6 の Tor 比較も未完了。
 S6 全体の統合ビルドと完了宣言は後続小段の後に行う。
 
 ## 4.26 残計画の確定版：S6 の残部から S11 まで
