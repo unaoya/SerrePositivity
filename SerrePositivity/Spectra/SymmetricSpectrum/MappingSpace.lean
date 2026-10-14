@@ -6,6 +6,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorCurryNaturality
 public import Mathlib.CategoryTheory.Whiskering
 public import SerrePositivity.CategoryTheory.AdjunctionHomLaws
 public import SerrePositivity.CategoryTheory.Monoidal.MappingAdjunction
+public import SerrePositivity.CategoryTheory.Monoidal.MappingUnitLaws
 
 /-! # 基点付き写像対象と各段のsmashの表現性 -/
 
@@ -45,8 +46,7 @@ lemma pointedMappingSpaceBifunctor_obj (E F : SymmetricSpectrum.{u}) :
 /-- 固定したスペクトルに基点付き単体的集合をテンソルする関手。 -/
 def mappingTensorFunctor (E : SymmetricSpectrum.{u}) :
     PointedSimplicialSet.{u} ⥤ SymmetricSpectrum.{u} :=
-  FunctorTransport.transport ((freeAt 0) ⋙ tensorRight E)
-    (fun X => pointwiseTensor X E) (fun X => sphereTensorFreeZeroPointwiseIso X E)
+  MappingUnitLaws.parameterFunctor pointwiseTensorBifunctor.{u} E
 
 /-- 第0段の自由生成との比較は生成対象に関する自然同型。 -/
 def mappingTensorNatIso (E : SymmetricSpectrum.{u}) :

@@ -4548,3 +4548,28 @@ B3〜B4も未完了であり、モデル構造には進まない。
 検証：新規・変更ソースの書式・証明マーカー、文書のリンク、git diff --checkを確認した。
 集約ビルドは2083ジョブ、公理監査は228モジュール・2352宣言で成功した。
 標準公理のみでsorry依存なし。新しい証明は標準の計算上限で検証した。
+
+## 107. 実施記録：基点付き写像対象の合成の結合則（2026-10-14）
+
+[AdjunctionHomLaws](../SerrePositivity/CategoryTheory/AdjunctionHomLaws.lean)で、
+二つの転置への前合成を、評価後の等式から比較する法則を証明した。
+[MappingAssociativity](../SerrePositivity/CategoryTheory/Monoidal/MappingAssociativity.lean)で、
+一般の作用の結同比較の自然性と五角形から、二通りの反復合成の評価が一致することを証明した。
+双方を三回の評価へ帰着し、結同比較の自然性で評価を通し、作用の五角形で経路を一致させる。
+作用の表現性を使って、この評価の一致から写像対象の結合則を導いた。
+
+[MappingSpace](../SerrePositivity/Spectra/SymmetricSpectrum/MappingSpace.lean)のパラメータ関手を、
+既存の二変数作用の値域を固定する共通の関手として記述した。
+自由零生成からの自然比較と随伴、および既存のパラメータの射の公式を維持した。
+[MappingSpaceComposition](../SerrePositivity/Spectra/SymmetricSpectrum/MappingSpaceComposition.lean)の
+二回の評価の定義も、この一般の作用の計算へ接続した。
+
+[MappingSpaceAssociativity](../SerrePositivity/Spectra/SymmetricSpectrum/MappingSpaceAssociativity.lean)で、
+既存の写像対象の合成と評価を一般論へ渡し、評価後の一致と写像対象の射の結合則を証明した。
+結合則は三つの写像対象のsmashからの射の等式であり、通常のHom集合上の結合性だけではない。
+通常のスペクトル射の合成との一致は引き続き必要であり、B2全体は未完了である。
+B3〜B4も引き続き実装する。モデル構造には進まない。
+
+検証：新規・変更ソースの書式・証明マーカー、文書のリンク、git diff --checkを確認した。
+集約ビルドは2085ジョブ、公理監査は230モジュール・2363宣言で成功した。
+標準公理のみでsorry依存なし。新しい証明は標準の計算上限で検証した。

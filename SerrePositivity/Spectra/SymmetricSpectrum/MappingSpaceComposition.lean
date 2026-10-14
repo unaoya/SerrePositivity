@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpace
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorCoherence
+public import SerrePositivity.CategoryTheory.Monoidal.MappingAssociativity
 
 /-! # 基点付き写像対象の合成・単位と通常の射との対応 -/
 
@@ -22,9 +23,9 @@ open SerrePositivity.PointedSimplicialSet
 /-- 二つの写像対象をテンソルした作用から、評価を二回適用する射。 -/
 def mappingSpaceCompositionEvaluation (E F G : SymmetricSpectrum.{u}) :
     pointwiseTensor (pointedMappingSpace F G ⊗ pointedMappingSpace E F) E ⟶ G :=
-  (pointwiseTensorAssociator (pointedMappingSpace F G) (pointedMappingSpace E F) E).hom ≫
-    (pointwiseTensorFunctor (pointedMappingSpace F G)).map (mappingSpaceEvaluation E F) ≫
-      mappingSpaceEvaluation F G
+  MappingAssociativity.compositionEvaluation pointwiseTensorBifunctor.{u}
+    pointwiseTensorAssociatorNatIso.{u} (pointedMappingSpace F G) (pointedMappingSpace E F)
+    (mappingSpaceEvaluation E F) (mappingSpaceEvaluation F G)
 
 /-- 基点付き写像対象の合成。後から適用する写像を左因子に置く。 -/
 def mappingSpaceComposition (E F G : SymmetricSpectrum.{u}) :

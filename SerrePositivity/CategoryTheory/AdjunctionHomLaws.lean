@@ -84,6 +84,27 @@ lemma curry_pre_eq_of_evaluation {X Z : C} {Y : D} (f : L.obj X ⟶ Y)
   rw [hc]
   exact h
 
+/-- 二つの転置への前合成を比較する等式。 -/
+def curryPreComparisonLaw {X X' Z : C} {Y : D} (f : L.obj X ⟶ Y)
+    (g : L.obj X' ⟶ Y) (t : Z ⟶ X) (s : Z ⟶ X') : Prop :=
+  t ≫ a.homEquiv X Y f = s ≫ a.homEquiv X' Y g
+
+/-- 二つの転置への前合成は評価後の等式から比較できる。 -/
+lemma curry_pre_comparison_of_evaluation {X X' Z : C} {Y : D} (f : L.obj X ⟶ Y)
+    (g : L.obj X' ⟶ Y) (t : Z ⟶ X) (s : Z ⟶ X')
+    (h : L.map t ≫ f = L.map s ≫ g) : curryPreComparisonLaw a f g t s := by
+  apply evaluation_injective a
+  change L.map (t ≫ a.homEquiv X Y f) ≫ a.counit.app Y =
+    L.map (s ≫ a.homEquiv X' Y g) ≫ a.counit.app Y
+  rw [L.map_comp, L.map_comp]
+  simp only [Category.assoc]
+  have hf := curry_evaluation a f
+  have hg := curry_evaluation a g
+  change L.map (a.homEquiv X Y f) ≫ a.counit.app Y = f at hf
+  change L.map (a.homEquiv X' Y g) ≫ a.counit.app Y = g at hg
+  rw [hf, hg]
+  exact h
+
 /-- 左随伴の指定した対象との比較から、元の射を右随伴への射へ転置する同値。 -/
 def comparisonHomEquiv {I : C} {E : D} (e : L.obj I ≅ E) (F : D) :
     (E ⟶ F) ≃ (I ⟶ R.obj F) :=
