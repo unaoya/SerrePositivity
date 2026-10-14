@@ -1430,3 +1430,33 @@ q(p)=0を明示し、有限Frobeniusの像が標準包含のp乗になること�
 8公開宣言の対象2059ジョブ、pure B4全公開宣言監査成功。
 標準3公理のみ。新sorry・公理・引用なし。
 有限δ計算の差の線形化に適用する。
+
+## B4-6：任意有限δ計算のFrobenius線形化（2026-10-15）
+
+`RelativeFreeFiniteDeltaLinearization.lean`で、rank 1変数の補助δ像を
+次の有限段へ含め、実際の有限δ像との差を構成した。
+両計算の加法補正項が同じことから差の加法性を証明し、q(p)=0の下で
+Frobenius係数作用のLeibniz公式を証明した。係数上の差は零、
+各変数上の差はq(X_(s,i+1))である。
+
+係数作用をqと有限Frobeniusの環射の合成で明示し、差を既存Mathlibの
+Derivationとして構成した。スカラー作用はAlgebra.smul_defで確認した。
+検証上限の変更を要さず対象ビルド2秒で成功。
+既存MvPolynomial.derivation_extで指定変数値のmkDerivationに一致させ、
+単項式と任意多項式の差を、次変数の像の具体的な有限線形結合として証明した。
+その係数は初期変数のみの標準包含像のp乗で表せる。
+CharP B p・非零性・完備性を要求せず、零終域を含む。
+新しいderivationや一般Witt公式の定義は追加しない。
+16公開宣言の対象2075ジョブ、pure B4全公開宣言監査成功。
+全体4637ジョブ成功。標準3公理のみ。新sorry・公理・引用なし。
+補助δ構造はdd8cb58で先に個別コミット済み。
+
+次のBS専用予定`RelativeFreeFiniteTopVariableSplit.lean`で、
+σ×Fin(N+2)を最高変数σと初期変数σ×Fin(N+1)へ分け、
+有限次段を最高変数の多項式環へ同定する。
+次の予定`RelativeFreeFiniteDeltaTopDegree.lean`で、この同型と係数のp商から
+通常射qを具体的に構成し、今回の有限線形結合の式から
+有限δ像の最高変数全体に関するtotalDegree≤1を証明する。
+係数商のδ構造は仮定しない。この次数評価と最高変数の係数計算から、
+全有限段のモニック三角形表示へ進む。次数評価・係数計算はまだ未証明。
+実完備化/perfectionの完全忠実平坦性と根付きperfectoid拡大、一般B4は未実装。
