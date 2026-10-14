@@ -10,13 +10,13 @@ public import Mathlib.RingTheory.TensorProduct.Maps
 -/
 
 @[expose] public noncomputable section
-universe u
+universe u v w z
 namespace SerrePositivity.BhattScholze
 open scoped TensorProduct
 
 /-- 係数テンソルの環射を、両因子の環射と基底上の一致から作る。
 終域のR-代数構造を入力に要求せず、MathlibのAlgHom版へ接続する。 -/
-def coefficientTensorLift {R A B D : Type u}
+def coefficientTensorLift {R : Type u} {A : Type v} {B : Type w} {D : Type z}
     [CommRing R] [CommRing A] [CommRing B] [CommRing D] [Algebra R A] [Algebra R B]
     (f : A →+* D) (g : B →+* D)
     (h : ∀ r : R, f (algebraMap R A r) = g (algebraMap R B r)) : A ⊗[R] B →+* D := by
@@ -26,7 +26,7 @@ def coefficientTensorLift {R A B D : Type u}
   exact (Algebra.TensorProduct.lift ff gg (fun _ _ ↦ Commute.all _ _)).toRingHom
 
 /-- 係数テンソル射の純粋テンソル上の式。 -/
-theorem coefficientTensorLift_tmul {R A B D : Type u}
+theorem coefficientTensorLift_tmul {R : Type u} {A : Type v} {B : Type w} {D : Type z}
     [CommRing R] [CommRing A] [CommRing B] [CommRing D] [Algebra R A] [Algebra R B]
     (f : A →+* D) (g : B →+* D)
     (h : ∀ r : R, f (algebraMap R A r) = g (algebraMap R B r)) (a : A) (b : B) :
