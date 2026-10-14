@@ -1,0 +1,13 @@
+import SerrePositivity.KTheory.Adams.TensorSquare
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.ιTensorObj_cochainTensorMap
+assert_no_sorry SerrePositivity.cochainTensorSymmetry_naturality
+assert_no_sorry SerrePositivity.Adams.tensorSquareSwap_sq
+assert_no_sorry SerrePositivity.Adams.tensorSquareSwap_naturality
+assert_no_sorry SerrePositivity.Adams.tensorSquare_perfect
+assert_no_sorry SerrePositivity.Adams.tensorSquare_support
+assert_no_sorry SerrePositivity.Adams.ιTensorObj_tensorSquareSwap
+#print axioms SerrePositivity.Adams.tensorSquareSwap_sq
+#print axioms SerrePositivity.Adams.tensorSquareSwap_naturality
+#print axioms SerrePositivity.Adams.tensorSquare_support
