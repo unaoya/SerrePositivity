@@ -25,6 +25,7 @@ import SerrePositivity.BhattScholze.WittDistinguishedQuotient
 import SerrePositivity.BhattScholze.WittQuotientFrobeniusKernel
 import SerrePositivity.BhattScholze.PerfectOrientedPrism
 import SerrePositivity.BhattScholze.CrystallineOrientedPrism
+import SerrePositivity.BhattScholze.OrientedPrismHomRigidity
 import Mathlib.Util.AssertNoSorry
 import Mathlib.Util.PrintSorries
 
@@ -618,3 +619,44 @@ assert_no_sorry SerrePositivity.BhattScholze.OrientedPrism.exists_crystalline_if
 #print sorries SerrePositivity.BhattScholze.OrientedPrism.isDistinguished_of_perfect
 #print sorries SerrePositivity.BhattScholze.OrientedPrism.map_ideal_eq_of_perfect
 #print sorries SerrePositivity.BhattScholze.OrientedPrism.exists_crystalline_iff
+assert_no_sorry SerrePositivity.BhattScholze.OrientedPrism.Hom
+#print axioms SerrePositivity.BhattScholze.OrientedPrism.Hom
+assert_no_sorry SerrePositivity.BhattScholze.OrientedPrism.Hom.ext
+#print axioms SerrePositivity.BhattScholze.OrientedPrism.Hom.ext
+assert_no_sorry SerrePositivity.BhattScholze.OrientedPrism.Hom.id
+#print axioms SerrePositivity.BhattScholze.OrientedPrism.Hom.id
+assert_no_sorry SerrePositivity.BhattScholze.OrientedPrism.Hom.comp
+#print axioms SerrePositivity.BhattScholze.OrientedPrism.Hom.comp
+assert_no_sorry SerrePositivity.BhattScholze.OrientedPrism.Hom.comp_id
+#print axioms SerrePositivity.BhattScholze.OrientedPrism.Hom.comp_id
+assert_no_sorry SerrePositivity.BhattScholze.OrientedPrism.Hom.id_comp
+#print axioms SerrePositivity.BhattScholze.OrientedPrism.Hom.id_comp
+assert_no_sorry SerrePositivity.BhattScholze.OrientedPrism.Hom.comp_assoc
+#print axioms SerrePositivity.BhattScholze.OrientedPrism.Hom.comp_assoc
+assert_no_sorry SerrePositivity.BhattScholze.OrientedPrism.Hom.map_generator_mem
+#print axioms SerrePositivity.BhattScholze.OrientedPrism.Hom.map_generator_mem
+assert_no_sorry SerrePositivity.BhattScholze.OrientedPrism.Hom.quotientMap
+#print axioms SerrePositivity.BhattScholze.OrientedPrism.Hom.quotientMap
+assert_no_sorry SerrePositivity.BhattScholze.OrientedPrism.Hom.quotientMap_mk
+#print axioms SerrePositivity.BhattScholze.OrientedPrism.Hom.quotientMap_mk
+assert_no_sorry SerrePositivity.BhattScholze.OrientedPrism.Hom.quotientMap_comp_mk
+#print axioms SerrePositivity.BhattScholze.OrientedPrism.Hom.quotientMap_comp_mk
+assert_no_sorry SerrePositivity.BhattScholze.OrientedPrism.Hom.quotientMap_id
+#print axioms SerrePositivity.BhattScholze.OrientedPrism.Hom.quotientMap_id
+assert_no_sorry SerrePositivity.BhattScholze.OrientedPrism.Hom.quotientMap_comp
+#print axioms SerrePositivity.BhattScholze.OrientedPrism.Hom.quotientMap_comp
+assert_no_sorry SerrePositivity.BhattScholze.OrientedPrism.Hom.map_ideal_eq_of_perfect
+#print axioms SerrePositivity.BhattScholze.OrientedPrism.Hom.map_ideal_eq_of_perfect
+assert_no_sorry SerrePositivity.BhattScholze.OrientedPrism.Hom.quotientMap_surjective
+#print axioms SerrePositivity.BhattScholze.OrientedPrism.Hom.quotientMap_surjective
+assert_no_sorry SerrePositivity.BhattScholze.OrientedPrism.Hom.existsUnique_generator_unit
+#print axioms SerrePositivity.BhattScholze.OrientedPrism.Hom.existsUnique_generator_unit
+assert_no_sorry SerrePositivity.BhattScholze.OrientedPrism.Hom.quotientEquiv
+#print axioms SerrePositivity.BhattScholze.OrientedPrism.Hom.quotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.OrientedPrism.Hom.quotientEquiv_toRingHom
+#print axioms SerrePositivity.BhattScholze.OrientedPrism.Hom.quotientEquiv_toRingHom
+assert_no_sorry SerrePositivity.BhattScholze.OrientedPrism.Hom.quotientMap_bijective
+#print axioms SerrePositivity.BhattScholze.OrientedPrism.Hom.quotientMap_bijective
+#print sorries SerrePositivity.BhattScholze.OrientedPrism.Hom.existsUnique_generator_unit
+#print sorries SerrePositivity.BhattScholze.OrientedPrism.Hom.quotientEquiv
+#print sorries SerrePositivity.BhattScholze.OrientedPrism.Hom.quotientMap_bijective
