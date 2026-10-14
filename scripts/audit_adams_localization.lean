@@ -1,4 +1,4 @@
-import SerrePositivity.KTheory.LatticeClass
+import SerrePositivity.KTheory.LatticeExact
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.IsModuleSTorsion.exists_annihilator_finset
@@ -29,3 +29,8 @@ assert_no_sorry SerrePositivity.SupportedLocalizationLattice.sup
 assert_no_sorry SerrePositivity.SupportedLocalizationLattice.class_eq
 #print axioms SerrePositivity.SupportedLocalizationLattice.class_eq
 #print axioms SerrePositivity.SupportedLocalizationLattice.class_transport
+assert_no_sorry SerrePositivity.SupportedLocalizationLattice.preimage
+assert_no_sorry SerrePositivity.SupportedLocalizationLattice.image
+assert_no_sorry SerrePositivity.SupportedLocalizationLattice.shortExact
+assert_no_sorry SerrePositivity.SupportedLocalizationLattice.class_shortExact
+#print axioms SerrePositivity.SupportedLocalizationLattice.class_shortExact
