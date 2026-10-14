@@ -2,6 +2,7 @@ module
 
 public import Mathlib.RingTheory.WittVector.Truncated
 public import SerrePositivity.CommutativeAlgebra.WittCoefficientOne
+public import SerrePositivity.CommutativeAlgebra.WittAdditionCarry
 public import Mathlib.Tactic.FinCases
 
 /-! # δ環のW₂切断による表現
@@ -91,6 +92,25 @@ theorem delta_mul (D : DeltaStructure p A) (x y : A) :
   change ((D.sectionHom x).out * (D.sectionHom y).out).coeff 1 = _
   rw [witt_mul_coeff_one]
   simp [TruncatedWittVector.out, D.coeff_zero, delta]
+
+/-- δの加法公式（BS著者版Def 2.1）。共通Witt加法係数を再利用し、
+pねじれのある環でも繰上りをTeichmüller和の第1座標として計算する。 -/
+theorem delta_add (D : DeltaStructure p A) (x y : A) :
+    D.delta (x + y) = D.delta x + D.delta y +
+      (WittVector.teichmuller p x + WittVector.teichmuller p y).coeff 1 := by
+  change (D.sectionHom (x + y)).coeff 1 = _
+  rw [map_add]
+  change ((D.sectionHom x).out + (D.sectionHom y).out).coeff 1 = _
+  rw [witt_add_coeff_one]
+  simp [TruncatedWittVector.out, D.coeff_zero, delta]
+
+/-- δの加法補正項は整数係数多項式の評価。環内でpを除算しない。 -/
+theorem delta_add_polynomial (D : DeltaStructure p A) (x y : A) :
+    D.delta (x + y) = D.delta x + D.delta y +
+      MvPolynomial.eval₂ (Int.castRingHom A) (fun i : Fin 2 ↦ if i = 0 then x else y)
+        (wittAdditionCarry p) := by
+  rw [eval_wittAdditionCarry]
+  exact D.delta_add x y
 
 /-- δ構造のFrobenius持上げ。第1ghost成分と切断を合成する（BS Remark 2.2）。 -/
 def frobeniusLift (D : DeltaStructure p A) : A →+* A :=
