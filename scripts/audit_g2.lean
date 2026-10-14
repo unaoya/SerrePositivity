@@ -2,6 +2,7 @@ import SerrePositivity.HomologicalAlgebra.DerivedTensorRealization
 import SerrePositivity.HomologicalAlgebra.DerivedTensorBaseChange
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletionNaturality
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ConstantTower
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.LocalizationResolution
 import Mathlib.Util.AssertNoSorry
 
 -- G2-1: every explicit public declaration, including the maps and natural comparisons.
@@ -194,3 +195,30 @@ example (R : Type) [CommRing R] (K : CochainComplex (ModuleCat R) ℤ) :
 
 #print axioms SerrePositivity.DerivedCompletion.constantComplexTowerUnit_quasiIso
 #print axioms SerrePositivity.DerivedCompletion.constantComplexTowerUnitIso_inv
+
+-- The length-one free telescope resolution and the complete-object vanishing criterion.
+assert_no_sorry SerrePositivity.DerivedCompletion.localizationPresentationComplex
+assert_no_sorry SerrePositivity.DerivedCompletion.localizationPresentationComplex_shortExact
+assert_no_sorry SerrePositivity.DerivedCompletion.localizationResolutionComplex
+assert_no_sorry SerrePositivity.DerivedCompletion.localizationResolutionComplex_isStrictlyLE
+assert_no_sorry SerrePositivity.DerivedCompletion.localizationResolutionComplex_projective
+assert_no_sorry SerrePositivity.DerivedCompletion.localizationResolutionComplex_isKProjective
+assert_no_sorry SerrePositivity.DerivedCompletion.localizationResolutionAugmentation
+assert_no_sorry SerrePositivity.DerivedCompletion.localizationResolutionAugmentation_quasiIso
+assert_no_sorry SerrePositivity.DerivedCompletion.localizationResolutionDerivedIso
+assert_no_sorry SerrePositivity.DerivedCompletion.localizationResolutionHomologyEquiv
+assert_no_sorry SerrePositivity.DerivedCompletion.localizationResolutionHomology_subsingleton
+assert_no_sorry SerrePositivity.DerivedCompletion.isComplete_iff_localizationResolutionHomology_subsingleton
+assert_no_sorry SerrePositivity.DerivedCompletion.isComplete_iff_localizationResolutionHom_acyclic
+
+-- This is the original IsComplete condition, for arbitrary unbounded complexes and zero divisors.
+example (R : Type) [CommRing R] (a : R) (K : CochainComplex (ModuleCat R) ℤ) :
+    IsComplete R a (DerivedCategory.Q.obj K) ↔
+      (CochainComplex.linearHomComplex R (localizationResolutionComplex R a) K).Acyclic :=
+  isComplete_iff_localizationResolutionHom_acyclic R a K
+
+example (R : Type) [CommRing R] (a : R) :
+    (localizationResolutionComplex R a).IsKProjective := inferInstance
+
+#print axioms SerrePositivity.DerivedCompletion.localizationResolutionHomologyEquiv
+#print axioms SerrePositivity.DerivedCompletion.isComplete_iff_localizationResolutionHom_acyclic
