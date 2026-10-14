@@ -32,6 +32,7 @@ lemma tensorModuleMap_eval {K L : Complex A} (g : K ⟶ L) (M : RightModule A D)
   moduleMorphismMk_eval A D _ _ x
 
 /-- 固定した右加群 M への左 tensor を複体の関手にする。 -/
+@[implicit_reducible]
 def tensorModuleFunctor (M : RightModule A D) : Complex A ⥤ ModuleCategory A D where
   obj K := ForgetEnrichment.of (Complex A) (tensorModule K M)
   map g := tensorModuleMap g M

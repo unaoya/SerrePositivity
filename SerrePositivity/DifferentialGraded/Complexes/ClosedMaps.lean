@@ -79,4 +79,28 @@ lemma closedMap_mapFromUnit (P Q : Complex A) (f : 𝟙_ (Complex A) ⟶ homComp
 lemma mapFromUnit_cochain (P Q : Complex A) (f : 𝟙_ (Complex A) ⟶ homComplex A P Q) :
     Cochain.ofHom (mapFromUnit A P Q f) = (cycleFromUnit _ f).val :=
   complexClosedHomEquiv_cochain A P Q _
+/-- Mathlib の豊穣 Hom 後合成と明示線形 Hom 後合成は一致する。 -/
+lemma complexHomWhiskerLeft (P : Complex A) {Q T : Complex A} (f : Q ⟶ T) :
+    eHomWhiskerLeft (Complex A) P f = homPostcompose P f :=
+  (homPostcompose_closedMap A P f).symm
+
+/-- Mathlib の豊穣 Hom 前合成と明示線形 Hom 前合成は一致する。 -/
+lemma complexHomWhiskerRight {P Q : Complex A} (f : P ⟶ Q) (T : Complex A) :
+    eHomWhiskerRight (Complex A) f T = homPrecompose f T :=
+  (homPrecompose_closedMap A f T).symm
+
+/-- 明示した Hom 前合成の合成則。 -/
+@[reassoc]
+lemma homPrecompose_comp {P Q R : Complex A} (f : P ⟶ Q) (g : Q ⟶ R) (T : Complex A) :
+    homPrecompose (f ≫ g) T = homPrecompose g T ≫ homPrecompose f T := by
+  rw [← complexHomWhiskerRight, ← complexHomWhiskerRight, ← complexHomWhiskerRight,
+    eHomWhiskerRight_comp]
+
+/-- 明示した Hom 前合成・後合成は可換。 -/
+@[reassoc]
+lemma homPostcompose_precompose {P Q R T : Complex A} (f : P ⟶ Q) (g : R ⟶ T) :
+    homPostcompose Q g ≫ homPrecompose f T = homPrecompose f R ≫ homPostcompose P g := by
+  rw [← complexHomWhiskerLeft, ← complexHomWhiskerLeft,
+    ← complexHomWhiskerRight, ← complexHomWhiskerRight]
+  exact eHom_whisker_exchange (Complex A) f g
 end SerrePositivity.DifferentialGraded

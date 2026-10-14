@@ -17,8 +17,15 @@ open CategoryTheory MonoidalCategory HomologicalComplex Opposite
 variable {A : Type u} [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 右加群 M の値に非有界複体 K を左 tensor する。 -/
-abbrev tensorModule (K : Complex A) (M : RightModule A D) : RightModule A D :=
-  RightModule.ofFunctor (DGFunctor.comp M.toFunctor (tensorLeftDG K))
+abbrev tensorModule (K : Complex A) (M : RightModule A D) : RightModule A D where
+  obj x := K ⊗ M.obj x
+  map x y := M.map x y ≫ tensorLeftHom K (M.obj x) (M.obj y)
+  map_id := (DGFunctor.comp M.toFunctor (tensorLeftDG K)).map_id
+  map_comp := (DGFunctor.comp M.toFunctor (tensorLeftDG K)).map_comp
+
+/-- tensor 加群は既存豊穣関手の合成と定義上同じデータ。 -/
+lemma tensorModule_eq_comp (K : Complex A) (M : RightModule A D) :
+    (tensorModule K M).toFunctor = DGFunctor.comp M.toFunctor (tensorLeftDG K) := rfl
 
 /-- tensor 加群の斉次右作用。射の次数 p が K の次数 i を越える符号。 -/
 lemma tensorModule_action (K : Complex A) (M : RightModule A D) (x y : Dᵒᵖ)

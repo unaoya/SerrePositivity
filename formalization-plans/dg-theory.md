@@ -1,6 +1,6 @@
 # dg 理論（M5）の独立実装計画
 
-作成・調査：2026-10-14。更新：2026-10-15。状態：U0〜U5 を実装・検証済み。
+作成・調査：2026-10-14。更新：2026-10-15。状態：U0〜U6 を実装・検証済み（U7〜U10は継続中）。
 U0〜U3の記録は§11、U4/U5の実績と後続契約は§12。D0〜D10全体の完了ではない。
 この計画だけを受け取る実装担当者向けの仕様である。
 ホモトピー論の共有契約は [k-theory.md §123](k-theory.md#123-次段階の設計i抽象モデル圏とその当てはめ2026-10-14)。
@@ -626,3 +626,36 @@ U6c の対象・受入ビルド、前段 `Checks.FreeFunctor` の検証、直接
 U6d1 の対象ビルド・負正次数/ZMod 2 の受入・前段随伴の検証が成功。
 `Checks/FreeHom.lean` の直接公理監査は6宣言すべて標準公理のみ。
 担当差分と文書検査も成功（21 Markdown・306参照・失敗0）。
+
+### 13.5 U6d2：全次数 Hom 同型の自然性・閉零比較、U6受入
+
+`Module/HomFunctor.lean` は Mathlib `eHomWhiskerLeft`/`eHomWhiskerRight` による
+主 Hom end の前後合成を、各評価対象の通常 `homPostcompose`/`homPrecompose` に同定する。
+任意Vの一般論は既存 Mathlib を再利用し、このファイルには Ch(A)・dg 加群の具体的成分だけを置く。
+`Complexes/ClosedMaps.lean` は Mathlib の豊穣 Hom whisker と既存線形 Hom の一致を証明する。
+
+`Module/FreeHomNaturality.lean` の `freeHomIso_naturality_target` と
+`freeHomIso_naturality_source` は自由 Hom の **chain iso** の M・K の射に対する自然性。
+`freeHomIso_closed_zero` はその閉零制限と U6c の通常随伴 Hom 同値の一致を証明する。
+全次数の Hom 複体を閉零射だけへ置き換えるものではない。
+
+`tensorModule` の対象・Hom 射を明示した constructor 表記へ展開し、
+`tensorModule_eq_comp` で既存 `EnrichedFunctor` の合成と定義上同じデータであることを証明した。
+元の作用・単位・合成と公開 API は保持する。
+
+U6の free/evaluation 随伴、全次数 Hom 同型、両変数自然性、閉零比較、underlying family の
+受入項目が揃った。独立入口は `DifferentialGraded/StageThree.lean`（U0〜U6）。
+U6 の受入検証は `Checks/FreeTensor`, `FreeFunctor`, `FreeAdjunction`, `FreeHom`, `FreeHomNaturality`。
+任意可換環・非有界複体、独立対象宇宙と明示 smallness、正負次数、ℤ・ZMod 2 を検証する。
+U6d2の主要8宣言、U6全体35宣言の公理監査を行う（U0〜U6合計114宣言）。
+
+次は U7 の零対象・shift・cone・必要な極限余極限と objectwise 評価式。
+続いて U8 のホモトピー/準同型、U9 の局所化、U10 の semifree・Hom 計算・三角構造・余積・
+一対象 A の既存導来圏比較を完成させる。U10までの目標は保持し、現段階では未達。
+共有 G1/G2/G5/G6 の一般論は複製せず、U6の実際の随伴と Hom 同型を具体的入力として渡す。
+
+U6全体の5受入入口と既存 `SerrePositivity.Spectra.StageTwo` の同時ビルドは成功。
+10の dg 監査ファイルを `lake env lean` で直接実行し、114宣言すべて標準公理のみと確認した。
+担当 Lean ファイルの `sorry`/`admit`/新規 `axiom` は0件。
+既存 `scripts/check_spectra_stage2.lean`、文書検査（21 Markdown・306参照・失敗0）、
+担当差分の whitespace 検査も成功。共有ルート import・並行作業ファイルは編集していない。

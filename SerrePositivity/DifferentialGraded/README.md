@@ -1,8 +1,8 @@
 # M5：dg 理論の独立入口
 
-U0〜U5 実装・検証：2026-10-15。計画は
+U0〜U6 実装・検証（U7〜U10継続中）：2026-10-15。計画は
 [ dg-theory.md ](../../formalization-plans/dg-theory.md)。
-入口は [StageTwo.lean](StageTwo.lean)（U0〜U5）、[StageOne.lean](StageOne.lean)（U0〜U3）。共有ルート import は変更しない。
+入口は [StageThree.lean](StageThree.lean)（U0〜U6）、[StageTwo.lean](StageTwo.lean)（U0〜U5）、[StageOne.lean](StageOne.lean)（U0〜U3）。共有ルート import は変更しない。
 
 Lean `v4.35.0-rc4`、Mathlib `e6bbacd0e1b7307ff6e17da09cd2455f60804fa6`。
 Mathlib HEAD と lake-manifest を再照合済み。依存更新なし。
@@ -49,6 +49,9 @@ Ch(A) の `enrichedComposition` は既存 signed symmetry の後に通常順 `co
 | [Module/Composition.lean](Module/Composition.lean)、[Category.lean](Module/Category.lean) | Hom end の単位・合成、Mathlib 豊穣加群圏、閉零圏・評価関手 |
 | [Module/Yoneda.lean](Module/Yoneda.lean) | 全パラメータ dg Yoneda と Hom 複体の chain iso |
 | [Module/Ring.lean](Module/Ring.lean) | 一対象 A の対象復元、Hom 複体比較、通常非有界複体圏との同値 |
+| [Module/Tensor.lean](Module/Tensor.lean)、[Free.lean](Module/Free.lean)、[Underlying.lean](Module/Underlying.lean) | 自由加群の全次数作用・関手、離散対象族への忠実な忘却 |
+| [Module/ClosedMaps.lean](Module/ClosedMaps.lean)、[TensorAdjunction.lean](Module/TensorAdjunction.lean) | 全次数自然な chain map 族との同値、free/evaluation 随伴・自然性 |
+| [Module/FreeHom.lean](Module/FreeHom.lean)、[FreeHomNaturality.lean](Module/FreeHomNaturality.lean) | 全次数 Hom 複体の chain iso・K/M自然性・通常随伴との閉零比較 |
 
 `PerfectComplex/Tensor.lean` と `TensorSymmetry.lean` を import して再利用する。
 既存ファイルは編集しない。通常の PerfectHomotopy は後続 D6 の比較先として維持する。
@@ -83,7 +86,9 @@ U5 は dg opposite、右代表加群、全次数 Hom end による主豊穣加�
 Mathlib の現行 `EnrichedNatTrans.out` は閉零の通常自然性なので、全次数の代用には使わない。
 [ModulesAcceptance.lean](Checks/ModulesAcceptance.lean) は正負次数・任意 A・ℤ・ZMod 2 を検証する。
 U4/U5の追加監査38宣言、合計79宣言は標準公理のみ。
-次は free/forget の随伴、shift/cone、objectwise quasiIso・局所化・semifree。
+U6の free/forget、自由評価随伴、全次数 Hom 同型と自然性は完成した。
+U6の追加監査35宣言、U0〜U6合計114宣言。検証と引継ぎは計画§13。
+次は shift/cone・極限余極限、objectwise quasiIso・局所化・semifree。
 API契約と共有 G1/G2/G5/G6 への引継ぎは計画§12.8。
 導来圏・射影モデル・dg 商・Morita・Perf と M5全体は未完成。
 一般モデル圏・Quillen・転送・SM7 は共有系列が所有し、この入口には置かない。
