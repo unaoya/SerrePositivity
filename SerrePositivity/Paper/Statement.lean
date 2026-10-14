@@ -53,7 +53,7 @@ variable (R : Type u) [CommRing R]
 `0` でない有限生成 `R` 加群とする。
 `ℓ_R(M ⊗_R N) < ∞`（幾何的には `Supp M ∩ Supp N` が閉点だけ）かつ `dim M + dim N = dim R`（固有な
 交わり）なら `χ^R(M, N) > 0`。Serre の正値性予想の主張。
-正の剰余標数では核心定理への帰着を、剰余標数零では Serre の引用定理への帰着を用いる。 -/
+正の剰余標数では核心定理への帰着を、剰余標数零では Serre の対角線論法（証明済み）を用いる。 -/
 theorem main_statement [IsRegularLocalRing R]
     (M N : Type u) [AddCommGroup M] [Module R M] [AddCommGroup N] [Module R N]
     [Module.Finite R M] [Module.Finite R N] [Nontrivial M] [Nontrivial N]

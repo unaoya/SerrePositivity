@@ -100,3 +100,13 @@ assert_no_sorry SerrePositivity.Inputs.cohen_normalization_mixedCharacteristic
 -- 標準完備塔の旧Inputs入口は実際のtiltとFontaine核から証明済み。
 #print axioms SerrePositivity.Inputs.completedTower_isIntegralPerfectoid
 assert_no_sorry SerrePositivity.Inputs.completedTower_isIntegralPerfectoid
+
+-- 剰余標数零の Serre の正値性：対角線論法の核と、その部品は標準公理のみ。
+#print axioms SerrePositivity.DiagonalRing.chi_pos_of_prime
+assert_no_sorry SerrePositivity.DiagonalRing.chi_pos_of_prime
+#print axioms SerrePositivity.flat_of_isWeaklyRegular
+assert_no_sorry SerrePositivity.flat_of_isWeaklyRegular
+#print axioms SerrePositivity.exists_mvPowerSeries_ringEquiv_of_charZero
+assert_no_sorry SerrePositivity.exists_mvPowerSeries_ringEquiv_of_charZero
+-- 一般の剰余標数零の場合はデヴィサージュで交点消滅定理の引用だけに依存する。
+#print axioms SerrePositivity.chi_pos_of_residueCharZero

@@ -18,6 +18,7 @@
 | [Lech の重複度予想の形式化](lech.md) | Lech の論文の定理1.1を、外部引用を原典の形で置いて形式化する | 設計段階 |
 | [Frobenius 高次ホモロジー消滅](frobenius-homology.md) | 引用6の証明経路を比較し、まず必要な Koszul 版の正規化消滅を形式化する | 調査・設計段階 |
 | [引用6を主定理から外す（初等版）](frobenius-koszul-elementary.md) | パラメータ Koszul 複体の場合を tight closure なしで証明し、主定理の経路から Roberts の引用を外す | 完了。主定理は引用6に依存しない |
+| [引用4を主定理から外す（対角線論法）](serre-equal-characteristic.md) | 剰余標数零の場合を Serre の対角線論法で証明し、局所平坦性判定法も整備する | 完了。主定理は引用4に依存しない |
 
 リポジトリ全体の現状は [README](../README.md)、論文と実装の対応は
 [日本語解説](../exposition/ja/exposition-ja.tex)、現在の未証明依存は

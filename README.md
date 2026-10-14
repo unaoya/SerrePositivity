@@ -16,7 +16,7 @@ its perfect-complex and rank-quotient realizations, the standard commutative alg
 (regular parameters, unmixedness, Hilbert–Samuel theory, the Koszul multiplicity formula) and
 the connection to the main theorem are implemented.
 
-The main theorem still depends on **7 external quotations and 2 deferred K-theory proofs**.
+The main theorem still depends on **6 external quotations and 2 deferred K-theory proofs**.
 `main_statement` and `core_statement` have no direct `sorry`, but depend on `sorryAx`.
 They are not proofs of the main theorem without those inputs. The complete Noetherian flat
 residue-field extension is now constructed without quotations; its legacy `Inputs` entry point
@@ -28,7 +28,13 @@ kernel. Roberts' Frobenius homology vanishing is no longer used: the equal-chara
 construction only needs it for Koszul complexes on a system of parameters, which is proved
 elementarily in `CommutativeAlgebra/ParameterKoszulGrowth.lean` (a uniform annihilator of Tor over
 a power series ring and a fixed finite free resolution give `ℓ H_i(z^q; D) = O(q^{h-1})`;
-see [the plan](formalization-plans/frobenius-koszul-elementary.md)). By section of the preprint:
+see [the plan](formalization-plans/frobenius-koszul-elementary.md)). Serre's equal-characteristic
+positivity is no longer used either: the residue-characteristic-zero case needed by the main
+theorem is proved by Serre's reduction to the diagonal in
+`IntersectionMultiplicity/EqualCharZeroPositivity.lean`, using a local flatness criterion
+(`HomologicalAlgebra/LocalFlatnessCriterion.lean`), the coefficient field in characteristic zero
+and a comparison of Tor over `R` and over `R[[Y]]`
+(see [the plan](formalization-plans/serre-equal-characteristic.md)). By section of the preprint:
 
 - §2 (residue fields, normalized length, Theorem 2.5): proved relative to 5 quotations
   (Cohen–Gabber normalization, Bhatt–Scholze perfectoidization existence and
@@ -37,9 +43,10 @@ see [the plan](formalization-plans/frobenius-koszul-elementary.md)). By section 
   (`theorem_3_1_K0`).
 - §4 (Theorem 4.7): proved, except that the descent of Lemma 4.6 is deferred
   (`Section4.supportedRankK0_descent`).
-- §5 (Lemmas 5.2–5.6, the reduction and the core case): proved, with the two classical inputs
-  Serre's equal-characteristic positivity (`Inputs.serrePositivity_of_field`) and the
-  Roberts–Gillet–Soulé vanishing theorem (`Inputs.intersectionVanishing`) quoted.
+- §5 (Lemmas 5.2–5.6, the reduction and the core case): proved, with the classical input
+  Roberts–Gillet–Soulé vanishing theorem (`Inputs.intersectionVanishing`) quoted. The
+  residue-characteristic-zero case (Lemma 5.1) is proved by Serre's diagonal argument; the
+  general quotation `Inputs.serrePositivity_of_field` remains but is not used.
 
 The cyclic length estimate used in CLMST Proposition 4.0.10 is proved from finite-stage
 Frobenius bounds and low-dimensional length growth, with Bhatt–Scholze existence and
