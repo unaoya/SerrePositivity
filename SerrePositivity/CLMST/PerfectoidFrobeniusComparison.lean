@@ -202,7 +202,7 @@ theorem exists_completed_root_mem_sup_perfectoidIdeal_of_surjective
   refine ⟨x, hx, root_mem_sup_perfectoidIdeal_of_surjective _ p hperf g hsurj
     (fun m ↦ completedTowerRoot A t p m i) ?_
     (fun m ↦ completedTowerRoot_succ_pow A t p m i) n x hx⟩
-  rw [completedTowerRoot_zero, hti, map_natCast]
+  exact (CLMST.completedTowerRoot_zero A t p i).trans (by rw [hti, map_natCast])
 
 /-- mod pで等しい代表元は、任意の冪を取ってもmod pで等しい。 -/
 theorem pow_sub_mem_of_sub_mem {R : Type u} [CommRing R]
@@ -262,7 +262,7 @@ theorem exists_stage_root_mem_sup_perfectoidIdeal_of_surjective
     ← IsScalarTower.algebraMap_apply A (TowerStage A t p m) (CompletedTower A t p)] at hmap
   exact root_mem_sup_perfectoidIdeal_of_surjective _ p hperf _ hsurj
     (fun l ↦ completedTowerRoot A t p l i)
-    (by rw [completedTowerRoot_zero, hti, map_natCast])
+    ((CLMST.completedTowerRoot_zero A t p i).trans (by rw [hti, map_natCast]))
     (fun l ↦ completedTowerRoot_succ_pow A t p l i) n _ hmap
 
 /-- perfectoid環で二つのp冪根がmod pで同じ値を持てば、その差は対応するp冪根に属する。
