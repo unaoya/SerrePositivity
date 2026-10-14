@@ -379,6 +379,7 @@ public import SerrePositivity.KTheory.Adams.TensorSquareMaps
 public import SerrePositivity.PerfectComplex.InvolutionShortExact
 public import SerrePositivity.KTheory.Adams.KoszulNormalization
 public import SerrePositivity.KTheory.Adams.TensorSquareShuffle
+public import SerrePositivity.PerfectComplex.IdempotentTensor
 public import SerrePositivity.KTheory.LocalizationCoefficients
 public import SerrePositivity.KTheory.Devissage
 public import SerrePositivity.PerfectComplex.Closure

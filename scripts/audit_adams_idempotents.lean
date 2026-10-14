@@ -1,4 +1,5 @@
 import SerrePositivity.PerfectComplex.InvolutionShortExact
+import SerrePositivity.PerfectComplex.IdempotentTensor
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.CochainIdempotent.image
@@ -48,3 +49,11 @@ assert_no_sorry SerrePositivity.CochainInvolution.negativeShortComplex_shortExac
 #print axioms SerrePositivity.CochainIdempotent.imageShortComplex_shortExact
 #print axioms SerrePositivity.CochainInvolution.positiveShortComplex_shortExact
 #print axioms SerrePositivity.CochainInvolution.negativeShortComplex_shortExact
+assert_no_sorry SerrePositivity.CochainIdempotent.tensor
+assert_no_sorry SerrePositivity.CochainIdempotent.tensor_inclusions_map
+assert_no_sorry SerrePositivity.CochainIdempotent.imageTensorIso
+assert_no_sorry SerrePositivity.CochainIdempotent.imageTensorIso_hom_inclusion
+assert_no_sorry SerrePositivity.CochainIdempotent.tensor_image_perfect
+assert_no_sorry SerrePositivity.CochainIdempotent.tensor_image_support
+#print axioms SerrePositivity.CochainIdempotent.imageTensorIso
+#print axioms SerrePositivity.CochainIdempotent.tensor_image_support
