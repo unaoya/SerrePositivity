@@ -872,6 +872,23 @@ F3全体は引き続き未完了で、新しい引用・公理・sorryは追加�
 この表示を外側の錐とシフトの微分へ接続する工程が次に残る。
 新しい引用・公理・sorryは追加していない。
 
+### F3：元の二座標Koszul完備化の短複体と行列モデル（2026-10-14）
+
+`PairKoszulCone`で、外側の錐を一段シフトした複体の次数−1・0・1を列の組へ同定した。
+零次数の二つの補助列と次数1の符号を反転し、微分の負号を明示する。
+二つの微分が、交差変数を含む`pairTowerBoundaryTriple`と
+`pairTowerObstruction`に一致することを証明した。
+
+`pairCompletionShortComplexIso`は具体的な塔表示の`sc 0`から行列モデルへの同型。
+`pairKoszulCompletionShortComplexIso`は元の二座標Koszul完備化からの複体同型を合成し、
+既存の`koszulCompletionComplex`の`sc 0`から行列モデルへの同型を与える。
+`pairKoszulCompletionH0Equiv`は元の実際のH⁰からモデルのH⁰への線形同型である。
+
+検証：対象モジュールのビルドと9宣言の`assert_no_sorry`が成功。
+標準写像の一致は別途証明する必要があり、これを仮定して環構造や普遍性を移してはいない。
+次は標準元を保つことを確認し、実際のH⁰へ反射性と環としての普遍性を接続する。
+新しい引用・公理・sorryは追加していない。
+
 ### 保留する選択と引用依存の受入条件
 
 Andréについては、B4に必要な「指定元が両立するp冪根を持つp完全忠実平坦な
