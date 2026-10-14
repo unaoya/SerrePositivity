@@ -7,6 +7,7 @@ import SerrePositivity.HomologicalAlgebra.DerivedCompletion.LocalizationHomCoord
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.LocalizationTowerComparison
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerExact
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ConeShortExact
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletionReconstruction
 import Mathlib.Util.AssertNoSorry
 
 -- G2-1: every explicit public declaration, including the maps and natural comparisons.
@@ -302,3 +303,38 @@ example (R : Type) [CommRing R] {P Q : CochainComplex (ModuleCat R) ℤ} (f : P 
 #print axioms SerrePositivity.DerivedCompletion.complexTowerCompatibleLift_map
 #print axioms SerrePositivity.DerivedCompletion.complexTowerHomotopyLimitShortComplex_shortExact
 #print axioms SerrePositivity.DerivedCompletion.coneStandardShortComplex_shortExact
+
+-- G2-3: reconstruct complete objects through the actual standard unit.
+assert_no_sorry SerrePositivity.DerivedCompletion.complexPowerKoszulProjection
+assert_no_sorry SerrePositivity.DerivedCompletion.complexPowerKoszulInclusion_towerMap
+assert_no_sorry SerrePositivity.DerivedCompletion.complexPowerKoszulProjection_towerMap
+assert_no_sorry SerrePositivity.DerivedCompletion.complexPowerKoszulInclusion_projection_zero
+assert_no_sorry SerrePositivity.DerivedCompletion.complexCompletionTowerInclusion
+assert_no_sorry SerrePositivity.DerivedCompletion.complexCompletionReconstructionSequence
+assert_no_sorry SerrePositivity.DerivedCompletion.complexCompletionReconstructionSequence_shortExact
+assert_no_sorry SerrePositivity.DerivedCompletion.constantComplexTowerUnit_comp_completionInclusion
+assert_no_sorry SerrePositivity.DerivedCompletion.complexCompletionReconstructionSequence_third_isZero
+assert_no_sorry SerrePositivity.DerivedCompletion.complexCompletionTowerInclusion_isIso_of_isComplete
+assert_no_sorry SerrePositivity.DerivedCompletion.complexCompletionUnitObject_isIso_of_isComplete
+assert_no_sorry SerrePositivity.DerivedCompletion.complexCompletionUnit_quasiIso_of_isComplete
+assert_no_sorry SerrePositivity.DerivedCompletion.complexCompletionUnitIso
+assert_no_sorry SerrePositivity.DerivedCompletion.derivedComplexCompletionUnit_isIso_of_isComplete
+assert_no_sorry SerrePositivity.DerivedCompletion.derivedComplexCompletionUnitIso
+assert_no_sorry SerrePositivity.DerivedCompletion.isComplete_iff_derivedComplexCompletionUnit_isIso
+
+-- No boundedness, termwise completeness, or regularity assumptions enter reconstruction.
+example (R : Type) [CommRing R] (a : R) (X : ConcreteDerivedCategory R) :
+    IsComplete R a X ↔ IsIso ((derivedComplexCompletionUnit R a).app X) :=
+  isComplete_iff_derivedComplexCompletionUnit_isIso R a X
+
+example (R : Type) [CommRing R] (a : R) (K : CochainComplex (ModuleCat R) ℤ)
+    (hK : IsComplete R a (DerivedCategory.Q.obj K)) :
+    QuasiIso (complexCompletionUnit R a K) := complexCompletionUnit_quasiIso_of_isComplete R a K hK
+
+-- The comparison is the standard unit already used in the projection diagrams.
+example (R : Type) [CommRing R] (a : R) (K : CochainComplex (ModuleCat R) ℤ)
+    (hK : IsComplete R a (DerivedCategory.Q.obj K)) :
+    (complexCompletionUnitIso R a K hK).hom = complexCompletionUnitObject R a K := rfl
+
+#print axioms SerrePositivity.DerivedCompletion.complexCompletionUnitObject_isIso_of_isComplete
+#print axioms SerrePositivity.DerivedCompletion.isComplete_iff_derivedComplexCompletionUnit_isIso
