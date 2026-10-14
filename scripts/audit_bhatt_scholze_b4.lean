@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.DeltaWittGhostRingHom
 import SerrePositivity.BhattScholze.DeltaWittGhostLowCoefficients
 import SerrePositivity.BhattScholze.DeltaWittGhostCoefficients
 import SerrePositivity.BhattScholze.DeltaWittGhostStep
@@ -1594,3 +1595,15 @@ assert_no_sorry SerrePositivity.BhattScholze.deltaWittGhostVector_coeff_one
 
 assert_no_sorry SerrePositivity.BhattScholze.deltaWittGhostVector_truncate_two
 #print axioms SerrePositivity.BhattScholze.deltaWittGhostVector_truncate_two
+
+assert_no_sorry SerrePositivity.BhattScholze.deltaWittGhostRingHom
+#print axioms SerrePositivity.BhattScholze.deltaWittGhostRingHom
+
+assert_no_sorry SerrePositivity.BhattScholze.deltaWittGhostRingHom_constantCoeff_comp
+#print axioms SerrePositivity.BhattScholze.deltaWittGhostRingHom_constantCoeff_comp
+
+assert_no_sorry SerrePositivity.BhattScholze.deltaWittGhostRingHom_truncate_two_comp
+#print axioms SerrePositivity.BhattScholze.deltaWittGhostRingHom_truncate_two_comp
+
+assert_no_sorry SerrePositivity.BhattScholze.deltaWittGhostRingHom_unique
+#print axioms SerrePositivity.BhattScholze.deltaWittGhostRingHom_unique
