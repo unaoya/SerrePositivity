@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedCone
 import SerrePositivity.HomologicalAlgebra.PowerResidueDerivedHomology
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.MilnorAnnihilator
 import SerrePositivity.HomologicalAlgebra.TwoCohomologyAnnihilator
@@ -158,3 +159,12 @@ assert_no_sorry SerrePositivity.powerResidueDerivedHomology_uniform_scalar_eq_ze
 
 #print axioms SerrePositivity.faithfullyFlatDerivedHomology_map_eq_zero_iff
 #print axioms SerrePositivity.powerResidueDerivedHomology_uniform_scalar_eq_zero_iff
+
+-- D3b: actual projective cone computations without exactness of the original functor.
+assert_no_sorry SerrePositivity.BoundedAboveDerivedModel.cone
+assert_no_sorry SerrePositivity.boundedAboveDerivedConeObject
+assert_no_sorry SerrePositivity.boundedAboveDerivedConeInr
+assert_no_sorry SerrePositivity.boundedAboveLeftDerivedConeIso
+assert_no_sorry SerrePositivity.boundedAboveLeftDerivedConeIso_inr
+
+#print axioms SerrePositivity.boundedAboveLeftDerivedConeIso_inr
