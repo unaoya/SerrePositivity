@@ -1,4 +1,4 @@
-import SerrePositivity.KTheory.Adams.WeightDefectLift
+import SerrePositivity.KTheory.Adams.WeightAnnihilation
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.Adams.iteratedPrimeLocalizationEquiv
@@ -11,3 +11,13 @@ assert_no_sorry SerrePositivity.Adams.LocalizationAdamsFamily.semilocal_pureWeig
 
 assert_no_sorry SerrePositivity.Adams.LocalizationAdamsFamily.weightDefect_lift
 #print axioms SerrePositivity.Adams.LocalizationAdamsFamily.weightDefect_lift
+
+assert_no_sorry SerrePositivity.Adams.weightPolynomial
+assert_no_sorry SerrePositivity.Adams.weightPolynomial_top
+assert_no_sorry SerrePositivity.Adams.weightPolynomial_succ
+assert_no_sorry SerrePositivity.Adams.endomorphism_pow_intertwine
+assert_no_sorry SerrePositivity.Adams.polynomial_intertwine
+assert_no_sorry SerrePositivity.Adams.coefficient_empty_zero
+assert_no_sorry SerrePositivity.Adams.LocalizationAdamsFamily.weightPolynomial_annihilates
+#print axioms SerrePositivity.Adams.polynomial_intertwine
+#print axioms SerrePositivity.Adams.LocalizationAdamsFamily.weightPolynomial_annihilates
