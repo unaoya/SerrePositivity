@@ -2581,16 +2581,32 @@ F4-3 `0ac751f`、F4-4 `d0676da`。
 
 ### 9.5. F6：一般主イデアル商のperfection射影核
 
-完全標数p環kの任意の元aとQ=k/(a)について、
+状態：証明経路・ステップを確定（2026-10-14）、実装未着手。
+完全標数p可換環kの任意の元aとQ=k/(a)、商写像qについて、
 `L := Perfection.lift p k Q q`とし、
-`ker (Perfection.coeff Q p 0) = Ideal.span {L a}`を証明する。
-BS要求の`CharP Q p`を持つ範囲をまず受渡し対象とし、零環の枝は別に明示する。
-aの正則性・整域性を追加しない。
+`RingHom.ker (Perfection.coeff Q p 0) = Ideal.span {L a}`を証明する。
+aの正則性・Noether性・整域性を追加しない。BS要求どおり`CharP Q p`を持つ範囲を公開し、
+零環の商はCharPを無条件に供給せず、元の互換列の型で別に扱う。
 
-各座標の割り切れ性から、互換的な商の列を構成する部分を証明する。
-既存の正則元用核判定の仮定を未証明のまま残さない。
-成果物は一般核定理と標準射との比較であり、
-pねじれを持つdistinguished Witt商のFontaine核計算へ渡す。
+採用経路：Jをkのann(a)のQへの像とする。完全性からann(a)内でp乗根を取れ、
+aの全てのp冪根はann(a)を零化する。
+核元xの各座標をL(a)の座標で割って商cを選ぶ。
+一段先の商をp乗した列の互換性の誤差はJに入る。
+J内のp乗根を再帰的に選び、この誤差を補正することでperfection上の商を作る。
+既存の正則元用`perfection_dvd_of_coeff_dvd_of_annihilator`を、一般の零因子へそのまま適用しない。
+
+| 段階 | 配置・成果物（予定） | 完了条件 |
+| --- | --- | --- |
+| F6-1 | `CommutativeAlgebra/PerfectionIdealCorrection.lean` | p乗根を取れるイデアル内の誤差を再帰補正する一般補題、補正付きのperfectionの割り算 |
+| F6-2 | `CommutativeAlgebra/PerfectAnnihilator.lean` | 完全標数p環のann(a)内の根、aの冪根による零化、主イデアル商での零化元の誤差の計算 |
+| F6-3 | `CommutativeAlgebra/PerfectionPrincipalQuotientKernel.lean` | 標準Lの座標・核元の座標ごとの割り切れ性・補正補題への適用、核の両包含 |
+| F6-4 | 公開入口・`scripts/audit_f6.lean`・計画更新 | BS要求の正確な署名、非正則元、零環の枝、既存の正則版との整合を検証 |
+
+各証明単位で対象ビルドと公開宣言の`assert_no_sorry`を実行し、監査・計画と共にコミット。
+最後に全体ビルド、CLMST・公理・F6専用監査を成功させる。
+一般商のtilt射影核の部品を供給するまでがF6で、Witt商のmod p比較とFontaine核への適用はBS側。
+BS・Inputs・Paper層の証明を共通層へ依存させない。証明経路はLeanの各ステップで検証し、
+互換列の存在を未証明の仮定として残さない。
 
 ### 9.6. F7：Fontaine核イデアル進分離性
 
