@@ -117,3 +117,15 @@ H5のEnriched.TensorCotensorを構成し、既存Hom同値との一致を証明�
 新規利用例・公理監査はcheck_general_tensor_cotensor.leanに含む。
 一般監査20モジュール277宣言、共有補題込み利用例監査270宣言が成功。
 コミットe01e093・174b3b5。Hom対象のEnrichedRepresentabilityと具体的SM7は引き続き後続。
+
+## C値Hom対象の同型（§137）
+
+TensorMappingObjectとCotensorMappingObjectは実際のC値Hom対象の同型を構成する。
+それぞれmappingObject(pointwiseTensor X E,F)、mappingObject(E,cotensor X F)を
+ihom XでmappingObject E Fを冪化した対象と比較する。
+値域Fに自然で、任意パラメータZの転置を保つ法則を提供する。
+共有ActionComparisonAdjunctionを異なる源・値域の圏の随伴へ一般化して再利用した。
+
+一般監査22モジュール292宣言、共有比較込み利用例監査290宣言が成功。
+コミットa132406・3daa093。源Eの自然性、Xの反変自然性と単位値点の両立を集約し、
+EnrichedRepresentabilityへ登録する作業は後続。

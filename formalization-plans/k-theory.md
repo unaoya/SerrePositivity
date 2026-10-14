@@ -5487,3 +5487,42 @@ MathlibのeHomFunctorへのparametrized adjunctionへ移送した。
 多対象加群転送、スペクトル側pushout-product/monoidal/SM7の証明、
 具体的PSS/円のKan–Quillen入力・生成射・presentabilityへの接続も必要。
 段階1〜3の全体目標は継続中。一般の条件付きmodel互換性の利用例だけでは完了扱いにしない。
+
+
+## 137. 段階1〜3の実行記録：C値tensor/cotensor写像対象の同型（2026-10-15）
+
+### 137.1 Hom対象そのものの比較
+
+共有ActionComparisonAdjunctionを、同じ圏のendofunctorだけでなく、異なる源・値域の
+随伴L,L':C→DとR,R':D→Cへ一般化した。左随伴の自然同型から得る右随伴比較、評価と転置の法則を維持。
+既存のendofunctorへの適用は旧StageTwoの再ビルド・利用例で確認した。
+
+`General/TensorMappingObject`で作用の結合子をパラメータZに自然な同型として束ねた。
+右tensorを介した合成随伴とmappingObjectAdjunctionを右随伴の一意性で比較し、
+mappingObject(X⊗E,F) ≅ [X,mappingObject(E,F)]を実際のCの同型として構成した。
+ここでX⊗Eは既存pointwiseTensorを指す。値域Fについて自然であり、任意Zの転置との両立を証明。
+
+`General/CotensorMappingObject`では、左tensorのパラメータ作用とXによるスペクトル作用を
+結合子で比較し、mapping随伴とcotensor随伴の合成から
+mappingObject(E,cotensor(X,F)) ≅ [X,mappingObject(E,F)]を構成した。
+こちらも値域Fの自然性と、任意Zの転置との両立を証明した。
+両構成にモデル構造・具体的SSet・単位からの点の検出性は要求しない。
+
+### 137.2 検証とコミット
+
+一般入口・新規対象・旧StageTwoのビルドが成功し、新規ソース警告なし。
+`check_general_tensor_cotensor`で両C値Hom対象同型と任意パラメータの転置法則を利用。
+一般実装と共有比較補題を含む290宣言の公理監査に成功。
+一般スペクトル監査は22モジュール292宣言、全スペクトル・共有基盤公開監査は294モジュール2916宣言。
+標準公理のみでsorry・引用依存なし。既存StageTwo利用例も成功。
+
+コミット：共有比較の一般化`a132406`、Hom対象同型`3daa093`。
+
+### 137.3 EnrichedRepresentabilityへの残る登録条件
+
+対象同型と値域自然性は証明したが、両スペクトル変数の自然同型への集約はまだ必要。
+源Eの自然性、Xに関する反変自然性、ordinary Homの単位値点と閉構造のcurryHomEquiv'の
+両立を証明し、H5のEnrichedRepresentabilityの全フィールドを構成する。
+任意Zに対する転置比較はそのための入力で、今回だけでこのreceiverの完成とはしない。
+多対象加群転送、スペクトル側monoidal/SM7、具体的PSS/円のモデル入力接続も残る。
+段階1〜3の全体目標は引き続き実行中。
