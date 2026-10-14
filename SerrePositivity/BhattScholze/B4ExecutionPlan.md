@@ -1757,3 +1757,46 @@ k回後の包含像の誤差はJ^mに属すことを、既存自己δ環の一�
 今回の誤差評価は、その正規形の存在を仮定なしで与えるものではない。
 全段モニック表示と平坦性、実完備化/perfectionの完全忠実平坦性、
 引用なしの根付きperfectoid拡大と一般B4は未実装。
+
+次のBS専用予定`WittDivisionTriangular.lean`で、MathlibのnthRemainder、
+Verschiebung積公式とFrobenius係数公式を使い、pを消す任意係数環Rについて
+x.coeff 0=0のWitt除数xの積(x*y).coeff(n+2)を、
+x.coeff 1^(p^(n+1))*y.coeff(n+1)^pと下位y係数だけの剰余関数に分離する。
+x.coeff 1が単元なら、その積係数の方程式をモニックp乗方程式にする。
+零環はSubsingletonの場合として含め、MathlibのCharP仮定を無条件に要求しない。
+反復δ座標とWitt座標の比較は未実装であり、この計算だけでは
+既存δ除算包の全段表示が完成したとはしない。
+
+## B4-6：Witt除算の全深さ三角形公式（2026-10-15）
+
+著者版Prop3.13（pp33–35）は導来pushoutとCor2.44・2.39を使い、
+現在のδ二次誤差の帰納だけでは全段表示を与えないことを再確認した。
+`WittDivisionTriangular.lean`で、pを消す任意係数環R、
+x∈WittVector p R、x.coeff 0=0、任意nについて、
+(x*y).coeff(n+2)=x.coeff 1^(p^(n+1))*y.coeff(n+1)^p+r(yの下位n+1係数)
+となる下位係数だけの剰余関数rの存在を証明した。
+第1係数の指定単元uから、全段の積係数=cと具体的な
+モニックp乗多項式の根条件の同値を証明した。零環も含む。
+MathlibのnthRemainder・Verschiebung積公式・Frobenius係数公式を再利用した。
+2公開定理の対象2055ジョブ、pure B4全公開宣言監査成功。
+全体4664ジョブ成功（既存Inputsのsorry警告あり）。
+標準3公理のみ。新sorry・公理・引用なし。
+
+反復δ座標との比較は未実装。次の比較候補は、p乗算が単射のδ環Aに
+f:A→WittVector p Aを構成し、ghostComponent n(f a)=φ^n(a)を全nで示すこと。
+このWitt liftの存在は未証明であり、既存WittTwo断面から自動的に
+全Witt断面が得られるとは扱わない。比較が得られて初めて、今回の
+モニックWitt式を実際のδ除算関係式の有限表示に移す工程へ進める。
+
+### 共通基盤への要求 G4（未送信、2026-10-15）
+
+対象：任意CommRing A、素数p、Function.Injective(fun a:A => (p:A)*a)。
+結論：WittVector.ghostMap (p:=p) (R:=A)が単射。
+使用：B4-6のδWitt liftの環射性・一意性の比較。
+既存APIの不足：Mathlib/WittVectorと既存共有コードを検索した範囲で、
+pが単元であるghostEquivとは別の、p乗算単射だけの単射APIを確認できない。
+待つ工程：ghost座標一致から全Witt元の一致を出す比較のみ。
+独立作業：δから全Witt係数を構成するp可除性、下位座標の三角形比較、
+BS専用の今回のWitt除算公式と有限δの誤差評価。
+共通Witt補題の重複実装・共通ファイルの編集・他チャットへの送信はしない。
+全段モニック表示・平坦性、実完備化/perfectionの完全忠実平坦性と一般B4は未実装。
