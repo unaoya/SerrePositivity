@@ -4,6 +4,7 @@ import SerrePositivity.Spectra.Foundations
 import SerrePositivity.Spectra.General.Foundations
 import SerrePositivity.Spectra.General.SimplicialComparison
 import SerrePositivity.Spectra.ModelCategory.LevelClasses
+import SerrePositivity.Spectra.ModelCategory.LevelRecognition
 import Lean.Util.CollectAxioms
 
 open Lean in
@@ -33,6 +34,7 @@ run_cmd do
     declarations := declarations + 1
     unless modules.contains mod do modules := modules.push mod
   for expected in #[`SerrePositivity.Spectra.ModelCategory.LevelClasses,
+      `SerrePositivity.Spectra.ModelCategory.LevelRecognition,
       `SerrePositivity.Spectra.General.Basic,
       `SerrePositivity.Spectra.General.StructureMaps,
       `SerrePositivity.Spectra.General.FreeLevels,
