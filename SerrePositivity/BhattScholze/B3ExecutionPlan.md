@@ -1,6 +1,8 @@
 # B3一般存在・普遍性の実行計画
 
 2026-10-14。BS主計画のB3に関する実行記録。
+状態：一般B3の存在・IsPerfectoidization普遍性は証明・監査済み。
+原典Prop 7.2の全prism始対象、B4の全射性、B5の冪等性は別の未完了工程。
 目標は任意のperfectoid環Rの導来p完備な商Sに対する、具体的な写像S→Cの
 IsPerfectoidization。全射性はB4に分ける。標数p特殊場合だけで一般B3を完了とはしない。
 
@@ -23,7 +25,7 @@ B-I/B-S/B-R/André引用はこの存在証明の依存へ持ち込まない。
 - F4：共通計画§9.4で完了。Witt復元・零環の枝・標準商図式・一意持上げを再監査して利用する。
 - F5：共通計画§9.3で完了。有界ねじれ商のp完備性を再監査し、既存BSのN=1/N=nを供給する。
 - F6：受領済み。一般の主イデアル商のperfection核をBSの標準tilt射へ接続した。
-- F7：核進分離性の一部を共通側で実装中。完全Witt商のperfectoid性の向きには不要と証明した。
+- F7：共通側でp正則perfectoid環の核進分離性まで完了。今回のB3の一般pねじれ入力には利用せず、F6からの比較同型で進めた。
 - ω₁に関する導来完備性保存：F3本体とは別の接続条件。一般比較は共通要求に記録する。
 
 共有ファイル・CLMST・RootTower・利用先・ルートimport・共有監査は編集しない。
@@ -181,3 +183,67 @@ import閉包104モジュールにInputs・CLMST・Paper・RootTower依存なし�
 
 3公開定理の対象ビルド・BS専用監査が成功。標準3公理のみ、新規引用なし。
 完全試験prismへの一意普遍性を環としてのIsPerfectoidizationへ移す準備が整った。
+
+## B3-7：採用した一般存在・普遍性の証明経路（2026-10-14）
+
+除算→完全化→実PD完備化の候補経路について、完全試験prismへの一意普遍性、
+生成元正則性・実完備性、任意perfectoid試験環の商表示、一般の商射の唯一持上げを
+すべて証明したため、一般B3の存在・普遍性の経路として採用する。
+原典のδ除算・Lemma 3.9の完全化・Theorem 3.10の対応という構成要素を用い、
+Corollary 7.3で必要な完全試験対象の始対象を直接構成する。
+原典Prop 7.2の全prismに対する始対象を先に構成する反復順序とは異なる。
+
+このため、当初B3-5〜6のω₁反復・一般prismの始対象・一般Lemma 4.8は、
+一般B3の最終公開定理への必要条件ではなくなった。
+これらを証明済みとは数えず、原典Prop 7.2自体の未実装の別工程として保持する。
+この順序変更は有限生成・p正則・特殊試験環への限定ではない。
+
+`PerfectPrismQuotientPerfectoidization`の具体的な公開射は
+`perfectPrismQuotientPerfectoidizationMap P hP r hr`。
+Pは完全oriented prism、r:A→Sは全射、r(P.generator)=0、
+pはA/P.idealで非可逆である。J=ker(r)、
+C=PerfectDeltaDivisionPrismCarrier P.deltaStructure P.generator J / (dの標準像)。
+その射のIsPerfectoidizationを、任意perfectoid試験環T（零環も含む）について証明した。
+
+`SemiperfectoidPerfectoidization`の最終入口は
+`exists_perfectoidization_of_semiperfectoid_quotient hR q hq hS`。
+p素数、R,S:Type u可換環、hR:IsIntegralPerfectoid R p、q:R→S全射、
+hS:IsModuleComplete S (p:S) (ModuleCat.of S S)から、
+∃C:Type u, ∃CommRing C, ∃f:S→C, IsPerfectoidization p fを得る。
+RとSのp正則性、Sの有界ねじれ・古典的完備性・有限性を仮定しない。
+零Rの場合も含む。
+
+さらに`exists_perfectoidization_of_perfectoid_surjective_quotient`では、
+同じ構成の実導来完備化を通じてSの完備性を要求しない強い存在入口を証明した。
+原典入力の入口を削除せず、導来p完備性を明示した系として保持する。
+全射性はこの証明に含めずB4へ分ける。
+B-I/B6、André、既存B-S/B-R引用を削除・弱化せず、依存に使わない。
+
+## 原典と依存監査
+
+参照版は著者公開版`paper/refs/BS-prisms-author.pdf`。
+Theorem 3.10（印刷p.32）、Prop 7.2（p.55）、Cor 7.3（p.56）を確認した。
+全射性は著者版Theorem 7.4でありB4の別工程。arXiv v3の番号を流用しない。
+
+最終2モジュールのプロジェクトimport閉包は182モジュール。
+Inputs・CLMST・Paper・RootTower依存なし。
+共有ファイル・利用先・ルートimport・共有監査は編集していない。
+最終のビルド・BS専用公理監査の結果は次の完了記録に記す。
+
+## B3完了の検証記録（2026-10-14）
+
+最終5公開宣言（具体的射、そのIsPerfectoidization、prism商の存在、
+一般perfectoid全射商の存在、導来p完備商の原典入口）は、
+全BS宣言を含む`scripts/audit_bhatt_scholze.lean`でsorry-freeを確認した。
+公理依存はpropext・Classical.choice・Quot.soundのみ。
+最終定理を別の小さい監査でも再確認し、実際の公開署名に
+一般のIsIntegralPerfectoid、全射q、Sの実導来p完備性が残ることを確認した。
+
+最終対象ビルド3261ジョブ、全体ビルド4352ジョブが成功。
+原典版・定理番号・182モジュールの依存閉包も確認した。
+新しいsorry・公理・外部引用なし。既存引用に相対的な成果はこのB3の依存にない。
+共有コードの変更を含めず、この工程の変更だけを個別コミットする。
+
+一般B3の受入条件は達成した。次のBS工程はB4の全射性であり、
+Andréの名前付きsorryからの途中成果を条件付きと区別する。
+B-I/B6の引用と公開APIを維持する。CLMST・Serreへの接続は共通担当へ渡す。
