@@ -1,4 +1,4 @@
-import SerrePositivity.PerfectComplex.ClosedSupport
+import SerrePositivity.PerfectComplex.ClosedSupportK0
 import Mathlib.Util.AssertNoSorry
 
 -- S1.1: closed support and comparison with the existing ideal support.
@@ -13,3 +13,11 @@ assert_no_sorry SerrePositivity.HasHomologySupportOn.of_homotopyEquiv
 assert_no_sorry SerrePositivity.HasHomologySupportOn.shift
 assert_no_sorry SerrePositivity.HasHomologySupportOn.mappingCone
 assert_no_sorry SerrePositivity.hasHomologySupportOn_bot_iff
+
+-- S1.3: perfect closed-support category and its universal K₀.
+assert_no_sorry SerrePositivity.perfectHomotopyObj_supportedOn_iff
+assert_no_sorry SerrePositivity.supportedPerfectOnObj
+assert_no_sorry SerrePositivity.K0WithSupport.lift
+assert_no_sorry SerrePositivity.K0WithSupport.hom_ext
+assert_no_sorry SerrePositivity.K0WithSupport.mk_triangle
+assert_no_sorry SerrePositivity.K0WithSupport.mk_shift_one
