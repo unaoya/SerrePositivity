@@ -1,4 +1,4 @@
-import SerrePositivity.KTheory.Adams.TensorCubeHighMixed
+import SerrePositivity.KTheory.Adams.TensorCubeHighMixedComponents
 import SerrePositivity.PerfectComplex.TensorTripleCyclicSum
 import Mathlib.Util.AssertNoSorry
 
@@ -22,3 +22,36 @@ assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixed0_target_inclusion_mono
 
 assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerToKernel_highMixed0
 #print axioms SerrePositivity.Adams.tensorCubeFirstLayerToKernel_highMixed0
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixed1
+#print axioms SerrePositivity.Adams.tensorCubeHighMixed1
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixed2
+#print axioms SerrePositivity.Adams.tensorCubeHighMixed2
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeKernelRotation_highMixed0
+#print axioms SerrePositivity.Adams.tensorCubeKernelRotation_highMixed0
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeKernelRotation_highMixed1
+#print axioms SerrePositivity.Adams.tensorCubeKernelRotation_highMixed1
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeKernelRotation_highMixed2
+#print axioms SerrePositivity.Adams.tensorCubeKernelRotation_highMixed2
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixed1_inclusion
+#print axioms SerrePositivity.Adams.tensorCubeHighMixed1_inclusion
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixed2_inclusion
+#print axioms SerrePositivity.Adams.tensorCubeHighMixed2_inclusion
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixed1_target_inclusion_mono
+#print axioms SerrePositivity.Adams.tensorCubeHighMixed1_target_inclusion_mono
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixed2_target_inclusion_mono
+#print axioms SerrePositivity.Adams.tensorCubeHighMixed2_target_inclusion_mono
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixedTarget
+#print axioms SerrePositivity.Adams.tensorCubeHighMixedTarget
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeHighMixedMap
+#print axioms SerrePositivity.Adams.tensorCubeHighMixedMap
