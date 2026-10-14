@@ -313,6 +313,7 @@ public import SerrePositivity.HomologicalAlgebra.BaseChange
 public import SerrePositivity.HomologicalAlgebra.NullHomotopy
 public import SerrePositivity.HomologicalAlgebra.Resolution
 public import SerrePositivity.HomologicalAlgebra.Tor
+public import SerrePositivity.HomologicalAlgebra.DerivedTensorRealization
 public import SerrePositivity.HomologicalAlgebra.ConeResolution
 public import SerrePositivity.HomologicalAlgebra.TorLES
 public import SerrePositivity.HomologicalAlgebra.TorSymmetry
