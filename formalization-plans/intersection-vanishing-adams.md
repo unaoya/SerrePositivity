@@ -3309,6 +3309,19 @@ K₀ の類への移送と重みつき乗法性は次の小段。
 - この小段は受入完了、ルート公開は S10.8b の統合段。
   次は S10.8b.1d の K₀ への自然性と S10.8b.2 の台拡大・単位。
 
+### S10.8b.1d：三乗評価・K₀・係数つき作用素の基底変更自然性
+
+- `Adams/CubicBaseChangeNaturality.tensorCubeClass_map` は三固有複体の基底変更同型を
+  K₀ の等式へ移し、係数の重みの有限和を取る。
+- `cyclicThreeValue_map` は K₀ の生成元での外延性、`cyclicThree_map` は係数テンソルの
+  帰納法で任意の類へ移す。任意の `supportPullback φ Z≤W` に対応する。
+- 任意の環準同型で成立し、平坦性は追加していない。根は φ(t)、係数の根 ζ は固定。
+  対象環の根の関係式の証明は φ による元の関係式の移送で供給できる。
+- `lake build SerrePositivity.KTheory.Adams.CubicBaseChangeNaturality` が成功（3279 jobs）。
+  `lake env lean scripts/audit_adams_cubic_naturality.lean` の三定理の監査が成功。
+  公理は標準三公理のみ。ルート公開は統合段。
+- S10.8b.1 の自然性は受入完了。台拡大・単位、Koszul 正規化、族、S10.9、S11 は後続段。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
