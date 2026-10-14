@@ -37,6 +37,7 @@
 - [BalancedTensorHexagon](BalancedTensorHexagon.lean)：三因子の標準射上の内外の交換公式と順逆のhexagon整合性。
 - [BalancedTensorSymmetric](BalancedTensorSymmetric.lean)：構成済みの交換同型による内部加群圏の対称モノイダル構造の登録。
 - [FreeModuleMonoidal](FreeModuleMonoidal.lean)：自由加群関手の単位比較、生成元上の結合・単位・交換の整合性と強モノイダル・braided関手の登録。
+- [BalancedTensorFreeLeft](BalancedTensorFreeLeft.lean)：交換で移した左テンソルの作用、左自由因子の比較同型・生成元の挿入と二変数の自然同型。
 
 極限の構成にはテンソル積の極限保存を仮定しない。
 余極限の構成では、全ての左テンソルが対象とする図式の形の余極限を保存することを仮定する。
@@ -53,6 +54,7 @@
 四因子の標準射からpentagonを証明し、加群圏のモノイダル構造を登録した。
 順逆のhexagonも証明し、基礎圏が対称な場合の内部加群圏の対称モノイダル構造を登録した。
 自由内部加群関手も、構成済みの積の比較を使う強モノイダル・braided関手として登録した。
+左自由因子の積も、生成対象を加群の左にテンソルした加群と自然同型で比較した。
 
 モノイダル構造を使わない補助結果として、
 [InitialColimits](../Limits/InitialColimits.lean) に始対象の図式の余極限の始対象性を置く。

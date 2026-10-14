@@ -32,6 +32,7 @@ Mathlibの `CategoryTheory.Mod` を、構成済みの球面対称列へ適用す
 - [TensorHexagon](TensorHexagon.lean)：球面上の結合・交換同型の順逆のhexagon整合性。
 - [TensorSymmetric](TensorSymmetric.lean)：球面上のテンソル積の対称モノイダル構造の登録、braidingと構成済みの交換同型との一致。
 - [FreeMonoidal](FreeMonoidal.lean)：自由スペクトル関手の強モノイダル・braided構造、単位・テンソル比較と既存の構成との一致。
+- [TensorFreeLeft](TensorFreeLeft.lean)：自由球面加群を左因子とする積と左convolutionの自然比較、生成元の挿入の公式とF_nへの特殊化。
 
 通常の極限・余極限はunderlying対称列から作用を誘導して構成する。
 第n段への評価が両方を保存するため、各段での極限・余極限の計算が可能である。
@@ -64,7 +65,8 @@ n以上の段では全単射の添字をΣ_mへ移送した余等化子と、各
 pentagon整合性を証明し、球面単位のモノイダル構造を登録した。
 順逆のhexagonを証明して対称モノイダル構造を登録し、braidingを構成済みの交換同型と比較した。
 自由スペクトル関手の単位・テンソル比較の整合性も証明し、強モノイダル・braided構造を登録した。
-自由加群を左因子とする一般の比較は今後公開する。
+自由球面加群を左因子とする積を、生成対称列との左convolutionへ比較する自然同型も構成した。
+逆射は生成元を第一因子に挿入する射であり、F_nにも特殊化できる。
 
 球面の第n段は円の反復smashである。境界を潰した単体的球面との比較は別の課題として扱う。
 弱同値、モデル構造、導来smash、安定ホモトピー群はまだ登録していない。

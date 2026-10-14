@@ -37,6 +37,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.TensorTriangle
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorMonoidal
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorSymmetric
 public import SerrePositivity.Spectra.SymmetricSpectrum.FreeMonoidal
+public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeLeft
 
 /-!
 # スペクトルの具体的基盤の入口
@@ -133,9 +134,11 @@ F_m XとF_n Yの球面上のテンソル積をF_(m+n)(X⊗Y)へ比較する自�
 自由スペクトル関手の単位・テンソル比較と結合・左右の単位・交換との両立を証明した。
 強モノイダル・braided関手として登録し、比較同型を既存の構成と比較した。
 
+自由球面加群を左因子とする積を、生成対称列との左convolutionへ比較する自然同型も構成した。
+生成元の挿入の公式とF_nへの特殊化も証明した。
+
 ## 未構成の範囲
 
-球面上のテンソル積の自由加群を左因子とする比較、
 スペクトル圏の閉構造・内部Hom、
 モデル構造と導来演算は引き続き実装する。
 この入口は完成済みの§4の降下入力を変更せず、基盤を独立に検証するためのもの。
