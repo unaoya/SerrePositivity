@@ -1,4 +1,4 @@
-import SerrePositivity.KTheory.Adams.TensorSquareBaseChangeEigenspaces
+import SerrePositivity.KTheory.Adams.BaseChangeNaturality
 import SerrePositivity.PerfectComplex.IdempotentImageFunctor
 import Mathlib.Util.AssertNoSorry
 
@@ -26,3 +26,8 @@ assert_no_sorry SerrePositivity.Adams.tensorSquarePositiveBaseChangeIso_hom_incl
 assert_no_sorry SerrePositivity.Adams.tensorSquareNegativeBaseChangeIso_hom_inclusion
 #print axioms SerrePositivity.Adams.tensorSquarePositiveBaseChangeIso
 #print axioms SerrePositivity.Adams.tensorSquareNegativeBaseChangeIso
+
+assert_no_sorry SerrePositivity.Adams.tensorSquareClass_map
+assert_no_sorry SerrePositivity.Adams.cyclicTwo_map
+#print axioms SerrePositivity.Adams.tensorSquareClass_map
+#print axioms SerrePositivity.Adams.cyclicTwo_map
