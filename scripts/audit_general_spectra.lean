@@ -23,6 +23,7 @@ run_cmd do
       `SerrePositivity.Spectra.General.FreeLevels,
       `SerrePositivity.Spectra.General.FreeLevelInduction,
       `SerrePositivity.Spectra.General.FreeLevelQuotient,
+      `SerrePositivity.Spectra.General.FreeLevelNaturality,
       `SerrePositivity.Spectra.General.Free, `SerrePositivity.Spectra.General.Evaluation,
       `SerrePositivity.Spectra.General.Limits,
       `SerrePositivity.Spectra.General.TensorClosed,

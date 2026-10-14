@@ -5,7 +5,7 @@ import SerrePositivity.Spectra.General.Foundations
 import SerrePositivity.Spectra.General.SimplicialComparison
 import SerrePositivity.Spectra.ModelCategory.LevelClasses
 import SerrePositivity.Spectra.ModelCategory.LevelRecognition
-import SerrePositivity.Spectra.ModelCategory.LevelFromGenerators
+import SerrePositivity.Spectra.ModelCategory.MonoidalLevel
 import Lean.Util.CollectAxioms
 
 open Lean in
@@ -26,6 +26,8 @@ run_cmd do
         `SerrePositivity.CategoryTheory.FiniteBijectionAction,
         `SerrePositivity.CategoryTheory.FiniteBijectionSum,
         `SerrePositivity.CategoryTheory.FiniteBijectionShift,
+        `SerrePositivity.CategoryTheory.Groupoid.ThinComponents,
+        `SerrePositivity.CategoryTheory.FiniteBijectionInduction,
         `SerrePositivity.CategoryTheory.FiniteBlockEquiv].any (·.isPrefixOf mod) do continue
     let axioms ← collectAxioms name
     let unexpected := axioms.filter fun ax ↦
@@ -39,11 +41,16 @@ run_cmd do
       `SerrePositivity.Spectra.ModelCategory.LevelAcyclicity,
       `SerrePositivity.Spectra.ModelCategory.LevelSmallness,
       `SerrePositivity.Spectra.ModelCategory.LevelFromGenerators,
+      `SerrePositivity.Spectra.ModelCategory.FreeLevelCofibrations,
+      `SerrePositivity.Spectra.ModelCategory.MonoidalLevel,
+      `SerrePositivity.CategoryTheory.Groupoid.ThinComponents,
+      `SerrePositivity.CategoryTheory.FiniteBijectionInduction,
       `SerrePositivity.Spectra.General.Basic,
       `SerrePositivity.Spectra.General.StructureMaps,
       `SerrePositivity.Spectra.General.FreeLevels,
       `SerrePositivity.Spectra.General.FreeLevelInduction,
       `SerrePositivity.Spectra.General.FreeLevelQuotient,
+      `SerrePositivity.Spectra.General.FreeLevelNaturality,
       `SerrePositivity.Spectra.General.Free, `SerrePositivity.Spectra.General.Evaluation,
       `SerrePositivity.Spectra.General.Limits,
       `SerrePositivity.Spectra.General.TensorClosed,

@@ -3,6 +3,7 @@ module
 public import SerrePositivity.Spectra.General.Basic
 public import SerrePositivity.Spectra.General.StructureMaps
 public import SerrePositivity.Spectra.General.FreeLevelQuotient
+public import SerrePositivity.Spectra.General.FreeLevelNaturality
 public import SerrePositivity.Spectra.General.Free
 public import SerrePositivity.Spectra.General.Evaluation
 public import SerrePositivity.Spectra.General.Limits
