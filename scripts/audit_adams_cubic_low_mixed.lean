@@ -1,4 +1,4 @@
-import SerrePositivity.KTheory.Adams.TensorCubeLowMixedSections
+import SerrePositivity.KTheory.Adams.TensorCubeLowMixedExact
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.Adams.tensorCubeLowMixed0Partial
@@ -131,3 +131,48 @@ assert_no_sorry SerrePositivity.Adams.tensorCubeLowMixedSectionX_section
 
 assert_no_sorry SerrePositivity.Adams.tensorCubeLowMixedMap_epi
 #print axioms SerrePositivity.Adams.tensorCubeLowMixedMap_epi
+
+assert_no_sorry SerrePositivity.cochainTensorTripleDegreeMap_sparse_partition
+#print axioms SerrePositivity.cochainTensorTripleDegreeMap_sparse_partition
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerInclusion_sparse
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerInclusion_sparse
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeLowMixedRetractionX
+#print axioms SerrePositivity.Adams.tensorCubeLowMixedRetractionX
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeLowMixedRetractionX_retract
+#print axioms SerrePositivity.Adams.tensorCubeLowMixedRetractionX_retract
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeLowMixedRetractionX_first_inclusion
+#print axioms SerrePositivity.Adams.tensorCubeLowMixedRetractionX_first_inclusion
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeLowMixed0_section_inclusion
+#print axioms SerrePositivity.Adams.tensorCubeLowMixed0_section_inclusion
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeLowMixed1_section_inclusion
+#print axioms SerrePositivity.Adams.tensorCubeLowMixed1_section_inclusion
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeLowMixed2_section_inclusion
+#print axioms SerrePositivity.Adams.tensorCubeLowMixed2_section_inclusion
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeLowMixedSplitting_total
+#print axioms SerrePositivity.Adams.tensorCubeLowMixedSplitting_total
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeLowMixedSplitting
+#print axioms SerrePositivity.Adams.tensorCubeLowMixedSplitting
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeLowMixedShortComplex_shortExact
+#print axioms SerrePositivity.Adams.tensorCubeLowMixedShortComplex_shortExact
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeLowMixedCokernelIso
+#print axioms SerrePositivity.Adams.tensorCubeLowMixedCokernelIso
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeLowMixedCokernelIso_π_hom
+#print axioms SerrePositivity.Adams.tensorCubeLowMixedCokernelIso_π_hom
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeLowMixedSplitting_identity
+#print axioms SerrePositivity.Adams.tensorCubeLowMixedSplitting_identity
+
+assert_no_sorry SerrePositivity.Adams.shortExactCokernelIso
+#print axioms SerrePositivity.Adams.shortExactCokernelIso
