@@ -718,3 +718,32 @@ U7a2の受入入口と既存 `Spectra.StageTwo` の同時ビルド、受入入�
 次の U7b では既存 `PerfectComplex/TensorShift.lean` と Mathlib の HomComplexShift を
 再利用候補として照合し、全次数の shift 作用と既存複体の shift の比較を構成する。
 共有ルート・既存 PerfectComplex・並行作業ファイルは編集していない。
+
+### 13.8 U7b1：整数 shift の全次数 dg 関手と加群評価
+
+固定 Mathlib の `Cochain.shift` は `δ_shift` により Hom 微分を `(-1)^s` 倍する。
+`Complexes/Shift.lean` の `shiftHom s P Q` は次数 p の成分を `(-1)^(sp)` 倍し、
+真の Hom chain map として構成した。`shiftHom_v` が全斉次成分、
+`shiftHom_ofHom` が閉次数0での通常 chain map shift との一致を証明する。
+単位と豊穣合成を保存する `shiftDG s` は既存 `EnrichedFunctor` である。
+Mathlib の再添字付けと Hom 微分の定理を再利用し、複体 shift を再実装しない。
+
+`Module/Shift.lean` の `shiftModule s M` は各対象で `(M(x))⟦s⟧`、
+作用は `M.map ≫ shiftHom`。主 dg 関手との合成と同じデータで、
+全次数作用に `(-1)^(sp)` が入ることを証明した。
+`shiftedFamily_naturality` は全次数自然な chain map 族の通常 shift の全次数自然性。
+`moduleShiftMap`/`moduleShiftFunctor` はこれを主 Hom end の閉零射へ持ち上げ、
+`moduleShiftMap_eval` と `moduleShiftEvaluationIso` が評価と Mathlib の shift の一致・自然性を証明する。
+対象構成と全次数自然性は任意 D、閉零加群圏の射には `[Small.{u} D]` を明示する。
+
+受入入口は `Checks/Shift.lean`。任意可換環・非有界複体、正負 shift と正負次数、
+ℤの一対象環、ZMod 2、閉零 chain map 比較、評価自然同型を検証する。
+主要16宣言を公理監査する。整数ごとの関手は完成したが、零 shift と加法 shift の
+coherence、`HasShift ℤ` 登録、cone、残る必要な極限余極限は未完。
+次の U7b2 はそれらの shift coherence と全次数自然性を証明し、続いて cone を構成する。
+U7全受入および U8〜U10は未完で、U10までの目標を保持する。
+
+U7b1の受入入口と既存 `Spectra.StageTwo` の同時ビルド、受入入口の直接実行は成功。
+主要16宣言の公理はすべて `propext`・`Classical.choice`・`Quot.sound` のみ。
+新規 sorry・admit・axiom は0件。文書検査（21 Markdown・311参照・失敗0）、
+担当差分の whitespace 検査も成功。共有ルート・並行作業ファイルは編集していない。

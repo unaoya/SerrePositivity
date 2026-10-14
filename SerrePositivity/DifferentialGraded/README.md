@@ -94,6 +94,9 @@ U7a1では `Module/Zero.lean` に全次数零加群・零対象・評価によ�
 U7a2の `Module/Biproduct.lean` は objectwise 二項直和の全次数対角作用、
 射影・包含、積と余積の普遍性、有限直和の存在と評価比較を供給する。
 受入入口は `Checks/Biproduct.lean`。shift/cone・残る極限余極限は引き続き未完。
+U7b1では `Complexes/Shift.lean` に次数 p の符号 `(-1)^(sp)` を持つ shift dg 関手、
+`Module/Shift.lean` に整数ごとの加群 shift 関手と評価自然同型を構成した。
+受入入口は `Checks/Shift.lean`。零・加法 shift の coherence と cone は次の区切り。
 API契約と共有 G1/G2/G5/G6 への引継ぎは計画§12.8。
 導来圏・射影モデル・dg 商・Morita・Perf と M5全体は未完成。
 一般モデル圏・Quillen・転送・SM7 は共有系列が所有し、この入口には置かない。
