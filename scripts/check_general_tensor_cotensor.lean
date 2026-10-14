@@ -88,17 +88,36 @@ example (E : GeneralSymmetricSpectrum C K) :
   exact mappingObjectArrow_identity E
 end
 
+example : pointwiseTensorBifunctor (K := K) ⊣₂ cotensorBifunctor :=
+  pointwiseTensorCotensorParametrizedAdjunction
+
+example {X Y : C} (f : X ⟶ Y) (E F : GeneralSymmetricSpectrum C K)
+    (g : pointwiseTensor Y E ⟶ F) :
+    pointwiseTensorHomEquiv X E F ((pointwiseTensorBifunctor.map f).app E ≫ g) =
+      pointwiseTensorHomEquiv Y E F g ≫ (cotensorBifunctor.map f.op).app F :=
+  pointwiseTensorHomEquiv_naturality_parameter f E F g
+
+example : (pointwiseTensorBifunctor (K := K)).flip ⊣₂ mappingObjectBifunctor :=
+  pointwiseTensorMappingParametrizedAdjunction
+
+example (X : C) {E E' : GeneralSymmetricSpectrum C K} (a : E ⟶ E')
+    (F : GeneralSymmetricSpectrum C K) (g : pointwiseTensor X E' ⟶ F) :
+    mappingObjectHomEquiv X E F ((pointwiseTensorFunctor X).map a ≫ g) =
+      mappingObjectHomEquiv X E' F g ≫ (mappingObjectBifunctor.map a.op).app F :=
+  mappingObjectHomEquiv_naturality_source X a F g
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
     let some idx := env.getModuleIdxFor? name | continue
-    unless (`SerrePositivity.Spectra.General).isPrefixOf
-        env.header.modules[idx.toNat]!.module do continue
+    let mod := env.header.modules[idx.toNat]!.module
+    unless (`SerrePositivity.Spectra.General).isPrefixOf mod ||
+        mod == `SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport do continue
     let axioms ← collectAxioms name
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
       throwError "Unexpected axioms in {name}: {axioms}"
     count := count + 1
   if count == 0 then throwError "No general spectrum declarations audited"
-  logInfo m!"General tensor/cotensor audit passed: {count} declarations, standard axioms only."
+  logInfo m!"General tensor/cotensor and adjunction transport audit passed: {count} declarations, standard axioms only."

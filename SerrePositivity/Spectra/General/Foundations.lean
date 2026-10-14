@@ -11,6 +11,8 @@ public import SerrePositivity.Spectra.General.TensorClosed
 public import SerrePositivity.Spectra.General.MappingObject
 public import SerrePositivity.Spectra.General.PointwiseTensorCoherence
 public import SerrePositivity.Spectra.General.MappingEnrichment
+public import SerrePositivity.Spectra.General.ParametrizedCotensor
+public import SerrePositivity.Spectra.General.ParametrizedMapping
 
 /-! # General symmetric spectra: the category and its free/evaluation API
 

@@ -20,6 +20,7 @@ run_cmd do
     let mod := env.header.modules[idx.toNat]!.module
     unless #[`SerrePositivity.Spectra, `SerrePositivity.CategoryTheory.FunctorTransport,
         `SerrePositivity.CategoryTheory.AdjunctionHomLaws,
+        `SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport,
         `SerrePositivity.CategoryTheory.Monoidal,
         `SerrePositivity.CategoryTheory.Limits,
         `SerrePositivity.GroupTheory.Coxeter, `SerrePositivity.CategoryTheory.FiniteBijection,
@@ -36,7 +37,10 @@ run_cmd do
       throwError "Unexpected axioms in {name}: {unexpected}"
     declarations := declarations + 1
     unless modules.contains mod do modules := modules.push mod
-  for expected in #[`SerrePositivity.Spectra.ModelCategory.LevelClasses,
+  for expected in #[`SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport,
+      `SerrePositivity.Spectra.General.ParametrizedCotensor,
+      `SerrePositivity.Spectra.General.ParametrizedMapping,
+      `SerrePositivity.Spectra.ModelCategory.LevelClasses,
       `SerrePositivity.Spectra.ModelCategory.LevelRecognition,
       `SerrePositivity.Spectra.ModelCategory.LevelAcyclicity,
       `SerrePositivity.Spectra.ModelCategory.LevelSmallness,
