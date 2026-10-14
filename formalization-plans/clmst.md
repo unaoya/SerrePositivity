@@ -1,6 +1,6 @@
 # CLMST とその準備の形式化計画
 
-作成日：2026-10-13。更新日：2026-10-14。状態：必要な数値結果・Serre接続・標準完備塔を実装済み。F3の公開APIまで実装済み。次はF5・F4・F6・F7とBS成果の接続。
+作成日：2026-10-13。更新日：2026-10-14。状態：必要な数値結果・Serre接続・標準完備塔を実装済み。F3・F5の公開APIまで実装済み。次はF4・F6・F7とBS成果の接続。
 原典は `paper/refs/CLMST-2209.04046v4.pdf`（手元のみ）と
 [同じ版の HTML](https://arxiv.org/html/2209.04046v4)。実装の到達点は §0 に記す。
 
@@ -68,15 +68,21 @@ K群の二つの降下は従来どおり別作業に保留する。
   公開入口は[`PDCompletion.lean`](../SerrePositivity/HomologicalAlgebra/DerivedCompletion/PDCompletion.lean)。
   二座標一般版は任意の元f,dを扱い、p正則性・Noether性・有界ねじれを要しない。
   一般の三座標以上への拡張とδ構造の延長はこの完了範囲に含めない。
-- BSからの追加要求F4（strict p環のWitt復元）、F5（有界pねじれ正則商の完備性）、
+- F5は一般加群の有界冪ねじれに関する導来／古典的完備性比較と、
+  主イデアル商の古典的完備性まで証明済み。公開入口は
+  [`AdicBoundedTorsionQuotient.lean`](../SerrePositivity/CommutativeAlgebra/AdicBoundedTorsionQuotient.lean)。
+  共通版は素数性・p正則性・d正則性を要せず、BS要求の直接形も提供する。
+- BSからの追加要求F4（strict p環のWitt復元）、
   F6（一般主イデアル商のperfection核）、F7（Fontaine核進分離性）を共通側の作業へ登録する。
   型・受入条件・優先順は§9に記す。要求の登録を証明の受領とは扱わない。
 - 導来テンソル・完全平坦性・絶対整閉と両立冪根の一般APIを準備した。
   André拡大そのものは別の名前付き引用であり、主定理へ到達しない。
   これをB4の無条件な証明として数えない。
 
-2026-10-14のF3完成確認：全体ビルド4315ジョブ、`scripts/audit_clmst.lean`と
-`scripts/audit_axioms.lean`が成功した。主定理の未証明入力は上記7宣言。
+2026-10-14のF5完成確認：全体ビルド4321ジョブ、`scripts/audit_clmst.lean`と
+`scripts/audit_axioms.lean`とBS適用用の`scripts/audit_f5.lean`が成功した。
+F5の全13公開宣言と適用監査4宣言の`assert_no_sorry`も成功。
+主定理の未証明入力は上記7宣言。
 抽象化レビューと旧条件付きAPIの整理の記録は
 [実装境界](clmst-interfaces.md#0-今回の抽象化レビューと整理2026-10-14)を参照。
 以降の古い検証件数は当時の記録として保持する。
@@ -2387,7 +2393,7 @@ L1 は推移的にも `Paper/` を import しない。
 BS側はδ環・prism・商のperfectoid化の存在B3、全射性B4、冪等性B5を担当する。
 C1・F1・F2を再実装する工程はない。既存の共通定義・公開入口を維持する。
 
-F3は完了した。次の主作業はF5とし、その後にF4、F6、F7を進める。
+F3・F5は完了した。次の主作業はF4とし、その後にF6、F7を進める。
 これは着手の優先順であって、F4・F6・F7がすべてF3の完成を数学的に要するという意味ではない。
 各要求に具体的な障害がある場合はその不足を記録し、独立した要求を進められる。
 新しい引用を追加して待合せを解除したことにはしない。
@@ -2425,9 +2431,10 @@ F3の完了はBS側でのδ構造・prism・perfectoid化への適用の完了�
 `assert_no_sorry`と既存利用先のビルドを確認する。
 F3完成だけでB3の存在やB4の全射性の引用が消えたとは報告しない。
 
-### 9.3. F5：有界p冪ねじれを持つ正則商の古典的p完備性
+### 9.3. F5：有界p冪ねじれを持つ正則商の古典的p完備性（完了）
 
-状態：F5-1〜4完了。一般加群の比較、主イデアル商の導来完備性、商の古典的完備性とBS直接形を証明。対象ビルドと全公開宣言の`assert_no_sorry`が成功。F5-5の全体監査は未完了。BS要求§8 F5と既存共通APIを2026-10-14に照合した。
+状態：F5-1〜5完了。一般加群の比較、主イデアル商の導来完備性、商の古典的完備性とBS直接形を証明。全体ビルド4321ジョブ、CLMST・公理・BS適用監査が成功。
+共通の公開13宣言と適用例4宣言は全て`assert_no_sorry`成功。BS要求§8 F5と既存共通APIを2026-10-14に照合した。
 
 #### 受渡し契約
 
@@ -2443,6 +2450,18 @@ hbounded : ∃ N : ℕ, ∀ n : ℕ, ∀ x : Q,
 Qのp正則性、Noether性、局所性、整域性、有限表示性の追加は不要。
 BS側はdistinguished商のN=1、d冪商のN=冪指数という入力を既に供給している。
 この契約を満たす公開定理を最終成果物とし、一般加群版も共通層へ置く。
+
+#### 公開入口と実施記録
+
+- 一般加群の比較：`DerivedCompletion.isModuleComplete_iff_isAdicComplete_of_bounded_torsion`。
+- 一般商の完備性：`isAdicComplete_principal_quotient_natCast_of_bounded_torsion`。
+- BSの直接形：`isAdicComplete_regular_quotient_natCast_of_bounded_torsion`。
+- 冪商：`isAdicComplete_principal_power_quotient_natCast_of_bounded_torsion`。
+- BS接続の検証：[`scripts/audit_f5.lean`](../scripts/audit_f5.lean)。既存のN=1・N=n入力を使用し、N=0とf=0の枝も検証した。
+
+ステップコミット：F5-1 `cff1530`、F5-2 `cdbde7b`、F5-3 `5b0efae`、F5-4 `577c16b`。
+F5公開入口の推移的な共通側importは46モジュールで、BS・Inputs・Paper層への依存なし。
+新しい引用・公理・sorryを追加していない。次はF4のWitt復元。
 
 #### 再利用する実装
 
@@ -2486,7 +2505,7 @@ IsHausdorff (Ideal.span {f}) M
 
 #### 実装単位とコミット
 
-| 順 | 成果物（宣言名・新規配置は予定） | 完了条件 |
+| 順 | 成果物（全て実装済み） | 完了条件 |
 | --- | --- | --- |
 | F5-1 | `CommutativeAlgebra/AdicBoundedTorsion.lean`：`isHausdorff_of_adicRecurrenceMap_injective_of_bounded_torsion` | 上記の互換列を構成し分離性を証明。指数N=0とf=0も扱う |
 | F5-2 | 同ファイル：`isAdicComplete_of_adicRecurrenceMap_bijective_of_bounded_torsion`。`DerivedCompletion/BoundedTorsionComparison.lean`：導来／古典的比較 | 既存前完備性と接続。一般加群版、自然数pの環版、同値版を公開 |
@@ -2555,8 +2574,8 @@ p進分離性やθの全射性だけから、核進分離性を自動生成し�
 
 | 順 | 実装単位 | 個別コミットの完了条件 |
 | --- | --- | --- |
-| 1：F5-a | 導来p完備加群の有界p冪ねじれから古典的p完備性への比較 | 一様なねじれ指数を明示し、自然な完備化写像の単射・全射を証明。p正則性を結論側へ追加しない |
-| 2：F5-b | p正則・p進完備なAの正則商A/(d)へ適用 | cokernelの導来完備性、係数制限、環の古典的完備性を接続。BS側の有界ねじれ入力だけを残す |
+| 1：F5-a（完了） | 導来p完備加群の有界p冪ねじれから古典的p完備性への比較 | 一様なねじれ指数を明示し、自然な完備化写像の単射・全射を証明。p正則性を結論側へ追加しない |
+| 2：F5-b（完了） | p正則・p進完備なAの正則商A/(d)へ適用 | cokernelの導来完備性、係数制限、環の古典的完備性を接続。BS側の有界ねじれ入力だけを残す |
 | 3：F4-a | 完全なA/(p)からWitt持上げを構成 | Teichmüller代表とp進展開の両立、mod p図式、既存Fontaine写像との整合を証明 |
 | 4：F4-b | Witt復元同型と一意性 | p正則性と完備性から単射・全射を証明し、零環を含む。持上げの一意性を公開 |
 | 5：F6 | 非正則元の主イデアル商のperfection核 | 座標ごとの割り切れ性から互換列を構成し、核の両包含を証明。零環の枝を明示 |
