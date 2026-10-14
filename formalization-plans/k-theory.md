@@ -5655,3 +5655,36 @@ cell acyclicity・W/Fib・生成性・両Quillen関手・関手的分解を検�
 多対象転送の共有cell/recognition論理は実装したが、M5の具体的dgモデルの存在はここで主張しない。
 基点付きsmashのmodel互換性、スペクトル側monoidal/SM7、具体的PSS/円へのモデル入力接続も残る。
 段階1〜3の全体目標は継続中。
+
+
+## 142. 段階1〜3の実行記録：自由生成射族のpresentabilityと多対象モデル構成（2026-10-15）
+
+共有`Transfer/EvaluationSmallness`を追加した。source生成射クラスの小ささをstrictMapで保ち、
+w-smallな添字族の全free像もw-smallであることを証明する。
+始域の共通regular κ-presentabilityをL_i⊣R_iと評価のwサイズ余極限保存で自由像へ移し、
+IsCardinalForSmallObjectArgument・HasSmallObjectArgumentを実際に構成した。
+対象・射・添字の宇宙とwを区別し、Small.{w} ι・LocallySmall.{w} D・Dのwサイズ余極限を明示する。
+
+`Monoidal/ManyObjectPresentability.modelCategoryOfPresentableGenerators`は、源の生成モデル構造、
+I/J始域の共通presentability cardinal、monoid axiom、評価の余極限保存、
+L_i⋙R_j≅tensorLeft(H_ij)から多対象モデルを構成する。
+自由像のSOAとfree J-cell acyclicityの追加仮定はなく、§141と今回の補題から証明する。
+W/Fibのobjectwise一致と生成性を公開した。具体的κの選択やHom/free公式は当てはめ側の証拠である。
+
+スペクトルのLevelSmallnessを同じ共有補題へ接続し、旧isSmall_strictMap・
+isSmall_of_smallObjectArgument・levelGenerators_smallObjectArgumentの宣言名と型を保持した。
+ℕのSmallインスタンスから誤ってw=0を固定しないよう、共有定理のwを明示して適用する。
+
+集約・対象ビルドが成功し、新規ソース警告なし。
+`check_many_object_presentability`はDにmodel/image-SOA/cell-acyclicityを仮定せず、
+構成・W/Fib・生成性・評価のQuillen性・関手的分解を検証。新規二モジュール12宣言の公理監査が成功。
+共有基盤監査24モジュール357宣言、既存many-object転送31宣言監査と
+monoidal level利用例72宣言監査が成功。全スペクトル監査303モジュール2947公開宣言も成功。
+すべて標準公理のみ、sorry・引用依存なし。
+コミット：共有smallnessとレベルへの再利用`ac36b45`、presentabilityからの多対象構成`ea3ed40`。
+
+多対象転送の共有smallness・cell・recognition論理はこれで接続した。
+M5は実際のdg加群の自由・評価随伴、自然なtensor公式、保存性、Ch(A)のモデル入力と
+κ-presentabilityを供給する。今回の共有定理だけで具体的dgモデルの存在を主張しない。
+次は基点付きsmashのmodel互換性と、スペクトル側monoidal/SM7、具体的PSS/円へのモデル入力接続。
+段階1〜3の全体目標は継続中。

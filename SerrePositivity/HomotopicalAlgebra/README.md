@@ -200,3 +200,15 @@ modelCategoryOfTensorFormulaへ具体的small-object条件を渡すとモデル�
 M5は実際のdg加群・free/evaluation公式・保存性・Ch(A)のモデル入力を所有する。
 専用検証check_many_object_transfer.leanは構成・三クラス・生成性・Quillen関手・分解と31宣言の監査を含む。
 コミット0e2c2c5・d39af6c。具体的dgモデルの存在をこの一般転送から自動的に主張しない。
+
+## 評価族のsmallnessとpresentabilityからの転送（§142）
+
+Transfer/EvaluationSmallnessはSmall.{w}の添字族、LocallySmall.{w}のDと評価の余極限保存の下で、
+source生成射始域の共通regular κ-presentabilityから全free像のSOAを構成する。
+スペクトルLevelSmallnessも同じ一般補題を使い、旧APIを保持する。
+
+Monoidal/ManyObjectPresentabilityのmodelCategoryOfPresentableGeneratorsは、κの証拠、
+free/evaluationのtensor公式とmonoid axiomからモデルを構成し、image SOAやcell acyclicityを追加仮定にしない。
+具体的dg加群の入力はM5が所有する。専用check_many_object_presentability.leanはそれらの追加仮定を
+与えずに三クラス・生成性・Quillen性・分解を検証し、新規12宣言を監査する。
+コミットac36b45・ea3ed40。
