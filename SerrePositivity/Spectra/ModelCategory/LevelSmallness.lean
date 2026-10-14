@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Spectra.ModelCategory.LevelClasses
 public import SerrePositivity.Spectra.General.Limits
-public import Mathlib.CategoryTheory.Presentable.Adjunction
+public import SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness
 
 /-! # Smallness of the free-level generators
 
@@ -22,23 +22,12 @@ namespace SerrePositivity.SpectrumLevelModel
 
 lemma isSmall_strictMap {C D : Type*} [Category* C] [Category* D]
     (P : MorphismProperty C) [P.IsSmall.{w}] (F : C ⥤ D) :
-    (P.strictMap F).IsSmall.{w} := by
-  let φ : P.toSet → (P.strictMap F).toSet := fun a ↦
-    ⟨F.mapArrow.obj a.1, P.map_mem_strictMap F a.1.hom a.2⟩
-  have hs : Function.Surjective φ := by
-    rintro ⟨⟨A, B, f⟩, hf⟩
-    cases hf with
-    | map hf => exact ⟨⟨Arrow.mk _, hf⟩, rfl⟩
-  exact ⟨small_of_surjective hs⟩
+    (P.strictMap F).IsSmall.{w} :=
+  SerrePositivity.ModelGeneration.EvaluationFamily.isSmall_strictMap P F
 
 lemma isSmall_of_smallObjectArgument {C : Type*} [Category* C]
-    (P : MorphismProperty C) [P.HasSmallObjectArgument.{w}] : P.IsSmall.{w} := by
-  obtain ⟨κ, hreg, hbot, hcard⟩ :=
-    MorphismProperty.HasSmallObjectArgument.exists_cardinal (I := P)
-  let : Fact κ.IsRegular := hreg
-  let : OrderBot κ.ord.ToType := hbot
-  let : P.IsCardinalForSmallObjectArgument κ := hcard
-  exact SmallObject.isSmall P κ
+    (P : MorphismProperty C) [P.HasSmallObjectArgument.{w}] : P.IsSmall.{w} :=
+  SerrePositivity.ModelGeneration.EvaluationFamily.isSmall_of_smallObjectArgument P
 
 variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C]
   [MonoidalClosed C] [HasColimitsOfSize.{0, 0} C] [HasLimitsOfSize.{0, 0} C]
@@ -59,21 +48,8 @@ lemma levelGenerators_smallObjectArgument (P : MorphismProperty C) [P.IsSmall.{w
     (κ : Cardinal.{w}) [Fact κ.IsRegular] [OrderBot κ.ord.ToType]
     (hP : ∀ {A B : C} (i : A ⟶ B), P i → IsCardinalPresentable A κ) :
     (levelGenerators K P).HasSmallObjectArgument.{w} := by
-  have : (levelGenerators K P).IsSmall.{w} := levelGenerators_isSmall K P
-  have : (levelGenerators K P).IsCardinalForSmallObjectArgument κ := by
-    refine { preservesColimit := ?_ }
-    intro A B X Y i hi f hf
-    change (⨆ n : ℕ, P.strictMap (freeAt (K := K) n)) i at hi
-    rw [MorphismProperty.iSup_iff] at hi
-    obtain ⟨n, hi⟩ := hi
-    cases hi with
-    | @map A B i hi =>
-      have : IsCardinalPresentable A κ := hP i hi
-      let : PreservesColimitsOfSize.{w, w} (evaluation (K := K) n) := {}
-      have : IsCardinalPresentable ((freeAt (K := K) n).obj A) κ :=
-        (freeAtAdjunction n).isCardinalPresentable_leftAdjoint_obj κ A
-      have := Functor.preservesColimitsOfShape_of_isCardinalAccessible
-        (coyoneda.obj (op ((freeAt (K := K) n).obj A))) κ κ.ord.ToType
-      infer_instance
-  exact ⟨κ, inferInstance, inferInstance, inferInstance⟩
+  let : ∀ n : ℕ, PreservesColimitsOfSize.{w, w} (evaluation (K := K) n) := fun _ ↦ {}
+  exact SerrePositivity.ModelGeneration.EvaluationFamily.generators_smallObjectArgument.{w}
+    (fun n : ℕ ↦ freeAt (K := K) n) (fun n ↦ evaluation n) (fun n ↦ freeAtAdjunction n) P κ hP
+
 end SerrePositivity.SpectrumLevelModel
