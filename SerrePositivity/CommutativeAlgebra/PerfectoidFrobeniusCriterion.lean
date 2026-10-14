@@ -232,15 +232,14 @@ theorem exists_untilt_unit_mul_and_primitive_kernel
   obtain ⟨x, hx⟩ := exists_primitive_shape_mem_fontaineTheta_kernel S p hF q hdiv
   exact ⟨q, v, x, hq, hx⟩
 
-/-- 単元係数を明示したFontaine核の生成元。ねじれ元のTeichmuller表示に用いる。 -/
-theorem exists_untilt_unit_mul_and_unit_coefficient_kernel_generator
+/-- 単項核を仮定せず、単元係数を持つ特別なFontaine核の元を選ぶ。 -/
+theorem exists_untilt_unit_mul_and_unit_coefficient_primitive_kernel
     (hF : Function.Surjective (frobenius (ModP S p) p))
-    (hker : (RingHom.ker (WittVector.fontaineTheta S p)).IsPrincipal)
     (π : S) (u : Sˣ) (hpEq : (p : S) = u * π ^ p) :
     ∃ (q : PreTilt S p) (v : Sˣ) (a : WittVector p (PreTilt S p)),
       q.untilt = v * π ∧ IsUnit (a.coeff 0) ∧
-      RingHom.ker (WittVector.fontaineTheta S p) =
-        Ideal.span {(p : WittVector p (PreTilt S p)) + WittVector.teichmuller p q ^ p * a} := by
+      (p : WittVector p (PreTilt S p)) + WittVector.teichmuller p q ^ p * a ∈
+        RingHom.ker (WittVector.fontaineTheta S p) := by
   obtain ⟨q, v, hq⟩ := exists_untilt_unit_mul S p hF π u hpEq
   let w : Sˣ := u * (v⁻¹) ^ p
   have hpq : (p : S) = (w : S) * q.untilt ^ p := by
@@ -261,11 +260,27 @@ theorem exists_untilt_unit_mul_and_unit_coefficient_kernel_generator
     change WittVector.fontaineTheta S p _ = 0
     rw [map_add, map_natCast, map_mul, map_pow, WittVector.fontaineTheta_teichmuller, ha, hpq]
     ring
-  have hqpow : q.untilt ^ p ∈ Ideal.span {(p : S)} := by
-    have hm : (w : S) * q.untilt ^ p ∈ Ideal.span {(p : S)} := by
-      rw [← hpq]
+  exact ⟨q, v, a, hq, ha0, hξ⟩
+
+/-- 単元係数を明示したFontaine核の生成元。ねじれ元のTeichmuller表示に用いる。 -/
+theorem exists_untilt_unit_mul_and_unit_coefficient_kernel_generator
+    (hF : Function.Surjective (frobenius (ModP S p) p))
+    (hker : (RingHom.ker (WittVector.fontaineTheta S p)).IsPrincipal)
+    (π : S) (u : Sˣ) (hpEq : (p : S) = u * π ^ p) :
+    ∃ (q : PreTilt S p) (v : Sˣ) (a : WittVector p (PreTilt S p)),
+      q.untilt = v * π ∧ IsUnit (a.coeff 0) ∧
+      RingHom.ker (WittVector.fontaineTheta S p) =
+        Ideal.span {(p : WittVector p (PreTilt S p)) + WittVector.teichmuller p q ^ p * a} := by
+  obtain ⟨q, v, a, hq, ha0, hξ⟩ :=
+    exists_untilt_unit_mul_and_unit_coefficient_primitive_kernel S p hF π u hpEq
+  have hπpow : π ^ p ∈ Ideal.span {(p : S)} := by
+    have hm : (u : S) * π ^ p ∈ Ideal.span {(p : S)} := by
+      rw [← hpEq]
       exact Ideal.subset_span (Set.mem_singleton _)
-    simpa [mul_assoc] using (Ideal.span {(p : S)}).mul_mem_left (↑(w⁻¹) : S) hm
+    simpa [mul_assoc] using (Ideal.span {(p : S)}).mul_mem_left (↑(u⁻¹) : S) hm
+  have hqpow : q.untilt ^ p ∈ Ideal.span {(p : S)} := by
+    rw [hq, mul_pow]
+    exact (Ideal.span {(p : S)}).mul_mem_left _ hπpow
   exact ⟨q, v, a, hq, ha0, ker_fontaineTheta_eq_span_primitive_shape S p hker q a hqpow hξ⟩
 
 /-- 四条件に現れる Frobenius 全射性、単項核、p=unit·π^p から、実際の compatible roots

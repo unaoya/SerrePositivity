@@ -1,14 +1,14 @@
 module
 
 public import SerrePositivity.CLMST.CyclicFactorReduction
-public import SerrePositivity.CommutativeAlgebra.PerfectoidTorsionQuotient
+public import SerrePositivity.CommutativeAlgebra.PerfectoidTorsionPerfectoid
 public import SerrePositivity.LengthAlgebra.RootTowerLength.CoordinateModuleVanishing
 
 /-! # pねじれ商のperfectoid性から差の長さ零への接続
 
 g=p^c g'のperfectoid化でpねじれを除いた商がperfectoidなら、普遍性によって
 (g')_perfdの像がpねじれとなる。その像はpの全ての根で消えるため、差の長さは零。
-この商のperfectoid性はまだ証明した条件とは扱わない。
+商のperfectoid性を四条件から供給し、p因子の除去を無条件の長さ比較へ接続する。
 -/
 
 @[expose] public noncomputable section
@@ -60,5 +60,28 @@ theorem completedLength_cyclic_pow_eq_of_torsionQuotient_perfectoid
   rw [map_mul]
   exact hS.p_power_root_mul_eq_zero_of_pow_mul_eq_zero S p _ n hρ 1 (κ b)
     (by simpa only [pow_one] using hpb)
+
+/-- p因子を除去しても、任意の冪の巡回商の正規化長さは変わらない。 -/
+theorem completedLength_cyclic_pow_eq_of_p_factor
+    (A : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
+    {h : ℕ} (t : Fin h → A) (p : ℕ) [Fact p.Prime]
+    (ht : ∀ j, t j ∈ maximalIdeal A) (i : Fin h) (hti : t i = (p : A))
+    (hperf : IsIntegralPerfectoid (CompletedTower A t p) p)
+    (g g' : A) (c : ℕ) (hg : g = (p : A) ^ c * g')
+    (a : ℕ) :
+    (completedNormalizedLength A t p ht).len (CompletedTower A t p ⧸
+      ((completedTowerMaxIdeal A t p) ^ a ⊔
+        perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))) =
+    (completedNormalizedLength A t p ht).len (CompletedTower A t p ⧸
+      ((completedTowerMaxIdeal A t p) ^ a ⊔
+        perfectoidIdeal (CompletedTower A t p) p hperf
+          (algebraMap A (CompletedTower A t p) g'))) := by
+  apply completedLength_cyclic_pow_eq_of_torsionQuotient_perfectoid A t p ht i hti
+    hperf g g' c hg _ a
+  let C := CompletedTower A t p
+  let : Algebra.FinitePresentation C (C ⧸ Ideal.span {algebraMap A C g}) :=
+    Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton (algebraMap A C g))
+  exact IsIntegralPerfectoid.pTorsionQuotient_isIntegralPerfectoid _ p
+    (isPerfectoidization_toPerfectoidization C (C ⧸ Ideal.span {algebraMap A C g}) p hperf).1
 
 end SerrePositivity.CLMST

@@ -1144,6 +1144,47 @@ Frobenius核条件が揃ったが、それらからFontaine核を生成する逆
 検証：全体ビルド4132ジョブと両公理監査が成功。
 追加9宣言は全て`assert_no_sorry`が通り、新しいsorry・公理・引用は追加していない。
 
+### 続き：Fontaine核の生成元の持ち上げとねじれ商のperfectoid性
+
+`AdicPrincipalKernel`で、a進完備な環のaで飽和したイデアルJがmod aでξにより
+生成されれば、J=(ξ)であることを証明した。イデアルを分離加群として扱い、
+既存の商での全射を反映するadic一般論を再利用する。
+Jの有限生成性・Noether性・J自身の完備性は追加しない。
+環準同型の終域でaが非零因子なら、その核の飽和性も供給する。
+
+`PerfectoidFontainePrincipal`で、pが正則なら、Fontaine核の第0Witt係数の生成から
+核全体の生成元を同定した。さらにtiltの第0射影の核が(q^p)なら、
+単元係数のξ=p+[q]^p aがFontaine核を生成することを証明した。
+候補ξの存在は`PerfectoidFrobeniusCriterion`で単項核を仮定せずに構成する入口に
+切り出したので、単項性の証明に単項性を使う循環はない。
+逆方向の、既存の単元係数Fontaine生成元からtilt射影の核を(q^p)と計算する補題も証明した。
+
+`PerfectionKernelLift`で、全射fの核の中でp乗根を取れれば、
+perfection上の射は全射であり、第0射影の核を像へ移せることを証明した。
+第0成分を指定して列を持ち上げ、各段のp乗の誤差を核内の根で除く。
+`PerfectoidTorsionTilt`は、実際のS/p→(S/S[p])/pの核にこの根の条件を供給する。
+核の元をS[p]のmod pの像で代表し、前回のねじれ元の根の存在を使う。
+
+`PerfectoidUntiltNaturality`で、p進完備環間の環準同型がuntiltと可換することを証明した。
+各成分の持ち上げのp冪乗の合同を写し、目標のp進分離性で等式を得る。
+`PerfectoidTorsionPerfectoid`は、元のSのtilt射影の核の計算を商へ移し、
+同じ根の像と商のpの正則性からFontaine核の生成元を同定する。
+したがってSが整perfectoidならS/S[p]も整perfectoidであることが、四条件から証明済みとなった。
+一般のFrobenius判定の逆方向全体を証明したとは扱わず、この実際のねじれ商への適用を完了した。
+
+`CyclicTorsionComparison.completedLength_cyclic_pow_eq_of_p_factor`は、
+S=(A∞/g)_perfdのねじれ商のperfectoid性を自動供給する。
+g=p^c g'なら任意のaでgとg'の巡回商の正規化長さが一致する。
+商のperfectoid性やalmostな積の包含を追加仮定にせず、p因子の除去の境界が解消した。
+一般gの巡回長さ零に残る中心課題は、pで割れない非単元の枝に使う
+標準perfectoid化写像の全射性である。引用入口の一般枝へこのp因子の還元を
+適用する接続も次に行う。命題4.0.10の既存の一般部分のsorryはまだ残る。
+
+検証：全体ビルド4144ジョブと両公理監査が成功。
+追加21宣言のうち20宣言は`assert_no_sorry`が通り、選択したperfectoid化を使う
+無条件の巡回比較の依存も既存のBhatt–Scholzeの存在引用だけである。
+新しいsorry・公理・引用は追加していない。
+
 ## 1. 目的と二つの前提
 
 最終目標は、本論文の定理2.5（混標数の長さ代数の二つの長さの性質、
