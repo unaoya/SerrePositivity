@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.Perfectoidization
-public import SerrePositivity.CommutativeAlgebra.RootTower.Completion
+public import SerrePositivity.CommutativeAlgebra.RootTower.CompletedRoots
 public import SerrePositivity.CommutativeAlgebra.RootTower.Stage
 public import SerrePositivity.CommutativeAlgebra.PerfectoidCharacteristicP
 public import SerrePositivity.CommutativeAlgebra.FrobeniusRootKernels
@@ -104,45 +104,30 @@ theorem perfectoidQuotient_p_isReduced
 
 variable (A : Type u) [CommRing A] {h : ℕ} (t : Fin h → A) (p : ℕ) [Fact p.Prime]
 
-/-- 有限段の根の座標を完備塔へ移した元。 -/
-def completedTowerRoot (n : ℕ) (i : Fin h) : CompletedTower A t p :=
-  algebraMap (TowerStage A t p n) (CompletedTower A t p) (stageX A t p n i)
+-- 旧CLMST入口は、引用非依存の共通の根の座標を参照する。
+abbrev completedTowerRoot (n : ℕ) (i : Fin h) : CompletedTower A t p :=
+  Section2.completedTowerRoot A t p n i
 
 omit [Fact p.Prime] in
-/-- 完備塔の根の座標の `p^n` 乗は、基底環の対応する座標の標準像である。 -/
 @[simp] theorem completedTowerRoot_pow (n : ℕ) (i : Fin h) :
     completedTowerRoot A t p n i ^ (p ^ n) =
-      algebraMap A (CompletedTower A t p) (t i) := by
-  rw [completedTowerRoot, ← map_pow]
-  change algebraMap (TowerStage A t p n) (CompletedTower A t p)
-    (Ideal.Quotient.mk (towerRel A t p n) (MvPolynomial.X i) ^ (p ^ n)) = _
-  rw [mk_X_pow, ← IsScalarTower.algebraMap_apply A (TowerStage A t p n) (CompletedTower A t p)]
+      algebraMap A (CompletedTower A t p) (t i) :=
+  Section2.completedTowerRoot_pow A t p n i
 
 omit [Fact p.Prime] in
-/-- 根の座標は、段を進めるとp乗によって元の座標に戻る。 -/
 @[simp] theorem completedTowerRoot_succ_pow (n : ℕ) (i : Fin h) :
-    completedTowerRoot A t p (n + 1) i ^ p = completedTowerRoot A t p n i := by
-  have hstage : towerMap A t p n (n + 1) (Nat.le_succ n) (stageX A t p n i) =
-      stageX A t p (n + 1) i ^ p := by
-    simpa using towerMap_mk_X A t p n (n + 1) (Nat.le_succ n) i
-  have htower := congrArg (algebraMap (Tower A t p) (CompletedTower A t p))
-    (towerOf_towerMap A t p n (n + 1) (Nat.le_succ n) (stageX A t p n i))
-  rw [hstage, map_pow] at htower
-  exact htower
+    completedTowerRoot A t p (n + 1) i ^ p = completedTowerRoot A t p n i :=
+  Section2.completedTowerRoot_succ_pow A t p n i
 
 omit [Fact p.Prime] in
-/-- 初段の座標は、基底環の対応する元の像である。 -/
 @[simp] theorem completedTowerRoot_zero (i : Fin h) :
-    completedTowerRoot A t p 0 i = algebraMap A (CompletedTower A t p) (t i) := by
-  simpa using completedTowerRoot_pow A t p 0 i
+    completedTowerRoot A t p 0 i = algebraMap A (CompletedTower A t p) (t i) :=
+  Section2.completedTowerRoot_zero A t p i
 
 omit [Fact p.Prime] in
-/-- n段の根をm段で表すとき、指数はp^(m-n)になる。 -/
 theorem completedTowerRoot_pow_of_le (n m : ℕ) (hnm : n ≤ m) (i : Fin h) :
-    completedTowerRoot A t p m i ^ (p ^ (m - n)) = completedTowerRoot A t p n i := by
-  have heq := compatibleRoots_pow p (fun l ↦ completedTowerRoot A t p l i)
-    (fun l ↦ completedTowerRoot_succ_pow A t p l i) n (m - n)
-  simpa only [Nat.add_sub_of_le hnm] using heq
+    completedTowerRoot A t p m i ^ (p ^ (m - n)) = completedTowerRoot A t p n i :=
+  Section2.completedTowerRoot_pow_of_le A t p n m hnm i
 
 /-- 基底の座標が p であるとき、完備塔のその根は `(p)_perfd` に属する。
 選ばれた `(C/p)_perfd` の被約性を明示的に受け取り、他の入力は用いない。 -/

@@ -217,6 +217,32 @@ BSのB0〜B3は任意のperfectoid環を入力とするため、C1の完成を�
    主定理・巡回長さ・almost圏の依存を別々に記録し、残るB-I・Prop 2.4.7・Cor 4.0.4を明記する。
    その時点でB6やCLMSTの深い引用の自前証明を、次の独立した計画として再検討する。
 
+### このチャットの実施記録：塔のFrobeniusと共通要求F1（2026-10-14）
+
+共通入口は既存の`IsIntegralPerfectoid`・`IsPerfectoidization`を保持する。
+BS側はW₂の切断を使うδ環モデルを採用し、別のperfectoid定義を導入していない。
+完備性比較を定義の同一性と混同しない。BS計画§8の共通基盤への要求F1〜F3を確認した。
+
+- `RootTower/CompletedRoots`：根の座標、両立するp冪根、pを座標に含む場合のp乗根を共通層に置いた。
+  CLMSTの旧名は型とsimp入口を保った互換wrapperとして残す。
+- `RootTower/CompletedFrobenius`：有限段の評価と任意のA代数への写像のmod p冪の両立を証明。
+  一段のFrobenius評価の全射性から、完備塔のmod pのp乗写像の全射性を証明した。
+  mod pの標準冪級数表示とWitt係数表示からの系も証明した。
+  正則局所性、次元、perfectoid性、perfectoid化の存在は仮定しない。
+- F1の受渡し：`CommutativeAlgebra/WittAdditionCarry`の`witt_add_coeff_one`、
+  `wittAdditionCarry`、`p_mul_wittAdditionCarry`、`eval_wittAdditionCarry`、
+  `witt_add_coeff_one_eq_eval_carry`をBS側の加法公式に使える。
+  普遍整数多項式環でpを約分してから任意の可換環へ評価し、終域にp正則性を要求しない。
+  繰上り多項式のp倍がX^p+Y^p-(X+Y)^pであることを証明し、終域内のp除算は使わない。
+
+検証：全体ビルド4173ジョブと両公理監査が成功。追加15宣言は`assert_no_sorry`が通った。
+新規三モジュールからPaper・CLMST・BS・Inputsへの推移的importは0件。
+新しいsorry・公理・引用は追加せず、主定理の未証明入力は11宣言のまま。
+
+塔のperfectoid性の引用自体はまだ残る。次の主要工程は具体的なtilt係数射の核の生成の確認。
+F2の古典的／導来p完備性の同値と、F3の導来(p,d)完備化のH⁰は未実装である。
+F1の証明を公開したことでBS側の加法公式の比較は進められるが、B2/B3全体の完成とは数えない。
+
 ### 保留する選択と引用依存の受入条件
 
 Andréについては、B4に必要な「指定元が両立するp冪根を持つp完全忠実平坦な
