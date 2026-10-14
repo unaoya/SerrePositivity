@@ -124,6 +124,17 @@ lemma comparisonHomEquiv_symm_apply {I : C} {E F : D} (e : L.obj I ≅ E)
   rw [Category.comp_id]
 
 /-- 恒等射を比較の順射の転置へ送るという法則。 -/
+def comparisonEvaluationLaw {I : C} {E F : D} (e : L.obj I ≅ E) (f : E ⟶ F) : Prop :=
+  L.map (comparisonHomEquiv a e F f) ≫ a.counit.app F = e.hom ≫ f
+
+/-- 比較を使うHom同値で送った射を評価すると、比較と元の射の合成になる。 -/
+lemma comparison_evaluation {I : C} {E F : D} (e : L.obj I ≅ E) (f : E ⟶ F) :
+    comparisonEvaluationLaw a e f := by
+  unfold comparisonEvaluationLaw
+  rw [comparisonHomEquiv_apply]
+  exact curry_evaluation a (e.hom ≫ f)
+
+/-- 恒等射を比較の順射の転置へ送るという法則。 -/
 def comparisonHomIdentityLaw {I : C} {E : D} (e : L.obj I ≅ E) : Prop :=
   comparisonHomEquiv a e E (𝟙 E) = a.homEquiv I E e.hom
 

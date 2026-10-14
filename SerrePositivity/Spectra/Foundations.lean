@@ -69,6 +69,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpace
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceComposition
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceUnitLaws
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceAssociativity
+public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceArrowComposition
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceNaturality
 public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroEvaluationGenerators
 public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroConvolutionNaturality
