@@ -2537,3 +2537,26 @@ G4、全段極限の平坦性、実完備化/perfectionの完全忠実平坦性�
 全段極限への比較はこの適切な係数商を使い、元のAや任意商B上の
 平坦性を誤って主張しない。G4への接続と実完備化/perfectionの
 完全忠実平坦性、引用なし一般B4は引き続き未実装。
+
+## B4-6：初期有限商と適切な係数商上の根添加環の比較（2026-10-15）
+
+`DeltaDivisionFiniteNormalizedInitialPowerEquiv.lean`で、σ×Fin 1とσの
+既存prodUnique同値による変数rename代数同型を使い、零段有限正規化
+イデアルのmapが既存deltaDivisionFirstPolynomialIdealと一致することを
+証明した。初期有限商と既存DeltaDivisionFirstPowerCoverの具体的環同型を
+構成し、基底係数と初期変数の標準商像の図式を証明した。
+基底係数は適切な係数商A/(p,d,a_s)の係数射、初期変数は指定p乗根へ送る。
+p正則性・ghost射単射・u=δd・添字有限性・Noether性・完備性は不要。
+5公開宣言の対象3248ジョブ、pure B4監査成功。標準3公理のみ。
+新sorry・公理・引用なし。任意二段間の忠実平坦性はb6dcf7eでコミット済み。
+
+次のBS専用予定`DeltaDivisionFiniteNormalizedInitialFlat.lean`で、
+適切な係数商から初期有限商への具体的環射・代数構造と基底係数上の図式を
+構成する。初期比較をこの射に関する代数同型とし、既存根添加環の
+自由性・忠実平坦性を移す。
+続くBS専用予定`DeltaDivisionFiniteNormalizedBaseFlat.lean`で、その射と
+零段から第N段への標準塔射を合成し、A/(p,d,a_s)から全有限段への
+実際の係数射・標準係数の商像図式を構成する。
+既存忠実平坦性の合成により、この適切な共通係数商上の全有限段の
+忠実平坦性を証明する。全段極限と実完備化/perfectionへの接続、G4、
+引用なし一般B4は引き続き未実装。
