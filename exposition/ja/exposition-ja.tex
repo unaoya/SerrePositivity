@@ -1255,11 +1255,31 @@ $D$ と $A\subseteq D$ を補題~\ref{lem:cohengabber} のとおりとする。$
 \end{theorem}
 (b) は (a) と命題~\ref{prop:cmflat} から出る。ランクは $A$ の正則パラメータ系 $z$ について $e((z),D) = \rank_A D$。元論文は (a) を全ての $z^v$ についての形で述べるが、$z^v$ もパラメータ系なので同じことである。
 \begin{itemize}
-  \item 標数 $p$：$C_D = D_{\mathrm{perf}}$。Monsky（Hilbert--Kunz 重複度の存在）、Roberts の Frobenius ホモロジー定理（Ma, Thm 2.4）、Koszul の Euler 特性の公式。
+  \item 標数 $p$：$C_D = D_{\mathrm{perf}}$。Monsky（Hilbert--Kunz 重複度の存在）、Roberts の Frobenius ホモロジー定理（Ma, Thm 2.4。ここで必要な場合は注意~\ref{rem:koszul-elementary} のとおり初等的に示せる）、Koszul の Euler 特性の公式。
   \item 混標数：$C_D = (D\otimes_A A_\infty)_{\mathrm{perfd}}$。Cai--Lee--Ma--Schwede--Tucker の Cor.~4.0.4、Prop.~4.0.10、4.0.14。
 \end{itemize}
 証明の筋道。標数 $p$：$C_D=D_{\mathrm{perf}}=\bigcup_qD^{1/q}$、$\Lambda=A_{\mathrm{perf}}$ とし、$B_q=\Lambda\otimes_{A^{1/q}}D^{1/q}$ とおく。$\Frac D/\Frac A$ の分離性から $B_q\subseteq C_D$ で、トレースにより $0\ne g\in A$ があって $g^{1/q}C_D\subseteq B_q$（元論文 (2.7)）。有限段の公式 $\lambda_\infty(B_q/HB_q)=q^{-h}\len(D/H^{[q]})$ と核の評価、補題~\ref{lem:24} から、$\lambda_D(C_D/HC_D)$ は $q^{-h}\len(D/H^{[q]})$ の極限（Hilbert--Kunz 重複度）になる。(a) の消滅は $\lambda_\infty H_i(z;B_q)=q^{-h}\len H_i(z^q;D)$ と Roberts の定理（$K(z;D)$ は長さ $h=\dim D$ の有限自由複体でホモロジーが有限長なので、$F^e(K(z;D))=K(z^{p^e};D)$ の正次数ホモロジーの長さを $p^{eh}$ で割ると $0$ に収束する）から、値は Koszul の Euler 特性の公式 $\sum_i(-1)^i\len H_i(z^q;D)=q^he((z),D)$ から出る。混標数：$C_D=(D\otimes_AA_\infty)_{\mathrm{perfd}}$（$A_\infty$ は塔の $p$ 進完備化、perfectoid 化は Bhatt--Scholze）。CLMST Cor.~4.0.4 が $A_n\otimes_AD$ の任意のパラメータ系の正次数 Koszul ホモロジーを almost イデアル $(g)_{\mathrm{perfd}}$ で消し、Prop.~4.0.10 により almost zero な $\m_A$ 冪ねじれ加群の $\lambda_\infty$ は $0$、Prop.~4.0.14（$n=0$）がパラメータ商の長さを Hilbert--Samuel 重複度と同定する。CLMST の $A_\infty$、$C_D$ はパラメータ系の取り方に依存する（Caution 4.0.2）が、基底 $A$ を固定した上で $D$ の任意のパラメータ系 $z$ について (a) が成り立つという主張とは矛盾しない。
 \lean{\ld{Section2.theorem_2_5}。この定理自体は、標数別の構成（\ld{LengthAlgebraConstruction}）から証明している。標数 $p$ は perfection・塔の作用・Frobenius 長さ極限を、パラメータ Koszul 複体の初等的な消滅（\ld{tendsto_length_koszulHomologySelf_frobenius_pow}、引用なし）へ接続済み。混標数も完備塔・perfectoidization と CLMST の引用を接続済み。(b) への書き換えは \ld{lengthAlgebra_base_values}。}
+
+\begin{remark}[Roberts の定理を使わない消滅]\label{rem:koszul-elementary}
+上の証明の標数 $p$ の部分で Roberts の定理を使うのは、パラメータ系 $z$ の Koszul 複体について $\len H_i(z^q;D)/q^h\to0$（$i>0$）を得るためだけである。この特殊な場合は、Frobenius も tight closure も使わずに次のように示せる。実際には任意の冪 $q\ge1$ について
+\[
+ \len H_i(z^q;D)\le C\,q^{h-1}\qquad(i>0)
+\]
+が成り立つ。
+\begin{enumerate}
+  \item $D$ の剰余体 $k$ は完全なので、$D$ は係数体 $k\to D$ をもつ。$R'=k[[Z_1,\dots,Z_h]]$ から $Z_j\mapsto z_j$ で評価すると、$D$ は有限 $R'$ 加群になり、剰余体は共通である。
+  \item $Z^q=(Z_1^q,\dots,Z_h^q)$ は $R'$ の正則列なので $K(Z^q)$ は $R'/(Z^q)$ の分解で、$\len_D H_i(z^q;D)=\len_{R'}\Tor_i^{R'}(R'/(Z^q),D)$。
+  \item 一般点の基底から自由部分加群 $E\subseteq D$ をとると、余核は捩れ加群なので、零でない $c\in R'$ が $D/E$ を消す。Tor の長完全列で $\Tor_i(N,D)\hookrightarrow\Tor_i(N,D/E)$（$i\ge1$）となり、$c$ は $q$ によらずすべての $\Tor_i^{R'}(R'/(Z^q),D)$ を消す。
+  \item $D$ の $R'$ 上の有限自由分解 $G_\bullet$（$q$ によらない）で Tor を計算すると、$\Tor_i$ は有限長の加群 $W^{\beta_i}$（$W=R'/(Z^q)$、$\beta_i=\rank G_i$）の部分商で、$c$ で消える。有限長の加群では $c$ 倍の核と余核の長さが等しいので
+  \[
+   \len\Tor_i^{R'}(R'/(Z^q),D)\le\beta_i\,\len\bigl(R'/(c,Z^q)\bigr).
+  \]
+  \item $R'/(c)$ は次元 $h-1$ で、$(Z)^{h(q-1)+1}\subseteq(Z^q)$ なので、Hilbert--Samuel 多項式の次数定理から $\len(R'/(c,Z^q))=O(q^{h-1})$。
+\end{enumerate}
+$D$ が整域であることも、$R'\to D$ が単射であることも使わない。Roberts の定理は長さ $h$ の任意の有限自由複体についての主張で、$\len H_i(F^eG)=O(p^{e(h-i)})$ のような強い評価や個々の次数の消滅を含み、本当に深いのはその一般の場合である。パラメータ Koszul 複体に限れば、上のとおり $D$ を正則環 $R'$ 上の有限加群とみて、Tor を $q$ によらない分解で計算できることが効いている。
+\lean{\ld{CommutativeAlgebra.ParameterKoszulGrowth} の \ld{exists_length_koszulHomologySelf_pow_le} と \ld{tendsto_length_koszulHomologySelf_frobenius_pow}（証明済み、引用なし）。部品は \ld{length_le_length_quotient_smul_of_subquotient}、\ld{exists_ne_zero_smul_torModule_eq_zero}、\ld{length_torModule_le_of_smul_eq_zero}、\ld{exists_length_quotient_generator_pow_le}、\ld{length_koszulHomologySelf_eq_length_torModule}。Roberts の一般形 \ld{Inputs.frobenius_homology_length_tendsto_zero} は主定理の経路では使わない。}
+\end{remark}
 
 \begin{corollary}\orig{Corollary 2.6 (3)、非自明性}\label{cor:pos}
 $\lambda_D(C_D/\m_D C_D) > 0$。つまり $C_D$ は非自明な $\lambda$-CM 代数である。
