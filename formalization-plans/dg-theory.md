@@ -839,3 +839,38 @@ U7b3bの受入入口と既存 `Spectra.StageTwo` の同時ビルド、受入入�
 主要17宣言の公理はすべて `propext`・`Classical.choice`・`Quot.sound` のみ。
 新規 sorry・admit・axiom は0件。文書検査（21 Markdown・311参照・失敗0）、
 担当差分の whitespace 検査も成功。共有ルート・既存 PerfectComplex・並行作業ファイルは編集していない。
+
+### 13.12 U7c1：objectwise 極限と評価による保存
+
+`Module/ActionChain.lean` は主 Hom 射の右転置を `moduleActionChain` として公開し、
+全次数自然な閉零射族・実際の加群射がこの tensor の chain map と可換することを証明する。
+閉零次数だけの通常関手自然性に置き換えていない。
+`Complexes/HomLimits.lean` は指定複体極限への全次数 Hom を射影後に判定する補助API。
+これは既存 tensor–Hom 随伴と Mathlib の極限普遍性を使う Ch(A) の具体的結果。
+
+`Module/Limits.lean` は `F : J ⥤ ModuleCategory A D` に対して、各評価図式の既存複体極限を使う。
+`moduleLimitActionCone`/`moduleLimitAction`/`moduleLimitHom` により全次数作用を構成し、
+射影との可換式、単位・豊穣合成の保存を証明する。
+`limitModule`/`moduleLimitObj` はその主 `EnrichedFunctor` と閉零対象。
+`moduleLimitπ`、`moduleLimitLift` は全次数自然な加群射で、
+`moduleLimitConeIsLimit` は加群圏での極限普遍性を証明する。
+`moduleEvaluationLimitIso` と射影の可換式は、選ばれた極限の評価比較。
+
+宇宙は `A : Type u`、`D : Type v`、`J : Type w`、`Category.{w'} J`。
+Hom end の閉零加群圏には従来どおり `[Small.{u} D]` を要求する。
+一般構成には `∀ x : Dᵒᵖ, HasLimit (F ⋙ moduleEvaluation A D x.unop)` を明示する。
+添字対象について `[Small.{u} J]` があれば、既存 ModuleCat/複体極限を使って存在を証明する。
+添字射の宇宙 w' は独立で、追加の LocallySmall 仮定を置かない。
+`moduleHasLimitsOfShape`、`moduleHasLimitsOfSize.{w',u}` と
+`moduleEvaluationPreservesLimitsOfShape`/`OfSize` を登録した。
+任意の大きいDや大きい図式の極限存在を暗黙に仮定しない。
+
+受入入口は `Checks/Limits.lean`。任意可換環・非有界複体、独立宇宙、
+objectwise射影/lift、真の普遍性と保存、ℤ・ZMod 2 の可算積を検証する。
+主要36宣言を公理監査する。次は U7c2 の objectwise 余極限・余積。
+U7全受入、U8〜U10は未完であり、U10までの目標を保持する。
+
+U7c1の受入入口と既存 `Spectra.StageTwo` の同時ビルド、受入入口の直接実行は成功。
+主要36宣言の公理はすべて `propext`・`Classical.choice`・`Quot.sound` のみ。
+新規 sorry・admit・axiom は0件。文書検査（21 Markdown・311参照・失敗0）、
+担当差分の whitespace 検査も成功。共有ルート・既存 PerfectComplex・並行作業ファイルは編集していない。

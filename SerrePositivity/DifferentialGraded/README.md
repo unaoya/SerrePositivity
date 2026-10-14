@@ -106,6 +106,10 @@ U7b3aの `Complexes/Cone.lean`/`ConeHom.lean` と `Module/Cone.lean` は、全�
 U7b3bの `Module/ConeMaps.lean`/`ConeFunctor.lean` は標準connecting map、
 全次数自然なsquareのcone射、arrow圏からのcone関手、標準triangleとその評価比較を供給する。
 受入入口は `Checks/ConeMaps.lean`。次は U7c の必要な極限余極限。
+U7c1の `Module/Limits.lean` は objectwise 極限の全次数作用・射影・普遍liftを構成し、
+添字対象が u-small な全図式の極限存在と評価による保存を登録する。
+添字射の宇宙は独立。任意の大きい図式には各評価の極限存在を明示する。
+受入入口は `Checks/Limits.lean`。余極限・余積は次の U7c2。
 API契約と共有 G1/G2/G5/G6 への引継ぎは計画§12.8。
 導来圏・射影モデル・dg 商・Morita・Perf と M5全体は未完成。
 一般モデル圏・Quillen・転送・SM7 は共有系列が所有し、この入口には置かない。
