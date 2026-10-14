@@ -6,6 +6,7 @@ import SerrePositivity.Spectra.ModelCategory.PointedGenerators
 import SerrePositivity.Spectra.ModelCategory.SimplicialMonoidal
 import SerrePositivity.Spectra.ModelCategory.SimplicialLevel
 import SerrePositivity.Spectra.ModelCategory.SimplicialWeakEquivalences
+import SerrePositivity.Spectra.ModelCategory.SimplicialLevelTensor
 import SerrePositivity.Spectra.General.Foundations
 import SerrePositivity.Spectra.General.SimplicialComparison
 import SerrePositivity.Spectra.ModelCategory.LevelClasses
@@ -44,6 +45,9 @@ run_cmd do
     declarations := declarations + 1
     unless modules.contains mod do modules := modules.push mod
   for expected in #[`SerrePositivity.Spectra.ModelCategory.SimplicialLevel,
+      `SerrePositivity.Spectra.ModelCategory.FreePushoutProduct,
+      `SerrePositivity.Spectra.ModelCategory.FreePushoutProductModel,
+      `SerrePositivity.Spectra.ModelCategory.SimplicialLevelTensor,
       `SerrePositivity.Spectra.ModelCategory.SimplicialWeakEquivalences,
       `SerrePositivity.HomotopicalAlgebra.Topological.WeakEquivalence,
       `SerrePositivity.Spectra.ModelCategory.SimplicialMonoidal,
