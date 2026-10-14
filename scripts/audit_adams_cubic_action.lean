@@ -1,4 +1,4 @@
-import SerrePositivity.KTheory.Adams.TensorCubeEigenspaces
+import SerrePositivity.KTheory.Adams.TensorCubeMaps
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.cochainTensorTriple_hom_ext
@@ -59,3 +59,12 @@ assert_no_sorry SerrePositivity.Adams.tensorCubeEigenspaceMap_id
 
 assert_no_sorry SerrePositivity.Adams.tensorCubeEigenspaceMap_comp
 #print axioms SerrePositivity.Adams.tensorCubeEigenspaceMap_comp
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeMap_quasiIso
+#print axioms SerrePositivity.Adams.tensorCubeMap_quasiIso
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeEigenspaceMap_quasiIso
+#print axioms SerrePositivity.Adams.tensorCubeEigenspaceMap_quasiIso
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeEigenspaceMap_homotopyEquivalence
+#print axioms SerrePositivity.Adams.tensorCubeEigenspaceMap_homotopyEquivalence
