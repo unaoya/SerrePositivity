@@ -12,13 +12,14 @@ Mathlibのexpand射によるスカラー作用を、標準ULift型で通常の�
 -/
 
 @[expose] public noncomputable section
-universe u
+universe u v
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze
-variable (n : ℕ) (σ : Type u) (R : Type u) [CommRing R]
+variable (n : ℕ) (σ : Type u) (R : Type v) [CommRing R]
 
 /-- expand作用を持つ加群の型名。台環はMathlibの標準ULift多項式環。 -/
-def PolynomialExpandTarget (_n : ℕ) (σ R : Type u) [CommRing R] := ULift.{0} (MvPolynomial σ R)
+def PolynomialExpandTarget (_n : ℕ) (σ : Type u) (R : Type v) [CommRing R] :=
+  ULift.{0} (MvPolynomial σ R)
 
 instance polynomialExpandTargetCommRing : CommRing (PolynomialExpandTarget n σ R) := by
   unfold PolynomialExpandTarget

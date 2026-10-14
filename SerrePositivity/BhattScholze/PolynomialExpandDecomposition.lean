@@ -12,9 +12,9 @@ public import Mathlib.LinearAlgebra.Finsupp.LSum
 -/
 
 @[expose] public noncomputable section
-universe u
+universe u v
 namespace SerrePositivity.BhattScholze
-variable (n : ℕ) (σ : Type u) (R : Type u) [CommRing R] (hn : 0 < n)
+variable (n : ℕ) (σ : Type u) (R : Type v) [CommRing R] (hn : 0 < n)
 
 /-- 各指数がn未満の単項式で分類した、多項式の係数分解。 -/
 def polynomialExpandDecomposition :

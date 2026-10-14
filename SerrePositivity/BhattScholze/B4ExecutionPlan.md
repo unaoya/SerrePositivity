@@ -739,3 +739,15 @@ Module.Flatと、非零係数環のModule.FaithfullyFlatは既存APIから供給
 11公開宣言の対象3162ジョブ成功。B4専用監査を行う。
 次に素数体上のFrobeniusとの一致と自由δ環のmod p射への接続を証明する。
 混標数φ・その完備化・δ除算包の完全忠実平坦性はまだ未証明。
+
+## B4-6：素数体係数の多項式Frobenius（2026-10-15）
+
+予定BS専用`PrimePolynomialFrobeniusFlat.lean`と`FreeDeltaModP.lean`を追加。
+前者で素数体上のFrobeniusがexpand pそのものであることを
+MathlibのFermat計算と多項式環の外延性から証明した。
+既構成の単項式基底を使い、そのFrobenius作用でModule.Freeと
+Module.FaithfullyFlatを証明。任意個の変数を含む。
+係数環と変数集合の宇宙を分離し、既存のexpand APIを弱めず一般化した。
+3公開定理の対象3163ジョブ成功。B4専用監査を行う。
+次に自由整数δ環のmod pとの具体的商同型とFrobeniusの図式を供給する。
+混標数のFrobenius・完備化・除算包の平坦性を証明済みとはしない。
