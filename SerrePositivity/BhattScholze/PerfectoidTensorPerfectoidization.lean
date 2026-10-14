@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.WittPresentedPerfectoidTensor
+public import SerrePositivity.BhattScholze.WittPresentedPerfectoidTensorModP
 public import SerrePositivity.BhattScholze.PerfectoidWittBasePresentation
 public import SerrePositivity.BhattScholze.PerfectoidDistinguishedKernel
 
@@ -18,19 +18,22 @@ open scoped TensorProduct
 
 /-- perfectoid環R上の任意のperfectoid環S,Tの通常テンソルにはperfectoid化が存在する。
 有限性・p正則性・非零性を要求しない。 -/
-theorem exists_perfectoidTensorPerfectoidization (p : ℕ) [Fact p.Prime]
+theorem exists_perfectoidTensorPerfectoidization_modP (p : ℕ) [Fact p.Prime]
     (R S T : Type u) [CommRing R] [CommRing S] [CommRing T]
     [Algebra R S] [Algebra R T]
     (hR : IsIntegralPerfectoid R p) (hS : IsIntegralPerfectoid S p)
     (hT : IsIntegralPerfectoid T p) :
-    ∃ (E : Type u) (_ : CommRing E) (F : S ⊗[R] T →+* E), IsPerfectoidization p F := by
+    ∃ (E : Type u) (_ : CommRing E) (F : S ⊗[R] T →+* E),
+      IsPerfectoidization p F ∧ Function.Bijective (modPMap p F) := by
   rcases subsingleton_or_nontrivial (S ⊗[R] T) with hzero | hn
   · let := hzero
-    refine ⟨S ⊗[R] T, inferInstance, RingHom.id _, Or.inl hzero, ?_⟩
-    intro D _ _ g
-    refine ⟨g, RingHom.comp_id g, ?_⟩
-    intro L hL
-    simpa only [RingHom.comp_id] using hL
+    refine ⟨S ⊗[R] T, inferInstance, RingHom.id _, ⟨Or.inl hzero, ?_⟩, ?_⟩
+    · intro D _ _ g
+      refine ⟨g, RingHom.comp_id g, ?_⟩
+      intro L hL
+      simpa only [RingHom.comp_id] using hL
+    · exact ⟨fun _ _ _ ↦ Subsingleton.elim _ _,
+        fun x ↦ ⟨0, Subsingleton.elim _ x⟩⟩
   · let := hn
     let : Nontrivial R := (algebraMap R (S ⊗[R] T)).domain_nontrivial
     let : Nontrivial S :=
@@ -75,8 +78,18 @@ theorem exists_perfectoidTensorPerfectoidization (p : ℕ) [Fact p.Prime]
         (algebraMap R T).comp (WittVector.fontaineTheta R p) := by
       rw [fontaineBaseWittQuotientEquiv_comp_mk]
       exact fontaineTheta_natural p (algebraMap R T)
-    obtain ⟨F, _, _, hF⟩ := exists_wittPresentedTensorPerfectoidization p kR kS kT d hd
+    obtain ⟨F, _, _, hF, hbij⟩ := exists_wittPresentedTensorPerfectoidization_modP p kR kS kT d hd
       (WittVector.fontaineTheta R p) (fun x ↦ surjective_fontaineTheta hFR x) eS eT heS heT
-    exact ⟨WittCoefficientPushout p kR kS kT d, inferInstance, F, hF⟩
+    exact ⟨WittCoefficientPushout p kR kS kT d, inferInstance, F, hF, hbij⟩
+
+/-- 任意perfectoid環の通常テンソルのperfectoid化の存在。 -/
+theorem exists_perfectoidTensorPerfectoidization (p : ℕ) [Fact p.Prime]
+    (R S T : Type u) [CommRing R] [CommRing S] [CommRing T]
+    [Algebra R S] [Algebra R T]
+    (hR : IsIntegralPerfectoid R p) (hS : IsIntegralPerfectoid S p)
+    (hT : IsIntegralPerfectoid T p) :
+    ∃ (E : Type u) (_ : CommRing E) (F : S ⊗[R] T →+* E), IsPerfectoidization p F := by
+  obtain ⟨E, hE, F, hF, _⟩ := exists_perfectoidTensorPerfectoidization_modP p R S T hR hS hT
+  exact ⟨E, hE, F, hF⟩
 
 end SerrePositivity.BhattScholze

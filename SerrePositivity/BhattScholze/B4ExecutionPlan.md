@@ -476,3 +476,36 @@ BS専用の次ファイル`WittPresentedPerfectoidTensorModP.lean`で、
 この普遍性から標準mod p射の全単射性を直接証明する。
 通常完備化の普遍性についての証明であり、導来完備テンソルと
 古典的完備テンソルを比較せずに同一視する主張ではない。
+
+## B4-5：標準mod p比較の直接証明（2026-10-15）
+
+`WittPresentedPerfectoidTensorModP`で、全p完備試験環への普遍性から
+標準mod p射の全単射性を証明した。源の剰余商A/pへ一意な逆射を
+構成し、終域の剰余商E/pへの普遍性で逆射の両側の合成を証明。
+p=0の試験環がp完備であることをMathlibのbot完備性から供給する。
+一般完備性の定義やWitt持上げを重複しない。
+
+`PerfectoidTensorPerfectoidization`を強め、
+`exists_perfectoidTensorPerfectoidization_modP`として、任意perfectoid環
+S←R→Tに対し、E・環構造・F:S⊗[R]T→E・IsPerfectoidizationと
+標準`modPMap p F`の全単射性を同時に証明。
+元の存在APIの型は保存して、この強い結果の系とした。
+基底・因子・テンソルの零環の枝、一般pねじれ入力を含む。
+これは通常テンソルと候補の実際の標準mod p射についての証明である。
+実導来テンソルの比較とは同一視しない。
+
+### B4降下への残る接続
+
+この通常余積経路を、B4用の基底変更候補として進める。
+G2の一般導来比較や完全環の一般Tor独立性は別工程として保持するが、
+この標準mod p同型の証明にはその未実装部分を仮定しなかった。
+次にf:S→Cの普遍perfectoid化をC⊗[R]R'の上記候補Eへ底変換し、
+S⊗[R]R'→EのIsPerfectoidizationを証明する。
+商R→Sの底変換と根付き商の全射性をつなぎ、通常テンソルの剰余商の
+標準同型を通してG1の剰余テンソル射の全射性を供給する。
+G1による元のfの全射性の降下、引用なしの必要な根付き拡大は未完了。
+既存André入力からの降下が完成しても条件付きであり、B-S引用解消には数えない。
+
+最新検証：標準mod p比較まで対象ビルド・B4専用監査成功。
+全体4510ジョブ成功。新規2公開定理と既存APIの再検証は標準3公理のみ。
+プロジェクト内import閉包159件にInputs・CLMST・Paper・RootTowerなし。
