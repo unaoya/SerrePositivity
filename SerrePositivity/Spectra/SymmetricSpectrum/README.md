@@ -4,6 +4,7 @@ Mathlibの `CategoryTheory.Mod` を、構成済みの球面対称列へ適用す
 基礎圏は基点付き単体的集合の対称列、テンソル積は登録済みのconvolutionである。
 各段の対象は基点付き単体的集合であり、球面の作用から和次数への構造射を得る。
 
+- [CotensorCurryNaturality](CotensorCurryNaturality.lean)：生成対象の射によるcotensorの前合成とテンソルの射、比較・転置・逆転置・評価の自然性。
 - [PointwiseTensorLevelEvaluation](PointwiseTensorLevelEvaluation.lean)：各段のsmashからの余単位の評価と、転置・逆転置の通常の内部Homの各段の法則。
 - [PointwiseTensorAdjunction](PointwiseTensorAdjunction.lean)：各段のsmashを持つテンソルとcotensorの随伴、転置・逆転置の相互逆性・自然性・既存の転置との比較と余単位の評価。
 - [PointwiseTensorFunctor](PointwiseTensorFunctor.lean)：各段のsmashを持つテンソルの二変数関手、F_0との両変数の自然比較とスペクトル射の移送公式。
@@ -156,6 +157,10 @@ pointwiseTensor関手はcotensor関手の左随伴であり、転置・逆転置
 各段のsmashからの余単位は、全体の逆比較を介した既存のcotensorの評価である。
 その各段は通常の内部Homの評価であり、転置・逆転置も通常の各段の転置・逆転置の法則を満たす。
 法則を命題として公開し、具体的な係数加群の型を再展開せずに利用できる。
+
+生成対象の射によるcotensorの前合成cotensorPreとテンソルの射pointwiseTensorPostを公開した。
+転置はテンソル側の生成対象の射とcotensor側の前合成を対応させる。
+逆転置と評価もこの対応と両立し、生成対象に関する自然性を満たす。
 
 球面の第n段は円の反復smashである。境界を潰した単体的球面との比較は別の課題として扱う。
 弱同値、モデル構造、導来smash、安定ホモトピー群はまだ登録していない。
