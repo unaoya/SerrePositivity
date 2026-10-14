@@ -1,4 +1,4 @@
-import SerrePositivity.PerfectComplex.IntegerEuler
+import SerrePositivity.PerfectComplex.IntegerEulerIso
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.maximalSupportedModule_finiteLength
@@ -8,3 +8,13 @@ assert_no_sorry SerrePositivity.K0WithSupport.integerEuler_mk
 assert_no_sorry SerrePositivity.K0WithSupport.integerEuler_mk_complex_real
 #print axioms SerrePositivity.K0WithSupport.integerEuler
 #print axioms SerrePositivity.K0WithSupport.integerEuler_mk_complex_real
+
+assert_no_sorry SerrePositivity.maximalSupport_hom_ext_koszul
+assert_no_sorry SerrePositivity.maximalFreeClosedSupportEquiv_koszul_euler
+assert_no_sorry SerrePositivity.maximalSupportIntegerEulerEquivOfParameters
+assert_no_sorry SerrePositivity.K0WithSupport.integerEulerEquiv
+assert_no_sorry SerrePositivity.K0WithSupport.integerEulerEquiv_toAddMonoidHom
+assert_no_sorry SerrePositivity.K0WithSupport.integerEuler_eq_zero_iff
+#print axioms SerrePositivity.maximalSupportIntegerEulerEquivOfParameters
+#print axioms SerrePositivity.K0WithSupport.integerEulerEquiv
+#print axioms SerrePositivity.K0WithSupport.integerEuler_eq_zero_iff
