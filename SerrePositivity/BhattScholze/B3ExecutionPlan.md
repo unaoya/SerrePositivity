@@ -22,7 +22,8 @@ B-I/B-S/B-R/André引用はこの存在証明の依存へ持ち込まない。
 - F3：受領済み。実際のKoszul H⁰へのδ延長P1〜P3もBS側で証明済み。
 - F4：共通計画§9.4で完了。Witt復元・零環の枝・標準商図式・一意持上げを再監査して利用する。
 - F5：共通計画§9.3で完了。有界ねじれ商のp完備性を再監査し、既存BSのN=1/N=nを供給する。
-- F6・F7：共通側の実装と公開APIの受領を確認後に一般Fontaine比較へ接続する。
+- F6：受領済み。一般の主イデアル商のperfection核をBSの標準tilt射へ接続した。
+- F7：核進分離性の一部を共通側で実装中。完全Witt商のperfectoid性の向きには不要と証明した。
 - ω₁に関する導来完備性保存：F3本体とは別の接続条件。一般比較は共通要求に記録する。
 
 共有ファイル・CLMST・RootTower・利用先・ルートimport・共有監査は編集しない。
@@ -128,3 +129,17 @@ import閉包104モジュールにInputs・CLMST・Paper・RootTower依存なし�
 
 12公開宣言のBS専用監査と全体ビルド（4341ジョブ）成功。
 新しいsorry・公理・引用なし。一般B3の完成ではなく、次の対応証明へ渡す候補である。
+
+## B3-4/F6：一般の完備Witt商（2026-10-14）
+
+`WittQuotientTiltKernel`でF6の一般核計算を標準tilt射へ移した。
+`WittQuotientTiltSurjective`で、像元によるtiltの分離性と係数環の完備性から全射性を証明。
+`WittQuotientTiltEquiv`で、Witt環のd完備性からmod pの被約性とF5を介して
+係数環のd₀完備性を供給し、既存の単射性と全射性を合成した。
+`WittCompleteQuotientPerfectoid`で、標準Fontaine比較射の同型から核を移し、
+一般のdistinguished商のIsIntegralPerfectoidを証明した。零環とpねじれ商を含む。
+商のp正則性・d₀の正則性・F7・既存B-I/B-S引用を使わない。
+
+新規9公開宣言の個別ビルドとBS専用監査が成功。
+公理依存はpropext・Classical.choice・Quot.soundのみ。
+これから一般完全prismへ移送し、任意試験perfectoid環の対応と射へ進む。
