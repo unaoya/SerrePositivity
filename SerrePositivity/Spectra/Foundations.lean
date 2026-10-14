@@ -50,6 +50,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomShiftSuspensi
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomShiftNaturality
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomShiftZero
 public import SerrePositivity.Spectra.SymmetricSpectrum.Cotensor
+public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorAdjunction
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomUnderlying
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeLeft
 
@@ -203,9 +204,15 @@ F_nからの内部Homの構造射にも各段の比較を介してこの直接�
 F_0からの内部Homとの順逆の比較の成分が既存の各段の比較に一致することを証明した。
 cotensorの置換作用・構造射・懸垂射も通常の内部Homと値域の射で記述した。
 
+対象ごとの同型による関手の移送を構成し、cotensorの値域関手と二変数関手を構成した。
+F_0からの内部Homとの比較を、両変数に関する自然同型へまとめた。
+F_0 Xとの球面上のテンソル積とcotensorの随伴、転置・逆転置・スペクトルとしての評価を構成した。
+転置の相互逆性・パラメータと値域に関する自然性、既存の内部Homの転置との比較も証明した。
+
 ## 未構成の範囲
 
-cotensorの両変数自然性とtensor/cotensorの随伴、モデル構造と導来演算は引き続き実装する。
+cotensorの各段の射と評価の具体式、F_0とのテンソル積の各段の具体式、
+モデル構造と導来演算は引き続き実装する。
 この入口は完成済みの§4の降下入力を変更せず、基盤を独立に検証するためのもの。
 現在の構成に新しい未証明入力はない。
 -/

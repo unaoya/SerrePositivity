@@ -4,6 +4,8 @@ Mathlibの `CategoryTheory.Mod` を、構成済みの球面対称列へ適用す
 基礎圏は基点付き単体的集合の対称列、テンソル積は登録済みのconvolutionである。
 各段の対象は基点付き単体的集合であり、球面の作用から和次数への構造射を得る。
 
+- [CotensorAdjunction](CotensorAdjunction.lean)：F_0とのテンソル積とcotensorの随伴、自然なHom同値、転置・逆転置・評価の公式。
+- [CotensorFunctor](CotensorFunctor.lean)：cotensorの値域関手と二変数関手、F_0からの内部Homとの両変数の自然同型、スペクトル射。
 - [Cotensor](Cotensor.lean)：各段が通常の内部Homとなるスペクトル、F_0からの内部Homとの全体の同型、置換作用・構造射・懸垂射の公式。
 - [InternalHomShiftZero](InternalHomShiftZero.lean)：生成次数零の各段の比較、添字の置換を含まない構造射・懸垂射の直接公式とF_0への適用。
 - [InternalHomShiftNaturality](InternalHomShiftNaturality.lean)：次数をずらした内部Homの両変数の射、構造射・懸垂射の直接公式の自然性。
@@ -121,6 +123,10 @@ F_0からの内部Homの各段の比較も構成し、その構造射・懸垂�
 その第q段はXからEの第q段への通常の内部Homと定義的に一致する。
 F_0からの内部Homとのスペクトル全体の同型を構成し、順逆の成分が既存の各段の比較に一致することを証明した。
 cotensorの置換は値域の同じ段の置換による後合成であり、構造射・懸垂射には前段階の直接公式が使える。
+cotensorは生成対象に反変、値域スペクトルに共変な二変数関手として利用できる。
+F_0からの内部Homとの比較は両変数に関する自然同型である。
+F_0 Xとの球面上のテンソル積はcotensor関手の左随伴であり、自然なHom同値と転置・逆転置を公開した。
+転置は既存の内部Homへの転置と比較の順射の合成であり、評価は比較の逆射の逆転置に一致する。
 
 球面の第n段は円の反復smashである。境界を潰した単体的球面との比較は別の課題として扱う。
 弱同値、モデル構造、導来smash、安定ホモトピー群はまだ登録していない。

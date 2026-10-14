@@ -13,7 +13,8 @@ run_cmd do
     if name.isInternalDetail then continue
     let some idx := env.getModuleIdxFor? name | continue
     let mod := env.header.modules[idx.toNat]!.module
-    unless #[`SerrePositivity.Spectra, `SerrePositivity.CategoryTheory.Monoidal,
+    unless #[`SerrePositivity.Spectra, `SerrePositivity.CategoryTheory.FunctorTransport,
+        `SerrePositivity.CategoryTheory.Monoidal,
         `SerrePositivity.CategoryTheory.Limits,
         `SerrePositivity.GroupTheory.Coxeter, `SerrePositivity.CategoryTheory.FiniteBijection,
         `SerrePositivity.CategoryTheory.FiniteBijectionAction,
