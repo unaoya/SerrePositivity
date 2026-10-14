@@ -11,6 +11,7 @@ public import SerrePositivity.HomotopicalAlgebra.Monoidal.ModelCategory
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.CofibrantTensor
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.ModuleTransfer
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.ManyObjectTransfer
+public import SerrePositivity.HomotopicalAlgebra.Monoidal.ManyObjectPresentability
 public import SerrePositivity.HomotopicalAlgebra.Enriched.TensorCotensor
 public import SerrePositivity.CategoryTheory.Enriched.EnrichedRepresentability
 

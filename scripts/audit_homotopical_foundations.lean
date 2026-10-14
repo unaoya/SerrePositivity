@@ -25,6 +25,8 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Monoidal.ModuleTransfer,
     `SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationFamily,
     `SerrePositivity.HomotopicalAlgebra.Monoidal.ManyObjectTransfer,
+    `SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness,
+    `SerrePositivity.HomotopicalAlgebra.Monoidal.ManyObjectPresentability,
     `SerrePositivity.HomotopicalAlgebra.Enriched.TensorCotensor,
     `SerrePositivity.CategoryTheory.Enriched.TensorCotensor,
     `SerrePositivity.CategoryTheory.Enriched.EnrichedRepresentability]
