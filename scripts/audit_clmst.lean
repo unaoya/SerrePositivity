@@ -98,6 +98,7 @@ import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalQuotientCom
 import SerrePositivity.CommutativeAlgebra.AdicBoundedTorsionQuotient
 import SerrePositivity.CommutativeAlgebra.WittLiftUniqueness
 import SerrePositivity.CommutativeAlgebra.WittLiftConstruction
+import SerrePositivity.CommutativeAlgebra.StrictPRecovery
 import Mathlib.Util.AssertNoSorry
 import Mathlib.Util.PrintSorries
 
@@ -1363,3 +1364,11 @@ assert_no_sorry SerrePositivity.wittLift_unique
 assert_no_sorry SerrePositivity.wittResidueLift
 assert_no_sorry SerrePositivity.wittResidueLift_mod_p
 assert_no_sorry SerrePositivity.existsUnique_wittResidueLift
+
+-- F4-3：Witt復元写像の単射・全射・非零枝の同型。
+assert_no_sorry SerrePositivity.wittLift_injective
+assert_no_sorry SerrePositivity.wittLift_surjective
+assert_no_sorry SerrePositivity.strictPRecoveryHom
+assert_no_sorry SerrePositivity.strictPRecoveryHom_mod_p
+assert_no_sorry SerrePositivity.strictPRecoveryEquivOfNonunit
+assert_no_sorry SerrePositivity.strictPRecoveryEquivOfNonunit_mod_p
