@@ -3078,6 +3078,17 @@ heartbeat 上限を設定している。数学的な分裂仮定・追加公理�
 `scripts/audit_adams_cubic_additivity.lean` の二成果物で `assert_no_sorry` が通り、
 公理は標準三公理のみ。次は不変性・完全複体の零性、シフト・錐・三角形と K₀ への降下。
 
+### S10.7d.2a：既に E 加群である値への係数線形延長
+
+`KTheory/CoefficientLinearExtension.lean` に、加法写像 `A→+B` の値が既に E 加群である場合の
+`E⊗ℤA→ₗ[E]B` への延長を追加した。純テンソル `a⊗x` の値は `a•f(x)`。
+第一係数が 1 の純テンソルでの値による一意性も証明した。
+ψ³ の値は先に E 係数の群へ入るため、整数値の自己写像の係数拡張とは区別する。
+
+**検証**：対象ビルド成功（2764 jobs）。専用監査
+`scripts/audit_adams_coefficient_extension.lean` の三成果物で `assert_no_sorry` が通り、
+公理は `propext` と `Quot.sound` のみ。E 線形延長の基盤の受入が完了。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。

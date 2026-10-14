@@ -1,0 +1,9 @@
+import SerrePositivity.KTheory.CoefficientLinearExtension
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.coefficientLinearExtension
+#print axioms SerrePositivity.coefficientLinearExtension
+assert_no_sorry SerrePositivity.coefficientLinearExtension_tmul
+#print axioms SerrePositivity.coefficientLinearExtension_tmul
+assert_no_sorry SerrePositivity.coefficientLinearExtension_unique
+#print axioms SerrePositivity.coefficientLinearExtension_unique
