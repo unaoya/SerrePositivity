@@ -1,4 +1,4 @@
-import SerrePositivity.CommutativeAlgebra.CubicCyclotomicFiber
+import SerrePositivity.CommutativeAlgebra.CubicCyclotomicClosedPoint
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.cubicCyclotomicPolynomial_monic
@@ -40,3 +40,30 @@ assert_no_sorry SerrePositivity.cubicCyclotomicPolynomial_separable
 
 assert_no_sorry SerrePositivity.exists_cubicCyclotomic_coprime_factor
 #print axioms SerrePositivity.exists_cubicCyclotomic_coprime_factor
+
+assert_no_sorry SerrePositivity.adjoinRoot_map_mk
+#print axioms SerrePositivity.adjoinRoot_map_mk
+
+assert_no_sorry SerrePositivity.adjoinRoot_map_surjective
+#print axioms SerrePositivity.adjoinRoot_map_surjective
+
+assert_no_sorry SerrePositivity.cubicCyclotomicPolynomial_map_residue
+#print axioms SerrePositivity.cubicCyclotomicPolynomial_map_residue
+
+assert_no_sorry SerrePositivity.cubicCyclotomicResidueMap
+#print axioms SerrePositivity.cubicCyclotomicResidueMap
+
+assert_no_sorry SerrePositivity.cubicCyclotomicResidueMap_surjective
+#print axioms SerrePositivity.cubicCyclotomicResidueMap_surjective
+
+assert_no_sorry SerrePositivity.cubicCyclotomicResidueMap_algebraMap
+#print axioms SerrePositivity.cubicCyclotomicResidueMap_algebraMap
+
+assert_no_sorry SerrePositivity.cubicCyclotomicResidueMap_ker_isMaximal
+#print axioms SerrePositivity.cubicCyclotomicResidueMap_ker_isMaximal
+
+assert_no_sorry SerrePositivity.cubicCyclotomicResidueMap_ker_comap
+#print axioms SerrePositivity.cubicCyclotomicResidueMap_ker_comap
+
+assert_no_sorry SerrePositivity.exists_cubicCyclotomicClosedPoint
+#print axioms SerrePositivity.exists_cubicCyclotomicClosedPoint
