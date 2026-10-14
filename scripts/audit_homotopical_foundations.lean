@@ -19,6 +19,7 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence,
     `SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor,
     `SerrePositivity.HomotopicalAlgebra.Monoidal.ModelCategory,
+    `SerrePositivity.HomotopicalAlgebra.Monoidal.CofibrantTensor,
     `SerrePositivity.HomotopicalAlgebra.Monoidal.MonoidAxiom,
     `SerrePositivity.HomotopicalAlgebra.Transfer.CellMap,
     `SerrePositivity.HomotopicalAlgebra.Monoidal.ModuleTransfer,
