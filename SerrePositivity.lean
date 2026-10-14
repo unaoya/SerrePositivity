@@ -172,6 +172,7 @@ public import SerrePositivity.CLMST.ParameterLength
 public import SerrePositivity.CLMST.StageBaseChange
 public import SerrePositivity.CLMST.StageDimension
 public import SerrePositivity.CLMST.StageLocality
+public import SerrePositivity.CLMST.FiniteFreeConeIsogeny
 public import SerrePositivity.CLMST.PerfectoidIsogeny
 public import SerrePositivity.CLMST.TensorIsogeny
 public import SerrePositivity.CLMST.CompletedTensorIsogeny
