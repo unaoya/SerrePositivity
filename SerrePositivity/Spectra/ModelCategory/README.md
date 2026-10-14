@@ -24,3 +24,14 @@ smallnessの宇宙w、対象の宇宙u、射の宇宙vは独立。
 
 コミット：lifting `ae733ed`、認識 `3e928f5`、生成射からの構成 `4dbdaf1`。
 具体的PSS/円の条件検証、多対象加群・SM7、一般作用・cotensor・豊穣構造は後続。
+
+## 生成射テストの証明（§132）
+
+`FreeLevelCofibrations`は評価した自由trivial cofibrationを、thinな誘導添字とcofibrant tensor冪から証明する。
+`MonoidalLevel.levelModelCategoryOfMonoidalGenerators K I J κ hI hJ`は追加の生成射テストなしでレベルモデルを構成する。
+源CのQuillen bifunctor tensor、cofibrant unit/Kと共通のpresentability boundは入力に明記する。
+この定理はスペクトル自身のmonoidal/SM7条件の証明とは別である。
+
+`check_monoidal_level_model`は構成・生成性・評価のQuillen性・関手的分解と空の場合も含む添字のthin性を検証。
+共通補題とレベル実装の全72宣言が標準公理のみで監査成功。
+コミット`9c86d7f`, `2165b14`。具体的PSSとSM7・作用・豊穣の接続は後続。

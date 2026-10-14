@@ -5278,3 +5278,52 @@ PSS/円への具体的入力では、Kan–Quillenの定義済み三クラス、
 
 段階1の多対象加群・具体的SM7と、段階2の作用・cotensor・豊穣との表現性も残っている。
 今回の一般的・条件付きレベル構成をもって段階1〜3全体の完了扱いにしない。
+
+## 132. 段階1〜3の実行記録：誘導添字のthin性と自由生成射テストの証明（2026-10-15）
+
+### 132.1 生成射テストの追加仮定を除く
+
+§131で残した評価した自由J生成射のテストを、cofibrantな単位とKを持つ源monoidal modelの
+pushout-product条件から証明した。
+
+- `CategoryTheory/Groupoid/ThinComponents.lean`：thin groupoidはconnected componentsの離散圏と同値。
+  coproductに閉じた射のクラスはthin groupoidのcolimitにも閉じることを一般に証明。
+  一般の群作用のorbit quotientについて同じ保存性を推論しない。
+- `CategoryTheory/FiniteBijectionInduction.lean`：addRight nのfaithfulnessと、
+  CostructuredArrow(addRight n,of m)のIsGroupoid・IsThinを全n,mで証明。空になる次数にも適用できる。
+- `HomotopicalAlgebra/Monoidal/CofibrantTensor.lean`：left Quillen関手によるcofibrant対象の保存、
+  cofibrant対象とのleft tensorのQuillen性、tensorとtensor冪のcofibrancy。
+  冪の0次にはcofibrant unitを明示的に要求。
+- `General/FreeLevelNaturality.lean`：各段の誘導表示の入力・出力の自然性、
+  自由スペクトルのmapとconvolutionのmapの一致、作用付き誘導比較を一般C,Kへ拡張。
+- `ModelCategory/FreeLevelCofibrations.lean`：誘導図式の各項でcofibrantなKの冪とのtensorを使い、
+  trivial cofibrationを保存することを証明。thin groupoidのcolimit閉性と誘導比較の自然性から、
+  evaluation_m(F_n(f))がtrivial cofibrationであることを全n,mで証明。
+- `ModelCategory/MonoidalLevel.lean`：源の生成モデル構造、対称closed tensorのQuillen bifunctor条件、
+  cofibrant unit/K、I/J始域の共通presentability cardinalからレベル構造を構成。
+  像のSOA・cell acyclicity・評価した生成射のテストを追加仮定にしない。
+  レベルW/Fibの一致とfree像での生成性を公開。
+
+この構成は**源の**monoidal条件からレベルモデルの存在を得るものであり、
+スペクトルのレベルモデル自身のpushout-product/SM7を完成扱いにしていない。
+Cの小さい極限余極限・wサイズ余極限、スペクトルのLocallySmall.{w}、regular κと生成射始域のpresentabilityは明示した入力。
+
+### 132.2 検証とコミット
+
+新規ソース警告を修正し、対象ビルド・利用例を成功確認。
+`check_monoidal_level_model`は像SOA・cell acyclicity・評価した生成射のテストなしでモデルを構成し、
+生成性・評価のQuillen性・関手的分解・添字のthin groupoid性を検証。
+StageTwo・H5の同時import検証を含む。
+同スクリプトは新規共通補題とModelCategory全宣言（内部補助を含む）72宣言を公理監査。
+共有監査は20モジュール314宣言、一般スペクトル監査は11モジュール150宣言、
+スペクトル・共通基盤監査は281モジュール2789公開宣言。標準公理のみでsorry・引用依存なし。
+一般スペクトル・StageTwo・内部加群転送の既存利用例も再実行成功。
+
+コミット：共通補題 `9c86d7f`、自由生成射とレベル構成 `2165b14`。
+
+### 132.3 残る範囲
+
+段階3の一般構成は生成射テストまで証明した。具体的PSS/円へ、定義済みKan–Quillenの三クラス、
+生成射・宇宙・始域presentability、pointed smashのmodel互換性を接続する作業が必要。
+段階1の多対象加群・具体的SM7、段階2のC作用・cotensor・豊穣との表現性、
+スペクトル側のmonoidal/SM7条件も残っている。段階1〜3全体の目標は継続中。
