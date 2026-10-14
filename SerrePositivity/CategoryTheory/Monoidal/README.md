@@ -19,6 +19,7 @@
 - [PowerBijectionAppend](PowerBijectionAppend.lean)：連結を全単射圏上の一つの自然変換へまとめる。
 - [BraidingPreservation](BraidingPreservation.lean)：モノイダル関手のbraidingの保存をテンソル積へ拡張する。
 - [FreeModule](FreeModule.lean)：一般のモノイド対象上の自由内部加群、生成元によるHom同値、忘却関手との随伴。
+- [ModuleInternalHom](ModuleInternalHom.lean)：作用の等化子、評価、線形射と右テンソル加群の射のHom同値。
 - [ModuleLimits](ModuleLimits.lean)：内部加群の極限錐の構成、忘却関手による極限の創出と同型の反映。
 - [ModuleColimits](ModuleColimits.lean)：左テンソルの余極限保存を仮定した内部加群の余極限と創出。
 - [BalancedTensor](BalancedTensor.lean)：二つの加群作用を同一視する余等化子、釣り合い射とのHom同値、標準射のエピ性と二変数の関手性。
