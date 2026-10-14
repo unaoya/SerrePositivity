@@ -1,13 +1,13 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.Perfectoidization
+public import SerrePositivity.CommutativeAlgebra.PerfectoidIdeal
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationFunctor
 
 /-! # perfectoid 化の普遍性による射とイデアルの比較
 
 普遍写像を固定した perfectoid 化に、環準同型から誘導される射を構成する。
-恒等射・合成との両立は一意性から証明する。perfectoid 化の存在は既存の引用に依存するが、
-射の一意性を新たに引用しない。
+一般の誘導射は`PerfectoidizationFunctor`で普遍性だけから構成する。
+ここではB3で選んだ主イデアル商へ適用し、旧整代数の存在引用を使わない。
 -/
 
 @[expose] public noncomputable section
@@ -26,7 +26,7 @@ theorem span_le_perfectoidIdeal (g : R) : Ideal.span {g} ≤ perfectoidIdeal R p
   intro x hx
   have hxg : x = g := Set.mem_singleton_iff.mp hx
   subst x
-  change toPerfectoidization R (R ⧸ Ideal.span {g}) p hR
+  change toQuotientPerfectoidization R (Ideal.span {g}) p hR
     (Ideal.Quotient.mk (Ideal.span {g}) g) = 0
   have hz : Ideal.Quotient.mk (Ideal.span {g}) g = 0 :=
     Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.subset_span (Set.mem_singleton g))
@@ -48,12 +48,12 @@ theorem perfectoidIdeal_mono {g k : R} (h : Ideal.span {g} ≤ Ideal.span {k}) :
   let : Algebra.FinitePresentation R (R ⧸ Ideal.span {k}) :=
     Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton k)
   let q : R ⧸ Ideal.span {g} →+* R ⧸ Ideal.span {k} := Ideal.Quotient.factor h
-  let hg := isPerfectoidization_toPerfectoidization R (R ⧸ Ideal.span {g}) p hR
-  let hk := isPerfectoidization_toPerfectoidization R (R ⧸ Ideal.span {k}) p hR
+  let hg := isPerfectoidization_toQuotientPerfectoidization R (Ideal.span {g}) p hR
+  let hk := isPerfectoidization_toQuotientPerfectoidization R (Ideal.span {k}) p hR
   intro x hx
-  change toPerfectoidization R (R ⧸ Ideal.span {g}) p hR
+  change toQuotientPerfectoidization R (Ideal.span {g}) p hR
     (Ideal.Quotient.mk (Ideal.span {g}) x) = 0 at hx
-  change toPerfectoidization R (R ⧸ Ideal.span {k}) p hR
+  change toQuotientPerfectoidization R (Ideal.span {k}) p hR
     (Ideal.Quotient.mk (Ideal.span {k}) x) = 0
   have he := RingHom.congr_fun (IsPerfectoidization.map_comp hg hk q)
     (Ideal.Quotient.mk (Ideal.span {g}) x)

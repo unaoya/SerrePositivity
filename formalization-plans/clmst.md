@@ -2820,7 +2820,10 @@ B・Cについても、実装へ着手する前に細分化し、同じ検証・
 
 ### 9.7b. B3受領後のC2接続計画（2026-10-14）
 
-状態：C2-1・C2-2を実装。C2-3〜C2-5は未完了。
+状態：C2-1〜C2-3を実装。C2-4・C2-5は未完了。
+C2-3では`perfectoidIdeal`を専用モジュールへ移し、B3標準写像の核で再定義した。
+`perfectoidQuotient`、核の比較、根・p商の被約性、p冪・因子除去、Frobenius比較を移行。
+一般有限代数の選択は従来どおり保持し、巡回長さの実経路の移行はC2-4へ残す。
 C2-2はBS接続層`BhattScholze/QuotientPerfectoidization.lean`に任意イデアル商の
 選択対象・標準写像・普遍性・作用を公開した。零元・単元・零環・pを含む商を専用監査する。
 C2-1では`PerfectoidizationFunctor.lean`へ一般lift/mapを分離し、

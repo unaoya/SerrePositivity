@@ -172,10 +172,10 @@ theorem perfectoidIdeal_image_p_mul_eq_zero_of_torsionQuotient_perfectoid
       (hS.p_mul_eq_zero_of_pow_mul_eq_zero S p c (f g') hg)
   let k : R ⧸ Ideal.span {g'} →+* S ⧸ pTorsionIdeal S p :=
     Ideal.Quotient.lift _ (q.comp f) ((Ideal.span_singleton_le_iff_mem _).mpr hfg)
-  let hu := isPerfectoidization_toPerfectoidization R (R ⧸ Ideal.span {g'}) p hR
+  let hu := isPerfectoidization_toQuotientPerfectoidization R (Ideal.span {g'}) p hR
   have he := RingHom.congr_fun (IsPerfectoidization.lift_comp hu hQ k)
     (Ideal.Quotient.mk (Ideal.span {g'}) x)
-  change toPerfectoidization R (R ⧸ Ideal.span {g'}) p hR
+  change toQuotientPerfectoidization R (Ideal.span {g'}) p hR
     (Ideal.Quotient.mk (Ideal.span {g'}) x) = 0 at hx
   rw [RingHom.comp_apply, hx, map_zero] at he
   exact Ideal.Quotient.eq_zero_iff_mem.mp he.symm

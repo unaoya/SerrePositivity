@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.Inputs.Perfectoidization
 public import Mathlib.RingTheory.FinitePresentation
+public import SerrePositivity.CommutativeAlgebra.PerfectoidIdeal
 
 /-! # 普遍性で選んだ perfectoid 化
 
@@ -52,12 +53,5 @@ noncomputable instance : Algebra R (Perfectoidization R S p hR) :=
 instance : IsScalarTower R S (Perfectoidization R S p hR) :=
   IsScalarTower.of_algebraMap_eq fun _ ↦ rfl
 
-/-- CLMST の `(g)_perfd`：`R → (R/g)_perfd` の核。 -/
-noncomputable def perfectoidIdeal (R : Type u) [CommRing R]
-    (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p) (g : R) : Ideal R :=
-  letI : Algebra.FinitePresentation R (R ⧸ Ideal.span {g}) :=
-    Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
-  RingHom.ker ((toPerfectoidization R (R ⧸ Ideal.span {g}) p hR).comp
-    (Ideal.Quotient.mk (Ideal.span {g})))
 
 end SerrePositivity

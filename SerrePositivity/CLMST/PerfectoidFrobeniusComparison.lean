@@ -164,19 +164,19 @@ theorem root_mem_sup_perfectoidIdeal_of_surjective
     (hsurj : letI : Algebra.FinitePresentation R (R ⧸ Ideal.span {g}) :=
       Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
       Function.Surjective
-      (toPerfectoidization R (R ⧸ Ideal.span {g}) p hR))
+      (toQuotientPerfectoidization R (Ideal.span {g}) p hR))
     (ρ : ℕ → R) (hρ₀ : ρ 0 = (p : R)) (hρ : ∀ m, ρ (m + 1) ^ p = ρ m)
     (n : ℕ) (x : R) (hx : x ^ (p ^ n) - g ∈ Ideal.span {(p : R)}) :
     x ∈ Ideal.span {ρ n} ⊔ perfectoidIdeal R p hR g := by
   let : Algebra.FinitePresentation R (R ⧸ Ideal.span {g}) :=
     Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
-  let f := (toPerfectoidization R (R ⧸ Ideal.span {g}) p hR).comp
+  let f := (toQuotientPerfectoidization R (Ideal.span {g}) p hR).comp
     (Ideal.Quotient.mk (Ideal.span {g}))
   exact root_mem_sup_of_surjective_perfectoid p f
     (hsurj.comp Ideal.Quotient.mk_surjective)
-    (isPerfectoidization_toPerfectoidization R (R ⧸ Ideal.span {g}) p hR).1
+    (isPerfectoidization_toQuotientPerfectoidization R (Ideal.span {g}) p hR).1
     ρ hρ₀ hρ n g x
-    (by change toPerfectoidization R (R ⧸ Ideal.span {g}) p hR
+    (by change toQuotientPerfectoidization R (Ideal.span {g}) p hR
           (Ideal.Quotient.mk (Ideal.span {g}) g) = 0
         rw [Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.subset_span (Set.mem_singleton _)), map_zero])
     hx
@@ -191,8 +191,8 @@ theorem exists_completed_root_mem_sup_perfectoidIdeal_of_surjective
       letI : Algebra.FinitePresentation (CompletedTower A t p)
           (CompletedTower A t p ⧸ Ideal.span {g}) :=
         Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
-      Function.Surjective (toPerfectoidization (CompletedTower A t p)
-        (CompletedTower A t p ⧸ Ideal.span {g}) p hperf))
+      Function.Surjective (toQuotientPerfectoidization (CompletedTower A t p)
+        (Ideal.span {g}) p hperf))
     (i : Fin h) (hti : t i = (p : A)) (n : ℕ) :
     ∃ x : CompletedTower A t p,
       x ^ (p ^ n) - g ∈ Ideal.span {(p : CompletedTower A t p)} ∧
@@ -244,8 +244,8 @@ theorem exists_stage_root_mem_sup_perfectoidIdeal_of_surjective
           (CompletedTower A t p ⧸ Ideal.span {algebraMap A (CompletedTower A t p) g}) :=
         Algebra.FinitePresentation.quotient
           (Submodule.fg_span_singleton (algebraMap A (CompletedTower A t p) g))
-      Function.Surjective (toPerfectoidization (CompletedTower A t p)
-        (CompletedTower A t p ⧸ Ideal.span {algebraMap A (CompletedTower A t p) g}) p hperf))
+      Function.Surjective (toQuotientPerfectoidization (CompletedTower A t p)
+        (Ideal.span {algebraMap A (CompletedTower A t p) g}) p hperf))
     (i : Fin h) (hti : t i = (p : A)) (n m₀ : ℕ) :
     ∃ (m : ℕ) (_ : m₀ ≤ m) (_ : n ≤ m) (z : TowerStage A t p m),
       z ^ (p ^ n) - algebraMap A (TowerStage A t p m) g ∈

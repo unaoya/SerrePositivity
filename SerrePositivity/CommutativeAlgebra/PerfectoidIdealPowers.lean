@@ -23,16 +23,16 @@ theorem perfectoidIdeal_le_of_mem {g k : R} (hk : k ∈ perfectoidIdeal R p hR g
     Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
   let : Algebra.FinitePresentation R (R ⧸ Ideal.span {k}) :=
     Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton k)
-  let T := Perfectoidization R (R ⧸ Ideal.span {g}) p hR
-  let κ : R →+* T := (toPerfectoidization R (R ⧸ Ideal.span {g}) p hR).comp
+  let T := QuotientPerfectoidization R (Ideal.span {g}) p hR
+  let κ : R →+* T := (toQuotientPerfectoidization R (Ideal.span {g}) p hR).comp
     (Ideal.Quotient.mk (Ideal.span {g}))
   let f : R ⧸ Ideal.span {k} →+* T := Ideal.Quotient.lift _ κ
     ((Ideal.span_singleton_le_iff_mem _).mpr hk)
-  let hg := isPerfectoidization_toPerfectoidization R (R ⧸ Ideal.span {g}) p hR
-  let hk' := isPerfectoidization_toPerfectoidization R (R ⧸ Ideal.span {k}) p hR
+  let hg := isPerfectoidization_toQuotientPerfectoidization R (Ideal.span {g}) p hR
+  let hk' := isPerfectoidization_toQuotientPerfectoidization R (Ideal.span {k}) p hR
   let l := IsPerfectoidization.lift hk' hg.1 f
   intro x hx
-  change toPerfectoidization R (R ⧸ Ideal.span {k}) p hR
+  change toQuotientPerfectoidization R (Ideal.span {k}) p hR
     (Ideal.Quotient.mk (Ideal.span {k}) x) = 0 at hx
   change κ x = 0
   have he := RingHom.congr_fun (IsPerfectoidization.lift_comp hk' hg.1 f)
@@ -45,11 +45,11 @@ theorem perfectoidIdeal_p_pow_eq (n : ℕ) (hn : 0 < n) :
     perfectoidIdeal R p hR ((p : R) ^ n) = perfectoidIdeal R p hR (p : R) := by
   let : Algebra.FinitePresentation R (R ⧸ Ideal.span {(p : R) ^ n}) :=
     Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton ((p : R) ^ n))
-  let T := Perfectoidization R (R ⧸ Ideal.span {(p : R) ^ n}) p hR
-  let κ : R →+* T := (toPerfectoidization R (R ⧸ Ideal.span {(p : R) ^ n}) p hR).comp
+  let T := QuotientPerfectoidization R (Ideal.span {(p : R) ^ n}) p hR
+  let κ : R →+* T := (toQuotientPerfectoidization R (Ideal.span {(p : R) ^ n}) p hR).comp
     (Ideal.Quotient.mk (Ideal.span {(p : R) ^ n}))
   have hT : IsIntegralPerfectoid T p :=
-    (isPerfectoidization_toPerfectoidization R (R ⧸ Ideal.span {(p : R) ^ n}) p hR).1
+    (isPerfectoidization_toQuotientPerfectoidization R (Ideal.span {(p : R) ^ n}) p hR).1
   have hz : (p : T) ^ n = 0 := by
     have hh := (span_le_perfectoidIdeal R p hR ((p : R) ^ n))
       (Ideal.subset_span (Set.mem_singleton _))

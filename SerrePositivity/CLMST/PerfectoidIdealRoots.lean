@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.Perfectoidization
+public import SerrePositivity.CommutativeAlgebra.PerfectoidIdeal
 public import SerrePositivity.CommutativeAlgebra.RootTower.CompletedRoots
 public import SerrePositivity.CommutativeAlgebra.RootTower.Stage
 public import SerrePositivity.CommutativeAlgebra.PerfectoidCharacteristicP
@@ -38,7 +38,7 @@ abbrev perfectoidQuotient (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
     (hR : IsIntegralPerfectoid R p) (g : R) : Type u :=
   letI : Algebra.FinitePresentation R (R ⧸ Ideal.span {g}) :=
     Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
-  Perfectoidization R (R ⧸ Ideal.span {g}) p hR
+  QuotientPerfectoidization R (Ideal.span {g}) p hR
 
 /-- 標準写像が全射なら、核で割った環は選ばれたperfectoid化そのものになる。
 存在と普遍性だけで全射性が従うとは主張しない。 -/
@@ -47,7 +47,7 @@ def perfectoidIdealQuotientEquiv
     (hR : IsIntegralPerfectoid R p) (g : R)
     (hsurj : letI : Algebra.FinitePresentation R (R ⧸ Ideal.span {g}) :=
       Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
-      Function.Surjective (toPerfectoidization R (R ⧸ Ideal.span {g}) p hR)) :
+      Function.Surjective (toQuotientPerfectoidization R (Ideal.span {g}) p hR)) :
     R ⧸ perfectoidIdeal R p hR g ≃+* perfectoidQuotient R p hR g :=
   letI : Algebra.FinitePresentation R (R ⧸ Ideal.span {g}) :=
     Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
@@ -60,12 +60,12 @@ def perfectoidIdealQuotientEquiv
     (hR : IsIntegralPerfectoid R p) (g : R)
     (hsurj : letI : Algebra.FinitePresentation R (R ⧸ Ideal.span {g}) :=
       Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
-      Function.Surjective (toPerfectoidization R (R ⧸ Ideal.span {g}) p hR)) (x : R) :
+      Function.Surjective (toQuotientPerfectoidization R (Ideal.span {g}) p hR)) (x : R) :
     perfectoidIdealQuotientEquiv R p hR g hsurj
       (Ideal.Quotient.mk (perfectoidIdeal R p hR g) x) =
       (letI : Algebra.FinitePresentation R (R ⧸ Ideal.span {g}) :=
         Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
-       toPerfectoidization R (R ⧸ Ideal.span {g}) p hR
+       toQuotientPerfectoidization R (Ideal.span {g}) p hR
          (Ideal.Quotient.mk (Ideal.span {g}) x)) := rfl
 
 /-- 選ばれた perfectoid 化の被約性が与えられれば、冪の所属から perfectoid ideal への所属が従う。
@@ -78,9 +78,9 @@ theorem mem_perfectoidIdeal_of_pow_mem_span_of_reduced
     x ∈ perfectoidIdeal R p hR g := by
   let : Algebra.FinitePresentation R (R ⧸ Ideal.span {g}) :=
     Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
-  let : IsReduced (Perfectoidization R (R ⧸ Ideal.span {g}) p hR) := hred
+  let : IsReduced (QuotientPerfectoidization R (Ideal.span {g}) p hR) := hred
   exact mem_kernel_comp_quotient_of_pow_mem_span g
-    (toPerfectoidization R (R ⧸ Ideal.span {g}) p hR) x k hx
+    (toQuotientPerfectoidization R (Ideal.span {g}) p hR) x k hx
 
 /-- pによる商のperfectoid化は標数pなので、定義から証明した被約性を使える。 -/
 theorem perfectoidQuotient_p_isReduced
@@ -89,9 +89,10 @@ theorem perfectoidQuotient_p_isReduced
   let : Algebra.FinitePresentation R (R ⧸ Ideal.span {(p : R)}) :=
     Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton (p : R))
   let Q := R ⧸ Ideal.span {(p : R)}
-  let T := Perfectoidization R Q p hR
-  let f := toPerfectoidization R Q p hR
-  have hT : IsIntegralPerfectoid T p := (isPerfectoidization_toPerfectoidization R Q p hR).1
+  let T := QuotientPerfectoidization R (Ideal.span {(p : R)}) p hR
+  let f := toQuotientPerfectoidization R (Ideal.span {(p : R)}) p hR
+  have hT : IsIntegralPerfectoid T p :=
+    (isPerfectoidization_toQuotientPerfectoidization R (Ideal.span {(p : R)}) p hR).1
   have hpQ : (p : Q) = 0 := by
     rw [← map_natCast (Ideal.Quotient.mk (Ideal.span {(p : R)}))]
     exact Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.subset_span (Set.mem_singleton _))
