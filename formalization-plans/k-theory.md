@@ -5620,3 +5620,38 @@ EnrichedRepresentabilityの残件はtensor_points・cotensor_points、すなわ�
 次は段階1の多対象加群転送と具体的model互換性、段階3のスペクトル側monoidal/SM7、
 具体的PSS/円のKan–Quillen入力・生成射・presentabilityの接続を進める。
 これらが未完了のため、段階1〜3の全体目標は継続中。安定化はその後の段階である。
+
+
+## 141. 段階1〜3の実行記録：評価族とmonoid axiomによる多対象転送（2026-10-15）
+
+共有`Transfer/EvaluationFamily`を追加した。任意の実際の圏Dと、添字族iごとのL_i⊣R_iを入力し、
+全free像の生成射のrlpを、全評価で検出した源のrlpと同定した。
+検出したW/Fib、生成Iのrlp.llpから、像生成射のsmall-object条件とfree J-cell acyclicityにより
+Mathlib ModelCategoryを構成する。三クラス・生成性・各free/evaluationのQuillen性と
+両関手的分解を公開した。Dを通常の関手圏として扱う仮定はない。
+
+共有`Monoidal/ManyObjectTransfer`は、各評価R_jのwサイズ余極限・pushout保存とmonoid axiomから
+free J-cell全体のobjectwise弱同値性を証明する。
+具体的入力はL_i⋙R_j ≅ tensorLeft(H_ij)という自然同型でよい。
+この同型とbraidingから生成射のテンソルクラス所属を得て、coproduct・pushout・transfiniteの
+各段を共有CellMapで制御する。H_ijにcofibrancyを要求しない。
+small-object条件を入力すればmodelCategoryOfTensorFormulaが実際のD上のモデル構造を返す。
+
+M5の担当は実際のdg加群圏、free_x/evaluationの随伴と上記同型、余極限保存、
+Ch(A)のmonoid axiom・生成射・smallnessの具体的証拠。共有側は今回の一般転送の論理を所有する。
+M5のファイルや共有ルートimportを変更せず、共有HomotopicalAlgebra入口へ接続した。
+源・値域・添字・small-objectの宇宙を独立に保ち、添字の小ささを暗黙に仮定しない。
+
+対象・集約ビルドが成功し、新規ソース警告なし。
+`check_many_object_transfer`はDにモデルを仮定せず、自然なfree/evaluation公式から構成し、
+cell acyclicity・W/Fib・生成性・両Quillen関手・関手的分解を検証する。
+新規二モジュール31宣言（内部補助込み）の公理監査が成功。
+共有基盤監査は22モジュール345宣言。既存general tensor/cotensor利用例も330宣言監査込みで成功。
+全て標準公理のみ、sorry・引用依存なし。
+コミット：評価族転送`0e2c2c5`、monoid axiomと多対象転送`d39af6c`。
+
+小対象条件の具体的供給は引き続き必要。各評価の随伴・filtered colimit保存を使い、
+自由像の始域presentabilityから生成射族のsmall-object条件を得る一般化も次に検証する。
+多対象転送の共有cell/recognition論理は実装したが、M5の具体的dgモデルの存在はここで主張しない。
+基点付きsmashのmodel互換性、スペクトル側monoidal/SM7、具体的PSS/円へのモデル入力接続も残る。
+段階1〜3の全体目標は継続中。

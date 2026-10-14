@@ -187,3 +187,16 @@ W/Fibはforgetで検出され、free/forgetはQuillen。smallnessはmonoid公理
 検証は`check_monoid_axiom`, `check_module_model_transfer`と既存の全共有利用例。
 共有監査は19モジュール308宣言。標準公理のみ、sorry・引用依存なし。
 コミットは`63ec369`, `7db1a9d`。多対象加群・具体的SM7・レベルモデル構造は後続。
+
+## 多対象加群の共有転送（§141）
+
+Transfer/EvaluationFamilyは任意Dと各対象iのL_i⊣R_iからobjectwise W/Fibを検出するモデル構造を構成する。
+入力は全free像I/Jのsmall-object条件とJ-cell acyclicity。全free像のrlp、生成性、Quillen関手、
+両関手的分解も提供する。Dを通常の関手圏に同一視する必要はない。
+
+Monoidal/ManyObjectTransferはL_i⋙R_j≅tensorLeft(H_ij)、評価の余極限保存とmonoid axiomから
+J-cell acyclicityを証明する。任意のH_ijを許し、cofibrancyを仮定しない。
+modelCategoryOfTensorFormulaへ具体的small-object条件を渡すとモデルを構成できる。
+M5は実際のdg加群・free/evaluation公式・保存性・Ch(A)のモデル入力を所有する。
+専用検証check_many_object_transfer.leanは構成・三クラス・生成性・Quillen関手・分解と31宣言の監査を含む。
+コミット0e2c2c5・d39af6c。具体的dgモデルの存在をこの一般転送から自動的に主張しない。
