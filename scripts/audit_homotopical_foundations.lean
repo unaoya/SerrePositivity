@@ -21,6 +21,7 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence,
     `SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor,
     `SerrePositivity.HomotopicalAlgebra.Monoidal.GeneratedBifunctor,
+    `SerrePositivity.HomotopicalAlgebra.Monoidal.BifunctorTransport,
     `SerrePositivity.CategoryTheory.LiftingProperties.ParametrizedGeneration,
     `SerrePositivity.HomotopicalAlgebra.Monoidal.ModelCategory,
     `SerrePositivity.HomotopicalAlgebra.Monoidal.CofibrantTensor,
