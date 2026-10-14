@@ -807,3 +807,35 @@ U7b3aの受入入口と既存 `Spectra.StageTwo` の同時ビルド、受入入�
 主要22宣言の公理はすべて `propext`・`Classical.choice`・`Quot.sound` のみ。
 新規 sorry・admit・axiom は0件。文書検査（21 Markdown・311参照・失敗0）、
 担当差分の whitespace 検査も成功。共有ルート・既存 PerfectComplex・並行作業ファイルは編集していない。
+
+### 13.11 U7b3b：connecting map・cone 関手と triangle 比較
+
+`Complexes/ConeMaps.lean` の `coneHomMap_connecting` は既存の
+`mappingCone.triangle f` の第三射の全次数 Hom 自然性を証明する。
+この第三射は **minus** の shifted first projection であり、既存
+`PerfectComplex/TensorCone.lean` の `coneTriangle_mor₃_f` を再利用して符号を照合した。
+`coneMapCochain_ofHom` は U7b3a の次数0対角作用と Mathlib の
+`mappingCone.map` が同じ cochain であることを証明する。
+
+`Module/ConeMaps.lean` は全次数自然な `moduleConeConnecting f : Cone(f) ⟶ M⟦1⟧` と
+`moduleConeTriangle f` を構成する。各評価の第三射は既存の第三射と一致し、
+`moduleConeTriangleEvaluationIso` は評価した標準triangleと既存複体triangleの同型。
+この段階で閉零加群圏自体の distinguished triangle 構造を仮定していない。
+
+`Module/ConeFunctor.lean` の `coneFamilyMap_naturality` は全次数自然な可換squareの
+objectwise `mappingCone.map` の全次数自然性。これを実際の閉零加群射へ持ち上げ、
+`moduleConeMap` の評価・恒等・合成・包含とconnecting mapとの可換性を証明した。
+`moduleConeTriangleMap` は標準triangleの射、`moduleConeFunctor` は既存
+`Arrow (ModuleCategory A D) ⥤ ModuleCategory A D` の関手。
+標準複体cone射の恒等・合成・triangle可換式は Mathlib を再利用した。
+対象圏Dの一般データには追加仮定を置かず、Hom end の閉零加群圏には `[Small.{u} D]` を明示する。
+
+受入入口は `Checks/ConeMaps.lean`。任意可換環・非有界複体・全次数Hom、
+標準triangle比較、可換square・arrow関手、一対象 ℤ、ZMod 2 を検証する。
+主要17宣言を公理監査する。次は U7c の必要な極限余極限とobjectwise評価。
+U7全受入、U8〜U10は未完であり、U10までの目標を保持する。
+
+U7b3bの受入入口と既存 `Spectra.StageTwo` の同時ビルド、受入入口の直接実行は成功。
+主要17宣言の公理はすべて `propext`・`Classical.choice`・`Quot.sound` のみ。
+新規 sorry・admit・axiom は0件。文書検査（21 Markdown・311参照・失敗0）、
+担当差分の whitespace 検査も成功。共有ルート・既存 PerfectComplex・並行作業ファイルは編集していない。

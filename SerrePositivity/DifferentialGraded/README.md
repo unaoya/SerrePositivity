@@ -99,11 +99,13 @@ U7b1では `Complexes/Shift.lean` に次数 p の符号 `(-1)^(sp)` を持つ sh
 受入入口は `Checks/Shift.lean`。
 U7b2の `Module/ShiftCoherence.lean` は零・加法比較の全次数自然性・結合/零の整合性から
 `HasShift ℤ` を登録し、加法性と評価の `CommShift ℤ` を証明する。
-受入入口は `Checks/ShiftCoherence.lean`。cone と必要な残る極限余極限は未完。
+受入入口は `Checks/ShiftCoherence.lean`。cone の実装は以下の U7b3a/b を参照。
 U7b3aの `Complexes/Cone.lean`/`ConeHom.lean` と `Module/Cone.lean` は、全次数の
 符号付き対角作用を持つ cone 対象と標準包含を構成する。
 各評価は既存 Mathlib の mapping cone と同じ。受入入口は `Checks/Cone.lean`。
-cone のshiftへの射、squareに対する関手性、残る必要な極限余極限は未完。
+U7b3bの `Module/ConeMaps.lean`/`ConeFunctor.lean` は標準connecting map、
+全次数自然なsquareのcone射、arrow圏からのcone関手、標準triangleとその評価比較を供給する。
+受入入口は `Checks/ConeMaps.lean`。次は U7c の必要な極限余極限。
 API契約と共有 G1/G2/G5/G6 への引継ぎは計画§12.8。
 導来圏・射影モデル・dg 商・Morita・Perf と M5全体は未完成。
 一般モデル圏・Quillen・転送・SM7 は共有系列が所有し、この入口には置かない。
