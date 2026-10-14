@@ -3366,6 +3366,16 @@ K₀ の類への移送と重みつき乗法性は次の小段。
   `lake env lean scripts/audit_adams_cubic_identity_class.lean` の七定数の監査が成功。
   公理は標準三公理のみ。単位類の保存への接続は次の小段。
 
+### S10.8b.2b.3：ψ³ の単位類の保存（S10.8b 受入完了）
+
+- `Adams/CubicUnitNormalization.tensorCubeClass_unit_on` は恒等巡回の重みつき類と
+  三乗の単位比較同型から、台つき単位複体の評価を `1⊗[U]` に同定する。
+- `tensorCubeClass_unit` と `cyclicThree_unit` は全スペクトルに台を持つ単位類の保存を公開する。
+- `lake build SerrePositivity.KTheory.Adams.CubicUnitNormalization` が成功（3317 jobs）。
+  `lake env lean scripts/audit_adams_cubic_unit.lean` の三定理の監査が成功。
+  公理は標準三公理のみ。S10.8b の自然性・台拡大・単位の全項目は受入完了。
+- 単位のルート公開は次の統合段。Koszul 正規化・族・S10.9・S11 は未完了。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
