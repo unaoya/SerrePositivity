@@ -332,3 +332,46 @@ G2の元要求の不十分な仮定を共通側の計画§9.7dで確認し、上
 Witt係数のテンソルとdistinguished商からカテゴリー上のperfectoid余積を直接構成する
 候補も調べるが、普遍性・標準射・mod p比較をすべて証明するまでB4の経路として採用しない。
 一般B4、引用なしの根付き拡大、B-S引用の解消は引き続き未完了。
+
+## B4-5：Witt係数テンソルと生成元の準備（2026-10-14）
+
+`WittDistinguishedQuotientPerfectoid`で、完全標数p係数環kの任意のdistinguished
+Witt元dについてW(k)/(d)のperfectoid性を証明した。
+台W(k)のd完備性の仮定を追加しない。F5による標準商のp完備性と
+実PD完備化後の商の比較同型を使い、零環の商・一般pねじれ商も含む。
+標準Fontaine比較射の同型のd完備性の仮定まで消したという主張ではない。
+
+`PerfectCoefficientTensor`で、完全標数p環の係数テンソルK=A⊗[R]Bの
+完全性を、逆Frobeniusの具体的な環射から証明。Kが零環の場合も含む。
+基底の逆Frobeniusを通じて一致する両因子の環射をMathlibのAlgHom版の
+テンソル普遍性へ接続するBS専用RingHom入口も公開した。
+終域の既存R-代数構造を入力に課さないため、通常のR線形なmapではない
+逆Frobeniusと、今後の係数余積の環射に利用する。
+新しいテンソル・完備性の定義を作らず、Mathlibの対象と普遍射を再利用する。
+
+`FontaineKernelNaturality`で、源のFontaine核内のdistinguished元dの
+標準Witt像が、単項な終域のFontaine核を生成することを証明。
+既存核判定・Wittのδ自然性・Fontaineの自然性を使う。環のp正則性は不要。
+これにより、同じ源の生成元で複数のperfectoid商を表示する準備ができた。
+
+7新規公開宣言の対象ビルドとB4全宣言監査が成功。標準3公理のみ。
+全体ビルド4495ジョブ成功。一般B4・B-S解消はまだ未完了。
+
+### 次の独立工程：Witt表示による余積候補
+
+予定BSファイル：`PerfectoidWittBasePresentation.lean`、`PerfectoidWittPushout.lean`、
+`PerfectoidWittPushoutModP.lean`、`PerfectoidizationBaseChange.lean`。
+R,S,T perfectoidとS←R→Tを入力とし、係数環
+K=S♭⊗[R♭]T♭と、Rのdistinguished Fontaine核生成元の像ξを用いる。
+非零Kの候補はW(K)/(ξ)。K=0および零環の因子は別枝で扱う。
+上の一般Witt商の結果はこの候補のperfectoid性を供給するが、
+余積の普遍性・S/Tからの標準射・原環のテンソルからの写像・mod p比較は未証明。
+
+最初は源の生成元を用いたS/TのWitt商表示と標準射の両立を公開する。
+次に候補の全perfectoid試験環への普遍性と、通常テンソルのmod pとの比較を証明する。
+その後、B3のperfectoid化をこの候補へ底変換する図式とG1の実入力を接続する。
+すべての図式・零環の枝・一般pねじれ入力を証明するまで、この経路を採用しない。
+カテゴリー上の余積や通常のmod p比較を、実導来完備テンソルとの同型と同一視しない。
+G2の導来比較と一般Tor独立性は引き続き別に必要な工程として記録する。
+引用なしの必要な根付き拡大も未完了であり、André条件付き入力からの成果で
+一般B4の完成を宣言しない。
