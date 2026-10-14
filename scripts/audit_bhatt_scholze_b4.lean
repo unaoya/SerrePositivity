@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.PerfectDeltaRankOneRoots
 import SerrePositivity.BhattScholze.DeltaRootAdjoinDivisionVariables
 import SerrePositivity.BhattScholze.DeltaRootAdjoinDivisionResidue
 import SerrePositivity.BhattScholze.DeltaRootRelationCoefficientFlat
@@ -2404,3 +2405,21 @@ assert_no_sorry SerrePositivity.BhattScholze.deltaRootAdjoinDivisionVariable_pow
 
 assert_no_sorry SerrePositivity.BhattScholze.deltaRootAdjoinDivisionVariable_map_pow
 #print axioms SerrePositivity.BhattScholze.deltaRootAdjoinDivisionVariable_map_pow
+
+assert_no_sorry SerrePositivity.BhattScholze.perfectDeltaRankOneRoot
+#print axioms SerrePositivity.BhattScholze.perfectDeltaRankOneRoot
+
+assert_no_sorry SerrePositivity.BhattScholze.perfectDeltaRankOneRoot_zero
+#print axioms SerrePositivity.BhattScholze.perfectDeltaRankOneRoot_zero
+
+assert_no_sorry SerrePositivity.BhattScholze.perfectDeltaRankOneRoot_succ
+#print axioms SerrePositivity.BhattScholze.perfectDeltaRankOneRoot_succ
+
+assert_no_sorry SerrePositivity.BhattScholze.perfectDeltaRankOneRoot_delta
+#print axioms SerrePositivity.BhattScholze.perfectDeltaRankOneRoot_delta
+
+assert_no_sorry SerrePositivity.BhattScholze.perfectDeltaRankOneRoot_pow
+#print axioms SerrePositivity.BhattScholze.perfectDeltaRankOneRoot_pow
+
+assert_no_sorry SerrePositivity.BhattScholze.perfectDeltaRankOneRoot_map_pow
+#print axioms SerrePositivity.BhattScholze.perfectDeltaRankOneRoot_map_pow
