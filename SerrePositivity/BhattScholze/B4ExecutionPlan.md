@@ -563,3 +563,20 @@ modPMap p (TensorProduct.map f id)の全射性を結論する。
 次はこの通常テンソルの標準mod p射をG1の正確な剰余テンソル線形射へ
 移す自然な同型と図式を証明し、完全忠実平坦性で降下する。
 核の根を供給する引用なしの必要な拡大も未完了。一般B4完成とは数えない。
+
+## B4-5：G1の正確な剰余テンソル図式（2026-10-15）
+
+予定BS専用`TensorResidueBaseChangeComparison.lean`と
+`RootedPerfectoidSurjectivityDescent.lean`をこの工程で追加する。
+前者でG1の既存`principalAdicQuotientAlgebra`をそのまま使い、
+((R/p)⊗[R]T)⊗[R/p](S/(image p))≃(S⊗[R]T)/pを構成。
+Mathlibの基底変更消去と商テンソル同型を合成し、純粋テンソルの代表元の式を証明。
+比較同型がG1の`principalAdicReductionMap.lTensor`と
+標準`modPMap p (TensorProduct.map f id)`を結ぶ自然性を証明し、
+通常mod p全射性からG1の剰余テンソル線形射の全射性を供給する公開定理を証明。
+導来テンソル、Tor、p正則性、完備性の仮定をこの通常比較に要求しない。
+
+4公開宣言の対象2521ジョブ成功。B4専用監査を行う。
+これによりG1の正確な剰余テンソル図式が証明できた。
+次に根付き完全忠実平坦perfectoid拡大を入力する全射性降下を公開し、
+引用なしのそのような拡大の存在を残件として切り分ける。
