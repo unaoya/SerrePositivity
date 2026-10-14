@@ -68,3 +68,15 @@ m<nの段は一般には始対象。零対象の主張にはHasZeroObject Cを�
 任意Pの全次数free像のrlpを各段のP.rlpと同定する。
 この計算だけではモデル構造の存在は得られず、smallness・cell acyclicityの検証が後続に必要。
 コミット`ae733ed`。専用利用例・全宣言公理監査は`check_spectrum_level_classes.lean`。
+
+## 一般Cの作用・cotensor・写像対象（§133）
+
+PointwiseTensorとCotensorは実際のSym(K)加群で、各段はX⊗E_nと[X,E_n]。
+F_0との全体比較・随伴、作用単位・結同比較の自然性、両三角恒等式を提供する。
+MappingObjectはスペクトル内部Homの第0段で、パラメータtensorを表現する。
+ordinary HomはCの単位からの点と同値。cotensorとのHom同値も一致する。
+
+円への対象・作用結同比較は旧APIと比較済み。StageTwoとの併用検証が成功。
+一般監査14モジュール206宣言、全スペクトル監査284モジュール2832公開宣言が標準公理のみで通過。
+新規利用例はcheck_general_tensor_cotensor.lean。コミット6c49348と026a1eb。
+パラメータ自然性・全作用整合性と豊穣登録・H5/SM7接続は後続の証明対象。

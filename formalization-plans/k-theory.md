@@ -5327,3 +5327,42 @@ StageTwo・H5の同時import検証を含む。
 生成射・宇宙・始域presentability、pointed smashのmodel互換性を接続する作業が必要。
 段階1の多対象加群・具体的SM7、段階2のC作用・cotensor・豊穣との表現性、
 スペクトル側のmonoidal/SM7条件も残っている。段階1〜3全体の目標は継続中。
+
+## 133. 段階1〜3の実行記録：一般C作用・cotensor・写像対象の表現性（2026-10-15）
+
+### 133.1 一般の演算と随伴
+
+一般入口に次の三モジュールを追加した。モデル構造やSSetを仮定しない。
+
+| モジュール | 成果物 |
+| --- | --- |
+| General/PointwiseTensor | 各段X⊗E_nを持つSym(K)加群、値域関手・二変数関手、F_0 Xとのtensorの全体比較。作用の単位自然同型、結合比較・各段のαの公式、値域に自然な結合自然同型 |
+| General/Cotensor | 各段[X,E_n]を持つ加群。free-zero Day-Hom比較で実際の加群作用を移す。値域関手・反変パラメータ付き二変数関手、F_0との内部Hom比較、pointwise tensor/cotensor随伴。Hom同値の源・値域自然性と両三角恒等式 |
+| General/MappingObject | スペクトル内部Homの第0段のC値写像対象と二変数関手。パラメータtensorとの随伴、ordinary Homと単位からの点の同値、tensor/cotensor/mappingの三つのHom同値の一致、パラメータ・値域の自然性 |
+
+Cの対称closed monoidal構造と小さい極限余極限を要求する。作用・cotensorは
+既存のcoefficient moduleの構成を利用し、levelwise対象だけでスペクトルを代用しない。
+
+### 133.2 既存APIの比較と検証
+
+`General/SimplicialComparison`は円へのpointwise tensor・cotensor・mapping objectの特殊化を旧対象とrflで比較。
+作用の結同比較は旧module_hom定理で比較し、既存namespace・宣言名・StageTwoを変更していない。
+随伴レコード全体の直接等式はこの単位の公開APIに追加していない。既存随伴の互換性は
+旧StageTwoと新一般入口を同時importした利用例を再実行して確認した。
+
+対象ビルド・新規ソース警告なし。`check_general_tensor_cotensor`はモデル構造なしで
+各段・随伴・相互逆性・三Hom同値の一致・ordinary Homの表現性・作用単位・結合と三角法則を利用する。
+一般実装全宣言（比較入口を除く内部補助込み）189宣言の監査に成功。
+一般スペクトル監査は14モジュール206宣言、全スペクトル監査は284モジュール2832公開宣言。
+すべて標準公理のみ、sorry・引用依存なし。既存general/StageTwo/monoidal levelの利用例も再実行成功。
+
+コミット：構成と表現性 `6c49348`、法則・旧対象比較 `026a1eb`。
+共有ルートimport、M5、可換環論・CLMSTの担当ファイルは変更していない。
+
+### 133.3 全体目標に残るもの
+
+作用のパラメータ側自然性・pentagon/triangle等の全整合性、C値mapping objectの
+豊穣合成・単位・Mathlib EnrichedOrdinaryCategoryへの登録とH5 receiverへの接続は後続。
+今回のordinary Hom表現性だけでV値Hom対象の表現性やSM7を完成扱いにしない。
+多対象加群転送、スペクトル側monoidal/SM7と具体的PSS/円のモデル入力への接続も残る。
+段階1〜3の全体目標は継続中。
