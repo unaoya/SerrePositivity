@@ -135,6 +135,8 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleTower
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.AdicTower
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerComplex
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.KoszulTower
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerUnit
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.KoszulStageZero
 public import SerrePositivity.CommutativeAlgebra.WittAdditionCarry
 public import SerrePositivity.CategoryTheory.EulerTheory
 public import SerrePositivity.LengthAlgebra.Foundations
