@@ -2427,17 +2427,91 @@ F3完成だけでB3の存在やB4の全射性の引用が消えたとは報告�
 
 ### 9.3. F5：有界p冪ねじれを持つ正則商の古典的p完備性
 
-p進完備でp正則なA、正則元dについて、R=A/(d)のp冪ねじれが一様に有界なら
-Rの古典的p進完備性を証明する。Rのp正則性・Noether性・局所性を追加しない。
+状態：計画確定、証明は未着手。BS要求§8 F5と既存共通APIを2026-10-14に照合した。
 
-先に、導来p完備な加群の有界p冪ねじれから古典的完備性を得る比較を調べる。
-正則商のcokernelの導来完備性、係数制限の比較と合わせて要求の環版を供給する。
-既存のstrict quotientの直接経路が同じ仮定で通る場合は、その証明を再利用してよい。
-F2のp正則な比較を、pねじれのあるRに適用するだけでは済まない。
+#### 受渡し契約
 
-成果物は上記の一般比較または直接の商完備性定理。
-BS側のdistinguished商の有界ねじれ証明と接続できる型で渡す。
-これにより完全prismの商のperfectoid判定に必要な完備性の不足を解消する。
+任意の可換環A、素数p、p進完備性、p倍の単射性、元dの乗法の単射性を仮定する。
+`Q := A ⧸ Ideal.span {d}`について
+
+```lean
+hbounded : ∃ N : ℕ, ∀ n : ℕ, ∀ x : Q,
+  (p : Q) ^ n * x = 0 → (p : Q) ^ N * x = 0
+```
+
+ならば`IsAdicComplete (Ideal.span {(p : Q)}) Q`を供給する。
+Qのp正則性、Noether性、局所性、整域性、有限表示性の追加は不要。
+BS側はdistinguished商のN=1、d冪商のN=冪指数という入力を既に供給している。
+この契約を満たす公開定理を最終成果物とし、一般加群版も共通層へ置く。
+
+#### 再利用する実装
+
+| 部品 | 既存ファイル・宣言 | 役割 |
+| --- | --- | --- |
+| 主元冪の像 | `AdicRecurrence.mem_principal_pow_smul_top` | f進近傍への所属を`∃ y, f^n • y = x`へ変換 |
+| 前完備性 | `AdicRecurrence.isPrecomplete_of_adicRecurrenceMap_surjective` | 列の差分作用の全射性から前完備性を得る |
+| 導来完備性判定 | `DerivedCompletion/AdicComparison.isModuleComplete_iff_recurrence_bijective` | 実導来圏の条件を差分作用の全単射性へ移す |
+| 古典的→導来 | 同`isModuleComplete_of_isAdicComplete` | Aの古典的完備性を使う。正則性は不要 |
+| 余核 | `DerivedCompletion/ModuleClosure.isModuleComplete_coker` | d倍写像の余核の導来完備性。写像の単射性は不要 |
+| 係数制限 | `DerivedCompletion/ScalarRestriction.isModuleComplete_algebraMap_iff` | A作用とQ作用でのp完備性を比較 |
+| 商の作用 | `IsAdicComplete.map_algebraMap_iff` | 主イデアルの像について古典的完備性を移す |
+
+`AdicRegularQuotient`の既存定理はd mod pの正則性を要するため、今回の一般入力へ
+そのまま適用しない。`AdicStrictQuotient`の一様フィルトレーション比較は別経路として利用可能。
+
+#### 採用する証明経路
+
+新しい中心補題は、任意の可換環R・元f・R加群Mについて
+
+```lean
+(∃ N : ℕ, ∀ n : ℕ, ∀ x : M, f ^ n • x = 0 → f ^ N • x = 0) →
+Function.Injective (adicRecurrenceMap (M := M) f) →
+IsHausdorff (Ideal.span {f}) M
+```
+
+とする。`adicRecurrenceMap`は`yₙ ↦ yₙ - f • yₙ₊₁`。
+分離性の証明で、全てのf冪の像に入るxに対し`f^n • yₙ = x`となる列を選ぶ。
+有界ねじれの指数をNとし、`zₙ := f^N • y_(n+N)`と置く。
+`y_(n+N) - f • y_(n+1+N)`はf^(n+N)で零化されるため、
+有界性から`zₙ = f • zₙ₊₁`が従う。差分作用の単射性でz=0、
+一方`z₀ = x`なのでx=0。f倍の単射性を使わずに分離性を得る。
+この計算は証明設計であり、Leanでの確認は以下の実装工程で行う。
+
+この補題と既存の前完備性を合わせ、導来f完備かつ有界f冪ねじれを持つMが
+古典的f進完備であることを証明する。逆向きは既存定理なので同値版も公開する。
+次にAの完備性を導来完備性へ移し、d倍写像の余核をA/(d)と線形同型で比較する。
+係数制限でQ上の導来p完備性を得て、一般比較を適用する。
+この経路ではAのp正則性とdの正則性を使わない見込みなので、
+共通定理は不要な仮定を省き、BS要求の直接形をその系として提供する。
+仮定を省けることは実装・型監査の成功後に確定し、現時点で証明済みとは数えない。
+
+#### 実装単位とコミット
+
+| 順 | 成果物（宣言名・新規配置は予定） | 完了条件 |
+| --- | --- | --- |
+| F5-1 | `CommutativeAlgebra/AdicBoundedTorsion.lean`：`isHausdorff_of_adicRecurrenceMap_injective_of_bounded_torsion` | 上記の互換列を構成し分離性を証明。指数N=0とf=0も扱う |
+| F5-2 | 同ファイル：`isAdicComplete_of_adicRecurrenceMap_bijective_of_bounded_torsion`。`DerivedCompletion/BoundedTorsionComparison.lean`：導来／古典的比較 | 既存前完備性と接続。一般加群版、自然数pの環版、同値版を公開 |
+| F5-3 | `DerivedCompletion/PrincipalQuotientComplete.lean`：商の導来完備性 | d倍写像のrangeと主イデアルの同定、商の線形同型、A/Qの作用の比較を証明 |
+| F5-4 | `CommutativeAlgebra/AdicBoundedTorsionQuotient.lean`：主イデアル商の古典的完備性とBS直接形 | Qに有界ねじれだけを残し、BS要求と完全に一致する入口を公開。d冪商にも適用できる型を確認 |
+| F5-5 | 公開import・監査・計画更新 | BSの既存N=1とN=nの宣言を使う具体的適用例を型検査し、F5受渡しを記録 |
+
+F5-1〜4ごとに対象ビルドと公開宣言の`assert_no_sorry`を成功させ、
+証明・監査登録・計画更新を一つのコミットにまとめる。
+F5-5では全体ビルド、`scripts/audit_clmst.lean`、`scripts/audit_axioms.lean`を実行する。
+BS所有ファイルは編集せず、必要な具体的適用を専用監査または共通側の接続ファイルで検証する。
+共通APIのimportがBSのδ環・prism・未証明入力を引き込まないことも確認する。
+
+#### 代替経路と範囲
+
+一般加群版の互換列でLean上の障害が生じた場合は、直接商版を先に供給できる。
+有界指数Nから`d*x ∈ p^(n+N)A → x ∈ p^n A`を示し、
+`AdicStrictQuotient.isAdicComplete_quotient_range_of_uniform_filtration_bound`へ適用する。
+ここではp正則性とd正則性を使うため、一般比較版とは仮定の範囲を区別する。
+両経路を初めから重複実装する予定はない。
+
+F5の完成は商の古典的完備性の供給まで。δ構造の延長、完全prismとperfectoid環の対応、
+Fontaine核の同定、B3の存在・B4の全射性はBS側の別工程。
+F5だけで主定理の引用数が減るとは予告しない。実装時間は見積もらず、上の検証済み単位で進捗を報告する。
 
 ### 9.4. F4：strict p環のWitt復元
 
