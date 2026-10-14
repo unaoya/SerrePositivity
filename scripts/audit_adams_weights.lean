@@ -1,0 +1,9 @@
+import SerrePositivity.KTheory.Adams.MaximalPureWeight
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.Adams.maximalParameterKoszulClass
+assert_no_sorry SerrePositivity.Adams.SupportedAdams.maximal_pureWeight_of_parameters
+assert_no_sorry SerrePositivity.Adams.SupportedAdams.maximal_pureWeight
+
+#print axioms SerrePositivity.Adams.SupportedAdams.maximal_pureWeight_of_parameters
+#print axioms SerrePositivity.Adams.SupportedAdams.maximal_pureWeight
