@@ -1042,3 +1042,22 @@ p正則性・d正則性・Noether性・有限性を仮定しない。
 この初期段の同定を全δ段の表示や基底A上の平坦性と同一視しない。
 全段のモニック三角形表示、実完備化/perfectionの完全忠実平坦性と
 根付きperfectoid拡大・一般B4の引用解消はなお未実装。
+
+## B4-6：相対自由変数の初期段と後続段の分離（2026-10-15）
+
+`RelativeFreeVariableSplit.lean`で、σ×ℕ≃(σ×ℕ)⊕σを具体的に構成し、
+初期変数を係数側へ、後続変数を外側へ送るA代数同型
+RelativeFreeDeltaRing σ A ≃ MvPolynomial (σ×ℕ) (MvPolynomial σ A)を証明した。
+既存MathlibのrenameEquiv・sumAlgEquivを再利用する。
+係数・初期変数・後続変数上の式と逆向きの式、
+初期多項式と後続多項式の標準包含との図式を証明した。
+σとAの宇宙は独立。δ構造保存や平坦性はこの同型から主張しない。
+14公開宣言の対象2056ジョブ、pure B4全公開宣言監査成功。
+標準3公理のみ。新sorry・公理・引用なし。
+
+次は予定済みDeltaDivisionFirstResiduePowerPresentationで、
+初期モニックイデアルを分離した環の係数イデアルに移し、
+通常商をA/(p,d,a_s)上の初期根添加環に後続自由変数を添加した環へ接続する。
+係数の商と変数の商の比較には既存Mathlibの多項式商APIを優先する。
+全δ段の三角形表示、実完備化/perfectionの完全忠実平坦性、
+根付きperfectoid拡大と一般B4完成は未実装。
