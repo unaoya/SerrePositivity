@@ -44,6 +44,18 @@ theorem modP_charP_of_parameters
     exact Ideal.subset_span (Set.mem_range_self 0)
   exact CharP.quotient A p (by simpa only [mem_maximalIdeal] using hp)
 
+/-- 最小生成列の先頭がpであるとき、A/pは整域。
+正則生成列の一般論から供給し、型クラスを大域的には登録しない。 -/
+theorem modP_isDomain_of_parameters
+    (A : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
+    {r : ℕ} (t : Fin (r + 2) → A) (p : ℕ)
+    (ht : Ideal.span (Set.range t) = maximalIdeal A) (htp : t 0 = (p : A))
+    (hdim : ringKrullDim A = r + 2) : IsDomain (A ⧸ Ideal.span {(p : A)}) := by
+  let Q := A ⧸ Ideal.span {(p : A)}
+  let : IsRegularLocalRing Q := (modP_regular_and_dim_of_parameters A t p ht htp hdim).1
+  obtain ⟨rs, hreg, hgen, _⟩ := exists_regular_generators Q
+  exact isDomain_of_regular_generators rs hreg hgen
+
 /-- pがgを割らなければ、gのA/pでの像は非零因子。
 A/pの整域性は正則生成列の一般論から供給する。 -/
 theorem modP_image_mem_nonZeroDivisors_of_not_dvd
@@ -54,9 +66,7 @@ theorem modP_image_mem_nonZeroDivisors_of_not_dvd
     Ideal.Quotient.mk (Ideal.span {(p : A)}) g ∈
       nonZeroDivisors (A ⧸ Ideal.span {(p : A)}) := by
   let Q := A ⧸ Ideal.span {(p : A)}
-  let : IsRegularLocalRing Q := (modP_regular_and_dim_of_parameters A t p ht htp hdim).1
-  obtain ⟨rs, hreg, hgen, _⟩ := exists_regular_generators Q
-  let : IsDomain Q := isDomain_of_regular_generators rs hreg hgen
+  let : IsDomain Q := modP_isDomain_of_parameters A t p ht htp hdim
   apply mem_nonZeroDivisors_iff_ne_zero.mpr
   intro hg
   exact hpg (Ideal.mem_span_singleton.mp (Ideal.Quotient.eq_zero_iff_mem.mp hg))

@@ -162,4 +162,29 @@ theorem completedLength_quotient_le_stage_root_estimate
     K hJK i hti n m H (isFiniteLength_stage_quotient_of_maximalIdeal_map_le A t p ht m H hbase)
     hJH hHK
 
+omit [IsNoetherianRing A] [Fact p.Prime] in
+/-- n段の根をm段の座標の冪で表した商の通常長さは、m段の根を零にした商の
+p^(m-n)倍以下。段の差から生じる倍率を正規化前に保持する。 -/
+theorem length_stageRootRepresentativeIdeal_le
+    (n m : ℕ) (i : Fin h) (z : TowerStage A t p m) :
+    Module.length (TowerStage A t p m)
+      (TowerStage A t p m ⧸ stageRootRepresentativeIdeal A t p n m i z) ≤
+        ((p ^ (m - n) : ℕ) : ℕ∞) * Module.length (TowerStage A t p m)
+          (TowerStage A t p m ⧸ stageRootRepresentativeIdeal A t p m m i z) := by
+  have hh := length_quotient_sup_span_pow_le (TowerStage A t p m)
+    ((maximalIdeal A).map (algebraMap A (TowerStage A t p m)) ⊔ Ideal.span {z})
+    (stageX A t p m i) (p ^ (m - n))
+  have hn : stageRootRepresentativeIdeal A t p n m i z =
+      ((maximalIdeal A).map (algebraMap A (TowerStage A t p m)) ⊔ Ideal.span {z}) ⊔
+        Ideal.span {stageX A t p m i ^ (p ^ (m - n))} := sup_right_comm _ _ _
+  have hm : stageRootRepresentativeIdeal A t p m m i z =
+      ((maximalIdeal A).map (algebraMap A (TowerStage A t p m)) ⊔ Ideal.span {z}) ⊔
+        Ideal.span {stageX A t p m i} := by
+    dsimp only [stageRootRepresentativeIdeal]
+    rw [Nat.sub_self, pow_zero, pow_one]
+    exact sup_right_comm _ _ _
+  rw [(Ideal.quotientEquivAlgOfEq (TowerStage A t p m) hn).toLinearEquiv.length_eq,
+    (Ideal.quotientEquivAlgOfEq (TowerStage A t p m) hm).toLinearEquiv.length_eq]
+  exact hh
+
 end SerrePositivity.CLMST

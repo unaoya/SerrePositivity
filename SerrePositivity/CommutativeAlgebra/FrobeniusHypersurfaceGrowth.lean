@@ -82,4 +82,19 @@ theorem tendsto_frobenius_hypersurface_normalized_length_zero
   exact tendsto_of_tendsto_of_tendsto_of_le_of_le tendsto_const_nhds hlim
     (fun _ ↦ zero_le) hc
 
+/-- 固定した非零因子のk乗を関係式に使う場合も、同じ定数で倍率kを保持して評価できる。
+根の指数と有限段の差から生じるg^(p^(m-n))に適用する。 -/
+theorem exists_frobenius_hypersurface_power_length_bound
+    (R : Type u) [CommRing R] [IsNoetherianRing R] [IsLocalRing R]
+    (p : ℕ) [ExpChar R p] (g : R) (hg : g ∈ nonZeroDivisors R)
+    (hgm : g ∈ maximalIdeal R) {r : ℕ} (hdim : ringKrullDim R = r + 1) :
+    ∃ c : ℕ, ∀ m k : ℕ,
+      Module.length R (R ⧸ ((maximalIdeal R).map (iterateFrobenius R p m) ⊔
+        Ideal.span {g ^ k})) ≤
+          (k : ℕ∞) * (((p ^ m : ℕ) : ℕ∞) ^ r * (c : ℕ∞)) := by
+  obtain ⟨c, hc⟩ := exists_frobenius_hypersurface_length_bound R p g hg hgm hdim
+  refine ⟨c, fun m k ↦ ?_⟩
+  exact (length_quotient_sup_span_pow_le R
+    ((maximalIdeal R).map (iterateFrobenius R p m)) g k).trans (mul_le_mul_right (hc m) _)
+
 end SerrePositivity
