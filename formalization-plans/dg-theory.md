@@ -439,3 +439,16 @@ Hom end の存在仮定は `[Small.{u} D]`、係数環と加群の宇宙は u、
 拡張・単位での評価・両往復とパラメータでの自然性を証明し、H⁰ のみには制限していない。
 Hom end と同じ `[Small.{u} D]` を明示する。ビルド成功。
 加群圏の単位・合成、閉次数零射との比較、一対象環の比較と free/forget の後続契約は継続中。
+
+### 12.6 U5c：主モデルの dg 加群圏
+
+`Module/Composition.lean` は全次数自然性の合成保存、単位の自然性、
+Hom end への単位・豊穣合成と成分公式を証明する。
+`Module/Category.lean` の `moduleEnrichment` は既存 Mathlib `EnrichedCategory` の instance。
+end の成分による ext から両単位則と結合則を証明する。
+`ModuleCategory` はその Mathlib `ForgetEnrichment`、
+`moduleClosedHomEquiv` は射を単位パラメータの全次数自然変換に同定する。
+`moduleEvaluationDG` は end 成分による豊穣評価関手、
+`moduleEvaluation` は閉零圏から既存の非有界 chain map 圏への評価関手。
+通常の enrichedFunctor 圏の弱い自然性には置き換えていない。
+両ファイルはビルド成功。一対象比較・後続契約と総合検証は引き続き行う。

@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Module.Representable
 public import SerrePositivity.DifferentialGraded.Module.Yoneda
+public import SerrePositivity.DifferentialGraded.Module.Category
 
 /-! # U5 の opposite・代表加群・全次数 Hom end の公理監査 -/
 #print axioms SerrePositivity.DifferentialGraded.opposite_forward
@@ -12,3 +13,7 @@ public import SerrePositivity.DifferentialGraded.Module.Yoneda
 #print axioms SerrePositivity.DifferentialGraded.moduleParamNaturality_of_apply
 #print axioms SerrePositivity.DifferentialGraded.dgYonedaEquiv
 #print axioms SerrePositivity.DifferentialGraded.dgYonedaIso
+#print axioms SerrePositivity.DifferentialGraded.moduleComposeApp_naturality
+#print axioms SerrePositivity.DifferentialGraded.moduleEnrichment
+#print axioms SerrePositivity.DifferentialGraded.moduleEvaluationDG
+#print axioms SerrePositivity.DifferentialGraded.moduleClosedHomEquiv
