@@ -1931,3 +1931,37 @@ p乗算単射下で第nWitt係数の最高δ変数係数が1となる比較へ�
 この全段比較は未実装。G4を待たずに進める独立作業である。
 全段δ除算包のモニック表示・平坦性、完備化/perfectionの完全忠実平坦性、
 引用なしの根付きperfectoid拡大と一般B4は引き続き未実装。
+
+最高線形表示の実装順を調整する。`RelativeFreeFrobeniusTopLinear.lean`で
+下位多項式だけを既存有限FrobeniusStepで再帰的に構成すれば、
+別の一般的有限FrobeniusIterate環射の構成なしに直接全段の表示を証明できる。
+`RelativeFreeFiniteFrobeniusIterate.lean`は必要性が確定するまで保留し、
+今回は既存FrobeniusStep_imageを再利用して直接、
+φ^(n+1)(X₀)=p^(n+1)*X_(n+1)+initialMap(n+1)(lower_n)を証明する。
+lower_nは第n段以下の変数しか持たない具体的有限多項式である。
+
+`RelativeFreeFrobeniusTopLinear.lean`の範囲に、自由初期変数のφ^n像を
+初期n+1段へ置く具体的有限多項式、その包含像の一致と変数段数上界も含める。
+これは全段Witt係数の下位変数所属を追う際の具体的な有限表示である。
+
+次のBS専用予定`RelativeFreeWittGhostRecurrence.lean`で、相対自由δ環の
+自由初期変数の構成済みWitt係数b_nを定義し、
+p^(n+1)*(b_(n+1)-X_(n+1))=initialMap(lower_n)-
+Σ_(i≤n)p^i*b_i^(p^(n+1-i))を全nで正確に証明する。
+初期係数b₀=X₀も確認する。全ghost等式と今回のφ最高線形表示を使い、
+p正則性・G4・全Witt環射性を要求しない。
+下位係数の変数範囲を帰納し、p正則性による最高δ変数係数1の抽出へ使う。
+
+## B4-6：自由Frobenius反復の全段最高線形表示（2026-10-15）
+
+`RelativeFreeFrobeniusTopLinear.lean`で既存有限FrobeniusStepを使って
+下位多項式lower_nを再帰的に構成し、任意基底δ環・任意生成元・全nで
+φ^(n+1)(X₀)=p^(n+1)*X_(n+1)+initialMap(n+1)(lower_n)を正確に証明した。
+φ^n(X₀)を初期n+1段に置く具体的な有限多項式、
+包含像の一致と全変数の段数≤nという上界も証明した。
+既存の有限Frobeniusの包含図式を再利用し、一般的反復環射の重複構成を避けた。
+p正則性・非零性・完備性・G4・全Witt環射性を要求しない。
+7公開宣言の対象2059ジョブ、pure B4全公開宣言監査成功。
+全体4675ジョブ成功（共有側の既存警告あり）。
+標準3公理のみ。新sorry・公理・引用なし。
+全ghost等式へ代入してWitt最高座標との差の再帰式へ接続する。
