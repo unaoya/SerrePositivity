@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.Spectra.Pointed.AdjoinBasepoint
+public import SerrePositivity.Spectra.PointedSimplicialSet.AdjoinBasepointProduct
 public import SerrePositivity.Spectra.Pointed.Smash
 public import SerrePositivity.Spectra.PointedSimplicialSet.Monoidal
 public import SerrePositivity.Spectra.SymmetricSequence.Pointed
