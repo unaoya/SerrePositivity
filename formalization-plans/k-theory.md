@@ -3,10 +3,10 @@
 作成日：2026-10-13。計画更新日：2026-10-14。
 M1・M2の圏論的構成と閉対称モノイダル構造、段階1・2のA1〜C2まで実装・検証済み。
 ホモトピー論の構成、非連結K理論、定理3.1・補題4.6への接続は未完成である。
-最新の完了確認は§125（共有ホモトピー論H0〜H2）と§122（段階2）。次の実装範囲はH3・H4。
+最新の完了確認は§126（共有ホモトピー論H0〜H4）と§122（段階2）。次の実装範囲はH5。
 mathlibへの追加・登録は今回の完了条件に含めず、必要な構造と法則をこのリポジトリ内に実装する。
 検証済みのステップごとにコミットする。
-P1・P2と共有一般論H0〜H2は完了。M5は別チャットで進め、この系列はH3・H4へ進む。
+P1・P2と共有一般論H0〜H4は完了。M5は別チャットで進め、この系列はH5へ進む。
 
 ## 0. 現在地と残作業の実行計画（2026-10-14更新）
 
@@ -23,7 +23,7 @@ P1・P2と共有一般論H0〜H2は完了。M5は別チャットで進め、こ�
 | M1：基点付き単体的集合 | 対象・射、smash、円・球面、閉対称モノイダル構造 | Kan–Quillenとの接続とモデル圏公理 |
 | M2：対称スペクトル | 球面加群、自由対象F_n、評価随伴、極限・余極限、閉対称モノイダル構造、作用・写像対象・単体的豊穣構造 | レベル・安定モデル構造との接続 |
 | 各段の計算 | F_0との比較、作用の単位・結合、随伴・転置・評価、懸垂・ループ・構造射の随伴表示 | モデル構造の検討後に必要となる追加計算 |
-| M3・M4：ホモトピー論 | 共通の圏論的演算、Quillen随伴の保存条件・恒等・合成、Underモデル構造（H0〜H2） | 生成・転送、導来随伴、安定モデル、π_n、図式・固定点・有理化 |
+| M3・M4：ホモトピー論 | 共通の圏論的演算、Quillen・Under・生成/右転送・導来随伴（H0〜H4） | monoidal/豊穣モデル、安定モデル、π_n、図式・固定点・有理化 |
 | M5・M6：dg・K理論 | 既存の複体・三角圏・K₀を比較先として利用可能 | dg表示と上位モデル、環・加群、非連結K理論の具体的入力と比較 |
 | M7〜M10：本文への接続 | 既存の本文の帰結と利用先 | 支持つき降下、定理3.1、補題4.6、二つのK₀比較と保留入力の解消 |
 
@@ -4990,3 +4990,84 @@ smallnessの具体的証拠を受け取れる契約を作る。H3完了を引用
 今回H0〜H2は1入口＋4実装/補助ファイル＋README＋2検証スクリプトで完了した。
 H1/H2で追加の大きな基底理論は不要だったが、H3のcardinal/small objectの証明と
 H4のderivability接続は未着手であり、§123の全体工数をこの実績だけで縮小しない。
+
+## 126. 実施記録：生成・転送と導来随伴H3・H4の完了
+
+§124のK-Bを完了した。専用入口は引き続き
+`SerrePositivity/HomotopicalAlgebra/Foundations.lean`。
+公開APIとM5への引継ぎ契約は同ディレクトリのREADMEに追記した。
+この作業ではM5担当ファイル、共有ルートimport、可換環論・CLMSTの並行作業ファイルを編集していない。
+
+### 126.1 H3：生成条件・認識・右転送
+
+`Generated/Basic.lean`の`CofibrantlyGenerated.{w} I J`は既存ModelCategory上の性質。
+I,Jの`HasSmallObjectArgument.{w}`とI.rlp=trivialFib、J.rlp=Fibを束ねる。
+補助宇宙w、生成射のsmallness、必要なpushout/coproduct/transfinite colimit、
+Homの保存条件は固定版Mathlibのsmall-object/cardinal APIをそのまま使用する。
+両方の関手的分解を証明し、単なるモデル圏から関手的置換を取り出さない。
+
+`Transfer/Recognition.lean`は両small-object仮定・2-out-of-3・生成クラスの等式と
+J.rlp.llpのacyclicityからMathlib ModelCategoryを構成する。
+weak cofibrationをJ系で分解し、右因子がtrivialFibになることからretract argumentで
+trivialCof=J.rlp.llpを証明した。単に両weak factorization systemの完成を仮定する認識ではない。
+cell acyclicityから生成左クラス全体のacyclicityを得る場合はWのretract閉性を使う。
+
+`Transfer/Right.lean`の`rightTransfer I J adj hacyclic`は通常随伴L⊣Rに沿う右転送。
+源はcofibrantly generatedなモデル圏、値域は有限極限余極限をもつ圏。
+像I.strictMap LとJ.strictMap Lのsmall-object仮定、J像のcellの
+Rによる弱同値性を別入力として要求する。FibとWは右随伴で作り、cofはI像で生成する。
+`strictMap_rlp`を随伴のliftingから証明し、像の生成性・両functorial factorization・
+随伴のQuillen性まで接続した。具体的dg加群・monoid axiomはこの一般定理に埋め込まない。
+
+### 126.2 H4：導来存在・随伴・選択独立性・同値判定
+
+`Quillen/Brown.lean`は固定版のBrown分解を使い、左Quillenはcofibrant間、
+右Quillenはfibrant間の弱同値を保存することを証明した。
+`DerivedFunctor.lean`で既存のCofibrantObject/FibrantObject.localizerMorphismの
+Derivesへ接続し、pointwise導来存在を与える。既存totalLeftDerived/totalRightDerivedを利用し、
+良い対象上の比較射の可逆性と任意後合成の導来性を証明した。
+
+`DerivedAdjunction.lean`は通常随伴から既存Adjunction.derivedへ接続する。
+absolute derivedを別の仮定にはせず、直前の証明から供給する。
+unit/counitの比較公式、元のHom同値のmateとの一致、三角恒等式を利用できる。
+任意の導来関手の選択を受け取り、canonicalな左右自然同型とその比較射への因子化、
+unit/counitを運ぶ自然変換の等式を証明した。対象ごとの同型だけで選択独立性を代用しない。
+
+`Equivalence.lean`はcofibrant/fibrantの像の本質的全射性で自然変換の可逆性を判定する。
+`derived_isEquivalence_iff`は導来左関手の圏同値性と、cof上の導来unit・fib上の導来counitの
+可逆性の必要十分条件。さらに指定置換の射とmateが弱同値ならunit/counitが可逆であること、
+通常のcof→fib弱同値mate条件から導来圏同値を得る十分条件を証明した。
+後者を必要十分条件とは呼ばず、一般の局所化が反転する射のクラスと元のWの同定を
+暗黙に仮定していない。H4の実装済み判定は導来unit/counit版の必要十分条件である。
+
+M5へはH3の生成射・smallness・cell acyclicityの契約とH4のQuillen/局所化の契約を提供する。
+複体・dg加群の具体的検証はM5が所有する。monoidalモデル構造と多対象転送への一般的接続は
+次のH5/G5で扱い、H3の右転送だけでそれらが完成したとしない。
+
+### 126.3 検証・コミット・次の段階
+
+以下はすべて成功（新規ソース・利用例は警告なし）。
+
+```sh
+lake build SerrePositivity.HomotopicalAlgebra.Foundations SerrePositivity.Spectra.StageTwo SerrePositivity.Spectra.Foundations
+lake env lean scripts/check_homotopical_foundations.lean
+lake env lean scripts/check_homotopical_transfer.lean
+lake env lean scripts/check_homotopical_derived.lean
+lake env lean scripts/audit_homotopical_foundations.lean
+lake env lean scripts/check_spectra_stage2.lean
+lake env lean scripts/audit_spectra.lean
+```
+
+集約ビルド2244ジョブ。共有ホモトピー論は11モジュール153宣言を内部補助宣言も含めて監査し、
+標準公理のみ・sorry/引用axiom依存なし。監査は必須モジュールの欠落も検出する。
+既存スペクトル・共通基盤の監査は261モジュール2612宣言で標準公理のみ。
+H3利用例は未装備の値域への転送、生成性、クラスの一致、両関手的分解、Quillen性を確認。
+H4利用例はMathlibの実際のtotal derived functor、任意後合成、導来随伴のmate・三角恒等式、
+選択変更によるunit/counitの自然性、導来同値判定を確認する。
+対象は担当入口と既存スペクトル入口であり、並行作業中の共有ルート全体のビルドは含めない。
+
+段階ごとのコミット：H3 `7d742b4`、H4前半 `8bdb3a8`、H4後半 `8825133`。
+次は§124のK-C/H5：Quillen bifunctor、pushout-product/pullback-homの同値、unit公理、
+任意Vの豊穣tensor/cotensorの共有API。G5/G6の残るmonoid axiom・加群転送・SM7へ続く。
+H6の一般スペクトルの対象定義は先行可能だが、次の主要単位はM5も利用するH5とする。
+G4局所化の二案は引き続き未選択。今回の実績だけで§123の全体工数を縮小しない。

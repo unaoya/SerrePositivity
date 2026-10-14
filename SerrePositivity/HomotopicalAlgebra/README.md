@@ -77,6 +77,49 @@ lake env lean scripts/audit_spectra.lean
 両分解・両lifting、有限極限余極限、二重UnderとStageTwoの併用を確認する。
 
 コミット：H0 `b46de69`、H1 `d554602`、H2 `e382feb`。
-次はH3（生成条件・転送認識）とH4（既存導来随伴への接続）。
-M5はこの入口を利用できるが、dg加群のモデル構造・導来tensorのQuillen比較には
-未実装のH3/G5/H4がなお必要。今回H3以降の完了を主張しない。
+この時点の次段階はH3（生成条件・転送認識）とH4（既存導来随伴への接続）だった。
+以下にその後のH3・H4の完了記録を示す。
+
+## H3・H4の完了とM5への引継ぎ
+
+H3とH4を実装・検証済み。専用入口は同じ`Foundations`で、共有ルートimportは変更しない。
+すべての型は既存MathlibのModelCategory・MorphismProperty・Adjunction・導来関手を使用する。
+
+| 単位 | 公開API（名前空間は`SerrePositivity.ModelGeneration`又は`SerrePositivity.Quillen`） | 契約 |
+| --- | --- | --- |
+| H3 | `CofibrantlyGenerated.{w} I J`, `generatedWfs`, `cofibrations_eq_generated`, `trivialCofibrations_eq_generated` | I,Jのsmall-object仮定と右クラスの生成等式。wはsmallnessとcell構成の補助宇宙。Mathlibのcardinal仮定を再定義しない |
+| H3 | `hasFunctorialFactorization_cofibration_trivialFibration`, `hasFunctorialFactorization_trivialCofibration_fibration` | 生成性から両方の関手的分解が得られる。普通のModelCategoryだけでこれを主張しない |
+| H3 | `modelCategoryOfRecognition`, `generatedLeft_le_of_cells_le` | 二つの小対象構成、2-out-of-3、生成クラスの同定、acyclicityからモデル圏を構成。cellから左クラスへの拡張ではWのretract閉性を使用 |
+| H3 | `strictMap_rlp`, `rightTransfer I J adj hacyclic` | 通常随伴L⊣R、源の生成モデル構造、値域の有限極限余極限、L(I),L(J)のsmall-object仮定、L(J)-cellのRによるacyclicity。FibとWはRのinverse image |
+| H3 | `rightTransfer_cofibrantlyGenerated`, `rightTransfer_isLeftQuillen`, `rightTransfer_isRightQuillen` | 像の生成射による生成性、通常随伴のQuillen性。構成したModelCategoryを局所instanceとして選んで使う |
+| H4 | `map_weakEquivalence_of_cofibrant`, `map_weakEquivalence_of_fibrant` | Ken Brownの既存分解から良い対象間の弱同値保存。全対象の弱同値保存とは区別する |
+| H4 | `cofibrant_derives`, `fibrant_derives`, pointwise derived existence instance | 既存のcof/fib derivability structureから導来関手の存在を証明。MathlibのtotalLeftDerived/totalRightDerivedを利用できる |
+| H4 | `leftComparison_isIso`, `rightComparison_isIso`, `leftDerived_postcomp`, `rightDerived_postcomp` | 良い対象上で比較射が同型。任意の後合成が導来関手になることを証明し、absolute derivedの仮定を別入力にしない |
+| H4 | `derivedAdjunction`, `derivedAdjunction_unit_fac`, `derivedAdjunction_counit_fac`, `derivedAdjunction_homEquiv` | 既存Adjunction.derivedへの接続。unit/counitの計算、元のmateとの一致、三角恒等式 |
+| H4 | `leftChoiceIso`, `rightChoiceIso`, `derivedAdjunction_unit_choice`, `derivedAdjunction_counit_choice` | 導来関手の選択間のcanonical自然同型と、unit/counitを運ぶ自然変換の等式。特定の置換関手に依存しない |
+| H4 | `derived_isEquivalence_iff` | 導来左関手が圏同値であることと、cofibrant上の導来unit・fibrant上の導来counitの可逆性の必要十分条件 |
+| H4 | `derived_unit_isIso_of_weakEquivalence_mate`, `derived_counit_isIso_of_weakEquivalence_mate`, `derived_isEquivalence_of_mate_weakEquivalences` | 指定した置換の射とmateが弱同値なら比較は可逆。通常のcof→fibの弱同値mate判定から導来同値を得る十分条件。弱同値mate条件の必要性まで同じ定理と呼ばない |
+
+M5はfree/forgetの随伴、生成射、像のsmallnessとcell acyclicityを供給すればH3を適用できる。
+H4にはQuillen保存条件と局所化を渡せばよく、独自の導来随伴型は不要。
+Ch(A)の具体的smallness・monoid axiom・dg加群の作用の検証はM5の担当のまま。
+抽象monoidal model・monoid axiom・多対象転送への接続は次のH5/G5が担当する。
+一般の右転送定理だけからdg加群転送の具体的仮定が満たされるとは主張しない。
+
+最終検証では上記H0〜H2のコマンドに加えて、以下を実行した。
+
+```sh
+lake env lean scripts/check_homotopical_transfer.lean
+lake env lean scripts/check_homotopical_derived.lean
+```
+
+すべて成功・新規ソース警告なし。集約ビルドは2244ジョブ。
+共有ホモトピー論の監査は11モジュール153宣言、既存スペクトル監査は261モジュール2612宣言。
+内部補助宣言を含む共有一般論は標準公理のみでsorry・引用axiom依存なし。
+生成・転送の利用例は未装備の値域へモデル構造を作り、その同じ構造上で両分解とQuillen性を利用する。
+導来側は実際のMathlib total derived functor、任意の選択、unit/counit、三角恒等式、
+自然な選択変更、同値判定を確認する。H0〜H2・StageTwoの既存検証も再実行済み。
+
+コミット：H3 `7d742b4`、H4前半 `8bdb3a8`、H4後半 `8825133`。
+次はH5：Quillen bifunctor、pushout-product/pullback-hom、unit、豊穣tensor/cotensorの共有API。
+M5の具体的な複体の証明を取り込まず、任意Vの一般論として進める。
