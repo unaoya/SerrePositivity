@@ -1,4 +1,4 @@
-import SerrePositivity.KTheory.Adams.KoszulSquareModel
+import SerrePositivity.KTheory.Adams.KoszulSquareSwap
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.Adams.oneKoszulComplex_perfect
@@ -33,3 +33,16 @@ assert_no_sorry SerrePositivity.Adams.oneKoszulSquareConeTop_d
 #print axioms SerrePositivity.Adams.oneKoszulSquareConeIso
 #print axioms SerrePositivity.Adams.oneKoszulSquareXNegOneIso
 #print axioms SerrePositivity.Adams.oneKoszulSquareConeTop_d
+
+assert_no_sorry SerrePositivity.Adams.scalarTensorDiagonal_braiding
+assert_no_sorry SerrePositivity.Adams.scalarTensorDiagonal_tensor_braiding
+assert_no_sorry SerrePositivity.Adams.oneKoszulTensorGenerator_swap
+assert_no_sorry SerrePositivity.Adams.oneKoszulSquareBottom_swap
+assert_no_sorry SerrePositivity.Adams.oneKoszulSquareLeft_swap
+assert_no_sorry SerrePositivity.Adams.oneKoszulSquareRight_swap
+assert_no_sorry SerrePositivity.Adams.oneKoszulSquareTop_swap
+assert_no_sorry SerrePositivity.Adams.oneKoszulSquarePositive_swap
+assert_no_sorry SerrePositivity.Adams.oneKoszulSquareNegative_swap
+#print axioms SerrePositivity.Adams.oneKoszulTensorGenerator_swap
+#print axioms SerrePositivity.Adams.oneKoszulSquareTop_swap
+#print axioms SerrePositivity.Adams.oneKoszulSquareNegative_swap
