@@ -77,3 +77,21 @@ B3完了の監査では、一般のpねじれ商を含む上記最終入力を�
 対象ビルド・BS監査・全体ビルド（4329ジョブ）成功。
 import閉包99モジュール、Inputs・CLMST・Paper・RootTower依存なし。
 新規sorry・公理・引用なし。
+
+## B3-2：F4/F5接続（2026-10-14）
+
+`PerfectDeltaWittRecovery.lean`：完全δ構造からp正則性・mod p完全性を供給し、
+F4のWitt復元同型と標準商図式を公開した。同型そのものは零環を含む。
+標準Witt δ構造との順逆比較ではModPのCharPを明示する。
+任意の標準Witt環からp正則p進完備δ環への環射がδ射となることも、
+共通Witt持上げの一意性で証明した。連続性は追加仮定にしない。
+
+`DistinguishedQuotientComplete.lean`：既存のN=1/N=kねじれ評価をF5へ渡し、
+distinguished商と全冪商の古典的p完備性を公開した。
+商のp正則性・Noether性・有限表示性は不要。冪指数0も含む。
+
+対象ビルド・BS監査・全体ビルド（4330ジョブ）成功。
+新規7公開宣言の公理依存はpropext・Classical.choice・Quot.soundのみ。
+import閉包は16/60モジュール、Inputs・CLMST・Paper・RootTower依存なし。
+新規sorry・公理・引用なし。
+次はLemma 3.9の完備化後の完全δ性・正則性・完全prism普遍性。
