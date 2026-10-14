@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.CompatibleRootCompletionSurjective
 public import SerrePositivity.BhattScholze.PerfectPrismQuotientPerfectoid
-public import SerrePositivity.BhattScholze.PDCompletionInterface
+public import SerrePositivity.BhattScholze.PerfectDeltaPDQuotientComparison
 
 /-! # B4-3：古典的根イデアル商の完備化と実PD完備化商の比較
 
@@ -55,97 +55,26 @@ theorem exists_compatibleRootCompletionPDQuotientEquiv
             rw [hker, Ideal.span_singleton_le_iff_mem]
             exact Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.mem_span_singleton_self _)⟩ := by
   let := pdCompletionCommRing B p (w d)
-  let H := PDCompletionH0 B p (w d)
-  let j := pdCompletionUnit B p (w d)
-  let U := H ⧸ Ideal.span {j (w d)}
-  let qU := Ideal.Quotient.mk (Ideal.span {j (w d)})
-  let C := CompatibleRootCompletion p ρ
-  let qR := (compatibleRootCompletionMap p ρ).comp (Ideal.Quotient.mk (Ideal.span {ρ 0}))
   let := hR.isAdicComplete R p
   let := compatibleRootCompletion_isAdicComplete (p := p) ρ
-  let := perfectDeltaPDPrism_quotient_isAdicComplete D hD (w d) hd
-  let i : R →+* U := θ.liftOfSurjective hθ ⟨qU.comp (j.comp w), by
-    rw [hker, Ideal.span_singleton_le_iff_mem]
-    exact Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.mem_span_singleton_self _)⟩
-  have hiθ : i.comp θ = qU.comp (j.comp w) := θ.liftOfSurjective_comp hθ _
-  have hiρ : i (ρ 0) = 0 := by
-    rw [← ha]
-    have hh : i (θ a) = qU (j (w a)) := RingHom.congr_fun hiθ a
-    rw [hh, hwa, map_zero, map_zero]
-  let i0 := Ideal.Quotient.lift (Ideal.span {ρ 0}) i (by
-    change Ideal.span {ρ 0} ≤ RingHom.ker i
-    rw [Ideal.span_singleton_le_iff_mem]
-    exact hiρ)
-  have hU : IsIntegralPerfectoid U p :=
-    (perfectDeltaPDPrism D hD (w d) hd).quotient_isIntegralPerfectoid
-      (perfectDeltaPDPrism_isPerfect D hD (w d) hd)
-  obtain ⟨c, hc, _⟩ := existsUnique_compatibleRootCompletionLift_to_perfectoid ρ hρ hU i0
-  have hcR : c.comp qR = i := by
+  let qR := (compatibleRootCompletionMap p ρ).comp (Ideal.Quotient.mk (Ideal.span {ρ 0}))
+  have hqR : Function.Surjective qR :=
+    (compatibleRootCompletionMap_surjective (p := p) ρ).comp Ideal.Quotient.mk_surjective
+  have hI : Ideal.span {ρ 0} ≤ (RingHom.ker w).map θ := by
+    rw [Ideal.span_singleton_le_iff_mem, ← ha]
+    exact Ideal.mem_map_of_mem θ (show a ∈ RingHom.ker w from hwa)
+  have hExtend : ∀ (T : Type u) [CommRing T], IsIntegralPerfectoid T p →
+      ∀ i : R →+* T, Ideal.span {ρ 0} ≤ RingHom.ker i →
+        ∃ c : CompatibleRootCompletion p ρ →+* T, c.comp qR = i := by
+    intro T _ hT i hi
+    let i0 := Ideal.Quotient.lift (Ideal.span {ρ 0}) i hi
+    obtain ⟨c, hc, _⟩ := existsUnique_compatibleRootCompletionLift_to_perfectoid ρ hρ hT i0
+    refine ⟨c, ?_⟩
     change c.comp ((compatibleRootCompletionMap p ρ).comp
       (Ideal.Quotient.mk (Ideal.span {ρ 0}))) = i
     rw [← RingHom.comp_assoc, hc]
     rfl
-  have hθd : θ d = 0 := by
-    apply RingHom.mem_ker.mp
-    rw [hker]
-    exact Ideal.mem_span_singleton_self _
-  have hβd : β (w d) = 0 := by
-    have hh : β (w d) = qR (θ d) := RingHom.congr_fun hβ d
-    rw [hh, hθd, map_zero]
-  have hz (T : Type u) [CommRing T] : IsModuleComplete T (0 : T) (ModuleCat.of T T) := by
-    rw [isModuleComplete_iff_recurrence_bijective]
-    change Function.Bijective (fun x : ℕ → T ↦ fun n ↦ x n - (0 : T) • x (n + 1))
-    simp only [zero_smul, sub_zero]
-    exact ⟨fun x y h ↦ funext (fun n ↦ congrFun h n), fun x ↦ ⟨x, rfl⟩⟩
-  have hpC := isModuleComplete_of_isAdicComplete C (p : C) (ModuleCat.of C C)
-  have hdC : IsModuleComplete C (β (w d)) (ModuleCat.of C C) := hβd ▸ hz C
-  obtain ⟨b, hb, _⟩ := existsUnique_pdCompletionRingHom B p (w d) C β hpC hdC
-  let b0 : U →+* C := Ideal.Quotient.lift _ b (by
-    change Ideal.span {j (w d)} ≤ RingHom.ker b
-    rw [Ideal.span_singleton_le_iff_mem]
-    have hh : b (j (w d)) = β (w d) := RingHom.congr_fun hb (w d)
-    exact hh.trans hβd)
-  have hbq : b0.comp qU = b := rfl
-  have hbi : b0.comp i = qR := by
-    apply RingHom.ext
-    intro r
-    obtain ⟨x, rfl⟩ := hθ r
-    have hh : i (θ x) = qU (j (w x)) := RingHom.congr_fun hiθ x
-    change b0 (i (θ x)) = qR (θ x)
-    rw [hh]
-    exact (RingHom.congr_fun hb (w x)).trans (RingHom.congr_fun hβ x)
-  have hbc : b0.comp c = RingHom.id C := by
-    apply RingHom.ext
-    intro x
-    obtain ⟨r, rfl⟩ := (compatibleRootCompletionMap_surjective (p := p) ρ).comp
-      Ideal.Quotient.mk_surjective x
-    change b0 (c (qR r)) = qR r
-    have hh : c (qR r) = i r := RingHom.congr_fun hcR r
-    rw [hh]
-    exact RingHom.congr_fun hbi r
-  have hcb : c.comp b0 = RingHom.id U := by
-    apply Ideal.Quotient.ringHom_ext
-    have hcbβ : c.comp β = qU.comp j := by
-      apply RingHom.ext
-      intro y
-      obtain ⟨x, rfl⟩ := hw y
-      have hh : β (w x) = qR (θ x) := RingHom.congr_fun hβ x
-      change c (β (w x)) = qU (j (w x))
-      rw [hh]
-      exact (RingHom.congr_fun hcR (θ x)).trans (RingHom.congr_fun hiθ x)
-    have hpU := isModuleComplete_of_isAdicComplete U (p : U) (ModuleCat.of U U)
-    have hqd : (qU.comp j) (w d) = 0 :=
-      Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.mem_span_singleton_self _)
-    have hdU : IsModuleComplete U ((qU.comp j) (w d)) (ModuleCat.of U U) := hqd ▸ hz U
-    have he : c.comp b = qU := by
-      apply pdCompletionRingHom_ext B p (w d) U (qU.comp j) hpU hdU
-      · rw [RingHom.comp_assoc, hb, hcbβ]
-      · rfl
-    change (c.comp b0).comp qU = (RingHom.id U).comp qU
-    rw [RingHom.comp_assoc, hbq, he, RingHom.id_comp]
-  refine ⟨{ c with
-    invFun := b0
-    left_inv := RingHom.congr_fun hbc
-    right_inv := RingHom.congr_fun hcb }, hcR⟩
+  exact exists_perfectDeltaPDQuotientEquiv_of_perfectoidExtension D hD d θ hθ hker
+    w hw hd (Ideal.span {ρ 0}) hI qR hqR hExtend β hβ
 
 end SerrePositivity.BhattScholze

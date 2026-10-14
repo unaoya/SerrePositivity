@@ -249,3 +249,30 @@ B4-1時点の共通importの引用混入は、その後の共通側の抽出で�
 一般根族の候補のperfectoid性はまだ未証明であり、この前半をB4-4全体の
 完成とは数えない。単項で証明した実PD商比較の共通部分を抽出し、
 一般根族へ同じ証明を渡す。既存の一般定義や共通補題を重複させない。
+
+## B4-4完了：任意根族・任意根付きイデアル（2026-10-14）
+
+`PerfectDeltaPDQuotientComparison`へ単項と根族の商比較の共通証明を抽出した。
+`CompatibleRootPDComparison`の既存署名を保ったまま、その証明を共通部分へ置換。
+単項結果も再ビルド・B4全宣言監査で再検証した。
+`CompatibleRootFamilyPDComparison`で任意根族の具体的完備化と実PD商の比較を証明。
+`CompatibleRootFamilyCompletionPerfectoid`で任意σ:Type uについて候補の
+IsIntegralPerfectoid、標準射のIsPerfectoidization、任意普遍対象の全射性を証明した。
+一般pねじれ、零環、空の根族を含み、有限生成性は不要。
+
+`RootedIdealSurjectivity`で、任意イデアルJの全元が両立する根を持つ場合の
+`surjective_of_isPerfectoidization_of_rootedIdeal`を公開。
+商のp正則性・完備性・イデアルの有限生成性を追加しない。
+これで任意根族を直接扱う経路が全一般性で証明できたため、この経路を採用する。
+B4の一般イデアルへの帰着のための有限生成化・単項への帰納・
+そのための完備有向余極限比較は不要になった。
+ただし根付き拡大を元のRへ降下するB4-5と、引用なしのB4cは未完了。
+
+新規8公開宣言と単項比較の再利用の監査が成功。対象ビルド3288ジョブ、
+全体ビルド4466ジョブ成功。すべての公理依存は標準3公理のみ。
+André・B-S・B-I・B5の証明依存はない。共有ファイルは編集していない。
+
+G1は共通計画§9.7cでG1-1〜4の公開・監査まで完了したことを確認。
+`PrincipalAdicFaithfulDescent.surjective_algHom_of_principal_residue_baseChange`が
+要求した環商の署名を供給する。BS側は再監査・適用し、同等の一般降下補題を作らない。
+G2の完備テンソル比較とBS側のperfectoid性・Tor計算は別に残る。
