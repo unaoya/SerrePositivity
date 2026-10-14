@@ -1,4 +1,4 @@
-import SerrePositivity.PerfectComplex.TensorTripleShortExact
+import SerrePositivity.KTheory.Adams.TensorCubeFiltration
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.cochainTensorTripleShortComplexFirst_shortExact
@@ -7,3 +7,42 @@ assert_no_sorry SerrePositivity.cochainTensorTripleShortComplexSecond_shortExact
 #print axioms SerrePositivity.cochainTensorTripleShortComplexSecond_shortExact
 assert_no_sorry SerrePositivity.cochainTensorTripleShortComplexThird_shortExact
 #print axioms SerrePositivity.cochainTensorTripleShortComplexThird_shortExact
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeKernelRotation
+#print axioms SerrePositivity.Adams.tensorCubeKernelRotation
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeKernelRotation_inclusion
+#print axioms SerrePositivity.Adams.tensorCubeKernelRotation_inclusion
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeKernelRotation_cube
+#print axioms SerrePositivity.Adams.tensorCubeKernelRotation_cube
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeKernelAction
+#print axioms SerrePositivity.Adams.tensorCubeKernelAction
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeMap_epi_of_shortExact
+#print axioms SerrePositivity.Adams.tensorCubeMap_epi_of_shortExact
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeKernelShortComplex_shortExact
+#print axioms SerrePositivity.Adams.tensorCubeKernelShortComplex_shortExact
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeKernel_perfect
+#print axioms SerrePositivity.Adams.tensorCubeKernel_perfect
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeKernel_support
+#print axioms SerrePositivity.Adams.tensorCubeKernel_support
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeKernelFirstMap
+#print axioms SerrePositivity.Adams.tensorCubeKernelFirstMap
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeKernelFirstMap_inclusion
+#print axioms SerrePositivity.Adams.tensorCubeKernelFirstMap_inclusion
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeMap_mono_of_shortExact
+#print axioms SerrePositivity.Adams.tensorCubeMap_mono_of_shortExact
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeKernelFirstMap_mono
+#print axioms SerrePositivity.Adams.tensorCubeKernelFirstMap_mono
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeKernelFirstMap_rotation
+#print axioms SerrePositivity.Adams.tensorCubeKernelFirstMap_rotation
