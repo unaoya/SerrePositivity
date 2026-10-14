@@ -5,6 +5,7 @@ import SerrePositivity.Spectra.Pointed.SmashPushoutProduct
 import SerrePositivity.Spectra.ModelCategory.PointedGenerators
 import SerrePositivity.Spectra.ModelCategory.SimplicialMonoidal
 import SerrePositivity.Spectra.ModelCategory.SimplicialLevel
+import SerrePositivity.Spectra.ModelCategory.SimplicialWeakEquivalences
 import SerrePositivity.Spectra.General.Foundations
 import SerrePositivity.Spectra.General.SimplicialComparison
 import SerrePositivity.Spectra.ModelCategory.LevelClasses
@@ -23,6 +24,7 @@ run_cmd do
     let some idx := env.getModuleIdxFor? name | continue
     let mod := env.header.modules[idx.toNat]!.module
     unless #[`SerrePositivity.Spectra, `SerrePositivity.CategoryTheory.FunctorTransport,
+        `SerrePositivity.HomotopicalAlgebra.Topological,
         `SerrePositivity.CategoryTheory.AdjunctionHomLaws,
         `SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport,
         `SerrePositivity.CategoryTheory.Monoidal,
@@ -42,6 +44,8 @@ run_cmd do
     declarations := declarations + 1
     unless modules.contains mod do modules := modules.push mod
   for expected in #[`SerrePositivity.Spectra.ModelCategory.SimplicialLevel,
+      `SerrePositivity.Spectra.ModelCategory.SimplicialWeakEquivalences,
+      `SerrePositivity.HomotopicalAlgebra.Topological.WeakEquivalence,
       `SerrePositivity.Spectra.ModelCategory.SimplicialMonoidal,
       `SerrePositivity.Spectra.ModelCategory.PointedGenerators,
       `SerrePositivity.Spectra.ModelCategory.SimplicialGenerators,
