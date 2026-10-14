@@ -2,6 +2,8 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Adjunction
 public import Mathlib.CategoryTheory.LiftingProperties.ParametrizedAdjunction
+public import Mathlib.CategoryTheory.Adjunction.Limits
+public import Mathlib.AlgebraicTopology.ModelCategory.IsCofibrant
 
 /-!
 # Quillen bifunctors and the pullback-hom criterion
@@ -112,5 +114,37 @@ instance isQuillenBifunctor_flip (F : C₁ ⥤ C₂ ⥤ C₃) [IsQuillenBifuncto
   cofibration i j sq hi hj := IsQuillenBifunctor.cofibration (F := F) j i sq.flip hj hi
   weakEquivalence i j sq hi hj hw :=
     IsQuillenBifunctor.weakEquivalence (F := F) j i sq.flip hj hi hw.symm
+
+theorem isQuillenBifunctor_flip_iff (F : C₁ ⥤ C₂ ⥤ C₃) :
+    IsQuillenBifunctor F.flip ↔ IsQuillenBifunctor F := by
+  constructor
+  · intro h
+    have := h
+    exact isQuillenBifunctor_flip F.flip
+  · intro h
+    have := h
+    infer_instance
+
+/-- Fixing a cofibrant parameter gives a left Quillen functor. Preservation
+of initial objects in the other variable is obtained from its ordinary adjoints. -/
+lemma isLeftQuillen_obj_of_cofibrant (F : C₁ ⥤ C₂ ⥤ C₃) [IsQuillenBifunctor F]
+    [∀ X : C₂, (F.flip.obj X).IsLeftAdjoint] (A : C₁) [IsCofibrant A] :
+    IsLeftQuillen (F.obj A) := by
+  constructor
+  · intro X Y j hj
+    have hjC : Cofibration j := (cofibration_iff _).2 hj
+    let s := Functor.PushoutObjObj.ofIsInitialLeft F (Limits.initial.to A) j
+      Limits.initialIsInitial
+    have h := IsQuillenBifunctor.cofibration (Limits.initial.to A) j s inferInstance hjC
+    exact (cofibration_iff _).1 h
+  · intro X Y j hj
+    obtain ⟨hjC, hjW⟩ := (mem_trivialCofibrations_iff j).1 hj
+    let s := Functor.PushoutObjObj.ofIsInitialLeft F (Limits.initial.to A) j
+      Limits.initialIsInitial
+    exact ⟨(cofibration_iff _).1
+      (IsQuillenBifunctor.cofibration (Limits.initial.to A) j s inferInstance hjC),
+      (weakEquivalence_iff _).1
+      (IsQuillenBifunctor.weakEquivalence (Limits.initial.to A) j s
+        inferInstance hjC (Or.inr hjW))⟩
 
 end SerrePositivity.Quillen
