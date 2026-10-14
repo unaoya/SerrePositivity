@@ -420,6 +420,7 @@ public import SerrePositivity.KTheory.Adams.TensorCubeLowMixedQuotientAction
 public import SerrePositivity.KTheory.Adams.TensorCubeHighMixedQuotientAction
 public import SerrePositivity.KTheory.Adams.CyclicThree
 public import SerrePositivity.KTheory.Adams.TensorCubeTensor
+public import SerrePositivity.KTheory.Adams.TensorCubeMultiplicativity
 public import SerrePositivity.KTheory.Adams.TensorSquareMultiplicativity
 public import SerrePositivity.PerfectComplex.IdempotentTensor
 public import SerrePositivity.PerfectComplex.IdempotentImageFunctor
