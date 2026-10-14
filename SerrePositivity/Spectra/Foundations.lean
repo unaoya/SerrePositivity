@@ -52,6 +52,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomShiftZero
 public import SerrePositivity.Spectra.SymmetricSpectrum.Cotensor
 public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorAdjunction
 public import SerrePositivity.Spectra.SymmetricSpectrum.FreeLeftUncurry
+public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorLevelEvaluation
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomUnderlying
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeLeft
 
@@ -214,10 +215,12 @@ F_0 Xとの球面上のテンソル積とcotensorの随伴、転置・逆転置�
 生成次数零のDay convolutionを各段の通常のテンソル積へ自然に比較し、評価との両立を証明した。
 F_0との球面上のテンソル積の各段を通常のsmashへ比較した。
 左自由因子の比較の下での逆転置の公式と、cotensorの全体の逆比較の相殺公式を証明した。
+一般の係数加群の各段の評価法則を構成し、cotensorの余単位としての評価へ接続した。
+各段の逆比較の下で、cotensorの評価は通常の内部Homの評価法則を満たす。
 
 ## 未構成の範囲
 
-cotensorの各段の射と評価の具体式、各段の通常のsmashを持つテンソルのスペクトル全体の比較、
+cotensorの各段の射の具体式、各段の通常のsmashを持つテンソルのスペクトル全体の比較、
 モデル構造と導来演算は引き続き実装する。
 この入口は完成済みの§4の降下入力を変更せず、基盤を独立に検証するためのもの。
 現在の構成に新しい未証明入力はない。

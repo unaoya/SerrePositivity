@@ -3743,3 +3743,49 @@ F_0とのテンソル積の各段を通常のsmashで計算でき、
 集約SerrePositivity.Spectra.Foundationsのビルドは2043ジョブで成功した。
 公理監査は188モジュール・2016宣言で成功し、標準公理のみでsorry依存なしを確認した。
 すべての証明は標準の計算上限で検証し、計算上限を増やす設定は追加していない。
+
+## 80. 実施記録：cotensorの各段の評価法則（2026-10-14）
+
+### 一般の係数加群での評価
+
+[FreeZeroModuleEvaluation](../SerrePositivity/Spectra/SymmetricSequence/FreeZeroModuleEvaluation.lean)で、
+生成次数零の自由対称列からの内部Homの比較による係数加群のcotensor、全体の比較、評価を構成した。
+左自由因子の比較と生成次数零のDay convolutionの比較を合成し、
+自由零生成加群とのテンソル積の各段を通常のテンソル積へ比較した。
+比較の逆射を逆転置した加群の評価は、各段の逆比較の下で通常の内部Homの評価に一致する。
+
+任意のパラメータ加群と、その内部Homへの射についても各段の逆転置公式を証明した。
+基礎対称列の通常の内部Homとの比較と、自由原変数の比較との両立を仮定すると、
+各段の逆転置はその比較と通常の内部Homの評価の合成になる。
+この法則をfreeZeroModuleEvaluationLevelLawとしてまとめ、
+具体的な係数加群の型を再展開せずに適用できる入口も公開した。
+
+### cotensorの余単位への接続
+
+[TensorFreeZeroLevels](../SerrePositivity/Spectra/SymmetricSpectrum/TensorFreeZeroLevels.lean)の
+各段の比較を、この一般の係数加群の比較から特殊化する形へ整理した。
+[CotensorLevelEvaluation](../SerrePositivity/Spectra/SymmetricSpectrum/CotensorLevelEvaluation.lean)で、
+cotensorEvaluationLevelLawを定義し、余単位としての既存のcotensorEvaluationがこの法則を満たすことを証明した。
+既存の評価の逆転置公式と全体の逆比較の相殺公式を使い、一般の逆転置の評価法則へ接続した。
+これは各段の逆比較を介した評価が通常の内部Homの評価になることを表す。
+一般の評価法則のパラメータ比較は、cotensorでは基礎対称列上の恒等同型である。
+
+具体的な等式を再展開すると型の照合が重くなるため、検証済みの法則を命題として公開した。
+既存のcotensorと随伴・余単位の定義は変更していない。
+新しい証明はすべて標準の計算上限で検証し、計算上限を増やす設定や未検証の証明は残していない。
+集約FoundationsとスペクトルのREADMEに入口と到達点を追加した。
+
+### 到達点と次の範囲
+
+F_0とのテンソル積の各段の通常のsmashとの比較を、cotensorの余単位の評価に接続した。
+次はcotensorの各段の射の具体式と、各段の通常のsmashを持つテンソルのスペクトル全体の比較を整える。
+弱同値・モデル構造・導来演算・安定ホモトピー群は引き続き未実装である。
+共有ルートimport・依存設定・並行作業の可換環・CLMST関連ファイルは変更していない。
+定理3.1・補題4.6の二つの降下入力は未変更である。
+
+### 検証
+
+新しい二つのLeanソースと各段のテンソル比較の行長・末尾空白・未完了の証明用マーカーを確認した。
+ドキュメントのローカルリンクとgit diff --checkも確認した。
+集約SerrePositivity.Spectra.Foundationsのビルドは2045ジョブで成功した。
+公理監査は190モジュール・2027宣言で成功し、標準公理のみでsorry依存なしを確認した。

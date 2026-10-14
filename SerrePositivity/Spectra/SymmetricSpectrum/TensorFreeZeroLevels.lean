@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroConvolution
+public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroModuleEvaluation
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeLeft
 
 /-! # F_0との球面上のテンソル積の各段 -/
@@ -23,7 +23,6 @@ open SerrePositivity.PointedSimplicialSet
 def sphereTensorFreeZeroLevelIso (X : PointedSimplicialSet.{u})
     (E : SymmetricSpectrum.{u}) (q : ℕ) :
     level (sphereTensor ((freeAt 0).obj X) E) q ≅ X ⊗ level E q :=
-  (evaluation q).mapIso (sphereTensorFreeAtLeft 0 X E) ≪≫
-    SymmetricSequence.freeZeroConvolutionLevelIso X E.X q
+  SymmetricSequence.freeZeroTensorModuleLevelIso sphereSequence.{u} X E q
 
 end SerrePositivity.SymmetricSpectrum

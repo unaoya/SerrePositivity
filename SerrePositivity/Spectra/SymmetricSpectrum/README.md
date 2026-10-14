@@ -4,6 +4,7 @@ Mathlibの `CategoryTheory.Mod` を、構成済みの球面対称列へ適用す
 基礎圏は基点付き単体的集合の対称列、テンソル積は登録済みのconvolutionである。
 各段の対象は基点付き単体的集合であり、球面の作用から和次数への構造射を得る。
 
+- [CotensorLevelEvaluation](CotensorLevelEvaluation.lean)：各段の逆比較の下で、cotensorの余単位の評価が通常の内部Homの評価法則を満たすことの証明。
 - [FreeLeftUncurry](FreeLeftUncurry.lean)：左自由因子の比較の下での逆転置と、cotensorの全体の逆比較の相殺公式。
 - [TensorFreeZeroLevels](TensorFreeZeroLevels.lean)：F_0との球面上のテンソル積の各段と通常のsmashの比較。
 - [CotensorAdjunction](CotensorAdjunction.lean)：F_0とのテンソル積とcotensorの随伴、自然なHom同値、転置・逆転置・評価の公式。
@@ -132,7 +133,9 @@ F_0 Xとの球面上のテンソル積はcotensor関手の左随伴であり、�
 F_0 Xとの球面上のテンソル積の第q段を、通常のXとEの第q段のsmashへ比較した。
 この比較は対称列の点ごとの随伴と左随伴の一意性から構成する。
 左自由因子の比較の下での逆転置と、cotensorの逆比較の相殺公式を公開した。
-これらを使うcotensorの各段の評価公式は、具体的な定義の照合の計算上限を解消してから接続する。
+一般の係数加群で各段の評価法則を構成し、cotensorの余単位へ接続した。
+各段の逆比較を介したcotensorの評価は、通常の内部Homの評価法則を満たす。
+法則を命題として公開し、具体的な係数加群の型を再展開せずに利用できる。
 
 球面の第n段は円の反復smashである。境界を潰した単体的球面との比較は別の課題として扱う。
 弱同値、モデル構造、導来smash、安定ホモトピー群はまだ登録していない。
