@@ -65,6 +65,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.SuspensionLoop
 public import SerrePositivity.Spectra.SymmetricSpectrum.AdjointStructureMaps
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpace
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceNaturality
+public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroEvaluationGenerators
 public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorMapLevels
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomUnderlying
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeLeft
@@ -271,6 +272,9 @@ F_0 S^0と球面スペクトルの比較を構成し、各段のsmashによる�
 写像対象の合成・単位と豊穣構造は引き続き構成する。
 
 写像対象への転置と逆転置の原変数スペクトルの射に関する自然性も証明した。
+
+F_0の基礎対称列のconvolutionの各段の逆比較を生成元からの標準射として記述し、
+生成元上の評価・逆転置が各段の通常の内部Homの評価・逆転置になることを証明した。
 
 ## 未構成の範囲
 
