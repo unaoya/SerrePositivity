@@ -18,6 +18,7 @@ public import SerrePositivity.Spectra.General.TensorMappingObject
 public import SerrePositivity.Spectra.General.CotensorMappingObject
 public import SerrePositivity.Spectra.General.EnrichedMappingObjects
 public import SerrePositivity.Spectra.General.EnrichedMappingParameter
+public import SerrePositivity.Spectra.General.EnrichedRepresentability
 
 /-! # General symmetric spectra: the category and its free/evaluation API
 

@@ -129,6 +129,26 @@ example {X Y : C} (f : X ⟶ Y) (E F : GeneralSymmetricSpectrum C K) :
         (MonoidalClosed.pre f).app (E ⟶[C] F) :=
   cotensorEnrichedMappingIso_parameter f E F
 
+example : SerrePositivity.Enriched.EnrichedRepresentability
+    (spectrumTensorCotensor (K := K)) := spectrumEnrichedRepresentability
+
+example (X : C) (E F : GeneralSymmetricSpectrum C K) (f : pointwiseTensor X E ⟶ F) :
+    (MonoidalClosed.curryHomEquiv' (X := X) (Y := E ⟶[C] F)).symm
+        (eHomEquiv C f ≫ ((tensorEnrichedMappingIso X).hom.app (Opposite.op E)).app F) =
+      spectrumTensorCotensor.tensorHomEquiv X E F f :=
+  tensorEnrichedMappingIso_points X E F f
+
+example (X : C) (E F : GeneralSymmetricSpectrum C K) (f : E ⟶ cotensor X F) :
+    (MonoidalClosed.curryHomEquiv' (X := X) (Y := E ⟶[C] F)).symm
+        (eHomEquiv C f ≫ ((cotensorEnrichedMappingIso X).hom.app (Opposite.op E)).app F) =
+      spectrumTensorCotensor.cotensorHomEquiv X E F f :=
+  cotensorEnrichedMappingIso_points X E F f
+
+example (X : C) (E F : GeneralSymmetricSpectrum C K) (f : pointwiseTensor X E ⟶ F) :
+    eHomEquiv C f ≫ (spectrumEnrichedRepresentability.homObjectComparison X E F).hom =
+      eHomEquiv C (pointwiseTensorHomEquiv X E F f) :=
+  spectrumHomObjectComparison_points X E F f
+
 section ModelCompatibility
 variable [HomotopicalAlgebra.ModelCategory C]
   [HomotopicalAlgebra.ModelCategory (GeneralSymmetricSpectrum C K)]
