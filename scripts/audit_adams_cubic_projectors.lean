@@ -1,4 +1,4 @@
-import SerrePositivity.PerfectComplex.CubicActionProjector
+import SerrePositivity.PerfectComplex.CubicActionDecomposition
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.CochainCubicAction.projectorMap
@@ -17,3 +17,30 @@ assert_no_sorry SerrePositivity.CochainCubicAction.projectorMap_orthogonal
 #print axioms SerrePositivity.CochainCubicAction.projectorMap_orthogonal
 assert_no_sorry SerrePositivity.CochainCubicAction.projector_inclusion_eigen
 #print axioms SerrePositivity.CochainCubicAction.projector_inclusion_eigen
+
+assert_no_sorry SerrePositivity.cubicCharacter
+#print axioms SerrePositivity.cubicCharacter
+
+assert_no_sorry SerrePositivity.cubicCharacter_cube
+#print axioms SerrePositivity.cubicCharacter_cube
+
+assert_no_sorry SerrePositivity.cubicCharacter_difference_isUnit
+#print axioms SerrePositivity.cubicCharacter_difference_isUnit
+
+assert_no_sorry SerrePositivity.CochainCubicAction.sum_character_projectorMap
+#print axioms SerrePositivity.CochainCubicAction.sum_character_projectorMap
+
+assert_no_sorry SerrePositivity.CochainCubicAction.characterProjector
+#print axioms SerrePositivity.CochainCubicAction.characterProjector
+
+assert_no_sorry SerrePositivity.CochainCubicAction.characterProjector_orthogonal
+#print axioms SerrePositivity.CochainCubicAction.characterProjector_orthogonal
+
+assert_no_sorry SerrePositivity.CochainCubicAction.characterDecompositionIso
+#print axioms SerrePositivity.CochainCubicAction.characterDecompositionIso
+
+assert_no_sorry SerrePositivity.cubicCharacter_mul
+#print axioms SerrePositivity.cubicCharacter_mul
+
+assert_no_sorry SerrePositivity.sum_cubicCharacter
+#print axioms SerrePositivity.sum_cubicCharacter
