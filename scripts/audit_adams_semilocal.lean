@@ -1,0 +1,7 @@
+import SerrePositivity.KTheory.Adams.IteratedPrimeLocalization
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.Adams.iteratedPrimeLocalizationEquiv
+assert_no_sorry SerrePositivity.Adams.iteratedPrime_regular_dimension
+#print axioms SerrePositivity.Adams.iteratedPrimeLocalizationEquiv
+#print axioms SerrePositivity.Adams.iteratedPrime_regular_dimension
