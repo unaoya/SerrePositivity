@@ -5897,3 +5897,46 @@ sorry・引用依存なし、diff --check成功。コミット`643af59`。
 具体的円スペクトルへの適用の技術入力は今回証明したが、SSetの弱同値の定義と
 Kan–Quillenモデルの存在入力は未接続である。条件付き構成だけで段階3完了とはしない。
 スペクトル自身のmonoidal/SM7も残る。段階1〜3の全体目標は継続中。
+
+
+## 150. 段階1〜3の実行記録：幾何学的弱同値とHT-KQの実際の接続（2026-10-15）
+
+`HomotopicalAlgebra/Topological/WeakEquivalence`で実際の連続写像によるcube境界相対loopの
+後合成を定義し、既存HomotopyGroupの商へ降下するhomotopyMapを構成した。
+componentMapは既存ZerothHomotopy上の実際の誘導写像である。
+両者のidentity/compを証明した。weakHomotopyEquivalencesはcomponentMapの全単射と、
+全てのsource基点x・全ての正次数n+1におけるhomotopyMapの全単射を要求する。
+空sourceで基点条件が空になる場合にもπ₀条件を独立に課す。
+
+`ModelCategory/SimplicialWeakEquivalences.geometricWeakEquivalences`は既存SSet.toTopによる
+上記クラスのinverseImageとして具体的に定義した。identity/compを証明し、
+新定義と共通topologyモジュールを引用非依存の厳密スペクトル監査へ追加した。
+対象・射・実現・ホモトピー群の写像の定義を引用で代用しない。
+
+### 採用した引用HT-KQ
+
+Mark Hovey, *Model Categories*, Mathematical Surveys and Monographs 63, AMS (1999),
+Theorem 3.6.5（印刷p.98）、生成射§3.1、幾何学的弱同値§3.2・Definition 2.4.3を
+原典PDFで照合した： https://ericmalm.net/ac/projects/symmetric-spectra/hovey--model-cats.pdf
+`Inputs/Homotopy/KanQuillen.kanQuillen_model_exists`を名前付きsorry定理として採用した。
+宇宙uの実際のSSet上にモデルが存在し、Cof=mono、Fib=固定MathlibのJ.rlp、
+W=上で定義したgeometricWeakEquivalencesという三クラスの一致を明示したexistentialである。
+未証明なのはこの古典的存在定理1件。sphere/smashモデル・cofibrant generation・
+レベルモデル・smallness・acyclicity・Quillen接続は引用せず、既存証明を適用する。
+引用を独立Inputsに置き、一般論やproof-only foundationsからimportしない。
+
+kanQuillenModelはこのexistentialからの局所選択であり、グローバルinstanceは登録しない。
+`Inputs/Homotopy/SimplicialLevel.circleSpectrumLevelModel`でこの実際のモデルを§149へ適用した。
+SSetモデルを外部仮定にしない上位利用入口が得られた。
+
+対象ビルド成功。警告は明示引用1件のsorry警告のみ。
+check_kan_quillen_levelは実際の局所選択のみからSSetの幾何学的W、PSSのmonoidal/SM7、
+旧円スペクトル上のモデル・生成条件・free/evaluation・両関手的分解を検証。
+24宣言を監査し、直接sorryの宣言がkanQuillen_model_existsだけであることを検査した。
+下位定義にはsorryAxを許容せず、上位入口のみ引用依存を許容する。
+引用非依存の全スペクトル311モジュール3041公開宣言監査は標準公理のみで成功。
+diff --check成功。コミット：弱同値の定義`298db2a`、引用と適用`6865918`。
+
+具体的SSetのWとモデル存在入力の接続は、この明示引用の範囲で完了した。
+段階3の残りはスペクトル自身のmonoidal/SM7互換性と、段階1〜3全体の受入条件の最終確認。
+基点付きsmashの互換性だけでスペクトルのそれを完成扱いにしない。全体目標は継続中。
