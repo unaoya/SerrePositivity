@@ -80,4 +80,13 @@ lemma cochainTensorMap_zero_zero : cochainTensorMap (0 : P ⟶ P') (0 : Q ⟶ Q'
   rw [ιTensorObj_cochainTensorMap]
   simp [tensorHom_def]
 
+@[simp]
+lemma cochainTensorMap_zero_right (f : P ⟶ P') : cochainTensorMap f (0 : Q ⟶ Q') = 0 := by
+  apply HomologicalComplex.Hom.ext
+  funext n
+  apply HomologicalComplex.mapBifunctor.hom_ext
+  intro i j h
+  rw [ιTensorObj_cochainTensorMap]
+  simp [tensorHom_def]
+
 end SerrePositivity
