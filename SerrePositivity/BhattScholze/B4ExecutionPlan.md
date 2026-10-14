@@ -1,8 +1,11 @@
 # B4：semiperfectoid環のperfectoid化の全射性
 
-2026-10-14。計画段階。正本は`formalization-plans/bhatt-scholze.md`、
+2026-10-15。実装中。正本は`formalization-plans/bhatt-scholze.md`、
 担当・待合せは`clmst.md` §0.2。B3の一般存在・普遍性は証明済み。
-この計画の予定定理・予定ファイルは、実装済みの宣言ではない。
+各工程の当初予定と、後半の実装記録を区別する。
+B4-1〜4とB4-5の根付き拡大データに相対的な降下は証明済み。
+一般B4の引用なし完成にはB4-6の必要な根付き拡大の存在が残る。
+Witt通常余積による現在の降下経路は、後半の2026-10-15の記録を参照する。
 
 ## 最終受渡し
 
@@ -631,3 +634,18 @@ perfectoid性とp完全忠実平坦性を証明するまで成立・採用済み
 全体4514ジョブ成功。pure降下のプロジェクト内import閉包230件に
 Inputs・CLMST・Paper・RootTowerなし。
 André入力の古い「未使用」記述を、実際の条件付き依存と残件を示す記述に更新した。
+
+## B4-6：通常底変換核と元の生成族の像（2026-10-15）
+
+予定BS専用`TensorBaseChangeKernel.lean`、`RootedPresentationSurjectivity.lean`、
+`RootedFamilyPerfectoidSurjectivityDescent.lean`をこの工程で追加する。
+前者で全射algebraMap R Sの核JをTへ拡張したイデアルが
+T→S⊗[R]Tの実際の核であることを証明。
+商T/JTへの普遍射をMathlibと既存BSテンソル射から構成し、両包含を証明した。
+平坦性・完備性・有限生成性を要求しない通常底変換の核の計算である。
+J=span(range a)なら、初項がalgebraMap R T (a s)の任意の族ρが
+底変換核を初項イデアルとして生成することも証明した。
+この核の同定自体では後続項が根である仮定は不要。
+2公開宣言の対象ビルドとB4専用監査を行う。
+次に生成族の根だけを入力する全射性降下へ接続する。
+引用なしの根付き拡大の存在は引き続き未実装。
