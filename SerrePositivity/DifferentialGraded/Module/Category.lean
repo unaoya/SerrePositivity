@@ -87,6 +87,18 @@ def moduleEvaluationDG (x : D) : DGFunctor A (RightModule A D) (Complex A) where
 def moduleEvaluation (x : D) : ModuleCategory A D ⥤ Complex A :=
   (moduleEvaluationDG A D x).forget ⋙ closedToComplex A
 
+/-- 評価関手の射は end 評価の後の既存 chain map への比較。 -/
+lemma moduleEvaluation_map (x : D) {M N : ModuleCategory A D} (f : M ⟶ N) :
+    (moduleEvaluation A D x).map f =
+    complexClosedHomEquiv A ((ForgetEnrichment.to (Complex A) M).obj (Opposite.op x))
+      ((ForgetEnrichment.to (Complex A) N).obj (Opposite.op x))
+      (ForgetEnrichment.homOf (Complex A) (C := Complex A)
+        (X := (ForgetEnrichment.to (Complex A) M).obj (Opposite.op x))
+        (Y := (ForgetEnrichment.to (Complex A) N).obj (Opposite.op x))
+        (ForgetEnrichment.homTo (Complex A) (C := RightModule A D) (X := M) (Y := N) f ≫
+          moduleHomπ A D (ForgetEnrichment.to (Complex A) M)
+            (ForgetEnrichment.to (Complex A) N) x)) := rfl
+
 /-- 閉次数零射は単位複体パラメータ付きの全次数自然変換。 -/
 def moduleClosedHomEquiv (M N : ModuleCategory A D) :
     (M ⟶ N) ≃ ModuleParamTrans A D (𝟙_ (Complex A))

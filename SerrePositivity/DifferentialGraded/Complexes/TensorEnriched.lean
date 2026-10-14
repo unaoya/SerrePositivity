@@ -136,4 +136,33 @@ def tensorLeftDG (K : Complex A) : DGFunctor A (Complex A) (Complex A) where
   map P Q := tensorLeftHom K P Q
   map_id := tensorLeftHom_id K
   map_comp := tensorLeftHom_comp K
+/-- 左 tensor の Hom 作用は左因子の chain map で自然。 -/
+lemma tensorLeftHom_naturality {K L : Complex A} (g : K ⟶ L) (P Q : Complex A) :
+    tensorLeftHom K P Q ≫ homPostcompose (K ⊗ P) (g ⊗ₘ 𝟙 Q) =
+    tensorLeftHom L P Q ≫ homPrecompose (g ⊗ₘ 𝟙 P) (L ⊗ Q) := by
+  apply HomologicalComplex.Hom.ext
+  funext p
+  apply ModuleCat.hom_ext
+  apply LinearMap.ext
+  intro f
+  change (((tensorLeftHom K P Q).f p f).comp (Cochain.ofHom (g ⊗ₘ 𝟙 Q))
+    (add_zero p)) =
+    (Cochain.ofHom (g ⊗ₘ 𝟙 P)).comp ((tensorLeftHom L P Q).f p f) (zero_add p)
+  apply Cochain.ext
+  intro a n hn
+  apply mapBifunctor.hom_ext
+  intro i j ha
+  change i + j = a at ha
+  apply ModuleCat.hom_ext
+  apply TensorProduct.ext'
+  intro x y
+  rw [Cochain.comp_zero_cochain_v, Cochain.zero_cochain_comp_v]
+  change (g ⊗ₘ 𝟙 Q).f n (((tensorLeftHom K P Q).f p f).v a n hn
+      (ιTensorObj K P i j a ha (x ⊗ₜ[A] y))) =
+    ((tensorLeftHom L P Q).f p f).v a n hn
+      ((g ⊗ₘ 𝟙 P).f a (ιTensorObj K P i j a ha (x ⊗ₜ[A] y)))
+  rw [tensorLeftHom_apply, tensorMap_apply]
+  simp only [Units.smul_def, map_zsmul]
+  rw [tensorMap_apply, tensorLeftHom_apply]
+  rfl
 end SerrePositivity.DifferentialGraded

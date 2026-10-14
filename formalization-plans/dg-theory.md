@@ -552,3 +552,22 @@ U7〜U10 の受入は引き続き未完。
 U6a の対象ビルドと `lake env lean .../Checks/FreeTensor.lean` の直接監査は成功。
 主要6宣言は `propext`・`Classical.choice`・`Quot.sound` のみ。
 担当差分の whitespace 検査と文書検査も成功（21 Markdown、306参照、失敗0）。
+
+### 13.2 U6b：閉零射の成分構成と自由加群の関手性
+
+`Complexes/ClosedMaps.lean` は通常 chain map と閉零豊穣射の cycle 比較、
+Hom の前合成・後合成と閉零豊穣合成の一致を証明する。
+`Module/ClosedMaps.lean` は Hom chain map の全次数可換式を仮定する成分族から、
+Mathlib `GradedNatTrans`、主 Hom end の閉零加群射を構成する。
+`moduleMorphismMk_eval` は評価による厳密な成分復元。
+この構成は閉零射だけの通常自然性を仮定するものではない。
+`tensorLeftHom_naturality` は左因子の chain map と全次数 Hom 作用の可換性。
+`Module/Free.lean` は `tensorModuleMap`、`tensorModuleFunctor`、`freeAt x` を構成した。
+恒等射・合成保存は underlying 成分の ext と tensor の関手性から証明する。
+
+次の U6c は free/evaluation の随伴と、その単位・余単位・自然性。
+U6d は全次数の豊穣 Hom 同型。これらが残るので U6全受入とU7〜U10の完成は未達。
+
+U6b の対象ビルド、既存 `Checks.Modules` の受入・監査、
+`lake env lean .../Checks/FreeFunctor.lean` の直接公理監査が成功した。
+追加主要6宣言は標準公理のみ。文書検査（21 Markdown・306参照・失敗0）と担当差分検査も成功。
