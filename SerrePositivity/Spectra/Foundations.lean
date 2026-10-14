@@ -26,6 +26,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.FreeLevelQuotientAction
 public import SerrePositivity.Spectra.SymmetricSpectrum.FreeLevelPermutation
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorQuotient
 public import SerrePositivity.Spectra.SymmetricSpectrum.Tensor
+public import SerrePositivity.Spectra.SymmetricSpectrum.TensorRightUnit
 
 /-!
 # スペクトルの具体的基盤の入口
@@ -90,9 +91,13 @@ n以上の段の商を対称群そのもので添字付けた余等化子へ移�
 作用の単位・結合則を証明し、対称スペクトルとしてのテンソル積とその二変数関手を構成した。
 球面作用と両立する釣り合い射のスペクトルとしての降下、標準射上の因子化と一意性も証明した。
 
+球面スペクトルとの右テンソル積から元のスペクトルへの単位同型と、その自然性を証明した。
+順方向を右側へ移した球面作用、逆方向を球面の単位の挿入と比較した。
+
 ## 未構成の範囲
 
-球面上のテンソル積の単位・結合子・対称性とモノイダル構造、モデル構造と導来演算は引き続き実装する。
+球面上のテンソル積の左単位比較・結合子・対称性とモノイダル構造、
+モデル構造と導来演算は引き続き実装する。
 この入口は完成済みの§4の降下入力を変更せず、基盤を独立に検証するためのもの。
 現在の構成に新しい未証明入力はない。
 -/
