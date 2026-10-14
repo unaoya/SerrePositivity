@@ -7,7 +7,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.TensorTriangle
 /-! # 球面上の対称スペクトルのモノイダル構造
 
 釣り合いテンソル積と球面単位のモノイダル構造を登録する。
-交換同型のbraided・symmetric構造への登録はhexagonの証明後に行う。
+交換同型のhexagonと対称構造への登録はTensorHexagon・TensorSymmetricで行う。
 -/
 
 @[expose] public section

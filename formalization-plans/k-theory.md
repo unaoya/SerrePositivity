@@ -2803,3 +2803,52 @@ pentagonと四因子の標準射のエピ性を球面上のテンソル積へ特
 ドキュメントのローカルリンク、共通層からのimport方向とgit diff --checkも確認した。
 集約SerrePositivity.Spectra.Foundationsのビルドは1993ジョブで成功した。
 公理監査は140モジュール・1544宣言で成功し、標準公理のみでsorry依存なしを確認した。
+
+## 61. 実施記録：hexagon整合性と対称モノイダル構造の登録（2026-10-14）
+
+### 三因子の交換公式とhexagon
+
+[BalancedTensorHexagon](../SerrePositivity/CategoryTheory/Monoidal/BalancedTensorHexagon.lean)で、
+三重釣り合いテンソル積の左右の標準射上の交換を計算した。
+外側の交換は一因子と二因子の組のbraiding、内側の交換は二因子のbraidingを
+残る因子にテンソルした射となる。これら四つの公式を公開した。
+交換の計算自体には右テンソルの余等化子保存を要求しない。
+
+順方向のhexagonを左結合の標準射上で、逆方向のhexagonを右結合の標準射上で比較した。
+結合比較の順逆の公式と上の交換公式を使い、それぞれを基礎圏のhexagonへ帰着した。
+三因子の標準射のエピ性から、加群の射としての順逆のhexagon整合性を証明した。
+
+### 共通層の対称モノイダル構造
+
+[BalancedTensorSymmetric](../SerrePositivity/CategoryTheory/Monoidal/BalancedTensorSymmetric.lean)で、
+可換モノイド上の内部加群圏の対称モノイダル構造を登録した。
+braidingは構成済みの商上の交換同型である。
+両方の変数に関する自然性、順逆のhexagonと二回の交換の恒等性を既存の証明から供給した。
+登録したbraidingが交換同型に一致することも証明した。
+仮定は基礎圏の対称モノイダル構造、係数の可換性、余等化子と左右のテンソルによるその保存である。
+
+### 対称スペクトルへの特殊化
+
+[TensorHexagon](../SerrePositivity/Spectra/SymmetricSpectrum/TensorHexagon.lean)で、
+結合・交換同型の順逆のhexagonを球面上のテンソル積へ特殊化した。
+[TensorSymmetric](../SerrePositivity/Spectra/SymmetricSpectrum/TensorSymmetric.lean)で、
+球面上の対称スペクトル圏の対称モノイダル構造を登録した。
+登録したbraidingが既存のsphereTensorSymmetryに一致することを証明した。
+集約Foundationsと共通層・スペクトルのREADMEに新しい入口を追加し、
+TensorMonoidalの説明も後続の対称構造の入口へ更新した。
+
+### 到達点と次の範囲
+
+球面単位の釣り合いテンソル積、結合子、左右の単位同型、交換同型と全ての整合性を備え、
+対称スペクトル圏は対称モノイダル圏として利用できる。
+自由加群を左因子とする一般の比較と、自由スペクトル関手のモノイダル整合性は今後公開する。
+閉構造・内部Homのスペクトル圏への構成、弱同値・モデル構造・導来演算・安定ホモトピー群も残る。
+共有ルートimport・依存設定・並行作業の可換環・CLMST関連ファイルは変更していない。
+定理3.1・補題4.6の二つの降下入力は未変更である。
+
+### 検証
+
+新しい四つのLeanソースの行長・末尾空白・未完了の証明用マーカーを確認した。
+ドキュメントのローカルリンク、共通層からのimport方向とgit diff --checkも確認した。
+集約SerrePositivity.Spectra.Foundationsのビルドは1997ジョブで成功した。
+公理監査は144モジュール・1560宣言で成功し、標準公理のみでsorry依存なしを確認した。

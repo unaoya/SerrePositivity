@@ -35,6 +35,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.TensorSymmetry
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorAssociator
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorTriangle
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorMonoidal
+public import SerrePositivity.Spectra.SymmetricSpectrum.TensorSymmetric
 
 /-!
 # スペクトルの具体的基盤の入口
@@ -125,10 +126,13 @@ F_m XとF_n Yの球面上のテンソル積をF_(m+n)(X⊗Y)へ比較する自�
 四因子の標準射上でpentagon整合性を証明し、球面単位のモノイダル構造を登録した。
 登録したテンソル積・射・単位・結合子・左右の単位同型を既存の構成と比較した。
 
+順逆のhexagon整合性を証明し、球面上のテンソル積の対称モノイダル構造を登録した。
+登録したbraidingは構成済みの交換同型に一致する。
+
 ## 未構成の範囲
 
 球面上のテンソル積の自由加群を左因子とする比較、
-hexagonの整合性とbraided・symmetric構造の登録、
+自由スペクトル関手のモノイダル整合性、スペクトル圏の閉構造・内部Hom、
 モデル構造と導来演算は引き続き実装する。
 この入口は完成済みの§4の降下入力を変更せず、基盤を独立に検証するためのもの。
 現在の構成に新しい未証明入力はない。
