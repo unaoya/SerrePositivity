@@ -58,4 +58,25 @@ lemma homPrecompose_closedMap {P Q : Complex A} (f : P ⟶ Q) (T : Complex A) :
       ((cycleFromUnit _ (closedMap A f)).val ⊗ₜ[A] h))
   rw [enrichedComposition_apply, closedMap_cycle]
   simp
+/-- 単位からの閉射を通常の chain map として読む。 -/
+abbrev mapFromUnit (P Q : Complex A) (f : 𝟙_ (Complex A) ⟶ homComplex A P Q) : P ⟶ Q :=
+  complexClosedHomEquiv A P Q (ForgetEnrichment.homOf (Complex A) (C := Complex A)
+    (X := P) (Y := Q) f)
+
+/-- 通常射の閉射への変換は往復して戻る。 -/
+@[simp]
+lemma mapFromUnit_closedMap {P Q : Complex A} (f : P ⟶ Q) :
+    mapFromUnit A P Q (closedMap A (P := P) (Q := Q) f) = f :=
+  Equiv.apply_symm_apply (complexClosedHomEquiv A P Q) f
+
+/-- 閉射の通常射への変換も往復して戻る。 -/
+@[simp]
+lemma closedMap_mapFromUnit (P Q : Complex A) (f : 𝟙_ (Complex A) ⟶ homComplex A P Q) :
+    closedMap A (P := P) (Q := Q) (mapFromUnit A P Q f) = f :=
+  Equiv.symm_apply_apply (complexClosedHomEquiv A P Q) _
+
+/-- 閉射を通常射にしたときの零次数 cochain。 -/
+lemma mapFromUnit_cochain (P Q : Complex A) (f : 𝟙_ (Complex A) ⟶ homComplex A P Q) :
+    Cochain.ofHom (mapFromUnit A P Q f) = (cycleFromUnit _ f).val :=
+  complexClosedHomEquiv_cochain A P Q _
 end SerrePositivity.DifferentialGraded

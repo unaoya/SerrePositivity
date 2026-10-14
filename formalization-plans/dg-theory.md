@@ -571,3 +571,34 @@ U6d は全次数の豊穣 Hom 同型。これらが残るので U6全受入とU7
 U6b の対象ビルド、既存 `Checks.Modules` の受入・監査、
 `lake env lean .../Checks/FreeFunctor.lean` の直接公理監査が成功した。
 追加主要6宣言は標準公理のみ。文書検査（21 Markdown・306参照・失敗0）と担当差分検査も成功。
+
+### 13.3 U6c：自由加群と評価の随伴
+
+`Complexes/ClosedMaps.lean` の `mapFromUnit` と `closedMap` の両往復を証明した。
+`Module/ClosedMaps.lean` は全豊穣自然性から Hom chain map の可換式を復元し、
+その可換式と全次数作用の可換式の両方向を証明する。
+`moduleMapFamilyEquiv` は主 Hom end の閉零射と全次数自然な通常 chain map 族の同値。
+新たな dg 圏構造体や弱い通常自然変換の圏は導入していない。
+
+`Module/TensorAdjunction.lean` の `tensorFamilyCurry` と `tensorFamilyUncurry` は
+閉射族を任意非有界 K パラメータの Mathlib `GradedNatTrans` と同定する。
+作用の符号 (-1)^(kp) を転置・逆転置の両方向で検証し、両往復を証明した。
+`tensorClosedHomEquiv` は主閉零圏の射についての同値。
+`freeHomEquiv` はそれを全次数 dg Yoneda に接続し、
+`freeAt x K → M` と `K → M(x)` を同定する。
+単位元での斉次評価公式から両変数の自然性を証明し、
+`freeEvaluationAdjunction` は実際の Mathlib `Adjunction` として登録した。
+
+`Checks/FreeAdjunction.lean` は任意 A・独立対象宇宙・明示 smallness、ℤ・ZMod 2、
+任意 K のパラメータ、随伴の両三角恒等式を検証する。
+主要9宣言は標準公理のみ。
+
+この区切りで通常の free/evaluation 随伴は完成。
+**U6d の全次数 Hom 複体の chain iso・自然性が残るため U6全体は未完**。
+U7〜U10 の受入も引き続き未完。共有 G1/G2/G5 へは、この実際の随伴と
+`freeAt`・`moduleUnderlying` を具体的入力として渡せるが、
+モデル構造・Quillen保存条件・cell acyclicity・semifree解像度の存在はまだ主張しない。
+
+U6c の対象・受入ビルド、前段 `Checks.FreeFunctor` の検証、直接公理監査が成功。
+主要9宣言は `propext`・`Classical.choice`・`Quot.sound` のみ。
+担当差分検査と文書検査（21 Markdown・306参照・失敗0）も成功した。
