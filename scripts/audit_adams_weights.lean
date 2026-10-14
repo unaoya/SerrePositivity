@@ -1,5 +1,5 @@
 import SerrePositivity.KTheory.Adams.MaximalPureWeight
-import SerrePositivity.KTheory.Adams.SemilocalSupport
+import SerrePositivity.KTheory.Adams.MaximalSupportModules
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.Adams.maximalParameterKoszulClass
@@ -33,3 +33,16 @@ assert_no_sorry SerrePositivity.Adams.HeightAtLeast.finite_localized_maximal_poi
 assert_no_sorry SerrePositivity.Adams.HeightAtLeast.localizedMaximalPointsEquiv
 #print axioms SerrePositivity.Adams.HeightAtLeast.isMax_iff_heightStratum
 #print axioms SerrePositivity.Adams.HeightAtLeast.localizedMaximalPointsEquiv
+
+assert_no_sorry SerrePositivity.Adams.supportedResidueModule
+assert_no_sorry SerrePositivity.Adams.simple_supported_iso_residue
+assert_no_sorry SerrePositivity.Adams.finiteLength_of_maximal_support
+assert_no_sorry SerrePositivity.Adams.residueClassSubgroup
+assert_no_sorry SerrePositivity.Adams.simple_mk_mem_residueClassSubgroup
+assert_no_sorry SerrePositivity.Adams.finiteLength_mk_mem_residueClassSubgroup
+assert_no_sorry SerrePositivity.Adams.mk_mem_residueClassSubgroup
+assert_no_sorry SerrePositivity.Adams.residue_hom_ext
+assert_no_sorry SerrePositivity.Adams.HeightAtLeast.localized_module_finiteLength
+#print axioms SerrePositivity.Adams.simple_supported_iso_residue
+#print axioms SerrePositivity.Adams.residue_hom_ext
+#print axioms SerrePositivity.Adams.HeightAtLeast.localized_module_finiteLength
