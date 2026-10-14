@@ -3689,3 +3689,57 @@ cotensorを両変数の射に関して自然に扱い、F_0とのテンソル積
 ドキュメントのローカルリンクとgit diff --checkも確認した。
 集約SerrePositivity.Spectra.Foundationsのビルドは2036ジョブで成功した。
 公理監査は183モジュール・1995宣言で成功し、標準公理のみでsorry依存なしを確認した。
+
+## 79. 実施記録：F_0とのテンソル積の各段と自由因子の逆転置（2026-10-14）
+
+### 対称列の点ごとの随伴
+
+[PointwiseTensorHom](../SerrePositivity/Spectra/SymmetricSequence/PointwiseTensorHom.lean)で、
+対称列の各段でXとの通常のテンソル積を取る関手と、Xからの通常の内部Homを取る関手を構成した。
+基礎圏の閉構造の随伴を関手圏へ移し、点ごとの随伴を構成した。
+その余単位の各段は通常の内部Homの評価である。
+これはDay convolutionのモノイダル構造の登録を変更しない。
+
+### 生成次数零のDay convolutionの比較
+
+[FreeZeroConvolution](../SerrePositivity/Spectra/SymmetricSequence/FreeZeroConvolution.lean)で、
+自由原変数の内部Homの生成次数零の比較を、値域関手の自然同型へまとめた。
+この自然同型でDay convolutionの随伴の右関手を通常の内部Homへ移した。
+左随伴の一意性から、生成次数零の左convolutionと各段の通常のテンソル積の自然同型を構成した。
+各段の比較も公開し、左随伴の比較の評価との両立を証明した。
+
+### 球面上のテンソル積と自由因子の逆転置
+
+[TensorFreeZeroLevels](../SerrePositivity/Spectra/SymmetricSpectrum/TensorFreeZeroLevels.lean)で、
+既存の左自由因子の比較とDay convolutionの比較を合成した。
+これにより、F_0 Xとの球面上のテンソル積の第q段をXと値域の第q段の通常のsmashへ比較した。
+
+[ModuleInternalHomFreeLeftEvaluation](../SerrePositivity/CategoryTheory/Monoidal/ModuleInternalHomFreeLeftEvaluation.lean)で、
+左自由因子の比較の逆射と加群の逆転置の合成を、通常の内部Homの評価で記述する一般公式を証明した。
+[FreeLeftUncurry](../SerrePositivity/Spectra/SymmetricSpectrum/FreeLeftUncurry.lean)で、
+一般の左自由因子の比較の下でのスペクトルの逆転置を公開した。
+cotensorの全体の比較を、合成した対称列の同型による直接の作用移送へ整理した。
+既存の各段の比較・構造射・懸垂射の公式を保持し、
+全体の逆比較の基礎射を通常の内部Homの逆比較へ分解した。
+さらに、この逆比較と自由原変数の比較の順射の合成が、作用移送の逆射に一致することを証明した。
+cotensorの各段の評価への接続は具体的な定義の照合でカーネルの計算上限に達した。
+未検証の証明や計算上限の増加はソースに残さず、後続の課題として記録する。
+集約Foundationsと共通層・スペクトルのREADMEに入口と到達点を追加した。
+
+### 到達点と次の範囲
+
+F_0とのテンソル積の各段を通常のsmashで計算でき、
+対称列の評価との両立と自由因子の逆転置公式を利用できる。
+次はcotensorの各段の評価への接続と射の具体式、
+各段の通常のsmashを持つテンソルのスペクトル全体の比較を整える。
+弱同値・モデル構造・導来演算・安定ホモトピー群は引き続き未実装である。
+共有ルートimport・依存設定・並行作業の可換環・CLMST関連ファイルは変更していない。
+定理3.1・補題4.6の二つの降下入力は未変更である。
+
+### 検証
+
+新しい五つのLeanソースと変更したcotensorの行長・末尾空白・未完了の証明用マーカーを確認した。
+ドキュメントのローカルリンクとgit diff --checkも確認した。
+集約SerrePositivity.Spectra.Foundationsのビルドは2043ジョブで成功した。
+公理監査は188モジュール・2016宣言で成功し、標準公理のみでsorry依存なしを確認した。
+すべての証明は標準の計算上限で検証し、計算上限を増やす設定は追加していない。

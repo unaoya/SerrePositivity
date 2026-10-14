@@ -89,15 +89,22 @@ lemma shiftedHomCotensorIso_inv_app (X : PointedSimplicialSet.{u})
 /-- F_0からの内部Homとcotensorのスペクトル全体の比較。 -/
 def internalHomCotensorIso (X : PointedSimplicialSet.{u}) (E : SymmetricSpectrum.{u}) :
     internalHom ((freeAt 0).obj X) E ≅ cotensor X E :=
-  internalHomShiftIso 0 X E ≪≫ shiftedHomCotensorIso X E
+  internalHomFreeAtIso 0 X E ≪≫
+    MonoidalModuleInternalHom.transportedIso (C := PointedSymmetricSequence.{u})
+      sphereSequence.{u} ((SymmetricSequence.freeAt 0).obj X) E (homBySequenceCotensorIso X E)
 
 /-- F_0からの全体の比較の第q成分は前段階の各段の比較。 -/
 lemma internalHomCotensorIso_hom_app (X : PointedSimplicialSet.{u})
     (E : SymmetricSpectrum.{u}) (q : ℕ) :
     (internalHomCotensorIso X E).hom.hom.app (FiniteBijection.of q) =
       (internalHomFreeZeroLevelIso q X E).hom := by
+  change (internalHomFreeAtIso 0 X E).hom.hom.app (FiniteBijection.of q) ≫
+      ((homBySequenceShiftIso 0 X E).hom.app (FiniteBijection.of q) ≫
+        (SymmetricSequence.zeroShiftInternalHomIso X E.X).hom.app (FiniteBijection.of q)) = _
+  rw [← Category.assoc]
   change (internalHomShiftIso 0 X E).hom.hom.app (FiniteBijection.of q) ≫
-      (shiftedHomCotensorIso X E).hom.hom.app (FiniteBijection.of q) = _
+      (SymmetricSequence.zeroShiftInternalHomIso X E.X).hom.app (FiniteBijection.of q) = _
+  rw [← shiftedHomCotensorIso_hom]
   rw [internalHomShiftIso_hom_app, shiftedHomCotensorIso_hom_app]
   rfl
 
@@ -106,8 +113,9 @@ lemma internalHomCotensorIso_inv_app (X : PointedSimplicialSet.{u})
     (E : SymmetricSpectrum.{u}) (q : ℕ) :
     (internalHomCotensorIso X E).inv.hom.app (FiniteBijection.of q) =
       (internalHomFreeZeroLevelIso q X E).inv := by
-  change (shiftedHomCotensorIso X E).inv.hom.app (FiniteBijection.of q) ≫
+  change (SymmetricSequence.zeroShiftInternalHomIso X E.X).inv.app (FiniteBijection.of q) ≫
       (internalHomShiftIso 0 X E).inv.hom.app (FiniteBijection.of q) = _
+  rw [← shiftedHomCotensorIso_inv]
   rw [shiftedHomCotensorIso_inv_app, internalHomShiftIso_inv_app]
   rfl
 
