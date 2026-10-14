@@ -89,9 +89,9 @@ example (E : GeneralSymmetricSpectrum C K) (p q r : ℕ) :
 example (n m : ℕ) (X : C) (h : m < n) :
     IsInitial (level ((freeAt (K := K) n).obj X) m) := freeAtLevelInitial n X m h
 example (n m : ℕ) (X : C) :
-    level ((freeAt (K := K) n).obj X) m ≅ freeAtLevelBlockQuotient n X m :=
+    level ((freeAt (K := K) n).obj X) m ≅ freeAtLevelBlockQuotient (K := K) n X m :=
   freeAtLevelIsoBlockQuotient n X m
 example (n m : ℕ) (X : C) :
-    level ((freeAt (K := K) n).obj X) m ≅ colimit (freeAtLevelInductionDiagram n X m) :=
+    level ((freeAt (K := K) n).obj X) m ≅ colimit (freeAtLevelInductionDiagram (K := K) n X m) :=
   freeAtLevelIsoInduction n X m
 end Structure
