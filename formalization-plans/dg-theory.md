@@ -775,3 +775,35 @@ U7b2の受入入口と既存 `Spectra.StageTwo` の同時ビルド、受入入�
 主要28宣言の公理は標準公理 `propext`・`Classical.choice`・`Quot.sound` の範囲内。
 新規 sorry・admit・axiom は0件。文書検査（21 Markdown・311参照・失敗0）、
 担当差分の whitespace 検査も成功。共有ルート・既存 PerfectComplex・並行作業ファイルは編集していない。
+
+### 13.10 U7b3a：cone の全次数作用・微分・標準包含
+
+`Complexes/Cone.lean` の `coneMapCochain` は、閉零射 f/g の cone 上の
+全次数対角 cochain を既存 `mappingCone.liftCochain` から構成する。
+左成分の +1 shift に次数 p の符号 `(-1)^p` を付け、両射影・全斉次成分を証明した。
+加法・Aスカラー/整数単位の符号倍、恒等、通常順の全斉次合成を保存する。
+`coneMapCochain_differential` は可換斉次 square の条件から微分との可換性を証明する。
+交差項をこの可換式で消去し、Mathlib の `δ_liftCochain`/`δ_comp` を再利用する。
+
+`Complexes/ConeHom.lean` の `coneHomMap` は、共通パラメータ複体 K からの
+二つの Hom chain map が閉零射の square と全次数で可換する場合に、
+cone の Hom chain map を構成する。Kの有界性や射の準同型性を要求しない。
+`coneHomMap_inr` は既存標準包含の全次数自然性を証明する。
+
+`Module/Cone.lean` の `coneModule` は全次数自然な閉零射族のobjectwise cone。
+主 `EnrichedFunctor` の単位・合成は全次数で証明した。
+`moduleCone f` は主閉零加群圏の実際の射から構成し、`moduleCone_eval` により
+各評価が Mathlib の `mappingCone (eval(f))` と定義上同じ複体になる。
+`moduleConeInr` は全次数自然な標準包含、評価すると既存の包含となる。
+対象・作用は任意 D、主閉零加群圏の射は `[Small.{u} D]` を明示する。
+
+受入入口は `Checks/Cone.lean`。任意可換環・非有界複体、正負次数の符号、
+全次数の微分可換性、一対象 ℤ、ZMod 2、objectwise cone と包含を検証する。
+主要22宣言を公理監査する。次の U7b3b ではconeからshiftへの射と、
+可換squareに対するcone射・関手性を構成する。必要な残る極限余極限、
+U8〜U10は未完であり、U10までの目標を保持する。
+
+U7b3aの受入入口と既存 `Spectra.StageTwo` の同時ビルド、受入入口の直接実行は成功。
+主要22宣言の公理はすべて `propext`・`Classical.choice`・`Quot.sound` のみ。
+新規 sorry・admit・axiom は0件。文書検査（21 Markdown・311参照・失敗0）、
+担当差分の whitespace 検査も成功。共有ルート・既存 PerfectComplex・並行作業ファイルは編集していない。
