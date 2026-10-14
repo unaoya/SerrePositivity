@@ -1,4 +1,4 @@
-import SerrePositivity.KTheory.Adams.MaximalLengthEvaluation
+import SerrePositivity.KTheory.Adams.MaximalLengthEquiv
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.Adams.maximalSupport_pullback_le
@@ -12,3 +12,14 @@ assert_no_sorry SerrePositivity.Adams.maximalLengthEvaluation
 #print axioms SerrePositivity.Adams.localLengthMap_residue_self
 #print axioms SerrePositivity.Adams.localLengthMap_residue_ne
 #print axioms SerrePositivity.Adams.maximalLengthEvaluation
+
+assert_no_sorry SerrePositivity.Adams.residueLinearCombination
+assert_no_sorry SerrePositivity.Adams.maximalLengthEvaluation_residue
+assert_no_sorry SerrePositivity.Adams.residueLinearCombination_single
+assert_no_sorry SerrePositivity.Adams.residueLinearCombination_evaluation
+assert_no_sorry SerrePositivity.Adams.maximalLengthEvaluation_combination
+assert_no_sorry SerrePositivity.Adams.maximalLengthEquiv
+assert_no_sorry SerrePositivity.Adams.eq_sum_localLengthMap
+assert_no_sorry SerrePositivity.Adams.HeightAtLeast.semilocalLengthEquiv
+#print axioms SerrePositivity.Adams.maximalLengthEquiv
+#print axioms SerrePositivity.Adams.HeightAtLeast.semilocalLengthEquiv
