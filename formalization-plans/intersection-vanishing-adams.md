@@ -1,6 +1,6 @@
 # 外部引用5：交点重複度の消滅定理を Adams 作用素で証明する計画
 
-作成：2026-10-14。改訂：2026-10-14（S1–S11 全段の小段・証明契約・実装順序を具体化）。状態：S1.1–S1.6、S2.1–S2.4、S3.1–S3.7 実装・検証済み。S4.1–S4.7 も実装・検証済み（§4.23）。S5.1–S5.3 は実装・検証済み。S5.4–S5.7 は実装中、S6–S11 は計画。
+作成：2026-10-14。改訂：2026-10-14（S1–S11 全段の小段・証明契約・実装順序を具体化）。状態：S1.1–S1.6、S2.1–S2.4、S3.1–S3.7 実装・検証済み。S4.1–S4.7 も実装・検証済み（§4.23）。S5.1–S5.4 は実装・検証済み。S5.5–S5.7 は実装中、S6–S11 は計画。
 対象は [Inputs/IntersectionTheory.lean](../SerrePositivity/Inputs/IntersectionTheory.lean) の
 `Inputs.intersectionVanishing`（Roberts–Gillet–Soulé の消滅定理）。
 並行する Chow 群の経路は [サイクルの計画](intersection-vanishing-cycles.md)。
@@ -1218,8 +1218,9 @@ S4 の完了は K2 の分解・比較・局所化・dévissage の完成。
 | --- | --- | --- |
 | S5.1 | `CommutativeAlgebra/PrimeDimensionBounds`：素イデアル商の次元と coheight、`primeHeight_add_quotientDimension_le`、有限次元での自然数化、厳密包含による高さの増加 | 完了。コミット `a48fac0` |
 | S5.2 | `CommutativeAlgebra/MaximalRegularSequence`：最長正則列、延長不能性、関連素イデアル回避、局所化した列の長さの高さ上界、`exists_regularSequence_associatedPrime_above` | 完了。コミット `9fb52df` |
-| S5.3 | `CommutativeAlgebra/RegularPrimeDimension`：素イデアルの高さ・次元公式、`supportCodimension`、台の次元と余次元の公式 | 完了。この記録を含むコミット |
-| S5.4–S5.7 | §4.11・§4.13 の証明契約 | 未完了 |
+| S5.3 | `CommutativeAlgebra/RegularPrimeDimension`：素イデアルの高さ・次元公式、`supportCodimension`、台の次元と余次元の公式 | 完了。コミット `883506b` |
+| S5.4 | `HomologicalAlgebra/AuslanderBuchsbaum`：固定ソースの移植、Ext の零性、有限自由加群の深さ、射影次元による帰納、公開 `auslanderBuchsbaum` | 完了。この記録を含むコミット |
+| S5.5–S5.7 | §4.11・§4.13 の証明契約 | 未完了 |
 
 S5.1 の高さと商の次元の和の不等式は任意の可換環で証明。
 商のスペクトルと素イデアル以上の区間の順序同型を使い、
@@ -1243,6 +1244,13 @@ S5.3 は S5.1 の鎖の不等式、S5.2 の最長列と高さ上界、
 したがって有限生成加群を含む非零の任意の加群で次元・余次元の公式が得られる。
 零加群は数値化の公式の対象に入れていない。
 対象ビルド（3051 jobs）と専用監査が成功。主要命題の依存公理は標準三公理のみ。
+S5.4 は §4.11 の固定コミットの Auslander–Buchsbaum 証明を独立名前空間に移植。
+Apache-2.0 ライセンス、原著者表記、固定コミットをソースに保持。
+直接 import は現行 mathlib に存在し、深さ API は `ModuleCat.depth` とその補題へ置換。
+公開版は `ModuleCat.{u} R` 上の非零有限生成加群と有限射影次元を入力にする。
+対象ビルド（2633 jobs）と `scripts/audit_adams_regular_localization.lean` が成功。
+補助層から公開定理まで `assert_no_sorry` が通り、依存公理は標準三公理のみ。
+S5.4 について P2・P3・P4 を通過。S5.5–S5.6 の接続は別途検証する。
 S5 全体の統合ビルドは後続小段の完成後に行う。
 
 ## 5. 受入条件
