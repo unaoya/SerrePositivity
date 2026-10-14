@@ -1,4 +1,5 @@
 import SerrePositivity.CommutativeAlgebra.LocalizationPowerBound
+import SerrePositivity.CommutativeAlgebra.LocalizationInverse
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.exists_uniform_pow_smul_zero
@@ -14,3 +15,6 @@ example {R M : Type*} [CommRing R] [AddCommGroup M] [Module R M]
     (h : ∀ x : M, ∃ n : ℕ, g ^ n • x = 0) :
     ∃ n : ℕ, ∀ x : M, g ^ n • x = 0 :=
   SerrePositivity.exists_uniform_pow_smul_zero g h
+
+assert_no_sorry SerrePositivity.exists_clear_denominators
+assert_no_sorry SerrePositivity.exists_away_inverse
