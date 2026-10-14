@@ -1,4 +1,4 @@
-import SerrePositivity.KTheory.Adams.MaximalLengthEquiv
+import SerrePositivity.KTheory.Adams.CoefficientLengthEquiv
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.Adams.maximalSupport_pullback_le
@@ -23,3 +23,13 @@ assert_no_sorry SerrePositivity.Adams.eq_sum_localLengthMap
 assert_no_sorry SerrePositivity.Adams.HeightAtLeast.semilocalLengthEquiv
 #print axioms SerrePositivity.Adams.maximalLengthEquiv
 #print axioms SerrePositivity.Adams.HeightAtLeast.semilocalLengthEquiv
+
+assert_no_sorry SerrePositivity.Adams.coefficientG0LengthEquiv
+assert_no_sorry SerrePositivity.Adams.coefficientG0LengthEquiv_tmul
+assert_no_sorry SerrePositivity.Adams.coefficientK0LengthEquiv
+assert_no_sorry SerrePositivity.Adams.coefficientK0LengthEquiv_tmul
+assert_no_sorry SerrePositivity.Adams.localLengthMap_homologyEuler
+assert_no_sorry SerrePositivity.Adams.coefficientK0LengthEquiv_apply_local
+assert_no_sorry SerrePositivity.Adams.coefficient_eq_zero_of_localizations
+#print axioms SerrePositivity.Adams.coefficientK0LengthEquiv
+#print axioms SerrePositivity.Adams.coefficient_eq_zero_of_localizations
