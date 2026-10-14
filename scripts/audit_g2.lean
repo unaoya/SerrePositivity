@@ -4,6 +4,7 @@ import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletionNat
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ConstantTower
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.LocalizationResolution
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.LocalizationHomCoordinates
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.LocalizationTowerComparison
 import Mathlib.Util.AssertNoSorry
 
 -- G2-1: every explicit public declaration, including the maps and natural comparisons.
@@ -242,3 +243,33 @@ example (R : Type) [CommRing R] (a : R) (K : CochainComplex (ModuleCat R) ℤ) :
   localizationResolutionCochainEquiv R a K (-1) 0 (by norm_num)
 
 #print axioms SerrePositivity.DerivedCompletion.localizationResolutionCochainEquiv_symm_δ
+
+-- The residual scalar-transition tower is the actual telescope Hom complex.
+assert_no_sorry SerrePositivity.DerivedCompletion.complexTowerHomotopyLimitDegreeEquiv
+assert_no_sorry SerrePositivity.DerivedCompletion.complexTowerHomotopyLimitDegreeEquiv_fst
+assert_no_sorry SerrePositivity.DerivedCompletion.complexTowerHomotopyLimitDegreeEquiv_snd
+assert_no_sorry SerrePositivity.DerivedCompletion.complexTowerHomotopyLimitDegreeIso_d
+assert_no_sorry SerrePositivity.DerivedCompletion.complexTowerHomotopyLimitDegreeEquiv_d_fst
+assert_no_sorry SerrePositivity.DerivedCompletion.complexTowerHomotopyLimitDegreeEquiv_d_snd
+assert_no_sorry SerrePositivity.DerivedCompletion.scalarComplexTowerHomotopyLimit
+assert_no_sorry SerrePositivity.DerivedCompletion.localizationHomTowerDegreeEquiv
+assert_no_sorry SerrePositivity.DerivedCompletion.localizationHomTowerDegreeEquiv_coordinates
+assert_no_sorry SerrePositivity.DerivedCompletion.localizationHomTowerDegreeEquiv_d
+assert_no_sorry SerrePositivity.DerivedCompletion.localizationHomTowerIso
+assert_no_sorry SerrePositivity.DerivedCompletion.scalarComplexTowerHomotopyLimit_acyclic_of_isComplete
+assert_no_sorry SerrePositivity.DerivedCompletion.isComplete_iff_scalarComplexTowerHomotopyLimit_acyclic
+assert_no_sorry SerrePositivity.DerivedCompletion.scalarComplexTowerHomotopyLimitObject_isZero_of_isComplete
+
+-- The criterion includes unbounded complexes and does not assume any lim-one vanishing.
+example (R : Type) [CommRing R] (a : R) (K : CochainComplex (ModuleCat R) ℤ) :
+    IsComplete R a (DerivedCategory.Q.obj K) ↔
+      (scalarComplexTowerHomotopyLimit R a K).Acyclic :=
+  isComplete_iff_scalarComplexTowerHomotopyLimit_acyclic R a K
+
+example (R : Type) [CommRing R] (a : R) (K : CochainComplex (ModuleCat R) ℤ)
+    (hK : IsComplete R a (DerivedCategory.Q.obj K)) :
+    IsZero (DerivedCategory.Q.obj (scalarComplexTowerHomotopyLimit R a K)) :=
+  scalarComplexTowerHomotopyLimitObject_isZero_of_isComplete R a K hK
+
+#print axioms SerrePositivity.DerivedCompletion.localizationHomTowerIso
+#print axioms SerrePositivity.DerivedCompletion.scalarComplexTowerHomotopyLimitObject_isZero_of_isComplete
