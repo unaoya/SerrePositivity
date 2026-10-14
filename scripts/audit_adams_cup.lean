@@ -1,0 +1,20 @@
+import SerrePositivity.PerfectComplex.TensorK0
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.closedSupport_triangleAdditive_of_cone
+assert_no_sorry SerrePositivity.supportedPerfectTensorObj
+assert_no_sorry SerrePositivity.supportedPerfectTensorIso
+assert_no_sorry SerrePositivity.K0WithSupport.tensorClass_cone_left
+assert_no_sorry SerrePositivity.K0WithSupport.tensorWithRight
+assert_no_sorry SerrePositivity.K0WithSupport.tensorWithLeft
+assert_no_sorry SerrePositivity.K0WithSupport.tensorWithRight_triangle
+assert_no_sorry SerrePositivity.K0WithSupport.cup
+assert_no_sorry SerrePositivity.K0WithSupport.cup_mk_mk
+assert_no_sorry SerrePositivity.K0WithSupport.cup_add_left
+assert_no_sorry SerrePositivity.K0WithSupport.cup_add_right
+assert_no_sorry SerrePositivity.K0WithSupport.cup_comm
+assert_no_sorry SerrePositivity.K0WithSupport.cup_assoc
+#print axioms SerrePositivity.closedSupport_triangleAdditive_of_cone
+#print axioms SerrePositivity.K0WithSupport.cup
+#print axioms SerrePositivity.K0WithSupport.cup_comm
+#print axioms SerrePositivity.K0WithSupport.cup_assoc

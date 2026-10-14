@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.PerfectComplex.IntegerEuler
+public import SerrePositivity.PerfectComplex.ClosedSupportCongr
 public import SerrePositivity.PerfectComplex.ClosedSupportComparison
 public import SerrePositivity.PerfectComplex.KoszulGeneration
 public import SerrePositivity.CommutativeAlgebra.RegularParameters
@@ -13,30 +14,7 @@ namespace SerrePositivity
 open CategoryTheory Limits IsLocalRing
 variable {R : Type u} [CommRing R]
 
-/-- Change equal closed supports. -/
-def supportedPerfectOnCongr {Z W : TopologicalSpace.Closeds (PrimeSpectrum R)}
-    (h : Z = W) (X : SupportedPerfectHomotopyOn Z) : SupportedPerfectHomotopyOn W := by
-  subst W
-  exact X
-
-lemma supportedPerfectOnCongr_obj {Z W : TopologicalSpace.Closeds (PrimeSpectrum R)}
-    (h : Z = W) (X : SupportedPerfectHomotopyOn Z) :
-    (supportedPerfectOnCongr h X).obj.obj = X.obj.obj := by
-  subst W
-  rfl
-
 namespace K0WithSupport
-/-- The additive equivalence obtained by changing equal supports. -/
-def congr {Z W : TopologicalSpace.Closeds (PrimeSpectrum R)} (h : Z = W) :
-    K0WithSupport Z ≃+ K0WithSupport W := by
-  subst W
-  exact AddEquiv.refl _
-
-lemma congr_mk {Z W : TopologicalSpace.Closeds (PrimeSpectrum R)} (h : Z = W)
-    (X : SupportedPerfectHomotopyOn Z) : congr h (mk _ X) = mk _ (supportedPerfectOnCongr h X) := by
-  subst W
-  rfl
-
 variable [IsNoetherianRing R] [IsLocalRing R]
 /-- Compute Euler on any supported object represented by a concrete complex. -/
 lemma integerEuler_mk_real_of_rep
