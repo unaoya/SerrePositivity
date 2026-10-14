@@ -363,7 +363,7 @@ public import SerrePositivity.PerfectComplex.TensorTorComparison
 public import SerrePositivity.PerfectComplex.IntegerEulerIso
 public import SerrePositivity.KTheory.Adams.TensorSquareMaps
 public import SerrePositivity.PerfectComplex.InvolutionShortExact
-public import SerrePositivity.KTheory.Adams.TensorSquareMixed
+public import SerrePositivity.KTheory.Adams.TensorSquareMixedSplitting
 public import SerrePositivity.KTheory.LocalizationCoefficients
 public import SerrePositivity.KTheory.Devissage
 public import SerrePositivity.PerfectComplex.Closure

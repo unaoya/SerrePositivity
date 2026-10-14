@@ -72,6 +72,39 @@ lemma cochainTensorDegreeMap_add_right (f : ∀ i, P.X i ⟶ P'.X i)
   rw [MonoidalPreadditive.whiskerLeft_add, comp_add, add_comp]
 
 @[simp]
+lemma cochainTensorDegreeMap_zero_left (g : ∀ j, Q.X j ⟶ Q'.X j) (n : ℤ) :
+    cochainTensorDegreeMap (fun i => (0 : P.X i ⟶ P'.X i)) g n = 0 := by
+  apply HomologicalComplex.mapBifunctor.hom_ext
+  intro i j h
+  rw [ι_cochainTensorDegreeMap]
+  simp [tensorHom_def]
+
+@[simp]
+lemma cochainTensorDegreeMap_zero_right (f : ∀ i, P.X i ⟶ P'.X i) (n : ℤ) :
+    cochainTensorDegreeMap f (fun j => (0 : Q.X j ⟶ Q'.X j)) n = 0 := by
+  apply HomologicalComplex.mapBifunctor.hom_ext
+  intro i j h
+  rw [ι_cochainTensorDegreeMap]
+  simp [tensorHom_def]
+
+/-- A two-piece graded decomposition expands the tensor square into four components. -/
+lemma cochainTensorDegreeMap_partition (a b : ∀ i, P.X i ⟶ P.X i)
+    (h : (fun i => a i + b i) = (fun i => 𝟙 (P.X i))) (n : ℤ) :
+    cochainTensorDegreeMap a a n + cochainTensorDegreeMap (fun i => 𝟙 (P.X i)) b n +
+      cochainTensorDegreeMap b (fun i => 𝟙 (P.X i)) n =
+      𝟙 ((cochainTensor P P).X n) + cochainTensorDegreeMap b b n := by
+  have he : cochainTensorDegreeMap a a n +
+      cochainTensorDegreeMap (fun i => a i + b i) b n +
+      cochainTensorDegreeMap b (fun i => a i + b i) n =
+      cochainTensorDegreeMap (fun i => a i + b i) (fun i => a i + b i) n +
+      cochainTensorDegreeMap b b n := by
+    rw [cochainTensorDegreeMap_add_left, cochainTensorDegreeMap_add_right,
+      cochainTensorDegreeMap_add_left, cochainTensorDegreeMap_add_right,
+      cochainTensorDegreeMap_add_right]
+    abel
+  simpa only [h, cochainTensorDegreeMap_id] using he
+
+@[simp]
 lemma cochainTensorMap_zero_zero : cochainTensorMap (0 : P ⟶ P') (0 : Q ⟶ Q') = 0 := by
   apply HomologicalComplex.Hom.ext
   funext n
