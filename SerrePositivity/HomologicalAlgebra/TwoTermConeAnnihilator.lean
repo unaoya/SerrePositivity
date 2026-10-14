@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedModuleCone
+public import SerrePositivity.HomologicalAlgebra.DerivedHomologyLinear
 public import Mathlib.Algebra.Homology.DerivedCategory.TStructure
 public import Mathlib.Algebra.Homology.DerivedCategory.FullyFaithful
 public import Mathlib.CategoryTheory.Triangulated.TStructure.TruncLEGT
@@ -33,23 +34,6 @@ theorem triangle_scalar_product_eq_zero
     _ = (T.mor₂ ≫ a) ≫ (s • 𝟙 T.obj₂) := by rw [ha]
     _ = T.mor₂ ≫ ((s • 𝟙 T.obj₃) ≫ a) := by simp
     _ = 0 := by rw [hs, zero_comp, comp_zero]
-
-/-- 導来ホモロジー関手はスカラー作用を保つ。 -/
-local instance homologyFunctor_linear (n : ℤ) :
-    (DerivedCategory.homologyFunctor (ModuleCat.{u} R) n).Linear R := by
-  let : (HomologicalComplex.homologyFunctor (ModuleCat.{u} R) (.up ℤ) n).Linear R :=
-    ⟨fun _ _ ↦ homologyMap_smul _ _ _⟩
-  let : Localization.Lifting
-      (DerivedCategory.Q : CochainComplex (ModuleCat.{u} R) ℤ ⥤ _)
-      (HomologicalComplex.quasiIso (ModuleCat.{u} R) (.up ℤ))
-      (HomologicalComplex.homologyFunctor _ _ n)
-      (DerivedCategory.homologyFunctor _ n) :=
-    ⟨DerivedCategory.homologyFunctorFactors (ModuleCat.{u} R) n⟩
-  exact (Localization.functor_linear_iff
-    (DerivedCategory.Q : CochainComplex (ModuleCat.{u} R) ℤ ⥤ _)
-    (HomologicalComplex.quasiIso (ModuleCat.{u} R) (.up ℤ)) R
-    (HomologicalComplex.homologyFunctor _ _ n)
-    (DerivedCategory.homologyFunctor _ n)).mp inferInstance
 
 /-- 一次数に集中した導来対象の自己射はホモロジー上で検出できる。 -/
 theorem scalar_eq_zero_of_single_homology
