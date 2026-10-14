@@ -129,3 +129,15 @@ ihom XでmappingObject E Fを冪化した対象と比較する。
 一般監査22モジュール292宣言、共有比較込み利用例監査290宣言が成功。
 コミットa132406・3daa093。源Eの自然性、Xの反変自然性と単位値点の両立を集約し、
 EnrichedRepresentabilityへ登録する作業は後続。
+
+## 両変数での豊穣Hom対象比較（§138）
+
+TensorMappingSourceとCotensorMappingSourceで源Eの反変自然性を追加し、
+両スペクトル変数でのmappingObject自然同型を構成した。
+EnrichedMappingObjectsのtensorEnrichedMappingIso・cotensorEnrichedMappingIsoは、
+H5の豊穣Hom関手からpowerHomへの二変数自然同型。
+共有ActionComparisonNaturalityを異なる源・値域の圏にも一般化して利用する。
+
+一般監査25モジュール304宣言、共有比較込み利用例監査309宣言が成功。
+コミット6564adf・0f2d8fd。Xの反変自然性とordinary Hom点の両立を証明し、
+EnrichedRepresentabilityへ登録する作業が残る。

@@ -5526,3 +5526,45 @@ mappingObject(E,cotensor(X,F)) ≅ [X,mappingObject(E,F)]を構成した。
 任意Zに対する転置比較はそのための入力で、今回だけでこのreceiverの完成とはしない。
 多対象加群転送、スペクトル側monoidal/SM7、具体的PSS/円のモデル入力接続も残る。
 段階1〜3の全体目標は引き続き実行中。
+
+
+## 138. 段階1〜3の実行記録：Hom対象の源自然性と豊穣関手上の比較（2026-10-15）
+
+### 138.1 両スペクトル変数での自然同型
+
+共有ActionComparisonNaturalityのparameter法則を異なる源・値域の圏へ一般化した。
+右随伴比較の自然性を、左随伴比較の自然性と両転置の自然性から得る既存の証明を再利用する。
+従来のendofunctorのComposite・parameter_composite APIを維持し、旧StageTwoへの適用を再検証した。
+
+`General/TensorMappingSource`と`CotensorMappingSource`で、§137のHom対象同型の源Eに関する
+反変自然性を証明した。二段の合成随伴の源自然性を先に証明し、作用結合子の源自然性と共に
+共有parameter法則へ入力した。tensorMappingBifunctorIsoとcotensorMappingBifunctorIsoは
+源E・値域Fの両変数で自然な、C値mappingObjectの同型である。
+
+`General/EnrichedMappingObjects`で§136のeHomFunctor比較を前後に合成した。
+tensorEnrichedMappingIsoとcotensorEnrichedMappingIsoは、H5のtensorEnrichedHom/cotensorEnrichedHomから
+powerHomへの実際の二変数自然同型を提供する。構成した既存の豊穣通常圏を局所instanceとして利用する。
+新しいHom対象や随伴の型を導入せず、既存receiverのフィールドの型に合わせた。
+
+cotensor側の二段移送随伴の型照合は既定200000 heartbeatsを超えたため、
+該当する二宣言だけ800000へ設定し、理由をソースに記載した。ビルド時の同モジュールは約26秒。
+一般源自然性・豊穣関手比較・利用例に無制限の計算設定は追加していない。
+
+### 138.2 検証とコミット
+
+一般集約と旧StageTwoのビルドが成功し、新規ソース警告なし。
+`check_general_tensor_cotensor`で両源自然性と、H5の豊穣Hom関手上の自然同型の利用を検証した。
+一般実装・共有随伴比較を含む309宣言の公理監査に成功。
+一般スペクトル監査は25モジュール304宣言、全スペクトル・共有基盤公開監査は297モジュール2926宣言。
+標準公理のみ、sorry・引用依存なし。旧StageTwo利用例も成功。
+
+コミット：共有比較自然性の一般化`6564adf`、両源自然性と豊穣Hom対象比較`0f2d8fd`。
+
+### 138.3 次の範囲
+
+両スペクトル変数の自然同型は完了した。EnrichedRepresentabilityの残るフィールドは
+Xに関する反変自然性と、ordinary Homの点をcurryHomEquiv'で戻した際の
+既存tensor/mapping・cotensor/mapping Hom同値との一致。
+これらを証明してreceiverを構成するまで、豊穣表現性の全体を完成扱いにしない。
+多対象加群転送、スペクトル側monoidal/SM7、具体的PSS/円のモデル入力接続も残る。
+段階1〜3の全体目標は継続中。
