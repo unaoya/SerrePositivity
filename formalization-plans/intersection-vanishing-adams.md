@@ -3245,6 +3245,18 @@ K₀ の類への移送と重みつき乗法性は次の小段。
 - この小段は受入完了。ルートへの公開は後続の統合段で行う。
   重みつき乗法性・自然性・Koszul 正規化・S10.9・S11 は未完了。
 
+### S10.8a.2b.2–3：固有部分の K₀ 畳み込みと重みつき乗法性
+
+- `PerfectComplex/CubicActionTensorClass.eigenK0Class_tensor` は固有複体の比較同型を
+  K₀ へ移し、指標 l の類を `Σᵢ xᵢ cup yₗ₋ᵢ` として計算する。
+- `weightedK0Class_tensor` は係数テンソル・双線形積の有限和を展開し、
+  `Equiv.addLeft i` による添字替えと `cubicCharacter_mul` で重みつき乗法性を証明する。
+  E は可換環で十分であり、E→R の写像は追加していない。
+- `lake build SerrePositivity.KTheory.Adams.TensorCubeMultiplicativity` が成功（3293 jobs）。
+  `lake env lean scripts/audit_adams_cubic_tensor_class.lean` の二定理の監査が成功。
+  依存公理は標準三公理のみ。ルート公開は統合段で行う。
+- この小段は受入完了。三乗評価・任意の係数類の乗法性への接続は後続小段。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
