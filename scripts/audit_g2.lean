@@ -1,4 +1,5 @@
 import SerrePositivity.HomologicalAlgebra.DerivedTensorRealization
+import SerrePositivity.HomologicalAlgebra.DerivedTensorBaseChange
 import Mathlib.Util.AssertNoSorry
 
 -- G2-1: every explicit public declaration, including the maps and natural comparisons.
@@ -64,3 +65,29 @@ example (R : Type) [CommRing R] (M N N' : ModuleCat R) (f : N ⟶ N') :
 #print axioms SerrePositivity.realizedDerivedTensorH0Iso
 #print axioms SerrePositivity.realizedDerivedTensorAugmentation_homology
 #print axioms SerrePositivity.realizedDerivedTensor_discrete_iff
+
+-- G2-2a: the module-valued input to the general base-change construction.
+assert_no_sorry SerrePositivity.extendRestrictTensorIso
+assert_no_sorry SerrePositivity.restrictChainHomologyIso
+assert_no_sorry SerrePositivity.restrictHomotopyChainHomologyIso
+assert_no_sorry SerrePositivity.restrictDerivedBaseChangeHomotopyIso
+assert_no_sorry SerrePositivity.derivedModuleBaseChange
+assert_no_sorry SerrePositivity.derivedModuleBaseChangeHomologyIso
+assert_no_sorry SerrePositivity.derivedModuleBaseChangeTorIso
+assert_no_sorry SerrePositivity.derivedModuleBaseChange_negative_homology_vanishes_iff
+assert_no_sorry SerrePositivity.derivedModuleBaseChangeH0Iso
+assert_no_sorry SerrePositivity.derivedModuleBaseChangeAugmentation
+assert_no_sorry SerrePositivity.derivedModuleBaseChangeAugmentation_homology
+assert_no_sorry SerrePositivity.derivedModuleBaseChangeResolutionIso
+assert_no_sorry SerrePositivity.derivedModuleBaseChangeResolutionIso_naturality
+assert_no_sorry SerrePositivity.derivedModuleBaseChange_homology_isZero_positive
+
+-- Quotient maps are permitted; no regularity or flatness of the quotient is assumed.
+example (R : Type) [CommRing R] (J : Ideal R) (M : ModuleCat R) :
+    (DerivedCategory.homologyFunctor (ModuleCat (R ⧸ J)) 0).obj
+      ((derivedModuleBaseChange (Ideal.Quotient.mk J)).obj M) ≅
+      (ModuleCat.extendScalars (Ideal.Quotient.mk J)).obj M :=
+  (derivedModuleBaseChangeH0Iso (Ideal.Quotient.mk J)).app M
+
+#print axioms SerrePositivity.derivedModuleBaseChangeTorIso
+#print axioms SerrePositivity.derivedModuleBaseChangeResolutionIso_naturality
