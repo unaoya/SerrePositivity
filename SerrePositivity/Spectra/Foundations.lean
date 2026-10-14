@@ -54,6 +54,8 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorAdjunction
 public import SerrePositivity.Spectra.SymmetricSpectrum.FreeLeftUncurry
 public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorLevelEvaluation
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensor
+public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorFunctor
+public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorAdjunction
 public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorMapLevels
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomUnderlying
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeLeft
@@ -227,9 +229,14 @@ cotensorの二変数の射は全体の比較の順逆で移した内部Homの射
 F_0 Xとの球面上のテンソル積との全体の比較は、値域スペクトルに関する自然同型である。
 全体の比較の各段は既存の各段の比較と一致し、置換作用と関手の射も通常のsmashで記述した。
 
+各段のsmashを持つテンソルを両変数に共変な二変数関手へまとめ、
+F_0との全体の比較の両変数の自然性を証明した。
+このテンソルとcotensorの随伴、自然なHom同値、転置・逆転置とその相互逆性を構成した。
+既存のF_0による転置・逆転置との比較公式と、スペクトル射に関する自然性も証明した。
+
 ## 未構成の範囲
 
-各段の通常のsmashを持つテンソルの両変数の関手性とcotensorとの随伴、
+各段の通常のsmashを持つテンソルの両変数の射と転置・逆転置の各段の具体式、
 モデル構造と導来演算は引き続き実装する。
 この入口は完成済みの§4の降下入力を変更せず、基盤を独立に検証するためのもの。
 現在の構成に新しい未証明入力はない。
