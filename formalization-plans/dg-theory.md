@@ -383,3 +383,19 @@ U4/U5の実装実績後に§9の長期見積もりを再評価する。
 主要5宣言は標準公理のみ。ZMod 2、Mathlib enriched oppositeのinstance、両hexagonを検査した。
 
 tensor–Hom随伴・閉構造・豊穣計算、右代表加群・Hom end・Yonedaは引き続き実装する。
+
+### 12.2 U4b：tensor–Hom 随伴と閉構造
+
+[HomFunctor.lean](../SerrePositivity/DifferentialGraded/Complexes/HomFunctor.lean) の
+`homFunctor`/`homPostcompose`/`homPrecompose` は既存 `linearHomComplex` の関手性。
+[Currying.lean](../SerrePositivity/DifferentialGraded/Complexes/Currying.lean) で
+全整数次数の `curryRight`/`uncurryRight`、chain map 性、往復則、三変数自然性を証明した。
+直和 tensor と全次数の Hom の族を直接使い、有界性・平坦性・体の仮定なし。
+[Closed.lean](../SerrePositivity/DifferentialGraded/Complexes/Closed.lean) の
+`tensorRightHomAdjunction`、`complexClosed`、`complexMonoidalClosed` は Mathlib の随伴・閉構造。
+右随伴の対象は `linearHomComplex A` と定義上同じ。
+`tensorHomEquiv_component` と `evaluation_component` は左 tensor 転置と評価の Koszul 符号を固定する。
+
+[Checks/Closed.lean](../SerrePositivity/DifferentialGraded/Checks/Closed.lean) がビルド成功。
+任意A・ZMod 2・既存tensor/Homの一致・転置の往復・随伴の両三角恒等式を検証。
+主要14宣言は標準公理のみ。次は既存dg豊穣合成と閉構造由来合成の比較、U5の右加群とYoneda。
