@@ -71,4 +71,13 @@ lemma cochainTensorDegreeMap_add_right (f : ∀ i, P.X i ⟶ P'.X i)
   simp only [comp_add, ι_cochainTensorDegreeMap, tensorHom_def]
   rw [MonoidalPreadditive.whiskerLeft_add, comp_add, add_comp]
 
+@[simp]
+lemma cochainTensorMap_zero_zero : cochainTensorMap (0 : P ⟶ P') (0 : Q ⟶ Q') = 0 := by
+  apply HomologicalComplex.Hom.ext
+  funext n
+  apply HomologicalComplex.mapBifunctor.hom_ext
+  intro i j h
+  rw [ιTensorObj_cochainTensorMap]
+  simp [tensorHom_def]
+
 end SerrePositivity
