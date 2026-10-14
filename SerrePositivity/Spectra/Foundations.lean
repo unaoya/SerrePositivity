@@ -66,6 +66,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorCoherence
 public import SerrePositivity.Spectra.SymmetricSpectrum.SuspensionLoop
 public import SerrePositivity.Spectra.SymmetricSpectrum.AdjointStructureMaps
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpace
+public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceComposition
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceNaturality
 public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroEvaluationGenerators
 public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroConvolutionNaturality

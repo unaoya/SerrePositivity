@@ -1,6 +1,7 @@
 module
 
 public import Mathlib.CategoryTheory.Adjunction.Basic
+public import Mathlib.CategoryTheory.HomCongr
 
 /-! # 随伴の転置・逆転置の法則の命題としての公開 -/
 
@@ -46,5 +47,43 @@ lemma curry_uncurry {X : C} {Y : D} (f : X ⟶ R.obj Y) : curryUncurryLaw a f :=
 /-- 随伴の転置の値域に関する自然性。 -/
 lemma curry_naturality_right {X : C} {Y Z : D} (f : L.obj X ⟶ Y) (g : Y ⟶ Z) :
     curryNaturalityRightLaw a f g := a.homEquiv_naturality_right f g
+
+/-- 転置した射を左随伴で送って評価すると元の射になるという法則。 -/
+def curryEvaluationLaw {X : C} {Y : D} (f : L.obj X ⟶ Y) : Prop :=
+  L.map (a.homEquiv X Y f) ≫ a.counit.app Y = f
+
+/-- 転置した射を評価すると元の射になる。 -/
+lemma curry_evaluation {X : C} {Y : D} (f : L.obj X ⟶ Y) :
+    curryEvaluationLaw a f := by
+  change L.map (a.homEquiv X Y f) ≫ a.counit.app Y = f
+  exact (a.homEquiv X Y).left_inv f
+
+/-- 左随伴の指定した対象との比較から、元の射を右随伴への射へ転置する同値。 -/
+def comparisonHomEquiv {I : C} {E : D} (e : L.obj I ≅ E) (F : D) :
+    (E ⟶ F) ≃ (I ⟶ R.obj F) :=
+  (Iso.homCongr e.symm (Iso.refl F)).trans (a.homEquiv I F)
+
+/-- 比較を使うHom同値の順写像。 -/
+lemma comparisonHomEquiv_apply {I : C} {E F : D} (e : L.obj I ≅ E) (f : E ⟶ F) :
+    comparisonHomEquiv a e F f = a.homEquiv I F (e.hom ≫ f) := by
+  simp only [comparisonHomEquiv, Equiv.trans_apply, Iso.homCongr_apply,
+    Iso.symm_inv, Iso.refl_hom, Category.comp_id]
+
+/-- 比較を使うHom同値の逆写像。 -/
+lemma comparisonHomEquiv_symm_apply {I : C} {E F : D} (e : L.obj I ≅ E)
+    (f : I ⟶ R.obj F) :
+    (comparisonHomEquiv a e F).symm f = e.inv ≫ (a.homEquiv I F).symm f := by
+  change e.inv ≫ ((a.homEquiv I F).symm f ≫ 𝟙 F) = _
+  rw [Category.comp_id]
+
+/-- 恒等射を比較の順射の転置へ送るという法則。 -/
+def comparisonHomIdentityLaw {I : C} {E : D} (e : L.obj I ≅ E) : Prop :=
+  comparisonHomEquiv a e E (𝟙 E) = a.homEquiv I E e.hom
+
+/-- 恒等射は比較の順射を転置した射に対応する。 -/
+lemma comparisonHomEquiv_id {I : C} {E : D} (e : L.obj I ≅ E) :
+    comparisonHomIdentityLaw a e := by
+  unfold comparisonHomIdentityLaw
+  rw [comparisonHomEquiv_apply, Category.comp_id]
 
 end SerrePositivity.AdjunctionHomLaws
