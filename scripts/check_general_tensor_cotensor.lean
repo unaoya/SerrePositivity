@@ -105,6 +105,16 @@ example (X : C) (E F : GeneralSymmetricSpectrum C K) (f : pointwiseTensor X E �
     spectrumTensorCotensor.tensorHomEquiv X E F f = mappingObjectHomEquiv X E F f :=
   spectrumTensorCotensor_tensorHomEquiv X E F f
 
+example (X : C) :
+    SerrePositivity.Enriched.tensorEnrichedHom (spectrumTensorCotensor (K := K)) X ≅
+      SerrePositivity.Enriched.powerHom (C := GeneralSymmetricSpectrum C K) X :=
+  tensorEnrichedMappingIso X
+
+example (X : C) :
+    SerrePositivity.Enriched.cotensorEnrichedHom (spectrumTensorCotensor (K := K)) X ≅
+      SerrePositivity.Enriched.powerHom (C := GeneralSymmetricSpectrum C K) X :=
+  cotensorEnrichedMappingIso X
+
 section ModelCompatibility
 variable [HomotopicalAlgebra.ModelCategory C]
   [HomotopicalAlgebra.ModelCategory (GeneralSymmetricSpectrum C K)]
@@ -155,6 +165,20 @@ example (X Z : C) (E F : GeneralSymmetricSpectrum C K)
       (cotensorMappingPowerAdjunction X E).homEquiv Z F f :=
   cotensorMappingNatIso_homEquiv X Z E F f
 
+example (X : C) {E E' : GeneralSymmetricSpectrum C K} (f : E ⟶ E')
+    (F : GeneralSymmetricSpectrum C K) :
+    (mappingObjectBifunctor.map ((pointwiseTensorFunctor X).map f).op).app F ≫
+        (tensorMappingIso X E F).hom =
+      (tensorMappingIso X E' F).hom ≫ (ihom X).map ((mappingObjectBifunctor.map f.op).app F) :=
+  tensorMappingIso_naturality_source X f F
+
+example (X : C) {E E' : GeneralSymmetricSpectrum C K} (f : E ⟶ E')
+    (F : GeneralSymmetricSpectrum C K) :
+    (mappingObjectBifunctor.map f.op).app ((cotensorFunctor X).obj F) ≫
+        (cotensorMappingIso X E F).hom =
+      (cotensorMappingIso X E' F).hom ≫ (ihom X).map ((mappingObjectBifunctor.map f.op).app F) :=
+  cotensorMappingIso_naturality_source X f F
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -165,7 +189,8 @@ run_cmd do
     unless (`SerrePositivity.Spectra.General).isPrefixOf mod ||
         mod == `SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport ||
         mod == `SerrePositivity.CategoryTheory.Monoidal.MappingWhiskering ||
-        mod == `SerrePositivity.CategoryTheory.Monoidal.ActionComparisonAdjunction do continue
+        mod == `SerrePositivity.CategoryTheory.Monoidal.ActionComparisonAdjunction ||
+        mod == `SerrePositivity.CategoryTheory.Monoidal.ActionComparisonNaturality do continue
     let axioms ← collectAxioms name
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
       throwError "Unexpected axioms in {name}: {axioms}"

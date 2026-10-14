@@ -38,6 +38,9 @@ run_cmd do
       `SerrePositivity.Spectra.General.TensorCotensorEnriched,
       `SerrePositivity.Spectra.General.TensorMappingObject,
       `SerrePositivity.Spectra.General.CotensorMappingObject,
+      `SerrePositivity.Spectra.General.TensorMappingSource,
+      `SerrePositivity.Spectra.General.CotensorMappingSource,
+      `SerrePositivity.Spectra.General.EnrichedMappingObjects,
       `SerrePositivity.Spectra.General.SimplicialComparison] do
     unless modules.contains expected do throwError "Required module missing: {expected}"
   logInfo m!"General spectra audit passed: {declarations} declarations in {modules.size} modules."
