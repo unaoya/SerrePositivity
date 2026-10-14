@@ -55,7 +55,9 @@ theorem principalKoszulProduct_d (f : R)
   have h := congrArg (fun g ↦ g.hom x)
     ((Pi.π (powerKoszulTower R (fun _ : Fin 1 ↦ f)) n).comm (-1) 0)
   change (powerKoszulTower R (fun _ : Fin 1 ↦ f) n).d (-1) 0
-    ((Pi.π (powerKoszulTower R (fun _ : Fin 1 ↦ f)) n).f (-1) x) = (Pi.π (powerKoszulTower R (fun _ : Fin 1 ↦ f)) n).f 0 ((piObj (powerKoszulTower R (fun _ : Fin 1 ↦ f))).d (-1) 0 x) at h
+    ((Pi.π (powerKoszulTower R (fun _ : Fin 1 ↦ f)) n).f (-1) x) =
+      (Pi.π (powerKoszulTower R (fun _ : Fin 1 ↦ f)) n).f 0
+        ((piObj (powerKoszulTower R (fun _ : Fin 1 ↦ f))).d (-1) 0 x) at h
   rw [← h]
   have hd := congrArg (fun g ↦ g.hom ((Pi.π (powerKoszulTower R
     (fun _ : Fin 1 ↦ f)) n).f (-1) x)) (principalKoszulStage_d R f n)
@@ -73,9 +75,11 @@ theorem principalKoszulProductNeg_difference (f : R)
   have h := congrArg (fun g ↦ (g.f (-1)).hom x)
     (complexTowerDifference_projection R (powerKoszulTower R (fun _ : Fin 1 ↦ f))
       (powerKoszulTransition R (fun _ : Fin 1 ↦ f)) n)
-  change (Pi.π (powerKoszulTower R (fun _ : Fin 1 ↦ f)) n).f (-1) ((complexTowerDifference R (powerKoszulTower R (fun _ : Fin 1 ↦ f))
+  change (Pi.π (powerKoszulTower R (fun _ : Fin 1 ↦ f)) n).f (-1)
+    ((complexTowerDifference R (powerKoszulTower R (fun _ : Fin 1 ↦ f))
     (powerKoszulTransition R (fun _ : Fin 1 ↦ f))).f (-1) x) =
-    (Pi.π (powerKoszulTower R (fun _ : Fin 1 ↦ f)) n).f (-1) x - (powerKoszulTransition R (fun _ : Fin 1 ↦ f) n).f (-1)
+    (Pi.π (powerKoszulTower R (fun _ : Fin 1 ↦ f)) n).f (-1) x -
+      (powerKoszulTransition R (fun _ : Fin 1 ↦ f) n).f (-1)
       ((Pi.π (powerKoszulTower R (fun _ : Fin 1 ↦ f)) (n + 1)).f (-1) x) at h
   rw [h, map_sub]
   have ht := congrArg (fun g ↦ g.hom ((Pi.π (powerKoszulTower R
@@ -97,9 +101,11 @@ theorem principalKoszulProductZero_difference (f : R)
   have h := congrArg (fun g ↦ (g.f 0).hom x)
     (complexTowerDifference_projection R (powerKoszulTower R (fun _ : Fin 1 ↦ f))
       (powerKoszulTransition R (fun _ : Fin 1 ↦ f)) n)
-  change (Pi.π (powerKoszulTower R (fun _ : Fin 1 ↦ f)) n).f 0 ((complexTowerDifference R (powerKoszulTower R (fun _ : Fin 1 ↦ f))
+  change (Pi.π (powerKoszulTower R (fun _ : Fin 1 ↦ f)) n).f 0
+    ((complexTowerDifference R (powerKoszulTower R (fun _ : Fin 1 ↦ f))
     (powerKoszulTransition R (fun _ : Fin 1 ↦ f))).f 0 x) =
-    (Pi.π (powerKoszulTower R (fun _ : Fin 1 ↦ f)) n).f 0 x - (powerKoszulTransition R (fun _ : Fin 1 ↦ f) n).f 0
+    (Pi.π (powerKoszulTower R (fun _ : Fin 1 ↦ f)) n).f 0 x -
+      (powerKoszulTransition R (fun _ : Fin 1 ↦ f) n).f 0
       ((Pi.π (powerKoszulTower R (fun _ : Fin 1 ↦ f)) (n + 1)).f 0 x) at h
   rw [h, map_sub]
   have ht := congrArg (fun g ↦ g.hom ((Pi.π (powerKoszulTower R

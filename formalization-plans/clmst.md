@@ -51,11 +51,11 @@ BS全射性の具体的な適用条件（巡回商のp正則性・p進完備性�
 BSのprismatic構成・一般の商の存在・全射性自体は未完了である。
 
 主定理全体の現在の`#print sorries`では、上表の4件に加え、
-`intersectionVanishing`、`cohen_gabber_normalization`、
-`theorem_3_1_K0`、`supportedRankK0_descent`が到達する。
-計8宣言（外部引用6件・保留中のK理論2件）であり、独立した原典定理の数とは区別する。
-Robertsの`frobenius_homology_length_tendsto_zero`と
-`serrePositivity_of_field`は現在の主定理へ到達しない。
+`intersectionVanishing`、`theorem_3_1_K0`、`supportedRankK0_descent`が到達する。
+計7宣言（外部引用5件・保留中のK理論2件）であり、独立した原典定理の数とは区別する。
+Robertsの`frobenius_homology_length_tendsto_zero`、`serrePositivity_of_field`、
+`cohen_gabber_normalization`は現在の主定理へ到達しない。
+Cohen–Gabberの引用除去は別担当の成果であり、今回のF3による引用削減とは区別する。
 K群の二つの降下は従来どおり別作業に保留する。
 
 ### 共通基盤の現在地と次の工程
@@ -64,8 +64,9 @@ K群の二つの降下は従来どおり別作業に保留する。
 - F3は実際のKoszul完備化対象・各次数の導来完備性・Milnor比較を実装済み。
   一座標の三項モデルには列の商とのホモロジー同型と標準元の一致、
   加群の普遍性がある（コミット`7984520`）。
-  既存の`koszulCompletionComplex`との比較、有限座標への反復、
-  実際のH⁰の環・環としての普遍性への最終接続は未完了。
+  既存の一座標`koszulCompletionComplex`との短複体比較、標準写像の一致、
+  実際のH⁰の環構造と環としての普遍性まで接続済み。
+  有限座標への反復と既存の多座標Koszul塔との比較、F3全体の受渡しは未完了。
 - BSからの追加要求F4（strict p環のWitt復元）、F5（有界pねじれ正則商の完備性）、
   F6（一般主イデアル商のperfection核）、F7（Fontaine核進分離性）を共通側の作業へ登録する。
   型・受入条件・優先順は§9に記す。要求の登録を証明の受領とは扱わない。
@@ -73,8 +74,8 @@ K群の二つの降下は従来どおり別作業に保留する。
   André拡大そのものは別の名前付き引用であり、主定理へ到達しない。
   これをB4の無条件な証明として数えない。
 
-2026-10-14の確認：全体ビルド4277ジョブ、`scripts/audit_clmst.lean`と
-`scripts/audit_axioms.lean`が成功した。主定理の未証明入力は上記8宣言。
+2026-10-14の確認：全体ビルド4291ジョブ、`scripts/audit_clmst.lean`と
+`scripts/audit_axioms.lean`が成功した。主定理の未証明入力は上記7宣言。
 抽象化レビューと旧条件付きAPIの整理の記録は
 [実装境界](clmst-interfaces.md#0-今回の抽象化レビューと整理2026-10-14)を参照。
 以降の古い検証件数は当時の記録として保持する。
@@ -710,6 +711,28 @@ F3は引き続き未完了で、新しい引用・公理・sorryは追加して�
 検証：対象モジュールのビルドと11宣言の`assert_no_sorry`が成功。
 標準写像の一致・実際のH⁰への反射性の移送・環構造・二座標の接続は未完了。
 F3の受渡しは引き続き保留し、新しい引用・公理・sorryは追加していない。
+
+### F3：一座標の実際のH⁰の標準写像・反射性・環の普遍性（2026-10-14）
+
+`PrincipalKoszulUnit`で、既存`koszulCompletionUnit`の零次数成分が、
+三項モデルでは定数列と零列の組に一致することを証明した。
+短複体のサイクル写像とホモロジー写像の自然性を通じて、
+`principalCompletionH0Equiv_unit`は既存の`koszulCompletionH0Unit`を
+列の商の標準写像へ送る。この一致から実際のH⁰へ加群の反射性を移した。
+
+`PrincipalKoszulRing`は、その反射性を一般の`ReflectionRing`へ適用する。
+実際のH⁰の既存加法群・R加群と両立する可換環・R代数構造、
+既存のH⁰標準写像と一致する環準同型、f導来完備性、
+完備R代数への一意延長、任意のR→Tからの環としての一意延長を証明した。
+終域に正則性・Noether性・古典的完備性を追加しない。
+
+これで§9.2の1・2は完了。一座標の結果でF3全体を完了とは扱わない。
+残る工程は二座標(p,d)の反復、別座標の完備性の保存、
+既存の多座標Koszul塔との比較と標準写像の一致、BSへの一般受渡しである。
+検証：全体ビルド4291ジョブとCLMST・主定理の両監査が成功。
+追加11宣言の`assert_no_sorry`を監査へ登録した。
+主定理の未証明入力は7宣言であり、別担当のCohen–Gabber引用除去を含む現在値である。
+新しい引用・公理・sorryは追加していない。
 
 ### 保留する選択と引用依存の受入条件
 
@@ -2183,12 +2206,12 @@ F3に具体的な障害がある場合はその不足を記録し、独立した
 p正則性や通常の逆極限との無条件の同一視を追加しない。
 既存の`DerivedCompletion/`の複体・導来完備性・標準写像を使う。
 
-1. **一座標の複体比較。** `PrincipalTowerPresentation`の三項短複体と
+1. **一座標の複体比較（完了）。** `PrincipalTowerPresentation`の三項短複体と
    `koszulCompletionComplex`の`sc 0`の同型を構成する。
    直積の次数同型、一座標Koszulの成分同型、shiftとconeの微分の符号を明示する。
    成果物は短複体同型、誘導ホモロジー同型、標準写像との可換性の三つ。
    ホモロジー加群が抽象的に同型であるだけでは完了としない。
-2. **一座標H⁰の反射性。** 上の同型を通じて、証明済みの
+2. **一座標H⁰の反射性（完了）。** 上の同型を通じて、証明済みの
    `principalTowerHomology_isCompleteModuleReflection`を既存のH⁰へ移す。
    `ReflectionTransport`・`ReflectionRing`を適用し、実際のH⁰の可換環構造、
    元環からの環準同型、導来完備な離散環への一意延長を得る。
