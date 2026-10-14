@@ -1239,11 +1239,11 @@ $A = k[[t_1,\dots,t_h]]$ または $W(k)[[t_2,\dots,t_h]]$（$t_1 = p$、$k$ は
 \end{proof}
 \lean{塔の段は \ld{Paper.Section2.TowerStage}（\ld{flat_tower} など）、有限段の公式と降下は \ld{TowerDescent}（\ld{towerLengthFun_tensor}、\ld{exists_descent}）、上限の性質は \ld{towerLength_hasSup}。有限生成加群での一致は \ld{towerLengthFun_eq_fgLength}（証明済み）、加法性は \ld{towerLengthFun_add_of_exact}（証明済み、有限段の長さと近似による）。一般の有限生成・有限表示の場合の一致は \ld{LengthAlgebra.RootTowerLength.FiniteGeneration} で証明する。}
 
-\begin{lemma}\orig{Lemma 2.2、等標数分岐はCohen--Gabberの引用}\label{lem:cohengabber}
+\begin{lemma}\orig{Lemma 2.2、等標数分岐も証明済み}\label{lem:cohengabber}
 剰余体が完全な完備局所整域 $D$ に対し、定義~\ref{def:tower} の形の正則部分環 $A\subseteq D$ で、$D$ が $A$ 上有限かつ $\Frac(D)/\Frac(A)$ が分離的なものがとれる。
 \end{lemma}
 標数 $p$ は Cohen--Gabber の定理（Kurano--Shimomoto の初等的証明。原典は $k$ の完全性も $D$ の整域性も仮定しない一般形）。混標数は Cohen の構造定理で係数環 $W(k)\subseteq D$ をとり、$p$ を $D$ のパラメータ系 $p,t_2,\dots,t_h$ に延ばす。完備性から $W(k)[[t_2,\dots,t_h]]\to D$ は有限で、次元の等しい正則局所整域からの写像なので単射、分離性は標数 $0$ で自動である。
-\lean{\ld{Section2.lemma_2_2}。等標数は \ld{Inputs.cohen_gabber_normalization} の引用から接続する。混標数は \ld{exists_cohen_normalization_mixedCharacteristic} で上記の係数写像・有限評価・単射性を実構成し、既存の型を保った入口へ接続済み。}
+\lean{\ld{Section2.lemma_2_2}。等標数は \ld{exists_cohen_gabber_normalization} の微分経路の実構成から接続する。係数切断を変更し、完備微分の生成点の次元を環の次元へ減らし、微分基底を持つパラメータを選ぶ。同じ有限単射の相対微分の消滅から分数体拡大の分離性を証明した。\ld{Inputs.cohen_gabber_normalization}は証明済みの互換入口である。混標数は \ld{exists_cohen_normalization_mixedCharacteristic} で上記の係数写像・有限評価・単射性を実構成し、既存の型を保った入口へ接続済み。}
 
 \begin{theorem}\orig{Theorem 2.5、$\lambda$-CM 代数の存在、引用}\label{thm:existence}
 $D$ と $A\subseteq D$ を補題~\ref{lem:cohengabber} のとおりとする。$\Lambda$ 作用をもつ $D$ 代数 $C_D$ があって、$\lambda_D := \lambda_\infty$（係数制限）について次が成り立つ。
@@ -1327,7 +1327,7 @@ $D$ のパラメータイデアル $H$ をとる。$D/H$ の組成列を $C_D$ �
 
 定理~\ref{thm:core} の $D, E$ に対し、補題~\ref{lem:cohengabber} の正則部分環 $A_D\subseteq D$、$A_E\subseteq E$ をとる。$D'$ を $\Frac(D)/\Frac(A_D)$ の Galois 閉包における $A_D$ の整閉包、$G_D$ をその Galois 群とする（$E'$、$G_E$ も同様）。$D'$ は $A_D$ 上有限な局所整域（優秀性）で、$A_D$ の正規性から $(D')^{G_D}=A_D$ である。定理~\ref{thm:existence} を $D'$、$E'$ に適用して $\lambda$-平坦な長さ付き代数 $(C_D,\lambda_D)$、$(C_E,\lambda_E)$ を得る。$a_D = \rank_D D'$、$a_E = \rank_E E'$ とおく。
 $D'$ が $A_D$ 上有限であることは完備局所整域の優秀性（Nagata）、局所で剰余体が $k$ であることは完備局所環上有限な代数が局所環の有限積になることによる。
-\lean{\ld{Paper.Section5.GaloisNormalization} の \ld{exists_regular_galoisNormalization}（補題~\ref{lem:cohengabber} で基底を選び、それを保ったまま Galois 閉包へ上げ、不変環・有限性・完備性・剰余体の一致を構成する。引用は補題~\ref{lem:cohengabber} の正規化だけ）。}
+\lean{\ld{Paper.Section5.GaloisNormalization} の \ld{exists_regular_galoisNormalization}（補題~\ref{lem:cohengabber} で基底を選び、それを保ったまま Galois 閉包へ上げ、不変環・有限性・完備性・剰余体の一致を構成する。補題~\ref{lem:cohengabber} の正規化も証明済み）。}
 
 \begin{lemma}[幾何ファイバーへの推移性]\label{lem:core-trans}
 $A\to T$ を有限な環準同型、有限群 $G$ が $T$ に $A$ 上で作用し、$G$ で固定される元が全て $A$ から来るとする。このとき $G$ は $\Spec T\to\Spec A$ の全ての幾何ファイバーに推移的に作用する。特に $(D',A_D,G_D)$ と $(E',A_E,G_E)$ について成り立つ。
@@ -1448,7 +1448,6 @@ $|G_D|a_Da_E>0$ なので $\chi^R(D,E)>0$ である。
 結果 & 文献 & 使う場所 & Lean \\
 \midrule
 交点重複度の消滅 & Roberts、Gillet--Soulé & 帰着、第一比較 & \ld{Inputs.intersectionVanishing}（1件） \\
-分離的有限正規化 & Cohen--Gabber & Lemma 2.2 の等標数分岐 & \ld{Inputs.cohen_gabber_normalization}（1件） \\
 perfectoid 化の存在と全射性 & Bhatt--Scholze, Thm 1.17(1)、Cor 7.3・Thm 7.4 & 混標数構成 & \ld{BhattScholze.Inputs.exists_perfectoidization_of_integral}、\ld{BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotient}（2件） \\
 perfectoid の almost 消滅と isogeny & CLMST, Cor 4.0.4、Prop 2.4.7 & 混標数構成 & \ld{CLMST.Inputs.corollary_4_0_4}、\ld{CLMST.Inputs.proposition_2_4_7}（2件） \\
 \bottomrule
@@ -1456,12 +1455,13 @@ perfectoid の almost 消滅と isogeny & CLMST, Cor 4.0.4、Prop 2.4.7 & 混標
 \end{center}
 }
 
-外部引用は上の6件である。正則パラメータ・有限自由分解・非混合性・
+外部引用は上の5件である。正則パラメータ・有限自由分解・非混合性・
 Hilbert--Samuel 理論と重複度公式は証明済みで、この表に含めない。
 剰余体拡大も、任意の指定剰余体を持つ平坦局所環の実図式と直極限、
 完備化のNoether判定と平坦性から証明済みである。
 \ld{Inputs.exists_complete_flat_local_extension}の型を保ったまま引用を解消し、
 \ld{Section2.lemma_2_1}の長さ・正則性・Torの保存へ接続している。
+任意剰余体の等標数Cohen--Gabber正規化も証明済みで、Lemma 2.2は標準公理のみへの依存となった。
 完全剰余体の混標数Cohen正規化も証明済みである。
 \ld{exists_cohen_normalization_mixedCharacteristic}はWitt係数写像と剰余体の両立、
 $p$を含むパラメータ、冪級数基底の次元・正則性・完備性を実際に供給する。
@@ -1525,7 +1525,7 @@ Frobenius の性質は使わない。一般の有限自由複体についての 
 \multicolumn{3}{l}{\textbf{§\ref{sec:construction} 構成}} \\
 定義~\ref{def:tower}、補題~\ref{lem:24} & §2.2、Lemma 2.4 & 定義は具体的、補題は証明済み。 $\lambda_\infty$ の加法性も証明済み \\
 命題~\ref{prop:tower-compatible} & §2.2 & 塔の性質・有限段の公式・降下・上限の性質は証明済み。有限生成加群での一致と加法性も証明済み \\
-補題~\ref{lem:cohengabber}、定理~\ref{thm:existence} & Lemma 2.2、Thm 2.5 & いずれも明示した外部引用からの接続は証明済み \\
+補題~\ref{lem:cohengabber}、定理~\ref{thm:existence} & Lemma 2.2、Thm 2.5 & Lemma 2.2は標準公理のみ、Thm 2.5は残る4件の外部引用からの接続が証明済み \\
 系~\ref{cor:pos} & Cor 2.6 (3) & 長さ代数の外部引用を除いて証明済み。重複度の正値性は証明済み \\
 \multicolumn{3}{l}{\textbf{§\ref{sec:core} 核の場合}} \\
 設定、補題~\ref{lem:core-trans} & §5.1 & 推移性と $D'$、$E'$、Galois 群の構成は引用から証明済み \\

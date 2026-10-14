@@ -6,8 +6,8 @@
 | 計画 | 目標 | 状態 |
 | --- | --- | --- |
 | [残る形式化の全体像](overview.md) | 外部引用1〜13と二つのK理論入力の役割・依存関係を整理する | 現状・範囲の整理 |
-| [外部引用1〜3：環の存在構成](local-algebra-1-3.md) | 剰余体拡大・Cohen／Cohen–Gabber正規化の共通API、構成、接続を具体化する | 引用1・3は実構成へ置換済み。引用2の任意剰余体の係数体とCohen–Gabberの分離的選択が残る |
-| [Cohen–Gabberの微分経路](cohen-gabber-differentials.md) | p-basis・係数体・連続微分の再利用可能な基盤から引用2を証明する | Gabber原証明の訂正版を採用。G0の契約・型照合とG1の一般補題から開始 |
+| [外部引用1〜3：環の存在構成](local-algebra-1-3.md) | 剰余体拡大・Cohen／Cohen–Gabber正規化の共通API、構成、接続を具体化する | 引用1・2・3は実構成へ置換済み。任意剰余体のCohen–GabberとLemma 2.2は標準公理のみ |
+| [Cohen–Gabberの微分経路](cohen-gabber-differentials.md) | p-basis・係数体・連続微分の再利用可能な基盤から引用2を証明する | 完了。係数体変更・微分パラメータ・同じ評価の分離性を構成し引用2を解消 |
 | [完備化の共通基盤と二つの適用](adic-completion-integration.md) | 共通のテンソル比較・完備化の平坦性、独立したNoether判定、CLMST／剰余体拡大への適用と分担を確定する | 分担を反映済み。A4は完成、共通の平坦性と係数制限の進捗は正本の実施記録を参照 |
 | [外部引用4〜5：交点重複度](intersection-inputs-4-5.md) | 対角線による正値性とChern／Adamsによる消滅の証明経路を比較する | 調査・設計段階 |
 | [外部引用5：消滅定理をサイクルで](intersection-vanishing-cycles.md) | 局所 Chern 指標と Riemann–Roch（Fulton、Roberts）で `intersectionVanishing` を証明する。サイクルの基盤は別プロジェクトと共有 | 計画のみ。未着手 |

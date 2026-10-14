@@ -29,7 +29,7 @@ public import Mathlib.RingTheory.WittVector.Basic
 
 標数 `p` では `Inputs.cohen_gabber_normalization`、混標数では
 `Inputs.cohen_normalization_mixedCharacteristic` の証明済みの実構成を適用する。
-等標数の引用の範囲と出典は `Inputs/CohenNormalization.lean` に明記した。
+等標数の構成と出典は `Inputs/CohenNormalization.lean` に明記した。
 標数の二分、有限拡大による次元の一致と
 パラメータ系の移送、分数体の分離性から最小多項式の条件への移送をここで証明する。
 混標数の分離性は標数零から従う。正規性の導出は証明済みの正則パラメータから従う。

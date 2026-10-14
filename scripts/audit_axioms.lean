@@ -110,3 +110,9 @@ assert_no_sorry SerrePositivity.flat_of_isWeaklyRegular
 assert_no_sorry SerrePositivity.exists_mvPowerSeries_ringEquiv_of_charZero
 -- 一般の剰余標数零の場合はデヴィサージュで交点消滅定理の引用だけに依存する。
 #print axioms SerrePositivity.chi_pos_of_residueCharZero
+
+-- Cohen–Gabberの公開型を保った微分経路の実構成。
+#print axioms SerrePositivity.Inputs.cohen_gabber_normalization
+assert_no_sorry SerrePositivity.Inputs.cohen_gabber_normalization
+#print axioms SerrePositivity.Section2.lemma_2_2
+assert_no_sorry SerrePositivity.Section2.lemma_2_2
