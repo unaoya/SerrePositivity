@@ -64,4 +64,23 @@ lemma mapExtendIso_naturality {K L : HomologicalComplex C c} (f : K ⟶ L) :
     simp [Functor.map_comp, Category.assoc]
   · exact (F.map_isZero (K.isZero_extend_X e i (fun a ha => hi ⟨a, ha⟩))).eq_of_src _ _
 
+/-- The extension comparison is natural in the additive functor as well. -/
+lemma mapExtendIso_natTrans {G : C ⥤ E} [G.Additive] (α : F ⟶ G) :
+    (NatTrans.mapHomologicalComplex α c').app (K.extend e) ≫ (mapExtendIso G K e).hom =
+      (mapExtendIso F K e).hom ≫ HomologicalComplex.extendMap
+        ((NatTrans.mapHomologicalComplex α c).app K) e := by
+  classical
+  apply HomologicalComplex.hom_ext
+  intro i
+  by_cases hi : ∃ a, e.f a = i
+  · change α.app ((K.extend e).X i) ≫ (mapExtendXIso G K e i).hom =
+      (mapExtendXIso F K e i).hom ≫ _
+    simp only [mapExtendXIso, dite_eq_left hi, Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom]
+    rw [extendMap_f _ e hi.choose_spec]
+    simp only [Category.assoc, Iso.inv_hom_id_assoc]
+    rw [← Category.assoc, ← α.naturality]
+    simp only [Category.assoc]
+    rfl
+  · exact (F.map_isZero (K.isZero_extend_X e i (fun a ha => hi ⟨a, ha⟩))).eq_of_src _ _
+
 end SerrePositivity
