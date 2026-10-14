@@ -464,3 +464,15 @@ R-代数構造を入力し、具体的な環E・CommRing構造・F:S⊗[R]T→E�
 標準射のmod p同型を直接証明する。この比較が実証明できれば、
 係数商テンソルの多段同型を介さずG1用の通常mod p図式へ接続できる。
 導来テンソルとの比較の代用とはせず、証明後にB4用の経路として判定する。
+
+## B4-5：表示付き通常テンソルの全p完備試験環への普遍性（2026-10-14）
+
+`WittPresentedPerfectoidTensor`を証明の複製なしに整理し、
+`exists_wittPresentedTensorCompletion`として、具体的なperfectoid候補へのFが
+任意のp完備環Dへの射を一意に経由することを公開した。
+既存の`exists_wittPresentedTensorPerfectoidization`の型は保持し、
+一般perfectoid試験環のp完備性を供給する系とした。対象ビルド成功。
+BS専用の次ファイル`WittPresentedPerfectoidTensorModP.lean`で、
+この普遍性から標準mod p射の全単射性を直接証明する。
+通常完備化の普遍性についての証明であり、導来完備テンソルと
+古典的完備テンソルを比較せずに同一視する主張ではない。

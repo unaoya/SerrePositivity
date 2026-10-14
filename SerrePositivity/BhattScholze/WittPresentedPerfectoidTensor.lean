@@ -24,8 +24,8 @@ variable {R S T : Type u} [CommRing R] [CommRing S] [CommRing T]
 variable [Algebra R S] [Algebra R T]
 
 /-- 共通のdistinguished元によるWitt商表示がある環のテンソルは、
-具体的なWitt係数余積へのperfectoid化を持つ。零環の余積も含む。 -/
-theorem exists_wittPresentedTensorPerfectoidization
+具体的なWitt係数余積への射は全p完備環への射を一意に経由する。零環も含む。 -/
+theorem exists_wittPresentedTensorCompletion
     (d : WittVector p kR) (hd : (wittDeltaStructure p kR).IsDistinguished d)
     (θ : WittVector p kR →+* R) (hθ : Function.Surjective θ)
     (eS : (WittVector p kS ⧸ Ideal.span {WittVector.map (algebraMap kR kS) d}) ≃+* S)
@@ -39,7 +39,10 @@ theorem exists_wittPresentedTensorPerfectoidization
         (wittCoefficientPushoutLeft p kR kS kT d).comp eS.symm.toRingHom ∧
       F.comp (Algebra.TensorProduct.includeRight : T →ₐ[R] S ⊗[R] T).toRingHom =
         (wittCoefficientPushoutRight p kR kS kT d).comp eT.symm.toRingHom ∧
-      IsPerfectoidization p F := by
+      IsIntegralPerfectoid (WittCoefficientPushout p kR kS kT d) p ∧
+      ∀ (D : Type u) [CommRing D], IsAdicComplete (Ideal.span {(p : D)}) D →
+        ∀ g : S ⊗[R] T →+* D, ∃! L : WittCoefficientPushout p kR kS kT d →+* D,
+          L.comp F = g := by
   let E := WittCoefficientPushout p kR kS kT d
   let iS := (wittCoefficientPushoutLeft p kR kS kT d).comp eS.symm.toRingHom
   let iT := (wittCoefficientPushoutRight p kR kS kT d).comp eT.symm.toRingHom
@@ -68,7 +71,7 @@ theorem exists_wittPresentedTensorPerfectoidization
     rw [coefficientTensorLift_tmul, map_one, one_mul]
   refine ⟨F, hFS, hFT, wittCoefficientPushout_isIntegralPerfectoid p kR kS kT d hd, ?_⟩
   intro D _ hD g
-  let := hD.isAdicComplete D p
+  let := hD
   let jS := (Algebra.TensorProduct.includeLeft : S →ₐ[R] S ⊗[R] T).toRingHom
   let jT := (Algebra.TensorProduct.includeRight : T →ₐ[R] S ⊗[R] T).toRingHom
   let fS := (g.comp jS).comp eS.toRingHom
@@ -138,5 +141,27 @@ theorem exists_wittPresentedTensorPerfectoidization
       g (jT (eT x)) at hx
     rw [eT.symm_apply_apply] at hx
     exact hx
+
+/-- 表示付き通常テンソルからの具体的なWitt余積への射はperfectoid化。 -/
+theorem exists_wittPresentedTensorPerfectoidization
+    (d : WittVector p kR) (hd : (wittDeltaStructure p kR).IsDistinguished d)
+    (θ : WittVector p kR →+* R) (hθ : Function.Surjective θ)
+    (eS : (WittVector p kS ⧸ Ideal.span {WittVector.map (algebraMap kR kS) d}) ≃+* S)
+    (eT : (WittVector p kT ⧸ Ideal.span {WittVector.map (algebraMap kR kT) d}) ≃+* T)
+    (hS : (eS.toRingHom.comp (Ideal.Quotient.mk _)).comp
+      (WittVector.map (algebraMap kR kS)) = (algebraMap R S).comp θ)
+    (hT : (eT.toRingHom.comp (Ideal.Quotient.mk _)).comp
+      (WittVector.map (algebraMap kR kT)) = (algebraMap R T).comp θ) :
+    ∃ F : S ⊗[R] T →+* WittCoefficientPushout p kR kS kT d,
+      F.comp (Algebra.TensorProduct.includeLeft : S →ₐ[R] S ⊗[R] T).toRingHom =
+        (wittCoefficientPushoutLeft p kR kS kT d).comp eS.symm.toRingHom ∧
+      F.comp (Algebra.TensorProduct.includeRight : T →ₐ[R] S ⊗[R] T).toRingHom =
+        (wittCoefficientPushoutRight p kR kS kT d).comp eT.symm.toRingHom ∧
+      IsPerfectoidization p F := by
+  obtain ⟨F, hFS, hFT, hE, hU⟩ := exists_wittPresentedTensorCompletion p kR kS kT
+    d hd θ hθ eS eT hS hT
+  refine ⟨F, hFS, hFT, hE, ?_⟩
+  intro D _ hD g
+  exact hU D (hD.isAdicComplete D p) g
 
 end SerrePositivity.BhattScholze
