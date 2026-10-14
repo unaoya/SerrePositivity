@@ -2916,7 +2916,11 @@ C2-5では全体ビルド、CLMST・公理・E1〜E5専用監査も実行する�
 
 ### 9.7c. G1：mod I忠実平坦降下とadic全射判定（2026-10-14計画）
 
-状態：G1-1・G1-2を実装・監査済み。G1-3・G1-4は未完了。
+状態：G1-1〜G1-3を実装。G1-4の公開・最終監査は未完了。
+G1-3は`AdicFaithfulDescentAlgebra.lean`と`PrincipalAdicFaithfulDescent.lean`で、
+加群商と環商の標準比較、S/C自身の進条件の移送、一般Iと主元の環商版を公開した。
+標準剰余代数構造はMathlibを局所的に使い、大域instanceを追加しない。
+専用監査はBS要求のmod pの正確な署名も検査する。
 G1-2は任意I、任意の忠実平坦なR/I加群Eについて全射降下を証明した。
 Eの代数構造、Iの有限生成性、元環上の平坦性は要求しない。
 `AdicFaithfulDescent.lean`で既存の剰余作用を使い、R/I線形な剰余写像と
