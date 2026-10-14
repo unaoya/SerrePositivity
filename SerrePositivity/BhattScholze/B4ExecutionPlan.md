@@ -204,3 +204,33 @@ import閉包と実際の証明依存を区別して監査する。共通ファ�
 4公開定理の対象ビルド（3280ジョブ）とB4専用監査が成功。標準3公理のみ。
 B4-1〜2の7公開定理はAndré・B-S・B-Iの証明依存を持たない。
 次はtilt側の根イデアル商の完全性と、実PD完備化との商比較を進める。
+
+## B4-3／B4a実装完了（2026-10-14）
+
+`CompatibleRootPerfectQuotient`で完全標数p環の根イデアル商の完全性を証明。
+商のCharPを仮定せず、零環の商を含む。
+`CompatibleRootTilt`で根列の全座標、両立性、untilt復元、
+根を消す射がtilt根イデアルを消すこと、tilt根イデアル商の完全性を公開した。
+
+`CompatibleRootPDComparison`で、具体的な全射Witt型商と完備化の図式を仮定した
+古典的根商のp完備化と実PD完備化商の比較同型を証明。標準射を両立させた。
+実完備化の環普遍性と、完備化候補への標準射の全射性から両逆写像を検証する。
+古典的完備化への無条件の置換はしない。
+
+`CompatibleRootCompletionPerfectoid`でこれらを実際のperfectoid Rのtiltへ適用し、
+任意の両立する根列ρについてCompatibleRootCompletion p ρの
+IsIntegralPerfectoidを証明した。一般のpねじれと零環も含む。
+具体的なcompatibleRootCompletionMapのIsPerfectoidizationと、
+任意の普遍perfectoid化の全射性まで、候補のperfectoid性の仮定を解消した。
+R/(ρ₀)の導来完備性を追加していない。André・B-S・B-I・B5の引用を使わない。
+
+新規13公開宣言の対象ビルド、B4専用監査、全体ビルド4456ジョブが成功。
+すべての公理依存はpropext・Classical.choice・Quot.soundのみ。
+現在の4モジュールのimport閉包205モジュールにInputs・CLMST・Paper・RootTowerなし。
+B4-1時点の共通importの引用混入は、その後の共通側の抽出で解消している。
+共有ファイルはBS側では編集していない。
+
+一般B4は未完了。任意イデアルへの拡張、底変換・全射性の降下、
+引用なしの必要な根付き拡大は残る。既存Andréのsorryを使う合流は条件付きと区別する。
+次は任意根族のイデアル・tilt商・普遍性を直接扱う経路を検証し、
+有限生成帰着を省けるかを証明によって確認する。
