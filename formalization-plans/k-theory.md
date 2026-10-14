@@ -5969,3 +5969,40 @@ sorry・引用依存なし、diff --check成功。コミット`585d4d9`。
 レベル生成射のII/JI/IJテストを上記定理へ渡す。
 今回の一般判定だけではスペクトルのmonoidal/SM7は完成していない。
 段階1〜3の全体目標は継続中。
+
+
+## 152. 段階1〜3の実行記録：円スペクトルのレベルmonoidalモデルと内部Hom-SM7（2026-10-15）
+
+`ModelCategory/FreePushoutProduct`で、自由射F_m(i),F_n(j)のpushout-productの実際の
+正方形を構成した。始点はF_(m+n)を基礎圏のpushout-product境界へ適用した対象で、
+包含射・出力射は既存sphereTensorFreeAtSumの自然比較を介して構成する。
+freeAtの左随伴性によるpushout保存と比較の自然性で正方形全体を証明した。
+freePushoutProductIsoは任意の基礎圏とスペクトルのpushout選択について、
+出力射をF_(m+n)による基礎pushout-productの像へ射圏で同型にする。
+モデル構造や文献入力は仮定しない。
+
+`FreePushoutProductModel`で、基礎PSSのsmash Quillen条件とfreeAtのleft Quillen性から、
+自由射のpushout-productのcofibration性、どちらかの入力がtrivialな場合のtrivial cofibration性を証明した。
+`SimplicialLevelTensor.simplicialLevelTensor_isQuillen`は実際のレベル生成射のstrict像を分解し、
+II/JI/IJをこの計算へ帰着し、§151のdouble orthogonalityで全cofibrationへ拡張する。
+スペクトルのmonoidal互換性を入力にしない。
+
+simplicialLevelTensor_SM7はスペクトル自身の既存closed内部HomについてSM7を証明する。
+球面単位は零次数でPSS単位を自由生成した対象に同型であり、freeAtのQuillen性と
+始対象保存からcofibrantである。恒等単位置換で単位公理を得て、
+simplicialLevelTensor_monoidalModelを構成した。
+Inputs/Homotopy/SimplicialLevelのcircleSpectrumLevelModel_monoidal/SM7は、
+実際に選択したHT-KQモデルへこれらの証明を適用する。新しい存在引用は追加していない。
+
+対象・上位適用ビルド成功。警告は既存HT-KQの引用sorryだけで、新証明の警告なし。
+check_simplicial_level_tensorは任意の正方形選択に対応する射圏同型、monoidal・内部Hom-SM7・
+単位cofibrancyをGeneral/StageTwoと同時importで検証し、新規14宣言（内部補助込み）を標準公理のみで監査した。
+全スペクトル314モジュール3049公開宣言の厳密監査と、既存レベル利用例29宣言監査も成功。
+実際の引用込み入口はcheck_kan_quillen_levelで26宣言を監査し、直接引用HT-KQの1件だけを確認した。
+diff --check成功。コミット：射圏比較`02995bb`、monoidal・内部Hom-SM7`3be13a2`、
+実際のモデルへの適用`64c294c`。
+
+円スペクトルのレベルmonoidalモデルと内部Hom-SM7は今回完成した。
+次は既存の基点付き/通常SSetによるtensor・cotensor・写像対象という混合豊穣APIにも
+モデル互換性を接続し、一般C,Kの契約を含む段階1〜3の全受入条件を監査する。
+内部Hom-SM7だけを混合豊穣APIのSM7と同一視しない。全体目標は継続中。
