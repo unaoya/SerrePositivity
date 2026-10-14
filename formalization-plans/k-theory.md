@@ -5749,3 +5749,31 @@ smashのcof/trivial条件、任意PushoutObjObjに対応したQuillen bifunctor�
 次は固定版の具体的SSet/Kan–Quillen入力・生成射・presentability・円のcofibrancyへの接続と、
 スペクトル側のmonoidal/SM7条件を検証する。今回の一般的帰結だけで具体的PSSモデルを完成扱いにしない。
 段階1〜3の全体目標は継続中。
+
+
+## 145. 段階1〜3の実行記録：具体的SSet生成射のsmallnessと円のcofibrancy（2026-10-15）
+
+固定MathlibのCategoryWithFibrationsとAnodyneExtensions/Basicを再照合した。
+Cof=mono、Fib=J.rlp、Jのaleph0-small-object、anodyne=J.rlp.llpは実装済みだが、
+Kan–Quillenモデル全体とanodyne=trivial cofibrationの接続には明示的なTODOがある。
+これをModelCategoryの存在と読み替えず、今回も弱同値クラスや引用axiomを追加していない。
+
+`ModelCategory/SimplicialGenerators`で、実際のI（境界）・J（horn）の始域の
+Cardinal.aleph0.{u}-presentabilityを固定版Finite/Presentableから得た。
+Iの小ささ・IsCardinalForSmallObjectArgument・HasSmallObjectArgumentを構成し、JのSOAは既存実装を再利用。
+両生成射は同じSSet.{u}のhom宇宙uで共通cardinalを使える。
+既存mono cofibrationクラスについて全SSetがcofibrantであることも証明した。
+
+`ModelCategory/SimplicialCofibrancy`で、既存PointedSimplicialSetの基点射は各次数で
+一元集合からの射なのでmonoであることを証明した。Underのmono cofibrationクラスと
+実際のpointの始対象性から全PSS、特に既存circleのcofibrancyを得た。
+これらの宣言はModelCategory SSetを仮定しない。
+
+対象ビルド成功、新規ソース警告なし。check_simplicial_model_inputsはModelCategoryやWを仮定せず
+共通presentability、両SOA、SSet/PSS/円のcofibrancyを検証し、新規11宣言を公理監査。
+全スペクトル監査306モジュール2989公開宣言、既存pointed model利用例63宣言監査も成功。
+すべて標準公理のみ、sorry・引用依存なし。コミット`73e55b0`。
+
+次は基点付きI/J生成射のfree/forgetによるlifting・smallnessの接続と、
+具体的なKan–QuillenのW・モデル存在・anodyne比較の入力を正確に固定する。
+スペクトル側monoidal/SM7の証明も残る。段階1〜3の全体目標は継続中。
