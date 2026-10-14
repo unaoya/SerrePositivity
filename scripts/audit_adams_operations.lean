@@ -1,5 +1,5 @@
 import SerrePositivity.KTheory.Adams.CyclicTwo
-import SerrePositivity.PerfectComplex.TensorHomogeneous
+import SerrePositivity.KTheory.Adams.TensorSquareShuffle
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.Adams.tensorSquareClass_eq_of_quasiIso
@@ -41,3 +41,15 @@ assert_no_sorry SerrePositivity.ιTensorQuad_cochainTensorShuffle_hom
 #print axioms SerrePositivity.cochainTensorQuad_hom_ext
 #print axioms SerrePositivity.cochainTensorShuffle_hom_apply_ι
 #print axioms SerrePositivity.ιTensorQuad_cochainTensorShuffle_hom
+
+assert_no_sorry SerrePositivity.cochainTensorQuad_diagonalSymmetry_apply_ι
+assert_no_sorry SerrePositivity.cochainTensorShuffle_exchange_sign
+assert_no_sorry SerrePositivity.cochainTensorShuffle_symmetry
+assert_no_sorry SerrePositivity.Adams.tensorSquareTensorIso
+assert_no_sorry SerrePositivity.Adams.tensorSquareDiagonalSwap_sq
+assert_no_sorry SerrePositivity.Adams.tensorSquareTensorIso_swap
+assert_no_sorry SerrePositivity.Adams.tensorSquareDiagonal_perfect
+assert_no_sorry SerrePositivity.Adams.tensorSquareDiagonal_support
+#print axioms SerrePositivity.cochainTensorShuffle_symmetry
+#print axioms SerrePositivity.Adams.tensorSquareTensorIso_swap
+#print axioms SerrePositivity.Adams.tensorSquareDiagonal_support
