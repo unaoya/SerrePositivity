@@ -904,3 +904,30 @@ B4専用監査を行う。
 証明済みtorModule_subsingleton_of_flatと既存忠実平坦基底変更を使う。
 δ除算包の有限段表示との同型・全段表示・実完備化の比較は未実装。
 通常の根添加環をperfectoid拡大と同一視しない。一般B4完成ではない。
+
+## B4-6：通常冪根添加環を完全忠実平坦性へ接続（2026-10-15）
+
+`MonicPowerFamilyCompleteFlat`で、具体的な通常根添加環の通常平坦性を
+既存torModule_subsingleton_of_flatとderivedTensorの次数0集中判定へ接続し、
+任意のイデアルIについてIsCompletelyFlat Iを証明した。
+剰余の忠実平坦性は既存の任意基底変更の保存APIを使い、
+IsCompletelyFaithfullyFlat Iも証明した。零係数環を含む。
+一般Tor判定・完全平坦性・完全忠実平坦性の定義を作り直していない。
+共通IsCompletelyFlatの現在の宇宙に合わせ、この入口のRと添字σはType u。
+2公開定理の対象3328ジョブ成功。B4専用監査を行う。
+
+結果は未完備の通常根添加環についてであり、そのperfectoid性、
+実完備化後の完全忠実平坦性、δ除算包の実際の有限段との比較は未結論。
+次のBS専用予定`MonicPowerFamilyPresentation.lean`で、
+MvPolynomial σ R/(X_s^n-c_s)という実際の商表示と標準写像の両立を証明する。
+その後、δ関係式の有限段のモニック表示との比較に適用する。
+全反復段の表示、必要な根付きperfectoid拡大の構成、一般B4完成は未実装。
+G3の受領をこの独立作業の開始条件にしない。
+
+この区切りの最終検証：新規21公開宣言の対象ビルドと
+pure B4専用全公開宣言監査成功。公理は標準3公理のみ。
+coefficientTensorLiftの宇宙一般化に依存するWitt余積・全射性降下の
+対象3314ジョブも再検証成功。全体4573ジョブ成功。
+通常根添加環の普遍性・完全忠実平坦性のimport閉包13件に
+Inputs・CLMST・Paper・RootTowerなし。
+検証済みBS成果だけ3ステップに分けてコミットする。
