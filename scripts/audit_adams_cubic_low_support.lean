@@ -1,0 +1,24 @@
+import SerrePositivity.KTheory.Adams.TensorCubeLowMixedSupport
+import SerrePositivity.KTheory.Adams.TensorCubeLowMixedRotation
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeLowMixedTarget_perfect
+#print axioms SerrePositivity.Adams.tensorCubeLowMixedTarget_perfect
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeLowMixedTarget_support
+#print axioms SerrePositivity.Adams.tensorCubeLowMixedTarget_support
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayer_support
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayer_support
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeLowMixedRotation
+#print axioms SerrePositivity.Adams.tensorCubeLowMixedRotation
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeLowMixedRotation_cube
+#print axioms SerrePositivity.Adams.tensorCubeLowMixedRotation_cube
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeLowMixedAction
+#print axioms SerrePositivity.Adams.tensorCubeLowMixedAction
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeLowMixedMap_rotation
+#print axioms SerrePositivity.Adams.tensorCubeLowMixedMap_rotation
