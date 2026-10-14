@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.DeltaWittGhostStep
 import SerrePositivity.BhattScholze.WittDivisionTriangular
 import SerrePositivity.BhattScholze.RelativeFreeFiniteDeltaIterate
 import SerrePositivity.BhattScholze.RelativeFreeFiniteDeltaAdicEstimate
@@ -1558,3 +1559,12 @@ assert_no_sorry SerrePositivity.BhattScholze.wittDivision_exists_triangular_rema
 
 assert_no_sorry SerrePositivity.BhattScholze.wittDivision_exists_monic_equation
 #print axioms SerrePositivity.BhattScholze.wittDivision_exists_monic_equation
+
+assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.frobeniusLift_pow_congruence
+#print axioms SerrePositivity.BhattScholze.DeltaStructure.frobeniusLift_pow_congruence
+
+assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.ghost_next_dvd
+#print axioms SerrePositivity.BhattScholze.DeltaStructure.ghost_next_dvd
+
+assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.exists_next_ghost_coefficient
+#print axioms SerrePositivity.BhattScholze.DeltaStructure.exists_next_ghost_coefficient

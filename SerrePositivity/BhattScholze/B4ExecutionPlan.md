@@ -1800,3 +1800,30 @@ pが単元であるghostEquivとは別の、p乗算単射だけの単射APIを�
 BS専用の今回のWitt除算公式と有限δの誤差評価。
 共通Witt補題の重複実装・共通ファイルの編集・他チャットへの送信はしない。
 全段モニック表示・平坦性、実完備化/perfectionの完全忠実平坦性と一般B4は未実装。
+
+次のBS専用予定`DeltaWittGhostStep.lean`：既存Mathlibの
+dvd_sub_pow_of_dvd_subを再利用し、δ構造DのFrobenius合同をp乗反復で強める。
+φ^n(a)=Σ_(i≤n) p^i*b_i^(p^(n-i))という前段のghost等式を仮定すると、
+次段のφ^(n+1)(a)から既定係数の部分和を引いた差がp^(n+1)で割り切れる
+ことと、次のghost係数の存在を証明する。p正則性はこの存在段階では不要。
+B4-6のδから全Witt liftの係数構成で使い、G4単射比較を待たずに進める。
+
+次のBS専用予定`DeltaWittGhostCoefficients.lean`では、前段ghost係数の延長
+を選択して既定の係数を保存する有限prefixを構成し、整合性を証明する。
+対角列b_nから全nのghost等式を満たす具体的な係数列を構成する。
+係数列の存在にはp正則性やG4を要求せず、環射性・一意性は別工程とする。
+
+## B4-6：δFrobeniusから次のWitt ghost係数の存在（2026-10-15）
+
+`DeltaWittGhostStep.lean`で既存Mathlib/dvd_sub_pow_of_dvd_subを再利用し、
+φ(a)とa^pのp合同をp^k乗後のp^(k+1)可除性へ強めた。
+前段のghost等式φ^n(a)=Σ_(i≤n)p^i*b_i^(p^(n-i))から、
+φ^(n+1)(a)と既定係数部分和の差がp^(n+1)で割り切れることを証明した。
+これから次のghost係数の存在を証明した。p正則性・完備性は不要。
+3公開定理の対象2052ジョブ、pure B4全公開宣言監査成功。
+標準3公理のみ。新sorry・公理・引用なし。
+全係数列と実際のWitt元の構成を次に行う。環射性・δ座標比較は未実装。
+
+`DeltaWittGhostCoefficients.lean`の構成範囲に、係数列からの実際の
+WittVector p Aの元と、その全ghost成分がφの反復になる比較も含める。
+点ごとのWitt元の存在と、環射を構成する工程は区別する。
