@@ -1,0 +1,63 @@
+import SerrePositivity.Spectra.General.Foundations
+import SerrePositivity.Spectra.StageTwo
+import SerrePositivity.HomotopicalAlgebra.Foundations
+import Lean.Util.CollectAxioms
+
+universe u v
+noncomputable section
+open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory
+open SerrePositivity SerrePositivity.GeneralSymmetricSpectrum
+
+variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C]
+  [MonoidalClosed C] [HasColimitsOfSize.{0, 0} C] [HasLimitsOfSize.{0, 0} C] (K : C)
+
+-- All tests apply without a model structure or simplicial enrichment.
+example (X : C) (E : GeneralSymmetricSpectrum C K) (n : ℕ) :
+    level (pointwiseTensor X E) n = X ⊗ level E n := pointwiseTensor_level X E n
+
+example (X : C) (E : GeneralSymmetricSpectrum C K) (n : ℕ) :
+    level (cotensor X E) n = (ihom X).obj (level E n) := cotensor_level X E n
+
+example (X : C) : pointwiseTensorFunctor (K := K) X ⊣ cotensorFunctor X :=
+  pointwiseTensorCotensorAdjunction X
+
+example (X : C) (E F : GeneralSymmetricSpectrum C K) (f : pointwiseTensor X E ⟶ F) :
+    (pointwiseTensorHomEquiv X E F).symm (pointwiseTensorHomEquiv X E F f) = f :=
+  (pointwiseTensorHomEquiv X E F).symm_apply_apply f
+
+example (X : C) (E F : GeneralSymmetricSpectrum C K) (f : pointwiseTensor X E ⟶ F) :
+    cotensorMappingHomEquiv X E F (pointwiseTensorHomEquiv X E F f) =
+      mappingObjectHomEquiv X E F f := mappingHom_compatibility X E F f
+
+example (E F : GeneralSymmetricSpectrum C K) :
+    (E ⟶ F) ≃ (𝟙_ C ⟶ mappingObject E F) := ordinaryHomEquiv E F
+
+example : pointwiseTensorFunctor (K := K) (𝟙_ C) ≅
+    𝟭 (GeneralSymmetricSpectrum C K) := pointwiseTensorUnitNatIso
+
+example (X Y : C) (E : GeneralSymmetricSpectrum C K) (n : ℕ) :
+    (pointwiseTensorAssociator X Y E).hom.hom.app (FiniteBijection.of n) =
+      (α_ X Y (level E n)).hom := pointwiseTensorAssociator_level X Y E n
+
+example (X Y : C) : pointwiseTensorFunctor (K := K) (X ⊗ Y) ≅
+    pointwiseTensorFunctor Y ⋙ pointwiseTensorFunctor X := pointwiseTensorAssociatorNatIso X Y
+
+example (X : C) (E : GeneralSymmetricSpectrum C K) :
+    (pointwiseTensorFunctor X).map ((pointwiseTensorCotensorAdjunction X).unit.app E) ≫
+      (pointwiseTensorCotensorAdjunction X).counit.app ((pointwiseTensorFunctor X).obj E) =
+        𝟙 _ := tensorCotensor_triangle X E
+
+open Lean in
+run_cmd do
+  let env ← getEnv
+  let mut count : Nat := 0
+  for (name, _) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless (`SerrePositivity.Spectra.General).isPrefixOf
+        env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "Unexpected axioms in {name}: {axioms}"
+    count := count + 1
+  if count == 0 then throwError "No general spectrum declarations audited"
+  logInfo m!"General tensor/cotensor audit passed: {count} declarations, standard axioms only."

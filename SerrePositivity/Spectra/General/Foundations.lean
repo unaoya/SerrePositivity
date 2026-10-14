@@ -8,6 +8,7 @@ public import SerrePositivity.Spectra.General.Free
 public import SerrePositivity.Spectra.General.Evaluation
 public import SerrePositivity.Spectra.General.Limits
 public import SerrePositivity.Spectra.General.TensorClosed
+public import SerrePositivity.Spectra.General.MappingObject
 
 /-! # General symmetric spectra: the category and its free/evaluation API
 
