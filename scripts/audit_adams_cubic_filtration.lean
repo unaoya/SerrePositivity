@@ -1,4 +1,4 @@
-import SerrePositivity.KTheory.Adams.TensorCubeFiltration
+import SerrePositivity.KTheory.Adams.TensorCubeFirstLayer
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.cochainTensorTripleShortComplexFirst_shortExact
@@ -46,3 +46,66 @@ assert_no_sorry SerrePositivity.Adams.tensorCubeKernelFirstMap_mono
 
 assert_no_sorry SerrePositivity.Adams.tensorCubeKernelFirstMap_rotation
 #print axioms SerrePositivity.Adams.tensorCubeKernelFirstMap_rotation
+
+assert_no_sorry SerrePositivity.Adams.tensorCubePairMap
+#print axioms SerrePositivity.Adams.tensorCubePairMap
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerInclusion_pair0
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerInclusion_pair0
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerInclusion_pair1
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerInclusion_pair1
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerInclusion_pair2
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerInclusion_pair2
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeRotation_pair0
+#print axioms SerrePositivity.Adams.tensorCubeRotation_pair0
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeRotation_pair1
+#print axioms SerrePositivity.Adams.tensorCubeRotation_pair1
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeRotation_pair2
+#print axioms SerrePositivity.Adams.tensorCubeRotation_pair2
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerRotation
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerRotation
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerRotation_inclusion
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerRotation_inclusion
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerRotation_cube
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerRotation_cube
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerAction
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerAction
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerInclusion_cubeMap
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerInclusion_cubeMap
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerToKernel
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerToKernel
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerToKernel_inclusion
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerToKernel_inclusion
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerToKernel_mono
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerToKernel_mono
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerToKernel_rotation
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerToKernel_rotation
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerFirstMap
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerFirstMap
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerFirstMap_inclusion
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerFirstMap_inclusion
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerFirstMap_mono
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerFirstMap_mono
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerFirstMap_rotation
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerFirstMap_rotation
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerFirstMap_toKernel
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerFirstMap_toKernel
