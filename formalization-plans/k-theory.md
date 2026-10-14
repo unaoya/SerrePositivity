@@ -4781,3 +4781,25 @@ B4全体とC2までの全体目標は未完了であり、モデル構造には�
 検証：新規・変更ソースの書式・証明マーカー、文書のリンク、git diff --checkを確認した。
 集約ビルドは2107ジョブ、公理監査は250モジュール・2517宣言で成功した。
 標準公理のみでsorry依存なし。新しい証明は標準の計算上限で検証した。
+
+## 116. 実施記録：Δ[0]によるtensor・cotensorの単位（2026-10-14）
+
+[AdjoinBasepointUnit](../SerrePositivity/Spectra/PointedSimplicialSet/AdjoinBasepointUnit.lean)で、
+零次標準単体Δ[0]と終単体的集合の同型を構成した。
+自由な基点の追加の関手を通し、Δ[0]_+と通常のsmashの単位の同型を得た。
+
+[SimplicialTensorUnit](../SerrePositivity/Spectra/SymmetricSpectrum/SimplicialTensorUnit.lean)で、
+この比較と既存の作用の単位比較から、Δ[0]によるtensorと恒等関手の自然同型を構成した。
+[ActionUnitAdjunction](../SerrePositivity/CategoryTheory/Monoidal/ActionUnitAdjunction.lean)で、
+左随伴を恒等関手へ比較すると右随伴も恒等関手へ比較できることを一般の圏で構成した。
+右随伴の比較の順射は、左随伴の逆比較と元の評価の合成に一致する。
+これをtensor・cotensorの随伴へ適用し、Δ[0]によるcotensorと恒等関手の自然同型を得た。
+両方の単位比較のスペクトルの射に関する自然性と、cotensorの比較の評価による公式を公開した。
+
+B4のΔ[0]の単位の比較を検証した。
+K×Lによる反復tensor・cotensorの比較を引き続き実装する。
+B4全体とC2までの全体目標は未完了であり、モデル構造には進まない。
+
+検証：新規ソースの書式・証明マーカー、文書のリンク、git diff --checkを確認した。
+集約ビルドは2110ジョブ、公理監査は253モジュール・2528宣言で成功した。
+標準公理のみでsorry依存なし。新しい証明は標準の計算上限で検証した。

@@ -17,6 +17,7 @@ Mathlibの `CategoryTheory.Mod` を、構成済みの球面対称列へ適用す
 - [MappingSpaceSimplicialOrdinary](MappingSpaceSimplicialOrdinary.lean)：既存の圏構造と整合するSimplicialCategoryのデータ、零次単体のHom同値との一致と恒等射・合成の保存。
 - [SimplicialTensorCotensor](SimplicialTensorCotensor.lean)：通常の単体的集合への自由な基点の追加によるtensor・cotensor、二つの随伴と三つのHom同値、評価・余評価と三角形の法則。
 - [SimplicialTensorNaturality](SimplicialTensorNaturality.lean)：単体的集合のtensor・cotensorの射と、三つのHom同値の三変数の自然性。
+- [SimplicialTensorUnit](SimplicialTensorUnit.lean)：Δ[0]によるtensor・cotensorの単位自然同型、cotensorの比較の評価による公式。
 - [AdjointStructureMaps](AdjointStructureMaps.lean)：懸垂構造射の各段の通常のループへの随伴表示、逆転置による既存の構造射との一致と自然性。
 - [SuspensionLoop](SuspensionLoop.lean)：円による懸垂・ループの関手、随伴・自然なHom同値、単位・余単位・triangle則と各段の対象の公式。
 - [PointwiseTensorAssociator](PointwiseTensorAssociator.lean)：F_0の積の比較による作用の結合同型、生成対象の両変数と値域スペクトルを含む三変数の自然性。
