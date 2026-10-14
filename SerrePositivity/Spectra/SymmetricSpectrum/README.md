@@ -4,6 +4,7 @@ Mathlibの `CategoryTheory.Mod` を、構成済みの球面対称列へ適用す
 基礎圏は基点付き単体的集合の対称列、テンソル積は登録済みのconvolutionである。
 各段の対象は基点付き単体的集合であり、球面の作用から和次数への構造射を得る。
 
+- [PointwiseTensorAssociator](PointwiseTensorAssociator.lean)：F_0の積の比較による作用の結合同型と値域スペクトルに関する自然同型。
 - [PointwiseTensorUnit](PointwiseTensorUnit.lean)：F_0 S^0と球面の比較、各段のsmashによる作用の単位自然同型。各段の左単位子との一致は後続の作業。
 - [PointwiseTensorMapLevels](PointwiseTensorMapLevels.lean)：cotensorの前合成、生成対象のテンソル射と両変数のテンソル射の各段の通常のsmashの法則。
 - [CotensorCurryNaturality](CotensorCurryNaturality.lean)：生成対象の射によるcotensorの前合成とテンソルの射、比較・転置・逆転置・評価の自然性。

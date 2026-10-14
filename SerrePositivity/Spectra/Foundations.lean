@@ -60,6 +60,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorLevelEval
 public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorCurryNaturality
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorMapLevels
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorUnit
+public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorAssociator
 public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorMapLevels
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomUnderlying
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeLeft
@@ -252,6 +253,8 @@ cotensorの前合成の各段は通常の内部Homの前合成になる。
 
 F_0 S^0と球面スペクトルの比較を構成し、各段のsmashによる作用の単位自然同型を構成した。
 各段の通常の左単位子との一致と、作用の結合の整合性は引き続き証明する。
+
+各段のsmashによる作用の結合同型と値域スペクトルに関する自然性も構成した。
 
 ## 未構成の範囲
 
