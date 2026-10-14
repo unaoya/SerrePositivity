@@ -92,6 +92,7 @@ import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PairKoszulUnit
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PairKoszulRing
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PairIterationComparison
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PDCompletion
+import SerrePositivity.CommutativeAlgebra.AdicBoundedTorsion
 import Mathlib.Util.AssertNoSorry
 import Mathlib.Util.PrintSorries
 
@@ -1327,3 +1328,6 @@ assert_no_sorry SerrePositivity.DerivedCompletion.pdCompletionH0_isComplete_d
 assert_no_sorry SerrePositivity.DerivedCompletion.pdCompletion_existsUnique_ringHom
 assert_no_sorry SerrePositivity.DerivedCompletion.pdCompletionIteratedEquiv
 assert_no_sorry SerrePositivity.DerivedCompletion.pdCompletionIteratedEquiv_unit
+
+-- F5-1：有界ねじれからの分離性。
+assert_no_sorry SerrePositivity.isHausdorff_of_adicRecurrenceMap_injective_of_bounded_torsion
