@@ -1,3 +1,6 @@
+import SerrePositivity.BhattScholze.WittQuotientHomFaithful
+import SerrePositivity.BhattScholze.WittQuotientHomLift
+import SerrePositivity.BhattScholze.PerfectPrismHomLift
 import SerrePositivity.BhattScholze.PerfectoidDistinguishedKernel
 import SerrePositivity.BhattScholze.PerfectDeltaPDQuotientEquiv
 import SerrePositivity.BhattScholze.PerfectoidTrialPrism
@@ -1459,3 +1462,12 @@ assert_no_sorry SerrePositivity.BhattScholze.exists_perfectDeltaPDQuotientEquiv
 
 assert_no_sorry SerrePositivity.BhattScholze.exists_perfectoidTrialPrism
 #print axioms SerrePositivity.BhattScholze.exists_perfectoidTrialPrism
+
+assert_no_sorry SerrePositivity.BhattScholze.wittQuotientHom_ext
+#print axioms SerrePositivity.BhattScholze.wittQuotientHom_ext
+
+assert_no_sorry SerrePositivity.BhattScholze.existsUnique_wittQuotientHomLift
+#print axioms SerrePositivity.BhattScholze.existsUnique_wittQuotientHomLift
+
+assert_no_sorry SerrePositivity.BhattScholze.existsUnique_perfectPrismHomLift
+#print axioms SerrePositivity.BhattScholze.existsUnique_perfectPrismHomLift

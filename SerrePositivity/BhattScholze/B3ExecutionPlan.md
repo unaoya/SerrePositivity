@@ -169,3 +169,15 @@ import閉包104モジュールにInputs・CLMST・Paper・RootTower依存なし�
 新規3公開定理の対象ビルド・BS専用監査と全体ビルド（4350ジョブ）成功。
 公理依存は標準3公理のみ。F7・既存引用なし。
 射の持上げと一般B3のIsPerfectoidizationは引き続き未完了。
+
+## B3-4追加：商の射の一意持上げ（2026-10-14）
+
+`WittQuotientHomFaithful`で、完全係数環のWitt射はdistinguished商への射で
+決まることを証明。Perfectionの普遍性と一般tilt比較射の単射性を使う。
+`WittQuotientHomLift`で、一般の完備distinguished Witt商間の環射を
+唯一の標準δ射へ持ち上げた。商のp正則性は不要。
+`PerfectPrismHomLift`でWitt復元を合成し、非零完全prism商間の任意の環射の
+唯一のprism射への持上げを公開した。選択生成元の厳密保存は要求しない。
+
+3公開定理の対象ビルド・BS専用監査が成功。標準3公理のみ、新規引用なし。
+完全試験prismへの一意普遍性を環としてのIsPerfectoidizationへ移す準備が整った。
