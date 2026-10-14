@@ -4872,3 +4872,23 @@ B4全体とC2までの全体目標は未完了であり、モデル構造には�
 検証：新規ソースの書式・証明マーカー、文書のリンク、git diff --checkを確認した。
 集約ビルドは2116ジョブ、公理監査は259モジュール・2602宣言で成功した。
 標準公理のみでsorry依存なし。新しい証明は標準の計算上限で検証した。
+
+## 121. 実施記録：反復cotensorの比較のパラメータ自然性（2026-10-14）
+
+[ActionComparisonNaturality](../SerrePositivity/CategoryTheory/Monoidal/ActionComparisonNaturality.lean)で、
+転置のパラメータ自然性と左随伴の比較の自然性から、右随伴の比較の自然性を導いた。
+二つの随伴の各転置の自然性を、合成随伴の転置の自然性へ送る結果も構成した。
+
+[SimplicialCotensorProductNaturality](../SerrePositivity/Spectra/SymmetricSpectrum/SimplicialCotensorProductNaturality.lean)で、
+反復tensor・cotensorの合成随伴の転置のパラメータ自然性を証明した。
+直積によるtensorの比較の自然性と合わせ、E^(K×L)≅(E^K)^Lの比較の
+単体的集合K・Lの両方の射に関する自然性を証明した。
+前節までのスペクトルの射に関する自然性と合わせ、反復cotensorの比較も三変数に自然となる。
+
+B4の三つの自然なHom同値、評価・余評価、Δ[0]の単位、直積による反復比較は構成済み。
+C1・C2との接続、検証例、一つの入口と引継ぎAPIの最終確認を続ける。
+モデル構造には進まない。
+
+検証：新規ソースの書式・証明マーカー、文書のリンク、git diff --checkを確認した。
+集約ビルドは2118ジョブ、公理監査は261モジュール・2611宣言で成功した。
+標準公理のみでsorry依存なし。新しい証明は標準の計算上限で検証した。
