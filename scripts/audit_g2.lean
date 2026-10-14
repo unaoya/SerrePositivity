@@ -1,3 +1,4 @@
+import SerrePositivity.PerfectComplex.TensorBoundedAbove
 import SerrePositivity.HomologicalAlgebra.DerivedTensorRealization
 import SerrePositivity.HomologicalAlgebra.DerivedTensorBaseChange
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletionNaturality
@@ -338,3 +339,12 @@ example (R : Type) [CommRing R] (a : R) (K : CochainComplex (ModuleCat R) ℤ)
 
 #print axioms SerrePositivity.DerivedCompletion.complexCompletionUnitObject_isIso_of_isComplete
 #print axioms SerrePositivity.DerivedCompletion.isComplete_iff_derivedComplexCompletionUnit_isIso
+
+-- G2-2b foundation: no finite projective dimension assumption.
+assert_no_sorry SerrePositivity.cochainTensorMap_f_isIso_of_diagonal
+assert_no_sorry SerrePositivity.cochainTensor_truncation_f_isIso
+assert_no_sorry SerrePositivity.cochainTensor_acyclic_of_flat_boundedAbove
+assert_no_sorry SerrePositivity.cochainTensor_quasiIso_left_of_boundedAboveFlat
+
+#print axioms SerrePositivity.cochainTensor_acyclic_of_flat_boundedAbove
+#print axioms SerrePositivity.cochainTensor_quasiIso_left_of_boundedAboveFlat

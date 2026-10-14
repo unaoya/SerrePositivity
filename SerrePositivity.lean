@@ -326,6 +326,7 @@ public import SerrePositivity.HomologicalAlgebra.Resolution
 public import SerrePositivity.HomologicalAlgebra.Tor
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorRealization
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorBaseChange
+public import SerrePositivity.PerfectComplex.TensorBoundedAbove
 public import SerrePositivity.HomologicalAlgebra.KoszulTorComparison
 public import SerrePositivity.HomologicalAlgebra.KoszulTensorConeComparison
 public import SerrePositivity.HomologicalAlgebra.KoszulAlgebraTorComparison
