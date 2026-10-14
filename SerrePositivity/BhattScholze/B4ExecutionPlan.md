@@ -2186,3 +2186,27 @@ Mathlib/polyOfInterestの有限変数範囲と既存rename制限を使い、
 有限商の関係イデアル表示を供給済みとはしない。
 多項式剰余から実際の全段モニック商表示・平坦性へ接続する必要が残る。
 実完備化/perfectionの完全忠実平坦性、根付きperfectoid拡大と一般B4は未実装。
+
+`WittDivisionPolynomialRemainder.lean`に、実際の剰余多項式評価を係数とする
+モニックp乗式とWitt積係数等式の同値も含める。
+次のBS専用予定`DeltaDivisionWittPolynomialRelations.lean`で、実際のδ関係式
+の消滅からこの具体的多項式版の根方程式を導く。
+旧関数版の公開APIは維持し、商表示には多項式版と係数射自然性を使う。
+
+`DeltaDivisionWittPolynomialRelations.lean`では、具体的な根多項式を定義し、
+下位δjet消滅の下で次のδ関係式の消滅とモニック根条件が同値となる
+全段の一歩の比較も証明する。単方向の根方程式だけで商同型と数えない。
+
+## B4-6：Witt除算の具体的下位剰余多項式と自然性（2026-10-15）
+
+`WittDivisionPolynomialRemainder.lean`で既存Mathlib/polyOfInterestを
+Fin 2×Fin(n+1)の整数多項式へ制限し、その固定整数多項式を定義した。
+除数の係数を定数、右変数をp乗へ置換して
+wittDivisionRemainderPolynomial x nを実際のMvPolynomial(Fin(n+1)) Rとして構成した。
+pを消す任意Rで、零定数係数除数の第n+2積係数が最高座標のp乗と
+この下位多項式の評価の和になることを証明した。零環も含む。
+剰余多項式の係数環射による自然性はp消滅・非零性なしで証明した。
+指定単元第1係数の下、積係数等式とこの実多項式版のモニック根条件の同値も証明した。
+7公開宣言の対象2056ジョブ、pure B4全公開宣言監査成功。
+標準3公理のみ。新sorry・公理・引用なし。G4やδ環の仮定は使用しない。
+従来の関数剰余・公開APIは維持し、実際の除算δ関係式の次段へ適用する。
