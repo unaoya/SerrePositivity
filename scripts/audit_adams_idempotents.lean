@@ -2,6 +2,7 @@ import SerrePositivity.PerfectComplex.InvolutionShortExact
 import SerrePositivity.PerfectComplex.IdempotentTensor
 import SerrePositivity.PerfectComplex.InvolutionTensor
 import SerrePositivity.PerfectComplex.IdempotentImageIso
+import SerrePositivity.PerfectComplex.IdempotentImageFunctor
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.CochainIdempotent.image
@@ -78,3 +79,13 @@ assert_no_sorry SerrePositivity.CochainInvolution.negativeTensorIso_hom_inclusio
 #print axioms SerrePositivity.CochainIdempotent.imageIso
 #print axioms SerrePositivity.CochainInvolution.positiveTensorIso
 #print axioms SerrePositivity.CochainInvolution.negativeTensorIso
+
+assert_no_sorry SerrePositivity.CochainIdempotent.mapFunctor
+assert_no_sorry SerrePositivity.CochainIdempotent.imageFunctorIso
+assert_no_sorry SerrePositivity.CochainIdempotent.imageFunctorIso_hom_inclusion
+assert_no_sorry SerrePositivity.CochainIdempotent.map_projection_imageFunctorIso_hom
+assert_no_sorry SerrePositivity.CochainIdempotent.mapFunctor_equivariance
+assert_no_sorry SerrePositivity.CochainIdempotent.imageFunctorIso_naturality
+#print axioms SerrePositivity.CochainIdempotent.imageFunctorIso
+#print axioms SerrePositivity.CochainIdempotent.map_projection_imageFunctorIso_hom
+#print axioms SerrePositivity.CochainIdempotent.imageFunctorIso_naturality

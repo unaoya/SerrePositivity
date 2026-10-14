@@ -388,6 +388,7 @@ public import SerrePositivity.KTheory.Adams.KoszulSequenceNormalization
 public import SerrePositivity.KTheory.Adams.SupportNaturality
 public import SerrePositivity.KTheory.Adams.TensorSquareMultiplicativity
 public import SerrePositivity.PerfectComplex.IdempotentTensor
+public import SerrePositivity.PerfectComplex.IdempotentImageFunctor
 public import SerrePositivity.KTheory.LocalizationCoefficients
 public import SerrePositivity.KTheory.Devissage
 public import SerrePositivity.PerfectComplex.Closure
