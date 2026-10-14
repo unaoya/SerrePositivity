@@ -8,7 +8,7 @@ Mathlibの `CategoryTheory.Mod` を、構成済みの球面対称列へ適用す
 - [MappingSpace](MappingSpace.lean)：内部Homの第0段の基点付き写像対象、二変数関手、各段のsmashとの随伴・表現性と評価・転置・逆転置の法則。
 - [AdjointStructureMaps](AdjointStructureMaps.lean)：懸垂構造射の各段の通常のループへの随伴表示、逆転置による既存の構造射との一致と自然性。
 - [SuspensionLoop](SuspensionLoop.lean)：円による懸垂・ループの関手、随伴・自然なHom同値、単位・余単位・triangle則と各段の対象の公式。
-- [PointwiseTensorAssociator](PointwiseTensorAssociator.lean)：F_0の積の比較による作用の結合同型と値域スペクトルに関する自然同型。
+- [PointwiseTensorAssociator](PointwiseTensorAssociator.lean)：F_0の積の比較による作用の結合同型、生成対象の両変数と値域スペクトルを含む三変数の自然性。
 - [PointwiseTensorUnit](PointwiseTensorUnit.lean)：F_0 S^0と球面の比較、生成元の単位射との両立、作用の単位自然同型と各段の通常の左単位子との一致。
 - [PointwiseTensorMapLevels](PointwiseTensorMapLevels.lean)：cotensorの前合成、生成対象のテンソル射と両変数のテンソル射の各段の通常のsmashの法則。
 - [CotensorCurryNaturality](CotensorCurryNaturality.lean)：生成対象の射によるcotensorの前合成とテンソルの射、比較・転置・逆転置・評価の自然性。
