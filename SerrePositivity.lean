@@ -288,6 +288,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalKosz
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedKoszulRing
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PairTowerUniqueness
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PairKoszulComparison
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PDCompletion
 public import SerrePositivity.CommutativeAlgebra.WittAdditionCarry
 public import SerrePositivity.CategoryTheory.EulerTheory
 public import SerrePositivity.LengthAlgebra.Foundations
