@@ -39,4 +39,13 @@ theorem isHausdorff_of_adicRecurrenceMap_injective_of_bounded_torsion (f : R)
   rw [hzero] at hxz
   exact hxz.symm
 
+/-- 有界ねじれの下で、差分作用の全単射性から古典的完備性が従う。 -/
+theorem isAdicComplete_of_adicRecurrenceMap_bijective_of_bounded_torsion (f : R)
+    (hbounded : ∃ N : ℕ, ∀ n : ℕ, ∀ x : M, f ^ n • x = 0 → f ^ N • x = 0)
+    (hbij : Function.Bijective (adicRecurrenceMap (M := M) f)) :
+    IsAdicComplete (Ideal.span {f}) M := by
+  let := isHausdorff_of_adicRecurrenceMap_injective_of_bounded_torsion f hbounded hbij.1
+  let := isPrecomplete_of_adicRecurrenceMap_surjective f hbij.2
+  exact ⟨⟩
+
 end SerrePositivity
