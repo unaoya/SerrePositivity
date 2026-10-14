@@ -1,4 +1,4 @@
-import SerrePositivity.PerfectComplex.TensorEnlarge
+import SerrePositivity.PerfectComplex.TensorBaseChange
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.closedSupport_triangleAdditive_of_cone
@@ -23,3 +23,11 @@ assert_no_sorry SerrePositivity.K0WithSupport.cup_enlarge
 assert_no_sorry SerrePositivity.K0WithSupport.cup_enlarge_left
 assert_no_sorry SerrePositivity.K0WithSupport.cup_enlarge_right
 #print axioms SerrePositivity.K0WithSupport.cup_enlarge
+
+assert_no_sorry SerrePositivity.cochainTensorBaseChangeXIso
+assert_no_sorry SerrePositivity.map_ι_cochainTensorBaseChangeXIso
+assert_no_sorry SerrePositivity.cochainTensorBaseChange_hom_ext
+assert_no_sorry SerrePositivity.cochainTensorBaseChangeIso
+assert_no_sorry SerrePositivity.K0WithSupport.cup_map
+#print axioms SerrePositivity.cochainTensorBaseChangeIso
+#print axioms SerrePositivity.K0WithSupport.cup_map
