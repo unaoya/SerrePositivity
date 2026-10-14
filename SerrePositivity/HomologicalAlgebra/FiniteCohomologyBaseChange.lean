@@ -91,7 +91,8 @@ def homologyTorAcyclic (X : DerivedCategory (ModuleCat.{u} R)) : Prop :=
 lemma scalarExtensionTorVanishing_of_isZero (M : ModuleCat.{u} R) (hM : IsZero M) :
     scalarExtensionTorVanishing φ M := by
   intro n hn
-  change IsZero (((((tensoringLeft (ModuleCat R)).obj (baseChangeScalarModule φ)).leftDerived n).obj M))
+  change IsZero
+    (((((tensoringLeft (ModuleCat R)).obj (baseChangeScalarModule φ)).leftDerived n).obj M))
   exact (((tensoringLeft (ModuleCat R)).obj (baseChangeScalarModule φ)).leftDerived n).map_isZero hM
 
 lemma homologyTorAcyclic_truncLE (X : DerivedCategory (ModuleCat.{u} R))
