@@ -179,3 +179,15 @@ K⊗^L_R R/pと(S/p)⊗^L_(R/p)(T/p)の比較を供給する。
 検証済みの自分の変更だけを個別コミットする。
 純粋成果、既存Andréに相対的な成果、未実装を別に報告する。
 B-I/B6は引用のまま維持し、他チャットへのメッセージは送らない。
+
+## B4-1実装完了（2026-10-14）
+
+`CompatibleRootPerfectoidUniversal.lean`で、任意perfectoid試験環への唯一延長、
+候補のperfectoid性を明示仮定したIsPerfectoidization、任意普遍対象との比較同型を公開。
+零試験環も一般の被約性・完備性APIで処理した。3公開定理の対象ビルドと
+専用監査`scripts/audit_bhatt_scholze_b4.lean`が成功。標準3公理のみ。
+候補のperfectoid性は未結論であり、B4の全射性の完成とは区別する。
+
+共通の一般被約性のモジュールは、推移的importで既存B-Iの入力モジュールも
+読み込むが、再利用したisReducedとこの3定理の証明依存にはsorryAxがない。
+import閉包と実際の証明依存を区別して監査する。共通ファイルは編集しない。
