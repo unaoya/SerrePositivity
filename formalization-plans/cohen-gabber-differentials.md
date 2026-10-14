@@ -57,6 +57,7 @@ M3の通常相対微分・完備相対微分の局所化と分離性判定、階
 一般Roberts定理 `Inputs.frobenius_homology_length_tendsto_zero` 自体は未証明の引用として残る。
 
 この文書を引用2の証明経路・依存関係・受入条件の正本とする。
+[次の実装単位とコード確認に基づく詳細計画](#9-コード確認後の詳細実装計画2026-10-14)を末尾に追加した。
 [1〜3の計画](local-algebra-1-3.md)は共通基盤と過去の実施記録、
 [完備化の統合計画](adic-completion-integration.md)は共通完備化APIの所有・分担を保持する。
 
@@ -2113,3 +2114,160 @@ Basic全体の無変更移植も前層部分のAPI差で失敗したため、検
 採用：M3の局所化と生成性は既存Mathlibを直接利用し、上記小補題は必要な型だけ共通化する。
 余接層・準連接性・接束の大きなフレームワークは将来の幾何的利用先として参照する。
 今回の調査ではLeanソースへの新規移植・証明の追加は行わず、台帳のみ更新した。
+
+## 9. コード確認後の詳細実装計画（2026-10-14）
+
+以下は2026-10-14の現行コードを確認した実装計画である。新しい宣言名は候補であり、
+この節の追加によってLean定理が証明されたことにはしない。
+基盤の保存コミットは `1a7a717`。引用2の公開入口は引き続き `sorry` のままである。
+
+### 9.1 確認範囲と、実装済みAPIの使い分け
+
+確認の中心は、独立摂動、非零イデアルの微分生成、有限係数摂動、共通商比較、
+完備微分の次元式、完備化の核、冪級数の推移列、分数体の分離性判定。
+全新規証明の数学的な逐行レビューではなく、残工程へ接続する公開型・証明経路と依存の確認である。
+
+| 実装済みAPI | 次工程で使う内容 | 追加で供給する内容 |
+| --- | --- | --- |
+| `exists_linearIndependent_derivation_perturbation` | 非零イデアル内の元そのものを選ぶ | 対象導分、像の生成性、有限次元性、イデアルの非零性 |
+| `IsPBasis.moduleFinite_completedKaehler_cofiniteField` | κ_f上の完備微分の有限性 | I=m_D、同じ係数作用、分数体へのテンソルの有限性 |
+| `IsPBasis.exists_completed_finrank_of_parameters` | 十分大きいfで次元h+|f| | 選んだfを以降の全構成で固定 |
+| `IsPBasis.exists_section_of_finitePerturbation` | 有限摂動から新しい切断ψを構成 | μを微分独立性から実際に選ぶ |
+| `IsPBasis.cofiniteCoefficientBaseChangeCompletedDifferentialEquiv_tmul_of` | 比較が普遍微分の像を保つ | 独立な微分の族の移送 |
+| `adicCompletion_map_exact_of_finite_completion` | 通常中項が非有限でも完備化後の完全性 | 係数拡大の通常推移列と完備中項の有限性 |
+| `ker_powerSeriesCompletedDifferentialRestriction_eq_span` | 冪級数の相対微分の核 | 新評価のパラメータイデアル、閉ファイバー、完備性 |
+| `isSeparable_fractionRing_iff_finrank_completedRelativeDifferential_eq_zero` | 生成点での完備相対微分の消滅から分離性 | 同じFからの代数作用と二つの分数体の塔 |
+
+`DerivationIdealSpan.lean` は既に環の元の選択を結論としているため、一般線形代数の再実装は不要。
+一方、`CompletedDifferentialTransitivity.lean` の入口は `Algebra.EssFiniteType R S` を要求する。
+κ_f→κ→DにR=κ、S=Dとして直接適用するのは不可：Dは一般にκ上のessentially finite typeではない。
+この適用条件を、未証明のインスタンスや新しい最終仮定で埋めない。
+
+今回の確認では、全体 `lake build` 4277 jobs、
+`lake env lean scripts/audit_local_algebra.lean`（833件の `assert_no_sorry`）が成功した。
+全体ビルドは同時進行中の他領域を含む作業ツリーについての結果。
+Cohen–Gabberの新規基盤には `sorry`・`axiom`・`native_decide` の追加を検出していない。
+既存の公開引用を含む全体の証明完成を意味しない。
+
+### 9.2 A：完備普遍微分の生成性（最初の実装単位）
+
+配置候補：`CompletedDifferentialGeneration.lean`。
+I=m_D、E=κ_f、C=AdicCompletion I Ω_{D/E}、L=Frac(D)、V=L⊗_D Cを固定する。
+通常の普遍導分からC、続いてVへのD線形写像との合成でδ:D→Vを構成する。
+`Derivation` の底環Eと、VのD・L作用のスカラー塔を明示する。
+
+目標は、Cが有限D加群なら通常微分の像がCをD上で生成し、
+従ってδの像がVをL上で生成する、という一般定理。
+通常Ω自体の有限性や `AdicCompletion.of` の全射性は仮定しない。
+証明案は、通常微分がΩを張ることと完備化の冪商での代表元から、
+その像の線形包がCで稠密であることを示す。
+Cの有限性とI⊆Jac(D)から商のHausdorff性・線形包の閉性を得て閉包を除く。
+既存の `AdicModuleSeparation.lean` とMathlibの冪商・完備化APIを使う。
+テンソル積の生成元の表示から、Vでの生成性を移す。
+
+受入条件：有限性は `Module.Finite` として供給し、finrankの数値だけで代用しない。
+零加群・空の係数方向も扱い、一般定理へ整域性や体の無限性を加えない。
+
+### 9.3 B：独立な係数摂動の選択と新しい切断
+
+配置候補：`PBasisIndependentCoefficientPerturbation.lean`。
+通常有限正規化のτと係数切断φを固定し、既存の次元定理から有限集合eを選ぶ。
+f=e（必要なら以後の用途に応じて拡大）として固定し、AからV_fの生成性と有限性を得る。
+
+δ(φ(β_i))、i∈fを `Fin f.card` へ添字付け直し、
+`f.card ≤ h + f.card` と `exists_linearIndependent_derivation_perturbation` により
+μ_i∈m_Dを選ぶ。μを `f → RingHom.ker (residue D)` へ移し、
+`exists_section_of_finitePerturbation` を適用する。
+結論は切断ψ、補集合でのφとの一致、ψ(β_i)=φ(β_i)+μ_iとその微分の独立性。
+共通商比較の `tmul_of` 補題で、独立性をψ側のV_fへ移す。
+
+非零イデアルの条件は明示する。m_D=⊥の場合はDが体となる分岐を先に扱い、
+剰余写像の切断が同型であることから空変数の正規化を構成する。
+h=0の処理を、m_D≠⊥を要求する一般補題への無理な適用にしない。
+
+受入条件：独立性を結論と同じ形で入力へ要求しない。
+有限体・無限p-basisを許し、μの選択に体の無限性を使わない。
+
+### 9.4 C：有限係数方向を消す核と次元減少（G5の主要残工程）
+
+配置候補：`FiniteCoefficientCompletedDifferential.lean` と
+`CohenGabberCoefficientField.lean`。一般層とGabberへの適用を分ける。
+ψ作用でE=κ_f→κ→Dを固定し、通常の係数制限Ω_{D/E}→Ω_{D/κ}を完備化する。
+目標は、この写像の全射性と、核がf内のdψ(β_i)のD線形包であること。
+
+通常推移列の左項はD⊗_κ Ω_{κ/E}。
+既存の相対単項式基底と `kaehlerBasisOfPMonomialBasis` から、
+Ω_{κ/E}の基底をf内のdβ_iとし、左項を有限自由D加群へ同定する。
+Dのm_D進完備性から左項自身の完備性を供給する。
+`adicCompletion_map_exact_of_finite_completion` を通常推移列へ直接適用し、
+左項の基底の像から核を計算する。完備化した係数制限の全射性もMathlibの
+全射の完備化APIで別途供給し、完全性だけから暗黙に結論しない。
+`CompletedDifferentialTransitivity` のEssFiniteType仮定をこの係数体の場面へ持ち込まない。
+
+局所化LはD上平坦なので、テンソル後も完全性を保ち、核を同じf個の微分のL線形包へ移す。
+Bの独立性から核の次元が|f|、全射の次元式からV_ψの次元がhとなる。
+V_ψの有限性は、有限中項からの全射または共通剰余体の有限性定理で供給する。
+
+受入条件：通常絶対微分の有限性、完備化と任意商の交換を仮定しない。
+f=∅では核0と次元hを得る。比較同型の生成元上の値も監査する。
+
+### 9.5 D：微分基底を持つパラメータ系（G6前半）
+
+配置候補：`DifferentialParameterSelection.lean`。
+Aの生成性を新係数体上のV_ψへ適用する。
+`span_derivation_ideal_eq_top` によりm_D内の微分が張ることを得て、
+有限次元空間の基底選択からf_i∈m_D、i:Fin hを選ぶ。
+選んだ元の微分が基底であることを、添字同値と実際の値を含めて証明する。
+
+τは既存の通常有限単射F₀から選ぶ。
+F₀(X_i)=τ_iとX_i≠0、F₀の単射性を用いればτ_i≠0を供給できるため、
+一般のパラメータ系の各成分の非零性を新規に大きな次元論で証明する必要はない。
+y_i=τ_i^p(1+f_i)と置き、局所環で1+f_iが単元であることを示す。
+単元倍と正の冪による生成イデアルの根基保存からyがパラメータ系であることを証明する。
+Leibniz則と `derivation_pow_char_eq_zero` からδ(y_i)=τ_i^p·δ(f_i)を得る。
+L内のτ_i^pの非零性から、各基底ベクトルの可逆スカラー倍による基底の移送を行う。
+
+受入条件：根基保存と微分基底の２つを独立に検証する。
+h=0は空族、h=1は一元族として扱い、τ_iの非零性を暗黙にしない。
+
+### 9.6 E：同じ評価の相対微分消滅と分離性（G6後半）
+
+配置候補：`CohenGabberNormalization.lean`。
+ψとyから `exists_injective_finite_powerSeries_map_of_parameters` で
+F:κ[[X]]→Dを構成し、係数・変数の値、有限性、単射性、剰余体への全射性を固定する。
+J=(y_i)とm_D進の２つの完備微分の比較は既存の
+`AdicCompletionChangeIdeal` と有限性・相互の完備性の確認を使う。
+微分基底が元の普遍微分の像であることを、この比較でも保存する。
+
+J進の `ker_powerSeriesCompletedDifferentialRestriction_eq_span` を同じFへ適用する。
+相対微分への全射と核の計算をLへテンソルし、Dで得たdy_iの基底によって
+L⊗_D 完備Ω_{D/κ[[X]]}が零であることを示す。
+分離性判定は同じFから構成したFrac(κ[[X]])→Frac(D)へ適用する。
+`fractionRingMap` と既存の分数体接続で、環上の作用・分数体上の作用・スカラー塔の両立を確認する。
+
+最後にA=κ[[X]]、t=X、標準環同型を選び、既存の正則性・完備性・極大イデアル生成を付ける。
+共通層の定理を証明した後で `Inputs.cohen_gabber_normalization` の型を保持して置換する。
+一般の被約環版や混標数の一般Cohen環の構成は、この整域版の工程へ追加しない。
+
+### 9.7 実装と検証の順序
+
+```text
+A 完備微分の生成性 ─ B 独立摂動・切断 ─ C 係数制限の核・次元h
+                                         └─ D 微分パラメータ ─ E 分離性・Inputs
+```
+
+最初の変更はAの一般定理とそのκ_fへの適用だけに絞る。
+B、C、D、Eを各々レビュー可能なコミットにし、各段階で対象ビルドと
+新規公開宣言の `assert_no_sorry`、元・普遍微分上の写像の両立を確認する。
+一般p-basisの逆方向の特徴付けは、この経路が要求しない限り先行実装しない。
+
+境界例はh=0、h=1、f=∅、有限体、無限p-basis。
+特にT↦T^pによる通常有限正規化について、分離性が未供給の段階では
+分離的正規化の存在を結論しないことを型・依存監査で確認する。
+最終受入は全体 `lake build`、局所代数監査、主定理の `#print sorries` と
+`#print axioms`、文書検査、`git diff --check`。
+引用2が依存から消えたことを宣言名で確認し、他の作業による引用件数の増減と区別する。
+
+この計画はコードの接続条件に基づくもので、追加のLean型照合は各単位の着手時に行う。
+特にAの生成性、Cのテンソル後の核、Eのイデアル比較は実証明が必要な接続であり、
+既存API名があることだけで完成扱いしない。完了日は設定しない。
