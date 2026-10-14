@@ -5595,3 +5595,28 @@ EnrichedRepresentabilityの残件はtensor_points・cotensor_points、すなわ�
 閉構造のcurryHomEquiv'で戻した既存Hom同値との両立。その証明とreceiver登録を次に行う。
 多対象加群転送、スペクトル側monoidal/SM7、具体的PSS/円のモデル入力への接続も残る。
 段階1〜3の全体目標は継続中。
+
+
+## 140. 段階1〜3の実行記録：一般スペクトルの豊穣表現性の完成（2026-10-15）
+
+`General/TensorMappingPoints`と`CotensorMappingPoints`で、通常の射の点をHom対象同型へ送った結果が
+既存mapping随伴の閉転置に一致することを証明した。作用の左単位則・triangle、
+随伴の逆転置、任意パラメータのHom比較を使い、単位値の点とcurryHomEquiv'の両立を得た。
+
+`General/EnrichedRepresentability.spectrumEnrichedRepresentability`でH5の全フィールドを構成した。
+任意C,Kの既存豊穣通常圏・tensor/cotensor receiver上で、両スペクトル変数の自然同型、
+パラメータ反変自然性、tensor_points・cotensor_pointsを実装済み。
+両Hom対象の比較を通常の点へ適用すると既存pointwiseTensorHomEquivに一致することも公開した。
+モデル構造や具体的SSetを仮定せず、sorry・引用axiomなし。
+
+一般入口・利用例・必須モジュール監査へ接続した。集約ビルド成功、新規ソース警告なし。
+`check_general_tensor_cotensor`でreceiver構成・両点の法則・Hom対象比較の点の法則を検証。
+共有比較込み330宣言の公理監査、一般監査31モジュール325宣言、
+全スペクトル・共有基盤監査303モジュール2947公開宣言が標準公理のみで成功した。
+旧StageTwoとの同時import検証を含み、既存monoidal levelの利用例・72宣言監査も再実行成功。
+コミット：点の両立`431f80e`、receiverと利用例`dd56793`。
+
+§133〜§139で段階2に残した作用整合性・豊穣登録・H5接続・Hom対象の表現性は、今回で証明済み。
+次は段階1の多対象加群転送と具体的model互換性、段階3のスペクトル側monoidal/SM7、
+具体的PSS/円のKan–Quillen入力・生成射・presentabilityの接続を進める。
+これらが未完了のため、段階1〜3の全体目標は継続中。安定化はその後の段階である。

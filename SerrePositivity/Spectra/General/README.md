@@ -148,3 +148,13 @@ TensorMappingParameter・CotensorMappingParameterは既存Hom対象同型のXに
 EnrichedMappingParameterは各成分の比較と、H5のtensor_parameter・cotensor_parameterの法則を提供する。
 残るEnrichedRepresentabilityの登録条件は通常の射の点についてのtensor_points・cotensor_points。
 一般監査28モジュール314宣言、共有比較込み利用例監査319宣言が成功。コミットa7c54df。
+
+## 豊穣表現性のreceiver完成（§140）
+
+TensorMappingPointsとCotensorMappingPointsは通常の射の点と閉転置の両立を証明する。
+EnrichedRepresentabilityのspectrumEnrichedRepresentabilityは、両変数自然同型・パラメータ法則・
+両点の法則を持つH5の全フィールドを構成済み。
+Hom対象比較の点は既存pointwiseTensorHomEquivに一致する。
+
+一般監査31モジュール325宣言、共有比較込み利用例監査330宣言が成功。
+コミット431f80e・dd56793。豊穣表現性の実装は完了し、モデル構造とのmonoidal/SM7適合は後続。
