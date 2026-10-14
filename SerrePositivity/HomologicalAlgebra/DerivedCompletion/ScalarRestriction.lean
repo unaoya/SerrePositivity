@@ -26,6 +26,19 @@ theorem isModuleComplete_algebraMap_iff (f : R) (M : Type u)
     simp [adicRecurrenceMap]
   exact (congrArg Function.Bijective he).to_iff
 
+omit [Algebra R S] in
+/-- 合成環準同型による作用の下で、対応する元の完備性を比較する。 -/
+theorem isModuleComplete_ringHom_comp_iff (T : Type u) [CommRing T]
+    (u : R →+* S) (v : S →+* T) (f : R) :
+    (letI := v.toAlgebra;
+      IsModuleComplete S (u f) (ModuleCat.of S T)) ↔
+    (letI := (v.comp u).toAlgebra;
+      IsModuleComplete R f (ModuleCat.of R T)) := by
+  let := v.toAlgebra
+  let := (v.comp u).toAlgebra
+  rw [isModuleComplete_iff_recurrence_bijective, isModuleComplete_iff_recurrence_bijective]
+  rfl
+
 /-- 別の元に関する主元反射は、既にある導来完備性を保つ。 -/
 theorem principalReflection_isModuleComplete_of_other (f : R) (d : S)
     (hS : IsModuleComplete R f (ModuleCat.of R S)) :
