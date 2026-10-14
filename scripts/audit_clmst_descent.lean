@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.DerivedPureHomology
 import SerrePositivity.HomologicalAlgebra.FiniteCohomologyBaseChange
 import SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedAcyclic
 import SerrePositivity.HomologicalAlgebra.BoundedAboveSourceConeTriangle
@@ -239,3 +240,14 @@ assert_no_sorry SerrePositivity.boundedAboveDerivedBaseChange_isGE_of_homologyTo
 
 #print axioms SerrePositivity.boundedAboveDerivedBaseChange_finite_isGE
 #print axioms SerrePositivity.boundedAboveDerivedBaseChange_isGE_of_homologyTorAcyclic
+
+-- D3b: canonical pure layers, normalized by actual homology and natural in all maps.
+assert_no_sorry SerrePositivity.exists_normalizedPureHomologyIso
+assert_no_sorry SerrePositivity.normalizedPureHomologyIso
+assert_no_sorry SerrePositivity.normalizedPureHomologyIso_homology
+assert_no_sorry SerrePositivity.pureHomology_map_injective
+assert_no_sorry SerrePositivity.normalizedPureHomologyIso_naturality
+assert_no_sorry SerrePositivity.normalizedPureHomologyIso_unique
+
+#print axioms SerrePositivity.normalizedPureHomologyIso_naturality
+#print axioms SerrePositivity.normalizedPureHomologyIso_unique
