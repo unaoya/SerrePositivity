@@ -580,3 +580,23 @@ Mathlibの基底変更消去と商テンソル同型を合成し、純粋テン�
 これによりG1の正確な剰余テンソル図式が証明できた。
 次に根付き完全忠実平坦perfectoid拡大を入力する全射性降下を公開し、
 引用なしのそのような拡大の存在を残件として切り分ける。
+
+## B4-5：根付き完全忠実平坦拡大からの全射性降下（2026-10-15）
+
+`RootedPerfectoidSurjectivityDescent`で、既証明の通常mod p全射性を
+G1の正確な剰余テンソル射へ移し、既存の導来p完備からの前完備性と
+完全忠実平坦降下を適用した。
+公開`surjective_of_isPerfectoidization_of_rootedPerfectoidBaseChange`は、
+任意perfectoid基底R・全射algebraMap R S・Sの実導来p完備性・
+f:S→ₐ[R]CのIsPerfectoidization、perfectoidなp完全忠実平坦拡大Tと
+T→S⊗[R]Tの実際の核の両立する根を入力し、fの全射性を結論する。
+Tの全元の根を入力する版、およびIsAbsolutelyIntegrallyClosed Tから
+既存の証明済み根の補題を使う版も公開した。拡大の存在は結論に含めない。
+一般商とpねじれのない商を区別し、p正則性・有限性・古典的完備性を仮定しない。
+
+3公開定理の対象3311ジョブ成功。B4専用引用なし監査を行う。
+B4-5の降下の接続は、明示された拡大データに相対的に証明済みとなった。
+B4-6の引用なしの必要な根付き完全忠実平坦perfectoid拡大の存在が主要残件。
+既存André引用をこの入口に供給する一般形は、予定BS専用
+`AndreSurjectivityConditional.lean`に分け、既存の条件付き監査だけで監査する。
+これを一般B4の引用なし完成やB-S引用解消とは数えない。
