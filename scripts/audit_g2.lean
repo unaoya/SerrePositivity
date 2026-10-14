@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ScalarTowerInversion
 import SerrePositivity.HomologicalAlgebra.DerivedTensorModuleComparison
 import SerrePositivity.HomologicalAlgebra.DerivedBaseChangeRightTensor
 import SerrePositivity.HomologicalAlgebra.DerivedTensorMonoidal
@@ -643,3 +644,19 @@ example (M N : ModuleCat.{u} R) :
     (boundedAboveDerivedTensorModuleFunctor M).obj N ≅ realizedDerivedTensor R M N :=
   boundedAboveDerivedTensorModuleIso M N
 end
+
+-- G2-4: scalar-transition residual holim has zero power-Koszul quotients.
+assert_no_sorry SerrePositivity.adicSequenceShift
+assert_no_sorry SerrePositivity.adicRecurrenceKernelShift
+assert_no_sorry SerrePositivity.adicRecurrenceKernelScalarEquiv
+assert_no_sorry SerrePositivity.adicRecurrenceCokernelShift
+assert_no_sorry SerrePositivity.adicRecurrenceCokernel_smul_shift
+assert_no_sorry SerrePositivity.adicRecurrenceCokernelScalarEquiv
+assert_no_sorry SerrePositivity.DerivedCompletion.scalarComplexTowerHomologyDifference
+assert_no_sorry SerrePositivity.DerivedCompletion.scalarComplexTowerHomotopyLimit_homology_smul_isIso
+assert_no_sorry SerrePositivity.DerivedCompletion.scalarComplexTowerHomotopyLimit_smul_quasiIso
+assert_no_sorry SerrePositivity.DerivedCompletion.scalarComplexTowerHomotopyLimit_smul_isIso
+assert_no_sorry SerrePositivity.DerivedCompletion.scalarComplexTowerHomotopyLimit_pow_smul_quasiIso
+assert_no_sorry SerrePositivity.DerivedCompletion.scalarComplexTowerHomotopyLimit_koszul_isZero
+
+#print axioms SerrePositivity.DerivedCompletion.scalarComplexTowerHomotopyLimit_koszul_isZero
