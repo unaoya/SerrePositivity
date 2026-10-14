@@ -696,6 +696,21 @@ Rの列へ同定した。この同定は各段の標準射影から定義し、�
 次は外側のmapping coneとシフトを含む三項モデルとの比較。
 F3は引き続き未完了で、新しい引用・公理・sorryは追加していない。
 
+### F3：実際のKoszul完備化と三項短複体の同型（2026-10-14）
+
+`ModuleConeCoordinates`で、加群の錐の包含・射影を保つ成分の直積表示と、
+一方の成分が零の場合の同型を証明した。
+`PrincipalKoszulCone`は、既存`koszulCompletionComplex`の次数−1・0・1を列で表し、
+次数0の第2成分と次数1の符号を反転する。
+シフトの微分の負号を明示し、実際の二つの微分が
+`principalTowerBoundaryPair`・`principalTowerObstruction`に一致することを証明した。
+
+`principalCompletionShortComplexIso`は既存複体の`sc 0`から三項モデルへの短複体同型、
+`principalCompletionH0Equiv`はそのH⁰から列の商表示への線形同型である。
+検証：対象モジュールのビルドと11宣言の`assert_no_sorry`が成功。
+標準写像の一致・実際のH⁰への反射性の移送・環構造・二座標の接続は未完了。
+F3の受渡しは引き続き保留し、新しい引用・公理・sorryは追加していない。
+
 ### 保留する選択と引用依存の受入条件
 
 Andréについては、B4に必要な「指定元が両立するp冪根を持つp完全忠実平坦な
