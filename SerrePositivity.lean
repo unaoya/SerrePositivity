@@ -69,6 +69,7 @@ public import SerrePositivity.CLMST.PerfectoidFrobeniusComparison
 public import SerrePositivity.CLMST.CyclicRootEstimate
 public import SerrePositivity.CLMST.ModPHypersurfaceGrowth
 public import SerrePositivity.CLMST.StageModPImageLength
+public import SerrePositivity.CLMST.StageModPLengthBound
 public import SerrePositivity.CommutativeAlgebra.PowerSeriesCoefficientQuotient
 public import SerrePositivity.CLMST.CyclicPLength
 public import SerrePositivity.CommutativeAlgebra.PerfectionIdempotents

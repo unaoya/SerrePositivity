@@ -67,6 +67,16 @@ def stageRootModPFrobenius (n : ℕ) (i : Fin h) (hti : t i = (p : A)) :
     stageRootModPFrobenius A t p n i hti (Ideal.Quotient.mk _ z) =
       stageModPFrobenius A t p n z := rfl
 
+/-- 単射な商射が構成できれば、元の射の核はpの根の生成イデアルに一致する。 -/
+theorem stageModPFrobenius_ker_of_quotient_injective
+    (n : ℕ) (i : Fin h) (hti : t i = (p : A))
+    (hf : Function.Injective (stageRootModPFrobenius A t p n i hti)) :
+    RingHom.ker (stageModPFrobenius A t p n) = Ideal.span {stageX A t p n i} := by
+  have heq : stageModPFrobenius A t p n =
+      (stageRootModPFrobenius A t p n i hti).comp
+        (Ideal.Quotient.mk (Ideal.span {stageX A t p n i})) := rfl
+  rw [heq, RingHom.ker_comp_of_injective _ hf, Ideal.mk_ker]
+
 /-- 有限段の射は、基底環からの作用をmod pの反復Frobeniusへ送る。 -/
 theorem stageModPFrobenius_comp_algebraMap (n : ℕ) :
     (stageModPFrobenius A t p n).comp (algebraMap A (TowerStage A t p n)) =

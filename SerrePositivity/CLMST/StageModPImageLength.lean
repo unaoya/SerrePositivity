@@ -6,7 +6,8 @@ public import SerrePositivity.CLMST.ModPHypersurfaceGrowth
 /-! # 有限段の関係式のmod p像の通常長さ
 
 実際のFrobenius射で有限段の三つの関係式を送り、その像の商の長さに
-低次元成長評価を適用する。源の商との長さの同値は、射の全単射性を証明した後の工程である。
+低次元成長評価を適用する。源への長さの移送と上界は、
+射の全単射性を使う別モジュール `StageModPLengthBound` で証明する。
 -/
 
 @[expose] public noncomputable section
