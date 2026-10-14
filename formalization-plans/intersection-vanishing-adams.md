@@ -1,6 +1,6 @@
 # 外部引用5：交点重複度の消滅定理を Adams 作用素で証明する計画
 
-作成：2026-10-14。改訂：2026-10-14（S1–S11 全段の小段・証明契約・実装順序を具体化）。状態：S1.1–S1.6、S2.1–S2.4 実装・検証済み。S3 以降は計画。
+作成：2026-10-14。改訂：2026-10-14（S1–S11 全段の小段・証明契約・実装順序を具体化）。状態：S1.1–S1.6、S2.1–S2.4、S3.1–S3.7 実装・検証済み。S4 以降は計画。
 対象は [Inputs/IntersectionTheory.lean](../SerrePositivity/Inputs/IntersectionTheory.lean) の
 `Inputs.intersectionVanishing`（Roberts–Gillet–Soulé の消滅定理）。
 並行する Chow 群の経路は [サイクルの計画](intersection-vanishing-cycles.md)。
@@ -208,7 +208,7 @@ K6 の局所拡大 `B` については、平坦性・正則性・`m_R B = m_B`�
 上記の区切りに加え、局所正則性・次元公式を §4.7 の独立した区切りとして検証する。
 実際の実装順序・依存関係は §4.9 の 11 ステップで管理する。
 各区切りで対象モジュールのビルドと公理監査を行い、最終段階で利用先をまとめて検証する。
-S1・S2 の定義・証明は実装済み。実装の対応と検証記録は §4.18・§4.20 を参照。
+S1–S3 の定義・証明は実装済み。実装の対応と検証記録は §4.18・§4.20・§4.21 を参照。
 
 ## 4.6 K2g：有限生成格子による局所化の核の直接証明
 
@@ -793,7 +793,7 @@ S9 は `ψ²`、S10.9 は `ψ³_E` をその入力に使う。
 
 **計画の状態の扱い**：各小段は「証明契約・経路を指定」「Lean 実装」「ビルド・公理監査」の三段階で記録する。
 全小段の契約・経路を記載し、S1 の小段は実装・ビルド・公理監査を完了した。
-S2 も実装・ビルド・公理監査を完了した。S3 以降は未実装で、S5 の外部コード適合性・S6 の totalization API・S7/S10 の同変同型には実装時の検証が残る。
+S2・S3 も実装・ビルド・公理監査を完了した。S4 以降は未実装で、S5 の外部コード適合性・S6 の totalization API・S7/S10 の同変同型には実装時の検証が残る。
 
 ## 4.18 S1 の実装・検証記録（2026-10-14）
 
@@ -937,7 +937,7 @@ S5 が必要とする分解存在は S4.1 の時点で独立して利用可能�
 
 ### 次に着手する順序と記録
 
-S2.1–S2.4 は以下の記録のとおり完了した。次の着手点は **S3.1**、続いて S3.2–S3.7。
+S2.1–S2.4、S3.1–S3.7 は以下の記録のとおり完了した。次の着手点は **S4.1**、続いて S4.2–S4.7。
 各小段の記録は「入力／追加した API／対象ビルド／監査結果／残る後段への依存」を含める。
 未確定なのは主に S5 の外部 API 接続、S6.1 の整数添字テンソル接続、S7.7・S10.8 の同変同型。
 それぞれの判断に必要な検証と代替経路を上で指定した。
@@ -969,8 +969,56 @@ S2.1–S2.4 は以下の記録のとおり完了した。次の着手点は **S3
 - ルートの公開 import に S2 を追加した最終版で
   `lake build SerrePositivity SerrePositivity.PerfectComplex.K0Functoriality SerrePositivity.Paper.Lemma3_5`
   が成功（4323 jobs）。既存の `scripts/audit_adams_support.lean` と `scripts/audit_axioms.lean` も成功。
-- S3 の `ker λ=H`、局所化の全射性、一元消去・格子の定理はまだ追加していない。
+- S2 完了時点では S3 の `ker λ=H`、局所化の全射性、一元消去・格子の定理はまだ追加していなかった。
   S2.4 の核への包含を、核の等式と取り違えない。
+
+## 4.21 S3 の実装・検証記録（2026-10-14）
+
+| 小段 | 実装ファイル・主要 API | 状態 |
+| --- | --- | --- |
+| S3.1 | `KTheory/TorsionAnnihilator`：有限集合・有限生成加群の共通消去元、`exists_annihilating_mem_of_localized_zero`、消去元による台の包含 | 完了。コミット `3429a1d` |
+| S3.2 | `KTheory/SupportedLattice`：`IsLocalizationLattice`、`exists_supported_lattice`、`SupportedLocalizationLattice`、局所化・テンソル同型 | 完了。コミット `b2f6be2` |
+| S3.3 | `KTheory/LatticeClass`：`LocalizationG0Quotient`、格子の和・包含による類の一致、同型での移送と不変性 | 完了。コミット `66f4845` |
+| S3.4 | `KTheory/LatticeExact`：中央格子の逆像・像、有限生成性・台・分母条件、短完全列と類の加法性 | 完了。コミット `892deca` |
+| S3.5 | `KTheory/G0Localization`：格子からの逆写像、両逆性、`g0LocalizationQuotientEquiv`、`localize_surjective`、`localize_ker` | 完了。コミット `2e41738` |
+| S3.6 | `KTheory/LocalizationKernelSupport`：積による消去元の統合、`localize_kernel_supported`、`localize_away_kernel_range` | 完了。コミット `63a1770` |
+| S3.7 | `KTheory/LocalizationCoefficients`：係数拡張、全射性・完全性・核、一つの台からの前像、一元局所化の右完全性 | 完了。この記録を含むコミット |
+
+**公開する局所化の範囲**：可換 Noether 環 `R`、任意の乗法的集合 `S`、任意の
+`IsLocalization S B`、任意の閉集合 `Z`。
+全射性の標的は厳密に `G0WithSupport (supportPullback (algebraMap R B) Z)`。
+局所化の核は `localizationTorsionSubgroup S Z` と等しく、核の各元はある `s∈S` に対して
+`G0WithSupport (Z∩V(s))` の元を台の拡大で送ったものとなる。
+`0∈S` を除外する仮定や環の非自明性を追加していない。
+一元局所化では `G₀^{Z∩V(s)}→G₀^Z→G₀^{Z_B}(B)→0` の右完全性が得られる。
+
+**格子と比較の構成**：格子は有限生成部分加群と「各元は分母を掛けると格子に入る」という条件で指定する。
+包含を `IsLocalizedModule` にし、`B⊗_R L≃N` を得る。
+台は、局所化後の台条件から定義イデアルの冪の消去を得て証明する。
+逆写像の選択独立性・同型不変性・短完全列の加法性を先に証明してから G₀ の普遍性で降ろした。
+元の加群から局所化への写像の核は torsion、その像は格子であることを証明し、もう一方の逆性に用いた。
+
+**係数拡張の範囲**：`E⊗ℤG₀` と `E` 線形写像で実装した。
+右完全性と核の一元表示は任意の可換係数環 `E` で成り立つ形で証明済み。
+核は `E⊗ℤH` からの写像の像であり、その元を一個の純テンソルと仮定せず、
+テンソル帰納法による有限和と消去元の積で一つの台にまとめる。
+`E` が `ℤ` 上平坦なら `E⊗ℤH→E⊗ℤG₀` の単射性も証明した。
+標数零の係数体が `ℤ` 上平坦であることは `coefficientField_flat` で接続した。
+
+検証：
+
+- 全七小段の対象モジュールの `lake build` が成功。新規ファイルに `sorry`・新規公理はない。
+- `scripts/audit_adams_localization.lean` で S3 の主要定義・定理を `assert_no_sorry` で監査。成功。
+- 格子の存在、選択独立性、短完全列の加法性、商群同型、核の等式、
+  整数・拡張係数での核の一元表示、一元局所化の右完全性の依存公理は
+  `propext`、`Classical.choice`、`Quot.sound` のみ。
+- 最終公開 import を含む
+  `lake build SerrePositivity SerrePositivity.PerfectComplex.K0Functoriality SerrePositivity.Paper.Lemma3_5`
+  が成功（4336 jobs）。
+- 既存の `scripts/audit_adams_g0.lean`、`scripts/audit_adams_support.lean`、`scripts/audit_axioms.lean` も成功。
+
+S3 は G₀ の局所化を完成した段階。K₀ への移送は比較同型と可換性を構成する S4.6 で行う。
+`Inputs.intersectionVanishing` の消滅定理そのものと S4 以降の成果物は、S3 完了に含めない。
 
 ## 5. 受入条件
 
