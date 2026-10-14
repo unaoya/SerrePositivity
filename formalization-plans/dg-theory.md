@@ -413,3 +413,18 @@ tensor–Hom随伴・閉構造・豊穣計算、右代表加群・Hom end・Yone
 G6には `complexSymmetricCategory`、`complexMonoidalClosed`、三変数自然性と
 `complexEnrichment_eq_closed` を具体的Ch(A)入力として渡せる。
 U5全体は継続中であり、右代表加群・Hom end・Yonedaと一対象比較の完了を引き続き要求する。
+
+### 12.4 U5a：opposite・代表加群・Hom end
+
+`Module/Basic.lean` は Mathlib 豊穣 opposite とその Koszul 符号の成分公式、
+`Module/Representable.lean` は右代表加群 `representable x` の単位・合成保存を証明する。
+右加群の対象は Mathlib `EnrichedFunctor` の型別名であり、新たな対象データは導入しない。
+`Module/Hom.lean` の `moduleHom` は全対象の Hom 複体の直積から、
+全豊穣 Hom に対する自然性を equalizer で課す end。
+`moduleHomEquiv` は任意パラメータ複体 K からの射と Mathlib `GradedNatTrans` の同値。
+Mathlib の現行 `EnrichedNatTrans.out` は閉次数零の通常圏の自然性のみなので、
+それを全次数自然性の代用には使わない。
+
+Hom end の存在仮定は `[Small.{u} D]`、係数環と加群の宇宙は u、対象宇宙 v は独立。
+任意 D に smallness を仮定したことにはせず、この仮定を公開 API に保持する。
+上記3ファイルはビルド成功。加群圏の単位・合成、dg Yoneda、一対象比較は継続中。

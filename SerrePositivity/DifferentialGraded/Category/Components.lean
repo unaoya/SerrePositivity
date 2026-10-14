@@ -96,6 +96,15 @@ lemma forward_assoc {w x y z : D} {p q r n : ℤ}
   have hv := congrArg (fun l => l.hom (f ⊗ₜ[A] g ⊗ₜ[A] h)) hi
   exact hv.symm
 
+/-- 中間和次数を別名にした斉次合成の結合則。 -/
+lemma forward_assoc_of_sum {w x y z : D} {p q r a b n : ℤ}
+    (f : GradedHom A w x p) (g : GradedHom A x y q) (h : GradedHom A y z r)
+    (ha : p + q = a) (hb : q + r = b) (hn : a + r = n) :
+    forward A (forward A f g ha) h hn =
+      forward A f (forward A g h hb) (by omega) := by
+  subst a b
+  exact forward_assoc A f g h hn
+
 /-- 通常順の結合則。Koszul 符号の指数は両側で同じ。 -/
 lemma compose_assoc {w x y z : D} {p q r n : ℤ}
     (f : GradedHom A w x p) (g : GradedHom A x y q) (h : GradedHom A y z r)
