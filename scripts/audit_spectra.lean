@@ -2,7 +2,7 @@
 -- スペクトルと、そのための共通圏論・群論の公開宣言を標準公理のみで監査する。
 import SerrePositivity.Spectra.Foundations
 import SerrePositivity.Spectra.Pointed.SmashPushoutProduct
-import SerrePositivity.Spectra.ModelCategory.SimplicialCofibrancy
+import SerrePositivity.Spectra.ModelCategory.PointedGenerators
 import SerrePositivity.Spectra.General.Foundations
 import SerrePositivity.Spectra.General.SimplicialComparison
 import SerrePositivity.Spectra.ModelCategory.LevelClasses
@@ -39,7 +39,8 @@ run_cmd do
       throwError "Unexpected axioms in {name}: {unexpected}"
     declarations := declarations + 1
     unless modules.contains mod do modules := modules.push mod
-  for expected in #[`SerrePositivity.Spectra.ModelCategory.SimplicialGenerators,
+  for expected in #[`SerrePositivity.Spectra.ModelCategory.PointedGenerators,
+      `SerrePositivity.Spectra.ModelCategory.SimplicialGenerators,
       `SerrePositivity.Spectra.ModelCategory.SimplicialCofibrancy,
       `SerrePositivity.Spectra.Pointed.SmashPushoutProduct,
       `SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport,

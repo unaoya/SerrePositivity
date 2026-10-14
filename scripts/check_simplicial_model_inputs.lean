@@ -1,4 +1,4 @@
-import SerrePositivity.Spectra.ModelCategory.SimplicialCofibrancy
+import SerrePositivity.Spectra.ModelCategory.PointedGenerators
 import SerrePositivity.Spectra.General.Foundations
 import SerrePositivity.Spectra.StageTwo
 import Lean.Util.CollectAxioms
@@ -23,6 +23,16 @@ example (X : PointedSimplicialSet.{u}) : Mono X.hom := pointed_basepoint_mono X
 example (X : PointedSimplicialSet.{u}) : IsCofibrant X := pointedSimplicialSet_isCofibrant X
 example : IsCofibrant PointedSimplicialSet.circle.{u} := circle_isCofibrant
 
+example : pointedI.{u}.HasSmallObjectArgument.{u} := pointedI_smallObjectArgument
+example : pointedJ.{u}.HasSmallObjectArgument.{u} := pointedJ_smallObjectArgument
+example {A B : PointedSimplicialSet.{u}} (f : A ⟶ B) (hf : pointedI f) :
+    IsCardinalPresentable A Cardinal.aleph0.{u} := pointedI_domain_presentable f hf
+example {A B : PointedSimplicialSet.{u}} (f : A ⟶ B) (hf : pointedJ f) :
+    IsCardinalPresentable A Cardinal.aleph0.{u} := pointedJ_domain_presentable f hf
+example : pointedI.{u}.rlp = I.rlp.inverseImage PointedSimplicialSet.forget :=
+  pointedGenerators_rlp I
+example : pointedJ.{u}.rlp = fibrations PointedSimplicialSet.{u} := pointedJ_rlp
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -30,7 +40,8 @@ run_cmd do
   for (name, _) in env.constants.toList do
     let some idx := env.getModuleIdxFor? name | continue
     unless #[`SerrePositivity.Spectra.ModelCategory.SimplicialGenerators,
-        `SerrePositivity.Spectra.ModelCategory.SimplicialCofibrancy].contains
+        `SerrePositivity.Spectra.ModelCategory.SimplicialCofibrancy,
+        `SerrePositivity.Spectra.ModelCategory.PointedGenerators].contains
         env.header.modules[idx.toNat]!.module do continue
     let axioms ← collectAxioms name
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
