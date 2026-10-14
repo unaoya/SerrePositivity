@@ -1,6 +1,7 @@
 import SerrePositivity.CommutativeAlgebra.IdempotentImageAnnihilator
 import SerrePositivity.HomologicalAlgebra.KoszulTorComparison
 import SerrePositivity.HomologicalAlgebra.KoszulTensorConeComparison
+import SerrePositivity.HomologicalAlgebra.KoszulAlgebraTorComparison
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.ideal_le_pow_sup_of_quotient_image_idempotent
@@ -94,3 +95,27 @@ example (R : Type) [CommRing R] {n : ℕ} (z : Fin n → R) :
 #print axioms SerrePositivity.koszulTensorConeIso_naturality
 #print axioms SerrePositivity.koszulModuleTorComparison
 #print axioms SerrePositivity.koszulTensorConeNatIso_power_transition
+
+-- KL1c: the ordinary C-module structure, not an unverified transported scalar action.
+assert_no_sorry SerrePositivity.algebraBaseChangeTensorIso
+assert_no_sorry SerrePositivity.algebraBaseChangeTensorIso_coefficient_scalar
+assert_no_sorry SerrePositivity.algebraKoszulTensorIso
+assert_no_sorry SerrePositivity.algebraKoszulTensorIso_coefficient_scalar
+assert_no_sorry SerrePositivity.restrictCochainHomologyIso
+assert_no_sorry SerrePositivity.algebraKoszulTorComparison
+assert_no_sorry SerrePositivity.algebraKoszulTorComparison_coefficient_scalar
+assert_no_sorry SerrePositivity.algebraKoszulTorComparison_scalar_eq_zero_iff
+assert_no_sorry SerrePositivity.algebraKoszulHomology_annihilated_of_tor_annihilated
+assert_no_sorry SerrePositivity.algebraKoszulHomology_powers_annihilated_of_tor_annihilated
+
+-- C need not be finite, Noetherian, flat, or derived complete.
+example (R C : Type) [CommRing R] [CommRing C] [Algebra R C]
+    {n : ℕ} (z : Fin n → R) (hz : IsKoszulResolution z) (I : Ideal C)
+    (hTor : ∀ (N : ModuleCat.{0} R) (i : ℕ), 0 < i →
+      ∀ c ∈ I, torCoefficientScalarEndomorphism C N i c = 0) (i : ℕ) (hi : 0 < i) :
+    I ≤ Module.annihilator C (koszulHomologySelf (algebraMap R C ∘ z) i) :=
+  algebraKoszulHomology_annihilated_of_tor_annihilated z hz I hTor i hi
+
+#print axioms SerrePositivity.algebraKoszulTorComparison_coefficient_scalar
+#print axioms SerrePositivity.algebraKoszulHomology_annihilated_of_tor_annihilated
+#print axioms SerrePositivity.algebraKoszulHomology_powers_annihilated_of_tor_annihilated
