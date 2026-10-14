@@ -54,3 +54,69 @@ example {H : Type u₅} [Category.{v₅} H] (T : HC ⥤ H)
     (RF ⋙ T).IsRightDerivedFunctor
       (Functor.whiskerRight β T ≫ (Functor.associator _ _ _).hom) (weakEquivalences D) :=
   rightDerived_postcomp QC QD β T
+
+section Adjunction
+
+variable {L : C ⥤ D} {R : D ⥤ C} (adj : L ⊣ R)
+  [IsLeftQuillen L] [IsRightQuillen R]
+
+-- The actual Mathlib total derived functors admit a derived adjunction.
+noncomputable example :
+    (L ⋙ QD).totalLeftDerived QC (weakEquivalences C) ⊣
+      (R ⋙ QC).totalRightDerived QD (weakEquivalences D) :=
+  derivedAdjunction QC QD adj
+    ((L ⋙ QD).totalLeftDerivedCounit QC (weakEquivalences C))
+    ((R ⋙ QC).totalRightDerivedUnit QD (weakEquivalences D))
+
+variable {LF : HC ⥤ HD} {RF : HD ⥤ HC}
+  (α : QC ⋙ LF ⟶ L ⋙ QD) (β : R ⋙ QC ⟶ QD ⋙ RF)
+  [LF.IsLeftDerivedFunctor α (weakEquivalences C)]
+  [RF.IsRightDerivedFunctor β (weakEquivalences D)]
+
+example (X : C) (Y : D) (f : L.obj X ⟶ Y) :
+    (derivedAdjunction QC QD adj α β).homEquiv (QC.obj X) (QD.obj Y)
+      (α.app X ≫ QD.map f) = QC.map (adj.homEquiv X Y f) ≫ β.app Y :=
+  derivedAdjunction_homEquiv QC QD adj α β X Y f
+
+-- The consumer may use the result as an ordinary adjunction, including its triangle identities.
+example (X : HC) :
+    LF.map ((derivedAdjunction QC QD adj α β).unit.app X) ≫
+      (derivedAdjunction QC QD adj α β).counit.app (LF.obj X) = 𝟙 _ :=
+  (derivedAdjunction QC QD adj α β).left_triangle_components X
+
+example (Y : HD) :
+    (derivedAdjunction QC QD adj α β).unit.app (RF.obj Y) ≫
+      RF.map ((derivedAdjunction QC QD adj α β).counit.app Y) = 𝟙 _ :=
+  (derivedAdjunction QC QD adj α β).right_triangle_components Y
+
+example (hu : ∀ (X : C), IsCofibrant X →
+    IsIso ((derivedAdjunction QC QD adj α β).unit.app (QC.obj X)))
+    (hc : ∀ (Y : D), IsFibrant Y →
+    IsIso ((derivedAdjunction QC QD adj α β).counit.app (QD.obj Y))) :
+    LF.IsEquivalence := (derived_isEquivalence_iff QC QD adj α β).2 ⟨hu, hc⟩
+
+-- The usual model-level weak-equivalence mate condition suffices, without a
+-- separately supplied functorial replacement or an equivalence assumption.
+example (h : ∀ (X : C), IsCofibrant X → ∀ (Y : D), IsFibrant Y →
+    ∀ (f : L.obj X ⟶ Y), WeakEquivalence f ↔ WeakEquivalence (adj.homEquiv X Y f)) :
+    LF.IsEquivalence := derived_isEquivalence_of_mate_weakEquivalences QC QD adj α β h
+
+variable {LF' : HC ⥤ HD} {RF' : HD ⥤ HC}
+  (α' : QC ⋙ LF' ⟶ L ⋙ QD) (β' : R ⋙ QC ⟶ QD ⋙ RF')
+  [LF'.IsLeftDerivedFunctor α' (weakEquivalences C)]
+  [RF'.IsRightDerivedFunctor β' (weakEquivalences D)]
+
+-- Both adjunction transformations transport naturally across changes of derived choices.
+example : (derivedAdjunction QC QD adj α β).unit ≫
+    Functor.whiskerRight (leftChoiceIso QC QD α α').hom RF ≫
+    Functor.whiskerLeft LF' (rightChoiceIso QC QD β β').hom =
+      (derivedAdjunction QC QD adj α' β').unit :=
+  derivedAdjunction_unit_choice QC QD adj α β α' β'
+
+example : Functor.whiskerRight (rightChoiceIso QC QD β β').hom LF ≫
+    Functor.whiskerLeft RF' (leftChoiceIso QC QD α α').hom ≫
+    (derivedAdjunction QC QD adj α' β').counit =
+      (derivedAdjunction QC QD adj α β).counit :=
+  derivedAdjunction_counit_choice QC QD adj α β α' β'
+
+end Adjunction

@@ -5,6 +5,7 @@ public import SerrePositivity.HomotopicalAlgebra.Quillen.Adjunction
 public import SerrePositivity.HomotopicalAlgebra.Under.ModelCategory
 public import SerrePositivity.HomotopicalAlgebra.Transfer.Right
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor
+public import SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence
 
 /-!
 # 共有モデル圏一般論の入口
