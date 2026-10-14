@@ -143,3 +143,14 @@ import閉包104モジュールにInputs・CLMST・Paper・RootTower依存なし�
 新規9公開宣言の個別ビルドとBS専用監査が成功。
 公理依存はpropext・Classical.choice・Quot.soundのみ。
 これから一般完全prismへ移送し、任意試験perfectoid環の対応と射へ進む。
+
+## B3-4追加：一般の完全prism商（2026-10-14）
+
+`FontaineNaturality`で共通Witt持上げ一意性からFontaine射の自然性を証明。
+`PerfectoidRingEquiv`で既存IsIntegralPerfectoidを環同型に沿って移送。
+共通側に同等の移送APIが存在しないため、BSの商比較に必要な補題としてBS内へ置いた。
+`PerfectPrismQuotientPerfectoid`でF4のWitt復元と上記一般Witt商の結果を合成し、
+任意の完全oriented prismの商のIsIntegralPerfectoidを証明した。
+一般のpねじれ商と零環を含み、F7や引用に依存しない。
+3公開定理の対象ビルド・BS専用監査が成功。公理依存は標準3公理のみ。
+任意perfectoid環の逆対応・射・一般IsPerfectoidizationは未完了。
