@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.CharacteristicPPerfectoid
 import SerrePositivity.BhattScholze.CompatibleRootQuotient
 import SerrePositivity.BhattScholze.CompatibleRootIdeal
 import SerrePositivity.BhattScholze.PCompletedDeltaDivisionPowerTorsion
@@ -1197,3 +1198,8 @@ assert_no_sorry SerrePositivity.BhattScholze.existsUnique_compatibleRootCompleti
 #print axioms SerrePositivity.BhattScholze.existsUnique_compatibleRootCompletionLift
 
 #print sorries SerrePositivity.BhattScholze.existsUnique_compatibleRootCompletionLift
+
+-- N3a CharacteristicPPerfectoid
+assert_no_sorry SerrePositivity.BhattScholze.isIntegralPerfectoid_of_perfectRing_p_eq_zero
+#print axioms SerrePositivity.BhattScholze.isIntegralPerfectoid_of_perfectRing_p_eq_zero
+#print sorries SerrePositivity.BhattScholze.isIntegralPerfectoid_of_perfectRing_p_eq_zero
