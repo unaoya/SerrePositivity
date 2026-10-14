@@ -1,0 +1,5 @@
+import SerrePositivity.KTheory.Adams.CupVanishing
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.Adams.LocalizationAdamsFamily.cup_enlarge_eq_zero
+#print axioms SerrePositivity.Adams.LocalizationAdamsFamily.cup_enlarge_eq_zero
