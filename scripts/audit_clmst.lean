@@ -97,6 +97,7 @@ import SerrePositivity.HomologicalAlgebra.DerivedCompletion.BoundedTorsionCompar
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalQuotientComplete
 import SerrePositivity.CommutativeAlgebra.AdicBoundedTorsionQuotient
 import SerrePositivity.CommutativeAlgebra.WittLiftUniqueness
+import SerrePositivity.CommutativeAlgebra.WittLiftConstruction
 import Mathlib.Util.AssertNoSorry
 import Mathlib.Util.PrintSorries
 
@@ -1357,3 +1358,8 @@ assert_no_sorry SerrePositivity.isAdicComplete_principal_power_quotient_natCast_
 -- F4-1：Witt持上げの一意性。
 assert_no_sorry SerrePositivity.wittLift_teichmuller_eq
 assert_no_sorry SerrePositivity.wittLift_unique
+
+-- F4-2：一般Witt持上げの存在と剰余図式。
+assert_no_sorry SerrePositivity.wittResidueLift
+assert_no_sorry SerrePositivity.wittResidueLift_mod_p
+assert_no_sorry SerrePositivity.existsUnique_wittResidueLift
