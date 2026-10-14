@@ -5366,3 +5366,42 @@ Cの対称closed monoidal構造と小さい極限余極限を要求する。作�
 今回のordinary Hom表現性だけでV値Hom対象の表現性やSM7を完成扱いにしない。
 多対象加群転送、スペクトル側monoidal/SM7と具体的PSS/円のモデル入力への接続も残る。
 段階1〜3の全体目標は継続中。
+
+
+## 134. 段階1〜3の実行記録：一般作用の整合性とC値豊穣構造（2026-10-15）
+
+### 134.1 作用と写像対象の法則
+
+`General/PointwiseTensorCoherence`を追加した。移送した二変数関手のパラメータ射を
+free-left自然性で計算し、各段がf⊗idであることを証明した。
+結合子の両パラメータ自然性、pentagon、triangle、左単位則を、既存の一般係数加群の
+各段法則から証明した。任意C,Kでモデル構造や具体的SSetを仮定しない。
+
+`General/MappingEnrichment`を追加した。既存のmappingObjectとmappingObjectAdjunctionを使い、
+二回の評価を転置した合成、作用の単位比較を転置した単位、両単位則・結合則を証明した。
+通常の射からの点の対応について恒等射・合成の保存も証明した。
+`mappingEnrichedCategory`と`mappingEnrichedOrdinaryCategory`はMathlibの既存構造を構成する。
+Hom対象はmappingObjectで、通常の射の同値は§133のordinaryHomEquivと定義上で一致する。
+既存の通常のスペクトル圏を保持し、局所的なinstanceとして利用する。グローバル登録はしていない。
+
+一般入口とREADMEに接続した。旧API・共有ルートimport・M5担当ファイルを変更していない。
+
+### 134.2 検証とコミット
+
+集約ビルドが成功し、新規ソース警告なし。
+`check_general_tensor_cotensor`は作用の各段パラメータ射・pentagon・triangle・左単位則、
+豊穣構造の構成、合成・単位の公式、ordinaryHomEquivとの一致、局所instanceの利用を検証。
+同スクリプトは一般実装239宣言（比較入口を除く内部補助込み）の公理監査に成功。
+一般スペクトル監査は16モジュール256宣言、全スペクトル・共有基盤監査は286モジュール2881公開宣言。
+標準公理のみでsorry・引用依存なし。旧StageTwoの利用例も成功。
+
+コミット：作用整合性`c6f4919`、一般豊穣構造`1d35e43`。
+
+### 134.3 次の受入条件
+
+作用の整合性と豊穣登録は完了した。次は構成した豊穣構造のeHomFunctorと既存の
+mappingObjectBifunctorの自然な比較を証明し、tensor/cotensorのparametrized adjunctionを
+H5のTensorCotensor receiverへ接続する。C値Hom対象の表現性とその一般化された点の両立も必要。
+ordinary Hom随伴と豊穣構造の存在だけで、このHom対象表現性やSM7を完成扱いにしない。
+多対象加群転送、スペクトル側monoidal/SM7、具体的PSS/円のKan–Quillenモデル入力への接続も残る。
+段階1〜3の全体目標は継続中。安定化はこの目標の後に進める。
