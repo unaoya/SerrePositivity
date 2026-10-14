@@ -703,3 +703,15 @@ freeDeltaFrobenius p σ（X(s,n)↦X(s,n)^p+p X(s,n+1)）について、
 この区切りの最終検証：対象ビルド・pure B4専用全公開宣言監査成功、
 全体4519ジョブ成功。公開されたpure定理は標準3公理のみ。
 生成族を使う降下のimport閉包228件にInputs・CLMST・Paper・RootTowerなし。
+
+## B4-6：多項式Frobeniusのmod p基底への準備（2026-10-15）
+
+予定BS専用モジュール`PolynomialExponentDivMod.lean`、
+`PolynomialExpandDecomposition.lean`、`PolynomialExpandFree.lean`を追加する。
+有限台指数の各座標をn>0で割り、n未満の余り指数と商指数へ分解する
+具体的同値と逆式を前者で証明した。任意個の変数を含む。
+この計算をMathlibのFinsupp同値とcurryへ接続し、
+expand射の自由性から多項式Frobeniusのmod p平坦性を供給する。
+3公開宣言の対象3134ジョブ成功。BS専用監査を行う。
+混標数の自由δ環のFrobenius、完備化後の平坦性、必要な除算包の
+完全忠実平坦性の証明とは区別する。
