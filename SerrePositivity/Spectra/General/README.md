@@ -93,3 +93,14 @@ pentagon・triangle・左単位則を提供する。
 
 モデル構造は不要。豊穣Hom対象のtensor/cotensor表現性とH5 receiverへの接続、
 スペクトル側SM7と具体的PSSモデル入力の検証は引き続き後続。
+
+## パラメータ付き随伴（§135）
+
+`ParametrizedCotensor`は作用とcotensorの二変数随伴、
+`ParametrizedMapping`は作用のflipと既存mappingObjectBifunctorの二変数随伴を提供する。
+いずれもMathlibのParametrizedAdjunctionで、objectwise随伴に加えてパラメータ自然性を証明した。
+共有ParametrizedAdjunctionTransportは任意の圏での制限・左右の自然同型による移送を提供する。
+
+eHomFunctorとの自然な比較によるH5 receiverへの接続と、C値Hom対象の表現性は引き続き後続。
+一般スペクトル監査18モジュール265宣言、共有移送込み利用例監査254宣言が成功。
+コミット31b0b5f・1e9b0ea。

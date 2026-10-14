@@ -5405,3 +5405,42 @@ H5のTensorCotensor receiverへ接続する。C値Hom対象の表現性とその
 ordinary Hom随伴と豊穣構造の存在だけで、このHom対象表現性やSM7を完成扱いにしない。
 多対象加群転送、スペクトル側monoidal/SM7、具体的PSS/円のKan–Quillenモデル入力への接続も残る。
 段階1〜3の全体目標は継続中。安定化はこの目標の後に進める。
+
+
+## 135. 段階1〜3の実行記録：tensor/cotensorと写像対象のパラメータ付き随伴（2026-10-15）
+
+### 135.1 二変数関手の随伴としての接続
+
+共有`CategoryTheory/ParametrizedAdjunctionTransport`を追加した。
+MathlibのParametrizedAdjunctionを、パラメータ関手で制限し、左右の二変数自然同型で移送する。
+ordinary adjunctionだけを取り出して再利用するのではなく、パラメータ自然性の条件も証明して移す。
+任意の圏・通常の随伴を用い、monoidal構造や具体的SSet/dg構造は仮定しない。
+
+`General/ParametrizedCotensor`は内部Homのcontravariantな二変数比較を公開し、
+自由0次による閉加群随伴を制限・移送してpointwiseTensorBifunctor ⊣₂ cotensorBifunctorを構成する。
+既存のpointwiseTensorHomEquivについてパラメータ射との自然性を証明した。
+
+`General/ParametrizedMapping`は自由0次tensor比較の自然性と共有transported_preを使い、
+mappingObjectHomEquivのスペクトル源の自然性を証明した。
+pointwiseTensorBifunctor.flip ⊣₂ mappingObjectBifunctorを構成する。
+新しい右関手を任意に選んだのではなく、既存のスペクトル内部Homを第0段で評価する関手を用いる。
+両パラメータ付き随伴の各対象でのHom同値は既存の随伴と一致し、一般C,Kの利用例で検証した。
+
+### 135.2 検証とコミット
+
+一般集約ビルドと新規対象ビルドが成功し、ソース警告なし。
+`check_general_tensor_cotensor`で両パラメータ付き随伴とそれぞれの自然性を検証。
+一般実装と共有随伴移送の内部補助を含む254宣言の公理監査に成功。
+一般スペクトル監査は18モジュール265宣言、スペクトル・共有基盤公開監査は289モジュール2889宣言。
+公開監査へ共有移送補題のnamespaceと必須モジュール検査も追加した。
+標準公理のみ、sorry・引用依存なし。旧StageTwoの利用例も成功。
+
+コミット：一般随伴移送`31b0b5f`、一般スペクトルのパラメータ付き随伴`1e9b0ea`。
+
+### 135.3 残る接続
+
+次は§134で構成した豊穣構造のeHomFunctorとmappingObjectBifunctorの自然な比較を証明し、
+上記mapping随伴をH5のTensorCotensorへ接続する。
+今回の両ordinary parametrized adjunctionだけでC値Hom対象のtensor/cotensor表現性を完成扱いにしない。
+その自然同型・パラメータ反変性・一般化された点の両立、スペクトル側SM7/monoidal条件、
+多対象加群転送、具体的PSS/円へのモデル入力接続が残る。段階1〜3の全体目標は継続中。
