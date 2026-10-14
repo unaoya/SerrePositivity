@@ -6,3 +6,10 @@ assert_no_sorry SerrePositivity.hasHomologySupportOn_zeroLocus
 assert_no_sorry SerrePositivity.supportZeroLocus_eq
 assert_no_sorry SerrePositivity.HasHomologySupportOn.mono
 assert_no_sorry SerrePositivity.hasHomologySupportOn_inf
+
+-- S1.2: closure and empty support.
+assert_no_sorry SerrePositivity.module_support_subset_union_of_exact
+assert_no_sorry SerrePositivity.HasHomologySupportOn.of_homotopyEquiv
+assert_no_sorry SerrePositivity.HasHomologySupportOn.shift
+assert_no_sorry SerrePositivity.HasHomologySupportOn.mappingCone
+assert_no_sorry SerrePositivity.hasHomologySupportOn_bot_iff
