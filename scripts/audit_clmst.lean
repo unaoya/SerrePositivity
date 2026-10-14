@@ -99,6 +99,7 @@ import SerrePositivity.CommutativeAlgebra.AdicBoundedTorsionQuotient
 import SerrePositivity.CommutativeAlgebra.WittLiftUniqueness
 import SerrePositivity.CommutativeAlgebra.WittLiftConstruction
 import SerrePositivity.CommutativeAlgebra.StrictPRecovery
+import SerrePositivity.CommutativeAlgebra.PerfectionIdealCorrection
 import Mathlib.Util.AssertNoSorry
 import Mathlib.Util.PrintSorries
 
@@ -1381,3 +1382,7 @@ assert_no_sorry SerrePositivity.strictPRecoveryEquiv
 assert_no_sorry SerrePositivity.strictPRecoveryEquiv_mod_p
 assert_no_sorry SerrePositivity.strictPRecovery_unique
 assert_no_sorry SerrePositivity.existsUnique_wittResidueLift_of_complete
+
+-- F6-1：イデアル内の根で互換商の誤差を補正する。
+assert_no_sorry SerrePositivity.exists_perfection_of_errors_in_ideal
+assert_no_sorry SerrePositivity.perfection_dvd_of_coeff_dvd_of_ideal_correction

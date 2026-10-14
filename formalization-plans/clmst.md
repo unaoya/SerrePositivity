@@ -2581,7 +2581,7 @@ F4-3 `0ac751f`、F4-4 `d0676da`。
 
 ### 9.5. F6：一般主イデアル商のperfection射影核
 
-状態：証明経路・ステップを確定（2026-10-14）、実装未着手。
+状態：F6-1完了（2026-10-14）。イデアル内の根による列の補正と、補正付きperfectionの割り算を証明。対象ビルドと両公開宣言の`assert_no_sorry`成功。F6-2以降は未完了。
 完全標数p可換環kの任意の元aとQ=k/(a)、商写像qについて、
 `L := Perfection.lift p k Q q`とし、
 `RingHom.ker (Perfection.coeff Q p 0) = Ideal.span {L a}`を証明する。
