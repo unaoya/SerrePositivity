@@ -2857,6 +2857,19 @@ section を鎖写像とは主張しておらず、再構成の式と完全性は
 次は AAA 成分への次数ごとの retraction と、AAA および三混合成分による
 F₁ の再構成の式を証明し、低い混合列の短完全性へ接続する。
 
+### S10.7a.3c.2a：AAA と三混合成分による F₁ の再構成
+
+`TensorCubeSparsePartition.lean` と `TensorCubeLowMixedReconstruction.lean` に、
+AAA 成分への次数ごとの retraction と、四成分の合成の和が F₁ の恒等射となる式を追加した。
+構造的包含との比較により各混合成分の合成を三乗の次数写像へ移し、
+二つ以上の商成分を含む項が F₁ の包含後に零となることから再構成した。
+retraction と section は各次数の射であり、鎖写像の分裂は仮定していない。
+
+**検証**：再構成モジュールのビルド成功（2790 番目の対象）。専用監査
+`scripts/audit_adams_cubic_reconstruction.lean` の九成果物すべてで
+`assert_no_sorry` が通り、公理は標準三公理のみ。
+短完全性と余核の比較は次の小段。共有ルート import の公開は未コミット。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
