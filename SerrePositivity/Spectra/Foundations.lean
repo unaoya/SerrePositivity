@@ -28,6 +28,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.TensorQuotient
 public import SerrePositivity.Spectra.SymmetricSpectrum.Tensor
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorRightUnit
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorLeftUnit
+public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeRight
 
 /-!
 # スペクトルの具体的基盤の入口
@@ -98,9 +99,12 @@ n以上の段の商を対称群そのもので添字付けた余等化子へ移�
 球面スペクトルとの左テンソル積の単位自然同型も構成し、順逆の射を作用・単位射と比較した。
 球面スペクトル自身では左右の単位比較が一致することも証明した。
 
+自由球面加群との右テンソル積を、生成対称列とのconvolutionへ比較する加群の自然同型を構成した。
+順逆の射を右作用・生成元と比較し、第n段からの自由スペクトルとの比較にも特殊化した。
+
 ## 未構成の範囲
 
-球面上のテンソル積の自由スペクトルとの比較・結合子・対称性とモノイダル構造、
+球面上のテンソル積の自由加群を左因子とする比較・結合子・対称性とモノイダル構造、
 モデル構造と導来演算は引き続き実装する。
 この入口は完成済みの§4の降下入力を変更せず、基盤を独立に検証するためのもの。
 現在の構成に新しい未証明入力はない。
