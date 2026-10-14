@@ -4673,3 +4673,28 @@ B3全体は完了とはしない。B4も引き続き実装する。モデル構�
 検証：新規・変更ソースの書式・証明マーカー、文書のリンク、git diff --checkを確認した。
 集約ビルドは2095ジョブ、公理監査は240モジュール・2444宣言で成功した。
 標準公理のみでsorry依存なし。新しい証明は標準の計算上限で検証した。
+
+## 112. 実施記録：基点付き豊穣構造と既存の圏構造の接続（2026-10-14）
+
+[ReverseComposition](../SerrePositivity/CategoryTheory/Monoidal/ReverseComposition.lean)で、
+通常の射を写像対象の点へ送った後の合成との一致が、入力の因子を交換しても保たれることを証明した。
+交換の自然性と単位の逆比較との両立を使い、二つの点の因子順の違いを取り除いた。
+
+[RepresentedMappingEnrichment](../SerrePositivity/CategoryTheory/Monoidal/RepresentedMappingEnrichment.lean)で、
+通常の射と単位から写像対象への射の同値、および恒等射・合成の対応を共通の構成へまとめた。
+作用の表現性から得る豊穣構造を既存の通常の圏構造へ接続する一般の構成を公開した。
+通常の射の合成との一致を、入力の因子を交換した豊穣合成の保存へ移した。
+スペクトル側のHom同値と射の点への対応もこの共通の構成へ接続した。
+
+[MappingSpacePointedOrdinary](../SerrePositivity/Spectra/SymmetricSpectrum/MappingSpacePointedOrdinary.lean)で、
+基点付き写像対象の豊穣構造をEnrichedOrdinaryCategoryのデータとして構成した。
+既存のスペクトルの射と写像対象の単位からの射のHom同値が、恒等射と合成を保つ。
+この構成は既存の通常のスペクトルの圏構造を使う。
+
+B3の基点付き側の既存の圏構造との接続は検証した。
+忘却関手を通した通常の単体的豊穣構造と、零次単体上の合成・恒等射の対応の接続は引き続き必要である。
+B4も未完了であり、モデル構造には進まない。
+
+検証：新規・変更ソースの書式・証明マーカー、文書のリンク、git diff --checkを確認した。
+集約ビルドは2097ジョブ、公理監査は241モジュール・2452宣言で成功した。
+標準公理のみでsorry依存なし。新しい証明は標準の計算上限で検証した。

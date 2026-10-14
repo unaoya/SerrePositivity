@@ -52,6 +52,15 @@ lemma right_unit {X U : V} (e : 𝟙_ V ⟶ U) (m : U ⊗ X ⟶ X)
   unfold reverse
   rw [braiding_naturality_right_assoc, h, braiding_leftUnitor, Iso.inv_hom_id]
 
+/-- 二つの点の合成との一致は、合成の因子を交換しても保たれる。 -/
+lemma points {X Y Z : V} (f : 𝟙_ V ⟶ X) (g : 𝟙_ V ⟶ Y) (m : Y ⊗ X ⟶ Z)
+    (h : 𝟙_ V ⟶ Z) (hm : (λ_ (𝟙_ V)).inv ≫ (g ⊗ₘ f) ≫ m = h) :
+    (λ_ (𝟙_ V)).inv ≫ (f ⊗ₘ g) ≫ reverse m = h := by
+  unfold reverse
+  rw [braiding_naturality_assoc, reassoc_of% (leftUnitor_inv_braiding (𝟙_ V)),
+    ← unitors_inv_equal]
+  exact hm
+
 /-- 後から適用する射を左に置く合成から、通常の因子順の豊穣圏を構成する。 -/
 @[instance_reducible]
 def enrichedCategory (C : Type u') (Hom : C → C → V)

@@ -2,6 +2,8 @@ module
 
 public import SerrePositivity.CategoryTheory.Monoidal.MappingAssociativity
 public import SerrePositivity.CategoryTheory.Monoidal.ReverseComposition
+public import SerrePositivity.CategoryTheory.Monoidal.MappingArrowComposition
+public import Mathlib.CategoryTheory.Enriched.Ordinary.Basic
 
 /-! # 作用の表現性による合成・単位から豊穣圏を構成する -/
 
@@ -165,6 +167,27 @@ lemma associativity (E F G K : D) (h : associativityEvaluationLaw H a R adj E F 
     (evaluation H R adj E F) (evaluation H R adj G K)
     (evaluation H R adj F K) (evaluation H R adj E G) h
 
+/-- 通常の射と単位から写像対象への射の同値。 -/
+def arrowEquiv (E F : D) : (E ⟶ F) ≃ (𝟙_ V ⟶ hom R E F) :=
+  AdjunctionHomLaws.comparisonHomEquiv (adj E) (u.app E) F
+
+/-- 通常の射に対応する写像対象の点。 -/
+def arrow {E F : D} (f : E ⟶ F) : 𝟙_ V ⟶ hom R E F := arrowEquiv H u R adj E F f
+
+/-- 恒等射と写像対象の単位の対応。 -/
+def arrowIdentityLaw (E : D) : Prop :=
+  AdjunctionHomLaws.comparisonHomIdentityLaw (adj E) (u.app E)
+
+/-- 恒等射は写像対象の単位に対応する。 -/
+lemma arrow_identity (E : D) : arrowIdentityLaw H u R adj E :=
+  AdjunctionHomLaws.comparisonHomEquiv_id (adj E) (u.app E)
+
+/-- 通常の射の合成と写像対象の点の合成の対応。 -/
+def arrowCompositionLaw {E F G : D} (f : E ⟶ F) (g : F ⟶ G) : Prop :=
+  MappingArrowComposition.representedArrowCompositionLaw H a u (adj E)
+    f g (arrow H u R adj g) (arrow H u R adj f)
+    (evaluation H R adj E F) (evaluation H R adj F G)
+
 variable [BraidedCategory V]
 
 /-- 作用の表現性による写像対象の合成を通常の因子順の豊穣圏へまとめる。 -/
@@ -195,5 +218,21 @@ lemma enrichedCategory_comp (hl : ∀ E F, leftUnitLaw H a u R adj E F)
     (ha : ∀ E F G K, associativityLaw H a R adj E F G K) (E F G : D) :
     (enrichedCategory H a u R adj hl hr ha).comp E F G =
       ReverseComposition.reverse (composition H a R adj E F G) := rfl
+
+/-- 表現性による豊穣構造を既存の通常の圏構造と接続する。 -/
+@[instance_reducible]
+def ordinaryCategory (hl : ∀ E F, leftUnitLaw H a u R adj E F)
+    (hr : ∀ E F, rightUnitLaw H a u R adj E F)
+    (ha : ∀ E F G K, associativityLaw H a R adj E F G K)
+    (hi : ∀ E, arrowIdentityLaw H u R adj E)
+    (hc : ∀ {E F G} (f : E ⟶ F) (g : F ⟶ G), arrowCompositionLaw H a u R adj f g) :
+    EnrichedOrdinaryCategory V D where
+  toEnrichedCategory := enrichedCategory H a u R adj hl hr ha
+  homEquiv := arrowEquiv H u R adj _ _
+  homEquiv_id E := hi E
+  homEquiv_comp f g := by
+    apply Eq.symm
+    apply ReverseComposition.points
+    exact hc f g
 
 end SerrePositivity.RepresentedMappingEnrichment

@@ -54,10 +54,9 @@ lemma mappingSpaceArrow_composition_evaluation {E F G : SymmetricSpectrum.{u}}
 /-- 通常の射の合成と写像対象の点の合成が一致するという法則。 -/
 def mappingSpaceArrowCompositionLaw {E F G : SymmetricSpectrum.{u}}
     (f : E ⟶ F) (g : F ⟶ G) : Prop :=
-  MappingArrowComposition.representedArrowCompositionLaw pointwiseTensorBifunctor.{u}
+  RepresentedMappingEnrichment.arrowCompositionLaw pointwiseTensorBifunctor.{u}
     pointwiseTensorAssociatorNatIso.{u} pointwiseTensorUnitNatIso.{u}
-    (pointedMappingSpaceAdjunction E) f g (mappingSpaceArrow g) (mappingSpaceArrow f)
-    (mappingSpaceEvaluation E F) (mappingSpaceEvaluation F G)
+    pointedMappingSpaceFunctor.{u} pointedMappingSpaceAdjunction.{u} f g
 
 /-- 通常の射の合成は写像対象の点の合成に対応する。 -/
 lemma mappingSpaceArrow_composition {E F G : SymmetricSpectrum.{u}}

@@ -69,12 +69,15 @@ lemma mappingSpaceUnit_evaluation (E : SymmetricSpectrum.{u}) :
 /-- 通常のスペクトル射と写像対象の単位からの射の同値。 -/
 def mappingSpaceArrowEquiv (E F : SymmetricSpectrum.{u}) :
     (E ⟶ F) ≃ (𝟙_ PointedSimplicialSet.{u} ⟶ pointedMappingSpace E F) :=
-  AdjunctionHomLaws.comparisonHomEquiv (pointedMappingSpaceAdjunction E)
-    (pointwiseTensorUnitIso E) F
+  RepresentedMappingEnrichment.arrowEquiv pointwiseTensorBifunctor.{u}
+    pointwiseTensorUnitNatIso.{u} pointedMappingSpaceFunctor.{u}
+    pointedMappingSpaceAdjunction.{u} E F
 
 /-- 通常のスペクトル射を写像対象の点へ送る。 -/
 def mappingSpaceArrow {E F : SymmetricSpectrum.{u}} (f : E ⟶ F) :
-    𝟙_ PointedSimplicialSet.{u} ⟶ pointedMappingSpace E F := mappingSpaceArrowEquiv E F f
+    𝟙_ PointedSimplicialSet.{u} ⟶ pointedMappingSpace E F :=
+  RepresentedMappingEnrichment.arrow pointwiseTensorBifunctor.{u} pointwiseTensorUnitNatIso.{u}
+    pointedMappingSpaceFunctor.{u} pointedMappingSpaceAdjunction.{u} f
 
 /-- 写像対象の点から通常のスペクトル射を得る。 -/
 def mappingSpaceArrowInverse {E F : SymmetricSpectrum.{u}}
@@ -83,12 +86,14 @@ def mappingSpaceArrowInverse {E F : SymmetricSpectrum.{u}}
 
 /-- 恒等射の対応先は作用の単位比較の転置という法則。 -/
 def mappingSpaceArrowIdentityLaw (E : SymmetricSpectrum.{u}) : Prop :=
-  AdjunctionHomLaws.comparisonHomIdentityLaw (pointedMappingSpaceAdjunction E)
-    (pointwiseTensorUnitIso E)
+  RepresentedMappingEnrichment.arrowIdentityLaw pointwiseTensorBifunctor.{u}
+    pointwiseTensorUnitNatIso.{u} pointedMappingSpaceFunctor.{u}
+    pointedMappingSpaceAdjunction.{u} E
 
 /-- 恒等射は写像対象の単位に対応する。 -/
 lemma mappingSpaceArrow_identity (E : SymmetricSpectrum.{u}) : mappingSpaceArrowIdentityLaw E :=
-  AdjunctionHomLaws.comparisonHomEquiv_id (pointedMappingSpaceAdjunction E)
-    (pointwiseTensorUnitIso E)
+  RepresentedMappingEnrichment.arrow_identity pointwiseTensorBifunctor.{u}
+    pointwiseTensorUnitNatIso.{u} pointedMappingSpaceFunctor.{u}
+    pointedMappingSpaceAdjunction.{u} E
 
 end SerrePositivity.SymmetricSpectrum
