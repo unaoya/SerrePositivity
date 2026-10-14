@@ -16,7 +16,8 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Quillen.Brown,
     `SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor,
     `SerrePositivity.HomotopicalAlgebra.Quillen.DerivedAdjunction,
-    `SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence]
+    `SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence,
+    `SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor]
   let mut declarations : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
