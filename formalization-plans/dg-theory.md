@@ -367,3 +367,19 @@ D4はobjectwise quasiIsoによるMathlib局所化を先行し、D4mの射影モ�
 dg加群・semifree解像度・非有界K-flat・導来tensor・dg商・Morita・Perf_dg・既存perfect比較は未実装。
 従ってD0〜D10の全受入、M5完了、M6入力、M9当てはめの完了とは報告しない。
 U4/U5の実装実績後に§9の長期見積もりを再評価する。
+
+## 12. U4/U5 の継続実装（2026-10-15、進行中）
+
+目標はU4とU5の全受入条件であり、以下の区切りをU4/U5全体の完了とは数えない。
+検証した単位ごとに担当範囲だけをコミットする。
+
+### 12.1 U4a：signed braiding
+
+[Complexes/Braiding.lean](../SerrePositivity/DifferentialGraded/Complexes/Braiding.lean) で
+既存 `cochainTensorSymmetry` の両変数自然性、forward/reverse hexagon、対合性を用いた
+`complexSymmetricCategory` を実装した。`braiding_eq_existing` は既存交換同型との定義上の一致。
+すべて任意可換環・非有界複体。三重tensor成分上でKoszul符号の指数の分配を証明する。
+[Checks/Braiding.lean](../SerrePositivity/DifferentialGraded/Checks/Braiding.lean) のビルド成功。
+主要5宣言は標準公理のみ。ZMod 2、Mathlib enriched oppositeのinstance、両hexagonを検査した。
+
+tensor–Hom随伴・閉構造・豊穣計算、右代表加群・Hom end・Yonedaは引き続き実装する。
