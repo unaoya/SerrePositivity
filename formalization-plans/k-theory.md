@@ -4756,3 +4756,28 @@ K×Lの反復tensor・cotensorの比較は引き続き必要であり、B4全体
 検証：新規ソースの書式・証明マーカー、文書のリンク、git diff --checkを確認した。
 集約ビルドは2104ジョブ、公理監査は247モジュール・2495宣言で成功した。
 標準公理のみでsorry依存なし。新しい証明は標準の計算上限で検証した。
+
+## 115. 実施記録：三つのHom同値の三変数の自然性（2026-10-14）
+
+[AdjunctionCompositeNaturality](../SerrePositivity/CategoryTheory/Monoidal/AdjunctionCompositeNaturality.lean)で、
+第二の随伴の転置の自然性を、前段の随伴の値域の自然性によって合成随伴へ移した。
+[HomEquivNaturality](../SerrePositivity/CategoryTheory/Monoidal/HomEquivNaturality.lean)で、
+共通の原変数からの二つの同値の自然性を、逆同値と合成して得る第三の同値へ送った。
+[MappingAdjunction](../SerrePositivity/CategoryTheory/Monoidal/MappingAdjunction.lean)で、
+自由パラメータの随伴も合成した写像対象の転置の自然性と、別の同値を介した自然性を公開した。
+
+[SimplicialTensorNaturality](../SerrePositivity/Spectra/SymmetricSpectrum/SimplicialTensorNaturality.lean)で、
+単体的集合の射によるtensorの生成対象の射・cotensorの前合成と、
+原変数スペクトルの射による通常の単体的写像対象の前合成を構成した。
+基点追加の随伴を通した写像対象のHom同値のEの自然性と、cotensorのHom同値のKの自然性を証明した。
+前節の自然性と合わせて、tensorから写像対象へのHom同値とtensorからcotensorへのHom同値は
+K・E・Fのすべての変数について自然となる。
+これら二つの自然性から、写像対象からcotensorへの第三のHom同値の三変数の自然性も証明した。
+
+B4の三つの自然なHom同値の受入条件は検証した。
+Δ[0]の単位とK×Lによる反復tensor・cotensorの比較を引き続き実装する。
+B4全体とC2までの全体目標は未完了であり、モデル構造には進まない。
+
+検証：新規・変更ソースの書式・証明マーカー、文書のリンク、git diff --checkを確認した。
+集約ビルドは2107ジョブ、公理監査は250モジュール・2517宣言で成功した。
+標準公理のみでsorry依存なし。新しい証明は標準の計算上限で検証した。
