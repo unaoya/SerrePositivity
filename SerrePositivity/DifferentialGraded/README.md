@@ -1,8 +1,8 @@
 # M5：dg 理論の独立入口
 
-U0〜U6 実装・検証（U7〜U10継続中）：2026-10-15。計画は
+U0〜U7 実装・検証（U8〜U10継続中）：2026-10-15。計画は
 [ dg-theory.md ](../../formalization-plans/dg-theory.md)。
-入口は [StageThree.lean](StageThree.lean)（U0〜U6）、[StageTwo.lean](StageTwo.lean)（U0〜U5）、[StageOne.lean](StageOne.lean)（U0〜U3）。共有ルート import は変更しない。
+入口は [StageFour.lean](StageFour.lean)（U0〜U7）、[StageThree.lean](StageThree.lean)（U0〜U6）、[StageTwo.lean](StageTwo.lean)（U0〜U5）、[StageOne.lean](StageOne.lean)（U0〜U3）。共有ルート import は変更しない。
 
 Lean `v4.35.0-rc4`、Mathlib `e6bbacd0e1b7307ff6e17da09cd2455f60804fa6`。
 Mathlib HEAD と lake-manifest を再照合済み。依存更新なし。
@@ -110,6 +110,11 @@ U7c1の `Module/Limits.lean` は objectwise 極限の全次数作用・射影・
 添字対象が u-small な全図式の極限存在と評価による保存を登録する。
 添字射の宇宙は独立。任意の大きい図式には各評価の極限存在を明示する。
 受入入口は `Checks/Limits.lean`。余極限・余積は次の U7c2。
+U7c2の `Module/Colimits.lean` は objectwise 余極限の全次数作用・包含・普遍descを構成し、
+添字対象が u-small な全図式の余極限存在と評価による保存を登録する。
+添字射の宇宙は独立。任意の大きい図式には各評価の余極限存在を明示する。
+受入入口は `Checks/Colimits.lean`。無限余積を含む U7 の受入が揃った。
+U8のホモトピー/準同型、U9の局所化、U10の解像度・三角構造・導来圏比較は未完。
 API契約と共有 G1/G2/G5/G6 への引継ぎは計画§12.8。
 導来圏・射影モデル・dg 商・Morita・Perf と M5全体は未完成。
 一般モデル圏・Quillen・転送・SM7 は共有系列が所有し、この入口には置かない。

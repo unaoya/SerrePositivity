@@ -1,6 +1,6 @@
 # dg 理論（M5）の独立実装計画
 
-作成・調査：2026-10-14。更新：2026-10-15。状態：U0〜U6 を実装・検証済み（U7〜U10は継続中）。
+作成・調査：2026-10-14。更新：2026-10-15。状態：U0〜U7 を実装・検証済み（U8〜U10は継続中）。
 U0〜U3の記録は§11、U4/U5の実績と後続契約は§12。D0〜D10全体の完了ではない。
 この計画だけを受け取る実装担当者向けの仕様である。
 ホモトピー論の共有契約は [k-theory.md §123](k-theory.md#123-次段階の設計i抽象モデル圏とその当てはめ2026-10-14)。
@@ -874,3 +874,46 @@ U7c1の受入入口と既存 `Spectra.StageTwo` の同時ビルド、受入入�
 主要36宣言の公理はすべて `propext`・`Classical.choice`・`Quot.sound` のみ。
 新規 sorry・admit・axiom は0件。文書検査（21 Markdown・311参照・失敗0）、
 担当差分の whitespace 検査も成功。共有ルート・既存 PerfectComplex・並行作業ファイルは編集していない。
+
+### 13.13 U7c2：objectwise 余極限と評価による保存、U7受入
+
+`Complexes/HomColimits.lean` は指定複体余極限からの全次数 Hom を包含前に判定する。
+既存の閉構造による左 tensor の余極限保存を用い、共有の任意Vの一般論を複製しない。
+`Module/Colimits.lean` の `moduleColimitActionCocone`/`moduleColimitAction` は
+全次数 tensor 作用を、左 tensor が運んだ余極限の普遍性から構成する。
+`moduleColimitHom` と包含との可換式、単位・豊穣合成の保存を証明した。
+
+`colimitModule`/`moduleColimitObj` は主 `EnrichedFunctor` と閉零対象。
+`moduleColimitι`/`moduleColimitDesc` は全次数自然な射で、
+`moduleColimitCoconeIsColimit` は加群圏での真の余極限普遍性。
+`moduleEvaluationColimitIso` と包含の可換式は選ばれた余極限の評価比較。
+宇宙は U7c1 と同じ u/v/w/w' で、閉零加群圏には `[Small.{u} D]` を要求する。
+一般図式には全評価の `HasColimit` を明示し、`[Small.{u} J]` があれば
+既存 AddCommGrpCat/ModuleCat/複体余極限から存在を証明する。
+添字射宇宙w'は独立で、追加のLocallySmall仮定を置かない。
+`moduleHasColimitsOfShape`/`OfSize.{w',u}` と評価の保存を登録した。
+
+受入入口は `Checks/Colimits.lean`。任意可換環・非有界複体、独立宇宙、
+objectwise包含/desc、真の普遍性と保存、ℤ・ZMod 2 の可算余積、
+既存複体余極限の評価比較、shift/coneとの同時使用を検証する。主要32宣言を公理監査する。
+
+これで U7 の零対象・有限直和・整数shift・cone・必要な極限余極限、全次数作用と
+objectwise評価、一対象Aの既存複体構成との比較が揃った。
+独立入口は `StageFour.lean`（U0〜U7）。共有ルート import は編集しない。
+U8のホモトピー/準同型、U9の局所化、U10のsemifree・Hom計算・三角構造・
+導来圏余積・一対象Aの既存DerivedCategory比較は未完で、U10までの目標を保持する。
+
+U7全体の8受入入口（Zero/Biproduct/Shift/ShiftCoherence/Cone/ConeMaps/Limits/Colimits）と
+既存 `Spectra.StageTwo` の同時ビルドは成功。8入口を `lake env lean` で直接実行し、
+199宣言すべて標準公理の範囲内と確認した。U0〜U7の累計監査対象は313宣言。
+担当 Lean の sorry・admit・新規axiomは0件。固定Mathlib HEADとmanifestのSHAは一致し、
+Lean v4.35.0-rc4を保持した。既存 `check_spectra_stage2.lean`、文書検査
+（21 Markdown・311参照・失敗0）、担当差分の whitespace 検査も成功。
+共有ルート・既存 PerfectComplex・並行作業ファイルは編集していない。
+
+共有 G1/G2/G5/G6 へは、既存 free/evaluation 随伴に加え、今回の small 図式の
+極限余極限と全次数作用・評価保存を具体的入力として渡せる。
+射影モデル構造・Quillen・転送・SM7の一般論は複製せず、現在のU7に共有API不足のブロックはない。
+次の U8 は既存境界商の K(D)、objectwise quasiIso の MorphismProperty、
+2-out-of-3/retract、ホモトピー・評価・coneによるacyclic性の整合性を証明する。
+U9/U10の局所化・解像度・三角構造・導来圏比較は引き続き未完である。
