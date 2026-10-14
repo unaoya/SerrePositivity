@@ -9,6 +9,7 @@ public import SerrePositivity.HomotopicalAlgebra.Transfer.Right
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor
+public import SerrePositivity.HomotopicalAlgebra.Monoidal.GeneratedBifunctor
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.ModelCategory
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.CofibrantTensor
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.ModuleTransfer

@@ -20,6 +20,8 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Quillen.DerivedAdjunction,
     `SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence,
     `SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor,
+    `SerrePositivity.HomotopicalAlgebra.Monoidal.GeneratedBifunctor,
+    `SerrePositivity.CategoryTheory.LiftingProperties.ParametrizedGeneration,
     `SerrePositivity.HomotopicalAlgebra.Monoidal.ModelCategory,
     `SerrePositivity.HomotopicalAlgebra.Monoidal.CofibrantTensor,
     `SerrePositivity.HomotopicalAlgebra.Monoidal.MonoidAxiom,
@@ -40,6 +42,7 @@ run_cmd do
     unless #[`SerrePositivity.HomotopicalAlgebra,
         `SerrePositivity.CategoryTheory.Enriched,
         `SerrePositivity.CategoryTheory.MorphismProperty.UnderFactorization,
+        `SerrePositivity.CategoryTheory.LiftingProperties.ParametrizedGeneration,
         `SerrePositivity.CategoryTheory.LiftingProperties.Under].any (·.isPrefixOf mod) do continue
     let axioms ← collectAxioms name
     let unexpected := axioms.filter fun ax ↦
