@@ -170,3 +170,20 @@ G4局所化の二案は未選択で、M3の安定モデル構造も未完成の�
 
 コミット：H5a `3706d4a`、H5b `00604a2`、H5c `547fcb6`。
 共有ルートimport、M5、可換環論・CLMSTの担当ファイルは変更していない。
+
+## G5の部分実装：monoid公理と内部加群転送
+
+`Monoidal.MonoidAxiom`の`HasMonoidAxiom.{w}`は独立した追加条件。
+`tensorRightImages`は任意対象のright tensorのMathlib mapの和（射の同型を許す）で、braidingによりleft tensorも含む。
+`relativeCells.{w}`はcoproduct、pushout、transfinite compositionの順に閉じる。
+retract acyclicityは既存の弱同値retract閉性から証明する。
+
+`Transfer.CellMap`はcolimit保存関手でのcell移送を証明する。
+`Monoidal.ModuleTransfer`の`moduleModelCategory M I J`は、braided closedなCの生成モデル構造、
+monoid公理、wサイズ余極限、free(I)/free(J)のsmall-object仮定からMod C Mのモデル構造を作る。
+Mのcofibrancyやcommutativityは不要。free-cell acyclicityは別入力にせずmonoid公理から証明。
+W/Fibはforgetで検出され、free/forgetはQuillen。smallnessはmonoid公理から自動推論しない。
+
+検証は`check_monoid_axiom`, `check_module_model_transfer`と既存の全共有利用例。
+共有監査は19モジュール308宣言。標準公理のみ、sorry・引用依存なし。
+コミットは`63ec369`, `7db1a9d`。多対象加群・具体的SM7・レベルモデル構造は後続。

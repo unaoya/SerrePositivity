@@ -5156,3 +5156,47 @@ S2の一般構造射と各段の誘導表示、S3のtensor/closed/cotensor公開
 S5のレベル・安定モデル構造は後続。H6完了からM3の安定モデル構造完成を主張しない。
 次の主な共有ゲートはG5/G6のmonoid axiom・加群転送・具体的SM7であり、
 一般スペクトルの後続構成とレベル転送へ接続する。G4局所化の二案は引き続き未選択。
+
+## 129. 段階1〜3の実行記録：monoid公理・内部加群転送・一般tensor（2026-10-15）
+
+依頼範囲は、直前の説明の段階1（G5/G6残部）、段階2（一般スペクトルの演算）、
+段階3（レベルモデル構造）すべて。現在この全体目標は実行中で、完了扱いにしない。
+
+### 129.1 完了した実装単位
+
+- `HomotopicalAlgebra/Monoidal/MonoidAxiom.lean`：既存MorphismProperty上のtensor像、
+  coproduct/pushout/transfiniteによるrelativeCells、独立した`HasMonoidAxiom.{w}`。
+  tensor像はMathlibのmap（射の同型による移送を含む）を使い、braidingで左tensorの生成射も含む。
+  任意対象をtensorするtrivial cofibration、生成部分クラスのcell・retract・smallnessを仮定した生成左クラスの弱同値性を証明。
+- `Transfer/CellMap.lean`：colimit-preservingな関手によるpushout、任意shapeのcolimit、
+  coproduct、transfinite compositionとrelativeCellsの移送を証明。忘却のcell保存を未証明の仮定にしない。
+- `Monoidal/ModuleTransfer.lean`：任意のmonoid Mの内部加群へモデル構造を転送。
+  freeModule_cells_acyclicをmonoid公理と忘却のcolimit保存から証明し、H3へ適用。
+  W/Fibの基礎射による判定、free/forgetのQuillen性を公開。
+  Cはbraided closedなcofibrantly generatedモデル圏、wサイズの余極限とmonoid公理を要求。
+  像I,Jのsmall-object仮定は別入力で、Mのcofibrancy・commutativityは要求しない。
+- `Spectra/General/TensorClosed.lean`：既存の可換monoid加群上のclosed symmetric monoidal構造を
+  Sym(K)へ適用。tensor、internalHom、随伴、curry/uncurryと両逆法則を公開。
+  Cの小さい極限を追加要求。円への特殊化は旧sphereTensor/internalHomとrflで一致。
+
+### 129.2 検証とコミット
+
+共有入口ビルド成功。`check_monoid_axiom`, `check_module_model_transfer`が成功。
+後者はモデル構造未装備のMod C Mに構造を作り、同じ構造のW/Fib、両Quillen条件と両分解を検証する。
+既存のfoundations/transfer/derived/monoidal/enriched/StageTwo検証もすべて再実行成功。
+共有公理監査は19モジュール308宣言（内部補助を含む）で標準公理のみ。
+一般スペクトルの利用例と旧特殊化が成功し、一般監査6モジュール95宣言、
+スペクトル・共通基盤監査267モジュール2692公開宣言が標準公理のみで通過。
+
+コミット：monoid公理 `63ec369`、cell移送・内部加群転送 `7db1a9d`、一般tensor/closed `5a408db`。
+M5・可換環論・CLMST・共有ルートimportは変更していない。
+
+### 129.3 全体完了に必要な残作業
+
+| 段階 | 残る受入条件 |
+| --- | --- |
+| 1：G5/G6 | 多対象加群のfree/forget・cellの制御と転送、基点付きsmashのmodel互換性、具体的SSet/スペクトルへのSM7接続。通常の関手圏を豊穣加群圏と同一視しない |
+| 2：一般スペクトル | 一般構造射と各段の自由対象表示、Cによる作用・cotensor、豊穣構造・tensor/cotensorの表現性と両立。tensor/closed API単独で段階2完了としない |
+| 3：レベル構造 | free/evaluationからの生成射、smallnessとcell acyclicityの検証、レベルW/Fibの一致、Mathlib ModelCategoryと関手的置換、具体的PSS特殊化・SM7/monoidal接続の検証。一般の条件付き転送APIだけで具体的存在を完成扱いにしない |
+
+安定化（前回説明の段階4）は今回の目標の後。左Bousfield局所化の二案はまだ選択しない。
