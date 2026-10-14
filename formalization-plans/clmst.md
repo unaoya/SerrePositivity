@@ -337,6 +337,33 @@ F2は証明済み、F3は別の未完了工程である。
 検証：全体ビルド4189ジョブ、追加16宣言の`assert_no_sorry`、主定理とCLMSTの両公理監査が成功。
 新しい引用・公理・sorryはなく、主定理の未証明入力11宣言は変わらない。
 
+### C1：完備塔の最初のFrobenius核の証明（2026-10-14）
+
+`RegularPowerDivisibility`で、rが正則でR/(r)が被約なら、
+r^(k*n)がx^kを割ることからr^nがxを割ることを証明した。
+`RootTower/FrobeniusKernel`は有限段のp根にこれを適用し、
+x^pがpの倍数なら、最初のp根の像がxを割ることを導く。
+
+完備塔のmod pの元を有限段で代表し、そのp乗のpイデアルへの所属を
+十分先の段へ移す。これにより、有限段の根による商の被約性から
+`completedTower_modP_frobenius_kernel_of_stageReduced`で実際の完備塔の核を計算した。
+先へ進んだ有限段を使うので、完備塔への段写像の単射性を別に仮定しない。
+
+最小パラメータ系の場合は、既存の有限段の根による商の整域性から
+被約性を供給し、`completedTower_modP_frobenius_kernel_of_parameters`で核条件を証明した。
+`completedTower_isIntegralPerfectoid_of_parameters`はこの核計算を前回のtilt・Fontaine核へ接続する。
+pの非可逆性も別仮定にせず、零環の場合を分け、非零の場合はp進完備性から導いた。
+`completedTower_isIntegralPerfectoid_of_wittPresentation_and_parameters`はWitt係数表示から
+mod p Frobeniusの全射性も供給し、perfectoid性を証明する。
+
+前節の「最初のFrobenius核の具体的な証明」は、最小パラメータ系について解消した。
+元の`Inputs.completedTower_isIntegralPerfectoid`の型への最終接続はまだ残る。
+元の表示からp正則性・局所性・Noether性・次元・極大イデアル生成を供給し、
+`{i : Fin h // (i : ℕ) ≠ 0}`と`Fin (h-1)`の添字を合わせて接続する。
+したがって、その引用はまだ未証明入力として維持する。F2は証明済み、F3は別工程である。
+検証：全体ビルド4196ジョブ、追加6宣言の`assert_no_sorry`、主定理とCLMSTの両公理監査が成功。
+新しい引用・公理・sorryはなく、主定理の未証明入力11宣言は変わらない。
+
 ### 保留する選択と引用依存の受入条件
 
 Andréについては、B4に必要な「指定元が両立するp冪根を持つp完全忠実平坦な
