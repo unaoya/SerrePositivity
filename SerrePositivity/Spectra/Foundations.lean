@@ -58,6 +58,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorFunctor
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorAdjunction
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorLevelEvaluation
 public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorCurryNaturality
+public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorMapLevels
 public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorMapLevels
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomUnderlying
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeLeft
@@ -244,9 +245,13 @@ F_0との全体の比較の両変数の自然性を証明した。
 F_0との比較と内部Homとの比較の生成対象に関する自然性を証明した。
 転置・逆転置・評価はこの生成対象の射に関しても両立する。
 
+cotensorの前合成の各段は通常の内部Homの前合成になる。
+恒等射の転置とこの前合成の逆転置から、生成対象のテンソル射の各段を計算した。
+両変数のテンソル・スペクトル射の各段は通常のsmashの射の法則を満たす。
+
 ## 未構成の範囲
 
-各段の通常のsmashを持つテンソルの両変数の射の具体式、
+各段のsmashによるテンソルの単位・結合の整合性、
 モデル構造と導来演算は引き続き実装する。
 この入口は完成済みの§4の降下入力を変更せず、基盤を独立に検証するためのもの。
 現在の構成に新しい未証明入力はない。

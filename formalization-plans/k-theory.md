@@ -3994,3 +3994,40 @@ pointwiseTensorとcotensorの随伴の操作を、生成対象の射も含めて
 新しい定義・証明はすべて標準の計算上限で検証し、未検証の証明や計算上限を増やす設定は残していない。
 集約SerrePositivity.Spectra.Foundationsのビルドは2056ジョブで成功した。
 公理監査は201モジュール・2125宣言で成功し、標準公理のみでsorry依存なしを確認した。
+
+## 86. 実施記録：両変数のテンソル射の各段のsmashの法則（2026-10-14）
+
+### 一般の各段のテンソル射の計算
+
+[PointwiseTensorMapLevels](../SerrePositivity/Spectra/SymmetricSequence/PointwiseTensorMapLevels.lean)で、
+恒等射の転置・内部Homの前合成・逆転置の各段の法則から、生成対象の通常のテンソル射を導いた。
+内部Homへの比較の順逆を相殺し、通常の逆転置と前合成の整合性へ帰着する。
+値域の関手の射と合成して、両変数の射の各段が通常のテンソル積の射になることを証明した。
+これらを一般の係数加群の転置・前合成・逆転置の法則へ接続した。
+
+### 対称スペクトルへの適用
+
+[PointwiseTensorMapLevels](../SerrePositivity/Spectra/SymmetricSpectrum/PointwiseTensorMapLevels.lean)で、
+値域の恒等射を使うcotensorMapとcotensorPreの一致を証明した。
+既存の二変数の内部Homの射の法則から、cotensorPreの各段の通常の前合成の法則を得た。
+pointwiseTensorの恒等射の転置にこの前合成を適用し、逆転置の生成対象に関する自然性と相互逆性を使った。
+これにより、pointwiseTensorPostの第q段が生成対象の射と同じ段の恒等射とのsmashになることを証明した。
+既存の値域関手の射の公式と合成して、pointwiseTensorMap f gの第q段がfとgの第q段の射とのsmashになる。
+具体的な係数加群の型の再展開を避けるため、各段の等式を命題として公開した。
+集約FoundationsとスペクトルのREADMEに入口と到達点を追加した。
+
+### 到達点と次の範囲
+
+各段のsmashを持つテンソルの両変数のスペクトル射を、通常のsmashの射として計算できる。
+次はこのテンソルの単位・結合同型と、それらの各段の通常のsmashとの整合性を整える。
+弱同値・モデル構造・導来演算・安定ホモトピー群は引き続き未実装である。
+共有ルートimport・依存設定・並行作業の可換環・CLMST関連ファイルは変更していない。
+定理3.1・補題4.6の二つの降下入力は未変更である。
+
+### 検証
+
+新しい二つのLeanソースの行長・末尾空白・未完了の証明用マーカーを確認した。
+ドキュメントのローカルリンクとgit diff --checkも確認した。
+新しい定義・証明はすべて標準の計算上限で検証し、未検証の証明や計算上限を増やす設定は残していない。
+集約SerrePositivity.Spectra.Foundationsのビルドは2058ジョブで成功した。
+公理監査は203モジュール・2140宣言で成功し、標準公理のみでsorry依存なしを確認した。
