@@ -1,0 +1,8 @@
+import SerrePositivity.PerfectComplex.ClosedSupport
+import Mathlib.Util.AssertNoSorry
+
+-- S1.1: closed support and comparison with the existing ideal support.
+assert_no_sorry SerrePositivity.hasHomologySupportOn_zeroLocus
+assert_no_sorry SerrePositivity.supportZeroLocus_eq
+assert_no_sorry SerrePositivity.HasHomologySupportOn.mono
+assert_no_sorry SerrePositivity.hasHomologySupportOn_inf
