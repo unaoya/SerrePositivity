@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.WittPresentedPerfectoidTensor
 import SerrePositivity.BhattScholze.PerfectoidWittPushout
 import SerrePositivity.BhattScholze.WittCoefficientPushout
 import SerrePositivity.BhattScholze.PerfectoidWittBasePresentation
@@ -228,3 +229,6 @@ assert_no_sorry SerrePositivity.BhattScholze.wittCoefficientPushout_isIntegralPe
 
 assert_no_sorry SerrePositivity.BhattScholze.existsUnique_wittCoefficientPushoutLift
 #print axioms SerrePositivity.BhattScholze.existsUnique_wittCoefficientPushoutLift
+
+assert_no_sorry SerrePositivity.BhattScholze.exists_wittPresentedTensorPerfectoidization
+#print axioms SerrePositivity.BhattScholze.exists_wittPresentedTensorPerfectoidization

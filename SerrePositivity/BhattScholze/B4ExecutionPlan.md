@@ -411,3 +411,16 @@ dがdistinguishedなら候補はperfectoidであり、係数テンソルが零�
 これは具体的な係数Witt商の余積であり、一般perfectoid環のFontaine商表示との
 接続・原環のテンソルからの標準射・mod p図式は引き続き残る。
 導来完備テンソルとの比較を主張せず、一般B4の全射性を完成とは数えない。
+
+## B4-5：Witt表示を入力する通常テンソルのperfectoid化（2026-10-14）
+
+BS専用`WittPresentedPerfectoidTensor.lean`を追加。
+共通distinguished元の像を使うS,TのWitt商表示、全射な基底Witt写像θ、
+θとR→S/Tとの合成図式を明示して入力する公開定理
+`exists_wittPresentedTensorPerfectoidization`を証明。
+S⊗[R]Tから具体的なWitt係数余積への射Fを構成し、左右の標準射の図式と
+`IsPerfectoidization p F`を証明した。係数テンソルが零環になる場合も含む。
+これは通常テンソルに関する普遍perfectoid化であり、導来テンソルとの同型を
+仮定・主張しない。Fontaine表示を実際のperfectoid入力から供給する工程と
+mod p比較、降下、引用なしの根付き拡大は残る。
+対象ビルドとB4専用監査で検証する。
