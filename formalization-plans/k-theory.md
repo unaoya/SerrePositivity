@@ -6006,3 +6006,41 @@ diff --check成功。コミット：射圏比較`02995bb`、monoidal・内部Hom
 次は既存の基点付き/通常SSetによるtensor・cotensor・写像対象という混合豊穣APIにも
 モデル互換性を接続し、一般C,Kの契約を含む段階1〜3の全受入条件を監査する。
 内部Hom-SM7だけを混合豊穣APIのSM7と同一視しない。全体目標は継続中。
+
+
+## 153. 段階1〜3の実行記録：混合tensor/cotensorと豊穣写像対象のモデル互換性（2026-10-15）
+
+共有Monoidal/BifunctorTransportで、任意の三圏のQuillen bifunctorを自然同型で移送し、
+left Quillen関手で第一パラメータを制限する一般補題を証明した。
+自然同型では任意pushout-productの出力射を射圏で比較し、制限では同じ正方形を
+基礎射へreindexする。余極限の選択や対象の一致だけで同一視しない。
+共有入口と必須モジュール監査へ接続した。
+
+General/EnrichedModelは任意C,Kについて、F_0がleft Quillen、スペクトルtensorが
+Quillenという二つのモデル的条件から、既存pointwiseTensorBifunctorのQuillen性を証明する。
+既存の自由零次テンソル比較を上記共有移送へ適用し、cotensorBifunctorと
+mappingObjectBifunctorのSM7を既存パラメータ付き随伴で得た。
+既存mappingEnrichedOrdinaryCategoryを選び、spectrumTensorCotensor受入APIを通じて
+Mathlib eHomFunctorのSM7にも接続した。
+
+ModelCategory/SimplicialLevelEnrichedは§152の実際のレベルモデル・自由関手の証明で
+上記二条件を満たす。旧SymmetricSpectrum型へ明示したpointedSpectrumTensor/Cotensor/Mappingを
+公開し、基点付きtensorのQuillen性、cotensor・写像対象のSM7を証明した。
+通常SSetによるtensor/cotensorは自由基点追加で第一パラメータを制限する。
+自由基点追加のleft Quillen性からordinarySpectrumTensorのQuillen性を証明し、
+ordinarySpectrumCotensorのSM7へ接続した。
+旧simplicialTensorFunctorとの一致、旧simplicialCotensorの対象ごとの一致を検証した。
+関手全体のcotensor定義を展開する比較はカーネル時間制限に当たるため、
+既存simplicial_cotensor比較定理を利用する。受入条件のモデル互換性は弱めていない。
+
+実際のHT-KQ入口にも基点付きmapping SM7と通常tensor/cotensor互換性の適用を追加した。
+対象・共有・上位ビルド成功。引用警告は既存HT-KQの1件のみ。
+check_level_enrichedは一般C,Kと具体的PSS/円の両方をGeneral/StageTwo同時importで検証し、
+新規25宣言の公理監査が標準公理のみで成功。
+共有基盤29モジュール388宣言、全スペクトル316モジュール3066公開宣言の厳密監査が成功。
+実際の上位入口29宣言監査は直接引用HT-KQの1件だけを確認した。diff --check成功。
+コミット：共有移送`93bad8d`、混合豊穣モデル接続`7c9339f`、実際の入力への適用`d6e0eef`。
+
+次は通常の単体的写像対象のSM7を既存mappingSpaceSimplicialCategoryに接続する。
+通常SSetによるcotensor条件だけで通常写像対象のSM7を完成扱いにしない。
+一般C,Kの契約を含む段階1〜3全体の最終受入監査も未実施であり、全体目標は継続中。
