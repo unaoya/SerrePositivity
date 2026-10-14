@@ -1,4 +1,4 @@
-import SerrePositivity.CommutativeAlgebra.CubicCyclotomicAlgebra
+import SerrePositivity.CommutativeAlgebra.CubicCyclotomicFiber
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.cubicCyclotomicPolynomial_monic
@@ -31,3 +31,12 @@ assert_no_sorry SerrePositivity.cubicCyclotomicRoot_cube
 #print axioms SerrePositivity.cubicCyclotomicRoot_cube
 assert_no_sorry SerrePositivity.cubicCyclotomicRoot_units_of_residue_two_eq_zero
 #print axioms SerrePositivity.cubicCyclotomicRoot_units_of_residue_two_eq_zero
+
+assert_no_sorry SerrePositivity.cubicCyclotomicPolynomial_derivative
+#print axioms SerrePositivity.cubicCyclotomicPolynomial_derivative
+
+assert_no_sorry SerrePositivity.cubicCyclotomicPolynomial_separable
+#print axioms SerrePositivity.cubicCyclotomicPolynomial_separable
+
+assert_no_sorry SerrePositivity.exists_cubicCyclotomic_coprime_factor
+#print axioms SerrePositivity.exists_cubicCyclotomic_coprime_factor
