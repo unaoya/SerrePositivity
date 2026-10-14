@@ -1,4 +1,4 @@
-import SerrePositivity.KTheory.G0Supported
+import SerrePositivity.KTheory.G0Functoriality
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.finiteModuleSupportedOn.of_iso
@@ -23,3 +23,15 @@ assert_no_sorry SerrePositivity.G0WithSupport.mk_empty
 assert_no_sorry SerrePositivity.G0WithSupport.eq_zero_of_empty_support
 #print axioms SerrePositivity.G0WithSupport.lift
 #print axioms SerrePositivity.G0WithSupport.mk_shortExact
+assert_no_sorry SerrePositivity.moduleSupport_extendScalars
+assert_no_sorry SerrePositivity.localizedModuleTensorEquiv
+assert_no_sorry SerrePositivity.SupportedModuleShortExact.baseChange
+assert_no_sorry SerrePositivity.G0WithSupport.enlarge_refl
+assert_no_sorry SerrePositivity.G0WithSupport.enlarge_comp
+assert_no_sorry SerrePositivity.G0WithSupport.map
+assert_no_sorry SerrePositivity.G0WithSupport.map_id
+assert_no_sorry SerrePositivity.G0WithSupport.map_comp
+assert_no_sorry SerrePositivity.G0WithSupport.enlarge_map
+assert_no_sorry SerrePositivity.G0WithSupport.localize
+#print axioms SerrePositivity.G0WithSupport.map_comp
+#print axioms SerrePositivity.G0WithSupport.localize
