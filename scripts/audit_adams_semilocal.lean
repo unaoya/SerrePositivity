@@ -1,4 +1,4 @@
-import SerrePositivity.KTheory.Adams.SemilocalPureWeight
+import SerrePositivity.KTheory.Adams.WeightDefectLift
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.Adams.iteratedPrimeLocalizationEquiv
@@ -8,3 +8,6 @@ assert_no_sorry SerrePositivity.Adams.iteratedPrime_regular_dimension
 
 assert_no_sorry SerrePositivity.Adams.LocalizationAdamsFamily.semilocal_pureWeight
 #print axioms SerrePositivity.Adams.LocalizationAdamsFamily.semilocal_pureWeight
+
+assert_no_sorry SerrePositivity.Adams.LocalizationAdamsFamily.weightDefect_lift
+#print axioms SerrePositivity.Adams.LocalizationAdamsFamily.weightDefect_lift
