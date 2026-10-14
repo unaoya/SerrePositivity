@@ -1,0 +1,41 @@
+import SerrePositivity.KTheory.Adams.KoszulCubeModel
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeCone
+#print axioms SerrePositivity.Adams.oneKoszulCubeCone
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeConeIso
+#print axioms SerrePositivity.Adams.oneKoszulCubeConeIso
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeConeXSplit
+#print axioms SerrePositivity.Adams.oneKoszulCubeConeXSplit
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeConeXZeroIso
+#print axioms SerrePositivity.Adams.oneKoszulCubeConeXZeroIso
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeConeXNegOneIso
+#print axioms SerrePositivity.Adams.oneKoszulCubeConeXNegOneIso
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeConeXNegTwoIso
+#print axioms SerrePositivity.Adams.oneKoszulCubeConeXNegTwoIso
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeConeXNegThreeIso
+#print axioms SerrePositivity.Adams.oneKoszulCubeConeXNegThreeIso
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeCone_isZero_X_other
+#print axioms SerrePositivity.Adams.oneKoszulCubeCone_isZero_X_other
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeXZeroIso
+#print axioms SerrePositivity.Adams.oneKoszulCubeXZeroIso
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeXNegOneIso
+#print axioms SerrePositivity.Adams.oneKoszulCubeXNegOneIso
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeXNegTwoIso
+#print axioms SerrePositivity.Adams.oneKoszulCubeXNegTwoIso
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeXNegThreeIso
+#print axioms SerrePositivity.Adams.oneKoszulCubeXNegThreeIso
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCube_isZero_X_other
+#print axioms SerrePositivity.Adams.oneKoszulCube_isZero_X_other
