@@ -515,3 +515,40 @@ StageTwo のローカル import 閉包は63モジュール（うちdg実装29）
 
 U4は3区切り、U5は4区切りに分け、担当ファイルのみをコミットした。
 後続作業は§12.8の具体的契約から始める。採用済み引用は引き続き0件。
+
+## 13. U6〜U10 の継続実装（2026-10-15、進行中）
+
+ユーザー依頼は「U10まで完成、ステップごとにコミット」。目標を途中の定義だけへ縮小しない。
+任意可換環・非有界複体・Mathlib 豊穣主モデル・明示 smallness の契約と編集範囲を維持する。
+U4/U5の実装済み対象・法則を再利用し、一般論の sorry・引用 axiom は追加しない。
+
+| 単位 | 成果物と受入条件 |
+| --- | --- |
+| U6 | free/evaluation 随伴、全次数豊穣 Hom 同型・自然性、underlying family。自由対象 K⊗Hom_D(y,x) の作用の符号 (-1)^(pk) を検証する |
+| U7 | 零対象・shift・cone、必要な極限余極限。全次数作用の保持、objectwise 評価式、一対象 A と既存複体構成の比較 |
+| U8 | 加群ホモトピーと K(D)、objectwise quasiIso の Mathlib MorphismProperty。境界商との一致、2-out-of-3・retract、評価との整合性 |
+| U9 | 指定 quasiIso の局所化 D(D)。対象・射宇宙・普遍性を固定し、閉零圏からの局所化と K(D) からの局所化を比較 |
+| U10 | semifree 解像度、Hom 計算、三角構造・余積。一対象 A の既存 DerivedCategory との自然比較。解像度の存在・計算仮定を証明し、局所化の定義だけでは完了としない |
+
+主経路 U6→U7→U8→U9→U10 は共有の射影モデル構造を先行条件としない。
+D4m のモデル比較は共有の既存 G1/G2/G5/G6 API を再確認して具体的条件を供給する別の合流点。
+
+### 13.1 U6a：自由加群の対象・全次数作用と underlying family
+
+`Complexes/TensorEnriched.lean` で `tensorLeftHom` を閉構造から chain map として構成した。
+`tensorLeftHom_apply` は斉次射の次数 p と左因子の次数 i による符号 (-1)^(pi) を検証する。
+閉単位・豊穣合成保存を全整数次数で証明し、`tensorLeftDG` は Mathlib EnrichedFunctor。
+`Module/Tensor.lean` の `tensorModule` はこの豊穣関手との合成。
+`freeModule x K` の値は K⊗Hom_D(y,x)。単位・合成は豊穣関手から継承し、
+`tensorModule_action` は右作用の符号を成分上で固定する。
+
+`Module/Underlying.lean` は `moduleMorphism_ext`、対象の離散族への忘却関手とその忠実性。
+通常の Dᵒᵖ の関手圏への置換はしない。
+`Checks/FreeTensor.lean` で任意 A・独立対象宇宙・明示 smallness・ZMod 2 の自由対象を検証する。
+U6aはU6全体の完了ではない。次は K の射に対する自由加群の関手性、
+free/evaluation の通常随伴、全次数豊穣 Hom 同型と自然性を証明する。
+U7〜U10 の受入は引き続き未完。
+
+U6a の対象ビルドと `lake env lean .../Checks/FreeTensor.lean` の直接監査は成功。
+主要6宣言は `propext`・`Classical.choice`・`Quot.sound` のみ。
+担当差分の whitespace 検査と文書検査も成功（21 Markdown、306参照、失敗0）。
