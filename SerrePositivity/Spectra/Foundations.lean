@@ -61,6 +61,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorCurryNaturality
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorMapLevels
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorUnit
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorAssociator
+public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorAssociatorLevels
 public import SerrePositivity.Spectra.SymmetricSpectrum.SuspensionLoop
 public import SerrePositivity.Spectra.SymmetricSpectrum.AdjointStructureMaps
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpace

@@ -73,4 +73,36 @@ lemma freeLeftPairAssociator_inv (X Y : C) (A : Mod C M) :
     _ = 𝟙 _ := congrArg Mod.Hom.hom (freeLeftPairAssociator M X Y A).inv_hom_id
     _ = _ := (α_ X Y A.X).inv_hom_id.symm
 
+/-- 左自由因子の逆比較の両変数の自然性。 -/
+lemma freeLeft_inv_naturality {X Y : C} (g : X ⟶ Y) {A B : Mod C M} (f : A ⟶ B) :
+    (freeLeftIso M X A).inv ≫ (freeMap M g ⊗ₘ f) =
+      tensorLeftMap M g f ≫ (freeLeftIso M Y B).inv := by
+  apply (cancel_mono (freeLeftIso M Y B).hom).mp
+  simp only [Category.assoc, Iso.inv_hom_id, Category.comp_id]
+  change (freeLeftIso M X A).inv ≫
+    moduleMap M (freeMap M g) f ≫ (freeLeftIso M Y B).hom = _
+  rw [freeLeft_naturality, Iso.inv_hom_id_assoc]
+
+/-- 自由生成の射と値域への比較を含む結同比較を左自由因子の比較へ分解する。 -/
+lemma freeLeftPairAssociator_transport {Z X Y : C} (g : Z ⟶ X ⊗ Y)
+    (A B : Mod C M) (h : tensorLeftObj M Y A ⟶ B) :
+    (freeLeftIso M Z A).inv ≫ freeMap M g ▷ A ≫
+      (freePairIso M X Y).inv ▷ A ≫ (α_ (freeObj M X) (freeObj M Y) A).hom ≫
+        freeObj M X ◁ ((freeLeftIso M Y A).hom ≫ h) ≫ (freeLeftIso M X B).hom =
+    tensorLeftMap M g (𝟙 A) ≫ (freeLeftPairAssociator M X Y A).hom ≫
+      tensorLeftMap M (𝟙 X) h := by
+  have hg := freeLeft_inv_naturality M g (𝟙 A)
+  rw [tensorHom_id] at hg
+  have hh := freeLeft_naturality M (𝟙 X) h
+  have hi : freeMap M (𝟙 X) = 𝟙 (freeObj M X) := (freeFunctor M).map_id X
+  rw [hi] at hh
+  change (freeObj M X ◁ h) ≫ (freeLeftIso M X B).hom =
+    (freeLeftIso M X (tensorLeftObj M Y A)).hom ≫ tensorLeftMap M (𝟙 X) h at hh
+  rw [← Category.assoc, hg]
+  simp only [whiskerLeft_comp, Category.assoc]
+  rw [hh]
+  simp only [freeLeftPairAssociator, Iso.trans_hom, tensorIso_hom,
+    Iso.symm_hom, Iso.refl_hom, tensorHom_id, Category.assoc]
+  rfl
+
 end SerrePositivity.MonoidalBalancedTensor

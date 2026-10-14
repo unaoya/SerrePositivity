@@ -60,7 +60,7 @@ P1・P2が通った時点でホモトピー論への入口を一区切りとす�
 
 当面の成果物は、モデル構造の選択に依存しない対称スペクトルの
 単体的なtensor・cotensor・写像対象と、その法則である。
-A1は§98で完了。A2・A3とB2〜B4は引き続き実装する。
+A1は§98、A2は§103で完了。A3とB2〜B4は引き続き実装する。
 以下のA1〜A3が段階1、B1〜B4とC1〜C2が段階2に相当する。
 番号は検証可能な作業単位を表し、一単位が一コミットで終わるとは限らない。
 記載する追加API名は実装時の候補であり、既存の宣言としては扱わない。
@@ -4459,4 +4459,24 @@ A3とB2〜B4も必要であり、モデル構造には進まない。
 
 検証：新規ソースの書式・証明マーカー、文書のリンク、git diff --checkを確認した。
 集約ビルドは2077ジョブ、公理監査は222モジュール・2288宣言で成功した。
+標準公理のみでsorry依存なし。新しい証明は標準の計算上限で検証した。
+
+## 103. 実施記録：A2のスペクトルの結同比較の各段（2026-10-14）
+
+[BalancedTensorFreeAssociator](../SerrePositivity/CategoryTheory/Monoidal/BalancedTensorFreeAssociator.lean)で、
+左自由因子の逆比較の両変数の自然性と、生成対象の射と値域への比較を含む結同比較の分解を証明した。
+[PointwiseTensorModuleAssociator](../SerrePositivity/Spectra/SymmetricSequence/PointwiseTensorModuleAssociator.lean)で、
+自由加群の積の比較から移送する経路が、前節で構成した係数加群の結同比較に一致することを証明した。
+
+[PointwiseTensorAssociatorLevels](../SerrePositivity/Spectra/SymmetricSpectrum/PointwiseTensorAssociatorLevels.lean)で、
+既存のスペクトルの結同比較がこの係数加群の比較に一致することを証明した。
+その結果、順射の各段が通常のsmashの結合子に一致する。
+同型の相互逆性により、逆射の各段も通常の逆結合子に一致することを証明した。
+
+A2の同型、三変数の自然性、各段の比較の受入条件はすべて検証した。
+A3の整合性とB2〜B4は引き続き実装する。C2までの全体目標は未完了である。
+モデル構造には進まない。
+
+検証：新規・変更ソースの書式・証明マーカー、文書のリンク、git diff --checkを確認した。
+集約ビルドは2078ジョブ、公理監査は223モジュール・2296宣言で成功した。
 標準公理のみでsorry依存なし。新しい証明は標準の計算上限で検証した。
