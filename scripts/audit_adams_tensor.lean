@@ -1,4 +1,4 @@
-import SerrePositivity.PerfectComplex.TensorSymmetry
+import SerrePositivity.PerfectComplex.TensorSupport
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.cochainTensor
@@ -22,3 +22,16 @@ assert_no_sorry SerrePositivity.cochainTensorSymmetry_hom_comp
 #print axioms SerrePositivity.cochainTensorι_d
 #print axioms SerrePositivity.strictlyPerfectComplex_cochainTensor
 #print axioms SerrePositivity.cochainTensorSymmetry_hom_comp
+
+assert_no_sorry SerrePositivity.cochainTensorHomotopyLeft
+assert_no_sorry SerrePositivity.cochainTensorHomotopyRight
+assert_no_sorry SerrePositivity.cochainTensorHomotopyEquiv
+assert_no_sorry SerrePositivity.cochainTensorMap_quasiIso
+assert_no_sorry SerrePositivity.cochainTensorMap_smul_left
+assert_no_sorry SerrePositivity.cochainTensorScalarNullHomotopy
+assert_no_sorry SerrePositivity.HasHomologySupportOn.cochainTensor_left
+assert_no_sorry SerrePositivity.HasHomologySupportOn.cochainTensor_right
+assert_no_sorry SerrePositivity.HasHomologySupportOn.cochainTensor
+#print axioms SerrePositivity.cochainTensorHomotopyEquiv
+#print axioms SerrePositivity.cochainTensorMap_quasiIso
+#print axioms SerrePositivity.HasHomologySupportOn.cochainTensor
