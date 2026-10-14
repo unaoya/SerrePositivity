@@ -1,4 +1,5 @@
 import SerrePositivity.KTheory.Adams.MaximalPureWeight
+import SerrePositivity.KTheory.Adams.SupportHeight
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.Adams.maximalParameterKoszulClass
@@ -7,3 +8,18 @@ assert_no_sorry SerrePositivity.Adams.SupportedAdams.maximal_pureWeight
 
 #print axioms SerrePositivity.Adams.SupportedAdams.maximal_pureWeight_of_parameters
 #print axioms SerrePositivity.Adams.SupportedAdams.maximal_pureWeight
+
+assert_no_sorry SerrePositivity.Adams.HeightAtLeast
+assert_no_sorry SerrePositivity.Adams.heightStratum
+assert_no_sorry SerrePositivity.Adams.HeightAtLeast.ideal_height
+assert_no_sorry SerrePositivity.Adams.HeightAtLeast.mem_minimalPrimes
+assert_no_sorry SerrePositivity.Adams.HeightAtLeast.finite_heightStratum
+assert_no_sorry SerrePositivity.Adams.heightStratum_eq_of_le
+assert_no_sorry SerrePositivity.Adams.heightStratumComplement
+assert_no_sorry SerrePositivity.Adams.heightStratumComplement_le_primeCompl
+assert_no_sorry SerrePositivity.Adams.HeightAtLeast.cut_succ
+assert_no_sorry SerrePositivity.Adams.HeightAtLeast.cut_succ_of_mem_complement
+assert_no_sorry SerrePositivity.Adams.HeightAtLeast.succ_of_heightStratum_empty
+assert_no_sorry SerrePositivity.Adams.HeightAtLeast.eq_bot_of_dimension_bound
+#print axioms SerrePositivity.Adams.HeightAtLeast.finite_heightStratum
+#print axioms SerrePositivity.Adams.HeightAtLeast.cut_succ_of_mem_complement
