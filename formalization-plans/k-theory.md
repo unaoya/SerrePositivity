@@ -5803,3 +5803,33 @@ check_simplicial_model_inputsでpointedI/JのSOA・presentability・rlp比較を
 次は生成cofibrationクラスと実際のmonoクラスの一致、anodyne/trivial cofibrationの接続、
 具体的Kan–QuillenのWとモデル存在の入力を精査する。
 スペクトル側monoidal/SM7も残り、段階1〜3の全体目標は継続中。
+
+
+## 147. 段階1〜3の実行記録：具体的生成左クラスと二つの弱分解系（2026-10-15）
+
+`SimplicialGenerators.boundaryGenerators_leftClass`でI.rlp.llpとSSetのmonoクラスの一致を証明した。
+固定Mathlibの境界生成射のmono性、monoのcoproduct・pushout・transfinite・retract閉性と
+既に検証したIのsmall-object argumentを使い、逆向きは既存rlp_monomorphismsで接続した。
+弱同値クラスやModelCategory SSetは仮定しない。
+
+`PointedGenerators.pointedI_leftClass`は実際の自由基点追加Iの生成左クラスと
+既存Underのcofibrationクラスの一致を証明する。基礎圏の分解をUnderへ移し、
+基礎射のliftingとretract argumentで比較した。pointedI_weakFactorizationSystemと
+pointedI_functorialFactorizationを公開し、具体的cofibration/pointedI.rlpの分解を得た。
+
+`pointedJ_leftClass`は実際の自由基点追加Jの生成左クラスと
+anodyneExtensions.inverseImage forgetの一致を証明する。
+pointedJ_weakFactorizationSystemとpointedJ_functorialFactorizationにより、
+基礎射がanodyneな射と既存Kan fibrationの具体的弱分解系・関手的分解を得た。
+anodyneをtrivial cofibrationと呼ぶには、なお弱同値の定義とモデル入力の接続が必要である。
+
+対象・依存モジュールビルド成功、新規警告なし。
+check_simplicial_model_inputsはModelCategoryやWを仮定せず、両生成左クラスの一致、
+二つの弱分解系と関手的分解を既存General/StageTwoと同時importで検証した。
+具体的入力33宣言、全スペクトル・共通基盤307モジュール3008公開宣言の公理監査が成功。
+標準公理のみ、sorry・引用依存なし。diff --check成功。
+コミット：境界生成クラス`efcc9e3`、基点付きanodyneとKan分解`aa763a1`。
+
+次は具体的Kan–Quillenの弱同値の定義とモデル存在入力、anodyne/trivial cofibrationの比較を接続する。
+スペクトル側monoidal/SM7と具体的レベルモデルへの適用も残る。
+二つの弱分解系だけではモデル圏全体の完成にならず、段階1〜3の目標は継続中。
