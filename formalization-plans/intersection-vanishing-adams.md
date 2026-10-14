@@ -3344,6 +3344,17 @@ K₀ の類への移送と重みつき乗法性は次の小段。
 - S10.8b.1 と S10.8b.2a の実装・監査・公開が完了。
   次は S10.8b.2b の単位類の保存。その後に S10.8c–d、S10.9、S11。
 
+### S10.8b.2b.1：次数零の単位複体の三乗と恒等巡回
+
+- `Adams/TensorCubeUnitRotation` にスカラー加群・rank 1 加群の三純テンソルの巡回不変性を追加した。
+  rank 1 の比較はスカラー加群への同型で移す。
+- `tensorCubeUnit_rotation` は同次包含で射を検出し、次数 0 の三成分では上の純テンソル計算、
+  それ以外は単位複体の零成分を使う。単位複体の巡回が恒等になることを証明した。
+- `tensorCubeUnitIso` は二回の unit comparison で三乗を単位複体へ戻す。
+- `lake build SerrePositivity.KTheory.Adams.TensorCubeUnitRotation` が成功（2816 jobs）。
+  `lake env lean scripts/audit_adams_cube_unit_rotation.lean` の四定数の監査が成功。
+  公理は標準三公理のみ。単位類の保存への接続とルート公開は後続小段。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。

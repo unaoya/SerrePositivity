@@ -1,0 +1,14 @@
+import SerrePositivity.KTheory.Adams.TensorCubeUnitRotation
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.Adams.scalarTriple_cyclic
+#print axioms SerrePositivity.Adams.scalarTriple_cyclic
+
+assert_no_sorry SerrePositivity.Adams.rankOneTriple_cyclic
+#print axioms SerrePositivity.Adams.rankOneTriple_cyclic
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeUnit_rotation
+#print axioms SerrePositivity.Adams.tensorCubeUnit_rotation
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeUnitIso
+#print axioms SerrePositivity.Adams.tensorCubeUnitIso
