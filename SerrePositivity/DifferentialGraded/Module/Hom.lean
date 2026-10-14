@@ -153,4 +153,21 @@ def moduleHomEquiv (K : Complex A) (M N : RightModule A D) :
     apply GradedNatTrans.ext
     funext x
     simp only [moduleHomπ, equalizer.lift_ι_assoc, Pi.lift_comp_π]
+/-- Hom end に持ち上げた自然変換の評価は元の成分。 -/
+@[reassoc (attr := simp)]
+lemma moduleHomEquiv_symm_π (K : Complex A) (M N : RightModule A D)
+    (τ : ModuleParamTrans A D K M N) (x : D) :
+    (moduleHomEquiv A D K M N).symm τ ≫ moduleHomπ A D M N x = τ.app (op x) := by
+  simp only [moduleHomEquiv, Equiv.coe_fn_symm_mk, moduleHomπ,
+    equalizer.lift_ι_assoc, Pi.lift_comp_π]
+/-- Hom end の評価族は全豊穣 Hom に関して自然。 -/
+lemma moduleHomπ_naturality (M N : RightModule A D) (x y : Dᵒᵖ) :
+    (β_ (moduleHom A D M N) (x ⟶[Complex A] y)).hom ≫
+      (M.map x y ⊗ₘ moduleHomπ A D M N y.unop) ≫ enrichedComposition _ _ _ =
+    (moduleHomπ A D M N x.unop ⊗ₘ N.map x y) ≫ enrichedComposition _ _ _ := by
+  have h := (moduleHomEquiv A D (moduleHom A D M N) M N (𝟙 _)).naturality x y
+  change (β_ (moduleHom A D M N) (x ⟶[Complex A] y)).hom ≫
+      (M.map x y ⊗ₘ (𝟙 _ ≫ moduleHomπ A D M N y.unop)) ≫ enrichedComposition _ _ _ =
+    ((𝟙 _ ≫ moduleHomπ A D M N x.unop) ⊗ₘ N.map x y) ≫ enrichedComposition _ _ _ at h
+  simpa only [Category.id_comp] using h
 end SerrePositivity.DifferentialGraded

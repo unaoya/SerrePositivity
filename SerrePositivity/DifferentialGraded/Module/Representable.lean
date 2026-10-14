@@ -88,7 +88,7 @@ lemma representableMap_comp (x : D) (y z w : Dᵒᵖ) :
       g f h (a := m) (b := k + p) (by omega) (by omega) (by omega))
 
 /-- 右代表 dg 加群。豊穣関手の単位・合成法則を上で証明する。 -/
-def representable (x : D) : RightModule A D where
+abbrev representable (x : D) : RightModule A D where
   obj y := y.unop ⟶[Complex A] x
   map := representableMap A x
   map_id := representableMap_id A x

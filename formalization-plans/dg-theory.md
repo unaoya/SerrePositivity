@@ -428,3 +428,14 @@ Mathlib の現行 `EnrichedNatTrans.out` は閉次数零の通常圏の自然性
 Hom end の存在仮定は `[Small.{u} D]`、係数環と加群の宇宙は u、対象宇宙 v は独立。
 任意 D に smallness を仮定したことにはせず、この仮定を公開 API に保持する。
 上記3ファイルはビルド成功。加群圏の単位・合成、dg Yoneda、一対象比較は継続中。
+
+### 12.5 U5b：全次数 dg Yoneda
+
+`Module/Action.lean` は斉次作用の単位・符号付き結合則を証明する。
+全次数自然性と、次数 k の変換 α と次数 p の作用 f に対する
+`α(f v) = (-1)^(kp) f(α(v))` の往復を証明した。
+`Module/Yoneda.lean` の `dgYonedaEquiv` は任意パラメータ複体 K の豊穣自然変換を M(x) への射に同定し、
+`dgYonedaIso` は `moduleHom (representable x) M ≅ M(x)` を chain iso として構成する。
+拡張・単位での評価・両往復とパラメータでの自然性を証明し、H⁰ のみには制限していない。
+Hom end と同じ `[Small.{u} D]` を明示する。ビルド成功。
+加群圏の単位・合成、閉次数零射との比較、一対象環の比較と free/forget の後続契約は継続中。
