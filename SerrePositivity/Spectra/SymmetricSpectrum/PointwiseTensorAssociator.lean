@@ -76,4 +76,34 @@ lemma pointwiseTensorAssociator_naturality_all
     sphereTensorFreeZeroPointwiseBifunctorIso.{u} freeZeroTensorIso.{u} f g h
     (sphereTensorFreeAtSum_naturality 0 0 f g)
 
+/-- 第二生成対象を固定した結同比較の自然性の法則。 -/
+def pointwiseTensorAssociatorParameterLeftLaw {X X' : PointedSimplicialSet.{u}}
+    (f : X ⟶ X') (Y : PointedSimplicialSet.{u}) (E : SymmetricSpectrum.{u}) : Prop :=
+  TensorActionTransport.associatorParameterLeftLaw (freeAt.{u} 0)
+    pointwiseTensorBifunctor.{u} sphereTensorFreeZeroPointwiseBifunctorIso.{u}
+    freeZeroTensorIso.{u} f Y E
+
+/-- 第二生成対象を固定すると結同比較の自然性から余分な恒等射を除ける。 -/
+lemma pointwiseTensorAssociator_parameter_left {X X' : PointedSimplicialSet.{u}}
+    (f : X ⟶ X') (Y : PointedSimplicialSet.{u}) (E : SymmetricSpectrum.{u}) :
+    pointwiseTensorAssociatorParameterLeftLaw f Y E :=
+  TensorActionTransport.associator_parameter_left (freeAt.{u} 0)
+    pointwiseTensorBifunctor.{u} sphereTensorFreeZeroPointwiseBifunctorIso.{u}
+    freeZeroTensorIso.{u} f Y E (sphereTensorFreeAtSum_naturality 0 0 f (𝟙 Y))
+
+/-- 第一生成対象を固定した結同比較の自然性の法則。 -/
+def pointwiseTensorAssociatorParameterRightLaw (X : PointedSimplicialSet.{u})
+    {Y Y' : PointedSimplicialSet.{u}} (g : Y ⟶ Y') (E : SymmetricSpectrum.{u}) : Prop :=
+  TensorActionTransport.associatorParameterRightLaw (freeAt.{u} 0)
+    pointwiseTensorBifunctor.{u} sphereTensorFreeZeroPointwiseBifunctorIso.{u}
+    freeZeroTensorIso.{u} X g E
+
+/-- 第一生成対象を固定すると結同比較の自然性から余分な恒等射を除ける。 -/
+lemma pointwiseTensorAssociator_parameter_right (X : PointedSimplicialSet.{u})
+    {Y Y' : PointedSimplicialSet.{u}} (g : Y ⟶ Y') (E : SymmetricSpectrum.{u}) :
+    pointwiseTensorAssociatorParameterRightLaw X g E :=
+  TensorActionTransport.associator_parameter_right (freeAt.{u} 0)
+    pointwiseTensorBifunctor.{u} sphereTensorFreeZeroPointwiseBifunctorIso.{u}
+    freeZeroTensorIso.{u} X g E (sphereTensorFreeAtSum_naturality 0 0 (𝟙 X) g)
+
 end SerrePositivity.SymmetricSpectrum

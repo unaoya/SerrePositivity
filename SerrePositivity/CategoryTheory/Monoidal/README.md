@@ -49,6 +49,7 @@
 - [BalancedTensorSymmetric](BalancedTensorSymmetric.lean)：構成済みの交換同型による内部加群圏の対称モノイダル構造の登録。
 - [FreeModuleMonoidal](FreeModuleMonoidal.lean)：自由加群関手の単位比較、生成元上の結合・単位・交換の整合性と強モノイダル・braided関手の登録。
 - [BalancedTensorFreeAssociator](BalancedTensorFreeAssociator.lean)：二つの左自由因子の結同比較と、基礎圏の結合子・逆結合子との一致。自由生成の射と値域への比較を含む移送の分解。
+- [MappingUnitLaws](MappingUnitLaws.lean)：作用の結同比較と単位の整合性から、写像対象の左右単位を合成した後の評価を計算する。
 - [BalancedTensorFreeLeft](BalancedTensorFreeLeft.lean)：交換で移した左テンソルの作用、左自由因子の比較同型・生成元の挿入と二変数の自然同型。
 
 極限の構成にはテンソル積の極限保存を仮定しない。

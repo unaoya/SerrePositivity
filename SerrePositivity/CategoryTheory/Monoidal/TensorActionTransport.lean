@@ -119,4 +119,42 @@ lemma associator_naturality {X X' Y Y' : V} (f : X ⟶ X') (g : Y ⟶ Y')
   rw [← Category.assoc, hp]
   simp only [Category.assoc]
 
+/-- 第二パラメータを固定した結同比較の自然性の法則。 -/
+def associatorParameterLeftLaw {X X' : V} (f : X ⟶ X') (Y : V) (A : C) : Prop :=
+  (H.map (f ⊗ₘ 𝟙 Y)).app A ≫ (associatorNatIso F H e μ X' Y).hom.app A =
+    (associatorNatIso F H e μ X Y).hom.app A ≫ (H.map f).app ((H.obj Y).obj A)
+
+/-- 第二パラメータの恒等射を除いた結同比較の自然性。 -/
+lemma associator_parameter_left {X X' : V} (f : X ⟶ X') (Y : V) (A : C)
+    (hμ : (F.map f ⊗ₘ F.map (𝟙 Y)) ≫ (μ X' Y).hom =
+      (μ X Y).hom ≫ F.map (f ⊗ₘ 𝟙 Y)) :
+    associatorParameterLeftLaw F H e μ f Y A := by
+  have h := associator_parameter_naturality_of_hom F H e μ f (𝟙 Y) A hμ
+  unfold associatorParameterLaw at h
+  rw [H.map_id] at h
+  change (H.map (f ⊗ₘ 𝟙 Y)).app A ≫ (associatorNatIso F H e μ X' Y).hom.app A =
+    (associatorNatIso F H e μ X Y).hom.app A ≫
+      (H.map f).app ((H.obj Y).obj A) ≫ (H.obj X').map (𝟙 ((H.obj Y).obj A)) at h
+  rw [CategoryTheory.Functor.map_id, Category.comp_id] at h
+  exact h
+
+/-- 第一パラメータを固定した結同比較の自然性の法則。 -/
+def associatorParameterRightLaw (X : V) {Y Y' : V} (g : Y ⟶ Y') (A : C) : Prop :=
+  (H.map (𝟙 X ⊗ₘ g)).app A ≫ (associatorNatIso F H e μ X Y').hom.app A =
+    (associatorNatIso F H e μ X Y).hom.app A ≫ (H.obj X).map ((H.map g).app A)
+
+/-- 第一パラメータの恒等射を除いた結同比較の自然性。 -/
+lemma associator_parameter_right (X : V) {Y Y' : V} (g : Y ⟶ Y') (A : C)
+    (hμ : (F.map (𝟙 X) ⊗ₘ F.map g) ≫ (μ X Y').hom =
+      (μ X Y).hom ≫ F.map (𝟙 X ⊗ₘ g)) :
+    associatorParameterRightLaw F H e μ X g A := by
+  have h := associator_parameter_naturality_of_hom F H e μ (𝟙 X) g A hμ
+  unfold associatorParameterLaw at h
+  rw [H.map_id] at h
+  change (H.map (𝟙 X ⊗ₘ g)).app A ≫ (associatorNatIso F H e μ X Y').hom.app A =
+    (associatorNatIso F H e μ X Y).hom.app A ≫
+      𝟙 ((H.obj X).obj ((H.obj Y).obj A)) ≫ (H.obj X).map ((H.map g).app A) at h
+  erw [Category.id_comp] at h
+  exact h
+
 end SerrePositivity.TensorActionTransport

@@ -58,6 +58,32 @@ lemma curry_evaluation {X : C} {Y : D} (f : L.obj X ⟶ Y) :
   change L.map (a.homEquiv X Y f) ≫ a.counit.app Y = f
   exact (a.homEquiv X Y).left_inv f
 
+/-- 左随伴で送って評価した二つの射が等しいという法則。 -/
+def evaluationEqualityLaw {X : C} {Y : D} (f g : X ⟶ R.obj Y) : Prop :=
+  L.map f ≫ a.counit.app Y = L.map g ≫ a.counit.app Y
+
+/-- 右随伴への射は左随伴で送った後の評価で決まる。 -/
+lemma evaluation_injective {X : C} {Y : D} (f g : X ⟶ R.obj Y)
+    (h : evaluationEqualityLaw a f g) : f = g :=
+  (a.homEquiv X Y).symm.injective h
+
+/-- 転置した射への前合成を、評価後の等式から特徴付ける法則。 -/
+def curryPreEqualityLaw {X Z : C} {Y : D} (f : L.obj X ⟶ Y)
+    (t : Z ⟶ X) (s : Z ⟶ R.obj Y) : Prop :=
+  t ≫ a.homEquiv X Y f = s
+
+/-- 前合成した転置は評価後の等式で決まる。 -/
+lemma curry_pre_eq_of_evaluation {X Z : C} {Y : D} (f : L.obj X ⟶ Y)
+    (t : Z ⟶ X) (s : Z ⟶ R.obj Y)
+    (h : L.map t ≫ f = L.map s ≫ a.counit.app Y) : curryPreEqualityLaw a f t s := by
+  apply evaluation_injective a
+  change L.map (t ≫ a.homEquiv X Y f) ≫ a.counit.app Y = _
+  rw [L.map_comp, Category.assoc]
+  have hc := curry_evaluation a f
+  change L.map (a.homEquiv X Y f) ≫ a.counit.app Y = f at hc
+  rw [hc]
+  exact h
+
 /-- 左随伴の指定した対象との比較から、元の射を右随伴への射へ転置する同値。 -/
 def comparisonHomEquiv {I : C} {E : D} (e : L.obj I ≅ E) (F : D) :
     (E ⟶ F) ≃ (I ⟶ R.obj F) :=

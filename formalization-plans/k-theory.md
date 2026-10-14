@@ -4523,3 +4523,28 @@ B3〜B4も引き続き実装する。C2までの全体目標は未完了であ�
 検証：新規・変更ソースの書式・証明マーカー、文書のリンク、git diff --checkを確認した。
 集約ビルドは2081ジョブ、公理監査は226モジュール・2329宣言で成功した。
 標準公理のみでsorry依存なし。新しい証明は標準の計算上限で検証した。
+
+## 106. 実施記録：基点付き写像対象の左右単位則（2026-10-14）
+
+[AdjunctionHomLaws](../SerrePositivity/CategoryTheory/AdjunctionHomLaws.lean)で、
+右随伴への射は左随伴で送った後の評価で決まることを証明した。
+転置した射への前合成も、評価後の等式から特徴付けられる。
+[TensorActionTransport](../SerrePositivity/CategoryTheory/Monoidal/TensorActionTransport.lean)で、
+結同比較のパラメータの片方を固定した自然性を、余分な恒等射なしで公開した。
+
+[MappingUnitLaws](../SerrePositivity/CategoryTheory/Monoidal/MappingUnitLaws.lean)で、
+一般の作用の単位比較と結同比較の整合性から、写像対象の左右単位の評価を計算した。
+左単位は自然性で二回目の評価へ送り、作用の左単位の整合性で相殺する。
+右単位は関手の合成保存で一回目の評価へ送り、作用の三角形で相殺する。
+
+[MappingSpaceUnitLaws](../SerrePositivity/Spectra/SymmetricSpectrum/MappingSpaceUnitLaws.lean)で、
+既存のスペクトルの作用・結同比較・単位比較と写像対象の合成・単位をこの計算へ適用した。
+単位を左右の因子に挿入して合成した後の評価の法則と、写像対象の射の左右単位則を証明した。
+左右単位則は基点付き写像対象の射の等式であり、通常のHom集合上の法則だけには留めていない。
+
+B2の合成の結合則と通常のスペクトル射の合成との一致は引き続き必要である。
+B3〜B4も未完了であり、モデル構造には進まない。
+
+検証：新規・変更ソースの書式・証明マーカー、文書のリンク、git diff --checkを確認した。
+集約ビルドは2083ジョブ、公理監査は228モジュール・2352宣言で成功した。
+標準公理のみでsorry依存なし。新しい証明は標準の計算上限で検証した。
