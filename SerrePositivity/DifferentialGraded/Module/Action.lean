@@ -146,4 +146,35 @@ lemma moduleParamTrans_apply {K : Complex A} {M N : RightModule A D}
       (k * p).negOnePow • moduleAction A N f
         (((τ.app x).f k t).v r (r + k) rfl v) (by omega) :=
   moduleParamNaturality_apply A τ.app τ.naturality t f v hm hn
+/-- 全斉次射の cochain 合成の可換式からパラメータ付き自然性を復元する。 -/
+lemma moduleParamNaturality_of_cochain {K : Complex A} {M N : RightModule A D}
+    (σ : ∀ x : Dᵒᵖ, K ⟶ homComplex A (M.obj x) (N.obj x))
+    (h : ∀ (x y : Dᵒᵖ) (k p m : ℤ) (hm : k + p = m)
+      (t : K.X k) (f : GradedHom A x y p),
+      ((M.map x y).f p f).comp ((σ y).f k t) (by omega) =
+        (k * p).negOnePow • (((σ x).f k t).comp ((N.map x y).f p f) hm))
+    (x y : Dᵒᵖ) :
+    (β_ K (x ⟶[Complex A] y)).hom ≫
+      (M.map x y ⊗ₘ σ y) ≫ enrichedComposition _ _ _ =
+        (σ x ⊗ₘ N.map x y) ≫ enrichedComposition _ _ _ := by
+  apply tensorHom_ext
+  intro k p m hm
+  apply ModuleCat.hom_ext
+  apply TensorProduct.ext'
+  intro t f
+  change (enrichedComposition _ _ _).f m
+    ((M.map x y ⊗ₘ σ y).f m
+      ((signedSwap K (x ⟶[Complex A] y)).hom.f m
+        (ιTensorObj K (x ⟶[Complex A] y) k p m hm (t ⊗ₜ[A] f)))) =
+    (enrichedComposition _ _ _).f m
+      ((σ x ⊗ₘ N.map x y).f m
+        (ιTensorObj K (x ⟶[Complex A] y) k p m hm (t ⊗ₜ[A] f)))
+  rw [signedSwap_apply]
+  simp only [Units.smul_def, map_zsmul]
+  change (k * p).negOnePow • (enrichedComposition _ _ _).f m
+    ((M.map x y ⊗ₘ σ y).f m
+      (ιTensorObj (x ⟶[Complex A] y) K p k m (by omega) (f ⊗ₜ[A] t))) = _
+  rw [tensorMap_apply, tensorMap_apply, enrichedComposition_apply,
+    enrichedComposition_apply, mul_comm p k, smul_smul, Int.units_mul_self, one_smul]
+  exact h x y k p m hm t f
 end SerrePositivity.DifferentialGraded

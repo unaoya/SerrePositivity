@@ -602,3 +602,27 @@ U7〜U10 の受入も引き続き未完。共有 G1/G2/G5 へは、この実際�
 U6c の対象・受入ビルド、前段 `Checks.FreeFunctor` の検証、直接公理監査が成功。
 主要9宣言は `propext`・`Classical.choice`・`Quot.sound` のみ。
 担当差分検査と文書検査（21 Markdown・306参照・失敗0）も成功した。
+
+### 13.4 U6d1：自由加群の全次数 Hom 複体の chain iso
+
+`Module/FreeHom.lean` は `freeUnitInsert`、Hom end の全次数自由評価 `freeHomEvaluation`、
+通常 `linearHomComplex(K,M(x))` からの自由拡張 `freeHomExtension` を構成する。
+`freeExtensionApp_apply` の符号は、次数 s の斉次 Hom が K の次数 k の元に作用した
+出力次数 s+k と、代表 Hom の次数 q の積 (-1)^((s+k)q)。
+微分との可換性は閉 tensor–Hom 転置から得られる実際の chain map であり、
+次数零だけのデータを定義として使わない。
+`moduleParamNaturality_of_cochain` と作用の成分公式から全豊穣自然性を証明した。
+
+`freeFamilyEvaluation_extension` と `freeFamilyEvaluation_restore` は評価・拡張の両往復。
+復元では任意のパラメータ複体 E と全次数自然な成分族を扱い、自由生成元の単位での値から復元する。
+`freeHomIso` は `moduleHom (freeModule x K) M ≅ homComplex A K (M(x))` の chain iso。
+任意可換環・非有界複体・明示 `[Small.{u} D]` を維持する。
+
+`Checks/FreeHom.lean` は両往復、負次数 Hom と正次数の K/代表 Hom の成分、ZMod 2 を検証する。
+主要6宣言を公理監査する。
+**U6d2 の K/M の射に対する同型の自然性と、通常の随伴 Hom 同値との比較が残る**。
+そのため U6全受入は引き続き未達。U7〜U10 の受入も未完。
+
+U6d1 の対象ビルド・負正次数/ZMod 2 の受入・前段随伴の検証が成功。
+`Checks/FreeHom.lean` の直接公理監査は6宣言すべて標準公理のみ。
+担当差分と文書検査も成功（21 Markdown・306参照・失敗0）。
