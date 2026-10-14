@@ -28,6 +28,7 @@ import SerrePositivity.CLMST.CyclicRootEstimate
 import SerrePositivity.CLMST.CyclicNormalizedBound
 import SerrePositivity.CLMST.CyclicUnitLength
 import SerrePositivity.CLMST.CyclicFactorReduction
+import SerrePositivity.CLMST.CyclicPPowerLength
 import SerrePositivity.CLMST.ModPHypersurfaceGrowth
 import SerrePositivity.CLMST.StageModPImageLength
 import SerrePositivity.CLMST.StageModPLengthBound
@@ -637,3 +638,14 @@ assert_no_sorry SerrePositivity.CLMST.exists_p_power_unit_of_fin_one
 #print sorries SerrePositivity.CLMST.perfectoidIdeal_le_of_p_power_factor
 #print sorries SerrePositivity.CLMST.completedLength_cyclic_first_eq_of_p_power_factor
 #print sorries SerrePositivity.CLMST.completedLength_cyclic_pow_eq_zero_of_p_power_factor
+
+-- distinguished Witt核からp冪ねじれをpで消し、p冪・単元倍・一元パラメータ系を評価する。
+assert_no_sorry SerrePositivity.witt_factor_coeff_zero_of_distinguished
+assert_no_sorry SerrePositivity.witt_distinguished_dvd_p_mul_of_dvd_p_pow_mul
+assert_no_sorry SerrePositivity.IsIntegralPerfectoid.p_mul_eq_zero_of_pow_mul_eq_zero
+assert_no_sorry SerrePositivity.IsIntegralPerfectoid.p_eq_zero_of_isNilpotent
+#print sorries SerrePositivity.perfectoidIdeal_le_of_mem
+#print sorries SerrePositivity.perfectoidIdeal_p_pow_eq
+#print sorries SerrePositivity.perfectoidIdeal_mul_unit_eq
+#print sorries SerrePositivity.CLMST.completedLength_cyclic_p_power_unit_eq_zero
+#print sorries SerrePositivity.CLMST.completedLength_cyclic_fin_one_eq_zero
