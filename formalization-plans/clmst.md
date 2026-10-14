@@ -2581,7 +2581,7 @@ F4-3 `0ac751f`、F4-4 `d0676da`。
 
 ### 9.5. F6：一般主イデアル商のperfection射影核
 
-状態：F6-1・2完了（2026-10-14）。互換列の補正、零化イデアル内の根と冪根による零化、商での誤差の所属を証明。対象ビルドと全公開宣言の`assert_no_sorry`成功。F6-3以降は未完了。
+状態：F6-1〜3完了（2026-10-14）。一般主イデアル商の核の両包含、標準Perfection.liftとの一致、CharPを追加しない零環の商の枝まで証明。対象ビルドと全公開宣言の`assert_no_sorry`成功。F6-4の適用・全体監査は未完了。
 完全標数p可換環kの任意の元aとQ=k/(a)、商写像qについて、
 `L := Perfection.lift p k Q q`とし、
 `RingHom.ker (Perfection.coeff Q p 0) = Ideal.span {L a}`を証明する。
