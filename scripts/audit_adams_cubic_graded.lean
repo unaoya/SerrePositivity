@@ -1,4 +1,4 @@
-import SerrePositivity.PerfectComplex.TensorTripleDegreeMaps
+import SerrePositivity.KTheory.Adams.TensorCubeFirstLayerSplitting
 import SerrePositivity.PerfectComplex.DegreewiseKernelLift
 import Mathlib.Util.AssertNoSorry
 
@@ -30,3 +30,45 @@ assert_no_sorry SerrePositivity.cochainKernelLiftX_inclusion
 #print axioms SerrePositivity.cochainKernelLiftX_inclusion
 assert_no_sorry SerrePositivity.cochainBiprodDegree_hom_ext
 #print axioms SerrePositivity.cochainBiprodDegree_hom_ext
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeLowDegreeMap
+#print axioms SerrePositivity.Adams.tensorCubeLowDegreeMap
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeLowDegreeMap_pair0
+#print axioms SerrePositivity.Adams.tensorCubeLowDegreeMap_pair0
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeLowDegreeMap_pair1
+#print axioms SerrePositivity.Adams.tensorCubeLowDegreeMap_pair1
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeLowDegreeMap_pair2
+#print axioms SerrePositivity.Adams.tensorCubeLowDegreeMap_pair2
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeLowDegreeMap_pairMap
+#print axioms SerrePositivity.Adams.tensorCubeLowDegreeMap_pairMap
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerInclusion_bbc_zero
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerInclusion_bbc_zero
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerInclusion_bcb_zero
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerInclusion_bcb_zero
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerInclusion_cbb_zero
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerInclusion_cbb_zero
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerInclusion_low
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerInclusion_low
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeSplittingA_quotient_zero
+#print axioms SerrePositivity.Adams.tensorCubeSplittingA_quotient_zero
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerRetractionX
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerRetractionX
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerRetractionX_inclusion
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerRetractionX_inclusion
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerRetractionX_retract
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayerRetractionX_retract
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayer_perfect
+#print axioms SerrePositivity.Adams.tensorCubeFirstLayer_perfect
