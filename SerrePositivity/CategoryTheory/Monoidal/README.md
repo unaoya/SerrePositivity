@@ -52,6 +52,9 @@
 - [MappingUnitLaws](MappingUnitLaws.lean)：作用の結同比較と単位の整合性から、写像対象の左右単位を合成した後の評価を計算する。
 - [MappingAssociativity](MappingAssociativity.lean)：結同比較の自然性と作用の五角形から反復合成の評価を一致させ、表現性で写像対象の結合則へ戻す。
 - [MappingArrowComposition](MappingArrowComposition.lean)：通常の射に対応する写像対象の点の合成を評価し、表現性で元の射の合成との一致を得る。
+- [ReverseComposition](ReverseComposition.lean)：交換で因子の順序を逆にした合成の結合・左右単位則、通常の因子順の豊穣圏の構成。
+- [RepresentedMappingEnrichment](RepresentedMappingEnrichment.lean)：作用の表現性による写像対象・合成・単位・評価の法則をまとめ、検証した法則から豊穣構造を構成する。
+- [TransportEnrichmentComparisons](TransportEnrichmentComparisons.lean)：lax braided関手で移した豊穣構造の合成と単位の具体式。
 - [BalancedTensorFreeLeft](BalancedTensorFreeLeft.lean)：交換で移した左テンソルの作用、左自由因子の比較同型・生成元の挿入と二変数の自然同型。
 
 極限の構成にはテンソル積の極限保存を仮定しない。

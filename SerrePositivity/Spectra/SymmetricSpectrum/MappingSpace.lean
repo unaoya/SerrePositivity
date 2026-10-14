@@ -7,6 +7,7 @@ public import Mathlib.CategoryTheory.Whiskering
 public import SerrePositivity.CategoryTheory.AdjunctionHomLaws
 public import SerrePositivity.CategoryTheory.Monoidal.MappingAdjunction
 public import SerrePositivity.CategoryTheory.Monoidal.MappingUnitLaws
+public import SerrePositivity.CategoryTheory.Monoidal.RepresentedMappingEnrichment
 
 /-! # 基点付き写像対象と各段のsmashの表現性 -/
 
@@ -24,14 +25,14 @@ namespace SerrePositivity.SymmetricSpectrum
 open CategoryTheory CategoryTheory.MonoidalCategory
 open SerrePositivity.PointedSimplicialSet
 
-/-- 基点付き写像対象は内部Homスペクトルの第0段。 -/
-def pointedMappingSpace (E F : SymmetricSpectrum.{u}) : PointedSimplicialSet.{u} :=
-  level (internalHom E F) 0
-
 /-- 基点付き写像対象の値域スペクトルに関する関手。 -/
 def pointedMappingSpaceFunctor (E : SymmetricSpectrum.{u}) :
     SymmetricSpectrum.{u} ⥤ PointedSimplicialSet.{u} :=
   internalHomFunctor E ⋙ evaluation 0
+
+/-- 基点付き写像対象は内部Homスペクトルの第0段。 -/
+def pointedMappingSpace (E F : SymmetricSpectrum.{u}) : PointedSimplicialSet.{u} :=
+  RepresentedMappingEnrichment.hom pointedMappingSpaceFunctor.{u} E F
 
 /-- 基点付き写像対象は原変数に反変、値域に共変な二変数関手。 -/
 def pointedMappingSpaceBifunctor : SymmetricSpectrum.{u}ᵒᵖ ⥤
@@ -127,6 +128,7 @@ lemma mappingSpaceCurry_naturality_left {X Y : PointedSimplicialSet.{u}} (f : X 
 /-- 基点付き写像対象の評価。 -/
 def mappingSpaceEvaluation (E F : SymmetricSpectrum.{u}) :
     pointwiseTensor (pointedMappingSpace E F) E ⟶ F :=
-  (pointedMappingSpaceAdjunction E).counit.app F
+  RepresentedMappingEnrichment.evaluation pointwiseTensorBifunctor.{u}
+    pointedMappingSpaceFunctor.{u} pointedMappingSpaceAdjunction.{u} E F
 
 end SerrePositivity.SymmetricSpectrum

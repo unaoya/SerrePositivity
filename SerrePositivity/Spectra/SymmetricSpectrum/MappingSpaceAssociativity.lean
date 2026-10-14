@@ -21,22 +21,16 @@ open SerrePositivity.PointedSimplicialSet
 
 /-- 三つの写像対象の反復合成を評価した射が等しいという法則。 -/
 def mappingSpaceAssociativityEvaluationLaw (E F G K : SymmetricSpectrum.{u}) : Prop :=
-  MappingAssociativity.associativityEvaluationLaw pointwiseTensorBifunctor.{u}
-    pointwiseTensorAssociatorNatIso.{u}
-    (mappingSpaceComposition F G K) (mappingSpaceComposition E F G)
-    (mappingSpaceEvaluation E F) (mappingSpaceEvaluation G K)
-    (mappingSpaceEvaluation F K) (mappingSpaceEvaluation E G)
+  RepresentedMappingEnrichment.associativityEvaluationLaw pointwiseTensorBifunctor.{u}
+    pointwiseTensorAssociatorNatIso.{u} pointedMappingSpaceFunctor.{u}
+    pointedMappingSpaceAdjunction.{u} E F G K
 
 /-- 反復合成の二つの経路は評価後に一致する。 -/
 lemma mappingSpace_associativity_evaluation (E F G K : SymmetricSpectrum.{u}) :
     mappingSpaceAssociativityEvaluationLaw E F G K := by
-  apply MappingAssociativity.associativity_evaluation pointwiseTensorBifunctor.{u}
-    pointwiseTensorAssociatorNatIso.{u}
-    (mappingSpaceComposition F G K) (mappingSpaceComposition E F G)
-    (mappingSpaceEvaluation E F) (mappingSpaceEvaluation F G) (mappingSpaceEvaluation G K)
-    (mappingSpaceEvaluation F K) (mappingSpaceEvaluation E G)
-  · exact mappingSpaceComposition_evaluation F G K
-  · exact mappingSpaceComposition_evaluation E F G
+  apply RepresentedMappingEnrichment.associativity_evaluation pointwiseTensorBifunctor.{u}
+    pointwiseTensorAssociatorNatIso.{u} pointedMappingSpaceFunctor.{u}
+    pointedMappingSpaceAdjunction.{u} E F G K
   · exact pointwiseTensorAssociator_parameter_left (mappingSpaceComposition F G K)
       (pointedMappingSpace E F) E
   · exact pointwiseTensorAssociator_parameter_right (pointedMappingSpace G K)
@@ -46,20 +40,16 @@ lemma mappingSpace_associativity_evaluation (E F G K : SymmetricSpectrum.{u}) :
 
 /-- 基点付き写像対象の合成の結合則の等式。 -/
 def mappingSpaceAssociativityLaw (E F G K : SymmetricSpectrum.{u}) : Prop :=
-  MappingAssociativity.representedAssociativityLaw pointwiseTensorBifunctor.{u}
-    pointwiseTensorAssociatorNatIso.{u} (pointedMappingSpaceAdjunction E)
-    (mappingSpaceComposition F G K) (mappingSpaceComposition E F G)
-    (mappingSpaceEvaluation E F) (mappingSpaceEvaluation G K)
-    (mappingSpaceEvaluation F K) (mappingSpaceEvaluation E G)
+  RepresentedMappingEnrichment.associativityLaw pointwiseTensorBifunctor.{u}
+    pointwiseTensorAssociatorNatIso.{u} pointedMappingSpaceFunctor.{u}
+    pointedMappingSpaceAdjunction.{u} E F G K
 
 /-- 基点付き写像対象の合成は結合則を満たす。 -/
 lemma mappingSpace_associativity (E F G K : SymmetricSpectrum.{u}) :
     mappingSpaceAssociativityLaw E F G K :=
-  MappingAssociativity.represented_associativity pointwiseTensorBifunctor.{u}
-    pointwiseTensorAssociatorNatIso.{u} (pointedMappingSpaceAdjunction E)
-    (mappingSpaceComposition F G K) (mappingSpaceComposition E F G)
-    (mappingSpaceEvaluation E F) (mappingSpaceEvaluation G K)
-    (mappingSpaceEvaluation F K) (mappingSpaceEvaluation E G)
+  RepresentedMappingEnrichment.associativity pointwiseTensorBifunctor.{u}
+    pointwiseTensorAssociatorNatIso.{u} pointedMappingSpaceFunctor.{u}
+    pointedMappingSpaceAdjunction.{u} E F G K
     (mappingSpace_associativity_evaluation E F G K)
 
 end SerrePositivity.SymmetricSpectrum

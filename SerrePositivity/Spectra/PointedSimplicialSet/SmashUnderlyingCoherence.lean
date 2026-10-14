@@ -61,6 +61,13 @@ lemma forgetUnit_eq : forgetUnit.{u} = CategoryTheory.Limits.coprod.inl := by
     (𝟙_ SSet.{u}) ⨿ (𝟙_ SSet.{u})) ≫ 𝟙 _ = _
   rw [Category.comp_id]
 
+/-- 忘却の単位比較からの合成は非基点側を選んだ通常の射。 -/
+lemma forgetUnit_comp (X : PointedSimplicialSet.{u})
+    (f : 𝟙_ PointedSimplicialSet.{u} ⟶ X) :
+    forgetUnit ≫ f.right = unitUnderlyingHom X f := by
+  rw [forgetUnit_eq]
+  rfl
+
 /-- 直積からsmashへの標準射は左単位と両立する。 -/
 lemma productToSmash_left_unitor (X : PointedSimplicialSet.{u}) :
     forgetUnit ▷ X.right ≫ productToSmash (𝟙_ PointedSimplicialSet.{u}) X ≫

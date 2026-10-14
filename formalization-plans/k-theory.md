@@ -4642,3 +4642,34 @@ B4も未完了であり、モデル構造には進まない。
 検証：新規ソースの書式・証明マーカー、文書のリンク、git diff --checkを確認した。
 集約ビルドは2090ジョブ、公理監査は235モジュール・2398宣言で成功した。
 標準公理のみでsorry依存なし。新しい証明は標準の計算上限で検証した。
+
+## 111. 実施記録：写像対象の単体的豊穣構造（2026-10-14）
+
+[ReverseComposition](../SerrePositivity/CategoryTheory/Monoidal/ReverseComposition.lean)で、
+交換で入力の因子の順序を逆にした合成の結合・左右単位則を証明した。
+三つの因子を逆順へ送る二つの経路はYang–Baxterの等式で一致させた。
+後から適用する射を左因子に置く合成から、通常の因子順の豊穣圏を構成する一般論を公開した。
+
+[RepresentedMappingEnrichment](../SerrePositivity/CategoryTheory/Monoidal/RepresentedMappingEnrichment.lean)で、
+作用の表現性による写像対象、評価、合成、単位とその法則を共通の構成へまとめた。
+作用の自然性と五角形・左右単位の整合性から評価の法則を導き、表現性で合成の法則へ戻す。
+検証した単位・結合の法則を通常の因子順の豊穣構造へまとめた。
+スペクトル側の写像対象と合成・単位・評価の定義および法則をこの構成へ接続し、
+B1〜B2の既存の随伴・自然性・通常の射との対応も再検証した。
+
+[MappingSpaceEnriched](../SerrePositivity/Spectra/SymmetricSpectrum/MappingSpaceEnriched.lean)で、
+基点付き写像対象をHomとする豊穣構造を構成した。
+[TransportEnrichmentComparisons](../SerrePositivity/CategoryTheory/Monoidal/TransportEnrichmentComparisons.lean)で、
+lax braided関手で移した合成と単位の具体式を証明した。
+[MappingSpaceSimplicialEnriched](../SerrePositivity/Spectra/SymmetricSpectrum/MappingSpaceSimplicialEnriched.lean)で、
+基点を忘れる関手によって単体的豊穣構造を得た。
+その合成と単位が、構成済みの直積からの合成と非基点側の単位に一致することを証明した。
+豊穣構造のデータとして合成の結合・左右単位則を保持している。
+
+B3の合成の整合性は接続した。
+零次単体上の合成・恒等射との対応と、既存の通常の圏構造との接続はまだ必要であり、
+B3全体は完了とはしない。B4も引き続き実装する。モデル構造には進まない。
+
+検証：新規・変更ソースの書式・証明マーカー、文書のリンク、git diff --checkを確認した。
+集約ビルドは2095ジョブ、公理監査は240モジュール・2444宣言で成功した。
+標準公理のみでsorry依存なし。新しい証明は標準の計算上限で検証した。

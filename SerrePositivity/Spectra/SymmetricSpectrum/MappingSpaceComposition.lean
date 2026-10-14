@@ -23,41 +23,48 @@ open SerrePositivity.PointedSimplicialSet
 /-- 二つの写像対象をテンソルした作用から、評価を二回適用する射。 -/
 def mappingSpaceCompositionEvaluation (E F G : SymmetricSpectrum.{u}) :
     pointwiseTensor (pointedMappingSpace F G ⊗ pointedMappingSpace E F) E ⟶ G :=
-  MappingAssociativity.compositionEvaluation pointwiseTensorBifunctor.{u}
-    pointwiseTensorAssociatorNatIso.{u} (pointedMappingSpace F G) (pointedMappingSpace E F)
-    (mappingSpaceEvaluation E F) (mappingSpaceEvaluation F G)
+  RepresentedMappingEnrichment.compositionEvaluation pointwiseTensorBifunctor.{u}
+    pointwiseTensorAssociatorNatIso.{u} pointedMappingSpaceFunctor.{u}
+    pointedMappingSpaceAdjunction.{u} E F G
 
 /-- 基点付き写像対象の合成。後から適用する写像を左因子に置く。 -/
 def mappingSpaceComposition (E F G : SymmetricSpectrum.{u}) :
     pointedMappingSpace F G ⊗ pointedMappingSpace E F ⟶ pointedMappingSpace E G :=
-  mappingSpaceCurry _ (mappingSpaceCompositionEvaluation E F G)
+  RepresentedMappingEnrichment.composition pointwiseTensorBifunctor.{u}
+    pointwiseTensorAssociatorNatIso.{u} pointedMappingSpaceFunctor.{u}
+    pointedMappingSpaceAdjunction.{u} E F G
 
 /-- 合成を作用へ送って評価すると二回の評価に一致するという法則。 -/
 def mappingSpaceCompositionEvaluationLaw (E F G : SymmetricSpectrum.{u}) : Prop :=
-  AdjunctionHomLaws.curryEvaluationLaw (pointedMappingSpaceAdjunction E)
-    (mappingSpaceCompositionEvaluation E F G)
+  RepresentedMappingEnrichment.compositionEvaluationLaw pointwiseTensorBifunctor.{u}
+    pointwiseTensorAssociatorNatIso.{u} pointedMappingSpaceFunctor.{u}
+    pointedMappingSpaceAdjunction.{u} E F G
 
 /-- 写像対象の合成は二回の評価を表現する。 -/
 lemma mappingSpaceComposition_evaluation (E F G : SymmetricSpectrum.{u}) :
     mappingSpaceCompositionEvaluationLaw E F G :=
-  AdjunctionHomLaws.curry_evaluation (pointedMappingSpaceAdjunction E)
-    (mappingSpaceCompositionEvaluation E F G)
+  RepresentedMappingEnrichment.composition_evaluation pointwiseTensorBifunctor.{u}
+    pointwiseTensorAssociatorNatIso.{u} pointedMappingSpaceFunctor.{u}
+    pointedMappingSpaceAdjunction.{u} E F G
 
 /-- 作用の単位比較を転置して得る写像対象の単位。 -/
 def mappingSpaceUnit (E : SymmetricSpectrum.{u}) :
     𝟙_ PointedSimplicialSet.{u} ⟶ pointedMappingSpace E E :=
-  mappingSpaceCurry _ (pointwiseTensorUnitIso E).hom
+  RepresentedMappingEnrichment.unit pointwiseTensorBifunctor.{u} pointwiseTensorUnitNatIso.{u}
+    pointedMappingSpaceFunctor.{u} pointedMappingSpaceAdjunction.{u} E
 
 /-- 写像対象の単位を作用へ送って評価すると作用の単位比較になるという法則。 -/
 def mappingSpaceUnitEvaluationLaw (E : SymmetricSpectrum.{u}) : Prop :=
-  AdjunctionHomLaws.curryEvaluationLaw (pointedMappingSpaceAdjunction E)
-    (pointwiseTensorUnitIso E).hom
+  RepresentedMappingEnrichment.unitEvaluationLaw pointwiseTensorBifunctor.{u}
+    pointwiseTensorUnitNatIso.{u} pointedMappingSpaceFunctor.{u}
+    pointedMappingSpaceAdjunction.{u} E
 
 /-- 写像対象の単位は作用の単位比較を表現する。 -/
 lemma mappingSpaceUnit_evaluation (E : SymmetricSpectrum.{u}) :
     mappingSpaceUnitEvaluationLaw E :=
-  AdjunctionHomLaws.curry_evaluation (pointedMappingSpaceAdjunction E)
-    (pointwiseTensorUnitIso E).hom
+  RepresentedMappingEnrichment.unit_evaluation pointwiseTensorBifunctor.{u}
+    pointwiseTensorUnitNatIso.{u} pointedMappingSpaceFunctor.{u}
+    pointedMappingSpaceAdjunction.{u} E
 
 /-- 通常のスペクトル射と写像対象の単位からの射の同値。 -/
 def mappingSpaceArrowEquiv (E F : SymmetricSpectrum.{u}) :
