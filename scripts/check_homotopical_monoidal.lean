@@ -35,3 +35,30 @@ example [HasQuillenPullbackHom G] {A B : C₁} {X Y : C₃}
     HasQuillenPullbackHom.weakEquivalence i p s inferInstance inferInstance (Or.inl inferInstance)⟩
 
 end Bifunctor
+
+open CategoryTheory.MonoidalCategory
+
+section Monoidal
+variable {C : Type u₁} [Category.{v₁} C] [ModelCategory C]
+  [MonoidalCategory C] [MonoidalClosed C]
+
+example [IsCofibrant (𝟙_ C)] : HasUnitAxiom C := unitAxiom_of_cofibrant_unit C
+
+example : MonoidalModelCategory C ↔
+    HasQuillenPullbackHom (MonoidalClosed.internalHom (C := C)) ∧ HasUnitAxiom C :=
+  monoidalModelCategory_iff C
+
+example [MonoidalModelCategory C] {A B X Y : C}
+    (i : A ⟶ B) (j : X ⟶ Y) [Cofibration i] [Cofibration j] [WeakEquivalence i] :
+    Cofibration (Arrow.mk i □ Arrow.mk j).hom ∧ WeakEquivalence (Arrow.mk i □ Arrow.mk j).hom :=
+  ⟨pushoutProduct_cofibration C i j,
+    pushoutProduct_weakEquivalence C i j (Or.inl inferInstance)⟩
+
+example [MonoidalModelCategory C] {A B X Y : C}
+    (i : A ⟶ B) (p : X ⟶ Y) [Cofibration i] [Fibration p] [WeakEquivalence p] :
+    Fibration ((.op (Arrow.mk i)) ⋔ Arrow.mk p).hom ∧
+      WeakEquivalence ((.op (Arrow.mk i)) ⋔ Arrow.mk p).hom := by
+  have := ((monoidalModelCategory_iff C).1 inferInstance).1
+  exact ⟨pullbackHom_fibration C i p,
+    pullbackHom_weakEquivalence C i p (Or.inr inferInstance)⟩
+end Monoidal

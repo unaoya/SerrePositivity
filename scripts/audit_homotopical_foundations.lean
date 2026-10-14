@@ -17,13 +17,18 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor,
     `SerrePositivity.HomotopicalAlgebra.Quillen.DerivedAdjunction,
     `SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence,
-    `SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor]
+    `SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor,
+    `SerrePositivity.HomotopicalAlgebra.Monoidal.ModelCategory,
+    `SerrePositivity.HomotopicalAlgebra.Enriched.TensorCotensor,
+    `SerrePositivity.CategoryTheory.Enriched.TensorCotensor,
+    `SerrePositivity.CategoryTheory.Enriched.EnrichedRepresentability]
   let mut declarations : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
     let some idx := env.getModuleIdxFor? name | continue
     let mod := env.header.modules[idx.toNat]!.module
     unless #[`SerrePositivity.HomotopicalAlgebra,
+        `SerrePositivity.CategoryTheory.Enriched,
         `SerrePositivity.CategoryTheory.MorphismProperty.UnderFactorization,
         `SerrePositivity.CategoryTheory.LiftingProperties.Under].any (·.isPrefixOf mod) do continue
     let axioms ← collectAxioms name
