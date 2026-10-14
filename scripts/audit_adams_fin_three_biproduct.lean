@@ -1,0 +1,26 @@
+import SerrePositivity.PerfectComplex.FinThreeBiproduct
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.cochainFinThreeProjection
+#print axioms SerrePositivity.cochainFinThreeProjection
+
+assert_no_sorry SerrePositivity.cochainFinThreeProjection_zero
+#print axioms SerrePositivity.cochainFinThreeProjection_zero
+
+assert_no_sorry SerrePositivity.cochainFinThreeProjection_one
+#print axioms SerrePositivity.cochainFinThreeProjection_one
+
+assert_no_sorry SerrePositivity.cochainFinThreeProjection_two
+#print axioms SerrePositivity.cochainFinThreeProjection_two
+
+assert_no_sorry SerrePositivity.cochainFinThreeBiproductIso
+#print axioms SerrePositivity.cochainFinThreeBiproductIso
+
+assert_no_sorry SerrePositivity.cochainFinThreeBiproduct_perfect
+#print axioms SerrePositivity.cochainFinThreeBiproduct_perfect
+
+assert_no_sorry SerrePositivity.cochainFinThreeBiproduct_support
+#print axioms SerrePositivity.cochainFinThreeBiproduct_support
+
+assert_no_sorry SerrePositivity.K0WithSupport.mk_finThreeBiproduct
+#print axioms SerrePositivity.K0WithSupport.mk_finThreeBiproduct

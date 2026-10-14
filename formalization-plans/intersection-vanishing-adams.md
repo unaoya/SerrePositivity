@@ -3233,6 +3233,18 @@ S10.8a.1 の六因子の同変比較の受入が完了。次は S10.8a.2 の九�
 公理は標準三公理のみ。九成分の対象・射影・指標和・固有部分の同型がそろった。
 K₀ の類への移送と重みつき乗法性は次の小段。
 
+### S10.8a.2b.1：三成分の有限直和の台・perfect 性・K₀ 類
+
+- `PerfectComplex/FinThreeBiproduct` に Fin 3 の直和と `P₀⊞(P₁⊞P₂)` の比較同型、
+  三射影の式、perfect 性・ホモロジーの台の保存を追加した。
+- `K0WithSupport.mk_finThreeBiproduct` は比較同型と二項直和の既存関係から
+  `mk(⨁ᵢ Pᵢ)=Σᵢ mk(Pᵢ)` を証明する。
+- 対象を含む `lake build SerrePositivity.PerfectComplex.CubicActionTensorClass` が成功（3240 jobs）。
+  `lake env lean scripts/audit_adams_fin_three_biproduct.lean` の公開八定数の監査が成功。
+  依存公理は `propext`、`Classical.choice`、`Quot.sound` のみ。
+- この小段は受入完了。ルートへの公開は後続の統合段で行う。
+  重みつき乗法性・自然性・Koszul 正規化・S10.9・S11 は未完了。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
