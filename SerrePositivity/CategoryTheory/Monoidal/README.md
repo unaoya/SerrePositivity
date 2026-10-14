@@ -55,6 +55,9 @@
 - [ReverseComposition](ReverseComposition.lean)：交換で因子の順序を逆にした合成の結合・左右単位則、通常の因子順の豊穣圏の構成。
 - [RepresentedMappingEnrichment](RepresentedMappingEnrichment.lean)：作用の表現性による写像対象・合成・単位・評価の法則をまとめ、検証した法則から豊穣構造を構成する。
 - [TransportEnrichmentComparisons](TransportEnrichmentComparisons.lean)：lax braided関手で移した豊穣構造の合成と単位の具体式。
+- [LaxPointHom](LaxPointHom.lean)：lax monoidal関手の単位比較で送った単位からの射の合成の保存。
+- [TransportOrdinaryEnrichment](TransportOrdinaryEnrichment.lean)：単位からの射の同値を使い、既存の圏構造と整合する豊穣構造を移す。
+- [SimplicialHomLaws](SimplicialHomLaws.lean)：単体的豊穣圏のHomと零次単体の同値の恒等射・合成の保存。
 - [BalancedTensorFreeLeft](BalancedTensorFreeLeft.lean)：交換で移した左テンソルの作用、左自由因子の比較同型・生成元の挿入と二変数の自然同型。
 
 極限の構成にはテンソル積の極限保存を仮定しない。

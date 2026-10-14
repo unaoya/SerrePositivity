@@ -14,6 +14,7 @@ Mathlibの `CategoryTheory.Mod` を、構成済みの球面対称列へ適用す
 - [MappingSpaceEnriched](MappingSpaceEnriched.lean)：基点付き写像対象の合成の因子を交換して得る豊穣構造。
 - [MappingSpacePointedOrdinary](MappingSpacePointedOrdinary.lean)：基点付き豊穣構造と既存のスペクトルの圏構造の一致、Hom同値の恒等射・合成の保存。
 - [MappingSpaceSimplicialEnriched](MappingSpaceSimplicialEnriched.lean)：忘却関手で移した単体的豊穣構造と、構成済みの直積からの合成・単位との一致。
+- [MappingSpaceSimplicialOrdinary](MappingSpaceSimplicialOrdinary.lean)：既存の圏構造と整合するSimplicialCategoryのデータ、零次単体のHom同値との一致と恒等射・合成の保存。
 - [AdjointStructureMaps](AdjointStructureMaps.lean)：懸垂構造射の各段の通常のループへの随伴表示、逆転置による既存の構造射との一致と自然性。
 - [SuspensionLoop](SuspensionLoop.lean)：円による懸垂・ループの関手、随伴・自然なHom同値、単位・余単位・triangle則と各段の対象の公式。
 - [PointwiseTensorAssociator](PointwiseTensorAssociator.lean)：F_0の積の比較による作用の結合同型、生成対象の両変数と値域スペクトルを含む三変数の自然性。

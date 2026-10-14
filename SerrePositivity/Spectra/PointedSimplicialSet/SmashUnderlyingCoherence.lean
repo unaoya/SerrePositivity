@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.Spectra.PointedSimplicialSet.SmashUnderlying
 public import Mathlib.CategoryTheory.Monoidal.Functor
+public import SerrePositivity.CategoryTheory.Monoidal.LaxPointHom
 
 /-! # 基点を忘れたsmashの標準射と結合・交換の両立 -/
 
@@ -110,5 +111,15 @@ instance forget_laxMonoidal : forget.{u}.LaxMonoidal where
 instance forget_laxBraided : forget.{u}.LaxBraided where
   toLaxMonoidal := forget_laxMonoidal
   braided X Y := (productToSmash_braiding X Y).symm
+
+/-- 零次球面からの射と基礎単体的集合の単位からの射の同値。 -/
+def forgetUnitHomEquiv (X : PointedSimplicialSet.{u}) :
+    (𝟙_ PointedSimplicialSet.{u} ⟶ X) ≃ (𝟙_ SSet.{u} ⟶ forget.obj X) :=
+  PointedObject.adjoinHomEquiv (𝟙_ SSet.{u}) X
+
+/-- 単位からの射の同値は忘却関手の単位比較による射に一致する。 -/
+lemma forgetUnitHomEquiv_formula (X : PointedSimplicialSet.{u})
+    (f : 𝟙_ PointedSimplicialSet.{u} ⟶ X) :
+    forgetUnitHomEquiv X f = LaxPointHom.map forget f := (forgetUnit_comp X f).symm
 
 end SerrePositivity.PointedSimplicialSet

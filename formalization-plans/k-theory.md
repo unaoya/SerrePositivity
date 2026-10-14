@@ -60,7 +60,7 @@ P1・P2が通った時点でホモトピー論への入口を一区切りとす�
 
 当面の成果物は、モデル構造の選択に依存しない対称スペクトルの
 単体的なtensor・cotensor・写像対象と、その法則である。
-A1は§98、A2は§103、A3は§104、B2は§108で完了。B3〜B4は引き続き実装する。
+A1は§98、A2は§103、A3は§104、B2は§108、B3は§113で完了。B4は引き続き実装する。
 以下のA1〜A3が段階1、B1〜B4とC1〜C2が段階2に相当する。
 番号は検証可能な作業単位を表し、一単位が一コミットで終わるとは限らない。
 記載する追加API名は実装時の候補であり、既存の宣言としては扱わない。
@@ -4697,4 +4697,34 @@ B4も未完了であり、モデル構造には進まない。
 
 検証：新規・変更ソースの書式・証明マーカー、文書のリンク、git diff --checkを確認した。
 集約ビルドは2097ジョブ、公理監査は241モジュール・2452宣言で成功した。
+標準公理のみでsorry依存なし。新しい証明は標準の計算上限で検証した。
+
+## 113. 実施記録：B3の通常の単体的豊穣構造と圏構造の一致（2026-10-14）
+
+[LaxPointHom](../SerrePositivity/CategoryTheory/Monoidal/LaxPointHom.lean)で、
+lax monoidal関手の単位比較によって送った単位からの射が、テンソルと合成の比較に両立することを証明した。
+[TransportOrdinaryEnrichment](../SerrePositivity/CategoryTheory/Monoidal/TransportOrdinaryEnrichment.lean)で、
+単位からの射の同値を使い、既存の通常の圏構造も豊穣構造とともに移す一般論を構成した。
+恒等射と合成の保存は、元の豊穣圏のHom同値の法則とlax monoidalの比較の法則から得た。
+
+[SmashUnderlyingCoherence](../SerrePositivity/Spectra/PointedSimplicialSet/SmashUnderlyingCoherence.lean)で、
+零次球面からの基点付き射と基礎単体的集合の単位からの射の同値を公開した。
+この同値は、忘却関手の単位比較で送る射に一致する。
+[MappingSpaceSimplicialOrdinary](../SerrePositivity/Spectra/SymmetricSpectrum/MappingSpaceSimplicialOrdinary.lean)で、
+基点付き側のEnrichedOrdinaryCategoryを忘却関手で移し、既存のスペクトルの圏構造と整合する
+標準のSimplicialCategoryのデータを構成した。
+その基礎の豊穣構造は、構成済みの単体的豊穣構造に一致する。
+標準のHomと零次単体の同値が、構成済みの零次単体の同値に一致することも証明した。
+
+[SimplicialHomLaws](../SerrePositivity/CategoryTheory/Monoidal/SimplicialHomLaws.lean)で、
+単体的豊穣圏のHom同値の恒等射・合成の保存を零次単体へ評価した一般の法則を公開した。
+スペクトルに適用し、零次単体上の恒等射と合成が通常のスペクトル射の恒等射と合成に対応することを証明した。
+
+B3の写像対象、直積からの合成と単位、その整合性、零次単体とHomの対応、既存の圏構造との一致は検証した。
+標準のSimplicialCategoryのデータは必要な場所でローカルに利用できる。
+mathlibへの上流登録は行っていない。B4と最終のC1〜C2の接続確認を引き続き行う。
+C2までの全体目標は未完了であり、モデル構造には進まない。
+
+検証：新規・変更ソースの書式・証明マーカー、文書のリンク、git diff --checkを確認した。
+集約ビルドは2102ジョブ、公理監査は245モジュール・2469宣言で成功した。
 標準公理のみでsorry依存なし。新しい証明は標準の計算上限で検証した。
