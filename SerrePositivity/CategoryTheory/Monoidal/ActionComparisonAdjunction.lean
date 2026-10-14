@@ -6,7 +6,7 @@ public import Mathlib.CategoryTheory.Adjunction.Unique
 
 @[expose] public section
 
-universe v u
+universe v w u u'
 
 noncomputable section
 
@@ -14,27 +14,28 @@ namespace SerrePositivity.ActionComparisonAdjunction
 
 open CategoryTheory
 
-variable {C : Type u} [Category.{v} C] {L L' R R' : C ⥤ C}
+variable {C : Type u} {D : Type u'} [Category.{v} C] [Category.{w} D]
+  {L L' : C ⥤ D} {R R' : D ⥤ C}
   (a : L ⊣ R) (b : L' ⊣ R') (e : L ≅ L')
 
 /-- 左随伴の自然同型と右随伴の一意性から得る右随伴の自然同型。 -/
 def rightIso : R ≅ R' := (a.ofNatIsoLeft e).rightAdjointUniq b
 
 /-- 右随伴の比較が満たす、二つの評価の比較の法則。 -/
-def evaluationLaw (X : C) : Prop :=
+def evaluationLaw (X : D) : Prop :=
   L'.map ((rightIso a b e).hom.app X) ≫ b.counit.app X =
     e.inv.app (R.obj X) ≫ a.counit.app X
 
 /-- 右随伴の比較は、左随伴の逆比較を介して元の評価を保つ。 -/
-lemma rightIso_evaluation (X : C) : evaluationLaw a b e X :=
+lemma rightIso_evaluation (X : D) : evaluationLaw a b e X :=
   (a.ofNatIsoLeft e).rightAdjointUniq_hom_app_counit b X
 
 /-- 左随伴の比較と右随伴の比較が、二つの転置を比較する法則。 -/
-def homEquivLaw (X Y : C) (f : L'.obj X ⟶ Y) : Prop :=
+def homEquivLaw (X : C) (Y : D) (f : L'.obj X ⟶ Y) : Prop :=
   a.homEquiv X Y (e.hom.app X ≫ f) ≫ (rightIso a b e).hom.app Y = b.homEquiv X Y f
 
 /-- 右随伴の比較を元の転置へ合成すると、比較後の左随伴の転置になる。 -/
-lemma rightIso_homEquiv (X Y : C) (f : L'.obj X ⟶ Y) : homEquivLaw a b e X Y f := by
+lemma rightIso_homEquiv (X : C) (Y : D) (f : L'.obj X ⟶ Y) : homEquivLaw a b e X Y f := by
   change a.homEquiv X Y (e.hom.app X ≫ f) ≫ (rightIso a b e).hom.app Y = b.homEquiv X Y f
   rw [← Adjunction.homEquiv_ofNatIsoLeft_apply]
   simp only [Adjunction.homEquiv_unit, Category.assoc]
