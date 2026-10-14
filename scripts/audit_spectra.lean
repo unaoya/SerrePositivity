@@ -32,6 +32,10 @@ run_cmd do
     declarations := declarations + 1
     unless modules.contains mod do modules := modules.push mod
   for expected in #[`SerrePositivity.Spectra.General.Basic,
+      `SerrePositivity.Spectra.General.StructureMaps,
+      `SerrePositivity.Spectra.General.FreeLevels,
+      `SerrePositivity.Spectra.General.FreeLevelInduction,
+      `SerrePositivity.Spectra.General.FreeLevelQuotient,
       `SerrePositivity.Spectra.General.Free, `SerrePositivity.Spectra.General.Evaluation,
       `SerrePositivity.Spectra.General.Limits,
       `SerrePositivity.Spectra.General.TensorClosed,

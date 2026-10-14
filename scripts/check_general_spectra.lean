@@ -72,3 +72,26 @@ example {E X F : GeneralSymmetricSpectrum C K} (f : tensor E X ⟶ F) :
 example {E X F : GeneralSymmetricSpectrum C K} (f : X ⟶ internalHom E F) :
     curry (uncurry f) = f := curry_uncurry f
 end Closed
+
+section Structure
+open CategoryTheory.MonoidalCategory
+example (E : GeneralSymmetricSpectrum C K) (n : ℕ) :
+    structureMap E 0 n = (λ_ (level E n)).hom ≫
+      E.X.map (FiniteBijection.sumLeftUnitor (FiniteBijection.of n)).inv :=
+  structureMap_unit E n
+example (E : GeneralSymmetricSpectrum C K) (p q r : ℕ) :
+    ((TensorPowers.appendIso K p q).hom ▷ level E r) ≫ structureMap E (p + q) r =
+      (α_ (TensorPowers.power K p) (TensorPowers.power K q) (level E r)).hom ≫
+        (TensorPowers.power K p ◁ structureMap E q r) ≫ structureMap E p (q + r) ≫
+        E.X.map (FiniteBijection.sumAssociator
+          (FiniteBijection.of p) (FiniteBijection.of q) (FiniteBijection.of r)).inv :=
+  structureMap_assoc E p q r
+example (n m : ℕ) (X : C) (h : m < n) :
+    IsInitial (level ((freeAt (K := K) n).obj X) m) := freeAtLevelInitial n X m h
+example (n m : ℕ) (X : C) :
+    level ((freeAt (K := K) n).obj X) m ≅ freeAtLevelBlockQuotient n X m :=
+  freeAtLevelIsoBlockQuotient n X m
+example (n m : ℕ) (X : C) :
+    level ((freeAt (K := K) n).obj X) m ≅ colimit (freeAtLevelInductionDiagram n X m) :=
+  freeAtLevelIsoInduction n X m
+end Structure

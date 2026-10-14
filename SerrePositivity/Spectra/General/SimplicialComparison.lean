@@ -2,6 +2,10 @@ module
 
 public import SerrePositivity.Spectra.General.Evaluation
 public import SerrePositivity.Spectra.General.TensorClosed
+public import SerrePositivity.Spectra.General.StructureMaps
+public import SerrePositivity.Spectra.General.FreeLevelQuotient
+public import SerrePositivity.Spectra.SymmetricSpectrum.StructureMaps
+public import SerrePositivity.Spectra.SymmetricSpectrum.FreeLevelQuotient
 public import SerrePositivity.Spectra.SymmetricSpectrum.Closed
 public import SerrePositivity.Spectra.SymmetricSpectrum.Evaluation
 
@@ -55,5 +59,13 @@ lemma simplicial_tensor (E F : SymmetricSpectrum.{u}) :
 lemma simplicial_internalHom (E F : SymmetricSpectrum.{u}) :
     internalHom (C := PointedSimplicialSet.{u}) (K := circle) E F =
       SymmetricSpectrum.internalHom E F := rfl
+
+lemma simplicial_structureMap (E : SymmetricSpectrum.{u}) (p q : ℕ) :
+    structureMap (C := PointedSimplicialSet.{u}) (K := circle) E p q =
+      SymmetricSpectrum.structureMap E p q := rfl
+
+lemma simplicial_freeAtLevelIsoBlockQuotient (n m : ℕ) (X : PointedSimplicialSet.{u}) :
+    freeAtLevelIsoBlockQuotient (K := (circle : PointedSimplicialSet.{u})) n X m =
+      SymmetricSpectrum.freeAtLevelIsoBlockQuotient n X m := rfl
 
 end SerrePositivity.GeneralSymmetricSpectrum
