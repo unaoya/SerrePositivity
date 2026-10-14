@@ -2,10 +2,12 @@ module
 
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Presentable
+public import Mathlib.AlgebraicTopology.SimplicialSet.Monomorphisms
 public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal
 public import Mathlib.CategoryTheory.Monoidal.Closed.Cartesian
 public import Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes
 public import SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness
+public import SerrePositivity.HomotopicalAlgebra.Generated.Basic
 
 /-! # Concrete smallness of the fixed simplicial generating maps
 
@@ -53,6 +55,22 @@ lemma boundaryGenerators_smallObjectArgument : I.{u}.HasSmallObjectArgument.{u} 
 
 /-- The source horn small-object argument is reused from the fixed Mathlib. -/
 lemma hornGenerators_smallObjectArgument : J.{u}.HasSmallObjectArgument.{u} := inferInstance
+
+/-- Boundary generation recovers precisely the actual monomorphisms, without
+assuming a weak-equivalence class or the Kan–Quillen model axioms. -/
+lemma boundaryGenerators_leftClass : I.{u}.rlp.llp = MorphismProperty.monomorphisms SSet.{u} := by
+  let : I.{u}.HasSmallObjectArgument.{u} := boundaryGenerators_smallObjectArgument
+  apply le_antisymm
+  · apply SerrePositivity.ModelGeneration.generatedLeft_le_of_cells_le
+    have hc : MorphismProperty.coproducts.{u} I.{u} ≤
+        MorphismProperty.monomorphisms SSet.{u} :=
+      MorphismProperty.coproducts_le_iff.2 I_le_monomorphisms
+    have hp : (MorphismProperty.coproducts.{u} I.{u}).pushouts ≤
+        MorphismProperty.monomorphisms SSet.{u} :=
+      MorphismProperty.pushouts_le_iff.2 hc
+    exact MorphismProperty.transfiniteCompositions_le_iff.{u}.2 hp
+  · rw [← SSet.rlp_monomorphisms]
+    exact MorphismProperty.le_llp_rlp _
 
 /-- Every simplicial set is cofibrant for the fixed monomorphism cofibration class. -/
 lemma simplicialSet_isCofibrant (X : SSet.{u}) : IsCofibrant X := by

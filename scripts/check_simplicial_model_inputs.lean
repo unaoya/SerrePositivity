@@ -33,6 +33,15 @@ example : pointedI.{u}.rlp = I.rlp.inverseImage PointedSimplicialSet.forget :=
   pointedGenerators_rlp I
 example : pointedJ.{u}.rlp = fibrations PointedSimplicialSet.{u} := pointedJ_rlp
 
+example : I.{u}.rlp.llp = MorphismProperty.monomorphisms SSet.{u} :=
+  boundaryGenerators_leftClass
+example : pointedI.{u}.rlp.llp = cofibrations PointedSimplicialSet.{u} :=
+  pointedI_leftClass
+example : MorphismProperty.IsWeakFactorizationSystem
+    (cofibrations PointedSimplicialSet.{u}) pointedI.rlp := pointedI_weakFactorizationSystem
+example : (cofibrations PointedSimplicialSet.{u}).HasFunctorialFactorization pointedI.rlp :=
+  pointedI_functorialFactorization
+
 open Lean in
 run_cmd do
   let env ← getEnv

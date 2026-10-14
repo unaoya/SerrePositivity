@@ -4,6 +4,8 @@ public import SerrePositivity.Spectra.ModelCategory.SimplicialCofibrancy
 public import SerrePositivity.Spectra.Pointed.AdjoinBasepoint
 public import Mathlib.CategoryTheory.Limits.Comma
 public import Mathlib.CategoryTheory.Limits.Constructions.Over.Connected
+public import SerrePositivity.CategoryTheory.MorphismProperty.UnderFactorization
+public import SerrePositivity.CategoryTheory.LiftingProperties.Under
 
 /-! # Actual pointed boundary and horn generators
 
@@ -94,5 +96,44 @@ lemma pointedJ_domain_presentable {A B : PointedSimplicialSet.{u}} (f : A ⟶ B)
 lemma pointedJ_rlp : pointedJ.{u}.rlp = fibrations PointedSimplicialSet.{u} := by
   rw [pointedGenerators_rlp, fibrations_under_def, MorphismProperty.under_eq_inverseImage]
   rfl
+
+/-- Free pointed boundaries generate exactly the inherited mono cofibrations. -/
+lemma pointedI_leftClass : pointedI.{u}.rlp.llp = cofibrations PointedSimplicialSet.{u} := by
+  rw [pointedGenerators_rlp, cofibrations_under_def]
+  change (I.{u}.rlp.under (X := 𝟙_ SSet.{u})).llp =
+    (MorphismProperty.monomorphisms SSet.{u}).under
+  let : I.{u}.HasSmallObjectArgument.{u} := boundaryGenerators_smallObjectArgument
+  have hfac : (MorphismProperty.monomorphisms SSet.{u}).HasFactorization I.rlp := by
+    rw [← boundaryGenerators_leftClass]
+    infer_instance
+  let : (MorphismProperty.monomorphisms SSet.{u}).HasFactorization I.rlp := hfac
+  have hret : ((MorphismProperty.monomorphisms SSet.{u}).under
+      (X := 𝟙_ SSet.{u})).IsStableUnderRetracts := by
+    rw [MorphismProperty.under_eq_inverseImage]
+    infer_instance
+  let : ((MorphismProperty.monomorphisms SSet.{u}).under
+      (X := 𝟙_ SSet.{u})).IsStableUnderRetracts := hret
+  apply MorphismProperty.llp_eq_of_le_llp_of_hasFactorization_of_isStableUnderRetracts
+  intro A B i hi X Y p hp
+  have hi' : I.rlp.llp i.right := by
+    rw [boundaryGenerators_leftClass]
+    exact hi
+  let : HasLiftingProperty i.right p.right := hi' _ hp
+  exact HasLiftingProperty.under i p
+
+/-- The concrete pointed cofibration/lifting pair is a weak factorization system. -/
+lemma pointedI_weakFactorizationSystem :
+    MorphismProperty.IsWeakFactorizationSystem
+      (cofibrations PointedSimplicialSet.{u}) pointedI.rlp := by
+  let : pointedI.{u}.HasSmallObjectArgument.{u} := pointedI_smallObjectArgument
+  rw [← pointedI_leftClass]
+  infer_instance
+
+/-- The concrete pointed boundary factorization can be chosen functorially. -/
+lemma pointedI_functorialFactorization :
+    (cofibrations PointedSimplicialSet.{u}).HasFunctorialFactorization pointedI.rlp := by
+  let : pointedI.{u}.HasSmallObjectArgument.{u} := pointedI_smallObjectArgument
+  rw [← pointedI_leftClass]
+  infer_instance
 
 end SerrePositivity.SimplicialModelInputs
