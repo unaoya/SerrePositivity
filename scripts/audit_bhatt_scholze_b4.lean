@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.DeltaWittGhostNaturality
 import SerrePositivity.BhattScholze.RelativeFreeFiniteWittCoordinateChange
 import SerrePositivity.BhattScholze.RelativeFreeWittInverseSupport
 import SerrePositivity.BhattScholze.RelativeFreeWittCoordinateChange
@@ -1757,3 +1758,12 @@ assert_no_sorry SerrePositivity.BhattScholze.relativeFreeFiniteWittCoordinateEqu
 
 assert_no_sorry SerrePositivity.BhattScholze.relativeFreeFiniteWittCoordinateEquiv_X_initial
 #print axioms SerrePositivity.BhattScholze.relativeFreeFiniteWittCoordinateEquiv_X_initial
+
+assert_no_sorry SerrePositivity.BhattScholze.deltaWittGhostVector_map
+#print axioms SerrePositivity.BhattScholze.deltaWittGhostVector_map
+
+assert_no_sorry SerrePositivity.BhattScholze.deltaWittGhostVector_coeff_map
+#print axioms SerrePositivity.BhattScholze.deltaWittGhostVector_coeff_map
+
+assert_no_sorry SerrePositivity.BhattScholze.deltaWittGhostRingHom_map_comp
+#print axioms SerrePositivity.BhattScholze.deltaWittGhostRingHom_map_comp
