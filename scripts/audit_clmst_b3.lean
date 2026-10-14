@@ -6,6 +6,8 @@ import SerrePositivity.CommutativeAlgebra.PerfectoidIdealPowers
 import SerrePositivity.CommutativeAlgebra.PerfectoidTorsionQuotient
 import SerrePositivity.CLMST.PerfectoidIdealRoots
 import SerrePositivity.CLMST.PerfectoidFrobeniusComparison
+import SerrePositivity.CLMST.CyclicLength
+import Mathlib.Util.PrintSorries
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.IsPerfectoidization.lift
@@ -110,3 +112,26 @@ example {R : Type} [CommRing R] (p : ℕ) [Fact p.Prime]
     perfectoidIdeal R p hR g = RingHom.ker
       ((toQuotientPerfectoidization R (Ideal.span {g}) p hR).comp
         (Ideal.Quotient.mk (Ideal.span {g}))) := rfl
+
+-- C2-4: all elementary cyclic components remain sorry-free.
+assert_no_sorry SerrePositivity.CLMST.completedTowerCyclicQuotient_p_regular_and_complete
+assert_no_sorry SerrePositivity.CLMST.exists_cyclic_root_stage_length_estimate
+assert_no_sorry SerrePositivity.CLMST.exists_stage_root_normalized_bound
+assert_no_sorry SerrePositivity.CLMST.exists_completed_cyclic_div_pow_bound_of_surjective
+assert_no_sorry SerrePositivity.CLMST.completedLength_cyclic_first_eq_zero_of_surjective
+assert_no_sorry SerrePositivity.CLMST.completedLength_cyclic_pow_eq_zero_of_surjective
+assert_no_sorry SerrePositivity.CLMST.completedLength_cyclic_pow_eq_zero_of_witt_of_surjective
+assert_no_sorry SerrePositivity.CLMST.completedLength_cyclic_pow_eq_of_p_factor
+assert_no_sorry SerrePositivity.CLMST.completedLength_cyclic_p_eq_zero_of_reduced
+assert_no_sorry SerrePositivity.CLMST.completedLength_cyclic_p_eq_zero
+assert_no_sorry SerrePositivity.CLMST.completedLength_cyclic_p_power_unit_eq_zero
+assert_no_sorry SerrePositivity.CLMST.completedLength_cyclic_fin_one_eq_zero
+assert_no_sorry SerrePositivity.CLMST.exists_p_power_factor_of_nonzero
+assert_no_sorry SerrePositivity.CLMST.exists_p_power_unit_of_fin_one
+assert_no_sorry SerrePositivity.CLMST.perfectoidIdeal_le_of_p_power_factor
+assert_no_sorry SerrePositivity.CLMST.completedLength_cyclic_unit_eq_zero
+
+-- Only the named B-S input should remain in these actual public proof paths.
+#print sorries SerrePositivity.CLMST.toPerfectoidization_cyclic_surjective_of_not_dvd
+#print sorries SerrePositivity.CLMST.cyclic_length_eq_zero_of_not_dvd
+#print sorries SerrePositivity.CLMST.cyclic_length_eq_zero

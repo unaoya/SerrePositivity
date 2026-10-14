@@ -37,10 +37,10 @@ theorem completedLength_cyclic_pow_eq_of_p_factor
   let : Algebra.FinitePresentation C (C ⧸ Ideal.span {algebraMap A C g}) :=
     Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton (algebraMap A C g))
   let S := perfectoidQuotient C p hperf (algebraMap A C g)
-  let κ : C →+* S := (toPerfectoidization C (C ⧸ Ideal.span {algebraMap A C g}) p hperf).comp
+  let κ : C →+* S := (toQuotientPerfectoidization C (Ideal.span {algebraMap A C g}) p hperf).comp
     (Ideal.Quotient.mk (Ideal.span {algebraMap A C g}))
   have hS : IsIntegralPerfectoid S p :=
-    (isPerfectoidization_toPerfectoidization C (C ⧸ Ideal.span {algebraMap A C g}) p hperf).1
+    (isPerfectoidization_toQuotientPerfectoidization C (Ideal.span {algebraMap A C g}) p hperf).1
   have hQ : IsIntegralPerfectoid (S ⧸ pTorsionIdeal S p) p :=
     hS.pTorsionQuotient_isIntegralPerfectoid S p
   have hgzero : (p : S) ^ c * κ (algebraMap A C g') = 0 := by

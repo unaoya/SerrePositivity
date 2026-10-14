@@ -27,8 +27,8 @@ theorem exists_cyclic_root_stage_length_estimate
           (CompletedTower A t p ⧸ Ideal.span {algebraMap A (CompletedTower A t p) g}) :=
         Algebra.FinitePresentation.quotient
           (Submodule.fg_span_singleton (algebraMap A (CompletedTower A t p) g))
-      Function.Surjective (toPerfectoidization (CompletedTower A t p)
-        (CompletedTower A t p ⧸ Ideal.span {algebraMap A (CompletedTower A t p) g}) p hperf))
+      Function.Surjective (toQuotientPerfectoidization (CompletedTower A t p)
+        (Ideal.span {algebraMap A (CompletedTower A t p) g}) p hperf))
     (i : Fin h) (hti : t i = (p : A)) (n m₀ : ℕ) :
     let K := completedTowerMaxIdeal A t p ⊔
       perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g)

@@ -75,8 +75,8 @@ variable (A : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
           (CompletedTower A t p ⧸ Ideal.span {algebraMap A (CompletedTower A t p) g}) :=
         Algebra.FinitePresentation.quotient
           (Submodule.fg_span_singleton (algebraMap A (CompletedTower A t p) g))
-      Function.Surjective (toPerfectoidization (CompletedTower A t p)
-        (CompletedTower A t p ⧸ Ideal.span {algebraMap A (CompletedTower A t p) g}) p hperf))
+      Function.Surjective (toQuotientPerfectoidization (CompletedTower A t p)
+        (Ideal.span {algebraMap A (CompletedTower A t p) g}) p hperf))
 
 include ht htp hdim e ι he hgm hpg hsurj
 
@@ -135,8 +135,8 @@ theorem completedLength_cyclic_pow_eq_zero_of_witt_of_surjective
           (CompletedTower A t p ⧸ Ideal.span {algebraMap A (CompletedTower A t p) g}) :=
         Algebra.FinitePresentation.quotient
           (Submodule.fg_span_singleton (algebraMap A (CompletedTower A t p) g))
-      Function.Surjective (toPerfectoidization (CompletedTower A t p)
-        (CompletedTower A t p ⧸ Ideal.span {algebraMap A (CompletedTower A t p) g}) p hperf))
+      Function.Surjective (toQuotientPerfectoidization (CompletedTower A t p)
+        (Ideal.span {algebraMap A (CompletedTower A t p) g}) p hperf))
     (a : ℕ) :
     (completedNormalizedLength A t p
       (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i))).len

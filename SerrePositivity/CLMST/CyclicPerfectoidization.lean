@@ -4,13 +4,14 @@ public import SerrePositivity.CLMST.ModPHypersurfaceGrowth
 public import SerrePositivity.CommutativeAlgebra.FlatRegularQuotient
 public import SerrePositivity.CommutativeAlgebra.RootTower.CompletionFlat
 public import SerrePositivity.CommutativeAlgebra.RegularGradedPresentation
-public import SerrePositivity.CommutativeAlgebra.Perfectoidization
+public import SerrePositivity.CommutativeAlgebra.PerfectoidIdeal
 public import SerrePositivity.BhattScholze.PerfectoidizationSurjectivity
 
 /-! # pで割れない巡回商への全射性定理の適用条件
 
 完備塔の平坦性でmod pの正則性を移し、巡回商のpの非零因子性と完備性を供給する。
 全射性そのものの深い引用はBS Theorem 7.4として分離する。
+選択対象の存在・普遍性はB3で証明済み。一般整代数の存在引用は使わない。
 -/
 
 @[expose] public noncomputable section
@@ -82,8 +83,8 @@ theorem toPerfectoidization_cyclic_surjective_of_not_dvd
         (CompletedTower A t p ⧸ Ideal.span {algebraMap A (CompletedTower A t p) g}) :=
       Algebra.FinitePresentation.quotient
         (Submodule.fg_span_singleton (algebraMap A (CompletedTower A t p) g))
-    Function.Surjective (toPerfectoidization (CompletedTower A t p)
-      (CompletedTower A t p ⧸ Ideal.span {algebraMap A (CompletedTower A t p) g}) p hperf) := by
+    Function.Surjective (toQuotientPerfectoidization (CompletedTower A t p)
+        (Ideal.span {algebraMap A (CompletedTower A t p) g}) p hperf) := by
   let C := CompletedTower A t p
   let Q := C ⧸ Ideal.span {algebraMap A C g}
   let : Algebra.FinitePresentation C Q :=
@@ -93,6 +94,7 @@ theorem toPerfectoidization_cyclic_surjective_of_not_dvd
   let := hcQ
   exact BhattScholze.surjective_of_isPerfectoidization_of_complete_torsionFree_quotient
     C Q _ p hperf (Ideal.Quotient.mk _) Ideal.Quotient.mk_surjective hpQ
-    (toPerfectoidization C Q p hperf) (isPerfectoidization_toPerfectoidization C Q p hperf)
+    (toQuotientPerfectoidization C (Ideal.span {algebraMap A C g}) p hperf)
+    (isPerfectoidization_toQuotientPerfectoidization C (Ideal.span {algebraMap A C g}) p hperf)
 
 end SerrePositivity.CLMST
