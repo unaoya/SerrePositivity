@@ -3,10 +3,10 @@
 作成日：2026-10-13。計画更新日：2026-10-14。
 M1・M2の圏論的構成と閉対称モノイダル構造、段階1・2のA1〜C2まで実装・検証済み。
 ホモトピー論の構成、非連結K理論、定理3.1・補題4.6への接続は未完成である。
-最新の完了確認は§122、段階2までの実行計画と終了条件は§0.3、全体の見通しは§0.2を参照する。
+最新の完了確認は§125（共有ホモトピー論H0〜H2）と§122（段階2）。次の実装範囲はH3・H4。
 mathlibへの追加・登録は今回の完了条件に含めず、必要な構造と法則をこのリポジトリ内に実装する。
 検証済みのステップごとにコミットする。
-当面の完了目標はP1・P2のみ。終了後にモデル構造の導入方法を検討し、P3の実装には進まない。
+P1・P2と共有一般論H0〜H2は完了。M5は別チャットで進め、この系列はH3・H4へ進む。
 
 ## 0. 現在地と残作業の実行計画（2026-10-14更新）
 
@@ -23,7 +23,7 @@ mathlibへの追加・登録は今回の完了条件に含めず、必要な構�
 | M1：基点付き単体的集合 | 対象・射、smash、円・球面、閉対称モノイダル構造 | Kan–Quillenとの接続とモデル圏公理 |
 | M2：対称スペクトル | 球面加群、自由対象F_n、評価随伴、極限・余極限、閉対称モノイダル構造、作用・写像対象・単体的豊穣構造 | レベル・安定モデル構造との接続 |
 | 各段の計算 | F_0との比較、作用の単位・結合、随伴・転置・評価、懸垂・ループ・構造射の随伴表示 | モデル構造の検討後に必要となる追加計算 |
-| M3・M4：ホモトピー論 | 共通の圏論的な対象・演算が利用可能 | 安定モデル、導来演算、π_n、図式・固定点・有理化 |
+| M3・M4：ホモトピー論 | 共通の圏論的演算、Quillen随伴の保存条件・恒等・合成、Underモデル構造（H0〜H2） | 生成・転送、導来随伴、安定モデル、π_n、図式・固定点・有理化 |
 | M5・M6：dg・K理論 | 既存の複体・三角圏・K₀を比較先として利用可能 | dg表示と上位モデル、環・加群、非連結K理論の具体的入力と比較 |
 | M7〜M10：本文への接続 | 既存の本文の帰結と利用先 | 支持つき降下、定理3.1、補題4.6、二つのK₀比較と保留入力の解消 |
 
@@ -4929,3 +4929,64 @@ git diff --checkも確認した。検証済みのステップごとにコミッ�
 段階2までの目標を完了し、ここで実装を一区切りにする。
 レベル・安定モデル構造の方式、射の三つのクラスと置換、Quillen・pushout-product公理、
 導来演算と安定ホモトピー群は、モデル構造の方法を検討する次段階に残す。
+
+## 125. 実施記録：共有ホモトピー論H0〜H2の完了（2026-10-14）
+
+§124のK-Aを完了した。専用入口は
+`SerrePositivity/HomotopicalAlgebra/Foundations.lean`、
+契約・公開API・検証コマンドは同ディレクトリのREADME。
+この作業では共有ルートimport、M5担当ファイル、可換環論・CLMSTの並行作業ファイルを編集していない。
+
+### 125.1 実装とM5への引継ぎ
+
+- H0：固定版・宇宙・scope・担当の契約と専用import入口。Mathlibの既存型を基底にし、
+  具体的SSet・スペクトル・Ch(A)を一般論からimportしない。
+- H1：`SerrePositivity.Quillen.IsLeftQuillen` / `IsRightQuillen`。
+  保存条件を既存MorphismPropertyのinverse imageに対する包含で表す。
+  任意弱分解系の`preserves_left_iff_preserves_right`を、既存の
+  `Adjunction.hasLiftingProperty_iff`から証明した。
+  `isLeftQuillen_iff_isRightQuillen`でモデル圏の二つの保存条件へ接続。
+  恒等・合成instance、個別射の保存lemma、左右の明示的変換lemmaを提供する。
+  クラスは保存性を表すPropであり、随伴の存在は通常のAdjunctionで別に与える。
+- H2：`HomotopicalAlgebra.ModelCategory.under`。
+  三クラスは`Under.forget S`のinverse image、すなわち`f.right`で判定。
+  一般の`MapFactorizationData.under` / `HasFactorization.under`、
+  `CommSq.HasLift.under` / `HasLiftingProperty.under`を別の共通圏論ファイルに置いた。
+  中間対象の構造射は`X.hom ≫ hf.i`。有限極限は既存StructuredArrowの明示的特殊化、
+  有限余極限は既存Under instanceを利用する。Sにcofibrancy/fibrancyを課さない。
+  MathlibのOver構成の双対として出典・固定コミット・Apache 2.0表記を残した。
+
+M5はQuillenの保存条件と通常随伴をこの入口へ供給できる。
+非有界Ch(A)やdg加群のモデル構造・monoidal検証は今回構成していない。
+M5 D4mの本格的合流にはH3/G5/H4がなお必要で、局所化経路D4は独立に進められる。
+
+### 125.2 検証とコミット
+
+以下はすべて成功した（新規ソースは警告なし）。
+
+```sh
+lake build SerrePositivity.HomotopicalAlgebra.Foundations SerrePositivity.Spectra.StageTwo SerrePositivity.Spectra.Foundations
+lake env lean scripts/check_homotopical_foundations.lean
+lake env lean scripts/audit_homotopical_foundations.lean
+lake env lean scripts/check_spectra_stage2.lean
+lake env lean scripts/audit_spectra.lean
+```
+
+集約ビルドは2142ジョブ。新規一般論の4モジュール76宣言を内部補助宣言も含めて監査し、
+標準公理のみ・sorry/引用依存なし。監査は必須の4モジュールがすべて対象に入ることも検証する。
+既存スペクトル・共有基盤の監査は261モジュール2612宣言で標準公理のみ。
+利用例は独立宇宙、Quillenの恒等・合成と左右変換、Underの三クラス・trivialクラス、
+基礎射の指定分解の保存、両CM4/CM5、有限極限余極限、二重Under、StageTwoの併用を確認した。
+共有ルート全体のビルドではなく、担当入口と既存スペクトル入口を対象とする検証である。
+
+段階ごとのコミット：H0 `b46de69`、H1 `d554602`、H2 `e382feb`。
+担当外の未コミット変更をこれらのコミットへ取り込んでいない。
+
+### 125.3 次の段階と見積もり
+
+次は§124のK-B：H3の生成条件・転送認識、H4の既存導来随伴への接続。
+H1の一般弱分解系の判定とH2の分解移送を再利用し、M5側からfree/forget・cell・
+smallnessの具体的証拠を受け取れる契約を作る。H3完了を引用axiomで代用しない。
+今回H0〜H2は1入口＋4実装/補助ファイル＋README＋2検証スクリプトで完了した。
+H1/H2で追加の大きな基底理論は不要だったが、H3のcardinal/small objectの証明と
+H4のderivability接続は未着手であり、§123の全体工数をこの実績だけで縮小しない。
