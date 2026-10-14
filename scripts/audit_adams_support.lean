@@ -1,4 +1,4 @@
-import SerrePositivity.PerfectComplex.ClosedSupportFunctoriality
+import SerrePositivity.PerfectComplex.ClosedSupportRelations
 import Mathlib.Util.AssertNoSorry
 
 -- S1.1: closed support and comparison with the existing ideal support.
@@ -36,3 +36,23 @@ assert_no_sorry SerrePositivity.K0WithSupport.map_comp
 assert_no_sorry SerrePositivity.K0WithSupport.map_id
 assert_no_sorry SerrePositivity.K0WithSupport.enlarge_map
 assert_no_sorry SerrePositivity.freeToClosedSupportK0_map
+
+-- S1.6: quasi-isomorphisms, cones, short exact sequences, and empty support.
+assert_no_sorry SerrePositivity.strictlyPerfectComplex_quasiIso_iff
+assert_no_sorry SerrePositivity.supportedPerfectOnConeTriangle_distinguished
+assert_no_sorry SerrePositivity.closedSupportConeShortComplex_shortExact
+assert_no_sorry SerrePositivity.K0WithSupport.mk_cone
+assert_no_sorry SerrePositivity.K0WithSupport.mk_eq_of_quasiIso
+assert_no_sorry SerrePositivity.K0WithSupport.mk_eq_zero_of_acyclic
+assert_no_sorry SerrePositivity.K0WithSupport.mk_shortExact
+assert_no_sorry SerrePositivity.K0WithSupport.mk_degreewise_shortExact
+assert_no_sorry SerrePositivity.K0WithSupport.eq_zero_of_empty_support
+assert_no_sorry SerrePositivity.closedSupport_shortExactAdditive_iff_triangleAdditive
+
+#print axioms SerrePositivity.K0WithSupport.lift
+#print axioms SerrePositivity.freeClosedSupportK0Equiv
+#print axioms SerrePositivity.K0WithSupport.map_comp
+#print axioms SerrePositivity.K0WithSupport.mk_shortExact
+#print axioms SerrePositivity.K0WithSupport.eq_zero_of_empty_support
+
+#print axioms SerrePositivity.closedSupport_shortExactAdditive_iff_triangleAdditive
