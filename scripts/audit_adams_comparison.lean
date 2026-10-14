@@ -1,4 +1,4 @@
-import SerrePositivity.KTheory.ResolutionClass
+import SerrePositivity.KTheory.ResolutionAdditivity
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.exists_finitePresentation_descent
@@ -20,3 +20,10 @@ assert_no_sorry SerrePositivity.resClass_eq
 assert_no_sorry SerrePositivity.resClass_iso
 #print axioms SerrePositivity.PerfectModuleResolution.exists_homotopyEquiv
 #print axioms SerrePositivity.resClass_eq
+assert_no_sorry SerrePositivity.PerfectModuleResolution.coneHomologyZeroEquiv
+assert_no_sorry SerrePositivity.PerfectModuleResolution.mappingCone
+assert_no_sorry SerrePositivity.resClass_shortExact
+assert_no_sorry SerrePositivity.G0WithSupport.resolutionMap
+assert_no_sorry SerrePositivity.G0WithSupport.resolutionMap_mk
+#print axioms SerrePositivity.resClass_shortExact
+#print axioms SerrePositivity.G0WithSupport.resolutionMap
