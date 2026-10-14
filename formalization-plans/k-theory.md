@@ -5940,3 +5940,32 @@ diff --check成功。コミット：弱同値の定義`298db2a`、引用と適�
 具体的SSetのWとモデル存在入力の接続は、この明示引用の範囲で完了した。
 段階3の残りはスペクトル自身のmonoidal/SM7互換性と、段階1〜3全体の受入条件の最終確認。
 基点付きsmashの互換性だけでスペクトルのそれを完成扱いにしない。全体目標は継続中。
+
+
+## 151. 段階1〜3の実行記録：pushout-productの生成射判定の一般証明（2026-10-15）
+
+スペクトル側のmonoidal/SM7を生成射の自由テンソル比較から得るため、
+`CategoryTheory/LiftingProperties/ParametrizedGeneration`を追加した。
+pushout_generated_secondは二変数随伴でpushout-productのliftingをpullback-Homへ移し、
+PのテストからP.rlp.llp全体へ第二変数を拡張する。
+pushout_generated_bothは両変数の随伴を使い、両方の生成左クラスへ拡張する。
+任意の三圏と対象の右クラスQについて、出力はQ.llpである。
+小対象構成、モデル圏、cell保存、同一圏・同一宇宙を仮定しない。
+
+`HomotopicalAlgebra/Monoidal/GeneratedBifunctor.isQuillenBifunctor_of_generators`は
+二つのsourceモデルの実際のI₁/J₁・I₂/J₂と独立のsmall-object宇宙w₁/w₂について、
+IIがcofibration、JIとIJがtrivial cofibrationという三テストだけで全Quillen bifunctor条件を証明する。
+cofibration=trivialFibrations.llp、trivial cofibration=fibrations.llpと上記一般補題で拡張する。
+両方のパラメータ付き随伴は入力するが、targetのcofibrant generationや
+pushout-productのcell閉性を追加仮定しない。
+
+共有Foundationsと必須モジュール監査へ接続した。
+対象・集約ビルド成功、新規警告なし。check_generated_bifunctorは独立した三圏・宇宙で
+三つの生成射テストから全Quillen bifunctorとSM7を得る利用例をGeneral/StageTwoと同時importして検証。
+新規3宣言の監査、共有基盤28モジュール385宣言の監査が標準公理のみで成功。
+sorry・引用依存なし、diff --check成功。コミット`585d4d9`。
+
+次は自由スペクトルF_m/F_nのテンソルとF_(m+n)の比較を実際のpushout-productの射圏同型へ接続し、
+レベル生成射のII/JI/IJテストを上記定理へ渡す。
+今回の一般判定だけではスペクトルのmonoidal/SM7は完成していない。
+段階1〜3の全体目標は継続中。
