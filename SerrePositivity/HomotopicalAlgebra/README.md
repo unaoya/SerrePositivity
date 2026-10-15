@@ -325,7 +325,7 @@ R系列の終了範囲はSmith認識。局所化存在やスペクトルの安�
 
 ## A0の入口：指定した分解データからの移送（途中、2026-10-15）
 
-`Smith/AccessibleFactorization.lean`は、指定したFunctiorialFactorizationDataのZが
+`Smith/AccessibleFactorization.lean`は、指定したFunctorialFactorizationDataのZが
 κ-accessibleであるという明示的な仮定から、左右のArrow値の因子と始対象・終対象に
 沿った制限のκ-accessibilityを導く。Arrow値の関手のaccessibilityは両端点で検出する。
 `initialComparison`・`terminalComparison`は自然変換であり、対応するモデル分解データ
@@ -336,6 +336,14 @@ R系列の終了範囲はSmith認識。局所化存在やスペクトルの安�
 Z自体のaccessibilityを証明し、二つのモデル分解とQ/Rに共通の基数を得る作業が残る。
 A1の元モデル弱同値のaccessibilityも未着手。関手的というだけではaccessibleと仮定しない。
 検証は`scripts/check_accessible_factorization_transport.lean`（全41宣言・標準公理のみ）。
+
+`Smith/AccessibleColimits.lean`は、同じκでaccessibleな関手の図式について、
+pointwise colimitと通常の選択されたcolimitがκ-accessibleであることを証明する。
+関手圏値の関手のaccessibilityをevaluationで検出し、colimが左随伴であることを使う。
+`scripts/check_accessible_colimits.lean`で一般図式・pushout・超限添字を検証し、
+添字と可到達性の基数の宇宙を同一視しない。全6宣言は標準公理のみ。
+この補題だけでは、セル付加の各段階や超限帰納中の全関手のaccessibilityを
+証明したことにはならない。A0の小対象論法への適用は引き続き必要である。
 
 `check_smith_solution_set`はモデル構造のない抽象圏で、独立した宇宙、CommSqの左右成分、
 小さい射族/射クラス全体の分解、空の射族、General/StageTwoとの併用を検証する。
