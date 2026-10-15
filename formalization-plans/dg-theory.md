@@ -3507,3 +3507,39 @@ Checks.HomRight・Checks.BimoduleLeftUnit・Checks.StageSeven・既存Spectra.St
 U11eは未完。tensor–Hom随伴の受入、Fubini・余極限保存、結合同型と三角/五角・全変数自然性を
 引き続き進める。U12〜U17・D4mも未完。共有系列への新しい不足要求はない。
 共有ルート・共有一般論・並行作業ファイルは変更していない。
+
+
+### 17.35 U11e4：閉零tensor–Hom随伴・単位/余単位と余極限保存（2026-10-16）
+
+`Tensor/BalancedFamilyElements.lean`は任意のtensor射の族について、balancedなchain map条件を
+純粋斉次生成元の式で評価・復元する入口を構成した。右作用の符号(-1)^(rp)を保持する。
+この族の判定自体はDのSmall仮定を要求しない。
+`Tensor/HomAdjunctionFamilies.lean`は対象ごとのcurryRight/uncurryRightから
+balancedFamilyMapEquivを構成した。balanced族と、homRightModule N Tへの全次数自然な
+chain map族が同値であり、両逆法則を持つ。自然性を通常の次数零のDの射だけには弱めない。
+
+`Tensor/HomAdjunction.lean`は既存homEquivとmoduleMapFamilyEquivを合成して、主Hom endの
+閉零射を値とするtensorHomEquivを構成する。評価での転置式・逆の包含式、M/Tの閉零射に
+関する自然性を証明し、Mathlibの実際の随伴tensorHomAdjunctionを得た。
+左側rightTensorFunctorの射は既存balanced tensorのmap h idであり、別のtensor対象を導入しない。
+
+`Tensor/HomAdjunctionLaws.lean`は随伴の単位と余単位をこのHom同値で計算する。
+単位の評価はbalanced tensorの包含の転置、余単位の包含上の式はuncurryRight(id)である。
+余単位は生成元g⊗vをg(v)へ送る。随伴の左右の三角恒等式も公開した。
+任意サイズの図式について、存在する余極限をrightTensorFunctorが保存するinstanceを
+既存のleftAdjoint_preservesColimitsから構成した。全サイズの余極限の存在を主張してはいない。
+Aは任意可換環、全複体は非有界、Dの対象宇宙は独立。主Hom endとcoequalizerにSmall.{u} Dを要求する。
+
+Checks.TensorHomAdjunction・Checks.HomRight・Checks.BimoduleLeftUnit・Checks.StageSeven・
+既存Spectra.StageTwoの同時ビルドは成功（2707 jobs、終了コード0、警告なし）。
+任意A・独立対象宇宙、一対象ZMod 2、図式の独立した二つのサイズで余極限保存を検査した。
+本単位の主要23宣言の直接実行は終了コード0、すべて標準公理のみ。監査累計1502宣言。
+担当Leanのsorry/admit/新規axiomは0件。文書検査は22 Markdown・311 exposition参照、失敗0件。
+
+U11eは引き続き未完。今回の随伴は全dg自然な射を持つ閉零加群圏上の通常随伴である。
+これだけで、主Hom複体そのもののtensor–Hom同型や、全Hom変数の三変数自然性まで
+証明済みとはしない。次は任意パラメータ複体Kに対してParamFamilyとModuleParamTransの
+対応を構成し、主Hom複体の同型へ進める。
+左加群変数側の余極限保存、Fubini、bimodule合成の結合同型・全変数自然性・三角/五角も残る。
+本節の随伴の三角恒等式をbimodule合成の三角整合性と混同しない。
+U12〜U17・D4mも未完。共有系列への新しい不足要求はなく、担当外ファイルは変更していない。
