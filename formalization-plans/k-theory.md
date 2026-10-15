@@ -7811,3 +7811,90 @@ augmentation q[0]→XのLによる像の逆同型で移し、π₀ Hom(q,Y)≃Ho
 狭めない。任意モデル源での最終の厳密な関手の入口は引き続き別の残項目として管理する。
 単体的モデル圏での実際のMapとの比較、F3の共通基数、F4のhocolim/holim比較、
 その後のL0〜L5を省略せず実装する。他チャットの変更は保持し、計画全体を一括stageしない。
+
+
+## 180. F2進捗：独立したresolution・置換の選択を自然な弱同値zigzagで比較（2026-10-15）
+
+F0〜F4を経てL0〜L5まで完成させる依頼を維持している。今回、異なるcosimplicial
+resolution familyとfibrant replacementで作った実際のHom二変数関手を、両変数で自然な
+弱同値zigzagで比較した。F2の単体的モデル圏の実際のMapとの比較、F1の任意源での
+最終の厳密な関手の入口、F3・F4とL0〜L5は引き続き残る。
+
+### 180.1 モデル圏の一般的な共通置換
+
+`Generated/CommonCofibrantReplacement`は、一般のモデル圏Dと任意の添字圏Bについて、
+二つの自然変換α:F→H・β:G→Hの各成分がtrivial fibrationである場合を扱う。
+B→Dの実際のpullbackを取り、指定した関手的cofibrant replacementを適用する。
+共通のcofibrantな図式からF・Gへの比較は自然変換であり、各成分がtrivial fibrationになる。
+二つの比較をHへ合成すると一致することも証明する。
+
+`Generated/CommonFibrantReplacement`は双対の構成である。二つの自然なtrivial cofibration
+H→F・H→Gの実際のpushoutを取り、指定した関手的fibrant replacementを適用する。
+F・Gから共通のfibrantな図式への自然変換は成分ごとにtrivial cofibrationで、Hの下で可換となる。
+
+いずれも個別の持ち上げを対象ごとに選んで自然性を仮定するのではなく、実際の
+functor categoryのpullback/pushoutと指定した分解関手を使う。
+添字圏とモデル圏の対象・射の宇宙は独立であり、無限余極限は追加しない。
+
+### 180.2 任意のresolution familyの共通比較
+
+`ResolutionHomNaturality`は、resolution familyの自然変換と標的置換の自然変換を、
+実際の`resolutionHom`二変数関手の自然変換へ移す。各成分は既存の
+`cosimplicialHomMap`または`cosimplicialHom.map`そのものである。
+
+`ResolutionComparison`は、一般の源モデルCで、指定したcof分解から実際のΔ上の
+Reedy関手的分解を構成し、任意の二つの`CofibrantResolutionFamily simplex`を比較する。
+両familyをその指定分解で作ったものに限定しない。二つのaugmentationのpullbackに
+180.1を適用し、共通のfamily、そのaugmentation、両側への自然変換を構成する。
+共通familyのReedy cofibrancyとaugmentationのReedy trivial fibration性も証明する。
+
+両側への比較は各次数で弱同値であり、元のaugmentationと可換である。
+これを任意のfibrant値の標的関手Rと組み合わせると、
+
+`resolutionHom Q₁ R → resolutionHom Q_common R ← resolutionHom Q₂ R`
+
+という実際の自然変換からなるzigzagを得る。各X・Yでの弱同値性は、§178の源変数の
+不変性から従う。値域の基準単体集合モデルとcof=monoの一致を明示入力する。
+
+### 180.3 両端で独立したcof/fib分解の比較
+
+`TargetComparison`は、異なる二つの`fibrantTarget`のunitのpushoutと180.1の共通fibrant
+replacementを使い、標的関手から共通の標的関手への自然なtrivial cofibrationを構成する。
+Reedy cofibrantな任意のresolution familyと組み合わせ、そのHom二変数関手の自然な
+弱同値比較を得る。
+
+`ChosenComparison`は180.2・180.3を合成する。両端は独立に選んだcof₁/fib₁とcof₂/fib₂であり、
+補助の共通置換に使うcof/fibも別に指定できる。共通のmiddleは実際のCᵒᵖ→C→SSet関手で、
+すべての値がKan複体になる。実際の自然変換
+
+`chosenResolutionHom cof₁ fib₁ → middle ← chosenResolutionHom cof₂ fib₂`
+
+を構成し、両辺が各X・Yで弱同値になることを証明した。
+値域Wの幾何学的Wとの一致から、実際の幾何学的弱同値による比較を得る。
+共有実装・共有入口・利用例のコミット：`253cc8c`。
+
+上位`Inputs/Homotopy/ResolutionHom`の`chosenResolutionHom_choices_geometricWeakEquivalences`は、
+既存HT-KQだけから値域の一致を供給する。補助分解には第一の端点の選択を使えるため、
+上位利用者には両端の四つの分解データだけで足りる。新しい存在引用は導入しない。
+この接続と利用例のコミット：`cda767b`。
+
+### 180.4 受入検証と残る範囲
+
+以下は成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`：2327 jobs。
+- `check_resolution_hom_comparison`：83宣言・6モジュール、標準公理のみ。
+  実際の両変数の自然変換、middleのKan性、任意のresolution familyでのaugmentation可換性、
+  両端で独立した分解を使う幾何学的弱同値比較を検証する。
+- `audit_homotopical_foundations`：2699宣言・169モジュール、標準公理のみ。
+- `check_resolution_hom_source`（42宣言・3モジュール）、`check_resolution_hom_target`
+  （7宣言・2モジュール）、`check_resolution_hom_pi_zero`（85宣言・4モジュール）、
+  `check_homotopical_foundations`、`check_spectra_stage2`。
+- 上位入口のbuild、`check_kan_quillen_resolution_hom`：155宣言、直接引用は既存HT-KQ一件のみ。
+- `git diff --check`。
+
+F2の選択比較を構成したが、F2全体の完了とはしない。単体的モデル圏について、
+実際のenriched Map(QX,RY)とresolution Homを比較する証明が次の残項目である。
+F1の任意モデル源での最終関手を明示分解付きの入口だけに置き換えない。
+F3の共通基数、F4のhocolim/holim比較、その後のL0〜L5も省略せず進める。
+他チャットの変更は保持し、計画ファイル全体を一括stageしない。

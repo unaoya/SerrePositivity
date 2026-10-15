@@ -794,3 +794,20 @@ Hの対象・射の宇宙は独立に扱う。
 共有入口2321 jobs、新規85宣言・4モジュール、共有2616宣言・163モジュールの
 標準公理監査と回帰検証が成功。実装は`c8f9445`、詳細は計画§179。
 F1の任意源での最終の厳密な関手の入口、F2〜F4、L0〜L5は引き続き未完了である。
+
+
+`Generated/CommonCofibrantReplacement`・`CommonFibrantReplacement`は、実際のfunctor categoryの
+pullback/pushoutと指定した関手的分解から、一般のモデル圏の自然な共通置換を構成する。
+`ResolutionHomNaturality`はfamilyと標的置換の自然変換を実際の二変数Hom関手へ移す。
+`ResolutionComparison`は任意の二つのcosimplicial resolution familyを共通familyへ比較し、
+`TargetComparison`は異なるfibrantTargetを共通のfibrant値関手へ比較する。
+
+`ChosenComparison`は、異なるcof₁/fib₁とcof₂/fib₂から作った実際のHom関手に対して、
+共通のKan値二変数関手への自然な弱同値のzigzagを構成する。補助分解も独立に指定できる。
+共有証明では基準単体集合モデルとクラスの一致を明示し、上位`Inputs/Homotopy/ResolutionHom`は
+既存HT-KQからその入力を供給する。新しい引用を導入しない。
+
+共有入口2327 jobs、新規83宣言・6モジュール、共有2699宣言・169モジュールの
+標準公理監査と回帰検証が成功。上位155宣言の直接引用は既存HT-KQ一件だけ。
+コミットは`253cc8c`・`cda767b`、詳細は計画§180。
+F2の実際の単体的Mapとの比較、F1の任意源での最終関手、F3・F4とL0〜L5は未完了である。
