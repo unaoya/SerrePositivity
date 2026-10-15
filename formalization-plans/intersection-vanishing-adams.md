@@ -3716,6 +3716,18 @@ K₀ の類への移送と重みつき乗法性は次の小段。
 - 次はこの八式と Fourier 双対座標を使った各次数の逆写像と両逆性。
   各成分の同型・鎖同型・一元正規化は後続段。ルート公開は統合段。
 
+### S10.8c.2c.3b.2：四つの次数の逆写像と両逆性
+
+- `Adams/KoszulCubeFourierModelInverse` は双対座標と四成分の包含から
+  次数 0,−1,−2,−3 の逆写像を構成した。次数 −2 では最初の二つの座標に負号を付ける。
+- 三乗側の恒等合成は Fourier 列による外延性、直和側の恒等合成は
+  四成分の外延性と八生成元の比較で証明した。四次数すべてで両逆性が成立する。
+- `lake build SerrePositivity.KTheory.Adams.KoszulCubeFourierModelInverse` が成功（2850 jobs）。
+- `lake env lean scripts/audit_adams_koszul_fourier_model_inverse.lean` が成功。
+  十三定数の `assert_no_sorry` が通り、公理は標準三公理のみ。
+- 次はその他の次数の零性と合わせて鎖同型へまとめ、巡回同変性を渡す。
+  一元正規化・族・S10.9・S11 は未完了。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
