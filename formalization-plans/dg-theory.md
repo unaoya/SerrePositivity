@@ -2222,3 +2222,19 @@ Checks.HomotopyConeTriangle・Checks.ConeHomotopyDesc・StageSix・既存Spectra
 全体文書検査は担当外のPaper.Section5.SecondComparisonの未生成oleanで停止した。
 U10全受入は未完。K(D)の三角構造の残るcontractible・回転・八面体条件と、
 D(D)の三角構造・Verdier比較・一対象比較の三角性を引き続き証明する。
+
+
+### 13.65 U10t3：恒等射のconeの全dg自然な収縮とK(D)の零対象
+
+`Module/ConeContractible.lean`は主Homの零射cycleを同定し、coneの次数−1の左包含を
+f≫inrから零への全dg自然なホモトピーとして公開した。
+恒等射のconeについて、第二射影と左包含の通常順合成で次数−1の自己Hom要素を構成する。
+各評価がMathlibの恒等coneの収縮cochainに一致し、その境界が恒等射cycleであることを証明した。
+`moduleConeIdHomotopy`と`moduleConeId_isZero`によりK(D)で零対象となる。
+加法的な商関手による既存零対象の像から、K(D)の`HasZeroObject`も構成した。
+
+Checks.ConeContractible・StageSix・既存Spectra.StageTwoの同時ビルドは成功（2524 jobs）。
+並行依存更新時に直接監査でCompositionLaws.oleanの欠落を検出したため、
+依存を再ビルドして同じ受入入口を再検証し、直接実行の主要8宣言を再監査した。
+すべて標準公理のみ。累計953宣言。並行変更されたComplexes.Curryingは編集していない。
+U10全受入は未完。次は標準coneと同型な三角形のクラスについて既存の補完・収縮を運ぶ。
