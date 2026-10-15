@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.RankOneDPTensorRelations
 import SerrePositivity.BhattScholze.RegularPrincipalDPBaseChange
 import SerrePositivity.BhattScholze.PrincipalDPBaseChange
 import SerrePositivity.BhattScholze.RankOneDPBaseChange
@@ -4463,3 +4464,15 @@ assert_no_sorry SerrePositivity.BhattScholze.regularPrincipalDPBaseChangeEquiv_t
 
 assert_no_sorry SerrePositivity.BhattScholze.regularPrincipalDPBaseChangeEquiv_tmul
 #print axioms SerrePositivity.BhattScholze.regularPrincipalDPBaseChangeEquiv_tmul
+
+-- Tensor divided-power relations over arbitrary coefficient rings.
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPTensorValue
+#print axioms SerrePositivity.BhattScholze.rankOneDPTensorValue
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPTensorValue_zero
+#print axioms SerrePositivity.BhattScholze.rankOneDPTensorValue_zero
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPTensorValue_smul
+#print axioms SerrePositivity.BhattScholze.rankOneDPTensorValue_smul
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPTensorValue_mul
+#print axioms SerrePositivity.BhattScholze.rankOneDPTensorValue_mul
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPTensorValue_add
+#print axioms SerrePositivity.BhattScholze.rankOneDPTensorValue_add
