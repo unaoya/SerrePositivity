@@ -11077,3 +11077,75 @@ cofibrantなEについてparameter tensorと基点追加の合成が左Quillen�
 通常のpushoutを示しただけでhomotopy pushoutの普遍性まで得たとは扱わない。
 F1の指定関手的分解なしの任意モデル源の最終RMap関手も引き続き残る。
 全体目標F→L→E→Sは継続する。
+
+
+## 222. S3進捗：通常のhomotopy pushout懸垂の構成と円tensorの対象ごとの比較（2026-10-16）
+
+§221のgood cylinder商を、通常のspan 0←E→0の実際のhomotopy colimitへ比較した。
+この比較は任意の通常の局所化における対象ごとの同型である。
+自然性とホモトピー圏上の関手全体の比較はまだ証明しておらず、S3完了とはしない。
+
+### 222.1 任意の基点付きモデル圏でのcone計算
+
+共有`Pointed/CylinderCone.lean`は、good cylinder Pの第一端点X→P.Iを零対象へ潰す
+実際のpushoutを`cone P`と定義する。二端点包含P.i:X⨿X→P.Iを
+[0,id]:X⨿X→Xに沿ってpushoutしたsquareが、残る端点X→cone Pを与えることを
+普遍性から証明する。従ってPがgoodなら残る端点はcofibrationである。
+
+Xがcofibrantなら第一端点はtrivial cofibrationであり、そのpushoutで得る
+0→cone Pもtrivial cofibrationである。二対三性でcone P→0の弱同値性を証明する。
+このcone計算には左固有性、combinatorial性、関手的分解の指定は不要。
+
+P.Iの両端を零へ潰す実際のquotient squareが与えられると、
+`coneQuotient_isPushout`は同じ商がX→cone PとX→0のpushoutであると証明する。
+通常の商をhomotopy pushoutとみなすことは、この段階では仮定しない。
+
+### 222.2 通常のhomotopy pushout懸垂
+
+共有`Pointed/HomotopySuspension.lean`は、小さいwalking spanを生成宇宙wへ持ち上げる。
+その上の0←X→0を実際の関手として定義し、既存のprojective cofibrant replacementと
+colimitによる`HomotopyColimit.functor`を適用して、通常の懸垂関手C→Cを構成する。
+局所可呈示性と生成表示は元のモデル圏の入力であり、homotopy colimitや分解は出力である。
+この関手は元の弱同値を保つ。任意の通常の局所化Qに沿ってホモトピー圏上の関手へ降ろし、
+局所化との比較自然同型`localizationIso`も構成した。
+
+左固有性を加えると、222.1のcone spanは片側がcofibrationなので、
+既存の`comparison_weakEquivalence_of_span`によってその通常のpushoutを計算できる。
+一方、cone→0は弱同値なので、cone span→zero spanも対象ごとの弱同値であり、
+そのhomotopy colimitも弱同値となる。この実際の二本の射をQで反転して
+`cylinderQuotientIso`を構成する。これはQ(通常のhomotopy suspension X)と
+Q(cylinderの両端の商)の同型で、安定モデルや懸垂の同値を先取りしない。
+源の対象宇宙・Hom宇宙・生成宇宙・局所化の宇宙は独立のままである。
+
+### 222.3 実際のスペクトルへの適用
+
+`General/CircleHomotopySuspension.lean`は、§221の円tensorのpushoutの零対象の代表を
+標準の零対象へ移し、222.2の一般比較を実際のgood cylinderへ適用する。
+cofibrant Eについて、Q(通常のhomotopy suspension E)≅Q(circle⊙E)を得る。
+基点付き単体的集合上の任意座標Kに適用できる。
+この比較自体はK-tensorの導来可逆性を使わず、一般Kで通常の懸垂が同値だとは主張しない。
+
+受入例は構成済みの`StableModelPresentation`から生成表示・左固有性・実際のSM7作用を取得する。
+元のレベルモデルの生成表示と左固有性、基礎圏PSSの局所可呈示性、基準SSetモデル条件を入力とし、
+局所化後の生成性・左固有性・作用やhomotopy suspensionの比較を新しい仮定に戻さない。
+
+### 222.4 受入検証と残項目
+
+- 共有入口と`CircleHomotopySuspension`の合同build：2902 jobs。
+- `check_homotopy_suspension`：任意モデル源で指定分解なしのcone計算、独立宇宙の
+  cylinder商と実際のhomotopy colimitの比較、構成済み局所モデルでの円tensorへの適用。
+  73宣言・3モジュールの標準公理監査も成功。
+- `audit_homotopical_foundations`：4465宣言・385モジュール、標準公理のみ。
+- `check_spectrum_suspension_geometry`：97宣言・6モジュールの回帰確認。
+- `check_spectrum_derived_tensor_inverse`：70宣言・4モジュールと§220の最終利用例の回帰確認。
+- `check_span_hocolim`：12宣言・7モジュール、再利用した一般比較の回帰確認。
+- `git diff --cached --check`。
+
+新規sorry・引用axiomなし。共有一般論`fa1869ce`、スペクトルへの適用と受入検証`90a495e3`。
+他チャットの変更を保持し、共有一般論はSpectraをimportしない。
+
+次はこの対象ごとの比較について、cylinder・cone・quotientの射に関する自然性を証明し、
+ホモトピー圏上の自然同型として§220の導来K-tensor同値へ接続する。
+PSS/S¹ではその結果を既存の懸垂・ループ随伴の導来同値として検証する必要がある。
+F1の指定関手的分解なしの任意モデル源の最終RMap関手も引き続き未完了。
+全体目標F→L→E→Sは継続する。

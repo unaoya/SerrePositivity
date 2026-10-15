@@ -182,3 +182,15 @@ good cylinderと証明し、E⨿Eと境界tensorの同型・二端点包含と�
 基盤`8e7ba3ca`、幾何的比較`862040a8`。計画§221に詳細を記録。
 S3全体は未完了。このgood cylinder商と通常のhomotopy pushoutによる導来懸垂との比較、
 およびF1の指定分解なしの任意モデル源の最終関手が残る。
+
+
+## S3進捗：通常のhomotopy suspensionと円tensorの対象ごとの同型（2026-10-16）
+
+`General/CircleHomotopySuspension`は実際のgood cylinder商へ一般cone span比較を適用し、
+cofibrant EについてQ(0←E→0のhomotopy colimit)≅Q(circle⊙E)を構成する。
+任意座標Kで使え、Kの局所化だけで通常の懸垂の可逆性を仮定しない。
+利用例は構成済み局所モデルから生成表示・左固有性・実際の作用を取得する。
+73宣言・3モジュールの標準公理監査、合同build2902 jobs、幾何的商・導来K逆元・span比較の回帰が成功。
+共有一般論`fa1869ce`、適用`90a495e3`。計画§222に記録した。
+S3全体は未完了で、この対象ごとの比較の自然性と、ホモトピー圏上の関手同型から
+既存の懸垂・ループの導来同値への接続が残る。F1の残項目も維持する。

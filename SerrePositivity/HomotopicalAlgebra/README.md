@@ -1310,3 +1310,14 @@ good cylinderを構成する。標準Reedy frameとBrown補題を使い、cylind
 同型に沿った基点対象の変更とgood性の保存も証明する。共有層はSpectraをimportしない。
 4403宣言・383モジュールの標準公理監査に成功。実装`8e7ba3ca`。
 スペクトルの円tensorの商への適用と残るhomotopy pushout比較は計画§221。
+
+
+## 通常のhomotopy pushout懸垂とcylinder商の比較（2026-10-16）
+
+`Pointed/CylinderCone`は任意の基点付きモデル圏で、good cylinderの一端を潰したconeが
+弱同値で零となり、残る端点がcofibrationであると証明する。propernessや生成条件は不要。
+`Pointed/HomotopySuspension`は0←X→0の実際のprojective homotopy colimitを関手化し、
+弱同値の保存と任意の通常の局所化への降下を証明する。
+左固有combinatorial圏では、cone spanを使う二本の弱同値からcylinder商との対象ごとの同型を構成。
+共有入口はSpectraをimportしない。4465宣言・385モジュールの標準公理監査が成功。
+実装`fa1869ce`。自然性と関手全体の比較は未完了で、詳細は計画§222。
