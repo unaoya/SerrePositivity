@@ -1,5 +1,5 @@
 import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeArrow
-import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationArrowComparison
+import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem
 import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexFinite
 import Mathlib.AlgebraicTopology.ModelCategory.Basic
 import Lean.Util.CollectAxioms
@@ -63,6 +63,43 @@ example [right.RespectsIso] : right (((BoundaryDiagram.relativeMatchingArrow r j
   DegreeFactorizationStep.rightBoundary_mem r j hinj τ a q
 end Step
 
+-- The final factors now carry the actual relative Reedy classes; no ⊤ output
+-- and no assumed degreewise intermediate diagrams are used in these consumers.
+example [ModelCategory C] {F G : SimplexCategory ⥤ C} (τ : F ⟶ G) :
+    MorphismProperty.MapFactorizationData
+      (reedyLeft simplex (cofibrations C)) (reedyRight simplex (trivialFibrations C)) τ :=
+  FactorizationSequence.reedyOfHasFactorization simplex τ
+    (fun _ _ h ↦ SimplexCategory.ext h) (fun n ↦ ⟨SimplexCategory.mk n, rfl⟩)
+
+example [ModelCategory C] {F G : SimplexCategoryᵒᵖ ⥤ C} (τ : F ⟶ G) :
+    MorphismProperty.MapFactorizationData
+      (reedyLeft simplexOp (trivialCofibrations C)) (reedyRight simplexOp (fibrations C)) τ :=
+  FactorizationSequence.reedyOfHasFactorization simplexOp τ
+    (fun _ _ h ↦ Opposite.unop_injective (SimplexCategory.ext h))
+    (fun n ↦ ⟨Opposite.op (SimplexCategory.mk n), rfl⟩)
+
+example [ModelCategory C] : MorphismProperty.IsWeakFactorizationSystem
+    (reedyLeft simplex (cofibrations C)) (reedyRight simplex (trivialFibrations C)) :=
+  weakFactorizationSystem simplex (cofibrations C) (trivialFibrations C)
+    (fun _ _ h ↦ SimplexCategory.ext h) (fun n ↦ ⟨SimplexCategory.mk n, rfl⟩)
+
+example [ModelCategory C] : MorphismProperty.IsWeakFactorizationSystem
+    (reedyLeft simplex (trivialCofibrations C)) (reedyRight simplex (fibrations C)) :=
+  weakFactorizationSystem simplex (trivialCofibrations C) (fibrations C)
+    (fun _ _ h ↦ SimplexCategory.ext h) (fun n ↦ ⟨SimplexCategory.mk n, rfl⟩)
+
+example [ModelCategory C] : MorphismProperty.IsWeakFactorizationSystem
+    (reedyLeft simplexOp (cofibrations C)) (reedyRight simplexOp (trivialFibrations C)) :=
+  weakFactorizationSystem simplexOp (cofibrations C) (trivialFibrations C)
+    (fun _ _ h ↦ Opposite.unop_injective (SimplexCategory.ext h))
+    (fun n ↦ ⟨Opposite.op (SimplexCategory.mk n), rfl⟩)
+
+example [ModelCategory C] : MorphismProperty.IsWeakFactorizationSystem
+    (reedyLeft simplexOp (trivialCofibrations C)) (reedyRight simplexOp (fibrations C)) :=
+  weakFactorizationSystem simplexOp (trivialCofibrations C) (fibrations C)
+    (fun _ _ h ↦ Opposite.unop_injective (SimplexCategory.ext h))
+    (fun n ↦ ⟨Opposite.op (SimplexCategory.mk n), rfl⟩)
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -73,7 +110,10 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDiagramIso,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryReconstruction,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDegree,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationArrowComparison]
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationArrowComparison,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationRestrictionArrow,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
