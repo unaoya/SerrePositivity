@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.DeltaRootFiniteFamilyRegular
 import SerrePositivity.BhattScholze.DeltaRootRawRelativeCompletionModP
 import SerrePositivity.BhattScholze.DeltaRootRawRelativeDerivedModP
 import SerrePositivity.BhattScholze.DeltaRootRawRelativeModPKoszul
@@ -5359,3 +5360,6 @@ assert_no_sorry SerrePositivity.BhattScholze.deltaRootRawRelativeCompletedDerive
 
 assert_no_sorry SerrePositivity.BhattScholze.deltaRootRawRelativeCompletedDerivedModPIso_unit
 #print axioms SerrePositivity.BhattScholze.deltaRootRawRelativeCompletedDerivedModPIso_unit
+
+assert_no_sorry SerrePositivity.BhattScholze.deltaRootFiniteFamilyRaw_p_mul_injective
+#print axioms SerrePositivity.BhattScholze.deltaRootFiniteFamilyRaw_p_mul_injective
