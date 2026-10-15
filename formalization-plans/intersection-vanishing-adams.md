@@ -3832,6 +3832,19 @@ K₀ の類への移送と重みつき乗法性は次の小段。
   四定数の `assert_no_sorry` が通り、公理は標準三公理のみ。
 - 次は同じ係数体で円分局所拡大上の一般消滅定理を適用する。
 
+### S10.9a,c–d：剰余標数 2 の消滅と元の環への復帰（S10.9 受入完了）
+
+- `IntersectionMultiplicity/AdamsVanishingThree` は既約因子の円分局所拡大 B 上で
+  `cyclicThreeFamily` を一般消滅定理へ渡す。B の正則局所性・3 の可逆性・根の関係式と、
+  有限生成性・有限長・次元不等式はすべて監査済みの移送補題から供給する。
+- 同じモデルの `chi_B=chi_R` で元の整数値へ戻す。剰余標数 2 の分岐の公開定理は
+  g,h,B,t,ζ の選択を引数に要求しない。R 加群構造は `Algebra.toModule` に固定する。
+- `AdamsVanishingAll` を含むビルドが成功（3652 jobs）、さらに利用先ビルドで
+  最終版 `AdamsVanishingThree` も再ビルド成功（3843 jobs）。
+- `lake env lean scripts/audit_adams_vanishing_three.lean` が成功。
+  因子モデルでの定理と剰余標数 2 の定理の `assert_no_sorry` が通り、公理は標準三公理のみ。
+- S10 の両分岐の証明契約は受入完了。次は S11 の公開接続・統合監査。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
