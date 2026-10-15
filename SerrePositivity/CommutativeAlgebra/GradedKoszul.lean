@@ -4,6 +4,7 @@ public import SerrePositivity.CommutativeAlgebra.GradedKoszulHomology
 public import SerrePositivity.CommutativeAlgebra.ReesModuleGrading
 public import SerrePositivity.CommutativeAlgebra.KoszulReesFinite
 public import SerrePositivity.HomologicalAlgebra.KoszulRestriction
+public import SerrePositivity.HomologicalAlgebra.CochainConeProduct
 
 /-!
 # Gradings on Koszul complexes of Rees modules
@@ -79,30 +80,14 @@ theorem coneTermEquiv_scalar (a b : S) (P : CochainComplex (ModuleCat.{u} S) ℤ
 private theorem scalarConeXIsoProd_fst (a : S) (P : CochainComplex (ModuleCat.{u} S) ℤ)
     (q : ℤ) :
     (scalarConeXIsoProd a P q).hom ≫ ModuleCat.ofHom (LinearMap.fst S (P.X (q + 1)) (P.X q)) =
-      fstX (smulId a P) q (q + 1) rfl := by
-  have hb : (ModuleCat.biprodIsoProd (P.X (q + 1)) (P.X q)).hom ≫
-      ModuleCat.ofHom (LinearMap.fst S (P.X (q + 1)) (P.X q)) = biprod.fst := by
-    apply (cancel_epi (ModuleCat.biprodIsoProd (P.X (q + 1)) (P.X q)).inv).mp
-    rw [← Category.assoc, Iso.inv_hom_id, Category.id_comp,
-      ModuleCat.biprodIsoProd_inv_comp_fst]
-  dsimp only [scalarConeXIsoProd, Iso.trans_hom]
-  rw [Category.assoc, hb]
-  rfl
+      fstX (smulId a P) q (q + 1) rfl :=
+  mappingConeTermProdIso_fst (smulId a P) q
 
 private theorem scalarConeXIsoProd_snd (a : S) (P : CochainComplex (ModuleCat.{u} S) ℤ)
     (q : ℤ) :
     (scalarConeXIsoProd a P q).hom ≫ ModuleCat.ofHom (LinearMap.snd S (P.X (q + 1)) (P.X q)) =
-      sndX (smulId a P) q := by
-  have hb : (ModuleCat.biprodIsoProd (P.X (q + 1)) (P.X q)).hom ≫
-      ModuleCat.ofHom (LinearMap.snd S (P.X (q + 1)) (P.X q)) = biprod.snd := by
-    apply (cancel_epi (ModuleCat.biprodIsoProd (P.X (q + 1)) (P.X q)).inv).mp
-    rw [← Category.assoc, Iso.inv_hom_id, Category.id_comp,
-      ModuleCat.biprodIsoProd_inv_comp_snd]
-  dsimp only [scalarConeXIsoProd, Iso.trans_hom]
-  rw [Category.assoc, hb]
-  apply ext_from_X (smulId a P) (q + 1) q rfl
-  · simp only [← Category.assoc, inlX_XIsoBiprod_hom, biprod.inl_snd, inlX_sndX]
-  · simp only [← Category.assoc, inrX_XIsoBiprod_hom, biprod.inr_snd, inrX_sndX]
+      sndX (smulId a P) q :=
+  mappingConeTermProdIso_snd (smulId a P) q
 
 /-- The first component of the cone differential is the negative old differential. -/
 theorem coneTermEquiv_d_fst (a : S) (P : CochainComplex (ModuleCat.{u} S) ℤ) (q : ℤ)
