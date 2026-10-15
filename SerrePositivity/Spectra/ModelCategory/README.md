@@ -97,3 +97,23 @@ fibrant Eについては、実際のreplacement単位を評価した弱同値と
 11宣言・5モジュールの公理監査、§215の38宣言・7モジュール、L1・段階2の回帰が成功。
 新規sorry・引用axiomなし。実装`e123a735`・`c2aaa9ee`。計画§216でS1完了。
 S2の実際の安定局所化モデルとS3の通常の安定性の比較は引き続き未完了。
+
+
+## S2進捗：実際のK局所モデルと元レベルmonoidal/SM7（2026-10-16）
+
+`Stable/ModelCategory.exists_stableModelPresentation`はS1の小さい実際の射へ一般L4を適用し、
+実際のモデル、元cofibration・局所同値・右持ち上げの三クラス、生成表示、Ω_Kのfibrant判定を構成する。
+左固有性と構成後のaccessibleな両因子分解も取得できる。
+`Stable/Replacement`は実際のaccessibleなLと単位ηを構成し、値がレベルfibrantなΩ_K対象であり、
+K局所モデルの弱同値がLによる元レベル弱同値の逆像だと証明する。
+S0の`exists_leftProper_levelModel_of_monoidal`は源のmonoidal条件から評価生成射の計算を供給する。
+
+`GeneralLevelTensor`は一般C,Kの自由テンソル・pushout-productのArrow比較から、元レベルモデルの
+pushout-productを証明する。Cの単位がcofibrantなら、free-zero単位比較により実際のmonoidal modelを得る。
+`GeneralLevelEnriched`は既存の実際のC作用、cotensor、eHomにQuillen/SM7条件を供給する。
+作用のunit axiomもcofibrantなCの単位という明示的な十分条件で取得する。
+
+K局所モデルの受入30宣言・3モジュール、元レベルmonoidal/SM7の受入26宣言・4モジュール、
+S0・S1・段階2の回帰と共有公理監査が成功。新規sorry・引用axiomなし。
+実装`74321dae`・`99e09cc7`。計画§217に入力と出力を明記した。
+S2全体は未完了。局所化後のtensor適合性とmonoidal/SM7への接続が残り、S3も未完了。

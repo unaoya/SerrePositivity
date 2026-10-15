@@ -6311,7 +6311,7 @@ IDは計画上の単位であり、1行を1コミットや1日とみなさない
 | E0（完了、§213） | Localization/EnrichedExistence, MonoidalExistence | L4,L5、既存SM7 | 通常局所化・V豊穣局所化を区別。追加のtractability/生成始域cofibrancyとtensor適合条件を明示し、局所SM7・pushout-product・単位を証明 |
 | S0（完了、§214） | Spectra/ModelCategory/Combinatorial, LeftProper | R1,A0、既存レベル構造 | 一般C,Kの対称スペクトルの局所可呈示性と必要条件下の左固有性。Mod型・余極限・accessibleなmonad等の比較を証明し、圏の名前だけで推論しない |
 | S1（完了、§216） | Spectra/Stable/LocalizingMaps, Omega | S0,L0、既存free/evaluation | F_(n+1)(QA⊗K)⟶F_n(QA)を実際の射として構成。Sの小ささ、cofibrant性、局所fibrant対象とΩ_K対象の同値 |
-| S2 | Spectra/Stable/ModelCategory, EnrichedModel | S1,L4,E0 | 一般定理を適用した安定モデル、三クラス・生成性・局所置換・monoidal/SM7。具体的存在引用を追加しない |
+| S2（途中、§217） | Spectra/Stable/ModelCategory, EnrichedModel | S1,L4,E0 | 一般定理を適用した安定モデル、三クラス・生成性・局所置換・monoidal/SM7。具体的存在引用を追加しない |
 | S3 | Spectra/Stable/Stability, SimplicialComparison | S2、既存円tensor/随伴 | K-tensorの導来可逆性と通常の懸垂の安定性を区別。PSS/S¹で円tensorと導来Σを比較し、Σ⊣Ωの同値・旧APIの互換性を検証 |
 
 R系列とA/F系列は一般論を構成するための独立した部分を含むが、並行エージェント起動の指示ではない。
@@ -10664,3 +10664,101 @@ Cの局所可呈示性と生成表示、KのcofibrancyとtensorのQuillen条件�
 次はS2：証明済みの一般Bousfield局所化存在をこの小さい実際の射クラスへ適用し、
 安定モデルの三クラス・生成性・局所置換、必要条件下の豊穣SM7・monoidal性へ接続する。
 S3の導来K可逆性と通常の安定性の比較は別の受入条件として維持する。
+
+
+## 217. S2進捗：実際のK局所モデル・Ω_K置換と一般レベルmonoidal/SM7（2026-10-16）
+
+前回のS1完了（§216）から、証明済みの一般Bousfield局所化を実際のスペクトルへ適用した。
+通常のK局所モデル、三クラス・生成表示・左固有性・accessibleなΩ_K置換は実装済み。
+さらに一般C,Kの元レベルモデルのpushout-productと実際のC豊穣SM7を証明した。
+**S2全体は未完了**。局所化後のtensor適合性とmonoidal/SM7への接続が残る。
+S3とF1の指定分解なしの任意モデル源の最終関手も未完了のまま維持する。
+
+### 217.1 実際のK局所モデルの存在
+
+`Stable/ModelCategory.lean`の`StableModelPresentation`は、小さいcofibrant検出族G、
+実際の局所化射の小ささ、および一般L4で構成した`ModelPresentation`を保持する。
+K局所モデルのfibrant対象が、元のCの弱同値で独立に定義したレベルfibrantなΩ_K対象と
+ちょうど一致するという、全対象の判定もフィールドとして含む。
+
+`exists_stableModelPresentation`は、Cのcombinatorial性、KのcofibrancyとtensorのQuillen条件、
+実際の元レベルモデルのクラス同定・生成表示・指定分解・左固有性から、このデータを構成する。
+検出族と小さい実際の局所化射はS1から出力し、スペクトル圏の局所可呈示性はS0から導出する。
+それらを一般L4の`exists_modelPresentation`へ適用する。
+安定スペクトルの具体的な存在定理や新しい引用axiomは使用しない。
+
+保持する三クラスは、同じ実際の対称スペクトル圏上の次のクラスである。
+
+- cofibration：元レベルモデルのcofibration。
+- 弱同値：元の通常のRMapによる、実際の局所化射の局所同値。
+- fibration：元cofibrationとこの局所同値の共通部分に対する右持ち上げクラス。
+
+生成cofibrationの表示は保持し、生成trivial cofibrationは小さいクラスとして構成結果から出力する。
+`leftProper`は構成後のモデルの左固有性を一般L4から導く。
+`exists_accessible_factorizations`は、構成後の実際のモデルにA0の一般論を適用し、
+共通の正則基数における両モデル分解の指定accessibleデータを出力する。
+通常の懸垂の安定性やnaiveなπ_*による弱同値判定は、この存在の証明には含めていない。
+
+### 217.2 実際のaccessibleなΩ_K置換
+
+`Stable/Replacement.lean`の`exists_accessible_omegaReplacement`は、実際の関手Lと単位ηを
+持つ一般L5の`LocalReplacementData`をこの局所化射クラスについて構成する。
+Lのaccessibility、ηが元cofibrationかつK局所同値であること、全てのL(E)が
+レベルfibrantなΩ_K対象になることを、存在仮定ではなく出力する。
+さらに、構成済みK局所モデルの弱同値が、Lによる元レベル弱同値の逆像と等しいと証明した。
+指定置換の二重適用への二つの写像の元弱同値性など、一般L5の証明済みの性質もこのデータへ適用できる。
+
+元レベルモデルを作るためのS0入口も補強した。
+`LeftProper.exists_leftProper_levelModel_of_monoidal`は、一般の左固有combinatorialなmonoidal源と
+cofibrantな単位・Kから、評価した自由I/J生成射の計算を内部で供給し、
+実際の左固有combinatorialレベルモデルを構成する。
+スペクトルのモデル存在、cardinal、SOA、左固有性を追加入力に戻さない。
+
+### 217.3 一般C,Kの自由テンソルとpushout-product
+
+`General/TensorFreeAtSum.lean`は実際のSym(K)上のbalanced tensorについて
+F_m(X)⊗F_n(Y)≅F_(m+n)(X⊗Y)を構成し、両入力の射に関する自然性を証明する。
+既存の一般内部加群の自由テンソル比較と、Day対称列の自由対の比較を組み合わせる。
+`General/FreePushoutProduct.lean`はこの同型でpushout square全体と出力の射を移送し、
+自由生成射のpushout-productと、和次数から自由生成した元のpushout-productとのArrow同型を構成する。
+両モジュールはモデル構造を仮定しない。PSSだけへの特殊化ではない。
+
+### 217.4 元レベルモデルの一般monoidal/SM7
+
+`ModelCategory/GeneralLevelTensor.lean`は217.3の出力射の比較とF_nの左Quillen性により、
+自由生成射のcofibration/trivial cofibrationテストを証明する。
+両変数の生成持ち上げクラスの一般論から、全てのレベルcofibrationに対するpushout-productを得る。
+この部分にCの生成始域のcofibrancyや単位のcofibrancyは要求しない。
+単位に関しては、Cの単位がcofibrantという十分条件を明示した別定理で、
+実際のfree-zero単位比較からスペクトルの単位のcofibrancyとunit axiomを証明し、
+元レベルモデルの`MonoidalModelCategory`を構成する。
+
+`GeneralLevelEnriched.lean`は元レベルモデルのpushout-productを、既存の実際のC作用へ移送する。
+既存の`spectrumTensorCotensor`のtensor、cotensor、Mathlibの`eHomFunctor`について
+Quillen条件・SM7を証明する。Cの単位のcofibrancyがあれば、作用のunit axiomも別途出力する。
+これは元レベルモデルの結果であり、K局所化後の結果としては扱わない。
+
+### 217.5 受入検証・コミット・残る作業
+
+すべて成功した。
+
+- `lake build SerrePositivity.Spectra.ModelCategory.GeneralLevelEnriched SerrePositivity.Spectra.Stable.Replacement SerrePositivity.HomotopicalAlgebra.Foundations`：2911 jobs。
+- `check_spectrum_stable_model`：一般の源から実際の左固有レベルモデルと両分解を構成し、
+  実際のK局所モデル、左固有性、accessibleなΩ_K置換と弱同値の逆像判定まで取得する利用例。
+  構成後のモデルのaccessibleな両因子分解も利用。30宣言・3モジュールの標準公理監査。
+- `check_general_spectrum_level_monoidal`：一般C,Kの実際のレベルモデルから、
+  pushout-product、unit、実際のC豊穣HomとcotensorのSM7を供給。26宣言・4モジュールの標準公理監査。
+- `check_spectrum_omega_local_objects`：S1最終入口の回帰、11宣言・5モジュール。
+- `check_spectra_level_left_proper`：S0最終入口の回帰確認。
+- `check_spectra_stage2`：既存段階2の回帰確認。
+- `audit_homotopical_foundations`：4363宣言・378モジュール、標準公理のみ。
+- 各コミットのstage差分の`git diff --cached --check`。
+
+新規sorry・引用axiomはない。K局所モデルと置換は`74321dae`、一般レベルmonoidal/SM7は`99e09cc7`。
+共有作業木の他チャットの変更はstageせず保持した。
+
+次は、元レベルモデルのC作用・cotensorがΩ_K条件と両立することを実際の構造射で証明し、
+E0のtensor適合条件を供給して局所化後のSM7・monoidal性へ接続する。
+必要な生成始域のcofibrancy等は豊穣・monoidal部分の追加条件として明示し、
+217.1の通常の局所化存在へ逆流させない。この接続が終わるまでS2完了とはしない。
+その後S3の導来K可逆性と通常の懸垂の安定性の比較へ進む。

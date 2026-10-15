@@ -158,3 +158,16 @@ Hom対象比較の点は既存pointwiseTensorHomEquivに一致する。
 
 一般監査31モジュール325宣言、共有比較込み利用例監査330宣言が成功。
 コミット431f80e・dd56793。豊穣表現性の実装は完了し、モデル構造とのmonoidal/SM7適合は後続。
+
+
+## 一般自由スペクトルのテンソルとレベルモデルへの適用（2026-10-16）
+
+`TensorFreeAtSum`はSym(K)上の実際のbalanced tensorについて
+F_m(X)⊗F_n(Y)≅F_(m+n)(X⊗Y)と両変数の自然性を構成する。
+`FreePushoutProduct`はこの比較でpushout squareと出力射を移送し、自由生成射のpushout-productを
+元のpushout-productの自由像とArrowの同型として比較する。両モジュールにモデル仮定はない。
+`ModelCategory/GeneralLevelTensor`と`GeneralLevelEnriched`はこの計算を一般C,Kの元レベルモデルへ適用し、
+pushout-productと実際のC作用・cotensor・eHomのSM7を証明した。
+単位のcofibrancyはunitに関する十分条件として別に明示する。
+受入`check_general_spectrum_level_monoidal`は26宣言・4モジュールを標準公理のみで監査。
+実装`99e09cc7`。K局所化後の適合性は別の残項目であり、計画§217で区別している。
