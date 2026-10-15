@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.RankOneDPEnvelopeFree
 import SerrePositivity.BhattScholze.RankOneDPEnvelopeBaseChange
 import SerrePositivity.BhattScholze.RankOneDPPolynomialAction
 import SerrePositivity.BhattScholze.RankOneDPTruncatedFree
@@ -4612,3 +4613,15 @@ assert_no_sorry SerrePositivity.BhattScholze.rankOneDPEnvelopeBaseChangedAlgebra
 #print axioms SerrePositivity.BhattScholze.rankOneDPEnvelopeBaseChangedAlgebra
 assert_no_sorry SerrePositivity.BhattScholze.rankOneDPEnvelopeBaseChangeEquiv
 #print axioms SerrePositivity.BhattScholze.rankOneDPEnvelopeBaseChangeEquiv
+
+-- Freeness and faithful flatness of the actual ordinary pd attachment over the base-changed truncation.
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPEnvelopeBasis
+#print axioms SerrePositivity.BhattScholze.rankOneDPEnvelopeBasis
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPEnvelopeBasis_apply
+#print axioms SerrePositivity.BhattScholze.rankOneDPEnvelopeBasis_apply
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPEnvelope_moduleFree
+#print axioms SerrePositivity.BhattScholze.rankOneDPEnvelope_moduleFree
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPEnvelope_moduleFlat
+#print axioms SerrePositivity.BhattScholze.rankOneDPEnvelope_moduleFlat
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPEnvelope_moduleFaithfullyFlat
+#print axioms SerrePositivity.BhattScholze.rankOneDPEnvelope_moduleFaithfullyFlat
