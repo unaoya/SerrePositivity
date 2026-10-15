@@ -5111,7 +5111,7 @@ R37–R40のコミットは `022387f`、`fcd06d8`、`247e86c`、`4652f6f`、
 | R43 | 部分加群への完全列の制限を格子・dévissageで共用 | 完了：一般3補題を両構成で共用。3255 jobs、5宣言の公理監査、全依存ゲートが成功。R41bの空行警告も修正。ログ `/tmp/adams-r43-final-build.log`、`/tmp/adams-r43-audit.log` |
 | R44a | 一元Koszulの二つの座標同型を共通の錐APIから導出 | 完了：両Koszul正規化・導来完備化・錐の並行利用先3259 jobs、5宣言の公理監査と座標のrfl、全依存ゲートが成功。ログ `/tmp/adams-r44-acceptance-build.log`、`/tmp/adams-r44a-audit.log` |
 | R44b | 双対・次数付きKoszulの直積座標公式を共通化 | 完了：5宣言をCochainConeProductへ移し、二つの射影公式を次数付きKoszulで共用。3259 jobs、8宣言の公理監査・既存直積座標との一致・全依存ゲートが成功。ログ `/tmp/adams-r44-acceptance-build.log`、`/tmp/adams-r44b-audit.log` |
-| R45a-1 | ホモトピー商のstrictMapの証明を三利用先で共用 | 未着手 |
+| R45a-1 | ホモトピー商のstrictMapの証明を三利用先で共用 | 完了：三利用先2718 jobs、4宣言の公理監査・零対象と直和の仮定が不要な型・全依存ゲートが成功。ログ `/tmp/adams-r45a1-{build,audit,boundaries}.log` |
 | R45a-2 | 有界シフトを四箇所で共用し、完全複体の零・シフトを下位へ移動 | 未着手 |
 | R45b-1 | 実数値Eulerの有限台の三証明を共通化 | 未着手 |
 | R45b-2 | 一般・漸近Eulerと完備化Bettiの有限台の三証明を共通化 | 未着手 |

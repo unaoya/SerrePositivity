@@ -69,12 +69,8 @@ def rankSmallHomotopy : ObjectProperty (HomotopyCategory (FreeSequence R s) (.up
 omit [Nontrivial R] in
 /-- ランク条件はホモトピー圏の代表複体について読める。 -/
 @[simp] lemma rankSmallHomotopy_quotient (K : CochainComplex (FreeSequence R s) ℤ) :
-    rankSmallHomotopy ((HomotopyCategory.quotient _ _).obj K) ↔ rankSmallComplex K := by
-  refine ⟨?_, fun h ↦ ⟨_, h⟩⟩
-  simp only [rankSmallHomotopy, ObjectProperty.strictMap_iff]
-  rintro ⟨L, h, hL⟩
-  obtain rfl : L = K := congr(Quotient.as $hL)
-  exact h
+    rankSmallHomotopy ((HomotopyCategory.quotient _ _).obj K) ↔ rankSmallComplex K :=
+  homotopyProperty_strictMap_quotient rankSmallComplex K
 
 instance : (rankSmallHomotopy (R := R) (s := s)).ContainsZero where
   exists_zero := ⟨(HomotopyCategory.quotient _ _).obj 0,

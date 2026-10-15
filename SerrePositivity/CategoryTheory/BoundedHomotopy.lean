@@ -37,12 +37,8 @@ omit [HasZeroObject C] [HasBinaryBiproducts C] in
 /-- 商関手の像における有界性は、元の複体の厳密な有界性である。 -/
 @[simp] lemma boundedHomotopyProperty_quotient (K : CochainComplex C ℤ) :
     boundedHomotopyProperty C ((HomotopyCategory.quotient _ _).obj K) ↔
-      strictlyBoundedComplex C K := by
-  refine ⟨?_, fun h ↦ ⟨_, h⟩⟩
-  simp only [boundedHomotopyProperty, ObjectProperty.strictMap_iff]
-  rintro ⟨L, h, hL⟩
-  obtain rfl : L = K := congr(Quotient.as $hL)
-  exact h
+      strictlyBoundedComplex C K :=
+  homotopyProperty_strictMap_quotient (strictlyBoundedComplex C) K
 
 instance : (boundedHomotopyProperty C).ContainsZero where
   exists_zero :=

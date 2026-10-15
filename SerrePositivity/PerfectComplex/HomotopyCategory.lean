@@ -33,12 +33,8 @@ def perfectHomotopyProperty : ObjectProperty (HomotopyCategory (ModuleCat.{u} R)
 
 @[simp] lemma perfectHomotopyProperty_quotient (P : CochainComplex (ModuleCat.{u} R) ℤ) :
     perfectHomotopyProperty R ((HomotopyCategory.quotient _ _).obj P) ↔
-      strictlyPerfectComplex R P := by
-  refine ⟨?_, fun h ↦ ⟨_, h⟩⟩
-  simp only [perfectHomotopyProperty, ObjectProperty.strictMap_iff]
-  rintro ⟨Q, hQ, h⟩
-  obtain rfl : Q = P := congr(Quotient.as $h)
-  exact hQ
+      strictlyPerfectComplex R P :=
+  homotopyProperty_strictMap_quotient (strictlyPerfectComplex R) P
 
 instance : (perfectHomotopyProperty R).ContainsZero where
   exists_zero := ⟨(HomotopyCategory.quotient _ _).obj 0,

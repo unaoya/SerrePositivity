@@ -12,6 +12,18 @@ open CategoryTheory CategoryTheory.Limits CategoryTheory.Pretriangulated
 variable {C : Type u} [Category.{v} C] [Preadditive C]
   [HasZeroObject C] [HasBinaryBiproducts C]
 
+omit [HasZeroObject C] [HasBinaryBiproducts C] in
+/-- Strict image along the homotopy quotient retains the property of its representative. -/
+theorem homotopyProperty_strictMap_quotient
+    (P : ObjectProperty (CochainComplex C ℤ)) (K : CochainComplex C ℤ) :
+    P.strictMap (HomotopyCategory.quotient _ _) ((HomotopyCategory.quotient _ _).obj K) ↔
+      P K := by
+  refine ⟨?_, fun h => ⟨_, h⟩⟩
+  simp only [ObjectProperty.strictMap_iff]
+  rintro ⟨L, h, he⟩
+  obtain rfl : L = K := congr(Quotient.as $he)
+  exact h
+
 /-- A property represented on complexes inherits closure under distinguished triangles
 from closure under mapping cones. Its zero and shift conditions remain separate. -/
 theorem homotopyProperty_isTriangulatedClosed₃
