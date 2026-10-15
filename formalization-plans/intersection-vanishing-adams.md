@@ -4890,6 +4890,73 @@ R10 のコミットは `3a33581`。統合検証のログは
 `/tmp/adams-refactor-r11-integration-build.log`、`/tmp/adams-refactor-r11-final-audit.log`、
 `/tmp/adams-refactor-r11-common-audit.log`。
 
+## 4.37 並行作業を含む共通基盤の整理（2026-10-15）
+
+Adams・DG 複体・導来テンソル・導来完備化・漸近階数の実装を比較し、
+同じ型を持つ証明と共通の構成を下位層へ集約した。既存の宣言名と旧 import 入口を保つ。
+互換用ファイルが従来の上位層を再公開する場合も、新しい共通モジュール自身は
+完全性・台・K₀・具体的な Adams 作用を読み込まない。
+
+| 小段 | 実施内容 | 検証 | コミット |
+| --- | --- | --- | --- |
+| R12 | 一般の複体テンソル・符号付き交換・冪等像を `HomologicalAlgebra` へ分離。DG の参照先も変更 | 対象ビルド 2761 jobs、共通公理監査 | `be9fd96` |
+| R13 | 三箇所のテンソル写像・交換の自然性を共通化。結合同型・斉次公式・線形性・一般の基底変更も集約 | Adams・DG・導来テンソルのビルド 2818 jobs、共通公理監査、`cochainTensorIso = tensorIso` の `rfl` | `17d696b` |
+| R14 | 一元 Koszul の座標を導来完備化と共用。台・完全性の証明を別層へ分離 | 2802 jobs、塔の複体・両次数の同型の一致、微分・遷移の公理監査 | `490a8e0` |
+| R15 | Koszul 類・単位類・有限列の積公式を具体的 ψ² から分離。一般の `Family` の依存を整理 | 両方の局所化の族と重み作用素 3401 jobs、契約・ψ³ の族の公理監査 | `8b67a6c` |
+| R16 | 混合層の三成分公式・余核比較・共役の重複を共通化。`CochainCubicAction.comapIso` を導入 | ψ³ 加法性まで 3279 jobs、低次・高次の商作用と共通移送の公理監査 | `89c4a8c` |
+| R17 | 一般の代表複体の Euler 評価を `IntegerEuler` へ移し、具体的複体の場合を一回の適用で導出 | Euler 同型まで 3170 jobs、既存公理監査、最終ソースの型チェック | `71aa450` |
+| R18 | 錐への閉包性から三角部分圏の閉包性を導く共通補題を作成 | 完全・有界・階数条件の三利用先 2717 jobs、共通補題の公理監査 | `9c546c6` |
+| R19 | テンソルの上界・下界を独立した一般補題へ分離。完全複体と有界上導来テンソルから使用 | 2786 jobs、上界・下界の公理監査。上界の補題に下界の仮定なし | `1ed4144` |
+| R20 | 三・六因子の比較、有限直和、次数ごとの核への持ち上げを共通層へ移動。三重テンソルの ext も共通化 | DG・六因子・核のビルド 2769 jobs、共通公理監査と依存検査 | `53b14cb` |
+
+上の jobs は Lake が表示した処理件数であり、再コンパイル件数や時間短縮の測定値ではない。
+各小段のログは `/tmp/adams-r12-*` から `/tmp/adams-r20-*`。
+
+### 共通化の境界
+
+- `scripts/check_adams_import_boundaries.py` は、14 個の共通複体モジュールから
+  `KTheory`・`PerfectComplex` へ経路がないこと、および `Family`・`WeightOperators` から
+  具体的な二乗・三乗の構成へ経路がないことを検査する。
+- 四・六因子の shuffle と三因子の回転は、異なる複体を混ぜる API を保つ。
+  並行作業の `TensorPowers.permutationAction` は同一対象の反復テンソルへの作用であり、
+  括弧・末尾の単位対象も異なる。今回は結合・交換・斉次公式を共用する範囲に確定した。
+  一般の置換作用との比較定理を新たに仮定したり、証明済みとして扱ったりはしない。
+- 有限自由モデルと有限射影モデル、equalizer による冪等像と Abelian image、
+  次数ごとの分裂と DG 加群の分裂は、それぞれの型と仮定を維持する。
+- 共通モジュールに移した Koszul 宣言の従来の `Adams` 名前空間は互換性のため維持する。
+  その名前空間だけを理由に、共通モジュールが具体的な Adams 作用へ依存することはない。
+
+### 共有インデックスでのコミット混入
+
+R19 の `1ed4144` には、並行作業が同時にステージした
+`HomotopicalAlgebra/Smith/AccessibleLiftingClosure.lean`、
+`HomotopicalAlgebra/Smith/WeakEquivalenceFilteredColimits.lean`、
+`scripts/check_weak_equivalence_filtered_colimits.lean` の三ファイルも含まれる。
+この三ファイルはこちらでは編集しておらず、R19 の変更・検証対象に数えない。
+共有履歴は書き換えず、以降のコミットは `git commit --only` に対象パスを指定する。
+
+### R21／統合検証
+
+R12–R20 のコードをコミットした後、以下をすべて確認した。
+
+- ルート `SerrePositivity` と、`Lemma3_5`、`Devissage`、`FiniteExtension`、
+  `EqualCharZeroPositivity`、`K0Functoriality`、DG の `Braiding`、導来完備化の
+  `PrincipalKoszulStage`、漸近階数の `RankQuotient` をまとめてビルドし、
+  **4968 jobs で成功**。
+- `scripts/audit_intersection_vanishing_complete.lean` の **14 宣言**で
+  `assert_no_sorry` が成功。ψ³ 正規化、ψ²・ψ³ の族、基底変更、両剰余標数の消滅、
+  公開入口とその利用先の公理依存は `propext`・`Classical.choice`・`Quot.sound` のみ。
+- 共通基盤・一元 Koszul・一般 Adams 契約・作用の移送・整数 Euler・三角部分圏・
+  テンソル次数境界の **7 本の監査**が成功し、検査した宣言は標準三公理のみ。
+- 既存の `scripts/audit_axioms.lean` も終了コード 0。これは同スクリプトで指定した
+  検査の成功であり、リポジトリ全体の未証明部分がなくなったという主張ではない。
+- 依存境界の検査は **共通複体 14 モジュール・Adams 契約 2 モジュール**で成功。
+- `Inputs/IntersectionTheory.lean` は着手時の `cd01963` と差分がなく、公開型を維持。
+
+統合ログは `/tmp/adams-r21-build.log`、`/tmp/adams-r21-shared-audits.log`、
+`/tmp/adams-r21-vanishing-audit.log`、`/tmp/adams-r21-common-audit.log`。
+以上で、上記「共通化の境界」で確定した範囲の整理を完了した。
+
 ## 5. 受入条件
 
 - `Inputs.intersectionVanishing` の公開型を保ったまま、直接の `sorry` を除く。
