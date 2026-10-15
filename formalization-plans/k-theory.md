@@ -6044,3 +6044,60 @@ check_level_enrichedは一般C,Kと具体的PSS/円の両方をGeneral/StageTwo�
 次は通常の単体的写像対象のSM7を既存mappingSpaceSimplicialCategoryに接続する。
 通常SSetによるcotensor条件だけで通常写像対象のSM7を完成扱いにしない。
 一般C,Kの契約を含む段階1〜3全体の最終受入監査も未実施であり、全体目標は継続中。
+
+
+## 154. 段階1〜3の実行記録：通常の単体的写像対象のSM7（2026-10-15）
+
+ParametrizedAdjunctionTransport.composeSecondを追加し、通常の随伴を第二入力へ合成する際の
+パラメータ自然性を証明した。LaxPointHom.left_action/right_actionは、単位からの射による
+左右作用がlax monoidal関手の比較と両立することを証明する。
+TransportOrdinaryEnrichmentではeHomWhiskerLeft/Rightの関手像との一致と、移送前後の
+eHomFunctorを関手全体で比較する自然同型homFunctorIsoを証明した。
+MappingWhiskering.enriched_post/preは任意のrepresented enrichmentについて、
+レコード全体の比較を使わず通常の射による豊穣whiskeringを評価する。
+これらの共有補題には具体的SSet・モデル存在引用への依存はない。
+
+SimplicialLevelEnriched.ordinarySpectrumMappingは、実際の基点付き写像二変数関手を
+forgetへ後合成したSSet値二変数関手である。対象は既存simplicialMappingSpaceに一致する。
+ordinarySpectrumMappingAdjunctionは自由基点追加の随伴と写像対象のパラメータ付き随伴の
+合成であり、ordinarySpectrumMapping_SM7を既存通常tensorのQuillen性から証明した。
+実際のHT-KQ入口circleSpectrumLevelModel_simplicialMapping_SM7にも適用した。
+対象・上位ビルド成功、新証明の警告なし。check_level_enrichedは29宣言を標準公理のみで監査し、
+通常写像対象のSM7と旧写像対象との対象比較を検証した。
+check_kan_quillen_levelは30宣言を監査し、直接引用HT-KQの1件だけを確認した。
+全スペクトル316モジュール3078公開宣言の厳密監査が標準公理のみで成功。
+コミット：共有随伴・whiskering`82eb6fc`、通常mapping SM7と適用`4bf9dc6`。
+
+### 既存豊穣圏APIとの残る比較
+
+mappingSpaceSimplicialCategoryが選ぶeHomFunctorとordinarySpectrumMappingを、両変数の射の作用も
+含めて比較する接続は未完成である。後合成の比較は明示宇宙・対象を指定した利用試験で通過したが、
+前合成と自然同型全体の試作は、型検査後のカーネル変換で時間制限に当たった。
+当該2宣言のみmaxHeartbeats=800000としても失敗したため、この試作を正式モジュールへ採用していない。
+作業中のソースは`/tmp/k-theory-simplicial-hom-comparison-draft.lean`へ保存し、
+失敗するSimplicialHomComparison.leanは作業木から除いた。
+次は実際のスペクトルの大きな随伴データをカーネルで展開する変換を避け、
+共有のrepresented Hom関手比較として証明する形を検討する。
+通常写像対象のSM7だけで、この旧豊穣圏APIとの全接続を完了扱いにしない。
+
+
+## 155. 段階1〜3の実行記録：実際の関手的置換と比較自然変換（2026-10-15）
+
+段階3の受入条件を照合し、関手的分解の存在に加えて、置換関手と自然な比較射を直接使える入口を追加した。
+Generated/Replacementは任意の既存モデルCと二つのHasFunctorialFactorizationを入力する。
+initialArrows/terminalArrowsはCからArrow Cへの実際の関手である。
+Mathlibの選択済みFunctorialFactorizationData.Zとの合成を使い、cofibrantReplacementと
+fibrantReplacementをCの自己関手として構成した。
+cofibrantComparison : Q ⟶ Id、fibrantComparison : Id ⟶ Rは自然変換であり、
+各対象のQのcofibrancy・Rのfibrancyと、比較射のtrivial fibration/trivial cofibration性を証明した。
+対象ごとの独立な置換選択や、単なる存在命題で関手の代用をしない。
+
+共有入口と必須モジュール監査へ接続した。
+対象・集約ビルド成功、新規警告なし。check_model_replacementは任意のcofibrantly generatedモデルと、
+実際に選択した円スペクトルのレベルモデルについて、関手と比較自然変換と全対象での性質を検証した。
+新規20宣言の公理監査は標準公理のみ。共有基盤30モジュール408宣言の厳密監査も成功。
+M5の具体的コードや共有ルートは変更していない。コミット`57c5a86`。
+
+段階1〜3の再確認としてmany_object_presentability（13宣言）、module_model_transfer、
+general_tensor_cotensor（334宣言）、monoidal_level_model（72宣言）の既存利用例・監査も再実行成功。
+diff --check成功。段階1〜3の全体目標は、§154の旧Hom関手への接続と全受入条件の最終監査を残して継続中。
