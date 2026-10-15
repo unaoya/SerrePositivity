@@ -3190,3 +3190,27 @@ B⊗_A Nを係数とする根関係Koszul複体の負次数ホモロジー消滅
 比較には共通のテンソル/反復錐の自然同型を使用し、同等のKoszul・Tor定義は作らない。
 これを係数側(p,d)Koszul複体を伴う相対比較に接続する。
 δ関係の有限段、実導来完備化/perfectionのCFF、一般B4は未完成。
+
+## B4-6：任意係数加群での有限根関係Koszulホモロジーの実計算（2026-10-15）
+
+`DeltaRootFiniteKoszulCoefficients.lean`で、単射s:Fin n→σで指定する根関係について、
+任意A加群Nから得るB⊗_A Nを係数とした既存反復錐Koszul複体の
+負次数ホモロジーを実商Q=B/(g)とのTor_B(Q,B⊗_A N)へ結ぶ線形同型を供給した。
+共通koszulModuleTorComparisonの自然比較とtorModuleCommの合成を使用した。
+前工程のTor消滅から全負次数のSubsingleton・IsZeroを証明し、
+N=A/I（任意係数イデアルI）の場合も公開した。
+零次数は既存Tor零次数同型とテンソルの係数拡大取消同型を合成し、
+Q⊗_A Nとの具体的なB線形同型を供給した。
+Nの平坦性・有限性、Aのp正則性・非零性・Noether性は不要。
+係数側(p,d)Koszul複体そのものの次数零集中は仮定していない。
+5公開宣言の対象3585ジョブ、pure B4監査、全体4807ジョブ成功。
+標準3公理のみ、新sorry・公理・引用なし。全体は共有側の既存警告を含む。
+有限根関係商と係数拡大加群のTor消滅は7bac439で工程別コミット済み。
+
+次のBS専用予定`DeltaRootFiniteKoszulAugmentation.lean`で、今回の零次数同型と
+共通KoszulModuleBounds・toSingleOfHomology APIを使い、根関係の
+係数付きKoszul複体から(Q⊗_A N)[0]への具体的な擬同型を構成する。
+正次数の零性も既存複体の支持範囲から供給し、任意非零次数の消滅を明示する。
+続いて係数側の有限Koszul操作（特にp,d）との相対比較を行う。
+同等の複体・Koszul・Tor定義は新設せず、既存比較・実写像を使用する。
+δ関係の有限段、実導来完備化/perfectionのCFF、一般B4は未完成。
