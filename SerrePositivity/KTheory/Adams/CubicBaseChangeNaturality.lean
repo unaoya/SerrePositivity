@@ -74,11 +74,13 @@ lemma cyclicThree_map (E : Type v) [CommRing E] (φ : R →+* S)
     (x : K0WithSupport.Coefficients E Z) :
     K0WithSupport.coefficientMap E φ Z W h (cyclicThree E t ht ζ hζ Z x) =
       cyclicThree E (φ t) htS ζ hζ W (K0WithSupport.coefficientMap E φ Z W h x) := by
-  induction x using TensorProduct.inductionOn with
-  | tmul a x =>
-    rw [cyclicThree_tmul, map_smul, K0WithSupport.coefficientMap_tmul, cyclicThree_tmul,
-      cyclicThreeValue_map E φ t ht htS ζ hζ Z W h]
-  | add x y hx hy => simp only [map_add, hx, hy]
+  have he : (K0WithSupport.coefficientMap E φ Z W h).comp (cyclicThree E t ht ζ hζ Z) =
+      (cyclicThree E (φ t) htS ζ hζ W).comp (K0WithSupport.coefficientMap E φ Z W h) := by
+    apply coefficientLinearMap_ext E
+    intro y
+    simp only [LinearMap.comp_apply, K0WithSupport.coefficientMap_tmul,
+      cyclicThree_tmul, one_smul, cyclicThreeValue_map E φ t ht htS ζ hζ Z W h]
+  exact DFunLike.congr_fun he x
 
 end Adams
 end SerrePositivity

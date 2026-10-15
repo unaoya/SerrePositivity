@@ -72,15 +72,11 @@ lemma cyclicThree_unique
       (hp : strictlyPerfectComplex R P) (hs : HasHomologySupportOn Z P),
       F ((1 : E) ⊗ₜ[ℤ] K0WithSupport.mk Z (supportedPerfectOnObj Z P hp hs)) =
         tensorCubeClass E t ht ζ P Z hp hs) : F = cyclicThree E t ht ζ hζ Z := by
-  let G : K0WithSupport Z →+ K0WithSupport.Coefficients E Z := {
-    toFun := fun x => F ((1 : E) ⊗ₜ[ℤ] x)
-    map_zero' := by rw [TensorProduct.tmul_zero, map_zero]
-    map_add' := by intro x y; rw [TensorProduct.tmul_add, map_add] }
-  have hG : G = cyclicThreeValue E t ht ζ hζ Z :=
-    cyclicThreeValue_unique E t ht ζ hζ Z G hF
-  apply coefficientLinearExtension_unique
-  intro x
-  exact congrArg (fun g : K0WithSupport Z →+ K0WithSupport.Coefficients E Z => g x) hG
+  apply K0WithSupport.coefficientHom_ext E
+  intro X
+  rw [cyclicThree_tmul_mk, one_smul]
+  exact hF (supportedPerfectRepresentative X) (supportedPerfectRepresentative_perfect X)
+    (supportedPerfectRepresentative_support X)
 
 end Adams
 end SerrePositivity

@@ -52,11 +52,13 @@ lemma cyclicThree_enlarge (E : Type v) [CommRing E]
     (x : K0WithSupport.Coefficients E Z) :
     cyclicThree E t ht ζ hζ W (K0WithSupport.coefficientEnlarge E h x) =
       K0WithSupport.coefficientEnlarge E h (cyclicThree E t ht ζ hζ Z x) := by
-  induction x using TensorProduct.inductionOn with
-  | tmul a x =>
-    rw [K0WithSupport.coefficientEnlarge_tmul, cyclicThree_tmul, cyclicThree_tmul,
-      map_smul, cyclicThreeValue_enlarge E t ht ζ hζ h]
-  | add x y hx hy => simp only [map_add, hx, hy]
+  have he : (cyclicThree E t ht ζ hζ W).comp (K0WithSupport.coefficientEnlarge E h) =
+      (K0WithSupport.coefficientEnlarge E h).comp (cyclicThree E t ht ζ hζ Z) := by
+    apply coefficientLinearMap_ext E
+    intro y
+    simp only [LinearMap.comp_apply, K0WithSupport.coefficientEnlarge_tmul,
+      cyclicThree_tmul, one_smul, cyclicThreeValue_enlarge E t ht ζ hζ h]
+  exact DFunLike.congr_fun he x
 
 end Adams
 end SerrePositivity

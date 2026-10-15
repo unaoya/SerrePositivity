@@ -39,26 +39,6 @@ lemma tensorCubeClass_tensor (E : Type v) [CommRing E]
   exact he.trans (CochainCubicAction.weightedK0Class_tensor E
     (tensorCubeAction P) (tensorCubeAction Q) t ht ζ hζ Y Z hP hQ sP sQ)
 
-omit [Invertible (3 : R)] in
-private lemma coefficientHom_ext (E : Type v) [CommRing E]
-    {Z : TopologicalSpace.Closeds (PrimeSpectrum R)}
-    {B : Type*} [AddCommGroup B] [Module E B]
-    (F G : K0WithSupport.Coefficients E Z →ₗ[E] B)
-    (h : ∀ X : SupportedPerfectHomotopyOn Z,
-      F ((1 : E) ⊗ₜ[ℤ] K0WithSupport.mk Z X) =
-        G ((1 : E) ⊗ₜ[ℤ] K0WithSupport.mk Z X)) : F = G := by
-  let η : K0WithSupport Z →+ K0WithSupport.Coefficients E Z :=
-    (TensorProduct.mk ℤ E (K0WithSupport Z) (1 : E)).toAddMonoidHom
-  have he : F.toAddMonoidHom.comp η = G.toAddMonoidHom.comp η := by
-    apply K0WithSupport.hom_ext
-    exact h
-  apply AlgebraTensorModule.ext
-  intro a x
-  have hx : a ⊗ₜ[ℤ] x = a • ((1 : E) ⊗ₜ[ℤ] x) := by
-    rw [TensorProduct.smul_tmul', smul_eq_mul, mul_one]
-  rw [hx, F.map_smul, G.map_smul]
-  exact congrArg (fun y => a • y) (DFunLike.congr_fun he x)
-
 /-- Multiplicativity on all supported coefficient classes. -/
 lemma cyclicThree_cup (E : Type v) [CommRing E]
     (t : R) (ht : t ^ 2 + t + 1 = 0) (ζ : E) (hζ : ζ ^ 2 + ζ + 1 = 0)
@@ -79,7 +59,7 @@ lemma cyclicThree_cup (E : Type v) [CommRing E]
         (K0WithSupport.coefficientCup E
           (cyclicThree E t ht ζ hζ Y ((1 : E) ⊗ₜ[ℤ] K0WithSupport.mk Y X))).comp
           (cyclicThree E t ht ζ hζ Z) := by
-      apply coefficientHom_ext E
+      apply K0WithSupport.coefficientHom_ext E
       intro Q
       simp only [LinearMap.comp_apply, K0WithSupport.coefficientCup_tmul, one_mul,
         K0WithSupport.cup_mk_mk, K0WithSupport.tensorClass, cyclicThree_tmul_mk, one_smul]
@@ -93,7 +73,7 @@ lemma cyclicThree_cup (E : Type v) [CommRing E]
       ((K0WithSupport.coefficientCup E).flip y) =
       ((K0WithSupport.coefficientCup E).flip (cyclicThree E t ht ζ hζ Z y)).comp
         (cyclicThree E t ht ζ hζ Y) := by
-    apply coefficientHom_ext E
+    apply K0WithSupport.coefficientHom_ext E
     intro X
     exact hx X y
   exact DFunLike.congr_fun he x

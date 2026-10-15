@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KTheory.CoefficientExtension
+public import SerrePositivity.KTheory.CoefficientLinearExtension
 public import SerrePositivity.PerfectComplex.TensorBaseChange
 
 /-! # Basic operations on supported K₀ with extended coefficients -/
@@ -14,6 +14,19 @@ variable (E : Type v) [CommRing E]
 variable {R S : Type u} [CommRing R] [CommRing S]
 namespace K0WithSupport
 abbrev Coefficients (Z : TopologicalSpace.Closeds (PrimeSpectrum R)) := E ⊗[ℤ] K0WithSupport Z
+
+/-- Coefficient-linear maps are determined by supported perfect generators. -/
+lemma coefficientHom_ext {Z : TopologicalSpace.Closeds (PrimeSpectrum R)}
+    {B : Type*} [AddCommGroup B] [Module E B]
+    (F G : Coefficients E Z →ₗ[E] B)
+    (h : ∀ X : SupportedPerfectHomotopyOn Z,
+      F ((1 : E) ⊗ₜ[ℤ] mk Z X) = G ((1 : E) ⊗ₜ[ℤ] mk Z X)) : F = G := by
+  let η : K0WithSupport Z →+ Coefficients E Z :=
+    (TensorProduct.mk ℤ E (K0WithSupport Z) (1 : E)).toAddMonoidHom
+  have he : F.toAddMonoidHom.comp η = G.toAddMonoidHom.comp η := by
+    apply hom_ext
+    exact h
+  exact coefficientLinearMap_ext E F G (fun x => DFunLike.congr_fun he x)
 
 def coefficientEnlarge {Z W : TopologicalSpace.Closeds (PrimeSpectrum R)} (h : Z ≤ W) :
     Coefficients E Z →ₗ[E] Coefficients E W := g0CoefficientMap E (enlarge h)
