@@ -5751,3 +5751,22 @@ p素数・(p:A)=0の下、この実射の通常の忠実平坦性を、実イデ
 自然な商作用を補助的なtoAlgebraの作用へ無条件に差し替えていない。
 10公開宣言の対象2725ジョブ・B4全体pure監査成功。標準3公理のみ。
 新sorry・公理・引用なし。原典の導来pushoutとの比較・完備化後の完全平坦性・CFF・一般B4は未完成。
+
+### 次工程の登録：一元分冪表示環の実mod p比較
+
+BS専用PrincipalDPModP.leanで、PrincipalDPPresentation A yを実際にpで割った商を、
+PrincipalDPPresentation (A/p) (y mod p)へ同定する。
+係数のp主イデアルの像、既存テンソル商同型、任意係数の基底変更同型を合成し、
+係数と全標準生成元上の式を証明する。pねじれ・零環を許し、pの素数性・p正則性・
+完備性は要求しない。この通常mod p同型を導来完備化の比較と混同しない。
+
+## B4-6：一元分冪表示環の任意係数への実基底変更（2026-10-15）
+
+PrincipalDPBaseChangeUniversal.leanで、既証明の任意係数の一元分冪代数同型を使い、
+拡大した表示関係イデアルの像の一致を証明した。
+既存テンソル商同型と合成し、B⊗[A]PrincipalDPPresentation A yから
+PrincipalDPPresentation B (algebraMap A B y)への実B代数同型を構成した。
+Bの全係数・全標準生成元の純テンソル上の式も公開した。
+p正則性・p局所性・δ構造・完備性は不要で、pねじれ係数を許す。従来の仮定付きAPIは変更していない。
+4公開宣言の対象2714ジョブ・B4全体pure監査成功。標準3公理のみ。
+新sorry・公理・引用なし。実mod p比較・導来比較・CFF・一般B4は次工程。
