@@ -11336,3 +11336,78 @@ cosimplicial射で、元のfを覆うという条件を満たすものである�
 その上で恒等射・合成の高次整合性を保つ厳密化を完成させる。
 今回の境界充填だけから、作用や合成の厳密性が自動的に従うとは扱わない。
 F1の任意モデル源でのSSet値関手の契約を維持し、全体目標F→L→E→Sは継続する。
+
+
+## 226. F1進捗：高次liftの対角Homへの実作用と次数ごとの比較（2026-10-16）
+
+§225の持ち上げ空間を、実際のresolution Homに作用させる段階を実装した。
+値の一致をHo(SSet)やπ₀に落とすことなく、すべての単体を保つ射として扱う。
+対角比較の弱同値性と最終の厳密化は未完了であり、F1は継続する。
+
+### 226.1 二重cosimplicial対象の対角と実際の合成
+
+`HomotopyFunctionComplex/DiagonalFrame`は、一般のI→(I→C)の対角を
+I→I×Iと既存のuncurryから構成する。対角上の射、自然変換の制限、外側のaugmentationが
+誘導する対角のaugmentation、外側定数diagramの対角との自然同型を与える。
+通常のReedyモデル上で対象ごとに構成した二重resolutionについて、
+対角augmentationが次数ごとに弱同値となり、元のframeがhomotopically constantなら
+対角もそうなることを証明した。対角のReedy cofibrancyはここから推論しない。
+
+`DiagonalHomComposition`は二重cosimplicial対象A、cosimplicial対象BとZに対し、
+Hom(A,B)×Hom(B,Z)→Hom(diag A,Z)を実際の単体的写像として構成する。
+n単体で、A[n]→Bというcosimplicial射のn次成分にB[n]→Zを合成する。
+外側と内側の自然性を使い、単体操作との可換性を証明した。
+一般の単体集合Tを共通parameterとするpairing、Tの変更に関する自然性、
+Zへの後合成との可換性も証明した。この段階に源Cのモデル構造は不要である。
+
+### 226.2 高次liftの作用と境界データの保存
+
+`LiftSpaceAction`は§225の実際のHom fiberからの包含を上の合成へ接続する。
+持ち上げ単体をすべて保つ作用と、任意のparameter Tでの作用を構成した。
+厳密なliftの点に制限すると、作用が対角augmentationとそのliftを合成した射への
+実際の前合成と等しいことを証明する。選択比較の同型だけを仮定することはない。
+
+`ResolutionLiftAction`は任意モデル源の二つの`ResolutionObject`と元の射に適用する。
+値は§225で使った外側resolutionそのものの対角Homである。
+別に選び直した外側resolutionと定義上等しいとは扱わない。
+厳密なresolution射の点での作用は、元のHom射に対角augmentationの比較を続けたものと
+等しい。parameter変更・標的への後合成についても自然である。
+
+任意のmonomorphism K→L上で指定したlift境界とL上の標的写像parameterについて、
+liftを延長し、誘導される作用が元の境界作用に制限されることも証明した。
+従って§225の全次元の境界充填を、実際の写像空間の作用の等式へ接続できる。
+この結果は、作用の合成がすでに厳密であるという主張ではない。
+
+### 226.3 次数ごとの弱同値と対角比較射の同定
+
+`DiagonalMappingRows`は外側resolution qの各次数nからHom(q[n],Z)を集める
+実際のbisimplicial写像対象と、元のHom(B,Z)を定数にした対象からの自然な比較を構成する。
+qのReedy cofibrancyから各行のcofibrancyを導き、Bがframeなら各行のKan性を証明した。
+ZがfibrantでBがReedy cofibrantなら、比較は外側のすべての次数で弱同値となる。
+任意モデル源・指定関手的分解なしのままであり、resolution間の弱同値不変性を再利用する。
+
+`DiagonalMappingComparison`は、このbisimplicial対象の対角とHom(diag A,Z)の自然同型を
+構成した。各次数の同型は恒等写像で、単体操作の可換性には二重diagramの自然性を用いる。
+定数対象の対角の同型と組み合わせ、行ごとの比較を対角化した実際の射が、
+対角augmentationによるHomの前合成そのものと等しいことを証明した。
+従って次の一般的なbisimplicial対角弱同値定理を適用する対象と比較射は特定済みである。
+行ごとの弱同値だけから、その定理を省略して対角の弱同値を結論してはいない。
+
+### 226.4 受入検証と次の残項目
+
+- 共有入口の合同build：2590 jobs、成功。
+- `check_diagonal_lift_actions`：モデル構造なしの実合成、任意モデル源のlift空間の作用、
+  厳密なlift点での元のHom射との一致、全次元の境界作用の延長、行ごとの弱同値、
+  対角augmentationの次数ごとの弱同値、実際の対角比較射の同定。
+  新規65宣言・6モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：4729宣言・402モジュール、標準公理のみ。
+- `check_resolution_lift_spaces`：63宣言・3モジュールの回帰確認。
+- `check_arbitrary_source_resolutions`：108宣言・5モジュールの回帰確認。
+- stageした差分の空白検査も成功。新規sorry・引用axiomなし。実装`316d627d`。
+
+次の実装単位は、実際のbisimplicial集合の行ごとの弱同値が対角の弱同値を誘導する
+一般定理である。これを226.3の特定済みの比較射へ適用し、必要なKan置換と比較を構成する。
+源の対角Reedy cofibrancyを無条件に追加仮定して迂回しない。
+その後、恒等射・合成の高次整合性を保つSSet値の厳密化と、元のresolution Homとの比較を
+完成させる必要がある。任意モデル源の契約をcombinatorial源へ狭めず、∞圏も導入しない。
+全体目標F→L→E→Sは継続中。

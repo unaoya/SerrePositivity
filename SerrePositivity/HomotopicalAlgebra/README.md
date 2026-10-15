@@ -1356,3 +1356,16 @@ Reedy cofibrant frameとtrivial fibrationに対して、一点へのprojection�
 源の指定関手的分解は不要。新規63宣言・3モジュールと共有4664宣言・396モジュールの
 標準公理監査が成功。実装`37ac8bdd`、詳細は計画§225。
 最終RMapへの作用・合成と厳密化はF1の残項目である。
+
+
+## 高次liftの対角Homへの実作用と行ごとの比較（2026-10-16）
+
+`HomotopyFunctionComplex/DiagonalFrame`と`DiagonalHomComposition`は二重cosimplicial対象の
+対角と、Hom(A,B)×Hom(B,Z)→Hom(diag A,Z)という実際の単体的合成を構成する。
+`LiftSpaceAction`と`ResolutionLiftAction`は§225のlift空間をこの合成へ接続し、
+厳密なlift点での元のHom射との一致・parameterと標的の自然性・境界作用の延長を証明する。
+`DiagonalMappingRows`は任意モデル源の実際の二重resolution Homについて行ごとの弱同値を与える。
+`DiagonalMappingComparison`はその対角と対角Homを自然同型で結び、比較射が実際のaugmentationの
+前合成であることを証明する。対角全体の弱同値性は別の残項目として維持する。
+新規65宣言・6モジュールと共有4729宣言・402モジュールの標準公理監査が成功。
+実装`316d627d`、詳細とF1の厳密化の残項目は計画§226。
