@@ -4906,6 +4906,18 @@ augmentation計算式と実導来交換のモデル比較を合成した。cocha
 共通import閉包78モジュールに禁止依存なし。実導来積の結合・左右単位則は未完了であり、
 MonObj構造、完備化への乗法延長、H⁰環・PDCompletionH0比較は後続に保つ。
 
+G2-5a-ii実単位則（2026-10-15）：`DerivedTensorAugmentationModels.lean`で、任意の有界上射影cochain
+モデルと、そのモデル同型を誘導する実augmentationに対する二側tensor計算式へ拡張した。
+標準モデルへの持ち上げの合成は元のaugmentationとホモトピーで一致し、両変数のtensorが
+そのホモトピーを保つことを使う。厳密に可換する射影分解の選択を仮定しない。
+単位の厳密射影モデルへ適用し、既存の実導来tensor augmentationが左右の実unitorを回復することを証明した。
+`DerivedSingleTensorUnit.lean`で通常代数の単位則と自然性を合成し、既存の
+`boundedAboveDerivedAlgebraMul`と`boundedAboveDerivedAlgebraUnit`の実左右単位則を証明した。
+新規5宣言を含むG2監査497宣言、対象ビルド2362ジョブ、全体ビルド5124ジョブが成功。
+主要モデル比較・実左右単位則は標準3公理のみ。共通import閉包79モジュールに禁止依存なし。
+実導来積の可換性・左右単位則は供給済み。次は実結合則を同じモデル比較で証明し、
+全環法則を満たすMonObj／IsCommMonObj構造へ合流する。完備化乗法と実H⁰環の構成はなお必要。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
