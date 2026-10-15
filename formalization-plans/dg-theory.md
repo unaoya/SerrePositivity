@@ -953,3 +953,24 @@ objectwise acyclic性とcone/quasiIsoの整合性を証明する。
 U9の局所化比較、U10のsemifree解像度の存在・Hom計算・三角構造・余積・
 一対象Aの既存導来圏比較も未完であり、U10までの目標を保持する。
 共有一般論は複製せず、この段階で共有API不足によるブロックはない。
+
+### 13.15 U8a2：全次数加群 shift・境界保存・K(D) の整合的整数 shift
+
+`Module/ShiftHom.lean` はパラメータ付き全次数自然変換の shift を
+`shiftModuleParamTrans` として構成し、Hom end の普遍性で `moduleShiftHom` を得る。
+`moduleShiftHom_π`/`_π_v` は各対象・次数pの成分を示し、符号 (-1)^(sp) と
+再添字付けを維持する。閉単位・豊穣合成の保存から `moduleShiftDG` を構成した。
+閉零制限は既存の `moduleShiftFunctor` と一致し、評価した射は既存 chain map shift。
+
+`Module/ShiftHomotopy.lean` はこの真の dg 関手から境界関係の shift 保存を証明した。
+Mathlib `HasShift.quotient` を用い、K(D) の整数shiftと zero/add coherence、
+商関手の CommShift を得る。評価も CommShift。
+`moduleQuasiIso_shift_iff`/`moduleHomotopyQuasiIso_shift_iff` は
+閉零圏・K(D)両方での準同型判定のshift不変性を示し、IsCompatibleWithShiftを登録した。
+一般の商shiftやCommShift転送を独自に複製していない。
+
+受入入口 `Checks/ShiftHomotopy.lean` のビルド・直接実行は成功。
+任意可換環・独立宇宙・非有界加群での全次数構造、次数−1の符号成分、
+境界保存、HasShift/CommShift、準同型クラスのshift不変性を検証した。
+主要18宣言はすべて標準公理の範囲内。累計監査対象は358宣言。
+U8全受入はcone/acyclic判定の受入記録を残して未完。U9/U10も未完で目標を保持する。
