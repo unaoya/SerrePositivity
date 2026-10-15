@@ -1330,3 +1330,16 @@ good cylinderを構成する。標準Reedy frameとBrown補題を使い、cylind
 `Quillen/CofibrantComparison`はcofibrant対象上の比較自然同型をホモトピー圏全体へ降ろす。
 共有入口はSpectraをimportしない。4493宣言・388モジュールの標準公理監査が成功。
 実装`c5230ffd`。スペクトルへの適用を含む完了条件は計画§223。
+
+
+## 指定分解なしのresolution圏とHo(SSet)値の関手（2026-10-16）
+
+`HomotopyFunctionComplex/ResolutionCategory`は任意モデル源の全cosimplicial resolutionを束ね、
+元の任意の射の持ち上げを通常のモデル公理だけで構成する。
+`ResolutionCategoryHom`は実際のHomのKan性・不変性・自然なπ₀比較を与える。
+`ResolutionLiftIndependence`は同じ元の射の任意の持ち上げがHo(SSet)で同じ射を誘導すると証明する。
+`LocalizedResolutionHom`と`LocalizedMappingBifunctor`はこの結果と通常の局所化の普遍性から、
+Ho(C)ᵒᵖ→(Ho(C)→Ho(SSet))を構成し、各値に実際のKanなresolution Homを代表として与える。
+関手的分解・局所可呈示性・豊穣構造を源に仮定しない。
+新規108宣言・5モジュールと共有4601宣言・393モジュールの標準公理監査が成功。
+実装`fcbefc75`・`a29026e2`。SSet値の厳密化はF1の残項目であり、詳細は計画§224。

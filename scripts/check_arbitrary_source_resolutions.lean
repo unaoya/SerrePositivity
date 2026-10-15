@@ -72,7 +72,7 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.LocalizedMappingBifunctor,
-    
+
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionCategory,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionCategoryHom,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionLiftIndependence,

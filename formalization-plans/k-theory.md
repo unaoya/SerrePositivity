@@ -11208,3 +11208,70 @@ S0・S1・S2・S3はそれぞれ§214・§216・§218・§223で受入条件を�
 F1の「指定した関手的分解を仮定しない任意モデル源での最終RMap関手」は未完了。
 任意モデル源をcombinatorial源へ狭めず、関手性・不変性・fibrancy・π₀と通常のHoの一致を
 揃えることが次の残項目である。全体目標F→L→E→Sは引き続き継続中。
+
+
+## 224. F1進捗：指定分解なしのresolution圏とHo(SSet)値の二変数関手（2026-10-16）
+
+F1の任意モデル源という契約を維持し、関手的因子分解・局所可呈示性・単体的豊穣構造を
+仮定しない入口を追加した。最終契約のSSet値の厳密なRMapはまだ未完了であり、
+今回のHo(SSet)値の関手をその代替として完了判定しない。
+
+### 224.1 全resolutionと実際の単体的Hom
+
+`HomotopyFunctionComplex/ResolutionCategory`の`ResolutionObject C`は、対象Xと
+その強いcosimplicial resolutionを束ねる。射は元の射fと、augmentationの上でfを覆う
+実際のcosimplicial射である。射の合成を定義し、元の圏へのprojectionとdiagram関手を構成した。
+任意の二つのresolutionの間で、任意の元の射を持ち上げられることをReedyモデルの
+cofibration対trivial fibrationの持ち上げから証明する。従ってprojectionはfullである。
+各Xのresolutionも通常のモデル分解だけで構成する。
+独立に選んだ持ち上げの合成が元の選択と等しいとは仮定しない。
+
+`ResolutionCategoryHom`はresolution圏の反対とfibrant対象圏からSSetへの実際の二変数関手を
+構成する。n単体はresolutionのn次対象から標的への射そのものである。
+Kan性、両変数の弱同値不変性、任意の通常の局所化Qに対するπ₀と
+Ho(C)の射との比較を証明した。π₀比較は全resolution射と全fibrant標的射について自然である。
+Kan性とπ₀比較にはSSetモデル構造も不要。不変性の証明は従来どおり明示されたSSetモデルと
+cof=monoを使い、具体的なモデル存在引用を新たにimportしない。
+
+### 224.2 持ち上げの独立性と通常の局所化への降下
+
+`ResolutionLiftIndependence`は、同じ元の射を覆う任意の二つのresolution射について、
+実際のHomに誘導される射がHo(SSet)で等しいことを証明する。π₀上だけの一致ではない。
+まずReedyモデルの局所化でaugmentationを反転して二射の一致を得る。
+cofibrant対象の包含と局所化の合成自体が局所化であるという既存の一般定理を使い、
+Homの弱同値不変性からHo(SSet)での一致へ移す。
+
+`LocalizedResolutionHom`は、この独立性を使って独立な持ち上げの恒等射則・合成則を証明し、
+厳密な関手Cᵒᵖ→(FibrantObject C→Ho(SSet))を構成する。
+対象ごとの値は元のcosimplicial resolution Homを局所化したものである。
+
+`LocalizedMappingBifunctor`はfibrant包含とQの合成の局所化普遍性を使い、
+標的とすべての源変換をHo(C)へ延長する。得られる関手は
+Cᵒᵖ→(Ho(C)→Ho(SSet))、およびそのQによる制限Cᵒᵖ→(C→Ho(SSet))である。
+さらに源の弱同値も反転することを証明し、Ho(C)ᵒᵖ→(Ho(C)→Ho(SSet))へ降下させた。
+源と標的の関手的置換はどちらも入力しない。
+
+任意の弱いfibrant replacement Y→Rに対する値の計算同型を構成した。
+通常のtrivCof/fib分解を対象ごとに選ぶことで、すべてのX,Yについて実際のKanな
+Hom(qX,R)を代表として与え、そのπ₀がQX→QYの射集合になることも証明した。
+対象宇宙・Hom宇宙・二つの局所化の対象/Hom宇宙は独立のまま扱う。
+
+### 224.3 受入検証と次の残項目
+
+- 共有入口と既存の最終スペクトル安定性モジュールの合同build：3039 jobs、成功。
+- `check_arbitrary_source_resolutions`：任意モデル源、指定分解なしの持ち上げ、Kan性、
+  π₀比較、Ho(SSet)での持ち上げ独立性、全対象への拡張、非fibrant標的を含む両変数不変性。
+  新規108宣言・5モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：4601宣言・393モジュール、標準公理のみ。
+- `check_resolution_hom_pi_zero`：85宣言・4モジュールの既存API回帰確認。
+- `check_ordinary_suspension_stability`：87宣言・8モジュールのS3回帰確認。
+
+新規sorry・引用axiomなし。resolution圏・持ち上げ独立性・源関手`fcbefc75`、
+任意標的と両局所化への降下・Kan代表`a29026e2`。
+
+F1に残るのは、元の契約Cᵒᵖ→(C→SSet)を満たす厳密な写像空間関手と、
+この実際のresolution Homとの比較を、指定関手的分解なしで構成する段階である。
+Ho(SSet)値の関手から対象ごとの代表を選ぶだけでは高次整合性は得られない。
+resolution比較の高次整合性を保持する構成、または同じ実際の写像空間と比較できる別の厳密な
+mapping-space構成が必要である。この点を省略してF1を完了とはしない。
+一般源をcombinatorial源へ狭めず、∞圏の導入も行わない。全体目標F→L→E→Sは継続中。
