@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.RankOneDPPrimeBlockBasis
 import SerrePositivity.BhattScholze.RankOneDPPrimeBlocks
 import SerrePositivity.BhattScholze.RankOneDPAnyBasis
 import SerrePositivity.BhattScholze.RankOneDPBaseChangeUniversal
@@ -4517,3 +4518,15 @@ assert_no_sorry SerrePositivity.BhattScholze.rankOneDPGenerator_pow_mul_prime_bl
 #print axioms SerrePositivity.BhattScholze.rankOneDPGenerator_pow_mul_prime_block
 assert_no_sorry SerrePositivity.BhattScholze.rankOneDPGenerator_pow_eq_zero
 #print axioms SerrePositivity.BhattScholze.rankOneDPGenerator_pow_eq_zero
+
+-- Actual degree-block basis and its shift action over coefficients with p = 0.
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPPrimeBlock_factorial_isUnit
+#print axioms SerrePositivity.BhattScholze.rankOneDPPrimeBlock_factorial_isUnit
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPPrimeBlockBasis
+#print axioms SerrePositivity.BhattScholze.rankOneDPPrimeBlockBasis
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPPrimeBlockBasis_apply
+#print axioms SerrePositivity.BhattScholze.rankOneDPPrimeBlockBasis_apply
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPPrimeBlockBasis_mul
+#print axioms SerrePositivity.BhattScholze.rankOneDPPrimeBlockBasis_mul
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPPrimeBlockBasis_last_mul
+#print axioms SerrePositivity.BhattScholze.rankOneDPPrimeBlockBasis_last_mul
