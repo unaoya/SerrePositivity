@@ -3763,6 +3763,17 @@ K₀ の類への移送と重みつき乗法性は次の小段。
   八定数の `assert_no_sorry` が通り、公理は標準三公理のみ。
 - 次は直和の指標類の加法性とシフトの類の評価。一元正規化・族・S10.9・S11 は未完了。
 
+### S10.8c.3a.2a：三乗作用の二項直和と指標類の加法性
+
+- `PerfectComplex/CubicActionBiproductClass` は二つの三乗作用の対角直和を構成し、
+  三乗の恒等性、各指標類・重みつき類の加法性を証明した。
+  加法性は分裂短完全列と監査済みの `eigenK0Class_shortExact` を使う。
+- 対象を含む `lake build SerrePositivity.PerfectComplex.CubicActionBiproductClass
+  SerrePositivity.KTheory.Adams.KoszulShiftTwoClass` が成功（3266 jobs）。
+- `lake env lean scripts/audit_cubic_action_biproduct_class.lean` が成功。
+  四定数の `assert_no_sorry` が通り、公理は標準三公理のみ。
+- 次は四シフトの指標類の評価と、一元正規化への接続。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
