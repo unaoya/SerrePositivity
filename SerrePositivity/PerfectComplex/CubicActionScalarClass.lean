@@ -3,6 +3,7 @@ module
 public import SerrePositivity.PerfectComplex.CubicActionClassMaps
 public import SerrePositivity.PerfectComplex.CubicActionEigenvectors
 public import SerrePositivity.PerfectComplex.CubicActionCharacter
+public import SerrePositivity.PerfectComplex.IdempotentImageTrivial
 
 /-! # Character classes of scalar cubic actions -/
 
@@ -42,23 +43,16 @@ lemma characterProjector_other_of_map_eq_scalar (τ : CochainCubicAction K)
 def characterSelfImageIsoOfMapEqScalar (τ : CochainCubicAction K)
     (t : R) (ht : t ^ 3 = 1) (j : Fin 3)
     (hτ : τ.map = cubicCharacter t j • 𝟙 K) :
-    (τ.characterProjector t ht j).image ≅ K where
-  hom := (τ.characterProjector t ht j).inclusion
-  inv := (τ.characterProjector t ht j).projection
-  hom_inv_id := (τ.characterProjector t ht j).inclusion_projection
-  inv_hom_id := by
-    rw [CochainIdempotent.projection_inclusion,
-      characterProjector_self_of_map_eq_scalar τ t ht j hτ]
+    (τ.characterProjector t ht j).image ≅ K :=
+  (τ.characterProjector t ht j).imageIsoOfMapEqId
+    (characterProjector_self_of_map_eq_scalar τ t ht j hτ)
 
 lemma characterOtherImage_isZero_of_map_eq_scalar (τ : CochainCubicAction K)
     (t : R) (ht : t ^ 2 + t + 1 = 0) (j k : Fin 3)
     (hτ : τ.map = cubicCharacter t j • 𝟙 K) (hne : j ≠ k) :
-    IsZero (τ.characterProjector t (cube_eq_one_of_cubic_relation t ht) k).image := by
-  let e := τ.characterProjector t (cube_eq_one_of_cubic_relation t ht) k
-  have hi : e.inclusion = 0 := by
-    rw [← e.inclusion_map, characterProjector_other_of_map_eq_scalar τ t ht j k hτ hne,
-      comp_zero]
-  rw [IsZero.iff_id_eq_zero, ← e.inclusion_projection, hi, zero_comp]
+    IsZero (τ.characterProjector t (cube_eq_one_of_cubic_relation t ht) k).image :=
+  (τ.characterProjector t (cube_eq_one_of_cubic_relation t ht) k).image_isZero_of_map_eq_zero
+    (characterProjector_other_of_map_eq_scalar τ t ht j k hτ hne)
 
 lemma eigenK0Class_self_of_map_eq_scalar (τ : CochainCubicAction K)
     (t : R) (ht : t ^ 2 + t + 1 = 0) (j : Fin 3)
@@ -79,9 +73,7 @@ lemma eigenK0Class_other_of_map_eq_scalar (τ : CochainCubicAction K)
     (hne : j ≠ k) : τ.eigenK0Class t ht Z hp hs k = 0 := by
   let e := τ.characterProjector t (cube_eq_one_of_cubic_relation t ht) k
   have hz := characterOtherImage_isZero_of_map_eq_scalar τ t ht j k hτ hne
-  have hac : e.image.Acyclic := (cochainAcyclic_iff_support_bot _).mpr
-    (hasHomologySupportOn_of_isZero hz)
-  exact K0WithSupport.mk_eq_zero_of_acyclic Z (e.image_strictlyPerfect hp) (e.image_support hs) hac
+  exact K0WithSupport.mk_eq_zero_of_isZero Z (e.image_strictlyPerfect hp) (e.image_support hs) hz
 
 lemma weightedK0Class_of_map_eq_scalar (E : Type v) [CommRing E] (τ : CochainCubicAction K)
     (t : R) (ht : t ^ 2 + t + 1 = 0) (j : Fin 3)
