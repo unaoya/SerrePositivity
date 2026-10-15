@@ -7267,3 +7267,30 @@ boundedAboveDerivedBaseChangeRightTensorNatIsoと証明済みTor消滅を適用�
 これにより、係数商還元を前段で計算した実残余因子とのテンソルへ接続する経路を進める。
 任意の新しい投影公式を構築する前に、この既存の結合子・右係数拡大比較で足りる範囲を実装する。
 共有・CLMST・利用先は編集していない。
+
+### 次工程の登録：右因子の実係数還元と三因子の結合子による接続
+
+BS専用DeltaDivisionSourceCoefficientRightFactor.leanを新設する。q:L→L/J、ψ=q∘αについて、
+前工程のαbar作用付きQ=L/Jの商代数比較とα因子のTor消滅から、
+Res_q(Lq Single(Mα))とSingle(Mψ)を標準線形比較で同型にする。
+共通の右係数拡大比較によりSingle(Mα)⊗^L QをSingle(Mψ)へ移し、
+共通結合子から(Single(Mβ)⊗^L Single(Mα))⊗^L QをSingle(Mβ)⊗^L Single(Mψ)へ比較する。
+任意Iについてp正則性・ghost・G7・完備性は不要。
+BS専用DeltaRootSourceCoefficientResidue.leanでI=(p,Cd)の根添加に特殊化し、
+既存G7相対的残余導来評価比較を合成して、この具体的な係数側実導来還元を既存raw(p,d)商へ接続する。
+G7、元のAのp正則性、ghost単射、指定単元δdは後者だけで保持する。
+共有・CLMST・共有監査は編集せず、全新公開宣言を専用監査で検査する。
+導来(p,d)完備化後CFFや一般B4は未完成として区別する。
+
+## B4-6：右因子の実係数還元と三因子の結合子による比較（2026-10-15）
+
+DeltaDivisionSourceCoefficientRightFactor.leanで、αbar作用付き商をqで係数制限すると
+ψ=q∘αの実作用になる標準線形同値を構成した。既存α因子のTor消滅と商比較を使い、
+Res_q(Lq Single(Mα))をSingle(Mψ)と標準同型にした。
+共通の右係数拡大比較と導来テンソル結合子を合成し、
+(Single(Mβ)⊗^L Single(Mα))⊗^L QをSingle(Mβ)⊗^L Single(Mψ)へ比較した。
+(p,d)特殊化では商環と作用が同時に変わるため、イデアルを変数とする完全な型族で輸送し、
+実商射L→L/(p,Cd)を明示した比較を公開した。p正則性・ghost・G7・完備性・添字有限性は不要。
+6新公開宣言の対象2888ジョブ成功（既存共有警告のみ）、B4全体pure監査1920報告成功、標準3公理のみ。
+新sorry・公理・引用なし。共通の導来テンソル・結合子・係数拡大・係数制限の既存APIを再利用した。
+根添加の既存残余導来評価比較へ合成するための接続であり、一般B4・完備化後CFFの完成ではない。
