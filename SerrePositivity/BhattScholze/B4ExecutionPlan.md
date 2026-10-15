@@ -4626,3 +4626,34 @@ B4全体監査と全体ビルドは、続く実完備化H⁰比較の工程と�
 保留した通常テンソル正則性を含むB4全体pure監査も今回は成功した。
 新規4宣言・既存監査対象とも新sorry依存はなく、標準3公理のみ。
 全体ビルドは別途同じ実行を継続している。
+
+### 次工程の登録：実通常テンソルと実完備化比較のδ構造の両立
+
+BS専用`DeltaPDivisionSourceTensorDelta.lean`で、実通常テンソルの既存raw比較同型に沿って、
+raw包のδ切断をW₂の既存写像で引き戻す具体的δ構造を構成する。
+既存DeltaStructureとwittTwoMapを使用し、新しいδ環の概念は定義しない。
+比較同型の両方向がδ射であること、通常テンソルの両因子の標準包含がδ射であることを示す。
+
+続くBS専用`DeltaPDivisionSourceTensorCompletionDelta.lean`で、実通常テンソルのδ構造に
+既存deltaPDCompletionStructureを適用し、前工程の実完備化H⁰比較がδ構造を保つことを証明する。
+既存pdCompletionRingHom_isDeltaHomを標準単位の式へ適用し、同型の存在だけからδ両立を推論しない。
+通常テンソルのδ構造にはG7・正則性は不要。旧ねじれ商と実H⁰の比較では既存の正則一元入力を明示する。
+このδ両立はG7や原典の導来δpushout比較・CFFを解消したという主張ではない。
+
+## B4-6：実通常テンソル入力と既存候補の実導来完備化H⁰比較（2026-10-15）
+
+`DeltaPDivisionSourceTensorCompletion.lean`で、R=A⊗[P]Lと既存旧ねじれ商Uの標準環同型を使い、
+実PDCompletionH0 R p (p:R)≃+*DerivedDeltaDivisionCompletion D p (fun _↦φ(y))を構成した。
+U側の実分母deltaDivisionTorsionMap D p a pを保持し、map_natCastだけで完備性入力を比較した。
+既存existsUnique_pdCompletionRingHomにより両方向を延長し、実完備化普遍性の一意性で逆写像を示した。
+標準単位を保つ比較同型の存在・一意性、元ごとの単位の式、元のAの標準射の式、逆射の単位の式を公開した。
+Aのp正則性・yのA/p正則性・単元δp・自由δ環ghost単射を、通常入力の標準同型の仮定として明示する。
+古典的完備化へ置換せず、新しい完備化の定義やG7入力は用いていない。
+
+6公開宣言の対象3869ジョブ・B4全体pure監査成功。依存は標準3公理のみ。
+新sorry・公理・外部引用なし。
+全体ビルド/tmp/bs-tensorcompletion-full.logは共有KTheoryのKoszulShiftTwoClass、
+KoszulSquareCoordinates、CubicUnitNormalizationで失敗した。
+前者はshiftされたKoszulのクラスの未解決ゴール、後者側は型の合わないmappingCone等の式を報告した。
+共有ファイルは変更していない。対象・監査成功と全体ビルド成功は区別する。
+原典の導来δpushout比較・G7・分冪包比較・CFF・一般B4は未完成。
