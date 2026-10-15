@@ -6303,7 +6303,7 @@ IDは計画上の単位であり、1行を1コミットや1日とみなさない
 | F3（完了、§185） | HomotopyFunctionComplex/Accessible | A0,A1,F0,F1 | 必要なresolutionと、固定した小さいSに対するRMap評価が共通cardinalでaccessible。任意Xについて同じcardinalを無条件に要求しない |
 | F4（完了、§199） | HomotopyFunctionComplex/FilteredColimits | A0,F1 | 十分大きいfiltered colimitとhomotopy colimitの比較、必要範囲でRMapのhomotopy colimit→homotopy limit公式。M4全体を先に要求しないが、この証明を省かない |
 | L0（完了、§193） | HomotopicalAlgebra/Localization/Basic。局所性・W_S・条件付き局所化API | F1,F2 | Sの代表・cofibrant置換の独立性、元のW⊆W_S、2-out-of-3・retract閉性、空集合/元の弱同値だけのSで元モデルを回復 |
-| L1（部分実装、§195） | Localization/AccessibleLocalObjects | A1,F3,L0 | S-local対象の充満部分圏のaccessibilityと包含のaccessibilityを導く。検出に使う関手・cardinalと小さいhomotopy生成族を明示 |
+| L1（完了、§200） | Localization/AccessibleLocalObjects | A1,F3,L0 | S-local対象の充満部分圏のaccessibilityと包含のaccessibilityを導く。検出に使う関手・cardinalと小さいhomotopy生成族を明示 |
 | L2 | Localization/AccessibleLocalEquivalences | L1,F4 | Arrow C内のW_Sのaccessibilityと包含のaccessibilityを証明。全局所対象に量化した定義から小ささへの移行を独立に検証 |
 | L3 | Localization/LeftProperClosure | L0,F4、元モデルの左固有性 | cof_original∩W_Sのpushout/超限合成閉性を証明。局所化後のモデル存在や左固有性を先取りしない |
 | L4 | Localization/Existence。一般の左Bousfield局所化存在 | R3,L2,L3 | §159.2の三クラス・fibrant判定を同じC上で構成。局所モデルの生成Jと分解は出力。左固有性・combinatorial性も接続 |
@@ -9359,3 +9359,101 @@ localizedIsoは任意の通常の局所化L:SS_w→Hについて、独立した�
 次はF4の公式と十分大きいfiltered colimit比較を、小さいpresentable生成族の検出へ適用する。
 L1の局所対象と包含のaccessibilityは§195で証明済みだが、小さいhomotopy生成族の明示的な
 検出定理は残る。その後L2〜L5へ進む。F1の任意モデル源の最終関手も引き続き未完了である。
+
+## 200. L1完了：小さいcofibrantホモトピー生成族と局所対象・実際の検査関手の共通基数（2026-10-15）
+
+§195で残していた、小さいhomotopy生成族による元の弱同値の明示的な検出を証明した。
+さらに局所対象・包含、元の弱同値・包含、指定分解、Sの局所性検査、生成族での実際のRMap評価を
+一つの正則基数へまとめた。§159.4のL1の受入項目を満たし、L1を完了とする。
+局所化後のモデル構造やW_Sのaccessibilityを先取りしたものではなく、L2〜L5は未完了である。
+
+### 200.1 hocolim・filtered表示を通したテストの拡張
+
+`SmallHomFrameInvariance`は§199のframe比較の不変性に加え、元の任意の指定cof/fibによる
+small-Hom RMapの源と標的それぞれの弱同値不変性を証明する。
+この不変性にはSS_wのmono/Kanモデルだけを使う。
+
+`Localization/HocolimMappingTests`は、ある標的射fが図式Dの全D(k)で共変RMapテストを通れば、
+実際のhocolim(D)でも通ることを証明する。
+F4の二変数自然な局所化後の公式によりholim側の射の可逆性を移し、通常のSSet局所化に対する
+証明済みのsaturationで元の弱同値へ戻す。hocolimから別の対象への弱比較による輸送も証明する。
+
+`FilteredMappingGenerators`は、元のWと包含が適合する十分大きい正則κでのfiltered生成族Pを使う。
+実際のP値filtered表示、hocolim→colimの弱同値、表示のcolimit同型を合成し、
+Pでの共変RMapテストが全対象でのテストを含意することを証明する。
+通常の密度だけからホモトピー的生成性を推論していない。
+
+exists_small_test_familyは、元のCとWのaccessibility基数をsharply大きい共通基数へ移し、
+実際の小さいκ-filtered生成族Pを構成する。同じPで、任意の指定cof/fibのテストに適用できる。
+
+### 200.2 元の弱同値の検出と固定した小さいcofibrant生成族
+
+`CovariantDetection`は既存のπ₀/Ho(C)比較の標的自然性を使い、
+全源ZでRMap(Z,f)が弱同値なら元のfが弱同値であることを証明する。
+Ho(C)でのpostcompositionが全射源に対して全単射になることから実際の逆射を構成し、
+元のモデル弱同値を反映するsaturation定理を使う。
+small-Homと元のRMapの標的射の実際のArrow同型も構成する。
+
+`HomotopyGenerators`は、200.1の小さいPの代表族A_iについて、ある一つの指定resolutionの
+次数0の対象G_iを取る。G_iはcofibrantで、実際の弱augmentation G_i→A_iを持つ。
+そのため、固定した同じ族G_iで任意の指定cof/fibによるRMapテストを検出できる。
+G_iをQ/Rの選択変更のたびに取り替えるのではない。
+
+exists_small_presentable_cofibrant_generatorsはcombinatorial入力からseed分解を構成し、
+Type wの実際の添字ιとG:ι→C、全G_iのcofibrancy、共通の正則presentability基数を出力する。
+任意の指定cof/fibと任意の元の射fについて
+
+`W_C(f) ↔ ∀ i, W_SS_w(RMap(G_i,f))`
+
+を証明した。後半のテストは標的変数への作用であり、局所化射sへのprecomposition検査とは区別する。
+この検出を元のWへ戻す部分は、SS_w・SS_v・SS_max(v,w)の既存のmono/Kan条件を明示して使う。
+源Cへの豊穣性・tractable性・全対象cofibrant性・左固有性は追加しない。
+コミット：`f3021ca8`。
+
+### 200.3 L1の最終共通基数
+
+`AccessibleHomotopyGenerators.exists_accessible_localObjects_and_generators`は任意のsmallなSについて、
+一つの正則κ、実際のAccessibleModelFactorizations d、固定した小さい族Gを同時に出力する。
+
+- 元のCのκ-accessibility。
+- 全G_iのcofibrancyとκ-presentability。
+- 実際のsmall-Hom RMap_d(G_i,−)のκ-accessibility。
+- Sに属する全Arrow fについて、実際のRMap_d(f,−)を射として記録する
+  Arrow値検査関手のκ-accessibility。
+- 元のWのArrow内の充満部分圏と包含のκ-accessibility。
+- 元のlocalObjects(cof,fib,S)の充満部分圏と包含のκ-accessibility。
+- 同じ固定したGで、任意のcof'/fib'による共変RMapテストが元のWを検出すること。
+
+d自身がA0の指定モデル分解のaccessibilityを持ち、Q/Rと左右因子の既存のAPIも適用できる。
+Sの全射とid_(G_i)をまとめた実際の小さいArrow族へSmallHomAccessibleを適用し、
+全検査関手に同じdを使う。局所対象と生成族の基数をsharply拡大して同じκへ移す。
+元のlocalObjectsの入力cof/fibのaccessibilityは仮定せず、dとの厳密な同一視もしない。
+共通のS検査関手まで追加した強化はコミット`753fcd47`。
+
+### 200.4 受入照合と検証
+
+| L1の受入項目 | 現在の証拠 |
+|---|---|
+| 任意のsmallなSの局所対象の充満部分圏のaccessibility | §195のAccessibleLocalObjectsと200.3の最終定理 |
+| 包含のaccessibility | 同じ最終定理で同じκに出力 |
+| 実際の検出関手と基数を明示 | dのRMap_d(G_i,−)、SのArrow値検査、共通の正則κ |
+| 小さいhomotopy生成族と検出の証明 | Type wのcofibrant族G、任意の指定Q/RでのW_C検出定理 |
+| 元の定義・任意の指定データへの接続 | 元のlocalObjectsをそのまま出力し、同じGの検出を全cof'/fib'に証明 |
+
+以下はすべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`：2471 jobs。
+- `check_homotopy_generators`：15宣言・6モジュール、標準公理のみ。
+  独立したu/v/w、二つの任意のQ/R選択に対する同じ固定生成族の検出、
+  元の局所対象・包含、GのテストとSの全Arrow値検査の共通κを検証。
+  SS_wの標準生成族はmono/Kan条件から構成する。
+- `check_accessible_local_objects`：15宣言・3モジュール、回帰検証成功。
+- `check_hocolim_rmap_formula`：63宣言・5モジュール、回帰検証成功。
+- `audit_homotopical_foundations`：3848宣言・285モジュール、標準公理のみ。
+- `check_homotopical_foundations`・`check_spectra_stage2`・`git diff --check`。
+- 新規sorry・引用axiomなし。他チャットの未コミット変更を保持した。
+
+次はL2の、全局所対象へ量化したW_Sの定義からArrow C内のaccessibilityへ移る部分である。
+小さいホモトピー生成族による元のW_Cの検出と、全局所対象によるW_Sの定義を混同しない。
+L3の左固有性を使う閉性、L4の一般局所化モデルの構成、L5の置換・普遍性・独立性も残る。
+F1の任意モデル源の最終関手も引き続き未完了であり、F〜L全体は完了としていない。

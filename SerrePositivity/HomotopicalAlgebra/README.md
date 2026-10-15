@@ -1085,3 +1085,13 @@ frame Hom≅weighted Homとholim比較を二変数に自然にする。
 独立したu/v/wと任意の元の指定cof/fibを許し、源の豊穣性やSS_v/SS_maxのモデルは要求しない。
 共有入口2466 jobs、3834宣言・280モジュールの標準公理監査と関連回帰検証が成功。
 コミット`7c07d941`・`6c1ed2ca`。L1の小さいhomotopy生成族、L2〜L5、F1の任意源の最終関手は残る。
+
+
+L1は計画§200で受入照合まで完了。`HocolimMappingTests`・`FilteredMappingGenerators`は
+十分filteredな生成表示とF4を使い、小さい生成族での共変RMapテストを全対象へ拡張する。
+`CovariantDetection`・`HomotopyGenerators`はType wの固定したcofibrant族Gを構成し、
+任意の指定Q/RによるRMap(G_i,f)が元のW_Cを検出することを証明する。
+`AccessibleHomotopyGenerators`は元の局所対象と包含、元のWと包含、指定分解d、GのRMap評価と
+Sの全局所化射の実際のArrow値検査を同じ正則κでaccessibleにする。
+共有入口2471 jobs、3848宣言・285モジュールの標準公理監査と関連回帰検証が成功。
+コミット`f3021ca8`・`753fcd47`。L2〜L5とF1の任意モデル源の最終関手は引き続き未完了。
