@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.DeltaDividedPowers
 import SerrePositivity.BhattScholze.DeltaDividedPowerIdeal
 import SerrePositivity.BhattScholze.DeltaPDivisionFactorial
 import SerrePositivity.BhattScholze.DeltaFactorialDivision
@@ -4036,3 +4037,18 @@ assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.exists_factorial_val
 
 assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.exists_factorial_quotient_mem
 #print axioms SerrePositivity.BhattScholze.DeltaStructure.exists_factorial_quotient_mem
+
+assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.primeDividedPowersAwayNat_isUnit
+#print axioms SerrePositivity.BhattScholze.DeltaStructure.primeDividedPowersAwayNat_isUnit
+
+assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.primeDividedPowersAwayRatAlgebra
+#print axioms SerrePositivity.BhattScholze.DeltaStructure.primeDividedPowersAwayRatAlgebra
+
+assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.primeDividedPowers
+#print axioms SerrePositivity.BhattScholze.DeltaStructure.primeDividedPowers
+
+assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.primeDividedPowers_factorial
+#print axioms SerrePositivity.BhattScholze.DeltaStructure.primeDividedPowers_factorial
+
+assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.primeDividedPowers_unique
+#print axioms SerrePositivity.BhattScholze.DeltaStructure.primeDividedPowers_unique

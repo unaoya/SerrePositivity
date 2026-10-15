@@ -4753,3 +4753,29 @@ p正則性は閉性には要求しない。分冪構造自体・分冪包普遍�
 4公開宣言の対象2068ジョブとB4全体pure監査が成功。標準3公理のみ。
 これでMathlib DividedPowers.ofInjectiveの閉性入力に使う実際のイデアルと分母が揃った。
 この段階では分冪構造の公理・分冪包の普遍性・原典導来比較・CFF・一般B4は未完成。
+
+### 次工程の登録：既存DividedPowersによる実際の分冪構造
+
+BS専用`DeltaDividedPowers.lean`で、p正則なp局所δ環AのI={x | p∣x^p}に
+Mathlibの既存DividedPowers構造を構成する。
+A[1/p]への標準射の単射性と、非零整数の像の単元性によるℚ作用を使い、
+RatAlgebra.dividedPowersをDividedPowers.ofInjectiveで引き戻す。
+Iはpを含むため局所化像は全イデアルとなり、前工程の階乗分母の閉性をそのまま渡せる。
+新しい分冪構造の概念・一般的な導来テンソル基盤は定義しない。
+この構造は分冪包の普遍性やraw包の最小性・原典の導来比較・CFFとは別の工程。
+
+## B4-6：実際の分冪構造と一意性（2026-10-15）
+
+`DeltaDividedPowers.lean`で、p正則・p局所δ環AのI={x | p∣x^p}に
+Mathlibの既存DividedPowersを構成した。p局所性は非p倍の自然数の単元性として明示する。
+標準A[1/p]上の非零自然数の単元性と、既存IsLocalization.liftによるℚ作用を供給し、
+RatAlgebra.dividedPowersをDividedPowers.ofInjectiveで引き戻した。
+Iがpを含むため局所化像は全イデアルであり、前工程の正次数の階乗分母のI内閉性を使用した。
+分冪公理を備えた実際の構造、階乗を掛けると通常冪になる式、I上の分冪構造の一意性を公開した。
+private helperだけでなく公開するℚ作用と単元性の補題もBS監査対象へ追加した。
+5公開宣言の対象2388ジョブ・最終B4全体pure監査が成功。標準3公理のみ。
+新sorry・公理・外部引用は追加していない。G7・André引用は用いない。
+
+この分冪構造はI上のものであり、(y)そのものが分冪閉イデアルだとは主張しない。
+raw φ(y)/p包を分冪包と同定する普遍性・最小性、原典の導来pushout比較・CFF・一般B4は別工程。
+全体ビルド/tmp/bs-factorialdivision-full.logは同じ実行を継続中。対象・pure監査成功と区別する。
