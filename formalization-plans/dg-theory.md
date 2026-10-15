@@ -3336,3 +3336,26 @@ Checks.BimoduleTranspose・BimoduleTensorと既存StageSeven・Spectra.StageTwo�
 任意可換環・独立宇宙と一対象ZMod 2の転置を検査した。担当差分のgit diff --checkも成功。
 次はこの転置と左右tensorのdg関手を合成し、残る二作用を既存bimodule構成子へ渡す。
 U11d全受入・U11e・U12〜U17・D4mは引き続き未完。
+
+
+### 17.29 U11d10：実際のdg bimoduleの相対tensor合成
+
+`Tensor/BimoduleActions.lean`はP（右B・左C）とQ（右C・左E）から、
+Q(c,e)⊗_C P(b,c)に残る右B加群と左E加群を既存dg関手の合成として構成した。
+全Homの左右tensor交換則から残る二作用の交換を証明し、左EのHomをパラメータとする
+右B加群間の全次数自然変換paramTransへ束ねる。
+`Tensor/Bimodule.lean`はその単位・合成保存を検証し、既存Bimodule.ofParamTransへ渡して
+実際のBimodule A B Eであるcomposeを構成した。
+値の式、右BのHom作用、左EのHom作用を各B対象で評価した計算式も公開する。
+B/C/Eの対象宇宙は独立。主Hom endとcoendのためSmall.{u} B/Cを要求し、Eのsmallnessは要求しない。
+値のtensor順序はQ⊗Pと明記し、無符号でP⊗Qへ交換していない。
+
+§17.28の同時ビルドは成功（2677 jobs、終了コード0、追加ソースの警告なし）。
+本単位の主要10宣言の直接実行も終了コード0、標準公理のみ。監査累計1395宣言。
+任意A・三つの独立対象宇宙と一対象ZMod 2の実際の合成を検査した。
+担当差分のgit diff --checkも成功。
+
+これでU11dのbimodule合成に残る全次数作用を実際の対象として構成できた。
+U11d全受入には代表対象zの変数のYoneda自然性と、一対象Aの既存cochainTensor比較がなお残る。
+U11eではこのcomposeの単位・結合比較と三角/五角、三変数自然性・随伴を検証する。
+U12〜U17・D4mも未完のまま継続する。共有ルート・共有一般論・並行作業ファイルは変更していない。
