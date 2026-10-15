@@ -1655,3 +1655,23 @@ U10全受入は未完。次数付き分裂に対するHom制限の次数ごと�
 semifree全体のhomotopically projective性、導来Hom計算・選択独立性、三角構造・
 Verdier商・余積/局所小性・一対象比較の保存性を引き続き完成する。
 共有モデル圏一般論への新しい不足要求はない。
+
+
+### 13.40 U10b4b：次数付き分裂から得られるHom制限の全射性
+
+`Module/HomElementComposition.lean` は主Hom endの豊穣順合成を各射影で計算し、
+次数p/qでのKoszul符号を明示する。通常の加群射による前合成の全次数成分式も公開する。
+`Module/GradedSplitElements.lean` は全斉次作用と可換する次数零cochain族をend要素にし、
+`ModuleGradedSplit` のretraction/sectionへ適用する。
+retractionとの豊穣合成により `homRestrictionSection` を構成し、
+包含への前合成との合成が任意次数qで恒等となること、従って
+`homRestriction_surjective` を証明した。これらの分裂にchain map条件は課していない。
+
+`Checks/GradedSplitHom.lean` は一般の分裂とsemifree filtrationの各遷移への適用を検証する。
+同入口・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3202 jobs）。
+直接実行の主要12宣言は標準公理のみ。累計733宣言。
+担当Leanにsorry/admit/新規axiomは0件。文書検査の並行K系列olean制限は§13.39のとおり。
+
+U10全受入は未完。次は商からの前合成の単射性、Hom制限のkernel同定、
+次数ごとの短完全列を確定し、有限段と可算filtration全体のHom acyclic性へ接続する。
+導来Hom・選択独立性・三角構造・Verdier商・余積/局所小性・一対象比較の保存性も残る。
