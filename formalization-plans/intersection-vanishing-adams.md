@@ -3845,6 +3845,16 @@ K₀ の類への移送と重みつき乗法性は次の小段。
   因子モデルでの定理と剰余標数 2 の定理の `assert_no_sorry` が通り、公理は標準三公理のみ。
 - S10 の両分岐の証明契約は受入完了。次は S11 の公開接続・統合監査。
 
+### S11.1：全剰余標数の消滅定理
+
+- `IntersectionMultiplicity/AdamsVanishingAll` は剰余体の 2 が零か非零かで場合分けし、
+  監査済みの ψ³／ψ² の二分岐へ接続した。有限生成性・有限長・次元の仮定は元の公開型と同じ。
+- `lake build SerrePositivity.IntersectionMultiplicity.AdamsVanishingAll` が成功（3652 jobs）。
+- `lake env lean scripts/audit_adams_vanishing_all.lean` が成功。
+  `intersectionVanishing_of_adams` の `assert_no_sorry` が通り、公理は標準三公理のみ。
+- 現行ソースの import グラフで All から Inputs.IntersectionTheory への経路がないことを
+  339 個のローカルモジュールで確認した。次は既存の Inputs の公開入口の置換と利用先の受入。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
