@@ -71,6 +71,7 @@ public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Accessi
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.AccessibleBoundary
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AccessibleResolutions
 public import SerrePositivity.HomotopicalAlgebra.Diagram.ProjectiveQuillen
+public import SerrePositivity.HomotopicalAlgebra.Diagram.FilteredHomotopyColimit
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor
