@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.DeltaDivisionSourceFiniteColimit
+public import SerrePositivity.BhattScholze.DeltaDivisionSourceEvaluationColimitTor
 
 /-! # G7の交換入力に相対的な全源評価環へのTor移送
 
@@ -32,20 +33,8 @@ theorem deltaPDivisionSource_tor_subsingleton_of_preservesColimit
     letI := deltaDivisionSourceEvalAlgebra (σ := σ) D y
     Subsingleton (SerrePositivity.TorAlg α₀ (i + 1) A) := by
   let := deltaDivisionSourceEvalAlgebra (σ := σ) D y
-  have := hpres
-  let H := (ModuleCat.extendScalars.{u, u, u} α₀).leftDerived (i + 1)
-  have hz : IsZero (colimit (F₀ ⋙ H)) := by
-    apply (IsZero.iff_id_eq_zero _).mpr
-    apply colimit.hom_ext
-    intro N
-    have hN : IsZero ((F₀ ⋙ H).obj N) := by
-      apply ModuleCat.isZero_iff_subsingleton.mpr
-      change Subsingleton (SerrePositivity.TorAlg α₀ (i + 1)
-        (DeltaPDivisionSourceFiniteQuotient (σ := σ) D y N))
-      exact deltaPDivisionSourceFinite_tor_subsingleton D y hpA hg v hv hy N i
-    exact hN.eq_of_src _ _
-  let e : H.obj (ModuleCat.of P₀ A) ≅ colimit (F₀ ⋙ H) :=
-    H.mapIso (deltaDivisionSourceFiniteColimitEvalIso D y).symm ≪≫ preservesColimitIso H F₀
-  exact ModuleCat.subsingleton_of_isZero (hz.of_iso e)
+  exact deltaDivisionEvaluationSource_tor_subsingleton_of_preservesColimit
+    D (fun _ : σ => D.frobeniusLift y) α₀ i
+    (fun N => deltaPDivisionSourceFinite_tor_subsingleton D y hpA hg v hv hy N i) hpres
 
 end SerrePositivity.BhattScholze

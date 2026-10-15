@@ -7111,3 +7111,13 @@ DeltaDivisionSourceEvaluationColimit.leanで、任意a:σ→A（σ一元）の�
 監査が別途の再ビルド中の一時的olean不在に当たったため、全関連ビルド完了後に再実行し、
 B4全体pure監査1880報告成功、標準3公理のみ。全新公開宣言を監査済み。新sorry・公理・引用なし。
 この成果は標準colimitの具体的普遍性であり、Torとcolimit交換のG7や一般B4の完成とは区別する。
+
+## B4-6：任意一元評価の全源TorへのG7相対的移送（2026-10-15）
+
+DeltaDivisionSourceEvaluationColimitTor.leanで、任意一元評価入力aと任意終域への通常環射φに対し、
+具体的な各有限グラフ商の正次数Tor消滅と、この標準逐次図式に対する標準PreservesColimit入力から、
+実評価環Aの対応するTor消滅を証明した。BSの具体的図式に対する接続であり、一般G7の再実装ではない。
+旧DeltaPDivisionSourceColimitTorの公開型・交換仮定を維持し、既存有限φ/p消滅を一般移送へ供給する特殊化へ整理した。
+新1公開宣言の対象3524ジョブ、旧特殊化と後続導来比較3866ジョブ成功（既存共有警告のみ）。
+B4全体pure監査1881報告成功、標準3公理のみ。新sorry・公理・引用なし。
+PreservesColimit入力自体は未解消として保持し、G7受領・無条件全源Tor・一般B4完成とは数えない。
