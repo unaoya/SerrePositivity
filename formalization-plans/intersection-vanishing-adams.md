@@ -3809,6 +3809,19 @@ K₀ の類への移送と重みつき乗法性は次の小段。
 - S10.8c の全証明契約は受入完了。ルート公開は族の統合段で行う。
   次は S10.8d の `SupportedAdams` と全局所化の族。S10.9・S11 は未完了。
 
+### S10.8d：ψ³ の全公理・長い Koszul 列・局所化の族
+
+- `Adams/CyclicThreeFamily` は監査済みの台拡大・積・単位・一元正規化を
+  `SupportedAdams R E 3` の全欄へ渡し、長い列の `3^n` 正規化を既存の `.koszul` から得た。
+- 各局所化 A の根を algebraMap R A t と固定し、3 の逆元と円分関係式を移す。
+  全モデル間の φ では構造写像の整合性を t に適用して根の保存を導き、
+  監査済みの `cyclicThree_map` で二つの自然性欄を埋めた。
+- `lake build SerrePositivity.KTheory.Adams.CyclicThreeFamily` が成功（3371 jobs）。
+- `lake env lean scripts/audit_adams_cyclic_three_family.lean` が成功。
+  族そのものを含む五定数の `assert_no_sorry` が通り、公理は標準三公理の範囲内。
+- S10.8 の全証明契約は受入完了。ルート公開は消滅分岐の統合段で行う。
+  次は S10.9 の係数体・円分局所拡大への適用。S10.9・S11 は未完了。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
