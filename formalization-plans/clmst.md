@@ -4422,7 +4422,7 @@ KL6環変更準備5（2026-10-15）：`ChainLinearYonedaZero.lean`で、鎖複�
 列の正則性・環のNoether性・係数の単射性はいずれも要求しない。
 8公開宣言を加えた専用監査384宣言と対象ビルド2346ジョブが成功。
 零次の比較・鎖写像と係数射の自然性は標準3公理のみ。共通層に禁止依存はない。
-全体ビルドの再実行は現在動作中だが、共通テンソル基盤の抽出後に
+当該全体ビルドでは、共通テンソル基盤の抽出後に
 BoundedAboveDerivedAssociatorが読むcochainTensor_projective_Xがimport経路から外れた
 エラーを検出した。定理はPerfectComplex/TensorPerfectに残るため、G2側ではその
 論文非依存部分を共通層へ移して再接続する必要がある。零次比較の対象検証は成功済み。
@@ -4439,9 +4439,11 @@ BoundedAboveDerivedAssociator・DerivedTensorCoherenceModels・BoundedAboveDeriv
 移した2宣言の単独sorry・公理監査も成功し、いずれも標準3公理のみ。
 共通層4モジュールにはPerfectComplex・BS・CLMST・Paper・Andréへの依存がない。
 KL384・E1〜E5・G1・B3/C2・旧選択との互換監査は成功。
-G2監査は対象ビルド後の420宣言が成功。係数変更の移送も追加した421宣言とD監査は、
-全体再ビルド中のDerivedTensorTriangle・PowerResidueDerivedHomologyの生成ファイル欠落で
-実行できなかったため、全体ビルドの終了後に再検証する。全体ビルドは現在動作中。
+G2監査は対象ビルド後の420宣言が成功。係数変更の移送も追加したG2 421宣言とD159宣言は、
+全体再ビルド中の生成ファイル欠落で初回失敗したが、全体ビルド終了後の再実行は成功した。
+全体ビルド自体は、
+並行作業中のCochainIdempotentTrivial・CochainIdempotentQuasiIsoおよび
+IdempotentImagePerfectの生成ファイル欠落により失敗した。G2の射影性のエラーは解消済み。
 今回の依存修復をG2-5〜7の環構造・環比較・具体的適用の完成とは扱わない。
 KL6の零次の冪遷移比較と一般局所コホモロジー比較、Dの具体的適用も引き続き残る。
 
