@@ -9,6 +9,7 @@ run_cmd do
   let expected := #[`SerrePositivity.HomotopicalAlgebra.Smith.ConservativeAdjunction,
     `SerrePositivity.HomotopicalAlgebra.Monoidal.ModulePresentability,
     `SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationLeftProper,
+    `SerrePositivity.HomotopicalAlgebra.Localization.FrameArrowTests,
     `SerrePositivity.HomotopicalAlgebra.Quillen.Adjunction,
     `SerrePositivity.HomotopicalAlgebra.Quillen.WhiteheadConverse,
     `SerrePositivity.HomotopicalAlgebra.Quillen.Saturation,

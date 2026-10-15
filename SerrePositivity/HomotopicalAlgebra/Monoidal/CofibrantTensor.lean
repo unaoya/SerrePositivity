@@ -31,6 +31,21 @@ lemma tensorLeft_isLeftQuillen (X : C) [IsCofibrant X] : IsLeftQuillen (tensorLe
     fun Y ↦ inferInstanceAs (tensorRight Y).IsLeftAdjoint
   exact isLeftQuillen_obj_of_cofibrant (curriedTensor C) X
 
+lemma tensorRight_isLeftQuillen (X : C) [IsCofibrant X] : IsLeftQuillen (tensorRight X) := by
+  have h := tensorLeft_isLeftQuillen X
+  let e := BraidedCategory.tensorLeftIsoTensorRight X
+  constructor
+  · intro A B f hf
+    have hm := h.map_cofibrations f hf
+    change cofibrations C ((tensorLeft X).map f) at hm
+    exact ((cofibrations C).arrow_mk_iso_iff
+      (Arrow.isoMk (e.app A) (e.app B) (e.hom.naturality f).symm)).mp hm
+  · intro A B f hf
+    have hm := h.map_trivialCofibrations f hf
+    change trivialCofibrations C ((tensorLeft X).map f) at hm
+    exact ((trivialCofibrations C).arrow_mk_iso_iff
+      (Arrow.isoMk (e.app A) (e.app B) (e.hom.naturality f).symm)).mp hm
+
 lemma tensor_isCofibrant (X Y : C) [IsCofibrant X] [IsCofibrant Y] :
     IsCofibrant (X ⊗ Y) := by
   have := tensorLeft_isLeftQuillen X

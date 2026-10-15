@@ -150,6 +150,7 @@ public import SerrePositivity.HomotopicalAlgebra.Monoidal.ManyObjectTransfer
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.ManyObjectPresentability
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.ModulePresentability
 public import SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationLeftProper
+public import SerrePositivity.HomotopicalAlgebra.Localization.FrameArrowTests
 public import SerrePositivity.HomotopicalAlgebra.Enriched.TensorCotensor
 public import SerrePositivity.CategoryTheory.Enriched.EnrichedRepresentability
 
