@@ -83,6 +83,7 @@ public import SerrePositivity.HomotopicalAlgebra.Diagram.FrameMappingLimit
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SmallHomRealization
 public import SerrePositivity.HomotopicalAlgebra.Diagram.FrameWeightedLimit
 public import SerrePositivity.HomotopicalAlgebra.Diagram.WeightedSourceComparison
+public import SerrePositivity.HomotopicalAlgebra.Localization.ChoiceIndependence
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor
