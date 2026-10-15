@@ -88,6 +88,7 @@ public import SerrePositivity.HomotopicalAlgebra.Localization.ChoiceIndependence
 public import SerrePositivity.HomotopicalAlgebra.Localization.Detection
 public import SerrePositivity.HomotopicalAlgebra.Localization.Conditional
 public import SerrePositivity.HomotopicalAlgebra.Localization.Representatives
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftWeakEquivalence
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor
