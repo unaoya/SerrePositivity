@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.DeltaSubring
 import SerrePositivity.BhattScholze.DeltaPDivisionFactorialEquiv
 import SerrePositivity.BhattScholze.DeltaPDivisionFactorialStable
 import SerrePositivity.BhattScholze.DeltaPDivisionFactorialDelta
@@ -4181,3 +4182,15 @@ assert_no_sorry SerrePositivity.BhattScholze.deltaPDivisionRawFactorialEquiv_coe
 
 assert_no_sorry SerrePositivity.BhattScholze.deltaPDivisionRawFactorialEquiv_factorial
 #print axioms SerrePositivity.BhattScholze.deltaPDivisionRawFactorialEquiv_factorial
+
+assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.subring
+#print axioms SerrePositivity.BhattScholze.DeltaStructure.subring
+
+assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.subring_delta
+#print axioms SerrePositivity.BhattScholze.DeltaStructure.subring_delta
+
+assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.subring_subtype_isDeltaHom
+#print axioms SerrePositivity.BhattScholze.DeltaStructure.subring_subtype_isDeltaHom
+
+assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.subring_unique
+#print axioms SerrePositivity.BhattScholze.DeltaStructure.subring_unique
