@@ -3583,3 +3583,35 @@ Markdown 22件のローカルリンクは別途検査して失敗0件。担当�
 U11e全受入は未完。次はこの主Hom同型のM/N/Tの全Hom自然性を公開し、
 左加群変数の余極限保存とFubiniへ進める。bimodule合成の結合同型・全変数自然性・三角/五角も残る。
 U12〜U17・D4mも引き続き未完。共有一般論への新規不足要求はなく、担当外ファイルは変更していない。
+
+
+### 17.37 U11e6：右Hom加群のdg関手と終域の全Hom自然性（2026-10-16）
+
+`Complexes/HomCovariant.lean`はCh(A)の左representableを再利用してhomCovariantDGを公開する。
+その全次数作用は通常順の後合成で追加符号がなく、閉零射への制限は既存homPostcomposeに一致する。
+`Module/HomRightEnriched.lean`は各N(x)からの共変Hom作用を、homRightModule N T間の
+ModuleParamTransへ束ねた。前合成と後合成のKoszul交換をcochainの結合則から証明する。
+この族はDのSmallを要求しない。
+
+Small.{u} Dの下でhomRightHomMapを既存主Hom endへのchain mapとして構成し、
+射影式・斉次元の式・単位/全次数合成保存を証明した。
+homRightDG : Ch(A)→RightModule A Dは実際のMathlib豊穣関手であり、Ch(A)全体のSmallは不要。
+閉零射への制限は§17.34のhomRightModuleMapと一致することも主Homへのchain mapの等式として公開する。
+
+`Complexes/CurryingEvaluation.lean`は二重転置とassociatorを含む評価の全整数次数の式を提供する。
+`Tensor/EnrichedHomElements.lean`はenrichedTensorHomIso.homの各主Hom射影をさらにm/vで評価すると
+元のcochainをbalanced tensorの純粋元へ適用する式に一致することを証明した。
+`Tensor/EnrichedHomTarget.lean`はこの計算と既存modulePostcompositionMapを用いて、
+終域Tの全Homに関するenrichedTensorHomIsoの自然性をHom複体へのchain mapの等式として証明する。
+T→T'の閉零射だけに限定していない。
+
+Checks.EnrichedHomTarget・Checks.EnrichedTensorHom・Checks.TensorHomAdjunction・Checks.StageSeven・
+既存Spectra.StageTwoの同時ビルドは成功（2674 jobs、終了コード0、警告なし）。
+任意A・独立対象宇宙、Small DなしのHomパラメータ族、実際のdg関手、次数-1/1の後合成、ZMod 2を検査した。
+主要17宣言の直接実行は終了コード0、すべて標準公理のみ。監査累計1535宣言。
+担当Leanのsorry/admit/新規axiomは0件。文書検査は22 Markdown・311 exposition参照、失敗0件。
+§17.36で停止した共有ルートolean不足はこの検査では再現しなかった。
+
+U11eは未完。次はMの反変Hom自然性、Nの全Hom自然性と左加群変数の余極限保存へ進める。
+Fubini・bimodule合成の結合同型・全変数自然性・三角/五角、U12〜U17・D4mも引き続き未完。
+共有一般論への新しい不足要求はなく、担当外ファイル・共有ルートを変更していない。
