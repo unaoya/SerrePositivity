@@ -75,7 +75,7 @@ check('SerrePositivity.KTheory.SupportedExactEuler',
 print('Euler boundaries passed: 2 general modules and the resolution-independent supported sequence.')
 
 geometry = ['ClosedSupportGeometry', 'ModuleClosedSupport', 'SupportHeight',
-            'SemilocalSupport', 'ModuleSupportHeight']
+            'SemilocalSupport', 'ModuleSupportHeight', 'LocalizationTorsion', 'ModuleSupport']
 for name in geometry:
     check('SerrePositivity.CommutativeAlgebra.' + name, upper_layer)
 print(f'Support geometry boundaries passed: {len(geometry)} modules.')

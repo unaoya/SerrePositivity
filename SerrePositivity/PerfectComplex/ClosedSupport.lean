@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.PerfectComplex.Support
 public import SerrePositivity.HomologicalAlgebra.ConeLES
-public import SerrePositivity.CommutativeAlgebra.ClosedSupportGeometry
+public import SerrePositivity.CommutativeAlgebra.ModuleSupport
 
 /-! # 閉集合で指定するホモロジーの台
 
@@ -48,23 +48,6 @@ lemma HasHomologySupportOn.mono
     exact ⟨h.mono inf_le_left, h.mono inf_le_right⟩
   · rintro ⟨hZ, hW⟩ i p hp
     exact ⟨hZ i hp, hW i hp⟩
-
-/-- Exactness alone bounds the middle support by the union of the two outer supports. -/
-lemma module_support_subset_union_of_exact
-    {M N L : Type u} [AddCommGroup M] [AddCommGroup N] [AddCommGroup L]
-    [Module R M] [Module R N] [Module R L]
-    (f : M →ₗ[R] N) (g : N →ₗ[R] L) (h : Function.Exact f g) :
-    Module.support R N ⊆ Module.support R M ∪ Module.support R L := by
-  intro x
-  contrapose
-  simp only [Set.mem_union, not_or, and_imp, Module.notMem_support_iff']
-  intro hM hL n
-  obtain ⟨r, hr, er⟩ := hL (g n)
-  rw [← map_smul, h] at er
-  obtain ⟨m, hm⟩ := er
-  obtain ⟨t, ht, et⟩ := hM m
-  exact ⟨_, x.asIdeal.primeCompl.mul_mem ht hr, by
-    rw [mul_smul, ← hm, ← map_smul, et, map_zero]⟩
 
 variable {Z : TopologicalSpace.Closeds (PrimeSpectrum R)}
   {P Q : CochainComplex (ModuleCat.{u} R) ℤ}

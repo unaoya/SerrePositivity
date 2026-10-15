@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.CommutativeAlgebra.ClosedSupportGeometry
+public import SerrePositivity.CommutativeAlgebra.ModuleSupport
 public import Mathlib.RingTheory.Support
 public import SerrePositivity.CommutativeAlgebra.FiniteLength
 
