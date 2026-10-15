@@ -1819,3 +1819,26 @@ U10全受入は未完。次は左包含の微分をこの転置で運び、
 `cone(Hom_D(T,f)) → Hom_D(T,cone(f))` をMathlibのdescから構成して全次数同型性を証明する。
 その比較から射影的始域でのquasiIso不変性、導来Hom・選択独立性へ進む。
 三角構造・Verdier商・導来余積/局所小性・一対象比較の保存性も残る。
+
+
+### 13.47 U10b6c：全Hom endのcone比較のchain iso
+
+`Module/HomCone.lean` は左包含への後合成を次数−1のcochainへ転置し、
+その微分が `Hom_D(T,f)` とcone右包含への後合成の合成であることを証明する。
+MathlibのmappingCone.descから `moduleHomConeComparison` を構成し、
+各射影での成分がMathlibのliftCochainであることと、右包含との整合性を公開する。
+
+`Complexes/ConeElements.lean` は各次数のcone要素を二成分から構成する補助APIを提供する。
+`Module/HomConeIso.lean` は主Hom endの第一・第二射影への通常順合成から逆要素を構成し、
+全整数次数で左右の逆関係を証明する。比較射の各成分の全単射性から真のchain iso
+`moduleHomConeIso : cone(Hom_D(T,f)) ≅ Hom_D(T,cone(f))` を得る。
+TやHom_Dに射影性・flatnessは要求せず、任意可換環・非有界複体の主モデルで成立する。
+
+`Checks/HomCone.lean` は一般A/Dのchain iso、全整数次数の両逆、右包含との整合性を検証する。
+同入口・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3209 jobs）。
+直接実行の主要19宣言は標準公理のみ。累計793宣言。
+担当Leanのsorry/admit/新規axiomは0件。文書検査は§13.46で全体成功を確認した。
+
+U10全受入は未完。次はこの同型と既存のconeによるquasiIso判定を組み合わせ、
+homotopically projectiveなTからの全Homが指定quasiIsoを保つことを証明する。
+導来Hom・選択独立性・三角構造・Verdier商・導来余積/局所小性・一対象比較の保存性は残る。
