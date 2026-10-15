@@ -3898,3 +3898,28 @@ Fubiniの対象同型と値への接続は完了。U11e全受入は引き続き�
 bimoduleの結合同型へ束ねる。三角/五角を反復balanced tensorの生成元で検証してU11を受け入れる。
 U12のK-flat・導来tensor、U13〜U17、D4mも継続対象であり、受入済みとはしない。
 共有一般論への新しい不足要求はなく、共有ルート・担当外の並行変更は編集していない。
+
+
+### 17.48 U11e17：実際の結合比較の三重包含と全cochainの外延性（2026-10-16）
+
+`Tensor/AssociatorGenerators.lean`は実際の左右の反復bimodule合成への三重包含を定義し、
+associatorLeftι_hom・associatorRightι_invで結合比較の両方向との可換式を証明する。
+左加群構造の等式輸送には既存ChangeLeftのι_changeLeft_homを再利用した。
+changeLeftとeqToIso.homを明示的に正規化することで、局所maxHeartbeatsの追加なしで検証できた。
+両括弧付けからの射が三重包含で決まる外延性も公開する。
+
+`Tensor/AssociatorCochainExt.lean`は左括弧の実際の合成からの任意次数cochainを三重生成元で判定する。
+外側のcochain_element_extと内側固定次数のdegree_element_extを組み合わせ、微分との可換性を要求しない。
+これは閉零射だけでなく、主Hom全体の自然性を証明するための入口である。
+`Tensor/BimoduleElements.lean`のcompose_leftAction_elementは、実際の合成の左作用が先頭因子へ作用する
+全次数公式を証明する。入力・作用後・総次数を別々に指定でき、余分なKoszul符号はない。
+
+Checks.AssociatorGenerators・Checks.Fubini・Checks.StageSeven・既存Spectra.StageTwoの同時ビルドは成功
+（2697 jobs、終了コード0、警告なし）。任意A・独立対象宇宙・Small Fなしの包含比較、
+作用次数−1と入力次数2/0、ZMod 2を検査した。主要9宣言の直接公理監査は終了コード0、標準公理のみ。
+監査累計1652宣言。担当Leanのsorry/admit/新規axiomは0件。
+
+U11全受入は引き続き未完。次は斉次三重生成元の結合比較による像を計算し、
+二つの括弧付けでの左F作用の公式と今回の全cochain外延性から主Hom自然性を証明する。
+右Bの全Hom自然性、実際のbimodule同型、三角/五角、U12〜U17・D4mも継続対象。
+共有一般論への新しい不足要求はなく、共有ルート・担当外の並行変更は編集していない。
