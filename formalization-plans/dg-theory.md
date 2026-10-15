@@ -2934,3 +2934,17 @@ Checks.BimoduleOfActionsのビルドは成功（1785 jobs、警告なし）。�
 U11b全受入は未完。次はtensor積dg圏のHom射から作用族を抽出し、
 本構成子へ接続してuncurryingの両往復・符号を検証する。その後U11cのbalanced tensorへ進む。
 U12〜U17、D4m、リファクタリングは今回の実装ではまだ着手していない。
+
+
+### 17.6 U11b5：通常順tensor合成のKoszul符号
+
+`Category/TensorComposition.lean`は純粋斉次tensorの両因子の符号スカラーをまとめる式と、
+通常順合成の交差符号(-1)^(ps)を証明した。最初の射の因子次数をp,q、次の射をr,sとする。
+豊穣順合成の(-1)^(qr)へ通常順変換の符号を掛け、指数の差2qrを消去して得る。
+これによりMathlibの前向き豊穣合成と通常dg合成のtensor規約を両方公開した。
+Checks.TensorCompositionではp=s=1,q=r=0で通常順に負号が現れる例を検査した。
+
+対象Checksのビルドは成功（1772 jobs、警告なし）。直接実行も終了コード0、主要2宣言は標準公理のみ。
+監査累計1203宣言。文書検査の直近実行は22 Markdown・311 exposition参照、失敗0件。
+担当Leanのsorry/admit/新規axiomは0件、担当差分のwhitespace検査も成功。
+次の未完単位はU11bの積dg圏関手とcurried作用族の比較。U17までの目標は引き続き有効である。
