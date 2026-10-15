@@ -54,6 +54,8 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Degree,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Boundary,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LowerTransformation,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LowerTransformationNaturality,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftingStep,
     `SerrePositivity.HomotopicalAlgebra.Quillen.Brown,
     `SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor,
     `SerrePositivity.HomotopicalAlgebra.Quillen.DerivedAdjunction,

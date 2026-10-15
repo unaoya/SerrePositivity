@@ -40,6 +40,7 @@ public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.O
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Simplex
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexFinite
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LowerTransformation
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftingStep
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor
