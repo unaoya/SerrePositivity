@@ -54,4 +54,22 @@ def boundedAboveDerivedTensorSwapNatIso (A : D) :
   NatIso.ofComponents (fun X => boundedAboveDerivedTensorSymmetry X A)
     (fun f => boundedAboveDerivedTensorSymmetry_naturality f (𝟙 A))
 
+/-- Arbitrary projective representatives compute this same derived symmetry. -/
+lemma boundedAboveDerivedTensorSymmetry_models (X Y : D)
+    (P : BoundedAboveDerivedModel X.obj) (Q : BoundedAboveDerivedModel Y.obj) :
+    (boundedAboveDerivedTensorSymmetry X Y).hom.hom ≫
+        (boundedAboveDerivedTensorModelIso Y X Q P).hom =
+      (boundedAboveDerivedTensorModelIso X Y P Q).hom ≫
+        DerivedCategory.Q.map (cochainTensorSymmetry P.complex Q.complex).hom := by
+  change DerivedCategory.Q.map (cochainTensorSymmetry _ _).hom ≫
+      DerivedCategory.Q.map (cochainTensorMap
+        ((boundedAboveDerivedChosenModel Y).map Q (𝟙 Y.obj))
+        ((boundedAboveDerivedChosenModel X).map P (𝟙 X.obj))) =
+    DerivedCategory.Q.map (cochainTensorMap
+      ((boundedAboveDerivedChosenModel X).map P (𝟙 X.obj))
+      ((boundedAboveDerivedChosenModel Y).map Q (𝟙 Y.obj))) ≫
+        DerivedCategory.Q.map (cochainTensorSymmetry P.complex Q.complex).hom
+  rw [← CategoryTheory.Functor.map_comp, ← CategoryTheory.Functor.map_comp]
+  exact congrArg DerivedCategory.Q.map (cochainTensorSymmetry_naturality _ _).symm
+
 end SerrePositivity

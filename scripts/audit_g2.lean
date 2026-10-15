@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.DerivedTensorSymmetry
 import SerrePositivity.HomologicalAlgebra.ProjectiveBaseChange
 import SerrePositivity.HomologicalAlgebra.CochainTensorProjective
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionQuotient
@@ -765,3 +766,7 @@ assert_no_sorry SerrePositivity.cochainTensor_projective_X
 #print axioms SerrePositivity.cochainTensor_projective_X
 assert_no_sorry SerrePositivity.projective_baseChange
 #print axioms SerrePositivity.projective_baseChange
+
+-- G2-5a: existing actual symmetry agrees with arbitrary projective models.
+assert_no_sorry SerrePositivity.boundedAboveDerivedTensorSymmetry_models
+#print axioms SerrePositivity.boundedAboveDerivedTensorSymmetry_models
