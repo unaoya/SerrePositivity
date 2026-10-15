@@ -7645,3 +7645,89 @@ cofibration性と合わせてtrivial cofibrationを得る。そのpushoutによ�
 次はF1の両変数の弱同値不変性とordinary Ho(C)の射とのπ₀比較を進める。
 F2の選択の自然な弱同値zigzagと実際の単体的Mapとの比較、F3の共通基数、
 F4の十分filteredなcolimitとhocolim・RMapとholimの比較も引き続き残る。
+
+
+## 178. F1進捗：両変数の弱同値不変性と既存HT-KQへの接続、依頼範囲F→L（2026-10-15）
+
+ユーザーの追加指定により、実装範囲はF0〜F4を経てL0〜L5の完成までに拡張した。
+§159.2・§159.4の受入条件を維持する。一般の左Bousfield局所化について、実際のモデル構造、
+三クラス・fibrant対象の等式、関手的局所置換、冪等性・検出、Quillen普遍性、
+置換・生成表示・cardinalの独立性、S⊆Tと反復局所化の比較までが範囲である。
+∞圏や新しいモデル存在引用による置き換えはしない。F1の条件付き入口だけで全体を完了扱いしない。
+
+今回、§177の次の残項目であった両変数の弱同値不変性を証明した。
+π₀比較・任意源での最終関手、F2〜F4とL0〜L5は未完了である。
+
+### 178.1 値域の幾何学的弱同値と標的変数
+
+幾何学的弱同値の定義を`HomotopicalAlgebra/Simplicial/WeakEquivalence`へ移した。
+実際の幾何学的実現、成分およびすべての正のホモトピー群の写像による既存の定義を保ち、
+スペクトル側の`geometricWeakEquivalences`は定義上等しい互換aliasにした。
+この共有定義はモデル存在を仮定も引用もしない。
+
+`TargetInvariance`は、単体集合のモデルとcof=monoの一致を明示入力として、次を証明する。
+
+- Reedy cofibrantな任意のAについて、`cosimplicialHom A`はtrivial fibrationを保つ。
+  境界の持ち上げ、固定Mathlibの`rlp_monomorphisms`、モデルの弱因子分解系から導く。
+- fibrantな標的間の弱同値を、実際の単体集合モデルの弱同値へ送る。
+  Mathlibのfibrant Brown分解と2-out-of-3を使用する。
+- 値域Wが共有の幾何学的弱同値に一致する場合の結論と、既存chosen二変数関手の
+  標的変数への適用。
+
+標的変数の結果にはhomotopical constancyすら不要で、Reedy cofibrancyで足りる。
+源Cは一般のモデル圏であり、通常resolutionの結果に関手的分解を追加しない。
+コミット：`313028c`。
+
+### 178.2 実際の相対tensorと源変数
+
+`PresentationSourceLifting`は、任意の単体presentationについて、自然変換α:A→Bのtensor像と
+境界tensor包含のpushoutから相対tensor mapを実際に構成する。Homの表示の源変数の自然性と、
+相対tensorからterminal.from Yへの持ち上げが、反変Homの単体的持ち上げを与えることを証明する。
+必要なのはこのpresentationの二つのcolimitとpushout・terminalだけで、全小余極限は要求しない。
+
+`RelativeBoundaryTensor`は、§175の境界tensorとlatching objectの同型のαについての自然性を証明し、
+実際のpushout同型を使って、相対境界tensor mapと`relativeLatchingMap`をArrow同型で比較する。
+境界の相対持ち上げも、この同型から輸送する。
+
+`SourceInvariance`は次を証明する。
+
+- Reedy trivial cofibration αは、任意のfibrant Yに対する反変Homのtrivial fibrationを誘導する。
+- Reedy cofibrantな任意のA,B間のobjectwise弱同値αは、反変Homの弱同値を誘導する。
+  §173の実際のReedyモデル圏上でcofibrant Brown分解を使う。単体的モデル源や
+  関手的分解の存在は仮定しない。
+- 既存chosen二変数関手の源変数、さらに源・標的の実際の合成写像への接続。
+  値域Wの一致を入力することで、両変数の幾何学的弱同値不変性を得る。
+
+相対境界・源変数・共有入口・利用例のコミット：`b70180c`。
+
+### 178.3 上位入力への接続と引用境界
+
+`Inputs/Homotopy/ResolutionHom`は、既存のHT-KQから基準単体集合モデルとcof/Wの一致を供給する。
+上位利用者は値域モデルを別途入力する必要がなく、一般の源モデルCについて、通常resolutionの
+標的不変性、Reedy cofibrant図式間の源不変性、chosen二変数関手の両変数不変性を使える。
+
+共有層から`Inputs/Homotopy`をimportしない。新しい存在引用・sorryは追加していない。
+上位入口の公理監査は、既存`kanQuillen_model_exists`だけが直接sorryを含むことと、
+共有層の宣言がその引用に依存しないことを確認する。
+この接続のコミット：`29a00e7`。
+
+### 178.4 受入検証と次の項目
+
+以下は成功した。
+
+- 共有入口：`lake build SerrePositivity.HomotopicalAlgebra.Foundations`、2309 jobs。
+- `check_resolution_hom_target`：7宣言・2モジュール。通常resolutionでのtrivial fibration保存・
+  fibrant標的不変性・実際の幾何学的W、chosen関手の標的写像、旧幾何学的Wとの定義的一致。
+- `check_resolution_hom_source`：42宣言・3モジュール。任意の通常resolution間の比較、
+  全境界の相対持ち上げからのtrivial fibration、実際の二変数写像の幾何学的弱同値。
+- `audit_homotopical_foundations`：2531宣言・159モジュール、標準公理のみ。
+- `check_resolution_hom_kan`（18宣言・2モジュール）、`check_reedy_resolution`（145宣言・4モジュール）、
+  `check_homotopical_foundations`、`check_spectra_stage2`。
+- 上位入口`Inputs.Homotopy.ResolutionHom`のbuild、`check_kan_quillen_resolution_hom`：
+  71宣言、直接引用は既存HT-KQだけ。既存`check_kan_quillen_level`も31宣言で成功。
+- `git diff --check`。
+
+F1はπ₀とordinary Ho(C)の射との比較、および任意モデル源に対する最終の厳密な関手の入口が残る。
+通常resolutionに関する今回の不変性を、明示的な関手的分解を入力するchosen関手だけへ狭めない。
+F2の選択の自然な弱同値zigzagと実際の単体的Mapとの比較、F3の共通基数、F4のhocolim/holim公式を
+完成させ、その後にL0〜L5を§159.2の全条件で接続する。他チャットの変更は保持した。

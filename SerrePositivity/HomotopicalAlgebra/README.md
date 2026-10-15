@@ -763,3 +763,18 @@ cosimplicial対象のhorn tensorがtrivial cofibrationになることを証明�
 共有入口1740 jobs、新規42宣言・5モジュール、共有全2468宣言・153モジュールの
 標準公理監査と回帰検証が成功。実装は`375b1c8`・`1116b19`、詳細は計画§177を参照。
 F1の両変数の不変性・π₀比較と任意源での最終関手、F2〜F4は未完了である。
+
+
+`Simplicial/WeakEquivalence`は、幾何学的実現による既存の弱同値の定義を共有層に置く。
+スペクトル側の旧名は定義上等しいaliasである。`TargetInvariance`は境界の持ち上げと
+fibrant Brown分解から標的変数の不変性を証明する。
+`PresentationSourceLifting`・`RelativeBoundaryTensor`は実際の相対tensorとlatching mapを比較し、
+`SourceInvariance`はReedyモデルのcofibrant Brown分解から源変数の不変性を証明する。
+一般の源モデルCの通常resolutionにも適用でき、源を単体的モデル圏に限定しない。
+
+共有証明では値域の単体集合モデルとcof=monoの一致を明示入力し、幾何学的Wへの結論には
+そのWの一致を使う。上位の`Inputs/Homotopy/ResolutionHom`は既存HT-KQからこれらを供給する。
+共有層から引用入力をimportしない。共有入口2309 jobs、共有2531宣言・159モジュールは
+標準公理のみで監査成功。上位接続71宣言の直接引用は既存HT-KQ一件のみ。
+コミットは`313028c`・`b70180c`・`29a00e7`、詳細は計画§178。
+F1のπ₀比較・任意源での最終関手、F2〜F4は残る。依頼範囲はFを経てL0〜L5の完成までに拡張した。
