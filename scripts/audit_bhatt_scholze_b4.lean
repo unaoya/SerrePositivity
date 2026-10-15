@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.DeltaDividedPowerIdeal
 import SerrePositivity.BhattScholze.DeltaPDivisionFactorial
 import SerrePositivity.BhattScholze.DeltaFactorialDivision
 import SerrePositivity.BhattScholze.DeltaDividedPowerStep
@@ -4023,3 +4024,15 @@ assert_no_sorry SerrePositivity.BhattScholze.deltaPDivisionRawFactorialQuotient_
 
 assert_no_sorry SerrePositivity.BhattScholze.deltaPDivisionRawFactorialQuotient_one
 #print axioms SerrePositivity.BhattScholze.deltaPDivisionRawFactorialQuotient_one
+
+assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.primeDividedPowerIdeal
+#print axioms SerrePositivity.BhattScholze.DeltaStructure.primeDividedPowerIdeal
+
+assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.mem_primeDividedPowerIdeal
+#print axioms SerrePositivity.BhattScholze.DeltaStructure.mem_primeDividedPowerIdeal
+
+assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.exists_factorial_valuation_quotient_mem
+#print axioms SerrePositivity.BhattScholze.DeltaStructure.exists_factorial_valuation_quotient_mem
+
+assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.exists_factorial_quotient_mem
+#print axioms SerrePositivity.BhattScholze.DeltaStructure.exists_factorial_quotient_mem
