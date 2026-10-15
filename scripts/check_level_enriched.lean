@@ -42,12 +42,17 @@ example : let := simplicialLevelModelCategory hCof hFib
     IsQuillenBifunctor ordinarySpectrumTensor.{u} := ordinarySpectrumTensor_isQuillen hCof hFib
 example : let := simplicialLevelModelCategory hCof hFib
     HasQuillenPullbackHom ordinarySpectrumCotensor.{u} := ordinarySpectrumCotensor_SM7 hCof hFib
+example : let := simplicialLevelModelCategory hCof hFib
+    HasQuillenPullbackHom ordinarySpectrumMapping.{u} := ordinarySpectrumMapping_SM7 hCof hFib
 example (K : SSet.{u}) :
     ordinarySpectrumTensor.obj K = SymmetricSpectrum.simplicialTensorFunctor K :=
   ordinarySpectrumTensor_obj K
 example (K : SSet.{u}) (E : SymmetricSpectrum.{u}) :
     (ordinarySpectrumCotensor.obj (Opposite.op K)).obj E = SymmetricSpectrum.simplicialCotensor K E :=
   ordinarySpectrumCotensor_obj K E
+example (E F : SymmetricSpectrum.{u}) :
+    (ordinarySpectrumMapping.obj (Opposite.op E)).obj F = SymmetricSpectrum.simplicialMappingSpace E F :=
+  ordinarySpectrumMapping_obj E F
 end Concrete
 
 open Lean in

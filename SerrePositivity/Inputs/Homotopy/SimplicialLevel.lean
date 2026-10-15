@@ -66,4 +66,11 @@ lemma circleSpectrumLevelModel_simplicialCotensor_SM7 :
   let : ModelCategory SSet.{u} := kanQuillenModel
   exact ordinarySpectrumCotensor_SM7 kanQuillenModel_cofibrations kanQuillenModel_fibrations
 
+lemma circleSpectrumLevelModel_simplicialMapping_SM7 :
+    let : ModelCategory SSet.{u} := kanQuillenModel
+    let := circleSpectrumLevelModel.{u}
+    Quillen.HasQuillenPullbackHom ordinarySpectrumMapping.{u} := by
+  let : ModelCategory SSet.{u} := kanQuillenModel
+  exact ordinarySpectrumMapping_SM7 kanQuillenModel_cofibrations kanQuillenModel_fibrations
+
 end SerrePositivity.Inputs.Homotopy

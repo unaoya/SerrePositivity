@@ -31,6 +31,22 @@ abbrev ordinarySpectrumTensor : SSet.{u} ⥤ SymmetricSpectrum.{u} ⥤ Symmetric
 abbrev ordinarySpectrumCotensor : SSet.{u}ᵒᵖ ⥤ SymmetricSpectrum.{u} ⥤ SymmetricSpectrum.{u} :=
   PointedObject.adjoinFunctor.op ⋙ pointedSpectrumCotensor
 
+abbrev ordinarySpectrumMapping : SymmetricSpectrum.{u}ᵒᵖ ⥤ SymmetricSpectrum.{u} ⥤ SSet.{u} :=
+  pointedSpectrumMapping ⋙
+    (CategoryTheory.Functor.whiskeringRight SymmetricSpectrum.{u}
+      PointedSimplicialSet.{u} SSet.{u}).obj PointedSimplicialSet.forget
+
+lemma ordinarySpectrumMapping_obj (E F : SymmetricSpectrum.{u}) :
+    (ordinarySpectrumMapping.obj (Opposite.op E)).obj F =
+      SymmetricSpectrum.simplicialMappingSpace E F :=
+  congrArg PointedSimplicialSet.forget.obj (GeneralSymmetricSpectrum.simplicial_mappingObject E F)
+
+def ordinarySpectrumMappingAdjunction : ordinarySpectrumTensor.{u}.flip ⊣₂
+    ordinarySpectrumMapping.{u} :=
+  SerrePositivity.ParametrizedAdjunctionTransport.composeSecond
+    (GeneralSymmetricSpectrum.pointwiseTensorMappingParametrizedAdjunction
+      (K := PointedSimplicialSet.circle.{u})) PointedObject.adjoinForgetAdjunction
+
 lemma ordinarySpectrumTensor_obj (K : SSet.{u}) :
     ordinarySpectrumTensor.obj K = SymmetricSpectrum.simplicialTensorFunctor K := rfl
 
@@ -99,5 +115,12 @@ lemma ordinarySpectrumCotensor_SM7 :
       (GeneralSymmetricSpectrum.pointwiseTensorCotensorParametrizedAdjunction
         (K := PointedSimplicialSet.circle.{u})) PointedObject.adjoinFunctor)).1
     (ordinarySpectrumTensor_isQuillen hCof hFib)
+
+lemma ordinarySpectrumMapping_SM7 :
+    let := simplicialLevelModelCategory hCof hFib
+    HasQuillenPullbackHom ordinarySpectrumMapping.{u} := by
+  let := simplicialLevelModelCategory hCof hFib
+  let : IsQuillenBifunctor ordinarySpectrumTensor.{u} := ordinarySpectrumTensor_isQuillen hCof hFib
+  exact (isQuillenBifunctor_iff_pullbackHom ordinarySpectrumMappingAdjunction).1 inferInstance
 
 end SerrePositivity.SimplicialModelInputs

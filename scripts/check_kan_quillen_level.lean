@@ -33,6 +33,8 @@ example : let := circleSpectrumLevelModel.{u}
 example : let := circleSpectrumLevelModel.{u}
     HasQuillenPullbackHom ordinarySpectrumCotensor.{u} := circleSpectrumLevelModel_simplicialCotensor_SM7
 example : let := circleSpectrumLevelModel.{u}
+    HasQuillenPullbackHom ordinarySpectrumMapping.{u} := circleSpectrumLevelModel_simplicialMapping_SM7
+example : let := circleSpectrumLevelModel.{u}
     ModelGeneration.CofibrantlyGenerated.{u} simplicialLevelI.{u} simplicialLevelJ.{u} :=
   circleSpectrumLevelModel_generated
 example (n : ℕ) : let := circleSpectrumLevelModel.{u}
