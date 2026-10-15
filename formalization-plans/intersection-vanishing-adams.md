@@ -3594,6 +3594,16 @@ K₀ の類への移送と重みつき乗法性は次の小段。
   一つの同変鎖同型へ接続する。その後に指標つき類の正規化、族、S10.9、S11。
   Fourier の個別計算の公開を、S10.8c 全体や最終消滅定理の完了とは扱わない。
 
+### S10.8c.2b.3a：次数 −1 の Fourier 双対座標
+
+- `Adams/KoszulCubeFourierOneCoordinates` は正変換の三行に対応する双対座標を
+  元の e₀,e₁,e₂ の座標の線形結合として構成する。
+- 三つの Fourier ベクトルとの九つの合成を、対応する対で恒等、異なる対で零として証明した。
+  各合成の reassoc 版も公開した。
+- 対象を含む `lake build SerrePositivity.KTheory.Adams.KoszulCubeFourierBasis` が成功（2844 jobs）。
+  `lake env lean scripts/audit_adams_koszul_fourier_one_coordinates.lean` の二十一定数の監査が成功。
+  公理は標準三公理のみ。両逆性をまとめる基底同型は後続小段。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
