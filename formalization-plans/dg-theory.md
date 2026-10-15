@@ -3226,3 +3226,27 @@ Checks.BalancedTensorParameterのビルドと直接実行は終了コード0。
 この普遍性へ全次数自然変換の作用族を渡す段階はまだ未完であり、U11d全受入とはしない。
 次はパラメータ付き右作用との可換性と、実際のbalanced作用族の構成・降下を続ける。
 U11e・U12〜U17・D4mも継続対象。共有ルート・共有一般論・並行作業ファイルは変更していない。
+
+
+### 17.24 U11d5：右加群変数の全次数パラメータ付きtensor作用
+
+`Tensor/ParameterRightAction.lean`はKをパラメータとする全次数自然なHom族について、
+右tensor作用との可換性をchain mapの等式として証明した。
+斉次成分では右作用の(-1)^(rp)と自然性の(-1)^(kp)が((k+r)p)に一致する。
+`Tensor/ParameterRight.lean`はこの可換性、元のbalanced関係、associatorの自然性と五角恒等式から
+実際のrightParamFamilyを作り、§17.23の普遍性へ渡してrightParamMapを構成した。
+包含での計算式、純粋斉次tensorでの作用式を公開する。
+主Hom endの評価族に適用したrightHomMapは
+Hom_DMod(M,M')→Hom_Ch(M⊗_D N,M'⊗_D N)という実際のchain mapであり、包含での転置計算も証明した。
+全次数自然性を入力に取り、通常の閉零自然性だけに弱めていない。
+
+Checks.BalancedTensorParameterRight・Parameter・YonedaNaturalityと既存StageSeven・Spectra.StageTwoの
+同時ビルドは成功（2658 jobs、終了コード0、追加ソースの警告なし）。
+主要7宣言の直接実行も終了コード0、標準公理のみ。監査累計1346宣言。
+担当Leanのsorry/admit/新規axiomは0件、担当差分のgit diff --checkも成功。
+
+U11dの残りは、左加群変数の符号付きパラメータ作用、左右の主Hom写像の単位/合成と交換、
+Yoneda比較の豊穣自然性への束ね、bimodule合成の残る全次数作用、一対象Aの既存tensor比較。
+特にrightHomMapだけから、まだdg関手の全法則を証明済みとは宣言しない。
+次は左変数の作用を構成し、両変数を使うbimodule合成へ進む。
+U11e・U12〜U17・D4mも継続対象。共有ルート・共有一般論・並行作業ファイルは変更していない。
