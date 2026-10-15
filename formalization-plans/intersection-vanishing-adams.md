@@ -3525,6 +3525,16 @@ K₀ の類への移送と重みつき乗法性は次の小段。
 - この小段は次数 −1 の基底変更に使うスカラー変換の受入。
   Koszul 三乗での巡回・微分、次数 −2,−3 の変換、全鎖同型は後続小段。
 
+### S10.8c.2a.2：三座標の巡回の対角化と Fourier 列の和
+
+- `PerfectComplex/CubicFourierEigen` は右巡回 `xⱼ↦xⱼ₋₁` が正 Fourier 変換後に
+  指標 `t^j` の対角作用になることを証明する。
+- 逆変換の j 列の係数は `(⅟3)t^(−rj)`。その列は固有値 `t^j` の固有ベクトルで、
+  成分の和は j=0 で 1、それ以外で零。
+- 対象を含む `lake build SerrePositivity.KTheory.Adams.KoszulCubeFourierOneInverse` が成功（2838 jobs）。
+  `lake env lean scripts/audit_adams_cubic_fourier_eigen.lean` の六定数の監査が成功。
+  公理は標準三公理の範囲内。この小段はスカラー座標での同変性の受入。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
