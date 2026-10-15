@@ -1,0 +1,38 @@
+import SerrePositivity.KTheory.Adams.KoszulCubeFourierTwo
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeFourierTwo01
+#print axioms SerrePositivity.Adams.oneKoszulCubeFourierTwo01
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeFourierTwo02
+#print axioms SerrePositivity.Adams.oneKoszulCubeFourierTwo02
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeFourierTwo12
+#print axioms SerrePositivity.Adams.oneKoszulCubeFourierTwo12
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeFourierTop
+#print axioms SerrePositivity.Adams.oneKoszulCubeFourierTop
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeFourierTwo01_rotation
+#print axioms SerrePositivity.Adams.oneKoszulCubeFourierTwo01_rotation
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeFourierTwo02_rotation
+#print axioms SerrePositivity.Adams.oneKoszulCubeFourierTwo02_rotation
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeFourierTwo12_rotation
+#print axioms SerrePositivity.Adams.oneKoszulCubeFourierTwo12_rotation
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeFourierTop_rotation
+#print axioms SerrePositivity.Adams.oneKoszulCubeFourierTop_rotation
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeFourierTwo01_d
+#print axioms SerrePositivity.Adams.oneKoszulCubeFourierTwo01_d
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeFourierTwo02_d
+#print axioms SerrePositivity.Adams.oneKoszulCubeFourierTwo02_d
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeFourierTwo12_d
+#print axioms SerrePositivity.Adams.oneKoszulCubeFourierTwo12_d
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeFourierTop_d
+#print axioms SerrePositivity.Adams.oneKoszulCubeFourierTop_d

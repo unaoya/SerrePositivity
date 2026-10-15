@@ -3554,6 +3554,18 @@ K₀ の類への移送と重みつき乗法性は次の小段。
   `lake env lean scripts/audit_adams_koszul_fourier_one_inverse.lean` の三定理の監査が成功。
   公理は標準三公理のみ。次数 −2,−3 の小行列式・行列式の逆変換は後続小段。
 
+### S10.8c.2b.1：次数 −2 の Fourier 小行列式と次数 −3 の行列式
+
+- `Adams/KoszulCubeFourierTwo` は v₀∧v₁、v₀∧v₂、v₁∧v₂ に対応する
+  三つの小行列式の列と、頂の行列式の列を生成元の線形結合として構成する。
+  頂の係数は `(⅟3)²(t−t²)`。
+- 巡回の固有値は t,t²,1、頂は 1。微分は `d(v₀₁)=a v₁`、
+  `d(v₀₂)=a v₂`、`d(v₁₂)=0`、`d(v₀₁₂)=a v₁₂`。
+  一般の dg 外積代数は導入せず、全式を具体的な射の等式で証明した。
+- `lake build SerrePositivity.KTheory.Adams.KoszulCubeFourierTwo` が成功（2839 jobs）。
+  `lake env lean scripts/audit_adams_koszul_fourier_two.lean` の十二定数の監査が成功。
+  公理は標準三公理のみ。全次数の微分・巡回の式がそろったが、鎖同型への集約は後続段。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
