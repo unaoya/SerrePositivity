@@ -10,6 +10,7 @@
 | [Cohen–Gabberの微分経路](cohen-gabber-differentials.md) | p-basis・係数体・連続微分の再利用可能な基盤から引用2を証明する | 完了。係数体変更・微分パラメータ・同じ評価の分離性を構成し引用2を解消 |
 | [完備化の共通基盤と二つの適用](adic-completion-integration.md) | 共通のテンソル比較・完備化の平坦性、独立したNoether判定、CLMST／剰余体拡大への適用と分担を確定する | 分担を反映済み。A4は完成、共通の平坦性と係数制限の進捗は正本の実施記録を参照 |
 | [外部引用4〜5：交点重複度](intersection-inputs-4-5.md) | 対角線による正値性とChern／Adamsによる消滅の証明経路を比較する | 調査・設計段階 |
+| [外部引用5：消滅定理を Adams 作用素で](intersection-vanishing-adams.md) | 巡回 Adams 作用素と重みの評価（Gillet–Soulé、Walker）で `intersectionVanishing` を証明する。引用5を外す主経路 | 完了。S1–S11 実装・公理監査済み |
 | [外部引用5：消滅定理をサイクルで](intersection-vanishing-cycles.md) | 局所 Chern 指標と Riemann–Roch（Fulton、Roberts）で `intersectionVanishing` を証明する。サイクルの基盤は別プロジェクトと共有 | 計画のみ。未着手 |
 | [K理論・スペクトル・dg 理論の形式化](k-theory.md) | 定理3.1と補題4.6を形式化し、既存の二つの降下入力の直接の `sorry` を解消する | 設計・調査段階 |
 | [CLMST とその準備の形式化](clmst.md) | CLMST の結果を原典の形で引用し、定理2.5への接続を `sorry` なしで証明する | 必要な数値結果と接続は明示引用から証明済み。BSとの分担・引用切離しの順序を主計画§0.2へ統合 |
