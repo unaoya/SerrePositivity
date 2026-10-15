@@ -1,6 +1,7 @@
 module
 public import Mathlib.Algebra.Module.Torsion.PrimaryComponent
 public import Mathlib.Algebra.Category.ModuleCat.Basic
+public import Mathlib.Algebra.Category.ModuleCat.EpiMono
 public import Mathlib.CategoryTheory.Linear.Yoneda
 public import Mathlib.CategoryTheory.Linear.LinearFunctor
 
@@ -36,6 +37,39 @@ def idealPowerTorsionInclusion (I : Ideal R) :
     idealPowerTorsionFunctor I ⟶ 𝟭 (ModuleCat.{u} R) where
   app M := ModuleCat.ofHom (I.primaryComponent M).subtype
   naturality {M N} f := by ext x; rfl
+
+/-- The actual torsion inclusion is injective on every coefficient module. -/
+instance idealPowerTorsionInclusion_app_mono (I : Ideal R) (M : ModuleCat.{u} R) :
+    Mono ((idealPowerTorsionInclusion I).app M) :=
+  (ModuleCat.mono_iff_injective _).mpr Subtype.val_injective
+
+/-- A pointwise inclusion of torsion submodules defines a natural coefficient transformation. -/
+def idealPowerTorsionNatTransOfLE (I J : Ideal R)
+    (h : ∀ M : ModuleCat.{u} R, I.primaryComponent M ≤ J.primaryComponent M) :
+    idealPowerTorsionFunctor I ⟶ idealPowerTorsionFunctor J := by
+  let a : ∀ M : ModuleCat.{u} R,
+      (idealPowerTorsionFunctor I).obj M ⟶ (idealPowerTorsionFunctor J).obj M :=
+    fun M => ModuleCat.ofHom (Submodule.inclusion (h M))
+  have ha : ∀ M, a M ≫ (idealPowerTorsionInclusion J).app M =
+      (idealPowerTorsionInclusion I).app M := by
+    intro M
+    apply ModuleCat.hom_ext
+    exact Submodule.subtype_comp_inclusion _ _ (h M)
+  refine { app := a, naturality := ?_ }
+  intro M N f
+  apply (cancel_mono ((idealPowerTorsionInclusion J).app N)).mp
+  simp only [Category.assoc]
+  rw [ha, (idealPowerTorsionInclusion I).naturality f,
+    (idealPowerTorsionInclusion J).naturality f, ← Category.assoc, ha]
+
+/-- The induced support transformation retains the original inclusion into coefficients. -/
+@[reassoc] lemma idealPowerTorsionNatTransOfLE_inclusion (I J : Ideal R)
+    (h : ∀ M : ModuleCat.{u} R, I.primaryComponent M ≤ J.primaryComponent M)
+    (M : ModuleCat.{u} R) :
+    (idealPowerTorsionNatTransOfLE I J h).app M ≫ (idealPowerTorsionInclusion J).app M =
+      (idealPowerTorsionInclusion I).app M := by
+  apply ModuleCat.hom_ext
+  exact Submodule.subtype_comp_inclusion _ _ (h M)
 
 /-- Evaluation at one identifies quotient-module Hom with the submodule annihilated by the ideal. -/
 def quotientHomEvalOneEquiv (I : Ideal R) (M : ModuleCat.{u} R) :
