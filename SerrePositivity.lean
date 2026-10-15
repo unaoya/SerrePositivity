@@ -431,6 +431,7 @@ public import SerrePositivity.KTheory.Adams.CubicBaseChangeNaturality
 public import SerrePositivity.KTheory.Adams.CubicSupportNaturality
 public import SerrePositivity.KTheory.Adams.CubicUnitNormalization
 public import SerrePositivity.KTheory.Adams.KoszulCubeModel
+public import SerrePositivity.KTheory.Adams.KoszulCubeDifferential
 public import SerrePositivity.KTheory.Adams.TensorSquareMultiplicativity
 public import SerrePositivity.PerfectComplex.IdempotentTensor
 public import SerrePositivity.PerfectComplex.IdempotentImageFunctor
