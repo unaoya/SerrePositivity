@@ -2561,3 +2561,13 @@ Complexes.Enrichment.oleanの未生成で停止したため採用しなかった
 U10全受入は未完。次はacyclic部分圏の三角閉性と指定準同型のVerdierクラスを接続し、
 主導来圏の三角構造・局所化関手・一対象A比較の三角性まで完成させる。
 共有モデル圏・Quillen・転送・SM7一般論への新しい不足要求はない。
+
+
+### 13.83 U10v2：主局所化比較の整数shift整合性
+
+`Derived/HomotopyShift.lean`はK(D)から主導来圏への既存局所化関手を保持し、
+閉零圏経由の比較自然同型と、二つの局所化の比較逆関手について整数shiftとの整合性を証明した。
+Mathlibのshift局所化の普遍性を使い、別の導来圏やshiftへ置換しない。
+Checks.HomotopyDerivedShiftを含む導来比較5入口の同時ビルドは成功（2143 jobs）。
+Checksの直接実行は終了コード0、主要5宣言の公理は標準公理のみ。累計1120宣言。
+U10全受入は継続中。次はacyclic部分圏とVerdierクラスの接続を受け入れる。
