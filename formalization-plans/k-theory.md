@@ -10870,3 +10870,51 @@ Cの単位がcofibrantなら、§217のfree-zero単位比較から元のunit axi
 S2は§217とこの節を合わせて完了。次はS3としてK-tensorの導来可逆性を証明し、
 一般Kによる局所化と通常の懸垂の安定性を区別した上で、PSS/S¹の比較と旧APIの互換性を検証する。
 F1の任意モデル源で指定分解なしの最終関手は別の残項目であり、全体目標は継続する。
+
+
+## 219. S3進捗：任意のcofibrant係数の局所化射とtensor逆元の評価射（2026-10-16）
+
+A0・A1は§166で完了済みであり、`check_weak_equivalences_accessible`を再実行して
+最終入力のみからの利用例と21宣言・5モジュールの標準公理監査が成功した。
+全体目標F→L→E→Sを維持し、S3の最初の具体的な射を実装した。
+
+### 219.1 小さい検出族から任意のcofibrant係数へ
+
+`Stable/UniversalLocalizingMaps.lean`の`StableModelPresentation.localizingMap_isWeakEquivalence`は、
+構成済みのK局所モデルにおいて、任意のcofibrant Aと任意のnについて、実際の
+`localizingMap K n A : F_(n+1)(A⊗K) → F_n(A)`が局所弱同値であることを証明する。
+Aが局所化モデル構成時に選んだ小さい検出族に属するという仮定はない。
+Cの単位のcofibrancyも、この一般化には要求しない。
+
+証明は元のfibrant replacementで局所性を保つこと、構成済みモデルのΩ_K判定、
+実際のframe mapping testの計算を使う。cofibrant Aのcosimplicial resolutionからの
+Hom関手の右Quillen性と、fibrant対象間の弱同値を保つBrown補題でテストを解消する。
+元の指定分解を使う局所同値を、別の候補クラスへ置き換えていない。
+
+### 219.2 実際のtensor評価射
+
+`Stable/TensorInverseMap.lean`の`tensorInverseEvaluation K`は、モデル構造によらず
+`F₁(𝟙_C) ⊗ F₀(K) → 𝟙_Sp`を定義する。実際の`tensorFreeAtSum`、
+`localizingMap K 0 (𝟙_C)`、`freeZeroModuleUnitIso`を合成した射である。
+Cの単位がcofibrantという明示的な十分条件のもと、219.1によりこの射が
+構成済み局所モデルの弱同値であると証明した。
+
+これはtensor逆元を導くための射とその弱同値の証明である。
+導来tensor関手の合成比較、Quillen同値、通常の懸垂の安定性はまだ主張しない。
+単位のcofibrancyはこの評価射に関する十分条件であり、§218の通常局所化存在や
+元のunit axiomからのmonoidal条件を狭めるものではない。
+
+### 219.3 受入検証と残項目
+
+- `lake build SerrePositivity.Spectra.Stable.TensorInverseMap`：2778 jobs、成功。
+- `check_spectrum_tensor_inverse`：任意のcofibrant Aの利用例、独立した宇宙の通常の
+  局所化関手で実際の評価射が同型へ移る利用例、7宣言・2モジュールの標準公理監査。
+- `check_spectrum_stable_model`：31宣言・3モジュールの回帰確認。
+- `check_spectrum_stable_enriched`：13宣言・3モジュールの回帰確認。
+- `check_weak_equivalences_accessible`：A0/A1の再確認。
+- `git diff --cached --check`。
+
+新規sorry・引用axiomなし。実装コミット`75864a00`。他チャットの変更は保持した。
+S3は未完了であり、次はこの実際の弱同値から導来K-tensorの逆関手と合成比較を構成し、
+PSS/S¹で通常の導来Σとの比較と旧APIへの接続を検証する。
+F1の指定関手的分解を仮定しない任意モデル源の最終関手も残っており、全体目標は継続する。
