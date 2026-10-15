@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.LocalCohomologyZeroBaseChange
 import SerrePositivity.HomologicalAlgebra.LocalCohomologyZeroTorsion
 import SerrePositivity.HomologicalAlgebra.ExtZeroComparison
 import SerrePositivity.HomologicalAlgebra.IdealPowerTorsionBaseChange
@@ -827,3 +828,10 @@ assert_no_sorry SerrePositivity.koszulDualColimitZeroLocalCohomologyNatIso
 #print axioms SerrePositivity.extZeroLinearCoyonedaNatIso
 #print axioms SerrePositivity.localCohomologyZeroPowerTorsionNatIso
 #print axioms SerrePositivity.koszulDualColimitZeroLocalCohomologyNatIso
+
+-- KL6: actual zero local cohomology ring/support change and zero-map reflection.
+assert_no_sorry SerrePositivity.localCohomologyZeroRestrictScalarsNatIso
+assert_no_sorry SerrePositivity.localCohomologyZeroRestrictScalars_map_eq_zero_iff
+
+#print axioms SerrePositivity.localCohomologyZeroRestrictScalarsNatIso
+#print axioms SerrePositivity.localCohomologyZeroRestrictScalars_map_eq_zero_iff
