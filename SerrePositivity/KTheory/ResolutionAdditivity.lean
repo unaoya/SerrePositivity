@@ -27,35 +27,7 @@ def mappingCone (hf : Function.Injective f) (hg : Function.Surjective g)
     (he : Function.Exact f g) : PerfectModuleResolution M₃ where
   complex := CochainComplex.mappingCone l
   perfect := strictlyPerfectComplex_mappingCone R l F.perfect G.perfect
-  resolution :=
-    { isZero_X := fun i hi => by
-        rw [CochainComplex.mappingCone.isZero_X_iff]
-        exact ⟨F.resolution.isZero_X _ (by omega), G.resolution.isZero_X _ hi⟩
-      projective := fun i => by
-        have := F.resolution.projective (i + 1)
-        have := G.resolution.projective i
-        exact Projective.of_iso
-          (HomologicalComplex.homotopyCofiber.XIsoBiprod l i (i + 1) rfl).symm inferInstance
-      isZero_homology := fun i hi => by
-        by_cases hi' : i = -1
-        · subst i
-          have h10 : (-1 : ℤ) + 1 = 0 := by norm_num
-          have h₃ := Cone.exact₃ l (-1) 0 h10
-          have hz := G.resolution.isZero_homology (-1) (by norm_num)
-          have hmonoδ : Mono (Cone.δ l (-1) 0 h10) := h₃.mono_g (hz.eq_zero_of_src _)
-          have hcomp : Cone.δ l (-1) 0 h10 ≫ homologyMap l 0 = 0 :=
-            comp_eq_zero_transport (Cone.S₁ l (-1) 0 h10) _ _ _ _ _
-              (Cone.δ_square l (-1) 0 h10) (Cone.e_naturality 0 l)
-          have : Mono (homologyMap l 0) := by
-            rw [hl]
-            have : Mono (ModuleCat.ofHom f) := (ModuleCat.mono_iff_injective _).mpr hf
-            infer_instance
-          have hδ : Cone.δ l (-1) 0 h10 = 0 := zero_of_comp_mono _ hcomp
-          rw [IsZero.iff_id_eq_zero, ← cancel_mono (Cone.δ l (-1) 0 h10),
-            Category.id_comp, zero_comp, hδ]
-        · exact (Cone.exact₃ l i (i + 1) rfl).isZero_of_both_isZero
-            (G.resolution.isZero_homology i hi) (F.resolution.isZero_homology _ (by omega))
-      homologyZeroIso := (F.coneHomologyZeroEquiv G f g l hl hg he).toModuleIso }
+  resolution := F.resolution.mappingCone G.resolution f g l hl hf hg he
 end PerfectModuleResolution
 
 variable [HasFiniteProjectiveResolutions R]

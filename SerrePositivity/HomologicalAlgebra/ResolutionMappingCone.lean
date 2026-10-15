@@ -45,5 +45,38 @@ def coneHomologyZeroEquiv (hg : Function.Surjective g) (he : Function.Exact f g)
         ((Submodule.quotEquivOfEq _ _ (LinearMap.exact_iff.mp he).symm).trans
           (LinearMap.quotKerEquivOfSurjective g hg))))
 
+/-- The cone of a lift of an injective map resolves its cokernel module. -/
+def mappingCone (hf : Function.Injective f) (hg : Function.Surjective g)
+    (he : Function.Exact f g) : IsResolutionOf (CochainComplex.mappingCone l) M₃ :=
+
+    { isZero_X := fun i hi => by
+        rw [CochainComplex.mappingCone.isZero_X_iff]
+        exact ⟨hK.isZero_X _ (by omega), hL.isZero_X _ hi⟩
+      projective := fun i => by
+        have := hK.projective (i + 1)
+        have := hL.projective i
+        exact Projective.of_iso
+          (HomologicalComplex.homotopyCofiber.XIsoBiprod l i (i + 1) rfl).symm inferInstance
+      isZero_homology := fun i hi => by
+        by_cases hi' : i = -1
+        · subst i
+          have h10 : (-1 : ℤ) + 1 = 0 := by norm_num
+          have h₃ := Cone.exact₃ l (-1) 0 h10
+          have hz := hL.isZero_homology (-1) (by norm_num)
+          have hmonoδ : Mono (Cone.δ l (-1) 0 h10) := h₃.mono_g (hz.eq_zero_of_src _)
+          have hcomp : Cone.δ l (-1) 0 h10 ≫ homologyMap l 0 = 0 :=
+            comp_eq_zero_transport (Cone.S₁ l (-1) 0 h10) _ _ _ _ _
+              (Cone.δ_square l (-1) 0 h10) (Cone.e_naturality 0 l)
+          have : Mono (homologyMap l 0) := by
+            rw [hl]
+            have : Mono (ModuleCat.ofHom f) := (ModuleCat.mono_iff_injective _).mpr hf
+            infer_instance
+          have hδ : Cone.δ l (-1) 0 h10 = 0 := zero_of_comp_mono _ hcomp
+          rw [IsZero.iff_id_eq_zero, ← cancel_mono (Cone.δ l (-1) 0 h10),
+            Category.id_comp, zero_comp, hδ]
+        · exact (Cone.exact₃ l i (i + 1) rfl).isZero_of_both_isZero
+            (hL.isZero_homology i hi) (hK.isZero_homology _ (by omega))
+      homologyZeroIso := (hK.coneHomologyZeroEquiv hL f g l hl hg he).toModuleIso }
+
 end IsResolutionOf
 end SerrePositivity

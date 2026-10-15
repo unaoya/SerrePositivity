@@ -98,33 +98,9 @@ noncomputable def coneHomologyZeroEquiv (hg : Function.Surjective g) (hfg : Func
 `coneHomologyZeroEquiv` による。 -/
 noncomputable def isResolutionOf_cone (hf : Function.Injective f) (hg : Function.Surjective g)
     (hfg : Function.Exact f g) :
-    IsResolutionOf (Cone.cone (liftSES f)) (ModuleCat.of A V₃) where
-  isZero_X i hi := by
-    rw [CochainComplex.mappingCone.isZero_X_iff]
-    exact ⟨extRes_isZero_X _ _ (by omega), extRes_isZero_X _ _ hi⟩
-  projective i := by
-    have := extRes_projective (projectiveResolution (ModuleCat.of A V₁)) (i + 1)
-    have := extRes_projective (projectiveResolution (ModuleCat.of A V₂)) i
-    exact Projective.of_iso
-      (HomologicalComplex.homotopyCofiber.XIsoBiprod (liftSES f) i (i + 1) rfl).symm
-      inferInstance
-  isZero_homology i hi := by
-    by_cases hi1 : i = -1
-    · subst hi1
-      have h10 : (-1 : ℤ) + 1 = 0 := by norm_num
-      have h3 := Cone.exact₃ (liftSES f) (-1) 0 h10
-      have hz : IsZero ((resV A V₂).homology (-1)) := extRes_isZero_homology _ (-1) (by norm_num)
-      have hmonoδ : Mono (Cone.δ (liftSES f) (-1) 0 h10) := h3.mono_g (hz.eq_zero_of_src _)
-      have hcomp : Cone.δ (liftSES f) (-1) 0 h10 ≫
-          HomologicalComplex.homologyMap (liftSES f) 0 = 0 :=
-        comp_eq_zero_transport (Cone.S₁ (liftSES f) (-1) 0 h10) _ _ _ _ _
-          (Cone.δ_square (liftSES f) (-1) 0 h10) (Cone.e_naturality 0 (liftSES f))
-      have := mono_homologyMap_liftSES_zero f hf
-      have hδ : Cone.δ (liftSES f) (-1) 0 h10 = 0 := zero_of_comp_mono _ hcomp
-      rw [IsZero.iff_id_eq_zero, ← cancel_mono (Cone.δ (liftSES f) (-1) 0 h10), Category.id_comp,
-        zero_comp, hδ]
-    · exact (Cone.exact₃ (liftSES f) i (i + 1) rfl).isZero_of_both_isZero
-        (extRes_isZero_homology _ i hi) (extRes_isZero_homology _ (i + 1) (by omega))
-  homologyZeroIso := (coneHomologyZeroEquiv f g hg hfg).toModuleIso
+    IsResolutionOf (Cone.cone (liftSES f)) (ModuleCat.of A V₃) :=
+  (isResolutionOf_extRes (projectiveResolution (ModuleCat.of A V₁))).mappingCone
+    (isResolutionOf_extRes (projectiveResolution (ModuleCat.of A V₂)))
+    f g (liftSES f) (homologyMap_liftSES_zero f) hf hg hfg
 
 end SerrePositivity
