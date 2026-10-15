@@ -1354,3 +1354,29 @@ U10全受入は未完。cell候補の真のsemifree filtration（初期diskのsp
 K(D)/D(D)の三角構造とVerdier商比較、余積・局所小性の宇宙、一対象同値の三角形・余積保存を完成する。
 共有の一般小対象論・モデル圏・Quillen・SM7は複製せず、D4mの合流条件は§13.23のまま。
 この候補についてsemifree性を未証明のまま主張しない。
+
+
+### 13.28 U10a7：cone付加の全次数分裂と商の普遍性
+
+`Module/GradedSplit.lean` の `ModuleGradedSplit` は既存主dg加群圏の拡大について、
+微分を忘れた次数付き加群でのsection/retractionと全斉次作用との可換性を記録する。
+新たなdg圏・dg加群モデルは作らない。包含・射影は主圏のchain mapのまま。
+分裂から次数ごとのmono/epi、主加群圏のmono/epi、各評価次数の短完全列、
+各評価複体のcokernelを証明する。
+
+`Complexes/ConeGradedSplit.lean` は標準coneの左sectionをconnecting mapの符号に合わせた
+-inlとして構成し、右retraction、分裂恒等式、全整数次数の作用との可換性を証明する。
+左成分のshiftに入る(-1)^pを明示し、sectionをchain mapとは主張しない。
+`Module/ConeGradedSplit.lean` はこれを全dg自然な加群の分裂として構成する。
+
+`Module/GradedSplitCokernel.lean` は各評価のcokernelからの延長が全次数作用と可換することを
+射影の次数ごとのepi性から証明し、主dg加群圏の真のcokernel普遍性を与える。
+`moduleConeInrCokernel` により N→cone(f) の商がM[1]であることを主圏内で確定した。
+評価だけの商の代用ではない。
+
+受入入口 `Checks/ConeGradedSplit.lean` は全次数自然性、主圏のcokernel普遍性、
+任意可換環/独立宇宙、ℤの負次数・ZMod 2の正次数での短完全性を検証する。
+この入口・前段準同型入口・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3206 jobs）。
+直接実行の主要31宣言は標準公理の範囲内。累計576宣言。
+U10全受入は未完。次は可算cell列の各商とfiltrationの埋込みを確定し、
+初期diskのsphere分解と商の自由性、semifreeのHom計算へ進む。
