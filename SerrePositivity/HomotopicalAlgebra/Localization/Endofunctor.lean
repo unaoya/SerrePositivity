@@ -53,4 +53,28 @@ lemma endofunctor_isLeftQuillen_iff :
   · exact fun hS _ _ f hf => h.weakEquivalences_eq.le _ (hS f hf)
   · exact fun hS _ _ f hf => h.weakEquivalences_eq.symm.le _ (hS f hf)
 
+include h hcof hfib adj hF in
+/-- Preservation of local objects by the actual right adjoint extends the
+original endofunctor to the localized model in both variables. -/
+lemma endofunctor_isLeftQuillen_of_rightAdjoint_local
+    (hR : ∀ Y : C, m.categoryWithFibrations.fibrations (Limits.terminal.from Y) →
+      @localObjects C _ original simplicial cof fib S (R.obj Y)) :
+    @Quillen.IsLeftQuillen C _ C _ m.categoryWithCofibrations m.categoryWithWeakEquivalences
+      m.categoryWithCofibrations m.categoryWithWeakEquivalences F := by
+  let := original
+  have hw := weakEquivalences_le_localEquivalences cof fib hcof S
+  have hFn : @Quillen.IsLeftQuillen C _ C _ original.categoryWithCofibrations
+      original.categoryWithWeakEquivalences m.categoryWithCofibrations
+      m.categoryWithWeakEquivalences F := by
+    refine @Quillen.IsLeftQuillen.mk C _ C _ original.categoryWithCofibrations
+      original.categoryWithWeakEquivalences m.categoryWithCofibrations
+      m.categoryWithWeakEquivalences F ?_ ?_
+    · exact fun _ _ f hf => h.cofibrations_eq.symm.le _ (hF.map_cofibrations f hf)
+    · intro X Y f hf
+      have ht := hF.map_trivialCofibrations f hf
+      exact ⟨h.cofibrations_eq.symm.le _ ht.1, h.weakEquivalences_eq.symm.le _ (hw _ ht.2)⟩
+  apply (h.leftQuillen_iff_rightAdjoint_local (target := m) hcof hfib adj hFn).mpr
+  intro Y hY
+  exact hR Y ((@fibration_iff C _ _ _ (Limits.terminal.from Y) m.categoryWithFibrations).mp hY)
+
 end SerrePositivity.Bousfield.IsLocalizationModel
