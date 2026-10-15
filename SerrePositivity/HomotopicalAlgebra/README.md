@@ -424,3 +424,18 @@ trivial fibrationであることと元の射が弱同値であることの同値
 `scripts/check_weak_equivalence_filtered_colimits.lean`で一般の宇宙・colimit cocone・
 モデル分解・最終入力からの利用例と全10宣言の標準公理監査を検証した。
 部分圏自体の小さい可呈示生成族はまだ構成していないため、A1全体の完成とはしない。
+
+## A1：可呈示弱反射からの生成族（一般論、2026-10-15）
+
+`Smith/PresentableFullInclusion.lean`はaccessibleなfully faithful関手が、像の対象の
+κ-可呈示性を反映することを証明する。`Smith/PresentableWeakReflection.lean`は
+κ-可呈示対象を保つ弱反射を入力とし、部分圏内のκ-可呈示対象と固定対象への射の
+圏がκ-filteredであること、その表示がdenseであることを証明する。包含が
+κ-accessibleで部分圏がκ-filtered colimitを持つ場合、この表示を使って部分圏自体の
+κ-accessibilityを導く。任意のfull imageのaccessibilityは使わない。
+
+`Smith/GeneratedWeakReflection.lean`は生成因子分解の実際の右因子に対するunitを
+構成し、右持ち上げクラスへの任意のsquareがunitを越えて延長することを、実際の
+liftによって証明する。`check_presentable_weak_reflection`で一般の宇宙、恒等弱反射、
+モデル構造を仮定しない生成分解を検証し、三モジュール全44宣言を標準公理のみで
+監査した。これを生成右クラスへ適用し、さらに元のWに必要な閉操作へ進む。
