@@ -5318,6 +5318,17 @@ G2-6aは、離散な通常tensorのこの実完備化H⁰をF3の`PDCompletionH0
 環構造と標準単位を保って同定する工程が残る。特に係数環Rと通常tensor環Bの比較を省略しない。
 G2-6bの完備化後だけ成立する比較条件、G2-7、他のG要求とKL・Dの実適用も未完了。
 
+G2-6b完備化後の実augmentationの正確な条件（2026-10-16）：
+`DerivedCompletion/CompletedTensorAugmentationCriterion.lean`で、完備化した元のtensor augmentationの
+同型性が、その元の射の全冪二項Koszul剰余での同型性と同値であることを証明した。
+この明示条件の下で`completedTensorH0AlgEquivOfKoszul`を構成し、元の完備化augmentationそのものへの一致、
+完備化単位と左右因子の三つの図式を実H⁰のR代数上で証明した。
+完備化前の全高次Tor消滅・元の正則性・Noether性は仮定しない。完備化後の離散性だけで条件を省かない。
+対象2546ジョブ、G2監査703宣言、全体5158ジョブが成功。新規6宣言はsorry非依存、標準3公理のみ。
+今回の全体公理監査とD159・KL487監査も終了コード0で成功。CLMST全体監査は実行中で、終了結果を別途記録する。
+G2-6a/bとも離散な通常tensorの実完備化H⁰とF3の`PDCompletionH0`の環比較が残る。
+G2-6bではさらにBS実対象に上記Koszul条件を供給する必要があり、条件付きAPIだけでG2-6b全体やG2-7を完了としない。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
