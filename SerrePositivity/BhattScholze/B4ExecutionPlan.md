@@ -7032,3 +7032,27 @@ DeltaRootFiniteResidueKoszul.leanで、一般dの最初の根除算関係のmod(
 完備化後CFFの完成ではない。共通G3・G6・G7は共通計画上も未完了として保持する。
 一般B4全射性は未完成。次はこの全有限反復δ列の分解を、実自由δ射の評価関係列の
 mod(p,d)分解および有限源商の実Torへ移す比較を進める。共有・CLMST・利用先は編集していない。
+
+### 次工程の登録：通常環射後の評価関係正則性と実残余Tor
+
+BS担当の既存DeltaDivisionFiniteEvaluationRegular.leanで、前段I_Nを消す任意の通常環射qについて
+q(g_(N+1))正則性からq(h_(N+1))正則性への移送を公開し、従来の通常商版を特殊化へ整理する。
+既存DeltaRootFiniteResidueKoszul.leanでは全有限列の弱正則性も公開し、既存Koszul入口をその結果へ整理する。
+BS専用DeltaDivisionMappedEvaluationKoszul.leanを新設し、一元添字の任意通常環射q後で
+反復δ列・評価列の各有限prefixの生成イデアルがI_N.map qとなることを証明する。
+全有限反復δ列の弱正則性から全有限評価列の弱正則性・実Koszul分解へ移す。
+BS専用DeltaRootFiniteResidueSourceTor.leanを新設し、この一般比較と既存の根添加mod(p,d)分解を合成して
+任意有限δ深さの評価Koszul分解、実射q_mod(p,d)∘αに沿う実有限源グラフ商のTor比較・正次数消滅を証明する。
+元のAのp正則性、自由δ環のghost単射、指定単元δdを保持する。全源への移行や実導来完備化後CFFは別工程。
+共通・CLMST・共有監査は編集せず、全新公開宣言をBS専用監査へ追加する。
+
+## B4-6：任意通常射後の評価関係正則性と根添加全有限列の弱正則性（2026-10-15）
+
+既存DeltaDivisionFiniteEvaluationRegularで、I_Nを消す任意通常環射qの下で
+q(g_(N+1))の正則性からq(h_(N+1))の正則性を得る移送を証明した。
+対象環のδ構造・完備性・p正則性・ghostは要求しない。既存通常商版はその特殊化へ整理し公開型を維持した。
+既存DeltaRootFiniteResidueKoszulでは、根添加の全有限mod(p,d)反復δ列の弱正則性を公開し、
+既存のKoszul分解入口をその弱正則性から得る形へ整理した。高段の明示入力は変更していない。
+新2公開宣言を含むB4全import依存4287ジョブ成功、既存3種の警告のみ。
+B4全体pure監査1858報告成功、標準3公理のみ。新sorry・公理・引用なし。
+全有限実評価列への移送に用いる。全源Tor・完備化後CFF・一般B4の完成とは区別する。

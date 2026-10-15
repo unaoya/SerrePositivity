@@ -74,14 +74,15 @@ theorem deltaRootFirstRelation_mod_pd_isSMulRegular (s : σ) :
   have h := congrArg eL hxy
   simpa only [smul_eq_mul, map_mul, he, neg_mul, neg_inj] using h
 
-/-- 一元根添加の全有限δ列は、明示した正規化入力の下で実mod(p,d)Koszul分解を与える。 -/
-theorem deltaRootFiniteResidueRelations_isKoszulResolution [Unique σ]
+/-- 一元根添加の全有限δ列は、明示した正規化入力の下で実mod(p,d)弱正則列となる。 -/
+theorem deltaRootFiniteResidueRelations_isWeaklyRegular [Unique σ]
     (hpA : Function.Injective (fun x : A => (p : A) * x))
     (hg : Function.Injective (WittVector.ghostMap : WittVector p L₀ → ℕ → L₀))
     (v : Aˣ) (hv : (v : A) = D.delta d) (N : ℕ) :
-    SerrePositivity.IsKoszulResolution (fun i : Fin (N + 1) =>
-      Ideal.Quotient.mk KL₀
-        (deltaDivisionIteratedRelation E₀ (MvPolynomial.C d) c₀ default i.val)) := by
+    RingTheory.Sequence.IsWeaklyRegular (L₀ ⧸ KL₀)
+      (List.ofFn fun i : Fin (N + 1) =>
+        Ideal.Quotient.mk KL₀
+          (deltaDivisionIteratedRelation E₀ (MvPolynomial.C d) c₀ default i.val)) := by
   have hpP : IsSMulRegular P₀ (p : P₀) := by
     simpa only [map_natCast] using (show IsSMulRegular A (p : A) from hpA).of_flat (S := P₀)
   have hpL : IsSMulRegular L₀ (p : L₀) := by
@@ -90,7 +91,19 @@ theorem deltaRootFiniteResidueRelations_isKoszulResolution [Unique σ]
   have hvP : (vP : P₀) = (E₀).delta (MvPolynomial.C d) := by
     change MvPolynomial.C (v : A) = _
     rw [hv, polynomialRankOneDeltaStructure_delta_C]
-  exact deltaDivisionFiniteResidueRelations_isKoszulResolution E₀ (MvPolynomial.C d) c₀
+  exact deltaDivisionFiniteResidueRelations_isWeaklyRegular E₀ (MvPolynomial.C d) c₀
     hpP hpL hg vP hvP (deltaRootFirstRelation_mod_pd_isSMulRegular D d b default) N
+
+
+/-- 一元根添加の全有限δ列は、明示した正規化入力の下で実mod(p,d)Koszul分解を与える。 -/
+theorem deltaRootFiniteResidueRelations_isKoszulResolution [Unique σ]
+    (hpA : Function.Injective (fun x : A => (p : A) * x))
+    (hg : Function.Injective (WittVector.ghostMap : WittVector p L₀ → ℕ → L₀))
+    (v : Aˣ) (hv : (v : A) = D.delta d) (N : ℕ) :
+    SerrePositivity.IsKoszulResolution (fun i : Fin (N + 1) =>
+      Ideal.Quotient.mk KL₀
+        (deltaDivisionIteratedRelation E₀ (MvPolynomial.C d) c₀ default i.val)) :=
+  SerrePositivity.isKoszulResolution_of_isWeaklyRegular _
+    (deltaRootFiniteResidueRelations_isWeaklyRegular D d b hpA hg v hv N)
 
 end SerrePositivity.BhattScholze

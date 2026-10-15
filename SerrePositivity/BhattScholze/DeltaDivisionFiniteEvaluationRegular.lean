@@ -9,7 +9,7 @@ public import SerrePositivity.BhattScholze.DeltaDivisionSourceGraphKoszul
 -/
 
 @[expose] public noncomputable section
-universe u
+universe u v
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
@@ -62,11 +62,11 @@ theorem deltaDivisionFiniteEvaluation_ofList (N : ℕ) :
     subst s
     exact ⟨i, rfl⟩
 
-/-- 前段商での次の反復差関係の非零因子性は、次の評価関係へ移る。 -/
-theorem deltaDivisionFiniteEvaluation_next_isSMulRegular (N : ℕ)
-    (hg : IsSMulRegular (L₀ ⧸ I₀ N) (Ideal.Quotient.mk (I₀ N) (g₀ (N + 1)))) :
-    IsSMulRegular (L₀ ⧸ I₀ N) (Ideal.Quotient.mk (I₀ N) (h₀ (N + 1))) := by
-  let q := Ideal.Quotient.mk (I₀ N)
+/-- 前段を消す任意通常環射の下で、次の実反復δ関係の正則性は実評価関係へ移る。 -/
+theorem deltaDivisionFiniteEvaluation_next_isSMulRegular_map
+    {T : Type v} [CommRing T] (q : L₀ →+* T) (N : ℕ)
+    (hI : I₀ N ≤ RingHom.ker q) (hg : IsSMulRegular T (q (g₀ (N + 1)))) :
+    IsSMulRegular T (q (h₀ (N + 1))) := by
   have he : I₀ (N + 1) = I₀ N ⊔ Ideal.span {h₀ (N + 1)} := by
     rw [← deltaDivisionFiniteEvaluationIdeal_eq D d a (N + 1),
       deltaDivisionFiniteEvaluationIdeal_succ, deltaDivisionFiniteEvaluationIdeal_eq]
@@ -87,7 +87,7 @@ theorem deltaDivisionFiniteEvaluation_next_isSMulRegular (N : ℕ)
   obtain ⟨r, hr, t, ht, hrt⟩ := Submodule.mem_sup.mp hm
   obtain ⟨b, hb⟩ := Ideal.mem_span_singleton.mp ht
   have hdiv : q (g₀ (N + 1)) = q (h₀ (N + 1)) * q b := by
-    rw [← hrt, map_add, Ideal.Quotient.eq_zero_iff_mem.mpr hr, zero_add, hb, map_mul]
+    rw [← hrt, map_add, (show q r = 0 from hI hr), zero_add, hb, map_mul]
   intro x z hxz
   apply hg
   change q (g₀ (N + 1)) * x = q (g₀ (N + 1)) * z
@@ -96,5 +96,13 @@ theorem deltaDivisionFiniteEvaluation_next_isSMulRegular (N : ℕ)
     q (g₀ (N + 1)) * x = q b * (q (h₀ (N + 1)) * x) := by rw [hdiv]; ring
     _ = q b * (q (h₀ (N + 1)) * z) := congrArg (fun w => q b * w) hxz
     _ = q (g₀ (N + 1)) * z := by rw [hdiv]; ring
+
+
+/-- 前段商での次の反復差関係の非零因子性は、次の評価関係へ移る。 -/
+theorem deltaDivisionFiniteEvaluation_next_isSMulRegular (N : ℕ)
+    (hg : IsSMulRegular (L₀ ⧸ I₀ N) (Ideal.Quotient.mk (I₀ N) (g₀ (N + 1)))) :
+    IsSMulRegular (L₀ ⧸ I₀ N) (Ideal.Quotient.mk (I₀ N) (h₀ (N + 1))) :=
+  deltaDivisionFiniteEvaluation_next_isSMulRegular_map D d a (Ideal.Quotient.mk (I₀ N)) N
+    (fun _ hr => Ideal.Quotient.eq_zero_iff_mem.mpr hr) hg
 
 end SerrePositivity.BhattScholze
