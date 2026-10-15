@@ -15,7 +15,8 @@ noncomputable section
 open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
 
 namespace SerrePositivity.DiagramModel.ContinuousLifts
-variable {K : Type w} [LinearOrder K] [OrderBot K] {C : Type u} [Category.{v} C]
+section Base
+variable {K : Type w} [Preorder K] [OrderBot K] {C : Type u} [Category.{v} C]
 
 @[simps]
 def fromBottom (D : K ⥤ C) : (Functor.const K).obj (D.obj ⊥) ⟶ D where
@@ -25,7 +26,16 @@ def fromBottom (D : K ⥤ C) : (Functor.const K).obj (D.obj ⊥) ⟶ D where
       D.map (homOfLE (bot_le : (⊥ : K) ≤ i)) ≫ D.map f
     exact (Category.id_comp _).trans (D.map_comp (homOfLE bot_le) f)
 
-variable [SuccOrder K] [WellFoundedLT K] (D : K ⥤ C) [D.IsWellOrderContinuous]
+lemma fromBottom_naturality {D E : K ⥤ C} (p : D ⟶ E) :
+    fromBottom D ≫ p = (Functor.const K).map (p.app ⊥) ≫ fromBottom E := by
+  apply NatTrans.ext
+  funext k
+  exact p.naturality (homOfLE (bot_le : (⊥ : K) ≤ k))
+
+end Base
+
+variable {K : Type w} [LinearOrder K] [OrderBot K] {C : Type u} [Category.{v} C]
+  [SuccOrder K] [WellFoundedLT K] (D : K ⥤ C) [D.IsWellOrderContinuous]
 
 lemma fromBottom_llp (Q : MorphismProperty C)
     (hstep : ∀ (k : K), ¬IsMax k → Q.llp (D.map (homOfLE (Order.le_succ k)))) :
