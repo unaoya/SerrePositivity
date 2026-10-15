@@ -85,13 +85,14 @@ check('SerrePositivity.PerfectComplex.InvolutionClassAcyclic',
       lambda dep: dep.startswith('SerrePositivity.KTheory.Adams.'))
 print('The general acyclic involution class is independent of Adams implementations.')
 
-for name in ['AlternatingSum', 'ExactImageSequence', 'HomotopyConeRepresentative',
-             'HomotopyProperty']:
+general = ['AlternatingSum', 'ExactImageSequence', 'HomotopyConeRepresentative',
+           'HomotopyProperty', 'TriangulatedK0Shift']
+for name in general:
     check('SerrePositivity.CategoryTheory.' + name, upper_layer)
 check('SerrePositivity.KTheory.SupportedExactEuler',
       lambda dep: dep in {'SerrePositivity.KTheory.ResolutionClass',
                          'SerrePositivity.KTheory.ResolutionAdditivity'})
-print('Euler and homotopy boundaries passed: 4 general modules and the supported sequence.')
+print(f'Euler and homotopy boundaries passed: {len(general)} general modules and the supported sequence.')
 
 geometry = ['ClosedSupportGeometry', 'ModuleClosedSupport', 'SupportHeight',
             'SemilocalSupport', 'ModuleSupportHeight', 'LocalizationTorsion', 'ModuleSupport',
