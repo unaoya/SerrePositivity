@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.KoszulLocalCohomologyAction
 import SerrePositivity.HomologicalAlgebra.LocalCohomologyKoszulComparison
 import SerrePositivity.HomologicalAlgebra.KoszulExtComparison
 import SerrePositivity.HomologicalAlgebra.ProjectiveExtNaturality
@@ -207,3 +208,20 @@ example (R : Type) [CommRing R] [IsNoetherian R R] {e : ℕ} (z : Fin e → R)
         (koszulLocalCohomologyComparison z hres i).hom.app M ≫
           (localCohomology (Ideal.span (Set.range z)) i).map f :=
   (koszulLocalCohomologyComparison z hres i).hom.naturality f
+
+-- KL3b preparation: concrete coefficient actions and positive-stage zero maps.
+assert_no_sorry SerrePositivity.sequentialFunctorColimit_map_eq_zero
+assert_no_sorry SerrePositivity.sequentialFunctorColimit_map_eq_zero_of_cofinal_stages
+assert_no_sorry SerrePositivity.koszulLocalCohomology_map_eq_zero_iff
+assert_no_sorry SerrePositivity.koszulLocalCohomology_map_eq_zero_of_stages
+assert_no_sorry SerrePositivity.koszulLocalCohomology_map_eq_zero_of_positive_stages
+assert_no_sorry SerrePositivity.koszulDualColimitScalarEndomorphism
+assert_no_sorry SerrePositivity.koszulLocalCohomologyComparison_coefficient_scalar
+assert_no_sorry SerrePositivity.koszulLocalCohomology_coefficient_scalar_eq_zero_iff
+assert_no_sorry SerrePositivity.localCohomologyScalarEndomorphism_eq_zero_of_dualKoszul_stages
+
+#print axioms SerrePositivity.koszulLocalCohomologyComparison_coefficient_scalar
+
+#print axioms SerrePositivity.localCohomologyScalarEndomorphism_eq_zero_of_dualKoszul_stages
+
+#print axioms SerrePositivity.koszulLocalCohomology_map_eq_zero_of_positive_stages
