@@ -1,0 +1,11 @@
+import SerrePositivity.KTheory.Adams.KoszulCubeFourierModelClass
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeFourierScalarAction
+#print axioms SerrePositivity.Adams.oneKoszulCubeFourierScalarAction
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeFourierModelAction_eq_scalar
+#print axioms SerrePositivity.Adams.oneKoszulCubeFourierModelAction_eq_scalar
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeFourierModel_weighted_class
+#print axioms SerrePositivity.Adams.oneKoszulCubeFourierModel_weighted_class

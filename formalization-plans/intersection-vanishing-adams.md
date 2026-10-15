@@ -3785,6 +3785,17 @@ K₀ の類への移送と重みつき乗法性は次の小段。
 - この結果に 2 または 3 の可逆性、a の正則性の仮定はない。
   次は四シフトの重みつき類と三乗の類を同変同型で結ぶ。
 
+### S10.8c.3a.2b–3b：四シフトの重みつき類
+
+- `Adams/KoszulCubeFourierModelClass` は四シフトの対角作用をスカラー作用の直和と比較し、
+  三回の二項直和の加法性と各スカラー指標類を使って重みつき類を評価した。
+- V(a) 上の一回・二回シフトの類を用い、係数が `2−ζ−ζ²` になることを証明した。
+  この段では E は可換環、ζ の円分関係式は不要。
+- `lake build SerrePositivity.KTheory.Adams.KoszulCubeFourierModelClass` が成功（3309 jobs）。
+- `lake env lean scripts/audit_adams_koszul_fourier_model_class.lean` が成功。
+  三定数の `assert_no_sorry` が通り、公理は標準三公理のみ。
+- 次は同変鎖同型による三乗の類への移送と、係数 3 の一元正規化。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
