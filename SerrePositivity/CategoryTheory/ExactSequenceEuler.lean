@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CategoryTheory.AlternatingSum
 public import SerrePositivity.CategoryTheory.ExactImageSequence
-public import Mathlib.Algebra.FiniteSupport.Basic
+public import SerrePositivity.CategoryTheory.FiniteSupportBounds
 
 /-! # 長完全列に共通する Euler 加法性
 
@@ -52,25 +52,19 @@ lemma additiveLength_euler_exact_sequence
   let d := fun i ↦ l (Abelian.image (δ i))
   have hfa : Function.HasFiniteSupport a := by
     obtain ⟨p, q, hpq⟩ := hb₂
-    apply (Set.finite_Icc p q).subset
+    apply finiteSupport_of_bounded_zero a p q
     intro i hi
-    by_contra hn
-    exact hi (hz _ (IsZero.of_mono (Abelian.image.ι (α i))
-      (hpq i (by simp only [Set.mem_Icc] at hn; omega))))
+    exact hz _ (IsZero.of_mono (Abelian.image.ι (α i)) (hpq i hi))
   have hfb : Function.HasFiniteSupport b := by
     obtain ⟨p, q, hpq⟩ := hb₃
-    apply (Set.finite_Icc p q).subset
+    apply finiteSupport_of_bounded_zero b p q
     intro i hi
-    by_contra hn
-    exact hi (hz _ (IsZero.of_mono (Abelian.image.ι (β i))
-      (hpq i (by simp only [Set.mem_Icc] at hn; omega))))
+    exact hz _ (IsZero.of_mono (Abelian.image.ι (β i)) (hpq i hi))
   have hfd : Function.HasFiniteSupport d := by
     obtain ⟨p, q, hpq⟩ := hb₃
-    apply (Set.finite_Icc p q).subset
+    apply finiteSupport_of_bounded_zero d p q
     intro i hi
-    by_contra hn
-    exact hi (hz _ (IsZero.of_epi (Abelian.factorThruImage (δ i))
-      (hpq i (by simp only [Set.mem_Icc] at hn; omega))))
+    exact hz _ (IsZero.of_epi (Abelian.factorThruImage (δ i)) (hpq i hi))
   have h₂ (i : ℤ) : l (X₂ i) = a i + b i :=
     additiveLength_exact_images l hi ha (h₂ i)
   have h₃ (i : ℤ) : l (X₃ i) = b i + d i :=

@@ -5113,7 +5113,7 @@ R37–R40のコミットは `022387f`、`fcd06d8`、`247e86c`、`4652f6f`、
 | R44b | 双対・次数付きKoszulの直積座標公式を共通化 | 完了：5宣言をCochainConeProductへ移し、二つの射影公式を次数付きKoszulで共用。3259 jobs、8宣言の公理監査・既存直積座標との一致・全依存ゲートが成功。ログ `/tmp/adams-r44-acceptance-build.log`、`/tmp/adams-r44b-audit.log` |
 | R45a-1 | ホモトピー商のstrictMapの証明を三利用先で共用 | 完了：三利用先2718 jobs、4宣言の公理監査・零対象と直和の仮定が不要な型・全依存ゲートが成功。ログ `/tmp/adams-r45a1-{build,audit,boundaries}.log` |
 | R45a-2 | 有界シフトを四箇所で共用し、完全複体の零・シフトを下位へ移動 | 完了：Koszul類・漸近ランクまで2852 jobs、3宣言の公理監査・旧引数型・全依存ゲートが成功。ログ `/tmp/adams-r45a2-{build,audit,boundaries}.log` |
-| R45b-1 | 実数値Eulerの有限台の三証明を共通化 | 未着手 |
+| R45b-1 | 実数値Eulerの有限台の三証明を共通化 | 完了：一般ホモロジー・正規化長さの利用先2577 jobs、4宣言の公理監査・全依存ゲートが成功。ログ `/tmp/adams-r45b1-{build,audit,boundaries}.log` |
 | R45b-2 | 一般・漸近Eulerと完備化Bettiの有限台の三証明を共通化 | 未着手 |
 | R46 | 正則パラメータの有限添字APIを四利用先で共用 | 未着手 |
 | R47a | 閉点のG₀長さ評価を整数Eulerから分離 | 未着手 |
