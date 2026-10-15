@@ -3026,3 +3026,17 @@ Checks.BimoduleUncurryRestrictionのビルドは成功（1804 jobs、警告な�
 担当Leanのsorry/admit/新規axiomは0件、担当差分のgit diff --checkは成功。
 U11bの残る受入はuncurried関手の合成保存と両往復であり、その後U11c〜eへ進む。
 U17までの目標は引き続き継続中。共有一般論・共有ルート・他系列の変更は編集していない。
+
+
+### 17.13 U11b12：uncurryHomの全Hom合成保存
+
+`Functor/ComplexValued.lean`と`Bimodule/CochainComposition.lean`は豊穣合成の保存を、
+通常cochain合成とその次数積符号で計算する補題を供給する。
+`Bimodule/UncurryComposition.lean`は純粋な四重tensorにおいて二作用の交換則を適用し、
+両側のKoszul指数の一致を整数の環計算で証明した。
+既存の四重直和成分の外延性とTensorProduct.ext_fourfold'により、純粋tensorの計算を
+Hom複体全体のchain mapの等式`uncurryHom_comp`へ拡張した。
+
+Checks.BimoduleUncurryCompositionのビルドは成功（1807 jobs、警告なし）。
+直接実行は終了コード0、主要5宣言の公理は標準公理のみ。監査累計1237宣言。
+単位は§17.10、合成保存は本節で揃った。次は実際の逆方向dg関手と両往復の比較。
