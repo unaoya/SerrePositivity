@@ -102,4 +102,23 @@ lemma cochainTensorTripleDegreeMap_partition (a b : ∀ i, P.X i ⟶ P.X i)
   rw [h, cochainTensorTripleDegreeMap_id] at he
   exact he.symm
 
+/-- Reconstruct the low pieces using one unrestricted quotient slot at a time. -/
+lemma cochainTensorTripleDegreeMap_sparse_partition
+    {P : CochainComplex (ModuleCat.{u} R) ℤ} (a b : ∀ i, P.X i ⟶ P.X i)
+    (h : (fun i => a i + b i) = (fun i => 𝟙 (P.X i))) (n : ℤ) :
+    cochainTensorTripleDegreeMap a a a n +
+      cochainTensorTripleDegreeMap b (fun i => 𝟙 (P.X i)) (fun i => 𝟙 (P.X i)) n +
+      cochainTensorTripleDegreeMap (fun i => 𝟙 (P.X i)) b (fun i => 𝟙 (P.X i)) n +
+      cochainTensorTripleDegreeMap (fun i => 𝟙 (P.X i)) (fun i => 𝟙 (P.X i)) b n =
+      𝟙 ((cochainTensor (cochainTensor P P) P).X n) +
+        cochainTensorTripleDegreeMap b b a n + cochainTensorTripleDegreeMap b a b n +
+        cochainTensorTripleDegreeMap a b b n + cochainTensorTripleDegreeMap b b b n +
+        cochainTensorTripleDegreeMap b b b n := by
+  have he := cochainTensorTripleDegreeMap_partition a b h n
+  rw [← h]
+  simp only [cochainTensorTripleDegreeMap_add_first,
+    cochainTensorTripleDegreeMap_add_second, cochainTensorTripleDegreeMap_add_third]
+  rw [← he]
+  abel
+
 end SerrePositivity
