@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.RankOneDPTruncatedTensorFlat
 import SerrePositivity.BhattScholze.RankOneDPDerivedKoszul
 import SerrePositivity.BhattScholze.RankOneDPDerivedFactorization
 import SerrePositivity.BhattScholze.RankOneDPTruncationDerived
@@ -4838,3 +4839,12 @@ assert_no_sorry SerrePositivity.BhattScholze.rankOneDPScalarExtensionTorVanishin
 
 assert_no_sorry SerrePositivity.BhattScholze.rankOneDPDerivedOrdinaryIso_of_koszul
 #print axioms SerrePositivity.BhattScholze.rankOneDPDerivedOrdinaryIso_of_koszul
+
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPTruncatedTensorEquiv
+#print axioms SerrePositivity.BhattScholze.rankOneDPTruncatedTensorEquiv
+
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPTruncatedTensorEquiv_generator
+#print axioms SerrePositivity.BhattScholze.rankOneDPTruncatedTensorEquiv_generator
+
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPTruncatedTensor_flat_iff
+#print axioms SerrePositivity.BhattScholze.rankOneDPTruncatedTensor_flat_iff
