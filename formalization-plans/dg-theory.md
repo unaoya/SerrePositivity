@@ -2119,3 +2119,25 @@ U10は未完。次は射影的加群へ適用し、D(D)の射集合と局所小�
 Checks.ProjectiveLocalizationHom・StageSix・既存Spectra.StageTwoの同時ビルドは成功（2582 jobs）。
 Checks直接実行の主要6宣言は標準公理のみ。累計899宣言。
 U10は未完。次は任意加群の解像度による実際のHom計算と局所小性を公開する。
+
+
+### 13.60 U10b8c：解像度による実際の射集合・roof表示・局所小性
+
+`Derived/ResolutionHom.lean` の`moduleResolutionDerivedHomEquiv`は、任意の証明付き
+射影解像度P→Mに対して、K(D)のHom(P,N)を主D(D)のHom(M,N)と同定する。
+閉零射の像は増大射の導来像の逆との合成であることを明示した。
+`moduleResolutionDerivedHom_surjective`はすべての導来射のroof表示を与え、
+`moduleResolutionDerivedHom_eq_iff`は二つの表示の一致を全dg自然な加群ホモトピーと同値にする。
+
+標準semifree解像度と上記同定から`moduleDerivedHom_small`を証明した。
+主局所化の対象構成を展開して全対象へ適用し、
+`moduleDerivedLocallySmall : LocallySmall.{u} (DerivedModuleCategory A D)`を構成した。
+局所化の元の射宇宙を変更せず、u-smallな代表が存在することを証明している。
+Checksでは任意の導来対象M/Nについて`Small.{u} (M ⟶ N)`が推論できることも検査する。
+
+Checks.ResolutionHom・Checks.ProjectiveLocalizationHom・StageSix・既存Spectra.StageTwoの
+同時ビルドは成功（2586 jobs）。Checks直接実行の主要6宣言は標準公理のみ。累計905宣言。
+U10の実際の射集合計算・局所小性は受入を満たした。
+U10全体は未完。残るのはK(D)/D(D)の三角構造、acyclic部分圏とVerdier商の比較、
+導来余積、一対象A比較の三角形/余積保存である。
+共有モデル構造・Quillen・転送・SM7への新規要求はない。
