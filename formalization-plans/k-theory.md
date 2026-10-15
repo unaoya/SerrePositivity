@@ -4,7 +4,7 @@
 M1・M2の構成、A1〜C2、共有ホモトピー論H0〜H6、および§129で指定した段階1〜3まで実装・検証済み。
 円スペクトルのレベルモデル・関手的置換・monoidal/SM7と既存豊穣APIの接続が完成した。
 安定化を含むM3全体、M4、非連結K理論、定理3.1・補題4.6への接続は未完成である。
-段階1〜3の完了監査は§158。段階4のR0〜R2が完了し、R3は認識部分まで実装。最新記録・残作業は§161。
+段階1〜3の完了監査は§158。段階4のSmith認識R0〜R3も完了。最新の受入監査と後続範囲は§163。
 mathlibへの追加・登録は今回の完了条件に含めず、必要な構造と法則をこのリポジトリ内に実装する。
 検証済みのステップごとにコミットする。
 段階4はSmith型の一般局所化存在を証明する方針に確定（§159）。今は∞圏を導入しない。M5は別チャットで進める。段階3の完了とP3・M3全体の完了は区別する。
@@ -6546,3 +6546,92 @@ R全体の受入条件は維持し、R3完了後にA/F/L/E/S系列を再見積�
 R3全体は未完了。残りは§161.3の1・3・4、すなわちcoproduct閉性の一般的導出、
 追加仮定を外したSmith認識の統合、最終定理の利用例・監査である。
 一般論を証明する当初の受入条件を維持する。
+
+
+## 163. R0〜R3完了：一般Smith認識定理の受入監査（2026-10-15）
+
+R系列を完了した。§161〜162に記録した二つの追加ゲートをともに証明し、
+元の受入条件を保った最終Smith認識定理を共有入口に公開した。
+最終入口は`HomotopicalAlgebra/Smith/Existence.lean`の`modelCategoryOfSmith`。
+`Smith/Recognition.lean`は代数的な認識補題として再利用し、最終統合を別ファイルにした。
+R0・R1・R2の受入証拠は§160〜161と各checkスクリプトにあり、今回も再実行した。
+
+### 163.1 最終定理の入力と出力
+
+宇宙wに関して局所可呈示なCとw-smallな生成射クラスIを入力とする。
+候補Wについて、Arrow C内の充満部分圏のaccessibilityと包含関手のaccessibility、
+2-out-of-3、retract閉性を仮定する。さらに`I.rlp ≤ W`と
+`I.rlp.llp ∩ W`のpushout・w-small超限合成閉性を仮定する。
+`Arrow C`自体のaccessibilityは、Cの局所可呈示性と固定版MathlibのComma一般論から導く。
+
+この入力から、同じC上でcofibration=`I.rlp.llp`、弱同値=W、
+fibration=`(I.rlp.llp ∩ W).rlp`としてMathlib ModelCategoryを構成する。
+呼出側の三クラスとの等式を受け取る形式なので、既存の型・クラスと直接接続できる。
+三クラスの選択から構成を実行する利用例も検証した。
+
+J、I/JのSOA、cell acyclicity、coproduct閉性、有限極限・有限余極限を追加仮定に
+要求しない。これらを証明内で導く。新しいモデル圏の定義や∞圏は導入していない。
+
+### 163.2 受入項目と証拠
+
+| 受入項目 | 実装・検証の証拠 |
+| --- | --- |
+| R0：小さいsolution族 | SolutionSetの単一射・小さい射クラスに対するsquare分解。`check_smith_solution_set`、全18宣言 |
+| R1：共通正則基数とSOA | Smallnessの始域・終域の共通基数と実際のMathlib SOA。`check_smith_smallness`、全5宣言。最終利用例ではI/J両族の全端点を一つの基数で扱う |
+| R2：Jの構成 | GeneratingTrivialCofibrationsの小さいJ、`J ≤ I.rlp.llp ∩ W`、任意squareのJ経由分解。`check_smith_generators`、全40宣言 |
+| R3：coproduct閉性の導出 | CoproductClosureの`stableUnderCoproducts`。整列した添字に沿って成分を一つずつ置換し、後続段階を一本の射のpushout、極限段階をeventually constantな成分のcolimitとして証明。空族を含む。`check_smith_coproduct_closure`、全36宣言 |
+| R3：必要な極限 | Completenessの`locallyPresentable_hasLimits`。全w-small極限を導き、有限極限を得る。`check_smith_completeness`、全3宣言 |
+| R3：両右クラス・左クラス | `smithGenerators_rlp`で`I.rlp = J.rlp ∩ W`、`smithGenerators_left`で`J.rlp.llp = I.rlp.llp ∩ W`、`smithGenerators_fibrations`で右直交を同定 |
+| R3：Mathlibモデル構造 | `modelCategoryOfSmith`。構成済みJのSOA、導出済みacyclicity、両クラスの一致から既存Transfer/Recognitionを適用 |
+| R3：生成性・両関手的分解 | `cofibrantlyGeneratedOfSmith`と既存Generated API。構成したモデル上で三クラスと生成性、両関手的分解を同時に使う利用例が通過 |
+| 全体の利用・監査 | `check_smith_existence`はJ・SOA・acyclicity・coproduct閉性・有限極限を仮定せず、最終入力だけから上記を使用。Existence全16宣言、Recognition全11宣言を監査 |
+
+coproduct閉性を入力に追加した途中のAPIだけで完了扱いにしたものではない。
+IとWの入力から構成したJを使い、元のpushout・超限合成閉性だけで最後まで通した。
+
+### 163.3 実行済み検証とコミット
+
+最終コードで以下を実行し、すべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations SerrePositivity.Spectra.General.Foundations SerrePositivity.Spectra.Foundations SerrePositivity.Spectra.StageTwo`（2373 jobs）。
+- `lake env lean scripts/check_smith_solution_set.lean`。
+- `lake env lean scripts/check_smith_smallness.lean`。
+- `lake env lean scripts/check_smith_generators.lean`。
+- `lake env lean scripts/check_smith_completeness.lean`。
+- `lake env lean scripts/check_smith_coproduct_closure.lean`。
+- `lake env lean scripts/check_smith_recognition.lean`。
+- `lake env lean scripts/check_smith_existence.lean`。
+- `lake env lean scripts/check_homotopical_foundations.lean`。
+- `lake env lean scripts/check_spectra_stage2.lean`。
+- `lake env lean scripts/audit_homotopical_foundations.lean`（537宣言・37モジュール）。
+- `lake env lean scripts/audit_spectra.lean`（3089宣言・319モジュール）。
+- `git diff --check`。
+
+Smithの7モジュール全129宣言と共有入口の全宣言は標準公理のみ。
+一般論への新規sorry・引用axiomはない。スペクトル側の既存公理監査も維持した。
+M5・dg・他チャットの実装・共有ルートは変更せず、その未コミット変更を保持した。
+
+検証済み単位ごとの主なコミット：
+`9755ae4`・`4036f06`（R0）、`32d4f23`（R1）、`4dc3d65`（R2）、
+`6b4a22b`（認識部分）、`2b4a35c`（完備性）、`c3013d2`（coproduct閉性）、
+`58671c7`（最終Smith認識・生成性）。実施記録も別コミットで保存している。
+
+### 163.4 現在地と後続作業の見積もり境界
+
+R系列の残作業は0。§160.2の7〜14単位は着手前の設計値で、今後の残見積もりには
+含めない。共通基数・SOA・Jの構成・完備性・coproduct閉性・認識定理を証明済みの
+依存として、後続系列から再利用できる。
+
+ただし一般の左Bousfield局所化存在・安定化・M3全体は未完成であり、今回の完了範囲に
+含めない。次の順序と受入条件は§159.4を維持する。
+
+1. A0/A1：生成分解・置換のaccessibility、元モデル弱同値のaccessibility。
+2. F0〜F4：resolution・homotopy function complexとその自然性・不変性。
+3. L0〜L5：S-local対象・局所弱同値、そのaccessibilityと閉性、今回のSmith定理による局所化存在・Quillen普遍性。
+4. E0およびS0〜S3：必要条件下の豊穣適合、スペクトル側のcombinatorial性・左固有性、安定化への適用。
+
+R完了により認識部分の不確実性は除けたが、accessible分解、resolution、局所弱同値の
+accessibility、一般スペクトルの局所可呈示性・左固有性は引き続き未解消。
+旧cellular経路の45〜90単位をSmith経路の残工数には流用しない。
+後続の数値はA0/A1の証明契約・既存補題への接続を確認してから更新し、
+今回は検証していない所要日数や確定した総単位数を提示しない。
