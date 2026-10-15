@@ -13,6 +13,7 @@ public import SerrePositivity.HomotopicalAlgebra.Smith.CoproductClosure
 public import SerrePositivity.HomotopicalAlgebra.Smith.GeneratingTrivialCofibrations
 public import SerrePositivity.HomotopicalAlgebra.Smith.Recognition
 public import SerrePositivity.HomotopicalAlgebra.Smith.Existence
+public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleFactorization
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor

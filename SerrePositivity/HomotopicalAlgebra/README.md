@@ -323,6 +323,20 @@ J・SOA・acyclicity・coproduct閉性・有限極限/余極限を追加仮定�
 両分解・共通基数・square分解まで通す利用例と、全宣言の公理監査を含む。
 R系列の終了範囲はSmith認識。局所化存在やスペクトルの安定化は後続系列で扱う。
 
+## A0の入口：指定した分解データからの移送（途中、2026-10-15）
+
+`Smith/AccessibleFactorization.lean`は、指定したFunctiorialFactorizationDataのZが
+κ-accessibleであるという明示的な仮定から、左右のArrow値の因子と始対象・終対象に
+沿った制限のκ-accessibilityを導く。Arrow値の関手のaccessibilityは両端点で検出する。
+`initialComparison`・`terminalComparison`は自然変換であり、対応するモデル分解データ
+を使えば制限はcofibrant/fibrant置換になり、比較射は自明fibration/cofibrationとなる。
+既存ModelReplacementの置換は、そこで選ばれたデータの制限と定義的に一致する。
+
+これは条件付き移送の入口であり、A0の完成ではない。局所可呈示性と小さい生成族から
+Z自体のaccessibilityを証明し、二つのモデル分解とQ/Rに共通の基数を得る作業が残る。
+A1の元モデル弱同値のaccessibilityも未着手。関手的というだけではaccessibleと仮定しない。
+検証は`scripts/check_accessible_factorization_transport.lean`（全41宣言・標準公理のみ）。
+
 `check_smith_solution_set`はモデル構造のない抽象圏で、独立した宇宙、CommSqの左右成分、
 小さい射族/射クラス全体の分解、空の射族、General/StageTwoとの併用を検証する。
 同スクリプトはこのモジュールの全宣言を標準公理のみで監査する。
