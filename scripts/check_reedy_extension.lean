@@ -1,6 +1,7 @@
 import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeExtension
 import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionOfFunctor
 import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Simplex
+import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionDegree
 import Lean.Util.CollectAxioms
 
 universe v u t v' u'
@@ -75,6 +76,17 @@ example {x y : Lower r (r.deg j)} (f : x ⟶ y) :
   (RelativeExtension.extension m a q).toFunctor_map_lower f
 end Relative
 
+example (hinj : Function.Injective r.deg) (d : BoundaryExtension r j H) :
+    lowerToUpper r j ⋙ d.degreeExtension hinj ≅ H := d.degreeRestrictionIso hinj
+
+example (j : SimplexCategory) (H : Lower simplex (simplex.deg j) ⥤ C)
+    (d : BoundaryExtension simplex j H) : Upper simplex (simplex.deg j) ⥤ C :=
+  d.degreeExtension (fun _ _ h ↦ SimplexCategory.ext h)
+
+example (j : SimplexCategoryᵒᵖ) (H : Lower simplexOp (simplexOp.deg j) ⥤ C)
+    (d : BoundaryExtension simplexOp j H) : Upper simplexOp (simplexOp.deg j) ⥤ C :=
+  d.degreeExtension (fun _ _ h ↦ Opposite.unop_injective (SimplexCategory.ext h))
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -87,7 +99,8 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionTransformation,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionBoundary,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeExtension,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionOfFunctor]
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionOfFunctor,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionDegree]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
