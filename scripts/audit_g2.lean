@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.MonoidalUnitHomRing
 import SerrePositivity.HomologicalAlgebra.DerivedTensorLinear
 import SerrePositivity.HomologicalAlgebra.DerivedUnitHomologyNatural
 import SerrePositivity.HomologicalAlgebra.UnitHomologyNaturality
@@ -1154,3 +1155,18 @@ example (R : Type*) [CommRing R] :
 
 example (R : Type*) [CommRing R] :
     CategoryTheory.MonoidalLinear R (DerivedCategory.Minus (ModuleCat R)) := inferInstance
+
+-- G2-5b-b4: section rings with the existing addition and R module structure.
+assert_no_sorry SerrePositivity.unitCoyoneda_braiding
+assert_no_sorry SerrePositivity.commMonUnitHom_mul
+assert_no_sorry SerrePositivity.commMonUnitHom_one
+assert_no_sorry SerrePositivity.commMonUnitHomMap
+assert_no_sorry SerrePositivity.commMonUnitHom_smul_mul
+assert_no_sorry SerrePositivity.commMonUnitHom_mul_smul
+#print axioms SerrePositivity.commMonUnitHomCommRing
+#print axioms SerrePositivity.commMonUnitHomMap
+#print axioms SerrePositivity.commMonUnitHomAlgebra
+assert_no_sorry SerrePositivity.unitCoyonedaLaxBraided
+assert_no_sorry SerrePositivity.commMonUnitHomCommMonoid
+assert_no_sorry SerrePositivity.commMonUnitHomCommRing
+assert_no_sorry SerrePositivity.commMonUnitHomAlgebra
