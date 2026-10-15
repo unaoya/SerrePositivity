@@ -21,6 +21,7 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Smith.CoproductClosure,
     `SerrePositivity.HomotopicalAlgebra.Smith.GeneratingTrivialCofibrations,
     `SerrePositivity.HomotopicalAlgebra.Smith.Recognition,
+    `SerrePositivity.HomotopicalAlgebra.Smith.Existence,
     `SerrePositivity.HomotopicalAlgebra.Transfer.Right,
     `SerrePositivity.HomotopicalAlgebra.Quillen.Brown,
     `SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor,

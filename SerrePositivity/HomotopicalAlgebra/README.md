@@ -306,6 +306,23 @@ coproduct閉性の導出と最終Smith定理の統合・監査が残る。
 `scripts/check_smith_coproduct_closure.lean`は一般族、空族、Mathlib閉性クラス、
 Smithのacyclicityへの接続を検証する。これでR3に残るのは最終定理の統合・監査。
 
+## Smith R0〜R3：最終認識定理（2026-10-15）
+
+最終入口は`Smith/Existence.lean`の`modelCategoryOfSmith`。
+局所可呈示なC、小さいI、accessibleかつaccessibly embeddedな候補W、
+Wの2-out-of-3・retract閉性、`I.rlp ≤ W`、`I.rlp.llp ∩ W`のpushout・超限合成閉性
+から、指定した三クラス上にMathlibのModelCategoryを構成する。
+cofibrationは`I.rlp.llp`、弱同値はW、fibrationは`(I.rlp.llp ∩ W).rlp`。
+`Arrow C`のaccessibilityも局所可呈示性から既存Comma一般論で導く。
+
+`smithGenerators`でJを構成し、小ささ、square分解、`J.rlp.llp = I.rlp.llp ∩ W`、
+`I.rlp = J.rlp ∩ W`を証明する。`cofibrantlyGeneratedOfSmith`は構成したモデル上の
+生成性を与え、既存Generated APIから両関手的分解を得る。
+J・SOA・acyclicity・coproduct閉性・有限極限/余極限を追加仮定に要求しない。
+`scripts/check_smith_existence.lean`は三クラスを選ぶところからモデル構造・生成性・
+両分解・共通基数・square分解まで通す利用例と、全宣言の公理監査を含む。
+R系列の終了範囲はSmith認識。局所化存在やスペクトルの安定化は後続系列で扱う。
+
 `check_smith_solution_set`はモデル構造のない抽象圏で、独立した宇宙、CommSqの左右成分、
 小さい射族/射クラス全体の分解、空の射族、General/StageTwoとの併用を検証する。
 同スクリプトはこのモジュールの全宣言を標準公理のみで監査する。
