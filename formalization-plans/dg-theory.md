@@ -2354,3 +2354,18 @@ U10全受入は未完。回転の順方向を示しただけでPretriangulated�
    主局所化関手と一対象A比較の三角性を証明する。
 
 共有モデル圏・Quillen・転送・SM7への新しい不足要求はない。
+
+
+### 13.71 U10t9：cone shiftの既存比較とshift交換の整合性
+
+`Complexes/ConeShift.lean`は加群射のshiftの評価と既存複体のshift射の等式を
+明示的な引数に取り、Mathlibの`mappingCone.shiftIso`を指定されたconeへ移送する。
+両射のcochain表示、lift/descの境界条件、右包含・connectingとの可換式を証明した。
+`Module/ShiftElements.lean`は主Homのshift射を任意の斉次要素に適用した成分と微分を公開する。
+成分の符号は(-1)^(s*q)で、既存の豊穣shiftをそのまま使用する。
+
+`Module/ShiftCompatibility.lean`は、加法的な商関手のshift比較と充満・本質的全射性を使い、
+K(D)の各整数shiftが加法的であることを証明した。
+評価でshift交換同型が既存複体の交換同型に一致することも証明した。
+Checks.ConeShiftCompatibilityのビルドと直接実行で主要11宣言を監査し、標準公理のみ。累計1025宣言。
+U10は未完。次はcone shift同型を実際の加群圏に構成し、標準三角形へ運ぶ。
