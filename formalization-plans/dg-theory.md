@@ -3125,3 +3125,22 @@ U11d/e、U12〜U17も引き続き未完であり、共有一般論・共有ル�
 Checks.LeftModuleCategoryのビルドは成功（1783 jobs、警告なし）、直接実行は終了コード0。
 主要10宣言の公理は標準公理のみ。監査累計1287宣言。
 次は左右の実際の加群射をbalanced tensorの降下mapへ接続し、双関手と成分式を受け入れる。
+
+
+### 17.19 U11c4：実際の加群圏上の双関手と斉次成分式（U11c受入）
+
+`Tensor/Functor.lean`は左右の閉零加群射を評価し、任意次数の作用との可換性から
+既存mapOfFamiliesへ接続した。包含での計算、恒等・合成法則を証明し、
+ModuleCategory × LeftModuleCategoryからCh(A)への実際の双関手を構成した。
+`Tensor/Elements.lean`は純粋斉次tensorの像、右作用の符号(-1)^(ap)を保持するbalanced関係、
+両変数mapの成分式を公開する。右作用の証明ではHom_Dとopposite Hom、評価対象と
+元の加群値を明示して型を合わせ、符号や作用の仮定を弱めていない。
+
+Checks.BalancedTensorFunctor・既存StageSeven・Spectra.StageTwoの同時ビルドは
+成功（2647 jobs、終了コード0、追加ソースの警告なし）。主要10宣言の直接実行も終了コード0、
+公理はpropext・Classical.choice・Quot.soundのみ。監査累計1297宣言。
+任意可換環・独立対象宇宙・Small.{u} Dで双関手を検査し、一対象ZMod 2と次数1/-1の関係も確認した。
+これで§17.16〜19を合わせ、U11cの対象・普遍性・外延性・両変数map/法則・符号付き成分式を満たす。
+U11全体は未完。次はU11dの両側Yoneda評価同型とbimodule合成の残る作用、
+その後U11eの随伴・単位/結合比較・三角/五角・全変数自然性を進める。
+U12〜U17とD4mは引き続き未完。共有ルート・共有一般論・並行作業ファイルは変更していない。
