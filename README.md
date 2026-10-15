@@ -16,7 +16,7 @@ its perfect-complex and rank-quotient realizations, the standard commutative alg
 (regular parameters, unmixedness, Hilbert–Samuel theory, the Koszul multiplicity formula) and
 the connection to the main theorem are implemented.
 
-The main theorem still depends on **5 external quotations and 2 deferred K-theory proofs**.
+The main theorem still depends on **4 external quotations and 2 deferred K-theory proofs**.
 `main_statement` and `core_statement` have no direct `sorry`, but depend on `sorryAx`.
 They are not proofs of the main theorem without those inputs. The complete Noetherian flat
 residue-field extension is now constructed without quotations; its legacy `Inputs` entry point
@@ -48,10 +48,12 @@ and a comparison of Tor over `R` and over `R[[Y]]`
   (`theorem_3_1_K0`).
 - §4 (Theorem 4.7): proved, except that the descent of Lemma 4.6 is deferred
   (`Section4.supportedRankK0_descent`).
-- §5 (Lemmas 5.2–5.6, the reduction and the core case): proved, with the classical input
-  Roberts–Gillet–Soulé vanishing theorem (`Inputs.intersectionVanishing`) quoted. The
-  residue-characteristic-zero case (Lemma 5.1) is proved by Serre's diagonal argument; the
-  general quotation `Inputs.serrePositivity_of_field` remains but is not used.
+- §5 (Lemmas 5.2–5.6, the reduction and the core case): proved. The Roberts–Gillet–Soulé
+  vanishing theorem (`Inputs.intersectionVanishing`) is proved in all residue characteristics
+  using supported cyclic Adams operations (the square, and the cube after a cyclotomic local
+  extension in residue characteristic two). The residue-characteristic-zero case (Lemma 5.1)
+  is proved by Serre's diagonal argument; the general quotation
+  `Inputs.serrePositivity_of_field` remains but is not used.
 
 The cyclic length estimate used in CLMST Proposition 4.0.10 is proved from finite-stage
 Frobenius bounds and low-dimensional length growth, with Bhatt–Scholze existence and

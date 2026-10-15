@@ -1,7 +1,7 @@
 # 外部引用4〜5：古典的交点重複度の証明経路
 
-作成：2026-10-13。状態：調査・設計段階。
-従来の1〜5の計画から4・5の内容を分離した。今回、証明経路の選択や実装には着手しない。
+作成：2026-10-13。更新：2026-10-15。状態：引用5は Adams の経路で証明・監査完了。
+従来の1〜5の計画から4・5の内容を分離した。以下の候補比較は当初の調査として保持する。
 環の存在構成1〜3は [専用計画](local-algebra-1-3.md)、6は [Frobeniusの計画](frobenius-homology.md)。
 全体は [overview](overview.md)を参照する。
 
@@ -10,8 +10,9 @@
 4は `Inputs.serrePositivity_of_field`、5は `Inputs.intersectionVanishing`。
 所在は [SerrePositivity](../SerrePositivity/Inputs/SerrePositivity.lean) と
 [IntersectionTheory](../SerrePositivity/Inputs/IntersectionTheory.lean)。
-どちらも直接の `sorry` がある。深い文献結果の引用は許容されるが、具体的な対象・演算・射を
-定義し、接続を証明したことと引用自身を証明したことを区別する。
+4の一般版は直接の `sorry` が残るが、主定理が使う剰余標数零の正値性は証明済み。
+5は [Adams の計画](intersection-vanishing-adams.md) の S1–S11 により全剰余標数で証明済み。
+公開型を保持し、公開消滅と利用先に `sorryAx` がないことを専用・共通監査で確認した。
 
 ## 2. 4番：Serre の等標数正値性
 
@@ -76,6 +77,8 @@
 
 ## 3. 5番：Roberts–Gillet–Soulé の交点重複度消滅
 
+2026-10-15：巡回 Adams 二乗と三乗で証明・監査完了。以下の候補は履歴として残す。
+
 ### 主張
 
 任意の正則局所環 `R` と有限生成加群 `M,N` に対し、テンソル積が有限長で
@@ -84,7 +87,7 @@
 \dim M+\dim N<\dim R
 \]
 
-なら `χ^R(M,N)=0`。現在の引用は体を含む場合に限定されず、混標数も含む。
+なら `χ^R(M,N)=0`。証明済みの公開型は体を含む場合に限定されず、混標数も含む。
 論文では低次元の項を除くために用いる。
 定理3.1・補題4.6の二つの降下入力とは別の外部定理である。
 
