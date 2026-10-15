@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.KTheory.ResolutionAdditivity
+public import SerrePositivity.CategoryTheory.AlternatingSum
 public import Mathlib.Algebra.FiniteSupport.Basic
 public import Mathlib.Algebra.BigOperators.Finprod
 public import Mathlib.Data.Int.Interval
@@ -61,21 +62,6 @@ lemma mk_exact_images (X₁ X₂ X₃ : SupportedFGModuleOn Z)
   exact h
 end G0WithSupport
 
-/-- Alternating sums in any abelian group change sign under an index shift. -/
-lemma alternatingGroupFinsum_sub_one {A : Type*} [AddCommGroup A] (f : ℤ → A) :
-    (∑ᶠ i : ℤ, ((i.negOnePow : ℤˣ) : ℤ) • f (i - 1)) =
-      -(∑ᶠ i : ℤ, ((i.negOnePow : ℤˣ) : ℤ) • f i) := by
-  calc
-    _ = ∑ᶠ i : ℤ, (((i + 1).negOnePow : ℤˣ) : ℤ) • f i := by
-      have h := finsum_comp_equiv (Equiv.addRight (1 : ℤ))
-        (f := fun i : ℤ => ((i.negOnePow : ℤˣ) : ℤ) • f (i - 1))
-      simpa using h.symm
-    _ = ∑ᶠ i : ℤ, -(((i.negOnePow : ℤˣ) : ℤ) • f i) := by
-      congr 1
-      funext i
-      simp [Int.negOnePow_add]
-    _ = _ := finsum_neg_distrib _
-
 /-- The Euler class of a sequence of finite supported modules. -/
 def supportedModuleEuler (X : ℤ → SupportedFGModuleOn Z) : G0WithSupport Z :=
   ∑ᶠ i : ℤ, ((i.negOnePow : ℤˣ) : ℤ) • G0WithSupport.mk (X i)
@@ -123,36 +109,7 @@ lemma supportedModuleEuler_exact_sequence
     obtain ⟨j, rfl⟩ : ∃ j : ℤ, i = j + 1 := ⟨i - 1, by omega⟩
     rw [add_sub_cancel_right]
     exact G0WithSupport.mk_exact_images _ _ _ (δ j) (α (j + 1)) (h₁ j)
-  have haw := Function.HasFiniteSupport.smul_right
-    (fun i : ℤ => ((i.negOnePow : ℤˣ) : ℤ)) hfa
-  have hbw := Function.HasFiniteSupport.smul_right
-    (fun i : ℤ => ((i.negOnePow : ℤˣ) : ℤ)) hfb
-  have hdw := Function.HasFiniteSupport.smul_right
-    (fun i : ℤ => ((i.negOnePow : ℤˣ) : ℤ)) hfd
-  have hds : Function.HasFiniteSupport
-      (fun i : ℤ => ((i.negOnePow : ℤˣ) : ℤ) • d (i - 1)) :=
-    Function.HasFiniteSupport.smul_right
-    (fun i : ℤ => ((i.negOnePow : ℤˣ) : ℤ))
-    (hfd.preimage (Equiv.subRight (1 : ℤ)).injective.injOn)
-  have E₂ : supportedModuleEuler X₂ =
-      (∑ᶠ i : ℤ, ((i.negOnePow : ℤˣ) : ℤ) • a i) +
-      (∑ᶠ i : ℤ, ((i.negOnePow : ℤˣ) : ℤ) • b i) := by
-    unfold supportedModuleEuler
-    simp_rw [e₂, smul_add]
-    exact finsum_add_distrib haw hbw
-  have E₃ : supportedModuleEuler X₃ =
-      (∑ᶠ i : ℤ, ((i.negOnePow : ℤˣ) : ℤ) • b i) +
-      (∑ᶠ i : ℤ, ((i.negOnePow : ℤˣ) : ℤ) • d i) := by
-    unfold supportedModuleEuler
-    simp_rw [e₃, smul_add]
-    exact finsum_add_distrib hbw hdw
-  have E₁ : supportedModuleEuler X₁ =
-      -(∑ᶠ i : ℤ, ((i.negOnePow : ℤˣ) : ℤ) • d i) +
-      (∑ᶠ i : ℤ, ((i.negOnePow : ℤˣ) : ℤ) • a i) := by
-    unfold supportedModuleEuler
-    simp_rw [e₁, smul_add]
-    rw [← alternatingGroupFinsum_sub_one d]
-    exact finsum_add_distrib hds haw
-  rw [E₁, E₂, E₃]
-  abel
+  unfold supportedModuleEuler
+  simp_rw [e₂, e₁, e₃]
+  exact alternatingGroupFinsum_exact a b d hfa hfb hfd
 end SerrePositivity

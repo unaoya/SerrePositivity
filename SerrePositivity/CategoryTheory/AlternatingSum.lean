@@ -5,6 +5,7 @@ public import Mathlib.Algebra.Ring.NegOnePow
 public import Mathlib.Basic.Real.Basic
 public import Mathlib.Algebra.FiniteSupport.Basic
 public import Mathlib.Tactic.Ring
+public import Mathlib.Tactic.Abel
 public import Mathlib.Tactic.Linarith
 public import Mathlib.Tactic.LinearCombination
 public import Mathlib.Data.Int.Interval
@@ -19,35 +20,58 @@ public import Mathlib.Data.Int.Interval
 
 namespace SerrePositivity
 
-/-- 整数添字の交代和を一つずらすと符号が反転する。 -/
-lemma alternatingFinsum_sub_one (f : ℤ → ℝ) :
-    (∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * f (i - 1)) =
-      -(∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * f i) := by
+/-- Alternating sums in any abelian group change sign under an index shift. -/
+lemma alternatingGroupFinsum_sub_one {A : Type*} [AddCommGroup A] (f : ℤ → A) :
+    (∑ᶠ i : ℤ, ((i.negOnePow : ℤˣ) : ℤ) • f (i - 1)) =
+      -(∑ᶠ i : ℤ, ((i.negOnePow : ℤˣ) : ℤ) • f i) := by
   calc
-    _ = ∑ᶠ i : ℤ, (((i + 1).negOnePow : ℤ) : ℝ) * f i := by
+    _ = ∑ᶠ i : ℤ, (((i + 1).negOnePow : ℤˣ) : ℤ) • f i := by
       have h := finsum_comp_equiv (Equiv.addRight (1 : ℤ))
-        (f := fun i : ℤ ↦ ((i.negOnePow : ℤ) : ℝ) * f (i - 1))
+        (f := fun i : ℤ => ((i.negOnePow : ℤˣ) : ℤ) • f (i - 1))
       simpa using h.symm
-    _ = ∑ᶠ i : ℤ, -(((i.negOnePow : ℤ) : ℝ) * f i) := by
+    _ = ∑ᶠ i : ℤ, -(((i.negOnePow : ℤˣ) : ℤ) • f i) := by
       congr 1
       funext i
       simp [Int.negOnePow_add]
     _ = _ := finsum_neg_distrib _
 
+/-- Cancellation of the connecting images in a group-valued exact Euler sequence. -/
+lemma alternatingGroupFinsum_exact {A : Type*} [AddCommGroup A] (a b d : ℤ → A)
+    (ha : Function.HasFiniteSupport a) (hb : Function.HasFiniteSupport b)
+    (hd : Function.HasFiniteSupport d) :
+    (∑ᶠ i : ℤ, ((i.negOnePow : ℤˣ) : ℤ) • (a i + b i)) =
+      (∑ᶠ i : ℤ, ((i.negOnePow : ℤˣ) : ℤ) • (d (i - 1) + a i)) +
+      ∑ᶠ i : ℤ, ((i.negOnePow : ℤˣ) : ℤ) • (b i + d i) := by
+  have haw : Function.HasFiniteSupport
+      (fun i : ℤ => ((i.negOnePow : ℤˣ) : ℤ) • a i) :=
+    Function.HasFiniteSupport.smul_right (fun i : ℤ => ((i.negOnePow : ℤˣ) : ℤ)) ha
+  have hbw : Function.HasFiniteSupport
+      (fun i : ℤ => ((i.negOnePow : ℤˣ) : ℤ) • b i) :=
+    Function.HasFiniteSupport.smul_right (fun i : ℤ => ((i.negOnePow : ℤˣ) : ℤ)) hb
+  have hdw : Function.HasFiniteSupport
+      (fun i : ℤ => ((i.negOnePow : ℤˣ) : ℤ) • d i) :=
+    Function.HasFiniteSupport.smul_right (fun i : ℤ => ((i.negOnePow : ℤˣ) : ℤ)) hd
+  have hds : Function.HasFiniteSupport
+      (fun i : ℤ => ((i.negOnePow : ℤˣ) : ℤ) • d (i - 1)) :=
+    Function.HasFiniteSupport.smul_right (fun i : ℤ => ((i.negOnePow : ℤˣ) : ℤ))
+      (hd.preimage (Equiv.subRight (1 : ℤ)).injective.injOn)
+  simp_rw [smul_add]
+  rw [finsum_add_distrib haw hbw, finsum_add_distrib hds haw,
+    finsum_add_distrib hbw hdw, alternatingGroupFinsum_sub_one]
+  abel
+
+/-- 整数添字の交代和を一つずらすと符号が反転する。 -/
+lemma alternatingFinsum_sub_one (f : ℤ → ℝ) :
+    (∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * f (i - 1)) =
+      -(∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * f i) := by
+  simpa only [zsmul_eq_mul] using alternatingGroupFinsum_sub_one f
+
 /-- 整数添字の交代和を正方向へ一つずらすと符号が反転する。 -/
 lemma alternatingFinsum_add_one (f : ℤ → ℝ) :
     (∑ᶠ q : ℤ, ((q.negOnePow : ℤ) : ℝ) * f (q + 1)) =
       -(∑ᶠ q : ℤ, ((q.negOnePow : ℤ) : ℝ) * f q) := by
-  calc
-    _ = ∑ᶠ q : ℤ, (((q - 1).negOnePow : ℤ) : ℝ) * f q := by
-      have h := finsum_comp_equiv (Equiv.addRight (1 : ℤ))
-        (f := fun q : ℤ => (((q - 1).negOnePow : ℤ) : ℝ) * f q)
-      simpa using h
-    _ = ∑ᶠ q : ℤ, -(((q.negOnePow : ℤ) : ℝ) * f q) := by
-      congr 1
-      funext q
-      simp [sub_eq_add_neg, Int.negOnePow_add]
-    _ = _ := finsum_neg_distrib _
+  have h := alternatingFinsum_sub_one (fun i => f (i + 1))
+  simpa using (congrArg Neg.neg h).symm
 
 /-- 正の添字で `0` になる実数列 `a : ℤ → ℝ` について、交代和 `Σ_{i ∈ ℤ} (-1)^i a_i` は
 `Σ_{n ∈ ℕ} (-1)^n a_{-n}` に等しい。`finsum` の台が `{-n}` に含まれることと、単射 `n ↦ -n` に沿った

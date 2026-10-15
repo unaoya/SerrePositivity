@@ -85,32 +85,7 @@ lemma additiveLength_euler_exact_sequence
     obtain ⟨j, rfl⟩ : ∃ j : ℤ, i = j + 1 := ⟨i - 1, by omega⟩
     rw [add_sub_cancel_right]
     exact additiveLength_exact_images l hi ha (h₁ j)
-  have haw : Function.HasFiniteSupport (fun i : ℤ ↦ ((i.negOnePow : ℤ) : ℝ) * a i) :=
-    hfa.mul_right _
-  have hbw : Function.HasFiniteSupport (fun i : ℤ ↦ ((i.negOnePow : ℤ) : ℝ) * b i) :=
-    hfb.mul_right _
-  have hdw : Function.HasFiniteSupport (fun i : ℤ ↦ ((i.negOnePow : ℤ) : ℝ) * d i) :=
-    hfd.mul_right _
-  have hds : Function.HasFiniteSupport (fun i : ℤ ↦ ((i.negOnePow : ℤ) : ℝ) * d (i - 1)) := by
-    have hdp : Function.HasFiniteSupport (fun i : ℤ ↦ d (i - 1)) :=
-      hfd.preimage (Equiv.subRight (1 : ℤ)).injective.injOn
-    exact hdp.mul_right _
-  have e₂ : (∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * l (X₂ i)) =
-      (∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * a i) +
-      (∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * b i) := by
-    simp_rw [h₂, mul_add]
-    exact finsum_add_distrib haw hbw
-  have e₃ : (∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * l (X₃ i)) =
-      (∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * b i) +
-      (∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * d i) := by
-    simp_rw [h₃, mul_add]
-    exact finsum_add_distrib hbw hdw
-  have e₁ : (∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * l (X₁ i)) =
-      -(∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * d i) +
-      (∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * a i) := by
-    simp_rw [h₁, mul_add]
-    rw [finsum_add_distrib hds haw, alternatingFinsum_sub_one]
-  rw [e₁, e₂, e₃]
-  abel
+  simp_rw [h₂, h₁, h₃]
+  simpa only [zsmul_eq_mul] using alternatingGroupFinsum_exact a b d hfa hfb hfd
 
 end SerrePositivity
