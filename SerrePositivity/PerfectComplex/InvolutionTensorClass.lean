@@ -19,13 +19,11 @@ variable {P Q : CochainComplex (ModuleCat.{u} R) ℤ}
 
 def positiveClass (t : CochainInvolution P) (Z : TopologicalSpace.Closeds (PrimeSpectrum R))
     (hp : strictlyPerfectComplex R P) (hs : HasHomologySupportOn Z P) : K0WithSupport Z :=
-  K0WithSupport.mk Z (supportedPerfectOnObj Z t.positive.image
-    (t.positive.image_strictlyPerfect hp) (t.positive.image_support hs))
+  t.positive.k0Class Z hp hs
 
 def negativeClass (t : CochainInvolution P) (Z : TopologicalSpace.Closeds (PrimeSpectrum R))
     (hp : strictlyPerfectComplex R P) (hs : HasHomologySupportOn Z P) : K0WithSupport Z :=
-  K0WithSupport.mk Z (supportedPerfectOnObj Z t.negative.image
-    (t.negative.image_strictlyPerfect hp) (t.negative.image_support hs))
+  t.negative.k0Class Z hp hs
 
 lemma positive_tensor_class (t : CochainInvolution P) (s : CochainInvolution Q)
     {Y Z : TopologicalSpace.Closeds (PrimeSpectrum R)}

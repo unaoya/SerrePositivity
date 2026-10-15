@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.PerfectComplex.InvolutionAntiEquivariance
+public import SerrePositivity.PerfectComplex.IdempotentImageClass
 
 /-! # The difference of involution eigenspace classes -/
 
@@ -18,10 +19,7 @@ variable {K : CochainComplex (ModuleCat.{u} R) ℤ}
 
 def k0Class (t : CochainInvolution K) (Z : TopologicalSpace.Closeds (PrimeSpectrum R))
     (hp : strictlyPerfectComplex R K) (hs : HasHomologySupportOn Z K) : K0WithSupport Z :=
-  K0WithSupport.mk Z (supportedPerfectOnObj Z t.positive.image
-    (t.positive.image_strictlyPerfect hp) (t.positive.image_support hs)) -
-  K0WithSupport.mk Z (supportedPerfectOnObj Z t.negative.image
-    (t.negative.image_strictlyPerfect hp) (t.negative.image_support hs))
+  t.positive.k0Class Z hp hs - t.negative.k0Class Z hp hs
 
 lemma k0Class_eq_zero_of_anticommute (t : CochainInvolution K)
     (Z : TopologicalSpace.Closeds (PrimeSpectrum R))

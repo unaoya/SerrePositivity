@@ -27,18 +27,13 @@ lemma k0Class_shortExact
     (hs₁ : HasHomologySupportOn Z S.X₁) (hs₂ : HasHomologySupportOn Z S.X₂)
     (hs₃ : HasHomologySupportOn Z S.X₃) :
     t₂.k0Class Z hp₂ hs₂ = t₁.k0Class Z hp₁ hs₁ + t₃.k0Class Z hp₃ hs₃ := by
-  have hpos := K0WithSupport.mk_shortExact Z (positiveShortComplex S t₁ t₂ t₃ hf hg)
-    (positiveShortComplex_shortExact S t₁ t₂ t₃ hf hg hS)
-    (t₁.positive.image_strictlyPerfect hp₁) (t₂.positive.image_strictlyPerfect hp₂)
-    (t₃.positive.image_strictlyPerfect hp₃)
-    (t₁.positive.image_support hs₁) (t₂.positive.image_support hs₂) (t₃.positive.image_support hs₃)
-  have hneg := K0WithSupport.mk_shortExact Z (negativeShortComplex S t₁ t₂ t₃ hf hg)
-    (negativeShortComplex_shortExact S t₁ t₂ t₃ hf hg hS)
-    (t₁.negative.image_strictlyPerfect hp₁) (t₂.negative.image_strictlyPerfect hp₂)
-    (t₃.negative.image_strictlyPerfect hp₃)
-    (t₁.negative.image_support hs₁) (t₂.negative.image_support hs₂) (t₃.negative.image_support hs₃)
-  dsimp [k0Class, positiveShortComplex, negativeShortComplex,
-    CochainIdempotent.imageShortComplex] at hpos hneg ⊢
+  have hpos := CochainIdempotent.k0Class_shortExact S t₁.positive t₂.positive t₃.positive
+    (positive_naturality t₁ t₂ S.f hf) (positive_naturality t₂ t₃ S.g hg)
+    Z hS hp₁ hp₂ hp₃ hs₁ hs₂ hs₃
+  have hneg := CochainIdempotent.k0Class_shortExact S t₁.negative t₂.negative t₃.negative
+    (negative_naturality t₁ t₂ S.f hf) (negative_naturality t₂ t₃ S.g hg)
+    Z hS hp₁ hp₂ hp₃ hs₁ hs₂ hs₃
+  unfold k0Class
   rw [hpos, hneg]
   abel
 
