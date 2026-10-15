@@ -1291,3 +1291,21 @@ U10全受入は未完。次はcellの段階的付加とsemifree filtration、
 この入口・可算列候補・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3195 jobs）。
 直接実行による主要8宣言の公理監査は標準公理のみ。累計499宣言。
 U10全受入は未完。次はkernel cell付加、可算列の準同型性と真のsemifree filtrationを証明する。
+
+
+### 13.25 U10a4：全dg自然なcone延長とkernel cycleのcell付加
+
+`Complexes/ConeDesc.lean` と `Module/ConeDesc.lean` は合成が零となる射のconeからの延長を構成する。
+全次数の作用とconeMapの整合性を証明し、成分のchain mapだけで代用しない。
+標準包含との合成が元の射となり、coneの左成分に置いたcycleの微分と延長の像を計算する。
+
+`Module/KernelCells.lean` は射fのkernel内の全対象・全次数のcycleをu-smallな添字とする
+自由sphereの余積と、その射のconeによる付加を構成する。
+`moduleKernelCellStep_fac` は元の値域への射の延長を、
+`moduleKernelCellStepπ_degreewiseSurjective` は全射性の保存を証明する。
+`moduleKernelCellStep_killsInKernel` は各cycleの像が境界となり、選んだ境界の原像も
+延長された射のkernel内にあることを証明する。微分+1・cell生成元の次数nを維持する。
+
+受入入口 `Checks/KernelCells.lean` のビルドと直接実行は成功。
+主要28宣言の公理監査は標準公理のみ。累計527宣言。
+U10全受入は未完。次は可算列の余極限で全kernel cycleが消えることと、semifree filtrationを証明する。
