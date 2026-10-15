@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.CategoryTheory.HomotopyProperty
 
 public import SerrePositivity.CategoryTheory.BoundedHomotopy
 public import SerrePositivity.CategoryTheory.ScalarSupport
@@ -77,21 +78,9 @@ lemma strictlyPerfectComplex_mappingCone {P Q : CochainComplex (ModuleCat.{u} R)
 
 set_option backward.defeqAttrib.useBackward true in
 set_option backward.isDefEq.respectTransparency false in
-instance : (perfectHomotopyProperty R).IsTriangulatedClosed₃ where
-  ext₃' T hT h₁ h₂ := by
-    have hP : strictlyPerfectComplex R T.obj₁.as := by
-      rwa [← perfectHomotopyProperty_quotient]
-    have hQ : strictlyPerfectComplex R T.obj₂.as := by
-      rwa [← perfectHomotopyProperty_quotient]
-    obtain ⟨f : T.obj₁.as ⟶ T.obj₂.as, hf⟩ :=
-      (HomotopyCategory.quotient _ _).map_surjective T.mor₁
-    refine ⟨_, ?_, ⟨Triangle.π₃.mapIso (isoTriangleOfIso₁₂ T _ hT
-      (HomotopyCategory.mappingCone_triangleh_distinguished f)
-      (Iso.refl _) (Iso.refl _) ?_)⟩⟩
-    · dsimp
-      simp only [perfectHomotopyProperty_quotient]
-      exact strictlyPerfectComplex_mappingCone R f hP hQ
-    · simp [hf]
+instance : (perfectHomotopyProperty R).IsTriangulatedClosed₃ :=
+  homotopyProperty_isTriangulatedClosed₃ _ _ (perfectHomotopyProperty_quotient R)
+    (fun f => strictlyPerfectComplex_mappingCone R f)
 
 instance : (perfectHomotopyProperty R).IsTriangulated where
   toIsTriangulatedClosed₂ := .of_isTriangulatedClosed₃

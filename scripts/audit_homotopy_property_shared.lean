@@ -1,0 +1,5 @@
+import SerrePositivity.CategoryTheory.HomotopyProperty
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.homotopyProperty_isTriangulatedClosed₃
+#print axioms SerrePositivity.homotopyProperty_isTriangulatedClosed₃

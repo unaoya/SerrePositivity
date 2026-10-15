@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.CategoryTheory.HomotopyProperty
 
 public import Mathlib.Algebra.Homology.HomotopyCategory.Plus
 public import Mathlib.Algebra.Homology.HomotopyCategory.Triangulated
@@ -78,21 +79,9 @@ lemma strictlyBoundedComplex_mappingCone {K L : CochainComplex C ℤ} (f : K ⟶
 
 set_option backward.defeqAttrib.useBackward true in
 set_option backward.isDefEq.respectTransparency false in
-instance : (boundedHomotopyProperty C).IsTriangulatedClosed₃ where
-  ext₃' T hT h₁ h₂ := by
-    have hK : strictlyBoundedComplex C T.obj₁.as := by
-      rwa [← boundedHomotopyProperty_quotient]
-    have hL : strictlyBoundedComplex C T.obj₂.as := by
-      rwa [← boundedHomotopyProperty_quotient]
-    obtain ⟨f : T.obj₁.as ⟶ T.obj₂.as, hf⟩ :=
-      (HomotopyCategory.quotient _ _).map_surjective T.mor₁
-    refine ⟨_, ?_, ⟨Triangle.π₃.mapIso (isoTriangleOfIso₁₂ T _ hT
-      (HomotopyCategory.mappingCone_triangleh_distinguished f)
-      (Iso.refl _) (Iso.refl _) ?_)⟩⟩
-    · dsimp
-      simp only [boundedHomotopyProperty_quotient]
-      exact strictlyBoundedComplex_mappingCone C f hK hL
-    · simp [hf]
+instance : (boundedHomotopyProperty C).IsTriangulatedClosed₃ :=
+  homotopyProperty_isTriangulatedClosed₃ _ _ (boundedHomotopyProperty_quotient C)
+    (fun f => strictlyBoundedComplex_mappingCone C f)
 
 instance : (boundedHomotopyProperty C).IsTriangulated where
   toIsTriangulatedClosed₂ := .of_isTriangulatedClosed₃

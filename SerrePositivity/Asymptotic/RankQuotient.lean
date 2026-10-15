@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.CategoryTheory.HomotopyProperty
 
 public import SerrePositivity.Asymptotic.SequenceComplex
 public import Mathlib.LinearAlgebra.Dimension.Constructions
@@ -112,19 +113,9 @@ lemma rankSmallComplex_mappingCone {K L : CochainComplex (FreeSequence R s) ℤ}
 
 set_option backward.defeqAttrib.useBackward true in
 set_option backward.isDefEq.respectTransparency false in
-instance : (rankSmallHomotopy (R := R) (s := s)).IsTriangulatedClosed₃ where
-  ext₃' T hT h₁ h₂ := by
-    have hK : rankSmallComplex T.obj₁.as := by rwa [← rankSmallHomotopy_quotient]
-    have hL : rankSmallComplex T.obj₂.as := by rwa [← rankSmallHomotopy_quotient]
-    obtain ⟨f : T.obj₁.as ⟶ T.obj₂.as, hf⟩ :=
-      (HomotopyCategory.quotient _ _).map_surjective T.mor₁
-    refine ⟨_, ?_, ⟨Triangle.π₃.mapIso (isoTriangleOfIso₁₂ T _ hT
-      (HomotopyCategory.mappingCone_triangleh_distinguished f)
-      (Iso.refl _) (Iso.refl _) ?_)⟩⟩
-    · dsimp
-      simp only [rankSmallHomotopy_quotient]
-      exact rankSmallComplex_mappingCone f hK hL
-    · simp [hf]
+instance : (rankSmallHomotopy (R := R) (s := s)).IsTriangulatedClosed₃ :=
+  homotopyProperty_isTriangulatedClosed₃ _ _ (rankSmallHomotopy_quotient)
+    (fun f => rankSmallComplex_mappingCone f)
 
 instance : (rankSmallHomotopy (R := R) (s := s)).IsTriangulated where
   toIsTriangulatedClosed₂ := .of_isTriangulatedClosed₃
