@@ -21,11 +21,12 @@ lemma moduleDistinguished_ofConeIso {M N : ModuleCategory A D} (f : M ⟶ N)
     (e : T ≅ (moduleToHomotopy A D).mapTriangle.obj (moduleConeTriangle A D f)) :
     T ∈ moduleDistinguishedTriangles A D := ⟨M, N, f, ⟨e⟩⟩
 
--- 豊穣coneと商shiftの型変換を含む、この証明のカーネル検査に上限を指定する。
 set_option maxHeartbeats 800000 in
+-- 豊穣coneと商shiftの型変換を含む、この証明のカーネル検査に上限を指定する。
 lemma moduleDistinguished_shift (T : Triangle (ModuleHomotopyCategory A D))
     (hT : T ∈ moduleDistinguishedTriangles A D) (s : ℤ) :
-    (Triangle.shiftFunctor (ModuleHomotopyCategory A D) s).obj T ∈ moduleDistinguishedTriangles A D := by
+    (Triangle.shiftFunctor (ModuleHomotopyCategory A D) s).obj T ∈
+      moduleDistinguishedTriangles A D := by
   change ∃ (M N : ModuleCategory A D) (f : M ⟶ N),
     Nonempty (T ≅ (moduleToHomotopy A D).mapTriangle.obj (moduleConeTriangle A D f)) at hT
   obtain ⟨M, N, f, ⟨e⟩⟩ := hT
