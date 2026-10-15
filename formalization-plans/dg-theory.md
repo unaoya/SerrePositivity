@@ -3615,3 +3615,31 @@ Checks.EnrichedHomTarget・Checks.EnrichedTensorHom・Checks.TensorHomAdjunction
 U11eは未完。次はMの反変Hom自然性、Nの全Hom自然性と左加群変数の余極限保存へ進める。
 Fubini・bimodule合成の結合同型・全変数自然性・三角/五角、U12〜U17・D4mも引き続き未完。
 共有一般論への新しい不足要求はなく、担当外ファイル・共有ルートを変更していない。
+
+
+### 17.38 U11e7：右加群変数の全Hom反変自然性（2026-10-16）
+
+`Tensor/EnrichedHomSource.lean`はenrichedTensorHomIso_source_naturalityを証明した。
+始域はM/M'間の主Hom end、値域はHom_A(M'⊗_D N,T)からmoduleHom_D(M,homRightModule N T)への
+Hom複体である。左辺はrightHomMapからtensor複体の反変Hom作用を経て転置し、
+右辺は既存modulePrecompositionMapで転置後の主Homを前合成する。
+この二つがchain mapとして等しい。任意次数の加群射・入力cochain・評価元を保持する。
+両辺の(-1)^(pq)を明示して消去し、既存rightHomMapの純粋元計算と§17.37の評価式へ帰着した。
+中間の第二因子次数r+pを明示し、次数の可換則だけから依存型の未知次数を推定していない。
+
+Checks.EnrichedHomSourceはT側の自然性と同時importし、任意可換環・独立対象宇宙と一対象ZMod 2で
+この実際のchain mapの等式を検査する。同入口・Checks.EnrichedHomTarget・Checks.EnrichedTensorHom・
+Checks.StageSeven・既存Spectra.StageTwoの同時ビルドは成功（2681 jobs、終了コード0、警告なし）。
+主要1宣言の直接実行も終了コード0、標準公理のみ。監査累計1536宣言。
+担当Leanのsorry/admit/新規axiomは0件。文書検査は22 Markdown・311 exposition参照、失敗0件。
+
+これでM/T両変数の全Hom自然性が揃ったが、U11e全受入は未完。
+次の具体的dg APIは、任意左N/N'・複体Tに対し
+`leftModuleHom A D N N' → moduleHom A D (homRightModule A D N' T) (homRightModule A D N T)`
+という反変Hom写像である。DのSmall.{u}、独立対象宇宙v、任意CommRing A : Type uを維持する。
+各対象でleftModuleHomπからhomContravariantDGへの写像を合成し、次数p/qでは(-1)^(pq)の
+前合成式を持たせる。Nの全次数自然性を使って主Homへ束ね、単位/合成保存と閉零比較を検証する。
+これを使うN変数の転置自然性では、leftHomMapでMの次数rを越える(-1)^(pr)と
+反変Homの(-1)^(pq)を両方保持する。この具体的APIはDG担当内で構成し、共有一般論を重複実装しない。
+左加群変数の余極限保存、Fubini、bimodule合成の結合同型・三角/五角も継続対象。
+U12〜U17・D4mも未完。担当外ファイル・共有ルート・並行作業の変更は編集していない。
