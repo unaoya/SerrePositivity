@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.DeltaPDivisionFactorialDeltaMap
 import SerrePositivity.BhattScholze.DeltaPDivisionFactorialDPMorphism
 import SerrePositivity.BhattScholze.DeltaPDivisionFactorialFunctorial
 import SerrePositivity.BhattScholze.DeltaPDivisionFactorialMap
@@ -4277,3 +4278,9 @@ assert_no_sorry SerrePositivity.BhattScholze.pDivisionFactorialMap_comp
 
 assert_no_sorry SerrePositivity.BhattScholze.pDivisionFactorialMap_isDPMorphism
 #print axioms SerrePositivity.BhattScholze.pDivisionFactorialMap_isDPMorphism
+
+assert_no_sorry SerrePositivity.BhattScholze.pDivisionFactorialAwayMap_isDeltaHom
+#print axioms SerrePositivity.BhattScholze.pDivisionFactorialAwayMap_isDeltaHom
+
+assert_no_sorry SerrePositivity.BhattScholze.pDivisionFactorialMap_isDeltaHom
+#print axioms SerrePositivity.BhattScholze.pDivisionFactorialMap_isDeltaHom
