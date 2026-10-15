@@ -7881,3 +7881,46 @@ Mathlibの係数拡大の合成と既存restrictScalarsIsoExtendInverseを複体
 G10の出力となるQ上の次数零集中・H0平坦性をG9の標準mod p入力へ渡す今回の比較を区別する。
 G10/G8/G9の共通APIは未受領、G7交換・ghost入力の供給、環候補との接続・CFF・一般B4も未完成。
 自分の検証済みBS専用変更のみを個別コミットする。共有・CLMST・利用先は編集していない。
+
+## 共通G4・G6の供給確認と再開（2026-10-15）
+
+CLMST正本のG4・G6実装記録と実ソースを確認した。
+G4はCommutativeAlgebra/WittGhostInjective.leanの
+witt_ghostMap_injective_of_mul_prime_injective p A hpであり、p乗算単射以外の追加仮定はない。
+G6はDerivedCompletion/Jacobson.leanのmem_jacobson_bot_of_isModuleComplete R a hであり、
+古典的完備性・p正則性・有界ねじれを要求しない。
+G7〜G10やG3の受渡し完了とは区別し、受領済みの2APIだけをBSへ接続する。
+ユーザー指定に従い、他チャットへの追加送信は行わない。
+
+### 次工程の登録：実導来p除算候補の具体的な単元係数
+
+BS専用DeltaPDivisionDerivedUnit.leanを新設する。
+既存DerivedDeltaDivisionCompletion D p aにおける除算変数の標準像を明示し、
+pとの積が指定元a_sの像に一致することを証明する。既存derivedDeltaDivision_complete_pをG6へ適用し、
+この実候補でpがJacobson根基に属することを証明する。
+a_sがdistinguishedなら、既存δ射とisDistinguished_factorから標準変数像の単元性、
+a_s=p*uという具体的単元係数を得る。古典的完備化への置換・p正則性の追加はしない。
+全公開宣言をBS専用監査し、検証済みの自分の変更だけを個別コミットする。
+
+### 次工程の登録：G4による具体的根添加源のghost単射入力供給
+
+BS専用DeltaRootSourceRegularGhost.leanを新設する。
+元の係数環Aのp正則性から、多項式環Pと自由δ源Lのp正則性を既存平坦性で供給し、
+共通G4を適用して実際のL上のWitt ghostMap単射を証明する。
+この入力を具体的逐次根添加対象のG10標準冪零還元の次数消滅・H0忠実平坦性に渡し、
+追加のghost単射仮定なしの公開入口を構成する。G7の具体的colimit交換入力は保持する。
+新しいWitt一般定理を作らず、元のperfectoid環にp正則性を追加する最終定理には変更しない。
+全公開宣言を専用監査し、検証済みのBS専用変更のみを個別コミットする。
+
+## B4-6：G6を用いた実導来p除算候補の単元係数（2026-10-15）
+
+DeltaPDivisionDerivedUnit.leanに5公開宣言を実装した。
+既存の実H0候補における標準除算変数の像とp*u_s=j(a_s)の関係式を公開した。
+既存derivedDeltaDivision_complete_pと共通G6を合成し、この実候補でpがJacobson根基に属することを証明した。
+指定元a_sがdistinguishedなら、既存のδ射・isDistinguished_factorからu_sが単元であること、
+標準変数像そのものを単元係数とするa_s=p*u_sの存在を証明した。
+任意σ・任意δ環を許し、p正則性・有界ねじれ・古典的完備性は仮定しない。
+実導来候補を古典的完備化へ置き換えず、G6が待合せだったこの単元性工程を解消した。
+対象2886ジョブ成功（警告なし）、B4全体pure監査2032報告成功、標準3公理のみ。
+新sorry・公理・引用なし。G3・G7〜G10、環候補との接続・CFF・一般B4は未完成として保持する。
+共有・CLMST・利用先は編集せず、他チャットへの追加送信も行っていない。
