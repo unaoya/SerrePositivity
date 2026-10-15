@@ -38,6 +38,8 @@ structure StableModelPresentation where
   tests_cofibrant : ∀ i, IsCofibrant (tests i)
   maps_small : (localizingMaps K tests).IsSmall.{w}
   localization : Bousfield.ModelPresentation.{w} cofSp fibSp IP (localizingMaps K tests)
+  isLocalizationModel : Bousfield.IsLocalizationModel cofSp fibSp
+    (localizingMaps K tests) localization.model
   fibrant_iff (E : GeneralSymmetricSpectrum C K) :
     localization.model.categoryWithFibrations.fibrations (terminal.from E) ↔
       IsFibrantOmegaSpectrum E
@@ -72,16 +74,18 @@ lemma exists_stableModelPresentation : Nonempty (StableModelPresentation.{w} K c
   have : (localizingMaps K G).IsSmall.{w} := hs
   obtain ⟨p⟩ := Bousfield.exists_modelPresentation cofSp fibSp IP JP IS JS hcofW hfibW hw
     hcofV hfibV hcofM hfibM (localizingMaps K G)
+  have hp := p.isLocalizationModel cofSp fibSp IP JP IS JS hcofW hfibW hw
+    hcofV hfibV hcofM hfibM
   refine ⟨{
     index := ι
     tests := G
     tests_cofibrant := hc
     maps_small := hs
     localization := p
+    isLocalizationModel := hp
     fibrant_iff := ?_ }⟩
   intro E
-  exact ((p.isLocalizationModel cofSp fibSp IP JP IS JS hcofW hfibW hw
-    hcofV hfibV hcofM hfibM).fibrant_iff E).trans (ho E)
+  exact (hp.fibrant_iff E).trans (ho E)
 
 omit [Quillen.IsQuillenBifunctor (curriedTensor C)] [IsCofibrant K] in
 include JP IS JS hcofW hfibW hcofV hfibV hcofM hfibM hw in
