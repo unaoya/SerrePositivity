@@ -1,0 +1,14 @@
+import SerrePositivity.KTheory.Adams.CubicCoefficientField
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.Adams.CubicCoefficientField
+#print axioms SerrePositivity.Adams.CubicCoefficientField
+
+assert_no_sorry SerrePositivity.Adams.cubicCoefficientRoot
+#print axioms SerrePositivity.Adams.cubicCoefficientRoot
+
+assert_no_sorry SerrePositivity.Adams.cubicCoefficientRoot_primitive
+#print axioms SerrePositivity.Adams.cubicCoefficientRoot_primitive
+
+assert_no_sorry SerrePositivity.Adams.cubicCoefficientRoot_relation
+#print axioms SerrePositivity.Adams.cubicCoefficientRoot_relation

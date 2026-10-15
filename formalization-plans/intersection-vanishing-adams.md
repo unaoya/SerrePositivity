@@ -3822,6 +3822,16 @@ K₀ の類への移送と重みつき乗法性は次の小段。
 - S10.8 の全証明契約は受入完了。ルート公開は消滅分岐の統合段で行う。
   次は S10.9 の係数体・円分局所拡大への適用。S10.9・S11 は未完了。
 
+### S10.9b：標数零の円分係数体と三次の根
+
+- `Adams/CubicCoefficientField` は `CyclotomicField 3 ℚ` とその原始三次根を固定し、
+  原始根の三乗と非自明性から ζ²+ζ+1=0 を証明した。
+  既存の体・標数零のインスタンスを使用し、円分拡大の証明済み存在補題を明示適用する。
+- `lake build SerrePositivity.KTheory.Adams.CubicCoefficientField` が成功（2835 jobs）。
+- `lake env lean scripts/audit_adams_cubic_coefficient_field.lean` が成功。
+  四定数の `assert_no_sorry` が通り、公理は標準三公理のみ。
+- 次は同じ係数体で円分局所拡大上の一般消滅定理を適用する。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
