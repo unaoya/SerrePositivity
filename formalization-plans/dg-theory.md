@@ -1160,3 +1160,26 @@ U9の `moduleDerivedEvaluation` 自体が圏同値となることを証明した
 ビルド・直接実行は成功し、主要15宣言はすべて標準公理の範囲内。累計430宣言。
 U10の一般三角構造・余積が未構成なので、それらの保存についてはまだ完了を主張しない。
 semifree解像度の存在・Hom計算・選択独立性・Verdier商比較・局所小性も残る。
+
+### 13.21 U10b1：Hom end による homotopically projective 性と代表加群
+
+`Derived/HomotopicallyProjective.lean` は `moduleHomotopicallyProjective` を
+閉零加群圏のObjectPropertyとして定義する。
+指定objectwise acyclic加群Nに対して全次数Hom end Hom_D(M,N)がacyclicとなる性質。
+評価複体のK-projective性で代用せず、Mathlibの複体IsKProjectiveとは別の定義とする。
+
+`representable_homotopicallyProjective` は既存全次数dg Yoneda同型でこの性質を証明する。
+対象Dがu-smallという既存Hom endの仮定以外、Hom_DのA上projectivityやflatnessは不要。
+主加群圏の真の同型での不変性、IsClosedUnderIsomorphisms、零加群の判定も証明した。
+
+受入入口 `Checks/HomotopicallyProjective.lean` は任意可換環・非有界加群・独立宇宙、
+代表/零加群、同型不変性と全次数Homの条件を検証する。
+この入口・Checks/DerivedRing・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3185 jobs）。
+両新入口の直接実行・主要20宣言の公理監査も成功し、標準公理のみ。累計435宣言。
+一般論のsorry・引用axiomは追加していない。
+
+U10全受入は未完。次はsphere/diskとfree_xによるcellの具体化、
+shift・余積・semifree filtrationでの上記性質、任意加群へのsemifree解像度の存在と
+導来Hom計算を証明する。三角構造・Verdier商比較・余積/局所小性の宇宙、
+一対象同値によるそれらの保存も残る。共有の小対象/転送一般論は複製しない。
+現時点で共有API不足によるブロックはなく、U10までの目標を保持する。
