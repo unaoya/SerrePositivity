@@ -2155,6 +2155,34 @@ chain isoの射影と微分の可換性でホモトピーの境界式を検証�
 任意のu-small添字Jに対するK(D)の`HasColimitsOfShape (Discrete J)`と、
 閉零圏→K(D)の商関手の余積保存も証明した。
 
-Checks.HomotopyCoproduct・StageSix・既存Spectra.StageTwoの同時ビルドは成功（ログ参照）。
+Checks.HomotopyCoproduct・StageSix・既存Spectra.StageTwoの同時ビルドは成功（2515 jobs）。
 Checks直接実行の主要9宣言は標準公理のみ。累計914宣言。
 U10は未完。次は射影的対象族の余積をD(D)へ運び、解像度で任意の導来対象族に拡張する。
+
+
+### 13.62 U10c2/d2：導来余積と一対象環の比較による保存
+
+`Derived/Coproducts.lean`は射影的対象のHom計算の前合成自然性を証明し、
+射影的対象族Mの余積の主局所化像と包含からなるcoconeの普遍性を構成する。
+そのdescはK(D)の余積descを実際の導来Hom同定で移した射であり、fac/uniqを証明済み。
+任意の導来対象族に標準semifree解像度を選び、増大射の同型による図式同型を使って、
+`moduleDerivedHasCoproductsOfShape`を得た。任意のu-small添字Jに対応する。
+
+`Derived/RingCoproducts.lean`は任意の指定された既存DerivedCategoryの宇宙で、
+一対象Aの比較同値の順方向・逆方向がこの余積を保存することを証明する。
+既存導来圏への余積の移送と、標準余積比較射が同型となることも公開した。
+射影的でない加群族のunderived余積について主局所化関手が保存するという追加命題は、
+ここでは主張していない。導来圏自体の余積の存在・普遍性と比較同値の保存は証明済み。
+
+Checks.DerivedCoproducts・Checks.HomotopyCoproduct・Checks.ResolutionHom・StageSix・
+既存Spectra.StageTwoの同時ビルドは成功（2593 jobs）。
+直接実行の主要11宣言は標準公理のみ。累計925宣言。
+今回§13.58〜§13.62の主要47宣言を直接実行ログで照合し、すべて標準公理のみと確認した。
+担当Leanのsorry/admit/新規axiomは0件、担当diff --checkは成功。
+全体文書検査は§13.58記載の担当外の未生成oleanで停止しており、成功とは扱わない。
+
+U10全受入は未完。次はK(D)の標準cone三角形から三角構造を構成し、acyclic部分圏の
+三角閉性とVerdier商の指定quasiIso局所化との比較を証明する。
+その後D(D)の三角構造、主局所化関手の三角性、一対象Aの既存導来圏との同値の
+三角形保存を完成させる。既存shift・cone・比較同値と今回のHom計算・余積を再利用する。
+共有モデル構造・Quillen・転送・SM7への新規不足要求はなく、担当外ファイルは編集していない。
