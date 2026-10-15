@@ -7330,3 +7330,79 @@ objectwise Wの2-out-of-3とMathlibのモデル圏認識入口により、実際
 F1の任意モデル源の契約をその場合だけへ狭めない。
 F1のRMap・不変性・fibrancy・π₀比較、F2の選択比較、F3の共通基数、F4のfiltered colimitと
 homotopy (co)limit比較は引き続きすべて未完了であり、依頼範囲に含む。
+
+
+## 174. F0のresolution構成とF1の単体的Hom関手（2026-10-15）
+
+F0〜F4全体の依頼を維持している。§173に残していた定数図式のresolutionを構成した。
+通常の存在は任意のモデル源Cで使え、選んだ源の関手的因子分解からは実際の関手的な
+resolutionの族を出力する。続いて実際の射集合を各次数に持つ単体的Hom関手を構成した。
+この関手のKan性・導来不変性・π₀比較は未証明であり、F1完成とは判定しない。
+
+### 174.1 通常のresolutionと各成分の性質
+
+`Reedy/ComponentClasses`はReedy cofibration/fibrationの各成分が源の同じクラスに属する
+ことを証明する。境界評価のクラスと押し出し・引き戻しの合成を用い、次数の単射性は
+要求しない。
+
+`Reedy/Resolution`は`CofibrantResolution r X`・`FibrantResolution r X`を定義する。
+いずれも実際の図式と定数図式との比較射を持つ。前者はReedy cofibrantで、augmentationは
+相対trivial fibration。後者はReedy fibrantで、coaugmentationは相対trivial cofibrationである。
+通常のReedy因子分解から、これらのデータを構成する。
+
+さらに、比較射が全成分で弱同値であること、各成分が源でcofibrant/fibrantであること、
+添字圏のどの射も図式が弱同値へ送ることを証明した。後者は比較射の自然性と
+2-out-of-3による。図式圏の初期・終対象を評価した対象の普遍性も用いており、
+初期対象・終対象の選択の定義的な一致は要求しない。
+
+### 174.2 実際の関手的resolution
+
+`Reedy/FunctorialResolution`は`CofibrantResolutionFamily`・`FibrantResolutionFamily`を
+構成する。中身は`C ⥤ (J ⥤ C)`という実際の関手、定数図式の関手との自然変換、
+各入力での174.1の条件である。初期図式から定数図式への射、定数図式から終図式への射を
+射圏への関手にし、§172の構成済みReedy因子分解関手を合成する。下位の図式の族や
+その関手性を入力として要求しない。源で選んだ関手的因子分解だけを入力とする。
+入力の弱同値を全成分で弱同値へ送ることも証明した。
+
+`Reedy/SimplexResolution`は、Δ上のcosimplicial resolutionとΔop上のsimplicial resolutionの
+入口を提供する。通常の二つの入口は`ModelCategory C`だけで使える。二つの関手的な
+入口は、それぞれ源の(cof,trivial fib)、(trivial cof,fib)の関手的因子分解データを明示的に
+受け取る。A0の源はこのデータを供給できる。コミット：`2620854`。
+
+### 174.3 実際の単体的Homの両変数関手性
+
+`HomotopyFunctionComplex/ResolutionHom`はcosimplicial図式Aから
+`n ↦ Hom_C(A[n],Y)`という実際の単体集合を作る。図式の射による前合成と対象の射による
+後合成を合わせ、`(Δ ⥤ C)ᵒᵖ ⥤ C ⥤ SSet`を構成する。関手性は証明済みである。
+任意の関手的cosimplicial族Qと対象側の関手Rを与えると、
+`resolutionHom Q R : Cᵒᵖ ⥤ C ⥤ SSet`を得る。
+単体の型、第一変数・第二変数・単体方向の写像が、それぞれ実際の射集合・前合成・
+後合成になる四つの計算式を証明した。値の単体集合の宇宙は源のhomの宇宙vである。
+
+`ChosenResolutionHom`は源で選んだ二つの関手的因子分解を受け、174.2のcosimplicial族と
+実際のfibrant対象置換を構成してこの関手へ渡す。対象置換の比較射が自然かつ弱同値で、
+置換後の対象がfibrantで、対象置換が弱同値を保つことも証明した。
+コミット：`0e61d30`。
+
+この入口は選んだ源の関手的因子分解を使う条件付き構成である。
+任意のモデル源CについてのF1の契約を、この条件付き入口へ置き換えない。
+通常のresolutionの選択と、その比較がF1の関手性に与える影響も引き続き扱う。
+
+### 174.4 検証と残る全体の受入項目
+
+- 共有入口のビルド1664 jobsが成功。
+- `check_reedy_resolution`：追加4モジュール・145宣言を全監査。通常の存在、各成分の
+  性質、実際の源のデータからの族の構成、両族の弱同値保存を利用例で検証。
+- `check_resolution_hom`：追加2モジュール・22宣言を全監査。実際の両変数の関手、
+  次数nの射集合、両変数の写像の式、対象置換のfibrancy・弱同値保存を検証。
+- 共有基盤2230宣言・133モジュールの公理監査は標準公理のみ。
+- `check_reedy_model_category`、`check_reedy_functorial_extension`、
+  `check_homotopical_foundations`、`check_spectra_stage2`、
+  `check_weak_equivalences_accessible`の回帰検証も成功。新規sorry・引用axiomはない。
+
+F1では、resolutionのHomに対するhornの持ち上げとKan性、両変数の弱同値不変性、
+ordinary Ho(C)の射とのπ₀比較を証明する。現在の関手の存在や置換の弱同値保存だけで、
+これらを代用しない。任意モデル源についての関手性も追加仮定を隠さずに解決する。
+F2の選択の自然な弱同値zigzagと単体的モデル圏の実際のMapとの比較、F3の固定した
+小さいSに対する共通基数、F4のfiltered colimit・homotopy (co)limit比較は未完了である。
+すべて引き続き依頼範囲に含める。

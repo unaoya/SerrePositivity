@@ -688,3 +688,22 @@ Reedy圏にする。`NestedMatching`・`NestedLatching`は入れ子の境界と�
 検証。共有基盤2063宣言・127モジュールの監査は標準公理のみ。既存のReedy・共有基盤・
 スペクトル・弱同値accessibilityの回帰検証も成功した。詳細は計画§173を参照。
 F0には定数図式のresolutionが残る。F1〜F4も未完了で、全体の依頼範囲を維持する。
+
+
+## F0のresolutionとF1の単体的Hom（2026-10-15）
+
+`Reedy/Resolution`は定数図式のcofibrant/fibrant resolutionを通常のモデル公理から
+構成する。比較射のobjectwise W、図式のhomotopical constancy、各成分の
+cofibrancy/fibrancyも証明する。`Reedy/FunctorialResolution`は、源で選んだ関手的
+因子分解から実際の`C ⥤ (J ⥤ C)`と自然な比較を構成する。両族は弱同値も保つ。
+`Reedy/SimplexResolution`にΔ・Δopの通常の入口と関手的な入口を置いた。
+
+`HomotopyFunctionComplex/ResolutionHom`は`Hom_C(Q(X)[n],R(Y))`を各次数に持つ
+実際の両変数の単体的Hom関手を構成し、三方向の写像の式を証明する。
+`ChosenResolutionHom`はこれを源の二つの関手的因子分解から構成した実際のresolutionと
+fibrant置換へ適用する。源の追加データは明示的な入力である。
+
+共有入口1664 jobs、resolutionの145宣言・4モジュール、Homの22宣言・2モジュールを
+検証。共有全2230宣言・133モジュールは標準公理のみ。詳細は計画§174を参照。
+F1のKan性・不変性・π₀比較と任意モデル源での関手性は未完了である。
+条件付きHom関手の構成でF1の契約を置き換えず、F2〜F4も引き続き実装する。
