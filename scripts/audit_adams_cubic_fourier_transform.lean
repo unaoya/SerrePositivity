@@ -1,0 +1,29 @@
+import SerrePositivity.PerfectComplex.CubicFourierTransform
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.scalarMatrixThree
+#print axioms SerrePositivity.scalarMatrixThree
+
+assert_no_sorry SerrePositivity.scalarMatrixThree_comp_apply
+#print axioms SerrePositivity.scalarMatrixThree_comp_apply
+
+assert_no_sorry SerrePositivity.cubicFourierOrthogonality
+#print axioms SerrePositivity.cubicFourierOrthogonality
+
+assert_no_sorry SerrePositivity.cubicFourierOrthogonality_reverse
+#print axioms SerrePositivity.cubicFourierOrthogonality_reverse
+
+assert_no_sorry SerrePositivity.cubicFourierForward
+#print axioms SerrePositivity.cubicFourierForward
+
+assert_no_sorry SerrePositivity.cubicFourierBackward
+#print axioms SerrePositivity.cubicFourierBackward
+
+assert_no_sorry SerrePositivity.cubicFourierForward_backward
+#print axioms SerrePositivity.cubicFourierForward_backward
+
+assert_no_sorry SerrePositivity.cubicFourierBackward_forward
+#print axioms SerrePositivity.cubicFourierBackward_forward
+
+assert_no_sorry SerrePositivity.cubicFourierLinearEquiv
+#print axioms SerrePositivity.cubicFourierLinearEquiv

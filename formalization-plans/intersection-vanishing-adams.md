@@ -3513,6 +3513,18 @@ K₀ の類への移送と重みつき乗法性は次の小段。
 - 微分・巡回の生成元上の式と、それを全ての射の比較に使う基底・外延性が公開された。
   次は S10.8c.2a の Fourier 変換と逆変換。全次数の Fourier 鎖同型、正規化、族、S10.9、S11 は未完了。
 
+### S10.8c.2a.1：三スカラー座標での Fourier 変換と逆変換
+
+- `PerfectComplex/CubicFourierTransform` は三行三列のスカラー行列の線形写像、
+  その合成の有限和の式、指標の直交和を証明した。
+- 正変換の係数は `t^(j*r)`、逆変換は `⅟3` を掛けた `t^(−j*r)`（添字は Fin 3）。
+  正・逆の両合成が恒等であることを証明し、`cubicFourierLinearEquiv` を構成した。
+- 対象を含む `lake build SerrePositivity.PerfectComplex.CubicFourierEigen` が成功（2732 jobs）。
+  `lake env lean scripts/audit_adams_cubic_fourier_transform.lean` の九定数の監査が成功。
+  公理は標準三公理のみ。仮定は可換環、3 の可逆性、`t²+t+1=0`。
+- この小段は次数 −1 の基底変更に使うスカラー変換の受入。
+  Koszul 三乗での巡回・微分、次数 −2,−3 の変換、全鎖同型は後続小段。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
