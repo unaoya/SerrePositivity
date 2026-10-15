@@ -10492,3 +10492,91 @@ Kは任意であり、この局所可呈示性の定理にはモデル構造もK
 新規sorry・引用axiomはない。実装コミット：`2c53a5b0`、`91c43b23`。
 次はS1の実際の局所化射F_(n+1)(QA⊗K)→F_n(QA)と、小ささ・cofibrancy・Ω_K判定。
 その後S2の一般局所化による安定モデル、S3の導来K可逆性と通常の安定性の比較へ進む。
+
+
+## 215. S1進捗：実際の局所化射と通常のRMapテストの計算（2026-10-16）
+
+前回のS0完了（§214）を確認し、S1の構成部分と写像テストの比較を実装した。
+**S1全体は未完了**。局所fibrant対象とΩ_K対象の最終同値はまだ主張しない。
+S2・S3およびF1の任意モデル源で指定分解なしの最終関手も引き続き残る。
+
+### 215.1 一般Kの構造射と実際の局所化射
+
+`Spectra/General/Suspension.lean`は、実際のSym(K)加群の構造射から
+K⊗E_n→E_(n+1)を作り、内部Homへの随伴表示E_n→[K,E_(n+1)]を定義する。
+Kの一乗の比較同型と次数の移送を明示し、スペクトル射に関する自然性を証明した。
+モデル構造は定義に必要ない。
+
+`Stable/LocalizingMaps.lean`の`localizingMap K n A`は、実際の
+F_(n+1)(A⊗K)→F_n(A)である。自由スペクトルの生成元、braiding、構造射を合成し、
+自由・評価随伴で延長して構成する。入力Aの射に関する自然性も証明し、
+`tensorRight K ⋙ F_(n+1) ⟶ F_n`という自然変換にまとめた。
+小さい族Aから作る`localizingMaps K A`は実際の射の`MorphismProperty.ofHoms`であり、
+ℕとAの添字の積の小ささから、同じ補助宇宙で小さいことを証明した。
+
+`CofibrantLocalizingMaps.lean`は、KとAのcofibrancy、tensorのQuillen条件、F_nの左Quillen性から、
+各局所化射の両端点のcofibrancyを証明する。指定されたcofibrant replacement QをAへ適用した
+F_(n+1)(QA⊗K)→F_n(QA)についても、両端点のcofibrancyを直接出力する。
+局所化射そのものをcofibrationと仮定してはいない。
+
+### 215.2 cosimplicial Homの実際の射としての比較
+
+`Stable/LocalizingHom.lean`は、任意のcosimplicial対象AとスペクトルEに対して、
+局所化自然変換をAに適用した射から得られるsimplicial Homの写像と、
+Eの随伴構造射から得られるHom(A,-)の写像との間に、SSet上のArrowの同型を構成する。
+単なる集合のHomやπ₀の比較ではなく、全simplicesとsimplicial作用を含む実際の射の同型。
+元の自由・評価随伴と、braidingで移送したtensorRight Kと内部Homの随伴を使用する。
+
+### 215.3 通常のRMapテストへの接続に使う共有補題
+
+`HomotopicalAlgebra/Localization/FrameArrowTests.lean`の`mappingTest_iff`は、
+f:X→Zを覆う二つのReedy cofibrantなsource frameとその間の射から、通常の局所化テストを計算する。
+augmentationは各次数で元の弱同値であればよく、Reedy trivial fibrationは要求しない。
+二つのframeを大域的なframe familyへ拡張する仮定も不要。
+parallel-pair圏で射とaugmentationを図式化し、既存の`FrameOverFunctor`による自然な弱いcospanと
+2-out-of-3から、指定したRMapとの比較を得る。共有入口はSpectraをimportしない。
+
+`Monoidal/CofibrantTensor.lean`には、cofibrantな係数のtensorRightが左Quillenである補題を追加した。
+実際のbraidingのArrow同型で、既存のtensorLeftの結果を移送する。
+
+### 215.4 元の局所性の述語を保った計算
+
+`Stable/FrameLocality.lean`は、Cの実際のcosimplicial resolutionのF_n像と
+F_(n+1)(-⊗K)像をsource frameとして使う。
+Reedy cofibrancyは左随伴のlatching保存、augmentationの弱同値性はcofibrant対象上のBrown補題で証明。
+215.3を局所化射へ適用し、215.2のArrow同型で次のテストと同値だと証明した。
+
+- 通常のスペクトルRMapによる`mappingTest cofSp fibSp E (localizingMap K n A)`。
+- Cのresolution Aから、スペクトルのfibrant replacement RSp(E)の各段の随伴構造射へHomを適用した写像の弱同値性。
+
+`localObjects_localizingMaps_iff`は、小さいcofibrant族に対する元の`Bousfield.localObjects`を、
+すべてのnと族の添字についての上のテストへ展開する。
+局所対象の定義をΩ_K条件へ差し替えていない。
+
+`Stable/Omega.lean`は、Cの元の弱同値によってΩ_K対象の述語を独立に定義する。
+Kがcofibrantなら、レベルfibrant対象間のレベル弱同値でこの述語が不変であると証明した。
+内部Homの右Quillen性とBrown補題を使用する。
+
+### 215.5 受入検証・コミットと残る接続
+
+すべて成功した。
+
+- `lake build SerrePositivity.Spectra.Stable.FrameLocality`：2392 jobs。
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`：2563 jobs。
+- `check_spectrum_stabilization_maps`：実際の射、小ささ、全simplicial HomのArrow同型、
+  Qを使う局所化射の両端点、Ω_K述語の不変性、通常のRMapテストの計算。
+  38宣言・7モジュールの標準公理監査。
+- `check_spectra_level_left_proper`：S0最終入口の回帰、14宣言・4モジュール。
+- `check_spectra_stage2`：既存の段階2の回帰確認。
+- `check_enriched_detection`：既存の豊穣検出、52宣言・9モジュール。
+- `audit_homotopical_foundations`：4359宣言・376モジュール、標準公理のみ。
+- 各コミットのstage差分の`git diff --cached --check`。
+
+新規sorry・引用axiomはない。スペクトル側`42d28824`、共有補題`3c9a992b`へコミットした。
+共有作業木の他チャットの変更はstageしていない。
+
+次の接続は、215.4の各段のHomテストを、既存の小さいcofibrantホモトピー生成族の検出定理へ移すこと。
+具体的にはC側のfibrant replacementをテストから外すtarget比較、生成族による各随伴構造射の弱同値判定、
+RSp(E)から元のレベルfibrant Eへの215.4のΩ_K不変性による移送を行う。
+これを終えて局所fibrant↔Ω_Kを最終入口で検証するまで、S1を完了扱いにしない。
+その後S2の実際の安定局所化モデル、S3の導来K可逆性と通常の安定性の比較へ進む。

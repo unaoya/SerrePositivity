@@ -65,3 +65,19 @@ check_simplicial_model_inputs.leanはその区別を保った利用例と26宣�
 受入`check_spectra_presentability`（7宣言・3モジュール）、`check_spectra_level_left_proper`
 （14宣言・4モジュール）、段階2回帰と共有公理監査が成功。新規sorry・引用axiomなし。
 実装`2c53a5b0`・`91c43b23`。S1〜S3は引き続き未完了。
+
+
+## S1進捗：実際の局所化射とRMapテストの計算（2026-10-16）
+
+`General/Suspension`は一般Kの懸垂構造射と随伴構造射を構成し、スペクトル射に関する自然性を証明する。
+`Stable/LocalizingMaps`は実際のF_(n+1)(A⊗K)→F_n(A)、入力に関する自然性と小さい族からの射クラスを構成。
+`CofibrantLocalizingMaps`はQ(A)を用いる場合も含め両端点のcofibrancyを証明する。
+`LocalizingHom`は任意のcosimplicial対象について、局所化射のHomと随伴構造射のHomのArrow同型を構成。
+`FrameLocality`は実際の自由source frameと共有`FrameArrowTests`を使い、元の通常の局所対象の述語を、
+スペクトルのfibrant replacementの各段の随伴構造射によるHomテストとして計算する。
+`Omega`の述語はCの元の弱同値で独立に定義し、レベルfibrant対象間のレベル弱同値に関する不変性を証明。
+
+`check_spectrum_stabilization_maps`の38宣言・7モジュールの公理監査、S0・段階2・豊穣検出の回帰確認が成功。
+新規sorry・引用axiomなし。実装`42d28824`・`3c9a992b`。
+S1全体は未完了。残るのは小さいホモトピー生成族の検出との接続と局所fibrant↔Ω_Kの最終同値。
+S2・S3は引き続き未完了。計画§215に証明済みの範囲と残る手順を明記した。

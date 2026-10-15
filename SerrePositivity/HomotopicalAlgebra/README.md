@@ -1256,3 +1256,13 @@ ordinary RMapとV値derived Homの局所対象・局所同値の等式とfibrant
 各段で検出する弱同値の左固有性を移送する。共有入口は具体的なSpectraをimportしない。
 共有入口2834 jobs、4356宣言・375モジュールの標準公理監査が成功。
 適用先の一般対称スペクトルとS0受入条件は計画§214。実装`2c53a5b0`・`91c43b23`。
+
+
+## 二つのsource frameによる射の局所化テスト（2026-10-16）
+
+`Localization/FrameArrowTests.mappingTest_iff`は、射を覆う二つのReedy cofibrant source frameと
+各次数で弱いaugmentationから、元のRMapテストを計算する。parallel-pair図式上の
+`FrameOverFunctor`の自然な弱いcospanを使用し、大域的なframe familyへの延長を要求しない。
+`Monoidal/CofibrantTensor.tensorRight_isLeftQuillen`はcofibrantな係数の場合を実際のbraidingで移送する。
+共有入口2563 jobs、4359宣言・376モジュールの標準公理監査が成功。共有層はSpectraをimportしない。
+実装`3c9a992b`。適用先のS1の進捗と残るΩ_K検出の接続は計画§215。
