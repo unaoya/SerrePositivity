@@ -917,3 +917,39 @@ Lean v4.35.0-rc4を保持した。既存 `check_spectra_stage2.lean`、文書検
 次の U8 は既存境界商の K(D)、objectwise quasiIso の MorphismProperty、
 2-out-of-3/retract、ホモトピー・評価・coneによるacyclic性の整合性を証明する。
 U9/U10の局所化・解像度・三角構造・導来圏比較は引き続き未完である。
+
+### 13.14 U8a1/b1：全 dg 自然な加群ホモトピー・K(D) と objectwise quasiIso
+
+`Module/Homotopy.lean` は `ModuleHomotopy` を Hom end の次数 −1 の元として定義し、
+その微分が閉零射の差となる条件を課す。対象ごとに独立したホモトピーの存在とは区別する。
+`moduleHomotopy_nonempty_iff` は既存の境界関係との一致、
+`ModuleHomotopyCategory`/`moduleToHomotopy` は既存の A 線形な H⁰ 境界商 K(D) と商関手。
+`moduleToHomotopy_map_eq_iff` は加群ホモトピーによる射の同一視の判定。
+`moduleHomotopy_evaluation` は各評価への既存 chain homotopy を与え、
+`moduleHomotopyEvaluation` は既存の複体ホモトピー圏への関手で、商関手との四角形が可換。
+
+`Module/QuasiIso.lean` は各対象で評価が quasiIso となる閉零射のクラス
+`moduleQuasiIso` を Mathlib の MorphismProperty として固定した。
+評価による既存 quasiIso の逆像の共通部分との一致、恒等・合成、2-out-of-3、
+retract 閉性、同型との両立を証明した。
+評価ホモロジー写像は加群ホモトピーで一致し、quasiIso 判定は K(D) の射の代表元によらない。
+
+`Module/HomotopyQuasiIso.lean` は K(D) の評価ホモロジーによる射のクラス
+`moduleHomotopyQuasiIso` と `moduleHomotopyHomology` を公開する。
+恒等・合成、2-out-of-3、retract 閉性、同型との両立、および
+`moduleHomotopyQuasiIso_inverseImage` による閉零圏上の指定クラスとの一致を証明した。
+宇宙は A:Type u、D:Type v、Hom の係数宇宙 u、`[Small.{u} D]` を維持し、
+任意可換環・非有界複体を扱う。モデル構造・有界性・体の仮定は置かない。
+
+受入入口は `Checks/ModuleHomotopy.lean`。
+任意可換環での線形な境界商、評価ホモトピー、quasiIso の2-out-of-3/retract、
+閉零/K(D) のクラス一致、ℤ・ZMod 2 の一対象環での既存複体の判定との一致を検証した。
+この入口と `StageFour`・既存 `Spectra.StageTwo` の同時ビルドは成功（3169 jobs）。
+入口の直接実行も成功し、主要27宣言はすべて propext/Classical.choice/Quot.sound の範囲内。
+これまでの累計監査対象は340宣言。一般論の sorry・admit・新規axiomは追加していない。
+
+U8全受入は未完。次は shift が境界を保存すること、K(D) 上のshift、
+objectwise acyclic性とcone/quasiIsoの整合性を証明する。
+U9の局所化比較、U10のsemifree解像度の存在・Hom計算・三角構造・余積・
+一対象Aの既存導来圏比較も未完であり、U10までの目標を保持する。
+共有一般論は複製せず、この段階で共有API不足によるブロックはない。
