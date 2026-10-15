@@ -29,6 +29,8 @@ public import SerrePositivity.HomotopicalAlgebra.Smith.PresentableFullInclusion
 public import SerrePositivity.HomotopicalAlgebra.Smith.PresentableWeakReflection
 public import SerrePositivity.HomotopicalAlgebra.Smith.GeneratedWeakReflection
 public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleRightClass
+public import SerrePositivity.HomotopicalAlgebra.Smith.LocalPresentableCover
+public import SerrePositivity.HomotopicalAlgebra.Smith.WeakReflectionApproximation
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor

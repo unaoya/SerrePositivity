@@ -445,3 +445,13 @@ liftによって証明する。`check_presentable_weak_reflection`で一般の�
 A0の右因子にuniformizationを適用し、生成射の可呈示性と共通化した大きい正則基数で
 上の生成族構成を適用する。`check_accessible_right_class`は一般の宇宙と、既存モデルの
 trivial fibrationの部分圏への適用を検証する。元のWへの適用に必要な閉操作は残る。
+
+`Smith/LocalPresentableCover.lean`は、固定対象Xが部分圏に属するとき、κ-可呈示なAから
+Xへの射を、部分圏内のκ-可呈示なBを通して分解できる、という局所条件から生成族を
+構成する。大域的な弱反射や、その選択の関手性は要求しない。基礎圏はκ-accessibleで
+十分であり、局所可呈示性へ制限しない。
+`Smith/WeakReflectionApproximation.lean`は、accessibleでκ-可呈示性を保つFと
+可呈示弱反射rに対し、P(FX)のもとでA→Xを可呈示なB→Xへ拡大し、F(A→B)が
+rのunitを通して分解することを証明する。`check_local_presentable_cover`は局所被覆・
+恒等被覆・弱反射からの被覆・拡大段階を検証し、全宣言を公理監査する。
+この拡大の超限反復と元のWへの接続はA1の残作業である。
