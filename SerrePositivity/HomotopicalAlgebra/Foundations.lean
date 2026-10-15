@@ -92,6 +92,7 @@ public import SerrePositivity.HomotopicalAlgebra.Diagram.YonedaHomotopyWeight
 public import SerrePositivity.HomotopicalAlgebra.Diagram.QuillenColimitComparison
 public import SerrePositivity.HomotopicalAlgebra.Diagram.WeightedSourceWeakEquivalence
 public import SerrePositivity.HomotopicalAlgebra.Diagram.HocolimMappingComparison
+public import SerrePositivity.HomotopicalAlgebra.Diagram.HocolimFrameComparison
 public import SerrePositivity.HomotopicalAlgebra.Localization.ChoiceIndependence
 public import SerrePositivity.HomotopicalAlgebra.Localization.Detection
 public import SerrePositivity.HomotopicalAlgebra.Localization.Conditional
