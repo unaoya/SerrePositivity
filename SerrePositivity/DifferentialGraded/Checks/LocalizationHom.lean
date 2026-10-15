@@ -1,0 +1,20 @@
+module
+public import SerrePositivity.DifferentialGraded.Category.LocalizationHom
+
+/-! # 局所化Hom比較の公理監査 -/
+
+#print axioms SerrePositivity.DifferentialGraded.LocalizationHom.source_inverts
+#print axioms SerrePositivity.DifferentialGraded.LocalizationHom.model
+#print axioms SerrePositivity.DifferentialGraded.LocalizationHom.fac
+#print axioms SerrePositivity.DifferentialGraded.LocalizationHom.sourceMap
+#print axioms SerrePositivity.DifferentialGraded.LocalizationHom.comparison
+#print axioms SerrePositivity.DifferentialGraded.LocalizationHom.comparison_fac
+#print axioms SerrePositivity.DifferentialGraded.LocalizationHom.identityElement
+#print axioms SerrePositivity.DifferentialGraded.LocalizationHom.comparison_identity
+#print axioms SerrePositivity.DifferentialGraded.LocalizationHom.inverseComparison
+#print axioms SerrePositivity.DifferentialGraded.LocalizationHom.inverseComparison_comparison
+#print axioms SerrePositivity.DifferentialGraded.LocalizationHom.comparison_inverseComparison
+#print axioms SerrePositivity.DifferentialGraded.LocalizationHom.homEquiv
+#print axioms SerrePositivity.DifferentialGraded.LocalizationHom.mapEquiv
+#print axioms SerrePositivity.DifferentialGraded.LocalizationHom.mapEquiv_apply
+#print axioms SerrePositivity.DifferentialGraded.LocalizationHom.map_bijective

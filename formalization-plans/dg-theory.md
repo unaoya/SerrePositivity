@@ -2089,3 +2089,19 @@ K(D)のcoyonedaが指定quasiIsoを反転する事実と局所化の関手/自�
 `LocallySmall.{u} (DerivedModuleCategory A D)` の宇宙を証明する。
 K(D)/D(D)の三角構造・Verdier商比較、導来余積、一対象Aの既存導来圏との同値の
 三角形/余積保存も残る。共有モデル圏/Quillen/転送/SM7への新しい不足要求はない。
+
+
+### 13.58 U10b8a：宇宙を独立にした局所化Hom比較
+
+`Category/LocalizationHom.lean` は、Wの局所化Lと、coyoneda(P)がWを反転するという
+仮定から、`L.map : Hom(P,X) → Hom(L(P),L(X))` の全単射性を証明する。
+局所化前後のHom宇宙は独立とし、ULiftで値域をそろえる。
+恒等射の像から逆自然変換を構成し、局所化の自然変換に関する充満忠実性により
+両合成が恒等であることを証明した。分数計算やモデル構造の仮定は不要。
+`homEquiv`、`mapEquiv`、`mapEquiv_apply`、`map_bijective`を公開する。
+
+Checks.LocalizationHom・StageSix・既存Spectra.StageTwoの同時ビルドは成功（2501 jobs）。
+Checksの直接実行で主要15宣言を監査し、標準公理のみ。累計893宣言。
+担当Leanのsorry/admit/新規axiomは0件。
+全体文書検査は並行KTheory.Adams.KoszulSquareCoordinatesの未生成oleanで停止した。
+U10は未完。次は射影的加群へ適用し、D(D)の射集合と局所小性を証明する。
