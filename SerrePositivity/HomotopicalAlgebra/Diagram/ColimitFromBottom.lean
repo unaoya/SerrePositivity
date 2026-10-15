@@ -14,6 +14,20 @@ open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
 namespace SerrePositivity.DiagramModel.ColimitFromBottom
 variable (K : Type w) [Preorder K] [OrderBot K] {C : Type u} [Category.{v} C]
 
+def constCocone (X : C) : Cocone ((Functor.const K).obj X) := Cocone.mk X (𝟙 _)
+
+def constIsColimit (X : C) : IsColimit (constCocone K X) where
+  desc s := s.ι.app ⊥
+  fac s k := by
+    change 𝟙 X ≫ s.ι.app ⊥ = s.ι.app k
+    have hn := s.w (homOfLE (bot_le : (⊥ : K) ≤ k))
+    change 𝟙 X ≫ s.ι.app k = s.ι.app ⊥ at hn
+    exact (Category.id_comp _).trans (hn.symm.trans (Category.id_comp _))
+  uniq s m hm := by
+    have h := hm ⊥
+    change 𝟙 X ≫ m = s.ι.app ⊥ at h
+    exact (Category.id_comp _).symm.trans h
+
 lemma const_ι_isIso (X : C) [HasColimit ((Functor.const K).obj X)] :
     IsIso (colimit.ι ((Functor.const K).obj X) ⊥) := by
   have : ∀ (i j : K) (f : i ⟶ j), IsIso (((Functor.const K).obj X).map f) :=
