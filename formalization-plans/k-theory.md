@@ -8368,3 +8368,89 @@ F4の残項目は、必要範囲での実際のRMapとhocolim・holimの比較�
 holim側の構成・ホモトピー不変性・自然比較も証明して接続する。
 F1の任意モデル源での最終の厳密な関手、L0〜L5も引き続き残る。
 一般のBousfield局所化まで完成させる依頼全体と§159.4の受入条件を維持する。
+
+
+## 187. F4進捗：frame Homの右Quillen性と、実際の単体的holim・局所化後の普遍性（2026-10-15）
+
+F〜L全体の依頼を維持する。今回はF4に必要なholim側を、実際の関手と導来普遍性まで
+実装・検証した。RMapのhocolim→holim公式はまだ接続しておらず、F4全体は未完了である。
+A0・A1は§166で完了している。
+
+### 187.1 図式へのQuillen二変数関手とframe Hom
+
+`CategoryTheory/PointwiseAdjunction`は任意のパラメータ付き随伴を図式圏へ持ち上げ、
+pullback-hom比較を評価する。`Diagram/ProjectiveBifunctor`は元のtensor/cotensorの
+Quillen条件からprojective図式モデルでの条件を証明する。
+評価するのはfibrationと弱同値であり、projective cofibrationがobjectwiseに判定できるとは
+仮定していない。豊穣化の圏Vも源Cも一般である。コミット：`a44d6e3`。
+
+`HomotopyFunctionComplex/FrameRightQuillen`は、任意のMathlibモデル圏Cの
+Reedy cofibrantかつhomotopically constantなcosimplicial frame Aについて、
+実際の`cosimplicialHom A : C ⥤ SSet`の右Quillen性を証明する。
+境界のliftingとhornのliftingを、それぞれtrivial fibrationとfibrationの保存に使う。
+単体的集合側は既存モデルとcof=mono・fib=horn.rlpの明示的等式を入力とする。
+源Cに単体的豊穣化・tensor・局所可呈示性・関手的分解の選択を加えない。
+任意のordinary localizationへのpointwise right derived functorの存在も導く。
+
+`Simplicial/Generators`と`Simplicial/ModelCompatibility`へ、従来のスペクトル側にあった
+一般の境界/horn生成性・pushout-product・SM7・monoidalモデルの証明を移した。
+旧`SimplicialModelInputs`の宣言は実際の互換aliasとして残し、既存APIを維持する。
+共有層はInputsやSpectraをimportしない。モデル存在や弱同値クラスの引用は追加しない。
+コミット：`451422e`。
+
+### 187.2 重み付きコーン空間と実際のholim
+
+`Diagram/WeightedCones`は小さいKとW:K→SSetについて、
+`X ↦ (k ↦ X⊗W(k))`という実際の関手の右随伴`coneSpace K W`を構成する。
+テンソルの各評価での余極限保存とMathlibのpresheaf随伴定理を使い、右随伴の存在を
+入力に要求しない。単体的集合の局所可呈示性は、既存のTypeと小さい関手圏の一般論から得る。
+Wがprojective cofibrantなら187.1の二変数Quillen条件からQuillen随伴になる。
+
+`Diagram/HomotopyCones`はWを定数単位図式の実際のprojective cofibrant replacementとして
+構成する。さらに入力図式Dの実際のprojective fibrant replacement R_K(D)を構成し、
+`D ↦ coneSpace K W (R_K D)`を定義する。この関手はfibrantな単体的集合を値に持ち、
+任意のobjectwise弱同値を弱同値へ送る。
+任意のordinary right derived cone functor RFと、実際の自然同型
+`homotopyCones ⋙ L ≅ Q ⋙ RF`を構成する。
+
+### 187.3 定数図式との比較と局所化後の随伴
+
+`Diagram/WeightComparison`は重みのaugmentation W→const(1)をテンソルした後、
+実際の右単位子を合成し、tensor W→constの自然変換を構成する。
+cof=monoからすべての単体的集合のcofibrancyを得て、各入力X・各kでこの射が弱同値で
+あることを証明する。cofibrantな入力を別途仮定したり、形式的なHom同型だけで置き換えたりしない。
+
+`Diagram/DerivedConstantAdjunction`はQuillen随伴を導来し、上の自然な弱同値を局所化して
+導来tensorと定数関手の自然同型を得る。right derived cone functorは、局所化後の
+定数図式関手の右随伴になる。必要な左右導来関手自体も証明済みの存在から構成する。
+
+`Diagram/HomotopyLimit`はcanonicalな局所化後の定数関手を実際に構成し、
+上のholim関手と、その定数関手の右随伴との自然比較を公開する。
+最終の`exists_localizedAdjunction`には、導来関手・重み・置換・定数関手の降下データを
+追加の入力として要求しない。ordinary localizationの出力圏の宇宙は独立である。
+図式のサイズと単体的集合の値は同じ宇宙wで扱う。
+projectiveモデルに対する通常のlimの右Quillen性やinjectiveモデルの存在は使っていない。
+この5モジュールのコミット：`e72550c`。
+
+### 187.4 検証と残る接続
+
+以下はすべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`：2392 jobs。
+- スペクトル側の互換入口を含むビルド：2393 jobs。
+- `check_projective_bifunctor`：9宣言・2モジュール、標準公理のみ。
+- `check_frame_right_quillen`：17宣言・3モジュール、標準公理のみ。
+- `check_homotopy_limit`：60宣言・5モジュール、標準公理のみ。
+  mono/Kanの明示的等式だけから生成性・Quillen条件を導く利用例、実際のholimの
+  不変性・fibrancy、独立した局所化の宇宙での普遍性と自然比較を検証した。
+- `audit_homotopical_foundations`：3091宣言・207モジュール、標準公理のみ。
+- `check_filtered_homotopy_colimit`：35宣言・3モジュール。
+- `check_simplicial_model_inputs`、`check_simplicial_monoidal`、`check_spectra_stage2`、
+  `git diff --check`。
+
+新規sorry・引用axiomはない。共有作業木の他チャットの変更を保持した。
+今回の局所化後の普遍性は、RMap値の自然な弱同値そのものを代用しない。
+次は一般のCのhocolimとframe/resolution Homを今回のholimへ接続し、
+`RMap(hocolim D,Y) ≃ holim RMap(D_i,Y)`の必要範囲を証明する。
+F1の任意モデル源での厳密な二変数関手、L0〜L5も未完了であり、
+§159.2の一般局所化存在・置換・Quillen普遍性までの最終契約は変更しない。

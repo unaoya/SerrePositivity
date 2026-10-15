@@ -901,3 +901,22 @@ colimitとの自然同型を証明する。`ColimitWeakEquivalence`と`FilteredH
 コミットは`c71600d`・`f7cc57a`、詳細は計画§186。
 F4のRMapのhocolim→holim公式は残り、通常のlimitとの同型だけで代用しない。
 F1の任意源での最終関手とL0〜L5も未完了である。
+
+
+`PointwiseAdjunction`と`Diagram/ProjectiveBifunctor`は一般のtensor/cotensorのQuillen条件を
+projective図式モデルへ持ち上げる。`FrameRightQuillen`は一般のモデル源のcosimplicial frameの
+実際のHom関手を右Quillenとし、pointwise right derived functorの存在を証明する。
+単体的集合の生成性・SM7・monoidal条件の既存証明は`Simplicial/Generators`と
+`ModelCompatibility`へ共有化し、スペクトル側の既存名を互換aliasで維持する。
+
+`Diagram/WeightedCones`は重み付きtensorの実際の右随伴を構成する。
+`HomotopyCones`は定数単位のprojective cofibrant weightと入力の実際のfibrant replacementを使い、
+fibrantな値と弱同値不変性、任意のright derived cone functorとの自然比較を証明する。
+`WeightComparison`と`DerivedConstantAdjunction`はtensor weight→constの弱同値を導来し、
+`HomotopyLimit`はcanonicalな局所化後の定数関手の右随伴としての普遍性を公開する。
+ordinary localizationの出力宇宙は独立。図式と単体的集合の値は同じ宇宙wで扱う。
+
+共有入口2392 jobs、新規holim側60宣言・5モジュール、共有3091宣言・207モジュールの
+標準公理監査と回帰検証が成功。コミットは`a44d6e3`・`451422e`・`e72550c`、詳細は計画§187。
+RMap(hocolim D,Y)とholim RMap(D_i,Y)の自然な弱同値は引き続き残り、今回のordinaryな
+普遍性だけでF4完了とはしない。F1の任意源での最終関手とL0〜L5も未完了である。
