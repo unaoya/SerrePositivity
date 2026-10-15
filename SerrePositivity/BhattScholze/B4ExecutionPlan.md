@@ -5391,3 +5391,23 @@ p局所・p正則な可換環A,Bの下、両側の実基底と基底のテンソ
 全単射性および実代数同型を証明した。δ構造・完備性・Noetherian性は不要。
 6公開宣言の対象2709ジョブ・B4全体pure監査成功。標準3公理のみ。
 新sorry・公理・引用なし。この通常代数の比較は商の分冪包比較・導来比較・CFFとは別工程。
+
+### 次工程の登録：一元分冪表示環の実テンソル基底変更
+
+BS専用PrincipalDPBaseChange.leanで、p局所・p正則な可換環A,BとA代数構造について、
+B⊗[A]PrincipalDPPresentation A y ≃ₐ[B] PrincipalDPPresentation B (algebraMap A B y)
+を構成する。前工程の実同型がγ₁(1)−yを対応する表示関係へ送ることを示し、
+Mathlibのテンソル商同型と商環同型を合成する。
+yの正則性・δ構造・完備性を要求せず、商環の基底変更を正確に扱う。
+一般の導来テンソル比較・分冪包の平坦性・CFFは別工程。
+
+## B4-6：一元分冪表示環の実テンソル基底変更（2026-10-15）
+
+PrincipalDPBaseChange.leanで、実一元分冪代数比較射が表示関係を対応する関係へ送ること、
+および拡大した表示関係イデアルの像の一致を証明した。
+Mathlibの実テンソル商同型と商代数同型を合成し、
+B⊗[A]PrincipalDPPresentation A y≃ₐ[B]PrincipalDPPresentation B (algebraMap A B y)
+を構成した。Bの係数と全標準生成元の純テンソル上の式も公開した。
+仮定はA,Bのp局所性・p正則性。yの正則性・δ構造・完備性・Noetherian性は不要。
+5公開宣言の対象2711ジョブ・B4全体pure監査成功。標準3公理のみ。
+新sorry・公理・引用なし。原典の導来比較・分冪包の平坦性・CFF・一般B4は未完成。
