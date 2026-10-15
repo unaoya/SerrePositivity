@@ -165,3 +165,20 @@ S3の導来可逆性・通常の懸垂との比較、およびF1の残項目は�
 共有一般論`92bb2333`、スペクトルへの適用`643a17be`。詳細は計画§220。
 S3全体は未完了。PSS/S¹で通常の導来懸垂との比較と旧APIへの接続が残る。
 F1の指定分解なしの任意モデル源の最終関手も引き続き未完了。
+
+
+## S3進捗：円tensorのgood cylinder商と既存懸垂API（2026-10-16）
+
+一般の基点付き圏の商pushoutと、一般スペクトルの実際の零対象を構成した。
+`General/SuspensionPushout`は任意Kについて、円tensorが区間の境界tensorを
+零対象へ潰す実際のpushoutであることを証明する。
+`General/SimplicialCylinder`は実際のQuillen作用からcofibrant Eの区間tensorを
+good cylinderと証明し、E⨿Eと境界tensorの同型・二端点包含との整合性を構成する。
+円tensorはこの実際のcylinderの両端を零対象へ潰すpushoutとなる。
+`SimplicialSuspensionComparison`は既存の懸垂関手との一致、ループ側の自然同型、
+単位・余単位の可換式、構造射の互換性を証明する。
+構成済み局所モデルの作用から取得する利用例と97宣言・6モジュールの標準公理監査、
+合同build2988 jobs、前回の導来同値と段階2の回帰確認が成功。
+基盤`8e7ba3ca`、幾何的比較`862040a8`。計画§221に詳細を記録。
+S3全体は未完了。このgood cylinder商と通常のhomotopy pushoutによる導来懸垂との比較、
+およびF1の指定分解なしの任意モデル源の最終関手が残る。

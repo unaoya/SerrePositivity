@@ -10999,3 +10999,81 @@ S3全体の完了には、PSS/S¹で円tensorを通常の導来懸垂Σと比較
 一般Kの局所化だけで通常の懸垂の安定性が得られたとは扱わない。
 F1の指定関手的分解なしの任意モデル源の最終RMap関手も引き続き残る。
 全体目標F→L→E→Sは継続する。
+
+
+## 221. S3進捗：円tensorのgood cylinder商表示と既存懸垂・ループAPI（2026-10-16）
+
+§220の導来K同値を維持し、通常の懸垂との比較に必要な実際の幾何的計算を実装した。
+円tensorをgood cylinderの両端を零対象へ潰すpushoutとして同定し、
+既存の具体的スペクトルの懸垂・ループ・単位・余単位との互換性を証明した。
+S3全体は未完了で、一般のhomotopy pushoutによる通常の懸垂との導来比較が残る。
+
+### 221.1 一般の商・零対象・Quillen cylinder
+
+`Spectra/Pointed/CofiberPushout.lean`は、一般の直積モノイダル圏の射f:X→Yに対し、
+既存の実際の商`PointedObject.cofiber f`が、基点付き圏のX+→Y+とX+→pointの
+pushoutであると証明する。quotientからの射の普遍性を用い、
+射・可換条件・desc・一意性をすべて実際の構成について検証した。
+pushoutを保つ任意の関手へこの計算を移す定理もある。モデル構造は不要。
+
+`General/Zero.lean`は、一般の基点付き基礎圏上のスペクトルの実際の初対象を零対象と証明する。
+加群忘却関手が初対象を保ち、終対象を反映することを使う。
+基礎圏の零対象から対称列の初対象像が零であると示し、終対象性をスペクトルへ戻す。
+零射もこの実際の零対象から構成し、スペクトルのpointed性を追加の入力にしない。
+
+共有`HomotopyFunctionComplex/QuillenCylinder.lean`は、任意の左Quillen左随伴
+L:SSet→Dに対し、L(Δ[1])・二つのcoface・codegeneracyからgood cylinderを構成する。
+標準単体の弱同値とBrown補題でprojectionの弱同値性を証明し、
+既存の標準Reedy frameと境界の計算からgood性を導く。
+源と標的のHom宇宙は独立で、特定のスペクトルやモデル存在の引用に依存しない。
+一般モデル圏のcylinderを基点対象の同型に沿って移し、good性を保つAPIも追加した。
+
+### 221.2 実際の円tensorとgood cylinderの両端の商
+
+`General/SuspensionPushout.lean`は、基点付き単体的集合を基礎とする任意の座標Kで使える。
+parameter tensorの実際の左随伴性により、円の定義Δ[1]/∂Δ[1]をpushoutへ移す。
+pointとのparameter tensorが実際に零対象であることも証明し、
+境界collapseと商のbasepointが零射であること、境界とquotientの合成が零であることを得る。
+この段階にはモデル構造もcofibrancyも不要。
+
+`General/SimplicialCylinder.lean`は、実際の基点付き作用がQuillenなら、
+cofibrantなEについてparameter tensorと基点追加の合成が左Quillenであると証明する。
+221.1の一般cylinderを適用し、Δ[0]+によるtensorの単位比較で対象をE自身へ戻す。
+結果は実際の区間tensorを中間対象とするgood cylinderであり、cylinderを入力しない。
+
+さらに∂Δ[1]が二つの頂点の余積である既存の証明を、基点追加とparameter tensorで移す。
+実際の同型E⨿E≅(∂Δ[1])+⊙Eを構成し、その同型と境界射の合成が
+構成済みcylinderの二端点包含であることを証明する。
+`circleTensor_cylinder_isPushout`は、この同型に沿って221.2の商squareを移し、
+円tensorが実際のgood cylinderの両端を零対象へ潰すpushoutであることを証明する。
+任意Kの幾何的計算であり、一般Kによる局所化が通常の懸垂について安定だとは仮定しない。
+
+### 221.3 既存の具体的スペクトルとの比較
+
+`General/SimplicialSuspensionComparison.lean`は、座標circleでの一般pointwise tensor関手が
+既存の`SymmetricSpectrum.suspensionFunctor`に一致することを証明する。
+ループ側は同じ左随伴の右随伴の一意性による自然同型を構成し、
+その自然同型を通じて既存の単位・余単位との可換式を証明する。
+選択された二つの右随伴構成の厳密な等式を要求せず、随伴との整合性を証明している。
+構造射と随伴構造射も既存APIと一致する。
+
+### 221.4 受入検証
+
+- 共有入口・`SimplicialCylinder`・`SimplicialSuspensionComparison`の合同build：2988 jobs。
+- `check_spectrum_suspension_geometry`：一般圏の商pushout、任意座標Kの構成済み局所モデルから
+  S2の実際の作用条件を取得する利用例、cofibrant Eのgood cylinderと境界cofibration、
+  円tensorのcylinder商pushout、既存の懸垂・ループの単位・余単位の互換式。
+  局所作用やcylinderを追加の入力にせず、97宣言・6モジュールの標準公理監査も成功。
+- `audit_homotopical_foundations`：4403宣言・383モジュール、標準公理のみ。
+- `check_spectrum_derived_tensor_inverse`：前回の70宣言・4モジュールと最終構成の回帰確認。
+- `check_spectra_stage2`：既存の具体的スペクトルAPIの回帰確認。
+- `git diff --cached --check`。
+
+新規sorry・引用axiomなし。基盤`8e7ba3ca`、幾何的比較と受入検証`862040a8`。
+他チャットの変更を保持した。共有Quillen cylinderはSpectraをimportしない。
+
+残るS3の受入項目は、このgood cylinder商を、一般のhomotopy pushoutから定まる
+通常の導来懸垂へ比較し、§220の導来同値と221.3の互換性へ接続することである。
+通常のpushoutを示しただけでhomotopy pushoutの普遍性まで得たとは扱わない。
+F1の指定関手的分解なしの任意モデル源の最終RMap関手も引き続き残る。
+全体目標F→L→E→Sは継続する。

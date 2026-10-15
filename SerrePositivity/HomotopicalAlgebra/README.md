@@ -1300,3 +1300,13 @@ L1生成族・段階2の回帰確認も成功。共有層はSpectraをimportし�
 共有入口はSpectraをimportしない。共有受入26宣言・3モジュールと、
 4394宣言・382モジュールの標準公理監査が成功。新規sorry・引用axiomなし。
 実装`92bb2333`。一般スペクトルへの適用は計画§220。
+
+
+## 標準区間の左Quillen像とgood cylinder（2026-10-16）
+
+`HomotopyFunctionComplex/QuillenCylinder`は、源・標的のHom宇宙が独立な
+左Quillen左随伴SSet→Dについて、実際のΔ[1]・両coface・codegeneracyの像から
+good cylinderを構成する。標準Reedy frameとBrown補題を使い、cylinderを仮定しない。
+同型に沿った基点対象の変更とgood性の保存も証明する。共有層はSpectraをimportしない。
+4403宣言・383モジュールの標準公理監査に成功。実装`8e7ba3ca`。
+スペクトルの円tensorの商への適用と残るhomotopy pushout比較は計画§221。
