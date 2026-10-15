@@ -1,0 +1,11 @@
+import SerrePositivity.KTheory.Adams.CubicKoszulNormalization
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeClass_oneKoszul_weight
+#print axioms SerrePositivity.Adams.tensorCubeClass_oneKoszul_weight
+
+assert_no_sorry SerrePositivity.Adams.tensorCubeClass_oneKoszul
+#print axioms SerrePositivity.Adams.tensorCubeClass_oneKoszul
+
+assert_no_sorry SerrePositivity.Adams.cyclicThree_oneKoszul
+#print axioms SerrePositivity.Adams.cyclicThree_oneKoszul

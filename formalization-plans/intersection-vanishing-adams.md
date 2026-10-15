@@ -3796,6 +3796,19 @@ K₀ の類への移送と重みつき乗法性は次の小段。
   三定数の `assert_no_sorry` が通り、公理は標準三公理のみ。
 - 次は同変鎖同型による三乗の類への移送と、係数 3 の一元正規化。
 
+### S10.8c.3b：ψ³ の一元 Koszul 正規化（S10.8c 受入完了）
+
+- `Adams/CubicKoszulNormalization` は全次数の同変 Fourier 鎖同型と
+  重みつき類の擬同型不変性により、四シフトの類を Koszul 三乗の類へ移した。
+- `ζ²+ζ+1=0` により `2−ζ−ζ²=3` とし、
+  `cyclicThree E t ht ζ hζ (oneKoszulSupport a) (1⊗oneKoszulClass a)=3•(1⊗oneKoszulClass a)`
+  を証明した。任意の a、可換環 R,E に対する結果で、2 の可逆性は不要。
+- `lake build SerrePositivity.KTheory.Adams.CubicKoszulNormalization` が成功（3344 jobs）。
+- `lake env lean scripts/audit_adams_cubic_koszul_normalization.lean` が成功。
+  三定数の `assert_no_sorry` が通り、公理は標準三公理のみ。
+- S10.8c の全証明契約は受入完了。ルート公開は族の統合段で行う。
+  次は S10.8d の `SupportedAdams` と全局所化の族。S10.9・S11 は未完了。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
