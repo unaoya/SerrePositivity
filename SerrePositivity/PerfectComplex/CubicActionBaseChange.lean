@@ -42,13 +42,11 @@ def characterBaseChangeIso (τ : CochainCubicAction K) (t : R) (ht : t ^ 3 = 1)
     SerrePositivity.baseChange φ (τ.characterProjector t ht j).image ≅
       ((baseChange φ τ).characterProjector (φ t)
         (by rw [← map_pow, ht, map_one]) j).image :=
-  CochainIdempotent.imageFunctorIso
-      ((ModuleCat.extendScalars φ).mapHomologicalComplex (.up ℤ)) (τ.characterProjector t ht j) ≪≫
-    CochainIdempotent.imageIso _ _ (Iso.refl _) (by
-      change _ ≫ 𝟙 _ = 𝟙 _ ≫ _
-      rw [comp_id, id_comp]
-      simpa only [CochainIdempotent.mapFunctor, characterProjector, projector,
-        cubicCharacter, map_pow] using baseChange_projectorMap φ τ (cubicCharacter t j))
+  CochainIdempotent.imageFunctorIsoOfMapEq
+    ((ModuleCat.extendScalars φ).mapHomologicalComplex (.up ℤ)) (τ.characterProjector t ht j)
+    ((baseChange φ τ).characterProjector (φ t) (by rw [← map_pow, ht, map_one]) j) (by
+      simpa only [characterProjector, projector, cubicCharacter, map_pow] using
+        baseChange_projectorMap φ τ (cubicCharacter t j))
 
 @[reassoc]
 lemma characterBaseChangeIso_hom_inclusion (τ : CochainCubicAction K)
@@ -58,9 +56,7 @@ lemma characterBaseChangeIso_hom_inclusion (τ : CochainCubicAction K)
         (by rw [← map_pow, ht, map_one]) j).inclusion =
       ((ModuleCat.extendScalars φ).mapHomologicalComplex (.up ℤ)).map
         (τ.characterProjector t ht j).inclusion := by
-  simp only [characterBaseChangeIso, Iso.trans_hom, Category.assoc,
-    CochainIdempotent.imageIso_hom_inclusion, Iso.refl_hom, comp_id,
-    CochainIdempotent.imageFunctorIso_hom_inclusion]
+  simp only [characterBaseChangeIso, CochainIdempotent.imageFunctorIsoOfMapEq_hom_inclusion]
 
 end CochainCubicAction
 end SerrePositivity

@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.CochainIdempotent
+public import SerrePositivity.HomologicalAlgebra.CochainIdempotentIso
 
 /-! # Transport of split idempotent images through functors -/
 
@@ -71,6 +72,21 @@ lemma imageFunctorIso_naturality {L : CochainComplex (ModuleCat.{u} R) ℤ}
   simp only [Category.assoc, imageFunctorIso_hom_inclusion,
     imageMap_inclusion, imageFunctorIso_hom_inclusion_assoc]
   rw [← F.map_comp, imageMap_inclusion, F.map_comp]
+
+/-- Compare the transported image with any projector having the same underlying map. -/
+def imageFunctorIsoOfMapEq (d : CochainIdempotent (F.obj K)) (h : F.map e.map = d.map) :
+    F.obj e.image ≅ d.image :=
+  imageFunctorIso F e ≪≫ imageIso _ _ (Iso.refl _) (by
+    change _ ≫ 𝟙 _ = 𝟙 _ ≫ _
+    rw [comp_id, id_comp]
+    exact h)
+
+@[reassoc]
+lemma imageFunctorIsoOfMapEq_hom_inclusion
+    (d : CochainIdempotent (F.obj K)) (h : F.map e.map = d.map) :
+    (imageFunctorIsoOfMapEq F e d h).hom ≫ d.inclusion = F.map e.inclusion := by
+  simp only [imageFunctorIsoOfMapEq, Iso.trans_hom, Category.assoc,
+    imageIso_hom_inclusion, Iso.refl_hom, comp_id, imageFunctorIso_hom_inclusion]
 
 end CochainIdempotent
 end SerrePositivity

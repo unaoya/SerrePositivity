@@ -47,37 +47,27 @@ lemma baseChange_negative_map (t : CochainInvolution K) :
 
 def positiveBaseChangeIso (t : CochainInvolution K) :
     SerrePositivity.baseChange φ t.positive.image ≅ (baseChange φ t).positive.image :=
-  CochainIdempotent.imageFunctorIso
-      ((ModuleCat.extendScalars φ).mapHomologicalComplex (.up ℤ)) t.positive ≪≫
-    CochainIdempotent.imageIso _ _ (Iso.refl _) (by
-      change _ ≫ 𝟙 _ = 𝟙 _ ≫ _
-      rw [comp_id, id_comp]
-      exact baseChange_positive_map φ t)
+  CochainIdempotent.imageFunctorIsoOfMapEq
+    ((ModuleCat.extendScalars φ).mapHomologicalComplex (.up ℤ)) t.positive
+    (baseChange φ t).positive (baseChange_positive_map φ t)
 
 def negativeBaseChangeIso (t : CochainInvolution K) :
     SerrePositivity.baseChange φ t.negative.image ≅ (baseChange φ t).negative.image :=
-  CochainIdempotent.imageFunctorIso
-      ((ModuleCat.extendScalars φ).mapHomologicalComplex (.up ℤ)) t.negative ≪≫
-    CochainIdempotent.imageIso _ _ (Iso.refl _) (by
-      change _ ≫ 𝟙 _ = 𝟙 _ ≫ _
-      rw [comp_id, id_comp]
-      exact baseChange_negative_map φ t)
+  CochainIdempotent.imageFunctorIsoOfMapEq
+    ((ModuleCat.extendScalars φ).mapHomologicalComplex (.up ℤ)) t.negative
+    (baseChange φ t).negative (baseChange_negative_map φ t)
 
 @[reassoc]
 lemma positiveBaseChangeIso_hom_inclusion (t : CochainInvolution K) :
     (positiveBaseChangeIso φ t).hom ≫ (baseChange φ t).positive.inclusion =
       ((ModuleCat.extendScalars φ).mapHomologicalComplex (.up ℤ)).map t.positive.inclusion := by
-  simp only [positiveBaseChangeIso, Iso.trans_hom, Category.assoc,
-    CochainIdempotent.imageIso_hom_inclusion, Iso.refl_hom, comp_id,
-    CochainIdempotent.imageFunctorIso_hom_inclusion]
+  simp only [positiveBaseChangeIso, CochainIdempotent.imageFunctorIsoOfMapEq_hom_inclusion]
 
 @[reassoc]
 lemma negativeBaseChangeIso_hom_inclusion (t : CochainInvolution K) :
     (negativeBaseChangeIso φ t).hom ≫ (baseChange φ t).negative.inclusion =
       ((ModuleCat.extendScalars φ).mapHomologicalComplex (.up ℤ)).map t.negative.inclusion := by
-  simp only [negativeBaseChangeIso, Iso.trans_hom, Category.assoc,
-    CochainIdempotent.imageIso_hom_inclusion, Iso.refl_hom, comp_id,
-    CochainIdempotent.imageFunctorIso_hom_inclusion]
+  simp only [negativeBaseChangeIso, CochainIdempotent.imageFunctorIsoOfMapEq_hom_inclusion]
 
 end CochainInvolution
 end SerrePositivity
