@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.CommutativeAlgebra.AlgebraAction
 
 public import SerrePositivity.PerfectComplex.BaseChange
 public import SerrePositivity.PerfectComplex.K0Comparison
@@ -118,9 +119,8 @@ variable {A T : Type u} [CommRing A] [CommRing T] [Algebra A T]
 /-- A 上の作用は支持パラメータを固定する。 -/
 lemma perfectTwist_parameters (g : G) :
     (MulSemiringAction.toAlgHom A T g).toRingHom ∘ (algebraMap A T ∘ z) =
-      algebraMap A T ∘ z := by
-  funext j
-  exact (MulSemiringAction.toAlgHom A T g).commutes (z j)
+      algebraMap A T ∘ z :=
+  algebraHom_parameters (MulSemiringAction.toAlgHom A T g) z
 
 /-- 有限射影支持圏の実際のひねり関手。係数拡大なので群の積に関して共変。 -/
 noncomputable abbrev perfectTwist (g : G) :
@@ -136,9 +136,7 @@ noncomputable abbrev perfectTwistK0 (g : G) :
 
 lemma perfectTwistK0_one :
     perfectTwistK0 (T := T) z (1 : G) = AddMonoidHom.id _ := by
-  have h : (MulSemiringAction.toAlgHom A T (1 : G)).toRingHom = RingHom.id T := by
-    ext x
-    simp
+  have h := algebraActionRingHom_one (A := A) (T := T) (G := G)
   change supportedPerfectMap _ _ _ _ = _
   simp only [h]
   exact supportedPerfectMap_id _
@@ -146,11 +144,7 @@ lemma perfectTwistK0_one :
 lemma perfectTwistK0_mul (g h : G) :
     perfectTwistK0 (T := T) z (g * h) =
       (perfectTwistK0 (T := T) z g).comp (perfectTwistK0 (T := T) z h) := by
-  have hh : (MulSemiringAction.toAlgHom A T (g * h)).toRingHom =
-      (MulSemiringAction.toAlgHom A T g).toRingHom.comp
-        (MulSemiringAction.toAlgHom A T h).toRingHom := by
-    ext x
-    exact mul_smul g h x
+  have hh := algebraActionRingHom_mul (A := A) (T := T) g h
   have hc := supportedPerfectMap_comp
     (MulSemiringAction.toAlgHom A T h).toRingHom
     (MulSemiringAction.toAlgHom A T g).toRingHom

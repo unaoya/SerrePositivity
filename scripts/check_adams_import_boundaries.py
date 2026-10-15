@@ -101,6 +101,9 @@ for name in geometry:
     check('SerrePositivity.CommutativeAlgebra.' + name, upper_layer)
 print(f'Support geometry boundaries passed: {len(geometry)} modules.')
 
+check('SerrePositivity.CommutativeAlgebra.AlgebraAction', upper_layer)
+print('Algebra action formulas are independent of the K₀ models.')
+
 for name in ['FiniteFreeBaseChange', 'FiniteLocalizationDescent', 'LocalizedRegularResolution',
              'BoundedResolutionDimension']:
     check('SerrePositivity.HomologicalAlgebra.' + name, upper_layer)

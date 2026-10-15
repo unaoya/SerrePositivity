@@ -61,9 +61,9 @@ omit [Nontrivial R] [Nontrivial S] in
 /-- A 上のひねりを係数写像に合成しても、パラメータの像は変わらない。 -/
 lemma paperTwist_comp_parameters (g : G) :
     (φ.comp (MulSemiringAction.toAlgHom A R g).toRingHom) ∘ (algebraMap A R ∘ a) =
-      φ ∘ algebraMap A R ∘ a := by
-  funext j
-  exact congrArg φ ((MulSemiringAction.toAlgHom A R g).commutes (a j))
+      φ ∘ algebraMap A R ∘ a :=
+  congrArg (fun f : Fin e → R => φ ∘ f)
+    (algebraHom_parameters (MulSemiringAction.toAlgHom A R g) a)
 
 set_option maxHeartbeats 800000 in
 -- 群作用の定義と、支持の指定を保つ係数変更の比較に必要。
