@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.Inputs.Homotopy.KanQuillen
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SourceInvariance
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ChosenComparison
 
 /-! # Resolution Hom over the fixed Kan–Quillen value model
 
@@ -49,5 +50,19 @@ lemma chosenResolutionHom_geometricWeakEquivalence
   let := kanQuillenModel.{v}
   exact chosenResolutionHom_map_both_geometricWeakEquivalence kanQuillenModel_cofibrations
     kanQuillenModel_weakEquivalences cof fib f hf g hg
+
+lemma chosenResolutionHom_choices_geometricWeakEquivalences
+    (cof₁ cof₂ : MorphismProperty.FunctorialFactorizationData
+      (cofibrations C) (trivialFibrations C))
+    (fib₁ fib₂ : MorphismProperty.FunctorialFactorizationData
+      (trivialCofibrations C) (fibrations C))
+    (X : Cᵒᵖ) (Y : C) :
+    SimplicialHomotopy.weakEquivalences
+        (((ChosenComparison.left cof₁ cof₁ cof₂ fib₁ fib₁ fib₂).app X).app Y) ∧
+      SimplicialHomotopy.weakEquivalences
+        (((ChosenComparison.right cof₁ cof₁ cof₂ fib₁ fib₁ fib₂).app X).app Y) := by
+  let := kanQuillenModel.{v}
+  exact ChosenComparison.geometricWeakEquivalences cof₁ cof₁ cof₂ fib₁ fib₁ fib₂
+    kanQuillenModel_cofibrations kanQuillenModel_weakEquivalences X Y
 
 end SerrePositivity.Inputs.Homotopy

@@ -26,6 +26,20 @@ example
         ((chosenResolutionHom cof fib).obj X').map g) :=
   chosenResolutionHom_geometricWeakEquivalence cof fib f hf g hg
 
+-- A concrete natural zigzag for two independently chosen factorizations;
+-- the auxiliary comparison choices are taken from the first end.
+example
+    (cof₁ cof₂ : MorphismProperty.FunctorialFactorizationData
+      (cofibrations C) (trivialFibrations C))
+    (fib₁ fib₂ : MorphismProperty.FunctorialFactorizationData
+      (trivialCofibrations C) (fibrations C))
+    (X : Cᵒᵖ) (Y : C) :
+    SimplicialHomotopy.weakEquivalences
+        (((ChosenComparison.left cof₁ cof₁ cof₂ fib₁ fib₁ fib₂).app X).app Y) ∧
+      SimplicialHomotopy.weakEquivalences
+        (((ChosenComparison.right cof₁ cof₁ cof₂ fib₁ fib₁ fib₂).app X).app Y) :=
+  chosenResolutionHom_choices_geometricWeakEquivalences cof₁ cof₂ fib₁ fib₂ X Y
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -41,7 +55,13 @@ run_cmd do
         `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.TargetInvariance,
         `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SourceInvariance,
         `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PresentationSourceLifting,
-        `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.RelativeBoundaryTensor].contains mod do continue
+        `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.RelativeBoundaryTensor,
+        `SerrePositivity.HomotopicalAlgebra.Generated.CommonCofibrantReplacement,
+        `SerrePositivity.HomotopicalAlgebra.Generated.CommonFibrantReplacement,
+        `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionHomNaturality,
+        `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionComparison,
+        `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.TargetComparison,
+        `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ChosenComparison].contains mod do continue
     if (info.value? true).any (·.hasSorry) then directInputs := directInputs.push name
     let axioms ← collectAxioms name
     let allowed := if (`SerrePositivity.Inputs.Homotopy).isPrefixOf mod then
