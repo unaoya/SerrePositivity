@@ -2384,3 +2384,23 @@ liftの閉性とdescの境界条件を、全次数Hom内で証明した。
 Checks.ConeShift・StageSix・既存Spectra.StageTwoの同時ビルドは成功（2523 jobs）。
 主要16宣言の直接実行による公理監査は標準公理のみ。累計1041宣言。
 U10は未完。次はこの同型を標準三角形のshiftへ運び、逆回転閉性とPretriangulatedを構成する。
+
+
+### 13.73 U10t11：cone shiftの符号付き可換square
+
+`Module/ConeShiftSquares.lean`は、整数shiftの符号を用いる自己同型と、評価関手による
+符号スカラーの保存を公開する。実際の加群圏で、shiftした右包含とcone shift同型の
+可換式、およびshiftしたconnecting・shift交換同型・cone shift同型の可換式を証明した。
+後者では符号を合成全体へ作用させる表示と、第一因子へ作用させる表示を
+`Linear.units_smul_comp`で区別し、Mathlibの既存複体比較と照合している。
+
+Checks.ConeShiftSquares・StageSix・既存Spectra.StageTwoの同時ビルドは成功（2525 jobs）。
+受入Checksの直接実行で主要5宣言を監査し、標準公理のみ。累計1046宣言。
+担当Leanのsorry/admit/新規axiomは0件。
+全体文書検査は担当外のPaper.Section5.ApproximationSecondComparisonの未生成oleanで停止した。
+
+U10全受入は未完。三角形shift同型とPretriangulatedの草稿は未検証・未コミットである。
+次は登録shiftと明示shiftを使う三角形の型変換を、coneに依存しない構成子へ分離する。
+その後、逆回転閉性、Pretriangulated、八面体、acyclic部分圏とVerdier商、
+D(D)の三角構造と局所化・一対象比較の三角性を順に完成させる。
+共有モデル圏系列への新しい不足要求はなく、担当外ファイルは変更していない。
