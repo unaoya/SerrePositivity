@@ -4,6 +4,7 @@ public import SerrePositivity.Inputs.Homotopy.KanQuillen
 public import SerrePositivity.Spectra.ModelCategory.SimplicialLevel
 public import SerrePositivity.Spectra.ModelCategory.SimplicialLevelTensor
 public import SerrePositivity.Spectra.ModelCategory.SimplicialLevelEnriched
+public import SerrePositivity.Spectra.ModelCategory.SimplicialHomComparison
 
 /-! # Applying HT-KQ to the proved simplicial level construction
 
@@ -72,5 +73,14 @@ lemma circleSpectrumLevelModel_simplicialMapping_SM7 :
     Quillen.HasQuillenPullbackHom ordinarySpectrumMapping.{u} := by
   let : ModelCategory SSet.{u} := kanQuillenModel
   exact ordinarySpectrumMapping_SM7 kanQuillenModel_cofibrations kanQuillenModel_fibrations
+
+lemma circleSpectrumLevelModel_enrichedHom_SM7 :
+    let : ModelCategory SSet.{u} := kanQuillenModel
+    let := circleSpectrumLevelModel.{u}
+    let : EnrichedOrdinaryCategory SSet.{u} SymmetricSpectrum.{u} :=
+      SymmetricSpectrum.mappingSpaceSimplicialCategory
+    Quillen.HasQuillenPullbackHom (eHomFunctor SSet.{u} SymmetricSpectrum.{u}) := by
+  let : ModelCategory SSet.{u} := kanQuillenModel
+  exact legacyOrdinaryHom_SM7 kanQuillenModel_cofibrations kanQuillenModel_fibrations
 
 end SerrePositivity.Inputs.Homotopy

@@ -35,6 +35,11 @@ example : let := circleSpectrumLevelModel.{u}
 example : let := circleSpectrumLevelModel.{u}
     HasQuillenPullbackHom ordinarySpectrumMapping.{u} := circleSpectrumLevelModel_simplicialMapping_SM7
 example : let := circleSpectrumLevelModel.{u}
+    let : EnrichedOrdinaryCategory SSet.{u} SymmetricSpectrum.{u} :=
+      SymmetricSpectrum.mappingSpaceSimplicialCategory
+    HasQuillenPullbackHom (eHomFunctor SSet.{u} SymmetricSpectrum.{u}) :=
+  circleSpectrumLevelModel_enrichedHom_SM7
+example : let := circleSpectrumLevelModel.{u}
     ModelGeneration.CofibrantlyGenerated.{u} simplicialLevelI.{u} simplicialLevelJ.{u} :=
   circleSpectrumLevelModel_generated
 example (n : ℕ) : let := circleSpectrumLevelModel.{u}

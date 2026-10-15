@@ -21,7 +21,12 @@ open SerrePositivity.PointedSimplicialSet
 /-- 原変数スペクトルの射による基点付き写像対象の前合成。 -/
 def pointedMappingSpacePre {E E' : SymmetricSpectrum.{u}} (f : E' ⟶ E)
     (F : SymmetricSpectrum.{u}) : pointedMappingSpace E F ⟶ pointedMappingSpace E' F :=
-  (evaluation 0).map ((pre f).app F)
+  (pointedMappingSpaceBifunctor.map f.op).app F
+
+/-- 二変数関手の原変数の射は、選択済みの前合成。 -/
+lemma pointedMappingSpaceBifunctor_map {E E' : SymmetricSpectrum.{u}} (f : E' ⟶ E)
+    (F : SymmetricSpectrum.{u}) :
+    (pointedMappingSpaceBifunctor.map f.op).app F = pointedMappingSpacePre f F := rfl
 
 /-- 写像対象への転置の原変数スペクトルに関する自然性の法則。 -/
 def mappingSpaceCurryPreLaw (X : PointedSimplicialSet.{u})

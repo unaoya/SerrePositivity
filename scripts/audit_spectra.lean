@@ -2,6 +2,7 @@
 -- スペクトルと、そのための共通圏論・群論の公開宣言を標準公理のみで監査する。
 import SerrePositivity.Spectra.Foundations
 import SerrePositivity.CategoryTheory.Monoidal.RepresentedHomFunctor
+import SerrePositivity.CategoryTheory.Monoidal.MappingParametrizedAdjunction
 import SerrePositivity.Spectra.Pointed.SmashPushoutProduct
 import SerrePositivity.Spectra.ModelCategory.PointedGenerators
 import SerrePositivity.Spectra.ModelCategory.SimplicialMonoidal
@@ -9,6 +10,7 @@ import SerrePositivity.Spectra.ModelCategory.SimplicialLevel
 import SerrePositivity.Spectra.ModelCategory.SimplicialWeakEquivalences
 import SerrePositivity.Spectra.ModelCategory.SimplicialLevelTensor
 import SerrePositivity.Spectra.ModelCategory.SimplicialLevelEnriched
+import SerrePositivity.Spectra.ModelCategory.SimplicialHomComparison
 import SerrePositivity.Spectra.General.Foundations
 import SerrePositivity.Spectra.General.SimplicialComparison
 import SerrePositivity.Spectra.ModelCategory.LevelClasses
@@ -51,6 +53,7 @@ run_cmd do
       `SerrePositivity.Spectra.ModelCategory.FreePushoutProductModel,
       `SerrePositivity.Spectra.ModelCategory.SimplicialLevelTensor,
       `SerrePositivity.Spectra.ModelCategory.SimplicialLevelEnriched,
+      `SerrePositivity.Spectra.ModelCategory.SimplicialHomComparison,
       `SerrePositivity.Spectra.General.EnrichedModel,
       `SerrePositivity.Spectra.ModelCategory.SimplicialWeakEquivalences,
       `SerrePositivity.HomotopicalAlgebra.Topological.WeakEquivalence,
@@ -64,6 +67,7 @@ run_cmd do
       `SerrePositivity.Spectra.General.ParametrizedMapping,
       `SerrePositivity.CategoryTheory.Monoidal.MappingWhiskering,
       `SerrePositivity.CategoryTheory.Monoidal.RepresentedHomFunctor,
+      `SerrePositivity.CategoryTheory.Monoidal.MappingParametrizedAdjunction,
       `SerrePositivity.Spectra.General.MappingFunctorComparison,
       `SerrePositivity.Spectra.General.TensorCotensorEnriched,
       `SerrePositivity.Spectra.General.TensorMappingObject,

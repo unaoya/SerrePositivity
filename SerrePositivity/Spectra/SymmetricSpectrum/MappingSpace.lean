@@ -6,6 +6,7 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorCurryNaturality
 public import Mathlib.CategoryTheory.Whiskering
 public import SerrePositivity.CategoryTheory.AdjunctionHomLaws
 public import SerrePositivity.CategoryTheory.Monoidal.MappingAdjunction
+public import SerrePositivity.CategoryTheory.Monoidal.MappingParametrizedAdjunction
 public import SerrePositivity.CategoryTheory.Monoidal.MappingUnitLaws
 public import SerrePositivity.CategoryTheory.Monoidal.RepresentedMappingEnrichment
 
@@ -28,7 +29,8 @@ open SerrePositivity.PointedSimplicialSet
 /-- 基点付き写像対象の値域スペクトルに関する関手。 -/
 def pointedMappingSpaceFunctor (E : SymmetricSpectrum.{u}) :
     SymmetricSpectrum.{u} ⥤ PointedSimplicialSet.{u} :=
-  internalHomFunctor E ⋙ evaluation 0
+  (@CategoryTheory.ihom SymmetricSpectrum.{u} _ _ E
+    (spectrumMonoidalClosed.closed E)) ⋙ evaluation 0
 
 /-- 基点付き写像対象は内部Homスペクトルの第0段。 -/
 def pointedMappingSpace (E F : SymmetricSpectrum.{u}) : PointedSimplicialSet.{u} :=
@@ -37,7 +39,8 @@ def pointedMappingSpace (E F : SymmetricSpectrum.{u}) : PointedSimplicialSet.{u}
 /-- 基点付き写像対象は原変数に反変、値域に共変な二変数関手。 -/
 def pointedMappingSpaceBifunctor : SymmetricSpectrum.{u}ᵒᵖ ⥤
     SymmetricSpectrum.{u} ⥤ PointedSimplicialSet.{u} :=
-  internalHomBifunctor ⋙
+  (@CategoryTheory.MonoidalClosed.internalHom SymmetricSpectrum.{u} _ _
+    spectrumMonoidalClosed) ⋙
     (CategoryTheory.Functor.whiskeringRight _ _ _).obj (evaluation 0)
 
 /-- 二変数関手の対象は構成済みの基点付き写像対象。 -/
@@ -60,11 +63,17 @@ lemma mappingTensorFunctor_map {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y)
     (E : SymmetricSpectrum.{u}) : (mappingTensorFunctor E).map f = pointwiseTensorPost f E :=
   rfl
 
+/-- 各段のsmashと写像対象の、スペクトル変数に関して自然な随伴。 -/
+def pointedMappingSpaceParametrizedAdjunction :
+    pointwiseTensorBifunctor.{u}.flip ⊣₂ pointedMappingSpaceBifunctor.{u} :=
+  MonoidalMappingAdjunction.transportedParametrizedAdjunction (freeAtAdjunction 0)
+    pointwiseTensorBifunctor mappingTensorNatIso
+    (fun {_ _} f X ↦ (sphereTensorFreeZeroPointwiseNatIso X).hom.naturality f)
+
 /-- 各段のsmashと基点付き写像対象の随伴。 -/
 def pointedMappingSpaceAdjunction (E : SymmetricSpectrum.{u}) :
     mappingTensorFunctor E ⊣ pointedMappingSpaceFunctor E :=
-  (MonoidalMappingAdjunction.adjunction (freeAtAdjunction 0) E).ofNatIsoLeft
-    (mappingTensorNatIso E)
+  pointedMappingSpaceParametrizedAdjunction.adj E
 
 /-- 各段のsmashからの射と写像対象への基点付き射の自然なHom同値。 -/
 def pointedMappingSpaceHomEquiv (X : PointedSimplicialSet.{u}) (E F : SymmetricSpectrum.{u}) :

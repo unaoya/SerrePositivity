@@ -23,7 +23,7 @@ abbrev pointedSpectrumCotensor : PointedSimplicialSet.{u}ᵒᵖ ⥤
 
 abbrev pointedSpectrumMapping : SymmetricSpectrum.{u}ᵒᵖ ⥤
     SymmetricSpectrum.{u} ⥤ PointedSimplicialSet.{u} :=
-  GeneralSymmetricSpectrum.mappingObjectBifunctor (K := PointedSimplicialSet.circle.{u})
+  SymmetricSpectrum.pointedMappingSpaceBifunctor.{u}
 
 abbrev ordinarySpectrumTensor : SSet.{u} ⥤ SymmetricSpectrum.{u} ⥤ SymmetricSpectrum.{u} :=
   PointedObject.adjoinFunctor ⋙ pointedSpectrumTensor
@@ -38,14 +38,13 @@ abbrev ordinarySpectrumMapping : SymmetricSpectrum.{u}ᵒᵖ ⥤ SymmetricSpectr
 
 lemma ordinarySpectrumMapping_obj (E F : SymmetricSpectrum.{u}) :
     (ordinarySpectrumMapping.obj (Opposite.op E)).obj F =
-      SymmetricSpectrum.simplicialMappingSpace E F :=
-  congrArg PointedSimplicialSet.forget.obj (GeneralSymmetricSpectrum.simplicial_mappingObject E F)
+      SymmetricSpectrum.simplicialMappingSpace E F := rfl
 
 def ordinarySpectrumMappingAdjunction : ordinarySpectrumTensor.{u}.flip ⊣₂
     ordinarySpectrumMapping.{u} :=
   SerrePositivity.ParametrizedAdjunctionTransport.composeSecond
-    (GeneralSymmetricSpectrum.pointwiseTensorMappingParametrizedAdjunction
-      (K := PointedSimplicialSet.circle.{u})) PointedObject.adjoinForgetAdjunction
+    SymmetricSpectrum.pointedMappingSpaceParametrizedAdjunction.{u}
+    PointedObject.adjoinForgetAdjunction
 
 lemma ordinarySpectrumTensor_obj (K : SSet.{u}) :
     ordinarySpectrumTensor.obj K = SymmetricSpectrum.simplicialTensorFunctor K := rfl
@@ -86,14 +85,10 @@ lemma pointedSpectrumMapping_SM7 :
     let := simplicialLevelModelCategory hCof hFib
     HasQuillenPullbackHom pointedSpectrumMapping.{u} := by
   let : ModelCategory SymmetricSpectrum.{u} := simplicialLevelModelCategory hCof hFib
-  let : ModelCategory (GeneralSymmetricSpectrum PointedSimplicialSet.{u}
-      PointedSimplicialSet.circle) := simplicialLevelModelCategory hCof hFib
-  let : IsQuillenBifunctor
-      (GeneralSymmetricSpectrum.pointwiseTensorBifunctor (K := PointedSimplicialSet.circle.{u})) :=
+  let : IsQuillenBifunctor SymmetricSpectrum.pointwiseTensorBifunctor.{u} :=
     pointedSpectrumTensor_isQuillen hCof hFib
   exact (isQuillenBifunctor_iff_pullbackHom
-    (GeneralSymmetricSpectrum.pointwiseTensorMappingParametrizedAdjunction
-      (K := PointedSimplicialSet.circle.{u}))).1 inferInstance
+    SymmetricSpectrum.pointedMappingSpaceParametrizedAdjunction.{u}).1 inferInstance
 
 lemma ordinarySpectrumTensor_isQuillen :
     let := simplicialLevelModelCategory hCof hFib

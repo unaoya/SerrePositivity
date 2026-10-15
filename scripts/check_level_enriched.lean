@@ -1,4 +1,5 @@
 import SerrePositivity.Spectra.ModelCategory.SimplicialLevelEnriched
+import SerrePositivity.Spectra.ModelCategory.SimplicialHomComparison
 import SerrePositivity.Spectra.General.Foundations
 import SerrePositivity.Spectra.StageTwo
 import Lean.Util.CollectAxioms
@@ -26,6 +27,26 @@ example : let : EnrichedOrdinaryCategory C (GeneralSymmetricSpectrum C K) :=
     HasQuillenPullbackHom (eHomFunctor C (GeneralSymmetricSpectrum C K)) :=
   GeneralSymmetricSpectrum.enrichedHom_hasQuillenPullbackHom
 end General
+
+section LegacyPointed
+local instance : EnrichedOrdinaryCategory PointedSimplicialSet.{u} SymmetricSpectrum.{u} :=
+  SymmetricSpectrum.pointedMappingEnrichedOrdinaryCategory
+example : eHomFunctor PointedSimplicialSet.{u} SymmetricSpectrum.{u} ≅ pointedSpectrumMapping.{u} :=
+  legacyPointedHomFunctorIso
+end LegacyPointed
+
+section LegacyOrdinary
+local instance : EnrichedOrdinaryCategory SSet.{u} SymmetricSpectrum.{u} :=
+  SymmetricSpectrum.mappingSpaceSimplicialCategory
+example : eHomFunctor SSet.{u} SymmetricSpectrum.{u} ≅ ordinarySpectrumMapping.{u} :=
+  legacyOrdinaryHomFunctorIso
+example [ModelCategory SSet.{u}]
+    (hCof : cofibrations SSet.{u} = MorphismProperty.monomorphisms SSet.{u})
+    (hFib : fibrations SSet.{u} = SSet.modelCategoryQuillen.J.{u}.rlp) :
+    let := simplicialLevelModelCategory hCof hFib
+    HasQuillenPullbackHom (eHomFunctor SSet.{u} SymmetricSpectrum.{u}) :=
+  legacyOrdinaryHom_SM7 hCof hFib
+end LegacyOrdinary
 
 section Concrete
 variable [ModelCategory SSet.{u}]
@@ -63,7 +84,8 @@ run_cmd do
     let some idx := env.getModuleIdxFor? name | continue
     unless #[`SerrePositivity.HomotopicalAlgebra.Monoidal.BifunctorTransport,
         `SerrePositivity.Spectra.General.EnrichedModel,
-        `SerrePositivity.Spectra.ModelCategory.SimplicialLevelEnriched].contains
+        `SerrePositivity.Spectra.ModelCategory.SimplicialLevelEnriched,
+        `SerrePositivity.Spectra.ModelCategory.SimplicialHomComparison].contains
         env.header.modules[idx.toNat]!.module do continue
     let axioms ← collectAxioms name
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
