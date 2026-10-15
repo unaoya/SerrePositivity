@@ -1486,6 +1486,23 @@ Frobenius の性質は使わない。一般の有限自由複体についての 
 \paragraph{引用の照合}
 元論文 §2 の引用は原典と照合した。CLMST は arXiv:2209.04046v4 の番号（Definition 2.2.1、Propositions 2.2.3、2.2.6(a)、Notation 4.0.1、Corollary 4.0.4、Propositions 4.0.10、4.0.14）に対応する。長さの有限生成一致と加法性は、Noether 局所基底・素数・座標の極大イデアル所属の下で証明した。塔と完備化上の長さ、および本体の利用先もこの構成へ移した。Cohen--Gabber は Kurano--Shimomoto, Theorem 1.1（arXiv:1510.03573v2）の整域の場合で、原典は $k$ の完全性も整域性も仮定しない。Roberts の Frobenius ホモロジー定理は Ma, \emph{Lech's conjecture in dimension three}, Theorem 2.4（arXiv:1609.00095v3）の形で置いている。その仮定（完備、標数 $p$、長さが次元に等しい有限自由複体、有限長ホモロジー）は $K(z;D)$ で満たされるが、主定理で必要なこの特殊な場合は上のとおり初等的に証明したので、この引用は主定理の経路に入らない。$\lambda_\infty$ の二性質（有限生成加群での一致と加法性）の原典は Faltings, \emph{Almost étale extensions}, Appendix 2 と Gabber--Ramero, Lemma 14.5.74、Theorem 14.5.75 である。有限生成・有限表示の場合の一致は本実装で証明済みで、CLMST もこの設定での証明を再掲する。加法性も有限段の長さと有限生成近似から本実装で証明済みである。Lemma 2.1 の「compare [19, Lemma 2.2]」は構成の典拠ではなく類似例の参照で、Lean の旧入口は EGA I (2nd ed.), 0, Proposition 6.8.3 を引用していたが、現在は環の実構成と完備化の一般論から証明済みである。元論文が引く Monsky の定理（一般の $\m$-準素イデアルの Hilbert--Kunz 重複度の存在）は、パラメータ系については Koszul の Euler 特性の公式（Lean で証明済み）と Roberts の定理から極限の存在が出るので、Lean の引用には数えない。Bhatt--Scholze の引用番号（元論文の Prop.~8.5 と CLMST の Theorem 10.11）は要確認である。元論文 §2 は同じリポジトリの \emph{Lech's multiplicity conjecture} §3 の記述を圧縮したもので、標数 $p$ の構成の詳しい証明（トレースによる分母、塔の有限段）はそちらにある。
 
+\paragraph{Bhatt--Scholze の Thm 7.4 の証明の構造と形式化の状況}\label{par:bs-thm74}
+混標数の構成（§\ref{sec:construction}）は、perfectoid 環 $R$ の全射商 $S=R/J$（導来 $p$ 完備）の perfectoid 化 $S\to S_{\mathrm{perfd}}$ について、その存在（Bhatt--Scholze, Cor.~7.3）と全射性（Thm.~7.4）を使う。原典の Thm.~7.4 の証明は次の四段からなる。
+\begin{enumerate}
+  \item 任意のイデアル $J$ を、有向余極限で有限生成に、帰納法で単項 $J=(f)$ に帰着する。
+  \item \textbf{André の補題}（Thm.~7.14）：任意の perfectoid 環 $R$ に、絶対整閉な perfectoid 環への $p$ 完全忠実平坦な写像 $R\to T$ がある。これで $f$ が両立する $p$ 冪根をもつ場合に帰着する。
+  \item $f$ が両立する $p$ 冪根をもてば、perfectoid 環の被約性から $(R/f)_{\mathrm{perfd}}=(R/(f^{1/p^\infty}))^\wedge$ となり、全射性がわかる。
+  \item 全射性を $p$ 完全忠実平坦な底変換 $R\to T$ から $R$ へ降下する。
+\end{enumerate}
+André の補題の原典の証明（Prop.~7.10、7.11）は、導来 prismatic コホモロジー、Hodge--Tate 比較、結晶コホモロジー、余接複体、$\infty$ 圏の左 Kan 拡張に依存する。
+
+形式化では、1・3・4 と、Cor.~7.3（存在）を原典どおりに証明した。存在は δ 環・prism の基礎（完全 δ 環と完全 $\mathbb{F}_p$ 代数の対応、distinguished 元、完全 prism と perfectoid 環の対応）から、Prop.~7.2 の構成（$J/d$ の δ 環としての添加、ねじれの除去、導来 $(p,d)$ 完備化）を経て示している。André の補題は引用として置き、それに相対的に Thm.~7.4 を得た。André の補題を使わない降下の部分は、「核の生成元が両立する $p$ 冪根をもつ $p$ 完全忠実平坦な perfectoid 拡大」を明示的な入力とする形で、引用なしに証明している。
+
+André の補題そのものを証明する代わりに、\textbf{必要な主張だけを別の経路で証明する}作業を進めている。Thm.~7.4 に要るのは、絶対整閉な拡大ではなく、「指定した元が両立する $p$ 冪根をもつ $p$ 完全忠実平坦な perfectoid 拡大」だけである。候補は $T=R\langle X^{1/p^\infty}\rangle/(X-f)$ で、その prism は原典の Example 7.9、Prop.~7.10 の後半により具体的な prismatic envelope として書ける。平坦性は Prop.~3.13 をこの場合に限って正則列の pd 包（Cor.~2.39、Lemma 2.38）から、忠実性は Rem.~7.15(1) の mod $p$ での計算から示すことを試みている。これは原典の補題を組み替えた\textbf{原典にない経路}であり、とくに忠実性の部分（原典の Rem.~7.15 の該当部分は Prop.~7.10 を使う）は、古典的な議論で通るかがまだ確かめられていない。通れば、導来 prismatic コホモロジーを使わない Thm.~7.4 の証明になり、主定理の未証明入力が 1 件減る。通らなければ、Thm.~7.4 の引用が André の補題の引用に置き換わる（件数は変わらない）。
+
+Thm.~1.17(1)（整代数の perfectoid 化の存在）は、原典の証明（Thm.~10.11、$\Delta_{S/A,\mathrm{perf}}$ の離散性）が導来 prismatic コホモロジーなしには書けないので、引用のまま残す方針である。ただし CLMST の巡回長さの評価（Prop.~4.0.10 の証明）は、Thm.~1.17(1) の代わりに上の Cor.~7.3 の構成を使うよう付け替えた。
+\lean{存在：\ld{BhattScholze.exists_perfectoidization_of_semiperfectoid_quotient}、\ld{exists_perfectoidization_of_perfectoid_surjective_quotient}（引用なし）。降下：\ld{BhattScholze.RootedPerfectoidSurjectivityDescent} の \texttt{surjective\_of\_isPerfectoidization\_of\_rootedPerfectoidBaseChange}（根付き拡大を入力とし、引用なし）。André に相対的な Thm.~7.4：\ld{BhattScholze.AndreSurjectivityConditional} の \texttt{surjective\_of\_isPerfectoidization\_of\_andre}（引用は \ld{BhattScholze.Inputs.AndreFlatness} のみ）。この二つのモジュールは条件付きの途中成果として、ルートの import には含めていない。主定理の経路は現在も Thm.~7.4 の引用 \ld{BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotient} を使う。}
+
 \subsection{状況のまとめ}
 以下の「条件から証明済み」は、Koszul 有限性・消滅・分解・降下などを定理の引数として受け取る形を指す。$\lambda$-平坦性・有限ランクおよび $\lambda$-CM 性から、長さ代数側の入力を供給する接続も証明した。分解・支持・降下などの独立した入力は引き続き区別する。
 {\small
