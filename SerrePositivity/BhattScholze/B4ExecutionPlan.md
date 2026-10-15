@@ -3572,3 +3572,52 @@ MvPolynomial.map(deltaDivisionNormalizedStepNextMap)に一致する可換図式�
 同等の一般代数塔・Tor定義は作らず、既存APIと具体的標準環射を使用する。
 通常mod(p,d)商とraw包全体の実導来比較は区別し、
 全段の完備化/perfectionのCFF、一般B4は未完成。
+
+## B4-6：元のδ段間射の標準係数射・スカラー塔と自由性（2026-10-15）
+
+`DeltaDivisionFiniteJetStepScalarTower.lean`で、前段有限正規化商Q_Nから
+元の下位δ関係商R_Nと次段商R_{N+1}への標準係数射を比較同型の逆から具体化した。
+元の段間射と係数射の合成が次段係数射に一致する図式を証明し、
+既存の段間標準代数構造と両係数代数構造のスカラー塔を供給した。
+両商の比較をQ_N代数同型へ強化し、既存の正規化側自由性と多項式係数基底から
+元の両商が標準係数射によってQ_N上自由・平坦となることを証明した。
+σの有限性は不要。p正則性・ghost単射・δd単元条件は既存通り明示した。
+12公開宣言の対象3799ジョブ、pure B4監査、全体4836ジョブ成功。
+標準3公理のみ、新sorry・公理・引用なし。全体は共有側の既存警告を含む。
+元の段間射の実比較はee0eebcで工程別コミット済み。
+
+次は登録済み`DeltaDivisionFiniteJetStepTor.lean`で、この標準塔と平坦性を用いて
+元の段間射に関する実Tor消滅・有限添字の実Koszulホモロジー比較を検証する。
+通常mod(p,d)商とraw包全体の実導来比較は区別し、完備化/perfectionのCFF、一般B4は未完成。
+
+## B4-6：元のδ段間射の実Tor消滅と係数付きKoszul比較（2026-10-15）
+
+`DeltaDivisionFiniteJetStepTor.lean`で、前工程の標準スカラー塔と両商の係数環上の
+平坦性から、共通TorFlatBaseChangeVanishingを使い、任意Q_N加群Mに対する
+Tor_{>0}^R_N(R_{N+1},R_N⊗_{Q_N}M)の消滅を証明した。
+対応する実DerivedTensorの次数零集中も供給した。これらにはσの有限性は不要。
+有限σでは、元の全同段δ関係の実射影分解・共通Tor対称性・Koszul反復錐比較を
+合成し、実Torと元の係数付きKoszulホモロジーを同定し、全負次数の消滅を証明した。
+源A・Lのp正則性、Lのghost単射、δd単元条件は明示した。
+4公開宣言の対象3800ジョブ、pure B4監査、全体4836ジョブ成功。
+標準3公理のみ、新sorry・公理・引用なし。全体は共有側の既存警告を含む。
+標準スカラー塔・係数環上の自由性はf6cfc84で工程別コミット済み。
+
+### 原典に照らした次工程の固定
+
+著者公開版Definition 2.42・Corollary 2.44（pp.26–27）、Prop.3.13の証明（pp.34–35）を
+再確認した。相対完全正則性は係数側Koszul複体を伴う条件であり、今回のmod(p,d)を
+既に課した通常商のTor計算だけでは、rawδ包の導来(p,d)完備化後のCFFを結論できない。
+原典は自由δ環のFrobeniusの(p,z)完全忠実平坦性と、p除算包・分冪比較を用いている。
+この未解決境界を省略せず、以下の原典入力を進める。
+
+次のBS専用予定`FreeDeltaFrobeniusCoordinateResidueFlat.lean`で、既存
+FreeDeltaFrobeniusModPFlatの実mod p Frobeniusの忠実平坦性を使う。
+自由整数δ環L=FreeDeltaRing σの指定変数z=X_(s,0)に対し、
+L/(p,z)からL/(p,φ(z))への実誘導射を、mod p Frobenius作用の環の係数商として表示し、
+既存の忠実平坦基底変更でその通常忠実平坦性を証明する。
+剰余Frobeniusのφ(z)像をz^pに移す図式も明示する。
+続いて(p,z)と(p,φ(z))の正則性・既存Koszul/Tor判定を組み合わせ、
+この具体的自由δ環射の完全平坦性、実完備化との比較へ進む。
+一般のFrobeniusや完全平坦性の同等定義は新設しない。
+原典のp除算・分冪経路、raw包全体の実導来比較、完備化/perfectionのCFF、一般B4は未完成。
