@@ -7,7 +7,7 @@ M1・M2の構成、A1〜C2、共有ホモトピー論H0〜H6、および§129で
 最新の完了監査は§158、直近の実装は§157。
 mathlibへの追加・登録は今回の完了条件に含めず、必要な構造と法則をこのリポジトリ内に実装する。
 検証済みのステップごとにコミットする。
-次は段階4の安定化へ進む。M5は別チャットで進める。段階3（§129のレベル構造）の完了と、P3・M3全体の完了は区別する。
+段階4はSmith型の一般局所化存在を証明する方針に確定（§159）。今は∞圏を導入しない。M5は別チャットで進める。段階3の完了とP3・M3全体の完了は区別する。
 
 ## 0. 現在地と残作業の実行計画（2026-10-15更新）
 
@@ -6209,3 +6209,173 @@ HT-KQは§150の採用済み入力で、幾何学的実現によるW、monoに�
 PSS/S¹への具体的存在引用案(b)の選択は未確定のまま維持する。
 安定モデル・Ωスペクトル・全整数次数π_n・安定な導来演算、M4の図式/固定点/有理化、
 M6以降の非連結K理論と本文への接続は未完成。M5は別チャットの担当範囲を維持する。
+
+
+## 159. 段階4の確定方針と詳細計画：Smith型の一般局所化存在を証明する（2026-10-15）
+
+### 159.1 ユーザー決定・今回の作業範囲
+
+ユーザーは、実装が長くなっても一般論を優先し、一般のBousfield局所化を自分たちで作る方針を選択した。
+存在証明はSmith型・combinatorialモデル圏を本線にする。現在は∞圏を導入せず、
+将来の∞圏との比較に必要な普遍性・自然性・置換独立性を明示する。
+具体的PSS/S¹の安定モデル存在を新たに引用する短縮案は採用しない。
+§123.5の二案未選択という状態と、§158末尾の未選択記録は、この決定によって更新する。
+今回の変更は計画書だけであり、Lean実装は開始していない。
+
+最終目標は、左固有なcombinatorialモデル圏Cとw-smallな射の集合Sから、
+同じ圏C上に左Bousfield局所化L_S Cを構成する一般定理。
+源Cに単体的豊穣構造や全対象cofibrant性を要求せず、有限/可算なSにも限定しない。
+同じCに関する元モデルと局所モデルを区別し、三クラスと局所なinstanceを明示する。
+局所化存在・Smith認識・framings・accessibilityの一般論にsorryや引用axiomを追加しない。
+既存HT-KQはSSetの基準モデルを供給する上位入力として別に追跡し、今回除去する対象には含めない。
+
+cellular版は別の存在経路として将来追加できるが、この実装の前提にしない。
+Bousfield–Friedlander型は条件付き認識APIとして後で追加可能であり、
+局所化関手の存在を仮定して今回の一般存在証明の代用にはしない。
+
+### 159.2 最終定理の契約（Lean宣言は予定）
+
+入力：既存のCategory/ModelCategory、IsLocallyPresentable.{w} C、
+既存CofibrantlyGenerated.{w} I Jとw-smallな生成射クラスI,J、左固有性、w-smallなS。
+型はC : Type u、Category.{v} C、小対象・可呈示性・生成族の宇宙wを分ける。
+Mathlibの局所可呈示性から得られるLocallySmall.{w}やwサイズ余極限との関係を明示し、
+正則cardinalの拡大が必要な箇所では共通cardinalの存在を証明する。w=0を暗黙に選ばない。
+combinatorialという独自のモデル圏型は作らず、既存モデルに局所可呈示性と生成表示を付加する。
+生成射の始域cofibrancy（tractability）は、通常の局所化存在の入力には加えない。
+
+局所性は、一般の導来写像空間RMap_Cを用いて定義する。
+S-localなZとは、全s:A⟶BについてRMap_C(B,Z)⟶RMap_C(A,Z)が弱同値となること。
+W_Sは全S-local fibrant対象へのRMapが弱同値を誘導する射のクラス。
+Sのcofibrantな射への置換・代表の取り替えで同じ局所性を得ることを証明する。
+
+出力と必須等式：
+
+- ModelCategory Cを実際に構成する。Cof_local=Cof_original、W_local=W_S、
+  Fib_local=(Cof_original ∩ W_S).rlpを証明する。
+- 局所モデルのfibrant対象は元モデルでfibrantかつS-localな対象に一致する。
+- 局所モデルの生成性と両関手的分解を供給し、L_S:C⥤Cとη:Id⟶L_Sを構成する。
+  η_Xは局所自明cofibration、L_S Xは局所fibrant。元のfibrant replacement Rと区別する。
+- ηの普遍性を導来写像空間で示し、L_Sのホモトピー的冪等性と
+  f∈W_S ↔ L_S(f)∈W_originalを証明する。構成後のL_SでW_Sを循環定義しない。
+- 恒等関手の元モデル→局所モデルのQuillen随伴を構成する。
+  任意の元モデルからのQuillen随伴F⊣Gについて、LFがSを可逆にする条件と、
+  同じ随伴が局所モデルからもQuillen随伴になる条件の同値を証明する。
+- 置換・生成表示・構成に使うcardinalを変えても、W_Sと得られるモデル構造が一致する。
+  Sの追加に対する比較と、反復局所化とS∪Tでの局所化の比較も公開する。
+
+### 159.3 固定版Mathlibと既存コードの再調査
+
+固定環境はLean v4.35.0-rc4、Mathlib e6bbacd0e1b7307ff6e17da09cd2455f60804fa6。
+以下は今回ソースを読んで確認した区別であり、未実装部分を利用可能とは数えない。
+
+| 項目 | 現在の証拠 | 残る作業 |
+| --- | --- | --- |
+| 生成モデル認識 | Transfer/Recognition.modelCategoryOfRecognition。I,JのSOA、両rlpの一致、acyclicityから構成 | Smith型ではJ自体を候補WとIから取り出す必要がある。既存認識定理だけでは完成しない |
+| 局所可呈示性・accessible圏/関手 | Mathlib CategoryTheory/Presentable/LocallyPresentable, Comma, Uniformization | Arrow C上のWの充満部分圏と包含の可到達性、共通cardinal、必要な圏論的閉操作の接続 |
+| solution-set | Presentable/SolutionSetCondition.SolutionSetCondition.of_isCardinalAccessible | 各i∈IからWへのsquareの小さい代表族へ変換し、全Iでまとめる |
+| 小対象論法・関手的分解 | Mathlib SmallObject/Basic.HasSmallObjectArgumentとHasFunctorialFactorization、既存Generated/Basic | 小さい族から一様presentabilityを得ることと、分解関手自体のaccessibilityを証明する |
+| 可呈示性の移送 | 既存Transfer/EvaluationSmallnessとSpectra/ModelCategory/LevelSmallness | 源モデル上の一般生成族と、Smithで新たに得るJにも適用する共通入口 |
+| Reedy | Mathlib AlgebraicTopology/Reedy/BasicはReedyStructureを定義 | 同ファイルTODOは図式のReedyモデル構造の構成。存在済みとして利用しない |
+| 導来写像空間 | スペクトルの実際の豊穣Hom・SM7と一般導来随伴は実装済み | 任意モデル圏のcosimplicial resolution/framings、比較、accessibilityは別に構成する |
+| 通常の局所化・直交反射 | MathlibのCategoryTheory/LocalizationとPresentable/OrthogonalReflection | ホモトピー的局所化・モデル構造存在へ自動的に置き換えない |
+
+RMapの普遍的な値域としてSSetを扱うことは、源CをSSetに特殊化することではない。
+LocallySmall.{w} Cに基づくHomの縮小と元の射宇宙vとの自然な比較を供給し、v=wを暗黙に要求しない。
+F系列で共有READMEのこの区別を明文化する。PSS・円スペクトル・dgの具体例を一般論からimportしない。
+必要なら幾何学的SSet弱同値の証明済み定義を共有層へ移し、旧Spectra側の宣言を互換aliasとして保つ。
+基準SSetモデルが必要な定理ではそのモデル・クラスの一致を入力し、Inputs/Homotopyを下位からimportしない。
+
+### 159.4 証明パッケージと受入条件
+
+IDは計画上の単位であり、1行を1コミットや1日とみなさない。予定パスも実装時に型を確定する。
+
+| ID | 予定配置・内容 | 依存 | 受入条件 |
+| --- | --- | --- | --- |
+| R0 | HomotopicalAlgebra/Smith/SolutionSet。Arrow C上のW、squareの小さい代表族と宇宙契約 | Arrow CとWの充満部分圏のaccessibility、包含のaccessibility、既存SolutionSetCondition | Cにモデル構造を仮定せず、accessibleなWの包含から任意のiについてsolution-setを導く。全Iでの小ささも検証 |
+| R1 | Smith/Smallness。小さい生成族の共通正則cardinalとSOA | R0、既存SmallObject | 局所可呈示性からIと後で構成するJのSOAを導く。対象ごとのcardinalの存在だけで止めない |
+| R2 | Smith/GeneratingTrivialCofibrations。solution-setをcof(I)∩W内のJへ改良 | R0,R1 | Jの小ささ、J⊆cof(I)∩W、必要なsquare分解を構成。Jを入力として要求しない |
+| R3 | Smith/Recognition。Smith型の認識定理 | R2、Transfer/Recognition | Wの2-out-of-3/retract閉性、I.rlp⊆W、cof(I)∩Wのpushout/超限合成閉性からModelCategory Cを構成。cof=I.rlp.llp、fib=(cof∩W).rlp、生成性と両関手的分解 |
+| A0 | Smith/AccessibleFactorization。生成分解・Q/Rのaccessibility | R1、既存Replacement | 分解のZ/左右因子とQ/Rが、十分大きい共通cardinalでaccessible。関手的という性質と混同しない |
+| A1 | Smith/WeakEquivalencesAccessible。元モデルWとArrow C | A0、可到達圏の必要な閉操作 | combinatorialモデルの元のWがaccessibly embedded accessibleであることを証明。任意のaccessible関手のfull imageがaccessibleとは仮定しない |
+| F0 | HomotopyFunctionComplex/Reedy。latching/matchingとReedy分解 | A0、Mathlib ReedyStructure | まずΔとΔopに必要な一般的次数帰納を実装。Reedy cof/fibとobjectwise Wのモデル公理、関手的resolutionを証明 |
+| F1 | HomotopyFunctionComplex/Basic。cosimplicial resolutionからRMap | F0、Q/R | 任意のモデル源CでRMap:Cᵒᵖ⥤C⥤SSetを構成。両変数の弱同値不変性とfibrancy、ordinary Ho(C)の射とのπ₀比較 |
+| F2 | HomotopyFunctionComplex/Comparison | F1 | resolution/置換の選択を自然な弱同値のzigzagで比較。単体的モデル圏の場合は実際のMap(QX,RY)と比較。厳密な同一視を要求しない |
+| F3 | HomotopyFunctionComplex/Accessible | A0,A1,F0,F1 | 必要なresolutionと、固定した小さいSに対するRMap評価が共通cardinalでaccessible。任意Xについて同じcardinalを無条件に要求しない |
+| F4 | HomotopyFunctionComplex/FilteredColimits | A0,F1 | 十分大きいfiltered colimitとhomotopy colimitの比較、必要範囲でRMapのhomotopy colimit→homotopy limit公式。M4全体を先に要求しないが、この証明を省かない |
+| L0 | HomotopicalAlgebra/Localization/Basic。局所性・W_S・条件付き局所化API | F1,F2 | Sの代表・cofibrant置換の独立性、元のW⊆W_S、2-out-of-3・retract閉性、空集合/元の弱同値だけのSで元モデルを回復 |
+| L1 | Localization/AccessibleLocalObjects | A1,F3,L0 | S-local対象の充満部分圏のaccessibilityと包含のaccessibilityを導く。検出に使う関手・cardinalと小さいhomotopy生成族を明示 |
+| L2 | Localization/AccessibleLocalEquivalences | L1,F4 | Arrow C内のW_Sのaccessibilityと包含のaccessibilityを証明。全局所対象に量化した定義から小ささへの移行を独立に検証 |
+| L3 | Localization/LeftProperClosure | L0,F4、元モデルの左固有性 | cof_original∩W_Sのpushout/超限合成閉性を証明。局所化後のモデル存在や左固有性を先取りしない |
+| L4 | Localization/Existence。一般の左Bousfield局所化存在 | R3,L2,L3 | §159.2の三クラス・fibrant判定を同じC上で構成。局所モデルの生成Jと分解は出力。左固有性・combinatorial性も接続 |
+| L5 | Localization/Replacement, UniversalProperty | L4,F2 | 実際のL_Sとη、冪等性、W_Sの関手による検出、Quillen普遍性、生成表示・置換の独立性、S⊆Tと反復局所化の比較 |
+| E0 | Localization/Enriched, Monoidal | L4,L5、既存SM7 | 通常局所化・V豊穣局所化を区別。追加のtractability/生成始域cofibrancyとtensor適合条件を明示し、局所SM7・pushout-product・単位を証明 |
+| S0 | Spectra/ModelCategory/Combinatorial, LeftProper | R1,A0、既存レベル構造 | 一般C,Kの対称スペクトルの局所可呈示性と必要条件下の左固有性。Mod型・余極限・accessibleなmonad等の比較を証明し、圏の名前だけで推論しない |
+| S1 | Spectra/Stable/LocalizingMaps, Omega | S0,L0、既存free/evaluation | F_(n+1)(QA⊗K)⟶F_n(QA)を実際の射として構成。Sの小ささ、cofibrant性、局所fibrant対象とΩ_K対象の同値 |
+| S2 | Spectra/Stable/ModelCategory, EnrichedModel | S1,L4,E0 | 一般定理を適用した安定モデル、三クラス・生成性・局所置換・monoidal/SM7。具体的存在引用を追加しない |
+| S3 | Spectra/Stable/Stability, SimplicialComparison | S2、既存円tensor/随伴 | K-tensorの導来可逆性と通常の懸垂の安定性を区別。PSS/S¹で円tensorと導来Σを比較し、Σ⊣Ωの同値・旧APIの互換性を検証 |
+
+R系列とA/F系列は一般論を構成するための独立した部分を含むが、並行エージェント起動の指示ではない。
+実行順はR0→R1→R2→R3を最初の主要ゲートとし、A0/A1→F0〜F4→L0〜L5、E0→S0〜S3へ進む。
+S0の局所可呈示性・左固有性の調査はL系列から独立に行えるが、複数の未完成基盤を同時に広げない。
+
+### 159.5 最初の実装依頼として切り出す範囲
+
+最初はR0だけを完成単位にする。R3全体や局所化存在を最初の1コミットに詰め込まない。
+予定ファイルはSmith/SolutionSet.leanとscripts/check_smith_solution_set.lean。
+
+入力は任意CとMorphismProperty CとしてのW、Arrow Cのaccessibility、
+Wに対応するArrow Cの充満部分圏のaccessibility、
+包含のaccessibility。MathlibのSolutionSetConditionを使用し、同内容の独自solution-set型を増設しない。
+出力は任意iのsquare i⟶wを小さい代表族経由で分解する証拠と、w-smallなIについての代表族の小ささ。
+ここではWのモデル圏的意味、SSet、スペクトル、局所化存在は一切入力しない。
+
+受入条件：
+
+1. モデル構造未装備の任意圏で利用例が通る。Cの対象/射の宇宙と代表族の宇宙を明示する。
+2. 抽象な弱同値クラスを勝手にsmallと仮定せず、accessibleな充満部分圏からsolution-setを導く。
+3. 代表族へのfactorizationが射圏の実際の可換squareであり、対象ごとの存在だけで止めない。
+4. モジュール全宣言の公理監査が標準公理のみで成功。既存Foundations/StageTwoとの併用が成功。
+5. 実装・利用例・監査・計画の実施記録をそろえてコミットし、R1〜R3の型と見積もりを更新する。
+
+その次のR1で小さい族→共通cardinal→SOA、R2でJ、R3でモデル構造を完成させる。
+R0だけ、あるいはR3だけで一般局所化存在を完成扱いにしない。
+
+### 159.6 引用する文献と、証明として実装する境界
+
+主参照は[Barwick, On (Enriched) Left Bousfield Localization of Model Categories,
+arXiv:0708.2067v2](https://arxiv.org/pdf/0708.2067v2)。
+今回確認した版ではSmith認識がProp.1.7とLemmas1.8–1.9、accessible分解がProp.1.10、
+局所対象/局所弱同値のaccessibilityがLemmas2.9–2.10、存在がThm2.11、
+V豊穣版がThm3.18、monoidal適合がProp.3.19。
+§2.8で左固有性を前提としており、Thm2.11の表示文だけを切り出して仮定を落とさない。
+原典のhammock localization経由の説明を逐語的に実装する必要はなく、
+cosimplicial resolutionによるRMapの比較を証明して必要な不変性と普遍性へ接続する。
+
+これらは引用axiomとして置く予定の定理ではなく、証明を実装するための参照である。
+特にLemmas2.9–2.10で短く済まされているaccessibilityの閉操作・filtered homotopy colimitの
+議論は、A/F/Lの独立した受入条件に展開する。
+cellular版、Bousfield–Friedlander版、∞圏の局所化定理を代替の存在axiomとして途中導入しない。
+E0でV豊穣局所化の追加仮定を使う場合、通常の局所化存在へその仮定を持ち込まない。
+
+### 159.7 完了判定・監査・見積もりの扱い
+
+段階4の最終受入は、(i)任意の左固有combinatorialモデル圏への一般存在、
+(ii)Quillen普遍性・置換独立性、(iii)追加条件下の豊穣/monoidal適合、
+(iv)実際のPSS/円スペクトルへの適用と通常の安定性、の四つをすべて確認する。
+一般存在を仮定した条件付きAPIや、全対象cofibrantな源だけの証明は中間成果として区別する。
+素朴なπ_*同型を全対称スペクトルの安定同値と定義せず、semistabilityを暗黙に仮定しない。
+一般Kの可逆化だけで通常のΣの安定性を結論しない。
+
+各単位で対象ビルド、抽象な利用例、モジュール全宣言の公理監査、必要な既存入口の互換検証を行う。
+予定検証はcheck_smith_solution_set/smith_recognition/accessibility、
+check_homotopy_function_complex、check_bousfield_localization、check_stable_spectra。
+これらの名称は予定であり、存在済み・実行済みのコマンドとして数えない。
+既存audit_homotopical_foundations/audit_spectra/check_spectra_stage2を維持し、
+上位の引用依存監査ではHT-KQ以外の直接sorryが増えていないことを検証する。
+共有ルート・M5/dg・可換環論・CLMSTを変更せず、別チャットの未コミット変更を保持する。
+
+§123.6のG4(a)45〜90単位は旧cellular経路の設計値で、Smith経路へそのまま流用しない。
+今回はR/A/F/L/E/Sの証明依存を先に確定した。最大の不確実性は、accessible分解・resolution、
+W_Sのaccessibility、一般スペクトルの局所可呈示性/左固有性である。
+まずR0完了時、次にR3完了時の二度、実際の型と利用できる補題から残作業を再見積もりする。
+∞圏は今回の終了条件に含めないが、将来の比較に必要な普遍性・自然性を削らない。
