@@ -4993,7 +4993,7 @@ R12–R20 のコードをコミットした後、以下をすべて確認した�
 | R31b | K₀ のひねりの環作用の共通補題 | 完了：半環・モノイドでも成立するパラメータ固定・単位・積の3公式を共用。有限射影側・漸近側3039 jobs、12宣言の公理監査、上位依存のない共通基盤ゲートが成功 |
 | R31c | 固有ベクトルの多項式評価に mathlib を利用 | 完了：mathlibのaeval_apply_of_mem_apply_eq_smulで冪・多項式の二重帰納法を置換。公開仮定を維持。重みの積まで3340 jobs、既存の射影・重み分解の公理監査が成功 |
 | R31d | 係数付き K₀ の基本操作・局所化・Euler 評価の分離 | 完了：SupportedCoefficientsとCoefficientEulerへ分離し旧入口を維持。14宣言・証明の本文一致。消滅の両分岐まで3729 jobs、基本・互換入口・一般契約の3公理監査、局所化とEulerへの依存を禁じる追加ゲートが成功 |
-| R31e-1 | 冪等像の非輪状性を ψ²・ψ³ で共用 | 未着手 |
+| R31e-1 | 冪等像の非輪状性を ψ²・ψ³ で共用 | 完了：ホモロジーのretractからimage_acyclicを証明し、台を経由する重複を除去。2831 jobs、専用4宣言・既存二乗類の公理監査、49共通複体を含む依存ゲートが成功 |
 | R31e-2 | 冪等像の K₀ 類と短完全列の加法性 | 未着手 |
 | R26c | 区間外で零になる関数の有限台を Euler 計算で共用 | 未着手 |
 | R32 | 両 Adams 族・並行利用先・公開消滅定理の統合検証 | 未着手 |
@@ -5069,6 +5069,8 @@ R31a の検証ログは `/tmp/adams-r31a-build.log`、`/tmp/adams-r31a-audit.log
 R31b の検証ログは `/tmp/adams-r31b-build.log`、`/tmp/adams-r31b-audit.log`。
 両 K₀ モデルの構成と、係数制限のひねりを逆元で読む規約は維持した。
 R31c の検証ログは `/tmp/adams-r31c-build.log`、`/tmp/adams-r31c-audit.log`。
+R31e-1 の検証ログは `/tmp/adams-r31e1-final-build.log`、`/tmp/adams-r31e1-audit.log`、
+`/tmp/adams-r31e1-square-audit.log`。一般の冪等像の補題に完全性・台・可逆性を要求しない。
 
 ## 5. 受入条件
 

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.PerfectComplex.TensorAcyclic
 
 public import SerrePositivity.KTheory.Adams.TensorSquareAdditivity
 public import SerrePositivity.PerfectComplex.InvolutionClassAcyclic

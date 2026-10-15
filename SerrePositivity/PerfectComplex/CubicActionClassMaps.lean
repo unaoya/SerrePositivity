@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.PerfectComplex.CubicActionClass
 public import SerrePositivity.PerfectComplex.IdempotentImageQuasiIso
-public import SerrePositivity.PerfectComplex.TensorAcyclic
+public import SerrePositivity.HomologicalAlgebra.CochainIdempotentAcyclic
 
 /-! # Invariance and acyclic vanishing of weighted cubic classes -/
 
@@ -48,9 +48,8 @@ lemma eigenK0Class_eq_zero_of_acyclic (τ : CochainCubicAction K)
     (hp : strictlyPerfectComplex R K) (hs : HasHomologySupportOn Z K)
     (hac : K.Acyclic) (j : Fin 3) : τ.eigenK0Class t ht Z hp hs j = 0 := by
   let e := τ.characterProjector t (cube_eq_one_of_cubic_relation t ht) j
-  have hb := (cochainAcyclic_iff_support_bot K).mp hac
-  have he : e.image.Acyclic := (cochainAcyclic_iff_support_bot _).mpr (e.image_support hb)
-  exact K0WithSupport.mk_eq_zero_of_acyclic Z (e.image_strictlyPerfect hp) (e.image_support hs) he
+  exact K0WithSupport.mk_eq_zero_of_acyclic Z
+    (e.image_strictlyPerfect hp) (e.image_support hs) (e.image_acyclic hac)
 
 lemma weightedK0Class_eq_zero_of_acyclic (E : Type v) [CommRing E]
     (τ : CochainCubicAction K) (t : R) (ht : t ^ 2 + t + 1 = 0)
