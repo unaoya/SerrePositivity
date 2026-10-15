@@ -231,3 +231,28 @@ cofibrantな基礎圏単位を追加するとsmash_monoidalModelを構成する�
 具体的SSetモデル入力やスペクトル側SM7はこの一般定理とは別の接続作業である。
 check_pointed_modelは比較・保存条件・monoidalモデル・SM7と63宣言の監査を含む。
 コミット0eaec83・6c48f0f。
+
+## Smith認識に向けたR0：可換squareのsolution-set（2026-10-15）
+
+`Smith/SolutionSet.lean`を共有入口から公開した。入力は`Arrow C`と候補射クラス`W`の
+充満部分圏のaccessibility、および包含関手のaccessibility。
+`C`にモデル構造、`W`にsmallness・2-out-of-3・retract閉性を仮定しない。
+Mathlibの`SolutionSetCondition`から各源射の小さい代表族を選択する。
+
+| API（namespace `SerrePositivity.Smith`） | 内容 |
+| --- | --- |
+| `arrowProperty`, `arrowInclusion`, `solutionSetCondition` | 既存射圏の充満部分圏と、その包含のMathlib solution-set条件 |
+| `solutionIndex`, `solutionArrow`, `solutionSquare` | `Type w`で添字づけた候補射と、源射から候補への実際の可換square |
+| `solutionSquare_factor`, `solutionSquare_factor_components` | 任意のsquareの射圏での分解と、左右成分の合成等式 |
+| `solutionTargets`, `solutionTargets_isSmall`, `solutionTargets_le`, `solutionTargets_factor` | 任意の`w`-smallな射族に対する標的射の小さい合併、Wへの所属、分解の保持 |
+| `solutionTargetsForClass`と対応するsmallness・所属・factor補題 | `I.IsSmall.{w}`から全Iに共通な小さい標的射クラスを得る入口 |
+
+源射族の添字宇宙`t`と小対象の宇宙`w`は区別し、`Small.{w} ι`を明示する。
+`solutionTargets`はまだ`cof(I) ∩ W`の生成射ではなく、W内のsolution targetsである。
+R1で小さい族の共通cardinalとSOA、R2でこれらの標的を`cof(I) ∩ W`へ改良し、
+R3でSmith認識を完成させる。今回R0だけからモデル構造・局所化存在は主張しない。
+
+`check_smith_solution_set`はモデル構造のない抽象圏で、独立した宇宙、CommSqの左右成分、
+小さい射族/射クラス全体の分解、空の射族、General/StageTwoとの併用を検証する。
+同スクリプトはこのモジュールの全宣言を標準公理のみで監査する。
+共有全体の`audit_homotopical_foundations`でもR0を必須モジュールとして監査する。

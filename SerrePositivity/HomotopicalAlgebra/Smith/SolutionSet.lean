@@ -65,4 +65,48 @@ lemma solutionSquare_factor_components (i f : Arrow C) (hf : W f.hom) (sq : i �
   obtain ⟨j, g, h⟩ := solutionSquare_factor W i f hf sq
   exact ⟨j, g, congrArg Arrow.Hom.left h, congrArg Arrow.Hom.right h⟩
 
+/-- Collect the chosen target arrows for a family of source arrows. -/
+def solutionTargets {ι : Type t} (a : ι → Arrow C) : MorphismProperty C :=
+  MorphismProperty.ofHoms (fun x : Σ k, solutionIndex W (a k) ↦
+    (solutionArrow W (a x.1) x.2).obj.hom)
+
+instance solutionTargets_isSmall {ι : Type t} [Small.{w} ι] (a : ι → Arrow C) :
+    (solutionTargets W a).IsSmall.{w} := by
+  unfold solutionTargets
+  infer_instance
+
+lemma solutionTargets_le {ι : Type t} (a : ι → Arrow C) : solutionTargets W a ≤ W := by
+  rintro _ _ _ ⟨x⟩
+  exact (solutionArrow W (a x.1) x.2).property
+
+/-- The small union still solves every square from each member of the source family. -/
+lemma solutionTargets_factor {ι : Type t} (a : ι → Arrow C) (k : ι)
+    (f : Arrow C) (hf : W f.hom) (sq : a k ⟶ f) :
+    ∃ g : Arrow C, solutionTargets W a g.hom ∧
+      ∃ (p : a k ⟶ g) (q : g ⟶ f), p ≫ q = sq := by
+  obtain ⟨j, q, h⟩ := solutionSquare_factor W (a k) f hf sq
+  refine ⟨(solutionArrow W (a k) j).obj, ?_, solutionSquare W (a k) j, q, h⟩
+  unfold solutionTargets
+  exact MorphismProperty.ofHoms.mk
+    (f := fun x : Σ k, solutionIndex W (a k) ↦ (solutionArrow W (a x.1) x.2).obj.hom)
+    ⟨k, j⟩
+
+/-- The same collection for a morphism property, using its actual arrow subtype. -/
+abbrev solutionTargetsForClass (I : MorphismProperty C) : MorphismProperty C :=
+  solutionTargets W (fun i : I.toSet ↦ i.val)
+
+instance solutionTargetsForClass_isSmall (I : MorphismProperty C) [I.IsSmall.{w}] :
+    (solutionTargetsForClass W I).IsSmall.{w} := by
+  exact solutionTargets_isSmall W (fun i : I.toSet ↦ i.val)
+
+lemma solutionTargetsForClass_le (I : MorphismProperty C) :
+    solutionTargetsForClass W I ≤ W := solutionTargets_le W _
+
+/-- No smallness of W is required to solve all squares out of a small source class. -/
+lemma solutionTargetsForClass_factor (I : MorphismProperty C) (i f : Arrow C)
+    (hi : I i.hom) (hf : W f.hom) (sq : i ⟶ f) :
+    ∃ g : Arrow C, solutionTargetsForClass W I g.hom ∧
+      ∃ (p : i ⟶ g) (q : g ⟶ f), p ≫ q = sq :=
+  solutionTargets_factor W (fun i : I.toSet ↦ i.val) ⟨i, hi⟩ f hf sq
+
 end SerrePositivity.Smith

@@ -1,4 +1,3 @@
-import SerrePositivity.HomotopicalAlgebra.Smith.SolutionSet
 import SerrePositivity.HomotopicalAlgebra.Foundations
 import SerrePositivity.Spectra.General.Foundations
 import SerrePositivity.Spectra.StageTwo
@@ -31,6 +30,29 @@ example {A B X Y : C} (i : A ⟶ B) (f : X ⟶ Y) (hf : W f)
 example (i f : Arrow C) (hf : W f.hom) (sq : i ⟶ f) :
     ∃ (j : solutionIndex W i) (g : (solutionArrow W i j).obj ⟶ f),
       solutionSquare W i j ≫ g = sq := solutionSquare_factor W i f hf sq
+
+-- The indexing universe t is independent of the solution-set universe w.
+example {ι : Type t} [Small.{w} ι] (a : ι → Arrow C) :
+    (solutionTargets W a).IsSmall.{w} := inferInstance
+example {ι : Type t} (a : ι → Arrow C) : solutionTargets W a ≤ W :=
+  solutionTargets_le W a
+example {ι : Type t} (a : ι → Arrow C) (k : ι)
+    (f : Arrow C) (hf : W f.hom) (sq : a k ⟶ f) :
+    ∃ g : Arrow C, solutionTargets W a g.hom ∧
+      ∃ (p : a k ⟶ g) (q : g ⟶ f), p ≫ q = sq :=
+  solutionTargets_factor W a k f hf sq
+
+-- A complete R0 consumer: W need not be small and C has no model structure.
+example (I : MorphismProperty C) [I.IsSmall.{w}] :
+    ∃ J : MorphismProperty C, J.IsSmall.{w} ∧ J ≤ W ∧
+      ∀ (i f : Arrow C), I i.hom → W f.hom → ∀ sq : i ⟶ f,
+        ∃ g : Arrow C, J g.hom ∧ ∃ (p : i ⟶ g) (q : g ⟶ f), p ≫ q = sq :=
+  ⟨solutionTargetsForClass W I, inferInstance, solutionTargetsForClass_le W I,
+    fun i f hi hf sq ↦ solutionTargetsForClass_factor W I i f hi hf sq⟩
+
+example {ι : Type t} [IsEmpty ι] (a : ι → Arrow C) : solutionTargets W a ≤ ⊥ := by
+  rintro _ _ _ ⟨x⟩
+  exact False.elim (isEmptyElim x.1 : False)
 
 open Lean in
 run_cmd do
