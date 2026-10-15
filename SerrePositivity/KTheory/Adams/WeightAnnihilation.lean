@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KTheory.Adams.WeightDefectLift
-public import SerrePositivity.KTheory.Adams.WeightPolynomial
+public import SerrePositivity.KTheory.Adams.PolynomialNaturality
 
 /-! # The Adams weight polynomial annihilates supported K0 -/
 
@@ -29,36 +29,21 @@ lemma LocalizationAdamsFamily.weightPolynomial_annihilates (F : LocalizationAdam
     (Z : TopologicalSpace.Closeds (PrimeSpectrum R)) (hz : HeightAtLeast Z c)
     (x : K0WithSupport.Coefficients E Z) :
     (aeval (F.atBase.operation Z) (weightPolynomial E p c d)) x = 0 := by
-  have hall : ∀ c, c ≤ d + 1 → ∀ Z : TopologicalSpace.Closeds (PrimeSpectrum R),
-      HeightAtLeast Z c → ∀ x : K0WithSupport.Coefficients E Z,
-      (aeval (F.atBase.operation Z) (weightPolynomial E p c d)) x = 0 := by
-    intro c hc
-    refine Nat.decreasingInduction (motive := fun c _ =>
-      ∀ Z : TopologicalSpace.Closeds (PrimeSpectrum R), HeightAtLeast Z c →
-        ∀ x : K0WithSupport.Coefficients E Z,
-          (aeval (F.atBase.operation Z) (weightPolynomial E p c d)) x = 0) ?_ ?_ hc
-    · intro c hc ih Z hz x
-      rw [weightPolynomial_succ E p c d (by omega), map_mul, Module.End.mul_apply]
-      simp only [map_sub, aeval_X, aeval_C]
-      change (aeval (F.atBase.operation Z) (weightPolynomial E p (c + 1) d))
-        (F.atBase.operation Z x - (p : E) ^ c • x) = 0
-      by_cases he : heightStratum Z c = ∅
-      · exact ih Z (hz.succ_of_heightStratum_empty he) _
-      · obtain ⟨s, hs, y, hheight, hy⟩ := F.weightDefect_lift Z c hz x
-        rw [← hy]
-        calc
-          _ = K0WithSupport.coefficientEnlarge E inf_le_left
-              ((aeval (F.atBase.operation
-                (Z ⊓ supportZeroLocus (Ideal.span ({s} : Set R))))
-                (weightPolynomial E p (c + 1) d)) y) :=
-            (polynomial_intertwine _ _ (K0WithSupport.coefficientEnlarge E inf_le_left)
-              (fun y => (F.atBase.enlarge inf_le_left y).symm) _ y).symm
-          _ = 0 := by rw [ih _ hheight y, map_zero]
-    · intro Z hz x
-      have he := hz.eq_bot_of_dimension_bound hd
-      subst Z
-      rw [coefficient_empty_zero x, map_zero]
-  exact hall c hc Z hz x
+  refine Nat.decreasingInduction (motive := fun c _ =>
+    ∀ Z : TopologicalSpace.Closeds (PrimeSpectrum R), HeightAtLeast Z c →
+      ∀ x : K0WithSupport.Coefficients E Z,
+        (aeval (F.atBase.operation Z) (weightPolynomial E p c d)) x = 0) ?_ ?_ hc Z hz x
+  · intro c hc ih Z hz x
+    rw [weightPolynomial_succ E p c d (by omega), map_mul, Module.End.mul_apply]
+    simp only [map_sub, aeval_X, aeval_C]
+    change (aeval (F.atBase.operation Z) (weightPolynomial E p (c + 1) d))
+      (F.atBase.operation Z x - (p : E) ^ c • x) = 0
+    obtain ⟨s, _, y, hheight, hy⟩ := F.weightDefect_lift Z c hz x
+    rw [← hy, F.atBase.polynomial_enlarge, ih _ hheight y, map_zero]
+  · intro Z hz x
+    have he := hz.eq_bot_of_dimension_bound hd
+    subst Z
+    rw [coefficient_empty_zero x, map_zero]
 
 end Adams
 end SerrePositivity
