@@ -1480,3 +1480,27 @@ U10全受入は未完。次は後続商 `(∐ freeSphere)[1]` の自由sphere余
 初期二段分解を含めた証明付きsemifree filtrationの構成。
 Hom計算・三角構造・Verdier商・余積/局所小性・一対象比較の残項目は保持する。
 全体文書検査の並行K系列importによる制限は§13.29に記録済み。
+
+
+### 13.33 U10a12：自由sphereのshiftと後続cell商の自由性
+
+`Complexes/TensorShift.lean` は既存sign-free左tensor–shift比較について、
+全斉次Homへのdg自然性を証明する。shift作用の(-1)^(sp)とtensor作用の(-1)^(p(i+s))を
+成分上で照合し、元の(-1)^(pi)と一致することを示す。
+`Module/TensorShift.lean` はその比較を全dg自然な主加群同型へ運び、free_xのshift比較を公開する。
+`Module/FreeSphereShift.lean` はMathlibのsingleFunctors.shiftIsoを再利用し、
+コチェイン規約の `sphere n[s] ≅ sphere (n-s)` と主圏の自由sphereの同型を構成する。
+
+`Module/ShiftCoproduct.lean` はshiftの同値関手としての余積保存をMathlibから再利用し、
+u-small余積とshiftの比較、およびshiftされた自由sphere余積の自由sphere余積表示を構成する。
+`Module/ResolutionFreeQuotients.lean` の `moduleKernelCellQuotientFreeIso` により
+真の商 `(∐ freeSphere(n+1))[1]` が次数nの自由sphere余積であることを主圏で確定した。
+一般shift/余積/モデル圏一般論の重複はない。
+
+受入入口 `Checks/ShiftCells.lean` は任意A/D・独立添字宇宙、全整数shift、
+後続商の主圏の同型、ℤの正shift・ZMod 2の負shiftを検証する。
+この入口・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3211 jobs）。
+直接実行の主要12宣言は標準公理のみ。累計655宣言。
+U10全受入は未完。次は初期二段分解と各自由商を網羅的filtrationのデータにまとめ、
+既存準同型射とともに任意加群へのsemifree解像度の存在を証明する。
+その後のHom計算・三角構造・Verdier商・余積/局所小性・一対象比較の目標は保持する。
