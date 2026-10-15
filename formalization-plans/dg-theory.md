@@ -1,6 +1,6 @@
 # dg 理論（M5）の独立実装計画
 
-作成・調査：2026-10-14。更新：2026-10-15。状態：U0〜U8 を実装・検証済み（U9/U10は継続中）。
+作成・調査：2026-10-14。更新：2026-10-15。状態：U0〜U9 を実装・検証済み（U10は継続中）。
 U0〜U3の記録は§11、U4/U5の実績と後続契約は§12。D0〜D10全体の完了ではない。
 この計画だけを受け取る実装担当者向けの仕様である。
 ホモトピー論の共有契約は [k-theory.md §123](k-theory.md#123-次段階の設計i抽象モデル圏とその当てはめ2026-10-14)。
@@ -1085,3 +1085,50 @@ tensorする射が具体的なホモトピー同値なので、対象複体のfl
 ℤ・ZMod 2 の一対象例を検証する。
 ビルド・直接実行は成功し、主要18宣言はすべて標準公理の範囲内。累計406宣言。
 U9全受入は局所化比較の完成・検証を残して未完。U10の目標も保持する。
+
+### 13.19 U9b2：閉零/K(D)の局所化比較と両方向の自然同型、U9受入
+
+`Derived/HomotopyComparison.lean` の `moduleQuasiIso_equalizes_boundary` は、
+quasiIsoを反転する任意の関手が全dg自然な境界関係を同一視することを
+前段の具体的cylinderで証明する。対象圏の対象/射宇宙w/w'は独立。
+`moduleBoundaryFactorsThroughLocalization` と U8 の射クラスの逆像一致により、
+Mathlib `HomRel.FactorsThroughLocalization.strictUniversalPropertyFixedTarget'` を適用し、
+`moduleToHomotopy ⋙ moduleHomotopyToDerived` が閉零加群圏の指定quasiIsoを局所化することを得る。
+一般の商の局所化理論を複製していない。
+
+`moduleDerivedHomotopyEquivalence` は局所化の一意性による
+DerivedModuleCategory ≌ HomotopyDerivedModuleCategory。
+`moduleDerivedHomotopyComparisonIso` と `moduleDerivedHomotopyInverseComparisonIso` は
+両方向の比較関手と指定局所化関手の自然同型。
+`moduleHomotopyToDerivedClosed` は主導来加群圏へのK(D)の局所化関手で、
+IsLocalization (moduleHomotopyQuasiIso) を証明した。
+`moduleToHomotopyDerivedIso` は閉零→K(D)→D(D)と主局所化の比較自然同型。
+
+受入入口 `Checks/DerivedComparison.lean` は、任意可換環・非有界加群・独立宇宙で
+指定局所化の同値、両方向の比較自然同型、K(D)からのIsLocalization、
+任意のquasiIso反転関手でのホモトピー同一視を検証する。
+ビルド・直接実行と主要9宣言の公理監査は成功し、標準公理のみ。
+
+これで U9 の指定局所化、宇宙・普遍性、閉零/K(D)局所化比較が揃った。
+受入条件との対応は次のとおり。
+
+| 条件 | 証明・検証入口 |
+| --- | --- |
+| 指定Wの局所化D(D)と宇宙 | Derived/Basic、Checks/Derived |
+| 関手/自然変換を含む普遍性と元の射の同型判定 | Derived/Basic・Evaluation、Checks/Derived |
+| 全dg自然な境界が局所化で同一視されること | Module/Cylinder・Derived/HomotopyComparison、Checks/Cylinder・DerivedComparison |
+| 閉零圏/K(D)の指定局所化の同値と比較図式 | Derived/HomotopyComparison、Checks/DerivedComparison |
+
+U9を受入済みとし、独立入口 `StageSix.lean`（U0〜U9）を追加した。
+U9の3受入入口とStageSix・既存Spectra.StageTwoの同時ビルドは成功（3183 jobs）。
+3入口の直接実行ログを照合し、49宣言すべて標準公理のみ。累計415宣言。
+担当Leanのsorry・admit・新規axiomは0件。
+StageSixのローカルimport閉包は114モジュール（dg76）でSpectra/Paper/Inputs依存なし。
+共有ルートimport・既存PerfectComplex・並行作業ファイルは編集していない。
+
+U10は未完。semifreeの定義だけでは完了とせず、任意加群へのsemifree解像度の存在、
+acyclicを消すHomと導来Hom計算・選択独立性、K(D)/D(D)の三角構造・Verdier商比較、
+余積/局所小性の宇宙、一対象Aと既存DerivedCategoryの自然同値を証明する。
+標準局所化の射宇宙をより小さい宇宙へ下げることは、証拠を得るまで主張しない。
+共有の射影モデル比較は別のD4m合流点。共有API不足による現在のブロックはない。
+U10までの目標を保持する。

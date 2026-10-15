@@ -1,8 +1,8 @@
 # M5：dg 理論の独立入口
 
-U0〜U8 実装・検証（U9/U10継続中）：2026-10-15。計画は
+U0〜U9 実装・検証（U10継続中）：2026-10-15。計画は
 [ dg-theory.md ](../../formalization-plans/dg-theory.md)。
-入口は [StageFive.lean](StageFive.lean)（U0〜U8）、[StageFour.lean](StageFour.lean)（U0〜U7）、[StageThree.lean](StageThree.lean)（U0〜U6）、[StageTwo.lean](StageTwo.lean)（U0〜U5）、[StageOne.lean](StageOne.lean)（U0〜U3）。共有ルート import は変更しない。
+入口は [StageSix.lean](StageSix.lean)（U0〜U9）、[StageFive.lean](StageFive.lean)（U0〜U8）、[StageFour.lean](StageFour.lean)（U0〜U7）、[StageThree.lean](StageThree.lean)（U0〜U6）、[StageTwo.lean](StageTwo.lean)（U0〜U5）、[StageOne.lean](StageOne.lean)（U0〜U3）。共有ルート import は変更しない。
 
 Lean `v4.35.0-rc4`、Mathlib `e6bbacd0e1b7307ff6e17da09cd2455f60804fa6`。
 Mathlib HEAD と lake-manifest を再照合済み。依存更新なし。
@@ -123,7 +123,16 @@ U8では `Module/Homotopy.lean` に全次数Hom endの次数−1による加群�
 標準加群coneのobjectwise acyclic性と準同型性の同値を証明する。
 受入入口は `Checks/ModuleHomotopy.lean`・`ShiftHomotopy.lean`・`Acyclic.lean`。
 U8の追加53宣言、U0〜U8累計366宣言は標準公理のみ。一般論のsorry・新規axiomなし。
-U9の局所化、U10の解像度・三角構造・導来圏比較は未完。
+U9の `Derived/Basic.lean`/`Evaluation.lean` は指定quasiIsoの局所化と厳密な普遍性、
+関手圏の同値、評価ホモロジー・既存DerivedCategoryへの評価を公開する。
+標準の対象/射宇宙はmax (u+1) v。小さい射宇宙の存在は後続U10。
+`Module/TensorUnit.lean`/`Cylinder.lean` と `Complexes/TensorCylinder.lean` は
+単位複体のcylinderをtensorして全dg自然なホモトピーを延長する。
+`Derived/HomotopyComparison.lean` はquasiIsoを反転する任意関手が境界を同一視することを証明し、
+閉零圏/K(D)の局所化の同値と両方向の比較自然同型を構成する。
+受入入口は `Checks/Derived.lean`・`Cylinder.lean`・`DerivedComparison.lean`。
+U9の追加49宣言、U0〜U9累計415宣言は標準公理のみ。一般論のsorry・新規axiomなし。
+U10のsemifree解像度の存在・Hom計算・三角構造・余積・一対象Aの導来圏比較は未完。
 API契約と共有 G1/G2/G5/G6 への引継ぎは計画§12.8。
 導来圏・射影モデル・dg 商・Morita・Perf と M5全体は未完成。
 一般モデル圏・Quillen・転送・SM7 は共有系列が所有し、この入口には置かない。
