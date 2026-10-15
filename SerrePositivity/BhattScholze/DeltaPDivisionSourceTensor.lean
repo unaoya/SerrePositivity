@@ -28,7 +28,8 @@ local notation "q₀" => Ideal.Quotient.mk
     (deltaDivisionRelationIdeal (p : A) a₀))
 
 /-- 終域Lの源P代数構造は、実自由δ射αで与える。 -/
-@[instance_reducible] def deltaPDivisionSourceTargetAlgebra : Algebra P₀ P₀ := (α₀).toAlgebra
+@[instance_reducible] def deltaPDivisionSourceTargetAlgebra : Algebra P₀ P₀ :=
+  deltaDivisionSourceTargetAlgebra (σ := σ) D (p : A)
 
 /-- raw包の源P代数構造は、基底射jと評価βの合成で与える。 -/
 @[instance_reducible] def deltaPDivisionSourceRawAlgebra : Algebra P₀ B₀ :=

@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.DeltaPDivisionSourceFiniteTor
 public import SerrePositivity.BhattScholze.DeltaDivisionUnitDenominator
+public import SerrePositivity.BhattScholze.DeltaDivisionSourceAlgebras
 public import Mathlib.CategoryTheory.Functor.OfSequence
 
 /-! # 源有限グラフ商の標準逐次極限
@@ -69,7 +70,8 @@ private theorem finite_le_ker (N : ℕ) : K₀ N ≤ RingHom.ker β₀ := by
     (Set.range (deltaPDivisionSourceGraphPrefix (σ := σ) D y M))) N
 
 /-- 評価環Aの源P代数構造は、実評価射βそのものから与える。 -/
-@[instance_reducible] def deltaDivisionSourceEvalAlgebra : Algebra P₀ A := (β₀).toAlgebra
+@[instance_reducible] def deltaDivisionSourceEvalAlgebra : Algebra P₀ A :=
+  deltaDivisionSourceEvaluationAlgebra D a₀
 
 /-- 有限源商間の標準線形遷移射。 -/
 def deltaDivisionSourceFiniteTransition (N : ℕ) : Q₀ N →ₗ[P₀] Q₀ (N + 1) :=

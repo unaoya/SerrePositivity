@@ -6719,3 +6719,25 @@ H0(Complete_A,p Single(raw))/pとの比較や古典的完備化への置換を�
 一般B4全射性は未完成のまま保持する。これらを今回の実mod pホモロジー計算の完了と混同しない。
 次は補助φ/p除算包のこの実導来計算を、自由δ射間の通常・導来pushout比較と一般d根添加候補へ
 つなぐ既存APIの適用条件を再点検し、独立なBS比較を進める。
+
+### 次工程の登録：一般d・任意元族の自由δ射の通常pushout比較
+
+BS専用DeltaDivisionSourceAlgebras.leanで、任意元族c:σ→Aの実評価βと任意除数dの実射αに
+対応する既存自由δ環の代数構造を公開する。既存の一元評価代数構造
+DeltaDivisionSourceFiniteColimit.leanのdeltaDivisionSourceEvalAlgebraと、
+DeltaPDivisionSourceTensor.leanのdeltaPDivisionSourceTargetAlgebraは、新一般定義の特殊化へ変更し公開型を維持する。
+BS専用DeltaDivisionSourceTensor.leanで、任意d,cの実通常テンソルA_β⊗_{A{X}}A{Z}_αと
+raw A{c_s/d}の両因子像を保つ標準環同型・係数A代数同型を構成する。
+既存DeltaPDivisionSourceTensor.leanの公開定義・補題は、新一般比較を呼ぶ特殊化へ整理し、重複証明を避ける。
+BS専用DeltaDivisionSourceTensorDelta.leanで、この通常テンソルのδ構造と両因子包含のδ両立性を
+一般d,cについて証明する。既存DeltaPDivisionSourceTensorDelta.leanも特殊化へ整理し公開APIを維持する。
+既存DeltaDivisionEvaluationSourceのraw普遍性を再利用する。Tor消滅・導来pushout離散性・完備化後CFFは
+この通常pushout比較から結論せず、G7等を使う工程と分ける。共通ファイル・CLMST側は編集しない。
+
+## B4-6：一般除数・任意元族の自由δ射の実代数構造（2026-10-15）
+
+DeltaDivisionSourceAlgebras.leanで、任意元族への実評価βと任意除数の自由δ射α:x_s↦d z_sに沿う
+実代数構造と係数射公式を公開した。既存の一元評価代数とp除算終域代数はその特殊化へ整理し、公開型を維持した。
+4公開宣言および既存特殊化の対象3772ジョブ成功（共有側の既存長行警告のみ）。
+B4全体pure依存監査成功、標準3公理のみ。新sorry・公理・引用なし。
+任意d・任意元族の通常pushout比較へ使用する。導来pushout離散性・一般CFF・B4完成とは区別する。
