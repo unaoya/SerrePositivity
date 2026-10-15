@@ -1,6 +1,7 @@
 import SerrePositivity.HomotopicalAlgebra.Localization.AccessibleLocalEquivalences
 import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FiniteTensorLiftingClass
 import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ArrowLiftingClass
+import SerrePositivity.HomotopicalAlgebra.Localization.LocalBoundaryCharacterization
 import Lean.Util.CollectAxioms
 
 noncomputable section
@@ -29,6 +30,22 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}
   (hcof : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
   (hfib : fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
 
+example (f : Arrow C) (Y : C) [IsFibrant Y] :
+    fibrations SSet.{v} (ArrowFrames.testMap cof f Y) :=
+  ArrowFrames.testMap_fibration cof hfib f Y
+
+example (S : MorphismProperty C) (Y : C) [IsFibrant Y] :
+    localObjects cof fib S Y ↔
+      (LocalBoundaryGenerators.generators cof S).rlp (terminal.from Y) :=
+  LocalBoundaryGenerators.localObjects_iff_rlp cof fib hcof hfib S Y
+
+example (I J : MorphismProperty C)
+    [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} I J]
+    (S : MorphismProperty C) (Y : C) :
+    localFibrantObjects cof fib S Y ↔
+      (LocalFibrantApproximation.generators J cof S).rlp (terminal.from Y) :=
+  LocalBoundaryGenerators.localFibrantObjects_iff_rlp cof fib hcof hfib I J S Y
+
 example (S : MorphismProperty C) {X Y : C} (f : X ⟶ Y)
     (hX : localObjects cof fib S X) (hY : localObjects cof fib S Y) :
     localEquivalences cof fib S f ↔ weakEquivalences C f :=
@@ -53,7 +70,12 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Localization.LocalReplacementDetection,
     `SerrePositivity.HomotopicalAlgebra.Localization.AccessibleLocalEquivalences,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FiniteTensorLiftingClass,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ArrowLiftingClass]
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ArrowLiftingClass,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ArrowTensor,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.RelativeSubcomplexTensor,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PresentationSourceLiftingConverse,
+    `SerrePositivity.HomotopicalAlgebra.Localization.ArrowFrameFibrations,
+    `SerrePositivity.HomotopicalAlgebra.Localization.LocalBoundaryCharacterization]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
