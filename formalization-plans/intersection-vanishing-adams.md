@@ -3693,6 +3693,18 @@ K₀ の類への移送と重みつき乗法性は次の小段。
 - 前小段の監査ファイルの末尾の余分な空行を除いた。
   次は直和からの鎖写像へまとめ、各次数の同型を証明する。S10.8c 全体は未完了。
 
+### S10.8c.2c.3a：四シフト直和の鎖写像・対角作用・台
+
+- `Adams/KoszulCubeFourierModelMap` は右入れ子の四シフト直和 D と対角作用を定義し、
+  その三乗が恒等であることを証明して `CochainCubicAction D` を構成した。
+- 四つの Fourier 鎖写像を `biprod.desc` でまとめ、三乗の巡回との同変性を証明した。
+  D の strictly perfect 性・V(a) 上のホモロジーの台・−3,−2,−1,0 以外の成分の零性も証明済み。
+- `lake build SerrePositivity.KTheory.Adams.KoszulCubeFourierModelMap` が成功（2848 jobs）。
+- `lake env lean scripts/audit_adams_koszul_fourier_model_map.lean` が成功。
+  九定数の `assert_no_sorry` が通り、公理は標準三公理のみ。
+- この小段では同変鎖写像まで。各次数で同型と示して鎖同型にする作業、
+  一元正規化・族・S10.9・S11 は未完了。ルート公開は鎖同型の統合段に行う。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
