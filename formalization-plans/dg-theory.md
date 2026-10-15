@@ -1719,3 +1719,22 @@ semifree全体の性質と導来Hom計算・選択独立性、三角構造・Ver
 U10全受入は未完。次は余極限を源とする主Hom endが実際の極限となることを証明し、
 この互換な原像族をHom endの要素へ組み立ててsemifree全体の射影性を得る。
 導来Hom・選択独立性・三角構造・Verdier商・余積/局所小性・一対象比較の保存性も残る。
+
+
+### 13.43 U10b5b：余極限を源とする主Hom endの極限普遍性
+
+`Module/ColimitHom.lean` はu-smallな対象型J、独立の射宇宙を持つ図式Fと
+指定した実際の余極限cについて、`Hom_D(c.pt,N)` の包含への前合成が
+`F.op` 上の全Hom end図式の極限となることを証明する。
+任意パラメータ複体Kのconeを逆転置し、Kとのtensorの余極限保存でdescを作り、
+再転置してliftを得る。各射影との一致と一意性を同じ普遍性で証明する。
+次数零やH⁰のみの表示ではなく、複体の圏でのIsLimitである。
+
+`Checks/ColimitHom.lean` は対象・射の独立宇宙と可算列への適用を検証する。
+同入口・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3195 jobs）。
+直接実行の主要6宣言は標準公理のみ。累計753宣言。
+担当Leanのsorry/admit/新規axiomは0件。文書検査の制限は§13.39を維持する。
+
+U10全受入は未完。次にこの極限普遍性と互換な境界原像の構成を接続して、
+semifree全体のhomotopically projective性を完成する。
+導来Hom・選択独立性・三角構造・Verdier商・余積/局所小性・一対象比較の保存性は残る。
