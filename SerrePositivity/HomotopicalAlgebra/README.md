@@ -383,3 +383,13 @@ accessibilityは仮定しない。`scripts/check_accessible_cell_attachment.lean
 セル添字の宇宙は生成射の宇宙と独立にでき、`Small.{w} ι`から必要な大きい添字の
 coproductを導出する。生成射クラスの`toSet`が大きい型に入る場合にも対応する。
 `check_accessible_squares`と`check_accessible_cell_attachment`はこの独立した宇宙で検証する。
+
+## A0：実際の小対象因子分解（途中、2026-10-15）
+
+`Smith/AccessibleSmallObject.lean`はMathlibのセル付加、超限反復、始域射影を
+統合する。生成射の両端点がκ-可呈示なら、SOAに適した独立の基数μで構成した
+`SmallObject.functorialFactorizationData I μ`のZと左右両因子がκ-accessibleになる。
+局所可呈示性とIの小ささだけから、そのようなκと因子分解データの存在も導く。
+`scripts/check_accessible_small_object.lean`は反復・accessibilityの基数を独立に検証し、
+局所可呈示性からの利用例と全宣言の公理監査を含む。ここでは射の宇宙はwであり、
+一般の局所w-小さい圏への移送、両生成クラスとQ/Rの同一基数での統合、A1は残る。

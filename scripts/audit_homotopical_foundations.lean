@@ -28,6 +28,7 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Smith.DependentCopower,
     `SerrePositivity.HomotopicalAlgebra.Smith.AccessibleSquares,
     `SerrePositivity.HomotopicalAlgebra.Smith.AccessibleCellAttachment,
+    `SerrePositivity.HomotopicalAlgebra.Smith.AccessibleSmallObject,
     `SerrePositivity.HomotopicalAlgebra.Transfer.Right,
     `SerrePositivity.HomotopicalAlgebra.Quillen.Brown,
     `SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor,
