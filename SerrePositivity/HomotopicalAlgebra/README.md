@@ -370,3 +370,12 @@ pushoutによるセル付加段階、小対象論法全体への接続、A1は�
 小さい射族/射クラス全体の分解、空の射族、General/StageTwoとの併用を検証する。
 同スクリプトはこのモジュールの全宣言を標準公理のみで監査する。
 共有全体の`audit_homotopical_foundations`でもR0を必須モジュールとして監査する。
+
+## A0：実際のセル付加関手（途中、2026-10-15）
+
+`Smith/AccessibleCellAttachment.lean`は、square添字のcoproductとArrowの始域射影を
+関手圏内でpushoutし、Mathlibの`SmallObject.functor`そのものがκ-accessibleで
+あることを証明する。入力は生成射の両端点のκ-可呈示性であり、セル付加関手の
+accessibilityは仮定しない。`scripts/check_accessible_cell_attachment.lean`は
+局所可呈示性から共通κを得て適用し、全宣言の公理も監査する。
+小さい生成射クラスへの宇宙の一般化と超限反復の統合、A1は引き続き残る。

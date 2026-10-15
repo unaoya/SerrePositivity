@@ -18,6 +18,7 @@ public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleColimits
 public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleIteration
 public import SerrePositivity.HomotopicalAlgebra.Smith.DependentCopower
 public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleSquares
+public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleCellAttachment
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor
