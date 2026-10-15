@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.KoszulLinearDuality
 import SerrePositivity.HomologicalAlgebra.CochainLinearDualCone
 import SerrePositivity.HomologicalAlgebra.MappingConeLinearDual
 import SerrePositivity.HomologicalAlgebra.KoszulLocalCohomologyAction
@@ -284,3 +285,17 @@ assert_no_sorry SerrePositivity.cochainLinearDualConeIso
 
 #print axioms SerrePositivity.cochainLinearDualConeShiftIso
 #print axioms SerrePositivity.cochainLinearDualConeIso
+
+-- KL3a: self-duality at all finite lengths, without regularity assumptions.
+assert_no_sorry SerrePositivity.cochainLinearDualMap_smul_id
+assert_no_sorry SerrePositivity.scalarConeLinearDualIso
+assert_no_sorry SerrePositivity.cochainLinearDualSingle_d
+assert_no_sorry SerrePositivity.cochainLinearDualSingleTermIso
+assert_no_sorry SerrePositivity.cochainLinearDualSingleIso
+assert_no_sorry SerrePositivity.koszulLinearDualEmptyIso
+assert_no_sorry SerrePositivity.scalarConeShiftIso
+assert_no_sorry SerrePositivity.koszulLinearDualIso
+assert_no_sorry SerrePositivity.koszulLinearDualHomologyIso
+
+#print axioms SerrePositivity.koszulLinearDualIso
+#print axioms SerrePositivity.koszulLinearDualHomologyIso
