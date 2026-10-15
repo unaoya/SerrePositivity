@@ -103,7 +103,8 @@ print(f'Euler and homotopy boundaries passed: {len(general)} general modules and
 resolution_comparison = {'SerrePositivity.KTheory.' + name for name in [
     'ResolutionClass', 'ResolutionAdditivity', 'HomologyPeeling', 'ComparisonInverse']}
 check('SerrePositivity.KTheory.HomologyEulerBasic', lambda dep: dep in resolution_comparison)
-print('Basic homology Euler evaluation is independent of resolution comparisons.')
+check('SerrePositivity.PerfectComplex.IntegerEuler', lambda dep: dep in resolution_comparison)
+print('Basic homology and integer Euler evaluations are independent of resolution comparisons.')
 
 geometry = ['ClosedSupportGeometry', 'ModuleClosedSupport', 'SupportHeight',
             'SemilocalSupport', 'ModuleSupportHeight', 'LocalizationTorsion', 'ModuleSupport',

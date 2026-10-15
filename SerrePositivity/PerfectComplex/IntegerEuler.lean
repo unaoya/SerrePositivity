@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KTheory.ComparisonInverse
+public import SerrePositivity.KTheory.HomologyEulerBasic
 public import SerrePositivity.CommutativeAlgebra.FiniteLengthValue
 public import SerrePositivity.PerfectComplex.OrdinaryEuler
 
