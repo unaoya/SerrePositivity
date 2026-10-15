@@ -7182,3 +7182,28 @@ Tor対称性や実導来完備性の同等の一般定義を新設していな�
 その合成の平坦性から、商基底変更の両因子のTor消滅を供給できる既存APIであることを再確認した。
 次はこれを具体的β・α因子へ適用し、既存DerivedBaseChangeRightTensorの両因子のTor仮定を省かずに
 係数側Koszul・導来還元との比較へ接続する。共有・CLMST・利用先は編集していない。
+
+### 次工程の登録：自由δ射の両因子の係数商Tor入力
+
+BS専用DeltaDivisionSourceCoefficientTor.leanを新設する。元の係数環Aから自由δ環Lへの係数射Cと
+評価β:L→A・自由δ射α:L→Lを使い、任意係数イデアルI⊆Aについて、
+q:L→L/I Lに沿うMβとMαそれぞれのscalarExtensionTorVanishingを証明する。
+共通torModule_quotient_map_subsingletonとtorCommをそのまま使い、Cの平坦性、β∘C=id、α∘C=Cを具体的に供給する。
+(p,d)についてI L=(p,Cd)のイデアル像公式も公開する。p正則性・ghost・G7・完備性は仮定しない。
+BS専用DeltaDivisionSourceCoefficientReduction.leanで、この両入力を共通DerivedBaseChangeRightTensorの
+実テンソル商基底変更へ供給し、係数作用を保つ具体的比較を公開する。
+同等の一般Tor・導来完備性・完備テンソル定義を重複しない。共有・CLMST・共有監査は編集しない。
+全新公開宣言をBS専用監査で検査する。導来(p,d)完備化後CFF・一般B4完成とは区別する。
+
+## B4-6：自由δ射の両因子の係数商Tor消滅（2026-10-15）
+
+DeltaDivisionSourceCoefficientTor.leanで、任意係数イデアルI⊆Aについて、
+実係数商q:L→L/I Lに沿う、実評価βで作用するAと実自由δ射αで作用する終域Lそれぞれの
+scalarExtensionTorVanishingを証明した。共通torModule_quotient_map_subsingletonへ
+係数包含Cの平坦性、β∘C=idおよびα∘C=Cの具体的な平坦性を供給し、共通torCommを再利用した。
+Torの向きと加群表現の違いは、実際の線形同値とTor関手による比較で整えた。
+(p,d)係数イデアルの拡張が自由δ環の(p,Cd)に一致する公式も公開した。
+p正則性・d正則性・ghost単射・G7・完備性・Noether性・添字有限性は不要。
+3新公開宣言の対象2868ジョブ成功（共有の既存長行警告のみ）、B4全体pure監査1895報告成功、標準3公理のみ。
+新sorry・公理・引用なし。両因子のTor入力を実導来商基底変更へ供給するための結果であり、
+係数側Koszul複体との同一視・導来完備化後CFF・一般B4全射性はまだ結論しない。
