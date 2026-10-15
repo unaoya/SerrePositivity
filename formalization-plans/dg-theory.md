@@ -2506,3 +2506,18 @@ Checks.Pretriangulated・Checks.ConeCompositionHomotopy・StageSix・既存Spect
 U10全受入は未完。次は合成cone三角形のdistinguished性からK(D)の八面体公理を証明し、
 acyclic部分圏の三角閉性・Verdier商比較・D(D)の三角構造と局所化および一対象比較の三角性へ進む。
 共有モデル圏系列への新しい不足要求はない。
+
+
+### 13.80 U10v1：K(D)の評価関手の三角性
+
+`Module/HomotopyEvaluationTriangles.lean`は、商に降ろした評価と元の複体評価の因子分解同型を
+公開し、その同型が整数shiftと可換であることをMathlibのQuotient.lift APIから証明した。
+shiftと可換な関手の可換squareを三角形の同型へ移す構成子から、評価された標準加群cone三角形と
+既存複体の標準cone三角形を比較する。これにより、任意の対象xでのK(D)の評価関手が
+すべてのdistinguished三角形を保存するインスタンスを登録した。
+この段階にK(D)の八面体公理を前提とせず、§13.79のPretriangulated構造を使用する。
+
+Checks.HomotopyEvaluationTriangles・StageSix・既存Spectra.StageTwoの同時ビルドは成功（2547 jobs）。
+Checksの直接実行で主要5宣言を監査し、標準公理のみ。累計1101宣言。
+次は評価先のacyclic部分圏の逆像を使い、K(D)のacyclic部分圏の三角閉性を証明する。
+U10全受入は未完であり、Verdier商比較・導来圏の三角構造・局所化と一対象比較の三角性も引き続き必要。
