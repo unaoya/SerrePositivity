@@ -3604,6 +3604,16 @@ K₀ の類への移送と重みつき乗法性は次の小段。
   `lake env lean scripts/audit_adams_koszul_fourier_one_coordinates.lean` の二十一定数の監査が成功。
   公理は標準三公理のみ。両逆性をまとめる基底同型は後続小段。
 
+### S10.8c.2b.3b：次数 −2 と頂の Fourier 双対座標
+
+- `Adams/KoszulCubeFourierTwoCoordinates` は逆変換の小行列式の三行と、
+  頂の行列式の逆係数 `3(t²−t)` に対応する双対座標を構成する。
+- 三つの次数 −2 の Fourier 列との九つの合成、頂の列との合成を恒等・零として証明した。
+  十個の合成式と各 reassoc 版を公開した。
+- 対象を含む `lake build SerrePositivity.KTheory.Adams.KoszulCubeFourierBasis` が成功（2844 jobs）。
+  `lake env lean scripts/audit_adams_koszul_fourier_two_coordinates.lean` の二十四定数の監査が成功。
+  公理は標準三公理のみ。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
