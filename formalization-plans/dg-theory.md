@@ -3792,3 +3792,28 @@ U11e全受入は未完。次はC/Eの両作用にbalancedな三重族から二�
 共通の三重生成元で両逆を検証してFubini比較へ進む。
 Fubiniの同型、bimoduleの結合比較・三角/五角、U12〜U17・D4mはこの補助APIだけでは完了しない。
 共有一般論への追加要求はなく、担当外ファイル・共有ルートを変更していない。
+
+
+### 17.44 U11e13：二重balanced族の左反復coend普遍性（2026-10-16）
+
+`Tensor/FubiniData.lean`はR⊗_E(Q⊗_C N)と(R⊗_E Q)⊗_C N、および
+R(e)⊗(Q(c,e)⊗N(c))から両者への包含を定義する。右側の包含は通常associatorの逆向きを使う。
+両反復coendからの射が共通の三重生成元で決まることを証明した。
+C/Eの対象宇宙v/wは係数環の宇宙uから独立で、各coendにSmall.{u}を要求する。
+
+`Tensor/FubiniFamilies.lean`は内側Cのパラメータ付きbalanced条件と外側Eの全次数関係を
+保持するDoubleFamilyを定義する。内側降下をcurryRightしたcochainの等式から外側へ降下し、
+leftDesc・三重生成元の評価式・leftRestrictを構成した。
+leftHomEquivは左反復coendからの射とDoubleFamilyの同値で、両逆法則まで証明済み。
+内側総次数の異なる和表示を比較する補題は、添字と等式証拠を明示して輸送を扱う。
+`Tensor/FubiniRightAction.lean`は右反復tensorの内側の右C作用について、
+Rの次数kと作用の次数pによる符号(-1)^(p*k)を含む生成元公式を証明する。
+
+Checks.FubiniFamilies・Checks.StageSeven・既存Spectra.StageTwoの同時ビルドは成功
+（2683 jobs、終了コード0、警告なし）。任意A・独立対象宇宙、正負次数、ZMod 2を検査した。
+主要21宣言の直接公理監査は終了コード0、標準公理のみ。監査累計1611宣言。
+担当Leanのsorry/admit/新規axiomは0件。文書検査は22 Markdown・311 exposition参照、失敗0件。
+
+U11e全受入は未完。次は同じDoubleFamilyを右反復coendへ降ろし、両降下と三重生成元の外延性から
+Fubini同型を構成する。その後、bimoduleの全Hom自然性・結合同型・三角/五角を検証する。
+U12〜U17・D4mも未完のまま継続。共有一般論への新しい不足要求はなく、担当外ファイルを変更していない。
