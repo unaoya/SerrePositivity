@@ -844,3 +844,17 @@ Reedy trivial fibrationとは区別して扱い、その条件を未証明のま
 共有入口2337 jobs、新規41宣言・5モジュール、共有2766宣言・177モジュールの標準公理監査と
 回帰検証が成功。コミットは`1ebbbf8`、詳細は計画§182。一般のresolutionとの最終の自然比較は
 まだ残る。F2全体、F1の任意源での最終関手、F3・F4とL0〜L5は未完了である。
+
+
+`CosimplicialFrameFamily`はobjectwise弱同値のaugmentationを持つReedy cofibrant familyを扱う。
+`FrameComparison`は強いresolutionとのpullbackと共通cofibrant replacementから自然比較を構成し、
+弱いaugmentationにReedy trivial fibrationを要求しない。共通のHomはKanで、両比較は弱同値になる。
+
+`SimplicialMapComparison`は標準tensor frameと二変数自然同型を合成し、任意の指定Q/Rについて
+resolution Homと実際のMap(QX,RY)を自然な弱同値のcospanで比較する。
+`ChosenMapComparison`はQ/Rも既存の二つの明示的源因子分解から構成し、追加のframe仮定を不要にする。
+源は一般の単体的モデル圏で、共有層から引用入力をimportしない。
+
+共有入口2341 jobs、新規70宣言・4モジュール、共有2836宣言・181モジュールの標準公理監査と
+回帰検証が成功。コミットは`88f619b`、詳細は計画§183。指定分解からのF2比較は揃ったが、
+F1の任意源での最終の厳密な関手、F3・F4、L0〜L5は残る。A0・A1は計画§166で完了済み。

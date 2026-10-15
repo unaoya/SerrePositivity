@@ -8053,3 +8053,70 @@ augmentationのすべての成分の弱同値性も証明した。源Cは一般�
 
 F1の任意モデル源での最終の厳密な関手の入口、F3の共通基数、F4のhocolim/holim比較、
 L0〜L5も引き続き残る。他チャットの変更は保持し、計画全体を一括stageしない。
+
+
+## 183. F2進捗：弱いaugmentationを持つframeとの自然比較と実際のMapへの接続（2026-10-15）
+
+A0・A1全体の依頼は§166で受入検証まで完了している。その後の「FからLまで」の依頼を
+継続し、今回は§182末尾に残した実際のMapとの比較を実装・検証した。
+一般モデル源での最終の厳密な関手というF1の残項目を、関手的分解の仮定で置き換えてはいない。
+
+### 183.1 弱いaugmentationのframeと共通比較
+
+`CosimplicialFrameFamily`は、Cからcosimplicial対象への実際の関手、恒等対象への自然augmentation、
+各図式のReedy cofibrancy、augmentationのobjectwise弱同値性を持つ。
+Reedy trivial fibrationは要求しない。augmentationの自然性と2-out-of-3から、
+すべての構造射の弱同値性を証明する。従来の強いresolution familyもこの型へ移せる。
+
+`FrameComparison`は、強いresolution family qとこのframe pのaugmentationのpullbackを作り、
+明示した補助因子分解データから関手的Reedy cofibrant replacementを取る。
+共通図式からpへの射は、qの強いaugmentationのpullbackとreplacementの合成なので
+objectwise弱同値である。qへの射は、augmentation上の可換四角形と2-out-of-3で弱同値になる。
+pのaugmentationをReedy trivial fibrationとみなすことはない。
+
+両比較は対象に自然である。fibrant値の任意の関手RへHomを取ると、実際の二変数関手の
+自然変換によるcospanを得る。共通のHomはKanであり、両射は既存の源変数の不変性によって
+弱同値になる。補助因子分解の選択は入力として明示する。
+
+### 183.2 標準tensor frameから実際のMapへ
+
+`SimplicialMapComparison`は、一般のSSet豊穣tensorとSM7、基準単体集合モデルの
+cof=monoおよび幾何学的Wとの一致を入力とする。cofibrant値のQ、自然な弱同値ε:Q→Id、
+任意の強いresolution family q、fibrant値のRから、n↦Δ[n]⊗QXの弱いframeを構成する。
+Reedy cofibrancy・augmentation弱同値性は§181・§182から証明し、追加仮定にしない。
+
+§181の二変数自然同型を合成し、次の自然な弱同値のcospanを構成した。
+
+`resolutionHom(q,R) → commonHom ← enrichedReplacementHom(Q,R)`
+
+右端は実際の`Map(QX,RY)`を値とする関手である。両射は源・標的のすべての射について
+自然であり、成分ごとの選択や次数ごとの全単射だけに留まらない。共通の値がKanであることと、
+両射の幾何学的弱同値性を証明した。一般入口のRにはfibrant値だけを要求し、
+導来写像空間として使う最終入口では次の実際の置換Rを供給する。
+
+`ChosenMapComparison`では、明示されたcof/trivFibおよびtrivCof/fibの二つの関手的因子分解から
+Q・Rと比較射を実際に制限する。Qのcofibrancy、Q→Idのtrivial fibration性、Rのfibrancyは証明済み。
+既存`chosenResolutionHom cof fib`と実際の`Map(QX,RY)`を上のcospanで比較できる。
+利用者が別途Q・R・frame・比較の弱同値性を仮定する必要はない。
+
+実装・共有入口・監査のコミット：`88f619b`。共有層からHT-KQや具体的スペクトルをimportせず、
+源Cを一般の単体的モデル圏のまま扱う。新たな引用axiom・sorryは導入していない。
+
+### 183.3 受入検証と残項目
+
+以下はすべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`：2341 jobs。
+- `check_simplicial_map_comparison`：新規70宣言・4モジュールの標準公理監査。
+  弱いaugmentationだけを持つframeとの比較、最終の二つの分解データだけからの利用、
+  実際のMapという右端の定義、両変数の自然性、成分弱同値、共通値のKan性を検証。
+- `audit_homotopical_foundations`：2836宣言・181モジュール、標準公理のみ。
+- `check_simplicial_tensor_frame`（41宣言・5モジュール）、`check_resolution_hom_comparison`
+  （83宣言・6モジュール）、`check_resolution_hom_pi_zero`（85宣言・4モジュール）、
+  `check_homotopical_foundations`、`check_spectra_stage2`、`git diff --check`。
+
+これで指定した関手的源分解からのF2の選択比較と実際のMap比較が揃った。
+F1の任意モデル源で関手的分解を要求しない最終の厳密な関手は引き続き未完了であり、
+この結果だけでF1・F2の任意源での全契約を完了とはしない。
+F3の共通基数、F4のhocolim/holim比較、L0〜L5も残る。依頼全体の完了判定は§159.4を維持する。
+他チャットの変更は保持し、計画書は今回の追記だけをstageした。
