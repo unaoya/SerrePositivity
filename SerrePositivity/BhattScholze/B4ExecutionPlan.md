@@ -6878,3 +6878,16 @@ DeltaDivisionFiniteRelationsRegular.leanで、前段実関係商上のφ^(N+1)(d
 警告は既存のLocalFlatnessCriterion長行、DerivedTensorPentagon設定コメント、
 DeltaPDivisionSequentialKoszulUnitのhaveI形式のみ。B4全体pure監査1829報告成功、標準3公理のみ。
 3新公開宣言を監査済み。新sorry・公理・引用なし。一般CFF・B4全射性は未完成のまま保持する。
+
+## B4-6：一般d根添加の実深さ1関係と完全prismへの適用（2026-10-15）
+
+DeltaRootSecondRelationRegular.leanで、前ターンの段0商の元のA上の忠実平坦性を使い、
+φ(d)がA上で正則なら、全深さ0の実関係商上で次関係の先頭係数像も正則となることを証明した。
+一般判定へ適用し、任意の根添字sの実深さ1δ関係がこの段0商上で非零因子となる。
+さらに完全δ環ではdの正則性からφ(d)の正則性を既存Equiv判定で供給した。
+具体的な完全OrientedPrismの指定生成元に適用する公開入口も証明し、追加の係数正則性を不要にした。
+有限σ・p正則性・ghost単射は不要。対象3572ジョブ成功、B4全体pure監査1833報告成功、標準3公理のみ。
+4新公開宣言を全て専用監査で検査し、新sorry・公理・引用なし。Andréにも依存しない。
+この成果は各深さ1関係の非零因子性であり、複数の深さ1関係の列の正則性や
+全δ深さのKoszul分解・Tor消滅・完備化後CFFを結論しない。一般B4全射性は引き続き未完成。
+次はこの実反復δ関係の正則性を、実評価関係列・有限源商のTor計算へ接続する。
