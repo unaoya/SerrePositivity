@@ -2887,3 +2887,18 @@ BにSmall.{u}を明示し、Cの対象宇宙は独立に保つ。Cを固定し�
 Checks.BimoduleActionsのビルドは成功（1785 jobs）。直接実行も終了コード0、主要13宣言の公理は標準公理のみ。
 独立したB/Cの宇宙、次数−1/1の交換、ZMod 2の左単位を検査した。監査累計1184宣言。
 U11b全体は未完。次はBᵒᵖ⊗Cのdg圏構造とuncurrying比較、左右合成との整合性を検証する。
+
+
+### 17.3 U11b2：Mathlib transportによるtensor積dg圏と交差braiding
+
+`Category/Tensor.lean`はHomの組の積基底上の豊穣をMathlibのtensorモノイダル関手でtransportし、
+対象B×C・Hom_B⊗Hom_Cのdg圏を構成した。単位と合成は同関手のε・tensorμに等しい。
+Ch(A)の積monoidal構造だけを既存prodMonoidalから明示する。dgTensorEnrichmentは
+重複するグローバルinstanceとして登録せず、Mathlibのtransport instanceを使う。
+`Complexes/TensorInterchange.lean`はtensorμと既存cochainTensorShuffleの一致、
+中央二因子の次数j,kを交換した符号(-1)^(jk)を、既存の斉次shuffle定理から証明した。
+
+Checks.TensorCategoryの最終ビルドは成功（1770 jobs、警告なし）。直接実行も終了コード0、
+主要9宣言の公理は標準公理のみ。監査累計1193宣言。
+新しい入口3本と既存StageSeven・Spectra.StageTwoの同時再ビルドも進行中。
+U11b全体は未完。次は純粋斉次Homの合成式とcurried bimoduleとのuncurrying比較。
