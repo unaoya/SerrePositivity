@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.LocalCohomologyTorAnnihilator
 import SerrePositivity.HomologicalAlgebra.KoszulDualTorComparison
 import SerrePositivity.HomologicalAlgebra.KoszulLinearDualityNaturality
 import SerrePositivity.HomologicalAlgebra.KoszulLinearDuality
@@ -359,3 +360,9 @@ assert_no_sorry SerrePositivity.koszulDualHomology_coefficient_scalar_eq_zero_of
 #print axioms SerrePositivity.koszulDualTorComparison
 
 #print axioms SerrePositivity.koszulDualHomology_coefficient_scalar_eq_zero_of_tor_annihilated
+
+-- KL3 merge: actual multiplication on low local cohomology, from higher Tor on all modules.
+assert_no_sorry SerrePositivity.localCohomologyScalarEndomorphism_eq_zero_of_tor_annihilated
+assert_no_sorry SerrePositivity.regularLocalCohomologyScalarEndomorphism_eq_zero_of_tor_annihilated
+#print axioms SerrePositivity.localCohomologyScalarEndomorphism_eq_zero_of_tor_annihilated
+#print axioms SerrePositivity.regularLocalCohomologyScalarEndomorphism_eq_zero_of_tor_annihilated
