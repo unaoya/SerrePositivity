@@ -114,11 +114,8 @@ lemma perfectFreeRepresentative_triangle (T : Triangle (SupportedPerfectHomotopy
   let I := supportedPerfectInclusion z ⋙ perfectHomotopyInclusion R
   let P := perfectFreeRepresentative T.obj₁
   let Q := perfectFreeRepresentative T.obj₂
-  obtain ⟨f : P.1 ⟶ Q.1, hf⟩ := (homotopyQuot R).map_surjective (I.map T.mor₁)
-  let e := Triangle.π₃.mapIso (isoTriangleOfIso₁₂ (I.mapTriangle.obj T)
-    (CochainComplex.mappingCone.triangleh f) (I.map_distinguished T hT)
-    (HomotopyCategory.mappingCone_triangleh_distinguished f) (Iso.refl _) (Iso.refl _)
-    (by simpa using hf.symm))
+  obtain ⟨f : P.1 ⟶ Q.1, ⟨e⟩⟩ := homotopyTriangle_exists_coneRepresentative
+    (I.mapTriangle.obj T) (I.map_distinguished T hT)
   have he := K0.mk_eq_of_homotopyEquiv (perfectFreeRepresentative T.obj₃)
     ⟨CochainComplex.mappingCone f, P.2.mappingCone f Q.2⟩
     (HomotopyCategory.homotopyEquivOfIso e)

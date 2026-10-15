@@ -1,5 +1,5 @@
 module
-public import Mathlib.Algebra.Homology.HomotopyCategory.Triangulated
+public import SerrePositivity.CategoryTheory.HomotopyConeRepresentative
 public import Mathlib.CategoryTheory.Triangulated.Subcategory
 
 /-! # Mapping-cone closure descends to a homotopy-category object property -/
@@ -23,12 +23,7 @@ theorem homotopyProperty_isTriangulatedClosed₃
   ext₃' T hT h₁ h₂ := by
     have hK : P T.obj₁.as := (hquot _).mp h₁
     have hL : P T.obj₂.as := (hquot _).mp h₂
-    obtain ⟨f : T.obj₁.as ⟶ T.obj₂.as, hf⟩ :=
-      (HomotopyCategory.quotient _ _).map_surjective T.mor₁
-    refine ⟨_, ?_, ⟨Triangle.π₃.mapIso (isoTriangleOfIso₁₂ T _ hT
-      (HomotopyCategory.mappingCone_triangleh_distinguished f)
-      (Iso.refl _) (Iso.refl _) ?_)⟩⟩
-    · exact (hquot _).mpr (hcone f hK hL)
-    · simp [hf]
+    obtain ⟨f, ⟨e⟩⟩ := homotopyTriangle_exists_coneRepresentative T hT
+    exact ⟨_, (hquot _).mpr (hcone f hK hL), ⟨e⟩⟩
 
 end SerrePositivity

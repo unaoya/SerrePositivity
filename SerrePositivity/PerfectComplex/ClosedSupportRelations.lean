@@ -313,11 +313,8 @@ lemma triangle (T : Triangle (SupportedPerfectHomotopyOn Z)) (hT : T ∈ distTri
     (perfectHomotopyObj_supportedOn_iff Z P hp).mp T.obj₁.property
   have sq : HasHomologySupportOn Z Q :=
     (perfectHomotopyObj_supportedOn_iff Z Q hq).mp T.obj₂.property
-  obtain ⟨f : P ⟶ Q, hf⟩ := (homotopyQuot R).map_surjective (I.map T.mor₁)
-  let e := Triangle.π₃.mapIso (isoTriangleOfIso₁₂ (I.mapTriangle.obj T)
-    (CochainComplex.mappingCone.triangleh f) (I.map_distinguished T hT)
-    (HomotopyCategory.mappingCone_triangleh_distinguished f) (Iso.refl _) (Iso.refl _)
-    (by simpa using hf.symm))
+  obtain ⟨f, ⟨e⟩⟩ := homotopyTriangle_exists_coneRepresentative
+    (I.mapTriangle.obj T) (I.map_distinguished T hT)
   let ep : T.obj₁ ≅ supportedPerfectOnObj Z P hp sp :=
     ObjectProperty.isoMk _ (ObjectProperty.isoMk _ (Iso.refl _))
   let eq : T.obj₂ ≅ supportedPerfectOnObj Z Q hq sq :=

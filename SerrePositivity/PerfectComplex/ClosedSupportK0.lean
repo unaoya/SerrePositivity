@@ -89,13 +89,10 @@ instance : (perfectHomotopySupportedOn Z).IsTriangulatedClosed₃ where
     have hsQ : HasHomologySupportOn Z Q :=
       (perfectHomotopyObj_supportedOn_iff Z Q hq).mp h₂
     let I := perfectHomotopyInclusion R
-    obtain ⟨f : P ⟶ Q, hf⟩ := (HomotopyCategory.quotient _ _).map_surjective (I.map T.mor₁)
+    obtain ⟨f, ⟨e⟩⟩ := homotopyTriangle_exists_coneRepresentative
+      (I.mapTriangle.obj T) (I.map_distinguished T hT)
     let hc := strictlyPerfectComplex_mappingCone R f hp hq
     let C := perfectHomotopyObj R (CochainComplex.mappingCone f) hc
-    let e := Triangle.π₃.mapIso (isoTriangleOfIso₁₂ (I.mapTriangle.obj T)
-      (CochainComplex.mappingCone.triangleh f) (I.map_distinguished T hT)
-      (HomotopyCategory.mappingCone_triangleh_distinguished f) (Iso.refl _) (Iso.refl _)
-      (by simpa using hf.symm))
     refine ⟨C, ?_, ⟨ObjectProperty.isoMk _ e⟩⟩
     exact (perfectHomotopyObj_supportedOn_iff Z _ hc).mpr (hsP.mappingCone f hsQ)
 
