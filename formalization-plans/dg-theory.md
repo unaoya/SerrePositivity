@@ -3380,3 +3380,31 @@ U11dの一対象Aの比較は得られたが、代表対象zを動かすYoneda�
 次は代表加群のdg Yoneda関手と代表対象のHom作用を、既存全次数Yoneda同型から構成する。
 その後U11d受入を照合し、U11eの単位/結合coherence・随伴へ進む。
 U12〜U17・D4mも引き続き未完。共有ルート・共有一般論・並行作業ファイルは変更していない。
+
+
+### 17.31 U11d12：dg Yonedaと代表対象の全Hom自然性（U11d受入）
+
+`Module/YonedaFunctor.lean`は既存dgYonedaIsoの逆からyonedaHomを構成した。
+全Hom endの要素を単位元での評価で判定する外延性、成分式、単位・合成保存を証明し、
+実際のMathlib EnrichedFunctorであるdgYonedaを公開する。
+`Module/LeftYonedaFunctor.lean`はopposite上のYoneda拡張を二重opposite表示へ運ぶ全次数自然族から
+左representable間のHom写像を構成し、各評価と斉次成分を計算した。
+対象同一視を伴うendへのcastで計算を済ませず、既存moduleHomEquivから直接構成している。
+`Tensor/YonedaRepresentative.lean`は両Yoneda tensor評価について、代表対象zのHom変数に関する
+自然性を主Hom複体へのchain mapの等式として証明した。反変側のoppositeとKoszul符号を保持する。
+
+Checks.YonedaRepresentative・BalancedTensorRing・BimoduleTensorと既存StageSeven・Spectra.StageTwoの
+同時ビルドは成功（2689 jobs、終了コード0、追加ソースの警告なし）。
+本単位の主要14宣言の直接実行も終了コード0、標準公理のみ。監査累計1419宣言。
+任意A・独立対象宇宙、dg Yoneda、一対象ZMod 2、左代表の次数-1/1の成分を検査した。
+担当差分のgit diff --checkも成功。
+
+U11dの受入照合：
+- 右/左representableとのtensor評価同型と両逆法則：§17.20/21。
+- 加群変数の全Hom自然性：§17.27。代表対象変数の全Hom自然性：本節。
+- balanced tensorの左右の実際のdg関手と符号付き交換：§17.26/27。
+- bimodule合成に残る全次数作用と実際の対象：§17.28/29。
+- 一対象Aと既存cochainTensorの同型・包含/元の計算・両変数自然性：§17.30。
+これでU11dを受け入れる。U11全体は未完で、次はU11eのFubini・tensor–Hom随伴、
+bimodule合成の単位/結合同型と三角/五角・三変数自然性を進める。
+U12〜U17・D4mも未完のまま継続。共有ルート・共有一般論・並行作業ファイルは変更していない。
