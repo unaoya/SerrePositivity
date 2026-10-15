@@ -3871,3 +3871,32 @@ Aのp正則性、yのA/pでの正則性、単元v=δ(p)、自由δ環のghost単
 次は登録済みDeltaPDivisionRawRegularで、δ閉包へのp飽和性・raw包のp正則性、
 既存旧ねじれ除去商との標準射を保つδ環同型を検証する。
 分冪包比較、実導来pushoutの離散性、CFF根付き拡大、一般B4は未完成。
+
+## B4-6：raw一元δ p除算包のp正則性と旧ねじれ除去の冗長性（2026-10-15）
+
+`DeltaPDivisionRawRegular.lean`で、全有限段の通常商のp正則性と既存のδ閉包=iSup有限関係
+イデアルの表示から、実δ閉包のp飽和性を証明した。
+rawδ添加環A{φ(y)/p}自体のp正則性を得て、旧p局所化核とそのδ閉包が零であることを証明した。
+既存DeltaDivisionTorsionQuotientへの標準商射を具体的な環同型へ強化し、
+その値・両方向のδ両立・元の基底射との可換図式を公開した。
+既存平行移動同型を使ってA{y^p/p}側のraw p正則性も供給した。
+源Aがp進完備な入口では、既存Jacobson根基判定とD.isDistinguished_pから
+δ(p)の単元性を内部で供給した（自由δ環のghost単射は引き続き明示する）。
+
+[Unique σ]の一元入力で、Aのp正則性、yのA/p正則性、
+自由δ環のghost単射、単元δ(p)（または源のp進完備性）を明示した結果。
+10公開宣言の対象3807ジョブとpure B4監査成功。標準3公理のみ、新sorry・公理・引用なし。
+全体ビルドは共有並行作業のCubicActionBasicのHasBinaryBiproduct未解決と
+TensorSquareMixedSplittingのCochainBiproduct.olean不足で失敗した。
+失敗ログは/tmp/bs-p-raw-regular-full.log。担当外は変更していない。
+全有限段の工程は10987fdでコミット済み（同工程時の全体4917ジョブは成功）。
+
+次のBS専用予定`DeltaPDivisionLocalization.lean`で、一般δ環Aと元族a_sについて、
+raw p除算添加環B=A{a_s/p}のp局所化とA[1/p]を標準基底射を保つδ環同型で比較する。
+既存δ局所化と、pの像が単元である終域への既存δ除算普遍性を再利用する。
+この局所化比較自体には元族の有限性・正則性・完備性を要求しない。
+続くBS専用予定`DeltaPDivisionRawEmbedding.lean`で、一元a=φ(y)の今回のraw p正則性を使い、
+B→A[1/p]の具体的なδ射の単射性と、除算変数がφ(y)/pへ送られる式を証明する。
+原典Cor.2.39・Warning 2.41のA[1/p]内の部分環表示へ進むための工程であり、
+この埋め込みだけで分冪包との一致・完全忠実平坦性を結論しない。
+分冪包比較、実導来pushoutの離散性、CFF根付き拡大、一般B4は未完成。
