@@ -9741,3 +9741,78 @@ L3のpushout条件は完了したが、任意の超限合成の閉性は未完�
 処理済みとはしない。次は連続なcofibration列のprojective持ち上げ・hocolim比較を整備し、
 limit段階を含めて閉性を証明する。そのうえで局所境界生成射と生成された単位射のW_S所属を解消する。
 L2の最終入口、L4・L5・E0・S0〜S3、F1の任意モデル源の最終関手も引き続き未完了。
+
+
+## 205. L3の超限合成への基盤：連続列の整合的持ち上げとabsolute/relativeなprojective cofibrancy（2026-10-15）
+
+§204のpushout閉性に続き、任意のwell-orderedな添字Kについて、連続なcofibration列を
+実際のprojectiveモデルのcofibrationへ接続する部分を実装した。ℕ列や十分filteredな列だけに制限しない。
+ただし任意の超限合成に対するW_Sの閉性そのものは未完了であり、L3全体の完了とはしない。
+
+### 205.1 モデル構造を使わない整合的持ち上げの構成
+
+`Diagram/ContinuousLiftSystem`は、自然変換p:U⟶Vとb:D⟶Vに対して、初期区間i≤jでの
+持ち上げの族を`Partial p b j`に記録する。射l_i:D_i⟶U_i、全てのi≤k≤jでの自然性、
+l_i≫p_i=b_iを含み、初期区間の制限による実際の逆系`system p b`を定義する。
+対象ごとの独立な持ち上げの存在で自然変換を代用しない。
+
+`ContinuousLiftSuccessor`は、後続段階での一つの持ち上げから既存の初期区間を保つ拡張を構成する。
+`ContinuousLiftLimit`は、limit段階で整合的な全ての下位区間から、Dの実際の連続性のcolimitを使って
+新しい成分を構成する。UやVの連続性は要求しない。各下位区間への制限との一致も証明する。
+
+`ContinuousLiftInduction`はこのデータを固定版Mathlibの`WellOrderInductionData`へ組み込み、
+実際の自然変換l:D⟶Uを構成する。`exists_lift_with_base`はl≫p=bに加え、
+最初に指定したbottom成分がそのまま保たれることを出力する。
+モデル構造・局所可呈示性・初期対象・SSet・局所化はこの構成の入力ではない。
+添字にはLinearOrder/OrderBot/SuccOrder/WellFoundedLTを明示し、limit段階のcofinalityは制限しない。
+これらの構成はコミット`8d6e827e`。
+
+### 205.2 任意の右クラスからprojective持ち上げ条件へ
+
+`ContinuousProjectiveCofibrancy.projective_llp`は任意の射クラスQについて、
+初期項への射0⟶D_0がQ.llpで、全後続射D_i⟶D_(succ i)がQ.llpなら、
+図式の射0⟶Dがobjectwise Qに対するLLPを持つことを証明する。
+この段階では標的圏に初期対象とDの連続性だけを要求し、モデル構造は不要である。
+
+元のcombinatorialモデルでQをtrivialFibrations Cとすると、
+`Projective.isCofibrant_of_continuous`は初期項がcofibrantで後続射がcofibrationである連続列Dの、
+実際のprojectiveモデルでのcofibrancyを証明する。objectwise cofibrancyだけを根拠にしていない。
+
+### 205.3 初期項のcofibrancyを要求しないrelativeな判定
+
+`ContinuousRelativeCofibrancy.fromBottom`は定数図式Const(D_0)⟶Dという実際の自然変換である。
+`fromBottom_llp`は、Dの連続性と全後続射のQ.llpだけから、この自然変換のobjectwise Qに対するLLPを証明する。
+205.1で指定したbottomの持ち上げを保ち、全段階で定数図式からの上側の射と一致させる。
+この一般補題ではCの初期対象さえ要求しない。
+
+`Projective.fromBottom_cofibration`は実際のprojectiveモデルのcofibrationとして
+Const(D_0)⟶Dを出力する。D_0のcofibrancyは要求しない。
+これは初期項が非cofibrantな連続列のhocolim比較に向けたrelativeな入力であり、
+非cofibrantな初期項を仮定から除外する方法として使用する。
+
+### 205.4 hocolim比較と現在の境界
+
+`ContinuousHomotopyColimit.comparison_weakEquivalence_of_continuous`は、
+初期項がcofibrantな連続cofibration列について、実際のprojective hocolim→colimit比較の弱同値性を証明する。
+ここには元の左固有性さえ不要である。
+一方、任意の初期項での弱比較はまだこの定理の出力ではない。
+205.3のrelativeなprojective cofibrancyと元の左固有性・Under圏の比較を使って、
+この残る初期項の条件を解消する必要がある。
+205.2〜205.4の適用・共有入口・利用例はコミット`34896ff3`。
+
+### 205.5 検証と次の実装単位
+
+- 共有入口`Foundations`：2502 jobsで成功、新規警告なし。
+- `check_continuous_projective_cofibrancy`：100宣言・7モジュール、標準公理のみ。
+  モデル未装備・初期対象未装備のCでのrelativeな利用、指定bottom成分の保存、
+  任意のwell-ordered添字、独立したu/v/wでの実際のprojectiveモデル・hocolimを検証。
+- 共有全監査：4084宣言・316モジュール、標準公理のみ。sorry・引用依存の追加なし。
+- `check_span_hocolim`：12宣言・7モジュールのpushout閉性までの回帰検証成功。
+- 差分の空白検査成功。証明の構成とモデルへの適用を2コミットに分けて保存した。
+
+次は、projectively cofibrantな一般の順序図式RについてConst(R_0)⟶Rのcofibration性を抽出し、
+元のprojective図式モデルの左固有性とUnder(Const(D_0))での比較へ接続する。
+連続列Dについては205.3を使い、初期項のcofibrancyを仮定せずにhocolim→colimitを比較する。
+その後、各limit段階を含む帰納でcof∩W_Sの任意の超限合成閉性を証明する。
+十分filteredなcolimitの保存だけでこの帰納を済ませたとはみなさない。
+L2の生成単位射のW_S所属、L4・L5・E0・S0〜S3、F1の任意モデル源の最終関手も引き続き未完了。
