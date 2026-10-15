@@ -21,7 +21,9 @@ def closure(start):
 
 common = [name for name in graph if name.startswith(
     'SerrePositivity.HomologicalAlgebra.CochainTensor')]
-common += ['SerrePositivity.HomologicalAlgebra.CochainIdempotent',
+common += ['SerrePositivity.HomologicalAlgebra.CochainBiproduct',
+           'SerrePositivity.HomologicalAlgebra.CochainKernelLift',
+           'SerrePositivity.HomologicalAlgebra.CochainIdempotent',
            'SerrePositivity.HomologicalAlgebra.KoszulOneCoordinates']
 for name in common:
     forbidden = [dep for dep in closure(name)

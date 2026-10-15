@@ -3,6 +3,8 @@ import SerrePositivity.HomologicalAlgebra.CochainIdempotent
 import SerrePositivity.HomologicalAlgebra.CochainTensorLinear
 import SerrePositivity.HomologicalAlgebra.CochainTensorHomogeneous
 import SerrePositivity.HomologicalAlgebra.CochainTensorBaseChange
+import SerrePositivity.HomologicalAlgebra.CochainTensorSixHomogeneous
+import SerrePositivity.HomologicalAlgebra.CochainKernelLift
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.cochainTensor
@@ -27,3 +29,11 @@ example {R : Type u} [CommRing R]
     cochainTensorIso e f = tensorIso e f := rfl
 #print axioms SerrePositivity.cochainTensorBaseChangeIso
 #print axioms SerrePositivity.DifferentialGraded.complexMonoidalLinear
+
+assert_no_sorry SerrePositivity.cochainTensorTriple_hom_ext
+assert_no_sorry SerrePositivity.cochainTensorRotation_cube
+assert_no_sorry SerrePositivity.cochainTensorSixShuffle
+assert_no_sorry SerrePositivity.cochainTensorSixShuffle_rotation_sign
+assert_no_sorry SerrePositivity.cochainKernelLiftX_inclusion
+#print axioms SerrePositivity.cochainTensorRotation_cube
+#print axioms SerrePositivity.cochainKernelLiftX_inclusion

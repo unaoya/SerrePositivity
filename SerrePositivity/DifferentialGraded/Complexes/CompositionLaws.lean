@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.HomologicalAlgebra.CochainTensorHomogeneous
+public import SerrePositivity.HomologicalAlgebra.CochainTensorTriple
 public import SerrePositivity.DifferentialGraded.Complexes.Composition
 public import SerrePositivity.DifferentialGraded.Complexes.Monoidal
 public import SerrePositivity.DifferentialGraded.Complexes.Unit
@@ -39,9 +39,8 @@ lemma triple_ext {P Q T S : Complex A} {f g : (P ⊗ Q) ⊗ T ⟶ S}
         ιTensorObj (P ⊗ Q) T (i + j) k n hn ≫ g.f n) : f = g := by
   apply HomologicalComplex.Hom.ext
   funext n
-  apply mapBifunctor₁₂.hom_ext
-  intro i j k hn
-  exact h i j k n hn
+  exact SerrePositivity.cochainTensorTriple_hom_ext P Q T n
+    (fun i j k hn => h i j k n hn)
 
 /-- associator の三重斉次成分公式。 -/
 @[reassoc]

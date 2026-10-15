@@ -30,7 +30,8 @@ lemma ι_tensorHom {P Q P' Q' : CochainComplex (ModuleCat.{u} A) ℤ} (f : P ⟶
 
 /-- 左 tensor の双次数成分。 -/
 @[reassoc (attr := simp)]
-lemma ι_whiskerLeft (P : CochainComplex (ModuleCat.{u} A) ℤ) {Q T : CochainComplex (ModuleCat.{u} A) ℤ} (f : Q ⟶ T)
+lemma ι_whiskerLeft (P : CochainComplex (ModuleCat.{u} A) ℤ)
+    {Q T : CochainComplex (ModuleCat.{u} A) ℤ} (f : Q ⟶ T)
     (i j n : ℤ) (h : i + j = n) :
     ιTensorObj P Q i j n h ≫ (P ◁ f).f n =
       (P.X i ◁ f.f j) ≫ ιTensorObj P T i j n h := by
@@ -40,7 +41,8 @@ lemma ι_whiskerLeft (P : CochainComplex (ModuleCat.{u} A) ℤ) {Q T : CochainCo
 
 /-- 右 tensor の双次数成分。 -/
 @[reassoc (attr := simp)]
-lemma ι_whiskerRight {Q T : CochainComplex (ModuleCat.{u} A) ℤ} (f : Q ⟶ T) (P : CochainComplex (ModuleCat.{u} A) ℤ)
+lemma ι_whiskerRight {Q T : CochainComplex (ModuleCat.{u} A) ℤ}
+    (f : Q ⟶ T) (P : CochainComplex (ModuleCat.{u} A) ℤ)
     (i j n : ℤ) (h : i + j = n) :
     ιTensorObj Q P i j n h ≫ (f ▷ P).f n =
       (f.f i ▷ P.X j) ≫ ιTensorObj T P i j n h := by
