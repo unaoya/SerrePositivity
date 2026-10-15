@@ -4236,3 +4236,37 @@ J=iSup I_Nを用いてLからの線形写像を実δ閉包商で割り、具体�
 
 本工程のpure B4依存監査成功。依存は標準3公理のみ。
 全体ビルドは次の無限Koszul添加写像の工程と合わせて実行中。
+
+## B4-6：raw δ包への実無限Koszul添加写像（2026-10-15）
+
+`DeltaPDivisionSequentialKoszulAugmentation.lean`で、実Koszul図式の圏論的colimitの
+正次数の項が零であることを、既存の評価関手のcolimit保存と有限段の項の消滅から証明した。
+特に実d⁰¹=0を供給し、既存toSingleOfHomologyと証明済み実H⁰比較によって
+実無限Koszul複体→rawδ包[0]の具体的な鎖写像を構成した。
+その実H⁰写像がraw比較同型に一致することを公開した。
+正則一元入力（p正則A、yのA/p正則性、単元δp、自由環ghost単射）では、
+この実無限添加写像がQuasiIsoであると証明した。
+5公開宣言の対象3861ジョブとpure B4監査成功。標準3公理のみ、新sorry・公理・引用なし。
+原典の導来δpushout・導来完備化・分冪包比較・CFFを証明したとは数えない。
+
+### 次工程の登録：実無限比較の標準単位の正規化
+
+BS専用`DeltaPDivisionSequentialKoszulUnit.lean`で、
+各有限段K_N→実colimitのH⁰写像と、実H⁰極限比較の可換図式を証明する。
+前工程の実比較はShortComplex.mapHomologyIsoから構成しているので、
+同型の存在だけから標準単位保存を推論しない。
+逐次図式の評価関手からcolimへの自然変換（成分は既存colimit.ι）を使い、
+既存ShortComplex.homologyMap_mapNatTransと実termwise/圏論的colimit同型の標準射の式を適用する。
+目標は、任意Nとr:Lについて、有限段の標準H⁰単位を実極限へ送りraw比較を施すと
+rawδ包の元[r]となる等式。さらに実無限添加写像のH⁰について同じ標準単位図式を供給する。
+この段も共通Tor・完備性・Koszul定義の重複は作らず、BSの具体的な図式だけを扱う。
+以後、実無限通常Koszulモデルと原典の導来δ基底変更を比較し、分冪包・CFFへ接続する。
+一般B4の任意perfectoid環の商のperfectoid化全射性は未完成であり、
+正則一元入力の仮定を最終公開APIへ追加する変更は行っていない。
+
+今回の全体ビルドは共有PerfectComplex/TensorShortExact.leanとKoszulOneModel.leanで失敗した。
+前者はShortComplex.Splitting・cochainTensorFixedRight等、後者はsupportZeroLocus・
+HasHomologySupportOn・K0WithSupport.mk等の未解決識別子を報告した。
+ログは/tmp/bs-infaug-full.log。共有コードは変更していない。
+raw有限商colimit比較と実無限Koszul添加写像の対象ビルド・pure B4監査は成功しており、
+全体ビルド成功とは区別する。前工程の全体4936ジョブ成功は、今回の共有変更前の記録である。
