@@ -3845,3 +3845,25 @@ Checks.FubiniColumns・Checks.FubiniFamilies・Checks.StageSeven・既存Spectra
 右C作用の符号(-1)^(p*k)、左パラメータ付きbalanced公式から証明する。
 その後rightDescと三重包含での評価を構成し、Fubini同型・全Hom自然性・三角/五角へ進む。
 U11全受入・U12〜U17・D4mは未完のまま継続する。共有系列への新しい不足要求はない。
+
+
+### 17.46 U11e15：二重balanced族の右反復coendへの降下（2026-10-16）
+
+`Tensor/FubiniRightFamilies.lean`はE方向のcolumnDescが残るCのbalanced関係を保つことを証明する。
+固定次数の線形射にdegree_element_extを適用してEの純粋生成元へ帰着し、
+右C作用の符号(-1)^(p*k)と外側のbalanced符号(-1)^((k+r)*p)の積が
+元のQのbalanced符号(-1)^(r*p)になることを計算する。
+DoubleFamily.balanceC_of_sumsは左右の内側総次数を別々に明示して、この比較に使う。
+rightFamily・rightDescは実際の右反復coendからの降下を与え、
+rightι_rightDescで共通の三重包含との合成が元の族へ戻ることを証明した。
+
+Checks.FubiniRightFamilies・Checks.FubiniColumns・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2689 jobs、終了コード0、警告なし）。任意A・独立対象宇宙・ZMod 2で降下を検査した。
+主要5宣言の直接公理監査は終了コード0、標準公理のみ。監査累計1625宣言。
+担当Leanのsorry/admit/新規axiomは0件。文書検査は22 Markdown・311 exposition参照、失敗0件。
+
+左右への降下は揃ったが、Fubini同型はまだ未受入。
+次は右反復coendからの射の三重族がC/Eの両方向でbalancedであることを示し、rightRestrictと
+右側の普遍的同値を構成する。恒等射を双方の族へ制限し、両降下と外延性からFubini同型を得る。
+その後bimodule結合同型の全Hom自然性と三角/五角、U12〜U17を継続する。
+共有系列への新しい不足要求はなく、D4mの一般論を重複実装していない。
