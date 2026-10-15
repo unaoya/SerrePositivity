@@ -1,6 +1,7 @@
 -- lake build SerrePositivity.Spectra.Foundations の後に実行する。
 -- スペクトルと、そのための共通圏論・群論の公開宣言を標準公理のみで監査する。
 import SerrePositivity.Spectra.Foundations
+import SerrePositivity.CategoryTheory.Monoidal.RepresentedHomFunctor
 import SerrePositivity.Spectra.Pointed.SmashPushoutProduct
 import SerrePositivity.Spectra.ModelCategory.PointedGenerators
 import SerrePositivity.Spectra.ModelCategory.SimplicialMonoidal
@@ -62,6 +63,7 @@ run_cmd do
       `SerrePositivity.Spectra.General.ParametrizedCotensor,
       `SerrePositivity.Spectra.General.ParametrizedMapping,
       `SerrePositivity.CategoryTheory.Monoidal.MappingWhiskering,
+      `SerrePositivity.CategoryTheory.Monoidal.RepresentedHomFunctor,
       `SerrePositivity.Spectra.General.MappingFunctorComparison,
       `SerrePositivity.Spectra.General.TensorCotensorEnriched,
       `SerrePositivity.Spectra.General.TensorMappingObject,
