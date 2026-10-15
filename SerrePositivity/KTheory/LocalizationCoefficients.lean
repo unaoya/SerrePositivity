@@ -80,25 +80,11 @@ variable {E P Z}
 omit [IsNoetherianRing R] in
 lemma add {x x' : Coefficients E Z} (hx : HasPrincipalCoefficientSupport E P Z x)
     (hx' : HasPrincipalCoefficientSupport E P Z x') :
-    HasPrincipalCoefficientSupport E P Z (x + x') := by
-  obtain ⟨s, hs, y, hy⟩ := hx
-  obtain ⟨t, ht, y', hy'⟩ := hx'
-  let h₁ : Z ⊓ supportZeroLocus (Ideal.span ({s} : Set R)) ≤
-      Z ⊓ supportZeroLocus (Ideal.span ({s * t} : Set R)) :=
-    inf_le_inf_left Z (supportZeroLocus_mul_left s t)
-  let h₂ : Z ⊓ supportZeroLocus (Ideal.span ({t} : Set R)) ≤
-      Z ⊓ supportZeroLocus (Ideal.span ({s * t} : Set R)) :=
-    inf_le_inf_left Z (supportZeroLocus_mul_right s t)
-  refine ⟨s * t, P.mul_mem hs ht,
-    coefficientEnlarge E h₁ y + coefficientEnlarge E h₂ y', ?_⟩
-  rw [map_add]
-  have e₁ : coefficientEnlarge E inf_le_left (coefficientEnlarge E h₁ y) = x := by
-    rw [← LinearMap.comp_apply, coefficientEnlarge_comp]
-    exact hy
-  have e₂ : coefficientEnlarge E inf_le_left (coefficientEnlarge E h₂ y') = x' := by
-    rw [← LinearMap.comp_apply, coefficientEnlarge_comp]
-    exact hy'
-  rw [e₁, e₂]
+    HasPrincipalCoefficientSupport E P Z (x + x') :=
+  principalSupport_add (fun W => Coefficients E W)
+    (fun h => (coefficientEnlarge E h).toAddMonoidHom)
+    (fun h h' y => DFunLike.congr_fun (coefficientEnlarge_comp E h h') y) hx hx'
+
 end HasPrincipalCoefficientSupport
 
 omit [IsNoetherianRing R] in

@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.KTheory.G0Localization
+public import SerrePositivity.CommutativeAlgebra.PrincipalSupport
 
 /-! # A localization kernel element comes from one smaller closed support -/
 @[expose] public section
@@ -7,22 +8,6 @@ noncomputable section
 universe u
 namespace SerrePositivity
 variable {R : Type u} [CommRing R]
-
-lemma supportZeroLocus_mul_left (s t : R) :
-    supportZeroLocus (Ideal.span ({s} : Set R)) ≤
-      supportZeroLocus (Ideal.span ({s * t} : Set R)) := by
-  intro p hp
-  change Ideal.span ({s * t} : Set R) ≤ p.asIdeal
-  apply Ideal.span_le.mpr
-  intro a ha
-  have ha' : a = s * t := Set.mem_singleton_iff.mp ha
-  subst a
-  exact p.asIdeal.mul_mem_right t (hp (Ideal.subset_span (Set.mem_singleton s)))
-
-lemma supportZeroLocus_mul_right (s t : R) :
-    supportZeroLocus (Ideal.span ({t} : Set R)) ≤
-      supportZeroLocus (Ideal.span ({s * t} : Set R)) := by
-  simpa only [mul_comm] using supportZeroLocus_mul_left t s
 
 variable (P : Submonoid R) (Z : TopologicalSpace.Closeds (PrimeSpectrum R))
 /-- An element can be represented on the vanishing locus of one denominator. -/
@@ -42,25 +27,9 @@ lemma neg {x : G0WithSupport Z} (hx : HasPrincipalLocalizationSupport P Z x) :
 
 lemma add {x x' : G0WithSupport Z} (hx : HasPrincipalLocalizationSupport P Z x)
     (hx' : HasPrincipalLocalizationSupport P Z x') :
-    HasPrincipalLocalizationSupport P Z (x + x') := by
-  obtain ⟨s, hs, y, hy⟩ := hx
-  obtain ⟨t, ht, y', hy'⟩ := hx'
-  let h₁ : Z ⊓ supportZeroLocus (Ideal.span ({s} : Set R)) ≤
-      Z ⊓ supportZeroLocus (Ideal.span ({s * t} : Set R)) :=
-    inf_le_inf_left Z (supportZeroLocus_mul_left s t)
-  let h₂ : Z ⊓ supportZeroLocus (Ideal.span ({t} : Set R)) ≤
-      Z ⊓ supportZeroLocus (Ideal.span ({s * t} : Set R)) :=
-    inf_le_inf_left Z (supportZeroLocus_mul_right s t)
-  refine ⟨s * t, P.mul_mem hs ht,
-    G0WithSupport.enlarge h₁ y + G0WithSupport.enlarge h₂ y', ?_⟩
-  rw [map_add]
-  have e₁ : G0WithSupport.enlarge inf_le_left (G0WithSupport.enlarge h₁ y) = x := by
-    rw [← AddMonoidHom.comp_apply, G0WithSupport.enlarge_comp]
-    exact hy
-  have e₂ : G0WithSupport.enlarge inf_le_left (G0WithSupport.enlarge h₂ y') = x' := by
-    rw [← AddMonoidHom.comp_apply, G0WithSupport.enlarge_comp]
-    exact hy'
-  rw [e₁, e₂]
+    HasPrincipalLocalizationSupport P Z (x + x') :=
+  principalSupport_add (fun W => G0WithSupport W) (fun h => G0WithSupport.enlarge h)
+    (fun h h' y => DFunLike.congr_fun (G0WithSupport.enlarge_comp h h') y) hx hx'
 
 lemma mk_torsion (M : SupportedFGModuleOn Z) (h : IsModuleSTorsion P M.obj) :
     HasPrincipalLocalizationSupport P Z (G0WithSupport.mk M) := by
@@ -127,16 +96,7 @@ lemma localize_away_kernel_range (s : R) [IsLocalization.Away s B] :
   · intro x hx
     obtain ⟨t, ht, y, hy⟩ := localize_kernel_supported (P := Submonoid.powers s) (B := B) x hx
     obtain ⟨n, rfl⟩ := ht
-    have hm : supportZeroLocus (Ideal.span ({s ^ n} : Set R)) ≤
-        supportZeroLocus (Ideal.span ({s} : Set R)) := by
-      intro p hp
-      change Ideal.span ({s} : Set R) ≤ p.asIdeal
-      apply Ideal.span_le.mpr
-      intro a ha
-      have ha' : a = s := Set.mem_singleton_iff.mp ha
-      subst a
-      exact p.isPrime.mem_of_pow_mem n (hp (Ideal.subset_span (Set.mem_singleton _)))
-    refine ⟨enlarge (inf_le_inf_left Z hm) y, ?_⟩
+    refine ⟨enlarge (inf_le_inf_left Z (supportZeroLocus_pow_le s n)) y, ?_⟩
     rw [← AddMonoidHom.comp_apply, enlarge_comp]
     exact hy
   · rintro x ⟨y, rfl⟩

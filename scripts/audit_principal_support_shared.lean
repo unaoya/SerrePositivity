@@ -1,0 +1,13 @@
+import SerrePositivity.KTheory.K0Localization
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.supportZeroLocus_pow_le
+assert_no_sorry SerrePositivity.principalSupport_add
+assert_no_sorry SerrePositivity.HasPrincipalLocalizationSupport.add
+assert_no_sorry SerrePositivity.G0WithSupport.HasPrincipalCoefficientSupport.add
+assert_no_sorry SerrePositivity.G0WithSupport.localize_away_kernel_range
+assert_no_sorry SerrePositivity.G0WithSupport.coefficientLocalize_exact
+assert_no_sorry SerrePositivity.K0WithSupport.localize_away_kernel_range
+
+#print axioms SerrePositivity.G0WithSupport.coefficientLocalize_exact
+#print axioms SerrePositivity.K0WithSupport.localize_away_kernel_range

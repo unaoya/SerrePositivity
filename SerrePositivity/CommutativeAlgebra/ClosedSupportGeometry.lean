@@ -68,4 +68,31 @@ lemma supportPullback_inf_le {Y Z : TopologicalSpace.Closeds (PrimeSpectrum R)}
   intro p hp
   exact ⟨hY hp.1, hZ hp.2⟩
 
+lemma supportZeroLocus_mul_left (s t : R) :
+    supportZeroLocus (Ideal.span ({s} : Set R)) ≤
+      supportZeroLocus (Ideal.span ({s * t} : Set R)) := by
+  intro p hp
+  change Ideal.span ({s * t} : Set R) ≤ p.asIdeal
+  apply Ideal.span_le.mpr
+  intro a ha
+  have ha' : a = s * t := Set.mem_singleton_iff.mp ha
+  subst a
+  exact p.asIdeal.mul_mem_right t (hp (Ideal.subset_span (Set.mem_singleton s)))
+
+lemma supportZeroLocus_mul_right (s t : R) :
+    supportZeroLocus (Ideal.span ({t} : Set R)) ≤
+      supportZeroLocus (Ideal.span ({s * t} : Set R)) := by
+  simpa only [mul_comm] using supportZeroLocus_mul_left t s
+
+/-- Vanishing of a power implies vanishing of its base, including the empty locus for n = 0. -/
+lemma supportZeroLocus_pow_le (s : R) (n : ℕ) :
+    supportZeroLocus (Ideal.span ({s ^ n} : Set R)) ≤
+      supportZeroLocus (Ideal.span ({s} : Set R)) := by
+  intro p hp
+  change Ideal.span ({s} : Set R) ≤ p.asIdeal
+  apply Ideal.span_le.mpr
+  intro a ha
+  obtain rfl := Set.mem_singleton_iff.mp ha
+  exact p.isPrime.mem_of_pow_mem n (hp (Ideal.subset_span (Set.mem_singleton _)))
+
 end SerrePositivity

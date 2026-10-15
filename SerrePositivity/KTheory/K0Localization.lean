@@ -87,24 +87,19 @@ lemma localize_away_kernel_range (s : R) [IsLocalization.Away s S] :
     (localize (S := S) (Submonoid.powers s) Z).ker =
       (enlarge (show Z ⊓ supportZeroLocus (Ideal.span ({s} : Set R)) ≤ Z
         from inf_le_left)).range := by
-  apply le_antisymm
-  · intro x hx
-    obtain ⟨t, ht, y, hy⟩ := localize_kernel_supported (S := S) (Submonoid.powers s) Z x hx
-    obtain ⟨n, rfl⟩ := ht
-    have hm : supportZeroLocus (Ideal.span ({s ^ n} : Set R)) ≤
-        supportZeroLocus (Ideal.span ({s} : Set R)) := by
-      intro p hp
-      change Ideal.span ({s} : Set R) ≤ p.asIdeal
-      apply Ideal.span_le.mpr
-      intro a ha
-      have ha' : a = s := Set.mem_singleton_iff.mp ha
-      subst a
-      exact p.isPrime.mem_of_pow_mem n (hp (Ideal.subset_span (Set.mem_singleton _)))
-    refine ⟨enlarge (inf_le_inf_left Z hm) y, ?_⟩
-    rw [← AddMonoidHom.comp_apply, enlarge_comp]
-    exact hy
-  · rintro x ⟨y, rfl⟩
-    exact DFunLike.congr_fun (localize_enlarge_principal_eq_zero (S := S) (Submonoid.powers s) Z
-      (Submonoid.mem_powers s)) y
+  let W := Z ⊓ supportZeroLocus (Ideal.span ({s} : Set R))
+  let V := supportPullback (algebraMap R S) Z
+  let hW : W ≤ Z := inf_le_left
+  apply AddMonoidHom.exact_iff.mp
+  apply (AddMonoidHom.exact_iff_of_surjective_of_bijective_of_injective
+    (enlarge hW) (localize (S := S) (Submonoid.powers s) Z)
+    (G0WithSupport.enlarge hW) (G0WithSupport.localize (S := S) (Submonoid.powers s) Z V le_rfl)
+    (homologyEuler W) (homologyEuler Z) (homologyEuler V)
+    (homologyEuler_enlarge hW).symm
+    (homologyEuler_localize (S := S) (Submonoid.powers s) Z).symm
+    (k0G0WithSupportEquiv W).surjective (k0G0WithSupportEquiv Z).bijective
+    (k0G0WithSupportEquiv V).injective).mpr
+  exact AddMonoidHom.exact_iff.mpr (G0WithSupport.localize_away_kernel_range (Z := Z) (B := S) s)
+
 end K0WithSupport
 end SerrePositivity
