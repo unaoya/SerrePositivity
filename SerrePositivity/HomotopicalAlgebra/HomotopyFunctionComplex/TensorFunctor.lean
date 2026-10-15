@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SubcomplexTensor
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FiniteTensor
 
 /-! # Functoriality of finite subcomplex tensors
 
@@ -20,50 +21,37 @@ variable {n : SimplexCategory} {C : Type u} [Category.{v} C] [HasFiniteColimits 
 
 abbrev unit (S : (SSet.stdSimplex.{v}.obj n).Subcomplex) :
     S.toSSet ⟶ (cosimplicialHom A).obj (obj S A) :=
-  (homEquiv S A (obj S A)).symm (𝟙 _)
+  FiniteTensor.unit A S.toSSet
 
 lemma homEquiv_naturality (S : (SSet.stdSimplex.{v}.obj n).Subcomplex) {Y Z : C}
     (f : S.toSSet ⟶ (cosimplicialHom A).obj Y) (p : Y ⟶ Z) :
     homEquiv S A Z (f ≫ (cosimplicialHom A).map p) = homEquiv S A Y f ≫ p :=
-  HomPresentation.homEquiv_naturality (diagram S) (NonsingularPresentation.cocone S.toSSet)
-    (NonsingularPresentation.isColimit S.toSSet) A f p
+  FiniteTensor.homEquiv_naturality A S.toSSet f p
 
 lemma unit_comp (S : (SSet.stdSimplex.{v}.obj n).Subcomplex) {Y : C} (f : obj S A ⟶ Y) :
-    unit A S ≫ (cosimplicialHom A).map f = (homEquiv S A Y).symm f := by
-  apply (homEquiv S A Y).injective
-  exact (homEquiv_naturality A S (unit A S) f).trans
-    ((congrArg (fun g ↦ g ≫ f) ((homEquiv S A (obj S A)).apply_symm_apply (𝟙 _))).trans
-      ((Category.id_comp f).trans ((homEquiv S A Y).apply_symm_apply f).symm))
+    unit A S ≫ (cosimplicialHom A).map f = (homEquiv S A Y).symm f :=
+  FiniteTensor.unit_comp A S.toSSet f
 
 def map (h : S ≤ T) : obj S A ⟶ obj T A :=
-  homEquiv S A (obj T A) (SSet.Subcomplex.homOfLE h ≫ unit A T)
+  FiniteTensor.map A (SSet.Subcomplex.homOfLE h)
 
 lemma map_comp_homEquiv (h : S ≤ T) {Y : C} (f : obj T A ⟶ Y) :
     map A h ≫ f = homEquiv S A Y
       (SSet.Subcomplex.homOfLE h ≫ (homEquiv T A Y).symm f) :=
-  (homEquiv_naturality A S (SSet.Subcomplex.homOfLE h ≫ unit A T) f).symm.trans
-    (congrArg (homEquiv S A Y) ((Category.assoc _ _ _).trans
-      (congrArg (fun g ↦ SSet.Subcomplex.homOfLE h ≫ g) (unit_comp A T f))))
+  FiniteTensor.map_comp_homEquiv A (SSet.Subcomplex.homOfLE h) f
 
 lemma map_comp_homEquiv_apply (h : S ≤ T) {Y : C}
     (f : T.toSSet ⟶ (cosimplicialHom A).obj Y) :
     map A h ≫ homEquiv T A Y f = homEquiv S A Y (SSet.Subcomplex.homOfLE h ≫ f) :=
-  (map_comp_homEquiv A h _).trans (congrArg (homEquiv S A Y)
-    (congrArg (fun g ↦ SSet.Subcomplex.homOfLE h ≫ g) ((homEquiv T A Y).symm_apply_apply f)))
+  FiniteTensor.map_comp_homEquiv_apply A (SSet.Subcomplex.homOfLE h) f
 
 @[simp]
 lemma map_id (S : (SSet.stdSimplex.{v}.obj n).Subcomplex) : map A (le_refl S) = 𝟙 _ :=
-  (congrArg (homEquiv S A (obj S A)) (Category.id_comp (unit A S))).trans
-    ((homEquiv S A (obj S A)).apply_symm_apply _)
+  FiniteTensor.map_id A S.toSSet
 
 @[reassoc]
-lemma map_comp (h : S ≤ T) (k : T ≤ U) : map A h ≫ map A k = map A (h.trans k) := by
-  rw [map_comp_homEquiv]
-  change homEquiv S A (obj U A)
-      (SSet.Subcomplex.homOfLE h ≫ (homEquiv T A (obj U A)).symm
-        (homEquiv T A (obj U A) (SSet.Subcomplex.homOfLE k ≫ unit A U))) = _
-  rw [Equiv.symm_apply_apply]
-  exact congrArg (homEquiv S A (obj U A)) (Category.assoc _ _ _).symm
+lemma map_comp (h : S ≤ T) (k : T ≤ U) : map A h ≫ map A k = map A (h.trans k) :=
+  FiniteTensor.map_comp A (SSet.Subcomplex.homOfLE h) (SSet.Subcomplex.homOfLE k)
 
 def functor : (SSet.stdSimplex.{v}.obj n).Subcomplex ⥤ C where
   obj S := obj S A
@@ -74,8 +62,7 @@ def functor : (SSet.stdSimplex.{v}.obj n).Subcomplex ⥤ C where
 lemma homEquiv_symm_map_comp (h : S ≤ T) {Y : C} (f : obj T A ⟶ Y) :
     (homEquiv S A Y).symm (map A h ≫ f) =
       SSet.Subcomplex.homOfLE h ≫ (homEquiv T A Y).symm f :=
-  (congrArg (homEquiv S A Y).symm (map_comp_homEquiv A h f)).trans
-    ((homEquiv S A Y).symm_apply_apply _)
+  FiniteTensor.homEquiv_symm_map_comp A (SSet.Subcomplex.homOfLE h) f
 
 lemma homEquiv_simplex (S : (SSet.stdSimplex.{v}.obj n).Subcomplex) {Y : C}
     (f : A.obj n ⟶ Y) :

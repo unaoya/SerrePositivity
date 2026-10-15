@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.TensorFunctor
-public import Mathlib.CategoryTheory.HomCongr
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FiniteTensorRepresentable
 
 /-! # Tensors of representable and empty subcomplexes
 
@@ -20,36 +20,18 @@ variable {n k : SimplexCategory} {C : Type u} [Category.{v} C] [HasFiniteColimit
   (A : SimplexCategory ⥤ C) (S : (SSet.stdSimplex.{v}.obj n).Subcomplex)
   (e : SSet.stdSimplex.{v}.obj k ≅ S.toSSet)
 
-def representationMap : obj S A ⟶ A.obj k :=
-  homEquiv S A (A.obj k)
-    (e.inv ≫ (SSet.yonedaEquiv (X := (cosimplicialHom A).obj (A.obj k))).symm (𝟙 _))
+abbrev representationMap : obj S A ⟶ A.obj k :=
+  FiniteTensor.representationMap A S.toSSet e
 
 lemma representationMap_comp {Y : C} (f : A.obj k ⟶ Y) :
     representationMap A S e ≫ f = homEquiv S A Y
-      (e.inv ≫ (SSet.yonedaEquiv (X := (cosimplicialHom A).obj Y)).symm f) := by
-  have h : (SSet.yonedaEquiv (X := (cosimplicialHom A).obj (A.obj k))).symm (𝟙 _) ≫
-      (cosimplicialHom A).map f =
-        (SSet.yonedaEquiv (X := (cosimplicialHom A).obj Y)).symm f :=
-    (SSet.yonedaEquiv_symm_comp (𝟙 (A.obj k)) ((cosimplicialHom A).map f)).trans
-      (congrArg (SSet.yonedaEquiv (X := (cosimplicialHom A).obj Y)).symm
-        (Category.id_comp f))
-  exact (homEquiv_naturality A S _ f).symm.trans
-    (congrArg (homEquiv S A Y) ((Category.assoc _ _ _).trans
-      (congrArg (fun g ↦ e.inv ≫ g) h)))
+      (e.inv ≫ (SSet.yonedaEquiv (X := (cosimplicialHom A).obj Y)).symm f) :=
+  FiniteTensor.representationMap_comp A S.toSSet e f
 
-instance representationMap_isIso : IsIso (representationMap A S e) := by
-  apply isIso_of_coyoneda_map_bijective
-  intro Y
-  let E : (A.obj k ⟶ Y) ≃ (obj S A ⟶ Y) :=
-    (SSet.yonedaEquiv (X := (cosimplicialHom A).obj Y)).symm.trans
-      ((Iso.homCongr e (Iso.refl _)).trans (homEquiv S A Y))
-  have he : (fun f : A.obj k ⟶ Y ↦ representationMap A S e ≫ f) = E := by
-    funext f
-    simpa only [E, Equiv.trans_apply, Iso.homCongr_apply, Iso.refl_hom, Category.comp_id] using
-      representationMap_comp A S e f
-  exact he.symm ▸ E.bijective
+instance representationMap_isIso : IsIso (representationMap A S e) :=
+  FiniteTensor.representationMap_isIso A S.toSSet e
 
-abbrev representationIso : obj S A ≅ A.obj k := asIso (representationMap A S e)
+abbrev representationIso : obj S A ≅ A.obj k := FiniteTensor.representationIso A S.toSSet e
 
 lemma top_representationMap :
     representationMap A (⊤ : (SSet.stdSimplex.{v}.obj n).Subcomplex)
