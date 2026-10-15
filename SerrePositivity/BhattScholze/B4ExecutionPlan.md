@@ -3781,3 +3781,40 @@ mod pでの関係式の正則性から有限通常商に新しいpねじれが�
 これはδ閉包前の有限通常商・実δ包・導来完備化の三者を区別する作業で、
 新規ファイルが必要になれば具体的な最初の商と仮定を確定してから予定名を登録する。
 G3・G6は未受領のまま。原典の分冪包比較、raw包の実導来比較、CFF根付き拡大、一般B4は未完成。
+
+## B4-6：最初のp除算関係のp正則性工程の登録（2026-10-15）
+
+次のBS専用予定`DeltaPDivisionFirstRelationRegular.lean`で、L=RelativeFreeDeltaRing σ A、
+任意s:σ、g_s=deltaDivisionIteratedRelation D p (φ∘y) s 0を対象とする。
+Aのp正則性と、y_sのA/p上の正則性を明示する。
+実mod p像g_s=−(C y_s)^pを証明し、既存FlatRegularQuotientで係数側の正則性を移して
+L/p上のg_sの正則性を得る。共通AdicRegularQuotientを適用し、
+具体的な通常商L/span{g_s}のp正則性を証明する。(p,g_s)の実Koszul分解へも接続する。
+任意σを許すが、この最初の工程は単独の指定関係式の結果であり、
+全元族の関係商やδ閉包商のp正則性をこの結果だけから結論しない。
+A/pのNoether性・局所性・完備性は要求しない。
+一般の正則列の冪に対する既存RegularSequencePowersはNoether局所仮定を持つため、
+その有限族版を一般環へ無条件に適用しない。
+この工程はG3・G6を待たず進める。分冪比較・CFF・一般B4は未完成。
+
+## B4-6：実最初のp除算関係の正則性と新pねじれの不存在（2026-10-15）
+
+`DeltaPDivisionFirstRelationRegular.lean`で、L=RelativeFreeDeltaRing σ A、
+g_s=p*X_(s,0)−C(φ(y_s))の実mod p像が−(C y_s)^pとなることを証明した。
+Aのp正則性とy_sのA/p上の正則性から、共通FlatRegularQuotientを使って
+L/p上のg_sの正則性を供給し、共通AdicRegularQuotientによって
+実通常商L/span{g_s}のp正則性を証明した。(p,g_s)の弱正則性と実Koszul分解も供給した。
+任意σ・指定sを許す。A/pのNoether性・局所性・完備性は不要。
+5公開定理の対象2672ジョブ、pure B4監査、全体4846ジョブ成功。
+標準3公理のみ、新sorry・公理・引用なし。共有既存sorry警告は別扱い。
+この結果はδ閉包前の単独の指定関係式に関するもので、全関係商の結果とは区別する。
+
+次のBS専用予定`DeltaPDivisionSecondRelationRegular.lean`で、同じ指定sの
+最初のδ像g'_s=δ(g_s)を加える工程を扱う。
+L/(p,g_s)を既存の係数商多項式環へ移し、g'_sの像が
+X_(s,0)^p−C(δφ(y_s))というモニック冪関係になることを証明する。
+δ(p)≡1 mod pと既存のdeltaRootRelation_isSMulRegularを再利用する。
+既存二重商同型と最初の通常商のp正則性を組み合わせ、
+L/(g_s,g'_s)に新しいpねじれが生じないことを証明する。
+この第二δ関係の剰余正則性自体にはAのp正則性やy_sの正則性を要求しない。
+全δ段への移行、分冪比較、CFF根付き拡大、一般B4は未完成。
