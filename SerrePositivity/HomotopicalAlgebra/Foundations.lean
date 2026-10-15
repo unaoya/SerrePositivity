@@ -112,6 +112,8 @@ public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ArrowLi
 public import SerrePositivity.HomotopicalAlgebra.Localization.LocalBoundaryCharacterization
 public import SerrePositivity.HomotopicalAlgebra.Localization.HocolimLocalEquivalences
 public import SerrePositivity.HomotopicalAlgebra.Localization.FilteredLocalEquivalences
+public import SerrePositivity.HomotopicalAlgebra.Under.Quillen
+public import SerrePositivity.HomotopicalAlgebra.Quillen.LeftProper
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor
