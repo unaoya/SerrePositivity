@@ -1392,3 +1392,16 @@ Reedy cofibrationの保存を証明する。対角の左Quillen適合性と弱�
 具体的なinternal Homを右随伴とする通常の対角随伴も構成し、比較を追加仮定に戻さない。
 この結果にはモデル構造の入力は不要。新規30宣言・2モジュールと共有4785宣言・409モジュールの
 標準公理監査が成功。実装`5fbc9855`。matching射・Quillen条件とF1の残項目は計画§228。
+
+
+## 対角Quillen定理と実際のresolution Hom比較（2026-10-16）
+
+共有`Reedy/IndexOppositeEquivalence`と`BoundaryHom`は境界indexの圏同値と、
+反対向きlimit保存関手によるlatching/matching比較を与える。
+`Simplicial/DiagonalMatching`・`DiagonalRelativeMatching`はmatching射を境界pullback-Hom射と
+実際のarrow同型で結ぶ。`DiagonalQuillen`は既存SM7から対角のQuillen適合性を証明し、
+全bisimplicial対象のReedy cofibrancyから、任意の行ごとの弱同値が対角でも弱同値となることを示す。
+`HomotopyFunctionComplex/DiagonalMappingWeakEquivalence`はこれを§226の元のHom比較へ適用する。
+源は任意モデル圏のまま、指定関手的分解・豊穣構造・対角sourceのcofibrancy仮定は不要。
+新規90宣言・6モジュールと共有4875宣言・415モジュールの標準公理監査が成功。
+実装`a73ee69d`・`5f020cfc`、残るKan置換とF1の厳密化は計画§229。

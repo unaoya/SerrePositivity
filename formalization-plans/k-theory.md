@@ -11534,3 +11534,83 @@ ULiftされた単体射の対と、二つのULiftされた射の組を互いに�
 追加仮定なしの対角弱同値定理として閉じる。
 さらに§226の比較への適用、Kan置換、高次整合性を保つSSet値の厳密化が残る。
 任意モデル源・指定関手的分解なしのF1の契約と全体目標F→L→E→Sは継続する。
+
+
+## 229. F1進捗：対角Quillen定理と実際のresolution Hom比較の弱同値性（2026-10-16）
+
+§226〜§228で残していたbisimplicial対角弱同値定理を、追加のQuillen仮定なしで証明した。
+その結果を§226の実際のresolution Hom比較へ適用した。
+F1全体にはKan置換と高次整合性を保つSSet値の厳密化が残るため、全体目標は継続する。
+
+### 229.1 一般Reedy indexの圏同値と反対向きboundary Hom
+
+共有`Reedy/IndexOppositeEquivalence`は、一般Reedy構造について、
+反対Reedy構造のmatching indexと元のlatching indexの反対圏の圏同値を構成する。
+既存の対象集合の対応だけに留まらず、三角の射・恒等射・合成、full faithfulness、
+essential surjectivityを証明し、境界source/target関手との実際の整合性も与えた。
+
+`Reedy/BoundaryHom`は、一般の反対向き関手H:Vᵒᵖ→Wが該当するlimitを保存するとき、
+実際のlatching colimitへのHの値を、実際のmatching limitと同型にする。
+元のlatching coconeの反対をHで写し、上の圏同値でwhiskerしたconeがlimitになることを証明する。
+matching比較射がlatching比較射にHを反対向きに適用した射そのものであるという公式と、
+H間の自然変換に関する自然性も証明した。
+モデル構造・単体集合・対象/Hom宇宙の一致を一般層の入力にはしていない。
+
+### 229.2 実際の境界internal Homと相対matching射
+
+`Simplicial/DiagonalMatching`は既存の有限boundary tensorと標準単体presentationから、
+標準単体の実際のlatching colimitと境界単体を同型にする。
+その同型の後に境界包含を合成すると、実際のlatching比較射に一致する。
+
+反対向きinternal Homのlimit保存と229.1を使い、§228で具体化した右随伴のmatching対象を
+[∂Δ[n],Z]と同定する。matching射が境界への制限と一致する公式と、標的Zに関する自然性も証明した。
+`DiagonalRelativeMatching`は、この自然性から相対matchingの実際のpullback targetを
+境界包含に対する既存の`PullbackObjObj`のtargetと同型にする。
+二つの射も一致することを証明し、実際の相対matching射とpullback-Hom射のarrow同型を構成した。
+この段階にもモデル構造やSM7の追加仮定は不要である。
+
+### 229.3 Quillen適合性とbisimplicial対角弱同値定理
+
+`DiagonalQuillen`は、元のSSetモデル、cof=mono、fib=horn.rlpだけを値側の入力とする。
+既存の`SimplicialModel.simplicial_SM7`からSM7を取得し、229.2の相対matching射の同型に沿って、
+通常のfibrationおよびtrivial fibrationを相対matching条件へ移送する。
+これにより§228の具体的なinternal Hom右随伴の右Quillen性を証明した。
+実際の対角随伴から対角の左Quillen性も導く。
+
+§227の全bisimplicial対象のReedy cofibrancyとBrown補題を適用し、
+任意のbisimplicial射について、すべての行が弱同値なら実際の対角射も弱同値となる
+`diagonal_map_weakEquivalence`を証明した。
+以前の還元補題の未解決入力`IsLeftQuillen diagonal`はここで供給済みであり、
+最終定理では追加仮定ではない。bisimplicial対象のcofibrancyも入力へ戻さない。
+
+### 229.4 任意モデル源の実際のHom比較への適用
+
+`HomotopyFunctionComplex/DiagonalMappingWeakEquivalence`は§226の行ごとの比較を
+229.3へ適用する。定数対象の対角の同型、行対角と対角Homの同型、および比較射の同定を使い、
+実際の対角augmentationのHom前合成が弱同値であることを証明した。
+
+一般のReedy cofibrantなBと、その外側cosimplicial resolution qについて、fibrantなZに対する
+Hom(B,Z)→Hom(diag q,Z)という元の具体的な射が弱同値となる。
+特に、§225のlift空間と§226の作用で実際に使った外側resolutionに適用し、
+`ResolutionLiftAction.comparison`の弱同値性を証明した。
+源Cは任意のモデル圏のままで、指定関手的分解・局所可呈示性・豊穣構造・
+対角sourceのReedy cofibrancyを要求しない。別の比較射へ置き換えてもいない。
+
+### 229.5 受入検証と次の残項目
+
+- 共有入口の合同build：2603 jobs、成功。
+- `check_diagonal_weak_equivalences`：一般Reedy indexの圏同値、実際のmatching対象と
+  相対matching射の同型、追加Quillen仮定なしの任意bisimplicial射の対角弱同値、
+  任意モデル源の具体的なHom比較への適用、および元のlift作用との同時利用。
+  新規90宣言・6モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：4875宣言・415モジュール、標準公理のみ。
+- `check_diagonal_internal_hom`：30宣言・2モジュール。
+- `check_diagonal_lift_actions`：65宣言・6モジュール。
+- `check_bisimplicial_cofibrancy`：26宣言・5モジュール。
+- 上記回帰確認とstageした差分の空白検査はすべて成功。新規sorry・引用axiomなし。
+
+一般境界計算`a73ee69d`、対角Quillen定理と実際のHom比較への適用`5f020cfc`。
+次は実際の対角Homとその作用について、SSet側の関手的Kan置換と弱同値比較を接続し、
+恒等射・合成の高次整合性を保つ厳密化を完成させる。
+対角弱同値性だけでSSet値RMapの厳密な二変数関手性が自動的に得られたとは扱わない。
+F1の元の契約と全体目標F→L→E→Sは引き続き継続中。
