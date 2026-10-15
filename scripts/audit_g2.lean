@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.DerivedTensorLinear
 import SerrePositivity.HomologicalAlgebra.DerivedUnitHomologyNatural
 import SerrePositivity.HomologicalAlgebra.UnitHomologyNaturality
 import SerrePositivity.HomologicalAlgebra.DerivedUnitHomology
@@ -1133,3 +1134,23 @@ assert_no_sorry SerrePositivity.derivedUnitH0NaturalLinearEquiv_symm_apply
 #print axioms SerrePositivity.derivedUnitH0NaturalLinearEquiv
 #print axioms SerrePositivity.derivedUnitH0NaturalLinearEquiv_naturality
 #print axioms SerrePositivity.derivedUnitH0NaturalLinearEquiv_symm_apply
+
+-- G2-5b-b4: actual derived tensor preserves the existing addition and R action.
+assert_no_sorry SerrePositivity.derivedTensorHom_models
+assert_no_sorry SerrePositivity.derivedTensorHom_add_left
+assert_no_sorry SerrePositivity.derivedTensorHom_add_right
+assert_no_sorry SerrePositivity.boundedAboveDerivedTensorLeft_additive
+assert_no_sorry SerrePositivity.boundedAboveDerivedTensorRight_additive
+assert_no_sorry SerrePositivity.boundedAboveDerivedMonoidalPreadditive
+assert_no_sorry SerrePositivity.derivedTensorHom_smul_left
+assert_no_sorry SerrePositivity.derivedTensorHom_smul_right
+assert_no_sorry SerrePositivity.boundedAboveDerivedMonoidalLinear
+#print axioms SerrePositivity.boundedAboveDerivedMonoidalPreadditive
+#print axioms SerrePositivity.boundedAboveDerivedMonoidalLinear
+
+-- The monoidal linear structures synthesize for an arbitrary coefficient ring.
+example (R : Type*) [CommRing R] :
+    CategoryTheory.MonoidalPreadditive (DerivedCategory.Minus (ModuleCat R)) := inferInstance
+
+example (R : Type*) [CommRing R] :
+    CategoryTheory.MonoidalLinear R (DerivedCategory.Minus (ModuleCat R)) := inferInstance
