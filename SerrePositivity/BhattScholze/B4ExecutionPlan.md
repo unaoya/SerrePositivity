@@ -4575,3 +4575,41 @@ B4全体監査は共有LocalizationTowerComparison、PerfectPrismQuotientPerfect
 BoundedAboveTensorModelsの.olean欠落で一時停止した記録がある。
 全体ビルド・共有依存の再生成は同じ実行を継続中であり、新規宣言の監査成功と区別する。
 通常テンソルの同型を、実導来テンソルの離散性・原典の導来δpushout比較・CFFと見なさない。
+
+### 次工程の登録：実通常テンソル入力から実導来完備化H⁰への比較
+
+BS専用`DeltaPDivisionSourceTensorCompletion.lean`で、正則一元入力の仮定の下、
+R=A⊗[P]Lと既存旧ねじれ商Uの実標準環同型を用い、
+実PDCompletionH0 R p (p:R)と既存DerivedDeltaDivisionCompletion D p (fun _↦φ(y))の
+環同型を、標準単位と基底Aの射の図式付きで構成する。
+既存existsUnique_pdCompletionRingHomと各実H⁰の自己導来完備性を使って両方向を延長し、
+一意性で逆写像を示す。U側の分母はdeltaDivisionTorsionMap D p a pであることを保持し、
+map_natCastの等式だけで対応する完備性入力を移す。
+古典的完備化への無条件置換や、PDCompletionの新しい定義は行わない。
+これは同型な通常入力環の実導来完備化H⁰比較であり、原典の導来δpushoutやG7の解消ではない。
+G7待ちの全源Tor移送だけを保留し、この標準入力比較は独立に進める。
+
+## B4-6：実通常テンソルのp正則性と旧ねじれ商への標準比較（検証中、2026-10-15）
+
+`DeltaPDivisionSourceTensorRegular.lean`で、既存raw包のp正則性を実通常テンソルの標準環同型に沿って移し、
+既存deltaPDivisionRawTorsionEquivと合成して実通常テンソル≃旧ねじれ除去商を構成した。
+純テンソルの式と、元のAからの基底標準射を保つ式も実装した。
+Aのp正則性・yのA/p正則性・単元δp・自由δ環ghost単射を明示する。
+G7、p完備性や新しいTor・完備化定義は用いない。
+
+直接Lean型検査と通常対象3833ジョブは成功した。
+ただし、その後の監査は共有BoundedAboveTensorFunctor、BoundedAboveDerivedAssociator等の
+.olean再生成と競合して停止したため、この段階では4宣言の依存監査完了とは数えていない。
+通常対象ビルドと新規4宣言の監査を連続する同じ実行で再確認中。
+全体ビルド/tmp/bs-sourcetensor-full.logは終端を確認し、共有KoszulCubeCoordinatesで
+共有PerfectComplex/TensorSupport.oleanの欠落により失敗した。
+この記録は直前の全体4968ジョブ成功と区別する。共有ファイルは変更していない。
+
+再検証の連続実行は終端失敗を確認した。共有BoundedAboveDerivedAssociator.lean:25で
+cochainTensor_projective_Xが未解決であり、24行のProjectiveゴールが残った。
+ログ/tmp/bs-sourcetensorregular-build.log。したがって、新規4宣言の監査は未完了として保持する。
+DeltaPDivisionSourceTensorRegular.leanと対応するB4監査の変更は、この時点ではコミットしない。
+次回の検証は同じ共有依存の状態を確認してから行い、タイムアウトを理由に既存実行を再起動しない。
+現在の対象ビルド実行・監査実行・全体ビルド実行はいずれも終端を確認済み。
+G7を待つ工程と、この一時的な共有ビルド不整合による検証待ちは区別する。
+実通常入力のH⁰完備化比較はG7から独立しており、依存の確認後に進める。
