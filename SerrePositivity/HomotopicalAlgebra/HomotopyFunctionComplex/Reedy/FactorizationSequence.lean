@@ -74,6 +74,18 @@ def next (hsurj : Function.Surjective r.deg) (n : ℕ) :
   intro a
   exact atObject hinj factor j a
 
+
+lemma next_atObject (hsurj : Function.Surjective r.deg) (j : J)
+    (a : FactorBelow r τ (r.deg j)) :
+    next r τ hinj factor hsurj (r.deg j) a = atObject hinj factor j a := by
+  unfold next
+  generalize Classical.indefiniteDescription (fun k : J ↦ r.deg k = r.deg j)
+    (hsurj (r.deg j)) = s
+  rcases s with ⟨k, hk⟩
+  have hkj : k = j := hinj hk
+  subst k
+  rfl
+
 end FactorSuccessor
 
 namespace FactorizationSequence
@@ -92,6 +104,12 @@ def stage : (n : ℕ) → FactorBelow r τ n
       hi := trivial
       hp := trivial }
   | n + 1 => (FactorSuccessor.next r τ hinj factor hsurj n (stage n)).factor
+
+
+lemma stage_succ_atObject (j : J) :
+    stage r τ hinj hsurj factor (r.deg j + 1) =
+      (FactorSuccessor.atObject hinj factor j (stage r τ hinj hsurj factor (r.deg j))).factor := by
+  rw [stage, FactorSuccessor.next_atObject]
 
 abbrev diagramTower : DiagramTower r C where
   stage n := (stage r τ hinj hsurj factor n).Z
