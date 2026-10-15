@@ -1,0 +1,11 @@
+import SerrePositivity.PerfectComplex.TensorResolutionLength
+import SerrePositivity.PerfectComplex.QuotientLength
+import SerrePositivity.LengthAlgebra.RootTowerLength.Defs
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.TensorRes.len_tensor_pi_le
+assert_no_sorry SerrePositivity.len_tensorProduct_le_length_mul
+assert_no_sorry SerrePositivity.Section2.subsingleton_tensorProduct_of_right
+#print axioms SerrePositivity.TensorRes.len_tensor_pi_le
+#print axioms SerrePositivity.len_tensorProduct_le_length_mul
+#print axioms SerrePositivity.Section2.subsingleton_tensorProduct_of_right

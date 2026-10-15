@@ -123,12 +123,7 @@ lemma towerLengthFun_congr {M M' : Type u} [AddCommGroup M] [Module (Tower A t p
 /-- 一方が零加群なら、テンソル積も零加群。 -/
 lemma subsingleton_tensorProduct_of_right {R M N : Type*} [CommRing R] [AddCommGroup M]
     [Module R M] [AddCommGroup N] [Module R N] [Subsingleton N] :
-    Subsingleton (M ⊗[R] N) := by
-  refine ⟨fun x y ↦ ?_⟩
-  have h0 : ∀ z : M ⊗[R] N, z = 0 := fun z ↦
-    TensorProduct.inductionOn z (fun c m ↦ by rw [Subsingleton.elim m 0, TensorProduct.tmul_zero])
-      (fun x y hx hy ↦ by rw [hx, hy, add_zero])
-  rw [h0 x, h0 y]
+    Subsingleton (M ⊗[R] N) := inferInstance
 
 /-- 零加群の `λ**` は `0`：段 `0`、`V = 0` で `ℓ(V)/1 = 0`。 -/
 lemma presentedLength_eq_zero_of_subsingleton (M : Type u) [AddCommGroup M]

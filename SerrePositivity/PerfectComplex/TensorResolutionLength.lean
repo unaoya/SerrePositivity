@@ -89,13 +89,7 @@ lemma len_prod (X Y : Type u) [AddCommGroup X] [Module S X] [AddCommGroup Y] [Mo
 lemma len_tensor_pi_le (K : Type u) [AddCommGroup K] [Module S K] (hK : IsPowTorsion J K) :
     ∀ n : ℕ, μ.len (TensorProduct S K (Fin n → S)) ≤ (n : ℝ≥0∞) * μ.len K
   | 0 => by
-    have : Subsingleton (TensorProduct S K (Fin 0 → S)) := by
-      refine ⟨fun x y ↦ ?_⟩
-      have h0 : ∀ z : TensorProduct S K (Fin 0 → S), z = 0 := fun z ↦
-        TensorProduct.inductionOn z
-          (fun c m ↦ by rw [Subsingleton.elim m 0, TensorProduct.tmul_zero])
-          (fun x y hx hy ↦ by rw [hx, hy, add_zero])
-      rw [h0 x, h0 y]
+    have : Subsingleton (TensorProduct S K (Fin 0 → S)) := inferInstance
     rw [μ.len_eq_zero_of_subsingleton]
     exact zero_le
   | n + 1 => by

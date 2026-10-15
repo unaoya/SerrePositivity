@@ -130,13 +130,7 @@ theorem len_tensorProduct_le_length_mul (M : Type u) [AddCommGroup M] [Module D 
   induction hM with
   | of_subsingleton =>
     rename_i M _ _ _
-    have : Subsingleton (C ⊗[D] M) := by
-      refine ⟨fun x y ↦ ?_⟩
-      have h0 : ∀ z : C ⊗[D] M, z = 0 := by
-        intro z
-        refine TensorProduct.inductionOn z (fun c m ↦ ?_) (fun x y hx hy ↦ by rw [hx, hy, add_zero])
-        rw [Subsingleton.elim m 0, TensorProduct.tmul_zero]
-      rw [h0 x, h0 y]
+    have : Subsingleton (C ⊗[D] M) := inferInstance
     rw [lam.len_eq_zero_of_subsingleton]
     exact zero_le
   | @of_simple_quotient M _ _ N _ hN ih =>
