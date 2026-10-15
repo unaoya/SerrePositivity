@@ -2470,3 +2470,19 @@ Checks.ConeCompositionDesc・StageSix・既存Spectra.StageTwoの同時ビルド
 Checksの直接実行で主要13宣言を監査し、標準公理のみ。累計1081宣言。
 U10全受入は未完。逆順の合成に対する全dg自然な次数−1の収縮と、K(D)での同型を次に完成させる。
 三角形shift閉性・Pretriangulatedは引き続きカーネル検査の整理を継続している。
+
+
+### 13.78 U10o4：合成cone比較の全dg自然な収縮とK(D)同型
+
+`Module/ConeCompositionHomotopy.lean`は、coneの二つの左包含・fst(f≫g)・snd(χ)を
+通常順の斉次合成で結び、全次数Hom内の次数−1の要素を構成する。
+その評価は§13.74の既存複体の収縮cochainと一致し、微分が
+逆方向≫順方向のcycleと恒等射のcycleの差になることを主Hom内で証明した。
+`moduleConeCompInvHomHomotopy`は全dg自然な収縮であり、各対象だけで選んだ収縮ではない。
+`moduleConeCompHomotopyIso`によりcone(g)とcone(cone(f)→cone(f≫g))がK(D)で同型となる。
+
+Checks.ConeCompositionHomotopy・StageSix・既存Spectra.StageTwoの同時ビルドは成功（2524 jobs）。
+Checksの直接実行で主要7宣言を監査し、標準公理のみ。累計1088宣言。
+U10全受入は未完。次は二つの三角形射の可換式と合成cone三角形を接続し、
+このK(D)同型からそのdistinguished性と八面体公理を証明する。
+逆回転閉性・Pretriangulatedの受入検証も引き続き必要である。
