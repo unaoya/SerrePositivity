@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.ArtinReesHomology
 import SerrePositivity.CLMST.FiniteStageKoszulAnnihilator
 import SerrePositivity.HomologicalAlgebra.FiniteParameterKoszulAnnihilator
 import SerrePositivity.CommutativeAlgebra.ParameterRadicalImage
@@ -673,3 +674,12 @@ assert_no_sorry SerrePositivity.CLMST.finiteStageKoszul_positive_annihilator
 
 #print axioms SerrePositivity.finiteParameterKoszul_positive_annihilator
 #print axioms SerrePositivity.CLMST.finiteStageKoszul_positive_annihilator
+
+-- KL6 ring-change preparation: Artin--Rees controls actual homology maps.
+assert_no_sorry SerrePositivity.exists_comap_pow_smul_top_le_of_injective
+assert_no_sorry SerrePositivity.exists_pow_deep_image_killed
+assert_no_sorry SerrePositivity.exists_pow_homologyMap_eq_zero_of_deep_image
+assert_no_sorry SerrePositivity.powerKoszul_homologyMap_eq_zero_of_deep_image
+
+#print axioms SerrePositivity.exists_pow_homologyMap_eq_zero_of_deep_image
+#print axioms SerrePositivity.powerKoszul_homologyMap_eq_zero_of_deep_image
