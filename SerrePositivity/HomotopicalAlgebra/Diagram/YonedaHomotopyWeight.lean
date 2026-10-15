@@ -46,6 +46,16 @@ lemma evaluation_isCofibrant (X : C) [IsCofibrant X] (l : Kᵒᵖ) :
     Quillen.isCofibrant_obj (evaluationLeftAdjoint C l.unop) X
   exact isCofibrant_of_cofibration (YonedaWeights.evaluationIso K X l).inv
 
+lemma value_isCofibrant (X : C) [IsCofibrant X] (k : K) :
+    let := Projective.modelCategory Kᵒᵖ I J
+    IsCofibrant ((YonedaWeights.family K X).obj k) := by
+  let := Projective.modelCategory Kᵒᵖ I J
+  have := Projective.free_isLeftQuillen Kᵒᵖ I J (Opposite.op k)
+  have := (evaluationAdjunctionRight C (Opposite.op k)).isLeftAdjoint
+  have : IsCofibrant ((evaluationLeftAdjoint C (Opposite.op k)).obj X) :=
+    Quillen.isCofibrant_obj (evaluationLeftAdjoint C (Opposite.op k)) X
+  exact isCofibrant_of_cofibration (YonedaWeights.freeWeightIso K X k).inv
+
 lemma weight_isCofibrant (X : C) :
     let := Projective.modelCategory Kᵒᵖ I J
     IsCofibrant (weight K I J X) := by
