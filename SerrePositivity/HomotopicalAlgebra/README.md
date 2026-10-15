@@ -262,6 +262,17 @@ R3でSmith認識を完成させる。今回R0だけからモデル構造・局�
 SOAから小ささを得る既存APIとの循環を避けるため、後者はinstance登録しない。
 検証は`scripts/check_smith_smallness.lean`と共有入口の公理監査で行う。
 
+## Smith R2：生成自明cofibration候補の構成（2026-10-15）
+
+`Smith/GeneratingTrivialCofibrations.lean`の`refineSquare`は、生成射`i`から
+弱同値`f`へのsquareをpushoutとI分解によって改良する。中間射は`I.rlp.llp ∩ W`
+に属し、もとのsquareへの分解を保つ。R0の小さいsolution族すべてに適用して
+`generatingTrivialCofibrations`を構成し、小ささ・共通部分への包含・全squareの
+分解を証明した。入力は`I.rlp ≤ W`と2-out-of-3、IのSOA、pushout、R0の
+accessibility条件であり、Jやモデル構造を入力に要求しない。
+`scripts/check_smith_generators.lean`は局所可呈示性からIと構成済みJのSOAを
+導く利用例と、全40宣言の標準公理監査を含む。R3の閉性・認識は別の受入項目。
+
 `check_smith_solution_set`はモデル構造のない抽象圏で、独立した宇宙、CommSqの左右成分、
 小さい射族/射クラス全体の分解、空の射族、General/StageTwoとの併用を検証する。
 同スクリプトはこのモジュールの全宣言を標準公理のみで監査する。
