@@ -1,12 +1,17 @@
 import SerrePositivity.HomotopicalAlgebra.Foundations
 import Lean.Util.CollectAxioms
 
-universe w u
+universe w u t
 noncomputable section
 open CategoryTheory CategoryTheory.Limits
 open SerrePositivity.Smith SerrePositivity.Smith.AccessibleCellAttachment
 
-variable {C : Type u} [Category.{w} C] {ι : Type w}
+variable {C : Type u} [Category.{w} C] {ι : Type t} [Small.{w} ι]
+
+local instance [HasColimitsOfSize.{w, w} C] (a : ι → Arrow C) :
+    ∀ {X Y : C} (f : X ⟶ Y), HasColimitsOfShape
+      (Discrete (SmallObject.FunctorObjIndex (fun i ↦ (a i).hom) f)) C :=
+  fun f ↦ AccessibleSquares.hasSquareCoproducts a f
 
 -- Accessibility is derived for Mathlib's actual successor, not postulated.
 example [HasColimitsOfSize.{w, w} C] (a : ι → Arrow C)

@@ -1,12 +1,14 @@
 import SerrePositivity.HomotopicalAlgebra.Foundations
 import Lean.Util.CollectAxioms
 
-universe w u
+universe w u t
 noncomputable section
 open CategoryTheory CategoryTheory.Limits
 open SerrePositivity.Smith SerrePositivity.Smith.AccessibleSquares
 
-variable {C : Type u} [Category.{w} C] {ι : Type w}
+variable {C : Type u} [Category.{w} C] {ι : Type t} [Small.{w} ι]
+
+attribute [local instance] AccessibleSquares.hasSquareCoproducts
 
 example [HasCoproducts.{w} C] (A : ι → C) :
     DependentCopower.realization A ⊣ DependentCopower.homFamily A :=

@@ -379,3 +379,7 @@ pushoutによるセル付加段階、小対象論法全体への接続、A1は�
 accessibilityは仮定しない。`scripts/check_accessible_cell_attachment.lean`は
 局所可呈示性から共通κを得て適用し、全宣言の公理も監査する。
 小さい生成射クラスへの宇宙の一般化と超限反復の統合、A1は引き続き残る。
+
+セル添字の宇宙は生成射の宇宙と独立にでき、`Small.{w} ι`から必要な大きい添字の
+coproductを導出する。生成射クラスの`toSet`が大きい型に入る場合にも対応する。
+`check_accessible_squares`と`check_accessible_cell_attachment`はこの独立した宇宙で検証する。

@@ -3,6 +3,7 @@ module
 public import Mathlib.CategoryTheory.Presentable.Basic
 public import Mathlib.CategoryTheory.Adjunction.Limits
 public import Mathlib.CategoryTheory.Limits.Shapes.Products
+public import Mathlib.CategoryTheory.Limits.EssentiallySmall
 
 /-! # Realization of a family of sets by dependent coproducts
 
@@ -12,15 +13,20 @@ The hom universe is normalized to the small-object universe in this core API.
 -/
 
 @[expose] public section
-universe w u
+universe w u t
 noncomputable section
 open CategoryTheory CategoryTheory.Limits
 
 namespace SerrePositivity.Smith.DependentCopower
 variable {C : Type u} [Category.{w} C] [HasCoproducts.{w} C]
-  {ι : Type w} (A : ι → C)
+  {ι : Type t} [Small.{w} ι] (A : ι → C)
 
 abbrev index (P : Discrete ι ⥤ Type w) := Σ i, P.obj ⟨i⟩
+
+lemma hasIndexCoproducts (P : Discrete ι ⥤ Type w) : HasCoproductsOfShape (index P) C :=
+  hasCoproductsOfShape_of_small.{w} C _
+
+attribute [local instance] hasIndexCoproducts
 
 def realization : (Discrete ι ⥤ Type w) ⥤ C where
   obj P := ∐ (fun x : index P ↦ A x.1)

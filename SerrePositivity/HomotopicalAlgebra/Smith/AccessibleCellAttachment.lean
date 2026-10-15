@@ -12,13 +12,19 @@ of its three vertices. No accessibility assumption on the successor is used.
 -/
 
 @[expose] public section
-universe w u
+universe w u t
 noncomputable section
 open CategoryTheory CategoryTheory.Limits
 
 namespace SerrePositivity.Smith.AccessibleCellAttachment
 variable {C : Type u} [Category.{w} C] [HasColimitsOfSize.{w, w} C]
-  {ι : Type w} (a : ι → Arrow C)
+  {ι : Type t} [Small.{w} ι] (a : ι → Arrow C)
+
+attribute [local instance] AccessibleSquares.hasSquareCoproducts
+
+local instance : ∀ {X Y : C} (f : X ⟶ Y),
+    HasColimitsOfShape (Discrete (SmallObject.FunctorObjIndex (fun i ↦ (a i).hom) f)) C :=
+  fun f ↦ AccessibleSquares.hasSquareCoproducts a f
 
 abbrev source := AccessibleSquares.rawCells a (fun i ↦ (a i).left)
 abbrev target := AccessibleSquares.rawCells a (fun i ↦ (a i).right)

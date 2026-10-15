@@ -13,12 +13,12 @@ step, before taking its pushout.
 -/
 
 @[expose] public section
-universe w u
+universe w u t
 noncomputable section
 open CategoryTheory CategoryTheory.Limits Opposite
 
 namespace SerrePositivity.Smith.AccessibleSquares
-variable {C : Type u} [Category.{w} C] {ι : Type w} (a : ι → Arrow C)
+variable {C : Type u} [Category.{w} C] {ι : Type t} [Small.{w} ι] (a : ι → Arrow C)
 
 abbrev squareFamily : Arrow C ⥤ Discrete ι ⥤ Type w :=
   (Discrete.functor (fun i ↦ coyoneda.obj (op (a i)))).flip
@@ -31,6 +31,7 @@ abbrev indexEquiv (f : Arrow C) : DependentCopower.index ((squareFamily a).obj f
   left_inv _x := rfl
   right_inv _x := rfl
 
+omit [Small.{w} ι] in
 lemma squareFamily_isCardinalAccessible (κ : Cardinal.{w}) [Fact κ.IsRegular]
     [∀ i, IsCardinalPresentable (a i) κ] : (squareFamily a).IsCardinalAccessible κ := by
   have : ∀ i, (squareFamily a ⋙ (evaluation (Discrete ι) (Type w)).obj i).IsCardinalAccessible κ :=
@@ -39,11 +40,19 @@ lemma squareFamily_isCardinalAccessible (κ : Cardinal.{w}) [Fact κ.IsRegular]
 
 variable [HasColimitsOfSize.{w, w} C]
 
+lemma hasSquareCoproducts {X Y : C} (f : X ⟶ Y) :
+    HasColimitsOfShape (Discrete (SmallObject.FunctorObjIndex
+      (fun i ↦ (a i).hom) f)) C :=
+  hasCoproductsOfShape_of_small.{w} C _
+
+attribute [local instance] hasSquareCoproducts DependentCopower.hasIndexCoproducts
+
 lemma arrow_isCardinalPresentable (κ : Cardinal.{w}) [Fact κ.IsRegular]
     (f : Arrow C) [IsCardinalPresentable f.left κ] [IsCardinalPresentable f.right κ] :
     IsCardinalPresentable f κ :=
   Comma.isCardinalPresentable_mk (F₁ := 𝟭 C) (F₂ := 𝟭 C) f.hom
 
+omit [Small.{w} ι] in
 lemma squareFamily_isCardinalAccessible_of_endpoints (κ : Cardinal.{w}) [Fact κ.IsRegular]
     [∀ i, IsCardinalPresentable (a i).left κ]
     [∀ i, IsCardinalPresentable (a i).right κ] :
