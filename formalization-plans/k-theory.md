@@ -7088,3 +7088,87 @@ F0〜F4全体の依頼を維持している。今回、§169の一段構成を�
 objectwise Wと相対trivial条件の同値、Reedyモデル公理・resolutionがF0の残項目であり、
 F1のRMap・不変性・fibrancy・π₀比較、F2の選択比較、F3の共通基数、F4のfiltered colimitと
 homotopy (co)limit比較も引き続きすべて依頼範囲である。
+
+## 171. F0進捗：全体の相対Reedyクラスと弱因子分解系（2026-10-15）
+
+F0〜F4全体の依頼を維持している。今回、§170の全体の因子分解に実際の相対Reedyクラスの
+所属を証明し、源の弱因子分解系を図式圏へ移した。§170.3の`⊤ ⊤`だけという制限は、
+新しい入口`FactorizationSequence.reedyFactorizationData`では解消している。
+Reedyモデル構造・関手的resolutionやF1〜F4の完成とは判定しない。
+
+### 171.1 相対写像の関手性とクラスの閉性
+
+共有の`CategoryTheory/RelativeArrow`は、任意の自然変換A→Bから相対押し出し・相対
+引き戻しの射を作り、可換正方形にも作用する実際の射圏の関手を構成する。恒等射・
+合成を保つ。コミット：`624567c`。
+
+`Reedy/RelativeArrow`は、既存の`relativeLatchingMap`と`relativeMatchingMap`そのものを
+使う射圏の関手を構成する。相対射が各次数で指定クラスに属するという`reedyLeft`と
+`reedyRight`を定義し、源のクラスが同型・retractで閉じるならこれらも閉じることを証明した。
+境界写像を別の同値な名前で置き換えてクラスの所属を仮定してはいない。
+
+### 171.2 境界図式から通常の次数制限への自然な比較
+
+`Reedy/BoundaryDiagram`は、下位図式と追加対象・入射・出射のデータを圏にまとめる。
+その射は、下位の自然変換とgluing則を満たす追加対象上の射である。
+`BoundaryDiagramIso`は下位と追加対象での同型から、この圏の実際の同型を構成する。
+逆射のgluing則も証明した。
+
+`BoundaryReconstruction`は境界図式から実際の追加図式を作り、そこから境界図式を
+回復する合成が恒等関手と自然同型になることを示す。
+`BoundaryDegree`は、次数が対象を区別する場合、通常の閉じた次数制限を経由しても
+同じ自然な回復が成立することを証明する。従って対象ごとの同型に留まらず、射と
+可換正方形を含む比較として使える。
+
+`FactorizationArrowComparison`は、一段の通常の次数制限上の左右の射を、源で選んだ
+相対境界射の因子分解へ射圏の同型で比較する。相対射に関する二つのクラスの所属が
+通常の次数制限上でも保たれることを証明した。以上のコミット：`a92ed2f`。
+
+### 171.3 全次数の両射へのクラスの移送
+
+`FactorizationRestrictionArrow`は全体の左右の射と各有限次数の射の比較を、射圏の同型に
+まとめる。`FactorizationSequence`には、次数nで選んだ対象がその次数の指定対象と一致する
+ことと、実際の次段の因子分解が指定対象での一段構成に等しいことを証明した。
+
+`FactorizationClasses`は、各対象jで全体の制限同型と171.2の同型を合成し、全体の相対
+latching/matching射に源のクラスの所属を移す。新しい入口の結論は、元の自然変換τの
+`MapFactorizationData (reedyLeft r left) (reedyRight r right) τ`である。
+実際の中間図式と左右の自然変換は§170で構成したものを使い、その`hi`・`hp`を証明で
+補強している。クラスに属する別の図式を入力に要求しない。コミット：`64f0494`。
+
+### 171.4 弱因子分解系の成立と適用範囲
+
+`Reedy/WeakFactorizationSystem`は、源の弱因子分解系(left,right)から
+(reedyLeft r left,reedyRight r right)の弱因子分解系を証明する。
+全次数の実際の因子分解、retract閉性、既存の全体の持ち上げ定理を使い、左右のクラスが
+それぞれ相手の持ち上げクラスそのものであることまで証明した。
+
+次数関数が対象と自然数の全単射になる一般のReedy圏に適用でき、必要なlatching/matching
+の極限・余極限と押し出し・引き戻しを要求する。ΔとΔopでは任意モデル源Cの有限極限・
+有限余極限と通常の因子分解公理だけで適用できる。源の関手的因子分解、combinatorial性、
+追加の局所可呈示性はこの弱因子分解系の入力にしていない。
+
+`check_reedy_relative_arrows`は、ΔとΔopのそれぞれで、源の(cofibration,trivial fibration)と
+(trivial cofibration,fibration)の両組を検証する。`⊤`ではない実際の相対Reedyクラス付きの
+因子分解も、元の自然変換から直接構成する利用例で確認した。コミット：`67cfd32`。
+
+### 171.5 検証と残る受入条件
+
+- 共有入口のビルド1632 jobsが成功。
+- `check_reedy_relative_arrows`：追加十モジュール173宣言、標準公理のみ。
+- `check_reedy_diagram_tower`：九モジュール199宣言、`check_reedy_extension`：十モジュール
+  232宣言の利用例・公理監査も成功。
+- 共有基盤1691宣言・104モジュールの公理監査は標準公理のみ。
+- `check_weak_equivalences_accessible`、`check_homotopical_foundations`、
+  `check_spectra_stage2`の回帰検証も成功。新規sorry・引用axiomはない。
+
+次は、源で選んだ関手的因子分解データから、入力の可換正方形に対する各段の中間射を
+構成する。制限同型との可換性、恒等射・合成の保存を証明し、全体の関手的因子分解へ
+貼り合わせる。171.1・171.2の射圏の関手と自然同型をこの構成にも用いる。
+
+また、relative trivial cofibrationという条件が「Reedy cofibrationかつobjectwise W」、
+relative trivial fibrationという条件が「Reedy fibrationかつobjectwise W」に一致することを
+証明する。この同値はまだ未証明であり、上の二つの弱因子分解系だけからReedyモデル
+構造の完成を主張しない。モデル公理と必要なresolutionを証明してF0を完了する。
+F1のRMap・不変性・fibrancy・π₀比較、F2の選択比較、F3の共通基数、F4のfiltered colimitと
+homotopy (co)limit比較も引き続きすべて依頼範囲である。

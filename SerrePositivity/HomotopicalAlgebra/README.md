@@ -611,3 +611,30 @@ latching/matching射の自然性を構成する。`Reedy/ExtensionOfFunctor`は�
 `check_reedy_diagram_tower`の九モジュール全188宣言、共有基盤1507宣言・94モジュールは
 標準公理のみで監査成功。共有入口のビルド1622 jobsと、従来の追加図式・accessibility・
 共有基盤・スペクトルの回帰検証も成功した。F0の残りとF1〜F4は引き続き未完了である。
+
+
+## F0：全体の相対Reedyクラスと弱因子分解系（途中、2026-10-15）
+
+共有の`CategoryTheory/RelativeArrow`は、自然変換から作る相対押し出し・引き戻しの射を
+射圏の関手にする。`Reedy/RelativeArrow`は既存の相対latching/matching写像にこれを適用し、
+`reedyLeft`・`reedyRight`の同型・retract閉性を証明する。
+`BoundaryDiagram`・`BoundaryDiagramIso`は下位図式と追加対象のgluingデータを圏にまとめ、
+`BoundaryReconstruction`・`BoundaryDegree`は実際の追加図式・通常の次数制限を経由する
+回復が恒等関手と自然同型になることを証明する。比較は射と可換正方形も含む。
+
+`FactorizationArrowComparison`は一段構成を源の相対境界射の因子分解と射圏で比較し、
+`FactorizationRestrictionArrow`は各段と全体の因子分解を射圏の同型で比較する。
+`FactorizationClasses`はこれらを合成し、全体の実際の両射が相対Reedyクラスに属することを
+証明する。新しい`FactorizationSequence.reedyFactorizationData`は前節の`⊤ ⊤`の出力を
+`MapFactorizationData (reedyLeft r left) (reedyRight r right) τ`へ強めた入口である。
+
+`WeakFactorizationSystem`は、次数関数が対象と自然数の全単射になる一般のReedy圏で、
+源の弱因子分解系を相対Reedyクラスの弱因子分解系に移す。全次数の実際の因子分解、
+retract閉性、全体の持ち上げ定理から、左右が相手の持ち上げクラスそのものであることを
+証明した。Δ・Δopの任意モデル源Cで(cof,trivial fib)・(trivial cof,fib)の四つの利用例が通り、
+源の通常のモデル公理以外に関手的分解やcombinatorial性は要求しない。
+
+追加十モジュール173宣言、共有基盤1691宣言・104モジュールは標準公理のみで監査成功。
+共有入口のビルド1632 jobs、既存の図式反復・追加図式・accessibility・共有基盤・
+スペクトルの回帰検証も成功した。objectwise Wとrelative trivial条件の同値、入力の
+正方形に対する関手的因子分解、モデル公理・resolutionとF1〜F4は引き続き残る。
