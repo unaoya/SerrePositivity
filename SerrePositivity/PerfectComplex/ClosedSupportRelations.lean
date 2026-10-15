@@ -47,6 +47,22 @@ variable (Z : TopologicalSpace.Closeds (PrimeSpectrum R))
   (hp : strictlyPerfectComplex R P) (hq : strictlyPerfectComplex R Q)
   (hsP : HasHomologySupportOn Z P) (hsQ : HasHomologySupportOn Z Q)
 
+/-- The cone of a supported perfect short exact sequence represents its third term. -/
+def supportedPerfectOnConeIsoOfShortExact
+    (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ)) (hS : S.ShortExact)
+    (h₁ : strictlyPerfectComplex R S.X₁) (h₂ : strictlyPerfectComplex R S.X₂)
+    (h₃ : strictlyPerfectComplex R S.X₃)
+    (s₁ : HasHomologySupportOn Z S.X₁) (s₂ : HasHomologySupportOn Z S.X₂)
+    (s₃ : HasHomologySupportOn Z S.X₃) :
+    supportedPerfectOnObj Z (CochainComplex.mappingCone S.f)
+      (strictlyPerfectComplex_mappingCone R S.f h₁ h₂) (s₁.mappingCone S.f s₂) ≅
+        supportedPerfectOnObj Z S.X₃ h₃ s₃ :=
+  let e := Classical.choose ((strictlyPerfectComplex_quasiIso_iff
+    (strictlyPerfectComplex_mappingCone R S.f h₁ h₂) h₃
+    (CochainComplex.mappingCone.descShortComplex S)).mp
+      (CochainComplex.mappingCone.quasiIso_descShortComplex hS))
+  ObjectProperty.isoMk _ (ObjectProperty.isoMk _ (HomotopyCategory.isoOfHomotopyEquiv e))
+
 /-- The concrete cone triangle lifted to the closed-support category. -/
 def supportedPerfectOnConeTriangle (f : P ⟶ Q) : Triangle (SupportedPerfectHomotopyOn Z) :=
   Triangle.mk
@@ -338,21 +354,13 @@ lemma closedSupport_shortExactAdditive_iff_triangleAdditive
   constructor
   · exact fun h ↦ h.triangle hi
   · intro ht S hS h₁ h₂ h₃ s₁ s₂ s₃
-    have hqiso := CochainComplex.mappingCone.quasiIso_descShortComplex hS
-    obtain ⟨e, he⟩ := (strictlyPerfectComplex_quasiIso_iff
-      (strictlyPerfectComplex_mappingCone R S.f h₁ h₂) h₃
-      (CochainComplex.mappingCone.descShortComplex S)).mp hqiso
     have h := ht (supportedPerfectOnConeTriangle Z S.X₁ S.X₂ h₁ h₂ s₁ s₂ S.f)
       (supportedPerfectOnConeTriangle_distinguished Z S.X₁ S.X₂ h₁ h₂ s₁ s₂ S.f)
     change χ (supportedPerfectOnObj Z S.X₂ h₂ s₂) =
       χ (supportedPerfectOnObj Z S.X₁ h₁ s₁) +
       χ (supportedPerfectOnObj Z (CochainComplex.mappingCone S.f)
         (strictlyPerfectComplex_mappingCone R S.f h₁ h₂) (s₁.mappingCone S.f s₂)) at h
-    rw [hi (ObjectProperty.isoMk _ (ObjectProperty.isoMk _
-      (HomotopyCategory.isoOfHomotopyEquiv e)) :
-      supportedPerfectOnObj Z (CochainComplex.mappingCone S.f)
-        (strictlyPerfectComplex_mappingCone R S.f h₁ h₂) (s₁.mappingCone S.f s₂) ≅
-      supportedPerfectOnObj Z S.X₃ h₃ s₃)] at h
+    rw [hi (supportedPerfectOnConeIsoOfShortExact Z S hS h₁ h₂ h₃ s₁ s₂ s₃)] at h
     exact h
 
 end SerrePositivity

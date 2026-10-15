@@ -25,15 +25,7 @@ lemma closedSupport_triangleAdditive_of_cone
       χ T.obj₂ = χ T.obj₁ + χ T.obj₃ := by
   have hshort : ClosedSupportShortExactAdditive Z χ := by
     intro S hS h₁ h₂ h₃ s₁ s₂ s₃
-    have hqiso := CochainComplex.mappingCone.quasiIso_descShortComplex hS
-    obtain ⟨e, _⟩ := (strictlyPerfectComplex_quasiIso_iff
-      (strictlyPerfectComplex_mappingCone R S.f h₁ h₂) h₃
-      (CochainComplex.mappingCone.descShortComplex S)).mp hqiso
-    have he := hi (ObjectProperty.isoMk _ (ObjectProperty.isoMk _
-      (HomotopyCategory.isoOfHomotopyEquiv e)) :
-      supportedPerfectOnObj Z (CochainComplex.mappingCone S.f)
-        (strictlyPerfectComplex_mappingCone R S.f h₁ h₂) (s₁.mappingCone S.f s₂) ≅
-      supportedPerfectOnObj Z S.X₃ h₃ s₃)
+    have he := hi (supportedPerfectOnConeIsoOfShortExact Z S hS h₁ h₂ h₃ s₁ s₂ s₃)
     rw [← he, hc S.X₁ S.X₂ h₁ h₂ s₁ s₂ S.f]
     abel
   exact hshort.triangle hi

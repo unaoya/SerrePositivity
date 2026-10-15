@@ -1,0 +1,8 @@
+import SerrePositivity.PerfectComplex.ConeAdditivity
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.supportedPerfectOnConeIsoOfShortExact
+assert_no_sorry SerrePositivity.closedSupport_shortExactAdditive_iff_triangleAdditive
+assert_no_sorry SerrePositivity.closedSupport_triangleAdditive_of_cone
+#print axioms SerrePositivity.supportedPerfectOnConeIsoOfShortExact
+#print axioms SerrePositivity.closedSupport_triangleAdditive_of_cone
