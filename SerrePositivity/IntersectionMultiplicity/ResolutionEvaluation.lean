@@ -211,17 +211,10 @@ theorem chiOrd_baseChange_resolution
     simp [Module.length_eq_zero]
   change (∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) *
     ((Module.length T (K.homology i)).toNat : ℝ)) = _
-  rw [alternating_finsum_eq_nat _ hz]
   unfold chi
-  have hcast : (((∑ᶠ i : ℕ, (-1 : ℤ) ^ i * ((torLength R i T M).toNat : ℤ)) : ℤ) : ℝ) =
-      ∑ᶠ i : ℕ, ((((-1 : ℤ) ^ i * ((torLength R i T M).toNat : ℤ)) : ℤ) : ℝ) := by
-    exact (Int.castRingHom ℝ).toAddMonoidHom.map_finsum_of_injective Int.cast_injective
-      (fun i : ℕ ↦ (-1 : ℤ) ^ i * ((torLength R i T M).toNat : ℤ))
-  rw [hcast]
-  congr 1
-  funext i
-  simp only [hlen, Int.cast_mul,
-    Int.cast_pow, Int.cast_neg, Int.cast_one, Int.cast_natCast]
+  apply alternating_finsum_eq_int_cast _ _ hz
+  intro i
+  simp only [hlen, Int.cast_natCast]
 
 /-- `T ⊗_R M` が有限長なら、`M` の有界有限自由分解 `F` の係数拡大 `F ⊗_R T` は、`√(w) = m_T` なる任意の
 列 `w` に台をもつ完全 `T` 複体である。有界性・有限自由性は係数拡大で保たれる
@@ -485,17 +478,11 @@ lemma koszulEulerChar_eq_chi (A T : Type u) [CommRing A] [CommRing T] [Algebra A
     have h := isZero_homology_of_isZero_X K i (koszulComplex_isZero_X_of_pos _ i hi)
     have := ModuleCat.subsingleton_of_isZero (Functor.map_isZero U h)
     simp [Module.length_eq_zero]
-  unfold koszulEulerChar
-  rw [alternating_finsum_eq_nat _ hp]
-  unfold chi
-  have hc : ((∑ᶠ i : ℕ, (-1 : ℤ) ^ i *
-      (torLength A i T (A ⧸ Ideal.span (Set.range z))).toNat : ℤ) : ℝ) =
-      ∑ᶠ i : ℕ, (((-1 : ℤ) ^ i * (torLength A i T (A ⧸ Ideal.span (Set.range z))).toNat : ℤ) : ℝ) :=
-    (Int.castRingHom ℝ).toAddMonoidHom.map_finsum_of_injective Int.cast_injective _
-  rw [hc]
-  congr 1
-  funext i
-  simp only [hl, Int.cast_mul, Int.cast_pow, Int.cast_neg, Int.cast_one, Int.cast_natCast]
+  unfold koszulEulerChar chi
+  apply alternating_finsum_eq_int_cast _ _ hp
+  intro i
+  simp only [hl, Int.cast_natCast]
+
 end SerrePositivity
 
 end

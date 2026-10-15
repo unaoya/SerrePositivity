@@ -101,6 +101,23 @@ lemma alternating_finsum_eq_nat (a : ℤ → ℝ) (hpos : ∀ i, 0 < i → a i =
   rw [← hfull, finsum_mem_range hg]
   simp only [f, g, Int.negOnePow_neg, Int.cast_negOnePow_natCast]
 
+/-- Convert a nonpositive cochain Euler sum to an integer-valued homological sum.
+No finite-support assumption is needed, including for the default value of `finsum`. -/
+lemma alternating_finsum_eq_int_cast (a : ℤ → ℝ) (b : ℕ → ℤ)
+    (hpos : ∀ i, 0 < i → a i = 0)
+    (hneg : ∀ n : ℕ, a (-(n : ℤ)) = (b n : ℝ)) :
+    (∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * a i) =
+      ((∑ᶠ n : ℕ, (-1 : ℤ) ^ n * b n : ℤ) : ℝ) := by
+  rw [alternating_finsum_eq_nat _ hpos]
+  have hcast : ((∑ᶠ n : ℕ, (-1 : ℤ) ^ n * b n : ℤ) : ℝ) =
+      ∑ᶠ n : ℕ, (((-1 : ℤ) ^ n * b n : ℤ) : ℝ) :=
+    (Int.castRingHom ℝ).toAddMonoidHom.map_finsum_of_injective
+      Int.cast_injective (fun n : ℕ => (-1 : ℤ) ^ n * b n)
+  rw [hcast]
+  congr 1
+  funext n
+  simp only [hneg, Int.cast_mul, Int.cast_pow, Int.cast_neg, Int.cast_one]
+
 /-- 境界の寄与をもつ有限台の係数恒等式の Euler 相殺。
 対象の圏・通常長さ・有限長性とは独立に、隣接する境界を相殺する。 -/
 lemma alternatingFinsum_eq_of_boundary (terms homology boundary : ℤ → ℝ)

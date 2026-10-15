@@ -60,16 +60,10 @@ lemma chiOrd_tensorResolution : chiOrd (cochainTensor F.complex G.complex) = (ch
     simp [Module.length_eq_zero]
   change (∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) *
     ((Module.length R (K.homology i)).toNat : ℝ)) = _
-  rw [alternating_finsum_eq_nat _ hz]
   unfold chi
-  have hcast : (((∑ᶠ i : ℕ, (-1 : ℤ) ^ i * ((torLength R i M N).toNat : ℤ)) : ℤ) : ℝ) =
-      ∑ᶠ i : ℕ, ((((-1 : ℤ) ^ i * ((torLength R i M N).toNat : ℤ)) : ℤ) : ℝ) :=
-    (Int.castRingHom ℝ).toAddMonoidHom.map_finsum_of_injective Int.cast_injective
-      (fun i : ℕ => (-1 : ℤ) ^ i * ((torLength R i M N).toNat : ℤ))
-  rw [hcast]
-  congr 1
-  funext i
-  simp only [hlen, Int.cast_mul, Int.cast_pow, Int.cast_neg, Int.cast_one, Int.cast_natCast]
+  apply alternating_finsum_eq_int_cast _ _ hz
+  intro i
+  simp only [hlen, Int.cast_natCast]
 
 variable [IsNoetherianRing R] [IsLocalRing R]
 
