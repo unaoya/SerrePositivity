@@ -16,26 +16,6 @@ variable {R : Type u} [CommRing R]
 namespace CochainCubicAction
 variable {K L : CochainComplex (ModuleCat.{u} R) ℤ}
 
-@[ext]
-lemma ext {τ σ : CochainCubicAction K} (h : τ.map = σ.map) : τ = σ := by
-  cases τ
-  cases σ
-  cases h
-  rfl
-
-/-- The diagonal cubic action on a binary sum. -/
-def biprod (τ : CochainCubicAction K) (σ : CochainCubicAction L) :
-    CochainCubicAction (K ⊞ L) where
-  map := Limits.biprod.map τ.map σ.map
-  cube := by
-    apply Limits.biprod.hom_ext'
-    · simp only [Limits.biprod.inl_map_assoc, Limits.biprod.inl_map, comp_id]
-      simpa only [Category.assoc, id_comp] using
-        congrArg (fun f => f ≫ (Limits.biprod.inl : K ⟶ K ⊞ L)) τ.cube
-    · simp only [Limits.biprod.inr_map_assoc, Limits.biprod.inr_map, comp_id]
-      simpa only [Category.assoc, id_comp] using
-        congrArg (fun f => f ≫ (Limits.biprod.inr : L ⟶ K ⊞ L)) σ.cube
-
 variable [Invertible (3 : R)]
 
 lemma eigenK0Class_biprod (τ : CochainCubicAction K) (σ : CochainCubicAction L)

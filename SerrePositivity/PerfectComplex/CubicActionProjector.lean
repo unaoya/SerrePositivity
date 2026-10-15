@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.PerfectComplex.IdempotentDecomposition
+public import SerrePositivity.PerfectComplex.CubicActionBasic
 public import Mathlib.Algebra.Ring.Invertible
 
 /-! # Fourier projectors for cubic chain actions -/
@@ -12,10 +13,6 @@ universe u
 namespace SerrePositivity
 open CategoryTheory Category Limits Preadditive
 variable {R : Type u} [CommRing R]
-
-structure CochainCubicAction (K : CochainComplex (ModuleCat.{u} R) ℤ) where
-  map : K ⟶ K
-  cube : map ≫ map ≫ map = 𝟙 K
 
 namespace CochainCubicAction
 variable {K : CochainComplex (ModuleCat.{u} R) ℤ} [Invertible (3 : R)]

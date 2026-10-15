@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.PerfectComplex.IdempotentImagePerfect
-public import Mathlib.CategoryTheory.Preadditive.Biproducts
+public import SerrePositivity.PerfectComplex.CochainBiproduct
 
 /-! # Finite orthogonal idempotent decompositions of complexes -/
 
@@ -13,10 +13,6 @@ universe u
 namespace SerrePositivity
 open CategoryTheory Category Limits Preadditive
 variable {R : Type u} [CommRing R]
-
-instance (priority := 100) cochainComplexHasFiniteBiproducts :
-    HasFiniteBiproducts (CochainComplex (ModuleCat.{u} R) ℤ) :=
-  HasFiniteBiproducts.of_hasFiniteProducts
 
 namespace CochainIdempotent
 variable {K : CochainComplex (ModuleCat.{u} R) ℤ}

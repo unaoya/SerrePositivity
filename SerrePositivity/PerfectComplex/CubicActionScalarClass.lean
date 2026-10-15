@@ -16,18 +16,6 @@ variable {R : Type u} [CommRing R]
 namespace CochainCubicAction
 variable {K : CochainComplex (ModuleCat.{u} R) ℤ}
 
-/-- A scalar cube root of unity acts on any cochain complex. -/
-def scalar (K : CochainComplex (ModuleCat.{u} R) ℤ) (c : R) (hc : c ^ 3 = 1) :
-    CochainCubicAction K where
-  map := c • 𝟙 K
-  cube := by
-    simp only [Linear.smul_comp, Linear.comp_smul, id_comp, smul_smul]
-    have he : c * c * c = 1 := by
-      calc
-        _ = c ^ 3 := by ring
-        _ = 1 := hc
-    rw [he, one_smul]
-
 variable [Invertible (3 : R)]
 
 lemma characterProjector_self_of_map_eq_scalar (τ : CochainCubicAction K)
