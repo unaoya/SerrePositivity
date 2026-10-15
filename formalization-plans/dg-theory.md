@@ -1962,3 +1962,27 @@ U10全受入は未完。次は前合成の自然変換を指定D(D)へ延長し�
 比較射が準同型なら導来Hom関手間の自然同型になることと、ホモトピーによる独立性を証明する。
 局所化内のHom計算・始域についての関手性、三角構造・Verdier商・導来余積/局所小性・
 一対象比較の保存性も残る。
+
+
+### 13.53 U10b7c：導来Homの前合成と自然同型
+
+`Derived/HomOutPrecomposition.lean` は全Homの前合成をD(A)へ合成した自然変換を、
+MathlibのLocalization.Construction.natTransExtensionで指定D(D)上へ延長する。
+`moduleDerivedHomOutPrecomp` は射影的対象の任意の射による自然変換である。
+元の加群上の成分は、既存計算同型で共役した全Homの前合成そのものであることを証明する。
+恒等・合成法則と、全dg自然なホモトピーで結ばれる射、従ってK(D)で等しい射が
+同じ自然変換を与えることを証明した。
+
+射影的対象間のquasiIsoについては、§13.52の前合成のquasiIso性を使い、
+局所化の全対象で成分が同型となることを証明して `moduleDerivedHomOutPrecompIso` を構成した。
+値域の射宇宙wはHasDerivedCategoryで明示し、既存主Hom endとMathlib豊穣Homは同じ構造を使用する。
+
+`Checks/DerivedHomPrecomposition.lean` は自然同型、K(D)での等式による独立性、合成法則を検証する。
+同入口・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3262 jobs）。
+直接実行の主要11宣言は標準公理のみ。累計836宣言。
+担当Leanのsorry/admit/新規axiomは0件、担当diff --checkは成功。
+
+U10全受入は未完。次は射影解像度の比較をこの自然同型へ運び、
+解像度を替えたときの導来Hom関手の選択独立性とcocycle条件を確定する。
+局所化内のHom計算・始域についての関手性、三角構造・Verdier商・導来余積/局所小性・
+一対象比較の保存性は引き続き残る。
