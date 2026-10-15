@@ -4915,8 +4915,21 @@ G2-5a-ii実単位則（2026-10-15）：`DerivedTensorAugmentationModels.lean`で
 `boundedAboveDerivedAlgebraMul`と`boundedAboveDerivedAlgebraUnit`の実左右単位則を証明した。
 新規5宣言を含むG2監査497宣言、対象ビルド2362ジョブ、全体ビルド5124ジョブが成功。
 主要モデル比較・実左右単位則は標準3公理のみ。共通import閉包79モジュールに禁止依存なし。
+この合流のCLMST監査と全体公理監査も成功した。既存の原典・perfectoid存在入力は維持する。
 実導来積の可換性・左右単位則は供給済み。次は実結合則を同じモデル比較で証明し、
 全環法則を満たすMonObj／IsCommMonObj構造へ合流する。完備化乗法と実H⁰環の構成はなお必要。
+
+G2-5a-ii結合則の次工程（2026-10-15）：実結合則は次の比較で証明する。
+(1) A[0]の射影モデルPとtensorモデルP⊗Pを取り、既存の実積を
+`BoundedAboveDerivedModel.map`でP⊗P→Pへ持ち上げる。
+(2) 持ち上げとP→A[0]の合成を、証明済みの任意射影モデルaugmentation式で
+cochain上の標準積へ比較する。ここは局所化後の等式からK-projective性でホモトピーを得る。
+(3) tensorのホモトピー保存と`boundedAboveAssociatorModel_map`を使い、
+三重tensorの両経路を同じ標準augmentationへ移す。離散tensor比較の結合図式と
+通常のAの乗法結合則で一致を証明する。
+(4) 実積・実単位の定義を変更せず、証明済みの可換性・左右単位則と合わせて
+MonObj／IsCommMonObjを構成する。その後、二因子の代数対象と完備化への積の延長へ進む。
+これは未実装の証明方針であり、射影モデル上の厳密DG環構造や結合則の完成を主張しない。
 
 ### 9.8. 各区切りの保存と検証
 
