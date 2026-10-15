@@ -1,0 +1,29 @@
+import SerrePositivity.KTheory.Adams.KoszulCubeDifferential
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulXNegOne_generator_d_apply
+#print axioms SerrePositivity.Adams.oneKoszulXNegOne_generator_d_apply
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulXZero_generator_d_apply
+#print axioms SerrePositivity.Adams.oneKoszulXZero_generator_d_apply
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeE0_d
+#print axioms SerrePositivity.Adams.oneKoszulCubeE0_d
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeE1_d
+#print axioms SerrePositivity.Adams.oneKoszulCubeE1_d
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeE2_d
+#print axioms SerrePositivity.Adams.oneKoszulCubeE2_d
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeE01_d
+#print axioms SerrePositivity.Adams.oneKoszulCubeE01_d
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeE02_d
+#print axioms SerrePositivity.Adams.oneKoszulCubeE02_d
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeE12_d
+#print axioms SerrePositivity.Adams.oneKoszulCubeE12_d
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeTop_d
+#print axioms SerrePositivity.Adams.oneKoszulCubeTop_d
