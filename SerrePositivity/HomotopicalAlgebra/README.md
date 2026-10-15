@@ -726,3 +726,24 @@ Reedy cofibrancyから境界tensor包含のcofibration性を導き、通常のco
 共有入口1725 jobs、追加105宣言・8モジュール、共有全2335宣言・141モジュールを検証し、
 公理は標準公理のみ。回帰検証も成功した。詳細と未完了項目は計画§175を参照。
 F1の無条件のKan性・導来不変性・π₀比較・任意モデル源の関手性とF2〜F4は未完了である。
+
+
+## F1：有限tensorの関手性と貼り合わせ（2026-10-15）
+
+`TensorFunctor`・`TensorPushout`・`TensorRepresentable`はsubcomplexのtensorを関手にし、
+交差・和のpushout、representableなfaceとA[k]の同型、空のtensorの初期性を証明する。
+これらの入口は次の一般論へ接続している。
+
+`FiniteTensor`は有限nonsingular単体集合の充満部分圏からCへの実際の関手で、任意の射を
+扱う。単射や固定したambientは要求しない。`FiniteTensorPushout`は、四頂点がこの部分圏に
+属する実際のSSetのpushoutをCのpushoutへ送る。`FiniteTensorRepresentable`は標準単体上で
+元のcosimplicial図式Aに戻る自然同型を全Δの射に対して証明する。
+`FiniteTensorBoundary`は一般の関手による境界生成射の像を実際の境界tensor包含と比較し、
+Reedy cofibrancyからそのcofibration性を導く。値圏には有限余極限だけを要求する。
+
+非退化単体のpresentationは、固定版Mathlibの`NonsingularColimit`の構成を自然同型で
+接続して再利用する。共有入口1734 jobs、一般の有限tensor46宣言・4モジュール、
+gluingの43宣言・3モジュール、従来の有限tensor持ち上げ107宣言・8モジュールを検証。
+共有全2426宣言・148モジュールの監査は標準公理のみ。詳細は計画§176を参照。
+全包含のcofibration性、horn tensorのtrivial cofibration性とKan性、F1の他の条件、
+F2〜F4は引き続き未完了である。

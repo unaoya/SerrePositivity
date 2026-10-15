@@ -7486,3 +7486,85 @@ cofibration性を導く。175.2の条件付きKan判定へこれを適用し、K
 両変数の弱同値不変性、ordinary Ho(C)とのπ₀比較、任意モデル源に対する関手性は
 引き続き未完了。F2の自然な選択比較と単体的モデル圏でのMap比較、F3の共通基数、
 F4のfiltered colimit・homotopy (co)limit比較もすべて依頼範囲に含める。
+
+
+## 176. F1進捗：有限tensorの関手性・貼り合わせ・標準単体との自然比較（2026-10-15）
+
+F0〜F4全体の依頼を維持している。§175の次の作業として、有限tensorの関手性、
+貼り合わせのpushout保存、representableな対象との比較を実装した。異なるambientの
+標準単体・faceを扱うため、有限nonsingular単体集合の間の任意の射へ一般化した。
+境界生成射の像がcofibrationであることはこの一般の関手でも証明済みである。
+全包含のcofibration性とhorn tensorのtrivial cofibration性はまだ未証明であり、
+F1のKan性の条件は解消していない。
+
+### 176.1 固定ambient内の関手性と貼り合わせ
+
+`TensorFunctor`は標準単体のsubcomplex包含S≤Tから実際のtensorの射を構成する。
+Hom同値に対応するunitを用い、全対象Yへの射に対する前合成の式を証明する。
+恒等射・合成を保つ実際の関手を得て、tensor包含との可換性も証明した。
+
+`TensorPushout`はsubcomplexのbicartesian squareを値圏の実際のpushoutへ送る。
+源のpushout coconeをHom同値で単体集合側へ移して貼り合わせ、逆に戻すことで
+値圏のdescを構成する。両入射との等式と一意性を証明しており、pushout保存を
+追加の入力として要求しない。交差・和の一般のsquareと具体的な二次元hornで検証した。
+
+`TensorRepresentable`は標準単体で表せるsubcomplex Sのtensorを対応する実際のA[k]と
+同型にする。また、全subcomplexのtensor包含が同型であることと、空のsubcomplexの
+tensorが初期対象であることを証明する。ここまでのコミット：`73cc039`。
+これらの入口は176.3・176.4の一般論を使う薄い接続へ整理した。
+
+### 176.2 Mathlibの既存presentationの再利用
+
+固定版Mathlibの`SimplicialSet/NonsingularColimit`には、nonsingularなXの非退化単体から
+semi-simplex categoryへの関手、標準単体のcocone、`isColimitCoconeN'`が既にある。
+`NonsingularPresentation`は、これを自然同型で既存のΔへの関手に接続し、余極限の
+証明を再利用する形に変更した。有限添字圏とHom同値の接続は共有側で保持する。
+既存の境界・latching比較のインターフェースも保った。コミット：`31bb5d8`。
+
+### 176.3 有限nonsingular単体集合の任意の射
+
+`FiniteTensor`は有限nonsingular単体集合の充満部分圏からCへの実際の関手を構成する。
+値は非退化単体posetに沿うAの余極限であり、値圏に要求するのは有限余極限だけである。
+写像はHom同値から構成するので、単射・同じambient内の包含・非退化性を保つ射という
+制限を付けない。unitと対象側の射の自然性、mapとHom同値の計算式、恒等射・合成保存、
+単体集合の同型を値圏の同型へ移す入口も証明した。
+
+`FiniteTensorPushout`は、実際の単体集合のpushout squareで四頂点が有限nonsingularで
+ある場合、その像がCのpushoutになることを証明する。部分圏に存在する任意のpushoutと
+元のSSetのpushoutを無条件に同一視する主張ではない。176.1のsubcomplex貼り合わせは
+この一般の結果から得る。
+
+### 176.4 標準単体上の自然同型と境界生成射
+
+`FiniteTensorRepresentable`は、標準単体で表せる任意の有限nonsingularなXのtensorを
+A[k]と同型にする。標準単体をこの部分圏へ送る関手も構成し、その後に有限tensorを
+取ると元のAになる自然同型`standardIso`を証明した。この比較は全てのΔの射に自然で、
+各次数の独立した対象同型に留まらない。特にfaceとdegeneracyにも適用できる。
+
+`FiniteTensorBoundary`は、一般の有限tensor関手がsubcomplex包含`S.ι : S→Δ[n]`へ
+作用した射と、§175の実際のtensor包含とのArrow同型を構成する。
+したがってReedy cofibrantなAについて、一般の有限tensorが全境界生成射を
+cofibrationへ送ることを導く。通常のcosimplicial resolutionへの適用も検証した。
+176.3・176.4と共有入口のコミット：`8848c6a`。
+
+### 176.5 検証と残る全体の受入項目
+
+- 共有入口のビルド1734 jobsが成功。
+- `check_finite_tensor_generic`：追加4モジュール・46宣言を全監査。任意の射の像、
+  標準単体上の自然同型、一般のpushout保存、異なるambient間のface同型、
+  通常のresolutionでの境界生成射のcofibration性を検証。
+- `check_tensor_gluing`：既存の入口を含む3モジュール・43宣言を全監査。
+- `check_finite_tensor_lifting`：8モジュール・107宣言を全監査。Mathlibへの接続変更後も、
+  実際のhorn・境界のtensor、latching比較と境界の持ち上げを検証。
+- 共有基盤2426宣言・148モジュールの公理監査は標準公理のみ。
+- `check_homotopical_foundations`、`check_spectra_stage2`、
+  `check_weak_equivalences_accessible`の回帰検証も成功。新規sorry・引用axiomはない。
+
+次は、有限cell attachmentで境界生成射のcofibration性を包含全体へ広げる。
+有限coproductやskeletalな貼り合わせを使う際も、関係する四頂点が有限nonsingularである
+ことを確認し、176.3のpushout保存の仮定を省略しない。その後、homotopical constancyと
+hornの有限の貼り合わせからhorn tensor包含の弱同値性を証明し、trivial cofibration性を
+得て§175のKan判定へ適用する。源に左固有性や無限の余完備性を追加する方針ではない。
+両変数の導来不変性、ordinary Ho(C)の射とのπ₀比較、任意モデル源での関手性も未完了。
+F2の自然な選択比較と単体的モデル圏でのMap比較、F3の共通基数、F4のfiltered colimit・
+homotopy (co)limit比較も引き続きすべて依頼範囲である。
