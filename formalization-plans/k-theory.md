@@ -1,29 +1,32 @@
 # K理論・スペクトル・dg 理論の形式化計画
 
-作成日：2026-10-13。計画更新日：2026-10-14。
-M1・M2の圏論的構成と閉対称モノイダル構造、段階1・2のA1〜C2まで実装・検証済み。
-ホモトピー論の構成、非連結K理論、定理3.1・補題4.6への接続は未完成である。
-最新の完了確認は§128（一般対象H6）、§127（共有ホモトピー論H0〜H5）と§122（段階2）。
+作成日：2026-10-13。計画更新日：2026-10-15。
+M1・M2の構成、A1〜C2、共有ホモトピー論H0〜H6、および§129で指定した段階1〜3まで実装・検証済み。
+円スペクトルのレベルモデル・関手的置換・monoidal/SM7と既存豊穣APIの接続が完成した。
+安定化を含むM3全体、M4、非連結K理論、定理3.1・補題4.6への接続は未完成である。
+最新の完了監査は§158、直近の実装は§157。
 mathlibへの追加・登録は今回の完了条件に含めず、必要な構造と法則をこのリポジトリ内に実装する。
 検証済みのステップごとにコミットする。
-P1・P2、共有一般論H0〜H5と一般スペクトルの対象・free/evaluation（H6）は完了。M5は別チャットで進め、この系列はG5/G6の残る一般論とレベル構造へ進む。
+次は段階4の安定化へ進む。M5は別チャットで進める。段階3（§129のレベル構造）の完了と、P3・M3全体の完了は区別する。
 
-## 0. 現在地と残作業の実行計画（2026-10-14更新）
+## 0. 現在地と残作業の実行計画（2026-10-15更新）
 
 ### 0.1 現在地
 
 [Foundations](../SerrePositivity/Spectra/Foundations.lean)を独立した入口として、
-261モジュール・2612宣言を監査済み。集約ビルドは2119ジョブで成功し、
-この入口は標準公理のみで、sorry依存を持たない。
+および具体的レベルモデルの下位入口を319モジュール・3089公開宣言まで監査済み。
+共有ホモトピー論は30モジュール・408宣言を監査済み。集約ビルドが成功し、
+下位の両監査は標準公理のみで、sorry依存を持たない。
+実際のSSetモデル存在は上位Inputs/Homotopyに分離し、採用済みHT-KQだけを引用する。
 この数はスペクトルと共通基盤の宣言数であり、最終目標の完成率ではない。
 
 | 層 | 検証済みの到達点 | 残る範囲 |
 | --- | --- | --- |
-| M0：仕様 | 基点付き単体的集合、対称スペクトルの主モデル、基本の次数と宇宙 | 安定同値・置換の定義、上位モデルとの比較、引用の正確な型 |
-| M1：基点付き単体的集合 | 対象・射、smash、円・球面、閉対称モノイダル構造 | Kan–Quillenとの接続とモデル圏公理 |
-| M2：対称スペクトル | 球面加群、自由対象F_n、評価随伴、極限・余極限、閉対称モノイダル構造、作用・写像対象・単体的豊穣構造 | レベル・安定モデル構造との接続 |
+| M0：仕様 | 主モデル・宇宙、レベルW/Fib、関手的置換、HT-KQの三クラスと引用境界 | 安定同値、上位モデルとの比較 |
+| M1：基点付き単体的集合 | 対象・smash・円、閉構造、HT-KQからの基点付きモデル、monoidal/SM7・生成射 | 安定化に必要な追加条件の検証 |
+| M2：対称スペクトル | 一般C,Kの対象・演算・表現性、旧円特殊化、具体的レベルモデル・monoidal/SM7・豊穣Homとの接続 | 安定モデル構造との接続 |
 | 各段の計算 | F_0との比較、作用の単位・結合、随伴・転置・評価、懸垂・ループ・構造射の随伴表示 | モデル構造の検討後に必要となる追加計算 |
-| M3・M4：ホモトピー論 | 共通の圏論的演算、Quillen・Under・生成/右転送・導来随伴、monoidal/豊穣の共有条件（H0〜H5） | monoid公理・加群転送・具体的SM7、安定モデル、π_n、図式・固定点・有理化 |
+| M3・M4：ホモトピー論 | H0〜H6、monoid公理・内部/多対象転送、レベルモデル、実際のQ/Rと比較自然変換 | 安定モデル・Ωスペクトル・π_n、図式・固定点・有理化 |
 | M5・M6：dg・K理論 | 既存の複体・三角圏・K₀を比較先として利用可能 | dg表示と上位モデル、環・加群、非連結K理論の具体的入力と比較 |
 | M7〜M10：本文への接続 | 既存の本文の帰結と利用先 | 支持つき降下、定理3.1、補題4.6、二つのK₀比較と保留入力の解消 |
 
@@ -33,8 +36,10 @@ P1・P2、共有一般論H0〜H5と一般スペクトルの対象・free/evaluat
 
 ### 0.2 全体の見通しと今回の範囲
 
-ユーザーの指定により、今回の実行範囲はP1・P2に限定する。
-P3以降の表は将来の見通しとして維持する。モデル構造の選定・導入はP2完了後の別の検討課題とする。
+初期依頼のP1・P2は完了。その後の依頼「段階3まで」は§129の段階1〜3を指し、
+レベルモデルとその互換性まで§158で完了監査した。
+以下のP3は安定化も含む旧来の大区分であり、P3全体やM3全体の完了は意味しない。
+次の実装範囲は段階4の安定化として別に判断する。
 
 | 順序 | 作業 | 成果物・終了条件 | 見通し |
 | --- | --- | --- | --- |
@@ -6120,3 +6125,87 @@ diff --check成功。段階1〜3の全体目標は、§154の旧Hom関手への�
 二変数関手の射の公式を明示して大きな定義の変換を減らす試験を行っている。
 共有比較定理の完成だけで§154の旧豊穣圏API接続や段階1〜3全体の完成とはしない。
 安定化（段階4）へはまだ着手しない。
+
+
+## 157. 段階1〜3の実行記録：既存豊穣Hom関手との接続の完成（2026-10-15）
+
+MappingAdjunction.transported_pre_bifunctorとMappingParametrizedAdjunctionを追加した。
+任意の閉braidedモノイダル圏とL⊣Rについて、tensor作用への自然な比較から、
+内部HomをRへ後合成した二変数関手とのパラメータ付き随伴を構成する。
+RepresentedHomFunctor.homFunctorIso_ofParametrizedは、この随伴の源自然性を利用し、
+represented ordinary enrichmentのeHomFunctorとの自然同型を証明する。
+具体的な源自然性の長大な等式をカーネルへ直接渡す必要をなくした。
+共有証明は標準公理のみ。コミット`afb962e`。
+
+旧MappingSpaceの共変関手と二変数関手は、登録済みspectrumMonoidalClosedから構成する形へ
+そろえた。pointedMappingSpaceParametrizedAdjunctionを構成し、従来の
+pointedMappingSpaceAdjunctionはその各対象での随伴として公開する。
+pointedMappingSpacePreは二変数関手の射として定義し、一致公式も公開した。
+既存宣言名・型とStageTwoの計算則は保持し、StageTwoの集約・利用例が成功した。
+
+SimplicialHomComparison.legacyPointedHomFunctorIsoは、旧基点付き豊穣圏のeHomFunctorと
+旧pointedMappingSpaceBifunctorを両変数で比較する。
+legacyOrdinaryHomFunctorIsoは、忘却による豊穣構造の移送と上記自然同型を合成し、
+旧mappingSpaceSimplicialCategoryのeHomFunctorとordinarySpectrumMappingを比較する。
+具体的なpointedSpectrumMappingには旧pointedMappingSpaceBifunctorを選び、
+その実際のパラメータ付き随伴とtensorのQuillen性からSM7を証明する。
+一般C,KのmappingObjectBifunctorとそのモデル互換性はGeneral側の入口に維持する。
+対象ごとの一致だけを関手全体の比較の代わりにしない。
+
+legacyOrdinaryHom_SM7は、上記自然同型に沿って随伴を移し、旧豊穣Hom関手そのもののSM7を証明する。
+Inputs/Homotopy/SimplicialLevel.circleSpectrumLevelModel_enrichedHom_SM7は、選択した
+HT-KQモデルと実際の円スペクトルレベルモデルへ適用する。
+ローカルなEnrichedOrdinaryCategory・ModelCategoryを使い、グローバルな選択インスタンスを追加しない。
+新たなsorry・存在引用はない。対象・共有・上位集約ビルドと利用例が成功。
+共有補題・具体的接続・利用例を監査へ登録した。コミット`d222e94`。
+
+
+## 158. 最終受入監査：依頼された段階1〜3の完了（2026-10-15）
+
+依頼「段階3まで完成させてください」の範囲を§129冒頭・§129.3に照合した。
+段階1はG5/G6残部、段階2は一般スペクトルの演算、段階3はレベルモデル構造である。
+以下は現在のソースの構成と、その構成を利用する検証例に基づく完了確認であり、
+M3全体（安定化・安定ホモトピー論）の完了を意味しない。
+
+| 受入条件 | 現在の実装・証拠 | 利用検証 |
+| --- | --- | --- |
+| 段階1：monoid公理・内部加群転送 | Monoidal/MonoidAxiom, ModuleTransfer, Transfer/CellMap。既存MorphismProperty上のtensor-cell閉性、実際のfree/forgetからモデル構造を構成。源のmonoid公理・生成性・小対象条件を明示 | check_monoid_axiom, check_module_model_transfer |
+| 段階1：多対象のfree/evaluation・cell・smallness | EvaluationFamily/EvaluationSmallness, ManyObjectTransfer/ManyObjectPresentability。始域presentabilityと評価の余極限保存から自由像SOAを導き、cell acyclicityをmonoid公理から証明。通常の関手圏との同一視なし | check_many_object_transfer, check_many_object_presentability |
+| 段階1：基点付きsmashのモデル互換性 | Pointed/SmashModel・SmashUnitModelとSimplicialMonoidal。実際のpushout-product、単位、閉SM7、PSSへの適用 | check_pointed_model, check_simplicial_monoidal |
+| 段階2：一般対象・free/evaluation・構造射・自由各段 | GeneralSymmetricSpectrum C Kは既存Mod型。General/StructureMaps, FreeLevelQuotient, FreeLevelInduction等。単位・結合・同変性、n>mの始対象性、商・誘導対象の各段表示、旧円特殊化 | check_general_spectra |
+| 段階2：C作用・cotensor・豊穣構造・表現性 | General/MappingEnrichment, MappingFunctorComparison, TensorCotensorEnriched, EnrichedRepresentability等。両変数・Cパラメータの自然性、Hom対象比較、単位・合成との両立を証明 | check_general_tensor_cotensor, check_level_enriched |
+| 段階3：一般レベル生成射・smallness・acyclicity | ModelCategory/LevelSmallness, MonoidalLevel。I/Jの自由像、cardinal・宇宙を明示した小対象論法、生成射の評価とcell acyclicity。スペクトル上のモデルやSOAを追加仮定せず構成 | check_monoidal_level_model |
+| 段階3：具体的PSS・円へのモデル構成 | SimplicialModelInputs/PointedGenerators/SimplicialLevel。境界・hornの自由基点追加、presentability、円と単位のcofibrancyを証明し、Mathlib ModelCategoryを既存SymmetricSpectrum上へ構成 | check_simplicial_model_inputs, check_simplicial_level |
+| 段階3：W/Fib・生成性・Quillen性 | simplicialLevelModelCategory_weakEquivalences/fibrations/generated、free/evaluationの左右Quillen性。W/Fibは各段の実際のクラスに一致 | check_simplicial_level, check_kan_quillen_level |
+| 段階3：関手的分解とQ/R | Generated/Replacement。両分解から実際の自己関手Q,R、自然変換q:Q⟶Id,r:Id⟶R、全対象のcofibrancy/fibrancyとtrivial比較射を構成 | check_model_replacement |
+| 段階3：スペクトルmonoidal・内部Hom-SM7 | FreePushoutProductとFreePushoutProductModel。任意のpushout選択に対する射圏同型、II/JI/IJテストとdouble orthogonality、球面単位のcofibrancyと単位公理 | check_simplicial_level_tensor |
+| 段階3：混合tensor/cotensor・写像対象・旧豊穣API | General/EnrichedModel, SimplicialLevelEnriched, SimplicialHomComparison。通常SSetとPSSのSM7、旧eHomFunctorとの両変数自然同型、旧mappingSpaceSimplicialCategoryそのもののSM7 | check_level_enriched, check_kan_quillen_level |
+| 互換性と引用境界 | StageTwoとGeneralの同時import、旧宣言・計算則、ローカルなモデル選択。HT-KQだけを名前付き文献入力として上位へ分離 | check_spectra_stage2, audit_spectra, audit_homotopical_foundations, check_kan_quillen_level |
+
+### 最終検証結果
+
+Spectra.Foundations、Spectra.StageTwo、Spectra.General.Foundations、
+Spectra.ModelCategory.SimplicialLevelEnriched/SimplicialHomComparison、
+Inputs.Homotopy.SimplicialLevelの対象・集約ビルドが成功した。
+表の17本の最終検証（check_spectra_stage2は別実行）をすべて終了コード0で再確認した。
+新規証明の警告はなく、上位ビルドの警告は既存HT-KQの引用sorryのみである。
+
+- audit_spectra：319モジュール3089公開宣言。標準公理のみ、sorry依存なし。
+- audit_homotopical_foundations：30モジュール408宣言。標準公理のみ、引用依存なし。
+- check_level_enriched：35宣言。General/StageTwo同時import下で旧・新の豊穣HomとSM7を利用。
+- check_kan_quillen_level：31宣言。直接sorryを持つ引用はkanQuillen_model_exists（HT-KQ）1件だけ。
+- check_general_tensor_cotensor：334宣言、check_monoidal_level_model：72宣言、
+  check_model_replacement：20宣言。いずれも標準公理のみ。
+- git diff --check成功。他チャットのM5・可換環論・CLMST・共有ルートの変更を含めていない。
+
+HT-KQは§150の採用済み入力で、幾何学的実現によるW、monoによるcof、hornのrlpによるfibを
+固定したSSetのモデル存在だけを引用する。モデル構造の新たな存在引用や、
+一般C,Kの存在を仮定するaxiomは追加していない。
+任意C,Kに対するレベルモデルはMonoidalLevelの明記された仮定の下で構成し、
+具体的PSS/円はその仮定の証拠を供給している。無条件の一般存在を主張しない。
+
+以上により、今回依頼の段階1〜3は完了。
+次は段階4の安定化（§123.5、§124.2 K-E）であり、一般局所化存在の証明案(a)と
+PSS/S¹への具体的存在引用案(b)の選択は未確定のまま維持する。
+安定モデル・Ωスペクトル・全整数次数π_n・安定な導来演算、M4の図式/固定点/有理化、
+M6以降の非連結K理論と本文への接続は未完成。M5は別チャットの担当範囲を維持する。
