@@ -7621,3 +7621,49 @@ p方向は実p完備化対象の代表複体を取り、dの冪の各Koszul錐�
 未完成として保持する。既存共通完備化ディレクトリの検索では離散性や一般の導来Nakayama判定の
 公開入口は確認できなかったため、次はこの差分を具体的BS対象と既存APIでどう埋めるか調べる。
 共有・CLMST・利用先・共有監査は編集していない。
+
+## 共通基盤への要求 G9：有界p冪ねじれ係数上のp完全平坦対象の離散性（要求受領確認済み・API未実装）
+
+対象と正確な仮定：可換環T:Type u、素数p、X:DerivedCategory.Minus (ModuleCat T)。
+hT : ∃ N:ℕ, ∀ n:ℕ, ∀ t:T, (p:T)^n*t=0 → (p:T)^N*t=0。
+hX : DerivedCompletion.IsComplete T (p:T) X.obj。
+q=Ideal.Quotient.mk (Ideal.span {(p:T)})、Y=(boundedAboveDerivedBaseChange q).obj Xとし、
+∀ i:ℤ, i≠0 → IsZero ((DerivedCategory.homologyFunctor (ModuleCat (T/(p))) i).obj Y.obj)、
+Module.Flat (T/(p)) ((DerivedCategory.homologyFunctor (ModuleCat (T/(p))) 0).obj Y.obj)を仮定する。
+求める結論：X.obj.IsGE 0かつX.obj.IsLE 0、およびH=(DerivedCategory.homologyFunctor (ModuleCat T) 0).obj X.objについて
+∃ N:ℕ, ∀ n:ℕ, ∀ x:H, (p:T)^n • x=0 → (p:T)^N • x=0。
+Noether性、有限生成性、Tのp正則性、古典的完備性は追加しない。
+
+利用BS工程：著者公開版Lemma 3.7(2)の、具体的候補をA/(dⁿ)へ実導来基底変更して離散性を得る部分。
+原典はここでBMS19 Lemma 4.7を参照しているが、本要求は新引用やsorryを加えるものではなく、
+上記の具体的な共通導来加群補題の証明済みAPIを求める記録である。BSのprism・δ・環候補の接続はBSが担当する。
+既存APIの不足：既存CompletelyFlatは加群のTor消滅、G3は既に離散な加群の主元判定を扱う。
+共有DerivedCompletion・Mathlib導来圏の検索では上記の複体の離散性の入口を確認できなかった。
+G7の逐次colimit交換、G8の係数制限交換とも異なる。
+待つ工程：有界p冪ねじれを持つA/(dⁿ)上の実候補の離散性・有界ねじれを得る判定部分。
+独立作業：既存perfect prismの有界ねじれ入力を再利用し、正則dの冪商の実Koszul比較、
+元のAへ制限したp完備性、標準単位と剰余の比較を具体的対象について進める。
+G9はユーザーの個別許可「G9を送ってよい」を受け、2026-10-15にCLMSTへ上記の仮定・結論と利用工程を送信した。送信成功を確認済み。CLMST正本の2026-10-15付G9受領記録も確認したが、同記録では未実装・未受渡しである。BS内で共通一般補題を重複定義しない。
+
+### 次工程の登録：具体的候補の正則生成元冪商とp導来完備性
+
+BS専用DeltaRootSourceGeneratorPowerReduction.leanを新設する。
+正則dと任意nについて、具体的逐次対象をA/(dⁿ)へ実導来基底変更してAへ制限した対象を、
+既存restrictedDerivedQuotientKoszulIsoでdⁿの実Koszul錐へ比較する。
+具体的逐次対象のp導来完備性と既存の写像錐に関する閉性を使い、この実制限対象のp導来完備性を証明する。
+n=0の単元商・零環も含め、p正則性・ghost・G7・d mod p正則性は要求しない。
+原典Lemma 3.7の離散性をこの比較だけで結論せず、G9・G8待ちと独立に進める。
+全公開宣言を専用監査し、共有・CLMST・共有監査は編集しない。
+
+## B4-6：具体的逐次候補の生成元冪商とp導来完備性（2026-10-15）
+
+DeltaRootSourceGeneratorPowerReduction.leanで、正則dの任意冪dⁿによる実導来還元を
+元のAへ係数制限した対象と、同じ候補の実dⁿ Koszul錐との比較同型を公開した。
+既存の正則主元商Koszul比較を再利用し、候補のp導来完備性と写像錐に関する閉性から、
+この係数制限後の対象のp導来完備性も証明した。n=0の零商を含む。
+p正則性・ghost単射・G7・d mod p正則性は今回の2宣言に不要である。
+対象3806ジョブ成功（共有の既存警告のみ）、B4全体pure監査1983報告成功、標準3公理のみ。
+新sorry・公理・引用なし。G9要求は許可に基づき送信し、CLMST正本の受領記録を確認した。
+G9のAPIは未実装・未受渡し。商環上の完備性への係数環比較G8、離散性G9、
+環H0候補との接続・完全忠実平坦性自体・一般B4は引き続き未完成として保持する。
+共有・CLMST・利用先・共有監査は編集していない。
