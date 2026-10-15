@@ -5310,3 +5310,25 @@ RankOneDPPrimeBasis.leanで、p局所・p正則なAに対し、実局所化A[1/p
 DividedPowerAlgebra A A自身のp正則性を証明した。δ構造・完備性は不要。
 4公開宣言の対象2708ジョブ・B4全体pure監査成功。標準3公理のみ。
 新sorry・公理・引用なし。商のp正則性、分冪包比較、導来比較、CFF、一般B4は未完成。
+
+### 次工程の登録：正則一元入力での分冪表示環のp正則性
+
+BS専用PrincipalDPRegular.leanで、p局所・p正則なAとy mod pの正則性から、
+表示環PrincipalDPPresentation A yのp正則性を証明する。
+一元分冪代数内のγ₁(1)^pがpで割れることを階乗恒等式から示す。
+係数yのmod p正則性は既存isSMulRegular_mod_of_flatで移送する。
+γ₁(1)−yにより消える元について、γ₁(1)倍とy倍の一致をp回反復し、
+γ₁(1)^p=0とy^pの正則性から零を得る。
+最後に既存isSMulRegular_quotient_span_of_regular_modを使う。
+Noetherian性・完備性・δ構造を追加しない。
+
+## B4-6：正則一元分冪表示環のp正則性（2026-10-15）
+
+PrincipalDPRegular.leanで、p局所・p正則なAとy mod pの正則性から、
+具体的表示環PrincipalDPPresentation A y自身のp正則性を証明した。
+一次生成元のp乗のp可除性を階乗恒等式から示し、係数yのmod p正則性を既存の
+isSMulRegular_mod_of_flatで移送した。γ₁(1)倍とy倍の一致を反復して表示関係の
+mod p正則性を得た後、既存isSMulRegular_quotient_span_of_regular_modを適用した。
+Noetherian性・完備性・δ構造は不要。3公開定理の対象2733ジョブ・B4全体pure監査成功。
+標準3公理のみ。新sorry・公理・引用なし。
+原典の分冪包比較・導来比較・CFF・一般B4は未完成。

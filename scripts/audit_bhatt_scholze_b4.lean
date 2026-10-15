@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.PrincipalDPRegular
 import SerrePositivity.BhattScholze.RankOneDPPrimeBasis
 import SerrePositivity.BhattScholze.RankOneDPBasis
 import SerrePositivity.BhattScholze.PrincipalDPFactorialKernel
@@ -4390,3 +4391,11 @@ assert_no_sorry SerrePositivity.BhattScholze.rankOneDPPrime_moduleFree
 #print axioms SerrePositivity.BhattScholze.rankOneDPPrime_moduleFree
 assert_no_sorry SerrePositivity.BhattScholze.rankOneDPPrime_p_mul_injective
 #print axioms SerrePositivity.BhattScholze.rankOneDPPrime_p_mul_injective
+
+-- p-regularity of the actual regular principal divided-power presentation.
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPGenerator_pow_mem_prime
+#print axioms SerrePositivity.BhattScholze.rankOneDPGenerator_pow_mem_prime
+assert_no_sorry SerrePositivity.BhattScholze.principalDPRelation_mod_p_isSMulRegular
+#print axioms SerrePositivity.BhattScholze.principalDPRelation_mod_p_isSMulRegular
+assert_no_sorry SerrePositivity.BhattScholze.principalDPPresentation_p_mul_injective
+#print axioms SerrePositivity.BhattScholze.principalDPPresentation_p_mul_injective
