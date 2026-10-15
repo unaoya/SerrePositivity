@@ -2319,3 +2319,38 @@ cochain公式・合成公式・二つの境界公式・connectingとの可換式
 Checks.ConeRotationのビルドと直接実行で主要21宣言を監査した。標準公理のみ。累計998宣言。
 StageSix・既存Spectra.StageTwoを含む回転比較入口の同時ビルドも成功（2534 jobs）。
 U10は未完。次は全dg自然な収縮を構成し、K(D)の回転同型と三角形の回転閉性へ運ぶ。
+
+
+### 13.70 U10t8：全dg自然な回転収縮と標準三角形の回転同型
+
+`Module/ConeRotationHomotopy.lean`は二つの次数−1の主Hom要素を、coneの包含・射影の
+通常順の斉次合成で構成する。第一はconnecting後の回転比較と標準包含を結び、
+第二は逆射≫順方向射を恒等射へ収縮する。それぞれの微分を主Hom内で証明し、
+全dg自然な加群ホモトピーを得た。objectwiseホモトピーの存在だけを使用していない。
+connectingとの厳密な可換式、K(D)の第三対象の同型、商関手のshift比較を含めた同型も公開する。
+
+`Module/ConeRotationTriangle.lean`の`moduleHomotopyConeRotationIso`は
+`(moduleHomotopyConeTriangle f).rotate ≅ moduleHomotopyConeTriangle (moduleConeInr f)`を与える。
+connectingのホモトピーと商のshift比較の自然性により三つの可換条件を検証した。
+三角形のクラスの順方向の回転閉性`moduleDistinguished_rotate`を得た。
+既存の第一/第二射の零合成と合わせ、第二/第三射、および第三射/shiftした第一射の零合成も証明した。
+
+受入入口4本（LeftShiftElements・ConeLift・ConeRotation・ConeRotationTriangle）と
+StageSix・既存Spectra.StageTwoの最終同時ビルドは成功（2539 jobs）。
+本段階の主要16宣言を含む今回の主要53宣言を直接実行で監査し、標準公理のみ。累計1014宣言。
+担当Leanのsorry/admit/新規axiomは0件、担当差分の空白検査は成功。
+全体文書検査は担当外のPaper.Section5.SelectedParameterPositivityの未生成oleanで停止した。
+共有ルートimportと担当外の並行変更は編集していない。
+
+U10全受入は未完。回転の順方向を示しただけでPretriangulatedを宣言しない。
+次は以下を実装する。
+
+1. `moduleShiftHom`でconeのfst/sndを移し、今回のliftで
+   `moduleShiftObj s (moduleCone f) → moduleCone (f⟦s⟧')`を構成する。
+   左包含のshiftと既存の境界延長で逆射を構成し、各評価をMathlibの`mappingCone.shiftIso`と照合する。
+2. 標準三角形の整数shift比較、三角形のクラスのshift閉性を証明する。
+   今回の回転同型と負shiftを組み合わせて逆回転閉性と回転の同値条件を完成させ、Pretriangulatedを構成する。
+3. 八面体条件、acyclic部分圏の三角閉性とVerdier商比較、D(D)の三角構造、
+   主局所化関手と一対象A比較の三角性を証明する。
+
+共有モデル圏・Quillen・転送・SM7への新しい不足要求はない。
