@@ -129,6 +129,8 @@ public import SerrePositivity.HomotopicalAlgebra.Localization.Fibrations
 public import SerrePositivity.HomotopicalAlgebra.Localization.QuillenCriterion
 public import SerrePositivity.HomotopicalAlgebra.Localization.UniversalProperty
 public import SerrePositivity.HomotopicalAlgebra.Localization.IteratedExistence
+public import SerrePositivity.HomotopicalAlgebra.Localization.Enriched
+public import SerrePositivity.HomotopicalAlgebra.Localization.MonoidalUnit
 public import SerrePositivity.HomotopicalAlgebra.Quillen.FibrantCriterion
 public import SerrePositivity.HomotopicalAlgebra.Localization.LocalLeftProper
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor
