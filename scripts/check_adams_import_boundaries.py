@@ -51,6 +51,7 @@ common = [name for name in graph if name.startswith((
     'SerrePositivity.HomologicalAlgebra.CochainIdempotent'))]
 common += ['SerrePositivity.HomologicalAlgebra.CochainBiproduct',
            'SerrePositivity.HomologicalAlgebra.CochainAcyclic',
+           'SerrePositivity.HomologicalAlgebra.CochainTwoTermScalarMap',
            'SerrePositivity.HomologicalAlgebra.CochainKernelLift',
            'SerrePositivity.HomologicalAlgebra.KoszulOneCoordinates']
 for name in common:
