@@ -6709,3 +6709,60 @@ A0・A1全体は未完了。残る受入項目は次のとおり。
    証明する。任意のaccessible関手のfull imageがaccessibleだという仮定は使わない。
 5. 最終入力だけでA0/A1を使う利用例、全宣言の公理監査、共有入口とスペクトル側の
    回帰検証をそろえて完成を判定する。
+
+
+## 165. A0完了とA1のfiltered colimit・包含（2026-10-15）
+
+### 165.1 A0の構成と受入条件
+
+生成射の両端点の可呈示性から、Mathlibの実際の小対象因子分解のaccessibilityを
+証明した。セル付加や反復のaccessibilityを追加仮定として残していない。
+
+| 構成 | 実装と結論 |
+| --- | --- |
+| squareとcoproduct | `Smith/DependentCopower`の左随伴性と`Smith/AccessibleSquares`の表現可能性。Mathlibの`FunctorObjIndex`による実際のcoproductへ自然同型で接続 |
+| セル付加 | `Smith/AccessibleCellAttachment`。関手圏のpushoutで`SmallObject.functor`そのもののκ-accessibilityを証明 |
+| 小対象分解 | `Smith/AccessibleSmallObject`。実際の超限反復・Z・左右因子を統合。反復基数μとaccessibilityのκは独立 |
+| 宇宙の一般化 | `Smith/AccessibleHomTransport`。`ShrinkHoms`による持ち上げクラスの対応と元の圏への分解データの移送。`Small.{w} ι`の大きい添字にも対応 |
+| I/Jの共通基数 | `Smith/AccessibleGeneratedPair`。両生成クラスの両端点に共通のκを選び、二つの分解を同時に構成 |
+| 両モデル分解とQ/R | `Smith/AccessibleModelFactorizations`。最終入力はMathlibモデル圏、局所可呈示性、既存の`CofibrantlyGenerated I J`。両Z・左右四因子・Q/Rが共通κでaccessible |
+
+Q/Rの自然比較は実際のtrivial fibration/trivial cofibrationであり、Q/Rの対象の
+cofibrancy/fibrancyも公開した。`atLarger`により同じ分解データは任意の大きい
+正則基数でも使える。任意に選んだ関手的分解のaccessibilityを推論するものではない。
+対象・射・小対象論法の三つの宇宙は独立であり、射の宇宙がwに等しい場合だけには
+制限していない。§164.4の1〜3とA0の受入条件を満たした。
+
+構成のコミット：`ca791e7`、`625afc0`、`864a2a7`、`d6c3803`、`2b9f7c9`。
+
+### 165.2 A1で証明済みの範囲
+
+`Smith/AccessibleLiftingClosure`はIの両端点のκ-可呈示性からI.rlpのκ-filtered
+colimit閉性を証明する。`Smith/WeakEquivalenceFilteredColimits`は、第二モデル
+分解の右因子がtrivial fibrationであることと元の射が弱同値であることの同値を
+証明し、元の弱同値のfull subcategoryが十分大きいκでκ-filtered colimitを持ち、
+その包含がκ-accessibleであることをcombinatorialモデルの最終入力だけから導く。
+
+**A1は未完了**。弱同値部分圏自体の小さい可呈示生成族はまだ構成していない。
+包含のaccessibilityと部分圏自体のaccessibilityを区別し、任意のaccessible関手の
+full imageがaccessibleであるという仮定は使っていない。
+次は小さい持ち上げ・弱反射の一般論と必要なaccessible-category閉操作を証明して、
+この生成族を構成する。依頼全体A0・A1の完了判定はその後に行う。
+
+A1の証明ファイルは共有作業木で`1ed4144`に収録され、共有入口・README・監査対象の
+統合は`ffcc2b8`でコミットした。
+
+### 165.3 検証
+
+以下はすべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`（1487 jobs）。
+- `check_accessible_squares`、`check_accessible_cell_attachment`、`check_accessible_small_object`。
+- `check_accessible_model_factorizations`（一般の宇宙、最終入力から両分解・左右因子・Q/R、基数の拡大、全55宣言の標準公理監査）。
+- `check_weak_equivalence_filtered_colimits`（一般のcolimit cocone、元の弱同値判定、最終入力からの包含、全10宣言の標準公理監査）。
+- `audit_homotopical_foundations`（738宣言・49モジュール、標準公理のみ）。
+- `check_smith_existence`、`check_homotopical_foundations`、`check_spectra_stage2`。
+- `git diff --check`。
+
+新規sorry・引用axiomはない。他チャットの変更を保持し、その変更を含む計画ファイル
+全体を一括してコミットしない。
