@@ -1770,3 +1770,27 @@ U10全受入は未完。semifreeの存在と全Hom endによる射影性は揃�
 quasiIsoによるHomの不変性と局所化内の比較射・選択独立性を証明する。
 K(D)/D(D)の三角構造・Verdier商比較、余積・局所小性の宇宙、
 一対象同値の三角形/余積保存も引き続き残る。共有一般論の新しい不足要求はない。
+
+
+### 13.45 U10b6a：射影的始域からacyclic加群への全dg自然なホモトピー
+
+`Derived/ProjectiveHomotopy.lean` はhomotopically projectiveなMとacyclicなNについて、
+任意の二射f/g:M→Nが `ModuleHomotopy` で結ばれることを証明する。
+両射の閉次数零cycleの差に対し、主Hom endのacyclic性から次数−1の原像を取り出す。
+従って全斉次作用に対して自然なホモトピーであり、対象ごとの独立なホモトピーで代用しない。
+`moduleHomotopicallyProjective_homotopy_map_eq` はK(D)での像の一致を公開する。
+
+`Checks/ProjectiveHomotopy.lean` は零射とのホモトピーとK(D)での二射の一致を検証する。
+同入口・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3199 jobs）。
+直接実行の主要2宣言は標準公理のみ。累計760宣言。
+共有基盤更新後、今回追加した受入入口全7本を直接Leanで再検査し、
+今回の主要52宣言すべてが標準公理のみであることを再確認した。
+担当Leanのsorry/admit/新規axiomは0件、担当diff --checkは成功。
+全体文書検査の並行系列olean制限は§13.44を維持する。
+
+U10全受入は未完。このホモトピー消滅だけで局所化内のHom計算が完了したとは主張しない。
+次はquasiIsoの後合成による全Homの不変性を証明し、射影解像度から導来Homを計算して、
+比較射・解像度の選択独立性を確定する。
+その後K(D)/D(D)の三角構造・Verdier商比較、導来余積と局所小性、
+一対象Aの既存導来圏との同値の三角形/余積保存を完成する。
+共有一般モデル圏/Quillen/転送/SM7の重複はなく、これらの作業を先行条件にもしていない。
