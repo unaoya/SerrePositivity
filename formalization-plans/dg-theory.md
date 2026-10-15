@@ -2916,3 +2916,21 @@ U11b全体は未完。次は純粋斉次Homの合成式とcurried bimoduleとの
 Checks.TensorElementsのビルドは成功（1771 jobs）、直接実行は終了コード0。
 主要2宣言の公理は標準公理のみ。監査累計1195宣言。
 U11bは継続中。次は作用族からの全Hom endへの構成子、積dg圏上の関手との両方向比較。
+
+
+### 17.5 U11b4：全次数自然な作用族からの再構成
+
+`Bimodule/OfActions.lean`はCの対象で添字づけた右B加群と、
+各Hom_Cをパラメータとする全次数自然変換族、対象ごとの単位・合成式からbimoduleを構成する。
+全Hom endへの射は既存`moduleHomEquiv`の逆写像であり、各評価での計算式を公開した。
+既存bimoduleからの作用族の抽出、その単位・合成式、抽出して再構成した際の等式も証明した。
+これはcurried作用族の往復であり、積dg圏上の関手とのuncurrying同値を証明済みとはしない。
+
+Checks.BimoduleOfActionsのビルドは成功（1785 jobs、警告なし）。直接実行は終了コード0、
+主要6宣言の公理は標準公理のみ。監査累計1201宣言。
+§17.3の同時ビルド（新Checks3本・既存StageSeven・Spectra.StageTwo）は終了コード0で成功（2645 jobs）。
+既存cone shift三角形の再検証に287秒を要したが、上限や共有APIは変更していない。
+§17.4と本節はその後の個別Checksで検証した。
+U11b全受入は未完。次はtensor積dg圏のHom射から作用族を抽出し、
+本構成子へ接続してuncurryingの両往復・符号を検証する。その後U11cのbalanced tensorへ進む。
+U12〜U17、D4m、リファクタリングは今回の実装ではまだ着手していない。
