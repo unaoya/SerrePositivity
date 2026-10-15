@@ -1266,3 +1266,14 @@ ordinary RMapとV値derived Homの局所対象・局所同値の等式とfibrant
 `Monoidal/CofibrantTensor.tensorRight_isLeftQuillen`はcofibrantな係数の場合を実際のbraidingで移送する。
 共有入口2563 jobs、4359宣言・376モジュールの標準公理監査が成功。共有層はSpectraをimportしない。
 実装`3c9a992b`。適用先のS1の進捗と残るΩ_K検出の接続は計画§215。
+
+
+## fibrant対象間のresolution Homテストと小さい検出族（2026-10-16）
+
+`Localization/FrameTargetTests`は実際のreplacement単位の弱いsquareから、frame-Homのtarget置換を外す。
+`ResolutionHomGenerators.exists_small_cofibrant_resolution_generators`は、小さいcofibrant検出族を元のHom宇宙へ
+移し、fibrant対象間の元の弱同値を実際のsource resolutionからのHomで検出する。
+族の存在はCの局所可呈示性と生成表示から証明し、全ての指定source分解で機能する。
+共有入口を含む最終ビルド2819 jobs、4363宣言・378モジュールの標準公理監査が成功。
+L1生成族・段階2の回帰確認も成功。共有層はSpectraをimportしない。
+実装`c2aaa9ee`。この適用によるS1全体の完成と受入条件は計画§216。

@@ -81,3 +81,19 @@ check_simplicial_model_inputs.leanはその区別を保った利用例と26宣�
 新規sorry・引用axiomなし。実装`42d28824`・`3c9a992b`。
 S1全体は未完了。残るのは小さいホモトピー生成族の検出との接続と局所fibrant↔Ω_Kの最終同値。
 S2・S3は引き続き未完了。計画§215に証明済みの範囲と残る手順を明記した。
+
+
+## S1完了：局所fibrant対象とレベルfibrantなΩ_K対象（2026-10-16）
+
+`LevelFacts`は実際のレベル弱同値・fibrationの同定から評価・自由関手のQuillen性と
+fibrancyの各段による判定を証明する。`Stable/OmegaDetection`は既存の通常の局所性を、
+実際のRSp(E)の随伴構造射のHomテストとして計算し、小さい検出族によってΩ_K条件へ移す。
+fibrant Eについては、実際のreplacement単位を評価した弱同値とΩ_Kの不変性でE自身へ戻す。
+
+`OmegaLocalObjects.exists_omega_localizingMaps`は、一般C,Kと元のレベルクラス・指定分解から、
+小さいcofibrant族、実際の局所化射の小ささと両端点のcofibrancy、全Eの局所fibrant↔Ω_Kを同時に出力する。
+検出族とその検出能力はCのcombinatorial性から構成し、入力に戻さない。
+`check_spectrum_omega_local_objects`ではS0のモデルと両分解も構成する最終利用例を検証した。
+11宣言・5モジュールの公理監査、§215の38宣言・7モジュール、L1・段階2の回帰が成功。
+新規sorry・引用axiomなし。実装`e123a735`・`c2aaa9ee`。計画§216でS1完了。
+S2の実際の安定局所化モデルとS3の通常の安定性の比較は引き続き未完了。

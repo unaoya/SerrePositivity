@@ -6310,7 +6310,7 @@ IDは計画上の単位であり、1行を1コミットや1日とみなさない
 | L5（完了、§211） | Localization/Replacement, UniversalProperty, IteratedExistence | L4,F2 | 実際のL_Sとη、冪等性、W_Sの関手による検出、Quillen普遍性、生成表示・置換の独立性、S⊆Tと反復局所化の比較 |
 | E0（完了、§213） | Localization/EnrichedExistence, MonoidalExistence | L4,L5、既存SM7 | 通常局所化・V豊穣局所化を区別。追加のtractability/生成始域cofibrancyとtensor適合条件を明示し、局所SM7・pushout-product・単位を証明 |
 | S0（完了、§214） | Spectra/ModelCategory/Combinatorial, LeftProper | R1,A0、既存レベル構造 | 一般C,Kの対称スペクトルの局所可呈示性と必要条件下の左固有性。Mod型・余極限・accessibleなmonad等の比較を証明し、圏の名前だけで推論しない |
-| S1 | Spectra/Stable/LocalizingMaps, Omega | S0,L0、既存free/evaluation | F_(n+1)(QA⊗K)⟶F_n(QA)を実際の射として構成。Sの小ささ、cofibrant性、局所fibrant対象とΩ_K対象の同値 |
+| S1（完了、§216） | Spectra/Stable/LocalizingMaps, Omega | S0,L0、既存free/evaluation | F_(n+1)(QA⊗K)⟶F_n(QA)を実際の射として構成。Sの小ささ、cofibrant性、局所fibrant対象とΩ_K対象の同値 |
 | S2 | Spectra/Stable/ModelCategory, EnrichedModel | S1,L4,E0 | 一般定理を適用した安定モデル、三クラス・生成性・局所置換・monoidal/SM7。具体的存在引用を追加しない |
 | S3 | Spectra/Stable/Stability, SimplicialComparison | S2、既存円tensor/随伴 | K-tensorの導来可逆性と通常の懸垂の安定性を区別。PSS/S¹で円tensorと導来Σを比較し、Σ⊣Ωの同値・旧APIの互換性を検証 |
 
@@ -10580,3 +10580,87 @@ Kがcofibrantなら、レベルfibrant対象間のレベル弱同値でこの述
 RSp(E)から元のレベルfibrant Eへの215.4のΩ_K不変性による移送を行う。
 これを終えて局所fibrant↔Ω_Kを最終入口で検証するまで、S1を完了扱いにしない。
 その後S2の実際の安定局所化モデル、S3の導来K可逆性と通常の安定性の比較へ進む。
+
+
+## 216. S1完了：小さい実際の局所化射と局所fibrant↔Ω_K（2026-10-16）
+
+§215の残項目を解消し、S1の受入条件を完了した。
+F→L→E→S全体は継続中。次はS2の実際の安定局所化モデル、続いてS3であり、
+F1の指定分解なしの任意モデル源の最終関手も引き続き未完了。
+
+### 216.1 共有target比較と生成族の検出
+
+`Localization/FrameTargetTests.lean`は、frameからのHomに対し、fibrant対象間の射fと、
+指定したfibrant replacementによるR(f)の弱同値テストが一致すると証明する。
+frame-Homの右Quillen性と、実際のreplacement単位上のBrown補題によって弱いsquareを得て、
+2-out-of-3で比較する。Rを恒等関手として扱ったり、新しいmapping-spaceの定義へ取り替えたりしない。
+`chosenResolutionHom_map_iff`は、指定したsource resolutionについてこの比較を供給する。
+
+`Localization/ResolutionHomGenerators.lean`は、既存の小さいcofibrantホモトピー生成族を、
+small-Homの宇宙から元のHom宇宙へ移す。実際のtarget Arrow比較と証明済みのSSet宇宙移送を使用する。
+216.1のtarget比較により、fibrant対象間の元の弱同値を
+Hom(Q^bullet(G_i),f)の弱同値性で検出する小さいcofibrant族を構成する。
+族は全ての指定source分解について機能する。target分解は存在証明の中で生成表示から供給し、
+最終出力の検出条件には残さない。Cの局所可呈示性と生成表示だけから族を取り出し、
+Cをsimplicial・tractable・全対象cofibrantな源へ制限していない。
+
+### 216.2 実際のレベルクラスとfibrancy
+
+`Spectra/ModelCategory/LevelFacts.lean`は、実際のスペクトルモデルの弱同値とfibrationが
+各段で検出されるという二つの同定から、評価の右Quillen性とF_nの左Quillen性を導く。
+モデルの構成を展開する必要がなく、S0の存在パッケージにも適用できる。
+さらに、fibrationの同定と評価によるterminal対象の保存から、
+スペクトルのfibrancyと全レベルのfibrancyの同値を証明した。
+この逆向きも含む同値を、後述の最終Ω_K判定に使用する。
+
+### 216.3 Ω_K条件と元の通常の局所性の同値
+
+`Stable/OmegaDetection.lean`は、§215.4の通常の局所対象の計算を216.1の検出族へ接続する。
+まず任意Eについて、元の局所性がRSp(E)のΩ_K条件と同値であると証明する。
+RSp(E)の各レベルは評価の右Quillen性によりfibrantであり、
+cofibrantなKに対する内部Homの右Quillen性により、随伴構造射の終域もfibrantになる。
+したがって検出定理を各随伴構造射へ適用できる。
+
+E自身が元モデルでfibrantなら、replacement単位E→RSp(E)を各段へ評価した射もBrown補題で弱同値。
+§215のΩ_K条件の不変性により、局所性がE自身のΩ_K条件と同値だと証明する。
+元の弱同値を使って独立に定義したΩ_K述語と、元のRMapで定義した局所性を比較しており、
+どちらかを他方で定義し直していない。
+
+### 216.4 S1最終入口
+
+`Stable/OmegaLocalObjects.lean`の`exists_omega_localizingMaps`は、一般C,Kのレベルモデルについて、
+以下を同時に出力する。
+
+- 補助宇宙wで小さい添字型ιと、実際に構成したcofibrantな検出族G_i。
+- 実際のF_(n+1)(G_i⊗K)→F_n(G_i)からなるw-smallな局所化射クラス。
+- 全局所化射の両端点の元レベルモデルでのcofibrancy。
+- 指定したスペクトルの両モデル分解で作る元の`localFibrantObjects`と、
+  独立に定義したレベルfibrantなΩ_K対象の述語との、全Eについての同値。
+
+G_iは既存の一般的構成で小さい通常の検出族を実際にcofibrant resolutionへ置き換えて得る。
+§215の任意QA版の局所化射と両端点の証明も維持する。
+最終入口に検出族・その検出能力・F_nのQuillen性・レベルfibrancy判定を追加の仮定として要求しない。
+Cの局所可呈示性と生成表示、KのcofibrancyとtensorのQuillen条件、元レベルモデルのクラスの同定、
+指定分解、および従来と同じSSetモデルの宇宙・クラス契約が入力である。
+この入口にはCのmonoidal単位のcofibrancyは不要である。
+
+### 216.5 最終受入検証・コミット
+
+すべて成功した。
+
+- `lake build SerrePositivity.Spectra.Stable.OmegaLocalObjects SerrePositivity.HomotopicalAlgebra.Foundations`：2819 jobs。
+- `check_spectrum_omega_local_objects`：一般monoidalなC・cofibrantな単位とKからS0の実際のレベルモデルを構成し、
+  生成表示から両指定分解も構成してS1の最終入口へ適用する利用例。
+  モデルの存在・分解の存在・小さい検出族・局所fibrant↔Ω_Kを入力しない。
+  独立した対象・射・小ささの宇宙を持ち、11宣言・5モジュールの標準公理監査も成功。
+- `check_spectrum_stabilization_maps`：実際の局所化射・小ささ・両端点・frame比較の回帰確認、38宣言・7モジュール。
+- `check_homotopy_generators`：既存のL1検出族と共通基数の回帰確認、15宣言・6モジュール。
+- `check_spectra_stage2`：既存段階2の回帰確認。
+- `audit_homotopical_foundations`：4363宣言・378モジュール、標準公理のみ。
+- 各コミットのstage差分の`git diff --cached --check`。
+
+新規sorry・引用axiomはない。スペクトル側`e123a735`、共有一般論`c2aaa9ee`へコミットした。
+共有作業木の他チャットの変更を保持した。
+次はS2：証明済みの一般Bousfield局所化存在をこの小さい実際の射クラスへ適用し、
+安定モデルの三クラス・生成性・局所置換、必要条件下の豊穣SM7・monoidal性へ接続する。
+S3の導来K可逆性と通常の安定性の比較は別の受入条件として維持する。
