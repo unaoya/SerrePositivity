@@ -252,6 +252,16 @@ Mathlibの`SolutionSetCondition`から各源射の小さい代表族を選択す
 R1で小さい族の共通cardinalとSOA、R2でこれらの標的を`cof(I) ∩ W`へ改良し、
 R3でSmith認識を完成させる。今回R0だけからモデル構造・局所化存在は主張しない。
 
+## Smith R1：共通基数と小対象論法（2026-10-15）
+
+`Smith/Smallness.lean`は、小さい可呈示対象族に共通の正則可呈示基数を構成する。
+`exists_common_arrow_presentability`は生成射の始域・終域を同じ基数で扱い、
+`hasSmallObjectArgument`は局所可呈示な圏の小さい射クラスからMathlibの
+`HasSmallObjectArgument`を証明する。モデル構造は仮定せず、R0の
+`solutionTargetsForClass`にも適用できる。宇宙`w`の小ささと余極限をそろえ、
+SOAから小ささを得る既存APIとの循環を避けるため、後者はinstance登録しない。
+検証は`scripts/check_smith_smallness.lean`と共有入口の公理監査で行う。
+
 `check_smith_solution_set`はモデル構造のない抽象圏で、独立した宇宙、CommSqの左右成分、
 小さい射族/射クラス全体の分解、空の射族、General/StageTwoとの併用を検証する。
 同スクリプトはこのモジュールの全宣言を標準公理のみで監査する。
