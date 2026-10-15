@@ -1,0 +1,9 @@
+import SerrePositivity.PerfectComplex.DegreewiseRetract
+import SerrePositivity.PerfectComplex.RankOneTensorTripleExt
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.strictlyPerfectComplex_of_degreewiseRetract
+assert_no_sorry SerrePositivity.moduleRankOne_smul_generator
+assert_no_sorry SerrePositivity.rankOneTensorTriple_hom_ext
+#print axioms SerrePositivity.strictlyPerfectComplex_of_degreewiseRetract
+#print axioms SerrePositivity.rankOneTensorTriple_hom_ext

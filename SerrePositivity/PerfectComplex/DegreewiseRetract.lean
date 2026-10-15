@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.PerfectComplex.ClosedSupportRelations
+public import SerrePositivity.PerfectComplex.HomotopyCategory
 
 /-! # Perfectness of degreewise retracts
 

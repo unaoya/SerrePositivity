@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.PerfectComplex.TensorTriple
+public import Mathlib.Algebra.Category.ModuleCat.Monoidal.Basic
 
 /-! # Detecting maps from a tensor of three rank-one modules by one generator -/
 

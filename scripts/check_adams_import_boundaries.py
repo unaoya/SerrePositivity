@@ -91,6 +91,14 @@ check('SerrePositivity.PerfectComplex.IdempotentImageClass',
       dep.startswith('SerrePositivity.KTheory.Adams.'))
 print('Idempotent image classes are independent of Adams and Euler/localization comparisons.')
 
+check('SerrePositivity.PerfectComplex.DegreewiseRetract',
+      lambda dep: '.KTheory.' in dep or dep in {
+          'SerrePositivity.PerfectComplex.ClosedSupportK0',
+          'SerrePositivity.CategoryTheory.TriangulatedK0'})
+rank_one_ext = 'SerrePositivity.PerfectComplex.RankOneTensorTripleExt'
+check(rank_one_ext, lambda dep: dep != rank_one_ext and upper_layer(dep))
+print('Degreewise retracts and rank-one tensor extensionality avoid Grothendieck groups.')
+
 general = ['AlternatingSum', 'FiniteSupportBounds', 'ExactImageSequence', 'HomotopyConeRepresentative',
            'HomotopyProperty', 'TriangulatedK0Shift']
 for name in general:
