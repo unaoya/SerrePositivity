@@ -1794,3 +1794,28 @@ U10全受入は未完。このホモトピー消滅だけで局所化内のHom�
 その後K(D)/D(D)の三角構造・Verdier商比較、導来余積と局所小性、
 一対象Aの既存導来圏との同値の三角形/余積保存を完成する。
 共有一般モデル圏/Quillen/転送/SM7の重複はなく、これらの作業を先行条件にもしていない。
+
+
+### 13.46 U10b6b：coneの斉次包含・射影と全次数後合成
+
+`Module/ConeElements.lean` はconeの左包含（次数−1）、第一射影（次数+1）、
+第二射影（次数0）を主Hom endの要素として構成する。
+各射影はMathlibのmappingConeのcochainと一致し、全整数次数の加群作用に関する
+Koszul符号付き自然性を証明した。
+左包含の微分は元の射と右包含の合成の閉零cycle、第一射影の微分は零である。
+第二射影は既存の次数付き分裂のretractionを再利用する。
+
+`Module/Postcomposition.lean` は豊穣合成をbraiding後に転置し、
+`Hom_D(M,N) → Hom_Ch(A)(Hom_D(T,M),Hom_D(T,N))` をchain mapとして構成する。
+成分は通常順の合成となり、braidingと豊穣合成の二つのKoszul符号が相殺する。
+全次数の評価・微分との整合性と、閉次数零射での既存後合成との一致を証明した。
+
+`Checks/ConeElements.lean` とStageSix・既存Spectra.StageTwoの同時ビルドは成功（3205 jobs）。
+直接実行の主要14宣言は標準公理のみ。累計774宣言。
+全体文書検査は21 Markdown/311参照で0 failuresとなり、§13.44の未生成olean制限は今回解消した。
+担当Leanのsorry/admit/新規axiomは0件、担当差分の空白検査は成功。
+
+U10全受入は未完。次は左包含の微分をこの転置で運び、
+`cone(Hom_D(T,f)) → Hom_D(T,cone(f))` をMathlibのdescから構成して全次数同型性を証明する。
+その比較から射影的始域でのquasiIso不変性、導来Hom・選択独立性へ進む。
+三角構造・Verdier商・導来余積/局所小性・一対象比較の保存性も残る。
