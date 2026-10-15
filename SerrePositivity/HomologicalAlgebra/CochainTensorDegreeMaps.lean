@@ -104,13 +104,4 @@ lemma cochainTensorDegreeMap_partition (a b : ∀ i, P.X i ⟶ P.X i)
     abel
   simpa only [h, cochainTensorDegreeMap_id] using he
 
-@[simp]
-lemma cochainTensorMap_zero_zero : cochainTensorMap (0 : P ⟶ P') (0 : Q ⟶ Q') = 0 := by
-  change (0 : P ⟶ P') ⊗ₘ (0 : Q ⟶ Q') = 0
-  exact MonoidalPreadditive.tensor_zero (0 : P ⟶ P')
-
-@[simp]
-lemma cochainTensorMap_zero_right (f : P ⟶ P') : cochainTensorMap f (0 : Q ⟶ Q') = 0 := by
-  exact MonoidalPreadditive.tensor_zero f
-
 end SerrePositivity

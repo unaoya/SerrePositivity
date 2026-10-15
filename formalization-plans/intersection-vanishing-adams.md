@@ -5015,7 +5015,7 @@ R12–R20 のコードをコミットした後、以下をすべて確認した�
 | R38b | 零因子のテンソルに mathlib の Unique インスタンスを利用 | 完了：長さ理論3箇所の零テンソルをinferInstanceから導出し、旧公開型を維持。3対象2814 jobs、専用3宣言の公理監査が成功。ログ `/tmp/adams-r38b-{build,audit}.log` |
 | R39a | 重みの積の基本演算を重み分解・半局所化から分離 | 完了：WeightProductの証明本文を保ち、利用先と既存監査でWeightDecompositionを明示import。CupVanishingまで3345 jobs、基本5宣言・既存射影と重み分解の公理監査、新しい依存ゲートが成功。ログ `/tmp/adams-r39a-{build,basic-audit,projectors-audit}.log` |
 | R39b | K₀・G₀ の係数拡大による右完全性の共通化 | 完了：CoefficientExactnessの一般補題を3箇所で共用し、平坦性を追加しない。K₀係数局所化まで3246 jobs、専用4宣言・既存局所化の公理監査、係数基盤の独立性を含む全依存ゲートが成功。ログ `/tmp/adams-r39b-{build,audit,localization-audit}.log` |
-| R40a | 一般テンソル写像の13補題を共通の線形性基盤へ集約 | 未着手：有限和はmathlibを利用し、三乗の射影から対合への依存を除く |
+| R40a | 一般テンソル写像の13補題を共通の線形性基盤へ集約 | 完了：13公開シグネチャ・11証明本文を維持し、有限和2補題はmathlibから導出。両固有部分のテンソル類・二乗shuffle・DG閉構造・導来対称構造2887 jobs、共通13宣言と三乗射影10宣言の公理監査、対合依存を禁じる追加ゲートが成功。ログ `/tmp/adams-r40a-{build,common-audit,cubic-audit}.log` |
 | R40b | 空の台の係数付きK₀の零性を基本APIへ移動 | 未着手：Adams側の旧名を維持し、零テンソルの既存インスタンスを利用する |
 | R32 | 両 Adams 族・並行利用先・公開消滅定理の統合検証 | 未着手：再監査の R33–R40 も含めて最後に実行 |
 

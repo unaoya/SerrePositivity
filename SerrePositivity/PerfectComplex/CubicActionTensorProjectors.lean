@@ -4,7 +4,7 @@ public import SerrePositivity.PerfectComplex.CubicActionTensor
 public import SerrePositivity.PerfectComplex.CubicActionDecomposition
 public import SerrePositivity.PerfectComplex.CubicActionEigenvectors
 public import SerrePositivity.PerfectComplex.IdempotentTensor
-public import SerrePositivity.PerfectComplex.InvolutionTensor
+public import SerrePositivity.HomologicalAlgebra.CochainTensorLinear
 
 /-! # Nine orthogonal character projectors of a tensor product of cubic actions -/
 
@@ -16,26 +16,6 @@ universe u
 namespace SerrePositivity
 open CategoryTheory Category Limits Preadditive
 variable {R : Type u} [CommRing R]
-
-lemma cochainTensorMap_sum_left {J : Type*}
-    {P P' Q Q' : CochainComplex (ModuleCat.{u} R) ℤ}
-    (s : Finset J) (f : J → (P ⟶ P')) (g : Q ⟶ Q') :
-    cochainTensorMap (∑ j ∈ s, f j) g = ∑ j ∈ s, cochainTensorMap (f j) g := by
-  classical
-  induction s using Finset.induction_on with
-  | empty => simp only [Finset.sum_empty, cochainTensorMap_zero_left]
-  | @insert j s hj ih =>
-    rw [Finset.sum_insert hj, Finset.sum_insert hj, cochainTensorMap_add_left, ih]
-
-lemma cochainTensorMap_sum_right {J : Type*}
-    {P P' Q Q' : CochainComplex (ModuleCat.{u} R) ℤ}
-    (s : Finset J) (f : P ⟶ P') (g : J → (Q ⟶ Q')) :
-    cochainTensorMap f (∑ j ∈ s, g j) = ∑ j ∈ s, cochainTensorMap f (g j) := by
-  classical
-  induction s using Finset.induction_on with
-  | empty => simp only [Finset.sum_empty, cochainTensorMap_zero_right]
-  | @insert j s hj ih =>
-    rw [Finset.sum_insert hj, Finset.sum_insert hj, cochainTensorMap_add_right, ih]
 
 namespace CochainCubicAction
 variable {K L M : CochainComplex (ModuleCat.{u} R) ℤ} [Invertible (3 : R)]

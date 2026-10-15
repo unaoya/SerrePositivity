@@ -51,14 +51,4 @@ def cochainTensorHomotopyEquiv {P P' Q Q' : CochainComplex (ModuleCat.{u} R) ℤ
     exact (cochainTensorHomotopyLeft e.homotopyInvHomId _).trans
       (cochainTensorHomotopyRight _ f.homotopyInvHomId)
 
-lemma cochainTensorMap_smul_left {P P' Q Q' : CochainComplex (ModuleCat.{u} R) ℤ}
-    (r : R) (f : P ⟶ P') (g : Q ⟶ Q') :
-    cochainTensorMap (r • f) g = r • cochainTensorMap f g := by
-  change (r • f) ⊗ₘ g = r • (f ⊗ₘ g)
-  simp [tensorHom_def, Linear.smul_comp]
-
-@[simp] lemma cochainTensorMap_zero_left {P P' Q Q' : CochainComplex (ModuleCat.{u} R) ℤ}
-    (g : Q ⟶ Q') : cochainTensorMap (0 : P ⟶ P') g = 0 := by
-  exact MonoidalPreadditive.zero_tensor g
-
 end SerrePositivity

@@ -94,6 +94,10 @@ check('SerrePositivity.KTheory.Adams.WeightProduct',
       lambda dep: dep in weight_decomposition or dep in coefficient_comparison)
 print('Products of eigenclasses are independent of weight decomposition and localization comparisons.')
 
+check('SerrePositivity.PerfectComplex.CubicActionTensorProjectors',
+      lambda dep: dep.startswith('SerrePositivity.PerfectComplex.Involution'))
+print('Cubic tensor projectors are independent of involution implementations.')
+
 check('SerrePositivity.PerfectComplex.InvolutionClassAcyclic',
       lambda dep: dep.startswith('SerrePositivity.KTheory.Adams.'))
 print('The general acyclic involution class is independent of Adams implementations.')

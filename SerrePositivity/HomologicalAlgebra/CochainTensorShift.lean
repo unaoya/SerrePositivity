@@ -66,16 +66,6 @@ lemma ιTensorObj_cochainTensorShiftRight (P Q : CochainComplex (ModuleCat.{u} R
   CochainComplex.ι_mapBifunctorShift₂Iso_hom_f P Q (curriedTensor (ModuleCat.{u} R))
     s i j n h (j + s) (n + s) rfl rfl
 
-lemma cochainTensorMap_add_left {P P' Q Q' : CochainComplex (ModuleCat.{u} R) ℤ}
-    (f f' : P ⟶ P') (g : Q ⟶ Q') :
-    cochainTensorMap (f + f') g = cochainTensorMap f g + cochainTensorMap f' g := by
-  exact MonoidalPreadditive.add_tensor f f' g
-
-lemma cochainTensorMap_add_right {P P' Q Q' : CochainComplex (ModuleCat.{u} R) ℤ}
-    (f : P ⟶ P') (g g' : Q ⟶ Q') :
-    cochainTensorMap f (g + g') = cochainTensorMap f g + cochainTensorMap f g' := by
-  exact MonoidalPreadditive.tensor_add f g g'
-
 /-- The functor of tensoring on the right with a fixed complex. -/
 abbrev cochainTensorFixedRight (Q : CochainComplex (ModuleCat.{u} R) ℤ) :=
   (curriedTensor (ModuleCat.{u} R)).map₂CochainComplex.flip.obj Q

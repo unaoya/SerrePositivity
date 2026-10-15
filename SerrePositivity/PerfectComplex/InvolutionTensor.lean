@@ -3,8 +3,7 @@ module
 public import SerrePositivity.PerfectComplex.IdempotentTensor
 public import SerrePositivity.PerfectComplex.IdempotentSum
 public import SerrePositivity.PerfectComplex.InvolutionMaps
-public import SerrePositivity.PerfectComplex.TensorShift
-public import SerrePositivity.PerfectComplex.TensorDegreeMaps
+public import SerrePositivity.HomologicalAlgebra.CochainTensorLinear
 
 /-! # The four tensor eigenspace projectors of two involutions -/
 
@@ -16,30 +15,6 @@ universe u
 namespace SerrePositivity
 open CategoryTheory Category Limits MonoidalCategory HomologicalComplex
 variable {R : Type u} [CommRing R]
-
-lemma cochainTensorMap_smul_right {P P' Q Q' : CochainComplex (ModuleCat.{u} R) ℤ}
-    (r : R) (f : P ⟶ P') (g : Q ⟶ Q') :
-    cochainTensorMap f (r • g) = r • cochainTensorMap f g := by
-  change f ⊗ₘ (r • g) = r • (f ⊗ₘ g)
-  simp [MonoidalCategory.tensorHom_def, Linear.comp_smul]
-
-lemma cochainTensorMap_neg_left {P P' Q Q' : CochainComplex (ModuleCat.{u} R) ℤ}
-    (f : P ⟶ P') (g : Q ⟶ Q') : cochainTensorMap (-f) g = -cochainTensorMap f g := by
-  simpa using cochainTensorMap_smul_left (-1 : R) f g
-
-lemma cochainTensorMap_neg_right {P P' Q Q' : CochainComplex (ModuleCat.{u} R) ℤ}
-    (f : P ⟶ P') (g : Q ⟶ Q') : cochainTensorMap f (-g) = -cochainTensorMap f g := by
-  simpa using cochainTensorMap_smul_right (-1 : R) f g
-
-lemma cochainTensorMap_sub_left {P P' Q Q' : CochainComplex (ModuleCat.{u} R) ℤ}
-    (f f' : P ⟶ P') (g : Q ⟶ Q') :
-    cochainTensorMap (f - f') g = cochainTensorMap f g - cochainTensorMap f' g := by
-  simp only [sub_eq_add_neg, cochainTensorMap_add_left, cochainTensorMap_neg_left]
-
-lemma cochainTensorMap_sub_right {P P' Q Q' : CochainComplex (ModuleCat.{u} R) ℤ}
-    (f : P ⟶ P') (g g' : Q ⟶ Q') :
-    cochainTensorMap f (g - g') = cochainTensorMap f g - cochainTensorMap f g' := by
-  simp only [sub_eq_add_neg, cochainTensorMap_add_right, cochainTensorMap_neg_right]
 
 namespace CochainInvolution
 variable {P Q : CochainComplex (ModuleCat.{u} R) ℤ}
