@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.DeltaPDivisionPairRegular
 import SerrePositivity.BhattScholze.DeltaAdjoinDivisionSum
 import SerrePositivity.BhattScholze.DeltaAdjoinDivisionResidueRegular
 import SerrePositivity.BhattScholze.DeltaPDivisionSourceDerivedPrincipal
@@ -5125,3 +5126,9 @@ assert_no_sorry SerrePositivity.BhattScholze.deltaAdjoinDivisionSumEquiv_variabl
 
 assert_no_sorry SerrePositivity.BhattScholze.deltaAdjoinDivisionSumEquiv_variable_inr
 #print axioms SerrePositivity.BhattScholze.deltaAdjoinDivisionSumEquiv_variable_inr
+
+assert_no_sorry SerrePositivity.BhattScholze.deltaPDivisionPair_p_mul_injective
+#print axioms SerrePositivity.BhattScholze.deltaPDivisionPair_p_mul_injective
+
+assert_no_sorry SerrePositivity.BhattScholze.deltaPDivisionPairPower_p_mul_injective
+#print axioms SerrePositivity.BhattScholze.deltaPDivisionPairPower_p_mul_injective
