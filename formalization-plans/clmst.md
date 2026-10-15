@@ -4889,6 +4889,23 @@ augmentationをtensorし離散tensor比較を通した実cochain写像の局所�
 既存の積・単位の環法則と導来単一対象関手のlax対称モノイダル構造を証明する。
 完備化への乗法の延長、H⁰環とPDCompletionH0比較、D・KLの具体的perfectoid入力は残る。
 
+共通基盤の追加要求G9受領（2026-10-15）：BSチャットから、有界p冪ねじれを持つ係数環T上の
+実p導来完備な上有界対象Xについて、実T/(p)導来底変換が零次数に集中し、そのH⁰が平坦ならば、
+Xも零次数に集中し、H⁰(X)のp冪ねじれが有界となる判定を受領した。
+正本は`formalization-plans/bhatt-scholze.md`のG9。Noether性・有限生成性・p正則性・
+古典的完備性は追加せず、既存の実導来対象・底変換・IsCompleteを使う。
+G3の既に離散な加群の完全平坦性判定、G7のcolimit交換、G8の係数制限交換とは別要求として保持する。
+未実装・未受渡しであり、今回のG2の乗法比較からこの離散性を得たとは扱わない。
+
+G2-5a-ii実可換性（2026-10-15）：`DerivedSingleTensorSymmetry.lean`で、任意の二つの射影分解での
+augmentation計算式と実導来交換のモデル比較を合成した。cochain交換の自然性と離散tensor比較の
+対称性から、既存の実導来tensor augmentationが標準の符号付き交換を保つことを証明した。
+これを`boundedAboveDerivedAlgebraMul`へ適用し、実際の導来代数の積の可換性を証明した。
+公開定理は`boundedAboveDerivedTensorModuleAugmentation_symmetry`と`boundedAboveDerivedAlgebraMul_comm`。
+新規2宣言を含むG2監査492宣言と対象ビルド2361ジョブが成功。いずれも標準3公理のみ。
+共通import閉包78モジュールに禁止依存なし。実導来積の結合・左右単位則は未完了であり、
+MonObj構造、完備化への乗法延長、H⁰環・PDCompletionH0比較は後続に保つ。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。

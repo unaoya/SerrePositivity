@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.DerivedSingleTensorSymmetry
 import SerrePositivity.HomologicalAlgebra.CochainAugmentationModels
 import SerrePositivity.HomologicalAlgebra.CochainSingleMonoidal
 import SerrePositivity.HomologicalAlgebra.ChainAugmentationNormalization
@@ -898,3 +899,9 @@ assert_no_sorry SerrePositivity.boundedAboveDerivedTensorModuleAugmentation_mode
 
 #print axioms SerrePositivity.mapExtendIso_resolution_augmentation
 #print axioms SerrePositivity.boundedAboveDerivedTensorModuleAugmentation_models
+
+-- G2-5a-ii: actual derived augmentation and algebra multiplication preserve symmetry.
+assert_no_sorry SerrePositivity.boundedAboveDerivedTensorModuleAugmentation_symmetry
+#print axioms SerrePositivity.boundedAboveDerivedTensorModuleAugmentation_symmetry
+assert_no_sorry SerrePositivity.boundedAboveDerivedAlgebraMul_comm
+#print axioms SerrePositivity.boundedAboveDerivedAlgebraMul_comm
