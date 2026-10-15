@@ -2369,3 +2369,18 @@ K(D)の各整数shiftが加法的であることを証明した。
 評価でshift交換同型が既存複体の交換同型に一致することも証明した。
 Checks.ConeShiftCompatibilityのビルドと直接実行で主要11宣言を監査し、標準公理のみ。累計1025宣言。
 U10は未完。次はcone shift同型を実際の加群圏に構成し、標準三角形へ運ぶ。
+
+
+### 13.72 U10t10：実際のdg加群圏でのcone shift同型
+
+`Module/ConeShiftElements.lean`はconeのfst・snd・左包含を既存の主Hom shift射で移す。
+各成分はMathlibのshift比較の入力そのもので、次数1と−1の要素に(-1)^sを伴う。
+liftの閉性とdescの境界条件を、全次数Hom内で証明した。
+`Module/ConeShift.lean`は既存のlift/desc APIから両方向の加群射を構成する。
+評価が指定された既存複体のcone shift同型の両射に一致すること、両合成が恒等射であることを証明した。
+`moduleConeShiftIso s f`は`moduleShiftObj s (moduleCone f) ≅ moduleCone (moduleShiftMap s f)`であり、
+ホモトピー圏だけでなく実際の閉零加群圏での同型である。
+
+Checks.ConeShift・StageSix・既存Spectra.StageTwoの同時ビルドは成功（2523 jobs）。
+主要16宣言の直接実行による公理監査は標準公理のみ。累計1041宣言。
+U10は未完。次はこの同型を標準三角形のshiftへ運び、逆回転閉性とPretriangulatedを構成する。
