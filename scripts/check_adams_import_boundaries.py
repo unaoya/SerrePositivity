@@ -64,6 +64,13 @@ for name in ['Family', 'WeightOperators']:
               ('TensorSquare', 'TensorCube', 'CyclicTwo', 'CyclicThree', 'Cubic')))
 print(f'Import boundaries passed: {len(common)} cochain modules and 2 Adams contracts.')
 
+for name in ['AlternatingSum', 'ExactImageSequence']:
+    check('SerrePositivity.CategoryTheory.' + name, upper_layer)
+check('SerrePositivity.KTheory.SupportedExactEuler',
+      lambda dep: dep in {'SerrePositivity.KTheory.ResolutionClass',
+                         'SerrePositivity.KTheory.ResolutionAdditivity'})
+print('Euler boundaries passed: 2 general modules and the resolution-independent supported sequence.')
+
 consumers = [
     'DifferentialGraded.Complexes.Biproduct',
     'DifferentialGraded.Complexes.AcyclicCone',

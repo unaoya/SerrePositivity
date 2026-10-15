@@ -1,6 +1,8 @@
 module
-public import SerrePositivity.KTheory.ResolutionAdditivity
+public import SerrePositivity.KTheory.G0Supported
 public import SerrePositivity.CategoryTheory.AlternatingSum
+public import SerrePositivity.CategoryTheory.ExactImageSequence
+public import Mathlib.Algebra.Homology.ShortComplex.ModuleCat
 public import Mathlib.Algebra.FiniteSupport.Basic
 public import Mathlib.Algebra.BigOperators.Finprod
 public import Mathlib.Data.Int.Interval
@@ -40,11 +42,8 @@ lemma mk_exact_images (X₁ X₂ X₃ : SupportedFGModuleOn Z)
   let S := ModuleCat.shortComplexOfCompEqZero f.hom g.hom
     (LinearMap.ext he.apply_apply_eq_zero)
   have hS : S.Exact := ModuleCat.shortComplex_exact _ he
-  let S' := ShortComplex.mk (Abelian.image.ι f) g (Abelian.image_ι_comp_eq_zero S.zero)
-  have hS' : S'.Exact := (S.exact_iff_exact_image_ι).mp hS
-  let S'' := ShortComplex.mk S'.f (Abelian.coimage.π S'.g)
-    (Abelian.comp_coimage_π_eq_zero S'.zero)
-  have hS'' : S''.ShortExact := { exact := (S'.exact_iff_exact_coimage_π).mp hS' }
+  let S'' := imageCoimageShortComplex S
+  have hS'' : S''.ShortExact := imageCoimageShortComplex_shortExact hS
   let E : SupportedModuleShortExact Z :=
     { left := SupportedFGModuleOn.image f
       middle := X₂

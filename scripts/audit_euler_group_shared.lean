@@ -3,6 +3,9 @@ import SerrePositivity.KTheory.HomologyEuler
 import SerrePositivity.PerfectComplex.OrdinaryEuler
 import Mathlib.Util.AssertNoSorry
 
+assert_no_sorry SerrePositivity.imageCoimageShortComplex_shortExact
+assert_no_sorry SerrePositivity.additiveLength_exact_images
+assert_no_sorry SerrePositivity.G0WithSupport.mk_exact_images
 assert_no_sorry SerrePositivity.alternatingGroupFinsum_sub_one
 assert_no_sorry SerrePositivity.alternatingGroupFinsum_exact
 assert_no_sorry SerrePositivity.alternatingFinsum_sub_one
@@ -13,5 +16,6 @@ assert_no_sorry SerrePositivity.supportedModuleEuler_exact_sequence
 assert_no_sorry SerrePositivity.supportedHomologyEuler_triangle
 
 #print axioms SerrePositivity.alternatingGroupFinsum_exact
+#print axioms SerrePositivity.imageCoimageShortComplex_shortExact
 #print axioms SerrePositivity.additiveLength_euler_exact_sequence
 #print axioms SerrePositivity.supportedModuleEuler_exact_sequence

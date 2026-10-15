@@ -1,9 +1,8 @@
 module
 
 public import SerrePositivity.CategoryTheory.AlternatingSum
-public import Mathlib.CategoryTheory.Abelian.Exact
+public import SerrePositivity.CategoryTheory.ExactImageSequence
 public import Mathlib.Algebra.FiniteSupport.Basic
-public import Mathlib.Algebra.Homology.ShortComplex.ShortExact
 
 /-! # 長完全列に共通する Euler 加法性
 
@@ -25,12 +24,7 @@ include hi ha in
 /-- 完全列の中央の評価は両側の射の像の評価の和である。 -/
 lemma additiveLength_exact_images {S : ShortComplex A} (hS : S.Exact) :
     l S.X₂ = l (Abelian.image S.f) + l (Abelian.image S.g) := by
-  let S' := ShortComplex.mk (Abelian.image.ι S.f) S.g (Abelian.image_ι_comp_eq_zero S.zero)
-  have hS' : S'.Exact := (S.exact_iff_exact_image_ι).mp hS
-  let S'' := ShortComplex.mk S'.f (Abelian.coimage.π S'.g)
-    (Abelian.comp_coimage_π_eq_zero S'.zero)
-  have hS'' : S''.ShortExact := { exact := (S'.exact_iff_exact_coimage_π).mp hS' }
-  have h := ha hS''
+  have h := ha (imageCoimageShortComplex_shortExact hS)
   change l S.X₂ = l (Abelian.image S.f) + l (Abelian.coimage S.g) at h
   rw [hi (Abelian.coimageIsoImage S.g)] at h
   exact h

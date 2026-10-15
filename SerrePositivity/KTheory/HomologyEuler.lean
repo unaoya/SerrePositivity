@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.KTheory.SupportedExactEuler
+public import SerrePositivity.KTheory.ResolutionAdditivity
 public import Mathlib.Algebra.Homology.HomotopyCategory.HomologicalFunctor
 public import Mathlib.Algebra.Homology.HomotopyCategory.ShiftSequence
 
