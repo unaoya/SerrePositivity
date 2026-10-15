@@ -4838,8 +4838,17 @@ A–E の全単位は実装・監査・公開済み。S11 までの本計画に�
    対象ビルド 3283 jobs、ψ² の族までのビルド 3279 jobs、共通補題・スカラー類・Koszul 正規化の
    三公理監査が成功。二つの既存同型の順写像・逆写像について、計四件の `rfl` による
    定義的な互換性確認も成功。
-3. **R7／統合検証（予定）**：ルート・利用先のビルド、消滅証明の専用監査、共通公理監査、
-   公開型と既存の写像の維持を確認する。
+3. **R7／統合検証（完了）**：ルート・`Paper.Lemma3_5`・`Devissage`・`FiniteExtension`・
+   `EqualCharZeroPositivity`・`K0Functoriality` のビルドが 4927 jobs で成功。
+   消滅証明の専用十四宣言と共通公理監査も成功し、変更箇所・ψ²/ψ³ の族・公開消滅定理の
+   依存は引き続き標準三公理のみ。変更した既存八十宣言の宣言部分を維持し、
+   `Inputs/IntersectionTheory.lean` は着手前とバイト単位で一致する。
+   係数拡大の共通処理は局所化・K₀/G₀ に依存せず、消滅証明の import 循環もない。
+
+実装のコミットは R5 `f7d14c1`、R6 `f8d5617`。
+統合検証のログは `/tmp/adams-refactor-r7-integration-build.log`、
+`/tmp/adams-refactor-r7-final-audit.log`、`/tmp/adams-refactor-r7-common-audit.log`。
+写像の互換性の検査ソースは `/tmp/adams-refactor-r6-map-compatibility.lean`。
 
 ## 5. 受入条件
 
