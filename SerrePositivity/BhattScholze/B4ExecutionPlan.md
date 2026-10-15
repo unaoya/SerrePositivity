@@ -7693,3 +7693,49 @@ n=0を含み、今回もd正則性のみでp正則性・ghost単射・G7は要�
 原典Lemma 3.7にG9を適用する際は、A/(dⁿ,p)での実還元の次数零集中・平坦性も必要である。
 既証のA/(d,p)での結果だけで任意nの場合を結論せず、冪零厚化に沿う実導来平坦性の議論を別途確認する。
 一般B4・環H0候補との接続・完全忠実平坦性自体は未完成として保持する。
+
+### 次工程の登録：根添加候補へのprism基底射と既存商射との接続
+
+BS専用DeltaRootPrismBaseMap.leanを新設する。
+DeltaRootPerfectoidCandidateの既存raw射と多項式係数包含の合成を、prism台環への係数射として明示する。
+標準δ射の合成であること、dを候補の選択生成元そのものへ送ること、主イデアル像の一致を証明する。
+元のoriented prismの生成元がdistinguishedなら、この射を既存OrientedPrism.Homへ束ねる。
+誘導商射が既存deltaRootPerfectoidCandidateBaseMapに一致することを、商代表上の図式で証明する。
+新しい候補・prism・perfectoid性の定義は作らず、完全忠実平坦性や離散性をこの射の存在から結論しない。
+全公開宣言をBS専用監査し、共有層・CLMST・利用先は編集しない。
+
+## 共通基盤への要求 G10：冪零イデアルに沿う実導来平坦性の持ち上げ（送信済み・API未受領）
+
+対象と正確な仮定：可換環T:Type u、I:Ideal T、hI:∃N:ℕ,I^N=⊥、
+X:DerivedCategory.Minus (ModuleCat T)。q=Ideal.Quotient.mk I、
+Y=(boundedAboveDerivedBaseChange q).obj Xとする。
+∀i:ℤ,i≠0 → IsZero ((DerivedCategory.homologyFunctor (ModuleCat (T⧸I)) i).obj Y.obj)、
+Module.Flat (T⧸I) ((DerivedCategory.homologyFunctor (ModuleCat (T⧸I)) 0).obj Y.obj)を仮定する。
+求める結論：X.obj.IsGE 0かつX.obj.IsLE 0、および
+Module.Flat T ((DerivedCategory.homologyFunctor (ModuleCat T) 0).obj X.obj)。
+Noether性、有限生成性、正則性は要求しない。n=0のI=⊤・零環の枝もhIを満たす範囲で含む。
+
+利用BS工程：著者版Lemma 3.7(2)で、実A/(dⁿ)還元がp完全平坦であることの具体的入力。
+n>0についてT=A/(dⁿ,p)、Iはdの像の主イデアルとし、Iⁿ=0とT/I≃A/(p,d)の
+具体的な環同型・実二段基底変更比較はBSで供給する。既証の実A/(p,d)還元が次数零・平坦なので、
+本判定を使って実A/(dⁿ,p)還元も次数零・平坦とし、G9の仮定へ渡す。
+n=0はA/(1)=0としてBSで別処理する。
+既存APIの不足：共通導来完備化・導来圏・平坦性の検索では、任意の上有界実対象に対する
+この冪零厚化の離散性・平坦性判定の公開入口を確認できなかった。
+G3は既に離散な加群、G9はp完備対象に対する有界pねじれ係数上の判定であり、本要求とは異なる。
+待つ工程：任意nの実A/(dⁿ,p)還元への平坦性の移送だけ。
+独立作業：prism基底射・既存商射との接続、具体的な二段商と冪零イデアルの型・標準写像の比較。
+G10はユーザーの個別許可「G10を送ってよい」を受け、2026-10-15に上記の仮定・結論と利用工程をCLMSTへ送信した。送信成功を確認済み。APIは未受領であり、BS内で共通一般判定を重複定義しない。
+
+## B4-6：根添加prism候補への基底射と既存perfectoid商射（2026-10-15）
+
+DeltaRootPrismBaseMap.leanに6公開宣言を実装した。既存raw射と多項式係数包含の合成を
+prism台環への具体的係数射として公開し、δ両立・選択生成元の厳密な保存・主イデアル像の一致を証明した。
+生成元がdistinguishedな元のoriented prismから既存候補へのOrientedPrism.Homを構成し、
+その誘導商射が既存deltaRootPerfectoidCandidateBaseMapと一致することを商代表上で証明した。
+任意の元族を扱い、Unique σやp正則性・G7・G8・G9は今回の宣言には仮定しない。
+完全prismの場合のdistinguished性は既存isDistinguished_of_perfectから供給できる。
+対象3768ジョブ成功（警告なし）、B4全体pure監査1993報告成功、標準3公理のみ。
+新sorry・公理・引用なし。候補への射を具体化した成果であり、CFFや一般B4を証明済みとは扱わない。
+G10はユーザーの個別許可を受けてCLMSTへ正確な仮定・結論と利用工程を送信し、送信成功を確認した。
+具体的な冪零商・二段商の比較は引き続きBSの独立作業とし、共有・CLMST・利用先は編集していない。
