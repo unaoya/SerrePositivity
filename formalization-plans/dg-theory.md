@@ -2141,3 +2141,20 @@ U10の実際の射集合計算・局所小性は受入を満たした。
 U10全体は未完。残るのはK(D)/D(D)の三角構造、acyclic部分圏とVerdier商の比較、
 導来余積、一対象A比較の三角形/余積保存である。
 共有モデル構造・Quillen・転送・SM7への新規要求はない。
+
+
+### 13.61 U10c1：全dg自然なホモトピーの貼り合わせとK(D)の余積
+
+`Module/HomotopyCoproduct.lean`は、余積の各包含への前合成後に全dg自然な
+ホモトピーがあるとき、余積からの二射の間にも全dg自然なホモトピーがあることを証明する。
+主Hom endの直積表示と複体の各次数の直積普遍性から次数−1の要素を構成し、
+chain isoの射影と微分の可換性でホモトピーの境界式を検証した。
+
+`Module/HomotopyCoproductUniversal.lean`はK(D)の余積包含によるhom_ext、
+余積coconeのdesc/fac/uniq、`moduleHomotopyCofanIsColimit`を公開する。
+任意のu-small添字Jに対するK(D)の`HasColimitsOfShape (Discrete J)`と、
+閉零圏→K(D)の商関手の余積保存も証明した。
+
+Checks.HomotopyCoproduct・StageSix・既存Spectra.StageTwoの同時ビルドは成功（ログ参照）。
+Checks直接実行の主要9宣言は標準公理のみ。累計914宣言。
+U10は未完。次は射影的対象族の余積をD(D)へ運び、解像度で任意の導来対象族に拡張する。
