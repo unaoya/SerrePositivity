@@ -81,4 +81,11 @@ def moduleConeSndIso (hP : IsZero (P.X j)) :
     simpa only [hzero, zero_add] using moduleCone_coordinates_total φ i j hij
   inv_hom_id := inrX_sndX φ i
 
+@[simp] theorem moduleConeFstIso_inv (hQ : IsZero (Q.X i)) :
+    (moduleConeFstIso φ i j hij hQ).inv =
+      (CochainComplex.mappingCone.inl φ).v j i (by change i + 1 = j at hij; omega) := rfl
+
+@[simp] theorem moduleConeSndIso_inv (hP : IsZero (P.X j)) :
+    (moduleConeSndIso φ i j hij hP).inv = (CochainComplex.mappingCone.inr φ).f i := rfl
+
 end SerrePositivity.DerivedCompletion

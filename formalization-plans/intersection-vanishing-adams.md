@@ -5109,10 +5109,12 @@ R37–R40のコミットは `022387f`、`fcd06d8`、`247e86c`、`4652f6f`、
 | R42b | 直和の分裂にmathlibを利用 | 完了：二箇所の分裂をofHasBinaryBiproductへ置換。2812 jobs、3宣言の公理監査が成功。ログ `/tmp/adams-r42b-{build,audit}.log` |
 | R42c | 消去イデアルの移送にmathlibを利用 | 完了：旧公開型を保った二つの補題をmathlibから導出。dévissageまで3254 jobs、3宣言の公理監査が成功。ログ `/tmp/adams-r42c-{build,audit}.log` |
 | R43 | 部分加群への完全列の制限を格子・dévissageで共用 | 完了：一般3補題を両構成で共用。3255 jobs、5宣言の公理監査、全依存ゲートが成功。R41bの空行警告も修正。ログ `/tmp/adams-r43-final-build.log`、`/tmp/adams-r43-audit.log` |
-| R44a | 一元Koszulの二つの座標同型を共通の錐APIから導出 | 未着手 |
+| R44a | 一元Koszulの二つの座標同型を共通の錐APIから導出 | 完了：両Koszul正規化・導来完備化・錐の並行利用先3259 jobs、5宣言の公理監査と座標のrfl、全依存ゲートが成功。ログ `/tmp/adams-r44-acceptance-build.log`、`/tmp/adams-r44a-audit.log` |
 | R44b | 双対・次数付きKoszulの直積座標公式を共通化 | 未着手 |
-| R45a | ホモトピー商のstrictMapと有界シフトを三利用先で共用 | 未着手 |
-| R45b | 実数値Eulerの有限台の三証明を共通化 | 未着手 |
+| R45a-1 | ホモトピー商のstrictMapの証明を三利用先で共用 | 未着手 |
+| R45a-2 | 有界シフトを四箇所で共用し、完全複体の零・シフトを下位へ移動 | 未着手 |
+| R45b-1 | 実数値Eulerの有限台の三証明を共通化 | 未着手 |
+| R45b-2 | 一般・漸近Eulerと完備化Bettiの有限台の三証明を共通化 | 未着手 |
 | R46 | 正則パラメータの有限添字APIを四利用先で共用 | 未着手 |
 | R47a | 閉点のG₀長さ評価を整数Eulerから分離 | 未着手 |
 | R47b | 有限極大台のG₀同型を半局所化の幾何から分離 | 未着手 |
