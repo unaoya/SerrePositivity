@@ -1183,3 +1183,44 @@ shift・余積・semifree filtrationでの上記性質、任意加群へのsemif
 導来Hom計算を証明する。三角構造・Verdier商比較・余積/局所小性の宇宙、
 一対象同値によるそれらの保存も残る。共有の小対象/転送一般論は複製しない。
 現時点で共有API不足によるブロックはなく、U10までの目標を保持する。
+
+### 13.22 U10a1：sphere/diskと自由cellの生成元・微分・収縮
+
+`Complexes/Cells.lean` は固定版Mathlibのsingle/doubleを再利用する。
+`complexSphere A n` は次数nに集中するA、`complexDisk A n` は次数n→n+1の恒等微分。
+`complexSphereHomEquiv` はsphereからの射を次数nのcycleに、
+`complexDiskHomEquiv` はdiskからの射を次数nの任意の要素に同定する。
+diskの同値の値域自然性、上の生成元の像が下の像の微分であることを証明した。
+`complexSphereToDisk A n` の型は sphere (n+1)→disk n。
+`complexSphereToDisk_comp` はこの境界への前合成が微分を取る操作となることを示す。
+コチェイン次数の規約をホモロジー次数と混同しない。
+
+`Complexes/DiskContractible.lean` は上の次数n+1から下の次数nへ戻す
+`complexDiskContractingCochain`（次数−1）を構成し、δh=idを証明する。
+`complexDiskContractingHomotopy`・acyclic性と、任意非有界複体へのtensorによる
+収縮・acyclic性の保存を証明した。具体的ホモトピーをtensorするのでflatnessは不要。
+
+`Module/Cells.lean` は既存free/evaluation随伴を再利用し、全次数作用を持つ
+`freeSphere`/`freeDisk`、`freeCellBoundary`、cycle/斉次生成元を指定するHom同値を公開する。
+`freeDiskHomEquiv_naturality` と `freeCellBoundary_comp` は値域自然性と微分の比較。
+`freeDisk_acyclic`、`freeDisk_zeroTo_quasiIso` はHom_DのA上flatnessを要求せず、
+零加群→自由diskが指定objectwise quasiIsoとなることを証明する。
+加群としての全次数作用は保持するが、この段階でfreeDiskのHom end内の収縮や
+任意のfree(J)-cellの準同型性まで証明済みとはしない。
+
+受入入口 `Checks/Cells.lean` は任意可換環・全整数次数・独立宇宙、
+生成元のHom同値、境界/微分の一致、収縮の次数−1、任意複体とのtensor、
+自由diskの準同型性、ℤの負次数とZMod 2の正次数を検証する。
+添字族D×ℤがu-smallであることも確認する。
+この入口・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3186 jobs）。
+直接実行・主要31宣言の公理監査も成功し、標準公理のみ。累計466宣言。
+一般論のsorry・新規axiomは追加していない。
+
+共有G2への具体的入力は、Iのfamily `freeCellBoundary A D x n` と
+Jのfamily `moduleZeroTo A D (freeDisk A D x n)`、そのHom表現・Jの各射の準同型性。
+一般小対象論・転送は複製しない。domainのtransfinite smallnessと
+free(J)-cellの準同型性の証拠はまだ残る。独立のsemifree解像度経路を継続する。
+次はcellによるliftの具体的判定、shift/余積/filtrationでのhomotopically projective性、
+任意加群へのsemifree解像度の存在と導来Hom計算。
+三角構造・Verdier商比較・余積/局所小性・一対象同値による保存も未完であり、
+U10全受入の目標を保持する。
