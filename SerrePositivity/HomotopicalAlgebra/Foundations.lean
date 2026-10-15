@@ -20,6 +20,9 @@ public import SerrePositivity.HomotopicalAlgebra.Smith.DependentCopower
 public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleSquares
 public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleCellAttachment
 public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleSmallObject
+public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleHomTransport
+public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleGeneratedPair
+public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleModelFactorizations
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor

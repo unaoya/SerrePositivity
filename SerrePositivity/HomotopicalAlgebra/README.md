@@ -393,3 +393,21 @@ coproductを導出する。生成射クラスの`toSet`が大きい型に入る�
 `scripts/check_accessible_small_object.lean`は反復・accessibilityの基数を独立に検証し、
 局所可呈示性からの利用例と全宣言の公理監査を含む。ここでは射の宇宙はwであり、
 一般の局所w-小さい圏への移送、両生成クラスとQ/Rの同一基数での統合、A1は残る。
+
+## A0：一般の宇宙と二つのモデル分解・Q/R（2026-10-15）
+
+`Smith/AccessibleHomTransport.lean`は`ShrinkHoms`上の生成射と持ち上げクラスの
+対応を証明し、構成した分解を元の圏と元の生成射クラスに戻す。
+`Smith/AccessibleGeneratedPair.lean`は局所可呈示性と二つの小さい生成クラスから
+共通の正則κと、両方のaccessibleな生成因子分解を構成する。対象・射・小対象論法の
+三つの宇宙は独立である。
+
+`Smith/AccessibleModelFactorizations.lean`の
+`exists_accessible_model_factorizations`はMathlibのモデル圏、局所可呈示性、既存の
+`CofibrantlyGenerated I J`だけを入力とする。指定した両モデル分解のZ、左右四因子、
+それらから制限して得るQ/Rが同じκでaccessibleとなる。比較写像が実際に
+trivial fibration/trivial cofibrationであることと、Q/Rの対象のcofibrancy/fibrancyを
+公開する。`atLarger`で同じ分解を任意の大きい正則基数へ移せる。
+任意に選んだ関手的分解へaccessibilityを推論するものではない。
+`scripts/check_accessible_model_factorizations.lean`は最終入力だけからこれらを検証し、
+三モジュールの全宣言を公理監査する。A1の弱同値部分圏のaccessibilityは別の残項目。
