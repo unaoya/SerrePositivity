@@ -136,6 +136,8 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.NonsingularCoproduct,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FiniteTensorCoproduct,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FiniteTensorSkeleton,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FiniteTensorWeakEquivalence,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.HornTensor,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.CofibrantBoundary,
     `SerrePositivity.HomotopicalAlgebra.Quillen.Brown,
     `SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor,
