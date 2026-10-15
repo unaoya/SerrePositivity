@@ -4076,3 +4076,28 @@ BS専用`DeltaPDivisionFiniteRelationsRegular.lean`で、正則な最高係数p�
 導来δpushoutとの比較はこの通常Koszul分解とは別工程とする。
 
 この工程の全体ビルド4928ジョブも成功。共有既存sorry警告は別扱い。
+
+## B4-6：実一元δ関係列自身の正則性とKoszul分解（2026-10-15）
+
+`DeltaPDivisionFiniteRelationsRegular.lean`で、初期商のp正則性と前工程の後続変数表示から、
+次の実関係g_(N+1)がL/(g_0,…,g_N)上の非零因子となることを証明した。
+最初の関係g_0はAのp正則性だけで非零因子である。
+正則一元y、単元δ(p)、自由δ環ghost単射を明示し、全Nについて
+実列g_0,…,g_N（pを前置しない）の弱正則性と既存IsKoszulResolutionを公開した。
+その列の生成イデアルが既存の実有限関係イデアルI_Nに一致することも証明した。
+一般係数の正則一次式の議論はこのBSファイルのprivate補題として使用した。
+
+6公開宣言の対象3807ジョブ、pure B4監査、全体4932ジョブ成功。
+標準3公理のみ、新sorry・公理・外部引用なし。共有既存sorry警告は別扱い。
+全有限実Koszul複体の分解は得られたが、無限δ関係と導来δpushoutの同一視やCFFは未証明。
+André引用に相対的な成果は今回使用せず、一般B4の全射性は未完成。
+
+### 次工程の登録：標準単位で正規化した有限実Koszul比較
+
+BS専用`DeltaPDivisionFiniteKoszulComparison.lean`で、既存koszulCanonicalH0Equivと
+実関係イデアルの一致を使い、H⁰K(g_0,…,g_N)≃L/I_Nを標準単位上で正規化する。
+その同型により実Koszul複体から(L/I_N)[0]への準同型・擬同型を構成する。
+既存koszulAugmentationはIsKoszulResolution.equivの選択を使うため、
+そのままでは標準商射との両立・段間自然性を主張しない。
+標準単位の図式を明示し、有限段から無限段への移行や実導来δ基底変更とは区別する。
+共通層のKoszul・Tor・導来完備化定義は再利用する。
