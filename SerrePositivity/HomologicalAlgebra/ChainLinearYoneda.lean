@@ -11,10 +11,11 @@ universe u
 namespace SerrePositivity
 open CategoryTheory CategoryTheory.Limits Opposite HomologicalComplex
 variable {R : Type u} [CommRing R]
+variable {α : Type*} [AddRightCancelSemigroup α] [One α]
 
 /-- The cochain complex Hom(K,-), naturally in the coefficient module. -/
-def chainLinearYonedaFunctor (K : ChainComplex (ModuleCat.{u} R) ℕ) :
-    ModuleCat.{u} R ⥤ CochainComplex (ModuleCat.{u} R) ℕ where
+def chainLinearYonedaFunctor (K : ChainComplex (ModuleCat.{u} R) α) :
+    ModuleCat.{u} R ⥤ CochainComplex (ModuleCat.{u} R) α where
   obj M := K.linearYonedaObj R M
   map f :=
     { f := fun i => ModuleCat.ofHom (Linear.rightComp R (K.X i) f)
@@ -53,7 +54,7 @@ lemma chainHomologyUnop_inv_naturality
   simp
 
 /-- Precomposition by a chain map gives a natural morphism of dual cochain functors. -/
-def chainLinearYonedaMap {K L : ChainComplex (ModuleCat.{u} R) ℕ} (f : K ⟶ L) :
+def chainLinearYonedaMap {K L : ChainComplex (ModuleCat.{u} R) α} (f : K ⟶ L) :
     chainLinearYonedaFunctor L ⟶ chainLinearYonedaFunctor K where
   app M :=
     { f := fun i => ModuleCat.ofHom (Linear.leftComp R M (f.f i))
@@ -67,12 +68,12 @@ def chainLinearYonedaMap {K L : ChainComplex (ModuleCat.{u} R) ℕ} (f : K ⟶ L
     ext i h
     rfl
 
-@[simp] lemma chainLinearYonedaMap_id (K : ChainComplex (ModuleCat.{u} R) ℕ) :
+@[simp] lemma chainLinearYonedaMap_id (K : ChainComplex (ModuleCat.{u} R) α) :
     chainLinearYonedaMap (𝟙 K) = 𝟙 (chainLinearYonedaFunctor K) := by
   ext M i g
   rfl
 
-lemma chainLinearYonedaMap_comp {K L P : ChainComplex (ModuleCat.{u} R) ℕ}
+lemma chainLinearYonedaMap_comp {K L P : ChainComplex (ModuleCat.{u} R) α}
     (f : K ⟶ L) (g : L ⟶ P) :
     chainLinearYonedaMap (f ≫ g) = chainLinearYonedaMap g ≫ chainLinearYonedaMap f := by
   ext M i h

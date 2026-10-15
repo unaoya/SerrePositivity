@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.MappingConeLinearDual
 import SerrePositivity.HomologicalAlgebra.KoszulLocalCohomologyAction
 import SerrePositivity.HomologicalAlgebra.LocalCohomologyKoszulComparison
 import SerrePositivity.HomologicalAlgebra.KoszulExtComparison
@@ -225,3 +226,42 @@ assert_no_sorry SerrePositivity.localCohomologyScalarEndomorphism_eq_zero_of_dua
 #print axioms SerrePositivity.localCohomologyScalarEndomorphism_eq_zero_of_dualKoszul_stages
 
 #print axioms SerrePositivity.koszulLocalCohomology_map_eq_zero_of_positive_stages
+
+-- KL3a preparation: integer degrees and the signed cone dual differential.
+assert_no_sorry SerrePositivity.integerNegEmbedding
+assert_no_sorry SerrePositivity.integerNegEmbedding_isRelIff
+assert_no_sorry SerrePositivity.nonnegativeCochainEmbedding
+assert_no_sorry SerrePositivity.nonnegativeCochainEmbedding_isRelIff
+assert_no_sorry SerrePositivity.cochainLinearDualFunctor
+assert_no_sorry SerrePositivity.cochainLinearDualMap
+assert_no_sorry SerrePositivity.cochainLinearDualNonnegativeIso
+assert_no_sorry SerrePositivity.cochainLinearDualNonnegativeNatIso
+assert_no_sorry SerrePositivity.cochainLinearDualNonnegativeNatIso_complex_map
+assert_no_sorry SerrePositivity.cochainLinearDualTermIso
+assert_no_sorry SerrePositivity.cochainLinearDual_d_apply
+assert_no_sorry SerrePositivity.cochainLinearDual_map_apply
+assert_no_sorry SerrePositivity.mappingConeTargetHomEquiv
+assert_no_sorry SerrePositivity.mappingConeTargetHomEquiv_fst
+assert_no_sorry SerrePositivity.mappingConeTargetHomEquiv_snd
+assert_no_sorry SerrePositivity.mappingConeTargetHomEquiv_coefficient_map
+assert_no_sorry SerrePositivity.mappingConeTargetHomEquiv_d_fst
+assert_no_sorry SerrePositivity.mappingConeTargetHomEquiv_d_snd
+assert_no_sorry SerrePositivity.mappingConeLinearDualTermEquiv
+assert_no_sorry SerrePositivity.mappingConeLinearDualTermEquiv_coefficient_map
+assert_no_sorry SerrePositivity.scalarMappingConeTargetHomEquiv_d_fst
+
+#print axioms SerrePositivity.cochainLinearDualNonnegativeNatIso_complex_map
+#print axioms SerrePositivity.mappingConeTargetHomEquiv_d_fst
+#print axioms SerrePositivity.scalarMappingConeTargetHomEquiv_d_fst
+
+-- Both integer indices and the original natural indices use the same dualization API.
+example (R : Type) [CommRing R] (K : ChainComplex (ModuleCat.{0} R) ℤ) :
+    chainLinearYonedaMap (𝟙 K) = 𝟙 (chainLinearYonedaFunctor K) :=
+  chainLinearYonedaMap_id K
+
+-- No boundedness or finite generation enters the dual restriction comparison.
+example (R : Type) [CommRing R] (K : CochainComplex (ModuleCat.{0} R) ℤ)
+    (M : ModuleCat.{0} R) :
+    ((cochainLinearDualFunctor K).obj M).restriction nonnegativeCochainEmbedding ≅
+      (chainLinearYonedaFunctor (toChain K)).obj M :=
+  cochainLinearDualNonnegativeIso K M
