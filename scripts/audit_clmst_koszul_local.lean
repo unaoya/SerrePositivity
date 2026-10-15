@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.KoszulDualBaseChange
 import SerrePositivity.HomologicalAlgebra.AlgebraLinearYonedaBaseChange
 import SerrePositivity.HomologicalAlgebra.KoszulBaseChangeNaturality
 import SerrePositivity.HomologicalAlgebra.CochainConeAdditiveNaturality
@@ -940,3 +941,14 @@ assert_no_sorry SerrePositivity.chainLinearYonedaMapIso
 #print axioms SerrePositivity.chainLinearYonedaBaseChangeIso
 #print axioms SerrePositivity.chainLinearYonedaBaseChangeNatIso
 #print axioms SerrePositivity.chainLinearYonedaBaseChangeNatIso_chain_map
+
+-- KL6-a3-iv: actual dual power diagrams and coefficient-complex colimits under ring change.
+assert_no_sorry SerrePositivity.baseChangePowerKoszulChainIso
+assert_no_sorry SerrePositivity.koszulDualPowerBaseChangeNatIso
+assert_no_sorry SerrePositivity.koszulDualPowerBaseChangeNatIso_transition
+assert_no_sorry SerrePositivity.koszulDualPowerBaseChangeDiagramNatIso
+assert_no_sorry SerrePositivity.koszulDualColimitBaseChangeIso
+
+#print axioms SerrePositivity.koszulDualPowerBaseChangeNatIso_transition
+#print axioms SerrePositivity.koszulDualPowerBaseChangeDiagramNatIso
+#print axioms SerrePositivity.koszulDualColimitBaseChangeIso
