@@ -1,0 +1,17 @@
+import SerrePositivity.KTheory.Adams.KoszulCubeExt
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeSummand_hom_ext
+#print axioms SerrePositivity.Adams.oneKoszulCubeSummand_hom_ext
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeXZero_hom_ext
+#print axioms SerrePositivity.Adams.oneKoszulCubeXZero_hom_ext
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeXNegOne_hom_ext
+#print axioms SerrePositivity.Adams.oneKoszulCubeXNegOne_hom_ext
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeXNegTwo_hom_ext
+#print axioms SerrePositivity.Adams.oneKoszulCubeXNegTwo_hom_ext
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeXNegThree_hom_ext
+#print axioms SerrePositivity.Adams.oneKoszulCubeXNegThree_hom_ext
