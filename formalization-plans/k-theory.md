@@ -7972,3 +7972,84 @@ F=Δ↦Δ⊗Xがleft Quillenであることを導き、181.2を適用する。
 F1の任意モデル源での最終の厳密な関手の入口、F3の共通基数、F4のhocolim/holim比較、
 L0〜L5も引き続き残る。源Cを具体的なスペクトルやSSetに特殊化しない。
 他チャットの変更を保持し、計画ファイル全体を一括stageしない。
+
+
+## 182. F2進捗：標準単体の幾何学的弱同値と標準tensor図式のaugmentation・homotopical constancy（2026-10-15）
+
+F0〜F4を経てL0〜L5まで完成させる依頼を維持している。§181に残していた標準tensor図式の
+homotopical constancyとaugmentationを構成・証明した。単体集合の標準単体間の射の
+幾何学的弱同値性も共有層で証明し、新しい引用は追加していない。
+一般のresolutionとの自然な弱同値比較への最終接続は、引き続きF2の残項目である。
+
+### 182.1 基点を固定する収縮と実際のホモトピー群
+
+`Topological/BasedContraction`は、恒等写像から基点への定値写像への、基点を固定する
+実際の`ContinuousMap.HomotopyRel`を扱う。任意の添字型Nについて、N次元立方体の
+全境界を基点へ送るループを、この収縮で定値ループへ相対ホモトピーする。
+Mathlibの実際の`GenLoop.Homotopic`を構成し、`HomotopyGroup N X x`のsubsingleton性を証明する。
+単なる非基点付きのホモトピー同値から、基点条件を省略して結論してはいない。
+
+任意のhomeomorphismによるこの収縮の輸送も構成する。各基点でこの収縮を持つpath-connectedな
+二つの空間の任意の射は、既存の成分写像・正次ホモトピー群写像で定義された
+`weakHomotopyEquivalences`に属することを証明する。
+
+### 182.2 標準単体の幾何学的弱同値
+
+`Simplicial/StandardSimplexWeakEquivalence`は、固定Mathlibの実際の
+`Convexity.StdSimplex ℝ M`上で任意の基点への線形収縮を構成する。有限Mでの
+weightsによる埋め込みを使って、時間と点についての同時連続性を証明する。
+基点で収縮が恒等的に固定されることも証明する。
+
+ULiftのhomeomorphismと既存の`SSet.toTopSimplex`を使い、単体集合の実際の標準単体の
+幾何学的実現へこの収縮を輸送する。182.1を適用して、任意のΔの射fについて
+`SimplicialHomotopy.weakEquivalences (SSet.stdSimplex.map f)`を証明した。
+単射・surjectionなどへの制限はない。この証明には単体集合モデルやHT-KQの入力は不要である。
+
+### 182.3 一般の豊穣tensorの単位と自然augmentation
+
+`CategoryTheory/Enriched/TensorUnit`は、任意の豊穣圏・既存のtensor/cotensor表示について、
+単位対象によるtensorが恒等関手と自然に同型であることを証明する。
+`eHomEquiv`の前後合成との整合性、実際のunitMap、その全Yに対するHomの全単射性、
+unitMapの可逆性と自然性から導く。新しい単位同型を入力として要求しない。
+
+`SimplicialTensorAugmentation`は、標準0単体とSSetのtensor unitのterminal同型を用い、
+Δ[0]⊗-≅Id_Cを構成する。Δの各対象から[0]への実際のcollapseをtensorで移し、この同型へ
+合成することで、`tensorAugmentation : tensorCosimplicialFamily S ⟶ Functor.const Δ`を構成する。
+次数方向と源X方向の両方で自然性を証明した。
+
+### 182.4 SM7からのhomotopical constancyとaugmentationの弱同値性
+
+`SimplicialTensorConstant`は、基準単体集合モデルとcof=mono、W=幾何学的Wの一致を
+明示入力として、182.2とBrown補題を任意のleft Quillen F:SSet→Cへ適用する。
+これによりΔ[-]⋙Fのhomotopical constancyを導く。
+
+cofibrantなXについて、SM7から-⊗Xのleft Quillen性を得るため、
+n↦Δ[n]⊗Xのすべての構造射が弱同値となる。182.3のunit同型と合成することで、
+augmentationのすべての成分の弱同値性も証明した。源Cは一般の単体的モデル圏のままで、
+スペクトル・SSetへの特殊化はしていない。
+
+このaugmentationはobjectwise弱同値である。Reedy trivial fibrationという、既存の
+`CofibrantResolutionFamily`が要求する強い条件と混同しない。
+この差を無条件の型変換で隠して既存比較へ接続することはしない。
+実装・共有入口・利用例のコミット：`1ebbbf8`。
+
+### 182.5 受入検証と残る接続
+
+以下は成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`：2337 jobs。
+- `check_simplicial_tensor_frame`：41宣言・5モジュール、標準公理のみ。
+  モデル入力なしの標準単体の幾何学的弱同値、任意宇宙の立方体ループの境界に相対的な収縮、
+  実際の自然augmentationと0単体tensorの自然同型、SM7からのconstancy・成分弱同値を検証。
+- `audit_homotopical_foundations`：2766宣言・177モジュール、標準公理のみ。
+- `check_simplicial_tensor_hom`（26宣言・3モジュール）、`check_resolution_hom_comparison`
+  （83宣言・6モジュール）、`check_resolution_hom_pi_zero`（85宣言・4モジュール）、
+  `check_homotopical_foundations`、`check_spectra_stage2`、`git diff --check`。
+
+次は、今回のReedy cofibrantかつobjectwise弱同値augmentationを持つ標準tensor図式と、
+従来の強いresolution familyを自然な弱同値zigzagで比較し、§181の実際のMapへの自然同型へ合成する。
+弱いaugmentationを扱う共通frame比較、または実際の関手的Reedy分解で強いresolutionへ移す方法を使い、
+必要な条件を証明してから接続する。
+
+F1の任意モデル源での最終の厳密な関手の入口、F3の共通基数、F4のhocolim/holim比較、
+L0〜L5も引き続き残る。他チャットの変更は保持し、計画全体を一括stageしない。

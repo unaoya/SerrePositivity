@@ -828,3 +828,19 @@ Reedy cofibrancyを別に仮定しない。
 標準公理監査と回帰検証が成功。コミットは`4e6ffc9`、詳細は計画§181。
 標準tensor図式のaugmentation・homotopical constancyと一般のresolutionへの比較はまだ残る。
 F2全体、F1の任意源での最終関手、F3・F4とL0〜L5の完了とは判定しない。
+
+
+`Topological/BasedContraction`は、基点を固定する収縮から、任意宇宙の立方体ループの全境界に
+相対的な収縮と実際のホモトピー群のsubsingleton性を証明する。
+`Simplicial/StandardSimplexWeakEquivalence`は標準位相単体の線形収縮と実際の幾何学的実現を使い、
+標準単体間の任意の射が幾何学的弱同値になることを証明する。この部分にモデル存在入力は不要。
+
+一般の豊穣`TensorUnit`は、表示されたtensorの単位が恒等関手と自然に同型であることを証明する。
+`SimplicialTensorAugmentation`は、実際のcollapse Δ[n]→Δ[0]とΔ[0]⊗-≅Idから
+自然augmentationを構成する。`SimplicialTensorConstant`は幾何学的Wの一致、Brown補題、SM7から
+cofibrantなXに対するhomotopical constancyとaugmentationのobjectwise弱同値性を導く。
+Reedy trivial fibrationとは区別して扱い、その条件を未証明のまま強いresolutionの型へ変換しない。
+
+共有入口2337 jobs、新規41宣言・5モジュール、共有2766宣言・177モジュールの標準公理監査と
+回帰検証が成功。コミットは`1ebbbf8`、詳細は計画§182。一般のresolutionとの最終の自然比較は
+まだ残る。F2全体、F1の任意源での最終関手、F3・F4とL0〜L5は未完了である。
