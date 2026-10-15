@@ -10248,3 +10248,77 @@ L0〜L5は最終仕様の左固有combinatorial源について完了。
 次はE0：通常の局所化に追加仮定を遡及させず、V豊穣・monoidal局所化の必要条件を明示し、
 局所SM7・pushout-product・単位を証明する。その後S0〜S3へ進む。
 F1の指定関手的分解なしの任意モデル源の最終関手も未完了であり、全体目標の完了とはしない。
+
+## 212. E0進捗：導来tensor適合から局所SM7・pushout-product・単位へ（2026-10-16）
+
+§211のL0〜L5完成に続き、普通の局所化モデルに豊穣・monoidal適合を与える主要部分を実装した。
+普通の局所化存在の入力は変更しない。V内部Homで定める局所性とordinary RMapでの局所性の
+比較、そこに必要なtensorの単位の条件はまだ最終接続していないため、**E0全体は未完了**として扱う。
+全体目標F→L→E→S、S0〜S3、F1の任意モデル源の最終関手も維持する。
+
+### 212.1 一般のpushout-productに対するendpoint判定
+
+`Monoidal/EndpointBifunctor.lean`は、i:A→Bに対してF(A,-),F(B,-)がleft Quillenなら、
+任意のtrivial cofibration jのpushout-product i□jが弱同値になることを証明する。
+F(A,j)のpushoutとF(B,j)の弱同値性からtwo-out-of-threeで導く。
+両変数の生成cofibrationのendpoint functorでこの条件を確認すれば、証明済みの生成判定を
+通して全pushout-product条件を得る。生成trivial cofibrationの始域のcofibrancyは要求しない。
+
+`Monoidal/BifunctorChangeModel.lean`はパラメータVのモデルを固定し、作用されるCのcofibrationを
+固定したまま弱同値を増やす場合を扱う。Vの生成cofibrationのendpoint functorだけを
+新モデルでleft Quillenと確認すれば、元のbifunctorのQuillen性を新モデルへ移せる。
+Cの生成cofibration・trivial cofibrationの始域にcofibrancyを課さない。
+
+### 212.2 明示的な導来tensor適合条件からの構成
+
+`Localization/Endofunctor.lean`は元のQuillen endofunctor Fが両側とも局所モデルのQuillen
+endofunctorになることと、各s∈SのF(Qs)が元のRMapでのW_Sに属することの同値を証明する。
+新しいQuillen性は入力ではなく、L5の証明済み普遍性から導く。
+
+`Localization/Bifunctor.lean`の追加条件は次の通りである。
+
+- 元のQuillen bifunctor V×C→Cと、両変数の既存のparametrized adjunction。
+- Vの生成cofibration I_Vの始域のcofibrancy。終域のcofibrancyは導出する。
+- 各i:A→B∈I_Vとs∈Sに対し、F(A,Qs),F(B,Qs)が元のW_Sに属すること。
+
+これらから全てのcofibrationと局所trivial cofibrationについて局所化後のQuillen bifunctor性を証明する。
+小さい生成族のendpointと元のSに対する導来tensor条件であり、局所化後のpushout-product条件
+そのものを仮定したものではない。Cの生成始域のcofibrancyは不要である。
+VとCの対象・Hom・小対象論法の宇宙は独立。
+
+`Localization/Enriched.lean`は既存のTensorCotensor V Cへ適用し、局所tensor axiom、
+実際のeHomFunctorのpullback-hom条件（SM7）、cotensorのpullback条件を同時に出力する。
+Cにsimplicial enrichmentを要求しない。入力Sは引き続きordinary RMapの局所化に使ったSであり、
+任意のVについて普通の局所性とV内部Homによる局所性を無条件で同一視してはいない。
+
+### 212.3 両変数を局所化したmonoidal tensorと単位
+
+`Monoidal/BifunctorSymmetrize.lean`は、F≅F.flipという自然なcommutorとcofibrationの等式から、
+片側だけ局所化したQuillen bifunctorを両変数とも局所化したQuillen bifunctorへ移す。
+`Localization/Monoidal.lean`はbraided closed monoidalな元のCでこれを実際のtensorに適用する。
+元の生成cofibration Iの始域のcofibrancyと、その両endpointによる導来tensorのS適合条件を明示する。
+ここで必要な生成始域cofibrancyはこのmonoidal適合定理の追加条件であり、普通の局所化存在には戻さない。
+
+`Monoidal/UnitChangeModel.lean`はcofibrationを固定して弱同値を増やせば、元の実際のunit replacementが
+そのまま単位公理を満たすことを証明する。`Localization/MonoidalUnit.lean`が実際の局所化へ接続する。
+monoidal unitのcofibrancyは入力に要求しない。pushout-productと単位の証明は独立である。
+最終的に実際の局所モデルのMonoidalModelCategoryと閉内部Homのpullback-hom条件を得る。
+
+### 212.4 検証・残作業
+
+実装コミット：`f45273b8`、`ffdd8e23`。すべて成功した。
+
+- 共有入口`Foundations`のビルド：2547 jobs。
+- `check_enriched_localization`：実際のModelPresentationの生成族を使用し、Cの生成始域の
+  cofibrancyなしで一般Vの局所SM7とcotensor条件を検証。新規7モジュール全8宣言の標準公理監査。
+- `check_monoidal_localization`：実際のモデルの両変数のpushout-product、別の単位公理、
+  閉内部Hom条件。unitのcofibrancyを追加せず検証。新規2モジュール全2宣言の標準公理監査。
+- `audit_homotopical_foundations`：4294宣言・360モジュール、標準公理のみ。
+- L5のQuillen普遍性：10宣言・5モジュール、反復局所化：8宣言・4モジュールの回帰検証。
+- `git diff --check`と各コミットのstage差分検査。
+
+新規sorry・引用axiomはない。共有作業木の他チャットの変更を保持した。
+残るE0の照合は、元のordinary RMapでの局所性とV内部Homに対する局所性の比較である。
+局所SM7だけからこの二つを同一視せず、豊穣作用の単位に必要な条件、cofibrant replacementした
+実際のeHomの弱同値判定を明示して接続する。V=SSetへの適用もこの区別の下で確認する。
+その後S0〜S3へ進む。一般C,Kのスペクトルという契約を維持し、特定のPSS/S¹だけへ縮めない。
