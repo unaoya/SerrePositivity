@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.AlgebraLinearYonedaBaseChange
 import SerrePositivity.HomologicalAlgebra.KoszulBaseChangeNaturality
 import SerrePositivity.HomologicalAlgebra.CochainConeAdditiveNaturality
 import SerrePositivity.HomologicalAlgebra.GeneralKoszulLocalCohomology
@@ -927,3 +928,15 @@ assert_no_sorry SerrePositivity.baseChangePowerKoszulIso_transition
 
 #print axioms SerrePositivity.baseChangeKoszulIso_mapOfMul
 #print axioms SerrePositivity.baseChangePowerKoszulIso_transition
+
+-- KL6-a3-iii: actual coefficient-linear Hom adjunction and chain naturality.
+assert_no_sorry SerrePositivity.extendScalarsHomLinearEquiv
+assert_no_sorry SerrePositivity.chainLinearYonedaBaseChangeIso
+assert_no_sorry SerrePositivity.chainLinearYonedaBaseChangeNatIso
+assert_no_sorry SerrePositivity.chainLinearYonedaBaseChangeNatIso_chain_map
+assert_no_sorry SerrePositivity.chainLinearYonedaMapIso
+
+#print axioms SerrePositivity.extendScalarsHomLinearEquiv
+#print axioms SerrePositivity.chainLinearYonedaBaseChangeIso
+#print axioms SerrePositivity.chainLinearYonedaBaseChangeNatIso
+#print axioms SerrePositivity.chainLinearYonedaBaseChangeNatIso_chain_map
