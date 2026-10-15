@@ -5810,3 +5810,20 @@ PrincipalDPPresentation (A/p) (y mod p)への実環同型と、全係数・全�
 BS専用PrincipalDPEvaluationTensor.leanを追加し、Γ_A(A)⊗[A[X]]A（Xをyへ評価）と
 PrincipalDPPresentation A yを実環同型で比較する。既存の多項式一次商同型・テンソル商同型を再利用し、
 係数・分冪生成元上の式を証明する。pの仮定を置かない通常環の比較を最初の単位とする。
+
+## B4-6：表示環と実評価テンソル環の比較（2026-10-15）
+
+PrincipalDPEvaluationTensor.leanで、既存の多項式一次商同型とテンソル商同型を合成した。
+任意の可換環Aとy:Aについて、PrincipalDPPresentation A yとΓ_A(A)⊗[A[X]]Aの
+実環同型および元の係数作用を保つA代数同型を証明した。
+全商代表元・全標準生成元・全係数の像も公開した。p正則性・標数・完備性は不要。
+7公開宣言の対象2727ジョブ成功。依存監査結果は後記する。
+
+### 次工程の登録：標数pでの表示環の忠実平坦性
+
+BS専用PrincipalDPQuotientFlat.leanで、p素数・(p:B)=0の下、任意のy:Bに対し
+B/(y^p)からPrincipalDPPresentation B yへの実射とその忠実平坦性を構成する。
+既存の評価テンソル環の忠実平坦性を実同型で移し、基底環A上のB/(y^p)の通常平坦性から
+表示環の通常平坦性を導く。導来pushout比較・完備化後の完全平坦性はこの工程には含めない。
+
+実評価テンソル比較7公開宣言のB4全体pure監査も成功。標準3公理のみ。新sorry・公理・引用なし。
