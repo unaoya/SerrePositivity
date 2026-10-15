@@ -3,6 +3,7 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Localization.QuillenCriterion
 public import SerrePositivity.HomotopicalAlgebra.Localization.QuillenLocalObjects
 public import SerrePositivity.HomotopicalAlgebra.Localization.ModelComparison
+public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedMapTest
 
 /-! # Quillen universal property of an actual left Bousfield localization
 
@@ -13,7 +14,7 @@ fibrant right-adjoint criterion and actual resolution Hom adjunction.
 -/
 
 @[expose] public section
-universe vC uC vD uD
+universe vC uC vD uD vHC uHC vHD uHD
 noncomputable section
 open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
 
@@ -100,5 +101,29 @@ lemma cofibrant_test_choices_iff
   have h' := h.changeChoices cof' fib' hcof
   exact (h.leftQuillen_iff_cofibrant_test hcof hfib adj hF hcofD hfibD hcofB hfibB).symm.trans
     (h'.leftQuillen_iff_cofibrant_test hcof hfib adj hF hcofD hfibD hcofB hfibB)
+
+
+variable {HC : Type uHC} [Category.{vHC} HC] {HD : Type uHD} [Category.{vHD} HD]
+  (QC : C ⥤ HC) [hQC : QC.IsLocalization original.categoryWithWeakEquivalences.weakEquivalences]
+  (QD : D ⥤ HD) [hQD : QD.IsLocalization (weakEquivalences D)]
+  {LF : HC ⥤ HD} (α : QC ⋙ LF ⟶ L ⋙ QD)
+  [hLF : LF.IsLeftDerivedFunctor α original.categoryWithWeakEquivalences.weakEquivalences]
+
+include h hcof hfib adj hF hcofD hfibD hcofB hfibB QC QD α hQC hQD hLF in
+lemma leftQuillen_iff_derived_inverts :
+    @Quillen.IsLeftQuillen C _ D _ m.categoryWithCofibrations
+      m.categoryWithWeakEquivalences target.categoryWithCofibrations
+      target.categoryWithWeakEquivalences L ↔
+    ∀ {X Z : C} (f : X ⟶ Z), S f → IsIso (LF.map (QC.map f)) := by
+  let := original
+  have := hF
+  refine (h.leftQuillen_iff_cofibrant_test hcof hfib adj hF hcofD hfibD hcofB hfibB).trans ?_
+  constructor
+  · intro hS X Z f hf
+    exact (@Quillen.derived_map_isIso_iff_cofibrant_image C _ original D _ target HC _ HD _
+      QC hQC QD hQD L hF LF α hLF cof X Z f).mpr (hS f hf)
+  · intro hS X Z f hf
+    exact (@Quillen.derived_map_isIso_iff_cofibrant_image C _ original D _ target HC _ HD _
+      QC hQC QD hQD L hF LF α hLF cof X Z f).mp (hS f hf)
 
 end SerrePositivity.Bousfield.IsLocalizationModel

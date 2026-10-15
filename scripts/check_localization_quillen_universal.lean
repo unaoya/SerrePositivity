@@ -2,7 +2,7 @@ import SerrePositivity.HomotopicalAlgebra.Localization.UniversalProperty
 import Lean.Util.CollectAxioms
 
 noncomputable section
-universe vC uC vD uD
+universe vC uC vD uD vHC uHC vHD uHD
 open CategoryTheory HomotopicalAlgebra
 open SerrePositivity
 
@@ -52,6 +52,20 @@ example (cof' : MorphismProperty.FunctorialFactorizationData
       (L.map ((HomotopyFunctionComplex.cofibrantSource cof').map f))) := by
   let := original
   exact h.cofibrant_test_choices_iff hcof hfib adj hF hcofD hfibD hcofB hfibB cof' fib'
+
+-- The final statement uses any actual left derived functor and arbitrary localization universes.
+example {HC : Type uHC} [Category.{vHC} HC] {HD : Type uHD} [Category.{vHD} HD]
+    (QC : C ⥤ HC) [QC.IsLocalization original.categoryWithWeakEquivalences.weakEquivalences]
+    (QD : D ⥤ HD) [QD.IsLocalization (weakEquivalences D)]
+    {LF : HC ⥤ HD} (α : QC ⋙ LF ⟶ L ⋙ QD)
+    [LF.IsLeftDerivedFunctor α original.categoryWithWeakEquivalences.weakEquivalences] :
+    @Quillen.IsLeftQuillen C _ D _ m.categoryWithCofibrations
+      m.categoryWithWeakEquivalences target.categoryWithCofibrations
+      target.categoryWithWeakEquivalences L ↔
+    ∀ {X Z : C} (f : X ⟶ Z), S f → IsIso (LF.map (QC.map f)) := by
+  let := original
+  exact h.leftQuillen_iff_derived_inverts hcof hfib adj hF hcofD hfibD hcofB hfibB QC QD α
+
 end Localization
 
 open Lean in
@@ -61,7 +75,8 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AdjunctionWeakEquivalence,
     `SerrePositivity.HomotopicalAlgebra.Localization.FibrantMappingTests,
     `SerrePositivity.HomotopicalAlgebra.Localization.QuillenLocalObjects,
-    `SerrePositivity.HomotopicalAlgebra.Localization.UniversalProperty]
+    `SerrePositivity.HomotopicalAlgebra.Localization.UniversalProperty,
+    `SerrePositivity.HomotopicalAlgebra.Quillen.DerivedMapTest]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

@@ -52,6 +52,12 @@ example (X : C) : weakEquivalences C (d.η.app (d.L.obj X)) ∧
     weakEquivalences C (d.L.map (d.η.app X)) :=
   ⟨d.unit_at_value_weakEquivalence hcofV hfibV X, d.map_unit_weakEquivalence hcofV hfibV X⟩
 
+-- The unit's universal property is a weak equivalence of the actual RMap simplicial sets.
+example (X Z : C) (hZ : localObjects.{v, u} (C := C) cof fib S Z) :
+    weakEquivalences SSet.{v}
+      (((SerrePositivity.HomotopyFunctionComplex.chosenResolutionHom cof fib).map
+        (d.η.app X).op).app Z) := d.unit_localEquivalence X Z hZ
+
 example (X Z : C) (hZ : localObjects.{v, u} (C := C) cof fib S Z) :
     Function.Bijective (fun k : Q.obj (d.L.obj X) ⟶ Q.obj Z => Q.map (d.η.app X) ≫ k) :=
   d.unit_hom_bijective Q hcofV hfibV X Z hZ
