@@ -3359,3 +3359,24 @@ B/C/Eの対象宇宙は独立。主Hom endとcoendのためSmall.{u} B/Cを要�
 U11d全受入には代表対象zの変数のYoneda自然性と、一対象Aの既存cochainTensor比較がなお残る。
 U11eではこのcomposeの単位・結合比較と三角/五角、三変数自然性・随伴を検証する。
 U12〜U17・D4mも未完のまま継続する。共有ルート・共有一般論・並行作業ファイルは変更していない。
+
+
+### 17.30 U11d11：一対象環と既存cochainTensorの比較
+
+`Module/LeftRing.lean`は任意非有界複体の一対象左加群ringLeftModuleと、
+任意の一対象左加群の作用が単位保存から定まる式を公開した。
+`Tensor/Ring.lean`は左右作用が通常のright/left unitorに一致することから、
+任意の一対象右/左dg加群についてbalanced tensorと値の通常tensorの同型ringIsoを構成した。
+包含・純粋斉次元での計算、実際の閉零加群射に関する両変数自然性を証明した。
+指定複体P/Qの既存SerrePositivity.cochainTensorとの比較ringComplexTensorIsoも公開する。
+任意可換環・非有界を保ち、flat性・体・標数の仮定を追加していない。
+
+Checks.BalancedTensorRingと既存StageSeven・Spectra.StageTwoの同時ビルドは
+成功（2649 jobs、終了コード0、追加ソースの警告なし）。主要10宣言の直接実行も終了コード0、標準公理のみ。
+監査累計1405宣言。任意Aと一対象ZMod 2の非有界tensor比較を検査した。
+担当差分のgit diff --checkも成功。
+
+U11dの一対象Aの比較は得られたが、代表対象zを動かすYoneda自然性がなお残る。
+次は代表加群のdg Yoneda関手と代表対象のHom作用を、既存全次数Yoneda同型から構成する。
+その後U11d受入を照合し、U11eの単位/結合coherence・随伴へ進む。
+U12〜U17・D4mも引き続き未完。共有ルート・共有一般論・並行作業ファイルは変更していない。
