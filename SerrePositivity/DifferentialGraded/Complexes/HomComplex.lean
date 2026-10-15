@@ -1,6 +1,6 @@
 module
 public import Mathlib.Algebra.Homology.HomotopyCategory.HomComplex
-public import SerrePositivity.PerfectComplex.Tensor
+public import SerrePositivity.HomologicalAlgebra.CochainTensor
 
 /-! # 非有界 A 複体と A 線形 Hom 複体
 

@@ -1,0 +1,11 @@
+import SerrePositivity.HomologicalAlgebra.CochainTensorSymmetry
+import SerrePositivity.HomologicalAlgebra.CochainIdempotent
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.cochainTensor
+assert_no_sorry SerrePositivity.cochainTensorSymmetry
+assert_no_sorry SerrePositivity.cochainTensorSymmetry_hom_comp
+assert_no_sorry SerrePositivity.CochainIdempotent.imageMap
+assert_no_sorry SerrePositivity.CochainIdempotent.inclusion_projection
+#print axioms SerrePositivity.cochainTensorSymmetry_hom_comp
+#print axioms SerrePositivity.CochainIdempotent.inclusion_projection
