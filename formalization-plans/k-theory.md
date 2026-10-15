@@ -6306,7 +6306,7 @@ IDは計画上の単位であり、1行を1コミットや1日とみなさない
 | L1（完了、§200） | Localization/AccessibleLocalObjects | A1,F3,L0 | S-local対象の充満部分圏のaccessibilityと包含のaccessibilityを導く。検出に使う関手・cardinalと小さいhomotopy生成族を明示 |
 | L2（完了、§208） | Localization/AccessibleLocalEquivalences | L1,F4,L3（§208の経路） | Arrow C内のW_Sのaccessibilityと包含のaccessibilityを証明。全局所対象に量化した定義から小ささへの移行を独立に検証 |
 | L3（完了、§207） | Localization/LeftProperClosure | L0,F4、元モデルの左固有性 | cof_original∩W_Sのpushout/超限合成閉性を証明。局所化後のモデル存在や左固有性を先取りしない |
-| L4 | Localization/Existence。一般の左Bousfield局所化存在 | R3,L2,L3 | §159.2の三クラス・fibrant判定を同じC上で構成。局所モデルの生成Jと分解は出力。左固有性・combinatorial性も接続 |
+| L4（完了、§209） | Localization/ModelExistence。一般の左Bousfield局所化存在 | R3,L2,L3 | §159.2の三クラス・fibrant判定を同じC上で構成。局所モデルの生成Jと分解は出力。左固有性・combinatorial性も接続 |
 | L5 | Localization/Replacement, UniversalProperty | L4,F2 | 実際のL_Sとη、冪等性、W_Sの関手による検出、Quillen普遍性、生成表示・置換の独立性、S⊆Tと反復局所化の比較 |
 | E0 | Localization/Enriched, Monoidal | L4,L5、既存SM7 | 通常局所化・V豊穣局所化を区別。追加のtractability/生成始域cofibrancyとtensor適合条件を明示し、局所SM7・pushout-product・単位を証明 |
 | S0 | Spectra/ModelCategory/Combinatorial, LeftProper | R1,A0、既存レベル構造 | 一般C,Kの対称スペクトルの局所可呈示性と必要条件下の左固有性。Mod型・余極限・accessibleなmonad等の比較を証明し、圏の名前だけで推論しない |
@@ -10031,3 +10031,56 @@ accessibleであるという未証明な一般論も使っていない。
 三クラス、局所fibrant対象との同値、出力される生成族J_Sと関手的分解、
 局所モデルの左固有性・combinatorial性をそれぞれ検証する。
 L5の普遍性・独立性、E0、S0〜S3、F1の任意モデル源の最終関手は引き続き未完了。
+
+## 209. L4完了：同じ圏上の一般左Bousfieldモデルの実構成（2026-10-16）
+
+§159.2の左固有combinatorialな源と小さいSを最終入力として、L4の受入条件を満たした。
+A0・A1は§166、L2は§208、L3は§207で完了済み。全体目標F→L→E→Sは継続中である。
+
+### 209.1 実際のモデル構造と生成射
+
+`Localization/ModelExistence.lean`の`exists_modelPresentation`と`modelPresentation`は、
+L2で証明した元のW_Sのaccessibility、L3の閉性、元のIとW_C⊆W_SをSmith存在定理へ渡す。
+同じC上のMathlibの実際の`ModelCategory C`を出力し、次の等式を保持する。
+
+- cof_S = cof_C。
+- W_S = 元の指定RMapによるS局所同値。
+- fib_S = (cof_C∩W_S).rlp。
+
+元のモデルを明示的に固定した`ModelPresentation`へ保存するので、新モデルの型クラスが
+元のRMapの定義を置き換えることはない。実際の小さいSmith生成族Gと
+`CofibrantlyGenerated I G`も出力する。Gや局所化証明書を入力には要求しない。
+`exists_accessible_factorizations`は構成後のモデルへA0の一般定理を適用し、両モデル分解の
+実際の関手的データと共通正則基数でのaccessibilityを出力する。
+
+### 209.2 fibrant対象の判定と左固有性
+
+`ModelPresentation.isLocalizationModel`は既存の条件付き証明書を実際に充足する。
+新モデルでfibrantなら、J⊔B(S)≤cof_C∩W_Sと右持ち上げから元のfibrantかつS局所となる。
+逆向きは新モデルでY→Z→1を分解し、Zの局所性と局所対象間のW_S=W_Cから、最初の射を
+元のtrivial cofibrationと判定する。元のfibrant性で持ち上げ、Y→1をZ→1のretractとして得る。
+局所化モデルの存在やfibrant判定を仮定した循環はない。
+
+`Localization/LocalLeftProper.lean`は、任意のW_Sの射を元のcofibrationに沿って押し出した射の
+W_S所属を証明する。span(f,id)→span(f,g)と元の左固有性による実際のhocolim比較を用いる。
+この定理自体はSの小ささも対象のcofibrancyも不要。`ModelPresentation.leftProper`が
+クラス等式を通じて新モデルの左固有性へ接続する。局所可呈示性は同じCのものを用い、
+小さい生成族と合わせてcombinatorial性を供給する。
+
+### 209.3 受入検証と残作業
+
+実装コミット：`129ab547`。すべて成功した。
+
+- 共有入口`Foundations`のビルド：2519 jobs。
+- `check_localization_model_existence`：独立したu/v/wで実構成、fibrant証明書、左固有性、
+  accessibleな両モデル分解の利用例。新規2モジュール全31宣言の標準公理監査。
+- `audit_homotopical_foundations`：4199宣言・333モジュール、標準公理のみ。
+- L2の`check_accessible_local_replacement`：13宣言・5モジュール。
+- L3の`check_localization_left_proper_closure`：17宣言・3モジュール。
+- 局所対象間の判定と逆像の`check_local_replacement_detection`：62宣言・9モジュール。
+- `git diff --check`、stageした差分の同検査。
+
+新規sorry・引用axiomはない。特定のsimplicialな源、tractability、全対象cofibrantという
+追加仮定は課していない。共有作業木の他チャットの変更は保持した。
+次はL5の普遍性・置換・独立性・S⊆Tの比較と反復。その後E0、S0〜S3へ進む。
+F1の任意の通常モデル圏で指定関手的分解なしの最終関手も未完了として維持する。
