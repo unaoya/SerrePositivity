@@ -4413,3 +4413,44 @@ Aのp正則性、yのA/p正則性、単元δp、自由δ環ghost単射の既存�
 
 実評価関係列の5公開宣言のpure B4監査も成功。標準3公理のみ。
 全体ビルドは共有TensorShuffleの.olean欠落を報告した実行の終端待ち。
+
+## B4-6：実自由δ射に沿う有限源商の正次数Tor消滅（2026-10-15）
+
+`DeltaPDivisionSourceFiniteTor.lean`で、実P=A{x}、L=A{z}とα:x↦p zに対し、
+源評価核の有限グラフ列z_0,…,z_Nと、実商Q_N=P/(z_0,…,z_N)を定義した。
+源グラフの既存実Koszul分解を供給し、既存torAlgKoszulIsoを実αに適用して
+TorAlg α i Q_Nと終域の実評価関係Koszulホモロジーの同型を構成した。
+Aのp正則性・yのA/p正則性・単元δp・自由δ環ghost単射の下で、全N、i≥1のTor消滅を証明した。
+5公開宣言の対象3818ジョブ成功。新sorry・公理・外部引用なし。
+Q_Nを全源評価環Aと同一視せず、有限段Torの消滅を全Tor消滅とは数えていない。
+
+### 共通基盤への要求 G7：TorAlgと加群の逐次colimit（未送信）
+
+- 対象：任意u、可換環R,C:Type u、実環射φ:R→+*C、F:ℕ⥤ModuleCat.{u} R、i:ℕ。
+- 必要な結論：`PreservesColimit F ((ModuleCat.extendScalars φ).leftDerived i)`。
+  同値な公開APIとして、実標準比較
+  `((ModuleCat.extendScalars φ).leftDerived i).obj (colimit F) ≅
+    colimit (F ⋙ (ModuleCat.extendScalars φ).leftDerived i)`と、各nの標準射上の式を供給する形でもよい。
+  Fの射の単射性、有限生成性、Noether性、各段の平坦性、p完備性は追加しない。
+- 利用工程：B4-6。実自由δ射α:P→Lに対する有限グラフ商Q_Nの正次数Tor消滅を、
+  全源評価環Aへの段階的極限に沿って移す工程。
+- 既存APIの不足：既存torAlgKoszulIsoは有限源商Q_NのTorを計算できるが、
+  その値のN→∞移行は与えない。共通SequentialComplexColimitsは実複体のホモロジーと
+  colimitの交換を持つが、任意加群図式に対する実leftDerivedのcolimit比較ではない。
+  MathlibのAbelian/LeftDerivedとリポジトリのTor周辺に対応APIは検索時点で見つからなかった。
+- 待つ工程：有限源商から全源評価環への正次数Tor消滅の移送。
+- 独立作業：βの核とraw通常pushout、分母1のraw包≃評価環、源有限商の具体的表示、
+  既存実Koszulモデルの標準図式、原典分冪比較の具体化は続けられる。
+- 共通Tor基盤の担当領域のため、同等の一般Tor/colimit定義・定理をBS内に重複構築しない。
+  他チャットへの送信は行っていない。
+
+### 次工程の登録：分母1のraw δ包と実源評価環
+
+BS専用`DeltaDivisionUnitDenominator.lean`で、δ自由射α_1:x_s↦1·z_sが実恒等射となること、
+βが係数射Cを切断として全射となることを示し、raw δ包DeltaAdjoinDivision D 1 a≃Aを構成する。
+前工程の核の像の式を使って実定義δ閉包をker βと同定し、既存の商核同型を適用する。
+標準商射・基底射C・生成元・δ構造との可換図式を供給する。
+この通常源評価環の同定はG7を待たず進め、導来テンソルの離散性とは分ける。
+
+有限源商Tor工程の5公開宣言のpure B4監査も成功。標準3公理のみ。
+全体ビルドは共有TensorShuffleの.olean欠落を報告後、残りの共有利用先をなおビルド中。
