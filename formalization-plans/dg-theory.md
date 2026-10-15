@@ -3543,3 +3543,43 @@ U11eは引き続き未完。今回の随伴は全dg自然な射を持つ閉零�
 左加群変数側の余極限保存、Fubini、bimodule合成の結合同型・全変数自然性・三角/五角も残る。
 本節の随伴の三角恒等式をbimodule合成の三角整合性と混同しない。
 U12〜U17・D4mも未完。共有系列への新しい不足要求はなく、担当外ファイルは変更していない。
+
+
+### 17.36 U11e5：主Hom複体のtensor–Hom同型と閉零比較（2026-10-16）
+
+`Tensor/ModuleParameter.lean`は既存tensorModule K Mの右balanced作用について
+rightAction_tensorModuleを証明した。右作用の交換とtensor加群の作用に現れるKの二つの符号が
+打ち消し合い、通常のassociatorの後にK◁rightActionを取るchain mapに一致する。
+任意可換環・非有界Kであり、flatnessやK-flatnessは要求しない。
+
+`Tensor/ParameterTensorFamilies.lean`はassociatorの自然性とpentagonから、
+Kを外に置いたParamFamilyとtensorModule K MのBalancedFamilyの条件の同値を証明する。
+paramTensorFamilyEquivは両逆を持つ。この族の比較にはDのSmall仮定は不要である。
+`Complexes/CurryingNaturality.lean`は逆転置のパラメータ前合成と二重転置の自然性を追加した。
+
+`Tensor/EnrichedHomAdjunction.lean`のparamTransEquivは上記比較、§17.35のbalancedFamilyMapEquiv、
+既存tensorFamilyEquivを合成し、任意KのModuleParamTransへの同値を与える。
+Small.{u} Dの下で既存moduleHomEquivへ接続してenrichedTensorHomEquivを構成した。
+その射影計算式とKに関する自然性から、
+`enrichedTensorHomIso : Hom_A(M⊗_D N,T) ≅ moduleHom_D(M,homRightModule N T)`
+という実際のchain isoを構成し、両逆法則を証明した。
+任意Kからの転置がこのiso.homへの後合成と一致することも公開する。
+主Hom endと既存Hom複体を保持し、別の弱い自然変換の対象へ置き換えていない。
+
+`Tensor/EnrichedHomPoints.lean`は単位複体からの閉零射でこの比較を評価すると、
+§17.35の通常tensor–Hom随伴の転置と一致することを証明する。
+二重転置とunitorの比較を一般の複体・射について先に証明し、評価の射影計算で主Homへ戻した。
+単なるHom集合の非自然な同値や、次数0だけの同型ではない。
+
+Checks.EnrichedTensorHom・Checks.TensorHomAdjunction・Checks.BimoduleLeftUnit・Checks.StageSeven・
+既存Spectra.StageTwoの同時ビルドは成功（2712 jobs、終了コード0、警告なし）。
+任意A、独立対象宇宙、Small Dなしの族の比較、任意パラメータK、実際のchain iso、ZMod 2を検査した。
+本単位の主要16宣言の直接実行も終了コード0、すべて標準公理のみ。監査累計1518宣言。
+担当Leanのsorry/admit/新規axiomは0件。
+全体文書検査は共有ルートSerrePositivity.oleanが現在存在しないためexportで停止し、今回は成功としない。
+Markdown 22件のローカルリンクは別途検査して失敗0件。担当差分のgit diff --checkは成功。
+共有ルートや他チャットのソースを編集・巻き戻ししていない。
+
+U11e全受入は未完。次はこの主Hom同型のM/N/Tの全Hom自然性を公開し、
+左加群変数の余極限保存とFubiniへ進める。bimodule合成の結合同型・全変数自然性・三角/五角も残る。
+U12〜U17・D4mも引き続き未完。共有一般論への新規不足要求はなく、担当外ファイルは変更していない。
