@@ -90,4 +90,39 @@ lemma exists_leftProper_combinatorial_levelModel
   rw [hw, hc]
   exact level_leftProper K I hevalI
 
+omit [HasColimitsOfSize.{w, w} C]
+  [(levelGenerators K I).HasSmallObjectArgument.{w}] in
+/-- The evaluated-generator conditions are supplied by the actual monoidal
+free-level calculation. No cardinal or level SOA is an additional input. -/
+lemma exists_leftProper_levelModel_of_monoidal
+    [IsLocallyPresentable.{w} C]
+    [(weakEquivalences C).IsStableUnderCobaseChangeAgainst (cofibrations C)]
+    [Quillen.IsQuillenBifunctor (curriedTensor C)] [IsCofibrant (𝟙_ C)] [IsCofibrant K]
+    (J : MorphismProperty C) [CofibrantlyGenerated.{w} I J] :
+    ∃ m : ModelCategory (GeneralSymmetricSpectrum C K),
+      m.categoryWithWeakEquivalences.weakEquivalences = levelProperty K (weakEquivalences C) ∧
+      m.categoryWithFibrations.fibrations = levelProperty K (fibrations C) ∧
+      m.categoryWithCofibrations.cofibrations = (levelGenerators K I).rlp.llp ∧
+      (let := m; CofibrantlyGenerated.{w} (levelGenerators K I) (levelGenerators K J)) ∧
+      m.categoryWithWeakEquivalences.weakEquivalences.IsStableUnderCobaseChangeAgainst
+        m.categoryWithCofibrations.cofibrations := by
+  apply exists_leftProper_combinatorial_levelModel K I J
+  · intro n m X Y f hf
+    cases hf with
+    | map hf =>
+      have hi : I ≤ cofibrations C := by
+        rw [cofibrations_eq_generated I J]
+        exact I.le_llp_rlp
+      have : Cofibration _ := ⟨hi _ hf⟩
+      exact evaluatedFree_cofibration K _ n m
+  · intro n m X Y f hf
+    cases hf with
+    | map hf =>
+      have hj : J ≤ trivialCofibrations C := by
+        rw [trivialCofibrations_eq_generated I J]
+        exact J.le_llp_rlp
+      have : Cofibration _ := ⟨(hj _ hf).1⟩
+      have : WeakEquivalence _ := ⟨(hj _ hf).2⟩
+      exact evaluatedFree_trivialCofibration K _ n m
+
 end SerrePositivity.SpectrumLevelModel
