@@ -3075,3 +3075,19 @@ Checks.BimoduleTensorComparison・Uncurry・UncurryCompositionと既存StageSeve
 U11全体は未完。次はU11cの多対象balanced tensorを、二作用の余等化子として構成し、
 balanced族との普遍性、両変数mapと法則、符号付き成分式まで証明する。
 その後U11d/eのYoneda評価・残るbimodule作用・単位/結合coherenceへ進む。U12〜U17も継続対象である。
+
+
+### 17.16 U11c1：多対象balanced tensorと普遍性
+
+`Tensor/Actions.lean`は既存moduleActionChainをsigned braidingで右側へ運び、
+M(y)⊗D(x,y)→M(x)の作用を構成した。成分式は加群値の次数rとHom次数pによる(-1)^(rp)を含む。
+左作用D(x,y)⊗N(x)→N(y)は既存uncurryRightで構成し、対応する成分式を証明した。
+`Tensor/Balanced.lean`は対象族⊕_x M(x)⊗N(x)と関係族⊕_{x,y}(M(y)⊗D(x,y))⊗N(x)を構成し、
+二作用の余等化子をbalanced tensorとした。全chain mapのbalanced族とのHom同値、包含/descの計算、
+外延性、終域の後合成に関する自然性とdescの後合成則を証明した。
+添字DにSmall.{u}を明示し、任意可換環・非有界複体を維持する。一モノイド版のModへ置換しない。
+
+Checks.BalancedTensorのビルドは成功（1823 jobs、警告なし）。直接実行は終了コード0、
+主要22宣言の公理は標準公理のみ。任意宇宙と一対象ZMod 2の対象を検査した。監査累計1269宣言。
+U11c全受入は未完。次は両変数の射を関係の直和へ運び、降下map・恒等/合成法則・成分式を揃える。
+U11d/eのYoneda・残るbimodule作用・単位/結合coherenceとU12〜U17も継続対象である。
