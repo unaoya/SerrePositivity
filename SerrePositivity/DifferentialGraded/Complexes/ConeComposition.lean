@@ -100,4 +100,20 @@ lemma complexConeComp_hom_connecting (f : K ⟶ L) (g : L ⟶ P) (θ : K ⟶ P)
   subst χ
   exact mappingConeCompHomotopyEquiv_comm₂ f g
 
+lemma complexConeComp_inputs_cycle (f : K ⟶ L) (g : L ⟶ P) (θ : K ⟶ P)
+    (hθ : θ = f ≫ g) (χ : mappingCone f ⟶ mappingCone θ)
+    (hχ : χ = mappingCone.map f θ (𝟙 K) g (by rw [hθ, Category.id_comp])) :
+    δ 0 1 (mappingCone.descCochain g 0 (Cochain.ofHom (mappingCone.inr θ))
+      (neg_add_cancel 1)) +
+        ((mappingCone.fst g).val.comp (Cochain.ofHom (mappingCone.inr f)) (add_zero 1)).comp
+          (Cochain.ofHom χ) (add_zero 1) = 0 := by
+  subst θ
+  subst χ
+  apply Cochain.ext
+  intro p q hpq
+  subst q
+  dsimp [mappingCone.map]
+  simp [mappingCone.ext_from_iff _ _ _ rfl,
+    mappingCone.inl_v_d_assoc _ (p + 1) p (p + 2) (by omega) (by omega)]
+
 end SerrePositivity.DifferentialGraded

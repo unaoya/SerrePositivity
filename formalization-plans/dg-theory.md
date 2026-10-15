@@ -2435,3 +2435,23 @@ Checksの直接実行で主要7宣言を監査し、標準公理のみ。累計1
 Checks.ConeShiftTriangleOrdinary・Checks.ConeCompositionInputs・StageSix・既存Spectra.StageTwoの
 同時ビルドは成功（2530 jobs）。本単位の主要4宣言の直接公理監査は標準公理のみ。累計1057宣言。
 K(D)への移送と逆回転閉性・Pretriangulatedの検証は継続中で、U10全受入は未完である。
+
+
+### 13.76 U10o2：合成cone比較の全dg自然な順方向射
+
+`Module/ConeCompositionInputs.lean`は、標準cone射χ:cone(f)→cone(f≫g)と、
+cone(g)からcone(f)への次数1・cone(f≫g)への次数0の主Hom要素を構成する。
+前者はfst(g)の後にinr(f)を合成したもの、後者は零とinr(f≫g)からのdesc要素である。
+次数1の入力の閉性と、二つの入力を結ぶ境界式を主Hom内で証明した。
+`moduleConeCompHom`は既存の全Hom上のliftから得られる
+cone(g)→cone(χ)の実際の加群射であり、評価が§13.74の既存複体比較の順方向射と一致する。
+objectwiseな射やホモトピーの存在だけに弱めていない。
+
+`Complexes/ConeComposition.lean`には、このliftの入力境界式を追加した。
+複体成分の証明ではCochain.extを明示し、ModuleCatの元まで自動でextを進めない。
+§13.75の同時ビルドは成功（2530 jobs）。本単位の主要11宣言をChecks.ConeCompositionInputsの
+直接実行で監査し、標準公理のみ。累計1068宣言。
+
+U10全受入は未完。次は逆方向のdesc射と全dg自然な次数−1の収縮を構成し、
+K(D)で合成cone三角形がdistinguishedであることから八面体公理へ接続する。
+三角形shift比較のK(D)への移送とPretriangulatedも検証を継続している。
