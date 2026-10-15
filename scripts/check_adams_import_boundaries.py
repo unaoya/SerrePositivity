@@ -85,6 +85,11 @@ check('SerrePositivity.PerfectComplex.InvolutionClassAcyclic',
       lambda dep: dep.startswith('SerrePositivity.KTheory.Adams.'))
 print('The general acyclic involution class is independent of Adams implementations.')
 
+check('SerrePositivity.PerfectComplex.IdempotentImageClass',
+      lambda dep: dep in coefficient_comparison or
+      dep.startswith('SerrePositivity.KTheory.Adams.'))
+print('Idempotent image classes are independent of Adams and Euler/localization comparisons.')
+
 general = ['AlternatingSum', 'ExactImageSequence', 'HomotopyConeRepresentative',
            'HomotopyProperty', 'TriangulatedK0Shift']
 for name in general:
