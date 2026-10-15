@@ -1504,3 +1504,37 @@ u-small余積とshiftの比較、およびshiftされた自由sphere余積の自
 U10全受入は未完。次は初期二段分解と各自由商を網羅的filtrationのデータにまとめ、
 既存準同型射とともに任意加群へのsemifree解像度の存在を証明する。
 その後のHom計算・三角構造・Verdier商・余積/局所小性・一対象比較の目標は保持する。
+
+
+### 13.34 U10a13：証明付きsemifree filtrationと任意加群への解像度の存在
+
+`Module/Semifree/Basic.lean` は `ModuleSphereFreePresentation` にu-smallな自由sphere余積の
+具体的表示を保持する。添字のambient宇宙はmax u v、Hom/加群の宇宙はu。
+`ModuleSemifreeFiltration` はℕ-indexedな段階と遷移、初期段の自由sphere表示、
+各商の自由sphere表示と全次数分裂、coconeとIsColimit、最終対象への同型を保持する。
+各商が主dg加群圏での真のcokernelであることも公開する。
+主モデルを変更せず、単なるI-cell候補という定義では代用しない。
+
+`Module/Semifree/Resolution.lean` は上次数sphere余積を初期段とし、
+第1段をdisk被覆、その後を既存可算kernel cell列とする。
+新しい列のcoconeのtailを既存列のcoconeへ制限し、余極限の普遍性を両方向に証明する。
+各段の商・分裂・自由sphere表示を既存APIから組み立て、
+`moduleResolutionSemifreeFiltration` と `moduleResolutionCandidate_semifree` を証明した。
+
+`exists_semifree_resolution` は任意MについてPとq:P→Mを与え、
+semifree性・次数ごとの全射性・指定objectwise quasiIsoを同時に証明する。
+任意可換環・非有界複体・独立対象宇宙 `[Small.{u} D]` で成立し、
+体・flatness・noetherian性・射影モデル構造を仮定しない。
+これでU10aのsemifree解像度の存在を、filtrationと実際の準同型射の証明込みで満たした。
+
+受入入口 `Checks/Semifree.lean` は一般A/Dの存在定理、実際のfiltration、余極限普遍性、
+各段のmono性・主圏のcokernel・商の自由sphere表示、ℤとZMod 2の適用を検証する。
+この入口・ShiftCells・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3219 jobs）。
+直接実行の主要18宣言は標準公理のみ。累計673宣言。
+担当Lean範囲のsorry/admit/新規axiomは0件、担当diff --checkは成功。
+全体文書検査の並行K系列importによる制限は§13.29の記録を維持する。
+
+U10全受入は未完。次はfreeSphere・余積・このfiltrationについてHom endがacyclicを消すことを証明し、
+導来Hom計算と解像度の選択独立性へ接続する。
+K(D)/D(D)の三角構造・Verdier商比較、余積・局所小性の宇宙、一対象同値の三角形/余積保存も残る。
+共有一般モデル圏/Quillen/転送/SM7は複製せず、D4m条件は§13.23のまま。
