@@ -5293,3 +5293,20 @@ Aが可換ℚ代数Cへ単射に写る場合、C[X]の標準分冪構造への�
 6公開宣言の対象1516ジョブ・B4全体pure監査成功。標準3公理のみ。
 新sorry・公理・引用なし。一般分冪代数の定義は重複していない。
 商のp正則性・分冪包比較・導来比較・CFF・一般B4は未完成。
+
+### 次工程の登録：p局所・p正則な係数環での一元分冪基底
+
+BS専用RankOneDPPrimeBasis.leanで、p局所・p正則なAについてC=A[1/p]を用い、
+前工程の実基底を特殊化する。既存の局所化内ℚ代数と基底射の単射性を再利用する。
+実基底によるModule.Freeを供給し、既存Module.Flat.isSMulRegular_of_isRegularから
+DividedPowerAlgebra A A自身のp正則性を導く。
+正則な一元を課した商のp正則性は次工程であり、δ構造や完備性は要求しない。
+
+## B4-6：p局所係数での実一元分冪基底とp正則性（2026-10-15）
+
+RankOneDPPrimeBasis.leanで、p局所・p正則なAに対し、実局所化A[1/p]の
+既存ℚ代数構造と既存基底射の単射性を用いて実基底を特殊化した。
+この実基底からModule.Freeを供給し、既存Module.Flat.isSMulRegular_of_isRegularを使い、
+DividedPowerAlgebra A A自身のp正則性を証明した。δ構造・完備性は不要。
+4公開宣言の対象2708ジョブ・B4全体pure監査成功。標準3公理のみ。
+新sorry・公理・引用なし。商のp正則性、分冪包比較、導来比較、CFF、一般B4は未完成。

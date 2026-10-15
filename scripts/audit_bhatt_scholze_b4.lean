@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.RankOneDPPrimeBasis
 import SerrePositivity.BhattScholze.RankOneDPBasis
 import SerrePositivity.BhattScholze.PrincipalDPFactorialKernel
 import SerrePositivity.BhattScholze.PrincipalDPToFactorial
@@ -4379,3 +4380,13 @@ assert_no_sorry SerrePositivity.BhattScholze.rankOneDPBasis
 #print axioms SerrePositivity.BhattScholze.rankOneDPBasis
 assert_no_sorry SerrePositivity.BhattScholze.rankOneDPBasis_apply
 #print axioms SerrePositivity.BhattScholze.rankOneDPBasis_apply
+
+-- Actual rank-one divided-power basis and p-regularity over p-local coefficients.
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPPrimeBasis
+#print axioms SerrePositivity.BhattScholze.rankOneDPPrimeBasis
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPPrimeBasis_apply
+#print axioms SerrePositivity.BhattScholze.rankOneDPPrimeBasis_apply
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPPrime_moduleFree
+#print axioms SerrePositivity.BhattScholze.rankOneDPPrime_moduleFree
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPPrime_p_mul_injective
+#print axioms SerrePositivity.BhattScholze.rankOneDPPrime_p_mul_injective
