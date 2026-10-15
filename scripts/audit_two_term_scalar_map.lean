@@ -1,0 +1,21 @@
+import SerrePositivity.PerfectComplex.TwoTermScalarMap
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.cochainTwoTermScalarMapX
+#print axioms SerrePositivity.cochainTwoTermScalarMapX
+
+assert_no_sorry SerrePositivity.cochainTwoTermScalarMapX_lower
+#print axioms SerrePositivity.cochainTwoTermScalarMapX_lower
+
+assert_no_sorry SerrePositivity.cochainTwoTermScalarMapX_upper
+#print axioms SerrePositivity.cochainTwoTermScalarMapX_upper
+
+assert_no_sorry SerrePositivity.cochainTwoTermScalarMapX_comm
+#print axioms SerrePositivity.cochainTwoTermScalarMapX_comm
+
+assert_no_sorry SerrePositivity.cochainTwoTermScalarMap
+#print axioms SerrePositivity.cochainTwoTermScalarMap
+
+assert_no_sorry SerrePositivity.cochainTwoTermScalarMap_eigen
+#print axioms SerrePositivity.cochainTwoTermScalarMap_eigen
+
