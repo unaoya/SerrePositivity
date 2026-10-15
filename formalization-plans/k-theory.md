@@ -6635,3 +6635,77 @@ accessibility、一般スペクトルの局所可呈示性・左固有性は引�
 旧cellular経路の45〜90単位をSmith経路の残工数には流用しない。
 後続の数値はA0/A1の証明契約・既存補題への接続を確認してから更新し、
 今回は検証していない所要日数や確定した総単位数を提示しない。
+
+
+## 164. A0・A1の実装開始：accessibilityの移送・colimit・超限反復（2026-10-15）
+
+依頼範囲はA0・A1全体の完成であり、今回の条件付き補題だけで完了とはしない。
+R0〜R3は§163のとおり完了したまま維持する。
+
+### 164.1 指定した分解データからの移送
+
+`Smith/AccessibleFactorization.lean`を共有入口に公開した。
+指定したMathlib FunctorialFactorizationData dの中間対象関手d.Zがκ-accessibleなら、
+左右のArrow値の因子も同じκでaccessibleになる。Arrow値の関手のaccessibilityは
+両端点で検出する。始対象・終対象の射を取る関手は任意の正則κでaccessibleであり、
+d.Zとの合成で得る制限もκ-accessibleとなる。
+
+比較射は自然変換として構成し、dが実際のモデル分解データなら、始対象からの
+制限はcofibrant置換、終対象への制限はfibrant置換になることも確認した。
+既存ModelReplacementのQ/Rは、そこで選ばれたデータをこのAPIで制限したものと
+定義的に一致する。ただしその既存の任意の選択のaccessibilityまでは主張していない。
+後で構成するaccessibleな分解データを明示して使うことが重要である。
+
+検証：`check_accessible_factorization_transport`は独立した宇宙、左右因子、
+始対象/終対象の制限、比較射のクラス、実際のcofibrancy/fibrancy、既存APIとの
+定義的一致を扱う。全41宣言の標準公理監査が成功。コミット：`49c61f4`。
+
+### 164.2 固定基数でのcolimit閉性
+
+`Smith/AccessibleColimits.lean`で、関手圏値の関手のaccessibilityをevaluationで検出し、
+同じκでaccessibleな関手の図式について、pointwise colimitと選択された通常のcolimitが
+κ-accessibleになることを証明した。colimが左随伴であることと、関手圏のcolimitが
+pointwiseに計算されることを使う。
+
+検証：`check_accessible_colimits`は一般図式、pushoutのWalkingSpan、超限のOrdinal添字を
+扱う。添字の宇宙とaccessibilityの基数の宇宙を同一視しない。
+全6宣言の標準公理監査が成功。コミット：`b6abcbc`。
+
+### 164.3 Mathlibの実際の超限反復
+
+`Smith/AccessibleIteration.lean`で、Tがκ-accessibleでε:id→Tが自然変換なら、
+Mathlibの`SuccStruct.ofNatTrans ε`による各反復段階と反復全体が同じκでaccessibleに
+なることを証明した。最小段階・後続段階・極限段階の帰納を行い、極限では164.2を使う。
+別の反復を仮定・定義して置き換えたものではない。
+
+検証：`check_accessible_iteration`は一般の後続関手、その各段階・反復全体、
+恒等関手の実際の反復、および一般の連続図式に対する帰納入口を扱う。
+全6宣言の標準公理監査が成功。コミット：`8b7429b`。
+
+### 164.4 検証と残作業
+
+以下を実行し、すべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`（最終1478 jobs）。
+- `lake env lean scripts/check_accessible_factorization_transport.lean`。
+- `lake env lean scripts/check_accessible_colimits.lean`。
+- `lake env lean scripts/check_accessible_iteration.lean`。
+- `lake env lean scripts/audit_homotopical_foundations.lean`（最終590宣言・40モジュール）。
+- `lake env lean scripts/check_smith_existence.lean`。
+- `lake env lean scripts/check_homotopical_foundations.lean`。
+- `lake env lean scripts/check_spectra_stage2.lean`。
+- `git diff --check`。
+
+新規一般論は標準公理のみ。新規sorry・引用axiomはなく、他チャットの変更を保持した。
+A0・A1全体は未完了。残る受入項目は次のとおり。
+
+1. 小さい生成族の始域・終域の可呈示性から、可換squareの添字関手とセル付加関手の
+   accessibilityを実際に証明する。条件付きのaccessibility仮定を最終入力に残さない。
+2. 164.3を小対象論法の後続構造へ接続し、実際の分解データZ/左右因子を得る。
+   必要な宇宙の縮小・圏同値による移送を証明し、射の宇宙が固定値に等しい場合だけで止めない。
+3. I/J両分解と、それらから構成するQ/Rに共通の正則基数を選び、164.1へ接続する。
+   単なる関手的分解の任意の選択がaccessibleであるとは推論しない。
+4. A1：combinatorialモデルの元のWがaccessibly embedded accessibleであることを
+   証明する。任意のaccessible関手のfull imageがaccessibleだという仮定は使わない。
+5. 最終入力だけでA0/A1を使う利用例、全宣言の公理監査、共有入口とスペクトル側の
+   回帰検証をそろえて完成を判定する。
