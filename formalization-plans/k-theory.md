@@ -8918,3 +8918,77 @@ mの存在を仮定するaxiomやNonempty instanceは追加していない。
 新規sorry・引用axiomはない。他チャットの作業と共有ルートの変更を保持した。
 L0は完了。F4の残る源比較・最終RMap公式、F1の任意モデル源の最終関手、L1〜L5は未完了であり、
 依頼全体の完了とはしない。
+
+
+## 194. F4・L1共通：単体集合の宇宙変更と弱同値の保存・反映（2026-10-15）
+
+L1で元のHom宇宙vと局所可呈示性の宇宙wを独立に保つため、SSet.{v}の評価を
+SSet.{w}のsmall-Hom表示と比較する必要がある。Cに大きい宇宙の全余極限を仮定したり、
+SSet.{v}を無条件にw-局所可呈示とみなしたりしない。
+そのため、F4でも残項目だったSSetのULiftと弱同値の適合を先に証明した。
+この項目は完了したが、F4全体とL1全体の完了ではない。
+
+### 194.1 実際の生成射と持ち上げの宇宙変更
+
+`Transfer/FullyFaithfulLifting`は、一般のfully faithful関手Fについて、
+HasLiftingProperty(F.map i,F.map p)↔HasLiftingProperty(i,p)を証明する。
+fullnessでsquareの境界射を戻し、faithfulnessで可換性とliftの二つの式を戻す。
+モデル構造や随伴は不要である。
+
+`Simplicial/UniverseLift`は実際のSSet.uliftFunctorについてfullness、faithfulness、
+vサイズのcolimitとpushoutの保存を公開する。標準単体、境界、hornをULiftしたものから、
+大きい宇宙の実際の対応物への同型を成分ごとに構成する。
+境界・hornの包含との可換性も証明し、Arrow圏での生成射の同型を得る。
+
+`UniverseLiftLifting`はこのArrow同型とfully faithful liftingを接続する。
+任意のpについて、境界・hornの各持ち上げ条件、およびI.rlpとJ.rlpへの所属が
+ULift前後で同値になる。monomorphismの保存も実際の各次数のinjectivityから証明した。
+これらの結果にはSSetのモデル構造を仮定しない。
+
+### 194.2 弱同値反映の一般補題
+
+`Quillen/FullyFaithfulReflection`は、モデル圏間のfully faithful関手で、cofibration、
+fibration、trivial fibrationを保存するものが、すべての弱同値を反映することを証明する。
+元のfをcofibration iとtrivial fibration pへ分解し、F(i)の弱同値性を二対三性で得る。
+F(i)からF(q)への持ち上げを反映することで、iが元の全fibrationに対して左持ち上げを持つ。
+iはtrivial cofibrationであり、元のfも弱同値となる。Fの随伴の存在は要求しない。
+
+### 194.3 指定した両SSetモデル間での弱同値の保存・反映
+
+`UniverseLiftModel`はSSet.{v}とSSet.{max v w}に実際のModelCategoryを受け取り、
+両方でcofibration=mono、fibration=指定hornの右クラスという一致を明示的に要求する。
+194.1からcofibration保存、fibration・trivial fibrationの保存と反映、右Quillen条件を得る。
+194.2で、ULiftがすべての弱同値を反映することも証明する。
+
+`UniverseLiftWeakEquivalence`はsourceの各horn生成射の像がtargetのtrivial cofibrationであることを
+Arrow同型から証明し、colimit保存で相対hornセル複体とretractへ拡張する。
+これによりtrivial cofibration保存と左Quillen条件を証明する。
+すべての単体集合は指定モデルでcofibrantなので、Brown補題をすべての射へ適用できる。
+
+最終結果は、任意のf:X→Yについて、
+W_{max(v,w)}(ULift(f))↔W_v(f)である。X,YのKan性・fibrancyは不要である。
+さらにSSet.{v}とSSet.{w}の射を共通宇宙へULiftした後に実際のArrow同型があれば、
+元の二つの弱同値テストが同値になることを証明した。v≤wやw≤vは仮定しない。
+左/右Quillenという名称は既存の射クラス保存条件のAPIであり、ULiftの随伴の存在は主張しない。
+モデル存在や弱同値の幾何学的定義は入力にした証明済みモデルに委ね、新しいaxiomは追加しない。
+
+コミット：194.1・194.2は`c89ef64`、194.3は`5b4bc6e`。
+
+### 194.4 受入検証と次の接続
+
+以下はすべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`：2431 jobs。
+- `check_simplicial_universe_lift`：45宣言・6モジュール、標準公理のみ。
+  モデル不要の実際の生成射同型、colimit/pushout保存、一般のfully faithful liftingと
+  弱同値反映、左右Quillen条件、任意の射の弱同値保存・反映を検証した。
+  さらに独立したv,wの二つの射を共通宇宙のArrow同型で比較する利用例を含む。
+- `audit_homotopical_foundations`：3525宣言・245モジュール、標準公理のみ。
+- `check_homotopical_foundations`、`check_spectra_stage2`、`git diff --check`。
+
+新規sorry・引用axiomはない。他チャットの作業と共有ルートの変更を保持した。
+次はsmall-Hom表示の実際のHom同型の源自然性を接続し、Sの各射に対する局所性のテストを
+wサイズの単体集合の弱同値テストへ移す。その上で既存のaccessible mapping評価と、
+生成右クラスの逆像のaccessibilityへ接続する。L1の部分圏と包含のaccessibility自体はまだ未証明である。
+F4の重みaugmentationをrealizationした射の弱同値性と最終RMap公式、
+F1の任意モデル源の最終関手、L1〜L5は引き続き残る。L0の完了判定は維持する。

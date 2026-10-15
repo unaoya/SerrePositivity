@@ -1012,3 +1012,17 @@ fibrant局所対象だけによる検査、弱squareや自然なQ→idによるS
 共有入口2425 jobs、共有3480宣言・239モジュールの標準公理監査と回帰検証が成功。
 コミットは`e8ec17e`・`6f35f97`・`da42c88`。計画§193でL0の受入項目を照合して完了とした。
 F4の最終比較・F1の任意源の最終関手・L1〜L5は引き続き未完了である。
+
+
+`Transfer/FullyFaithfulLifting`は両射の像で持ち上げ条件を反映・保存する。
+`Quillen/FullyFaithfulReflection`はcofibration・fibration・trivial fibrationを保存する
+fully faithful関手による全弱同値の反映を証明する。どちらも随伴を要求しない。
+`Simplicial/UniverseLift`・`UniverseLiftLifting`は実際の標準単体・境界・hornの同型、
+生成射のArrow同型と、境界・horn右クラスの保存・反映を構成する。
+
+`UniverseLiftModel`・`UniverseLiftWeakEquivalence`は、両宇宙の指定mono/Kanモデル間で
+ULiftの左右Quillen条件と、任意の射の弱同値の保存・反映を証明する。Kan複体に制限しない。
+共通宇宙へ持ち上げた後のArrow同型から、独立した二宇宙の弱同値テストも比較できる。
+共有入口2431 jobs、共有3525宣言・245モジュールの標準公理監査と回帰検証が成功。
+コミットは`c89ef64`・`5b4bc6e`、詳細は計画§194。F4・L1の宇宙変更の前提を一つ解消した。
+small-Hom表示の局所性テストの接続とL1のaccessibility、F4の源比較と最終公式は未完了である。
