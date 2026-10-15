@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.PerfectComplex.CochainBiproduct
+public import SerrePositivity.HomologicalAlgebra.CochainBiproduct
 
 /-! # Cubic chain actions and their scalar and binary-sum constructions
 
