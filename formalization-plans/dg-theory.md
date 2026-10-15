@@ -3867,3 +3867,34 @@ Checks.FubiniRightFamilies・Checks.FubiniColumns・Checks.StageSeven・既存Sp
 右側の普遍的同値を構成する。恒等射を双方の族へ制限し、両降下と外延性からFubini同型を得る。
 その後bimodule結合同型の全Hom自然性と三角/五角、U12〜U17を継続する。
 共有系列への新しい不足要求はなく、D4mの一般論を重複実装していない。
+
+
+### 17.47 U11e16：Fubini同型と実際のbimodule合成の値への接続（2026-10-16）
+
+`Tensor/ParameterBalancedConstructor.lean`は固定次数の三重tensorからの線形射の外延性と
+paramFamilyMkを証明する。パラメータ付きの純粋斉次元の関係から、全chain map族のbalanced性を復元する。
+`Tensor/FubiniRightRestriction.lean`は右反復coendへの包含の斉次評価、C/Eのbalanced関係を証明し、
+rightRestrict・rightHomEquivと両逆法則を構成した。Cの関係では右作用の二つの符号の積を計算し、
+Eの関係では内側coendのbalanced等式を外側の線形評価へ移す。
+
+`Tensor/Fubini.lean`のisoはR⊗_E(Q⊗_C N)≅(R⊗_E Q)⊗_C Nを与える。
+左右の恒等射をDoubleFamilyへ制限して他方へ降下し、三重生成元の外延性から両逆を証明する。
+leftι_iso_hom・rightι_iso_invは生成元の順序R,Q,Nを保つことを示す。
+両向きの同型とleftDesc/rightDescとの比較も公開した。任意可換環・非有界複体のままで、flatnessを仮定しない。
+
+`Tensor/AssociatorValues.lean`はcompose_leftAt_eqにより既存composeの左加群構造と既存の左作用関手を
+全Hom写像まで照合し、associatorValueIsoを実際の三つのbimodule合成の値の間に構成する。
+B/C/E/Fの対象宇宙は係数環のuと独立、Small.{u}はB/C/Eにだけ要求し、右端Fには要求しない。
+これは値ごとの同型であり、まだ右B/左Fの全Hom自然性を備えたbimodule同型とは主張しない。
+
+Checks.Fubini・Checks.FubiniRightFamilies・Checks.StageSeven・既存Spectra.StageTwoの同時ビルドは成功
+（2693 jobs、終了コード0、警告なし）。任意A・独立対象宇宙、正負次数の包含評価、ZMod 2、
+Small Fなしの実際の合成の値の比較を検査した。主要18宣言の直接公理監査は終了コード0、標準公理のみ。
+監査累計1643宣言。担当Leanのsorry/admit/新規axiomは0件。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査も成功。
+
+Fubiniの対象同型と値への接続は完了。U11e全受入は引き続き未完である。
+次は実際の三重包含とassociatorValueIsoの可換式を公開し、右B・左Fの全Hom自然性から
+bimoduleの結合同型へ束ねる。三角/五角を反復balanced tensorの生成元で検証してU11を受け入れる。
+U12のK-flat・導来tensor、U13〜U17、D4mも継続対象であり、受入済みとはしない。
+共有一般論への新しい不足要求はなく、共有ルート・担当外の並行変更は編集していない。
