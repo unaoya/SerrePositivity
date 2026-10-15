@@ -2105,3 +2105,17 @@ Checksの直接実行で主要15宣言を監査し、標準公理のみ。累計
 担当Leanのsorry/admit/新規axiomは0件。
 全体文書検査は並行KTheory.Adams.KoszulSquareCoordinatesの未生成oleanで停止した。
 U10は未完。次は射影的加群へ適用し、D(D)の射集合と局所小性を証明する。
+
+
+### 13.59 U10b8b：射影的始域のK(D)/D(D)のHom同定
+
+`Derived/ProjectiveLocalizationHom.lean` は射影的始域のcoyonedaが
+`moduleHomotopyQuasiIso`を反転することを、既存のホモトピー持ち上げ・反映から証明した。
+§13.58を適用した`moduleProjectiveLocalizationHomEquiv`と射写像の全単射性を公開する。
+`moduleToHomotopyDerivedIso`で共役し、主局所化関手を用いる
+`moduleProjectiveDerivedHomEquiv`も構成した。閉零射のホモトピー類の像が
+主局所化関手の射写像と一致する公式を証明している。
+
+Checks.ProjectiveLocalizationHom・StageSix・既存Spectra.StageTwoの同時ビルドは成功（2582 jobs）。
+Checks直接実行の主要6宣言は標準公理のみ。累計899宣言。
+U10は未完。次は任意加群の解像度による実際のHom計算と局所小性を公開する。
