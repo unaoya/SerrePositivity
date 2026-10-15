@@ -3144,3 +3144,24 @@ Checks.BalancedTensorFunctor・既存StageSeven・Spectra.StageTwoの同時ビ�
 U11全体は未完。次はU11dの両側Yoneda評価同型とbimodule合成の残る作用、
 その後U11eの随伴・単位/結合比較・三角/五角・全変数自然性を進める。
 U12〜U17とD4mは引き続き未完。共有ルート・共有一般論・並行作業ファイルは変更していない。
+
+
+### 17.20 U11d1：右representable tensorのYoneda評価同型
+
+`Tensor/Yoneda.lean`は右representableのtensor作用を交換後の豊穣合成として計算し、
+左加群の作用からbalanced族を構成した。左作用の合成則の符号と右tensor作用の符号は相殺する。
+その降下によるyonedaEvaluation、単位Homを挿入するyonedaInsertion、包含と斉次元の計算式、
+両合成が恒等であること、実際の複体の同型yonedaIsoを公開した。
+逆向きの合成はbalanced関係を単位Homで評価して証明する。
+和次数の名前を先に固定し、次数pと0+pやp+qと全次数nのtransportを明示している。
+既存freeUnitInsert・signed braiding・非有界tensorの外延性を再利用し、任意可換環を保つ。
+
+Checks.BalancedTensorYonedaのビルドは成功（1834 jobs、終了コード0、警告なし）。
+直接実行も終了コード0、主要10宣言の公理はpropext・Classical.choice・Quot.soundのみ。
+監査累計1307宣言。任意A・独立対象宇宙、一対象ZMod 2、次数-1/1の評価を検査した。
+直前U11cの文書検査は22 Markdown・311 exposition参照、失敗0件。
+
+これはU11dの第一の評価同型であり、U11d全受入ではない。
+次は全dg自然性、左representableに関する反対側の同型、bimodule合成に残る全次数作用、
+一対象Aの既存cochainTensorとの比較を揃える。その後U11eの随伴とcoherenceへ進む。
+U12〜U17・D4mも未完。共有ルート・共有一般論・並行作業ファイルは変更していない。
