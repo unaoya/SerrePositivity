@@ -2902,3 +2902,17 @@ Checks.TensorCategoryの最終ビルドは成功（1770 jobs、警告なし）�
 主要9宣言の公理は標準公理のみ。監査累計1193宣言。
 新しい入口3本と既存StageSeven・Spectra.StageTwoの同時再ビルドも進行中。
 U11b全体は未完。次は純粋斉次Homの合成式とcurried bimoduleとのuncurrying比較。
+
+
+### 17.4 U11b3：tensor積dg圏の斉次Homと合成式
+
+`Category/TensorElements.lean`は純粋tensorから斉次Homを作る`dgTensorElement`と、
+豊穣順の合成における交差符号(-1)^(qr)を証明した。
+最初のHomの二因子の次数をp,q、次のHomをr,sとする。
+各因子内の豊穣順合成をtensorし、中央二因子だけを交換する式であり、
+通常順dg合成へ変換する際の追加符号と混同しない。
+証明は既存tensorμ/shuffleの比較とtensorMapの斉次式を再利用する。
+
+Checks.TensorElementsのビルドは成功（1771 jobs）、直接実行は終了コード0。
+主要2宣言の公理は標準公理のみ。監査累計1195宣言。
+U11bは継続中。次は作用族からの全Hom endへの構成子、積dg圏上の関手との両方向比較。
