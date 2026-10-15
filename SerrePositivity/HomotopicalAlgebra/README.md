@@ -858,3 +858,16 @@ resolution Homと実際のMap(QX,RY)を自然な弱同値のcospanで比較す�
 共有入口2341 jobs、新規70宣言・4モジュール、共有2836宣言・181モジュールの標準公理監査と
 回帰検証が成功。コミットは`88f619b`、詳細は計画§183。指定分解からのF2比較は揃ったが、
 F1の任意源での最終の厳密な関手、F3・F4、L0〜L5は残る。A0・A1は計画§166で完了済み。
+
+
+`HomotopyFunctionComplex/Accessible`は、小さい固定cosimplicial対象族の全次数の共通可呈示基数を選び、
+accessibleな標的置換との実際のresolution Homが同じ基数でaccessibleになることを証明する。
+`MappingTests`は各局所化射に対する実際のprecompositionをArrow SSetへの関手として集め、
+両端のRMap評価からそのaccessibilityを得る。
+
+`AccessibleModelMapping`は元のcombinatorialモデルと小さい任意の射族だけから、A0の指定因子分解、
+Q/R、A1の元のWと包含、全始域・終域のRMap評価、全検出射の関手を共通基数で扱う。
+空の族と独立した宇宙にも対応し、源のcofibrancy・単体集合モデルを追加仮定にしない。
+共有入口2343 jobs、新規19宣言・2モジュール、共有2855宣言・183モジュールの標準公理監査と
+回帰検証が成功。コミットは`ffcab98`、詳細は計画§184。
+F3のresolution全体のaccessibilityは別に残り、F1の任意源での最終関手、F4、L0〜L5も未完了である。

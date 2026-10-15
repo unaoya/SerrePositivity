@@ -8120,3 +8120,86 @@ F1の任意モデル源で関手的分解を要求しない最終の厳密な関
 この結果だけでF1・F2の任意源での全契約を完了とはしない。
 F3の共通基数、F4のhocolim/holim比較、L0〜L5も残る。依頼全体の完了判定は§159.4を維持する。
 他チャットの変更は保持し、計画書は今回の追記だけをstageした。
+
+
+## 184. F3進捗：固定した小さい射族のRMap評価と局所性検出関手の共通基数（2026-10-15）
+
+§159.4のF3のうち、固定した小さいSに対するRMap評価のaccessibilityを、
+A0・A1と同じ基数で得る部分を実装・検証した。source resolution全体の関手としての
+accessibilityはまだ証明していない。この差を残したままF3全体の完了とはしない。
+
+### 184.1 実際のcosimplicial Homのaccessibility
+
+`HomotopyFunctionComplex/Accessible`の`cosimplicialHom_isCardinalAccessible`は、
+cosimplicial対象Aのすべての次数A[n]がκ-presentableなら、実際の単体集合を値とする
+Hom(A,-)がκ-accessibleであることを証明する。
+各次数での評価は実際のcoyonedaなので可呈示性を適用でき、単体集合の評価がcolimitを
+jointly reflectすることから単体集合値の関手としての保存を得る。
+次数ごとの集合だけを別の写像空間に置き換えることはない。
+
+`resolutionHom_isCardinalAccessible`は、この結果とκ-accessibleな標的関手Rの合成から、
+固定したXに対する既存の`resolutionHom(Q,R)(X,-)`のκ-accessibilityを導く。
+この段階は一般の圏Cと任意のcosimplicial family Qで成立し、モデル構造・Kan性・tensor・
+源変数のaccessibilityを仮定しない。
+
+`exists_common_degree_presentability`は、accessibleなCにおける小さいcosimplicial対象族について、
+族のすべての対象・すべての次数を同じ正則基数で可呈示にする。
+`exists_accessible_resolutionHom_family`は、accessibleなRを併せて大きい共通基数を選び、
+固定した小さい対象族に対するすべてのRMap評価を同時にaccessibleにする。
+任意のX全体に一律の基数を要求する主張ではない。
+
+### 184.2 局所性を検出する実際のprecomposition関手
+
+`MappingTests.arrow F s`は、実際の二変数関手Fと射s:A→Bについて、
+Y↦(F(B,Y)→F(A,Y))をArrow SSetへの関手として構成する。
+その射は厳密にFの源変数への作用であり、resolution Homの場合にはn単体hを
+Q(s)[n]≫hへ送る。標的変数についても自然である。
+
+`MappingTests.family F s`は小さい射族の全検出射を一つの
+C→(Discrete ι→Arrow SSet)に集める。各始域・終域のRMap評価のκ-accessibilityから、
+Arrowの二つの端点とfunctor categoryの評価によるcolimitの反映を使い、
+検出関手全体のκ-accessibilityを証明した。
+S-local対象を検出するときに必要になる、実際の射を値とする関手である。
+ここでは局所対象のaccessibilityや局所化存在自体はまだ結論していない。
+
+### 184.3 A0・A1からの最終入力と共通基数
+
+`AccessibleModelMapping/exists_accessible_model_mapping_tests`の入力は、元のモデル圏C、
+局所可呈示性、既存の`CofibrantlyGenerated I J`、小さい任意の射族sだけである。
+射の始域・終域のcofibrancyは要求しない。単体集合モデルや引用入力も不要である。
+
+A0・A1で構成した指定因子分解d₀を選び、その実際のresolutionをすべてのsの始域・終域で評価する。
+184.1でその全次数の共通可呈示基数を選び、元のA0・A1の基数とともにsharply大きい正則κへ移す。
+因子分解データ自体は変えずに`atLarger`で移すため、可呈示性の証明が別のresolutionへ
+すり替わることはない。出力は同じκにおける次の組である。
+
+- 指定した二つのモデル因子分解と、それらのZ・左右因子・実際のQ/Rのaccessibility。
+- 元のWの部分圏とその包含のaccessibility（A1のsharply大きい基数への移送）。
+- 既存`chosenResolutionHom`の、各sの始域・終域での両方の評価のaccessibility。
+- それらの実際のprecompositionを集めた`MappingTests.family`のaccessibility。
+
+対象・射・小さい射族・基数の宇宙は独立に扱う。空の射族も許す。
+任意の関手的分解をaccessibleとみなさず、A0で構成済みの指定データを使用する。
+実装・共有入口・利用例のコミット：`ffcab98`。
+
+### 184.4 受入検証と次の作業
+
+以下はすべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`：2343 jobs。
+- `check_accessible_mapping_tests`：新規19宣言・2モジュール、標準公理のみ。
+  任意QとaccessibleなR、独立した宇宙、precompositionの向きと実際の単体での公式、
+  combinatorialモデルと小さい射族だけからの最終利用、空の射族を検証。
+- `audit_homotopical_foundations`：2855宣言・183モジュール、標準公理のみ。
+- `check_weak_equivalences_accessible`（21宣言・5モジュール）、
+  `check_simplicial_map_comparison`（70宣言・4モジュール）、
+  `check_homotopical_foundations`、`check_spectra_stage2`、`git diff --check`。
+
+新規sorry・引用axiomはない。他チャットの変更は保持した。
+次はF3に残る、構成済みReedy resolutionの源変数の関手としてのaccessibilityを進める。
+次数ごとの構成に現れるlatching colimit・matching limit・pushout/pullback・指定分解の合成を
+実際の関手へ接続し、全次数を同じ十分大きい基数で制御する必要がある。
+今回の固定源でのRMap評価だけでこの条件を代用しない。
+
+F1の任意モデル源での最終の厳密な関手、F4のfiltered/hocolim/holim比較、L0〜L5も残る。
+一般の左Bousfield局所化という依頼全体と§159.4の受入条件を維持する。
