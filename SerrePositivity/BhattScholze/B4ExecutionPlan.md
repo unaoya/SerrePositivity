@@ -6175,3 +6175,50 @@ H0を具体的表示環へA/p線形同値で同定し、全非零次数の実ホ
 元の係数作用・QA作用・K作用の塔を明示し、既存の分冪表示環の平坦性を再利用している。
 3公開宣言の対象3852ジョブ・B4全体pure監査成功。標準3公理のみ。新sorry・公理・引用なし。
 中間仮定は保持しており、一般G3や自由δ射の導来pushout比較を完成と数えない。
+
+## B4-6：G7交換入力付きの実自由δ射の導来比較（2026-10-15）
+
+DeltaPDivisionSourceDerivedPrincipal.leanで、具体的α:x↦pzとβ:x↦φ(y)に関する二つのTorを、
+既存の実導来テンソル対称性・ホモロジー比較で同定した。
+既存SourceColimitTorの標準PreservesColimit入力を各正次数で仮定した場合、βに沿う終域Pの全高次Tor消滅を証明した。
+標準augmentationと具体的通常テンソル比較を合成し、実β導来拡大を分冪表示環の次数零対象へ同定した。
+元のA上の実p還元・実導来完備化後のp還元も具体的表示環へ接続し、標準完備化単位との両立を公開した。
+7公開宣言の対象3857ジョブ・B4全体pure監査成功。標準3公理のみ。新sorry・公理・引用なし。
+型の推論は具体的係数環Pと中間同型を指定して解決し、このBSファイルのheartbeat上限は増やしていない。
+共有LocalFlatnessCriterion・DerivedTensorPentagonの既存警告は今回のBS変更と区別し、共有ソースは編集していない。
+これはG7入力に相対的な証明済み成果であり、PreservesColimit自体の実装・受領、G7解消、
+無条件の原典導来δpushout比較や一般B4完成とは数えない。既存André引用も使用していない。
+
+## 共通基盤への要求 G8：実導来完備化と係数制限の自然比較（未送信）
+
+対象：任意の可換環R,S:Type u、環射f:R→+*S、a:R、標準加群導来圏上の実対象X。
+既存derivedRestrictScalarsとderivedComplexCompletionFunctorを用い、次の自然同型を求める：
+
+    derivedComplexCompletionFunctor S (f a) ⋙ derivedRestrictScalars f
+      ≅ derivedRestrictScalars f ⋙ derivedComplexCompletionFunctor R a
+
+標準単位との正確な両立は、自然同型をeとしたとき、各Xで次の等式：
+
+    (derivedRestrictScalars f).map ((derivedComplexCompletionUnit S (f a)).app X)
+      ≫ e.hom.app X
+      = (derivedComplexCompletionUnit R a).app ((derivedRestrictScalars f).obj X)
+
+SのR平坦性、Noether性、有限生成性、a正則性、有界ねじれ、古典的完備性は要求しない。
+当面のBS利用は上有界対象で十分であり、共通側がまず上有界版を提供する場合も使用できる。
+利用工程：B4-6で、具体的基底射A→raw包（またはp正則な旧ねじれ商）について、
+A加群としての実p導来完備化と、raw環自身上の実p導来完備化を標準単位を保って比較する。
+この比較は、既存の環としてのPDCompletionH0候補へA上の導来比較・平坦性を接続するために必要。
+既存APIで足りない点：DerivedRestrictionは実係数制限とホモロジーの自然比較、
+CompletionQuotientは同じ係数環上での標準完備化単位の商比較を供給するが、
+今回の共有HomologicalAlgebraとインターフェースの検索では両関手の上記交換APIを確認できなかった。
+待つ工程：係数環の異なる二つの実完備化・環H0候補の標準単位付き接続のみ。
+独立作業：今回の同じA上の実自由δ射・通常包・分冪表示環のTor、mod p、実完備化比較、
+相対入力と具体的基底変更の比較は続行できる。一般の完備化交換補題はBS内で重複実装しない。
+他チャットへのG8送信は未許可であり、送信していない。
+
+### 今回の検証境界
+
+今回5モジュール25公開宣言を対象ビルド・B4全体pure監査で検証した。
+正則raw入力と具体的通常テンソルの比較18宣言、G7交換入力を保持した実自由δ射の比較7宣言を区別する。
+既存のp局所性・p正則性・mod p正則性・ghost単射・指定単元δ(p)は中間仮定として保持する。
+G4・G7・G8等の仮定・共通APIを解消したとは数えず、完全忠実平坦根付き拡大の引用なし存在と一般B4は未完成。
