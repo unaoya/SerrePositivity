@@ -3732,3 +3732,36 @@ Checks.BalancedSwap・Checks.LeftTensorColimits・Checks.EnrichedHomNaturality�
 U11e全受入は未完。Nの閉零射に関する交換の自然性と左加群変数の余極限保存は次節で受け入れる。
 この交換同型だけでFubini・bimodule合成の結合/三角/五角を完了とはしない。
 U12〜U17・D4mも継続対象。共有一般論・共有ルート・担当外ファイルを変更していない。
+
+
+### 17.42 U11e11：左加群圏の同値と左変数の余極限保存（2026-10-16）
+
+`Module/LeftEquivalence.lean`は既存leftModuleToRightOppositeを保持し、主Hom end上の恒等写像から
+FullyFaithfulを構成した。既存ofRightOpposite/to_ofRightOppositeから本質的全射性を証明し、
+実際の閉零加群圏の同値leftRightOppositeEquivalenceを得た。全対象のSmallは要求しない。
+比較関手の各評価での射が元のleftModuleEvaluationの射に一致することも公開した。
+
+`Tensor/SwapNaturality.lean`はNの閉零加群射gについてswapHomの自然性を、両側の包含と
+既存signedSwap_naturalityから証明する。
+`Tensor/LeftColimits.lean`は既存map id gを射写像とするleftTensorFunctorを定義し、
+leftTensorSwapIsoでleftModuleToRightOpposite ⋙ rightTensorFunctor A Dᵒᵖ M.toFunctorと自然同型にした。
+同値関手の余極限保存と§17.35の右変数の余極限保存から、左変数でも
+PreservesColimitsOfSize.{w,t}を構成した。図式の二つの宇宙w/tはu/vから独立である。
+ここで証明したのは存在する余極限の保存であり、全サイズの余極限の存在ではない。
+
+Checks.LeftTensorColimitsと§17.41の同時ビルドは成功（2693 jobs、終了コード0、警告なし）。
+任意A・独立対象宇宙、閉零圏の同値、自然同型、任意サイズの余極限保存とZMod 2を検査した。
+本単位の主要9宣言の直接実行は終了コード0、標準公理のみ。監査累計1580宣言。
+担当Leanのsorry/admit/新規axiomは0件。文書検査は22 Markdown・311 exposition参照、失敗0件。
+担当差分のgit diff --checkも成功。共有一般論・共有ルート・担当外ファイルは変更していない。
+
+これでbalanced tensorの両変数の余極限保存が揃った。U11e全受入はなお未完である。
+残るのはFubini、bimodule合成の結合同型・全変数自然性・三角/五角。
+次はCh(A)の二つのcoendを交換する普遍性を、既存の直和/coequalizerと今回の保存性から構成する。
+P:B→C、Q:C→E、R:E→Fについて、合成の値の順序は
+R(e,f)⊗_E(Q(c,e)⊗_C P(b,c)) と (R(e,f)⊗_E Q(c,e))⊗_C P(b,c)である。
+生成元の順をR,Q,Pに保ち、比較の成分は通常associatorの逆向きになる。
+A : Type uとB/C/E/Fの対象宇宙を独立にし、Small.{u} B/C/Eを要求するがSmall Fは追加しない。
+値の比較だけでなく、右Bの全Hom・左Fの全Homに関する自然性を検証して実際のbimodule比較へ束ねる。
+その後三角/五角を反復balanced tensorの生成元で検証する。任意Vの一般coend理論は重複実装しない。
+U12〜U17・D4mも継続対象。採用済み深い引用は引き続き0件。
