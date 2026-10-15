@@ -6302,7 +6302,7 @@ IDは計画上の単位であり、1行を1コミットや1日とみなさない
 | F2 | HomotopyFunctionComplex/Comparison | F1 | resolution/置換の選択を自然な弱同値のzigzagで比較。単体的モデル圏の場合は実際のMap(QX,RY)と比較。厳密な同一視を要求しない |
 | F3（完了、§185） | HomotopyFunctionComplex/Accessible | A0,A1,F0,F1 | 必要なresolutionと、固定した小さいSに対するRMap評価が共通cardinalでaccessible。任意Xについて同じcardinalを無条件に要求しない |
 | F4 | HomotopyFunctionComplex/FilteredColimits | A0,F1 | 十分大きいfiltered colimitとhomotopy colimitの比較、必要範囲でRMapのhomotopy colimit→homotopy limit公式。M4全体を先に要求しないが、この証明を省かない |
-| L0 | HomotopicalAlgebra/Localization/Basic。局所性・W_S・条件付き局所化API | F1,F2 | Sの代表・cofibrant置換の独立性、元のW⊆W_S、2-out-of-3・retract閉性、空集合/元の弱同値だけのSで元モデルを回復 |
+| L0（完了、§193） | HomotopicalAlgebra/Localization/Basic。局所性・W_S・条件付き局所化API | F1,F2 | Sの代表・cofibrant置換の独立性、元のW⊆W_S、2-out-of-3・retract閉性、空集合/元の弱同値だけのSで元モデルを回復 |
 | L1 | Localization/AccessibleLocalObjects | A1,F3,L0 | S-local対象の充満部分圏のaccessibilityと包含のaccessibilityを導く。検出に使う関手・cardinalと小さいhomotopy生成族を明示 |
 | L2 | Localization/AccessibleLocalEquivalences | L1,F4 | Arrow C内のW_Sのaccessibilityと包含のaccessibilityを証明。全局所対象に量化した定義から小ささへの移行を独立に検証 |
 | L3 | Localization/LeftProperClosure | L0,F4、元モデルの左固有性 | cof_original∩W_Sのpushout/超限合成閉性を証明。局所化後のモデル存在や左固有性を先取りしない |
@@ -8830,3 +8830,91 @@ fibrant局所対象の一致を証明する。bifunctorそのものの厳密な�
 L0全体は未完了であり、空集合または元の弱同値だけのSでW_S=W_Cとなる逆向きの検出と、
 条件付き局所化APIは残る。「すべての対象が局所」と「W_S=W_C」を混同しない。
 F4の源比較の弱同値性・最終RMap公式、F1の任意モデル源の最終関手、L1〜L5も残る。
+
+
+## 193. L0完了：元の弱同値の検出・空の局所化の回復・条件付きAPI（2026-10-15）
+
+§192の残項目を証明し、§159.4のL0の受入条件を満たした。
+F4の源比較と最終RMap公式は引き続き未完了であり、L1〜L5の局所化存在は先取りしない。
+
+### 193.1 モデル弱同値を通常の局所化で検出する一般論
+
+`Quillen/WhiteheadConverse`は、左ホモトピーが元の弱同値への所属を保存することを
+二対三性から証明する。fibrationのホモトピー逆射は、good cylinderの端点に沿う持ち上げで
+厳密なsectionへ修正できる。sectionとの合成は恒等射にホモトピックで弱同値であり、
+fibration自体がその合成の実際のArrow retractとなるので弱同値である。
+
+`Quillen/Saturation`は任意の通常の局所化L:C→HについてW_C(f)↔IsIso(L.map f)を証明する。
+bifibrant対象の間では基本補題から実際のホモトピー逆射を得て上の結果に接続する。
+任意の射はMathlibの既存のcofibrant/fibrant resolutionMapへ移し、実際の比較squareで戻す。
+関手的因子分解、combinatorial性、局所可呈示性は要求しない。CとHの宇宙も独立である。
+弱同値クラスを、Lによるisomorphismクラスの逆像として等式でも公開した。
+コミット：`e8ec17e`。
+
+### 193.2 実際のπ₀を使うmapping testによる検出
+
+`Simplicial/PiZeroWeakEquivalence`は、同じ像を持つ二つの頂点について、実際の∂Δ[1]からの
+持ち上げで両者を結ぶedgeを構成する。trivial fibrationのsectionとこのfiber内のedgeから、
+実際のSSet.π₀上の写像が全単射になることを証明する。
+fibrant Brown因子分解により、fibrantなSSetの間の弱同値もπ₀上で全単射となる。
+幾何学的実現とのπ₀比較や新しいSSetモデルの存在axiomは使わない。
+
+`Localization/Detection`は指定SSetモデルのmono/Kanクラスの一致を使い、
+既存のchosenResolutionHomのKan性をそのモデルのfibrancyへ接続する。
+その弱同値の実際のπ₀比較を、既存のchosenResolutionHomPiZeroEquivの源自然性へ接続する。
+すべての標的へのmapping testを満たすfは、通常の局所化内のHomでprecompositionが全単射となる。
+始域・終域へのテストからL(f)の逆射を構成し、193.1で元の弱同値性を導く。
+
+これにより、任意のS≤W_CについてW_S=W_Cを証明した。S=⊥の場合も含む。
+この場合のfibrant局所対象は元のfibrant対象と同じである。
+§192の「すべての対象が局所」という結果だけで回復を済ませたものではない。
+コミット：`6f35f97`。
+
+### 193.3 条件付き局所モデルと一般の代表変更
+
+`Localization/Conditional`のIsLocalizationModelは、同じC上の実際のMathlibモデル構造mを受け取り、
+元と同じcofibration、上で定義したW_S、fibrantかつS-localという対象判定を記録する証明書である。
+mの存在を仮定するaxiomやNonempty instanceは追加していない。
+元と候補のモデルクラスを明示的に区別し、次を証明した。
+
+- fib_m=(cof_original∩W_S).rlp。
+- trivialFibrations_m=trivialFibrations_original。
+- 恒等関手は元モデルからmへの実際の左Quillen関手。
+- fib_m⊆fib_original。
+- S≤W_Cなら、証明書を持つmの三クラスはすべて元と一致する。
+- S≤W_Cでは元モデル自身が実際にこの証明書を持つ。特に空の局所化を回復する。
+
+`Localization/Representatives`は、両端が元の弱同値であるArrow Cのsquareを基本ステップとする。
+その任意の有限zigzagに沿ってmapping testが変わらないことを証明し、
+互いの全射をこの意味で代表する二つのS,Tについて局所対象とW_S=W_Tの一致を得る。
+§192の単一のQ→idによるstrictMapだけには制限しない。
+コミット：`da42c88`。
+
+### 193.4 L0の受入条件の照合と検証
+
+| §159.4の受入項目 | 証明済みの入口 |
+| --- | --- |
+| 実際のRMapによる局所性・W_S | §192のBasicとMappingTests |
+| Sの代表変更・cofibrant置換の独立性 | Representativesのweak-square zigzag、Basic/ChoiceIndependenceの実際のQによるstrictMap |
+| resolution・標的置換の独立性 | ChoiceIndependence、F2の実際の自然な弱同値cospanを使用 |
+| W_C⊆W_S | Basic.weakEquivalences_le_localEquivalences |
+| 二対三性・retract閉性 | MappingTestsの実際のclass instance |
+| 空集合・元の弱同値だけのSで元モデルを回復 | DetectionのW_S=W_C、Conditionalの実際の証明書と三クラスの回復 |
+| 条件付き局所化API | Conditional.IsLocalizationModelとその帰結 |
+
+以下はすべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`：2425 jobs。
+- `check_model_saturation`：9宣言・2モジュール、標準公理のみ。
+  任意の通常の局所化と、その指定を不要とするcanonical localizationへの適用を検証。
+- `check_bousfield_detection`：29宣言・3モジュール、標準公理のみ。
+  実際のπ₀、追加のconservativity入力なしの弱同値検出、任意のS≤W_C、
+  空の局所化の実際の証明書、独立した二モデルのQuillen条件と三クラス回復を検証。
+- `check_bousfield_locality`：52宣言・4モジュール、標準公理のみ。
+  §192の利用例に一般のweak-square zigzagと代表クラス変更を追加。
+- `audit_homotopical_foundations`：3480宣言・239モジュール、標準公理のみ。
+- `check_homotopical_foundations`、`check_spectra_stage2`、`git diff --check`。
+
+新規sorry・引用axiomはない。他チャットの作業と共有ルートの変更を保持した。
+L0は完了。F4の残る源比較・最終RMap公式、F1の任意モデル源の最終関手、L1〜L5は未完了であり、
+依頼全体の完了とはしない。

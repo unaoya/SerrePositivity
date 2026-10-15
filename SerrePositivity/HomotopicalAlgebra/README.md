@@ -998,3 +998,17 @@ fibrant局所対象だけによる検査、弱squareや自然なQ→idによるS
 共有入口2419 jobs、共有3437宣言・233モジュールの標準公理監査と回帰検証が成功。
 コミットは`4cbea1d`、詳細は計画§192。空集合で元の弱同値クラスを回復する逆向きの検出と、
 条件付き局所化APIは未完了であり、L0全体の完了とはしない。F4の残項目とL1〜L5も維持する。
+
+
+`Quillen/WhiteheadConverse`と`Saturation`はモデル公理と基本補題だけから、任意の通常の局所化で
+射が可逆になることと元の弱同値性の同値を証明する。関手的分解やcombinatorial性は要求しない。
+`Simplicial/PiZeroWeakEquivalence`は境界持ち上げ・section・Brown分解により実際のπ₀の全単射を証明する。
+`Localization/Detection`は既存のRMapのπ₀比較の自然性を使い、すべての標的へのmapping testで
+元の弱同値を検出する。S≤W_CならW_S=W_Cとなり、空集合の場合も含む。
+
+`Localization/Conditional`は実際の候補モデルの証明書から、fibrationの式、trivial fibrationの一致、
+恒等関手の左Quillen性を導く。空集合では元モデル自身の証明書を構成し、三クラスを回復する。
+`Representatives`は任意のweak-square zigzagによるSの代表変更で局所対象・局所同値が変わらないことを証明する。
+共有入口2425 jobs、共有3480宣言・239モジュールの標準公理監査と回帰検証が成功。
+コミットは`e8ec17e`・`6f35f97`・`da42c88`。計画§193でL0の受入項目を照合して完了とした。
+F4の最終比較・F1の任意源の最終関手・L1〜L5は引き続き未完了である。
