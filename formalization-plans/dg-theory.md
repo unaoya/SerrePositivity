@@ -1059,3 +1059,29 @@ U9全受入は未完。次は全dg自然な加群ホモトピーに対応するc
 共有の射影モデル構造を先行仮定にはしない。共有API不足のブロックは現在ない。
 U10のsemifree解像度の存在・Hom計算・三角構造・Verdier商比較・
 余積/局所小性・一対象Aの既存導来圏との自然同値も未完であり、目標を保持する。
+
+### 13.18 U9b1：全 dg 自然な cylinder とホモトピーの延長
+
+`Module/TensorUnit.lean` は閉単位/閉零射の逆転置を既存左unitorに同定し、
+全作用を持つ `moduleTensorUnitIso` を構成する。
+`moduleParamUncurry` は Hom end へのパラメータchain mapをtensor加群からの射に戻し、
+パラメータの前合成・単位パラメータの通常射との一致を証明した。
+
+`Complexes/TensorCylinder.lean` は単位複体の既存標準cylinderを `dgInterval` として再利用する。
+`tensorIntervalHomotopyEquiv` はその収縮を任意非有界複体へtensorし、
+`tensorIntervalProjection_quasiIso` は左unitorを含む射影の準同型性を証明する。
+tensorする射が具体的なホモトピー同値なので、対象複体のflatnessは不要。
+
+`Module/Cylinder.lean` の `modulePrecylinder` は interval と加群のtensorから
+全次数作用を持つ Mathlib Precylinder を構成する。
+射影のobjectwise準同型性、両端が射影のsectionとなることを証明した。
+`moduleCylinderDesc` は単位→Hom endのホモトピーを既存複体cylinderから延長し、
+両端との合成が元の加群射となる。
+`moduleCylinderLeftHomotopy` はMathlibのLeftHomotopyの具体的証人。
+ここでは代替モデル圏や一般cylinder理論を構成していない。
+
+受入入口 `Checks/Cylinder.lean` は任意可換環・独立宇宙・非有界加群、
+全作用、tensorのホモトピー同値、射影の準同型性、Hom end内のホモトピーの延長、
+ℤ・ZMod 2 の一対象例を検証する。
+ビルド・直接実行は成功し、主要18宣言はすべて標準公理の範囲内。累計406宣言。
+U9全受入は局所化比較の完成・検証を残して未完。U10の目標も保持する。
