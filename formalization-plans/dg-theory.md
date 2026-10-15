@@ -2271,3 +2271,18 @@ U10全受入は未完で、現時点ではPretriangulated/Triangulatedのイン�
    主局所化関手と一対象A比較の三角性を完成させる。
 
 共有モデル構造・Quillen・転送・SM7の新規不足要求はなく、これらを複製していない。
+
+
+### 13.67 U10t5：始域だけをshiftする全次数Hom要素
+
+`Module/LeftShiftElements.lean`は任意の整数sとq+s=q'に対し、主Homの次数qの要素を
+始域だけをshiftした主Homの次数q'の要素へ移す`moduleHomLeftShiftElement`を構成する。
+各評価はMathlibの`Cochain.leftShift`そのもの。作用のshift符号と元の次数qの自然性を
+組み合わせ、次数q'について全dg自然であることを証明した。
+微分は(-1)^s倍を伴って移る。加法・Aスカラー・零・負元の保存、単射性、
+通常の閉零射による後合成との可換性も証明した。
+MathlibのleftShiftの符号s*q'+s*(s-1)/2を含む規約をそのまま保持する。
+
+Checks.LeftShiftElements・StageSix・既存Spectra.StageTwoを含む同時ビルドは成功（2520 jobs）。
+Checksの直接実行で主要10宣言を監査し、すべて標準公理のみ。累計971宣言。
+U10は未完。次は全Homのcone比較によるliftと、この片側shiftを回転比較射へ接続する。
