@@ -3614,6 +3614,18 @@ K₀ の類への移送と重みつき乗法性は次の小段。
   `lake env lean scripts/audit_adams_koszul_fourier_two_coordinates.lean` の二十四定数の監査が成功。
   公理は標準三公理のみ。
 
+### S10.8c.2b.3c：各次数の Fourier 基底の両逆性と外延性
+
+- `Adams/KoszulCubeFourierBasis` は双対座標を正射、Fourier 列を逆射とする
+  次数 −1、−2、−3 の同型を構成する。
+- 源での両逆性は元の生成元の復元式、標的での両逆性は十九の双対合成式で証明した。
+  Fourier ベクトルに前合成して射の等式を検出する三つの外延性補題も公開した。
+- `lake build SerrePositivity.KTheory.Adams.KoszulCubeFourierBasis` が成功（2844 jobs）。
+  `lake env lean scripts/audit_adams_koszul_fourier_basis.lean` の六定数の監査が成功。
+  公理は標準三公理のみ。
+- 各次数の両逆性は受入完了。微分・巡回の既存式を使い、次にこれらを複体の同型へまとめる。
+  同変鎖同型・正規化・族・S10.9・S11 はまだ未完了。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
