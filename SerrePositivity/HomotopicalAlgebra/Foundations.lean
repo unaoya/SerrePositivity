@@ -119,6 +119,7 @@ public import SerrePositivity.HomotopicalAlgebra.Localization.LeftProperPushout
 public import SerrePositivity.HomotopicalAlgebra.Diagram.ContinuousHomotopyColimit
 public import SerrePositivity.HomotopicalAlgebra.Diagram.RelativeHomotopyColimit
 public import SerrePositivity.HomotopicalAlgebra.Localization.LeftProperTransfinite
+public import SerrePositivity.HomotopicalAlgebra.Localization.AccessibleLocalReplacement
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor
