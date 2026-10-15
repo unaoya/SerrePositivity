@@ -1325,3 +1325,32 @@ U10全受入は未完。次は可算列の余極限で全kernel cycleが消え�
 これは解像度の候補であり、準同型性とsemifree性の受入前には解像度とは呼ばない。
 次はfiltered余極限のcycleの有限段表示を証明し、全kernel cycleの消去へ接続する。
 U10全受入は未完。semifree filtration・Hom計算・三角構造等の残項目を保持する。
+
+
+### 13.27 U10a6：可算cell候補のobjectwise準同型性
+
+`Complexes/FilteredCycles.lean` は任意可換環上の非有界複体の可算filtered余極限について、
+cycleがある有限段のcycleの像であることを証明する。
+MathlibのModuleCat忘却関手のfiltered余極限保存と具体圏の表示APIを再利用し、
+微分が零となる後続段まで添字を進める。宇宙uの保存証拠から添字宇宙0への縮小を明示する。
+
+`Module/ResolutionQuasiIso.lean` は評価の余極限保存によりこの表示を主加群圏に適用する。
+`moduleResolutionCandidate_kernelCycle_boundary` はkernel内の全cycleが、同じkernel内の
+原像を持つ境界となることを証明する。
+次数ごとの全射性とこの消去を用いて `moduleResolutionCandidate_boundaryLift` を証明し、
+U10a2の境界持ち上げ判定から `moduleResolutionCandidateπ_quasiIso` を得る。
+これで任意加群Mへの次数ごと全射かつ指定objectwise quasiIsoな可算cell候補が得られた。
+モデル構造・flatness・体・noetherian性を仮定しない。
+
+受入入口 `Checks/ResolutionQuasiIso.lean` は一般A/D、I.rlpとの整合性、全整数次数のlift、
+ℤとZMod 2の非有界加群で検証する。
+この入口・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3201 jobs）。
+直接実行の主要5宣言の公理監査は標準公理のみ。累計545宣言。
+担当Lean範囲のsorry/admit/新規axiomは0件、文書検査は21 Markdown/311参照で0 failures。
+
+U10全受入は未完。cell候補の真のsemifree filtration（初期diskのsphere段階への分解、
+各cone付加の次数付き分裂と自由な商、余極限の網羅性）を次に証明する。
+その後、semifreeのHom endがacyclicを消すこと、導来Hom計算と選択独立性、
+K(D)/D(D)の三角構造とVerdier商比較、余積・局所小性の宇宙、一対象同値の三角形・余積保存を完成する。
+共有の一般小対象論・モデル圏・Quillen・SM7は複製せず、D4mの合流条件は§13.23のまま。
+この候補についてsemifree性を未証明のまま主張しない。
