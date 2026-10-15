@@ -1,16 +1,16 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PresentationLifting
-public import Mathlib.AlgebraicTopology.SimplicialSet.Nonsingular
-public import Mathlib.AlgebraicTopology.SimplicialSet.NonDegenerateSimplicesColimit
+public import Mathlib.AlgebraicTopology.SimplicialSet.NonsingularColimit
 public import Mathlib.AlgebraicTopology.SimplicialSet.Finite
 public import Mathlib.CategoryTheory.Limits.Shapes.FiniteLimits
+public import Mathlib.CategoryTheory.Whiskering
 
 /-! # Presentations of nonsingular simplicial sets by their actual simplices
 
-The nondegenerate-simplex poset gives a canonical diagram in the simplex
-category. Its standard-simplex colimit is X. If X is finite, the value of
-this diagram on a cosimplicial object needs only finite colimits.
+Mathlib supplies the canonical nondegenerate-simplex diagram and its
+standard-simplex colimit. This interface adds the finite index structure
+and the Hom equivalence requiring only finite colimits in C.
 -/
 
 @[expose] public section
@@ -24,32 +24,44 @@ variable (X : SSet.{v}) [X.Nonsingular]
 
 def diagram : X.N ⥤ SimplexCategory where
   obj x := SimplexCategory.mk x.dim
-  map φ := SSet.N.monoOfLE (leOfHom φ)
+  map f := SSet.N.monoOfLE (leOfHom f)
   map_id x := SSet.N.monoOfLE_refl x
-  map_comp φ ψ := (SSet.N.monoOfLE_comp (leOfHom φ) (leOfHom ψ)).symm
+  map_comp f g := (SSet.N.monoOfLE_comp (leOfHom f) (leOfHom g)).symm
 
-def diagramIso : diagram X ⋙ SSet.stdSimplex.{v} ≅ X.functorN :=
-  NatIso.ofComponents (fun x ↦ SSet.Nonsingular.iso x.simplex x.nonDegenerate) (by
-    intro x y φ
-    apply (cancel_mono y.subcomplex.ι).mp
-    change (SSet.stdSimplex.map (SSet.N.monoOfLE (leOfHom φ)) ≫
-      (SSet.Nonsingular.iso y.simplex y.nonDegenerate).hom) ≫ y.subcomplex.ι =
-        ((SSet.Nonsingular.iso x.simplex x.nonDegenerate).hom ≫
-          SSet.Subcomplex.homOfLE (leOfHom φ)) ≫ y.subcomplex.ι
-    simp only [Category.assoc, SSet.Nonsingular.iso_hom,
-      SSet.Subcomplex.toOfSimplex_ι, SSet.Subcomplex.homOfLE_ι]
-    exact SSet.N.stdSimplex_map_monoOfLE_yonedaEquiv_symm_simplex (leOfHom φ))
+def mathlibDiagramIso : diagram X ≅
+    SSet.N.toSemiSimplexCategory X ⋙ SemiSimplexCategory.toSimplexCategory :=
+  NatIso.ofComponents (fun _ ↦ Iso.refl _) (by
+    intro x y f
+    have hm : Mono (SSet.N.monoOfLE (X := X) (leOfHom f)) := inferInstance
+    have he := @SemiSimplexCategory.toSimplexCategory_map_homOfMono
+      (SemiSimplexCategory.mk x.dim) (SemiSimplexCategory.mk y.dim)
+      (SSet.N.monoOfLE (leOfHom f)) hm
+    exact (Category.comp_id ((diagram X).map f)).trans
+      (he.symm.trans (Category.id_comp
+        ((SSet.N.toSemiSimplexCategory X ⋙ SemiSimplexCategory.toSimplexCategory).map f)).symm))
 
-abbrev cocone : Cocone (diagram X ⋙ SSet.stdSimplex.{v}) :=
-  (Cocone.precompose (diagramIso X).hom).obj X.coconeN
+abbrev diagramIso : diagram X ⋙ SSet.stdSimplex.{v} ≅ X.functorN :=
+  Functor.isoWhiskerRight (mathlibDiagramIso X) SSet.stdSimplex ≪≫ X.functorN'Iso
+
+abbrev cocone : Cocone (diagram X ⋙ SSet.stdSimplex.{v}) where
+  pt := X
+  ι.app x := SSet.yonedaEquiv.symm x.simplex
+  ι.naturality _ _ f := SSet.N.stdSimplex_map_monoOfLE_yonedaEquiv_symm_simplex (leOfHom f)
 
 def isColimit : IsColimit (cocone X) :=
-  (IsColimit.precomposeHomEquiv (diagramIso X) X.coconeN).symm X.isColimitCoconeN
+  (IsColimit.equivOfNatIsoOfIso (Functor.isoWhiskerRight (mathlibDiagramIso X) SSet.stdSimplex).symm
+    X.coconeN' (cocone X) (Cocone.ext (Iso.refl _) (by
+      intro j
+      change (SSet.stdSimplex.map (𝟙 (SimplexCategory.mk j.dim)) ≫
+        SSet.yonedaEquiv.symm j.simplex) ≫ 𝟙 X = SSet.yonedaEquiv.symm j.simplex
+      have hid := CategoryTheory.Functor.map_id SSet.stdSimplex.{v} (SimplexCategory.mk j.dim)
+      have h := (congrArg
+        (fun f ↦ f ≫ (SSet.yonedaEquiv (X := X)).symm j.simplex) hid).trans
+          (Category.id_comp ((SSet.yonedaEquiv (X := X)).symm j.simplex))
+      exact (congrArg (fun f ↦ f ≫ 𝟙 X) h).trans (Category.comp_id _)))).1 X.isColimitCoconeN'
 
 @[simp]
-lemma cocone_ι (x : X.N) : (cocone X).ι.app x = SSet.yonedaEquiv.symm x.simplex := by
-  change (SSet.Nonsingular.iso x.simplex x.nonDegenerate).hom ≫ x.subcomplex.ι = _
-  exact SSet.Subcomplex.toOfSimplex_ι _
+lemma cocone_ι (x : X.N) : (cocone X).ι.app x = SSet.yonedaEquiv.symm x.simplex := rfl
 
 @[instance_reducible]
 def indexFinCategory [X.Finite] : FinCategory X.N where
