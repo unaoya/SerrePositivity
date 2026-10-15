@@ -3408,3 +3408,34 @@ U11dの受入照合：
 これでU11dを受け入れる。U11全体は未完で、次はU11eのFubini・tensor–Hom随伴、
 bimodule合成の単位/結合同型と三角/五角・三変数自然性を進める。
 U12〜U17・D4mも未完のまま継続。共有ルート・共有一般論・並行作業ファイルは変更していない。
+
+
+### 17.32 U11e1：対角bimoduleと右単位の全Hom自然性
+
+`Bimodule/Identity.lean`は既存dgYonedaを対角bimoduleとして公開し、右制限がrepresentable、
+左制限が既存leftRepresentableであることを証明した。
+`Tensor/RightUnit.lean`はcompose P diagonalの各値のYoneda同型、右Bの全Homに関する自然性、
+実際の右B加群同型rightUnitIsoとその両向きの評価計算を構成した。
+左Cの全Hom自然性を値ごとに証明し、さらに右B加群の主Hom endの等式へ束ねた。
+固定cでの右加群同型だけで、左Cの自然性を済ませていない。
+
+`Module/HomWhisker.lean`は既存Mathlib eHomWhiskerLeft/Rightと加群評価の薄い公開入口。
+元のRightModule型の主Hom間の射・複体間の成分射として始域と終域を明示し、各射影での計算を公開する。
+一般の豊穣前後合成を複製していない。大きなcompose式について閉零圏/元の加群型の表示を
+暗黙のdefeqで揃えた旧証明はカーネルでタイムアウトしたが、この入口と射影計算では数秒で検証できた。
+
+Checks.BimoduleRightUnit・BimoduleTensorと既存StageSeven・Spectra.StageTwoの同時ビルドは
+成功（2689 jobs、終了コード0、追加ソースの警告なし）。主要17宣言の直接実行も終了コード0、標準公理のみ。
+監査累計1436宣言。任意可換環・独立対象宇宙と一対象ZMod 2で実際の右単位同型を検査した。
+担当差分のgit diff --checkも成功。
+
+U11e全受入は未完。左単位、bimodule合成の結合同型、三角/五角、全変数自然性、
+Fubini・tensor–Hom随伴・余極限保存は継続対象である。
+随伴に必要な次の具体的APIは調査時未公開：
+- Ch(A)の固定終域Tに対する反変dg関手：Ch(A)ᵒᵖ→Ch(A)、値Hom_A(P,T)。
+  そのHom作用はHom_A(Q,P)→Hom_A(Hom_A(P,T),Hom_A(Q,T))で、全次数符号・単位/合成保存が必要。
+- 左Nに対する右加群homRightModule N T：値x↦Hom_A(N(x),T)。
+  balanced tensorからTへのchain mapと、この右加群への閉零加群射の自然同値を構成する。
+環A:Type uは任意CommRing、Dの対象宇宙vは独立、Homはu。Hom end/余等化子を使う段階でSmall.{u} D。
+この具体的dg APIはDG担当内で追加する。共有モデル/Quillen/転送/SM7一般論への重複実装・追加要求はない。
+U12〜U17・D4mも未完のまま継続。共有ルート・共有一般論・並行作業ファイルは変更していない。
