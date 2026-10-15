@@ -3435,6 +3435,18 @@ K₀ の類への移送と重みつき乗法性は次の小段。
 - 生成元上の微分・巡回の式がそろった。有限座標との比較と生成元による外延性を次に証明し、
   Fourier の全次数の鎖同型へ渡す。正規化・族・S10.9・S11 は未完了。
 
+### S10.8c.1b.3a：rank 1 の三因子テンソルでの射の外延性
+
+- `PerfectComplex/RankOneTensorTripleExt.moduleRankOne_smul_generator` は
+  スカラー加群への同型を持つ加群の任意の元を、1 の逆像のスカラー倍へ移す。
+- `rankOneTensorTriple_hom_ext` は各因子の 1 の逆像の三純テンソルで
+  一致する二つの射が一致することを証明する。
+- `lake build SerrePositivity.PerfectComplex.RankOneTensorTripleExt` が成功（2743 jobs）。
+  `lake env lean scripts/audit_adams_rankone_triple_ext.lean` の二補題の監査が成功。
+  依存公理は `propext` と `Quot.sound` のみ。
+- この小段は一般の同次成分の外延性。Koszul 三乗の各次数の生成元への適用、
+  有限座標との比較、Fourier 鎖同型は後続段。ルート公開はその接続時に行う。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
