@@ -1,0 +1,48 @@
+module
+
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.DiagonalMappingRows
+
+/-! # Identifying diagonal row comparisons with actual Hom precomposition
+
+The diagonal of the bisimplicial mapping object is naturally isomorphic to
+the Hom of the diagonal cosimplicial object. The isomorphism is the identity
+on simplices; its naturality uses the double diagram's commuting squares.
+This identifies the concrete comparison map without assuming its weak
+equivalence or any diagonal cofibrancy.
+-/
+
+@[expose] public section
+universe v u
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+open CategoryTheory
+
+namespace SerrePositivity.HomotopyFunctionComplex.DiagonalMappingComparison
+variable {C : Type u} [Category.{v} C]
+
+/-- Both sides have n-simplices A[n][n] to Z. -/
+def iso (A : SimplexCategory ⥤ SimplexCategory ⥤ C) (Z : C) :
+    DiagonalFrame.obj (DiagonalMappingRows.obj A Z) ≅
+      (cosimplicialHom (DiagonalFrame.obj A)).obj Z :=
+  NatIso.ofComponents (fun _ => Iso.refl _) (by
+    intro n m f
+    ext h
+    change (A.obj m.unop).map f.unop ≫ ((A.map f.unop).app n.unop ≫ h) =
+      ((A.map f.unop).app m.unop ≫ (A.obj n.unop).map f.unop) ≫ h
+    rw [← CategoryTheory.Category.assoc, (A.map f.unop).naturality])
+
+/-- Diagonalize the actual augmented row map. -/
+def comparison {A : SimplexCategory ⥤ SimplexCategory ⥤ C} {B : SimplexCategory ⥤ C}
+    (a : A ⟶ (Functor.const SimplexCategory).obj B) (Z : C) :
+    (cosimplicialHom B).obj Z ⟶ (cosimplicialHom (DiagonalFrame.obj A)).obj Z :=
+  (DiagonalFrame.constantIso ((cosimplicialHom B).obj Z)).inv ≫
+    DiagonalFrame.map (DiagonalMappingRows.comparison a Z) ≫ (iso A Z).hom
+
+@[simp]
+lemma comparison_eq {A : SimplexCategory ⥤ SimplexCategory ⥤ C} {B : SimplexCategory ⥤ C}
+    (a : A ⟶ (Functor.const SimplexCategory).obj B) (Z : C) :
+    comparison a Z = (cosimplicialHomMap (DiagonalFrame.augmentation a)).app Z := by
+  ext n h
+  rfl
+
+end SerrePositivity.HomotopyFunctionComplex.DiagonalMappingComparison
