@@ -92,6 +92,7 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftWeakEqui
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SmallHomAccessible
 public import SerrePositivity.HomotopicalAlgebra.Localization.SmallHomTests
 public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleWeakEquivalenceInverseImage
+public import SerrePositivity.HomotopicalAlgebra.Localization.AccessibleLocalObjects
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor
