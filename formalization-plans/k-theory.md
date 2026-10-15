@@ -9618,3 +9618,43 @@ objectwise cofibrancyだけで代用せず、通常colimitとhocolimを無条件
 - 共有全監査：3968宣言・300モジュール、標準公理のみ。
 - `check_local_replacement_detection`：62宣言・9モジュールの回帰検証成功。
 - コミット：hocolim保存`fee6bdf8`、filtered保存`d1bee094`。差分の空白検査も成功。
+
+
+## 203. L3の基礎：Under圏のQuillen基底変更と左固有なpushoutのgluing（2026-10-15）
+
+`Under/Quillen`は任意の元のモデル圏Cと任意の基底射f:X⟶Yについて、
+Under.map(f)の右Quillen性と、その左随伴Under.pushout(f)の左Quillen性を証明する。
+Under圏のモデル構造は既存の`Under/ModelCategory`を使い、C・X・Yのcofibrancy、
+左固有性、combinatorial性、指定関手的分解は要求しない。
+
+`isCofibrant_iff`はUnder Xの対象Aがcofibrantであることと構造射X⟶A.rightが
+元のcofibrationであることを同定する。これにKen Brownを適用し、同じ基底から出る
+二つのcofibrationの間の元の弱同値を、任意のfに沿うpushoutが保存することを証明する。
+対象A.right/B.rightだけのcofibrancyへ条件を置き換えていない。
+
+`Quillen/LeftProper`は左固有性の仮定として、Mathlibの既存の
+
+    (weakEquivalences C).IsStableUnderCobaseChangeAgainst (cofibrations C)
+
+をそのまま使う。これは元の弱同値を元のcofibrationに沿ってpushoutすると弱同値になる条件であり、
+局所モデルの存在や局所モデルの左固有性を入力するものではない。
+この条件から`weakEquivalence_of_pushout_along_cofibration`を提供する。
+
+`pushout_map_weakEquivalence`は、二つのspanの対応する一方の脚f/f'がcofibrationで、
+span間の可換cubeの三成分a/b/cが元の弱同値なら、実際のpushout.mapも元の弱同値になることを証明する。
+他方の脚のcofibrancyや、spanの各対象のcofibrancyは要求しない。
+証明は中間pushoutを実際に構成し、基底の弱同値の変更には左固有性、同じ基底での比較には
+Under圏のKen Brown、合成の比較にはpushoutの普遍性と貼り合わせを使う。
+
+これはL3に必要な元のモデルのgluing補題であり、W_Sそのもののpushout閉性ではない。
+次は、対応する一方の脚がcofibrationであるspanについて、実際のhocolim→pushout比較の弱同値性を
+このgluing補題へ接続する。そこから§202の局所同値のhocolim保存を使ってW_Sのpushout閉性へ進む。
+通常colimitとhocolimの比較を省略せず、objectwise cofibrancyをprojective cofibrancyと同一視しない。
+L2の単位射の局所同値性、L3の任意の超限合成閉性、L4・L5・E0・S0〜S3、
+F1の任意モデル源での最終関手は引き続き未完了である。
+
+検証：共有入口2488 jobsで成功、新規警告なし。
+`check_left_proper_pushout`は6宣言・2モジュールを標準公理のみで監査し、
+任意の基底射のQuillen性、左固有性を使わない固定基底の比較、左固有性を使うcubeの利用例を検証した。
+共有全監査は3974宣言・302モジュール、標準公理のみで成功。差分の空白検査成功。
+実装・利用例・共有入口への接続はコミット`aeb7fd57`。

@@ -1119,3 +1119,12 @@ projective cofibrantな図式の場合には、通常colimitの保存へ移す�
 任意の超限合成・pushout閉性や生成したηのW_S所属を証明したものではなく、L2〜L5は残る。
 共有入口2486 jobs、3968宣言・300モジュールの標準公理監査、9宣言・2モジュールの新規監査と
 62宣言・9モジュールの局所境界判定の回帰検証が成功。コミット`fee6bdf8`・`d1bee094`。
+
+
+L3の基礎として`Under/Quillen`は任意の基底射のrestriction/pushoutのQuillen性を証明する。
+固定基底から出るcofibration間の弱同値は任意のpushoutで保存され、ここに左固有性は不要。
+`Quillen/LeftProper`は元のWのcofに対する相対cobase-change安定性を左固有性の契約として使い、
+対応する一方の脚がcofibrationである二つのspan間の弱同値のpushout gluingを証明する。
+対象のcofibrancyは要求しない。これは元のWの補題であり、W_Sのpushout閉性への接続は残る。
+共有入口2488 jobs、3974宣言・302モジュールの標準公理監査、6宣言・2モジュールの利用例・監査が成功。
+コミット`aeb7fd57`、詳細は計画§203。F→L→E→S全体の目標は継続中。
