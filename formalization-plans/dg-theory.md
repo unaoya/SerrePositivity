@@ -3705,3 +3705,30 @@ M/N/Tそれぞれの全Hom自然性が揃った。U11e全受入は引き続き�
 次に既存leftModuleToRightOppositeの閉零圏の同値を確認し、右側で証明済みの
 rightTensorFunctorの余極限保存へ接続する。この構成をFubiniでのtensor順序の比較にも再利用する。
 U12〜U17・D4mは未完。共有一般論への追加要求はなく、担当外ファイルを変更していない。
+
+
+### 17.41 U11e10：opposite上のbalanced tensorとの符号付き交換（2026-10-16）
+
+`Tensor/BalancedReindex.lean`はbalanced族の生成元関係を、左右作用の出力次数i/jを指定する形で公開した。
+`Module/LeftActionComparison.lean`はN.toRightOppositeの二重opposite作用が元の左作用、
+M.toFunctorの左作用が元の右作用に一致することを証明する。
+`Tensor/SwapFamilies.lean`は任意終域Tについて、D上のBalancedFamily(M,N,T)と
+Dᵒᵖ上のBalancedFamily(N.toRightOpposite,M.toFunctor,T)の同値を構成した。
+作用の次数の和を途中で無理に同一視せず、上記i/jを指定したbalanced関係を使う。
+この族の同値はDのSmallを要求しない。
+
+`Tensor/Swap.lean`はSmall.{u} Dの下で両方の族を各coequalizerへ降ろし、swapHom/unswapHomと
+実際のchain isoであるswapIsoを構成した。各包含での式と純粋斉次元の計算を公開し、
+両逆法則は既存cochainTensorSymmetryの二乗恒等から証明する。
+元m^r⊗n^sは(-1)^(rs)を伴ってn⊗mへ移る。任意可換環・非有界のままでflatnessは要求しない。
+右側の左加群はM.toFunctorであり、別の三重opposite対象を作っていない。
+
+Checks.BalancedSwap・Checks.LeftTensorColimits・Checks.EnrichedHomNaturality・Checks.StageSeven・
+既存Spectra.StageTwoの同時ビルドは成功（2693 jobs、終了コード0、警告なし）。
+任意A・独立対象宇宙、Smallなしの族の同値、実際のchain iso、次数-1/1の負符号、ZMod 2を検査した。
+本単位の主要17宣言の直接実行は終了コード0、標準公理のみ。監査累計1571宣言。
+担当Leanのsorry/admit/新規axiomは0件。文書検査は22 Markdown・311 exposition参照、失敗0件。
+
+U11e全受入は未完。Nの閉零射に関する交換の自然性と左加群変数の余極限保存は次節で受け入れる。
+この交換同型だけでFubini・bimodule合成の結合/三角/五角を完了とはしない。
+U12〜U17・D4mも継続対象。共有一般論・共有ルート・担当外ファイルを変更していない。
