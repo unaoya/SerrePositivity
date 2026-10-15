@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.KTheory.Adams.WeightPolynomial
 public import Mathlib.LinearAlgebra.Lagrange
+public import Mathlib.LinearAlgebra.Eigenspace.Minpoly
 
 /-! # Lagrange projectors for an operator annihilated by distinct linear factors -/
 
@@ -45,19 +46,8 @@ lemma sum_lagrangeProjector (hv : Set.InjOn v s) (hs : s.Nonempty) (x : M) :
     Module.End.one_apply] using he
 
 lemma polynomial_on_eigenvector (a : E) (x : M) (hx : T x = a • x) (Q : E[X]) :
-    (aeval T Q) x = Q.eval a • x := by
-  have hp : ∀ n : ℕ, (T ^ n) x = a ^ n • x := by
-    intro n
-    induction n with
-    | zero => simp
-    | succ n ih =>
-      rw [pow_succ', Module.End.mul_apply, ih, map_smul, hx, smul_smul, ← pow_succ]
-  induction Q using Polynomial.induction_on' with
-  | add Q Q' hQ hQ' => simp only [map_add, LinearMap.add_apply, eval_add, add_smul, hQ, hQ']
-  | monomial n b =>
-    simp only [aeval_monomial, Module.End.mul_apply, eval_monomial]
-    change b • ((T ^ n) x) = (b * a ^ n) • x
-    rw [hp, smul_smul]
+    (aeval T Q) x = Q.eval a • x :=
+  Module.End.aeval_apply_of_mem_apply_eq_smul hx
 
 lemma lagrangeProjector_on_eigenvector_self (hv : Set.InjOn v s) (i : ι) (hi : i ∈ s)
     (x : M) (hx : T x = v i • x) : lagrangeProjector s v T i x = x := by
