@@ -60,6 +60,7 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftBelow,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftSuccessor,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Lifting,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorData,
     `SerrePositivity.HomotopicalAlgebra.Quillen.Brown,
     `SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor,
     `SerrePositivity.HomotopicalAlgebra.Quillen.DerivedAdjunction,
