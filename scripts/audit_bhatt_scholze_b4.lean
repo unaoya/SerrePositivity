@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.PrincipalDPToFactorial
 import SerrePositivity.BhattScholze.PrincipalDPPresentation
 import SerrePositivity.BhattScholze.DeltaPDivisionFactorialPDUniversal
 import SerrePositivity.BhattScholze.DeltaPDivisionFactorialPDLift
@@ -4342,3 +4343,13 @@ assert_no_sorry SerrePositivity.BhattScholze.principalDPHom_ext
 #print axioms SerrePositivity.BhattScholze.principalDPHom_ext
 assert_no_sorry SerrePositivity.BhattScholze.existsUnique_principalDPEval
 #print axioms SerrePositivity.BhattScholze.existsUnique_principalDPEval
+
+-- Concrete surjection from the principal presentation to the factorial subring.
+assert_no_sorry SerrePositivity.BhattScholze.principalDPToFactorial
+#print axioms SerrePositivity.BhattScholze.principalDPToFactorial
+assert_no_sorry SerrePositivity.BhattScholze.principalDPToFactorial_coeff
+#print axioms SerrePositivity.BhattScholze.principalDPToFactorial_coeff
+assert_no_sorry SerrePositivity.BhattScholze.principalDPToFactorial_generator
+#print axioms SerrePositivity.BhattScholze.principalDPToFactorial_generator
+assert_no_sorry SerrePositivity.BhattScholze.principalDPToFactorial_surjective
+#print axioms SerrePositivity.BhattScholze.principalDPToFactorial_surjective
