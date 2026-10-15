@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.CochainTensorBraided
 import SerrePositivity.HomologicalAlgebra.DerivedTensorSymmetry
 import SerrePositivity.HomologicalAlgebra.ProjectiveBaseChange
 import SerrePositivity.HomologicalAlgebra.CochainTensorProjective
@@ -770,3 +771,14 @@ assert_no_sorry SerrePositivity.projective_baseChange
 -- G2-5a: existing actual symmetry agrees with arbitrary projective models.
 assert_no_sorry SerrePositivity.boundedAboveDerivedTensorSymmetry_models
 #print axioms SerrePositivity.boundedAboveDerivedTensorSymmetry_models
+
+-- G2-5a: both signed hexagons and the actual cochain symmetric monoidal structure.
+assert_no_sorry SerrePositivity.cochainTensorRightTriple_apply_of_sum
+assert_no_sorry SerrePositivity.cochainTensorSymmetry_hexagon_forward
+assert_no_sorry SerrePositivity.cochainTensorSymmetry_inv
+assert_no_sorry SerrePositivity.cochainTensorSymmetry_hexagon_reverse
+assert_no_sorry SerrePositivity.cochainTensorSymmetricCategory
+
+#print axioms SerrePositivity.cochainTensorSymmetry_hexagon_forward
+#print axioms SerrePositivity.cochainTensorSymmetry_hexagon_reverse
+#print axioms SerrePositivity.cochainTensorSymmetricCategory
