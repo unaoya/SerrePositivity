@@ -3643,3 +3643,33 @@ Checks.StageSeven・既存Spectra.StageTwoの同時ビルドは成功（2681 job
 反変Homの(-1)^(pq)を両方保持する。この具体的APIはDG担当内で構成し、共有一般論を重複実装しない。
 左加群変数の余極限保存、Fubini、bimodule合成の結合同型・三角/五角も継続対象。
 U12〜U17・D4mも未完。担当外ファイル・共有ルート・並行作業の変更は編集していない。
+
+
+### 17.39 U11e8：左加群変数の反変右Hom dg関手（2026-10-16）
+
+`Module/HomRightContra.lean`は§17.38の具体的APIであるhomRightContraHomMapを構成した。
+leftModuleHom(N,N')からmoduleHom(homRightModule N' T,homRightModule N T)へのchain mapである。
+各対象では既存leftModuleEvaluationDGのoppositeとhomContravariantDGの合成を用い、
+その斉次作用は(-1)^(pq)を伴う前合成である。左加群主Homの自然性から、右Hom加群間の
+全次数自然性を証明し、既存moduleHomEquivでendへ束ねた。
+
+射影計算・斉次計算・単位と豊穣合成の保存を証明し、
+homRightContraDG : (LeftModule A D)ᵒᵖ→RightModule A Dを実際のMathlib豊穣関手として公開した。
+oppositeの合成符号は各評価の既存dg関手へ運ぶため、全左加群対象のSmall仮定を追加しない。
+Small.{u} D、任意CommRing A : Type u、独立対象宇宙vと非有界複体の契約を維持する。
+
+`Complexes/HomContravariantMaps.lean`は閉零射での作用が通常のhomPrecomposeになる式を証明する。
+`Module/HomRightContraMaps.lean`は左加群の閉零射での主Hom射影を計算し、
+MathlibのforgetEnrichmentOppositeEquivalenceを介して通常の反変関手homRightContraFunctorも構成した。
+その各評価の射はhomPrecompose ((leftModuleEvaluation x).map f) Tに一致する。
+独自のopposite圏や弱い自然変換の型へ置き換えていない。
+
+Checks.HomRightContra・Checks.EnrichedHomSource・Checks.EnrichedHomTarget・Checks.StageSeven・
+既存Spectra.StageTwoの同時ビルドは成功（2682 jobs、終了コード0、警告なし）。
+任意A・独立対象宇宙、実際の豊穣/通常反変関手、次数-1/1の負符号、一対象ZMod 2を検査した。
+主要17宣言の直接実行は終了コード0、すべて標準公理のみ。監査累計1553宣言。
+担当Leanのsorry/admit/新規axiomは0件。文書検査は22 Markdown・311 exposition参照、失敗0件。
+
+U11e全受入は未完。次はこの反変Hom写像とleftHomMapを用い、N変数の転置自然性を証明する。
+左加群変数の余極限保存、Fubini、bimodule合成の結合同型・全変数自然性・三角/五角、
+U12〜U17・D4mも継続対象。共有一般論への追加要求はなく、担当外ファイルを変更していない。
