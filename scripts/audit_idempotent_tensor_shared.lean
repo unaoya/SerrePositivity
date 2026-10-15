@@ -1,0 +1,8 @@
+import SerrePositivity.HomologicalAlgebra.CochainIdempotentTensor
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.CochainIdempotent.tensor
+assert_no_sorry SerrePositivity.CochainIdempotent.tensor_inclusions_map
+assert_no_sorry SerrePositivity.CochainIdempotent.imageTensorIso
+assert_no_sorry SerrePositivity.CochainIdempotent.imageTensorIso_hom_inclusion
+#print axioms SerrePositivity.CochainIdempotent.imageTensorIso
