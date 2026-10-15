@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.DerivedAlgebraAssociativity
 import SerrePositivity.HomologicalAlgebra.CochainDiscreteAlgebra
 import SerrePositivity.HomologicalAlgebra.DerivedSingleTensorUnit
 import SerrePositivity.HomologicalAlgebra.DerivedSingleTensorSymmetry
@@ -927,3 +928,11 @@ assert_no_sorry SerrePositivity.cochainAlgebraMul_augmented_assoc
 
 #print axioms SerrePositivity.cochainAlgebraMonObj
 #print axioms SerrePositivity.cochainAlgebraMul_augmented_assoc
+
+-- G2-5a-ii: associativity of the actual derived algebra product.
+assert_no_sorry SerrePositivity.boundedAboveDerivedAlgebraMul_projective_model
+#print axioms SerrePositivity.boundedAboveDerivedAlgebraMul_projective_model
+assert_no_sorry SerrePositivity.cochainAlgebraMul_homotopy_lift_assoc
+#print axioms SerrePositivity.cochainAlgebraMul_homotopy_lift_assoc
+assert_no_sorry SerrePositivity.boundedAboveDerivedAlgebraMul_assoc
+#print axioms SerrePositivity.boundedAboveDerivedAlgebraMul_assoc
