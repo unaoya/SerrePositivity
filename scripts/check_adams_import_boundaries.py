@@ -67,6 +67,10 @@ for name in ['Family', 'WeightOperators']:
               ('TensorSquare', 'TensorCube', 'CyclicTwo', 'CyclicThree', 'Cubic')))
 print(f'Import boundaries passed: {len(common)} cochain modules and 2 Adams contracts.')
 
+check('SerrePositivity.PerfectComplex.InvolutionClassAcyclic',
+      lambda dep: dep.startswith('SerrePositivity.KTheory.Adams.'))
+print('The general acyclic involution class is independent of Adams implementations.')
+
 for name in ['AlternatingSum', 'ExactImageSequence']:
     check('SerrePositivity.CategoryTheory.' + name, upper_layer)
 check('SerrePositivity.KTheory.SupportedExactEuler',

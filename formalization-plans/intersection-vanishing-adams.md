@@ -4985,7 +4985,7 @@ R12–R20 のコードをコミットした後、以下をすべて確認した�
 | R29 | 低次・高次混合層の18成分計算 | 完了：核の持ち上げと単射による成分比較・分裂の次数別公式を共用。18宣言の型を維持。加法性まで3304 jobs、専用23宣言・既存高次混合層の公理監査、全依存ゲートが成功 |
 | R24e-1 | 二重テンソルの基底変更と符号付き交換 | 完了：一般の2宣言をCochainTensorBaseChangeSymmetryへ本文を維持して移動。2774 jobs、3宣言の公理監査、全依存ゲートが成功 |
 | R24e-2 | 三重テンソルの疎な分配公式 | 完了：CochainTensorTripleDegreeMapsへ宣言・証明を維持して移動。利用先2815 jobs、3宣言の公理監査、全依存ゲートが成功 |
-| R24e-3 | 一般の対合の非輪状 K₀ 類 | 未着手 |
+| R24e-3 | 一般の対合の非輪状 K₀ 類 | 完了：InvolutionClassAcyclicへ宣言・証明を維持して移動。2812 jobs、2宣言の公理監査、新しいAdams独立性ゲートが成功 |
 | R28b-1 | 有限格子・係数拡大比較の一般部分 | 未着手 |
 | R28b-2 | 局所化した分解と正則局所化の依存整理 | 未着手 |
 | R30 | 支持付き三角形の代表と比較同型 | 未着手 |
@@ -5050,6 +5050,7 @@ R29 の検証ログは `/tmp/adams-r29-build.log`、`/tmp/adams-r29-audit.log`�
 `/tmp/adams-r29-high-audit.log`。低次・高次の核と標的は別々に保ち、共通の比較だけを抽出した。
 R24e-1 の検証ログは `/tmp/adams-r24e1-build.log`、`/tmp/adams-r24e1-audit.log`。
 R24e-2 の検証ログは `/tmp/adams-r24e2-build.log`、`/tmp/adams-r24e2-audit.log`。
+R24e-3 の検証ログは `/tmp/adams-r24e3-build.log`、`/tmp/adams-r24e3-audit.log`。
 
 ## 5. 受入条件
 
