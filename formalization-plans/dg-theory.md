@@ -2521,3 +2521,22 @@ Checks.HomotopyEvaluationTriangles・StageSix・既存Spectra.StageTwoの同時�
 Checksの直接実行で主要5宣言を監査し、標準公理のみ。累計1101宣言。
 次は評価先のacyclic部分圏の逆像を使い、K(D)のacyclic部分圏の三角閉性を証明する。
 U10全受入は未完であり、Verdier商比較・導来圏の三角構造・局所化と一対象比較の三角性も引き続き必要。
+
+
+### 13.81 U10o5：合成cone三角形のdistinguished性と第三射の比較
+
+`Module/ConeCompositionTriangle.lean`は、cone(f≫g)→cone(g)の標準射を構成し、
+cone(χ)の右包含の後に逆方向比較を合成するとこの射になることを証明した。
+順方向比較はconnectingと厳密に可換である。
+`moduleConeCompTriangle`はcone(f)→cone(f≫g)→cone(g)→cone(f)[1]であり、
+K(D)へ移した三角形がχの標準cone三角形と同型、したがってdistinguishedであることを証明した。
+
+第三射の比較では、商関手のshift比較の自然性を一般の関手について先に証明する。
+`moduleHomotopyConeComp_mor₃`は、その一般比較から得られる実際の射の等式をそのまま述べる。
+三角形のfieldによる表示への型変換を証明の型注釈へ埋め込まず、八面体の構成で使用する。
+すべての加群射・収縮は§13.76〜13.78の全dg自然な構成である。
+
+受入入口（Pretriangulated・ConeCompositionTriangle・Triangulated・HomotopyEvaluationTriangles）と
+StageSix・既存Spectra.StageTwoの同時ビルドは成功（2557 jobs）。
+本単位の主要13宣言の直接公理監査は標準公理のみ。累計1114宣言。
+U10全受入は未完。八面体公理の受入記録は次節、acyclic部分圏とVerdier商への接続を引き続き進める。
