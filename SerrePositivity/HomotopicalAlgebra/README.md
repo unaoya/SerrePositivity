@@ -273,6 +273,19 @@ accessibility条件であり、Jやモデル構造を入力に要求しない。
 `scripts/check_smith_generators.lean`は局所可呈示性からIと構成済みJのSOAを
 導く利用例と、全40宣言の標準公理監査を含む。R3の閉性・認識は別の受入項目。
 
+## Smith R3の代数的な認識部分（途中）
+
+`Smith/Recognition.lean`はsquareの分解から`I.rlp = J.rlp ∩ W`を証明する。
+さらに`J.rlp.llp ≤ W`の下でretractを用いて`J.rlp.llp = I.rlp.llp ∩ W`を導き、
+`modelCategoryOfSquareFactor`で呼出側のMathlib三クラス上にモデル構造を構成する。
+生成性と両関手的分解への接続も利用例で検証する。
+
+この段階では有限極限とacyclicityを明示した条件付きAPIであり、R3の完了ではない。
+`generatedLeft_le_of_closure`はcoproduct・pushout・超限合成閉性からacyclicityを導くが、
+最終Smith定理ではcoproduct閉性を追加仮定にせず導出する必要がある。
+局所可呈示性から必要な有限極限を導く証明も残る。
+検証は`scripts/check_smith_recognition.lean`。
+
 `check_smith_solution_set`はモデル構造のない抽象圏で、独立した宇宙、CommSqの左右成分、
 小さい射族/射クラス全体の分解、空の射族、General/StageTwoとの併用を検証する。
 同スクリプトはこのモジュールの全宣言を標準公理のみで監査する。

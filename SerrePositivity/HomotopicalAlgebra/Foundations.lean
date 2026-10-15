@@ -9,6 +9,7 @@ public import SerrePositivity.HomotopicalAlgebra.Transfer.Right
 public import SerrePositivity.HomotopicalAlgebra.Smith.SolutionSet
 public import SerrePositivity.HomotopicalAlgebra.Smith.Smallness
 public import SerrePositivity.HomotopicalAlgebra.Smith.GeneratingTrivialCofibrations
+public import SerrePositivity.HomotopicalAlgebra.Smith.Recognition
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor

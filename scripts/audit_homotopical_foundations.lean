@@ -18,6 +18,7 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Smith.SolutionSet,
     `SerrePositivity.HomotopicalAlgebra.Smith.Smallness,
     `SerrePositivity.HomotopicalAlgebra.Smith.GeneratingTrivialCofibrations,
+    `SerrePositivity.HomotopicalAlgebra.Smith.Recognition,
     `SerrePositivity.HomotopicalAlgebra.Transfer.Right,
     `SerrePositivity.HomotopicalAlgebra.Quillen.Brown,
     `SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor,
