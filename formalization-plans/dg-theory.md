@@ -1440,3 +1440,21 @@ U10全受入は未完。各自由diskの二段分解は完了したが、初期d
 次はu-small余積で全次数分裂が保たれることを証明し、初期被覆のsphere二段分解へ適用する。
 後続商のshiftと余積・自由sphereとの同定を合わせ、証明付きsemifree filtrationを完成する。
 続くHom計算・三角構造・Verdier商・余積/局所小性・一対象比較の残項目は引き続き保持する。
+
+
+### 13.31 U10a10：u-small余積による全次数分裂の保存
+
+`Module/GradedCoproduct.lean` は評価の各次数で余積包含が余積を与えることを、
+既存moduleEvaluationの余極限保存とMathlibのcofan保存APIから構成する。
+chain条件のない次数付き成分族を余積へ延長し、包含・合成・単位・零・加法・
+通常加群射のSigma.mapとの一致を証明する。
+`moduleCoproductGradedComponent_naturality` は各余積包含の全次数自然性から
+全斉次作用との可換性を証明する。
+`moduleCoproductGradedSplit` がu-smallな任意族の全次数分裂を余積に運ぶ。
+添字Jの対象宇宙wは独立、仮定は `[Small.{u} J]`。
+
+受入入口 `Checks/GradedCoproduct.lean` は一般族、主圏のmono/epi・cokernel普遍性、
+各評価次数の短完全性、可算族と空族の宇宙を検証する。
+この入口・初期被覆の適用入口・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3198 jobs）。
+直接実行の主要13宣言の公理監査は標準公理のみ。累計635宣言。
+U10全受入は未完。共有一般モデル圏/転送一般論は複製していない。
