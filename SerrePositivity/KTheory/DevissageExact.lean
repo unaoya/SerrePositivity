@@ -114,24 +114,15 @@ omit [IsNoetherianRing R] [Module.Finite R M₁] [Module.Finite R M₂] in
 /-- An annihilator bound passes backwards along an injective linear map. -/
 lemma annihilator_le_of_injective (J : Ideal R) (f : M₁ →ₗ[R] M₂)
     (hf : Function.Injective f) (h : J ≤ Module.annihilator R M₂) :
-    J ≤ Module.annihilator R M₁ := by
-  intro r hr
-  rw [Module.mem_annihilator]
-  intro m
-  apply hf
-  rw [map_smul, map_zero]
-  exact Module.mem_annihilator.mp (h hr) (f m)
+    J ≤ Module.annihilator R M₁ :=
+  h.trans (f.annihilator_le_of_injective hf)
 
 omit [IsNoetherianRing R] [Module.Finite R M₂] [Module.Finite R M₃] in
 /-- An annihilator bound passes forwards along a surjective linear map. -/
 lemma annihilator_le_of_surjective (J : Ideal R) (g : M₂ →ₗ[R] M₃)
     (hg : Function.Surjective g) (h : J ≤ Module.annihilator R M₂) :
-    J ≤ Module.annihilator R M₃ := by
-  intro r hr
-  rw [Module.mem_annihilator]
-  intro m
-  obtain ⟨n, rfl⟩ := hg m
-  rw [← map_smul, Module.mem_annihilator.mp (h hr) n, map_zero]
+    J ≤ Module.annihilator R M₃ :=
+  h.trans (g.annihilator_le_of_surjective hg)
 
 /-- Restrict a filtration on the middle of a short exact sequence to both ends.
 The sum of quotient-ring classes is additive for the resulting filtrations. -/

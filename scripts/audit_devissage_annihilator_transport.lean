@@ -1,0 +1,8 @@
+import SerrePositivity.KTheory.Devissage
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.annihilator_le_of_injective
+assert_no_sorry SerrePositivity.annihilator_le_of_surjective
+assert_no_sorry SerrePositivity.DevissageFlag.exists_restriction
+#print axioms SerrePositivity.annihilator_le_of_injective
+#print axioms SerrePositivity.annihilator_le_of_surjective
