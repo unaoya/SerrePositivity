@@ -1699,3 +1699,23 @@ U10全受入は未完。次はHom endの余極限に対する逆極限表示と�
 acyclic複体の可算塔で互換な境界の原像を実際に選ぶ補題を接続する。
 semifree全体の性質と導来Hom計算・選択独立性、三角構造・Verdier商・余積/局所小性・
 一対象比較の保存性は残る。共有一般論への不足APIの新しい要求はない。
+
+
+### 13.42 U10b5a：全射的acyclic可算塔での互換な境界の原像
+
+`Complexes/TowerPrimitives.lean` はacyclic複体のcycleの境界原像を取り出し、
+次数ごとに全射なchain map `r:L→K` について、Kで指定した原像に一致するLの原像を構成する。
+任意のLの原像bと指定原像tの差 `t-r(b)` はKのcycleなので境界である。
+その一つ下の次数の原像をrに沿って持ち上げ、その微分でbを補正する。
+これを依存型のNat再帰で反復し、可算塔の互換なcycle族に対して互換な境界原像族を得る。
+`complexTower_compatible_primitives` は全整数次数・任意可換環で成立する。
+一般の逆極限の完全性や、degreewise全射だけでのcycleの全射性は仮定していない。
+
+`Checks/TowerPrimitives.lean` は塔全体にわたる存在命題を検証する。
+同入口・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3193 jobs）。
+直接実行の主要3宣言は標準公理のみ。累計747宣言。
+担当Leanのsorry/admit/新規axiomは0件。文書検査の制限は§13.39のとおり。
+
+U10全受入は未完。次は余極限を源とする主Hom endが実際の極限となることを証明し、
+この互換な原像族をHom endの要素へ組み立ててsemifree全体の射影性を得る。
+導来Hom・選択独立性・三角構造・Verdier商・余積/局所小性・一対象比較の保存性も残る。
