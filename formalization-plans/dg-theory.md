@@ -2874,3 +2874,16 @@ Checks.LeftModulesのビルドは成功（1779 jobs）。直接実行も終了�
 段階別主要監査は累計1171宣言。担当差分のgit diff --checkは成功。
 U11全体・U17までの目標は継続中。次は全Hom endに値を持つ二作用bimoduleと符号付き交換則、
 積dg圏へのuncurrying比較を順に受け入れる。
+
+### 17.2 U11b1：全Hom endによるbimoduleと符号付き交換則
+
+`Bimodule/Basic.lean`はCから右B加群の主dg豊穣圏への豊穣関手として、右B・左C bimoduleを定義した。
+BにSmall.{u}を明示し、Cの対象宇宙は独立に保つ。Cを固定した右加群、Bを固定した左加群、
+両対象での複体と左作用cochainを公開する。左作用は閉零自然性でなく全Hom endに値を持つ。
+`interchange`は主Homの任意斉次要素の自然性から得る二作用のcochain交換則。
+`Bimodule/Action.lean`は作用を元へ評価し、左次数qと右次数pを交換する符号(-1)^(qp)、
+両作用の単位則を証明した。
+
+Checks.BimoduleActionsのビルドは成功（1785 jobs）。直接実行も終了コード0、主要13宣言の公理は標準公理のみ。
+独立したB/Cの宇宙、次数−1/1の交換、ZMod 2の左単位を検査した。監査累計1184宣言。
+U11b全体は未完。次はBᵒᵖ⊗Cのdg圏構造とuncurrying比較、左右合成との整合性を検証する。
