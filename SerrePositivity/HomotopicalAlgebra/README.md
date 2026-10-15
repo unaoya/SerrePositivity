@@ -1095,3 +1095,17 @@ L1は計画§200で受入照合まで完了。`HocolimMappingTests`・`FilteredM
 Sの全局所化射の実際のArrow値検査を同じ正則κでaccessibleにする。
 共有入口2471 jobs、3848宣言・285モジュールの標準公理監査と関連回帰検証が成功。
 コミット`f3021ca8`・`753fcd47`。L2〜L5とF1の任意モデル源の最終関手は引き続き未完了。
+
+
+L2の実行記録は計画§201。`ArrowFrames`・`ArrowFrameTests`は任意の元の射を自然なReedy
+cofibrationに置き換え、元のRMapの局所性テストと比較する。`LocalFibrantApproximation`は
+小さい相対境界族と元のJから、accessibleなRと自然なcofibration η:Id→Rを実際に構成する。
+`FiniteTensorLiftingClass`・`ArrowLiftingClass`・`ArrowTensor`は射圏のモデル構造なしで
+相対tensorを扱い、`RelativeSubcomplexTensor`は相対horn tensorの自明cofibration性を証明する。
+`ArrowFrameFibrations`・`PresentationSourceLiftingConverse`・`LocalBoundaryCharacterization`は
+実際のtestMapのfibration性と、局所fibrant対象↔(J⊔境界生成族).rlpの厳密な判定を証明する。
+`LocalReplacementDetection`・`AccessibleLocalEquivalences`は、accessibleなRの単位射が
+W_Sに入るという明示仮定からW_S=R⁻¹(W_C)とそのaccessibilityを導く。
+構成したηについてこの仮定を解消する証明は未完了。L2〜L5の完了とはしない。
+共有入口2484 jobs、3959宣言・298モジュールの標準公理監査、関連利用例・回帰検証が成功。
+コミット`fb6222b1`・`d8911e69`・`3de007a5`・`bb3599b6`。

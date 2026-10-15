@@ -9457,3 +9457,107 @@ Sの全射とid_(G_i)をまとめた実際の小さいArrow族へSmallHomAccessi
 小さいホモトピー生成族による元のW_Cの検出と、全局所対象によるW_Sの定義を混同しない。
 L3の左固有性を使う閉性、L4の一般局所化モデルの構成、L5の置換・普遍性・独立性も残る。
 F1の任意モデル源の最終関手も引き続き未完了であり、F〜L全体は完了としていない。
+
+
+## 201. L2進捗：局所fibrant近似・相対frameのfibration・小さい境界族による厳密な判定（2026-10-15）
+
+A0・A1は§166、F4は§199、L1は§200で完了済み。後続のF〜L全体の依頼を継続する。
+今回は局所fibrant対象への実際のaccessibleな近似と、その出力対象の持ち上げによる厳密な判定を構成した。
+単位射がW_Sに属する証明は未完了であり、L2・L4・L5の完了とはしない。
+
+### 201.1 任意の元の射から自然なReedy cofibrationを構成
+
+`Localization/ArrowFrames`は任意のf:Arrow Cに対し、選んだcosimplicial resolutionの射を
+Reedy cofibrationとobjectwise trivial fibrationに関手的に分解する。
+始域・終域のframeはReedy cofibrantかつhomotopically constantであり、元のfへのaugmentationの
+両成分は各次数で元の弱同値になる。元のfの両端のcofibrancyは仮定しない。
+分解・augmentationはfの可換squareに自然であり、対象ごとの独立な選択で代用していない。
+
+`ArrowFrameTests`は、このReedy cofibrationのcontravariant Homによる実際のtestMapを定義する。
+fibrantなYについて、testMap(f,Y)の弱同値性は元のRMapによるmappingTest(Y,f)と同値である。
+非fibrantな対象では指定したfibrant置換を介して比較する。
+既存のlocalObjectsの定義を別の局所性へ置き換えてはいない。
+
+### 201.2 小さい境界生成族と実際のaccessibleな近似
+
+`LocalBoundaryGenerators`はSの各射のframeの全相対latching射を生成族B(S)にする。
+Sがw-smallならB(S)もw-smallであり、すべて元のcofibrationである。
+そのterminal射がB(S)に対してRLPを持つfibrant対象はS-localになる。
+
+`LocalFibrantApproximation`は元の生成自明cofibration族JとB(S)の和Kを取り、
+既存のaccessibleな生成分解から、実際のR:C⥤Cと自然変換η:Id⟶Rを構成する。
+共通の正則κで分解の中間関手とRがaccessibleになり、各η_Xは元のcofibration、
+各R(X)はfibrantかつ元の意味でS-localである。追加の置換関手を公理として入力していない。
+この段階ではη_X∈W_Sを出力に含めない。コミット`fb6222b1`。
+
+### 201.3 相対horn tensorと局所性テストのfibration性
+
+`FiniteTensorLiftingClass`は、有限余極限だけを持つ任意の圏Dと任意の射クラスQについて、
+境界tensorがQ.llpに入れば、すべての有限nonsingular単射のtensorもQ.llpに入ることを証明する。
+有限skeletal filtrationのpushout・coproduct・合成を使い、Dのモデル構造は要求しない。
+
+`ArrowLiftingClass`はArrow Cのobjectwise Qに対するLLPを、左成分と相対pushout射の
+Q.llpによって判定する。順方向・逆方向とも実際の持ち上げを構成する。
+相対pushout成分の抽出にはQの恒等射包含、左成分の抽出にはさらにterminal対象を使う。
+Arrow Cにモデル構造を先に構成する必要はない。
+
+`ArrowTensor`は自然変換αをArrow C値のcosimplicial対象にし、その実際のtensorを
+相対tensorの可換squareと同型で比較する。比較は端点のcolimit coconeから構成する。
+`RelativeSubcomplexTensor`はこの比較と有限skeletal補題を使って、Reedy cofibration αの
+すべての相対subcomplex tensorがcofibrationであることを証明する。
+両端がframeなら、相対horn tensorは自明cofibrationである。
+ここではhorn tensorの自明cofibrationのpushout閉性と2-out-of-3を使い、左固有性は使わない。
+これからfibrantなYにおけるHom(α,Y)のhorn RLPを導く。
+
+`ArrowFrameFibrations`はこの一般補題を201.1の実際のtestMapへ適用する。
+元の任意のfに対しtestMap(f,Y)はfibrationであり、Yが局所的でf∈Sなら自明fibrationになる。
+源Cの単体的豊穣性・tractability・全対象cofibrant性は追加していない。
+
+### 201.4 局所fibrant対象の厳密なRLP判定
+
+`PresentationSourceLiftingConverse`は、単体的Homの持ち上げから相対tensorのterminal射への
+持ち上げを逆に構成する。実際のpresentationのHom同値とYoneda同値を使い、
+既存の順方向の補題と合わせて持ち上げ条件を両方向に移せる。
+
+`LocalBoundaryCharacterization.localObjects_iff_rlp`はfibrantなYに対して
+
+    S-local(Y) ↔ B(S).rlp (Y ⟶ 1)
+
+を証明する。さらに`localFibrantObjects_iff_rlp`は、元の生成族I,Jを使い、任意のYについて
+
+    fibrant(Y) ∧ S-local(Y) ↔ (J ⊔ B(S)).rlp (Y ⟶ 1)
+
+を証明する。局所モデルの存在を先取りせず、既に構成した小さい生成族と元の局所性を同定した。
+
+### 201.5 W_Sのaccessibilityへ接続する条件付き定理
+
+`LocalReplacementDetection`は、局所対象間の局所同値が元の弱同値であることを証明する。
+証明はRMapのπ₀とordinary Ho(C)の射の比較から、両端を標的とするテストだけで
+Ho(C)内の逆射を構成する。したがって実際の自然変換η:Id⟶Rがあって、
+全R(X)が局所対象、全η_Xが局所同値なら、元の射クラスについて
+
+    W_S = R⁻¹(W_C)
+
+が成り立つ。`AccessibleLocalEquivalences.exists_accessible_localEquivalences_of_localUnit`は
+Rがaccessibleな場合に、W_SのArrow C内の充満部分圏と包含のaccessibilityを導く。
+対象・射・小さい生成族の宇宙u/v/wを独立に保ち、R.mapArrowのaccessibilityも端点から証明する。
+**η_X∈W_Sは明示的な仮定であり、201.2のηについてまだ解消していない。**
+単に局所対象の部分圏がaccessibleであることや、R(X)が局所的であることからこの仮定を推論しない。
+
+### 201.6 検証・コミット・残る順序
+
+- 共有入口`Foundations`：2484 jobsで成功、新規警告なし。
+- `check_local_fibrant_approximation`：49宣言・4モジュール、標準公理のみ。
+- `check_local_replacement_detection`：62宣言・9モジュール、標準公理のみ。
+  モデル未装備のtensor圏での使用、任意の元の射のtestMapのfibration性、
+  局所fibrant判定、独立したwでの条件付きaccessibilityを検証した。
+- 共有全監査：3959宣言・298モジュール、標準公理のみ。sorry・引用依存の追加なし。
+- コミット：条件付きaccessibility・有限tensor `d8911e69`、射圏の持ち上げ判定 `3de007a5`、
+  相対frame・局所境界判定 `bb3599b6`。201.2は`fb6222b1`。
+
+次はB(S)の生成射と生成された単位射の局所同値性を証明し、201.5の仮定を実際に解消する。
+必要ならL3のcof∩W_Sのpushout・超限合成閉性を先に証明して接続する。
+L3は§159.4でL0・F4・元の左固有性に依存し、L2を前提としないため、この順序変更は循環しない。
+元の左固有性が必要になる箇所ではその仮定を明示し、局所化後のモデル構造は使わない。
+その後L2の無条件の最終入口、L4の存在、L5の置換・普遍性・独立性へ進む。
+F1の指定関手的分解を仮定しない任意モデル源での最終関手も未完了のまま維持する。
