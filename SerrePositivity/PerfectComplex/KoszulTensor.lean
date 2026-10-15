@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.PerfectComplex.KoszulOneModel
 public import SerrePositivity.PerfectComplex.TensorCone
+public import SerrePositivity.HomologicalAlgebra.CochainTensorScalarCone
 
 /-! # Tensor factorization of a Koszul complex by its last one-element factor -/
 
@@ -40,21 +41,12 @@ lemma koszulClosedSupport_succ {n : ℕ} (x : Fin (n + 1) → R) :
 
 lemma oneKoszulTensorScalar_leftUnitor (a : R) (P : CochainComplex (ModuleCat.{u} R) ℤ) :
     cochainTensorMap (oneKoszulScalarMap a) (𝟙 P) ≫ (cochainTensorLeftUnitor P).hom =
-      (cochainTensorLeftUnitor P).hom ≫ smulId a P := by
-  change cochainTensorMap (a • 𝟙 cochainTensorUnit) (𝟙 P) ≫ _ = _
-  rw [cochainTensorMap_smul_left]
-  calc
-    _ = (a • 𝟙 (cochainTensor cochainTensorUnit P)) ≫ (cochainTensorLeftUnitor P).hom :=
-      congrArg (fun f => (a • f) ≫ (cochainTensorLeftUnitor P).hom)
-        (cochainTensorMap_id cochainTensorUnit P)
-    _ = _ := by simp [smulId, Linear.smul_comp, Linear.comp_smul]
+      (cochainTensorLeftUnitor P).hom ≫ smulId a P :=
+  cochainTensorUnitScalar_leftUnitor a P
 
 def oneKoszulTensorConeIso (a : R) (P : CochainComplex (ModuleCat.{u} R) ℤ) :
     cochainTensor (oneKoszulComplex a) P ≅ mappingCone (smulId a P) :=
-  cochainTensorConeLeft (oneKoszulScalarMap a) P ≪≫
-    HomologicalComplex.homotopyCofiber.mapArrowIso _ _ (fun j => ⟨j - 1, by simp⟩)
-      (Arrow.isoMk (cochainTensorLeftUnitor P) (cochainTensorLeftUnitor P)
-        (oneKoszulTensorScalar_leftUnitor a P).symm)
+  cochainTensorUnitScalarConeIso a P
 
 /-- The recursive Koszul cone is the tensor with the last one-element Koszul factor. -/
 def koszulSuccTensorIso {n : ℕ} (x : Fin (n + 1) → R) :

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.HomologicalAlgebra.PrincipalQuotientResolution
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedKoszulReduction
-public import SerrePositivity.HomologicalAlgebra.TensorConeNaturality
+public import SerrePositivity.HomologicalAlgebra.CochainTensorScalarCone
 
 /-! # A regular principal derived quotient is the two-term Koszul reduction -/
 @[expose] public section
@@ -13,44 +13,6 @@ namespace SerrePositivity
 open CategoryTheory CategoryTheory.Limits MonoidalCategory HomologicalComplex
 attribute [local instance] HasDerivedCategory.standard
 variable {R : Type u} [CommRing R]
-
-/-- Tensoring scalar multiplication on the unit identifies it with scalar multiplication. -/
-lemma cochainTensorUnitScalar_leftUnitor (a : R) (P : CochainComplex (ModuleCat.{u} R) ℤ) :
-    cochainTensorMap (smulId a (cochainTensorUnit (R := R))) (𝟙 P) ≫
-        (cochainTensorLeftUnitor P).hom =
-      (cochainTensorLeftUnitor P).hom ≫ smulId a P := by
-  rw [smulId, cochainTensorMap_smul_left, cochainTensorMap_id]
-  simp [smulId, Linear.smul_comp, Linear.comp_smul]
-
-/-- Tensoring the unit scalar cone with any complex gives its scalar cone. -/
-def cochainTensorUnitScalarConeIso (a : R) (P : CochainComplex (ModuleCat.{u} R) ℤ) :
-    cochainTensor (CochainComplex.mappingCone (smulId a (cochainTensorUnit (R := R)))) P ≅
-      (scalarConeFunctor a).obj P :=
-  cochainTensorConeLeft (smulId a (cochainTensorUnit (R := R))) P ≪≫
-    homotopyCofiber.mapArrowIso _ _ (fun j => ⟨j - 1, by simp⟩)
-      (Arrow.isoMk (cochainTensorLeftUnitor P) (cochainTensorLeftUnitor P)
-        (cochainTensorUnitScalar_leftUnitor a P).symm)
-
-/-- The unit-cone comparison respects every morphism of the other tensor complex. -/
-lemma cochainTensorUnitScalarConeIso_naturality (a : R)
-    {P Q : CochainComplex (ModuleCat.{u} R) ℤ} (f : P ⟶ Q) :
-    cochainTensorMap (𝟙 (CochainComplex.mappingCone (smulId a (cochainTensorUnit (R := R))))) f ≫
-        (cochainTensorUnitScalarConeIso a Q).hom =
-      (cochainTensorUnitScalarConeIso a P).hom ≫ (scalarConeFunctor a).map f := by
-  dsimp only [cochainTensorUnitScalarConeIso, Iso.trans_hom,
-    homotopyCofiber.mapArrowIso_hom, scalarConeFunctor]
-  rw [← Category.assoc, cochainTensorConeLeft_naturality_right]
-  simp only [Category.assoc]
-  congr 1
-  rw [← homotopyCofiber.mapArrowHom_comp, ← homotopyCofiber.mapArrowHom_comp]
-  congr 1
-  apply Arrow.hom_ext
-  · change cochainTensorMap (𝟙 cochainTensorUnit) f ≫ (cochainTensorLeftUnitor Q).hom =
-      (cochainTensorLeftUnitor P).hom ≫ f
-    exact MonoidalCategory.leftUnitor_naturality f
-  · change cochainTensorMap (𝟙 cochainTensorUnit) f ≫ (cochainTensorLeftUnitor Q).hom =
-      (cochainTensorLeftUnitor P).hom ≫ f
-    exact MonoidalCategory.leftUnitor_naturality f
 
 /-- The actual derived tensor with a regular quotient computes the derived Koszul cone. -/
 def boundedAboveDerivedTensorQuotientKoszulIso (a : R) (ha : IsSMulRegular R a)

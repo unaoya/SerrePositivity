@@ -57,46 +57,16 @@ lemma oneKoszulSquareConeIso_fst (a : R) (n : ℤ) :
     (oneKoszulSquareConeIso a).hom.f n ≫
       (mappingCone.fst (smulId a (oneKoszulComplex a))).1.v n (n + 1) rfl =
     tensorConeFstX (oneKoszulScalarMap a) (oneKoszulComplex a) n ≫
-      (cochainTensorLeftUnitor (oneKoszulComplex a)).hom.f (n + 1) := by
-  simp only [oneKoszulSquareConeIso, oneKoszulTensorConeIso, Iso.trans_hom,
-    HomologicalComplex.comp_f, homotopyCofiber.mapArrowIso_hom]
-  simp only [Category.assoc]
-  change _ ≫ (cochainConeArrowMap
-    (cochainTensorMap (oneKoszulScalarMap a) (𝟙 (oneKoszulComplex a)))
-    (smulId a (oneKoszulComplex a))
-    (Arrow.isoMk (cochainTensorLeftUnitor (oneKoszulComplex a))
-      (cochainTensorLeftUnitor (oneKoszulComplex a))
-      (oneKoszulTensorScalar_unitor a).symm).hom).f n ≫ _ = _
-  rw [cochainConeArrowMap_fst, ← Category.assoc]
-  rw [show (cochainTensorConeLeft (oneKoszulScalarMap a) (oneKoszulComplex a)).hom.f n ≫
-      (mappingCone.fst (cochainTensorMap (oneKoszulScalarMap a)
-        (𝟙 (oneKoszulComplex a)))).1.v n (n + 1) rfl =
-      tensorConeFstX (oneKoszulScalarMap a) (oneKoszulComplex a) n from
-    tensorConeXIso_hom_fst _ _ n]
-  rfl
+      (cochainTensorLeftUnitor (oneKoszulComplex a)).hom.f (n + 1) :=
+  cochainTensorUnitScalarConeIso_fst a (oneKoszulComplex a) n
 
 @[reassoc]
 lemma oneKoszulSquareConeIso_snd (a : R) (n : ℤ) :
     (oneKoszulSquareConeIso a).hom.f n ≫
       (mappingCone.snd (smulId a (oneKoszulComplex a))).v n n (by omega) =
     tensorConeSndX (oneKoszulScalarMap a) (oneKoszulComplex a) n ≫
-      (cochainTensorLeftUnitor (oneKoszulComplex a)).hom.f n := by
-  simp only [oneKoszulSquareConeIso, oneKoszulTensorConeIso, Iso.trans_hom,
-    HomologicalComplex.comp_f, homotopyCofiber.mapArrowIso_hom]
-  simp only [Category.assoc]
-  change _ ≫ (cochainConeArrowMap
-    (cochainTensorMap (oneKoszulScalarMap a) (𝟙 (oneKoszulComplex a)))
-    (smulId a (oneKoszulComplex a))
-    (Arrow.isoMk (cochainTensorLeftUnitor (oneKoszulComplex a))
-      (cochainTensorLeftUnitor (oneKoszulComplex a))
-      (oneKoszulTensorScalar_unitor a).symm).hom).f n ≫ _ = _
-  rw [cochainConeArrowMap_snd, ← Category.assoc]
-  rw [show (cochainTensorConeLeft (oneKoszulScalarMap a) (oneKoszulComplex a)).hom.f n ≫
-      (mappingCone.snd (cochainTensorMap (oneKoszulScalarMap a)
-        (𝟙 (oneKoszulComplex a)))).v n n (by omega) =
-      tensorConeSndX (oneKoszulScalarMap a) (oneKoszulComplex a) n from
-    tensorConeXIso_hom_snd _ _ n]
-  rfl
+      (cochainTensorLeftUnitor (oneKoszulComplex a)).hom.f n :=
+  cochainTensorUnitScalarConeIso_snd a (oneKoszulComplex a) n
 
 @[reassoc]
 lemma oneKoszulTensorGenerator_fst (a : R) (i j n : ℤ) (h : i + j = n)
