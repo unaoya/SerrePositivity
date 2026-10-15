@@ -3000,3 +3000,15 @@ Checks.BimoduleUncurryHomのビルドは成功（1803 jobs、警告なし）。�
 主要6宣言の公理は標準公理のみ。監査累計1229宣言。
 文書検査の直近実行は22 Markdown・311 exposition参照、失敗0件。
 次は両因子での制限計算と、二作用の交換則を用いる合成保存、両往復。
+
+
+### 17.11 U11b10：uncurryHomの両因子での制限計算
+
+`Bimodule/UncurryRestriction.lean`は第一因子の包含の後にuncurryHomを合成すると元の右作用、
+第二因子では元の左作用に等しいことを、Hom複体のchain mapとして証明した。
+単位cycleの保存と純粋斉次tensorの計算を用い、次数零の射だけには限定しない。
+
+Checks.BimoduleUncurryRestrictionのビルドは成功（1804 jobs、警告なし）。
+直接実行は終了コード0、主要2宣言の公理は標準公理のみ。監査累計1231宣言。
+次はcochainの四重合成へ交換則を運び、uncurryHomの合成保存を証明する。
+両因子の制限計算だけではuncurried dg関手の構成・U11b全受入とはしない。
