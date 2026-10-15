@@ -1042,3 +1042,15 @@ small-Hom表示の局所性テストの接続とL1のaccessibility、F4の源比
 共有入口2438 jobs、共有3571宣言・252モジュールの標準公理監査と回帰検証が成功。
 コミットは`7e11097`・`858793c`・`fe6bdc4`、詳細は計画§195。
 L1の小さいhomotopy生成族の明示的な検出定理、F4の最終比較、L2〜L5は未完了である。
+
+
+`YonedaWeights`・`YonedaHomotopyWeight`は実際のfree diagramのcolimitから、定数単位へ弱同値で
+写るprojectively cofibrantな重みを構成する。`PostcompositionQuillen`・`PointwiseColimitComparison`・
+`QuillenColimitComparison`は評価・postcompositionと実際のhocolim比較のQuillen性を証明する。
+`YonedaWeightRealization`は重みの実現とframeの次数0の図式との自然同型を構成する。
+`YonedaWeightQuillen`・`SmallHomYonedaWeight`と`Quillen/WeakAugmentation`は、標準の重みの
+augmentationが実現後に弱同値になることを、源のHom/重み宇宙を独立にして証明する。
+`WeightedSourceWeakEquivalence`はこれを実際のEvaluatedFrameへ適用し、§191のweighted source
+comparisonが元のCの弱同値であることを証明する。定数図式のprojective cofibrancyは仮定しない。
+共有入口2449 jobs、共有3659宣言・263モジュールの標準公理監査が成功。
+コミット`4ce136b`・`a2bbdb9`、詳細は計画§196。F4の最終RMap–holim公式への接続は残る。

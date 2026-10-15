@@ -9074,3 +9074,85 @@ L1の主要結論である局所対象の部分圏と包含のaccessibilityは�
 小さいhomotopy生成族の明示的な検出定理は残り、accessibilityからそのホモトピー的性質を
 自動的に推論しない。F4の源比較の弱同値性と最終RMap公式、F1の任意モデル源の最終関手、
 L2〜L5も引き続き未完了である。
+
+## 196. F4の源比較の弱同値性：Yoneda重みと実際のrealization（2026-10-15）
+
+A0・A1は§166で完了済みであり、後続のF〜L全体という依頼を維持する。
+今回は§191.4・§195.4に残していた、実際のweighted source comparisonの弱同値性を証明した。
+最終RMap–holim公式までの接続は残るため、F4全体の完了とはしない。
+
+### 196.1 一般のYoneda copower図式とcofibrantな重み
+
+`Diagram/YonedaWeights`は任意の小さいKとcoproductを持つCの対象Xに対し、
+U(k)(l)=coprod_{l→k} Xという実際のK→Kᵒᵖ→Cを構成する。
+そのcolimitが定数X図式になることを普遍性から証明する。
+各lで評価したK図式と、各kのKᵒᵖ図式は、それぞれ実際のfree diagramと同型である。
+二重図式U自体のprojective cofibrancyは主張しない。
+
+`Quillen/CofibrantObjects`は左Quillen左随伴によるcofibrant対象の保存を証明する。
+`Diagram/PostcompositionQuillen`は実際のprojectiveモデルで評価の左Quillen性、
+随伴によるpostcompositionの左右Quillen性とcofibrant図式の保存を証明する。
+
+`PointwiseColimitComparison`は、各lで転置評価したK図式がcofibrantである場合、
+実際のhocolim→colim比較がlごとに弱同値になることを証明する。
+評価のcolimit保存、postcompositionのQuillen性、Brown補題を使用する。
+`YonedaHomotopyWeight`はこれをUに適用し、V=hocolim_K Uがprojectively cofibrantで、
+Xがcofibrantならv:V→const Xが弱同値であることを証明する。
+定数図式自身のprojective cofibrancyやinjectiveモデルは不要である。
+
+`QuillenColimitComparison`はL:C→Dが左Quillen左随伴の場合、
+Fがobjectwise cofibrantでF⋙Lがprojectively cofibrantなら、
+Lが実際のhocolim(F)→colim(F)比較を弱同値へ送ることを証明する。
+元のFのprojective cofibrancyは要求しない。
+この単位はコミット`4ce136b`、利用例・全宣言監査は`check_yoneda_homotopy_weight`。
+
+### 196.2 frame realizationと次数0の自然同型
+
+`YonedaWeightRealization`はXを単体集合の単位とし、実際の重みrealization F_Aについて、
+U⋙F_A ≅ (k↦A(k)_0)を図式として構成する。単なる対象ごとの同型ではなく、
+実際のframe adjunction・free/evaluation adjunction・simplicial Yonedaから得たHom同値の
+標的とkの両自然性を証明し、通常のYonedaで自然同型へ戻す。
+この構成にモデル構造や源の豊穣構造は不要である。
+
+`YonedaWeightQuillen`は次数0の図式のprojective cofibrancyを仮定し、196.1の
+Quillen-colimit比較によりF_A(v)が弱同値であることを証明する。
+`Quillen/WeakAugmentation`は一般のモデル圏で、cofibrantなA,Bから同じXへの
+弱augmentation f:A→Xとtrivial fibration p:B→Xについて、L(f)が弱同値なら
+L(p)も弱同値であることを証明する。initial.to Aとpの持ち上げからA→Bを取り、
+その弱同値性を2-out-of-3で示してBrown補題を適用する。
+これにより標準のcofibrant重みW→const unitに結果を移す。
+
+`SmallHomYonedaWeight`はShrinkHomsの既存同値を通じてこの自然同型を元のCへ戻す。
+Quillen-colimit比較を元のCへ直接適用するため、源の対象宇宙u・Hom宇宙v・
+presentability/重み宇宙wを独立に保つ。任意のCにSSet豊穣性・tractable性は追加しない。
+
+### 196.3 実際のweighted source comparisonの弱同値性
+
+`WeightedSourceWeakEquivalence`は196.2を実際のEvaluatedFrame.familyへ適用する。
+次数0のprojective cofibrancyには既証明のDegreeZeroHomotopyColimit.isCofibrantを使う。
+結論は、標準重みqについて§191で構成済みの実際の射
+
+`SmallHomFrameWeights.weightedFunctor(K,frames(D),W)(unit) → hocolim(D)`
+
+が元のCの弱同値であること。比較射の定義を別の射に置き換えず、
+既存のcomparison_weakEquivalence_iffを使って不足していたrealization段階を埋めた。
+コミット`a2bbdb9`。利用例は任意の独立したu/v/wと任意のcombinatorialなCで検証し、
+固定mono/Kanモデルから標準生成族を導く最終入口も確認した。
+
+### 196.4 受入検証と残項目
+
+すべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`：2449 jobs。
+- `check_yoneda_homotopy_weight`：57宣言・6モジュール、標準公理のみ。
+- `check_weighted_source_weak_equivalence`：31宣言・5モジュール、標準公理のみ。
+- `check_weighted_source_comparison`：54宣言・5モジュール、既存の比較APIの回帰検証。
+- `audit_homotopical_foundations`：3659宣言・263モジュール、標準公理のみ。
+- 196.1時点で`check_homotopical_foundations`・`check_spectra_stage2`も成功。
+- `git diff --check`、新規sorry・引用axiomなし。
+
+次はこの実際の源比較を、weighted Quillen adjunctionから得るresolutionのHom比較へ接続し、
+既存のFrameWeightedLimitの弱比較と合わせて最終RMap–holim公式を実際のzigzagとして構成する。
+その源・標的の自然性、必要な宇宙変更、選択独立性も受入範囲に含む。
+L1の小さいhomotopy生成族の明示的な検出、F1の任意モデル源の最終関手、L2〜L5は残る。
+他チャットの未コミット変更と共有ルートは保持した。
