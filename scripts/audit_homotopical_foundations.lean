@@ -179,6 +179,8 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyColimit,
     `SerrePositivity.HomotopicalAlgebra.Diagram.ColimitWeakEquivalence,
     `SerrePositivity.HomotopicalAlgebra.Diagram.FilteredHomotopyColimit,
+    `SerrePositivity.CategoryTheory.PointwiseAdjunction,
+    `SerrePositivity.HomotopicalAlgebra.Diagram.ProjectiveBifunctor,
     `SerrePositivity.CategoryTheory.Enriched.TensorUnit,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.WeakEquivalence,
     `SerrePositivity.HomotopicalAlgebra.Topological.WeakEquivalence,
@@ -209,6 +211,7 @@ run_cmd do
     let some idx := env.getModuleIdxFor? name | continue
     let mod := env.header.modules[idx.toNat]!.module
     unless #[`SerrePositivity.HomotopicalAlgebra,
+        `SerrePositivity.CategoryTheory.PointwiseAdjunction,
         `SerrePositivity.CategoryTheory.Enriched,
         `SerrePositivity.CategoryTheory.RelativeArrow,
         `SerrePositivity.CategoryTheory.MorphismProperty.UnderFactorization,
