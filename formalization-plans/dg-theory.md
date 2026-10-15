@@ -2238,3 +2238,36 @@ Checks.ConeContractible・StageSix・既存Spectra.StageTwoの同時ビルドは
 依存を再ビルドして同じ受入入口を再検証し、直接実行の主要8宣言を再監査した。
 すべて標準公理のみ。累計953宣言。並行変更されたComplexes.Curryingは編集していない。
 U10全受入は未完。次は標準coneと同型な三角形のクラスについて既存の補完・収縮を運ぶ。
+
+
+### 13.66 U10t4：coneによる三角形のクラスと四つの条件
+
+`Module/ContractibleTriangleIso.lean`は恒等coneの収縮を第三対象の同型として用い、
+自明三角形と標準恒等cone三角形を比較する。対象を明示した独立定義にして、
+大きな存在命題内でconeの対象定義を再展開することを避けた。
+`Module/DistinguishedTriangles.lean`は標準cone三角形と同型な三角形を
+`moduleDistinguishedTriangles`として定義する。
+このクラスの同型閉性、任意のK(D)の射を三角形へ延長できること、
+すべてのcontractible triangleが属すること、任意の可換squareを三角形の射へ補完できることを証明した。
+補完は§13.64の標準三角形での補完を両側の三角形同型で共役して得る。
+第一射と第二射の合成が零となることも、contractible triangleからの補完で導いた。
+
+受入入口4本（ConeHomotopyDesc・HomotopyConeTriangle・ConeContractible・DistinguishedTriangles）と
+StageSix・既存Spectra.StageTwoの最終同時ビルドは成功（2529 jobs）。
+主要8宣言を含む今回の主要36宣言の直接監査は標準公理のみ。累計961宣言。
+担当Leanのsorry/admit/新規axiomは0件。担当差分の空白検査も成功。
+最終の全体文書検査は担当外のPaper.Section5.SelectedParameterPositivityの未生成oleanで停止した。
+今回も全体文書検査を成功とは扱わない。
+
+U10全受入は未完で、現時点ではPretriangulated/Triangulatedのインスタンスを置いていない。
+次の実装は以下の型を主な入口とする。
+
+1. 全dg自然な片側shiftのHom要素を構成し、Mathlibの`Cochain.leftShift`との成分比較を証明する。
+2. 任意の閉零射f:M→Nについて、K(D)の`(moduleHomotopyConeTriangle f).rotate`と
+   `moduleHomotopyConeTriangle (moduleConeInr f)`の同型を構成する。
+   元の複体の回転比較の順・符号・収縮を各評価で照合し、全dg自然なHom要素として証明する。
+3. 三角形のshift・回転閉性を完成させてPretriangulatedを構成し、八面体条件を証明する。
+4. acyclic部分圏の三角閉性、Verdier商と指定quasiIso局所化の比較、D(D)の三角構造、
+   主局所化関手と一対象A比較の三角性を完成させる。
+
+共有モデル構造・Quillen・転送・SM7の新規不足要求はなく、これらを複製していない。
