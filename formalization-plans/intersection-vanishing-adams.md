@@ -5016,7 +5016,7 @@ R12–R20 のコードをコミットした後、以下をすべて確認した�
 | R39a | 重みの積の基本演算を重み分解・半局所化から分離 | 完了：WeightProductの証明本文を保ち、利用先と既存監査でWeightDecompositionを明示import。CupVanishingまで3345 jobs、基本5宣言・既存射影と重み分解の公理監査、新しい依存ゲートが成功。ログ `/tmp/adams-r39a-{build,basic-audit,projectors-audit}.log` |
 | R39b | K₀・G₀ の係数拡大による右完全性の共通化 | 完了：CoefficientExactnessの一般補題を3箇所で共用し、平坦性を追加しない。K₀係数局所化まで3246 jobs、専用4宣言・既存局所化の公理監査、係数基盤の独立性を含む全依存ゲートが成功。ログ `/tmp/adams-r39b-{build,audit,localization-audit}.log` |
 | R40a | 一般テンソル写像の13補題を共通の線形性基盤へ集約 | 完了：13公開シグネチャ・11証明本文を維持し、有限和2補題はmathlibから導出。両固有部分のテンソル類・二乗shuffle・DG閉構造・導来対称構造2887 jobs、共通13宣言と三乗射影10宣言の公理監査、対合依存を禁じる追加ゲートが成功。ログ `/tmp/adams-r40a-{build,common-audit,cubic-audit}.log` |
-| R40b | 空の台の係数付きK₀の零性を基本APIへ移動 | 未着手：Adams側の旧名を維持し、零テンソルの既存インスタンスを利用する |
+| R40b | 空の台の係数付きK₀の零性を基本APIへ移動 | 完了：SupportedCoefficientsの基本補題を零テンソルの既存インスタンスから導出。Adams側の旧名と仮定を保持。CupVanishingまで3345 jobs、基本補題・旧入口を含む半局所重みの公理監査、全依存ゲートが成功。ログ `/tmp/adams-r40b-{build,basic-audit,semilocal-audit}.log` |
 | R32 | 両 Adams 族・並行利用先・公開消滅定理の統合検証 | 未着手：再監査の R33–R40 も含めて最後に実行 |
 
 R22 で追加する `--consumers` と `--cubic` は、対応する依存整理前には失敗することを

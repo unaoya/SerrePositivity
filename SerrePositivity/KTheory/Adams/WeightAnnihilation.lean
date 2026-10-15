@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.KTheory.Adams.WeightDefectLift
 public import SerrePositivity.KTheory.Adams.PolynomialNaturality
+public import SerrePositivity.KTheory.SupportedCoefficients
 
 /-! # The Adams weight polynomial annihilates supported K0 -/
 
@@ -16,10 +17,8 @@ namespace Adams
 variable {R : Type u} [CommRing R] {E : Type v} [CommRing E]
 
 lemma coefficient_empty_zero (x : K0WithSupport.Coefficients E
-    (⊥ : TopologicalSpace.Closeds (PrimeSpectrum R))) : x = 0 := by
-  induction x using TensorProduct.inductionOn with
-  | tmul a x => rw [K0WithSupport.eq_zero_of_empty_support x, tmul_zero]
-  | add x y hx hy => rw [hx, hy, add_zero]
+    (⊥ : TopologicalSpace.Closeds (PrimeSpectrum R))) : x = 0 :=
+  K0WithSupport.coefficient_eq_zero_of_empty_support E x
 
 variable [IsRegularLocalRing R] {p : ℕ}
 

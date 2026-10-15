@@ -15,6 +15,13 @@ variable {R S : Type u} [CommRing R] [CommRing S]
 namespace K0WithSupport
 abbrev Coefficients (Z : TopologicalSpace.Closeds (PrimeSpectrum R)) := E ⊗[ℤ] K0WithSupport Z
 
+/-- Extending coefficients preserves the zero group at empty support. -/
+lemma coefficient_eq_zero_of_empty_support
+    (x : Coefficients E (⊥ : TopologicalSpace.Closeds (PrimeSpectrum R))) : x = 0 := by
+  have : Subsingleton (K0WithSupport (⊥ : TopologicalSpace.Closeds (PrimeSpectrum R))) :=
+    ⟨fun x y => (eq_zero_of_empty_support x).trans (eq_zero_of_empty_support y).symm⟩
+  exact Subsingleton.elim x 0
+
 /-- Coefficient-linear maps are determined by supported perfect generators. -/
 lemma coefficientHom_ext {Z : TopologicalSpace.Closeds (PrimeSpectrum R)}
     {B : Type*} [AddCommGroup B] [Module E B]

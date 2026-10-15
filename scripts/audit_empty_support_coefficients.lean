@@ -1,0 +1,5 @@
+import SerrePositivity.KTheory.SupportedCoefficients
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.K0WithSupport.coefficient_eq_zero_of_empty_support
+#print axioms SerrePositivity.K0WithSupport.coefficient_eq_zero_of_empty_support
