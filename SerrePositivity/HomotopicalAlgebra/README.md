@@ -480,3 +480,20 @@ solution-set入口にも接続する。これによりA0・A1の受入条件を�
 `check_weak_equivalences_accessible`は、独立した対象・射の宇宙、一般の逆像定理、
 最終入力だけからのA0/A1一括利用とsolution-set接続を検証する。最終五モジュール
 全21宣言は標準公理のみ。共有全体の監査は829宣言・60モジュールで成功した。
+
+## F0開始：Reedyの添字圏・対象・Δ（途中、2026-10-15）
+
+`HomotopyFunctionComplex/Reedy/Index.lean`はMathlibの`ReedyStructure`を使い、
+非恒等なdirect射が入るlatching圏と、非恒等なinverse射が出るmatching圏を構成する。
+一意分解から、両三角形の介在射が対応するdirect/inverseクラスに属することを証明し、
+次数が下がることと最小次数での空性を公開する。
+`Reedy/Objects.lean`は実際のcolimit/limit、自然な比較射、相対pushout/pullback比較射と
+その四つの可換公式を構成する。存在仮定は各添字圏に対して明示し、一般の源Cを
+SSetへ特殊化しない。RMapの値域としてSSetを使うことと、源Cの特殊化は別である。
+`Reedy/Simplex.lean`は既存の像分解からΔのepi/mono一意分解と次数公理を証明し、
+MathlibのReedy構造を実際に構成する。Δopはそのop構造である。
+
+`check_reedy_objects`は独立した宇宙、相対比較の可換性、Δ・Δopの次数0の空性、
+実際の一意分解を検証し、三モジュール全57宣言を標準公理のみで監査する。
+これだけでF0完了とはしない。有限添字の存在、次数帰納による拡張と関手的分解、
+Reedyモデル公理・resolution、およびF1〜F4は引き続き実装する。
