@@ -1,0 +1,12 @@
+import SerrePositivity.HomologicalAlgebra.CochainTensorCone
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.cochainTensorHomotopyEquiv
+assert_no_sorry SerrePositivity.cochainTensorShiftLeft_naturality
+assert_no_sorry SerrePositivity.cochainTensorShiftRight_naturality
+assert_no_sorry SerrePositivity.cochainTensorConeLeft
+assert_no_sorry SerrePositivity.cochainTensorConeLeft_mor₃
+assert_no_sorry SerrePositivity.coneTriangle_mor₃_f
+
+#print axioms SerrePositivity.cochainTensorHomotopyEquiv
+#print axioms SerrePositivity.cochainTensorConeLeft_mor₃

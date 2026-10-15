@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Complexes.ConeHom
-public import SerrePositivity.PerfectComplex.TensorCone
+public import SerrePositivity.HomologicalAlgebra.CochainConeTriangle
 
 /-! # cone の connecting map の全次数自然性 -/
 @[expose] public section
