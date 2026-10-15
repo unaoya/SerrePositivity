@@ -1380,3 +1380,29 @@ K(D)/D(D)の三角構造とVerdier商比較、余積・局所小性の宇宙、�
 直接実行の主要31宣言は標準公理の範囲内。累計576宣言。
 U10全受入は未完。次は可算cell列の各商とfiltrationの埋込みを確定し、
 初期diskのsphere分解と商の自由性、semifreeのHom計算へ進む。
+
+
+### 13.29 U10a8：cell列の商・filtrationの包含と網羅性
+
+`Module/ResolutionGradedSteps.lean` は各kernel cell付加について全次数の分裂と真のcokernelを
+公開する。商の対象は `moduleKernelCellSource A D f` の+1 shiftである。
+`moduleKernelCellStepι_mono` と `moduleResolutionTransition_mono` により付加はmono。
+可算列の任意の有限段間の射について、主圏のmonoと全評価次数のmonoを証明した。
+
+`moduleResolutionCandidateι_degreewiseMono` はfiltered余極限の具体的表示と
+有限段間のmono性を使い、各有限段の余極限候補への射が全評価次数でmonoであることを証明する。
+`moduleResolutionCandidateι_mono` は主dg加群圏のmono性。
+`moduleResolutionCandidate_element_rep` は各評価次数の任意の要素が有限段の像に属することを証明する。
+従って可算cell列は包含を持つ網羅的filtrationとなる。
+
+受入入口 `Checks/ResolutionGradedSteps.lean` は各商の主圏での普遍性、分裂、
+任意の有限段間と余極限への包含、全評価次数のmono、網羅性を検証する。
+この入口・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3206 jobs）、警告なし。
+直接実行の主要10宣言は標準公理のみ。累計586宣言。
+担当Lean範囲のsorry/admit/新規axiomは0件、文書検査は21 Markdown/311参照で0 failures。
+
+U10全受入は未完。semifree性の残る具体的証明は、初期自由disk段を自由sphereの二段に分解し、
+後続商 `(∐ freeSphere)[1]` を自由sphereの余積として主dg加群圏で同定すること。
+それらの証明を伴ったsemifree filtrationと、任意加群への既存準同型射を結び付ける。
+続いてHom endのacyclic性・導来Homと選択独立性、三角構造・Verdier商、余積・局所小性、
+一対象比較の三角形/余積保存を完成する。共有一般論の重複はなく、D4m条件は§13.23を維持する。
