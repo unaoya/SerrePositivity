@@ -4490,3 +4490,34 @@ CochainTensorLinear、IdempotentDecomposition、InvolutionDecomposition、CubicA
 
 分母1のraw δ包比較の9公開宣言についてpure B4監査も成功。依存は標準3公理のみ。
 全体ビルドは上記の共有失敗の終端記録と区別する。
+
+### 次工程の登録：G7を明示した全源評価環へのTor移送
+
+BS専用`DeltaPDivisionSourceColimitTor.lean`で、具体的な源有限商図式F、α:P→L、
+βで作用するAについて、標準Mathlibクラス
+`PreservesColimit F ((ModuleCat.extendScalars α).leftDerived (i+1))`
+を明示的な入力とした全源評価環Aの正次数Tor消滅を証明する。
+証明済みFの標準colimit≃Aを実leftDerivedへ写し、既存preservesColimitIsoで
+各有限源商のTorのcolimitへ移して消滅を示す。
+これはG7の交換入力に相対的な接続定理であり、G7受領や無条件Tor消滅としては数えない。
+新しい公理・引用・Tor定義を追加せず、共通APIが揃ったとき適用箇所が正確に確定する形にする。
+G7を待つのはこの交換入力の解消だけであり、通常テンソル積とrawδ包の標準比較などは独立に進める。
+
+## B4-6：源有限グラフ商の標準colimitは実評価環A（2026-10-15）
+
+`DeltaDivisionSourceFiniteColimit.lean`で、源有限グラフイデアルを分母1の既存有限δ関係イデアルに同定し、
+ker β=iSup有限グラフイデアルとその単調性を証明した。
+β.toAlgebraによりAの具体的なP代数構造を明示し、実商Q_Nと標準線形商射の逐次図式を構成した。
+各Q_N→Aのβ評価射からなる標準余錐について、任意余錐の段に依らない源環上の線形写像を
+既存Submodule.liftQとLinearMap.quotKerEquivOfSurjectiveで降下し、IsColimitを証明した。
+当初の具体的filtered-colimit代表元の計算に代え、既存の商核同型と余錐の普遍性を直接使った。
+一般のTor/colimit基盤や新しいcolimit定義を重複構築していない。
+実圏論的colimit≃Aの同型と、各有限段の標準射上の式も公開した。
+p正則性・y正則性・ghost単射・完備性は不要。
+
+14公開宣言の対象3820ジョブ・pure B4監査・全体4968ジョブ成功。
+新sorry・公理・外部引用なし。pure監査の依存は標準3公理のみ。
+共有の既存Inputs/SerrePositivityのsorry警告は別扱い。
+前回の共有.olean欠落による全体失敗は、今回の全体ビルドでは再現しなかった。
+全源AへのTor消滅の無条件移送はまだG7を待つ。
+一般B4、原典の導来δpushout比較、分冪包比較、CFF根付き拡大は未完成。
