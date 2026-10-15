@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.UnitHomologyNaturality
 import SerrePositivity.HomologicalAlgebra.DerivedUnitHomology
 import SerrePositivity.HomologicalAlgebra.KProjectiveCohomologyLinear
 import SerrePositivity.HomologicalAlgebra.UnitLinearHomComplex
@@ -1108,3 +1109,11 @@ assert_no_sorry SerrePositivity.derivedUnitHomologyLinearEquiv
 assert_no_sorry SerrePositivity.derivedUnitH0HomLinearEquiv
 #print axioms SerrePositivity.derivedUnitHomologyLinearEquiv
 #print axioms SerrePositivity.derivedUnitH0HomLinearEquiv
+
+-- G2-5b-b4: actual cochain maps and normalized cocycle-class naturality.
+assert_no_sorry SerrePositivity.unitHomClassMapData
+assert_no_sorry SerrePositivity.unitHomClassMapData_cycles
+assert_no_sorry SerrePositivity.unitHomClassMapData_class
+assert_no_sorry SerrePositivity.unitHomologyLinearEquiv_map
+assert_no_sorry SerrePositivity.unitCochainHomologyDerivedLinearEquiv_naturality
+#print axioms SerrePositivity.unitCochainHomologyDerivedLinearEquiv_naturality
