@@ -3478,6 +3478,17 @@ K₀ の類への移送と重みつき乗法性は次の小段。
   `lake env lean scripts/audit_adams_tensor_scalar_coordinates.lean` の十二定数の監査が成功。
   公理は標準三公理のみ。Koszul の双対座標へ次に特殊化する。
 
+### S10.8c.1b.3c.2：八つの生成元に双対な座標と二十の合成式
+
+- `Adams/KoszulCubeCoordinates` は一般の三同次成分のスカラー座標を
+  Koszul の八つの同次生成元へ特殊化し、その双対座標を定義する。
+- 各次数で生成元と座標を合成すると、対応する対では恒等、異なる対では零。
+  二十の合成式とそれぞれの reassoc 版を公開した。
+- `lake build SerrePositivity.KTheory.Adams.KoszulCubeCoordinates` が成功（2820 jobs）。
+  `lake env lean scripts/audit_adams_koszul_cube_coordinates.lean` の五十一定数の監査が成功。
+  公理は標準三公理のみ。双対性を仮定せず、選んだ同次成分の座標計算で証明している。
+- 次に生成元による外延性とこれらの合成式を合わせ、順序つき標準基底の両逆性を証明する。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
