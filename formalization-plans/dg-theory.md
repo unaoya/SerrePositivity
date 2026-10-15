@@ -3299,3 +3299,24 @@ U11d全受入はまだ未完。左右の各変数のdg関手は得たが、両�
 Yoneda同型の豊穣自然性への束ね、bimodule合成の残る作用、一対象Aの既存tensor比較が残る。
 次は左右交換則をcochainの生成元上で証明し、実際のbimodule合成へ接続する。
 U11e・U12〜U17・D4mも継続対象。共有ルート・共有一般論・並行作業ファイルは変更していない。
+
+
+### 17.27 U11d8：左右の全次数交換と固定代表対象のYoneda豊穣自然性
+
+`Tensor/Interchange.lean`は右Hom次数p・左Hom次数qの作用の交換則をcochainの等式として証明した。
+生成元でのq(p+r)=pq+qrから交換符号(-1)^(pq)が得られ、微分や次数零の条件を課さない。
+`Tensor/YonedaEnriched.lean`は§17.22の生成元比較を、§17.26のdg関手の主Hom写像へ接続した。
+固定代表対象zについて、両Yoneda評価が主Hom複体全体と可換であるchain mapの等式を公開する。
+Mathlib EnrichedNatTrans.out（閉零の通常自然性）だけで全次数自然性を代用していない。
+
+Checks.BalancedTensorEnrichedNaturality・Enrichedと既存StageSeven・Spectra.StageTwoの
+同時ビルドは成功（2680 jobs、終了コード0、追加ソースの警告なし）。
+主要3宣言の直接実行も終了コード0、標準公理のみ。監査累計1380宣言。
+次数1/1の左右交換の例、任意可換環・独立対象宇宙の全Hom自然性を検査した。
+担当差分のgit diff --checkも成功。
+
+U11d全受入はまだ未完。次はbimoduleの転置した作用を左加群の全Hom endへ構成して、
+実際のbimodule合成の残る作用へ左右dg関手と交換則を適用する。
+代表対象zの変数の自然性と一対象Aの既存cochainTensor比較も別途確認する。
+U11eの単位/結合coherence・随伴、U12〜U17・D4mも継続対象。
+共有ルート・共有一般論・並行作業ファイルは変更していない。
