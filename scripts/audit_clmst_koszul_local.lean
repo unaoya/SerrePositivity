@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.KoszulBaseChangeNaturality
 import SerrePositivity.HomologicalAlgebra.CochainConeAdditiveNaturality
 import SerrePositivity.HomologicalAlgebra.GeneralKoszulLocalCohomology
 import SerrePositivity.HomologicalAlgebra.ProjectiveExtColimitExact
@@ -917,3 +918,12 @@ assert_no_sorry SerrePositivity.cochainConeAdditiveIso_hom_naturality
 
 #print axioms SerrePositivity.cochainConeAdditiveIso_inv_naturality
 #print axioms SerrePositivity.cochainConeAdditiveIso_hom_naturality
+
+-- KL6-a3-ii: canonical Koszul base change respects actual power transitions.
+assert_no_sorry SerrePositivity.baseChangeKoszulIso_mapOfMul
+assert_no_sorry SerrePositivity.koszulComplexMapOfMul_congr
+assert_no_sorry SerrePositivity.baseChangePowerKoszulIso
+assert_no_sorry SerrePositivity.baseChangePowerKoszulIso_transition
+
+#print axioms SerrePositivity.baseChangeKoszulIso_mapOfMul
+#print axioms SerrePositivity.baseChangePowerKoszulIso_transition
