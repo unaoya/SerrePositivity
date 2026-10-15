@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.FiniteLengthValue
 public import SerrePositivity.CategoryTheory.AlternatingSum
+public import SerrePositivity.CategoryTheory.FiniteSupportBounds
 
 public import SerrePositivity.HomologicalAlgebra.ConeLES
 public import Mathlib.Tactic.LinearCombination
@@ -68,11 +69,9 @@ lemma homologyLength_support_finite (P : CochainComplex (ModuleCat.{u} R) ℤ)
     (hP : ∃ a b : ℤ, ∀ i, (i < a ∨ b < i) → IsZero (P.X i)) :
     (Function.support fun i ↦ (Module.length R (P.homology i)).toNat).Finite := by
   obtain ⟨a, b, hab⟩ := hP
-  apply (Set.finite_Icc a b).subset
+  apply finiteSupport_of_bounded_zero _ a b
   intro i hi
-  by_contra hn
-  exact hi (length_toNat_eq_zero_of_isZero
-    (isZero_homology_of_isZero_X _ _ (hab i (by simp only [Set.mem_Icc] at hn; omega))))
+  exact length_toNat_eq_zero_of_isZero (isZero_homology_of_isZero_X _ _ (hab i hi))
 
 /-- ホモトピー同値な複体はホモロジーが同型なので、長さの総和は等しい。 -/
 lemma homologyLengthSum_eq_of_homotopyEquiv {P P' : CochainComplex (ModuleCat.{u} R) ℤ}

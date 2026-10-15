@@ -5,6 +5,7 @@ public import SerrePositivity.CommutativeAlgebra.SamuelModuleProperties
 public import SerrePositivity.CommutativeAlgebra.Koszul
 public import SerrePositivity.CommutativeAlgebra.PolynomialFiniteDifference
 public import SerrePositivity.CategoryTheory.AlternatingSum
+public import SerrePositivity.CategoryTheory.FiniteSupportBounds
 public import Mathlib.Algebra.FiniteSupport.Basic
 
 /-! # 有限 adic 商の項の Euler 和
@@ -41,12 +42,8 @@ lemma finiteSupport_termLength (P : CochainComplex (ModuleCat.{u} R) ℤ)
     (hb : ∃ a b : ℤ, ∀ q, q < a ∨ b < q → IsZero (P.X q)) :
     Function.HasFiniteSupport (termLength P I n) := by
   obtain ⟨a, b, hab⟩ := hb
-  apply (Set.finite_Icc a b).subset
-  intro q hq
-  by_contra hnot
-  exact hq (termLength_eq_zero_of_isZero P I n q (hab q (by
-    simp only [Set.mem_Icc] at hnot
-    omega)))
+  exact finiteSupport_of_bounded_zero _ a b
+    (fun q hq => termLength_eq_zero_of_isZero P I n q (hab q hq))
 
 
 /-- 二つの adic 商の有限性だけから、錐の項の長さを計算する。

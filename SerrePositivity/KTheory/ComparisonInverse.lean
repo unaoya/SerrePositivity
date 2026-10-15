@@ -139,13 +139,9 @@ lemma supportedHomologyEuler_hasFiniteSupport (X : SupportedPerfectHomotopyOn Z)
     Function.HasFiniteSupport (fun q : ℤ => ((q.negOnePow : ℤˣ) : ℤ) •
       G0WithSupport.mk (supportedPerfectHomology Z X q)) := by
   obtain ⟨a, b, hab⟩ := supportedPerfectHomology_bounded Z X
-  apply (Set.finite_Icc a b).subset
+  apply finiteSupport_of_bounded_zero _ a b
   intro q hq
-  by_contra hn
-  exact hq (by
-    change ((q.negOnePow : ℤˣ) : ℤ) • G0WithSupport.mk (supportedPerfectHomology Z X q) = 0
-    rw [G0WithSupport.mk_of_isZero _
-      (hab q (by simp only [Set.mem_Icc] at hn; omega)), smul_zero])
+  rw [G0WithSupport.mk_of_isZero _ (hab q hq), smul_zero]
 
 /-- A perfect class is the alternating sum of its homology resolution classes. -/
 lemma k0Class_eq_sum_resolutionClasses (X : SupportedPerfectHomotopyOn Z) :
