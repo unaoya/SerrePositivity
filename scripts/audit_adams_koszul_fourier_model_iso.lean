@@ -1,0 +1,17 @@
+import SerrePositivity.KTheory.Adams.KoszulCubeFourierModelIso
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeFourierModelMap_f_isIso
+#print axioms SerrePositivity.Adams.oneKoszulCubeFourierModelMap_f_isIso
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeFourierModelMap_isIso
+#print axioms SerrePositivity.Adams.oneKoszulCubeFourierModelMap_isIso
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeFourierModelIso
+#print axioms SerrePositivity.Adams.oneKoszulCubeFourierModelIso
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeFourierModelIso_hom
+#print axioms SerrePositivity.Adams.oneKoszulCubeFourierModelIso_hom
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeFourierModelIso_rotation
+#print axioms SerrePositivity.Adams.oneKoszulCubeFourierModelIso_rotation
