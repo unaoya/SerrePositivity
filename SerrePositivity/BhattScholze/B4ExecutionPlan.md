@@ -3914,3 +3914,31 @@ rawδ評価とA[1/p]→B[1/p]の合成が標準p局所化射となる式も供�
 標準3公理のみ、新sorry・公理・引用なし。
 次は登録済みDeltaPDivisionRawEmbeddingの単射性と具体的像部分環表示を検証する。
 分冪包比較・実導来pushoutの離散性・CFF根付き拡大・一般B4は未完成。
+
+## B4-6：raw一元δ包のA[1/p]への具体的埋め込みと像部分環（2026-10-15）
+
+`DeltaPDivisionRawEmbedding.lean`で、一般元族のraw包Bがp正則であれば、
+具体的δ評価deltaPDivisionToAway D aが単射となることを証明した。
+前工程の局所化比較と、p冪ねじれの不存在から標準局所化射の単射性を使った。
+一元a=φ(y)について19c45e1のraw p正則性を供給し、実際の像部分環との環同型と
+元の係数の標準像を保つ式を公開した。像のδ安定性も証明した。
+一般元族y_sのφ(y_s)/pからδ(y_s)を引いた元が、A[1/p]内でy_s^p/pへ写る式を証明した。
+源がp進完備な入口では単元δ(p)の指定を内部で供給する。ghost単射は引き続き明示する。
+8公開宣言の対象3812ジョブ、pure B4監査成功。標準3公理のみ、新sorry・公理・引用なし。
+今回の全体ビルドは共有KoszulCubeFourierModelClass.lean:38のrewrite失敗で終了した。
+ログは/tmp/bs-p-localization-full.log。担当外を修正していない。
+局所化工程77c037eで「実行中」と記録した全体ビルドの最終状態もこの失敗である。
+分冪包との一致・実導来pushoutの離散性・CFF根付き拡大・一般B4は未完成。
+
+### 次の代数入力の登録
+
+BS専用予定`DeltaPDivisionWittResidueSolution.lean`で、通常環射q:A→Bとq(y)=0に対し、
+既存deltaWittGhostVector D yをqで移したWitt元の係数を一段ずらした具体的Witt元tを構成する。
+既存Witt Frobenius/Verschiebung恒等式と既存deltaWittGhostVector_frobeniusを使い、
+p*t=WittVector.map q (deltaWittGhostVector D (φ(y)))を全Witt係数で証明する。
+源Aのghost単射を明示し、終域Bのδ構造や完全性は要求しない。
+源がp正則なら第0係数t_0=q(δy)も既存の低次係数APIから供給する。
+これはq:A→A/(p,y)を含む具体的なWitt p除算方程式の解である。
+この段階でrawδ包→A/(p,y)の環射や分冪包比較を得たとはしない。
+全δ反復関係を消す通常評価への移送は、既存の逆Witt座標・関係イデアル比較で
+別途確認する候補工程とし、成立の検証前に代替経路を採用したとは数えない。
