@@ -1862,3 +1862,28 @@ U10全受入は未完。次はこのquasiIsoのcycle持ち上げと境界反映�
 全dg自然なホモトピーまでの比較射とその一意性を得る。
 それを射影解像度の選択独立性と局所化内の導来Hom計算へ接続する。
 三角構造・Verdier商・導来余積/局所小性・一対象比較の保存性も引き続き残る。
+
+
+### 13.49 U10b6e：ホモトピーまでの持ち上げ・一意性とK(D)のHom
+
+`Complexes/QuasiIsoCycles.lean` はacyclic coneの境界原像を二つの射影で読むことで、
+quasiIsoに沿うcycleの持ち上げ（境界まで）と境界の反映を、証人付きの存在命題として証明する。
+`Module/HomCycles.lean` は既存closedHomEquivを再利用し、閉次数零要素からの主加群射の構成と、
+cycle上の後合成が通常の加群射の合成と一致することを公開する。
+
+`Derived/ProjectiveHomotopyLifting.lean` は射影的始域TとquasiIso f:M→Nについて、
+任意のg:T→Nに対するs:T→Mと全dg自然な `ModuleHomotopy (s≫f) g` の存在を証明する。
+また後合成した二射がその意味でホモトピックなら元の二射もホモトピックであることを証明する。
+`Derived/ProjectiveHomotopyHom.lean` はこの存在と反映を境界商へ運び、
+K(D)の `Hom(T,M) → Hom(T,N)` が全単射であることを証明する。
+射影的対象間のquasiIsoはK(D)で同型となることも、実際の逆射を持ち上げて証明した。
+
+`Checks/ProjectiveHomotopyLifting.lean` は全dg自然な持ち上げ、K(D)のHomの全単射性、
+射影的対象間のquasiIsoの同型性を検証する。
+同入口・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3258 jobs）。
+直接実行の主要13宣言は標準公理のみ。累計808宣言。
+担当Leanのsorry/admit/新規axiomは0件。文書検査は§13.46で全体成功を確認した。
+
+U10全受入は未完。次は二つの射影解像度の比較射の存在・一意性と三つの比較の整合性を公開する。
+K(D)での比較を指定局所化内の導来Hom計算へ接続する必要があり、
+三角構造・Verdier商・導来余積/局所小性・一対象比較の保存性も残る。
