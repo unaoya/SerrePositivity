@@ -2948,3 +2948,17 @@ Checks.TensorCompositionではp=s=1,q=r=0で通常順に負号が現れる例を
 監査累計1203宣言。文書検査の直近実行は22 Markdown・311 exposition参照、失敗0件。
 担当Leanのsorry/admit/新規axiomは0件、担当差分のwhitespace検査も成功。
 次の未完単位はU11bの積dg圏関手とcurried作用族の比較。U17までの目標は引き続き有効である。
+
+
+### 17.7 U11b6：因子の包含と和次数を指定する合成式
+
+`Functor/Components.lean`はHomのchain map、単位cycleの保存、全斉次合成の保存から
+Mathlib dg関手を作る構成子と、既存dg関手の斉次単位・合成式を公開した。
+`Category/TensorReindex.lean`は四つの因子次数に加え、四つの中間和次数を指定する合成式。
+単に和次数をsimpで書き換える際の依存型のtransportを避け、呼出側の次数の等式を保持する。
+`Category/TensorInclusions.lean`は既存freeUnitInsertを再利用して第一・第二因子のHom射を構成し、
+全次数単位・合成を確認したMathlib dg関手として両包含を公開した。
+
+Checks.TensorInclusionsとTensorMixedの同時ビルドは成功（1793 jobs）。
+本単位の直接監査11宣言は終了コード0、標準公理のみ。監査累計1214宣言。
+U11bの全受入は未完。次は混合合成の因子分解と、tensor積上の関手からの作用族の抽出。
