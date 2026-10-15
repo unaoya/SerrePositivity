@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.DerivedAlgebraMorphisms
 import SerrePositivity.HomologicalAlgebra.DerivedAlgebraObjects
 import SerrePositivity.HomologicalAlgebra.DerivedAlgebraAssociativity
 import SerrePositivity.HomologicalAlgebra.CochainDiscreteAlgebra
@@ -949,3 +950,15 @@ assert_no_sorry SerrePositivity.boundedAboveDerivedTensorAlgebra_X
 #print axioms SerrePositivity.boundedAboveDerivedAlgebraMonObj
 #print axioms SerrePositivity.boundedAboveDerivedAlgebra
 #print axioms SerrePositivity.boundedAboveDerivedTensorAlgebra
+
+-- G2-5a-ii: actual algebra maps and the standard two factor maps.
+assert_no_sorry SerrePositivity.boundedAboveDerivedAlgebraMap
+assert_no_sorry SerrePositivity.boundedAboveDerivedTensorAlgebraLeft
+assert_no_sorry SerrePositivity.boundedAboveDerivedTensorAlgebraRight
+assert_no_sorry SerrePositivity.boundedAboveDerivedAlgebraMap_hom
+assert_no_sorry SerrePositivity.boundedAboveDerivedTensorAlgebraLeft_hom
+assert_no_sorry SerrePositivity.boundedAboveDerivedTensorAlgebraRight_hom
+
+#print axioms SerrePositivity.boundedAboveDerivedAlgebraMap
+#print axioms SerrePositivity.boundedAboveDerivedTensorAlgebraLeft
+#print axioms SerrePositivity.boundedAboveDerivedTensorAlgebraRight
