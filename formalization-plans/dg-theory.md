@@ -2486,3 +2486,23 @@ Checksの直接実行で主要7宣言を監査し、標準公理のみ。累計1
 U10全受入は未完。次は二つの三角形射の可換式と合成cone三角形を接続し、
 このK(D)同型からそのdistinguished性と八面体公理を証明する。
 逆回転閉性・Pretriangulatedの受入検証も引き続き必要である。
+
+
+### 13.79 U10t13：K(D)の整数shift閉性とPretriangulated構造
+
+`Module/ConeShiftTriangle.lean`は§13.75の実際の加群三角形の同型を、商関手のshift比較を
+含めてK(D)へ移す。標準cone三角形の同型閉包が任意整数の三角形shiftで閉じることを証明した。
+`Module/Pretriangulated.lean`は二回の回転と負shiftの既存比較から逆回転閉性を得て、
+回転の同値条件を証明する。既存の同型閉性・自明三角形・射の完成・三角形射の補完と合わせ、
+`moduleHomotopyPretriangulated`を登録した。distinguished三角形のクラスは元の標準coneの同型閉包と
+定義的に同じであることを明示した。八面体を証明する前にIsTriangulatedは宣言しない。
+
+K(D)の標準cone shift同型は、一般の三角形・関手に関する補助構成子から得られる型を保持する。
+shift閉性のカーネル検査は豊穣coneと商shiftの型変換を含むため、その宣言だけ
+maxHeartbeats=800000を指定した。他の宣言やビルド全体の上限は変更していない。
+
+Checks.Pretriangulated・Checks.ConeCompositionHomotopy・StageSix・既存Spectra.StageTwoの
+同時ビルドは成功（2552 jobs）。Checksの直接実行で主要8宣言を監査し、標準公理のみ。累計1096宣言。
+U10全受入は未完。次は合成cone三角形のdistinguished性からK(D)の八面体公理を証明し、
+acyclic部分圏の三角閉性・Verdier商比較・D(D)の三角構造と局所化および一対象比較の三角性へ進む。
+共有モデル圏系列への新しい不足要求はない。
