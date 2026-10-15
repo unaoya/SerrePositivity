@@ -21,6 +21,7 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameOverFunctor,
     `SerrePositivity.HomotopicalAlgebra.Diagram.ColimitFrame,
     `SerrePositivity.HomotopicalAlgebra.Diagram.ColimitMapComparison,
+    `SerrePositivity.HomotopicalAlgebra.Diagram.ProjectiveCofibrations,
     `SerrePositivity.HomotopicalAlgebra.Under.ModelCategory,
     `SerrePositivity.HomotopicalAlgebra.Pointed.Basic,
     `SerrePositivity.HomotopicalAlgebra.Pointed.SmashModel,
