@@ -1938,3 +1938,27 @@ K(D)での解像度比較だけでこの関手の選択独立性が完了した�
 局所化内のHom計算・始域についての関手性、K(D)/D(D)の三角構造・Verdier商比較、
 導来余積・局所小性・一対象A比較の三角形/余積保存も残る。
 共有一般モデル圏/Quillen/転送/SM7に新しい不足API要求はない。
+
+
+### 13.52 U10b7b：前合成のホモトピーと射影的対象間のquasiIso
+
+`Module/Precomposition.lean` は豊穣合成を転置し、全次数の前合成をHom複体間のcochainへ送る。
+次数pの前合成は入力次数qについて豊穣順のKoszul符号を持つ。
+微分と可換すること、閉次数零では既存の前合成と一致することを証明し、
+`ModuleHomotopy` の像を通常のHom複体間のchain homotopyとして構成した。
+
+`Derived/ProjectivePrecomposition.lean` は射影的対象間のquasiIsoをK(D)の同型として扱い、
+その逆射を主加群圏へ取り出す。両逆の等式を全dg自然なホモトピーへ戻して前合成に運び、
+`moduleProjectivePrecomposeHomotopyEquiv` を構成する。
+従って任意Tに対し前合成 `Hom_D(N,T)→Hom_D(M,T)` は真のホモトピー同値でありquasiIsoである。
+Tのacyclic性や射影性、D(A)の選択は不要である。
+
+`Checks/ProjectivePrecomposition.lean` はホモトピーの像とホモトピー同値・quasiIsoを検証する。
+同入口・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3260 jobs）。
+直接実行の主要7宣言は標準公理のみ。累計825宣言。
+担当Leanのsorry/admit/新規axiomは0件、担当diff --checkは成功。
+
+U10全受入は未完。次は前合成の自然変換を指定D(D)へ延長し、
+比較射が準同型なら導来Hom関手間の自然同型になることと、ホモトピーによる独立性を証明する。
+局所化内のHom計算・始域についての関手性、三角構造・Verdier商・導来余積/局所小性・
+一対象比較の保存性も残る。
