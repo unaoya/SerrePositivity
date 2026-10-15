@@ -7259,3 +7259,74 @@ relative trivial fibrationと「Reedy fibrationかつobjectwise W」の二つの
 その後、Reedyモデル構造を構成し、必要な定数図式の関手的resolutionを得る。
 F1のRMap・不変性・fibrancy・π₀比較、F2の選択比較、F3の共通基数、F4のfiltered colimitと
 homotopy (co)limit比較も引き続きすべて依頼範囲である。
+
+
+## 173. F0進捗：objectwise Wとの同値とΔ・ΔopのReedyモデル構造（2026-10-15）
+
+F0〜F4全体の依頼を維持している。§172の残項目のうち、相対trivial射とobjectwise Wの
+二つの同値、およびΔ・Δop上の実際のReedyモデル構造を完成した。F0のresolutionの
+構成は未完了であり、F0全体やF1〜F4の完成とはしない。
+
+### 173.1 境界の添字圏と入れ子の比較
+
+`CategoryTheory/CommaIdentities`はOver/Underの射の変動する辺が恒等射なら、三角形の
+射自体も恒等射になることを証明する。`Reedy/OneSided`は、非恒等射が次数を厳密に
+下げる圏・上げる圏に実際のReedy構造を構成し、因子分解データの一意性も証明する。
+`IndexReedy`はこれをmatching・latchingの添字圏へ適用する。コミット：`a308b00`。
+
+`NestedMatching`と`NestedLatching`は、境界内の対象で再び境界を取る添字圏と、元の
+Reedy圏でその対象の境界を取る添字圏との圏同値を構成する。合成する関手、射の逆像、
+完全忠実性、本質的全射性を証明し、元のJへの射影とも可換になる。対象の符号化だけの
+全単射ではない。Δ・Δopの両側で利用例を検証した。コミット：`31506d4`。
+
+### 173.2 実際の相対射と境界評価への移送
+
+`MatchingRestriction`と`LatchingRestriction`は173.1の圏同値を極限・余極限へ移し、
+比較射の可換性と自然変換に対する自然性を証明する。引き戻し・押し出しの同型から、
+境界に制限した図式の相対射と、元の図式の相対射の実際のArrow同型を構成する。
+
+`EmptyBoundary`は空の境界では相対射が成分の射と同型になることを証明する。
+`BoundaryLifting`はこれと既存の全体のReedy持ち上げを使い、定数図式/極限の随伴と
+余極限/定数図式の随伴を通じて持ち上げ性を移す。次数の単射性は不要である。
+`BoundaryClasses`は、下位対象での相対右クラスからmatching評価の右クラスを、
+相対左クラスからlatching評価の左クラスを得る。値圏には有限極限・有限余極限と
+必要な元の境界の極限・余極限を要求し、無限の完備性は要求しない。
+ここまでのコミット：`102fac2`。
+
+### 173.3 objectwise Wとモデル公理
+
+`ObjectwiseTrivial`は、任意の自然数次数のReedy構造とモデル源Cについて、次を証明する。
+
+- relative trivial fibration ⇔ Reedy fibrationかつ各成分が弱同値。
+- relative trivial cofibration ⇔ Reedy cofibrationかつ各成分が弱同値。
+
+順方向では173.2による境界評価のtrivialクラスと引き戻し・押し出しを用いる。
+逆方向では次数の強帰納法で下位境界のtrivialクラスを得て、成分の弱同値から
+2-out-of-3により相対射の弱同値を証明する。これらの同値にも次数の単射性は不要である。
+
+`ModelCategory`は、この同値を既に構成した二つのReedy弱因子分解系へ適用する。
+objectwise Wの2-out-of-3とMathlibのモデル圏認識入口により、実際の`ModelCategory`
+データを構成する。全体の因子分解に使う次数関数の全単射性と、各境界の極限・余極限を
+要求する。`SimplexModelCategory`はΔ・Δopへ適用し、任意の`ModelCategory C`だけから
+両図式圏のReedyモデル構造を返す。弱同値・fibration・cofibrationが指定クラスに
+等しい六つの式も証明した。源の関手的因子分解は追加で仮定しない。
+
+### 173.4 検証と次の受入項目
+
+- 共有入口のビルド1656 jobsが成功。
+- `check_reedy_nested_boundaries`：全138宣言・10モジュールを監査。Δ・Δopそれぞれで
+  二つの源の弱因子分解系を境界評価へ移す八つの利用例が成功。
+- `check_reedy_model_category`：全34宣言・3モジュールを監査。源の仮定を
+  `ModelCategory C`だけとした両モデル構造、二つの同値の四利用例、戻り値を
+  インスタンスとして導入した際の弱同値・fibrationの判定を検証。
+- 共有基盤2063宣言・127モジュールの公理監査は標準公理のみ。
+- `check_reedy_relative_arrows`（173宣言）、`check_reedy_functorial_extension`（200宣言）、
+  `check_homotopical_foundations`、`check_spectra_stage2`、
+  `check_weak_equivalences_accessible`の回帰検証も成功。新規sorry・引用axiomはない。
+
+次は、実際のReedyモデル構造上で定数図式の必要なresolutionを構成し、F0の残条件を
+満たす。任意モデル源での通常の存在と、選んだ源の関手的因子分解データからの関手的
+構成の区別は引き続き維持する。A0のcombinatorialな源は後者のデータを供給できるが、
+F1の任意モデル源の契約をその場合だけへ狭めない。
+F1のRMap・不変性・fibrancy・π₀比較、F2の選択比較、F3の共通基数、F4のfiltered colimitと
+homotopy (co)limit比較は引き続きすべて未完了であり、依頼範囲に含む。

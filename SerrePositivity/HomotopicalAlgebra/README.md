@@ -668,3 +668,23 @@ retract閉性、全体の持ち上げ定理から、左右が相手の持ち上�
 
 objectwise Wとrelative trivial条件の同値、Reedyモデル公理・resolutionとF1〜F4は残る。
 今回の関手的分解によって、F1の任意モデル源という契約を追加仮定付きへ狭めない。
+
+
+## F0：Δ・ΔopのReedyモデル構造（resolutionは未完了、2026-10-15）
+
+`Reedy/IndexReedy`はmatchingの添字圏をinverse型、latchingの添字圏をdirect型の
+Reedy圏にする。`NestedMatching`・`NestedLatching`は入れ子の境界と元の対象の境界を
+圏同値で比較し、`MatchingRestriction`・`LatchingRestriction`は実際の相対射のArrow同型を
+与える。`EmptyBoundary`・`BoundaryLifting`・`BoundaryClasses`は全体のReedy持ち上げと
+随伴を通じ、下位の相対クラスを実際の境界評価へ移す。
+
+`ObjectwiseTrivial`はrelative trivial cofibration/fibrationを、Reedy cofibration/fibration
+かつobjectwise Wと同値にする。`ModelCategory`は二つの構成済み弱因子分解系から
+モデル公理を得る。`Reedy.simplexModelCategory`と`Reedy.simplexOpModelCategory`が任意のモデル源Cだけから
+両図式圏の実際のモデル構造を返す。関手的な源の因子分解や無限の完備性は要求しない。
+三クラスの一致も六つの式で証明した。
+
+共有入口1656 jobs、境界の138宣言・10モジュール、モデル構造の34宣言・3モジュールを
+検証。共有基盤2063宣言・127モジュールの監査は標準公理のみ。既存のReedy・共有基盤・
+スペクトル・弱同値accessibilityの回帰検証も成功した。詳細は計画§173を参照。
+F0には定数図式のresolutionが残る。F1〜F4も未完了で、全体の依頼範囲を維持する。
