@@ -1,7 +1,9 @@
 import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationTower
 import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionComparison
 import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Simplex
-import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DegreeFactorizationStep
+import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationSequence
+import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexFinite
+import Mathlib.AlgebraicTopology.ModelCategory.Basic
 import Lean.Util.CollectAxioms
 
 universe v u v' u'
@@ -61,6 +63,48 @@ example (j : J) (hinj : Function.Injective r.deg)
       (Functor.whiskerLeft (upperInclusion r (r.deg j)) τ) :=
   DegreeFactorizationStep.factorizationData r j hinj τ a q
 
+section Sequence
+open CategoryTheory.Limits
+variable [∀ j, HasColimitsOfShape (LatchingIndex r j) C]
+  [∀ j, HasLimitsOfShape (MatchingIndex r j) C] [HasPushouts C] [HasPullbacks C]
+  {left right : MorphismProperty C} (data : MorphismProperty.FunctorialFactorizationData left right)
+  (hinj : Function.Injective r.deg) (hsurj : Function.Surjective r.deg)
+  {F G : J ⥤ C} (τ : F ⟶ G)
+
+-- No degreewise diagram or factorization tower is an assumption here.
+example : MorphismProperty.MapFactorizationData ⊤ ⊤ τ :=
+  FactorizationSequence.factorizationData r τ hinj hsurj data.factorizationData
+
+example (n : ℕ) :
+    lowerMap r (Nat.le_succ n) ⋙
+        (FactorizationSequence.stage r τ hinj hsurj data.factorizationData (n + 1)).Z ≅
+      (FactorizationSequence.stage r τ hinj hsurj data.factorizationData n).Z :=
+  (FactorSuccessor.next r τ hinj data.factorizationData hsurj n
+    (FactorizationSequence.stage r τ hinj hsurj data.factorizationData n)).restriction
+
+example (n : ℕ) :
+    Functor.whiskerLeft (lowerInclusion r n)
+        (FactorizationSequence.factorizationData r τ hinj hsurj data.factorizationData).i =
+      (FactorizationSequence.stage r τ hinj hsurj data.factorizationData n).i ≫
+        ((FactorizationSequence.diagramTower r τ hinj hsurj data.factorizationData).restrictionIso n).hom :=
+  (FactorizationSequence.factorizationTower r τ hinj hsurj data.factorizationData).leftMap_restriction n
+end Sequence
+
+-- Both needed simplex directions work for an arbitrary model category, using
+-- only its finite limits and colimits and its ordinary factorization axiom.
+example [ModelCategory C] {F G : SimplexCategory ⥤ C} (τ : F ⟶ G)
+    : MorphismProperty.MapFactorizationData ⊤ ⊤ τ :=
+  FactorizationSequence.factorizationData simplex τ
+    (fun _ _ h ↦ SimplexCategory.ext h) (fun n ↦ ⟨SimplexCategory.mk n, rfl⟩)
+    (MorphismProperty.factorizationData (cofibrations C) (trivialFibrations C))
+
+example [ModelCategory C] {F G : SimplexCategoryᵒᵖ ⥤ C} (τ : F ⟶ G)
+    : MorphismProperty.MapFactorizationData ⊤ ⊤ τ :=
+  FactorizationSequence.factorizationData simplexOp τ
+    (fun _ _ h ↦ Opposite.unop_injective (SimplexCategory.ext h))
+    (fun n ↦ ⟨Opposite.op (SimplexCategory.mk n), rfl⟩)
+    (MorphismProperty.factorizationData (trivialCofibrations C) (fibrations C))
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -71,7 +115,9 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.TowerOfFunctor,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationTower,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionComparison,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DegreeFactorizationStep]
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DegreeFactorizationStep,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionRestriction,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationSequence]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
