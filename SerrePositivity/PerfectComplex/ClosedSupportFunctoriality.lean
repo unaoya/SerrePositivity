@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.PerfectComplex.ClosedSupportComparison
 public import SerrePositivity.PerfectComplex.BaseChange
+public import SerrePositivity.CommutativeAlgebra.ClosedSupportGeometry
 
 /-! # 閉集合版 K₀ の台の拡大と基底変更
 
@@ -20,38 +21,6 @@ namespace SerrePositivity
 open CategoryTheory Limits Pretriangulated
 
 variable {R S T : Type u} [CommRing R] [CommRing S] [CommRing T]
-
-/-- Pull back a closed support along the map of prime spectra. -/
-def supportPullback (φ : R →+* S) (Z : TopologicalSpace.Closeds (PrimeSpectrum R)) :
-    TopologicalSpace.Closeds (PrimeSpectrum S) :=
-  ⟨(PrimeSpectrum.comap φ) ⁻¹' Z, Z.isClosed.preimage (PrimeSpectrum.continuous_comap φ)⟩
-
-@[simp] lemma mem_supportPullback (φ : R →+* S)
-    (Z : TopologicalSpace.Closeds (PrimeSpectrum R)) (p : PrimeSpectrum S) :
-    p ∈ supportPullback φ Z ↔ PrimeSpectrum.comap φ p ∈ Z := Iff.rfl
-
-@[simp] lemma supportPullback_id (Z : TopologicalSpace.Closeds (PrimeSpectrum R)) :
-    supportPullback (RingHom.id R) Z = Z := by
-  ext p
-  simp [supportPullback, PrimeSpectrum.comap_id]
-
-@[simp] lemma supportPullback_comp (φ : R →+* S) (ψ : S →+* T)
-    (Z : TopologicalSpace.Closeds (PrimeSpectrum R)) :
-    supportPullback ψ (supportPullback φ Z) = supportPullback (ψ.comp φ) Z := by
-  ext p
-  simp [supportPullback]
-
-lemma supportPullback_mono (φ : R →+* S)
-    {Z W : TopologicalSpace.Closeds (PrimeSpectrum R)} (h : Z ≤ W) :
-    supportPullback φ Z ≤ supportPullback φ W := by
-  intro p hp
-  exact h hp
-
-@[simp] lemma supportPullback_zeroLocus (φ : R →+* S) (I : Ideal R) :
-    supportPullback φ (supportZeroLocus I) = supportZeroLocus (I.map φ) := by
-  ext p
-  change I ≤ p.asIdeal.comap φ ↔ I.map φ ≤ p.asIdeal
-  exact Ideal.map_le_iff_le_comap.symm
 
 /-- Geometric support of a bounded finite-projective complex pulls back under any ring map. -/
 lemma HasHomologySupportOn.baseChange (φ : R →+* S)
@@ -202,12 +171,6 @@ lemma enlarge_map (φ : R →+* S)
   exact TriangulatedK0.mk_iso (ObjectProperty.isoMk _ (Iso.refl _))
 
 end K0WithSupport
-
-/-- Pullback of a support specified by a generating list. -/
-lemma supportPullback_span (φ : R →+* S) {e : ℕ} (z : Fin e → R) :
-    supportPullback φ (supportZeroLocus (Ideal.span (Set.range z))) =
-      supportZeroLocus (Ideal.span (Set.range (φ ∘ z))) := by
-  rw [supportPullback_zeroLocus, Ideal.map_span, ← Set.range_comp]
 
 /-- The new base-change map agrees with the existing map on finite-free classes. -/
 lemma freeToClosedSupportK0_map (φ : R →+* S) {e : ℕ} (z : Fin e → R) :

@@ -2,8 +2,7 @@ module
 
 public import SerrePositivity.PerfectComplex.Support
 public import SerrePositivity.HomologicalAlgebra.ConeLES
-public import Mathlib.RingTheory.Spectrum.Prime.Topology
-public import Mathlib.Topology.Sets.Closeds
+public import SerrePositivity.CommutativeAlgebra.ClosedSupportGeometry
 
 /-! # 閉集合で指定するホモロジーの台
 
@@ -21,13 +20,6 @@ open CategoryTheory Limits
 
 variable {R : Type u} [CommRing R]
 
-/-- イデアルの零点集合を閉集合として扱う。 -/
-def supportZeroLocus (I : Ideal R) : TopologicalSpace.Closeds (PrimeSpectrum R) :=
-  ⟨PrimeSpectrum.zeroLocus I, PrimeSpectrum.isClosed_zeroLocus (I : Set R)⟩
-
-@[simp] lemma coe_supportZeroLocus (I : Ideal R) :
-    (supportZeroLocus I : Set (PrimeSpectrum R)) = PrimeSpectrum.zeroLocus I := rfl
-
 /-- 全次数のホモロジーの台が閉集合 `Z` に含まれること。 -/
 def HasHomologySupportOn (Z : TopologicalSpace.Closeds (PrimeSpectrum R))
     (P : CochainComplex (ModuleCat.{u} R) ℤ) : Prop :=
@@ -37,11 +29,6 @@ def HasHomologySupportOn (Z : TopologicalSpace.Closeds (PrimeSpectrum R))
 @[simp] lemma hasHomologySupportOn_zeroLocus (I : Ideal R)
     (P : CochainComplex (ModuleCat.{u} R) ℤ) :
     HasHomologySupportOn (supportZeroLocus I) P ↔ HasHomologySupport I P := Iff.rfl
-
-/-- 台の指定はイデアルの零点集合だけに依存する。 -/
-lemma supportZeroLocus_eq {I J : Ideal R}
-    (h : PrimeSpectrum.zeroLocus I = PrimeSpectrum.zeroLocus (J : Set R)) :
-    supportZeroLocus I = supportZeroLocus J := SetLike.coe_injective h
 
 /-- 台をより大きい閉集合に移す。 -/
 lemma HasHomologySupportOn.mono

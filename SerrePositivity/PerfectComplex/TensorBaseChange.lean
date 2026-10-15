@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.PerfectComplex.TensorEnlarge
 public import SerrePositivity.HomologicalAlgebra.CochainTensorBaseChange
+public import SerrePositivity.CommutativeAlgebra.ClosedSupportGeometry
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Products
 
 /-! # Base change of the standard cochain tensor product -/
@@ -14,14 +15,6 @@ open CategoryTheory Category Limits MonoidalCategory HomologicalComplex
 open Functor.Monoidal Functor.OplaxMonoidal
 variable {R S : Type u} [CommRing R] [CommRing S]
 variable (φ : R →+* S) (P Q : CochainComplex (ModuleCat.{u} R) ℤ)
-
-/-- Pullback of an intersection lies in an intersection of larger target supports. -/
-lemma supportPullback_inf_le {Y Z : TopologicalSpace.Closeds (PrimeSpectrum R)}
-    {W V : TopologicalSpace.Closeds (PrimeSpectrum S)}
-    (hY : supportPullback φ Y ≤ W) (hZ : supportPullback φ Z ≤ V) :
-    supportPullback φ (Y ⊓ Z) ≤ W ⊓ V := by
-  intro p hp
-  exact ⟨hY hp.1, hZ hp.2⟩
 
 namespace K0WithSupport
 /-- Cup products commute with ring change, even when the target supports are enlarged. -/
