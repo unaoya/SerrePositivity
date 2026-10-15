@@ -20,15 +20,16 @@ def coefficientLinearExtension (f : A →+ B) : E ⊗[ℤ] A →ₗ[E] B :=
 lemma coefficientLinearExtension_tmul (f : A →+ B) (a : E) (x : A) :
     coefficientLinearExtension E f (a ⊗ₜ[ℤ] x) = a • f x := rfl
 
-lemma coefficientLinearExtension_unique (f : A →+ B) (F : E ⊗[ℤ] A →ₗ[E] B)
-    (hF : ∀ x, F ((1 : E) ⊗ₜ[ℤ] x) = f x) : F = coefficientLinearExtension E f := by
+/-- Coefficient-linear maps are determined by the original integral classes. -/
+lemma coefficientLinearMap_ext (F G : E ⊗[ℤ] A →ₗ[E] B)
+    (h : ∀ x, F ((1 : E) ⊗ₜ[ℤ] x) = G ((1 : E) ⊗ₜ[ℤ] x)) : F = G := by
   apply AlgebraTensorModule.ext
   intro a x
-  have h : a ⊗ₜ[ℤ] x = a • ((1 : E) ⊗ₜ[ℤ] x) := by
-    rw [TensorProduct.smul_tmul', smul_eq_mul, mul_one]
-  calc
-    F (a ⊗ₜ[ℤ] x) = a • F ((1 : E) ⊗ₜ[ℤ] x) := by rw [h, F.map_smul]
-    _ = a • f x := congrArg (fun y => a • y) (hF x)
-    _ = coefficientLinearExtension E f (a ⊗ₜ[ℤ] x) := rfl
+  rw [TensorProduct.tmul_eq_smul_one_tmul a, F.map_smul, G.map_smul, h]
+
+lemma coefficientLinearExtension_unique (f : A →+ B) (F : E ⊗[ℤ] A →ₗ[E] B)
+    (hF : ∀ x, F ((1 : E) ⊗ₜ[ℤ] x) = f x) : F = coefficientLinearExtension E f := by
+  apply coefficientLinearMap_ext E
+  simpa only [coefficientLinearExtension_tmul, one_smul] using hF
 
 end SerrePositivity

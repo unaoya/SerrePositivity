@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.KTheory.Adams.MaximalLengthEquiv
 public import SerrePositivity.KTheory.Adams.Coefficients
+public import SerrePositivity.KTheory.CoefficientLinearExtension
 public import Mathlib.LinearAlgebra.TensorProduct.Pi
 
 /-! # Coefficient length coordinates and joint injectivity of supported localizations -/
@@ -71,11 +72,18 @@ lemma coefficientK0LengthEquiv_apply_local (x : K0WithSupport.Coefficients E W)
         (K0WithSupport.coefficientMap E (algebraMap R (Localization.AtPrime p.val.asIdeal)) W
           (supportZeroLocus (maximalIdeal (Localization.AtPrime p.val.asIdeal)))
           (maximalSupport_pullback_le W hw p.val) x) := by
-  induction x using TensorProduct.inductionOn with
-  | tmul a x =>
-    rw [coefficientK0LengthEquiv_tmul, K0WithSupport.coefficientMap_tmul,
-      K0WithSupport.coefficientEuler_tmul, localLengthMap_homologyEuler]
-  | add x y hx hy => simp only [map_add, Pi.add_apply, hx, hy]
+  have he : (LinearMap.proj p).comp (coefficientK0LengthEquiv E W hw).toLinearMap =
+      (K0WithSupport.coefficientEuler E (Localization.AtPrime p.val.asIdeal)).comp
+        (K0WithSupport.coefficientMap E (algebraMap R (Localization.AtPrime p.val.asIdeal)) W
+          (supportZeroLocus (maximalIdeal (Localization.AtPrime p.val.asIdeal)))
+          (maximalSupport_pullback_le W hw p.val)) := by
+    apply coefficientLinearMap_ext E
+    intro y
+    change coefficientK0LengthEquiv E W hw ((1 : E) ⊗ₜ[ℤ] y) p = _
+    rw [coefficientK0LengthEquiv_tmul, LinearMap.comp_apply,
+      K0WithSupport.coefficientMap_tmul, K0WithSupport.coefficientEuler_tmul,
+      localLengthMap_homologyEuler]
+  exact DFunLike.congr_fun he x
 
 omit [Fintype {p : PrimeSpectrum R // p ∈ W}] in
 /-- Joint localizations detect zero on finite maximal support with any coefficients. -/

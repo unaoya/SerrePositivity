@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.KTheory.Adams.Family
+public import SerrePositivity.KTheory.CoefficientLinearExtension
 public import SerrePositivity.PerfectComplex.IntegerEulerIso
 
 /-! # Pure Adams weight on maximal-ideal support -/
@@ -53,13 +54,9 @@ lemma maximal_pureWeight_of_parameters (A : SupportedAdams R E p) {n : ℕ}
     rw [maximalParameterKoszulClass z hz, ← K0WithSupport.coefficientEnlarge_tmul,
       A.enlarge, A.koszul, map_smul]
   have he : f = g := maximalSupport_hom_ext_koszul z hz hK hg
-  induction x using TensorProduct.inductionOn with
-  | tmul a x =>
-    have hx := DFunLike.congr_fun he x
-    change A.operation Z ((1 : E) ⊗ₜ[ℤ] x) = (p : E) ^ n • ((1 : E) ⊗ₜ[ℤ] x) at hx
-    rw [TensorProduct.tmul_eq_smul_one_tmul a, map_smul, hx]
-    exact smul_comm a ((p : E) ^ n) ((1 : E) ⊗ₜ[ℤ] x)
-  | add x y hx hy => simp only [map_add, smul_add, hx, hy]
+  have he' : A.operation Z = (p : E) ^ n • LinearMap.id :=
+    coefficientLinearMap_ext E _ _ (fun y => DFunLike.congr_fun he y)
+  exact DFunLike.congr_fun he' x
 
 /-- On maximal-ideal support the weight is the dimension, including dimension zero. -/
 lemma maximal_pureWeight {T : Type u} [CommRing T] [IsRegularLocalRing T]

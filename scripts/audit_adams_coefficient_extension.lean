@@ -7,3 +7,5 @@ assert_no_sorry SerrePositivity.coefficientLinearExtension_tmul
 #print axioms SerrePositivity.coefficientLinearExtension_tmul
 assert_no_sorry SerrePositivity.coefficientLinearExtension_unique
 #print axioms SerrePositivity.coefficientLinearExtension_unique
+assert_no_sorry SerrePositivity.coefficientLinearMap_ext
+#print axioms SerrePositivity.coefficientLinearMap_ext
