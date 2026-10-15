@@ -3320,3 +3320,19 @@ U11d全受入はまだ未完。次はbimoduleの転置した作用を左加群�
 代表対象zの変数の自然性と一対象Aの既存cochainTensor比較も別途確認する。
 U11eの単位/結合coherence・随伴、U12〜U17・D4mも継続対象。
 共有ルート・共有一般論・並行作業ファイルは変更していない。
+
+
+### 17.28 U11d9：bimoduleの転置した右作用を左加群Homへ持ち上げる
+
+`Bimodule/Transpose.lean`は既存二作用の交換則を逆向きへ書き直し、
+右BのHomをパラメータとする左C加群間の全次数自然変換transposeParamを構成した。
+CのSmall.{u}を明示して既存moduleHomEquivの逆で左主Hom endへ持ち上げ、
+transposeHom・各評価での計算式・単位/合成保存を備えた実際のdg関手transposeDGを公開した。
+BとCの対象宇宙は独立。元のbimodule型や豊穣モデルは差し替えていない。
+
+Checks.BimoduleTranspose・BimoduleTensorと既存StageSeven・Spectra.StageTwoの
+同時ビルドは成功（2677 jobs、終了コード0、追加ソースの警告なし）。
+本単位の主要5宣言の直接実行も終了コード0、標準公理のみ。監査累計1385宣言。
+任意可換環・独立宇宙と一対象ZMod 2の転置を検査した。担当差分のgit diff --checkも成功。
+次はこの転置と左右tensorのdg関手を合成し、残る二作用を既存bimodule構成子へ渡す。
+U11d全受入・U11e・U12〜U17・D4mは引き続き未完。
