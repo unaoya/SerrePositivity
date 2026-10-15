@@ -3535,6 +3535,16 @@ K₀ の類への移送と重みつき乗法性は次の小段。
   `lake env lean scripts/audit_adams_cubic_fourier_eigen.lean` の六定数の監査が成功。
   公理は標準三公理の範囲内。この小段はスカラー座標での同変性の受入。
 
+### S10.8c.2a.3：次数 −1 の Fourier ベクトルと Koszul 微分
+
+- `Adams/KoszulCubeFourierOne` に `v₀=(⅟3)(e₀+e₁+e₂)`、
+  `v₁=(⅟3)(e₀+t²e₁+te₂)`、`v₂=(⅟3)(e₀+te₁+t²e₂)` を R 線形写像として構成した。
+- 既存の生成元上の巡回・微分の式から、固有値 1,t,t²、`d(v₀)=a·底`、
+  `d(v₁)=d(v₂)=0` を証明した。a の正則性は仮定していない。
+- `lake build SerrePositivity.KTheory.Adams.KoszulCubeFourierOneInverse` が成功（2838 jobs）。
+  `lake env lean scripts/audit_adams_koszul_fourier_one.lean` の九定数の監査が成功。
+  公理は標準三公理のみ。次に逆変換を公開し、次数 −2,−3 へ移る。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
