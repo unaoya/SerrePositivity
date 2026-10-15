@@ -1907,3 +1907,34 @@ U10全受入は未完。解像度のK(D)での比較と整合性は揃ったが�
 全Hom複体を既存D(A)へ送り、指定D(D)の局所化へ延長する導来Hom関手と計算同型を
 構成する必要がある。始域解像度の比較によるその関手の選択独立性も残る。
 三角構造・Verdier商・導来余積/局所小性・一対象比較の保存性は引き続き残る。
+
+
+### 13.51 U10b7a：射影的始域からの導来Hom関手と計算同型
+
+`Derived/HomOut.lean` は主全Hom関手を既存D(A)へ合成し、§13.48により指定quasiIsoを
+反転することを証明する。指定局所化の普遍性から
+`moduleDerivedHomOut T hT : D(D) → D(A)` を構成した。
+`moduleDerivedHomOut_fac` は加群圏上の全Homとの厳密な関手等式であり、
+対象だけでなく射についても計算を保証する。
+`moduleDerivedHomOutComputation` は既存全Hom複体のD(A)での像との計算同型を公開する。
+`moduleResolvedHomOut M` は実際のsemifree resolution candidateを始域に取るこの関手である。
+
+Aは任意可換環、対象は非有界。主dg加群圏と指定objectwise quasiIsoの局所化を維持する。
+値域の射宇宙は既存APIと同じ `[HasDerivedCategory.{w} (ModuleCat.{u} A)]` で明示する。
+新しい引用axiomやモデル構造の仮定はない。始域変数についてD(D)上の双関手を
+構成したとはまだ主張しない。
+
+`Checks/DerivedHomOut.lean` は独立した値域射宇宙w、厳密な分解、全Homによる計算同型、
+実際のsemifree解像度による関手を検証する。
+同入口・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3255 jobs）。
+直接実行の主要6宣言は標準公理のみ。累計818宣言。
+全体文書検査は21 Markdown/311参照で0 failures。
+今回§13.46〜§13.51の主要58宣言すべてについて公理監査ログを照合し、標準公理のみと確認した。
+担当Leanのsorry/admit/新規axiomは0件、担当diff --checkは成功。
+
+U10全受入は未完。次は始域の比較射による前合成を全Hom複体に運び、
+射影解像度の比較から導来Hom関手間の自然同型とそのcocycle条件を構成する。
+K(D)での解像度比較だけでこの関手の選択独立性が完了したとは扱わない。
+局所化内のHom計算・始域についての関手性、K(D)/D(D)の三角構造・Verdier商比較、
+導来余積・局所小性・一対象A比較の三角形/余積保存も残る。
+共有一般モデル圏/Quillen/転送/SM7に新しい不足API要求はない。
