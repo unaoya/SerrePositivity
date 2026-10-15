@@ -91,9 +91,7 @@ instance : (rankSmallHomotopy (R := R) (s := s)).IsStableUnderShift ℤ where
         rw [ObjectProperty.prop_shift_iff, HomotopyCategory.shift_quotient_obj,
           rankSmallHomotopy_quotient]
         refine ⟨?_, fun i ↦ hK.2 (i + n)⟩
-        obtain ⟨a, b, ha, hb⟩ := hK.1
-        exact ⟨a - n, b - n, K.isStrictlyGE_shift a n _ (by omega),
-          K.isStrictlyLE_shift b n _ (by omega)⟩ }
+        exact strictlyBoundedComplex_shift _ hK.1 n }
 
 /-- 小さいランクの複体の間の射の錐も、各次数で小さいランクをもつ。 -/
 lemma rankSmallComplex_mappingCone {K L : CochainComplex (FreeSequence R s) ℤ}

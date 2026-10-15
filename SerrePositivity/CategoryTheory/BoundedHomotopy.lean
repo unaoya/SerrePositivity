@@ -29,6 +29,14 @@ variable (C : Type u) [Category.{v} C] [Preadditive C]
 def strictlyBoundedComplex : ObjectProperty (CochainComplex C ℤ) :=
   fun K ↦ ∃ a b : ℤ, K.IsStrictlyGE a ∧ K.IsStrictlyLE b
 
+omit [HasZeroObject C] [HasBinaryBiproducts C] in
+/-- Integer shifts translate a strict finite degree range. -/
+lemma strictlyBoundedComplex_shift {K : CochainComplex C ℤ}
+    (hK : strictlyBoundedComplex C K) (n : ℤ) : strictlyBoundedComplex C (K⟦n⟧) := by
+  obtain ⟨a, b, ha, hb⟩ := hK
+  exact ⟨a - n, b - n, K.isStrictlyGE_shift a n _ (by omega),
+    K.isStrictlyLE_shift b n _ (by omega)⟩
+
 /-- 有界な代表複体をもつホモトピー圏の対象の条件。 -/
 def boundedHomotopyProperty : ObjectProperty (HomotopyCategory C (.up ℤ)) :=
   (strictlyBoundedComplex C).strictMap (HomotopyCategory.quotient _ _)
@@ -52,11 +60,9 @@ instance : (boundedHomotopyProperty C).IsStableUnderShift ℤ where
     { le_shift K hK := by
         obtain ⟨K : CochainComplex _ _, rfl⟩ := K.quotient_obj_surjective
         rw [boundedHomotopyProperty_quotient] at hK
-        obtain ⟨a, b, ha, hb⟩ := hK
         rw [ObjectProperty.prop_shift_iff, HomotopyCategory.shift_quotient_obj,
           boundedHomotopyProperty_quotient]
-        exact ⟨a - n, b - n, K.isStrictlyGE_shift a n _ (by omega),
-          K.isStrictlyLE_shift b n _ (by omega)⟩ }
+        exact strictlyBoundedComplex_shift C hK n }
 
 omit [HasZeroObject C] in
 /-- 二つの有界複体の射の錐も、明示的な共通次数範囲をもつ。 -/

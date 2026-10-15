@@ -36,28 +36,41 @@ def perfectHomotopyProperty : ObjectProperty (HomotopyCategory (ModuleCat.{u} R)
       strictlyPerfectComplex R P :=
   homotopyProperty_strictMap_quotient (strictlyPerfectComplex R) P
 
+section
+variable {R}
+
+/-- The zero complex is strictly perfect over every commutative ring. -/
+lemma strictlyPerfectComplex_zero :
+    strictlyPerfectComplex R (0 : CochainComplex (ModuleCat.{u} R) ℤ) := by
+  refine ⟨⟨0, 0, inferInstance, inferInstance⟩, fun i ↦ ?_⟩
+  have hz : IsZero ((0 : CochainComplex (ModuleCat.{u} R) ℤ).X i) :=
+    (HomologicalComplex.eval _ _ i).map_isZero
+      (isZero_zero (CochainComplex (ModuleCat.{u} R) ℤ))
+  have : Module.Free R ((0 : CochainComplex (ModuleCat.{u} R) ℤ).X i) :=
+    isZero_moduleCat_free hz
+  exact ⟨isZero_moduleCat_finite hz, Module.Projective.of_free⟩
+
+/-- Integer shifts preserve strict perfectness. -/
+lemma strictlyPerfectComplex_shift {P : CochainComplex (ModuleCat.{u} R) ℤ}
+    (hp : strictlyPerfectComplex R P) (n : ℤ) : strictlyPerfectComplex R (P⟦n⟧) := by
+  exact ⟨strictlyBoundedComplex_shift _ hp.1 n, fun i ↦ hp.2 (i + n)⟩
+
+end
+
 instance : (perfectHomotopyProperty R).ContainsZero where
   exists_zero := ⟨(HomotopyCategory.quotient _ _).obj 0,
     Functor.map_isZero _ (isZero_zero _), by
       rw [perfectHomotopyProperty_quotient]
-      refine ⟨⟨0, 0, inferInstance, inferInstance⟩, fun q ↦ ?_⟩
-      have hz := (HomologicalComplex.eval (ModuleCat R) (.up ℤ) q).map_isZero
-        (isZero_zero (CochainComplex (ModuleCat R) ℤ))
-      have : Module.Free R ((0 : CochainComplex (ModuleCat R) ℤ).X q) :=
-        isZero_moduleCat_free hz
-      exact ⟨isZero_moduleCat_finite hz, Module.Projective.of_free⟩⟩
+      exact strictlyPerfectComplex_zero⟩
 
 instance : (perfectHomotopyProperty R).IsStableUnderShift ℤ where
   isStableUnderShiftBy n :=
     { le_shift X hX := by
         obtain ⟨P : CochainComplex _ _, rfl⟩ := X.quotient_obj_surjective
         rw [perfectHomotopyProperty_quotient] at hX
-        obtain ⟨⟨a, b, ha, hb⟩, hp⟩ := hX
         rw [ObjectProperty.prop_shift_iff, HomotopyCategory.shift_quotient_obj,
           perfectHomotopyProperty_quotient]
-        refine ⟨⟨a - n, b - n, P.isStrictlyGE_shift a n _ (by omega),
-          P.isStrictlyLE_shift b n _ (by omega)⟩, fun q ↦ ?_⟩
-        exact hp (q + n) }
+        exact strictlyPerfectComplex_shift hX n }
 
 /-- 有限射影複体の写像錐は有限射影複体である。 -/
 lemma strictlyPerfectComplex_mappingCone {P Q : CochainComplex (ModuleCat.{u} R) ℤ}

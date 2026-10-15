@@ -211,24 +211,6 @@ lemma eq_zero_of_empty_support (x : K0WithSupport
 
 end K0WithSupport
 
-/-- The zero complex is strictly perfect over every commutative ring. -/
-lemma strictlyPerfectComplex_zero :
-    strictlyPerfectComplex R (0 : CochainComplex (ModuleCat.{u} R) ℤ) := by
-  refine ⟨⟨0, 0, inferInstance, inferInstance⟩, fun i ↦ ?_⟩
-  have hz : IsZero ((0 : CochainComplex (ModuleCat.{u} R) ℤ).X i) :=
-    (HomologicalComplex.eval _ _ i).map_isZero
-      (isZero_zero (CochainComplex (ModuleCat.{u} R) ℤ))
-  have : Module.Free R ((0 : CochainComplex (ModuleCat.{u} R) ℤ).X i) :=
-    isZero_moduleCat_free hz
-  exact ⟨isZero_moduleCat_finite hz, Module.Projective.of_free⟩
-
-/-- Integer shifts preserve strict perfectness. -/
-lemma strictlyPerfectComplex_shift {P : CochainComplex (ModuleCat.{u} R) ℤ}
-    (hp : strictlyPerfectComplex R P) (n : ℤ) : strictlyPerfectComplex R (P⟦n⟧) := by
-  obtain ⟨a, b, ha, hb⟩ := hp.1
-  exact ⟨⟨a - n, b - n, P.isStrictlyGE_shift a n _ (by omega),
-    P.isStrictlyLE_shift b n _ (by omega)⟩, fun i ↦ hp.2 (i + n)⟩
-
 /-- A null-homotopy of the identity makes a supported object zero. -/
 lemma supportedPerfectOnObj_isZero_of_homotopy
     (P : CochainComplex (ModuleCat.{u} R) ℤ) (hp : strictlyPerfectComplex R P)
