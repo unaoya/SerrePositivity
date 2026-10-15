@@ -1,6 +1,6 @@
 # dg 理論（M5）の独立実装計画
 
-作成・調査：2026-10-14。更新：2026-10-15。状態：U0〜U9 を実装・検証済み（U10は継続中）。
+作成・調査：2026-10-14。更新：2026-10-15。状態：U0〜U10 を実装・検証済み。U10後の比較・整理案と後続詳細計画は§14〜§16。
 U0〜U3の記録は§11、U4/U5の実績と後続契約は§12。D0〜D10全体の完了ではない。
 この計画だけを受け取る実装担当者向けの仕様である。
 ホモトピー論の共有契約は [k-theory.md §123](k-theory.md#123-次段階の設計i抽象モデル圏とその当てはめ2026-10-14)。
@@ -516,7 +516,7 @@ StageTwo のローカル import 閉包は63モジュール（うちdg実装29）
 U4は3区切り、U5は4区切りに分け、担当ファイルのみをコミットした。
 後続作業は§12.8の具体的契約から始める。採用済み引用は引き続き0件。
 
-## 13. U6〜U10 の継続実装（2026-10-15、進行中）
+## 13. U6〜U10 の実装・受入記録（2026-10-15、受入済み）
 
 ユーザー依頼は「U10まで完成、ステップごとにコミット」。目標を途中の定義だけへ縮小しない。
 任意可換環・非有界複体・Mathlib 豊穣主モデル・明示 smallness の契約と編集範囲を維持する。
@@ -2604,3 +2604,33 @@ K(D)からの既存局所化、標準局所化との比較逆関手が三角的�
 宇宙wと`HasDerivedCategory.{w} (ModuleCat.{u} A)`を明示する。
 主要9宣言の直接公理監査は終了コード0、標準公理のみ。累計1160宣言。
 導来比較5入口の同時ビルドは成功（2143 jobs）。U10全受入には独立入口の統合検証を引き続き要求する。
+
+
+### 13.88 U10統合受入・コード固定点
+
+`StageSeven.lean`はU0〜U10の独立入口であり、既存StageSix・共有ルートimportを変更しない。
+`Checks/StageSeven.lean`は同じimport下で以下を検査する。
+
+| U10受入条件 | 実装・証拠 |
+| --- | --- |
+| 任意非有界加群のsemifree解像度 | `Module/Semifree/Resolution.lean`の`exists_semifree_resolution`。semifree・次数ごと全射・quasiIsoを同時に保持。Checks.Semifreeにはℤ・ZMod 2の例もある |
+| 全Hom上の射影性 | `moduleSemifree_homotopicallyProjective`。対象ごとのホモトピーではなく全dg自然な主Hom endを使用 |
+| 全導来Homと選択独立性 | `Derived/HomBifunctorChoice.lean`。両変数関手・比較自然同型・自己比較・三つの選択の推移整合性 |
+| 実際の局所化の射集合 | `Derived/ResolutionHom.lean`のHom同値・roof全射・等式と全dgホモトピーの同値。Hom双関手の存在だけで代用しない |
+| 宇宙・余積 | `moduleDerivedLocallySmall`はLocallySmall.{u}。`Derived/Coproducts.lean`は任意J : Type wとSmall.{u} Jで余積を構成。K(D)の余積も同じ条件 |
+| K(D)の三角構造 | §13.79・13.81・13.82。全dg自然な回転・合成cone比較と収縮に基づくPretriangulated・八面体 |
+| acyclic・Verdier・主D(D) | §13.84〜13.86。acyclic.trW＝既存W、主局所化への三角構造と標準Verdier商との三角同値 |
+| 一対象Aとの比較 | 既存`ringDerivedEquivalence`を保持。`Derived/Ring.lean`・`RingCoproducts.lean`・`EvaluationTriangles.lean`で局所化比較・shift・余積・三角性を接続。必要なHasDerivedCategory宇宙を明示 |
+
+最終統合ビルド：Checks.StageSeven・StageSix・既存Spectra.StageTwoを同時に実行し成功（2638 jobs、終了コード0）。
+StageSevenの直接実行も終了コード0。主要11宣言の再監査は標準公理のみで、累計には重複加算しない。
+導来比較5入口は別途2143 jobsで成功、直接実行45宣言もすべて標準公理のみ。
+段階別主要監査の累計は1160宣言。担当Leanのsorry・admit・新規axiomは0件。
+Lean v4.35.0-rc4、Mathlib e6bbacd0e1b7307ff6e17da09cd2455f60804fa6をmanifest・checkout双方で再確認した。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分のgit diff --checkも成功。
+以前の担当外olean不足による文書検査停止は、この最終実行では再現しなかった。
+
+これで§13のU10受入を満たす。D3の左加群/bimodule・D4m・D5〜D10の全完了とは区別する。
+この受入コミットをコード固定点とし、以後この依頼ではLeanコードをリファクタリングせず、
+比較・共通化候補・後続工程を計画ファイルに記録する。採用済み引用は引き続き0件。
+共有モデル圏一般論・他チャットの変更は編集していない。

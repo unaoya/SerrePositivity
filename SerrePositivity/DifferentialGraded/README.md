@@ -1,8 +1,8 @@
 # M5：dg 理論の独立入口
 
-U0〜U9 実装・検証（U10継続中）：2026-10-15。計画は
+U0〜U10 実装・検証：2026-10-15。計画は
 [ dg-theory.md ](../../formalization-plans/dg-theory.md)。
-入口は [StageSix.lean](StageSix.lean)（U0〜U9）、[StageFive.lean](StageFive.lean)（U0〜U8）、[StageFour.lean](StageFour.lean)（U0〜U7）、[StageThree.lean](StageThree.lean)（U0〜U6）、[StageTwo.lean](StageTwo.lean)（U0〜U5）、[StageOne.lean](StageOne.lean)（U0〜U3）。共有ルート import は変更しない。
+入口は [StageSeven.lean](StageSeven.lean)（U0〜U10）、[StageSix.lean](StageSix.lean)（U0〜U9）、[StageFive.lean](StageFive.lean)（U0〜U8）、[StageFour.lean](StageFour.lean)（U0〜U7）、[StageThree.lean](StageThree.lean)（U0〜U6）、[StageTwo.lean](StageTwo.lean)（U0〜U5）、[StageOne.lean](StageOne.lean)（U0〜U3）。共有ルート import は変更しない。
 
 Lean `v4.35.0-rc4`、Mathlib `e6bbacd0e1b7307ff6e17da09cd2455f60804fa6`。
 Mathlib HEAD と lake-manifest を再照合済み。依存更新なし。
@@ -14,7 +14,7 @@ Mathlib HEAD と lake-manifest を再照合済み。依存更新なし。
 環と Hom 加群の宇宙は初期 API では同じ `u`、dg 圏の対象 `D : Type v` は独立。
 `Complex A : Type (u + 1)`、各斉次 Hom と Z⁰/H⁰ の Hom は `Type u`。
 加群対象の宇宙は `Type (max (u+1) v)`。Hom end とその豊穣圏には `[Small.{u} D]` を明示する。
-より大きい Hom 宇宙・局所化・解像度の存在は後続で個別に指定する。
+主局所化の宇宙は max (u+1) v、U10でその射集合の u-small 性を証明する。
 
 複体は非有界。noetherian・体・標数・有限次元・有限生成の仮定なし。
 微分はコチェイン次数 +1、contracting homotopy は −1。
@@ -88,7 +88,7 @@ Mathlib の現行 `EnrichedNatTrans.out` は閉零の通常自然性なので、
 U4/U5の追加監査38宣言、合計79宣言は標準公理のみ。
 U6の free/forget、自由評価随伴、全次数 Hom 同型と自然性は完成した。
 U6の追加監査35宣言、U0〜U6合計114宣言。検証と引継ぎは計画§13。
-次は shift/cone・極限余極限、objectwise quasiIso・局所化・semifree。
+以下はU7以降の段階別実装記録。
 U7a1では `Module/Zero.lean` に全次数零加群・零対象・評価による零対象性の判定を追加した。
 `Complexes/Zero.lean` の零 Hom 複体とともに `Checks/Zero.lean` で検証する。
 U7a2の `Module/Biproduct.lean` は objectwise 二項直和の全次数対角作用、
@@ -132,8 +132,19 @@ U9の `Derived/Basic.lean`/`Evaluation.lean` は指定quasiIsoの局所化と厳
 閉零圏/K(D)の局所化の同値と両方向の比較自然同型を構成する。
 受入入口は `Checks/Derived.lean`・`Cylinder.lean`・`DerivedComparison.lean`。
 U9の追加49宣言、U0〜U9累計415宣言は標準公理のみ。一般論のsorry・新規axiomなし。
-U10のsemifree解像度の存在・Hom計算・三角構造・余積・一対象Aの導来圏比較は未完。
+U10は任意加群のsemifree解像度、全次数Homによるhomotopically projective性、
+解像度による導来Hom双関手と選択独立性、実際の射集合・roof・全dg自然なホモトピー判定、
+LocallySmall.{u}、u-small余積、K(D)/D(D)の三角構造とVerdier商比較まで実装した。
+一対象Aの既存DerivedCategoryとの同値はshift・余積・distinguished三角形を保存する。
+受入入口は [Checks/StageSeven.lean](Checks/StageSeven.lean)。
+主要宣言の累計1160件の段階別監査は標準公理のみ。統合入口の11件は再監査であり重複加算しない。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Checks.StageSeven SerrePositivity.DifferentialGraded.StageSix SerrePositivity.Spectra.StageTwo
+lake env lean SerrePositivity/DifferentialGraded/Checks/StageSeven.lean
+```
+
 API契約と共有 G1/G2/G5/G6 への引継ぎは計画§12.8。
-導来圏・射影モデル・dg 商・Morita・Perf と M5全体は未完成。
+射影モデル比較・相対tensor・dg商・Morita・PerfとM5全体は未完成。
 一般モデル圏・Quillen・転送・SM7 は共有系列が所有し、この入口には置かない。
 引用候補の採用状況は [Inputs の台帳](../Inputs/DifferentialGraded/README.md)。
