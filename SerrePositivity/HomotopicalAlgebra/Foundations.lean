@@ -141,6 +141,7 @@ public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedComposition
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedWeakInverse
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.QuillenCylinder
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.DerivedTensorInverse
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.GeneratedBifunctor

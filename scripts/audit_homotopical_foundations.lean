@@ -59,6 +59,7 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Diagram.SmallHomYonedaWeight,
     `SerrePositivity.HomotopicalAlgebra.Diagram.WeightedSourceWeakEquivalence,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.QuillenStandardFrame,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.QuillenCylinder,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameOverObject,
     `SerrePositivity.HomotopicalAlgebra.Diagram.WeightedHomotopyColimitFrame,
     `SerrePositivity.HomotopicalAlgebra.Diagram.HocolimMappingComparison,
