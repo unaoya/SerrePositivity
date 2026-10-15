@@ -1,11 +1,19 @@
 import SerrePositivity.HomotopicalAlgebra.Localization.AccessibleLocalEquivalences
 import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FiniteTensorLiftingClass
+import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ArrowLiftingClass
 import Lean.Util.CollectAxioms
 
 noncomputable section
 universe w v u
 open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
 open SerrePositivity.Bousfield SerrePositivity.HomotopyFunctionComplex
+
+-- Arbitrary right class, with no model structure on C or Arrow C.
+example {D : Type u} [Category.{v} D] [HasPushouts D] [HasTerminal D]
+    (Q : MorphismProperty D) [Q.ContainsIdentities] {F G : Arrow D} (i : F ⟶ G) :
+    (ArrowLiftingClass.objectwise Q).llp i ↔
+      Q.llp i.left ∧ Q.llp (ArrowLiftingClass.relativeMap i) :=
+  ArrowLiftingClass.mem_iff Q i
 
 -- No model structure on the tensor category, and no cofibrancy of an arbitrary arrow.
 example {D : Type u} [Category.{v} D] [HasFiniteColimits D]
@@ -44,7 +52,8 @@ run_cmd do
   let expected := #[
     `SerrePositivity.HomotopicalAlgebra.Localization.LocalReplacementDetection,
     `SerrePositivity.HomotopicalAlgebra.Localization.AccessibleLocalEquivalences,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FiniteTensorLiftingClass]
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FiniteTensorLiftingClass,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ArrowLiftingClass]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

@@ -99,6 +99,7 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Localization.LocalReplacementDetection,
     `SerrePositivity.HomotopicalAlgebra.Localization.AccessibleLocalEquivalences,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FiniteTensorLiftingClass,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ArrowLiftingClass,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroWeakEquivalence,
     `SerrePositivity.HomotopicalAlgebra.Under.ModelCategory,
     `SerrePositivity.HomotopicalAlgebra.Pointed.Basic,
