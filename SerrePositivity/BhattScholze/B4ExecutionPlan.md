@@ -4779,3 +4779,38 @@ private helperだけでなく公開するℚ作用と単元性の補題もBS監�
 この分冪構造はI上のものであり、(y)そのものが分冪閉イデアルだとは主張しない。
 raw φ(y)/p包を分冪包と同定する普遍性・最小性、原典の導来pushout比較・CFF・一般B4は別工程。
 全体ビルド/tmp/bs-factorialdivision-full.logは同じ実行を継続中。対象・pure監査成功と区別する。
+
+### 次工程の登録：raw包の実分冪構造と既存分母の一致
+
+BS専用`DeltaPDivisionDividedPowers.lean`で、既存raw包のp正則性を明示して
+そのI={b | p∣b^p}上に前工程の既存DividedPowers構造を適用する。
+基底元j(y)のI所属を初期p除算関係から供給し、分冪作用の値が
+既存deltaPDivisionRawFactorialQuotientに一致することを示す。
+比較はA[1/p]への既存の具体的単射と階乗の単元性で証明し、選択の一致を仮定しない。
+p正則性に用いるAのp正則性・yのA/p正則性・自由δ環ghost単射・単元δp、
+非p倍自然数の単元性を中間入力として明示する。
+最終B4への仮定追加や、raw包の分冪包普遍性の証明済み扱いは行わない。
+
+### 次工程の登録：raw包の像のδ安定部分環としての最小性
+
+BS専用`DeltaPDivisionRawMinimal.lean`で、任意δ射f:raw→Tに対して、
+fの基底射の像と初期除算変数の像を含むδ安定部分環Sにはf.rangeが含まれることを示す。
+相対自由δ環の全座標の像の反復δ表示と、多項式・商の帰納法を使う。
+具体的なf: A{φ(y_s)/p}→A[1/p]には、初期変数をy_s^p/p+δ(y_s)と書き、
+Aとy_s^p/pを含むδ安定部分環への最小性として特殊化する。
+p正則性・p局所性・G7・分冪構造の仮定は不要。単射性や分冪包のδ安定性は別途確認する。
+
+## B4-6：具体的raw包への分冪構造の接続（2026-10-15）
+
+`DeltaPDivisionDividedPowers.lean`で、rawφ除算包の基底元j(y)のp除算可能イデアルへの所属、
+正則一元入力の仮定の下での実分冪構造を公開した。
+その分冪作用の値が既存deltaPDivisionRawFactorialQuotientと一致することを、
+実際のA[1/p]への既存単射と階乗の単元性により証明した。
+選択で取った元の一致を仮定せず、階乗を払う両側の式から比較した。
+3公開宣言の対象3787ジョブとB4全体pure監査が成功。標準3公理のみ。
+一般B4・CFF・原典導来比較・分冪包普遍性は未完成。
+
+継続していた全体ビルド/tmp/bs-factorialdivision-full.logは終端失敗を確認した。
+共有Paper/Section5/SelectedParameterPositivity.lean:1で
+共有KTheory/Adams/TensorSquareShuffle.oleanが欠落していた。
+対象ビルド・pure監査の成功と全体ビルド成功を区別し、共有ファイルは変更していない。
