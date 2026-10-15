@@ -44,4 +44,43 @@ theorem deltaRootSourceGeneratorPowerReduction_isComplete_p
       (DerivedCompletion.derivedScalarConeComparison A (d ^ n)).app K
   exact DerivedCompletion.isComplete_of_iso A (p : A) e.symm hC
 
+local notation "Y₀" =>
+  CategoryTheory.Functor.obj (DerivedCompletion.boundedAboveDerivedCompletionFunctor A (p : A))
+    (DeltaRootSourceCoefficientObject d D b)
+local notation "U₀" => DerivedCompletion.boundedAboveDerivedCompletionUnit A d
+
+/-- 最後のd完備化単位は、各生成元冪商での実還元後に同型になる。 -/
+theorem deltaRootSourceGeneratorPowerReduction_unit_isIso
+    (hd : IsSMulRegular A d) (n : ℕ) :
+    IsIso ((boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {d ^ n}))).map
+      ((U₀).app Y₀)) :=
+  DerivedCompletion.boundedAboveDerivedCompletion_quotient_unit_isIso A d hd n Y₀
+
+/-- p完備化済み対象と逐次対象の冪商還元を、標準d完備化単位で比較する。 -/
+def deltaRootSourceGeneratorPowerReductionCompletionIso
+    (hd : IsSMulRegular A d) (n : ℕ) :
+    (boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {d ^ n}))).obj Y₀ ≅
+      (boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {d ^ n}))).obj X₀ := by
+  have := deltaRootSourceGeneratorPowerReduction_unit_isIso D d b hd n
+  exact asIso ((boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {d ^ n}))).map
+    ((U₀).app Y₀))
+
+/-- 冪商還元の比較逆射は、還元した標準d完備化単位の左逆である。 -/
+theorem deltaRootSourceGeneratorPowerReductionCompletionIso_unit
+    (hd : IsSMulRegular A d) (n : ℕ) :
+    (boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {d ^ n}))).map
+        ((U₀).app Y₀) ≫
+      (deltaRootSourceGeneratorPowerReductionCompletionIso D d b hd n).inv = 𝟙 _ :=
+  (deltaRootSourceGeneratorPowerReductionCompletionIso D d b hd n).hom_inv_id
+
+/-- 冪商の完備化比較は、実Koszul比較の下で標準単位の錐上の射に一致する。 -/
+theorem deltaRootSourceGeneratorPowerReductionCompletionIso_koszul
+    (hd : IsSMulRegular A d) (n : ℕ) :
+    ((boundedAboveDerivedRestrictScalars (Ideal.Quotient.mk (Ideal.span {d ^ n}))).map
+        (deltaRootSourceGeneratorPowerReductionCompletionIso D d b hd n).hom).hom ≫
+      (deltaRootSourceGeneratorPowerReductionKoszulIso D d b hd n).hom =
+    (restrictedDerivedQuotientKoszulIso (d ^ n) (hd.pow n) Y₀).hom ≫
+      (DerivedCompletion.derivedScalarConeFunctor A (d ^ n)).map (((U₀).app Y₀).hom) :=
+  restrictedDerivedQuotientKoszulIso_naturality (d ^ n) (hd.pow n) ((U₀).app Y₀)
+
 end SerrePositivity.BhattScholze
