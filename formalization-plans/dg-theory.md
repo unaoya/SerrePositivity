@@ -1842,3 +1842,23 @@ TやHom_Dに射影性・flatnessは要求せず、任意可換環・非有界複
 U10全受入は未完。次はこの同型と既存のconeによるquasiIso判定を組み合わせ、
 homotopically projectiveなTからの全Homが指定quasiIsoを保つことを証明する。
 導来Hom・選択独立性・三角構造・Verdier商・導来余積/局所小性・一対象比較の保存性は残る。
+
+
+### 13.48 U10b6d：射影的始域からの全HomのquasiIso不変性
+
+`Derived/ProjectiveHomQuasiIso.lean` はconeのchain isoと既存のobjectwise cone判定を使い、
+`moduleHomotopicallyProjective_postcompose_quasiIso` を証明する。
+homotopically projectiveなTと指定objectwise quasiIso f:M→Nについて、
+後合成 `Hom_D(T,M) → Hom_D(T,N)` は全次数のHom複体のquasiIsoである。
+`moduleSemifree_postcompose_quasiIso` は証明済みsemifree射影性による直接の適用である。
+
+`Checks/ProjectiveHomQuasiIso.lean` は一般仮定と、実際のsemifree resolution candidateを
+始域に取り、別の加群の実際のresolution mapへ適用する検査を含む。
+同入口・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3254 jobs）。
+直接実行の主要2宣言は標準公理のみ。累計795宣言。
+担当Leanにsorry/admit/新規axiomは0件。共有一般論の不足APIはない。
+
+U10全受入は未完。次はこのquasiIsoのcycle持ち上げと境界反映を具体化し、
+全dg自然なホモトピーまでの比較射とその一意性を得る。
+それを射影解像度の選択独立性と局所化内の導来Hom計算へ接続する。
+三角構造・Verdier商・導来余積/局所小性・一対象比較の保存性も引き続き残る。
