@@ -2986,3 +2986,17 @@ Small.{u} BはHom endへの持ち上げにだけ必要で、制限と交換則�
 Checks.BimoduleTensorFunctorのビルドは成功（1802 jobs、警告なし）。直接実行は終了コード0、
 主要7宣言の公理は標準公理のみ。監査累計1223宣言。
 U11b全受入は未完。次は逆向きのHom射・単位/合成保存から実際のuncurried関手を構成し、両往復を証明する。
+
+
+### 17.10 U11b9：uncurryingのHom射と単位保存
+
+`Bimodule/UncurryHom.lean`は右作用と左作用を豊穣順に合成するHomのchain mapを構成した。
+純粋斉次tensorでの値は通常cochain合成に(-1)^(pq)を掛けたものであり、全次数成分式を公開した。
+左作用の単位cochain、tensor積の単位cycleを恒等cochainへ送る式と、
+単位複体からの射としての単位保存も証明した。
+これは逆方向関手のHomと単位の証拠であり、合成保存を証明する前にdg関手とは宣言しない。
+
+Checks.BimoduleUncurryHomのビルドは成功（1803 jobs、警告なし）。直接実行は終了コード0、
+主要6宣言の公理は標準公理のみ。監査累計1229宣言。
+文書検査の直近実行は22 Markdown・311 exposition参照、失敗0件。
+次は両因子での制限計算と、二作用の交換則を用いる合成保存、両往復。
