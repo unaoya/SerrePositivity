@@ -114,6 +114,8 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Diagram.ProjectiveSpan,
     `SerrePositivity.HomotopicalAlgebra.Diagram.PushoutComparison,
     `SerrePositivity.HomotopicalAlgebra.Diagram.SpanHomotopyColimit,
+    `SerrePositivity.HomotopicalAlgebra.Localization.SpanLocalEquivalences,
+    `SerrePositivity.HomotopicalAlgebra.Localization.LeftProperPushout,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroWeakEquivalence,
     `SerrePositivity.HomotopicalAlgebra.Under.ModelCategory,
     `SerrePositivity.HomotopicalAlgebra.Pointed.Basic,

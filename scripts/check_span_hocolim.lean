@@ -1,4 +1,5 @@
 import SerrePositivity.HomotopicalAlgebra.Diagram.SpanHomotopyColimit
+import SerrePositivity.HomotopicalAlgebra.Localization.LeftProperPushout
 import Lean.Util.CollectAxioms
 
 noncomputable section
@@ -30,6 +31,37 @@ example [IsLocallyPresentable.{w} C] (I J : MorphismProperty C)
     weakEquivalences C ((HomotopyColimit.comparison K I J).app D) :=
   HomotopyColimit.comparison_weakEquivalence_of_span K e I J D hD
 
+open SerrePositivity.Bousfield
+variable [IsLocallyPresentable.{w} C]
+  (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
+  (fib : MorphismProperty.FunctorialFactorizationData (trivialCofibrations C) (fibrations C))
+  (I J : MorphismProperty C) [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} I J]
+  [ModelCategory SSet.{w}]
+  (IS JS : MorphismProperty SSet.{w})
+  [SerrePositivity.ModelGeneration.CofibrantlyGenerated.{w} IS JS]
+  (hcof : cofibrations SSet.{w} = MorphismProperty.monomorphisms _)
+  (hfib : fibrations SSet.{w} = SSet.modelCategoryQuillen.J.{w}.rlp)
+  (hw : weakEquivalences SSet.{w} = SerrePositivity.SimplicialHomotopy.weakEquivalences)
+  [ModelCategory SSet.{v}] [ModelCategory SSet.{max v w}]
+  (hcofV : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
+  (hfibV : fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
+  (hcofB : cofibrations SSet.{max v w} = MorphismProperty.monomorphisms _)
+  (hfibB : fibrations SSet.{max v w} = SSet.modelCategoryQuillen.J.{max v w}.rlp)
+  [(weakEquivalences C).IsStableUnderCobaseChangeAgainst (cofibrations C)]
+
+-- Arbitrary S and arbitrary pushout; none of its four objects is assumed cofibrant.
+example (S : MorphismProperty C) {A B D P : C}
+    {f : A ⟶ B} {g : A ⟶ D} {l : B ⟶ P} {r : D ⟶ P}
+    (s : IsPushout f g l r) (hf : cofibrations C f)
+    (hflocal : localEquivalences.{v, u} (C := C) cof fib S f) :
+    localEquivalences.{v, u} (C := C) cof fib S r :=
+  localEquivalence_of_pushout cof fib I J IS JS hcof hfib hw hcofV hfibV hcofB hfibB S s hf hflocal
+
+-- The actual stability class required by Smith recognition.
+example (S : MorphismProperty C) :
+    (cofibrations C ⊓ localEquivalences.{v, u} (C := C) cof fib S).IsStableUnderCobaseChange :=
+  cof_localEquivalences_pushoutStable cof fib I J IS JS hcof hfib hw hcofV hfibV hcofB hfibB S
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -38,7 +70,9 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Diagram.SpanCofibrations,
     `SerrePositivity.HomotopicalAlgebra.Diagram.ProjectiveSpan,
     `SerrePositivity.HomotopicalAlgebra.Diagram.PushoutComparison,
-    `SerrePositivity.HomotopicalAlgebra.Diagram.SpanHomotopyColimit]
+    `SerrePositivity.HomotopicalAlgebra.Diagram.SpanHomotopyColimit,
+    `SerrePositivity.HomotopicalAlgebra.Localization.SpanLocalEquivalences,
+    `SerrePositivity.HomotopicalAlgebra.Localization.LeftProperPushout]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
