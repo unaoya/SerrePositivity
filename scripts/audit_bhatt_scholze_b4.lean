@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.RankOneDPPrimeBlocks
 import SerrePositivity.BhattScholze.RankOneDPAnyBasis
 import SerrePositivity.BhattScholze.RankOneDPBaseChangeUniversal
 import SerrePositivity.BhattScholze.RankOneDPTensorRelations
@@ -4506,3 +4507,13 @@ assert_no_sorry SerrePositivity.BhattScholze.rankOneDPAny_moduleFree
 #print axioms SerrePositivity.BhattScholze.rankOneDPAny_moduleFree
 assert_no_sorry SerrePositivity.BhattScholze.rankOneDPAny_isSMulRegular
 #print axioms SerrePositivity.BhattScholze.rankOneDPAny_isSMulRegular
+
+-- Concrete degree-block action and nilpotence when p vanishes in the coefficient ring.
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPGenerator_mul
+#print axioms SerrePositivity.BhattScholze.rankOneDPGenerator_mul
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPGenerator_mul_prime_block
+#print axioms SerrePositivity.BhattScholze.rankOneDPGenerator_mul_prime_block
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPGenerator_pow_mul_prime_block
+#print axioms SerrePositivity.BhattScholze.rankOneDPGenerator_pow_mul_prime_block
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPGenerator_pow_eq_zero
+#print axioms SerrePositivity.BhattScholze.rankOneDPGenerator_pow_eq_zero
