@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorialExtension
+import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorialFactorizationClasses
 import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorFactorizationFamily
 import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDegree
 import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexFinite
@@ -58,6 +58,56 @@ example [ModelCategory C] (j : SimplexCategoryᵒᵖ)
     BoundaryDiagram.degreeFunctor simplexOp j C
       (fun _ _ h ↦ Opposite.unop_injective (SimplexCategory.ext h))
 
+-- The actual global result is a functorial factorization in the relative
+-- Reedy classes, constructed only from the chosen source factorization.
+example [ModelCategory C]
+    (source : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C)) :
+    MorphismProperty.FunctorialFactorizationData
+      (reedyLeft simplex (cofibrations C)) (reedyRight simplex (trivialFibrations C)) :=
+  FunctorFactorizationSequence.functorialFactorizationData simplex
+    (fun _ _ h ↦ SimplexCategory.ext h) (fun n ↦ ⟨SimplexCategory.mk n, rfl⟩) source
+
+example [ModelCategory C]
+    (source : MorphismProperty.FunctorialFactorizationData (trivialCofibrations C) (fibrations C)) :
+    MorphismProperty.FunctorialFactorizationData
+      (reedyLeft simplexOp (trivialCofibrations C)) (reedyRight simplexOp (fibrations C)) :=
+  FunctorFactorizationSequence.functorialFactorizationData simplexOp
+    (fun _ _ h ↦ Opposite.unop_injective (SimplexCategory.ext h))
+    (fun n ↦ ⟨Opposite.op (SimplexCategory.mk n), rfl⟩) source
+
+example [ModelCategory C]
+    (source : MorphismProperty.FunctorialFactorizationData (trivialCofibrations C) (fibrations C)) :
+    MorphismProperty.FunctorialFactorizationData
+      (reedyLeft simplex (trivialCofibrations C)) (reedyRight simplex (fibrations C)) :=
+  FunctorFactorizationSequence.functorialFactorizationData simplex
+    (fun _ _ h ↦ SimplexCategory.ext h) (fun n ↦ ⟨SimplexCategory.mk n, rfl⟩) source
+
+example [ModelCategory C]
+    (source : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C)) :
+    MorphismProperty.FunctorialFactorizationData
+      (reedyLeft simplexOp (cofibrations C)) (reedyRight simplexOp (trivialFibrations C)) :=
+  FunctorFactorizationSequence.functorialFactorizationData simplexOp
+    (fun _ _ h ↦ Opposite.unop_injective (SimplexCategory.ext h))
+    (fun n ↦ ⟨Opposite.op (SimplexCategory.mk n), rfl⟩) source
+
+example [ModelCategory C]
+    [(cofibrations C).HasFunctorialFactorization (trivialFibrations C)] :
+    (reedyLeft simplex (cofibrations C)).HasFunctorialFactorization
+      (reedyRight simplex (trivialFibrations C)) :=
+  FunctorFactorizationSequence.hasFunctorialFactorization simplex
+    (fun _ _ h ↦ SimplexCategory.ext h) (fun n ↦ ⟨SimplexCategory.mk n, rfl⟩)
+
+-- The functorial recursion agrees with the previous ordinary construction at
+-- every finite stage, using exactly the same chosen source factors.
+example [ModelCategory C]
+    (source : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
+    (n : ℕ) (φ : Arrow (SimplexCategory ⥤ C)) :
+    (FunctorFactorizationSequence.stage simplex (fun _ _ h ↦ SimplexCategory.ext h)
+      (fun n ↦ ⟨SimplexCategory.mk n, rfl⟩) source n).atArrow φ =
+    FactorizationSequence.stage simplex φ.hom (fun _ _ h ↦ SimplexCategory.ext h)
+      (fun n ↦ ⟨SimplexCategory.mk n, rfl⟩) source.factorizationData n :=
+  FunctorFactorizationSequence.stage_atArrow simplex _ _ source n φ
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -65,7 +115,13 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationProblem,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeBoundaryFunctor,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorialExtension,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorFactorizationFamily]
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorFactorizationFamily,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorialDegreeStep,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorialSuccessor,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorialSequence,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.GlobalFunctorialFactorization,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DegreeClassTransfer,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorialFactorizationClasses]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
