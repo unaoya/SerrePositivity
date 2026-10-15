@@ -6,7 +6,9 @@ open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
-  let expected := #[`SerrePositivity.HomotopicalAlgebra.Quillen.Adjunction,
+  let expected := #[`SerrePositivity.HomotopicalAlgebra.Smith.ConservativeAdjunction,
+    `SerrePositivity.HomotopicalAlgebra.Monoidal.ModulePresentability,
+    `SerrePositivity.HomotopicalAlgebra.Quillen.Adjunction,
     `SerrePositivity.HomotopicalAlgebra.Quillen.WhiteheadConverse,
     `SerrePositivity.HomotopicalAlgebra.Quillen.Saturation,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameRightQuillen,
