@@ -1,4 +1,6 @@
 """Check that reusable cochain and Adams contracts avoid concrete Adams implementations."""
+import argparse
+from collections import deque
 from pathlib import Path
 import re
 
@@ -10,30 +12,77 @@ graph = {
     for path in (ROOT / 'SerrePositivity').rglob('*.lean')
 }
 
-def closure(start):
-    seen, pending = set(), [start]
+def dependency_path(start, forbidden):
+    if start not in graph:
+        raise SystemExit(f'Missing boundary entry point: {start}')
+    seen, pending = {start}, deque([[start]])
     while pending:
-        module = pending.pop()
-        if module not in seen:
-            seen.add(module)
-            pending.extend(graph.get(module, []))
-    return seen
+        path = pending.popleft()
+        module = path[-1]
+        if forbidden(module):
+            return path
+        for dependency in graph.get(module, []):
+            if dependency not in seen:
+                seen.add(dependency)
+                pending.append(path + [dependency])
+    return None
 
-common = [name for name in graph if name.startswith(
-    'SerrePositivity.HomologicalAlgebra.CochainTensor')]
+
+def check(start, forbidden):
+    path = dependency_path(start, forbidden)
+    if path:
+        raise SystemExit('Forbidden import path:\n  ' + '\n  -> '.join(path))
+
+
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--consumers', action='store_true',
+                    help='also enforce the consumer boundaries being migrated in R23–R24')
+parser.add_argument('--cubic', action='store_true',
+                    help='also enforce independence of the cubic family from the square operation')
+args = parser.parse_args()
+
+
+def upper_layer(module):
+    return '.KTheory.' in module or '.PerfectComplex.' in module
+
+common = [name for name in graph if name.startswith((
+    'SerrePositivity.HomologicalAlgebra.CochainTensor',
+    'SerrePositivity.HomologicalAlgebra.CochainCone',
+    'SerrePositivity.HomologicalAlgebra.CochainIdempotent'))]
 common += ['SerrePositivity.HomologicalAlgebra.CochainBiproduct',
            'SerrePositivity.HomologicalAlgebra.CochainKernelLift',
-           'SerrePositivity.HomologicalAlgebra.CochainIdempotent',
            'SerrePositivity.HomologicalAlgebra.KoszulOneCoordinates']
 for name in common:
-    forbidden = [dep for dep in closure(name)
-                 if '.KTheory.' in dep or '.PerfectComplex.' in dep]
-    assert not forbidden, (name, forbidden)
+    check(name, upper_layer)
 
 for name in ['Family', 'WeightOperators']:
     module = 'SerrePositivity.KTheory.Adams.' + name
-    forbidden = [dep for dep in closure(module) if dep.startswith(
-        'SerrePositivity.KTheory.Adams.') and dep.rsplit('.', 1)[-1].startswith(
-            ('TensorSquare', 'TensorCube', 'CyclicTwo', 'CyclicThree', 'Cubic'))]
-    assert not forbidden, (module, forbidden)
+    check(module, lambda dep: dep.startswith('SerrePositivity.KTheory.Adams.') and
+          dep.rsplit('.', 1)[-1].startswith(
+              ('TensorSquare', 'TensorCube', 'CyclicTwo', 'CyclicThree', 'Cubic')))
 print(f'Import boundaries passed: {len(common)} cochain modules and 2 Adams contracts.')
+
+consumers = [
+    'DifferentialGraded.Complexes.Biproduct',
+    'DifferentialGraded.Complexes.AcyclicCone',
+    'DifferentialGraded.Complexes.TensorShift',
+    'DifferentialGraded.Complexes.ConeMaps',
+    'HomologicalAlgebra.BoundedAboveTensorModels',
+    'HomologicalAlgebra.TensorSingleNaturality',
+    'HomologicalAlgebra.TensorConeNaturality',
+    'HomologicalAlgebra.ScalarConeShiftNaturality',
+]
+if args.consumers:
+    for name in consumers:
+        check('SerrePositivity.' + name, upper_layer)
+    print(f'Consumer boundaries passed: {len(consumers)} entry points.')
+
+if args.cubic:
+    # Raw squares and their coordinates are useful for a cube. Only the actual
+    # degree-two operation and its additivity/multiplicativity layers are forbidden.
+    square_operations = ('CyclicTwo', 'TensorSquareEvaluation', 'TensorSquareAdditivity',
+                         'TensorSquareMultiplicativity', 'TensorSquareAcyclicClass')
+    check('SerrePositivity.KTheory.Adams.CyclicThreeFamily',
+          lambda dep: dep.startswith('SerrePositivity.KTheory.Adams.') and
+          dep.rsplit('.', 1)[-1].startswith(square_operations))
+    print('Cubic family is independent of the degree-two operation.')
