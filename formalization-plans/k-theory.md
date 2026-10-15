@@ -7406,3 +7406,83 @@ ordinary Ho(C)の射とのπ₀比較を証明する。現在の関手の存在�
 F2の選択の自然な弱同値zigzagと単体的モデル圏の実際のMapとの比較、F3の固定した
 小さいSに対する共通基数、F4のfiltered colimit・homotopy (co)limit比較は未完了である。
 すべて引き続き依頼範囲に含める。
+
+
+## 175. F1進捗：有限tensorの持ち上げと境界のcofibration（2026-10-15）
+
+F0〜F4全体の依頼を維持している。単体的Homへのhornの持ち上げを源の圏へ移すため、
+実際の有限tensorと持ち上げの移送を構成した。さらに境界tensor包含がReedyのlatching
+比較射と同型であることを証明し、そのcofibration性をReedy cofibrancyから導いた。
+horn tensorのtrivial cofibration性は未証明であり、Kan性はまだ条件付きである。
+F1全体やF2〜F4を完了とは判定しない。
+
+### 175.1 標準単体のpresentationと持ち上げ問題
+
+`PresentationHom`は、図式D:I→Δと、Dの標準単体を余極限として貼り合わせるcoconeを
+与えたとき、その余極限KからHom(A,Y)への写像を、D⋙A上のYを頂点とするcoconeと
+同値にする。D⋙Aの余極限だけが存在すれば、これは源の射
+`colimit(D⋙A) → Y`と同値になる。値圏全体の余完備性は要求しない。
+
+対象側の射に対する自然性と、Dのcoconeから得る`K → Δ[n]`の前合成に対する計算式を
+証明する。`PresentationLifting`はこれらの式により実際の可換正方形を源の圏へ移し、
+源のtensor射の持ち上げから単体的Homへの持ち上げを構成する。
+右逆・左逆や持ち上げの両三角形も証明済みである。
+
+### 175.2 非退化単体による有限presentationと実際のhorn・境界
+
+`NonsingularPresentation`はnonsingularな単体集合Xの非退化単体poset X.NからΔへの
+実際の関手を構成する。Mathlibの非退化単体間の一意な単射を使い、恒等射・合成を保つ。
+その標準単体の図式をXのmonogenous subcomplexの図式と自然同型で比較し、
+Mathlibの`isColimitCoconeN`を移してXそのものを余極限として得る。
+Xが有限なら添字圏は有限となり、値圏には有限余極限だけを要求できる。
+
+`SubcomplexTensor`は標準単体の任意のsubcomplex Sについて、この実際の図式から
+`S ⊗ A := colimit(D_S ⋙ A)`と`S ⊗ A → A[n]`を構成する。後者を作るΔへのcoconeの
+標準単体像を余極限へ渡した射は、実際の`S.ι : S → Δ[n]`に等しいことを証明する。
+したがって175.1の持ち上げの移送は、抽象的に同型な別の射に留まらず、実際のhorn・
+境界の包含に適用できる。次元0を含めて存在と射の型を検証した。
+
+`TensorKanCriterion`は、構成した全horn tensor包含が源でtrivial cofibrationなら、
+Hom(A,–)が源のfibrationをKan fibrationへ送ることを証明する。fibrantなYに対する
+Hom(A,Y)のKan性も、この条件の下で証明する。境界tensor包含がcofibrationなら、
+源のtrivial fibrationに対して全境界の持ち上げを得ることも証明した。
+これらの条件を任意のresolutionについて仮定で済ませたとは扱わない。
+ここまでのコミット：`d56db5d`。
+
+### 175.3 境界tensorと実際のReedy latching
+
+`BoundaryIndex`は、境界の非退化単体posetからΔのlatching添字圏への関手を構成する。
+境界の単体は次数を厳密に下げ、対応する射は単射である。逆向きには非恒等単射が
+非全射であることから実際の非退化な境界単体を構成する。完全忠実性と本質的全射性を
+証明し、元のΔへの射影と可換な圏同値を得る。次元0も含む。
+
+`Reedy/CofibrantBoundary`は、初期図式のlatching比較射が同型であることを証明する。
+押し出しから、絶対latching比較射と初期図式からの相対latching射とのArrow同型を得る。
+これは一般のReedy構造に対して使える。
+
+`BoundaryTensor`は175.3の添字圏の同値を余極限へ移し、境界tensor包含と絶対latching
+比較射のArrow同型を構成する。Reedy cofibrantなAについて、全境界tensor包含が源で
+cofibrationになることを証明した。したがって境界の持ち上げに関する175.2の条件は、
+Reedy cofibrancyから導かれる。通常の`cosimplicialResolution X`への適用も検証した。
+ここには関手的な源の因子分解は要求しない。コミット：`e3d7e03`。
+
+### 175.4 検証と残る全体の受入項目
+
+- 共有入口のビルド1725 jobsが成功。
+- `check_finite_tensor_lifting`：追加8モジュール・105宣言を全監査。実際のhorn・境界の
+  有限tensor、Hom同値、包含の持ち上げ移送、条件付きKan判定、境界の添字圏の同値を検証。
+- 通常のresolutionから境界tensor包含のcofibration性と、源のtrivial fibrationに対する
+  全境界の持ち上げを導く利用例が成功。
+- 共有基盤2335宣言・141モジュールの公理監査は標準公理のみ。
+- `check_resolution_hom`、`check_reedy_resolution`、`check_homotopical_foundations`、
+  `check_spectra_stage2`、`check_weak_equivalences_accessible`の回帰検証も成功。
+  新規sorry・引用axiomはない。
+
+次は有限subcomplexの貼り合わせに対するtensorの性質を証明し、cofibrantで
+homotopically constantなcosimplicial resolutionから、全horn tensor包含のtrivial
+cofibration性を導く。175.2の条件付きKan判定へこれを適用し、Kan性を確定する。
+有限の貼り合わせとtrivial cofibrationのpushout閉性を使う方針であり、源に左固有性や
+無限の余完備性を追加してF1の契約を狭めない。
+両変数の弱同値不変性、ordinary Ho(C)とのπ₀比較、任意モデル源に対する関手性は
+引き続き未完了。F2の自然な選択比較と単体的モデル圏でのMap比較、F3の共通基数、
+F4のfiltered colimit・homotopy (co)limit比較もすべて依頼範囲に含める。

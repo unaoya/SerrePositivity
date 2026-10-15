@@ -707,3 +707,22 @@ fibrant置換へ適用する。源の追加データは明示的な入力であ�
 検証。共有全2230宣言・133モジュールは標準公理のみ。詳細は計画§174を参照。
 F1のKan性・不変性・π₀比較と任意モデル源での関手性は未完了である。
 条件付きHom関手の構成でF1の契約を置き換えず、F2〜F4も引き続き実装する。
+
+
+## F1：有限tensorと境界の持ち上げ（Kan性は条件付き、2026-10-15）
+
+`PresentationHom`・`PresentationLifting`は、標準単体のpresentationから単体的Homへの
+写像を源のcocone・射へ移し、実際の正方形と持ち上げを移送する。
+`NonsingularPresentation`・`SubcomplexTensor`は非退化単体の有限posetを用い、
+実際のhorn・境界を含むsubcomplexのtensorと包含を構成する。値圏には有限余極限だけを
+要求する。`TensorKanCriterion`はhorn tensorのtrivial cofibration性からKan性を導く。
+このhorn条件自体はまだ未証明である。
+
+`BoundaryIndex`・`BoundaryTensor`と`Reedy/CofibrantBoundary`は、境界の非退化単体posetと
+latching添字圏の圏同値を構成し、境界tensor包含とlatching比較射のArrow同型を証明する。
+Reedy cofibrancyから境界tensor包含のcofibration性を導き、通常のcosimplicial resolutionに
+対して源のtrivial fibrationに対する全次数の境界持ち上げを得た。
+
+共有入口1725 jobs、追加105宣言・8モジュール、共有全2335宣言・141モジュールを検証し、
+公理は標準公理のみ。回帰検証も成功した。詳細と未完了項目は計画§175を参照。
+F1の無条件のKan性・導来不変性・π₀比較・任意モデル源の関手性とF2〜F4は未完了である。
