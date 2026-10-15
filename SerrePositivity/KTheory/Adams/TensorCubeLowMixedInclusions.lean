@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.KTheory.Adams.TensorCubeLowMixed
+public import Mathlib.CategoryTheory.CommSq
 
 /-! # Structural inclusions of the three low mixed quotient components -/
 
@@ -12,13 +13,6 @@ universe u
 namespace SerrePositivity
 open CategoryTheory Category Limits HomologicalComplex
 namespace Adams
-private lemma comp_twice_natural {C : Type*} [Category C] {K P : C}
-    (r : K ⟶ K) (i : K ⟶ P) (t : P ⟶ P) (h : r ≫ i = i ≫ t) :
-    r ≫ r ≫ i = i ≫ t ≫ t := by
-  calc
-    _ = r ≫ i ≫ t := r ≫= h
-    _ = _ := by simpa only [Category.assoc] using h =≫ t
-
 variable {R : Type u} [CommRing R]
 variable (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ))
     (hS : S.ShortExact) (hproj : ∀ i, Module.Projective R (S.X₃.X i))
@@ -33,9 +27,10 @@ lemma tensorCubeLowMixed1_inclusion :
   rw [← cochainTensorRotation_naturality (𝟙 S.X₃) S.f S.f,
     ← Category.assoc (tensorCubeLowMixed0 S hS hproj), tensorCubeLowMixed0_inclusion]
   simp only [Category.assoc]
-  have hi := comp_twice_natural (tensorCubeFirstLayerRotation S.g)
-    (tensorCubeFirstLayerInclusion S.g) (tensorCubeRotation S.X₂)
-    (tensorCubeFirstLayerRotation_inclusion S.g)
+  have hs : CommSq (tensorCubeFirstLayerRotation S.g) (tensorCubeFirstLayerInclusion S.g)
+      (tensorCubeFirstLayerInclusion S.g) (tensorCubeRotation S.X₂) :=
+    ⟨tensorCubeFirstLayerRotation_inclusion S.g⟩
+  have hi := (hs.horiz_comp hs).w
   have hh : tensorCubeFirstLayerRotation S.g ≫ tensorCubeFirstLayerRotation S.g ≫
       tensorCubeFirstLayerInclusion S.g ≫ cochainTensorTripleMap S.g (𝟙 S.X₂) (𝟙 S.X₂) ≫
       (cochainTensorRotationIso S.X₃ S.X₂ S.X₂).hom =

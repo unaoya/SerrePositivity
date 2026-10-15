@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.KTheory.Adams.TensorCubeHighMixed
 public import SerrePositivity.PerfectComplex.TensorTripleCyclicSum
+public import Mathlib.CategoryTheory.CommSq
 
 /-! # The three high mixed tensor-cube components and their inclusions -/
 
@@ -12,13 +13,6 @@ universe u
 namespace SerrePositivity
 open CategoryTheory Category Limits
 namespace Adams
-private lemma high_comp_twice_natural {C : Type*} [Category C] {K P : C}
-    (r : K ⟶ K) (i : K ⟶ P) (t : P ⟶ P) (h : r ≫ i = i ≫ t) :
-    r ≫ r ≫ i = i ≫ t ≫ t := by
-  calc
-    _ = r ≫ i ≫ t := r ≫= h
-    _ = _ := by simpa only [Category.assoc] using h =≫ t
-
 variable {R : Type u} [CommRing R]
 variable (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ))
     (hS : S.ShortExact) (hproj : ∀ i, Module.Projective R (S.X₃.X i))
@@ -62,9 +56,10 @@ lemma tensorCubeHighMixed1_inclusion :
   rw [← cochainTensorRotation_naturality (𝟙 S.X₃) (𝟙 S.X₃) S.f,
     ← Category.assoc (tensorCubeHighMixed0 S hS hproj), tensorCubeHighMixed0_inclusion]
   simp only [Category.assoc]
-  have hi := high_comp_twice_natural (tensorCubeKernelRotation S.g)
-    (tensorCubeKernelInclusion S.g) (tensorCubeRotation S.X₂)
-    (tensorCubeKernelRotation_inclusion S.g)
+  have hs : CommSq (tensorCubeKernelRotation S.g) (tensorCubeKernelInclusion S.g)
+      (tensorCubeKernelInclusion S.g) (tensorCubeRotation S.X₂) :=
+    ⟨tensorCubeKernelRotation_inclusion S.g⟩
+  have hi := (hs.horiz_comp hs).w
   have hh : tensorCubeKernelRotation S.g ≫ tensorCubeKernelRotation S.g ≫
       tensorCubeKernelInclusion S.g ≫ tensorCubePairMap0 S.g ≫
       (cochainTensorRotationIso S.X₃ S.X₃ S.X₂).hom =
