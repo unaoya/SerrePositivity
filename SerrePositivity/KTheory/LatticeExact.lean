@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.KTheory.LatticeClass
+public import SerrePositivity.CommutativeAlgebra.SubmoduleExact
 
 /-! # Supported lattices in short exact sequences -/
 @[expose] public section
@@ -17,7 +18,7 @@ namespace SupportedLocalizationLattice
 def preimage (L : SupportedLocalizationLattice P Z N₂)
     (f : N₁ →ₗ[R] N₂) (hf : Function.Injective f) : SupportedLocalizationLattice P Z N₁ := by
   let F : L.carrier.comap f →ₗ[R] L.carrier := f.restrict (fun _ h => h)
-  have hi : Function.Injective F := fun x y h => Subtype.ext (hf (congrArg Subtype.val h))
+  have hi : Function.Injective F := submoduleRestriction_injective L.carrier f hf
   have : Module.Finite R (L.carrier.comap f) := Module.Finite.of_injective F hi
   refine ⟨L.carrier.comap f, Module.Finite.iff_fg.mp inferInstance,
     (Module.support_subset_of_injective F hi).trans L.support, ?_⟩
@@ -30,10 +31,7 @@ def image (L : SupportedLocalizationLattice P Z N₂)
     (g : N₂ →ₗ[R] N₃) (hg : Function.Surjective g) : SupportedLocalizationLattice P Z N₃ := by
   let G : L.carrier →ₗ[R] L.carrier.map g :=
     g.restrict (fun _ h => Submodule.mem_map_of_mem h)
-  have hs : Function.Surjective G := by
-    rintro ⟨n, hn⟩
-    obtain ⟨m, hm, he⟩ := Submodule.mem_map.mp hn
-    exact ⟨⟨m, hm⟩, Subtype.ext he⟩
+  have hs : Function.Surjective G := submoduleImage_restrict_surjective L.carrier g
   refine ⟨L.carrier.map g, L.fg.map g,
     (Module.support_subset_of_surjective G hs).trans L.support, ?_⟩
   intro n
@@ -55,22 +53,9 @@ def shortExact (L : SupportedLocalizationLattice P Z N₂)
       right := (L.image g hg).obj
       f := F
       g := G
-      injective := fun x y h => Subtype.ext (hf (congrArg Subtype.val h))
-      exact := ?_
-      surjective := ?_ }
-  · intro n
-    constructor
-    · intro hn
-      have hn' : g (n : N₂) = 0 := congrArg Subtype.val hn
-      obtain ⟨m, hm⟩ := (he (n : N₂)).mp hn'
-      exact ⟨⟨m, by change f m ∈ L.carrier; rw [hm]; exact n.property⟩,
-        Subtype.ext hm⟩
-    · rintro ⟨m, rfl⟩
-      apply Subtype.ext
-      exact he.apply_apply_eq_zero m
-  · rintro ⟨n, hn⟩
-    obtain ⟨m, hm, he⟩ := Submodule.mem_map.mp hn
-    exact ⟨⟨m, hm⟩, Subtype.ext he⟩
+      injective := submoduleRestriction_injective L.carrier f hf
+      exact := submoduleRestriction_exact L.carrier f g he
+      surjective := submoduleImage_restrict_surjective L.carrier g }
 
 /-- Additivity for the lattices obtained by preimage and image. -/
 lemma class_shortExact (L : SupportedLocalizationLattice P Z N₂)

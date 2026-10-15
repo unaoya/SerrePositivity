@@ -5108,7 +5108,7 @@ R37–R40のコミットは `022387f`、`fcd06d8`、`247e86c`、`4652f6f`、
 | R42a | 冪等像の完全性に次数別retractを利用 | 完了：両指標類2811 jobs、2宣言の公理監査、全依存ゲートが成功。ログ `/tmp/adams-r42a-{build,audit}.log` |
 | R42b | 直和の分裂にmathlibを利用 | 完了：二箇所の分裂をofHasBinaryBiproductへ置換。2812 jobs、3宣言の公理監査が成功。ログ `/tmp/adams-r42b-{build,audit}.log` |
 | R42c | 消去イデアルの移送にmathlibを利用 | 完了：旧公開型を保った二つの補題をmathlibから導出。dévissageまで3254 jobs、3宣言の公理監査が成功。ログ `/tmp/adams-r42c-{build,audit}.log` |
-| R43 | 部分加群への完全列の制限を格子・dévissageで共用 | 未着手 |
+| R43 | 部分加群への完全列の制限を格子・dévissageで共用 | 完了：一般3補題を両構成で共用。3255 jobs、5宣言の公理監査、全依存ゲートが成功。R41bの空行警告も修正。ログ `/tmp/adams-r43-final-build.log`、`/tmp/adams-r43-audit.log` |
 | R44a | 一元Koszulの二つの座標同型を共通の錐APIから導出 | 未着手 |
 | R44b | 双対・次数付きKoszulの直積座標公式を共通化 | 未着手 |
 | R45a | ホモトピー商のstrictMapと有界シフトを三利用先で共用 | 未着手 |

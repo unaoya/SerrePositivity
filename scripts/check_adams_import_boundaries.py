@@ -132,7 +132,7 @@ print('Basic homology and integer Euler evaluations are independent of resolutio
 
 geometry = ['ClosedSupportGeometry', 'ModuleClosedSupport', 'SupportHeight',
             'SemilocalSupport', 'ModuleSupportHeight', 'LocalizationTorsion', 'ModuleSupport',
-            'PrincipalSupport', 'LocalizationLattice']
+            'PrincipalSupport', 'LocalizationLattice', 'SubmoduleExact']
 for name in geometry:
     check('SerrePositivity.CommutativeAlgebra.' + name, upper_layer)
 print(f'Support geometry boundaries passed: {len(geometry)} modules.')

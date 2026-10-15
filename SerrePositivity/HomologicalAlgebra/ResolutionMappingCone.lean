@@ -48,7 +48,6 @@ def coneHomologyZeroEquiv (hg : Function.Surjective g) (he : Function.Exact f g)
 /-- The cone of a lift of an injective map resolves its cokernel module. -/
 def mappingCone (hf : Function.Injective f) (hg : Function.Surjective g)
     (he : Function.Exact f g) : IsResolutionOf (CochainComplex.mappingCone l) M₃ :=
-
     { isZero_X := fun i hi => by
         rw [CochainComplex.mappingCone.isZero_X_iff]
         exact ⟨hK.isZero_X _ (by omega), hL.isZero_X _ hi⟩

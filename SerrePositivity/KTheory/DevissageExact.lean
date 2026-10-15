@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.KTheory.DevissageFiltration
+public import SerrePositivity.CommutativeAlgebra.SubmoduleExact
 
 /-! # Restricting short exact sequences to a submodule and its quotient -/
 @[expose] public section
@@ -30,21 +31,9 @@ def submoduleRestrictionShortExact (U : Submodule R M₂)
       right := wholeSupportedModule (ModuleCat.of R (U.map g))
       f := F
       g := G
-      injective := fun x y h => Subtype.ext (hf (congrArg Subtype.val h))
-      exact := ?_
-      surjective := ?_ }
-  · intro n
-    constructor
-    · intro hn
-      have hn' : g (n : M₂) = 0 := congrArg Subtype.val hn
-      obtain ⟨m, hm⟩ := (he (n : M₂)).mp hn'
-      exact ⟨⟨m, by change f m ∈ U; rw [hm]; exact n.property⟩, Subtype.ext hm⟩
-    · rintro ⟨m, rfl⟩
-      apply Subtype.ext
-      exact he.apply_apply_eq_zero m
-  · rintro ⟨n, hn⟩
-    obtain ⟨m, hm, hem⟩ := Submodule.mem_map.mp hn
-    exact ⟨⟨m, hm⟩, Subtype.ext hem⟩
+      injective := submoduleRestriction_injective U f hf
+      exact := submoduleRestriction_exact U f g he
+      surjective := submoduleImage_restrict_surjective U g }
 
 /-- The map on left quotients induced by the injective map. -/
 def quotientRestrictionLeft (U : Submodule R M₂) (f : M₁ →ₗ[R] M₂) :

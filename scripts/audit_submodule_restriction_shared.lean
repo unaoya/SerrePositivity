@@ -1,0 +1,11 @@
+import SerrePositivity.KTheory.Devissage
+import SerrePositivity.KTheory.LatticeExact
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.submoduleRestriction_injective
+assert_no_sorry SerrePositivity.submoduleImage_restrict_surjective
+assert_no_sorry SerrePositivity.submoduleRestriction_exact
+assert_no_sorry SerrePositivity.submoduleRestrictionShortExact
+assert_no_sorry SerrePositivity.SupportedLocalizationLattice.shortExact
+#print axioms SerrePositivity.submoduleRestriction_exact
+#print axioms SerrePositivity.SupportedLocalizationLattice.shortExact
