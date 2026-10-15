@@ -151,6 +151,8 @@ public import SerrePositivity.HomotopicalAlgebra.Monoidal.ManyObjectPresentabili
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.ModulePresentability
 public import SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationLeftProper
 public import SerrePositivity.HomotopicalAlgebra.Localization.FrameArrowTests
+public import SerrePositivity.HomotopicalAlgebra.Localization.FrameTargetTests
+public import SerrePositivity.HomotopicalAlgebra.Localization.ResolutionHomGenerators
 public import SerrePositivity.HomotopicalAlgebra.Enriched.TensorCotensor
 public import SerrePositivity.CategoryTheory.Enriched.EnrichedRepresentability
 

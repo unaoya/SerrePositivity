@@ -10,6 +10,8 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Monoidal.ModulePresentability,
     `SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationLeftProper,
     `SerrePositivity.HomotopicalAlgebra.Localization.FrameArrowTests,
+    `SerrePositivity.HomotopicalAlgebra.Localization.FrameTargetTests,
+    `SerrePositivity.HomotopicalAlgebra.Localization.ResolutionHomGenerators,
     `SerrePositivity.HomotopicalAlgebra.Quillen.Adjunction,
     `SerrePositivity.HomotopicalAlgebra.Quillen.WhiteheadConverse,
     `SerrePositivity.HomotopicalAlgebra.Quillen.Saturation,
