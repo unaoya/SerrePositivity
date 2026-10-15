@@ -1557,3 +1557,25 @@ free/evaluationの全次数Hom chain isoから主Hom endのacyclic性を証明�
 この入口・ProductAcyclic・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3193 jobs）。
 直接実行の主要6宣言は標準公理のみ。累計679宣言。
 U10全受入は未完。余積とfiltrationでの上記性質の証明を次に接続する。
+
+
+### 13.36 U10b3a：acyclic複体のu-small直積
+
+`Complexes/ProductAcyclic.lean` は複体の直積射影が各次数でも直積を与えることを、
+Mathlibの評価の極限保存から構成する。
+各cycleの境界の原像を成分ごとに選び、各次数の直積普遍性で一つの原像に組み立てる。
+`complexProduct_acyclic` は任意のu-smallなacyclic非有界複体族の直積がacyclicとなることを証明する。
+添字Jのambient宇宙wは独立で、必要な仮定は `[Small.{u} J]`。
+
+受入入口 `Checks/ProductAcyclic.lean` は一般族・可算族・空族・各次数の直積普遍性を検証する。
+同時ビルドは§13.35のとおり成功。直接実行の主要3宣言は標準公理のみ。累計682宣言。
+担当Lean範囲のsorry/admit/新規axiomは0件、担当diff --checkは成功。
+全体文書検査の並行K系列importによる制限は§13.29の記録を維持する。
+
+U10全受入は未完。この直積補題だけから余積加群のHom endやfiltrationの逆極限のacyclic性は主張しない。
+次は `Hom_D(∐ M_j,N) ≅ ∏ Hom_D(M_j,N)` を主Hom endのchain isoとして、
+全斉次作用・包含との整合性付きで証明し、自由sphere余積のhomotopically projective性へ適用する。
+filtrationでは次数付きdg分裂からHom制限の次数ごとの全射性とkernelの同定を得て、
+互換な境界の原像を可算的に選ぶ証明が必要。一般の逆極限がacyclic性を保つとは仮定しない。
+その後、導来Hom計算・選択独立性、三角構造・Verdier商、余積・局所小性、
+一対象比較の三角形/余積保存を完成する。共有一般モデル圏等の重複はしない。
