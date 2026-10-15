@@ -3091,3 +3091,23 @@ Checks.BalancedTensorのビルドは成功（1823 jobs、警告なし）。直�
 主要22宣言の公理は標準公理のみ。任意宇宙と一対象ZMod 2の対象を検査した。監査累計1269宣言。
 U11c全受入は未完。次は両変数の射を関係の直和へ運び、降下map・恒等/合成法則・成分式を揃える。
 U11d/eのYoneda・残るbimodule作用・単位/結合coherenceとU12〜U17も継続対象である。
+
+
+### 17.17 U11c2：作用可換な両変数のchain map族の降下
+
+`Tensor/Maps.lean`は二つの加群のchain map族を対象・関係の直和へ運び、
+右作用/左作用との可換性から二つの関係射の可換squareを証明した。
+これらのsquareから余等化子へ`mapOfFamilies`を降ろし、包含での計算式、恒等・合成法則を公開した。
+新しい加群射の型や代替圏は作らず、作用可換な成分族を取る補助APIとしている。
+合成の法則は与えられた合成族の作用可換性証拠を受け取り、具体的な加群圏の射への接続で利用する。
+
+Checks.BalancedTensorMaps・BalancedTensor・BimoduleTensorComparisonと既存StageSeven・Spectra.StageTwoの
+同時ビルドは成功（2664 jobs、終了コード0、今回の追加ソースに警告なし）。
+本単位の直接実行は終了コード0、主要8宣言の公理は標準公理のみ。監査累計1277宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当Leanのsorry/admit/新規axiomは0件、
+担当差分のwhitespace検査も成功。
+
+U11c全受入は継続中。次は既存右加群圏と、opposite比較で得る左加群の全Hom end圏の実際の射を
+成分族へ評価し、その作用可換性を証明してbalanced tensorの双関手にする。
+左右作用・降下の符号付き成分式も揃えてからU11cを受け入れる。
+U11d/e、U12〜U17も引き続き未完であり、共有一般論・共有ルート・他系列の変更は編集していない。
