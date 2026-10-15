@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.KoszulRadicalSupport
 import SerrePositivity.HomologicalAlgebra.AlgebraKoszulAugmentation
 import SerrePositivity.HomologicalAlgebra.KoszulHomologyAnnihilator
 import SerrePositivity.HomologicalAlgebra.AlgebraKoszulBounds
@@ -508,3 +509,14 @@ assert_no_sorry SerrePositivity.parameterKoszulColimitToKoszul
 #print axioms SerrePositivity.algebraKoszulDualEmptyNatIso
 
 #print axioms SerrePositivity.parameterKoszulColimitToKoszul
+
+-- KL4 uniform support powers and acyclicity after inverting a parameter-radical element.
+assert_no_sorry SerrePositivity.koszulModuleHomology_uniform_power_annihilator_of_mem_radical
+assert_no_sorry SerrePositivity.koszulModuleHomology_uniform_coordinate_powers_of_radical
+assert_no_sorry SerrePositivity.koszulModuleHomology_isZero_of_unit_in_parameter_radical
+
+#print axioms SerrePositivity.koszulModuleHomology_uniform_power_annihilator_of_mem_radical
+
+#print axioms SerrePositivity.koszulModuleHomology_uniform_coordinate_powers_of_radical
+
+#print axioms SerrePositivity.koszulModuleHomology_isZero_of_unit_in_parameter_radical
