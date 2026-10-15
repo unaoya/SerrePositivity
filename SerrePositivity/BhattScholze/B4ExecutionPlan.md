@@ -5411,3 +5411,46 @@ B⊗[A]PrincipalDPPresentation A y≃ₐ[B]PrincipalDPPresentation B (algebraMap
 仮定はA,Bのp局所性・p正則性。yの正則性・δ構造・完備性・Noetherian性は不要。
 5公開宣言の対象2711ジョブ・B4全体pure監査成功。標準3公理のみ。
 新sorry・公理・引用なし。原典の導来比較・分冪包の平坦性・CFF・一般B4は未完成。
+
+### 次工程の登録：正則一元階乗部分環の実テンソル基底変更
+
+BS専用RegularPrincipalDPBaseChange.leanで、p局所・p正則なδ環A,B、A代数B、
+yとその像のmod p正則性の下、B⊗[A]S(A,y)≃ₐ[B]S(B,fy)を構成する。
+表示環と階乗部分環の実同型を基底射との可換性によって代数同型へ持ち上げ、
+前工程の実テンソル基底変更と合成する。Bの係数と階乗生成元の純テンソル上の式を公開する。
+基底の環射のδ射性や完備性は要求しない。通常分冪包の基底変更であり、導来比較やCFFではない。
+
+同じ工程で、実同型を既存pDivisionFactorialMapと比較し、全純テンソルb⊗aの像が
+baseB(b)・pDivisionFactorialMap(a)であることも証明する。
+生成元上だけの対応に留めず、具体的基底変更射として識別できる公開式を供給する。
+
+## B4-6：正則一元分冪包の実テンソル基底変更（2026-10-15）
+
+RegularPrincipalDPBaseChange.leanで、表示環の実同型を基底射との可換性により代数同型へ持ち上げ、
+通常テンソル基底変更と合成してB⊗[A]S(A,y)≃ₐ[B]S(B,fy)を構成した。
+具体的な基底射による代数構造を型に明示し、Bの係数と全階乗生成元の純テンソル上の式を証明した。
+さらに全純テンソルb⊗aの像がbaseB(b)・pDivisionFactorialMap(a)であることを証明し、
+既存の具体的部分環射による実比較写像として同定した。
+仮定はp局所・p正則なδ環A,Bとy,fyのmod p正則性。基底射のδ射性・完備性は不要。
+4公開宣言の対象2744ジョブ・B4全体pure監査成功。標準3公理のみ。
+新sorry・公理・引用なし。原典の導来比較・完全平坦性・CFF・一般B4は未完成。
+
+### 全体ビルドの検証境界
+
+前回開始した全体lake buildは、同じ実行ハンドルを継続して観測し、終了コード1を確認した。
+ログは /tmp/bs-regular-principaldp-full-build.log。
+共有RegularLocalization.lean:60のisResolutionOf_koszul未解決、および共有側の
+BoundedHomotopy.olean、HomotopyCategory.olean、ClosedSupportK0.oleanの欠落が報告された。
+BS対象ビルド・専用pure監査の成功と、全体ビルドの失敗は分けて扱う。
+これらの共有ファイルは編集していない。既に終了した実行を再起動していない。
+
+### 次の独立した主工程：pねじれ係数への一元分冪代数の基底変更
+
+原典Lemma 2.43（著者版26–27頁）のmod p計算へ進むには、pねじれ係数も扱える一元分冪代数の
+基底変更が必要。今回のRankOneDPBaseChangeEquivはA,Bのp正則性を明示しているため、
+B=Fpへの適用やLemma 2.43の導来計算を解決したとは数えない。
+既存の一般rankOneDPBaseChangeMapに対し、DividedPowerAlgebra.lift'を使って
+γ_n(b)をb^n・(1⊗γ_n(1))へ送る逆射を構成し、積・加法関係を二項展開と既存分冪積公式で確認する。
+これにより任意係数Bへの同型を得て、整数係数の既証明基底から任意係数の基底、
+mod pでのγ₁(1)のp冪零性と次数ブロック分解へ進む。
+新規ファイルは着手時に登録し、共通G3・G6・G7の実装待ちとこの独立工程を区別する。
