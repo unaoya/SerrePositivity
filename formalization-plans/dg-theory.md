@@ -2186,3 +2186,19 @@ U10全受入は未完。次はK(D)の標準cone三角形から三角構造を構
 その後D(D)の三角構造、主局所化関手の三角性、一対象Aの既存導来圏との同値の
 三角形保存を完成させる。既存shift・cone・比較同値と今回のHom計算・余積を再利用する。
 共有モデル構造・Quillen・転送・SM7への新規不足要求はなく、担当外ファイルは編集していない。
+
+
+### 13.63 U10t1：全dg自然な境界によるconeからの延長
+
+`Module/ConeHomotopyDesc.lean`は次数−1の主Hom要素hと閉零射b:M→Tから、
+cone(a)→Tの候補を二つの射影と通常順の斉次合成で構成する。
+既存の`moduleHomCompose_π`を再利用し、各評価がMathlibの`descCochain`と一致することを証明した。
+d hがa≫bの閉零cycleであるとき候補は閉次数0となり、実際の加群射
+`moduleConeDescOfBoundary`を得る。評価は既存`mappingCone.desc`に一致し、
+標準右包含との合成がbであることも証明した。
+任意の可換環、非有界複体、全次数dg自然性の契約を維持する。
+
+Checks.ConeHomotopyDesc・StageSix・既存Spectra.StageTwoと標準cone三角形の入口の
+同時ビルドは成功（2523 jobs）。直接実行の主要7宣言は標準公理のみ。累計932宣言。
+U10全受入は未完。次はこの延長を用いてホモトピーまで可換なsquareのcone射と
+K(D)の標準cone三角形の射の補完を公開する。
