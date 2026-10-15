@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.CochainConeAdditiveNaturality
 import SerrePositivity.HomologicalAlgebra.GeneralKoszulLocalCohomology
 import SerrePositivity.HomologicalAlgebra.ProjectiveExtColimitExact
 import SerrePositivity.HomologicalAlgebra.ProjectiveResolutionInjectiveAcyclic
@@ -909,3 +910,10 @@ assert_no_sorry SerrePositivity.generalKoszulLocalCohomologyComparison_map_eq_ze
 #print axioms SerrePositivity.projectiveExtPowerQuotientLocalCohomologyNatIso
 #print axioms SerrePositivity.generalKoszulLocalCohomologyComparison
 #print axioms SerrePositivity.generalKoszulLocalCohomologyComparison_map_eq_zero_iff
+
+-- KL6-a3-i: additive coefficient changes respect actual cone arrow maps.
+assert_no_sorry SerrePositivity.cochainConeAdditiveIso_inv_naturality
+assert_no_sorry SerrePositivity.cochainConeAdditiveIso_hom_naturality
+
+#print axioms SerrePositivity.cochainConeAdditiveIso_inv_naturality
+#print axioms SerrePositivity.cochainConeAdditiveIso_hom_naturality
