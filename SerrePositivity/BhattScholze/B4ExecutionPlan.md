@@ -3818,3 +3818,30 @@ X_(s,0)^p−C(δφ(y_s))というモニック冪関係になることを証明�
 L/(g_s,g'_s)に新しいpねじれが生じないことを証明する。
 この第二δ関係の剰余正則性自体にはAのp正則性やy_sの正則性を要求しない。
 全δ段への移行、分冪比較、CFF根付き拡大、一般B4は未完成。
+
+## B4-6：最初のδ像を加えた実通常商のp正則性（2026-10-15）
+
+`DeltaPDivisionSecondRelationRegular.lean`で、指定した一つの初期関係g_sについて、
+L/(p,g_s)を係数商A/(p,φ(y_s))上の多項式環と比較した。
+既存δ差公式とδ(p)≡1 mod pから、δ(g_s)の実剰余像が
+X_(s,0)^p−C(δφ(y_s))となる式を証明した。
+既存deltaRootRelation_isSMulRegularを適用し、この最初のδ像の剰余正則性を得た。
+この剰余正則性自体にはAのp正則性・y_sの正則性・完備性を要求しない。
+
+二重商の標準元上の図式を証明して、最初の関係商のmod pへ移送した。
+Aのp正則性とy_sのA/pでの正則性を明示し、共通AdicRegularQuotientを合成して
+実通常商L/span{g_s,δ(g_s)}のp正則性を証明した。任意σ・指定sを許す。
+9公開宣言の対象3533ジョブ、pure B4監査、全体4917ジョブ成功。
+標準3公理のみ、新sorry・公理・引用なし。共有既存sorry警告は別扱い。
+最初の実関係商のp正則性はba322c3で工程別コミット済み。
+
+次のBS専用予定`DeltaPDivisionFiniteStageRegular.lean`で、σ=PUnitの一元p除算について
+既存deltaDivisionFiniteRelationIdeal D p (fun _↦φ(y)) Nの全Nの通常商を対象とする。
+N=0,1を今回の単独関係・二関係商へ同定し、N≥2では
+既存deltaDivisionFiniteNextJet_quotient_isSMulRegularの実mod(p,d)正則性をd=pに特殊化する。
+既存二重商を介して前段通常商のmod pへ移し、共通AdicRegularQuotientで帰納する。
+源Aのp正則性、yのA/pでの正則性、δ(p)を表す単元v、既存Witt正規化が必要とする
+自由δ環のghost単射を中間入力として明示する。後二者を未証明のまま消さない。
+全Nの後、既存δ閉包=iSup有限関係イデアルの表示を用いてraw一元δ包のp正則性へ進む。
+PUnitの中間結果を任意元族のCFF拡大と同一視しない。
+G3・G6、分冪包比較、実導来pushoutの離散性、CFF根付き拡大、一般B4は未完成。
