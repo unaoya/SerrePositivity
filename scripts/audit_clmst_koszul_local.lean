@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.CochainLinearDualCone
 import SerrePositivity.HomologicalAlgebra.MappingConeLinearDual
 import SerrePositivity.HomologicalAlgebra.KoszulLocalCohomologyAction
 import SerrePositivity.HomologicalAlgebra.LocalCohomologyKoszulComparison
@@ -265,3 +266,21 @@ example (R : Type) [CommRing R] (K : CochainComplex (ModuleCat.{0} R) ℤ)
     ((cochainLinearDualFunctor K).obj M).restriction nonnegativeCochainEmbedding ≅
       (chainLinearYonedaFunctor (toChain K)).obj M :=
   cochainLinearDualNonnegativeIso K M
+
+-- KL3a: actual shifted dual cone comparison.
+assert_no_sorry SerrePositivity.mappingConeTermProdIso
+assert_no_sorry SerrePositivity.mappingConeTermProdIso_fst
+assert_no_sorry SerrePositivity.mappingConeTermProdIso_snd
+assert_no_sorry SerrePositivity.mappingConeTermProdIso_d_fst
+assert_no_sorry SerrePositivity.mappingConeTermProdIso_d_snd
+assert_no_sorry SerrePositivity.mappingCone_inlX_cast
+assert_no_sorry SerrePositivity.cochainLinearDualConeShiftTermIso
+assert_no_sorry SerrePositivity.cochainLinearDualConeShiftTermIso_fst
+assert_no_sorry SerrePositivity.cochainLinearDualConeShiftTermIso_snd
+assert_no_sorry SerrePositivity.cochainLinearDualShiftOne_d_apply
+assert_no_sorry SerrePositivity.cochainLinearDualConeShiftTermIso_comm
+assert_no_sorry SerrePositivity.cochainLinearDualConeShiftIso
+assert_no_sorry SerrePositivity.cochainLinearDualConeIso
+
+#print axioms SerrePositivity.cochainLinearDualConeShiftIso
+#print axioms SerrePositivity.cochainLinearDualConeIso
