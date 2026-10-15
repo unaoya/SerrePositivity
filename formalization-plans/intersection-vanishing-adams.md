@@ -3774,6 +3774,17 @@ K₀ の類への移送と重みつき乗法性は次の小段。
   四定数の `assert_no_sorry` が通り、公理は標準三公理のみ。
 - 次は四シフトの指標類の評価と、一元正規化への接続。
 
+### S10.8c.3a.3a：二回シフトした一元 Koszul の台つき類
+
+- `Adams/KoszulShiftTwoClass` は `shiftFunctorAdd'` による K(a)⟦2⟧ と
+  (K(a)⟦1⟧)⟦1⟧ の同型を使い、V(a) 上で `[K(a)⟦2⟧]=[K(a)]` と証明した。
+  一回シフトの類は監査済みの `oneKoszulShiftOne_class` を再利用する。
+- 対象を含むビルドが成功（3266 jobs）。
+  `lake env lean scripts/audit_adams_koszul_shift_two_class.lean` も成功。
+  `oneKoszulShiftTwo_class` の `assert_no_sorry` が通り、公理は標準三公理のみ。
+- この結果に 2 または 3 の可逆性、a の正則性の仮定はない。
+  次は四シフトの重みつき類と三乗の類を同変同型で結ぶ。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
