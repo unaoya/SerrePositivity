@@ -82,6 +82,12 @@ check('SerrePositivity.PerfectComplex.CubicActionClass',
       lambda dep: dep.startswith('SerrePositivity.KTheory.Adams.'))
 print('Basic coefficient operations and contracts are independent of localization and Euler comparison.')
 
+coefficient_foundations = {'SerrePositivity.KTheory.' + name for name in [
+    'CoefficientExtension', 'CoefficientLinearExtension', 'CoefficientExactness']}
+for name in sorted(coefficient_foundations):
+    check(name, lambda dep: upper_layer(dep) and dep not in coefficient_foundations)
+print('Coefficient extension and right exactness are independent of the K₀ and G₀ models.')
+
 check('SerrePositivity.PerfectComplex.InvolutionClassAcyclic',
       lambda dep: dep.startswith('SerrePositivity.KTheory.Adams.'))
 print('The general acyclic involution class is independent of Adams implementations.')

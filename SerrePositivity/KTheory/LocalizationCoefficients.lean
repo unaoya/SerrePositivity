@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KTheory.LocalizationKernelSupport
-public import SerrePositivity.KTheory.CoefficientExtension
+public import SerrePositivity.KTheory.CoefficientExactness
 public import Mathlib.RingTheory.Flat.TorsionFree
 
 /-! # Supported localization after extending coefficients -/
@@ -49,19 +49,9 @@ variable [IsNoetherianRing R]
 /-- Right exactness survives extension of coefficients. No left injectivity is asserted. -/
 lemma coefficientLocalize_exact : Function.Exact (coefficientTorsionInclusion E P Z)
     (coefficientLocalize (B := B) E P Z) := by
-  have he : Function.Exact (localizationTorsionSubgroup P Z).subtype.toIntLinearMap
-      (localize (S := B) P Z (supportPullback (algebraMap R B) Z) le_rfl).toIntLinearMap := by
-    intro x
-    constructor
-    · intro hx
-      refine ⟨⟨x, ?_⟩, rfl⟩
-      rw [← localize_ker (B := B) P Z]
-      exact hx
-    · rintro ⟨x, rfl⟩
-      have hx := x.property
-      exact (localizationTorsionSubgroup_le_ker
-        (B := B) (P := P) (Z := Z) _ le_rfl) hx
-  exact lTensor_exact E he (localize_surjective (B := B) P Z)
+  apply LinearMap.exact_iff.mpr
+  apply g0CoefficientMap_ker_eq_range E _ _ _ (localize_surjective (B := B) P Z)
+  simpa only [AddSubgroup.range_subtype] using localize_ker (B := B) P Z
 
 lemma coefficientLocalize_surjective : Function.Surjective (coefficientLocalize (B := B) E P Z) :=
   LinearMap.lTensor_surjective E (localize_surjective (B := B) P Z)
@@ -123,17 +113,10 @@ lemma coefficientTorsionInclusion_injective [Module.Flat ℤ E] :
 lemma coefficientLocalize_away_kernel_range (s : R) [IsLocalization.Away s B] :
     (coefficientLocalize (B := B) E (Submonoid.powers s) Z).ker =
       (coefficientEnlarge E (show Z ⊓ supportZeroLocus (Ideal.span ({s} : Set R)) ≤ Z
-        from inf_le_left)).range := by
-  have he : Function.Exact
-      (enlarge (show Z ⊓ supportZeroLocus (Ideal.span ({s} : Set R)) ≤ Z
-        from inf_le_left)).toIntLinearMap
-      (localize (S := B) (Submonoid.powers s) Z
-        (supportPullback (algebraMap R B) Z) le_rfl).toIntLinearMap := by
-    intro x
-    exact Iff.of_eq (congrArg (fun H : AddSubgroup (G0WithSupport Z) => x ∈ H)
-      (localize_away_kernel_range (B := B) (Z := Z) s))
-  exact LinearMap.exact_iff.mp
-    (lTensor_exact E he (localize_surjective (B := B) (Submonoid.powers s) Z))
+        from inf_le_left)).range :=
+  g0CoefficientMap_ker_eq_range E _ _
+    (localize_away_kernel_range (B := B) (Z := Z) s)
+    (localize_surjective (B := B) (Submonoid.powers s) Z)
 
 end G0WithSupport
 end SerrePositivity

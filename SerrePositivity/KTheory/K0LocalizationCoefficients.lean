@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.KTheory.K0Localization
 public import SerrePositivity.KTheory.SupportedCoefficients
+public import SerrePositivity.KTheory.CoefficientExactness
 public import Mathlib.RingTheory.Localization.Submodule
 
 /-! # Supported K₀ localization with extended coefficients -/
@@ -76,16 +77,10 @@ lemma coefficientLocalize_away_kernel_range (Z : TopologicalSpace.Closeds (Prime
     (s : R) [IsLocalization.Away s S] :
     (coefficientLocalize (S := S) E (Submonoid.powers s) Z).ker =
       (coefficientEnlarge E (show Z ⊓ supportZeroLocus (Ideal.span ({s} : Set R)) ≤ Z
-        from inf_le_left)).range := by
-  have he : Function.Exact
-      (enlarge (show Z ⊓ supportZeroLocus (Ideal.span ({s} : Set R)) ≤ Z
-        from inf_le_left)).toIntLinearMap
-      (localize (S := S) (Submonoid.powers s) Z).toIntLinearMap := by
-    intro x
-    exact Iff.of_eq (congrArg (fun H : AddSubgroup (K0WithSupport Z) => x ∈ H)
-      (localize_away_kernel_range (S := S) Z s))
-  exact LinearMap.exact_iff.mp
-    (lTensor_exact E he (localize_surjective (S := S) (Submonoid.powers s) Z))
+        from inf_le_left)).range :=
+  g0CoefficientMap_ker_eq_range E _ _
+    (localize_away_kernel_range (S := S) Z s)
+    (localize_surjective (S := S) (Submonoid.powers s) Z)
 
 omit [IsNoetherianRing S] [HasFiniteProjectiveResolutions S] in
 /-- Target hypotheses are supplied by the proved localization stability results. -/
