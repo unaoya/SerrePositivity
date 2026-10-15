@@ -1244,3 +1244,15 @@ ordinary RMapとV値derived Homの局所対象・局所同値の等式とfibrant
 共有入口2559 jobs、4349宣言・372モジュールの標準公理監査、検出52宣言・9モジュール、
 豊穣存在2宣言・2モジュール、monoidal 3宣言・3モジュールとV=SSetの利用例が成功。
 実装コミット`b993cb83`・`56ec7652`。次は一般C,KのS0〜S3。F1の任意モデル源の最終関手も未完了。
+
+
+## 一般の自由・忘却随伴と評価によるS0基盤（2026-10-16）
+
+`Smith/ConservativeAdjunction`はfaithful・同型反映・accessibleな右随伴に沿って、小さい強生成族を
+自由対象へ移す。源の局所可呈示性、標的の局所小性・余完備性から標的の局所可呈示性を証明する。
+`Monoidal/ModulePresentability`は、既存の自由加群随伴・余極限創出・同型反映を使い、
+実際の`Mod C M`へ適用する。モデル構造・monoid axiom・cofibrancyは不要。
+`Transfer/EvaluationLeftProper`は評価した生成射のcofibration性を生成左クラス全体へ拡張し、
+各段で検出する弱同値の左固有性を移送する。共有入口は具体的なSpectraをimportしない。
+共有入口2834 jobs、4356宣言・375モジュールの標準公理監査が成功。
+適用先の一般対称スペクトルとS0受入条件は計画§214。実装`2c53a5b0`・`91c43b23`。

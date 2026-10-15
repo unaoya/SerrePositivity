@@ -47,3 +47,21 @@ PointedGeneratorsは自由基点追加のstrict像pointedI/Jのrlp、共通prese
 ModelCategory全体とanodyne/trivial cofibration比較は固定MathlibでTODOのため、後続の接続が必要。
 check_simplicial_model_inputs.leanはその区別を保った利用例と26宣言の公理監査を含む。
 コミット73e55b0・51d0f66・a5d2575。
+
+
+## S0完了：一般C,Kのcombinatorialレベルモデルと左固有性（2026-10-16）
+
+`Combinatorial`は実際のDay対称列とSym(K)上の内部加群に対して局所可呈示性を証明する。
+小さい強生成族と既存の自由・忘却随伴、忘却の余極限創出・同型反映を使う。
+この局所可呈示性にはモデル構造もKのcofibrancyも不要。
+`exists_combinatorial_levelModel`はCの局所可呈示性・生成表示と評価した自由J生成射の計算から、
+実際のレベルモデルと三クラス・生成表示を構成する。スペクトル上のSOAや基数を入力しない。
+
+`LeftProper`は評価した自由I生成射のcofibration性を、超限合成とretractを含む生成左クラスへ拡張する。
+源の左固有性から実際のレベルモデルの左固有性を得る。cofibrantな端点のみに制限しない。
+一般入口の評価テストは、pushout-productと単位・Kのcofibrancyから供給できる。
+単位cofibrancyはこの十分条件に限定され、局所可呈示性と一般評価テストの入口には不要。
+`exists_leftProper_combinatorial_levelModel`は実際のモデル・三クラス・生成表示・左固有性を同時に出力する。
+受入`check_spectra_presentability`（7宣言・3モジュール）、`check_spectra_level_left_proper`
+（14宣言・4モジュール）、段階2回帰と共有公理監査が成功。新規sorry・引用axiomなし。
+実装`2c53a5b0`・`91c43b23`。S1〜S3は引き続き未完了。

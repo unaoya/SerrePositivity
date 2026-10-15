@@ -6309,7 +6309,7 @@ IDは計画上の単位であり、1行を1コミットや1日とみなさない
 | L4（完了、§209） | Localization/ModelExistence。一般の左Bousfield局所化存在 | R3,L2,L3 | §159.2の三クラス・fibrant判定を同じC上で構成。局所モデルの生成Jと分解は出力。左固有性・combinatorial性も接続 |
 | L5（完了、§211） | Localization/Replacement, UniversalProperty, IteratedExistence | L4,F2 | 実際のL_Sとη、冪等性、W_Sの関手による検出、Quillen普遍性、生成表示・置換の独立性、S⊆Tと反復局所化の比較 |
 | E0（完了、§213） | Localization/EnrichedExistence, MonoidalExistence | L4,L5、既存SM7 | 通常局所化・V豊穣局所化を区別。追加のtractability/生成始域cofibrancyとtensor適合条件を明示し、局所SM7・pushout-product・単位を証明 |
-| S0 | Spectra/ModelCategory/Combinatorial, LeftProper | R1,A0、既存レベル構造 | 一般C,Kの対称スペクトルの局所可呈示性と必要条件下の左固有性。Mod型・余極限・accessibleなmonad等の比較を証明し、圏の名前だけで推論しない |
+| S0（完了、§214） | Spectra/ModelCategory/Combinatorial, LeftProper | R1,A0、既存レベル構造 | 一般C,Kの対称スペクトルの局所可呈示性と必要条件下の左固有性。Mod型・余極限・accessibleなmonad等の比較を証明し、圏の名前だけで推論しない |
 | S1 | Spectra/Stable/LocalizingMaps, Omega | S0,L0、既存free/evaluation | F_(n+1)(QA⊗K)⟶F_n(QA)を実際の射として構成。Sの小ささ、cofibrant性、局所fibrant対象とΩ_K対象の同値 |
 | S2 | Spectra/Stable/ModelCategory, EnrichedModel | S1,L4,E0 | 一般定理を適用した安定モデル、三クラス・生成性・局所置換・monoidal/SM7。具体的存在引用を追加しない |
 | S3 | Spectra/Stable/Stability, SimplicialComparison | S2、既存円tensor/随伴 | K-tensorの導来可逆性と通常の懸垂の安定性を区別。PSS/S¹で円tensorと導来Σを比較し、Σ⊣Ωの同値・旧APIの互換性を検証 |
@@ -10418,3 +10418,77 @@ V=SSetへの最終適用ではパラメータのcofibrancyと作用の単位公�
 L0〜L5、E0は確定仕様で完了。次はS0：一般C,Kの対称スペクトルについて実際の局所可呈示性と
 必要条件下の左固有性を証明し、S1〜S3の安定化へ接続する。
 F1の指定関手的分解なしの任意モデル源の最終関手も未完了で、全体目標の完了ではない。
+
+
+## 214. S0完了：一般対称スペクトルの局所可呈示性とレベルモデルの左固有性（2026-10-16）
+
+A0・A1全体を進めるという回答を再確認した。両者は§166の最終受入条件で完了済みであり、
+今回も最終入力からの一括利用例を再実行して成功した。継続中のF→L→E→Sに沿って、
+S0の一般C,Kに関する二つの証明と、実際のレベルモデルへの接続を完了した。
+S1〜S3とF1の任意モデル源の残項目は未完了であり、全体目標の完了は主張しない。
+
+### 214.1 共有一般論と実際の加群圏
+
+`Smith/ConservativeAdjunction.lean`は、F⊣Uに対してUがfaithful・同型反映・accessibleであり、
+源が局所可呈示、標的が局所小かつ余完備なら、標的の局所可呈示性を証明する。
+小さい強生成族Pを自由対象の厳密像へ移し、随伴で分離性とmonoの同型判定を移送する。
+UのaccessibilityとPの可呈示性の基数を共通化し、自由対象の可呈示性を得る。
+標的の局所可呈示性やaccessibleなfull imageを仮定していない。
+
+`Monoidal/ModulePresentability.lean`はこれをMathlibの実際の`Mod C M`へ適用する。
+既存の自由加群随伴、忘却関手の同型反映、テンソルが余極限を保存するときの余極限創出を使用する。
+忘却関手のaccessibilityは余極限創出から証明し、加群圏自体の局所可呈示性を入力しない。
+一般の内部モノイドMに適用でき、モデル構造・monoid axiom・cofibrancyは不要。
+accessible monadの代数圏との比較を別途作る代わりに、実際の忘却・自由随伴と生成族による直接証明を採用した。
+共有入口は具体的なSpectraもM5もimportしない。
+
+### 214.2 一般C,Kの局所可呈示性と実際のレベル構造
+
+`Spectra/ModelCategory/Combinatorial.lean`は、有限全単射の小さい骨格上の関手圏の局所可呈示性を
+実際の対称列へ移す。Day convolutionの左テンソルは既存の閉随伴により余極限を保存する。
+214.1を球面モノイドSym(K)へ適用し、実際の`GeneralSymmetricSpectrum C K`が局所可呈示と証明した。
+Kは任意であり、この局所可呈示性の定理にはモデル構造もKのcofibrancyも必要ない。
+対象・射・可呈示性の宇宙は独立。定義済みのDay構造に必要な可算極限・余極限の条件は明示する。
+
+`exists_combinatorial_levelModel`は、Cの局所可呈示性・モデル構造・生成表示I,Jと、
+評価した自由J生成射がtrivial cofibrationであるという計算から、実際のレベルモデルを構成する。
+スペクトル上の生成族の小ささとSOAは証明済みの局所可呈示性から導出する。
+共通基数、スペクトル圏の局所小性、自由生成族のSOAを追加の入力に戻さない。
+弱同値とfibrationは元の各段のクラス、cofibrationは生成左クラスであり、生成表示も出力する。
+
+### 214.3 すべての生成cofibrationと左固有性
+
+共有`Transfer/EvaluationLeftProper.lean`は、余極限を保存する評価関手が生成射をcofibrationへ送るなら、
+生成左クラス全体もcofibrationへ送ると証明する。coproduct・pushout・超限合成・retractを扱う。
+さらに、各評価で検出する弱同値と各段cofibrationへの包含から、元モデルの左固有性を移送する。
+この一般論自体は、評価される圏上のモデル構造を仮定しない。
+
+`FreeLevelCofibrations.lean`には、既存のtrivial版に加えてcofibration版の自由生成射の評価を追加した。
+薄いinduction groupoidの余極限と、cofibrantなテンソル冪の計算を使用する。
+`LeftProper.lean`はその結果をすべてのレベルcofibrationへ拡張する。
+源・終域がcofibrantでない射も含めて左固有性を証明した。
+
+最も一般的な入口は評価した自由I/J生成射についてのcofibration/trivial cofibrationテストを要求する。
+これらを通常のmonoidal条件から供給する十分条件は、pushout-product、単位とKのcofibrancyである。
+単位のcofibrancyはこの供給法の十分条件であり、局所可呈示性や一般評価テスト版の条件ではない。
+`exists_leftProper_combinatorial_levelModel`は、モデルの存在を仮定せず、実際のモデル、
+三クラスの同定、生成表示、左固有性を同時に出力する。
+
+### 214.4 受入検証・コミット
+
+すべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations SerrePositivity.Spectra.ModelCategory.LeftProper`：2834 jobs。
+- `check_spectra_presentability`：独立した宇宙、一般の内部モノイド、任意Kでの実際の加群圏。
+  7宣言・3モジュールの標準公理監査。
+- `check_spectra_level_left_proper`：一般monoidalな源から生成射のテストを供給し、
+  SOAや基数や既存レベルモデルを入力せず、実際の左固有combinatorialレベルモデルを構成。
+  14宣言・4モジュールの標準公理監査。
+- `check_weak_equivalences_accessible`：A0/A1の最終入力からの利用と公理監査。
+- `check_spectra_stage2`：既存の段階2の回帰確認。
+- `audit_homotopical_foundations`：4356宣言・375モジュール、標準公理のみ。
+- stage差分の`git diff --cached --check`。
+
+新規sorry・引用axiomはない。実装コミット：`2c53a5b0`、`91c43b23`。
+次はS1の実際の局所化射F_(n+1)(QA⊗K)→F_n(QA)と、小ささ・cofibrancy・Ω_K判定。
+その後S2の一般局所化による安定モデル、S3の導来K可逆性と通常の安定性の比較へ進む。
