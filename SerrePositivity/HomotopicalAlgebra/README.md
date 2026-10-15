@@ -871,3 +871,17 @@ Q/R、A1の元のWと包含、全始域・終域のRMap評価、全検出射の�
 共有入口2343 jobs、新規19宣言・2モジュール、共有2855宣言・183モジュールの標準公理監査と
 回帰検証が成功。コミットは`ffcab98`、詳細は計画§184。
 F3のresolution全体のaccessibilityは別に残り、F1の任意源での最終関手、F4、L0〜L5も未完了である。
+
+
+F3は計画§185で完了した。`Smith/AccessibleAdjunction`は稠密な可呈示対象族と随伴Hom同型から
+右随伴のaccessibilityを証明し、`AccessibleLimits`は小さい形の実際のlimへ適用する。
+`Reedy/AccessibleBoundary`・`AccessibleRelativeBoundary`はlatching/matchingと相対pushout/pullbackを
+既存の関手へ接続する。`AccessibleFactorization`は実際の有限段階を帰納し、全次数のmiddle functorへ移す。
+`AccessibleResolution`は従来のinitial/terminal constant arrowsへの制限を扱う。
+
+`AccessibleResolutions/exists_accessible_resolutions_and_mapping_tests`は、元のcombinatorialモデルと
+固定した小さい任意の射族だけから、A0の指定因子分解・Q/R、実際のΔ・Δopのresolution family、
+A1の元のWと包含、全始域・終域のRMap評価・検出関手の共通基数を構成する。
+source resolutionのaccessibilityを追加仮定にせず、全対象のRMap評価への一律の基数も要求しない。
+共有入口2354 jobs、共有2941宣言・192モジュールの標準公理監査と回帰検証が成功。
+コミットは`d71c2d1`・`19e4a10`。F1の任意源での最終関手、F4とL0〜L5は未完了である。

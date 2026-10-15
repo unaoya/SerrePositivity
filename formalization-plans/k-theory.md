@@ -6300,7 +6300,7 @@ IDは計画上の単位であり、1行を1コミットや1日とみなさない
 | F0 | HomotopyFunctionComplex/Reedy。latching/matchingとReedy分解 | A0、Mathlib ReedyStructure | まずΔとΔopに必要な一般的次数帰納を実装。Reedy cof/fibとobjectwise Wのモデル公理、関手的resolutionを証明 |
 | F1 | HomotopyFunctionComplex/Basic。cosimplicial resolutionからRMap | F0、Q/R | 任意のモデル源CでRMap:Cᵒᵖ⥤C⥤SSetを構成。両変数の弱同値不変性とfibrancy、ordinary Ho(C)の射とのπ₀比較 |
 | F2 | HomotopyFunctionComplex/Comparison | F1 | resolution/置換の選択を自然な弱同値のzigzagで比較。単体的モデル圏の場合は実際のMap(QX,RY)と比較。厳密な同一視を要求しない |
-| F3 | HomotopyFunctionComplex/Accessible | A0,A1,F0,F1 | 必要なresolutionと、固定した小さいSに対するRMap評価が共通cardinalでaccessible。任意Xについて同じcardinalを無条件に要求しない |
+| F3（完了、§185） | HomotopyFunctionComplex/Accessible | A0,A1,F0,F1 | 必要なresolutionと、固定した小さいSに対するRMap評価が共通cardinalでaccessible。任意Xについて同じcardinalを無条件に要求しない |
 | F4 | HomotopyFunctionComplex/FilteredColimits | A0,F1 | 十分大きいfiltered colimitとhomotopy colimitの比較、必要範囲でRMapのhomotopy colimit→homotopy limit公式。M4全体を先に要求しないが、この証明を省かない |
 | L0 | HomotopicalAlgebra/Localization/Basic。局所性・W_S・条件付き局所化API | F1,F2 | Sの代表・cofibrant置換の独立性、元のW⊆W_S、2-out-of-3・retract閉性、空集合/元の弱同値だけのSで元モデルを回復 |
 | L1 | Localization/AccessibleLocalObjects | A1,F3,L0 | S-local対象の充満部分圏のaccessibilityと包含のaccessibilityを導く。検出に使う関手・cardinalと小さいhomotopy生成族を明示 |
@@ -8203,3 +8203,86 @@ A0・A1で構成した指定因子分解d₀を選び、その実際のresolutio
 
 F1の任意モデル源での最終の厳密な関手、F4のfiltered/hocolim/holim比較、L0〜L5も残る。
 一般の左Bousfield局所化という依頼全体と§159.4の受入条件を維持する。
+
+
+## 185. F3完了：実際のReedy resolutionのaccessibilityとA0・A1・固定RMap評価の共通基数（2026-10-15）
+
+§184で残した、source resolution全体の関手としてのaccessibilityを証明した。
+§159.4のF3の受入条件を満たした。一般源での最終の厳密なRMapというF1の残項目は別であり、
+F3の完了からF1やF系列全体の完了は主張しない。
+
+### 185.1 右随伴・limit・小さい関手族の一般論
+
+`Smith/AccessibleAdjunction`は、accessibleな圏間の実際の右随伴がaccessibleになることを証明する。
+可呈示対象の稠密部分圏によるrestricted ULift Yonedaはfully faithfulであり、colimitを反映する。
+この埋め込みと右随伴の合成を各評価で調べると、随伴のHom同型により左随伴で送った
+可呈示対象のHomへ移せる。その対象族の共通可呈示基数から保存を導く。
+任意のaccessible関手のfull imageのaccessibilityを仮定せず、essentially smallな対象族の
+像に共通可呈示基数が存在するという証明済みの事実だけを使用する。
+
+`Smith/AccessibleLimits`は、小さいモデルへの圏同値とpresheaf圏の局所可呈示性を使い、
+任意のessentially smallな形KについてK→Cの局所可呈示性を導く。
+実際のconst⊣limと上の一般論からlimのaccessibilityを得る。
+任意のfiltered colimitと任意のlimitが無条件に交換するという仮定は置いていない。
+`AccessibleFamilies`は源・標的の異なる小さい関手族にも共通基数を選べるようにし、
+関手圏の各評価からのaccessibilityと、独立した圏間の定値関手の保存も証明する。
+
+`Reedy/AccessibleBoundary`は、既存の実際のlower latching/matching評価へこれを適用する。
+latchingはcolimit保存、matchingは十分大きい基数での保存を証明し、全次数に共通の基数を取る。
+Δ・Δopでは既存の有限性とモデル圏の有限極限・余極限から必要条件を解消できる。
+この段階のコミット：`d71c2d1`。
+
+### 185.2 相対境界・有限段階・全次数への接続
+
+`Smith/AccessiblePushoutPullback`はaccessibleな関手のpushout/pullbackと、
+実際の対象ごとのpushout.map/pullback.mapによる関手のaccessibilityを証明する。
+評価による標準同型の自然性を明示し、独立した極限・余極限の選択を定義上同じものと仮定しない。
+
+`Reedy/AccessibleRelativeBoundary`は、既存のfactorization problemの実際の相対境界射を、
+前段のmiddle functor・元の射の両端・latching/matching評価から作るpushout/pullbackへ接続する。
+前段のmiddle functorがaccessibleなら、実際の相対境界を値とするArrow Cへの関手もaccessibleになる。
+
+`Reedy/AccessibleFactorization`は既存の有限段階を帰納する。Adjoinの新しい対象での評価は
+指定したsource factorization Zを上の相対境界へ適用する合成、既存の各対象での評価は前段である。
+これらを関手圏へ集め、実際のdegree extension・successor・stageへ移す。
+全次数でのmiddle functorは各対象で有限段階に評価できるため、小さい全対象族に共通基数を選んで
+そのaccessibilityを導く。関手的であるという性質だけからaccessibilityを付与してはいない。
+
+`Reedy/AccessibleResolution`は、実際のinitial/terminal constant arrowsへの制限を接続し、
+従来のcofibrant/fibrant resolution familyそのもののaccessibilityを証明する。
+別の条件付きresolutionの型へ置き換えていない。実装のコミット：`19e4a10`。
+
+### 185.3 F3の最終入口と受入条件
+
+`AccessibleResolutions/exists_accessible_resolutions_and_mapping_tests`の最終入力は、
+元のモデル圏C、局所可呈示性、`CofibrantlyGenerated I J`、固定した小さい任意の射族sである。
+source factorizationやresolution、RMap評価のaccessibilityを追加入力にはしない。
+出力の同じ正則κと指定データdについて、次を同時に得る。
+
+- dの二つのモデル因子分解、左右因子、実際のQ/Rのκ-accessibility（A0のdのAPI）。
+- 既存のcosimplicial resolution familyとsimplicial resolution familyのκ-accessibility。
+- 元のWのfull subcategoryと包含のκ-accessibility（A1）。
+- 固定射族のすべての始域・終域でのRMap評価、および実際のprecomposition検出関手のκ-accessibility。
+
+A0・A1・§184の指定データを変更せず、大きい基数へ移す。
+各resolutionのaccessibilityの基数と共通にできることを実際に証明した。
+任意のXについて同じ基数を無条件に要求する主張はしていない。
+対象・射・小さい射族・基数の宇宙は独立に検証した。
+
+### 185.4 検証と残るゲート
+
+以下はすべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`：2354 jobs。
+- `check_accessible_resolutions`：73宣言・6モジュール、標準公理のみ。
+  実際のΔ・Δopのresolution、最終入力だけからの共通基数、同じ出力Q/Rのモデル比較射も検証。
+- `check_accessible_reedy_boundary`：17宣言・4モジュール、標準公理のみ。
+  可到達圏間の右随伴、独立した形の宇宙、実際のpullback limit、Δ・Δopの全次数を検証。
+- `audit_homotopical_foundations`：2941宣言・192モジュール、標準公理のみ。
+- `check_accessible_mapping_tests`（19宣言・2モジュール）、`check_simplicial_map_comparison`
+  （70宣言・4モジュール）、`check_homotopical_foundations`、`check_spectra_stage2`、`git diff --check`。
+
+新たなsorry・引用axiomはない。共有層から具体的なスペクトルや引用入力をimportしていない。
+F3の残項目は解消した。F1の任意モデル源での最終の厳密な関手、F4のfiltered/hocolim/holim比較、
+L0〜L5は引き続き残る。「FからLまで」の依頼全体と一般Bousfield局所化の契約を維持する。
+他チャットの変更を保持し、計画書は今回のF3行の更新と追記だけをstageした。
