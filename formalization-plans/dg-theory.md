@@ -2030,3 +2030,29 @@ fが指定quasiIsoなら持ち上げも指定quasiIsoであることを、K(D)�
 U10全受入は未完。次はこの持ち上げと導来Homの前合成を反変関手にまとめ、
 任意の解像度族に対する双関手を両変数の指定局所化へ延長する。
 局所化内のHom計算、三角構造・Verdier商・導来余積/局所小性・一対象比較の保存性も残る。
+
+
+### 13.56 U10b7f：両変数の指定局所化上の全導来Hom双関手
+
+`Derived/HomBifunctor.lean` は任意の証明付き射影解像度族Rについて、
+解像度への射の持ち上げと導来Homの前合成を反変関手にまとめる。
+持ち上げの恒等・合成法則はK(D)で証明済みであり、前合成のホモトピー独立性で
+真の関手法則へ運ぶ。指定quasiIsoは自然同型へ送られる。
+Mathlibのopposite局所化とliftを再利用して
+`moduleResolutionDerivedHomBifunctor : D(D)ᵒᵖ → (D(D) → D(A))` を構成した。
+局所化前の反変関手との比較自然同型と、R(M)による全Hom複体のD(A)像との計算同型を公開する。
+
+`moduleDerivedHomBifunctor` は実際の標準semifree解像度族を選んだ全導来Hom双関手である。
+`moduleDerivedHomBifunctorResolutionComputation` は標準族の値を任意の射影解像度P→Mで計算する。
+値域射宇宙wはHasDerivedCategoryで指定し、主D(D)の対象・射宇宙を勝手に小さくしていない。
+
+`Checks/HomBifunctor.lean` は両変数の関手、指定局所化との比較、任意の解像度族による計算、
+任意の単一の射影解像度による標準双関手の計算を検証する。
+同入口・HomBifunctorChoice・StageSix・既存Spectra.StageTwoの同時ビルドは成功（2591 jobs）。
+直接実行の主要8宣言は標準公理のみ。累計869宣言。
+担当Leanのsorry/admit/新規axiomは0件、担当diff --checkは成功。
+
+U10全受入は未完。次は解像度族の比較が始域変数にも自然であることを使い、
+双関手間の選択独立性を局所化上の自然同型とcocycle条件で公開する。
+D(D)の射集合のK(D)による計算・局所小性、三角構造・Verdier商・導来余積・
+一対象比較の三角形/余積保存も引き続き残る。
