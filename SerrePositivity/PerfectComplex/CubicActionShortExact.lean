@@ -41,15 +41,13 @@ lemma eigenK0Class_shortExact
     (hs₃ : HasHomologySupportOn Z S.X₃) :
     τ₂.eigenK0Class t ht Z hp₂ hs₂ j =
       τ₁.eigenK0Class t ht Z hp₁ hs₁ j + τ₃.eigenK0Class t ht Z hp₃ hs₃ j := by
-  have h := K0WithSupport.mk_shortExact Z (characterShortComplex S τ₁ τ₂ τ₃ hf hg t ht j)
-    (characterShortComplex_shortExact S τ₁ τ₂ τ₃ hf hg t ht j hS)
-    ((τ₁.characterProjector t (cube_eq_one_of_cubic_relation t ht) j).image_strictlyPerfect hp₁)
-    ((τ₂.characterProjector t (cube_eq_one_of_cubic_relation t ht) j).image_strictlyPerfect hp₂)
-    ((τ₃.characterProjector t (cube_eq_one_of_cubic_relation t ht) j).image_strictlyPerfect hp₃)
-    ((τ₁.characterProjector t (cube_eq_one_of_cubic_relation t ht) j).image_support hs₁)
-    ((τ₂.characterProjector t (cube_eq_one_of_cubic_relation t ht) j).image_support hs₂)
-    ((τ₃.characterProjector t (cube_eq_one_of_cubic_relation t ht) j).image_support hs₃)
-  exact h
+  exact CochainIdempotent.k0Class_shortExact S
+    (τ₁.characterProjector t (cube_eq_one_of_cubic_relation t ht) j)
+    (τ₂.characterProjector t (cube_eq_one_of_cubic_relation t ht) j)
+    (τ₃.characterProjector t (cube_eq_one_of_cubic_relation t ht) j)
+    (τ₁.projectorMap_naturality τ₂ S.f hf (cubicCharacter t j))
+    (τ₂.projectorMap_naturality τ₃ S.g hg (cubicCharacter t j))
+    Z hS hp₁ hp₂ hp₃ hs₁ hs₂ hs₃
 
 include hf hg in
 lemma weightedK0Class_shortExact (E : Type v) [CommRing E] (ζ : E)
