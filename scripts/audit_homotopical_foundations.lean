@@ -60,6 +60,8 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Diagram.WeightedSourceWeakEquivalence,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.QuillenStandardFrame,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.QuillenCylinder,
+    `SerrePositivity.HomotopicalAlgebra.Pointed.CylinderCone,
+    `SerrePositivity.HomotopicalAlgebra.Pointed.HomotopySuspension,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameOverObject,
     `SerrePositivity.HomotopicalAlgebra.Diagram.WeightedHomotopyColimitFrame,
     `SerrePositivity.HomotopicalAlgebra.Diagram.HocolimMappingComparison,
