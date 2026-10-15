@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.CategoryTheory.Monoidal.MappingWhiskering
+public import Mathlib.CategoryTheory.Adjunction.Parametrized
 
 /-! # The Hom functor of a represented ordinary enrichment
 
@@ -64,5 +65,25 @@ def homFunctorIso :
     apply NatTrans.ext
     funext G
     exact hpre f.unop G
+
+/-- A parametrized adjunction supplies the contravariant naturality automatically. -/
+def homFunctorIso_ofParametrized
+    (adj₂ : H.flip ⊣₂ B)
+    (hl' : ∀ E F, leftUnitLaw H a u (fun E ↦ B.obj (op E)) adj₂.adj E F)
+    (hr' : ∀ E F, rightUnitLaw H a u (fun E ↦ B.obj (op E)) adj₂.adj E F)
+    (ha' : ∀ E F G K, associativityLaw H a (fun E ↦ B.obj (op E)) adj₂.adj E F G K)
+    (hi' : ∀ E, arrowIdentityLaw H u (fun E ↦ B.obj (op E)) adj₂.adj E)
+    (hc' : ∀ {E F G} (f : E ⟶ F) (g : F ⟶ G),
+      arrowCompositionLaw H a u (fun E ↦ B.obj (op E)) adj₂.adj f g) :
+    let : EnrichedOrdinaryCategory V D := ordinaryCategory H a u
+      (fun E ↦ B.obj (op E)) adj₂.adj hl' hr' ha' hi' hc'
+    eHomFunctor V D ≅ B := by
+  apply homFunctorIso H a u (fun E ↦ B.obj (op E)) adj₂.adj
+    hl' hr' ha' hi' hc' hL hR huL huR B (fun _ ↦ Iso.refl _)
+  intro E F f X G g
+  simp only [Iso.refl_hom, NatTrans.id_app, Category.comp_id, Category.id_comp]
+  change adj₂.homEquiv ((H.flip.map f).app X ≫ g) =
+    adj₂.homEquiv g ≫ (B.map f.op).app G
+  exact adj₂.homEquiv_naturality_one (X₁ := E) (Y₁ := F) (X₂ := X) (X₃ := G) f g
 
 end SerrePositivity.RepresentedHomFunctor

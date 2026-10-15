@@ -63,6 +63,16 @@ lemma transported_pre {E E' : C} (f : E' ⟶ E)
   rw [Adjunction.homEquiv_ofNatIsoLeft_apply, Adjunction.homEquiv_ofNatIsoLeft_apply]
   rw [← Category.assoc, ← ht, Category.assoc, homEquiv_pre]
 
+/-- Source naturality with the full postcomposed internal-Hom bifunctor. -/
+lemma transported_pre_bifunctor {E E' : C} (f : E' ⟶ E)
+    {T T' : V ⥤ C} (e : L ⋙ tensorRight E ≅ T) (e' : L ⋙ tensorRight E' ≅ T')
+    {X : V} {F : C} (t : T'.obj X ⟶ T.obj X) (g : T.obj X ⟶ F)
+    (ht : L.obj X ◁ f ≫ e.hom.app X = e'.hom.app X ≫ t) :
+    ((adjunction a E').ofNatIsoLeft e').homEquiv X F (t ≫ g) =
+      ((adjunction a E).ofNatIsoLeft e).homEquiv X F g ≫
+        ((internalHom ⋙ (Functor.whiskeringRight C C V).obj R).map f.op).app F :=
+  transported_pre a f e e' t g ht
+
 /-- 移送後の逆転置の原変数の射に関する自然性の法則。 -/
 def transportedUncurryPreLaw {E E' : C} (f : E' ⟶ E)
     {T T' : V ⥤ C} (e : L ⋙ tensorRight E ≅ T) (e' : L ⋙ tensorRight E' ≅ T')
