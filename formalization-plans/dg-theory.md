@@ -1738,3 +1738,35 @@ U10全受入は未完。次は余極限を源とする主Hom endが実際の極�
 U10全受入は未完。次にこの極限普遍性と互換な境界原像の構成を接続して、
 semifree全体のhomotopically projective性を完成する。
 導来Hom・選択独立性・三角構造・Verdier商・余積/局所小性・一対象比較の保存性は残る。
+
+
+### 13.44 U10b5c：semifree全体のhomotopically projective性と射影解像度
+
+`Complexes/TowerLimitAcyclic.lean` は複体の評価の極限保存から、極限の各次数の要素を
+射影で判定する補題を構成する。可算塔の互換なcycle族に§13.42の補正再帰を適用し、
+各次数の極限普遍性で互換な境界原像を組み立て、極限複体のacyclic性を証明する。
+仮定は各段のacyclic性と各隣接遷移の全整数次数での全射性である。
+
+`Derived/SemifreeProjective.lean` はfiltrationのHomをこの可算塔と同定する。
+§13.41の全有限段の射影性、§13.40のHom制限の全射性、§13.43の実際の極限普遍性から
+`ModuleSemifreeFiltration.homotopicallyProjective` と
+`moduleSemifree_homotopicallyProjective` を証明した。
+`exists_homotopicallyProjective_resolution` は任意加群Mに対しPとq:P→Mを与え、
+Pのhomotopically projective性・qの次数ごとの全射性・指定objectwise quasiIsoを証明する。
+任意可換環・非有界複体・独立対象宇宙 `[Small.{u} D]` を維持し、
+Hom_Dのflatness/projectivityや射影モデル構造を仮定しない。
+
+`Checks/SemifreeProjective.lean` は全Hom endのacyclic性、解像度存在、一般の可算極限と
+ZMod 2の実際のresolution candidateへの適用を検証する。
+共有基盤更新後の同入口・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3248 jobs）。
+直接実行の主要5宣言は標準公理のみ。累計758宣言。
+担当Leanのsorry/admit/新規axiomは0件。
+全体文書再検査は並行系列の未生成Paper.Section5.CoreLengthPositivity.oleanで停止した。
+この制限を解消したとは扱わず、root・並行系列のソースは編集していない。
+
+U10全受入は未完。semifreeの存在と全Hom endによる射影性は揃ったが、
+導来Homの計算・解像度の選択独立性はまだ局所化と接続する必要がある。
+次は射影的始域からacyclic対象への全dg自然な零ホモトピーを公開し、
+quasiIsoによるHomの不変性と局所化内の比較射・選択独立性を証明する。
+K(D)/D(D)の三角構造・Verdier商比較、余積・局所小性の宇宙、
+一対象同値の三角形/余積保存も引き続き残る。共有一般論の新しい不足要求はない。
