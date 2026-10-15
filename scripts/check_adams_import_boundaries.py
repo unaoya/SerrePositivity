@@ -19,9 +19,11 @@ def dependency_path(start, forbidden):
     while pending:
         path = pending.popleft()
         module = path[-1]
+        if module not in graph:
+            raise SystemExit('Missing local import path:\n  ' + '\n  -> '.join(path))
         if forbidden(module):
             return path
-        for dependency in graph.get(module, []):
+        for dependency in graph[module]:
             if dependency not in seen:
                 seen.add(dependency)
                 pending.append(path + [dependency])
@@ -82,6 +84,7 @@ consumers = [
     'HomologicalAlgebra.BoundedAboveDerivedAssociator',
     'HomologicalAlgebra.BoundedAboveDerivedBaseChange',
     'HomologicalAlgebra.DerivedTensorCoherenceModels',
+    'HomologicalAlgebra.DerivedQuotientKoszul',
     'HomologicalAlgebra.TensorSingleNaturality',
     'HomologicalAlgebra.TensorConeNaturality',
     'HomologicalAlgebra.ScalarConeShiftNaturality',
