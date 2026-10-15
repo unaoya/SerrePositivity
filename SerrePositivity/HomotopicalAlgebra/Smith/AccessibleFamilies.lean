@@ -12,6 +12,20 @@ open CategoryTheory
 
 namespace SerrePositivity.Smith
 
+/-- Constant functors with independent source and target categories. -/
+lemma constant_isCardinalAccessible {C : Type u} [Category.{v} C]
+    {D : Type u'} [Category.{v'} D] (X : C) (κ : Cardinal.{w}) [Fact κ.IsRegular] :
+    ((Functor.const D).obj X).IsCardinalAccessible κ where
+  preservesColimitOfShape J _ _ :=
+    { preservesColimit {F} :=
+        { preserves {c} hc := ⟨by
+            have h := isFiltered_of_isCardinalFiltered J κ
+            have (j : J) : IsIso ((((Functor.const D).obj X).mapCocone c).ι.app j) := by
+              dsimp
+              infer_instance
+            exact Functor.IsEventuallyConstantFrom.isColimitOfIsIso
+              (i₀ := h.nonempty.some) (fun _ _ ↦ by dsimp; infer_instance) _⟩ } }
+
 /-- Sources and targets may vary with the index. The bound is common to
 the whole small family, including all finite stages of a construction. -/
 lemma exists_common_accessibility {ι : Type t} [Small.{w} ι]
