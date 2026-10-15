@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.RegularPrincipalDPUniversal
 import SerrePositivity.BhattScholze.PrincipalDPFactorialEquiv
 import SerrePositivity.BhattScholze.PrincipalDPRegular
 import SerrePositivity.BhattScholze.RankOneDPPrimeBasis
@@ -4410,3 +4411,15 @@ assert_no_sorry SerrePositivity.BhattScholze.principalDPFactorialEquiv_coeff
 #print axioms SerrePositivity.BhattScholze.principalDPFactorialEquiv_coeff
 assert_no_sorry SerrePositivity.BhattScholze.principalDPFactorialEquiv_generator
 #print axioms SerrePositivity.BhattScholze.principalDPFactorialEquiv_generator
+
+-- Full ordinary divided-power universality for regular principal inputs, torsion targets allowed.
+assert_no_sorry SerrePositivity.BhattScholze.regularPrincipalDPLift
+#print axioms SerrePositivity.BhattScholze.regularPrincipalDPLift
+assert_no_sorry SerrePositivity.BhattScholze.regularPrincipalDPLift_coeff
+#print axioms SerrePositivity.BhattScholze.regularPrincipalDPLift_coeff
+assert_no_sorry SerrePositivity.BhattScholze.regularPrincipalDPLift_value
+#print axioms SerrePositivity.BhattScholze.regularPrincipalDPLift_value
+assert_no_sorry SerrePositivity.BhattScholze.regularPrincipalDPLift_isDPMorphism
+#print axioms SerrePositivity.BhattScholze.regularPrincipalDPLift_isDPMorphism
+assert_no_sorry SerrePositivity.BhattScholze.existsUnique_regularPrincipalDPMorphism
+#print axioms SerrePositivity.BhattScholze.existsUnique_regularPrincipalDPMorphism
