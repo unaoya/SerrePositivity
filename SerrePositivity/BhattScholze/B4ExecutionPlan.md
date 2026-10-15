@@ -5796,3 +5796,17 @@ pの素数性・p正則性・δ構造・完備性は要求しない。
 共有KTheory/Adams/WeightAnnihilation.lean:1でPerfectComplex/IntegerEuler.oleanの欠落が報告された。
 この全体検証の失敗を、今回のBS対象ビルド・B4全体pure監査の成功と区別する。
 共有ファイルは編集せず、観測のタイムアウトを理由に実行を再起動していない。
+
+## B4-6：正則一元階乗部分環の実mod p比較（2026-10-15）
+
+RegularPrincipalDPModP.leanで、p局所・p正則なδ環とy mod p正則性の下、
+既存の実表示環同型をp商へ降ろした。具体的階乗部分環のp商から
+PrincipalDPPresentation (A/p) (y mod p)への実環同型と、全係数・全階乗生成元上の式を証明した。
+4公開宣言の対象2746ジョブ・B4全体pure監査成功。標準3公理のみ。
+新sorry・公理・引用なし。通常の商環の比較であり、導来pushout・完備化比較・CFF・一般B4は未完成。
+
+### 次工程の登録：係数環自身への評価テンソル比較
+
+BS専用PrincipalDPEvaluationTensor.leanを追加し、Γ_A(A)⊗[A[X]]A（Xをyへ評価）と
+PrincipalDPPresentation A yを実環同型で比較する。既存の多項式一次商同型・テンソル商同型を再利用し、
+係数・分冪生成元上の式を証明する。pの仮定を置かない通常環の比較を最初の単位とする。
