@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.DeltaPDivisionFiniteEvaluationRegular
+public import SerrePositivity.BhattScholze.DeltaDivisionSourceFiniteTor
 
 /-! # 実自由δ射に沿う有限源グラフ商のTor
 
@@ -40,15 +41,9 @@ def deltaPDivisionSourceFiniteKoszulTorIso (N i : ℕ) :
       (ModuleCat.of P₀ (DeltaPDivisionSourceFiniteQuotient (σ := σ) D y N)) ≅
       (SerrePositivity.koszulComplex (fun j : Fin (N + 1) =>
         deltaDivisionEvaluationRelation D (p : A) a₀ (default : σ) j.val)).homology (-(i : ℤ)) := by
-  have e := SerrePositivity.torAlgKoszulIso α₀ (deltaPDivisionSourceGraphPrefix D y N)
-    (deltaPDivisionSourceGraphPrefix_isKoszulResolution D y N) i
-  have he : α₀ ∘ deltaPDivisionSourceGraphPrefix D y N =
-      (fun j : Fin (N + 1) =>
-        deltaDivisionEvaluationRelation D (p : A) a₀ (default : σ) j.val) := by
-    funext j
-    exact deltaDivisionSourceGraph_map D (p : A) a₀ (default, j.val)
-  rw [he] at e
-  exact e
+  exact deltaDivisionSourceFiniteCoordinateKoszulTorIso D (p : A) a₀
+    (fun j : Fin (N + 1) => (default, j.val))
+    (fun _ _ hij => Fin.ext (congrArg Prod.snd hij)) i
 
 /-- 正則一元入力では、実αに沿う有限源商の全正次数Torが零。 -/
 theorem deltaPDivisionSourceFinite_tor_subsingleton
@@ -59,9 +54,9 @@ theorem deltaPDivisionSourceFinite_tor_subsingleton
       (Ideal.Quotient.mk (Ideal.span {(p : A)}) y)) (N i : ℕ) :
     Subsingleton (SerrePositivity.TorAlg α₀ (i + 1)
       (DeltaPDivisionSourceFiniteQuotient (σ := σ) D y N)) := by
-  have hr := deltaPDivisionFiniteEvaluation_isKoszulResolution D y hpA hg v hv hy N
-  have hz := hr.isZero (-((i + 1 : ℕ) : ℤ)) (by omega)
-  have ht := hz.of_iso (deltaPDivisionSourceFiniteKoszulTorIso D y N (i + 1))
-  exact ModuleCat.subsingleton_of_isZero ht
+  exact deltaDivisionSourceFiniteCoordinate_tor_subsingleton D (p : A) a₀
+    (fun j : Fin (N + 1) => (default, j.val))
+    (fun _ _ hij => Fin.ext (congrArg Prod.snd hij))
+    (deltaPDivisionFiniteEvaluation_isKoszulResolution D y hpA hg v hv hy N) i
 
 end SerrePositivity.BhattScholze

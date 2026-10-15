@@ -6788,3 +6788,16 @@ DeltaDivisionSourceFiniteTor.leanで、任意d,cと異なる有限座標族sに�
 3新公開宣言の対象3519ジョブ成功、B4全体pure監査1809報告成功、標準3公理のみ。
 新sorry・公理・外部引用なし。終域のKoszul分解という仮定を無条件に解消したとはしない。
 有限源商と全評価環を区別し、G7・一般dの導来pushout離散性・CFF・一般B4全射性は未完成として保持する。
+
+## B4-6：一元φ/pの有限源Torを一般比較へ接続（2026-10-15）
+
+既存DeltaPDivisionSourceFiniteTorの比較同型と正次数Tor消滅を、
+一般DeltaDivisionSourceFiniteTorのs(i)=(default,i)・d=p・c=φ(y)への特殊化に整理した。
+旧公開型・正則性入力・後続のG7相対的導来比較は維持した。重複する比較・消滅の証明を除いた。
+一元版と後続導来比較3862ジョブ、B4監査全import依存4277ジョブ成功。
+警告は既存のLocalFlatnessCriterion長行、DerivedTensorPentagon設定コメント、
+DeltaPDivisionSequentialKoszulUnitのhaveI形式のみ。最終B4全体pure監査1809報告成功、標準3公理のみ。
+新sorry・公理・引用なし。今回の証明済み成果は有限源商の比較であり、
+全評価環へのTor移送のG7、一般d根添加終域のKoszul分解、完全化後CFFは引き続き別工程。
+著者版Lemma 2.43・Corollary 2.44・Theorem 7.14を確認し、補助φ/p計算のみから
+一般d根添加候補の完全忠実平坦性を結論しない。一般B4は未完成として保持する。
