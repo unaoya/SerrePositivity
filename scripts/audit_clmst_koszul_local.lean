@@ -1,3 +1,4 @@
+import SerrePositivity.CLMST.ConditionalCohomologyVanishing
 import SerrePositivity.HomologicalAlgebra.ParameterLocalCohomologyAnnihilator
 import SerrePositivity.HomologicalAlgebra.LocalCohomologyScalarBaseChange
 import SerrePositivity.HomologicalAlgebra.GeneralLocalCohomologyBaseChange
@@ -984,3 +985,7 @@ assert_no_sorry SerrePositivity.parameterLocalCohomologyScalarEndomorphism_eq_ze
 
 #print axioms SerrePositivity.parameterLocalCohomologyScalarEndomorphism_eq_zero_of_tor_annihilated
 #print axioms SerrePositivity.parameterLocalCohomologyScalarEndomorphism_eq_zero_of_baseIdeal_tor
+
+-- KL6-b: both actual conclusions of conditional Corollary 4.0.4.
+assert_no_sorry SerrePositivity.CLMST.conditional_corollary_4_0_4
+#print axioms SerrePositivity.CLMST.conditional_corollary_4_0_4
