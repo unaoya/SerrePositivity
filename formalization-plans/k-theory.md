@@ -7172,3 +7172,90 @@ relative trivial fibrationという条件が「Reedy fibrationかつobjectwise W
 構造の完成を主張しない。モデル公理と必要なresolutionを証明してF0を完了する。
 F1のRMap・不変性・fibrancy・π₀比較、F2の選択比較、F3の共通基数、F4のfiltered colimitと
 homotopy (co)limit比較も引き続きすべて依頼範囲である。
+
+## 172. F0進捗：実際のクラス付き関手的Reedy因子分解（2026-10-15）
+
+F0〜F4全体の依頼を維持している。今回、源で選んだ関手的因子分解データから、全図式の
+実際の関手的因子分解を構成した。中間関手だけでなく、左右の自然変換・分解等式と
+相対Reedyクラスへの所属を出力する。§171で未完了だった入力の正方形に対する関手性を
+実装した。objectwise Wとの対応、Reedyモデル構造・resolutionとF1〜F4は引き続き残る。
+
+### 172.1 因子分解問題と相対境界射の関手
+
+`Reedy/FactorizationProblem`は、追加対象を持つ境界図式の射と、その下位図式の因子分解を
+対象とする圏を構成する。その射は、元の境界図式の可換正方形と、下位の両因子と可換な
+中間自然変換を保持する。
+`RelativeBoundaryFunctor`はこの圏から`Arrow C`への関手を構成する。相対latchingの
+押し出しと相対matchingの引き戻しの間の実際の射を使い、押し出しの二つの入射と
+引き戻しの二つの射で検査される四成分の可換性を証明する。恒等射と合成も保つ。
+コミット：`b88f814`。
+
+`FunctorialExtension`は、この相対境界射の関手を、選んだ源の関手的因子分解へ渡す。
+得られた中間射が入射・出射のgluing則を満たすことを証明し、実際の中間境界図式の
+関手を構成する。左右の自然変換は元の射へ合成され、それぞれの相対射が源のクラスに
+属することも証明した。
+
+### 172.2 射圏上の因子分解の族と次数の反復
+
+`FunctorFactorizationFamily`は、元の`Arrow (J ⥤ C)`を添字とする関手圏の因子分解として、
+中間関手と両自然変換をまとめる。評価によって172.1の問題の対象を作り、自然性によって
+実際の問題の射を作る。源の関手的データからそのような族を作る入口も提供する。
+ここまでのコミット：`3632dc5`。
+
+`FunctorialDegreeStep`は、元の図式への自然な比較を使い、通常の閉じた次数制限上での
+関手的な中間図式と両自然変換を構成する。
+`FunctorialSuccessor`は下位の次数制限へ戻す自然同型を構成する。この同型は、元の
+入力の可換正方形にも自然で、左右の因子の変換とも可換である。
+一段の族を各入力の射で評価すると、先に実装した通常の一段構成に等しいことも証明する。
+
+`FunctorialSequence`はこれを全自然数次数で実際に反復する。各段を評価した結果は、
+同じ源の因子分解の選択を用いた通常の`FactorizationSequence.stage`に等しい。
+反復後の図式の列や、その関手性・整合性は入力として仮定しない。
+コミット：`89c0939`。
+
+### 172.3 全体の中間関手、両自然変換、相対クラス
+
+`GlobalFunctorialFactorization`は、各段の中間射と制限同型の自然性から全体の中間射を
+貼り合わせ、`Arrow (J ⥤ C) ⥤ (J ⥤ C)`という実際の関手を構成する。恒等射・合成を保ち、
+全体の左右の因子は射圏上の自然変換となる。その合成が元の射に等しいことも証明した。
+
+`DegreeClassTransfer`は、各次数の局所的な因子分解から任意の全体の図式の射へ、
+相対クラスの所属を移す比較を一般的な形にまとめる。
+`FunctorialFactorizationClasses`はこれを実際の関手的反復の各段の比較に適用する。
+最終入口`FunctorFactorizationSequence.functorialFactorizationData`の出力は
+`FunctorialFactorizationData (reedyLeft r left) (reedyRight r right)`であり、`⊤ ⊤`の出力に
+留まらない。`HasFunctorialFactorization`を与える入口も提供する。
+コミット：`2dc012d`。
+
+### 172.4 適用範囲と源の仮定
+
+次数関数が対象と自然数の全単射になる一般のReedy圏で、必要なlatching/matchingの極限・
+余極限と押し出し・引き戻し、および選んだ源の関手的因子分解を使う。両クラスは
+同型で閉じることを要求する。ΔとΔopは次数条件を満たし、モデル源Cの有限極限・
+有限余極限から必要な図式の極限・余極限を得る。値圏CをSSetや特定のモデル圏には
+制限しない。
+
+Mathlibの`ModelCategory C`だけでは、関手的な源の因子分解データは与えられない。
+今回の関手的構成はそのデータを明示的に受け取り、§171の通常の弱因子分解系の入口は
+引き続き通常のモデル公理だけで使える。A0のcombinatorialな源では選んだ関手的データを
+供給できる。この区別によって、F1の任意モデル源という契約を狭めない。
+
+### 172.5 検証と次の受入項目
+
+- 共有入口のビルド1642 jobsが成功。
+- `check_reedy_functorial_extension`：追加十モジュール全200宣言、標準公理のみ。
+- ΔとΔopのそれぞれで(cofibration,trivial fibration)と(trivial cofibration,fibration)の
+  クラス付き関手的因子分解を、選んだ源のデータから構成する四つの利用例が成功。
+- `HasFunctorialFactorization`の入口と、各有限段で通常の反復構成に一致することも検証。
+- `check_reedy_relative_arrows`（173宣言）、`check_reedy_diagram_tower`（199宣言）も成功。
+- 共有基盤1891宣言・114モジュールの公理監査は標準公理のみ。
+- `check_weak_equivalences_accessible`、`check_homotopical_foundations`、
+  `check_spectra_stage2`の回帰検証も成功。新規sorry・引用axiomはない。
+
+次はrelative trivial cofibrationと「Reedy cofibrationかつobjectwise W」、および
+relative trivial fibrationと「Reedy fibrationかつobjectwise W」の二つの同値を証明する。
+下位のlatching/matching図式の極限・余極限と相対持ち上げを接続し、各成分の弱同値を
+次数帰納で比較する。今回の関手的分解だけから、この同値やモデル公理を先取りしない。
+その後、Reedyモデル構造を構成し、必要な定数図式の関手的resolutionを得る。
+F1のRMap・不変性・fibrancy・π₀比較、F2の選択比較、F3の共通基数、F4のfiltered colimitと
+homotopy (co)limit比較も引き続きすべて依頼範囲である。

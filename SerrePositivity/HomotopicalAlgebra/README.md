@@ -638,3 +638,33 @@ retract閉性、全体の持ち上げ定理から、左右が相手の持ち上�
 共有入口のビルド1632 jobs、既存の図式反復・追加図式・accessibility・共有基盤・
 スペクトルの回帰検証も成功した。objectwise Wとrelative trivial条件の同値、入力の
 正方形に対する関手的因子分解、モデル公理・resolutionとF1〜F4は引き続き残る。
+
+
+## F0：実際のクラス付き関手的因子分解（途中、2026-10-15）
+
+`FactorizationProblem`は境界図式の射と下位の因子分解を圏にまとめ、
+`RelativeBoundaryFunctor`は相対押し出し→相対引き戻しの射を、元の可換正方形にも
+作用する射圏の関手にする。`FunctorialExtension`はこれを選んだ源の関手的因子分解へ渡し、
+新しい中間境界図式の関手と両自然変換を構成する。gluing則と両因子の分解等式も証明する。
+
+`FunctorFactorizationFamily`は元の射圏上の関手的因子分解の族を扱い、
+`FunctorialDegreeStep`・`FunctorialSuccessor`は通常の次数制限上での一段構成を与える。
+下位へ戻す同型は入力の可換正方形に自然で、両因子と可換である。
+`FunctorialSequence`は全次数でこの構成を反復し、各段の評価が同じ源の選択を用いた
+通常の反復構成と等しいことも証明する。
+
+`GlobalFunctorialFactorization`は全体の中間図式を`Arrow (J ⥤ C) ⥤ (J ⥤ C)`という実際の
+関手にし、左右の自然変換と元の射への分解等式を構成する。
+`DegreeClassTransfer`と`FunctorialFactorizationClasses`は、実際の全体の両因子に相対Reedy
+クラスの所属を付ける。最終入口`FunctorFactorizationSequence.functorialFactorizationData`は
+`FunctorialFactorizationData (reedyLeft r left) (reedyRight r right)`を出力する。
+
+次数が対象と自然数の全単射になる一般のReedy圏で使える。Δ・Δopでは任意のモデル源Cの
+有限極限・有限余極限と、選んだ源の関手的因子分解データから適用できる。
+通常のモデル公理だけで与えられる分解と、選んだ関手的データの必要性は区別する。
+追加十モジュール200宣言、共有基盤1891宣言・114モジュールは標準公理のみで監査成功。
+共有入口のビルド1642 jobs、Δ・Δop両組の利用例、既存の相対射・図式反復・accessibility・
+共有基盤・スペクトルの回帰検証も成功した。
+
+objectwise Wとrelative trivial条件の同値、Reedyモデル公理・resolutionとF1〜F4は残る。
+今回の関手的分解によって、F1の任意モデル源という契約を追加仮定付きへ狭めない。
