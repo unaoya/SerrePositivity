@@ -18,4 +18,3 @@ assert_no_sorry SerrePositivity.cochainTwoTermScalarMap
 
 assert_no_sorry SerrePositivity.cochainTwoTermScalarMap_eigen
 #print axioms SerrePositivity.cochainTwoTermScalarMap_eigen
-

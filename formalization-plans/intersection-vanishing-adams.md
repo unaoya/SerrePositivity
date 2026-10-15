@@ -3680,6 +3680,19 @@ K₀ の類への移送と重みつき乗法性は次の小段。
   台・係数体・import の受入を詳細化した。
 - 次は四つの Fourier 成分の鎖写像。四成分の同変鎖同型と正規化は未完了。
 
+### S10.8c.2c.2：四つの Fourier 鎖埋め込みと固有値
+
+- `Adams/KoszulCubeFourierEmbeddings` は K(a)、二つの K(a)⟦1⟧、K(a)⟦2⟧ から
+  Koszul 三乗への四つの鎖写像を構成した。下の生成元の像は順に
+  v₀、−v₀₁、−v₀₂、v_top、上の像は 1、v₁、v₂、v₁₂。
+- 鎖写像全体と巡回作用の合成が、それぞれ固有値 1,t,t²,1 のスカラー倍に
+  等しいことを証明した。a の非零性・正則性や 2 の可逆性は仮定していない。
+- `lake build SerrePositivity.KTheory.Adams.KoszulCubeFourierEmbeddings` が成功（2847 jobs）。
+- `lake env lean scripts/audit_adams_koszul_fourier_embeddings.lean` が成功。
+  十二定数の `assert_no_sorry` が通り、公理は標準三公理のみ。
+- 前小段の監査ファイルの末尾の余分な空行を除いた。
+  次は直和からの鎖写像へまとめ、各次数の同型を証明する。S10.8c 全体は未完了。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
