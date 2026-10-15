@@ -5048,3 +5048,15 @@ Mathlibの既存SubDPIdeal.spanとspan_carrier_eq_dpow_spanによりJが実分�
 任意σ・元のAのpねじれ・零環を許し、ghost単射・G7・André引用は用いない。
 8公開宣言の通常対象・後続との結合ビルド・B4全体pure監査が成功。標準3公理のみ。
 新sorry・公理・引用なし。分冪包の正次数イデアル・普遍性・導来比較・CFF・一般B4は別工程。
+
+## B4-6：正次数階乗イデアル上の実分冪構造（2026-10-15）
+
+`DeltaPDivisionFactorialIdeal.lean`で、全γ_(n+1)(y_s)が生成する具体的イデアルJを
+δ構造と独立に定義し、y_s=γ_1(y_s)の所属を確認した。
+Mathlib SubDPIdeal.span_carrier_eq_dpow_spanと前工程の分冪値の正規化により、
+Jが基底元の実分冪生成イデアルそのものであることを示した。
+既存IsSubDPIdeal.dividedPowersをJへ制限し、J上の実際の分冪構造と基底元上の式を公開した。
+(y)自体を分冪閉と仮定せず、最大p除算可能イデアルとJを区別している。
+任意σ・元のAのpねじれを許し、p局所性だけを要求する。
+6公開宣言の対象2413ジョブ・B4全体pure監査成功。標準3公理のみ。
+新sorry・公理・引用なし。分冪包の普遍性・原典導来比較・CFF・一般B4は未完成。
