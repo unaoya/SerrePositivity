@@ -1,4 +1,6 @@
 import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.TensorKanCriterion
+import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryTensor
+import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexResolution
 import Lean.Util.CollectAxioms
 
 noncomputable section
@@ -45,6 +47,25 @@ example [ModelCategory C]
     HasLiftingProperty (SSet.boundary.{v} n).ι ((cosimplicialHom A).map p) :=
   boundary_lifting_of_cofibration A hA p n
 
+example (n : ℕ) : (BoundaryIndex.X.{v} n).N ≌
+    SerrePositivity.Reedy.LatchingIndex SerrePositivity.Reedy.simplex (SimplexCategory.mk n) :=
+  BoundaryIndex.equivalence n
+
+-- Cofibrancy of the actual constructed boundary tensor is proved from Reedy cofibrancy.
+example [ModelCategory C] (X : C) (n : ℕ) :
+    cofibrations C (SubcomplexTensor.inclusion (SSet.boundary.{v} n)
+      (SerrePositivity.Reedy.cosimplicialResolution X).obj) :=
+  boundaryTensor_cofibration _ n (SerrePositivity.Reedy.cosimplicialResolution X).cofibrant
+
+-- An ordinary resolution over any model source gives actual boundary fillers
+-- against source trivial fibrations; no functorial source data is needed.
+example [ModelCategory C] (X : C) {Y Z : C} (p : Y ⟶ Z)
+    [Fibration p] [WeakEquivalence p] (n : ℕ) :
+    HasLiftingProperty (SSet.boundary.{v} n).ι
+      ((cosimplicialHom (SerrePositivity.Reedy.cosimplicialResolution X).obj).map p) :=
+  boundary_lifting_of_reedyCofibrant _ n
+    (SerrePositivity.Reedy.cosimplicialResolution X).cofibrant p
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -53,7 +74,10 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PresentationLifting,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.NonsingularPresentation,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SubcomplexTensor,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.TensorKanCriterion]
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.TensorKanCriterion,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryIndex,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryTensor,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.CofibrantBoundary]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
