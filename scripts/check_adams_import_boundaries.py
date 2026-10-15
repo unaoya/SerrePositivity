@@ -127,6 +127,7 @@ for name in ['PerfectComplex.FiniteProjectiveResolutions', 'CommutativeAlgebra.R
 print('Localized resolution and regularity boundaries passed without Grothendieck groups.')
 
 consumers = [
+    'DifferentialGraded.Complexes.Braiding',
     'DifferentialGraded.Complexes.Biproduct',
     'DifferentialGraded.Complexes.AcyclicCone',
     'DifferentialGraded.Complexes.TensorShift',

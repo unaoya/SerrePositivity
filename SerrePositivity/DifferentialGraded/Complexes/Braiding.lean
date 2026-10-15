@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Complexes.CompositionLaws
-public import Mathlib.CategoryTheory.Monoidal.Braided.Basic
+public import SerrePositivity.HomologicalAlgebra.CochainTensorBraided
 
 /-! # 非有界 Ch(A) の Koszul braiding
 
@@ -9,6 +9,7 @@ public import Mathlib.CategoryTheory.Monoidal.Braided.Basic
 @[expose] public section
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
+set_option backward.defeqAttrib.useBackward true
 universe u
 namespace SerrePositivity.DifferentialGraded
 open CategoryTheory Limits MonoidalCategory HomologicalComplex
@@ -92,39 +93,9 @@ lemma nested_left_apply (P Q T : Complex A) (i j k l n : ℤ)
 /-- 左側の hexagon。符号の指数 i(j+k)=ij+ik を三重 tensor で検証する。 -/
 lemma signedSwap_hexagon_forward (P Q T : Complex A) :
     (α_ P Q T).hom ≫ (signedSwap P (Q ⊗ T)).hom ≫ (α_ Q T P).hom =
-      (signedSwap P Q).hom ▷ T ≫ (α_ Q P T).hom ≫ Q ◁ (signedSwap P T).hom := by
-  apply triple_ext
-  intro i j k n hn
-  simp only [HomologicalComplex.comp_f]
-  apply ModuleCat.hom_ext
-  apply TensorProduct.ext_threefold
-  intro x y z
-  change (α_ Q T P).hom.f n
-    ((signedSwap P (Q ⊗ T)).hom.f n
-      ((α_ P Q T).hom.f n
-        (ιTensorObj (P ⊗ Q) T (i + j) k n hn
-          (ιTensorObj P Q i j (i + j) rfl (x ⊗ₜ[A] y) ⊗ₜ[A] z)))) =
-    (Q ◁ (signedSwap P T).hom).f n
-      ((α_ Q P T).hom.f n
-        (((signedSwap P Q).hom ▷ T).f n
-          (ιTensorObj (P ⊗ Q) T (i + j) k n hn
-            (ιTensorObj P Q i j (i + j) rfl (x ⊗ₜ[A] y) ⊗ₜ[A] z))))
-  rw [associator_apply_of_sum, signedSwap_apply, whiskerRight_apply, signedSwap_apply]
-  simp only [Units.smul_def, TensorProduct.smul_tmul, map_zsmul]
-  rw [associator_apply_of_sum, associator_apply_of_sum, whiskerLeft_apply, signedSwap_apply]
-  simp only [Units.smul_def, TensorProduct.smul_tmul, TensorProduct.tmul_smul,
-    map_zsmul, smul_smul]
-  conv_rhs => rw [nested_right_apply]
-  change (i * (j + k)).negOnePow •
-    ιTensorObj Q (T ⊗ P) j (k + i) n (by omega)
-      (y ⊗ₜ[A] ιTensorObj T P k i (k + i) rfl (z ⊗ₜ[A] x)) =
-    ((i * k).negOnePow * (i * j).negOnePow) •
-      ιTensorObj Q (T ⊗ P) j (k + i) n (by omega)
-        (y ⊗ₜ[A] ιTensorObj T P k i (k + i) rfl (z ⊗ₜ[A] x))
-  rw [← Int.negOnePow_add]
-  congr 1
-  congr 1
-  ring
+      (signedSwap P Q).hom ▷ T ≫ (α_ Q P T).hom ≫ Q ◁ (signedSwap P T).hom :=
+  SerrePositivity.cochainTensorSymmetry_hexagon_forward P Q T
+
 /-- associator の逆を純粋斉次 tensor で評価する。 -/
 lemma associator_inv_apply (P Q T : Complex A) (i j k l n : ℤ)
     (hl : j + k = l) (hn : i + l = n) (x : P.X i) (y : Q.X j) (z : T.X k) :
@@ -150,52 +121,12 @@ lemma rightTriple_ext {P Q T S : Complex A} {f g : P ⊗ (Q ⊗ T) ⟶ S}
 /-- 右側の hexagon。符号の指数 (i+j)k=ik+jk を検証する。 -/
 lemma signedSwap_hexagon_reverse (P Q T : Complex A) :
     (α_ P Q T).inv ≫ (signedSwap (P ⊗ Q) T).hom ≫ (α_ T P Q).inv =
-      P ◁ (signedSwap Q T).hom ≫ (α_ P T Q).inv ≫ (signedSwap P T).hom ▷ Q := by
-  apply rightTriple_ext
-  intro i j k n hn
-  simp only [HomologicalComplex.comp_f]
-  apply ModuleCat.hom_ext
-  apply TensorProduct.ext_threefold'
-  intro x y z
-  change (α_ T P Q).inv.f n
-    ((signedSwap (P ⊗ Q) T).hom.f n
-      ((α_ P Q T).inv.f n
-        (ιTensorObj P (Q ⊗ T) i (j + k) n hn
-          (x ⊗ₜ[A] ιTensorObj Q T j k (j + k) rfl (y ⊗ₜ[A] z))))) =
-    (((signedSwap P T).hom ▷ Q).f n)
-      ((α_ P T Q).inv.f n
-        ((P ◁ (signedSwap Q T).hom).f n
-          (ιTensorObj P (Q ⊗ T) i (j + k) n hn
-            (x ⊗ₜ[A] ιTensorObj Q T j k (j + k) rfl (y ⊗ₜ[A] z)))))
-  rw [associator_inv_apply, signedSwap_apply, whiskerLeft_apply, signedSwap_apply]
-  simp only [Units.smul_def, TensorProduct.tmul_smul, map_zsmul]
-  rw [associator_inv_apply, associator_inv_apply, whiskerRight_apply, signedSwap_apply]
-  simp only [Units.smul_def, TensorProduct.smul_tmul, TensorProduct.tmul_smul, map_zsmul,
-    smul_smul]
-  conv_rhs => rw [nested_left_apply]
-  change ((i + j) * k).negOnePow •
-    ιTensorObj (T ⊗ P) Q (k + i) j n (by omega)
-      (ιTensorObj T P k i (k + i) rfl (z ⊗ₜ[A] x) ⊗ₜ[A] y) =
-    ((j * k).negOnePow * (i * k).negOnePow) •
-      ιTensorObj (T ⊗ P) Q (k + i) j n (by omega)
-        (ιTensorObj T P k i (k + i) rfl (z ⊗ₜ[A] x) ⊗ₜ[A] y)
-  rw [← Int.negOnePow_add]
-  congr 1
-  congr 1
-  ring
+      P ◁ (signedSwap Q T).hom ≫ (α_ P T Q).inv ≫ (signedSwap P T).hom ▷ Q :=
+  SerrePositivity.cochainTensorSymmetry_hexagon_reverse P Q T
 
 /-- 任意可換環上の非有界複体は Koszul 符号による対称モノイダル圏。 -/
-instance complexSymmetricCategory : SymmetricCategory (Complex A) where
-  braiding := signedSwap
-  braiding_naturality_right := by
-    intro P Q Q' f
-    simpa using signedSwap_naturality (𝟙 P) f
-  braiding_naturality_left := by
-    intro P P' f Q
-    simpa using signedSwap_naturality f (𝟙 Q)
-  hexagon_forward := signedSwap_hexagon_forward
-  hexagon_reverse := signedSwap_hexagon_reverse
-  symmetry := SerrePositivity.cochainTensorSymmetry_hom_comp
+abbrev complexSymmetricCategory : SymmetricCategory (Complex A) :=
+  SerrePositivity.cochainTensorSymmetricCategory
 
 /-- 登録した braiding は既存の signed symmetry と同じ同型。 -/
 lemma braiding_eq_existing (P Q : Complex A) :
