@@ -4101,3 +4101,33 @@ BS専用`DeltaPDivisionFiniteKoszulComparison.lean`で、既存koszulCanonicalH0
 そのままでは標準商射との両立・段間自然性を主張しない。
 標準単位の図式を明示し、有限段から無限段への移行や実導来δ基底変更とは区別する。
 共通層のKoszul・Tor・導来完備化定義は再利用する。
+
+## B4-6：標準単位で正規化した実有限Koszul比較（2026-10-15）
+
+`DeltaPDivisionFiniteKoszulComparison.lean`で、既存koszulCanonicalH0Equivにより
+H⁰K(g_0,…,g_N)≃L/I_Nを構成し、元r:Lの標準H⁰単位が標準商元[r]へ写ることを証明した。
+この正規化H⁰同型自体にはp正則性・y正則性・ghost単射を要求しない。
+さらに実Koszul複体から(L/I_N)[0]への添加写像を作り、
+そのH⁰写像が正規化同型に一致し、標準単位上で実標準商射に一致することを公開した。
+既存の正則一元入力（p正則A、yのA/p正則性、単元δp、自由環ghost単射）では
+その実添加写像がQuasiIsoであると証明した。
+IsKoszulResolution.equivの任意選択に基づく既存添加写像を、標準商射と無根拠に同一視していない。
+
+7公開宣言の対象3809ジョブとpure B4監査成功。標準3公理のみ、新sorry・公理・引用なし。
+この比較は有限Koszulモデルと具体的通常商の間のもの。
+無限δ関係の実モデル、導来δ基底変更との比較、分冪包比較、CFF根付き拡大、一般B4は未完成。
+
+### 次工程の登録：実有限Koszul比較の段間自然性
+
+BS専用`DeltaPDivisionFiniteKoszulTransitions.lean`で、実列の末尾へ次のδ関係を付加する
+既存mappingCone.inrによる実鎖写像K_N→K_(N+1)と、既存I_N≤I_(N+1)の商射を置く。
+既存koszulH0Unit_succを使い、鎖写像が標準単位を保つこと、
+正規化H⁰同型が商の標準遷移射と可換であることを証明する。
+有限次元・元族有限性とは別に、δ深さNの全有限段を一つの図式として揃える。
+その後に、既存のfiltered-colimitとホモロジーの交換を調査し、
+実鎖複体図式のcolimitとrawδ関係商の比較へ進む。
+固定列の係数環の極限を扱う既存KoszulDirectedUnion等だけから、
+列の長さが増える今回の比較を得たとはしない。
+一般の導来δpushout・CFFへの接続は引き続き別途証明する。
+
+この工程の全体ビルド4932ジョブも成功。共有既存sorry警告は別扱い。
