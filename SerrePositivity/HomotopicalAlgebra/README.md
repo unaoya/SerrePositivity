@@ -1381,3 +1381,14 @@ cof=monoを持つ実際のReedyモデルでcofibrantとなることを証明す�
 Reedy cofibrationの保存を証明する。対角の左Quillen適合性と弱同値保存は引き続き残る。
 新規26宣言・5モジュールと共有4755宣言・407モジュールの標準公理監査が成功。
 実装`27b29ced`、次のmatching射の計算とF1の残項目は計画§227。
+
+
+## 対角右随伴の標準単体internal Homによる具体化（2026-10-16）
+
+`Simplicial/DiagonalRepresentables`は対角に制限したuliftCoyonedaをΔ[n]⊗Δ[m]と比較し、
+実際の右Kan拡張右随伴の各単体をHom(Δ[n]⊗Δ[m],Z)として計算する。
+`DiagonalInternalHom`は閉随伴と既存の標準単体Yoneda比較から、元の右随伴と
+標準単体internal Homの族との自然同型を構成する。内側・外側の単体操作とZについて自然。
+具体的なinternal Homを右随伴とする通常の対角随伴も構成し、比較を追加仮定に戻さない。
+この結果にはモデル構造の入力は不要。新規30宣言・2モジュールと共有4785宣言・409モジュールの
+標準公理監査が成功。実装`5fbc9855`。matching射・Quillen条件とF1の残項目は計画§228。
