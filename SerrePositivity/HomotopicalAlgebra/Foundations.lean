@@ -38,6 +38,7 @@ public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleRightClassInver
 public import SerrePositivity.HomotopicalAlgebra.Smith.WeakEquivalencesAccessible
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Objects
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Simplex
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexFinite
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor

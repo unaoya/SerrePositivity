@@ -49,6 +49,8 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Index,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Objects,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Simplex,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.IndexOpposite,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexFinite,
     `SerrePositivity.HomotopicalAlgebra.Quillen.Brown,
     `SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor,
     `SerrePositivity.HomotopicalAlgebra.Quillen.DerivedAdjunction,
