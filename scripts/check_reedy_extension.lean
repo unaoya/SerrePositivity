@@ -1,4 +1,5 @@
-import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionFunctor
+import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeExtension
+import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionOfFunctor
 import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Simplex
 import Lean.Util.CollectAxioms
 
@@ -33,6 +34,47 @@ example (j : SimplexCategory) (H : Lower simplex (simplex.deg j) ⥤ C)
 example (j : SimplexCategoryᵒᵖ) (H : Lower simplexOp (simplexOp.deg j) ⥤ C)
     (d : BoundaryExtension simplexOp j H) : Adjoin simplexOp j ⥤ C := d.toFunctor
 
+-- This consumer starts with actual diagrams on J and a factorization below j.
+-- The new diagram is constructed; it is not part of the assumptions.
+example [HasColimitsOfShape (LatchingIndex r j) C]
+    [HasLimitsOfShape (MatchingIndex r j) C] [HasPushouts C] [HasPullbacks C]
+    {F G : J ⥤ C} (τ : F ⟶ G)
+    {lowerLeft lowerRight : MorphismProperty (Lower r (r.deg j) ⥤ C)}
+    (a : MorphismProperty.MapFactorizationData lowerLeft lowerRight
+      (Functor.whiskerLeft (lowerInclusion r (r.deg j)) τ))
+    {left right : MorphismProperty C}
+    (q : MorphismProperty.MapFactorizationData left right
+      (RelativeExtension.map (BoundaryExtension.mapOfNatTrans r j τ) a)) :
+    MorphismProperty.MapFactorizationData ⊤ ⊤
+      (BoundaryExtension.mapOfNatTrans r j τ).toNatTrans :=
+  RelativeExtension.diagramFactorization (BoundaryExtension.mapOfNatTrans r j τ) a q
+
+example (d : BoundaryExtension r j H) {x y : Lower r (r.deg j)} (f : x ⟶ y) :
+    d.toFunctor.map ((adjoinLower r j).map f) = H.map f := d.toFunctor_map_lower f
+
+section Relative
+variable [HasColimitsOfShape (LatchingIndex r j) C]
+  [HasLimitsOfShape (MatchingIndex r j) C] [HasPushouts C] [HasPullbacks C]
+  {F G : Lower r (r.deg j) ⥤ C} {d : BoundaryExtension r j F}
+  {e : BoundaryExtension r j G} {τ : F ⟶ G} (m : d.Map e τ)
+  {lowerLeft lowerRight : MorphismProperty (Lower r (r.deg j) ⥤ C)}
+  (a : MorphismProperty.MapFactorizationData lowerLeft lowerRight τ)
+  {left right : MorphismProperty C}
+  (q : MorphismProperty.MapFactorizationData left right (RelativeExtension.map m a))
+
+example : left (RelativeExtension.relativeLeft m a q) := RelativeExtension.relativeLeft_mem m a q
+
+example : right (RelativeExtension.relativeRight m a q) := RelativeExtension.relativeRight_mem m a q
+
+example : (RelativeExtension.leftMap m a q).toNatTrans ≫
+    (RelativeExtension.rightMap m a q).toNatTrans = m.toNatTrans :=
+  RelativeExtension.leftMap_rightMap m a q
+
+example {x y : Lower r (r.deg j)} (f : x ⟶ y) :
+    (RelativeExtension.extension m a q).toFunctor.map ((adjoinLower r j).map f) = a.Z.map f :=
+  (RelativeExtension.extension m a q).toFunctor_map_lower f
+end Relative
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -41,7 +83,11 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Induced,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Adjoin,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionData,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionFunctor]
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionFunctor,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionTransformation,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionBoundary,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeExtension,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionOfFunctor]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
