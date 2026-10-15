@@ -6,7 +6,11 @@ open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
-  let expected := #[`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.LocalizedMappingBifunctor,
+  let expected := #[
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.LiftSpace,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.LiftSpaceFunctor,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionLiftSpace,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.LocalizedMappingBifunctor,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionCategory,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionCategoryHom,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionLiftIndependence,
