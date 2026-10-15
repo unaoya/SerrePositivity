@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.DeltaRootPairRawRegular
 import SerrePositivity.BhattScholze.DeltaRootPairInputRegular
 import SerrePositivity.BhattScholze.DeltaRootPowerSubsetBaseQuotient
 import SerrePositivity.BhattScholze.DeltaRootPowerSubsetRegular
@@ -5159,3 +5160,6 @@ assert_no_sorry SerrePositivity.BhattScholze.deltaRootRelation_modP_isSMulRegula
 
 assert_no_sorry SerrePositivity.BhattScholze.deltaRootRelation_pairPower_modP_isSMulRegular
 #print axioms SerrePositivity.BhattScholze.deltaRootRelation_pairPower_modP_isSMulRegular
+
+assert_no_sorry SerrePositivity.BhattScholze.deltaRootPairRaw_p_mul_injective
+#print axioms SerrePositivity.BhattScholze.deltaRootPairRaw_p_mul_injective
