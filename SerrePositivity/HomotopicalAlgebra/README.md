@@ -296,6 +296,16 @@ accessibility条件であり、Jやモデル構造を入力に要求しない。
 認識の利用例も有限極限を局所可呈示性から導く。上記の残項目のうち完備性は解消し、
 coproduct閉性の導出と最終Smith定理の統合・監査が残る。
 
+## Smith R3のcoproduct閉性ゲート（2026-10-15）
+
+`Smith/CoproductClosure.lean`は、coproductのある一般圏で、射クラスPのpushoutと
+超限合成閉性から`P.IsStableUnderCoproducts.{w}`を導く。添字を整列し、summandを
+一つずつ始域から終域へ置き換える。後続段階は一つの射のpushoutであり、
+各成分のeventual constancyから極限段階の連続性を示す。空の添字も含む。
+モデル構造・accessibility・retract閉性・coproduct閉性を入力に要求しない。
+`scripts/check_smith_coproduct_closure.lean`は一般族、空族、Mathlib閉性クラス、
+Smithのacyclicityへの接続を検証する。これでR3に残るのは最終定理の統合・監査。
+
 `check_smith_solution_set`はモデル構造のない抽象圏で、独立した宇宙、CommSqの左右成分、
 小さい射族/射クラス全体の分解、空の射族、General/StageTwoとの併用を検証する。
 同スクリプトはこのモジュールの全宣言を標準公理のみで監査する。
