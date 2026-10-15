@@ -9561,3 +9561,60 @@ L3は§159.4でL0・F4・元の左固有性に依存し、L2を前提としな�
 元の左固有性が必要になる箇所ではその仮定を明示し、局所化後のモデル構造は使わない。
 その後L2の無条件の最終入口、L4の存在、L5の置換・普遍性・独立性へ進む。
 F1の指定関手的分解を仮定しない任意モデル源での最終関手も未完了のまま維持する。
+
+
+## 202. F→L→E→Sへの目標拡張と、hocolim・十分filteredなcolimitによる局所同値の保存（2026-10-15）
+
+依頼範囲をF→LからF→L→E→Sの全完了へ拡張した。こまめにコミットする方針も維持する。
+§159.4のL4・L5の後にE0、S0〜S3へ進む。E0の追加条件は通常の局所化存在へ持ち込まず、
+スペクトルへの適用でも一般C,Kの契約を維持する。今回E0・S0〜S3の完了は主張しない。
+
+### 202.1 源変数に自然なF4の公式から局所同値のhocolim保存
+
+`Localization/HocolimLocalEquivalences`を追加した。
+`map_source_at_hocolim_weakEquivalence`は、任意の図式の自然変換a:D⟶Eと任意の標的Yについて、
+すべてのkでRMap(a_k,Y)が弱同値なら、RMap(hocolim(a),Y)も弱同値であることを証明する。
+F4の二変数自然な通常局所化後の同型と、実際の単体的holimの弱同値保存を使う。
+通常局所化後の自然同型によるテストの移送は`LocalizedSourceTransfer.map_weakEquivalence`として
+抽象化し、F4の大きな構成を証明中の型変換で繰り返し展開しないようにした。
+heartbeat上限の引き上げや新しい公理は使っていない。
+
+`smallLocalEquivalence_hocolim`はこれを全局所対象に適用する。
+`localEquivalence_hocolim`は既存の証明済み宇宙変更比較を使い、元のSSet(v)によるW_Sへ戻す。
+対象・Hom・可呈示性の宇宙u/v/wは独立。SSet(w), SSet(v), SSet(max v w)の
+モデルと各標準クラスとの一致は仮定として明示し、具体的存在の引用は追加しない。
+源Cの豊穣性・左固有性・全対象cofibrant性や、D/Eのprojective cofibrancyは要求しない。
+
+### 202.2 通常のcolimitへの移送
+
+`localEquivalence_colim_of_weakComparisons`は、D/Eの両方について実際のhocolim→colim比較が
+元の弱同値である場合に、各点の局所同値からcolim(a)の局所同値性を導く。
+証明は比較自然変換の実際の自然性、W_C⊆W_S、2-out-of-3を使う。
+`localEquivalence_colim_of_projectiveCofibrant`は、元のprojective図式モデルでD/Eがcofibrantなら
+この比較条件を満たすことを既存定理から接続する。
+objectwise cofibrancyだけで代用せず、通常colimitとhocolimを無条件に同一視しない。
+実装・利用例・共有監査への接続はコミット`fee6bdf8`。
+
+### 202.3 Sと図式によらない正則基数によるfiltered保存
+
+`Localization/FilteredLocalEquivalences.exists_filtered_localEquivalence_colim`は
+元のW_CのaccessibilityとF4のfiltered比較から、正則κを一つ構成する。
+すべての正則μ≥κ、μ-filteredなw-small圏K、任意のSと自然変換a:D⟶Eについて、
+すべてのa_kが元のW_Sに属すればcolim(a)もW_Sに属する。
+κはS・K・D・E・aに依存せず、W_Sのaccessibilityを入力としていない。
+したがってL2の未証明な結論を先取りせずにfiltered保存を利用できる。
+
+これは任意の超限合成の閉性ではない。小さいcofinalityのlimit段階を含むL3全体、
+任意のcof∩W_Sのpushout閉性、§201で構成した単位射η_XのW_S所属は引き続き未完了。
+次は局所境界生成射とその生成閉包の局所同値性へ接続し、L2・L3の残条件を解消する。
+その後L4→L5→E0→S0〜S3へ進む。F1の任意モデル源での最終関手の残項目も維持する。
+
+### 202.4 検証と記録
+
+- 共有入口`Foundations`：2486 jobsで成功、新規警告なし。
+- `check_hocolim_local_equivalences`：9宣言・2モジュール、標準公理のみ。
+  任意の図式のhocolim、独立したu/v/wでの元のW_S、実際の弱比較による通常colimit、
+  Sと図式によらない正則基数の出力を検証した。
+- 共有全監査：3968宣言・300モジュール、標準公理のみ。
+- `check_local_replacement_detection`：62宣言・9モジュールの回帰検証成功。
+- コミット：hocolim保存`fee6bdf8`、filtered保存`d1bee094`。差分の空白検査も成功。
