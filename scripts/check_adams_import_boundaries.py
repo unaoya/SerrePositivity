@@ -90,7 +90,7 @@ check('SerrePositivity.PerfectComplex.IdempotentImageClass',
       dep.startswith('SerrePositivity.KTheory.Adams.'))
 print('Idempotent image classes are independent of Adams and Euler/localization comparisons.')
 
-general = ['AlternatingSum', 'ExactImageSequence', 'HomotopyConeRepresentative',
+general = ['AlternatingSum', 'FiniteSupportBounds', 'ExactImageSequence', 'HomotopyConeRepresentative',
            'HomotopyProperty', 'TriangulatedK0Shift']
 for name in general:
     check('SerrePositivity.CategoryTheory.' + name, upper_layer)

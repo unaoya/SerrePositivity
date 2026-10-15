@@ -4,6 +4,7 @@ public import SerrePositivity.CommutativeAlgebra.FiniteLengthValue
 
 public import SerrePositivity.PerfectComplex.Basic
 public import SerrePositivity.CategoryTheory.AlternatingSum
+public import SerrePositivity.CategoryTheory.FiniteSupportBounds
 public import Mathlib.Algebra.Homology.ShortComplex.ModuleCat
 public import Mathlib.Algebra.Homology.QuasiIso
 public import Mathlib.Algebra.FiniteSupport.Basic
@@ -88,11 +89,8 @@ theorem length_eq_zero_of_isZero (M : ModuleCat.{u} R) (hM : IsZero M) :
 
 /-- A numerical function that vanishes outside an integer interval has finite support. -/
 theorem finiteSupport_of_bounded_zero (f : ℤ → ℝ) (a b : ℤ)
-    (hf : ∀ q, q < a ∨ b < q → f q = 0) : Function.HasFiniteSupport f := by
-  apply (Set.finite_Icc a b).subset
-  intro q hq
-  by_contra hnot
-  exact hq (hf q (by simp only [Set.mem_Icc] at hnot; omega))
+    (hf : ∀ q, q < a ∨ b < q → f q = 0) : Function.HasFiniteSupport f :=
+  SerrePositivity.finiteSupport_of_bounded_zero f a b hf
 
 /-- Euler–Poincaré: the alternating homology length of a bounded finite-length
 complex is the alternating length of its terms. -/

@@ -2,6 +2,7 @@ module
 public import SerrePositivity.KTheory.G0Supported
 public import SerrePositivity.CategoryTheory.AlternatingSum
 public import SerrePositivity.CategoryTheory.ExactImageSequence
+public import SerrePositivity.CategoryTheory.FiniteSupportBounds
 public import Mathlib.Algebra.Homology.ShortComplex.ModuleCat
 public import Mathlib.Algebra.FiniteSupport.Basic
 public import Mathlib.Algebra.BigOperators.Finprod
@@ -81,25 +82,19 @@ lemma supportedModuleEuler_exact_sequence
   let d := fun i => G0WithSupport.mk (SupportedFGModuleOn.image (δ i))
   have hfa : Function.HasFiniteSupport a := by
     obtain ⟨p, q, hpq⟩ := hb₂
-    apply (Set.finite_Icc p q).subset
+    apply finiteSupport_of_bounded_zero a p q
     intro i hi
-    by_contra hn
-    exact hi (G0WithSupport.mk_of_isZero _ (IsZero.of_mono (Abelian.image.ι (α i))
-      (hpq i (by simp only [Set.mem_Icc] at hn; omega))))
+    exact G0WithSupport.mk_of_isZero _ (IsZero.of_mono (Abelian.image.ι (α i)) (hpq i hi))
   have hfb : Function.HasFiniteSupport b := by
     obtain ⟨p, q, hpq⟩ := hb₃
-    apply (Set.finite_Icc p q).subset
+    apply finiteSupport_of_bounded_zero b p q
     intro i hi
-    by_contra hn
-    exact hi (G0WithSupport.mk_of_isZero _ (IsZero.of_mono (Abelian.image.ι (β i))
-      (hpq i (by simp only [Set.mem_Icc] at hn; omega))))
+    exact G0WithSupport.mk_of_isZero _ (IsZero.of_mono (Abelian.image.ι (β i)) (hpq i hi))
   have hfd : Function.HasFiniteSupport d := by
     obtain ⟨p, q, hpq⟩ := hb₃
-    apply (Set.finite_Icc p q).subset
+    apply finiteSupport_of_bounded_zero d p q
     intro i hi
-    by_contra hn
-    exact hi (G0WithSupport.mk_of_isZero _ (IsZero.of_epi (Abelian.factorThruImage (δ i))
-      (hpq i (by simp only [Set.mem_Icc] at hn; omega))))
+    exact G0WithSupport.mk_of_isZero _ (IsZero.of_epi (Abelian.factorThruImage (δ i)) (hpq i hi))
   have e₂ (i : ℤ) : G0WithSupport.mk (X₂ i) = a i + b i :=
     G0WithSupport.mk_exact_images _ _ _ (α i) (β i) (h₂ i)
   have e₃ (i : ℤ) : G0WithSupport.mk (X₃ i) = b i + d i :=
