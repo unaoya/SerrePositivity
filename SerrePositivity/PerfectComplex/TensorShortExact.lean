@@ -1,6 +1,9 @@
 module
 
 public import SerrePositivity.PerfectComplex.TensorDegreeMaps
+public import SerrePositivity.PerfectComplex.TensorShift
+public import Mathlib.Algebra.Homology.ShortComplex.ShortExact
+public import Mathlib.Algebra.Homology.HomologicalComplexAbelian
 
 /-! # Tensoring degreewise split short exact sequences of complexes -/
 

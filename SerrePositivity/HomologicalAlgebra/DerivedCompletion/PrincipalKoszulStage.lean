@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.HomologicalAlgebra.KoszulOneCoordinates
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.KoszulTower
 
@@ -19,37 +20,23 @@ variable (R : Type u) [CommRing R]
 
 /-- 元の環を次数0だけに置く複体。 -/
 abbrev principalSingle : CochainComplex (ModuleCat.{u} R) ℤ :=
-  (HomologicalComplex.single (ModuleCat.{u} R) (ComplexShape.up ℤ) 0).obj
-    (ModuleCat.of R R)
+  Adams.oneKoszulUnit
 
 /-- 一座標Koszul塔の次数−1の成分同型。 -/
 def principalKoszulStageNegIso (f : R) (n : ℕ) :
     (powerKoszulTower R (fun _ : Fin 1 ↦ f) n).X (-1) ≅ ModuleCat.of R R :=
-  XIsoBiprod (smulId (f ^ n) (principalSingle R)) (-1) 0 (by decide) ≪≫
-    (isoBiprodZero (HomologicalComplex.isZero_single_obj_X _ _ _ (-1) (by decide))).symm ≪≫
-      HomologicalComplex.singleObjXSelf _ 0 (ModuleCat.of R R)
+  Adams.oneKoszulXNegOneIso (f ^ n)
 
 /-- 一座標Koszul塔の次数0の成分同型。 -/
 def principalKoszulStageZeroIso (f : R) (n : ℕ) :
     (powerKoszulTower R (fun _ : Fin 1 ↦ f) n).X 0 ≅ ModuleCat.of R R :=
-  (show (CochainComplex.mappingCone (smulId (f ^ n) (principalSingle R))).X 0 ≅
-      (principalSingle R).X 0 from
-    { hom := sndX (smulId (f ^ n) (principalSingle R)) 0
-      inv := inrX (smulId (f ^ n) (principalSingle R)) 0
-      hom_inv_id := by
-        apply ext_to_X (smulId (f ^ n) (principalSingle R)) 0 1 rfl
-        · simp only [Category.assoc, inrX_fstX, comp_zero, id_comp]
-          exact (HomologicalComplex.isZero_single_obj_X _ _ _ 1 (by decide)).eq_of_tgt _ _
-        · simp
-      inv_hom_id := inrX_sndX _ 0 }) ≪≫
-    HomologicalComplex.singleObjXSelf _ 0 (ModuleCat.of R R)
+  Adams.oneKoszulXZeroIso (f ^ n)
 
 /-- 負次数の同型は錐の第1射影。 -/
 theorem principalKoszulStageNegIso_hom (f : R) (n : ℕ) :
     (principalKoszulStageNegIso R f n).hom =
       fstX (smulId (f ^ n) (principalSingle R)) (-1) 0 (by decide) ≫
-        (HomologicalComplex.singleObjXSelf _ 0 (ModuleCat.of R R)).hom := by
-  simp [principalKoszulStageNegIso, fstX, Category.assoc]
+        (HomologicalComplex.singleObjXSelf _ 0 (ModuleCat.of R R)).hom := rfl
 
 /-- 零次数の同型は錐の第2射影。 -/
 theorem principalKoszulStageZeroIso_hom (f : R) (n : ℕ) :
@@ -73,9 +60,7 @@ theorem principalKoszulStage_d (f : R) (n : ℕ) :
 theorem principalKoszulStageNegIso_inv (f : R) (n : ℕ) :
     (principalKoszulStageNegIso R f n).inv =
       (HomologicalComplex.singleObjXSelf _ 0 (ModuleCat.of R R)).inv ≫
-        inlX (smulId (f ^ n) (principalSingle R)) 0 (-1) (by decide) := by
-  simp only [principalKoszulStageNegIso, Iso.trans_inv, Iso.symm_inv, isoBiprodZero_hom,
-    Category.assoc, inl_XIsoBiprod_inv]
+        inlX (smulId (f ^ n) (principalSingle R)) 0 (-1) (by decide) := rfl
 
 /-- 零次数の逆同型は錐の第2包含。 -/
 theorem principalKoszulStageZeroIso_inv (f : R) (n : ℕ) :
