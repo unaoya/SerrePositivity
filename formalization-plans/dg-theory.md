@@ -3250,3 +3250,30 @@ Yoneda比較の豊穣自然性への束ね、bimodule合成の残る全次数作
 特にrightHomMapだけから、まだdg関手の全法則を証明済みとは宣言しない。
 次は左変数の作用を構成し、両変数を使うbimodule合成へ進む。
 U11e・U12〜U17・D4mも継続対象。共有ルート・共有一般論・並行作業ファイルは変更していない。
+
+
+### 17.25 U11d6：左加群変数の符号付きパラメータ作用
+
+`Module/LeftParamNaturality.lean`は任意のKパラメータ付き全次数自然族の作用公式と、
+左主Hom end評価族の全豊穣自然性を、既存二重opposite比較から証明した。
+`Tensor/ParameterLeftAction.lean`はこの公式を任意非有界複体のchain mapの交換式へ束ねる。
+`Complexes/ParameterCross.lean`はK⊗(P⊗Q)→P⊗(K⊗Q)の写像、両因子の自然性、
+tensor積を横切る整合性、斉次符号(-1)^(kr)を公開する。
+整合性は登録済みsigned braidingのhexagonとMathlibのmonoidal coherenceを利用する。
+共有の一般SM7・表現性・モデル構造を複製していない。
+
+`Tensor/ParameterLeft.lean`は右作用・balanced関係との自然性とparameterCrossの整合性から
+leftParamFamilyを構成し、実際のleftParamMapへ降ろす。
+包含と純粋斉次tensorにおける計算、主Hom間のleftHomMap、その包含での転置計算も公開した。
+左変数作用はKの次数kと右加群値の次数rによる(-1)^(kr)を保持する。
+
+Checks.BalancedTensorParameterLeft・ParameterRightと既存StageSeven・Spectra.StageTwoの
+同時ビルドは成功（2656 jobs、終了コード0、追加ソースの警告なし）。
+主要14宣言の直接実行も終了コード0、標準公理のみ。監査累計1360宣言。
+任意A・独立対象宇宙・Small.{u} D、一対象ZMod 2、パラメータ次数-1/右加群値次数1の符号を検査した。
+担当差分のgit diff --checkも成功。
+
+U11d全受入はまだ未完。左右の主Hom写像は構成できたが、単位/全Hom合成の保存と左右交換を
+証明して豊穣関手へ束ねる必要がある。次はこれらの法則とYoneda比較の豊穣自然性、
+bimodule合成の残る作用、一対象Aの既存tensorとの比較を進める。
+U11e・U12〜U17・D4mも継続対象。共有ルート・共有一般論・並行作業ファイルは変更していない。
