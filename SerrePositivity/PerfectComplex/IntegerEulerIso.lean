@@ -14,32 +14,6 @@ namespace SerrePositivity
 open CategoryTheory Limits IsLocalRing
 variable {R : Type u} [CommRing R]
 
-namespace K0WithSupport
-variable [IsNoetherianRing R] [IsLocalRing R]
-/-- Compute Euler on any supported object represented by a concrete complex. -/
-lemma integerEuler_mk_real_of_rep
-    (X : SupportedPerfectHomotopyOn (supportZeroLocus (maximalIdeal R)))
-    (P : CochainComplex (ModuleCat.{u} R) ℤ)
-    (hP : X.obj.obj = (HomotopyCategory.quotient _ _).obj P) :
-    (integerEuler R (mk _ X) : ℝ) = chiOrd P := by
-  let Z := supportZeroLocus (maximalIdeal R)
-  let L := (Int.castAddHom ℝ).comp (maximalSupportLengthMap R)
-  have hlen (i : ℤ) : Module.length R (supportedPerfectHomology Z X i).obj =
-      Module.length R (P.homology i) := by
-    change Module.length R ((HomotopyCategory.homologyFunctor (ModuleCat.{u} R) (.up ℤ) i).obj
-      X.obj.obj) = _
-    rw [hP]
-    exact ((HomotopyCategory.homologyFunctorFactors _ _ i).app P).toLinearEquiv.length_eq
-  change L ((homologyEuler Z) (mk Z X)) = chiOrd P
-  rw [homologyEuler_mk]
-  unfold supportedHomologyEuler supportedModuleEuler
-  rw [L.map_finsum (supportedHomologyEuler_hasFiniteSupport Z X)]
-  unfold chiOrd
-  congr 1
-  funext i
-  simp [L, hlen]
-end K0WithSupport
-
 variable [IsNoetherianRing R] [IsLocalRing R] {n : ℕ} (z : Fin n → R)
     (hz : Ideal.span (Set.range z) = maximalIdeal R)
 

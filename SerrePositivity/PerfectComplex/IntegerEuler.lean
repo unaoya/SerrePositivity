@@ -49,18 +49,22 @@ lemma integerEuler_mk (X : SupportedPerfectHomotopyOn (supportZeroLocus (maximal
   rw [(maximalSupportLengthMap R).map_finsum (supportedHomologyEuler_hasFiniteSupport _ X)]
   simp
 
-/-- Casting the integer Euler evaluation to the reals recovers the existing ordinary Euler value. -/
-lemma integerEuler_mk_complex_real (P : CochainComplex (ModuleCat.{u} R) ℤ)
-    (hp : strictlyPerfectComplex R P)
-    (hs : HasHomologySupportOn (supportZeroLocus (maximalIdeal R)) P) :
-    (integerEuler R (mk _ (supportedPerfectOnObj _ P hp hs)) : ℝ) = chiOrd P := by
+section
+variable {R}
+
+/-- Compute Euler on any supported object represented by a concrete complex. -/
+lemma integerEuler_mk_real_of_rep
+    (X : SupportedPerfectHomotopyOn (supportZeroLocus (maximalIdeal R)))
+    (P : CochainComplex (ModuleCat.{u} R) ℤ)
+    (hP : X.obj.obj = (HomotopyCategory.quotient _ _).obj P) :
+    (integerEuler R (mk _ X) : ℝ) = chiOrd P := by
   let Z := supportZeroLocus (maximalIdeal R)
-  let X := supportedPerfectOnObj Z P hp hs
   let L := (Int.castAddHom ℝ).comp (maximalSupportLengthMap R)
   have hlen (i : ℤ) : Module.length R (supportedPerfectHomology Z X i).obj =
       Module.length R (P.homology i) := by
     change Module.length R ((HomotopyCategory.homologyFunctor (ModuleCat.{u} R) (.up ℤ) i).obj
-      ((HomotopyCategory.quotient (ModuleCat.{u} R) (.up ℤ)).obj P)) = _
+      X.obj.obj) = _
+    rw [hP]
     exact ((HomotopyCategory.homologyFunctorFactors _ _ i).app P).toLinearEquiv.length_eq
   change L ((homologyEuler Z) (mk Z X)) = chiOrd P
   rw [homologyEuler_mk]
@@ -70,5 +74,13 @@ lemma integerEuler_mk_complex_real (P : CochainComplex (ModuleCat.{u} R) ℤ)
   congr 1
   funext i
   simp [L, hlen]
+end
+
+/-- Casting the integer Euler evaluation to the reals recovers the existing ordinary Euler value. -/
+lemma integerEuler_mk_complex_real (P : CochainComplex (ModuleCat.{u} R) ℤ)
+    (hp : strictlyPerfectComplex R P)
+    (hs : HasHomologySupportOn (supportZeroLocus (maximalIdeal R)) P) :
+    (integerEuler R (mk _ (supportedPerfectOnObj _ P hp hs)) : ℝ) = chiOrd P :=
+  integerEuler_mk_real_of_rep _ P rfl
 end K0WithSupport
 end SerrePositivity
