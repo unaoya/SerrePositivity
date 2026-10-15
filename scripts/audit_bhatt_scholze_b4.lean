@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.DeltaFactorialDivision
 import SerrePositivity.BhattScholze.DeltaDividedPowerStep
 import SerrePositivity.BhattScholze.DeltaPDivisionSourceTensorCompletionDelta
 import SerrePositivity.BhattScholze.DeltaPDivisionSourceTensorDelta
@@ -3997,3 +3998,9 @@ assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.iterated_prime_divis
 
 assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.iterated_prime_division_unique
 #print axioms SerrePositivity.BhattScholze.DeltaStructure.iterated_prime_division_unique
+
+assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.factorial_valuation_pow_dvd
+#print axioms SerrePositivity.BhattScholze.DeltaStructure.factorial_valuation_pow_dvd
+
+assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.factorial_dvd_pow_of_prime_dvd_pow
+#print axioms SerrePositivity.BhattScholze.DeltaStructure.factorial_dvd_pow_of_prime_dvd_pow
