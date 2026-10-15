@@ -1399,7 +1399,11 @@ U10全受入は未完。次は可算cell列の各商とfiltrationの埋込みを
 任意の有限段間と余極限への包含、全評価次数のmono、網羅性を検証する。
 この入口・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3206 jobs）、警告なし。
 直接実行の主要10宣言は標準公理のみ。累計586宣言。
-担当Lean範囲のsorry/admit/新規axiomは0件、文書検査は21 Markdown/311参照で0 failures。
+担当Lean範囲のsorry/admit/新規axiomは0件。
+全体文書検査 `python3 scripts/check_documentation.py` は、並行K系列のroot importに追加された
+`KTheory/Adams/TensorCubeLowMixedSections.lean` のoleanが存在せず、export段階で停止した。
+この実行を成功とは記録しない。担当dg入口と既存Spectra.StageTwoの対象ビルドは上記のとおり成功。
+共有root/並行K系列は編集せず、この制限を報告する。
 
 U10全受入は未完。semifree性の残る具体的証明は、初期自由disk段を自由sphereの二段に分解し、
 後続商 `(∐ freeSphere)[1]` を自由sphereの余積として主dg加群圏で同定すること。
