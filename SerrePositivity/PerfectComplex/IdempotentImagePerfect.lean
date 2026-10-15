@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.PerfectComplex.IdempotentImage
+public import SerrePositivity.PerfectComplex.DegreewiseRetract
 public import SerrePositivity.HomologicalAlgebra.CochainIdempotentHomology
 
 /-! # Perfectness and support of idempotent images -/
@@ -18,16 +19,9 @@ namespace CochainIdempotent
 variable {K : CochainComplex (ModuleCat.{u} R) ℤ}
 
 lemma image_strictlyPerfect (e : CochainIdempotent K) (hK : strictlyPerfectComplex R K) :
-    strictlyPerfectComplex R e.image := by
-  obtain ⟨a, b, ha, hb⟩ := hK.1
-  refine ⟨⟨a, b, ?_, ?_⟩, fun n => ?_⟩
-  · exact (e.image.isStrictlyGE_iff a).mpr fun n hn =>
-      e.image_isZero_X n (K.isZero_of_isStrictlyGE a n hn)
-  · exact (e.image.isStrictlyLE_iff b).mpr fun n hn =>
-      e.image_isZero_X n (K.isZero_of_isStrictlyLE b n hn)
-  · have := (hK.2 n).1
-    have := (hK.2 n).2
-    exact ⟨e.image_finite_X n, e.image_projective_X n⟩
+    strictlyPerfectComplex R e.image :=
+  strictlyPerfectComplex_of_degreewiseRetract e.inclusion e.projection.f
+    (fun n => congrArg (fun f => f.f n) e.inclusion_projection) hK
 
 lemma image_support {Z : TopologicalSpace.Closeds (PrimeSpectrum R)}
     (e : CochainIdempotent K) (hK : HasHomologySupportOn Z K) :
