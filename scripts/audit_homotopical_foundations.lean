@@ -37,6 +37,7 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Smith.PresentableFullInclusion,
     `SerrePositivity.HomotopicalAlgebra.Smith.PresentableWeakReflection,
     `SerrePositivity.HomotopicalAlgebra.Smith.GeneratedWeakReflection,
+    `SerrePositivity.HomotopicalAlgebra.Smith.AccessibleRightClass,
     `SerrePositivity.HomotopicalAlgebra.Transfer.Right,
     `SerrePositivity.HomotopicalAlgebra.Quillen.Brown,
     `SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor,

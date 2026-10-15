@@ -439,3 +439,9 @@ trivial fibrationであることと元の射が弱同値であることの同値
 liftによって証明する。`check_presentable_weak_reflection`で一般の宇宙、恒等弱反射、
 モデル構造を仮定しない生成分解を検証し、三モジュール全44宣言を標準公理のみで
 監査した。これを生成右クラスへ適用し、さらに元のWに必要な閉操作へ進む。
+
+`Smith/AccessibleRightClass.lean`の`exists_accessible_right_lifting_class`は、局所可呈示性と
+小さいIだけからI.rlpのfull subcategoryのaccessibilityと包含のaccessibilityを証明する。
+A0の右因子にuniformizationを適用し、生成射の可呈示性と共通化した大きい正則基数で
+上の生成族構成を適用する。`check_accessible_right_class`は一般の宇宙と、既存モデルの
+trivial fibrationの部分圏への適用を検証する。元のWへの適用に必要な閉操作は残る。
