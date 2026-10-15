@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.PerfectComplex.CubicActionTransport
 
 public import SerrePositivity.KTheory.Adams.TensorCubeHighMixedQuotient
 
@@ -12,20 +13,6 @@ universe u
 namespace SerrePositivity
 open CategoryTheory Category Limits
 namespace Adams
-private lemma conjugate_cube {C : Type*} [Category C] {Q L : C}
-    (e : Q ≅ L) (t : L ⟶ L) (ht : t ≫ t ≫ t = 𝟙 L) :
-    (e.hom ≫ t ≫ e.inv) ≫ (e.hom ≫ t ≫ e.inv) ≫ (e.hom ≫ t ≫ e.inv) = 𝟙 Q := by
-  simp only [Category.assoc, Iso.inv_hom_id_assoc]
-  simpa only [Category.assoc, id_comp, Iso.hom_inv_id] using e.hom ≫= (ht =≫ e.inv)
-
-private lemma conjugate_projection {C : Type*} [Category C] {K Q L : C}
-    (p : K ⟶ Q) (e : Q ≅ L) (g : K ⟶ L) (s : K ⟶ K) (t : L ⟶ L)
-    (he : p ≫ e.hom = g) (hg : s ≫ g = g ≫ t) :
-    p ≫ (e.hom ≫ t ≫ e.inv) = s ≫ p := by
-  apply (cancel_mono e.hom).mp
-  simp only [Category.assoc, Iso.inv_hom_id, comp_id]
-  rw [← Category.assoc p e.hom, he, hg]
-
 variable {R : Type u} [CommRing R]
 variable (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ))
     (hS : S.ShortExact) (hproj : ∀ i, Module.Projective R (S.X₃.X i))
@@ -33,8 +20,8 @@ variable (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ))
 /-- Transport the mixed action to the cokernel, with its induced projection equation. -/
 def tensorCubeHighMixedCokernelRotation :
     tensorCubeHighMixedCokernel S hS hproj ⟶ tensorCubeHighMixedCokernel S hS hproj :=
-  (tensorCubeHighMixedCokernelIso S hS hproj).hom ≫ tensorCubeHighMixedRotation S ≫
-    (tensorCubeHighMixedCokernelIso S hS hproj).inv
+  (CochainCubicAction.comapIso (tensorCubeHighMixedCokernelIso S hS hproj)
+    ⟨tensorCubeHighMixedRotation S, tensorCubeHighMixedRotation_cube S⟩).map
 
 set_option maxHeartbeats 600000 in
 -- Normalize the chosen cokernel isomorphism when identifying its induced projection.
@@ -63,8 +50,8 @@ lemma tensorCubeHighMixedCokernelRotation_cube :
     tensorCubeHighMixedCokernelRotation S hS hproj ≫
       tensorCubeHighMixedCokernelRotation S hS hproj ≫
       tensorCubeHighMixedCokernelRotation S hS hproj = 𝟙 _ :=
-  conjugate_cube (tensorCubeHighMixedCokernelIso S hS hproj) (tensorCubeHighMixedRotation S)
-    (tensorCubeHighMixedRotation_cube S)
+  (CochainCubicAction.comapIso (tensorCubeHighMixedCokernelIso S hS hproj)
+    ⟨tensorCubeHighMixedRotation S, tensorCubeHighMixedRotation_cube S⟩).cube
 
 def tensorCubeHighMixedCokernelAction :
     CochainCubicAction (tensorCubeHighMixedCokernel S hS hproj) :=
@@ -77,7 +64,7 @@ lemma tensorCubeHighMixedCokernelIso_rotation :
     tensorCubeHighMixedCokernelRotation S hS hproj ≫
       (tensorCubeHighMixedCokernelIso S hS hproj).hom =
       (tensorCubeHighMixedCokernelIso S hS hproj).hom ≫ tensorCubeHighMixedRotation S := by
-  simp only [tensorCubeHighMixedCokernelRotation, Category.assoc, Iso.inv_hom_id, comp_id]
+  exact CochainCubicAction.comapIso_hom (tensorCubeHighMixedCokernelIso S hS hproj) _
 
 end Adams
 end SerrePositivity

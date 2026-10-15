@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.CategoryTheory.ShortExactCokernel
 
 public import SerrePositivity.KTheory.Adams.TensorCubeLowMixedReconstruction
 
@@ -12,6 +13,7 @@ universe u
 namespace SerrePositivity
 open CategoryTheory Category Limits HomologicalComplex Preadditive
 namespace Adams
+
 private lemma three_component_total {C : Type*} [Category C] [Preadditive C]
     {A K Y Y₀ Y₁ Y₂ : C} (r : K ⟶ A) (f : A ⟶ K) (g : K ⟶ Y)
     (p₀ : Y ⟶ Y₀) (p₁ : Y ⟶ Y₁) (p₂ : Y ⟶ Y₂)
@@ -68,18 +70,6 @@ lemma tensorCubeLowMixedShortComplex_shortExact :
   HomologicalComplex.shortExact_of_degreewise_shortExact _ (fun n =>
     (tensorCubeLowMixedSplitting S hS hproj
       (cochainDegreewiseSplittingOfProjective S hS hproj) n).shortExact)
-
-/-- Compare the chosen cokernel of a short exact sequence with its final object. -/
-def shortExactCokernelIso
-    {C : Type*} [Category C] [Abelian C] (T : ShortComplex C) (hT : T.ShortExact) :
-    cokernel T.f ≅ T.X₃ :=
-  (cokernelIsCokernel T.f).coconePointUniqueUpToIso hT.gIsCokernel
-
-private lemma shortExactCokernelIso_π_hom
-    {C : Type*} [Category C] [Abelian C] (T : ShortComplex C) (hT : T.ShortExact) :
-    cokernel.π T.f ≫ (shortExactCokernelIso T hT).hom = T.g :=
-  (cokernelIsCokernel T.f).comp_coconePointUniqueUpToIso_hom
-    hT.gIsCokernel WalkingParallelPair.one
 
 set_option maxHeartbeats 600000 in
 -- Compare the cokernel model with the explicitly named first-layer map and target.

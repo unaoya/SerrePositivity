@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.CategoryTheory.ThreeComponentMaps
 
 public import SerrePositivity.KTheory.Adams.TensorCubeLowMixedSections
 public import SerrePositivity.PerfectComplex.TensorTripleCyclicSum
@@ -12,24 +13,6 @@ universe u
 namespace SerrePositivity
 open CategoryTheory Category Limits
 namespace Adams
-private lemma three_components_rotation {C : Type*} [Category C] [HasZeroMorphisms C]
-    [HasBinaryBiproducts C] {K U₀ U₁ U₂ : C} (τ : K ⟶ K)
-    (m₀ : K ⟶ U₀) (m₁ : K ⟶ U₁) (m₂ : K ⟶ U₂)
-    (r₀ : U₀ ⟶ U₁) (r₁ : U₁ ⟶ U₂) (r₂ : U₂ ⟶ U₀)
-    (h₀ : τ ≫ m₀ = m₂ ≫ r₂) (h₁ : τ ≫ m₁ = m₀ ≫ r₀)
-    (h₂ : τ ≫ m₂ = m₁ ≫ r₁) :
-    τ ≫ biprod.lift m₀ (biprod.lift m₁ m₂) =
-      biprod.lift m₀ (biprod.lift m₁ m₂) ≫
-        biprod.lift (biprod.snd ≫ biprod.snd ≫ r₂)
-          (biprod.lift (biprod.fst ≫ r₀) (biprod.snd ≫ biprod.fst ≫ r₁)) := by
-  apply biprod.hom_ext
-  · simp only [Category.assoc, biprod.lift_fst, biprod.lift_snd_assoc, h₀]
-  · apply biprod.hom_ext
-    · simp only [Category.assoc, biprod.lift_fst, biprod.lift_fst_assoc,
-        biprod.lift_snd, h₁]
-    · simp only [Category.assoc, biprod.lift_fst_assoc,
-        biprod.lift_snd, biprod.lift_snd_assoc, h₂]
-
 variable {R : Type u} [CommRing R]
 variable (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ))
 
