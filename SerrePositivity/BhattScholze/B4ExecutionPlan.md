@@ -3976,3 +3976,20 @@ sourceの(p,y)が正則であるこの入口と、一般の導来基底変更後
 一般のyがA/pで零因子である場合にraw評価が旧pねじれ除去商を経由するとは推論しない。
 さらに普通のA/(p,y)への射だけから、一般の実導来Koszul代数への射を得たとはしない。
 一般の導来基底変更に沿う比較・分冪包比較・CFF根付き拡大・一般B4は未完成。
+
+## B4-6：Witt解による全δ関係消滅と任意元族のraw通常評価（2026-10-15）
+
+`DeltaPDivisionWittResidueEvaluation.lean`で、任意元族y:σ→Aと通常射q:A→B、
+全q(y_s)=0から、既存逆Witt座標射に具体的Witt除算解を代入した通常環射を構成した。
+自由初期変数と係数の全Witt元の像を比較し、元のp除算関係の全Witt係数が零となることを証明した。
+既存deltaWittGhostVector_jets_zero_iffによって全δ反復関係の消滅へ移し、
+既存deltaDivisionIteratedRelationsLiftでrawδ包A{φ(y_s)/p}→Bの実通常環射を公開した。
+自由環の評価・基底の係数射との図式と、初期除算変数の像q(δy_s)を供給した。
+A,B,σ:Type u、Aのp正則性・Aと自由δ環のghost単射を明示する。
+終域Bのδ構造・p正則性・標数p・完備性や、元族の有限性は不要。
+12公開宣言の対象2136ジョブ、pure B4監査成功。標準3公理のみ、新sorry・公理・引用なし。
+今回の全体ビルドは共有IdempotentImageTrivial.lean:23の
+cochainAcyclic_iff_support_bot未解決で失敗した。ログ/tmp/bs-p-witt-eval-full.log。
+担当外は変更していない。
+次は登録済みDeltaPDivisionResidueMapの正則一元の旧ねじれ除去商・実H⁰への因子化を監査する。
+一般の導来Koszul代数への射・CFF・一般B4は未完成。
