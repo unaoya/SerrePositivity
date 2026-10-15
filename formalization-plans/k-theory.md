@@ -8454,3 +8454,88 @@ projectiveモデルに対する通常のlimの右Quillen性やinjectiveモデル
 `RMap(hocolim D,Y) ≃ holim RMap(D_i,Y)`の必要範囲を証明する。
 F1の任意モデル源での厳密な二変数関手、L0〜L5も未完了であり、
 §159.2の一般局所化存在・置換・Quillen普遍性までの最終契約は変更しない。
+
+
+## 188. F4進捗：hocolim上の実際のframeと、図式圏のresolution Homへの自然比較（2026-10-15）
+
+F〜L全体の依頼を継続する。§187のholimを使う公式へ向け、今回、一般のCにおける
+`RMap(hocolim D,Y)`から図式圏のresolution Homまでの比較を実装・検証した。
+図式圏のHomと§187のholimとの同定は残っており、F4全体の完了とはしない。
+
+### 188.1 左Quillen左随伴によるframeの保存
+
+`Reedy/LatchingPreservation`は一般のReedy添字と、明示したlatching余極限について、
+左随伴Lによるlatching比較射の像と、A⋙Lのlatching比較射の実際のArrow同型を構成する。
+余極限保存同型を使い、対象の同型だけで済ませず比較射との可換性まで証明する。
+これにより、左Quillen左随伴がReedy cofibrant対象を保存することを証明する。
+
+`FramePreservation`はcosimplicial frameの各成分がcofibrantであることを導き、
+Brown補題からhomotopical constancyの保存を得る。cofibrantな対象Xへの弱augmentationを
+Lへ送った射も弱同値になる。augmentationの終域のcofibrancyは明示的な仮定であり、
+任意の対象上で左Quillen関手が弱同値を保存するとは仮定しない。
+
+`AdjunctionHom`は通常の随伴L⊣Rだけから、全単体でのHom同値を単体的自然同型にする。
+cosimplicial対象・標的の両方で自然である。Homの宇宙が異なる場合は双方を共通の
+最大宇宙へULiftし、同じ宇宙の場合のULiftを使わない自然同型も公開する。
+
+### 188.2 実際のhocolimへの自然なframe
+
+`Diagram/ColimitFrame`はDの実際のprojective cofibrant replacement Q_K(D)をcosimplicialに
+resolveし、その各次数のcolimitを取る。colimの左Quillen性と188.1から、得られた
+frameがReedy cofibrant・homotopically constantであることを証明する。
+
+自然augmentationの終域は§186の実際のhocolim(D)であり、各次数で弱同値になる。
+Q_K(D)のprojective cofibrancyを使うため、D自体のcofibrancyは入力に要求しない。
+fibrantなYへの実際のcosimplicial HomはKanである。
+colim/const随伴による図式圏のHomとの自然同型も、両変数と独立したHom宇宙で構成する。
+Cの単体的豊穣化やtensorは仮定しない。
+
+### 188.3 RMap(hocolim D,Y)と図式圏のHom
+
+`FrameOverFunctor`は任意のパラメータ圏BとH:B→Cの上へaugmentedなframeを比較する。
+Bにモデル構造は要求しない。既存の強いresolutionをHへ制限したものと、弱augmentationを
+持つframeのpullbackを実際にcofibrant置換する。二つの自然比較を構成し、実際のHomに
+適用した両変数自然なcospanの二射がfibrant標的で弱同値となることを証明する。
+
+`Diagram/ColimitMapComparison`はH=hocolim、B=(K→C)としてこれを適用する。
+任意の指定cof/fib源分解に対して、実際の`chosenResolutionHom(hocolim D,Y)`と
+188.2のframe Homから共通のKan値二変数関手への自然な弱同値を得る。
+指定源分解は元モデルの生成表示I,Jから構成できることも利用例で検証した。
+
+さらに、frame HomのULiftと、図式圏のresolutionから定数fibrant標的const(RY)への
+HomのULiftを、実際の両変数自然同型`liftedHomIso`で比較する。
+定数RYのprojective fibrancyと、このdiagram HomのKan性も証明した。
+元のDのresolutionを使う`originalDiagramHom`から、Q_K(D)のresolutionを使うdiagram Homへの
+自然変換も実際のQ_K→Idから構成し、弱同値性を証明した。
+通常のHo上の射の同値だけではなく、単体的集合と自然変換そのものを比較している。
+これら6モジュールのコミット：`ca5d064`。
+
+### 188.4 projective cofibrationの評価
+
+`Diagram/ProjectiveCofibrations`はprojective cofibrationが各点でcofibrationとなる方向を証明する。
+自由生成射の評価は元の射の実際のcoproductであり、評価はrelative cell構成を保存する。
+生成モデルのcofibrationをセルのretractとして表示し、元のcofibrationの閉性へ帰着する。
+逆向きの判定やinjectiveモデルの存在は使わない。
+projective cofibrantな図式の各点のcofibrancy、特に任意のDについてQ_K(D)の各点の
+cofibrancyも導く。コミット：`8dbb4e4`。
+
+### 188.5 検証と次の接続
+
+以下はすべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`：2399 jobs。
+- `check_colimit_frame`：75宣言・6モジュール、標準公理のみ。
+  独立したHom宇宙、実際のframeとaugmentation、Kan性、二変数自然比較の弱同値性、
+  図式圏のHomとの自然同型、元のDからの比較、元モデルの最終入力からの利用例を検証した。
+- `check_projective_cofibrations`：7宣言・1モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：3173宣言・214モジュール、標準公理のみ。
+- `check_homotopy_limit`：60宣言・5モジュール。
+- `check_filtered_homotopy_colimit`：35宣言・3モジュール。
+- `check_homotopical_foundations`、`check_spectra_stage2`、`git diff --check`。
+
+新規sorry・引用axiomはない。共有ルートや他チャットの作業は変更していない。
+次の接続は、projectiveなcosimplicial frameの各点でのRMap図式と、今回のdiagram Homを、
+§187の実際のweighted holimへ結ぶ比較である。Homと通常のlimitとの同型だけでは
+F4のRMap(hocolim D,Y)≃holim RMap(D_i,Y)の受入条件を満たさない。
+Hom宇宙のULiftと弱同値クラスの適合も、必要な箇所で明示して接続する。
+F1の任意モデル源での最終の厳密な二変数関手とL0〜L5も残り、§159.2の最終契約は維持する。

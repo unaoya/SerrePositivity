@@ -920,3 +920,21 @@ ordinary localizationの出力宇宙は独立。図式と単体的集合の値�
 標準公理監査と回帰検証が成功。コミットは`a44d6e3`・`451422e`・`e72550c`、詳細は計画§187。
 RMap(hocolim D,Y)とholim RMap(D_i,Y)の自然な弱同値は引き続き残り、今回のordinaryな
 普遍性だけでF4完了とはしない。F1の任意源での最終関手とL0〜L5も未完了である。
+
+
+`Reedy/LatchingPreservation`と`FramePreservation`は一般の左Quillen左随伴によるframeの保存を
+実際のlatching射のArrow同型とBrown補題から証明する。`AdjunctionHom`は独立したHom宇宙を
+共通の最大宇宙へULiftし、通常の随伴のHom同値を単体的・両変数自然同型にする。
+
+`Diagram/ColimitFrame`は実際のprojective cofibrant replacementをresolveして各次数でcolimitを取り、
+実際のhocolimへの弱augmentationを持つ自然なframeを構成する。
+`FrameOverFunctor`と`ColimitMapComparison`は、RMap(hocolim D,Y)とこのframe Homから、
+共通のKan値関手への両変数自然な弱同値を構成する。図式圏で定数RYへのresolution Homとの
+自然同型、元のDのresolutionからの自然な弱同値も構成する。源Cに豊穣化は要求しない。
+
+`Diagram/ProjectiveCofibrations`は自由生成射・relative cell・retractを評価し、projective cofibrationの
+各点でのcofibration性を証明する。特に実際のQ_K(D)の各点はcofibrantである。
+共有入口2399 jobs、共有3173宣言・214モジュールの標準公理監査と回帰検証が成功。
+コミットは`ca5d064`・`8dbb4e4`、詳細は計画§188。
+図式圏のHomを§187のweighted holimへ比較する部分と、必要なULiftの弱同値適合は残る。
+F4全体、F1の任意源での最終関手、L0〜L5は未完了であり、一般局所化までの契約を維持する。
