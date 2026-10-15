@@ -34,6 +34,18 @@ lemma cochainKernelLiftX_inclusion {P Q : CochainComplex (ModuleCat.{u} R) ℤ}
   dsimp [cochainKernelLiftX]
   exact Fork.IsLimit.lift_ι _
 
+/-- Compute a component of a graded kernel lift through a monic comparison square. -/
+lemma cochainKernelLiftX_comp_eq
+    {P Q A B : CochainComplex (ModuleCat.{u} R) ℤ} {f : P ⟶ Q} {n : ℤ}
+    {W : ModuleCat.{u} R} {v : W ⟶ P.X n} {hv : v ≫ f.f n = 0}
+    {m : kernel f ⟶ A} {i : A ⟶ B} [Mono (i.f n)] {g : P ⟶ B}
+    (hm : m ≫ i = kernel.ι f ≫ g) {t : W ⟶ A.X n}
+    (ht : v ≫ g.f n = t ≫ i.f n) : cochainKernelLiftX f n v hv ≫ m.f n = t := by
+  apply (cancel_mono (i.f n)).mp
+  rw [Category.assoc, ← HomologicalComplex.comp_f, hm, HomologicalComplex.comp_f,
+    cochainKernelLiftX_inclusion_assoc]
+  exact ht
+
 lemma cochainBiprodDegree_hom_ext (A B : CochainComplex (ModuleCat.{u} R) ℤ)
     (n : ℤ) {W : ModuleCat.{u} R} {f g : W ⟶ (A ⊞ B).X n}
     (hf : f ≫ (biprod.fst : A ⊞ B ⟶ A).f n = g ≫ (biprod.fst : A ⊞ B ⟶ A).f n)

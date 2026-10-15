@@ -28,6 +28,27 @@ abbrev cochainSplittingSection
     (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ))
     (σ : ∀ i, (S.map (eval _ _ i)).Splitting) (i : ℤ) : S.X₃.X i ⟶ S.X₂.X i := (σ i).s
 
+/-- The consecutive maps of a short complex compose to zero in every degree. -/
+lemma cochainShortComplex_f_g (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ)) :
+    (fun i => S.f.f i ≫ S.g.f i) = (fun i => (0 : S.X₁.X i ⟶ S.X₃.X i)) :=
+  funext fun i => congrArg (fun f => f.f i) S.zero
+
+lemma cochainSplitting_f_r (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ))
+    (σ : ∀ i, (S.map (eval _ _ i)).Splitting) :
+    (fun i => S.f.f i ≫ cochainSplittingRetraction S σ i) = (fun i => 𝟙 (S.X₁.X i)) :=
+  funext fun i => (σ i).f_r
+
+lemma cochainSplitting_s_g (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ))
+    (σ : ∀ i, (S.map (eval _ _ i)).Splitting) :
+    (fun i => cochainSplittingSection S σ i ≫ S.g.f i) = (fun i => 𝟙 (S.X₃.X i)) :=
+  funext fun i => (σ i).s_g
+
+lemma cochainSplitting_id (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ))
+    (σ : ∀ i, (S.map (eval _ _ i)).Splitting) :
+    (fun i => cochainSplittingRetraction S σ i ≫ S.f.f i +
+      S.g.f i ≫ cochainSplittingSection S σ i) = (fun i => 𝟙 (S.X₂.X i)) :=
+  funext fun i => (σ i).id
+
 /-- Tensor a short complex on the right by a fixed cochain complex. -/
 abbrev cochainTensorShortComplexRight
     (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ))
@@ -45,16 +66,12 @@ def cochainTensorShortComplexRightSplitting
     change (cochainTensorMap S.f (𝟙 Q)).f n ≫ _ = 𝟙 ((cochainTensor S.X₁ Q).X n)
     rw [← cochainTensorDegreeMap_eq, cochainTensorDegreeMap_comp]
     simp only [HomologicalComplex.id_f, id_comp]
-    have h : (fun i => S.f.f i ≫ cochainSplittingRetraction S σ i) = (fun i => 𝟙 (S.X₁.X i)) :=
-      funext fun i => (σ i).f_r
-    rw [h, cochainTensorDegreeMap_id]
+    rw [cochainSplitting_f_r, cochainTensorDegreeMap_id]
   s_g := by
     change _ ≫ (cochainTensorMap S.g (𝟙 Q)).f n = 𝟙 ((cochainTensor S.X₃ Q).X n)
     rw [← cochainTensorDegreeMap_eq, cochainTensorDegreeMap_comp]
     simp only [HomologicalComplex.id_f, comp_id]
-    have h : (fun i => cochainSplittingSection S σ i ≫ S.g.f i) = (fun i => 𝟙 (S.X₃.X i)) :=
-      funext fun i => (σ i).s_g
-    rw [h, cochainTensorDegreeMap_id]
+    rw [cochainSplitting_s_g, cochainTensorDegreeMap_id]
   id := by
     change cochainTensorDegreeMap (cochainSplittingRetraction S σ) (fun j => 𝟙 (Q.X j)) n ≫
       (cochainTensorMap S.f (𝟙 Q)).f n + (cochainTensorMap S.g (𝟙 Q)).f n ≫
@@ -64,10 +81,7 @@ def cochainTensorShortComplexRightSplitting
       cochainTensorDegreeMap_comp, cochainTensorDegreeMap_comp]
     simp only [HomologicalComplex.id_f, comp_id]
     rw [← cochainTensorDegreeMap_add_left]
-    have h : (fun i => cochainSplittingRetraction S σ i ≫ S.f.f i +
-        S.g.f i ≫ cochainSplittingSection S σ i) =
-        (fun i => 𝟙 (S.X₂.X i)) := funext fun i => (σ i).id
-    rw [h, cochainTensorDegreeMap_id]
+    rw [cochainSplitting_id, cochainTensorDegreeMap_id]
 
 lemma cochainTensorShortComplexRight_shortExact
     (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ))
@@ -94,16 +108,12 @@ def cochainTensorShortComplexLeftSplitting
     change (cochainTensorMap (𝟙 P) S.f).f n ≫ _ = 𝟙 ((cochainTensor P S.X₁).X n)
     rw [← cochainTensorDegreeMap_eq, cochainTensorDegreeMap_comp]
     simp only [HomologicalComplex.id_f, id_comp]
-    have h : (fun j => S.f.f j ≫ cochainSplittingRetraction S σ j) = (fun j => 𝟙 (S.X₁.X j)) :=
-      funext fun j => (σ j).f_r
-    rw [h, cochainTensorDegreeMap_id]
+    rw [cochainSplitting_f_r, cochainTensorDegreeMap_id]
   s_g := by
     change _ ≫ (cochainTensorMap (𝟙 P) S.g).f n = 𝟙 ((cochainTensor P S.X₃).X n)
     rw [← cochainTensorDegreeMap_eq, cochainTensorDegreeMap_comp]
     simp only [HomologicalComplex.id_f, comp_id]
-    have h : (fun j => cochainSplittingSection S σ j ≫ S.g.f j) = (fun j => 𝟙 (S.X₃.X j)) :=
-      funext fun j => (σ j).s_g
-    rw [h, cochainTensorDegreeMap_id]
+    rw [cochainSplitting_s_g, cochainTensorDegreeMap_id]
   id := by
     change cochainTensorDegreeMap (fun i => 𝟙 (P.X i)) (cochainSplittingRetraction S σ) n ≫
       (cochainTensorMap (𝟙 P) S.f).f n + (cochainTensorMap (𝟙 P) S.g).f n ≫
@@ -113,10 +123,7 @@ def cochainTensorShortComplexLeftSplitting
       cochainTensorDegreeMap_comp, cochainTensorDegreeMap_comp]
     simp only [HomologicalComplex.id_f, comp_id]
     rw [← cochainTensorDegreeMap_add_right]
-    have h : (fun j => cochainSplittingRetraction S σ j ≫ S.f.f j +
-        S.g.f j ≫ cochainSplittingSection S σ j) =
-        (fun j => 𝟙 (S.X₂.X j)) := funext fun j => (σ j).id
-    rw [h, cochainTensorDegreeMap_id]
+    rw [cochainSplitting_id, cochainTensorDegreeMap_id]
 
 lemma cochainTensorShortComplexLeft_shortExact
     (P : CochainComplex (ModuleCat.{u} R) ℤ)

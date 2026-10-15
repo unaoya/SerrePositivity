@@ -19,9 +19,8 @@ variable (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ))
     (σ : ∀ i, (S.map (eval _ _ i)).Splitting)
 
 lemma tensorCubeHighMixedSplitting_f_g :
-    (fun i => S.f.f i ≫ S.g.f i) = (fun i => (0 : S.X₁.X i ⟶ S.X₃.X i)) := by
-  funext i
-  exact congrArg (fun f => f.f i) S.zero
+    (fun i => S.f.f i ≫ S.g.f i) = (fun i => (0 : S.X₁.X i ⟶ S.X₃.X i)) :=
+  cochainShortComplex_f_g S
 
 /-- Lift the high mixed component 0 using two quotient sections. -/
 def tensorCubeHighMixedRawSection0X (n : ℤ) :
@@ -91,106 +90,79 @@ variable (hS : S.ShortExact) (hproj : ∀ i, Module.Projective R (S.X₃.X i))
 lemma tensorCubeHighMixedSection0X_component0 (n : ℤ) :
     tensorCubeHighMixedSection0X S σ n ≫ (tensorCubeHighMixed0 S hS hproj).f n = 𝟙 _ := by
   have := tensorCubeHighMixed0_target_inclusion_mono S hS hproj
-  apply (cancel_mono ((cochainTensorTripleMap (𝟙 S.X₃) (𝟙 S.X₃) S.f).f n)).mp
-  rw [Category.assoc, ← HomologicalComplex.comp_f, tensorCubeHighMixed0_inclusion,
-    HomologicalComplex.comp_f, tensorCubeHighMixedSection0X_inclusion_assoc,
-    id_comp,
-    ← cochainTensorTripleDegreeMap_eq S.g S.g (𝟙 S.X₂) n]
+  apply cochainKernelLiftX_comp_eq (tensorCubeHighMixed0_inclusion S hS hproj)
+  rw [id_comp, ← cochainTensorTripleDegreeMap_eq S.g S.g (𝟙 S.X₂) n]
   rw [tensorCubeHighMixedRawSection0X, cochainTensorTripleDegreeMap_comp]
   simp only [HomologicalComplex.id_f, comp_id]
-  have he : (fun i => cochainSplittingSection S σ i ≫ S.g.f i) =
-      (fun i => 𝟙 (S.X₃.X i)) := funext fun i => (σ i).s_g
-  rw [he]
+  rw [cochainSplitting_s_g]
   exact cochainTensorTripleDegreeMap_eq (𝟙 S.X₃) (𝟙 S.X₃) S.f n
 
 lemma tensorCubeHighMixedSection0X_component1 (n : ℤ) :
     tensorCubeHighMixedSection0X S σ n ≫ (tensorCubeHighMixed1 S hS hproj).f n = 0 := by
   have := tensorCubeHighMixed1_target_inclusion_mono S hS hproj
-  apply (cancel_mono ((cochainTensorTripleMap S.f (𝟙 S.X₃) (𝟙 S.X₃)).f n)).mp
-  rw [Category.assoc, ← HomologicalComplex.comp_f, tensorCubeHighMixed1_inclusion,
-    HomologicalComplex.comp_f, tensorCubeHighMixedSection0X_inclusion_assoc,
-    ← cochainTensorTripleDegreeMap_eq (𝟙 S.X₂) S.g S.g n]
+  apply cochainKernelLiftX_comp_eq (tensorCubeHighMixed1_inclusion S hS hproj)
+  rw [← cochainTensorTripleDegreeMap_eq (𝟙 S.X₂) S.g S.g n]
   simp only [tensorCubeHighMixedRawSection0X, cochainTensorTripleDegreeMap_comp,
     tensorCubeHighMixedSplitting_f_g, cochainTensorTripleDegreeMap_zero_third, zero_comp]
 
 lemma tensorCubeHighMixedSection0X_component2 (n : ℤ) :
     tensorCubeHighMixedSection0X S σ n ≫ (tensorCubeHighMixed2 S hS hproj).f n = 0 := by
   have := tensorCubeHighMixed2_target_inclusion_mono S hS hproj
-  apply (cancel_mono ((cochainTensorTripleMap (𝟙 S.X₃) S.f (𝟙 S.X₃)).f n)).mp
-  rw [Category.assoc, ← HomologicalComplex.comp_f, tensorCubeHighMixed2_inclusion,
-    HomologicalComplex.comp_f, tensorCubeHighMixedSection0X_inclusion_assoc,
-    ← cochainTensorTripleDegreeMap_eq S.g (𝟙 S.X₂) S.g n]
+  apply cochainKernelLiftX_comp_eq (tensorCubeHighMixed2_inclusion S hS hproj)
+  rw [← cochainTensorTripleDegreeMap_eq S.g (𝟙 S.X₂) S.g n]
   simp only [tensorCubeHighMixedRawSection0X, cochainTensorTripleDegreeMap_comp,
     tensorCubeHighMixedSplitting_f_g, cochainTensorTripleDegreeMap_zero_third, zero_comp]
 
 lemma tensorCubeHighMixedSection1X_component0 (n : ℤ) :
     tensorCubeHighMixedSection1X S σ n ≫ (tensorCubeHighMixed0 S hS hproj).f n = 0 := by
   have := tensorCubeHighMixed0_target_inclusion_mono S hS hproj
-  apply (cancel_mono ((cochainTensorTripleMap (𝟙 S.X₃) (𝟙 S.X₃) S.f).f n)).mp
-  rw [Category.assoc, ← HomologicalComplex.comp_f, tensorCubeHighMixed0_inclusion,
-    HomologicalComplex.comp_f, tensorCubeHighMixedSection1X_inclusion_assoc,
-    ← cochainTensorTripleDegreeMap_eq S.g S.g (𝟙 S.X₂) n]
+  apply cochainKernelLiftX_comp_eq (tensorCubeHighMixed0_inclusion S hS hproj)
+  rw [← cochainTensorTripleDegreeMap_eq S.g S.g (𝟙 S.X₂) n]
   simp only [tensorCubeHighMixedRawSection1X, cochainTensorTripleDegreeMap_comp,
     tensorCubeHighMixedSplitting_f_g, cochainTensorTripleDegreeMap_zero_first, zero_comp]
 
 lemma tensorCubeHighMixedSection1X_component1 (n : ℤ) :
     tensorCubeHighMixedSection1X S σ n ≫ (tensorCubeHighMixed1 S hS hproj).f n = 𝟙 _ := by
   have := tensorCubeHighMixed1_target_inclusion_mono S hS hproj
-  apply (cancel_mono ((cochainTensorTripleMap S.f (𝟙 S.X₃) (𝟙 S.X₃)).f n)).mp
-  rw [Category.assoc, ← HomologicalComplex.comp_f, tensorCubeHighMixed1_inclusion,
-    HomologicalComplex.comp_f, tensorCubeHighMixedSection1X_inclusion_assoc,
-    id_comp,
-    ← cochainTensorTripleDegreeMap_eq (𝟙 S.X₂) S.g S.g n]
+  apply cochainKernelLiftX_comp_eq (tensorCubeHighMixed1_inclusion S hS hproj)
+  rw [id_comp, ← cochainTensorTripleDegreeMap_eq (𝟙 S.X₂) S.g S.g n]
   rw [tensorCubeHighMixedRawSection1X, cochainTensorTripleDegreeMap_comp]
   simp only [HomologicalComplex.id_f, comp_id]
-  have he : (fun i => cochainSplittingSection S σ i ≫ S.g.f i) =
-      (fun i => 𝟙 (S.X₃.X i)) := funext fun i => (σ i).s_g
-  rw [he]
+  rw [cochainSplitting_s_g]
   exact cochainTensorTripleDegreeMap_eq S.f (𝟙 S.X₃) (𝟙 S.X₃) n
 
 lemma tensorCubeHighMixedSection1X_component2 (n : ℤ) :
     tensorCubeHighMixedSection1X S σ n ≫ (tensorCubeHighMixed2 S hS hproj).f n = 0 := by
   have := tensorCubeHighMixed2_target_inclusion_mono S hS hproj
-  apply (cancel_mono ((cochainTensorTripleMap (𝟙 S.X₃) S.f (𝟙 S.X₃)).f n)).mp
-  rw [Category.assoc, ← HomologicalComplex.comp_f, tensorCubeHighMixed2_inclusion,
-    HomologicalComplex.comp_f, tensorCubeHighMixedSection1X_inclusion_assoc,
-    ← cochainTensorTripleDegreeMap_eq S.g (𝟙 S.X₂) S.g n]
+  apply cochainKernelLiftX_comp_eq (tensorCubeHighMixed2_inclusion S hS hproj)
+  rw [← cochainTensorTripleDegreeMap_eq S.g (𝟙 S.X₂) S.g n]
   simp only [tensorCubeHighMixedRawSection1X, cochainTensorTripleDegreeMap_comp,
     tensorCubeHighMixedSplitting_f_g, cochainTensorTripleDegreeMap_zero_first, zero_comp]
 
 lemma tensorCubeHighMixedSection2X_component0 (n : ℤ) :
     tensorCubeHighMixedSection2X S σ n ≫ (tensorCubeHighMixed0 S hS hproj).f n = 0 := by
   have := tensorCubeHighMixed0_target_inclusion_mono S hS hproj
-  apply (cancel_mono ((cochainTensorTripleMap (𝟙 S.X₃) (𝟙 S.X₃) S.f).f n)).mp
-  rw [Category.assoc, ← HomologicalComplex.comp_f, tensorCubeHighMixed0_inclusion,
-    HomologicalComplex.comp_f, tensorCubeHighMixedSection2X_inclusion_assoc,
-    ← cochainTensorTripleDegreeMap_eq S.g S.g (𝟙 S.X₂) n]
+  apply cochainKernelLiftX_comp_eq (tensorCubeHighMixed0_inclusion S hS hproj)
+  rw [← cochainTensorTripleDegreeMap_eq S.g S.g (𝟙 S.X₂) n]
   simp only [tensorCubeHighMixedRawSection2X, cochainTensorTripleDegreeMap_comp,
     tensorCubeHighMixedSplitting_f_g, cochainTensorTripleDegreeMap_zero_second, zero_comp]
 
 lemma tensorCubeHighMixedSection2X_component1 (n : ℤ) :
     tensorCubeHighMixedSection2X S σ n ≫ (tensorCubeHighMixed1 S hS hproj).f n = 0 := by
   have := tensorCubeHighMixed1_target_inclusion_mono S hS hproj
-  apply (cancel_mono ((cochainTensorTripleMap S.f (𝟙 S.X₃) (𝟙 S.X₃)).f n)).mp
-  rw [Category.assoc, ← HomologicalComplex.comp_f, tensorCubeHighMixed1_inclusion,
-    HomologicalComplex.comp_f, tensorCubeHighMixedSection2X_inclusion_assoc,
-    ← cochainTensorTripleDegreeMap_eq (𝟙 S.X₂) S.g S.g n]
+  apply cochainKernelLiftX_comp_eq (tensorCubeHighMixed1_inclusion S hS hproj)
+  rw [← cochainTensorTripleDegreeMap_eq (𝟙 S.X₂) S.g S.g n]
   simp only [tensorCubeHighMixedRawSection2X, cochainTensorTripleDegreeMap_comp,
     tensorCubeHighMixedSplitting_f_g, cochainTensorTripleDegreeMap_zero_second, zero_comp]
 
 lemma tensorCubeHighMixedSection2X_component2 (n : ℤ) :
     tensorCubeHighMixedSection2X S σ n ≫ (tensorCubeHighMixed2 S hS hproj).f n = 𝟙 _ := by
   have := tensorCubeHighMixed2_target_inclusion_mono S hS hproj
-  apply (cancel_mono ((cochainTensorTripleMap (𝟙 S.X₃) S.f (𝟙 S.X₃)).f n)).mp
-  rw [Category.assoc, ← HomologicalComplex.comp_f, tensorCubeHighMixed2_inclusion,
-    HomologicalComplex.comp_f, tensorCubeHighMixedSection2X_inclusion_assoc,
-    id_comp,
-    ← cochainTensorTripleDegreeMap_eq S.g (𝟙 S.X₂) S.g n]
+  apply cochainKernelLiftX_comp_eq (tensorCubeHighMixed2_inclusion S hS hproj)
+  rw [id_comp, ← cochainTensorTripleDegreeMap_eq S.g (𝟙 S.X₂) S.g n]
   rw [tensorCubeHighMixedRawSection2X, cochainTensorTripleDegreeMap_comp]
   simp only [HomologicalComplex.id_f, comp_id]
-  have he : (fun i => cochainSplittingSection S σ i ≫ S.g.f i) =
-      (fun i => 𝟙 (S.X₃.X i)) := funext fun i => (σ i).s_g
-  rw [he]
+  rw [cochainSplitting_s_g]
   exact cochainTensorTripleDegreeMap_eq (𝟙 S.X₃) S.f (𝟙 S.X₃) n
 
 end Adams
