@@ -530,3 +530,21 @@ Mathlibの実際のReedy分解を用いてすべての射で自然な変換を�
 `check_reedy_lifting_step`で実際のsquare、成分の存在・分解・両方向の自然性を検証し、
 二モジュール全31宣言を標準公理のみで監査した。共有全体は989宣言・70モジュール。
 この一段の構成だけで、全次数のReedy持ち上げや分解が完成したとは判定しない。
+
+## F0：全次数のReedy持ち上げ（途中、2026-10-15）
+
+`Reedy/LowerNaturality.lean`は、次数制限内でのReedy分解と自然性の判定を証明する。
+`Reedy/LiftBelow.lean`は下位次数での実際の自然なliftとその分解等式を保持する。
+`Reedy/LiftSuccessor.lean`は既存成分を保持し、次の次数の各成分を前記の持ち上げ
+正方形から追加する。direct/inverse射での自然性を証明し、同次数ではそれらの射が
+恒等射となることを使う。一般の射での自然性は実際のReedy分解で回復する。
+
+`Reedy/Lifting.lean`は、すべての有限次数制限のliftを整合的に反復し、全図式上の
+一つの自然変換を構成する。主定理`Lifting.hasLiftingProperty r`は、自然数次数の
+一般のReedy圏で、各相対latching/matching射の持ち上げ性から図式圏での
+`HasLiftingProperty i p`を証明する。モデル構造を入力に要求しない。
+`check_reedy_lifting`は一般の宇宙、全体の自然なlift・両分解等式・既存成分の保持、
+Δ/Δopでの任意モデル源への二種類の相対trivial条件の適用を検証する。
+新規四モジュール全63宣言は標準公理のみ。共有全体は1052宣言・74モジュール。
+objectwise Wと相対trivial条件の同値、Reedy関手的因子分解・モデル公理・resolutionと
+F1〜F4は引き続き残る。
