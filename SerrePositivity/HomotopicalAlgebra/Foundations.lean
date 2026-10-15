@@ -139,6 +139,9 @@ public import SerrePositivity.HomotopicalAlgebra.Quillen.FibrantCriterion
 public import SerrePositivity.HomotopicalAlgebra.Localization.LocalLeftProper
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence
+public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedComposition
+public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedWeakInverse
+public import SerrePositivity.HomotopicalAlgebra.Monoidal.DerivedTensorInverse
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.GeneratedBifunctor
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.BifunctorTransport
