@@ -3209,3 +3209,20 @@ U11dの全受入は引き続き未完。全次数の生成元比較は得たが�
 次はこの作用とbimodule合成の残る作用を構成し、一対象Aの既存tensorとの比較を進める。
 U11eの随伴・単位/結合coherence、U12〜U17、D4mは未完のまま継続する。
 共有ルート・共有一般論・並行作業ファイルは変更していない。
+
+
+### 17.23 U11d4：パラメータ付きbalanced族の普遍性
+
+`Tensor/Parameter.lean`は任意の非有界複体Kについて、K⊗(M(x)⊗N(x))からのchain map族に
+二作用の関係を課すParamFamilyを定義した。既に登録したCh(A)の左tensor–Hom随伴で
+BalancedFamily(M,N,Hom(K,T))へ移し、既存descからparamDescを構成する。
+包含での計算・tensor後の射の外延性・制限と降下のHom同値、終域の後合成とK変数の引戻しを証明した。
+降下射を主Hom複体へ転置するparamHomMapと、各包含における計算式も公開する。
+共有の一般coendや表現性を再実装せず、この具体的balanced tensorの普遍性として構成している。
+
+Checks.BalancedTensorParameterのビルドと直接実行は終了コード0。
+主要13宣言の公理はpropext・Classical.choice・Quot.soundのみ。監査累計1339宣言。
+任意A・独立対象宇宙・任意非有界K/T、一対象ZMod 2を検査した。
+この普遍性へ全次数自然変換の作用族を渡す段階はまだ未完であり、U11d全受入とはしない。
+次はパラメータ付き右作用との可換性と、実際のbalanced作用族の構成・降下を続ける。
+U11e・U12〜U17・D4mも継続対象。共有ルート・共有一般論・並行作業ファイルは変更していない。
