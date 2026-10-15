@@ -4131,3 +4131,27 @@ BS専用`DeltaPDivisionFiniteKoszulTransitions.lean`で、実列の末尾へ次�
 一般の導来δpushout・CFFへの接続は引き続き別途証明する。
 
 この工程の全体ビルド4932ジョブも成功。共有既存sorry警告は別扱い。
+
+## B4-6：実有限Koszul比較の段間自然性（2026-10-15）
+
+`DeltaPDivisionFiniteKoszulTransitions.lean`で、実mappingCone.inrによる
+K(g_0,…,g_N)→K(g_0,…,g_(N+1))の鎖写像を構成した。
+既存koszulH0Unit_succからそのH⁰写像が標準単位を保存することを証明した。
+通常商側の射は既存Ideal.Quotient.factorによるL/I_N→L/I_(N+1)を使用し、
+標準商元の図式と、正規化H⁰同型が両遷移射と可換になることを証明した。
+標準H⁰単位の全射性を使ったため、これらの自然性にはp正則性・y正則性・ghost単射は不要。
+さらに実Koszul複体と実鎖写像からなる具体的なℕ図式を構成し、隣接射を同定した。
+
+### 次工程の登録：実H⁰図式と通常商図式の自然同型
+
+BS専用`DeltaPDivisionFiniteKoszulHomologyDiagram.lean`で、通常有限商を共通のL加群圏に置く
+具体的な逐次図式を作り、正規化H⁰同型による自然同型を供給する。
+前工程の元ごとの可換図式を使い、実Koszul図式のhomologyFunctor像と比較する。
+その後に、既存filtered-colimit交換の適用条件と、通常商図式の極限がrawδ包となる
+標準射付き比較を調べる。実Koszul図式の極限の正次数ホモロジー消滅・H⁰の同定を順に証明する。
+列長が増える今回のモデルを、固定列のKoszul係数環極限の既存APIと混同しない。
+この無限通常Koszulモデルを原典の導来δ基底変更と同一視する比較も別途必要であり、
+一般B4、分冪包比較、CFF根付き拡大は未完成のまま。
+
+本工程の7公開宣言の対象3810ジョブ、pure B4監査、全体4933ジョブ成功。
+標準3公理のみ、新sorry・公理・外部引用なし。共有既存sorry警告は別扱い。
