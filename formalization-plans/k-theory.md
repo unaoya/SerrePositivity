@@ -9213,3 +9213,59 @@ SS_v・SS_w・SS_max(v,w)のmono/Kan条件を個別に明示し、§194のULift�
 small-Hom表示・宇宙変更とholimへ接続すること、(iii)最終公式の選択独立性の照合である。
 現時点の右端を、指定済みpointwise RMapそのもののholimと同一視しない。
 L1の小さいhomotopy生成族、F1の任意モデル源の最終関手、L2〜L5も引き続き未完了である。
+
+## 198. F4の源自然性：実際のrealizationとhocolim frameの二変数比較（2026-10-15）
+
+§197の残項目のうち、weighted source comparisonとhocolim frameのaugmentationの
+源図式Dへの自然性を証明した。指定RMapからこのframeのHomへの比較も、
+両変数に自然な実際のbifunctorのcospanへ拡張した。コミット：`2544f499`。
+F4の最終RMap–holim公式全体とL系列全体は引き続き未完了である。
+
+### 198.1 frameの射と実際のrealizationの関手性
+
+`FrameWeightFunctoriality`はframeの射A→Bによる実際のpointwise Homの自然変換H_B→H_Aを、
+指定済みの随伴F_A⊣H_A、F_B⊣H_BのmateでF_A→F_Bへ移す。
+元の選択済みKan realizationを対象として保ち、恒等射・合成と随伴Hom同値のframe自然性を証明する。
+新たなrealizationの存在や比較同型を仮定していない。
+
+`ConstantWeightNaturality`は定数重みのHom同値のframe自然性から、§191の実際の定数重み
+realization同型とunit同型の自然性を証明する。
+`SmallHomWeightFunctoriality`は実際のShrinkHomsの同値を通して元のCへ戻す。
+実際のcolimit保存同型とdegreeIsoの自然性も照合し、u/v/wを独立に維持する。
+
+### 198.2 源比較とhocolim frameの自然変換
+
+`WeightedSourceNaturality`は任意の固定augmentation q:W→const unitについて、
+§191の実際のcomparison(D,q)がDの射と可換になることを証明する。
+realizationのunitTensorIsoとqへの自然性、198.1のunit同型の自然性、
+既存の次数0 hocolim比較の自然性を可換squareの合成でつなぐ。
+weightedFamily(K,I,J,W)(unit)→hocolimという実際の自然変換comparisonFamilyを構成する。
+この自然性の構成にはSSetモデル自体は不要である。
+
+標準重みについては、weighted left adjointとその標準単体への適用をDの関手にまとめ、
+元のhocolim(D)を終点とする既存のaugmentationがDにも自然であることを証明する。
+
+`HocolimFrameComparison`はFrameOverFunctorをこの自然なaugmentationへ適用する。
+実際の二変数bifunctor上で
+
+`RMap(hocolim(−),−) → middle ← Hom(weighted hocolim frame(−), R(−))`
+
+を構成し、両射が全D・全Yで弱同値であることを証明する。
+元の任意の指定cof/fibを使い、Yはfibrantなものに制限しない。
+
+### 198.3 受入検証と残項目
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`：2458 jobs、成功。
+- `check_weighted_source_naturality`：49宣言・5モジュール、標準公理のみ。
+  独立したu/v/w、モデル未装備のSSetへのsource比較の自然性、実際のaugmentation、
+  指定RMapを左端とする二変数自然cospanと両射の弱同値性を確認した。
+- `audit_homotopical_foundations`：3752宣言・272モジュール、標準公理のみ。
+- `check_hocolim_mapping_comparison`：44宣言・4モジュール、回帰検証成功。
+- `check_weighted_source_weak_equivalence`：31宣言・5モジュール、回帰検証成功。
+- `git diff --check`、新規sorry・引用axiomなし。他チャットの変更を保持した。
+
+次は198.2の自然cospanを、§197のframe Hom≅weighted Homの同型へ源方向にも自然に接続する。
+この同型は現時点でDごとには構成済みだが、Dへの自然性までは主張しない。
+その後、右端のsmall-Hom frame図式と指定済みpointwise RMapの比較をholimへ移し、
+最終公式と選択独立性を照合する。L1の小さいhomotopy生成族、F1の任意源の最終関手、
+L2〜L5も未完了である。

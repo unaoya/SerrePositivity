@@ -1064,3 +1064,12 @@ RMap(hocolim D,−)→middle←frame Hom≅weighted Hom→holimを構成する�
 各射は共通宇宙への実際のULift後に弱同値であり、同じ指定fibrantTargetを使用する。
 共有入口2453 jobs、共有3703宣言・267モジュールの標準公理監査と既存入口の回帰検証が成功。
 コミット`a3d7d10`、詳細は計画§197。源図式Dへの自然性と右辺のpointwise RMapへの接続は残る。
+
+
+`FrameWeightFunctoriality`は指定済み随伴のmateから実際のrealizationのframe関手性を証明する。
+`ConstantWeightNaturality`・`SmallHomWeightFunctoriality`は定数重みとunitの実現同型の自然性を、
+元のCの独立したHom/重み宇宙で証明する。`WeightedSourceNaturality`は実際のweighted source
+comparisonとhocolim frameのaugmentationをDに自然な変換へまとめる。
+`HocolimFrameComparison`は指定RMap(hocolim(−),−)とそのframe Homを、実際の二変数自然cospanで比較する。
+共有入口2458 jobs、共有3752宣言・272モジュールの標準公理監査と関連回帰検証が成功。
+コミット`2544f499`、詳細は計画§198。weighted Hom同型の源自然性、pointwise RMapへのholim比較は残る。
