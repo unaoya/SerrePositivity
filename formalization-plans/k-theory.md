@@ -4,7 +4,7 @@
 M1・M2の構成、A1〜C2、共有ホモトピー論H0〜H6、および§129で指定した段階1〜3まで実装・検証済み。
 円スペクトルのレベルモデル・関手的置換・monoidal/SM7と既存豊穣APIの接続が完成した。
 安定化を含むM3全体、M4、非連結K理論、定理3.1・補題4.6への接続は未完成である。
-段階1〜3の完了監査は§158。段階4の最初の単位R0も完了し、最新の実施記録・監査は§160。
+段階1〜3の完了監査は§158。段階4のR0〜R2が完了し、R3は認識部分まで実装。最新記録・残作業は§161。
 mathlibへの追加・登録は今回の完了条件に含めず、必要な構造と法則をこのリポジトリ内に実装する。
 検証済みのステップごとにコミットする。
 段階4はSmith型の一般局所化存在を証明する方針に確定（§159）。今は∞圏を導入しない。M5は別チャットで進める。段階3の完了とP3・M3全体の完了は区別する。
@@ -6446,3 +6446,80 @@ M5・可換環論・CLMST・共有ルートの別チャットによる変更は�
 R0の実行時間を日数へ外挿しておらず、段階4全体やaccessibility/framings/局所化存在を含まない。
 R1では固定版Mathlibの可呈示対象のcardinal拡大・共通化の補題を最初に精査し、R1完了時に再見積もりする。
 R3完了後も§159のA/F/L/E/S系列が必要である。
+
+
+## 161. 実施記録：R1・R2完了とR3の認識部分（2026-10-15）
+
+R系列全体を完了させる依頼に対し、以下を実装・検証して単位ごとにコミットした。
+R3全体は未完了であり、条件付きの認識APIで代替して完了扱いにはしない。
+
+### 161.1 R1：共通正則基数と小対象論法
+
+`HomotopicalAlgebra/Smith/Smallness.lean`を共有入口に追加した。
+小さい可呈示対象族について、各対象の可呈示基数を共通の正則基数へ拡大する。
+射族には始域・終域の直和添字を使い、両端点に共通な基数を構成する。
+局所可呈示なCとw-smallな射クラスIから、局所的な小ささ・同じ宇宙の余極限・
+必要なcolimit保存を確認し、Mathlibの`I.HasSmallObjectArgument.{w}`を証明した。
+これはSOAを前提にした言い換えではなく、モデル構造も不要。
+既存のSOA→smallnessとのinstance循環を避けるため、明示的な定理として公開した。
+
+`scripts/check_smith_smallness.lean`で独立した宇宙、両端点の共通基数、
+実際の関手的分解、およびR0の`solutionTargetsForClass`への適用を検証した。
+全5宣言の公理監査を通過。コミット：`32d4f23`。
+
+### 161.2 R2：小さい生成自明cofibration候補J
+
+`Smith/GeneratingTrivialCofibrations.lean`を追加した。各solution squareについて
+`L ⊔_K P → Q`をIで分解し、Pから分解の中間対象への射を作る。
+この射はpushoutされたiと生成左射の合成なので`I.rlp.llp`に属する。
+右因子が`I.rlp ⊆ W`を満たすため、2-out-of-3からWにも属する。
+全Iと小さいsolution添字の直和上でこれを行い、Jを構成した。
+
+受入項目であるJのw-smallness、`J ≤ I.rlp.llp ∩ W`、任意のi∈Iとf∈Wの間の
+squareがJを経由することを証明した。Jを入力には戻していない。
+`scripts/check_smith_generators.lean`は局所可呈示性からIと構成済みJのSOAまで導く
+利用例と全40宣言の公理監査を含む。コミット：`4dc3d65`。
+
+### 161.3 R3：証明済みの認識部分と未完了ゲート
+
+`Smith/Recognition.lean`で、squareの分解から`I.rlp = J.rlp ∩ W`を証明した。
+`J.rlp.llp ≤ W`の下ではJ分解とretractにより`J.rlp.llp = I.rlp.llp ∩ W`を導く。
+有限極限・有限余極限と選択済みの三クラス上で、既存Transfer/Recognitionを使い
+Mathlib ModelCategoryを構成する条件付きAPI、生成性、両関手的分解への接続も実装した。
+
+`generatedLeft_le_of_closure`は`I.rlp.llp ∩ W`のcoproduct・pushout・超限合成閉性から
+acyclicityを導く。現段階ではcoproduct閉性を明示しており、元の受入条件を満たすには
+以下を引き続き証明する必要がある。
+
+1. 元のpushout・超限合成閉性から、必要なcoproduct閉性を導く一般補題。
+2. 局所可呈示性から必要な有限極限の存在を導く一般補題。固定版の局所可呈示性は
+   同じ宇宙の余極限を含むが、利用中の認識APIが要求する有限極限への接続は未実装。
+3. 構成済みJを使い、上の追加仮定を外した最終Smith認識定理を公開する。
+4. 最終定理から三クラス、生成性、両関手的分解をまとめて使う利用例と公理監査。
+
+`scripts/check_smith_recognition.lean`は構成済みJでの右クラス一致、左クラス一致、
+条件付きモデル構造、生成性を介した両関手的分解、cell閉性を検証し、全11宣言の
+標準公理監査を通過。コミット：`6b4a22b`。このコミットはR3完了ではない。
+
+### 161.4 検証と見積もり更新
+
+以下は実行済みで、すべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`（1464 jobs）。
+- `lake env lean scripts/check_smith_smallness.lean`。
+- `lake env lean scripts/check_smith_generators.lean`。
+- `lake env lean scripts/check_smith_recognition.lean`。
+- `lake env lean scripts/check_smith_solution_set.lean`。
+- `lake env lean scripts/check_homotopical_foundations.lean`。
+- `lake env lean scripts/check_spectra_stage2.lean`。
+- `lake env lean scripts/audit_homotopical_foundations.lean`（482宣言・34モジュール）。
+- `lake env lean scripts/audit_spectra.lean`（3089宣言・319モジュール）。
+
+新規一般論は標準公理のみで、新規sorry・引用axiomを追加していない。
+M5・dg・他チャットのコード・共有ルートは変更していない。
+
+§160.2の7〜14単位は着手前のR1〜R3全体の暫定値であり、今の残工数ではない。
+R1とR2の不確実性は実装により解消した。R3では上記二つの一般補題が追加の
+主要作業として具体化したため、以前のR3「2〜4単位」を確定値にはしない。
+次はこの二補題の構成・依存を確定してから残工数を更新する。
+R全体の受入条件は維持し、R3完了後にA/F/L/E/S系列を再見積もりする。
