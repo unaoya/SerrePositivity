@@ -6307,7 +6307,7 @@ IDは計画上の単位であり、1行を1コミットや1日とみなさない
 | L2（完了、§208） | Localization/AccessibleLocalEquivalences | L1,F4,L3（§208の経路） | Arrow C内のW_Sのaccessibilityと包含のaccessibilityを証明。全局所対象に量化した定義から小ささへの移行を独立に検証 |
 | L3（完了、§207） | Localization/LeftProperClosure | L0,F4、元モデルの左固有性 | cof_original∩W_Sのpushout/超限合成閉性を証明。局所化後のモデル存在や左固有性を先取りしない |
 | L4（完了、§209） | Localization/ModelExistence。一般の左Bousfield局所化存在 | R3,L2,L3 | §159.2の三クラス・fibrant判定を同じC上で構成。局所モデルの生成Jと分解は出力。左固有性・combinatorial性も接続 |
-| L5 | Localization/Replacement, UniversalProperty | L4,F2 | 実際のL_Sとη、冪等性、W_Sの関手による検出、Quillen普遍性、生成表示・置換の独立性、S⊆Tと反復局所化の比較 |
+| L5（完了、§211） | Localization/Replacement, UniversalProperty, IteratedExistence | L4,F2 | 実際のL_Sとη、冪等性、W_Sの関手による検出、Quillen普遍性、生成表示・置換の独立性、S⊆Tと反復局所化の比較 |
 | E0 | Localization/Enriched, Monoidal | L4,L5、既存SM7 | 通常局所化・V豊穣局所化を区別。追加のtractability/生成始域cofibrancyとtensor適合条件を明示し、局所SM7・pushout-product・単位を証明 |
 | S0 | Spectra/ModelCategory/Combinatorial, LeftProper | R1,A0、既存レベル構造 | 一般C,Kの対称スペクトルの局所可呈示性と必要条件下の左固有性。Mod型・余極限・accessibleなmonad等の比較を証明し、圏の名前だけで推論しない |
 | S1 | Spectra/Stable/LocalizingMaps, Omega | S0,L0、既存free/evaluation | F_(n+1)(QA⊗K)⟶F_n(QA)を実際の射として構成。Sの小ささ、cofibrant性、局所fibrant対象とΩ_K対象の同値 |
@@ -10155,3 +10155,96 @@ Quillen性を証明する。恒等関手の順序比較だけでこの普遍性�
 また、上の合成置換の比較と、局所化モデルを実際に再局所化したモデルの比較は区別する。
 後者では元のモデルと局所化モデルのRMapの比較を接続する必要があり、まだ完了していない。
 その後E0、S0〜S3へ進む。F1の任意モデル圏で指定関手的分解なしの最終関手も未完了。
+
+## 211. L5完了：導来Quillen普遍性と実際の反復局所化（2026-10-16）
+
+§210の残項目を実装し、§159.4のL5を受入検証まで完了した。
+F→L→E→S全体の目標は継続中。次はE0、その後S0〜S3へ進む。
+F1の任意の通常モデル圏で指定関手的分解なしの最終関手は別の未完了項目として維持する。
+
+### 211.1 通常のモデル圏に対する一般Quillen判定
+
+`Quillen/FibrantTesting.lean`は、fibrant対象間の全fibrationに対して持ち上げを持つ射が
+弱同値であることを証明する。二つのfibrant置換とvery good path objectで通常の局所化中の
+逆射を作り、証明済みの弱同値の飽和性を適用する。対象のcofibrancy・properness・生成性・
+関手的分解は不要である。
+
+`Quillen/FibrantCriterion.lean`は、この判定と通常の随伴による持ち上げの対応から、
+左随伴がcofibrationを保存し、右随伴がfibrant対象間のfibrationを保存すればQuillenとなることを
+証明する。`Localization/QuillenCriterion.lean`は§210のfibration判定と接続し、元のQuillen随伴が
+局所化モデルからもQuillen随伴になることと、右随伴がfibrant対象をS局所対象へ送ることの同値を示す。
+
+### 211.2 任意のQuillen随伴に対する最終普遍性
+
+`HomotopyFunctionComplex/AdjunctionWeakEquivalence.lean`は、実際のcosimplicial Homの
+随伴同型を共通の大きい宇宙へliftし、弱同値テストを対応させる。
+`FibrantMappingTests.lean`は既にfibrantな対象で指定したtarget replacementを外す比較を証明する。
+`QuillenLocalObjects.lean`は、cofibrantな対象上の実際のsource resolutionを左Quillen関手で送り、
+そのaugmentationの弱同値性とsource invarianceから局所性を導く。
+一般のSには指定した実際のQを適用し、元の弱同値な代表との比較で戻す。
+Sの射の両端がcofibrantであることは要求しない。
+
+`UniversalProperty.leftQuillen_iff_cofibrant_test`は次の同値を証明する。
+
+- 元のQuillen随伴F⊣Uが、同じ随伴としてL_S CからもQuillenとなる。
+- 各s∈SについてF(Qs)がtargetの弱同値になる。
+
+targetのモデル圏は任意であり、targetの関手的分解・properness・tractabilityは入力しない。
+Cとtargetの対象・Homの宇宙は独立で、SSetの明示的な基準モデルは両Hom宇宙とその共通最大宇宙で使う。
+`cofibrant_test_choices_iff`は元のcof/fibの選択を変えてもこの条件が変わらないことを証明する。
+
+さらに`Quillen/DerivedMapTest.lean`は、任意の通常の局所化QC,QDと実際の左導来関手LFについて、
+LF(QC(s))の可逆性とF(Qs)の弱同値性を対応させる。
+`UniversalProperty.leftQuillen_iff_derived_inverts`が、§159.2どおりの
+「LFがSを可逆にすることと局所モデルからのQuillen性の同値」を最終入口として公開する。
+この定理は特定の導来関手やホモトピー圏の選択に固定していない。
+
+### 211.3 最小性による実際のモデルの反復比較
+
+`Quillen/ModelOrder.lean`は、cofibrationの等しい二つのモデルの間の恒等left Quillen関手が
+全弱同値を保存することを証明する。両方向の恒等left Quillen関手から三クラスの等式を得る。
+非cofibrantな射も、一方のモデルでの因子分解と同じtrivial fibrationクラスを使って扱う。
+
+`Localization/Minimality.lean`は211.2の普遍性から、局所化モデルの弱同値が、同じcofibrationを持ち
+元の弱同値とSを含むモデルの弱同値クラスの中で最小であることを導く。
+`Iteration.lean`はこの性質を両方向に適用し、実際にSで局所化したモデルを源としてTで局所化したモデルと、
+元のモデルをS⊔Tで局所化したモデルの三クラスの一致を証明する。
+§210で残していた反復比較は、この普遍性の経路で解決した。
+
+`IteratedExistence.lean`は最初の局所化モデルから小さい生成族、左固有性、実際の両関手的分解を取り出し、
+一般存在定理をそのモデルに再適用する。反復局所化モデルやその存在証明書を入力しない。
+`exists_iterated_localization`の追加入力は二つのw-smallなS,Tだけであり、S⊔Tの小ささも証明する。
+実際の最初のモデル、合併でのモデル、最初のモデルの分解、合併モデルがそのT局所化である証明書を出力する。
+
+### 211.4 L5の最終受入照合
+
+| 要件 | 証明済みの入口・証拠 |
+| --- | --- |
+| 実際のL_Sとη、局所trivial cofibrationとfibrant値 | §210の`Replacement`、`Fibrations`、実際のモデルと置換を組み合わせた利用例 |
+| 単位のRMapによる普遍性 | 実際に構成したηのW_S所属。任意の局所Zでactual RMap(LX,Z)→RMap(X,Z)が弱同値となる利用例も検証 |
+| 冪等性と検出 | `ReplacementData`のηL,Lηの元の弱同値性とW_S=L⁻¹(W_C)、`ReplacementHomotopy`のHo(C)での二写像の一致 |
+| Quillen普遍性 | 211.2の`leftQuillen_iff_derived_inverts`。任意のtarget、通常の局所化と左導来関手で検証 |
+| 置換・生成表示・基数の独立性 | §210の自然な弱同値cospanと自然同型、`ModelComparison`の局所対象述語による三クラスの等式、211.2の指定Qの取り替え |
+| S⊆T | §210の恒等left Quillen関手と自然な置換の比較 |
+| 反復局所化とS⊔T | 211.3の三クラスの等式と、実際の反復存在から合併モデルの局所化証明書を得る最終入口 |
+
+### 211.5 検証・コミット・次工程
+
+実装コミット：`a630c8ce`、`491b8be6`、`1eaac9fa`。すべて成功した。
+
+- 共有入口`Foundations`のビルド：2537 jobs。
+- `check_quillen_fibrant_criterion`：8宣言・3モジュール。
+- `check_localization_quillen_universal`：異なるsource/targetとホモトピー圏の宇宙での
+  最終Quillen普遍性・指定Qの独立性。10宣言・5モジュール。
+- `check_iterated_localization`：元の一般入力とS,Tの小ささだけからの実際の反復存在、
+  任意の実際の合併モデルをT局所化として使う入口。8宣言・4モジュール。
+- `check_local_replacement_universal`：actual RMapでの単位の普遍性を追加検証。60宣言・6モジュール。
+- L4の`check_localization_model_existence`：31宣言・2モジュールの回帰検証。
+- `audit_homotopical_foundations`：4284宣言・351モジュール、標準公理のみ。
+- `git diff --check`と各コミットのstage差分検査。
+
+新規sorry・引用axiomはない。共有作業木の他チャットの変更を保持した。
+L0〜L5は最終仕様の左固有combinatorial源について完了。
+次はE0：通常の局所化に追加仮定を遡及させず、V豊穣・monoidal局所化の必要条件を明示し、
+局所SM7・pushout-product・単位を証明する。その後S0〜S3へ進む。
+F1の指定関手的分解なしの任意モデル源の最終関手も未完了であり、全体目標の完了とはしない。

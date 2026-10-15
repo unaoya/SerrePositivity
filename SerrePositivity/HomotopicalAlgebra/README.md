@@ -1203,3 +1203,18 @@ S⊆Tに対する両順序の合成置換の比較を与える。`ModelCompariso
 共有入口2525 jobs、4258宣言・339モジュール、新規60宣言・6モジュールの標準公理監査が成功。
 コミット`983c00a9`・`c0d2d94a`。L5の任意のQuillen随伴に対する普遍性と、局所化モデルを
 源とする再局所化の比較は未完了。L5の完了とはせず、続いてE0、S0〜S3、F1の残項目へ進む。
+
+
+L5は計画§211で受入検証まで完了（2026-10-16）。`Quillen/FibrantTesting`・`FibrantCriterion`は
+通常モデル圏のfibrant対象間のfibrationによる一般Quillen判定を証明する。`QuillenCriterion`・
+`QuillenLocalObjects`・`UniversalProperty`は任意の元のQuillen随伴について、指定QでのF(Qs)の
+弱同値性、右随伴によるfibrant対象の局所性、局所モデルからのQuillen性を対応させる。
+`AdjunctionWeakEquivalence`はHom宇宙を共通宇宙へliftして実際のHom随伴を運び、
+`Quillen/DerivedMapTest`が任意の実際のLFでのSの可逆性という最終定式化へ接続する。
+`Quillen/ModelOrder`・`Minimality`・`Iteration`は最小性から実際の反復局所化とS⊔T局所化の
+三クラスの一致を証明。`IteratedExistence`は最初のモデルの生成族・左固有性・分解を用いて
+一般存在定理を再適用し、二つの小さいS,Tだけから反復局所化の実在と合併モデルの証明書を出力する。
+共有入口2537 jobs、4284宣言・351モジュールの標準公理監査、普遍性10宣言・5モジュール、
+反復8宣言・4モジュール、一般判定8宣言・3モジュールと置換/L4の回帰検証が成功。
+実装コミット`a630c8ce`・`491b8be6`・`1eaac9fa`。L0〜L5は最終仕様で完了。
+次はE0、その後S0〜S3。F1の任意モデル源の指定関手的分解なしの最終関手も未完了で、全体目標は継続中。
