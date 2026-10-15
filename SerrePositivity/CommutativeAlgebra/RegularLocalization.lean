@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.CommutativeAlgebra.RegularLocalCriterion
 public import SerrePositivity.CommutativeAlgebra.RegularPrimeDimension
-public import SerrePositivity.KTheory.LocalizedResolution
-public import Mathlib.CategoryTheory.Abelian.Projective.Ext
+public import SerrePositivity.CommutativeAlgebra.KoszulResolution
+public import SerrePositivity.PerfectComplex.FiniteProjectiveResolutions
 
 /-! # Regularity of prime localizations without a global dimension assumption -/
 @[expose] public section
@@ -11,36 +11,6 @@ universe u
 namespace SerrePositivity
 open CategoryTheory Limits Abelian
 variable {R : Type u} [CommRing R]
-
-/-- A bounded projective resolution supplies the categorical finite-projective-dimension bound. -/
-lemma exists_projectiveDimensionLE_of_boundedResolution {M : ModuleCat.{u} R}
-    {F : CochainComplex (ModuleCat.{u} R) ℤ} (hF : IsResolutionOf F M)
-    (hb : ∃ a b : ℤ, ∀ i, (i < a ∨ b < i) → IsZero (F.X i)) :
-    ∃ n, HasProjectiveDimensionLE M n := by
-  obtain ⟨a, b, hb⟩ := hb
-  let n := (-a).toNat
-  let P := hF.toProjectiveResolution
-  refine ⟨n, HasProjectiveDimensionLT.mk ?_⟩
-  intro i hi Y e
-  have hz : IsZero (P.complex.X i) := by
-    have ht : IsZero (F.X (embUp.f i)) := hb _ (Or.inl (by
-      simp only [embUp, ComplexShape.embeddingUpIntLE_f]
-      dsimp [n] at hi
-      omega))
-    exact ht.of_iso (F.restrictionXIso embUp rfl).symm
-  obtain ⟨f, hf, he⟩ := P.extMk_surjective e (i + 1) rfl
-  have hf0 : f = 0 := hz.eq_zero_of_src f
-  rw [← he]
-  simp only [hf0, ProjectiveResolution.extMk_zero]
-
-/-- The finite-projective-resolution contract implies finite projective dimension. -/
-lemma exists_projectiveDimensionLE_of_resolution_contract [HasFiniteProjectiveResolutions R]
-    (M : ModuleCat.{u} R) [Module.Finite R M] : ∃ n, HasProjectiveDimensionLE M n := by
-  obtain ⟨F, ⟨hF⟩, hp⟩ := HasFiniteProjectiveResolutions.exists_resolution M
-  obtain ⟨a, b, ha, hb⟩ := hp.1
-  apply exists_projectiveDimensionLE_of_boundedResolution hF
-  exact ⟨a, b, fun i hi => hi.elim
-    (fun h => F.isZero_of_isStrictlyGE a i h) (fun h => F.isZero_of_isStrictlyLE b i h)⟩
 
 /-- Any prime localization of a regular local ring is regular. -/
 theorem isRegularLocalRing_atPrime [IsRegularLocalRing R] (p : PrimeSpectrum R)

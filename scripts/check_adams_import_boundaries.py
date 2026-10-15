@@ -86,6 +86,16 @@ for name in geometry:
     check('SerrePositivity.CommutativeAlgebra.' + name, upper_layer)
 print(f'Support geometry boundaries passed: {len(geometry)} modules.')
 
+for name in ['FiniteFreeBaseChange', 'FiniteLocalizationDescent', 'LocalizedRegularResolution',
+             'BoundedResolutionDimension']:
+    check('SerrePositivity.HomologicalAlgebra.' + name, upper_layer)
+for name in ['PerfectComplex.FiniteProjectiveResolutions', 'CommutativeAlgebra.RegularLocalization']:
+    check('SerrePositivity.' + name,
+          lambda dep: '.KTheory.' in dep or dep in {
+              'SerrePositivity.PerfectComplex.ClosedSupportK0',
+              'SerrePositivity.CategoryTheory.TriangulatedK0'})
+print('Localized resolution and regularity boundaries passed without Grothendieck groups.')
+
 consumers = [
     'DifferentialGraded.Complexes.Biproduct',
     'DifferentialGraded.Complexes.AcyclicCone',

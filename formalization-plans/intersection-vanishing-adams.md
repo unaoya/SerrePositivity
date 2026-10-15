@@ -4987,12 +4987,15 @@ R12–R20 のコードをコミットした後、以下をすべて確認した�
 | R24e-2 | 三重テンソルの疎な分配公式 | 完了：CochainTensorTripleDegreeMapsへ宣言・証明を維持して移動。利用先2815 jobs、3宣言の公理監査、全依存ゲートが成功 |
 | R24e-3 | 一般の対合の非輪状 K₀ 類 | 完了：InvolutionClassAcyclicへ宣言・証明を維持して移動。2812 jobs、2宣言の公理監査、新しいAdams独立性ゲートが成功 |
 | R28b-1 | 有限格子・係数拡大比較の一般部分 | 完了：LocalizationLattice・ModuleBaseChangeTensorへ6宣言を本文を維持して分離。G₀局所化2737 jobs、6宣言の公理監査、下位層の依存ゲートが成功 |
-| R28b-2 | 局所化した分解と正則局所化の依存整理 | 未着手 |
+| R28b-2 | 局所化した分解と正則局所化の依存整理 | 完了：有限自由の係数拡大・有限加群の降下・局所化した分解・射影次元・分解契約を適切な共通層へ分離。旧入口を維持。3225 jobs、専用12宣言・既存正則局所化の公理監査、全依存ゲートが成功 |
 | R30 | 支持付き三角形の代表と比較同型 | 未着手 |
 | R31a | 一般三角圏の K₀ の整数シフト | 未着手 |
 | R31b | K₀ のひねりの環作用の共通補題 | 未着手 |
 | R31c | 固有ベクトルの多項式評価に mathlib を利用 | 未着手 |
 | R31d | 係数付き K₀ の基本操作・局所化・Euler 評価の分離 | 未着手 |
+| R31e-1 | 冪等像の非輪状性を ψ²・ψ³ で共用 | 未着手 |
+| R31e-2 | 冪等像の K₀ 類と短完全列の加法性 | 未着手 |
+| R26c | 区間外で零になる関数の有限台を Euler 計算で共用 | 未着手 |
 | R32 | 両 Adams 族・並行利用先・公開消滅定理の統合検証 | 未着手 |
 
 R22 で追加する `--consumers` と `--cubic` は、対応する依存整理前には失敗することを
@@ -5052,6 +5055,10 @@ R24e-1 の検証ログは `/tmp/adams-r24e1-build.log`、`/tmp/adams-r24e1-audit
 R24e-2 の検証ログは `/tmp/adams-r24e2-build.log`、`/tmp/adams-r24e2-audit.log`。
 R24e-3 の検証ログは `/tmp/adams-r24e3-build.log`、`/tmp/adams-r24e3-audit.log`。
 R28b-1 の検証ログは `/tmp/adams-r28b1-build.log`、`/tmp/adams-r28b1-audit.log`。
+R28b-2 の検証ログは `/tmp/adams-r28b2-complete-build.log`、
+`/tmp/adams-r28b2-complete-audit.log`、`/tmp/adams-r28b2-regular-audit.log`。
+正則局所化で使う Koszul 分解は明示的に import し、G₀・K₀ の構成を経由しない。
+再監査で追加した R31e-1・R31e-2・R26c も、R32 の前に別々に検証・コミットする。
 
 ## 5. 受入条件
 

@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.PerfectComplex.Support
 public import SerrePositivity.HomologicalAlgebra.Basic
+public import SerrePositivity.HomologicalAlgebra.FiniteFreeBaseChange
 public import SerrePositivity.CommutativeAlgebra.KoszulResolution
 public import SerrePositivity.CommutativeAlgebra.Koszul
 public import Mathlib.RingTheory.TensorProduct.Finite
@@ -124,21 +125,6 @@ lemma isPerfectSupported_of_isZero {P : CochainComplex (ModuleCat.{u} R) ℤ} (h
 section baseChange
 
 variable {A C : Type u} [CommRing A] [CommRing C]
-
-/-- `A` 加群 `M` が自由なら、係数拡大 `C ⊗_A M` は `C` 加群として自由（Mathlib のテンソル積の
-インスタンス）。 -/
-lemma free_baseChange (φ : A →+* C) (M : ModuleCat.{u} A) [Module.Free A M] :
-    Module.Free C ((ModuleCat.extendScalars.{u, u, u} φ).obj M) := by
-  let := φ.toAlgebra
-  change Module.Free C (TensorProduct A C M)
-  infer_instance
-
-/-- `A` 加群 `M` が有限生成なら、係数拡大 `C ⊗_A M` は `C` 加群として有限生成。 -/
-lemma finite_baseChange (φ : A →+* C) (M : ModuleCat.{u} A) [Module.Finite A M] :
-    Module.Finite C ((ModuleCat.extendScalars.{u, u, u} φ).obj M) := by
-  let := φ.toAlgebra
-  change Module.Finite C (TensorProduct A C M)
-  infer_instance
 
 /-- `z` に台をもつ完全 `A` 複体 `P` の基底変更 `P ⊗_A C` は、`φ ∘ z` に台をもつ完全 `C` 複体。
 係数拡大は零加群を零加群に送り（有界性）、有限自由加群を有限自由加群に送り、台の条件を保つ
