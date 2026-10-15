@@ -1,3 +1,5 @@
+import SerrePositivity.HomologicalAlgebra.ProjectiveBaseChange
+import SerrePositivity.HomologicalAlgebra.CochainTensorProjective
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionQuotient
 import SerrePositivity.HomologicalAlgebra.DerivedQuotientKoszul
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedKoszulReduction
@@ -757,3 +759,9 @@ example (p : ℕ) (hp : IsSMulRegular R (p : R)) :
     boundedAboveDerivedCompletedTensorBaseChangeNatIso R (p : R) hp 1
   exact (congrArg F (_root_.pow_one (p : R))).mp h
 end
+
+-- Degreewise tensor projectivity is now supplied by the common layer.
+assert_no_sorry SerrePositivity.cochainTensor_projective_X
+#print axioms SerrePositivity.cochainTensor_projective_X
+assert_no_sorry SerrePositivity.projective_baseChange
+#print axioms SerrePositivity.projective_baseChange

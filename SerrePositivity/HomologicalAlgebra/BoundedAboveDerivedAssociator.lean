@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.HomologicalAlgebra.CochainTensorProjective
 public import SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedTensor
 public import Mathlib.CategoryTheory.Products.Associator
 

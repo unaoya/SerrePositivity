@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.HomologicalAlgebra.ProjectiveBaseChange
 
 public import SerrePositivity.PerfectComplex.HomotopyCategory
 public import SerrePositivity.PerfectComplex.Closure
@@ -17,13 +18,6 @@ namespace SerrePositivity
 open CategoryTheory CategoryTheory.Functor CategoryTheory.Limits
 
 variable {R S : Type u} [CommRing R] [CommRing S] (φ : R →+* S)
-
-/-- 有限射影性は係数変更で保たれる。 -/
-lemma projective_baseChange (M : ModuleCat.{u} R) [Module.Projective R M] :
-    Module.Projective S ((ModuleCat.extendScalars.{u, u, u} φ).obj M) := by
-  let := φ.toAlgebra
-  change Module.Projective S (TensorProduct R S M)
-  infer_instance
 
 /-- 厳密な有界性と各項の有限射影性は係数変更で保たれる。 -/
 lemma strictlyPerfectComplex_baseChange (P : CochainComplex (ModuleCat.{u} R) ℤ)

@@ -4429,6 +4429,22 @@ BoundedAboveDerivedAssociatorが読むcochainTensor_projective_Xがimport経路�
 次は零次同型と冪遷移・商遷移の可換性、余極限のtorsion比較、一般Ext比較へ進める。
 KL6の環変更と両結論の合流、G2-5〜7とDの具体的適用は引き続き未完了。
 
+G2共通依存の再接続（2026-10-15）：共有テンソル基盤の抽出に伴い、G2の射影モデルで使う
+cochainTensor_projective_Xとprojective_baseChangeがimport経路から外れていた。
+前者を`CochainTensorProjective.lean`、後者を`ProjectiveBaseChange.lean`へ移し、
+BoundedAboveDerivedAssociator・DerivedTensorCoherenceModels・BoundedAboveDerivedBaseChangeが
+共通層を直接参照するようにした。旧PerfectComplex側も同じ宣言を再利用する。
+宣言名・型・証明内容は維持し、下に有界・有限生成・平坦性の追加仮定は導入していない。
+対象ビルド2785ジョブ、実際のCompletionQuotientまでの再ビルド2877ジョブが成功した。
+移した2宣言の単独sorry・公理監査も成功し、いずれも標準3公理のみ。
+共通層4モジュールにはPerfectComplex・BS・CLMST・Paper・Andréへの依存がない。
+KL384・E1〜E5・G1・B3/C2・旧選択との互換監査は成功。
+G2監査は対象ビルド後の420宣言が成功。係数変更の移送も追加した421宣言とD監査は、
+全体再ビルド中のDerivedTensorTriangle・PowerResidueDerivedHomologyの生成ファイル欠落で
+実行できなかったため、全体ビルドの終了後に再検証する。全体ビルドは現在動作中。
+今回の依存修復をG2-5〜7の環構造・環比較・具体的適用の完成とは扱わない。
+KL6の零次の冪遷移比較と一般局所コホモロジー比較、Dの具体的適用も引き続き残る。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
