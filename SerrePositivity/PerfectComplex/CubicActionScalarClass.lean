@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.PerfectComplex.CubicActionClassMaps
 public import SerrePositivity.PerfectComplex.CubicActionEigenvectors
+public import SerrePositivity.PerfectComplex.CubicActionCharacter
 
 /-! # Character classes of scalar cubic actions -/
 
@@ -95,6 +96,17 @@ lemma weightedK0Class_of_map_eq_scalar (E : Type v) [CommRing E] (τ : CochainCu
   · intro k _ hkj
     rw [eigenK0Class_other_of_map_eq_scalar τ t ht j k hτ Z hp hs hkj.symm, tmul_zero]
   · simp
+
+/-- A character scalar action contributes just its character times the original class. -/
+@[simp]
+lemma weightedK0Class_characterScalar (E : Type v) [CommRing E]
+    (t : R) (ht : t ^ 2 + t + 1 = 0) (j : Fin 3) (ζ : E)
+    (Z : TopologicalSpace.Closeds (PrimeSpectrum R))
+    (hp : strictlyPerfectComplex R K) (hs : HasHomologySupportOn Z K) :
+    (characterScalar K t (cube_eq_one_of_cubic_relation t ht) j).weightedK0Class
+        E t ht ζ Z hp hs =
+      cubicCharacter ζ j ⊗ₜ[ℤ] K0WithSupport.mk Z (supportedPerfectOnObj Z K hp hs) :=
+  weightedK0Class_of_map_eq_scalar E _ t ht j rfl ζ Z hp hs
 
 end CochainCubicAction
 end SerrePositivity

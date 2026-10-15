@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KTheory.Adams.KoszulCubeFourierEmbeddings
 public import SerrePositivity.PerfectComplex.BiproductPerfect
 public import SerrePositivity.PerfectComplex.ClosedSupportRelations
-public import SerrePositivity.PerfectComplex.CubicActionProjector
+public import SerrePositivity.PerfectComplex.CubicActionCharacter
 
 /-! # The four-shift Fourier model and its equivariant map to the Koszul cube -/
 
@@ -25,24 +25,22 @@ def oneKoszulCubeFourierModelRotation (a t : R) :
     oneKoszulCubeFourierModel a ⟶ oneKoszulCubeFourierModel a :=
   biprod.map (𝟙 _) (biprod.map (t • 𝟙 _) (biprod.map (t ^ 2 • 𝟙 _) (𝟙 _)))
 
+/-- The four scalar actions, using character zero on the two even shifts. -/
+def oneKoszulCubeFourierScalarAction (a t : R) (ht : t ^ 2 + t + 1 = 0) :
+    CochainCubicAction (oneKoszulCubeFourierModel a) :=
+  let action (K : CochainComplex (ModuleCat.{u} R) ℤ) (j : Fin 3) :=
+    CochainCubicAction.characterScalar K t (cube_eq_one_of_cubic_relation t ht) j
+  (action (oneKoszulComplex a) 0).biprod
+    ((action (oneKoszulShiftOne a) 1).biprod
+      ((action (oneKoszulShiftOne a) 2).biprod (action (oneKoszulShiftTwo a) 0)))
+
 lemma oneKoszulCubeFourierModelRotation_cube (a t : R) (ht : t ^ 2 + t + 1 = 0) :
     oneKoszulCubeFourierModelRotation a t ≫ oneKoszulCubeFourierModelRotation a t ≫
       oneKoszulCubeFourierModelRotation a t = 𝟙 _ := by
-  have hc := cube_eq_one_of_cubic_relation t ht
-  have h6 : t ^ 2 * t ^ 2 * t ^ 2 = 1 := by
-    calc
-      _ = (t ^ 3) ^ 2 := by ring
-      _ = 1 := by rw [hc, one_pow]
-  have h3 : t * t * t = 1 := by simpa only [pow_succ, pow_zero, one_mul] using hc
-  apply biprod.hom_ext'
-  · simp [oneKoszulCubeFourierModelRotation]
-  · apply biprod.hom_ext'
-    · simp [oneKoszulCubeFourierModelRotation, Linear.smul_comp,
-        Linear.comp_smul, smul_smul, h3]
-    · apply biprod.hom_ext'
-      · simp [oneKoszulCubeFourierModelRotation, Linear.smul_comp,
-          Linear.comp_smul, smul_smul, h6]
-      · simp [oneKoszulCubeFourierModelRotation]
+  simpa only [oneKoszulCubeFourierScalarAction, CochainCubicAction.biprod_map,
+    CochainCubicAction.characterScalar_map, cubicCharacter, Fin.val_zero, Fin.val_one,
+    Fin.val_two, pow_zero, pow_one, one_smul, oneKoszulCubeFourierModelRotation] using
+    (oneKoszulCubeFourierScalarAction a t ht).cube
 
 def oneKoszulCubeFourierModelAction (a t : R) (ht : t ^ 2 + t + 1 = 0) :
     CochainCubicAction (oneKoszulCubeFourierModel a) where

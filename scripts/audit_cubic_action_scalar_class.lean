@@ -24,3 +24,12 @@ assert_no_sorry SerrePositivity.CochainCubicAction.eigenK0Class_other_of_map_eq_
 
 assert_no_sorry SerrePositivity.CochainCubicAction.weightedK0Class_of_map_eq_scalar
 #print axioms SerrePositivity.CochainCubicAction.weightedK0Class_of_map_eq_scalar
+
+assert_no_sorry SerrePositivity.CochainCubicAction.characterScalar
+#print axioms SerrePositivity.CochainCubicAction.characterScalar
+
+assert_no_sorry SerrePositivity.CochainCubicAction.characterScalar_map
+#print axioms SerrePositivity.CochainCubicAction.characterScalar_map
+
+assert_no_sorry SerrePositivity.CochainCubicAction.weightedK0Class_characterScalar
+#print axioms SerrePositivity.CochainCubicAction.weightedK0Class_characterScalar
