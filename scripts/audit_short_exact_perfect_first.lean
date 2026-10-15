@@ -1,0 +1,10 @@
+import SerrePositivity.KTheory.Adams.TensorSquareFiltration
+import SerrePositivity.KTheory.Adams.TensorCubeFiltration
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.strictlyPerfectComplex_of_shortExact
+assert_no_sorry SerrePositivity.Adams.tensorSquareKernel_perfect
+assert_no_sorry SerrePositivity.Adams.tensorCubeKernel_perfect
+#print axioms SerrePositivity.strictlyPerfectComplex_of_shortExact
+#print axioms SerrePositivity.Adams.tensorSquareKernel_perfect
+#print axioms SerrePositivity.Adams.tensorCubeKernel_perfect

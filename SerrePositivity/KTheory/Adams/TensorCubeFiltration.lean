@@ -71,13 +71,10 @@ lemma tensorCubeKernelShortComplex_shortExact
 lemma tensorCubeKernel_perfect
     (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ)) (hS : S.ShortExact)
     (hp : strictlyPerfectComplex R S.X₂) (hd : strictlyPerfectComplex R S.X₃) :
-    strictlyPerfectComplex R (tensorCubeKernel S.g) := by
-  let T := tensorCubeKernelShortComplex S.g
-  have hT : T.ShortExact := tensorCubeKernelShortComplex_shortExact S hS (fun i => (hd.2 i).2)
-  let σ := cochainDegreewiseSplittingOfProjective T hT
-    (fun i => ((tensorCube_perfect S.X₃ hd).2 i).2)
-  exact strictlyPerfectComplex_of_degreewiseRetract (tensorCubeKernelInclusion S.g)
-    (cochainSplittingRetraction T σ) (fun n => (σ n).f_r) (tensorCube_perfect S.X₂ hp)
+    strictlyPerfectComplex R (tensorCubeKernel S.g) :=
+  strictlyPerfectComplex_of_shortExact (tensorCubeKernelShortComplex S.g)
+    (tensorCubeKernelShortComplex_shortExact S hS (fun i => (hd.2 i).2))
+    (tensorCube_perfect S.X₂ hp) (fun i => ((tensorCube_perfect S.X₃ hd).2 i).2)
 
 lemma tensorCubeKernel_support {Z : TopologicalSpace.Closeds (PrimeSpectrum R)}
     (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ)) (hS : S.ShortExact)

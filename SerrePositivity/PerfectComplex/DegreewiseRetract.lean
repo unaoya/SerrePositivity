@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.PerfectComplex.HomotopyCategory
+public import SerrePositivity.HomologicalAlgebra.CochainTensorShortExact
 
 /-! # Perfectness of degreewise retracts
 
@@ -34,5 +35,15 @@ lemma strictlyPerfectComplex_of_degreewiseRetract
       exact ⟨(i.f n).hom x, congrArg (fun f => f.hom x) (hr n)⟩
     exact ⟨Module.Finite.of_surjective (r n).hom hs,
       Module.Projective.of_split (i.f n).hom (r n).hom (congrArg (fun f => f.hom) (hr n))⟩
+
+/-- A short exact sequence with projective quotient terms makes the first complex
+a degreewise retract of the middle complex. -/
+lemma strictlyPerfectComplex_of_shortExact
+    (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ)) (hS : S.ShortExact)
+    (h₂ : strictlyPerfectComplex R S.X₂) (h₃ : ∀ i, Module.Projective R (S.X₃.X i)) :
+    strictlyPerfectComplex R S.X₁ := by
+  let σ := cochainDegreewiseSplittingOfProjective S hS h₃
+  exact strictlyPerfectComplex_of_degreewiseRetract S.f
+    (cochainSplittingRetraction S σ) (fun n => (σ n).f_r) h₂
 
 end SerrePositivity
