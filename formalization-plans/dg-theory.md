@@ -1,6 +1,6 @@
 # dg 理論（M5）の独立実装計画
 
-作成・調査：2026-10-14。更新：2026-10-15。状態：U0〜U7 を実装・検証済み（U8〜U10は継続中）。
+作成・調査：2026-10-14。更新：2026-10-15。状態：U0〜U8 を実装・検証済み（U9/U10は継続中）。
 U0〜U3の記録は§11、U4/U5の実績と後続契約は§12。D0〜D10全体の完了ではない。
 この計画だけを受け取る実装担当者向けの仕様である。
 ホモトピー論の共有契約は [k-theory.md §123](k-theory.md#123-次段階の設計i抽象モデル圏とその当てはめ2026-10-14)。
@@ -974,3 +974,48 @@ Mathlib `HasShift.quotient` を用い、K(D) の整数shiftと zero/add coherenc
 境界保存、HasShift/CommShift、準同型クラスのshift不変性を検証した。
 主要18宣言はすべて標準公理の範囲内。累計監査対象は358宣言。
 U8全受入はcone/acyclic判定の受入記録を残して未完。U9/U10も未完で目標を保持する。
+
+### 13.16 U8b2：標準 cone の acyclic 性・準同型判定、U8受入
+
+`Complexes/AcyclicCone.lean` の `complex_quasiIso_iff_acyclic_cone` は、
+固定版 Mathlib の `subcategoryAcyclic`、`quasiIso_eq_trW_subcategoryAcyclic` と
+既存標準 cone triangle の distinguished 性を再利用して、
+任意可換環上の非有界複体について準同型 iff cone が acyclic を証明する。
+対象未定義の引用axiomや新たな三角圏公理を導入していない。
+
+`Module/Acyclic.lean` は閉零加群圏の `moduleAcyclic` と K(D) の
+`moduleHomotopyAcyclic` を objectwise に定義する。
+商関手による acyclic 性の保存・反映、評価ホモロジーの零対象性との一致、
+`moduleQuasiIso_iff_acyclic_cone` と
+`moduleHomotopyQuasiIso_iff_acyclic_cone` による全 dg 作用を持つ標準加群 cone の判定を公開した。
+この段階では K(D) 自体の三角構造や Verdier 商比較を完了と主張しない。それらは U10 に残る。
+
+受入入口 `Checks/Acyclic.lean` は任意可換環・独立宇宙・非有界複体での判定、
+閉零/K(D) の比較、恒等射coneのacyclic性、ℤ・ZMod 2 の一対象例を検証する。
+ビルド・直接実行は成功し、主要8宣言は標準公理の範囲内。
+
+U8の受入条件との対応は次のとおり。
+
+| 条件 | 証明・検証入口 |
+| --- | --- |
+| 加群ホモトピーと K(D)、境界商との一致 | Module/Homotopy、Checks/ModuleHomotopy |
+| objectwise quasiIso の Mathlib MorphismProperty、2-out-of-3/retract | Module/QuasiIso・HomotopyQuasiIso、Checks/ModuleHomotopy |
+| 評価との整合性、ホモトピー不変性、閉零/K(D) の射クラス一致 | moduleHomotopy_evaluation・moduleQuasiIso_iff_of_homotopy・moduleHomotopyQuasiIso_inverseImage |
+| 整数 shift と境界・準同型の整合性 | Module/ShiftHom・ShiftHomotopy、Checks/ShiftHomotopy |
+| 全作用を持つconeのobjectwise acyclic性による準同型判定 | Module/Acyclic、Checks/Acyclic |
+
+これで U8 を受入済みとする。独立入口は `StageFive.lean`（U0〜U8）。
+U8の3受入入口とStageFive・既存Spectra.StageTwoの同時ビルドは成功（3176 jobs）。
+3入口の直接実行・公理監査は53宣言すべて標準公理のみ。累計366宣言。
+担当Leanのsorry・admit・新規axiomは0件、文書検査は21 Markdown・311参照・失敗0。
+固定MathlibのHEADとmanifestのSHAが一致し、依存更新はしていない。
+StageFiveのローカルimport閉包は107モジュール（dg69）でSpectra/Paper/Inputs依存なし。
+共有ルートimport・既存PerfectComplex・並行作業ファイルは編集していない。
+
+共有系列へは指定射クラスの2-out-of-3/retract、shift不変性、coneによるacyclic判定を
+追加の具体的入力として渡せる。一般モデル圏・Quillen・転送・SM7は複製しない。
+現在、共有API不足によるブロックはない。
+次のU9は指定クラスでの局所化・普遍性と閉零/K(D)の局所化比較。
+U10のsemifree解像度の存在・Hom計算・K(D)/D(D)の三角構造・Verdier商比較・
+余積/局所小性の宇宙・一対象Aの既存DerivedCategory比較は引き続き未完。
+U10までの目標を保持し、局所化の定義だけでは終了しない。
