@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.PerfectComplex.KoszulClasses
 
 public import SerrePositivity.KTheory.Adams.KoszulNegativeRetraction
 
@@ -13,10 +14,6 @@ namespace SerrePositivity
 open CategoryTheory Category Limits HomologicalComplex CochainComplex
 variable {R : Type u} [CommRing R]
 namespace Adams
-
-def oneKoszulClass (a : R) : K0WithSupport (oneKoszulSupport a) :=
-  K0WithSupport.mk (oneKoszulSupport a) (supportedPerfectOnObj (oneKoszulSupport a)
-    (oneKoszulComplex a) (oneKoszulComplex_perfect a) (oneKoszulComplex_support a))
 
 lemma oneKoszulShiftOne_class (a : R) :
     K0WithSupport.mk (oneKoszulSupport a) (supportedPerfectOnObj (oneKoszulSupport a)

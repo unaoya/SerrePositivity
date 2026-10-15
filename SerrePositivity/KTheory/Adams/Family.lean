@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KTheory.Adams.Coefficients
-public import SerrePositivity.KTheory.Adams.KoszulSequenceNormalization
+public import SerrePositivity.PerfectComplex.KoszulClasses
 
 /-! # The common contract for supported Adams operations -/
 

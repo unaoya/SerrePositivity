@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.PerfectComplex.KoszulClasses
 
 public import SerrePositivity.KTheory.Adams.KoszulTensor
 public import SerrePositivity.PerfectComplex.IdempotentImageTrivial
@@ -50,18 +51,6 @@ lemma tensorSquareUnit_swap : tensorSquareSwap (oneKoszulUnit (R := R)) = 𝟙 _
       exact ((tensorLeft ((oneKoszulUnit (R := R)).X 0)).map_isZero hz).eq_of_src _ _
   · have hz := isZero_single_obj_X (.up ℤ) 0 (ModuleCat.of R R) i hi
     exact ((tensorRight ((oneKoszulUnit (R := R)).X j)).map_isZero hz).eq_of_src _ _
-
-lemma oneKoszulUnit_perfect : strictlyPerfectComplex R (oneKoszulUnit (R := R)) :=
-  (isPerfectSupported_koszulComplex (fun i : Fin 0 => Fin.elim0 i)).strictlyPerfect
-
-lemma oneKoszulUnit_support :
-    HasHomologySupportOn (⊤ : TopologicalSpace.Closeds (PrimeSpectrum R))
-      (oneKoszulUnit (R := R)) :=
-  fun _ => Set.subset_univ _
-
-def cyclicUnitClass : K0WithSupport (⊤ : TopologicalSpace.Closeds (PrimeSpectrum R)) :=
-  K0WithSupport.mk ⊤ (supportedPerfectOnObj ⊤ (oneKoszulUnit (R := R))
-    oneKoszulUnit_perfect oneKoszulUnit_support)
 
 variable [Invertible (2 : R)]
 

@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.KTheory.Adams.Family
+public import SerrePositivity.KTheory.Adams.KoszulSequenceNormalization
 public import SerrePositivity.KTheory.Adams.BaseChangeNaturality
 
 /-! # The cyclic Adams square supplies the common localization-family contract -/

@@ -1,0 +1,11 @@
+import SerrePositivity.KTheory.Adams.Family
+import SerrePositivity.KTheory.Adams.WeightOperators
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulClass
+assert_no_sorry SerrePositivity.Adams.cyclicUnitClass
+assert_no_sorry SerrePositivity.Adams.koszulClass_succ
+assert_no_sorry SerrePositivity.Adams.SupportedAdams.koszul
+assert_no_sorry SerrePositivity.Adams.SupportedAdams.sum_weightProjector
+#print axioms SerrePositivity.Adams.koszulClass_succ
+#print axioms SerrePositivity.Adams.SupportedAdams.koszul
