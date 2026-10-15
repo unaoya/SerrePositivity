@@ -41,6 +41,9 @@ lemma exists_accessible_localObjects_and_generators (S : MorphismProperty C) [S.
       (∀ i, IsCofibrant (G i)) ∧ (∀ i, IsCardinalPresentable (G i) κ) ∧
       (∀ i, ((SmallHomComparison.chosenHom d.cofibrationData d.fibrationData).obj
         (Opposite.op (G i))).IsCardinalAccessible κ) ∧
+      (∀ f : Arrow C, S f.hom → (HomotopyFunctionComplex.MappingTests.arrow
+        (SmallHomComparison.chosenHom d.cofibrationData d.fibrationData)
+          f).IsCardinalAccessible κ) ∧
       IsCardinalAccessibleCategory (Smith.arrowProperty (weakEquivalences C)).FullSubcategory κ ∧
       (Smith.arrowInclusion (weakEquivalences C)).IsCardinalAccessible κ ∧
       IsCardinalAccessibleCategory (ObjectProperty.FullSubcategory
@@ -55,8 +58,10 @@ lemma exists_accessible_localObjects_and_generators (S : MorphismProperty C) [S.
   obtain ⟨κG, hκG, ι, G, hcofG, hpG, hdetect⟩ :=
     HomotopyGenerators.exists_small_presentable_cofibrant_generators
       hcofW hfibW hcofV hfibV hcofM hfibM I J IS JS hw
+  let s : Sum ι S.toSet → Arrow C :=
+    Sum.elim (fun i => Arrow.mk (𝟙 (G i))) (fun f => f.val)
   obtain ⟨κF, hκF, d, hW, hιW, htests, _⟩ :=
-    SmallHomComparison.exists_accessible_mapping_tests I J (fun i => Arrow.mk (𝟙 (G i)))
+    SmallHomComparison.exists_accessible_mapping_tests I J s
   obtain ⟨κL, hκL, hPL, hιL⟩ := exists_accessible_localObjects cof fib I J
     hcofW hfibW hcofV hfibV hcofM hfibM S
   obtain ⟨κC, hκC, hC⟩ := IsAccessibleCategory.exists_cardinal.{w} C
@@ -66,7 +71,7 @@ lemma exists_accessible_localObjects_and_generators (S : MorphismProperty C) [S.
   have hFκ := hF₀.trans (h₀₁.trans h₁κ)
   have hLκ := hL₀.trans (h₀₁.trans h₁κ)
   have hGκ := hG₁.trans h₁κ
-  refine ⟨κ, hκ, d.atLarger κ hFκ.le, ι, G, hCκ.isCardinalAccessibleCategory C, hcofG, ?_, ?_,
+  refine ⟨κ, hκ, d.atLarger κ hFκ.le, ι, G, hCκ.isCardinalAccessibleCategory C, hcofG, ?_, ?_, ?_,
     hFκ.isCardinalAccessibleCategory _,
     Functor.isCardinalAccessible_of_le _ hFκ.le,
     hLκ.isCardinalAccessibleCategory _,
@@ -78,7 +83,17 @@ lemma exists_accessible_localObjects_and_generators (S : MorphismProperty C) [S.
     change ((SmallHomComparison.chosenHom d.cofibrationData d.fibrationData).obj
       (Opposite.op (G i))).IsCardinalAccessible κ
     have : ((SmallHomComparison.chosenHom d.cofibrationData d.fibrationData).obj
-      (Opposite.op (G i))).IsCardinalAccessible κF := (htests i).1
+      (Opposite.op (G i))).IsCardinalAccessible κF := (htests (Sum.inl i)).1
+    exact Functor.isCardinalAccessible_of_le _ hFκ.le
+  · intro f hf
+    change (HomotopyFunctionComplex.MappingTests.arrow
+      (SmallHomComparison.chosenHom d.cofibrationData d.fibrationData) f).IsCardinalAccessible κ
+    have : ((SmallHomComparison.chosenHom d.cofibrationData d.fibrationData).obj
+      (Opposite.op f.left)).IsCardinalAccessible κF := (htests (Sum.inr ⟨f, hf⟩)).1
+    have : ((SmallHomComparison.chosenHom d.cofibrationData d.fibrationData).obj
+      (Opposite.op f.right)).IsCardinalAccessible κF := (htests (Sum.inr ⟨f, hf⟩)).2
+    have := HomotopyFunctionComplex.MappingTests.arrow_isCardinalAccessible
+      (SmallHomComparison.chosenHom d.cofibrationData d.fibrationData) f κF
     exact Functor.isCardinalAccessible_of_le _ hFκ.le
 
 end SerrePositivity.Bousfield

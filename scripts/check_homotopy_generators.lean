@@ -47,14 +47,16 @@ example
       (∀ i, IsCofibrant (G i) ∧ IsCardinalPresentable (G i) κ ∧
         ((SmallHomComparison.chosenHom d.cofibrationData d.fibrationData).obj
           (Opposite.op (G i))).IsCardinalAccessible κ) ∧
+      (∀ f : Arrow C, S f.hom → (SerrePositivity.HomotopyFunctionComplex.MappingTests.arrow
+        (SmallHomComparison.chosenHom d.cofibrationData d.fibrationData) f).IsCardinalAccessible κ) ∧
       ∀ {Y Z : C} (f : Y ⟶ Z), weakEquivalences C f ↔ ∀ i, weakEquivalences SSet.{w}
         (((SmallHomComparison.chosenHom d.cofibrationData d.fibrationData).obj (Opposite.op (G i))).map f) := by
   let := SerrePositivity.SimplicialModel.simplicial_cofibrantlyGenerated.{w} hcofW hfibW
-  obtain ⟨κ, hκ, d, ι, G, hC, hG, hpG, htest, _, _, hL, hιL, hd⟩ :=
+  obtain ⟨κ, hκ, d, ι, G, hC, hG, hpG, htest, hStests, _, _, hL, hιL, hd⟩ :=
     exists_accessible_localObjects_and_generators (C := C) I J SSet.modelCategoryQuillen.I.{w}
       SSet.modelCategoryQuillen.J.{w} hcofW hfibW hcofV hfibV hcofM hfibM hw cof fib S
   exact ⟨κ, hκ, d, ι, G, hC, hL, hιL,
-    fun i => ⟨hG i, hpG i, htest i⟩, fun {Y Z} f => hd d.cofibrationData d.fibrationData f⟩
+    fun i => ⟨hG i, hpG i, htest i⟩, hStests, fun {Y Z} f => hd d.cofibrationData d.fibrationData f⟩
 
 open Lean in
 run_cmd do
