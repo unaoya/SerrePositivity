@@ -26,6 +26,11 @@ instance map_isRightQuillen (f : X ⟶ Y) : Quillen.IsRightQuillen (Under.map f)
 instance pushout_isLeftQuillen (f : X ⟶ Y) : Quillen.IsLeftQuillen (Under.pushout f) :=
   Quillen.isLeftQuillen_of_isRightQuillen (Under.mapPushoutAdj f)
 
+/-- The preservation conditions used by Ken Brown; no adjoint is asserted. -/
+instance forget_isLeftQuillen (X : C) : Quillen.IsLeftQuillen (Under.forget X) where
+  map_cofibrations := fun _ _ _ hp => hp
+  map_trivialCofibrations := fun _ _ _ hp => hp
+
 lemma isCofibrant_iff (A : Under X) : IsCofibrant A ↔ Cofibration A.hom := by
   rw [isCofibrant_iff_of_isInitial (Under.mkIdInitial.to A) Under.mkIdInitial,
     cofibrations_under_iff, Under.mkIdInitial_to_right]
