@@ -8771,3 +8771,62 @@ F4全体、F1の任意モデル源の最終関手、L0〜L5は引き続き未完
 - `check_homotopical_foundations`、`check_spectra_stage2`、`git diff --check`。
 
 新規sorry・引用axiomはない。他チャットの作業と共有ルートの変更を保持した。
+
+
+## 192. L0の基礎：実際のRMapによる局所性・閉性・選択独立性（2026-10-15）
+
+F4の未証明条件は§191.3のとおり残る。今回の範囲はF4を必要とせず、証明済みの
+F1/F2の指定関手的分解版だけに依存するL0の定義と不変性である。
+F4完了や局所モデルの存在を先取りせず、この範囲を先に接続した。
+L1以降の実装にはまだ入っていない。
+
+### 192.1 実際の定義と一般的な閉性
+
+`Localization/MappingTests`は任意の実際のbifunctor R:Cᵒᵖ→C→DとDの射クラスWに対し、
+Yへのmapping test、S-local対象、すべてのS-local対象で検出する射クラスを定義する。
+局所対象全体への量化を小さい族への量化とみなさず、小ささやaccessibilityも仮定しない。
+Wの性質から、検出する射クラスの恒等射の包含、二対三性、retract閉性を証明した。
+S自身の包含、Sに関する単調性、検出クラスを再び局所化射として加えても局所対象が変わらないこと、
+その結果の冪等性も証明した。弱自然変換によるmapping testの一致は二対三性から得る。
+
+`Localization/Basic`ではRを既存の実際のchosenResolutionHomに、Wを指定SSetモデルの
+弱同値に取る。source resolutionとfibrant replacementの因子分解データは明示的な入力であり、
+新しいmapping-space oracleや局所化後のモデルは入力に要求しない。
+SSetモデルのcofibrationがmonoと一致する条件のもとで、元の弱同値W_C⊆W_Sを証明した。
+Sは任意のMorphismPropertyでよく、小さい場合に制限する必要のない定義・閉性である。
+
+### 192.2 不変性とfibrantな局所対象による検査
+
+RMapの両変数の弱同値不変性を使い、以下を証明した。
+
+- Y→Zが元の弱同値なら、YとZのmapping testは等しく、S-local性も同値。
+- 元の弱同値を両端の縦射に持つArrow C内のsquareは、同じmapping testを与える。
+- Q→idが自然な元の弱同値なら、S.strictMap QとSの局所対象は一致する。
+  実際のcofibrant replacementによるSの置換にも適用できる。
+- W_Sは、元の意味でfibrantかつS-localな対象だけで検査しても同じ。
+  任意Yを既存の実際のRYへ移し、その比較の弱同値性を使う。
+- 元の弱同値だけからなるSでは、すべての対象がS-localである。
+  任意のSに元の弱同値全体を加えても、局所対象・局所同値は変わらない。
+
+`Localization/ChoiceIndependence`はF2の既存の自然な弱同値cospanを実際に適用し、
+二つのsource resolutionとfibrant replacementについて、mapping test・局所対象・W_S・
+fibrant局所対象の一致を証明する。bifunctorそのものの厳密な等しさは主張しない。
+置換されたSについてもW_Sの等しさを得る。
+
+### 192.3 受入検証と残項目
+
+実装コミット：`4cbea1d`。以下はすべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`：2419 jobs。
+- `check_bousfield_locality`：47宣言・3モジュール、標準公理のみ。
+  閉性のinstance、二対三性の消去、実際のretract、非fibrantな標的の不変性、独立した二組の
+  置換データ、実際のcofibrant replacementによるSの変更を検証した。
+  さらにCの生成I/Jだけから両分解を導出して利用する例を含む。
+  小対象論法の宇宙w、対象宇宙u、Hom宇宙vは独立である。
+- `audit_homotopical_foundations`：3437宣言・233モジュール、標準公理のみ。
+- `check_homotopical_foundations`、`check_spectra_stage2`、`git diff --check`。
+
+新規sorry・引用axiomはない。他チャットの作業と共有ルートの変更を保持した。
+L0全体は未完了であり、空集合または元の弱同値だけのSでW_S=W_Cとなる逆向きの検出と、
+条件付き局所化APIは残る。「すべての対象が局所」と「W_S=W_C」を混同しない。
+F4の源比較の弱同値性・最終RMap公式、F1の任意モデル源の最終関手、L1〜L5も残る。
