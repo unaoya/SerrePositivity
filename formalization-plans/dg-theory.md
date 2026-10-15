@@ -2300,3 +2300,22 @@ U10は未完。次は全Homのcone比較によるliftと、この片側shiftを�
 Checks.ConeLiftをビルドし、直接実行の主要6宣言を監査した。すべて標準公理のみ。
 StageSix・既存Spectra.StageTwoの互換入口もビルド済み。累計977宣言。
 U10は未完。次は片側shiftとこのliftから回転比較射を構成し、逆射と収縮を証明する。
+
+
+### 13.69 U10t7：回転比較の両射と既存複体比較との一致
+
+`Module/ConeRotationInputs.lean`は片側shiftとconeへのliftを接続し、
+`M[1] → cone(inr f)`を構成する。二つの入力は、閉零射fのcycleの左shiftと
+cone左包含の左shiftにそれぞれ負号を付けたもの。全Hom上で閉性を証明した。
+`Module/ConeRotation.lean`は`cone(inr f) → M[1]`を零の左入力とconnecting mapから構成する。
+右包含とconnectingの合成が零であること、順方向≫逆方向が恒等であることも証明した。
+
+入れ子のconeの評価では、評価された加群射と既存のcone包含が命題的に等しい。
+`Complexes/ConeRotation.lean`はこの等式を明示的に保持してMathlibの回転比較を移送し、
+cochain公式・合成公式・二つの境界公式・connectingとの可換式を公開する。
+両方の加群比較射の評価が、この指定された既存比較射と一致することを証明した。
+全dg自然性をobjectwiseなホモトピーの存在だけに弱めていない。
+
+Checks.ConeRotationのビルドと直接実行で主要21宣言を監査した。標準公理のみ。累計998宣言。
+StageSix・既存Spectra.StageTwoを含む回転比較入口の同時ビルドも成功（2534 jobs）。
+U10は未完。次は全dg自然な収縮を構成し、K(D)の回転同型と三角形の回転閉性へ運ぶ。
