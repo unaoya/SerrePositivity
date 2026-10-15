@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.CoefficientDimensionShift
 import SerrePositivity.HomologicalAlgebra.LocalCohomologyZeroBaseChange
 import SerrePositivity.HomologicalAlgebra.LocalCohomologyZeroTorsion
 import SerrePositivity.HomologicalAlgebra.ExtZeroComparison
@@ -835,3 +836,17 @@ assert_no_sorry SerrePositivity.localCohomologyZeroRestrictScalars_map_eq_zero_i
 
 #print axioms SerrePositivity.localCohomologyZeroRestrictScalarsNatIso
 #print axioms SerrePositivity.localCohomologyZeroRestrictScalars_map_eq_zero_iff
+
+-- KL6-a1-i: actual connecting cokernels and naturality of lifted comparisons.
+assert_no_sorry SerrePositivity.coefficientDimensionShift_epi
+assert_no_sorry SerrePositivity.coefficientDimensionShiftIsCokernel
+assert_no_sorry SerrePositivity.coefficientDimensionShiftIso
+assert_no_sorry SerrePositivity.coefficientDimensionShiftIso_δ
+assert_no_sorry SerrePositivity.coefficientDimensionShift_unique
+assert_no_sorry SerrePositivity.coefficientDimensionShift_naturality
+
+#print axioms SerrePositivity.coefficientDimensionShiftIsCokernel
+#print axioms SerrePositivity.coefficientDimensionShiftIso
+#print axioms SerrePositivity.coefficientDimensionShiftIso_δ
+#print axioms SerrePositivity.coefficientDimensionShift_unique
+#print axioms SerrePositivity.coefficientDimensionShift_naturality
