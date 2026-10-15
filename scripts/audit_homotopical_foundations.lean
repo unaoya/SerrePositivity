@@ -174,6 +174,8 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.AccessibleFactorization,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.AccessibleResolution,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AccessibleResolutions,
+    `SerrePositivity.HomotopicalAlgebra.Diagram.Projective,
+    `SerrePositivity.HomotopicalAlgebra.Diagram.ProjectiveQuillen,
     `SerrePositivity.CategoryTheory.Enriched.TensorUnit,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.WeakEquivalence,
     `SerrePositivity.HomotopicalAlgebra.Topological.WeakEquivalence,
