@@ -117,6 +117,8 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Resolution,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorialResolution,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexResolution,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionHom,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ChosenResolutionHom,
     `SerrePositivity.HomotopicalAlgebra.Quillen.Brown,
     `SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor,
     `SerrePositivity.HomotopicalAlgebra.Quillen.DerivedAdjunction,
