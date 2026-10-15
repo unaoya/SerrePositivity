@@ -273,6 +273,7 @@ import SerrePositivity.BhattScholze.CompatibleRootCompletionPerfectoid
 import SerrePositivity.BhattScholze.CompatibleRootCompletionSurjective
 import SerrePositivity.BhattScholze.CompatibleRootPerfectoidUniversal
 import SerrePositivity.BhattScholze.DeltaPDivisionNextInput
+import SerrePositivity.BhattScholze.DeltaPDivisionTwoStep
 import Mathlib.Util.AssertNoSorry
 
 -- B4-1: 一般perfectoid試験環への根付き商の普遍性
@@ -5060,3 +5061,12 @@ assert_no_sorry SerrePositivity.BhattScholze.deltaPDivisionFirstBaseIdeal_const_
 
 assert_no_sorry SerrePositivity.BhattScholze.deltaPDivisionRawModP_next_isSMulRegular
 #print axioms SerrePositivity.BhattScholze.deltaPDivisionRawModP_next_isSMulRegular
+
+assert_no_sorry SerrePositivity.BhattScholze.deltaPDivisionRaw_delta_prime_unit_map
+#print axioms SerrePositivity.BhattScholze.deltaPDivisionRaw_delta_prime_unit_map
+
+assert_no_sorry SerrePositivity.BhattScholze.deltaPDivisionRaw_next_isSMulRegular
+#print axioms SerrePositivity.BhattScholze.deltaPDivisionRaw_next_isSMulRegular
+
+assert_no_sorry SerrePositivity.BhattScholze.deltaPDivisionTwoStep_p_mul_injective
+#print axioms SerrePositivity.BhattScholze.deltaPDivisionTwoStep_p_mul_injective
