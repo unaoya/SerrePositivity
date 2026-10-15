@@ -2056,3 +2056,36 @@ U10全受入は未完。次は解像度族の比較が始域変数にも自然�
 双関手間の選択独立性を局所化上の自然同型とcocycle条件で公開する。
 D(D)の射集合のK(D)による計算・局所小性、三角構造・Verdier商・導来余積・
 一対象比較の三角形/余積保存も引き続き残る。
+
+
+### 13.57 U10b7g：全導来Hom双関手の解像度族選択独立性
+
+`Derived/HomBifunctorChoice.lean` は解像度族R/Sの比較を、始域についても自然な
+反変関手間の自然同型へまとめる。自然性は§13.55の持ち上げと比較の可換四角形を
+導来Homの前合成へ運んで証明する。
+MathlibのliftNatIsoにより指定D(D)上へ延長し、両変数について自然な
+`moduleResolutionDerivedHomBifunctorIso` を構成した。
+局所化前の比較との成分公式、恒等比較、三つの解像度族の比較のcocycle条件を証明する。
+`moduleDerivedHomBifunctorChoiceIso` は標準semifree族と任意の射影解像度族による双関手を比較する。
+
+`Checks/HomBifunctorChoice.lean` は標準族との比較と局所化後の恒等・cocycle条件を検証する。
+同入口・HomBifunctor・StageSix・既存Spectra.StageTwoの同時ビルドは成功（2591 jobs）。
+直接実行の主要9宣言は標準公理のみ。累計878宣言。
+今回§13.52〜§13.57の主要60宣言について公理監査ログを照合し、標準公理のみと確認した。
+共有基盤更新後の受入入口6本・StageSix・既存Spectra.StageTwoの最終同時ビルドも成功（2595 jobs）。
+その出力でも60宣言すべての公理を再照合した。
+全体文書検査は並行Paper系列の未生成Paper.Section5.LengthAlgebraPositivity.oleanで停止し、
+今回は成功とは扱わない。担当外のソースは編集していない。
+担当Leanのsorry/admit/新規axiomは0件、担当diff --checkは成功。
+
+これで全Homによる射影解像度の計算と、両変数の指定局所化上の全導来Hom双関手、
+解像度族を替えたときの自然同型と整合性が揃った。
+ただしU10全受入は未完であり、D(D)の射集合そのものの計算をこの結果だけから主張しない。
+次の独立実装の型契約は、射影的Pと任意Nに対して
+L=moduleHomotopyToDerivedClosedの射写像
+`Hom_K(Q_K(P),Q_K(N)) → Hom_D(L(Q_K(P)),L(Q_K(N)))` が全単射であること。
+K(D)のcoyonedaが指定quasiIsoを反転する事実と局所化の関手/自然変換の普遍性から進める。
+これを標準解像度の増大射と組み合わせ、実際のD(D)のHom計算と
+`LocallySmall.{u} (DerivedModuleCategory A D)` の宇宙を証明する。
+K(D)/D(D)の三角構造・Verdier商比較、導来余積、一対象Aの既存導来圏との同値の
+三角形/余積保存も残る。共有モデル圏/Quillen/転送/SM7への新しい不足要求はない。
