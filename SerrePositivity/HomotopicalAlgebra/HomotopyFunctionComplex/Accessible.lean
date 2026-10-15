@@ -14,7 +14,7 @@ assert a uniform cardinal for all source objects of a large category.
 -/
 
 @[expose] public section
-universe w t v u
+universe w t v u vS
 noncomputable section
 open CategoryTheory CategoryTheory.Limits Opposite
 
@@ -68,7 +68,7 @@ lemma exists_accessible_resolutionHom_family [IsAccessibleCategory.{w} C]
 namespace MappingTests
 
 /-- Precomposition with the actual source map, retaining the target variable. -/
-def arrow (F : Cᵒᵖ ⥤ C ⥤ SSet.{v}) (f : Arrow C) : C ⥤ Arrow SSet.{v} where
+def arrow (F : Cᵒᵖ ⥤ C ⥤ SSet.{vS}) (f : Arrow C) : C ⥤ Arrow SSet.{vS} where
   obj Y := Arrow.mk ((F.map f.hom.op).app Y)
   map g := Arrow.homMk ((F.obj (op f.right)).map g) ((F.obj (op f.left)).map g)
     ((F.map f.hom.op).naturality g)
@@ -76,11 +76,11 @@ def arrow (F : Cᵒᵖ ⥤ C ⥤ SSet.{v}) (f : Arrow C) : C ⥤ Arrow SSet.{v} 
   map_comp g h := by ext <;> simp
 
 /-- All tests in a fixed family, as a single functor. -/
-abbrev family {ι : Type t} (F : Cᵒᵖ ⥤ C ⥤ SSet.{v}) (s : ι → Arrow C) :
-    C ⥤ Discrete ι ⥤ Arrow SSet.{v} :=
+abbrev family {ι : Type t} (F : Cᵒᵖ ⥤ C ⥤ SSet.{vS}) (s : ι → Arrow C) :
+    C ⥤ Discrete ι ⥤ Arrow SSet.{vS} :=
   (Discrete.functor (fun i ↦ arrow F (s i))).flip
 
-lemma arrow_isCardinalAccessible (F : Cᵒᵖ ⥤ C ⥤ SSet.{v}) (f : Arrow C)
+lemma arrow_isCardinalAccessible (F : Cᵒᵖ ⥤ C ⥤ SSet.{vS}) (f : Arrow C)
     (κ : Cardinal.{w}) [Fact κ.IsRegular]
     [(F.obj (op f.left)).IsCardinalAccessible κ]
     [(F.obj (op f.right)).IsCardinalAccessible κ] :
@@ -91,13 +91,13 @@ lemma arrow_isCardinalAccessible (F : Cᵒᵖ ⥤ C ⥤ SSet.{v}) (f : Arrow C)
     inferInstanceAs ((F.obj (op f.left)).IsCardinalAccessible κ)
   exact Smith.AccessibleFactorization.arrowFunctor_isCardinalAccessible _ κ
 
-lemma family_isCardinalAccessible {ι : Type t} (F : Cᵒᵖ ⥤ C ⥤ SSet.{v}) (s : ι → Arrow C)
+lemma family_isCardinalAccessible {ι : Type t} (F : Cᵒᵖ ⥤ C ⥤ SSet.{vS}) (s : ι → Arrow C)
     (κ : Cardinal.{w}) [Fact κ.IsRegular]
     [∀ i, (F.obj (op (s i).left)).IsCardinalAccessible κ]
     [∀ i, (F.obj (op (s i).right)).IsCardinalAccessible κ] :
     (family F s).IsCardinalAccessible κ := by
   have : ∀ i, Functor.IsCardinalAccessible
-      (family F s ⋙ (evaluation (Discrete ι) (Arrow SSet.{v})).obj i) κ :=
+      (family F s ⋙ (evaluation (Discrete ι) (Arrow SSet.{vS})).obj i) κ :=
     fun ⟨i⟩ ↦ arrow_isCardinalAccessible F (s i) κ
   exact Smith.AccessibleColimits.functorCategory_isCardinalAccessible _ κ
 
