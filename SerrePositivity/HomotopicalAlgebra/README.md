@@ -455,3 +455,28 @@ Xへの射を、部分圏内のκ-可呈示なBを通して分解できる、と
 rのunitを通して分解することを証明する。`check_local_presentable_cover`は局所被覆・
 恒等被覆・弱反射からの被覆・拡大段階を検証し、全宣言を公理監査する。
 この拡大の超限反復と元のWへの接続はA1の残作業である。
+
+## A0・A1完了：元の弱同値のaccessibility（2026-10-15）
+
+`Smith/PresentableOverIteration.lean`は、固定対象への射を保ち、可呈示性を維持する
+短い超限反復の余極限を構成する。`Smith/LiftingColimitRefinement.lean`は、各段階から
+後の段階への写像がI.rlpの対象を経由すれば、十分filteredなcolimitがI.rlpに属する
+ことを証明する。各段階自体がI.rlpに属するという仮定は要求しない。
+
+`Smith/RightClassInverseImageCover.lean`は、短い正則基数μと大きい正則基数νを用い、
+前記の近似段階をμ回反復する。結果はν-可呈示であり、その像はI.rlpに属する。
+`Smith/AccessibleRightClassInverseImage.lean`は、uniformizationで必要な基数を選び、
+局所可呈示な圏からのaccessibleなFによる小さい生成右クラスの逆像がaccessibleで、
+包含もaccessibleであることを証明する。任意のaccessible関手のfull imageについての
+仮定を置くものではない。
+
+`Smith/WeakEquivalencesAccessible.lean`は、この一般定理を第二モデル分解の右因子へ
+適用し、**元のモデル構造のW**のaccessibilityと包含のaccessibilityを導く。
+`exists_accessible_model_and_weakEquivalences I J`は、Mathlibモデル圏、局所可呈示性、
+既存の`CofibrantlyGenerated I J`だけから、両モデル分解・左右四因子・Q/R・Wの部分圏・
+Wの包含に共通する正則基数を構成する。`weakEquivalences_solutionSetCondition`でR0の
+solution-set入口にも接続する。これによりA0・A1の受入条件を満たした。
+
+`check_weak_equivalences_accessible`は、独立した対象・射の宇宙、一般の逆像定理、
+最終入力だけからのA0/A1一括利用とsolution-set接続を検証する。最終五モジュール
+全21宣言は標準公理のみ。共有全体の監査は829宣言・60モジュールで成功した。
