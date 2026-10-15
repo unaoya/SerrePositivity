@@ -3845,3 +3845,29 @@ N=0,1を今回の単独関係・二関係商へ同定し、N≥2では
 全Nの後、既存δ閉包=iSup有限関係イデアルの表示を用いてraw一元δ包のp正則性へ進む。
 PUnitの中間結果を任意元族のCFF拡大と同一視しない。
 G3・G6、分冪包比較、実導来pushoutの離散性、CFF根付き拡大、一般B4は未完成。
+
+### raw一元δ包への移行予定の登録（2026-10-15）
+
+BS専用予定`DeltaPDivisionRawRegular.lean`で、全有限段のp正則性から
+既存δ閉包=iSup有限関係イデアルの表示を使い、pに関する飽和性を証明する。
+これにより一元rawδ添加環A{φ(y)/p}のp正則性を供給する。
+既存の旧pねじれ除去イデアルが零となることを確認し、rawδ包と
+既存DeltaDivisionTorsionQuotient D p (fun _↦φ(y))を標準射を保つδ環同型で結ぶ。
+添字は任意の[Unique σ]を持つσ:Type uで実装する（PUnitを含む同じ一元の工程）。
+源のp正則性、yのmod p正則性、単元δ(p)、自由δ環のghost単射を中間仮定として明示する。
+任意元族のCFFや、raw包の導来pushoutとの一致をこの結果だけから結論しない。
+
+## B4-6：一元p除算の全有限実関係商のp正則性（2026-10-15）
+
+`DeltaPDivisionFiniteStageRegular.lean`で、一元（[Unique σ]、σ:Type u）について
+既存deltaDivisionFiniteRelationIdeal D p (fun _↦φ(y)) Nの全Nの通常商のp正則性を証明した。
+深さ0・1を既存の最初の関係商・二関係商に同定し、二重商比較を通して
+既存の次段実δ関係のmod(p,d)正則性（d=p）を前段通常商のmod pへ移した。
+共通AdicRegularQuotientで次の通常関係商へ帰納した。
+Aのp正則性、yのA/pでの正則性、単元v=δ(p)、自由δ環のghost単射を明示した。
+[Unique σ]はPUnitを含む同じ一元入力で、任意元族の結論ではない。
+7公開宣言の対象3803ジョブ、pure B4監査、全体4917ジョブ成功。
+標準3公理のみ、新sorry・公理・引用なし。共有既存警告は別扱い。
+次は登録済みDeltaPDivisionRawRegularで、δ閉包へのp飽和性・raw包のp正則性、
+既存旧ねじれ除去商との標準射を保つδ環同型を検証する。
+分冪包比較、実導来pushoutの離散性、CFF根付き拡大、一般B4は未完成。
