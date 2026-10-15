@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.DerivedTensorH0Algebra
 import SerrePositivity.HomologicalAlgebra.DerivedSingleH0Algebra
 import SerrePositivity.HomologicalAlgebra.UnitHomologyNormalization
 import SerrePositivity.HomologicalAlgebra.DerivedH0Algebra
@@ -1231,3 +1232,18 @@ assert_no_sorry SerrePositivity.derivedSingleH0AlgEquiv_apply
 #print axioms SerrePositivity.derivedSingleH0RingEquiv
 #print axioms SerrePositivity.derivedSingleH0AlgEquiv
 #print axioms SerrePositivity.derivedSingleH0AlgEquiv_apply
+
+-- Actual tensor H0 algebra, standard augmentation, and both ordinary factor diagrams.
+assert_no_sorry SerrePositivity.derivedTensorAugmentation_h0_isIso
+assert_no_sorry SerrePositivity.derivedTensorH0AlgHom
+assert_no_sorry SerrePositivity.derivedTensorH0AlgHom_apply
+assert_no_sorry SerrePositivity.derivedTensorH0AlgHom_bijective
+assert_no_sorry SerrePositivity.derivedTensorH0AlgEquiv
+assert_no_sorry SerrePositivity.derivedTensorH0AlgEquiv_apply
+assert_no_sorry SerrePositivity.derivedSingleH0_map_apply
+assert_no_sorry SerrePositivity.derivedTensorH0AlgHom_left
+assert_no_sorry SerrePositivity.derivedTensorH0AlgHom_right
+#print axioms SerrePositivity.derivedTensorH0AlgEquiv
+#print axioms SerrePositivity.derivedTensorH0AlgHom_apply
+#print axioms SerrePositivity.derivedTensorH0AlgHom_left
+#print axioms SerrePositivity.derivedTensorH0AlgHom_right
