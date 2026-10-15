@@ -22,6 +22,8 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Diagram.ColimitFrame,
     `SerrePositivity.HomotopicalAlgebra.Diagram.ColimitMapComparison,
     `SerrePositivity.HomotopicalAlgebra.Diagram.ProjectiveCofibrations,
+    `SerrePositivity.HomotopicalAlgebra.Diagram.EvaluatedFrame,
+    `SerrePositivity.HomotopicalAlgebra.Diagram.PointwiseMappingComparison,
     `SerrePositivity.HomotopicalAlgebra.Under.ModelCategory,
     `SerrePositivity.HomotopicalAlgebra.Pointed.Basic,
     `SerrePositivity.HomotopicalAlgebra.Pointed.SmashModel,
