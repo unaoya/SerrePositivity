@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.PerfectComplex.TensorCone
 public import SerrePositivity.HomologicalAlgebra.TensorBaseChangeNaturality
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleConeNaturality
+public import SerrePositivity.HomologicalAlgebra.CochainConeNaturality
 
 /-! # Naturality of tensoring a mapping cone in the remaining tensor variable -/
 @[expose] public section

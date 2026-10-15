@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.HomologicalAlgebra.CochainLinearDualConeNaturality
 public import SerrePositivity.HomologicalAlgebra.KoszulLinearDuality
-public import SerrePositivity.PerfectComplex.ConeArrowMap
+public import SerrePositivity.HomologicalAlgebra.CochainConeArrowMap
 
 /-! # Naturality of the standard scalar cone and shift comparison -/
 @[expose] public section
