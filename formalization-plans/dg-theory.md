@@ -1631,3 +1631,27 @@ U10全受入は未完。次は次数付き分裂に対するHom endのkernel同�
 各有限段のacyclic性と可算逆極限での互換な境界の原像の構成へ進む。
 一般の逆極限の完全性は仮定しない。続いて導来Hom計算・選択独立性、三角構造・Verdier商、
 余積・局所小性、一対象比較の三角形/余積保存を完成する。
+
+
+### 13.39 U10b4a：主Hom endの全次数要素の構成と外延性
+
+`Complexes/DiskGenerator.lean` はdiskからの射の逆構成について下の生成元の像を公開する。
+`Module/HomElements.lean` は、全斉次作用に対してKoszul符号付きで自然なcochain族を
+主Hom endの任意次数の要素へ構成する。diskの普遍性と既存equalizerを使用し、
+cycle条件は要求しない。左右の豊穣自然性の成分公式、構成した要素の各射影、
+射影による要素の外延性、任意の要素の全次数自然性、成分からの再構成の一致、
+Hom微分の各射影との可換性を証明した。
+これを次数付き分裂のretraction/sectionへ適用し、Hom制限射の次数ごとの分裂へ接続する。
+
+`Checks/HomElements.lean` は一般A/Dと全整数次数で構成・再構成・外延性・微分を検証する。
+同入口・StageSix・既存Spectra.StageTwoと次段のGradedSplitElementsの同時ビルドは成功
+（3195 jobs）。直接実行による主要13宣言の公理監査は標準公理のみ。累計721宣言。
+共有tensor基盤のimport整理で失われた依存はdg側で明示した：HomComplexからMathlibの
+ModuleCat.Abelian、Biproductから既存PerfectComplex.CochainBiproductを再利用する。
+共有root・PerfectComplex・共有基盤のソースは編集していない。
+全体文書検査は並行K系列の未ビルドCyclicTwoFamily.oleanで停止し、成功とは扱わない。
+
+U10全受入は未完。次数付き分裂に対するHom制限の次数ごとの全射性・kernel同定、
+semifree全体のhomotopically projective性、導来Hom計算・選択独立性、三角構造・
+Verdier商・余積/局所小性・一対象比較の保存性を引き続き完成する。
+共有モデル圏一般論への新しい不足要求はない。

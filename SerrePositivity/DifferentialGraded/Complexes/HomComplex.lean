@@ -1,4 +1,5 @@
 module
+public import Mathlib.Algebra.Category.ModuleCat.Abelian
 public import Mathlib.Algebra.Homology.HomotopyCategory.HomComplex
 public import SerrePositivity.HomologicalAlgebra.CochainTensor
 

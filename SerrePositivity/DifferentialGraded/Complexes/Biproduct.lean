@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Complexes.Zero
+public import SerrePositivity.PerfectComplex.CochainBiproduct
 public import Mathlib.Algebra.Homology.HomologicalComplexLimits
 public import Mathlib.CategoryTheory.Preadditive.Biproducts
 
