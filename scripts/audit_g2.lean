@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.DerivedSingleH0Algebra
 import SerrePositivity.HomologicalAlgebra.UnitHomologyNormalization
 import SerrePositivity.HomologicalAlgebra.DerivedH0Algebra
 import SerrePositivity.HomologicalAlgebra.MonoidalUnitHomRing
@@ -1216,3 +1217,17 @@ assert_no_sorry SerrePositivity.derivedH0_one_standard
 #print axioms SerrePositivity.derivedUnitH0IdentityClass_normalization
 #print axioms SerrePositivity.derivedUnitH0NaturalLinearEquiv_symm_standardOne
 #print axioms SerrePositivity.derivedH0_one_standard
+
+-- Canonical single H0 has the ordinary algebra product.
+assert_no_sorry SerrePositivity.derivedTensorUnit_augmentation_invUnitor
+assert_no_sorry SerrePositivity.derivedSingle_points_mul
+assert_no_sorry SerrePositivity.boundedAboveUnitH0LinearEquiv_single
+assert_no_sorry SerrePositivity.module_point_product_one
+assert_no_sorry SerrePositivity.derivedSingleH0_inv_mul
+assert_no_sorry SerrePositivity.derivedSingleH0RingEquiv
+assert_no_sorry SerrePositivity.derivedSingleH0AlgEquiv
+assert_no_sorry SerrePositivity.derivedSingleH0AlgEquiv_apply
+#print axioms SerrePositivity.derivedSingleH0_inv_mul
+#print axioms SerrePositivity.derivedSingleH0RingEquiv
+#print axioms SerrePositivity.derivedSingleH0AlgEquiv
+#print axioms SerrePositivity.derivedSingleH0AlgEquiv_apply
