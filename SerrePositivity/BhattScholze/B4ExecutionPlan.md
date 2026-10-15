@@ -4454,3 +4454,39 @@ BS専用`DeltaDivisionUnitDenominator.lean`で、δ自由射α_1:x_s↦1·z_sが
 
 有限源商Tor工程の5公開宣言のpure B4監査も成功。標準3公理のみ。
 全体ビルドは共有TensorShuffleの.olean欠落を報告後、残りの共有利用先をなおビルド中。
+
+## B4-6：分母1の実raw δ包と源評価環（2026-10-15）
+
+`DeltaDivisionUnitDenominator.lean`で、βの全射性を元の係数射の切断から供給し、
+α_1:x_s↦1·z_sが実自由δ環の恒等射であることを示した。
+既存の核の像の式から分母1の実定義δ閉包=ker βを証明し、
+既存quotientKerEquivOfSurjectiveによりDeltaAdjoinDivision D 1 a≃+*Aを構成した。
+標準商射の式、基底射との合成=恒等射、添加変数の像、逆射=基底標準射、δ構造保存を公開した。
+Aのp正則性・ghost単射・完備性・添字有限性は不要。
+9公開宣言の対象2063ジョブ成功。新sorry・公理・外部引用なし。
+
+### 次工程の登録：源有限グラフ商の逐次colimitとβ
+
+BS専用`DeltaDivisionSourceFiniteColimit.lean`で、一元の既存有限グラフ商Q_Nを
+P加群として標準商射で繋ぐ実図式を作る。
+終域AのP加群構造は具体的なβ:P→AのtoAlgebraから明示し、
+βにより各Q_N→Aの標準評価射を置く。
+分母1の有限評価関係が源グラフ関係となる式、有限評価イデアルの一致、
+実δ閉包=iSup有限関係、分母1δ閉包=ker βを使い、ker β=iSup有限グラフイデアルを示す。
+MathlibのModuleCatのfiltered-colimit構成を利用して、各元の有限段表示と
+核の元がある有限段で零になることから、標準評価余錐がIsColimitとなることを証明する。
+一般のTor/colimit定理をBSで重複構築せず、G7の受領前もこの具体的源評価の比較を進める。
+G7受領後はこの実標準colimitと有限源商のTor消滅を接続できる。
+全源評価環AへのTor移送と原典の導来δpushout比較・CFF・一般B4はまだ未完成。
+
+### 今回の全体ビルドの終端記録
+
+/tmp/bs-evalsource-full.logの実行は終端を確認し、全体ビルドは失敗した。
+失敗ターゲットは共有PerfectComplex/TensorShuffle、CubicActionTensorEigen、
+KTheory/Adams/KoszulOneBasis、PerfectComplex/CubicActionClass、KTheory/Adams/WeightDefectLift。
+CochainTensorLinear、IdempotentDecomposition、InvolutionDecomposition、CubicActionProjector等の
+共有.olean欠落を報告した。担当外のファイルは変更していない。
+各BS対象ビルド・pure B4監査の成功と、全体ビルド成功を区別する。
+
+分母1のraw δ包比較の9公開宣言についてpure B4監査も成功。依存は標準3公理のみ。
+全体ビルドは上記の共有失敗の終端記録と区別する。
