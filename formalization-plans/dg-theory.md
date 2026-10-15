@@ -2455,3 +2455,18 @@ objectwiseな射やホモトピーの存在だけに弱めていない。
 U10全受入は未完。次は逆方向のdesc射と全dg自然な次数−1の収縮を構成し、
 K(D)で合成cone三角形がdistinguishedであることから八面体公理へ接続する。
 三角形shift比較のK(D)への移送とPretriangulatedも検証を継続している。
+
+
+### 13.77 U10o3：合成cone比較の全dg自然な逆方向射
+
+`Complexes/ConeCompositionDesc.lean`は、逆方向比較に用いる二つのdesc境界式を、
+θ=f≫gおよび指定されたcone射χとの等式を保持して証明する。
+`Module/ConeCompositionDesc.lean`は次数−1の二つの主Hom要素を通常順の斉次合成で構成し、
+それぞれの微分が指定された閉零射のcycleになることを主Hom内で証明した。
+二重のdescから、cone(χ)→cone(g)の実際の加群射`moduleConeCompInv`を得る。
+評価が既存複体比較の逆射と一致し、順方向≫逆方向が恒等射であることも証明した。
+
+Checks.ConeCompositionDesc・StageSix・既存Spectra.StageTwoの同時ビルドは成功（2523 jobs）。
+Checksの直接実行で主要13宣言を監査し、標準公理のみ。累計1081宣言。
+U10全受入は未完。逆順の合成に対する全dg自然な次数−1の収縮と、K(D)での同型を次に完成させる。
+三角形shift閉性・Pretriangulatedは引き続きカーネル検査の整理を継続している。
