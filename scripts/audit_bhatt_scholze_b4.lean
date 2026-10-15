@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.RankOneDPBasis
 import SerrePositivity.BhattScholze.PrincipalDPFactorialKernel
 import SerrePositivity.BhattScholze.PrincipalDPToFactorial
 import SerrePositivity.BhattScholze.PrincipalDPPresentation
@@ -4364,3 +4365,17 @@ assert_no_sorry SerrePositivity.BhattScholze.principalDPToFactorial_ker_eq_away_
 #print axioms SerrePositivity.BhattScholze.principalDPToFactorial_ker_eq_away_ker
 assert_no_sorry SerrePositivity.BhattScholze.principalDPToFactorial_eq_zero_iff
 #print axioms SerrePositivity.BhattScholze.principalDPToFactorial_eq_zero_iff
+
+-- Actual basis of the existing rank-one divided-power algebra.
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDP_span_eq_top
+#print axioms SerrePositivity.BhattScholze.rankOneDP_span_eq_top
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPPolynomialEval
+#print axioms SerrePositivity.BhattScholze.rankOneDPPolynomialEval
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPPolynomialEval_dp
+#print axioms SerrePositivity.BhattScholze.rankOneDPPolynomialEval_dp
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDP_linearIndependent
+#print axioms SerrePositivity.BhattScholze.rankOneDP_linearIndependent
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPBasis
+#print axioms SerrePositivity.BhattScholze.rankOneDPBasis
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPBasis_apply
+#print axioms SerrePositivity.BhattScholze.rankOneDPBasis_apply
