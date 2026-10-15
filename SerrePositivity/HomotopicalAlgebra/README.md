@@ -1167,3 +1167,16 @@ Smith用の実際の安定性クラスとして出力する。Sの小ささ・li
 58宣言・8モジュールのrelative hocolim監査と関連回帰検証が成功。
 コミット`31393aa7`・`7e206fe4`・`d87a386d`・`d473d792`。
 L2の生成射・単位射のW_S所属、L4/L5、E0、S0〜S3、F1の任意モデル源の最終関手は継続中。
+
+
+L2は計画§208で最終仕様（左固有combinatorial源）に対する受入検証まで完了。
+`Smith/ClosedGeneratedClass`とReedyの`ClosedBoundaryClass`・`ClosedObjectwise`は、
+必要な小さい生成族だけにSOAを適用し、閉クラス全体のaccessibilityやモデル構造を仮定せずReedy帰納を行う。
+`LocalBoundaryEquivalences`は実際の相対境界生成族B(S)、K=J⊔B(S)、生成左クラス、
+自然な単位射の元のcof_C∩W_S所属を証明する。元のSの射の両端のcofibrancyは不要。
+`AccessibleLocalReplacement`はaccessibleな実際のRと局所同値なη:Id→Rを出力し、
+W_S=R⁻¹(W_C)を通して元のW_Sの射圏部分圏と包含のaccessibilityを証明する。
+単位射のW_S所属を入力とする条件付き定理のままで止めていない。
+共有入口2517 jobs、4168宣言・331モジュールの標準公理監査、13宣言・5モジュールの新規監査と
+L3・逆像判定の回帰検証が成功。コミット`8c218e21`・`7f6ecf6a`。
+次はL4の実際のモデル構成。L5・E0・S0〜S3とF1の任意モデル源の最終関手も残る。

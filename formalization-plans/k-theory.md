@@ -6304,7 +6304,7 @@ IDは計画上の単位であり、1行を1コミットや1日とみなさない
 | F4（完了、§199） | HomotopyFunctionComplex/FilteredColimits | A0,F1 | 十分大きいfiltered colimitとhomotopy colimitの比較、必要範囲でRMapのhomotopy colimit→homotopy limit公式。M4全体を先に要求しないが、この証明を省かない |
 | L0（完了、§193） | HomotopicalAlgebra/Localization/Basic。局所性・W_S・条件付き局所化API | F1,F2 | Sの代表・cofibrant置換の独立性、元のW⊆W_S、2-out-of-3・retract閉性、空集合/元の弱同値だけのSで元モデルを回復 |
 | L1（完了、§200） | Localization/AccessibleLocalObjects | A1,F3,L0 | S-local対象の充満部分圏のaccessibilityと包含のaccessibilityを導く。検出に使う関手・cardinalと小さいhomotopy生成族を明示 |
-| L2 | Localization/AccessibleLocalEquivalences | L1,F4 | Arrow C内のW_Sのaccessibilityと包含のaccessibilityを証明。全局所対象に量化した定義から小ささへの移行を独立に検証 |
+| L2（完了、§208） | Localization/AccessibleLocalEquivalences | L1,F4,L3（§208の経路） | Arrow C内のW_Sのaccessibilityと包含のaccessibilityを証明。全局所対象に量化した定義から小ささへの移行を独立に検証 |
 | L3（完了、§207） | Localization/LeftProperClosure | L0,F4、元モデルの左固有性 | cof_original∩W_Sのpushout/超限合成閉性を証明。局所化後のモデル存在や左固有性を先取りしない |
 | L4 | Localization/Existence。一般の左Bousfield局所化存在 | R3,L2,L3 | §159.2の三クラス・fibrant判定を同じC上で構成。局所モデルの生成Jと分解は出力。左固有性・combinatorial性も接続 |
 | L5 | Localization/Replacement, UniversalProperty | L4,F2 | 実際のL_Sとη、冪等性、W_Sの関手による検出、Quillen普遍性、生成表示・置換の独立性、S⊆Tと反復局所化の比較 |
@@ -9939,3 +9939,95 @@ Sの小ささ、初期項のcofibrancy、全対象cofibrant性、ω列への限�
 L3の閉性を使って生成閉包へ移し、§201の条件付きaccessibilityを実際の置換に適用する。
 その後L4の一般局所化モデルの存在、L5の置換・普遍性・独立性、E0、S0〜S3へ進む。
 F1の指定関手的分解を仮定しない任意モデル源の最終関手も残る。
+
+
+## 208. L2完了：相対境界生成射・実際の単位射の局所同値性と元のW_Sのaccessibility（2026-10-16）
+
+§159.2の最終仕様である左固有なcombinatorialモデル圏について、L2を受入条件と照合し完了とする。
+§201で明示していた「構成したη_XがW_Sに属する」という未解消仮定を証明し、
+全局所対象に量化した元のW_SからArrow C内の充満部分圏・包含のaccessibilityへ接続した。
+今回はL3の閉性を先に使用した。L3はL2を前提とせず§207で完成しているため、証明の依存に循環はない。
+左固有性を使わない全combinatorialモデルについての別版を証明したとは主張しない。
+最終仕様より狭い源やSへ制限したものではなく、Sの小ささはw-smallだけを要求する。
+
+### 208.1 accessibilityやモデル構造を仮定しない閉クラス上のReedy帰納
+
+`Smith/ClosedGeneratedClass.generatedLeft_le_of_closed`は、小さい生成族Gと閉じた射クラスPについて、
+G⊆PならG.rlp.llp⊆Pを証明する。Pのretract・coproduct・pushout・超限合成閉性を使い、
+Pそのものの小ささ・accessibility・弱因子分解系の存在は要求しない。
+
+`Reedy/ClosedBoundaryClass.latchingEvaluation_mem_closed`は、各latching評価で必要な
+下位の相対latching射だけをofHomsで小さい生成族Hにする。
+元の局所可呈示性からHのSOAを導き、証明済みのReedy境界持ち上げをH.rlp.llp/H.rlpへ適用する。
+その後H.rlp.llp⊆Pを使ってPへ戻す。Hの小ささを示すためにlatching添字のw-small性を明示する。
+全体のPを小さい生成族とみなすことも、Pに対応するモデル構造を先取りすることもない。
+
+`Reedy/ClosedObjectwise.reedyLeft_inf_iff`は、任意のL,Wについて
+
+    reedyLeft(r,L∩W,α) ↔ reedyLeft(r,L,α) ∧ objectwise W(α)
+
+を、L∩Wの上記閉性とWの2-out-of-3から証明する。
+逆方向は次数の強帰納により下位のlatching評価を閉クラスに入れ、pushoutと2-out-of-3で
+その次数の相対latching射のW所属を得る。
+CにWを弱同値とするモデル構造は要求しない。一般補題はコミット`8c218e21`。
+
+### 208.2 元の相対境界生成族のW_S所属
+
+`Localization/LocalBoundaryEquivalences.arrowFrame_relativeLatching_cof_local`は、
+元の局所同値fの自然なarrow frameの各相対latching射がcof_C∩W_Sに属することを証明する。
+各次数のframe射は、元のfへのaugmentationの両成分が元の弱同値である実際のArrow比較によりW_Sに属する。
+208.1にL=cof_C、W=W_Sを代入し、L3の閉性と、そこから導いたcoproduct閉性を使う。
+
+`localBoundaryGenerators_le_cof_local`は、S⊆W_Sを使って§201の実際の境界生成族B(S)へ適用する。
+元のSの射の両端のcofibrancyは要求しない。
+元の生成自明cofibration族Jについては、元のW_C⊆W_Sと生成性から同じ結論を得る。
+`localFibrantGenerators_le_cof_local`はK=J⊔B(S)がcof_C∩W_Sに入ることを証明する。
+Sがw-smallならKもw-smallなので、SOAと208.1からK.rlp.llp⊆cof_C∩W_Sが従う。
+
+### 208.3 実際のaccessibleな置換と単位射
+
+`localFibrant_approximation_unit_localEquivalence`は、Kに対する任意の実際の関手的生成分解dについて、
+terminalRestriction(d)への自然な単位射が各XでW_Sに属することを証明する。
+「単位が局所同値」を入力として要求せず、dの実際の左因子の生成クラス所属から導く。
+
+`AccessibleLocalReplacement.exists_accessible_localReplacement`は、§201のaccessibleな近似の
+構成にこの結果を接続し、共通の正則κ、実際のR:C⥤C、自然変換η:Id⟶Rを出力する。
+
+- Rはκ-accessible。
+- 全Xでη_Xは元のcofibrationかつ元のW_Sに属する。
+- 全R(X)は元の意味でfibrantかつS-local。
+
+元の指定cof/fibのaccessibilityを仮定せず、小さいKから得る生成分解のaccessibilityを使う。
+Cの源としての単体的豊穣性・tractability・全対象cofibrant性は追加しない。
+
+### 208.4 元のW_Sの部分圏と包含のaccessibility
+
+`exists_accessible_localEquivalences`は208.3のR,ηを§201の条件付き逆像定理へ実際に適用する。
+局所対象間のW_Sが元のW_Cであることと単位射の自然性から
+
+    W_S = R⁻¹(W_C)
+
+を得て、A1の元のW_Cと、accessibleな実際のR.mapArrowによる逆像のaccessibilityを使う。
+出力は元のW_Sに対応するArrow Cの充満部分圏のκ-accessibilityと、その包含のκ-accessibilityである。
+局所対象の部分圏のaccessibilityだけからW_Sを推論せず、任意のaccessible関手のfull imageが
+accessibleであるという未証明な一般論も使っていない。
+対象・Hom・小対象の宇宙u/v/wは独立であり、既存の単体集合の宇宙変更仮定は明記している。
+実際の生成射・単位射・最終のaccessibility・共有入口・利用例はコミット`7f6ecf6a`。
+
+### 208.5 受入検証と次のゲート
+
+- L2の元のW_Sの部分圏と包含のaccessibilityは208.4の最終定理で証明済み。
+- 共有入口`Foundations`：2517 jobsで成功、新規警告なし。
+- `check_accessible_local_replacement`：13宣言・5モジュールを標準公理のみで監査。
+  モデル未装備の一般Cでの閉クラスReedy判定、任意の元のSの射、任意の実際の生成分解の単位射、
+  出力としてのR・η・局所fibrancy、元のW_Sの部分圏と包含を検証。
+- 共有全監査：4168宣言・331モジュール、標準公理のみ。sorry・引用依存の追加なし。
+- `check_localization_left_proper_closure`：17宣言・3モジュールのL3の回帰検証成功。
+- `check_local_replacement_detection`：62宣言・9モジュールの逆像・局所対象判定の回帰検証成功。
+- 差分の空白検査成功。一般補題と具体的な局所化への適用を2コミットに分けて保存した。
+
+次はL4。元のI、元のW_C⊆W_S、L2のaccessibility、L3の二つの閉性を
+既存の証明済みSmith存在定理へ渡し、同じC上の局所モデルを実際に構成する。
+三クラス、局所fibrant対象との同値、出力される生成族J_Sと関手的分解、
+局所モデルの左固有性・combinatorial性をそれぞれ検証する。
+L5の普遍性・独立性、E0、S0〜S3、F1の任意モデル源の最終関手は引き続き未完了。
