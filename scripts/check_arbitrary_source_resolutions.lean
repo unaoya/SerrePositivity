@@ -44,10 +44,35 @@ example {C : Type u} [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}]
     [L.IsLocalization (weakEquivalences SSet.{v})] :
     Cᵒᵖ ⥤ FibrantObject C ⥤ H := localizedResolutionHom hcof L
 
+-- Extend to every target using the ordinary localization; compare each value
+-- with a genuine Kan mapping space and its ordinary Ho(C) hom set.
+example {C : Type u} [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}]
+    (hcof : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
+    {H : Type uH} [Category.{vH} H] (L : SSet.{v} ⥤ H)
+    [L.IsLocalization (weakEquivalences SSet.{v})] (X : Cᵒᵖ) (Y : C) :
+    ∃ K : SSet.{v}, SSet.KanComplex K ∧
+      Nonempty (((homotopyMapping hcof L (weakEquivalences C).Q).obj X).obj Y ≅ L.obj K) ∧
+      Nonempty (SSet.π₀ K ≃ ((weakEquivalences C).Q.obj X.unop ⟶
+        (weakEquivalences C).Q.obj Y)) :=
+  homotopyMapping_has_representative hcof L (weakEquivalences C).Q X Y
+
+-- Invariance in both original variables, including nonfibrant targets.
+example {C : Type u} [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}]
+    (hcof : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
+    {H : Type uH} [Category.{vH} H] (L : SSet.{v} ⥤ H)
+    [L.IsLocalization (weakEquivalences SSet.{v})]
+    {X X' : Cᵒᵖ} (f : X ⟶ X') (hf : weakEquivalences C f.unop)
+    {Y Y' : C} (g : Y ⟶ Y') (hg : weakEquivalences C g) :
+    IsIso (((homotopyMapping hcof L (weakEquivalences C).Q).map f).app Y) ∧
+      IsIso (((homotopyMapping hcof L (weakEquivalences C).Q).obj X).map g) :=
+  ⟨homotopyMapping_map_source_isIso hcof L _ f hf Y,
+    homotopyMapping_map_target_isIso hcof L _ X g hg⟩
+
 open Lean in
 run_cmd do
   let env ← getEnv
-  let expected := #[
+  let expected := #[`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.LocalizedMappingBifunctor,
+    
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionCategory,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionCategoryHom,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionLiftIndependence,
