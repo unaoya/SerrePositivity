@@ -8713,3 +8713,61 @@ fibrantなYではHom図式もprojective fibrantとなり、coneSpaceのBrown補�
 W→const(1)のobjectwise弱同値だけから、非cofibrantな定数重みをrealizationが反転すると
 推論してはならない。projectiveな源frameの性質を使って、この源側の比較自体を証明する。
 F1の任意モデル源の最終関手とL0〜L5も未完了で、§159.2の最終契約を維持する。
+
+
+## 191. F4：重み付きrealizationから実際のhocolimへの源比較（2026-10-15）
+
+### 191.1 定数重みのrealization
+
+`Diagram/ConstantWeightHom`は各次数の単体的Yoneda同値から、定数標準単体を重みとする
+frame Homへの自然変換を、その次数の図式から定数対象への自然変換と同定する。
+`ConstantWeightRealization`はこの同値と既存の随伴、colimitの普遍性を接続し、
+任意のA:K→(Δ→C)についてF_A(const Δ[n])≅colim(A(-)[n])を構成する。
+単体的単位とΔ[0]の実際の同型を経由し、F_A(const 1)≅colim(A(-)[0])も得る。
+この同定自体にはframe条件やモデル構造を要求しない。
+
+`SmallHomConstantWeight`はShrinkHomsとの圏同値とcolimit保存を用いて同定を元のCへ戻す。
+対象・射・局所可呈示性の宇宙は独立であり、vサイズの余極限を追加仮定しない。
+
+### 191.2 第0次数からhocolimへの自然な弱同値
+
+`Diagram/DegreeZeroHomotopyColimit`は実際のprojective cofibrant replacement Q_K(D)の
+cosimplicial resolutionを第0次数で評価する。Q_K(D)へのaugmentationはprojectiveモデルで
+弱同値であり、両対象はprojective cofibrantである。
+colimitの左Quillen性とBrown補題により、第0次数のcolimitから指定したhocolim(D)への
+比較自然変換が、任意のDで弱同値になることを証明した。
+D自体のcofibrancyは要求しない。
+
+### 191.3 実際の源比較と未証明の条件の切り出し
+
+`Diagram/WeightedSourceComparison`は、評価frame族Aと任意のaugmentation
+q:W→const(1)について、§190の重み付き左随伴を単体的単位に適用した対象から
+指定hocolim(D)への実際の射を構成する。
+
+構成は、単位tensorの同型、F_A(q)、定数重みの同型、191.2の比較射の合成である。
+末尾F_A(const 1)→hocolim(D)は弱同値と証明済みであり、合成全体が弱同値であることは
+F_A(q)が弱同値であることと同値、と二対三性により証明した。
+指定projective cofibrant重みを代入すれば、源は§190の実際のweightedFunctorの単位での値に
+一致する。現時点でこの合成全体のDについての自然性は証明していない。
+
+F_A(q)の弱同値性は未証明である。const(1)をprojective cofibrantとみなしたり、
+点ごとの弱同値だけでrealizationのBrown補題を適用したりしない。
+次はprojectiveな源frameの性質を使ってこの条件を証明し、随伴のmapping Hom、
+既存のRMap図式、必要なULiftの弱同値適合へ接続する。
+F4全体、F1の任意モデル源の最終関手、L0〜L5は引き続き未完了である。
+
+### 191.4 受入検証
+
+実装コミット：`c3a8584`。以下はすべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`：2416 jobs。
+- `check_weighted_source_comparison`：54宣言・5モジュール、標準公理のみ。
+  任意の標準単体、単位重み、独立した宇宙、degree-zero比較の自然変換と弱同値性、
+  実際の指定重みを使う源比較、残る弱同値条件との同値を検証した。
+- `audit_homotopical_foundations`：3390宣言・230モジュール、標準公理のみ。
+- `check_weighted_frame_limit`：79宣言・5モジュール。
+- `check_pointwise_mapping_diagram`：45宣言・3モジュール。
+- `check_weak_equivalences_accessible`：21宣言・5モジュール。A0・A1の最終入口を再検証。
+- `check_homotopical_foundations`、`check_spectra_stage2`、`git diff --check`。
+
+新規sorry・引用axiomはない。他チャットの作業と共有ルートの変更を保持した。

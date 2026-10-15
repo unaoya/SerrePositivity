@@ -973,3 +973,16 @@ MathlibのShrinkHomsへ三クラスと局所可呈示性を移し、元のCへ�
 コミットは`94f8766`・`495b097`、詳細は計画§190。
 重み付きrealizationの源とhocolimの比較、RMapへの最終同定、必要なULiftの弱同値適合は残る。
 非cofibrantな定数重みへのBrown補題を先取りしない。F1の任意源の最終関手とL0〜L5も未完了である。
+
+
+`Diagram/ConstantWeightHom`・`ConstantWeightRealization`・`SmallHomConstantWeight`は、
+定数標準単体の重みrealizationを対応次数のcolimitへ同定する。モデル構造を要求しない同定を
+独立したHom宇宙の元のCへ移送し、単位重みの場合も公開する。
+`DegreeZeroHomotopyColimit`は指定したprojective resolutionの第0次数のcolimitから、
+実際のhocolimへの自然な弱同値を構成する。D自体のcofibrancyは不要である。
+
+`WeightedSourceComparison`は重み付き左随伴の単位での値からhocolimへの実際の源比較射を構成する。
+全体の弱同値性は重みaugmentationのrealizationの弱同値性と同値であり、この最後の条件は未証明。
+合成全体のDでの自然性、RMapへの最終接続、ULiftの弱同値適合も残る。
+共有入口2416 jobs、共有3390宣言・230モジュールの標準公理監査と回帰検証が成功。
+コミットは`c3a8584`、詳細は計画§191。F4全体・F1の任意源の最終関手・L0〜L5は未完了である。
