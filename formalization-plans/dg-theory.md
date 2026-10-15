@@ -3051,3 +3051,27 @@ Mathlib EnrichedFunctorを構成した。両因子へ制限したdg関手が元�
 Checks.BimoduleUncurryのビルドは成功（1809 jobs、警告なし）。直接実行は終了コード0、
 主要3宣言の公理は標準公理のみ。監査累計1240宣言。
 次は二作用によるbimoduleの外延性を使い、curried/uncurriedの両往復を証明する。
+
+
+### 17.15 U11b14：両往復の証明とU11b受入
+
+`Bimodule/Ext.lean`は両因子への制限が等しいbimoduleの等式を、
+主Hom endの評価による外延性から証明した。作用族の射の型が対象に依存するため、
+対象関数を先に同一視し、関手の射の射影には局所的なHEqを用いる。
+`Bimodule/TensorComparison.lean`はtensor積上の関手の純粋tensorの像を両制限の合成として計算し、
+curried/uncurried変換の両往復の等式と`bimoduleEquivTensorFunctor`を公開した。
+これは対象データの同値であり、まだ構成していない豊穣関手圏全体の豊穣同値を宣言するものではない。
+
+これでU11bの二作用・Koszul交換則・積dg圏・共変EnrichedFunctor表示との同値を満たす。
+対象宇宙v,wは独立、Hom endを作るためのSmall.{u} Bのみ明示する。
+通常順と豊穣順のtensor合成の符号は§17.4/17.6で照合済み。
+
+Checks.BimoduleTensorComparison・Uncurry・UncurryCompositionと既存StageSeven・Spectra.StageTwoの
+同時ビルドは成功（2661 jobs、終了コード0）。本単位の主要7宣言の直接実行も終了コード0、標準公理のみ。
+任意A・独立宇宙の両往復に加え、一対象ℤ・ZMod 2の例を検査した。監査累計1247宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当Leanのsorry/admit/新規axiomは0件、
+担当差分のgit diff --checkも成功。共有ルート・共有一般論・並行変更は編集していない。
+
+U11全体は未完。次はU11cの多対象balanced tensorを、二作用の余等化子として構成し、
+balanced族との普遍性、両変数mapと法則、符号付き成分式まで証明する。
+その後U11d/eのYoneda評価・残るbimodule作用・単位/結合coherenceへ進む。U12〜U17も継続対象である。
