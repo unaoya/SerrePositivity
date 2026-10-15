@@ -6308,7 +6308,7 @@ IDは計画上の単位であり、1行を1コミットや1日とみなさない
 | L3（完了、§207） | Localization/LeftProperClosure | L0,F4、元モデルの左固有性 | cof_original∩W_Sのpushout/超限合成閉性を証明。局所化後のモデル存在や左固有性を先取りしない |
 | L4（完了、§209） | Localization/ModelExistence。一般の左Bousfield局所化存在 | R3,L2,L3 | §159.2の三クラス・fibrant判定を同じC上で構成。局所モデルの生成Jと分解は出力。左固有性・combinatorial性も接続 |
 | L5（完了、§211） | Localization/Replacement, UniversalProperty, IteratedExistence | L4,F2 | 実際のL_Sとη、冪等性、W_Sの関手による検出、Quillen普遍性、生成表示・置換の独立性、S⊆Tと反復局所化の比較 |
-| E0 | Localization/Enriched, Monoidal | L4,L5、既存SM7 | 通常局所化・V豊穣局所化を区別。追加のtractability/生成始域cofibrancyとtensor適合条件を明示し、局所SM7・pushout-product・単位を証明 |
+| E0（完了、§213） | Localization/EnrichedExistence, MonoidalExistence | L4,L5、既存SM7 | 通常局所化・V豊穣局所化を区別。追加のtractability/生成始域cofibrancyとtensor適合条件を明示し、局所SM7・pushout-product・単位を証明 |
 | S0 | Spectra/ModelCategory/Combinatorial, LeftProper | R1,A0、既存レベル構造 | 一般C,Kの対称スペクトルの局所可呈示性と必要条件下の左固有性。Mod型・余極限・accessibleなmonad等の比較を証明し、圏の名前だけで推論しない |
 | S1 | Spectra/Stable/LocalizingMaps, Omega | S0,L0、既存free/evaluation | F_(n+1)(QA⊗K)⟶F_n(QA)を実際の射として構成。Sの小ささ、cofibrant性、局所fibrant対象とΩ_K対象の同値 |
 | S2 | Spectra/Stable/ModelCategory, EnrichedModel | S1,L4,E0 | 一般定理を適用した安定モデル、三クラス・生成性・局所置換・monoidal/SM7。具体的存在引用を追加しない |
@@ -10322,3 +10322,99 @@ monoidal unitのcofibrancyは入力に要求しない。pushout-productと単位
 局所SM7だけからこの二つを同一視せず、豊穣作用の単位に必要な条件、cofibrant replacementした
 実際のeHomの弱同値判定を明示して接続する。V=SSetへの適用もこの区別の下で確認する。
 その後S0〜S3へ進む。一般C,Kのスペクトルという契約を維持し、特定のPSS/S¹だけへ縮めない。
+
+## 213. E0完了：V値の導来Homによる局所化と実際の豊穣・monoidal存在（2026-10-16）
+
+§212で残していたordinary RMapとV内部Homの局所性の比較、作用の単位の条件、
+実際の存在定理への接続を実装し、§159.4のE0を受入検証まで完了した。
+追加条件は豊穣・monoidal適合定理の入力にだけ置き、普通の局所化存在には追加していない。
+F→L→E→S全体は継続中。次は一般C,KのS0〜S3であり、F1の任意モデル源の残項目も維持する。
+
+### 213.1 実際のV値の導来Hom
+
+`Monoidal/PullbackHomSource.lean`はfibrantな標的に対するpullback-homがsourceのtrivial
+cofibrationをtrivial fibrationへ送ることを、実際のterminal pullback squareから証明する。
+Brown factorizationで、cofibrant対象間の任意の弱同値を弱同値へ送ることも証明する。
+単体的豊穣や関手的分解はこの一般補題の入力には要求しない。
+
+`Enriched/DerivedMapping.lean`は既存のeHomFunctor V Cを指定したQとRで評価する
+実際のV値bifunctorを構成し、fibrancyと両変数の弱同値不変性を証明する。
+V豊穣局所対象・局所同値はこのactual derived Homへの弱同値テストで定義する。
+ordinary simplicial RMapと同じ型として定義したものではなく、未置換のeHom(s,Y)でもない。
+
+### 213.2 作用の単位と、解像した単位から作るsource frame
+
+`Enriched/UnitAxiom.lean`はVのunit replacement q:U→1を取り、Uのcofibrancy、qの弱同値性、
+cofibrantなXについてU⊗X→1⊗X→Xが弱同値となることを別の作用の単位公理として明示する。
+普通のpushout-product条件からこの公理を推論してはいない。Vのunitがcofibrantならidentity
+replacementで自動的に満たすことを証明する。Vのunitが非cofibrantな場合も明示的な公理で扱う。
+
+`Enriched/UnitFrame.lean`はUの実際のcosimplicial resolutionをQXにtensorし、represented unit
+の自然同型とQX→Xを通した自然なaugmentationを構成する。
+Reedy cofibrancyはtensorのQuillen性から、augmentationの各次数の弱同値性はBrownと
+作用の単位公理から導く。unit自体がcofibrantであるとは仮定しない。
+
+`EnrichedTensorFrameHom.lean`は、このtensor frameのordinary Homと、V値のmapping objectへ
+向かうordinary Homの実際の随伴同型を構成する。CとVのHom宇宙は独立であり、双方を共通の
+大きい宇宙へliftして弱同値テストを比較する。
+`Localization/FrameTests.lean`は実際の自然なweak cospanから、任意の構成済みframeで
+元のordinary mapping testを計算できることを証明する。augmentationにReedy trivial fibration性は要求しない。
+
+### 213.3 普通と豊穣の局所性を条件付きで同定する
+
+`EnrichedTestComparison.lean`は213.2のframeとtarget Brown不変性により、V値のderived Homの
+弱同値テストからordinary RMapのテストを導く。この方向には元のtensor model条件と作用の単位公理を使う。
+
+`EnrichedLocalObjects.lean`は、§212で証明した局所化後のtensor model条件を用い、元の局所対象に
+対する任意のordinary局所同値が、V値のderived Homの弱同値になることを証明する。
+元のQ/Rを新しいモデルのQ/Rへ勝手に置き換えておらず、元のcofibrationと局所fibrant判定を明示的に運ぶ。
+
+`EnrichedDetection.lean`は両方向を合わせ、局所対象の述語と局所弱同値クラスの実際の等式、
+新モデルのfibrant対象のV値のderived Homによる判定を公開する。
+この同定には明示したtensor適合と作用の単位の条件を使い、任意のVやSで無条件に同一視してはいない。
+
+### 213.4 最終的な存在入口と追加条件
+
+`Enriched/UnitChangeModel.lean`は同じ実際のU,qで作用の単位公理が局所化後も成立することを証明する。
+`Localization/EnrichedExistence.exists_enriched_localization`は、最終仕様の普通の源と小さいSから
+実際のModelPresentationを構成し、次を同時に出力する。
+
+- 局所tensor axiom、実際のenriched HomのSM7、cotensor条件。
+- 局所化後の作用の単位公理。unitのcofibrancyは要求しない。
+- ordinary局所対象とV値のderived Homでの局所対象の述語の等式。
+- 構成したモデルの弱同値クラスがV値のderived Homによる局所同値クラスであること。
+- 新しいfibrant対象が元のfibrantかつV豊穣局所であること。
+
+豊穣の追加入力は、元のenrichmentとTensorCotensor、そのQuillen性、Vの生成表示と生成cofibrationの
+始域のcofibrancy、§212.2の生成endpointでの導来tensor適合、元の作用の単位公理である。
+Vで必要な指定cofibrant factorizationは生成表示から構成し、局所モデル・局所SM7・V値の局所性の
+証明書を入力として要求しない。Cの生成始域のcofibrancyは要求しない。
+
+`Localization/MonoidalExistence.exists_monoidal_localization`は、元のbraided closed monoidal modelから、
+元の生成cofibrationの始域のcofibrancyと§212.3のtensor適合条件の下で、実際の局所monoidal modelを構成する。
+こちらの追加条件も普通の局所化存在には戻さない。monoidal unitのcofibrancyは要求しない。
+
+V=SSetへの最終適用ではパラメータのcofibrancyと作用の単位公理を自動で供給する利用例が通る。
+導来tensor適合条件は明示的に保持する。既存の強いV値representabilityやtensorのcoherenceデータを
+別のものへ置き換えたり、新しいenrichmentを捏造したりはしない。
+
+### 213.5 最終受入検証・コミット
+
+実装コミット：`b993cb83`、`56ec7652`。§212の`f45273b8`・`ffdd8e23`と合わせてE0を構成する。
+すべて成功した。
+
+- 共有入口`Foundations`のビルド：2559 jobs。
+- `check_enriched_detection`：独立したC/Vの宇宙、作用の単位が非cofibrantでもよい一般入力、
+  局所対象・局所同値の等式とfibrant判定、SSetのunit条件。52宣言・9モジュール。
+- `check_enriched_localization_existence`：実際のモデル・SM7・作用の単位・V値の弱同値クラスを
+  最終入力から出力する入口と、V=SSetでの利用例。2宣言・2モジュール。
+- `check_enriched_localization`：生成endpointからの局所SM7・cotensor条件。8宣言・7モジュール。
+- `check_monoidal_localization`：実際のmonoidal modelの存在、pushout-product、単位、閉内部Hom条件。
+  3宣言・3モジュール。
+- `audit_homotopical_foundations`：4349宣言・372モジュール、標準公理のみ。
+- `git diff --check`、各コミットのstage差分検査。
+
+新規sorry・引用axiomはない。共有作業木の他チャットの変更を保持した。
+L0〜L5、E0は確定仕様で完了。次はS0：一般C,Kの対称スペクトルについて実際の局所可呈示性と
+必要条件下の左固有性を証明し、S1〜S3の安定化へ接続する。
+F1の指定関手的分解なしの任意モデル源の最終関手も未完了で、全体目標の完了ではない。

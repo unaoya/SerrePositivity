@@ -1231,3 +1231,16 @@ endpoint functorのQuillen性からpushout-product条件を導く。`Localizatio
 monoidal 2宣言・2モジュールの検証が成功。実装コミット`f45273b8`・`ffdd8e23`。
 E0全体は未完了。ordinary RMapとV内部Homの局所性の比較、作用の単位の条件の照合が残る。
 L0〜L5は完了済み。S0〜S3、F1の任意モデル源の最終関手も未完了として維持する。
+
+
+E0は計画§213で受入検証まで完了（2026-10-16）。`PullbackHomSource`・`Enriched/DerivedMapping`は
+実際のV値の導来Homとfibrancy・不変性を証明する。`Enriched/UnitAxiom`は作用の単位を独立に明示し、
+非cofibrantなunitも扱う。`UnitFrame`は実際のunit replacementのresolutionから普通のsource frameを構成。
+`EnrichedTensorFrameHom`・`FrameTests`・`EnrichedTestComparison`と局所SM7から、`EnrichedDetection`が
+ordinary RMapとV値derived Homの局所対象・局所同値の等式とfibrant判定を証明する。
+`EnrichedExistence`は元の一般入力と明示的tensor/unit条件から実際のモデル、SM7、unit、V値の弱同値クラスを
+同時に出力する。Vの指定分解は生成表示から構成し、Cの生成始域のcofibrancyは不要。
+`MonoidalExistence`はmonoidal用の追加条件から実際の局所monoidal modelを出力し、unitのcofibrancyは不要。
+共有入口2559 jobs、4349宣言・372モジュールの標準公理監査、検出52宣言・9モジュール、
+豊穣存在2宣言・2モジュール、monoidal 3宣言・3モジュールとV=SSetの利用例が成功。
+実装コミット`b993cb83`・`56ec7652`。次は一般C,KのS0〜S3。F1の任意モデル源の最終関手も未完了。
