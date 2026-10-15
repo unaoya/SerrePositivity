@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.KTheory.LocalizationKernelSupport
+public import SerrePositivity.KTheory.CoefficientExtension
 public import Mathlib.RingTheory.Flat.TorsionFree
 
 /-! # Supported localization after extending coefficients -/
@@ -9,19 +10,6 @@ universe u v
 namespace SerrePositivity
 open scoped TensorProduct
 variable (E : Type v) [CommRing E]
-
-/-- Extend an additive group map to an E-linear map after tensoring over the integers. -/
-def g0CoefficientMap {A C : Type*} [AddCommGroup A] [AddCommGroup C] (f : A →+ C) :
-    E ⊗[ℤ] A →ₗ[E] E ⊗[ℤ] C := f.toIntLinearMap.baseChange E
-
-@[simp] lemma g0CoefficientMap_tmul {A C : Type*} [AddCommGroup A] [AddCommGroup C]
-    (f : A →+ C) (a : E) (x : A) : g0CoefficientMap E f (a ⊗ₜ[ℤ] x) = a ⊗ₜ[ℤ] f x := rfl
-
-lemma g0CoefficientMap_comp {A C D : Type*} [AddCommGroup A] [AddCommGroup C] [AddCommGroup D]
-    (f : A →+ C) (g : C →+ D) :
-    (g0CoefficientMap E g).comp (g0CoefficientMap E f) = g0CoefficientMap E (g.comp f) := by
-  ext a
-  rfl
 
 /-- A characteristic-zero coefficient field is flat over the integers. -/
 lemma coefficientField_flat (F : Type v) [Field F] [CharZero F] : Module.Flat ℤ F := inferInstance

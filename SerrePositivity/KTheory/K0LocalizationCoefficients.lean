@@ -25,11 +25,10 @@ def coefficientResolutionMap (Z : TopologicalSpace.Closeds (PrimeSpectrum R)) :
 
 lemma coefficientResolutionMap_homologyEuler (Z : TopologicalSpace.Closeds (PrimeSpectrum R))
     (x : Coefficients E Z) : coefficientResolutionMap E Z (coefficientHomologyEuler E Z x) = x := by
-  induction x using TensorProduct.inductionOn with
-  | tmul a x =>
-    change a ⊗ₜ[ℤ] G0WithSupport.resolutionMap Z (homologyEuler Z x) = a ⊗ₜ[ℤ] x
-    exact congrArg (fun x => a ⊗ₜ[ℤ] x) (DFunLike.congr_fun (resolutionMap_homologyEuler Z) x)
-  | add x y hx hy => simp only [map_add, hx, hy]
+  change ((g0CoefficientMap E (G0WithSupport.resolutionMap Z)).comp
+    (g0CoefficientMap E (homologyEuler Z))) x = x
+  rw [g0CoefficientMap_comp, resolutionMap_homologyEuler, g0CoefficientMap_id]
+  rfl
 
 def coefficientEnlarge {Z W : TopologicalSpace.Closeds (PrimeSpectrum R)} (h : Z ≤ W) :
     Coefficients E Z →ₗ[E] Coefficients E W := g0CoefficientMap E (enlarge h)

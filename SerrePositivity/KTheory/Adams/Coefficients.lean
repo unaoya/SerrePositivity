@@ -14,30 +14,6 @@ namespace SerrePositivity
 open TensorProduct
 variable (E : Type v) [CommRing E]
 
-/-- Regard a biadditive pairing as a bilinear map over the integers. -/
-def integerPairing {A B C : Type*} [AddCommGroup A] [AddCommGroup B] [AddCommGroup C]
-    (f : A →+ B →+ C) : A →ₗ[ℤ] B →ₗ[ℤ] C where
-  toFun x := (f x).toIntLinearMap
-  map_add' x y := by ext z; exact congrArg (fun g : B →+ C => g z) (f.map_add x y)
-  map_smul' n x := by ext z; exact congrArg (fun g : B →+ C => g z) (f.map_zsmul n x)
-
-/-- Extend both arguments of an integer pairing to an E-bilinear pairing. -/
-def coefficientPairing {A B C : Type*} [AddCommGroup A] [AddCommGroup B] [AddCommGroup C]
-    (f : A →+ B →+ C) : E ⊗[ℤ] A →ₗ[E] E ⊗[ℤ] B →ₗ[E] E ⊗[ℤ] C :=
-  TensorProduct.curry
-    ((TensorProduct.lift (integerPairing f)).baseChange E ∘ₗ
-      (AlgebraTensorModule.distribBaseChange ℤ E A B).symm.toLinearMap)
-
-@[simp]
-lemma coefficientPairing_tmul {A B C : Type*}
-    [AddCommGroup A] [AddCommGroup B] [AddCommGroup C]
-    (f : A →+ B →+ C) (a b : E) (x : A) (y : B) :
-    coefficientPairing E f (a ⊗ₜ[ℤ] x) (b ⊗ₜ[ℤ] y) = (a * b) ⊗ₜ[ℤ] f x y := by
-  simp only [coefficientPairing, TensorProduct.curry_apply, LinearMap.comp_apply,
-    LinearEquiv.coe_coe, AlgebraTensorModule.distribBaseChange_symm_tmul,
-    LinearMap.baseChange_tmul, TensorProduct.lift.tmul]
-  rfl
-
 variable {R S : Type u} [CommRing R] [CommRing S]
 namespace K0WithSupport
 variable {Y Z Y' Z' : TopologicalSpace.Closeds (PrimeSpectrum R)}
@@ -74,9 +50,7 @@ lemma coefficientEnlarge_comp {V : TopologicalSpace.Closeds (PrimeSpectrum R)}
 
 lemma coefficientEnlarge_refl : coefficientEnlarge E (le_refl Y) = LinearMap.id := by
   unfold coefficientEnlarge
-  rw [enlarge_refl]
-  ext a
-  rfl
+  rw [enlarge_refl, g0CoefficientMap_id]
 
 lemma coefficientEnlarge_injective_of_eq (h : Y ≤ Y') (he : Y = Y') :
     Function.Injective (coefficientEnlarge E h) := by
@@ -100,14 +74,8 @@ lemma coefficientCup_enlarge (hY : Y ≤ Y') (hZ : Z ≤ Z')
     (x : Coefficients E Y) (y : Coefficients E Z) :
     coefficientEnlarge E (inf_le_inf hY hZ) (coefficientCup E x y) =
       coefficientCup E (coefficientEnlarge E hY x) (coefficientEnlarge E hZ y) := by
-  induction x using TensorProduct.inductionOn with
-  | tmul a x =>
-    induction y using TensorProduct.inductionOn with
-    | tmul b y =>
-      simp only [coefficientCup_tmul, coefficientEnlarge_tmul]
-      exact congrArg (fun z => (a * b) ⊗ₜ[ℤ] z) (cup_enlarge hY hZ x y)
-    | add y y' hy hy' => simp only [map_add, hy, hy']
-  | add x x' hx hx' => simp only [map_add, LinearMap.add_apply, hx, hx']
+  exact coefficientPairing_naturality E cup cup (enlarge hY) (enlarge hZ)
+    (enlarge (inf_le_inf hY hZ)) (cup_enlarge hY hZ) x y
 
 lemma coefficientCup_map (φ : R →+* S)
     {W V : TopologicalSpace.Closeds (PrimeSpectrum S)}
@@ -116,14 +84,8 @@ lemma coefficientCup_map (φ : R →+* S)
     coefficientMap E φ (Y ⊓ Z) (W ⊓ V) (supportPullback_inf_le φ hY hZ)
         (coefficientCup E x y) =
       coefficientCup E (coefficientMap E φ Y W hY x) (coefficientMap E φ Z V hZ y) := by
-  induction x using TensorProduct.inductionOn with
-  | tmul a x =>
-    induction y using TensorProduct.inductionOn with
-    | tmul b y =>
-      simp only [coefficientCup_tmul, coefficientMap_tmul]
-      exact congrArg (fun z => (a * b) ⊗ₜ[ℤ] z) (cup_map φ hY hZ x y)
-    | add y y' hy hy' => simp only [map_add, hy, hy']
-  | add x x' hx hx' => simp only [map_add, LinearMap.add_apply, hx, hx']
+  exact coefficientPairing_naturality E cup cup (map φ Y W hY) (map φ Z V hZ)
+    (map φ (Y ⊓ Z) (W ⊓ V) (supportPullback_inf_le φ hY hZ)) (cup_map φ hY hZ) x y
 
 variable (R) [IsNoetherianRing R] [IsLocalRing R]
 

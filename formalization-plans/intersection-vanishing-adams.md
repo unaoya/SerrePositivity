@@ -4821,6 +4821,22 @@ A–E の全単位は実装・監査・公開済み。S11 までの本計画に�
 検証ログは `/tmp/adams-refactor-integration-build.log`、
 `/tmp/adams-refactor-final-audit.log`、`/tmp/adams-refactor-common-audit.log`。
 
+## 4.35 ψ² と共通 K₀ 基盤のリファクタリング（2026-10-15）
+
+前節に続き、既存の宣言名・引数を保って共通化する。対象ごとのビルドと公理監査を行い、
+小段ごとにコミットする。
+
+1. **R5／係数拡大と自然性の共通化（完了）**：`CoefficientExtension` に既存の
+   `g0CoefficientMap`・`integerPairing`・`coefficientPairing` を移し、恒等写像・可換な四角形・
+   双線形ペアリングの自然性を共通 API とした。K₀ の積の二つの自然性と ψ² の三つの自然性を
+   この API から導く。K₀–G₀ 比較の左逆性と台の恒等拡大も合成則・恒等則を利用する。
+   `CoefficientLinearExtension` もこの基礎モジュールを直接 import し、局所化への依存を除去。
+   対象ビルド 3279 jobs、一般自然性・係数付き Adams・G₀ 局所化・線形拡張の四監査が成功。
+2. **R6／零・恒等冪等写像の像と類の共通化（予定）**：像の標準同型・零性・零複体の K₀ 類を
+   共通補題にし、ψ² の単位正規化と ψ³ のスカラー作用から利用する。
+3. **R7／統合検証（予定）**：ルート・利用先のビルド、消滅証明の専用監査、共通公理監査、
+   公開型と既存の写像の維持を確認する。
+
 ## 5. 受入条件
 
 - `Inputs.intersectionVanishing` の公開型を保ったまま、直接の `sorry` を除く。

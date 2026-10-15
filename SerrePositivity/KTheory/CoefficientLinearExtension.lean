@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KTheory.LocalizationCoefficients
+public import SerrePositivity.KTheory.CoefficientExtension
 
 /-! # Extending an additive map into a coefficient module -/
 

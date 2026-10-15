@@ -29,24 +29,15 @@ lemma coefficientCyclicTwo_enlarge {Z W : TopologicalSpace.Closeds (PrimeSpectru
     (h : Z ≤ W) (x : K0WithSupport.Coefficients E Z) :
     coefficientCyclicTwo E W (K0WithSupport.coefficientEnlarge E h x) =
       K0WithSupport.coefficientEnlarge E h (coefficientCyclicTwo E Z x) := by
-  induction x using TensorProduct.inductionOn with
-  | tmul a x =>
-    simp only [coefficientCyclicTwo_tmul, K0WithSupport.coefficientEnlarge_tmul]
-    exact congrArg (fun z => a ⊗ₜ[ℤ] z) (cyclicTwo_enlarge h x)
-  | add x y hx hy => simp only [map_add, hx, hy]
+  exact g0CoefficientMap_naturality E (K0WithSupport.enlarge h) (K0WithSupport.enlarge h)
+    (cyclicTwo Z) (cyclicTwo W) (cyclicTwo_enlarge h) x
 
 lemma coefficientCyclicTwo_cup {Y Z : TopologicalSpace.Closeds (PrimeSpectrum R)}
     (x : K0WithSupport.Coefficients E Y) (y : K0WithSupport.Coefficients E Z) :
     coefficientCyclicTwo E (Y ⊓ Z) (K0WithSupport.coefficientCup E x y) =
       K0WithSupport.coefficientCup E (coefficientCyclicTwo E Y x) (coefficientCyclicTwo E Z y) := by
-  induction x using TensorProduct.inductionOn with
-  | tmul a x =>
-    induction y using TensorProduct.inductionOn with
-    | tmul b y =>
-      simp only [coefficientCyclicTwo_tmul, K0WithSupport.coefficientCup_tmul]
-      exact congrArg (fun z => (a * b) ⊗ₜ[ℤ] z) (cyclicTwo_cup x y)
-    | add y y' hy hy' => simp only [map_add, hy, hy']
-  | add x x' hx hx' => simp only [map_add, LinearMap.add_apply, hx, hx']
+  exact coefficientPairing_naturality E K0WithSupport.cup K0WithSupport.cup
+    (cyclicTwo Y) (cyclicTwo Z) (cyclicTwo (Y ⊓ Z)) cyclicTwo_cup x y
 
 lemma coefficientCyclicTwo_map [Invertible (2 : S)] (φ : R →+* S)
     (Z : TopologicalSpace.Closeds (PrimeSpectrum R))
@@ -54,11 +45,8 @@ lemma coefficientCyclicTwo_map [Invertible (2 : S)] (φ : R →+* S)
     (x : K0WithSupport.Coefficients E Z) :
     K0WithSupport.coefficientMap E φ Z W h (coefficientCyclicTwo E Z x) =
       coefficientCyclicTwo E W (K0WithSupport.coefficientMap E φ Z W h x) := by
-  induction x using TensorProduct.inductionOn with
-  | tmul a x =>
-    simp only [coefficientCyclicTwo_tmul, K0WithSupport.coefficientMap_tmul]
-    exact congrArg (fun z => a ⊗ₜ[ℤ] z) (cyclicTwo_map φ Z W h x)
-  | add x y hx hy => simp only [map_add, hx, hy]
+  exact g0CoefficientMap_naturality E (cyclicTwo Z) (cyclicTwo W)
+    (K0WithSupport.map φ Z W h) (K0WithSupport.map φ Z W h) (cyclicTwo_map φ Z W h) x
 
 def supportedCyclicTwo : SupportedAdams R E 2 where
   two_le := le_refl 2
