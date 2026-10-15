@@ -3817,3 +3817,31 @@ Checks.FubiniFamilies・Checks.StageSeven・既存Spectra.StageTwoの同時ビ�
 U11e全受入は未完。次は同じDoubleFamilyを右反復coendへ降ろし、両降下と三重生成元の外延性から
 Fubini同型を構成する。その後、bimoduleの全Hom自然性・結合同型・三角/五角を検証する。
 U12〜U17・D4mも未完のまま継続。共有一般論への新しい不足要求はなく、担当外ファイルを変更していない。
+
+
+### 17.45 U11e14：二重balanced族のE方向の降下（2026-10-16）
+
+`Tensor/FubiniColumns.lean`はDoubleFamilyのC対象cを固定し、通常associatorの順方向で
+(R(e)⊗Q(c,e))⊗N(c)からのcolumnMapsを構成する。N(c)を終域へ転置したcolumnCurryが
+E-balancedであることを、外側Eの全次数関係から証明した。
+columnFamilyは右パラメータ付きのbalanced族であり、columnDescは
+(R⊗_E Q(c,−))⊗N(c)からの実際の射である。包含との可換式と三重生成元の評価式も証明した。
+右作用の出力次数と内側総次数を明示したDoubleFamily.balanceE_of_sumsを使い、
+r+pとp+rの表示の違いを型変換へ暗黙に押し込めない。
+
+`Tensor/DegreeElementsExt.lean`のdegree_element_extは、coendの固定次数から任意のA加群への
+線形射を純粋生成元で判定する。微分との可換性や出力次数を仮定しない。
+`Tensor/ParameterBalancedElements.lean`は左パラメータを固定したbalanced関係の斉次成分式を証明する。
+右作用の符号(-1)^(r*p)を保持し、外部パラメータの次数から余分な符号を導入しない。
+これらは降下後のC-balanced関係の証明に使う。
+
+Checks.FubiniColumns・Checks.FubiniFamilies・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2688 jobs、終了コード0、警告なし）。任意A・独立対象宇宙・正負次数・ZMod 2を検査した。
+主要9宣言の直接公理監査は終了コード0、標準公理のみ。監査累計1620宣言。
+担当Leanのsorry/admit/新規axiomは0件。文書検査は22 Markdown・311 exposition参照、失敗0件。
+
+これはE方向の内側降下であり、右反復coendからの降下全体の受入ではない。
+次はcolumnDescが残るCのbalanced関係を保持することを、固定次数の外延性と
+右C作用の符号(-1)^(p*k)、左パラメータ付きbalanced公式から証明する。
+その後rightDescと三重包含での評価を構成し、Fubini同型・全Hom自然性・三角/五角へ進む。
+U11全受入・U12〜U17・D4mは未完のまま継続する。共有系列への新しい不足要求はない。
