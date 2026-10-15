@@ -13,6 +13,7 @@ run_cmd do
     `SerrePositivity.CategoryTheory.MorphismProperty.UnderFactorization,
     `SerrePositivity.CategoryTheory.LiftingProperties.Under,
     `SerrePositivity.HomotopicalAlgebra.Generated.Basic,
+    `SerrePositivity.HomotopicalAlgebra.Generated.Replacement,
     `SerrePositivity.HomotopicalAlgebra.Transfer.Recognition,
     `SerrePositivity.HomotopicalAlgebra.Transfer.Right,
     `SerrePositivity.HomotopicalAlgebra.Quillen.Brown,
