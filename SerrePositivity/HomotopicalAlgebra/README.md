@@ -286,6 +286,16 @@ accessibility条件であり、Jやモデル構造を入力に要求しない。
 局所可呈示性から必要な有限極限を導く証明も残る。
 検証は`scripts/check_smith_recognition.lean`。
 
+## Smith R3の完備性ゲート（2026-10-15）
+
+`Smith/Completeness.lean`で局所可呈示性から`HasLimitsOfSize.{w,w} C`を証明した。
+小さい稠密部分圏の包含に対する制限Yonedaとその左Kan拡張の随伴を用い、
+前層圏の反射部分圏として完備性を移す。`ShrinkHoms`と`SmallModel`を使うため、
+対象・射・可呈示性の宇宙を同一視しない。有限極限を追加仮定にする必要はなくなった。
+`scripts/check_smith_completeness.lean`で独立した宇宙の一般圏・有限極限を検証する。
+認識の利用例も有限極限を局所可呈示性から導く。上記の残項目のうち完備性は解消し、
+coproduct閉性の導出と最終Smith定理の統合・監査が残る。
+
 `check_smith_solution_set`はモデル構造のない抽象圏で、独立した宇宙、CommSqの左右成分、
 小さい射族/射クラス全体の分解、空の射族、General/StageTwoとの併用を検証する。
 同スクリプトはこのモジュールの全宣言を標準公理のみで監査する。

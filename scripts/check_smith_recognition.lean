@@ -31,12 +31,14 @@ example : J.rlp.llp = I.rlp.llp ⊓ W :=
   generatedLeft_eq_of_square_factor I J W hJ hIW hfactor hacyclic
 
 -- Explicit conditional core: the full theorem must still discharge these conditions.
-example [HasFiniteLimits C] :
+example :
     letI : CategoryWithCofibrations C := ⟨I.rlp.llp⟩
     letI : CategoryWithFibrations C := ⟨J.rlp⟩
     letI : CategoryWithWeakEquivalences C := ⟨W⟩
     ModelCategory C := by
   have := locallyPresentable_hasColimits (C := C)
+  have := locallyPresentable_hasLimits (C := C)
+  have : HasFiniteLimits C := hasFiniteLimits_of_hasLimitsOfSize C
   have := hasSmallObjectArgument I
   have : HasFiniteColimits C := hasFiniteColimits_of_hasColimitsOfSize C
   letI : CategoryWithCofibrations C := ⟨I.rlp.llp⟩

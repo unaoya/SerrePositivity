@@ -17,6 +17,7 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Transfer.Recognition,
     `SerrePositivity.HomotopicalAlgebra.Smith.SolutionSet,
     `SerrePositivity.HomotopicalAlgebra.Smith.Smallness,
+    `SerrePositivity.HomotopicalAlgebra.Smith.Completeness,
     `SerrePositivity.HomotopicalAlgebra.Smith.GeneratingTrivialCofibrations,
     `SerrePositivity.HomotopicalAlgebra.Smith.Recognition,
     `SerrePositivity.HomotopicalAlgebra.Transfer.Right,

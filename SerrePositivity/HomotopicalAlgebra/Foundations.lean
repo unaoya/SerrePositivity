@@ -8,6 +8,7 @@ public import SerrePositivity.HomotopicalAlgebra.Pointed.SmashModel
 public import SerrePositivity.HomotopicalAlgebra.Transfer.Right
 public import SerrePositivity.HomotopicalAlgebra.Smith.SolutionSet
 public import SerrePositivity.HomotopicalAlgebra.Smith.Smallness
+public import SerrePositivity.HomotopicalAlgebra.Smith.Completeness
 public import SerrePositivity.HomotopicalAlgebra.Smith.GeneratingTrivialCofibrations
 public import SerrePositivity.HomotopicalAlgebra.Smith.Recognition
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor
