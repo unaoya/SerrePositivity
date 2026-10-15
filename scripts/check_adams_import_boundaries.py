@@ -56,6 +56,7 @@ common += ['SerrePositivity.HomologicalAlgebra.CochainBiproduct',
            'SerrePositivity.HomologicalAlgebra.CochainTwoTermScalarMap',
            'SerrePositivity.HomologicalAlgebra.CochainKernelLift',
            'SerrePositivity.HomologicalAlgebra.ProjectiveBaseChange',
+           'SerrePositivity.HomologicalAlgebra.ModuleBaseChangeTensor',
            'SerrePositivity.HomologicalAlgebra.KoszulOneCoordinates']
 for name in common:
     check(name, upper_layer)
@@ -80,7 +81,7 @@ print('Euler boundaries passed: 2 general modules and the resolution-independent
 
 geometry = ['ClosedSupportGeometry', 'ModuleClosedSupport', 'SupportHeight',
             'SemilocalSupport', 'ModuleSupportHeight', 'LocalizationTorsion', 'ModuleSupport',
-            'PrincipalSupport']
+            'PrincipalSupport', 'LocalizationLattice']
 for name in geometry:
     check('SerrePositivity.CommutativeAlgebra.' + name, upper_layer)
 print(f'Support geometry boundaries passed: {len(geometry)} modules.')

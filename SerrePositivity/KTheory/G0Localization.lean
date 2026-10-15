@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.KTheory.LatticeExact
+public import SerrePositivity.HomologicalAlgebra.ModuleBaseChangeTensor
 
 /-! # Localization of supported G₀ via finite lattices -/
 @[expose] public section
@@ -71,17 +72,6 @@ omit [IsNoetherianRing R] in
       G0WithSupport.localize P Z _ le_rfl (G0WithSupport.mk M) := by
   unfold g0LocalizationQuotientMap LocalizationG0Quotient.mk
   exact QuotientAddGroup.lift_mk _ _ _
-
-/-- Bridge the bundled scalar extension to the usual algebra tensor product. -/
-def moduleCatBaseChangeTensorEquiv (M : ModuleCat.{u} R) :
-    (ModuleCat.extendScalars (algebraMap R B)).obj M ≃ₗ[B] B ⊗[R] M := by
-  let φ := algebraMap R B
-  have hφ : φ.toAlgebra = (inferInstance : Algebra R B) := toAlgebra_algebraMap
-  have e : letI : Algebra R B := φ.toAlgebra
-      (ModuleCat.extendScalars φ).obj M ≃ₗ[B] B ⊗[R] M := by
-    exact LinearEquiv.refl B _
-  rw [hφ] at e
-  exact e
 
 omit [IsNoetherianRing R] in
 lemma localize_lattice_mk

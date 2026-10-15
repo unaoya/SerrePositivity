@@ -4986,7 +4986,7 @@ R12–R20 のコードをコミットした後、以下をすべて確認した�
 | R24e-1 | 二重テンソルの基底変更と符号付き交換 | 完了：一般の2宣言をCochainTensorBaseChangeSymmetryへ本文を維持して移動。2774 jobs、3宣言の公理監査、全依存ゲートが成功 |
 | R24e-2 | 三重テンソルの疎な分配公式 | 完了：CochainTensorTripleDegreeMapsへ宣言・証明を維持して移動。利用先2815 jobs、3宣言の公理監査、全依存ゲートが成功 |
 | R24e-3 | 一般の対合の非輪状 K₀ 類 | 完了：InvolutionClassAcyclicへ宣言・証明を維持して移動。2812 jobs、2宣言の公理監査、新しいAdams独立性ゲートが成功 |
-| R28b-1 | 有限格子・係数拡大比較の一般部分 | 未着手 |
+| R28b-1 | 有限格子・係数拡大比較の一般部分 | 完了：LocalizationLattice・ModuleBaseChangeTensorへ6宣言を本文を維持して分離。G₀局所化2737 jobs、6宣言の公理監査、下位層の依存ゲートが成功 |
 | R28b-2 | 局所化した分解と正則局所化の依存整理 | 未着手 |
 | R30 | 支持付き三角形の代表と比較同型 | 未着手 |
 | R31a | 一般三角圏の K₀ の整数シフト | 未着手 |
@@ -5051,6 +5051,7 @@ R29 の検証ログは `/tmp/adams-r29-build.log`、`/tmp/adams-r29-audit.log`�
 R24e-1 の検証ログは `/tmp/adams-r24e1-build.log`、`/tmp/adams-r24e1-audit.log`。
 R24e-2 の検証ログは `/tmp/adams-r24e2-build.log`、`/tmp/adams-r24e2-audit.log`。
 R24e-3 の検証ログは `/tmp/adams-r24e3-build.log`、`/tmp/adams-r24e3-audit.log`。
+R28b-1 の検証ログは `/tmp/adams-r28b1-build.log`、`/tmp/adams-r28b1-audit.log`。
 
 ## 5. 受入条件
 

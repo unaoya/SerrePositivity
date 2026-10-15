@@ -1,0 +1,12 @@
+import SerrePositivity.KTheory.G0Localization
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.IsLocalizationLattice.isLocalizedModule
+assert_no_sorry SerrePositivity.isLocalizationLattice_span
+assert_no_sorry SerrePositivity.exists_finite_lattice
+assert_no_sorry SerrePositivity.IsLocalizationLattice.tensorEquiv
+assert_no_sorry SerrePositivity.moduleCatBaseChangeTensorEquiv
+assert_no_sorry SerrePositivity.g0LocalizationQuotientEquiv
+#print axioms SerrePositivity.exists_finite_lattice
+#print axioms SerrePositivity.moduleCatBaseChangeTensorEquiv
+#print axioms SerrePositivity.g0LocalizationQuotientEquiv
