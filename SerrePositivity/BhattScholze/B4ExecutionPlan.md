@@ -4521,3 +4521,29 @@ p正則性・y正則性・ghost単射・完備性は不要。
 前回の共有.olean欠落による全体失敗は、今回の全体ビルドでは再現しなかった。
 全源AへのTor消滅の無条件移送はまだG7を待つ。
 一般B4、原典の導来δpushout比較、分冪包比較、CFF根付き拡大は未完成。
+
+### 次工程の登録：実通常テンソル積とraw δ除算包
+
+BS専用`DeltaPDivisionSourceTensor.lean`で、[Unique σ]、a_s=φ(y)、
+P=A{x}、L=A{z}、α:x↦p z、β:x↦φ(y)の既存具体射を使い、
+βとαで作用させた通常テンソル積A⊗[P]Lとraw δ除算包の環同型を構成する。
+βの代数構造は既存deltaDivisionSourceEvalAlgebraを使う。
+αに沿うLの源P代数構造と、j∘βで与えるraw包の源P代数構造を明示する。
+raw標準商射qと基底射jのq∘α=j∘β、および既存の通常pushout普遍性を使い、
+テンソル両因子の包含上で標準写像を保つ比較を供給する。
+源Pと終域Lの underlying 多項式環が定義上同じ型なので、
+αで定めた非標準Algebra P Lを、源の恒等Algebra P Pと混同しない。
+この通常テンソル比較はG7に依存せず進める。
+通常テンソル積と実導来テンソルの比較・その離散性や、原典の導来δpushoutとの同一視は別途必要。
+
+## B4-6：G7の交換入力に相対的な全源評価環へのTor移送（2026-10-15）
+
+`DeltaPDivisionSourceColimitTor.lean`で、具体的な源有限商図式Fとα:P→Lに対し、
+`PreservesColimit F ((ModuleCat.extendScalars α).leftDerived (i+1))`を明示的に受け取ると、
+βで作用する実評価環AのTorAlg α (i+1) Aが零となることを証明した。
+実標準colimit≃AをleftDerivedへ写し、既存preservesColimitIsoと有限源商のTor消滅を使った。
+共通のTor/colimit定理や新しい公理を追加していない。
+
+対象3821ジョブ・pure B4監査成功。依存は標準3公理のみ。
+この成果はG7入力に相対的であり、G7の受領・証明済みや無条件全源Tor消滅とは数えない。
+直前の全体4968ジョブは成功している。一般B4とCFFは未完成。
