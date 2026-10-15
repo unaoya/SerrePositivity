@@ -3412,6 +3412,17 @@ K₀ の類への移送と重みつき乗法性は次の小段。
 - この小段は生成元上の巡回公式の受入。有限座標との比較と生成元による外延性、
   微分の全式、Fourier 鎖同型は後続小段。ルート公開は統合段で行う。
 
+### S10.8c.1b.2a：三同次テンソルの微分公式
+
+- `PerfectComplex/TensorTripleDifferential` に二因子の純テンソル上の微分と、
+  三因子の微分の三項展開を追加した。符号は第二項が `i.negOnePow`、第三項が `(i+j).negOnePow`。
+- 内側の和の括弧を移せる `cochainTensorTripleι_apply_of_sum` を分離し、
+  `i+1+j`、`i+(j+1)` と `i+j+1` の比較を明示して微分公式を証明した。
+- `lake build SerrePositivity.PerfectComplex.TensorTripleDifferential` が成功（2753 jobs）。
+  `lake env lean scripts/audit_adams_triple_differential.lean` の三定理の監査が成功。
+  公理は標準三公理のみ。
+- この小段は一般の純テンソル微分公式の受入。Koszul 三乗の七つの微分式へ次に特殊化する。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
