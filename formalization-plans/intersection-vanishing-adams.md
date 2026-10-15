@@ -3468,6 +3468,16 @@ K₀ の類への移送と重みつき乗法性は次の小段。
   `lake env lean scripts/audit_adams_koszul_cube_ext.lean` の五補題の監査が成功。
   公理は標準三公理のみ。次は生成元に双対な座標と両逆性の構成。
 
+### S10.8c.1b.3c.1：同次成分を選ぶ一般の二因子・三因子のスカラー座標
+
+- `PerfectComplex/TensorScalarCoordinates` は total coproduct の desc を使い、
+  指定した二次数・三次数の成分だけをスカラーへ移す写像を構成する。
+- 指定した成分での値はスカラー座標の積、それ以外の成分での値は零。
+  二因子では同次包含との合成式と reassoc 版、三因子では純テンソル上の式を公開した。
+- `lake build SerrePositivity.PerfectComplex.TensorScalarCoordinates` が成功（2743 jobs）。
+  `lake env lean scripts/audit_adams_tensor_scalar_coordinates.lean` の十二定数の監査が成功。
+  公理は標準三公理のみ。Koszul の双対座標へ次に特殊化する。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
