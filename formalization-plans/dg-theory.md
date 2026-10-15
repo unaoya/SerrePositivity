@@ -1275,3 +1275,19 @@ U10全受入は未完。次はcellの段階的付加とsemifree filtration、
 任意加群へのsemifree解像度の存在、shift/余積/filtrationでのHom計算を証明する。
 三角構造・Verdier商比較・余積/局所小性・一対象比較での保存も残る。
 導来圏の主経路は局所化で、射影モデル比較はD4mの別合流点として維持する。
+
+
+### 13.24 U10a3：任意加群への自由disk被覆
+
+`Module/DiskCover.lean` は全対象・整数次数・斉次要素を添字とする自由diskの余積を構成する。
+`ModuleDiskCoverIndex` は `[Small.{u} D]` のもとでu-small。
+`moduleDiskCoverπ` は各diskの生成元を指定要素へ送り、
+`moduleDiskCoverπ_degreewiseSurjective` が全対象・全整数次数の全射性を証明する。
+全dg作用と余積はU6/U7の主加群圏APIを再利用する。
+この被覆自体の準同型性は主張しない。kernel cycleを後続cellで消すための初期段階である。
+
+受入入口 `Checks/DiskCover.lean` は添字宇宙、全射性、次数ごとのepi、
+ℤの負次数とZMod 2の正次数を検証する。
+この入口・可算列候補・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3195 jobs）。
+直接実行による主要8宣言の公理監査は標準公理のみ。累計499宣言。
+U10全受入は未完。次はkernel cell付加、可算列の準同型性と真のsemifree filtrationを証明する。
