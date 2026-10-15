@@ -1,0 +1,13 @@
+import SerrePositivity.CommutativeAlgebra.ModuleSupportHeight
+import SerrePositivity.CommutativeAlgebra.SemilocalSupport
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.Adams.HeightAtLeast.finite_heightStratum
+assert_no_sorry SerrePositivity.Adams.HeightAtLeast.cut_succ_of_mem_complement
+assert_no_sorry SerrePositivity.Adams.HeightAtLeast.eq_bot_of_dimension_bound
+assert_no_sorry SerrePositivity.Adams.HeightAtLeast.disjoint_complement_iff
+assert_no_sorry SerrePositivity.Adams.HeightAtLeast.localizedMaximalPointsEquiv
+assert_no_sorry SerrePositivity.exists_supportHeight_sum_gt
+
+#print axioms SerrePositivity.Adams.HeightAtLeast.localizedMaximalPointsEquiv
+#print axioms SerrePositivity.exists_supportHeight_sum_gt

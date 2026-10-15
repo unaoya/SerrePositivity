@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.RegularPrimeDimension
-public import SerrePositivity.KTheory.ModuleClosedSupport
-public import SerrePositivity.KTheory.Adams.SupportHeight
+public import SerrePositivity.CommutativeAlgebra.ModuleClosedSupport
+public import SerrePositivity.CommutativeAlgebra.SupportHeight
 
 /-! # Natural height bounds on finite module supports -/
 
