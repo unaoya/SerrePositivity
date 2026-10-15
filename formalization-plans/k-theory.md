@@ -7568,3 +7568,80 @@ hornの有限の貼り合わせからhorn tensor包含の弱同値性を証明�
 両変数の導来不変性、ordinary Ho(C)の射とのπ₀比較、任意モデル源での関手性も未完了。
 F2の自然な選択比較と単体的モデル圏でのMap比較、F3の共通基数、F4のfiltered colimit・
 homotopy (co)limit比較も引き続きすべて依頼範囲である。
+
+
+## 177. F1進捗：有限単射・horn tensorの自明性とresolution HomのKan性（2026-10-15）
+
+F0〜F4全体の依頼を維持している。§176の残項目のうち、有限nonsingular単体集合の
+すべての単射の像のcofibration性、全次数のhorn tensorのtrivial cofibration性、
+cosimplicial resolutionのHomのKan性を証明した。F1の弱同値不変性とπ₀比較、
+F2〜F4は未完了であり、F全体の完了とは判定しない。
+
+### 177.1 有限余積・実際の骨格貼り合わせ
+
+- `NonsingularCoproduct`は単体集合の余積がnonsingularであることを証明する。この性質自体に
+  添字の有限性は不要。各余積射の単射性と、非退化単体の判定を使う。
+- `FiniteTensorCoproduct`は有限余積を実際のCの余積へ送る余錐と普遍性を構成し、
+  任意の余積安定な射の性質について、余積射のtensor像への閉性を証明する。
+- `FiniteTensorSkeleton`は固定Mathlibの`relativeCellComplexOfMono`の実際のpushoutを使う。
+  有限な終域の各次元の胞体族は有限。境界生成射の有限余積の像がcofibrationであり、
+  各骨格包含の像もcofibrationとなる。終域の有限次元上界で骨格が尽きることと、
+  始域のrange・終域との実際の同型を用い、`map_mono_cofibration`を得る。
+- `subcomplexTensor_cofibration`は、標準単体の任意のsubcomplexの実際のtensor包含に接続する。
+
+無限余極限・left properness・源の特定モデルへの特殊化は追加していない。
+コミット：`375b1c8`。
+
+### 177.2 有限被覆の貼り合わせと全hornの自明性
+
+`FiniteTensorWeakEquivalence`は、homotopically constantなAについて、標準単体で表示される
+任意の二対象間の射のtensor像が弱同値になることを、Δ上の射と既存の自然同型から証明する。
+さらに、有限非空被覆のすべての有限交差（空の交差としてのambientも含む）が標準単体なら、
+被覆の和からambientへの包含のtensor像が弱同値になることを証明する。
+
+証明は被覆の有限帰納である。新しい面との交差を同じ被覆定理で処理し、177.1の
+cofibration性と合わせてtrivial cofibrationを得る。そのpushoutによる閉性と2-out-of-3を使う。
+有限余極限しか使わず、一般の弱同値のpushout安定性は仮定しない。
+
+`HornTensor`は、hornをそのcodimension 1の面による有限被覆として扱う。
+面の有限交差は、添字集合の補集合を頂点とするfaceになる。hornの欠けた面の添字iは
+すべての交差に残るため、このfaceは非空で、固定Mathlibの`faceRepresentableBy`から
+実際に標準単体との同型を得る。この被覆に177.2を適用し、
+`finiteTensor_horn_trivialCofibration`と実際の包含への
+`hornTensor_trivialCofibration`を全n・全iについて証明した。
+内horn・外hornのいずれにも適用する。
+
+### 177.3 Kan性と入力の区別
+
+- `cosimplicialHom_fibration`：Reedy cofibrantかつhomotopically constantなAについて、
+  源のfibrationを実際のKan fibrationへ送る。
+- `cosimplicialHom_kanComplex`：同じAと任意のfibrant YからKan複体を得る。
+- `cosimplicialResolution_hom_kanComplex`：任意のモデル源Cの通常のresolutionに適用。
+  関手的因子分解を追加仮定しない。
+- `chosenResolutionHom_kanComplex`：明示的なcof/fibの関手的分解データを入力する、
+  既存の厳密な二変数関手の各値がKanであることを証明。
+
+最後の条件付き関手だけを任意モデル源のF1の最終入口へ置き換えない。
+任意源での厳密な関手の構成・選択比較と、不変性・π₀比較は引き続き扱う。
+177.2・177.3の実装・共有入口・利用例のコミット：`1116b19`。
+
+### 177.4 受入検証と残項目
+
+以下は成功した。
+
+- 共有入口`lake build SerrePositivity.HomotopicalAlgebra.Foundations`：1740 jobs。
+- `check_finite_tensor_cells`：24宣言・3モジュール。一般の有限余積、任意源モデル圏の
+  通常resolution、任意の有限単射、実際のhorn包含、subcomplex間の相対包含を検証。
+- `check_resolution_hom_kan`：18宣言・2モジュール。任意源の通常resolutionのKan性、
+  全hornのtrivial cofibration性、fibrationの保存、実際のchosen二変数関手のKan性を検証。
+- `audit_homotopical_foundations`：2468宣言・153モジュール、標準公理のみ。
+- `check_resolution_hom`（22宣言・2モジュール）、`check_reedy_resolution`（145宣言・4モジュール）、
+  `check_finite_tensor_generic`（46宣言・4モジュール）、`check_tensor_gluing`（43宣言・3モジュール）、
+  `check_finite_tensor_lifting`（107宣言・8モジュール）。
+- `check_homotopical_foundations`、`check_spectra_stage2`、
+  `check_weak_equivalences_accessible`（21宣言・5モジュール）、`git diff --check`。
+
+新規sorry・引用axiomはない。他チャットの変更を保持し、計画ファイル全体をstageしない。
+次はF1の両変数の弱同値不変性とordinary Ho(C)の射とのπ₀比較を進める。
+F2の選択の自然な弱同値zigzagと実際の単体的Mapとの比較、F3の共通基数、
+F4の十分filteredなcolimitとhocolim・RMapとholimの比較も引き続き残る。

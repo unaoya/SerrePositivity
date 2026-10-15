@@ -745,5 +745,21 @@ Reedy cofibrancyからそのcofibration性を導く。値圏には有限余極�
 接続して再利用する。共有入口1734 jobs、一般の有限tensor46宣言・4モジュール、
 gluingの43宣言・3モジュール、従来の有限tensor持ち上げ107宣言・8モジュールを検証。
 共有全2426宣言・148モジュールの監査は標準公理のみ。詳細は計画§176を参照。
-全包含のcofibration性、horn tensorのtrivial cofibration性とKan性、F1の他の条件、
-F2〜F4は引き続き未完了である。
+この時点で残していた有限単射のcofibration性、horn tensorのtrivial cofibration性とKan性は、
+次の実装で解消した。
+
+
+`NonsingularCoproduct`・`FiniteTensorCoproduct`・`FiniteTensorSkeleton`は、有限余積と
+固定Mathlibの実際の骨格pushoutを使い、有限nonsingular単体集合の任意の単射の像が
+cofibrationになることを証明する。有限次元上界で帰納が尽きるため、無限余極限を追加しない。
+
+`FiniteTensorWeakEquivalence`は、すべての有限交差が標準単体になる有限被覆の貼り合わせを
+証明する。`HornTensor`は全hornの面被覆に適用し、Reedy cofibrantかつhomotopically constantな
+cosimplicial対象のhorn tensorがtrivial cofibrationになることを証明する。
+これにより任意のモデル圏の通常resolutionのHomは、fibrantな対象に対してKan複体となる。
+既存のchosen二変数関手の各値のKan性にも接続している。通常resolutionの結果に
+関手的分解は不要。chosen関手の結果は、その明示入力を引き続き要求する。
+
+共有入口1740 jobs、新規42宣言・5モジュール、共有全2468宣言・153モジュールの
+標準公理監査と回帰検証が成功。実装は`375b1c8`・`1116b19`、詳細は計画§177を参照。
+F1の両変数の不変性・π₀比較と任意源での最終関手、F2〜F4は未完了である。

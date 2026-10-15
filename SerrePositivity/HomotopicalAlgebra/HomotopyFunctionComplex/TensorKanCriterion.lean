@@ -9,8 +9,8 @@ public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Terminal
 /-! # Kan fibrations from actual horn tensor maps
 
 This reduces the Kan assertion for a cosimplicial Hom to source trivial
-cofibrations of the constructed finite horn tensor maps. Establishing that
-condition for every cofibrant resolution is a separate remaining theorem.
+cofibrations of the constructed finite horn tensor maps. `HornTensor`
+establishes that condition for every constructed cofibrant resolution.
 -/
 
 @[expose] public section

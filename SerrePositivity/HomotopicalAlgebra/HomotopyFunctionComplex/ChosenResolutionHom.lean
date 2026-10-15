@@ -7,9 +7,10 @@ public import SerrePositivity.HomotopicalAlgebra.Generated.Replacement
 /-! # Simplicial Hom from actual chosen source factorizations
 
 This constructs the candidate with n-simplices `Q(X)[n] ⟶ R(Y)`.
-Chosen source factorizations are explicit inputs. Derived invariance, Kan
-fibrancy and comparison with ordinary localization remain separate results;
-this conditional construction is not the arbitrary-model-source F1 theorem.
+Chosen source factorizations are explicit inputs. `HornTensor` proves Kan
+fibrancy for this candidate. Derived invariance and comparison with ordinary
+localization remain separate results; this conditional construction is not
+the arbitrary-model-source F1 theorem.
 -/
 
 @[expose] public section
