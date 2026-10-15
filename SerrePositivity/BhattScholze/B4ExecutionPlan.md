@@ -3942,3 +3942,37 @@ p*t=WittVector.map q (deltaWittGhostVector D (φ(y)))を全Witt係数で証明�
 この段階でrawδ包→A/(p,y)の環射や分冪包比較を得たとはしない。
 全δ反復関係を消す通常評価への移送は、既存の逆Witt座標・関係イデアル比較で
 別途確認する候補工程とし、成立の検証前に代替経路を採用したとは数えない。
+
+## B4-6：通常剰余射に沿う具体的Witt p除算解（2026-10-15）
+
+`DeltaPDivisionWittResidueSolution.lean`で、通常環射q:A→Bとq(y)=0に対し、
+s_D(y)の像の係数を一段ずらした具体的t∈WittVector p Bを構成した。
+V(t)=WittVector.map q(s_D(y))を全係数で証明し、既存Frobenius/Verschiebung恒等式と
+既存deltaWittGhostVector_frobeniusからp*t=WittVector.map q(s_D(φ(y)))を証明した。
+源のpをs_D(p)で表す同じ方程式と全Witt係数での関係式も公開した。
+源がp正則ならt_0=q(δy)となる。源Aのghost単射を明示する。
+A,B:Type u、終域Bのδ構造・完全性・標数pは要求しない。
+7公開宣言の対象2062ジョブ、pure B4監査、全体4924ジョブ成功。
+標準3公理のみ、新sorry・公理・引用なし。
+先の全体ビルドの共有側失敗は今回の全体ビルドでは解消している。担当外を変更していない。
+
+### 全δ関係を消す評価への次工程（予定名の登録）
+
+次のBS専用予定`DeltaPDivisionWittResidueEvaluation.lean`で、元族y:σ→Aと
+通常射q:A→B、全q(y_s)=0について、相対自由δ環Lの逆Witt座標射を使う。
+Witt座標X_(s,n)を今回の具体解t_sの第n係数へ送る通常評価と逆座標射を合成する。
+基底係数のWitt自然性と今回のWitt積方程式から、元の除算関係の全Witt係数が零となることを確認する。
+既存deltaWittGhostVector_jets_zero_iffで全δ反復関係の消滅へ移し、
+既存deltaDivisionIteratedRelationsLiftによってrawδ包A{φ(y_s)/p}→Bの実通常環射を構成する。
+A,B,σ:Type u、Aのp正則性とA・Lのghost単射を明示し、終域のδ構造は要求しない。
+この評価は任意元族を対象とする。有限生成性・Noether性は追加しない。
+
+続くBS専用予定`DeltaPDivisionResidueMap.lean`では、一元[Unique σ]、
+yのA/pでの正則性・単元δ(p)と今回までのraw p正則性の条件を明示する。
+上の評価をq:A→A/(p,y)へ適用し、証明済みraw/旧ねじれ除去商同型を使って因子化する。
+終域ではp=0なので既存の実p導来完備性を供給し、既存の環としてのPD完備化一意延長を使って
+実DerivedDeltaDivisionCompletion D p (φ(y))→A/(p,y)を構成し、標準単位・基底射との図式を証明する。
+sourceの(p,y)が正則であるこの入口と、一般の導来基底変更後のKoszul代数への写像は区別する。
+一般のyがA/pで零因子である場合にraw評価が旧pねじれ除去商を経由するとは推論しない。
+さらに普通のA/(p,y)への射だけから、一般の実導来Koszul代数への射を得たとはしない。
+一般の導来基底変更に沿う比較・分冪包比較・CFF根付き拡大・一般B4は未完成。
