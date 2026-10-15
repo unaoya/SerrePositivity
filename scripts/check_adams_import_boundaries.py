@@ -53,6 +53,7 @@ common += ['SerrePositivity.HomologicalAlgebra.CochainBiproduct',
            'SerrePositivity.HomologicalAlgebra.CochainAcyclic',
            'SerrePositivity.HomologicalAlgebra.CochainTwoTermScalarMap',
            'SerrePositivity.HomologicalAlgebra.CochainKernelLift',
+           'SerrePositivity.HomologicalAlgebra.ProjectiveBaseChange',
            'SerrePositivity.HomologicalAlgebra.KoszulOneCoordinates']
 for name in common:
     check(name, upper_layer)
@@ -76,7 +77,11 @@ consumers = [
     'DifferentialGraded.Complexes.AcyclicCone',
     'DifferentialGraded.Complexes.TensorShift',
     'DifferentialGraded.Complexes.ConeMaps',
+    'DifferentialGraded.Complexes.Currying',
     'HomologicalAlgebra.BoundedAboveTensorModels',
+    'HomologicalAlgebra.BoundedAboveDerivedAssociator',
+    'HomologicalAlgebra.BoundedAboveDerivedBaseChange',
+    'HomologicalAlgebra.DerivedTensorCoherenceModels',
     'HomologicalAlgebra.TensorSingleNaturality',
     'HomologicalAlgebra.TensorConeNaturality',
     'HomologicalAlgebra.ScalarConeShiftNaturality',

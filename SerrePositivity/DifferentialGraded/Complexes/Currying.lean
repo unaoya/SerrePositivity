@@ -2,6 +2,7 @@ module
 public import SerrePositivity.DifferentialGraded.Complexes.HomFunctor
 public import SerrePositivity.DifferentialGraded.Complexes.Composition
 public import SerrePositivity.DifferentialGraded.Complexes.Monoidal
+public import SerrePositivity.HomologicalAlgebra.CochainTensorHomogeneous
 
 /-! # 非有界 tensor と線形 Hom の転置
 
@@ -43,9 +44,8 @@ lemma tensor_d_apply (P Q : Complex A) (i j n : ℤ) (hn : i + j = n)
     (P ⊗ Q).d n (n + 1) (ιTensorObj P Q i j n hn (x ⊗ₜ[A] y)) =
       ιTensorObj P Q (i + 1) j (n + 1) (by omega) (P.d i (i + 1) x ⊗ₜ[A] y) +
       i.negOnePow • ιTensorObj P Q i (j + 1) (n + 1) (by omega)
-        (x ⊗ₜ[A] Q.d j (j + 1) y) := by
-  subst n
-  exact congr($(SerrePositivity.cochainTensorι_d P Q i j).hom (x ⊗ₜ[A] y))
+        (x ⊗ₜ[A] Q.d j (j + 1) y) :=
+  SerrePositivity.cochainTensor_d_apply_ι P Q i j n hn x y
 
 /-- 転置した成分は Hom 微分と可換。 -/
 lemma curryComponent_d (f : Q ⊗ P ⟶ T) (q : ℤ) (x : Q.X q) :
@@ -179,7 +179,7 @@ lemma tensorMap_apply {P P' Q Q' : Complex A} (f : P ⟶ P') (g : Q ⟶ Q')
     (i j n : ℤ) (hn : i + j = n) (x : P.X i) (y : Q.X j) :
     (f ⊗ₘ g).f n (ιTensorObj P Q i j n hn (x ⊗ₜ[A] y)) =
       ιTensorObj P' Q' i j n hn (f.f i x ⊗ₜ[A] g.f j y) :=
-  congr($(ι_tensorHom f g i j n hn).hom (x ⊗ₜ[A] y))
+  SerrePositivity.cochainTensorMap_apply_ι f g i j n hn x y
 
 /-- 右転置は tensor の Q 変数で自然。 -/
 lemma curryRight_naturality_source {Q' : Complex A} (g : Q' ⟶ Q) (f : Q ⊗ P ⟶ T) :

@@ -78,6 +78,14 @@ lemma cochainTensorAssociator_inv_apply_ι_of_sum
   subst s
   exact cochainTensorAssociator_inv_apply_ι P Q T i j k n (by omega) x y z
 
+lemma cochainTensor_d_apply_ι (P Q : CochainComplex (ModuleCat.{u} R) ℤ)
+    (i j n : ℤ) (h : i + j = n) (x : P.X i) (y : Q.X j) :
+    (cochainTensor P Q).d n (n + 1) (ιTensorObj P Q i j n h (x ⊗ₜ[R] y)) =
+      ιTensorObj P Q (i + 1) j (n + 1) (by omega) (P.d i (i + 1) x ⊗ₜ[R] y) +
+      i.negOnePow • ιTensorObj P Q i (j + 1) (n + 1) (by omega) (x ⊗ₜ[R] Q.d j (j + 1) y) := by
+  have he := congrArg (fun f => f (x ⊗ₜ[R] y)) (ιTensorObj_cochainTensor_d P Q i j n h)
+  exact he
+
 lemma cochainTensorMap_apply_ι {P P' Q Q' : CochainComplex (ModuleCat.{u} R) ℤ}
     (f : P ⟶ P') (g : Q ⟶ Q') (i j n : ℤ) (h : i + j = n) (x : P.X i) (y : Q.X j) :
     (cochainTensorMap f g).f n ((ιTensorObj P Q i j n h) (x ⊗ₜ[R] y)) =
