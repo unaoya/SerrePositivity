@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.DeltaPDivisionRawEmbedding
+public import SerrePositivity.BhattScholze.DeltaPDivisionLocalization
 
 /-! # rawδ除算包の像のδ安定部分環としての最小性
 
@@ -58,13 +58,18 @@ theorem deltaPDivisionToAway_range_le_of_delta_stable (D : DeltaStructure p A)
     have hb := RingHom.congr_fun (deltaPDivisionToAway_spec D a).2.1 r
     exact hb ▸ hbase r
   · intro s
-    have hshift : f (deltaAdjoinDivisionVariable D (p : A) a s -
-        deltaAdjoinDivisionMap D (p : A) a (D.delta (y s))) ∈ S := by
-      rw [deltaPDivisionToAway_shifted_variable]
-      exact hpow s
-    have hb : f (deltaAdjoinDivisionMap D (p : A) a (D.delta (y s))) ∈ S := by
-      have he := RingHom.congr_fun (deltaPDivisionToAway_spec D a).2.1 (D.delta (y s))
-      exact he ▸ hbase _
-    simpa only [map_sub, sub_add_cancel] using S.add_mem hshift hb
+    have he : f (deltaAdjoinDivisionVariable D (p : A) a s) =
+        IsLocalization.Away.invSelf (p : A) *
+          (algebraMap A (Localization.Away (p : A)) (y s)) ^ p +
+          algebraMap A (Localization.Away (p : A)) (D.delta (y s)) := by
+      rw [(deltaPDivisionToAway_spec D a).2.2]
+      change _ * algebraMap A _ (D.frobeniusLift (y s)) = _
+      have hi : IsLocalization.Away.invSelf (p : A) *
+          algebraMap A (Localization.Away (p : A)) (p : A) = 1 := by
+        rw [mul_comm, IsLocalization.Away.mul_invSelf]
+      rw [D.frobeniusLift_apply, map_add, map_pow, map_mul, mul_add,
+        ← mul_assoc, hi, one_mul]
+    rw [he]
+    exact S.add_mem (hpow s) (hbase _)
 
 end SerrePositivity.BhattScholze
