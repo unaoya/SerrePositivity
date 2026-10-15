@@ -3185,3 +3185,27 @@ Checks.BalancedTensorLeftYonedaのビルドは成功（1837 jobs、終了コー�
 U11d全受入はまだ未完。両評価同型の全dg自然性、bimodule合成に残る作用、
 一対象Aと既存cochainTensorとの比較が残る。次は自然性とパラメータ付きtensor作用を接続する。
 U11eとU12〜U17・D4mも継続対象。共有ルート・共有一般論・並行作業ファイルは変更していない。
+
+
+### 17.22 U11d3：両評価の通常自然性と任意次数の生成元比較
+
+`Module/LeftHomElements.lean`は既存の主Hom endを評価するleftModuleHomπと、
+任意次数qの要素と次数pの左作用の交換則(-1)^(qp)を公開した。
+これは右opposite加群のmoduleHomElement_naturalityを二重opposite比較で運んだもので、
+任意の中間次数を指定した元への評価式も含む。
+`Tensor/YonedaNaturality.lean`は両Yoneda評価が実際の閉零加群射と可換であることを証明する。
+また全Hom endの任意次数の要素に対する生成元上の比較式を両側で証明した。
+左加群変数の生成元比較には(-1)^(qp)が現れ、右加群変数では評価の(-1)^(rp)と合わせて
+(r+q)pに一致する。閉零自然性だけを任意次数自然性の代用にはしない。
+
+Checks.BalancedTensorYonedaNaturality・LeftYonedaと既存StageSeven・Spectra.StageTwoの
+同時ビルドは成功（2654 jobs、終了コード0、追加ソースの警告なし）。
+本単位の主要7宣言の直接実行も終了コード0、標準公理のみ。監査累計1326宣言。
+任意A・独立対象宇宙の自然性と、Hom次数-1・作用次数1の符号例を検査した。
+担当差分のgit diff --checkも成功。
+
+U11dの全受入は引き続き未完。全次数の生成元比較は得たが、パラメータ付きtensor作用を
+余等化子全体へ降ろし、豊穣関手/自然変換として束ねる作業が残る。
+次はこの作用とbimodule合成の残る作用を構成し、一対象Aの既存tensorとの比較を進める。
+U11eの随伴・単位/結合coherence、U12〜U17、D4mは未完のまま継続する。
+共有ルート・共有一般論・並行作業ファイルは変更していない。
