@@ -44,4 +44,34 @@ lemma map_frame_weakEquivalence {A B : SimplexCategory ⥤ C} (a : A ⟶ B)
     (SmallHomRealization.frame_reedyCofibrant A hA)
     (SmallHomRealization.frame_reedyCofibrant B hB) hw (R.obj Y)
 
+include hcof in
+lemma chosenHom_map_source_weakEquivalence
+    (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
+    (fib : MorphismProperty.FunctorialFactorizationData (trivialCofibrations C) (fibrations C))
+    {X Z : Cᵒᵖ} (f : X ⟶ Z) (hf : weakEquivalences C f.unop) (Y : C) :
+    weakEquivalences SSet.{w} (((chosenHom cof fib).map f).app Y) := by
+  have := fibrantTarget_isFibrant fib Y
+  exact map_frame_weakEquivalence hcof ((cosimplicialResolutionFamily cof).obj.map f.unop)
+    ((cosimplicialResolutionFamily cof).cofibrant Z.unop)
+    ((cosimplicialResolutionFamily cof).cofibrant X.unop)
+    ((cosimplicialResolutionFamily cof).map_weakEquivalence f.unop hf) _
+
+include hcof in
+lemma chosenHom_map_target_weakEquivalence
+    (hfib : fibrations SSet.{w} = SSet.modelCategoryQuillen.J.{w}.rlp)
+    (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
+    (fib : MorphismProperty.FunctorialFactorizationData (trivialCofibrations C) (fibrations C))
+    (X : Cᵒᵖ) {Y Z : C} (f : Y ⟶ Z) (hf : weakEquivalences C f) :
+    weakEquivalences SSet.{w} (((chosenHom cof fib).obj X).map f) := by
+  let A := (cosimplicialResolutionFamily cof).obj.obj X.unop
+  have := SmallHomRealization.isRightQuillen hcof hfib A
+    ((cosimplicialResolutionFamily cof).cofibrant X.unop)
+    ((cosimplicialResolutionFamily cof).atObject X.unop).homotopicallyConstant
+  have := fibrantTarget_isFibrant fib Y
+  have := fibrantTarget_isFibrant fib Z
+  have : WeakEquivalence ((fibrantTarget fib).map f) :=
+    ⟨fibrantTarget_map_weakEquivalence fib f hf⟩
+  exact (weakEquivalence_iff _).mp
+    (Quillen.map_weakEquivalence_of_fibrant (SmallHomRealization.hom A) ((fibrantTarget fib).map f))
+
 end SerrePositivity.HomotopyFunctionComplex.SmallHomComparison
