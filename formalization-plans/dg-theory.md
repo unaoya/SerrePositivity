@@ -2571,3 +2571,11 @@ Mathlibのshift局所化の普遍性を使い、別の導来圏やshiftへ置換
 Checks.HomotopyDerivedShiftを含む導来比較5入口の同時ビルドは成功（2143 jobs）。
 Checksの直接実行は終了コード0、主要5宣言の公理は標準公理のみ。累計1120宣言。
 U10全受入は継続中。次はacyclic部分圏とVerdierクラスの接続を受け入れる。
+
+
+### 13.84 U10v3：acyclic部分圏と指定Verdierクラス
+
+`Module/AcyclicTriangulated.lean`は評価関手の三角性を使い、acyclic対象の同型閉性・零対象・整数shift閉性・三角閉性を証明した。
+`moduleHomotopyAcyclic_trW_eq`はそのVerdier射のクラスが、既存の指定objectwise quasiIsoと等しいことを標準coneで証明する。
+主要6宣言の直接公理監査は終了コード0、標準公理のみ。累計1126宣言。
+導来比較5入口の同時ビルドは成功（2143 jobs）。U10全受入には独立入口の統合検証を引き続き要求する。
