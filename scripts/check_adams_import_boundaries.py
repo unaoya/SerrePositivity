@@ -68,6 +68,19 @@ for name in ['Family', 'WeightOperators']:
               ('TensorSquare', 'TensorCube', 'CyclicTwo', 'CyclicThree', 'Cubic')))
 print(f'Import boundaries passed: {len(common)} cochain modules and 2 Adams contracts.')
 
+coefficient_comparison = {
+    'SerrePositivity.KTheory.' + name for name in [
+        'K0Localization', 'K0LocalizationCoefficients', 'G0Localization',
+        'HomologyEuler', 'HomologyPeeling', 'ComparisonInverse', 'ComparisonNaturality']
+} | {'SerrePositivity.PerfectComplex.IntegerEuler',
+     'SerrePositivity.PerfectComplex.CoefficientEuler'}
+for name in ['KTheory.SupportedCoefficients', 'KTheory.Adams.Family',
+             'KTheory.Adams.WeightOperators', 'PerfectComplex.CubicActionClass']:
+    check('SerrePositivity.' + name, lambda dep: dep in coefficient_comparison)
+check('SerrePositivity.PerfectComplex.CubicActionClass',
+      lambda dep: dep.startswith('SerrePositivity.KTheory.Adams.'))
+print('Basic coefficient operations and contracts are independent of localization and Euler comparison.')
+
 check('SerrePositivity.PerfectComplex.InvolutionClassAcyclic',
       lambda dep: dep.startswith('SerrePositivity.KTheory.Adams.'))
 print('The general acyclic involution class is independent of Adams implementations.')

@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.KTheory.K0Localization
+public import SerrePositivity.KTheory.SupportedCoefficients
 public import Mathlib.RingTheory.Localization.Submodule
 
 /-! # Supported K₀ localization with extended coefficients -/
@@ -14,8 +15,6 @@ variable (E : Type v) [CommRing E] {R S : Type u} [CommRing R] [CommRing S]
   [HasFiniteProjectiveResolutions R] [HasFiniteProjectiveResolutions S]
 
 namespace K0WithSupport
-abbrev Coefficients (Z : TopologicalSpace.Closeds (PrimeSpectrum R)) := E ⊗[ℤ] K0WithSupport Z
-
 def coefficientHomologyEuler (Z : TopologicalSpace.Closeds (PrimeSpectrum R)) :
     Coefficients E Z →ₗ[E] G0WithSupport.Coefficients E Z := g0CoefficientMap E (homologyEuler Z)
 
@@ -29,9 +28,6 @@ lemma coefficientResolutionMap_homologyEuler (Z : TopologicalSpace.Closeds (Prim
     (g0CoefficientMap E (homologyEuler Z))) x = x
   rw [g0CoefficientMap_comp, resolutionMap_homologyEuler, g0CoefficientMap_id]
   rfl
-
-def coefficientEnlarge {Z W : TopologicalSpace.Closeds (PrimeSpectrum R)} (h : Z ≤ W) :
-    Coefficients E Z →ₗ[E] Coefficients E W := g0CoefficientMap E (enlarge h)
 
 omit [IsNoetherianRing R] in
 lemma coefficientResolutionMap_enlarge {Z W : TopologicalSpace.Closeds (PrimeSpectrum R)}

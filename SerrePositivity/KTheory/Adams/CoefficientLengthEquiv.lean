@@ -1,7 +1,9 @@
 module
 
 public import SerrePositivity.KTheory.Adams.MaximalLengthEquiv
-public import SerrePositivity.KTheory.Adams.Coefficients
+public import SerrePositivity.PerfectComplex.CoefficientEuler
+public import SerrePositivity.KTheory.LocalizationCoefficients
+public import SerrePositivity.KTheory.ComparisonNaturality
 public import SerrePositivity.KTheory.CoefficientLinearExtension
 public import Mathlib.LinearAlgebra.TensorProduct.Pi
 

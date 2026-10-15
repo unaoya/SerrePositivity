@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.PerfectComplex.CubicActionDecomposition
-public import SerrePositivity.KTheory.Adams.Coefficients
+public import SerrePositivity.KTheory.SupportedCoefficients
 
 /-! # Weighted classes of cubic eigenspaces with extended coefficients -/
 

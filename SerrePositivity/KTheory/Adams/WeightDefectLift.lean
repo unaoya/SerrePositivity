@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.KTheory.Adams.SemilocalPureWeight
+public import SerrePositivity.KTheory.K0LocalizationCoefficients
 
 /-! # The Adams weight defect lifts to a support of greater height -/
 

@@ -3,6 +3,7 @@ module
 public import SerrePositivity.CommutativeAlgebra.ModuleSupportHeight
 public import SerrePositivity.KTheory.Adams.CupVanishing
 public import SerrePositivity.PerfectComplex.TensorTorComparison
+public import SerrePositivity.PerfectComplex.CoefficientEuler
 
 /-! # Intersection vanishing from a supported Adams family -/
 

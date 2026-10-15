@@ -4992,7 +4992,7 @@ R12–R20 のコードをコミットした後、以下をすべて確認した�
 | R31a | 一般三角圏の K₀ の整数シフト | 未着手 |
 | R31b | K₀ のひねりの環作用の共通補題 | 未着手 |
 | R31c | 固有ベクトルの多項式評価に mathlib を利用 | 未着手 |
-| R31d | 係数付き K₀ の基本操作・局所化・Euler 評価の分離 | 未着手 |
+| R31d | 係数付き K₀ の基本操作・局所化・Euler 評価の分離 | 完了：SupportedCoefficientsとCoefficientEulerへ分離し旧入口を維持。14宣言・証明の本文一致。消滅の両分岐まで3729 jobs、基本・互換入口・一般契約の3公理監査、局所化とEulerへの依存を禁じる追加ゲートが成功 |
 | R31e-1 | 冪等像の非輪状性を ψ²・ψ³ で共用 | 未着手 |
 | R31e-2 | 冪等像の K₀ 類と短完全列の加法性 | 未着手 |
 | R26c | 区間外で零になる関数の有限台を Euler 計算で共用 | 未着手 |
@@ -5061,6 +5061,10 @@ R28b-2 の検証ログは `/tmp/adams-r28b2-complete-build.log`、
 再監査で追加した R31e-1・R31e-2・R26c も、R32 の前に別々に検証・コミットする。
 R30 の検証ログは `/tmp/adams-r30-final-build.log`、`/tmp/adams-r30-audit.log`。
 一般の錐代表は K₀・完全性・台を仮定せず、DG 加群の次数付き自然性の構成とは区別する。
+R31d の検証ログは `/tmp/adams-r31d-core-build.log`、`/tmp/adams-r31d-final-build.log`、
+`/tmp/adams-r31d-{basic,compat,contract}-audit.log`。
+長さ座標の G₀ 係数・比較と、重みの帰納法の局所化は利用側の明示的 import に移した。
+基本操作には正則性・Noether性・体・平坦性の仮定を追加していない。
 
 ## 5. 受入条件
 

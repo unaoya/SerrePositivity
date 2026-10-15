@@ -1,4 +1,5 @@
 import SerrePositivity.KTheory.Adams.CyclicTwoFamily
+import SerrePositivity.KTheory.Adams.Coefficients
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.K0WithSupport.integerEuler_eq_zero_of_one_tmul_eq_zero

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KTheory.Adams.Coefficients
+public import SerrePositivity.KTheory.SupportedCoefficients
 public import SerrePositivity.PerfectComplex.KoszulClasses
 
 /-! # The common contract for supported Adams operations -/
