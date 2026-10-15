@@ -345,6 +345,13 @@ pointwise colimitと通常の選択されたcolimitがκ-accessibleであるこ�
 この補題だけでは、セル付加の各段階や超限帰納中の全関手のaccessibilityを
 証明したことにはならない。A0の小対象論法への適用は引き続き必要である。
 
+`Smith/AccessibleIteration.lean`はMathlibの`SuccStruct.ofNatTrans`による実際の
+反復を扱う。後続関手Tがκ-accessibleなら、各段階と反復全体も同じκでaccessible。
+最小段階・後続段階・極限段階を分けて証明し、極限段階では上のcolimit保存を使う。
+`scripts/check_accessible_iteration.lean`で一般反復・恒等関手の反復・一般連続図式を
+検証する。全6宣言は標準公理のみ。小対象論法のセル付加関手をTとして使うには、
+そのaccessibilityを小さい生成射族の可呈示性から証明する必要が残る。
+
 `check_smith_solution_set`はモデル構造のない抽象圏で、独立した宇宙、CommSqの左右成分、
 小さい射族/射クラス全体の分解、空の射族、General/StageTwoとの併用を検証する。
 同スクリプトはこのモジュールの全宣言を標準公理のみで監査する。

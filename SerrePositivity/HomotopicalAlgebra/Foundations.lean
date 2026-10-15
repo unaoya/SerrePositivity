@@ -15,6 +15,7 @@ public import SerrePositivity.HomotopicalAlgebra.Smith.Recognition
 public import SerrePositivity.HomotopicalAlgebra.Smith.Existence
 public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleFactorization
 public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleColimits
+public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleIteration
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor

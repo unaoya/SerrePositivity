@@ -24,6 +24,7 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Smith.Existence,
     `SerrePositivity.HomotopicalAlgebra.Smith.AccessibleFactorization,
     `SerrePositivity.HomotopicalAlgebra.Smith.AccessibleColimits,
+    `SerrePositivity.HomotopicalAlgebra.Smith.AccessibleIteration,
     `SerrePositivity.HomotopicalAlgebra.Transfer.Right,
     `SerrePositivity.HomotopicalAlgebra.Quillen.Brown,
     `SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor,
