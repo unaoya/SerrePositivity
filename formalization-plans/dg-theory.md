@@ -2286,3 +2286,17 @@ MathlibのleftShiftの符号s*q'+s*(s-1)/2を含む規約をそのまま保持�
 Checks.LeftShiftElements・StageSix・既存Spectra.StageTwoを含む同時ビルドは成功（2520 jobs）。
 Checksの直接実行で主要10宣言を監査し、すべて標準公理のみ。累計971宣言。
 U10は未完。次は全Homのcone比較によるliftと、この片側shiftを回転比較射へ接続する。
+
+
+### 13.68 U10t6：全Homのcone比較から得られるconeへのlift
+
+`Module/ConeLift.lean`は、全Homの既存cone比較と各次数のcone要素constructorを用いて、
+次数q+1とqの二つの主Hom要素から、coneを終域とする次数qの要素を構成する。
+各評価が既存`mappingCone.liftCochain`に一致することを証明した。
+次数1の入力が閉じ、次数0の入力の微分と前者の後合成の和が零である場合、
+候補は閉次数0となり`moduleConeLiftOfCycle`を得る。閉性は各評価の
+`mappingCone.liftCocycle`から証明し、実際の射の評価がMathlibの`mappingCone.lift`に一致する。
+
+Checks.ConeLiftをビルドし、直接実行の主要6宣言を監査した。すべて標準公理のみ。
+StageSix・既存Spectra.StageTwoの互換入口もビルド済み。累計977宣言。
+U10は未完。次は片側shiftとこのliftから回転比較射を構成し、逆射と収縮を証明する。
