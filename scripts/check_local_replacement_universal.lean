@@ -2,6 +2,8 @@ import SerrePositivity.HomotopicalAlgebra.Localization.Replacement
 import SerrePositivity.HomotopicalAlgebra.Localization.ReplacementComparison
 import SerrePositivity.HomotopicalAlgebra.Localization.ReplacementHomotopy
 import SerrePositivity.HomotopicalAlgebra.Localization.ModelComparison
+import SerrePositivity.HomotopicalAlgebra.Localization.Fibrations
+import SerrePositivity.HomotopicalAlgebra.Localization.ModelExistence
 import Lean.Util.CollectAxioms
 
 noncomputable section
@@ -89,6 +91,27 @@ example {m n : ModelCategory C}
   let := original
   exact hm.identity_isLeftQuillen_to hn h
 
+
+-- The replacement actually supplies fibrant replacement in the constructed model.
+example (S : MorphismProperty C) [S.IsSmall.{w}] (X : C) :
+    let p := modelPresentation cof fib I J IS JS hcof hfib hw hcofV hfibV hcofB hfibB S
+    let d := localReplacementData cof fib I J IS JS hcof hfib hw hcofV hfibV hcofB hfibB S
+    p.model.categoryWithCofibrations.cofibrations (d.η.app X) ∧
+      p.model.categoryWithWeakEquivalences.weakEquivalences (d.η.app X) ∧
+      p.model.categoryWithFibrations.fibrations (terminal.from (d.L.obj X)) := by
+  let p := modelPresentation cof fib I J IS JS hcof hfib hw hcofV hfibV hcofB hfibB S
+  let d := localReplacementData cof fib I J IS JS hcof hfib hw hcofV hfibV hcofB hfibB S
+  have h := p.isLocalizationModel cof fib I J IS JS hcof hfib hw hcofV hfibV hcofB hfibB
+  exact ⟨(h.replacement_unit_trivialCofibration d X).1,
+    (h.replacement_unit_trivialCofibration d X).2, h.replacement_value_fibrant d X⟩
+
+example {m : ModelCategory C} (h : @IsLocalizationModel C _ original _ cof fib S m)
+    {X Y : C} (f : X ⟶ Y) (hX : @localObjects C _ original _ cof fib S X)
+    (hY : @localFibrantObjects C _ original _ cof fib S Y) :
+    m.categoryWithFibrations.fibrations f ↔ original.categoryWithFibrations.fibrations f := by
+  let := original
+  exact h.fibration_iff_of_local hcofV hfibV f hX hY
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -97,7 +120,8 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Localization.Replacement,
     `SerrePositivity.HomotopicalAlgebra.Localization.ReplacementComparison,
     `SerrePositivity.HomotopicalAlgebra.Localization.ReplacementHomotopy,
-    `SerrePositivity.HomotopicalAlgebra.Localization.ModelComparison]
+    `SerrePositivity.HomotopicalAlgebra.Localization.ModelComparison,
+    `SerrePositivity.HomotopicalAlgebra.Localization.Fibrations]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

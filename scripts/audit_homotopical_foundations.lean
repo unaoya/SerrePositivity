@@ -143,6 +143,7 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Localization.ReplacementComparison,
     `SerrePositivity.HomotopicalAlgebra.Localization.ReplacementHomotopy,
     `SerrePositivity.HomotopicalAlgebra.Localization.ModelComparison,
+    `SerrePositivity.HomotopicalAlgebra.Localization.Fibrations,
     `SerrePositivity.HomotopicalAlgebra.Localization.LocalLeftProper,
     `SerrePositivity.HomotopicalAlgebra.Localization.AccessibleLocalReplacement,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroWeakEquivalence,

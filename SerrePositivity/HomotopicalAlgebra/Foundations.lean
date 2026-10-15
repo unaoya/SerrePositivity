@@ -125,6 +125,7 @@ public import SerrePositivity.HomotopicalAlgebra.Localization.Replacement
 public import SerrePositivity.HomotopicalAlgebra.Localization.ReplacementComparison
 public import SerrePositivity.HomotopicalAlgebra.Localization.ReplacementHomotopy
 public import SerrePositivity.HomotopicalAlgebra.Localization.ModelComparison
+public import SerrePositivity.HomotopicalAlgebra.Localization.Fibrations
 public import SerrePositivity.HomotopicalAlgebra.Localization.LocalLeftProper
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence
