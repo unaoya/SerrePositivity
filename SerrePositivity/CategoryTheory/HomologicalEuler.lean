@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.CategoryTheory.FiniteSupportBounds
 
 public import SerrePositivity.CategoryTheory.ExactSequenceEuler
 public import SerrePositivity.CategoryTheory.TriangulatedK0
@@ -59,10 +60,9 @@ omit [Abelian A] [Preadditive C] [HasZeroObject C] [∀ n : ℤ, (shiftFunctor C
 lemma homologicalEuler_hasFiniteSupport (X : C) :
     Function.HasFiniteSupport (fun i : ℤ ↦ ((i.negOnePow : ℤ) : ℝ) * l ((F.shift i).obj X)) := by
   obtain ⟨a, b, hab⟩ := hb X
-  apply (Set.finite_Icc a b).subset
+  apply finiteSupport_of_bounded_zero _ a b
   intro i hi
-  by_contra hn
-  exact hi (by simp only [hz _ (hab i (by simp only [Set.mem_Icc] at hn; omega)), mul_zero])
+  simp only [hz _ (hab i hi), mul_zero]
 
 include hi ha hz hb in
 /-- 有界なホモロジー関手の Euler 和は完全三角形で加法的である。 -/

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.CategoryTheory.FiniteSupportBounds
 
 public import SerrePositivity.Asymptotic.CompletedEulerAdditivity
 public import SerrePositivity.CategoryTheory.HomologicalConeLength
@@ -51,10 +52,7 @@ lemma completedSupportedBetti_hasFiniteSupport
     (X : Karoubi (SupportedSequenceRankQuotient (s := s) z)) :
     Function.HasFiniteSupport (completedSupportedBetti lam hfg z hJ hfin U hU hs X) := by
   obtain ⟨a, b, hab⟩ := completedSupportedBetti_bounded lam hfg z hJ hfin U hU hs X
-  apply (Set.finite_Icc a b).subset
-  intro q hq
-  by_contra hn
-  exact hq (hab q (by simp only [Set.mem_Icc] at hn; omega))
+  exact finiteSupport_of_bounded_zero _ a b hab
 
 /-- 商で第一射が零になれば、完備化後の非負評価にも錐の漸化式が成り立つ。 -/
 lemma completedSupportedBetti_zero_cone

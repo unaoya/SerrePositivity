@@ -1,0 +1,8 @@
+import SerrePositivity.CategoryTheory.HomologicalEuler
+import SerrePositivity.Asymptotic.CompletedRankEvaluation
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.homologicalEuler_hasFiniteSupport
+assert_no_sorry SerrePositivity.Asymptotic.completedSupportedEuler_hasFiniteSupport
+assert_no_sorry SerrePositivity.Asymptotic.completedSupportedBetti_hasFiniteSupport
+#print axioms SerrePositivity.Asymptotic.completedSupportedBetti_hasFiniteSupport

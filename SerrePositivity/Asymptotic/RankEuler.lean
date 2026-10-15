@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.CategoryTheory.FiniteSupportBounds
 
 public import SerrePositivity.Asymptotic.CompletedHomology
 public import SerrePositivity.Asymptotic.EulerLimit
@@ -50,12 +51,10 @@ lemma completedSupportedEuler_hasFiniteSupport
       lengthQuotientValue lam s U hU hs
         ((completedSupportedHomology lam hfg z hJ hfin U hU hs q).obj P)) := by
   obtain ⟨a, b, hab⟩ := completedSupportedHomology_bounded lam hfg z hJ hfin U hU hs P
-  apply (Set.finite_Icc a b).subset
+  apply finiteSupport_of_bounded_zero _ a b
   intro q hq
-  by_contra hn
-  have hz := (lengthQuotientValue_eq_zero_iff lam s U hU hs _).mpr
-    (hab q (by simp only [Set.mem_Icc] at hn; omega))
-  exact hq (by simp only [hz, mul_zero])
+  have hz := (lengthQuotientValue_eq_zero_iff lam s U hU hs _).mpr (hab q hq)
+  simp only [hz, mul_zero]
 
 /-- 冪等完備化前の対象では元の Euler 評価と一致する。 -/
 lemma completedSupportedEuler_obj (P : SupportedSequenceRankQuotient (s := s) z) :
