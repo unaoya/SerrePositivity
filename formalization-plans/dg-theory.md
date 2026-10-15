@@ -3277,3 +3277,25 @@ U11d全受入はまだ未完。左右の主Hom写像は構成できたが、単�
 証明して豊穣関手へ束ねる必要がある。次はこれらの法則とYoneda比較の豊穣自然性、
 bimodule合成の残る作用、一対象Aの既存tensorとの比較を進める。
 U11e・U12〜U17・D4mも継続対象。共有ルート・共有一般論・並行作業ファイルは変更していない。
+
+
+### 17.26 U11d7：各変数の実際のdg関手と単位・全Hom合成保存
+
+`Tensor/ElementsExt.lean`は余等化子射の各次数でのepi性と評価後の直和の普遍性から、
+任意次数のcochainを純粋生成元で判定する外延性を証明した。次数零版と主Homへのchain mapの外延性も含む。
+`Tensor/HomElements.lean`は左右の主Hom写像の任意次数成分式と中間和次数を指定する版を公開する。
+`Tensor/HomUnits.lean`は既存Bimodule.complex_unitElementを再利用し、両写像の単位保存を証明した。
+`Tensor/HomComposition.lean`は各評価でのHom合成とcochain合成を比較し、両変数の全次数合成保存を証明する。
+左変数では(p+q)r+pq=pq+pr+qrを確認し、符号を消した合成へ弱めていない。
+`Tensor/Enriched.lean`は以上をDGFunctor.ofHomMapsへ渡し、rightTensorDGとleftTensorDGという
+実際のMathlib EnrichedFunctorを構成した。対象/主Homは既存balanced tensorと全Hom endのまま。
+
+Checks.BalancedTensorEnrichedと既存StageSeven・Spectra.StageTwoの同時ビルドは
+成功（2672 jobs、終了コード0、追加ソースの警告なし）。主要17宣言の直接実行も終了コード0、標準公理のみ。
+監査累計1377宣言。任意A・独立対象宇宙、両dg関手と一対象ZMod 2を検査した。
+担当差分のgit diff --checkも成功。
+
+U11d全受入はまだ未完。左右の各変数のdg関手は得たが、両作用の全次数交換、
+Yoneda同型の豊穣自然性への束ね、bimodule合成の残る作用、一対象Aの既存tensor比較が残る。
+次は左右交換則をcochainの生成元上で証明し、実際のbimodule合成へ接続する。
+U11e・U12〜U17・D4mも継続対象。共有ルート・共有一般論・並行作業ファイルは変更していない。
