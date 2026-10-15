@@ -9156,3 +9156,60 @@ presentability/重み宇宙wを独立に保つ。任意のCにSSet豊穣性・tr
 その源・標的の自然性、必要な宇宙変更、選択独立性も受入範囲に含む。
 L1の小さいhomotopy生成族の明示的な検出、F1の任意モデル源の最終関手、L2〜L5は残る。
 他チャットの未コミット変更と共有ルートは保持した。
+
+## 197. F4のhocolim resolutionと標的に自然なmapping zigzag（2026-10-15）
+
+§196の源比較の弱同値性を、実際のresolutionのHom比較と既存のweighted holimへ接続した。
+源図式Dを固定した標的Yへの自然性と、共通宇宙での全比較射の弱同値性までを証明した。
+源図式Dへの自然性と右辺の独立に指定したpointwise RMapへの接続は残る。
+したがってF4全体・F〜L全体の完了とはしない。
+
+### 197.1 標準単体と実際のweighted hocolim frame
+
+`HomotopyFunctionComplex/QuillenStandardFrame`は、SS_wから任意のCへの左Quillen左随伴Lに対し、
+実際のstdSimplex⋙LのReedy cofibrancyを証明する。SS_wのHom宇宙とCのHom宇宙は独立でよい。
+標準単体のcollapseと次数0単体/monoidal unitの実際の同型からaugmentationを構成し、
+標準単体の幾何的弱同値の既証明を使ってLの適用後の弱同値性を証明する。
+実際のcosimplicial Hom(stdSimplex)≅Id_SSも標的に自然な同型として構成する。
+モデルでの弱同値と幾何的弱同値の一致hwは明示した入力であり、引用axiomを追加していない。
+
+`Diagram/WeightedHomotopyColimitFrame`は、§196の実際のweighted Quillen左随伴に
+標準単体を適用したcosimplicial objectを作る。augmentationの終点は元の実際のhocolim(D)である。
+Reedy cofibrancyとaugmentationの全次数での弱同値性を証明する。
+通常のweighted adjunctionにより、このframeの実際のHomをweighted Homと同型にする。
+SS_vとSS_wは実際のULift関手でSS_max(v,w)へ移し、単なる抽象な同値クラスには置き換えない。
+
+### 197.2 指定済みのRMap resolutionとholimへのzigzag
+
+`HomotopyFunctionComplex/FrameOverObject`は既存のFrameOverFunctorを一点のparameterへ適用し、
+任意の弱augmentationを持つframeと指定済みのresolutionを比較する。
+frameのaugmentationがtrivial fibrationであることは要求しない。
+両Homから共通のmiddleへの射は、標的の全射に自然な実際の自然変換である。
+
+`Diagram/HocolimMappingComparison`はこれを197.1のframeへ適用する。
+元の任意の指定cof/fibデータと同じfibrantTargetを使い、Dを固定して次のzigzagを構成する。
+
+`RMap(hocolim D,−) → middle ← frame Hom ≅ weighted Hom → holim(frame Hom diagram)`
+
+最後の射には既存のFrameWeightedLimitの実際の比較を使用する。
+三つの非同型の射はすべて、共通宇宙へのULift後に弱同値であると証明した。
+標的は既にfibrantであるものに制限せず、元の任意のYに指定済みfibrant replacementを適用する。
+SS_v・SS_w・SS_max(v,w)のmono/Kan条件を個別に明示し、§194のULift弱同値保存を使う。
+源の豊穣性、tractable性、定数図式のprojective cofibrancyは要求しない。
+コミット：`a3d7d10`。
+
+### 197.3 受入検証と残項目
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`：2453 jobs、成功。
+- `check_hocolim_mapping_comparison`：44宣言・4モジュール、標準公理のみ。
+  独立したu/v/w、実際の次数ごとのaugmentation、標的に自然な射と同型、
+  三つの比較射の共通宇宙での弱同値性を確認した。
+- `audit_homotopical_foundations`：3703宣言・267モジュール、標準公理のみ。
+- `check_homotopical_foundations`・`check_spectra_stage2`・`git diff --check`、成功。
+- 新規sorry・引用axiomなし。他チャットの未コミット変更を保持した。
+
+次の作業は、(i)実際のweighted realizationとaugmentationのDに関する関手性・自然性、
+(ii)右辺のpointwise frame Homと指定済みpointwise RMapの既存の自然なzigzagを、
+small-Hom表示・宇宙変更とholimへ接続すること、(iii)最終公式の選択独立性の照合である。
+現時点の右端を、指定済みpointwise RMapそのもののholimと同一視しない。
+L1の小さいhomotopy生成族、F1の任意モデル源の最終関手、L2〜L5も引き続き未完了である。

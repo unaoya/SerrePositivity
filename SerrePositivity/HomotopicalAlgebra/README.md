@@ -1054,3 +1054,13 @@ augmentationが実現後に弱同値になることを、源のHom/重み宇宙�
 comparisonが元のCの弱同値であることを証明する。定数図式のprojective cofibrancyは仮定しない。
 共有入口2449 jobs、共有3659宣言・263モジュールの標準公理監査が成功。
 コミット`4ce136b`・`a2bbdb9`、詳細は計画§196。F4の最終RMap–holim公式への接続は残る。
+
+
+`QuillenStandardFrame`は実際の標準単体の左Quillen像のReedy cofibrancyと弱augmentation、
+標準単体のcosimplicial Hom≅Idを証明する。`WeightedHomotopyColimitFrame`はこれを適用して
+実際のhocolim(D)へ弱augmentationを持つframeを構成する。
+`FrameOverObject`と`HocolimMappingComparison`は、Dを固定して標的に自然なzigzag
+RMap(hocolim D,−)→middle←frame Hom≅weighted Hom→holimを構成する。
+各射は共通宇宙への実際のULift後に弱同値であり、同じ指定fibrantTargetを使用する。
+共有入口2453 jobs、共有3703宣言・267モジュールの標準公理監査と既存入口の回帰検証が成功。
+コミット`a3d7d10`、詳細は計画§197。源図式Dへの自然性と右辺のpointwise RMapへの接続は残る。
