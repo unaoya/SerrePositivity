@@ -2634,3 +2634,221 @@ Lean v4.35.0-rc4、Mathlib e6bbacd0e1b7307ff6e17da09cd2455f60804fa6をmanifest�
 この受入コミットをコード固定点とし、以後この依頼ではLeanコードをリファクタリングせず、
 比較・共通化候補・後続工程を計画ファイルに記録する。採用済み引用は引き続き0件。
 共有モデル圏一般論・他チャットの変更は編集していない。
+
+## 14. U10後のリファクタリング検討（提案のみ、コード変更なし）
+
+固定点は`78e8918`。以下は固定版Mathlibとリポジトリ内の他系列を実際に読んだ比較であり、
+一般APIの新設・移動・改名を今回実行するものではない。後続U番号はこの節以降での新しい工程案。
+共有側のソースの存在と型を確認したが、その系列全体の受入・公理監査をM5が代行したとはしない。
+
+### 14.1 比較対象と判断
+
+| 比較対象（実際のソース） | dg側との共通点／相違 | 方針 |
+| --- | --- | --- |
+| Mathlib `Algebra/Homology/HomotopyCategory/Triangulated.lean`の`mappingConeCompHomotopyEquiv`と`IsTriangulated.mk'` | 同じ合成coneの行列・収縮。dg側は評価先の式だけでなく全Hom endの自然性が必要 | `Complexes/ConeComposition*`で既に再利用。objectwise同値をdg同値と同一視する置換はしない |
+| Mathlib `Algebra/Homology/DerivedCategory/Basic.lean`の`Triangulated.Localization.pretriangulated`等 | Kからacyclic.trW局所化へ三角構造を降ろす手順が共通 | `Derived/Triangulated.lean`は既に同じ一般構成を使用。新しい局所化型・三角構造移送論を作らない |
+| Mathlib `CategoryTheory/Localization/HomEquiv.lean`・`SmallHom.lean` | 前者は二つの局所化間のHom比較、後者は小さい局所化Homの表現。dgの`Category/LocalizationHom.lean`は局所化前後のHom比較 | 適用範囲が異なる。dgのcoyoneda反転条件からの全単射を残し、将来SmallHomの標準表示へのアダプタを検討 |
+| Mathlib `HomotopyCategory/KProjective.lean`の`CochainComplex.IsKProjective` | acyclicへの射のホモトピー消滅。dg側は全次数Hom endのacyclic性を定義に使う | 一対象Aについて両条件の同値を橋渡しする候補。任意Dへ普通複体のinstanceを直接流用しない |
+| `PerfectComplex/HomotopyCategory.lean`・`CategoryTheory/HomotopyProperty.lean` | `PerfectHomotopy`は有界有限射影複体の通常K(A)内の部分圏。cone閉性から三角閉性を得る一般補題がある | U13の比較先として保持。dgのfinite cellとretractを既存型に定義的同一としない |
+| `PerfectComplex/TensorAcyclic.lean`・`HomologicalAlgebra/CochainTensorBoundedAbove.lean` | 前者はstrictly perfect因子と任意quasiIso、後者は両側の上有界性を使う定理 | U12で再利用。ただし後者だけでは任意非有界acyclicを消すK-flat性を証明済みとしない |
+| `CategoryTheory/Monoidal/ModuleInternalHom.lean`・`BalancedTensor.lean` | Homは作用のequalizer、tensorは二作用のcoequalizer。dg Hom end・多対象coendと同じ普遍性の形 | 普遍性のパターンを再利用。一つの内部モノイド上のModと、多対象dg圏上の加群を同一視しない |
+| `CategoryTheory/Enriched/TensorCotensor.lean`・`EnrichedRepresentability.lean` | 通常Hom随伴と豊穣Hom対象同型を別契約にし、三変数自然性・points比較を保持 | U11/U12で具体的データを詰める候補。dgの既存full Homを別のmapping objectに置き換えない |
+| `Spectra/ModelCategory/SimplicialLevelEnriched.lean`・共有`HomotopicalAlgebra/Enriched/TensorCotensor.lean` | tensor/cotensor/mappingのQuillen条件を共有の表現性へ接続 | 同じ抽象契約を使える。ただしdg圏にSSetのSM7を自動付与しない |
+| 共有`Quillen/DerivedAdjunction.lean`の`leftChoiceIso`・unit/counitのchoice定理 | dgの解像度選択独立性も同じ局所化普遍性を使うが、現在はモデル構造に依存しない | D4mで既存Mathlib導来関手の証明を供給し比較する。モデル構造をU10の追加前提にしない |
+| 共有`Transfer/EvaluationFamily.lean`・`EvaluationSmallness.lean`・`Monoidal/ManyObjectPresentability.lean` | free/evaluation随伴族、presentable生成元、monoid axiomから実際の多対象加群へ転送 | 一般認識・smallness移送は既に共有APIがある。M5はCh(A)の具体的入力とfree/evaluation同型を供給 |
+| `CategoryTheory/VerdierKaroubi*.lean`・`Asymptotic/PaperRankQuotient.lean` | Karoubi/Verdier順序同値、shift・三角性・線形性、既存rank比較自然同型 | U17では既存比較へdg入力を接続。並行ファイルの再実装・変更をしない |
+
+### 14.2 優先する整理案と移行条件
+
+**R1（優先度高、一般補題の切り出し候補）**：
+`Category/LocalizationHom.lean`の`LocalizationHom.mapEquiv`/`map_bijective`は
+任意の`C,E`、独立Hom宇宙、`W : MorphismProperty C`、`L.IsLocalization W`、
+`P : C`、`W.IsInvertedBy (coyoneda.obj (op P))`だけを仮定する。
+dg固有の依存がないため、将来共有`CategoryTheory/Localization/`相当へ切り出す価値が高い。
+Mathlibの二局所化間`Localization.homEquiv`とは異なる型である点をドキュメント化する。
+受入は独立宇宙の例、`mapEquiv_apply`、標準局所化と任意局所化での同じ射の計算、
+既存`Derived/ProjectiveLocalizationHom.lean`と`ResolutionHom.lean`の再ビルド・公理監査。
+旧namespaceのaliasと旧import互換を保ち、共有所有者との合流時にだけ移動する。
+
+**R2（優先度高、三角形比較の補助API）**：
+`Module/TriangleShiftMap.lean`の2構成子、`Module/HomotopyEvaluationTriangles.lean`の
+`mapTriangleSquareIso`、`Derived/EvaluationTriangles.lean`の`mapTriangleTripleSquareIso`は
+任意のshift付き圏・関手と`NatTrans.CommShift`から三角形同型を作る。
+共有`CategoryTheory/KaroubiTriangulatedFunctor.lean`にもshift比較を運ぶ実装がある。
+共有`CategoryTheory/CommShiftOfPrecomp.lean`は、関手圏での前合成が完全忠実であることから
+shift比較とその整合性を延長する一般APIを既に持つ。Karoubi側はこのAPI、dg局所化側は
+Mathlibの`Functor.commShiftOfLocalization`を使用している。共通のshift移送を新設せず、
+既存APIを再利用した上で、三角形squareの小さな構成子だけを切り出す候補にする。
+受入は第三射のshift比較を含む可換式、K/D評価、cone shift、Karoubi側の既存入口。
+coneや商shiftを展開する巨大な型注釈へ戻さず、同型を合成する現在の証明形を保つ。
+
+**R3（優先度中、cone行列証明の局所整理）**：
+`Complexes/ConeComposition*`、`Module/ConeCompositionInputs/Desc/Homotopy/Triangle`を
+「既存複体の証明」「全Hom endの入力境界式」「K(D)への移送」に沿って読むための入口を整理する。
+同じ斉次合成・包含・射影の書換えには小さな計算補題が有効だが、一般のpretriangulated dg圏の
+巨大な構造体を今導入すると、既存Mathlibとの型変換とカーネル検査が増える懸念がある。
+先に現状のビルド時間を基準に取り、代表的な回転・合成cone・shift閉性で比較する。
+符号0/−1/1・ZMod 2・全自然な収縮の境界式を移行時の必須検査にする。
+局所maxHeartbeats=800000の削減は測定してから判断し、単なる上限引上げを改善としない。
+
+**R4（優先度中、Hom endと内部Homの比較）**：
+dgの`moduleHom`は対象族の積と自然性equalizer、内部ModのHomは一つの作用equalizerである。
+両者の普遍性のconstructor/ext/naturalityに共通部分がある。
+将来、一対象dg algebraの場合の比較同型を先に作り、その実例を根拠に任意Vのend APIを共有へ要求する。
+`EnrichedNatTrans`の閉零自然性だけでは全次数Homを置き換えられない。
+受入は全パラメータKのHom同型、合成・単位・微分・符号との一致。普通Hom集合の同値だけでは不足。
+
+**R5（後続機能と合わせる、解像度と導来関手）**：
+`ModuleProjectiveResolution`のπ・HP・quasiIsoはdg固有の計算証拠を保持する。
+共有側のMathlib `IsLeftDerivedFunctor`と比較すれば、選択独立性の一部を標準一意性へ委ねられる可能性がある。
+ただしD4m前の独立した局所化計算を共有モデル圏依存に変更しない。
+受入は比較自然変換の向き、πでの計算、自己/推移整合性、両変数Hom、導来随伴のunit/counit。
+
+**R6（保守性、段階入口・監査台帳）**：
+StageOne〜StageSevenは互換入口として保持し、将来は公開API索引と監査宣言一覧を
+同じデータから生成する案を検討する。過去の累計と再監査件数を区別できる形式が必要。
+Checksを削って件数だけ揃える整理はしない。共有ルートimportの変更をこの整理の一部に含めない。
+
+推奨順はR1/R2の小さな共通補題→U11での具体的比較→R4/R5の判断。
+R3の大規模なcone抽象化は最後に評価する。今回、これらのLean変更は一切実施していない。
+
+## 15. 次工程の詳細計画（未実装、U11〜U17）
+
+U0〜U10は右dg加群と導来圏の主経路。D3の左加群/bimodule、D5以降を以下に分割する。
+各小単位は「定義＋主要法則＋具体例＋対象ビルド＋主要宣言公理監査＋計画記録」を一コミットの基本とする。
+API名・配置は案であり存在宣言ではない。着手時に固定版と共有APIを再検索する。
+任意可換環、非有界、dの次数+1、ホモトピー−1、Mathlib Enriched主モデルの契約を維持する。
+
+### 15.1 U11：左加群・bimodule・相対tensor（D3の残りとD5入口）
+
+| 小単位・配置案 | 作業・公開契約 | 受入・依存 |
+| --- | --- | --- |
+| U11a `Module/Left.lean` | 右加群のdg oppositeによる左加群、二重opposite比較。共変EnrichedFunctorとの比較と斉次作用を公開 | 任意A、独立対象宇宙、oppositeの(-1)^(pq)、一対象A、正負次数とZMod 2。U10のみで着手可 |
+| U11b `Bimodule/Basic.lean` | 右B・左C作用を持つbimoduleを符号付き交換則付きで定義。Bᵒᵖ⊗CからCh(A)への共変EnrichedFunctor表示との同値を構成 | 積dg圏のHom tensor・合成の交差符号・単位・結合を先に証明。左右の作用の順を成分で固定 |
+| U11c `Tensor/Balanced.lean` | 右M・左Nについて、⊕_{x,y} M(y)⊗B(x,y)⊗N(x)の二作用を⊕_x M(x)⊗N(x)へ送りcoequalizerを定義 | 添字がu-small、各tensorと必要余極限の宇宙を明示。balanced射とのHom同値、ext、両変数mapと法則、符号付き成分式 |
+| U11d `Tensor/Yoneda.lean`・`Tensor/Bimodule.lean` | representable⊗_B N≅N(x)、M⊗_B左representable≅M(x)、bimodule合成の残る作用 | 同型が全dg自然であり一対象Aでは既存cochainTensorと比較できる。braidingの順とYoneda unit/counitを検査 |
+| U11e `Tensor/Coherence.lean` | Fubini/coequalizerの普遍性から単位・結合比較。一般に成り立つ余極限保存とtensor–Hom随伴を構成 | unit/associatorの三角・五角、三変数自然性。既存BalancedTensorの一モノイド版を多対象版と無条件に同一視しない |
+
+U11の全受入はcoequalizer対象を置くだけでは満たさない。評価同型・残る作用・自然性・整合性まで必要。
+共有G2/G5/SM7の完成は前提にしない。一般coendの不足は小さな型として§16へ追加して独立部分を続ける。
+
+### 15.2 U12：K-flatと導来tensor（D5）
+
+| 小単位・配置案 | 作業・公開契約 | 必須の区別・受入 |
+| --- | --- | --- |
+| U12a `Tensor/KFlat.lean` | A上K-flatと、B上の右加群の相対K-flatを別predicateにする。後者はacyclic左B加群とのtensorがacyclic | 対象・射のquasiIso保存との同値、shift/cone/retract/必要な余積閉性。homotopically projectiveとの関係を定義で仮定しない |
+| U12b `Tensor/Semifree.lean` | representable、sphere-free段階、graded-split拡張、逐次余極限からsemifree右加群の相対K-flat性を証明 | U11 YonedaとModuleCatの余極限完全性を使用。Hom_BのA-flat性なしの相対結果と、Hom_B(y,x)のA-K-flat性を要するobjectwise結果を分ける |
+| U12c `Tensor/BoundedAbove.lean` | 次数ごとflatかつ上に有界なA複体は任意acyclic複体を消す | 既存bounded-flat定理と下からのstupid truncationのfiltered colimitを使う案。tensorのcolimit保存とfiltered colimitの完全性を明示。相手も上に有界な既存定理だけで終了しない |
+| U12d `Derived/Tensor.lean` | U10のsemifree解像度から右加群・左加群の導来tensorを指定D上へ構成 | 右解像度間のhomotopy equivalenceとtensorのhomotopy保存、左変数のquasiIso保存を証明。両変数自然性、任意解像度の計算同型、自己/推移整合性 |
+| U12e `Derived/BimoduleTensor.lean` | 導来bimodule合成・単位・結合比較とcoherence | Bᵒᵖ⊗C上semifreeからBに関する相対K-flat性を得る条件を別証明。必要な相手側Homのlocal K-flat性、又はdg圏の解像度を明記。無条件の二変数置換を仮定しない |
+| U12f `Tensor/ScalarExtension.lean`・`Derived/ScalarExtension.lean` | A→A'のdg圏・加群・tensorの係数変更、restriction/extension随伴と導来比較 | underivedの直和/coequalizer比較とquasiIso保存条件を区別。A'のA-flat性なしの導来版を用意し、underivedとの一致に必要なK-flat仮定を明記。unit/assocと自然性を含む |
+
+一対象Aでは通常の複体tensor・導来tensorと整合することを確認する。
+U12の局所化による構成はD4mを待たず進める。Quillen bifunctorとしての再解釈だけ共有ゲートを待つ。
+
+### 15.3 U13：perfect・compact・dg enhancement（D6）
+
+| 小単位 | 作業と受入 |
+| --- | --- |
+| U13a `Perfect/FiniteCell.lean` | representableの有限和・整数shift・coneによるfinite cellを定義し、生成対象への依存・有限操作の証拠を保持。有限cellの全dg Homの射影性を再利用 |
+| U13b `Perfect/Basic.lean` | D(B)内でfinite cellのretractからPerfを定義。thick閉性、Karoubiとの比較、compactに使う余積宇宙をuに固定。全加群圏の対象宇宙をsmallと仮定しない |
+| U13c `Perfect/Compact.lean` | representableのHom＝評価のホモロジーをU10 Hom計算から証明し、u-small余積保存とcompact生成性を証明。Perf⇒compactを先に受け入れる |
+| U13d `Perfect/CompactConverse.lean` | compact⇒Perfを証明するか、定義済みの圏・生成集合・宇宙に限定してDG-PERを採用ゲートへ提出。引用採用前に結論を定理として使わない |
+| U13e `Perfect/Enhancement.lean`・`Perfect/RingComparison.lean` | homotopically projectiveな代表上の全Homを使うdg enhancementと小さい代表系。単なるD内retractの存在からstrict dg retractを選べるとしない。一対象Aの既存PerfectHomotopyとの比較をshift/cone/retract・線形性付きで構成 |
+
+小さいenhancementは対象のコード化と代表の選択を別に検証し、局所小性だけから対象集合のsmall性を結論しない。
+既存PerfectComplex/Idempotent*・Karoubi三角構造を再利用し、そのファイル群は変更しない。
+
+### 15.4 U14：指定dg生成元とendomorphism表示（D7）
+
+U14a：U13のenhancement内の指定対象EからEnd(E)を一対象dg algebraとして定義し、
+Hom(E,−) bimodule・evaluationと単位/余単位を構成する。
+U14b：thick生成仮定の下でPerf上の比較を証明し、Hom quasiIsoと本質的全射の証拠を分ける。
+U14c：導来圏全体の同値はcompact生成性がある場合だけ扱い、DG-GEN/DG-MORの採用候補とする。
+生成集合を無限直和で一対象にまとめた際にcompact性が失われ得ることを仮定表に残す。
+受入は既存Yoneda・導来tensorとの比較、shift/三角性・係数変更図式。
+
+### 15.5 U15：明示的dg商（D8）
+
+U15a `Quotient/Paths.lean`：full B⊂D、有限pathの添字、ε_bの次数−1、path項の直和とtensorを定義。
+対象・path・Homの宇宙と空pathを固定し、元のHomが非正とは仮定しない。
+U15b `Quotient/Differential.lean`：各Homの微分とdε_b=idをLeibnizで延長、d²=0、単位・結合・通常合成と豊穣合成の符号比較。
+U15c `Quotient/Universal.lean`：Bの像の指定収縮を持つdg関手との厳密普遍性。収縮の存在だけと、収縮を選んだデータを区別する。
+U15d `Quotient/ScalarExtension.lean`：path添字を固定した係数変更の同型・単位/合成整合性。underivedの構成法則として証明する。
+U15e `Quotient/DerivedComparison.lean`：local K-flat仮定の版と解像度を使う版を分け、定義済みtriaのVerdier商との比較へDG-DRを適用する準備。
+元のHomが次数0の場合はpath長rの次数−rと正次数ホモロジー消滅を具体例として証明する。
+対象・普遍性まではU11/U12と独立に先行可能だが、導来/Verdier比較はflatnessの受入後とする。
+
+### 15.6 U16：導来Morita（D9）
+
+U16a：U12の導来bimodule合成を使い、指定bimoduleが誘導する導来関手、unit/counit、identity/compを定義。
+U16b：dg quasiEquivalenceからのrestriction/extensionが同値であることを、representable・生成性・Hom比較で証明。
+U16c：一般bimoduleのMorita判定はperfect性・Hom quasiIso・compact生成の三条件を固定し、必要ならDG-MORを具体的に採用。
+U16d：Perfへの制限と係数変更・中心作用の自然性、合成のcoherenceを検証する。
+三角圏としての抽象同値だけをdg Morita同値の証拠にはしない。
+
+### 15.7 U17：Verdier/KaroubiとM9への接続（D10）
+
+U17a：tria(D)とBの像の三角閉包を定義し、殺す対象クラスの一致を証明する。
+U17b：H⁰(Perf_dg(D/B))とKaroubi(tria(D)/tria(B))の比較を、U15の商とU16の自然性から構成。
+U17c：既存`karoubiVerdierOrderEquivalence`、`paperRankEquivalence`、`paperSequenceComparison`との可換squareをshift・三角性・線形性付きで公開。
+U17d：中心局所化・支持・retract、係数変更、Gのstrict作用の比較を個別の図式として検証。
+M9の環S・列s・小ランク条件は具体的当てはめで固定し、一般dg定理へ埋め込まない。
+無限積のflatness・一般Tへの比較・スペクトルへの次数翻訳はそれぞれ担当系列の入力として分離する。
+
+実施順の主線はU11→U12→U13→U14、U15のpath定義は先行可能、U16→U17で合流。
+見積もりは行数でなく上記受入小単位を用い、U11eとU12c/U12eで証明難度を再評価する。
+
+## 16. 共有系列への具体的要求と次の着手点
+
+### 16.1 既存共有APIを使う契約（重複実装しない）
+
+1. **G2/G5、多対象転送**：`SerrePositivity.ManyObjectModelTransfer.modelCategoryOfPresentableGenerators`。
+   使用先はD4m。C=Ch(A)、加群圏をM、添字をDとし、L_x=freeAt x、R_x=moduleEvaluation A D x。
+   入力は`L_x ⊣ R_x`、基底Ch(A)のModelCategory・CofibrantlyGenerated I J・HasMonoidAxiom、
+   Small.{w} D、LocallySmall.{w} M、HasColimitsOfSize.{w,w} M、各R_xの同サイズ余極限/WalkingSpan保存、
+   共通正則基数κに関するI/Jの始域のpresentability、`L_x ⋙ R_y ≅ tensorLeft (Hom_D(y,x))`。
+   M5は既存free式K⊗Hom_D(y,x)をbraidingでこの向きへ運ぶ自然同型を供給する。
+   初期はw=uで整合を確認し、任意の大きいwの余極限を既存u-small結果から自動推論しない。
+   一般認識・small object移送・monoid axiomからのcell制御は共有所有。
+2. **G1、導来随伴**：`SerrePositivity.Quillen.derivedAdjunction`とchoice/unit/counit定理。
+   使用先はD4mとU12のQuillen比較。対象側のWは既存moduleQuasiIso、
+   比較先は既存DerivedModuleCategoryに固定する。M5は通常随伴・左右Quillen条件と
+   比較自然変換α/β、そのMathlib IsLeftDerivedFunctor/IsRightDerivedFunctor証拠を供給する。
+   既存局所化の対象を差し替えず、U10の計算同型と同じπで一致することを証明する。
+3. **G6、表現性・SM7**：`SerrePositivity.Enriched.TensorCotensor`と`EnrichedRepresentability`。
+   使用先はU11のtensor–HomとD4mの豊穣モデル比較。V=Ch(A)、C=dg加群閉零圏、
+   eHom=既存moduleHom、通常Hom随伴と全Hom対象自然同型、parameter自然性とpoints整合性を供給する。
+   現状のtensorFamilyEquivだけではcotensor・三変数全Hom同型の全契約を満たさない。
+   `HomotopicalAlgebra/Enriched/TensorCotensor.lean`の一般SM7同値は再実装しない。
+
+### 16.2 未充足の具体的入力・要求
+
+- **D4m基底Ch(A)**：W=quasiIso、Fib=次数ごと全射、Cof=llp(trivial Fib)の非有界射影モデル。
+  Iはsphere→disk、Jは0→disk。球/円盤のpresentability、free(J)-cellのobjectwise quasiIso、
+  Ch(A)のpushout-product・unit・monoid axiomの具体的証明はM5側の仕事。
+  共有転送APIが存在することだけで基底モデルやdg加群モデルの完成を宣言しない。
+  Hom_D(y,x)がA上cofibrantであるという仮定を追加して一般ケースを縮小しない。
+- **U11 coendの一般化候補**：必要になれば、任意閉対称モノイダルV、u-small豊穣圏B、
+  右/左豊穣加群M,N、対象/射の直和とcoequalizer、そのtensorによる保存を仮定し、
+  balanced族とcoendからの射の自然同値を求める。使用先U11c〜e。
+  既存BalancedTensorは一モノイド版なので多対象版の存在を推定しない。
+  共有化の判断を待つ間はCh(A)固有の直和・関係式・符号を担当範囲で進められる。
+- **小さい共通補題候補**：R1の局所化HomとR2の三角形squareは現にM5で証明済み。
+  共有側へ移すなら独立宇宙・CommShift仮定・旧aliasを維持する。新たな一般論の証明待ちはない。
+- **U12/13**：任意非有界相手へのbounded-above K-flat性、relative/objectwiseの比較、
+  smallなperfect enhancementはM5の未実装項目。共有に依頼する場合も具体的型・宇宙・使用先を追記する。
+
+次の実装開始点はU11a。最初のコミットは左加群とdg oppositeの比較・符号・一対象例までに限定し、
+次にbimoduleの二作用とtensorの交差符号を確定する。
+D4mは独立した比較工程として、上の既存共有APIと具体的Ch(A)入力の準備状況を再点検して着手する。
+この依頼ではU11以降のLean実装も、§14のリファクタリングも実施しない。
+
+
+### 16.3 今回の終了確認
+
+U10統合受入コミット78e8918以降、担当Lean・Inputsのコード差分は0件。
+追加したのは本計画§14〜§16の比較・提案のみであり、U11の実装やリファクタリングは行っていない。
+比較対象の具体的な型・仮定・相違と、各提案の受入検査、次工程の依存・共有への入力を記録した。
+計画追記後の文書検査も22 Markdown・311 exposition参照、失敗0件、終了コード0。
+担当差分のwhitespace検査は成功。共有ルート・他系列の並行変更はそのまま保持する。
