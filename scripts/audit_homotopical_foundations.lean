@@ -161,6 +161,8 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Localization.Bifunctor,
     `SerrePositivity.HomotopicalAlgebra.Localization.Enriched,
     `SerrePositivity.HomotopicalAlgebra.Localization.MonoidalUnit,
+    `SerrePositivity.HomotopicalAlgebra.Monoidal.BifunctorSymmetrize,
+    `SerrePositivity.HomotopicalAlgebra.Localization.Monoidal,
     `SerrePositivity.HomotopicalAlgebra.Quillen.FibrantCriterion,
     `SerrePositivity.HomotopicalAlgebra.Quillen.FibrantTesting,
     `SerrePositivity.HomotopicalAlgebra.Localization.LocalLeftProper,
