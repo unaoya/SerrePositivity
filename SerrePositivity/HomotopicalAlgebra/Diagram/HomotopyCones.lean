@@ -95,6 +95,18 @@ lemma coneSpace_isRightQuillen :
     IsRightQuillen (WeightedCones.coneSpace K (weight K I J)) :=
   WeightedCones.coneSpace_isRightQuillen K I J _ (weight_isCofibrant K I J)
 
+lemma comparison_weakEquivalence_of_fibrant (F : K ⥤ SSet.{w})
+    (hF : let := Projective.modelCategory K I J; IsFibrant F) :
+    weakEquivalences SSet.{w} ((comparison K I J).app F) := by
+  let := Projective.modelCategory K I J
+  have := coneSpace_isRightQuillen K I J
+  have : IsFibrant ((𝟭 (K ⥤ SSet.{w})).obj F) := hF
+  have := replacement_isFibrant K I J F
+  have : WeakEquivalence ((replacementComparison K I J).app F) :=
+    ⟨replacementComparison_weakEquivalence K I J F⟩
+  exact (weakEquivalence_iff _).mp (Quillen.map_weakEquivalence_of_fibrant
+    (WeightedCones.coneSpace K (weight K I J)) ((replacementComparison K I J).app F))
+
 lemma isFibrant (F : K ⥤ SSet.{w}) : IsFibrant ((functor K I J).obj F) := by
   let := Projective.modelCategory K I J
   let R := WeightedCones.coneSpace K (weight K I J)
