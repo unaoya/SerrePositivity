@@ -1132,3 +1132,31 @@ acyclicを消すHomと導来Hom計算・選択独立性、K(D)/D(D)の三角構�
 標準局所化の射宇宙をより小さい宇宙へ下げることは、証拠を得るまで主張しない。
 共有の射影モデル比較は別のD4m合流点。共有API不足による現在のブロックはない。
 U10までの目標を保持する。
+
+### 13.20 U10d1：一対象Aの既存導来圏との同値・局所化比較・整合的shift
+
+U10の独立に進められる一対象比較を先行した。semifree解像度の存在や一般三角構造の
+証明を省略することはなく、U10全受入は引き続き未完。
+`Derived/Ring.lean` は `ringModuleQuasiIso_iff` と `ringModuleLocalizer` により、
+既存閉零加群圏同値が指定quasiIsoを保ち、反映することを証明する。
+Mathlibの誘導localizerと圏同値の局所化一般論を用い、
+U9の `moduleDerivedEvaluation` 自体が圏同値となることを証明した。
+`ringDerivedEquivalence` は主導来加群圏と既存 DerivedCategory (ModuleCat A) の同値。
+`ringDerivedEquivalence_fac` は主局所化、既存閉零加群圏同値、既存複体の局所化の
+四角形を結ぶ自然同型。
+
+`Derived/Shift.lean` は任意Dの導来評価の因子化をLocalization.Liftingに登録し、
+既存 `Functor.commShiftOfLocalization` により整数shiftのzero/add coherenceを運ぶ。
+因子化自然同型のhomもNatTrans.CommShiftを満たす。
+一対象比較の通常/導来関手と局所化比較自然同型も整合的なshiftを保存する。
+一般の局所化shift理論を複製していない。
+
+対象側の既存導来圏には `[HasDerivedCategory.{w} (ModuleCat.{u} A)]` を明示し、
+任意の選択された射宇宙wで比較する。主導来加群圏の標準射宇宙はmax (u+1) vのまま。
+任意可換環・非有界複体を扱い、モデル構造・noetherian・体・flatnessを仮定しない。
+
+受入入口 `Checks/DerivedRing.lean` は任意A/独立射宇宙、圏同値、HasShift/CommShift、
+自然同型のshift整合性、ℤ・ZMod 2の標準宇宙での比較を検証する。
+ビルド・直接実行は成功し、主要15宣言はすべて標準公理の範囲内。累計430宣言。
+U10の一般三角構造・余積が未構成なので、それらの保存についてはまだ完了を主張しない。
+semifree解像度の存在・Hom計算・選択独立性・Verdier商比較・局所小性も残る。
