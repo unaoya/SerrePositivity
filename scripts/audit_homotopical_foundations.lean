@@ -43,6 +43,8 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Localization.MappingTests,
     `SerrePositivity.HomotopicalAlgebra.Localization.Basic,
     `SerrePositivity.HomotopicalAlgebra.Localization.ChoiceIndependence,
+    `SerrePositivity.HomotopicalAlgebra.Localization.Detection,
+    `SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroWeakEquivalence,
     `SerrePositivity.HomotopicalAlgebra.Under.ModelCategory,
     `SerrePositivity.HomotopicalAlgebra.Pointed.Basic,
     `SerrePositivity.HomotopicalAlgebra.Pointed.SmashModel,
