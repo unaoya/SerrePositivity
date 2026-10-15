@@ -1,6 +1,9 @@
 import SerrePositivity.IntersectionMultiplicity.AdamsVanishingTwo
 import Mathlib.Util.AssertNoSorry
 
+assert_no_sorry SerrePositivity.Adams.SupportedAdams.cup_enlarge_eq_zero_of_eigen
+#print axioms SerrePositivity.Adams.SupportedAdams.cup_enlarge_eq_zero_of_eigen
+
 assert_no_sorry SerrePositivity.Adams.LocalizationAdamsFamily.cup_enlarge_eq_zero
 #print axioms SerrePositivity.Adams.LocalizationAdamsFamily.cup_enlarge_eq_zero
 

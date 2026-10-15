@@ -100,5 +100,14 @@ lemma coefficientEuler_tmul (a : E)
   simp only [coefficientEuler, LinearMap.comp_apply, g0CoefficientMap_tmul,
     LinearEquiv.coe_coe, AlgebraTensorModule.rid_tmul, zsmul_eq_mul, mul_comm]
 
+/-- Vanishing after characteristic-zero coefficient extension forces
+the integer Euler value to zero. -/
+lemma integerEuler_eq_zero_of_one_tmul_eq_zero [CharZero E]
+    (x : K0WithSupport (supportZeroLocus (IsLocalRing.maximalIdeal R)))
+    (hx : (1 : E) ⊗ₜ[ℤ] x = 0) : integerEuler R x = 0 := by
+  have he := congrArg (coefficientEuler E R) hx
+  simp only [coefficientEuler_tmul, one_mul, map_zero] at he
+  exact_mod_cast he
+
 end K0WithSupport
 end SerrePositivity

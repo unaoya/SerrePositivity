@@ -1,6 +1,9 @@
 import SerrePositivity.KTheory.Adams.CyclicTwoFamily
 import Mathlib.Util.AssertNoSorry
 
+assert_no_sorry SerrePositivity.K0WithSupport.integerEuler_eq_zero_of_one_tmul_eq_zero
+#print axioms SerrePositivity.K0WithSupport.integerEuler_eq_zero_of_one_tmul_eq_zero
+
 assert_no_sorry SerrePositivity.integerPairing
 assert_no_sorry SerrePositivity.coefficientPairing
 assert_no_sorry SerrePositivity.coefficientPairing_tmul

@@ -33,13 +33,9 @@ theorem intersectionVanishing_of_adamsFamily (F : Adams.LocalizationAdamsFamily 
     (natCast_dimToNat_ringKrullDim R).symm
     (finiteModuleClosedSupport R M) (finiteModuleClosedSupport R N) cM cN hM hN hc h
     ((1 : E) ⊗ₜ[ℤ] x) ((1 : E) ⊗ₜ[ℤ] y)
-  have he := congrArg (K0WithSupport.coefficientEuler E R) hz
-  simp only [K0WithSupport.coefficientCup_tmul, one_mul,
-    K0WithSupport.coefficientEnlarge_tmul, K0WithSupport.coefficientEuler_tmul,
-    map_zero] at he
-  have hi : K0WithSupport.integerEuler R
-      (K0WithSupport.enlarge h (K0WithSupport.cup x y)) = 0 := by
-    exact_mod_cast he
-  exact (integerEuler_cup_resolutions_of_finiteTensor FM FN hfin).symm.trans hi
+  apply (integerEuler_cup_resolutions_of_finiteTensor FM FN hfin).symm.trans
+  apply K0WithSupport.integerEuler_eq_zero_of_one_tmul_eq_zero E R
+  simpa only [K0WithSupport.coefficientCup_tmul, one_mul,
+    K0WithSupport.coefficientEnlarge_tmul] using hz
 
 end SerrePositivity

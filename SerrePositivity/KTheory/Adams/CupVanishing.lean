@@ -15,6 +15,18 @@ namespace Adams
 variable {R : Type u} [CommRing R] [IsRegularLocalRing R]
 variable {E : Type v} [Field E] [CharZero E] {p : ℕ}
 
+/-- A product of eigenclasses vanishes when its weight differs from the dimension. -/
+lemma SupportedAdams.cup_enlarge_eq_zero_of_eigen (A : SupportedAdams R E p)
+    (d : ℕ) (hd : ringKrullDim R = d)
+    {Y Z : TopologicalSpace.Closeds (PrimeSpectrum R)}
+    (h : Y ⊓ Z ≤ supportZeroLocus (maximalIdeal R)) (i j : ℕ)
+    (x : K0WithSupport.Coefficients E Y) (y : K0WithSupport.Coefficients E Z)
+    (hx : A.operation Y x = (p : E) ^ i • x)
+    (hy : A.operation Z y = (p : E) ^ j • y) (hne : i + j ≠ d) :
+    K0WithSupport.coefficientEnlarge E h (K0WithSupport.coefficientCup E x y) = 0 :=
+  A.eigen_eq_zero_of_weight_ne _ (i + j) d _
+    (A.cup_enlarge_eigen h i j x y hx hy) (A.maximal_pureWeight d hd _) hne
+
 /-- High-weight products vanish after enlargement to maximal-ideal support. -/
 lemma LocalizationAdamsFamily.cup_enlarge_eq_zero (F : LocalizationAdamsFamily R E p)
     (d : ℕ) (hd : ringKrullDim R = d)
@@ -30,22 +42,17 @@ lemma LocalizationAdamsFamily.cup_enlarge_eq_zero (F : LocalizationAdamsFamily R
         (K0WithSupport.coefficientCup E (F.atBase.weightProjector Y cY d i x)
           (F.atBase.weightProjector Z cZ d j y)) = 0 := by
     intro i hi j hj
-    let z := K0WithSupport.coefficientEnlarge E h
-      (K0WithSupport.coefficientCup E (F.atBase.weightProjector Y cY d i x)
-        (F.atBase.weightProjector Z cZ d j y))
-    have hz := F.atBase.cup_enlarge_eigen h i j _ _ (hx.2 i hi) (hy.2 j hj)
-    have hm := F.atBase.maximal_pureWeight d hd z
-    apply F.atBase.eigen_eq_zero_of_weight_ne _ (i + j) d z hz hm
+    apply F.atBase.cup_enlarge_eq_zero_of_eigen d hd h i j _ _ (hx.2 i hi) (hy.2 j hj)
     have hi' := (Finset.mem_Icc.mp hi).1
     have hj' := (Finset.mem_Icc.mp hj).1
     omega
   rw [← hx.1, ← hy.1]
   simp only [map_sum, LinearMap.sum_apply]
   apply Finset.sum_eq_zero
-  intro i hi
-  apply Finset.sum_eq_zero
   intro j hj
-  exact hterm j hj i hi
+  apply Finset.sum_eq_zero
+  intro i hi
+  exact hterm i hi j hj
 
 end Adams
 end SerrePositivity

@@ -4865,7 +4865,12 @@ A–E の全単位は実装・監査・公開済み。S11 までの本計画に�
    `weightDefect_lift` は高さ層が空でも適用できるため、消去多項式の証明から場合分けと
    重複した全称量化を除去。対象ビルド 3362 jobs と半局所化・射影の二公理監査が成功。
    既存の import から引き続き同名の宣言を利用できる。
-3. **R10／重みから積の消滅への接続（予定）**：異なる重みの消滅と積の展開を整理する。
+3. **R10／重みから積の消滅への接続（完了）**：
+   `SupportedAdams.cup_enlarge_eq_zero_of_eigen` に固有成分の積の消滅をまとめ、
+   高さによる積の消滅の証明を成分への適用と和の展開に整理した。
+   `integerEuler_eq_zero_of_one_tmul_eq_zero` に標数零の係数拡大から整数 Euler 値へ戻す
+   処理を移し、一般の Adams 族からの消滅定理で利用する。新補題は体や正則性を要求しない。
+   対象ビルド 3375 jobs と係数付き Adams・消滅の二公理監査が成功。
 4. **R11／統合検証（予定）**：公開消滅定理・両標数分岐・利用先のビルドと公理監査、
    既存宣言および import 依存関係の互換性を確認する。
 
@@ -4873,6 +4878,8 @@ R8 のログは `/tmp/adams-refactor-r8-build.log`、
 `/tmp/adams-refactor-r8-{extension,lengths,weights}-audit.log`。
 R8 のコミットは `4dd883c`。R9 のログは `/tmp/adams-refactor-r9-build.log`、
 `/tmp/adams-refactor-r9-{semilocal,projectors}-audit.log`。
+R9 のコミットは `b33d91a`。R10 のログは `/tmp/adams-refactor-r10-build.log`、
+`/tmp/adams-refactor-r10-{coefficients,vanishing}-audit.log`。
 
 ## 5. 受入条件
 
