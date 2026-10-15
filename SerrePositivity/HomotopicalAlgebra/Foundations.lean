@@ -2,6 +2,7 @@ module
 
 public import Mathlib.AlgebraicTopology.ModelCategory.Basic
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Adjunction
+public import SerrePositivity.HomotopicalAlgebra.Quillen.Saturation
 public import SerrePositivity.HomotopicalAlgebra.Under.ModelCategory
 public import SerrePositivity.HomotopicalAlgebra.Pointed.Basic
 public import SerrePositivity.HomotopicalAlgebra.Pointed.SmashModel
