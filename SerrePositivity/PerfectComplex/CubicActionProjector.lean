@@ -15,7 +15,7 @@ open CategoryTheory Category Limits Preadditive
 variable {R : Type u} [CommRing R]
 
 namespace CochainCubicAction
-variable {K : CochainComplex (ModuleCat.{u} R) ℤ} [Invertible (3 : R)]
+variable {K L : CochainComplex (ModuleCat.{u} R) ℤ} [Invertible (3 : R)]
 
 /-- The projector for the eigenvalue a, written using a inverse = a squared. -/
 def projectorMap (τ : CochainCubicAction K) (a : R) : K ⟶ K :=
@@ -41,15 +41,15 @@ lemma map_comp_projectorMap (τ : CochainCubicAction K) (a : R) (ha : a ^ 3 = 1)
       id_comp, comp_id, Category.assoc]
   rw [hc, projectorMap_comp_map τ a ha]
 
-lemma projectorMap_idem (τ : CochainCubicAction K) (a : R) (ha : a ^ 3 = 1) :
-    τ.projectorMap a ≫ τ.projectorMap a = τ.projectorMap a := by
-  have hsq : τ.projectorMap a ≫ (τ.map ≫ τ.map) = a ^ 2 • τ.projectorMap a := by
-    rw [← Category.assoc, projectorMap_comp_map τ a ha, Linear.smul_comp,
-      projectorMap_comp_map τ a ha, smul_smul, ← pow_two]
-  change τ.projectorMap a ≫ ((⅟(3 : R)) •
-    (𝟙 K + a ^ 2 • τ.map + a • (τ.map ≫ τ.map))) = τ.projectorMap a
+lemma eigenvector_comp_projectorMap (τ : CochainCubicAction K)
+    (a : R) (ha : a ^ 3 = 1) (f : L ⟶ K) (hf : f ≫ τ.map = a • f) :
+    f ≫ τ.projectorMap a = f := by
+  have hsq : f ≫ (τ.map ≫ τ.map) = a ^ 2 • f := by
+    rw [← Category.assoc, hf, Linear.smul_comp, hf, smul_smul, ← pow_two]
+  change f ≫ ((⅟(3 : R)) •
+    (𝟙 K + a ^ 2 • τ.map + a • (τ.map ≫ τ.map))) = f
   rw [Linear.comp_smul, comp_add, comp_add, comp_id, Linear.comp_smul,
-    Linear.comp_smul, projectorMap_comp_map τ a ha, hsq]
+    Linear.comp_smul, hf, hsq]
   have hac : a * a ^ 2 = 1 := by rw [← pow_succ', ha]
   have hca : a ^ 2 * a = 1 := by rw [mul_comm, hac]
   simp only [smul_smul, hac, hca, one_smul]
@@ -59,6 +59,10 @@ lemma projectorMap_idem (τ : CochainCubicAction K) (a : R) (ha : a ^ 3 = 1) :
       _ = ⅟(3 : R) * 3 := by ring
       _ = 1 := invOf_mul_self _
   rw [hi, one_smul]
+
+lemma projectorMap_idem (τ : CochainCubicAction K) (a : R) (ha : a ^ 3 = 1) :
+    τ.projectorMap a ≫ τ.projectorMap a = τ.projectorMap a :=
+  τ.eigenvector_comp_projectorMap a ha (τ.projectorMap a) (τ.projectorMap_comp_map a ha)
 
 /-- Each cubic root supplies an idempotent chain map. -/
 def projector (τ : CochainCubicAction K) (a : R) (ha : a ^ 3 = 1) : CochainIdempotent K :=
