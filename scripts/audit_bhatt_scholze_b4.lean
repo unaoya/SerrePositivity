@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.RankOneDPBaseChange
 import SerrePositivity.BhattScholze.RegularPrincipalDPUniversal
 import SerrePositivity.BhattScholze.PrincipalDPFactorialEquiv
 import SerrePositivity.BhattScholze.PrincipalDPRegular
@@ -4423,3 +4424,17 @@ assert_no_sorry SerrePositivity.BhattScholze.regularPrincipalDPLift_isDPMorphism
 #print axioms SerrePositivity.BhattScholze.regularPrincipalDPLift_isDPMorphism
 assert_no_sorry SerrePositivity.BhattScholze.existsUnique_regularPrincipalDPMorphism
 #print axioms SerrePositivity.BhattScholze.existsUnique_regularPrincipalDPMorphism
+
+-- Actual tensor base change of the existing rank-one divided-power algebra.
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPBaseChangeMap
+#print axioms SerrePositivity.BhattScholze.rankOneDPBaseChangeMap
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPBaseChangeMap_tmul
+#print axioms SerrePositivity.BhattScholze.rankOneDPBaseChangeMap_tmul
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPBaseChangeMap_dp
+#print axioms SerrePositivity.BhattScholze.rankOneDPBaseChangeMap_dp
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPBaseChangeMap_bijective
+#print axioms SerrePositivity.BhattScholze.rankOneDPBaseChangeMap_bijective
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPBaseChangeEquiv
+#print axioms SerrePositivity.BhattScholze.rankOneDPBaseChangeEquiv
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPBaseChangeEquiv_tmul
+#print axioms SerrePositivity.BhattScholze.rankOneDPBaseChangeEquiv_tmul

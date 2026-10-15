@@ -5374,3 +5374,20 @@ Mathlib IsDPMorphism.on_spanと分冪合成公式を用い、全元の全分冪�
 新sorry・公理・引用なし。源のδ構造・p局所性・p正則性・y mod p正則性は明示している。
 任意有限正則列への拡張、原典の導来δpushout比較、CFF根付き拡大、一般B4は未完成。
 共通G3・G6・G7は共通計画上も受領済み・実装受渡し未完了であり、この成果には使っていない。
+
+### 次工程の登録：既存一元分冪代数の実テンソル基底変更
+
+BS専用RankOneDPBaseChange.leanで、既存DividedPowerAlgebra.mapとAlgebra.TensorProduct.liftから
+B ⊗[A] DividedPowerAlgebra A A →ₐ[B] DividedPowerAlgebra B Bの実比較射を作る。
+p局所・p正則な可換環A,Bについて、前工程の両側の実基底と基底のテンソル基底変更を
+照合し、この射が同型であることを証明する。δ構造・完備性・Noetherian性は要求しない。
+この通常代数の比較を、分冪表示環の商の基底変更・導来比較・CFFそのものとは数えない。
+
+## B4-6：既存一元分冪代数の実テンソル基底変更（2026-10-15）
+
+RankOneDPBaseChange.leanで、既存DividedPowerAlgebra.mapとTensorProduct.liftから
+実比較射B⊗[A]Γ_A(A)→ₐ[B]Γ_B(B)を構成し、全純テンソルと標準基底上の式を公開した。
+p局所・p正則な可換環A,Bの下、両側の実基底と基底のテンソル基底変更を照合して
+全単射性および実代数同型を証明した。δ構造・完備性・Noetherian性は不要。
+6公開宣言の対象2709ジョブ・B4全体pure監査成功。標準3公理のみ。
+新sorry・公理・引用なし。この通常代数の比較は商の分冪包比較・導来比較・CFFとは別工程。
