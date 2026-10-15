@@ -130,6 +130,12 @@ check('SerrePositivity.KTheory.HomologyEulerBasic', lambda dep: dep in resolutio
 check('SerrePositivity.PerfectComplex.IntegerEuler', lambda dep: dep in resolution_comparison)
 print('Basic homology and integer Euler evaluations are independent of resolution comparisons.')
 
+for name in ['SupportedModule', 'G0Supported', 'MaximalSupportLength']:
+    check('SerrePositivity.KTheory.' + name,
+          lambda dep: '.PerfectComplex.' in dep or '.KTheory.Adams.' in dep or
+          dep == 'SerrePositivity.CategoryTheory.TriangulatedK0')
+print('Supported G₀ modules and closed-point length avoid perfect complexes and Adams implementations.')
+
 geometry = ['ClosedSupportGeometry', 'ModuleClosedSupport', 'SupportHeight',
             'SemilocalSupport', 'ModuleSupportHeight', 'LocalizationTorsion', 'ModuleSupport',
             'PrincipalSupport', 'LocalizationLattice', 'SubmoduleExact']

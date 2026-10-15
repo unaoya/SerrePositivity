@@ -5116,7 +5116,7 @@ R37–R40のコミットは `022387f`、`fcd06d8`、`247e86c`、`4652f6f`、
 | R45b-1 | 実数値Eulerの有限台の三証明を共通化 | 完了：一般ホモロジー・正規化長さの利用先2577 jobs、4宣言の公理監査・全依存ゲートが成功。ログ `/tmp/adams-r45b1-{build,audit,boundaries}.log` |
 | R45b-2 | 一般・漸近Eulerと完備化Bettiの有限台の三証明を共通化 | 完了：完備化ランク評価まで2956 jobs、3宣言の公理監査・全依存ゲートが成功。ログ `/tmp/adams-r45b2-{build,audit,boundaries}.log` |
 | R46 | 正則パラメータの有限添字APIを四利用先で共用 | 完了：4利用先・全標数消滅まで3933 jobs、5宣言の公理監査・次元0の契約・全依存ゲートが成功。コメントの行長修正後も元ソースを型検査。ログ `/tmp/adams-r46-{build,audit,source-check,boundaries}.log` |
-| R47a | 閉点のG₀長さ評価を整数Eulerから分離 | 未着手 |
+| R47a | 閉点のG₀長さ評価を整数Eulerから分離 | 完了：3宣言をMaximalSupportLengthへ移し、SupportedModuleの完全複体依存も除去。整数Eulerまで2743 jobs、5宣言の公理監査・評価のrfl・新しいG₀依存ゲートが成功。ログ `/tmp/adams-r47a-{build,audit,boundaries}.log` |
 | R47b | 有限極大台のG₀同型を半局所化の幾何から分離 | 未着手 |
 | R47c | G₀の係数長さ座標をK₀比較から分離 | 未着手 |
 | R48 | 両Adams族・並行利用先・公開消滅の統合検証 | 未着手 |

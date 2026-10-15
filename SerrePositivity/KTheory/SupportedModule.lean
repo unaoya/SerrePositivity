@@ -1,6 +1,8 @@
 module
 
-public import SerrePositivity.PerfectComplex.ClosedSupport
+public import SerrePositivity.CommutativeAlgebra.ModuleSupport
+public import Mathlib.Algebra.Category.ModuleCat.Basic
+public import Mathlib.CategoryTheory.ObjectProperty.FullSubcategory
 public import Mathlib.RingTheory.Finiteness.Finsupp
 public import Mathlib.RingTheory.Noetherian.Basic
 
