@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.Localization.Detection
+import SerrePositivity.HomotopicalAlgebra.Localization.Conditional
 import Lean.Util.CollectAxioms
 
 noncomputable section
@@ -19,7 +19,8 @@ example {X Y : SSet.{v}} [IsFibrant X] [IsFibrant Y] (f : X ⟶ Y) [WeakEquivale
   SerrePositivity.SimplicialModel.piZero_bijective_of_weakEquivalence_of_fibrant hcof f
 end Simplicial
 
-variable {C : Type u} [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}]
+variable {C : Type u} [Category.{v} C] [original : ModelCategory C]
+  [simplicial : ModelCategory SSet.{v}]
   (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
   (fib : MorphismProperty.FunctorialFactorizationData (trivialCofibrations C) (fibrations C))
   (hcof : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
@@ -45,11 +46,42 @@ example (S : MorphismProperty C) (hS : S ≤ weakEquivalences C) (Y : C) :
     localFibrantObjects cof fib S Y ↔ IsFibrant Y :=
   localFibrantObjects_iff_of_le cof fib hcof hS Y
 
+-- Empty localization has an actual certificate on the original model;
+-- no candidate model's existence is added as an axiom.
+example : IsLocalizationModel cof fib ⊥ original :=
+  original_isLocalizationModel_of_le cof fib hcof hfib bot_le
+
+-- Two model structures on the same category are kept distinct even in
+-- the identity Quillen condition and the three-class recovery statement.
+example (m : ModelCategory C)
+    (h : @IsLocalizationModel C _ original simplicial cof fib ⊥ m) :
+    m.categoryWithCofibrations.cofibrations = original.categoryWithCofibrations.cofibrations ∧
+      m.categoryWithWeakEquivalences.weakEquivalences =
+        original.categoryWithWeakEquivalences.weakEquivalences ∧
+      m.categoryWithFibrations.fibrations = original.categoryWithFibrations.fibrations :=
+  @IsLocalizationModel.classes_recover_of_le C _ original simplicial cof fib ⊥ m h
+    hcof hfib bot_le
+
+example (S : MorphismProperty C) (m : ModelCategory C)
+    (h : @IsLocalizationModel C _ original simplicial cof fib S m) :
+    @SerrePositivity.Quillen.IsLeftQuillen C _ C _ original.categoryWithCofibrations
+      original.categoryWithWeakEquivalences m.categoryWithCofibrations
+      m.categoryWithWeakEquivalences (𝟭 C) :=
+  @IsLocalizationModel.identity_isLeftQuillen C _ original simplicial cof fib S m h hcof
+
+example (S : MorphismProperty C) (m : ModelCategory C)
+    (h : @IsLocalizationModel C _ original simplicial cof fib S m) :
+    m.categoryWithFibrations.fibrations ⊓ m.categoryWithWeakEquivalences.weakEquivalences =
+      original.categoryWithFibrations.fibrations ⊓
+        original.categoryWithWeakEquivalences.weakEquivalences :=
+  @IsLocalizationModel.trivialFibrations_eq C _ original simplicial cof fib S m h
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
     `SerrePositivity.HomotopicalAlgebra.Localization.Detection,
+    `SerrePositivity.HomotopicalAlgebra.Localization.Conditional,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroWeakEquivalence]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]

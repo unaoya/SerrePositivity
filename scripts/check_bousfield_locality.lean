@@ -1,4 +1,5 @@
 import SerrePositivity.HomotopicalAlgebra.Localization.ChoiceIndependence
+import SerrePositivity.HomotopicalAlgebra.Localization.Representatives
 import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleFactorization
 import Lean.Util.CollectAxioms
 
@@ -48,6 +49,15 @@ example : localObjects cof fib S = localObjects cof' fib' S :=
 example : localEquivalences cof fib S = localEquivalences cof' fib' S :=
   localEquivalences_choices_eq cof cof' fib fib' hcof S
 
+-- Arbitrary zigzags of weak squares, beyond a single replacement functor.
+example (T : MorphismProperty C) (h : SameWeakRepresentatives S T) :
+    localEquivalences cof fib S = localEquivalences cof fib T :=
+  localEquivalences_eq_of_weakRepresentatives cof fib hcof h
+
+example (Y : C) (a b : Arrow C) (h : Relation.EqvGen weakArrowStep a b) :
+    mappingTest cof fib Y a.hom ↔ mappingTest cof fib Y b.hom :=
+  mappingTest_iff_of_weakArrowZigzag cof fib hcof Y h
+
 -- Apply representative independence to the actual cofibrant replacement
 -- restricted from the supplied model factorization.
 example :
@@ -87,7 +97,8 @@ run_cmd do
   let expected := #[
     `SerrePositivity.HomotopicalAlgebra.Localization.MappingTests,
     `SerrePositivity.HomotopicalAlgebra.Localization.Basic,
-    `SerrePositivity.HomotopicalAlgebra.Localization.ChoiceIndependence]
+    `SerrePositivity.HomotopicalAlgebra.Localization.ChoiceIndependence,
+    `SerrePositivity.HomotopicalAlgebra.Localization.Representatives]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
