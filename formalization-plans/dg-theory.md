@@ -1019,3 +1019,43 @@ StageFiveのローカルimport閉包は107モジュール（dg69）でSpectra/Pa
 U10のsemifree解像度の存在・Hom計算・K(D)/D(D)の三角構造・Verdier商比較・
 余積/局所小性の宇宙・一対象Aの既存DerivedCategory比較は引き続き未完。
 U10までの目標を保持し、局所化の定義だけでは終了しない。
+
+### 13.17 U9a：指定射の局所化・普遍性・導来評価
+
+`Derived/Basic.lean` の `DerivedModuleCategory` は閉零加群圏を
+指定 `moduleQuasiIso` で局所化した Mathlib の構成された局所化。
+`moduleToDerived` と IsLocalization、指定準同型の像の `moduleDerivedIso` を公開した。
+比較対象 `HomotopyDerivedModuleCategory`/`moduleHomotopyToDerived` は
+K(D) の `moduleHomotopyQuasiIso` による同じ標準構成。
+両者の同値は、この段階ではまだ主張しない。
+
+対象宇宙と標準射宇宙はともに max (u+1) v。
+`moduleStandardLocalization` はその宇宙での HasLocalization の具体的データで、
+より小さい射宇宙の選択を強制するグローバルinstanceにはしていない。
+`moduleDerivedLift`・`_fac`・`_unique` は独立の対象/射宇宙 w/w' に対する
+指定射を反転する関手の厳密な延長・因子化・一意性。
+`moduleDerivedNatTrans_ext` と `moduleDerivedUniversalEquivalence` は
+自然変換を含む関手圏の普遍性。Mathlibの既存局所化一般論を再利用する。
+
+`Derived/Evaluation.lean` の `moduleDerivedHomology` は各対象・整数次数の
+ホモロジーを局所化へ延長する。
+`moduleToDerived_map_isIso_iff` は元の加群射の像が同型になる条件が
+ちょうど指定objectwise quasiIsoであることを証明する。
+逆向きは延長された評価ホモロジーで検出し、局所化が射を反転することだけから推測しない。
+`moduleDerivedEvaluation` は既存 DerivedCategory (ModuleCat A) への評価。
+対象の導来圏を使うAPIでは `[HasDerivedCategory.{w} (ModuleCat.{u} A)]` を明示する。
+準同型判定の定理自体にはこの選択を仮定しない。
+
+受入入口 `Checks/Derived.lean` は任意可換環・非有界加群・独立宇宙、
+標準射宇宙、IsLocalization/HasLocalization、厳密な普遍性・関手圏同値、
+導来評価との四角形、ℤ・ZMod 2 の同型判定を検証する。
+この入口・StageFive・既存Spectra.StageTwoの同時ビルドは成功（3176 jobs）。
+入口の直接実行と主要22宣言の公理監査も成功し、標準公理のみ。累計388宣言。
+一般論のsorry・引用axiomは導入していない。
+
+U9全受入は未完。次は全dg自然な加群ホモトピーに対応するcylinderを構成し、
+閉零局所化が境界を同一視することを証明する。
+そこから閉零/K(D)の指定局所化比較と比較関手の自然同型を完成させる。
+共有の射影モデル構造を先行仮定にはしない。共有API不足のブロックは現在ない。
+U10のsemifree解像度の存在・Hom計算・三角構造・Verdier商比較・
+余積/局所小性・一対象Aの既存導来圏との自然同値も未完であり、目標を保持する。
