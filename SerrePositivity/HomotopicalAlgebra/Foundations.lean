@@ -23,6 +23,8 @@ public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleSmallObject
 public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleHomTransport
 public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleGeneratedPair
 public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleModelFactorizations
+public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleLiftingClosure
+public import SerrePositivity.HomotopicalAlgebra.Smith.WeakEquivalenceFilteredColimits
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor

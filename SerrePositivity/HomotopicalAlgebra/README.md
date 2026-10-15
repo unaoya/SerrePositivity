@@ -411,3 +411,16 @@ trivial fibration/trivial cofibrationであることと、Q/Rの対象のcofibra
 任意に選んだ関手的分解へaccessibilityを推論するものではない。
 `scripts/check_accessible_model_factorizations.lean`は最終入力だけからこれらを検証し、
 三モジュールの全宣言を公理監査する。A1の弱同値部分圏のaccessibilityは別の残項目。
+
+## A1：元の弱同値のfiltered colimitと包含（途中、2026-10-15）
+
+`Smith/AccessibleLiftingClosure.lean`は、生成射の両端点のκ-可呈示性から、射圏に
+おけるI.rlpのκ-filtered colimit閉性を証明する。任意のsquareを可呈示性で一段へ
+持ち上げ、その段でのliftをcolimitへ合成する。
+`Smith/WeakEquivalenceFilteredColimits.lean`は、第二モデル分解の右因子が
+trivial fibrationであることと元の射が弱同値であることの同値を証明する。
+これを用い、combinatorialモデルの元のWのfull subcategoryが十分大きいκで
+κ-filtered colimitを持ち、実際の包含がそれを保存することを最終入力だけから導く。
+`scripts/check_weak_equivalence_filtered_colimits.lean`で一般の宇宙・colimit cocone・
+モデル分解・最終入力からの利用例と全10宣言の標準公理監査を検証した。
+部分圏自体の小さい可呈示生成族はまだ構成していないため、A1全体の完成とはしない。

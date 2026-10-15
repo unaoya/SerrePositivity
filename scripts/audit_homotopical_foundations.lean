@@ -32,6 +32,8 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Smith.AccessibleHomTransport,
     `SerrePositivity.HomotopicalAlgebra.Smith.AccessibleGeneratedPair,
     `SerrePositivity.HomotopicalAlgebra.Smith.AccessibleModelFactorizations,
+    `SerrePositivity.HomotopicalAlgebra.Smith.AccessibleLiftingClosure,
+    `SerrePositivity.HomotopicalAlgebra.Smith.WeakEquivalenceFilteredColimits,
     `SerrePositivity.HomotopicalAlgebra.Transfer.Right,
     `SerrePositivity.HomotopicalAlgebra.Quillen.Brown,
     `SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor,
