@@ -27,6 +27,31 @@ variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C
   [IsQuillenBifunctor (curriedTensor C)] [IsCofibrant (𝟙_ C)]
   (K : C) [IsCofibrant K]
 
+lemma freeInductionInputMap_cofibration {X Y : C} (f : X ⟶ Y)
+    [Cofibration f] (n m : ℕ) :
+    cofibrations C
+      (SymmetricSequence.freeInductionInputMap
+        (SymmetricSequence.tensorPowerSequence K) n f m) := by
+  let J := CostructuredArrow (FiniteBijection.addRight n) (FiniteBijection.of m)
+  have : (cofibrations C).IsStableUnderColimitsOfShape J :=
+    ThinGroupoid.isStableUnderColimitsOfShape (cofibrations C)
+  apply (cofibrations C).colimMap
+  intro d
+  have : IsCofibrant (TensorPowers.power K (FiniteBijection.card d.left)) :=
+    tensorPower_isCofibrant K _
+  have := tensorLeft_isLeftQuillen (TensorPowers.power K (FiniteBijection.card d.left))
+  exact IsLeftQuillen.map_cofibrations
+    (L := tensorLeft (TensorPowers.power K (FiniteBijection.card d.left))) _
+    (mem_cofibrations f)
+
+lemma evaluatedFree_cofibration {X Y : C} (f : X ⟶ Y)
+    [Cofibration f] (n m : ℕ) :
+    cofibrations C ((freeAt (K := K) n ⋙ evaluation m).map f) := by
+  apply ((cofibrations C).arrow_mk_iso_iff
+    (Arrow.isoMk (freeAtLevelIsoInduction (K := K) n X m)
+      (freeAtLevelIsoInduction (K := K) n Y m) (freeAtLevelIsoInduction_input n f m).symm)).2
+  exact freeInductionInputMap_cofibration K f n m
+
 lemma freeInductionInputMap_trivialCofibration {X Y : C} (f : X ⟶ Y)
     [Cofibration f] [WeakEquivalence f] (n m : ℕ) :
     trivialCofibrations C
