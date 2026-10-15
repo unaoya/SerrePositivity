@@ -106,6 +106,7 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Localization.ArrowFrameFibrations,
     `SerrePositivity.HomotopicalAlgebra.Localization.LocalBoundaryCharacterization,
     `SerrePositivity.HomotopicalAlgebra.Localization.HocolimLocalEquivalences,
+    `SerrePositivity.HomotopicalAlgebra.Localization.FilteredLocalEquivalences,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroWeakEquivalence,
     `SerrePositivity.HomotopicalAlgebra.Under.ModelCategory,
     `SerrePositivity.HomotopicalAlgebra.Pointed.Basic,

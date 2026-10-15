@@ -1,4 +1,5 @@
 import SerrePositivity.HomotopicalAlgebra.Localization.HocolimLocalEquivalences
+import SerrePositivity.HomotopicalAlgebra.Localization.FilteredLocalEquivalences
 import Lean.Util.CollectAxioms
 
 noncomputable section
@@ -33,6 +34,16 @@ variable [ModelCategory SSet.{v}] [ModelCategory SSet.{max v w}]
   (hcofB : cofibrations SSet.{max v w} = MorphismProperty.monomorphisms _)
   (hfibB : fibrations SSet.{max v w} = SSet.modelCategoryQuillen.J.{max v w}.rlp)
 
+-- A single bound, independent of S and all the diagrams; accessibility of W_S is not assumed.
+example : ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular),
+    ∀ (μ : Cardinal.{w}) [Fact μ.IsRegular], κ ≤ μ →
+      ∀ (K' : Type w) [SmallCategory K'] [IsCardinalFiltered K' μ]
+        (S : MorphismProperty C) {D E : K' ⥤ C} (a : D ⟶ E),
+        (∀ k, localEquivalences.{v, u} cof fib S (a.app k)) →
+        localEquivalences.{v, u} cof fib S ((colim : (K' ⥤ C) ⥤ C).map a) :=
+  exists_filtered_localEquivalence_colim I J IS JS cof fib hcof hfib hw
+    hcofV hfibV hcofB hfibB
+
 -- Original W_S, in independent object/Hom/presentability universes.
 example (S : MorphismProperty C) {D E : K ⥤ C} (a : D ⟶ E)
     (ha : ∀ k, localEquivalences.{v, u} cof fib S (a.app k)) :
@@ -53,7 +64,8 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
-    `SerrePositivity.HomotopicalAlgebra.Localization.HocolimLocalEquivalences]
+    `SerrePositivity.HomotopicalAlgebra.Localization.HocolimLocalEquivalences,
+    `SerrePositivity.HomotopicalAlgebra.Localization.FilteredLocalEquivalences]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
