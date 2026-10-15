@@ -1675,3 +1675,27 @@ retractionとの豊穣合成により `homRestrictionSection` を構成し、
 U10全受入は未完。次は商からの前合成の単射性、Hom制限のkernel同定、
 次数ごとの短完全列を確定し、有限段と可算filtration全体のHom acyclic性へ接続する。
 導来Hom・選択独立性・三角構造・Verdier商・余積/局所小性・一対象比較の保存性も残る。
+
+
+### 13.41 U10b4c：Hom短完全列とsemifree filtrationの有限段
+
+`Module/GradedSplitHomExact.lean` はsectionとの斉次合成でHomのkernelの原像を構成する。
+商への前合成との合成が恒等であることから単射性を得て、包含で零となる任意次数の要素を
+商へ因子化する。全次数分裂のdecompositionを使い、各射影で因子化の一致を証明する。
+`homShortComplex` と `homShortComplex_shortExact` は
+`Hom_D(P,T) → Hom_D(N,T) → Hom_D(M,T)` の複体としての短完全性を公開する。
+
+`Derived/GradedExtensionProjective.lean` はMathlibの短完全列のhomology一般論を再利用し、
+全次数分裂する拡大で両端がhomotopically projectiveなら中央もそうであることを証明する。
+これを初期段と各自由商へ帰納的に適用した
+`ModuleSemifreeFiltration.stage_homotopicallyProjective` は全有限段に対して成立する。
+
+`Checks/GradedExtensionProjective.lean` は短完全列・具体的kernel因子化・拡大閉性・有限段を検証する。
+同入口・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3214 jobs）。
+直接実行の主要11宣言は標準公理のみ。累計744宣言。
+担当Leanのsorry/admit/新規axiomは0件。文書検査の制限は§13.39を維持する。
+
+U10全受入は未完。次はHom endの余極限に対する逆極限表示と、次数ごとに全射な
+acyclic複体の可算塔で互換な境界の原像を実際に選ぶ補題を接続する。
+semifree全体の性質と導来Hom計算・選択独立性、三角構造・Verdier商・余積/局所小性・
+一対象比較の保存性は残る。共有一般論への不足APIの新しい要求はない。
