@@ -6614,3 +6614,21 @@ DeltaAdjoinDivisionReindexFunctorial.leanで、既存のraw再添字射の恒等
 指定解の普遍性と公開外延性を再利用し、p正則性・ghost単射等を仮定しない。
 2公開宣言の対象2061ジョブ成功、警告なし。B4全体pure依存監査成功、標準3公理のみ。
 新sorry・公理・引用なし。有限部分族の有向系と全族比較に使用する。
+
+### 次工程の登録：有限部分族raw環余極限と全族raw包の標準δ同型
+
+BS専用DeltaAdjoinDivisionFiniteColimitEquiv.leanで、余極限の単元部分族変数が全ての関係を満たすことを示し、
+既存raw普遍性から全族raw包→有限部分族余極限を構成する。
+既存の逆方向射との二つの合成を外延性・環余極限普遍性から証明し、標準δ同型を得る。
+BS専用DeltaAdjoinDivisionFamilyRegular.leanで、有限部分族のp正則性から全族raw包のp正則性を移す。
+Mathlib環余極限の零の有限段判定を用い、一般環余極限定義や一般共有補題を再実装しない。
+独立根関係の前工程の有限部分集合p正則性を適用し、任意添字族のraw根関係p除算包へ接続する。
+有限段ghost入力は保持し、一般G4・CFF・B4全射性完成とは区別する。
+
+## B4-6：有限部分族raw包の有向系（2026-10-15）
+
+DeltaAdjoinDivisionFiniteSystem.leanで、任意元族の各有限部分族raw包、有限集合包含の標準δ射、
+係数・初期変数の公式、恒等・合成条件とMathlib DirectedSystem、全族raw包への両立標準δ射を構成した。
+p正則性・ghost単射・平坦性を仮定しない。9公開宣言（DirectedSystemインスタンスを含む）の
+対象2065ジョブ成功、警告なし。B4全体pure監査成功、標準3公理のみ。新sorry・公理・引用なし。
+有限部分族の余極限と全族の具体的比較に使用する。一般B4全射性完成とは区別する。
