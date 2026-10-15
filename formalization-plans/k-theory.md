@@ -6312,7 +6312,7 @@ IDは計画上の単位であり、1行を1コミットや1日とみなさない
 | S0（完了、§214） | Spectra/ModelCategory/Combinatorial, LeftProper | R1,A0、既存レベル構造 | 一般C,Kの対称スペクトルの局所可呈示性と必要条件下の左固有性。Mod型・余極限・accessibleなmonad等の比較を証明し、圏の名前だけで推論しない |
 | S1（完了、§216） | Spectra/Stable/LocalizingMaps, Omega | S0,L0、既存free/evaluation | F_(n+1)(QA⊗K)⟶F_n(QA)を実際の射として構成。Sの小ささ、cofibrant性、局所fibrant対象とΩ_K対象の同値 |
 | S2（完了、§218） | Spectra/Stable/ModelCategory, EnrichedModel | S1,L4,E0 | 一般定理を適用した安定モデル、三クラス・生成性・局所置換・monoidal/SM7。具体的存在引用を追加しない |
-| S3 | Spectra/Stable/Stability, SimplicialComparison | S2、既存円tensor/随伴 | K-tensorの導来可逆性と通常の懸垂の安定性を区別。PSS/S¹で円tensorと導来Σを比較し、Σ⊣Ωの同値・旧APIの互換性を検証 |
+| S3（完了、§223） | Spectra/Stable/Stability, SimplicialComparison | S2、既存円tensor/随伴 | K-tensorの導来可逆性と通常の懸垂の安定性を区別。PSS/S¹で円tensorと導来Σを比較し、Σ⊣Ωの同値・旧APIの互換性を検証 |
 
 R系列とA/F系列は一般論を構成するための独立した部分を含むが、並行エージェント起動の指示ではない。
 実行順はR0→R1→R2→R3を最初の主要ゲートとし、A0/A1→F0〜F4→L0〜L5、E0→S0〜S3へ進む。
@@ -11149,3 +11149,62 @@ cofibrant Eについて、Q(通常のhomotopy suspension E)≅Q(circle⊙E)を�
 PSS/S¹ではその結果を既存の懸垂・ループ随伴の導来同値として検証する必要がある。
 F1の指定関手的分解なしの任意モデル源の最終RMap関手も引き続き未完了。
 全体目標F→L→E→Sは継続する。
+
+
+## 223. S3完了：通常の導来懸垂とループの同値（2026-10-16）
+
+### 223.1 自然性とホモトピー圏への降下
+
+§222の対象ごとの比較を関手全体の自然同型へ拡張した。
+共有`Pointed/CylinderConeMap`は端点を保つcylinder間の射からcone間の射を構成し、
+商への比較射の可換性をpushoutの普遍性から証明する。この射の計算には生成条件は不要。
+`Pointed/SuspensionNaturality`はhomotopy colimit比較の自然性とcone spanの可換性を使い、
+通常のhomotopy pushout懸垂とcylinder商との比較同型の自然性を証明する。
+`Quillen/CofibrantComparison`はcofibrant対象からホモトピー圏への合成自体が局所化であることを使い、
+その上の自然同型をホモトピー圏全体へ延長する。任意モデル源に指定関手的分解を要求しない。
+共有層はSpectraをimportしない。
+
+`General/CircleSuspensionNaturality`で実際の単体的interval・cone・円商の射を比較し、
+cofibrant対象上の比較自然同型を得る。`General/DerivedSuspensionComparison`はこれを降下させ、
+通常のhomotopy pushout懸垂の局所化と、円tensorの任意に選んだ左導来関手を自然同型で結ぶ。
+この比較は一般Kに適用できるが、一般Kで通常の懸垂が可逆だとは主張しない。
+
+### 223.2 構成済み局所モデルでの最終定理
+
+`ModelCategory/PointedPresentability`は基点付き単体的集合の局所可呈示性を、
+単体的集合の局所可呈示性と基点忘却随伴の忠実性・保守性・可到達性から証明する。
+最終利用例でこの局所可呈示性を仮定する必要はなくなった。
+
+`Stable/OrdinarySuspension`は通常の導来懸垂との比較を既存の導来懸垂・ループ随伴へ移送する。
+この移送補題の円tensor可逆性の入力は、最終定理では実際に証明する。
+`Stable/SimplicialStability`の公開定理
+`StableModelPresentation.exists_ordinarySuspensionLoopEquivalence`は、構成済みのpから
+局所モデルの生成表示・左固有性・SM7作用を取得し、§220のK-tensor逆関手をK=S¹に適用する。
+その結果、ホモトピー圏の実際の同値eを構成する。eの順関手は0←X→0のhomotopy colimitを
+局所化した通常の懸垂であり、逆関手は既存のnativeループ関手の右導来そのものである。
+選んだ左右導来関手と比較変換、その導来性の証明も同時に出力する。
+
+元のレベルモデルと局所モデルは明示的に区別する。元のレベル生成表示・左固有性・
+free functorの左Quillen性はS0からの入力である。局所化後の対応する性質、懸垂の可逆性、
+基点付き単体的集合の局所可呈示性を追加仮定へ戻さない。SSetの基準モデル条件は従来どおり。
+通常の局所化存在の入力や非cofibrant単位対象向けAPIは変更していない。
+∞圏・素朴な安定ホモトピー群・semistabilityの追加仮定は用いない。
+
+### 223.3 受入検証と全体の残項目
+
+- 共有入口と最終安定性モジュールの合同build：3034 jobs、成功。
+- `check_ordinary_suspension_stability`：公開最終定理を使い、通常の導来懸垂を順関手、
+  既存ループの右導来を逆関手とする同値を確認。87宣言・8モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：4493宣言・388モジュール、標準公理のみ。
+- `check_spectrum_derived_tensor_inverse`：70宣言・4モジュール。
+- `check_homotopy_suspension`：73宣言・3モジュール。
+- `check_spectrum_suspension_geometry`：97宣言・6モジュール。
+- `check_spectra_stage2`、上記回帰確認、差分の空白検査はすべて成功。
+
+新規sorry・引用axiomなし。共有自然性と降下`c5230ffd`、自然比較と基礎圏の局所可呈示性
+`459a6016`、構成済み円局所化での通常の懸垂・ループ同値`99696439`。
+S0・S1・S2・S3はそれぞれ§214・§216・§218・§223で受入条件を満たした。
+
+F1の「指定した関手的分解を仮定しない任意モデル源での最終RMap関手」は未完了。
+任意モデル源をcombinatorial源へ狭めず、関手性・不変性・fibrancy・π₀と通常のHoの一致を
+揃えることが次の残項目である。全体目標F→L→E→Sは引き続き継続中。

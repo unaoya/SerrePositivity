@@ -183,3 +183,15 @@ cofibrantなXについて次数シフト付きHom、実際の内部Hom(F_n(X),E)
 スペクトルのモデル構造や局所化はΩ_K保存の入力に含まない。
 受入`check_general_spectrum_internal_hom_omega`は30宣言・5モジュールを標準公理のみで監査。
 実装`06473b08`。局所化後のmonoidal/SM7への接続は計画§218。
+
+
+## S3完了：通常の導来懸垂・ループの同値（2026-10-16）
+
+`CircleSuspensionNaturality`と`DerivedSuspensionComparison`は通常のhomotopy pushout懸垂と
+円tensorの左導来をホモトピー圏全体で自然同型にする。
+`Stable/SimplicialStability`の`StableModelPresentation.exists_ordinarySuspensionLoopEquivalence`は
+構成済み円局所化から、通常の導来懸垂を順関手、既存ループの右導来を逆関手とする同値を構成する。
+局所化後の生成性・左固有性・SM7と円tensor可逆性は既存構成から取得する。
+基点付き単体的集合の局所可呈示性も証明し、追加仮定に戻さない。
+受入例は87宣言・8モジュールの標準公理監査とともに成功。
+実装`459a6016`・`99696439`、詳細と全体の残項目は計画§223。

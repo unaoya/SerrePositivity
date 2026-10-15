@@ -1321,3 +1321,12 @@ good cylinderを構成する。標準Reedy frameとBrown補題を使い、cylind
 左固有combinatorial圏では、cone spanを使う二本の弱同値からcylinder商との対象ごとの同型を構成。
 共有入口はSpectraをimportしない。4465宣言・385モジュールの標準公理監査が成功。
 実装`fa1869ce`。自然性と関手全体の比較は未完了で、詳細は計画§222。
+
+
+## 通常の懸垂比較の自然性と局所化への降下（2026-10-16）
+
+`Pointed/CylinderConeMap`と`Pointed/SuspensionNaturality`はcone・商の射を構成し、
+通常のhomotopy pushout懸垂とgood cylinder商の比較同型の自然性を証明する。
+`Quillen/CofibrantComparison`はcofibrant対象上の比較自然同型をホモトピー圏全体へ降ろす。
+共有入口はSpectraをimportしない。4493宣言・388モジュールの標準公理監査が成功。
+実装`c5230ffd`。スペクトルへの適用を含む完了条件は計画§223。
