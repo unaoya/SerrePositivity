@@ -3942,3 +3942,29 @@ U11e全受入は未完。斉次三重生成元の像と左Fの主Hom自然性は
 今回の受入範囲には含めない。次は結合比較の等式輸送の成分評価を正規化してこれを完成させ、
 右Bの全Hom自然性・bimodule同型・三角/五角へ進む。U12〜U17・D4mも未完のまま継続する。
 共有系列への新しい不足要求はなく、担当外ファイル・共有ルートは変更していない。
+
+
+### 17.50 U11e19：結合比較の斉次成分と両括弧付けの左作用（2026-10-16）
+
+`Complexes/MapEvaluation.lean`は複体の合成等式を斉次元へ評価するchain_comp_apply_of_eq、
+各次数の元から射の等式を構成するchain_ext_apply、および合成の評価式を公開する。
+抽象的な複体の段階で評価を行うことで、実際の反復coendや等式輸送を全展開しない。
+
+`Tensor/AssociatorElements.lean`は実際の左右の合成の斉次三重生成元と三重包含による表示を定義し、
+associatorValueIso_hom_elementで結合比較がR,Q,Pの順の生成元を符号なしで送ることを証明した。
+内側の総次数i/lを別々に指定でき、任意の非有界複体を保持する。
+`Tensor/AssociatorLeftAction.lean`は両括弧付けの左F作用が先頭R因子へ作用する公式を証明する。
+右括弧ではcompose_leftAction_elementを二回適用し、作用後のRの次数jと内側総次数l'を明示する。
+これらの証明に局所maxHeartbeats指定は残していない。
+
+Checks.AssociatorElements・Checks.AssociatorGenerators・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2700 jobs、終了コード0、警告なし）。任意A・独立対象宇宙・Small Fなしの構成、
+R/Q/Pの次数−1/2/−1、ZMod 2で結合比較の生成元公式を検査した。
+主要10宣言の直接公理監査は終了コード0、標準公理のみ。監査累計1663宣言。
+担当Leanのsorry/admit/新規axiomは0件。文書検査は22 Markdown・311 exposition参照、失敗0件。
+担当差分の空白検査も成功。
+
+U11e全受入は未完。次は今回の生成元の式を全cochain外延性で束ね、左Fの主Hom自然性を検証する。
+その草稿AssociatorLeftNaturality/Checks.AssociatorLeftActionはまだ未受入・未コミットである。
+右Bの主Hom自然性、bimodule同型、三角/五角、U12〜U17・D4mも継続対象。
+共有系列への新しい不足要求はなく、担当外ファイル・共有ルートを編集していない。
