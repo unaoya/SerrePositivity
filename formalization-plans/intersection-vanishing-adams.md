@@ -3545,6 +3545,15 @@ K₀ の類への移送と重みつき乗法性は次の小段。
   `lake env lean scripts/audit_adams_koszul_fourier_one.lean` の九定数の監査が成功。
   公理は標準三公理のみ。次に逆変換を公開し、次数 −2,−3 へ移る。
 
+### S10.8c.2a.4：次数 −1 の Fourier 逆変換
+
+- `Adams/KoszulCubeFourierOneInverse` は `eᵣ=Σⱼ t^(jr)vⱼ` の三式を
+  生成元から次数 −1 の成分への射の等式として証明する。
+- スカラー座標の逆変換だけでなく、具体的な Koszul 三乗の包含写像で復元式を検証した。
+- `lake build SerrePositivity.KTheory.Adams.KoszulCubeFourierOneInverse` が成功（2838 jobs）。
+  `lake env lean scripts/audit_adams_koszul_fourier_one_inverse.lean` の三定理の監査が成功。
+  公理は標準三公理のみ。次数 −2,−3 の小行列式・行列式の逆変換は後続小段。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
