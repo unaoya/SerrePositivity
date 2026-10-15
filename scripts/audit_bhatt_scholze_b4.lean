@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.DeltaRootFamilyRawRegular
 import SerrePositivity.BhattScholze.DeltaAdjoinDivisionFamilyRegular
 import SerrePositivity.BhattScholze.DeltaAdjoinDivisionFiniteColimitEquiv
 import SerrePositivity.BhattScholze.DeltaAdjoinDivisionFiniteColimit
@@ -5498,3 +5499,6 @@ assert_no_sorry SerrePositivity.BhattScholze.deltaAdjoinDivisionFiniteColimit_p_
 
 assert_no_sorry SerrePositivity.BhattScholze.deltaAdjoinDivisionFamily_p_mul_injective
 #print axioms SerrePositivity.BhattScholze.deltaAdjoinDivisionFamily_p_mul_injective
+
+assert_no_sorry SerrePositivity.BhattScholze.deltaRootFamilyRaw_p_mul_injective
+#print axioms SerrePositivity.BhattScholze.deltaRootFamilyRaw_p_mul_injective
