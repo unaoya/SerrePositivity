@@ -5118,7 +5118,7 @@ R37–R40のコミットは `022387f`、`fcd06d8`、`247e86c`、`4652f6f`、
 | R46 | 正則パラメータの有限添字APIを四利用先で共用 | 完了：4利用先・全標数消滅まで3933 jobs、5宣言の公理監査・次元0の契約・全依存ゲートが成功。コメントの行長修正後も元ソースを型検査。ログ `/tmp/adams-r46-{build,audit,source-check,boundaries}.log` |
 | R47a | 閉点のG₀長さ評価を整数Eulerから分離 | 完了：3宣言をMaximalSupportLengthへ移し、SupportedModuleの完全複体依存も除去。整数Eulerまで2743 jobs、5宣言の公理監査・評価のrfl・新しいG₀依存ゲートが成功。ログ `/tmp/adams-r47a-{build,audit,boundaries}.log` |
 | R47b | 有限極大台のG₀同型を半局所化の幾何から分離 | 完了：一般部分を3共通モジュールへ移し、G₀関手の完全複体依存と局所長さのTor依存を除去。半局所純粋重みまで3333 jobs、専用7宣言・既存22宣言の公理監査と新依存ゲートが成功。旧高さ層の入口を維持。ログ `/tmp/adams-r47b-{build,audit,lengths-audit,boundaries}.log` |
-| R47c | G₀の係数長さ座標をK₀比較から分離 | 未着手 |
+| R47c | G₀の係数長さ座標をK₀比較から分離 | 完了：G0CoefficientsとMaximalSupportCoefficientLengthを分離。半局所純粋重み3335 jobs、K₀係数局所化3249 jobs、専用7宣言・既存22宣言の公理監査、新依存ゲートが成功。任意の可換係数環を維持し、R47bの移送式2行の行長も修正。ログ `/tmp/adams-r47c-{build,localization-build,audit,lengths-audit,boundaries}.log` |
 | R48 | 両Adams族・並行利用先・公開消滅の統合検証 | 未着手 |
 
 ## 5. 受入条件

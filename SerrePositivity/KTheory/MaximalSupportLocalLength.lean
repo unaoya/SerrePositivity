@@ -66,7 +66,8 @@ lemma localLengthMap_residue_self (p : PrimeSpectrum R) (hm : p.asIdeal.IsMaxima
   let T := Localization.AtPrime p.asIdeal
   have : IsSimpleModule T (T ⧸ maximalIdeal T) :=
     isSimpleModule_iff_isCoatom.mpr (maximalIdeal.isMaximal T).out
-  rw [(moduleCatBaseChangeTensorEquiv (R := R) (B := T) (supportedResidueModule W p hm hp).obj).length_eq]
+  rw [(moduleCatBaseChangeTensorEquiv (R := R) (B := T)
+    (supportedResidueModule W p hm hp).obj).length_eq]
   change ((Module.length T (T ⊗[R] (R ⧸ p.asIdeal))).toNat : ℤ) = 1
   rw [← (p.asIdeal.quotMapEquivTensorQuot T).length_eq,
     IsLocalization.AtPrime.map_eq_maximalIdeal p.asIdeal T, Module.length_eq_one]
@@ -84,7 +85,8 @@ lemma localLengthMap_residue_ne (p q : PrimeSpectrum R) (hm : q.asIdeal.IsMaxima
   have ht : q.asIdeal.map (algebraMap R T) = ⊤ :=
     Ideal.eq_top_of_isUnit_mem _ (Ideal.mem_map_of_mem _ hs)
       (IsLocalization.map_units (M := p.asIdeal.primeCompl) T ⟨s, hsp⟩)
-  rw [(moduleCatBaseChangeTensorEquiv (R := R) (B := T) (supportedResidueModule W q hm hq).obj).length_eq]
+  rw [(moduleCatBaseChangeTensorEquiv (R := R) (B := T)
+    (supportedResidueModule W q hm hq).obj).length_eq]
   change ((Module.length T (T ⊗[R] (R ⧸ q.asIdeal))).toNat : ℤ) = 0
   rw [← (q.asIdeal.quotMapEquivTensorQuot T).length_eq, ht]
   simp only [Module.length_eq_zero, ENat.toNat_zero, Nat.cast_zero]

@@ -147,6 +147,14 @@ for name in maximal_length:
               'SerrePositivity.CategoryTheory.TriangulatedK0'})
 print('General G₀ local lengths avoid height strata, Tor, and K₀ comparisons.')
 
+for name in ['G0Coefficients', 'MaximalSupportCoefficientLength']:
+    check('SerrePositivity.KTheory.' + name,
+          lambda dep: '.PerfectComplex.' in dep or '.KTheory.Adams.' in dep or
+          dep in coefficient_comparison or dep in {
+              'SerrePositivity.KTheory.LocalizationKernelSupport',
+              'SerrePositivity.KTheory.LocalizationCoefficients'})
+print('G₀ coefficients and length coordinates avoid K₀, Euler, and localization kernels.')
+
 geometry = ['ClosedSupportGeometry', 'ModuleClosedSupport', 'SupportHeight',
             'SemilocalSupport', 'ModuleSupportHeight', 'LocalizationTorsion', 'ModuleSupport',
             'PrincipalSupport', 'LocalizationLattice', 'SubmoduleExact']
