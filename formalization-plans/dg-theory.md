@@ -1538,3 +1538,22 @@ U10全受入は未完。次はfreeSphere・余積・このfiltrationについて
 導来Hom計算と解像度の選択独立性へ接続する。
 K(D)/D(D)の三角構造・Verdier商比較、余積・局所小性の宇宙、一対象同値の三角形/余積保存も残る。
 共有一般モデル圏/Quillen/転送/SM7は複製せず、D4m条件は§13.23のまま。
+
+
+### 13.35 U10b2：自由sphereの全次数Homとhomotopically projective性
+
+`Complexes/SphereHom.lean` はMathlibのfromSingleEquivを再利用し、
+`Hom(sphere n,K)` の次数pの要素を `K.X (n+p)` へ同定する。
+A線形同値・零・全微分との整合性を証明し、値域Kのacyclic性からHom複体のacyclic性を導く。
+Homの次数を一律にshiftと見なして微分の符号を省くことはせず、全p/qの成分式を証明する。
+
+`Derived/FreeSphereProjective.lean` の `freeSphere_homotopicallyProjective` は
+free/evaluationの全次数Hom chain isoから主Hom endのacyclic性を証明する。
+各評価複体のK-projective性では代用せず、任意の小さいdg圏上で成立する。
+任意可換環・非有界複体・全整数次数で、Hom_Dのflatness/projectivityは不要。
+
+受入入口 `Checks/FreeSphereProjective.lean` はA線形性・微分・全Hom endの条件、
+ℤの負次数とZMod 2の正次数での適用を検証する。
+この入口・ProductAcyclic・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3193 jobs）。
+直接実行の主要6宣言は標準公理のみ。累計679宣言。
+U10全受入は未完。余積とfiltrationでの上記性質の証明を次に接続する。
