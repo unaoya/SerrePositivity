@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.DeltaPDivisionFamilyStep
 import SerrePositivity.BhattScholze.DeltaAdjoinDivisionEmpty
 import SerrePositivity.BhattScholze.DeltaAdjoinDivisionReindex
 import SerrePositivity.BhattScholze.DeltaRootPairRawRegular
@@ -5213,3 +5214,9 @@ assert_no_sorry SerrePositivity.BhattScholze.deltaAdjoinDivisionEmptyEquiv_isDel
 
 assert_no_sorry SerrePositivity.BhattScholze.deltaAdjoinDivisionEmptyEquiv_coeff
 #print axioms SerrePositivity.BhattScholze.deltaAdjoinDivisionEmptyEquiv_coeff
+
+assert_no_sorry SerrePositivity.BhattScholze.deltaPDivisionFamilyStep_p_mul_injective
+#print axioms SerrePositivity.BhattScholze.deltaPDivisionFamilyStep_p_mul_injective
+
+assert_no_sorry SerrePositivity.BhattScholze.deltaPDivisionFamilySum_p_mul_injective
+#print axioms SerrePositivity.BhattScholze.deltaPDivisionFamilySum_p_mul_injective
