@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.CochainDiscreteAlgebra
 import SerrePositivity.HomologicalAlgebra.DerivedSingleTensorUnit
 import SerrePositivity.HomologicalAlgebra.DerivedSingleTensorSymmetry
 import SerrePositivity.HomologicalAlgebra.CochainAugmentationModels
@@ -917,3 +918,12 @@ assert_no_sorry SerrePositivity.boundedAboveDerivedAlgebraMul_unit
 #print axioms SerrePositivity.boundedAboveDerivedTensorModuleAugmentation_projective_models
 #print axioms SerrePositivity.boundedAboveDerivedAlgebraUnit_mul
 #print axioms SerrePositivity.boundedAboveDerivedAlgebraMul_unit
+
+-- G2-5a-ii: ordinary and discrete cochain algebra associativity.
+assert_no_sorry SerrePositivity.moduleAlgebraMonObj
+assert_no_sorry SerrePositivity.cochainAlgebraMonObj
+assert_no_sorry SerrePositivity.cochainAlgebraMul_assoc
+assert_no_sorry SerrePositivity.cochainAlgebraMul_augmented_assoc
+
+#print axioms SerrePositivity.cochainAlgebraMonObj
+#print axioms SerrePositivity.cochainAlgebraMul_augmented_assoc
