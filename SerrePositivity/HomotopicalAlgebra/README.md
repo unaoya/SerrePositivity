@@ -1343,3 +1343,16 @@ Ho(C)ᵒᵖ→(Ho(C)→Ho(SSet))を構成し、各値に実際のKanなresolutio
 関手的分解・局所可呈示性・豊穣構造を源に仮定しない。
 新規108宣言・5モジュールと共有4601宣言・393モジュールの標準公理監査が成功。
 実装`fcbefc75`・`a29026e2`。SSet値の厳密化はF1の残項目であり、詳細は計画§224。
+
+
+## 持ち上げ選択の高次整合性を扱う空間（2026-10-16）
+
+`HomotopyFunctionComplex/LiftSpace`はaugmented frameの実際のHom fiberを構成する。
+Reedy cofibrant frameとtrivial fibrationに対して、一点へのprojectionがtrivial fibrationとなり、
+任意のmonomorphismに沿う延長と全次元の境界充填を与える。
+`ResolutionLiftSpace`は任意モデル源の二つのresolutionと元の射にこれを適用し、
+厳密なliftからの点・二点間の実際の区間・Kan性・一点への局所化同型を証明する。
+`LiftSpaceFunctor`は固定した基底の上でfiberの厳密な標的関手性とprojectionの自然性を与える。
+源の指定関手的分解は不要。新規63宣言・3モジュールと共有4664宣言・396モジュールの
+標準公理監査が成功。実装`37ac8bdd`、詳細は計画§225。
+最終RMapへの作用・合成と厳密化はF1の残項目である。

@@ -11275,3 +11275,64 @@ Ho(SSet)値の関手から対象ごとの代表を選ぶだけでは高次整合
 resolution比較の高次整合性を保持する構成、または同じ実際の写像空間と比較できる別の厳密な
 mapping-space構成が必要である。この点を省略してF1を完了とはしない。
 一般源をcombinatorial源へ狭めず、∞圏の導入も行わない。全体目標F→L→E→Sは継続中。
+
+
+## 225. F1進捗：持ち上げ選択の実際の空間と全次元の境界充填（2026-10-16）
+
+§224のHo(SSet)での持ち上げ独立性に続き、選択間の整合性を実際の単体で扱うための
+空間を構成した。SSet値の最終RMapとその厳密な作用・合成は引き続き未完了である。
+
+### 225.1 一般のaugmented frameの持ち上げ空間
+
+`HomotopyFunctionComplex/LiftSpace`は、cosimplicial対象A、augmentation a:A→const X、
+f:X→Bと射p:E→Bから、実際の単体集合Hom(A,p)の、aにfを合成した定数単体上の
+pullback fiberを構成する。点への射・Hom(A,E)への射・それらの可換性は実際のpullbackから得る。
+厳密なlift e:X→Eは、この空間への実際のΔ[0]からの射を与える。
+その射をHomへ戻すとaにeを合成した定数単体になり、点への合成は恒等射となる。
+この構成自体にはモデル構造は不要である。
+
+AがReedy cofibrant、pがtrivial fibrationなら、空間からΔ[0]への実際のprojectionが
+trivial fibrationとなる。証明は既存のHomによるtrivial fibration保存とpullback安定性を使う。
+源Cに関手的因子分解・局所可呈示性・豊穣構造・無限余完備性を要求しない。
+SSetモデルとcof=monoは明示的な値側の入力である。
+
+このprojectionの持ち上げから、任意の単体集合のmonomorphism K→Lに沿って
+K→持ち上げ空間を延長できることを証明した。従って任意次元の境界の値を保つ
+実際のΔ[n]からの射を構成できる。`boundaryFiller`とその境界制限の等式も実装した。
+SSetのfib=horn.rlpからKan性を得る。任意の通常の局所化において、実際のprojectionが
+この空間と一点との同型を与える。選んだfillersの自然性は主張していない。
+
+### 225.2 任意モデル源のresolution選択への適用と関手性
+
+`ResolutionLiftSpace`は§224の二つの`ResolutionObject`と元の射fについて、
+その実際のReedyモデル上でもう一つcosimplicial resolutionを構成する。
+上のfiberにおけるn単体は、この外側resolutionのn次対象から標的resolutionへの
+cosimplicial射で、元のfを覆うという条件を満たすものである。
+厳密な元のresolution射そのものをn単体と定義しているのではない。
+厳密なliftは外側augmentationへの前合成によって実際の点を与える。
+
+この空間から一点へのtrivial fibration性、すべてのmonomorphismに沿う延長、Kan性、
+一点への局所化同型を証明した。二つの点から実際の区間Δ[1]への射も構成し、
+二端点の値が元の二点であることを証明した。π₀だけの一致やHo(SSet)での等式には留めない。
+一般のinterval boundaryが二頂点のcoproductであるという既存の共有計算を再利用する。
+
+`LiftSpaceFunctor`は固定したBとfに対して、実際のfiberをOver(B)上の厳密なSSet値関手にする。
+射は標的への後合成から作り、恒等射則・合成則と一点へのprojectionの自然性を証明した。
+この関手性自体も源にモデル構造を要求しない。
+
+### 225.3 受入検証と次の実装単位
+
+- 共有入口の合同build：2584 jobs、成功。
+- `check_resolution_lift_spaces`：任意モデル源、指定分解なしの実際のlift点、任意次元の
+  境界充填、二点間の実際の区間、Kan性、一点への同型、Over(B)上の厳密な関手。
+  新規63宣言・3モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：4664宣言・396モジュール、標準公理のみ。
+- `check_arbitrary_source_resolutions`：108宣言・5モジュール、§224のAPIの回帰確認。
+- stageした差分の空白検査も成功。新規sorry・引用axiomなし。実装`37ac8bdd`。
+
+次はこれらのlift単体による実際のresolution Homへの作用を構成する。
+外側resolutionと内側cosimplicial対象の二重構造を保ち、次数ごとの合成を対角の
+単体的写像へまとめ、既存の写像空間への比較とその弱同値性を証明する必要がある。
+その上で恒等射・合成の高次整合性を保つ厳密化を完成させる。
+今回の境界充填だけから、作用や合成の厳密性が自動的に従うとは扱わない。
+F1の任意モデル源でのSSet値関手の契約を維持し、全体目標F→L→E→Sは継続する。
