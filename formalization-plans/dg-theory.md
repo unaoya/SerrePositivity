@@ -2419,3 +2419,19 @@ Checksの直接実行で主要7宣言を監査し、標準公理のみ。累計1
 これは既存複体側の比較であり、K(D)の八面体公理の完成ではない。
 次は全dg自然な主Hom要素から両射と収縮を構成し、この比較へ評価で接続する。
 三角形shift比較・Pretriangulatedの検証も継続中で、U10全受入は未完である。
+
+
+### 13.75 U10t12：閉零加群圏の標準cone三角形の整数shift同型
+
+`Module/ConeShiftTriangleOrdinary.lean`は、明示的な加群shift射を可換条件として受け取る
+三角形同型の構成子を公開する。目標と入力の可換条件を同じshift表示へ正規化し、
+巨大な豊穣coneの内部構成の展開を避ける。
+`moduleConeTriangleShiftIso`は、shiftした標準cone三角形とshift射の標準cone三角形を比較する。
+第一対象の比較は恒等、第二対象は(-1)^s倍、第三対象は既存の実際のcone shift同型である。
+三つの可換条件を、§13.73の符号付き可換式から証明した。
+`Module/TriangleShiftMap.lean`は、shiftと可換な加法的関手でこの種の同型を移す補助構成子を
+任意の圏・関手について証明する。共有モデル圏一般論を追加していない。
+
+Checks.ConeShiftTriangleOrdinary・Checks.ConeCompositionInputs・StageSix・既存Spectra.StageTwoの
+同時ビルドは成功（2530 jobs）。本単位の主要4宣言の直接公理監査は標準公理のみ。累計1057宣言。
+K(D)への移送と逆回転閉性・Pretriangulatedの検証は継続中で、U10全受入は未完である。
