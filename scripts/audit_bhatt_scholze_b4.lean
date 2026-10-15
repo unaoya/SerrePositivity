@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.RankOneDPTruncatedAction
 import SerrePositivity.BhattScholze.RankOneDPPrimeBlockBasis
 import SerrePositivity.BhattScholze.RankOneDPPrimeBlocks
 import SerrePositivity.BhattScholze.RankOneDPAnyBasis
@@ -4530,3 +4531,19 @@ assert_no_sorry SerrePositivity.BhattScholze.rankOneDPPrimeBlockBasis_mul
 #print axioms SerrePositivity.BhattScholze.rankOneDPPrimeBlockBasis_mul
 assert_no_sorry SerrePositivity.BhattScholze.rankOneDPPrimeBlockBasis_last_mul
 #print axioms SerrePositivity.BhattScholze.rankOneDPPrimeBlockBasis_last_mul
+
+-- Concrete truncated-polynomial action and its power basis.
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPTruncatedMap
+#print axioms SerrePositivity.BhattScholze.rankOneDPTruncatedMap
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPTruncatedMap_root
+#print axioms SerrePositivity.BhattScholze.rankOneDPTruncatedMap_root
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPTruncatedAlgebra
+#print axioms SerrePositivity.BhattScholze.rankOneDPTruncatedAlgebra
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPTruncated_isScalarTower
+#print axioms SerrePositivity.BhattScholze.rankOneDPTruncated_isScalarTower
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPTruncatedBasis
+#print axioms SerrePositivity.BhattScholze.rankOneDPTruncatedBasis
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPTruncatedBasis_apply
+#print axioms SerrePositivity.BhattScholze.rankOneDPTruncatedBasis_apply
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPTruncatedMap_basis
+#print axioms SerrePositivity.BhattScholze.rankOneDPTruncatedMap_basis
