@@ -4804,13 +4804,22 @@ A–E の全単位は実装・監査・公開済み。S11 までの本計画に�
    射影の基礎へ移し、冪等性をこの公式の一回の適用で証明。
    恒等作用の七つの結果を一般のスカラー作用から導き、既存の型と像の同型の写像を維持。
    変更モジュールのビルドと射影・恒等作用・三周期の三つの既存公理監査が成功。
-3. **R3／Fourier モデルの組立ての整理（完了）**：`CubicActionCharacter.characterScalar`
-   （名前空間は `CochainCubicAction`）と `weightedK0Class_characterScalar` を追加。
+3. **R3／Fourier モデルの組立ての整理（完了）**：`CubicActionCharacter` モジュールの
+   `CochainCubicAction.characterScalar` と `weightedK0Class_characterScalar` を追加。
    四成分のスカラー作用をモデル構成側へ移し、回転の三乗を直和作用の `cube` から導く。
    重みつき類では個別の作用の再定義と四回のスカラー評価を共通化し、台・完全性は明示する。
    対象ビルド 3312 jobs、スカラー類・モデル写像・モデル類の三公理監査が成功。
-4. **R4／統合検証（予定）**：ルート・公開定理の利用先をビルドし、専用監査・共通公理監査と
-   公開型の維持を確認する。
+4. **R4／統合検証（完了）**：ルート・`Paper.Lemma3_5`・`Devissage`・`FiniteExtension`・
+   `EqualCharZeroPositivity`・`K0Functoriality` の統合ビルドが 4922 jobs で成功。
+   `audit_intersection_vanishing_complete.lean` の十四宣言と `audit_axioms.lean` の検査が成功。
+   公開消滅定理・両標数分岐・正規化・局所化の族は引き続き標準三公理のみ。
+   `Inputs/IntersectionTheory.lean` は着手前とバイト単位で一致し、整理した既存五十二宣言の
+   ソース上の宣言部分も維持。基本 API のローカル依存は `CochainBiproduct` のみであり、
+   全標数の消滅証明から `Inputs.IntersectionTheory` への import 経路もない。
+
+実装のコミットは R1 `ecefbf1`、R2 `fb95416`、R3 `89750ff`。
+検証ログは `/tmp/adams-refactor-integration-build.log`、
+`/tmp/adams-refactor-final-audit.log`、`/tmp/adams-refactor-common-audit.log`。
 
 ## 5. 受入条件
 
