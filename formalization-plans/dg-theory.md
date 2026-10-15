@@ -3012,3 +3012,17 @@ Checks.BimoduleUncurryRestrictionのビルドは成功（1804 jobs、警告な�
 直接実行は終了コード0、主要2宣言の公理は標準公理のみ。監査累計1231宣言。
 次はcochainの四重合成へ交換則を運び、uncurryHomの合成保存を証明する。
 両因子の制限計算だけではuncurried dg関手の構成・U11b全受入とはしない。
+
+
+### 17.12 U11b11：符号付き交換則と四重cochain合成
+
+`Complexes/CochainInterchange.lean`は中央二因子の符号付き交換則を、前後のcochainとの四重合成へ運ぶ。
+各中間次数と全次数nを明示し、既存Cochain.comp_assocとスカラー合成則を使って証明した。
+合成の結合をobjectwiseに仮定するのでなく、主Homを評価した既存cochainの法則として利用できる。
+この補題を次のuncurryHom合成保存へ使用する。
+
+今回の受入入口6本・既存StageSeven・Spectra.StageTwoの同時ビルドは成功（2658 jobs、終了コード0）。
+本単位の直接監査1宣言は終了コード0、標準公理のみ。監査累計1232宣言。
+担当Leanのsorry/admit/新規axiomは0件、担当差分のgit diff --checkは成功。
+U11bの残る受入はuncurried関手の合成保存と両往復であり、その後U11c〜eへ進む。
+U17までの目標は引き続き継続中。共有一般論・共有ルート・他系列の変更は編集していない。
