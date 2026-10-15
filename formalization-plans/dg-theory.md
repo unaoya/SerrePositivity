@@ -3923,3 +3923,22 @@ U11全受入は引き続き未完。次は斉次三重生成元の結合比較�
 二つの括弧付けでの左F作用の公式と今回の全cochain外延性から主Hom自然性を証明する。
 右Bの全Hom自然性、実際のbimodule同型、三角/五角、U12〜U17・D4mも継続対象。
 共有一般論への新しい不足要求はなく、共有ルート・担当外の並行変更は編集していない。
+
+
+### 17.49 U11e18：実際の合成bimoduleの右作用の生成元公式（2026-10-16）
+
+`Tensor/BimoduleRightElements.lean`のcompose_rightAction_elementは、右Bの次数pの作用を
+相対tensorの先頭Q因子（次数k）から後ろのP因子へ移す際の符号(-1)^(p*k)を証明する。
+実際のcomposeの右作用を用い、P.transposeHom_πと既存leftHomMap_element_of_sumを再利用する。
+作用後のPの次数jと総次数nを明示し、任意の可換環・非有界複体を保つ。
+これは後続の結合比較の右B全Hom自然性に使う。
+
+Checks.BimoduleRightElements・Checks.AssociatorGenerators・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2698 jobs、終了コード0、警告なし）。独立対象宇宙、作用次数−1とQ/Pの次数1/0、
+ZMod 2の例を検査した。主要1宣言の直接公理監査は終了コード0、標準公理のみ。監査累計1653宣言。
+担当Leanのsorry/admit/新規axiomは0件。文書検査は22 Markdown・311 exposition参照、失敗0件。
+
+U11e全受入は未完。斉次三重生成元の像と左Fの主Hom自然性は草稿のビルド検証中であり、
+今回の受入範囲には含めない。次は結合比較の等式輸送の成分評価を正規化してこれを完成させ、
+右Bの全Hom自然性・bimodule同型・三角/五角へ進む。U12〜U17・D4mも未完のまま継続する。
+共有系列への新しい不足要求はなく、担当外ファイル・共有ルートは変更していない。
