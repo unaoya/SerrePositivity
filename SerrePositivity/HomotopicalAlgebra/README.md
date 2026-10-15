@@ -1128,3 +1128,15 @@ L3の基礎として`Under/Quillen`は任意の基底射のrestriction/pushout�
 対象のcofibrancyは要求しない。これは元のWの補題であり、W_Sのpushout閉性への接続は残る。
 共有入口2488 jobs、3974宣言・302モジュールの標準公理監査、6宣言・2モジュールの利用例・監査が成功。
 コミット`aeb7fd57`、詳細は計画§203。F→L→E→S全体の目標は継続中。
+
+
+L3のpushout条件は計画§204で完了（L3全体は超限合成閉性を残す）。
+`ProjectiveReindexing`・`SpanCofibrations`・`ProjectiveSpan`は実際のprojective持ち上げから
+任意のK≌WalkingSpanの両脚のcofibration性を抽出する。
+`PushoutComparison`・`SpanHomotopyColimit`は左固有性から、一方の脚がcofibrationであるspanの
+実際のhocolim→colimit比較の弱同値性を証明する。対象のcofibrancyは要求しない。
+`SpanLocalEquivalences`・`LeftProperPushout`は元のW_Sのpushout保存と
+(cof_C⊓W_S).IsStableUnderCobaseChangeを証明する。Sの小ささは不要、u/v/wは独立。
+共有入口2495 jobs、3984宣言・309モジュールの標準公理監査、12宣言・7モジュールの利用例・監査と
+hocolim保存の回帰検証が成功。コミット`5d8e8972`・`c45e13e4`。
+局所化後のモデル構造を先取りしていない。L2・L3の残条件、L4〜S3、F1の任意源の残項目は継続中。

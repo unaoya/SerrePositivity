@@ -9658,3 +9658,86 @@ F1の任意モデル源での最終関手は引き続き未完了である。
 任意の基底射のQuillen性、左固有性を使わない固定基底の比較、左固有性を使うcubeの利用例を検証した。
 共有全監査は3974宣言・302モジュール、標準公理のみで成功。差分の空白検査成功。
 実装・利用例・共有入口への接続はコミット`aeb7fd57`。
+
+
+## 204. L3のpushout条件完了：一方の脚がcofibrationであるspanのhocolim比較と元のcof∩W_Sの閉性（2026-10-15）
+
+前回の§203は元の弱同値についてのgluingまでであった。
+今回はこれを実際のhocolim比較へ接続し、**元のcofibrationと元のW_Sの共通部分のpushout閉性**を証明した。
+L3全体の完了には任意の超限合成の閉性が残る。F→L→E→S全体の目標は継続する。
+
+### 204.1 projective cofibrancyからspanの脚のcofibration性を抽出
+
+`Diagram/ProjectiveReindexing.llp_map`は、添字圏の同値K≌Lに沿う図式のreindexingが
+任意のobjectwiseクラスQに対するLLPを保存することを証明する。
+通常の関手圏の同値に付随する随伴と持ち上げの随伴対応だけを使い、
+標的圏にモデル構造や可呈示性は要求しない。
+
+`SpanCofibrations`は、WalkingSpan値の図式Dがprojectively cofibrantであるという実際のLLPから、
+Dの両脚のcofibration性をそれぞれ証明する。中心の成分を恒等射、一方の葉を任意の
+trivial fibration、他方の葉をterminal恒等射にした試験図式を構成して持ち上げを取り出す。
+Dの各対象がcofibrantであることだけから脚のcofibration性を推論してはいない。
+
+`ProjectiveSpan.legs_cofibrations`は、w-smallなKと同値e:K≌WalkingSpanを入力し、
+実際のprojectiveモデルのcofibrancyをこの判定に移す。KをType 0に固定せず、
+元のCの対象・Hom・可呈示性の宇宙u/v/wを独立に保つ。
+
+### 204.2 実際のhocolim→colimit比較
+
+`PushoutComparison.weakEquivalence_of_pushout_comparison`は§203のgluingを、
+任意の二つの実際のpushout coconeの比較射へ移す。選択されたpushoutとの標準同型を使い、
+比較の可換性はpushoutの普遍性で証明する。
+
+`SpanHomotopyColimit.comparison_weakEquivalence_of_span`は、任意のK≌WalkingSpanと図式Dについて、
+指定した一方の脚が元のcofibrationなら、実際のprojective hocolim→colimit比較が元の弱同値であると証明する。
+projective置換の脚は204.1でcofibrationとなり、その元のDへの自然変換の三成分は元の弱同値である。
+実際のcolimit coconeを同値に沿ってwhiskerし、gluing補題を適用する。
+Dの各対象のcofibrancy、他方の脚のcofibration性、局所化後のモデル構造は要求しない。
+これらの一般論・共有入口・利用例はコミット`5d8e8972`。
+
+### 204.3 元の局所同値のpushout閉性
+
+`Localization/SpanLocalEquivalences`は、上記の弱比較と§202のhocolim保存を使い、
+対応する一方の脚がそれぞれcofibrationである二つのspanの各点の局所同値から、
+その通常colimit間の局所同値を導く。
+また`localEquivalence_of_colimit_comparison`で、選択されたcolimit.mapから
+任意の実際のcolimit cocone間の比較射へ結果を移す。
+比較同型が元の弱同値であることとW_C⊆W_S、2-out-of-3を使う。
+
+`LeftProperPushout.localEquivalence_of_pushout`は、任意のSとpushout square
+
+    A -- f --> B
+    |          |
+    g          l
+    |          |
+    D -- r --> P
+
+について、fが元のcofibrationかつ元のW_Sに属すればrも元のW_Sに属することを証明する。
+証明ではspan(Id_A,g)→span(f,g)という実際の自然変換を取り、
+その三成分Id_A/f/Id_Dの局所同値性を204.2の通常colimit保存へ渡す。
+添字はAsSmall.{w} WalkingSpanへ移し、Cの局所可呈示性の宇宙を0へ制限しない。
+Sの小ささや各対象のcofibrancyも要求しない。
+
+`cof_localEquivalences_pushoutStable`はSmith認識の入力として使える
+
+    (cofibrations C ⊓ localEquivalences cof fib S).IsStableUnderCobaseChange
+
+を証明済みの出力にする。左固有性は元のW_Cのcof_Cに対する相対cobase-change安定性として明示する。
+単体集合の宇宙変更に使う各モデルと標準クラスとの一致も仮定に明記し、源Cの豊穣性やtractabilityは追加しない。
+実装・利用例・共有監査への接続はコミット`c45e13e4`。
+
+### 204.4 検証と残作業
+
+- 共有入口`Foundations`：2495 jobsで成功、新規警告なし。
+- `check_span_hocolim`：12宣言・7モジュールを標準公理のみで監査。
+  モデル未装備の標的へのreindexing、実際の脚のLLP、独立したu/v/wのspan比較、
+  任意のSと任意のpushoutでのW_S保存、Smith用の安定性クラスの利用例を検証。
+- 共有全監査：3984宣言・309モジュール、標準公理のみ。sorry・引用依存の追加なし。
+- `check_hocolim_local_equivalences`：9宣言・2モジュールの回帰検証成功。
+- 差分の空白検査成功。実装は上記2コミットに分けて保存した。
+
+L3のpushout条件は完了したが、任意の超限合成の閉性は未完了。
+§202の十分filteredなcolimit保存だけで、cofinalityの小さいlimit段階を含む任意の超限合成を
+処理済みとはしない。次は連続なcofibration列のprojective持ち上げ・hocolim比較を整備し、
+limit段階を含めて閉性を証明する。そのうえで局所境界生成射と生成された単位射のW_S所属を解消する。
+L2の最終入口、L4・L5・E0・S0〜S3、F1の任意モデル源の最終関手も引き続き未完了。
