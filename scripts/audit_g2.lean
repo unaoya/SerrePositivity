@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.DerivedAlgebraObjects
 import SerrePositivity.HomologicalAlgebra.DerivedAlgebraAssociativity
 import SerrePositivity.HomologicalAlgebra.CochainDiscreteAlgebra
 import SerrePositivity.HomologicalAlgebra.DerivedSingleTensorUnit
@@ -936,3 +937,15 @@ assert_no_sorry SerrePositivity.cochainAlgebraMul_homotopy_lift_assoc
 #print axioms SerrePositivity.cochainAlgebraMul_homotopy_lift_assoc
 assert_no_sorry SerrePositivity.boundedAboveDerivedAlgebraMul_assoc
 #print axioms SerrePositivity.boundedAboveDerivedAlgebraMul_assoc
+
+-- G2-5a-ii: actual commutative derived algebra objects and their tensor.
+assert_no_sorry SerrePositivity.boundedAboveDerivedAlgebraMonObj
+assert_no_sorry SerrePositivity.boundedAboveDerivedAlgebra
+assert_no_sorry SerrePositivity.boundedAboveDerivedAlgebra_mul
+assert_no_sorry SerrePositivity.boundedAboveDerivedAlgebra_one
+assert_no_sorry SerrePositivity.boundedAboveDerivedTensorAlgebra
+assert_no_sorry SerrePositivity.boundedAboveDerivedTensorAlgebra_X
+
+#print axioms SerrePositivity.boundedAboveDerivedAlgebraMonObj
+#print axioms SerrePositivity.boundedAboveDerivedAlgebra
+#print axioms SerrePositivity.boundedAboveDerivedTensorAlgebra

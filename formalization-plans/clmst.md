@@ -4958,6 +4958,15 @@ K-projective性・tensorのホモトピー保存・標準cochain積の結合則�
 これで既存の実積・単位について結合・可換・左右単位則が揃った。次はMonObjと可換代数対象へ束ね、
 二因子の実導来tensorの代数構造・因子からの標準射を供給する。完備化乗法・実H⁰環・環比較は残る。
 
+G2-5a-ii代数対象（2026-10-15）：`DerivedAlgebraObjects.lean`で、証明済みの結合・可換・左右単位則を
+`MonObj`と`IsCommMonObj`へまとめ、既存のA[0]そのものを可換代数対象として公開した。
+積・単位は既存`boundedAboveDerivedAlgebraMul`・`boundedAboveDerivedAlgebraUnit`と定義上同じである。
+さらに二つの離散代数の実導来tensor上に標準の可換積を構成した。
+`boundedAboveDerivedTensorAlgebra_X`で、台対象が既存実tensorそのものと一致することを公開する。
+新規6宣言を含むG2監査510宣言と対象ビルド2368ジョブが成功。代数対象・tensor構造は標準3公理のみ。
+共通import閉包83モジュールに禁止依存なし。ここまでで実tensorの代数構造を供給したが、
+因子の標準射、標準augmentationの乗法両立、完備化への積の延長、実H⁰環・PDCompletionH0比較は残る。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
