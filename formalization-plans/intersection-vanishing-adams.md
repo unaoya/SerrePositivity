@@ -3566,6 +3566,21 @@ K₀ の類への移送と重みつき乗法性は次の小段。
   `lake env lean scripts/audit_adams_koszul_fourier_two.lean` の十二定数の監査が成功。
   公理は標準三公理のみ。全次数の微分・巡回の式がそろったが、鎖同型への集約は後続段。
 
+### S10.8c.2b.2：小行列式・行列式のスカラー恒等式と逆変換
+
+- `PerfectComplex/CubicFourierMinorIdentities` は `(t²−1)(t−1)=3`、`(t−t²)²=−3`、
+  `(t²−1)²+(t−1)²=3` と、3 の逆元を使う規格化を証明した。
+  正規化された行列式は `(⅟3)²(t−t²)`。
+- `Adams/KoszulCubeFourierTwoInverse` は e₀₁,e₀₂,e₁₂ と頂を
+  Fourier 列から復元する四式を具体的な射の等式として証明する。
+  次数 −1 と合わせ、全ての元の生成元の復元式が検証済みとなった。
+- `lake build SerrePositivity.KTheory.Adams.KoszulCubeFourierTwoInverse` が成功（2841 jobs）。
+  `scripts/audit_adams_cubic_fourier_minors.lean` の六補題と
+  `scripts/audit_adams_koszul_fourier_two_inverse.lean` の四定理の監査が成功。
+  スカラー恒等式の公理は `propext`・`Quot.sound` の範囲内、復元式は標準三公理のみ。
+- この小段は全次数の復元式の受入。Fourier 列の双対座標・両逆性をまとめ、
+  微分・巡回の式から同変鎖同型を構成する接続は後続段。S10.8c 全体はまだ未完了。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。

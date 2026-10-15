@@ -1,0 +1,14 @@
+import SerrePositivity.KTheory.Adams.KoszulCubeFourierTwoInverse
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeE01_fourier
+#print axioms SerrePositivity.Adams.oneKoszulCubeE01_fourier
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeE02_fourier
+#print axioms SerrePositivity.Adams.oneKoszulCubeE02_fourier
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeE12_fourier
+#print axioms SerrePositivity.Adams.oneKoszulCubeE12_fourier
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulCubeTop_fourier
+#print axioms SerrePositivity.Adams.oneKoszulCubeTop_fourier
