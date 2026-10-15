@@ -7898,3 +7898,77 @@ F2の選択比較を構成したが、F2全体の完了とはしない。単体�
 F1の任意モデル源での最終関手を明示分解付きの入口だけに置き換えない。
 F3の共通基数、F4のhocolim/holim比較、その後のL0〜L5も省略せず進める。
 他チャットの変更は保持し、計画ファイル全体を一括stageしない。
+
+
+## 181. F2進捗：実際のenriched Mapとtensor Homの自然同型・標準tensor図式のReedy cofibrancy（2026-10-15）
+
+F0〜F4を経てL0〜L5まで完成させる依頼を維持している。今回、単体的tensorから作る
+cosimplicial図式のHomを、既存の実際のenriched Mapへ結ぶ自然同型を構成した。
+SM7からこのtensor図式のReedy cofibrancyも証明した。一般のresolution Homと実際の
+Map(QX,RY)の弱同値比較全体は未完了であり、今回の同型だけでF2完了とはしない。
+
+### 181.1 モデル構造に依存しない実際のMapとの同型
+
+`SimplicialTensorHom`は、既存の`EnrichedOrdinaryCategory SSet C`と
+`Enriched.TensorCotensor SSet C`を使う。新しい写像対象や豊穣構造を定義しない。
+
+- `tensorCosimplicialFamily`は、Xに対し実際の図式 n↦Δ[n]⊗X を与えるC→(Δ→C)関手。
+- `simplexTensorHomEquiv`は、tensorの既存の随伴表示と単体的Yonedaから
+  Hom_C(Δ[n]⊗X,Y)≃Map_C(X,Y)[n]を構成する。
+- `tensorCosimplicialHomIso`はこれを実際の単体集合の同型へまとめる。
+  Δのすべての射との整合性を証明し、次数ごとの全単射で止めない。
+- `tensorCosimplicialHomIso_source/target`は両変数についての自然性を証明する。
+  比較対象の射はMathlibの実際の`eHomWhiskerRight/Left`である。
+- `tensorHomBifunctorIso`は、tensor cosimplicial familyのHom関手と既存の
+  `eHomFunctor SSet C`の自然同型。
+- `replacedTensorHomIso Q R`は任意の実際の置換関手Q,Rについての二変数自然同型。
+  その各値の右辺は実際のenriched mapping object `QX ⟶[SSet] RY`そのものである。
+
+これらの同型にはモデル構造・cofibrancy・fibrancy・HT-KQの入力は不要である。
+
+### 181.2 左随伴による有限tensorの保存
+
+`StandardCosimplicial`は任意の左随伴F:SSet→Cを扱う。有限nonsingularなKの既存の実際の
+単体presentationをFで移し、FT_{Δ[-]⋙F}(K)≅F(K)を構成する。
+比較の各colimit射での式と、標準単体の任意のsubcomplex Sについて
+
+`tensorIso.hom ≫ F.map S.ι = SubcomplexTensor.inclusion S (Δ[-]⋙F)`
+
+を証明する。部分圏内のcolimitがSSetのcolimitと無条件に一致するという主張ではなく、
+既存presentationの普遍性と左随伴のcolimit保存を使っている。
+
+Fがleft Quillenで値域のcof=monoなら、実際の境界包含のFによる像はcofibrationとなる。
+上の同型で境界tensorへ移し、既存の境界tensor/latching比較と初期相対latching比較から、
+Δ[-]⋙Fの実際のReedy cofibrancyを証明する。Cには有限余極限だけで足りる。
+
+### 181.3 実際の単体的tensorへの適用
+
+`SimplicialTensorCofibrant.tensorCosimplicial_reedyCofibrant`は、cofibrantなXについて、
+既存のtensor/mapping随伴とQuillen bifunctor条件（SM7）から
+F=Δ↦Δ⊗Xがleft Quillenであることを導き、181.2を適用する。
+結果としてn↦Δ[n]⊗XのReedy cofibrancyは出力となり、別のframe仮定として要求しない。
+基準単体集合モデルとcof=monoの一致は明示入力し、新しいモデル存在引用は導入しない。
+
+これらの実装・共有入口・利用例のコミット：`4e6ffc9`。
+
+### 181.4 受入検証と残る実際のMap比較
+
+以下は成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`：2330 jobs。
+- `check_simplicial_tensor_hom`：26宣言・3モジュール、標準公理のみ。
+  モデル構造なしでの実際のeHomFunctorへの自然同型、任意のQ/Rでの二変数自然同型と
+  実際のMap(QX,RY)への各値の同型、SM7からのReedy cofibrancyを検証した。
+- `audit_homotopical_foundations`：2725宣言・172モジュール、標準公理のみ。
+- `check_resolution_hom_comparison`（83宣言・6モジュール）、`check_resolution_hom_pi_zero`
+  （85宣言・4モジュール）、`check_homotopical_foundations`、`check_spectra_stage2`。
+- `git diff --check`。
+
+次はこの標準tensor図式のaugmentationとhomotopical constancyを構成・証明し、
+一般のresolutionとの比較を§180の自然な共通比較へ接続する。
+今回証明したReedy cofibrancyとMapへの同型を、この残るホモトピー的条件の証明に
+置き換えない。基準単体集合の標準単体の幾何学的弱同値も、必要なら共有層で証明する。
+
+F1の任意モデル源での最終の厳密な関手の入口、F3の共通基数、F4のhocolim/holim比較、
+L0〜L5も引き続き残る。源Cを具体的なスペクトルやSSetに特殊化しない。
+他チャットの変更を保持し、計画ファイル全体を一括stageしない。

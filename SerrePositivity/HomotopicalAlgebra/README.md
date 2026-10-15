@@ -811,3 +811,20 @@ pullback/pushoutと指定した関手的分解から、一般のモデル圏の�
 標準公理監査と回帰検証が成功。上位155宣言の直接引用は既存HT-KQ一件だけ。
 コミットは`253cc8c`・`cda767b`、詳細は計画§180。
 F2の実際の単体的Mapとの比較、F1の任意源での最終関手、F3・F4とL0〜L5は未完了である。
+
+
+`SimplicialTensorHom`は、既存のSSet豊穣tensorとMapの随伴表示から、
+n↦Δ[n]⊗XのHomと実際のMap(X,Y)の単体集合の同型を構成する。
+単体の射・源・標的の任意の射との自然性を証明し、任意のQ/Rによる
+二変数関手の自然同型と、実際のMap(QX,RY)への各値の同型を得る。
+この同型自体はモデル構造・cofibrancy・fibrancyを要求しない。
+
+`StandardCosimplicial`は任意の左随伴による有限tensorの保存と境界包含の対応を証明する。
+left QuillenなFと値域のcof=monoからΔ[-]⋙FのReedy cofibrancyを得る。
+`SimplicialTensorCofibrant`はSM7からcofibrantなXに対するn↦Δ[n]⊗Xへ適用し、
+Reedy cofibrancyを別に仮定しない。
+
+共有入口2330 jobs、新規26宣言・3モジュール、共有2725宣言・172モジュールの
+標準公理監査と回帰検証が成功。コミットは`4e6ffc9`、詳細は計画§181。
+標準tensor図式のaugmentation・homotopical constancyと一般のresolutionへの比較はまだ残る。
+F2全体、F1の任意源での最終関手、F3・F4とL0〜L5の完了とは判定しない。
