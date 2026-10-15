@@ -163,6 +163,8 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameComparison,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SimplicialMapComparison,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ChosenMapComparison,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Accessible,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AccessibleModelMapping,
     `SerrePositivity.CategoryTheory.Enriched.TensorUnit,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.WeakEquivalence,
     `SerrePositivity.HomotopicalAlgebra.Topological.WeakEquivalence,
