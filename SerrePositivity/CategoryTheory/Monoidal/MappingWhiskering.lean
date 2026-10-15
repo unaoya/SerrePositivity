@@ -139,4 +139,46 @@ lemma pre_composition {E F G : D} (f : E ⟶ F)
   rw [← Category.assoc, ← Category.assoc, hi, H.map_id]
   simp only [NatTrans.id_app, Category.id_comp]
 
+section Enriched
+variable [BraidedCategory V]
+  (hl : ∀ E F, leftUnitLaw H a u R adj E F)
+  (hr : ∀ E F, rightUnitLaw H a u R adj E F)
+  (ha : ∀ E F G K, associativityLaw H a R adj E F G K)
+  (hi : ∀ E, arrowIdentityLaw H u R adj E)
+  (hc : ∀ {E F G} (f : E ⟶ F) (g : F ⟶ G), arrowCompositionLaw H a u R adj f g)
+
+lemma enriched_post {E F G : D} (g : F ⟶ G)
+    (hn : (H.map (arrow H u R adj g ⊗ₘ 𝟙 (hom R E F))).app E ≫
+      (a (hom R F G) (hom R E F)).hom.app E =
+      (a (𝟙_ V) (hom R E F)).hom.app E ≫
+        (H.map (arrow H u R adj g)).app ((H.obj (hom R E F)).obj E))
+    (hu : (a (𝟙_ V) (hom R E F)).hom.app E ≫
+      u.hom.app ((H.obj (hom R E F)).obj E) = (H.map (λ_ (hom R E F)).hom).app E) :
+    let : EnrichedOrdinaryCategory V D := ordinaryCategory H a u R adj hl hr ha hi hc
+    eHomWhiskerLeft V E g = (R E).map g := by
+  let : EnrichedOrdinaryCategory V D := ordinaryCategory H a u R adj hl hr ha hi hc
+  change (ρ_ (hom R E F)).inv ≫ hom R E F ◁ arrow H u R adj g ≫
+    (β_ _ _).hom ≫ composition H a R adj E F G = _
+  rw [BraidedCategory.braiding_naturality_right_assoc,
+    ← Category.assoc, rightUnitor_inv_braiding]
+  exact post_composition H a u R adj g hn hu
+
+lemma enriched_pre {E F G : D} (f : E ⟶ F)
+    (hn : (H.map (𝟙 (hom R F G) ⊗ₘ arrow H u R adj f)).app E ≫
+      (a (hom R F G) (hom R E F)).hom.app E =
+      (a (hom R F G) (𝟙_ V)).hom.app E ≫
+        (H.obj (hom R F G)).map ((H.map (arrow H u R adj f)).app E))
+    (hu : (a (hom R F G) (𝟙_ V)).hom.app E ≫
+      (H.obj (hom R F G)).map (u.hom.app E) = (H.map (ρ_ (hom R F G)).hom).app E) :
+    let : EnrichedOrdinaryCategory V D := ordinaryCategory H a u R adj hl hr ha hi hc
+    eHomWhiskerRight V f G = (adj E).homEquiv (hom R F G) G
+      ((H.obj (hom R F G)).map f ≫ evaluation H R adj F G) := by
+  let : EnrichedOrdinaryCategory V D := ordinaryCategory H a u R adj hl hr ha hi hc
+  change (λ_ (hom R F G)).inv ≫ arrow H u R adj f ▷ hom R F G ≫
+    (β_ _ _).hom ≫ composition H a R adj E F G = _
+  rw [BraidedCategory.braiding_naturality_left_assoc,
+    ← Category.assoc, leftUnitor_inv_braiding]
+  exact pre_composition H a u R adj f hn hu
+end Enriched
+
 end SerrePositivity.MappingWhiskering

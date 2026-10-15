@@ -18,6 +18,24 @@ variable {V : Type u₁} {W : Type u₂} [Category.{v₁} V] [Category.{v₂} W]
 /-- 関手の単位比較を使って単位からの射を送る。 -/
 def map {X : V} (f : 𝟙_ V ⟶ X) : 𝟙_ W ⟶ F.obj X := ε F ≫ F.map f
 
+lemma left_action {X Y Z : V} (f : 𝟙_ V ⟶ X) (m : X ⊗ Y ⟶ Z) :
+    (λ_ (F.obj Y)).inv ≫ map F f ▷ F.obj Y ≫ μ F X Y ≫ F.map m =
+      F.map ((λ_ Y).inv ≫ f ▷ Y ≫ m) := by
+  unfold map
+  rw [comp_whiskerRight]
+  simp only [Category.assoc]
+  rw [μ_natural_left_assoc, left_unitality_inv_assoc]
+  simp only [F.map_comp]
+
+lemma right_action {X Y Z : V} (f : 𝟙_ V ⟶ Y) (m : X ⊗ Y ⟶ Z) :
+    (ρ_ (F.obj X)).inv ≫ F.obj X ◁ map F f ≫ μ F X Y ≫ F.map m =
+      F.map ((ρ_ X).inv ≫ X ◁ f ≫ m) := by
+  unfold map
+  rw [whiskerLeft_comp]
+  simp only [Category.assoc]
+  rw [μ_natural_right_assoc, right_unitality_inv_assoc]
+  simp only [F.map_comp]
+
 /-- 単位からの二つの射の合成はlax monoidalの比較と両立する。 -/
 lemma composition {X Y Z : V} (f : 𝟙_ V ⟶ X) (g : 𝟙_ V ⟶ Y) (m : X ⊗ Y ⟶ Z) :
     (λ_ (𝟙_ W)).inv ≫ (map F f ⊗ₘ map F g) ≫ μ F X Y ≫ F.map m =

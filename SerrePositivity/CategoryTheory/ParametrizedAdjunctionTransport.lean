@@ -1,6 +1,7 @@
 module
 
 public import Mathlib.CategoryTheory.Adjunction.Parametrized
+public import Mathlib.CategoryTheory.Whiskering
 
 /-! # Restriction and transport of parametrized adjunctions
 
@@ -24,6 +25,18 @@ def restrict (adj : F ⊣₂ G) (P : D ⥤ A) : (P ⋙ F) ⊣₂ (P.op ⋙ G) :=
   refine ParametrizedAdjunction.mk' (fun X ↦ adj.adj (P.obj X)) ?_
   intro X Y f Z W g
   exact adj.homEquiv_naturality_one (P.map f) g
+
+/-- Compose an ordinary adjunction in the second input, retaining parameter naturality. -/
+def composeSecond (adj : F ⊣₂ G) {L : D ⥤ B} {R : B ⥤ D} (h : L ⊣ R) :
+    (F ⋙ (CategoryTheory.Functor.whiskeringLeft D B C).obj L) ⊣₂
+      (G ⋙ (CategoryTheory.Functor.whiskeringRight C B D).obj R) := by
+  refine ParametrizedAdjunction.mk' (fun X ↦ h.comp (adj.adj X)) ?_
+  intro X Y f Z W g
+  simp only [Adjunction.comp_homEquiv]
+  change h.homEquiv _ _ (adj.homEquiv ((F.map f).app (L.obj Z) ≫ g)) =
+    h.homEquiv _ _ (adj.homEquiv g) ≫ R.map ((G.map f.op).app W)
+  rw [adj.homEquiv_naturality_one]
+  exact h.homEquiv_naturality_right _ _
 
 /-- Transport the left bifunctor through a natural isomorphism. -/
 def left (adj : F ⊣₂ G) (e : F ≅ F') : F' ⊣₂ G := by
