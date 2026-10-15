@@ -1599,3 +1599,35 @@ Ch(A)固有の入力であり、共有モデル圏/Quillen/転送一般論は複
 この入口・CoproductHom・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3203 jobs）、警告なし。
 直接実行の主要9宣言は標準公理のみ。累計691宣言。
 U10全受入は未完。次にこの実際の余積保存をHom endの直積表示へ適用する。
+
+
+### 13.38 U10b3c：余積の全Hom endの直積表示とhomotopically projective性
+
+`Module/ParamCurry.lean` はtensor加群からの射と主Hom endへのパラメータ付きchain mapの
+転置・逆転置の両方向一致を公開し、加群への前合成との整合性を証明する。
+全次数の自然性は既存ModuleParamTransを通し、通常の自然変換へ弱めない。
+
+`Module/CoproductHom.lean` は任意のu-smallな族に対して
+`moduleCoproductHomIso : Hom_D(∐ M_j,N) ≅ ∏ Hom_D(M_j,N)` をchain isoとして構成する。
+tensorの実際の余積保存から任意パラメータのliftを構成し、直積の普遍性を証明する。
+`moduleCoproductHomIso_hom_π` は各直積射影が余積包含への前合成であることを証明する。
+Z⁰/H⁰だけの同値で代用しない。
+
+`Derived/CoproductProjective.lean` はHom endの直積表示と§13.36を使い、
+homotopically projectiveな加群のu-small余積が再びhomotopically projectiveであることを証明する。
+自由sphere余積の表示を持つ加群、従ってsemifree filtrationの初期段と各商についても
+この性質を証明した。ここではfiltration全体の性質はまだ主張しない。
+
+受入入口 `Checks/CoproductHom.lean` は一般A/D・独立添字宇宙、chain isoと包含の比較、
+転置の往復、homotopically projective性、自由sphere表示とfiltrationの商、
+ℤの可算正次数族とZMod 2の可算負次数族を検証する。
+同時ビルドは§13.37のとおり成功。直接実行の主要17宣言は標準公理のみ。累計708宣言。
+担当Lean範囲のsorry/admit/新規axiomは0件。
+今回の `python3 scripts/check_documentation.py` は21 Markdown/311参照で0 failures。
+§13.29で記録した並行K系列の未ビルドimportによる停止は、今回の実行では解消を確認した。
+共有rootと並行系列のソースは編集していない。
+
+U10全受入は未完。次は次数付き分裂に対するHom endのkernel同定と制限射の次数ごとの全射性を証明し、
+各有限段のacyclic性と可算逆極限での互換な境界の原像の構成へ進む。
+一般の逆極限の完全性は仮定しない。続いて導来Hom計算・選択独立性、三角構造・Verdier商、
+余積・局所小性、一対象比較の三角形/余積保存を完成する。
