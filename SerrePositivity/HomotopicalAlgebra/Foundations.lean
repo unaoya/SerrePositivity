@@ -79,6 +79,7 @@ public import SerrePositivity.HomotopicalAlgebra.Diagram.HomotopyLimit
 public import SerrePositivity.HomotopicalAlgebra.Diagram.ColimitMapComparison
 public import SerrePositivity.HomotopicalAlgebra.Diagram.ProjectiveCofibrations
 public import SerrePositivity.HomotopicalAlgebra.Diagram.PointwiseMappingComparison
+public import SerrePositivity.HomotopicalAlgebra.Diagram.FrameMappingLimit
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor
