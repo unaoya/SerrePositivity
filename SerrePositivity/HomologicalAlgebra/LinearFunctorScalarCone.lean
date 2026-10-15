@@ -14,10 +14,10 @@ set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity
 open CategoryTheory CategoryTheory.Limits HomologicalComplex
 open HomologicalComplex.homotopyCofiber
-variable {R : Type u} [CommRing R]
+variable {R S : Type u} [CommRing R] [CommRing S]
 
 /-- 関手で移した射を指定の射と同一視した場合の、標準の錐比較。 -/
-def additiveFunctorCofiberIsoOfEq (F : ModuleCat.{u} R ⥤ ModuleCat.{u} R) [F.Additive]
+def additiveFunctorCofiberIsoOfEq (F : ModuleCat.{u} R ⥤ ModuleCat.{u} S) [F.Additive]
     {P Q : CochainComplex (ModuleCat.{u} R) ℤ} (φ : P ⟶ Q)
     (ψ : (F.mapHomologicalComplex _).obj P ⟶ (F.mapHomologicalComplex _).obj Q)
     (h : (F.mapHomologicalComplex _).map φ = ψ) :
@@ -27,7 +27,7 @@ def additiveFunctorCofiberIsoOfEq (F : ModuleCat.{u} R ⥤ ModuleCat.{u} R) [F.A
     (F.mapHomologicalComplex _).obj Q ↦ CochainComplex.mappingCone f) h)
 
 @[reassoc (attr := simp)] theorem additiveFunctorCofiberIsoOfEq_inv_inl
-    (F : ModuleCat.{u} R ⥤ ModuleCat.{u} R) [F.Additive]
+    (F : ModuleCat.{u} R ⥤ ModuleCat.{u} S) [F.Additive]
     {P Q : CochainComplex (ModuleCat.{u} R) ℤ} (φ : P ⟶ Q)
     (ψ : (F.mapHomologicalComplex _).obj P ⟶ (F.mapHomologicalComplex _).obj Q)
     (h : (F.mapHomologicalComplex _).map φ = ψ) (i : ℤ) :
@@ -37,7 +37,7 @@ def additiveFunctorCofiberIsoOfEq (F : ModuleCat.{u} R ⥤ ModuleCat.{u} R) [F.A
   simp [additiveFunctorCofiberIsoOfEq, mapHomologicalComplexObjIso]
 
 @[reassoc (attr := simp)] theorem additiveFunctorCofiberIsoOfEq_inv_inr
-    (F : ModuleCat.{u} R ⥤ ModuleCat.{u} R) [F.Additive]
+    (F : ModuleCat.{u} R ⥤ ModuleCat.{u} S) [F.Additive]
     {P Q : CochainComplex (ModuleCat.{u} R) ℤ} (φ : P ⟶ Q)
     (ψ : (F.mapHomologicalComplex _).obj P ⟶ (F.mapHomologicalComplex _).obj Q)
     (h : (F.mapHomologicalComplex _).map φ = ψ) (i : ℤ) :
