@@ -1458,3 +1458,25 @@ chain条件のない次数付き成分族を余積へ延長し、包含・合成
 この入口・初期被覆の適用入口・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3198 jobs）。
 直接実行の主要13宣言の公理監査は標準公理のみ。累計635宣言。
 U10全受入は未完。共有一般モデル圏/転送一般論は複製していない。
+
+
+### 13.32 U10a11：初期自由disk被覆全体の二段sphere分解
+
+`Module/DiskCoverFiltration.lean` は全斉次生成元を添字とする被覆について、
+上次数自由sphere族 `moduleDiskCoverUpperFamily` と下次数自由sphere族
+`moduleDiskCoverLowerFamily` を構成する。
+`moduleDiskCoverBoundary` は上次数族の余積から初期disk被覆への包含、
+`moduleDiskCoverQuotient` は被覆から下次数族の余積への射影。
+各自由diskのU10a9の分裂をU10a10で余積へ運び、
+`moduleDiskCoverGradedSplit`・包含のmono性・射影のepi性を証明した。
+`moduleDiskCoverSphereCokernel` は主dg加群圏の真の商の普遍性。
+これで初期disk被覆全体のsphere二段分解が揃った。
+
+受入入口 `Checks/DiskCoverFiltration.lean` は一般A/D、主圏の分裂と商、
+各評価次数の短完全性、ℤとZMod 2での適用を検証する。
+前段入口・StageSix・既存Spectra.StageTwoとの同時ビルドは§13.31のとおり成功。
+直接実行の主要8宣言は標準公理のみ。累計643宣言。
+U10全受入は未完。次は後続商 `(∐ freeSphere)[1]` の自由sphere余積との同定と、
+初期二段分解を含めた証明付きsemifree filtrationの構成。
+Hom計算・三角構造・Verdier商・余積/局所小性・一対象比較の残項目は保持する。
+全体文書検査の並行K系列importによる制限は§13.29に記録済み。
