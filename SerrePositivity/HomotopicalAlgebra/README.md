@@ -1287,3 +1287,16 @@ L1生成族・段階2の回帰確認も成功。共有層はSpectraをimportし�
 実際の右随伴による局所対象保存から、両側を局所化した左Quillen条件を導く。
 共有入口はSpectraをimportしない。4368宣言・379モジュールの標準公理監査に成功。
 実装`2bd07abf`。一般スペクトルの局所tensor適合性への適用でS2を完了し、詳細は計画§218。
+
+
+## 導来合成・弱逆の自然変換とtensor逆元（2026-10-16）
+
+`Quillen/DerivedComposition`はcofibrant対象上の比較から、左Quillen関手の合成の
+左導来を実際の導来関手の合成で計算する。
+`DerivedWeakInverse`はcofibrant対象上で弱同値になる二つの合成→恒等の自然変換から、
+両導来合成の自然同型と実際の圏同値を構成する。指定関手的分解は不要で宇宙も独立。
+`Monoidal/DerivedTensorInverse`はcofibrantなX,Y,単位と弱同値X⊗Y→単位から、
+導来tensorの同値とtensor Yによる逆関手を構成する。
+共有入口はSpectraをimportしない。共有受入26宣言・3モジュールと、
+4394宣言・382モジュールの標準公理監査が成功。新規sorry・引用axiomなし。
+実装`92bb2333`。一般スペクトルへの適用は計画§220。

@@ -10918,3 +10918,84 @@ Cの単位がcofibrantという明示的な十分条件のもと、219.1によ�
 S3は未完了であり、次はこの実際の弱同値から導来K-tensorの逆関手と合成比較を構成し、
 PSS/S¹で通常の導来Σとの比較と旧APIへの接続を検証する。
 F1の指定関手的分解を仮定しない任意モデル源の最終関手も残っており、全体目標は継続する。
+
+
+## 220. S3進捗：導来K-tensorの逆関手・合成比較とtensor/cotensorの導来同値（2026-10-16）
+
+前回§219は実際の評価射の局所弱同値までであった。今回はその射から導来関手の
+逆関手と両合成の自然同型を構成し、実際の各段tensor/cotensorの導来随伴も同値にした。
+S3の通常の懸垂との比較は引き続き未完了である。
+
+### 220.1 スペクトルに依存しない共有一般論
+
+`Quillen/DerivedComposition.lean`は、左Quillen関手F:C→DとG:D→Eに対し、
+任意に選んだ通常の局所化と左導来関手から実際の合成比較を定義する。
+cofibrant Xにおける比較の式はLG.map(α_X) ≫ β_(FX)であり、Fが左随伴なら
+FXもcofibrantなので同型である。これによりLF⋙LG自体がF⋙Gの左導来関手となる。
+
+`Quillen/DerivedWeakInverse.lean`は、両方向とも左QuillenなFとG、および
+cofibrant対象上で弱同値になる二つの実際の自然変換F⋙G→id_C、G⋙F→id_Dから、
+LF⋙LG≅id_HC、LG⋙LF≅id_HDとHC≌HDを構成する。
+導来側の比較は元の自然変換を局所化した射と導来比較の合成として計算される。
+元の二つの弱変換のtriangle則は仮定せず、Mathlibの`CategoryTheory.Equivalence.mk`で
+unitを調整して整合する同値を得る。forwardとinverseの関手は実際のLFとLGのままである。
+関手的分解、combinatorial性、simplicial構造は不要で、源・標的・両局所化の宇宙は独立。
+
+`Monoidal/DerivedTensorInverse.lean`は、braided closed monoidalモデル圏で
+cofibrantなX,Yと弱同値e:X⊗Y→𝟙からこの一般論へ接続する。
+明示的な十分条件として単位のcofibrancyを仮定する。
+結合子・eのtensor・単位子から二つの合成→恒等の自然変換を定義し、
+cofibrant対象上の弱同値性をBrown補題で証明する。逆順にはbraidingを使う。
+共有入口`Foundations`はこれらを公開し、Spectraや存在引用Inputsをimportしない。
+
+### 220.2 構成済みスペクトル局所化への適用
+
+`Stable/DerivedTensorInverse.lean`は、§218の実際の局所monoidal条件と§219の評価射を使う。
+元と局所化後のcofibrationの等式から、F₀(K)、F₁(𝟙_C)、スペクトルの単位の
+cofibrancyを移送する。元と局所化後のモデル構造を明示的に区別し、
+局所化のWを元のWへ誤って戻していない。
+
+- `StableModelPresentation.derivedTensorInverseEquivalence`は、任意の通常の局所化Qと
+  選んだ二つの左導来関手に対して、F₀(K)とのtensorの左導来の逆関手を
+  F₁(𝟙_C)とのtensorの左導来として構成する。
+- `derived_pointwiseTensor_isEquivalence`は、実際の`tensorFreeZeroPointwiseNatIso`を
+  導来自然同型へ移し、各段tensor Kの任意の左導来が同値となることを証明する。
+- `derivedTensorCotensorEquivalence`は、実際の各段tensor/cotensor随伴と
+  Quillen導来随伴のAPIに接続する。forwardは各段tensor Kの左導来、inverseは
+  cotensor Kの右導来であり、指定した導来随伴から同値を得る。
+- `canonicalDerivedKTensorEquivalence`は、Mathlibの標準`totalLeftDerived`とその比較射を
+  実際に選んで同値を構成する。導来関手の存在や逆関手の同値を入力へ戻さない。
+
+入力は一般C,Kの既存のモデル条件、元のレベル生成表示、§218の生成始域のcofibrancy、
+通常の局所化のpresentationとSSetの基準モデル条件である。
+この導来逆元の入口にはCの単位のcofibrancyという十分条件を明示した。
+§218の非cofibrant単位を許すunit引継ぎや通常の局所化存在は変更していない。
+∞圏、semistability、naiveなπ_*による弱同値の置換、特定安定モデルの引用を使わない。
+
+### 220.3 最終受入検証
+
+すべて成功した。
+
+- 共有入口と`Stable.DerivedTensorInverse`の合同build：2924 jobs。
+- `check_derived_weak_inverse`：独立宇宙・指定分解なしの任意モデル源の利用例、
+  同値のforward/inverseが指定LF/LGと一致すること、26宣言・3モジュールの標準公理監査。
+- `check_spectrum_derived_tensor_inverse`：最終的な一般C,Kの条件だけから元のモデル、
+  両分解、小さい局所化射の族、実際の局所モデルを構成し、標準の三つの左導来と
+  一つの右導来を選択。tensorの逆関手と各段tensor/cotensorの逆関手が
+  それぞれ指定した実際の導来関手に等しいことも検証。70宣言・4モジュールを監査。
+- `audit_homotopical_foundations`：4394宣言・382モジュール、標準公理のみ。
+- `check_spectrum_stable_enriched`：13宣言・3モジュールの回帰確認。
+- `check_spectra_stage2`：既存の具体的スペクトルAPIの回帰確認。
+- `git diff --cached --check`。
+
+新規sorry・引用axiomなし。共有一般論`92bb2333`、スペクトルへの適用と受入検証`643a17be`。
+共有作業木の他チャットの変更を保持した。
+
+### 220.4 残る受入条件
+
+S3の導来K可逆性と実際のtensor/cotensorの導来同値は証明済みである。
+S3全体の完了には、PSS/S¹で円tensorを通常の導来懸垂Σと比較し、
+既存の具体的`suspensionFunctor`・`loopFunctor`との互換性を証明する必要がある。
+一般Kの局所化だけで通常の懸垂の安定性が得られたとは扱わない。
+F1の指定関手的分解なしの任意モデル源の最終RMap関手も引き続き残る。
+全体目標F→L→E→Sは継続する。
