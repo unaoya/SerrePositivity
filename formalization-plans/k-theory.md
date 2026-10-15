@@ -8286,3 +8286,85 @@ A0・A1・§184の指定データを変更せず、大きい基数へ移す。
 F3の残項目は解消した。F1の任意モデル源での最終の厳密な関手、F4のfiltered/hocolim/holim比較、
 L0〜L5は引き続き残る。「FからLまで」の依頼全体と一般Bousfield局所化の契約を維持する。
 他チャットの変更を保持し、計画書は今回のF3行の更新と追記だけをstageした。
+
+
+## 186. F4進捗：projective図式モデル・実際のhocolim・十分filteredなcolimitとの比較（2026-10-15）
+
+F4のうち、実際のhomotopy colimitの構成と十分大きいfiltered colimitとの比較を証明した。
+RMapのhocolim→holim公式はまだ残るため、F4全体の完了とはしない。
+
+### 186.1 一般の小さい図式のprojectiveモデル
+
+`Diagram/Projective`は、元のcombinatorialモデルCと小さい圏Kから、実際のK→C上の
+projectiveモデル構造を構成する。弱同値・fibrationは対象ごとの元のクラスである。
+Kの対象・射はcolimit宇宙wで小さく、Cの対象・射の宇宙とは独立に扱う。
+
+Mathlibの実際のfree/evaluation随伴を用いる。free kの生成射をlで評価した写像は、
+Hom_K(k,l)個の元の射のcoproductである。元のtrivial cofibrationに適用した場合の
+trivial cofibration性を証明し、評価のcolimit保存とtrivial cofibrationのcoproduct・pushout・
+超限合成閉性から、freeな生成Jのrelative cellがobjectwise弱同値になることを導く。
+追加のmonoidal構造やmonoid axiomは使用しない。
+
+生成族は元のI・Jの小ささとKの小ささから小さい。実際のfunctor categoryの局所可呈示性を
+§185の一般論で導き、SOAを証明して既存のevaluation-family転送へ接続する。
+図式モデルの存在・生成族のSOA・転送acyclicityを新たな入力にはしない。
+出力のcofibrant generationと両関手的分解も接続した。
+
+`Diagram/ProjectiveQuillen`は、評価がright Quillen、freeがleft Quillen、
+定数図式がright Quillen、colimがleft Quillenであることを証明する。
+元のCの任意のordinary localization Lに対して、colim⋙LがMathlibの実際の
+pointwise left derived functorを持つことを導く。コミット：`c71600d`。
+
+### 186.2 実際のhocolimと導来関手の自然比較
+
+`Diagram/HomotopyColimit`は、出力されたprojectiveモデルの指定cofibrant factorizationを選び、
+実際の関手Q_Kと自然なtrivial fibration Q_K→Idを構成する。
+`functor = Q_K ⋙ colim`と自然比較`comparison : hocolim→colim`を定義した。
+Q_Kの各値のprojective cofibrancy、比較のobjectwise弱同値性を証明する。
+
+colimのleft Quillen性とBrown補題から、hocolimが任意のobjectwise弱同値を弱同値へ送ることを証明する。
+projective cofibrantな元の図式では、filterednessを仮定せずhocolim→colimが弱同値になる。
+
+`computesDerivedIso`は任意のordinary localization Q:(K→C)→Ho(K→C)、L:C→Ho(C)と
+任意のleft derived colimit LF・比較αに対し、実際の自然同型
+`Q⋙LF ≅ hocolim⋙L`を構成する。
+Q_K→IdをQが反転することと、cofibrant図式での導来比較が同型になることを使う。
+対象ごとの独立した同型や、証明していない導来普遍性を持つ別の型で代用しない。
+
+### 186.3 十分大きいfiltered colimitとの比較
+
+`Diagram/ColimitWeakEquivalence`は、自然変換αの実際のArrow C値の図式と、
+そのcolimitが`Arrow.mk(colim.map α)`になる実際のcolimit coconeを構成する。
+Arrow上のWの部分圏のκ-filtered colimitと包含のκ-accessibilityから、
+元のWのArrow内でのκ-filtered colimit閉性を得る。
+その結果、任意のκ-filtered Kについてcolimがobjectwise弱同値を弱同値へ送る。
+
+`Diagram/FilteredHomotopyColimit`はこれを実際のQ_K→Idへ適用し、hocolim→colimの弱同値性を証明する。
+最終の`exists_filtered_comparison I J`は元のcombinatorialモデルだけから正則κを構成する。
+任意の正則μ≥κ、任意のμ-filteredな小さい圏K、任意の図式F:K→Cについて、
+実際の比較`hocolim(F)→colim(F)`が元のWに属する。
+基数の上界はKやFに依存せず、Fのcofibrancyを入力に要求しない。
+A1の元のWのaccessibilityと包含から導いており、局所化後のモデル構造は先取りしていない。
+これらのコミット：`f7cc57a`。
+
+### 186.4 検証と残項目
+
+以下はすべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`：2360 jobs。
+- `check_projective_diagram_model`：29宣言・2モジュール、標準公理のみ。
+  最終入力だけからのモデル・生成性、objectwise判定、実際のcolimのQuillen性、
+  独立したHoの宇宙における導来関手の存在を検証。
+- `check_filtered_homotopy_colimit`：35宣言・3モジュール、標準公理のみ。
+  全ての十分大きい正則基数とfiltered図式での比較、任意の図式でのhocolimの不変性、
+  cofibrant図式での比較、任意のordinary derived colimitとの自然同型を検証。
+- `audit_homotopical_foundations`：3005宣言・197モジュール、標準公理のみ。
+- `check_accessible_resolutions`（73宣言・6モジュール）、`check_homotopical_foundations`、
+  `check_spectra_stage2`、`git diff --check`。
+
+新たなsorry・引用axiomはない。他チャットの変更を保持した。
+F4の残項目は、必要範囲での実際のRMapとhocolim・holimの比較公式である。
+通常のlimitとの形式的なHom同型だけではholimとの比較を満たしたとはしない。
+holim側の構成・ホモトピー不変性・自然比較も証明して接続する。
+F1の任意モデル源での最終の厳密な関手、L0〜L5も引き続き残る。
+一般のBousfield局所化まで完成させる依頼全体と§159.4の受入条件を維持する。

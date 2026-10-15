@@ -885,3 +885,19 @@ A1の元のWと包含、全始域・終域のRMap評価・検出関手の共通�
 source resolutionのaccessibilityを追加仮定にせず、全対象のRMap評価への一律の基数も要求しない。
 共有入口2354 jobs、共有2941宣言・192モジュールの標準公理監査と回帰検証が成功。
 コミットは`d71c2d1`・`19e4a10`。F1の任意源での最終関手、F4とL0〜L5は未完了である。
+
+
+`Diagram/Projective`は元のcombinatorialモデルから実際の小さいfunctor categoryのprojectiveモデルを
+構成する。free/evaluation随伴、生成族のSOA、評価でのtrivial cofibrationとセルのacyclicityを証明し、
+弱同値・fibrationのobjectwise判定、生成性、関手的分解を得る。
+`ProjectiveQuillen`はcolimのleft Quillen性と実際のpointwise left derived colimitの存在へ接続する。
+
+`HomotopyColimit`は実際のprojective cofibrant replacementからhocolimと自然比較を構成する。
+任意のobjectwise弱同値への不変性、cofibrant図式での通常のcolimitとの比較、任意のordinary derived
+colimitとの自然同型を証明する。`ColimitWeakEquivalence`と`FilteredHomotopyColimit`はA1から、
+図式の形に依存しない基数の上界を構成し、すべての十分filteredな図式のhocolim→colimを弱同値とする。
+
+共有入口2360 jobs、共有3005宣言・197モジュールの標準公理監査と回帰検証が成功。
+コミットは`c71600d`・`f7cc57a`、詳細は計画§186。
+F4のRMapのhocolim→holim公式は残り、通常のlimitとの同型だけで代用しない。
+F1の任意源での最終関手とL0〜L5も未完了である。
