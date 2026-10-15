@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.LocalCohomologyKoszulComparison
 import SerrePositivity.HomologicalAlgebra.KoszulExtComparison
 import SerrePositivity.HomologicalAlgebra.ProjectiveExtNaturality
 import SerrePositivity.HomologicalAlgebra.ChainLinearYoneda
@@ -167,3 +168,42 @@ assert_no_sorry SerrePositivity.koszulExtPowersComparison
 
 #print axioms SerrePositivity.koszulExtComparison_power_transition
 #print axioms SerrePositivity.koszulExtPowersComparison
+
+-- KL2a: actual complex colimits and coefficient naturality.
+assert_no_sorry SerrePositivity.functorCochainComplex
+assert_no_sorry SerrePositivity.functorCochainComplexFunctor
+assert_no_sorry SerrePositivity.functorCochainHomologyIso
+assert_no_sorry SerrePositivity.functorCochainHomologyNatIso
+assert_no_sorry SerrePositivity.asFunctorCochainHomologyIso
+assert_no_sorry SerrePositivity.sequentialCochainDiagramComplex
+assert_no_sorry SerrePositivity.sequentialCochainDiagramHomologyIso
+assert_no_sorry SerrePositivity.sequentialCochainColimit
+assert_no_sorry SerrePositivity.sequentialCochainColimitHomologyIso
+assert_no_sorry SerrePositivity.sequentialCochainColimitIso
+assert_no_sorry SerrePositivity.sequentialCochainHomologyColimitIso
+assert_no_sorry SerrePositivity.koszulDualPowerDiagram
+assert_no_sorry SerrePositivity.koszulDualPowerHomologyDiagram
+assert_no_sorry SerrePositivity.powerKoszulExtDiagram
+assert_no_sorry SerrePositivity.koszulExtPowerDiagramNatIso
+assert_no_sorry SerrePositivity.koszulDualPowerHomologyColimitNatIso
+assert_no_sorry SerrePositivity.regularKoszulDualPowerHomologyColimitNatIso
+assert_no_sorry SerrePositivity.koszulDualFunctorComplexDiagram
+assert_no_sorry SerrePositivity.koszulDualColimitComplex
+assert_no_sorry SerrePositivity.koszulDualColimitFunctor
+assert_no_sorry SerrePositivity.koszulDualColimitHomologyNatIso
+assert_no_sorry SerrePositivity.koszulLocalCohomologyComparison
+assert_no_sorry SerrePositivity.regularKoszulLocalCohomologyComparison
+
+#print axioms SerrePositivity.koszulExtPowerDiagramNatIso
+#print axioms SerrePositivity.koszulLocalCohomologyComparison
+#print axioms SerrePositivity.regularKoszulLocalCohomologyComparison
+
+-- KL2: no completeness or finite-generation condition on the coefficient module.
+example (R : Type) [CommRing R] [IsNoetherian R R] {e : ℕ} (z : Fin e → R)
+    (hres : ∀ n : ℕ, IsKoszulResolution (fun j => z j ^ n)) (i : ℕ)
+    (M N : ModuleCat.{0} R) (f : M ⟶ N) :
+    HomologicalComplex.homologyMap ((koszulDualColimitFunctor z).map f) i ≫
+          (koszulLocalCohomologyComparison z hres i).hom.app N =
+        (koszulLocalCohomologyComparison z hres i).hom.app M ≫
+          (localCohomology (Ideal.span (Set.range z)) i).map f :=
+  (koszulLocalCohomologyComparison z hres i).hom.naturality f
