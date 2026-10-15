@@ -4155,3 +4155,26 @@ BS専用`DeltaPDivisionFiniteKoszulHomologyDiagram.lean`で、通常有限商を
 
 本工程の7公開宣言の対象3810ジョブ、pure B4監査、全体4933ジョブ成功。
 標準3公理のみ、新sorry・公理・外部引用なし。共有既存sorry警告は別扱い。
+
+## B4-6：実H⁰図式と通常有限商図式の自然同型（2026-10-15）
+
+`DeltaPDivisionFiniteKoszulHomologyDiagram.lean`で通常有限商の標準射をL線形化し、
+共通L加群圏内の実逐次図式を構成した。
+前工程の標準単位に基づく可換図式により、実Koszul図式へhomologyFunctorを施したH⁰図式と
+通常有限商図式との自然同型を公開した。各成分は既存の正規化H⁰同型そのもの。
+自然同型にはAのp正則性・y正則性・ghost単射は不要。
+6公開宣言の対象3811ジョブ成功。新sorry・公理・引用なし。
+
+### 次工程の登録：実逐次Koszul極限のホモロジー
+
+BS専用`DeltaPDivisionSequentialKoszul.lean`で、具体的な実Koszul図式をℤ次数の
+逐次図式の複体へ転置し、既存の完全なcolim関手とShortComplex.mapHomologyIsoを適用する。
+共通SequentialComplexColimits.leanは現在ℕ次数に特化しているため、その定理をℤにそのまま
+適用できたとはしない。BSの当該図式に限る転置・比較を構成し、新しい一般共通APIは作らない。
+実圏論的colimitのホモロジーと各有限段のホモロジーのcolimitを比較する。
+正則一元入力では有限段IsKoszulResolutionから零以外の全次数でのホモロジー消滅を導く。
+H⁰は前工程の自然同型を通して通常有限商図式のcolimitと同定する。
+rawδ包との標準射付き同定、原典の導来δ基底変更との比較、CFFは別工程として残る。
+
+本工程のpure B4監査・全体4933ジョブも成功。依存は標準3公理のみ。
+共有既存sorry警告は別扱い。
