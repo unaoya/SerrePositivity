@@ -62,6 +62,7 @@ public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FiniteT
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.HornTensor
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.TargetInvariance
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SourceInvariance
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PiZero
 public import SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Equivalence
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor
