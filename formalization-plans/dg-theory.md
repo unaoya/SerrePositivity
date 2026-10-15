@@ -3473,3 +3473,37 @@ Fubini・tensor–Hom随伴・余極限保存、bimodule合成の結合同型、
 次は§17.32の反変Hom dg関手とhomRightModuleから具体的tensor–Hom随伴を構成する。
 その後Fubiniと結合同型・整合性へ進む。U12〜U17・D4mも引き続き未完。
 共有系列への新規不足要求はなく、共有ルート・共有一般論・他チャットの並行作業ファイルは変更していない。
+
+
+### 17.34 U11e3：反変Hom dg関手と右Hom加群（2026-10-16）
+
+§17.32で未公開と記録した二つの具体的APIを構成した。
+`Complexes/HomContravariant.lean`のhomContravariantDGは、Ch(A)自身の代表右加群を再利用する
+実際のdg関手Ch(A)ᵒᵖ→Ch(A)である。Ch(A)全体のSmall.{u}は仮定しない。
+値Hom_A(P,T)と、次数pのf:Q→Pが次数qのg:P→Tに作用する式
+(-1)^(pq)・(g∘f)を公開した。単位/合成保存は既存representableの証明から引き継ぐ。
+
+`Functor/Opposite.lean`はCh(A)豊穣関手のoppositeとidentity/comp法則を追加する。
+両側のKoszul交換はMathlibのbraiding_naturalityを用いて比較し、
+任意Vの豊穣一般論を新設していない。
+`Module/HomRight.lean`のhomRightModule N TはN.opとhomContravariantDGの合成で、
+値x↦Hom_A(N(x),T)、Nの全次数作用による符号付き前合成を持つ実際の右dg加群である。
+この対象と作用の構成にDのsmallnessは不要。AとDの対象宇宙も独立に保つ。
+
+`Module/HomRightFunctor.lean`はT→T'の後合成の全Hom自然性をcochainの結合則から証明し、
+Small.{u} Dの下で主Hom endの実際の閉零加群射homRightModuleMapへ束ねる。
+評価式、恒等/合成法則を持つhomRightFunctor : Ch(A)→ModuleCategory A Dを公開した。
+この関手だけでtensor–Hom随伴の完成とはしない。次はbalanced族の条件と、
+HomRight加群への全次数自然なchain map族の条件の同値をcurryingで証明し、
+既存homEquiv/moduleMapFamilyEquivから随伴・unit/counitと自然性を構成する。
+
+Checks.HomRight・Checks.BimoduleLeftUnit・Checks.StageSeven・既存Spectra.StageTwoの同時ビルドは
+成功（2702 jobs、終了コード0、警告なし）。任意可換環・独立対象宇宙、Small Dなしの対象構成、
+次数-1/1の負符号、一対象係数ZMod 2、Small Dの下での実際の関手を検査した。
+主要13宣言の直接実行は終了コード0、すべて標準公理のみ。監査累計1479宣言。
+担当Leanのsorry/admit/新規axiomは0件。文書検査は22 Markdown・311 exposition参照、失敗0件。
+担当差分のgit diff --checkも成功。
+
+U11eは未完。tensor–Hom随伴の受入、Fubini・余極限保存、結合同型と三角/五角・全変数自然性を
+引き続き進める。U12〜U17・D4mも未完。共有系列への新しい不足要求はない。
+共有ルート・共有一般論・並行作業ファイルは変更していない。
