@@ -3705,6 +3705,17 @@ K₀ の類への移送と重みつき乗法性は次の小段。
 - この小段では同変鎖写像まで。各次数で同型と示して鎖同型にする作業、
   一元正規化・族・S10.9・S11 は未完了。ルート公開は鎖同型の統合段に行う。
 
+### S10.8c.2c.3b.1：直和の八生成元と Fourier 列の比較
+
+- `Adams/KoszulCubeFourierModelGenerators` は四成分の包含と鎖写像の合成を
+  各 Fourier 埋め込みへ比較し、八つのスカラー生成元の像を証明した。
+  一回シフトの下の像 −v₀₁、−v₀₂ の負号も射の等式に保持する。
+- `lake build SerrePositivity.KTheory.Adams.KoszulCubeFourierModelGenerators` が成功（2849 jobs）。
+- `lake env lean scripts/audit_adams_koszul_fourier_model_generators.lean` が成功。
+  reassoc の補題を含む二十九定数の `assert_no_sorry` が通り、公理は標準三公理のみ。
+- 次はこの八式と Fourier 双対座標を使った各次数の逆写像と両逆性。
+  各成分の同型・鎖同型・一元正規化は後続段。ルート公開は統合段。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。
