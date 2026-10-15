@@ -3040,3 +3040,14 @@ Hom複体全体のchain mapの等式`uncurryHom_comp`へ拡張した。
 Checks.BimoduleUncurryCompositionのビルドは成功（1807 jobs、警告なし）。
 直接実行は終了コード0、主要5宣言の公理は標準公理のみ。監査累計1237宣言。
 単位は§17.10、合成保存は本節で揃った。次は実際の逆方向dg関手と両往復の比較。
+
+
+### 17.14 U11b13：実際のuncurried dg関手
+
+`Bimodule/Uncurry.lean`は単位・全Hom合成保存を用いて、bimoduleからBᵒᵖ⊗C上の
+Mathlib EnrichedFunctorを構成した。両因子へ制限したdg関手が元の右B加群・左C加群と
+それぞれ等しいことを、既存の制限計算から証明した。
+
+Checks.BimoduleUncurryのビルドは成功（1809 jobs、警告なし）。直接実行は終了コード0、
+主要3宣言の公理は標準公理のみ。監査累計1240宣言。
+次は二作用によるbimoduleの外延性を使い、curried/uncurriedの両往復を証明する。
