@@ -136,6 +136,17 @@ for name in ['SupportedModule', 'G0Supported', 'MaximalSupportLength']:
           dep == 'SerrePositivity.CategoryTheory.TriangulatedK0')
 print('Supported G₀ modules and closed-point length avoid perfect complexes and Adams implementations.')
 
+maximal_length = ['G0Functoriality', 'MaximalSupportModules',
+                  'MaximalSupportLocalLength', 'MaximalSupportLengthEquiv']
+for name in maximal_length:
+    check('SerrePositivity.KTheory.' + name,
+          lambda dep: '.PerfectComplex.' in dep or '.KTheory.Adams.' in dep or dep in {
+              'SerrePositivity.CommutativeAlgebra.SemilocalSupport',
+              'SerrePositivity.CommutativeAlgebra.SupportHeight',
+              'SerrePositivity.HomologicalAlgebra.Tor',
+              'SerrePositivity.CategoryTheory.TriangulatedK0'})
+print('General G₀ local lengths avoid height strata, Tor, and K₀ comparisons.')
+
 geometry = ['ClosedSupportGeometry', 'ModuleClosedSupport', 'SupportHeight',
             'SemilocalSupport', 'ModuleSupportHeight', 'LocalizationTorsion', 'ModuleSupport',
             'PrincipalSupport', 'LocalizationLattice', 'SubmoduleExact']

@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.KTheory.G0Supported
-public import SerrePositivity.PerfectComplex.ClosedSupportFunctoriality
+public import SerrePositivity.HomologicalAlgebra.BaseChange
+public import SerrePositivity.CommutativeAlgebra.ClosedSupportGeometry
 public import Mathlib.Algebra.Category.ModuleCat.Descent
 public import Mathlib.Algebra.Homology.ShortComplex.ModuleCat
 public import Mathlib.RingTheory.TensorProduct.Finite
