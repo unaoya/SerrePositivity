@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.Localization.Monoidal
+import SerrePositivity.HomotopicalAlgebra.Localization.MonoidalExistence
 import SerrePositivity.HomotopicalAlgebra.Localization.ModelExistence
 import Lean.Util.CollectAxioms
 
@@ -52,12 +52,28 @@ example {S : MorphismProperty C} (p : ModelPresentation.{w} cof fib I S)
     exact ((SerrePositivity.Quillen.monoidalModelCategory_iff C).mp hm).1
   exact ⟨hm, hp⟩
 
+-- Final original inputs produce the actual monoidal localized model.
+example (S : MorphismProperty C) [S.IsSmall.{w}]
+    (hM : @SerrePositivity.Quillen.MonoidalModelCategory C _ original _)
+    (hdom : ∀ {A B : C} (i : A ⟶ B), I i → IsCofibrant A)
+    (hcompat : ∀ {A B : C} (i : A ⟶ B), I i → ∀ {X Y : C} (s : X ⟶ Y), S s →
+      localEquivalences.{v, u} (C := C) cof fib S
+        (((curriedTensor C).obj A).map ((cofibrantSource cof).map s)) ∧
+      localEquivalences.{v, u} (C := C) cof fib S
+        (((curriedTensor C).obj B).map ((cofibrantSource cof).map s))) :
+    ∃ p : ModelPresentation.{w} cof fib I S,
+      @SerrePositivity.Quillen.MonoidalModelCategory C _ p.model _ := by
+  have := hM
+  exact exists_monoidal_localization cof fib I J IS JS hcof hfib hw
+    hcofV hfibV hcofB hfibB S hdom hcompat
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
     `SerrePositivity.HomotopicalAlgebra.Monoidal.BifunctorSymmetrize,
-    `SerrePositivity.HomotopicalAlgebra.Localization.Monoidal]
+    `SerrePositivity.HomotopicalAlgebra.Localization.Monoidal,
+    `SerrePositivity.HomotopicalAlgebra.Localization.MonoidalExistence]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
