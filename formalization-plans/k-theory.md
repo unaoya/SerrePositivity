@@ -11411,3 +11411,69 @@ ZがfibrantでBがReedy cofibrantなら、比較は外側のすべての次数�
 その後、恒等射・合成の高次整合性を保つSSet値の厳密化と、元のresolution Homとの比較を
 完成させる必要がある。任意モデル源の契約をcombinatorial源へ狭めず、∞圏も導入しない。
 全体目標F→L→E→Sは継続中。
+
+
+## 227. F1進捗：全bisimplicial集合のReedy cofibrancyと実際の対角随伴（2026-10-16）
+
+§226で必要になった対角弱同値定理に向けて、任意のbisimplicial集合のReedy cofibrancy、
+対角の実際の右随伴、Reedy cofibrationの保存を証明した。
+対角の自明cofibration保存・Quillen適合性は未完了であり、対角弱同値定理やF1全体の
+完成とは判定しない。源Cを特定のモデル圏へ狭める変更はない。
+
+### 227.1 Eilenberg–Zilberの共通細分と実際のlatching比較
+
+`Simplicial/LatchingDegeneracies`は、一つの単体が二つの退化表示で表されるとき、
+両表示が同じ非退化単体から来る共通細分を構成する。
+固定版Mathlibの非退化分解の存在と、次数・単体・epimorphismの一意性を用いる。
+proper epimorphismから実際のsimplex-op latching indexの対象を構成し、
+等しい像を持つ任意の二つのcocone要素に対して、そのindex内での共通細分と二つの射を与える。
+
+`LatchingMonomorphisms`はこの共通細分を使い、実際のlatching colimitから単体集合の
+各次数への比較が単射であることを証明する。colimitの任意の要素を代表で表し、
+像が一致する二つの代表を共通細分に移してcolimit内の等式を得る。
+空のlatching indexを含むすべての次数で成立し、モデル構造は不要。
+
+### 227.2 全bisimplicial集合のReedy cofibrancy
+
+`BisimplicialCofibrancy`はlatching colimitを内側の各次数で評価し、colimit保存の実際の同型を
+介して227.1の単体集合のlatching比較と一致することを証明する。
+従ってlatching比較そのものがSSetのmonomorphismとなる。
+bisimplicial集合がSSet内でsplitしているという追加仮定は置かず、各列の単体集合に対する
+Eilenberg–Zilber計算だけを用いる。
+
+任意のSSetモデルでcof=monoが与えられると、共有の絶対/相対初期latching射の同型を使い、
+任意のbisimplicial集合Bについて実際の`simplexOpModelCategory SSet`における
+`IsCofibrant B`を証明した。対象ごとのcofibrancyをReedy cofibrancyとみなすことはない。
+§226の任意の二重resolution Homにもこの定理を直接適用できる。
+
+### 227.3 対角随伴とcofibration保存
+
+`DiagonalAdjunction`はcurryingと対角indexに沿う制限から実際のbisimplicial対角関手を定義する。
+既存の右Kan拡張とcurryingを用い、その実際の右随伴と通常の随伴を構成した。
+対象と射への作用が§226の`DiagonalFrame.obj`・`DiagonalFrame.map`と定義上等しいことも確認した。
+この随伴の存在自体にはモデル構造は不要である。
+
+`DiagonalCofibrations`は対角がmonomorphismを保つことを各次数で証明し、
+既存のReedy cofibrationの成分定理とcof=monoからReedy cofibrationの保存を導いた。
+227.2の全対象のcofibrancyとBrown補題を使うことで、残る左Quillen適合性が証明できれば、
+行ごとの弱同値を対角の弱同値へ送ることが従うという正式な還元も実装した。
+この還元補題の`IsLeftQuillen diagonal`という入力は未解決の証明事項であり、
+最終の対角弱同値定理やF1に新たな仮定として加えたものではない。
+
+### 227.4 受入検証と次の実装単位
+
+- 共有入口の合同build：2595 jobs、成功。
+- `check_bisimplicial_cofibrancy`：実際のlatching比較の単射性、全bisimplicial集合の
+  実際のReedy cofibrancy、任意の二重resolution Homへの適用、対角随伴、
+  Reedy cofibration保存、未証明のQuillen条件を明示した形式的還元。
+  新規26宣言・5モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：4755宣言・407モジュール、標準公理のみ。
+- `check_diagonal_lift_actions`：65宣言・6モジュールの回帰確認。
+- `check_resolution_lift_spaces`：63宣言・3モジュールの回帰確認。
+- stageした差分の空白検査も成功。新規sorry・引用axiomなし。実装`27b29ced`。
+
+次は対角の右随伴のmatching射を計算し、SSetの標準単体・境界とinternal Homの
+pullback-Hom射として同定する。その同定と既存のSM7から残るQuillen適合性を証明し、
+227.3の還元を追加仮定なしの対角弱同値定理として閉じる。
+その後、§226の特定済みの比較射へ適用してKan置換・高次整合性を保つ厳密化へ進む。
+SSet値の厳密なRMapの最終契約と全体目標F→L→E→Sは引き続き未完了として維持する。

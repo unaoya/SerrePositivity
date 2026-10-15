@@ -1369,3 +1369,15 @@ Reedy cofibrant frameとtrivial fibrationに対して、一点へのprojection�
 前合成であることを証明する。対角全体の弱同値性は別の残項目として維持する。
 新規65宣言・6モジュールと共有4729宣言・402モジュールの標準公理監査が成功。
 実装`316d627d`、詳細とF1の厳密化の残項目は計画§226。
+
+
+## 全bisimplicial集合のReedy cofibrancyと対角随伴（2026-10-16）
+
+`Simplicial/LatchingDegeneracies`と`LatchingMonomorphisms`はEilenberg–Zilberの共通細分から、
+実際のsimplex-op latching colimitの比較が単射となることを証明する。
+`BisimplicialCofibrancy`は評価とcolimit保存の同型を介して、任意のbisimplicial集合が
+cof=monoを持つ実際のReedyモデルでcofibrantとなることを証明する。
+`DiagonalAdjunction`は対角制限の実際の右Kan拡張随伴を構成し、`DiagonalCofibrations`は
+Reedy cofibrationの保存を証明する。対角の左Quillen適合性と弱同値保存は引き続き残る。
+新規26宣言・5モジュールと共有4755宣言・407モジュールの標準公理監査が成功。
+実装`27b29ced`、次のmatching射の計算とF1の残項目は計画§227。
