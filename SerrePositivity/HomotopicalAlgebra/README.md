@@ -1073,3 +1073,15 @@ comparisonとhocolim frameのaugmentationをDに自然な変換へまとめる�
 `HocolimFrameComparison`は指定RMap(hocolim(−),−)とそのframe Homを、実際の二変数自然cospanで比較する。
 共有入口2458 jobs、共有3752宣言・272モジュールの標準公理監査と関連回帰検証が成功。
 コミット`2544f499`、詳細は計画§198。weighted Hom同型の源自然性、pointwise RMapへのholim比較は残る。
+
+
+F4は計画§199で受入照合まで完了。`WeightedFrameHomNaturality`・`HocolimWeightedComparison`は
+frame Hom≅weighted Homとholim比較を二変数に自然にする。
+`SmallHomFrameInvariance`・`SmallPointwiseMappingComparison`・`PointwiseRMapHomotopyLimit`は
+元の指定データを使うpointwise small-Hom RMapと実際のholimの比較を証明する。
+`SmallHocolimFrameComparison`はULiftの充満忠実性で同型をSS_wへ戻す。
+`HocolimRMapFormula`はRMap(hocolim D,Y)→middle₁←bridge→middle₂←holim RMap(D(k),Y)の
+実際の二変数自然な弱同値zigzagと、任意の通常のSS_w局所化後の自然同型を証明する。
+独立したu/v/wと任意の元の指定cof/fibを許し、源の豊穣性やSS_v/SS_maxのモデルは要求しない。
+共有入口2466 jobs、3834宣言・280モジュールの標準公理監査と関連回帰検証が成功。
+コミット`7c07d941`・`6c1ed2ca`。L1の小さいhomotopy生成族、L2〜L5、F1の任意源の最終関手は残る。

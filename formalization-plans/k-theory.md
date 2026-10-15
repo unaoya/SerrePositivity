@@ -6301,7 +6301,7 @@ IDは計画上の単位であり、1行を1コミットや1日とみなさない
 | F1 | HomotopyFunctionComplex/Basic。cosimplicial resolutionからRMap | F0、Q/R | 任意のモデル源CでRMap:Cᵒᵖ⥤C⥤SSetを構成。両変数の弱同値不変性とfibrancy、ordinary Ho(C)の射とのπ₀比較 |
 | F2 | HomotopyFunctionComplex/Comparison | F1 | resolution/置換の選択を自然な弱同値のzigzagで比較。単体的モデル圏の場合は実際のMap(QX,RY)と比較。厳密な同一視を要求しない |
 | F3（完了、§185） | HomotopyFunctionComplex/Accessible | A0,A1,F0,F1 | 必要なresolutionと、固定した小さいSに対するRMap評価が共通cardinalでaccessible。任意Xについて同じcardinalを無条件に要求しない |
-| F4 | HomotopyFunctionComplex/FilteredColimits | A0,F1 | 十分大きいfiltered colimitとhomotopy colimitの比較、必要範囲でRMapのhomotopy colimit→homotopy limit公式。M4全体を先に要求しないが、この証明を省かない |
+| F4（完了、§199） | HomotopyFunctionComplex/FilteredColimits | A0,F1 | 十分大きいfiltered colimitとhomotopy colimitの比較、必要範囲でRMapのhomotopy colimit→homotopy limit公式。M4全体を先に要求しないが、この証明を省かない |
 | L0（完了、§193） | HomotopicalAlgebra/Localization/Basic。局所性・W_S・条件付き局所化API | F1,F2 | Sの代表・cofibrant置換の独立性、元のW⊆W_S、2-out-of-3・retract閉性、空集合/元の弱同値だけのSで元モデルを回復 |
 | L1（部分実装、§195） | Localization/AccessibleLocalObjects | A1,F3,L0 | S-local対象の充満部分圏のaccessibilityと包含のaccessibilityを導く。検出に使う関手・cardinalと小さいhomotopy生成族を明示 |
 | L2 | Localization/AccessibleLocalEquivalences | L1,F4 | Arrow C内のW_Sのaccessibilityと包含のaccessibilityを証明。全局所対象に量化した定義から小ささへの移行を独立に検証 |
@@ -9269,3 +9269,93 @@ weightedFamily(K,I,J,W)(unit)→hocolimという実際の自然変換comparisonF
 その後、右端のsmall-Hom frame図式と指定済みpointwise RMapの比較をholimへ移し、
 最終公式と選択独立性を照合する。L1の小さいhomotopy生成族、F1の任意源の最終関手、
 L2〜L5も未完了である。
+
+## 199. F4完了：実際の二変数自然RMap–hocolim/holim公式（2026-10-15）
+
+§159.4のF4の二つの受入項目を照合した。十分大きいfiltered colimitと実際のhocolimの比較は
+§186のexists_filtered_comparison、実際のRMap–hocolim/holim公式は今回のHocolimRMapFormulaで
+証明済みとなった。F4を完了とする。F1の任意の通常モデル源での最終関手、L1の残項目、
+L2〜L5は別であり、F〜L全体の完了とはしない。
+
+### 199.1 weighted Hom同型とholim比較の源自然性
+
+`SmallHomWeightAdjunctionNaturality`は、§198のrealizationのframe関手性に対し、
+small-Homへの随伴とweighted随伴の実際のHom同値がframeの射と可換であることを証明する。
+`WeightedFrameHomNaturality`はこの同値とsimplicial Yonedaを合成し、
+frame Hom≅weighted Homを、任意の固定重みについて実際のbifunctor同型へ拡張する。
+この部分にはSSetモデル自体は不要である。
+
+`HocolimWeightedComparison`は実際のEvaluatedFrame.familyへ適用する。
+§198の二変数自然cospanをこの同型へつなぎ、weighted Hom→holimの比較も
+二変数の自然変換として構成する。各D・任意のYでその射が弱同値であることを証明した。
+コミット：`7c07d941`。`check_hocolim_weighted_comparison`は21宣言・3モジュールを監査。
+
+### 199.2 指定済みpointwise RMapと、同じ宇宙内での比較
+
+`SmallHomFrameInvariance`は元のCのcofibrantなcosimplicial frame間の次数ごとの弱同値を、
+実際のsmall-Hom bifunctorがfibrantな標的への弱同値へ送ることを証明する。
+元のCからShrinkHoms Cへの左右Quillen性、frameの実際のcofibrantな各次数とBrown補題を使う。
+移送モデル内で直接証明するため、SS_vやSS_max(v,w)のモデルは不要である。
+
+`SmallPointwiseMappingComparison`は、元の任意の指定cof/fibから作った実際の
+small-Hom RMap(D(k),Y)、その共通frame、実際のEvaluatedFrameのsmall-Hom図式を比較する。
+元の指定resolution/replacementを別の選択に取り替えず、D・k・Yの全射への自然性を保つ。
+`PointwiseRMapHomotopyLimit`はこのcospanに証明済みの実際のholim関手を適用し、
+両射が全D・Yで弱同値であることを証明する。
+
+`SmallHocolimFrameComparison`は左側のhocolim frame比較も実際のsmall-Homで構成する。
+§195のsmall-Homと元のHomの共通宇宙での自然同型に199.1の同型を合成し、
+ULiftの充満忠実性でその同型の原像を取る。
+この結果、small-Hom frame Hom≅weighted HomがSS_w自身の実際の自然同型になる。
+SS_max(v,w)のモデル構造や弱同値の仮定を使っているのではない。
+
+### 199.3 最終公式、実際のzigzagと通常の局所化
+
+`HocolimRMapFormula`のsourceは元の指定データの実際のsmall-Hom RMap(hocolim(D),Y)、
+targetは全く同じ指定データの図式k↦RMap(D(k),Y)の実際のholimである。
+両端を別のmapping objectへ置き換えた条件付き命題ではなく、次の自然変換を実際に構成する。
+
+`source → middle₁ ← bridge → middle₂ ← target`
+
+四つの射がすべてSS_wの弱同値であることを全D・任意のYで証明する。
+各項は(K→C)ᵒᵖ→C→SS_wという実際のbifunctorであり、源・標的の両自然性を含む。
+源の対象宇宙u・Hom宇宙v・presentability/重み宇宙wは独立である。
+small-Homは既存SmallHomComparisonの実際のHom表示で、元のRMapとの比較は
+resolutionLiftIsoを通して源・標的・単体次数に自然である。
+
+localizedIsoは任意の通常の局所化L:SS_w→Hについて、独立した対象/射宇宙のHを許し、
+両端にLを合成したbifunctor間の実際の自然同型を出力する。
+各弱比較のLでの像が可逆であることを全D・Yで証明し、その同型を合成する。
+通常の局所化の普遍性を使い、∞圏・hammock局所化・存在引用を追加しない。
+
+元のcof/fibデータは任意で、最終式はその選択ごとに同じ両端を結ぶ。
+選択データ自身のaccessibilityは要求せず、選択した二つのRMapを厳密に等しいとはしない。
+選択変更の既存F2の弱比較およびsmall-Homの自然な宇宙比較との接続を保持する。
+コミット：`6c1ed2ca`。
+
+### 199.4 F4の受入照合と検証
+
+| F4の受入項目 | 現在の証拠 |
+|---|---|
+| combinatorial入力から共通基数を構成 | FilteredHomotopyColimit.exists_filtered_comparison、§186 |
+| 以後の全正則基数と任意の十分filteredな小さい図式 | 同定理とcheck_filtered_homotopy_colimit |
+| 実際のhocolim→colimが元のCの弱同値 | 同定理。対象ごとの存在やcofibrant図式に限定しない |
+| 実際のRMap–hocolim/holim公式 | HocolimRMapFormulaの四つの実際の弱比較とlocalizedIso |
+| 源・標的の自然性、独立したu/v/w | 二変数bifunctorの自然変換・自然同型として実装、抽象利用例で確認 |
+| 既存M4全体や源の豊穣性等を先取りしない | 任意のcombinatorialなC、固定mono/KanのSS_wのみで適用 |
+
+以下はすべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`：2466 jobs。
+- `check_hocolim_rmap_formula`：61宣言・5モジュール、標準公理のみ。
+  両端の実際の型、四つの弱比較、任意の通常の局所化後の二変数自然同型、
+  固定mono/Kanモデルから標準生成族を導く最終入口を検証。
+- `check_filtered_homotopy_colimit`：35宣言・3モジュール、回帰検証成功。
+- `check_hocolim_weighted_comparison`：21宣言・3モジュール、回帰検証成功。
+- `audit_homotopical_foundations`：3834宣言・280モジュール、標準公理のみ。
+- `check_homotopical_foundations`・`check_spectra_stage2`・`git diff --check`。
+- 新規sorry・引用axiomなし。他チャットの未コミット変更と共有ルートを保持した。
+
+次はF4の公式と十分大きいfiltered colimit比較を、小さいpresentable生成族の検出へ適用する。
+L1の局所対象と包含のaccessibilityは§195で証明済みだが、小さいhomotopy生成族の明示的な
+検出定理は残る。その後L2〜L5へ進む。F1の任意モデル源の最終関手も引き続き未完了である。
