@@ -352,6 +352,20 @@ pointwise colimitと通常の選択されたcolimitがκ-accessibleであるこ�
 検証する。全6宣言は標準公理のみ。小対象論法のセル付加関手をTとして使うには、
 そのaccessibilityを小さい生成射族の可呈示性から証明する必要が残る。
 
+## A0：セルを添字づけるsquareとcoproduct（途中、2026-10-15）
+
+`Smith/DependentCopower.lean`は、集合族Pに対し`⨿ (i,x∈Pᵢ), Aᵢ`を取る関手を
+Hom集合族を取る関手の左随伴として構成する。したがって各正則κでaccessibleとなる。
+`Smith/AccessibleSquares.lean`は、生成射aᵢの両端点のκ-可呈示性から、可換squareの
+集合族を取る関手のκ-accessibilityを導く。squareの添字をMathlibの
+`SmallObject.FunctorObjIndex`と同一視するequivalenceと、対応するcoproduct関手への
+自然同型を構成し、実際のsquare添字によるcoproductのaccessibilityを証明する。
+
+`scripts/check_accessible_squares.lean`は局所可呈示性から共通基数を選び、始域・終域の
+両方のcoproduct関手がaccessibleになるところまで検証する。両モジュール全44宣言は
+標準公理のみ。この核APIでは射の宇宙をwにそろえており、一般の宇宙への移送、
+pushoutによるセル付加段階、小対象論法全体への接続、A1は残作業として区別する。
+
 `check_smith_solution_set`はモデル構造のない抽象圏で、独立した宇宙、CommSqの左右成分、
 小さい射族/射クラス全体の分解、空の射族、General/StageTwoとの併用を検証する。
 同スクリプトはこのモジュールの全宣言を標準公理のみで監査する。
