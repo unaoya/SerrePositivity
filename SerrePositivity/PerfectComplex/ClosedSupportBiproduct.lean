@@ -24,12 +24,7 @@ lemma mk_biprod (Z : TopologicalSpace.Closeds (PrimeSpectrum R))
     mk Z (supportedPerfectOnObj Z P hp hsP) + mk Z (supportedPerfectOnObj Z Q hq hsQ) := by
   let S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ) :=
     ShortComplex.mk (biprod.inl : P ⟶ P ⊞ Q) biprod.snd (by simp)
-  let spl : S.Splitting := {
-    r := biprod.fst
-    s := biprod.inr
-    f_r := by simp [S]
-    s_g := by simp [S]
-    id := biprod.total }
+  let spl : S.Splitting := ShortComplex.Splitting.ofHasBinaryBiproduct P Q
   exact mk_shortExact Z S spl.shortExact hp (strictlyPerfectComplex_biprod hp hq) hq
     hsP (hsP.biprod hsQ) hsQ
 

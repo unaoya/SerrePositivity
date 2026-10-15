@@ -27,12 +27,7 @@ lemma eigenK0Class_biprod (τ : CochainCubicAction K) (σ : CochainCubicAction L
       τ.eigenK0Class t ht Z hp hs j + σ.eigenK0Class t ht Z hq hs' j := by
   let S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ) :=
     ShortComplex.mk (Limits.biprod.inl : K ⟶ K ⊞ L) Limits.biprod.snd (by simp)
-  let spl : S.Splitting := {
-    r := Limits.biprod.fst
-    s := Limits.biprod.inr
-    f_r := by simp [S]
-    s_g := by simp [S]
-    id := Limits.biprod.total }
+  let spl : S.Splitting := ShortComplex.Splitting.ofHasBinaryBiproduct K L
   exact eigenK0Class_shortExact S τ (τ.biprod σ) σ
     (by simp [S, biprod]) (by simp [S, biprod]) t ht Z j spl.shortExact
     hp (strictlyPerfectComplex_biprod hp hq) hq hs (hs.biprod hs') hs'

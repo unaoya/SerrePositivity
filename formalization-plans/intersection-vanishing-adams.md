@@ -5106,7 +5106,7 @@ R37–R40のコミットは `022387f`、`fcd06d8`、`247e86c`、`4652f6f`、
 | R41a | 錐の零次ホモロジー同型を一般の分解で共用 | 完了：Adams・Torの両利用先3180 jobs、3宣言の公理監査・旧完全分解側とのrfl・全依存ゲートが成功。ログ `/tmp/adams-r41a-{build,audit}.log` |
 | R41b | 錐が分解となる構成を共用 | 完了：一般のIsResolutionOfから両分解を導出。3180 jobs、4宣言の公理監査と完全分解側のrflが成功。ログ `/tmp/adams-r41b-{build,audit}.log` |
 | R42a | 冪等像の完全性に次数別retractを利用 | 完了：両指標類2811 jobs、2宣言の公理監査、全依存ゲートが成功。ログ `/tmp/adams-r42a-{build,audit}.log` |
-| R42b | 直和の分裂にmathlibを利用 | 未着手 |
+| R42b | 直和の分裂にmathlibを利用 | 完了：二箇所の分裂をofHasBinaryBiproductへ置換。2812 jobs、3宣言の公理監査が成功。ログ `/tmp/adams-r42b-{build,audit}.log` |
 | R42c | 消去イデアルの移送にmathlibを利用 | 未着手 |
 | R43 | 部分加群への完全列の制限を格子・dévissageで共用 | 未着手 |
 | R44a | 一元Koszulの二つの座標同型を共通の錐APIから導出 | 未着手 |
