@@ -4869,10 +4869,16 @@ A–E の全単位は実装・監査・公開済み。S11 までの本計画に�
    `SupportedAdams.cup_enlarge_eq_zero_of_eigen` に固有成分の積の消滅をまとめ、
    高さによる積の消滅の証明を成分への適用と和の展開に整理した。
    `integerEuler_eq_zero_of_one_tmul_eq_zero` に標数零の係数拡大から整数 Euler 値へ戻す
-   処理を移し、一般の Adams 族からの消滅定理で利用する。新補題は体や正則性を要求しない。
+   処理を移し、一般の Adams 族からの消滅定理で利用する。この整数 Euler 値の補題は
+   体や正則性を要求しない。
    対象ビルド 3375 jobs と係数付き Adams・消滅の二公理監査が成功。
-4. **R11／統合検証（予定）**：公開消滅定理・両標数分岐・利用先のビルドと公理監査、
-   既存宣言および import 依存関係の互換性を確認する。
+4. **R11／統合検証（完了）**：ルート・`Paper.Lemma3_5`・`Devissage`・`FiniteExtension`・
+   `EqualCharZeroPositivity`・`K0Functoriality` のビルドが 4932 jobs で成功。
+   消滅証明の専用十四宣言と共通公理監査も成功し、変更箇所・両標数分岐・公開消滅定理の
+   依存は標準三公理の範囲内。既存三十八宣言のソース上の宣言部分を維持し、
+   `Inputs/IntersectionTheory.lean` は着手前 `ca04fb9` とバイト単位で一致する。
+   `WeightOperators` から半局所化の重み証明・高さの下降帰納法への import 経路はなく、
+   全標数の消滅証明から公開入力層への循環もない。
 
 R8 のログは `/tmp/adams-refactor-r8-build.log`、
 `/tmp/adams-refactor-r8-{extension,lengths,weights}-audit.log`。
@@ -4880,6 +4886,9 @@ R8 のコミットは `4dd883c`。R9 のログは `/tmp/adams-refactor-r9-build.
 `/tmp/adams-refactor-r9-{semilocal,projectors}-audit.log`。
 R9 のコミットは `b33d91a`。R10 のログは `/tmp/adams-refactor-r10-build.log`、
 `/tmp/adams-refactor-r10-{coefficients,vanishing}-audit.log`。
+R10 のコミットは `3a33581`。統合検証のログは
+`/tmp/adams-refactor-r11-integration-build.log`、`/tmp/adams-refactor-r11-final-audit.log`、
+`/tmp/adams-refactor-r11-common-audit.log`。
 
 ## 5. 受入条件
 
