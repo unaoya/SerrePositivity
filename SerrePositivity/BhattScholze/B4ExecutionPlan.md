@@ -4270,3 +4270,33 @@ HasHomologySupportOn・K0WithSupport.mk等の未解決識別子を報告した�
 ログは/tmp/bs-infaug-full.log。共有コードは変更していない。
 raw有限商colimit比較と実無限Koszul添加写像の対象ビルド・pure B4監査は成功しており、
 全体ビルド成功とは区別する。前工程の全体4936ジョブ成功は、今回の共有変更前の記録である。
+
+### 次工程の登録：導来基底変更で現れる有限評価関係との比較
+
+BS専用`DeltaDivisionFiniteEvaluationRelations.lean`で、任意δ環D、任意元族a_sとdについて、
+u_s=C(d)X_(s,0)、v_s=C(a_s)と置いたときの二つの実有限関係イデアルを比較する。
+既存の関係はg_(s,n)=δ^n(u_s−v_s)、自由δ射の座標評価から現れる関係は
+h_(s,n)=δ^n(u_s)−δ^n(v_s)であり、これらを定義上同一視しない。
+目標は、全深さ≤Nで生成した両通常イデアルが全Nで一致するという証明。
+δ加法の繰上りと、有限spanのδ像が次段spanへ入ることを用いる。
+p正則性・ghost単射・完備性はこの純代数的なイデアル比較には要求しない。
+この比較を、自由δ射の座標関係で計算する実基底変更Koszulモデルへの入口とする。
+イデアル一致だけからKoszul複体の擬同型や導来δpushoutの同一視は主張せず、
+評価関係列自身の正則性・標準評価写像・実導来テンソル比較を順に証明する。
+著者公開版Cor 2.44（p.27）の導来pushoutを通常商へ無条件に置換しない。
+
+## B4-6：実無限Koszul比較の標準単位の正規化（2026-10-15）
+
+`DeltaPDivisionSequentialKoszulUnit.lean`で、評価関手からcolimへの自然変換と
+既存ShortComplex.homologyMap_mapNatTransから、実ホモロジー極限比較が
+各有限段の実圏論的標準射を保つことを全ℤ次数で証明した。
+H⁰の通常有限商図式との比較、rawδ包との比較まで可換図式を接続した。
+任意Nとr:Lについて、有限段の標準H⁰単位を実極限へ送りraw比較を施すと[r]となる。
+実無限添加写像の実H⁰も同じ標準単位の式を満たすと証明した。
+p正則性・y正則性・ghost単射・完備性は、この正規化の等式には不要。
+5公開定理の対象3862ジョブ・pure B4監査成功。標準3公理のみ、新sorry・公理・引用なし。
+今回の全体ビルドは共有IntersectionMultiplicity/AdamsVanishingThree.leanで、
+共有KTheory/Adams/TensorCubeLowMixedSections.oleanの欠落により失敗した。
+ログ/tmp/bs-infunit-full.log。担当外の共有ファイルは変更していない。
+対象・依存監査成功と全体ビルド成功を区別する。
+原典の導来δ基底変更との比較、分冪包比較、CFF根付き拡大、一般B4は未完成。
