@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.DeltaPDivisionFactorialStructure
 import SerrePositivity.BhattScholze.DeltaSubring
 import SerrePositivity.BhattScholze.DeltaPDivisionFactorialEquiv
 import SerrePositivity.BhattScholze.DeltaPDivisionFactorialStable
@@ -4194,3 +4195,33 @@ assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.subring_subtype_isDe
 
 assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.subring_unique
 #print axioms SerrePositivity.BhattScholze.DeltaStructure.subring_unique
+
+assert_no_sorry SerrePositivity.BhattScholze.pDivisionFactorialBase
+#print axioms SerrePositivity.BhattScholze.pDivisionFactorialBase
+
+assert_no_sorry SerrePositivity.BhattScholze.pDivisionFactorialDelta
+#print axioms SerrePositivity.BhattScholze.pDivisionFactorialDelta
+
+assert_no_sorry SerrePositivity.BhattScholze.pDivisionFactorialDelta_subtype_isDeltaHom
+#print axioms SerrePositivity.BhattScholze.pDivisionFactorialDelta_subtype_isDeltaHom
+
+assert_no_sorry SerrePositivity.BhattScholze.pDivisionFactorialDelta_base_isDeltaHom
+#print axioms SerrePositivity.BhattScholze.pDivisionFactorialDelta_base_isDeltaHom
+
+assert_no_sorry SerrePositivity.BhattScholze.pDivisionFactorial_p_mul_injective
+#print axioms SerrePositivity.BhattScholze.pDivisionFactorial_p_mul_injective
+
+assert_no_sorry SerrePositivity.BhattScholze.pDivisionFactorialDividedPowers
+#print axioms SerrePositivity.BhattScholze.pDivisionFactorialDividedPowers
+
+assert_no_sorry SerrePositivity.BhattScholze.pDivisionFactorialBase_mem_primeIdeal
+#print axioms SerrePositivity.BhattScholze.pDivisionFactorialBase_mem_primeIdeal
+
+assert_no_sorry SerrePositivity.BhattScholze.pDivisionFactorialDividedPowers_base_apply
+#print axioms SerrePositivity.BhattScholze.pDivisionFactorialDividedPowers_base_apply
+
+
+
+
+
+
