@@ -1026,3 +1026,19 @@ ULiftの左右Quillen条件と、任意の射の弱同値の保存・反映を�
 共有入口2431 jobs、共有3525宣言・245モジュールの標準公理監査と回帰検証が成功。
 コミットは`c89ef64`・`5b4bc6e`、詳細は計画§194。F4・L1の宇宙変更の前提を一つ解消した。
 small-Hom表示の局所性テストの接続とL1のaccessibility、F4の源比較と最終公式は未完了である。
+
+
+`SmallHomComparison`はShrinkHomsを使う実際のHom bifunctorと、源・標的・単体次数に自然な
+共通宇宙での同型を構成する。`Localization/SmallHomTests`は§194の結果を使い、
+元のmapping test・局所対象・局所同値クラスとの一致を証明する。
+`SmallHomAccessible`は固定した小さいSの評価とA0/A1へ共通のaccessibility基数を与える。
+`Smith/AccessibleWeakEquivalenceInverseImage`は、accessibleなArrow値検査関手による
+元モデル弱同値の逆像の部分圏と包含のaccessibilityを証明する。源にモデル構造は不要である。
+
+`MappingTestDiagram`は検査族を実際の図式圏内の単一の射へまとめる。
+`AccessibleSmallLocalObjects`・`AccessibleLocalObjects`は証明済みprojectiveモデルと逆像定理を
+適用し、任意のsmallなSについて元のlocalObjectsの部分圏と実際の包含のaccessibilityを証明する。
+任意の元の指定resolution/replacementへ選択独立性で戻すため、そのaccessibilityは仮定しない。
+共有入口2438 jobs、共有3571宣言・252モジュールの標準公理監査と回帰検証が成功。
+コミットは`7e11097`・`858793c`・`fe6bdc4`、詳細は計画§195。
+L1の小さいhomotopy生成族の明示的な検出定理、F4の最終比較、L2〜L5は未完了である。

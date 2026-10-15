@@ -6303,7 +6303,7 @@ IDは計画上の単位であり、1行を1コミットや1日とみなさない
 | F3（完了、§185） | HomotopyFunctionComplex/Accessible | A0,A1,F0,F1 | 必要なresolutionと、固定した小さいSに対するRMap評価が共通cardinalでaccessible。任意Xについて同じcardinalを無条件に要求しない |
 | F4 | HomotopyFunctionComplex/FilteredColimits | A0,F1 | 十分大きいfiltered colimitとhomotopy colimitの比較、必要範囲でRMapのhomotopy colimit→homotopy limit公式。M4全体を先に要求しないが、この証明を省かない |
 | L0（完了、§193） | HomotopicalAlgebra/Localization/Basic。局所性・W_S・条件付き局所化API | F1,F2 | Sの代表・cofibrant置換の独立性、元のW⊆W_S、2-out-of-3・retract閉性、空集合/元の弱同値だけのSで元モデルを回復 |
-| L1 | Localization/AccessibleLocalObjects | A1,F3,L0 | S-local対象の充満部分圏のaccessibilityと包含のaccessibilityを導く。検出に使う関手・cardinalと小さいhomotopy生成族を明示 |
+| L1（部分実装、§195） | Localization/AccessibleLocalObjects | A1,F3,L0 | S-local対象の充満部分圏のaccessibilityと包含のaccessibilityを導く。検出に使う関手・cardinalと小さいhomotopy生成族を明示 |
 | L2 | Localization/AccessibleLocalEquivalences | L1,F4 | Arrow C内のW_Sのaccessibilityと包含のaccessibilityを証明。全局所対象に量化した定義から小ささへの移行を独立に検証 |
 | L3 | Localization/LeftProperClosure | L0,F4、元モデルの左固有性 | cof_original∩W_Sのpushout/超限合成閉性を証明。局所化後のモデル存在や左固有性を先取りしない |
 | L4 | Localization/Existence。一般の左Bousfield局所化存在 | R3,L2,L3 | §159.2の三クラス・fibrant判定を同じC上で構成。局所モデルの生成Jと分解は出力。左固有性・combinatorial性も接続 |
@@ -8992,3 +8992,85 @@ wサイズの単体集合の弱同値テストへ移す。その上で既存のa
 生成右クラスの逆像のaccessibilityへ接続する。L1の部分圏と包含のaccessibility自体はまだ未証明である。
 F4の重みaugmentationをrealizationした射の弱同値性と最終RMap公式、
 F1の任意モデル源の最終関手、L1〜L5は引き続き残る。L0の完了判定は維持する。
+
+
+## 195. L1：元の局所対象の部分圏と包含のaccessibility（2026-10-15）
+
+任意のw-smallな射クラスSについて、元のlocalObjectsのfull subcategoryと実際の包含が、
+共通の十分大きい正則κでaccessibleになることを証明した。
+Sの局所性を別の述語へ置き換えたまま止めず、元の任意の指定resolution/replacementへ戻している。
+§159.4に併記された小さいhomotopy生成族の明示的な検出定理はまだ残るため、L1全体は完了としない。
+
+### 195.1 源にも自然なsmall-Hom比較
+
+`HomotopyFunctionComplex/SmallHomComparison`は、元の各cosimplicial sourceをMathlibの
+ShrinkHomsへ移した実際のHom bifunctorを構成する。Homの変更関手のfully faithfulnessから、
+両側を共通宇宙へULiftした後の実際のbifunctor同型を構成した。
+源frame・標的・単体次数のすべてについて自然であり、任意のQ:C→(Δ→C)とR:C→Cへ制限できる。
+任意のsource mapから誘導される二つの写像を、共通宇宙の実際のArrow同型として比較する。
+
+`Localization/SmallHomTests`はこれと§194を接続する。
+同じ実際の指定cosimplicial resolutionとfibrant replacementを使うsmall-Homのmapping testは、
+元のHom宇宙のmapping testと等しい。任意のSについて局所対象・局所同値クラスも等しい。
+元のHom宇宙v、局所可呈示性の宇宙w、対象宇宙uは独立である。
+指定mono/KanモデルをSSet.{v}、SSet.{w}、共通宇宙のSSetに受け取り、その存在axiomは追加しない。
+コミット：`7e11097`。
+
+### 195.2 small-Hom評価の共通基数と一般の弱同値逆像
+
+既存のHomotopyFunctionComplex/AccessibleのMappingTestsは、CのHom宇宙と値のSSet宇宙を
+独立にした。従来の同一宇宙での呼び出しはそのまま使える。
+`SmallHomAccessible`は、固定した小さいSの両端の実際のresolutionの全次数を
+ShrinkHoms Cで共通の可呈示基数に収める。target replacementと合成した実際のsmall-Hom評価、
+Sの全mapping test、A0の指定分解データ、A1の元のWと包含を共通のκでaccessibleにする。
+任意に選んだfactorizationのaccessibilityや、全source objectでの一様な基数は仮定しない。
+このaccessibility構成自体にはSSetモデルの存在を要求しない。
+
+`Smith/AccessibleWeakEquivalenceInverseImage`は、局所可呈示なBとcombinatorialモデルE、
+accessibleなF:B→Arrow Eについて、Fの像が元のEの弱同値になる対象の部分圏と包含の
+accessibilityを証明する。Bにモデル構造は不要である。
+Eの実際のaccessibleな第二分解の右因子をFと合成し、証明済みの小さい生成右クラスの
+逆像のaccessibilityへ帰着する。任意のaccessible full imageや任意のaccessible部分圏の
+逆像に対する一般命題を仮定しない。コミット：`858793c`。
+
+### 195.3 局所対象のaccessibilityへの実際の適用
+
+`Localization/MappingTestDiagram`は固定族s_iについて、実際の各RMap(s_i,Y)をまとめた
+単一の射を、Discrete ι→SSetという図式圏の中に構成する。両端の関手とprecompositionは
+実際の自然変換である。端点ごとのaccessibilityからこのArrow値関手のaccessibilityを証明する。
+
+`AccessibleSmallLocalObjects`は195.2のsmall-Homをこれに適用する。
+値の図式圏には既存の証明済みprojectiveモデルを構成し、射の弱同値性は各s_iのテストの弱同値性と
+同じであることを証明する。195.2の逆像定理を適用し、局所対象の部分圏自体と包含を同時に得る。
+逆像の基数と元の指定分解の基数をsharply大きい共通基数へ移し、指定データも保持する。
+
+任意のS.IsSmall.{w}については、実際のS.toSetをShrinkしてType wの代表族sを選び、
+ofHoms(s_i.hom)=Sを証明して適用する。代表族が入力済みの場合だけには制限していない。
+
+`AccessibleLocalObjects.exists_accessible_localObjects`は195.1とF2の既存の選択独立性を使い、
+この結果を元のlocalObjects cof fib Sへ戻す。cof/fibは任意の指定データでよく、
+その指定データ自身のaccessibilityを入力として要求しない。
+元の局所対象のfull subcategoryと実際の包含について、共通の正則κでのaccessibilityを出力する。
+今回の対象はderived RMapによるlocalObjectsであり、元モデルでのfibrancyを別に加えた
+localFibrantObjectsの部分圏とは区別する。コミット：`fe6bdc4`。
+
+### 195.4 受入検証と残作業
+
+以下はすべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`：2438 jobs。
+- `check_small_hom_locality`：31宣言・4モジュール、標準公理のみ。
+  任意のQ/Rの実際のsource Arrow同型、最終combinatorial入力だけからのsmall-Hom評価の
+  共通基数、元の局所対象・局所同値との一致、モデルでない源からの弱同値逆像を検証。
+- `check_accessible_local_objects`：15宣言・3モジュール、標準公理のみ。
+  任意のsmallなS、独立したu/v/w、部分圏自体と包含の両方、
+  accessibilityを仮定しない元の任意の指定resolution/replacementへの適用を検証。
+- `check_accessible_mapping_tests`：19宣言・2モジュール。既存のAPIの回帰検証。
+- `audit_homotopical_foundations`：3571宣言・252モジュール、標準公理のみ。
+- `check_homotopical_foundations`、`check_spectra_stage2`、`git diff --check`。
+
+新規sorry・引用axiomはない。他チャットの作業と共有ルートの変更を保持した。
+L1の主要結論である局所対象の部分圏と包含のaccessibilityは証明済みとなった。
+小さいhomotopy生成族の明示的な検出定理は残り、accessibilityからそのホモトピー的性質を
+自動的に推論しない。F4の源比較の弱同値性と最終RMap公式、F1の任意モデル源の最終関手、
+L2〜L5も引き続き未完了である。
