@@ -583,3 +583,31 @@ latching/matching射の自然性を構成する。`Reedy/ExtensionOfFunctor`は�
 
 全次数での整合的反復と関手的Reedy因子分解、objectwise Wと相対trivial条件の同値、
 モデル公理とresolutionはF0の残項目であり、F1〜F4も引き続き未完了である。
+
+
+## F0：全次数の中間図式と両射の整合的な反復（途中、2026-10-15）
+
+`Reedy/DiagramTower`は有限次数の図式と隣接段の制限同型から、任意の二段の比較と
+三段間の合成則を構成する。`Reedy/DiagramGluing`はこれらから全体の実際の関手を作り、
+共通上位段の選択への非依存性と、各有限次数への制限自然同型を証明する。
+`Reedy/TowerTransformation`は整合的な各段の変換を貼り合わせ、恒等変換と合成を保つ。
+`Reedy/TowerOfFunctor`は元の関手の全射での回復を証明する。
+`Reedy/FactorizationTower`は整合的な各段の因子分解から全体の中間図式と左右の自然変換を
+構成し、分解等式と各段への左右の射の制限を証明する。
+
+`Reedy/ExtensionComparison`は再構成した図式と元の図式を自然に比較する。
+`Reedy/DegreeFactorizationStep`は元の自然変換の閉じた次数制限を因子分解する。
+`Reedy/ExtensionRestriction`と一段構成の二つの制限公式により、左右の射まで前の段を保つ。
+`Reedy/FactorizationSequence`は次数関数が対象と自然数の全単射になる場合、その一段構成を
+実際に反復して整合的な列を作り、全体の因子分解へ貼り合わせる。列は入力に仮定しない。
+通常の因子分解の選択だけで構成でき、`HasFactorization`と選んだ関手的データの両入口を持つ。
+Δ・Δopでは任意モデル源Cの有限極限・有限余極限と通常の因子分解公理だけで利用例が通る。
+
+現時点の全体の出力は`MapFactorizationData ⊤ ⊤ τ`である。実際の中間図式と両自然変換・
+分解等式を構成済みだが、全体の両相対射のReedyクラスへの所属と、入力の可換正方形に
+対する関手性は未証明である。F0のReedyモデル構造やresolutionの完成とは区別する。
+通常の因子分解と関手的因子分解の区別によって、F1の任意モデル源の契約を狭めない。
+
+`check_reedy_diagram_tower`の九モジュール全188宣言、共有基盤1507宣言・94モジュールは
+標準公理のみで監査成功。共有入口のビルド1622 jobsと、従来の追加図式・accessibility・
+共有基盤・スペクトルの回帰検証も成功した。F0の残りとF1〜F4は引き続き未完了である。
