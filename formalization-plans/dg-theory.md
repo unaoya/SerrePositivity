@@ -1410,3 +1410,33 @@ U10全受入は未完。semifree性の残る具体的証明は、初期自由dis
 それらの証明を伴ったsemifree filtrationと、任意加群への既存準同型射を結び付ける。
 続いてHom endのacyclic性・導来Homと選択独立性、三角構造・Verdier商、余積・局所小性、
 一対象比較の三角形/余積保存を完成する。共有一般論の重複はなく、D4m条件は§13.23を維持する。
+
+
+### 13.30 U10a9：各自由diskの二段sphere filtration
+
+`Complexes/DiskFiltration.lean` は次数n+1のsphere→disk n→sphere nを構成する。
+標準double/singleの射を再利用し、合成が零であること、次数0のsection/retraction、
+分裂恒等式と各次数のMathlib標準Splitting/ShortExactを証明した。
+section/retractionはchain mapとは主張せず、微分を忘れた次数付き分裂として扱う。
+
+`Complexes/TensorGradedZero.lean` はchain条件のない次数0 cochainを任意複体で右tensorする。
+加法・零・単位・合成・chain mapとの一致、純tensor上の公式を証明し、
+左tensorの全次数dg作用との可換性を符号(-1)^(pi)込みで検証する。
+これは一般モデル圏の転送ではなくCh(A)の具体的な次数付き計算である。
+
+`Module/DiskFiltration.lean` はこれらを自由加群へ運び、
+`freeDiskGradedSplit` により自由diskが上次数自由sphereと下次数自由sphereの拡大であり、
+全斉次作用に関して分裂することを証明する。
+`freeCellBoundary_mono`、`freeDiskToSphere_epi`、`freeDiskSphereCokernel` により
+主dg加群圏の包含と真の商を確定する。任意A・非有界・独立対象宇宙で、flatness等の追加仮定はない。
+
+受入入口 `Checks/DiskFiltration.lean` は全次数作用、各評価次数の短完全性、
+主圏のcokernel普遍性、ℤの負次数・ZMod 2の正次数を検証する。
+この入口・前段filtration入口・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3210 jobs）。
+直接実行の主要36宣言は標準公理のみ。累計622宣言。
+全体文書検査の並行K系列importによる制限は§13.29の記録を維持する。
+
+U10全受入は未完。各自由diskの二段分解は完了したが、初期disk被覆全体への余積による接続は残る。
+次はu-small余積で全次数分裂が保たれることを証明し、初期被覆のsphere二段分解へ適用する。
+後続商のshiftと余積・自由sphereとの同定を合わせ、証明付きsemifree filtrationを完成する。
+続くHom計算・三角構造・Verdier商・余積/局所小性・一対象比較の残項目は引き続き保持する。
