@@ -8619,3 +8619,97 @@ KのサイズwとCのHom宇宙vが異なっても、点ごとのHomをSSet.{max 
 次は、このmapping limitを§187のweighted holimへ比較し、必要なULift・添字の宇宙変更と
 弱同値の適合を証明する。点ごとのKan性だけからlimitの導来不変性を推論しない。
 F1の任意モデル源の最終関手、F4全体、L0〜L5は未完了で、§159.2の最終契約は維持する。
+
+
+## 190. F4進捗：独立したHom宇宙でのframe realizationと、weighted Homから実際のholimへの比較（2026-10-15）
+
+一般の局所可呈示モデル源Cに対するrealizationと、重み付きrealizationを実装した。
+源の対象宇宙u・Hom宇宙v・局所可呈示性の宇宙wを独立に保ち、w=vや宇宙間の大小関係を
+新たな仮定にしていない。weighted Homから§187の実際のholimへの標的側の自然比較までを
+証明した。hocolimとの源側の比較とRMapへの最終の同定は残り、F4全体の完了とはしない。
+
+### 190.1 実際のcosimplicial frame realization
+
+`HomotopyFunctionComplex/Realization`は、標準単体を与えるuliftYonedaに沿う実際の左Kan拡張を
+realizationとして構成する。Mathlibのpresheaf随伴から、既存のcosimplicialHom Aとの通常の
+随伴を得る。内部のType-level ULiftは実際の自然同型で取り除き、別のHomの定義で代用しない。
+realizationはcosimplicial対象A全体で関手的で、標準単体上でAと一致する自然同型と
+Kan拡張unitの自然性を公開する。
+
+この一般の構成はモデル構造を仮定しない。直接の構成に必要な余極限は、Homの宇宙が0で
+対象の宇宙がvの形の余極限である。AがReedy cofibrantかつhomotopically constantな場合は、
+§187のcosimplicialHomの右Quillen性からrealizationの左Quillen性と導来関手の存在を得る。
+
+### 190.2 Hom宇宙と局所可呈示性の宇宙を一致させる接続
+
+`SmallHomModel`はMathlibのShrinkHomsとその圏同値を使う。
+小さいHom表示のcof・fib・Wを元の三クラスの逆像として定義し、既存のModelCategory.transportで
+モデル公理を移す。往復の関手のQuillen条件と、三クラスの明示的な等式を証明する。
+Mathlibの既存の圏の上に構成しており、並行したモデル圏の型を作っていない。
+
+局所可呈示性もこの圏同値で移し、wサイズの余極限からrealizationに必要な0/w余極限を得る。
+`SmallHomRealization`は任意のA:Δ→Cをこの表示へ移し、SSet.{w}→Cという実際のrealizationと、
+C→SSet.{w}というsmall-Hom関手との通常の随伴を構成する。
+frameのReedy cofibrancy・homotopical constancyの保存からQuillen性と導来関手の存在も得る。
+Cにvサイズの余極限を別途要求しない。
+
+small-Hom関手と元のcosimplicialHom Aは、双方をSSet.{max v w}へULiftした後の
+実際の自然同型`homLiftIso`で比較する。この同型と、異なるSSetモデル間でのULiftの
+弱同値適合は区別する。後者を未証明のまま主張しない。
+以上の3モジュールのコミット：`94f8766`。
+
+### 190.3 frame族に対する任意の単体的重みのrealization
+
+`Diagram/FrameWeightRealization`は、Kᵒᵖ→SSet.{w}の図式を(K×Δ)上のpresheafとして扱う
+実際の圏同値を構成する。K上のcosimplicial対象族Aに対し、この積添字のYonedaに沿って
+左Kan拡張する。任意の重み図式を入力とする実際のrealizationと、各点のcosimplicialHomを
+集めた関手との随伴を得る。重みやrealized objectの存在を入力に要求しない。
+
+`FrameWeightQuillen`は各A(k)がframeなら、Hom関手が単体的図式のprojectiveモデルに対して
+右Quillenとなり、重みrealizationが左Quillenとなることを証明する。
+ここで得る弱同値保存は、projectively cofibrantな重みの間に対するものである。
+全重みがprojective cofibrantであるとも、通常の定数重みがprojective cofibrantであるとも
+仮定していない。`SmallHomFrameWeights`は190.2を使って、この随伴とQuillen性を
+独立したu,v,wの元のCへ戻す。源Cの豊穣化・tensorは不要である。
+
+### 190.4 weighted Homと構成済みholimの標的側の比較
+
+projectively cofibrantな重みWに対し、X↦X⊗Wという実際の関手と重みrealizationを合成する。
+通常の随伴の合成により、右随伴はpointwise frame Homとweighted coneSpaceの合成になる。
+この合成のQuillen性を190.3と§187の図式tensorのQuillen条件から証明する。
+
+`Diagram/FrameWeightedLimit`はWを§187の定数単位の指定projective cofibrant replacementとし、
+weighted Homから、同じpointwise small-Hom図式の実際のHomotopyLimit.functorへの
+自然変換を構成する。これはHomotopyConesの実際のfibrant replacement比較をwhiskerしたものである。
+fibrantなYではHom図式もprojective fibrantとなり、coneSpaceのBrown補題から比較射が弱同値になる。
+元のCの明示的なfibrant replacementで前合成すれば、元の全標的Yで自然な弱同値となる。
+
+`HomotopyCones/comparison_weakEquivalence_of_fibrant`も共有APIへ追加した。
+通常のlimitの普遍性からholimとの一致を推論しているわけではない。
+以上の4モジュールとこの追加のコミット：`495b097`。
+
+### 190.5 受入検証と残る源側の比較
+
+以下はすべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`：2411 jobs。
+- `check_frame_realization`：44宣言・3モジュール、標準公理のみ。
+  通常の随伴、標準単体との一致、独立したu,v,w、元の三クラス、Quillen性、
+  独立したordinary localizationへの導来関手の存在を検証した。
+- `check_weighted_frame_limit`：79宣言・5モジュール、標準公理のみ。
+  モデル構造を要求しない任意の重みのrealizationに加え、一般のcombinatorial Cの実際の
+  EvaluatedFrameへ適用する利用例を検証した。追加のframe仮定は要求せず、weighted Quillen随伴と
+  実際のholimへの弱同値を確認した。後者は任意のfibrant Yと、指定Rを使う全Yを含む。
+  複雑なframeを明示的に渡すことで、既定のheartbeat上限のまま検証している。
+- `audit_homotopical_foundations`：3336宣言・225モジュール、標準公理のみ。
+- `check_homotopy_limit`：61宣言・5モジュール（新しい比較補題を含む）。
+- `check_colimit_frame`：77宣言・6モジュール、`check_mapping_limit`：30宣言・2モジュール。
+- `check_homotopical_foundations`、`check_spectra_stage2`、`git diff --check`。
+
+新規sorry・引用axiomはない。共有ルートと他チャットの変更を保持した。
+残る主要ゲートは、190.4の重み付きrealizationの源を実際のhocolimへ比較し、
+その随伴によるmapping HomをRMap(hocolim D,Y)へ自然に同定することである。
+既存の各点のRMap図式との比較と、必要なULiftの弱同値適合も接続する。
+W→const(1)のobjectwise弱同値だけから、非cofibrantな定数重みをrealizationが反転すると
+推論してはならない。projectiveな源frameの性質を使って、この源側の比較自体を証明する。
+F1の任意モデル源の最終関手とL0〜L5も未完了で、§159.2の最終契約を維持する。

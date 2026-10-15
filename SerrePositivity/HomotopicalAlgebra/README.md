@@ -955,3 +955,21 @@ F4全体、F1の任意源での最終関手、L0〜L5は未完了であり、一
 コミットは`9161b0c`・`6525eec`、詳細は計画§189。
 通常のlimitがweighted holimを計算することと、必要なULift・添字宇宙変更の弱同値適合は残る。
 点ごとのKan性や通常のlimitの普遍性だけでF4完了とはしない。F1の任意源の最終関手とL0〜L5も残る。
+
+
+`HomotopyFunctionComplex/Realization`は標準単体に沿う実際の左Kan拡張とcosimplicialHomとの随伴、
+標準単体上の同型、frameの場合のQuillen性を構成する。`SmallHomModel`と`SmallHomRealization`は
+MathlibのShrinkHomsへ三クラスと局所可呈示性を移し、元のCへのSSet.{w} realizationを得る。
+対象・Hom・局所可呈示性の宇宙は独立で、vサイズ余極限の追加仮定は不要である。
+元のHomとの比較は共通宇宙へのULift後の実際の自然同型として公開する。
+
+`Diagram/FrameWeightRealization`は任意の重み図式をpresheafの左Kan拡張でrealizeする。
+`FrameWeightQuillen`と`SmallHomFrameWeights`は、点ごとのframe条件からprojective重みモデルに
+対するQuillen随伴を得る。cofibrant重みと非cofibrantな定数重みを区別する。
+`FrameWeightedLimit`は指定したcofibrant重みのweighted Homを、構成済みの実際のholimへ
+自然に比較し、fibrantな標的での弱同値性を証明する。指定Rで前合成した全Yでも弱同値になる。
+
+共有入口2411 jobs、共有3336宣言・225モジュールの標準公理監査と回帰検証が成功。
+コミットは`94f8766`・`495b097`、詳細は計画§190。
+重み付きrealizationの源とhocolimの比較、RMapへの最終同定、必要なULiftの弱同値適合は残る。
+非cofibrantな定数重みへのBrown補題を先取りしない。F1の任意源の最終関手とL0〜L5も未完了である。
