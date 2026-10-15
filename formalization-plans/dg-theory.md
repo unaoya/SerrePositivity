@@ -3765,3 +3765,30 @@ A : Type uとB/C/E/Fの対象宇宙を独立にし、Small.{u} B/C/Eを要求す
 値の比較だけでなく、右Bの全Hom・左Fの全Homに関する自然性を検証して実際のbimodule比較へ束ねる。
 その後三角/五角を反復balanced tensorの生成元で検証する。任意Vの一般coend理論は重複実装しない。
 U12〜U17・D4mも継続対象。採用済み深い引用は引き続き0件。
+
+
+### 17.43 U11e12：右パラメータ付きcoendの普遍性と三重生成元の評価（2026-10-16）
+
+Fubiniで外側に置く複体の位置を固定するため、`Tensor/RightParameter.lean`に
+RightParamFamily・rightParamDesc・rightParamRestrict・rightParamHomEquivを追加した。
+対象ごとの(M(x)⊗N(x))⊗Kからの族について、二つの作用の後に▷Kを取るbalanced条件を保持する。
+既存Ch(A)の右tensor–Hom随伴で族をHom_A(K,T)値のBalancedFamilyへ転置し、
+同じbalanced tensorのcoequalizerから降下する。右に置いたKをbraidingで移動しない。
+各包含との計算、生成元による外延性、制限/降下の両逆法則を証明した。
+族自体にはDのSmallは不要。実際のcoendへの降下でSmall.{u} Dを要求する。
+
+`Tensor/ParameterEvaluation.lean`は左右にKを置いた降下の斉次三重生成元の評価式を公開する。
+内側のtensorの出力次数lを指定し、固定パラメータと共にcoendへ入れた元の評価が元の族の評価へ戻る。
+左降下をcurryRightしたcochainの生成元式も追加した。
+すべて任意可換環・非有界K/M/Nであり、flatnessやモデル構造を仮定しない。
+
+Checks.RightParameter・Checks.EnrichedHomNaturality・Checks.LeftTensorColimits・Checks.StageSeven・
+既存Spectra.StageTwoの同時ビルドは成功（2695 jobs、終了コード0、警告なし）。
+任意A・独立対象宇宙、Small Dなしの族の転置、任意Kの右tensor Hom同値、一対象ZMod 2を検査した。
+主要10宣言の直接実行は終了コード0、標準公理のみ。監査累計1590宣言。
+担当Leanのsorry/admit/新規axiomは0件。文書検査は22 Markdown・311 exposition参照、失敗0件。
+
+U11e全受入は未完。次はC/Eの両作用にbalancedな三重族から二つの反復coendへの降下を構成し、
+共通の三重生成元で両逆を検証してFubini比較へ進む。
+Fubiniの同型、bimoduleの結合比較・三角/五角、U12〜U17・D4mはこの補助APIだけでは完了しない。
+共有一般論への追加要求はなく、担当外ファイル・共有ルートを変更していない。
