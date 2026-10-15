@@ -1,0 +1,17 @@
+import SerrePositivity.KTheory.Adams.KoszulShiftTwoModel
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulShiftTwo
+#print axioms SerrePositivity.Adams.oneKoszulShiftTwo
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulShiftTwoXNegTwoIso
+#print axioms SerrePositivity.Adams.oneKoszulShiftTwoXNegTwoIso
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulShiftTwoXNegThreeIso
+#print axioms SerrePositivity.Adams.oneKoszulShiftTwoXNegThreeIso
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulShiftTwo_isZero_X_other
+#print axioms SerrePositivity.Adams.oneKoszulShiftTwo_isZero_X_other
+
+assert_no_sorry SerrePositivity.Adams.oneKoszulShiftTwo_generator_d
+#print axioms SerrePositivity.Adams.oneKoszulShiftTwo_generator_d
