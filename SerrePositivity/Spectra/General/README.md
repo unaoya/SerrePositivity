@@ -171,3 +171,15 @@ pushout-productと実際のC作用・cotensor・eHomのSM7を証明した。
 単位のcofibrancyはunitに関する十分条件として別に明示する。
 受入`check_general_spectrum_level_monoidal`は26宣言・4モジュールを標準公理のみで監査。
 実装`99e09cc7`。K局所化後の適合性は別の残項目であり、計画§217で区別している。
+
+
+## 一般の次数シフト付きHomと随伴構造射（2026-10-16）
+
+`ShiftedHom`は一般Sym(K)加群の作用を[X,E_(n+q)]へ実際に移送し、内部Hom(F_n(X),E)と比較する。
+`ShiftedHomSuspension`は評価・元の懸垂構造射・出力のブロック交換による直接公式を証明する。
+`ShiftedHomAdjoint`は随伴構造射を、元の随伴構造射への[X,-]の像と二つの同型の合成として記述する。
+これらにモデル仮定は不要。`Stable/InternalHomOmega`はこの式とBrown補題から、
+cofibrantなXについて次数シフト付きHom、実際の内部Hom(F_n(X),E)、cotensor(X,E)のΩ_K保存を証明する。
+スペクトルのモデル構造や局所化はΩ_K保存の入力に含まない。
+受入`check_general_spectrum_internal_hom_omega`は30宣言・5モジュールを標準公理のみで監査。
+実装`06473b08`。局所化後のmonoidal/SM7への接続は計画§218。

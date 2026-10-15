@@ -6311,7 +6311,7 @@ IDは計画上の単位であり、1行を1コミットや1日とみなさない
 | E0（完了、§213） | Localization/EnrichedExistence, MonoidalExistence | L4,L5、既存SM7 | 通常局所化・V豊穣局所化を区別。追加のtractability/生成始域cofibrancyとtensor適合条件を明示し、局所SM7・pushout-product・単位を証明 |
 | S0（完了、§214） | Spectra/ModelCategory/Combinatorial, LeftProper | R1,A0、既存レベル構造 | 一般C,Kの対称スペクトルの局所可呈示性と必要条件下の左固有性。Mod型・余極限・accessibleなmonad等の比較を証明し、圏の名前だけで推論しない |
 | S1（完了、§216） | Spectra/Stable/LocalizingMaps, Omega | S0,L0、既存free/evaluation | F_(n+1)(QA⊗K)⟶F_n(QA)を実際の射として構成。Sの小ささ、cofibrant性、局所fibrant対象とΩ_K対象の同値 |
-| S2（途中、§217） | Spectra/Stable/ModelCategory, EnrichedModel | S1,L4,E0 | 一般定理を適用した安定モデル、三クラス・生成性・局所置換・monoidal/SM7。具体的存在引用を追加しない |
+| S2（完了、§218） | Spectra/Stable/ModelCategory, EnrichedModel | S1,L4,E0 | 一般定理を適用した安定モデル、三クラス・生成性・局所置換・monoidal/SM7。具体的存在引用を追加しない |
 | S3 | Spectra/Stable/Stability, SimplicialComparison | S2、既存円tensor/随伴 | K-tensorの導来可逆性と通常の懸垂の安定性を区別。PSS/S¹で円tensorと導来Σを比較し、Σ⊣Ωの同値・旧APIの互換性を検証 |
 
 R系列とA/F系列は一般論を構成するための独立した部分を含むが、並行エージェント起動の指示ではない。
@@ -10762,3 +10762,111 @@ E0のtensor適合条件を供給して局所化後のSM7・monoidal性へ接続�
 必要な生成始域のcofibrancy等は豊穣・monoidal部分の追加条件として明示し、
 217.1の通常の局所化存在へ逆流させない。この接続が終わるまでS2完了とはしない。
 その後S3の導来K可逆性と通常の懸垂の安定性の比較へ進む。
+
+
+## 218. S2完了：Ω_K保存から実際の局所tensor適合性・monoidal/SM7へ（2026-10-16）
+
+§217で残っていた局所化後のtensor適合性を証明し、S2全体の受入条件を完了した。
+通常のK局所モデル・三クラス・生成性・局所置換は§217の構成を維持し、
+以下で実際の豊穣・monoidal適合性まで接続した。
+次はS3。F1の指定分解なしの任意モデル源の最終関手も残り、全体目標の完了ではない。
+
+### 218.1 共有の閉Hom交換と右随伴による局所Quillen判定
+
+`CategoryTheory/Monoidal/InternalHomExchange.lean`は、閉braided圏で
+[X,[K,Z]]≅[K,[X,Z]]を、実際の内部curryingとbraidingから構成する。
+二重uncurry後の評価の式と、[X,-]で移した射との合成の式も証明した。
+モデル構造は不要であり、M5等からも使える共有一般論である。
+
+`Localization/Endofunctor.lean`の`endofunctor_isLeftQuillen_of_rightAdjoint_local`は、
+元モデルで左Quillenな自己関手について、その実際の右随伴が局所fibrant対象を局所対象へ送るなら、
+両側を局所化したモデルでも左Quillenになると証明する。
+一般L5の右随伴によるQuillen普遍性を使用し、cofibrationの一致と弱同値の包含を明示的に移送する。
+共有入口は具体的なスペクトルをimportしない。
+
+### 218.2 一般C,Kの実際の内部Homと構造射
+
+`General/ShiftedHom.lean`は、一般Sym(K)加群の係数作用を各段[X,E_(n+q)]へ移送し、
+F_n(X)を原変数とする実際の内部Homからのスペクトル同型を構成する。
+既存の一般係数加群の評価公式を、その構造射へ接続する。
+`ShiftedHomSuspension.lean`は、第一テンソル冪の比較と次数の移送を明示し、
+懸垂構造射を元の懸垂構造射・評価・出力の有限全単射のブロック交換で記述する。
+
+`ShiftedHomAdjoint.lean`の随伴構造射の式は、次の三つの射の合成である。
+
+- 元の随伴構造射E_(n+q)→[K,E_(n+q+1)]への[X,-]の像。
+- 218.1の実際の閉Hom交換同型。
+- 元スペクトルの有限全単射による射への[X,-]、[K,-]の像。
+
+最後の二つは同型。全ての比較は実際の既存の作用・構造射の式として証明し、
+値が同じというだけのモデルや豊穣構造への差し替えはしていない。
+この部分にモデル構造やΩ_K条件は不要である。
+
+### 218.3 Ω_K条件の保存
+
+`Stable/InternalHomOmega.lean`は、cofibrantなK,XとレベルfibrantなΩ_K対象Eについて、
+全てのnのshifted Hom、実際の内部Hom(F_n(X),E)、および実際のcotensor(X,E)が
+レベルfibrantなΩ_K対象になると証明する。
+元の随伴構造射の両端点はfibrantであり、[X,-]の右Quillen性とBrown補題を使う。
+218.2の他の因子は実際の同型なので弱同値となる。
+Ω_K条件とレベルfibrancyのスペクトル同型に関する不変性も証明し、
+free-zeroからcotensorへの実際の加群同型に沿って結論を移す。
+
+このΩ_K保存自体には、スペクトル上のモデル構造・局所化・小さい生成族・simplicialな源を仮定しない。
+したがって局所化後のモデル構造やSM7を先取りしてΩ_K保存を証明する循環はない。
+
+### 218.4 実際の局所tensor適合性
+
+`StableModelPresentation`に、構成時に証明済みの一般`IsLocalizationModel`証明を保持させた。
+追加の存在仮定ではなく、既存の一般L4から得た証明を記録するフィールドである。
+
+`Stable/TensorCompatibility.lean`は、218.3を元の局所fibrant↔Ω_K判定へ接続する。
+218.1の右随伴による判定から、cofibrantなXに対するpointwise tensor Xと、
+全てのF_n(X)とのtensorが、構成済みのK局所モデル上でも左Quillenだと証明する。
+さらに既存の導来生成射テストとの同値を適用し、
+元のcofibrant replacement Qで実際に置換した各局所化射sについて、
+X⊗Q(s)およびF_n(X)⊗Q(s)が元のRMapで定義した局所同値であると導く。
+これらのtensor適合条件は入力ではなく、実際の構造射からの証明の出力である。
+
+### 218.5 局所化後のmonoidal/SM7と単位
+
+`Stable/EnrichedModel.lean`は、Cの生成cofibrationの始域がcofibrantという明示的な追加条件の下で、
+その両端点のcofibrancyを導く。対応する自由スペクトルの両端点にも適用し、
+218.4からE0の全てのtensor適合条件を供給する。
+証明済みの一般局所化定理から、構成済みK局所モデルのpushout-product、
+既存のC作用のtensor条件、Mathlibの実際のeHomのSM7、cotensorのpullback条件を得る。
+この生成始域条件は豊穣・monoidal部分の追加条件であり、通常のK局所モデルの存在や置換には不要。
+
+単位をcofibrantに制限しない入口も残した。
+`monoidal_model_of_original_unit`は、元レベルモデルの実際のunit axiomを入力として引き継ぎ、
+構成後のmonoidal modelを出力する。`enriched_unit_of_original`も元の作用のunit axiomを移送する。
+これらはCの単位やスペクトルの単位のcofibrancyを仮定しない。
+Cの単位がcofibrantなら、§217のfree-zero単位比較から元のunit axiomを供給する具体的入口も提供する。
+
+### 218.6 S2最終受入検証・コミット
+
+すべて成功した。
+
+- `lake build SerrePositivity.Spectra.Stable.EnrichedModel SerrePositivity.Spectra.Stable.Replacement SerrePositivity.HomotopicalAlgebra.Foundations`：2919 jobs。
+- `check_general_spectrum_internal_hom_omega`：独立した対象・射の宇宙、閉Hom交換、一般の次数シフト、
+  実際の自由原変数の内部HomとcotensorのΩ_K保存。30宣言・5モジュールの標準公理監査。
+- `check_spectrum_stable_enriched`：一般C,Kから元モデルと両因子分解、小さい局所化射、K局所モデルを構成し、
+  局所化後のmonoidal・実際の豊穣Hom/cotensorのSM7・作用のunitを取得する最終利用例。
+  Ω_K保存、tensor適合性、局所化後のモデル存在やSM7を入力しない。
+  別の利用例では元のunit axiomを明示的に受け取り、単位のcofibrancyなしで移送する。
+  13宣言・3モジュールの標準公理監査。
+- `check_spectrum_stable_model`：通常のK局所モデル、左固有性、生成表示、accessibleな両モデル分解と
+  実際のaccessibleなΩ_K置換・弱同値の逆像判定。31宣言・3モジュール。
+- `check_general_spectrum_level_monoidal`：元レベルモデルのmonoidal/SM7、26宣言・4モジュール。
+- `check_enriched_localization_existence`（2宣言・2モジュール）、`check_monoidal_localization`
+  （3宣言・3モジュール）：一般E0の最終入口の回帰確認。
+- `check_spectra_stage2`：既存段階2の回帰確認。
+- `audit_homotopical_foundations`：4368宣言・379モジュール、標準公理のみ。
+  今回追加した共有閉Hom交換も、従来の全監査対象を保持したまま監査対象に含めた。
+- 各コミットのstage差分の`git diff --cached --check`。
+
+新規sorry・引用axiomはない。共有一般論`2bd07abf`、Ω_K保存`06473b08`、局所tensor・monoidal/SM7`73fc5730`。
+共有作業木の他チャットの変更を保持した。
+S2は§217とこの節を合わせて完了。次はS3としてK-tensorの導来可逆性を証明し、
+一般Kによる局所化と通常の懸垂の安定性を区別した上で、PSS/S¹の比較と旧APIの互換性を検証する。
+F1の任意モデル源で指定分解なしの最終関手は別の残項目であり、全体目標は継続する。

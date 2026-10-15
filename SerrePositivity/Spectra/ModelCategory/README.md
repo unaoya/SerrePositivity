@@ -117,3 +117,24 @@ K局所モデルの受入30宣言・3モジュール、元レベルmonoidal/SM7�
 S0・S1・段階2の回帰と共有公理監査が成功。新規sorry・引用axiomなし。
 実装`74321dae`・`99e09cc7`。計画§217に入力と出力を明記した。
 S2全体は未完了。局所化後のtensor適合性とmonoidal/SM7への接続が残り、S3も未完了。
+
+
+## S2完了：実際の局所tensor適合性と局所monoidal/SM7（2026-10-16）
+
+`Stable/InternalHomOmega`は一般Kの構造射の直接公式から、自由cofibrant係数の内部Homとcotensorが
+レベルfibrantなΩ_K対象を保つと証明する。局所化後のモデルやSM7を先取りしない。
+`TensorCompatibility`は実際の右随伴によるQuillen普遍性を使い、pointwise tensor XとF_n(X)とのtensorを
+構成済みK局所モデル上の左Quillen自己関手へ延長する。元のQで置換した局所化射へのtensor適合性も出力する。
+
+`EnrichedModel`はCの生成cofibrationの始域のcofibrancyという追加条件の下で、
+これらの適合条件をE0へ供給し、局所monoidal条件と実際のC値eHom・cotensorのSM7を証明する。
+`monoidal_model_of_original_unit`と`enriched_unit_of_original`は元のunit axiomを引き継ぎ、
+単位のcofibrancyを仮定しない。cofibrantなCの単位からunitを供給する具体的入口もある。
+生成始域の条件は豊穣・monoidal部分に限り、通常のK局所モデルと置換の存在には加えない。
+
+最終利用例`check_spectrum_stable_enriched`はモデル・両分解・局所化射の族も構成し、
+Ω_K保存・tensor適合性・局所SM7を入力せず最終結果を得る。13宣言・3モジュールを監査。
+Ω_K保存30宣言・5モジュール、通常モデル31宣言・3モジュール、元レベルmonoidal26宣言・4モジュール、
+一般E0・段階2の回帰と共有4368宣言・379モジュールの公理監査も成功。新規sorry・引用axiomなし。
+実装`2bd07abf`・`06473b08`・`73fc5730`。計画§218でS2完了。
+S3の導来K可逆性と通常の懸垂の安定性の比較、およびF1の残項目は引き続き未完了。

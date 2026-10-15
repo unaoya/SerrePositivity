@@ -1277,3 +1277,13 @@ ordinary RMapとV値derived Homの局所対象・局所同値の等式とfibrant
 共有入口を含む最終ビルド2819 jobs、4363宣言・378モジュールの標準公理監査が成功。
 L1生成族・段階2の回帰確認も成功。共有層はSpectraをimportしない。
 実装`c2aaa9ee`。この適用によるS1全体の完成と受入条件は計画§216。
+
+
+## 閉Hom交換と右随伴による局所Quillen判定（2026-10-16）
+
+共有`CategoryTheory/Monoidal/InternalHomExchange`は内部curryingとbraidingから
+[X,[K,Z]]≅[K,[X,Z]]を構成し、二重uncurry後の評価の式を証明する。モデル仮定は不要。
+`Localization/Endofunctor.endofunctor_isLeftQuillen_of_rightAdjoint_local`は、
+実際の右随伴による局所対象保存から、両側を局所化した左Quillen条件を導く。
+共有入口はSpectraをimportしない。4368宣言・379モジュールの標準公理監査に成功。
+実装`2bd07abf`。一般スペクトルの局所tensor適合性への適用でS2を完了し、詳細は計画§218。
