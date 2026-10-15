@@ -1986,3 +1986,28 @@ U10全受入は未完。次は射影解像度の比較をこの自然同型へ�
 解像度を替えたときの導来Hom関手の選択独立性とcocycle条件を確定する。
 局所化内のHom計算・始域についての関手性、三角構造・Verdier商・導来余積/局所小性・
 一対象比較の保存性は引き続き残る。
+
+
+### 13.54 U10b7d：解像度選択に依存しない導来Homの比較自然同型
+
+`Derived/ProjectiveResolution.lean` は対象・増大射・全Homによる射影性・指定quasiIsoを
+`ModuleProjectiveResolution` に保持し、実際のsemifree candidateから標準解像度を与える。
+既存の比較存在定理から選んだ比較射について、準同型性・増大射とのK(D)での可換性・
+K(D)での同型性・一意性・恒等・合成の整合性を公開する。
+
+`Derived/HomChoice.lean` は任意の二つの射影解像度の導来Hom関手の間に自然同型を構成する。
+元の加群上の成分は全Homの前合成で計算でき、増大射との可換条件を満たすどの比較射を
+選んでも同じ自然変換を得る。自己比較は恒等自然同型、三つの解像度の比較はcocycle条件を満たす。
+標準semifree解像度による既存moduleResolvedHomOutとの一致も公開する。
+K(D)での対象の比較だけでなく、指定D(D)上のD(A)値関手の自然同型として選択独立性を得た。
+
+`Checks/HomChoice.lean` は任意の比較射、三つの比較の整合性、標準解像度との比較を検証する。
+同入口・ProjectiveResolutionLift・StageSix・既存Spectra.StageTwoの同時ビルドは成功（2589 jobs）。
+共有基盤の整理による一時的なCochainConeTriangleの証明エラーとAcyclicCone.olean欠落は
+この再実行では解消した。担当外のソースや並行作業の変更は編集・巻き戻していない。
+直接実行の主要17宣言（解像度の構成子を含む）は標準公理のみ。累計853宣言。
+担当Leanのsorry/admit/新規axiomは0件、担当diff --checkは成功。
+
+U10全受入は未完。次は任意の基底の射を解像度へ持ち上げる関手法則を確定し、
+始域についても指定局所化へ延長して全導来Hom双関手を構成する。
+局所化内のHom計算、三角構造・Verdier商・導来余積/局所小性・一対象比較の保存性は残る。
