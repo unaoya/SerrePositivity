@@ -100,6 +100,16 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.GlobalFunctorialFactorization,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DegreeClassTransfer,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorialFactorizationClasses,
+    `SerrePositivity.CategoryTheory.CommaIdentities,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.OneSided,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.IndexReedy,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.NestedMatching,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.NestedLatching,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.MatchingRestriction,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LatchingRestriction,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.EmptyBoundary,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryLifting,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses,
     `SerrePositivity.HomotopicalAlgebra.Quillen.Brown,
     `SerrePositivity.HomotopicalAlgebra.Quillen.DerivedFunctor,
     `SerrePositivity.HomotopicalAlgebra.Quillen.DerivedAdjunction,
@@ -130,6 +140,7 @@ run_cmd do
         `SerrePositivity.CategoryTheory.RelativeArrow,
         `SerrePositivity.CategoryTheory.MorphismProperty.UnderFactorization,
         `SerrePositivity.CategoryTheory.LiftingProperties.ParametrizedGeneration,
+        `SerrePositivity.CategoryTheory.CommaIdentities,
         `SerrePositivity.CategoryTheory.LiftingProperties.Under].any (·.isPrefixOf mod) do continue
     let axioms ← collectAxioms name
     let unexpected := axioms.filter fun ax ↦
