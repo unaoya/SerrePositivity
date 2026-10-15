@@ -439,6 +439,8 @@ public import SerrePositivity.KTheory.Adams.KoszulCubeModel
 public import SerrePositivity.KTheory.Adams.KoszulCubeDifferential
 public import SerrePositivity.KTheory.Adams.KoszulCubeBasis
 public import SerrePositivity.KTheory.Adams.KoszulCubeFourierTwoInverse
+public import SerrePositivity.KTheory.Adams.KoszulCubeFourierBasis
+public import SerrePositivity.KTheory.Adams.KoszulShiftTwoModel
 public import SerrePositivity.KTheory.Adams.TensorSquareMultiplicativity
 public import SerrePositivity.PerfectComplex.IdempotentTensor
 public import SerrePositivity.PerfectComplex.IdempotentImageFunctor
