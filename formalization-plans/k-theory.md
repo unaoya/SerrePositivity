@@ -4,7 +4,7 @@
 M1・M2の構成、A1〜C2、共有ホモトピー論H0〜H6、および§129で指定した段階1〜3まで実装・検証済み。
 円スペクトルのレベルモデル・関手的置換・monoidal/SM7と既存豊穣APIの接続が完成した。
 安定化を含むM3全体、M4、非連結K理論、定理3.1・補題4.6への接続は未完成である。
-最新の完了監査は§158、直近の実装は§157。
+段階1〜3の完了監査は§158。段階4の最初の単位R0も完了し、最新の実施記録・監査は§160。
 mathlibへの追加・登録は今回の完了条件に含めず、必要な構造と法則をこのリポジトリ内に実装する。
 検証済みのステップごとにコミットする。
 段階4はSmith型の一般局所化存在を証明する方針に確定（§159）。今は∞圏を導入しない。M5は別チャットで進める。段階3の完了とP3・M3全体の完了は区別する。
@@ -6379,3 +6379,70 @@ check_homotopy_function_complex、check_bousfield_localization、check_stable_sp
 W_Sのaccessibility、一般スペクトルの局所可呈示性/左固有性である。
 まずR0完了時、次にR3完了時の二度、実際の型と利用できる補題から残作業を再見積もりする。
 ∞圏は今回の終了条件に含めないが、将来の比較に必要な普遍性・自然性を削らない。
+
+
+## 160. 実施記録・受入監査：Smith型認識のR0完了（2026-10-15）
+
+§159.5のR0を実装・検証した。Smith/SolutionSet.leanは既存MorphismProperty Cを
+Arrow CのObjectPropertyへ移し、そのFullSubcategoryと包含arrowInclusionを使用する。
+入力はArrow CとWの充満部分圏のIsAccessibleCategory.{w}、包含のFunctor.IsAccessible.{w}。
+MathlibのSolutionSetCondition.of_isCardinalAccessibleからsolutionSetConditionを導く。
+独自のsolution-set構造体やモデル圏型は導入していない。
+
+solutionIndex W i : Type w、solutionArrow、solutionSquareで各源射iの小さい代表族を選ぶ。
+solutionSquare_factorは任意のsquare i⟶f（W f.hom）を、選択した標的へのsquareと
+標的からfへのsquareの実際の合成として分解する。
+solutionSquare_factor_componentsは両成分の合成等式も供給する。
+対象ごとの存在や、単にW内の対象があるという命題で分解の代用をしない。
+この部分のビルド・利用例・全宣言監査をそろえて先にコミットした：`9755ae4`。
+
+solutionTargets W aは源射族a:ι→Arrow Cの全solution targetsをofHomsで束ねる。
+Small.{w} ιなら、添字Σ k, solutionIndex W (a k)の小ささからIsSmall.{w}を証明する。
+ι:Type tのtとwを分け、W自体にsmallnessを要求しない。
+solutionTargets_leとsolutionTargets_factorはWへの所属と全源射からの分解を保持する。
+solutionTargetsForClass W IはI.toSet上の族へ適用し、I.IsSmall.{w}から
+全Iに対する小さい標的射クラスと実際のsquare分解を得る。
+ここで選ぶ標的はまだcof(I)∩W内の生成自明cofibrationではなく、W内のsolution targetsである。
+
+共有HomotopicalAlgebra.Foundationsに公開し、READMEに入力・API・引継ぎ境界を記録した。
+audit_homotopical_foundationsの必須モジュールにも追加した。
+smallな源射族への拡張と共有入口・監査のコミット：`4036f06`。
+
+### 160.1 §159.5の受入条件の照合
+
+| 受入条件 | 現在のソース・検証結果 |
+| --- | --- |
+| モデル構造未装備の抽象圏と宇宙 | コアと利用例はC:Type u、Category.{v} C、w/tを明示。ModelCategory・局所可呈示性・Wのsmallness・2-out-of-3を仮定しない |
+| accessibilityからsolution-set | solutionSetConditionがMathlibの一般定理を適用。独自のsolution-set条件や小さいWへの置き換えなし |
+| 実際のsquare分解 | solutionSquare_factorと成分版、solutionTargets_factor、solutionTargetsForClass_factorを検証。CommSqから作る入力squareでも左右成分の等式を利用 |
+| 小さいI全体への同時適用 | check_smith_solution_setの利用例が、IsSmall J、J≤W、全i∈Iと全f∈Wへのsquare分解を同時に得る。独立した添字宇宙と空の源射族も検証 |
+| 全宣言の公理監査・既存入口互換性 | 新モジュール18宣言、共有31モジュール426宣言を標準公理のみで監査。利用例はFoundationsからR0をimportし、General.Foundations/StageTwoと併用 |
+| コミット・次の計画 | 実装を二段階でコミットし、この記録でR1〜R3の入力・出力と見積もりを更新 |
+
+実行済み検証：
+
+- lake build SerrePositivity.HomotopicalAlgebra.Smith.SolutionSet
+- lake build SerrePositivity.HomotopicalAlgebra.Foundations（1461ジョブ成功）
+- lake env lean scripts/check_smith_solution_set.lean：18宣言、標準公理のみ。
+- lake env lean scripts/audit_homotopical_foundations.lean：31モジュール426宣言、sorry/引用依存なし。
+- lake env lean scripts/check_homotopical_foundations.lean：成功。
+- lake env lean scripts/check_spectra_stage2.lean：成功。
+- lake env lean scripts/audit_spectra.lean：319モジュール3089公開宣言、標準公理のみ。
+- git diff --check：成功。新規ソース警告なし。
+
+R0は完了。R1以降、Smith認識全体、一般の局所化存在、安定化は未着手であり、
+今回の結果からこれらの完成を主張しない。∞圏や新たな存在引用は導入していない。
+M5・可換環論・CLMST・共有ルートの別チャットによる変更は今回のコミットに含めていない。
+
+### 160.2 R1〜R3の具体的な引継ぎと設計見積もり
+
+| 次の単位 | 今回確定した入口と予定出力 | 受入の要点・暫定規模 |
+| --- | --- | --- |
+| R1：共通cardinalとSOA | 入力は局所可呈示なCとw-smallな射族/射クラス。solutionTargetsForClass W Iにも同じAPIを適用。出力は全始域・終域に共通な正則cardinalと必要な小対象条件 | Small IだけをSOAと同一視しない。cardinal拡大、LocallySmallと余極限の宇宙、Mathlib HasSmallObjectArgumentへの接続を証明。2〜4実装単位を暫定目安とする |
+| R2：生成自明cofibration候補J | 今回のW内の小さいsolution targetsとsquareを使用。Wの2-out-of-3、I.rlp⊆W等を明示してIによる分解で標的を改良し、小さいJ⊆I.rlp.llp∩Wを構成 | 各i∈Iから各w∈WへのsquareがJ経由で分解することを保つ。Jそのものを入力に戻さない。3〜6実装単位が暫定目安 |
+| R3：Smith認識 | 構成済みJ、Wのretract/2-out-of-3とI.rlp.llp∩Wのpushout/超限合成閉性を使い、既存Transfer/Recognitionへ接続 | J.rlp.llp=I.rlp.llp∩W、両右クラス・分解、Mathlib ModelCategoryと生成性まで証明。2〜4実装単位が暫定目安 |
+
+合計7〜14単位はR1〜R3だけの暫定設計値で、1単位は定義・主要法則・利用例・監査をそろえる区切り。
+R0の実行時間を日数へ外挿しておらず、段階4全体やaccessibility/framings/局所化存在を含まない。
+R1では固定版Mathlibの可呈示対象のcardinal拡大・共通化の補題を最初に精査し、R1完了時に再見積もりする。
+R3完了後も§159のA/F/L/E/S系列が必要である。
