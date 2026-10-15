@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.RankOneDPAnyBasis
 import SerrePositivity.BhattScholze.RankOneDPBaseChangeUniversal
 import SerrePositivity.BhattScholze.RankOneDPTensorRelations
 import SerrePositivity.BhattScholze.RegularPrincipalDPBaseChange
@@ -4495,3 +4496,13 @@ assert_no_sorry SerrePositivity.BhattScholze.rankOneDPBaseChangeUniversalEquiv_t
 #print axioms SerrePositivity.BhattScholze.rankOneDPBaseChangeUniversalEquiv_tmul
 assert_no_sorry SerrePositivity.BhattScholze.rankOneDPBaseChangeUniversalEquiv_symm_dp
 #print axioms SerrePositivity.BhattScholze.rankOneDPBaseChangeUniversalEquiv_symm_dp
+
+-- Actual rank-one divided-power basis over arbitrary commutative coefficient rings.
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPAnyBasis
+#print axioms SerrePositivity.BhattScholze.rankOneDPAnyBasis
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPAnyBasis_apply
+#print axioms SerrePositivity.BhattScholze.rankOneDPAnyBasis_apply
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPAny_moduleFree
+#print axioms SerrePositivity.BhattScholze.rankOneDPAny_moduleFree
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPAny_isSMulRegular
+#print axioms SerrePositivity.BhattScholze.rankOneDPAny_isSMulRegular
