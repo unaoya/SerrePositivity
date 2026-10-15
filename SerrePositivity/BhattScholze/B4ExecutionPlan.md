@@ -6278,3 +6278,30 @@ B4全体監査の依存再ビルドは、共有KoszulOneCoordinates.lean:45の�
 一段目の2モジュールは当初のB4全体監査にも成功していた。
 一般CFF根付き拡大・一般B4全射性は未完成。次は二段除算と同時二入力除算の標準δ同型を構成し、
 このp正則性を同時入力へ移す。ghost単射の一般補題等の待合せは継続する。
+
+### 次工程の登録：同時族と二段raw除算の標準δ同型
+
+BS専用DeltaAdjoinDivisionSum.leanで、任意の元族a:σ→A,b:τ→A、d:Aについて、
+A{(a,b)/d}とA{a/d}{j(b)/j(d)}の具体的な標準環同型を構成する。
+両方向のδ両立性、元の係数射と左右の除算変数の公式を証明する。
+既存existsUnique_deltaAdjoinDivisionHomを再利用し、p正則性や平坦性を構成の前提にしない。
+BS専用DeltaPDivisionPairRegular.leanで、この同型と二段p正則性を使い、
+二つのFrobenius入力の同時raw p除算包のp正則性へ接続する。
+既存のghost単射・指定単元・係数商での正則性の仮定を保持し、一般CFFは結論しない。
+
+同じ工程でDeltaPDivisionFrobeniusShift.leanの従来privateなδ射外延性の重複を除き、
+新モジュールの公開deltaAdjoinDivisionHom_extを再利用する。依存方向は
+DeltaAdjoinDivision → DeltaAdjoinDivisionSum → DeltaPDivisionFrobeniusShiftとし、循環を作らない。
+既存Frobenius平行移動の公開型・公式は維持する。
+
+## B4-6：同時族と二段raw除算の標準δ同型（2026-10-15）
+
+DeltaAdjoinDivisionSum.leanで、任意元族a:σ→A,b:τ→A,d:Aに対して、
+A{(a,b)/d}≃A{a/d}{j(b)/j(d)}を構成した。元の係数射、左右の初期除算変数の公式と、
+同型の両方向のδ両立性を証明した。p正則性、ghost単射、非零因子性、平坦性は仮定しない。
+18公開宣言の対象2059ジョブ成功。既存FrobeniusShiftのprivate外延性を新公開定理へ統合し、
+公開型を維持した。FrobeniusShift自体も再ビルド成功。
+両モジュール計31公開宣言の直接pure監査成功、標準3公理のみ。新sorry・公理・引用なし。
+B4全体監査は二入力正則性の検証後に再実行する。共有CochainConeCoordinatesの作業中エラーを
+一度観測したが、共有ソースは編集せず、修正済みの現在ソースを使う対象再ビルドを開始した。
+この同型は有限・一般族への逐次構成を比較するための成果であり、一般B4全射性やCFFは未完成。

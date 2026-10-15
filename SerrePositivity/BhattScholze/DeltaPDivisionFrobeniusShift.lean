@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.DeltaAdjoinDivision
+public import SerrePositivity.BhattScholze.DeltaAdjoinDivisionSum
 
 /-! # φ(y)/pとy^p/pのδ除算添加環の座標変換
 
@@ -74,28 +74,13 @@ theorem deltaPDivisionPowerToFrobenius_spec :
       ∀ s, deltaPDivisionPowerToFrobenius D y (vpow s) = vφ s - jφ (D.delta (y s)) :=
   (existsUnique_deltaPDivisionPowerToFrobenius D y).choose_spec.1
 
-private theorem divisionHom_ext {C : Type w} [CommRing C] (E : DeltaStructure p C)
-    (d : A) (a : σ → A) (f g : DeltaAdjoinDivision D d a →+* C)
-    (hf : (deltaAdjoinDivisionStructure D d a).IsDeltaHom E f)
-    (hg : (deltaAdjoinDivisionStructure D d a).IsDeltaHom E g)
-    (hb : f.comp (deltaAdjoinDivisionMap D d a) = g.comp (deltaAdjoinDivisionMap D d a))
-    (hv : ∀ s, f (deltaAdjoinDivisionVariable D d a s) =
-      g (deltaAdjoinDivisionVariable D d a s)) : f = g := by
-  obtain ⟨k, _, hu⟩ := existsUnique_deltaAdjoinDivisionHom D E d a
-    (f.comp (deltaAdjoinDivisionMap D d a))
-    (hf.comp (deltaAdjoinDivisionMap_isDeltaHom D d a))
-    (fun s ↦ f (deltaAdjoinDivisionVariable D d a s)) (fun s ↦ by
-      simpa only [RingHom.comp_apply, map_mul] using
-        congrArg f (deltaAdjoinDivision_relation D d a s))
-  exact (hu f ⟨hf, rfl, fun _ ↦ rfl⟩).trans (hu g ⟨hg, hb.symm, fun s ↦ (hv s).symm⟩).symm
-
 /-- 除算変数の正負の平行移動を続けると元に戻る。 -/
 theorem deltaPDivisionPowerToFrobenius_comp_toPower :
     (deltaPDivisionPowerToFrobenius D y).comp (deltaPDivisionFrobeniusToPower D y) =
       RingHom.id Bφ := by
   have h₁ := deltaPDivisionFrobeniusToPower_spec D y
   have h₂ := deltaPDivisionPowerToFrobenius_spec D y
-  apply divisionHom_ext D Dφ (p : A) (fun s ↦ D.frobeniusLift (y s))
+  apply deltaAdjoinDivisionHom_ext D Dφ (p : A) (fun s ↦ D.frobeniusLift (y s))
     _ _ (h₂.1.comp h₁.1) (Dφ).isDeltaHom_id
   · rw [RingHom.comp_assoc, h₁.2.1, h₂.2.1, RingHom.id_comp]
   · intro s
@@ -111,7 +96,7 @@ theorem deltaPDivisionFrobeniusToPower_comp_toFrobenius :
       RingHom.id Bpow := by
   have h₁ := deltaPDivisionFrobeniusToPower_spec D y
   have h₂ := deltaPDivisionPowerToFrobenius_spec D y
-  apply divisionHom_ext D Dpow (p : A) (fun s ↦ y s ^ p)
+  apply deltaAdjoinDivisionHom_ext D Dpow (p : A) (fun s ↦ y s ^ p)
     _ _ (h₁.1.comp h₂.1) (Dpow).isDeltaHom_id
   · rw [RingHom.comp_assoc, h₂.2.1, h₁.2.1, RingHom.id_comp]
   · intro s
