@@ -1153,3 +1153,17 @@ L3の超限合成への基盤（計画§205）：`ContinuousLiftSystem`・`Conti
 共有入口2502 jobs、4084宣言・316モジュールの標準公理監査、100宣言・7モジュールの新規監査と
 span/pushoutの回帰検証が成功。コミット`8d6e827e`・`34896ff3`。
 F→L→E→S全体の目標は継続中。
+
+
+L3は計画§207で受入検証まで完了（2026-10-16）。`BottomReplacement`・その比較/分解は
+最小値を指定して図式を置換する一般構成で、`ProjectiveBottomCofibrancy`は任意のprojective
+cofibrantな順序図式のConst(R_0)→Rのcofibration性を抽出する。連続性・well-orderは不要。
+`ProjectiveLeftProper`・`ColimitFromBottom`・`RelativeHomotopyColimit`は元の左固有性とUnder圏の
+Ken Brownから、初期項のcofibrancyなしで連続cofibration列の実際のhocolim比較を証明する。
+`LimitPrefix`・`ContinuousLocalEquivalences`は全てのlimit段階を含む帰納でW_S所属を証明する。
+`LeftProperTransfinite`は(cof_C⊓W_S)と(I.rlp.llp⊓W_S)のpushout・任意のw-smallな超限合成閉性を
+Smith用の実際の安定性クラスとして出力する。Sの小ささ・limit cofinalityの制限は要求しない。
+共有入口2512 jobs、4155宣言・326モジュールの標準公理監査、17宣言・3モジュールのL3監査、
+58宣言・8モジュールのrelative hocolim監査と関連回帰検証が成功。
+コミット`31393aa7`・`7e206fe4`・`d87a386d`・`d473d792`。
+L2の生成射・単位射のW_S所属、L4/L5、E0、S0〜S3、F1の任意モデル源の最終関手は継続中。

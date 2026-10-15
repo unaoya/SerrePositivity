@@ -6305,7 +6305,7 @@ IDは計画上の単位であり、1行を1コミットや1日とみなさない
 | L0（完了、§193） | HomotopicalAlgebra/Localization/Basic。局所性・W_S・条件付き局所化API | F1,F2 | Sの代表・cofibrant置換の独立性、元のW⊆W_S、2-out-of-3・retract閉性、空集合/元の弱同値だけのSで元モデルを回復 |
 | L1（完了、§200） | Localization/AccessibleLocalObjects | A1,F3,L0 | S-local対象の充満部分圏のaccessibilityと包含のaccessibilityを導く。検出に使う関手・cardinalと小さいhomotopy生成族を明示 |
 | L2 | Localization/AccessibleLocalEquivalences | L1,F4 | Arrow C内のW_Sのaccessibilityと包含のaccessibilityを証明。全局所対象に量化した定義から小ささへの移行を独立に検証 |
-| L3 | Localization/LeftProperClosure | L0,F4、元モデルの左固有性 | cof_original∩W_Sのpushout/超限合成閉性を証明。局所化後のモデル存在や左固有性を先取りしない |
+| L3（完了、§207） | Localization/LeftProperClosure | L0,F4、元モデルの左固有性 | cof_original∩W_Sのpushout/超限合成閉性を証明。局所化後のモデル存在や左固有性を先取りしない |
 | L4 | Localization/Existence。一般の左Bousfield局所化存在 | R3,L2,L3 | §159.2の三クラス・fibrant判定を同じC上で構成。局所モデルの生成Jと分解は出力。左固有性・combinatorial性も接続 |
 | L5 | Localization/Replacement, UniversalProperty | L4,F2 | 実際のL_Sとη、冪等性、W_Sの関手による検出、Quillen普遍性、生成表示・置換の独立性、S⊆Tと反復局所化の比較 |
 | E0 | Localization/Enriched, Monoidal | L4,L5、既存SM7 | 通常局所化・V豊穣局所化を区別。追加のtractability/生成始域cofibrancyとtensor適合条件を明示し、局所SM7・pushout-product・単位を証明 |
@@ -9816,3 +9816,126 @@ Const(D_0)⟶Dを出力する。D_0のcofibrancyは要求しない。
 その後、各limit段階を含む帰納でcof∩W_Sの任意の超限合成閉性を証明する。
 十分filteredなcolimitの保存だけでこの帰納を済ませたとはみなさない。
 L2の生成単位射のW_S所属、L4・L5・E0・S0〜S3、F1の任意モデル源の最終関手も引き続き未完了。
+
+
+## 206. L3のhocolim比較：初期項のcofibrancy条件の解消（2026-10-16）
+
+§205では初期項がcofibrantな連続列の弱比較と、任意の初期項でのrelative projective cofibrancyまでを
+証明していた。今回は元の左固有性を使い、初期項のcofibrancy条件を完全に解消した。
+
+### 206.1 最小添字の値の置換と自然な比較
+
+`Diagram/BottomReplacement`は、最小元を持つ任意の部分順序Kと、自然変換a:Const(X)⟶Uから、
+最小元での値だけをXに置き換えた実際の図式を構成する。
+`BottomReplacementMaps`は元のUへの比較と可換squareの置換を構成し、
+`BottomReplacementFactor`は任意のb:D⟶Vを、初期値をD_0に置き換えた図式を介して分解する。
+最小元での比較同型・比較射・分解の等式も証明する。
+これらにはモデル構造・連続性・well-order・局所可呈示性は要求しない。
+
+`ContinuousRelativeCofibrancy.fromBottom`の定義は、使用する仮定をPreorder/OrderBotまで一般化した。
+その自然性も追加した。連続列に関する既存の定理の条件は維持し、利用例を再検証した。
+このcategoricalな構成はコミット`31393aa7`。
+
+### 206.2 任意のprojective cofibrant図式のrelative cofibration
+
+`ProjectiveBottomCofibrancy`は、projectively cofibrantな任意の順序図式Rについて、
+Const(R_0)⟶Rがprojective cofibrationであることを証明する。
+KにはPartialOrder/OrderBotだけを要求し、Rの連続性やKのwell-orderは要求しない。
+最小値を置き換えた試験図式の射は、最小元で同型、他の成分で元のtrivial fibrationになる。
+Rの実際のprojective持ち上げをこの試験へ適用し、指定した最小成分を保つ持ち上げを取り出す。
+
+`ProjectiveLeftProper.leftProper`は、元のW_Cのcof_Cに対する相対pushout安定性から、
+実際のprojective図式モデルの同じ左固有性を導く。
+projective cofibrationのobjectwise cofibration性と、evaluationによる実際のpushout保存を使う。
+`Under/Quillen`にはforget関手のcofibration/trivial cofibration保存条件を追加し、
+Under圏でKen Brownを適用する。ここでforgetの通常の随伴の存在は主張しない。
+
+### 206.3 任意の初期値での実際のhocolim比較
+
+`RelativeHomotopyColimit.comparison_weakEquivalence_of_fromBottom`は、
+Const(D_0)⟶Dが元のprojectiveモデルのcofibrationなら、実際のhocolim(D)⟶colim(D)が
+元の弱同値であることを証明する。D_0のcofibrancyやDの連続性はこの一般定理には不要である。
+
+証明は実際のprojective置換R⟶Dから始める。
+Const(R_0)⟶RをConst(R_0)⟶Const(D_0)に沿ってpushoutし、図式Pを構成する。
+R⟶PとP⟶Dの元の弱同値性を図式モデルの左固有性と2-out-of-3で導く。
+Const(D_0)⟶PとConst(D_0)⟶Dはcofibrationなので、Under(Const(D_0))のKen Brownにより
+colim(P)⟶colim(D)も元の弱同値となる。
+一方、colim(R)⟶colim(P)の弱同値性はCの実際のpushoutと元の左固有性から証明する。
+定数図式のcolimitとその射の比較は`ColimitFromBottom`で証明し、無条件のcolimit保存で代用しない。
+これらを合成して、元の指定されたhocolim比較そのものの弱同値性を得る。
+
+`comparison_weakEquivalence_const`は最小元を持つ任意の部分順序における定数図式の弱比較を証明する。
+`comparison_weakEquivalence_of_continuous_leftProper`は§205のrelative判定を使い、
+任意のwell-ordered添字の連続cofibration列について、初期項のcofibrancyなしで弱比較を出力する。
+源Cの豊穣性・tractability・全対象cofibrant性・limit段階のcofinalityに条件を追加しない。
+モデルへの適用と共有入口・利用例はコミット`7e206fe4`。最終検証は§207と併記する。
+
+
+## 207. L3完了：元のcof∩W_Sの任意の超限合成閉性とSmith用の二つの閉性（2026-10-16）
+
+§159.4のL3を受入条件と照合し、完了とする。
+§204のpushout閉性に加え、元のcof_C∩W_Sの任意のw-smallな超限合成閉性を証明した。
+局所化後のモデル構造・左固有性・W_Sのaccessibilityを先取りしていない。
+L2・L4・L5、E0・S0〜S3、F1の任意モデル源の最終関手は別であり、全体目標の完了ではない。
+
+### 207.1 小さいcofinalityを含むlimit段階
+
+`Diagram/LimitPrefix`はlimit段階jの下のSet.Iio(j)に、最小元と、元の後続を保つSuccOrderを明示する。
+後続がj未満にとどまることはjのIsSuccLimit性から証明する。
+cofinalityの下界やcardinalの条件は使わない。
+`ColimitFromBottom.constCocone/constIsColimit`は、最小元を持つ添字上の定数図式の実際のcolimitを提供する。
+
+`Localization/ContinuousLocalEquivalences`は最初に、連続cofibration列Dの全ての
+D_0⟶D_iが元のW_Sに属するなら、任意のcolimit coconeのD_0⟶colim DもW_Sに属すると証明する。
+§206の初期項に条件を付けない弱比較と、F4を使ったhocolim上の局所同値保存を接続し、
+定数図式からDへの実際の自然変換のcolimitに適用する。
+
+次に`localEquivalence_from_bottom`はwell-order inductionで、cofibrationかつW_Sに属する
+後続射を持つ連続列の、全てのD_0⟶D_iのW_S所属を証明する。
+最小段階は恒等射、後続段階は合成、limit段階は実際の連続性のcolimitと上の比較を使う。
+下位図式の連続性はprincipal initial segmentへの制限から導き、全てのlimit段階を処理する。
+`localEquivalence_transfinite_cocone`はこの結果を任意の最終colimit coconeへ移す。
+この部分はコミット`d87a386d`。
+
+### 207.2 任意の超限合成に対する実際の安定性クラス
+
+`LeftProperTransfinite.cof_localEquivalences_transfiniteStableOfShape`は、
+Mathlibの実際のTransfiniteCompositionOfShapeデータに対して、合成射が元のcof_C∩W_Sに属することを証明する。
+cofibration性は元のモデルのtrivial fibrationに対するLLPの超限合成から導く。
+W_S所属は207.1による。元の始域とD_0をつなぐisoBotの同型も合成し、最終のfそのものへ移す。
+
+`cof_localEquivalences_transfiniteStable`は、任意のw-smallなwell-orderについての
+MorphismProperty.IsStableUnderTransfiniteComposition.{w}を出力する。
+Sの小ささ、初期項のcofibrancy、全対象cofibrant性、ω列への限定、十分大きいcofinalityなどの追加条件はない。
+
+`localEquivalences_leftProperClosure`はSmith認識に必要な二つの条件をまとめて返す。
+
+    (cofibrations C ⊓ W_S).IsStableUnderCobaseChange
+    MorphismProperty.IsStableUnderTransfiniteComposition.{w} (cofibrations C ⊓ W_S)
+
+`localEquivalences_smithClosure`は元の生成族I,Jと証明済みのcof_C=I.rlp.llpを使い、
+同じ二条件をI.rlp.llp∩W_Sの表記で返す。局所化用の生成J_Sやモデル構造は入力しない。
+対象・Hom・可呈示性の宇宙u/v/wは独立であり、単体集合の各宇宙のモデルと標準クラスの一致は
+既存の宇宙変更比較に必要な明示仮定として保持する。
+最終の閉性・Smithへの接続・共有入口・利用例はコミット`d473d792`。
+
+### 207.3 受入検証と次のゲート
+
+- L3のpushout条件は§204、任意の超限合成条件は207.1〜207.2で証明済み。
+- 共有入口`Foundations`：2512 jobsで成功、新規警告なし。
+- `check_localization_left_proper_closure`：17宣言・3モジュール、標準公理のみ。
+  元の二クラス、Smithの生成表記、任意のwell-order、任意のcolimit cocone、
+  実際のTransfiniteCompositionOfShapeの最終射への適用を検証。
+- `check_relative_hocolim`：58宣言・8モジュール、標準公理のみ。
+  モデル未装備の最小値の置換、一般のprojective cofibrant図式のrelative判定、
+  projective左固有性、任意の初期項の連続列、任意対象の定数図式の比較を検証。
+- `check_continuous_projective_cofibrancy`：101宣言・7モジュールの回帰検証成功。
+- `check_span_hocolim`：12宣言・7モジュールのpushout条件の回帰検証成功。
+- 共有全監査：4155宣言・326モジュール、標準公理のみ。sorry・引用依存の追加なし。
+- 差分の空白検査成功。実装は§206・§207の計4コミットに分けて保存した。
+
+次はL2の残条件へ戻り、相対境界生成族のW_S所属と、生成された局所fibrant置換の単位射のW_S所属を証明する。
+L3の閉性を使って生成閉包へ移し、§201の条件付きaccessibilityを実際の置換に適用する。
+その後L4の一般局所化モデルの存在、L5の置換・普遍性・独立性、E0、S0〜S3へ進む。
+F1の指定関手的分解を仮定しない任意モデル源の最終関手も残る。
