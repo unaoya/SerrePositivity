@@ -130,6 +130,7 @@ public import SerrePositivity.HomotopicalAlgebra.Localization.QuillenCriterion
 public import SerrePositivity.HomotopicalAlgebra.Localization.UniversalProperty
 public import SerrePositivity.HomotopicalAlgebra.Localization.IteratedExistence
 public import SerrePositivity.HomotopicalAlgebra.Localization.Enriched
+public import SerrePositivity.HomotopicalAlgebra.Localization.EnrichedDetection
 public import SerrePositivity.HomotopicalAlgebra.Localization.MonoidalUnit
 public import SerrePositivity.HomotopicalAlgebra.Localization.Monoidal
 public import SerrePositivity.HomotopicalAlgebra.Quillen.FibrantCriterion
