@@ -8539,3 +8539,83 @@ cofibrancyも導く。コミット：`8dbb4e4`。
 F4のRMap(hocolim D,Y)≃holim RMap(D_i,Y)の受入条件を満たさない。
 Hom宇宙のULiftと弱同値クラスの適合も、必要な箇所で明示して接続する。
 F1の任意モデル源での最終の厳密な二変数関手とL0〜L5も残り、§159.2の最終契約は維持する。
+
+
+## 189. F4進捗：各点のRMap図式の自然比較と、実際のmapping limit（2026-10-15）
+
+§188のdiagram-resolution Homを、各点のRMap図式と比較する部分を進めた。
+今回はframeの各点への評価、三変数に自然な弱同値cospan、実際の通常のlimitの普遍性までを
+実装・検証した。weighted holimとの比較は残っており、F4完了とはしない。
+
+### 189.1 必要なlatching余極限だけを保存する一般化
+
+`Reedy/LatchingPreservation`に、指定したlatching余極限の保存だけから実際のlatching射を
+比較する`latchingComparison_preservedIso`を加えた。
+`reedyCofibrant_of_preservesLatching`は、必要な余極限とcofibrationの保存だけから
+Reedy cofibrant対象の保存を証明する。Fの通常の右随伴や、すべての余極限の保存を要求しない。
+従来の左Quillen左随伴に対する入口は、この一般結果への互換入口として維持した。
+
+### 189.2 元の図式の各点へaugmentedな実際のframe
+
+`Diagram/EvaluatedFrame`は、§188のprojective cosimplicial resolutionを各kで評価する。
+パラメータは((K→C)×K)であり、Dとkの両方の射を実際の関手として扱う。
+評価によるlatching余極限の保存と、§188.4のprojective cofibrationの各点での保存から、
+各frameのReedy cofibrancyを証明する。
+
+augmentationはまずQ_K(D)(k)へ、さらに実際のQ_K(D)→Dを合成して元のD(k)へ送る。
+いずれのaugmentationも各次数で弱同値であり、homotopical constancyも得られる。
+DやD(k)のcofibrancy、源Cのtensor・豊穣化は仮定しない。
+fibrantなYへのcosimplicial Homは各点でKanになる。
+
+### 189.3 三変数に自然なRMap図式の比較
+
+`Diagram/PointwiseMappingComparison`は189.2へ`FrameOverFunctor`を適用し、
+D・k・Yのすべてで自然な弱同値のcospanを構成する。
+出力は実際の二変数関手 (K→C)ᵒᵖ→C→(Kᵒᵖ→SSet)と、その間の自然変換である。
+対象ごとに独立して選んだ弱同値の族で代用しない。
+
+一方の端はk↦chosenResolutionHom(D(k),Y)、もう一方は評価frameからRYへの実際のHom図式である。
+共通の図式は各kでKanとなり、両比較射は各点で弱同値となる。
+`pointwiseRMapIso`は、積圏・op・curryで組み直したsourceが、既存のstrictなRMapを
+Dの各点で評価した関手と実際に自然同型であることを証明する。
+この同型を合成した`pointwiseLeft`を公開し、既存RMapを端に持つ比較を直接使えるようにした。
+以上のコミット：`9161b0c`。
+
+### 189.4 diagram Homを表す通常のlimitの実際の普遍性
+
+`Diagram/MappingLimit`はモデル構造に依存しない。
+任意のA:Δ→(K→C)とYについて、各kへの評価が作るコーンを明示的に構成し、
+その頂点cosimplicialHom(A,const Y)がlimitであることを証明する。
+普遍射の各単体は、コーンの各kの値から作った実際の自然変換である。
+射の存在・一意性、単体方向とK方向での自然性を検証する。
+
+KのサイズwとCのHom宇宙vが異なっても、点ごとのHomをSSet.{max w v}へULiftすれば
+同じ構成が使える。通常のlimitの存在は証明の出力であり、新しい入力ではない。
+任意のchosen limitとの実際の同型を構成し、そのA・Yについての自然性も証明する。
+
+`Diagram/FrameMappingLimit`は189.3のframe図式を直接評価したHom図式と自然同型で同定し、
+§188の`diagramHom`が、189.3と全く同じframe図式をULiftしたものの通常のlimitであることを
+`diagramHomLimitIso`として公開する。limitの存在も構成し、任意のchosen limitに適用できる。
+この2モジュールのコミット：`6525eec`。
+
+### 189.5 検証と残る受入ゲート
+
+以下はすべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`：2403 jobs。
+- `check_pointwise_mapping_diagram`：45宣言・3モジュール、標準公理のみ。
+  入力図式のcofibrancyを仮定しないframe、既存のstrict RMapとの同型、
+  図式値の二変数自然変換、共通Kan値図式、両射のobjectwise弱同値性を検証した。
+- `check_mapping_limit`：30宣言・2モジュール、標準公理のみ。
+  モデル構造を仮定しない一般のlimit、独立した宇宙、A・Yの自然性、
+  実際のframe図式への適用とlimitの存在を入力に要求しない利用例を検証した。
+- `audit_homotopical_foundations`：3242宣言・218モジュール、標準公理のみ。
+- `check_colimit_frame`：77宣言・6モジュール（latching一般化後）。
+- `check_homotopy_limit`：60宣言・5モジュール。
+- `check_homotopical_foundations`、`check_spectra_stage2`、`git diff --check`。
+
+新規sorry・引用axiomはない。共有ルートと他チャットの作業は変更していない。
+189.4は通常のlimitの普遍性であり、これだけでhomotopy limitを計算したとはしない。
+次は、このmapping limitを§187のweighted holimへ比較し、必要なULift・添字の宇宙変更と
+弱同値の適合を証明する。点ごとのKan性だけからlimitの導来不変性を推論しない。
+F1の任意モデル源の最終関手、F4全体、L0〜L5は未完了で、§159.2の最終契約は維持する。

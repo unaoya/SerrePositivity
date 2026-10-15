@@ -938,3 +938,20 @@ RMap(hocolim D,Y)とholim RMap(D_i,Y)の自然な弱同値は引き続き残り�
 コミットは`ca5d064`・`8dbb4e4`、詳細は計画§188。
 図式圏のHomを§187のweighted holimへ比較する部分と、必要なULiftの弱同値適合は残る。
 F4全体、F1の任意源での最終関手、L0〜L5は未完了であり、一般局所化までの契約を維持する。
+
+
+`Reedy/LatchingPreservation`は必要な個々のlatching余極限とcofibrationの保存だけへ一般化した。
+`Diagram/EvaluatedFrame`はprojective cosimplicial resolutionをD・kに自然に評価し、
+元のD(k)への弱augmentationを持つ実際のReedy cofibrant frameを構成する。
+`PointwiseMappingComparison`は既存のk↦RMap(D(k),Y)図式と評価frameのHom図式から、
+共通のKan値図式への自然な弱同値を構成する。比較はD・k・Yのすべてで自然である。
+
+`Diagram/MappingLimit`は任意のcosimplicial diagramのHomを、各点のHomの通常のlimitとして
+実際のコーンと普遍射から証明する。Hom宇宙と添字宇宙の最大へULiftし、モデル構造を仮定しない。
+`FrameMappingLimit`は実際のdiagram-resolution Homを、上のRMap比較で使うframe図式の
+通常のlimitへ同定する。limitの存在も構成し、chosen limitと比較する。
+
+共有入口2403 jobs、共有3242宣言・218モジュールの標準公理監査と回帰検証が成功。
+コミットは`9161b0c`・`6525eec`、詳細は計画§189。
+通常のlimitがweighted holimを計算することと、必要なULift・添字宇宙変更の弱同値適合は残る。
+点ごとのKan性や通常のlimitの普遍性だけでF4完了とはしない。F1の任意源の最終関手とL0〜L5も残る。
