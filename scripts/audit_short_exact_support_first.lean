@@ -1,0 +1,10 @@
+import SerrePositivity.KTheory.Adams.TensorSquareFiltration
+import SerrePositivity.KTheory.Adams.TensorCubeFiltration
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.HasHomologySupportOn.of_shortExact
+assert_no_sorry SerrePositivity.Adams.tensorSquareKernel_support
+assert_no_sorry SerrePositivity.Adams.tensorCubeKernel_support
+#print axioms SerrePositivity.HasHomologySupportOn.of_shortExact
+#print axioms SerrePositivity.Adams.tensorSquareKernel_support
+#print axioms SerrePositivity.Adams.tensorCubeKernel_support

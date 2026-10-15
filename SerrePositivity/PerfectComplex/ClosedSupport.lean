@@ -3,6 +3,7 @@ module
 public import SerrePositivity.PerfectComplex.Support
 public import SerrePositivity.HomologicalAlgebra.ConeLES
 public import SerrePositivity.CommutativeAlgebra.ModuleSupport
+public import Mathlib.Algebra.Homology.HomologySequence
 
 /-! # 閉集合で指定するホモロジーの台
 
@@ -85,6 +86,18 @@ lemma hasHomologySupportOn_of_isZero (hP : IsZero P) : HasHomologySupportOn Z P 
     (HomologicalComplex.homologyFunctor _ _ i).map_isZero hP
   have : Subsingleton (P.homology i) := ModuleCat.subsingleton_of_isZero hz
   simp [Module.support_eq_empty]
+
+/-- The first complex of a short exact sequence is supported wherever the other two are.
+No boundedness, finite generation, or projectivity is needed. -/
+lemma HasHomologySupportOn.of_shortExact
+    (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ)) (hS : S.ShortExact)
+    (h₂ : HasHomologySupportOn Z S.X₂) (h₃ : HasHomologySupportOn Z S.X₃) :
+    HasHomologySupportOn Z S.X₁ := by
+  intro n
+  have he := (ShortComplex.ShortExact.moduleCat_exact_iff_function_exact _).mp
+    (hS.homology_exact₁ (n - 1) n (by change n - 1 + 1 = n; omega))
+  exact (module_support_subset_union_of_exact _ _ he).trans
+    (Set.union_subset (h₃ (n - 1)) (h₂ n))
 
 /-- The long exact homology sequence preserves the closed support under mapping cones. -/
 lemma HasHomologySupportOn.mappingCone (hP : HasHomologySupportOn Z P)

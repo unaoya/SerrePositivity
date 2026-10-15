@@ -80,13 +80,10 @@ lemma tensorSquareKernel_support
     (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ)) (hS : S.ShortExact)
     (hp : strictlyPerfectComplex R S.X₂) (hd : strictlyPerfectComplex R S.X₃)
     (hsP : HasHomologySupportOn Z S.X₂) (hsD : HasHomologySupportOn Z S.X₃) :
-    HasHomologySupportOn Z (tensorSquareKernel S.g) := by
-  have hT := tensorSquareKernelShortComplex_shortExact S hS (fun i => (hd.2 i).2)
-  intro n
-  have he := (ShortComplex.ShortExact.moduleCat_exact_iff_function_exact _).mp
-    (hT.homology_exact₁ (n - 1) n (by change n - 1 + 1 = n; omega))
-  exact (module_support_subset_union_of_exact _ _ he).trans
-    (Set.union_subset (tensorSquare_support hd hsD (n - 1)) (tensorSquare_support hp hsP n))
+    HasHomologySupportOn Z (tensorSquareKernel S.g) :=
+  HasHomologySupportOn.of_shortExact (tensorSquareKernelShortComplex S.g)
+    (tensorSquareKernelShortComplex_shortExact S hS (fun i => (hd.2 i).2))
+    (tensorSquare_support hp hsP) (tensorSquare_support hd hsD)
 
 /-- The tensor square of the first term maps into the intermediate layer. -/
 def tensorSquareKernelFirstMap

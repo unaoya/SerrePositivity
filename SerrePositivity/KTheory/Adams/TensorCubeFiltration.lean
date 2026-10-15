@@ -80,13 +80,10 @@ lemma tensorCubeKernel_support {Z : TopologicalSpace.Closeds (PrimeSpectrum R)}
     (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ)) (hS : S.ShortExact)
     (hp : strictlyPerfectComplex R S.X₂) (hd : strictlyPerfectComplex R S.X₃)
     (hsP : HasHomologySupportOn Z S.X₂) (hsD : HasHomologySupportOn Z S.X₃) :
-    HasHomologySupportOn Z (tensorCubeKernel S.g) := by
-  have hT := tensorCubeKernelShortComplex_shortExact S hS (fun i => (hd.2 i).2)
-  intro n
-  have he := (ShortComplex.ShortExact.moduleCat_exact_iff_function_exact _).mp
-    (hT.homology_exact₁ (n - 1) n (by change n - 1 + 1 = n; omega))
-  exact (module_support_subset_union_of_exact _ _ he).trans
-    (Set.union_subset (tensorCube_support hd hsD (n - 1)) (tensorCube_support hp hsP n))
+    HasHomologySupportOn Z (tensorCubeKernel S.g) :=
+  HasHomologySupportOn.of_shortExact (tensorCubeKernelShortComplex S.g)
+    (tensorCubeKernelShortComplex_shortExact S hS (fun i => (hd.2 i).2))
+    (tensorCube_support hp hsP) (tensorCube_support hd hsD)
 
 /-- The first filtration piece embeds by tensoring the original inclusion three times. -/
 def tensorCubeKernelFirstMap (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ)) :
