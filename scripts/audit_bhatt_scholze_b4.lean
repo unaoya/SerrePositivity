@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.PrincipalDPFactorialEquiv
 import SerrePositivity.BhattScholze.PrincipalDPRegular
 import SerrePositivity.BhattScholze.RankOneDPPrimeBasis
 import SerrePositivity.BhattScholze.RankOneDPBasis
@@ -4399,3 +4400,13 @@ assert_no_sorry SerrePositivity.BhattScholze.principalDPRelation_mod_p_isSMulReg
 #print axioms SerrePositivity.BhattScholze.principalDPRelation_mod_p_isSMulRegular
 assert_no_sorry SerrePositivity.BhattScholze.principalDPPresentation_p_mul_injective
 #print axioms SerrePositivity.BhattScholze.principalDPPresentation_p_mul_injective
+
+-- Actual equivalence for regular principal divided-power presentations.
+assert_no_sorry SerrePositivity.BhattScholze.principalDPToFactorial_injective
+#print axioms SerrePositivity.BhattScholze.principalDPToFactorial_injective
+assert_no_sorry SerrePositivity.BhattScholze.principalDPFactorialEquiv
+#print axioms SerrePositivity.BhattScholze.principalDPFactorialEquiv
+assert_no_sorry SerrePositivity.BhattScholze.principalDPFactorialEquiv_coeff
+#print axioms SerrePositivity.BhattScholze.principalDPFactorialEquiv_coeff
+assert_no_sorry SerrePositivity.BhattScholze.principalDPFactorialEquiv_generator
+#print axioms SerrePositivity.BhattScholze.principalDPFactorialEquiv_generator
