@@ -133,16 +133,6 @@ def k0G0WithSupportEquiv : K0WithSupport Z ≃+ G0WithSupport Z where
   right_inv x := DFunLike.congr_fun (K0WithSupport.homologyEuler_resolutionMap Z) x
   map_add' := map_add _
 
-omit [HasFiniteProjectiveResolutions R] in
-/-- The homology Euler summands of a perfect object have finite support. -/
-lemma supportedHomologyEuler_hasFiniteSupport (X : SupportedPerfectHomotopyOn Z) :
-    Function.HasFiniteSupport (fun q : ℤ => ((q.negOnePow : ℤˣ) : ℤ) •
-      G0WithSupport.mk (supportedPerfectHomology Z X q)) := by
-  obtain ⟨a, b, hab⟩ := supportedPerfectHomology_bounded Z X
-  apply finiteSupport_of_bounded_zero _ a b
-  intro q hq
-  rw [G0WithSupport.mk_of_isZero _ (hab q hq), smul_zero]
-
 /-- A perfect class is the alternating sum of its homology resolution classes. -/
 lemma k0Class_eq_sum_resolutionClasses (X : SupportedPerfectHomotopyOn Z) :
     K0WithSupport.mk Z X = ∑ᶠ q : ℤ, ((q.negOnePow : ℤˣ) : ℤ) •

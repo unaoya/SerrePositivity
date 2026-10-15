@@ -71,7 +71,8 @@ print(f'Import boundaries passed: {len(common)} cochain modules and 2 Adams cont
 coefficient_comparison = {
     'SerrePositivity.KTheory.' + name for name in [
         'K0Localization', 'K0LocalizationCoefficients', 'G0Localization',
-        'HomologyEuler', 'HomologyPeeling', 'ComparisonInverse', 'ComparisonNaturality']
+        'HomologyEuler', 'HomologyEulerBasic', 'HomologyPeeling', 'ComparisonInverse',
+        'ComparisonNaturality']
 } | {'SerrePositivity.PerfectComplex.IntegerEuler',
      'SerrePositivity.PerfectComplex.CoefficientEuler'}
 for name in ['KTheory.SupportedCoefficients', 'KTheory.Adams.Family',
@@ -98,6 +99,11 @@ check('SerrePositivity.KTheory.SupportedExactEuler',
       lambda dep: dep in {'SerrePositivity.KTheory.ResolutionClass',
                          'SerrePositivity.KTheory.ResolutionAdditivity'})
 print(f'Euler and homotopy boundaries passed: {len(general)} general modules and the supported sequence.')
+
+resolution_comparison = {'SerrePositivity.KTheory.' + name for name in [
+    'ResolutionClass', 'ResolutionAdditivity', 'HomologyPeeling', 'ComparisonInverse']}
+check('SerrePositivity.KTheory.HomologyEulerBasic', lambda dep: dep in resolution_comparison)
+print('Basic homology Euler evaluation is independent of resolution comparisons.')
 
 geometry = ['ClosedSupportGeometry', 'ModuleClosedSupport', 'SupportHeight',
             'SemilocalSupport', 'ModuleSupportHeight', 'LocalizationTorsion', 'ModuleSupport',
