@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KTheory.Adams.KoszulOneBasis
+public import SerrePositivity.HomologicalAlgebra.KoszulOneCoordinates
 
 /-! # The twice-shifted one-element Koszul model and its positive differential sign -/
 

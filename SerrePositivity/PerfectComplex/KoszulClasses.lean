@@ -17,6 +17,17 @@ def oneKoszulClass (a : R) : K0WithSupport (oneKoszulSupport a) :=
   K0WithSupport.mk (oneKoszulSupport a) (supportedPerfectOnObj (oneKoszulSupport a)
     (oneKoszulComplex a) (oneKoszulComplex_perfect a) (oneKoszulComplex_support a))
 
+/-- A single shift negates the Koszul class, independently of an Adams operation. -/
+lemma oneKoszulClass_shift_one (a : R) :
+    K0WithSupport.mk (oneKoszulSupport a) (supportedPerfectOnObj (oneKoszulSupport a)
+      ((oneKoszulComplex a)⟦(1 : ℤ)⟧)
+      (strictlyPerfectComplex_shift (oneKoszulComplex_perfect a) 1)
+      ((oneKoszulComplex_support a).shift 1)) = -oneKoszulClass a :=
+  ClosedSupportShortExactAdditive.shift_one
+    (K0WithSupport.mk_shortExact (oneKoszulSupport a))
+    (fun e => K0WithSupport.mk_iso (oneKoszulSupport a) e)
+    (oneKoszulComplex a) (oneKoszulComplex_perfect a) (oneKoszulComplex_support a)
+
 lemma oneKoszulUnit_perfect : strictlyPerfectComplex R (oneKoszulUnit (R := R)) :=
   (isPerfectSupported_koszulComplex (fun i : Fin 0 => Fin.elim0 i)).strictlyPerfect
 

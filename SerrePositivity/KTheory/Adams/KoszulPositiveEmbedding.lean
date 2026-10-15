@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.KTheory.Adams.KoszulSquareCoordinates
+public import SerrePositivity.KTheory.Adams.TensorSquareEigenspaces
 
 /-! # The positive Koszul summand inside the tensor square -/
 

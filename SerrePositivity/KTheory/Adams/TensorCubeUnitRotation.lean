@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KTheory.Adams.TensorCube
-public import SerrePositivity.KTheory.Adams.UnitNormalization
+public import SerrePositivity.HomologicalAlgebra.KoszulOneCoordinates
 
 /-! # The cubic rotation is trivial on the degree-zero scalar unit -/
 

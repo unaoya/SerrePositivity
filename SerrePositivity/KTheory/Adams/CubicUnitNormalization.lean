@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.KTheory.Adams.TensorCubeUnitRotation
+public import SerrePositivity.PerfectComplex.KoszulClasses
 public import SerrePositivity.PerfectComplex.CubicActionIdentityClass
 public import SerrePositivity.KTheory.Adams.CyclicThree
 

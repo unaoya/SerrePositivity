@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KTheory.Adams.KoszulSquareModel
-public import SerrePositivity.KTheory.Adams.KoszulTensor
+public import SerrePositivity.PerfectComplex.KoszulTensor
 public import SerrePositivity.KTheory.Adams.TensorCube
 
 /-! # A mapping-cone model and finite degreewise coordinates of a Koszul cube -/
@@ -22,11 +22,7 @@ abbrev oneKoszulCubeCone (a : R) :=
 def oneKoszulCubeConeIso (a : R) :
     tensorCube (oneKoszulComplex a) ≅ oneKoszulCubeCone a :=
   cochainTensorAssociator (oneKoszulComplex a) (oneKoszulComplex a) (oneKoszulComplex a) ≪≫
-    cochainTensorConeLeft (oneKoszulScalarMap a) (tensorSquare (oneKoszulComplex a)) ≪≫
-    HomologicalComplex.homotopyCofiber.mapArrowIso _ _ (fun j => ⟨j - 1, by simp⟩)
-      (Arrow.isoMk (cochainTensorLeftUnitor (tensorSquare (oneKoszulComplex a)))
-        (cochainTensorLeftUnitor (tensorSquare (oneKoszulComplex a)))
-        (oneKoszulTensorScalar_leftUnitor a (tensorSquare (oneKoszulComplex a))).symm)
+    oneKoszulTensorConeIso a (tensorSquare (oneKoszulComplex a))
 
 abbrev oneKoszulCubeConeXSplit (a : R) (n : ℤ) :
     (oneKoszulCubeCone a).X n ≅

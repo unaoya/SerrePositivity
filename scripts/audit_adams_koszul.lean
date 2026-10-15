@@ -123,6 +123,7 @@ assert_no_sorry SerrePositivity.Adams.oneKoszulNegativeModel_support
 #print axioms SerrePositivity.Adams.oneKoszulNegativeIso
 
 assert_no_sorry SerrePositivity.Adams.oneKoszulShiftOne_class
+assert_no_sorry SerrePositivity.Adams.oneKoszulClass_shift_one
 assert_no_sorry SerrePositivity.Adams.oneKoszulPositive_class
 assert_no_sorry SerrePositivity.Adams.oneKoszulNegative_class
 assert_no_sorry SerrePositivity.Adams.tensorSquareClass_oneKoszul

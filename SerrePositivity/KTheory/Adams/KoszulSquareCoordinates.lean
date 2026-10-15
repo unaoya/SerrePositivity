@@ -58,8 +58,8 @@ lemma oneKoszulSquareConeIso_fst (a : R) (n : ℤ) :
       (mappingCone.fst (smulId a (oneKoszulComplex a))).1.v n (n + 1) rfl =
     tensorConeFstX (oneKoszulScalarMap a) (oneKoszulComplex a) n ≫
       (cochainTensorLeftUnitor (oneKoszulComplex a)).hom.f (n + 1) := by
-  simp only [oneKoszulSquareConeIso, Iso.trans_hom, HomologicalComplex.comp_f,
-    homotopyCofiber.mapArrowIso_hom]
+  simp only [oneKoszulSquareConeIso, oneKoszulTensorConeIso, Iso.trans_hom,
+    HomologicalComplex.comp_f, homotopyCofiber.mapArrowIso_hom]
   simp only [Category.assoc]
   change _ ≫ (cochainConeArrowMap
     (cochainTensorMap (oneKoszulScalarMap a) (𝟙 (oneKoszulComplex a)))
@@ -81,8 +81,8 @@ lemma oneKoszulSquareConeIso_snd (a : R) (n : ℤ) :
       (mappingCone.snd (smulId a (oneKoszulComplex a))).v n n (by omega) =
     tensorConeSndX (oneKoszulScalarMap a) (oneKoszulComplex a) n ≫
       (cochainTensorLeftUnitor (oneKoszulComplex a)).hom.f n := by
-  simp only [oneKoszulSquareConeIso, Iso.trans_hom, HomologicalComplex.comp_f,
-    homotopyCofiber.mapArrowIso_hom]
+  simp only [oneKoszulSquareConeIso, oneKoszulTensorConeIso, Iso.trans_hom,
+    HomologicalComplex.comp_f, homotopyCofiber.mapArrowIso_hom]
   simp only [Category.assoc]
   change _ ≫ (cochainConeArrowMap
     (cochainTensorMap (oneKoszulScalarMap a) (𝟙 (oneKoszulComplex a)))

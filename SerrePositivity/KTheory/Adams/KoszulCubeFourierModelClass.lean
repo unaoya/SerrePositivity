@@ -47,7 +47,7 @@ lemma oneKoszulCubeFourierModel_weighted_class (E : Type v) [CommRing E]
   rw [CochainCubicAction.weightedK0Class_biprod E _ _ t ht ζ (oneKoszulSupport a)
     hp1 hp2 hs1 hs2]
   simp only [CochainCubicAction.weightedK0Class_characterScalar]
-  rw [oneKoszulShiftOne_class a, oneKoszulShiftTwo_class a]
+  rw [oneKoszulClass_shift_one a, oneKoszulShiftTwo_class a]
   change cubicCharacter ζ 0 ⊗ₜ[ℤ] oneKoszulClass a +
     (cubicCharacter ζ 1 ⊗ₜ[ℤ] (-oneKoszulClass a) +
       (cubicCharacter ζ 2 ⊗ₜ[ℤ] (-oneKoszulClass a) +

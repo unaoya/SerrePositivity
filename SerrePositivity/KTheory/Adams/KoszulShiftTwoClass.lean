@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KTheory.Adams.KoszulNormalization
+public import SerrePositivity.PerfectComplex.KoszulClasses
 public import SerrePositivity.KTheory.Adams.KoszulShiftTwoModel
 
 /-! # The closed-support class of a twice-shifted one-element Koszul complex -/
@@ -24,14 +24,14 @@ lemma oneKoszulShiftTwo_class (a : R) :
   have hχ : ClosedSupportShortExactAdditive (oneKoszulSupport a)
       (K0WithSupport.mk (oneKoszulSupport a)) := K0WithSupport.mk_shortExact (oneKoszulSupport a)
   have h2 := hχ.shift_one (fun e => K0WithSupport.mk_iso (oneKoszulSupport a) e)
-    (oneKoszulShiftOne a) hp hs
+    ((oneKoszulComplex a)⟦(1 : ℤ)⟧) hp hs
   have he := K0WithSupport.mk_eq_of_quasiIso (oneKoszulSupport a)
-    (oneKoszulShiftTwo a) ((oneKoszulShiftOne a)⟦(1 : ℤ)⟧)
+    (oneKoszulShiftTwo a) (((oneKoszulComplex a)⟦(1 : ℤ)⟧)⟦(1 : ℤ)⟧)
     (strictlyPerfectComplex_shift (oneKoszulComplex_perfect a) 2)
     (strictlyPerfectComplex_shift hp 1) ((oneKoszulComplex_support a).shift 2) (hs.shift 1)
     ((shiftFunctorAdd' (CochainComplex (ModuleCat.{u} R) ℤ)
       (1 : ℤ) 1 2 (by norm_num)).app (oneKoszulComplex a)).hom
-  rw [he, h2, oneKoszulShiftOne_class a, neg_neg]
+  rw [he, h2, oneKoszulClass_shift_one, neg_neg]
 
 end Adams
 end SerrePositivity

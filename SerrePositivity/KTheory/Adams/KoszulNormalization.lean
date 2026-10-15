@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.PerfectComplex.KoszulClasses
+public import SerrePositivity.KTheory.Adams.CyclicTwo
 
 public import SerrePositivity.KTheory.Adams.KoszulNegativeRetraction
 
@@ -18,11 +19,8 @@ namespace Adams
 lemma oneKoszulShiftOne_class (a : R) :
     K0WithSupport.mk (oneKoszulSupport a) (supportedPerfectOnObj (oneKoszulSupport a)
       (oneKoszulShiftOne a) (strictlyPerfectComplex_shift (oneKoszulComplex_perfect a) 1)
-      (oneKoszulNegativeModel_support a)) = -oneKoszulClass a := by
-  have hχ : ClosedSupportShortExactAdditive (oneKoszulSupport a)
-      (K0WithSupport.mk (oneKoszulSupport a)) := K0WithSupport.mk_shortExact (oneKoszulSupport a)
-  exact hχ.shift_one (fun e => K0WithSupport.mk_iso (oneKoszulSupport a) e)
-    (oneKoszulComplex a) (oneKoszulComplex_perfect a) (oneKoszulComplex_support a)
+      (oneKoszulNegativeModel_support a)) = -oneKoszulClass a :=
+  oneKoszulClass_shift_one a
 
 variable [Invertible (2 : R)]
 

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.KTheory.Adams.KoszulOneBasis
-public import SerrePositivity.PerfectComplex.TensorCone
+public import SerrePositivity.PerfectComplex.KoszulTensor
+public import SerrePositivity.KTheory.Adams.TensorSquare
 
 /-! # A mapping-cone model for the tensor square of a one-element Koszul complex -/
 
@@ -24,23 +24,13 @@ lemma oneKoszulTensorScalar_unitor (a : R) :
     cochainTensorMap (oneKoszulScalarMap a) (𝟙 (oneKoszulComplex a)) ≫
       (cochainTensorLeftUnitor (oneKoszulComplex a)).hom =
     (cochainTensorLeftUnitor (oneKoszulComplex a)).hom ≫
-      smulId a (oneKoszulComplex a) := by
-  change cochainTensorMap (a • 𝟙 cochainTensorUnit) (𝟙 (oneKoszulComplex a)) ≫ _ = _
-  rw [cochainTensorMap_smul_left]
-  calc
-    _ = (a • 𝟙 (cochainTensor cochainTensorUnit (oneKoszulComplex a))) ≫
-        (cochainTensorLeftUnitor (oneKoszulComplex a)).hom :=
-      congrArg (fun f => (a • f) ≫ (cochainTensorLeftUnitor (oneKoszulComplex a)).hom)
-        (cochainTensorMap_id cochainTensorUnit (oneKoszulComplex a))
-    _ = _ := by simp [smulId, Linear.smul_comp, Linear.comp_smul]
+      smulId a (oneKoszulComplex a) :=
+  oneKoszulTensorScalar_leftUnitor a (oneKoszulComplex a)
 
 /-- Tensoring the scalar cone and then removing the tensor unit gives a double cone. -/
 def oneKoszulSquareConeIso (a : R) :
     tensorSquare (oneKoszulComplex a) ≅ oneKoszulSquareCone a :=
-  cochainTensorConeLeft (oneKoszulScalarMap a) (oneKoszulComplex a) ≪≫
-    HomologicalComplex.homotopyCofiber.mapArrowIso _ _ (fun j => ⟨j - 1, by simp⟩)
-      (Arrow.isoMk (cochainTensorLeftUnitor (oneKoszulComplex a))
-        (cochainTensorLeftUnitor (oneKoszulComplex a)) (oneKoszulTensorScalar_unitor a).symm)
+  oneKoszulTensorConeIso a (oneKoszulComplex a)
 
 abbrev oneKoszulSquareConeXSplit (a : R) (n : ℤ) :
     (oneKoszulSquareCone a).X n ≅
