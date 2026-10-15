@@ -2540,3 +2540,24 @@ K(D)へ移した三角形がχの標準cone三角形と同型、したがってd
 StageSix・既存Spectra.StageTwoの同時ビルドは成功（2557 jobs）。
 本単位の主要13宣言の直接公理監査は標準公理のみ。累計1114宣言。
 U10全受入は未完。八面体公理の受入記録は次節、acyclic部分圏とVerdier商への接続を引き続き進める。
+
+
+### 13.82 U10o6：K(D)の八面体公理とIsTriangulated登録
+
+`Module/Triangulated.lean`はK(D)の二つの射を商関手の充満性で実際の加群射へ持ち上げ、
+f、g、f≫gの標準cone三角形を選ぶ。二つの厳密な可換squareから三角形射を構成し、
+§13.81のdistinguishedな合成cone三角形と、商関手のshift比較を含む第三射の等式を使って
+八面体を構成する。MathlibのIsTriangulated.mk'により任意のdistinguished三角形に対する
+八面体公理へ移し、`moduleHomotopyIsTriangulated`を登録した。
+objectwiseな八面体の存在を仮定せず、全dg自然な射と収縮から証明している。
+
+§13.81の最終同時ビルドは成功（2557 jobs）。初回の直接監査は並行ビルド中の
+Complexes.Enrichment.oleanの未生成で停止したため採用しなかった。
+依存ビルド完了後にChecks.Triangulatedを再ビルド（2016 jobs）し、直接実行も終了コード0を確認した。
+主要1宣言の公理は標準公理のみ。累計1115宣言。実装コミットは126e7be。
+§13.79の局所maxHeartbeats指定の理由コメントを指定直後へ移し、行長の警告も修正した。
+その変更を含むソースで再ビルド済みであり、共有ビルドの上限を変更していない。
+
+U10全受入は未完。次はacyclic部分圏の三角閉性と指定準同型のVerdierクラスを接続し、
+主導来圏の三角構造・局所化関手・一対象A比較の三角性まで完成させる。
+共有モデル圏・Quillen・転送・SM7一般論への新しい不足要求はない。
