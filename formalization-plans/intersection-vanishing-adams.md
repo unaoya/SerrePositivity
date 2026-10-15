@@ -3855,6 +3855,19 @@ K₀ の類への移送と重みつき乗法性は次の小段。
 - 現行ソースの import グラフで All から Inputs.IntersectionTheory への経路がないことを
   339 個のローカルモジュールで確認した。次は既存の Inputs の公開入口の置換と利用先の受入。
 
+### S11.2–3a：公開入口の証明置換と利用先の公理監査
+
+- `Inputs.intersectionVanishing` の直接の `sorry` を `intersectionVanishing_of_adams` への
+  適用に置換した。名前・引数・型の `:=` より前の文字列が旧 HEAD と完全一致することを確認した。
+  docstring は文献引用から証明済みの入口へ更新した。
+- Inputs、`Devissage`、`FiniteExtension`、`EqualCharZeroPositivity`、旧列版
+  `PerfectComplex.K0Functoriality` のビルドが成功（3843 jobs）。
+- `lake env lean scripts/audit_intersection_vanishing_complete.lean` が成功。
+  一元・長い列の正規化、両族、円分保存、一般消滅、両分岐、全標数、公開定理、
+  三つの利用先の計十四定数の `assert_no_sorry` が通り、公理は標準三公理のみ。
+- 共通の `audit_axioms.lean` に公開消滅と剰余標数零の正値性の `assert_no_sorry` を追加した。
+  次はルート公開・全体ビルド・引用台帳と最終受入。S11 全体の完了判定はその後。
+
 ## 4.29 残計画の実行仕様：証明を渡す単位と未検証箇所
 
 この節は §4.27 の小段をさらに分割した **計画**。新しい Lean 定理の証明完了を意味しない。

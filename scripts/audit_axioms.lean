@@ -108,8 +108,12 @@ assert_no_sorry SerrePositivity.DiagonalRing.chi_pos_of_prime
 assert_no_sorry SerrePositivity.flat_of_isWeaklyRegular
 #print axioms SerrePositivity.exists_mvPowerSeries_ringEquiv_of_charZero
 assert_no_sorry SerrePositivity.exists_mvPowerSeries_ringEquiv_of_charZero
--- 一般の剰余標数零の場合はデヴィサージュで交点消滅定理の引用だけに依存する。
+-- 交点消滅は巡回 Adams 作用素で全剰余標数にわたり証明済み。
+#print axioms SerrePositivity.Inputs.intersectionVanishing
+assert_no_sorry SerrePositivity.Inputs.intersectionVanishing
+-- 一般の剰余標数零の正値性も、デヴィサージュと証明済みの消滅により標準公理のみ。
 #print axioms SerrePositivity.chi_pos_of_residueCharZero
+assert_no_sorry SerrePositivity.chi_pos_of_residueCharZero
 
 -- Cohen–Gabberの公開型を保った微分経路の実構成。
 #print axioms SerrePositivity.Inputs.cohen_gabber_normalization
