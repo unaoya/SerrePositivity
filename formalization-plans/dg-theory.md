@@ -1,6 +1,6 @@
 # dg 理論（M5）の独立実装計画
 
-作成・調査：2026-10-14。更新：2026-10-15。状態：U0〜U10 を実装・検証済み。U11〜U17の実装を開始（§17）。U10後の比較・整理案と後続詳細計画は§14〜§16。
+作成・調査：2026-10-14。更新：2026-10-16。状態：U0〜U10 を実装・検証済み。U11〜U17の実装を開始（§17）。U10後の比較・整理案と後続詳細計画は§14〜§16。
 U0〜U3の記録は§11、U4/U5の実績と後続契約は§12。D0〜D10全体の完了ではない。
 この計画だけを受け取る実装担当者向けの仕様である。
 ホモトピー論の共有契約は [k-theory.md §123](k-theory.md#123-次段階の設計i抽象モデル圏とその当てはめ2026-10-14)。
@@ -3439,3 +3439,37 @@ Fubini・tensor–Hom随伴・余極限保存は継続対象である。
 環A:Type uは任意CommRing、Dの対象宇宙vは独立、Homはu。Hom end/余等化子を使う段階でSmall.{u} D。
 この具体的dg APIはDG担当内で追加する。共有モデル/Quillen/転送/SM7一般論への重複実装・追加要求はない。
 U12〜U17・D4mも未完のまま継続。共有ルート・共有一般論・並行作業ファイルは変更していない。
+
+
+### 17.33 U11e2：左単位の両作用に関する全Hom自然性（2026-10-16）
+
+`Tensor/LeftDiagonalValues.lean`は任意の右B加群Mについて、対角bimoduleの左制限とのtensorを
+M(b)へ比較する同型・包含式・純粋斉次元の式を構成する。
+`Tensor/ChangeLeft.lean`の等式輸送と既存leftYonedaIsoを再利用し、評価の符号は(-1)^(rs)である。
+`Bimodule/IdentityTranspose.lean`と`Tensor/LeftDiagonalUnit.lean`は対角の転置Hom作用と
+tensorの左Hom作用の成分を結び、右Bの全Hom自然性を証明した。
+`Tensor/LeftUnitSigns.lean`は任意の右加群に対する作用の結合と符号の補題である。
+
+`Tensor/ElementMap.lean`は包含で指定した射の評価と、balanced tensorの純粋生成元で
+Hom複体の前後合成の等式を判定する入口を提供する。
+左単位の具体的評価射を展開して自然性を証明した版はカーネルでタイムアウトした。
+評価式を満たす任意の射について先に生成元自然性を証明し、具体的評価射は最後に代入する
+leftUnitValue_element_naturality_of_evaluationへ分割した。最終ソースに検査上限の引上げや
+診断用trace/一時的な上限指定はなく、LeftDiagonalUnitは2.4秒、LeftUnitは3.3秒でビルドされた。
+
+`Tensor/LeftDiagonalHom.lean`は左representableの表示の等式輸送を一般のNについて処理し、
+加群変数の全Hom自然性を既存のleftYonedaEvaluation_enriched_naturalityから得る。
+`Tensor/LeftUnit.lean`はcompose diagonal Pの値の同型を実際の右B加群同型leftUnitIsoへ束ね、
+両向きの評価式、左Cの全Hom自然性、主Hom endでのleftUnitIso_naturalityを公開した。
+Aは任意CommRing、B/Cの対象宇宙は独立、Small.{u} Bのみを要求し、Small Cは要求しない。
+
+Checks.BimoduleLeftUnit・Checks.BimoduleRightUnit・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2698 jobs、終了コード0、警告なし）。任意Aと一対象ZMod 2の実際の同型を検査した。
+本単位の主要30宣言の直接実行も終了コード0、すべて標準公理のみ。監査累計1466宣言。
+担当Leanのsorry/admit/新規axiomは0件。文書検査は22 Markdown・311 exposition参照、失敗0件。
+
+U11e全体は未完。左右の単位比較は両作用の全Hom自然性まで得られたが、
+Fubini・tensor–Hom随伴・余極限保存、bimodule合成の結合同型、三角/五角、全変数自然性は継続対象。
+次は§17.32の反変Hom dg関手とhomRightModuleから具体的tensor–Hom随伴を構成する。
+その後Fubiniと結合同型・整合性へ進む。U12〜U17・D4mも引き続き未完。
+共有系列への新規不足要求はなく、共有ルート・共有一般論・他チャットの並行作業ファイルは変更していない。
