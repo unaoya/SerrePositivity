@@ -63,17 +63,11 @@ lemma maximal_pureWeight {T : Type u} [CommRing T] [IsRegularLocalRing T]
     (A : SupportedAdams T E p) (d : ℕ) (hd : ringKrullDim T = d)
     (x : K0WithSupport.Coefficients E (supportZeroLocus (maximalIdeal T))) :
     A.operation (supportZeroLocus (maximalIdeal T)) x = (p : E) ^ d • x := by
-  obtain ⟨rs, hrs, hgen, hdim⟩ := exists_regular_generators T
-  have hspan : Ideal.span (Set.range rs.get) = Ideal.ofList rs := by
-    apply congrArg Ideal.span
-    ext x
-    exact List.mem_iff_get.symm
-  have hz := hspan.trans hgen
-  have hreg : RingTheory.Sequence.IsWeaklyRegular T (List.ofFn rs.get) := by simpa using hrs
-  have hl : rs.length = d := by exact_mod_cast hdim.symm.trans hd
-  rw [← hl]
-  exact A.maximal_pureWeight_of_parameters rs.get hz
-    (isKoszulResolution_of_isWeaklyRegular rs.get hreg) x
+  obtain ⟨n, z, hz, hreg, hdim⟩ := exists_regular_generators_fin T
+  have hn : n = d := by exact_mod_cast hdim.symm.trans hd
+  rw [← hn]
+  exact A.maximal_pureWeight_of_parameters z hz
+    (isKoszulResolution_of_isWeaklyRegular z hreg) x
 
 end SupportedAdams
 end Adams

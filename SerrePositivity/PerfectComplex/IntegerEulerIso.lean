@@ -95,16 +95,9 @@ variable (R : Type u) [CommRing R] [IsRegularLocalRing R]
 lemma exists_integerEulerEquiv :
     ∃ e : K0WithSupport (supportZeroLocus (maximalIdeal R)) ≃+ ℤ,
       ∀ x, e x = integerEuler R x := by
-  obtain ⟨rs, hrs, hgen, _⟩ := exists_regular_generators R
-  have hspan : Ideal.span (Set.range rs.get) = Ideal.ofList rs := by
-    apply congrArg Ideal.span
-    ext x
-    exact List.mem_iff_get.symm
-  have hz : Ideal.span (Set.range rs.get) = maximalIdeal R := hspan.trans hgen
-  have hreg : RingTheory.Sequence.IsWeaklyRegular R (List.ofFn rs.get) := by
-    simpa using hrs
-  let hK := isKoszulResolution_of_isWeaklyRegular rs.get hreg
-  exact ⟨maximalSupportIntegerEulerEquivOfParameters rs.get hz hK, fun _ => rfl⟩
+  obtain ⟨_, z, hz, hreg, _⟩ := exists_regular_generators_fin R
+  let hK := isKoszulResolution_of_isWeaklyRegular z hreg
+  exact ⟨maximalSupportIntegerEulerEquivOfParameters z hz hK, fun _ => rfl⟩
 
 /-- Integer Euler is an additive equivalence at the maximal ideal of a regular local ring. -/
 def integerEulerEquiv : K0WithSupport (supportZeroLocus (maximalIdeal R)) ≃+ ℤ :=

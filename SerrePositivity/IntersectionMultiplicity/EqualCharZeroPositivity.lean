@@ -47,16 +47,7 @@ theorem exists_mvPowerSeries_ringEquiv_of_charZero (R : Type u) [CommRing R]
     ∃ (K : Type u) (_ : Field K) (d : ℕ), Nonempty (MvPowerSeries (Fin d) K ≃+* R) := by
   classical
   obtain ⟨g, hg⟩ := exists_residue_section_of_charZero R
-  obtain ⟨rs, -, hspan, hdim⟩ := exists_regular_generators R
-  let d := rs.length
-  let x : Fin d → R := rs.get
-  have hrange : Ideal.span (Set.range x) = maximalIdeal R := by
-    rw [← hspan]
-    unfold Ideal.ofList
-    congr 1
-    ext r
-    simp only [Set.mem_range, Set.mem_ofPred_eq, x]
-    exact List.mem_iff_get.symm
+  obtain ⟨d, x, hrange, _, hdim⟩ := exists_regular_generators_fin R
   have hx : ∀ i, x i ∈ maximalIdeal R := fun i ↦ hrange ▸ Ideal.subset_span ⟨i, rfl⟩
   let c := adicPowerSeriesEval g (maximalIdeal R) x hx
   have hsurj : Function.Surjective c := by

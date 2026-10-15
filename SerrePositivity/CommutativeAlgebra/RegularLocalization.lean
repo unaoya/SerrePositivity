@@ -44,19 +44,13 @@ lemma exists_localized_height_koszulResolution (p : PrimeSpectrum R) :
           ((Localization.AtPrime p.asIdeal) ⧸ maximalIdeal (Localization.AtPrime p.asIdeal)))) := by
   let B := Localization.AtPrime p.asIdeal
   have : IsRegularLocalRing B := isRegularLocalRing_localizationAtPrime p
-  obtain ⟨rs, hrs, hgen, hdim⟩ := exists_regular_generators B
-  have hlen : rs.length = p.asIdeal.height.toNat := by
+  obtain ⟨n, z, hz, hreg, hdim⟩ := exists_regular_generators_fin B
+  have hlen : n = p.asIdeal.height.toNat := by
     rw [IsLocalization.AtPrime.ringKrullDim_eq_height p.asIdeal B,
       ← natCast_primeHeight_toNat p] at hdim
     exact_mod_cast hdim.symm
   rw [← hlen]
-  have hspan : Ideal.span (Set.range rs.get) = Ideal.ofList rs := by
-    apply congrArg Ideal.span
-    ext x
-    exact List.mem_iff_get.symm
-  have hz : Ideal.span (Set.range rs.get) = maximalIdeal B := hspan.trans hgen
-  have hreg : IsWeaklyRegular B (List.ofFn rs.get) := by simpa using hrs
-  refine ⟨rs.get, hz, hreg, ?_⟩
+  refine ⟨z, hz, hreg, ?_⟩
   rw [← hz]
-  exact ⟨isResolutionOf_koszul rs.get (isKoszulResolution_of_isWeaklyRegular rs.get hreg)⟩
+  exact ⟨isResolutionOf_koszul z (isKoszulResolution_of_isWeaklyRegular z hreg)⟩
 end SerrePositivity

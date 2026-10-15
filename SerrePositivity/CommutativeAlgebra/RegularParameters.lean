@@ -49,4 +49,12 @@ lemma exists_regular_generators (R : Type u) [CommRing R] [IsRegularLocalRing R]
   · simpa only [z, List.ofFn_get] using isWeaklyRegular_of_span_eq_maximalIdeal R z hz hd
   · simpa [Ideal.ofList] using hspan
 
+/-- Choose finitely indexed regular parameters, including the empty system in dimension zero. -/
+lemma exists_regular_generators_fin (R : Type u) [CommRing R] [IsRegularLocalRing R] :
+    ∃ (n : ℕ) (z : Fin n → R),
+      Ideal.span (Set.range z) = maximalIdeal R ∧
+      RingTheory.Sequence.IsWeaklyRegular R (List.ofFn z) ∧ ringKrullDim R = n := by
+  obtain ⟨rs, hrs, hgen, hdim⟩ := exists_regular_generators R
+  exact ⟨rs.length, rs.get, by simpa [Ideal.ofList] using hgen, by simpa using hrs, hdim⟩
+
 end SerrePositivity
