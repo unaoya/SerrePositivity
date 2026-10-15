@@ -5060,6 +5060,15 @@ G2-5b-b2準備1（2026-10-15）：`BoundedAboveCompletionEquivalence.lean`で、
 共通import閉包60モジュールにBS・CLMST・Inputs・Paperへの到達はない。
 この判定はtensorした標準単位を反転する証明に用いる準備であり、b2のtensor比較・整合性自体は未完了。
 
+G4実装（2026-10-15）：`WittGhostInjective.lean`で、p乗算が単射な任意の可換環Aについて
+`witt_ghostMap_injective_of_mul_prime_injective`を証明した。
+実Witt多項式のghost成分公式を用い、既に一致した低次係数の和を消去し、残るpⁿ倍を
+p正則性の冪によって約分する強帰納法で全係数の一致を得る。
+pの可逆性・標数零・Noether性・古典的／導来完備性・Aの非自明性は要求しない。
+対象2043ジョブと専用監査・正確な一般署名の確認が成功。新規定理はsorry非依存・標準3公理のみ。
+BS専用ファイルをimportせず、BSのghost一致から元一致への接続に使える。
+G4・G6の一般APIは供給済み。G2のtensor比較以降、G3・G7〜G10とD・KLの具体的入力は引き続き残る。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
