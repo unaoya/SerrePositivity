@@ -8,6 +8,9 @@ public import SerrePositivity.HomotopicalAlgebra.Pointed.Basic
 public import SerrePositivity.HomotopicalAlgebra.Pointed.SmashModel
 public import SerrePositivity.HomotopicalAlgebra.Pointed.CylinderCone
 public import SerrePositivity.HomotopicalAlgebra.Pointed.HomotopySuspension
+public import SerrePositivity.HomotopicalAlgebra.Pointed.CylinderConeMap
+public import SerrePositivity.HomotopicalAlgebra.Pointed.SuspensionNaturality
+public import SerrePositivity.HomotopicalAlgebra.Quillen.CofibrantComparison
 public import SerrePositivity.HomotopicalAlgebra.Transfer.Right
 public import SerrePositivity.HomotopicalAlgebra.Smith.SolutionSet
 public import SerrePositivity.HomotopicalAlgebra.Smith.Smallness
