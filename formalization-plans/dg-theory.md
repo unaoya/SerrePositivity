@@ -2404,3 +2404,18 @@ U10全受入は未完。三角形shift同型とPretriangulatedの草稿は未検
 その後、逆回転閉性、Pretriangulated、八面体、acyclic部分圏とVerdier商、
 D(D)の三角構造と局所化・一対象比較の三角性を順に完成させる。
 共有モデル圏系列への新しい不足要求はなく、担当外ファイルは変更していない。
+
+
+### 13.74 U10o1：八面体に用いる既存複体の合成cone比較
+
+`Complexes/ConeComposition.lean`は、θ=f≫gと、指定されたcone射χとの等式を明示的に保持し、
+Mathlibの`mappingConeCompHomotopyEquiv`をcone(g)とcone(χ)のホモトピー同値へ移送する。
+両射のcochain表示、順方向≫逆方向の恒等式、逆順の合成を恒等射へ収縮する次数−1の
+cochainと境界式、右包含・connectingとの二つの可換式を公開した。
+これにより、後続の加群構成で評価された射とMathlibの射を定義的等式と仮定する必要がない。
+
+Checks.ConeCompositionComplexes・StageSix・既存Spectra.StageTwoの同時ビルドは成功（2501 jobs）。
+Checksの直接実行で主要7宣言を監査し、標準公理のみ。累計1053宣言。
+これは既存複体側の比較であり、K(D)の八面体公理の完成ではない。
+次は全dg自然な主Hom要素から両射と収縮を構成し、この比較へ評価で接続する。
+三角形shift比較・Pretriangulatedの検証も継続中で、U10全受入は未完である。
