@@ -1309,3 +1309,19 @@ U10全受入は未完。次はkernel cell付加、可算列の準同型性と真
 受入入口 `Checks/KernelCells.lean` のビルドと直接実行は成功。
 主要28宣言の公理監査は標準公理のみ。累計527宣言。
 U10全受入は未完。次は可算列の余極限で全kernel cycleが消えることと、semifree filtrationを証明する。
+
+
+### 13.26 U10a5：可算cell列と有限段のkernel cycleの消去
+
+`Module/ResolutionSequence.lean` は自由disk被覆を第0段とし、kernel cell付加を反復する
+ℕ-indexedな図式をOver M内で構成する。各段の射の整合性と全射性を証明し、
+主加群圏の既存余極限から `moduleResolutionCandidateπ` を構成する。
+この射は次数ごと全射。標準包含と比較射の合成、隣接段の包含の一致も証明する。
+`moduleResolutionCandidate_killsStage` は有限段のkernel内のcycleの像が候補で境界となり、
+その原像も候補のkernel内にあることを証明する。
+
+受入入口 `Checks/ResolutionSequence.lean`・前段入口・StageSix・既存Spectra.StageTwoの
+同時ビルドは成功（3196 jobs）。直接実行の主要13宣言は標準公理のみ。累計540宣言。
+これは解像度の候補であり、準同型性とsemifree性の受入前には解像度とは呼ばない。
+次はfiltered余極限のcycleの有限段表示を証明し、全kernel cycleの消去へ接続する。
+U10全受入は未完。semifree filtration・Hom計算・三角構造等の残項目を保持する。
