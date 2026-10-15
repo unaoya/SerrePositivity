@@ -137,6 +137,8 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ClosedBoundaryClass,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ClosedObjectwise,
     `SerrePositivity.HomotopicalAlgebra.Localization.LocalBoundaryEquivalences,
+    `SerrePositivity.HomotopicalAlgebra.Localization.ModelExistence,
+    `SerrePositivity.HomotopicalAlgebra.Localization.LocalLeftProper,
     `SerrePositivity.HomotopicalAlgebra.Localization.AccessibleLocalReplacement,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroWeakEquivalence,
     `SerrePositivity.HomotopicalAlgebra.Under.ModelCategory,
