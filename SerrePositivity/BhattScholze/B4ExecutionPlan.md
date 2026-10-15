@@ -7085,3 +7085,29 @@ DeltaRootFiniteResidueSourceTor.leanで、一元根添加の任意有限δ深さ
 G3・G6・G7も共通計画上未完了として保持する。次はこの一般元族評価の標準有限源商直系と
 全評価環との具体的比較を、既存の一元φ/p用余極限APIを再利用・一般化して接続する。
 共通・CLMST・共有監査・利用先は編集していない。
+
+### 次工程の登録：任意一元評価入力の有限源商直系と全源Tor移送
+
+BS専用DeltaDivisionSourceEvaluationColimit.leanを新設する。一元添字・任意a:σ→Aの実評価βに対し、
+各有限深さグラフ商・標準遷移射・ModuleCatの逐次図式・Aを頂点とする標準余錐を構成し、
+実圏論的colimitとの標準比較と代表元公式を証明する。既存φ(y)版の証明を一般化して再利用する。
+既存DeltaDivisionSourceFiniteColimitの公開型は維持し、新一般版の特殊化へ整理して重複証明を除く。
+BS専用DeltaDivisionSourceEvaluationColimitTor.leanで、任意終域への通常射と標準PreservesColimit入力の下、
+全有限源商のTor消滅を全評価環Aへ移す。旧DeltaPDivisionSourceColimitTorもこの一般移送へ整理する。
+BS専用DeltaRootResidueSourceColimitTor.leanで、前工程の根添加の実残余有限Tor消滅を供給し、
+一般d・一元根添加の全評価環に対する実残余自由δ射の正次数Tor消滅をG7交換入力に相対的に証明する。
+G7自体の実装・受領、係数側Koszulとの比較、実導来完備化後CFFの完成とは数えない。
+共有・CLMST・共有監査は編集せず、全新公開宣言をBS専用監査へ追加する。
+
+## B4-6：任意一元評価入力の実有限源商直系と全評価環の標準比較（2026-10-15）
+
+DeltaDivisionSourceEvaluationColimit.leanで、任意a:σ→A（σ一元）の評価βに対する有限グラフ商を
+既存の任意有限座標商で定義し、実有限イデアルの単調性・評価核の上限表示を証明した。
+標準線形遷移射・ModuleCat逐次図式・実評価環Aを頂点とする標準余錐を構成し、
+そのIsColimit、実圏論的colimitとの標準同型、各有限商からの標準β射との両立性を証明した。
+代数構造は既存deltaDivisionSourceEvaluationAlgebraを再利用し、新たな同等定義を増やしていない。
+旧DeltaDivisionSourceFiniteColimitの14公開宣言の型を保ち、一般版のφ(y)特殊化へ整理して重複証明を除いた。
+15新公開宣言および既存特殊化3775ジョブ、B4全import依存4290ジョブ成功（既存3種の警告のみ）。
+監査が別途の再ビルド中の一時的olean不在に当たったため、全関連ビルド完了後に再実行し、
+B4全体pure監査1880報告成功、標準3公理のみ。全新公開宣言を監査済み。新sorry・公理・引用なし。
+この成果は標準colimitの具体的普遍性であり、Torとcolimit交換のG7や一般B4の完成とは区別する。
