@@ -3165,3 +3165,23 @@ Checks.BalancedTensorYonedaのビルドは成功（1834 jobs、終了コード0�
 次は全dg自然性、左representableに関する反対側の同型、bimodule合成に残る全次数作用、
 一対象Aの既存cochainTensorとの比較を揃える。その後U11eの随伴とcoherenceへ進む。
 U12〜U17・D4mも未完。共有ルート・共有一般論・並行作業ファイルは変更していない。
+
+
+### 17.21 U11d2：左representable tensorの評価同型
+
+`Module/LeftRepresentable.lean`は二重opposite比較と既存右representableから
+共変representable（値D(z,x)）を構成し、任意次数の作用を符号(-1)^(pq)付きで計算した。
+`Tensor/LeftYoneda.lean`は右加群のtensor作用からbalanced族を構成する。
+三重tensorの両辺の指数は(a+p)b+apとa(p+b)+pbで一致し、既存moduleAction_representableから
+作用の結合を得る。その降下評価・斉次成分式・単位Hom挿入・両逆法則・leftYonedaIsoを公開した。
+成分式の右作用には(-1)^(ap)が残り、無符号の評価へ変更していない。
+`Complexes/AssociatorReindex.lean`は両方の中間和次数を指定する成分補題。
+単位次数でp+0をpに合わせる際の依存型transportを、普遍的な再添字付けで処理する。
+
+Checks.BalancedTensorLeftYonedaのビルドは成功（1837 jobs、終了コード0、警告なし）。
+直接実行も終了コード0、主要12宣言の公理はpropext・Classical.choice・Quot.soundのみ。
+監査累計1319宣言。任意A・独立対象宇宙・Small.{u} D、一対象ZMod 2、次数1/-1の符号を検査した。
+担当差分のgit diff --checkも成功。
+U11d全受入はまだ未完。両評価同型の全dg自然性、bimodule合成に残る作用、
+一対象Aと既存cochainTensorとの比較が残る。次は自然性とパラメータ付きtensor作用を接続する。
+U11eとU12〜U17・D4mも継続対象。共有ルート・共有一般論・並行作業ファイルは変更していない。
