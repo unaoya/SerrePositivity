@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KTheory.Adams.WeightDecomposition
+public import SerrePositivity.KTheory.Adams.WeightOperators
 
 /-! # Products add Adams weights, and distinct weights cannot coexist -/
 

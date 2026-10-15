@@ -5013,7 +5013,7 @@ R12–R20 のコードをコミットした後、以下をすべて確認した�
 | R37 | 短完全列の錐と第三項の支持付き比較同型を共用 | 完了：比較同型を2箇所で共用。ConeAdditivityまで2723 jobs、専用3宣言の公理監査が成功。ログ `/tmp/adams-r37-current-{build,audit}.log` |
 | R38a | 低次・高次混合層の二回合成の同変性の重複を除去 | 完了：重複するprivate補題をCommSq.horiz_compに置換。両包含モジュール2823 jobs、公開4宣言の公理監査・全依存ゲートが成功。ログ `/tmp/adams-r38a-{build,audit}.log` |
 | R38b | 零因子のテンソルに mathlib の Unique インスタンスを利用 | 完了：長さ理論3箇所の零テンソルをinferInstanceから導出し、旧公開型を維持。3対象2814 jobs、専用3宣言の公理監査が成功。ログ `/tmp/adams-r38b-{build,audit}.log` |
-| R39a | 重みの積の基本演算を重み分解・半局所化から分離 | 差分作成済・監査の明示importと依存ゲートを追加して検証する |
+| R39a | 重みの積の基本演算を重み分解・半局所化から分離 | 完了：WeightProductの証明本文を保ち、利用先と既存監査でWeightDecompositionを明示import。CupVanishingまで3345 jobs、基本5宣言・既存射影と重み分解の公理監査、新しい依存ゲートが成功。ログ `/tmp/adams-r39a-{build,basic-audit,projectors-audit}.log` |
 | R39b | K₀・G₀ の係数拡大による右完全性の共通化 | 完了：CoefficientExactnessの一般補題を3箇所で共用し、平坦性を追加しない。K₀係数局所化まで3246 jobs、専用4宣言・既存局所化の公理監査、係数基盤の独立性を含む全依存ゲートが成功。ログ `/tmp/adams-r39b-{build,audit,localization-audit}.log` |
 | R40a | 一般テンソル写像の13補題を共通の線形性基盤へ集約 | 未着手：有限和はmathlibを利用し、三乗の射影から対合への依存を除く |
 | R40b | 空の台の係数付きK₀の零性を基本APIへ移動 | 未着手：Adams側の旧名を維持し、零テンソルの既存インスタンスを利用する |

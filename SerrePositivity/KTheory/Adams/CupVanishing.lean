@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.KTheory.Adams.WeightProduct
+public import SerrePositivity.KTheory.Adams.WeightDecomposition
 
 /-! # Supported cup-product vanishing from the sum of height bounds -/
 

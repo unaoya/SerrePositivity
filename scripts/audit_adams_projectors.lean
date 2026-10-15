@@ -1,4 +1,5 @@
 import SerrePositivity.KTheory.Adams.WeightProduct
+import SerrePositivity.KTheory.Adams.WeightDecomposition
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.Adams.lagrange_factor
