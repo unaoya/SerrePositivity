@@ -3673,3 +3673,35 @@ Checks.HomRightContra・Checks.EnrichedHomSource・Checks.EnrichedHomTarget・Ch
 U11e全受入は未完。次はこの反変Hom写像とleftHomMapを用い、N変数の転置自然性を証明する。
 左加群変数の余極限保存、Fubini、bimodule合成の結合同型・全変数自然性・三角/五角、
 U12〜U17・D4mも継続対象。共有一般論への追加要求はなく、担当外ファイルを変更していない。
+
+
+### 17.40 U11e9：左加群変数の全Hom自然性と三変数の統合検証（2026-10-16）
+
+`Tensor/EnrichedHomLeft.lean`はenrichedTensorHomIso_left_naturalityを証明した。
+始域はleftModuleHom(N,N')で、左辺はleftHomMapによるtensorの作用から反変Homを経て転置し、
+右辺は§17.39のhomRightContraHomMapを使って転置後の右Hom加群を後合成する。
+両辺はHom_A(M⊗_D N',T)からmoduleHom_D(M,homRightModule N T)へのHom複体を値とするchain mapとして等しい。
+左辺の前合成の(-1)^(pq)と、tensorのM次数rを越える(-1)^(pr)が、
+右辺の反変右Hom作用の(-1)^(p(r+q))に一致することを全整数次数で検証した。
+依存する中間次数を明示し、cochainの元の型を通常のHomogeneousにそろえてから評価式を使う。
+
+Checks.EnrichedHomNaturalityはM/N/T三つの自然性を同時importし、任意可換環・独立対象宇宙と
+一対象ZMod 2でN側のchain mapの等式を検査する。同入口・Checks.HomRightContra・
+Checks.EnrichedTensorHom・Checks.StageSeven・既存Spectra.StageTwoの同時ビルドは成功
+（2685 jobs、終了コード0、警告なし）。直接実行の3宣言はすべて標準公理のみ。
+M/Tの2宣言は再監査であり、新規はN側の1宣言。監査累計1554宣言。
+担当Leanのsorry/admit/新規axiomは0件。文書検査は22 Markdown・311 exposition参照、失敗0件。
+担当差分のgit diff --checkも成功。
+
+これで主Hom複体のtensor–Hom同型、閉零随伴との一致、Kパラメータ自然性、
+M/N/Tそれぞれの全Hom自然性が揃った。U11e全受入は引き続き未完である。
+残るのはN変数の余極限保存、Fubini、bimodule合成の結合同型・全変数自然性・三角/五角。
+
+次の作業は、符号付き交換から
+`BalancedTensor.obj A D M N ≅ BalancedTensor.obj A Dᵒᵖ N.toRightOpposite M.toFunctor`
+を構成すること。生成元m^r⊗n^sは(-1)^(rs)を伴ってn⊗mへ送る。
+右側の左加群はM.toFunctorそのものであり、不要な三重oppositeの表示へ移さない。
+順逆は各々のbalanced族の降下で定義し、両逆とNに関する自然性を包含/元で検証する。
+次に既存leftModuleToRightOppositeの閉零圏の同値を確認し、右側で証明済みの
+rightTensorFunctorの余極限保存へ接続する。この構成をFubiniでのtensor順序の比較にも再利用する。
+U12〜U17・D4mは未完。共有一般論への追加要求はなく、担当外ファイルを変更していない。
