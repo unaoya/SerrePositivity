@@ -4547,3 +4547,31 @@ raw標準商射qと基底射jのq∘α=j∘β、および既存の通常pushout�
 対象3821ジョブ・pure B4監査成功。依存は標準3公理のみ。
 この成果はG7入力に相対的であり、G7の受領・証明済みや無条件全源Tor消滅とは数えない。
 直前の全体4968ジョブは成功している。一般B4とCFFは未完成。
+
+### 次工程の登録：実通常テンソルのp正則性と旧ねじれ商への標準比較
+
+BS専用`DeltaPDivisionSourceTensorRegular.lean`で、一元[Unique σ]の実通常テンソル積
+A⊗[P]Lについて、既存raw包のp正則性を前工程の標準環同型に沿って移す。
+Aのp正則性・yのA/p正則性・単元δp・自由δ環ghost単射を明示する。
+既存deltaPDivisionRawTorsionEquivと合成し、実通常テンソルから
+既存DeltaDivisionTorsionQuotientへの具体的な環同型を作り、純テンソルと元の基底射の像を証明する。
+これを実PDCompletionH0の入力比較に利用する。通常テンソルのp正則性を全源Tor消滅やCFFと
+混同せず、G7や原典の導来δpushoutとの比較を解消したとは数えない。
+
+## B4-6：実通常テンソル積とraw δ包の標準環同型（2026-10-15）
+
+`DeltaPDivisionSourceTensor.lean`で、βで作用するAとα:x↦p zで作用するLの
+通常テンソル積A⊗[P]Lと、既存raw δ除算包の環同型を構成した。
+源Pと終域Lのunderlying型が同じでも、非標準Algebra P Lと対応するModuleを明示している。
+raw包の源P作用はj∘βで与え、商射qのP代数射としての両立はq∘α=j∘βを使った。
+既存TensorProduct.liftとraw包の通常pushout普遍性から両方向の実環射を作り、
+両因子・raw標準商射上で逆写像となることを証明した。
+純テンソルa⊗bの像はj(a)q(b)、逆射のraw標準商元[q(b)]の像は1⊗bとなる。
+任意σ:Type u（元族はfun _↦φ(y)）を許し、Unique σ・p正則性・完備性・G7は不要。
+
+13公開宣言の対象3821ジョブ成功。新規13宣言だけを読み込むpure監査も成功し、
+依存は標準3公理のみ。新sorry・公理・外部引用なし。
+B4全体監査は共有LocalizationTowerComparison、PerfectPrismQuotientPerfectoidization、
+BoundedAboveTensorModelsの.olean欠落で一時停止した記録がある。
+全体ビルド・共有依存の再生成は同じ実行を継続中であり、新規宣言の監査成功と区別する。
+通常テンソルの同型を、実導来テンソルの離散性・原典の導来δpushout比較・CFFと見なさない。
