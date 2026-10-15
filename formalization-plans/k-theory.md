@@ -6295,8 +6295,8 @@ IDは計画上の単位であり、1行を1コミットや1日とみなさない
 | R1 | Smith/Smallness。小さい生成族の共通正則cardinalとSOA | R0、既存SmallObject | 局所可呈示性からIと後で構成するJのSOAを導く。対象ごとのcardinalの存在だけで止めない |
 | R2 | Smith/GeneratingTrivialCofibrations。solution-setをcof(I)∩W内のJへ改良 | R0,R1 | Jの小ささ、J⊆cof(I)∩W、必要なsquare分解を構成。Jを入力として要求しない |
 | R3 | Smith/Recognition。Smith型の認識定理 | R2、Transfer/Recognition | Wの2-out-of-3/retract閉性、I.rlp⊆W、cof(I)∩Wのpushout/超限合成閉性からModelCategory Cを構成。cof=I.rlp.llp、fib=(cof∩W).rlp、生成性と両関手的分解 |
-| A0 | Smith/AccessibleFactorization。生成分解・Q/Rのaccessibility | R1、既存Replacement | 分解のZ/左右因子とQ/Rが、十分大きい共通cardinalでaccessible。関手的という性質と混同しない |
-| A1 | Smith/WeakEquivalencesAccessible。元モデルWとArrow C | A0、可到達圏の必要な閉操作 | combinatorialモデルの元のWがaccessibly embedded accessibleであることを証明。任意のaccessible関手のfull imageがaccessibleとは仮定しない |
+| A0（完了、§166） | Smith/AccessibleModelFactorizations。生成分解・Q/Rのaccessibility | R1、既存Replacement | 分解のZ/左右因子とQ/Rが、十分大きい共通cardinalでaccessible。関手的という性質と混同しない |
+| A1（完了、§166） | Smith/WeakEquivalencesAccessible。元モデルWとArrow C | A0、可到達圏の必要な閉操作 | combinatorialモデルの元のWがaccessibly embedded accessibleであることを証明。任意のaccessible関手のfull imageがaccessibleとは仮定しない |
 | F0 | HomotopyFunctionComplex/Reedy。latching/matchingとReedy分解 | A0、Mathlib ReedyStructure | まずΔとΔopに必要な一般的次数帰納を実装。Reedy cof/fibとobjectwise Wのモデル公理、関手的resolutionを証明 |
 | F1 | HomotopyFunctionComplex/Basic。cosimplicial resolutionからRMap | F0、Q/R | 任意のモデル源CでRMap:Cᵒᵖ⥤C⥤SSetを構成。両変数の弱同値不変性とfibrancy、ordinary Ho(C)の射とのπ₀比較 |
 | F2 | HomotopyFunctionComplex/Comparison | F1 | resolution/置換の選択を自然な弱同値のzigzagで比較。単体的モデル圏の場合は実際のMap(QX,RY)と比較。厳密な同一視を要求しない |
@@ -6766,3 +6766,69 @@ A1の証明ファイルは共有作業木で`1ed4144`に収録され、共有入
 
 新規sorry・引用axiomはない。他チャットの変更を保持し、その変更を含む計画ファイル
 全体を一括してコミットしない。
+
+
+## 166. A0・A1の完成：元の弱同値のaccessibilityと共通基数（2026-10-15）
+
+**依頼されたA0・A1全体を完了した。** §164・§165の未完了記録は当時の状態であり、
+以下の実装と受入検証で残項目を解消した。一般のBousfield局所化の方針を維持し、
+∞圏や新たな存在定理の引用axiomは導入していない。
+
+### 166.1 A1に必要な一般論
+
+| 段階 | 実装・証明内容 |
+| --- | --- |
+| 可呈示性の反映 | `Smith/PresentableFullInclusion`。accessibleなfully faithful関手は像の対象のκ-可呈示性を反映 |
+| 可呈示弱反射 | `Smith/PresentableWeakReflection`。可呈示性を保つ弱反射から、部分圏内の可呈示対象によるfilteredなcanonical表示と小さい生成族を構成 |
+| 実際の生成弱反射 | `Smith/GeneratedWeakReflection`。生成因子分解の右因子とunitを使い、右クラスへのsquareの延長を実際のliftから構成 |
+| 生成右クラス | `Smith/AccessibleRightClass`。局所可呈示性と小さいIだけからI.rlpの部分圏と包含のaccessibilityを証明 |
+| 局所被覆による生成族 | `Smith/LocalPresentableCover`。P(X)のもとで可呈示なA→XがP内の可呈示なB→Xを通して分解する、という局所条件からPのaccessibilityを導出。大域的な弱反射や選択の関手性を要求しない |
+| 一段の近似 | `Smith/WeakReflectionApproximation`。Fと弱反射が大きい基数で可呈示性を保つとき、A→Xを可呈示なB→Xへ拡大し、F(A→B)を弱反射のunit経由で分解 |
+| 可呈示な超限反復 | `Smith/PresentableOverIteration`。固定対象への射を保つOver圏で、大きい正則νより短い反復に必要なcolimitを構成し、ν-可呈示性を維持 |
+| colimitでの持ち上げ | `Smith/LiftingColimitRefinement`。各段階から後の段階への写像がI.rlpの対象を経由すれば、十分filteredなcolimitはI.rlpに属する。各段階自体の所属は要求しない |
+| 逆像の局所被覆 | `Smith/RightClassInverseImageCover`。短い正則μと大きい正則νで近似を反復し、Fの像がI.rlpに属するν-可呈示な被覆対象を構成 |
+| 証明済みの閉操作 | `Smith/AccessibleRightClassInverseImage`。局所可呈示な圏からのaccessibleなFによる、小さい生成右クラスの逆像のaccessibilityと包含のaccessibility。uniformizationで基数の条件も導出 |
+
+一般論のコミット：`8630ddc`、`795fc54`、`5ce8313`。超限反復・逆像・最終適用は
+`ffa6d83`。任意のaccessible関手のfull imageがaccessibleであるという仮定は、
+どの段階にも置いていない。
+
+### 166.2 元のWとA0・A1の最終入口
+
+`Smith/WeakEquivalencesAccessible.lean`の`exists_accessible_weakEquivalences I J`は、
+第二の生成モデル分解の右因子に166.1の逆像定理を適用し、元のモデル構造の
+弱同値Wのfull subcategoryがaccessibleで、その包含もaccessibleであることを証明する。
+元のWと右因子のtrivial fibration判定の同値を使用しており、別の候補弱同値クラスに
+置き換えてはいない。
+
+`exists_accessible_model_and_weakEquivalences I J`の最終入力は、Mathlibのモデル圏、
+局所可呈示性、既存の`CofibrantlyGenerated I J`だけである。十分大きい共通の正則κと
+指定した分解データを構成し、次を同時に得る。
+
+- 両モデル因子分解のZ、左右四つのArrow関手のκ-accessibility。
+- それらから実際に制限したcofibrant/fibrant replacement Q/Rのκ-accessibility。
+- 元のWのfull subcategoryのκ-accessibilityと、その包含のκ-accessibility。
+- Q/Rの比較射のtrivial fibration/trivial cofibration性、対象のcofibrancy/fibrancy。
+
+`weakEquivalences_solutionSetCondition I J`は、この結果を既存R0のsolution-set条件へ
+接続する。対象・射・小対象論法の宇宙は独立である。任意に選択した関手的分解に
+accessibilityを付与するものではなく、証明済みの指定データを使う。
+
+### 166.3 最終受入検証
+
+すべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`（1499 jobs）。
+- `check_weak_equivalences_accessible`：独立した宇宙での逆像定理、最終入力だけから
+  A0/A1を共通基数で使う利用例、元のWのaccessibleな部分圏・包含、R0への接続。
+  最終五モジュール全21宣言の標準公理監査も成功。
+- `check_accessible_model_factorizations`（全55宣言）、`check_presentable_weak_reflection`
+  （全44宣言）、`check_accessible_right_class`（全4宣言）、
+  `check_local_presentable_cover`（全22宣言）。
+- `audit_homotopical_foundations`：829宣言・60モジュール、標準公理のみ。
+- `check_smith_existence`、`check_homotopical_foundations`、`check_spectra_stage2`。
+- `git diff --check`。
+
+新規sorry・引用axiomはない。共有作業木の他チャットの変更を保持した。
+A0/A1には残項目はなく、次の実装ゲートは§159.4のF0〜F4である。この依頼では
+F系列の実装には入っていない。
