@@ -9,9 +9,9 @@ public import SerrePositivity.HomotopicalAlgebra.Generated.Replacement
 This constructs the candidate with n-simplices `Q(X)[n] ⟶ R(Y)`.
 Chosen source factorizations are explicit inputs. `HornTensor` proves Kan
 fibrancy, and `SourceInvariance` proves invariance in both variables using an
-explicit simplicial value model. Comparison with ordinary localization remains
-separate; this conditional construction is not the arbitrary-model-source
-F1 theorem.
+explicit simplicial value model. `PiZero` proves the natural comparison of
+components with ordinary localization morphisms. This conditional construction
+is not the arbitrary-model-source F1 theorem.
 -/
 
 @[expose] public section

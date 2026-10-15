@@ -7731,3 +7731,83 @@ F1はπ₀とordinary Ho(C)の射との比較、および任意モデル源に�
 通常resolutionに関する今回の不変性を、明示的な関手的分解を入力するchosen関手だけへ狭めない。
 F2の選択の自然な弱同値zigzagと実際の単体的Mapとの比較、F3の共通基数、F4のhocolim/holim公式を
 完成させ、その後にL0〜L5を§159.2の全条件で接続する。他チャットの変更は保持した。
+
+
+## 179. F1進捗：resolution Homのπ₀とordinary Ho(C)の射の自然な同値（2026-10-15）
+
+F0〜F4を経てL0〜L5まで完成させる依頼を維持している。§178の次の残項目であった
+π₀比較を、通常のcosimplicial resolutionと既存chosen二変数関手の両方について証明した。
+任意モデル源での最終の厳密な関手の入口、F2〜F4とL0〜L5は未完了である。
+
+### 179.1 実際の区間境界とgood cylinder
+
+`FiniteTensorBinaryCoproduct`は、有限nonsingular単体集合の実際の二項余積表示を、Cの
+二項余積表示へ送ることを証明する。余錐・desc・一意性を既存のHom表示から構成し、
+値圏Cには有限余極限だけを要求する。
+
+`BoundaryOne`は、標準区間の二つの頂点faceの交差が空、和が実際の境界∂Δ[1]であることを
+固定Mathlibの`Subcomplex.BicartSq`として証明する。そのpushoutと空の初期性、
+各頂点faceの標準0単体との同型を用い、境界の二つの実際の射
+`boundary.ι 1`・`boundary.ι 0`からなる二項余積余錐の普遍性を構成する。
+
+`ResolutionCylinder`は、有限tensorでこの余積を移し、次の対応を証明する。
+
+- 境界tensorの始域はA[0]⨿A[0]と実際に同型で、境界tensor包含は
+  `coprod.desc (A.map δ₁) (A.map δ₀)`に一致する。
+- homotopically constantなAから、I=A[1]、i₀=A.map δ₁、i₁=A.map δ₀、
+  π=A.map σ₀というMathlibの実際の`Cylinder A[0]`を構成する。
+- AのReedy cofibrancyと既証明の境界cofibration性から、このcylinderがgoodであることを証明。
+
+無限余極限・単体的モデル源・新しいcylinder存在の引用は追加していない。
+
+### 179.2 連結成分と通常のホモトピー類
+
+`PiZero.edgeLeftHomotopy`は、Hom(A,Y)の実際のedgeを、179.1のcylinderに関する左ホモトピーへ送る。
+`piZeroToLeftHomotopyClass`は0単体fをその通常の左ホモトピー類へ送る、実際のπ₀からの写像である。
+
+A[0]がcofibrant、Yがfibrant、AがReedy cofibrantなら、この写像は全単射となる。
+全射性は0単体による表示から従う。単射性では、通常のホモトピー類の等式からMathlibの
+`LeftHomotopyRel.leftHomotopy`により固定したgood cylinder上のホモトピーを得て、
+Hom(A,Y)の実際のedgeとして戻す。このため、抽象的な集合間の非標準の同値を選ぶのではなく、
+0単体が定める写像そのものが全単射であることを証明している。
+
+### 179.3 ordinary localizationへの同値と両変数の自然性
+
+`piZeroLocalizationEquiv`は、任意のordinary localization L:C→HとMathlibのfundamental lemmaを使い、
+π₀ Hom(A,Y)とHom_H(L(A[0]),L(Y))の同値を与える。0単体fの像は実際のL.map fである。
+
+`resolutionPiZeroLocalizationEquiv`は、任意の通常の`CofibrantResolution simplex X`について、
+augmentation q[0]→XのLによる像の逆同型で移し、π₀ Hom(q,Y)≃Hom_H(LX,LY)を構成する。
+源Cの関手的分解や単体集合のモデル構造は不要。特にL=(weakEquivalences C).Qへ適用できる。
+
+`chosenResolutionHomPiZeroEquiv`は、既存のchosen関手について任意X,Yの値のπ₀を
+置換前のX,Yのordinary localizationの射と同一視する。0単体h:QX[0]→RYの像は、
+
+`(L(qX[0]→X))⁻¹ ≫ L(h) ≫ (L(Y→RY))⁻¹`
+
+である。augmentationとfibrant comparisonのLでの像を自然同型として構成し、
+この同値が源・標的それぞれの任意の射について自然であることを証明した。
+弱同値だけに自然性を制限しない。Hの対象・射の宇宙は源のものから独立で、
+宇宙の一致を新しく仮定していない。
+
+π₀比較の証明はHT-KQにも他の引用axiomにも依存しない。有限tensor・cylinder・比較・
+共有入口・利用例のコミット：`c8f9445`。
+
+### 179.4 検証と次の作業
+
+以下は成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`：2321 jobs。
+- `check_resolution_hom_pi_zero`：新規85宣言・4モジュール、標準公理のみ。
+  任意モデル源の通常resolutionと実際のQ、good cylinder、独立した宇宙のordinary localization、
+  chosen関手のπ₀同値、源・標的の任意の写像を同時に変える自然性の利用例を検証した。
+- `audit_homotopical_foundations`：2616宣言・163モジュール、標準公理のみ。
+- `check_resolution_hom_source`（42宣言・3モジュール）、`check_resolution_hom_target`
+  （7宣言・2モジュール）、`check_resolution_hom_kan`（18宣言・2モジュール）。
+- `check_homotopical_foundations`、`check_spectra_stage2`、`git diff --check`。
+
+次はresolution・置換の選択を自然な弱同値zigzagで比較するF2を進める。
+通常resolutionについての今回の結果を、関手的分解の明示入力を要求するchosen関手だけへ
+狭めない。任意モデル源での最終の厳密な関手の入口は引き続き別の残項目として管理する。
+単体的モデル圏での実際のMapとの比較、F3の共通基数、F4のhocolim/holim比較、
+その後のL0〜L5を省略せず実装する。他チャットの変更は保持し、計画全体を一括stageしない。

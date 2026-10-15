@@ -778,3 +778,19 @@ fibrant Brown分解から標的変数の不変性を証明する。
 標準公理のみで監査成功。上位接続71宣言の直接引用は既存HT-KQ一件のみ。
 コミットは`313028c`・`b70180c`・`29a00e7`、詳細は計画§178。
 F1のπ₀比較・任意源での最終関手、F2〜F4は残る。依頼範囲はFを経てL0〜L5の完成までに拡張した。
+
+
+`FiniteTensorBinaryCoproduct`と`BoundaryOne`は、実際の区間境界を頂点二つの余積として
+Cへ移す。`ResolutionCylinder`は次数0・1からMathlibの実際のgood cylinderを構成する。
+`PiZero`は、Homのedgeとこのcylinder上のホモトピーを比較し、0単体が定める写像
+π₀ Hom(A,Y)→LeftHomotopyClass(A[0],Y)の全単射性を証明する。
+
+任意のordinary localization L:C→Hについて、通常resolution q→Xとfibrant Yから
+π₀ Hom(q,Y)≃Hom_H(LX,LY)を得る。既存chosen二変数関手についても、置換前のX,Yの射との
+同値を構成し、源・標的の任意の射について自然性を証明する。
+この比較には単体集合モデルやHT-KQ、通常resolutionの関手的分解は不要である。
+Hの対象・射の宇宙は独立に扱う。
+
+共有入口2321 jobs、新規85宣言・4モジュール、共有2616宣言・163モジュールの
+標準公理監査と回帰検証が成功。実装は`c8f9445`、詳細は計画§179。
+F1の任意源での最終の厳密な関手の入口、F2〜F4、L0〜L5は引き続き未完了である。
