@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.PerfectComplex.Tensor
+public import SerrePositivity.HomologicalAlgebra.CochainTensorBounds
 public import SerrePositivity.HomologicalAlgebra.FiniteSupportCoproduct
 
 /-! # Bounded finite projective tensor complexes -/
@@ -10,18 +11,6 @@ universe u
 namespace SerrePositivity
 open CategoryTheory Limits MonoidalCategory
 variable {R : Type u} [CommRing R]
-
-/-- A tensor summand is zero when its left factor is zero. -/
-lemma cochainTensorSummand_isZero_left (P Q : CochainComplex (ModuleCat.{u} R) ℤ) (n : ℤ)
-    (ij : {ij : ℤ × ℤ // ij.1 + ij.2 = n}) (h : IsZero (P.X ij.val.1)) :
-    IsZero (cochainTensorSummand P Q n ij) := by
-  exact (tensorRight (Q.X ij.val.2)).map_isZero h
-
-/-- A tensor summand is zero when its right factor is zero. -/
-lemma cochainTensorSummand_isZero_right (P Q : CochainComplex (ModuleCat.{u} R) ℤ) (n : ℤ)
-    (ij : {ij : ℤ × ℤ // ij.1 + ij.2 = n}) (h : IsZero (Q.X ij.val.2)) :
-    IsZero (cochainTensorSummand P Q n ij) := by
-  exact (tensorLeft (P.X ij.val.1)).map_isZero h
 
 /-- Projectivity of the factors implies projectivity of every total tensor degree. -/
 lemma cochainTensor_projective_X (P Q : CochainComplex (ModuleCat.{u} R) ℤ)
@@ -100,20 +89,11 @@ lemma cochainTensor_isZero_X_of_bounds (P Q : CochainComplex (ModuleCat.{u} R) �
     (a b c d : ℤ) (hp : ∀ i, i < a ∨ b < i → IsZero (P.X i))
     (hq : ∀ j, j < c ∨ d < j → IsZero (Q.X j)) (n : ℤ)
     (hn : n < a + c ∨ b + d < n) : IsZero ((cochainTensor P Q).X n) := by
-  have hs : ∀ ij, IsZero (cochainTensorSummand P Q n ij) := by
-    intro ij
-    by_cases hi : ij.val.1 < a ∨ b < ij.val.1
-    · exact cochainTensorSummand_isZero_left P Q n ij (hp _ hi)
-    · apply cochainTensorSummand_isZero_right P Q n ij
-      apply hq
-      have := ij.property
-      omega
-  have hz : IsZero (∐ cochainTensorSummand P Q n : ModuleCat.{u} R) := by
-    rw [IsZero.iff_id_eq_zero]
-    apply Sigma.hom_ext
-    intro ij
-    exact (hs ij).eq_of_src _ _
-  exact hz.of_iso (cochainTensorXIso P Q n).symm
+  apply cochainTensor_isZero_X_of_summands
+  intro i j hij
+  by_cases hi : i < a ∨ b < i
+  · exact Or.inl (hp i hi)
+  · exact Or.inr (hq j (by omega))
 
 /-- The tensor product of strictly perfect complexes is strictly perfect. -/
 lemma strictlyPerfectComplex_cochainTensor (P Q : CochainComplex (ModuleCat.{u} R) ℤ)
@@ -123,13 +103,9 @@ lemma strictlyPerfectComplex_cochainTensor (P Q : CochainComplex (ModuleCat.{u} 
   obtain ⟨c, d, hc, hd⟩ := hq.1
   have hP : ∀ i, i < a ∨ b < i → IsZero (P.X i) := fun i hi => hi.elim
     (fun h => P.isZero_of_isStrictlyGE a i h) (fun h => P.isZero_of_isStrictlyLE b i h)
-  have hQ : ∀ j, j < c ∨ d < j → IsZero (Q.X j) := fun j hj => hj.elim
-    (fun h => Q.isZero_of_isStrictlyGE c j h) (fun h => Q.isZero_of_isStrictlyLE d j h)
   refine ⟨⟨a + c, b + d, ?_, ?_⟩, fun n => ?_⟩
-  · exact ((cochainTensor P Q).isStrictlyGE_iff (a + c)).mpr
-      (fun n hn => cochainTensor_isZero_X_of_bounds P Q a b c d hP hQ n (Or.inl hn))
-  · exact ((cochainTensor P Q).isStrictlyLE_iff (b + d)).mpr
-      (fun n hn => cochainTensor_isZero_X_of_bounds P Q a b c d hP hQ n (Or.inr hn))
+  · exact cochainTensor_isStrictlyGE P Q a c
+  · exact cochainTensor_isStrictlyLE P Q b d
   · exact ⟨cochainTensor_finite_X P Q (fun i => (hp.2 i).1) (fun j => (hq.2 j).1) a b hP n,
       cochainTensor_projective_X P Q (fun i => (hp.2 i).2) (fun j => (hq.2 j).2) n⟩
 end SerrePositivity

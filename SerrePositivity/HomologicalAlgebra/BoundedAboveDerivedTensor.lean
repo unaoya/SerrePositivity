@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.HomologicalAlgebra.CochainTensorBounds
 public import SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedModels
 public import SerrePositivity.HomologicalAlgebra.BoundedAboveTensorFunctor
 
@@ -12,25 +13,6 @@ namespace SerrePositivity
 open CategoryTheory CategoryTheory.Limits MonoidalCategory
 attribute [local instance] HasDerivedCategory.standard
 variable {R : Type u} [CommRing R]
-
-/-- Upper bounds add under tensor totalization, without any lower bounds. -/
-lemma cochainTensor_isStrictlyLE
-    (P Q : CochainComplex (ModuleCat.{u} R) ℤ) (a b : ℤ)
-    [P.IsStrictlyLE a] [Q.IsStrictlyLE b] : (cochainTensor P Q).IsStrictlyLE (a + b) := by
-  rw [CochainComplex.isStrictlyLE_iff]
-  intro n hn
-  have hs (ij : {ij : ℤ × ℤ // ij.1 + ij.2 = n}) :
-      IsZero (cochainTensorSummand P Q n ij) := by
-    by_cases hi : a < ij.val.1
-    · exact cochainTensorSummand_isZero_left P Q n ij (P.isZero_of_isStrictlyLE a _ hi)
-    · exact cochainTensorSummand_isZero_right P Q n ij
-        (Q.isZero_of_isStrictlyLE b _ (by have := ij.property; omega))
-  have hz : IsZero (∐ cochainTensorSummand P Q n : ModuleCat.{u} R) := by
-    rw [IsZero.iff_id_eq_zero]
-    apply Sigma.hom_ext
-    intro ij
-    exact (hs ij).eq_of_src _ _
-  exact hz.of_iso (cochainTensorXIso P Q n).symm
 
 /-- Derived tensor is a bifunctor on Mathlib's bounded-above derived category.
 Its values stay bounded above; arbitrary negative tails are allowed. -/
