@@ -1190,3 +1190,16 @@ fibrant対象は元のfibrantかつS局所と同値であり、既存の`IsLocal
 A0から局所モデルのaccessibleな実際の両モデル分解も出力する。共有入口2519 jobs、
 4199宣言・333モジュールの標準公理監査、新規31宣言・2モジュールの監査とL2/L3/判定の回帰検証が成功。
 実装コミット`129ab547`。次はL5。その後E0、S0〜S3。F1の任意モデル源の最終関手も未完了。
+
+
+L5進捗は計画§210（2026-10-16）。`ReplacementData`・`Replacement`は実際のaccessibleなL_Sと
+cofibrationかつ局所同値の単位を出力し、W_S=L_S⁻¹(W_C)、局所対象の単位による判定、
+二つの冪等化写像の元の弱同値性を証明する。`ReplacementHomotopy`は通常のHo(C)での
+単位による射の延長の全単射と二つの冪等化写像の一致を証明する。
+`ReplacementComparison`は実際の合成による自然な弱同値cospanとHo(C)への関手の自然同型、
+S⊆Tに対する両順序の合成置換の比較を与える。`ModelComparison`は恒等left Quillen関手、
+生成表示による三クラスの独立性、元のRMapの選択変更を扱う。
+`Fibrations`は新モデルでの実際のfibrant replacementへの接続と局所対象間のfibration判定を証明。
+共有入口2525 jobs、4258宣言・339モジュール、新規60宣言・6モジュールの標準公理監査が成功。
+コミット`983c00a9`・`c0d2d94a`。L5の任意のQuillen随伴に対する普遍性と、局所化モデルを
+源とする再局所化の比較は未完了。L5の完了とはせず、続いてE0、S0〜S3、F1の残項目へ進む。
