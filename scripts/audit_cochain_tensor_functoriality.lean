@@ -1,4 +1,5 @@
 import SerrePositivity.HomologicalAlgebra.CochainTensorCone
+import SerrePositivity.HomologicalAlgebra.CochainTensorBoundedAbove
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.cochainTensorHomotopyEquiv
@@ -7,6 +8,10 @@ assert_no_sorry SerrePositivity.cochainTensorShiftRight_naturality
 assert_no_sorry SerrePositivity.cochainTensorConeLeft
 assert_no_sorry SerrePositivity.cochainTensorConeLeft_mor₃
 assert_no_sorry SerrePositivity.coneTriangle_mor₃_f
+assert_no_sorry SerrePositivity.cochain_quasiIso_iff_cone_acyclic
+assert_no_sorry SerrePositivity.cochainTensor_acyclic_of_flat_bounds
+assert_no_sorry SerrePositivity.cochainTensor_quasiIso_left_of_boundedAboveFlat
 
 #print axioms SerrePositivity.cochainTensorHomotopyEquiv
 #print axioms SerrePositivity.cochainTensorConeLeft_mor₃
+#print axioms SerrePositivity.cochainTensor_quasiIso_left_of_boundedAboveFlat

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.HomologicalAlgebra.BoundedAboveProjectiveResolution
-public import SerrePositivity.PerfectComplex.TensorBoundedAbove
+public import SerrePositivity.HomologicalAlgebra.CochainTensorBoundedAbove
 
 /-! # Resolution models of the bounded-above derived tensor product
 

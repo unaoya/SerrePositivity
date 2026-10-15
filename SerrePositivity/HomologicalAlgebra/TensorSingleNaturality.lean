@@ -1,6 +1,7 @@
 module
-public import SerrePositivity.PerfectComplex.TensorSingle
+public import SerrePositivity.HomologicalAlgebra.CochainTensorSingle
 public import SerrePositivity.HomologicalAlgebra.TensorBaseChangeNaturality
+public import Mathlib.Algebra.Homology.HomotopyCategory.SingleFunctors
 
 /-! # Naturality of tensoring with a degree-zero module -/
 @[expose] public section
