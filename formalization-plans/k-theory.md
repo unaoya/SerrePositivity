@@ -6880,3 +6880,64 @@ F0は未完了。次は次数ごとの図式拡張と分解・持ち上げの帰
 関手的resolutionを実装する。F1のRMap・不変性・fibrancy・π₀比較、F2の選択比較、
 F3の共通基数、F4のfiltered colimitとhomotopy (co)limit比較はすべて残っている。
 この全体を依頼範囲として維持し、完了判定は§159.4の全受入条件に従う。
+
+
+## 168. F0進捗：境界・一段拡張・全次数の持ち上げ（2026-10-15）
+
+F0〜F4全体の依頼を維持している。今回の実装はReedyモデル公理に向けた
+持ち上げの帰納と、中間図式を構成する入口であり、F0全体の完了ではない。
+
+### 168.1 下位次数の境界と一段の持ち上げ
+
+`Reedy/Degree`は次数制限と、latching/matchingの図式の下位次数への因数分解を構成する。
+inverse/direct射上の自然性から全射上の自然変換も構成した。
+`Reedy/Boundary`は下位図式Hだけから境界射L→Mを構成し、入るdirect射・出るinverse射
+の合成で評価される各成分の公式を証明する。現在次数の対象を先に要求しない。
+`Reedy/LowerTransformation`は、下位次数の自然変換からL_j F→G_jとF_j→M_j Gを構成し、
+その境界での可換性を証明する。コミット：`b4c1e7c`。
+
+`Reedy/LowerTransformationNaturality`は、拡張・制限・前後合成の六公式を証明する。
+`Reedy/LiftingStep`は、下位次数の自然なliftから相対latching射と相対matching射の間の
+実際の可換正方形を構成し、そのliftから現在次数の成分を得る。元のsquareの分解と
+入るdirect射・出るinverse射での自然性を証明する。追加のモデル構造は仮定せず、
+該当する相対射の持ち上げ性を使う。コミット：`d412224`。
+
+### 168.2 全次数の自然な持ち上げ
+
+`Reedy/LowerNaturality`は次数制限内でもReedy分解が閉じることを使って自然性を判定する。
+`Reedy/LiftBelow`は下位次数の実際の自然なliftと分解等式を保持し、
+`Reedy/LiftSuccessor`は既存成分を保持して次の次数を追加する。同次数のdirect/inverse射が
+恒等射になることも使い、追加後の自然性をすべて証明した。
+
+`Reedy/Lifting`は整合的な有限次数制限の列から、全図式上の一つの自然変換を構成する。
+主定理`Reedy.Lifting.hasLiftingProperty r`は、自然数次数を持つ一般Reedy圏で、
+各相対latching/matching射の持ち上げ性から、図式圏の`HasLiftingProperty i p`を証明する。
+Δ・Δopについては任意のモデル源Cの有限極限・有限余極限だけで適用できる。
+コミット：`56d3e9f`。
+
+これは相対trivial条件からの持ち上げであり、objectwise Wとの同値を先取りしていない。
+
+### 168.3 中間図式の関手構成の入口
+
+`Reedy/FunctorData`は、inverse/direct射の作用、各クラス内の合成、directの後にinverseが
+続く場合の交換則から全射上の関手を構成する。一意分解から合成則を証明し、各クラスへ
+戻すと入力の作用に一致することを示す。既存関手からの再構成もすべての射で一致する。
+コミット：`d9ef308`。
+
+### 168.4 検証と残項目
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`（1603 jobs）成功。
+- `check_reedy_lower_boundary`（三モジュール38宣言）、`check_reedy_lifting_step`
+  （二モジュール31宣言）、`check_reedy_lifting`（四モジュール63宣言）、
+  `check_reedy_functor_data`（37宣言）の利用例・標準公理監査がすべて成功。
+- 全体の自然なlift、左右の分解、既存成分の保持、Δ・Δopでの任意モデル源の
+  二種類の相対trivial条件の適用を検証した。
+- `audit_homotopical_foundations`：1089宣言・75モジュール、標準公理のみ。
+- `check_weak_equivalences_accessible`、`check_homotopical_foundations`、
+  `check_spectra_stage2`の回帰検証も成功。
+- 新規sorry・引用axiomはなく、他チャットの変更は保持した。
+
+次は下位図式と境界因子分解から168.3の実際の関手データを作り、関手的Reedy因子分解へ
+接続する。objectwise Wと相対trivial条件の同値、モデル公理・resolutionもF0の残項目。
+F1のRMap・不変性・fibrancy・π₀比較、F2の選択比較、F3の共通基数、F4のfiltered colimitと
+homotopy (co)limit比較は引き続きすべて依頼範囲に含む。
