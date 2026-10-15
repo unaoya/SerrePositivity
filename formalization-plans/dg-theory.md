@@ -1224,3 +1224,54 @@ free(J)-cellの準同型性の証拠はまだ残る。独立のsemifree解像度
 任意加群へのsemifree解像度の存在と導来Hom計算。
 三角構造・Verdier商比較・余積/局所小性・一対象同値による保存も未完であり、
 U10全受入の目標を保持する。
+
+### 13.23 U10a2：生成cell I/Jの右持ち上げクラスの具体的同定
+
+`Module/CellLifting.lean` の `moduleSurjectiveAt`/`moduleDegreewiseSurjective` は
+評価の各次数で全射となる射のクラス。Mathlib ModuleCatのepiとの一致を証明した。
+`freeDisk_lifting_iff_surjective` は指定x/nの零→自由diskの右liftと全射性の同値。
+具体的射族Jを `freeDiskInclusions` としてMorphismProperty.ofHomsで構成し、
+`freeDiskInclusions_rlp_eq` により J.rlp = moduleDegreewiseSurjective を証明する。
+このクラスのretract閉性・同型との両立はMathlibのrlp一般論から得る。
+
+sphereのHom同値の値域自然性を追加し、`moduleBoundaryLiftAt` と
+`freeCellBoundary_lifting_iff` により境界cellのliftを生成元の方程式に同定する。
+条件は、次数n+1のcycle zと次数nのyが f(z)=d(y) を満たすとき、
+d(t)=zかつf(t)=yとなる次数nのtが存在すること。
+全次数でこの条件が成り立てば、まずd(y)のcycleをliftし、次にyをliftすることで
+次数ごとの全射性を証明する。
+
+`Complexes/CellCriterion.lean` は同じ条件を複体射で定義する。
+coneのcycleを標準二射影で分解し、coneの微分の符号を使って
+`complex_quasiIso_of_boundary_lifting` を証明した。
+逆方向の `complex_boundary_lifting_of_surjective_quasiIso` は、coneのacyclic性で境界を選び、
+低い次数の全射性で補正して生成元の同時liftを得る。
+任意可換環・非有界複体で成立し、体・flatness・projectivityを仮定しない。
+
+Iを `freeCellBoundaries` として構成し、`freeCellBoundaries_rlp_eq` により
+I.rlp = moduleDegreewiseSurjective ⊓ moduleQuasiIso を証明した。
+局所化で反転されるクラスはU8/U9の指定objectwise quasiIsoのまま。
+一般認識定理やモデル構造を新しく定義していない。
+
+受入入口 `Checks/CellLifting.lean` は任意可換環・独立宇宙・非有界加群、
+個別disk/boundaryのlift条件、I/Jの右liftクラス、epi判定、retract/同型との両立、
+ℤの負次数とZMod 2の正次数を検証する。
+この入口・StageSix・既存Spectra.StageTwoの同時ビルドは成功（3188 jobs）。
+直接実行・主要25宣言の公理監査も成功し、標準公理のみ。累計491宣言。
+一般論のsorry・新規axiomは0件。
+
+共有 `Transfer/EvaluationSmallness.lean` の
+`SerrePositivity.ModelGeneration.EvaluationFamily.generators_smallObjectArgument` と
+`Transfer/Recognition.lean` を読み直した。
+共有APIは利用可能であり、M5に一般小対象論・認識定理を複製しない。
+具体的に残る入力は、regular κ:Cardinal.{u} と
+`[Fact κ.IsRegular]`/`[OrderBot κ.ord.ToType]` を選んだ上で、
+source Ch(A) のsphere/zeroのdomainについて `IsCardinalPresentable _ κ` の証拠、
+生成射族の対応と `.HasSmallObjectArgument.{u}`、および J.rlp.llp ≤ moduleQuasiIso のacyclicity。
+free/evaluation随伴と評価のu-small余極限保存はU6/U7の既存入力を再利用できる。
+今回のI/J.rlpの等式は共有認識定理の具体的lifting入力となる。
+
+U10全受入は未完。次はcellの段階的付加とsemifree filtration、
+任意加群へのsemifree解像度の存在、shift/余積/filtrationでのHom計算を証明する。
+三角構造・Verdier商比較・余積/局所小性・一対象比較での保存も残る。
+導来圏の主経路は局所化で、射影モデル比較はD4mの別合流点として維持する。
