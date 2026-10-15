@@ -72,4 +72,25 @@ abbrev cochainTensorLeftUnitor (P : CochainComplex (ModuleCat.{u} R) ℤ) :
 /-- Right unit comparison. -/
 abbrev cochainTensorRightUnitor (P : CochainComplex (ModuleCat.{u} R) ℤ) :
     cochainTensor P cochainTensorUnit ≅ P := HomologicalComplex.rightUnitor P
+/-- Tensor maps act on homogeneous summands by ordinary tensor maps. -/
+@[reassoc]
+lemma ιTensorObj_cochainTensorMap {P P' Q Q' : CochainComplex (ModuleCat.{u} R) ℤ}
+    (f : P ⟶ P') (g : Q ⟶ Q') (i j n : ℤ) (h : i + j = n) :
+    ιTensorObj P Q i j n h ≫ (cochainTensorMap f g).f n =
+      (f.f i ⊗ₘ g.f j) ≫ ιTensorObj P' Q' i j n h := by
+  rw [ι_mapBifunctorMap]
+  change (f.f i ▷ Q.X j) ≫ (P'.X i ◁ g.f j) ≫ _ = _
+  rw [tensorHom_def, Category.assoc]
+
+@[reassoc]
+lemma ιTensorObj_cochainTensor_d (A B : CochainComplex (ModuleCat.{u} R) ℤ)
+    (i j n : ℤ) (h : i + j = n) :
+    ιTensorObj A B i j n h ≫ (cochainTensor A B).d n (n + 1) =
+      (A.d i (i + 1) ▷ B.X j) ≫
+        ιTensorObj A B (i + 1) j (n + 1) (by omega) +
+      i.negOnePow • ((A.X i ◁ B.d j (j + 1)) ≫
+        ιTensorObj A B i (j + 1) (n + 1) (by omega)) := by
+  subst n
+  exact cochainTensorι_d A B i j
+
 end SerrePositivity

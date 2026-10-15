@@ -69,24 +69,12 @@ lemma ιTensorObj_cochainTensorShiftRight (P Q : CochainComplex (ModuleCat.{u} R
 lemma cochainTensorMap_add_left {P P' Q Q' : CochainComplex (ModuleCat.{u} R) ℤ}
     (f f' : P ⟶ P') (g : Q ⟶ Q') :
     cochainTensorMap (f + f') g = cochainTensorMap f g + cochainTensorMap f' g := by
-  apply HomologicalComplex.Hom.ext
-  funext n
-  apply HomologicalComplex.mapBifunctor.hom_ext
-  intro i j h
-  rw [HomologicalComplex.add_f_apply, Preadditive.comp_add]
-  rw [ι_mapBifunctorMap, ι_mapBifunctorMap, ι_mapBifunctorMap]
-  simp [Preadditive.add_comp]
+  exact MonoidalPreadditive.add_tensor f f' g
 
 lemma cochainTensorMap_add_right {P P' Q Q' : CochainComplex (ModuleCat.{u} R) ℤ}
     (f : P ⟶ P') (g g' : Q ⟶ Q') :
     cochainTensorMap f (g + g') = cochainTensorMap f g + cochainTensorMap f g' := by
-  apply HomologicalComplex.Hom.ext
-  funext n
-  apply HomologicalComplex.mapBifunctor.hom_ext
-  intro i j h
-  rw [HomologicalComplex.add_f_apply, Preadditive.comp_add]
-  rw [ι_mapBifunctorMap, ι_mapBifunctorMap, ι_mapBifunctorMap]
-  simp [Preadditive.comp_add, Preadditive.add_comp]
+  exact MonoidalPreadditive.tensor_add f g g'
 
 /-- The functor of tensoring on the right with a fixed complex. -/
 abbrev cochainTensorFixedRight (Q : CochainComplex (ModuleCat.{u} R) ℤ) :=

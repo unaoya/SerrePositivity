@@ -10,35 +10,6 @@ namespace SerrePositivity
 open CategoryTheory Category Limits MonoidalCategory HomologicalComplex
 variable {R : Type u} [CommRing R]
 
-attribute [reassoc] ιTensorObj_cochainTensorSymmetry
-
-/-- Tensor maps act on homogeneous summands by ordinary tensor maps. -/
-@[reassoc]
-lemma ιTensorObj_cochainTensorMap {P P' Q Q' : CochainComplex (ModuleCat.{u} R) ℤ}
-    (f : P ⟶ P') (g : Q ⟶ Q') (i j n : ℤ) (h : i + j = n) :
-    ιTensorObj P Q i j n h ≫ (cochainTensorMap f g).f n =
-      (f.f i ⊗ₘ g.f j) ≫ ιTensorObj P' Q' i j n h := by
-  rw [ι_mapBifunctorMap]
-  change (f.f i ▷ Q.X j) ≫ (P'.X i ◁ g.f j) ≫ _ = _
-  rw [tensorHom_def, Category.assoc]
-
-/-- The signed symmetry is natural in both chain complexes. -/
-@[reassoc]
-lemma cochainTensorSymmetry_naturality {P P' Q Q' : CochainComplex (ModuleCat.{u} R) ℤ}
-    (f : P ⟶ P') (g : Q ⟶ Q') :
-    cochainTensorMap f g ≫ (cochainTensorSymmetry P' Q').hom =
-      (cochainTensorSymmetry P Q).hom ≫ cochainTensorMap g f := by
-  apply HomologicalComplex.Hom.ext
-  funext n
-  apply HomologicalComplex.mapBifunctor.hom_ext
-  intro i j h
-  rw [HomologicalComplex.comp_f, HomologicalComplex.comp_f,
-    ιTensorObj_cochainTensorMap_assoc, ιTensorObj_cochainTensorSymmetry,
-    ιTensorObj_cochainTensorSymmetry_assoc]
-  rw [Linear.comp_units_smul, Linear.units_smul_comp, Category.assoc,
-    ιTensorObj_cochainTensorMap]
-  simp only [BraidedCategory.braiding_naturality_assoc]
-
 namespace Adams
 
 /-- The standard total tensor square. -/

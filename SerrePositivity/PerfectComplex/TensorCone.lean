@@ -26,17 +26,6 @@ lemma tensor_shift_cancel {A B T U V : ModuleCat.{u} R} (e : A ≅ B)
   simp only [Category.assoc, ← comp_whiskerRight_assoc, Iso.inv_hom_id,
     id_whiskerRight, Category.id_comp]
 
-@[reassoc]
-lemma ιTensorObj_cochainTensor_d (A B : CochainComplex (ModuleCat.{u} R) ℤ)
-    (i j n : ℤ) (h : i + j = n) :
-    ιTensorObj A B i j n h ≫ (cochainTensor A B).d n (n + 1) =
-      (A.d i (i + 1) ▷ B.X j) ≫
-        ιTensorObj A B (i + 1) j (n + 1) (by omega) +
-      i.negOnePow • ((A.X i ◁ B.d j (j + 1)) ≫
-        ιTensorObj A B i (j + 1) (n + 1) (by omega)) := by
-  subst n
-  exact cochainTensorι_d A B i j
-
 /-- The projection of the tensor of a cone to its shifted left summand. -/
 def tensorConeFstX (n : ℤ) :
     (cochainTensor (mappingCone f) Q).X n ⟶ (cochainTensor P Q).X (n + 1) :=

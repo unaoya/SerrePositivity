@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KTheory.Adams.TensorSquare
+public import SerrePositivity.HomologicalAlgebra.CochainTensorLinear
 
 /-! # Tensor maps of graded components
 
@@ -106,20 +106,11 @@ lemma cochainTensorDegreeMap_partition (a b : ∀ i, P.X i ⟶ P.X i)
 
 @[simp]
 lemma cochainTensorMap_zero_zero : cochainTensorMap (0 : P ⟶ P') (0 : Q ⟶ Q') = 0 := by
-  apply HomologicalComplex.Hom.ext
-  funext n
-  apply HomologicalComplex.mapBifunctor.hom_ext
-  intro i j h
-  rw [ιTensorObj_cochainTensorMap]
-  simp [tensorHom_def]
+  change (0 : P ⟶ P') ⊗ₘ (0 : Q ⟶ Q') = 0
+  exact MonoidalPreadditive.tensor_zero (0 : P ⟶ P')
 
 @[simp]
 lemma cochainTensorMap_zero_right (f : P ⟶ P') : cochainTensorMap f (0 : Q ⟶ Q') = 0 := by
-  apply HomologicalComplex.Hom.ext
-  funext n
-  apply HomologicalComplex.mapBifunctor.hom_ext
-  intro i j h
-  rw [ιTensorObj_cochainTensorMap]
-  simp [tensorHom_def]
+  exact MonoidalPreadditive.tensor_zero f
 
 end SerrePositivity

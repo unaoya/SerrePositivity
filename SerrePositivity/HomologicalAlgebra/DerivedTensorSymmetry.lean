@@ -19,17 +19,8 @@ local notation "T" => boundedAboveDerivedTensor (R := R)
 lemma cochainTensorSymmetry_natural {P P' Q Q' : CochainComplex (ModuleCat R) ℤ}
     (f : P ⟶ P') (g : Q ⟶ Q') :
     cochainTensorMap f g ≫ (cochainTensorSymmetry P' Q').hom =
-      (cochainTensorSymmetry P Q).hom ≫ cochainTensorMap g f := by
-  apply HomologicalComplex.Hom.ext
-  funext n
-  apply HomologicalComplex.mapBifunctor.hom_ext
-  intro i j h
-  rw [HomologicalComplex.comp_f, HomologicalComplex.comp_f,
-    cochainTensorMap_homogeneous_assoc, ιTensorObj_cochainTensorSymmetry,
-    ← Category.assoc, ιTensorObj_cochainTensorSymmetry]
-  rw [Linear.comp_units_smul, Linear.units_smul_comp, Category.assoc,
-    cochainTensorMap_homogeneous]
-  simp only [BraidedCategory.braiding_naturality_assoc]
+      (cochainTensorSymmetry P Q).hom ≫ cochainTensorMap g f :=
+  cochainTensorSymmetry_naturality f g
 
 /-- Exchange the factors of actual derived objects by the signed complex symmetry. -/
 def boundedAboveDerivedTensorSymmetry (X Y : D) : (T).obj (X, Y) ≅ (T).obj (Y, X) :=

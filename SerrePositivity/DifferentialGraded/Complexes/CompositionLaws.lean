@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.HomologicalAlgebra.CochainTensorHomogeneous
 public import SerrePositivity.DifferentialGraded.Complexes.Composition
 public import SerrePositivity.DifferentialGraded.Complexes.Monoidal
 public import SerrePositivity.DifferentialGraded.Complexes.Unit
@@ -49,10 +50,8 @@ lemma ι_associator (P Q T : Complex A) (i j k n : ℤ) (hn : i + j + k = n) :
       ιTensorObj (P ⊗ Q) T (i + j) k n hn ≫ (α_ P Q T).hom.f n =
     (α_ (P.X i) (Q.X j) (T.X k)).hom ≫
       (P.X i ◁ ιTensorObj Q T j k (j + k) rfl) ≫
-        ιTensorObj P (Q ⊗ T) i (j + k) n (by omega) := by
-  have hh := ι_mapBifunctorAssociatorX_hom (curriedAssociatorNatIso (ModuleCat A))
-    P Q T (.up ℤ) (.up ℤ) (.up ℤ) i j k n hn
-  exact hh
+        ιTensorObj P (Q ⊗ T) i (j + k) n (by omega) :=
+  SerrePositivity.ιTensorObj_cochainTensorAssociator_hom P Q T i j k n hn
 
 /-- 豊穣順の合成の結合則。符号の等式は p q+p r+q r の二つの展開。 -/
 lemma enrichedComposition_assoc (W X Y Z : Complex A) :

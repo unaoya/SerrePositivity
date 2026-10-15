@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.PerfectComplex.TensorBaseChange
+public import SerrePositivity.HomologicalAlgebra.CochainTensorBaseChange
 
 /-! # Naturality of the total tensor base-change comparison -/
 @[expose] public section
@@ -16,10 +16,8 @@ lemma cochainTensorMap_homogeneous
     {P P' Q Q' : CochainComplex (ModuleCat.{u} R) ℤ}
     (f : P ⟶ P') (g : Q ⟶ Q') (i j n : ℤ) (h : i + j = n) :
     ιTensorObj P Q i j n h ≫ (cochainTensorMap f g).f n =
-      (f.f i ⊗ₘ g.f j) ≫ ιTensorObj P' Q' i j n h := by
-  rw [ι_mapBifunctorMap]
-  change (f.f i ▷ Q.X j) ≫ (P'.X i ◁ g.f j) ≫ _ = _
-  rw [tensorHom_def, Category.assoc]
+      (f.f i ⊗ₘ g.f j) ≫ ιTensorObj P' Q' i j n h :=
+  ιTensorObj_cochainTensorMap f g i j n h
 
 /-- The tensor base-change comparison is natural in both chain maps. -/
 lemma cochainTensorBaseChangeIso_naturality (φ : R →+* S)

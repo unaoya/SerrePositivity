@@ -30,20 +30,13 @@ lemma ι_signedSwap (P Q : Complex A) (i j n : ℤ) (h : i + j = n) :
 lemma signedSwap_apply (P Q : Complex A) (i j n : ℤ) (h : i + j = n)
     (x : P.X i) (y : Q.X j) :
     (signedSwap P Q).hom.f n (ιTensorObj P Q i j n h (x ⊗ₜ[A] y)) =
-      (i * j).negOnePow • ιTensorObj Q P j i n (by omega) (y ⊗ₜ[A] x) := by
-  have he := congr($(ι_signedSwap P Q i j n h).hom (x ⊗ₜ[A] y))
-  exact he
+      (i * j).negOnePow • ιTensorObj Q P j i n (by omega) (y ⊗ₜ[A] x) :=
+  SerrePositivity.cochainTensorSymmetry_hom_apply_ι P Q i j n h x y
 
 /-- signed symmetry は任意の非有界 chain map に関して両変数で自然。 -/
 lemma signedSwap_naturality {P P' Q Q' : Complex A} (f : P ⟶ P') (g : Q ⟶ Q') :
-    (f ⊗ₘ g) ≫ (signedSwap P' Q').hom = (signedSwap P Q).hom ≫ (g ⊗ₘ f) := by
-  apply tensorHom_ext
-  intro i j n h
-  simp only [HomologicalComplex.comp_f]
-  rw [← Category.assoc, ι_tensorHom, Category.assoc, ι_signedSwap,
-    ← Category.assoc, ι_signedSwap, Linear.units_smul_comp, Category.assoc, ι_tensorHom]
-  rw [Linear.comp_units_smul, ← Category.assoc, ← Category.assoc,
-    BraidedCategory.braiding_naturality]
+    (f ⊗ₘ g) ≫ (signedSwap P' Q').hom = (signedSwap P Q).hom ≫ (g ⊗ₘ f) :=
+  SerrePositivity.cochainTensorSymmetry_naturality f g
 
 /-- associator の純粋三重斉次 tensor での公式。 -/
 lemma associator_apply (P Q T : Complex A) (i j k n : ℤ) (hn : i + j + k = n)
@@ -53,7 +46,7 @@ lemma associator_apply (P Q T : Complex A) (i j k n : ℤ) (hn : i + j + k = n)
         (ιTensorObj P Q i j (i + j) rfl (x ⊗ₜ[A] y) ⊗ₜ[A] z)) =
       ιTensorObj P (Q ⊗ T) i (j + k) n (by omega)
         (x ⊗ₜ[A] ιTensorObj Q T j k (j + k) rfl (y ⊗ₜ[A] z)) :=
-  congr($(ι_associator P Q T i j k n hn).hom (x ⊗ₜ[A] y ⊗ₜ[A] z))
+  SerrePositivity.cochainTensorAssociator_hom_apply_ι P Q T i j k n hn x y z
 
 /-- 中間和次数を別名にしても associator の公式は変わらない。 -/
 lemma associator_apply_of_sum (P Q T : Complex A) (i j k l n : ℤ)
@@ -61,9 +54,8 @@ lemma associator_apply_of_sum (P Q T : Complex A) (i j k l n : ℤ)
     (α_ P Q T).hom.f n
       (ιTensorObj (P ⊗ Q) T l k n hn (ιTensorObj P Q i j l hl (x ⊗ₜ[A] y) ⊗ₜ[A] z)) =
       ιTensorObj P (Q ⊗ T) i (j + k) n (by omega)
-        (x ⊗ₜ[A] ιTensorObj Q T j k (j + k) rfl (y ⊗ₜ[A] z)) := by
-  subst l
-  exact associator_apply P Q T i j k n hn x y z
+        (x ⊗ₜ[A] ιTensorObj Q T j k (j + k) rfl (y ⊗ₜ[A] z)) :=
+  SerrePositivity.cochainTensorAssociator_hom_apply_ι_of_sum P Q T i j k l n hl hn x y z
 
 /-- 右 tensor 射の純粋斉次成分。 -/
 lemma whiskerRight_apply {P P' : Complex A} (f : P ⟶ P') (T : Complex A)
@@ -139,17 +131,8 @@ lemma associator_inv_apply (P Q T : Complex A) (i j k l n : ℤ)
     (α_ P Q T).inv.f n
       (ιTensorObj P (Q ⊗ T) i l n hn (x ⊗ₜ[A] ιTensorObj Q T j k l hl (y ⊗ₜ[A] z))) =
       ιTensorObj (P ⊗ Q) T (i + j) k n (by omega)
-        (ιTensorObj P Q i j (i + j) rfl (x ⊗ₜ[A] y) ⊗ₜ[A] z) := by
-  subst l
-  have he := associator_apply P Q T i j k n (by omega) x y z
-  have hh := congrArg (fun t => (α_ P Q T).inv.f n t) he
-  have hi := congrArg (fun f => f.f n) (α_ P Q T).hom_inv_id
-  have hx := congr($(hi).hom
-    (ιTensorObj (P ⊗ Q) T (i + j) k n (by omega)
-      (ιTensorObj P Q i j (i + j) rfl (x ⊗ₜ[A] y) ⊗ₜ[A] z)))
-  change (α_ P Q T).inv.f n ((α_ P Q T).hom.f n _) = _ at hx
-  rw [hx] at hh
-  exact hh.symm
+        (ιTensorObj P Q i j (i + j) rfl (x ⊗ₜ[A] y) ⊗ₜ[A] z) :=
+  SerrePositivity.cochainTensorAssociator_inv_apply_ι_of_sum P Q T i j k l n hl hn x y z
 
 /-- 右括弧の三重 tensor に対する ext。 -/
 lemma rightTriple_ext {P Q T S : Complex A} {f g : P ⊗ (Q ⊗ T) ⟶ S}

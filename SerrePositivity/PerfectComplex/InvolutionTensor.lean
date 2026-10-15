@@ -14,19 +14,14 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 universe u
 namespace SerrePositivity
-open CategoryTheory Category Limits HomologicalComplex
+open CategoryTheory Category Limits MonoidalCategory HomologicalComplex
 variable {R : Type u} [CommRing R]
 
 lemma cochainTensorMap_smul_right {P P' Q Q' : CochainComplex (ModuleCat.{u} R) ℤ}
     (r : R) (f : P ⟶ P') (g : Q ⟶ Q') :
     cochainTensorMap f (r • g) = r • cochainTensorMap f g := by
-  apply HomologicalComplex.Hom.ext
-  funext n
-  apply HomologicalComplex.mapBifunctor.hom_ext
-  intro i j h
-  rw [HomologicalComplex.smul_f_apply, Linear.comp_smul]
-  rw [ι_mapBifunctorMap, ι_mapBifunctorMap]
-  simp
+  change f ⊗ₘ (r • g) = r • (f ⊗ₘ g)
+  simp [MonoidalCategory.tensorHom_def, Linear.comp_smul]
 
 lemma cochainTensorMap_neg_left {P P' Q Q' : CochainComplex (ModuleCat.{u} R) ℤ}
     (f : P ⟶ P') (g : Q ⟶ Q') : cochainTensorMap (-f) g = -cochainTensorMap f g := by

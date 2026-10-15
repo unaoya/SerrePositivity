@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.HomologicalAlgebra.CochainTensorLinear
 public import SerrePositivity.PerfectComplex.TensorSymmetry
 public import Mathlib.Algebra.Homology.BifunctorHomotopy
 
@@ -53,22 +54,12 @@ def cochainTensorHomotopyEquiv {P P' Q Q' : CochainComplex (ModuleCat.{u} R) ℤ
 lemma cochainTensorMap_smul_left {P P' Q Q' : CochainComplex (ModuleCat.{u} R) ℤ}
     (r : R) (f : P ⟶ P') (g : Q ⟶ Q') :
     cochainTensorMap (r • f) g = r • cochainTensorMap f g := by
-  apply HomologicalComplex.Hom.ext
-  funext n
-  apply HomologicalComplex.mapBifunctor.hom_ext
-  intro i j h
-  rw [HomologicalComplex.smul_f_apply, Linear.comp_smul]
-  rw [ι_mapBifunctorMap, ι_mapBifunctorMap]
-  simp
+  change (r • f) ⊗ₘ g = r • (f ⊗ₘ g)
+  simp [tensorHom_def, Linear.smul_comp]
 
 @[simp] lemma cochainTensorMap_zero_left {P P' Q Q' : CochainComplex (ModuleCat.{u} R) ℤ}
     (g : Q ⟶ Q') : cochainTensorMap (0 : P ⟶ P') g = 0 := by
-  apply HomologicalComplex.Hom.ext
-  funext n
-  apply HomologicalComplex.mapBifunctor.hom_ext
-  intro i j h
-  rw [ι_mapBifunctorMap]
-  simp
+  exact MonoidalPreadditive.zero_tensor g
 
 /-- Tensoring quasi-isomorphisms between strictly perfect complexes preserves quasi-isomorphisms. -/
 lemma cochainTensorMap_quasiIso {P P' Q Q' : CochainComplex (ModuleCat.{u} R) ℤ}
