@@ -7225,3 +7225,26 @@ p正則性・d正則性・ghost単射・G7・完備性・添字有限性は不�
 導来(p,d)完備化後CFF・一般B4全射性は引き続き未完成。
 共通G3・G6・G7は共通計画上未完了として保持する。次はβ・αの商への降下写像を標準射と両立させ、
 前工程の実残余導来評価比較とこの二因子の導来還元を接続する。共有・CLMST・利用先は編集していない。
+
+### 次工程の登録：β・αの係数商への標準降下と実還元対象の明示
+
+BS専用DeltaDivisionSourceCoefficientMaps.leanを新設する。任意係数イデアルI、J=I Lについて、
+βbar:L/J→A/I、αbar:L/J→L/J、Cbar:A/I→L/Jを既存Ideal.quotientMapで構成し、
+標準商代表元・βbar∘q_L=q_A∘β・αbar∘q_L=q_L∘α、βbar∘Cbar=id、αbar∘Cbar=Cbarを証明する。
+源商にδ構造を仮定せず、αbarを標準自己作用へ置換しない。
+BS専用DeltaDivisionSourceCoefficientQuotients.leanを新設する。既存導来商比較に現れるA/Jβ・L/Jαを
+それぞれβbarで作用するA/I・αbarで作用するL/Jと標準代数同型で比較する。
+その比較を前工程の実二因子導来還元へ合成し、商への降下写像を明示した標準の実導来同型を公開する。
+p正則性・ghost・完備性・G7は仮定しない。共通・CLMST・共有監査は編集しない。
+全新公開宣言をBS専用監査で検査し、導来完備化後CFF・一般B4完成とは区別する。
+
+## B4-6：β・α・係数包含の任意係数商への標準降下（2026-10-15）
+
+DeltaDivisionSourceCoefficientMaps.leanで、任意I⊆A、J=I Lについて、既存Ideal.quotientMapを使って
+βbar:L/J→A/I、αbar:L/J→L/J、Cbar:A/I→L/Jを構成した。
+各標準商代表元の公式、βbar・αbarと標準商射の二つの可換図式、
+βbar∘Cbar=idとαbar∘Cbar=Cbarを証明した。商のδ構造やαbarの恒等性は仮定しない。
+10新公開宣言の対象2886ジョブ成功（既存共有警告のみ）、B4全体pure監査1909報告成功、標準3公理のみ。
+新sorry・公理・引用なし。p正則性・ghost・G7・完備性・添字有限性は不要。
+この具体的な降下射を、実二因子の係数商比較の作用の明示へ使う。
+一般B4全射性・導来完備化後CFFは未完成として保持する。
