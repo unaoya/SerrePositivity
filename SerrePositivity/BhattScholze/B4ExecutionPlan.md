@@ -3702,7 +3702,7 @@ D.IsDistinguished(a_s)ならu_sが単元であることを証明した。環・�
 この古典的候補自身の導来完備性と、原典の実導来完備化候補との比較は区別する。
 実候補との同型・分冪包比較・完全忠実平坦性・一般B4は未完成。
 
-### 共通基盤への要求 G6：導来完備環の完備化元はJacobson根基に属する（未送信）
+### 共通基盤への要求 G6：導来完備環の完備化元はJacobson根基に属する（2026-10-15送信済み）
 
 対象：可換環T:Type u、a:T、
 h:IsModuleComplete T a (ModuleCat.of T T)。結論：a∈Ideal.jacobson (⊥:Ideal T)。
@@ -4424,7 +4424,7 @@ Aのp正則性・yのA/p正則性・単元δp・自由δ環ghost単射の下で�
 5公開宣言の対象3818ジョブ成功。新sorry・公理・外部引用なし。
 Q_Nを全源評価環Aと同一視せず、有限段Torの消滅を全Tor消滅とは数えていない。
 
-### 共通基盤への要求 G7：TorAlgと加群の逐次colimit（未送信）
+### 共通基盤への要求 G7：TorAlgと加群の逐次colimit（2026-10-15送信済み）
 
 - 対象：任意u、可換環R,C:Type u、実環射φ:R→+*C、F:ℕ⥤ModuleCat.{u} R、i:ℕ。
 - 必要な結論：`PreservesColimit F ((ModuleCat.extendScalars φ).leftDerived i)`。
@@ -5133,3 +5133,22 @@ Subring.closure_inductionにより証明した。
 p正則性・完備性・G7は要求しない。別のδ射の概念や局所化は定義していない。
 2公開定理の対象2415ジョブ・B4全体pure監査成功。標準3公理のみ。
 新sorry・公理・引用なし。一般導来比較・平坦性・CFF・一般B4は未完成。
+
+## 共通基盤要求G3・G6・G7の送信記録（2026-10-15）
+
+ユーザーの明示許可「3件を送ってよい」に基づき、現在の「CLMST」チャット
+（01a13993-b4ee-7a10-8441-7d21224139d7）へ3件を送信し、ツールの成功を確認した。
+正確な仮定・結論、追加しない仮定、利用工程、既存APIの不足を送付した。
+G3は正則主元と剰余平坦性から既存IsCompletelyFlatへの判定、G6は導来完備環の
+完備化元のJacobson根基への所属、G7はextendScalarsのleftDerivedとℕ-colimitの交換である。
+これは送信済みの記録であり、実装受領・依存解消を意味しない。
+共有ファイルの編集や追加のチャット間送信の許可へは拡張しない。
+BS側ではこの3件を待つ適用箇所を保留し、独立した構成・証明を続ける。
+
+### 今回の全体ビルドの検証境界
+
+実行中だった全体lake buildは終了コード1で終了した。
+ログは /tmp/bs-factorialideal-full.log。共有PerfectComplex等の複数対象が失敗し、
+ModuleSupport.olean、ClosedSupportGeometry.oleanの欠落も報告された。
+この全体検証を成功とは数えず、直前のBS対象ビルド・B4全体pure監査の成功と区別する。
+共有ファイルの修正は行っていない。一般B4・導来比較・必要なCFF拡大の存在は未完成。
