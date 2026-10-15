@@ -2202,3 +2202,23 @@ Checks.ConeHomotopyDesc・StageSix・既存Spectra.StageTwoと標準cone三角�
 同時ビルドは成功（2523 jobs）。直接実行の主要7宣言は標準公理のみ。累計932宣言。
 U10全受入は未完。次はこの延長を用いてホモトピーまで可換なsquareのcone射と
 K(D)の標準cone三角形の射の補完を公開する。
+
+
+### 13.64 U10t2：ホモトピー可換squareのcone射と標準三角形の補完
+
+`Module/ConeHomotopyMap.lean`は指定された全dg自然なホモトピーを、同じcochain成分を持つ
+各評価の複体ホモトピーへ移す。次数−1の左入力を、左包含への前合成と
+指定ホモトピーの右包含への後合成の和で構成し、その境界を証明した。
+§13.63の延長により`moduleConeMapOfHomotopy`を得る。評価がMathlibの
+`mappingCone.mapOfHomotopy`と一致し、右包含・connecting mapの両方と可換である。
+
+`Module/HomotopyConeTriangle.lean`は主K(D)の標準cone三角形を定義し、
+上記cone射を三角形の射へまとめた。第三の可換式では商関手のshift比較自然同型を明示する。
+K(D)の任意の可換squareについて代表射と全dg自然なホモトピーを選び、
+`moduleHomotopyConeTriangle_complete`で標準三角形の射への補完を証明した。
+
+Checks.HomotopyConeTriangle・Checks.ConeHomotopyDesc・StageSix・既存Spectra.StageTwoの
+同時ビルドは成功（2524 jobs）。直接実行の主要13宣言は標準公理のみ。累計945宣言。
+全体文書検査は担当外のPaper.Section5.SecondComparisonの未生成oleanで停止した。
+U10全受入は未完。K(D)の三角構造の残るcontractible・回転・八面体条件と、
+D(D)の三角構造・Verdier比較・一対象比較の三角性を引き続き証明する。
