@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.ConeLES
+public import SerrePositivity.HomologicalAlgebra.ResolutionMappingCone
 public import SerrePositivity.HomologicalAlgebra.Resolution
 public import Mathlib.Algebra.Category.ModuleCat.Projective
 
@@ -86,36 +86,11 @@ lemma mono_homologyMap_liftSES_zero (hf : Function.Injective f) :
 余核である。`H^0(f̃)` は同一視のもとで `f` なので余核は `V₂ / im f`、完全性 `im f = ker g` と `g` の
 全射性から `V₂ / ker g ≅ V₃`。これらの同型を順につないで構成する。 -/
 noncomputable def coneHomologyZeroEquiv (hg : Function.Surjective g) (hfg : Function.Exact f g) :
-    (Cone.cone (liftSES f)).homology 0 ≃ₗ[A] V₃ := by
-  have h2 := Cone.exact₂ (liftSES f) 0
-  have h3 := Cone.exact₃ (liftSES f) 0 1 rfl
-  have hepi : Epi (HomologicalComplex.homologyMap (CochainComplex.mappingCone.inr (liftSES f)) 0) :=
-    h3.epi_f ((extRes_isZero_homology _ 1 one_ne_zero).eq_zero_of_tgt _)
-  have hsurj : Function.Surjective
-      (HomologicalComplex.homologyMap (CochainComplex.mappingCone.inr (liftSES f)) 0).hom :=
-    (ModuleCat.epi_iff_surjective _).mp hepi
-  have hrk : LinearMap.range (HomologicalComplex.homologyMap (liftSES f) 0).hom =
-      LinearMap.ker (HomologicalComplex.homologyMap
-        (CochainComplex.mappingCone.inr (liftSES f)) 0).hom :=
-    (ShortComplex.moduleCat_exact_iff_range_eq_ker _).mp h2
-  let e₁ := (resVHomologyZeroIso A V₁).toLinearEquiv
-  let e₂ := (resVHomologyZeroIso A V₂).toLinearEquiv
-  -- `range (H^0 f̃)` を `e₂` で移すと `range f`
-  have hmap : (LinearMap.range (HomologicalComplex.homologyMap (liftSES f) 0).hom).map
-      (e₂ : (resV A V₂).homology 0 →ₗ[A] V₂) = LinearMap.range f := by
-    rw [← LinearMap.range_comp, homologyMap_liftSES_zero]
-    have : (e₂ : (resV A V₂).homology 0 →ₗ[A] V₂) ∘ₗ
-        ((resVHomologyZeroIso A V₁).hom ≫ ModuleCat.ofHom f ≫
-          (resVHomologyZeroIso A V₂).inv).hom =
-        f ∘ₗ (e₁ : (resV A V₁).homology 0 →ₗ[A] V₁) := by
-      ext y
-      simp [e₁, e₂]
-    rw [this, LinearMap.range_comp_of_range_eq_top _ e₁.range]
-  exact (LinearMap.quotKerEquivOfSurjective _ hsurj).symm.trans
-    ((Submodule.quotEquivOfEq _ _ hrk.symm).trans
-      ((Submodule.Quotient.equiv _ _ e₂ hmap).trans
-        ((Submodule.quotEquivOfEq _ _ (LinearMap.exact_iff.mp hfg).symm).trans
-          (LinearMap.quotKerEquivOfSurjective g hg))))
+    (Cone.cone (liftSES f)).homology 0 ≃ₗ[A] V₃ :=
+  (isResolutionOf_extRes (projectiveResolution (ModuleCat.of A V₁))).coneHomologyZeroEquiv
+    (M₃ := ModuleCat.of A V₃)
+    (isResolutionOf_extRes (projectiveResolution (ModuleCat.of A V₂)))
+    f g (liftSES f) (homologyMap_liftSES_zero f) hg hfg
 
 /-- **持ち上げの錐は余核の分解**：短完全列 `0 → V₁ →f V₂ →g V₃ → 0` について、`Cone f̃` は `V₃` の
 分解である。正の次数で零であることと射影性は項が直和であることから、ホモロジーの消滅は写像錐の

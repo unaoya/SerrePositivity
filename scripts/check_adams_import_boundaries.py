@@ -141,7 +141,7 @@ check('SerrePositivity.CommutativeAlgebra.AlgebraAction', upper_layer)
 print('Algebra action formulas are independent of the K₀ models.')
 
 for name in ['FiniteFreeBaseChange', 'FiniteLocalizationDescent', 'LocalizedRegularResolution',
-             'BoundedResolutionDimension']:
+             'BoundedResolutionDimension', 'ResolutionMappingCone']:
     check('SerrePositivity.HomologicalAlgebra.' + name, upper_layer)
 for name in ['PerfectComplex.FiniteProjectiveResolutions', 'CommutativeAlgebra.RegularLocalization']:
     check('SerrePositivity.' + name,
