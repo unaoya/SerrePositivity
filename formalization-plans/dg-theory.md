@@ -6938,3 +6938,43 @@ ZMod 2でのbimodule射としての順逆合成の恒等式を検査した。
 それを結合比較の三変数自然性と三角・五角coherenceに使う。U11e全受入はなお未完。
 U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mの目標を保持する。
 共有系列への追加要求はない。共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.150 U11e27：左右の加群評価と相対tensorの各値の双関手（2026-10-17）
+
+`Module/LeftClosedMaps.lean`は、全Hom自然なchain map成分族から既存の左加群Hom endの閉零射を
+構成するleftModuleMorphismMk、評価式、評価による外延性を証明する。
+既存LeftModule.toRightOppositeと右加群のmoduleMorphismMkを再利用し、二重oppositeの
+恒等Hom写像を明示して自然性を移す。新しい左加群型やHom複体は定義していない。
+二重opposite側の自然性だけの補題にSmall Dは要求しない。
+
+`Bimodule/LeftEvaluation.lean`は、両対象で複体へ評価するvalueEvaluationを定義する。
+既存の閉零bimodule射の全Hom自然性を主Hom endの各成分へ射影し、値成分の左作用自然性を証明する。
+その族を上の構成子で左加群射へ持ち上げ、**leftEvaluation : BimoduleCategory A B C ⥤ LeftModuleCategory A C**
+を構成した。恒等・合成保存と、さらにC対象で評価すると元の値の射へ戻る式を証明する。
+左加群の型の推論に時間を要した箇所では始域・終域・成分族を明示して解消し、計算上限は変更していない。
+leftEvaluationにはSmall.{u} Cが必要で、値成分の左作用自然性自体には不要である。
+
+`Tensor/BimoduleValueMaps.lean`は、f:P→P'・g:Q→Q'を閉零bimodule射として、
+**composeValueMap f g b e**を既存BalancedTensor.mapから構成する。
+値はQ(c,e)⊗_C P(b,c)の順であり、第一因子へg、第二因子へfが作用する。
+生成元包含への制限、恒等・合成保存を証明し、固定した両端b/eごとに実際の積圏
+BimoduleCategory A B C × BimoduleCategory A C EからCh(A)への**valueFunctor**を構成した。
+BalancedTensor.mapの閉零対象を明示し、型の別名をまたぐrewriteは評価等式の合同・推移で置き換えた。
+`BimoduleValueElements.lean`は、任意整数次数の純tensor上でこのmapを評価し、
+対応する各因子のchain mapを適用することを証明する。閉零射なので追加のKoszul符号はない。
+任意CommRing A、非有界、独立B/C/E宇宙、Small.{u} B/Cを維持する。Eのsmall性は不要。
+
+Checks.BimoduleTensorMaps・Checks.BimoduleCategory・Checks.QuotientUniversal・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（2857 jobs、終了コード0、警告なし）。
+独立宇宙の評価・各値の双関手、生成元包含・恒等・合成、ZMod 2の次数−1と1の生成元評価を検査した。
+主要14宣言の直接公理監査は標準公理のみ。監査累計2930宣言。
+文書検査は13 Markdown・320 exposition参照、失敗0件。担当差分の空白検査も成功。
+今回の実装にsorry/admit/新規axiomはない。採用済み引用は0件。
+
+次はcomposeValueMapが外側の右B作用・左E作用と全Homに関して可換であることを証明し、
+値のmapをBimoduleCategory A B Eの射へ束ねる。各値の双関手を構成しただけでは
+このbimodule射への持ち上げや、結合同型の三変数自然性・三角/五角coherenceを完了とは扱わない。
+U11e全受入、U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mは引き続き未完。
+U17までの目標を保持する。共有系列への追加要求はない。
+共有一般論・共有ルートimport・他系列は編集していない。
