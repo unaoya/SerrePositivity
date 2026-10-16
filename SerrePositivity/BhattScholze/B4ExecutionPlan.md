@@ -9524,3 +9524,39 @@ DeltaDivisionEvaluationFiniteSupport.leanに5公開宣言を実装した。既�
 共通CompletionH0Algebra・PrincipalCompletionDerivedComparisonも確認したが、一般G11の代用にはならない。
 前者は完備化H0図式、後者は係数環singleの比較を供給し、任意非正対象間のH0同型の完備化後保存は供給しない。
 共通G9はG9-4までで最終判定未完成、G11は未送信。一般B4は未完成のまま保持する。
+
+## 任意根族評価の有限座標商の実加群余極限計画（2026-10-16）
+
+BS担当でDeltaDivisionEvaluationFiniteSupportColimit.leanを新設する。既存の有限座標関係イデアルと包含商射から
+Finset (σ×ℕ)を添字とする実ModuleCat図式を構成し、元のβで作用する評価環Aへの標準評価余錐を作る。
+評価核の上限比較と既存の商核線形同型により、この余錐のIsColimitを証明する。
+実圏論的colimitとの標準同型と各段の評価射との可換性も公開する。有限σや可算性、G9・G11は仮定しない。
+一般的なfiltered colimit/Tor交換定理は再実装せず、このBS固有図式とその普遍性を確定する。
+導来還元のTor消滅・忠実平坦性・候補CFFは未完成として区別し、対象ビルド・BS専用監査後に個別コミットする。
+
+## 共通基盤への要求 G7-Finset：有限部分集合図式での実Tor交換（2026-10-16、未送信）
+
+対象：可換環R,S:Type u、φ:R→+*S、任意ι:Type u、n:ℕ。要求は
+PreservesColimitsOfShape (Finset ι) ((ModuleCat.extendScalars.{u,u,u} φ).leftDerived n)。
+遷移射の単射性・全射性、Noether性・有限生成性・可算性は仮定しない。既存の実TorAlg関手と標準余極限比較を使う。
+利用工程：B4-6の任意根族。ι=σ×ℕ、R=RelativeFreeDeltaRing σ、
+F=deltaDivisionFiniteSupportModuleDiagram D aの各有限座標商から、同じβ作用の評価環へのTor消滅移送。
+既存API不足：TorSequentialColimitsのG7入口は添字ℕのPreservesColimitsOfShapeを供給するが、
+任意σのFinset (σ×ℕ)には直接適用できない。一般filtered版が既にある場合はその具体的インスタンスの受渡しで足りる。
+待つ工程：この具体的図式でのTor/余極限交換。G9・G11の工程とは区別する。
+独立作業：有限座標商の余極限のIsColimitはBS側で証明済み。各有限座標集合を有限根部分族・有界δ深さに含める
+比較と、その有限根部分族の実残余正則列・Tor消滅の照合を進められる。
+一般Tor交換は共通担当の範囲としてBS内で再実装しない。チャット間送信の個別許可はなく、現在は未送信。
+
+## 任意根族評価の有限座標商の実加群余極限の実装結果（2026-10-16）
+
+DeltaDivisionEvaluationFiniteSupportColimit.leanに9公開宣言を実装した。有限座標集合の包含による標準商線形射と、
+Finset (σ×ℕ)を添字とする実ModuleCat図式を構成した。各段から元のβ作用を持つ評価環への標準射と余錐を定義し、
+元の評価核の上限計算と既存の商核線形同型を用いてそのIsColimitを証明した。
+実圏論的余極限との標準同型と、全有限段の標準評価射を保つ図式も証明した。有限性・可算性・正則性・G9・G11は仮定しない。
+対象3522ジョブ成功、自分のコード警告なし。pure B4監査2406宣言成功、標準3公理以外なし。
+新sorry・公理・外部引用なし。既存評価環をそのまま余極限の頂点としており、新しい根添加候補は定義していない。
+一般Tor/filtered colimit交換は実装していない。現G7がℕ添字に限定されることを確認し、必要なFinset添字版を
+G7-Finsetとして正確に記録したが、送信許可がないため他チャットへは送信していない。
+次は各有限座標集合を含む有限根部分族・有界δ深さの比較と、有限部分族での実残余Tor入力を照合する。
+任意根族のTor消滅・候補CFF・引用なし一般B4は未完成。共通G9・G11も引き続き別の待合せとして保持する。
