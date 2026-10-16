@@ -4369,3 +4369,33 @@ U12d全受入には解像度族比較の左変数を含めた自然性・自己/
 次は既存moduleResolutionDerivedTensorIsoを左変数の射と可換にし、両変数局所化上へ延長する。
 U12aの残部・U12c/e/f、U11eのcoherence、U13〜U17・D4mも未完。
 共有系列への追加要求はなく、担当外ファイルを編集していない。
+
+
+### 17.69 U12d7：両変数の解像度族比較と任意解像度計算の整合性（2026-10-16）
+
+`Derived/TensorChoiceLeft.lean`は既存moduleResolutionDerivedTensorIsoの比較を、
+左加群のすべての閉零射に関して自然なmoduleResolutionDerivedTensorLeftIsoへ束ねる。
+証明は既存rightTensorHomotopyLeftMapの自然性を解像度関手の比較射へ適用する。
+自己比較と三つの解像度族の推移法則も、既存の固定左加群版と一致する形で証明した。
+
+`Derived/TensorBifunctorChoice.lean`はConstruction.liftの厳密な因子化をLiftingとして公開し、
+Mathlib Localization.liftNatIsoで両変数の指定局所化上の比較自然同型を構成する。
+局所化前の左加群における成分式、自己比較、推移法則を公開した。
+左右の導来加群圏とD(A)の宇宙、準同型クラスは§17.68と同じである。
+
+`Derived/TensorResolutionComparison.lean`は任意の個別の射影解像度Pによるtensor計算を
+左加群変数の関手とし、P/Qの比較自然同型とその自己/推移法則を証明する。
+両変数導来tensorから任意Pによる計算への同型、計算解像度をPからQへ変更した際の
+比較との整合式も公開する。解像度族を選ぶことと、個別の任意解像度で計算することを分けて検証した。
+
+Checks.TensorChoice・Checks.TensorBifunctor・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2868 jobs、終了コード0、警告なし）。任意A・独立対象宇宙・独立D(A)射宇宙・
+ZMod 2の比較を検査した。今回の4 Leanファイルにsorry/admit/新規axiomはない。
+主要16宣言の直接公理監査は終了コード0、標準公理のみ。監査累計1855宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。
+担当差分の空白検査も成功。
+
+U12dの両変数自然性・解像度族選択独立性の自己/推移法則・任意解像度計算を実装した。
+次の統合確認では局所化比較の成分式と実際の計算同型を結ぶ可換図式を検査してU12dを受け入れる。
+U12aのshift閉性・保存条件の逆向き、U12c/e/f、U11eのcoherence、U13〜U17・D4mは未完。
+共有系列への追加要求はなく、担当外ファイルを編集していない。
