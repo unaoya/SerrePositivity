@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.DeltaAlgebraPerfectionPDH0Comparison
 import SerrePositivity.BhattScholze.IteratedPDH0Reflection
 import SerrePositivity.BhattScholze.PerfectPrismRootPDPerfectionInputs
 import SerrePositivity.BhattScholze.PerfectPrismDeltaAlgebraDiscrete
@@ -7887,3 +7888,12 @@ assert_no_sorry SerrePositivity.BhattScholze.iteratedPDH0LinearEquiv
 
 assert_no_sorry SerrePositivity.BhattScholze.iteratedPDH0LinearEquiv_unit
 #print axioms SerrePositivity.BhattScholze.iteratedPDH0LinearEquiv_unit
+
+assert_no_sorry SerrePositivity.BhattScholze.deltaAlgebraPerfectionPDNativeModuleIso
+#print axioms SerrePositivity.BhattScholze.deltaAlgebraPerfectionPDNativeModuleIso
+
+assert_no_sorry SerrePositivity.BhattScholze.deltaAlgebraPerfectionPDNativeH0Iso
+#print axioms SerrePositivity.BhattScholze.deltaAlgebraPerfectionPDNativeH0Iso
+
+assert_no_sorry SerrePositivity.BhattScholze.deltaAlgebraPerfectionPDH0Iso
+#print axioms SerrePositivity.BhattScholze.deltaAlgebraPerfectionPDH0Iso
