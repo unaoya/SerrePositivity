@@ -7,6 +7,10 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.CategoryTheory.Quiver.PathNatTrans,
+    `SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationNaturality,
+    `SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationAction,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordAction,
     `SerrePositivity.CategoryTheory.Presentation.RetractWords,
     `SerrePositivity.CategoryTheory.Presentation.RetractWordRealization,
     `SerrePositivity.CategoryTheory.Presentation.RetractWordMap,
@@ -910,6 +914,7 @@ run_cmd do
     unless #[`SerrePositivity.HomotopicalAlgebra,
         `SerrePositivity.CategoryTheory.Presentation,
         `SerrePositivity.CategoryTheory.Quiver.PathIntersections,
+        `SerrePositivity.CategoryTheory.Quiver.PathNatTrans,
         `SerrePositivity.CategoryTheory.Simplex,
         `SerrePositivity.CategoryTheory.NerveSimplexFirstFunctor,
         `SerrePositivity.CategoryTheory.SimplexChainParameter,

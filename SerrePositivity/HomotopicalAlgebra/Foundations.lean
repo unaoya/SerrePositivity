@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordAction
+
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationDiagram
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordPresentation
 
