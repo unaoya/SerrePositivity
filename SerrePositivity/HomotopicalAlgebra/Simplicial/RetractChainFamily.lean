@@ -32,22 +32,27 @@ variable {ι : Type u} (E : ι → SSet.{v})
 
 inductive Chain (T : SSet.{v}) (a : ι) : ι → Type (max u (v + 1))
   | nil : Chain T a a
-  | snoc {b c : ι} (p : Chain T a b) (f : E b ⟶ E c) (t : T ⟶ interval) : Chain T a c
+  | familySnoc {b c : ι} (p : Chain T a b)
+      (f : E b ⊗ T ⟶ E c) (t : T ⟶ interval) : Chain T a c
 
 namespace Chain
 variable {E} {T U : SSet.{v}} {a b c d : ι}
 
+def snoc (q : Chain E T a b) (f : E b ⟶ E c) (t : T ⟶ interval) : Chain E T a c :=
+  q.familySnoc (ParameterComposition.const T f) t
+
 def length {a : ι} : {b : ι} → Chain E T a b → ℕ
   | _, .nil => 0
-  | _, .snoc p _ _ => p.length + 1
+  | _, .familySnoc p _ _ => p.length + 1
 
 def append (p : Chain E T a b) : {c : ι} → Chain E T b c → Chain E T a c
   | _, .nil => p
-  | _, .snoc q f t => .snoc (append p q) f t
+  | _, .familySnoc q f t => .familySnoc (append p q) f t
 
 def substitute (j : U ⟶ T) {a : ι} : {b : ι} → Chain E T a b → Chain E U a b
   | _, .nil => .nil
-  | _, .snoc p f t => .snoc (substitute j p) f (j ≫ t)
+  | _, .familySnoc p f t =>
+      .familySnoc (substitute j p) (ParameterComposition.substitute j f) (j ≫ t)
 
 def sequence (b : ℕ → ι) (f : ∀ n, E (b n) ⟶ E (b (n + 1)))
     (t : ℕ → (T ⟶ interval)) : ∀ n, Chain E T (b 0) (b n)
@@ -96,15 +101,15 @@ lemma contraction_substitute (i : ι) {T U : SSet.{v}} (j : U ⟶ T) (t : T ⟶ 
 
 def evaluate {T : SSet.{v}} {a : ι} : {b : ι} → Chain E T a b → (E a ⊗ T ⟶ E b)
   | _, .nil => ParameterComposition.const T (𝟙 (E a))
-  | _, .snoc q f t => ParameterComposition.comp (evaluate q)
-      (ParameterComposition.comp (ParameterComposition.const T f) (contraction E K s p H _ t))
+  | _, .familySnoc q f t => ParameterComposition.comp (evaluate q)
+      (ParameterComposition.comp f (contraction E K s p H _ t))
 
 lemma evaluate_append {T : SSet.{v}} {a b c : ι} (q : Chain E T a b) (r : Chain E T b c) :
     evaluate E K s p H (q.append r) =
       ParameterComposition.comp (evaluate E K s p H q) (evaluate E K s p H r) := by
   induction r with
   | nil => exact (ParameterComposition.comp_id _).symm
-  | snoc r f t ih =>
+  | familySnoc r f t ih =>
     change ParameterComposition.comp (evaluate E K s p H (q.append r)) _ = _
     rw [ih, ParameterComposition.assoc]
     rfl
@@ -114,11 +119,11 @@ lemma evaluate_substitute {T U : SSet.{v}} {a b : ι} (j : U ⟶ T) (q : Chain E
       ParameterComposition.substitute j (evaluate E K s p H q) := by
   induction q with
   | nil => exact (ParameterComposition.substitute_const j _).symm
-  | snoc q f t ih =>
+  | familySnoc q f t ih =>
     change ParameterComposition.comp (evaluate E K s p H (q.substitute j)) _ = _
     simp only [evaluate]
     rw [ih, ParameterComposition.substitute_comp, ParameterComposition.substitute_comp,
-      ParameterComposition.substitute_const, ← contraction_substitute]
+      ← contraction_substitute]
 
 def transfer {T : SSet.{v}} {a b : ι} (q : Chain E T a b) : K a ⊗ T ⟶ K b :=
   ParameterComposition.comp (ParameterComposition.const T (s a))
@@ -130,16 +135,52 @@ lemma transfer_substitute {T U : SSet.{v}} {a b : ι} (j : U ⟶ T) (q : Chain E
   simp only [transfer, ParameterComposition.substitute_comp,
     ParameterComposition.substitute_const, evaluate_substitute]
 
-lemma zero_face {T : SSet.{v}} {a b c d e : ι} (q : Chain E T a b)
-    (f : E b ⟶ E c) (g : E c ⟶ E d) (t : T ⟶ interval) (r : Chain E T d e) :
-    transfer E K s p H (((q.snoc f (zero T)).snoc g t).append r) =
-      transfer E K s p H ((q.snoc (f ≫ g) t).append r) := by
-  have he : evaluate E K s p H ((q.snoc f (zero T)).snoc g t) =
-      evaluate E K s p H (q.snoc (f ≫ g) t) := by
+lemma zero_family_face {T : SSet.{v}} {a b c d e : ι} (q : Chain E T a b)
+    (f : E b ⊗ T ⟶ E c) (g : E c ⊗ T ⟶ E d) (t : T ⟶ interval)
+    (r : Chain E T d e) :
+    transfer E K s p H (((q.familySnoc f (zero T)).familySnoc g t).append r) =
+      transfer E K s p H ((q.familySnoc (ParameterComposition.comp f g) t).append r) := by
+  have he : evaluate E K s p H ((q.familySnoc f (zero T)).familySnoc g t) =
+      evaluate E K s p H (q.familySnoc (ParameterComposition.comp f g) t) := by
     simp only [evaluate, contraction_zero, ParameterComposition.comp_id]
     ext n x
     rfl
   simp only [transfer, evaluate_append, he]
+
+lemma transfer_last_family_parameter
+    (hH : ∀ i, (H i).h ≫ p i = fst (E i) interval ≫ p i)
+    {T : SSet.{v}} {a b c : ι} (q : Chain E T a b) (f : E b ⊗ T ⟶ E c)
+    (t : T ⟶ interval) :
+    transfer E K s p H (q.familySnoc f t) =
+      ParameterComposition.comp (ParameterComposition.const T (s a))
+        (ParameterComposition.comp (evaluate E K s p H q)
+          (ParameterComposition.comp f (ParameterComposition.const T (p c)))) := by
+  have he : ParameterComposition.comp (contraction E K s p H c t)
+      (ParameterComposition.const T (p c)) = ParameterComposition.const T (p c) := by
+    rw [ParameterComposition.comp_const, contraction, Category.assoc, hH]
+    ext n x
+    rfl
+  simp only [transfer, evaluate, ParameterComposition.assoc, he]
+
+lemma one_family_face
+    (hH : ∀ i, (H i).h ≫ p i = fst (E i) interval ≫ p i)
+    {T : SSet.{v}} {a b c d : ι} (q : Chain E T a b) (f : E b ⊗ T ⟶ E c)
+    (r : Chain E T c d) :
+    transfer E K s p H ((q.familySnoc f (one T)).append r) =
+      ParameterComposition.comp (transfer E K s p H (q.familySnoc f (zero T)))
+        (transfer E K s p H r) := by
+  rw [transfer_last_family_parameter E K s p H hH]
+  simp only [transfer, evaluate_append, evaluate, contraction_one]
+  ext n x
+  rfl
+
+lemma zero_face {T : SSet.{v}} {a b c d e : ι} (q : Chain E T a b)
+    (f : E b ⟶ E c) (g : E c ⟶ E d) (t : T ⟶ interval) (r : Chain E T d e) :
+    transfer E K s p H (((q.snoc f (zero T)).snoc g t).append r) =
+      transfer E K s p H ((q.snoc (f ≫ g) t).append r) := by
+  simpa only [Chain.snoc, ParameterComposition.const_comp] using
+    zero_family_face E K s p H q (ParameterComposition.const T f)
+      (ParameterComposition.const T g) t r
 
 lemma transfer_last_parameter
     (hH : ∀ i, (H i).h ≫ p i = fst (E i) interval ≫ p i)
@@ -148,12 +189,8 @@ lemma transfer_last_parameter
       ParameterComposition.comp (ParameterComposition.const T (s a))
         (ParameterComposition.comp (evaluate E K s p H q)
           (ParameterComposition.const T (f ≫ p c))) := by
-  have he : ParameterComposition.comp (contraction E K s p H c t)
-      (ParameterComposition.const T (p c)) = ParameterComposition.const T (p c) := by
-    rw [ParameterComposition.comp_const, contraction, Category.assoc, hH]
-    ext n x
-    rfl
-  simp only [transfer, evaluate, ParameterComposition.assoc, he, ParameterComposition.const_comp]
+  simpa only [Chain.snoc, ParameterComposition.const_comp] using
+    transfer_last_family_parameter E K s p H hH q (ParameterComposition.const T f) t
 
 lemma one_face
     (hH : ∀ i, (H i).h ≫ p i = fst (E i) interval ≫ p i)
@@ -162,10 +199,7 @@ lemma one_face
     transfer E K s p H ((q.snoc f (one T)).append r) =
       ParameterComposition.comp (transfer E K s p H (q.snoc f (zero T)))
         (transfer E K s p H r) := by
-  rw [transfer_last_parameter E K s p H hH]
-  simp only [transfer, evaluate_append, evaluate, contraction_one,
-    ← ParameterComposition.assoc, ParameterComposition.const_comp]
-  ext n x
-  rfl
+  simpa only [Chain.snoc] using
+    one_family_face E K s p H hH q (ParameterComposition.const T f) r
 
 end SerrePositivity.SimplicialModel.RetractChainFamily
