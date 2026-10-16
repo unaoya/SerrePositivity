@@ -8909,3 +8909,19 @@ a,dの正則性・Noether性・完備性・ねじれ上界は追加していな�
 対象2870ジョブ成功、自分のコード警告なし（共有既存警告のみ）。pure B4監査全2258宣言成功。
 標準3公理以外なし、新sorry・公理・外部引用なし。次はa=p,n=p^kを用いて実Frobenius係数剰余へ接続する。
 G9・実Frobeniusねじれ段との比較・filtered colimit/完備化・候補CFF・一般B4は未完成として保持する。
+
+## 実Frobenius係数剰余への忠実平坦性移送の実装結果（2026-10-16）
+
+PerfectDeltaPrismaticDerivedFlat.leanに3公開定理を実装した。
+元の実(p,d)還元の次数消滅・H0忠実平坦性という明示入力から、G10のprism冪剰余判定と
+(p,φⁿ(d))=(p,d^(pⁿ))のイデアル等式で、実(p,φⁿ(d))還元の次数零集中・H0忠実平坦性を証明した。
+完全基底では、実φⁿが誘導する商係数同型に沿って元のA/(p,d)へ制限したH0も忠実平坦と証明した。
+完全prism・有限根族の元の実逐次源へ適用し、具体的P・完全性・b・有限全列挙・反復数kだけから両入力を供給した。
+これは移動した係数剰余に関する結果であり、実Frobeniusねじれ源そのものとの同一視は未証明として保持する。
+対象3910ジョブ成功、自分のコード警告なし（共有既存警告のみ）。pure B4監査全2261宣言成功。
+標準3公理以外なし、新sorry・公理・外部引用なし。
+次はMathlibのrestrictScalarsEquivalenceOfRingEquivと同値による射影対象保存を使い、
+実φⁿ係数制限の射影モデルと、標準商の底変換との可換図式をBSの具体的φⁿへ構成する。
+既存のboundedAboveDerivedRestrictScalarsModelIso・boundedAboveDerivedBaseChangeModelIsoを再利用する。
+これにより今回の移動係数還元を実Frobeniusねじれ段へ接続し、δ完全化のfiltered colimitへ進む。
+G9・元の源の環としての離散性・filtered colimit/完備化・候補CFF・一般B4は未完成として保持する。
