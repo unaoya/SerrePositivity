@@ -9,6 +9,8 @@ run_cmd do
   let expected := #[
     `SerrePositivity.HomotopicalAlgebra.Simplicial.SelectedLoopContraction,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.RecursiveChoiceExtension,
+    `SerrePositivity.HomotopicalAlgebra.Simplicial.SkeletalCellGluing,
+    `SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceCells,
     `SerrePositivity.CategoryTheory.Limits.SequentialExtension,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.CoherentLiftUnitFamilies,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.CoherentLiftUnitComparison,

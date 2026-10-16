@@ -78,6 +78,21 @@ abbrev StandardCompatible {P : SSet.{v}} {n : ℕ}
     SSet.stdSimplex.δ (k.pred (Fin.ne_zero_of_lt hjk)) ≫ f j =
       SSet.stdSimplex.δ (j.castPred (Fin.ne_last_of_lt hjk)) ≫ f k
 
+/-- The faces of an actual boundary map satisfy all ordinary face identities. -/
+lemma standardCompatible_of_boundary {P : SSet.{v}} {n : ℕ}
+    (q : (SSet.boundary.{v} (n + 2)).toSSet ⟶ P) :
+    StandardCompatible (fun k => SSet.boundary.ι k ≫ q) := by
+  intro j k hjk
+  have h :
+      SSet.stdSimplex.δ (k.pred (Fin.ne_zero_of_lt hjk)) ≫ SSet.boundary.ι j =
+        SSet.stdSimplex.δ (j.castPred (Fin.ne_last_of_lt hjk)) ≫ SSet.boundary.ι k := by
+    apply (cancel_mono (SSet.boundary.{v} (n + 2)).ι).mp
+    simpa only [Category.assoc, SSet.boundary.ι_ι] using
+      (SSet.stdSimplex.facePairComplIso_hom_ι' j k hjk).symm.trans
+        (SSet.stdSimplex.facePairComplIso_hom_ι j k hjk)
+  exact (Category.assoc _ _ _).symm.trans
+    ((congrArg (fun t => t ≫ q) h).trans (Category.assoc _ _ _))
+
 set_option backward.isDefEq.respectTransparency.types false in
 set_option backward.defeqAttrib.useBackward true in
 def standardCofork {P : SSet.{v}} {n : ℕ}
