@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionBarReference
+
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.MixedCenterActionWeakEquivalence
 
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.MixedCenterComparison
