@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.DeltaFrobeniusNaturality
-public import Mathlib.Algebra.Colimit.Ring
+public import SerrePositivity.BhattScholze.DeltaDirectLimit
 
 /-! # δ環のFrobenius余極限
 
@@ -41,48 +41,30 @@ theorem deltaPerfectionOf_iterate (D : DeltaStructure p A) {i j : ℕ} (hij : i 
 /-- δ完全化のW₂切断。全段での切断の自然性から余極限上へ延長する。 -/
 def deltaPerfectionSection (D : DeltaStructure p A) :
     DeltaPerfection D →+* WittTwo p (DeltaPerfection D) :=
-  Ring.DirectLimit.lift _ _ _
-    (fun n ↦ (wittTwoMap (deltaPerfectionOf D n)).comp D.sectionHom) (by
-      intro i j hij x
-      apply TruncatedWittVector.ext
-      intro k
-      fin_cases k
-      · simp only [RingHom.comp_apply, wittTwoMap_coeff]
-        change deltaPerfectionOf D j ((D.sectionHom ((D.frobeniusLift : A → A)^[j-i] x)).coeff 0) =
-          deltaPerfectionOf D i ((D.sectionHom x).coeff 0)
-        rw [D.coeff_zero, D.coeff_zero]
-        exact deltaPerfectionOf_iterate D hij x
-      · simp only [RingHom.comp_apply, wittTwoMap_coeff]
-        change deltaPerfectionOf D j (D.delta ((D.frobeniusLift : A → A)^[j-i] x)) =
-          deltaPerfectionOf D i (D.delta x)
-        rw [← D.frobeniusLift_iterate_delta]
-        exact deltaPerfectionOf_iterate D hij (D.delta x))
+  deltaDirectLimitSection (fun _ : ℕ ↦ A)
+    (fun i j _ ↦ (D.frobeniusLift : A → A)^[j - i]) (fun _ ↦ D)
+    (fun i j _ x ↦ D.frobeniusLift_iterate_delta (j - i) x)
 
 /-- 切断は第n段で元の切断と一致する。 -/
 @[simp] theorem deltaPerfectionSection_of (D : DeltaStructure p A) (n : ℕ) (x : A) :
     deltaPerfectionSection D (deltaPerfectionOf D n x) =
       wittTwoMap (deltaPerfectionOf D n) (D.sectionHom x) :=
-  by
-    exact Ring.DirectLimit.lift_of (G := fun _ : ℕ ↦ A)
-      (f := fun i j _ ↦ (D.frobeniusLift : A → A)^[j - i]) _ _ _ n x
+  deltaDirectLimitSection_of (fun _ : ℕ ↦ A)
+    (fun i j _ ↦ (D.frobeniusLift : A → A)^[j - i]) (fun _ ↦ D)
+    (fun i j _ x ↦ D.frobeniusLift_iterate_delta (j - i) x) n x
 
 /-- Frobenius余極限のδ構造。 -/
-def deltaPerfectionStructure (D : DeltaStructure p A) : DeltaStructure p (DeltaPerfection D) where
-  sectionHom := deltaPerfectionSection D
-  coeff_zero := by
-    intro x
-    obtain ⟨n, a, rfl⟩ := Ring.DirectLimit.exists_of x
-    change (deltaPerfectionSection D (deltaPerfectionOf D n a)).coeff 0 = deltaPerfectionOf D n a
-    simp only [deltaPerfectionSection_of, wittTwoMap_coeff, D.coeff_zero]
+def deltaPerfectionStructure (D : DeltaStructure p A) : DeltaStructure p (DeltaPerfection D) :=
+  deltaDirectLimitStructure (fun _ : ℕ ↦ A)
+    (fun i j _ ↦ (D.frobeniusLift : A → A)^[j - i]) (fun _ ↦ D)
+    (fun i j _ x ↦ D.frobeniusLift_iterate_delta (j - i) x)
 
 /-- 全ての標準段射はδ射。 -/
 theorem deltaPerfectionOf_isDeltaHom (D : DeltaStructure p A) (n : ℕ) :
-    D.IsDeltaHom (deltaPerfectionStructure D) (deltaPerfectionOf D n) := by
-  intro x
-  change deltaPerfectionOf D n (D.delta x) =
-    (deltaPerfectionSection D (deltaPerfectionOf D n x)).coeff 1
-  rw [deltaPerfectionSection_of, wittTwoMap_coeff]
-  rfl
+    D.IsDeltaHom (deltaPerfectionStructure D) (deltaPerfectionOf D n) :=
+  deltaDirectLimitOf_isDeltaHom (fun _ : ℕ ↦ A)
+    (fun i j _ ↦ (D.frobeniusLift : A → A)^[j - i]) (fun _ ↦ D)
+    (fun i j _ x ↦ D.frobeniusLift_iterate_delta (j - i) x) n
 
 /-- 完全化のFrobeniusは各段で元のFrobeniusを適用する。 -/
 @[simp] theorem deltaPerfection_frobenius_of (D : DeltaStructure p A) (n : ℕ) (x : A) :

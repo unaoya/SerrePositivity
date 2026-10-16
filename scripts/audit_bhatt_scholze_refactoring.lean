@@ -1,3 +1,5 @@
+import SerrePositivity.BhattScholze.DeltaPerfectionUniversal
+import SerrePositivity.BhattScholze.DeltaAdjoinDivisionFiniteColimit
 import SerrePositivity.BhattScholze.PDCompletionInterface
 import SerrePositivity.BhattScholze.OrientedPrismHom
 import SerrePositivity.BhattScholze.PerfectDeltaPDQuotientEquiv
@@ -188,3 +190,25 @@ noncomputable example (D : DeltaStructure p R) : polynomialRankOneDeltaSection �
       (fun s ↦ TruncatedWittVector.mk p (fun i ↦
         if i = 0 then MvPolynomial.X s else 0)) := rfl
 end PolynomialSectionContracts
+
+-- R2d: the original transition functions and direct limits are unchanged.
+assert_no_sorry SerrePositivity.BhattScholze.deltaDirectLimitSection
+#print axioms SerrePositivity.BhattScholze.deltaDirectLimitSection
+assert_no_sorry SerrePositivity.BhattScholze.deltaDirectLimitSection_of
+#print axioms SerrePositivity.BhattScholze.deltaDirectLimitSection_of
+assert_no_sorry SerrePositivity.BhattScholze.deltaDirectLimitSection_projection
+#print axioms SerrePositivity.BhattScholze.deltaDirectLimitSection_projection
+assert_no_sorry SerrePositivity.BhattScholze.deltaDirectLimitStructure
+#print axioms SerrePositivity.BhattScholze.deltaDirectLimitStructure
+assert_no_sorry SerrePositivity.BhattScholze.deltaDirectLimitStructure_delta_of
+#print axioms SerrePositivity.BhattScholze.deltaDirectLimitStructure_delta_of
+assert_no_sorry SerrePositivity.BhattScholze.deltaDirectLimitOf_isDeltaHom
+#print axioms SerrePositivity.BhattScholze.deltaDirectLimitOf_isDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.deltaDirectLimitLift_isDeltaHom
+#print axioms SerrePositivity.BhattScholze.deltaDirectLimitLift_isDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.deltaPerfection_isPerfect
+#print axioms SerrePositivity.BhattScholze.deltaPerfection_isPerfect
+assert_no_sorry SerrePositivity.BhattScholze.existsUnique_deltaPerfectionHom
+#print axioms SerrePositivity.BhattScholze.existsUnique_deltaPerfectionHom
+assert_no_sorry SerrePositivity.BhattScholze.deltaAdjoinDivisionFiniteColimitToFull_isDeltaHom
+#print axioms SerrePositivity.BhattScholze.deltaAdjoinDivisionFiniteColimitToFull_isDeltaHom

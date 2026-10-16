@@ -63,13 +63,12 @@ theorem existsUnique_deltaPerfectionHom (D : DeltaStructure p A) (E : DeltaStruc
   have hg (n : ℕ) (x : A) : g (deltaPerfectionOf D n x) = deltaPerfectionStage E hE f n x := by
     unfold g deltaPerfectionOf
     rw [Ring.DirectLimit.lift_of]
-  have hgd : (deltaPerfectionStructure D).IsDeltaHom E g := by
-    intro x
-    obtain ⟨n, a, rfl⟩ := Ring.DirectLimit.exists_of x
-    change g ((deltaPerfectionStructure D).delta (deltaPerfectionOf D n a)) =
-      E.delta (g (deltaPerfectionOf D n a))
-    rw [← deltaPerfectionOf_isDeltaHom D n a, hg, hg]
-    exact deltaPerfectionStage_isDeltaHom hE hf n a
+  have hgd : (deltaPerfectionStructure D).IsDeltaHom E g :=
+    deltaDirectLimitLift_isDeltaHom (fun _ : ℕ ↦ A)
+      (fun i j _ ↦ (D.frobeniusLift : A → A)^[j - i]) (fun _ ↦ D)
+      (fun i j _ x ↦ D.frobeniusLift_iterate_delta (j - i) x) E
+      (deltaPerfectionStage E hE f) (deltaPerfectionStage_compatible hE hf)
+      (deltaPerfectionStage_isDeltaHom hE hf)
   have hg0 : g.comp (deltaPerfectionOf D 0) = f := by
     ext x
     exact hg 0 x

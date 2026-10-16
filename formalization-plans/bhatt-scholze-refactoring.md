@@ -58,7 +58,7 @@ BS側が変更するのは `SerrePositivity/BhattScholze/`、このBS計画、BS
 | R2a | W₂写像と逆δ射を低層へ移す | 配置 | 新 `WittTwoMap`、`DeltaRing`、`DeltaQuotient`、`DeltaSectionNaturality`、直接利用先 | 完了 |
 | R2b | 環同型によるδ構造移送を統一 | 抽出 | 新 `DeltaTransport`、`DeltaDivisionSourceTensorDelta`、`DeltaRootSourceRawH0Delta` | 完了 |
 | R2c | 変数のδ値を指定する多項式構成とδ射判定 | 抽出 | 新 `PolynomialDelta`、`RelativeFreeDelta`、`PolynomialRankOneDelta`、普遍性利用先 | 完了 |
-| R2d | 有向環余極限上のδ構造と普遍射 | 抽出 | 新 `DeltaDirectLimit`、`DeltaPerfection`、`DeltaPerfectionUniversal`、`DeltaAdjoinDivisionFiniteColimit` | 一時検査済みの4モジュールを反映、統合検証中 |
+| R2d | 有向環余極限上のδ構造と普遍射 | 抽出 | 新 `DeltaDirectLimit`、`DeltaPerfection`、`DeltaPerfectionUniversal`、`DeltaAdjoinDivisionFiniteColimit` | 完了。534対象ビルド・基礎/B4・新7宣言監査、旧完全署名の一致を確認 |
 | R2e | δ閉包の生成元定理を基礎層へ集約 | 配置・再利用 | `DeltaClosureGeneration`、`DeltaDivisionIteratedRelations` | 完了 |
 | R3a | rank-one DPの一般比較射を分離し特殊版を一般版へ委譲 | 配置・再利用 | 新 `RankOneDPBaseChangeMap`、`RankOneDPTensorRelations`、`RankOneDPAnyBasis`、`RankOneDPPrimeBasis`、`RankOneDPBaseChange` | 完了 |
 | R3b | principal DPの一般関係式を分離し基底変更を一本化 | 配置・再利用 | 新 `PrincipalDPBaseChangeRelations`、`PrincipalDPBaseChange`、`PrincipalDPBaseChangeUniversal` | 完了 |
@@ -246,7 +246,7 @@ R4aは旧26公開署名と9定義本体を維持する案であり、一般比�
 3. **R2d：δ余極限。** `DeltaPerfection` と `DeltaAdjoinDivisionFiniteColimit` の切断・段射・普遍射の証明を抽出する。
    同じ `Ring.DirectLimit` と関数反復による遷移を保持する。Frobenius段送りと完全性、
    有限族から全族への具体的比較は元のモジュールに残す。
-   `hom_ext` による非空性・有向性の仮定削減は、構成の抽出後の別単位とする。
+   一般入口は `hom_ext` により非空性・有向性を要求せず構成できた（§9）。既存入口の仮定・署名は維持する。
 4. **R5a/b：普遍射とWitt表示の重複。** `existsUnique_deltaPerfectionHom` を使う薄い外延性入口を追加し、
    完備化順序比較の既存順射・逆射の合成を同定する。既存のPD・p完備化外延性は再利用する。
    Witt表示では同じ `perfectDeltaWittRecoveryEquiv` とその生成元の逆像を固定し、
@@ -377,6 +377,12 @@ R4bも計画済み5ファイルの一時検証から再開する。これらを�
   534対象・4,569ジョブ、基礎584件・B4 2,560件、追加10宣言と利用先のfocused監査が成功。
   R2c/R2d/R3cの旧75完全署名が変更前と一致し、旧二つのW₂ eval₂Homのrfl契約も成功。
   零環・pねじれ・異なる宇宙を維持し、新sorry・追加公理・引用依存なし。
+
+- R2d：W₂切断をMathlibの同じ環余極限へ持ち上げる一般構成と、段射・普遍射のδ両立を抽出した。
+  遷移は元の関数を保持し、新しい一般入口には非空性・有向性・単射性を要求しない。
+  既存perfectionと有限部分集合余極限の公開署名・遷移・shiftは維持。
+  534対象・4,569ジョブ、基礎584件・B4 2,560件、追加7宣言と旧3入口のfocused監査が成功。
+  R2c/R2d/R3cの旧75完全署名が一致し、追加宣言の依存公理は標準3公理のみ。
 
 ## 10 再調査の反映と残りの実施契約
 

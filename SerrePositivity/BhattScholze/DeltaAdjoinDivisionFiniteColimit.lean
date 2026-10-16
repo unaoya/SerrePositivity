@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.DeltaAdjoinDivisionFiniteSystem
-public import Mathlib.Algebra.Colimit.Ring
+public import SerrePositivity.BhattScholze.DeltaDirectLimit
 
 /-! # 有限部分族raw包の環余極限と標準δ構造 -/
 
@@ -34,29 +34,10 @@ theorem deltaAdjoinDivisionFiniteColimitOf_compatible {S T : Finset σ} (h : S �
 def deltaAdjoinDivisionFiniteColimitSection :
     DeltaAdjoinDivisionFiniteColimit D d a →+*
       WittTwo p (DeltaAdjoinDivisionFiniteColimit D d a) :=
-  Ring.DirectLimit.lift _ _ _
-    (fun T ↦ (wittTwoMap (deltaAdjoinDivisionFiniteColimitOf D d a T)).comp
-      (deltaAdjoinDivisionStructure D d (fun t : T ↦ a t)).sectionHom) (by
-      intro S T h x
-      apply TruncatedWittVector.ext
-      intro k
-      fin_cases k
-      · simp only [RingHom.comp_apply, wittTwoMap_coeff]
-        change deltaAdjoinDivisionFiniteColimitOf D d a T
-          (((deltaAdjoinDivisionStructure D d (fun t : T ↦ a t)).sectionHom
-            (deltaAdjoinDivisionFiniteMap D d a h x)).coeff 0) =
-          deltaAdjoinDivisionFiniteColimitOf D d a S
-            (((deltaAdjoinDivisionStructure D d (fun s : S ↦ a s)).sectionHom x).coeff 0)
-        rw [DeltaStructure.coeff_zero, DeltaStructure.coeff_zero]
-        exact deltaAdjoinDivisionFiniteColimitOf_compatible D d a h x
-      · simp only [RingHom.comp_apply, wittTwoMap_coeff]
-        change deltaAdjoinDivisionFiniteColimitOf D d a T
-          ((deltaAdjoinDivisionStructure D d (fun t : T ↦ a t)).delta
-            (deltaAdjoinDivisionFiniteMap D d a h x)) =
-          deltaAdjoinDivisionFiniteColimitOf D d a S
-            ((deltaAdjoinDivisionStructure D d (fun s : S ↦ a s)).delta x)
-        rw [← (deltaAdjoinDivisionFiniteMap_spec D d a h).1 x]
-        exact deltaAdjoinDivisionFiniteColimitOf_compatible D d a h _)
+  deltaDirectLimitSection (fun T : Finset σ ↦ DeltaAdjoinDivisionFiniteStage D d a T)
+    (fun _ _ h ↦ deltaAdjoinDivisionFiniteMap D d a h)
+    (fun T ↦ deltaAdjoinDivisionStructure D d (fun t : T ↦ a t))
+    (fun _ _ h ↦ (deltaAdjoinDivisionFiniteMap_spec D d a h).1)
 
 /-- 余極限の切断の各有限段上の公式。 -/
 theorem deltaAdjoinDivisionFiniteColimitSection_of (T : Finset σ)
@@ -64,33 +45,28 @@ theorem deltaAdjoinDivisionFiniteColimitSection_of (T : Finset σ)
     deltaAdjoinDivisionFiniteColimitSection D d a (deltaAdjoinDivisionFiniteColimitOf D d a T x) =
       wittTwoMap (deltaAdjoinDivisionFiniteColimitOf D d a T)
         ((deltaAdjoinDivisionStructure D d (fun t : T ↦ a t)).sectionHom x) :=
-  Ring.DirectLimit.lift_of _ _ _ T x
+  deltaDirectLimitSection_of (fun T : Finset σ ↦ DeltaAdjoinDivisionFiniteStage D d a T)
+    (fun _ _ h ↦ deltaAdjoinDivisionFiniteMap D d a h)
+    (fun T ↦ deltaAdjoinDivisionStructure D d (fun t : T ↦ a t))
+    (fun _ _ h ↦ (deltaAdjoinDivisionFiniteMap_spec D d a h).1) T x
 
 /-- 有限部分族環余極限の標準δ構造。 -/
 def deltaAdjoinDivisionFiniteColimitStructure :
-    DeltaStructure p (DeltaAdjoinDivisionFiniteColimit D d a) where
-  sectionHom := deltaAdjoinDivisionFiniteColimitSection D d a
-  coeff_zero := by
-    classical
-    intro x
-    obtain ⟨T, y, rfl⟩ := Ring.DirectLimit.exists_of x
-    change (deltaAdjoinDivisionFiniteColimitSection D d a
-      (deltaAdjoinDivisionFiniteColimitOf D d a T y)).coeff 0 =
-        deltaAdjoinDivisionFiniteColimitOf D d a T y
-    rw [deltaAdjoinDivisionFiniteColimitSection_of, wittTwoMap_coeff, DeltaStructure.coeff_zero]
+    DeltaStructure p (DeltaAdjoinDivisionFiniteColimit D d a) :=
+  deltaDirectLimitStructure (fun T : Finset σ ↦ DeltaAdjoinDivisionFiniteStage D d a T)
+    (fun _ _ h ↦ deltaAdjoinDivisionFiniteMap D d a h)
+    (fun T ↦ deltaAdjoinDivisionStructure D d (fun t : T ↦ a t))
+    (fun _ _ h ↦ (deltaAdjoinDivisionFiniteMap_spec D d a h).1)
 
 /-- 全ての有限段の標準射はδ射。 -/
 theorem deltaAdjoinDivisionFiniteColimitOf_isDeltaHom (T : Finset σ) :
     (deltaAdjoinDivisionStructure D d (fun t : T ↦ a t)).IsDeltaHom
       (deltaAdjoinDivisionFiniteColimitStructure D d a)
-      (deltaAdjoinDivisionFiniteColimitOf D d a T) := by
-  intro x
-  change deltaAdjoinDivisionFiniteColimitOf D d a T
-      ((deltaAdjoinDivisionStructure D d (fun t : T ↦ a t)).delta x) =
-    (deltaAdjoinDivisionFiniteColimitSection D d a
-      (deltaAdjoinDivisionFiniteColimitOf D d a T x)).coeff 1
-  rw [deltaAdjoinDivisionFiniteColimitSection_of, wittTwoMap_coeff]
-  rfl
+      (deltaAdjoinDivisionFiniteColimitOf D d a T) :=
+  deltaDirectLimitOf_isDeltaHom (fun T : Finset σ ↦ DeltaAdjoinDivisionFiniteStage D d a T)
+    (fun _ _ h ↦ deltaAdjoinDivisionFiniteMap D d a h)
+    (fun T ↦ deltaAdjoinDivisionStructure D d (fun t : T ↦ a t))
+    (fun _ _ h ↦ (deltaAdjoinDivisionFiniteMap_spec D d a h).1) T
 
 /-- 環余極限から全族raw包への標準環射。 -/
 def deltaAdjoinDivisionFiniteColimitToFull :
@@ -109,19 +85,14 @@ theorem deltaAdjoinDivisionFiniteColimitToFull_of (T : Finset σ)
 /-- 環余極限から全族raw包への標準射はδ射。 -/
 theorem deltaAdjoinDivisionFiniteColimitToFull_isDeltaHom :
     (deltaAdjoinDivisionFiniteColimitStructure D d a).IsDeltaHom
-      (deltaAdjoinDivisionStructure D d a) (deltaAdjoinDivisionFiniteColimitToFull D d a) := by
-  classical
-  intro x
-  obtain ⟨T, y, rfl⟩ := Ring.DirectLimit.exists_of x
-  change deltaAdjoinDivisionFiniteColimitToFull D d a
-    ((deltaAdjoinDivisionFiniteColimitStructure D d a).delta
-      (deltaAdjoinDivisionFiniteColimitOf D d a T y)) =
-    (deltaAdjoinDivisionStructure D d a).delta
-      (deltaAdjoinDivisionFiniteColimitToFull D d a
-        (deltaAdjoinDivisionFiniteColimitOf D d a T y))
-  rw [← deltaAdjoinDivisionFiniteColimitOf_isDeltaHom D d a T y,
-    deltaAdjoinDivisionFiniteColimitToFull_of, deltaAdjoinDivisionFiniteColimitToFull_of]
-  exact (deltaAdjoinDivisionFiniteToFull_spec D d a T).1 y
+      (deltaAdjoinDivisionStructure D d a) (deltaAdjoinDivisionFiniteColimitToFull D d a) :=
+  deltaDirectLimitLift_isDeltaHom (fun T : Finset σ ↦ DeltaAdjoinDivisionFiniteStage D d a T)
+    (fun _ _ h ↦ deltaAdjoinDivisionFiniteMap D d a h)
+    (fun T ↦ deltaAdjoinDivisionStructure D d (fun t : T ↦ a t))
+    (fun _ _ h ↦ (deltaAdjoinDivisionFiniteMap_spec D d a h).1)
+    (deltaAdjoinDivisionStructure D d a) (fun T ↦ deltaAdjoinDivisionFiniteToFull D d a T)
+    (fun _ _ h x ↦ DFunLike.congr_fun (deltaAdjoinDivisionFiniteToFull_compatible D d a h) x)
+    (fun T ↦ (deltaAdjoinDivisionFiniteToFull_spec D d a T).1)
 
 /-- 空有限段を通る余極限への標準係数射。 -/
 def deltaAdjoinDivisionFiniteColimitBaseMap : A →+* DeltaAdjoinDivisionFiniteColimit D d a :=
