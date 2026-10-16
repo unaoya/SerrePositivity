@@ -2905,3 +2905,13 @@ EssSurj・IsEquivalenceを証明し、次数を保つ実逆関手と両合成の
 `FreePathSimplicialResolution`は独立した対象・Hom宇宙の任意の圏へ適用する。
 モデル構造は不要。選択圏への全次数の整合的な持ち上げと、元の基底上の小さい厳密なRMapは残る。
 受入検証は`check_simplex_presentation_equivalence`（92宣言・5モジュール）。
+
+
+### 自由分解の最初の相対比較（§349）
+
+`OrdinaryBarFreeDiagramHomotopy`は任意のP上の二つの自由図式を、指定生成射を
+区間全体で固定して比較する。`OrdinaryBarFreeResolutionComparison`は元の基底の
+実freeCoverの二面へ適用し、両端の一致、退化像全体の一定性、基底射影の可換性を
+関手の実等式で証明する。任意のPを保持し、源への追加仮定や大きいSSetモデルは不要。
+異なるPごとの選択の自然性、全次数の高次整合性、最終的な小さい厳密なRMapは残る。
+受入検証は`check_relative_free_resolution_comparison`（69宣言・2モジュール）。
