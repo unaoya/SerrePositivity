@@ -3,6 +3,7 @@ module
 public import SerrePositivity.CLMST.ConditionalCohomologyVanishing
 public import SerrePositivity.HomologicalAlgebra.TorFiniteCoefficients
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FiniteTensorComplete
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FiniteCoefficientPowerComparison
 public import SerrePositivity.CommutativeAlgebra.PerfectoidDerivedComplete
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdeal
 public import SerrePositivity.CommutativeAlgebra.RegularParameters
@@ -52,6 +53,16 @@ lemma rPerfd_derivedTensor_isComplete (N : ModuleCat.{u} A) [Module.Finite A N] 
       ((boundedAboveDerivedTensorModuleFunctor
         (ModuleCat.of A (RPerfd A D t p hperf))).obj N) :=
   DerivedCompletion.boundedAboveDerivedTensor_isComplete_of_finite_regular A (p : A)
+    (ModuleCat.of A (RPerfd A D t p hperf)) N (rPerfd_isModuleComplete A t D p hperf)
+
+/-- The original Koszul-completion-to-power-cokernel comparison is a
+quasi-isomorphism in the actual RPerfd tensor model for every finite test module. -/
+lemma rPerfd_finiteCoefficientPowerComparison_quasiIso
+    (N : ModuleCat.{u} A) [Module.Finite A N] :
+    QuasiIso (DerivedCompletion.koszulPowerCokernelComparison (p : A)
+      (DerivedCompletion.finiteCoefficientTensorModel A
+        (ModuleCat.of A (RPerfd A D t p hperf)) N)) :=
+  DerivedCompletion.finiteCoefficientPowerComparison_quasiIso A (p : A)
     (ModuleCat.of A (RPerfd A D t p hperf)) N (rPerfd_isModuleComplete A t D p hperf)
 
 /-- The actual finite-stage map has the base compatibility required by the
