@@ -7898,3 +7898,42 @@ K-flat部分圏の局所化比較が同値であることを用い、元の固�
 さらに解像度計算同型の自己・推移整合性を整理する。
 local Hom条件のないdg圏自体の解像度経路、U12e全受入、U12f・U13d/e残部・U14・U15d/e・U16/U17・D4mは残る。
 U17までの目標を保持し、共有系列への新しいAPI要求はない。
+
+
+### 17.173 U12e14：全導来合成の左右単位と任意解像度表示（2026-10-17）
+
+`Derived/BimoduleCompositionResolution.lean`は解像度計算同型の増大射との整合性
+**derivedBimoduleComposeResolutionComputation_fac**、恒等解像度での自己整合性、
+**derivedBimoduleComposeResolutionComputation_naturality**を証明する。
+最後の自然性は増大squareが導来圏で可換であればよく、閉零圏での厳密な可換性や
+解像度間の射の準同型性を要求しない。ホモトピーまで可換な射影的持ち上げにも使用できる。
+
+`Derived/BimoduleCompositionRightUnit.lean`は対角bimoduleを右K-flat部分圏の対象
+**rightKFlatDiagonal**として束ねる。**derivedBimoduleRightUnitIso**は全導来合成上の
+右単位自然同型であり、元の閉零対象での値はK-flat値比較と既存右単位の導来像の合成。
+`Derived/BimoduleCompositionLeftUnit.lean`は全導来合成を前因子の対角対象で評価する
+**derivedBimoduleLeftUnitFunctor**、任意解像度を使った左単位表示とその自然性を構成する。
+標準解像度への持ち上げと導来増大squareを用いて閉零対象上の自然同型を得て、
+指定準同型局所化の普遍性から**derivedBimoduleLeftUnitIso**を全導来圏へ降下した。
+
+`Derived/BimoduleCompositionLeftUnitComputation.lean`は局所化前の対象と右K-flat対象での
+左単位の計算式、増大射との整合性、**derivedBimoduleLeftUnitIso_resolution_app**を証明する。
+これにより全導来左単位は任意の指定右K-flat解像度からの表示と一致する。
+異なる二解像度からの表示の一致には、それらの間の比較射を新たに選ぶ必要がない。
+任意可換環・非有界・独立対象宇宙・Small.{u} B/Cを保持し、全導来単位の構成には
+localHomKFlat A Cを明示的に要求する。条件なしの構成へ強めたとは扱わない。
+
+Checks.DerivedBimoduleUnits・Checks.DerivedBimoduleComposition・Checks.KFlatBimoduleReplacement・
+Checks.DerivedBimodulePentagon・Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（3066 jobs、終了コード0、警告なし）。左右自然同型、任意解像度の左単位表示と
+選択独立性、導来増大squareでの計算自然性、独立対象宇宙とZMod 2を検査した。
+主要18宣言の直接公理監査は標準公理のみ。監査累計3305宣言。
+今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は13 Markdown・320 exposition参照まで進み、担当外BhattScholze互換宣言の
+未解決参照1件で失敗した。共有ルート・共有一般論・該当系列は編集していない。
+
+次は全導来合成の結合自然同型を構成し、全因子に関する自然性と三角・五角coherenceを証明する。
+既存の固定K-flat因子に対するcoherenceから、今回の全導来単位を含む図式への輸送が必要。
+左右単位の存在のみでU12eのcoherence受入とはしない。
+local Hom条件のないdg圏自体の解像度経路、U12e全受入、U12f・U13d/e残部・U14・U15d/e・
+U16/U17・D4mは残る。U17までの目標を保持し、共有系列への新しいAPI要求はない。
