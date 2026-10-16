@@ -16036,3 +16036,68 @@ row pairを既存barに置けることを示した段階であり、独立に選
 元のreplacement barとの接続、実bar右脚の弱同値、基底Cᵒᵖ×C上の自然な小値化、
 F1の最終小さい厳密RMap、F2の最終自然弱同値zigzagは未完了。
 全体目標F→L→E→Sを維持する。
+
+
+## 301. 実comma射によるbarホモトピーと右脚の行sectionへの判定帰着（2026-10-16）
+
+§300の実row augmentationを、既存bar内の全simplicialホモトピーへ接続した。
+これによりpaired raw barの右脚全体の可逆性を、同じbarへの行sectionの可逆性へ帰着した。
+行sectionが可逆であるという無条件の結論は今回も得ておらず、右脚の完成とは扱わない。
+
+### 301.1 独立宇宙の一般relative barでの実ホモトピー
+
+`Simplicial/RelativeBarSections`は任意のp:D→B・F:D→SSetに対し、実comma対象
+α:p(d)→bからrelative barへの写像を、同じ対象の定数chainによって構成する。
+実comma射k:d→eとp(k)≫β=αから、各次数の実要素comma圏内の射と区間図式を作る。
+この区間は0→1の混合部分を含めて全単体作用素と可換である。
+源・基底・値の各宇宙は独立で、モデル構造は不要である。
+
+`RelativeBarSectionHomotopy`はその区間を対角にまとめ、αからの写像と、
+元の実F(k)に続いてβから入る写像との間の全simplicialホモトピーを構成する。
+従って任意のanodyneを可逆にする関手で、両写像の像は等しい。
+対象ごとの等式や局所化内の存在だけに置き換えず、実ホモトピー自体を公開する。
+
+### 301.2 同じ自然spanの右脚との接続
+
+`RelativeBarSectionUnit.spanSection_right`は、以前の実source sectionに続けて実span右脚を
+適用した写像が、恒等comma対象からの301.1の写像そのものであると証明する。
+以前証明した左脚の実収縮を用い、source sectionの像はanodyne反転後に可逆となる。
+従って同じ右脚の像の可逆性と、恒等comma対象から入る写像の像の可逆性は同値である。
+ここでも大きい宇宙のSSetモデル構造は使わない。
+
+### 301.3 同じrow presentationへの適用と全図式の判定
+
+`UniverseLiftPadding`は、値の宇宙が同じでも異なるULift wrapperを持つ場合の明示的な
+自然同型を提供する。これにより一般barの写像を§299の元のreference写像へ戻す。
+
+`ResolutionBarRowHomotopy`は§300の同じ実row augmentation射に301.1を適用する。
+元のreference写像と、同じ行比較写像の宇宙liftに続いて同じrow pairからbarへ入る写像が、
+全simplicialホモトピーで結ばれる。
+小さい行比較が弱同値であることと宇宙liftの既存判定を使い、
+reference写像のanodyne局所化での可逆性を任意の固定行のsectionの可逆性に同値化する。
+これと301.2を結び、実paired raw bar右脚の各成分の判定を同じ行sectionへ帰着した。
+
+`natural_right_isIso_iff_rows`は全referenceにわたる判定を公開する。
+右脚の実自然変換全体がanodyne局所化後に可逆であることは、
+各referenceの0次行から同じbarへ入る実写像が可逆であることと同値である。
+新しいouter-frame liftの関手性を仮定せず、元の実右脚と同じ写像を使う。
+
+### 301.4 受入検証と残項目
+
+実装コミット`465bb679`。全て成功した。
+
+- 共有入口のbuild：2861 jobs、追加警告なし。
+- `check_resolution_bar_row_homotopy`：独立宇宙・モデル不要の全barホモトピー、
+  任意のanodyne反転関手での実右脚のsectionによる判定、元のreference写像のwrapper回収、
+  同じrow augmentationへの実ホモトピーの適用、任意の固定行への右脚成分の可逆性判定、
+  全referenceの0次行による実自然変換全体の可逆性判定。
+  新規39宣言・5モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：9134宣言・664モジュール、標準公理のみ。
+- `check_resolution_frame_rows`：96宣言・5モジュールの回帰確認。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+残る中心条件は、上記の各0次行sectionが実際に可逆であることの証明である。
+今回の同値判定はその条件の証明を代用しない。§299の評価のもう一方の合成を扱う比較、
+元のreplacement barとの接続、実bar右脚の無条件の弱同値、基底Cᵒᵖ×C上の自然な小値化、
+F1の最終小さい厳密RMap、F2の最終自然弱同値zigzagは引き続き未完了。
+全体目標F→L→E→Sを維持する。

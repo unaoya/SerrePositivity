@@ -2337,3 +2337,16 @@ parameter・入力・出力の実移送を含む整合式を証明する。
 新しいouter-frame liftの関手性は主張しない。barの逆向きホモトピー比較・右脚、
 元のreplacement barとの比較、基底上の最終小さい厳密RMapは未完了。
 検証：`scripts/check_resolution_frame_rows.lean`、計画書§300。
+
+
+### 実barホモトピーと右脚の行sectionへの帰着（§301）
+
+`RelativeBarSections`・`RelativeBarSectionHomotopy`は、任意の実comma射から
+relative barへの全写像の間のsimplicialホモトピーを構成する。モデル構造は不要。
+`RelativeBarSectionUnit`は同じ自然spanの右脚をsource sectionで検出する。
+`UniverseLiftPadding`は元のreferenceのULift wrapperを明示的な自然同型で回収する。
+`ResolutionBarRowHomotopy`は同じrow augmentationへの実ホモトピーを作り、
+paired raw bar右脚全体の局所化後の可逆性を全referenceの0次行sectionの可逆性へ帰着する。
+0次行sectionが可逆であること自体は未証明。右脚の無条件の弱同値、
+元のreplacement barとの比較、基底上の最終小さい厳密RMapは未完了。
+検証：`scripts/check_resolution_bar_row_homotopy.lean`、計画書§301。
