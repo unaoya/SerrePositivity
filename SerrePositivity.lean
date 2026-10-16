@@ -864,6 +864,7 @@ public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedHense
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedEtale
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedEtaleCover
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedEtaleAwayCover
+public import SerrePositivity.CLMST.PerfectoidIdealTorTransport
 
 /-!
 # Serre の交点重複度の正値性の形式化
