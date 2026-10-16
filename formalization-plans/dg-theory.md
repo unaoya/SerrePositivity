@@ -5138,3 +5138,32 @@ distinguished性の反映・contractible三角形・ZMod 2上の空生成集合�
 次は小さい代表系のshift/三角比較を受け入れた後、標準cone三角形との一致と一対象Aの既存PerfectHomotopy比較を証明する。
 U13e全受入・U13d・U11eのcoherence・U12e/f・U14〜U17・D4mは未完。採用済み引用は0件。
 共有ルート・共有モデル一般論・他系列のファイルを変更していない。
+
+
+### 17.94 U13e7：小さいdg代表系のH⁰三角構造と包含比較（2026-10-16）
+
+`Perfect/SmallEnhancementTriangulated.lean`は小さい代表系のH⁰に整数shiftを与える。
+主Perfへ送り、そこでshiftした後に選択した小さい射影的代表へ戻る関手を各整数に定め、
+余単位で主Perfのshiftとの比較を構成する。固定版MathlibのFullyFaithful.hasShiftにより
+zero/add coherenceを誘導し、同値の順逆関手と単位・余単位のCommShiftを得た。
+小さい代表系が元の加群shiftで厳密に閉じているとは仮定しない。
+
+主Perfのdistinguished三角形を引き戻し、前節の各公理の証明を再利用して、
+小さい代表系のH⁰を三角圏とした。主Perfとの比較はshift整合的な三角同値である。
+さらに、実際の小さいdg包含のH⁰と全射影的perfect H⁰との比較を構成した。
+主Perfへの因子化の自然同型を通じてCommShiftとその整合性を引き戻し、
+包含の三角性を完全忠実な主Perf比較で判定した。この包含は既に証明した完全忠実性・
+本質的全射性により同値でもある。元のdg包含の準同値と全Homの一致は§17.90のまま保持する。
+
+Checks.SmallPerfectEnhancementTriangulated・Checks.PerfectEnhancementTriangulated・
+Checks.PerfectEnhancementShift・Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功
+（2897 jobs、終了コード0、警告なし）。任意A・独立対象宇宙・任意S、対象のsmall性、
+小さいH⁰の八面体・順逆三角比較、実際の包含のCommShift・三角性・同値、正負shift合成、
+ZMod 2上の空生成集合を検査した。
+主要19宣言の直接公理監査は終了コード0、標準公理のみ。監査累計2272宣言。
+今回の2 Leanファイルにsorry/admit/新規axiomはない。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査も成功。
+
+U13e全受入は、実際の標準dg cone三角形との一致と一対象Aの既存PerfectHomotopy比較を残す。
+U13d・U11eのcoherence・U12e/f・U14〜U17・D4mも未完。採用済み引用は0件。
+共有一般論・共有ルート・他系列のファイルを変更していない。
