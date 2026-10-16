@@ -5790,3 +5790,34 @@ U15aの有限path添字・空path・tensor項・直和・宇宙の入口を受�
 U15cの指定収縮データ付き厳密普遍性・U15dの係数変更・U15eのVerdier比較も未完。
 U11e全受入・U13eの有限射影代表と本質的全射・U13d・U12e/f・U14・U16/U17・D4mは未完。
 採用済み引用は0件。共有系列への追加要求はなく、共有ルート・既存PerfectComplex・他系列は変更していない。
+
+
+### 17.116 U15b1：全次数tensorによるε消去・任意位置のface・有限消去和（2026-10-16）
+
+`Complexes/TensorRightHom.lean`はsigned symmetryによる共役から右tensorの全次数Hom写像を
+構成した。純tensor上で左因子にcochainを作用させる際の追加符号が消えることを証明し、
+全Homのchain mapが任意整数次数のcocycleを保つ補題も公開する。
+`Quotient/EpsilonDifferential.lean`は次数−1のε複体から単位複体への次数+1のcochainを定義した。
+唯一の非零成分・標準生成元の像・内部Hom微分に関する閉性を証明した。
+`Quotient/EpsilonTensor.lean`では左・右tensorと中間εの消去を構成し、それぞれの閉性を証明する。
+左因子の次数iを通る場合の符号は(-1)^i、右tensorでは追加符号なしである。
+
+`Quotient/ErasureFaces.lean`は先頭εを消して隣接Homを豊穣合成するeraseFirstと、
+任意位置のeraseFaceを再帰的に構成した。後方の消去は既存tensorLeftHomを二重に使うため、
+先行するHomとεの次数に由来する符号を保持する。各faceが内部微分と反交換することを証明した。
+`Quotient/ErasureRows.lean`は各faceを消去後のpathの包含と合成し、pathの有限長にわたって足す。
+このeraseRowの閉性、空pathで零、単一記号の場合の公式を証明した。
+faceの定義にはSmall Dを要求せず、全path直和を終域とする有限和のみSmall.{u} Dを要求する。
+任意可換環・非有界複体・独立対象宇宙の規約を保持する。
+
+Checks.ErasureFaces・Checks.QuotientPaths・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（2651 jobs、終了コード0、警告なし）。任意位置のfaceの型・閉性、
+有限消去和の閉性、非有界複体の中間消去、ZMod 2で長さ2のpathを検査した。
+主要29宣言のChecks直接実行による公理監査は標準公理のみ。監査累計2548宣言。
+文書検査は24 Markdown・311 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+U15b全受入は未完。次は各eraseRowを全直和の次数+1自己cochainへ貼り合わせ、
+二つのε消去の相殺と二乗零、元の内部微分との和の二乗零、合成・単位との両立を証明する。
+U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mも未完。
+採用済み引用は0件。共有一般論・共有ルートimport・他系列の変更は編集していない。
