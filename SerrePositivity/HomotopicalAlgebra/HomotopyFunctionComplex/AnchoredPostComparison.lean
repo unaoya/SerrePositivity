@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.CategoryTheory.AnchoredChain
+public import SerrePositivity.CategoryTheory.AnchoredChainNerve
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PostCompositionChain
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanTriangleFamily
 
@@ -163,6 +164,12 @@ lemma reindexHomotopy_relative (θ : Fin (m + 1) →o Fin (n + 1)) :
     (congrArg (fun e => TriangleBook.obj (ULift.{v} (Fin (m + 1))) ◁
       (SSet.stdSimplex.isTerminalObj₀.from _ ≫ RelativeChoiceSpace.pointUnitIso.hom) ≫
         (ρ_ _).hom ≫ e) (reindexedBoundary hcof hfib f c θ))
+
+/-- The nerve identification retains each actual factorization comparison triangle. -/
+lemma fromDiagram_triangle (F : Fin (n + 1) ⥤ ArrowFactorization g) (k : Fin (n + 1)) :
+    triangle hcof hfib f (AnchoredChain.fromDiagram F) k =
+      factorTriangle hcof hfib f (F.obj k) :=
+  congrArg (factorTriangle hcof hfib f) (AnchoredChain.cutDiagram_fromDiagram_obj F k)
 
 /-- Identity anchors recover exactly the earlier selected cut triangle. -/
 lemma ofDiagram_triangle (F : Fin (n + 1) ⥤ ResolutionObject C) (X : ResolutionObject C)
