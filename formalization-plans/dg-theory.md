@@ -5626,3 +5626,28 @@ U13eの既存PerfectHomotopyとの線形・shift・三角比較は構成でき�
 主Perfへの本質的全射にはホモトピー冪等の分裂・retractの有限射影代表が残る。
 U13e全受入・U13d・U11eのcoherence・U12e/f・U14〜U17・D4mは未完。
 採用済み引用は0件。共有系列への追加要求はなく、共有ルート・既存PerfectComplex・他系列は変更していない。
+
+
+### 17.111 U13e24：主Perfの全対象を既存有限射影比較像のretractで表す（2026-10-16）
+
+`Perfect/RingRetract.lean`は一対象Aのfinite cell Mの実際の評価複体から
+ringFiniteCellPerfectHomotopyを構成する。有限操作の評価がstrictlyPerfectComplexである
+§17.108の証明を、既存perfectHomotopyProperty_quotientへ適用する。
+§17.110の自然同型、既存quotientCompQhIso、一対象導来同値のunit比較、ringModule_recoverにより、
+この有限射影対象の実際の主導来比較像が元のMの主局所化像と同型であることを証明した。
+
+perfectModule_ring_retract_of_perfectHomotopyは主Perfの任意の対象Xについて、
+既存PerfectHomotopyの対象Pと、XからperfectHomotopyToDGPerfect(P)へのretractを与える。
+主導来圏内のretractを上の同型で運び、主Perfの充満部分圏の実際の射へ持ち上げる。
+この結果はPの上のホモトピー冪等が有限射影複体で分裂することまでは主張しない。
+
+Checks.RingRetract・Checks.RingKaroubi・Checks.RingPerfectTriangulated・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（3533 jobs、終了コード0、警告なし）。
+任意可換環・任意の主Perf対象のretract表示とZMod 2を検査した。
+主要3宣言の直接公理監査は標準公理のみ。監査累計2444宣言。
+文書検査は23 Markdown・311 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次はこのretract表示を共有Karoubi延長の本質像判定へ適用する。
+U13e全受入・U13d・U11eのcoherence・U12e/f・U14〜U17・D4mは未完。採用済み引用は0件。
+共有系列への追加要求はなく、共有ルート・既存PerfectComplex・他系列は変更していない。
