@@ -4831,3 +4831,42 @@ U13c全受入は未完。次はu-small余積における評価ホモロジーの
 代表加群のcompact性・生成性、Perf⇒compactへ接続する。
 U11eのcoherence・U12e/f・U13d/e・U14〜U17・D4mも未完。
 共有系列への追加要求はなく、共有一般論・共有ルート・他系列のファイルを変更していない。
+
+
+### 17.84 U13c4：任意u-small導来余積に関するrepresentableのcompact性（2026-10-16）
+
+`Complexes/CoproductSupport.lean`は任意cofanの加群余積をMathlibの具体的DirectSumと比較し、
+元の有限support表示を証明する。複体の次数ごとの余積に適用し、各成分へのchain mapを
+cofanの普遍性から作ることでcycleも有限個の成分cycleの像の和となることを証明した。
+複体は任意非有界、次数nは任意整数であり、相手の有界性を仮定しない。
+`Complexes/CoproductHomologySupport.lean`はcycle類の全射性・和・自然性を使い、
+余積のH⁰の元が有限個の成分H⁰の像の和で生成されることを得る。
+
+`Perfect/RepresentableCoproductSupport.lean`は§17.83の自然性と線形性を使い、
+Q(representable x)からQ(∐ M)への導来射を、有限個のQ(M j)への射とQ(ι j)の合成の和で表す。
+`Perfect/Compact.lean`はu-small余積への射の有限support条件としてmoduleCompactを定義する。
+任意の導来対象族Fを既存の射影解像度Pで表し、Q(∐ P)の実際の導来余積の普遍性から
+Q(∐ P)→∐ Fと∐ F→Q(∐ P)を構成して後者の右逆恒等式を証明した。
+これにより上記有限support表示を任意の主導来余積へ運び、moduleRepresentable_compactを証明する。
+Hom_DのA-flat性、全加群圏のsmall性、モデル構造は仮定しない。
+
+`Perfect/CompactComparison.lean`は標準線形写像
+DirectSum J (fun j => Hom(X,F j)) →ₗ[A] Hom(X,∐ F)を構成する。
+余積の各成分への射を用いてこの写像が常に単射であることを証明し、
+moduleCompactの有限support条件がこの標準写像の全射性、従って全単射性と同値であることを証明した。
+compact対象について実際の線形同値moduleCompactHomLinearEquivを公開する。
+`Perfect/CompactRetracts.lean`はcompact性のretract・同型閉性と零対象の場合を証明した。
+
+Checks.Compact・Checks.RepresentableHomologyNaturality・Checks.PerfectKaroubiEquivalence・
+Checks.StageSeven・既存Spectra.StageTwoの同時ビルドは成功（2896 jobs、終了コード0、警告なし）。
+任意A・独立対象宇宙・任意u-small族・任意整数次数のcycle・Hom直和比較の線形同値・
+retract/同型閉性・ZMod 2上の可算余積を検査した。
+主要21宣言の直接公理監査は終了コード0、標準公理のみ。監査累計2110宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。
+今回の7 Leanファイルにsorry/admit/新規axiomはない。担当差分の空白検査も成功。
+
+U13cのrepresentableのcompact性は得られたが、全受入は未完。
+次は全shiftによる生成性、compact性のshift/三角閉性とPerf⇒compactを証明する。
+compact⇒Perf・小さいdg enhancement・既存PerfectHomotopy比較は引き続きU13d/eに残る。
+U11eのcoherence・U12e/f・U14〜U17・D4mも未完。
+共有系列への追加要求はなく、共有一般論・共有ルート・他系列のファイルを変更していない。
