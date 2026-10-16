@@ -2674,3 +2674,16 @@ pushout後の単射性、一般augmentation・評価・最終小値化・F2は�
 大きい値宇宙のモデル構造・小さい基底は不要。
 bar用の合同関係と三条件、最終小さい厳密RMap・F2は未完了。
 検証：`scripts/check_small_diagram_quotient.lean`、計画書§328。
+
+
+### 全barの自然な通常の射ラベルと小さい粗商（§329）
+
+`LocalizedHomDiagram`は一般モデル圏の通常の局所化のlocally small性から、
+小さい通常の射集合とその定数単体集合の厳密図式を構成する。
+`OrdinaryMappingClassLabel`は両増大射を反転した分数式を全raw単体に付け、全作用での自然性を証明する。
+`OrdinaryBarMappingClasses`は全barの自然なラベル写像、raw包含での一致、π₀への自然な降下を供給する。
+そのkernelは全作用で安定で、各実商型がv-smallとなり、小さい厳密な粗商図式を与える。
+`DiagramQuotient`の一般kernel・単射比較・small性・降下APIも追加した。
+SSetのモデル構造は不要。π₀写像の全単射性、粗商の高次情報の保存は主張しない。
+高次を保つ自然な小値化・最終小さい厳密RMap・F2は未完了。
+検証：`scripts/check_ordinary_bar_mapping_classes.lean`、計画書§329。
