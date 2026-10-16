@@ -2263,3 +2263,15 @@ bar右脚と最終の小さい厳密RMapは未完了。
 同じ選択点の保持・全パラメータ・全源単体作用素・実中心移送との整合式を公開する。
 両側の混合整合性、実bar右脚の弱同値、基底上の最終小さい厳密RMapは引き続き未完了。
 検証：`scripts/check_balanced_resolution_comparison.lean`、計画書§294。
+
+
+### 同じraw二重Hom上の混合作用と全境界保持（§295）
+
+`CosimplicialMapFamily.ofDoubleHom`は実familyから全単体互換性を導く。
+`MixedDiagonalHom`は両側の作用順序の実等式とparameter制限との交換を証明する。
+`MixedResolutionLiftAction`は元の両側lift空間へ適用し、任意の単射境界上の両familyと
+作用写像全体を同時に保持する延長を構成する。小さいKan出力にも適用する。
+`MixedBiresolutionComparison`は既存raw図式との実自然同型を提供し、
+`MixedDiagonalHomRecovery`は元の両側の片側作用を同じ全写像として回収する。
+全中心・全因子分解の大域的整合性、bar右脚、最終の基底上の小さい厳密RMapは未完了。
+検証：`scripts/check_mixed_resolution_lift_action.lean`、計画書§295。

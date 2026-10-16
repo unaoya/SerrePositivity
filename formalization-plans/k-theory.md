@@ -15662,3 +15662,68 @@ n単体が実際の射A[n]→B[n]であるraw対角を作る。
 弱同値を導く部分はまだ証明していない。基底上の小さい厳密関手への自然な小値化も残る。
 F1の最終RMap・不変性・Kan性・π0比較への統合、F2の最終自然弱同値zigzag比較は未完了。
 全体目標F→L→E→Sを維持する。
+
+
+## 295. 同じraw二重Hom上の両側実lift作用と指定済み全境界の保持（2026-10-16）
+
+§294で残した混合作用を、元の実lift空間と同じraw二重Hom上で構成した。
+左右の作用順序の一致は、Kan置換前の実simplicial mapの等式である。
+任意の単射境界上の両側liftを同時に延長し、混合作用全体の制限も保持する。
+これはまだ全中心・全因子分解を動かす大域的な整合系の完成ではない。
+
+### 295.1 実double-Homから導く全単体互換性
+
+`CosimplicialMapFamily`は、simplicial parameter付きのcosimplicial図式間の射と、
+その全単体互換式を記録する補助構造である。
+`ofDoubleHom`は実際のdouble-Homへのsimplicial mapを対角で評価し、
+互換式をそのsimplicial自然性と各自然変換の自然性から証明する。
+後述のモデル圏への適用では、これに元のlift空間の実inclusionを入力する。
+互換性を独立の追加仮定として残してはいない。
+
+`MixedDiagonalHom`はn単体が実射A[n]→B[n]である混合対角Homを作る。
+終域diagramは反対圏のcosimplicial diagramで記述する。
+両側の同じ全parameter familyから、源lift・Hom単体・終域liftを実際に合成する。
+両側作用の二通りの順序が実simplicial mapとして等しいことを結合律で証明する。
+任意のparameter写像による制限とも交換する。ここまではモデル構造自体が不要である。
+
+### 295.2 元の実resolution liftへの適用と同時境界延長
+
+`MixedResolutionLiftAction`は、CとCᵒᵖの既存ResolutionLiftSpaceのinclusionを295.1へ入力し、
+両側の実liftが同時に作用する写像を構成する。
+互換性の入力は295.1で導出済みであり、源Cに関手的因子分解を要求しない。
+strict lift点でのfamilyの評価は、同じ実選択liftと同じ対角augmentationの合成となる。
+
+任意の単射i:K→Lと、K上で既に指定された両側の全lift familyに対し、
+両方を同時にLへ延長する。L上の任意のHom familyを作用させた写像は、
+Kへ制限すると元の両側familyによる混合作用そのものとなる。
+頂点だけでなく、指定された全高次単体と作用写像全体を保持する。
+出力だけを元の小さいSSetのKan置換へ送った作用についても、同じ全境界保持を証明する。
+Kan置換が積を保存するという仮定や、Kan置換を通した両側作用の未証明の交換式は使わない。
+
+### 295.3 同じ既存raw図式と片側作用の回収
+
+`MixedBiresolutionComparison.rawIso`は既存BiresolutionRawMappingの全図式と295.1の図式を、
+実射について恒等な自然同型で結ぶ。全単体作用素と全実presentation比較を保持する。
+従って新しい混合作用は、既存の同じraw二重Homから入力できる。
+`MixedDiagonalHomRecovery`は片側の通常対象を固定した場合の座標同型を構成し、
+元のDiagonalHom.pairingを同じ全parameter写像として回収する。
+受入例では、実resolution liftを代入した元のResolutionLiftAction.parameterizedについて、
+源側・反対圏の終域側の両方でこの実写像の回収を検証した。
+
+### 295.4 受入検証と残項目
+
+実装コミット`59d542e8`。全て成功した。
+
+- 共有入口のbuild：2834 jobs、追加警告なし。
+- `check_mixed_resolution_lift_action`：モデル不要の全parameter混合交換、
+  同じraw二重Homの全図式の自然同型、元のstrict lift点の実評価、両側の旧作用の全写像回収、
+  任意の単射全境界の同時保持、元のHom宇宙vにおけるKan出力。
+  源の対象・Hom宇宙は独立。新規87宣言・5モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：8796宣言・637モジュール、標準公理のみ。
+- `check_balanced_resolution_comparison`：68宣言・4モジュールの回帰確認。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+次はこの混合作用を両側の全中心移送に整合させ、既存の全chain・全因子分解の整合系へ接続する。
+混合出力と§294の両側Kan図式の比較、および実bar span右脚の弱同値の導出も残る。
+基底上の小さい厳密関手への自然な小値化、F1の最終RMap・不変性・Kan性・π0比較への統合、
+F2の最終自然弱同値zigzag比較は未完了である。全体目標F→L→E→Sを維持する。
