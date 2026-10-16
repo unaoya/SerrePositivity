@@ -8679,3 +8679,16 @@ DeltaRootFamilySourceColimitTor.leanに3公開定理を実装した。
 対象3828ジョブ成功、自分のコード警告なし（共有既存警告のみ）。pure B4監査全2213宣言成功。
 標準3公理以外なし、新sorry・公理・外部引用なし。次は標準導来augmentationを既存raw残余商へ比較する。
 無限根族、G9、候補比較同型・CFF、一般B4は未完成として保持する。
+
+## 有限根族の実導来β拡大とraw残余商比較の実装結果（2026-10-16）
+
+DeltaRootFamilyResidueSourceDerived.leanに2公開宣言を実装した。
+有限根族の全源Tor消滅から共通の標準導来augmentation同型を適用し、
+既存deltaRootResidueSourceEvalScalarEquivとdeltaDivisionSourceResidueTensorAlgEquivを再利用して、
+実βに沿う残余終域の導来拡大と、既存raw(p,d)商の次数零対象との同型を構成した。
+順射が標準導来augmentationと具体的残余商比較の合成に一致することも証明した。
+有限列挙s : Fin m ≃ σ・元の係数のp正則性・δd指定単元を明示し、Unique σ・外部G7/ghost仮定は不要。
+対象3838ジョブ成功、自分のコード警告なし（共有既存警告のみ）。pure B4監査全2215宣言成功。
+標準3公理以外なし、新sorry・公理・外部引用なし。既存係数同値や一般導来判定を重複定義していない。
+次は元の二因子源の実三因子係数商還元へこの同型を結び、元の商係数環上のホモロジーと忠実平坦性を有限根族で供給する。
+無限根族のfiltered colimit・G9・候補比較同型・CFF・一般B4は未完成として保持する。
