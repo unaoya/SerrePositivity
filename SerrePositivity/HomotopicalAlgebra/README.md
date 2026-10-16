@@ -2915,3 +2915,12 @@ EssSurj・IsEquivalenceを証明し、次数を保つ実逆関手と両合成の
 関手の実等式で証明する。任意のPを保持し、源への追加仮定や大きいSSetモデルは不要。
 異なるPごとの選択の自然性、全次数の高次整合性、最終的な小さい厳密なRMapは残る。
 受入検証は`check_relative_free_resolution_comparison`（69宣言・2モジュール）。
+
+
+### 実三辺の頂点・退化の重なり（§350）
+
+`FreePathResolutionDegreeTwo`は元の圏に直接作用する次数2の三面・二退化と全関係式を与える。
+`OrdinaryBarFreeTriangleBoundary`は既存の比較を三面へ前合成し、任意Pでの実三辺について、
+六端点、三頂点の重なり、六つの退化制限、二重退化の共通像での一定性を関手の実等式で証明する。
+P × ∂Δ²上の実境界関手、退化の生成射像の交差全体の特徴付け、相対充填は残る。
+受入検証は`check_free_triangle_boundary`（49宣言・2モジュール）。
