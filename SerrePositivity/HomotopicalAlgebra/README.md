@@ -2585,3 +2585,15 @@ pushout後の単射性、一般augmentation・評価・最終小値化・F2は�
 補助モデル構造・Qのcolimit保存は不要。
 一般augmentation・評価の可逆性、最終小値化・F2は未完了。
 検証：`scripts/check_kan_sequential_comparison.lean`、計画書§321。
+
+
+### 一般augmentationの可逆性と両bar augmentation（§322）
+
+`SkeletalDimension`は次元内の元の相対骨格と全体の実同型を供給する。
+`CellularNaturalComparison`は小さいcolimit・モノ射を保存する二関手間の自然比較を標準単体で判定する。
+境界・実cell pushout・全骨格の逐次colimitを使い、Qのcolimit保存は仮定しない。
+`SimplexNerveEquivalence`は任意の元のXの単体圏nerve augmentationの可逆性と、
+任意のanodyne反転関手への元のaugmentationをhomとする自然同型を構成する。
+`OrdinaryBarAugmentationEquivalences`は元のbar評価squareの大きい・小さい両augmentationを可逆にする。
+補助モデル構造は不要。row比較・評価の可逆性、自然な小値化・最終小さい厳密RMap・F2は未完了。
+検証：`scripts/check_simplex_nerve_equivalence.lean`、計画書§322。

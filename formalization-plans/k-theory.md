@@ -17321,3 +17321,64 @@ filteredな実Arrow図式の指定colimitにI.rlpが保たれることを証明�
 標準単体だけでの既存の可逆性を、境界・骨格・元の全SSetへ移す帰納を証明する必要がある。
 一般augmentation・元のbar評価の可逆性、自然な小値化、最終小さい厳密RMap・F2は未完了。
 全体目標F→L→E→Sを維持する。
+
+
+## 322. 一般の単体圏nerve augmentationと両bar augmentationの可逆性（2026-10-17）
+
+§311で標準単体に限っていた元のaugmentationについて、任意のSSetでの可逆性を証明した。
+§320のcoproduct・cube比較と§321の逐次比較を、元の境界・骨格の実構成へ接続した。
+さらに§310の元のbar評価squareに現れる大きい・小さい両augmentationを可逆にした。
+bar評価・row写像自体の可逆性は、今回の結論には含めない。
+
+### 322.1 特定のnerveに依存しないcell判定
+
+`SkeletalDimension`は、Xの次元がn未満なら、元の相対骨格のn段目がX全体に等しいことと、
+その実SSet同型を証明する。境界∂Δ[n]には既存の次元条件を使用する。
+
+`CellularNaturalComparison`は、任意の二つの小さいcolimit・モノ射を保存する
+U,V:SSet→SSetと実自然変換η:U→Vを扱う。
+元のQ(η_Δ[n])が全nで可逆なら、任意XでQ(η_X)が可逆になることを証明する。
+この定理は単体圏nerveに依存しない。
+
+証明は全Xのn骨格についての帰納である。
+初段は実始対象の同型、境界nは元のn骨格との次元同型、
+セルの全族は実coproduct、後続骨格は元のboundary pushoutとcube比較を使う。
+最後に元の全骨格の実colimitを両関手で移し、§321の逐次比較へ入れる。
+小さいcolimit保存から初期・ℕ図式への保存を降ろす際の宇宙も明示した。
+局所化関手Qがcolimitを保存するとは仮定しない。
+
+### 322.2 元の全augmentationの可逆性と自然同型
+
+`SimplexNerveEquivalence`は、§311の元のSimplexNerve.functorとaugmentationへ322.1を適用する。
+任意の値宇宙・任意の元のXについて、Q(augmentation_X)が可逆である。
+次元制限、Kan条件、補助SSetモデル構造は不要である。
+任意のanodyne反転関手Lでも可逆であり、元のaugmentationのLによる像をhomとする
+実自然同型SimplexNerve.functor⋙L≅Lを構成する。
+
+`OrdinaryBarAugmentationEquivalences`は、元の大きいbar側のaugmentationを、
+明示的なsource liftを外す実同型と、322.2の一般augmentationの合成として同定する。
+小さい出力側の元のaugmentationは、同じ小さいaugmentationの実universe liftと、
+元の出力paddingIsoの逆射との合成として同定する。
+§310のsquareで使用した両写像そのもののQによる像が可逆になる。
+値のラッパーを定義上同一視せず、実同型で比較する。
+
+### 322.3 受入検証と残るrow・評価比較
+
+実装コミット`bb54cd3d`。以下はすべて成功した。
+
+- 共有入口のbuild：2946 jobs、追加警告なし。
+- `check_simplex_nerve_equivalence`：独立した補助値宇宙での一般二関手のcell判定、
+  次元・Kan条件のない任意Xの元のaugmentationの可逆性、任意のanodyne反転関手への実自然同型、
+  そのhomが元のaugmentationの像と等しいこと、既存bar図式の両方の明示的なlift付きaugmentation。
+  新規28宣言・4モジュール、標準公理のみ。
+- `check_kan_sequential_comparison`：既存103宣言・5モジュールの回帰確認。
+- `check_ordinary_bar_endpoints`：既存61宣言・6モジュール、元の区間・augmentation squareの回帰確認。
+- `audit_homotopical_foundations`：9962宣言・749モジュール、標準公理のみ。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+次は元のrow側写像と評価の比較へ進む。
+両augmentationが可逆であることと、§310の実ホモトピー・可換squareだけでは、
+評価・evaluationNerveMap・rowNerveMapのすべてが可逆とはまだ結論しない。
+row側から元の小さい出力への比較を証明し、元のbar評価の可逆性へ接続する必要がある。
+元のreplacement mapping図式との自然比較、基底上の自然な小値化、最終小さい厳密RMap・F2も未完了。
+全体目標F→L→E→Sを維持する。
