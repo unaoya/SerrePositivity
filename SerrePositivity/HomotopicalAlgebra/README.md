@@ -3198,3 +3198,16 @@ augmentation自体の可逆性、元の基底への小さいstrictification、�
 元の基底へのaugmentationを構成し、small augmentationの可逆性を新表示へ帰着する。
 すべてモデル構造不要。augmentationの弱同値と小さい厳密なRMapは残る。
 受入検証は`check_ambient_word_comparison`（137宣言・5モジュール）。
+
+
+### 自由道圏上の実正規形と固定次数のaugmentation（§374）
+
+`WeightedPaths`と`WeightedPathMaps`は各頂点に重みを置く道の圏、任意の重み置換、forget・fillを与える。
+`WeightedPathRealization`はAmbientWords(Paths G,M)の実商射と重み付き道の実同値・両逆則を証明する。
+`AmbientWordAugmentation`と`WeightedPathParameterMap`は実augmentationがforgetに一致することと、
+word準同型が重み置換に一致することを証明する。
+`WeightedWordHom`は全重みを動かす実ホモトピーを構成し、projectionのanodyne局所化後の可逆性を得る。
+`FreeWordHom`は実商圏HomとのSSet同型を通じて、実augmentationの局所化後の可逆性を証明する。
+`OrdinaryBarFixedRowWordHom`は既存の任意の固定外側次数へ適用する。すべてモデル構造不要である。
+行ごとの比較から対角への接続、外側のaugmentation、小さい厳密なRMapは残る。
+受入検証は`check_free_word_hom`（165宣言・8モジュール）。

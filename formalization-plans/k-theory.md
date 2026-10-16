@@ -20904,3 +20904,85 @@ AmbientWords(Paths G,M)のHomを「Gの道と、その各頂点間に配置し�
 
 augmentationの弱同値、元のCᵒᵖ×Cへの小ささを保つstrictificationと降下、
 小さい厳密なRMap、F2の不変性・Kan・π₀とHo(C)の同定等は未完了であり、全体目標は継続する。
+
+
+## 374. 重み付き道の実正規形と、固定した外側次数でのword Hom augmentationの可逆性（2026-10-17）
+
+実装コミット`a2db2e16`。§373.5の自由道圏上の正規形と、外側の各固定次数での比較を証明した。
+すべてモデル構造不要の一般論であり、補助宇宙のSSetのModelCategoryは導入していない。
+
+### 374.1 自由道圏上の商射の正規形
+
+`CategoryTheory/Quiver/WeightedPaths`は、グラフGの道の各頂点にモノイドMの重みを置いた
+実データ型と圏を構成する。空の道にも一つの重みがある。合成は接続する頂点の重みを掛け合わせ、
+残りの道と重みを連結する。結合・単位則を証明した。
+`WeightedPathMaps`は任意の関数による重みの置換、元の道を取り出すforget、同じ重みを置くfillと
+それらの交換・逆則を与える。任意の置換を圏の関手であると仮定していない。
+
+`CategoryTheory/Presentation/WeightedPathRealization`は、重み付き道を
+AmbientWords(Paths G,M)の実商射に評価し、逆向きに商圏から重み付き道の圏への実関手を構成する。
+各source生成射とword生成射で計算し、全商射での両方向の逆則を証明してnormalFormEquivを得る。
+この正規形は任意のモノイドMで成立し、zero・モデル構造・追加の正規形公理を要求しない。
+
+`AmbientWordAugmentation`は任意のC,Mについてwordを恒等に送る実augmentationを構成する。
+`WeightedPathParameterMap`は、正規形の評価の後のこのaugmentationがforgetそのものであることと、
+word準同型で誘導した実商圏関手が重みの置換に一致することを証明した。
+
+### 374.2 重み付き道の全次数収縮
+
+`Simplicial/WeightedWordHom`は各次数の重みをWordSegment.degreeとする実SSetを構成する。
+forgetから元の道の定数SSetへのprojectionを作り、全重みをzeroにするfillを逆向きの実SSet写像とする。
+fillの後のforgetは恒等である。
+
+もう一方の合成については、すべての重みaをa*letter(t)に同時に置き換える実ホモトピーを構成する。
+元の区間の端点0ではletterが1で恒等、端点1ではletterが吸収元0で全重みが0となる。
+任意の単体写像での自然性は、degreeMapの積の保存とletterの自然性から証明する。
+この収縮をモノイド準同型として用いることはない。
+
+既存のanodyneホモトピー一般論から、任意のanodyneを可逆にする関手Lのもとでprojectionが
+実同型になる。通常のanodyne局所化での可逆性も得る。
+
+### 374.3 実word Homのaugmentationと既存の全固定次数への適用
+
+`Simplicial/FreeWordHom`は374.1の正規形を使って、AmbientWords(Paths G,WordSegment.degree)の
+実HomをSSetとして構成する。重み付き道SSetとの実同型を与え、単体写像の作用が
+AmbientWords.map(id,degreeMap)という実関手のHom写像そのものであることを証明する。
+
+そのSSet同型を通じて構成するaugmentationについて、各次数の値がwordを忘れる
+実AmbientWords.augmentationのHom写像そのものであることを証明した。
+従って、この**実augmentationがanodyne局所化後に可逆**である。
+可縮な別のSSetでaugmentationを置き換えたり、可逆性を追加仮定にしてはいない。
+
+`OrdinaryBarFixedRowWordHom`は、Gを実際のFreeGeneratorCategories.degree(D C,N)の生成グラフとする。
+Paths Gはdegree(D C,N+1)そのものであることを使い、任意の外側次数Nにおける
+実word Hom、全内側単体作用の計算、定数の実source Homへのaugmentationと局所化後の可逆性を得る。
+対象宇宙uとHom宇宙vは独立であり、Cには圏以外の仮定がない。
+
+### 374.4 受入検証
+
+すべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`（3149 jobs、警告なし）。
+- `check_free_word_hom`：任意のモノイドでの実正規形と両逆則、実augmentation・word準同型との交換、
+  全次数ホモトピー、任意のanodyneを可逆にする関手での同型、実商圏Homのaugmentationの値と可逆性、
+  既存の全固定外側次数への適用。8モジュール全165宣言の標準公理監査。
+- `check_ambient_word_comparison`：137宣言・5モジュールの回帰検証。
+- `check_diagonal_hom_augmentation`：54宣言・5モジュールの回帰検証。
+- `audit_homotopical_foundations`：全12965宣言・919モジュール、
+  propext・Classical.choice・Quot.soundのみ。sorry・引用axiomなし。
+  新規Quiver二モジュールを監査の抽出対象にも追加した。
+- ソースの行長・証明用マーカー、stage差分の空白検査。
+
+### 374.5 次の受入単位と残作業
+
+固定した外側次数についてのaugmentationの可逆性は今回完了した。
+次は、外側の全単体写像が誘導する実word Homの写像とaugmentationの自然性を二重単体図式として
+接続し、各行の比較から対角の比較へ移す定理を証明する。
+今回のfill(0)と収縮が外側の任意の写像にも自然であるとは主張していない。
+外側の写像が生成射を複数の生成射の道へ送る場合、展開で増えた頂点の重みを検証する必要がある。
+行ごとのホモトピーをそのまま全対角ホモトピーとして扱ってはならない。
+
+その後、外側の自由道分解のaugmentationのHom比較を証明し、§372・§373の実同型・実比較を通じて
+元の全対角small augmentationへ戻す。全対角augmentationの弱同値、元のCᵒᵖ×Cへの小ささを保つ
+strictificationと降下、小さい厳密なRMap、F2の不変性・Kan・π₀とHo(C)の同定等は残る。
+L/E/Sの完了記録を維持し、F1/F2を含む全体目標は継続する。
