@@ -863,6 +863,7 @@ public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedFiber
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedHenselian
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedEtale
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedEtaleCover
+public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedEtaleAwayCover
 
 /-!
 # Serre の交点重複度の正値性の形式化
