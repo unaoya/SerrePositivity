@@ -5939,3 +5939,38 @@ Checks.ErasureMiddle・Checks.ErasureInterchange・Checks.ErasureOperator・Chec
 後方帰納式・有限添字対合・perturbComplexへの接続はその後であり、全erasure²=0は未証明。
 U15b全受入、U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mは未完。
 採用済み引用は0件。共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.121 U15b6：associatorの全次数自然性と先頭Hom合成の後方自然性（2026-10-16）
+
+`Complexes/AssociatorCochainNaturality.lean`はassociatorと逆associatorが、第三因子の
+任意整数次数cochainと可換することを証明した。純tensor上の符号はp*(i+j)=p*i+p*jで照合する。
+左因子のchain mapに関する既存全Hom自然性をcochainの式として取り出す補題も公開した。
+両者から、前方二因子を任意のchain map c:U⊗V→Wで合成し括弧を変更する操作が、
+残る右因子の全次数cochainと可換するtensorJoin_cochain_naturalityを証明した。
+
+`Quotient/PrependTailNaturality.lean`はcを元のdg圏のeCompに特殊化し、先頭の中間対象を
+保ったまま後方のtensor部分に任意次数cochainを作用させる場合のprependMapの自然性を証明した。
+`Quotient/ErasureFaceEquations.lean`はeraseFaceのcons/succの再帰を一段だけ公開する。
+後方の再帰呼出しを展開せずに使える等式であり、既存eraseFaceの定義は変更していない。
+任意可換環・非有界Hom・独立対象宇宙を保持し、Small Dやflatnessは不要。
+
+Checks.PrependTail・Checks.ErasureMiddle・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（2660 jobs、終了コード0、警告なし）。ZMod 2を含む任意整数次数で
+associatorとcochainの可換式を検査した。主要6宣言の直接公理監査は標準公理のみ。
+監査累計2593宣言。文書検査は24 Markdown・311 exposition参照、失敗0件。
+担当差分の空白検査は成功。今回の実装にsorry/admit/新規axiomはない。
+
+**未受入の適用草稿**：`Quotient/PrependErasureNaturality.lean`の実際のeraseFaceへの特殊化と、
+`Quotient/ErasureFirstTailInterchange.lean`の先頭ε・非隣接後方εの反交換は未検証であり、
+受入入口にimportしない。前者は一段の再帰式・型付き局所cochain・局所irreducible属性で
+展開を限定しても、カーネルのwhnfで200000 heartbeatの上限に達した。
+400000でも同じ箇所で上限に達したため、予算拡大は継続せず、標準設定の草稿を残す。
+これらの失敗ジョブはすべて終了コード1であり、成功・実行中とは扱わない。
+
+次はεを保持した後方cochainの適用をさらに抽象化するか、全Homのchain map等式として
+自然性を先に構成し、実際のfaceへの適用時の型照合を小さくする。
+その後、先頭εと非隣接消去の交換式、隣接εについての豊穣合成の結合則へ進む。
+全erasure²=0、全微分、U15b全受入は依然未完。
+U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mも未完。採用済み引用は0件。
+共有一般論・共有ルートimport・他系列は編集していない。
