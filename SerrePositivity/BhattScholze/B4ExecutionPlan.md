@@ -7940,3 +7940,33 @@ G7の具体的PreservesColimit入力、d正則性・指定単元δd・n>0・Uniq
 G3・G7〜G10、環候補との接続・CFF・一般B4は引き続き未完成として保持する。
 他作業を上書き・ステージせず、自分の検証済みBS専用変更のみを個別コミットする。
 他チャットへの追加送信は行っていない。
+
+## G7・G8・G3のBS接続実行計画（2026-10-16）
+
+ユーザー指定「この三つを完成させてください」に従い、以下の3単位を順に実装・監査・個別コミットする。
+共通側のTorSequentialColimits、RestrictionCompletion、CompletelyFlatCriterionの証明済みAPIを再利用する。
+
+1. DeltaRootSourceSequentialTor.lean：G7を具体的有限源図式と標準剰余射へ適用し、
+   G10標準還元の非零次数消滅・H0忠実平坦性の公開入口からPreservesColimit入力を除く。
+   G4で供給済みのghost単射を使い、外部Tor交換仮定・ghost仮定のない結果にする。
+2. DeltaRootSourceGeneratorPowerComplete.lean：G8の元の完備化単位を保つ自然同型と
+   係数制限の同型反映を使い、既証のAへ制限したp完備性を、A/(dⁿ)上のp導来完備性へ移す。
+   BSの具体的還元対象を扱い、新しい一般係数制限・完備性定義は作らない。
+3. FreeDeltaFrobeniusCompletelyFlat.lean：自由整数δ環の実Frobeniusで作用する加群を明示し、
+   p正則性と既証mod p忠実平坦性を、正確な商テンソルの係数作用を保ってG3へ渡す。
+   混標数Frobeniusの既存IsCompletelyFaithfullyFlatを証明する。
+
+新sorry・公理・引用は追加しない。全公開宣言をBS専用監査へ登録し、対象ビルドとpure監査後に
+各単位の検証済みBS専用変更だけをコミットする。共有・CLMST・利用先は編集せず、追加送信も行わない。
+この3接続の完成と、G9・G10および一般B4全体の完成を区別する。
+
+## G7のBS接続完了（2026-10-16）
+
+DeltaRootSourceSequentialTor.leanに3公開定理を実装した。
+具体的な有限評価源図式Fと実剰余射ψについて、G7から各正次数のPreservesColimitを供給した。
+既存G4接続と合成し、G10標準冪零還元の非零次数消滅・H0忠実平坦性を、
+外部colimit交換入力・ghost単射入力なしで証明した。既存の仮定付き入口は互換のため保持する。
+p正則性・d正則性・指定単元δd・Unique σ・n>0は従来の具体的幾何入力として明示している。
+対象3859ジョブ成功（共有の既存警告のみ）、pure B4監査2038報告成功、標準3公理のみ。
+新sorry・公理・引用なし。G7の一般APIの再実装はせず、実際の有限源Torから全源への移送に適用した。
+これはG10の入力を引用なしで供給する成果であり、G10自体や一般B4の完成とは区別する。
