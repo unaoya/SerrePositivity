@@ -5750,3 +5750,43 @@ ZMod 2の次数−1を検査した。主要20宣言の直接公理監査は標�
 三角・五角coherenceへ進む。U11e全受入は未完。
 U13eの元の有限射影代表・本質的全射、U13d・U12e/f・U14〜U17・D4mも未完。採用済み引用は0件。
 共有系列への追加要求はなく、共有ルート・既存PerfectComplex・他系列は変更していない。
+
+
+### 17.115 U15a1：有限path・次数−1記号・内部tensor直和（2026-10-16）
+
+U11eのkernel型照合とU13eのホモトピー冪等の分裂は保持し、§15.5で独立に先行可能とした
+U15aを実装した。`Quotient/Paths.lean`はfull部分圏を対象集合S⊆Dとして固定し、
+中間対象の有限語Word S=List Sをpath添字とする。空語を許し、各中間対象には
+complexSphere A (-1)による収縮記号を一つ置く。
+term [] x yは元のHom_D(x,y)、term (b::w) x yは
+Hom_D(x,b)⊗(epsilonComplex⊗term w b y)。元のHomの非正性・有界性・flat性は仮定しない。
+記号の合計次数epsilonDegree w=−length(w)と、cons/appendに関する公式を証明した。
+
+A:Type u、D:Type v、Homの加群はType u。tensor項はDのsmall性を要求せず定義する。
+全path項の直和internalHomにはSmall.{u} Dを用い、Word Sもu-smallであることを証明した。
+単一の記号を表すepsilonTermと全直和へのepsilon、空pathのoriginalHomを実際のchain mapで構成した。
+ここでの微分は各Homとtensorの内部微分のみである。
+dε=idによる長さを下げる微分はまだ追加しておらず、この段階のepsilonを最終dg商の閉じた射とは扱わない。
+
+`Quotient/PathUniversal.lean`は内部微分の直和のdesc・包含との計算式・Hom同値を公開する。
+S=∅では語が空に限られることからemptyHomIsoを構成し、元のHom複体と厳密に比較した。
+これは後続の最終dg商の普遍性を先取りするものではない。
+`Quotient/PathComposition.lean`は内部微分に関して、先頭Homの合成prependMapと
+有限pathの連結appendMapを構成した。tensor因子の順を保ち、境界のHomだけをeCompで合成する。
+空path同士の連結が主モデルの豊穣合成であることを証明した。
+最終微分との両立、単位・結合・dg符号の成分比較はU15bに残す。
+
+Checks.QuotientPaths・Checks.AssociatorMaps・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（2711 jobs、終了コード0、警告なし）。任意可換環・独立対象宇宙、
+元の非有界複体圏のHomによるtensor項、u-small語、次数−1/−2、空部分圏のHom同型、
+直和の普遍性、空pathの豊穣合成、ZMod 2を検査した。
+主要23宣言の直接公理監査は標準公理のみ（公理非依存の宣言も含む）。監査累計2519宣言。
+文書検査は24 Markdown・311 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+U15aの有限path添字・空path・tensor項・直和・宇宙の入口を受け入れる。
+次はU15bの各ε消去による次数+1の項、内部微分との反交換、全微分の二乗零、
+単位・結合・Koszul符号を証明し、実際のdg商を構成する。
+U15cの指定収縮データ付き厳密普遍性・U15dの係数変更・U15eのVerdier比較も未完。
+U11e全受入・U13eの有限射影代表と本質的全射・U13d・U12e/f・U14・U16/U17・D4mは未完。
+採用済み引用は0件。共有系列への追加要求はなく、共有ルート・既存PerfectComplex・他系列は変更していない。
