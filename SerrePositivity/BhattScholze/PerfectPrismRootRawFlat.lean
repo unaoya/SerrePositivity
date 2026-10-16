@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.DeltaRootPerfectionFaithful
+public import SerrePositivity.BhattScholze.DeltaRootPCompletedPerfectionFlat
 public import SerrePositivity.BhattScholze.PerfectOrientedPrism
 
 /-! # 完全prismから任意根族のraw平坦包と実p完備化への入口 -/
@@ -11,7 +11,7 @@ set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.BhattScholze
 open CategoryTheory CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard deltaRootRawCoefficientAlgebra
-  deltaRootPerfectionAlgebra
+  deltaRootPerfectionAlgebra deltaRootPCompletedPerfectionAlgebra
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
 variable (P : OrientedPrism p A) (hP : P.deltaStructure.IsPerfect) (b : σ → A)
 local notation "D" => OrientedPrism.deltaStructure P
@@ -66,5 +66,14 @@ theorem perfectPrismRootPerfection_isCompletelyFaithfullyFlat :
         (fun s ↦ DeltaStructure.frobeniusLift E (r s)))) := by
   obtain ⟨w, hw⟩ := delta_p_unit P hP
   exact deltaRootPerfection_isCompletelyFaithfullyFlat D b hP w hw
+
+include hP in
+/-- 完全prismの任意元族raw包の既存p進完備δ完全化はp完全忠実平坦。 -/
+theorem perfectPrismRootPCompletedPerfection_isCompletelyFaithfullyFlat :
+    IsCompletelyFaithfullyFlat (Ideal.span {(p : A)})
+      (PCompletedDeltaPerfection (deltaAdjoinDivisionStructure E (p : R)
+        (fun s ↦ DeltaStructure.frobeniusLift E (r s)))) := by
+  obtain ⟨w, hw⟩ := delta_p_unit P hP
+  exact deltaRootPCompletedPerfection_isCompletelyFaithfullyFlat D b hP w hw
 
 end SerrePositivity.BhattScholze
