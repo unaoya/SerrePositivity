@@ -14970,3 +14970,78 @@ Kan出力では既存KanReplacementのunit自然性を使い、同じ両端移�
 この点には別の構成と小ささ・降下の証明が必要である。
 任意標的への導来不変な拡張、最終RMapの弱同値不変性・fibrancy・π0比較への統合、
 最終の自然弱同値zigzag比較も未完了。F1・F2とF→L→E→Sの全体目標を維持する。
+
+
+## 285. 任意標的の実replacement上の小さいKan双関手と両変数同時の通常降下（2026-10-16）
+
+§284の残項目のうち、非fibrant標的を扱う実presentationと、同じ基底射を持つ比較射の
+両変数での独立性を構成した。源の任意モデル圏という条件を保ち、関手的分解や
+大きい宇宙のモデル構造は追加しない。SSet値の厳密な双関手は実presentation圏上で得ており、
+基底C上での厳密な双関手の完成とは判定しない。
+
+### 285.1 任意モデル圏での実fibrant replacementの圏
+
+共有`Replacement/FibrantCategory`は、対象X、実trivial cofibration X→RX、
+fibrantなRXをデータに持つ`FibrantReplacementObject`を定義する。
+射は基底射と実RX→RY、および包含との可換式を保持する。実射の合成で圏を構成する。
+通常のterminal mapの因子分解だけで任意Xのpresentationを選べる。
+任意の二つのpresentation間の基底射はtrivial-cofibrationの持ち上げで実射へ延長でき、
+基底への射影はfullである。faithfulや厳密な切断の存在は主張しない。
+二対三性から、実RX→RYが弱同値であることと基底X→Yの弱同値性が同値になる。
+
+fibrant対象の恒等presentationを与える厳密な関手と、任意presentationからその実標的の
+恒等presentationへの自然変換も構成した。この層はSSetのモデル構造を要求しない。
+
+### 285.2 任意の標的基底を持つ小さいKan双関手とπ0比較
+
+`ReplacementMappingBifunctor`は、既存の実framed resolution関手と285.1の実標的関手を
+組み合わせ、(FramedResolution C)ᵒᵖ→(FibrantReplacementObject C→SSet[v])を構成する。
+全presentation射で単位・合成は厳密であり、値は元の宇宙のKan複体である。
+元のraw resolution Homからの比較は全双関手の自然変換で、全対象で弱同値となる。
+fibrant標的の恒等presentationへ制限すると、既存のframed fibrantHomそのものに戻る。
+
+両端の基底弱同値はSSetの弱同値へ移る。特に基底標的が非fibrantでも、
+実replacementを介した同じ関手で検証できる。
+π0比較の値域はHo(C)内の元の基底X→Yであり、RX→RYのHomに置き換えていない。
+実replacement包含を通常の局所化Qで反転することで、この比較と両変数の自然性を証明する。
+任意の対象宇宙u、Hom宇宙v、通常の局所化の対象・Hom宇宙を独立に保つ。
+
+### 285.3 両変数の実比較射の独立性と同時の通常降下
+
+共有`Replacement/FibrantLocalization`は、fibrant対象上の任意の関手Fが弱同値を同型へ送るとき、
+同じ基底射上にある実replacement比較f,gをFが同じ射へ送ることを証明する。
+基底の局所化で包含を反転して実比較射の像の等式を得てから、fibrant包含の局所化普遍性を使う。
+Fやその値域にモデル構造は要求しない。
+
+`ReplacementMappingLocalization`はこの一般論を局所化した小さいKan Homへ適用する。
+源側の既存の全写像空間の独立性と合わせ、両基底射が同じである任意の二つの実presentation射の
+像がHo(SSet)で等しいことを証明する。π0のみの一致ではない。
+
+`ReplacementMappingDescent`は両presentation圏の積からCᵒᵖ×Cへの実射影を使う。
+基底の各対象対に選んだ小さいKan値を保持し、任意の基底射対を実際に持ち上げる。
+285.3の像の等式で単位・合成を証明し、Ho(SSet)値の関手を構成する。
+任意presentationとの比較は元の小さいSSet内の実弱同値であり、Lを適用すると
+全presentation図式の自然同型となる。両基底弱同値はこの降下で同型へ移る。
+この関手則と比較の自然性はL適用後の主張であり、Lを外した等式は証明していない。
+
+### 285.4 受入検証と最終契約の残項目
+
+実装コミット`41280dff`。全て成功した。
+
+- 共有入口の合同build：2789 jobs、追加警告なし。
+- `check_replacement_mapping_descent`：任意モデル源での実replacementとfull射影、
+  SSetモデル不要の一般的な比較射独立性、非fibrantな基底対での小さいKan値・π0比較、
+  両変数の基底弱同値不変性とπ0自然性、既存fibrant関手の回収、
+  全局所化写像空間での両比較射独立性、同時降下と実弱同値による自然比較。
+  新規128宣言・5モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：8330宣言・594モジュール、標準公理のみ。
+- `check_framed_mapping_bifunctor`：118宣言・4モジュールの回帰確認。
+- `check_all_factorization_small_action`：64宣言・4モジュールの回帰確認。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+任意標的を小さい実presentation双関手で扱う入口と、両変数の全局所化写像空間での降下を得た。
+残る核心は、presentation上の全整合系から、基底Cᵒᵖ→(C→SSet[v])で厳密な単位・合成を
+満たす最終関手を構成することである。今回のfull射影、選んだ各Kan値の小ささ、
+局所化後の関手則からその存在を推論しない。
+最終RMapへの弱同値不変性・fibrancy・π0比較の統合と、最終の自然弱同値zigzag比較も残る。
+F1・F2とF→L→E→Sの全体目標を維持する。

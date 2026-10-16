@@ -2121,3 +2121,21 @@ presentation系と全因子分解の接続、基底Cへの小さいSSet値降下
 最終RMapと最終比較は残る。詳細は計画§284、実装`6bfedb29`。
 新規64宣言・4モジュール、共有8202宣言・589モジュールの標準公理監査、
 共有入口2784 jobs、既存作用43宣言・旧全因子分解比較101宣言の回帰確認が成功。
+
+
+## 任意標的の実replacementと両変数同時の通常降下（2026-10-16）
+
+`Replacement/FibrantCategory`は、任意基底Xの実trivial cofibration X→RXとfibrantなRX、
+可換比較射を持つ圏を構成する。通常の分解と持ち上げで全対象・基底射を扱い、
+実比較の弱同値性を基底弱同値性と同定する。関手的分解は不要。
+`Replacement/FibrantLocalization`は、fibrant対象上で弱同値を同型へ送る任意関手について、
+同じ基底射上の実比較射の像の等式を証明する。
+`ReplacementMappingBifunctor`は源の実frameと標的の実replacementの上で、
+元のSSet[v]値の厳密なKan双関手を構成する。両基底弱同値を保ち、
+元の非fibrant基底標的に対するπ0比較と両変数の自然性を持つ。
+`ReplacementMappingLocalization`と`ReplacementMappingDescent`は、両比較射の選択独立性を
+全局所化写像空間で証明し、選んだ小さいKan値を用いる基底上の同時降下と、
+任意presentationへの実弱同値に基づく自然同型を構成する。
+基底上の関手則はHo(SSet)での主張であり、最終SSet値RMapの厳密化と最終比較は残る。
+実装`41280dff`、詳細は計画§285。新規128宣言・5モジュール、共有8330宣言・594モジュールの
+標準公理監査、共有入口2789 jobs、既存framed関手・全因子分解小作用の回帰確認が成功。
