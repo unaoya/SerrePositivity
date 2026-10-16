@@ -718,3 +718,152 @@ end DeltaSingle
 
 end
 end SerrePositivity.BhattScholze.RefactoringMilnorAudit
+
+-- N4: all nine old public declarations; local coefficient actions stay explicit.
+assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFiniteSupportTransition
+#print axioms SerrePositivity.BhattScholze.deltaDivisionFiniteSupportTransition
+assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFiniteSupportTransition_mk
+#print axioms SerrePositivity.BhattScholze.deltaDivisionFiniteSupportTransition_mk
+assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFiniteSupportModuleDiagram
+#print axioms SerrePositivity.BhattScholze.deltaDivisionFiniteSupportModuleDiagram
+assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFiniteSupportEval
+#print axioms SerrePositivity.BhattScholze.deltaDivisionFiniteSupportEval
+assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFiniteSupportEval_mk
+#print axioms SerrePositivity.BhattScholze.deltaDivisionFiniteSupportEval_mk
+assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFiniteSupportEvalCocone
+#print axioms SerrePositivity.BhattScholze.deltaDivisionFiniteSupportEvalCocone
+assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFiniteSupportEvalIsColimit
+#print axioms SerrePositivity.BhattScholze.deltaDivisionFiniteSupportEvalIsColimit
+assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFiniteSupportColimitEvalIso
+#print axioms SerrePositivity.BhattScholze.deltaDivisionFiniteSupportColimitEvalIso
+assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFiniteSupportColimitEvalIso_ι
+#print axioms SerrePositivity.BhattScholze.deltaDivisionFiniteSupportColimitEvalIso_ι
+
+namespace SerrePositivity.BhattScholze.RefactoringFiniteSupportAudit
+noncomputable section
+universe u
+open CategoryTheory CategoryTheory.Limits HomologicalComplex
+open SerrePositivity.DerivedCompletion
+attribute [local instance] HasDerivedCategory.standard
+set_option backward.isDefEq.respectTransparency false
+set_option backward.defeqAttrib.useBackward true
+
+section FiniteSupport
+variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
+variable (D : DeltaStructure p A) (a : σ → A)
+local notation "L" => RelativeFreeDeltaRing (R := A) σ
+local notation "K" => deltaDivisionEvaluationFiniteSupportIdeal D a
+
+example (S : Finset (σ × ℕ)) :
+    (deltaDivisionFiniteSupportModuleDiagram D a).obj S = ModuleCat.of L (L ⧸ K S) := rfl
+
+example {S T : Finset (σ × ℕ)} (h : S ⊆ T) :
+    (deltaDivisionFiniteSupportModuleDiagram D a).map (homOfLE h) =
+      ModuleCat.ofHom (deltaDivisionFiniteSupportTransition D a h) := rfl
+
+example {S T : Finset (σ × ℕ)} (h : S ⊆ T) (r : L) :
+    deltaDivisionFiniteSupportTransition D a h (Ideal.Quotient.mk (K S) r) =
+      Ideal.Quotient.mk (K T) r := rfl
+
+example (S : Finset (σ × ℕ)) (r : L) :
+    let := deltaDivisionSourceEvaluationAlgebra D a
+    deltaDivisionFiniteSupportEval D a S (Ideal.Quotient.mk (K S) r) =
+      deltaDivisionSourceEval D a r := by
+  let := deltaDivisionSourceEvaluationAlgebra D a
+  rfl
+
+-- This detects changing the local L-action on A to an unrelated algebra instance.
+example (S : Finset (σ × ℕ)) (r : L) (x : L ⧸ K S) :
+    let := deltaDivisionSourceEvaluationAlgebra D a
+    deltaDivisionFiniteSupportEval D a S (r • x) =
+      deltaDivisionSourceEval D a r * deltaDivisionFiniteSupportEval D a S x := by
+  let := deltaDivisionSourceEvaluationAlgebra D a
+  exact (deltaDivisionFiniteSupportEval D a S).map_smul r x
+
+example :
+    let := deltaDivisionSourceEvaluationAlgebra D a
+    IsColimit (deltaDivisionFiniteSupportEvalCocone D a) := by
+  let := deltaDivisionSourceEvaluationAlgebra D a
+  exact deltaDivisionFiniteSupportEvalIsColimit D a
+
+-- Compare each original colimit injection with the actual beta-evaluation map.
+example (S : Finset (σ × ℕ)) :
+    let := deltaDivisionSourceEvaluationAlgebra D a
+    colimit.ι (deltaDivisionFiniteSupportModuleDiagram D a) S ≫
+      (deltaDivisionFiniteSupportColimitEvalIso D a).hom =
+        ModuleCat.ofHom (deltaDivisionFiniteSupportEval D a S) := by
+  let := deltaDivisionSourceEvaluationAlgebra D a
+  exact deltaDivisionFiniteSupportColimitEvalIso_ι D a S
+end FiniteSupport
+
+
+section BoundedSupport
+variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
+variable (D : DeltaStructure p A) (a : σ → A)
+
+-- Cofinal restriction still has the original beta-evaluation target and each standard leg.
+example (S : Finset (σ × ℕ)) :
+    let := deltaDivisionSourceEvaluationAlgebra D a
+    colimit.ι (deltaDivisionBoundedSupportModuleDiagram D a) S ≫
+      (deltaDivisionBoundedSupportColimitEvalIso D a).hom =
+        ModuleCat.ofHom (deltaDivisionFiniteSupportEval D a (deltaDivisionCoordinateHull S)) := by
+  let := deltaDivisionSourceEvaluationAlgebra D a
+  exact deltaDivisionBoundedSupportColimitEvalIso_ι D a S
+
+-- No nonempty-family or nontrivial-ring assumption is required.
+example :
+    let := deltaDivisionSourceEvaluationAlgebra D a
+    IsColimit (deltaDivisionBoundedSupportEvalCocone D a) := by
+  let := deltaDivisionSourceEvaluationAlgebra D a
+  exact deltaDivisionBoundedSupportEvalIsColimit D a
+end BoundedSupport
+
+section BoundedSupportTor
+variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
+variable (D : DeltaStructure p A) (d : A) (a : σ → A)
+local notation "P" => MvPolynomial σ A
+local notation "L" => RelativeFreeDeltaRing (R := P) σ
+local notation "E" => polynomialRankOneDeltaStructure σ D
+local notation "r" => deltaRootRelationFamily (p := p) a
+local notation "I" => Ideal.span {(p : L), MvPolynomial.C (MvPolynomial.C d)}
+local notation "ψ" => RingHom.comp (Ideal.Quotient.mk I)
+  (deltaDivisionSourceMap (σ := σ) E (MvPolynomial.C d))
+local notation "F" => deltaDivisionBoundedSupportModuleDiagram E r
+
+-- Keep the original residue map and explicit preservation hypothesis in the public consumer.
+example (hpA : Function.Injective (fun z : A => (p : A) * z))
+    (v : Aˣ) (hv : (v : A) = D.delta d) (i : ℕ)
+    (hpres : PreservesColimit F ((ModuleCat.extendScalars.{u, u, u} ψ).leftDerived (i + 1))) :
+    let := deltaDivisionSourceEvaluationAlgebra E r
+    Subsingleton (SerrePositivity.TorAlg ψ (i + 1) P) := by
+  let := deltaDivisionSourceEvaluationAlgebra E r
+  exact deltaRootEvaluation_tor_subsingleton_of_preservesBoundedSupportColimit D d a hpA v hv i hpres
+end BoundedSupportTor
+
+section BoundaryCases
+variable {p : ℕ} [Fact p.Prime]
+
+-- Empty finite support creates no relation; do not strengthen the indexed diagram.
+example {A σ : Type u} [CommRing A] (D : DeltaStructure p A) (a : σ → A) :
+    deltaDivisionEvaluationFiniteSupportIdeal D a (∅ : Finset (σ × ℕ)) = ⊥ := by
+  simp [deltaDivisionEvaluationFiniteSupportIdeal]
+
+-- An empty family is allowed, with no Nonempty or Fintype assumption on the old API.
+example {A : Type u} [CommRing A] (D : DeltaStructure p A) :
+    let a : PEmpty.{u + 1} → A := fun s => nomatch s
+    let := deltaDivisionSourceEvaluationAlgebra D a
+    IsColimit (deltaDivisionFiniteSupportEvalCocone D a) := by
+  let a : PEmpty.{u + 1} → A := fun s => nomatch s
+  let := deltaDivisionSourceEvaluationAlgebra D a
+  exact deltaDivisionFiniteSupportEvalIsColimit D a
+
+-- A zero coefficient ring is allowed for any family, with the delta structure explicit.
+example {σ : Type u} (D : DeltaStructure p PUnit.{u + 1}) (a : σ → PUnit.{u + 1}) :
+    let := deltaDivisionSourceEvaluationAlgebra D a
+    IsColimit (deltaDivisionFiniteSupportEvalCocone D a) := by
+  let := deltaDivisionSourceEvaluationAlgebra D a
+  exact deltaDivisionFiniteSupportEvalIsColimit D a
+end BoundaryCases
+
+end
+end SerrePositivity.BhattScholze.RefactoringFiniteSupportAudit

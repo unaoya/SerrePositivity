@@ -3,7 +3,7 @@ module
 public import SerrePositivity.BhattScholze.DeltaDivisionEvaluationFiniteSupport
 public import SerrePositivity.BhattScholze.DeltaDivisionSourceAlgebras
 public import SerrePositivity.BhattScholze.DeltaDivisionUnitDenominator
-public import Mathlib.Algebra.Category.ModuleCat.Limits
+public import SerrePositivity.HomologicalAlgebra.FiniteSupQuotientColimit
 
 /-! # 任意根族の実評価環は有限座標商の加群余極限 -/
 
@@ -82,64 +82,45 @@ def deltaDivisionFiniteSupportEvalCocone :
             obtain ⟨r, rfl⟩ := Ideal.Quotient.mk_surjective x
             rfl } }
 
-private theorem cocone_mk_independent
-    (c : Cocone (deltaDivisionFiniteSupportModuleDiagram D a))
-    (S : Finset (σ × ℕ)) (r : L) :
-    (c.ι.app S).hom (Ideal.Quotient.mk (K S) r) =
-      (c.ι.app ∅).hom (Ideal.Quotient.mk (K ∅) r) := by
-  have h := congrArg (fun f => f.hom (Ideal.Quotient.mk (K ∅) r))
-    (c.w (homOfLE (show (∅ : Finset (σ × ℕ)) ⊆ S from Finset.empty_subset S)))
-  exact h
-
-private theorem cocone_base_ker
-    (c : Cocone (deltaDivisionFiniteSupportModuleDiagram D a)) :
-    RingHom.ker β ≤ LinearMap.ker ((c.ι.app ∅).hom.comp (Submodule.mkQ (K ∅))) := by
-  rw [deltaDivisionEvaluation_ker_eq_iSup_finiteSupport D a]
-  apply iSup_le
-  intro S r hr
-  change (c.ι.app ∅).hom (Ideal.Quotient.mk (K ∅) r) = 0
-  rw [← cocone_mk_independent D a c S r, Ideal.Quotient.eq_zero_iff_mem.mpr hr, map_zero]
-
 /-- 元の評価環は、任意根族の有限座標商図式の実加群余極限である。 -/
 def deltaDivisionFiniteSupportEvalIsColimit :
     letI := deltaDivisionSourceEvaluationAlgebra D a
     IsColimit (deltaDivisionFiniteSupportEvalCocone D a) := by
+  classical
   letI := deltaDivisionSourceEvaluationAlgebra D a
+  let J : σ × ℕ → Ideal L := fun z => Ideal.span {deltaDivisionSourceGraphRelation D a z}
+  have hK (S : Finset (σ × ℕ)) : K S = S.sup J := by
+    induction S using Finset.induction_on with
+    | empty => simp [deltaDivisionEvaluationFiniteSupportIdeal]
+    | @insert z S hz ih =>
+      simpa only [deltaDivisionEvaluationFiniteSupportIdeal, Finset.coe_insert,
+        Set.image_insert_eq, Ideal.span_insert, Finset.sup_insert] using
+          congrArg (fun I => J z ⊔ I) ih
+  let eF : deltaDivisionFiniteSupportModuleDiagram D a ≅ finiteSupQuotientDiagram J :=
+    NatIso.ofComponents
+      (fun S => (Submodule.quotEquivOfEq _ _ (hK S)).toModuleIso) (by
+        intro S T h
+        apply ModuleCat.hom_ext
+        apply LinearMap.ext
+        intro q
+        obtain ⟨r, rfl⟩ := Ideal.Quotient.mk_surjective q
+        rfl)
   let b : L →ₗ[L] A := Algebra.linearMap L A
-  let e := LinearMap.quotKerEquivOfSurjective b (deltaDivisionSourceEval_surjective D a)
-  let desc (c : Cocone (deltaDivisionFiniteSupportModuleDiagram D a)) : A →ₗ[L] c.pt :=
-    (Submodule.liftQ (LinearMap.ker b)
-      ((c.ι.app ∅).hom.comp (Submodule.mkQ (K ∅))) (by exact cocone_base_ker D a c)).comp
-        e.symm.toLinearMap
-  have hdesc (c : Cocone (deltaDivisionFiniteSupportModuleDiagram D a)) (r : L) :
-      desc c (β r) = (c.ι.app ∅).hom (Ideal.Quotient.mk (K ∅) r) := by
-    change Submodule.liftQ (LinearMap.ker b)
-      ((c.ι.app ∅).hom.comp (Submodule.mkQ (K ∅)))
-        (by exact cocone_base_ker D a c) (e.symm (b r)) = _
-    dsimp only [e]
-    rw [LinearMap.quotKerEquivOfSurjective_symm_apply]
+  have hker : (⨆ z, J z) = LinearMap.ker b := by
+    change (⨆ z, J z) = RingHom.ker β
+    rw [deltaDivisionSourceEval_ker, Ideal.span_range_eq_iSup]
     rfl
-  exact
-    { desc := fun c => ModuleCat.ofHom (desc c)
-      fac := by
-        intro c S
-        apply ModuleCat.hom_ext
-        apply LinearMap.ext
-        intro x
-        obtain ⟨r, rfl⟩ := Ideal.Quotient.mk_surjective x
-        change desc c (deltaDivisionFiniteSupportEval D a S (Ideal.Quotient.mk (K S) r)) = _
-        rw [deltaDivisionFiniteSupportEval_mk, hdesc]
-        exact (cocone_mk_independent D a c S r).symm
-      uniq := by
-        intro c f hf
-        apply ModuleCat.hom_ext
-        apply LinearMap.ext
-        intro x
-        obtain ⟨r, rfl⟩ := deltaDivisionSourceEval_surjective D a x
-        have h := congrArg (fun g => g.hom (Ideal.Quotient.mk (K ∅) r)) (hf ∅)
-        change f.hom (deltaDivisionFiniteSupportEval D a ∅ (Ideal.Quotient.mk (K ∅) r)) = _ at h
-        rw [deltaDivisionFiniteSupportEval_mk] at h
-        exact h.trans (hdesc c r).symm }
+  let eA := ((Submodule.quotEquivOfEq _ _ hker).trans
+    (LinearMap.quotKerEquivOfSurjective b (deltaDivisionSourceEval_surjective D a))).toModuleIso
+  let hc := (IsColimit.precomposeHomEquiv eF (finiteSupQuotientCocone J)).symm
+    (finiteSupQuotient_isColimit J)
+  refine hc.ofIsoColimit (Cocone.ext eA ?_)
+  intro S
+  apply ModuleCat.hom_ext
+  apply LinearMap.ext
+  intro q
+  obtain ⟨r, rfl⟩ := Ideal.Quotient.mk_surjective q
+  rfl
 
 /-- 実圏論的余極限と、元のβ作用を持つ評価環との標準比較同型。 -/
 def deltaDivisionFiniteSupportColimitEvalIso :
