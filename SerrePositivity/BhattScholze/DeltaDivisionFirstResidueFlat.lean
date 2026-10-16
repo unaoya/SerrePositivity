@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.DeltaDivisionFirstCoefficientPowerEquiv
+public import SerrePositivity.BhattScholze.MonicPowerFamilyPolynomialFlat
 public import Mathlib.RingTheory.Flat.FaithfullyFlat.Basic
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat
 public import SerrePositivity.HomologicalAlgebra.Tor
@@ -77,12 +78,10 @@ theorem deltaDivisionFirstPowerPolynomial_moduleFree
     (D : DeltaStructure p A) (d : A) (a : σ → A) (u : Aˣ) :
     Module.Free (A ⧸ deltaDivisionFirstBaseIdeal (p := p) d a)
       (MvPolynomial (σ × ℕ) (DeltaDivisionFirstPowerCover D d a u)) := by
-  let R := A ⧸ deltaDivisionFirstBaseIdeal (p := p) d a
-  let C := DeltaDivisionFirstPowerCover D d a u
-  let := monicPowerFamilyCover_moduleFree p σ R (deltaDivisionFirstPowerCoefficients D d a u)
+  exact monicPowerFamilyPolynomial_moduleFree p σ (σ × ℕ)
+    (A ⧸ deltaDivisionFirstBaseIdeal (p := p) d a)
+    (deltaDivisionFirstPowerCoefficients D d a u)
     (Fact.out : p.Prime).pos
-  exact Module.Free.of_equiv
-    ((MvPolynomial.basisMonomials (σ × ℕ) C).repr.restrictScalars R).symm
 
 /-- 実際の初期δ剰余は、適切な係数商上自由。 -/
 theorem deltaDivisionFirstResidue_moduleFree
@@ -110,16 +109,10 @@ theorem deltaDivisionFirstPowerPolynomial_moduleFaithfullyFlat
     (D : DeltaStructure p A) (d : A) (a : σ → A) (u : Aˣ) :
     Module.FaithfullyFlat (A ⧸ deltaDivisionFirstBaseIdeal (p := p) d a)
       (MvPolynomial (σ × ℕ) (DeltaDivisionFirstPowerCover D d a u)) := by
-  classical
-  let R := A ⧸ deltaDivisionFirstBaseIdeal (p := p) d a
-  let C := DeltaDivisionFirstPowerCover D d a u
-  let ι := (σ × ℕ) →₀ ℕ
-  let := monicPowerFamilyCover_moduleFaithfullyFlat_all p σ R
-    (deltaDivisionFirstPowerCoefficients D d a u) (Fact.out : p.Prime).pos
-  let : Module.FaithfullyFlat R (ι →₀ C) :=
-    Module.FaithfullyFlat.of_linearEquiv R (⨁ _ : ι, C) (finsuppLEquivDirectSum R C ι)
-  exact Module.FaithfullyFlat.of_linearEquiv R (ι →₀ C)
-    ((MvPolynomial.basisMonomials (σ × ℕ) C).repr.restrictScalars R)
+  exact monicPowerFamilyPolynomial_moduleFaithfullyFlat p σ (σ × ℕ)
+    (A ⧸ deltaDivisionFirstBaseIdeal (p := p) d a)
+    (deltaDivisionFirstPowerCoefficients D d a u)
+    (Fact.out : p.Prime).pos
 
 /-- 実際の初期δ剰余は適切な係数商上忠実平坦。零環も含む。 -/
 theorem deltaDivisionFirstResidue_moduleFaithfullyFlat

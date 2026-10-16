@@ -1,11 +1,12 @@
 module
 
 public import SerrePositivity.BhattScholze.DeltaDivisionSourceEvaluationColimit
+public import SerrePositivity.HomologicalAlgebra.TorSequentialColimits
 
 /-! # G7交換入力に相対的な任意一元評価環へのTor移送
 
 BSの具体的な有限グラフ商図式だけを扱う。
-標準PreservesColimit入力を保持し、Torと一般余極限の交換自体は証明しない。
+標準PreservesColimit入力を公開型に保持し、共通G7のTor消滅補題を再利用する。
 -/
 
 @[expose] public noncomputable section
@@ -31,17 +32,11 @@ theorem deltaDivisionEvaluationSource_tor_subsingleton_of_preservesColimit
   let := deltaDivisionSourceEvaluationAlgebra D a
   have := hpres
   let H := (ModuleCat.extendScalars.{u, u, u} φ).leftDerived (i + 1)
-  have hz : IsZero (colimit (F₀ ⋙ H)) := by
-    apply (IsZero.iff_id_eq_zero _).mpr
-    apply colimit.hom_ext
-    intro N
-    have hN : IsZero ((F₀ ⋙ H).obj N) := by
-      apply ModuleCat.isZero_iff_subsingleton.mpr
-      exact hfin N
-    exact hN.eq_of_src _ _
-  let e : H.obj (ModuleCat.of P₀ A) ≅ colimit (F₀ ⋙ H) :=
-    H.mapIso (deltaDivisionEvaluationSourceFiniteColimitEvalIso D a).symm ≪≫
-      preservesColimitIso H F₀
+  have hz : IsZero (H.obj (colimit F₀)) :=
+    torAlg_colimit_isZero_of_stages φ F₀ (i + 1)
+      (fun N => ModuleCat.isZero_iff_subsingleton.mpr (hfin N))
+  let e : H.obj (ModuleCat.of P₀ A) ≅ H.obj (colimit F₀) :=
+    H.mapIso (deltaDivisionEvaluationSourceFiniteColimitEvalIso D a).symm
   exact ModuleCat.subsingleton_of_isZero (hz.of_iso e)
 
 end SerrePositivity.BhattScholze

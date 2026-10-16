@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.DeltaDivisionBoundedSupportColimit
 public import SerrePositivity.BhattScholze.DeltaDivisionFiniteSubfamilyTor
+public import SerrePositivity.HomologicalAlgebra.TorExactColimits
 public import Mathlib.CategoryTheory.Limits.Preserves.Limits
 
 /-! # 有界深さ有限部分族図式の実残余Tor消滅 -/
@@ -87,16 +88,12 @@ theorem deltaRootEvaluation_tor_subsingleton_of_preservesBoundedSupportColimit
   let := deltaDivisionSourceEvaluationAlgebra E r
   let := hpres
   let H := (ModuleCat.extendScalars.{u, u, u} ψ).leftDerived (i + 1)
-  have hz : IsZero (colimit (F ⋙ H)) := by
-    apply (IsZero.iff_id_eq_zero _).mpr
-    apply colimit.hom_ext
-    intro S
-    have hS : IsZero ((F ⋙ H).obj S) := by
-      exact ModuleCat.isZero_iff_subsingleton.mpr
-        (deltaRootBoundedSupportStage_tor_subsingleton D d a hpA v hv S i)
-    exact hS.eq_of_src _ _
-  let e : H.obj (ModuleCat.of L P) ≅ colimit (F ⋙ H) :=
-    H.mapIso (deltaDivisionBoundedSupportColimitEvalIso E r).symm ≪≫ preservesColimitIso H F
+  have hz : IsZero (H.obj (colimit F)) :=
+    torAlg_finsetColimit_isZero_of_stages (σ × ℕ) ψ F (i + 1)
+      (fun S => ModuleCat.isZero_iff_subsingleton.mpr
+        (deltaRootBoundedSupportStage_tor_subsingleton D d a hpA v hv S i))
+  let e : H.obj (ModuleCat.of L P) ≅ H.obj (colimit F) :=
+    H.mapIso (deltaDivisionBoundedSupportColimitEvalIso E r).symm
   exact ModuleCat.subsingleton_of_isZero (hz.of_iso e)
 
 end SerrePositivity.BhattScholze

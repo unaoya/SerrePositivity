@@ -27,20 +27,12 @@ theorem deltaDivisionEvaluationSourceFamily_tor_subsingleton
     letI := deltaDivisionSourceEvaluationAlgebra D a
     Subsingleton (SerrePositivity.TorAlg φ (i + 1) A) := by
   let := deltaDivisionSourceEvaluationAlgebra D a
-  let : PreservesColimitsOfShape ℕ ((ModuleCat.extendScalars.{u, u, u} φ).leftDerived (i + 1)) :=
-    torAlg_preservesSequentialColimits (R := P₀) (S := T) φ (i + 1)
   let H := (ModuleCat.extendScalars.{u, u, u} φ).leftDerived (i + 1)
-  have hz : IsZero (colimit (F₀ ⋙ H)) := by
-    apply (IsZero.iff_id_eq_zero _).mpr
-    apply colimit.hom_ext
-    intro N
-    have hN : IsZero ((F₀ ⋙ H).obj N) := by
-      apply ModuleCat.isZero_iff_subsingleton.mpr
-      exact hfin N
-    exact hN.eq_of_src _ _
-  let e : H.obj (ModuleCat.of P₀ A) ≅ colimit (F₀ ⋙ H) :=
-    H.mapIso (deltaDivisionEvaluationSourceFamilyColimitEvalIso D a s).symm ≪≫
-      preservesColimitIso H F₀
+  have hz : IsZero (H.obj (colimit F₀)) :=
+    torAlg_colimit_isZero_of_stages φ F₀ (i + 1)
+      (fun N => ModuleCat.isZero_iff_subsingleton.mpr (hfin N))
+  let e : H.obj (ModuleCat.of P₀ A) ≅ H.obj (colimit F₀) :=
+    H.mapIso (deltaDivisionEvaluationSourceFamilyColimitEvalIso D a s).symm
   exact ModuleCat.subsingleton_of_isZero (hz.of_iso e)
 
 variable (d : A)
