@@ -5591,3 +5591,38 @@ Checks.RingShiftComparison・Checks.RingPerfectComparison・Checks.RingFiniteCel
 retractの有限射影代表・本質的全射は引き続き残る。
 U13e全受入・U13d・U11eのcoherence・U12e/f・U14〜U17・D4mは未完。
 採用済み引用は0件。共有系列への追加要求はなく、共有ルート・既存PerfectComplex・他系列は変更していない。
+
+
+### 17.110 U13e23：実際のPerfectHomotopy比較のshift・三角整合性（2026-10-16）
+
+`Perfect/RingHomotopyDerivedComparison.lean`は閉零圏上の比較を実際の境界商へ降ろす。
+complexClosedRingModuleIsoは明示的ForgetEnrichment同値のunitとdg関手で構成する。
+主dg関手のH⁰→主局所化という経路と、通常ホモトピー圏→既存Qh→一対象導来同値の逆という経路を、
+商への二つの可換四角形・moduleToHomotopyDerivedIso・既存quotientCompQhIsoで照合した。
+complexHomotopyRingDerivedIsoは任意のHasDerivedCategory.{w}に自然な比較同型である。
+
+`Perfect/RingPerfectTriangulated.lean`はこれを有限射影dg複体へ制限し、既存PerfectHomotopyとの
+H⁰同値のcounitで戻す。strictPerfectDGComplexDerivedCanonicalIsoと
+perfectHomotopyToDGDerivedCanonicalIsoを公開した。
+後者は元のperfectHomotopyInclusion・既存Qh・一対象導来同値の逆との比較である。
+このファイルでは標準の既存導来圏を宇宙u+1で選ぶ。主dg導来圏・主Perfの対象や射のクラスは変えない。
+
+この自然同型でperfectHomotopyToDGDerivedに整数shiftの零・加法coherenceを運び、
+比較自然変換のshift整合性とIsTriangulatedを証明した。
+主Perf包含の完全忠実性と既存perfectHomotopyToDGPerfectCompInclusionを使って、
+実際のperfectHomotopyToDGPerfectのCommShift・包含比較のNatTrans.CommShift・IsTriangulatedも得た。
+したがって既存有限射影ホモトピー圏から主PerfへのA線形完全忠実比較は三角関手である。
+別の比較関手へ置き換えず、§17.107の実際のdg比較に基づく関手に構造を証明した。
+
+Checks.RingPerfectTriangulated・Checks.RingShiftComparison・Checks.RingPerfectComparison・
+Checks.RingFiniteCell・Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功
+（3522 jobs、終了コード0、警告なし）。任意可換環、両比較の整数shift・三角性、
+包含比較のshift整合性、実際のdistinguished三角形の保存、ZMod 2を検査した。
+主要10宣言の直接公理監査は標準公理のみ。監査累計2441宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+U13eの既存PerfectHomotopyとの線形・shift・三角比較は構成できたが、
+主Perfへの本質的全射にはホモトピー冪等の分裂・retractの有限射影代表が残る。
+U13e全受入・U13d・U11eのcoherence・U12e/f・U14〜U17・D4mは未完。
+採用済み引用は0件。共有系列への追加要求はなく、共有ルート・既存PerfectComplex・他系列は変更していない。
