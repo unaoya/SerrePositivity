@@ -4558,3 +4558,40 @@ U13a全受入は未完。次は全Hom endによる射影性についてshift・�
 その後D(D)内のretractによるPerfとcompact性へ進む。
 U11eのcoherence・U12e/f・U13残部・U14〜U17・D4mも未完。
 共有モデル圏一般論への追加要求はなく、担当外ファイルを編集していない。
+
+
+### 17.75 U13a2：主Homによる有限操作の射影性（U13a受入、2026-10-16）
+
+`Complexes/ShiftRepresentation.lean`は任意の複体K/L、閉じた次数sのcochainと次数−sの逆cochainから、
+実際のchain map K→L[s]を構成する。成分式、明示的な逆による各次数の全単射・IsIso、
+complexShiftIsoを証明し、逆cochainの次数tとs+t=0を指定する版も公開した。
+`Module/ShiftUnitDifferential.lean`は§17.73の包含の閉性も証明する。
+
+`Functor/ModuleShiftOpposite.lean`は任意の反変複体値dg関手Fについて、
+F(op(M[s]))≅F(op M)[−s]を構成する。opposite_composeの符号(-1)^(s*s)を明示して補正し、
+主Homの微分・両逆合成の保存から比較を証明する。各評価だけの自然性では代用しない。
+
+`Derived/ProjectiveFiniteOperations.lean`は主加群圏上の代表dg関手へ適用し、
+moduleHomSourceShiftIso : Hom(M[s],N)≅Hom(M,N)[−s]を公開する。
+これと既存のacyclic shiftから全Hom endの意味での射影性の整数shift閉性を証明する。
+cone閉性は既存moduleConeGradedSplitと主Hom短完全列の拡大閉性、
+二項直和閉性はWalkingPair添字の余積Hom計算と既存の直和・余積比較同型を使用した。
+新しいモデル圏や射影性の定義は導入していない。
+
+`Perfect/FiniteCellProjective.lean`は§17.74の構成木に帰納法を適用し、
+指定生成元版・全生成元版のfinite cellがhomotopically projectiveであることを証明する。
+既存の射影性⇒相対K-flat性からの系も公開した。Hom_DのA-flat性を仮定しない。
+
+Checks.FiniteCellProjective・Checks.FiniteCell・Checks.ShiftKFlat・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2869 jobs、終了コード0、警告なし）。任意A・独立対象宇宙・全整数shift・
+任意の反変dg関手・任意生成元集合・cone構成木・ZMod 2を検査した。
+主要21宣言の直接公理監査は終了コード0、標準公理のみ。監査累計1944宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。
+今回の6 Leanファイルにsorry/admit/新規axiomはない。担当差分の空白検査も成功。
+
+U13aの受入照合：有限操作の構成データ・生成元への依存・有限supportへの制限（§17.74）、
+全Homによる有限cellの射影性（本節）。これでU13aを受け入れる。
+小さいenhancementはまだ構成しておらず、U13b〜eでretract・compact性・対象のコード化を検証する。
+次は指定D(D)内のfinite cellのretractとしてPerfを定義し、既存三角構造・Karoubiとの比較へ進む。
+U11eのcoherence・U12e/f・U13残部・U14〜U17・D4mは未完。
+共有系列への追加要求はなく、担当外ファイルを編集していない。
