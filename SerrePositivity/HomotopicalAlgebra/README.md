@@ -2287,3 +2287,15 @@ parameter・入力・出力の実移送を含む整合式を証明する。
 モデル構造は元の小さいSSetだけで使う。
 具体的な全因子分解systemへの接続、混合出力の弱同値比較、bar右脚、最終RMapは未完了。
 検証：`scripts/check_mixed_center_chain_action.lean`、計画書§296。
+
+
+### 混合出力の自然弱同値と両側Kan比較（§297）
+
+`MixedDiagonalRows`は左右の行表示と行ごとの弱同値による判定を提供する。
+`MixedResolutionComparison`は両側の実augmentationによる混合Hom比較を
+全presentation上の自然弱同値として証明する。対角Reedy cofibrancyは要求しない。
+`MixedResolutionKanComparison`は同じ実strict lift作用を回収し、既存の共通Kan中間から
+混合Kan出力への自然弱同値、両変数の弱同値不変性、元のbase間Homへのπ0同値を構成する。
+`MixedCenterComparison`はこれを既存の全chain作用の同じ全中心KanOutputへ接続する。
+具体的な全因子分解systemへの接続、bar右脚、基底上の最終小さい厳密RMapは未完了。
+検証：`scripts/check_mixed_resolution_comparison.lean`、計画書§297。

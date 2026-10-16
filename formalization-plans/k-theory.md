@@ -15777,3 +15777,65 @@ familyの移送式は元の実inclusionの自然性から導き、独立の追�
 混合出力と§294の両側Kan図式との弱同値比較、実bar span右脚の弱同値も未証明である。
 基底上の小さい厳密関手への自然な小値化、F1の最終RMap・不変性・Kan性・π0比較への統合、
 F2の最終自然弱同値zigzag比較は未完了。全体目標F→L→E→Sを維持する。
+
+
+## 297. 混合出力の実自然弱同値と既存の両側Kan図式への接続（2026-10-16）
+
+§295・§296で残した混合出力の弱同値比較を証明した。
+同じraw二重Homから、両側frame対角の混合Homへの実augmentationが弱同値であり、
+全presentationと全中心射について自然である。これを既存の両側Kan比較spanへ接続した。
+
+### 297.1 混合Homの両側行表示
+
+`MixedDiagonalRows`は混合Homを左右それぞれのbisimplicial Homの対角として表す。
+左表示は実射について恒等、右表示は実op/unopによる自然同型である。
+両側それぞれの実diagram射について、行の比較の対角が実混合Hom写像に一致することを証明し、
+各行での弱同値から混合Hom写像の弱同値を導く。
+この一般論は源圏のモデル構造を要求せず、元の小さいSSetモデルだけを使う。
+
+### 297.2 実augmentationの二段階比較
+
+`MixedResolutionComparison`は、両側resolution X・Yに対する実射
+MixedHom(X,Y)→MixedHom(diag(frame X),diag(frame Y))を構成する。
+終域側を先に変えると、Xの各次数のcofibrancyから反対圏でのfibrancyが得られ、
+既存の片側DiagonalMappingComparisonを適用できる。
+その後、frame Yの各行のReedy cofibrancyから各対角成分のcofibrancyを得て、
+元の圏での終域成分のfibrancyを使い、源側の同じ片側定理を適用する。
+二段階の合成は元の両augmentationによる実混合Hom写像に等しい。
+frame対角全体のReedy cofibrancyは仮定も主張もせず、源の関手的分解も要求しない。
+
+全framed presentation上の小さい厳密な出力図式と比較自然変換を構成し、
+自然性を元のFramedResolution.augmentationの実自然性から導く。
+
+### 297.3 同じ混合作用・Kan比較・元のHom
+
+`MixedResolutionKanComparison.action_ofLift`は、指定した両側のstrict liftでの混合作用を、
+同じ実Hom写像と297.2の比較との合成として回収する。両側のparameter写像は別々に指定できる。
+既存raw図式との同型を通し、§294の共通の小さいKan中間から混合Kan出力への
+実自然弱同値を構成した。従って同じ中間から旧左・旧右・新混合の三つへ弱同値が出る。
+混合Kan出力の両変数の弱同値不変性、元のbase間の局所化Homとのπ0同値、
+旧左図式との局所化後の全図式の自然同型も証明した。
+
+`MixedCenterComparison`は両側の実source frameを保持する索引射を構成し、
+新しい出力を§296のMixedResolutionCenters.outputと自然同型で結ぶ。
+同じKanOutputへの全中心で自然な弱同値を公開する。
+従って今回の比較は、既存の全chain混合作用が実際に値を取る図式へ接続している。
+
+### 297.4 受入検証と残項目
+
+実装コミット`55b9a0ef`。全て成功した。
+
+- 共有入口のbuild：2842 jobs、追加警告なし。
+- `check_mixed_resolution_comparison`：独立宇宙の任意モデル源での両augmentationの弱同値、
+  元の実混合作用のstrict liftでの回収、共通Kan中間から三つの出力への弱同値、
+  両変数の弱同値不変性、元のbase間Homへのπ0同値、同じ全中心KanOutputとの自然な比較。
+  新規57宣言・4モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：8907宣言・645モジュール、標準公理のみ。
+- `check_mixed_center_chain_action`：54宣言・4モジュールの回帰確認。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+今回のπ0比較・Kan性・不変性は依然としてpresentation上の図式についての結果である。
+既存の全因子分解・混合三角形systemの具体的接続、実bar span右脚の弱同値、
+基底Cᵒᵖ×C上の小さい厳密関手への自然な小値化は残る。
+F1の最終RMapへの統合とF2の最終自然弱同値zigzag比較は未完了。
+全体目標F→L→E→Sを維持する。
