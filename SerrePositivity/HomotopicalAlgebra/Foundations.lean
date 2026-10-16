@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanSequentialColimitComparison
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanPushoutCube
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedCoproducts
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedLeftProper
