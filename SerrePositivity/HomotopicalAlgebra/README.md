@@ -2836,3 +2836,14 @@ ambient値への厳密な評価、全パラメータ置換と両関手の可換s
 `OrdinaryBarChoiceSimplicialCategory`は標準単体をパラメータとする実Cat値関手を構成する。
 元の基底上の小さい厳密なSSet値降下・移送後の内部単位条件・最終RMap・F2は未完了。
 検証：`scripts/check_parameter_choice_category.lean`、計画書§342。
+
+
+### 動く選択圏の射列と小さい鎖移送の接続（§343）
+
+`RetractChainFamily`は各射が全パラメータで動くfamilySnocへ一般化し、固定射のsnocも保持する。
+任意位置の0面は動く族の合成、1面は前後の移送の合成になる実等式を一般化した。
+`OrdinaryBarChoiceChainTransfer`は実際の選択圏の任意長のpathをこの鎖へ入力し、
+0面で選択圏の実合成が現れることと、全射・全収縮座標の同時置換との交換を証明する。
+全pathを元の小さい宇宙の実族へ戻し、空path・一射・0面/1面・全パラメータ自然性も検証した。
+元の基底上への厳密な降下・内部の恒等射の退化・最終RMap・F2は引き続き未完了。
+検証：`scripts/check_moving_choice_chain_transfer.lean`、計画書§343。
