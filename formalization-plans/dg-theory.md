@@ -7389,3 +7389,53 @@ local Homの条件を固定した版とdg圏の解像度を使う版を区別す
 固定K-flat因子に対する関手性だけでU12e全受入としない。
 U12f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完。U17までの目標を保持する。
 共有系列への新しいAPI要求はない。
+
+
+### 17.162 U12e3：射影的因子間の準同型比較と導来合成の右単位・結合自然同型（2026-10-17）
+
+`Derived/BimoduleTensorComparison.lean`のcomposeWithProjectiveIsoは、Q/Q'の各右制限が
+homotopically projectiveでありg:Q→Q'が指定quasiIsoであるとき、
+出力を局所化した二つの合成関手の間の自然同型を与える。
+**derivedComposeWithProjectiveIso**は、これを実際のDerivedBimoduleCategoryを始域とする
+合成関手の比較自然同型へ降ろす。そのhomは元のgのderivedComposeWithMapに一致する。
+**derivedComposeWithProjectiveIso_id/trans**は自己比較と三つの因子に関する推移整合性。
+この比較は与えられた準同型gに対するもの。任意の二つのbimodule解像度の比較射の存在・
+比較射に依存しないことを、この条件付き結果だけで証明済みとはしていない。
+
+`BimoduleTensorUnit.lean`のrightUnitLocalizedIsoは既存の閉零単位自然同型を出力の局所化へ送り、
+**derivedRightUnitIso**は対角因子が右相対K-flatであることを使って導来圏全体へ降ろす。
+元のbimodule対象上での成分は、derivedComposeWithComputationと元の単位射の局所化の合成に一致する。
+単位対象の右相対K-flat性はYoneda評価から従い、各HomのA-flat性を仮定していない。
+
+`BimoduleTensorAssociator.lean`のcomposeWithAssociatorIsoは、Q/Rを固定して前のbimodule変数に
+自然な既存の結合比較を束ねる。derivedComposeWithPair_facとそのLifting証拠で
+二つの降下関手の合成が元の二重合成を降ろすことを固定する。
+**derivedAssociatorIso**はQ/Rの右相対K-flat性とその合成閉性から構成した、
+derivedComposeWith Q ⋙ derivedComposeWith RとderivedComposeWith (compose Q R)の自然同型。
+元の対象上の成分は、指定したfactorizationの計算同型で元のassociatorIsoの局所化を挟む式に一致する。
+任意CommRing A・非有界・独立B/C/E/F宇宙・Small.{u} B/C/Eを維持し、Fのsmall性は不要。
+
+未受入の試作では、仮定の型を局所記法で書いたvariable宣言に由来する未証明項が
+コンパイル後の宣言の型に残っていることを警告と直接公理監査で検出した。
+採用版では当該記法を除去してunderlying対象と仮定の型を明示し、宣言の型を含む
+全16宣言の直接監査でsorryAxがないことを確認した。警告付き試作を受入には含めていない。
+計算上限の拡大や新規axiomでの回避は行っていない。
+
+Checks.DerivedBimoduleComparison・Checks.DerivedBimoduleTensor・Checks.BimoduleKFlat・
+Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功
+（3014 jobs、終了コード0、警告なし）。独立宇宙での条件付き比較・自己比較・推移則、
+導来圏上の右単位、右相対K-flat二因子の結合比較、ZMod 2の右単位を検査した。
+主要16宣言の直接公理監査は標準公理のみ。監査累計3114宣言。
+採用版にsorry/admit/新規axiomはない。採用済み引用は0件。
+全体文書検査は13 Markdown・320 exposition参照まで進み、担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+未解決参照1件で失敗した。§17.161のolean不足は今回再現しなかった。
+共有ルート・共有一般論・該当系列・他チャットの変更は編集していない。
+
+次は導来比較の三角/五角coherenceと固定因子の射に関する自然性、
+実際のbimodule解像度からこれらの固定K-flat因子を得る工程へ接続する。
+Bᵒᵖ⊗C上のsemifreeから片側の相対K-flat性を得る制限定理、bimodule解像度の存在、
+任意の二つの解像度に対する選択独立性、両変数を局所化した導来合成は未完。
+local Homの条件を明示した版とdg圏の解像度を使う版を区別し、U12e全受入とはしない。
+U12f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完。U17までの目標を保持する。
+共有系列への新しいAPI要求はない。
