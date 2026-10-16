@@ -1,0 +1,95 @@
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerTorAlgebraMilnor
+import Mathlib.Util.AssertNoSorry
+
+-- KL-A2g: native coefficient-algebra Tor towers and the original Milnor endpoints.
+assert_no_sorry SerrePositivity.algebraResolutionTorComparison_naturality
+assert_no_sorry SerrePositivity.torAlgebraComparison_naturality
+assert_no_sorry SerrePositivity.torAlgebraComparisonNatIso
+assert_no_sorry SerrePositivity.DerivedCompletion.moduleTowerDifference_equiv
+assert_no_sorry SerrePositivity.DerivedCompletion.moduleTowerLimitEquiv
+assert_no_sorry SerrePositivity.DerivedCompletion.moduleTowerLimitEquiv_apply
+assert_no_sorry SerrePositivity.DerivedCompletion.moduleTowerDifference_range_equiv
+assert_no_sorry SerrePositivity.DerivedCompletion.moduleTowerLimOneEquiv
+assert_no_sorry SerrePositivity.DerivedCompletion.moduleTowerLimOneEquiv_mk
+assert_no_sorry SerrePositivity.DerivedCompletion.moduleTowerLimitRestrictScalarsEquiv
+assert_no_sorry SerrePositivity.DerivedCompletion.moduleTowerLimOneRestrictScalarsEquiv
+assert_no_sorry SerrePositivity.DerivedCompletion.modulePowerTorAlgebraTower
+assert_no_sorry SerrePositivity.DerivedCompletion.modulePowerTorAlgebraTransition
+assert_no_sorry SerrePositivity.DerivedCompletion.modulePowerTorAlgebra_pow_smul_zero
+assert_no_sorry SerrePositivity.DerivedCompletion.modulePowerTorAlgebra_isModuleComplete
+assert_no_sorry SerrePositivity.DerivedCompletion.modulePowerTorAlgebraLimit
+assert_no_sorry SerrePositivity.DerivedCompletion.modulePowerTorAlgebraLimOne
+assert_no_sorry SerrePositivity.DerivedCompletion.modulePowerTorAlgebraLimit_isModuleComplete
+assert_no_sorry SerrePositivity.DerivedCompletion.modulePowerTorAlgebraLimOne_isModuleComplete
+assert_no_sorry SerrePositivity.DerivedCompletion.modulePowerTorAlgebraComparison_transition
+assert_no_sorry SerrePositivity.DerivedCompletion.modulePowerTorAlgebraLimitComparison
+assert_no_sorry SerrePositivity.DerivedCompletion.modulePowerTorAlgebraLimOneComparison
+assert_no_sorry SerrePositivity.DerivedCompletion.modulePowerTorAlgebraStage_annihilated
+assert_no_sorry SerrePositivity.DerivedCompletion.modulePowerTorAlgebraLimit_annihilated
+assert_no_sorry SerrePositivity.DerivedCompletion.modulePowerTorAlgebraLimOne_annihilated
+assert_no_sorry SerrePositivity.DerivedCompletion.modulePowerTorAlgebraLimit_isModuleComplete_restrict
+assert_no_sorry SerrePositivity.DerivedCompletion.modulePowerTorAlgebraLimOne_isModuleComplete_restrict
+assert_no_sorry SerrePositivity.DerivedCompletion.modulePowerCokernelTorAlgebraIso
+assert_no_sorry SerrePositivity.DerivedCompletion.modulePowerCokernelTorAlgebraIso_transition
+assert_no_sorry SerrePositivity.DerivedCompletion.modulePowerCokernelTorAlgebraIso_scalar
+assert_no_sorry SerrePositivity.DerivedCompletion.modulePowerCokernelTorAlgebraLimitComparison
+assert_no_sorry SerrePositivity.DerivedCompletion.modulePowerCokernelTorAlgebraLimOneComparison
+assert_no_sorry SerrePositivity.DerivedCompletion.modulePowerCokernelTorAlgebraLimitComparison_apply
+assert_no_sorry SerrePositivity.DerivedCompletion.modulePowerCokernelTorAlgebraLimOneComparison_mk
+#print axioms SerrePositivity.algebraResolutionTorComparison_naturality
+#print axioms SerrePositivity.torAlgebraComparison_naturality
+#print axioms SerrePositivity.torAlgebraComparisonNatIso
+#print axioms SerrePositivity.DerivedCompletion.moduleTowerDifference_equiv
+#print axioms SerrePositivity.DerivedCompletion.moduleTowerLimitEquiv
+#print axioms SerrePositivity.DerivedCompletion.moduleTowerLimitEquiv_apply
+#print axioms SerrePositivity.DerivedCompletion.moduleTowerDifference_range_equiv
+#print axioms SerrePositivity.DerivedCompletion.moduleTowerLimOneEquiv
+#print axioms SerrePositivity.DerivedCompletion.moduleTowerLimOneEquiv_mk
+#print axioms SerrePositivity.DerivedCompletion.moduleTowerLimitRestrictScalarsEquiv
+#print axioms SerrePositivity.DerivedCompletion.moduleTowerLimOneRestrictScalarsEquiv
+#print axioms SerrePositivity.DerivedCompletion.modulePowerTorAlgebraTower
+#print axioms SerrePositivity.DerivedCompletion.modulePowerTorAlgebraTransition
+#print axioms SerrePositivity.DerivedCompletion.modulePowerTorAlgebra_pow_smul_zero
+#print axioms SerrePositivity.DerivedCompletion.modulePowerTorAlgebra_isModuleComplete
+#print axioms SerrePositivity.DerivedCompletion.modulePowerTorAlgebraLimit
+#print axioms SerrePositivity.DerivedCompletion.modulePowerTorAlgebraLimOne
+#print axioms SerrePositivity.DerivedCompletion.modulePowerTorAlgebraLimit_isModuleComplete
+#print axioms SerrePositivity.DerivedCompletion.modulePowerTorAlgebraLimOne_isModuleComplete
+#print axioms SerrePositivity.DerivedCompletion.modulePowerTorAlgebraComparison_transition
+#print axioms SerrePositivity.DerivedCompletion.modulePowerTorAlgebraLimitComparison
+#print axioms SerrePositivity.DerivedCompletion.modulePowerTorAlgebraLimOneComparison
+#print axioms SerrePositivity.DerivedCompletion.modulePowerTorAlgebraStage_annihilated
+#print axioms SerrePositivity.DerivedCompletion.modulePowerTorAlgebraLimit_annihilated
+#print axioms SerrePositivity.DerivedCompletion.modulePowerTorAlgebraLimOne_annihilated
+#print axioms SerrePositivity.DerivedCompletion.modulePowerTorAlgebraLimit_isModuleComplete_restrict
+#print axioms SerrePositivity.DerivedCompletion.modulePowerTorAlgebraLimOne_isModuleComplete_restrict
+#print axioms SerrePositivity.DerivedCompletion.modulePowerCokernelTorAlgebraIso
+#print axioms SerrePositivity.DerivedCompletion.modulePowerCokernelTorAlgebraIso_transition
+#print axioms SerrePositivity.DerivedCompletion.modulePowerCokernelTorAlgebraIso_scalar
+#print axioms SerrePositivity.DerivedCompletion.modulePowerCokernelTorAlgebraLimitComparison
+#print axioms SerrePositivity.DerivedCompletion.modulePowerCokernelTorAlgebraLimOneComparison
+#print axioms SerrePositivity.DerivedCompletion.modulePowerCokernelTorAlgebraLimitComparison_apply
+#print axioms SerrePositivity.DerivedCompletion.modulePowerCokernelTorAlgebraLimOneComparison_mk
+
+noncomputable section
+universe u
+open CategoryTheory SerrePositivity SerrePositivity.DerivedCompletion
+variable {R : Type u} [CommRing R] (a : R) (C : Type u) [CommRing C] [Algebra R C]
+  (M : ModuleCat.{u} R)
+
+-- Every Tor degree, arbitrary coefficients and tests, with no finite or completeness assumption.
+example (i : ℕ) : IsModuleComplete C (algebraMap R C a)
+    (modulePowerTorAlgebraLimOne a C M i) :=
+  modulePowerTorAlgebraLimOne_isModuleComplete a C M i
+
+-- The preceding degree in H⁻ⁱ of the original Milnor sequence is Tor_(i+1).
+example (i : ℕ) :
+    complexTowerHomologyLimOne R
+      (powerCokernelComplex a ((moduleTensorCochainFunctor
+        (extRes (projectiveResolution (ModuleCat.of R C)))).obj M))
+      (powerCokernelComplexTransition a ((moduleTensorCochainFunctor
+        (extRes (projectiveResolution (ModuleCat.of R C)))).obj M)) (-(i : ℤ) - 1) ≃ₗ[R]
+      (ModuleCat.restrictScalars (algebraMap R C)).obj (modulePowerTorAlgebraLimOne a C M (i + 1)) := by
+  have hi : -(i : ℤ) - 1 = -((i + 1 : ℕ) : ℤ) := by omega
+  rw [hi]
+  exact modulePowerCokernelTorAlgebraLimOneComparison a C M (i + 1)

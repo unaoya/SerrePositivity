@@ -50,6 +50,7 @@ elab "assert_rperfd_cohomology_dependencies" : command => do
     ``rPerfd_derivedTensor_isComplete, ``rPerfd_finiteCoefficientPowerComparison_quasiIso,
     ``rPerfd_modulePowerDerivedTensorIso, ``rPerfd_finiteCoefficientPowerHolimIso,
     ``rPerfd_torAlgebra_isModuleComplete, ``rPerfd_torAlgebra_annihilator_iff,
+    ``rPerfd_torMilnor_endpoints_isModuleComplete, ``rPerfd_torMilnor_endpoints_annihilated,
     ``rPerfd_cohomology_vanishing_of_tor_idempotent]
   let _ ← liftCoreM <| checkRPerfdDependencies roots {}
   logInfo "Only the existing integral-perfectoidization existence sorry is permitted."
@@ -307,3 +308,38 @@ end
 
 assert_rperfd_tor_algebra_dependencies
 #print axioms rperfd_tor_algebra_complete_degree_zero
+
+private def rperfd_original_milnor_limit_comparison (N : ModuleCat.{u} A) (i : ℕ) :
+    moduleTowerLimit A
+      (fun n => (powerCokernelComplex (p : A) ((moduleTensorCochainFunctor K₀).obj N) n).homology (-(i : ℤ)))
+      (fun n => (HomologicalComplex.homologyMap (powerCokernelComplexTransition (p : A)
+        ((moduleTensorCochainFunctor K₀).obj N) n) (-(i : ℤ))).hom) ≃ₗ[A]
+      (ModuleCat.restrictScalars (algebraMap A (RPerfd A D t p hperf))).obj
+        (modulePowerTorAlgebraLimit (p : A) (RPerfd A D t p hperf) N i) :=
+  modulePowerCokernelTorAlgebraLimitComparison (p : A) (RPerfd A D t p hperf) N i
+
+private def rperfd_original_milnor_previous_comparison (N : ModuleCat.{u} A) (i : ℕ) :
+    complexTowerHomologyLimOne A
+      (powerCokernelComplex (p : A) ((moduleTensorCochainFunctor K₀).obj N))
+      (powerCokernelComplexTransition (p : A) ((moduleTensorCochainFunctor K₀).obj N))
+      (-(i : ℤ) - 1) ≃ₗ[A]
+      (ModuleCat.restrictScalars (algebraMap A (RPerfd A D t p hperf))).obj
+        (modulePowerTorAlgebraLimOne (p : A) (RPerfd A D t p hperf) N (i + 1)) := by
+  have hi : -(i : ℤ) - 1 = -((i + 1 : ℕ) : ℤ) := by omega
+  rw [hi]
+  exact modulePowerCokernelTorAlgebraLimOneComparison (p : A) (RPerfd A D t p hperf) N (i + 1)
+
+meta section
+open Lean Elab Command
+elab "assert_rperfd_tor_milnor_dependencies" : command => do
+  let _ ← liftCoreM <| checkRPerfdDependencies [``rperfd_original_milnor_limit_comparison,
+    ``rperfd_original_milnor_previous_comparison,
+    ``rPerfd_torMilnor_endpoints_isModuleComplete, ``rPerfd_torMilnor_endpoints_annihilated] {}
+  logInfo "Actual original Milnor endpoints: same transitions, Tor_(i+1), completeness and ideal action checked."
+end
+
+assert_rperfd_tor_milnor_dependencies
+#print axioms rperfd_original_milnor_limit_comparison
+#print axioms rperfd_original_milnor_previous_comparison
+#print axioms rPerfd_torMilnor_endpoints_isModuleComplete
+#print axioms rPerfd_torMilnor_endpoints_annihilated

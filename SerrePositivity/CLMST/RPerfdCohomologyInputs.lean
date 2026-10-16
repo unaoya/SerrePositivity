@@ -3,6 +3,7 @@ module
 public import SerrePositivity.CLMST.ConditionalCohomologyVanishing
 public import SerrePositivity.HomologicalAlgebra.TorFiniteCoefficients
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TorAlgebraComplete
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerTorAlgebraMilnor
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FiniteTensorComplete
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FiniteCoefficientPowerComparison
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerDerivedComparison
@@ -119,6 +120,49 @@ lemma rPerfd_torAlgebra_annihilator_iff (N : ModuleCat.{u} A) (i : ℕ) (g : A) 
   torAlgebraComparison_restricted_annihilator_iff (CompletedTower A t p)
     (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))
     (perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g)) N i
+
+/-- Both actual Tor-tower Milnor endpoints are complete over the original tower.
+The test module need not be finite or complete, and lim¹ is retained. -/
+lemma rPerfd_torMilnor_endpoints_isModuleComplete (N : ModuleCat.{u} A) (i : ℕ) :
+    DerivedCompletion.IsModuleComplete (CompletedTower A t p) (p : CompletedTower A t p)
+      ((ModuleCat.restrictScalars
+        (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))).obj
+          (DerivedCompletion.modulePowerTorAlgebraLimit (p : A) (RPerfd A D t p hperf) N i)) ∧
+    DerivedCompletion.IsModuleComplete (CompletedTower A t p) (p : CompletedTower A t p)
+      ((ModuleCat.restrictScalars
+        (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))).obj
+          (DerivedCompletion.modulePowerTorAlgebraLimOne (p : A) (RPerfd A D t p hperf) N i)) :=
+  ⟨DerivedCompletion.modulePowerTorAlgebraLimit_isModuleComplete_restrict
+    (RPerfd A D t p hperf) N i (CompletedTower A t p)
+      (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf)) p,
+   DerivedCompletion.modulePowerTorAlgebraLimOne_isModuleComplete_restrict
+    (RPerfd A D t p hperf) N i (CompletedTower A t p)
+      (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf)) p⟩
+
+/-- The original positive-power torsion tests annihilate both actual Tor-tower endpoints. -/
+lemma rPerfd_torMilnor_endpoints_annihilated (N : ModuleCat.{u} A) (i : ℕ) (g : A)
+    (hTor : ∀ (L : ModuleCat.{u} A) (k : ℕ), 0 < k →
+      (∀ x : L, (p : A) ^ k • x = 0) →
+        ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+          (algebraMap A (CompletedTower A t p) g),
+          torCoefficientScalarEndomorphism (RPerfd A D t p hperf) L i
+            (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0) :
+    perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g) ≤
+      Module.annihilator (CompletedTower A t p)
+        ((ModuleCat.restrictScalars
+          (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))).obj
+            (DerivedCompletion.modulePowerTorAlgebraLimit (p : A) (RPerfd A D t p hperf) N i)) ∧
+    perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g) ≤
+      Module.annihilator (CompletedTower A t p)
+        ((ModuleCat.restrictScalars
+          (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))).obj
+            (DerivedCompletion.modulePowerTorAlgebraLimOne (p : A) (RPerfd A D t p hperf) N i)) :=
+  ⟨DerivedCompletion.modulePowerTorAlgebraLimit_annihilated (p : A)
+    (RPerfd A D t p hperf) N i (CompletedTower A t p)
+    (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf)) _ hTor,
+   DerivedCompletion.modulePowerTorAlgebraLimOne_annihilated (p : A)
+    (RPerfd A D t p hperf) N i (CompletedTower A t p)
+    (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf)) _ hTor⟩
 
 /-- The actual finite-stage map has the base compatibility required by the
 Koszul/local-cohomology theorem. -/
