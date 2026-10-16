@@ -5,6 +5,7 @@ public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Ordinar
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.MonoLocalizedFactorization
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.LocalizedRelativeChoice
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftParameterHom
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingRelativeHomotopy
 
 /-! # Strict objectwise retracts and all-dimensional relative arrow choices
 
@@ -71,15 +72,30 @@ lemma section_fac (b : Cᵒᵖ × C) : section_ hcof hfib b ≫ projection hcof 
 
 def contraction (b : Cᵒᵖ × C) : SSet.Homotopy (𝟙 (ambient hcof hfib b))
     (projection hcof hfib b ≫ section_ hcof hfib b) :=
-  (MonoRightLiftingContraction.exists_vertical_contraction _ (projection_mono_rlp hcof hfib b)
+  (MonoRightLiftingRelativeHomotopy.exists_strong_contraction _ (projection_mono_rlp hcof hfib b)
     _ (section_fac hcof hfib b)).choose
 
 lemma contraction_over (b : Cᵒᵖ × C) :
     (contraction hcof hfib b).h ≫ projection hcof hfib b =
       fst (ambient hcof hfib b) (SSet.stdSimplex.obj (SimplexCategory.mk 1)) ≫
         projection hcof hfib b :=
-  (MonoRightLiftingContraction.exists_vertical_contraction _ (projection_mono_rlp hcof hfib b)
-    _ (section_fac hcof hfib b)).choose_spec
+  (MonoRightLiftingRelativeHomotopy.exists_strong_contraction _ (projection_mono_rlp hcof hfib b)
+    _ (section_fac hcof hfib b)).choose_spec.1
+
+lemma contraction_on_section (b : Cᵒᵖ × C) :
+    section_ hcof hfib b ▷ SSet.stdSimplex.obj (SimplexCategory.mk 1) ≫
+        (contraction hcof hfib b).h =
+      fst (lifted hcof hfib b) (SSet.stdSimplex.obj (SimplexCategory.mk 1)) ≫
+        section_ hcof hfib b :=
+  (MonoRightLiftingRelativeHomotopy.exists_strong_contraction _ (projection_mono_rlp hcof hfib b)
+    _ (section_fac hcof hfib b)).choose_spec.2
+
+lemma contraction_pre_section (b : Cᵒᵖ × C) {T : SSet.{max u v}}
+    (a : T ⟶ lifted hcof hfib b) :
+    (a ≫ section_ hcof hfib b) ▷ SSet.stdSimplex.obj (SimplexCategory.mk 1) ≫
+        (contraction hcof hfib b).h =
+      fst T (SSet.stdSimplex.obj (SimplexCategory.mk 1)) ≫ a ≫ section_ hcof hfib b := by
+  rw [comp_whiskerRight, Category.assoc, contraction_on_section, whiskerRight_fst_assoc]
 
 def boundary {b c : Cᵒᵖ × C} (f : b ⟶ c) :=
   OrdinaryKanBarMappingClasses.functor.map f ≫ unit hcof hfib c

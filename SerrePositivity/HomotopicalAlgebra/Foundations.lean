@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarRetractTransfer
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarRetractSystem
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftParameterHom
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarHomotopyDescent

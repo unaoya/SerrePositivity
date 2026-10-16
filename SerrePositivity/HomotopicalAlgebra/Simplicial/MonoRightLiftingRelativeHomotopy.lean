@@ -1,0 +1,100 @@
+module
+
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingContraction
+public import Mathlib.CategoryTheory.Adhesive.PushoutProduct
+
+/-! # Relative homotopies over a fixed map and strong section contractions
+
+All-monomorphism right lifting retains both endpoints, the entire prescribed
+subobject homotopy, and the entire projected interval. No model structure is used.
+-/
+
+@[expose] public section
+universe v
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory
+open CategoryTheory.CartesianMonoidalCategory
+
+namespace SerrePositivity.SimplicialModel.MonoRightLiftingRelativeHomotopy
+variable {E B : SSet.{v}} (p : E ⟶ B)
+  (hp : (MorphismProperty.monomorphisms SSet.{v}).rlp p)
+
+include hp in
+lemma exists_extension {X Y : SSet.{v}} (i : X ⟶ Y) [Mono i]
+    {f g : Y ⟶ E} (H : SSet.Homotopy f g)
+    (A : SSet.Homotopy (i ≫ f) (i ≫ g))
+    (ha : A.h ≫ p = i ▷ SSet.stdSimplex.obj (SimplexCategory.mk 1) ≫ H.h ≫ p) :
+    ∃ V : SSet.Homotopy f g,
+      V.h ≫ p = H.h ≫ p ∧
+      i ▷ SSet.stdSimplex.obj (SimplexCategory.mk 1) ≫ V.h = A.h := by
+  let pp := KanRelativeLifting.boundaryProduct i
+  have : Mono (Arrow.mk i).hom := inferInstanceAs (Mono i)
+  have : Mono (Arrow.mk (SSet.boundary 1).ι).hom :=
+    inferInstanceAs (Mono (SSet.boundary 1).ι)
+  have : Mono pp.ι :=
+    CategoryTheory.MonoidalCategory.Arrow.PushoutProduct.instMonoHomObjArrowFunctorPushoutProduct
+      (X := Arrow.mk i) (Y := Arrow.mk (SSet.boundary 1).ι)
+  have : HasLiftingProperty pp.ι p := hp _ inferInstance
+  let b := pp.isPushout.desc (LargeParameterHomotopy.boundaryMap f g) A.h
+    (KanHomotopyExtension.boundary_compatibility i f g A)
+  have hw : b ≫ p = pp.ι ≫ (H.h ≫ p) := by
+    apply pp.isPushout.hom_ext
+    · dsimp only [b]
+      rw [← Category.assoc, pp.isPushout.inl_desc, ← Category.assoc, pp.inl_ι]
+      rw [← HomotopyEndpointComparison.boundary_eq H, Category.assoc]
+      rfl
+    · dsimp only [b]
+      rw [← Category.assoc, pp.isPushout.inr_desc, ← Category.assoc, pp.inr_ι]
+      exact ha
+  let sq : CommSq b pp.ι p (H.h ≫ p) := ⟨hw⟩
+  have hb : Y ◁ (SSet.boundary 1).ι ≫ sq.lift =
+      LargeParameterHomotopy.boundaryMap f g := by
+    rw [show Y ◁ (SSet.boundary 1).ι = pp.inl ≫ pp.ι from pp.inl_ι.symm,
+      Category.assoc, sq.fac_left]
+    exact pp.isPushout.inl_desc _ _ _
+  have hA : i ▷ SSet.stdSimplex.obj (SimplexCategory.mk 1) ≫ sq.lift = A.h := by
+    rw [show i ▷ SSet.stdSimplex.obj (SimplexCategory.mk 1) = pp.inr ≫ pp.ι from
+      pp.inr_ι.symm, Category.assoc, sq.fac_left]
+    exact pp.isPushout.inr_desc _ _ _
+  refine ⟨{ h := sq.lift, h₀ := ?_, h₁ := ?_, rel := ?_ }, sq.fac_right, hA⟩
+  · change SSet.ι₀ ≫ sq.lift = f
+    rw [← LargeParameterHomotopy.section_zero Y, Category.assoc,
+      ← SSet.boundary.ι_ι (1 : Fin 2), whiskerLeft_comp, Category.assoc, hb,
+      LargeParameterHomotopy.boundaryMap_zero]
+    rfl
+  · change SSet.ι₁ ≫ sq.lift = g
+    rw [← LargeParameterHomotopy.section_one Y, Category.assoc,
+      ← SSet.boundary.ι_ι (0 : Fin 2), whiskerLeft_comp, Category.assoc, hb,
+      LargeParameterHomotopy.boundaryMap_one]
+    rfl
+  · apply NatTrans.ext
+    funext n
+    exact ConcreteCategory.hom_ext _ _ (fun x => False.elim x.1.property)
+
+include hp in
+lemma exists_strong_contraction (s : B ⟶ E) (hs : s ≫ p = 𝟙 B) :
+    ∃ H : SSet.Homotopy (𝟙 E) (p ≫ s),
+      H.h ≫ p = fst E (SSet.stdSimplex.obj (SimplexCategory.mk 1)) ≫ p ∧
+      s ▷ SSet.stdSimplex.obj (SimplexCategory.mk 1) ≫ H.h =
+        fst B (SSet.stdSimplex.obj (SimplexCategory.mk 1)) ≫ s := by
+  have : IsSplitMono s := IsSplitMono.mk' ⟨p, hs⟩
+  obtain ⟨H, hH⟩ := MonoRightLiftingContraction.exists_vertical_contraction p hp s hs
+  let A : SSet.Homotopy (s ≫ 𝟙 E) (s ≫ (p ≫ s)) := {
+    h := fst B (SSet.stdSimplex.obj (SimplexCategory.mk 1)) ≫ s
+    h₀ := by ext n x; rfl
+    h₁ := by
+      change SSet.ι₁ ≫ _ = s ≫ (p ≫ s)
+      rw [← Category.assoc s p s, hs, Category.id_comp]
+      ext n x
+      rfl
+    rel := by
+      apply NatTrans.ext
+      funext n
+      exact ConcreteCategory.hom_ext _ _ (fun x => False.elim x.1.property) }
+  have hA : A.h = fst B (SSet.stdSimplex.obj (SimplexCategory.mk 1)) ≫ s := rfl
+  obtain ⟨V, hV, hrel⟩ := exists_extension p hp s H A (by
+    rw [hA, hH, whiskerRight_fst_assoc, Category.assoc])
+  exact ⟨V, hV.trans hH, hrel.trans hA⟩
+
+end SerrePositivity.SimplicialModel.MonoRightLiftingRelativeHomotopy
