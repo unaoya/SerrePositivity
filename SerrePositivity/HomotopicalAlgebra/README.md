@@ -3161,3 +3161,14 @@ nativeな小さい内部Hom族の標準単位・合成・代入則も証明し�
 closedIsoと小さいcurryの接続、全mappingの持ち上げた標準合成との整合性、
 augmentationの弱同値、元の基底への小さいstrictificationと小さい厳密なRMapは残る。
 受入検証は`check_diagonal_closed_action`（18宣言・3モジュール）。
+
+
+### 実closedIsoと全対角mappingの標準合成・単位（§371）
+
+`UniverseLiftClosedCurry`は既存closedIsoと小さいcurry・lowerTensor・標準評価の交換を証明する。
+`UniverseLiftClosedComposition`は標準内部Hom合成・単位の実持ち上げとの交換を与える。
+ともにモデル構造不要のSSet一般論である。
+`OrdinaryBarDiagonalClosedCompatibility`は全mappingを小さいパラメータに制限すると
+nativeFamilyの持ち上げそのものになることと、任意の大きいパラメータで標準合成・単位を保つことを証明する。
+augmentationのHom比較と弱同値、元の基底への小さいstrictification、小さい厳密なRMapは残る。
+受入検証は`check_diagonal_closed_compatibility`（35宣言・6モジュール）。

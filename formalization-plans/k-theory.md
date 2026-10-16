@@ -20699,3 +20699,58 @@ UniverseLiftParameterHom.closedIsoの逆を合成することで、次の実SSet
 その接続後、augmentationによる実Hom比較と必要な弱同値の証明へ進める。
 元のCᵒᵖ×Cへの小ささを保つstrictificationと降下、小さい厳密なRMap、
 F2の不変性・Kan・π₀とHo(C)の同定などは未完了であり、全体目標は継続する。
+
+
+## 371. 実closedIsoとcurry・標準合成・単位の交換、全対角mappingの整合性（2026-10-17）
+
+実装コミット`312d8597`。A0・A1全体という回答を再確認した。両者は§166で受入条件まで
+完了済みであり、今回も最終入口の検証が成功した。継続中のF1について§370.4の接続を完了した。
+
+### 371.1 モデル構造不要の宇宙比較の一般論
+
+`Simplicial/UniverseLiftClosedCurry`は既存の実`closedIso`について、小さい写像族のcurryの
+持ち上げが、持ち上げた写像族のcurryに一致することを証明する。標準単体によるnativeEquivの
+逆の計算から直接示しており、交換則を追加のデータや仮定として入力しない。
+`lowerTensor`で降ろした族のcurryとの交換、標準評価写像との交換も証明した。
+
+`Simplicial/UniverseLiftClosedComposition`はこの結果と実評価計算を使い、既存の実closedIsoが
+Mathlibの標準`MonoidalClosed.comp`を保つことを証明する。標準合成を`tensorIso.inv`と
+`UniverseLift.map`で持ち上げた`liftedComposition`を定義し、closedIsoの逆との交換も証明した。
+標準`MonoidalClosed.id`との交換、任意の大きいパラメータからの持ち上げた単位族も接続した。
+二モジュールとも任意のSSetの一般論であり、モデル構造やcofibrancy等を要求しない。
+
+### 371.2 全mappingとnativeな族の接続
+
+`HomotopyFunctionComplex/OrdinaryBarDiagonalClosedCompatibility`は§370の実mappingについて、
+次を証明する。
+
+- 小さいパラメータTの持ち上げから全mappingを制限すると、既存`nativeFamily`の
+  `UniverseLift.map`そのものになる。別の小さい族や比較を選択していない。
+- 任意の補助T、j:T→P、f:T→Hom_diag(X,Y)、g:T→Hom_diag(Y,Z)について、
+  対角語射の合成の像は、二つの像の積と持ち上げた標準内部Hom合成の合成に一致する。
+- 任意の補助Tから恒等対角語射を代入した像は、持ち上げた標準内部Homの単位族に一致する。
+
+対象宇宙uとHom宇宙vは独立。元のCにはModelCategory以外の追加条件を課さず、
+小さいSSet.{v}の既存のモデル構造を使う。補助SSet.{max u v}のモデル構造は要求しない。
+
+### 371.3 受入検証
+
+すべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`（3116 jobs、警告なし）。
+- `check_diagonal_closed_compatibility`：モデル構造不要の一般比較と、独立した対象・Hom宇宙での
+  全mappingのnative族への一致・標準合成・単位。6モジュール全35宣言の標準公理監査。
+- `check_diagonal_closed_action`：18宣言・3モジュールの回帰検証。
+- `check_diagonal_word_evaluation`：63宣言・5モジュールの回帰検証。
+- `check_weak_equivalences_accessible`：A0・A1の最終入口、21宣言・5モジュール。
+- `audit_homotopical_foundations`：全12609宣言・901モジュール、
+  propext・Classical.choice・Quot.soundのみ。sorry・引用axiomなし。
+- ソースの行長・証明用マーカー・stage差分の空白検査。
+
+### 371.4 次の受入単位と残作業
+
+§370.4に残していたcurryとの交換、全mappingのnativeな族への一致、持ち上げた標準内部Hom合成・
+単位との整合性は今回完了した。次はaugmentationによる実Hom比較と、その弱同値の証明を進める。
+ambientの切断からsmallの切断やHom比較の弱同値を推論してはならない。
+元のCᵒᵖ×Cへの小ささを保つstrictificationと降下、小さい厳密なRMap、
+F2の不変性・Kan・π₀とHo(C)の同定などは未完了であり、全体目標は継続する。
