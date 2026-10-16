@@ -4062,3 +4062,27 @@ Checks.KFlatColimits・Checks.KFlatComplex・Checks.StageSeven・既存Spectra.S
 相対版のshift/cone閉性とquasiIso保存との同値、semifree・上有界flat・導来tensorはなお未完。
 U11eの左右自然性のカーネル検査は継続中で、結合coherenceを受け入れたとはしない。
 U13〜U17・D4mも未完。共有系列への追加要求はなく、担当外ファイルを編集していない。
+
+### 17.56 U12b1：自由tensor評価とsphere-free段階の相対K-flat性（2026-10-16）
+
+`Tensor/FreeEvaluation.lean`は右Hom加群をxで評価する関手とhomFunctor(N(x))の自然同型を構成する。
+free/evaluation随伴とbalanced tensor/Hom随伴を合成し、既存tensorRight/Hom随伴との
+左随伴の一意性からfreeTensorFunctorIsoを得る。freeTensorIsoは任意の非有界生成複体Kについて
+free_x(K)⊗_D N≅K⊗_A N(x)を与え、Kの射についての自然性も公開する。
+freeAt_relativeKFlatはKのA上K-flat性だけを要求し、Hom_Dのflat性は要求しない。
+
+`Tensor/SphereFreeKFlat.lean`は既存complexSphereShiftIsoと単位のK-flat性から全整数次数の
+sphereのK-flat性を証明した。自由sphere、さらに実際のModuleSphereFreePresentationを持つ
+加群の相対K-flat性を証明する。表示のIndexはType(max u v)のまま保持し、
+Small.{u} Indexの証拠とDiscrete/equivShrinkによるexact余積の移送を明示する。
+
+Checks.SphereFreeKFlat・Checks.KFlatColimits・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2807 jobs、終了コード0、警告なし）。任意A・独立対象宇宙・任意K、
+sphere次数−1/+1とZMod 2を検査した。主要8宣言の直接公理監査は終了コード0、標準公理のみ。
+監査累計1703宣言。文書検査は22 Markdown・311 exposition参照、失敗0件。
+担当差分の空白検査も成功。今回の3ファイルにsorry/admit/新規axiomはない。
+
+semifree全体の相対K-flat性は未完。次は全作用と可換するgraded-split拡張をtensorへ運び、
+各段階のacyclic性を帰納した上で§17.55の逐次余極限閉性へ接続する。
+U11eの結合coherence、相対版の残る閉性・quasiIso保存、U12残部・U13〜U17・D4mも未完。
+共有系列への追加要求はなく、担当外ファイルを編集していない。
