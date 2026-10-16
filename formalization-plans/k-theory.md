@@ -19804,3 +19804,75 @@ projection_eq_augmentationは全次数の最後の面への制限を用いて帰
 その後の自然比較と元の基底への降下、小さい厳密なRMap、内部単位、最終F2は残る。
 源の追加のcombinatorial性・simplicial性・関手的分解、大きいSSetのモデル構造は導入していない。
 全体目標F→L→E→Sは未完了として継続する。
+
+
+## 358. 通常のΔ上の実自然変換と既存augmentationとの厳密な一致（2026-10-17）
+
+実装コミット`b5aca038`。前回は§357の実Seedと全次数の整合的選択を作った進捗ターンだった。
+今回は、その関手列を通常のΔᵒᵖ上の実自然変換へ束ね、基底射影との合成が
+既存FreePathSimplicialResolution.augmentationへ厳密に等しいことまで証明した。
+自由分解上の構成であり、元の基底への降下や最終的な小さい厳密なRMapの完成とは区別する。
+
+### 358.1 面・退化から任意の単体写像への自然性
+
+`CategoryTheory.Simplex.Naturality`は任意の圏と二つのsimplicial objectについて、
+成分族と全面・全退化の交換等式から実自然変換を構成する一般論である。
+交換式を満たす単体写像の性質が恒等と合成で閉じることを証明し、固定Mathlibの
+SimplexCategory.morphismProperty_eq_topからすべての単体写像での自然性を導く。
+ofFacesDegeneracies_appは成分族がそのまま保持されることを示す。
+対象・Hom宇宙は独立で、モデル構造は不要である。
+
+### 358.2 Pを保つ選択圏の実simplicial図式
+
+`OrdinaryBarParameterChoiceCategory.diagram`は、各nをChoice(P × Δⁿ)へ、
+任意の単体写像をPとtensorしてreindexする実Cat値simplicial objectとする。
+map_id・map_compを証明し、diagram_face・degeneracyは標準演算子の実計算を与える。
+
+projectionはこの図式から元の基底のHomだけをULiftした圏への定値図式に向かう実自然変換である。
+元の対象型は保持する。CatのHom宇宙をmax u vで揃えるため、選択圏の基底射影に
+ULiftHom.upを合成し、各reindexとの交換から自然性を証明する。
+大きいSSetのモデル構造は導入しない。
+
+### 358.3 実自由分解からの自然な選択
+
+`OrdinaryBarFreeResolutionNaturalChoice.source`は、既存FreePathSimplicialResolution.diagramに
+rev.opを前合成した実simplicial objectである。
+source_face・degeneracyは既存余モナドの逆順演算子との一致を証明する。
+
+componentはdegree_powerの比較等式で§357の実選択関手を源の実反復へ移したCatの射である。
+component_face・degeneracyは全次数で比較等式と§357の全面・全退化等式を使って証明する。
+358.1に適用して、choices : source → OrdinaryBarParameterChoiceCategory.diagram Pを構成する。
+choices_appは実成分を与える。任意の単体写像に対する自然性が実NatTransの一部として成立する。
+利用者に高次選択・Seed・自然性の仮定を要求しない。
+
+### 358.4 元のaugmentationを自然変換全体で保持
+
+augmentationはchoicesと358.2のprojectionの合成とする。
+augmentation_appはその成分を、§357の実path合成とULiftHom.upへ等しい形で計算する。
+augmentation_comparisonはこのpath合成が、degree_powerの下で既存余モナドのaugmentationへ
+等しいことをcounitの比較から全次数で帰納的に証明する。ここにはモデル構造は不要である。
+
+augmentation_eq_standardは、合成した自然変換が
+rev.opで引き戻した既存FreePathSimplicialResolution.augmentationそのものへ等しいことを証明する。
+点ごとの基底射が等しいという結果だけではなく、元のaugmentationの実自然変換を厳密に保つ。
+
+### 358.5 受入検証と次の適用先
+
+すべて成功した。
+
+- 共有入口のbuild：3067 jobs、追加警告なし。
+- `check_free_resolution_natural_choices`：32宣言・3モジュール、標準公理のみ。
+  一般圏上の任意の単体写像の自然性、実choicesの成分と全面・全退化、
+  任意の単体写像に対する実自然性、augmentationの成分計算と既存自然変換との一致を検証。
+  独立宇宙の一般源モデル、任意P、大きいSSetのモデル構造なしという入口を維持する。
+- `check_actual_free_resolution_choices`：既存38宣言・2モジュールの回帰検証。
+- `audit_homotopical_foundations`：11810宣言・852モジュール、標準公理のみ。
+- 新規ソース・受入スクリプトの行長、証明用マーカー、stage差分の空白検査。
+
+次は実choicesを既存evaluationへ接続し、P × Δⁿ上の実ambient射族として利用する。
+既存reindex_evaluationの等式から全単体写像との交換をまとめ、合成・恒等を含む
+自由分解上の実作用族を構成する。受入条件は任意の単体写像との厳密な整合性、
+選択圏の射に対応する実ambient族、合成と恒等の保持、既存augmentationとの比較の保持である。
+その後に移送・自然比較と元の基底への降下を進める。
+この段階でも、異なるPごとの選択の自然性や元の基底への厳密sectionは推論しない。
+小さい厳密なRMap、内部単位、自然弱同値比較、最終F2は残る。全体目標F→L→E→Sは未完了である。

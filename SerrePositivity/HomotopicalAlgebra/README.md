@@ -2998,3 +2998,13 @@ Paths³(Cᵒᵖ × C) → Choice(P × ∂Δ²)という実境界関手と、全�
 利用者にSeedや高次整合性の仮定は要求しない。任意の既存Pと独立宇宙の一般源モデルに適用できる。
 通常のΔの図式への束ね、自然比較と元の基底への降下、小さい厳密なRMapは残る。
 受入検証は`check_actual_free_resolution_choices`（38宣言・2モジュール）。
+
+
+### 通常のΔ上の実自然変換とaugmentation（§358）
+
+`CategoryTheory.Simplex.Naturality`は全面・全退化の交換から任意の単体写像での自然性を導く。
+`OrdinaryBarParameterChoiceCategory`はP × Δⁿの選択圏と元の基底への射影を実simplicial図式にする。
+`OrdinaryBarFreeResolutionNaturalChoice`は既存自由分解の反転から選択図式への実自然変換choicesを構成する。
+基底射影との合成は、既存自由分解のaugmentationそのものに自然変換全体で厳密に等しい。
+実ambient族への適用、移送と自然比較、元の基底への降下、小さい厳密なRMapは残る。
+受入検証は`check_free_resolution_natural_choices`（32宣言・3モジュール）。
