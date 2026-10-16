@@ -5470,3 +5470,41 @@ Checks.RingSingle・Checks.StrictComplexDerived・Checks.StageSeven・既存Spec
 Perfのretractの有限射影代表は別の残課題である。U13e全受入・U13d・U11eのcoherence・U12e/f・
 U14〜U17・D4mは未完。採用済み引用は0件。共有系列への追加要求はない。
 共有ルート・既存PerfectComplex・共有モデル一般論・他系列は変更していない。
+
+
+### 17.106 U13e19：有界有限射影複体の主Perf像と実際のdg比較（2026-10-16）
+
+`Perfect/RingExtensions.lean`は実際のringConstantDGと評価dg関手の合成比較から、
+complexToRingModuleと通常評価との自然同型を構成する。豊穣forgetComp・forgetIdと
+明示的ForgetEnrichment.equivのcounitを合成し、大きいHom endの射を直接展開しない。
+主導来評価との比較、既存一対象導来同値のunitとの比較を得た。
+通常複体の短完全列からの既存DerivedCategory.triangleOfSESを一対象同値の逆で戻し、
+主導来像の両端がperfectなら中央もperfectであることを証明する。
+比較は任意のHasDerivedCategory.{w}の選択に関して成立する。
+
+`Perfect/RingBounded.lean`は有限の次数幅について帰納する。
+既存bottomProjectionの核は下端次数で零、他の次数では元の項と同型であり、
+有限射影性と一つ短い次数範囲を保つ。短完全列の両端を帰納仮定と§17.105の次数集中複体で扱う。
+strictlyPerfectComplex_ringDerived_perfectにより、既存の任意の有界有限射影複体の
+実際の主dg加群導来像がmodulePerfectに入ることを証明した。
+証明内でのみHasDerivedCategory.standardを宇宙u+1で選び、結論には新しい選択仮定を残さない。
+
+`Perfect/RingEnhancement.lean`はこのperfect性と既存の全Hom endの射影性を組み合わせ、
+strictPerfectDGComplexToPerfectDGを主PerfectDGModule A PUnitへの実際のdg関手として構成する。
+各Hom写像は既存のHom評価同型の逆であり、H⁰は完全忠実。
+全加群dg圏への包含との可換性はDGFunctor.restrict_comp_inclusionを再利用した実際のdg関手等式である。
+まだ主enhancement全体への本質的全射やretractの有限射影代表を主張しない。
+
+Checks.RingEnhancement・Checks.RingSingle・Checks.StrictComplexDerived・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（3490 jobs、終了コード0、警告なし）。任意可換環、有界有限射影複体のperfect性、
+実際の主dg対象・Hom写像のIsIso、H⁰の完全忠実性とA線形性、ZMod 2を検査した。
+主要11宣言の直接公理監査は標準公理のみ。監査累計2407宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次は既存PerfectHomotopyから主Perfへの線形完全忠実関手をこのdg比較から公開し、
+retractの有限射影代表・本質的全射・shift/三角構造の整合性を完成する。
+既存CochainIdempotent.image_strictlyPerfectは厳密なchain idempotentの像について再利用できるが、
+ホモトピー冪等の厳密化は未証明であり両者を同一視しない。
+U13e全受入・U13d・U11eのcoherence・U12e/f・U14〜U17・D4mは未完。
+採用済み引用は0件。共有系列への追加要求はない。共有ルート・既存PerfectComplex・他系列は変更していない。
