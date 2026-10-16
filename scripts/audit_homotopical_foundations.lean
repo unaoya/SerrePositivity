@@ -41,6 +41,8 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AllFactorizationPostRelative,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyEndpointComparison,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PostChoiceFunctor,
+    `SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceFunctor,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FramedPreChoiceFunctor,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FramedResolutionCategory,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FramedMappingBifunctor,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FramedResolutionChains,
