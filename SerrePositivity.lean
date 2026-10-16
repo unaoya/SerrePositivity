@@ -867,6 +867,7 @@ public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedEtale
 public import SerrePositivity.CLMST.PerfectoidIdealTorTransport
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationNilpotent
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealRadical
+public import SerrePositivity.CommutativeAlgebra.FiniteCommonLocalizationModel
 
 /-!
 # Serre の交点重複度の正値性の形式化
