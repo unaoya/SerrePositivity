@@ -2386,3 +2386,15 @@ frame側の比較、bar収縮・右脚・0次行sectionの可逆性、最終小�
 固定正方形間の高次整合性・bar全体の収縮、0次行section・右脚の可逆性、
 元のreplacement barとの接続、最終小さい厳密RMapは未完了。
 検証：`scripts/check_resolution_bar_frame_squares.lean`、計画書§304。
+
+
+### 同じraw値の通常resolution barへの厳密な移送（§305）
+
+`OrdinaryResolutionPairs`は元のraw Hom・projectionを通常のresolution pair上へ厳密に因子分解する。
+`OrdinaryResolutionRows`では元の全row pair・augmentationが同じcomma圏内の厳密な図式になる。
+`RelativeBarReindex`と`OrdinaryResolutionBar`は元のframed barからの実自然変換を作り、
+元の全Homラベルを保持する。元のspanのsource・middle・左脚と、その局所化後自然同型も保持する。
+forgetFramesのcofinality・strict section・新しい右脚の弱同値性は仮定しない。
+今後の右脚の証明は通常索引で進める。値はまだ補助の大きい宇宙にあり、
+元のmapping図式への自然弱同値比較と最終小さい厳密RMap・F2は未完了。
+検証：`scripts/check_ordinary_resolution_bar.lean`、計画書§305。

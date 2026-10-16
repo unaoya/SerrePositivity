@@ -16274,3 +16274,68 @@ inner正方形の等式は§303の同じ自然変換の自然性から得る。
 §301の0次行sectionの可逆性、元のreplacement barとの接続、実bar右脚の無条件の弱同値、
 基底Cᵒᵖ×C上の自然な小値化、F1の最終小さい厳密RMap、F2の最終自然弱同値zigzagは未完了。
 全体目標F→L→E→Sを維持する。
+
+
+## 305. 同じraw Homの通常resolution索引への厳密な因子分解と実bar比較（2026-10-16）
+
+§304で残ったcanonical outer-frame liftの全体整合性を避けられる範囲を、実定義で確認した。
+既存raw混合Homはinner resolutionとその実射だけを参照するため、通常のresolution pair上に
+厳密に因子分解する。この同じraw値を使うbarと、既存barからの実自然比較を構成した。
+F1・F2の最終要件は変更せず、新しい右脚の弱同値性を証明する方針へ進む。
+
+### 305.1 全実写像を保つ厳密な因子分解
+
+`OrdinaryResolutionPairs`の索引は(ResolutionObject C)ᵒᵖ×(ResolutionObject Cᵒᵖ)ᵒᵖである。
+元のCᵒᵖ×Cへのprojectionと、同じ小さいraw混合Hom関手を構成する。
+framed索引からouter frameの写像だけを忘れる実関手forgetFramesについて、
+forgetFrames≫projectionが元のRightResolutionMapping.projectionに、
+forgetFrames≫rawが元のMixedBiresolutionComparison.functorに厳密に等しいと証明した。
+いずれも対象ごとだけでなく全関手の等式であり、元の基底射・raw Hom写像を保持する。
+forgetFramesがfaithful・cofinal・同値であることや、strict sectionを持つことは要求しない。
+
+### 305.2 元の全行が同じcomma圏内の厳密な関手になる
+
+`OrdinaryResolutionRows`は§300の実row resolutionを通常pairの索引へ置く。
+全行作用素に追加のouter-frame liftを選ばず、その元のrowMapを直接使う。
+これにより行pairは全SimplexCategoryᵒᵖ上の厳密な関手となり、基底projectionは厳密に定数である。
+
+この全行を通常のresolution comma圏内の厳密な関手commaRowsとして構成し、
+元のreferenceから全行への実augmentationも同じcomma圏内の自然変換として構成した。
+rawへの像は§300の同じ行図式・同じ行比較に厳密に等しく、既存の行比較の弱同値を回収する。
+従って§300で個別に選んだframed行射の関手性を仮定する必要がない。
+
+### 305.3 実barの自然比較と元のspanの保持
+
+`Simplicial/RelativeBarReindex`は、同じobject・Hom索引宇宙を持つ任意のq:E→Dとp:D→B、
+F:D→SSetについて、relative(q≫p,q≫F)→relative(p,F)という実自然変換を構成する。
+実要素関手と実comma関手で同じchainを運び、元のラベルを保持する。
+基底・値・索引の宇宙は独立で、モデル構造やcofinalityは不要である。
+今回の二つのresolution索引は同じ索引宇宙を持つので、そのまま適用できる。
+
+`OrdinaryResolutionBar`は305.1の通常索引上の厳密なbase barと、元のframed raw barからの
+実自然変換を構成する。全次数・全comma頂点で元のHomラベルがそのまま残ることを証明した。
+元の自然spanのsource・middle・左脚を保持し、右脚をこの実bar比較へ続けた新しいspanを構成する。
+左脚のanodyne局所化後の既存の全自然同型も、同じ左脚の像をhomとして回収する。
+新しい右脚の弱同値を定義に含めたり、forgetFramesのcofinalityを仮定したりはしない。
+
+### 305.4 受入検証と以後の方針
+
+実装コミット`cd8952ad`。全て成功した。
+
+- 共有入口のbuild：2875 jobs、追加警告なし。
+- `check_ordinary_resolution_bar`：モデル不要の実bar reindex、独立宇宙の任意モデル源での
+  raw・projectionの全関手の厳密な因子分解、同じ全行の通常comma圏内の厳密な関手とaugmentation、
+  元の行raw値の回収、全元ラベルの保持、元の基底での比較の自然性、同じ左脚の局所化後自然同型、
+  元の小さいモデルでの同じ行比較の弱同値。
+  新規37宣言・4モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：9308宣言・678モジュール、標準公理のみ。
+- `check_resolution_bar_cone_diagram`：42宣言・4モジュールの回帰確認。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+今後のbar右脚の証明はこの通常resolution索引を使い、305.2の実行関手と、
+既存のordinary-resolution cone図式を接続する。新しい右脚と旧framed右脚の弱同値性は、
+現時点ではどちらも未証明である。旧比較空間・frame正方形の結果は保持する。
+このbarも値は補助の大きい宇宙にあり、最終の小さいRMapではない。
+元のreplacement mapping図式への自然弱同値比較、基底Cᵒᵖ×C上の自然な小値化、
+F1の最終小さい厳密RMap、F2の最終自然弱同値zigzagという元の到達条件は変更しない。
+全体目標F→L→E→Sを維持する。
