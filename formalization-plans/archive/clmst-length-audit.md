@@ -1,8 +1,11 @@
 # C1/C2 と根の塔の長さ構成の監査
 
+> **アーカイブ（2026-10-17）**：この計画は完了したか、ほかへ吸収された。内容の要約先：[CLMST 主計画](../clmst.md)。将来は削除する予定で、以下は当時の計画と実施記録のまま。
+
+
 監査日：2026-10-13。対象は共通層への抽出を始める直前の宣言と、公開入口
 `SerrePositivity.lean` の import 閉包。Lean の主張・引用は変更していない。
-[主計画](clmst.md)・[実装境界 T0-a](clmst-interfaces.md)の補助文書である。
+[主計画](../clmst.md)・[実装境界 T0-a](clmst-interfaces.md)の補助文書である。
 
 ## 続きの実装による更新
 
@@ -14,7 +17,7 @@ C2 の一般加法性も同じ条件で証明し、旧 `towerLengthFun_add_of_ex
 `towerLength`・`towerLengthOn`・`completedTowerLength`・`μT` と、Section 2・5 の利用先を
 条件つきの証明済み構成へ移した。標準冪級数表示の情報の伝播は C1・C2 とも不要となった。
 以下の広い署名・引用依存の記述と70宣言・28モジュールという件数は初回監査の記録であり、
-現行の署名ではない。現在の数値評価・引用境界は[主計画§0](clmst.md)を参照する。
+現行の署名ではない。現在の数値評価・引用境界は[主計画§0](../clmst.md)を参照する。
 現在の依存は `scripts/audit_clmst.lean` と `scripts/audit_axioms.lean` で確認する。
 
 ## 1. 初回監査時の結論と確認範囲
@@ -87,10 +90,10 @@ C2 は Prop 2.2.6(a) の加法性部分に対応する。
 一般の `NormalizedLength.comap` と `NormalizedLength.HasSup` は C1/C2 を import せず、
 抽象的な長さを引数とする。これらの一般性を狭める必要はない。
 
-所在：[TowerLength](../SerrePositivity/Paper/Section2/TowerLength.lean)、
-[TowerLengthOn](../SerrePositivity/Paper/Section2/TowerLengthOn.lean)、
-[CompletedTower](../SerrePositivity/Paper/Section2/CompletedTower.lean)、
-[TowerApproximation](../SerrePositivity/Paper/Section2/TowerApproximation.lean)。
+所在：[TowerLength](../../SerrePositivity/Paper/Section2/TowerLength.lean)、
+[TowerLengthOn](../../SerrePositivity/Paper/Section2/TowerLengthOn.lean)、
+[CompletedTower](../../SerrePositivity/Paper/Section2/CompletedTower.lean)、
+[TowerApproximation](../../SerrePositivity/Paper/Section2/TowerApproximation.lean)。
 
 ## 4. 間接利用の前提の差
 
@@ -110,13 +113,13 @@ C2 は Prop 2.2.6(a) の加法性部分に対応する。
 | `Section5.core_of_lengthAlgebras`、`…_with_parameter_choice`、`twistedEuler_pos_of_lengthAlgebras`、`lambdaChi_pos_of_parameter_lengthAlgebras` | 具体的 `towerLengthOn` を条件・結論に利用 | 完備正則／生成条件を持つ箇所でも、標準表示は引数にない。一般補題と具体的特殊化を分ける候補 |
 | `Section5.core_of_normalization_bases` | `hbaseD`、`hbaseT` に双方の標準表示 | A₀ 側と A 側それぞれの長さに仮定を供給できる、主要な標準入口 |
 
-所在：[TowerDescent](../SerrePositivity/Paper/Section2/TowerDescent.lean)、
-[PerfectApproximationLength](../SerrePositivity/Paper/Section2/PerfectApproximationLength.lean)、
-[LengthAlgebraConstruction](../SerrePositivity/Paper/Section2/LengthAlgebraConstruction.lean)、
-[Theorem2_5](../SerrePositivity/Paper/Section2/Theorem2_5.lean)、
-[ParameterQuotient](../SerrePositivity/Paper/Section5/ParameterQuotient.lean)、
-[TowerPositivity](../SerrePositivity/Paper/Section5/TowerPositivity.lean)、
-[NormalizationPositivity](../SerrePositivity/Paper/Section5/NormalizationPositivity.lean)。
+所在：[TowerDescent](../../SerrePositivity/Paper/Section2/TowerDescent.lean)、
+[PerfectApproximationLength](../../SerrePositivity/Paper/Section2/PerfectApproximationLength.lean)、
+[LengthAlgebraConstruction](../../SerrePositivity/Paper/Section2/LengthAlgebraConstruction.lean)、
+[Theorem2_5](../../SerrePositivity/Paper/Section2/Theorem2_5.lean)、
+[ParameterQuotient](../../SerrePositivity/Paper/Section5/ParameterQuotient.lean)、
+[TowerPositivity](../../SerrePositivity/Paper/Section5/TowerPositivity.lean)、
+[NormalizationPositivity](../../SerrePositivity/Paper/Section5/NormalizationPositivity.lean)。
 
 等標数の完備正則局所環から標準表示を取り直せることは数学的な候補であるが、
 指定した座標 t をそのまま X に送る同型まで、この監査では形式化済みとは確認していない。
@@ -168,21 +171,21 @@ RootTower の環・段・写像
 
 | ファイル | 宣言 | C1 | C2 |
 | --- | --- | --- | --- |
-| [Inputs/CLMST.lean](../SerrePositivity/Inputs/CLMST.lean) | `Inputs.clmst_length_eq_zero_of_perfectoidIdeal_annihilates` | — | ✓ |
+| [Inputs/CLMST.lean](../../SerrePositivity/Inputs/CLMST.lean) | `Inputs.clmst_length_eq_zero_of_perfectoidIdeal_annihilates` | — | ✓ |
 | 同上 | `Inputs.clmst_parameter_quotient_length` | — | ✓ |
-| [Paper/Section2/CompletedTower.lean](../SerrePositivity/Paper/Section2/CompletedTower.lean) | `Section2.completedTowerLength` | — | ✓ |
+| [Paper/Section2/CompletedTower.lean](../../SerrePositivity/Paper/Section2/CompletedTower.lean) | `Section2.completedTowerLength` | — | ✓ |
 | 同上 | `Section2.towerLengthOn_eq_completedTowerLength` | — | ✓ |
-| [Paper/Section2/Lemma2_4.lean](../SerrePositivity/Paper/Section2/Lemma2_4.lean) | `Section2.lemma_2_4_directLimit` | ✓ | ✓ |
+| [Paper/Section2/Lemma2_4.lean](../../SerrePositivity/Paper/Section2/Lemma2_4.lean) | `Section2.lemma_2_4_directLimit` | ✓ | ✓ |
 | 同上 | `Section2.lemma_2_4_directSum` | ✓ | ✓ |
 | 同上 | `Section2.lemma_2_4_iSup` | ✓ | ✓ |
 | 同上 | `Section2.lemma_2_4_iSup_of_directed` | ✓ | ✓ |
-| [Paper/Section2/LengthAlgebraConstruction.lean](../SerrePositivity/Paper/Section2/LengthAlgebraConstruction.lean) | `Section2.lengthAlgebra_equalCharacteristic` | ✓ | ✓ |
+| [Paper/Section2/LengthAlgebraConstruction.lean](../../SerrePositivity/Paper/Section2/LengthAlgebraConstruction.lean) | `Section2.lengthAlgebra_equalCharacteristic` | ✓ | ✓ |
 | 同上 | `Section2.lengthAlgebra_mixedCharacteristic` | — | ✓ |
 | 同上 | `Section2.perfectClosure_length_properties` | ✓ | ✓ |
 | 同上 | `Section2.perfectClosure_length_properties_of_higher_tendsto` | ✓ | ✓ |
 | 同上 | `Section2.perfectClosure_length_properties_of_roberts` | ✓ | ✓ |
-| [Paper/Section2/MixedLengthAlgebra.lean](../SerrePositivity/Paper/Section2/MixedLengthAlgebra.lean) | `Section2.mixedPerfectoid_length_properties` | — | ✓ |
-| [Paper/Section2/PerfectApproximationLength.lean](../SerrePositivity/Paper/Section2/PerfectApproximationLength.lean) | `Section2.normalized_frobenius_length_tendsto_perfection_quotient` | ✓ | ✓ |
+| [Paper/Section2/MixedLengthAlgebra.lean](../../SerrePositivity/Paper/Section2/MixedLengthAlgebra.lean) | `Section2.mixedPerfectoid_length_properties` | — | ✓ |
+| [Paper/Section2/PerfectApproximationLength.lean](../../SerrePositivity/Paper/Section2/PerfectApproximationLength.lean) | `Section2.normalized_frobenius_length_tendsto_perfection_quotient` | ✓ | ✓ |
 | 同上 | `Section2.towerLengthFun_perfectionApproximation_frobenius_quotient` | ✓ | — |
 | 同上 | `Section2.towerLengthFun_perfectionApproximation_frobenius_quotient_le` | ✓ | — |
 | 同上 | `Section2.towerLengthFun_perfectionApproximation_frobenius_quotient_tendsto_zero` | ✓ | — |
@@ -195,14 +198,14 @@ RootTower の環・段・写像
 | 同上 | `Section2.towerLengthFun_quotientImage_tendsto` | ✓ | ✓ |
 | 同上 | `Section2.towerLengthFun_quotient_eq_iSup_image` | ✓ | ✓ |
 | 同上 | `Section2.towerLengthFun_quotient_of_baseChange` | ✓ | — |
-| [Paper/Section2/PerfectKoszulLength.lean](../SerrePositivity/Paper/Section2/PerfectKoszulLength.lean) | `Section2.perfectionApproximation_koszulHomology_length` | ✓ | — |
-| [Paper/Section2/PerfectKoszulLimit.lean](../SerrePositivity/Paper/Section2/PerfectKoszulLimit.lean) | `Section2.towerLengthFun_perfection_koszulHomology_eq_zero_of_tendsto` | ✓ | ✓ |
+| [Paper/Section2/PerfectKoszulLength.lean](../../SerrePositivity/Paper/Section2/PerfectKoszulLength.lean) | `Section2.perfectionApproximation_koszulHomology_length` | ✓ | — |
+| [Paper/Section2/PerfectKoszulLimit.lean](../../SerrePositivity/Paper/Section2/PerfectKoszulLimit.lean) | `Section2.towerLengthFun_perfection_koszulHomology_eq_zero_of_tendsto` | ✓ | ✓ |
 | 同上 | `Section2.towerLengthOn_perfection_koszulHomology_eq_zero_of_tendsto` | ✓ | ✓ |
-| [Paper/Section2/PerfectQuotientLimit.lean](../SerrePositivity/Paper/Section2/PerfectQuotientLimit.lean) | `Section2.normalized_frobenius_length_tendsto_perfection_quotient_of_primary` | ✓ | ✓ |
+| [Paper/Section2/PerfectQuotientLimit.lean](../../SerrePositivity/Paper/Section2/PerfectQuotientLimit.lean) | `Section2.normalized_frobenius_length_tendsto_perfection_quotient_of_primary` | ✓ | ✓ |
 | 同上 | `Section2.normalized_frobenius_length_tendsto_towerLengthOn_quotient` | ✓ | ✓ |
 | 同上 | `Section2.towerLengthOn_perfection_parameter_quotient_eq_multiplicity_of_higher_tendsto` | ✓ | ✓ |
-| [Paper/Section2/Theorem2_5.lean](../SerrePositivity/Paper/Section2/Theorem2_5.lean) | `Section2.theorem_2_5` | ✓ | ✓ |
-| [Paper/Section2/TowerApproximation.lean](../SerrePositivity/Paper/Section2/TowerApproximation.lean) | `Section2.exists_fg_quotient_le` | ✓ | ✓ |
+| [Paper/Section2/Theorem2_5.lean](../../SerrePositivity/Paper/Section2/Theorem2_5.lean) | `Section2.theorem_2_5` | ✓ | ✓ |
+| [Paper/Section2/TowerApproximation.lean](../../SerrePositivity/Paper/Section2/TowerApproximation.lean) | `Section2.exists_fg_quotient_le` | ✓ | ✓ |
 | 同上 | `Section2.exists_finitePresentation_approx` | ✓ | ✓ |
 | 同上 | `Section2.exists_stage_step` | ✓ | ✓ |
 | 同上 | `Section2.exists_tower_approximation` | ✓ | ✓ |
@@ -213,28 +216,28 @@ RootTower の環・段・写像
 | 同上 | `Section2.μT_TS_ne_top` | ✓ | ✓ |
 | 同上 | `Section2.μT_pi_ne_top` | ✓ | ✓ |
 | 同上 | `Section2.μT_tensor_eq` | — | ✓ |
-| [Paper/Section2/TowerDescent.lean](../SerrePositivity/Paper/Section2/TowerDescent.lean) | `Section2.towerLengthFun_tensor` | ✓ | — |
+| [Paper/Section2/TowerDescent.lean](../../SerrePositivity/Paper/Section2/TowerDescent.lean) | `Section2.towerLengthFun_tensor` | ✓ | — |
 | 同上 | `Section2.towerLengthFun_tensor_of_finiteLength` | ✓ | — |
-| [Paper/Section2/TowerKoszulLength.lean](../SerrePositivity/Paper/Section2/TowerKoszulLength.lean) | `Section2.towerLengthFun_koszulHomology_of_baseChange` | ✓ | — |
-| [Paper/Section2/TowerLength.lean](../SerrePositivity/Paper/Section2/TowerLength.lean) | `Section2.towerLength` | — | ✓ |
+| [Paper/Section2/TowerKoszulLength.lean](../../SerrePositivity/Paper/Section2/TowerKoszulLength.lean) | `Section2.towerLengthFun_koszulHomology_of_baseChange` | ✓ | — |
+| [Paper/Section2/TowerLength.lean](../../SerrePositivity/Paper/Section2/TowerLength.lean) | `Section2.towerLength` | — | ✓ |
 | 同上 | `Section2.towerLengthFun_add_of_exact` | — | ✓ |
 | 同上 | `Section2.towerLengthFun_eq_fgLength` | ✓ | — |
 | 同上 | `Section2.towerLength_hasSup` | ✓ | ✓ |
 | 同上 | `Section2.towerLength_len` | — | ✓ |
-| [Paper/Section2/TowerLengthOn.lean](../SerrePositivity/Paper/Section2/TowerLengthOn.lean) | `Section2.towerLengthOn` | — | ✓ |
+| [Paper/Section2/TowerLengthOn.lean](../../SerrePositivity/Paper/Section2/TowerLengthOn.lean) | `Section2.towerLengthOn` | — | ✓ |
 | 同上 | `Section2.towerLengthOn_len` | — | ✓ |
-| [Paper/Section5/CompletionReduction.lean](../SerrePositivity/Paper/Section5/CompletionReduction.lean) | `Section5.positivity_of_residueCharP` | ✓ | ✓ |
-| [Paper/Section5/Core.lean](../SerrePositivity/Paper/Section5/Core.lean) | `Section5.core_of_complete_algClosed` | ✓ | ✓ |
-| [Paper/Section5/CoreLengthPositivity.lean](../SerrePositivity/Paper/Section5/CoreLengthPositivity.lean) | `Section2.towerLengthOn.congr_simp` | — | ✓ |
+| [Paper/Section5/CompletionReduction.lean](../../SerrePositivity/Paper/Section5/CompletionReduction.lean) | `Section5.positivity_of_residueCharP` | ✓ | ✓ |
+| [Paper/Section5/Core.lean](../../SerrePositivity/Paper/Section5/Core.lean) | `Section5.core_of_complete_algClosed` | ✓ | ✓ |
+| [Paper/Section5/CoreLengthPositivity.lean](../../SerrePositivity/Paper/Section5/CoreLengthPositivity.lean) | `Section2.towerLengthOn.congr_simp` | — | ✓ |
 | 同上 | `Section5.core_of_lengthAlgebras` | ✓ | ✓ |
-| [Paper/Section5/ModuleReduction.lean](../SerrePositivity/Paper/Section5/ModuleReduction.lean) | `Section5.positivity_of_complete_algClosed` | ✓ | ✓ |
-| [Paper/Section5/NormalizationPositivity.lean](../SerrePositivity/Paper/Section5/NormalizationPositivity.lean) | `Section5.core_of_normalization_bases` | ✓ | ✓ |
-| [Paper/Section5/ParameterLengthPositivity.lean](../SerrePositivity/Paper/Section5/ParameterLengthPositivity.lean) | `Section5.lambdaChi_pos_of_parameter_lengthAlgebras` | ✓ | ✓ |
-| [Paper/Section5/ParameterQuotient.lean](../SerrePositivity/Paper/Section5/ParameterQuotient.lean) | `Section5.lemma_5_4` | ✓ | ✓ |
-| [Paper/Section5/PrimeReduction.lean](../SerrePositivity/Paper/Section5/PrimeReduction.lean) | `Section5.chi_prime_pos_of_complete_algClosed` | ✓ | ✓ |
-| [Paper/Section5/ResidueFieldReduction.lean](../SerrePositivity/Paper/Section5/ResidueFieldReduction.lean) | `Section5.positivity_of_complete_residueCharP` | ✓ | ✓ |
-| [Paper/Section5/SelectedParameterPositivity.lean](../SerrePositivity/Paper/Section5/SelectedParameterPositivity.lean) | `Section5.core_of_lengthAlgebras_with_parameter_choice` | ✓ | ✓ |
-| [Paper/Section5/TowerPositivity.lean](../SerrePositivity/Paper/Section5/TowerPositivity.lean) | `Section5.lambdaChi_pos_of_parameter_tower` | ✓ | ✓ |
-| [Paper/Section5/TwistedLengthPositivity.lean](../SerrePositivity/Paper/Section5/TwistedLengthPositivity.lean) | `Section5.twistedEuler_pos_of_lengthAlgebras` | ✓ | ✓ |
-| [Paper/Statement.lean](../SerrePositivity/Paper/Statement.lean) | `core_statement` | ✓ | ✓ |
+| [Paper/Section5/ModuleReduction.lean](../../SerrePositivity/Paper/Section5/ModuleReduction.lean) | `Section5.positivity_of_complete_algClosed` | ✓ | ✓ |
+| [Paper/Section5/NormalizationPositivity.lean](../../SerrePositivity/Paper/Section5/NormalizationPositivity.lean) | `Section5.core_of_normalization_bases` | ✓ | ✓ |
+| [Paper/Section5/ParameterLengthPositivity.lean](../../SerrePositivity/Paper/Section5/ParameterLengthPositivity.lean) | `Section5.lambdaChi_pos_of_parameter_lengthAlgebras` | ✓ | ✓ |
+| [Paper/Section5/ParameterQuotient.lean](../../SerrePositivity/Paper/Section5/ParameterQuotient.lean) | `Section5.lemma_5_4` | ✓ | ✓ |
+| [Paper/Section5/PrimeReduction.lean](../../SerrePositivity/Paper/Section5/PrimeReduction.lean) | `Section5.chi_prime_pos_of_complete_algClosed` | ✓ | ✓ |
+| [Paper/Section5/ResidueFieldReduction.lean](../../SerrePositivity/Paper/Section5/ResidueFieldReduction.lean) | `Section5.positivity_of_complete_residueCharP` | ✓ | ✓ |
+| [Paper/Section5/SelectedParameterPositivity.lean](../../SerrePositivity/Paper/Section5/SelectedParameterPositivity.lean) | `Section5.core_of_lengthAlgebras_with_parameter_choice` | ✓ | ✓ |
+| [Paper/Section5/TowerPositivity.lean](../../SerrePositivity/Paper/Section5/TowerPositivity.lean) | `Section5.lambdaChi_pos_of_parameter_tower` | ✓ | ✓ |
+| [Paper/Section5/TwistedLengthPositivity.lean](../../SerrePositivity/Paper/Section5/TwistedLengthPositivity.lean) | `Section5.twistedEuler_pos_of_lengthAlgebras` | ✓ | ✓ |
+| [Paper/Statement.lean](../../SerrePositivity/Paper/Statement.lean) | `core_statement` | ✓ | ✓ |
 | 同上 | `main_statement` | ✓ | ✓ |

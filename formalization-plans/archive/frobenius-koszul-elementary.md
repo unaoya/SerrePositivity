@@ -1,15 +1,18 @@
 # 外部引用6を主定理から外す：パラメータ Koszul 複体の初等的な消滅
 
+> **アーカイブ（2026-10-17）**：この計画は完了したか、ほかへ吸収された。内容の要約先：解説の注意「Roberts の定理を使わない消滅」（`rem:koszul-elementary`）と、`CommutativeAlgebra/ParameterKoszulGrowth.lean` ほかの docstring。将来は削除する予定で、以下は当時の計画と実施記録のまま。
+
+
 作成：2026-10-14。状態：完了（2026-10-14）。主定理は `Inputs.frobenius_homology_length_tendsto_zero` に依存しない。
 tight closure などを使う一般形の証明は [Frobenius 消滅の計画](frobenius-homology.md) に残し、この文書の範囲に含めない。
 
 ## 1. 目的
 
-[Inputs/RobertsFrobenius.lean](../SerrePositivity/Inputs/RobertsFrobenius.lean) の
+[Inputs/RobertsFrobenius.lean](../../SerrePositivity/Inputs/RobertsFrobenius.lean) の
 `Inputs.frobenius_homology_length_tendsto_zero` は、長さ `d` の **任意の** 有限自由複体について
 高次 Frobenius ホモロジーの正規化長さの消滅を引用している。
 主定理の経路で使うのは
-[LengthAlgebraConstruction](../SerrePositivity/Paper/Section2/LengthAlgebraConstruction.lean) の
+[LengthAlgebraConstruction](../../SerrePositivity/Paper/Section2/LengthAlgebraConstruction.lean) の
 `perfectClosure_length_properties` の 1 か所だけで、適用先は次の形に限られる。
 
 - `D`：完備 Noether 局所整域、標数 `p`、剰余体は完全体、`dim D = h > 0`。
@@ -76,12 +79,12 @@ E5〜E7 は具体的な適用で、新しいファイルにまとめる。
 
 | 段 | 実装 |
 | --- | --- |
-| E1 | [FiniteLengthSmulSubquotient](../SerrePositivity/CommutativeAlgebra/FiniteLengthSmulSubquotient.lean)：`length_ker_eq_length_quotient_range`、`length_le_length_ker_smul_of_subquotient`、`length_le_length_quotient_smul_of_subquotient`、直積の核の長さ `length_ker_smul_pi` |
-| E2 | [TorUniformAnnihilator](../SerrePositivity/HomologicalAlgebra/TorUniformAnnihilator.lean)：`torModule_smul_eq_zero`、`torModule_free_succ_eq_zero`、`exists_ne_zero_smul_torModule_eq_zero`。`M` の捩れのなさは不要 |
-| E3 | [TorFiniteLengthBound](../SerrePositivity/HomologicalAlgebra/TorFiniteLengthBound.lean)：`length_torModule_le_of_smul_eq_zero`。輪体を `W ⊗ K_{-i} ≅ W^β` に入れて E1 を適用 |
-| E4 | [ParameterPowerLengthBound](../SerrePositivity/CommutativeAlgebra/ParameterPowerLengthBound.lean)：`HilbertSamuel.exists_samuelFunction_le_pow`、`exists_length_quotient_generator_pow_le` |
-| E5 | [KoszulTorLength](../SerrePositivity/HomologicalAlgebra/KoszulTorLength.lean)：`length_koszulHomologySelf_eq_length_torModule` |
-| E6・E7 | [ParameterKoszulGrowth](../SerrePositivity/CommutativeAlgebra/ParameterKoszulGrowth.lean)：`exists_finite_powerSeries_parameters`（係数体と有限な評価）、`exists_length_koszulHomologySelf_pow_le`（`ℓ H_i(z^q; D) ≤ C q^{h-1}`）、`tendsto_length_koszulHomologySelf_frobenius_pow`。`LengthAlgebraConstruction.perfectClosure_length_properties` をこれに付け替えた |
+| E1 | [FiniteLengthSmulSubquotient](../../SerrePositivity/CommutativeAlgebra/FiniteLengthSmulSubquotient.lean)：`length_ker_eq_length_quotient_range`、`length_le_length_ker_smul_of_subquotient`、`length_le_length_quotient_smul_of_subquotient`、直積の核の長さ `length_ker_smul_pi` |
+| E2 | [TorUniformAnnihilator](../../SerrePositivity/HomologicalAlgebra/TorUniformAnnihilator.lean)：`torModule_smul_eq_zero`、`torModule_free_succ_eq_zero`、`exists_ne_zero_smul_torModule_eq_zero`。`M` の捩れのなさは不要 |
+| E3 | [TorFiniteLengthBound](../../SerrePositivity/HomologicalAlgebra/TorFiniteLengthBound.lean)：`length_torModule_le_of_smul_eq_zero`。輪体を `W ⊗ K_{-i} ≅ W^β` に入れて E1 を適用 |
+| E4 | [ParameterPowerLengthBound](../../SerrePositivity/CommutativeAlgebra/ParameterPowerLengthBound.lean)：`HilbertSamuel.exists_samuelFunction_le_pow`、`exists_length_quotient_generator_pow_le` |
+| E5 | [KoszulTorLength](../../SerrePositivity/HomologicalAlgebra/KoszulTorLength.lean)：`length_koszulHomologySelf_eq_length_torModule` |
+| E6・E7 | [ParameterKoszulGrowth](../../SerrePositivity/CommutativeAlgebra/ParameterKoszulGrowth.lean)：`exists_finite_powerSeries_parameters`（係数体と有限な評価）、`exists_length_koszulHomologySelf_pow_le`（`ℓ H_i(z^q; D) ≤ C q^{h-1}`）、`tendsto_length_koszulHomologySelf_frobenius_pow`。`LengthAlgebraConstruction.perfectClosure_length_properties` をこれに付け替えた |
 
 計画からの変更：
 

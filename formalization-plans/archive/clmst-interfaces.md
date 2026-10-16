@@ -1,7 +1,10 @@
 # CLMST の実装境界と作業単位
 
+> **アーカイブ（2026-10-17）**：この計画は完了したか、ほかへ吸収された。内容の要約先：[CLMST 主計画](../clmst.md)。将来は削除する予定で、以下は当時の計画と実施記録のまま。
+
+
 作成日：2026-10-13。更新日：2026-10-14。状態：必要な数値結果とSerre接続を明示引用から証明済み。
-[主計画](clmst.md)の M0〜M3 を具体化する。T1の共通層抽出、T3-a の一般定理、有限生成一致の証明、almost 圏と冪ねじれの導来完備性を実装した。
+[主計画](../clmst.md)の M0〜M3 を具体化する。T1の共通層抽出、T3-a の一般定理、有限生成一致の証明、almost 圏と冪ねじれの導来完備性を実装した。
 mod p^N の冪等性の入力と almost 比較、Cor 4.0.4 の原典入力からの適用まで実装した。
 Prop 4.0.14 の一般段の公式は、共通Euler理論と有限段の数値評価から引用せずに証明した。
 旧Inputs宣言は互換入口として保持する。標準完備塔のperfectoid性はWitt係数表示から証明済み。基礎引用はBSの存在・全射性、
@@ -11,7 +14,7 @@ Prop 4.0.10の数値評価は証明済みであり、直接の引用ではない
 導来完備化関手、basic setup の平坦性と深い文献結果の証明は引き続き残る。
 完備化の共通工程・証明手順・作業分担は[統合計画](adic-completion-integration.md)を正本とし、
 この文書ではCLMSTへの固有の適用と引用境界を扱う。
-現在の作業順と引用台帳は[主計画§0・§9](clmst.md)を正本とする。
+現在の作業順と引用台帳は[主計画§0・§9](../clmst.md)を正本とする。
 T0〜T3は達成した設計・工程の記録として読む。末尾の「続きの実装状況」は
 当時の経過記録であり、そこにある残作業を現在の未完了項目として扱わない。
 
@@ -21,7 +24,7 @@ C1（標準完備塔）・F1〜F7は完了済み。
 F3は元の二座標Koszul完備化の実際のH⁰に可換環構造を与え、
 元の標準写像との一致、標準作用に関する両座標の導来完備性、
 完備離散環への任意の環準同型の一意延長、反復環との比較を証明した。
-公開入口は[`PDCompletion.lean`](../SerrePositivity/HomologicalAlgebra/DerivedCompletion/PDCompletion.lean)。
+公開入口は[`PDCompletion.lean`](../../SerrePositivity/HomologicalAlgebra/DerivedCompletion/PDCompletion.lean)。
 一般の三座標以上への拡張とδ構造の延長は別工程。
 F4は`StrictPRecovery`で零環を含むWitt復元、標準商図式、一意性を供給済み。
 検証は`scripts/audit_f4.lean`。
@@ -29,25 +32,25 @@ F6は`PerfectionPrincipalQuotientKernel`で一般主イデアル商の核を生�
 標準写像の署名、非正則元、零環の商の検証は`scripts/audit_f6.lean`。
 F7は`PerfectoidFontaineSeparation`でp正則な整perfectoid環のFontaine核進分離性を供給済み。
 BSの比較射への適用を`scripts/audit_f7.lean`で確認した。次はBS成果のCLMSTへの接続。
-F5は[主計画§9.3](clmst.md)で
+F5は[主計画§9.3](../clmst.md)で
 一般加群の分離性、導来／古典的比較、主イデアル商、BS適用監査の5単位を完了した。
 公開入口は`AdicBoundedTorsionQuotient`、BSの既存ねじれ入力との接続は`scripts/audit_f5.lean`で監査する。
-[主計画§9.7a](clmst.md)のE1〜E5は完了した。深い入力を使わず、
+[主計画§9.7a](../clmst.md)のE1〜E5は完了した。深い入力を使わず、
 Claim 2.4.8の一般加群版と任意の加群写像の導来錐の零化を証明済み。
 公開入口は`CLMST/FiniteFreeConeIsogeny.lean`、検証は`scripts/audit_clmst_elementary.lean`。
-B3の一般商の存在・普遍性を受領し、[主計画§9.7b](clmst.md)のC2-1〜5も完了した。
+B3の一般商の存在・普遍性を受領し、[主計画§9.7b](../clmst.md)のC2-1〜5も完了した。
 主イデアル商の選択・標準写像・核・作用をB3へ移し、巡回評価・almost長さ比較から旧B-Iを除去。
 専用監査は`scripts/audit_clmst_b3.lean`で、証明定数の推移的依存を検査する。
 巡回評価にはB-Sのみ、実almost同型の長さ比較にはB-SとB-Rのみが残る。
 一般有限代数側のB-Iは維持するため、主定理の7宣言という台帳は変わらない。
 旧選択との互換比較は`PerfectoidIdealCompatibility.lean`と専用監査へ分離した。
-BS共通要求G1も[主計画§9.7c](clmst.md)のG1-1〜4で完了した。
+BS共通要求G1も[主計画§9.7c](../clmst.md)のG1-1〜4で完了した。
 公開入口は`CommutativeAlgebra/PrincipalAdicFaithfulDescent.lean`の
 `SerrePositivity.surjective_algHom_of_principal_residue_baseChange`。
 BSのS/(p)、C/(p)を直接使い、mod pでのみ忠実平坦な底変換後の全射性を降ろす。
 適用時はMathlibの標準構造を公開する`principalAdicQuotientAlgebra`を局所instanceとして使う。
 一般Iの加群版・環商版、公開22宣言と境界例を`scripts/audit_g1.lean`で監査済み。
-次は[主計画§9.7d](clmst.md)の統合計画に従う。
+次は[主計画§9.7d](../clmst.md)の統合計画に従う。
 G2-1（実導来圏への接続・TorとH⁰の自然比較・標準augmentation）、
 G2-2a（加群の導来係数変更）、G2-3（一般複体の完備化・標準単位・完備対象の再構成）は実装・監査済み。
 次の実行区切りはG2-2b・G2-4（複体の底変換・剰余比較）。
@@ -60,7 +63,7 @@ KL1は一般係数のTor比較・反復錐比較・通常のC上のスカラー�
 D1・D2・D4・D5とKL5も完了し、D4はG2-3の標準再構成からの零化とD5への接続まで供給した。
 残るD3・D6の降下、KL2〜4・KL6の局所コホモロジー比較と
 Cor 4.0.4への含意は後続工程とし、既存引用を維持する。
-現在の型・成果物・優先順・受入条件は[主計画§9](clmst.md#9-次の具体的な作業2026-10-14更新)を参照。
+現在の型・成果物・優先順・受入条件は[主計画§9](../clmst.md#9-次の具体的な作業2026-10-14更新)を参照。
 主定理へ到達する未証明入力は7宣言（外部引用5件・K理論2件）。
 以下のレビューと検証件数は当時の記録である。
 
@@ -97,9 +100,9 @@ Paperへの推移的importが0件であることを確認した。
 ### BS計画の参照による作業の分担（2026-10-14）
 
 以下の候補表は初回調査を保持したもの。採用する実行順は
-[主計画§0.2](clmst.md)のS0〜S5/C1〜C2である。
+[主計画§0.2](../clmst.md)のS0〜S5/C1〜C2である。
 標準完備塔はこの側で進め、任意gの冪等性・全射性は
-[BS計画](bhatt-scholze.md)のB4・B5へ集約する。
+[BS計画](../bhatt-scholze.md)のB4・B5へ集約する。
 古典的／導来完備性は共通基盤として一度証明する。
 共通準備P0、並行担当P1、待合せP2、合流P3は主計画§0.2に明記した。
 ユーザー指定により、このチャットは共通準備・ホモロジー代数等の共通基盤と
@@ -154,8 +157,8 @@ BSの商の存在B3が完成した段階で、巡回商を一般整代数の存�
 | `towerLengthOn_eq_completedTowerLength` | 係数制限の順序による長さの一致 | 純粋な環の完備化とは別モジュールへ |
 | `isPowTorsion_completedTower_koszul` | 任意のパラメータ系での一様な冪ねじれ | almost 消滅とは別に既存証明を使う |
 
-主な所在は [Section2](../SerrePositivity/Paper/Section2/) と
-[FiniteLength](../SerrePositivity/CommutativeAlgebra/FiniteLength.lean)。
+主な所在は [Section2](../../SerrePositivity/Paper/Section2/) と
+[FiniteLength](../../SerrePositivity/CommutativeAlgebra/FiniteLength.lean)。
 移動のために数学的対象を二重に定義せず、正本を抽出して旧 namespace に互換別名を残す。
 
 ## 3. T0：先に確定する型と引用境界
@@ -266,7 +269,7 @@ CLMST の具体的な長さを代入する結果は引用の後段に置く。
 
 ## 5. T2：引用を置く順と台帳
 
-現在の名前付き引用と利用先は[主計画§0](clmst.md)の表を参照する。
+現在の名前付き引用と利用先は[主計画§0](../clmst.md)の表を参照する。
 正規化長さの必要な一致・加法性とProp 4.0.10・4.0.14は証明済みで、
 独立した引用として置かない。Cor 4.0.4の局所コホモロジーと全段Koszul消滅を
 直接引用し、Thm 4.0.3は別の直接引用宣言としては置いていない。
@@ -295,7 +298,7 @@ CLMST の具体的な長さを代入する結果は引用の後段に置く。
 分数体での分離性から零素イデアルでの étale 性を出し、étale locus の開性で `D` の元を選ぶ。
 有限整拡大のイデアルの収縮を使い、基底の非零元 `g` へ移す。
 局所化の有限性、代数構造、scalar tower、元の写像との可換性まで証明する。
-この経路を [GenericEtale](../SerrePositivity/CommutativeAlgebra/GenericEtale.lean) に実装した。
+この経路を [GenericEtale](../../SerrePositivity/CommutativeAlgebra/GenericEtale.lean) に実装した。
 `exists_finite_etale_away_of_separable_fractionRing` が非零元と標準局所化に対する有限 étale 性を返す。
 Serre の具体的な分数体・最小多項式の設定へ適用する最後の接続は後続作業である。
 
@@ -358,7 +361,7 @@ Cor 4.0.4 の全ステートメントを作る際に局所コホモロジーの�
 - 任意のパラメータ系、一般 n、一般加群、完備性・ねじれの量化条件が原典と対応する。
 - 普遍対象の選択とテンソル積の順序の比較が、基底環・D の作用と両立する。
 - 段階の仮定変更と、引用を原典単位へ分ける変更を別に監査できる。
-- 対象モジュールと全体のビルド、[公理監査](../scripts/audit_axioms.lean)と引用台帳で利用先まで確認する。
+- 対象モジュールと全体のビルド、[公理監査](../../scripts/audit_axioms.lean)と引用台帳で利用先まで確認する。
 
 T0-a の初回監査、T1 の共通層抽出、T3-a の一般定理に加え、C1 と有限表示の場合の一致も証明した。
 [長さの監査](clmst-length-audit.md)をもとに、Noether 局所基底・素数・座標条件を明示する。
@@ -466,13 +469,13 @@ isogenyへの接続はCLMST側、剰余体拡大への適用と外部引用1の�
 ## 9. 根拠資料
 
 - [CLMST v4](https://arxiv.org/html/2209.04046v4)：§2.2、§2.3、Caution 2.4.4、Prop 2.4.7、Notation 4.0.1、Cor 4.0.4、Prop 4.0.10・4.0.14。
-- [現行の CLMST 入力](../SerrePositivity/Inputs/CLMST.lean)と
-  [混標数の接続](../SerrePositivity/Paper/Section2/MixedLengthAlgebra.lean)。
-- [長さの定義](../SerrePositivity/Paper/Section2/TowerLength.lean)、
-  [有限表示降下](../SerrePositivity/Paper/Section2/TowerDescent.lean)、
-  [完備化と長さ比較](../SerrePositivity/Paper/Section2/CompletedTower.lean)。
-- [perfectoid の定義](../SerrePositivity/CommutativeAlgebra/IntegralPerfectoid.lean)、
-  [現在の perfectoid 化の選択](../SerrePositivity/CommutativeAlgebra/Perfectoidization.lean)。
+- [現行の CLMST 入力](../../SerrePositivity/Inputs/CLMST.lean)と
+  [混標数の接続](../../SerrePositivity/Paper/Section2/MixedLengthAlgebra.lean)。
+- [長さの定義](../../SerrePositivity/Paper/Section2/TowerLength.lean)、
+  [有限表示降下](../../SerrePositivity/Paper/Section2/TowerDescent.lean)、
+  [完備化と長さ比較](../../SerrePositivity/Paper/Section2/CompletedTower.lean)。
+- [perfectoid の定義](../../SerrePositivity/CommutativeAlgebra/IntegralPerfectoid.lean)、
+  [現在の perfectoid 化の選択](../../SerrePositivity/CommutativeAlgebra/Perfectoidization.lean)。
 
 Mathlib の API 名は、このリポジトリで固定している版のソースを確認したもの。
 型の接続がそのまま通ることや、必要な証明が全て揃っていることを保証する一覧ではない。

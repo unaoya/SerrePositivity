@@ -11,7 +11,7 @@ B2のLemma 3.9・Theorem 3.10に向けた部分定理は§24〜§39に実装・�
 当初の未完了状況は後続の実装記録を参照する。現在B3の一般存在・普遍性とB4の一般全射性は引用なしで証明済み（2026-10-16）。B5は別工程。
 
 この文書を、Bhatt–Scholze（以下 BS）の引用を解消する証明経路・依存関係・受入条件の正本とする。
-CLMST 側の利用状況は [CLMST の計画](clmst.md) と [実装境界](clmst-interfaces.md) を参照する。
+CLMST 側の利用状況は [CLMST の計画](clmst.md) と [実装境界](archive/clmst-interfaces.md) を参照する。
 
 ## 1. 原典と版
 

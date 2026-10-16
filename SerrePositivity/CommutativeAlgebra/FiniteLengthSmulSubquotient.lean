@@ -20,7 +20,7 @@ public import SerrePositivity.CommutativeAlgebra.FiniteLengthValue
 
 Tor を有限長の加群 `W ⊗ G_i` の部分商として表し、一様な零化元 `c` から
 `ℓ Tor_i ≤ (rank G_i) · ℓ(W / cW)` を得るのに使う
-（`formalization-plans/frobenius-koszul-elementary.md` の E1）。
+（解説の注意「Roberts の定理を使わない消滅」（`exposition/ja/exposition-ja.tex` の `rem:koszul-elementary`）の手順 4）。
 環の局所性・Noether 性は要求しない。
 -/
 

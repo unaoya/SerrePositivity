@@ -20,7 +20,7 @@ public import Mathlib.LinearAlgebra.TensorProduct.Pi
 
 ## 使われ方
 
-`formalization-plans/frobenius-koszul-elementary.md` の E3。
+解説の注意「Roberts の定理を使わない消滅」（`exposition/ja/exposition-ja.tex` の `rem:koszul-elementary`）の手順 4。
 `W = R'/(Z^q)` とし、`K` を `q` によらない有限生成自由分解にとれば、
 一様な零化元 `c` から `q` によらない係数 `β` で長さを抑えられる。
 -/

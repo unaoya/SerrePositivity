@@ -20,7 +20,7 @@ public import Mathlib.RingTheory.Regular.RegularSequence
 
 ## 使われ方
 
-`formalization-plans/serre-equal-characteristic.md` の K3。
+解説の付録 A（「引用している結果」の対角線論法の段落）の工程（冪級数環の変数の正則性）。
 `D' = R[[Y]] / P R[[Y]]` が `Y_i` を通した `R` 作用で平坦であることを、
 局所平坦性判定法（正則列版）から導くのに使う。
 -/

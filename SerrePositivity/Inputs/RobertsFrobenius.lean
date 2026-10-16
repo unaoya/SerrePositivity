@@ -23,8 +23,8 @@ Koszul 複体への適用条件、パラメータの冪との同定、perfection
 **主定理の経路では使わない。** 等標数の長さ代数で必要なのはパラメータ Koszul 複体の場合だけで、
 それは `CommutativeAlgebra/ParameterKoszulGrowth.lean` の
 `tendsto_length_koszulHomologySelf_frobenius_pow` が Frobenius の性質を使わずに証明する
-（`formalization-plans/frobenius-koszul-elementary.md`）。この一般形の引用は、
-tight closure などによる証明の対象として残す（`formalization-plans/frobenius-homology.md`）。
+（解説の注意「Roberts の定理を使わない消滅」（`exposition/ja/exposition-ja.tex` の `rem:koszul-elementary`））。この一般形の引用は、
+tight closure などによる証明の対象として残す（Lech の論文でも、一般形を使うのは主定理に不要な系 5.4 だけ）。
 -/
 
 public section

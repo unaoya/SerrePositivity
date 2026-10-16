@@ -31,7 +31,7 @@ public import Mathlib.RingTheory.Flat.Basic
 
 ## 使われ方
 
-`formalization-plans/serre-equal-characteristic.md` の K8。
+解説の付録 A（「引用している結果」の対角線論法の段落）の工程（次元シフトによる Tor の長さの比較）。
 対角線の環 `S = R[[Y]]` で `N = S/(δ)`、`D' = S/PS`、`D = R/P` とし、
 `Tor^R(R/P, R/Q)` を `Tor^S(S/(δ), T)` と比べる。
 -/

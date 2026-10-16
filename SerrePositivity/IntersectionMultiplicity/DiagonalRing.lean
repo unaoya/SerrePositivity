@@ -30,7 +30,7 @@ public import SerrePositivity.CommutativeAlgebra.RegularParameters
 
 ## 使われ方
 
-`formalization-plans/serre-equal-characteristic.md` の K5・K6。
+解説の付録 A（「引用している結果」の対角線論法の段落）の工程（対角線の環と $\delta$ の正則性）。
 -/
 
 @[expose] public noncomputable section

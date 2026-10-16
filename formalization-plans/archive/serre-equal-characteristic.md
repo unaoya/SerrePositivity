@@ -1,15 +1,18 @@
 # 外部引用4を主定理から外す：剰余標数零での Serre の対角線論法
 
+> **アーカイブ（2026-10-17）**：この計画は完了したか、ほかへ吸収された。内容の要約先：解説の付録 A（「引用している結果」の対角線論法の段落）と、`IntersectionMultiplicity/Diagonal*.lean`・`EqualCharZeroPositivity.lean` の docstring。将来は削除する予定で、以下は当時の計画と実施記録のまま。
+
+
 作成：2026-10-14。状態：完了（2026-10-14）。主定理は `Inputs.serrePositivity_of_field` に依存しない（§8）。
 [引用4〜5の調査](intersection-inputs-4-5.md) §2 の候補を、主定理が実際に使う範囲に絞って具体化する。
 5番（`Inputs.intersectionVanishing`）は引用のまま残し、この計画では外さない。
 
 ## 1. 目的と範囲
 
-[Inputs/SerrePositivity.lean](../SerrePositivity/Inputs/SerrePositivity.lean) の
+[Inputs/SerrePositivity.lean](../../SerrePositivity/Inputs/SerrePositivity.lean) の
 `Inputs.serrePositivity_of_field` は、体を含む任意の正則局所環での正値性を引用している。
 主定理での利用は
-[CharacteristicZeroReduction](../SerrePositivity/Paper/Section5/CharacteristicZeroReduction.lean) の
+[CharacteristicZeroReduction](../../SerrePositivity/Paper/Section5/CharacteristicZeroReduction.lean) の
 `positivity_of_residueCharZero` の 1 か所で、`ratAlgebra_of_residueCharZero` により `ℚ` を体として渡している。
 つまり必要なのは **剰余標数零の正則局所環** の場合だけである。
 
@@ -86,7 +89,7 @@ S0〜S2 は対角線と独立に進められる。S3・S4 と S5・S6 も互い�
 
 ## 6. 実施状況と見積もりの修正（2026-10-14）
 
-- **S1 完了**：[CharZeroCoefficientField](../SerrePositivity/CommutativeAlgebra/CharZeroCoefficientField.lean) の
+- **S1 完了**：[CharZeroCoefficientField](../../SerrePositivity/CommutativeAlgebra/CharZeroCoefficientField.lean) の
   `exists_residue_section_of_charZero`。超越基底の持ち上げで `ℚ(x) → A` を作り、
   残りの分離代数拡大は Mathlib の `Algebra.FormallyEtale.of_isSeparable` と
   `Algebra.FormallySmooth.exists_mkₐ_comp_eq_of_isAdicComplete` で持ち上げた。約 100 行。
@@ -124,17 +127,17 @@ S0〜S2 は対角線と独立に進められる。S3・S4 と S5・S6 も互い�
 
 | 部品 | 内容 | 状態 |
 | --- | --- | --- |
-| K1 | 局所平坦性判定法と正則列版 | 完了：[LocalFlatnessCriterion](../SerrePositivity/HomologicalAlgebra/LocalFlatnessCriterion.lean) |
-| K2 | 環準同型を明示した正則列版（代数構造の衝突を避ける） | 完了：[DiagonalFlat](../SerrePositivity/IntersectionMultiplicity/DiagonalFlat.lean)：`flat_coeffQuot` |
-| K3 | 任意の係数環の冪級数環で変数は正則列 | 完了：[PowerSeriesVariableRegular](../SerrePositivity/CommutativeAlgebra/PowerSeriesVariableRegular.lean)：`isWeaklyRegular_quotient_map_C_ofFn_X`、`isWeaklyRegular_mvPowerSeries_map_C` |
-| K4 | Cohen 同型 `k[[X]] ≃ R` | 完了：[EqualCharZeroPositivity](../SerrePositivity/IntersectionMultiplicity/EqualCharZeroPositivity.lean)：`exists_mvPowerSeries_ringEquiv_of_charZero` |
-| K5 | `Δ ∘ i₂ = id`（評価と係数写像の合成） | 完了：[PowerSeriesRingHomExt](../SerrePositivity/CommutativeAlgebra/PowerSeriesRingHomExt.lean)・[DiagonalRing](../SerrePositivity/IntersectionMultiplicity/DiagonalRing.lean)：`eval_algebraMap` |
-| K6 | `ker Δ = (δ)`、`δ` は `S` の正則列 | 完了：[DiagonalRing](../SerrePositivity/IntersectionMultiplicity/DiagonalRing.lean)：`ker_eval`、`isWeaklyRegular_diag` |
-| K7 | 平坦な基底変換での Tor：`Tor^S(V, S ⊗_R D) ≅ Tor^R(V, D)` | 完了：[TorFlatBaseChangeVanishing](../SerrePositivity/HomologicalAlgebra/TorFlatBaseChangeVanishing.lean) |
-| K8 | 次元シフトによる Tor の長さの比較 | 完了：[TorDimensionShift](../SerrePositivity/HomologicalAlgebra/TorDimensionShift.lean)・[TorTwoRingComparison](../SerrePositivity/HomologicalAlgebra/TorTwoRingComparison.lean)：`length_torModule_tensor_eq` |
-| K9 | `T ≅ D' ⊗_{i₂} E`、`T/δT ≅ D ⊗_R E` | 完了：[DiagonalTor](../SerrePositivity/IntersectionMultiplicity/DiagonalTor.lean)：`length_torModule_eq_length_koszulHomologySelf` |
-| K10 | `dim T = d`（going-down） | 完了：[DiagonalDimension](../SerrePositivity/IntersectionMultiplicity/DiagonalDimension.lean)：`ringKrullDim_diagonalQuot` |
-| K11 | 核の定理・S0 の帰着・引用の付け替え | 完了：[DiagonalPositivity](../SerrePositivity/IntersectionMultiplicity/DiagonalPositivity.lean)：`chi_pos_of_prime`、`EqualCharZeroPositivity.chi_pos_of_residueCharZero` |
+| K1 | 局所平坦性判定法と正則列版 | 完了：[LocalFlatnessCriterion](../../SerrePositivity/HomologicalAlgebra/LocalFlatnessCriterion.lean) |
+| K2 | 環準同型を明示した正則列版（代数構造の衝突を避ける） | 完了：[DiagonalFlat](../../SerrePositivity/IntersectionMultiplicity/DiagonalFlat.lean)：`flat_coeffQuot` |
+| K3 | 任意の係数環の冪級数環で変数は正則列 | 完了：[PowerSeriesVariableRegular](../../SerrePositivity/CommutativeAlgebra/PowerSeriesVariableRegular.lean)：`isWeaklyRegular_quotient_map_C_ofFn_X`、`isWeaklyRegular_mvPowerSeries_map_C` |
+| K4 | Cohen 同型 `k[[X]] ≃ R` | 完了：[EqualCharZeroPositivity](../../SerrePositivity/IntersectionMultiplicity/EqualCharZeroPositivity.lean)：`exists_mvPowerSeries_ringEquiv_of_charZero` |
+| K5 | `Δ ∘ i₂ = id`（評価と係数写像の合成） | 完了：[PowerSeriesRingHomExt](../../SerrePositivity/CommutativeAlgebra/PowerSeriesRingHomExt.lean)・[DiagonalRing](../../SerrePositivity/IntersectionMultiplicity/DiagonalRing.lean)：`eval_algebraMap` |
+| K6 | `ker Δ = (δ)`、`δ` は `S` の正則列 | 完了：[DiagonalRing](../../SerrePositivity/IntersectionMultiplicity/DiagonalRing.lean)：`ker_eval`、`isWeaklyRegular_diag` |
+| K7 | 平坦な基底変換での Tor：`Tor^S(V, S ⊗_R D) ≅ Tor^R(V, D)` | 完了：[TorFlatBaseChangeVanishing](../../SerrePositivity/HomologicalAlgebra/TorFlatBaseChangeVanishing.lean) |
+| K8 | 次元シフトによる Tor の長さの比較 | 完了：[TorDimensionShift](../../SerrePositivity/HomologicalAlgebra/TorDimensionShift.lean)・[TorTwoRingComparison](../../SerrePositivity/HomologicalAlgebra/TorTwoRingComparison.lean)：`length_torModule_tensor_eq` |
+| K9 | `T ≅ D' ⊗_{i₂} E`、`T/δT ≅ D ⊗_R E` | 完了：[DiagonalTor](../../SerrePositivity/IntersectionMultiplicity/DiagonalTor.lean)：`length_torModule_eq_length_koszulHomologySelf` |
+| K10 | `dim T = d`（going-down） | 完了：[DiagonalDimension](../../SerrePositivity/IntersectionMultiplicity/DiagonalDimension.lean)：`ringKrullDim_diagonalQuot` |
+| K11 | 核の定理・S0 の帰着・引用の付け替え | 完了：[DiagonalPositivity](../../SerrePositivity/IntersectionMultiplicity/DiagonalPositivity.lean)：`chi_pos_of_prime`、`EqualCharZeroPositivity.chi_pos_of_residueCharZero` |
 
 ## 8. 実施結果（2026-10-14）
 

@@ -5,9 +5,9 @@
 [同じ版の HTML](https://arxiv.org/html/2209.04046v4)。実装の到達点は §0 に記す。
 
 具体的な型の設計、共通基盤の抽出順、接続の受入条件は
-[実装境界と作業単位](clmst-interfaces.md)にまとめる。
+[実装境界と作業単位](archive/clmst-interfaces.md)にまとめる。
 完備化の平坦性と剰余体拡大側との共通工程は、
-[完備化の統合計画](adic-completion-integration.md)を正本とする。
+[完備化の統合計画](archive/adic-completion-integration.md)を正本とする。
 
 対象とする版：Cai–Lee–Ma–Schwede–Tucker, *Perfectoid signature, perfectoid Hilbert–Kunz
 multiplicity, and an application to local fundamental groups*, arXiv:2209.04046v4
@@ -99,7 +99,7 @@ F4の全18公開宣言と適用監査5宣言も引き続き証明済み。
 F5の全13公開宣言と適用監査4宣言も引き続き証明済み。
 主定理の未証明入力は上記7宣言。
 抽象化レビューと旧条件付きAPIの整理の記録は
-[実装境界](clmst-interfaces.md#0-今回の抽象化レビューと整理2026-10-14)を参照。
+[実装境界](archive/clmst-interfaces.md#0-今回の抽象化レビューと整理2026-10-14)を参照。
 以降の古い検証件数は当時の記録として保持する。
 
 ## 0.2. Bhatt–Scholzeの別計画との統合（2026-10-14）
@@ -948,7 +948,7 @@ K理論の降下・Cohen–Gabberの別作業・Lech拡張はこの工程へ取�
 既存の宣言名を保持し、旧 Paper モジュールから互換 import する。
 数値関数には全射による λ* の単調性と、有限表示加群での λ*≤λ** の証明も追加した。
 
-C1/C2 の仮定と利用先の [監査](clmst-length-audit.md)を作成した。
+C1/C2 の仮定と利用先の [監査](archive/clmst-length-audit.md)を作成した。
 初回抽出時には引用を既存の二宣言に保持していた。以下の続きで両性質を証明する。
 等標数の表示情報の伝播など、必要な変更を監査に記録した。
 
@@ -1251,7 +1251,7 @@ R⊗_A D の標準 perfectoid 化写像の単射性と余核の g 冪による�
 **残る条件は完備塔の A 上の平坦性。** 完備塔そのものの p 正則性から、
 完備塔⊗_A D 上の p 正則性を無条件には導けない。
 Mathlib の完備環の平坦性は、その環自身の Noether 性を要求し、未完備塔には適用できない。
-共通の採用経路と分担は[完備化の統合計画](adic-completion-integration.md)へ集約する。
+共通の採用経路と分担は[完備化の統合計画](archive/adic-completion-integration.md)へ集約する。
 CLMST側は有限表示加群とのテンソル比較と自然性、その全射性・同型、
 加群版の完備化の平坦性、係数制限の比較と代数版を担当する。
 当初検討した有限表示Dとの比較も、共通の平坦性を証明する工程へ組み込む。
@@ -1278,7 +1278,7 @@ Noether 基底で終域が有限の単射には、Artin–Rees の比較から�
 さらに有限な中間加群をもつ短完全列の、平坦テンソル積・完備化後の
 単射性と完全性まで証明した。平坦な加群自体は有限でなくてよい。
 
-次の共通工程は[統合計画§3](adic-completion-integration.md#3-実装順序と完了条件)の2a〜2c・3・4。
+次の共通工程は[統合計画§3](archive/adic-completion-integration.md#3-実装順序と完了条件)の2a〜2c・3・4。
 有限表示加群Nの比較写像と自然性、有限加群での比較の全射性を先に構成する。
 有限自由全射F₀→Nの核Kを挟み、K↪F₀→Nの完全性とKの比較の全射性から余核を比較する。
 一般の有限自由表示F₁→F₀の写像は単射とは限らないので、現在の単射性を要求する定理を直接適用しない。
@@ -2359,7 +2359,7 @@ Paper/Section2/MixedLengthAlgebra.lean     依存先を Bridge に変えるだ�
 
 L1 は推移的にも `Paper/` を import しない。
 現在の `CompletedTower.lean` は、完備化の定義だけでなく長さ比較・Koszul の冪ねじれも含むため、
-そのまま移動せず役割ごとに分割する。具体的な抽出順は [実装境界](clmst-interfaces.md) を参照。
+そのまま移動せず役割ごとに分割する。具体的な抽出順は [実装境界](archive/clmst-interfaces.md) を参照。
 共通の塔は等標数・Serre・Lech でも使うため CLMST 専用にはしない。
 `Paper` 側には互換別名を残して、既存のコードを壊さない。
 数値関数と `NormalizedLength` の組立を分け、後者の加法性を証明した一般定理から供給する。

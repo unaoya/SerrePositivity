@@ -15,7 +15,7 @@ public import SerrePositivity.HomologicalAlgebra.LocalFlatnessCriterion
 
 ## 使われ方
 
-`formalization-plans/serre-equal-characteristic.md` の K8。二つの環の Tor を、自由加群による
+解説の付録 A（「引用している結果」の対角線論法の段落）の工程（次元シフトによる Tor の長さの比較）。二つの環の Tor を、自由加群による
 表示に沿って同時に次元シフトして比べる。
 -/
 

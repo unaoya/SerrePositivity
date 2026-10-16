@@ -27,7 +27,7 @@ public import SerrePositivity.HomologicalAlgebra.KoszulTorLength
 
 ## 使われ方
 
-`formalization-plans/serre-equal-characteristic.md` の K8・K9。
+解説の付録 A（「引用している結果」の対角線論法の段落）の工程（Tor と Koszul ホモロジーの同一視）。
 -/
 
 @[expose] public noncomputable section

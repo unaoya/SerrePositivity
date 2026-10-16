@@ -26,20 +26,20 @@ map, parameters, finite power-series evaluation and injectivity. Equal-character
 normalization is now proved for arbitrary residue fields by changing the coefficient section,
 constructing a differential parameter basis and proving separability for the same finite injective
 power-series evaluation. Its legacy entry point and Lemma 2.2 use only the standard axioms
-(see [the completed differential route](formalization-plans/cohen-gabber-differentials.md)).
+(see Lemma 2.2 in [the Japanese exposition](exposition/ja/exposition-ja.tex)).
 The standard completed root tower
 is now proved integral perfectoid via finite-stage Frobenius kernels and the actual tilt and Fontaine
 kernel. Roberts' Frobenius homology vanishing is no longer used: the equal-characteristic
 construction only needs it for Koszul complexes on a system of parameters, which is proved
 elementarily in `CommutativeAlgebra/ParameterKoszulGrowth.lean` (a uniform annihilator of Tor over
 a power series ring and a fixed finite free resolution give `ℓ H_i(z^q; D) = O(q^{h-1})`;
-see [the plan](formalization-plans/frobenius-koszul-elementary.md)). Serre's equal-characteristic
+see the remark `rem:koszul-elementary` in [the exposition](exposition/ja/exposition-ja.tex)). Serre's equal-characteristic
 positivity is no longer used either: the residue-characteristic-zero case needed by the main
 theorem is proved by Serre's reduction to the diagonal in
 `IntersectionMultiplicity/EqualCharZeroPositivity.lean`, using a local flatness criterion
 (`HomologicalAlgebra/LocalFlatnessCriterion.lean`), the coefficient field in characteristic zero
 and a comparison of Tor over `R` and over `R[[Y]]`
-(see [the plan](formalization-plans/serre-equal-characteristic.md)). By section of the preprint:
+(see appendix A of [the exposition](exposition/ja/exposition-ja.tex)). By section of the preprint:
 
 - §2 (residue fields, normalized length, Theorem 2.5): proved relative to 4 quotations
   (Bhatt–Scholze perfectoidization existence and

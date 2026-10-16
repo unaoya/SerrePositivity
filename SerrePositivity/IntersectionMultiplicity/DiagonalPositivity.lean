@@ -25,7 +25,7 @@ public import Mathlib.RingTheory.LocalRing.Quotient
 
 ## 使われ方
 
-`formalization-plans/serre-equal-characteristic.md` の K11。剰余標数零の正則局所環での正値性の核。
+解説の付録 A（「引用している結果」の対角線論法の段落）の工程（結論 $\chi=e(\delta;T)>0$）。剰余標数零の正則局所環での正値性の核。
 -/
 
 @[expose] public noncomputable section

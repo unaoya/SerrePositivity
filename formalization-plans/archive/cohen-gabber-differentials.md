@@ -1,5 +1,8 @@
 # Cohen–Gabber：微分を軸にした形式化計画
 
+> **アーカイブ（2026-10-17）**：この計画は完了したか、ほかへ吸収された。内容の要約先：解説の補題 2.2（`lem:cohengabber`）の Lean 注記と `Inputs/CohenNormalization.lean` の docstring。将来は削除する予定で、以下は当時の計画と実施記録のまま。
+
+
 更新：2026-10-14。状態：**整域版のCohen–Gabber正規化は証明済み**。
 Gabberの微分による経路で係数切断・微分パラメータ・同じ有限評価の分離性を構成し、
 `Inputs.cohen_gabber_normalization` を既存の公開型のまま証明へ置換した。
@@ -19,7 +22,7 @@ Gabberの微分による経路で係数切断・微分パラメータ・同じ�
 
 ## 1. 固定する最終目標と原典
 
-最終入口は [Inputs/CohenNormalization.lean](../SerrePositivity/Inputs/CohenNormalization.lean)
+最終入口は [Inputs/CohenNormalization.lean](../../SerrePositivity/Inputs/CohenNormalization.lean)
 の `Inputs.cohen_gabber_normalization`。公開型は変更しない。
 標数p>0の完備Noether局所整域D、dim D=h、任意の剰余体kについて、
 係数写像κ:k→Dとパラメータyを実構成し、A=k[[X₁,…,X_h]]からの評価Fを作る。

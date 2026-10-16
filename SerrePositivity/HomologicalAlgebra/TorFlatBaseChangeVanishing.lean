@@ -22,7 +22,7 @@ public import Mathlib.RingTheory.TensorProduct.Quotient
 
 ## 使われ方
 
-`formalization-plans/serre-equal-characteristic.md` の K7。
+解説の付録 A（「引用している結果」の対角線論法の段落）の工程（平坦な底変換での Tor の比較）。
 対角線の環 `S` で `Tor_{>0}^S(S/(δ), S ⊗_R D) = 0` を、`S/(δ) ≅ R` が `R` 上自由であることから導く。
 -/
 

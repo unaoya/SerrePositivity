@@ -18,7 +18,7 @@ Noether 局所環 `E` の元 `z_1, …, z_r` が極大イデアル準素なイ�
 
 ## 使われ方
 
-`formalization-plans/frobenius-koszul-elementary.md` の E4。零でない元 `c` で割った
+解説の注意「Roberts の定理を使わない消滅」（`exposition/ja/exposition-ja.tex` の `rem:koszul-elementary`）の手順 5。零でない元 `c` で割った
 次元 `h - 1` の環に適用し、`ℓ(R'/(c, Z^q)) = O(q^{h-1})` を得る。
 -/
 

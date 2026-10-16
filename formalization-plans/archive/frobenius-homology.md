@@ -1,5 +1,8 @@
 # Frobenius 高次ホモロジー消滅の調査と形式化計画
 
+> **アーカイブ（2026-10-17）**：この計画は完了したか、ほかへ吸収された。内容の要約先：`Inputs/RobertsFrobenius.lean` の docstring（主定理は依存しない。Lech でも一般形は系 5.4 だけが使う）。将来は削除する予定で、以下は当時の計画と実施記録のまま。
+
+
 作成日：2026-10-13。状態：調査・設計段階。新しい Lean 実装はこの文書の作成には含まない。
 2026-10-14 以降、主定理はこの引用に依存しない（[初等版](frobenius-koszul-elementary.md)）。この文書は一般形の証明経路の記録として残す。
 
@@ -25,7 +28,7 @@
 ## 2. 現在の実装と、6番の役割
 
 現在の引用は
-[Inputs/RobertsFrobenius.lean](../SerrePositivity/Inputs/RobertsFrobenius.lean) の
+[Inputs/RobertsFrobenius.lean](../../SerrePositivity/Inputs/RobertsFrobenius.lean) の
 `SerrePositivity.Inputs.frobenius_homology_length_tendsto_zero`。
 
 その仮定は次のとおり。
@@ -48,11 +51,11 @@
 
 | モジュール | 役割 |
 | --- | --- |
-| [FrobeniusKoszulLimit](../SerrePositivity/CommutativeAlgebra/FrobeniusKoszulLimit.lean) | Koszul 複体の適用条件、Frobenius 基底変更とパラメータの冪の同定、数値の変換 |
-| [PerfectKoszulLength](../SerrePositivity/Paper/Section2/PerfectKoszulLength.lean) | 有限段の Koszul ホモロジーの正規化長さの同定 |
-| [PerfectKoszulLimit](../SerrePositivity/Paper/Section2/PerfectKoszulLimit.lean) | ホモロジーと有向極限の比較、消滅極限から perfection 上の長さ零への移送 |
-| [KoszulMultiplicityLimit](../SerrePositivity/CommutativeAlgebra/KoszulMultiplicityLimit.lean) | 高次の消滅、Koszul Euler 公式、冪の重複度公式から商の極限を同定 |
-| [LengthAlgebraConstruction](../SerrePositivity/Paper/Section2/LengthAlgebraConstruction.lean) | 二つの長さの性質をまとめ、具体的な等標数の長さ代数を構成 |
+| [FrobeniusKoszulLimit](../../SerrePositivity/CommutativeAlgebra/FrobeniusKoszulLimit.lean) | Koszul 複体の適用条件、Frobenius 基底変更とパラメータの冪の同定、数値の変換 |
+| [PerfectKoszulLength](../../SerrePositivity/Paper/Section2/PerfectKoszulLength.lean) | 有限段の Koszul ホモロジーの正規化長さの同定 |
+| [PerfectKoszulLimit](../../SerrePositivity/Paper/Section2/PerfectKoszulLimit.lean) | ホモロジーと有向極限の比較、消滅極限から perfection 上の長さ零への移送 |
+| [KoszulMultiplicityLimit](../../SerrePositivity/CommutativeAlgebra/KoszulMultiplicityLimit.lean) | 高次の消滅、Koszul Euler 公式、冪の重複度公式から商の極限を同定 |
+| [LengthAlgebraConstruction](../../SerrePositivity/Paper/Section2/LengthAlgebraConstruction.lean) | 二つの長さの性質をまとめ、具体的な等標数の長さ代数を構成 |
 
 特に `perfectClosure_length_properties_of_higher_tendsto` は、パラメータ系 `z` に対する
 
@@ -143,7 +146,7 @@ Ma の式 (2.3.2) の Dutta 重複度の公式と、定理2.4の個別ホモロ�
 6番のために、5番の Chow 群・局所 Riemann–Roch、または Adams 操作による K 理論を
 全て先に整備する計画にはしない。共有できる基盤は、有限自由複体、支持、長さ、
 完全列、係数変更などである。双対化複体や tight closure は、それぞれ別の追加基盤になる。
-定理3.1・補題4.6の計画は [K理論の計画](k-theory.md) で扱う。
+定理3.1・補題4.6の計画は [K理論の計画](../k-theory.md) で扱う。
 
 ## 5. 比較する二つの証明経路
 
@@ -252,7 +255,7 @@ HH93 の強い評価を先に名前付きで引用し、M1 の接続を実装す
 外部補助定理まで標準公理だけで証明したことは、さらに別の達成段階である。
 
 実装後は、対象モジュールと全体のビルドに加え、
-[公理監査](../scripts/audit_axioms.lean)で主定理までの未証明依存を確認する。
+[公理監査](../../scripts/audit_axioms.lean)で主定理までの未証明依存を確認する。
 直接の `sorry` の数だけでなく、到達する引用定理の名前・意味・仮定を確認する。
 文書だけの変更では、リンク・数式・現状のコードとの整合性を検証し、Lean の全体ビルドは不要。
 

@@ -1,15 +1,18 @@
 # 外部引用4〜5：古典的交点重複度の証明経路
 
+> **アーカイブ（2026-10-17）**：この計画は完了したか、ほかへ吸収された。内容の要約先：引用4・5はどちらも解消済み。結果は解説の付録 A と注意 `rem:adams-vanishing`。将来は削除する予定で、以下は当時の計画と実施記録のまま。
+
+
 作成：2026-10-13。更新：2026-10-15。状態：引用5は Adams の経路で証明・監査完了。引用4も[対角線論法](serre-equal-characteristic.md)で主定理から外れた。
 従来の1〜5の計画から4・5の内容を分離した。以下の候補比較は当初の調査として保持する。
 環の存在構成1〜3は [専用計画](local-algebra-1-3.md)、6は [Frobeniusの計画](frobenius-homology.md)。
-全体は [overview](overview.md)を参照する。
+全体は [overview](../overview.md)を参照する。
 
 ## 1. 対象と引用境界
 
 4は `Inputs.serrePositivity_of_field`、5は `Inputs.intersectionVanishing`。
-所在は [SerrePositivity](../SerrePositivity/Inputs/SerrePositivity.lean) と
-[IntersectionTheory](../SerrePositivity/Inputs/IntersectionTheory.lean)。
+所在は [SerrePositivity](../../SerrePositivity/Inputs/SerrePositivity.lean) と
+[IntersectionTheory](../../SerrePositivity/Inputs/IntersectionTheory.lean)。
 4の一般版は直接の `sorry` が残るが、主定理が使う剰余標数零の正値性は証明済み。
 5は [Adams の計画](intersection-vanishing-adams.md) の S1–S11 により全剰余標数で証明済み。
 公開型を保持し、公開消滅と利用先に `sorryAx` がないことを専用・共通監査で確認した。
@@ -29,7 +32,7 @@
 \]
 
 現在の引用の利用先では、剰余標数零から体の作用を構成する部分を別に証明している。
-[CharacteristicZeroReduction](../SerrePositivity/Paper/Section5/CharacteristicZeroReduction.lean) の
+[CharacteristicZeroReduction](../../SerrePositivity/Paper/Section5/CharacteristicZeroReduction.lean) の
 接続を、古典定理そのものの証明と区別する。
 
 正則局所環上の有限自由分解、Tor の有限長性と加法性、Koszul、環自身に対する重複度公式などは再利用候補である。
@@ -127,7 +130,7 @@ Gillet–Soulé の方法では、支持つきK理論の Adams 操作と、支�
 
 1. 原典の定理の仮定・結論と、一般正則局所環への還元を固定する。
 2. Chern／Riemann–Roch と Adams の各経路で、構成すべき具体的対象と引用する一般定理を比較する。
-3. [K理論の計画](k-theory.md)と共有できる API を確認する。
+3. [K理論の計画](../k-theory.md)と共有できる API を確認する。
 4. 必要な一般定理から `intersectionVanishing` を導き、依存を監査する。
 
 K理論降下の計画にはスペクトル・dg 理論の整備が含まれるが、それだけで Adams 操作の証明が完成するわけではない。

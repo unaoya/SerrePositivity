@@ -30,30 +30,33 @@
 | [K理論・スペクトル・dg 理論](k-theory.md) | 定理3.1と補題4.6を形式化し、二つの降下入力を解消する | 段階4（一般の左 Bousfield 局所化と安定モデル）は F1 の最終厳密化を残してほぼ完了。M4・M6〜M10 は未着手 |
 | [dg 理論（M5）](dg-theory.md) | dg 圏・dg 加群・perfect・dg 商・Morita を独立に実装する | U0〜U12 完了。U13（perfect）と U15（dg 商）を実装中 |
 
-## 完了した計画
-
-| 計画 | 目標 | 結果 |
-| --- | --- | --- |
-| [外部引用1〜3：環の存在構成](local-algebra-1-3.md) | 剰余体拡大・Cohen／Cohen–Gabber 正規化 | 引用1・2・3を実構成へ置換（2026-10-14） |
-| [Cohen–Gabber の微分経路](cohen-gabber-differentials.md) | p-basis・係数体・連続微分から引用2を証明する | 完了（2026-10-14） |
-| [完備化の共通基盤と二つの適用](adic-completion-integration.md) | 共通のテンソル比較・完備化の平坦性と、CLMST／剰余体拡大への適用 | 引用1の解消に使用。実施記録として保持 |
-| [外部引用4を主定理から外す（対角線論法）](serre-equal-characteristic.md) | 剰余標数零の場合を Serre の対角線論法で証明する | 完了（2026-10-14）。主定理は引用4に依存しない |
-| [外部引用5：消滅定理を Adams 作用素で](intersection-vanishing-adams.md) | 巡回 Adams 作用素と重みで `intersectionVanishing` を証明する | 完了（2026-10-15）。S1〜S11 |
-| [外部引用6を主定理から外す（初等版）](frobenius-koszul-elementary.md) | パラメータ Koszul 複体の場合を tight closure なしで証明する | 完了（2026-10-14）。主定理は引用6に依存しない |
-| [CLMST の長さの引用監査](clmst-length-audit.md) | C1/C2 の仮定と利用先の調査 | 監査済み（2026-10-13） |
-| [CLMST の実装境界と作業単位](clmst-interfaces.md) | 型と引用の境界、共通層の抽出順 | 初回の接続実装まで完了。以後は [CLMST 主計画](clmst.md) で管理 |
-
 ## 調査・計画のみ
 
 | 計画 | 目標 | 状態 |
 | --- | --- | --- |
 | [全体像](overview.md) | 外部引用の番号・役割・依存関係の一覧 | 2026-10-16 に現状へ更新 |
-| [外部引用4〜5：交点重複度](intersection-inputs-4-5.md) | 4・5 の証明経路の比較 | 当初の調査。4・5とも上の計画で解消済み |
-| [外部引用5：Chow 群の基盤と Roberts の経路](intersection-vanishing-cycles.md) | Chow 群・局所 Chern 指標・局所 Riemann–Roch。BlochConjecture と共有 | 計画のみ。Adams の経路とは独立 |
-| [Frobenius 高次ホモロジー消滅（一般形）](frobenius-homology.md) | 引用6の一般形の証明経路 | 調査段階。主定理は既に依存しない |
+| [外部引用5：Chow 群の基盤と Roberts の経路](intersection-vanishing-cycles.md) | Chow 群・局所 Chern 指標・局所 Riemann–Roch。BlochConjecture と共有 | 計画のみ。引用5は Adams の経路で解消済みで、これとは独立 |
 | [Lech の重複度予想](lech.md) | Lech の論文の定理1.1 | 設計段階 |
 | [Gersten 予想の整数係数の反例](gersten.md) | OpenAI の二本（K₃ と K₅）を K 理論の基盤の上で形式化する | 計画のみ |
 | [arxiv_formalization との共通基盤](shared-foundations-arxiv.md) | 群論・モノイダル圏論の部分の共通化の検討 | 検討課題の記録のみ |
+
+## アーカイブ（`archive/`）
+
+完了した計画と、役目を終えた調査・補助の文書。数学の内容は解説（`exposition/ja/exposition-ja.tex`）と
+Lean の docstring へ要約済みで、各ファイルの冒頭に要約先を記した。将来は削除する予定。
+
+| 計画 | 結果 | 要約先 |
+| --- | --- | --- |
+| [外部引用1〜3：環の存在構成](archive/local-algebra-1-3.md) | 引用1・2・3を実構成へ置換（2026-10-14） | 解説の付録 A、補題 2.1・2.2 |
+| [Cohen–Gabber の微分経路](archive/cohen-gabber-differentials.md) | 引用2を証明（2026-10-14） | 解説の補題 2.2 |
+| [完備化の共通基盤と二つの適用](archive/adic-completion-integration.md) | 引用1・3の解消に使用 | 共通の完備化 API の docstring |
+| [外部引用4〜5：交点重複度](archive/intersection-inputs-4-5.md) | 当初の経路比較。4・5とも解消 | 解説の付録 A、注意 `rem:adams-vanishing` |
+| [外部引用4を主定理から外す（対角線論法）](archive/serre-equal-characteristic.md) | 完了（2026-10-14） | 解説の付録 A、`IntersectionMultiplicity/Diagonal*` |
+| [外部引用5：消滅定理を Adams 作用素で](archive/intersection-vanishing-adams.md) | 完了（2026-10-15） | 解説の注意 `rem:adams-vanishing` |
+| [外部引用6を主定理から外す（初等版）](archive/frobenius-koszul-elementary.md) | 完了（2026-10-14） | 解説の注意 `rem:koszul-elementary` |
+| [Frobenius 高次ホモロジー消滅（一般形）](archive/frobenius-homology.md) | 主定理・Lech の主定理とも不要。一般形は Lech の系 5.4 だけ | `Inputs/RobertsFrobenius.lean` |
+| [CLMST の長さの引用監査](archive/clmst-length-audit.md) | 監査済み（2026-10-13） | [CLMST 主計画](clmst.md) |
+| [CLMST の実装境界と作業単位](archive/clmst-interfaces.md) | 初回の接続実装まで完了 | [CLMST 主計画](clmst.md) |
 
 ## 運用
 

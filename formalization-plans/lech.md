@@ -25,8 +25,9 @@ Serre の論文と同じリポジトリで形式化することである。
 2026-10-10 の調査メモ（`research/lech-overview.md`、`research/lech-section2-algebraic.md`。この文書と解説に移して削除）
 では、最初の段階を「Lech §3.2 に沿って `LengthAlgebraConstruction` の等標数の `sorry` を埋める」としていた。
 その後、等標数の長さ代数は直接の `sorry` なしに実装され、残る依存は Roberts の Frobenius 消滅（外部引用 6）だけになった。
-Lech §3.2 も同じ Roberts の結果（Ma, Thm. 2.4 の形）を使うので、この部分は
-[Frobenius ホモロジーの計画](frobenius-homology.md)と共有し、Lech の計画からは外す。
+Lech §3.2 も同じ Roberts の結果（Ma, Thm. 2.4 の形）を使うが、(3.7) で必要なのはパラメータ Koszul 複体の場合だけで、
+Serre の形式化と同じ初等的な証明（`CommutativeAlgebra/ParameterKoszulGrowth.lean`）で足りる（2026-10-17 追記）。
+一般の有限自由複体の形 (5.1) を使うのは、主定理 1.1 に不要な系 5.4 だけである。
 
 ## 2. 現在の入口
 
@@ -69,7 +70,7 @@ Lech に固有の Lean 宣言はまだない。Serre の形式化のうち再利
 | --- | --- | --- | --- |
 | CLMST Def. 2.2.1、Prop. 2.2.3、2.2.6、Cor. 4.0.4、Prop. 4.0.10、Def. 4.0.8、Cor. 4.0.18、Prop. 4.0.14 | CLMST v4 | §3.3 | 共有（[CLMST の計画](clmst.md)）。Cor. 4.0.18 は Lech だけが使う |
 | Bhatt–Scholze の perfectoid 化 | BS §8、Thm. 10.11 | §3.3 | 共有 |
-| Roberts の Frobenius ホモロジー評価 | Roberts、Ma Thm. 2.4 | (3.7)、(5.1) | 共有（`Inputs.frobenius_homology_length_tendsto_zero`、[Frobenius の計画](frobenius-homology.md)） |
+| Roberts の Frobenius ホモロジー評価 | Roberts、Ma Thm. 2.4 | (3.7)、(5.1) | (3.7) はパラメータ Koszul 複体の場合で、初等的な証明（`ParameterKoszulGrowth`）で足りる。一般形 `Inputs.frobenius_homology_length_tendsto_zero` は系 5.4 の (5.1) だけで使う |
 | Cohen–Gabber の正規化 | Kurano–Shimomoto Thm. 1.1 | §3.2 | 共有（外部引用 2） |
 | 剰余体拡大 | EGA／Stacks | 補題 4.1 | 共有（外部引用 1、`Section2.lemma_2_1` 経由） |
 | Monsky の定理 | Monsky 1983 | Hilbert–Kunz 重複度の定義 | 極限の存在。定義を下極限・上極限で置けば引用を減らせる（§8） |
@@ -158,4 +159,4 @@ Hilbert–Kunz）の順。M7 の符号化は論文が細部を簡潔に書いて
 
 - 論文：[`paper/lech.pdf`](../paper/lech.pdf)、出典は [`paper/SOURCE.md`](../paper/SOURCE.md)。
 - 解説：[`exposition/ja/lech-ja.tex`](../exposition/ja/lech-ja.tex)。
-- 共有する計画：[CLMST](clmst.md)、[Frobenius ホモロジー](frobenius-homology.md)、[全体像](overview.md)。
+- 共有する計画：[CLMST](clmst.md)、[全体像](overview.md)。

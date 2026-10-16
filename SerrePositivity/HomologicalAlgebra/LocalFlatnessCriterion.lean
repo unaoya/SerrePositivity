@@ -38,7 +38,7 @@ Tor はこのリポジトリの `TorModule A i M N`（第2変数の分解で計�
 
 ## 使われ方
 
-`formalization-plans/serre-equal-characteristic.md` の S5・S6。
+解説の付録 A（「引用している結果」の対角線論法の段落）の工程（局所平坦性判定法）。
 冪級数加群 `D[[Y]]` の `k[[Y]]` 上の平坦性を、`Y` が正則列であることから導くのに使う。
 -/
 

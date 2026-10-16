@@ -1,5 +1,8 @@
 # 外部引用1〜3：剰余体拡大と有限正規化の詳細計画
 
+> **アーカイブ（2026-10-17）**：この計画は完了したか、ほかへ吸収された。内容の要約先：解説の付録 A（剰余体拡大・Cohen 正規化の段落）と補題 2.1・2.2 の Lean 注記。将来は削除する予定で、以下は当時の計画と実施記録のまま。
+
+
 作成・更新：2026-10-13。状態：P1・R3・R4の完備Noether局所実現と、A4の一般Noether判定まで実装済み。
 現在の到達点と検証結果は§12。引用1と引用3を既存の公開型を保って実構成へ置換した。
 引用1・2・3は全て既存の公開型を保った証明へ置換済み（2026-10-14）。
@@ -23,8 +26,8 @@
 | 2（解消済み） | `Inputs.cohen_gabber_normalization` | 完備Noether局所整域D、標数p、任意の剰余体について、標準座標付きの正則冪級数基底と有限単射を構成。分数体拡大の分離性まで証明 |
 | 3（解消済み） | `Inputs.cohen_normalization_mixedCharacteristic` | Witt係数、パラメータ、標準冪級数基底、同じ評価の有限性と単射性を実構成。既存の公開型に接続済み |
 
-所在は [ResidueFieldExtension](../SerrePositivity/Inputs/ResidueFieldExtension.lean)、
-[CohenNormalization](../SerrePositivity/Inputs/CohenNormalization.lean)。
+所在は [ResidueFieldExtension](../../SerrePositivity/Inputs/ResidueFieldExtension.lean)、
+[CohenNormalization](../../SerrePositivity/Inputs/CohenNormalization.lean)。
 現在、直接 `sorry` が残るのは2だけで、1・3は型を保った実構成の適用になっている。
 この作業では新しい引用をコードへ追加しない。
 
@@ -59,8 +62,8 @@ Cの非完全剰余体の場合は、指定p-basisの持ち上げと係数体の
 | --- | --- | --- |
 | adicと位相的完備性 | Mathlib `AdicCompletion/Topology`：`IsAdic.isAdicComplete_iff`、`isPrecomplete_iff`、`isHausdorff_iff` | 既存結果を使用。新しい同値定理を作り直さない |
 | 冪級数評価 | Mathlib `MvPowerSeries/Evaluation`：`eval₂Hom`、`eval₂_unique`、`eval₂_C`、`eval₂_X` | 有限列がI内にあるときの `HasEval` と、C・X上の計算を使いやすい入口へ整理 |
-| 実際の使用例 | [AdicCompletionNoetherian](../SerrePositivity/CommutativeAlgebra/AdicCompletionNoetherian.lean)は `WithIdeal`、離散係数、`HasEval`、評価、商からの全射を既に使用 | まずこの証明を再利用。新しい入口は複数の利用先が必要な部分だけ抽出 |
-| 完備な有限自由加群・全射 | [AdicCompleteness](../SerrePositivity/CommutativeAlgebra/AdicCompleteness.lean)：`isPrecomplete_pi`、`isPrecomplete_of_surjective`、`isAdicComplete_finite` | 有限生成判定の証明に前完備性を使用。結論の有限性を先に仮定しない |
+| 実際の使用例 | [AdicCompletionNoetherian](../../SerrePositivity/CommutativeAlgebra/AdicCompletionNoetherian.lean)は `WithIdeal`、離散係数、`HasEval`、評価、商からの全射を既に使用 | まずこの証明を再利用。新しい入口は複数の利用先が必要な部分だけ抽出 |
+| 完備な有限自由加群・全射 | [AdicCompleteness](../../SerrePositivity/CommutativeAlgebra/AdicCompleteness.lean)：`isPrecomplete_pi`、`isPrecomplete_of_surjective`、`isAdicComplete_finite` | 有限生成判定の証明に前完備性を使用。結論の有限性を先に仮定しない |
 | 商での全射から全射 | Mathlib `AdicCompletion/Functoriality`：`surjective_of_mkQ_comp_surjective`。仮定は始域の前完備性と終域の分離性 | 有限個の商生成元を持ち上げて適用する |
 | 完備化の局所性・剰余体 | Mathlib `AdicCompletion/LocalRing`：有限生成極大イデアル版の局所性・完備性・剰余体写像の全単射 | 中間環のNoether性がなくても、FG版を確認して使用 |
 | Witt環 | Mathlib `WittVector/DiscreteValuationRing`：`isDiscreteValuationRing`。`Complete`：`quotientPEquiv`、`isAdicCompleteIdealSpanP` | 完全剰余体から `PerfectRing k p` を供給し、(p)と極大イデアルを同定。W(k)→Dの存在とは分ける |
@@ -558,7 +561,7 @@ h=0の入力ではDが体となり、空変数の基底と剰余体同型で扱�
 構成した単射A→Dから分数体の環写像を作り、`Algebra`と`IsScalarTower`を供給。
 C2の分離性をこの写像について述べ、現行の引用と同じ型へ接続する。
 新たな独立した分数体作用を選んで、構成した環写像との両立を省略しない。
-[GenericEtale](../SerrePositivity/CommutativeAlgebra/GenericEtale.lean)は分離性から有限エタール局所化を
+[GenericEtale](../../SerrePositivity/CommutativeAlgebra/GenericEtale.lean)は分離性から有限エタール局所化を
 得る下流の証明なので再利用する。それは分離的正規化の選択を証明する代用品ではない。
 
 ## 8. 実装の順序と受入条件
@@ -628,73 +631,73 @@ P1・有限生成版・R3・R4前半に加え、A4の一般Noether判定と具�
 
 | 成果物 | 実装と確認する範囲 |
 | --- | --- |
-| 商生成元の持ち上げ | [AdicFiniteGeneration](../SerrePositivity/CommutativeAlgebra/AdicFiniteGeneration.lean)：`surjective_linearCombination_of_quotient`、`exists_surjective_pi_of_finite_quotient`。有限自由加群からの全射を構成 |
+| 商生成元の持ち上げ | [AdicFiniteGeneration](../../SerrePositivity/CommutativeAlgebra/AdicFiniteGeneration.lean)：`surjective_linearCombination_of_quotient`、`exists_surjective_pi_of_finite_quotient`。有限自由加群からの全射を構成 |
 | 最弱の有限生成判定 | `finite_of_quotient_of_isPrecomplete`。基底環の前完備性・加群の分離性・商の有限性だけを使う。Noether性、局所性、Mの完備性、Iの有限生成性は不要 |
 | 零商の境界 | `subsingleton_of_subsingleton_quotient_of_isHausdorff`。零個の生成元を使い、基底環の前完備性も不要 |
 | 代数と閉ファイバー | `finite_algebra_of_finite_quotient_map`。イデアル像と商の係数制限を線形同型で明示して有限生成判定を適用 |
-| 冪級数評価 | [AdicPowerSeries](../SerrePositivity/CommutativeAlgebra/AdicPowerSeries.lean)：`adicPowerSeriesEval`、係数・変数、変数イデアルと追加係数のイデアル像を計算 |
+| 冪級数評価 | [AdicPowerSeries](../../SerrePositivity/CommutativeAlgebra/AdicPowerSeries.lean)：`adicPowerSeriesEval`、係数・変数、変数イデアルと追加係数のイデアル像を計算 |
 | 有限な評価 | `adicPowerSeriesEval_finite`は明示した始域イデアルの前完備性と閉ファイバーの有限性から評価の有限性を導く。`adicPowerSeriesEval_finite_of_span`版では(X)の完備性をMathlibから供給 |
-| 既存証明への適用 | [AdicCompletionNoetherian](../SerrePositivity/CommutativeAlgebra/AdicCompletionNoetherian.lean)の評価・全射の補助証明を新しいAPIの適用へ移行。公開名・仮定を保持 |
-| 単生成代数の基盤 | [ResidueFieldExtensionConstruction](../SerrePositivity/CommutativeAlgebra/ResidueFieldExtensionConstruction.lean)：整拡大の閉ファイバーが体の場合の局所性・極大イデアル、モニック商の有限平坦性、剰余体上の多項式商との代数同型、既約還元からの局所性 |
-| 指定体への接続 | [ResidueFieldAlgebraicExtension](../SerrePositivity/CommutativeAlgebra/ResidueFieldAlgebraicExtension.lean)：`exists_monic_residue_lift`、`liftedMinpolyClosedFibreEquiv`と根の計算。係数写像と生成元の対応を保持 |
+| 既存証明への適用 | [AdicCompletionNoetherian](../../SerrePositivity/CommutativeAlgebra/AdicCompletionNoetherian.lean)の評価・全射の補助証明を新しいAPIの適用へ移行。公開名・仮定を保持 |
+| 単生成代数の基盤 | [ResidueFieldExtensionConstruction](../../SerrePositivity/CommutativeAlgebra/ResidueFieldExtensionConstruction.lean)：整拡大の閉ファイバーが体の場合の局所性・極大イデアル、モニック商の有限平坦性、剰余体上の多項式商との代数同型、既約還元からの局所性 |
+| 指定体への接続 | [ResidueFieldAlgebraicExtension](../../SerrePositivity/CommutativeAlgebra/ResidueFieldAlgebraicExtension.lean)：`exists_monic_residue_lift`、`liftedMinpolyClosedFibreEquiv`と根の計算。係数写像と生成元の対応を保持 |
 | 代数的単生成局所拡大 | `exists_finite_free_local_extension_of_powerBasis`、`exists_finite_free_local_extension_of_integral_generator`。実際の環は持ち上げた最小多項式の商。局所写像・有限自由性・平坦性・極大イデアル等式・指定体との剰余体同型を供給。Noether性・分離性は不要 |
 | 単生成の完備版 | `exists_complete_flat_local_extension_of_integral_generator`。基底がNoetherなら構成した有限自由局所拡大を完備化し、Noether性・完備性・平坦性・極大イデアル等式を確認。剰余体写像の両立と指定生成元への対応も保持 |
-| 完備化の共通API | [ResidueFieldCompletion](../SerrePositivity/CommutativeAlgebra/ResidueFieldCompletion.lean)：`exists_complete_flat_local_extension_with_residue`。構成済みの平坦Noether局所拡大Sを完備化し、極大イデアル・指定剰余体・指定元を保持。基底BのNoether性は不要。R1/R2両方に適用 |
-| 超越的単生成局所拡大 | [ResidueFieldTranscendentalExtension](../SerrePositivity/CommutativeAlgebra/ResidueFieldTranscendentalExtension.lean)：`residuePolynomialEval_ker`、`exists_flat_local_extension_of_transcendental_generator`。実際の環は評価の核による局所化。局所写像・平坦性・極大イデアル等式・指定体との剰余体同型・生成元の対応を供給。Noether基底なら局所化もNoether |
+| 完備化の共通API | [ResidueFieldCompletion](../../SerrePositivity/CommutativeAlgebra/ResidueFieldCompletion.lean)：`exists_complete_flat_local_extension_with_residue`。構成済みの平坦Noether局所拡大Sを完備化し、極大イデアル・指定剰余体・指定元を保持。基底BのNoether性は不要。R1/R2両方に適用 |
+| 超越的単生成局所拡大 | [ResidueFieldTranscendentalExtension](../../SerrePositivity/CommutativeAlgebra/ResidueFieldTranscendentalExtension.lean)：`residuePolynomialEval_ker`、`exists_flat_local_extension_of_transcendental_generator`。実際の環は評価の核による局所化。局所写像・平坦性・極大イデアル等式・指定体との剰余体同型・生成元の対応を供給。Noether基底なら局所化もNoether |
 | 超越的単生成の完備版 | `exists_complete_flat_local_extension_of_transcendental_generator`。局所化のNoether性を確認して共通の完備化APIを適用 |
-| 単生成の共通入口と係数移送 | [ResidueFieldSimpleExtension](../SerrePositivity/CommutativeAlgebra/ResidueFieldSimpleExtension.lean)：`exists_flat_local_extension_of_simple_generator`。代数性で分岐してR1/R2を適用。`adjoin_eq_top_of_scalar_equiv`で剰余体同型に沿って生成条件を移送 |
-| 有限生成体拡大 | [ResidueFieldFiniteExtension](../SerrePositivity/CommutativeAlgebra/ResidueFieldFiniteExtension.lean)：`exists_noetherian_flat_local_extension_of_fg_intermediateField`、`exists_noetherian_flat_local_extension_of_fg`。共通の後続段APIを有限合成し、平坦性・Noether性・極大イデアル等式・指定体との剰余体同型を確認 |
+| 単生成の共通入口と係数移送 | [ResidueFieldSimpleExtension](../../SerrePositivity/CommutativeAlgebra/ResidueFieldSimpleExtension.lean)：`exists_flat_local_extension_of_simple_generator`。代数性で分岐してR1/R2を適用。`adjoin_eq_top_of_scalar_equiv`で剰余体同型に沿って生成条件を移送 |
+| 有限生成体拡大 | [ResidueFieldFiniteExtension](../../SerrePositivity/CommutativeAlgebra/ResidueFieldFiniteExtension.lean)：`exists_noetherian_flat_local_extension_of_fg_intermediateField`、`exists_noetherian_flat_local_extension_of_fg`。共通の後続段APIを有限合成し、平坦性・Noether性・極大イデアル等式・指定体との剰余体同型を確認 |
 | 有限生成の完備版 | `exists_complete_flat_local_extension_of_fg`、`exists_complete_flat_local_extension_of_finset`、`exists_complete_flat_local_extension_of_essFiniteType`。最後に一度だけ完備化。Mathlibの`Algebra.EssFiniteType`からも適用可能。空生成集合を許す |
-| 一般の加群の極限 | [DirectLimitFlat](../SerrePositivity/CommutativeAlgebra/DirectLimitFlat.lean)：`directLimit_exists_representatives`、`directLimit_flat`。有限個の元の共通代表と方程式判定による平坦性。局所性・Noether性・遷移写像の単射性は不要 |
-| 局所環の極限 | [DirectLimitLocalRing](../SerrePositivity/CommutativeAlgebra/DirectLimitLocalRing.lean)：`directLimit_isUnit_iff`、`directLimit_isLocalRing`、`directLimit_isLocalHom`。単元は後続段で検出できる。局所性と標準写像の局所性の仮定を分離 |
-| 剰余体拡大の極限 | [ResidueFieldDirectLimit](../SerrePositivity/CommutativeAlgebra/ResidueFieldDirectLimit.lean)：`directLimit_maximalIdeal_map`、`directLimit_maximalIdeal_fg`、`directLimitResidueEquiv`と段写像・係数写像の計算。`exists_flat_local_extension_of_directed_system`が各保存定理を適用してType uの平坦局所拡大を構成。実際の図式・両立性・指定体を覆う条件は適用側で確認する |
-| 後続段 | [ResidueFieldSuccessor](../SerrePositivity/CommutativeAlgebra/ResidueFieldSuccessor.lean)：`exists_residueField_successor`。旧段から一元を加え、局所性・平坦性・基底からの合成・二つの極大イデアル等式・剰余体の両立を供給。旧段のNoether性は不要 |
-| 段から指定体への写像 | [ResidueFieldStageMap](../SerrePositivity/CommutativeAlgebra/ResidueFieldStageMap.lean)：`residueFieldStageMap`の核は段の極大イデアル、像は指定中間体。`residueFieldStageMap_comp_of_residue_tower`で後続段の剰余体等式を環写像の両立へ接続 |
-| 体側の整列添字 | [ResidueFieldGeneratorIndex](../SerrePositivity/CommutativeAlgebra/ResidueFieldGeneratorIndex.lean)：K自身の整列、開／閉初期部分の中間体、一元追加・合併・被覆。添字の宇宙を上げない |
-| 図式への終段追加 | [AlgebraSystemWithTop](../SerrePositivity/CommutativeAlgebra/AlgebraSystemWithTop.lean)：具体的な段・遷移写像の定義と自己・合成則。局所性・平坦性を段ごとに保持し、指定終域への写像の両立を供給。`algebraSystemWithTop_of_directLimit`で前段の極限からの写像へ適用 |
-| 初期部分の添字 | [InitialSegmentWithTop](../SerrePositivity/CommutativeAlgebra/InitialSegmentWithTop.lean)：`initialSegmentWithTopEquiv`。開初期部分への終点追加と閉初期部分の順序同型。最小元での空初期部分にも同じ同型を適用 |
-| 添字変更と制限 | [AlgebraSystemReindex](../SerrePositivity/CommutativeAlgebra/AlgebraSystemReindex.lean)：単調写像に沿う制限、恒等・合成、局所性・指定終域への両立の保存。型が添字で変わる写像の比較も供給 |
-| 初期部分の延長 | [AlgebraInitialSegment](../SerrePositivity/CommutativeAlgebra/AlgebraInitialSegment.lean)：閉初期部分の段・遷移を構成し、旧段と写像の保持を証明。直極限からの写像で延長する入口に、有向図式の法則・局所性・Kへの両立を接続 |
-| 一致する初期部分の貼り合わせ | [AlgebraSystemGlue](../SerrePositivity/CommutativeAlgebra/AlgebraSystemGlue.lean)：共有した環S_jと制限が一致する局所図式p_iから全体の遷移を構成。任意の初期部分への制限、自己・合成則、局所性、終域への両立を証明 |
-| 貼り合わせから極限へ | [ResidueFieldInitialSegments](../SerrePositivity/CommutativeAlgebra/ResidueFieldInitialSegments.lean)：`exists_flat_local_extension_of_initialSegments`。全体の遷移・有向図式の法則を貼り合わせで供給して極限の保存APIを適用。環S_jと局所図式の制限一致は適用側で構成する |
-| 中間体への終域制限と被覆 | [IntermediateFieldUnionMap](../SerrePositivity/CommutativeAlgebra/IntermediateFieldUnionMap.lean)：`algHomToIntermediateField`と両立性。各段の像と有向な中間体の合併から制限先全体の被覆を証明。局所性・Noether性・平坦性は不要 |
-| Before iへの剰余体同定 | [ResidueFieldBeforeLimit](../SerrePositivity/CommutativeAlgebra/ResidueFieldBeforeLimit.lean)：`beforeLimitStageMap_cover`、`residueFieldBeforeLimitEquiv`と段・係数の計算。`exists_residueField_successor_of_beforeLimit`は極限の局所性・平坦性・極大イデアルを保存定理から供給して、一元追加とAfter iへの同定まで実際に構成 |
-| 非空の開初期部分から閉初期部分へ | [ResidueFieldBeforeExtension](../SerrePositivity/CommutativeAlgebra/ResidueFieldBeforeExtension.lean)：`exists_closed_extension_of_beforeLimit`。直極限から新終段への写像を旧段へ合成し、閉初期部分の図式、局所な遷移、全段の平坦性・極大イデアル等式・Kへの像を確認。Noether性は要求しない |
-| 閉延長の共通仕様 | [ResidueFieldClosedExtension](../SerrePositivity/CommutativeAlgebra/ResidueFieldClosedExtension.lean)：`IsResidueFieldClosedExtension`は具体的な対象・写像の性質。`isResidueFieldClosedExtension_of_cocone`が既存APIから閉図式の法則を導く |
-| 最小元の初期段 | [ResidueFieldMinExtension](../SerrePositivity/CommutativeAlgebra/ResidueFieldMinExtension.lean)：`residueFieldMinEquiv`と`exists_closed_extension_of_min`。Bから生成元を加え、空添字の条件を証明する |
-| 空・非空の統合と選択 | [ResidueFieldClosedStep](../SerrePositivity/CommutativeAlgebra/ResidueFieldClosedStep.lean)：`exists_residueField_closed_extension`と`residueFieldClosedStep`・`residueFieldClosedStep_spec`。検証済みの新終段と写像を同じ関数で選ぶ。全段の履歴一致は別途必要 |
-| 図式のデータと制限 | [LocalAlgebraDiagram](../SerrePositivity/CommutativeAlgebra/LocalAlgebraDiagram.lean)：環・構造・遷移・指定終域を格納。`reindex`の恒等・合成は図式全体の等式。平坦性・像は格納しない |
-| 図式としての実延長 | [ResidueFieldDiagramExtension](../SerrePositivity/CommutativeAlgebra/ResidueFieldDiagramExtension.lean)：`residueFieldExtendDiagram`・`_spec`・`_restrict`。通常の図式を延長し、法則と旧図式全体の保持を証明 |
-| 履歴の整礎再帰 | [WellFoundedHistory](../SerrePositivity/CategoryTheory/WellFoundedHistory.lean)：型の異なる履歴の再帰。環や剰余体に依存しない。延長の実構成は呼出側で証明 |
-| 再帰と実延長の接続 | [ResidueFieldHistory](../SerrePositivity/CommutativeAlgebra/ResidueFieldHistory.lean)：`exists_coherent_residueFieldHistories_of_open_gluing`。開図式への貼り合わせを明示的に仮定する条件付き制御入口。その仮定は次の実貼り合わせで供給 |
-| 構造を含む段と移送 | [LocalAlgebraPoint](../SerrePositivity/CommutativeAlgebra/LocalAlgebraPoint.lean)：`point`・`castMap`・`ext_point`。環・代数の構造と指定終域を含む等式から写像と図式全体の一致を得る |
-| 共通の実貼り合わせ | [LocalAlgebraDiagramLowerGlue](../SerrePositivity/CommutativeAlgebra/LocalAlgebraDiagramLowerGlue.lean)：`localAlgebraLowerGlue`・`_restrict`、`localAlgebraGlueAll`・`_restrict`。開初期部分と全添字集合で同じ構成を使用。剰余体・Noether性・平坦性に依存しない |
-| 貼り合わせの法則の保存 | [ResidueFieldDiagramGlue](../SerrePositivity/CommutativeAlgebra/ResidueFieldDiagramGlue.lean)：`residueFieldDiagramLowerGlue_spec`・`residueFieldDiagramGlueAll_spec`。局所性・平坦性・極大イデアル・指定中間体の像と図式の法則を各履歴から供給 |
-| 全段の両立履歴の実構成 | [ResidueFieldHistoryGlue](../SerrePositivity/CommutativeAlgebra/ResidueFieldHistoryGlue.lean)：`residueFieldOpenGlue`・`_spec`・`_restrict`で制御APIの仮定を解消。`exists_coherent_residueFieldHistories`は整列性以外の図式の存在・貼り合わせを仮定しない |
-| 任意剰余体の完備化前の実現 | [ResidueFieldGeneralExtension](../SerrePositivity/CommutativeAlgebra/ResidueFieldGeneralExtension.lean)：`exists_residueField_generatorDiagram`と`exists_flat_local_extension_of_residueField`。一般Kへの実図式と被覆を供給し、直極限の保存APIを適用。Noether性・完備性は結論しない |
-| 完備化の冪商 | [AdicCompletionQuotient](../SerrePositivity/CommutativeAlgebra/AdicCompletionQuotient.lean)：評価の核と`adicCompletionPowQuotientEquiv`。有限生成イデアルで全てのnを扱う。Noether性は不要 |
-| 基底冪商上の同型 | [AdicCompletionBaseQuotient](../SerrePositivity/CommutativeAlgebra/AdicCompletionBaseQuotient.lean)：`adicCompletionBasePowQuotientEquiv`。Mathlibの標準的な商代数構造でB/I^n上の同型を構成 |
-| 冪商の平坦性 | [AdicCompletionFlatQuotient](../SerrePositivity/CommutativeAlgebra/AdicCompletionFlatQuotient.lean)：`flat_quotient_of_flat_algebra`と`adicCompletionBasePowQuotient_flat`。基底変換と同型で導く。C全体の平坦性は結論しない |
-| 有限生成版の剰余体の保存 | [AdicCompletionResidue](../SerrePositivity/CommutativeAlgebra/AdicCompletionResidue.lean)：`adicCompletionTargetResidueEquiv`・`_apply`・`_base_map`。SのNoether性なしで指定体へ移送。既存のNoether版もこのAPIへ移行 |
-| 一般拡大の完備局所実現 | [ResidueFieldGeneralCompletion](../SerrePositivity/CommutativeAlgebra/ResidueFieldGeneralCompletion.lean)：完備局所C、有限生成なm_C、m_B C=m_C、指定剰余体の同型、全冪商の平坦性を供給。CのNoether性は証明済み。B上の平坦性も共通の代数版を適用して証明済み |
-| 随伴次数環のNoether性 | [GradedReesNoetherian](../SerrePositivity/CommutativeAlgebra/GradedReesNoetherian.lean)：商のNoether性とI.FGからMathlibのRees商の定理を適用。元の環のNoether性・完備性は不要 |
-| 有限な初期形式の持ち上げ | [ReesIdealLifts](../SerrePositivity/CommutativeAlgebra/ReesIdealLifts.lean)：`reesCoefficientIdeal`・`exists_finite_reesCoefficientIdeal_lifts`。Jの係数を持つ有限なRees多項式で初期形式の像を生成 |
-| 次数を制御した近似の極限 | [AdicApproximationLifting](../SerrePositivity/CommutativeAlgebra/AdicApproximationLifting.lean)：一様な次数のずれcを許す近似からrangeへの所属と有限生成性を導く。全Jへの近似は`ReesCoefficientApproximation`で供給済み |
-| 次数付き近似の実構成 | [ReesCoefficientApproximation](../SerrePositivity/CommutativeAlgebra/ReesCoefficientApproximation.lean)：有限なRees生成元の係数と次数の上界から、全Jの近似を供給。完備性・Noether性は仮定しない |
-| A4の一般Noether判定 | [AdicNoetherianCriterion](../SerrePositivity/CommutativeAlgebra/AdicNoetherianCriterion.lean)：`isNoetherianRing_of_adicComplete_of_noetherian_quotient`・局所版・完備化版。元の環のNoether性や係数sectionを要求しない |
-| 引用1の解消と利用先 | [ResidueFieldGeneralCompletion](../SerrePositivity/CommutativeAlgebra/ResidueFieldGeneralCompletion.lean)：具体的なCの公開仕様と完備Noether平坦版。`Inputs.exists_complete_flat_local_extension`と`Section2.lemma_2_1`のsorry依存を解消 |
-| 完全環からの一意な持ち上げ | [PerfectNilpotentLifting](../SerrePositivity/CommutativeAlgebra/PerfectNilpotentLifting.lean)：冪零核・完備な核を越える環写像を実構成。冪商での一意性から両立性を供給。局所性・Noether性・有限性は不要 |
-| Witt係数埋め込み | [WittCoefficientConstruction](../SerrePositivity/CommutativeAlgebra/WittCoefficientConstruction.lean)：`exists_wittVector_residue_lift`・`exists_wittVector_coefficient_embedding`。指定剰余写像との両立と、標数零での局所的な単射性まで証明 |
-| 指定非零因子を含むパラメータ | [PrescribedParameter](../SerrePositivity/CommutativeAlgebra/PrescribedParameter.lean)：商の次元、商での選択、持ち上げ、根基の等式。整域性・完備性・正則性は不要 |
-| pを先頭に置くパラメータ | [MixedCharacteristicParameters](../SerrePositivity/CommutativeAlgebra/MixedCharacteristicParameters.lean)：`exists_mixedCharacteristic_systemOfParameters`。指定非零因子の一般定理を実現し、完全剰余体・係数埋め込み・完備性を要求しない |
-| 和に沿う完備性 | [AdicCompletenessSup](../SerrePositivity/CommutativeAlgebra/AdicCompletenessSup.lean)：I進完備性と各I冪商のJ進完備性からI+J進完備性。Noether局所版では有限加群の完備性を実際に供給 |
-| 係数方向の冪級数完備性 | [PowerSeriesCoefficientCompleteness](../SerrePositivity/CommutativeAlgebra/PowerSeriesCoefficientCompleteness.lean)：有限生成イデアルへの係数ごとの合同と極限。変数の有限性は不要 |
-| 混合イデアルの冪級数完備性 | [PowerSeriesMixedCompleteness](../SerrePositivity/CommutativeAlgebra/PowerSeriesMixedCompleteness.lean)：係数と全変数の和について完備。Witt係数の(p,X)版も証明 |
-| 冪級数の局所構造 | [PowerSeriesLocalStructure](../SerrePositivity/CommutativeAlgebra/PowerSeriesLocalStructure.lean)：定数係数の核、係数極大イデアルと全変数による生成、極大イデアル進完備性 |
-| 冪級数の次元と正則性 | [PowerSeriesRegular](../SerrePositivity/CommutativeAlgebra/PowerSeriesRegular.lean)：Xによる商の同型、dim R[[X]]=dim R+1、生成数による正則性、有限変数への帰納と添字の移送 |
-| 引用3の具体的な基底と座標 | [WittNormalizationBase](../SerrePositivity/CommutativeAlgebra/WittNormalizationBase.lean)：零以外のFin hを変数とする基底の次元h、pと全変数の標準列、極大イデアル生成、h=1の明示的同型 |
-| 閉ファイバーと単射性 | [FiniteNormalizationTools](../SerrePositivity/CommutativeAlgebra/FiniteNormalizationTools.lean)：共通剰余体と準素商から係数環上の有限性。有限写像の次元一致から単射性 |
-| 混標数Cohen正規化の実構成 | [WittNormalizationConstruction](../SerrePositivity/CommutativeAlgebra/WittNormalizationConstruction.lean)：同じ評価写像に有限性・単射性・指定剰余写像への全射性を供給。引用3の既存型へ接続 |
+| 一般の加群の極限 | [DirectLimitFlat](../../SerrePositivity/CommutativeAlgebra/DirectLimitFlat.lean)：`directLimit_exists_representatives`、`directLimit_flat`。有限個の元の共通代表と方程式判定による平坦性。局所性・Noether性・遷移写像の単射性は不要 |
+| 局所環の極限 | [DirectLimitLocalRing](../../SerrePositivity/CommutativeAlgebra/DirectLimitLocalRing.lean)：`directLimit_isUnit_iff`、`directLimit_isLocalRing`、`directLimit_isLocalHom`。単元は後続段で検出できる。局所性と標準写像の局所性の仮定を分離 |
+| 剰余体拡大の極限 | [ResidueFieldDirectLimit](../../SerrePositivity/CommutativeAlgebra/ResidueFieldDirectLimit.lean)：`directLimit_maximalIdeal_map`、`directLimit_maximalIdeal_fg`、`directLimitResidueEquiv`と段写像・係数写像の計算。`exists_flat_local_extension_of_directed_system`が各保存定理を適用してType uの平坦局所拡大を構成。実際の図式・両立性・指定体を覆う条件は適用側で確認する |
+| 後続段 | [ResidueFieldSuccessor](../../SerrePositivity/CommutativeAlgebra/ResidueFieldSuccessor.lean)：`exists_residueField_successor`。旧段から一元を加え、局所性・平坦性・基底からの合成・二つの極大イデアル等式・剰余体の両立を供給。旧段のNoether性は不要 |
+| 段から指定体への写像 | [ResidueFieldStageMap](../../SerrePositivity/CommutativeAlgebra/ResidueFieldStageMap.lean)：`residueFieldStageMap`の核は段の極大イデアル、像は指定中間体。`residueFieldStageMap_comp_of_residue_tower`で後続段の剰余体等式を環写像の両立へ接続 |
+| 体側の整列添字 | [ResidueFieldGeneratorIndex](../../SerrePositivity/CommutativeAlgebra/ResidueFieldGeneratorIndex.lean)：K自身の整列、開／閉初期部分の中間体、一元追加・合併・被覆。添字の宇宙を上げない |
+| 図式への終段追加 | [AlgebraSystemWithTop](../../SerrePositivity/CommutativeAlgebra/AlgebraSystemWithTop.lean)：具体的な段・遷移写像の定義と自己・合成則。局所性・平坦性を段ごとに保持し、指定終域への写像の両立を供給。`algebraSystemWithTop_of_directLimit`で前段の極限からの写像へ適用 |
+| 初期部分の添字 | [InitialSegmentWithTop](../../SerrePositivity/CommutativeAlgebra/InitialSegmentWithTop.lean)：`initialSegmentWithTopEquiv`。開初期部分への終点追加と閉初期部分の順序同型。最小元での空初期部分にも同じ同型を適用 |
+| 添字変更と制限 | [AlgebraSystemReindex](../../SerrePositivity/CommutativeAlgebra/AlgebraSystemReindex.lean)：単調写像に沿う制限、恒等・合成、局所性・指定終域への両立の保存。型が添字で変わる写像の比較も供給 |
+| 初期部分の延長 | [AlgebraInitialSegment](../../SerrePositivity/CommutativeAlgebra/AlgebraInitialSegment.lean)：閉初期部分の段・遷移を構成し、旧段と写像の保持を証明。直極限からの写像で延長する入口に、有向図式の法則・局所性・Kへの両立を接続 |
+| 一致する初期部分の貼り合わせ | [AlgebraSystemGlue](../../SerrePositivity/CommutativeAlgebra/AlgebraSystemGlue.lean)：共有した環S_jと制限が一致する局所図式p_iから全体の遷移を構成。任意の初期部分への制限、自己・合成則、局所性、終域への両立を証明 |
+| 貼り合わせから極限へ | [ResidueFieldInitialSegments](../../SerrePositivity/CommutativeAlgebra/ResidueFieldInitialSegments.lean)：`exists_flat_local_extension_of_initialSegments`。全体の遷移・有向図式の法則を貼り合わせで供給して極限の保存APIを適用。環S_jと局所図式の制限一致は適用側で構成する |
+| 中間体への終域制限と被覆 | [IntermediateFieldUnionMap](../../SerrePositivity/CommutativeAlgebra/IntermediateFieldUnionMap.lean)：`algHomToIntermediateField`と両立性。各段の像と有向な中間体の合併から制限先全体の被覆を証明。局所性・Noether性・平坦性は不要 |
+| Before iへの剰余体同定 | [ResidueFieldBeforeLimit](../../SerrePositivity/CommutativeAlgebra/ResidueFieldBeforeLimit.lean)：`beforeLimitStageMap_cover`、`residueFieldBeforeLimitEquiv`と段・係数の計算。`exists_residueField_successor_of_beforeLimit`は極限の局所性・平坦性・極大イデアルを保存定理から供給して、一元追加とAfter iへの同定まで実際に構成 |
+| 非空の開初期部分から閉初期部分へ | [ResidueFieldBeforeExtension](../../SerrePositivity/CommutativeAlgebra/ResidueFieldBeforeExtension.lean)：`exists_closed_extension_of_beforeLimit`。直極限から新終段への写像を旧段へ合成し、閉初期部分の図式、局所な遷移、全段の平坦性・極大イデアル等式・Kへの像を確認。Noether性は要求しない |
+| 閉延長の共通仕様 | [ResidueFieldClosedExtension](../../SerrePositivity/CommutativeAlgebra/ResidueFieldClosedExtension.lean)：`IsResidueFieldClosedExtension`は具体的な対象・写像の性質。`isResidueFieldClosedExtension_of_cocone`が既存APIから閉図式の法則を導く |
+| 最小元の初期段 | [ResidueFieldMinExtension](../../SerrePositivity/CommutativeAlgebra/ResidueFieldMinExtension.lean)：`residueFieldMinEquiv`と`exists_closed_extension_of_min`。Bから生成元を加え、空添字の条件を証明する |
+| 空・非空の統合と選択 | [ResidueFieldClosedStep](../../SerrePositivity/CommutativeAlgebra/ResidueFieldClosedStep.lean)：`exists_residueField_closed_extension`と`residueFieldClosedStep`・`residueFieldClosedStep_spec`。検証済みの新終段と写像を同じ関数で選ぶ。全段の履歴一致は別途必要 |
+| 図式のデータと制限 | [LocalAlgebraDiagram](../../SerrePositivity/CommutativeAlgebra/LocalAlgebraDiagram.lean)：環・構造・遷移・指定終域を格納。`reindex`の恒等・合成は図式全体の等式。平坦性・像は格納しない |
+| 図式としての実延長 | [ResidueFieldDiagramExtension](../../SerrePositivity/CommutativeAlgebra/ResidueFieldDiagramExtension.lean)：`residueFieldExtendDiagram`・`_spec`・`_restrict`。通常の図式を延長し、法則と旧図式全体の保持を証明 |
+| 履歴の整礎再帰 | [WellFoundedHistory](../../SerrePositivity/CategoryTheory/WellFoundedHistory.lean)：型の異なる履歴の再帰。環や剰余体に依存しない。延長の実構成は呼出側で証明 |
+| 再帰と実延長の接続 | [ResidueFieldHistory](../../SerrePositivity/CommutativeAlgebra/ResidueFieldHistory.lean)：`exists_coherent_residueFieldHistories_of_open_gluing`。開図式への貼り合わせを明示的に仮定する条件付き制御入口。その仮定は次の実貼り合わせで供給 |
+| 構造を含む段と移送 | [LocalAlgebraPoint](../../SerrePositivity/CommutativeAlgebra/LocalAlgebraPoint.lean)：`point`・`castMap`・`ext_point`。環・代数の構造と指定終域を含む等式から写像と図式全体の一致を得る |
+| 共通の実貼り合わせ | [LocalAlgebraDiagramLowerGlue](../../SerrePositivity/CommutativeAlgebra/LocalAlgebraDiagramLowerGlue.lean)：`localAlgebraLowerGlue`・`_restrict`、`localAlgebraGlueAll`・`_restrict`。開初期部分と全添字集合で同じ構成を使用。剰余体・Noether性・平坦性に依存しない |
+| 貼り合わせの法則の保存 | [ResidueFieldDiagramGlue](../../SerrePositivity/CommutativeAlgebra/ResidueFieldDiagramGlue.lean)：`residueFieldDiagramLowerGlue_spec`・`residueFieldDiagramGlueAll_spec`。局所性・平坦性・極大イデアル・指定中間体の像と図式の法則を各履歴から供給 |
+| 全段の両立履歴の実構成 | [ResidueFieldHistoryGlue](../../SerrePositivity/CommutativeAlgebra/ResidueFieldHistoryGlue.lean)：`residueFieldOpenGlue`・`_spec`・`_restrict`で制御APIの仮定を解消。`exists_coherent_residueFieldHistories`は整列性以外の図式の存在・貼り合わせを仮定しない |
+| 任意剰余体の完備化前の実現 | [ResidueFieldGeneralExtension](../../SerrePositivity/CommutativeAlgebra/ResidueFieldGeneralExtension.lean)：`exists_residueField_generatorDiagram`と`exists_flat_local_extension_of_residueField`。一般Kへの実図式と被覆を供給し、直極限の保存APIを適用。Noether性・完備性は結論しない |
+| 完備化の冪商 | [AdicCompletionQuotient](../../SerrePositivity/CommutativeAlgebra/AdicCompletionQuotient.lean)：評価の核と`adicCompletionPowQuotientEquiv`。有限生成イデアルで全てのnを扱う。Noether性は不要 |
+| 基底冪商上の同型 | [AdicCompletionBaseQuotient](../../SerrePositivity/CommutativeAlgebra/AdicCompletionBaseQuotient.lean)：`adicCompletionBasePowQuotientEquiv`。Mathlibの標準的な商代数構造でB/I^n上の同型を構成 |
+| 冪商の平坦性 | [AdicCompletionFlatQuotient](../../SerrePositivity/CommutativeAlgebra/AdicCompletionFlatQuotient.lean)：`flat_quotient_of_flat_algebra`と`adicCompletionBasePowQuotient_flat`。基底変換と同型で導く。C全体の平坦性は結論しない |
+| 有限生成版の剰余体の保存 | [AdicCompletionResidue](../../SerrePositivity/CommutativeAlgebra/AdicCompletionResidue.lean)：`adicCompletionTargetResidueEquiv`・`_apply`・`_base_map`。SのNoether性なしで指定体へ移送。既存のNoether版もこのAPIへ移行 |
+| 一般拡大の完備局所実現 | [ResidueFieldGeneralCompletion](../../SerrePositivity/CommutativeAlgebra/ResidueFieldGeneralCompletion.lean)：完備局所C、有限生成なm_C、m_B C=m_C、指定剰余体の同型、全冪商の平坦性を供給。CのNoether性は証明済み。B上の平坦性も共通の代数版を適用して証明済み |
+| 随伴次数環のNoether性 | [GradedReesNoetherian](../../SerrePositivity/CommutativeAlgebra/GradedReesNoetherian.lean)：商のNoether性とI.FGからMathlibのRees商の定理を適用。元の環のNoether性・完備性は不要 |
+| 有限な初期形式の持ち上げ | [ReesIdealLifts](../../SerrePositivity/CommutativeAlgebra/ReesIdealLifts.lean)：`reesCoefficientIdeal`・`exists_finite_reesCoefficientIdeal_lifts`。Jの係数を持つ有限なRees多項式で初期形式の像を生成 |
+| 次数を制御した近似の極限 | [AdicApproximationLifting](../../SerrePositivity/CommutativeAlgebra/AdicApproximationLifting.lean)：一様な次数のずれcを許す近似からrangeへの所属と有限生成性を導く。全Jへの近似は`ReesCoefficientApproximation`で供給済み |
+| 次数付き近似の実構成 | [ReesCoefficientApproximation](../../SerrePositivity/CommutativeAlgebra/ReesCoefficientApproximation.lean)：有限なRees生成元の係数と次数の上界から、全Jの近似を供給。完備性・Noether性は仮定しない |
+| A4の一般Noether判定 | [AdicNoetherianCriterion](../../SerrePositivity/CommutativeAlgebra/AdicNoetherianCriterion.lean)：`isNoetherianRing_of_adicComplete_of_noetherian_quotient`・局所版・完備化版。元の環のNoether性や係数sectionを要求しない |
+| 引用1の解消と利用先 | [ResidueFieldGeneralCompletion](../../SerrePositivity/CommutativeAlgebra/ResidueFieldGeneralCompletion.lean)：具体的なCの公開仕様と完備Noether平坦版。`Inputs.exists_complete_flat_local_extension`と`Section2.lemma_2_1`のsorry依存を解消 |
+| 完全環からの一意な持ち上げ | [PerfectNilpotentLifting](../../SerrePositivity/CommutativeAlgebra/PerfectNilpotentLifting.lean)：冪零核・完備な核を越える環写像を実構成。冪商での一意性から両立性を供給。局所性・Noether性・有限性は不要 |
+| Witt係数埋め込み | [WittCoefficientConstruction](../../SerrePositivity/CommutativeAlgebra/WittCoefficientConstruction.lean)：`exists_wittVector_residue_lift`・`exists_wittVector_coefficient_embedding`。指定剰余写像との両立と、標数零での局所的な単射性まで証明 |
+| 指定非零因子を含むパラメータ | [PrescribedParameter](../../SerrePositivity/CommutativeAlgebra/PrescribedParameter.lean)：商の次元、商での選択、持ち上げ、根基の等式。整域性・完備性・正則性は不要 |
+| pを先頭に置くパラメータ | [MixedCharacteristicParameters](../../SerrePositivity/CommutativeAlgebra/MixedCharacteristicParameters.lean)：`exists_mixedCharacteristic_systemOfParameters`。指定非零因子の一般定理を実現し、完全剰余体・係数埋め込み・完備性を要求しない |
+| 和に沿う完備性 | [AdicCompletenessSup](../../SerrePositivity/CommutativeAlgebra/AdicCompletenessSup.lean)：I進完備性と各I冪商のJ進完備性からI+J進完備性。Noether局所版では有限加群の完備性を実際に供給 |
+| 係数方向の冪級数完備性 | [PowerSeriesCoefficientCompleteness](../../SerrePositivity/CommutativeAlgebra/PowerSeriesCoefficientCompleteness.lean)：有限生成イデアルへの係数ごとの合同と極限。変数の有限性は不要 |
+| 混合イデアルの冪級数完備性 | [PowerSeriesMixedCompleteness](../../SerrePositivity/CommutativeAlgebra/PowerSeriesMixedCompleteness.lean)：係数と全変数の和について完備。Witt係数の(p,X)版も証明 |
+| 冪級数の局所構造 | [PowerSeriesLocalStructure](../../SerrePositivity/CommutativeAlgebra/PowerSeriesLocalStructure.lean)：定数係数の核、係数極大イデアルと全変数による生成、極大イデアル進完備性 |
+| 冪級数の次元と正則性 | [PowerSeriesRegular](../../SerrePositivity/CommutativeAlgebra/PowerSeriesRegular.lean)：Xによる商の同型、dim R[[X]]=dim R+1、生成数による正則性、有限変数への帰納と添字の移送 |
+| 引用3の具体的な基底と座標 | [WittNormalizationBase](../../SerrePositivity/CommutativeAlgebra/WittNormalizationBase.lean)：零以外のFin hを変数とする基底の次元h、pと全変数の標準列、極大イデアル生成、h=1の明示的同型 |
+| 閉ファイバーと単射性 | [FiniteNormalizationTools](../../SerrePositivity/CommutativeAlgebra/FiniteNormalizationTools.lean)：共通剰余体と準素商から係数環上の有限性。有限写像の次元一致から単射性 |
+| 混標数Cohen正規化の実構成 | [WittNormalizationConstruction](../../SerrePositivity/CommutativeAlgebra/WittNormalizationConstruction.lean)：同じ評価写像に有限性・単射性・指定剰余写像への全射性を供給。引用3の既存型へ接続 |
 
 
 

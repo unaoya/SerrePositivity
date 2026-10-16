@@ -24,7 +24,7 @@ public import Mathlib.FieldTheory.Perfect
 
 ## 使われ方
 
-`formalization-plans/serre-equal-characteristic.md` の S1。
+解説の付録 A（「引用している結果」の対角線論法の段落）の工程（標数零の係数体の存在）。
 剰余標数零の完備正則局所環を冪級数環と同一視するのに使う。
 正標数の係数体（`PBasisCoefficientField`）とは独立である。
 -/

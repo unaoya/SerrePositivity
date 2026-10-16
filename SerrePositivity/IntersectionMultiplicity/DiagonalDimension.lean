@@ -23,7 +23,7 @@ public import Mathlib.RingTheory.Ideal.GoingDown
 
 ## 使われ方
 
-`formalization-plans/serre-equal-characteristic.md` の K10。
+解説の付録 A（「引用している結果」の対角線論法の段落）の工程（次元公式 $\dim T=\dim D+\dim E$）。
 `dim R/P + dim R/Q = d` のとき `dim T = d` となり、`δ` が `T` のパラメータ系になる。
 -/
 

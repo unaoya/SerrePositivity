@@ -20,7 +20,7 @@ Tor の変数を交換し（`torModuleComm`）、剰余体が共通なので `T`
 
 ## 使われ方
 
-`formalization-plans/frobenius-koszul-elementary.md` の E5。
+解説の注意「Roberts の定理を使わない消滅」（`exposition/ja/exposition-ja.tex` の `rem:koszul-elementary`）の手順 2。
 `R = k[[Z]]` と `z = Z^q` にとり、`D` のパラメータの冪の Koszul ホモロジーを、
 `q` によらない分解で計算できる `Tor_i^R(R/(Z^q), D)` に移す。
 -/

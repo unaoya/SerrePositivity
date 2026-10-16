@@ -5,9 +5,9 @@
 ## 1. この文書の範囲
 
 残る未証明依存と、既存の抽象化・具体的構成・論文への接続との関係を整理する。
-6番の詳細は [Frobenius ホモロジーの計画](frobenius-homology.md) にまとめているため、
-ここでは位置付けだけを記す。1〜3番の詳細は [環の存在構成の計画](local-algebra-1-3.md)、
-4〜5番は [交点重複度の計画](intersection-inputs-4-5.md) を参照する。
+6番の詳細は [Frobenius ホモロジーの計画](archive/frobenius-homology.md) にまとめているため、
+ここでは位置付けだけを記す。1〜3番の詳細は [環の存在構成の計画](archive/local-algebra-1-3.md)、
+4〜5番は [交点重複度の計画](archive/intersection-inputs-4-5.md) を参照する。
 7番以降は別作業で進めるため、この文書では一覧と依存関係だけを扱い、新しい詳細計画は作らない。
 
 番号1〜13は会話で用いた「外部引用一覧」の番号であり、論文の定理・補題番号ではない。
@@ -36,12 +36,12 @@ BS Cor 7.3／Thm 7.4 の全射性は、André の補題を使わない根添加�
 
 | 番号 | 現在の引用 | 役割・利用先 | 今後の担当範囲 |
 | --- | --- | --- | --- |
-| 1（解消済み） | 指定した剰余体を持つ完備平坦局所拡大 | 実図式・直極限・一般Noether判定・共通完備化平坦性から証明。補題2.1も引用非依存 | [1〜3の計画](local-algebra-1-3.md) |
-| 2（解消済み） | Cohen–Gabber 正規化 | 等標数の完備整域を、生成的に分離な有限拡大として正則基底上に置く | [微分経路の計画](cohen-gabber-differentials.md)。Gabberの微分経路で証明済み |
+| 1（解消済み） | 指定した剰余体を持つ完備平坦局所拡大 | 実図式・直極限・一般Noether判定・共通完備化平坦性から証明。補題2.1も引用非依存 | [1〜3の計画](archive/local-algebra-1-3.md) |
+| 2（解消済み） | Cohen–Gabber 正規化 | 等標数の完備整域を、生成的に分離な有限拡大として正則基底上に置く | [微分経路の計画](archive/cohen-gabber-differentials.md)。Gabberの微分経路で証明済み |
 | 3（解消済み） | 混標数の Cohen 正規化 | 完全剰余体のWitt係数とパラメータから実際の冪級数評価を構成し、有限性・単射性を証明 | 同上 |
-| 4（主定理から除外） | Serre の体を含む場合の正値性 | 剰余標数零の場合を対角線論法で証明し、主定理は依存しない | [対角線論法の計画](serre-equal-characteristic.md) |
-| 5（解消済み） | Roberts–Gillet–Soulé の交点重複度消滅 | 台つき巡回 Adams 二乗・三乗と重み消滅により全剰余標数で証明。公開型を保持 | [Adams の計画](intersection-vanishing-adams.md)。S1–S11 と利用先の公理監査が完了 |
-| 6（主定理から除外） | Roberts の Frobenius 高次ホモロジー消滅 | パラメータ Koszul 複体の場合を初等的に証明し、主定理は依存しない | [初等版の計画](frobenius-koszul-elementary.md)。一般形は [専用計画](frobenius-homology.md) |
+| 4（主定理から除外） | Serre の体を含む場合の正値性 | 剰余標数零の場合を対角線論法で証明し、主定理は依存しない | [対角線論法の計画](archive/serre-equal-characteristic.md) |
+| 5（解消済み） | Roberts–Gillet–Soulé の交点重複度消滅 | 台つき巡回 Adams 二乗・三乗と重み消滅により全剰余標数で証明。公開型を保持 | [Adams の計画](archive/intersection-vanishing-adams.md)。S1–S11 と利用先の公理監査が完了 |
+| 6（主定理から除外） | Roberts の Frobenius 高次ホモロジー消滅 | パラメータ Koszul 複体の場合を初等的に証明し、主定理は依存しない | [初等版の計画](archive/frobenius-koszul-elementary.md)。一般形は [専用計画](archive/frobenius-homology.md) |
 | 7（解消済み） | 標準パラメータ根の塔の完備化が integral perfectoid | Witt係数表示から条件を供給し、有限段Frobenius核・実際のtilt・Fontaine核から証明 | `RootTower/WittPresentation`。旧Inputsは証明済みの互換入口 |
 | 8 | 有限代数の perfectoidization の存在 | 混標数の具体的な代数を作る。現在は BS Thm 1.17(1) として残る | [BS](bhatt-scholze.md) |
 | 9〜11 | perfectoid ideal・Koszul ホモロジー・正規化長さの公式 | 混標数の長さの二性質。現在は CLMST Prop 2.4.7・Cor 4.0.4 の二件に集約 | [CLMST](clmst.md) |
@@ -123,9 +123,9 @@ BS Cor 7.3／Thm 7.4 の全射性は、André の補題を使わない根添加�
 ## 8. 各文書の役割と完了条件
 
 - この文書：対象と依存関係の全体像。詳細計画や原典の全文を重複させない。
-- [1〜3の計画](local-algebra-1-3.md)：基礎環の存在構成、共通API、最初の実装単位。
-- [4〜5の計画](intersection-inputs-4-5.md)：古典的交点重複度の証明経路。
-- [6の計画](frobenius-homology.md)：Frobenius ホモロジー消滅の調査と段階別計画。
+- [1〜3の計画](archive/local-algebra-1-3.md)：基礎環の存在構成、共通API、最初の実装単位。
+- [4〜5の計画](archive/intersection-inputs-4-5.md)：古典的交点重複度の証明経路。
+- [6の計画](archive/frobenius-homology.md)：Frobenius ホモロジー消滅の調査と段階別計画。
 - [CLMST の計画](clmst.md)：7番以降を含む別作業の計画。詳細の更新はそちらで行う。
 - [BS の計画](bhatt-scholze.md)：δ環・prism から perfectoid 化まで。8番（現在の BS Thm 1.17(1)）を担当する。
 - [K理論の計画](k-theory.md)：定理3.1・補題4.6の基盤と降下。dg 理論は [dg-theory.md](dg-theory.md)。

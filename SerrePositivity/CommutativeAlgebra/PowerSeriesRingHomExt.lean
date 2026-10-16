@@ -20,7 +20,7 @@ public import Mathlib.RingTheory.AdicCompletion.Basic
 
 ## 使われ方
 
-`formalization-plans/serre-equal-characteristic.md` の K5。
+解説の付録 A（「引用している結果」の対角線論法の段落）の工程（対角線写像と係数写像の合成の計算）。
 対角線の評価 `Δ : R[[Y]] → R` と係数写像 `R → R[[Y]]` の合成が恒等写像であることに使う。
 -/
 

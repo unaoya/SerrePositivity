@@ -18,7 +18,7 @@ public import SerrePositivity.HomologicalAlgebra.LocalFlatnessCriterion
 
 ## 使われ方
 
-`formalization-plans/serre-equal-characteristic.md` の K2。
+解説の付録 A（「引用している結果」の対角線論法の段落）の工程（$R[[Y]]/P$ の平坦性）。
 `D' ⊗_{R, i₂} −` が完全関手であることを、`E = R/Q` の自由分解の移送に使う。
 -/
 
