@@ -4455,3 +4455,34 @@ U12aは相対K-flatの整数shift閉性がなお残るため全受入とはし�
 次は既存の全次数shift要素と複体値dg関手の主Hom写像を照合してtensorのshift比較を得る。
 U12cの上有界flat、U11eのcoherence、U12e/f、U13〜U17・D4mも未完。
 共有系列への追加要求はなく、担当外ファイルを編集していない。
+
+
+### 17.72 U12c：上に有界なflat複体の非有界K-flat性（受入、2026-10-16）
+
+`Complexes/LowerTruncationSequence.lean`は既存StupidTruncation.aboveと包含を再利用し、
+下端b≤aについて二つの切り詰め間の包含を構成する。元の複体への包含との可換式、
+恒等・合成則を証明し、下端0,−1,−2,…の可算図式と元の複体への余錐を公開した。
+各次数qでは下端がq以下になった後の包含が同型となる。
+Mathlib Functor.IsEventuallyConstantFrom.isColimitOfIsIsoとHomologicalComplex.isColimitOfEvalを
+適用し、この余錐が実際に余極限であることとlowerTruncationColimitIsoを証明した。
+一般的なeventually constant余極限論は新設していない。
+
+`Tensor/BoundedAbove.lean`は任意可換環A上で、次数ごとflatかつ上に有界な複体Kについて
+complexKFlat_of_flat_boundedAboveを証明する。下から切り詰めた各段階は両側有界flatであり、
+既存complexKFlat_of_flat_boundsを使用する。ModuleCatのAB5と既存complexKFlat_colimitを
+可算図式へ適用し、余極限同型でKへ運ぶ。tensorの余極限保存とexactな余極限による
+acyclic性の保存は§17.55の証明済みAPIを使用した。
+相手のacyclic複体には上界・下界を一切仮定しない。
+左右どちらの因子としても任意の非有界準同型を保存する系を公開した。
+
+Checks.BoundedAboveKFlat・Checks.KFlatCriterion・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2853 jobs、終了コード0、警告なし）。任意A・任意上界b・非有界相手・
+ZMod 2・実際の切り詰め余極限同型を検査した。
+主要13宣言の直接公理監査は終了コード0、標準公理のみ。監査累計1882宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。
+今回の3 Leanファイルにsorry/admit/新規axiomはない。担当差分の空白検査も成功。
+
+これでU12cの「任意非有界acyclicを消す」という受入条件を満たす。
+相手も上に有界な既存定理だけを使った結論ではない。
+次はU12aの相対K-flat整数shift閉性を完成させる。
+U11eのcoherence、U12e/f、U13〜U17・D4mは未完。共有系列への追加要求はなく、担当外を編集していない。
