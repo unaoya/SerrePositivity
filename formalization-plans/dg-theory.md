@@ -6627,3 +6627,54 @@ Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功（2742 job
 全erasureとの微分整合性、最終Homのchain map、dg関手の延長と普遍性を残しU15c全受入は未完。
 U11e・U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完。採用済み引用は0件。
 共有系列への追加要求はない。共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.142 U15c4：評価の微分＝ε消去後の評価・最終商Homの評価chain map（2026-10-17）
+
+`Quotient/ErasureHeadCochainNaturality.lean`は閉性を仮定しない次数0 cochainに対して先頭・中間ε消去の
+自然性を証明する。`ContractionAction.lean`は指定ε評価の像Homへの作用を固定cochainとして分離し、
+その微分がeraseHeadに一致することを証明する。任意後方cochainとの合成の微分は先頭ε消去と
+後方Hom微分の二項へ分かれる。対象Eのdg単位則から像の単位因子を消しており、追加仮定はない。
+
+`Complexes/TensorZeroCochainLeftMap.lean`は閉零の左写像を任意次数0 cochainの後へ移す表示を与える。
+`Quotient/EvaluationPrefix.lean`は元のHomによる閉作用evaluationOriginalAction、前方Hom・εの
+評価evaluationPrefixAction、その微分、非空path評価の二重左tensorによる表示、後方cochainを
+含む微分公式を証明する。`PathEvaluationDifferential.lean`はそれをprepend整合性へ接続し、
+非空path評価の微分を先頭eraseFirstと短いpath評価の微分へ分ける。
+後方任意次数cochainの持ち上げはpathEvaluationTailとして始域term(b::w)を明示的に保持する。
+これにより異なるterm表示のHAddを暗黙の型照合へ任せない。
+
+`InternalEvaluationPrefix.lean`は全pathの前方追加prefixPathと評価の整合性を各pathへの制限から証明する。
+`EvaluationErasure.lean`はこれとeraseRow_consから左語に関する帰納法を行い、
+**δ(pathEvaluation w) = eraseRow w · internalEvaluation**を証明する。
+任意cochainのpath extとδの前合成保存から、全直和について
+**internalEvaluation_differential：δ 0 1 (internalEvaluation x y) =
+(erasure x y).comp (internalEvaluation x y) (add_zero 1)**を得た。
+
+`Complexes/PerturbationMap.lean`は一般の閉じた二乗零θとδf=θfを入力に、始域の微分をd+θへ変更した
+実際のchain mapを構成する。`Quotient/Evaluation.lean`は既に証明した全erasureと評価を入力し、
+quotientEvaluation : quotientHom S x y → Hom_E(Fx,Fy)を構成する。
+各次数の成分、元のHom包含との合成がF.mapであること、指定ε元の像が選択したh_bであること、
+各pathの成分公式、単位射の保存を証明した。未証明の微分整合性を構造体の仮定へ移していない。
+任意可換環・非有界Hom・独立対象宇宙を維持する。有限語の微分公式にDのsmall性は不要で、
+全直和と主商Homの構成では既存のSmall.{u} Dを使う。Eのsmall性は仮定しない。
+
+Checks.QuotientEvaluation・Checks.EvaluationPrepend・Checks.PathEvaluation・Checks.ContractedFunctor・
+Checks.QuotientContraction・Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功
+（2752 jobs、終了コード0、警告なし）。全直和の微分整合性と実際のchain map、
+ZMod 2での指定ε保存を検査した。
+主要26宣言の直接公理監査は標準公理のみ。§17.141以降の今回32宣言を直接ログで再照合した。
+監査累計2800宣言。文書検査は13 Markdown・320 exposition参照、失敗0件。
+担当差分の空白検査は成功。今回の実装にsorry/admit/新規axiomはない。
+
+次は任意二pathの合成保存を証明する。有限語では
+ofHom(appendMap w v).comp(pathEvaluation(w++v)) =
+(tensorZeroCochain(pathEvaluation w)(pathEvaluation v)).comp(ofHom(eComp_E))を目標にし、
+空の左語でpathEvaluation_prepend、非空語で前方評価の作用と対象Eの結合則を使う。
+全直和へ拡張後、実際のchain mapの式
+quotientComposition ≫ quotientEvaluation = (quotientEvaluation ⊗ₘ quotientEvaluation) ≫ eComp_E
+を得て、既存quotientEvaluation_unitと共にdg関手への延長を構成する。
+その後、任意の商dg関手の各path成分が制限データのpathEvaluationに一致することから
+延長・制限の往復と一意性を証明する。対象の定義的等しさと同型を混同しない。
+U15c全受入、U11e・U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mは未完。
+採用済み引用は0件。共有系列への追加要求はない。共有一般論・共有ルートimport・他系列は編集していない。
