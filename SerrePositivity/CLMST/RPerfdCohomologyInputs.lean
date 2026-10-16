@@ -6,6 +6,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FiniteTensorC
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FiniteCoefficientPowerComparison
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerDerivedComparison
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerTorComparison
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FiniteCoefficientPowerHolim
 public import SerrePositivity.CommutativeAlgebra.PerfectoidDerivedComplete
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdeal
 public import SerrePositivity.CommutativeAlgebra.RegularParameters
@@ -78,6 +79,15 @@ def rPerfd_modulePowerDerivedTensorIso (N : ModuleCat.{u} A) (n : ℕ) :
         (DerivedCompletion.modulePowerReduction (p : A) N n) :=
   DerivedCompletion.modulePowerDerivedTensorIso (p : A)
     (ModuleCat.of A (RPerfd A D t p hperf)) N n
+
+/-- The original finite-test tensor is the holim of the ordinary quotient tower.
+The selected perfectoidization and original A-action are unchanged. -/
+def rPerfd_finiteCoefficientPowerHolimIso (N : ModuleCat.{u} A) [Module.Finite A N] :
+    (boundedAboveDerivedTensorModuleFunctor (ModuleCat.of A (RPerfd A D t p hperf))).obj N ≅
+      DerivedCategory.Q.obj (DerivedCompletion.modulePowerDerivedTensorHolimComplex A (p : A)
+        (ModuleCat.of A (RPerfd A D t p hperf)) N) :=
+  DerivedCompletion.finiteCoefficientPowerHolimIso A (p : A)
+    (ModuleCat.of A (RPerfd A D t p hperf)) N (rPerfd_isModuleComplete A t D p hperf)
 
 /-- The actual finite-stage map has the base compatibility required by the
 Koszul/local-cohomology theorem. -/

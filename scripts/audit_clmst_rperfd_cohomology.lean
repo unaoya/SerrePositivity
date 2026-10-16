@@ -45,7 +45,7 @@ elab "assert_rperfd_cohomology_dependencies" : command => do
   let roots := [``toRPerfd_algebraMap_A, ``rPerfd_p_coordinate,
     ``rPerfd_tor_eq_zero_of_finite, ``rPerfd_isModuleComplete,
     ``rPerfd_derivedTensor_isComplete, ``rPerfd_finiteCoefficientPowerComparison_quasiIso,
-    ``rPerfd_modulePowerDerivedTensorIso,
+    ``rPerfd_modulePowerDerivedTensorIso, ``rPerfd_finiteCoefficientPowerHolimIso,
     ``rPerfd_cohomology_vanishing_of_tor_idempotent]
   let _ ← liftCoreM <| checkRPerfdDependencies roots {}
   logInfo "Only the existing integral-perfectoidization existence sorry is permitted."
@@ -147,3 +147,22 @@ assert_rperfd_power_stage_dependencies
 #print axioms rperfd_power_stage_scalar
 #print axioms rperfd_power_stage_tor_scalar
 #print axioms rperfd_power_stage_torsion_input
+
+private lemma rperfd_power_holim_projection (N : ModuleCat.{u} A) [Module.Finite A N] (n : ℕ) :
+    (rPerfd_finiteCoefficientPowerHolimIso A t D p hperf N).hom ≫
+      modulePowerDerivedTensorHolimProjection A (p : A) C₀ N n =
+        (boundedAboveDerivedTensorModuleFunctor C₀).map (modulePowerReductionMap (p : A) N n) :=
+  finiteCoefficientPowerHolimIso_projection A (p : A) C₀ N
+    (rPerfd_isModuleComplete A t D p hperf) n
+
+meta section
+open Lean Elab Command
+elab "assert_rperfd_power_holim_dependencies" : command => do
+  let _ ← liftCoreM <| checkRPerfdDependencies [``rperfd_power_holim_projection,
+    ``rPerfd_finiteCoefficientPowerHolimIso] {}
+  logInfo "Actual RPerfd ordinary-quotient holim: original derived projection checked."
+end
+
+assert_rperfd_power_holim_dependencies
+#print axioms rPerfd_finiteCoefficientPowerHolimIso
+#print axioms rperfd_power_holim_projection
