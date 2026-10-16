@@ -2374,3 +2374,15 @@ paired raw bar右脚全体の局所化後の可逆性を全referenceの0次行se
 構成はordinary resolution圏内であり、outer-frame liftの関手性は主張しない。
 frame側の比較、bar収縮・右脚・0次行sectionの可逆性、最終小さい厳密RMapは未完了。
 検証：`scripts/check_resolution_bar_cone_diagram.lean`、計画書§303。
+
+
+### 元のframe合成の小さいderived比較（§304）
+
+`FrameLiftSpace`は元のdiagram圏のReedyモデルを使い、固定inner射のframe比較空間を
+元のHom宇宙に構成する。元のframe写像を点に入れ、任意の指定済み全境界を保持して延長する。
+`FrameSquareComparison`はinnerが可換な正方形の元の両frame合成を二端点として保持する。
+`ResolutionBarFrameSquares`は同じ全bar単体圏の実正方形へ適用し、両側の比較を構成する。
+大きいSSetモデル構造も、選んだframe liftの関手性も要求しない。
+固定正方形間の高次整合性・bar全体の収縮、0次行section・右脚の可逆性、
+元のreplacement barとの接続、最終小さい厳密RMapは未完了。
+検証：`scripts/check_resolution_bar_frame_squares.lean`、計画書§304。

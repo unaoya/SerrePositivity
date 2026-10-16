@@ -16214,3 +16214,63 @@ bar全体の収縮へつなぐ部分が残る。§301の0次行sectionの可逆�
 元のreplacement barとの接続、実bar右脚の無条件の弱同値、基底Cᵒᵖ×C上の自然な小値化、
 F1の最終小さい厳密RMap、F2の最終自然弱同値zigzagは引き続き未完了。
 全体目標F→L→E→Sを維持する。
+
+
+## 304. 元のframe合成を保持する小さい比較空間と実bar正方形への適用（2026-10-16）
+
+§303のordinary resolutionの自然性の正方形について、個別に選んだ実outer-frame liftの
+二つの合成を、同じinner射の上の小さいderived比較空間の点として結んだ。
+各正方形で指定済みの高次境界を保持する延長も得た。正方形間の全体整合性とは区別する。
+
+### 304.1 固定inner射の上の実frame比較空間
+
+`FrameLiftSpace`は元のCから構成済みのcanonical Reedyモデル圏(SimplexCategory→C)で、
+既存ResolutionLiftSpaceを適用する。実frame写像をそのままouter resolution間の射にし、
+その点を小さいSSetの比較空間へ入れる。outerMapのdiagramは元のframe写像そのものである。
+
+比較空間のprojectionは元の小さいSSetモデルで自明fibrationとなる。
+任意の単射上の指定済み全familyを保持する延長、二つの指定点を結ぶ区間、Kan性を証明した。
+元のsourceの対象宇宙とHom宇宙は独立で、反復ReedyモデルでもHom宇宙vは変わらない。
+大きいSSet宇宙にモデル構造は要求しない。inner射の等式による型の移送でも、
+元のframe写像の値が変わらないことを明示する。
+
+### 304.2 同じinner可換正方形の二つの実frame合成
+
+`FrameSquareComparison`は実framed射s・t・u・vと、そのinner合成の等式を受け取る。
+同じ固定inner合成の比較空間に、元のs.frame≫t.frameとu.frame≫v.frameを点として入れる。
+等式で移送した右側の点も、元の右frame合成をそのまま保持する。
+この二点を端点に持つ実区間と、任意の指定済み全境界の延長を構成する。
+framed合成そのものの厳密な等式を結論したわけではない。
+
+### 304.3 実barの全単体作用素の正方形への適用
+
+`ResolutionBarFrameSquares`は§303と同じ全bar単体圏を使う。
+sourceのrow射と両側の元のcone射を個別にframe liftし、targetでは元の実prefix framed射を使う。
+inner正方形の等式は§303の同じ自然変換の自然性から得る。
+各実bar単体では、これらのcone frame射が§302で選んだ元の射に一致することを証明した。
+
+任意の単体圏射について、両側の実frame合成の点を結ぶ小さい区間を構成する。
+さらに、その固定正方形の両側比較空間で指定した全boundary familyを同時に延長し、
+両方の元の全familyへの制限を正確に保持する。
+正方形どうしを結ぶ自然なinterval選択や、bar nerve内のframed合成の等式はまだ主張しない。
+
+### 304.4 受入検証と残項目
+
+実装コミット`0babf6dc`。全て成功した。
+
+- 共有入口のbuild：2871 jobs、追加警告なし。
+- `check_resolution_bar_frame_squares`：独立宇宙での元の実frame写像と右合成の保持、
+  比較空間が元の小さいHom宇宙にあること、同じ全bar正方形のinner等式、
+  小さいprojectionの自明fibration性、元の二端点を保持する区間、
+  任意の単射上の両側全boundary familyの同時保持。
+  新規51宣言・3モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：9271宣言・674モジュール、標準公理のみ。
+- `check_resolution_bar_cone_diagram`：42宣言・4モジュールの回帰確認。
+- 受入例で使うdiagram圏のReedyモデルは元のCから構成したものを明示し、追加仮定にはしていない。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+残るのは、各固定正方形の比較を、正方形の合成や高次境界にも整合する全体のbar比較へ
+組み込む部分である。derived比較空間内の区間を得ただけで、barの収縮とはならない。
+§301の0次行sectionの可逆性、元のreplacement barとの接続、実bar右脚の無条件の弱同値、
+基底Cᵒᵖ×C上の自然な小値化、F1の最終小さい厳密RMap、F2の最終自然弱同値zigzagは未完了。
+全体目標F→L→E→Sを維持する。
