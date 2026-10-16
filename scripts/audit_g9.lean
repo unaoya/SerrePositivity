@@ -1,3 +1,6 @@
+import SerrePositivity.HomologicalAlgebra.ModuleTensorCochainExact
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerCokernelTensorModel
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedPowerCokernelModel
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerImageTower
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerCokernelReconstruction
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.KoszulPowerCokernelComparison
@@ -182,3 +185,63 @@ example {R : Type u} [CommRing R] (a : R)
     complexCompletionUnit R a K ≫ koszulPowerCokernelComparison a K =
       powerCokernelReconstruction a K :=
   complexCompletionUnit_comp_koszulPowerCokernelComparison a K
+
+-- Actual quotient tensor and derived reduction models.
+assert_no_sorry SerrePositivity.moduleTensorCochainFunctor_linear
+#print axioms SerrePositivity.moduleTensorCochainFunctor_linear
+assert_no_sorry SerrePositivity.moduleTensorCochain_exact
+#print axioms SerrePositivity.moduleTensorCochain_exact
+assert_no_sorry SerrePositivity.moduleTensorCochain_map_epi
+#print axioms SerrePositivity.moduleTensorCochain_map_epi
+assert_no_sorry SerrePositivity.DerivedCompletion.powerQuotientCoefficientMap
+#print axioms SerrePositivity.DerivedCompletion.powerQuotientCoefficientMap
+assert_no_sorry SerrePositivity.DerivedCompletion.powerQuotientCoefficientMap_epi
+#print axioms SerrePositivity.DerivedCompletion.powerQuotientCoefficientMap_epi
+assert_no_sorry SerrePositivity.DerivedCompletion.powerQuotientCoefficientShortComplex
+#print axioms SerrePositivity.DerivedCompletion.powerQuotientCoefficientShortComplex
+assert_no_sorry SerrePositivity.DerivedCompletion.powerQuotientCoefficientShortComplex_exact
+#print axioms SerrePositivity.DerivedCompletion.powerQuotientCoefficientShortComplex_exact
+assert_no_sorry SerrePositivity.DerivedCompletion.powerQuotientTensorMap
+#print axioms SerrePositivity.DerivedCompletion.powerQuotientTensorMap
+assert_no_sorry SerrePositivity.DerivedCompletion.powerQuotientTensorMap_zero
+#print axioms SerrePositivity.DerivedCompletion.powerQuotientTensorMap_zero
+assert_no_sorry SerrePositivity.DerivedCompletion.powerQuotientTensorShortComplex
+#print axioms SerrePositivity.DerivedCompletion.powerQuotientTensorShortComplex
+assert_no_sorry SerrePositivity.DerivedCompletion.powerQuotientTensorShortComplex_exact
+#print axioms SerrePositivity.DerivedCompletion.powerQuotientTensorShortComplex_exact
+assert_no_sorry SerrePositivity.DerivedCompletion.powerQuotientTensorMap_epi
+#print axioms SerrePositivity.DerivedCompletion.powerQuotientTensorMap_epi
+assert_no_sorry SerrePositivity.DerivedCompletion.powerCokernelTensorModelIso
+#print axioms SerrePositivity.DerivedCompletion.powerCokernelTensorModelIso
+assert_no_sorry SerrePositivity.DerivedCompletion.powerCokernelTensorModelIso_π
+#print axioms SerrePositivity.DerivedCompletion.powerCokernelTensorModelIso_π
+assert_no_sorry SerrePositivity.DerivedCompletion.powerQuotientCoefficientIso
+#print axioms SerrePositivity.DerivedCompletion.powerQuotientCoefficientIso
+assert_no_sorry SerrePositivity.DerivedCompletion.derivedPowerCokernelModelIso
+#print axioms SerrePositivity.DerivedCompletion.derivedPowerCokernelModelIso
+assert_no_sorry SerrePositivity.DerivedCompletion.derivedPowerCokernelHomologyIso
+#print axioms SerrePositivity.DerivedCompletion.derivedPowerCokernelHomologyIso
+assert_no_sorry SerrePositivity.DerivedCompletion.powerCokernel_homology_isZero_of_reduction
+#print axioms SerrePositivity.DerivedCompletion.powerCokernel_homology_isZero_of_reduction
+
+noncomputable section
+
+-- Zero power, arbitrary upper bound, and no regularity assumption on a.
+example {R : Type u} [CommRing R] (a : R)
+    (X : DerivedCategory.Minus (ModuleCat.{u} R)) :
+    ((boundedAboveDerivedRestrictScalars (Ideal.Quotient.mk (Ideal.span {a ^ 0}))).obj
+      ((boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {a ^ 0}))).obj X)).obj ≅
+        DerivedCategory.Q.obj
+          (powerCokernelComplex a (boundedAboveDerivedChosenModel X).complex 0) :=
+  derivedPowerCokernelModelIso a 0 X
+
+-- Actual quotient homology, with its restricted scalar action, in every degree.
+example {R : Type u} [CommRing R] (a : R) (n : ℕ)
+    (X : DerivedCategory.Minus (ModuleCat.{u} R)) (i : ℤ) :
+    (powerCokernelComplex a (boundedAboveDerivedChosenModel X).complex n).homology i ≅
+      (ModuleCat.restrictScalars (Ideal.Quotient.mk (Ideal.span {a ^ n}))).obj
+        ((DerivedCategory.homologyFunctor (ModuleCat.{u} (R ⧸ Ideal.span {a ^ n})) i).obj
+          ((boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {a ^ n}))).obj X).obj) :=
+  derivedPowerCokernelHomologyIso a n X i
+
+end
