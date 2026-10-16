@@ -19,6 +19,10 @@ open CategoryTheory.MonoidalClosed
 
 namespace SerrePositivity.SimplicialModel.RelativeChoiceSpace
 
+lemma ofExtension_congr {V T P : SSet.{v}} (i : V ⟶ T) (b : V ⟶ P)
+    (e e' : T ⟶ P) (he : i ≫ e = b) (he' : i ≫ e' = b) (h : e = e') :
+    ofExtension i b e he = ofExtension i b e' he' := by cases h; rfl
+
 lemma name_postcomp {V P Q : SSet.{v}} (b : V ⟶ P) (q : P ⟶ Q) :
     name b ≫ (ihom V).map q = name (b ≫ q) := by
   rw [name, Category.assoc, curry'_ihom_map]
