@@ -7976,3 +7976,50 @@ Checks.DerivedBimodulePentagon・Checks.StageEight・Checks.StageSeven・既存S
 今回の結合比較は前因子に自然な指定解像度版であり、全因子のcoherenceの完成とは扱わない。
 local Hom条件のないdg圏自体の解像度経路、U12e全受入、U12f・U13d/e残部・U14・U15d/e・
 U16/U17・D4mは残る。U17までの目標を保持し、共有系列への新しいAPI要求はない。
+
+
+### 17.175 U12e16：全三因子に自然な導来結合同型（2026-10-17）
+
+`Derived/BimoduleCompositionPairNaturality.lean`は、全導来後二因子の射を逐次合成へ送る
+**derivedBimoduleComposePairMap**と、指定解像度比較の自然性を構成する。
+`Derived/BimoduleCompositionInnerNaturality.lean`は合成された後因子の射
+**derivedBimoduleComposeInnerMap**と、inner解像度計算同型の自然性を証明する。
+両自然性は二つの増大squareの導来圏内での可換性だけを要求する。
+解像度間の比較射に準同型性を要求せず、閉零圏での厳密な可換性へ強めていない。
+innerの証明では前側増大同型の逆を含むsquareを作り、後側解像度比較の自然性と
+固定K-flat関手の自然性、元のcomposeMapの合成則を使う。
+
+`Derived/BimoduleCompositionAssociatorNaturality.lean`はnested解像度比較の自然性を証明し、
+逐次合成・nested比較・既存の固定K-flat結合自然性を組み合わせて
+**derivedBimoduleAssociatorResolutionIso_naturality**を得る。
+**derivedBimoduleAssociatorBaseIso_naturality**は標準解像度への特殊化。
+後二因子の任意の閉零射を射影的に持ち上げ、既存の全導来増大squareを使用する。
+
+`Derived/BimoduleCompositionAssociatorFunctors.lean`は両括り方を
+`D(E,F) ⥤ (D(C,E) ⥤ (D(B,C) ⥤ D(B,F)))`型の関手族
+**derivedBimoduleAssociatorSource/Target**としてMathlibのwhiskering関手から構成する。
+中間因子の閉零対象上で結合比較を自然同型に束ね、
+`Derived/BimoduleCompositionAssociator.lean`で中間因子、最後の因子の順に
+指定準同型局所化の普遍性を適用する。
+**derivedBimoduleAssociatorIso**は上の両関手族の自然同型であり、全三因子の
+任意の導来射に自然。後二因子をK-flat部分圏や局所化前の射に制限していない。
+**derivedBimoduleAssociatorIso_outer_base_app/base_app**は、元の後因子を局所化した対象で
+評価すると§17.174の標準解像度版の結合比較に戻ることを証明する。
+任意可換環・非有界・五つの独立対象宇宙・Small.{u} B/C/E/F、localHomKFlat A E/Fを保持する。
+
+Checks.DerivedBimoduleAssociator・Checks.DerivedBimoduleAssociatorResolution・
+Checks.DerivedBimoduleUnits・Checks.DerivedBimodulePentagon・Checks.StageEight・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（3074 jobs、終了コード0、警告なし）。
+全関手族間の結合自然同型、全三因子の任意の導来射の自然性、標準解像度への計算式、
+独立対象宇宙とZMod 2を検査した。主要17宣言の直接公理監査は標準公理のみ。
+監査累計3329宣言。今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は13 Markdown・320 exposition参照まで進み、担当外BhattScholze互換宣言の
+未解決参照1件で失敗した。共有ルート・共有一般論・該当系列は編集していない。
+
+次は全導来結合同型を任意の指定K-flat解像度による表示と同一視する。
+今回の自然性は比較射と可換squareが与えられた場合の定理であり、任意の二解像度の間の
+比較射の存在をまだ含まない。標準射影解像度から任意解像度へホモトピーまで持ち上げて
+そのsquareを作り、K-flat表示へ戻る計算式を得る。
+その後、§17.173の左右単位と今回の結合同型を使う全因子上の三角・五角恒等式を証明する。
+local Hom条件のないdg圏自体の解像度経路、U12e全受入、U12f・U13d/e残部・U14・U15d/e・
+U16/U17・D4mは残る。U17までの目標を保持し、共有系列への新しいAPI要求はない。
