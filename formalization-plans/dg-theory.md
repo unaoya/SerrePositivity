@@ -6859,3 +6859,42 @@ Checks.AssociatorBimodule・Checks.AssociatorTransport・Checks.QuotientUniversa
 全次数dg自然性の代用にはしない。U11e全受入はなお未完。
 U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mの目標を保持する。
 共有系列への追加要求はない。共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.148 U11e25：順逆の全次数bimodule自然変換と閉単位・評価の一致（2026-10-17）
+
+`Bimodule/ClosedTransforms.lean`のBimoduleParamTrans K M Nは、Mathlibの
+GradedNatTrans ((Center.ofBraided (Complex A)).obj K) M.toFunctor N.toFunctorの別名である。
+閉零の射だけについての通常の自然性へ縮小しない。
+closedFamily_naturality・closedFamilyTransは、右B加群射族と左C作用に関する主Hom endの
+可換式から、単位パラメータの全豊穣自然変換を構成する。
+対象Cのsmall性は必要としない。
+
+`Module/HomIsoSquare.lean`は、可逆な右加群射に関する全Hom四角形の逆向きを、
+MathlibのeHomWhiskerLeft/Rightの合成則・交換則から証明する。
+元の加群型とForgetEnrichmentの対象型をまたぐunfold後のrewriteでは型照合が失敗したため、
+この補題をModuleCategoryの対象変数に対して先に証明してから適用した。
+moduleIso_closed_hom_invは、加群同型の順逆の閉成分の合成がeIdであることを証明する。
+`Bimodule/ClosedIso.lean`は同型族の逆も全Hom自然であることを証明し、順逆の単位パラメータ変換、
+その成分公式と両順序の閉単位の式を公開する。
+
+`Tensor/AssociatorTransforms.lean`は§17.147のassociatorRightModuleIsoとその全Hom自然性から
+**associatorHom・associatorInv**を実際のGradedNatTransとして構成する。
+associator_hom_inv_app・associator_inv_hom_appは、単位unitorでパラメータを合わせた
+両順序の合成が、右加群の主Hom endの閉単位元と一致することを証明する。
+associatorHom_π・associatorInv_πは、各B対象での評価が元のassociatorValueIsoの順逆の閉成分へ
+戻ることを証明する。Centerの単位パラメータの型をまたぐrewriteの失敗は、明示した評価等式と
+合同・推移で結び直して解消した。計算上限は変更していない。
+任意CommRing A・非有界・独立B/C/E/F宇宙、Small.{u} B/C/Eを維持し、Fのsmall性は不要。
+
+Checks.AssociatorTransforms・Checks.AssociatorBimodule・Checks.QuotientUniversal・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（2846 jobs、終了コード0、警告なし）。
+順逆の全次数自然変換、評価、両順序の閉単位、ZMod 2の具体的な順逆合成を検査した。
+主要21宣言の直接公理監査は標準公理のみ。監査累計2888宣言。
+文書検査は13 Markdown・320 exposition参照、失敗0件。担当差分の空白検査も成功。
+今回の実装にsorry/admit/新規axiomはない。採用済み引用は0件。
+
+次はこれらの全次数自然変換を保った結合比較の三変数自然性と三角・五角coherenceを完成させる。
+Mathlibの通常のEnrichedNatTrans圏の同型を併用する場合も、上で証明した全Hom自然性を保持する。
+U11e全受入は未完。U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mの目標を保持する。
+共有系列への追加要求はない。共有一般論・共有ルートimport・他系列は編集していない。
