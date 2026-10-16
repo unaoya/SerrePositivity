@@ -72,6 +72,38 @@ theorem exists_finite_common_localization_model
       exact RingHom.finite_algebraMap.mpr hfinite)
   exact ⟨E, hfinite, hloc, u, v, hu, hv, huF, hvF⟩
 
+/-- A splitting over any localization gives a finite common model inside the
+specified localized algebra, with both original coefficient maps. -/
+theorem localizationSplitting_exists_finite_common_model
+    {R A : Type u} [CommRing R] [CommRing A] [Algebra R A] [Module.Finite R A]
+    (S : Submonoid R) (L : Type u) [CommRing L] [Algebra R L] [IsLocalization S L]
+    (r : ℕ) (e : L ⊗[R] A ≃ₐ[L] (Fin r → L)) :
+    ∃ E : Subalgebra R (Fin r → L), Module.Finite R E ∧
+      IsLocalizedModule S E.val.toLinearMap ∧
+      ∃ (u : A →ₐ[R] E) (v : (Fin r → R) →ₐ[R] E),
+        (∀ a, E.val (u a) = e ((1 : L) ⊗ₜ[R] a)) ∧
+        (∀ b i, E.val (v b) i = algebraMap R L (b i)) ∧
+          u.toRingHom.Finite ∧ v.toRingHom.Finite := by
+  let f : A →ₐ[R] (Fin r → L) := (e.toAlgHom.restrictScalars R).comp
+    (Algebra.TensorProduct.includeRight : A →ₐ[R] L ⊗[R] A)
+  let h : (Fin r → R) →ₐ[R] (Fin r → L) :=
+    AlgHom.pi (fun i => (Algebra.ofId R L).comp (Pi.evalAlgHom R (fun _ : Fin r => R) i))
+  have hf : f.toLinearMap = (e.restrictScalars R).toLinearEquiv.toLinearMap.comp
+      (TensorProduct.mk R L A 1) := by
+    ext x i
+    rfl
+  let : IsLocalizedModule S f.toLinearMap := by
+    rw [hf]
+    exact IsLocalizedModule.of_linearEquiv S (TensorProduct.mk R L A 1)
+      (e.restrictScalars R).toLinearEquiv
+  obtain ⟨E, hfinite, hloc, u, v, hu, hv, huF, hvF⟩ :=
+    exists_finite_common_localization_model S f h
+  refine ⟨E, hfinite, hloc, u, v, ?_, ?_, huF, hvF⟩
+  · intro a
+    exact AlgHom.congr_fun hu a
+  · intro b i
+    exact congrArg (fun z : Fin r → L => z i) (AlgHom.congr_fun hv b)
+
 /-- A specified splitting after inverting g supplies an actual finite common model
 for the original algebra and the trivial finite product, including rank zero. -/
 theorem principalSplitting_exists_finite_common_model
@@ -84,26 +116,7 @@ theorem principalSplitting_exists_finite_common_model
       ∃ (u : A →ₐ[R] E) (v : (Fin r → R) →ₐ[R] E),
         (∀ a, E.val (u a) = e ((1 : Localization.Away g) ⊗ₜ[R] a)) ∧
         (∀ b i, E.val (v b) i = algebraMap R (Localization.Away g) (b i)) ∧
-          u.toRingHom.Finite ∧ v.toRingHom.Finite := by
-  let L := Localization.Away g
-  let f : A →ₐ[R] (Fin r → L) := (e.toAlgHom.restrictScalars R).comp
-    (Algebra.TensorProduct.includeRight : A →ₐ[R] L ⊗[R] A)
-  let h : (Fin r → R) →ₐ[R] (Fin r → L) :=
-    AlgHom.pi (fun i => (Algebra.ofId R L).comp (Pi.evalAlgHom R (fun _ : Fin r => R) i))
-  have hf : f.toLinearMap = (e.restrictScalars R).toLinearEquiv.toLinearMap.comp
-      (TensorProduct.mk R L A 1) := by
-    ext x i
-    rfl
-  let : IsLocalizedModule (.powers g) f.toLinearMap := by
-    rw [hf]
-    exact IsLocalizedModule.of_linearEquiv (.powers g) (TensorProduct.mk R L A 1)
-      (e.restrictScalars R).toLinearEquiv
-  obtain ⟨E, hfinite, hloc, u, v, hu, hv, huF, hvF⟩ :=
-    exists_finite_common_localization_model (.powers g) f h
-  refine ⟨E, hfinite, hloc, u, v, ?_, ?_, huF, hvF⟩
-  · intro a
-    exact AlgHom.congr_fun hu a
-  · intro b i
-    exact congrArg (fun z : Fin r → L => z i) (AlgHom.congr_fun hv b)
+          u.toRingHom.Finite ∧ v.toRingHom.Finite :=
+  localizationSplitting_exists_finite_common_model (.powers g) (Localization.Away g) r e
 
 end SerrePositivity
