@@ -4335,7 +4335,8 @@ Checks.LeftTensorQuasiIso・Checks.FunctorModuleConeIso・Checks.StageSeven・�
 同時ビルドは成功（2856 jobs、終了コード0、警告なし）。任意A・独立対象宇宙・ZMod 2を検査した。
 主要10宣言の直接公理監査は終了コード0、標準公理のみ。監査累計1826宣言。
 文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査も成功。
-今回の4 Leanファイルにsorry/admit/新規axiomはない。
+今回の4 Leanファイルにsorry/admit/新規axiomはない。警告のない再ビルドも成功。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査も成功。
 
 左変数の指定準同型保存は得られたが、指定局所化上の両変数導来tensor双関手の完成はなお必要。
 次は射影解像度関手の計算同型を通じて、この保存性を既存moduleResolutionDerivedTensorLeftFunctorの
@@ -4390,7 +4391,8 @@ Mathlib Localization.liftNatIsoで両変数の指定局所化上の比較自然�
 
 Checks.TensorChoice・Checks.TensorBifunctor・Checks.StageSeven・既存Spectra.StageTwoの
 同時ビルドは成功（2868 jobs、終了コード0、警告なし）。任意A・独立対象宇宙・独立D(A)射宇宙・
-ZMod 2の比較を検査した。今回の4 Leanファイルにsorry/admit/新規axiomはない。
+ZMod 2の比較を検査した。今回の4 Leanファイルにsorry/admit/新規axiomはない。警告のない再ビルドも成功。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査も成功。
 主要16宣言の直接公理監査は終了コード0、標準公理のみ。監査累計1855宣言。
 文書検査は22 Markdown・311 exposition参照、失敗0件。
 担当差分の空白検査も成功。
@@ -4992,3 +4994,34 @@ Perfの本質的小性を証明する。その小さい代表系の射影解像�
 shift・三角構造の整合性、一対象Aと既存PerfectHomotopyの比較を完成させる。
 U13dのcompact⇒Perf、U11eのcoherence、U12e/f、U14〜U17、D4mは未完。
 採用済み引用は0件。共有系列への追加要求はなく、共有ルート・他系列のファイルを変更していない。
+
+
+### 17.89 U13e2：finite cellの小さい段階別代表とPerfの本質的小性（2026-10-16）
+
+`Perfect/SmallStages.lean`はType uの添字型と証明付き有限cell族の組を段階別に構成する。
+零段階は零対象とShrink Sで添字付けた代表加群、後続段階は前段階・全整数shift・二項和・
+前段階の任意の二対象間の全閉零射のconeを含む。各添字型と全段階のΣ型はType uに留まる。
+段階間の包含は同じ対象を保ち、任意の二段階の代表を共通段階へ移せる。
+
+`Perfect/SmallStageCover.lean`はModuleFiniteCellCodeの構成木で帰納し、任意の有限cellと
+ある段階別代表との実際の加群同型を構成する。coneの枝では二対象の同型で射を移し、
+既存Arrow圏とmoduleConeFunctorによりconeの同型を得る。
+cone関手のmapIsoにはArrowの始終域を明示し、逆方向の型推論による大きな展開を避けた。
+この実装は既定heartbeat予算でビルドできる。
+
+`Perfect/EssentiallySmall.lean`はこの小さい被覆からfinite cellの本質的小性を証明し、
+固定版Mathlibの関手像とretract閉包の本質的小性を主導来圏に適用する。
+任意の生成集合SについてPerfOver Sは本質的にu-smallであり、実際のPerf対象からなる
+u-smallな代表部分族も選べる。全加群圏・全導来圏・全射影的perfect対象型のsmall性は仮定しない。
+
+Checks.PerfectSmallness・Checks.PerfectEnhancement・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2878 jobs、終了コード0）。独立対象宇宙、任意S、空集合、ZMod 2、
+小さい段階添字と既存SmallModel上のSmallCategoryを検査した。
+主要17宣言の直接公理監査は終了コード0、標準公理のみ。監査累計2199宣言。
+今回の4 Leanファイルにsorry/admit/新規axiomはない。警告のない再ビルドも成功。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査も成功。
+
+次はこの小さいPerfモデルの射影的代表を選び、その像の充満dg部分圏を構成する。
+U13e全受入にはさらにshift・三角構造の整合性と既存PerfectHomotopy比較が必要。
+U13d・U11eのcoherence・U12e/f・U14〜U17・D4mは未完。採用済み引用は0件。
+共有一般論と共有ルート・他系列のファイルを変更していない。
