@@ -17200,3 +17200,58 @@ fがQで可逆ならleft fは局所化後可逆な実モノ射、right fは全�
 今回の左固有性だけから、任意の二図式の対象ごとの可逆性がcolimit比較へ移るとはしない。
 一般augmentation・元のbar評価の可逆性、自然な小値化、最終小さい厳密RMap・F2は未完了。
 全体目標F→L→E→Sを維持する。
+
+
+## 320. 動く境界のpushout cubeと小さいcoproductの比較（2026-10-17）
+
+§319の一般左固有性を使い、境界も動く二つの実pushout間の比較を証明した。
+併せて、各次元のセルの直和を比較するため、任意の局所化同値の小さいcoproductでの保存を証明した。
+これらは任意の値宇宙で使え、補助SSetモデル構造を要求しない。
+
+### 320.1 境界・両脚が動く実cube
+
+`KanPushoutCube`は、二つの実IsPushoutとその間の可換な比較a,b,c,mを受け取る。
+各段の同じ側のattaching map i・i'がモノ射で、境界aと二脚b,cが元のQで可逆なら、
+元のpushout間の指定比較mもQで可逆である。
+他方のattaching map j・j'は任意で、a,b,c,mのモノ射性も不要である。
+元の四辺の可換式と実pushoutのpastingを使い、対象を標準のpushoutへ取り替えた結論で済ませない。
+
+証明はまずcの基底変更を§319で扱い、次に境界aの基底変更を同じ一般左固有性で扱う。
+その結果を§317の固定境界比較へ入れ、元のmが二つの実比較の合成に等しいことから結論する。
+任意のanodyne反転関手による同じmの像の可逆性も供給する。
+
+### 320.2 任意の局所化同値の小さいcoproduct
+
+`KanLocalizedCoproducts`は、まず局所化後可逆なモノ射が固定右テスト族へのllpに属するという
+§316の特徴づけと、一般のllpのcoproduct閉性を使う。
+次に各成分fについてfold A⊔B→Bを実境界分解し、二つの実包含を局所化後可逆なモノ射にする。
+これらのcoproductを使うBrownの議論で、任意の成分の比較fのcoproductがQで可逆になる。
+各成分のfのモノ射性や各対象のKan性を仮定しない。
+
+族の添字の宇宙は値宇宙から独立とし、その族が値宇宙内で小さいというSmall条件を明示する。
+標準のSigma.mapに加え、二つの任意の実coproduct coconeと指定された比較mを受け取る入口も証明した。
+元のanodyne局所化の可逆射のクラスが小さいcoproductに安定であるinstanceを供給する。
+
+### 320.3 受入検証と残る逐次比較
+
+実装コミット`57354c1a`。以下はすべて成功した。
+
+- 共有入口のbuild：2937 jobs、追加警告なし。
+- `check_kan_cube_coproduct`：独立した補助値宇宙で、非単射のattaching mapを許す動く境界cube、
+  Qと任意のanodyne反転関手での元のmの可逆性、独立宇宙の小さい族の一般比較のcoproduct、
+  任意の実coproduct cocone間の元の指定比較。
+  新規10宣言・2モジュール、標準公理のみ。
+- `check_kan_localized_left_proper`：既存29宣言・6モジュールの回帰確認。
+- `check_kan_transfinite_equivalence`：既存28宣言・3モジュールの回帰確認。
+- `audit_homotopical_foundations`：9831宣言・740モジュール、標準公理のみ。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+次は骨格図式間の逐次colimit比較を証明する。
+元の相対境界分解で比較を相対モノ射と対象ごとの境界右クラスへ分ける方針を調べた。
+相対モノ射側は各相対latching射が固定右テスト族へのllpに属することを証明し、整合する図式liftへ移す。
+右クラス側は境界の有限可呈示性と既存の`Smith.AccessibleLiftingClosure`を使い、
+実際の逐次Arrow-colimitにI.rlpが保たれることを、添字と値の宇宙を保って接続する必要がある。
+これらはまだ今回の完成項目ではない。
+各有限段階のcube比較だけから極限の比較を可逆とみなさず、この接続後に一般augmentationを扱う。
+一般augmentation・元の評価の可逆性、自然な小値化、最終小さい厳密RMap・F2は未完了。
+全体目標F→L→E→Sを維持する。

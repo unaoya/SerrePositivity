@@ -2561,3 +2561,14 @@ pushout後の単射性、一般augmentation・評価・最終小値化・F2は�
 比較射のモノ射性・元の対象のKan性・補助モデル構造は不要。
 境界も動くcubeと骨格の比較、一般augmentation・評価、最終小値化・F2は未完了。
 検証：`scripts/check_kan_localized_left_proper.lean`、計画書§319。
+
+
+### 動く境界のpushout cubeと小さいcoproduct（§320）
+
+`KanPushoutCube`は片側のattaching mapだけがモノ射である二つの実pushoutを比較する。
+境界と二脚の元の比較が局所化同値なら、指定されたpushout間の比較も局所化同値になる。
+他方のattaching map・比較射のモノ射性は不要。
+`KanLocalizedCoproducts`は任意の局所化同値の小さい族のcoproductを扱い、
+任意の実coproduct cocone間の指定比較にも結論する。
+補助モデル構造は不要。逐次colimit比較、一般augmentation・評価、最終小値化・F2は未完了。
+検証：`scripts/check_kan_cube_coproduct.lean`、計画書§320。
