@@ -6682,6 +6682,33 @@ KL-E2c-3・元の完備tensorの実H⁰と古典的完備化の環比較（2026-
 p正則性を供給し、この同型を使って古典的完備化の完全δ構造を実H⁰へ移す。
 C2全体、d完備化・prism構造・Cartier商の比較、BS10.3、KLとDの実適用は未完了である。
 
+KL-E2c-4・元の実H⁰への完全δ構造の移送と標準射（2026-10-16）：
+`BhattScholze/PerfectDeltaCompletedTensorH0.lean`で、古典的p完備化の完全δ構造を
+前工程の標準環同型で元の実導来p完備tensorのH⁰へ移した。
+元の`derivedH0CommRing`と`derivedH0Algebra`を保持し、基底環と左右の因子からの
+実標準射がδ射であることを証明した。因子の射は元のH⁰射と標準single-H⁰比較の合成であり、
+同型で勝手に作り直した別の射ではない。古典的完備化との比較がこれらを同じ標準包含へ
+送ることを別途証明してから、δ両立性を移した。
+
+元のp完備tensorの次数0集中と、その実H⁰の完全δ構造を一つの定理に合流した。
+基底のdistinguished元は、元の代数写像によって実H⁰へ移したものがdistinguishedとなり、
+実H⁰の既存の古典的p完備性を使ってその乗法が単射になることも証明した。
+源・終域の非零性、環射の平坦性・有限性・Noether性は追加しない。
+
+対象3523ジョブ、専用監査14宣言・4型検査、全体5809ジョブ、KL777件、
+CLMST監査と全体公理監査が終了コード0で成功した。全14宣言はsorry非依存・標準3公理のみ。
+共通H⁰環比較のimport閉包240モジュールにBS・CLMST・Inputs・Paperへの到達はない。
+標準延長は`9c3c9742`、正則主元の比較は`f26fe4bc`、tensorの標準環比較は`c878646f`で保存済み。
+
+これでC2のp完備化段階では、元の実対象の離散性、実H⁰の完全δ構造、標準δ射、
+元のdistinguished生成元の像の正則性が供給済みとなった。
+次は既存の`perfectDeltaPDPrism`・`deltaPDCompletionStructure_isPerfect`と
+`principalCompletionH0_isModuleComplete_of_other`を再利用し、後段d完備化の実対象・
+H⁰・環・単位・係数制限を比較する。その(p,d)完備化とCartier商を元のperfectoid環の
+完備導来tensorへ同定するまで、C2全体やBS10.3を完成としない。
+B4の全射性・核によるB/Iの実同定、Prop 2.4.9(a)の実Tor入力、
+Cor 4.0.4の無条件化・Dの実適用・既存RPerfdのB-I存在引用は引き続き未完了である。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
