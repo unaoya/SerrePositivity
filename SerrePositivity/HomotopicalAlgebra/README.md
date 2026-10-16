@@ -2745,3 +2745,15 @@ barのπ₀単射性の残項目は解消。高次を保つ自然な小値化・
 元のbar比較との一致も得る。大きいSSetモデルは不要。
 QuotientDataの一般の存在・無条件の最終RMap・F2全体は未完了であり、条件付きの出力とは区別する。
 検証：`scripts/check_ordinary_kan_bar_quotient.lean`、計画書§334。
+
+
+### 全presentation圏上の実small kernelと境界証明（§335）
+
+`SmallTargetKernelQuotient`は自然な小さいKan参照への局所化後可逆な比較を値側で因子分解し、
+anodyne拡張上の実kernel、実商型のv-small性、有限境界持ち上げ性を構成する。
+`PresentationKernelQuotient`は既存の全presentation上の実span左射に適用し、
+合同関係と三条件を実際に供給して、小さいKan値の厳密図式と自然な弱同値比較を得る。
+ここまではSSetのモデル構造が不要。元の小さいモデルだけで基底barへの自然比較と弱同値不変性も得る。
+基底は全resolution presentation圏であり、Cᵒᵖ × Cへの降下・最終小さい厳密RMap・F2は未完了。
+射影のsectionやcofinalityを仮定せず、固定Kan bar上のQuotientDataの存在とも区別する。
+検証：`scripts/check_presentation_kernel_quotient.lean`、計画書§335。

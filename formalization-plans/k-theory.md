@@ -18217,3 +18217,84 @@ Hom_H(QX,QY)の全単射piZeroEquivを構成する。
 三条件を満たす合同関係の存在、最終小さい厳密RMapの無条件の存在、F2全体の受入条件は未完了である。
 今回の条件付きの出力接続を、未構成の入力の存在証明とは扱わない。
 全体目標F→L→E→Sを維持する。
+
+
+## 335. 全presentation圏上での実際のsmallな有限境界kernelの構成（2026-10-17）
+
+実装コミット`9a746c83`。今回は合同関係とsmall性・有限境界持ち上げ性を入力にせず、
+既存の実自然比較からそれらを構成した。
+ただし基底は全resolution presentation圏であり、元のCᵒᵖ × Cへの降下は未完了である。
+固定した元のKan barに対する§334のQuotientDataの値を構成したとは主張しない。
+
+### 335.1 構成に使える仮定の再確認
+
+固定版MathlibのModelCategoryは通常の二つのHasFactorizationを含むが、
+源の関手的因子分解を含んでいない。§326の対象ごとの小さい評価写像は、
+それだけでは全基底上の自然変換にならない。
+そこで今回は既存の全presentation上の自然な左比較を使い、値側だけを関手的に因子分解した。
+
+参考として[Low, Revisiting function complexes and simplicial localisation, Conventions](https://arxiv.org/html/1409.8062)
+も確認した。同論文はsmallなモデル圏と関手的因子分解に議論を制限し、
+関手性の仮定を外すには理論の拡張が必要と述べている。
+今回の独立した宇宙での厳密な小値化の直接の存在定理としては使用していない。
+この確認から不可能性を結論したものでもなく、追加の引用公理も導入していない。
+
+### 335.2 自然な小さいKan参照への比較から実kernelを作る一般構成
+
+`Simplicial/SmallTargetKernelQuotient`は、任意の大きい基底D上の実自然変換
+ a : F → ulift(K)を入力とする。Kは元のSSet.{v}値の厳密図式である。
+aをArrow圏に値を持つ実関手と見て、値宇宙max(w,v)のhorn因子分解を適用する。
+全図式上でF → E → ulift(K)と因子分解され、第一射は値ごとにanodyne、
+第二射pは値ごとにhorn右持ち上げ性を持つ。全基底射での自然性と合成の等式を証明した。
+
+Kの各値がKanで、aの各像がanodyne局所化で可逆なら、pの各像も可逆である。
+既存のモデル不要のKan fibration検出から、pはすべてのmonoに対して実右持ち上げ性を持つ。
+EのKan性とpの各次数での全射性も証明した。
+
+pの実kernelはE上の全作用で安定な合同関係である。
+比較先がulift(K)なので、各実商型のv-small性が得られる。
+pの次数ごとの全射性からkernel商とulift(K)の全図式の比較は実同型となる。
+この同型を使い、元のkernel商射影の有限境界持ち上げ性を証明した。
+従って、合同関係・small性・境界持ち上げ性はいずれも構成と証明の出力である。
+大小どちらのSSetにもモデル構造は要求しない。元のF自体を商にすることは要求せず、
+実際のanodyne拡張Eを商にするため、元のFとの自然な弱同値比較は保持される。
+
+### 335.3 全resolution presentation圏への証明済み適用
+
+`PresentationKernelQuotient`は、§324までの実自然spanの左射
+OrdinaryResolutionBar.middle → ulift(MixedBiresolutionComparison.functor)を使う。
+右辺に元の小さいSSet宇宙のモデル不要のKan置換を合成し、335.2の自然変換aを得る。
+左射の既存の可逆性と小さいanodyne単位のuliftから、aの値ごとの局所化後の可逆性も証明する。
+
+335.2を実際に適用して、全RightResolutionMapping.Index C上のenlargedとrelationを構成した。
+全resolution射と全単体作用素への安定性、各実商型のv-small性、元の商射影の有限境界持ち上げ性を
+すべて供給した。この適用にsourceの関手的分解、SSetのモデル構造、未証明の合同関係は要求しない。
+縮小して得られる厳密なSSet.{v}値図式のKan性も証明した。
+
+元のspanのmiddleから小さい商の明示的liftへの実自然射leftを構成し、
+その各像の局所化後の可逆性と、任意のanodyne反転関手での全図式の自然同型を得た。
+さらに元の小さいSSetモデルだけを使うと、spanの元の右射との合成で、
+小さい商図式と元のbarをpresentation圏へ引き戻した図式との自然同型を得る。
+基底の両変数の弱同値が、小さい商図式の実弱同値へ移ることも証明した。
+
+### 335.4 受入検証と元の基底への降下の残項目
+
+すべて成功した。
+
+- 共有入口のbuild：2983 jobs、追加警告なし。
+- `check_presentation_kernel_quotient`：38宣言・2モジュール、標準公理のみ。
+  独立した基底・Hom・大小値宇宙での一般kernel構成と有限境界証明、
+  一般の源モデルだけからの実際のpresentation全図式・合同関係・small性・境界持ち上げ性・
+  小さいKan値・元middleからの実自然比較と任意のanodyne反転関手での全図式同型、
+  元の小さいモデルだけでの基底barへの比較・弱同値不変性を検証した。
+  actual適用の受入例にはrelationや境界証明を入力していない。
+- `check_ordinary_kan_bar_quotient`：既存51宣言・2モジュールの回帰検証。
+- `audit_homotopical_foundations`：10495宣言・785モジュール、標準公理のみ。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+未完了なのは、presentationを保持する小さい図式から元のCᵒᵖ × C上の小さい厳密関手を得る降下である。
+presentation射影のstrict section・faithfulness・cofinalityは仮定しない。
+この実kernelの構成を、そのまま元の固定Kan barの全基底上のQuotientDataや、
+最終RMapの存在証明に読み替えない。必要なら自然なzigzagを保持した別のenlargementも許し、
+元の源モデルへの追加条件なしで基底全体の構成を完成させる。
+最終小さい厳密RMap・F2全体は未完了である。全体目標F→L→E→Sを維持する。
