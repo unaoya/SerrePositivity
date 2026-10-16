@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.DifferentialGraded.Category.RestrictionComparison
 public import SerrePositivity.DifferentialGraded.Perfect.EnhancementOperations
 public import SerrePositivity.DifferentialGraded.Perfect.EnhancementLinear
 public import SerrePositivity.DifferentialGraded.Module.ShiftHomotopyComparison
@@ -17,12 +18,10 @@ variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
 def perfectDGModuleShiftHomotopyInclusionIso (S : Set D) (s : ℤ) :
     (perfectDGModuleShiftDG A D S s).onHomotopy ⋙ (perfectDGModuleInclusion A D S).onHomotopy ≅
       (perfectDGModuleInclusion A D S).onHomotopy ⋙ shiftFunctor (ModuleHomotopyCategory A D) s :=
-  eqToIso ((DGFunctor.onHomotopy_comp _ _).symm.trans
-    ((congrArg (fun F : DGFunctor A (PerfectDGModuleOver A D S) (RightModule A D) => F.onHomotopy)
-      (perfectDGModuleShiftDG_comp_inclusion A D S s)).trans
-        (DGFunctor.onHomotopy_comp _ _))) ≪≫
-    Functor.isoWhiskerLeft (perfectDGModuleInclusion A D S).onHomotopy
-      (moduleShiftDGHomotopyIso A D s)
+  restrictHomotopyComparisonIso (moduleShiftDG A D s) (modulePerfectProjectiveOver A D S)
+    (fun _ h => modulePerfectProjectiveOver_shift A D h s)
+    (shiftFunctor (ModuleHomotopyCategory A D) s) (moduleShiftDGHomotopyIso A D s)
+
 
 /-- 実際のdg shiftのH⁰比較は全てのH⁰射について主導来shiftと自然に可換である。 -/
 def perfectDGModuleShiftHomotopyDerivedIso (S : Set D) (s : ℤ) :

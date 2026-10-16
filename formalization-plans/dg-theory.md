@@ -5229,3 +5229,34 @@ Checks.PerfectEnhancementShift・Checks.StageSeven・既存Spectra.StageTwoの�
 connecting射の自然性から、実際の標準cone三角形の主導来比較を構成してdistinguished性を証明する。
 U13e全受入・一対象Aの既存PerfectHomotopy比較、U13d、U11eのcoherence、U12e/f、U14〜U17、D4mは未完。
 採用済み引用は0件。共有一般論・共有ルート・他系列のファイルを変更していない。
+
+
+### 17.97 U13e10：閉零代表上のshift比較と大きい関手等式の評価（2026-10-16）
+
+`Category/QuotientComparison.lean`は商へ降ろした自然同型を元の代表で評価し、
+関手等式・左右whiskering・結合子を含む比較を対象ごとの合成へ計算する。
+`Category/RestrictionComparison.lean`は対象の性質を保つdg関手の制限からH⁰比較を構成し、
+その成分が包含した対象における元の比較となることを抽象的なdg圏で証明した。
+主perfect比較の包含自然同型はこのコンストラクタを使う形へ整理し、公開名・型を保持した。
+具体的な右dg加群の全Hom endを関手等式の輸送中に展開するカーネルのタイムアウトを避けるためである。
+
+`Module/ShiftComparisonEvaluation.lean`はこの抽象評価を実際のdg加群shiftへ適用し、
+閉零代表上で元の商関手のshift比較が得られることを証明した。
+`Perfect/EnhancementShiftEvaluation.lean`は任意H⁰対象での包含比較の評価、閉零代表上での評価、
+主導来比較が既存K(D)経由の合成関手のshift比較に一致することを証明した。
+次数や対象の仮定は変更せず、負shiftと標数2も含む。
+
+Checks.PerfectEnhancementShiftEvaluation・Checks.PerfectEnhancementDerivedComparison・
+Checks.PerfectEnhancementCone・Checks.SmallPerfectEnhancementTriangulated・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（2904 jobs、終了コード0、警告なし）。
+新規9宣言と影響する既存59宣言を合わせ、主要68宣言の直接公理監査は終了コード0、標準公理のみ。
+新規分だけを加えた監査累計は2301宣言。
+今回の6 Leanファイルにsorry/admit/新規axiomはない。
+文書検査のLean環境exportは共有側TorFiniteCoefficients.olean不在で実行できなかった。
+同じ対象集合22 Markdownのローカルリンクだけを別途検査し、失敗0件。exposition参照のexport検査は再試行待ち。
+担当差分の空白検査は成功。
+
+次はこれらの評価式、既存moduleToHomotopyDerivedIsoのshift整合性、connecting射に関する自然性を
+合成し、実際の標準cone三角形と主導来cone三角形の同型を構成する。
+U13e全受入・既存PerfectHomotopy比較、U13d、U11eのcoherence、U12e/f、U14〜U17、D4mは未完。
+採用済み引用は0件。共有一般論・共有ルート・他系列のファイルを変更していない。
