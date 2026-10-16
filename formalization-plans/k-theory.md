@@ -13084,3 +13084,72 @@ pointの各成分が弱同値であることを証明した。源の関手的分
 源側前合成の因子分解点での実際の比較、全外部合成列に沿う全体族の整合系、
 旧独立選択・全括弧付けとの接続、任意標的へのSSet値拡張、最終C上の厳密化と最終比較は残る。
 F1および全体目標F→L→E→Sを継続する。
+
+
+## 256. F1進捗：相対選択の一般図式化とFrameMap付き前合成文脈の厳密関手（2026-10-16）
+
+§255の後合成文脈に続き、源側では実際のFrameMapとその可換三角形を記録するOver圏を使い、
+既存のpreChoiceSpaceを一つの小さいSSet値の厳密関手へまとめた。
+その土台として、相対選択空間を任意の図式へ関手的に適用する、モデル構造なしの共通一般論を追加した。
+
+### 256.1 相対選択空間の一般的な図式化
+
+新規共有`Simplicial/RelativeChoiceFunctor`は、任意の圏D、F:D→SSet[v]、
+i:A→K、定値AからFへの自然変換bから、各対象にRelativeChoiceSpace.obj i (b.app X)を
+対応させる厳密関手を構成する。写像は既存のpostMapそのもので、単位・合成則を証明する。
+Dの対象・Hom宇宙とvは独立で、Dの極限、モデル構造、iの単射性はいずれも要求しない。
+
+さらに定値KからFへの自然変換aとi≫a_X=b_Xから、定値Δ[0]から相対選択関手への自然変換pointを
+構成する。各成分はa_Xを表す既存ofExtensionであり、独立な新しい選択ではない。
+点へのprojectionも自然で、point≫projection=idを証明した。
+モデル構造を使うcontractibilityの証明と、通常の圏論だけで成立する関手化を分離する。
+
+### 256.2 実際のFrameMap付き前合成文脈のlift空間
+
+新規`HomotopyFunctionComplex/FramedPreChoiceFunctor`は、固定したFramedResolution Y、
+resolution W、g:Y.inner.base→W.baseに対し、(Over Y)ᵒᵖ上のlift空間の厳密関手fibersを構成する。
+対象a:X→Yには、既存ResolutionLiftSpace.obj X.inner W (a.hom.map.base≫g)を対応させる。
+Over圏の射kの内側図式と実際のFrameMap、その可換三角形から、実際のfiberMapを作る。
+
+fiberMap_existingは、この写像が既存ResolutionLiftPrecomposition.mapと、基底射の
+明示的なbaseChangeの合成に厳密に一致することを証明する。
+元のlift空間のinclusion・projectionの式を保持し、FrameMapの実際の合成とOverの可換三角形から
+全射の単位・合成則を証明した。独立に選んだ合成liftを使わず、源の関手的分解も要求しない。
+このlift空間関手自体にはSSetのモデル構造を要求しない。
+
+### 256.3 既存preChoiceSpaceとpreLeftPointの自然な図式
+
+従来のpreLeftは、固定したYの補間と実際のbaseLiftMapの合成である。
+baseLiftMapの自然性を証明し、preLeftの全体が一つの自然変換leftFamilyをなすことを示した。
+元のstrict-lift頂点の境界preBoundaryも自然である。
+256.1を適用して、既存preChoiceSpaceを値に持つ(Over Y)ᵒᵖ→SSet[v]の厳密関手を得た。
+functor_objは各値が元のpreChoiceSpaceそのものであることを示す。
+
+point_componentは、自然な点の各成分が従来のpreLeftPointそのものであることを証明する。
+projectionとpoint≫projection=idも自然変換の等式として供給する。
+小さいSSetの明記されたモデル・クラス一致の下で、projectionの各成分の自明fibration性と
+pointの各成分の弱同値性を証明した。
+
+この構成は、全ての実際のFrameMap付き前合成文脈に対する厳密な図式である。
+基底CへのFrameMapの独立選択が関手をなすとは仮定せず、元のC上の最終RMapとも同一視しない。
+また、preRightの独立な補間や既選択preEdgeそのものが、この文脈図式で自然になるとは主張しない。
+
+### 256.4 受入検証と残項目
+
+実装コミット`f975a211`。全て成功した。
+
+- 共有入口の合同build：2677 jobs、追加警告なし。
+- `check_framed_pre_choice_functor`：任意の一般図式の関手化（モデル・単射性不要）、
+  独立宇宙・任意モデル源での実際のlift空間の厳密合成、既存前合成＋baseChangeとの一致、
+  元のpreChoiceSpace・preLeftPointとの一致、全前合成文脈の関手則、自然な点とprojection、
+  成分の自明fibration性と弱同値性を検証。新規47宣言・2モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：6419宣言・482モジュール、標準公理のみ。
+- `check_post_choice_functor`：56宣言・4モジュールの回帰確認。
+- `check_framed_mapping_bifunctor`：118宣言・4モジュールの回帰確認。
+- 新規ソースの行長・空白・証明用マーカー確認とstageした差分の空白検査。
+
+後合成とFrameMap付き前合成の文脈を、それぞれ全射を扱う小さい値域の厳密図式にできた。
+次は両者の混合文脈での実際の移送を一つの図式へ接続し、§249〜255の選択済み全体比較族との
+整合性を構成する。源側因子分解点での既存preEdgeとの比較、旧独立選択・全括弧付け、
+全外部合成列の高次整合性、任意標的へのSSet値拡張、最終C上の厳密化と最終比較は未完了である。
+F1および全体目標F→L→E→Sを維持する。

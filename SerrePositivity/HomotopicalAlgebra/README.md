@@ -1710,3 +1710,17 @@ projectionは成分ごとに自明fibration、pointは弱同値である。
 源側前合成まで含む全整合系、全列比較族の文脈図式への接続、最終RMapの厳密化・比較は残る。
 実装`25a7578e`、詳細は計画§255。新規56宣言・4モジュール、共有6372宣言・480モジュールの
 標準公理監査と混合比較・相対選択空間の回帰確認が成功。
+
+
+## 相対選択の一般図式化とFrameMap付き前合成文脈（2026-10-16）
+
+共有`Simplicial/RelativeChoiceFunctor`は任意のD→SSetと自然な固定境界から相対選択空間の
+厳密関手を構成する。自然な全体延長からpointとprojectionを作り、point≫projection=idを示す。
+モデル構造や境界の単射性はこの通常の圏論層には不要である。
+`FramedPreChoiceFunctor`は実際のFrameMap付き対象YへのOver圏の反対圏に適用する。
+元のlift空間の全射での厳密合成と既存前合成＋baseChangeとの一致を証明し、
+既存preChoiceSpaceとpreLeftPointを値・自然な点とする小さいSSet値の厳密図式を構成する。
+projectionは成分ごとに自明fibration、pointは弱同値である。任意モデル源を維持する。
+混合文脈の図式、既選択比較族の全整合性、最終C上のRMapの厳密化・比較は残る。
+実装`f975a211`、詳細は計画§256。新規47宣言・2モジュール、共有6419宣言・482モジュールの
+標準公理監査と後合成文脈・framed二変数関手の回帰確認が成功。
