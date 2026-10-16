@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.BhattScholze.PerfectDeltaIteratedTensorDiscrete
 public import SerrePositivity.HomologicalAlgebra.PureDerivedCartierQuotient
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedTensorCartierLinearComparison
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedTensorQuotientComparison
 
 /-! # The actual Cartier quotient as the original completed residue tensor
@@ -105,5 +106,24 @@ def perfectDelta_completedResidueTensorCartierH0Iso :
       (perfectDelta_completedResidueTensorCartierIso p R S T
         DR DS DT hR hS hT hRS hRT d hd) ≪≫
     (DerivedCategory.singleFunctorCompHomologyFunctorIso (ModuleCat Q) 0).app _
+
+/-- The existing comparison is the common original linear map, independently of proof choices. -/
+lemma perfectDelta_completedResidueTensorCartierH0Iso_eq_common
+    (hr : IsSMulRegular R d)
+    (hs : scalarExtensionTorVanishing (q) (ModuleCat.of R S))
+    (ht : scalarExtensionTorVanishing (q) (ModuleCat.of R T))
+    (hc : IsSMulRegular C d)
+    (hpure : (AD).X.obj.IsGE 0 ∧ (AD).X.obj.IsLE 0) :
+    letI := derivedH0CommRing AD
+    letI := derivedH0Algebra AD
+    perfectDelta_completedResidueTensorCartierH0Iso p R S T
+        DR DS DT hR hS hT hRS hRT d hd =
+      iteratedCompletedTensorCartierH0Iso R (p : R) d hr S T hs ht hc hpure := by
+  let : (AD).X.obj.IsGE 0 := hpure.1
+  let : (AD).X.obj.IsLE 0 := hpure.2
+  let := derivedH0CommRing AD
+  let := derivedH0Algebra AD
+  rw [iteratedCompletedTensorCartierH0Iso_eq_derived]
+  rfl
 
 end SerrePositivity.BhattScholze
