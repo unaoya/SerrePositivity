@@ -779,6 +779,8 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionSca
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionQuotientBaseChange
 
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedTensorQuotientComparison
+
 /-!
 # Serre の交点重複度の正値性の形式化
 
