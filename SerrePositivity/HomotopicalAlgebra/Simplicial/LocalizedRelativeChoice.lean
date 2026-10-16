@@ -1,0 +1,87 @@
+module
+
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceSpace
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanRestrictionLifting
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingContraction
+public import Mathlib.CategoryTheory.LiftingProperties.Limits
+
+/-! # Contractible actual extension spaces along a localized mono equivalence
+
+The target is only required to be Kan. Every parameter monomorphism
+admits extension, retaining the whole prescribed boundary. No model
+structure or contractibility of the target is assumed.
+-/
+
+@[expose] public section
+universe w
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalClosed
+
+namespace SerrePositivity.SimplicialModel.LocalizedRelativeChoice
+variable {A B K : SSet.{w}} (i : A ⟶ B) [Mono i]
+  (hi : IsIso (AnodyneHomotopy.anodyneQ.map i))
+  (hK : SSet.modelCategoryQuillen.J.rlp (terminal.from K))
+
+def restrictionSection : (ihom A).obj K ⟶ (ihom B).obj K :=
+  (MonoRightLiftingContraction.exists_section ((pre i).app K)
+    (KanRestrictionLifting.all_mono_rlp i hi hK)).choose
+
+lemma restrictionSection_fac : restrictionSection i hi hK ≫ (pre i).app K = 𝟙 _ :=
+  (MonoRightLiftingContraction.exists_section ((pre i).app K)
+    (KanRestrictionLifting.all_mono_rlp i hi hK)).choose_spec
+
+def extension (f : A ⟶ K) : B ⟶ K :=
+  uncurry' (curry' f ≫ restrictionSection i hi hK)
+
+lemma name_extension (f : A ⟶ K) :
+    RelativeChoiceSpace.name (extension i hi hK f) =
+      RelativeChoiceSpace.name f ≫ restrictionSection i hi hK := by
+  rw [RelativeChoiceSpace.name, extension, curry'_uncurry']
+  exact (Category.assoc _ _ _).symm
+
+lemma extension_fac (f : A ⟶ K) : i ≫ extension i hi hK f = f := by
+  apply curry'_injective
+  apply (cancel_epi RelativeChoiceSpace.pointUnitIso.hom).mp
+  change RelativeChoiceSpace.name (i ≫ extension i hi hK f) = RelativeChoiceSpace.name f
+  rw [← RelativeChoiceSpace.name_precomp, name_extension, Category.assoc]
+  have hs : restrictionSection i hi hK ≫ (internalHom.map i.op).app K = 𝟙 _ :=
+    restrictionSection_fac i hi hK
+  rw [hs, Category.comp_id]
+
+include hi hK in
+lemma parameter_extension (f : A ⟶ K) {U V : SSet.{w}} (j : U ⟶ V) [Mono j]
+    (a : U ⟶ RelativeChoiceSpace.obj i f) :
+    ∃ b : V ⟶ RelativeChoiceSpace.obj i f, j ≫ b = a := by
+  have : HasLiftingProperty j ((internalHom.map i.op).app K) :=
+    KanRestrictionLifting.all_mono_rlp i hi hK j inferInstance
+  have : HasLiftingProperty j (RelativeChoiceSpace.projection i f) := inferInstance
+  let sq : CommSq a j (RelativeChoiceSpace.projection i f)
+      (SSet.stdSimplex.isTerminalObj₀.from V) :=
+    ⟨SSet.stdSimplex.isTerminalObj₀.hom_ext _ _⟩
+  exact ⟨sq.lift, sq.fac_left⟩
+
+include hi hK in
+lemma terminal_mono_rlp (f : A ⟶ K) :
+    (MorphismProperty.monomorphisms SSet.{w}).rlp
+      (terminal.from (RelativeChoiceSpace.obj i f)) := by
+  intro U V j hj
+  have : Mono j := hj
+  refine ⟨fun {a b} _ => ?_⟩
+  obtain ⟨l, hl⟩ := parameter_extension i hi hK f j a
+  exact ⟨⟨{ l := l, fac_left := hl, fac_right := terminal.hom_ext _ _ }⟩⟩
+
+include hi hK in
+lemma boundary_rlp (f : A ⟶ K) : SSet.modelCategoryQuillen.I.rlp
+    (terminal.from (RelativeChoiceSpace.obj i f)) := by
+  rw [← SSet.rlp_monomorphisms]
+  exact terminal_mono_rlp i hi hK f
+
+include hi hK in
+lemma kan (f : A ⟶ K) : SSet.modelCategoryQuillen.J.rlp
+    (terminal.from (RelativeChoiceSpace.obj i f)) := by
+  intro U V j hj
+  exact terminal_mono_rlp i hi hK f j (SSet.modelCategoryQuillen.J_le_monomorphisms j hj)
+
+end SerrePositivity.SimplicialModel.LocalizedRelativeChoice
