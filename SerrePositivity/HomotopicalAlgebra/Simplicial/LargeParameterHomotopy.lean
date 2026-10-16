@@ -50,10 +50,10 @@ lemma section_one (K : SSet.{r}) :
   rw [SSet.stdSimplex.δ_zero_eq_const]
   rfl
 
-variable {P : SSet.{v}} (hp : UniverseLift.BoundaryFillers P) {K : SSet.{max w v}}
-  (e₀ e₁ : K ⟶ UniverseLift.obj.{w} P)
+section Boundary
+variable {K Q : SSet.{r}} (e₀ e₁ : K ⟶ Q)
 
-def boundaryMap : K ⊗ (SSet.boundary.{max w v} 1).toSSet ⟶ UniverseLift.obj.{w} P :=
+def boundaryMap : K ⊗ (SSet.boundary.{r} 1).toSSet ⟶ Q :=
   (boundaryColimit K).desc (BinaryCofan.mk (fst K _ ≫ e₀) (fst K _ ≫ e₁))
 
 @[reassoc]
@@ -63,6 +63,11 @@ lemma boundaryMap_zero : K ◁ SSet.boundary.ι (1 : Fin 2) ≫ boundaryMap e₀
 @[reassoc]
 lemma boundaryMap_one : K ◁ SSet.boundary.ι (0 : Fin 2) ≫ boundaryMap e₀ e₁ = fst K _ ≫ e₁ :=
   (boundaryColimit K).fac (BinaryCofan.mk (fst K _ ≫ e₀) (fst K _ ≫ e₁)) ⟨WalkingPair.right⟩
+
+end Boundary
+
+variable {P : SSet.{v}} (hp : UniverseLift.BoundaryFillers P) {K : SSet.{max w v}}
+  (e₀ e₁ : K ⟶ UniverseLift.obj.{w} P)
 
 def hom : K ⊗ SSet.stdSimplex.{max w v}.obj (SimplexCategory.mk 1) ⟶ UniverseLift.obj.{w} P :=
   LargeParameterExtension.extend hp (K ◁ (SSet.boundary.{max w v} 1).ι) (boundaryMap e₀ e₁)
