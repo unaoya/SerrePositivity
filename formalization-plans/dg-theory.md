@@ -5563,3 +5563,31 @@ Checks.RingFiniteCell・Checks.RingPerfectComparison・Checks.RingEnhancement・
 ホモトピー冪等とstrict chain idempotentを同一視しない。
 U13e全受入・U13d・U11eのcoherence・U12e/f・U14〜U17・D4mは未完。
 採用済み引用は0件。共有系列への追加要求はなく、共有ルート・既存PerfectComplex・他系列は変更していない。
+
+
+### 17.109 U13e22：通常複体・一対象加群・導来評価のshift coherence（2026-10-16）
+
+`Perfect/RingShiftComparison.lean`は実際のcomplexToRingModuleEvaluationIsoを
+完全忠実なmoduleEvaluationに沿って持ち上げ、complexToRingModuleCommShiftを構成する。
+Mathlib CommShift.ofCompの零・加法coherenceとofComp_compatibilityを再利用する。
+既存のshift対象同型だけでなく、射に自然な整数shift比較と評価自然同型の整合性を得た。
+
+既存complexToRingModuleDerivedEvaluationIsoの各whiskeringの整合性を明示して、
+主導来評価と通常DerivedCategory.Qとの自然同型にもNatTrans.CommShiftを証明した。
+既存一対象導来同値のcounit整合性からEquivalence.CommShift.mk''を適用し、
+順逆のshiftのunit/counit整合性を公開する。
+ringComplexDerivedUnitNatIsoは全複体に自然な逆比較であり、これにもshift整合性を証明した。
+任意のHasDerivedCategory.{w}の選択を保持する。
+
+Checks.RingShiftComparison・Checks.RingPerfectComparison・Checks.RingFiniteCell・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（3519 jobs、終了コード0、警告なし）。
+任意可換環・非有界複体・全整数shift、加法coherence、任意の既存導来圏の宇宙w、ZMod 2を検査した。
+主要6宣言の直接公理監査は標準公理のみ。監査累計2431宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次はこの自然な比較を既存ホモトピー圏・PerfectHomotopyの比較へ降ろして、
+主Perfへの実際のdg比較のshift/三角整合性を完成する。
+retractの有限射影代表・本質的全射は引き続き残る。
+U13e全受入・U13d・U11eのcoherence・U12e/f・U14〜U17・D4mは未完。
+採用済み引用は0件。共有系列への追加要求はなく、共有ルート・既存PerfectComplex・他系列は変更していない。
