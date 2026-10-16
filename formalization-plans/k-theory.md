@@ -16158,3 +16158,59 @@ n次の比較先はn次row pairなので、個々の実要素comma射を得た�
 元のreplacement barとの接続、実bar右脚の無条件の弱同値、基底Cᵒᵖ×C上の自然な小値化、
 F1の最終小さい厳密RMap、F2の最終自然弱同値zigzagも未完了。
 全体目標F→L→E→Sを維持する。
+
+
+## 303. 元のrow比較射の全bar単体圏上の厳密な自然変換（2026-10-16）
+
+§302の単体ごとの実row射を、ordinary resolution圏に値を取る一つの厳密な図式へまとめた。
+源の行次数の変化と終域の実prefix移送を含め、全bar単体圏の全射について自然性を証明する。
+outer-frame liftも含むframed図式や、bar全体の収縮の完成とは区別する。
+
+### 303.1 全行写像とprefixの実可換性
+
+`ResolutionCenterRowLaws`は任意のparameter写像による制限式と、標準単体の射について
+行次数の変更と全row liftの制限が交換する式を証明する。
+その同じrow mapを使い、§302の全lift単体の自然性をchainの演算へ適用する。
+
+`ResolutionBarRowDiagram`は、実comma圏のnerve単体圏に対し、単体の次数への厳密な関手、
+その次数のreference row resolutionを与える両側の源図式、先頭の実resolutionを与える
+両側の終域図式を構成する。先頭の変化には同じ実prefix射を使う。
+元の両側全systemから、これらの間の実row射を全単体圏上の自然変換として構成する。
+自然性は§302の実中心移送と全systemの自然性から導き、追加の互換性は要求しない。
+
+`ResolutionBarRowOperators`は全chain・全単体作用素の可換式を、この同じ自然変換の
+自然性から回収する。個々の演算について別の比較射を選ぶ構成にはしていない。
+源には実rowMap、終域には実prefixの元のresolution射が現れる。
+
+### 303.2 実barの単体圏全体への引き戻し
+
+`ResolutionBarConeDiagram.forgetLabels`は、§299の実barから実comma圏のnerveへ、
+Homラベルだけを忘れ、同じchainを保つ実simplicial mapを構成する。
+その要素関手を通して303.1を実barの単体圏全体へ引き戻す。
+従って全bar単体・全単体作用素について、ordinary resolution圏に値を取る
+両側の源・終域図式と、その間の厳密な自然変換が得られる。
+
+各成分は§302の同じResolutionBarSimplexCone.left・rightという全resolution射に等しい。
+対角のHom単体だけの一致ではなく、元の実自然変換全体を保持する。
+図式の構成自体にはSSetモデル構造は要求しない。
+既存の元の選択点を保持する全systemを使う場合も、元の小さいSSetモデルだけで足りる。
+
+### 303.3 受入検証と残項目
+
+実装コミット`feb5b6e8`。全て成功した。
+
+- 共有入口のbuild：2868 jobs、追加警告なし。
+- `check_resolution_bar_cone_diagram`：独立宇宙・任意モデル源での全bar単体圏上の
+  両側の厳密な自然変換、同じ全chainの実prefix・行作用素の可換性、
+  元の単体比較射の全射としての回収、元の小さいモデルによる実選択systemへの適用。
+  新規42宣言・4モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：9220宣言・671モジュール、標準公理のみ。
+- `check_resolution_bar_simplex_cone`：44宣言・3モジュールの回帰確認。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+ordinary resolution側の全次数の整合性は得たが、独立に選んだouter-frame liftについて
+同じ可換性を主張したわけではない。そのframe側を含む比較と、次数で変わるrow対象を
+bar全体の収縮へつなぐ部分が残る。§301の0次行sectionの可逆性も未証明である。
+元のreplacement barとの接続、実bar右脚の無条件の弱同値、基底Cᵒᵖ×C上の自然な小値化、
+F1の最終小さい厳密RMap、F2の最終自然弱同値zigzagは引き続き未完了。
+全体目標F→L→E→Sを維持する。

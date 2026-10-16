@@ -2362,3 +2362,15 @@ paired raw bar右脚全体の局所化後の可逆性を全referenceの0次行se
 次数ごとの行対象とouter-frame liftの整合性は残り、bar全体の収縮とはまだなっていない。
 0次行section・右脚の可逆性、元のreplacement barとの比較、最終小さい厳密RMapは未完了。
 検証：`scripts/check_resolution_bar_simplex_cone.lean`、計画書§302。
+
+
+### 全bar単体圏上の厳密なordinary-resolution比較図式（§303）
+
+`ResolutionCenterRowLaws`は全row liftのparameter制限・単体制限の式を証明する。
+`ResolutionBarRowDiagram`は元の両側全systemから、全nerve単体圏上の厳密な自然変換を構成する。
+`ResolutionBarRowOperators`は全chain・全単体作用素の可換式をその自然性から回収する。
+`ResolutionBarConeDiagram`は実barのラベルを忘れるsimplicial mapを通して引き戻し、
+同じ単体比較射を全bar単体圏上の自然変換の成分として保持する。
+構成はordinary resolution圏内であり、outer-frame liftの関手性は主張しない。
+frame側の比較、bar収縮・右脚・0次行sectionの可逆性、最終小さい厳密RMapは未完了。
+検証：`scripts/check_resolution_bar_cone_diagram.lean`、計画書§303。
