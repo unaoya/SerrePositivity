@@ -4965,3 +4965,30 @@ compact性の標準Hom直和比較は§17.84、u-small生成族と零性検出�
 採用範囲は逆方向compact⇒modulePerfectだけとし、Brown表現性・Morita・enhancementの存在を混ぜない。
 今回も引用は採用していない。U13d全受入とU13eは未完で、採用済み引用は0件。
 U11eのcoherence・U12e/f・U14〜U17・D4mも未完。共有系列への追加要求はない。
+
+
+### 17.88 U13e1：全Hom endを持つ射影的perfect dg部分圏（2026-10-16）
+
+`Category/FullSubcategory.lean`は主Enriched dg圏の対象を性質Pで制限し、Hom複体・微分・単位・合成を
+そのまま使う充満dg部分圏を構成する。閉零包含の完全忠実性と境界関係の反映からH⁰包含も完全忠実となる。
+`Derived/HomotopyLinear.lean`はQとの自然同型と商関手の充満・本質的全射性からK(D)→D(D)のA線形性を得る。
+
+`Perfect/Enhancement.lean`は実際の右dg加群で、homotopically projectiveかつ主導来像がPerfOver Sに入る
+対象の充満dg部分圏を構成した。Homは既存moduleHomの全次数endである。
+射影対象からの局所化Hom計算によりH⁰→PerfOver Sは完全忠実であり、任意のPerf対象の
+標準射影解像度が本質的全射性を与える。`Perfect/EnhancementLinear.lean`はこの比較・同値のA線形性と
+主導来包含との比較自然同型を公開する。逆関手の加法性・線形性も確認した。
+
+Checks.PerfectEnhancement・Checks.PerfectUniversalProperty・Checks.CompactGenerators・Checks.StageSeven・
+既存Spectra.StageTwoの同時ビルドは成功（2897 jobs、終了コード0、警告なし）。
+任意生成集合、全Homと微分の一致、完全忠実・本質的全射・線形性、ZMod 2、空生成集合を検査した。
+主要30宣言の直接公理監査は終了コード0、標準公理のみ。監査累計2182宣言。
+今回の5 Leanファイルにsorry/admit/新規axiomはない。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査も成功。
+
+U13e全受入は未完。今回の対象型全体をsmallとは主張しない。
+次はfinite cellの小さい代表系を構成し、固定版Mathlibの関手像・retract閉包の本質的小性を用いて
+Perfの本質的小性を証明する。その小さい代表系の射影解像度へ全Homを制限し、
+shift・三角構造の整合性、一対象Aと既存PerfectHomotopyの比較を完成させる。
+U13dのcompact⇒Perf、U11eのcoherence、U12e/f、U14〜U17、D4mは未完。
+採用済み引用は0件。共有系列への追加要求はなく、共有ルート・他系列のファイルを変更していない。
