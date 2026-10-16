@@ -1,14 +1,12 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
+public import SerrePositivity.BhattScholze.SemiperfectoidSurjectivity
 
-/-! # semiperfectoid環のperfectoid化の全射性（文献入力）
+/-! # semiperfectoid全射性の証明済み互換入口
 
-Bhatt–Scholze, Prisms and prismatic cohomology, Corollary 7.3 / Theorem 7.4。
-ここではpねじれのない、古典的にp進完備な商への適用形を引用する。
-この場合、古典的p進完備性と導来p進完備性が一致し、Notation 7.1の条件を満たす。
-この完備性の同値も引用境界に含め、導来prismatic構成を形式化したとは扱わない。
-原典の選択による全射対象を引用し、任意の普遍対象への移送は別に証明する。
+Bhatt–Scholze著者公開版Corollary 7.3 / Theorem 7.4の、pねじれのない古典的p進完備商への旧適用形。
+任意perfectoid源の導来p完備全射商に対する一般全射性とB3の存在・普遍性から証明する。
+古典的/導来完備性の比較は既存共通APIを使用する。公開署名を維持し、文献入力のsorryは解消済み。
 
 出典：https://people.mpim-bonn.mpg.de/scholze/prisms.pdf （§7.1、印刷pp.55–56）。
 -/
@@ -25,6 +23,8 @@ theorem exists_surjective_perfectoidization_of_complete_torsionFree_quotient
     (hp : Function.Injective (fun x : S ↦ (p : S) * x)) :
     ∃ (C : Type u) (_ : CommRing C) (f : S →+* C),
       IsPerfectoidization p f ∧ Function.Surjective f := by
-  sorry
+  exact BhattScholze.exists_surjective_perfectoidization_of_semiperfectoid_quotient hR q hq
+    ((DerivedCompletion.isModuleComplete_iff_isAdicComplete_of_regular S (p : S)
+      (ModuleCat.of S S) hp).mpr inferInstance)
 
 end SerrePositivity.BhattScholze.Inputs

@@ -1,45 +1,29 @@
 # B4：semiperfectoid環のperfectoid化の全射性
 
-2026-10-16。実装中。正本は`formalization-plans/bhatt-scholze.md`、
-担当・待合せは`clmst.md` §0.2。B3の一般存在・普遍性は証明済み。
-各工程の当初予定と、後半の実装記録を区別する。
-B4-1〜4とB4-5の根付き拡大データに相対的な降下は証明済み。
-一般B4の引用なし完成にはB4-6の必要な根付き拡大の存在が残る。
-Witt通常余積による現在の降下経路は、後半の2026-10-15の記録を参照する。
+2026-10-16。B4は引用なしで完成。正本は`formalization-plans/bhatt-scholze.md`、
+担当・待合せは`clmst.md` §0.2。B3の一般存在・普遍性も証明済み。
+後半の各記録は各時点の検証結果であり、過去の未完成・待合せ状況を含む。
 
-## 現在の合流点（2026-10-16）
+## 現在の完了点（2026-10-16）
 
-共通G7-Finset・G9本体・G11が完成し、任意根族の元の実対象へ適用済み。
-元の実二因子源の非正性とrawへの標準augmentationのH0同型、その同じH0の環・δ構造、raw代数同型、既存prism候補への標準δ射は証明済み。
+公開一般定理は`SemiperfectoidSurjectivity.lean`の
+`surjective_of_isPerfectoidization_of_semiperfectoid_quotient`。
+任意perfectoid環R、全射q:R→S、S自身の導来p完備性、任意f:S→CとIsPerfectoidization p fから全射性を証明した。
+Sのp正則性・有限性・古典的完備性は追加せず、零環・一般pねじれ商・任意核を含む。
+B3と合成した`exists_surjective_perfectoidization_of_semiperfectoid_quotient`も証明済み。
 
-任意根族の全源Tor消滅は、共通G7-Finsetにより明示交換仮定なしで利用可能になった。
-元の実A/(p,d)還元と逐次完備化後の同じ還元の次数零集中・H0忠実平坦性へ接続済み。
-完全prismでは、G10/G8とG9本体により元の実逐次源の全生成元冪商の離散性・H0有界p冪ねじれを証明した。
-さらに生成元正則性、既存の冪余核再構成・Milnor射、G11の非正性保存を組み合わせ、
-元の実逐次完備化源そのものの離散性と実H0のsingle対象への正規化同型まで証明した。
+根prism台環候補の(p,d) CFFから正則生成元商の実還元を経て、既存perfectoid候補の標準基底射のp CFFを証明した。
+任意根族の具体的perfectoid拡大と互換根を供給し、元の核全体を添字として既証の降下を適用した。
+一般perfectoid源への移送は既存Fontaine/完全prism商表示と全射qの合成で行った。
+G7-Finset・G9・G11とその他共通基盤は受領した既存APIを使用した。
 
-G11により、元の標準augmentationをp,d逐次完備化した同じ実比較射がH0同型を誘導することも証明済み。
-G7-Finset・G9・G11の到着待ちは解消した。
-さらにraw係数対象のA上の実逐次H0とraw環上の実逐次H0を、G8で元の標準単位を保って同定した。
-raw環上の実逐次H0とPDCompletionH0について、同じ標準単位での反射性からRaw線形同型を構成し、
-反射環構造についてRaw代数同型になることを証明した。元の実根添加源H0から実PD H0への具体的A線形同型も公開済み。
-完全prism上では源の離散性により実PD係数加群のsingle対象との同型が得られ、その同じ(p,d)還元から
-実PD環の(p,d)完全忠実平坦性まで証明した。
+`Inputs/SemiperfectoidSurjectivity.lean`の旧B-S sorryを同じ署名の証明へ置換した。
+旧任意普遍対象への移送APIとCLMST/CyclicPerfectoidizationも再ビルド4363ジョブ成功。
+pure B4監査は旧B-S存在・旧移送APIまで含む2560宣言で成功し、標準3公理以外・sorryAxなし。
+一般定理から旧B-S入力へのimportもなく、循環依存なし。
 
-δ完全化後の同じ実逐次対象にもG9/G11を適用して離散性を証明した。
-raw側の実二座標反射証明を共有化し、δ完全化環Cの実逐次H0と、標準合成係数射A→C→PDを持つ
-実PD係数加群との具体的A線形同型を構成した。これによりδ完全化後の実PD環の(p,d)完全忠実平坦性を証明した。
-さらに既存deltaRootPDCompletedPerfectionEquivの標準係数射の図式でA係数加群を同定し、
-任意根族の既存根prism台環候補の標準係数射について(p,d)完全忠実平坦性を証明した。
-
-G7-Finset・G9・G11の待合せと、prism台環候補の(p,d) CFFまでの接続は解消した。以下が次の工程である。
-
-- 生成元の正則性と既存実商還元比較を用い、既存候補の生成元商のp完全忠実平坦性を証明する。
-- 任意根族を備えるperfectoid拡大の具体的存在定理にまとめる。
-- 既証の降下を適用し、任意IsPerfectoidizationの全射性へ進む。
-
-André引用に相対的な既存成果と、引用なしの一般B4を区別する。一般B4は未完成である。
-後半の各記録はその時点の検証結果であり、この節を現在の次工程の入口とする。
+André引用に相対的な既存成果は条件付きのまま保持するが、このB4の証明には依存しない。
+整代数perfectoid化のB-I/B6引用は維持し、B5は別工程である。
 
 ## 最終受渡し
 
@@ -10017,3 +10001,12 @@ SemiperfectoidSurjectivity.leanの公開3定理で、任意perfectoid源・導�
 B3と合成して一般の全射perfectoid化の存在も証明し、古典的p進完備商の互換入口も共通の完備性比較から証明した。p正則性・有限性・古典的完備性を一般入口へ追加していない。
 対象4284ジョブ成功、pure B4監査2558宣言成功、標準3公理のみ。André・B-I/B6・旧B-S引用への依存なし。
 B4-7の残作業は既存B-S引用入口の同じ署名での証明置換・旧利用入口のビルドと監査・最終完了記録である。
+
+## B4-7最終完了監査（2026-10-16）
+B4は引用なしで完成。SemiperfectoidSurjectivity.leanの一般定理の型は、任意R,S,C、素数p、hR:IsIntegralPerfectoid R p、全射q:R→S、hS:IsModuleComplete S p (ModuleCat.of S S)、任意f:S→Cとhf:IsPerfectoidization p fからFunction.Surjective f。
+零環枝と一般pねじれ商を含み、p正則性・有限生成性・古典的完備性を一般定理の仮定に追加していない。
+B3の存在・普遍性から同じ一般性で全射perfectoid化の存在も供給した。完全prism商の任意元族について具体的p CFF perfectoid拡大・標準係数射・互換根を構成し、元の核全体への適用と既証降下で証明した。
+旧Inputs/SemiperfectoidSurjectivity.leanのB-S sorryは同じ公開署名の証明へ置換済み。正則な場合の古典的/導来完備性比較も既存共通APIで証明済みのものを使用した。
+旧任意普遍対象への移送APIとCLMST/CyclicPerfectoidizationを含む対象ビルド4363ジョブ成功。pure B4監査2560宣言成功、標準3公理propext・Classical.choice・Quot.soundのみ、新sorry・公理・外部引用なし。
+旧B-S入力に戻るimport経路がなく循環依存なし。CLMST・共有基盤・RootTower・Serre利用先・ルートimport・共有監査は編集せず、BS専用コード・計画・監査のみ更新した。
+André条件付き定理は条件付きのまま保持するが一般B4には依存しない。B-I/B6引用も維持。B5はこの完了範囲に含めない。

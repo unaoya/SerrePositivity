@@ -3,13 +3,13 @@ module
 public import SerrePositivity.BhattScholze.Inputs.SemiperfectoidSurjectivity
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationUniqueness
 
-/-! # semiperfectoid全射性の引用から選択した普遍対象への移送 -/
+/-! # 証明済みsemiperfectoid全射性から任意の普遍対象への移送 -/
 
 public section
 universe u
 namespace SerrePositivity.BhattScholze
 
-/-- 全射性は原典で選ばれた対象から、任意の普遍perfectoid化へ移る。 -/
+/-- 証明済みの全射perfectoid化から、任意の普遍perfectoid化へ全射性を移す。 -/
 theorem surjective_of_isPerfectoidization_of_complete_torsionFree_quotient
     (R S C : Type u) [CommRing R] [CommRing S] [CommRing C] (p : ℕ) [Fact p.Prime]
     (hR : IsIntegralPerfectoid R p) (q : R →+* S) (hq : Function.Surjective q)
