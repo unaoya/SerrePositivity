@@ -7748,6 +7748,25 @@ KL-T環比較・元の完備tensor H⁰の環構造と単位を保つ表示移�
 次はその表示の実入力へ適用して元のH⁰環のperfectoid性を供給し、
 選んだperfectoid化との標準写像を保つ比較、実almost比較・rank還元へ進む。
 
+KL-T環比較・実Fontaine表示を通した任意完備tensor H⁰のperfectoid性（2026-10-17）：
+`BhattScholze/PerfectDeltaPresentedTensorRing.lean`で、完全δ環の両立する剰余表示から
+元の完備tensor H⁰環を元のCartier商へ環同型で移し、そのperfectoid性を証明した。
+共通の表示移送`08c6434d`を使い、既存線形同型の積保存を仮定に追加しない。
+`FontaineCompletedTensorDiscrete.lean`の実Fontaine表示・標準写像の同じ図式から、
+離散性と元のH⁰環のperfectoid性を同時に供給するよう証明を整理した。
+`PerfectoidCompletedTensorDiscrete.lean`では零環の場合も処理し、任意のperfectoid基底と
+二因子について、元の実完備tensorの離散性とその実H⁰環のperfectoid性を得た。
+旧公開定理の名前・仮定・結論は互換入口で維持した。
+p正則性・bounded torsion・通常平坦性・非零性は不要で、André等の深い引用も使わない。
+対象3640ジョブ、全体5865ジョブ、KL1045件、専用公開7宣言と名前付き型検査2宣言が成功した。
+全新宣言と型検査はsorry非依存・標準3公理のみ。旧対角・零因子の離散性監査も成功した。
+新型検査では元のH⁰環を基底に、元のperfectoid idealの全mod p冪像の冪等性を供給し、
+零因子の場合には同じ元のH⁰環が零環になることを確認した。
+これで履歴に残る「任意二因子のH⁰ perfectoid性の一般化」は解消した。
+次は元の通常tensorからこのH⁰環への標準写像のperfectoid化の普遍性を証明し、
+選ばれたperfectoid化との単位・係数作用を保つ比較へ接続する。
+絶対整閉側の実有限自由almost比較・rank還元、KL-T全体・KL-Q、Dの実適用とB-Iは残る。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。

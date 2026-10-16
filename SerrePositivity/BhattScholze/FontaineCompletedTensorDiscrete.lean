@@ -1,10 +1,11 @@
 module
 public import SerrePositivity.BhattScholze.PerfectDeltaResidueTensorTransport
+public import SerrePositivity.BhattScholze.PerfectDeltaPresentedTensorRing
 public import SerrePositivity.BhattScholze.PerfectoidWittBasePresentation
 public import SerrePositivity.BhattScholze.PerfectoidDistinguishedKernel
 public import SerrePositivity.CommutativeAlgebra.MappedPrincipalQuotient
 
-/-! # Discreteness of the original completed tensor from actual Fontaine presentations -/
+/-! # Discreteness and perfectoid H⁰ from the original Fontaine presentations -/
 @[expose] public noncomputable section
 universe u
 set_option backward.defeqAttrib.useBackward true
@@ -15,7 +16,7 @@ attribute [local instance] HasDerivedCategory.standard adicQuotientAlgebra
   principalAdicQuotientAlgebra
 
 /-- The original Fontaine morphisms supply all compatible residue presentations for Cartier descent. -/
-lemma fontaine_completedTensor_pure
+lemma fontaine_completedTensor_pure_and_h0
     (p : ℕ) [Fact p.Prime] (R S T : Type u)
     [CommRing R] [CommRing S] [CommRing T] [Algebra R S] [Algebra R T]
     [Fact (¬ IsUnit (p : R))] [Fact (¬ IsUnit (p : S))] [Fact (¬ IsUnit (p : T))]
@@ -30,8 +31,11 @@ lemma fontaine_completedTensor_pure
     (hFT : Function.Surjective (fun x : ModP T p => x ^ p))
     (hkerS : (RingHom.ker (WittVector.fontaineTheta S p)).IsPrincipal)
     (hkerT : (RingHom.ker (WittVector.fontaineTheta T p)).IsPrincipal) :
-    (boundedAboveCompletedTensorAlgebra R (p : R) S T).X.obj.IsGE 0 ∧
-      (boundedAboveCompletedTensorAlgebra R (p : R) S T).X.obj.IsLE 0 := by
+    letI := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
+    ((boundedAboveCompletedTensorAlgebra R (p : R) S T).X.obj.IsGE 0 ∧
+      (boundedAboveCompletedTensorAlgebra R (p : R) S T).X.obj.IsLE 0) ∧
+      IsIntegralPerfectoid ((DerivedCategory.homologyFunctor (ModuleCat R) 0).obj
+        (boundedAboveCompletedTensorAlgebra R (p : R) S T).X.obj) p := by
   let kR := PreTilt R p
   let kS := PreTilt S p
   let kT := PreTilt T p
@@ -97,12 +101,44 @@ lemma fontaine_completedTensor_pure
         (WittVector.map (Perfection.map p (modPMap p (algebraMap R T))) a) =
       algebraMap R T (WittVector.fontaineTheta R p a)
     exact RingHom.congr_fun (fontaineTheta_natural p (algebraMap R T)) a
-  exact perfectDelta_presentedCompletedTensor_pure p A B C
-    (wittDeltaStructure p kR) (wittDeltaStructure p kS) (wittDeltaStructure p kT)
-    (wittDeltaStructure_isPerfect p kR) (wittDeltaStructure_isPerfect p kS)
-    (wittDeltaStructure_isPerfect p kT)
-    (wittDeltaStructure_map_isDeltaHom p kR (algebraMap kR kS))
-    (wittDeltaStructure_map_isDeltaHom p kR (algebraMap kR kT))
-    d hd R S T eR eS eT heS heT
+  constructor
+  · exact perfectDelta_presentedCompletedTensor_pure p A B C
+      (wittDeltaStructure p kR) (wittDeltaStructure p kS) (wittDeltaStructure p kT)
+      (wittDeltaStructure_isPerfect p kR) (wittDeltaStructure_isPerfect p kS)
+      (wittDeltaStructure_isPerfect p kT)
+      (wittDeltaStructure_map_isDeltaHom p kR (algebraMap kR kS))
+      (wittDeltaStructure_map_isDeltaHom p kR (algebraMap kR kT))
+      d hd R S T eR eS eT heS heT
+  · exact perfectDelta_presentedCompletedTensorH0_isIntegralPerfectoid
+      (p := p) (A := A) (B := B) (C := C)
+      (DA := wittDeltaStructure p kR) (DB := wittDeltaStructure p kS)
+      (DC := wittDeltaStructure p kT)
+      (hA := wittDeltaStructure_isPerfect p kR) (hB := wittDeltaStructure_isPerfect p kS)
+      (hC := wittDeltaStructure_isPerfect p kT)
+      (hAB := wittDeltaStructure_map_isDeltaHom p kR (algebraMap kR kS))
+      (hAC := wittDeltaStructure_map_isDeltaHom p kR (algebraMap kR kT))
+      (d := d) (hd := hd) (R := R) (S := S) (T := T)
+      (eR := eR) (eS := eS) (eT := eT) (heS := heS) (heT := heT)
+
+/-- The original public discreteness statement is retained. -/
+lemma fontaine_completedTensor_pure
+    (p : ℕ) [Fact p.Prime] (R S T : Type u)
+    [CommRing R] [CommRing S] [CommRing T] [Algebra R S] [Algebra R T]
+    [Fact (¬ IsUnit (p : R))] [Fact (¬ IsUnit (p : S))] [Fact (¬ IsUnit (p : T))]
+    [IsAdicComplete (Ideal.span {(p : R)}) R]
+    [IsAdicComplete (Ideal.span {(p : S)}) S]
+    [IsAdicComplete (Ideal.span {(p : T)}) T]
+    (d : WittVector p (PreTilt R p))
+    (hd : (wittDeltaStructure p (PreTilt R p)).IsDistinguished d)
+    (hk : RingHom.ker (WittVector.fontaineTheta R p) = Ideal.span {d})
+    (hFR : Function.Surjective (fun x : ModP R p => x ^ p))
+    (hFS : Function.Surjective (fun x : ModP S p => x ^ p))
+    (hFT : Function.Surjective (fun x : ModP T p => x ^ p))
+    (hkerS : (RingHom.ker (WittVector.fontaineTheta S p)).IsPrincipal)
+    (hkerT : (RingHom.ker (WittVector.fontaineTheta T p)).IsPrincipal) :
+    (boundedAboveCompletedTensorAlgebra R (p : R) S T).X.obj.IsGE 0 ∧
+      (boundedAboveCompletedTensorAlgebra R (p : R) S T).X.obj.IsLE 0 := by
+  exact (fontaine_completedTensor_pure_and_h0 p R S T d hd hk hFR hFS hFT hkerS hkerT).1
+
 
 end SerrePositivity.BhattScholze
