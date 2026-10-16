@@ -7702,6 +7702,22 @@ a冪torsion試験加群Nについて、元の`BC(X ⊗ᴸ single N)`を
 実H⁰を係数とする通常Torへ接続する。その実H⁰と選んだperfectoid化の比較、
 絶対整閉側の実almost比較とrank還元、KL-Q・Dの実適用は引き続き残る。
 
+KL-T・perfectoid係数の実完備底変換の離散性と新基底の通常Tor（2026-10-17）：
+`BhattScholze/PerfectoidCompletedBaseChangeDiscrete.lean`で、perfectoid環R上のperfectoid係数Cを
+perfectoid環Sへ実導来底変換し、S上でp完備化した対象が次数0に集中することを証明した。
+元の完備化・係数制限比較と実底変換–tensor比較から、Rへ制限した対象を完成済みの
+実perfectoid完備tensorへ比較し、係数制限による次数の反映を用いる。
+実H⁰上の恒等射で正規化したS線形なsingle同型も公開した。
+これを`afab866f`の実底変換tensor比較と元のtensor–Tor比較へ接続し、
+元のC係数TorのalgMap(s)作用の零性を、新基底S上の通常Torにおけるφ(s)の零作用へ同定した。
+係数はS上の実完備底変換の元のH⁰加群、試験加群は元の通常係数拡大S⊗Nである。
+基底・因子のp正則性、試験加群の有限生成性、拡大の通常平坦性、非零性は要求しない。
+対象3641ジョブ、全体5861ジョブ、KL1025件、専用公開3宣言と名前付き型検査2宣言が成功した。
+全5宣言はsorry非依存・標準3公理のみ。型検査でsingle同型の実H⁰正規化と、
+元の係数C=Rの場合の全正次数の通常Tor消滅を確認した。指数0も含む。
+実H⁰を選ばれたperfectoid化と同定する工程と絶対整閉側の実almost比較・rank還元は残る。
+離散性だけからH⁰のperfectoid環構造やperfectoid化の底変換定理全体の完成を主張しない。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
