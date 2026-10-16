@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.RelativeFreeFiniteDeltaStepIdentities
 public import SerrePositivity.BhattScholze.DeltaResidueArithmetic
+public import SerrePositivity.BhattScholze.RelativeDeltaEstimate
 
 /-! # 有限δ計算の通常剰余公式
 
@@ -34,8 +35,9 @@ theorem relativeFreeFiniteDeltaStep_map_mul_of_prime_zero (D : DeltaStructure p 
       (q (relativeFreeFiniteStepInclusion N σ f)) ^ p * q (relativeFreeFiniteDeltaStep N σ D g) +
         q (relativeFreeFiniteDeltaStep N σ D f) *
           (q (relativeFreeFiniteStepInclusion N σ g)) ^ p := by
-  rw [relativeFreeFiniteDeltaStep_mul, map_add, map_add, map_mul, map_mul, map_mul,
-    map_mul, map_pow, map_pow, hp, zero_mul, zero_mul, add_zero]
+  exact wittTwoLift_map_delta_mul_of_prime_zero (relativeFreeFiniteStepInclusion N σ)
+    (relativeFreeFiniteDeltaStepSection N σ D)
+    (relativeFreeFiniteDeltaStepSection_projection N σ D) q hp f g
 
 /-- 左入力の包含像が消える通常射では有限δ加法の補正項も消える。 -/
 theorem relativeFreeFiniteDeltaStep_map_add_of_left_zero (D : DeltaStructure p A)
@@ -43,13 +45,9 @@ theorem relativeFreeFiniteDeltaStep_map_add_of_left_zero (D : DeltaStructure p A
     (f g : MvPolynomial (σ × Fin (N + 1)) A) (hf : q (relativeFreeFiniteStepInclusion N σ f) = 0) :
     q (relativeFreeFiniteDeltaStep N σ D (f + g)) =
       q (relativeFreeFiniteDeltaStep N σ D f) + q (relativeFreeFiniteDeltaStep N σ D g) := by
-  rw [relativeFreeFiniteDeltaStep_add, map_add, map_add]
-  have hc : q ((WittVector.teichmuller p (relativeFreeFiniteStepInclusion N σ f) +
-      WittVector.teichmuller p (relativeFreeFiniteStepInclusion N σ g)).coeff 1) = 0 := by
-    rw [← WittVector.map_coeff, map_add, WittVector.map_teichmuller,
-      WittVector.map_teichmuller, hf, WittVector.teichmuller_zero, zero_add]
-    exact WittVector.teichmuller_coeff_pos p _ 1 (by decide)
-  rw [hc, add_zero]
+  exact wittTwoLift_map_delta_add_of_left_zero (relativeFreeFiniteStepInclusion N σ)
+    (relativeFreeFiniteDeltaStepSection N σ D)
+    (relativeFreeFiniteDeltaStepSection_projection N σ D) q f g hf
 
 /-- 右入力の包含像が消える場合の有限δ加法公式。 -/
 theorem relativeFreeFiniteDeltaStep_map_add_of_right_zero (D : DeltaStructure p A)
@@ -57,7 +55,9 @@ theorem relativeFreeFiniteDeltaStep_map_add_of_right_zero (D : DeltaStructure p 
     (f g : MvPolynomial (σ × Fin (N + 1)) A) (hg : q (relativeFreeFiniteStepInclusion N σ g) = 0) :
     q (relativeFreeFiniteDeltaStep N σ D (f + g)) =
       q (relativeFreeFiniteDeltaStep N σ D f) + q (relativeFreeFiniteDeltaStep N σ D g) := by
-  rw [add_comm f g, relativeFreeFiniteDeltaStep_map_add_of_left_zero N σ D q g f hg, add_comm]
+  exact wittTwoLift_map_delta_add_of_right_zero (relativeFreeFiniteStepInclusion N σ)
+    (relativeFreeFiniteDeltaStepSection N σ D)
+    (relativeFreeFiniteDeltaStepSection_projection N σ D) q f g hg
 
 /-- pを消す通常射の下での有限δ計算の正整数冪公式。 -/
 theorem relativeFreeFiniteDeltaStep_map_pow_succ_of_prime_zero (D : DeltaStructure p A)

@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.DeltaRankOne
 public import SerrePositivity.BhattScholze.DeltaPrime
+public import SerrePositivity.BhattScholze.RelativeDeltaEstimate
 
 /-! # B4-6：通常剰余射の下でのδ反復計算
 
@@ -33,23 +34,20 @@ theorem map_delta_pow_prime_of_zero (D : DeltaStructure p A) (q : A →+* B)
 /-- 左項が消える通常環射の下では、δの加法補正項も消える。 -/
 theorem map_delta_add_of_left_zero (D : DeltaStructure p A) (q : A →+* B)
     (x y : A) (hx : q x = 0) : q (D.delta (x + y)) = q (D.delta x) + q (D.delta y) := by
-  rw [D.delta_add, map_add, map_add]
-  have hc : q ((WittVector.teichmuller p x + WittVector.teichmuller p y).coeff 1) = 0 := by
-    rw [← WittVector.map_coeff, map_add, WittVector.map_teichmuller,
-      WittVector.map_teichmuller, hx, WittVector.teichmuller_zero, zero_add]
-    exact WittVector.teichmuller_coeff_pos p (q y) 1 (by decide)
-  rw [hc, add_zero]
+  exact wittTwoLift_map_delta_add_of_left_zero (RingHom.id A) D.sectionHom D.projection_comp
+    q x y hx
 
 /-- 右項が消える場合のδ加法公式。 -/
 theorem map_delta_add_of_right_zero (D : DeltaStructure p A) (q : A →+* B)
     (x y : A) (hy : q y = 0) : q (D.delta (x + y)) = q (D.delta x) + q (D.delta y) := by
-  rw [add_comm x y, D.map_delta_add_of_left_zero q y x hy, add_comm]
+  exact wittTwoLift_map_delta_add_of_right_zero (RingHom.id A) D.sectionHom D.projection_comp
+    q x y hy
 
 /-- pを消す通常環射の下でのδ積公式。 -/
 theorem map_delta_mul_of_prime_zero (D : DeltaStructure p A) (q : A →+* B)
     (hp : q (p : A) = 0) (x y : A) :
     q (D.delta (x * y)) = (q x) ^ p * q (D.delta y) + q (D.delta x) * (q y) ^ p := by
-  rw [D.delta_mul, map_add, map_add, map_mul, map_mul, map_mul, map_mul, map_pow,
-    map_pow, hp, zero_mul, zero_mul, add_zero]
+  exact wittTwoLift_map_delta_mul_of_prime_zero (RingHom.id A) D.sectionHom D.projection_comp
+    q hp x y
 
 end SerrePositivity.BhattScholze.DeltaStructure
