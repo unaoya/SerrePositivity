@@ -166,3 +166,26 @@ end
 assert_rperfd_power_holim_dependencies
 #print axioms rPerfd_finiteCoefficientPowerHolimIso
 #print axioms rperfd_power_holim_projection
+
+private lemma rperfd_power_holim_scalar (N : ModuleCat.{u} A) [Module.Finite A N]
+    (c : RPerfd A D t p hperf) :
+    let f : C₀ ⟶ C₀ := ModuleCat.ofHom (LinearMap.mulLeft A c)
+    (boundedAboveDerivedTensor.map (CategoryTheory.Prod.mkHom
+      (boundedAboveDerivedSingleFunctor.map f)
+      (𝟙 (boundedAboveDerivedSingleFunctor.obj N)))).hom ≫
+        (rPerfd_finiteCoefficientPowerHolimIso A t D p hperf N).hom =
+      (rPerfd_finiteCoefficientPowerHolimIso A t D p hperf N).hom ≫
+        modulePowerDerivedTensorHolimMap (p : A) N f :=
+  finiteCoefficientPowerHolimIso_naturality_left (p : A) N
+    (ModuleCat.ofHom (LinearMap.mulLeft A c))
+    (rPerfd_isModuleComplete A t D p hperf) (rPerfd_isModuleComplete A t D p hperf)
+
+meta section
+open Lean Elab Command
+elab "assert_rperfd_power_holim_scalar_dependencies" : command => do
+  let _ ← liftCoreM <| checkRPerfdDependencies [``rperfd_power_holim_scalar] {}
+  logInfo "Actual RPerfd coefficient multiplication agrees with the original holim action."
+end
+
+assert_rperfd_power_holim_scalar_dependencies
+#print axioms rperfd_power_holim_scalar
