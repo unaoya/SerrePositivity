@@ -869,6 +869,7 @@ public import SerrePositivity.CommutativeAlgebra.PerfectoidizationNilpotent
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealRadical
 public import SerrePositivity.CommutativeAlgebra.FiniteCommonLocalizationModel
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedEtaleIntegralCover
+public import SerrePositivity.CommutativeAlgebra.FiniteCommonLocalizationBounds
 
 /-!
 # Serre の交点重複度の正値性の形式化
