@@ -5218,7 +5218,7 @@ H⁰環比較は無条件で使える一方、完備化した導来tensor全体�
 | --- | --- | --- |
 | KL-E1 | 完備almost零化の拡大閉性を、実conormal I/I²上のp倍の全射性に還元する。標準Tor₁ᴮ(B/I,B/I)との比較も用意する | 任意の導来p完備加群の短完全列についての公開定理、元の線形作用の比較、専用監査。`c1efe468`で一般補題と実Tor入口を監査・保存済み |
 | KL-E2 | BS10.3の元の完備導来tensorの乗法比較から、同じB・Iのconormal／自己Tor₁上のp倍全射性を導き、KL-E1に適用する | 比較から全射性・拡大閉性への一般接続は完成。残るのは実perfectoid商の完備乗法比較の証明。H⁰同型だけで済ませない |
-| KL-T | Prop 2.4.9(a)の実Tor入力と標準完備塔のp完全平坦性から、pᵏで消える任意A加群の全正次数TorのI零化を供給する | 全k>0・全試験加群・全正次数・全s∈Iの量化を保持。Prop 2.4.9(a)自体と底変換による移送を分けて監査する |
+| KL-T | Prop 2.4.9(a)の元の完備塔側Tor入力を証明する。保存済みの完備塔のA平坦性によるA側への移送は完成 | 全k>0・全試験加群・全正次数・全s∈Iの量化を保持。移送は専用監査済み。残るProp 2.4.9(a)自体を、実perfectoid化射・almost比較・降下へ接続する |
 | KL-M | KL-E2とKL-Tを保存済みの`rPerfd_tor_eq_zero_of_power_torsion_and_extensions`へ接続する | 元の実Milnor列を通じて任意A加群の全正次数Tor零化を供給。lim¹消滅や試験加群の完備性を追加しない |
 | KL-I | KL-E2と同じ完備商乗法比較から、同じIの全mod pᵏ像の冪等性を供給する | 一般的な含意は完成。実乗法比較の証明を接続する。独立したB5の完成を追加前提にしない |
 | KL-Q | 実乗法比較とp冪ねじれTor試験を`rPerfd_cohomology_vanishing_of_completed_quotient_mul_and_power_torsion`へ供給する | 実極大イデアル支持のi<h局所コホモロジーと、全有限段・任意パラメータ系の正次数Koszulホモロジーを同じIが零化。原典署名と依存を確認してCor 4.0.4引用を置換する |
@@ -6317,6 +6317,43 @@ IはB3の商perfectoid化写像との合成の核なので、その写像の全�
 環同型を得て、元の導来乗法・完備化の図式を比較する。B3の存在だけでB/Iを
 perfectoid商へ同一視しない。この実比較とBS10.3の証明は引き続き未供給である。
 B5全体の実証明、B-Iの存在引用自体、KL-Qの無条件化と引用置換、Dの実適用は未完了である。
+
+KL-T移送・元の完備塔上のp冪ねじれTor試験からA上の全試験へ（2026-10-16）：
+`TorAlgebraAcyclicBaseChange.lean`で、R→Bへの係数拡大について試験加群Mの高次Torが
+消える場合に、元の実C加群TorAlg_R(C,M)とTorAlg_B(C,B⊗M)のC線形同型を構成した。
+Mの元の射影分解をBへ係数拡大して使い、Cへの二段階係数拡大の標準同型で比較する。
+C線形性から元の標準Tor上の任意の係数スカラーの零作用を保存・反映する。
+この同型自身はR→Bの平坦性を要求せず、Mに対するTor消滅だけを用いる。
+平坦なR代数Bから全試験Mについてその消滅を得る入口も公開した。
+
+`ModuleScalarExtensionAnnihilator.lean`で、元の係数拡大関手に対し、aで零化される加群が
+φ(a)で零化されることを任意の環射φについて証明した。`PowerTorsionTorBaseChange.lean`で、
+平坦なR→Bと同じ係数環Cについて、B上のpᵏねじれTor試験からR上のpᵏねじれ試験を供給した。
+全k>0・任意試験加群・全正次数・全almost元の量化を保持し、試験加群の有限性や完備性は要求しない。
+
+`CLMST/RPerfdTorBaseChange.lean`は既存の`flat_completedTower_over_base`を適用し、
+元の完備塔・同じRPerfd・同じperfectoid ideal・同じ作用のまま、
+`rPerfd_power_torsion_tor_eq_zero_of_completedTower`でA側の入力を供給する。
+この具体的完備塔は既存の証明でA上平坦なので、この適用ではp完全平坦性からの
+一般的な移送を別途構築せず、より強い保存済みの平坦性を直接再利用した。
+`rPerfd_cohomology_vanishing_of_completed_quotient_mul_and_tower_power_torsion`により、
+前工程の元の完備商乗法比較と完備塔側のp冪ねじれTor試験から、
+Cor 4.0.4の局所コホモロジーと全有限段・任意パラメータ系の両結論へ接続した。
+実依存監査はこれら2宣言の型・証明を含め、既存B-I以外のsorryを拒否する。
+
+共通5宣言・3型検査の専用監査、KL696件、実RPerfdの限定依存監査、
+共通対象2762ジョブ、実適用3912ジョブ、全体5780ジョブが成功した。
+CLMST監査と全体公理監査も終了コード0を確認した。
+共通import閉包67モジュールにBS・CLMST・Inputs・Paper依存なし。
+共通5宣言はsorry非依存・標準3公理のみ。
+
+この工程はProp 2.4.9(a)の完備塔側入力からA側への移送の証明であり、
+Prop 2.4.9(a)自体の証明ではない。次の実Tor入力の供給には、
+完備塔BとS=B⊗_A D、選ばれたRPerfdへのperfectoid化射を固定し、
+gの外での有限エタール性から、原典の絶対整閉拡大・almost比較・一般rankへの帰着を証明する。
+単なるg冪の錐零化をperfectoid ideal全体のTor零化へ置き換えてはならない。
+実完備商乗法の比較（B4によるB/Iの同定とBS10.3）、B-I自体、
+KL-Qの無条件化・引用置換、Dの実適用は引き続き未完了である。
 
 ### 9.8. 各区切りの保存と検証
 

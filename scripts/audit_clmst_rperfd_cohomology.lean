@@ -1,3 +1,4 @@
+import SerrePositivity.CLMST.RPerfdTorBaseChange
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTorsionTorProduct
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerTensorTorZero
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.MilnorMapZero
@@ -56,6 +57,8 @@ elab "assert_rperfd_cohomology_dependencies" : command => do
     ``rPerfd_tor_eq_zero_of_power_torsion_and_quotientTorOne,
     ``rPerfd_tor_eq_zero_of_power_torsion_and_completed_quotient_mul,
     ``rPerfd_cohomology_vanishing_of_completed_quotient_mul_and_power_torsion,
+    ``rPerfd_power_torsion_tor_eq_zero_of_completedTower,
+    ``rPerfd_cohomology_vanishing_of_completed_quotient_mul_and_tower_power_torsion,
     ``rPerfd_cohomology_vanishing_of_tor_idempotent]
   let _ ← liftCoreM <| checkRPerfdDependencies roots {}
   logInfo "Only the existing integral-perfectoidization existence sorry is permitted."
@@ -452,3 +455,6 @@ assert_rperfd_cor4_torsion_quotientTorOne_dependencies
 #print axioms SerrePositivity.CLMST.rPerfd_tor_eq_zero_of_power_torsion_and_completed_quotient_mul
 
 #print axioms SerrePositivity.CLMST.rPerfd_cohomology_vanishing_of_completed_quotient_mul_and_power_torsion
+
+#print axioms SerrePositivity.CLMST.rPerfd_power_torsion_tor_eq_zero_of_completedTower
+#print axioms SerrePositivity.CLMST.rPerfd_cohomology_vanishing_of_completed_quotient_mul_and_tower_power_torsion
