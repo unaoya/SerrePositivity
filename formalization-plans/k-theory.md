@@ -19876,3 +19876,77 @@ rev.opで引き戻した既存FreePathSimplicialResolution.augmentationそのも
 その後に移送・自然比較と元の基底への降下を進める。
 この段階でも、異なるPごとの選択の自然性や元の基底への厳密sectionは推論しない。
 小さい厳密なRMap、内部単位、自然弱同値比較、最終F2は残る。全体目標F→L→E→Sは未完了である。
+
+
+## 359. 全次数の実ambient作用と小さい内部Homへの移送（2026-10-17）
+
+実装コミット`1d636a0f`。前回は§358の実自然変換とaugmentation保持を構成した進捗ターンだった。
+今回はそれを既存evaluationへ接続し、元の基底対象を端点とする実ambient射族と、
+小さい対象モデルの内部Homの宇宙持ち上げに値を取る移送族を構成した。
+ambient側の厳密な合成を、そのまま移送側の厳密な合成とみなすことはしていない。
+
+### 359.1 任意の単体写像と交換する実作用族
+
+`OrdinaryBarFreeResolutionAction.choicesAt`は§358の自然変換の実成分を取り出す。
+actionはこれを既存OrdinaryBarChoiceCategory.evaluationへ合成した実関手であり、
+各次数でParameterCategory.Object (P × Δⁿ)へ値を取る。
+action_naturalityは、任意の単体写像について源の作用を前合成する関手と、
+パラメータをsubstituteする関手が厳密に等しいことを証明する。
+面・退化だけではなく、任意の単体写像を扱う。
+
+family_eqはその実射が元の選択拡張のRelativeChoiceSpace.familyであることを示す。
+family_id・compは、全パラメータを保持した恒等射とParameterComposition.compによる合成の
+厳密な保持を証明する。choicesAt_projectionは基底への射影が既存の実augmentationに等しいことを示す。
+
+### 359.2 元の対象をliteralな端点にする
+
+`OrdinaryBarFreeAmbientFamilies.augmentation_obj`は実augmentationの対象関数が恒等であることを証明する。
+choice_baseは§357のaugmentation比較から、選択関手が対象Xを基底対象Xそのものへ送ることを導く。
+これを使い、evaluationを対象等式で移したfixedActionを構成し、fixedAction_eqで元のevaluationと
+関手全体で等しいことを証明する。
+
+familyは、元の対象X・Yをそのまま使う実写像
+
+`ambient X × (P × Δⁿ) → ambient Y`
+
+である。自由分解の任意の射に対して定義され、合成・恒等を厳密に保つ。
+fixedAction_face・degeneracyは全次数・全添字の関手等式である。
+family_face・degeneracyはそれを実射族の代入等式として取り出し、元の端点X・Yを保つ。
+反復した選択関手の対象式を利用者が毎回付け替える必要はない。
+
+### 359.3 小さい対象モデルへの全次数移送
+
+`OrdinaryBarFreeTransferredFamilies.ofFamily`は任意のambient射族を、実section・projectionで
+lifted small object間の族へ移す。ofFamily_substituteは任意の全パラメータ代入との交換を証明する。
+ofFamily_idは恒等ambient族の移送が小さい対象上の恒等族そのものに等しいことを証明する。
+
+familyは359.2の実族へ適用したものであり、family_face・degeneracyは全面・全退化での厳密な整合性を示す。
+ofFamilyClosedはその族をcurryし、既存closedIsoを通じて
+UniverseLift.obj (ihom (small X) (small Y))に値を取る族へ移す。
+transferredはこれを実全次数族へ適用する。transferred_face・degeneracyは、
+全パラメータを保ったまま小さい内部Homに値を取る族の全面・全退化等式を証明する。
+
+小さい内部Hom自体はSSet.{v}の実対象であり、パラメータP × Δⁿは引き続き大きい宇宙にあってよい。
+この結果だけで元の基底上のSSet.{v}値厳密関手を構成したとは扱わない。
+移送側の合成整合性にはsection・projection間の収縮を使う必要があり、厳密な合成保持は主張しない。
+
+### 359.4 受入検証と次の実装単位
+
+すべて成功した。
+
+- 共有入口のbuild：3070 jobs、追加警告なし。
+- `check_free_resolution_action`：53宣言・3モジュール、標準公理のみ。
+  任意の単体写像との実作用の交換、既存augmentationへの基底射影、元の端点を持つ実ambient族、
+  合成・恒等・全面・全退化、移送後の恒等族と小さい内部Homに値を取る全面・全退化を検証。
+  一般源モデル、独立宇宙、任意P、大きいSSetのモデル構造なしの入口を維持する。
+- `check_free_resolution_natural_choices`：既存32宣言・3モジュールの回帰検証。
+- `audit_homotopical_foundations`：11862宣言・855モジュール、標準公理のみ。
+- 新規ソース・受入スクリプトの行長、証明用マーカー、stage差分の空白検査。
+
+次は359.2の実ambient族を既存RetractChainFamilyへ適用し、各次数の任意の有限射列と
+独立な収縮パラメータから移送族を構成する。面・退化による代入との交換を359.2から導く。
+受入条件は、任意のprefix・suffixを含む零面での実source合成との一致、一面での移送合成との一致、
+全次数の面・退化代入との整合性、恒等を含む端点の保持である。
+内部恒等の消去と高次の収縮整合性は個別に検証し、独立充填の存在からは推論しない。
+その後の自然弱同値比較、元の基底への降下、小さい厳密なRMap、最終F2は残る。
+全体目標F→L→E→Sは未完了として継続する。

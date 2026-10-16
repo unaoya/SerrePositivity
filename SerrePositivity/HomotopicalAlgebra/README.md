@@ -3008,3 +3008,15 @@ Paths³(Cᵒᵖ × C) → Choice(P × ∂Δ²)という実境界関手と、全�
 基底射影との合成は、既存自由分解のaugmentationそのものに自然変換全体で厳密に等しい。
 実ambient族への適用、移送と自然比較、元の基底への降下、小さい厳密なRMapは残る。
 受入検証は`check_free_resolution_natural_choices`（32宣言・3モジュール）。
+
+
+### 全次数の実ambient作用と小さい内部Homへの移送（§359）
+
+`OrdinaryBarFreeResolutionAction`は実choicesをevaluationへ合成し、任意の単体写像との交換と
+合成・恒等の保持、既存augmentationへの基底射影を証明する。
+`OrdinaryBarFreeAmbientFamilies`は元の対象をliteralな端点にした実ambient族を作り、
+厳密な合成・恒等・全面・全退化等式を与える。
+`OrdinaryBarFreeTransferredFamilies`は小さい対象モデルへ移送し、恒等族と全面・全退化を保持する。
+移送族は小さい内部Homの宇宙持ち上げに値を取る。移送後の厳密な合成保持は主張しない。
+有限射列の収縮族への接続、自然比較、元の基底への降下、小さい厳密なRMapは残る。
+受入検証は`check_free_resolution_action`（53宣言・3モジュール）。
