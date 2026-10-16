@@ -5875,13 +5875,39 @@ Thm 4.0.3(a)の全係数量化はこの工程で有限生成試験へ還元で�
 2. 有限生成A加群Mについて、Aの正則性による有限自由分解とRPerfdの実導来p完備性から
    `RPerfd ⊗ᴸ_A M`の実導来完備性を供給する。Mの有界p冪ねじれを使い、
    元の導来pⁿ剰余と通常のM/pⁿMの塔の比較を構成する。
-3. Milnor列の両端のalmost零化を中央へ移す。通常のイデアル冪等性を勝手に仮定せず、
-   mod pⁿでの冪等性と実完備性で元のイデアルの零化へ戻す。
+3. Milnor列の両端のalmost零化を中央へ移す。原典が使うBS Proposition 10.2の
+   導来p完備加群のalmost零化の拡大閉性を供給する。その証明元はLemma 10.3の
+   完備導来テンソルの冪等性であり、mod pⁿの通常イデアルの冪等性だけで代用しない。
    その後、本工程の有限生成係数還元を用いて全係数hTorを供給し、KL-Qへ合流する。
 
 これらのp冪ねじれ入力・完備化比較・almost拡大閉性は未完了である。
 原典のProp 2.4.9(a)およびThm 4.0.3(a)の証明（手元のCLMST v4、pp.19,27–28）に
 照合した工程であり、有限生成係数還元だけで原典のalmost平坦性を証明済みとはしない。
+
+KL-A2b・元の実導来テンソルの完備性（2026-10-16）：
+`DerivedCompletion/TermwiseComplete.lean`で局所化telescopeの長さ1の自由分解と
+列作用の全単射性を用い、各項が導来完備なら任意の複体の実導来像も完備と証明した。
+複体の上界・下界や項の平坦性は要求しない。
+`FiniteTensorComplete.lean`は、導来完備加群Mと有限自由加群のtensorの完備性、
+任意の全項有限自由な指定分解による実導来tensorの完備性を供給する。
+これを正則局所A上の有限生成Nの既存の有限自由分解に適用し、元の
+`boundedAboveDerivedTensorModuleFunctor`の対象が完備であると証明した。
+Nの完備性・p正則性・平坦性は追加しない。有限自由の階数0と零環も含む。
+
+`CommutativeAlgebra/PerfectoidDerivedComplete.lean`では、integral perfectoidの定義の
+古典p完備性から導来p完備性を得て、任意基底への元の係数制限で保存した。
+pねじれなし・有界pねじれを追加仮定にしない。
+`rPerfd_isModuleComplete`と`rPerfd_derivedTensor_isComplete`により、既存と同じ選択の
+実RPerfd・元のA作用・元の実導来tensorで上の入力を実際に供給した。
+この実適用の存在依存は既存B-Iだけで、消滅・isogeny・冪等性の引用は使っていない。
+
+共通8宣言はsorry非依存・標準3公理のみで、合成import閉包140モジュールに
+BS・CLMST・Inputs・Paper依存なし。対象3778ジョブ、専用監査8宣言と3型検査、
+実RPerfdの限定依存監査、KL501件の監査、全体5227ジョブが成功した。
+有限生成係数での実tensorの完備性は供給済み。
+残るのはp冪ねじれ係数のalmost Tor入力、通常M/pⁿMとの塔比較、BS10.2/10.3に基づく
+完備almost零化の拡大閉性、hI、既存の実RPerfdの存在入力そのものの解消である。
+G2の無条件H⁰環比較はBS10.3の完備tensor全体の離散性を証明しない。
 
 ### 9.8. 各区切りの保存と検証
 

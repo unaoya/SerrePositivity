@@ -2,6 +2,8 @@ module
 
 public import SerrePositivity.CLMST.ConditionalCohomologyVanishing
 public import SerrePositivity.HomologicalAlgebra.TorFiniteCoefficients
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FiniteTensorComplete
+public import SerrePositivity.CommutativeAlgebra.PerfectoidDerivedComplete
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdeal
 public import SerrePositivity.CommutativeAlgebra.RegularParameters
 
@@ -34,6 +36,23 @@ lemma parameter_power_isKoszulResolution
 variable (D : Type u) [CommRing D] [Algebra A D] [Module.Finite A D]
     (p : ℕ) [Fact p.Prime]
     (hperf : IsIntegralPerfectoid (CompletedTower A t p) p)
+
+/-- The selected RPerfd is derived p-complete for its original A-action. This
+uses its existing perfectoidization property, without a torsion-free assumption. -/
+lemma rPerfd_isModuleComplete :
+    DerivedCompletion.IsModuleComplete A (p : A)
+      (ModuleCat.of A (RPerfd A D t p hperf)) :=
+  IsIntegralPerfectoid.isModuleComplete_algebra A (RPerfd A D t p hperf) p
+    (isPerfectoidization_toMixedPerfectoid A D t p hperf).1
+
+/-- The actual RPerfd derived tensor with every finite A-module is complete.
+No completeness, p-regularity, or flatness is imposed on the test module. -/
+lemma rPerfd_derivedTensor_isComplete (N : ModuleCat.{u} A) [Module.Finite A N] :
+    DerivedCompletion.IsComplete A (p : A)
+      ((boundedAboveDerivedTensorModuleFunctor
+        (ModuleCat.of A (RPerfd A D t p hperf))).obj N) :=
+  DerivedCompletion.boundedAboveDerivedTensor_isComplete_of_finite_regular A (p : A)
+    (ModuleCat.of A (RPerfd A D t p hperf)) N (rPerfd_isModuleComplete A t D p hperf)
 
 /-- The actual finite-stage map has the base compatibility required by the
 Koszul/local-cohomology theorem. -/
