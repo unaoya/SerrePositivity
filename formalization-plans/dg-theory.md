@@ -4086,3 +4086,24 @@ semifree全体の相対K-flat性は未完。次は全作用と可換するgraded
 各段階のacyclic性を帰納した上で§17.55の逐次余極限閉性へ接続する。
 U11eの結合coherence、相対版の残る閉性・quasiIso保存、U12残部・U13〜U17・D4mも未完。
 共有系列への追加要求はなく、担当外ファイルを編集していない。
+
+### 17.57 U12b2：graded-split拡張のtensor後の分裂と短完全性（2026-10-16）
+
+`Tensor/GradedSplitElements.lean`は既存ModuleGradedSplitのsection/retractionを主Hom endの
+次数0要素としてbalanced tensorへ送り、生成元上の公式を証明する。chain map条件は課さない。
+rightTensorMapは既存rightTensorFunctor.mapを元のbalanced tensor対象間の射として読む。
+`Tensor/GradedSplitLaws.lean`は純粋生成元の外延性から包含–retraction・section–射影・
+分解恒等式をcochainの等式として証明した。
+`Tensor/GradedSplit.lean`はそれらを各次数のShortComplex.Splittingへ束ね、
+tensorShortComplexの短完全性、両端のacyclic性から中央のacyclic性、相対K-flat性の拡張閉性を得る。
+任意左加群を使え、その対象やHomにflat性を仮定しない。
+
+Checks.TensorGradedSplit・Checks.SphereFreeKFlat・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2818 jobs、終了コード0、警告なし）。任意A・独立対象宇宙、
+任意非有界coneの次数−1の分裂、ZMod 2を検査した。
+主要15宣言の直接公理監査は終了コード0、標準公理のみ。監査累計1718宣言。
+今回の4ファイルにsorry/admit/新規axiomはない。担当差分の空白検査も成功。
+
+次はこの拡張閉性を実際のsemifree filtrationの各段階へ適用し、逐次余極限と網羅性の同型を使う。
+U11eの左右自然性と結合coherence、U12残部・U13〜U17・D4mも未完。
+共有系列への追加要求はなく、担当外ファイルを編集していない。
