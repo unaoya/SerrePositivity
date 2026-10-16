@@ -2733,3 +2733,15 @@ barのπ₀単射性の残項目は解消。高次を保つ自然な小値化・
 元の小さいSSetモデルだけでπ₀同値・全基底自然性・元のbar比較との一致と両変数の弱同値不変性も得る。
 高次を保つ合同関係の存在・自然小値化・最終小さい厳密RMap・F2は未完了。
 検証：`scripts/check_ordinary_kan_bar_mapping_classes.lean`、計画書§333。
+
+
+### Kan barの有限境界商からの全出力（§334）
+
+`DiscreteLocalizedExtension`は局所化後可逆な全自然比較に沿って、離散値比較を一意に降下する。
+`OrdinaryKanBarQuotient.QuotientData`は実Kan bar上の安定な合同関係・実商型のv-small性・有限境界持ち上げ性を記録する。
+この未構成の入力を供給した場合、小さい厳密なcurry、Kan性、元のbarとの全自然比較、
+任意のanodyne反転関手での全図式同型、異なる入力間の比較が得られる。
+ラベル保存は入力から導く。元の小さいSSetモデルだけで弱同値不変性・実π₀同値・全基底自然性・
+元のbar比較との一致も得る。大きいSSetモデルは不要。
+QuotientDataの一般の存在・無条件の最終RMap・F2全体は未完了であり、条件付きの出力とは区別する。
+検証：`scripts/check_ordinary_kan_bar_quotient.lean`、計画書§334。
