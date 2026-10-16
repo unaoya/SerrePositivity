@@ -15522,3 +15522,78 @@ Kanの場合の判定を元のfへ戻す。この証明には両宇宙ともモ�
 元の小さいSSet[v]値の新しい厳密関手への自然な小値化はまだ構成していない。
 F1の最終RMap・不変性・Kan性・π0比較への統合、F2の最終自然弱同値zigzag比較は未完了。
 全体目標F→L→E→Sを維持する。
+
+
+## 293. 右脚への終域側接続：反対圏のresolutionと実自然弱同値span（2026-10-16）
+
+§292の次項目であるbar右脚を調べ、既存の全中心lift作用が主に源のresolutionを
+動かす構成であることを確認した。実replacement索引は終域のfibrant replacementも
+保持するため、その終域側を既存のresolution一般論に接続する実比較を構成した。
+以下のspanは終域resolutionへの補助的な比較であり、§288のbar span右脚そのものの
+弱同値証明とは区別する。
+
+### 293.1 反対モデル圏の一般論から得る実fibrant target図式
+
+`DualResolutionTargets`の索引は既存のResolutionObject(Cᵒᵖ)、FramedResolution(Cᵒᵖ)の
+反対圏であり、別のresolution構造を定義していない。
+各対象のcosimplicial resolutionをunopして、C内の実simplicial diagramを作る。
+全次数の対象のfibrancyと、元のbaseから各次数へのcoaugmentationのtrivial cofibration性を
+既存Reedy一般論と反対モデル構造から証明する。
+
+各次数は既存FibrantReplacementObject Cの実対象を与える。
+全simplicial作用素を実replacement比較として保持し、対象の全比較射にも自然である。
+作用素の実射は元のモデル弱同値となる。
+framedな終域のbase射影は充満であり、任意のbase射の実liftも構成するが、
+独立に選択したliftが厳密なsectionを与えるとは主張しない。
+源Cには任意のMathlibモデル構造のみを要求し、関手的分解は追加しない。
+
+### 293.2 終域も動かした対角mapping図式と小さいKan置換
+
+`RightResolutionMapping`は、源のFramedResolutionと293.1のframedな終域を索引とする。
+各終域次数で実ReplacementMapping.uncurriedを制限し、厳密なbisimplicial mapping図式を作る。
+対角の値は元のHom宇宙vのSSetである。
+終域0次の値から全退化射を使う全図式の自然比較を構成し、全行の実弱同値性と
+既存の小さいbisimplicial対角定理から、その成分が元のモデル弱同値であることを証明する。
+
+対角そのもののKan性は仮定せず、既存の小さいSSetのKan置換を適用する。
+元の0次値からそのKan図式への自然比較も実弱同値である。
+源・終域のbase射が弱同値なら新図式の実射も弱同値となる。
+両端のKan性を使って比較のπ0の全単射を証明し、既存の実π0比較と合成して
+元のbase対象間の局所化Homとの同値を構成する。
+対象宇宙uとHom宇宙vは独立であり、値側にSSet[max(u,v)]のモデル構造は要求しない。
+新しい索引は装飾付きであり、Cᵒᵖ×C上の最終RMapではない。
+
+### 293.3 各旧presentationを含む実自然弱同値span
+
+`RightResolutionRefinement`は、293.1の終域0次presentationから旧fibrant replacementへの
+実比較をcomma対象として記録し、そのbase射が弱同値である充満部分圏を使う。
+旧mapping図式と新しい対角mapping図式を、この同じ索引へ制限する。
+終域0次mapping図式を共通の中間として、両側への実自然変換を構成し、
+両脚が元の小さいSSetモデルの弱同値であることを証明する。
+新図式のKan置換への自然弱同値も同じ中間から得る。
+
+旧presentation Yごとに、そのbase上のframedな双対resolutionを選び、
+0次presentationからYへの実liftを取る。これはbaseの恒等射を覆うため弱同値である。
+従って全旧presentationが補助索引の対象として実際に現れ、旧図式への射影は
+その対象を文字どおり回収する。ここで厳密な関手的選択、cofinality、
+bar unitの弱同値性をこの対象被覆だけから推論してはいない。
+
+### 293.4 受入検証と残項目
+
+実装コミット`1127bcd5`。全て成功した。
+
+- 共有入口のbuild：2825 jobs、追加警告なし。
+- `check_right_resolution_mapping`：終域各次数の実fibrant replacementと全作用素、
+  独立宇宙の任意モデル源での小さいKan図式、両変数の弱同値不変性、
+  全自然弱同値span、各旧presentationの回収と元のbase間Homへのπ0同値。
+  新規76宣言・3モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：8641宣言・628モジュール、標準公理のみ。
+- `check_universe_lift_anodyne_reflection`：62宣言・5モジュールの回帰確認。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+次は、反対モデル圏の全中心lift作用を終域方向へ適用し、
+源・終域両側のraw二重Homとこの対角図式の比較を通して、既存の全整合系へ接続する。
+この作用から実bar span右脚の弱同値を導く部分はまだ証明していない。
+基底Cᵒᵖ×C上の新しい小さい厳密関手への自然な小値化も残る。
+F1の最終RMap・不変性・Kan性・π0比較への統合、F2の最終自然弱同値zigzag比較は未完了。
+全体目標F→L→E→Sを維持する。

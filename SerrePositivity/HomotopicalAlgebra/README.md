@@ -2240,3 +2240,14 @@ anodyne局所化での可逆性の保存を証明する。
 元の小さいモデルを指定した場合の実弱同値判定と、全自然変換についての同値も公開する。
 bar右脚と最終の小さい厳密RMapは未完了。
 検証：`scripts/check_universe_lift_anodyne_reflection.lean`、計画書§292。
+
+
+### 終域resolutionと実自然弱同値span（§293）
+
+`HomotopyFunctionComplex/DualResolutionTargets`は反対モデル圏の既存resolutionを用い、
+全終域次数を既存fibrant replacement圏の実対象・実比較として扱う。
+`RightResolutionMapping`は終域も動かした小さい対角図式と、その小さいKan置換を構成する。
+0次値からの自然弱同値、両変数の弱同値不変性、元のbase間Homとのπ0同値を持つ。
+`RightResolutionRefinement`は全旧presentationを含む補助索引で、旧図式と新図式を結ぶ
+実自然弱同値spanを構成する。対象被覆だけでcofinalityやbar右脚の弱同値は主張しない。
+検証：`scripts/check_right_resolution_mapping.lean`、計画書§293。
