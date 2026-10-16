@@ -2515,3 +2515,14 @@ pushout後の単射性、一般augmentation・評価・最終小値化・F2は�
 `KanMonoPushoutEquivalence`は任意の実pushout後のテストの単射性・全単射性と可逆性を証明する。
 補助宇宙のモデル構造は不要。逐次・超限貼り合わせ、一般augmentation・評価、最終小値化・F2は未完了。
 検証：`scripts/check_kan_pushout_equivalence.lean`、計画書§315。
+
+
+### 固定持ち上げ族と逐次・超限合成の閉性（§316）
+
+`KanRelativeLifting`は実境界pushout-productへの持ち上げから全相対ホモトピーを構成する。
+`KanTestLiftingClass`は局所化後可逆なモノ射を、モノ射と固定Kan右テスト族のllpとの共通部分に同定する。
+`KanLocalizedTransfinite`は任意の小さい整列添字でこのクラスの超限合成閉性を証明する。
+実連続図式と指定colimitから元の先頭射の可逆性を得る。ℕ列の専用入口もある。
+補助モデル構造・Qのcolimit保存は不要。二つの骨格図式間の比較、一般augmentation・評価、
+最終小値化・F2は未完了。
+検証：`scripts/check_kan_transfinite_equivalence.lean`、計画書§316。
