@@ -7602,3 +7602,48 @@ dg圏の解像度を使う版を区別し、global semifreeから各fiber semifr
 解像度比較・選択独立性・両変数の導来合成は残り、U12e全受入とはしない。
 U12f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完で、U17までの目標を保持する。
 共有系列への新しいAPI要求はない。
+
+### 17.167 U12e8：任意bimoduleの積dg圏上semifree解像度と比較（2026-10-17）
+
+`Bimodule/RightModuleComparison.lean`の**rightModuleBimoduleEquivalence**は、
+既存左右加群同値と§17.166の圏同値を合成し、(Bᵒᵖ⊗C)ᵒᵖ上の右dg加群圏から
+主BimoduleCategory A B Cへの同値を与える。
+**rightModuleBimoduleEvaluationIso**は、値(b,c)での評価と元の右加群のop(op b,c)での
+評価との自然同型。**rightModuleBimoduleEquivalence_quasiIso_iff**は指定準同型クラスの一致で、
+左右同値のcounitの自然性と準同型クラスの同型不変性を使う。
+
+`Bimodule/SemifreeResolution.lean`の**BimoduleSemifreeResolution**は、積dg圏のopposite上の
+source加群、その実際のModuleSemifreeFiltration、同値で運んだ主bimoduleからMへの増大射π、
+指定quasiIsoの証拠を保持する。各fiberのsemifree性・相対K-flat性は定義の仮定に含めない。
+**bimoduleCanonicalSemifreeResolution**は既存の可算cell候補とfiltrationをそのまま利用し、
+比較同値のcounitと合成してπを構成する。**exists_semifree_bimodule_resolution**により
+任意Mへのこの解像度の存在を証明した。値ごとのπの準同型性も公開した。
+
+`Derived/BimoduleSemifreeComparison.lean`は増大射を同値の充満性で右加群圏へ戻し、
+**toProjectiveResolution/augmentation_fac**を与える。既存の射影解像度比較を再利用して
+主bimodule圏の実際の**comparison**射とその準同型性を構成した。
+**map_eq_of_source_homotopy**は、積dg圏上の全dg自然な加群ホモトピーを、
+準同型を反転する関手のcylinderによる既存定理を使って導来bimodule圏で同一視する。
+**comparison_fac**は導来bimodule圏で増大射と可換になること、**comparison_unique**は
+その可換式を満たす射の像の一意性。**comparisonIso**と**comparisonIso_self/trans**は
+この解像度族の比較同型と自己・推移整合性を与える。
+Monoの型クラス探索での展開による時間超過は、指定したbimoduleDerivedIsoを使う
+Iso.cancel_iso_hom_rightへ置換して解消し、計算上限は増やしていない。
+主bimodule圏のホモトピー構造自体の構成や、任意右K-flat置換の比較をこの結果に含めない。
+
+Checks.BimoduleSemifreeResolution・Checks.BimoduleTensorEquivalence・Checks.DerivedBimodulePentagon・
+Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功
+（3026 jobs、終了コード0、警告なし）。独立B/C対象宇宙、評価自然同型、任意Mへの解像度、
+semifree性、値ごとの準同型性、比較射・増大射の可換性・推移整合性とZMod 2の存在を検査した。
+主要19宣言の直接公理監査は標準公理のみ。監査累計3176宣言。
+今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は13 Markdown・320 exposition参照を検査し、従前と同じ担当外の
+BhattScholze互換宣言の未解決参照1件で失敗した。共有ルート・共有一般論・該当系列は編集していない。
+
+次は右制限の相対K-flat性を証明する。生成cellを右B加群へ制限したときに現れる
+相手側Hom_C(c₀,c)のA上K-flat性、graded-split拡張・逐次余極限との整合性を明示する。
+この局所Hom条件を課す版とdg圏自体を解像度で置き換える版を区別する。
+積dg圏上semifreeを各fiberのsemifreeや無条件の右相対K-flatと同一視しない。
+右K-flat置換による両変数導来合成・その計算同型とcoherenceまでU12eの残課題に保持する。
+U12f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完で、U17までの目標を保持する。
+共有系列への新しいAPI要求はない。
