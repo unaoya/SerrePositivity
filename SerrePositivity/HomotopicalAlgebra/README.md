@@ -2859,3 +2859,15 @@ ambient値への厳密な評価、全パラメータ置換と両関手の可換s
 厳密な合成・単位と射影による保存を証明する。最終RMapそのものではない。
 射影の厳密なsectionやcofinalityは主張しない。小さいSSet値降下・移送後の内部単位・最終RMap・F2は未完了。
 検証：`scripts/check_choice_mapping_space.lean`、計画書§344。
+
+
+### 自由図式全体の相対パラメータ延長（§345）
+
+`OrdinaryBarFreeDiagramExtension`は任意quiver上の自由図式をmono U → Tに沿って延長し、
+制限後に元の関手全体へ戻る実等式と、基底への射影の一致を証明する。
+基底の自由図式だけから選択圏への実関手を構成し、元の全基底グラフにもfreeCoverを適用した。
+`OrdinaryBarRelativeFreeDiagramExtension`はT上で指定済みの生成射と、
+それらからなる任意長のpathを固定したまま自由図式を延長する。
+元の源モデルの自由性、関係付き図式の自動的な持ち上げ、基底上の厳密なsectionは要求・主張しない。
+高次の組立て・小さいSSet値降下・移送後の内部単位・最終RMap・F2は未完了。
+検証：`scripts/check_relative_free_diagram_extension.lean`、計画書§345。
