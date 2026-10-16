@@ -13214,3 +13214,60 @@ cosimplicial Homの厳密二変数関手をuncurryし、augmentationへの自然
 源側因子分解点での既存preEdgeとの比較、旧独立選択・全括弧付け、全外部合成列の高次整合性、
 任意標的へのSSet値拡張、最終C上の厳密化と最終比較は未完了である。
 F1および全体目標F→L→E→Sを維持する。
+
+
+## 258. F1進捗：旧混合選択空間の厳密図式と既選択の全列比較の保持（2026-10-16）
+
+§257の混合文脈図式を、従来の実際の混合選択空間・補間・比較単体へ接続した。
+新しい独立な比較へ置き換えず、§240・§252の既選択の面と全列族を保持した。
+
+### 258.1 相対選択空間の実際の同型
+
+共有`Simplicial/RelativeChoiceIso`は、境界を保つ標的同型から相対選択空間の実際の同型を構成する。
+hom/invの両側のprojection、全パラメータ族の評価、ofExtensionとの可換性を証明する。
+モデル構造や境界の単射性は要求しない。
+
+`MixedChoiceCompatibility.family_existing`は、§257の自然な根のlift族をfiberIsoで移すと、
+元の`ResolutionLiftPostcomposition.map`に続いて`ResolutionLiftPrecomposition.map`を
+適用する写像そのものであることを示す。`leftFamily_existing`と`boundary_existing`により、
+元の混合familyAと固定境界へ接続する。`choiceIso`は各文脈の相対選択空間を
+元の`CoherentLiftMixedComparison.space`と同型にし、`point_existing`は自然な点を
+既存のpointAそのものと同定する。
+
+### 258.2 元の空間を値とする関手と、選択済み単体の保持
+
+`existingFunctor`は、元の混合spaceを値として、choiceIsoで§257の射を移した厳密関手である。
+`existingIso`は成分同型を一つの自然同型へまとめる。既存pointAとprojectionを成分とする
+自然変換`existingPoint`・`existingProjection`と、その合成が恒等射であることも証明した。
+
+`retain`は任意の旧パラメータ族を新しい図式の値へ移し、逆に戻すと厳密に元へ復元する。
+評価族はfiberIso.invによる実際の移送で、パラメータの全写像と可換である。
+`retainedTriangle`は§240で選択済みの二つの三角形を保持し、その全三面と共有対角線の式を満たす。
+ここから、独立に選択した全ての比較点や三角形が外部文脈で自然になるとは主張しない。
+
+### 258.3 全因子分解列上の既選択の正方形への接続
+
+`AllFactorizationMixedContext`は、実際のFrameMap付きa、基底射f、標的resolution射g,bに対し、
+対応する一つの混合文脈を構成する。その値のchoiceIsoを通じて、§252の全列上の混合正方形を
+一度選んだ族全体のまま移す。`triangle_recover`により元の全体族を厳密に復元する。
+`triangle_AB/BD/AC/CD`は四辺が元の全体的な前後合成ホモトピーの実際の移送であることを示す。
+共有対角線も保持する。各有限単体の値はSSetの元の射宇宙vにあり、全ての面・退化の式を満たす。
+大きい宇宙のモデル構造、源のcombinatorial性・関手的分解は仮定しない。
+
+### 258.4 受入検証と残項目
+
+実装コミット`1972260f`。全て成功した。
+
+- 共有入口の合同build：2682 jobs、追加警告なし。
+- `check_mixed_choice_compatibility`：一般の標的同型、任意モデル源・独立宇宙、元の混合spaceの
+  厳密図式・自然同型・自然な既存pointA、旧三角形の全ての面、全列上の旧比較の厳密復元、
+  既存ホモトピーを保持する面、小さい値と全面・退化を検証。56宣言・3モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：6538宣言・487モジュール、標準公理のみ。
+- `check_mixed_choice_functor`：63宣言・2モジュールの回帰確認。
+- `check_all_factorization_mixed`：101宣言・3モジュールの回帰確認。
+- 新規ソースの行長・空白・証明用マーカー確認、stageした差分の空白検査。
+
+混合文脈図式と既選択の局所・全列比較との接続を得た。
+次は既選択系を保持する外部合成列の相対高次整合性を組み立て、基底CへのSSet値降下へ進む。
+全括弧付け、任意標的へのSSet値拡張、最終C上の厳密化と最終比較は未完了であり、
+F1と全体目標F→L→E→Sを維持する。
