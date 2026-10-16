@@ -2768,3 +2768,14 @@ anodyne拡張上の実kernel、実商型のv-small性、有限境界持ち上げ
 同じ基底射のpresentation比較の像は同じホモトピー類となり、射影のsection等は仮定しない。
 元の小さいSSetモデルだけを使う。実写像を射とするSSet値の厳密化・高次整合性・最終RMap・F2は未完了。
 検証：`scripts/check_ordinary_bar_homotopy_descent.lean`、計画書§336。
+
+
+### 全パラメータ写像空間の宇宙比較（§337）
+
+`SimplexParameterHom`はn単体K ⊗ Δ[n] → Pを持つ実写像空間、native内部Homとの単体同型、
+両変数の厳密なbifunctor、同じパラメータでの合成・単位・結合、Kan対象への写像空間のKan性を供給する。
+`UniverseLiftParameterHom`はこの全空間の明示的ulift比較、全bifunctorの自然同型、
+族の合成squareと単位の保存、およびnative内部Homのulift比較を証明する。SSetモデルは不要。
+受入例で実際の小さいbar参照値間にも適用した。
+元の基底作用の全高次整合性・SSet値の厳密な降下・最終RMap・F2は未完了。
+検証：`scripts/check_universe_lift_parameter_hom.lean`、計画書§337。
