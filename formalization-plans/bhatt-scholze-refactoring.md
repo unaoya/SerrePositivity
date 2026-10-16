@@ -62,7 +62,7 @@ BS側が変更するのは `SerrePositivity/BhattScholze/`、このBS計画、BS
 | R2e | δ閉包の生成元定理を基礎層へ集約 | 配置・再利用 | `DeltaClosureGeneration`、`DeltaDivisionIteratedRelations` | 完了 |
 | R3a | rank-one DPの一般比較射を分離し特殊版を一般版へ委譲 | 配置・再利用 | 新 `RankOneDPBaseChangeMap`、`RankOneDPTensorRelations`、`RankOneDPAnyBasis`、`RankOneDPPrimeBasis`、`RankOneDPBaseChange` | 完了 |
 | R3b | principal DPの一般関係式を分離し基底変更を一本化 | 配置・再利用 | 新 `PrincipalDPBaseChangeRelations`、`PrincipalDPBaseChange`、`PrincipalDPBaseChangeUniversal` | 完了 |
-| R3c | DP表示の正則性で不要なp局所性を外した一般入口 | 証明拡張 | `PrincipalDPRegular` | 一時検査済みの一般入口を反映、統合検証中 |
+| R3c | DP表示の正則性で不要なp局所性を外した一般入口 | 証明拡張 | `PrincipalDPRegular` | 完了。一般入口2件と旧包装2件の監査、旧完全署名の一致を確認 |
 | R4a | 初期係数表示を既存モニック表示比較へ接続 | 再利用・比較 | `DeltaDivisionFirstCoefficientPowerEquiv`、`MonicPowerFamilyBaseQuotient` | 完了 |
 | R4b | 根関係式の通常の冪指数を非零指数に一般化 | 証明拡張 | 新 `MonicPowerFamilyRelationRegularity`、`DeltaRootRelationKoszul`、`DeltaRootSubsetQuotient`、`DeltaRootFiniteRegularSequence`、`DeltaDivisionSourceGraphKoszul` | 5モジュールと旧24完全署名を一時検査後に反映、統合検証中 |
 | R4c | hpAからhpL・ghost単射を供給する公開入口を揃える | 再利用 | `DeltaRootSourceRegularGhost`、`DeltaRootFamilyRegularGhost`、`DeltaRootFamilySourceQuotientFlat`、`DeltaRootBoundedSupportQuotientFlat` | 新APIは不要。既存of_flatとG4へ委譲する4モジュールを一時検証中 |
@@ -383,6 +383,11 @@ R4bも計画済み5ファイルの一時検証から再開する。これらを�
   既存perfectionと有限部分集合余極限の公開署名・遷移・shiftは維持。
   534対象・4,569ジョブ、基礎584件・B4 2,560件、追加7宣言と旧3入口のfocused監査が成功。
   R2c/R2d/R3cの旧75完全署名が一致し、追加宣言の依存公理は標準3公理のみ。
+
+- R3c：principal DP表示のmod p関係式の正則性とp正則性の一般入口から、不要なp局所性だけを除いた。
+  素数性、係数環のp正則性、mod pの指定元の正則性は保持し、旧二つの入口は同じ型の包装として残す。
+  534対象・4,569ジョブ、基礎584件・B4 2,560件、一般2宣言・旧2宣言のfocused監査が成功。
+  旧完全署名は一致。新sorry・追加公理・引用依存なし。
 
 ## 10 再調査の反映と残りの実施契約
 

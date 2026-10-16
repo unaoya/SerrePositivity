@@ -23,16 +23,15 @@ theorem rankOneDPGenerator_pow_mem_prime :
   exact map_dvd (Nat.castRingHom B₀)
     (Nat.dvd_factorial (Fact.out : p.Prime).pos le_rfl)
 
-/-- y mod pが正則なら、表示関係γ₁(1)−yも一元分冪代数のmod pで正則。 -/
-theorem principalDPRelation_mod_p_isSMulRegular
-    (hA : ∀ m : ℕ, ¬p ∣ m → IsUnit (m : A))
+/-- p乗算が単射でy mod pが正則なら、表示関係もmod pで正則。p局所性は不要。 -/
+theorem principalDPRelation_mod_p_isSMulRegular_of_p_mul_injective
     (hpA : Function.Injective (fun a : A ↦ (p : A) * a)) (y : A)
     (hy : IsSMulRegular (A ⧸ Ideal.span {(p : A)})
       (Ideal.Quotient.mk (Ideal.span {(p : A)}) y)) :
     IsSMulRegular (B₀ ⧸ Ideal.span {(p : B₀)})
       (Ideal.Quotient.mk (Ideal.span {(p : B₀)})
         (DividedPowerAlgebra.dp A 1 (1 : A) - algebraMap A B₀ y)) := by
-  let : Module.Free A B₀ := rankOneDPPrime_moduleFree hA hpA
+  let : Module.Free A B₀ := rankOneDPAny_moduleFree A
   let q := Ideal.Quotient.mk (Ideal.span {(p : B₀)})
   let x := q (DividedPowerAlgebra.dp A 1 (1 : A))
   let c := q (algebraMap A B₀ y)
@@ -74,6 +73,35 @@ theorem principalDPRelation_mod_p_isSMulRegular
   change c ^ p * (z - t) = c ^ p * 0
   rw [mul_zero, ← hn p, hx, zero_mul]
 
+set_option linter.unusedVariables false in
+/-- y mod pが正則なら、表示関係γ₁(1)−yも一元分冪代数のmod pで正則。 -/
+theorem principalDPRelation_mod_p_isSMulRegular
+    (hA : ∀ m : ℕ, ¬p ∣ m → IsUnit (m : A))
+    (hpA : Function.Injective (fun a : A ↦ (p : A) * a)) (y : A)
+    (hy : IsSMulRegular (A ⧸ Ideal.span {(p : A)})
+      (Ideal.Quotient.mk (Ideal.span {(p : A)}) y)) :
+    IsSMulRegular (B₀ ⧸ Ideal.span {(p : B₀)})
+      (Ideal.Quotient.mk (Ideal.span {(p : B₀)})
+        (DividedPowerAlgebra.dp A 1 (1 : A) - algebraMap A B₀ y)) :=
+  principalDPRelation_mod_p_isSMulRegular_of_p_mul_injective hpA y hy
+
+/-- p乗算が単射でy mod pが正則なら、具体的分冪表示環もp正則。p局所性は不要。 -/
+theorem principalDPPresentation_p_mul_injective_of_regular_mod
+    (hpA : Function.Injective (fun a : A ↦ (p : A) * a)) (y : A)
+    (hy : IsSMulRegular (A ⧸ Ideal.span {(p : A)})
+      (Ideal.Quotient.mk (Ideal.span {(p : A)}) y)) :
+    Function.Injective (fun b : PrincipalDPPresentation A y ↦
+      (p : PrincipalDPPresentation A y) * b) := by
+  have hp : IsSMulRegular B₀ (p : B₀) := by
+    simpa only [map_natCast] using rankOneDPAny_isSMulRegular (p : A) hpA
+  have h := SerrePositivity.isSMulRegular_quotient_span_of_regular_mod B₀ (p : B₀)
+    (DividedPowerAlgebra.dp A 1 (1 : A) - algebraMap A B₀ y)
+    hp
+    (principalDPRelation_mod_p_isSMulRegular_of_p_mul_injective hpA y hy)
+  simpa only [IsSMulRegular, smul_eq_mul, map_natCast, PrincipalDPPresentation,
+    principalDPRelationIdeal] using h
+
+set_option linter.unusedVariables false in
 /-- 正則一元入力の下で、具体的分冪表示環にはpねじれがない。 -/
 theorem principalDPPresentation_p_mul_injective
     (hA : ∀ m : ℕ, ¬p ∣ m → IsUnit (m : A))
@@ -81,12 +109,7 @@ theorem principalDPPresentation_p_mul_injective
     (hy : IsSMulRegular (A ⧸ Ideal.span {(p : A)})
       (Ideal.Quotient.mk (Ideal.span {(p : A)}) y)) :
     Function.Injective (fun b : PrincipalDPPresentation A y ↦
-      (p : PrincipalDPPresentation A y) * b) := by
-  have h := SerrePositivity.isSMulRegular_quotient_span_of_regular_mod B₀ (p : B₀)
-    (DividedPowerAlgebra.dp A 1 (1 : A) - algebraMap A B₀ y)
-    (rankOneDPPrime_p_mul_injective hA hpA)
-    (principalDPRelation_mod_p_isSMulRegular hA hpA y hy)
-  simpa only [IsSMulRegular, smul_eq_mul, map_natCast, PrincipalDPPresentation,
-    principalDPRelationIdeal] using h
+      (p : PrincipalDPPresentation A y) * b) :=
+  principalDPPresentation_p_mul_injective_of_regular_mod hpA y hy
 
 end SerrePositivity.BhattScholze
