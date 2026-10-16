@@ -755,6 +755,8 @@ public import SerrePositivity.BhattScholze.PerfectDeltaTensorPCompletion
 
 public import SerrePositivity.CommutativeAlgebra.AdicCompletionAlgebraUniversal
 
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalClassicalComparison
+
 /-!
 # Serre の交点重複度の正値性の形式化
 
