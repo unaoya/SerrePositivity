@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionBarFrameSquares
+
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionBarConeDiagram
 
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionBarSimplexCone
