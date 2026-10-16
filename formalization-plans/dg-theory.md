@@ -5821,3 +5821,31 @@ U15b全受入は未完。次は各eraseRowを全直和の次数+1自己cochain�
 二つのε消去の相殺と二乗零、元の内部微分との和の二乗零、合成・単位との両立を証明する。
 U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mも未完。
 採用済み引用は0件。共有一般論・共有ルートimport・他系列の変更は編集していない。
+
+
+### 17.117 U15b2：全path直和の消去作用素と二重消去の有限和表示（2026-10-16）
+
+`Quotient/ErasureOperator.lean`は各eraseRowを次数+1のcocycleとして保持し、
+MathlibのCocycle.equivHomShiftでshift先へのchain mapへ移す。
+その直和descでerasureToShiftを構成し、逆の同値から全path直和の自己cochain erasureを得た。
+内部微分との反交換erasure_closedと、各pathへの制限が元の有限和と一致するerasure_precompを
+証明した。元のHomを表す空pathへの制限は零である。
+
+erasure_square_precompは、二重消去の各pathへの制限を
+「最初のfaceと消去後のpathのeraseRowとの合成」の有限和へ展開する。
+長さ0と長さ1のpathについて二重消去が零となる基底例も証明した。
+任意長で異なる二つのεを消す際の符号付き相殺は未証明であり、
+erasure自体の二乗零、全微分、最終dg商の存在をこの段階で主張しない。
+shift先へのchain mapはcocycleの表示に用いるもので、最終dg商の閉零射と混同しない。
+
+Checks.ErasureOperator・Checks.ErasureFaces・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（2652 jobs、終了コード0、警告なし）。独立対象宇宙・任意非有界Hom・
+任意位置での制限と閉性、ZMod 2で長さ1の二重消去零を検査した。
+主要11宣言の直接公理監査は標準公理のみ。監査累計2559宣言。
+文書検査は24 Markdown・311 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次は任意長のface間の符号付き交換式と有限和の相殺を証明し、erasureの二乗零へ進む。
+その後に内部微分との和を最終Hom微分とし、path合成とのLeibniz・単位・結合を検証する。
+U15b全受入、U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mは未完。
+採用済み引用は0件。共有一般論・共有ルートimport・他系列は変更していない。
