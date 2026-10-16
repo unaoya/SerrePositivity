@@ -2445,3 +2445,15 @@ anodyne射を反転する任意の関手の下で、このmiddle比較は全自�
 前のnerveホモトピーを元bar値のホモトピーへ移す。
 標準単体圏augmentationとの端点の同定、augmentation・評価の可逆性、最終小値化・F2は未完了。
 検証：`scripts/check_ordinary_bar_nerve_bridge.lean`、計画書§309。
+
+
+### 元の端点の全写像の同定とaugmentation正方形（§310）
+
+`LabelledChain.reconstruct`は全実chainを基底chainと最初のラベルから正確に再構成する。
+`NerveSimplexFirstFunctor`は一般のnerveの最初の頂点関手を標準augmentationと同定する。
+`OrdinaryBarFirstEndpoint`は元のfirstCompositeを標準simplexAugmentationと全写像で同定する。
+`OrdinaryBarEvaluatedEndpoint`は元のもう一端を小さい評価先の単体圏経由の実合成に因子分解し、
+元の評価とのaugmentation正方形の可換性を証明する。
+元のbar値ホモトピーは、標準augmentationからこの実小さい因子分解へ向かうものになる。
+augmentation・評価の可逆性、自然な最終小値化・F2は未完了。
+検証：`scripts/check_ordinary_bar_endpoints.lean`、計画書§310。

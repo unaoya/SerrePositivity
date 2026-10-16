@@ -16573,3 +16573,70 @@ firstCompositeと独立に構成した標準のsimplexAugmentationとの全写�
 実写像が存在することだけから、これらのaugmentationや評価が弱同値であるとは結論していない。
 最終小さい厳密RMap、元のreplacement mapping図式との自然弱同値比較、
 基底上の自然な小値化・F2は未完了。全体目標F→L→E→Sを維持する。
+
+
+## 310. 元のbarホモトピーの端点同定と実augmentation正方形（2026-10-16）
+
+§309で未証明だったfirstCompositeと標準simplexAugmentationの全写像の同定を完了した。
+もう一方の端点も、小さい評価先の単体圏を経由する実単体的写像として因子分解した。
+ただしaugmentationと評価自体の可逆性は未証明であり、F1・F2の完了とはしない。
+
+### 310.1 全ラベル付きchainの厳密な再構成
+
+`CategoryTheory/LabelledChain.reconstruct`は、任意の要素圏の実chainが、
+元の基底chainと最初のラベルから構成したliftに正確に等しいことを証明する。
+`ext_of_first`は、同じ基底chainと最初のラベルの依存型を保つ等式から、全chainの等式を導く。
+射の情報を捨てた頂点ごとの比較ではなく、全関手の等式である。
+
+`CategoryTheory/NerveSimplexFirstFunctor`は、nerve(D)の単体圏から最初の頂点を取る実関手を構成する。
+canonical chainでは、これが元のchainを§309の共通parameterで制限する関手と等しいことを証明した。
+再構成を使い、任意のchainについてこの等式を証明する。
+そのnerve写像は、明示的な共通宇宙への持ち上げを除き、標準simplex augmentationそのものである。
+対象・Hom宇宙は独立であり、大きいSSetモデル構造は使わない。
+
+### 310.2 元のfirstCompositeの全写像の同定
+
+`OrdinaryBarFirstEndpoint`は、標準augmentationの自然性と310.1から、
+元のfirstCompositeと標準simplexAugmentationが同じ全comma chainを持つと証明する。
+parameterの0番目が0であることと、元の実prefixの恒等写像から、最初の実ラベル付き対象も等しいと証明した。
+同じ要素圏内のchain再構成により、元の全Homラベルと全実射を含む単体的写像の等式
+`firstComposite_eq`を得た。
+
+従って§309のbar値ホモトピーは、標準のsimplexAugmentationから出発する実ホモトピーとして使える。
+忘却したbase projectionがfaithfulであるとは仮定しない。ここで使う要素圏の再構成は、
+元の固定関手の要素と、その元の実ラベルについての明示的証明である。
+
+### 310.3 小さい側の実因子分解とaugmentation正方形
+
+`OrdinaryBarEvaluatedEndpoint`は、元のbar単体圏のnerveから小さい評価先の単体圏のnerveへの
+実evaluationNerveMapと、そこから元のbarへ戻る実rowNerveMapを構成する。
+両者は全作用素に整合し、合成が元のevaluatedCompositeに正確に等しい。
+単体圏・nerve・出力に必要なUniverseLiftのwrapperを明示的に保持する。
+
+元のsmall出力への標準augmentationも構成し、
+元barのsimplexAugmentationに元の評価を続けた射と、evaluationNerveMapに
+小さい側のaugmentationを続けた射が全単体的写像として等しいことを証明した。
+これは元の評価の自然性から直接導く可換正方形である。
+
+310.2と合わせ、標準simplexAugmentationとevaluationNerveMap≫rowNerveMapの実ホモトピーを得る。
+anodyne射を反転する任意の関手Lの下で、前者の像が後者の二つの実写像の像の合成に等しい。
+可逆性をこれらの定義に仮定として含めてはいない。
+
+### 310.4 受入検証と残る到達条件
+
+実装コミット`59633177`。以下はすべて成功した。
+
+- 共有入口のbuild：2900 jobs、追加警告なし。
+- `check_ordinary_bar_endpoints`：独立宇宙の全chain再構成、一般のnerve上のaugmentation同定、
+  元のfirstCompositeの全写像の等式、小さい評価先による実端点の因子分解、
+  元の評価との実augmentation正方形、同定後の実ホモトピーと任意のanodyne反転関手での合成等式。
+  追加・更新した6モジュールの全61宣言、標準公理のみ。
+- `check_ordinary_bar_nerve_bridge`：更新後の既存74宣言・6モジュールの回帰確認。
+- `audit_homotopical_foundations`：9587宣言・703モジュール、標準公理のみ。
+- ソース行長・証明用マーカー、stage差分の空白検査。
+
+§309の未解決項目だった端点の同定と実因子分解・正方形は今回解消した。
+標準simplex augmentationのanodyne局所化後可逆性、およびrow側の比較を評価の可逆性へ渡す部分は未完了。
+特に、正方形と片側のホモトピーがあることだけから評価が可逆とは結論しない。
+元のreplacement mapping図式との自然弱同値比較、基底上の自然な小値化、
+最終小さい厳密RMap・F2の最終自然弱同値zigzagは引き続き未完了。全体目標F→L→E→Sを維持する。
