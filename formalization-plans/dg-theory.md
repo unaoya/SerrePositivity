@@ -4525,3 +4525,36 @@ U11eのcoherence、U13〜U17・D4mも未完。次はU11eの検査結果を確認
 
 U11eの左右成分整合性の草稿検査はプロセスを確認し、両LeanプロセスともCPU使用を伴って継続中。
 今回の受入・監査件数には含めず、検査の観測待ちだけを理由に再起動していない。
+
+
+### 17.74 U13a1：指定生成元からの有限cell構成と有限support（2026-10-16）
+
+U11eの左右成分整合性の草稿検査はそれぞれ同じ実行ハンドルを再確認して継続中。
+独立に進められるU13aの構成データを先行した。U11eやU12e/fを受け入れたという意味ではない。
+
+`Perfect/FiniteCell.lean`はModuleFiniteCellCode A D S MをType値の帰納的データとして定義する。
+生成元集合S⊆D、具体的零加群、Sの代表加群、任意整数shift、既存moduleBiprod、既存moduleCone、
+主加群圏の同型による輸送を構成子に持つ。対象の型・射・操作の木を保持し、
+対象宇宙max (u+1) vを縮小しない。有限和は二項和の有限反復として扱う。
+生成元集合の拡大mono、操作木のsize、実際に出現するFinset Dのsupport、support⊆S、
+同じ対象をそのsupportだけから再構成するrestrictSupportを公開した。
+
+moduleFiniteCellOver SはこのデータのNonempty、moduleFiniteCellはS=univで定義する。
+零・代表・shift・二項直和・cone・同型での閉性、同型閉性instance、
+「指定集合Sから構成可能であること」と「S内のある有限集合から構成可能であること」の同値、
+全生成元版の有限生成元への依存も証明した。
+ここでの任意の同型輸送を許す構成データから、対象全体やenhancementのsmallnessは主張しない。
+既存PerfectComplex/PerfectHomotopyの型を置き換えず、比較はU13eで行う。
+
+Checks.FiniteCell・Checks.ShiftKFlat・Checks.StageSeven・既存Spectra.StageTwoの同時ビルドは成功
+（2713 jobs、終了コード0、警告なし）。任意A・独立対象宇宙・任意指定生成元集合・
+cone・整数shift・有限supportへの再構成・ZMod 2を検査した。
+主要19宣言の直接公理監査は終了コード0、標準公理のみ。監査累計1923宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。
+今回の2 Leanファイルにsorry/admit/新規axiomはない。担当差分の空白検査も成功。
+
+U13a全受入は未完。次は全Hom endによる射影性についてshift・二項直和・coneの閉性を
+既存の全Homのshift要素、graded-split短完全列、余積Hom計算へ接続し、構成木の帰納法で証明する。
+その後D(D)内のretractによるPerfとcompact性へ進む。
+U11eのcoherence・U12e/f・U13残部・U14〜U17・D4mも未完。
+共有モデル圏一般論への追加要求はなく、担当外ファイルを編集していない。
