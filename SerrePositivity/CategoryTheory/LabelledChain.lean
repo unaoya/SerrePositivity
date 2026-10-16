@@ -65,4 +65,27 @@ lemma map {G : D ⥤ Type w} (a : F ⟶ G) :
     apply Functor.Elements.hom_ext
     simp [lift, eqToHom_hom]
 
+/-- A labelled chain is exactly the lift of its actual underlying chain and first label. -/
+lemma reconstruct {n : ℕ} (e : ComposableArrows F.Elements n) :
+    lift F (e ⋙ Functor.Elements.π F) (e.obj 0).val = e := by
+  refine CategoryTheory.Functor.ext (fun i => Functor.Elements.ext _ _ rfl ?_) ?_
+  · change F.map (𝟙 _) (F.map (e.map (homOfLE (Fin.zero_le i))).hom (e.obj 0).val) = _
+    rw [F.map_id, types_id_apply]
+    exact (e.map (homOfLE (Fin.zero_le i))).map_val
+  · intro i j h
+    apply Functor.Elements.hom_ext
+    simp [lift, eqToHom_hom]
+
+lemma lift_heq {c d : ComposableArrows D n} (h : c = d)
+    {x : F.obj (c.obj 0)} {y : F.obj (d.obj 0)} (hx : HEq x y) :
+    HEq (lift F c x) (lift F d y) := by
+  subst d
+  cases hx
+  rfl
+
+lemma ext_of_first {n : ℕ} {c d : ComposableArrows F.Elements n}
+    (h : c ⋙ Functor.Elements.π F = d ⋙ Functor.Elements.π F)
+    (hx : HEq (c.obj 0).val (d.obj 0).val) : c = d :=
+  (reconstruct F c).symm.trans ((eq_of_heq (lift_heq F h hx)).trans (reconstruct F d))
+
 end SerrePositivity.LabelledChain

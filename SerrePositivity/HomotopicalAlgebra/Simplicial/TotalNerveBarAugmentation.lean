@@ -73,6 +73,16 @@ abbrev simplex {n : ℕ} (c : ComposableArrows (Total F) n) :
   LabelledChain.lift (F.flip.obj (Opposite.op (SimplexCategory.mk n))) (objects F c)
     (initialLabel F c)
 
+lemma first_vertex {n : ℕ} (c : ComposableArrows (Total F) n) :
+    (simplex F c).obj 0 =
+      (F.flip.obj (Opposite.op (SimplexCategory.mk n))).elementsMk
+        ((objects F c).obj 0) (initialLabel F c) := by
+  change (F.flip.obj (Opposite.op (SimplexCategory.mk n))).elementsMk _
+    ((F.flip.obj (Opposite.op (SimplexCategory.mk n))).map
+      ((objects F c).map (𝟙 0)) (initialLabel F c)) = _
+  rw [(objects F c).map_id, CategoryTheory.Functor.map_id]
+  rfl
+
 lemma simplex_operator {n m : ℕ} (c : ComposableArrows (Total F) n)
     (θ : SimplexCategory.mk m ⟶ SimplexCategory.mk n) :
     (SimplexCategory.toCat.map θ).toFunctor ⋙ simplex F c ⋙ (F.flip.map θ.op).mapElements =

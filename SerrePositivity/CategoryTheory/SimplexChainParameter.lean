@@ -37,6 +37,11 @@ def parameter : SimplexCategory.mk n ⟶ (c.obj 0).unop :=
 lemma parameter_apply (i : Fin (n + 1)) :
     (parameter c).toOrderHom i = vertex c i := rfl
 
+lemma parameter_zero : (parameter c).toOrderHom 0 = 0 := by
+  change (c.map (𝟙 0)).unop.toOrderHom 0 = 0
+  rw [c.map_id]
+  rfl
+
 lemma reindex {m : ℕ} (θ : SimplexCategory.mk m ⟶ SimplexCategory.mk n) :
     θ ≫ parameter c =
       parameter ((SimplexCategory.toCat.map θ).toFunctor ⋙ c) ≫
