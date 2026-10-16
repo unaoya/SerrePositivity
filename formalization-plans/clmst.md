@@ -6153,6 +6153,50 @@ BS10.2/10.3のalmost拡大閉性を供給済みとは扱わない。
 完備tensorの冪等性、Prop 2.4.9(a)の実Tor入力、hI、B-I自体は未解消。
 KL-Q・Dの実適用と原典引用の置換は引き続き未完了である。
 
+KL-A2g準備・元のMilnor列の係数線形化と全係数Torへの合流（2026-10-16）：
+`PowerCokernelNaturality.lean`で元の複体写像から実冪余核塔の写像を構成し、
+標準商射・遷移・元の再構成射の自然性を証明した。
+`FiniteCoefficientCokernelHolim.lean`は有限試験Mについて、元の冪余核再構成が準同型同値であること、
+実C⊗ᴸMとの比較と任意係数写像への自然性を供給する。
+`TorAlgebraMilnorMiddle.lean`で、元のMilnor中項のホモロジーを実C加群`TorAlg`へ同定し、
+元の係数乗法から持ち上げたholim写像と、実C加群のスカラー作用の一致を証明した。
+`TorAlgebraMilnorActions.lean`は同じ作用を左右の実Tor塔の逆極限・lim¹へ移し、
+明示した次数の等式によるlim¹の再添字でも作用を保持する。
+
+`AlgebraEquivariantShortComplex.lean`は、指定した三つの実代数加群との同型と
+全係数元の作用図式から、元の短複体を実係数線形な短複体へ移す。
+係数線形性をinstanceとして仮定せず、各写像についてスカラーとの可換性から構成する。
+係数制限すると元の短複体・元の射に戻る比較同型と、短完全性の保存も証明した。
+`TorAlgebraMilnorSequence.lean`でこれを実際のMilnor列へ適用し、
+lim¹ Tor_(i+1) → Tor_i(C,M) → lim Tor_i の実C線形短完全列を構成した。
+任意の元の係数源B→Cへ制限した短完全列も供給し、lim¹を消去しない。
+
+`PowerTorsionTorExtension.lean`はBS10.2で使う拡大閉性を
+`CompleteIdealExtensionClosed B p I`という明示した数学的入力として切り出した。
+これは全ての実導来p完備加群の短完全列に対する性質であり、Tor零化や結論自身を
+定義へ組み込んだものではない。p冪ねじれ試験のTor零化とこの拡大閉性から、
+実係数線形Milnor列の両端の零化を中央へ渡し、有限試験Mの元の標準Torの零作用を証明した。
+既存の有限生成部分加群による還元を合成し、任意N・全正次数・全almost元の量化を保った
+`tor_eq_zero_of_power_torsion_and_complete_extensions`へ合流した。
+
+同じ実RPerfdで元の完備塔上の短完全列`rPerfd_torMilnorShortComplex`とその短完全性、
+全試験加群の`rPerfd_tor_eq_zero_of_power_torsion_and_extensions`を公開した。
+専用監査は実短完全列の三項（左はTor_(i+1)のlim¹、中央は元の実`TorAlg`、右はTor_iの逆極限）を
+直接検査する。hIを明示して既存の条件付きCor 4.0.4へ適用し、元の両結論へ渡ることも検証した。
+
+共通29宣言はsorry非依存・標準3公理のみ。合成import閉包253モジュールに
+BS・CLMST・Inputs・Paper依存なし。共通対象3382ジョブ、実適用3870ジョブ、
+専用29宣言と3型検査、KL670件、実RPerfdの限定依存監査、全体5760ジョブが成功した。
+実適用の型・環構造に含まれる既存B-I依存だけを許可し、それ以外のsorryは拒否する。
+前工程の継続中だった全体ビルドも5753ジョブで成功した。
+
+ここで供給したのは、実Milnor短完全列と、二つの明示入力から全係数Tor零化への証明である。
+BS10.2の拡大閉性自体はまだ仮定であり、mod pⁿのイデアル冪等性だけから推論していない。
+次はBS10.3の実完備導来tensorの冪等性から、この元の完備塔とperfectoid idealについて
+`CompleteIdealExtensionClosed`を供給する。また、Prop 2.4.9(a)とp完全平坦性から
+元のA上のp冪ねじれ試験入力を供給し、hIをB5の実証明へ接続する。
+B-I自体、これらの実入力、KL-Q、Dの実適用と原典引用の置換は引き続き未完了である。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。

@@ -4,6 +4,7 @@ public import SerrePositivity.CLMST.ConditionalCohomologyVanishing
 public import SerrePositivity.HomologicalAlgebra.TorFiniteCoefficients
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TorAlgebraComplete
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerTorAlgebraMilnor
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTorsionTorExtension
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FiniteTensorComplete
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FiniteCoefficientPowerComparison
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerDerivedComparison
@@ -163,6 +164,43 @@ lemma rPerfd_torMilnor_endpoints_annihilated (N : ModuleCat.{u} A) (i : ℕ) (g 
    DerivedCompletion.modulePowerTorAlgebraLimOne_annihilated (p : A)
     (RPerfd A D t p hperf) N i (CompletedTower A t p)
     (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf)) _ hTor⟩
+
+/-- The actual coefficient-linear Milnor sequence over the original completed tower. -/
+def rPerfd_torMilnorShortComplex (N : ModuleCat.{u} A) [Module.Finite A N] (i : ℕ) :
+    ShortComplex (ModuleCat.{u} (CompletedTower A t p)) :=
+  DerivedCompletion.torAlgebraMilnorShortComplexOver (p : A) (RPerfd A D t p hperf) N
+    (rPerfd_isModuleComplete A t D p hperf) i (CompletedTower A t p)
+    (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))
+
+lemma rPerfd_torMilnorShortComplex_shortExact
+    (N : ModuleCat.{u} A) [Module.Finite A N] (i : ℕ) :
+    (rPerfd_torMilnorShortComplex A t D p hperf N i).ShortExact :=
+  DerivedCompletion.torAlgebraMilnorShortComplexOver_shortExact (p : A) (RPerfd A D t p hperf) N
+    (rPerfd_isModuleComplete A t D p hperf) i (CompletedTower A t p)
+    (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))
+
+/-- The full actual almost-Tor input follows from the two still-explicit inputs:
+power-torsion tests and complete almost extension closure over the original tower. -/
+lemma rPerfd_tor_eq_zero_of_power_torsion_and_extensions (g : A)
+    (hExt : DerivedCompletion.CompleteIdealExtensionClosed (CompletedTower A t p)
+      (p : CompletedTower A t p) (perfectoidIdeal (CompletedTower A t p) p hperf
+        (algebraMap A (CompletedTower A t p) g)))
+    (hTor : ∀ (L : ModuleCat.{u} A) (k : ℕ), 0 < k →
+      (∀ x : L, (p : A) ^ k • x = 0) → ∀ j : ℕ, 0 < j →
+        ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+          (algebraMap A (CompletedTower A t p) g),
+          torCoefficientScalarEndomorphism (RPerfd A D t p hperf) L j
+            (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0)
+    (N : ModuleCat.{u} A) (i : ℕ) (hi : 0 < i) (s : CompletedTower A t p)
+    (hs : s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+      (algebraMap A (CompletedTower A t p) g)) :
+    torCoefficientScalarEndomorphism (RPerfd A D t p hperf) N i
+      (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0 :=
+  DerivedCompletion.tor_eq_zero_of_power_torsion_and_complete_extensions p
+    (RPerfd A D t p hperf) (CompletedTower A t p)
+    (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))
+    (perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))
+    (rPerfd_isModuleComplete A t D p hperf) hExt hTor N i hi s hs
 
 /-- The actual finite-stage map has the base compatibility required by the
 Koszul/local-cohomology theorem. -/
