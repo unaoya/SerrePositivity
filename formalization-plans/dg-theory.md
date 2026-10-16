@@ -7482,3 +7482,45 @@ Bᵒᵖ⊗C上のsemifreeから片側の相対K-flat性を得る制限定理、b
 local Homの条件を明示した版とdg圏の解像度を使う版を区別し、U12e全受入とはしない。
 U12f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完。U17までの目標を保持する。
 共有系列への新しいAPI要求はない。
+
+
+### 17.164 U12e5：右K-flat三因子に関する導来五角coherence（2026-10-17）
+
+`Derived/RightKFlatComposition.lean`は既存のRightKFlatBimoduleCategoryを使い、
+**rightKFlatCompose**で元のbimodule合成と右相対K-flat合成閉性の証拠を同じ充満部分圏へ束ねる。
+新しいbimodule対象や射のモデルを導入していない。
+rightKFlatDerivedCompose/Map/Associatorは既存derivedComposeWith/Map/Associatorの型付き表示であり、
+既存の標準局所化への対象・射上の計算式へ戻る三つの評価補題も公開する。
+単一因子の射と自然変換の二つの評価補題には終域Eのsmall性を要求しない。
+
+`Derived/BimoduleTensorPentagon.lean`の**derivedPentagon**は、右相対K-flatな
+Q:C→E、R:E→F、S:F→Gの三つの固定因子に対する自然変換の五角等式。
+二辺の経路はDQでR/Sの結合比較をwhiskerし、Qとcompose(R,S)の結合比較へ進む。
+三辺の経路はQ/Rの結合比較をDSで送り、compose(Q,R)とSの結合比較を行い、
+最後に元のassociatorIso(Q,R,S)が誘導する導来自然変換を作用させる。
+両経路は実際のDerivedBimoduleCategory A B Cを始域とする自然変換として等しい。
+局所化の自然変換の外延性と元の対象での計算式を使い、既存の閉零bimodule射のpentagonを
+標準局所化へ送って証明した。中間のDQ(P)における成分は、元のcompose(P,Q)の対象を
+明示して計算する。源PをK-flat対象へ制限していない。
+任意CommRing A・非有界・独立B/C/E/F/G宇宙・Small.{u} B/C/E/Fを維持し、Gのsmall性は不要。
+
+Checks.DerivedBimodulePentagon・Checks.DerivedBimoduleNaturality・Checks.DerivedBimoduleComparison・
+Checks.DerivedBimoduleTensor・Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（3020 jobs、終了コード0、警告なし）。独立対象宇宙での五角等式と、
+ZMod 2上でも対象宇宙を独立に保った同じ定理の特殊化を検査した。
+特性2の全対象をPUnitに固定して型を再掲する試作検査はカーネル型照合の計算上限に達した。
+上限を変更せず、採用する検査は対象宇宙を独立に保つ一般定理の直接特殊化とした。
+この検査形の変更で定理の仮定・結論を弱めたり、五角の等式を型の検査だけに置換したりしていない。
+主要8宣言の直接公理監査は標準公理のみ。監査累計3128宣言。
+今回の実装にsorry/admit/新規axiomはない。採用済み引用は0件。
+全体文書検査は13 Markdown・320 exposition参照まで進み、§17.162/163と同じ担当外の
+BhattScholze互換宣言の未解決参照1件で失敗した。共有ルート・共有一般論・該当系列は編集していない。
+
+固定した右K-flat因子に対する単位・結合比較、固定因子の射に関する結合自然性、
+三角・五角は§17.161〜164で構成できたが、両変数を局所化した導来合成の全受入ではない。
+次は積dg圏上の加群と主bimodule圏の射・評価の比較を整え、semifree解像度から
+片側の右相対K-flat性を得る制限定理と実際のbimodule解像度の存在へ接続する。
+相手側Homのlocal K-flat性を要求する版と、dg圏の解像度を使う版を区別する。
+任意の二つの解像度の比較射・選択独立性も残課題とし、U12e全受入とはしない。
+U12f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完。U17までの目標を保持する。
+共有系列への新しいAPI要求はない。
