@@ -7744,3 +7744,58 @@ Hom_B条件を課さない解像度の右相対K-flat性・存在、次数−1�
 両側解像度を使うtensor比較を証明してから、任意解像度による計算同型・単位/結合coherenceへ接続する。
 local Hom条件のないdg圏の解像度経路、U12e全受入、U12f・U13d/e残部・U14・U15d/e・U16/U17・D4mは残る。
 U17までの目標を保持し、共有系列への新しいAPI要求はない。
+
+### 17.170 U12e11：K-flat因子間の準同型比較と後因子の部分圏局所化（2026-10-17）
+
+`Module/LeftQuasiIsoInverse.lean`は既存左右加群同値の逆関手による指定準同型クラスの
+保存・反映を、counitの自然性と同型不変性から公開する。
+`Tensor/LeftKFlatResolution.lean`の**leftModuleRelativeKFlat**は、既存の
+toRightOppositeによりopposite上の右相対K-flat性として左条件を定義する。
+**leftModuleRelativeKFlat_preserves_rightQuasiIso**は、元の準同型のconeを
+objectwise acyclicな左Dᵒᵖ加群と読み、既存swapIsoとtensorのcone保存から準同型保存を証明する。
+**exists_leftRelativeKFlat_resolution**は、opposite上の既存cell解像度を左右同値で移送して
+任意の左加群への左相対K-flat解像度を与える。local Hom条件は不要。
+
+`Tensor/KFlatComparison.lean`の**rightTensor_relativeKFlat_quasiIso**は、
+右相対K-flatなM,N間の任意の準同型fについて、任意の非有界左加群Lとのtensorが準同型になると証明する。
+Lを左K-flat解像度P→Lで置き換え、Pに対する上辺と、M,Nに対する両側辺が準同型になる
+自然性squareを使う。これは各fiberのhomotopically projective性を仮定する既存結果とは別の定理。
+`Tensor/BimoduleKFlatQuasiIso.lean`の**composeMap_second_kFlat_quasiIso/composeMap_kFlat_quasiIso**は、
+後の因子の両端の右相対K-flat性だけで、bimodule合成の後変数・両変数の準同型保存を与える。
+これらにもlocal Hom条件を追加していない。
+
+`Derived/BimoduleTensorKFlatComparison.lean`の**composeWithKFlatIso/derivedComposeWithKFlatIso**は、
+実際の準同型g:Q→Q'から固定因子の合成関手間の自然同型を構成する。
+前者の成分は元のcomposeMapを指定局所化へ送った射、後者はそれを前変数の導来圏へ降下したもの。
+homの式と恒等・推移整合性を公開した。
+`Derived/KFlatBimoduleLocalization.lean`は右相対K-flat充満部分圏への包含から
+**rightKFlatQuasiIso**を逆像として固定し、**DerivedRightKFlatBimoduleCategory/rightKFlatToDerived**を定義する。
+**rightKFlatDerivedInclusion**はその標準局所化から全DerivedBimoduleCategoryへの比較関手。
+**derivedComposeWithFunctor_inverts**により、後因子の準同型を自然同型へ送ることを証明し、
+**rightFactorLocalizedComposeFunctor**を構成した。
+これは前変数が全導来bimodule圏、後変数が右K-flat部分圏の局所化である関手で、
+元の因子関手との厳密なfactorizationと、局所化前の射での計算式を持つ。
+射の計算式はfactorizationのFunctor.hcongr_homから得ており、定義上の等式とは扱わない。
+
+`Derived/KFlatBimoduleResolution.lean`はlocalHomKFlat A EとSmall.{u} Eの下で、
+任意M:C–E bimoduleの右K-flat解像度を部分圏の対象として束ね、導来増大同型を構成する。
+**rightKFlatDerivedInclusion_essSurj**は、これを使った比較関手の本質的全射性。
+充満忠実性は未証明なので、全導来bimodule圏との同値や、全後変数での導来双関手の完成とは扱わない。
+任意可換環・非有界・独立対象宇宙を保持し、Eのsmallnessは解像度の存在を使う箇所だけに要求する。
+
+Checks.KFlatBimoduleLocalization・Checks.BimoduleSemifreeKFlat・Checks.BimoduleSemifreeResolution・
+Checks.DerivedBimodulePentagon・Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（3053 jobs、終了コード0、警告なし）。左K-flat解像度、任意左因子とのtensor比較、
+因子準同型による導来自然同型、後因子局所化のfactorization、本質的全射性とZMod 2を検査した。
+主要26宣言の直接公理監査は標準公理のみ。監査累計3242宣言。
+今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は13 Markdown・320 exposition参照まで進み、担当外BhattScholze互換宣言の
+未解決参照1件で失敗した。共有ルート・共有一般論・該当系列は編集していない。
+
+次はrightKFlatDerivedInclusionの充満忠実性を、実際の解像度比較・ホモトピーの同一視から証明する。
+既存の解像度のliftは全dg自然なホモトピーまで関手的であり、厳密な関手的解像度として
+Mathlibのof_functorial_resolutions系定理へ渡すことはできない。必要ならK-flat部分圏内での
+cylinderとホモトピーの同一視を先に整え、得られた比較同値から後因子を全導来圏へ拡張する。
+単位・結合coherenceの輸送、local Hom条件のないdg圏解像度の経路もU12eに残る。
+U12f・U13d/e残部・U14・U15d/e・U16/U17・D4mは未完で、U17までの目標を保持する。
+共有系列への新しいAPI要求はない。
