@@ -4249,3 +4249,26 @@ K(D)の対象上の成分、主導来圏の任意射との可換square、ZMod 2�
 左変数の指定quasiIsoを反転する証明はなお未完であり、左側も導来化した双関手とはしない。
 次は主dg関手による標準cone比較を構成して、相対K-flat条件と準同型保存の接続へ進む。
 U11e・U12の残部・U13〜U17・D4mも未完。共有系列への追加要求はない。
+
+### 17.64 U12a4：複体値dg関手と標準coneの比較射（2026-10-16）
+
+`Functor/ClosedComplex.lean`は複体値dg関手の閉零制限をtoComplexFunctorとして読み、
+主Homの閉零要素の像と通常chain mapのofHomとの一致、微分との可換式、通常順のcochain合成保存を公開する。
+最後の公式では豊穣順から通常順への二つのKoszul符号が相殺する。
+これにより、特定のtensorの実装を展開せずにdg関手の全次数情報を使える。
+
+`Functor/ModuleCone.lean`は既存moduleConeInlElementの次数−1の像と微分を計算し、
+既存mappingCone.descでmoduleConeImageComparisonを構成した。
+これはcone(F(f))からF(cone(f))への実際のchain mapであり、次数0/−1の両包含の公式を証明した。
+ここでは比較射の可逆性までは主張しない。
+
+Checks.FunctorModuleCone・Checks.DerivedTensorLeftNaturality・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2691 jobs、終了コード0、警告なし）。任意A・独立対象宇宙・任意複体値dg関手、
+合成次数−1/+1、既存moduleEvaluationDGでの包含との一致、ZMod 2を検査。
+主要9宣言の直接公理監査は終了コード0、標準公理のみ。監査累計1790宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査も成功。
+今回の3ファイルにsorry/admit/新規axiomはない。
+
+次はconeの射影/包含の行列恒等式を主Homへ持ち上げ、dg関手による像でも比較射が可逆であることを証明する。
+それを右/左tensorへ適用して相対K-flatのcone/shift閉性・指定quasiIso保存へ接続する。
+U11e・U12残部・U13〜U17・D4mは未完。共有系列への追加要求はない。
