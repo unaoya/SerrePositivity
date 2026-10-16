@@ -5651,3 +5651,37 @@ Checks.RingRetract・Checks.RingKaroubi・Checks.RingPerfectTriangulated・Check
 次はこのretract表示を共有Karoubi延長の本質像判定へ適用する。
 U13e全受入・U13d・U11eのcoherence・U12e/f・U14〜U17・D4mは未完。採用済み引用は0件。
 共有系列への追加要求はなく、共有ルート・既存PerfectComplex・他系列は変更していない。
+
+
+### 17.112 U13e25：既存PerfectHomotopyのKaroubi包絡と主Perfの線形三角同値（2026-10-16）
+
+`Perfect/RingKaroubi.lean`は既存perfectHomotopyToDGPerfectを共有functorExtension₂で延長する。
+§17.111のretract表示と、Karoubi対象自身の標準retractを合成し、共有の
+karoubiExtension_mem_essImageを適用した。両辺Karoubi包絡の間の延長が
+充満・忠実・本質的全射であることを証明した。
+共有Karoubi一般論・線形構造・shift/三角構造は再実装していない。
+
+主Perfの既存の冪等完備性を使い、Mathlib functorExtensionで形式的retractを
+実際の主Perf対象へ実現するringPerfectKaroubiRealizationを構成した。
+実現は同値であり加法的・A線形である。再びtoKaroubiへ入れる自然同型を通じて
+整数shiftと整合させ、主PerfのtoKaroubiの完全忠実性で三角性を反映した。
+ringPerfectKaroubiEquivalenceはKaroubi(PerfectHomotopy A)と主Perfの実際の線形三角同値。
+順逆のA線形性・加法性、shiftの零/加法coherenceと同値のunit/counit整合性を保持する。
+元のPerfectHomotopy上では共有karoubiExtensionToCompleteFactorsによる
+ringPerfectKaroubiRealization_facで実際の比較関手に自然同型となる。
+このfactor自然同型そのもののNatTrans.CommShiftはまだ別途照合する必要がある。
+
+Checks.RingKaroubi・Checks.RingRetract・Checks.RingPerfectTriangulated・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（3533 jobs、終了コード0、警告なし）。
+任意可換環、実現の同値・完全忠実性、順逆の線形性・加法性、同値のshift/三角性、
+元の比較への自然同型、ZMod 2を検査した。
+主要25宣言の直接公理監査は標準公理のみ。監査累計2469宣言。
+文書検査は23 Markdown・311 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+この同値は元のPerfectHomotopy自身の冪等完備性を証明するものではない。
+U13e全受入にはホモトピー冪等の分裂・retractの有限射影代表を残しており、
+Karoubiを付けた同値で元の一対象比較の本質的全射を代用しない。
+次は元の比較へのfactorのshift整合性と、有限射影代表の構成を進める。
+U13d・U11eのcoherence・U12e/f・U14〜U17・D4mも未完。採用済み引用は0件。
+共有系列への追加要求はなく、共有ルート・既存PerfectComplex・他系列は変更していない。
