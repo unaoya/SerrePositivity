@@ -7,7 +7,7 @@
 §8の再調査は、ユーザーの「コードを書き換えない」という指定に従い、計画書のみを更新した記録である。
 その後の目標継続指示により、この計画に沿うBS独立部分の実装・検証・個別コミットを再開する。
 共通担当のファイルは変更せず、既存の未コミット差分を先に検証・保存する。
-状態表と§9の実施記録を優先し、§1・§7・§8の件数と検証記録は各実施時点の記録として読む。
+状態表と§9の実施記録、§10の再調査による修正を優先し、過去の件数と検証記録は各実施時点の記録として読む。
 
 ## 1 調査の基準
 
@@ -57,19 +57,19 @@ BS側が変更するのは `SerrePositivity/BhattScholze/`、このBS計画、BS
 | R1d | 零完備性・係数制限・商射の外延性を既存APIへ接続 | 再利用 | `PerfectDeltaPDQuotientEquiv`、`PerfectDeltaPDQuotientComparison`、`PDCompletionInterface`、`OrientedPrismHom` | 完了 |
 | R2a | W₂写像と逆δ射を低層へ移す | 配置 | 新 `WittTwoMap`、`DeltaRing`、`DeltaQuotient`、`DeltaSectionNaturality`、直接利用先 | 完了 |
 | R2b | 環同型によるδ構造移送を統一 | 抽出 | 新 `DeltaTransport`、`DeltaDivisionSourceTensorDelta`、`DeltaRootSourceRawH0Delta` | 完了 |
-| R2c | 変数のδ値を指定する多項式構成とδ射判定 | 抽出 | 新 `PolynomialDelta`、`RelativeFreeDelta`、`PolynomialRankOneDelta`、普遍性利用先 | 6モジュールの一時試作を検査済み、repo未反映 |
-| R2d | 有向環余極限上のδ構造と普遍射 | 抽出 | 新 `DeltaDirectLimit`、`DeltaPerfection`、`DeltaPerfectionUniversal`、`DeltaAdjoinDivisionFiniteColimit` | 一時ファイルで構成を検証中、repo未反映 |
+| R2c | 変数のδ値を指定する多項式構成とδ射判定 | 抽出 | 新 `PolynomialDelta`、`RelativeFreeDelta`、`PolynomialRankOneDelta`、普遍性利用先 | 統合ビルドで有限段自然性が失敗。切断のC/X計算APIを整えて再検証する |
+| R2d | 有向環余極限上のδ構造と普遍射 | 抽出 | 新 `DeltaDirectLimit`、`DeltaPerfection`、`DeltaPerfectionUniversal`、`DeltaAdjoinDivisionFiniteColimit` | 一時検査済みの4モジュールを反映、統合検証中 |
 | R2e | δ閉包の生成元定理を基礎層へ集約 | 配置・再利用 | `DeltaClosureGeneration`、`DeltaDivisionIteratedRelations` | 完了 |
 | R3a | rank-one DPの一般比較射を分離し特殊版を一般版へ委譲 | 配置・再利用 | 新 `RankOneDPBaseChangeMap`、`RankOneDPTensorRelations`、`RankOneDPAnyBasis`、`RankOneDPPrimeBasis`、`RankOneDPBaseChange` | 完了 |
 | R3b | principal DPの一般関係式を分離し基底変更を一本化 | 配置・再利用 | 新 `PrincipalDPBaseChangeRelations`、`PrincipalDPBaseChange`、`PrincipalDPBaseChangeUniversal` | 完了 |
-| R3c | DP表示の正則性で不要なp局所性を外した一般入口 | 証明拡張 | `PrincipalDPRegular` | 一時試作を検査済み、repo未反映 |
+| R3c | DP表示の正則性で不要なp局所性を外した一般入口 | 証明拡張 | `PrincipalDPRegular` | 一時検査済みの一般入口を反映、統合検証中 |
 | R4a | 初期係数表示を既存モニック表示比較へ接続 | 再利用・比較 | `DeltaDivisionFirstCoefficientPowerEquiv`、`MonicPowerFamilyBaseQuotient` | 完了 |
-| R4b | 根関係式の通常の冪指数を非零指数に一般化 | 証明拡張 | 新 `MonicPowerFamilyRelationRegularity`、`DeltaRootRelationKoszul`、`DeltaRootSubsetQuotient`、`DeltaRootFiniteRegularSequence`、`DeltaDivisionSourceGraphKoszul` | 一般補題単体の一時検査済み、利用先は未検証・repo未反映 |
-| R4c | hpAからhpL・ghost単射を供給する公開入口を揃える | API整理 | `DeltaDivision*`、既存G4利用箇所 | 未着手 |
-| R5a | 未完備perfection・合成標準射のhom_extと既存PD外延性の適用 | 抽出 | `DeltaPerfectionUniversal`、`DeltaPerfectionPDCompletionUniversal`、`DeltaPerfectionPDCompletionComparison` | 一時ファイルで構成を検証中、repo未反映 |
-| R5b | 完全prismのWitt表示とイデアル像の入力供給 | 抽出 | `PerfectPrismHomLift`、`PerfectPrismQuotientPerfectoid`等 | 未着手 |
-| R5c | 単一根の上位perfectoid証明を任意族から特殊化 | 比較 | `CompatibleRootCompletionPerfectoid`、族版 | 依存循環を確認して実施 |
-| R6 | 相対δのイデアル冪評価・剰余算術を共有 | 証明拡張 | `DeltaAdicEstimate`、`RelativeFreeFiniteDeltaAdicEstimate`、剰余計算 | R2後に契約を再確認 |
+| R4b | 根関係式の通常の冪指数を非零指数に一般化 | 証明拡張 | 新 `MonicPowerFamilyRelationRegularity`、`DeltaRootRelationKoszul`、`DeltaRootSubsetQuotient`、`DeltaRootFiniteRegularSequence`、`DeltaDivisionSourceGraphKoszul` | 5モジュールと旧24完全署名を一時検査後に反映、統合検証中 |
+| R4c | hpAからhpL・ghost単射を供給する公開入口を揃える | 再利用 | `DeltaRootSourceRegularGhost`、`DeltaRootFamilyRegularGhost`、`DeltaRootFamilySourceQuotientFlat`、`DeltaRootBoundedSupportQuotientFlat` | 新APIは不要。既存of_flatとG4へ委譲する4モジュールを一時検証中 |
+| R5a | 未完備perfection・合成標準射のhom_extと既存PD外延性の適用 | 抽出 | `DeltaPerfectionUniversal`、`DeltaPerfectionPDCompletionUniversal`、`DeltaPerfectionPDCompletionComparison` | 3モジュールの一時検査済み、repo未反映 |
+| R5b | 完全prismのWitt表示とイデアル像の入力供給 | 抽出 | 新 `PerfectPrismWittPresentation`、`PerfectPrismHomLift`、`PerfectPrismQuotientPerfectoid` | 3モジュールの一時検査済み、repo未反映 |
+| R5c | 単一根の上位perfectoid証明を任意族から特殊化 | 比較 | 新 `CompatibleRootSingletonComparison`、`CompatibleRootCompletionPerfectoid` | 循環のない上位特殊化を一時検証中、repo未反映 |
+| R6 | 相対δのイデアル冪評価・剰余算術を共有 | 証明拡張 | 新 `RelativeDeltaEstimate`、`DeltaAdicEstimate`、`RelativeFreeFiniteDeltaAdicEstimate`、`DeltaResidueArithmetic`、`RelativeFreeFiniteDeltaResidue` | 5モジュールの一時検査済み、repo未反映 |
 | R7 | BS監査の宣言列挙・公開境界検査、文書の現況整理 | 監査・文書 | BS専用スクリプト、BS計画 | 各工程と並行 |
 
 ### R1の既存API
@@ -363,3 +363,52 @@ R4bも計画済み5ファイルの一時検証から再開する。これらを�
   旧26公開署名と9定義本体を維持し、旧順射・逆射・同型を再選択していない。
   対象ビルド、同じ530対象の統合ビルド・基礎/B4監査、新3宣言と旧比較入口のfocused監査が成功。
   標準3公理のみ。対象1モジュール・専用監査・計画を個別保存。
+
+## 10 再調査の反映と残りの実施契約
+
+2026-10-16の再調査時点ではBSは576モジュール・54,611行。
+R2c/R2d/R3c/R4bの既存未コミット差分を含み、ソースimportグラフに循環はない。
+534対象の統合ビルドは `RelativeFreeFiniteDeltaStep` の有限切断自然性で失敗した。
+多項式切断の抽出によって、旧証明のsimpが係数・変数上の値を計算できなくなったためであり、
+公開型やrflの照合だけで互換性検証を終えてはならない。
+R2cでは切断自体のC/X計算を公開し、既存の自然性証明と有限段の利用先を含めて再ビルドする。
+他の反映済み3工程も同じソース状態で統合監査し、工程別に保存する。
+
+残るBS独立工程はR4c、R5a/b/c、R6、R7。
+R4cは既存 `IsSMulRegular.of_flat` とG4の適用で整理し、新しい一般補題を増やさない。
+R5aは未完備版の外延性を優先し、既存のPD・p完備化の外延性を再利用する。
+合成標準射の外延性は実際の二つの逆写像検証に使う最小の入口とする。
+R5bは同じWitt復元同型と生成元逆像を固定し、新しい表示の選択構造体を作らない。
+R5cは低層比較のみ一時検証済みであり、上位特殊化・完全署名・依存監査は未完了。
+R6の相対評価は§3のcomapの冪条件を維持する。これらは共通Q群を待たず進められる。
+
+### 並行作業の更新
+
+共通側の `TorAlgebraMilnorSequence` は実係数環に線形な元のMilnor短完全列を供給済み。
+§8.4の「中央のC線形Milnor射待ち」は解消した。
+`PowerTorsionTorExtension` は完備almost拡大閉性とp冪ねじれ試験のTor消滅を明示入力として、
+全係数のTor零化へ接続する。これらの具体的入力とB5の実イデアル冪等性は別の数学的工程として残る。
+J²零化・J零化・mod p冪像の冪等性を同一視しない。
+RootTowerは既存の平坦性APIを使い、固定段からの尾部比較と明示基底・ランク・冪遷移を保持する。
+DGの通常複体のK-flat性は将来候補であり、具体的な重複を確認するまでは統合しない。
+
+共通Q群は新しい数学的入力の要求ではなく、既存証明の移管・包装候補である。
+Q1/Q8/Q10、Q4〜Q7、Q2/Q3/Q9の順に担当側へ受け渡す候補とし、BS側から共通ファイルは編集しない。
+Q8は指定済みの線形同型と単位を保つこと、Q4は存在と一意性の仮定を分けることを契約とする。
+同じファイルを使うR2d/R5aは一人が差分を合流し、統合ビルド中はBS対象ソースを固定する。
+
+### R7の最小範囲
+
+予定ファイルはBS担当の `scripts/audit_bhatt_scholze_structure.py`。
+Leanヘッダーの通常・public・private importを読み、循環、内部importの未解決、
+明示した純基盤入口からの禁止依存を検査する。基盤入口の未指定は「未検査」と表示する。
+`CommutativeAlgebra` のBS到達9モジュールはB3接続等を含むため、フォルダ全体を禁止しない。
+基礎・B4・refactoring・André条件付きの監査を別集計し、B-Iの入力と互換入口も別表示する。
+import被覆は証明項の依存監査ではない。公開宣言とassert_no_sorryの簡易棚卸し差分は参考警告とし、
+生成宣言やnamespaceを完全解析したとは扱わない。未被覆も期待範囲を定めるまでは警告にとどめる。
+循環・内部未解決・指定禁止境界の違反だけを構造検査の失敗とし、既存Lean公理監査は維持する。
+
+共有 `audit_clmst_b3` の旧B-S sorry許可と表示は共通担当の更新候補。
+証明済みB4、André条件付き、B-I、B-Rの依存境界を別々に扱う。
+各工程は通常のlake設定で対象・下流のビルドと基礎/B4/追加宣言の監査を行い、
+宇宙・暗黙引数・局所作用・標準射・必要なrflを保つ。ソース短縮だけでなく検証時間も確認する。
