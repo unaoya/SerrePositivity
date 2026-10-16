@@ -4199,3 +4199,29 @@ Checks.ResolutionFunctor・Checks.TensorHomotopy・Checks.StageSeven・既存Spe
 U12d全受入は未完。固定左加群との導来tensorの組立て、左変数の指定quasiIso保存と
 両変数の導来双関手、任意解像度での計算比較を続ける。U11eのcoherence・U12残部・U13〜U17・D4mも未完。
 共有系列への追加要求はなく、担当外ファイルを編集していない。
+
+### 17.62 U12d3：固定左加群との導来tensorと任意解像度計算（2026-10-16）
+
+`Derived/RightTensor.lean`は指定D(D)からK(D)への解像度関手と、固定左加群Lとのtensor、
+既存K(A)→D(A)を合成し、moduleResolutionDerivedTensorと標準族によるmoduleDerivedTensorRightを構成した。
+対象D(A)には独立した宇宙wとHasDerivedCategory.{w}(ModuleCat.{u} A)を明示する。
+主局所化前のMで、R(M)⊗_D Lを使う計算同型を公開し、任意の二つの解像度族の変更を
+自然同型に運ぶ。自己比較と三つの族の推移整合性も証明した。
+
+`Derived/RightTensorResolution.lean`は任意の個別のModuleProjectiveResolution P,Qについて、
+比較射のtensor像をD(A)で同型化し、そのhomの公式・自己/推移整合性を証明する。
+moduleDerivedTensorRightResolutionComputationは標準族で定義した導来tensorを任意Pで計算する。
+これらは固定Lにflat条件を要求しない。K(D)で等しい射のtensor像がD(A)で等しいことを
+§17.60の全dg自然なホモトピー保存から使っている。
+
+Checks.DerivedRightTensor・Checks.ResolutionFunctor・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2688 jobs、終了コード0、警告なし）。任意A・独立対象宇宙・明示したD(A)宇宙、
+任意の個別解像度と族、自己/推移整合性、ZMod 2を検査した。
+主要13宣言の直接公理監査は終了コード0、標準公理のみ。監査累計1768宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査も成功。
+今回の3ファイルにsorry/admit/新規axiomはない。
+
+これは固定左加群での構成であり、U12d全受入は未完。左加群の射に関する自然性と
+指定quasiIso保存を示し、左側の主導来圏へも降ろす両変数関手を次に構成する。
+U12aの残り・U12c/e/f、U11eの結合coherence・U13〜U17・D4mも継続する。
+共有系列への追加要求はなく、担当外ファイルを編集していない。
