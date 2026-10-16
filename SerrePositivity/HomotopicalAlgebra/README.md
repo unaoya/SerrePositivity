@@ -2311,3 +2311,16 @@ parameter・入力・出力の実移送を含む整合式を証明する。
 `MixedCenterActionWeakEquivalence`は同じ全中心・全chain作用へ接続する。
 実bar入力への適用条件の証明、bar右脚、基底上の最終小さい厳密RMapは未完了。
 検証：`scripts/check_mixed_lift_action_weak_equivalence.lean`、計画書§298。
+
+
+### 実resolution barの先頭側評価（§299）
+
+`Simplicial/NerveFirstChoice`は反変図式の先頭側全chain整合系を構成し、
+元の点・任意の低次数全system・定数chainでの頂点を保持する。
+`ResolutionBarCenters`は実comma圏から両側の反変lift中心を作る。
+`ResolutionBarFirstAction`は実prefix Hom写像を含む全単体作用素の式を証明する。
+`ResolutionBarEvaluation`は同じraw混合Homの実relative bar全体を小さいreference出力へ評価する。
+`ResolutionBarReference`はreferenceからの写像との合成を元の小さい作用として回収し、
+大きいモデルを使わず、その実合成のanodyne局所化での可逆性を証明する。
+評価自体・bar右脚の弱同値、元のreplacement barとの比較、最終小さい厳密RMapは未完了。
+検証：`scripts/check_resolution_bar_evaluation.lean`、計画書§299。

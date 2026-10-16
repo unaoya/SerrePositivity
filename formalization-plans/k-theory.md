@@ -15901,3 +15901,71 @@ F1の最終RMapへの統合とF2の最終自然弱同値zigzag比較は未完了
 具体的接続、bar右脚自体の弱同値、基底Cᵒᵖ×C上の自然な小値化も未完了である。
 F1の最終小さい厳密RMapとF2の最終自然弱同値zigzagはまだ得ていない。
 全体目標F→L→E→Sを維持する。
+
+
+## 299. 実resolution barの先頭側全chain評価とreference上の回収（2026-10-16）
+
+§298の作用を実barへ接続するため、両側resolutionのprojectionと同じraw混合Homを用いた
+relative barに対して、固定reference pairの小さい混合出力への評価写像を構成した。
+今回はその写像とreferenceからの写像の合成を判定する。bar右脚全体の弱同値はまだ主張しない。
+
+### 299.1 反変図式の先頭側全chain整合系
+
+`Simplicial/NerveFirstChoice`は、反変な小さい値図式に対しchainの先頭に値を取る整合系を
+構成する。既存NerveSimplexStartの実prefix写像を使い、全単体作用素を扱う。
+元の小さい値にboundary fillersがあれば、任意の低次数全systemを保持して延長できる。
+各対象で指定した元の点を保持する入口と、定数chainでの元の頂点写像の回収も証明した。
+この拡張自体には、値の宇宙のモデル構造は不要である。
+
+### 299.2 実comma射からの両側中心
+
+`ResolutionBarCenters`はreference pair Rを固定し、実圏
+CostructuredArrow(RightResolutionMapping.projection, projection(R))を使う。
+各comma対象の基底射の二成分から、Rをsourceとする両側の実lift中心を構成する。
+comma射の実resolution写像とcomma方程式により、この対応を厳密な反変関手にする。
+projectionのstrict sectionやfaithfulnessは要求しない。
+元の両側lift空間のfillersと同じselectedPointから、299.1の両側全systemを構成し、
+全comma対象で元の選択点を保持することを証明した。
+
+`ResolutionBarFirstAction`はこの同じsystemで混合作用を定義する。
+referenceの出力は固定され、各faceでは実prefix比較によるraw Hom写像が入力に作用する。
+この式を全単体作用素について証明した。終点側の全chain作用を単に流用せず、
+実comma図式の反変性に合わせた先頭側の式である。
+
+### 299.3 実bar全体から小さいreference出力への評価
+
+`ResolutionBarEvaluation`のbarは、上記projectionとMixedBiresolutionComparison.functorの
+実relative barである。元のReplacementMapping.auxiliaryBarと同一だとは主張しない。
+各degreewise要素comma圏から要素ラベルだけを忘れる関手を作り、同じcomma射・chainを保つ。
+chainの最初の実Hom単体と、299.2の両側familyを作用させる。
+要素圏の実map_val、raw Hom写像のsimplicial自然性、299.2の全作用素の式により、
+これはbar全体から小さい混合reference出力の宇宙liftへの実simplicial mapとなる。
+入力barは大きくてもよく、評価写像の構成にはSSetモデル構造自体を要求しない。
+
+`ResolutionBarReference`は同じraw値から、恒等comma対象の定数chainを通る実写像を作る。
+この写像と評価の合成が、元の小さい混合作用の宇宙liftに等しいことを全写像で証明した。
+299.1の定数chainの式で元の同じ両側頂点familyを回収している。
+任意に与えた両側全systemについて、対応する小さい作用は§298により弱同値である。
+従ってこの実合成は、大きい宇宙のanodyne局所化で可逆になる。
+弱同値判定は元の小さいモデルだけで行い、大きいSSetモデル構造は追加しない。
+
+### 299.4 受入検証と残項目
+
+実装コミット`5d02b7b0`。全て成功した。
+
+- 共有入口のbuild：2851 jobs、追加警告なし。
+- `check_resolution_bar_evaluation`：独立宇宙での先頭側の低次数全systemの保持、
+  モデル不要の実bar評価、全単体作用素との整合性、reference合成の全写像での一致、
+  元の選択点を保持する実両側systemの存在、任意の全systemの小さい作用の弱同値、
+  大きいモデルを使わない実合成のanodyne局所化での可逆性。
+  新規67宣言・5モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：8999宣言・654モジュール、標準公理のみ。
+- `check_mixed_lift_action_weak_equivalence`：25宣言・4モジュールの回帰確認。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+referenceから評価へ進む合成の可逆性だけでは、評価写像やbar unitの可逆性は得られない。
+もう一方の合成を扱う実比較・収縮、元のreplacement barとの接続、
+元の全因子分解・混合三角形systemの具体的接続が残る。
+referenceの選択を基底上で厳密に関手化したわけでもない。
+実bar右脚の弱同値、基底Cᵒᵖ×C上の自然な小値化、F1の最終小さい厳密RMap、
+F2の最終自然弱同値zigzagは引き続き未完了。全体目標F→L→E→Sを維持する。
