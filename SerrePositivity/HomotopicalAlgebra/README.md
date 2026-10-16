@@ -2987,3 +2987,14 @@ Paths³(Cᵒᵖ × C) → Choice(P × ∂Δ²)という実境界関手と、全�
 `OrdinaryBarFreeResolutionTower`は整合的な初期二次数Seedから全次数の関手と厳密な等式を反復構成する。
 既存のfreeCover・comparisonから実Seedへの接続、Δの図式への束ね、小さい厳密なRMapは残る。
 受入検証は`check_free_resolution_step`（87宣言・6モジュール）。
+
+
+### 元の源モデルからの全次数の整合的選択（§357）
+
+`OrdinaryBarFreeResolutionSeed`はHomだけのULiftをdown・自由pathの反復で既存freeCover・comparisonへ
+接続し、実Seedと面・退化等式を構成する。
+`OrdinaryBarFreeResolutionChoices`はこのSeedから全次数の選択関手を作り、
+全ての面・退化等式と、元の基底への射影が実augmentationへ等しいことを証明する。
+利用者にSeedや高次整合性の仮定は要求しない。任意の既存Pと独立宇宙の一般源モデルに適用できる。
+通常のΔの図式への束ね、自然比較と元の基底への降下、小さい厳密なRMapは残る。
+受入検証は`check_actual_free_resolution_choices`（38宣言・2モジュール）。

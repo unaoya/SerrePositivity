@@ -19732,3 +19732,75 @@ SeedのfaceLaw・degeneracyLawを証明する方針である。
 受入条件は任意の源モデルC・独立宇宙・任意Pで実Seedを構成し、356.4へ適用できることである。
 その後に全次数の選択関手をΔの図式として束ね、必要な自然比較・元の基底への降下を進める。
 小さい厳密なRMap、内部単位、自然弱同値比較、最終F2は残る。全体目標F→L→E→Sは未完了である。
+
+
+## 357. 元の源モデルから全次数の整合的選択関手を構成（2026-10-17）
+
+実装コミット`0ac50cca`。前回は§356の実次数上昇とSeedからの整合的反復を構成した進捗ターンだった。
+今回は残る実Seedを既存の次数0・1から構成し、任意の源モデルCと既存のPに対して、
+追加のSeedや高次整合性を入力せず全次数の選択関手を作った。
+得られるのは自由分解上の選択関手であり、元の基底上の小さい厳密なRMapではない。
+
+### 357.1 HomだけのULiftを既存の次数0・1へ接続
+
+`OrdinaryBarFreeResolutionSeed`はD = Cᵒᵖ × Cとし、
+down : degree D 0 → Dを実ULiftHom.downとして定義する。
+lowerはdownを自由path関手で一回、upperは二回写した実関手である。
+対象型を上げず、源の対象宇宙uとHom宇宙vの大小関係を要求しない。
+
+fixedFace_zero・oneは初期二面とcounit・自由path上のcounitの一致を証明する。
+upper_counit・upper_map_counitはcounitの自然性から二つの面との交換等式を導く。
+upper_degeneracyはduplicateの自然性から初期退化との交換等式を導く。
+これらの接続部分は通常の圏だけを入力とし、モデル構造は不要である。
+
+zeroはlowerへ既存freeCoverを合成し、射影P × Δ⁰ → Pでreindexした関手である。
+oneはupperへ既存comparisonを合成した実関手である。
+one_face0・one_face1はパラメータの二面とcomparison_one・zeroから、
+one_degeneracyはcomparison_degeneracyとtensor射影の等式から証明する。
+seedはこれらを§356の実Seedへまとめる。初期整合性の仮定を利用者に要求しない。
+
+### 357.2 実全次数関手とすべての面・退化等式
+
+`OrdinaryBarFreeResolutionChoices.diagram`は実seedを§356の反復へ適用する。
+任意のnについて次の実関手を得る。
+
+`degree (Cᵒᵖ × C) (n+1) → Choice(P × Δⁿ)`。
+
+次数0・1は357.1のzero・oneそのものであり、diagram_zero・oneはrflで成立する。
+diagram_faceは、全n・全iについてパラメータ面制限がfixedFaceと一段低い関手の合成へ等しいことを証明する。
+diagram_degeneracyは、全n・全iについて実degeneracyFunctorを前合成したものが
+一段低い関手を逆順sigmaでreindexした関手へ等しいことを証明する。
+すべて関手全体の等式であり、生成射や点ごとの比較だけには留めない。
+
+### 357.3 元の基底への射影の全次数での一致
+
+projectionはdiagramを元の基底Dへ射影した関手である。
+augmentationは、各次数のcounitによるpath合成を反復し、最後にdownを合成した実関手とする。
+projection_zeroはfreeCover_projectionとcounitの自然性から一致を導く。
+projection_eq_augmentationは全次数の最後の面への制限を用いて帰納的に証明する。
+したがって、構成した全次数の選択関手は元の基底への実augmentationを厳密に保つ。
+基底射影の忠実性や、元の基底上の厳密sectionは仮定しない。
+
+### 357.4 受入検証と次の実装単位
+
+すべて成功した。
+
+- 共有入口のbuild：3064 jobs、追加警告なし。
+- `check_actual_free_resolution_choices`：38宣言・2モジュール、標準公理のみ。
+  独立宇宙の一般源モデルと任意Pからの実Seed、追加初期入力なしの全次数関手、
+  全面・全退化等式、次数0・1の保持、全次数のaugmentationとの厳密な一致を検証。
+- `check_free_resolution_step`：既存87宣言・6モジュールの回帰検証。
+- `audit_homotopical_foundations`：11778宣言・849モジュール、標準公理のみ。
+- 新規ソース・受入スクリプトの行長、証明用マーカー、stage差分の空白検査。
+
+次は、通常のΔᵒᵖ上でこの関手列を自然変換へ束ねる。
+源には既存FreePathSimplicialResolution.diagramとrev.opを使い、degree_powerで成分を移す。
+標的にはP × Δⁿの選択圏とreindexによる実simplicial図式を作る。
+固定MathlibのSimplexCategory.morphismProperty_eq_topを使えば、全面・全退化での自然性から
+任意の単体写像での自然性を導ける。受入条件は実自然変換とその成分計算、全面・全退化での計算、
+元の基底へのaugmentation比較の保持である。
+
+異なるPごとの選択の自然性を今回の結果からは推論しない。
+その後の自然比較と元の基底への降下、小さい厳密なRMap、内部単位、最終F2は残る。
+源の追加のcombinatorial性・simplicial性・関手的分解、大きいSSetのモデル構造は導入していない。
+全体目標F→L→E→Sは未完了として継続する。
