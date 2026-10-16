@@ -666,7 +666,7 @@ CompatibleRootIdealTensor、CompatibleRootPerfectQuotient、CompatibleRootQuotie
 
 | ID | 予定ファイル・担当 | 内容・終了条件 | 初期状態 |
 | --- | --- | --- | --- |
-| N5 | BS担当：PerfectPrismRootSourceDiscrete、PerfectPrismDeltaAlgebraDiscrete | 既存Milnor零化定理のr=s=1によって二つのholim消滅証明を短縮。実対象・再構成・公開型・正規化single比較を保持 | 計画のみ、Lean置換後未検証 |
+| N5 | BS担当：PerfectPrismRootSourceDiscrete、PerfectPrismDeltaAlgebraDiscrete | 既存Milnor零化定理のr=s=1によって二つのholim消滅証明を短縮。実対象・再構成・公開型・正規化single比較を保持 | 実装・旧10型一致・下流ビルド・186件監査済み |
 | N4 | BS担当：DeltaDivisionEvaluationFiniteSupportColimit | 共通有限和商colimitへの比較で旧余極限性を委譲。旧9公開宣言の型、元の図式・局所作用・標準射と必要なrflを保持 | 共通API保存済み、BS接続未実施 |
 | N6候補 | BS担当：SecondCoefficientPowerEquiv等の性能記録 | 重い型照合の測定を先行。既存同型・係数/変数公式を保つ改善が確認できる場合だけ別工程を立てる | 未測定の設計候補、コード変更は未採用 |
 
@@ -748,3 +748,18 @@ CA/PerfectoidIdealのようなB3への接続層と純基盤を区別し、フォ
 名前到達、sorryへの証明依存、import被覆、実際の監査成功を区別する。
 公開型は宇宙・暗黙引数・局所Algebraを含み、既存rflと射の命題的一致を別々に確認する。
 性能候補は同じ通常設定で計測し、上限増加だけを改善としない。
+
+
+### 12.6 実施記録
+
+- 計画保存：本節の実施前契約・担当・共通化の優先度を`c20a4063`で文書単独コミットした。
+- N5：2ファイルのMilnor差分写像/射単射性の展開を、既存の一般零化定理のr=s=1への適用に置換した。
+  新定義・新仮定・新引用なし。元の実対象、平坦モデル、生成元の正則性、再構成射、IsLE、single比較を維持した。
+  両ソースの単体Lean検証、B4と旧Inputs入口・CLMST/CyclicPerfectoidizationまでの下流4,376ジョブが成功。
+  初回buildの自分のlongLine警告1件は改行で修正し、最終buildの終了0を確認した。
+  旧10公開型はpp.all/pp.deepTermsによる省略なしの出力を取得し、新旧の生ログがbyte単位で一致した。
+  専用10件の再帰公理監査と元single/H0正規化を含む4契約例、集約refactoring監査186件が終了0。
+  集約の131公理出力はpropext・Classical.choice・Quot.soundのみ。独立レビューでも対象・作用・仮定の不変を確認。
+  構造監査と新import先2基盤の禁止依存検査も成功し、検証中のBSソースhash変化なし。
+  通常B4監査は旧名compatibleRootIdealTensorMap_tmulの2コマンドだけで終了1、残る2,555公理出力は標準3公理のみ。
+  この既存互換性問題を今回の成功件数に含めず、担当ファイル・監査対象を変更していない。

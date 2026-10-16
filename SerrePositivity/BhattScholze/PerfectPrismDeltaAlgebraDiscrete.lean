@@ -4,6 +4,7 @@ public import SerrePositivity.BhattScholze.PerfectPrismDeltaAlgebraPowerInputs
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteFlatReductionBounded
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionUpperBound
 public import SerrePositivity.HomologicalAlgebra.DerivedPureHomology
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.MilnorAnnihilator
 
 /-! # 完全prism上の実δ完全化逐次対象の離散性 -/
 
@@ -99,27 +100,21 @@ theorem perfectPrismDeltaAlgebraCompletion_pure :
     infer_instance
   refine ⟨(DerivedCategory.isGE_iff _ _).mpr ?_, hLE⟩
   intro i hi
-  have hs : Function.Surjective (complexTowerHomologyDifference A
-      (powerCokernelComplex d K.complex)
-      (powerCokernelComplexTransition d K.complex) (i - 1)) := by
-    apply moduleTowerDifference_surjective
-    intro n y
-    exact ⟨0, (ModuleCat.isZero_iff_subsingleton.mp
-      (perfectPrismDeltaAlgebraCompletion_powerCokernel_homology_isZero
-        P E j hP hj hzero hFF n (i - 1)
-        (by omega))).elim _ _⟩
-  have hinj := complexTowerMilnorProjection_injective_of_surjective A
-    (powerCokernelComplex d K.complex) (powerCokernelComplexTransition d K.complex) i hs
   have hz : IsZero ((complexTowerHomotopyLimit A
       (powerCokernelComplex d K.complex)
       (powerCokernelComplexTransition d K.complex)).homology i) := by
     apply ModuleCat.isZero_iff_subsingleton.mpr
-    refine ⟨fun x y => hinj ?_⟩
-    apply Subtype.ext
-    funext n
-    exact (ModuleCat.isZero_iff_subsingleton.mp
-      (perfectPrismDeltaAlgebraCompletion_powerCokernel_homology_isZero
-        P E j hP hj hzero hFF n i hi)).elim _ _
+    refine ⟨fun x y => sub_eq_zero.mp ?_⟩
+    simpa only [one_mul, one_smul] using
+      complexTowerHomotopyLimit_homology_annihilated A
+        (powerCokernelComplex d K.complex) (powerCokernelComplexTransition d K.complex) i 1 1
+        (fun n _ => (ModuleCat.isZero_iff_subsingleton.mp
+          (perfectPrismDeltaAlgebraCompletion_powerCokernel_homology_isZero
+            P E j hP hj hzero hFF n i hi)).elim _ _)
+        (fun n _ => (ModuleCat.isZero_iff_subsingleton.mp
+          (perfectPrismDeltaAlgebraCompletion_powerCokernel_homology_isZero
+            P E j hP hj hzero hFF n (i - 1) (by omega))).elim _ _)
+        (x - y)
   have hzK := hz.of_iso (asIso (homologyMap (powerCokernelReconstruction d K.complex) i))
   exact hzK.of_iso ((DerivedCategory.homologyFunctor (ModuleCat.{u} A) i).mapIso K.iso.symm ≪≫
     (DerivedCategory.homologyFunctorFactors (ModuleCat.{u} A) i).app K.complex)

@@ -1,3 +1,5 @@
+import SerrePositivity.BhattScholze.PerfectPrismRootSourceDiscrete
+import SerrePositivity.BhattScholze.PerfectPrismDeltaAlgebraDiscrete
 import SerrePositivity.BhattScholze.CompatibleRootFamilyPDComparison
 import SerrePositivity.BhattScholze.CompatibleRootPDComparison
 import SerrePositivity.BhattScholze.RelativeDeltaEstimate
@@ -630,3 +632,89 @@ assert_no_sorry SerrePositivity.BhattScholze.compatibleRootFamilyCompletion_isAd
 #print axioms SerrePositivity.BhattScholze.compatibleRootFamilyCompletion_isAdicComplete
 assert_no_sorry SerrePositivity.BhattScholze.exists_compatibleRootFamilyCompletionPDQuotientEquiv
 #print axioms SerrePositivity.BhattScholze.exists_compatibleRootFamilyCompletionPDQuotientEquiv
+
+-- N5: all ten old public declarations, including both actual single comparisons.
+assert_no_sorry SerrePositivity.BhattScholze.perfectPrismRootSource_powerCokernel_homology_isZero
+#print axioms SerrePositivity.BhattScholze.perfectPrismRootSource_powerCokernel_homology_isZero
+assert_no_sorry SerrePositivity.BhattScholze.perfectPrismRootSource_pure
+#print axioms SerrePositivity.BhattScholze.perfectPrismRootSource_pure
+assert_no_sorry SerrePositivity.BhattScholze.perfectPrismRootSource_homology_isZero
+#print axioms SerrePositivity.BhattScholze.perfectPrismRootSource_homology_isZero
+assert_no_sorry SerrePositivity.BhattScholze.perfectPrismRootSourceSingleIso
+#print axioms SerrePositivity.BhattScholze.perfectPrismRootSourceSingleIso
+assert_no_sorry SerrePositivity.BhattScholze.perfectPrismRootSourceSingleIso_homologyZero
+#print axioms SerrePositivity.BhattScholze.perfectPrismRootSourceSingleIso_homologyZero
+assert_no_sorry SerrePositivity.BhattScholze.perfectPrismDeltaAlgebraCompletionPower_pure_bounded_torsion
+#print axioms SerrePositivity.BhattScholze.perfectPrismDeltaAlgebraCompletionPower_pure_bounded_torsion
+assert_no_sorry SerrePositivity.BhattScholze.perfectPrismDeltaAlgebraCompletionPower_homology_isZero
+#print axioms SerrePositivity.BhattScholze.perfectPrismDeltaAlgebraCompletionPower_homology_isZero
+assert_no_sorry SerrePositivity.BhattScholze.perfectPrismDeltaAlgebraCompletion_powerCokernel_homology_isZero
+#print axioms SerrePositivity.BhattScholze.perfectPrismDeltaAlgebraCompletion_powerCokernel_homology_isZero
+assert_no_sorry SerrePositivity.BhattScholze.perfectPrismDeltaAlgebraCompletion_pure
+#print axioms SerrePositivity.BhattScholze.perfectPrismDeltaAlgebraCompletion_pure
+assert_no_sorry SerrePositivity.BhattScholze.perfectPrismDeltaAlgebraCompletionSingleIso
+#print axioms SerrePositivity.BhattScholze.perfectPrismDeltaAlgebraCompletionSingleIso
+
+namespace SerrePositivity.BhattScholze.RefactoringMilnorAudit
+noncomputable section
+universe u
+open CategoryTheory CategoryTheory.Limits HomologicalComplex
+open SerrePositivity.DerivedCompletion
+attribute [local instance] HasDerivedCategory.standard
+set_option backward.isDefEq.respectTransparency false
+set_option backward.defeqAttrib.useBackward true
+
+section RootSingle
+variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
+variable (P : OrientedPrism p A) (hP : P.deltaStructure.IsPerfect) (b : σ → A)
+local notation "X" => DeltaRootSourceIteratedPDCompletion P.deltaStructure P.generator b
+
+-- The original source itself remains both nonnegative and nonpositive.
+example : (X).obj.IsGE 0 ∧ (X).obj.IsLE 0 := perfectPrismRootSource_pure P hP b
+
+-- The existing single comparison is normalized on the same H0, not an arbitrary iso.
+example :
+    (DerivedCategory.homologyFunctor (ModuleCat.{u} A) 0).map
+        (perfectPrismRootSourceSingleIso P hP b).hom ≫
+      (DerivedCategory.singleFunctorCompHomologyFunctorIso (ModuleCat.{u} A) 0).hom.app
+        ((DerivedCategory.homologyFunctor (ModuleCat.{u} A) 0).obj (X).obj) = 𝟙 _ :=
+  perfectPrismRootSourceSingleIso_homologyZero P hP b
+end RootSingle
+
+section DeltaSingle
+variable {p : ℕ} [Fact p.Prime] {A B : Type u} [CommRing A] [CommRing B]
+variable (P : OrientedPrism p A) (E : DeltaStructure p B) (j : A →+* B)
+variable (hP : P.deltaStructure.IsPerfect) (hj : P.deltaStructure.IsDeltaHom E j)
+variable
+    (hzero : ∀ i : ℤ, i ≠ 0 →
+      IsZero ((DerivedCategory.homologyFunctor
+        (ModuleCat (A ⧸ Ideal.span {(p : A), P.generator})) i).obj
+          ((boundedAboveDerivedBaseChange
+            (Ideal.Quotient.mk (Ideal.span {(p : A), P.generator}))).obj
+              (boundedAboveDerivedSingleFunctor.obj (baseChangeScalarModule j))).obj))
+    (hFF : Module.FaithfullyFlat (A ⧸ Ideal.span {(p : A), P.generator})
+      ((DerivedCategory.homologyFunctor
+        (ModuleCat (A ⧸ Ideal.span {(p : A), P.generator})) 0).obj
+          ((boundedAboveDerivedBaseChange
+            (Ideal.Quotient.mk (Ideal.span {(p : A), P.generator}))).obj
+              (boundedAboveDerivedSingleFunctor.obj (baseChangeScalarModule j))).obj))
+local notation "X" => DeltaAlgebraPerfectionIteratedPDCompletion E j P.generator
+
+-- All original coefficient-ring, delta-map, mod-(p,d) and faithful-flat inputs are retained.
+example : (X).obj.IsGE 0 ∧ (X).obj.IsLE 0 :=
+  perfectPrismDeltaAlgebraCompletion_pure P E j hP hj hzero hFF
+
+-- The second existing single comparison has the same normalization as the root source.
+example :
+    (DerivedCategory.homologyFunctor (ModuleCat.{u} A) 0).map
+        (perfectPrismDeltaAlgebraCompletionSingleIso P E j hP hj hzero hFF).hom ≫
+      (DerivedCategory.singleFunctorCompHomologyFunctorIso (ModuleCat.{u} A) 0).hom.app
+        ((DerivedCategory.homologyFunctor (ModuleCat.{u} A) 0).obj (X).obj) = 𝟙 _ := by
+  obtain ⟨hGE, hLE⟩ := perfectPrismDeltaAlgebraCompletion_pure P E j hP hj hzero hFF
+  let := hGE
+  let := hLE
+  exact normalizedPureHomologyIso_homology (X).obj 0
+end DeltaSingle
+
+end
+end SerrePositivity.BhattScholze.RefactoringMilnorAudit
