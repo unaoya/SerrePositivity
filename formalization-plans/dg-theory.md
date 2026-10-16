@@ -4719,3 +4719,34 @@ Checks.DerivedIdempotentComplete・Checks.PerfectTriangulated・Checks.StageSeve
 U13b全受入には、この分裂からKaroubi延長を主導来圏へ戻してPerfとの圏同値を構成し、
 shift・三角性と元の包含との比較を検証することが残る。
 U11eのcoherence・U12e/f・U13残部・U14〜U17・D4mも未完。共有系列への追加要求はない。
+
+
+### 17.80 U13b5：finite cellのKaroubi包絡とPerfの三角同値（U13b受入、2026-10-16）
+
+`Perfect/KaroubiEquivalence.lean`は§17.79の主導来圏の冪等完備性を使い、
+既存toKaroubiEquivalenceの逆関手でfiniteCellKaroubiFunctorの値を実際のD(D)へ戻す。
+`finiteCellKaroubiRealization`は完全忠実・shift整合的・三角的であり、その値はすべてPerf_S(D)に入る。
+元のfinite cell包含との因子化自然同型、Karoubi圏への再埋込みとの自然同型を構成し、両方のCommShiftを検証した。
+§17.77の本質像判定を使い、Perf_S(D)へのliftが本質的全射となることを証明する。
+
+`finiteCellKaroubiPerfectEquivalence`は任意S : Set Dについて
+Karoubi(DerivedFiniteCellCategoryOver A D S) ≌ PerfectModuleCategoryOver A D Sを与える。
+順逆関手のshiftと三角性、unit/counitのshift整合性を保持する。
+Perf_S(D)自身の冪等完備性も、この同値を通じて既存Karoubiの冪等完備性から得た。
+形式的対象をstrict dg retractとして選ぶことはしておらず、dg enhancementの構成はU13eに残す。
+
+Checks.PerfectKaroubiEquivalence・Checks.PerfectTriangulated・Checks.DerivedIdempotentComplete・
+Checks.StageSeven・既存Spectra.StageTwoの同時ビルドは成功（2879 jobs、終了コード0、警告なし）。
+独立対象宇宙・任意S・本質的全射・逆関手の三角性・unit/counitのCommShift・ZMod 2を検査した。
+主要30宣言の直接公理監査は終了コード0、標準公理のみ。監査累計2039宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。
+今回の2 Leanファイルにsorry/admit/新規axiomはない。担当差分の空白検査も成功。
+
+U13bの受入照合：主D(D)内のfinite cellのretractとしての定義・有限support・shift（§17.76）、
+Karoubiの本質像判定（§17.77）、厚い三角閉性（§17.78）、実際の冪等分裂（§17.79）、
+完全忠実・本質的全射な三角同値と包含比較（本節）。これでU13bを受け入れる。
+compact性で使う余積宇宙は引き続きu-smallであり、全加群圏の対象集合をsmallと仮定しない。
+
+U11eのcoherence・U12e/f・U13c〜e・U14〜U17・D4mは未完。
+次はU11eの既存検査を確認しつつ、独立なU13cのrepresentableのHom＝評価ホモロジーから進める。
+共有系列への追加要求はなく、担当外ファイル・共有ルートを変更していない。
