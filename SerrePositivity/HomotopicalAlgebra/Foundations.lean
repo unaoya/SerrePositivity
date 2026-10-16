@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftParameterHom
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarHomotopyDescent
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PresentationKernelQuotient
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryKanBarQuotient
