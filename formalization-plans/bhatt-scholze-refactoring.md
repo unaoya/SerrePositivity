@@ -70,7 +70,7 @@ BS側が変更するのは `SerrePositivity/BhattScholze/`、このBS計画、BS
 | R5b | 完全prismのWitt表示とイデアル像の入力供給 | 抽出 | 新 `PerfectPrismWittPresentation`、`PerfectPrismHomLift`、`PerfectPrismQuotientPerfectoid` | 3モジュールの一時検査済み、repo未反映 |
 | R5c | 単一根の上位perfectoid証明を任意族から特殊化 | 比較 | 新 `CompatibleRootSingletonComparison`、`CompatibleRootCompletionPerfectoid` | 循環のない上位特殊化を一時検証中、repo未反映 |
 | R6 | 相対δのイデアル冪評価・剰余算術を共有 | 証明拡張 | 新 `RelativeDeltaEstimate`、`DeltaAdicEstimate`、`RelativeFreeFiniteDeltaAdicEstimate`、`DeltaResidueArithmetic`、`RelativeFreeFiniteDeltaResidue` | 5モジュールの一時検査済み、repo未反映 |
-| R7 | BS監査の宣言列挙・公開境界検査、文書の現況整理 | 監査・文書 | BS専用スクリプト、BS計画 | 各工程と並行 |
+| R7 | BS監査の宣言列挙・公開境界検査、文書の現況整理 | 監査・文書 | BS専用スクリプト、BS計画 | 構造監査を実装・検証済み。最終集計は残りの実装後 |
 
 ### R1の既存API
 
@@ -363,6 +363,14 @@ R4bも計画済み5ファイルの一時検証から再開する。これらを�
   旧26公開署名と9定義本体を維持し、旧順射・逆射・同型を再選択していない。
   対象ビルド、同じ530対象の統合ビルド・基礎/B4監査、新3宣言と旧比較入口のfocused監査が成功。
   標準3公理のみ。対象1モジュール・専用監査・計画を個別保存。
+
+- R7構造監査：`scripts/audit_bhatt_scholze_structure.py` を追加した。
+  コメント・文字列・属性・複数行のヘッダーと、循環・禁止経路・終了コードの9検査が成功。
+  実ソースの構造検査も成功し、CompletelyFlat・DerivedTensor・WittGhostInjectiveの
+  指定3入口にBS・CLMST・Inputs・Paperへの禁止依存はない。
+  この時点のBS import被覆は574/576で、未被覆2件はB-I入力と互換入口。
+  未被覆・宣言差分は参考警告、基盤入口未指定は未検査として表示する。
+  Leanの証明・公理監査は既存スクリプトで別に行う。残る実装後に最終集計を更新する。
 
 ## 10 再調査の反映と残りの実施契約
 
