@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.DeltaRootSourceRawH0Algebra
 public import SerrePositivity.BhattScholze.DeltaDivisionSourceTensorDelta
+public import SerrePositivity.BhattScholze.DeltaTransport
 
 /-! # 同じ実二因子源H0のδ構造と標準係数射 -/
 
@@ -52,13 +53,7 @@ def deltaRootSourceRawH0DeltaStructure :
   let : CommRing HX := derivedH0CommRing AlgX
   let : Algebra L HX := derivedH0Algebra AlgX
   let e := deltaRootSourceRawH0AlgEquiv D d b
-  exact
-    { sectionHom := (wittTwoMap e.symm.toRingHom).comp ((F).sectionHom.comp e.toRingHom)
-      coeff_zero := by
-        intro h
-        change (wittTwoMap e.symm.toRingHom ((F).sectionHom (e h))).coeff 0 = h
-        rw [wittTwoMap_coeff, (F).coeff_zero]
-        exact e.symm_apply_apply h }
+  exact (F).comapEquiv e.toRingEquiv
 
 /-- H0上のδは、標準raw代数同型を通じた元のδの共役そのもの。 -/
 theorem deltaRootSourceRawH0Delta_apply :
@@ -80,8 +75,7 @@ theorem deltaRootSourceRawH0Delta_apply :
   let : CommRing HX := derivedH0CommRing AlgX
   let : Algebra L HX := derivedH0Algebra AlgX
   intro h
-  exact wittTwoMap_coeff (deltaRootSourceRawH0AlgEquiv D d b).symm.toRingHom
-    ((F).sectionHom (deltaRootSourceRawH0AlgEquiv D d b h)) 1
+  exact (F).comapEquiv_delta (deltaRootSourceRawH0AlgEquiv D d b).toRingEquiv h
 
 /-- 同じ標準H0/raw代数同型の両方向は、具体的δ構造と両立する。 -/
 theorem deltaRootSourceRawH0AlgEquiv_isDeltaHom :
@@ -103,17 +97,8 @@ theorem deltaRootSourceRawH0AlgEquiv_isDeltaHom :
   let : Module L Raw := Algebra.toModule
   let : CommRing HX := derivedH0CommRing AlgX
   let : Algebra L HX := derivedH0Algebra AlgX
-  constructor
-  · intro h
-    rw [deltaRootSourceRawH0Delta_apply]
-    exact (deltaRootSourceRawH0AlgEquiv D d b).apply_symm_apply _
-  · intro h
-    rw [deltaRootSourceRawH0Delta_apply]
-    change (deltaRootSourceRawH0AlgEquiv D d b).symm ((F).delta h) =
-      (deltaRootSourceRawH0AlgEquiv D d b).symm
-        ((F).delta ((deltaRootSourceRawH0AlgEquiv D d b)
-          ((deltaRootSourceRawH0AlgEquiv D d b).symm h)))
-    rw [(deltaRootSourceRawH0AlgEquiv D d b).apply_symm_apply]
+  let e := (deltaRootSourceRawH0AlgEquiv D d b).toRingEquiv
+  exact ⟨(F).comapEquiv_isDeltaHom e, (F).comapEquiv_symm_isDeltaHom e⟩
 
 /-- rawから同型の逆で得る元A係数射は、元のL作用を制限した標準係数射と同じ。 -/
 theorem deltaRootSourceRawH0Coefficient_eq :

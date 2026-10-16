@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.DeltaDivisionSourceTensor
+public import SerrePositivity.BhattScholze.DeltaTransport
 
 /-! # 実通常テンソルのδ構造と両因子の標準包含
 
@@ -30,12 +31,7 @@ def deltaDivisionSourceTensorDelta :
   letI : Module P₀ P₀ := Algebra.toModule
   let e := deltaDivisionSourceTensorEquiv (σ := σ) D d c
   let E := deltaAdjoinDivisionStructure D d a₀
-  exact
-    { sectionHom := (wittTwoMap e.symm.toRingHom).comp (E.sectionHom.comp e.toRingHom)
-      coeff_zero := by
-        intro r
-        simp only [RingHom.comp_apply, wittTwoMap_coeff, E.coeff_zero]
-        exact e.symm_apply_apply r }
+  exact E.comapEquiv e
 
 /-- 実通常テンソルからraw包への標準環同型はδ構造を保存する。 -/
 theorem deltaDivisionSourceTensorEquiv_isDeltaHom :
@@ -50,10 +46,7 @@ theorem deltaDivisionSourceTensorEquiv_isDeltaHom :
   let : Module P₀ P₀ := Algebra.toModule
   let e := deltaDivisionSourceTensorEquiv (σ := σ) D d c
   let E := deltaAdjoinDivisionStructure D d a₀
-  intro r
-  change e ((wittTwoMap e.symm.toRingHom (E.sectionHom (e r))).coeff 1) = E.delta (e r)
-  rw [wittTwoMap_coeff]
-  exact e.apply_symm_apply _
+  exact E.comapEquiv_isDeltaHom e
 
 /-- raw包から実通常テンソルへの標準逆同型もδ構造を保存する。 -/
 theorem deltaDivisionSourceTensorEquiv_symm_isDeltaHom :

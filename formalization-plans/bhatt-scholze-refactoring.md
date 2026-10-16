@@ -56,7 +56,7 @@ BS側が変更するのは `SerrePositivity/BhattScholze/`、このBS計画、BS
 | R1c | support・一次多項式正則性をMathlibへ接続 | 再利用 | `RelativeFreeWittInverseSupport`、`DeltaDivisionFiniteRelationsRegular` | 完了 |
 | R1d | 零完備性・係数制限・商射の外延性を既存APIへ接続 | 再利用 | `PerfectDeltaPDQuotientEquiv`、`PerfectDeltaPDQuotientComparison`、`PDCompletionInterface`、`OrientedPrismHom` | 完了 |
 | R2a | W₂写像と逆δ射を低層へ移す | 配置 | 新 `WittTwoMap`、`DeltaRing`、`DeltaQuotient`、`DeltaSectionNaturality`、直接利用先 | 完了 |
-| R2b | 環同型によるδ構造移送を統一 | 抽出 | 新 `DeltaTransport`、`DeltaDivisionSourceTensorDelta`、`DeltaRootSourceRawH0Delta` | 反映・対象ビルド済み、統合監査・保存待ち |
+| R2b | 環同型によるδ構造移送を統一 | 抽出 | 新 `DeltaTransport`、`DeltaDivisionSourceTensorDelta`、`DeltaRootSourceRawH0Delta` | 完了 |
 | R2c | 変数のδ値を指定する多項式構成とδ射判定 | 抽出 | 新 `PolynomialDelta`、`RelativeFreeDelta`、`PolynomialRankOneDelta`、普遍性利用先 | 6モジュールの一時試作を検査済み、repo未反映 |
 | R2d | 有向環余極限上のδ構造と普遍射 | 抽出 | 新 `DeltaDirectLimit`、`DeltaPerfection`、`DeltaPerfectionUniversal`、`DeltaAdjoinDivisionFiniteColimit` | 一時ファイルで構成を検証中、repo未反映 |
 | R2e | δ閉包の生成元定理を基礎層へ集約 | 配置・再利用 | `DeltaClosureGeneration`、`DeltaDivisionIteratedRelations` | 反映・対象ビルド済み、統合監査・保存待ち |
@@ -346,3 +346,8 @@ BS基礎・B4監査の合成import閉包は568/573モジュール。
 R2dとR5aは一時ファイルで独立に準備し、共通する `DeltaPerfectionUniversal` の反映は親担当が調整する。
 R2dは同じ遷移関数によるMathlib余極限、R5aは既存完全性仮定と選択済み順射・逆射を保持する。
 R4bも計画済み5ファイルの一時検証から再開する。これらを保存待ち4項目の検証ソースへ混ぜない。
+
+- R2b：W₂切断の共役による `DeltaStructure.comapEquiv` とδ公式・両方向のδ射性を公開し、
+  実テンソル源と実raw H0の二箇所へ適用した。異なるuniverse、零環、pねじれを許し、元の環同型・作用を保持。
+  530対象・4,566ジョブの統合ビルド、基礎584件・B4 2,560件の監査、追加9宣言のfocused監査が成功。
+  新4宣言と利用先の公理は標準3公理のみ。新sorry・引用依存なし。対象3モジュール・専用監査・計画を個別保存。

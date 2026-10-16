@@ -17,6 +17,8 @@ import SerrePositivity.BhattScholze.DeltaDivisionFirstResidueFlat
 import SerrePositivity.BhattScholze.RelativeFreeWittInverseSupport
 import SerrePositivity.BhattScholze.DeltaDivisionFiniteRelationsRegular
 import SerrePositivity.BhattScholze.RankOneDPBaseChange
+import SerrePositivity.BhattScholze.DeltaTransport
+import SerrePositivity.BhattScholze.DeltaRootSourceRawH0Delta
 import Mathlib.Util.AssertNoSorry
 
 /-! Focused dependency checks for the BS refactoring steps.
@@ -93,3 +95,21 @@ noncomputable example : ∀ {p : ℕ} [Fact p.Prime] {A : Type*} [CommRing A],
     Function.Injective (fun a : A ↦ (p : A) * a) →
     Module.Basis ℕ A (DividedPowerAlgebra A A) :=
   @SerrePositivity.BhattScholze.rankOneDPPrimeBasis
+
+-- R2b: transport along the existing equivalences, including the raw H0 scalar actions.
+assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.comapEquiv
+assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.comapEquiv_delta
+assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.comapEquiv_isDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.comapEquiv_symm_isDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionSourceTensorDelta
+assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionSourceTensorEquiv_isDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.deltaRootSourceRawH0DeltaStructure
+assert_no_sorry SerrePositivity.BhattScholze.deltaRootSourceRawH0Delta_apply
+assert_no_sorry SerrePositivity.BhattScholze.deltaRootSourceRawH0AlgEquiv_isDeltaHom
+#print axioms SerrePositivity.BhattScholze.DeltaStructure.comapEquiv
+#print axioms SerrePositivity.BhattScholze.DeltaStructure.comapEquiv_delta
+#print axioms SerrePositivity.BhattScholze.DeltaStructure.comapEquiv_isDeltaHom
+#print axioms SerrePositivity.BhattScholze.DeltaStructure.comapEquiv_symm_isDeltaHom
+#print axioms SerrePositivity.BhattScholze.deltaDivisionSourceTensorDelta
+#print axioms SerrePositivity.BhattScholze.deltaRootSourceRawH0DeltaStructure
+#print axioms SerrePositivity.BhattScholze.deltaRootSourceRawH0AlgEquiv_isDeltaHom
