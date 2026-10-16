@@ -7698,3 +7698,49 @@ Hom_BのA上K-flat性をこの片側の主張に追加しない。
 dg圏自体を解像度で置き換える経路、両変数の導来合成・計算同型・coherenceはなお残る。
 U12e全受入、U12f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完で、U17までの目標を保持する。
 共有系列への新しいAPI要求はない。
+
+### 17.169 U12e10：生成cellの右制限の同型とlocal Hom条件下の右相対K-flat解像度（2026-10-17）
+
+`Module/RestrictionAction.lean`は制限作用・代表作用・単位整数スカラーとの可換性の成分式を
+公開する。`Bimodule/RestrictedRepresentableAction.lean`の**restrictedRepresentable_action**は、
+(Bᵒᵖ⊗C)ᵒᵖの代表加群を右Bへ制限した作用を純tensor上で計算する。
+Hom_B成分hの次数r、Hom_C成分gの次数s、作用する射fの次数pについて、
+二つのoppositeと積dg圏の交差符号の指数和はp*(r+s)+s*p+r*p=2*p*(r+s)。
+従って、右tensorされたHom_C成分を固定し、Hom_B成分だけに代表作用を施す形になる。
+大きな代表加群の定義を一括展開するchangeでの時間超過は、汎用の作用補題へ分割して解消した。
+TransportEnrichmentの対象の型を明示し、計算上限を増やしていない。
+
+`Bimodule/RestrictedRepresentable.lean`の**restrictedRepresentableIso**は、この代表加群の
+右制限とHom_C(c₀,c)を生成複体とする自由右B加群との同型。
+値の写像はsignedSwap Hom_B(b,b₀) Hom_C(c₀,c)で、**hom_eval/inv_eval**も公開した。
+元の全Hom自然性は、braidingの(r+p)*sと、tensor加群作用のr*s+p*sを照合して証明する。
+`Module/RestrictionTensor.lean`は**restrictModule_tensor/moduleRestrictionTensorIso**と
+**tensorModuleAssociatorIso**を与える。後者は既存の全次数cochainに関するassociator自然性を使う。
+`Bimodule/RestrictedFree.lean`の**restrictedFreeIso**はこれらを合成し、任意の非有界複体Kについて
+右制限を、生成複体K⊗Hom_C(c₀,c)の自由右B加群と同定する。
+
+`Tensor/BimoduleSemifreeKFlat.lean`は**restrictedFree_relativeKFlat**と
+**restrictedSphere_relativeKFlat**を証明する。使用条件はKのA上K-flat性と
+localHomKFlat A Cのみで、Hom_BのA上K-flat性は要求しない。
+これにより§17.168のhcellを具体的に充足し、
+**BimoduleSemifreeResolution.rightRelativeKFlat**は実際の任意のsemifree解像度の右相対K-flat性を与える。
+**exists_rightRelativeKFlat_bimodule_resolution**はlocalHomKFlat A Cの下で、
+任意の主bimodule Mに対する右相対K-flat対象Pと指定準同型P→Mの存在を証明する。
+任意可換環・非有界・独立B/C対象宇宙・Small.{u} B/Cを維持する。
+local Hom条件なしの主張や、各fiber自体のsemifree性には強めていない。
+
+Checks.BimoduleSemifreeKFlat・Checks.ModuleRestriction・Checks.BimoduleSemifreeResolution・
+Checks.DerivedBimodulePentagon・Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（3045 jobs、終了コード0、警告なし）。任意Kの自由加群比較、
+Hom_B条件を課さない解像度の右相対K-flat性・存在、次数−1と+1のbraidingの負号、
+独立対象宇宙とZMod 2での存在を検査した。主要16宣言の直接公理監査は標準公理のみ。
+監査累計3216宣言。今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は共有ルートのExport.lean読込時に、担当外CLMST.SelectedParameterEuler.oleanの
+欠落で停止した。今回のdg対象ビルドとは別であり、共有ルート・該当系列は編集していない。
+
+次は右相対K-flatな因子間の準同型に対する合成の不変性を証明し、§17.161以降の固定因子関手を
+因子の局所化にも降下させる。既存の第二因子の準同型保存は各fiberのhomotopically projective性を
+仮定するため、今回得たrelative K-flat性だけでそれを充足したとは扱わない。
+両側解像度を使うtensor比較を証明してから、任意解像度による計算同型・単位/結合coherenceへ接続する。
+local Hom条件のないdg圏の解像度経路、U12e全受入、U12f・U13d/e残部・U14・U15d/e・U16/U17・D4mは残る。
+U17までの目標を保持し、共有系列への新しいAPI要求はない。
