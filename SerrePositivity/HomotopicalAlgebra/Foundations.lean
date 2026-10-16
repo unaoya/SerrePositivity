@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedLeftProper
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanPullbackDeformation
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanPushoutComparison
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedTransfinite
