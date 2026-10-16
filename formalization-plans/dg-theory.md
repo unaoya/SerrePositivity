@@ -4317,3 +4317,28 @@ U12aの残るshift閉性と相対K-flat条件の指定quasiIso保存との同値
 左変数も導来化したtensor双関手、U12c/e/fはなお未完。
 次はopposite上の既存左右加群同値とswapを使い、このcone比較を左変数の準同型保存へ適用する。
 U11eのcoherence・U13〜U17・D4mも未完。共有系列への追加要求はない。
+
+
+### 17.67 U12a7/d5：左加群の指定準同型と相対K-flat tensorの保存性（2026-10-16）
+
+`Module/LeftQuasiIso.lean`は既存leftModuleToRightOppositeによるmoduleQuasiIsoの逆像として
+leftModuleQuasiIsoを定義し、全対象での評価準同型との同値、乗法性・two-out-of-three・
+retract閉性・同型整合性を公開する。対象宇宙は独立に保つ。
+
+`Tensor/QuasiIsoLeft.lean`は既存左右同値のcounitと符号付きswapによって、相対K-flat右加群の
+acyclic試験をopposite上へ運ぶ。そこで標準cone比較同型を適用し、左加群の指定準同型に対する
+実際のleftTensorFunctorの準同型保存を証明した。自然同型の合成式の型を明示することで、
+最終証明は既定heartbeat予算内で通過する。一般モデル圏・Quillenの入力は使わない。
+`Tensor/ProjectiveLeftQuasiIso.lean`はhomotopically projectiveおよびsemifree右加群への系を公開する。
+
+Checks.LeftTensorQuasiIso・Checks.FunctorModuleConeIso・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2856 jobs、終了コード0、警告なし）。任意A・独立対象宇宙・ZMod 2を検査した。
+主要10宣言の直接公理監査は終了コード0、標準公理のみ。監査累計1826宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査も成功。
+今回の4 Leanファイルにsorry/admit/新規axiomはない。
+
+左変数の指定準同型保存は得られたが、指定局所化上の両変数導来tensor双関手の完成はなお必要。
+次は射影解像度関手の計算同型を通じて、この保存性を既存moduleResolutionDerivedTensorLeftFunctorの
+自然変換の可逆性へ運び、左変数の局所化へ延長する。
+U12aのshift閉性・保存条件との逆向き、U12c/e/f、U11eのcoherence、U13〜U17・D4mも未完。
+共有系列への追加要求はなく、担当外ファイルを編集していない。
