@@ -9940,3 +9940,14 @@ DeltaRootRawCompletionReflection.leanの既存公開型・単位を保ち、そ�
 DeltaAlgebraPerfectionPDH0Comparison.leanの公開3宣言で、既存G8と同じ二座標実反射を合成し、実δ完全化逐次H0をC上の実PD H0の係数制限および標準合成射A→C→PDの加群と同定した。
 Cの元の加群作用と合成環準同型の作用は具体的な恒等線形同型で照合した。追加正則性・有限性・完備性仮定なし。
 対象3981ジョブ成功、pure B4監査2529宣言成功、標準3公理のみ。次は離散性と合成しPD環の実還元とCFFを移送する。
+
+## 既存根prism候補のCFFへの移送計画（2026-10-16）
+新規BS専用PerfectPrismRootPrismCompletelyFlat.leanで、具体的根PD環の既証入力を実δ完全化後のPD環の完全忠実平坦性へ供給する。
+既存deltaRootPDCompletedPerfectionEquivの標準係数射の可換性から、同じA作用を持つ係数加群の線形同型を構成する。
+同じ(p,d)残余Tor消滅・通常係数拡大の忠実平坦性を移送し、既存prism台環候補の標準係数射について完全忠実平坦性を公開する。
+その生成元商のp完全忠実平坦性と任意根族の根付きperfectoid拡大は次段と区別する。
+
+## δ完全化後の実PD環の完全忠実平坦性の結果（2026-10-16）
+PerfectPrismDeltaAlgebraPDCompletelyFlat.leanの公開6宣言で、元δ代数の実還元入力から、標準係数射A→δ完全化→PDを持つ実PD環の(p,d)完全忠実平坦性を証明した。
+同じ実逐次対象の離散性とH0比較をsingle同型に合成し、元の実還元の消滅・H0忠実平坦性を移した。Tor・通常係数拡大・完全平坦性の共通APIを使用。
+対象4007ジョブ成功、pure B4監査2535宣言成功、標準3公理のみ。根PD環への具体的適用と既存候補への移送を次段で行う。
