@@ -4659,3 +4659,39 @@ U13b全受入は未完。次はfinite cell間の導来射の加群射への持�
 finite cellの本質的像の三角閉性を証明し、retract閉包へ運ぶ。
 U11eのcoherence・U12e/f・U13残部・U14〜U17・D4mも未完。
 共有系列への追加要求はなく、担当外ファイルを編集していない。
+
+
+### 17.78 U13b3：finite cellの導来射・cone比較とPerfの厚い三角閉性（2026-10-16）
+
+`Derived/ProjectiveDerivedLifting.lean`は既存moduleProjectiveDerivedHomEquivと
+moduleToHomotopyの全射性を合成し、homotopically projectiveな始域からの指定D(D)の射が
+実際の閉零加群射の像になることを証明する。終域の射影性は仮定しない。
+
+`Derived/ConeTriangles.lean`はmoduleToDerived.mapTriangleによる実際のmoduleConeTriangleの像を
+定義し、K(D)からD(D)への三角関手、既存の因子化自然同型とそのCommShiftを用いてdistinguished性を証明する。
+主局所化・主cone・shift比較を変更していない。
+
+`Perfect/Triangulated.lean`はfinite cellの本質的像に入る二対象間の導来射を上記で持ち上げ、
+その標準cone三角形と与えられたdistinguished三角形をArrow同型から比較する。
+finite cellのcone閉性を実際の第三対象へ運び、全shift・零対象と合わせて
+ObjectProperty.IsTriangulated (derivedFiniteCellOver S)を証明した。
+
+Perfの拡大閉性はMathlibのextensionProduct_retractClosure_retractClosure_leを適用して得る。
+既存retract閉包・shift閉性と合わせてmodulePerfectOver SおよびmodulePerfectが三角閉かつretract閉となる。
+充満部分圏の三角構造はMathlibを再利用し、finite cell包含・Perf包含・Karoubi延長の三角性も登録した。
+一般の厚い閉包や三角構造の移送論を新設していない。
+
+Checks.PerfectTriangulated・Checks.PerfectKaroubi・Checks.PerfectBasic・Checks.FiniteCellProjective・
+Checks.StageSeven・既存Spectra.StageTwoの同時ビルドは成功（2869 jobs、終了コード0、警告なし）。
+任意A・独立対象宇宙・任意生成元集合・射影的始域だけの導来射持ち上げ・厚い三角閉性・
+三角部分圏と包含/Karoubi関手・ZMod 2を検査した。
+主要16宣言の直接公理監査は終了コード0、標準公理のみ。監査累計2002宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。
+今回の4 Leanファイルにsorry/admit/新規axiomはない。担当差分の空白検査も成功。
+
+U13bの厚い三角閉性は受入を満たした。全体の残課題は、Karoubi延長の形式的対象をD(D)の
+実際の対象へ戻す冪等分裂と、Perfとの圏同値としての比較の完成である。
+§17.77の本質像判定や今回の三角性だけから全Karoubi対象のD(D)での実現は結論しない。
+次は既存の冪等分裂APIとD(D)の余積を再確認し、この比較を完成させる。
+U11eのcoherence・U12e/f・U13残部・U14〜U17・D4mも未完。
+共有系列への追加要求はなく、担当外ファイルを編集していない。
