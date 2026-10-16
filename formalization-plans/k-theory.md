@@ -19950,3 +19950,78 @@ transferredはこれを実全次数族へ適用する。transferred_face・degen
 内部恒等の消去と高次の収縮整合性は個別に検証し、独立充填の存在からは推論しない。
 その後の自然弱同値比較、元の基底への降下、小さい厳密なRMap、最終F2は残る。
 全体目標F→L→E→Sは未完了として継続する。
+
+
+## 360. 全次数の有限射列の収縮族とnativeな小さい移送族（2026-10-17）
+
+実装コミット`7a2b30b8`。前回は§359の実ambient作用と小さい内部Homへの移送を構成した進捗ターンだった。
+今回はその実射族をRetractChainFamilyへ接続し、全次数・任意長の射列の収縮族、
+面・退化との交換、任意の前後の列を含む零面・一面の式を構成した。
+小さいパラメータへ引き戻した場合は、nativeなSSet.{v}の実射族まで降ろした。
+内部恒等の消去と元の基底への降下は、この成果から区別する。
+
+### 360.1 任意長の実source射列を収縮族へ写す
+
+`OrdinaryBarFreeChainTransfer.snoc`は、degree D (n+1)の実射fと任意の全パラメータ写像
+j : U → P × Δⁿから、§359の実ambient族をjで代入した辺を作る。
+その辺と、独立に指定した収縮パラメータU → Δ¹をchainの末尾へ加える。
+始域・終域のラベルは元のD = Cᵒᵖ × Cを保持する。
+
+ofPathはこの構成を任意長のsource射列へ反復し、ofPath_lengthは長さの保存を証明する。
+snoc_substitute・ofPath_substituteは任意のUへの全パラメータ代入と交換する。
+familyは実収縮・section・projectionを用いた移送族であり、family_substituteはその代入等式である。
+family_nilは空列が恒等族へ、family_singleは単一射が§359の実移送へ等しいことを証明する。
+単一射の結果は指定した最後の収縮パラメータに依存しない。
+
+### 360.2 任意のprefix・suffixを保つ零面と一面
+
+zero_faceは任意の前後のambient chainを含む式である。
+隣接する実source射f・gの間の収縮パラメータを零にすると、列をその実合成f ≫ gへ
+置き換えた族に等しいことを、§359の厳密なambient合成と既存zero_family_faceから導く。
+
+one_faceも任意の前後のchainを保ち、継ぎ目を一にした族が、そこで分割した二つの
+移送族のParameterComposition.compへ等しいことを証明する。
+sourceの合成と移送族の合成を同一視せず、零面・一面という二つの境界式で比較する。
+
+evaluate_zeroは、すべての収縮パラメータが零のとき、任意長のsource列の実ambient評価が
+そのsource列をpathCompositionで合成した実射の族へ等しいことを証明する。
+family_zeroは、全零の移送族がその実合成射の§359の移送へ等しいことを示す。
+空列を含む全長さで証明しており、二射の場合だけの計算ではない。
+
+### 360.3 面・退化の射列全体への接続
+
+snoc_face・degeneracyは、§359の実ambient族の式から一辺追加との交換を証明する。
+sourceの面・退化で写したpathの長さが変わらないことを証明し、収縮パラメータの添字を保つ。
+ofPath_face・degeneracyは任意長の射列に対する実chainの等式である。
+family_face・degeneracyはこれを移送族の全面・全退化等式として取り出す。
+源の面・退化を写す場合と、全パラメータ写像jへ対応するδ・σを合成する場合が厳密に一致する。
+
+### 360.4 nativeな小さい射族への降下
+
+`OrdinaryBarSmallFreeChainTransfer`はT : SSet.{v}とj : UniverseLift.obj T → P × Δⁿを入力とする。
+familyは360.1の実族をlowerTensorし、small X × T → small Yというnativeな実写像を作る。
+smallなパラメータの任意の代入、空列、全面、全退化との交換を証明する。
+zero_face・one_faceは、任意のprefix・suffixを含む式をnativeなSSet.{v}の射族へ移したものである。
+大きいSSetのモデル構造は不要で、対象・Hom宇宙を独立に保つ。
+
+この降下は全パラメータを指定した有限射列の族に対するものであり、元の基底上の
+SSet.{v}値厳密関手の構成や、sourceのすべての関係式による商への降下を主張しない。
+
+### 360.5 受入検証と残る恒等整合性
+
+すべて成功した。
+
+- 共有入口のbuild：3072 jobs、追加警告なし。
+- `check_free_chain_transfer`：55宣言・2モジュール、標準公理のみ。
+  任意長のsource列、全パラメータ代入、全面・全退化、任意のprefix・suffixを含む零面・一面、
+  全零での実合成、nativeなSSet.{v}の実射族とその代入・面整合性を検証。
+- `check_free_resolution_action`：既存53宣言・3モジュールの回帰検証。
+- `audit_homotopical_foundations`：11914宣言・857モジュール、標準公理のみ。
+- 新規ソース・受入スクリプトの行長、証明用マーカー、stage差分の空白検査。
+
+次は、空列・単一射の簡約に加え、先頭・末尾の恒等射挿入を実strong contractionから扱う。
+続いて内部恒等の消去について、隣接する収縮パラメータの比較を定め、零面・一面と
+全面・全退化を同時に保つ構成を証明する。収縮の合成則を新たな仮定として置いたり、
+quiverの恒等生成射を空pathと同一視したりして終了とはしない。
+内部恒等を含む高次整合性、自然弱同値比較、元の基底への降下、小さい厳密なRMap、最終F2は残る。
+全体目標F→L→E→Sは未完了として継続する。

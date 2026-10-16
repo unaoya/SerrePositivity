@@ -3020,3 +3020,15 @@ Paths³(Cᵒᵖ × C) → Choice(P × ∂Δ²)という実境界関手と、全�
 移送族は小さい内部Homの宇宙持ち上げに値を取る。移送後の厳密な合成保持は主張しない。
 有限射列の収縮族への接続、自然比較、元の基底への降下、小さい厳密なRMapは残る。
 受入検証は`check_free_resolution_action`（53宣言・3モジュール）。
+
+
+### 全次数の有限射列の収縮族と小さい移送族（§360）
+
+`OrdinaryBarFreeChainTransfer`は実source射列と独立な収縮パラメータを実chainへ写し、
+任意の全パラメータ代入・全面・全退化と交換する。
+任意のprefix・suffixを含む零面での実source合成、一面での移送合成、空列・単一射、
+全零での任意長の実合成への一致を証明する。
+`OrdinaryBarSmallFreeChainTransfer`は小さいパラメータへ引き戻し、これらの族と境界式を
+nativeなSSet.{v}の実写像へ降ろす。
+内部恒等の消去と高次整合性、自然比較、元の基底への降下、小さい厳密なRMapは残る。
+受入検証は`check_free_chain_transfer`（55宣言・2モジュール）。
