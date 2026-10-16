@@ -36,6 +36,15 @@ def factorization : MorphismProperty.FunctorialFactorizationData
 abbrev functor : SSet.{v} ⥤ SSet.{v} := fibrantTarget (factorization hcof hfib)
 abbrev unit : 𝟭 SSet.{v} ⟶ functor hcof hfib := fibrantTargetComparison (factorization hcof hfib)
 
+lemma unit_cofibration (K : SSet.{v}) :
+    cofibrations SSet.{v} ((unit hcof hfib).app K) :=
+  ((factorization hcof hfib).hi (Arrow.mk (terminal.from K))).1
+
+lemma unit_mono (K : SSet.{v}) : Mono ((unit hcof hfib).app K) := by
+  have h := unit_cofibration hcof hfib K
+  rw [hcof] at h
+  exact h
+
 lemma unit_weakEquivalence (K : SSet.{v}) :
     weakEquivalences SSet.{v} ((unit hcof hfib).app K) :=
   fibrantTargetComparison_weakEquivalence _ K
