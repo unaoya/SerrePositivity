@@ -777,6 +777,8 @@ public import SerrePositivity.BhattScholze.PerfectDeltaIteratedTensorDiscrete
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionScalarConeComparison
 
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionQuotientBaseChange
+
 /-!
 # Serre の交点重複度の正値性の形式化
 
