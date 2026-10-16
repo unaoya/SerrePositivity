@@ -41,6 +41,10 @@ lemma baseChange_trans {X Y : ResolutionObject C} {f g h : X.base ⟶ Y.base}
   rfl
 
 @[reassoc (attr := simp)]
+lemma baseChange_symm {X Y : ResolutionObject C} {f g : X.base ⟶ Y.base} (h : f = g) :
+    baseChange h ≫ baseChange h.symm = 𝟙 (obj X Y f) := by cases h; rfl
+
+@[reassoc (attr := simp)]
 lemma baseChange_inclusion {X Y : ResolutionObject C} {f g : X.base ⟶ Y.base} (h : f = g) :
     baseChange h ≫ inclusion X Y g = inclusion X Y f := by cases h; exact Category.id_comp _
 
