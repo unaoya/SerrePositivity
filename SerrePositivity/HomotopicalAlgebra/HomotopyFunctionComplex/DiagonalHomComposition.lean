@@ -104,4 +104,16 @@ lemma pairing_middle_naturality {B' : SimplexCategory ⥤ C} (k : B ⟶ B') {T :
     ((Category.assoc ((a.app n x).app n.unop) (k.app n.unop) (b.app n x)).trans
       (pairing_app A B Z a (b ≫ (cosimplicialHomMap k).app Z) n x).symm)
 
+/-- Source change is compatible with restriction of a double diagram to the diagonal. -/
+lemma pairing_source_naturality {A' : SimplexCategory ⥤ SimplexCategory ⥤ C}
+    (φ : A ⟶ A') {T : SSet.{v}} (a : T ⟶ (cosimplicialHom A').obj B)
+    (b : T ⟶ (cosimplicialHom B).obj Z) :
+    pairing A B Z (a ≫ (cosimplicialHomMap φ).app B) b =
+      pairing A' B Z a b ≫ (cosimplicialHomMap (DiagonalFrame.map φ)).app Z := by
+  ext n x
+  exact (pairing_app A B Z (a ≫ (cosimplicialHomMap φ).app B) b n x).trans
+    ((Category.assoc ((φ.app n.unop).app n.unop) ((a.app n x).app n.unop) (b.app n x)).trans
+      (congrArg (fun k => (φ.app n.unop).app n.unop ≫ k)
+        (pairing_app A' B Z a b n x)).symm)
+
 end SerrePositivity.HomotopyFunctionComplex.DiagonalHom
