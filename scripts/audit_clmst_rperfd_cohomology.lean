@@ -9,6 +9,7 @@ assert_no_sorry parameter_power_isKoszulResolution
 #print axioms parameter_power_isKoszulResolution
 #print axioms toRPerfd_algebraMap_A
 #print axioms rPerfd_p_coordinate
+#print axioms rPerfd_tor_eq_zero_of_finite
 #print axioms rPerfd_cohomology_vanishing_of_tor_idempotent
 
 -- The original selected RPerfd has a known existence dependency. Reject all
@@ -38,7 +39,7 @@ private partial def checkRPerfdDependencies (todo : List Name) (visited : NameSe
 
 elab "assert_rperfd_cohomology_dependencies" : command => do
   let roots := [``toRPerfd_algebraMap_A, ``rPerfd_p_coordinate,
-    ``rPerfd_cohomology_vanishing_of_tor_idempotent]
+    ``rPerfd_tor_eq_zero_of_finite, ``rPerfd_cohomology_vanishing_of_tor_idempotent]
   let _ ← liftCoreM <| checkRPerfdDependencies roots {}
   logInfo "Only the existing integral-perfectoidization existence sorry is permitted."
 end

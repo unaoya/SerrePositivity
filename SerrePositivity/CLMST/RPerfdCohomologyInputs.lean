@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.ConditionalCohomologyVanishing
+public import SerrePositivity.HomologicalAlgebra.TorFiniteCoefficients
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdeal
 public import SerrePositivity.CommutativeAlgebra.RegularParameters
 
@@ -49,6 +50,24 @@ lemma rPerfd_p_coordinate (j₀ : Fin h) (htp : t j₀ = (p : A)) :
     algebraMap (CompletedTower A t p) (RPerfd A D t p hperf)
       (p : CompletedTower A t p) = algebraMap A (RPerfd A D t p hperf) (t j₀) := by
   simp only [htp, map_natCast]
+
+/-- Supply the full Tor input from finitely generated tests on the same selected
+RPerfd. No completeness assumption is imposed on the arbitrary test module. -/
+lemma rPerfd_tor_eq_zero_of_finite (g : A)
+    (hTor : ∀ (N : ModuleCat.{u} A), Module.Finite A N → ∀ (i : ℕ), 0 < i →
+      ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+        (algebraMap A (CompletedTower A t p) g),
+        torCoefficientScalarEndomorphism (RPerfd A D t p hperf) N i
+          (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0)
+    (N : ModuleCat.{u} A) (i : ℕ) (hi : 0 < i)
+    (s : CompletedTower A t p)
+    (hs : s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+      (algebraMap A (CompletedTower A t p) g)) :
+    torCoefficientScalarEndomorphism (RPerfd A D t p hperf) N i
+      (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0 :=
+  torCoefficientScalarEndomorphism_eq_zero_of_finite (RPerfd A D t p hperf) i
+    (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s)
+    (fun M hM => hTor M hM i hi s hs) N
 
 /-- Apply the common comparison to the selected RPerfd and the actual almost
 ideal. The two remaining inputs are kept at their full original quantifiers. -/

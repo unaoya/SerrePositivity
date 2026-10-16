@@ -1004,3 +1004,16 @@ assert_no_sorry SerrePositivity.CLMST.parameter_power_isKoszulResolution
 #print sorries SerrePositivity.CLMST.toRPerfd_algebraMap_A
 #print sorries SerrePositivity.CLMST.rPerfd_p_coordinate
 #print sorries SerrePositivity.CLMST.rPerfd_cohomology_vanishing_of_tor_idempotent
+
+-- KL-A2a: finite coefficient tests imply the original all-coefficient Tor input.
+assert_no_sorry SerrePositivity.finiteSubmoduleColimitIso
+assert_no_sorry SerrePositivity.finiteSubmoduleColimitIso_ι
+assert_no_sorry SerrePositivity.natTrans_colimit_app_eq_zero
+assert_no_sorry SerrePositivity.torCoefficientScalarEndomorphism_eq_zero_of_finite
+assert_no_sorry SerrePositivity.torCoefficientScalarEndomorphism_all_iff_finite
+#print axioms SerrePositivity.finiteSubmoduleColimitIso
+#print axioms SerrePositivity.finiteSubmoduleColimitIso_ι
+#print axioms SerrePositivity.natTrans_colimit_app_eq_zero
+#print axioms SerrePositivity.torCoefficientScalarEndomorphism_eq_zero_of_finite
+#print axioms SerrePositivity.torCoefficientScalarEndomorphism_all_iff_finite
+#print sorries SerrePositivity.CLMST.rPerfd_tor_eq_zero_of_finite
