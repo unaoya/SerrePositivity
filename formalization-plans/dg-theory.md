@@ -6263,3 +6263,40 @@ Checks.AppendRight・Checks.ErasureRowRecursion・Checks.StageSeven・既存Spec
 単位・結合・収縮方程式も残り、U15b全受入は未完。
 U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mも未完。採用済み引用は0件。
 共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.131 U15b16：先頭Hom作用と有限・全path連結の結合図式（2026-10-17）
+
+`Complexes/TensorJoinRightAction.lean`は前方二因子の合成と後方二因子への任意のchain map作用の
+交換図式を証明した。構造射の等式はMathlib monoidal coherence、残る部分はassociator自然性と
+tensorの交換則から得る。
+`Quotient/AppendPrepend.lean`はこれを元のdg圏の豊穣合成へ特殊化し、有限pathについて
+prependMapの作用とappendMapの連結の結合則appendMap_prependを証明した。
+左語が空の場合は既存prependMap_assoc、非空の場合は上記一般図式を用いる。
+
+`Complexes/TensorCoproductExt.lean`は一つ又は二つの固定左tensor因子と固定右tensor因子を持つ
+指定余積について、包含上の制限からchain mapの等式を判定する補題を構成した。
+`Quotient/AppendRightPrepend.lean`は有限pathの図式を全右pathの余積へ拡張する。
+`Quotient/CompositionPrepend.lean`はさらに左の全path直和へ拡張し、
+internalPrependとinternalCompositionの結合図式internalComposition_prependを証明した。
+任意可換環・非有界Hom・独立対象宇宙を保持し、全path直和にはSmall.{u} Dを要求する。
+これらは内部微分に関するchain mapの等式であり、最終微分の一般合成の完成とは扱わない。
+
+Checks.CompositionPrepend・Checks.AppendRight・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（2677 jobs、終了コード0、警告なし）。任意dg圏の全path図式、
+ZMod 2で指定部分圏にわたる全path図式を検査した。
+主要6宣言の直接公理監査は標準公理のみ。監査累計2684宣言。
+文書検査は23 Markdown・320 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+先頭Homとεを同時に追加する図式の`Quotient/CompositionPrefix.lean`は別の未受入草稿である。
+直接の余積保存と、任意複体の余積判定へ分離した形の両方で、カーネルのdeterministic timeoutを
+検出した。前者・後者の失敗ジョブはともに終了コード1を確認済み。
+各path上の左右・中間・外側の比較を独立補題に分けた検査を進めており、未検証の図式を
+受入入口にはimportしていない。予算上限の増大や引用による置換は採用していない。
+
+次はこの先頭追加図式のカーネル型照合を小さくし、prefixPath_erasureと今回の
+internalComposition_prependを合わせ、非空左pathのLeibniz則へ運ぶ。
+一般の最終Hom間の合成、単位・結合・収縮方程式、U15b全受入は未完。
+U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mも未完。採用済み引用は0件。
+共有一般論・共有ルートimport・他系列は編集していない。
