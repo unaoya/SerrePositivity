@@ -822,6 +822,8 @@ public import SerrePositivity.HomologicalAlgebra.DerivedTensorAlgebraCongruence
 
 public import SerrePositivity.BhattScholze.PerfectPrismCartierTensorComparison
 
+public import SerrePositivity.HomologicalAlgebra.RingEquivDerivedTensor
+
 /-!
 # Serre の交点重複度の正値性の形式化
 
