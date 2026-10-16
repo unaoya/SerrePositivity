@@ -7163,3 +7163,39 @@ BhattScholze互換宣言の未解決参照1件で失敗した。共有ルート�
 今回の閉零変数の単位自然性を任意パラメータの三変数自然性と同一視しない。
 U11e全受入、U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mは引き続き未完。
 U17までの目標を保持する。共有系列への新しいAPI要求はない。
+
+
+### 17.156 U11e33：任意パラメータの両対象評価と相対tensorへの値ごとの作用（2026-10-17）
+
+`Bimodule/ParameterEvaluation.lean`は任意K : Complex Aについて、既存BimoduleParamTransを
+Hom endの評価へ合成する**paramValue**を公開する。paramRightAtは元のmoduleHomEquivから
+全次数自然な右B加群変換を取り出す。paramValue_left_naturalityは元のGradedNatTransの
+自然性をmoduleHomπへ合成し、moduleComposition_πとtensor合成の法則で評価した全Hom等式。
+**paramLeftAt**はこれを左C加群のパラメータ付き変換へまとめる。
+左右の自然性、両評価の成分公式、全値でパラメータ付き変換の等式を判定するparamValue_extを証明した。
+この評価にはSmall.{u} Bのみを要求し、Cのsmall性もKの閉性・有界性も要求しない。
+
+`Tensor/BimoduleParameterValues.lean`は既存BalancedTensor.leftParamMap/rightParamMapへ
+上の変換を渡し、**firstParamValue/secondParamValue**を構成する。
+これらはK⊗compose(P,Q)の値から、P又はQを変換した合成の値への実際のchain map。
+firstParamValue_elementはパラメータ次数kとQの値の次数rの交差符号(-1)^(kr)を証明し、
+secondParamValue_elementには追加の交差符号がないことを証明する。
+**firstParamHom/secondParamHom**は同じ作用の主Hom複体への転置表示。
+任意CommRing A・非有界・独立B/C/E宇宙を保持し、相対tensorにはSmall.{u} B/Cを明示する。
+Eのsmall性を要求しない。全Hom自然性を閉零自然性に弱めた代替変換は使わない。
+
+Checks.BimoduleParameters・Checks.UnitNaturality・Checks.Pentagon・Checks.Triangle・
+Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功（2786 jobs、終了コード0、警告なし）。
+任意Kの変換、Cのsmall性なしの左加群評価と変換の外延性、独立宇宙の二つの作用、
+パラメータ次数−1・Q次数1・P次数0の符号付き生成元、ZMod 2のHom表示を検査した。
+主要14宣言の直接公理監査は標準公理のみ。監査累計3022宣言。
+今回の実装にsorry/admit/新規axiomはない。計算上限の追加もなく、採用済み引用は0件。
+全体文書検査は13 Markdown・320 exposition参照を検査し、§17.151〜155と同じ担当外の
+BhattScholze互換宣言の未解決参照1件で失敗した。共有ルートや該当系列は編集していない。
+
+今回の値ごとの作用は、まだ合成bimodule間のパラメータ付き変換へ束ねていない。
+次は外側両作用の全Hom自然性を証明してその変換を構成し、三変数の各パラメータ作用と
+associatorの可換式を生成元で証明して全chain mapへ上げる。
+評価APIや生成元公式だけで任意パラメータに関する結合自然性の完成とはしない。
+U11e全受入、U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mは引き続き未完。
+U17までの目標を保持する。共有系列への新しいAPI要求はない。
