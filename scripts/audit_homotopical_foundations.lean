@@ -7,6 +7,9 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.CategoryTheory.NerveSimplexEndpoint,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Elements,
+    `SerrePositivity.HomotopicalAlgebra.Simplicial.NerveCoherentFamily,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceIso,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.MixedChoiceCompatibility,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AllFactorizationMixedContext,
@@ -500,6 +503,7 @@ run_cmd do
     let some idx := env.getModuleIdxFor? name | continue
     let mod := env.header.modules[idx.toNat]!.module
     unless #[`SerrePositivity.HomotopicalAlgebra,
+        `SerrePositivity.CategoryTheory.NerveSimplexEndpoint,
         `SerrePositivity.CategoryTheory.PointwiseAdjunction,
         `SerrePositivity.CategoryTheory.Enriched,
         `SerrePositivity.CategoryTheory.Limits.SequentialExtension,
