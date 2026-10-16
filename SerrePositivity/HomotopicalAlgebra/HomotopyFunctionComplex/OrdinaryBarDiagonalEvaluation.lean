@@ -40,6 +40,31 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
 abbrev evaluation (n : SimplexCategoryᵒᵖ) (x : P.obj n) :=
   (OrdinaryBarWordPresentation.realization (C := C) hcof hfib P n.unop.len n (point n x)).functor
 
+lemma evaluation_naturality {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) (z : P.obj n)
+    (X Y : D C) (f : (OrdinaryBarFixedWordResolution.hom C X Y).obj n)
+    (x : (lifted hcof hfib X).obj n) :
+    (lifted hcof hfib Y).map θ ((evaluation hcof hfib P n z).map f x) =
+      (evaluation hcof hfib P m (P.map θ z)).map
+        ((OrdinaryBarFixedWordResolution.hom C X Y).map θ f)
+        ((lifted hcof hfib X).map θ x) := by
+  have hr := congr($(OrdinaryBarFixedWordResolution.map_functor_reverse C θ).map f)
+  have he := congr($(OrdinaryBarFixedWordEvaluation.evaluation_map (C := C) hcof hfib P θ m
+    (point m (P.map θ z))).map
+      ((WordPresentationDiagram.smallHom.{u, max u v, max u v}
+        (degree (D C) (n.unop.len + 1)) X Y).map θ f))
+  have hh := WordPresentationNaturality.small_naturality
+    (OrdinaryBarFreeAmbientFamilies.fixedAction (C := C) hcof hfib P n.unop.len)
+    (lifted (C := C) hcof hfib) (section_ (C := C) hcof hfib)
+    (projection (C := C) hcof hfib) (section_fac (C := C) hcof hfib)
+    (contraction (C := C) hcof hfib) (contraction_over (C := C) hcof hfib)
+    (contraction_on_section (C := C) hcof hfib) θ (point n z) X Y f x
+  rw [point_naturality] at hh
+  change _ = (evaluation hcof hfib P m (P.map θ z)).map
+    (((OrdinaryBarFixedWordResolution.diagram C).map θ).toFunctor.map f)
+    ((lifted hcof hfib X).map θ x)
+  rw [hr]
+  exact hh.trans (types_congr_hom he ((lifted hcof hfib X).map θ x)).symm
+
 def family {X Y : D C}
     (f : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y) :
     small hcof hfib X ⊗ T ⟶ small hcof hfib Y where
@@ -55,27 +80,13 @@ def family {X Y : D C}
     change f.app m (ULift.up (T.map θ x.2)) =
       ((OrdinaryBarFixedWordResolution.diagram C).map θ).toFunctor.map
         (f.app n (ULift.up x.2)) at hf
-    have hr := congr($(OrdinaryBarFixedWordResolution.map_functor_reverse C θ).map
-      (f.app n (ULift.up x.2)))
-    rw [hr] at hf
-    have he := congr($(OrdinaryBarFixedWordEvaluation.evaluation_map (C := C) hcof hfib P θ m
-      (point m (P.map θ (j.app n (ULift.up x.2))))).map
-        ((WordPresentationDiagram.smallHom.{u, max u v, max u v}
-          (degree (D C) (n.unop.len + 1)) X Y).map θ (f.app n (ULift.up x.2))))
-    have hh := WordPresentationNaturality.small_naturality
-      (OrdinaryBarFreeAmbientFamilies.fixedAction (C := C) hcof hfib P n.unop.len)
-      (lifted (C := C) hcof hfib) (section_ (C := C) hcof hfib)
-      (projection (C := C) hcof hfib) (section_fac (C := C) hcof hfib)
-      (contraction (C := C) hcof hfib) (contraction_over (C := C) hcof hfib)
-      (contraction_on_section (C := C) hcof hfib) θ (point n (j.app n (ULift.up x.2))) X Y
-      (f.app n (ULift.up x.2)) (ULift.up x.1)
-    rw [point_naturality] at hh
+    have hh := evaluation_naturality hcof hfib P θ (j.app n (ULift.up x.2))
+      X Y (f.app n (ULift.up x.2)) (ULift.up x.1)
     change (evaluation hcof hfib P m (j.app m (ULift.up (T.map θ x.2))) |>.map
       (f.app m (ULift.up (T.map θ x.2)))
       (ULift.up ((small hcof hfib X).map θ x.1))).down = _
     rw [hj, hf]
-    have he' := types_congr_hom he (ULift.up ((small hcof hfib X).map θ x.1))
-    exact congrArg ULift.down (he'.trans hh.symm)
+    exact congrArg ULift.down hh.symm
 
 lemma family_substitute {U : SSet.{v}} (i : U ⟶ T) {X Y : D C}
     (f : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y) :
