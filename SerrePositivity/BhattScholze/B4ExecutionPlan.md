@@ -8925,3 +8925,34 @@ PerfectDeltaPrismaticDerivedFlat.leanに3公開定理を実装した。
 既存のboundedAboveDerivedRestrictScalarsModelIso・boundedAboveDerivedBaseChangeModelIsoを再利用する。
 これにより今回の移動係数還元を実Frobeniusねじれ段へ接続し、δ完全化のfiltered colimitへ進む。
 G9・元の源の環としての離散性・filtered colimit/完備化・候補CFF・一般B4は未完成として保持する。
+
+## 実Frobeniusねじれ源の射影モデルと係数商square計画（2026-10-16）
+
+BS担当でPerfectDeltaFrobeniusModels.leanを新設する。
+Mathlibの環同値による係数制限の圏同値・射影対象保存を実φⁿへ適用し、
+既存の上有界モデルを実φⁿ係数制限対象のモデルへ変換する。既存の実導来底変換モデル比較を再利用する。
+次にPerfectDeltaFrobeniusQuotientSquare.leanを新設する。
+共通restrictScalarsIsoExtendInverseとModuleCat.extendScalarsCompを使い、
+φⁿ係数制限後の標準(p,d)商と、元対象の(p,φⁿ(d))商後の正確な商係数制限との通常関手squareを構成する。
+同じsquareを射影モデル・既存derivedRestrictScalarsFactorsで実導来対象へ持ち上げ、元の同じ係数作用を保持する。
+新たな一般底変換・Tor・射影モデル定義は作らず、共通基盤とMathlibを実φⁿへ適用する。
+各段階のビルド・BS監査後に個別コミットする。G9・filtered colimit/完備化・候補CFF・一般B4は別工程。
+
+## 実Frobeniusねじれ段の(p,d)還元判定計画（2026-10-16）
+
+BS担当でPerfectDeltaFrobeniusStageFlat.leanを新設する。
+実係数商squareと共通の係数制限ホモロジー比較を合成して、
+φⁿで係数制限した実対象の標準(p,d)還元のホモロジーを、移動係数剰余の正確な係数制限へ同定する。
+前段の移動剰余判定から、ねじれ段そのものの非零次数消滅・H0忠実平坦性を証明する。
+完全prism・有限根族の元の実逐次源へ適用して追加の還元・平坦性仮定なしの具体的入力を公開する。
+ビルド・BS監査後に別コミットし、δ環としての実段との線形比較・filtered colimitは後続工程とする。
+
+## 実Frobenius係数制限の射影モデルの実装結果（2026-10-16）
+
+PerfectDeltaFrobeniusModels.leanに3公開宣言を実装した。
+Mathlibの環同値による係数制限の圏同値・射影対象保存を実φⁿへ適用し、射影加群の保存を証明した。
+指定した既存上有界射影モデルを実φⁿ係数制限対象のモデルへ移し、その同じモデルでの実係数商還元比較を公開した。
+既存のモデル・導来係数制限・底変換比較を再利用し、追加のTor/平坦性仮定や新モデルの一般定義を導入していない。
+対象2705ジョブ成功、自分のコード警告なし。pure B4監査全2264宣言成功、標準3公理以外なし。
+新sorry・公理・外部引用なし。次は逆同型による係数拡大の既存自然同型で実係数商squareを構成する。
+G9・ねじれ段の還元判定・filtered colimit/完備化・候補CFF・一般B4は未完成として保持する。
