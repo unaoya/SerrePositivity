@@ -8003,3 +8003,25 @@ freeDeltaFrobenius_isCompletelyFaithfullyFlatを証明した。
 G3の自由δ Frobeniusのp完全忠実平坦性。各段階で対象ビルド・pure監査を行い個別コミットする。
 これらと、冪剰余対象の離散性・環H0候補との接続・一般根付きCFF拡大・一般B4全射性の完成は区別する。
 既存André引用・B-I/B6引用を使わず、削除・弱化もしていない。他チャットへの追加送信は行っていない。
+
+## G10受領後のBS接続計画（2026-10-16）
+
+DeltaRootSourcePowerResidueDiscrete.leanをBS担当で新設する。
+共通derived_pure_flat_of_nilpotent_reductionを、具体的T=A/(p,dⁿ)、
+K=(dの像)、実逐次PD完備源のTへの実導来還元へ適用する。
+G4・G7接続の既証入力とK^n=0を渡し、元のT還元の離散性とH0平坦性を証明する。
+続いてDeltaRootSourceGeneratorPowerModPFlat.leanを新設し、既存の標準商比較で
+A/(dⁿ)上の標準mod p還元に次数消滅・平坦性を渡す。
+G8による商上p完備性と合わせてG9への入力を揃える。現時点で共通正本はG9未完成と記録しており、
+G9の一般判定をBSで重複実装しない。各段階をビルド・専用監査後に個別コミットする。
+
+## G10のBS実対象への適用完了（2026-10-16）
+
+DeltaRootSourcePowerResidueDiscrete.leanに3公開定理を実装した。
+実T=A/(p,dⁿ)還元Yに対し、K=(dの像)の冪零性とG4・G7で供給した
+標準K還元の純性・H0忠実平坦性を、共通G10へ直接渡した。
+YのIsGE 0・IsLE 0・H0平坦性、全非零次数ホモロジー消滅を証明した。
+n>0、Unique σ、Aのp正則性、d正則性、指定単元δdを正確に保持している。
+対象3883ジョブ成功（共有の既存警告のみ）、pure B4監査2054報告成功、標準3公理のみ。
+新sorry・公理・引用なし。G10側の入力だけの成果から、実冪剰余自体の離散・平坦性へ進んだ。
+G9・環候補との接続・一般CFF根拡大・一般B4は未完成として保持する。
