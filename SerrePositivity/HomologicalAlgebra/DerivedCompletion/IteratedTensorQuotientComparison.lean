@@ -104,6 +104,39 @@ lemma iteratedCompletedTensorQuotientIso_units
     simp only [Category.assoc, Iso.hom_inv_id, Category.comp_id]
   rw [hi]
 
+/-- The inverse quotient comparison sends the original residue completion unit to both units. -/
+lemma iteratedCompletedTensorQuotientIso_inv_units
+    (hS : scalarExtensionTorVanishing (q) (ModuleCat.of R S))
+    (hT : scalarExtensionTorVanishing (q) (ModuleCat.of R T)) :
+    (derivedTensorQuotientAlgebraIso (Ideal.span {b}) S T hS hT).hom.hom ≫
+        (derivedComplexCompletionUnit Q ((q) a)).app
+          (boundedAboveDerivedTensorAlgebra (R := Q) SQ TQ).X.obj ≫
+        (iteratedCompletedTensorQuotientIso R a b hb S T hS hT).inv =
+      (((boundedAboveDerivedBaseChange (q)).map
+        ((boundedAboveDerivedCompletionUnit R a).app X ≫
+          (boundedAboveDerivedCompletionUnit R b).app (AP).X)).hom) := by
+  have hu := iteratedCompletedTensorQuotientIso_units R a b hb S T hS hT
+  have hn := (derivedComplexCompletionUnit Q ((q) a)).naturality
+    (derivedTensorQuotientAlgebraIso (Ideal.span {b}) S T hS hT).hom.hom
+  simp only [Functor.id_map] at hn
+  have hn' :
+      (derivedTensorQuotientAlgebraIso (Ideal.span {b}) S T hS hT).hom.hom ≫
+          (derivedComplexCompletionUnit Q ((q) a)).app
+            (boundedAboveDerivedTensorAlgebra (R := Q) SQ TQ).X.obj =
+        (derivedComplexCompletionUnit Q ((q) a)).app
+            ((boundedAboveDerivedBaseChange (q)).obj X).obj ≫
+          (derivedComplexCompletionFunctor Q ((q) a)).map
+            (derivedTensorQuotientAlgebraIso (Ideal.span {b}) S T hS hT).hom.hom := hn
+  rw [← hn'] at hu
+  calc
+    _ = ((((boundedAboveDerivedBaseChange (q)).map
+        ((boundedAboveDerivedCompletionUnit R a).app X ≫
+          (boundedAboveDerivedCompletionUnit R b).app (AP).X)).hom) ≫
+        (iteratedCompletedTensorQuotientIso R a b hb S T hS hT).hom) ≫
+        (iteratedCompletedTensorQuotientIso R a b hb S T hS hT).inv := by
+      rw [hu, Category.assoc]
+    _ = _ := by simp only [Category.assoc, Iso.hom_inv_id, Category.comp_id]
+
 /-- Separate regularity of the two factors supplies the two ordinary-residue Tor inputs. -/
 def regularIteratedCompletedTensorQuotientIso
     (hs : IsSMulRegular S b) (ht : IsSMulRegular T b) :

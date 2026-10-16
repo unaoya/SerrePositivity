@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedTensorQuotientComparison
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedTensorCartierAlgebra
 import Mathlib.Util.AssertNoSorry
 
@@ -72,3 +73,6 @@ example (s : S) :
       Ideal.Quotient.mk (Ideal.span {algebraMap R C0 d})
         (iteratedTensorH0LeftAlgHom R 0 d S T s) :=
   iteratedTensorCartierLeftAlgHom_mk R 0 d S T s
+
+assert_no_sorry SerrePositivity.DerivedCompletion.iteratedCompletedTensorQuotientIso_inv_units
+#print axioms SerrePositivity.DerivedCompletion.iteratedCompletedTensorQuotientIso_inv_units
