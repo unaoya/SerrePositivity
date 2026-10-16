@@ -6074,3 +6074,31 @@ Checks.ErasureSquare・Checks.ErasureAdjacent・Checks.StageSeven・既存Spectr
 最終微分とpath合成のLeibniz、単位・結合・収縮方程式の検証は残るためU15b全受入は未完。
 U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mも未完。採用済み引用は0件。
 共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.125 U15b10：最終Hom微分・元のHomの包含・空部分圏比較（2026-10-16）
+
+`Quotient/Differential.lean`は、証明済みのerasure_closedとerasure_square_zeroを
+perturbComplexへ適用し、quotientHomを構成した。
+対象の各次数は内部path直和と同じであり、微分は内部微分とε消去作用素の和である。
+二乗零は条件を外部から受け取らず、§17.124までの実際の消去作用素の証明から得る。
+任意可換環・非有界Hom・独立対象宇宙とSmall.{u} Dを維持し、Homのflat性は仮定しない。
+
+空path上の消去作用素が零となることから、元のHomの包含を最終微分に関する実際のchain map
+originalHomInclusionとして構成した。各次数の射は元のpath包含と同じである。
+空部分圏では全消去作用素が零であることをpathCochain_extから証明し、内部微分のemptyHomIsoを
+同じ次数別同型で移してquotientHom_emptyIsoを構成した。その順方向が上記包含に一致することも
+証明した。これは最終Hom複体に関する比較であり、まだ最終dg圏の同型を主張するものではない。
+
+Checks.QuotientDifferential・Checks.ErasureSquare・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（2678 jobs、終了コード0、警告なし）。最終微分の公式、元のHomの包含、
+空部分圏との複体同型、ZMod 2での最終微分の二乗零を検査した。
+主要8宣言の直接公理監査は標準公理のみ。監査累計2634宣言。
+文書検査は24 Markdown・311 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次はpath連結についてε消去のLeibniz則を証明し、内部微分との既存両立式へ加えて
+quotientHom上の豊穣合成を構成する。単位・結合・通常順dg合成とのKoszul符号比較、
+指定εの収縮方程式も必要であり、U15b全受入や最終dg商の完成とはまだ扱わない。
+U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mも未完。採用済み引用は0件。
+共有一般論・共有ルートimport・他系列は編集していない。
