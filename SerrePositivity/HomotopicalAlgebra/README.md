@@ -2976,3 +2976,14 @@ Paths³(Cᵒᵖ × C) → Choice(P × ∂Δ²)という実境界関手と、全�
 交差全体の整合性を導く。全退化像上の指定値を作り、実引き戻し図式との一致も証明する。
 指定退化値の境界制限の一致と、全次数の帰納構成、小さい厳密なRMapは残る。
 受入検証は`check_free_resolution_boundary_data`（48宣言・3モジュール）。
+
+
+### 全次数の境界退化一致と整合的反復（§356）
+
+`FreeGeneratorMixedOperators`と`ReversedSimplexParameters`は源・パラメータの全混合式を証明する。
+`OrdinaryBarFreeResolutionMixedFaces`と`OrdinaryBarFreeResolutionDegenerateBoundary`は、
+低次数の面・退化等式から指定退化図式の全面と境界全体の一致を導く。
+`OrdinaryBarFreeResolutionStep`は実相対充填で次の関手と全面・全退化等式を作る。
+`OrdinaryBarFreeResolutionTower`は整合的な初期二次数Seedから全次数の関手と厳密な等式を反復構成する。
+既存のfreeCover・comparisonから実Seedへの接続、Δの図式への束ね、小さい厳密なRMapは残る。
+受入検証は`check_free_resolution_step`（87宣言・6モジュール）。

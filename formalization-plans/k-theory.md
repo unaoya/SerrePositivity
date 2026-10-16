@@ -19652,3 +19652,83 @@ prescribedValueは全退化像の和集合上の指定を作り、prescribedValu
 今回のF・Gは任意の帰納入力であり、元の選択関手から全次数を生成済みとは扱わない。
 全次数の整合的選択関手、元の基底上の小さい厳密なRMap、内部単位、自然弱同値比較、最終F2は残る。
 全体目標F→L→E→Sは未完了であり、継続する。
+
+
+## 356. 全次数の退化境界一致・実次数上昇・整合的反復（2026-10-17）
+
+実装コミット`9e6b5af1`と`0d66760a`。前回は§355の実境界・退化指定値を構成した進捗ターンだった。
+今回は残る境界制限の一致を全次数で証明し、相対充填による次数上昇とその整合的反復まで実装した。
+全次数の反復構成への入力となる、既存次数0・1からの実Seedの接続は次の単位として残る。
+
+### 356.1 源とパラメータの混合関係式
+
+`FreeGeneratorMixedOperators`は、固定対象のrawFaceを通常の源添字で定義する。
+既存余モナド演算子との比較等式を用い、二つの打消し式と大小二場合の退化・面関係式を
+すべて関手全体の厳密な等式で証明する。任意の通常の圏Dに適用でき、モデル構造は不要である。
+対象宇宙とHom宇宙は独立に保つ。
+
+`ReversedSimplexParameters`はrevと標準単体関手の合成から逆順のdeltaを定義し、
+既存sigmaとの混合関係式を四場合とも証明する。delta_eqは通常の面の逆順添字との一致を示す。
+この部分にもモデル構造を要求しない。
+
+### 356.2 退化指定図式の全面と境界全体の一致
+
+`OrdinaryBarFreeResolutionMixedFaces`は、§355と同じ低次数F・GとfaceLaw・degeneracyLawを使う。
+facet_self・facet_succ・facet_le・facet_gtは356.1の源とパラメータの式を対応させる。
+facet_equationは、任意の退化添字j・任意の面添字iを四場合に分け、全ての組合せについて
+源の退化から面図式を通る関手と、指定退化図式をパラメータ面へ制限した関手の一致を証明する。
+
+`OrdinaryBarFreeResolutionDegenerateBoundary`は、元のパラメータ添字へ戻して
+boundary_degeneracy_facetを証明し、全境界の同時忠実性からboundary_degeneracyを導く。
+すなわち、実境界関手へdegeneracyFunctorを前合成したものは、実指定退化図式を
+P × ∂Δⁿ⁺²へ制限した関手に等しい。個別の面制限や基底射影の忠実性は仮定しない。
+
+### 356.3 追加の整合入力なしの実次数上昇
+
+`OrdinaryBarFreeResolutionStep`は、実境界関手を生成射へ制限し、356.2からvalue_restrictionを導く。
+§355のvalues_compatibleとともに§354の実相対延長へ入力し、
+filler : degree D (n+3) → Choice(P × Δⁿ⁺²)を構成する。
+必要な退化交差の整合性や境界制限の一致を新たな仮定として要求しない。
+
+- filler_boundary：構成済みの実境界関手全体を保持する。
+- filler_face：全kについて、面制限がfixedFace D (n+2) k ⋙ Fへ等しい。
+- filler_degeneracy：全iについて、degeneracyFunctor D (n+1) iとの合成が
+  FをP × sigma (n+1) iで引き戻した関手へ等しい。
+
+三つとも任意長pathの合成と恒等を含む関手全体の等式である。
+入力のPを保ち、源Cの追加のcombinatorial性・simplicial性や、大きいSSetのモデル構造は要求しない。
+
+### 356.4 整合性を保持した全次数の反復
+
+`OrdinaryBarFreeResolutionTower.Pair n`は、連続する二次数の実関手current・previousと、
+そのfaceLaw・degeneracyLawをまとめる。nextは356.3の実fillerからPair (n+1)を構成する。
+iterateは任意の開始次数からの反復であり、fromSeedはPair 0からPair mを全mについて構成する。
+
+SeedはPair 0である。diagramはSeedの次数0・1をそのまま保つ実関手列で、
+diagram_face・diagram_degeneracyは全次数・全添字について実面・退化等式を証明する。
+独立に選んだ充填の存在から高次整合性を推論する構成ではなく、各帰納段階に厳密な等式を保持する。
+
+Seedは依然として入力であり、元のCᵒᵖ × Cについて実Seedを構成済みとは扱わない。
+異なるPごとの選択の自然性、元の基底上の小さい厳密なRMapの存在も、この反復からは主張しない。
+
+### 356.5 受入検証と次の接続
+
+すべて成功した。
+
+- 共有入口のbuild：3062 jobs、追加警告なし。
+- `check_free_resolution_step`：87宣言・6モジュール、標準公理のみ。
+  源の全混合式、任意の面・退化添字の一致、境界全体の一致、実fillerの全面・全退化、
+  Seedの二次数の保持、全次数の反復と全面・全退化等式を検証。
+  源DにはCategoryだけを要求し、対象・Hom宇宙を独立に保つ。
+- `check_free_resolution_boundary_data`：既存48宣言・3モジュールの回帰検証。
+- `audit_homotopical_foundations`：11740宣言・847モジュール、標準公理のみ。
+- 新規ソース・受入スクリプトの行長、証明用マーカー、stage差分の空白検査。
+
+次はD = Cᵒᵖ × Cとして、既存freeCover・comparisonをSeedへ接続する。
+degree D 0はHomだけをULiftした元の圏であるため、そのdown関手を自由path関手で一回・二回写し、
+既存の次数0・1へ前合成する。次数0のパラメータをP × Δ⁰へ直し、
+余モナドのcounit・duplicateの自然性と、既存のcomparison_zero・one・degeneracyから
+SeedのfaceLaw・degeneracyLawを証明する方針である。
+受入条件は任意の源モデルC・独立宇宙・任意Pで実Seedを構成し、356.4へ適用できることである。
+その後に全次数の選択関手をΔの図式として束ね、必要な自然比較・元の基底への降下を進める。
+小さい厳密なRMap、内部単位、自然弱同値比較、最終F2は残る。全体目標F→L→E→Sは未完了である。
