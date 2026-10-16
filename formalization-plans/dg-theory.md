@@ -6198,3 +6198,37 @@ appendMapの再帰へLeibniz基底式を運ぶ。一般の二つのquotientHom�
 その単位・結合・収縮方程式と通常順の合成符号の検証も残り、U15b全受入とはしない。
 U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mも未完。採用済み引用は0件。
 共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.129 U15b14：非空path消去和と全消去作用素の前方因子再帰（2026-10-16）
+
+`Quotient/PathPrefix.lean`は先頭Homとεを保持するtensor functorの合成がpath直和を保存する
+cofanを構成した。その普遍性から前方Homとεを追加する内部chain map prefixPathと、
+各path包含への制限公式を構成する。このtensor直和を始域とする任意次数cochainのextも公開する。
+
+`Quotient/ErasureRowRecursion.lean`は後方cochainを二重tensorしてprefixPathへ送る
+prefixTailCochainを、元の非空pathを始域とする型を明示して構成した。
+後方の各eraseSummandが短いpathの消去項の持ち上げであること、非空pathのeraseRowが
+「先頭εの消去」と「先頭を保持する後方の消去和」の和になることを証明した。
+加法は同じ始域を持つcochainの型で取っており、定義的に等しい複体の別表記による
+加法インスタンスの不一致を回避している。
+
+`Quotient/ErasureHeadNaturality.lean`は左端と中間のε消去が右因子のchain mapと可換することを、
+全次数tensorの交差式の次数1/0の場合とunitor自然性から証明した。
+`Quotient/PrefixErasure.lean`はこれらを各pathの包含に制限して比較し、prefixPath後の全erasureを
+先頭ε消去＋後方全消去の二項へ分けるprefixPath_erasureを証明した。
+prefixPathが最終微分に関するchain mapであるとは主張しない。先頭εを消す第一項が
+内部微分だけの場合からの差を表す。任意可換環・非有界Hom・独立対象宇宙・Small.{u} Dを保持する。
+
+Checks.ErasureRowRecursion・Checks.PrependDifferential・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（2688 jobs、終了コード0、警告なし）。非空pathの消去和の型付き分解、
+ZMod 2での前方追加、主要宣言の全作用素再帰式を検査した。
+主要10宣言の直接公理監査は標準公理のみ。監査累計2673宣言。
+文書検査は24 Markdown・311 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次は左有限pathを固定した全pathへの連結を構成し、その空語・cons再帰をprefixPathと整合させる。
+これらとprefixPath_erasureを使って、非空の左pathへ最終微分のLeibniz則を帰納的に運ぶ。
+一般の最終Hom間の合成、単位・結合・収縮方程式は未完で、U15b全受入とはしない。
+U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mも未完。採用済み引用は0件。
+共有一般論・共有ルートimport・他系列は編集していない。
