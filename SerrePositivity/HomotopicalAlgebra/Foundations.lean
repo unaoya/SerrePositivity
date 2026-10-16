@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordDiagonalEquivalence
+
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalAnodyne
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordRowsDiagonal
 
