@@ -20754,3 +20754,82 @@ Mathlibの標準`MonoidalClosed.comp`を保つことを証明する。標準合�
 ambientの切断からsmallの切断やHom比較の弱同値を推論してはならない。
 元のCᵒᵖ×Cへの小ささを保つstrictificationと降下、小さい厳密なRMap、
 F2の不変性・Kan・π₀とHo(C)の同定などは未完了であり、全体目標は継続する。
+
+
+## 372. 全対角のsmall・ambient Homのホモトピー比較と元の基底への実augmentation（2026-10-17）
+
+実装コミット`7c5e24aa`。§371.4の実Hom比較を進めた。ambient頂点の切断からsmall Homの
+弱同値を推測する代わりに、実SSet写像と全次数ホモトピーを構成した。
+今回の五モジュールはすべて任意の圏Cに対する一般論であり、CにもSSetにもモデル構造を要求しない。
+
+### 372.1 全単体写像に自然なHomの実分裂
+
+`CategoryTheory/Presentation/RetractWordIdentities`は語表示の定義関係から、商圏内での
+word(1)=id、word(0)=projection≫section、section≫projection=idを実等式として与える。
+
+`HomotopyFunctionComplex/OrdinaryBarDiagonalAmbientHom`は§369の全対角図式について、
+ambient頂点X,Y間の実Hom SSetを構成する。section・projection・wordが任意の単体写像で
+保存されることを、外側の自由分解と内側の語パラメータの二つの実作用から証明した。
+
+- `transfer`：ambient射gをsection_X≫g≫projection_Yとしてsmall Homへ移す。
+- `inclusion`：small射fをprojection_X≫f≫section_Yとしてambient Homへ移す。
+- inclusionの後にtransferを適用するとsmall Hom上の恒等となる。
+
+このsmallという語は商圏のsmall頂点を指す。ここでのHom SSetの値宇宙は補助宇宙max(u,v)であり、
+この比較を小さいSSet.{v}への縮小や同型と取り違えてはならない。
+
+### 372.2 他方の合成の全次数ホモトピーと局所化後の比較
+
+`OrdinaryBarDiagonalHomRetraction.sandwich`はambient射gの両端に同じ移動するinterval letterを
+wordとして挿入する実SSet写像である。元の区間の端点0でword(1)となってgを返し、
+端点1でword(0)となってprojection_X≫(section_X≫g≫projection_Y)≫section_Yを返す。
+このため恒等からtransferの後のinclusionへの実`SSet.Homotopy`を構成できる。
+
+既存のanodyneホモトピー一般論に適用し、補助宇宙の任意のanodyneを可逆にする関手Lについて、
+L(ambient Hom)とL(small Hom)の実同型を与える。通常のanodyne局所化でもtransferとinclusionは
+可逆である。補助宇宙にModelCategoryインスタンスは一切追加していない。
+また、transferが厳密な合成を保つという主張や、small頂点をambient頂点と同一視する主張ではない。
+
+### 372.3 元の基底への実Hom augmentation
+
+`OrdinaryBarFixedAugmentation`は§369の元の自由分解のprojectionを、対象写像が文字通りX↦Xと
+なる表示へ移す。既存projectionとの等式と、任意の単体写像についての自然性を証明する。
+語表示の実augmentationと合成して、全対角図式から元のD=Cᵒᵖ×Cへの実projectionを構成する。
+
+`OrdinaryBarDiagonalHomAugmentation`はそのprojectionから、small Homとambient Homそれぞれの
+元の基底の定数Hom SSetへの実augmentationを構成する。定数Homの値はULift(X→Y)であり、
+対象宇宙uと元のHom宇宙vは独立である。以下は実SSet写像の等式である。
+
+- transferの後のsmall augmentationはambient augmentationに一致する。
+- inclusionの後のambient augmentationはsmall augmentationに一致する。
+- small augmentationは元の基底の合成と恒等を保つ。
+
+372.2とこの可換性から、small augmentationがanodyne局所化後に可逆であることと、
+ambient augmentationが可逆であることの同値を証明した。
+**今回はaugmentation自体の可逆性・弱同値までは証明していない。**
+
+### 372.4 受入検証
+
+すべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`（3121 jobs、警告なし）。
+- `check_diagonal_hom_augmentation`：モデル構造不要、独立した対象・Hom宇宙での実分裂、
+  全ホモトピー、任意のanodyneを可逆にする関手での同型、局所化後の比較、
+  両augmentationの可換性、合成・恒等の保存、可逆性の帰着。5モジュール全54宣言を監査。
+- `check_diagonal_closed_compatibility`：35宣言・6モジュールの回帰検証。
+- `check_diagonal_word_evaluation`：63宣言・5モジュールの回帰検証。
+- `audit_homotopical_foundations`：全12663宣言・906モジュール、
+  propext・Classical.choice・Quot.soundのみ。sorry・引用axiomなし。
+- ソースの行長・証明用マーカー、stage差分の空白検査。
+
+### 372.5 次の受入単位と残作業
+
+次はambient augmentationの比較を証明し、372.3の同値からsmall augmentationへ接続する。
+語区間が可縮であることだけを根拠に、語表示のHom全体のaugmentationが弱同値であると
+推論してはならない。必要なのは語の挿入・元の射の合成・分裂関係に適合する実比較である。
+語区間の既存の右乗算による収縮はモノイド準同型ではなく、それを語表示へ直接適用して
+関手的な収縮を得ることもできない。自由積・語長の濾過等を使う場合は、各付着と局所化後の
+保存を実際に証明する必要がある。外側の自由道分解についてもaugmentationのHom比較を接続する。
+
+元のCᵒᵖ×Cへの小ささを保つstrictificationと降下、小さい厳密なRMap、F2の不変性・Kan・
+π₀とHo(C)の同定などは未完了である。L/E/Sの完了記録は維持し、F1/F2を含む全体目標は継続する。

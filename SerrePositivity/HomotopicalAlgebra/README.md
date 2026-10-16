@@ -3172,3 +3172,17 @@ augmentationの弱同値、元の基底への小さいstrictificationと小さ�
 nativeFamilyの持ち上げそのものになることと、任意の大きいパラメータで標準合成・単位を保つことを証明する。
 augmentationのHom比較と弱同値、元の基底への小さいstrictification、小さい厳密なRMapは残る。
 受入検証は`check_diagonal_closed_compatibility`（35宣言・6モジュール）。
+
+
+### 全対角Homの実ホモトピー比較とaugmentation（§372）
+
+`RetractWordIdentities`と`OrdinaryBarDiagonalAmbientHom`は全単体作用に自然なsection・projection・
+word、ambient Hom、small頂点間Homへのtransferと逆向きinclusionを構成し、small側の実分裂を証明する。
+`OrdinaryBarDiagonalHomRetraction`は両端に動くwordを挿入する全次数ホモトピーから、任意のanodyneを
+可逆にする関手でのHom比較同型を与える。補助宇宙のモデル構造は不要である。
+`OrdinaryBarFixedAugmentation`と`OrdinaryBarDiagonalHomAugmentation`は元の基底の定数Homへの
+実augmentation、両比較との可換性、small augmentationの合成・単位保存を構成する。
+small augmentationの局所化後の可逆性はambient側の可逆性に帰着できる。
+augmentation自体の可逆性、元の基底への小さいstrictification、小さい厳密なRMapは残る。
+ここでsmall Homはsmall頂点間の補助宇宙のHomであり、SSet.{v}への縮小を主張しない。
+受入検証は`check_diagonal_hom_augmentation`（54宣言・5モジュール）。
