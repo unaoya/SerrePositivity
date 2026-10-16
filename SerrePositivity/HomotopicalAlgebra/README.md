@@ -2649,3 +2649,16 @@ pushout後の単射性、一般augmentation・評価・最終小値化・F2は�
 実際のSSet.{v}値からのQ可逆な実写像を構成する。
 個別の閉包の全基底射に対する自然性、自然小値化・最終小さい厳密RMap・F2は未完了。
 検証：`scripts/check_small_dominated_subcomplex.lean`、計画書§326。
+
+
+### 全基底上の小部分図式の障害と小さい自然商（§327）
+
+`AnodyneNonempty`はモデル不要でQ可逆射による頂点の非空性の検出を供給する。
+`CodiscreteNerveExtension`はcodiscrete nerveへの写像を頂点関数で分類し、任意のmonoに沿う延長とKan性を証明する。
+`SmallSubdiagramObstruction`は大きいがlocally smallな星形基底上に、全値がKanで
+すべての基底射がQ可逆となる図式を構成する。
+元の小さい宇宙の任意の図式からこの固定図式へ向かう自然同値は存在しないが、
+逆向きには小さい定数点図式への実自然な商があり、その像はQで可逆となる。
+したがって値ごとの小さい閉包から全基底に閉じる小部分図式を自動に推論しない。
+最終の自然弱同値zigzag、小さい厳密RMap・F2は未完了。
+検証：`scripts/check_small_subdiagram_obstruction.lean`、計画書§327。
