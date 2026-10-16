@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.CLMST.ConditionalCohomologyVanishing
 public import SerrePositivity.HomologicalAlgebra.TorFiniteCoefficients
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TorAlgebraComplete
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FiniteTensorComplete
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FiniteCoefficientPowerComparison
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerDerivedComparison
@@ -89,6 +90,35 @@ def rPerfd_finiteCoefficientPowerHolimIso (N : ModuleCat.{u} A) [Module.Finite A
         (ModuleCat.of A (RPerfd A D t p hperf)) N) :=
   DerivedCompletion.finiteCoefficientPowerHolimIso A (p : A)
     (ModuleCat.of A (RPerfd A D t p hperf)) N (rPerfd_isModuleComplete A t D p hperf)
+
+/-- Finite-test algebra-valued Tor is derived p-complete over the original
+completed tower, using its existing action on the same RPerfd. -/
+lemma rPerfd_torAlgebra_isModuleComplete (N : ModuleCat.{u} A) [Module.Finite A N] (i : ℕ) :
+    DerivedCompletion.IsModuleComplete (CompletedTower A t p) (p : CompletedTower A t p)
+      ((ModuleCat.restrictScalars
+        (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))).obj
+          (((ModuleCat.extendScalars (algebraMap A (RPerfd A D t p hperf))).leftDerived i).obj N)) :=
+  DerivedCompletion.torAlgebra_isModuleComplete_restrict_of_finite
+    (RPerfd A D t p hperf) N (CompletedTower A t p)
+    (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf)) p
+    (rPerfd_isModuleComplete A t D p hperf) i
+
+/-- The original almost-Tor input is the actual completed-tower annihilator
+condition on algebra-valued Tor, for arbitrary test modules. -/
+lemma rPerfd_torAlgebra_annihilator_iff (N : ModuleCat.{u} A) (i : ℕ) (g : A) :
+    (∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+      (algebraMap A (CompletedTower A t p) g),
+      torCoefficientScalarEndomorphism (RPerfd A D t p hperf) N i
+        (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0) ↔
+      (letI := Module.compHom
+        (((ModuleCat.extendScalars (algebraMap A (RPerfd A D t p hperf))).leftDerived i).obj N)
+        (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))
+       perfectoidIdeal (CompletedTower A t p) p hperf
+         (algebraMap A (CompletedTower A t p) g) ≤ Module.annihilator (CompletedTower A t p)
+           (((ModuleCat.extendScalars (algebraMap A (RPerfd A D t p hperf))).leftDerived i).obj N)) :=
+  torAlgebraComparison_restricted_annihilator_iff (CompletedTower A t p)
+    (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))
+    (perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g)) N i
 
 /-- The actual finite-stage map has the base compatibility required by the
 Koszul/local-cohomology theorem. -/

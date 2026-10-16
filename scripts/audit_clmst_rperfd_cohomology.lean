@@ -49,6 +49,7 @@ elab "assert_rperfd_cohomology_dependencies" : command => do
     ``rPerfd_tor_eq_zero_of_finite, ``rPerfd_isModuleComplete,
     ``rPerfd_derivedTensor_isComplete, ``rPerfd_finiteCoefficientPowerComparison_quasiIso,
     ``rPerfd_modulePowerDerivedTensorIso, ``rPerfd_finiteCoefficientPowerHolimIso,
+    ``rPerfd_torAlgebra_isModuleComplete, ``rPerfd_torAlgebra_annihilator_iff,
     ``rPerfd_cohomology_vanishing_of_tor_idempotent]
   let _ ← liftCoreM <| checkRPerfdDependencies roots {}
   logInfo "Only the existing integral-perfectoidization existence sorry is permitted."
@@ -283,3 +284,26 @@ end
 
 assert_rperfd_arbitrary_tor_product_dependencies
 #print axioms rperfd_arbitrary_tor_product_zero
+
+#print axioms rPerfd_torAlgebra_isModuleComplete
+#print axioms rPerfd_torAlgebra_annihilator_iff
+
+-- Actual completeness over the original completed-tower action, including i=0.
+private lemma rperfd_tor_algebra_complete_degree_zero
+    (N : ModuleCat.{u} A) [Module.Finite A N] :
+    IsModuleComplete (CompletedTower A t p) (p : CompletedTower A t p)
+      ((ModuleCat.restrictScalars
+        (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))).obj
+          (((ModuleCat.extendScalars (algebraMap A (RPerfd A D t p hperf))).leftDerived 0).obj N)) :=
+  rPerfd_torAlgebra_isModuleComplete A t D p hperf N 0
+
+meta section
+open Lean Elab Command
+elab "assert_rperfd_tor_algebra_dependencies" : command => do
+  let _ ← liftCoreM <| checkRPerfdDependencies [``rperfd_tor_algebra_complete_degree_zero,
+    ``rPerfd_torAlgebra_isModuleComplete, ``rPerfd_torAlgebra_annihilator_iff] {}
+  logInfo "Actual algebra-valued Tor: original tower action, annihilator comparison and completeness checked."
+end
+
+assert_rperfd_tor_algebra_dependencies
+#print axioms rperfd_tor_algebra_complete_degree_zero
