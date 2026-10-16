@@ -2636,3 +2636,16 @@ pushout後の単射性、一般augmentation・評価・最終小値化・F2は�
 自然な小値化・最終小さい厳密RMap・F2は未完了。
 検証：`scripts/check_kan_localized_representatives.lean`、
 `scripts/check_ordinary_bar_small_reference.lean`、計画書§325。
+
+
+### 全パラメータ閉包と小さい実部分複体（§326）
+
+`SmallParameterClosure`は小部分複体を全パラメータ作用に閉じ、その可算閉包の次数ごとのsmall性を証明する。
+`SmallDominatedSubcomplex`は実ホモトピーによる小さい支配から、指定済み小部分複体を含む
+小部分複体と、元の全ホモトピーの制限・包含の両側ホモトピー逆を構成する。
+`SmallSimplicialValue`は次数ごとのsmall性を証明済みの値・任意の大きい基底上の図式を、
+全作用を保って元の小さい宇宙へ縮小する。
+`OrdinaryBarSmallSubcomplex`は元の比較をhorn unitへ厳密に延長し、Kan barの中の小部分複体と、
+実際のSSet.{v}値からのQ可逆な実写像を構成する。
+個別の閉包の全基底射に対する自然性、自然小値化・最終小さい厳密RMap・F2は未完了。
+検証：`scripts/check_small_dominated_subcomplex.lean`、計画書§326。
