@@ -1,3 +1,6 @@
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTorsionTorProduct
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerTensorTorZero
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.MilnorMapZero
 import SerrePositivity.CLMST.RPerfdCohomologyInputs
 import Mathlib.Util.AssertNoSorry
 
@@ -189,3 +192,94 @@ end
 
 assert_rperfd_power_holim_scalar_dependencies
 #print axioms rperfd_power_holim_scalar
+
+private lemma rperfd_power_holim_two_actions_zero (N : ModuleCat.{u} A)
+    (c d : RPerfd A D t p hperf) (i : ℤ)
+    (hc : ∀ n, HomologicalComplex.homologyMap
+      (((MonoidalCategory.tensorLeft (modulePowerReduction (p : A) N n)).mapHomologicalComplex
+        (.up ℤ)).map (extLift (projectiveResolution C₀)
+          (ModuleCat.ofHom (LinearMap.mulLeft A c)) (projectiveResolution C₀))) i = 0)
+    (hd : ∀ n, HomologicalComplex.homologyMap
+      (((MonoidalCategory.tensorLeft (modulePowerReduction (p : A) N n)).mapHomologicalComplex
+        (.up ℤ)).map (extLift (projectiveResolution C₀)
+          (ModuleCat.ofHom (LinearMap.mulLeft A d)) (projectiveResolution C₀))) (i - 1) = 0) :
+    HomologicalComplex.homologyMap (modulePowerTensorHolimMap (p : A) N
+      (extLift (projectiveResolution C₀) (ModuleCat.ofHom (LinearMap.mulLeft A c))
+        (projectiveResolution C₀))) i ≫
+      HomologicalComplex.homologyMap (modulePowerTensorHolimMap (p : A) N
+        (extLift (projectiveResolution C₀) (ModuleCat.ofHom (LinearMap.mulLeft A d))
+          (projectiveResolution C₀))) i = 0 :=
+  complexTowerHomotopyLimitMap_homology_comp_eq_zero A
+    (modulePowerTensorTransition (p : A) N K₀) (modulePowerTensorTransition (p : A) N K₀)
+    _ (modulePowerTensorTransition_naturality (p : A) N _) _ _
+    (modulePowerTensorTransition_naturality (p : A) N _) i hc hd
+
+meta section
+open Lean Elab Command
+elab "assert_rperfd_milnor_actions_dependencies" : command => do
+  let _ ← liftCoreM <| checkRPerfdDependencies [``rperfd_power_holim_two_actions_zero] {}
+  logInfo "Actual RPerfd tower: adjacent-degree zero actions give zero composite on holim homology."
+end
+
+assert_rperfd_milnor_actions_dependencies
+#print axioms rperfd_power_holim_two_actions_zero
+
+private lemma rperfd_finite_tor_product_zero (N : ModuleCat.{u} A) [Module.Finite A N]
+    (g : A) (i : ℕ) (hi : 0 < i) (c d : CompletedTower A t p)
+    (hc : c ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+      (algebraMap A (CompletedTower A t p) g))
+    (hd : d ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+      (algebraMap A (CompletedTower A t p) g))
+    (hTor : ∀ (L : ModuleCat.{u} A) (k : ℕ), 0 < k →
+      (∀ x : L, (p : A) ^ k • x = 0) → ∀ (j : ℕ), 0 < j →
+        ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+          (algebraMap A (CompletedTower A t p) g),
+          torCoefficientScalarEndomorphism (RPerfd A D t p hperf) L j
+            (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0) :
+    torCoefficientScalarEndomorphism (RPerfd A D t p hperf) N i
+      (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) c *
+        algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) d) = 0 :=
+  finiteCoefficientTor_mul_zero_of_power_torsion_tests (p : A) N
+    (RPerfd A D t p hperf) (rPerfd_isModuleComplete A t D p hperf) i _ _
+    (fun L k hk hL => hTor L k hk hL i hi c hc)
+    (fun L k hk hL => hTor L k hk hL (i + 1) (Nat.succ_pos _) d hd)
+
+meta section
+open Lean Elab Command
+elab "assert_rperfd_finite_tor_product_dependencies" : command => do
+  let _ ← liftCoreM <| checkRPerfdDependencies [``rperfd_finite_tor_product_zero] {}
+  logInfo "Actual RPerfd: full positive torsion tests give product zero on standard finite-test Tor."
+end
+
+assert_rperfd_finite_tor_product_dependencies
+#print axioms rperfd_finite_tor_product_zero
+
+private lemma rperfd_arbitrary_tor_product_zero (N : ModuleCat.{u} A)
+    (g : A) (i : ℕ) (hi : 0 < i) (c d : CompletedTower A t p)
+    (hc : c ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+      (algebraMap A (CompletedTower A t p) g))
+    (hd : d ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+      (algebraMap A (CompletedTower A t p) g))
+    (hTor : ∀ (L : ModuleCat.{u} A) (k : ℕ), 0 < k →
+      (∀ x : L, (p : A) ^ k • x = 0) → ∀ (j : ℕ), 0 < j →
+        ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+          (algebraMap A (CompletedTower A t p) g),
+          torCoefficientScalarEndomorphism (RPerfd A D t p hperf) L j
+            (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0) :
+    torCoefficientScalarEndomorphism (RPerfd A D t p hperf) N i
+      (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) c *
+        algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) d) = 0 :=
+  tor_mul_zero_of_power_torsion_tests (p : A)
+    (RPerfd A D t p hperf) (rPerfd_isModuleComplete A t D p hperf) i _ _
+    (fun L k hk hL => hTor L k hk hL i hi c hc)
+    (fun L k hk hL => hTor L k hk hL (i + 1) (Nat.succ_pos _) d hd) N
+
+meta section
+open Lean Elab Command
+elab "assert_rperfd_arbitrary_tor_product_dependencies" : command => do
+  let _ ← liftCoreM <| checkRPerfdDependencies [``rperfd_arbitrary_tor_product_zero] {}
+  logInfo "Actual RPerfd: product zero for every test module, with no finiteness hypothesis."
+end
+
+assert_rperfd_arbitrary_tor_product_dependencies
+#print axioms rperfd_arbitrary_tor_product_zero
