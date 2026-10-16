@@ -2790,3 +2790,14 @@ anodyne拡張上の実kernel、実商型のv-small性、有限境界持ち上げ
 単位の正規化および中間retractの収縮による実合成ホモトピーも構成した。
 対象ごとのenlargementを基底上の関手とは仮定しない。全高次の組立て・厳密なSSet値降下・最終RMap・F2は未完了。
 検証：`scripts/check_ordinary_bar_retract_system.lean`、計画書§338。
+
+
+### section上で固定した収縮と両単位の定数合成比較（§339）
+
+`MonoRightLiftingRelativeHomotopy`は、両端点・部分対象上の区間・射影後の区間全体を保持する
+相対持ち上げをモデル不要で構成する。厳密なsectionを持つ全mono右持ち上げ射は、
+sectionの像上でも一定な垂直収縮を持つ。実際のbarの収縮もこの条件を満たすよう強化した。
+`OrdinaryBarRetractTransfer`は任意のambient実射の移送・実単位と合成比較を構成し、
+左右どちらかが恒等射なら比較区間全体が定数になることを、元の小さい宇宙でも証明する。
+選んだ基底作用の全高次整合性・厳密なSSet値降下・最終RMap・F2は引き続き未完了。
+検証：`scripts/check_strong_retract_transfer.lean`、計画書§339。
