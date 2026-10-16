@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.RightResolutionRefinement
+
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftAnodyneReflection
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftAnodyne
