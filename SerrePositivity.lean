@@ -740,6 +740,8 @@ public import SerrePositivity.HomologicalAlgebra.PerfectRingTor
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteScalarConePurity
 
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PerfectResidueCompletedTensor
+
 /-!
 # Serre の交点重複度の正値性の形式化
 
