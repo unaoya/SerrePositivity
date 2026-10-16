@@ -21,6 +21,8 @@ assert_no_sorry SerrePositivity.BhattScholze.compatibleRootIdeal_flat
 assert_no_sorry SerrePositivity.BhattScholze.compatibleRootIdealElement
 assert_no_sorry SerrePositivity.BhattScholze.compatibleRootIdeal_tensor_singleStage
 assert_no_sorry SerrePositivity.BhattScholze.compatibleRootIdealTensorMap
+assert_no_sorry SerrePositivity.BhattScholze.compatibleRootIdealTensorMap_tmul
+#print axioms SerrePositivity.BhattScholze.compatibleRootIdealTensorMap_tmul
 assert_no_sorry SerrePositivity.BhattScholze.compatibleRootIdealTensorMap_injective
 assert_no_sorry SerrePositivity.BhattScholze.compatibleRootQuotient_tor_subsingleton
 assert_no_sorry SerrePositivity.BhattScholze.compatibleRootQuotient_derivedTensor_concentrated
@@ -55,6 +57,7 @@ run_cmd do
     `SerrePositivity.BhattScholze.compatibleRootIdealElement,
     `SerrePositivity.BhattScholze.compatibleRootIdeal_tensor_singleStage,
     `SerrePositivity.BhattScholze.compatibleRootIdealTensorMap,
+    `SerrePositivity.BhattScholze.compatibleRootIdealTensorMap_tmul,
     `SerrePositivity.BhattScholze.compatibleRootIdealTensorMap_injective,
     `SerrePositivity.BhattScholze.compatibleRootQuotient_tor_subsingleton,
     `SerrePositivity.BhattScholze.compatibleRootQuotient_derivedTensor_concentrated,
@@ -93,3 +96,9 @@ example {p : ℕ} [Fact p.Prime] {R : Type u} [CommRing R]
       SerrePositivity.BhattScholze.compatibleRootIdeal ρ =
         SerrePositivity.BhattScholze.compatibleRootIdeal ρ := by
   rw [SerrePositivity.BhattScholze.compatibleRootIdeal_mul_self ρ hρ]
+
+-- The restored old theorem must rewrite the old function head directly.
+example {R C : Type u} [CommRing R] [CommRing C] [Algebra R C]
+    (ρ : ℕ → R) (x : SerrePositivity.BhattScholze.compatibleRootIdeal ρ) (c : C) :
+    SerrePositivity.BhattScholze.compatibleRootIdealTensorMap ρ C (x ⊗ₜ[R] c) = (x : R) • c := by
+  rw [SerrePositivity.BhattScholze.compatibleRootIdealTensorMap_tmul]

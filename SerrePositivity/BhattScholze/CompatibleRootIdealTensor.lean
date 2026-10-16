@@ -15,6 +15,8 @@ namespace SerrePositivity.BhattScholze
 alias compatibleRootIdealElement := SerrePositivity.compatibleRootIdealElement
 alias compatibleRootIdeal_tensor_singleStage := SerrePositivity.compatibleRootIdeal_tensor_singleStage
 alias compatibleRootIdealTensorMap := SerrePositivity.compatibleRootIdealTensorMap
+alias compatibleRootIdealTensorMap_tmul := SerrePositivity.compatibleRootIdealTensorMap_tmul
+attribute [simp] compatibleRootIdealTensorMap_tmul
 alias compatibleRootIdealTensorMap_injective := SerrePositivity.compatibleRootIdealTensorMap_injective
 -- Preserve rewriting through the former computational definitions.
 attribute [reducible] compatibleRootIdealElement compatibleRootIdealTensorMap

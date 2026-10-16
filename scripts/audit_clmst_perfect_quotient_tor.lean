@@ -135,3 +135,5 @@ example {σ : Type u} (s : Finset σ) (κ : σ → ℕ → R)
     (i : ℕ) (hi : 0 < i) :
     Subsingleton (TorModule R i (R ⧸ s.sup (fun a => compatibleRootIdeal (κ a))) C) :=
   compatibleRootFiniteFamilyQuotient_tor_subsingleton s R κ hκ C i hi
+
+assert_no_sorry SerrePositivity.compatibleRootIdealTensorMap_tmul
