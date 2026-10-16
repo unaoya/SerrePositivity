@@ -2491,3 +2491,15 @@ augmentation・評価の可逆性、自然な最終小値化・F2は未完了。
 補助宇宙のモデル構造は不要。pushout後の単射性・完全な相対持ち上げ・骨格の逐次貼り合わせ、
 一般augmentation・評価の可逆性、最終小値化・F2は未完了。
 検証：`scripts/check_kan_mono_extension.lean`、計画書§313。
+
+
+### Kan fibrationの実収縮から全モノ射への持ち上げ（§314）
+
+`KanTwoHornLift`は元の二辺と基底2単体を保つ外側hornの充填を構成する。
+`CurriedHomotopy`は内部Homの辺を実ホモトピーへ戻す。
+`KanFibrationEndpointExtension`は元の終点・制限区間・基底区間を厳密に保つ延長を供給する。
+`KanFiberwiseContraction`は実sectionと実収縮から基底上で定数な収縮を構成する。
+`KanRetractionRightLifting`はこれらから全モノ射に対する右持ち上げとI.rlpを導く。
+値宇宙は任意で補助モデル構造は不要。局所化の可逆性から実収縮への接続、
+pushout後の単射性、一般augmentation・評価・最終小値化・F2は未完了。
+検証：`scripts/check_kan_retraction_lifting.lean`、計画書§314。
