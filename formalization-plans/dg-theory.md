@@ -6398,3 +6398,29 @@ Checks.ErasureTensorRight・Checks.CompositionPrefix・Checks.StageSeven・既�
 最終合成のchain map構成だけでU15b全受入や最終dg商の完成とは扱わない。
 U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mは未完。採用済み引用は0件。
 共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.135 U15b20：最終合成の成分・元のHom包含の合成保存・恒等射と左単位（2026-10-17）
+
+`Quotient/CompositionComparison.lean`はquotientCompositionの各次数の射が内部合成の射に
+一致することを証明する。元のHomの包含について、最終合成との可換式
+quotientComposition_originalを公開した。これは実際のchain mapの等式である。
+`Quotient/Identity.lean`は元のdg圏のeIdとoriginalHomInclusionの合成を
+quotientIdentityとして構成し、内部単位との成分比較と最終合成の左単位律を証明する。
+
+左単位の移送を射全体の定義的等式へ任せた最初の二案はkernelのdeterministic timeoutとなった。
+逆unitorの単位生成元表示とwhiskerRightの純tensor評価を両側で明示してから、
+既存内部左単位の同じ評価へ照合することで解消した。標準設定の対象ビルドは16秒で成功。
+heartbeat等の上限拡大は採用していない。
+
+Checks.QuotientIdentity・Checks.CompositionDifferential・Checks.AppendErasure・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（2711 jobs、終了コード0、警告なし）。
+任意dg圏の元のHom包含の合成保存と、ZMod 2で最終Homの左単位を検査した。
+主要5宣言の直接公理監査は標準公理のみ。監査累計2718宣言。
+文書検査は13 Markdown・320 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次は右単位と全path合成の結合則、指定εの次数−1の元とdε=id、通常順と豊穣順の符号比較。
+U15b全受入・最終dg商・U15cの指定収縮データ付き普遍性は未完。
+U11e・U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完。採用済み引用は0件。
+共有系列への追加要求はない。共有一般論・共有ルートimport・他系列は編集していない。
