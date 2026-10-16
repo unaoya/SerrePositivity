@@ -17,13 +17,7 @@ private theorem aeval_mem_supported {τ : Type*}
     (S : Subalgebra A (RelativeFreeDeltaRing (R := A) σ))
     (v : τ → RelativeFreeDeltaRing (R := A) σ) (hv : ∀ i, v i ∈ S) (c : MvPolynomial τ A) :
     MvPolynomial.aeval v c ∈ S := by
-  let g : τ → S := fun i => ⟨v i, hv i⟩
-  have he : MvPolynomial.aeval v c = S.val (MvPolynomial.aeval g c) := by
-    change _ = (S.val.comp (MvPolynomial.aeval g)) c
-    rw [MvPolynomial.comp_aeval]
-    rfl
-  rw [he]
-  exact (MvPolynomial.aeval g c).property
+  exact MvPolynomial.eval₂_mem (fun _ _ => S.algebraMap_mem _) hv
 
 /-- 第n逆変数は第n段以下の変数だけの多項式。 -/
 theorem relativeFreeWittInverseVariable_mem_supported (D : DeltaStructure p A)

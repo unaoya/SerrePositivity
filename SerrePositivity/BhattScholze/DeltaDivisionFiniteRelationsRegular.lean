@@ -2,6 +2,8 @@ module
 
 public import SerrePositivity.BhattScholze.DeltaDivisionFiniteStageTailQuotient
 public import Mathlib.Algebra.Polynomial.Degree.SmallDegree
+public import Mathlib.Algebra.Polynomial.RingDivision
+public import Mathlib.Algebra.Ring.NonZeroDivisors
 public import Mathlib.Logic.Equiv.Option
 
 /-! # 一般除数の次δ関係の正則性
@@ -24,23 +26,12 @@ private theorem linear_polynomial_regular {R : Type u} [CommRing R] (c b : R)
     intro h
     have he : c * (1 : R) = c * 0 := by simp [h]
     exact one_ne_zero (hc he)
-  intro x y h
-  change (Polynomial.C c * Polynomial.X + Polynomial.C b) * x =
-    (Polynomial.C c * Polynomial.X + Polynomial.C b) * y at h
-  apply sub_eq_zero.mp
-  by_contra hxy
-  have hz : (Polynomial.C c * Polynomial.X + Polynomial.C b) * (x - y) = 0 := by
-    rw [mul_sub, h, sub_self]
-  have hl : c * (x - y).leadingCoeff ≠ 0 := by
-    intro he
-    have he' : c * (x - y).leadingCoeff = c * 0 := by simpa using he
-    exact hxy (Polynomial.leadingCoeff_eq_zero.mp (hc he'))
-  have hl' : (Polynomial.C c * Polynomial.X + Polynomial.C b).leadingCoeff *
-      (x - y).leadingCoeff ≠ 0 := by
-    simpa only [Polynomial.leadingCoeff_linear hc₀] using hl
-  have he := Polynomial.leadingCoeff_mul' hl'
-  rw [hz, Polynomial.leadingCoeff_zero, Polynomial.leadingCoeff_linear hc₀] at he
-  exact hl he.symm
+  have hp : (Polynomial.C c * Polynomial.X + Polynomial.C b) ∈
+      nonZeroDivisors (Polynomial R) := by
+    apply Polynomial.mem_nonZeroDivisors_of_leadingCoeff
+    rw [Polynomial.leadingCoeff_linear hc₀]
+    exact mem_nonZeroDivisors_iff_left.mpr fun x hx => hc (hx.trans (mul_zero c).symm)
+  exact (isRegular_iff_mem_nonZeroDivisors.mpr hp).left
 
 private theorem linear_mvpolynomial_regular {R : Type u} [CommRing R] {τ : Type v}
     (c b : R) (s : τ) (hc : Function.Injective (fun x : R => c * x)) :
