@@ -2934,3 +2934,14 @@ P × ∂Δ²上の実境界関手、退化の生成射像の交差全体の特�
 Paths³(Cᵒᵖ × C) → Choice(P × ∂Δ²)という実境界関手と、全三面への制限の実等式を構成する。
 退化を保持するΔ²相対充填、全次数の整合性、小さい厳密なRMapは残る。
 受入検証は`check_free_triangle_gluing`（50宣言・3モジュール）。
+
+
+### 両退化を固定する実三角形充填（§352）
+
+`OrdinaryBarChoiceBoundaryExt`は全次数の境界制限の同時忠実性を与える。
+`FreePathDegeneracyImage`は二つの退化生成射像の交差全体を特徴付ける。
+`TriangleDegeneracyParameters`と`OrdinaryBarFreeTriangleDegeneracy`は指定する退化三角形の
+境界一致・交差上の値の一致を証明する。`OrdinaryBarFreeTriangleFiller`は実Prescribedを作り、
+境界全体・三面・両退化像全体を厳密に保つP × Δ²上の充填関手を構成する。
+次数2の相対充填は完了。全次数の帰納構成と、最終的な小さい厳密なRMapは残る。
+受入検証は`check_relative_free_triangle_filler`（63宣言・5モジュール）。
