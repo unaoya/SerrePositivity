@@ -4041,3 +4041,24 @@ U11e右B成分整合性の草稿は既定カーネル予算でdeterministic time
 該当補題に限りmaxHeartbeats 800000で再検査中。左右の自然性・bimodule同型の草稿は
 受入済み宣言に含めない。三角/五角・U12の残部・U13〜U17・D4mも未完。
 共有系列への追加要求はなく、既存PerfectComplex・共有ルート・担当外ファイルを編集していない。
+
+### 17.55 U12a3：exactな余極限と相対K-flatの余積・逐次余極限閉性（2026-10-16）
+
+`Complexes/ExactColimits.lean`はℤ次数の非有界複体図式を関手圏上の複体へ転置する。
+objectwise acyclicなら転置複体もacyclicであり、ModuleCatのexactな余極限がacyclic性を保つことを
+既存mapHomologyIsoとMathlibの実際の余極限coconeの普遍性から証明した。
+図式の対象/射宇宙w/w'はAの宇宙uと独立で、対象族にSmall.{u} Jを明示する。
+
+`Tensor/KFlatColimits.lean`はこの形の余極限に対するA上K-flat性と相対K-flat性の閉性を証明した。
+後者は既存rightTensorFunctorの余極限保存を使う。u-small余積とℕ逐次余極限も公開する。
+ℕの射/対象宇宙は0なので、ModuleCatのAB5を既存AB5OfSize_of_univLEで明示的に縮小した。
+
+Checks.KFlatColimits・Checks.KFlatComplex・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2805 jobs、終了コード0、警告なし）。独立した図式宇宙、有限代表加群族、
+ℕ逐次図式とZMod 2を検査した。主要7宣言の直接公理監査は終了コード0、標準公理のみ。
+監査累計1695宣言。文書検査は22 Markdown・311 exposition参照、失敗0件。
+今回の3ファイルにsorry/admit/新規axiomはない。担当差分の空白検査も成功。
+
+相対版のshift/cone閉性とquasiIso保存との同値、semifree・上有界flat・導来tensorはなお未完。
+U11eの左右自然性のカーネル検査は継続中で、結合coherenceを受け入れたとはしない。
+U13〜U17・D4mも未完。共有系列への追加要求はなく、担当外ファイルを編集していない。
