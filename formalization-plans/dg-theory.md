@@ -5910,3 +5910,32 @@ Checks.ErasureInterchange・Checks.ErasureCancellation・Checks.ErasureOperator�
 そこから後方帰納式と有限添字の対合を用いて全erasure²=0を証明し、全微分へ進む。
 U15b全受入、U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mは未完。
 採用済み引用は0件。共有一般論・共有ルートimport・他系列は変更していない。
+
+
+### 17.120 U15b5：unitorの全次数自然性・中間ε消去の反交換・先頭成分式（2026-10-16）
+
+`Complexes/TensorClosedZero.lean`はtensorLeftHomの閉零chain mapへの作用が実際のwhiskerLeftと
+一致することを証明した。`Complexes/UnitorCochainNaturality.lean`は逆左unitorの純tensor表示と、
+標準単位生成元の除去公式を公開する。その表示から左unitor・逆unitorが任意整数次数のcochainと
+可換することを証明し、任意の前方複体をtensorした全次数自然性も証明した。
+新しい逆unitorの評価補題はcomplexLeftUnitor_inv_applyとし、既存CategoryTheoryの同名候補と区別する。
+
+`Quotient/ErasureMiddleInterchange.lean`は§17.119の反交換式へ上記unitor自然性を適用し、
+単位因子を除いた実際のeraseMiddleと後方の次数+1 cochainの反交換を証明した。
+標準ε生成元を含む純tensorを消すと、左因子の次数iに対し(-1)^i倍のtensorになることも証明した。
+`Quotient/ErasureFirstEvaluation.lean`はこれを先頭εのeraseFirstへ適用し、
+(-1)^i倍のprependMapによる隣接Hom合成となる成分式を証明した。
+任意可換環・非有界複体・独立対象宇宙の契約を保持し、これらのface式にSmall Dを要求しない。
+
+Checks.ErasureMiddle・Checks.ErasureInterchange・Checks.ErasureOperator・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（2660 jobs、終了コード0、警告なし）。
+任意整数次数のunitor自然性、ZMod 2での中間ε消去の反交換を検査した。
+主要9宣言を完全修飾名で直接公理監査し、標準公理のみ。監査累計2587宣言。
+文書検査は24 Markdown・311 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次はprependMapの隣接Hom合成と後方消去の整合性を、associatorの全次数自然性と
+豊穣合成の結合則に接続し、eraseFirstを含む二重消去の順序交換式を証明する。
+後方帰納式・有限添字対合・perturbComplexへの接続はその後であり、全erasure²=0は未証明。
+U15b全受入、U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mは未完。
+採用済み引用は0件。共有一般論・共有ルートimport・他系列は編集していない。
