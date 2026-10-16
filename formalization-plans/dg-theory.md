@@ -5533,3 +5533,33 @@ Checks.RingPerfectComparison・Checks.RingFiniteCell・Checks.RingEnhancement・
 U13e全受入には本質的全射とshift/三角構造・retractの比較が残る。
 U13d・U11eのcoherence・U12e/f・U14〜U17・D4mも未完。採用済み引用は0件。
 共有系列への追加要求はなく、共有ルート・既存PerfectComplex・他系列は変更していない。
+
+
+### 17.108 U13e21：一対象Aのfinite cellの有限射影評価とH⁰本質像（2026-10-16）
+
+`Perfect/StrictComplexOperations.lean`は担当範囲に既存strictlyPerfectComplexの補助APIを置く。
+真の複体同型・零対象・任意整数次数の有限射影加群のsingleについて条件を保つことを証明する。
+各項の線形同型を明示して、評価関手の対象の展開をtypeclass探索へ任せない。
+二項直和とconeの閉性は既存PerfectComplexの定理を再利用した。
+
+`Perfect/RingFiniteCell.lean`は一対象Aの実際のModuleFiniteCellCodeの有限操作について帰納する。
+代表生成元は単位Aの次数0複体、shift・sum・coneは実際の評価構成であり、
+同型操作は通常複体へのmapIsoで運ぶ。任意の指定Sについて
+moduleFiniteCell_ringEvaluation_strictlyPerfectを証明した。
+
+`Perfect/RingFiniteCellImage.lean`は主perfect dg対象の実際の加群がfinite cellである場合、
+その評価の有限射影複体からringModule_recoverで厳密に復元する。
+strictPerfectDGComplexToPerfectDG_essImage_of_finiteCellはH⁰比較の本質像に入ることを証明する。
+retractは有限cellの構成木に含まれないため、この証明をPerf全体の本質的全射に拡張していない。
+
+Checks.RingFiniteCell・Checks.RingPerfectComparison・Checks.RingEnhancement・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（3518 jobs、終了コード0、警告なし）。
+任意可換環・任意指定S、零対象・全整数次数のsingle・有限操作の評価、ZMod 2を検査した。
+本質像の定理を含む主要5宣言の直接公理監査は標準公理のみ。監査累計2425宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次は導来retractを有限射影複体で表す証明と比較のshift/三角整合性を進める。
+ホモトピー冪等とstrict chain idempotentを同一視しない。
+U13e全受入・U13d・U11eのcoherence・U12e/f・U14〜U17・D4mは未完。
+採用済み引用は0件。共有系列への追加要求はなく、共有ルート・既存PerfectComplex・他系列は変更していない。
