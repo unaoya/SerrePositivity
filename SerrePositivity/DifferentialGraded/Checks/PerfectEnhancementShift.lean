@@ -37,3 +37,5 @@ example : (perfectDGModuleToPerfect (ZMod 2) PUnit.{1} ∅).CommShift ℤ := inf
 #print axioms perfectDGModuleHomotopyEquivalenceFunctorCommShift
 #print axioms perfectDGModuleHomotopyEquivalenceCommShift
 #print axioms perfectDGModuleToPerfectCommShift
+
+#print axioms perfectDGModuleToPerfect_commShiftIso

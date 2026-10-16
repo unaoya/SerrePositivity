@@ -51,4 +51,35 @@ def perfectDGModuleShiftHomotopyPerfectIso (S : Set D) (s : ℤ) :
         Functor.isoWhiskerLeft (perfectDGModuleToPerfect A D S) (I.commShiftIso s).symm ≪≫
         (Functor.associator _ _ _).symm)
 
+/-- 主Perfのshift比較を包含で写すと、主導来比較と包含のshift比較の逆の合成になる。 -/
+lemma perfectDGModuleShiftHomotopyPerfectIso_hom_inclusion (S : Set D) (s : ℤ)
+    (X : PerfectDGHomotopyCategoryOver A D S) :
+    (modulePerfectOver A D S).ι.map
+      ((perfectDGModuleShiftHomotopyPerfectIso A D S s).hom.app X) =
+    (perfectDGModuleShiftHomotopyDerivedIso A D S s).hom.app X ≫
+      ((modulePerfectOver A D S).ι.commShiftIso s).inv.app
+        ((perfectDGModuleToPerfect A D S).obj X) := by
+  suffices h : ((Functor.FullyFaithful.ofFullyFaithful (modulePerfectOver A D S).ι).preimage
+      (X := (perfectDGModuleToPerfect A D S).obj
+        ((perfectDGModuleShiftDG A D S s).onHomotopy.obj X))
+      (Y := ((perfectDGModuleToPerfect A D S).obj X)⟦s⟧)
+      (𝟙 ((perfectDGModuleToDerived A D S).obj
+        ((perfectDGModuleShiftDG A D S s).onHomotopy.obj X)) ≫
+        (perfectDGModuleShiftHomotopyDerivedIso A D S s).hom.app X ≫
+        ((modulePerfectOver A D S).ι.commShiftIso s).inv.app
+          ((perfectDGModuleToPerfect A D S).obj X))).hom =
+      (perfectDGModuleShiftHomotopyDerivedIso A D S s).hom.app X ≫
+        ((modulePerfectOver A D S).ι.commShiftIso s).inv.app
+          ((perfectDGModuleToPerfect A D S).obj X) by
+    simpa [perfectDGModuleShiftHomotopyPerfectIso, Functor.FullyFaithful.preimageIso,
+      Functor.FullyFaithful.whiskeringRight, perfectDGModuleToPerfectCompInclusion,
+      ObjectProperty.liftCompιIso] using h
+  exact ((Functor.FullyFaithful.ofFullyFaithful (modulePerfectOver A D S).ι).map_preimage
+      (X := (perfectDGModuleToPerfect A D S).obj
+        ((perfectDGModuleShiftDG A D S s).onHomotopy.obj X))
+      (Y := ((perfectDGModuleToPerfect A D S).obj X)⟦s⟧)
+      (𝟙 _ ≫ (perfectDGModuleShiftHomotopyDerivedIso A D S s).hom.app X ≫
+        ((modulePerfectOver A D S).ι.commShiftIso s).inv.app
+          ((perfectDGModuleToPerfect A D S).obj X))).trans (Category.id_comp _)
+
 end SerrePositivity.DifferentialGraded

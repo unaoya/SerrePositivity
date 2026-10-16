@@ -37,9 +37,9 @@ def perfectDGModuleInverseShiftIso (S : Set D) (s : ℤ) :
 /-- 実際のdg shiftのH⁰に、Mathlibの誘導shift構造でzero/addとその整合性を与える。 -/
 instance perfectDGHomotopyHasShift (S : Set D) :
     HasShift (PerfectDGHomotopyCategoryOver A D S) ℤ :=
-  HasShift.induced (perfectDGModuleHomotopyEquivalence A D S).inverse ℤ
+  (Functor.FullyFaithful.ofFullyFaithful (perfectDGModuleToPerfect A D S)).hasShift
     (fun s => (perfectDGModuleShiftDG A D S s).onHomotopy)
-    (perfectDGModuleInverseShiftIso A D S)
+    (perfectDGModuleShiftHomotopyPerfectIso A D S)
 
 /-- 各整数の誘導shift関手は、実際の全Hom dg shiftからのH⁰関手そのものである。 -/
 lemma perfectDGHomotopy_shiftFunctor (S : Set D) (s : ℤ) :
@@ -52,26 +52,32 @@ instance perfectDGHomotopyShiftAdditive (S : Set D) (s : ℤ) :
   rw [perfectDGHomotopy_shiftFunctor]
   infer_instance
 
-/-- 誘導したzero/add coherenceの下で、Perf同値の逆関手は整数shiftと整合する。 -/
-instance perfectDGModuleHomotopyEquivalenceInverseCommShift (S : Set D) :
-    (perfectDGModuleHomotopyEquivalence A D S).inverse.CommShift ℤ :=
-  Functor.CommShift.ofInduced (perfectDGModuleHomotopyEquivalence A D S).inverse ℤ
-    (fun s => (perfectDGModuleShiftDG A D S s).onHomotopy)
-    (perfectDGModuleInverseShiftIso A D S)
-
-/-- 逆関手の整合的shift比較から、順関手の整合的比較をMathlibの随伴APIで構成する。 -/
+/-- 完全忠実比較により誘導したshiftの下で、順関手の比較を元の自然同型として公開する。 -/
 instance perfectDGModuleHomotopyEquivalenceFunctorCommShift (S : Set D) :
     (perfectDGModuleHomotopyEquivalence A D S).functor.CommShift ℤ :=
-  (perfectDGModuleHomotopyEquivalence A D S).commShiftFunctor ℤ
+  Functor.CommShift.ofHasShiftOfFullyFaithful
+    (Functor.FullyFaithful.ofFullyFaithful (perfectDGModuleToPerfect A D S))
+    (fun s => (perfectDGModuleShiftDG A D S s).onHomotopy)
+    (perfectDGModuleShiftHomotopyPerfectIso A D S)
+
+/-- 順関手の整合的比較から、逆関手の比較をMathlibの随伴APIで構成する。 -/
+instance perfectDGModuleHomotopyEquivalenceInverseCommShift (S : Set D) :
+    (perfectDGModuleHomotopyEquivalence A D S).inverse.CommShift ℤ :=
+  (perfectDGModuleHomotopyEquivalence A D S).commShiftInverse ℤ
 
 /-- Perfとの同値の単位・余単位も整数shiftと整合する。 -/
 instance perfectDGModuleHomotopyEquivalenceCommShift (S : Set D) :
     (perfectDGModuleHomotopyEquivalence A D S).CommShift ℤ :=
-  (perfectDGModuleHomotopyEquivalence A D S).commShift_of_inverse ℤ
+  (perfectDGModuleHomotopyEquivalence A D S).commShift_of_functor ℤ
 
 /-- 元のH⁰比較関手も、実際のdg shiftから誘導した整数shiftと整合する。 -/
 instance perfectDGModuleToPerfectCommShift (S : Set D) :
     (perfectDGModuleToPerfect A D S).CommShift ℤ :=
   perfectDGModuleHomotopyEquivalenceFunctorCommShift A D S
+
+/-- 主Perfへの整合的shift比較は、実際のdg shiftから構成した自然同型そのものである。 -/
+lemma perfectDGModuleToPerfect_commShiftIso (S : Set D) (s : ℤ) :
+    (perfectDGModuleToPerfect A D S).commShiftIso s =
+      perfectDGModuleShiftHomotopyPerfectIso A D S s := rfl
 
 end SerrePositivity.DifferentialGraded

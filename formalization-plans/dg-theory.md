@@ -5197,3 +5197,35 @@ Checks.PerfectEnhancementTriangulated・Checks.StageSeven・既存Spectra.StageT
 主PerfのmapTriangleで用いる第三射と一致すること。その後に前節の三角構造でのdistinguished性を得る。
 一対象Aの既存PerfectHomotopy比較も未完。U13e全受入、U13d、U11eのcoherence、U12e/f、U14〜U17、D4mは未完。
 採用済み引用は0件。共有一般論・共有ルート・他系列のファイルを変更していない。
+
+
+### 17.96 U13e9：shift比較の直接計算と主導来三角比較（2026-10-16）
+
+`Perfect/EnhancementShift.lean`の誘導構成を、主Perfへの完全忠実関手と既に構成した自然同型から
+FullyFaithful.hasShiftで直接与える形に整理した。各整数のshift関手は引き続き実際のdg shiftのH⁰であり、
+既存の公開名・関手一致・加法性・順逆CommShift・単位/余単位の整合性を保持する。
+逆関手の比較は順関手からMathlibの随伴APIで構成する。
+これによりperfectDGModuleToPerfect_commShiftIsoは実際のdg shiftから作った自然同型との定義的な一致となる。
+§17.92の逆関手経由の自然比較もAPIとして保持した。
+
+`Perfect/EnhancementShiftComparison.lean`は主Perfの比較の成分を包含で写した計算式を証明する。
+これは主導来比較と、Perf包含のshift比較の逆との合成である。
+`Perfect/EnhancementDerivedComparison.lean`は主導来比較のCommShiftと、主Perf経由の因子化の
+shift整合性を構成し、既存の三角包含との合成から主導来比較の三角性を得た。
+その整合的CommShiftの各成分が、実際のdg shiftから構成した主導来比較と一致することも証明した。
+標準coneの第三射を照合する際に、抽象的に選んだshift比較へ置き換えずに計算できる。
+
+Checks.PerfectEnhancementDerivedComparison・Checks.PerfectEnhancementCone・
+Checks.SmallPerfectEnhancementTriangulated・Checks.PerfectEnhancementTriangulated・
+Checks.PerfectEnhancementShift・Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功
+（2901 jobs、終了コード0、警告なし）。同じ対象・shiftの公開契約、小さい代表系の三角比較、
+実際のcone三角形、主導来三角性・shift成分の一致、任意SとZMod 2上の空生成集合を検査した。
+新規6宣言と影響する既存53宣言を合わせ、主要59宣言の直接公理監査は終了コード0、標準公理のみ。
+新規分だけを加えた監査累計は2292宣言。
+今回の5 Leanファイルにsorry/admit/新規axiomはない。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査も成功。
+
+次は主導来shift比較を閉零代表上で計算し、moduleToHomotopyDerivedIsoのCommShift整合性と
+connecting射の自然性から、実際の標準cone三角形の主導来比較を構成してdistinguished性を証明する。
+U13e全受入・一対象Aの既存PerfectHomotopy比較、U13d、U11eのcoherence、U12e/f、U14〜U17、D4mは未完。
+採用済み引用は0件。共有一般論・共有ルート・他系列のファイルを変更していない。
