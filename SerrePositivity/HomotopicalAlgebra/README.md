@@ -2479,3 +2479,15 @@ augmentation・評価の可逆性、自然な最終小値化・F2は未完了。
 値宇宙は任意で、補助SSetモデル構造・源の関手的分解は要求しない。
 モノ射に沿う相対貼り合わせ・一般augmentationの可逆性、元の評価・最終小値化・F2は未完了。
 検証：`scripts/check_kan_test_detection.lean`、計画書§312。
+
+
+### 元の端点・区間を保つ延長とpushout後の全射性（§313）
+
+`KanMonoEndpointExtension`は任意のモノ射に沿い、元の始点または終点を固定して実ホモトピーを延長する。
+区間写像の制限も元のHと正確に等しい。
+`KanMonoStrictExtension`は厳密延長の存在を元の全ホモトピー類へ降ろし、全射テストから
+元の指定写像に厳密に等しい制限を持つ延長を得る。
+`KanMonoPushoutExtension`は元のQで可逆なモノ射の任意の実pushout後に厳密延長とKanテストの全射性を証明する。
+補助宇宙のモデル構造は不要。pushout後の単射性・完全な相対持ち上げ・骨格の逐次貼り合わせ、
+一般augmentation・評価の可逆性、最終小値化・F2は未完了。
+検証：`scripts/check_kan_mono_extension.lean`、計画書§313。
