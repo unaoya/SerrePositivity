@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PresentationKernelQuotient
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryKanBarQuotient
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryKanBarMappingClasses
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryQuotientPiZero
