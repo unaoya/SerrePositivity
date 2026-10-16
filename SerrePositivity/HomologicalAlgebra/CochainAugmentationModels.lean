@@ -11,12 +11,12 @@ universe u
 namespace SerrePositivity
 open CategoryTheory CategoryTheory.Limits MonoidalCategory HomologicalComplex
 attribute [local instance] HasDerivedCategory.standard
-variable {R : Type u} [CommRing R]
+variable {R S : Type u} [CommRing R] [CommRing S]
 
 /-- The zero-degree resolution augmentation is the image of the original augmentation,
 followed by the canonical additive-functor/single-object comparison. -/
 lemma mappedProjectiveResolutionAugmentation_eq_map
-    (F : ModuleCat.{u} R ⥤ ModuleCat.{u} R) [F.Additive]
+    (F : ModuleCat.{u} R ⥤ ModuleCat.{u} S) [F.Additive]
     {M : ModuleCat.{u} R} (P : ProjectiveResolution M) :
     mappedProjectiveResolutionAugmentation F P =
       (F.mapHomologicalComplex (.down ℕ)).map P.π ≫
@@ -30,11 +30,11 @@ lemma mappedProjectiveResolutionAugmentation_eq_map
 
 /-- Additive functors and extension by zero give the same standard comparison on singles. -/
 lemma mapExtendIso_single_comparison
-    (F : ModuleCat.{u} R ⥤ ModuleCat.{u} R) [F.Additive] (M : ModuleCat.{u} R) :
+    (F : ModuleCat.{u} R ⥤ ModuleCat.{u} S) [F.Additive] (M : ModuleCat.{u} R) :
     (mapExtendIso F ((HomologicalComplex.single (ModuleCat R) (.down ℕ) 0).obj M) embUp).hom ≫
       HomologicalComplex.extendMap
         ((HomologicalComplex.singleMapHomologicalComplex F (.down ℕ) 0).hom.app M) embUp ≫
-      (extendChainSingleNatIso R).hom.app (F.obj M) =
+      (extendChainSingleNatIso S).hom.app (F.obj M) =
     (F.mapHomologicalComplex (.up ℤ)).map ((extendChainSingleNatIso R).hom.app M) ≫
       (HomologicalComplex.singleMapHomologicalComplex F (.up ℤ) 0).hom.app M := by
   apply HomologicalComplex.to_single_hom_ext
@@ -50,7 +50,7 @@ lemma mapExtendIso_single_comparison
               ((HomologicalComplex.single (ModuleCat R) (.down ℕ) 0).obj M)) embUp hj).symm).hom ≫
           (HomologicalComplex.extendMap
             ((HomologicalComplex.singleMapHomologicalComplex F (.down ℕ) 0).hom.app M)
-              embUp).f 0 ≫ ((extendChainSingleNatIso R).hom.app (F.obj M)).f 0 =
+              embUp).f 0 ≫ ((extendChainSingleNatIso S).hom.app (F.obj M)).f 0 =
         ((F.mapHomologicalComplex (.up ℤ)).map
             ((extendChainSingleNatIso R).hom.app M)).f 0 ≫
           ((HomologicalComplex.singleMapHomologicalComplex F (.up ℤ) 0).hom.app M).f 0 := by
@@ -69,11 +69,11 @@ lemma mapExtendIso_single_comparison
 
 /-- An extended mapped chain augmentation is the ordinary mapped cochain augmentation. -/
 lemma mapExtendIso_resolution_augmentation
-    (F : ModuleCat.{u} R ⥤ ModuleCat.{u} R) [F.Additive]
+    (F : ModuleCat.{u} R ⥤ ModuleCat.{u} S) [F.Additive]
     {M : ModuleCat.{u} R} (P : ProjectiveResolution M) :
     (mapExtendIso F P.complex embUp).hom ≫
         HomologicalComplex.extendMap (mappedProjectiveResolutionAugmentation F P) embUp ≫
-        (extendChainSingleNatIso R).hom.app (F.obj M) =
+        (extendChainSingleNatIso S).hom.app (F.obj M) =
       (F.mapHomologicalComplex (.up ℤ)).map (projectiveResolutionCochainAugmentation P) ≫
         (HomologicalComplex.singleMapHomologicalComplex F (.up ℤ) 0).hom.app M := by
   rw [mappedProjectiveResolutionAugmentation_eq_map, HomologicalComplex.extendMap_comp]

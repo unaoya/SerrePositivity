@@ -9,7 +9,7 @@ universe u
 namespace SerrePositivity
 open CategoryTheory CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
-variable {R : Type u} [CommRing R]
+variable {R S : Type u} [CommRing R] [CommRing S]
 
 /-- The standard projection followed by a descended degree-zero map recovers that map. -/
 lemma chainHomologyZeroProjection_descOpcycles
@@ -30,10 +30,10 @@ lemma chainHomologyZeroProjection_descOpcycles
 
 /-- The chain-level augmentation of an additive functor applied to a module resolution. -/
 def mappedProjectiveResolutionAugmentation
-    (F : ModuleCat.{u} R ⥤ ModuleCat.{u} R) [F.Additive]
+    (F : ModuleCat.{u} R ⥤ ModuleCat.{u} S) [F.Additive]
     {M : ModuleCat.{u} R} (P : ProjectiveResolution M) :
     (F.mapHomologicalComplex (.down ℕ)).obj P.complex ⟶
-      (HomologicalComplex.single (ModuleCat.{u} R) (.down ℕ) 0).obj (F.obj M) :=
+      (HomologicalComplex.single (ModuleCat.{u} S) (.down ℕ) 0).obj (F.obj M) :=
   HomologicalComplex.mkHomToSingle (F.map (P.π.f 0)) (by
     intro i hi
     have hi : i = 1 := by dsimp at hi; omega
@@ -44,11 +44,11 @@ def mappedProjectiveResolutionAugmentation
 
 /-- Its homology-normalized form is precisely the standard zero-derived augmentation. -/
 lemma mappedProjectiveResolutionAugmentation_eq_projection
-    (F : ModuleCat.{u} R ⥤ ModuleCat.{u} R) [F.Additive]
+    (F : ModuleCat.{u} R ⥤ ModuleCat.{u} S) [F.Additive]
     {M : ModuleCat.{u} R} (P : ProjectiveResolution M) :
     mappedProjectiveResolutionAugmentation F P =
-      chainHomologyZeroProjection R ((F.mapHomologicalComplex (.down ℕ)).obj P.complex) ≫
-        (HomologicalComplex.single (ModuleCat.{u} R) (.down ℕ) 0).map
+      chainHomologyZeroProjection S ((F.mapHomologicalComplex (.down ℕ)).obj P.complex) ≫
+        (HomologicalComplex.single (ModuleCat.{u} S) (.down ℕ) 0).map
           ((ChainComplex.isoHomologyι₀ _).hom ≫ P.fromLeftDerivedZero' F) := by
   apply HomologicalComplex.to_single_hom_ext
   simp only [mappedProjectiveResolutionAugmentation, HomologicalComplex.comp_f,
