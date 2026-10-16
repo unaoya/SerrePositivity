@@ -841,6 +841,8 @@ public import SerrePositivity.CommutativeAlgebra.FiniteFreeScalarFactorization
 public import SerrePositivity.HomologicalAlgebra.TorFiniteFreeComparisonAnnihilator
 public import SerrePositivity.CLMST.PerfectoidIdealTorComparison
 
+public import SerrePositivity.HomologicalAlgebra.TorCoefficientPowerTorsionDescent
+
 /-!
 # Serre の交点重複度の正値性の形式化
 
