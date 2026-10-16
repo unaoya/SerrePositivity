@@ -4087,29 +4087,6 @@ semifree全体の相対K-flat性は未完。次は全作用と可換するgraded
 U11eの結合coherence、相対版の残る閉性・quasiIso保存、U12残部・U13〜U17・D4mも未完。
 共有系列への追加要求はなく、担当外ファイルを編集していない。
 
-### 17.59 U12b4：local Hom仮定付きobjectwise K-flat性（U12b受入、2026-10-16）
-
-`Tensor/ObjectwiseKFlat.lean`はlocalHomKFlatとmoduleObjectwiseKFlatを別々に定義し、
-相対K-flat性と同一視しない。前者は対象のsmallnessなしでも定義できる。
-次数ごと分裂するA複体の拡張についてK-flat性を証明し、評価後のgraded-split拡張へ適用する。
-freeAt_objectwiseKFlatは生成複体のK-flat性と各HomのA上K-flat性を明示する。
-評価の余極限保存、sphere-free表示、各filtration段階の帰納、exactな逐次余極限から
-moduleSemifree_objectwiseKFlatを得る。exists_objectwiseKFlat_resolutionはsemifree・相対K-flat・
-objectwise K-flat・次数ごと全射・指定quasiIsoを同時に保持する。
-
-Checks.ObjectwiseKFlat・Checks.SemifreeKFlat・Checks.StageSeven・既存Spectra.StageTwoの
-同時ビルドは成功（2820 jobs、終了コード0、警告なし）。独立対象宇宙、負次数sphere、
-一対象環AのlocalHom条件、ZMod 2の追加flat仮定なしの解像度を検査した。
-主要10宣言の直接公理監査は終了コード0、標準公理のみ。監査累計1732宣言。
-文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査も成功。
-今回の2ファイルにsorry/admit/新規axiomはない。
-
-U12bの受入照合：representable (§17.53)、任意Kの自由tensor評価・sphere-free段階 (§17.56)、
-全作用graded-split拡張 (§17.57)、実際の網羅的逐次余極限とsemifree解像度 (§17.58)、
-local Homの仮定を付けたobjectwise結果 (本節) が揃った。相対結果にはlocalHomKFlatを加えていない。
-これでU12bを受け入れるが、U12全体は未完。U12aの残り・U12cの上有界flat・U12d〜f、
-U11eのcoherence・U13〜U17・D4mも継続する。共有系列への追加要求はない。
-
 ### 17.57 U12b2：graded-split拡張のtensor後の分裂と短完全性（2026-10-16）
 
 `Tensor/GradedSplitElements.lean`は既存ModuleGradedSplitのsection/retractionを主Hom endの
@@ -4150,4 +4127,52 @@ Checks.SemifreeKFlat・Checks.TensorGradedSplit・Checks.StageSeven・既存Spec
 U12bの相対結果は得られたが、local A-K-flat Homの仮定からのobjectwise結果はなお未完。
 相対K-flatのshift/cone閉性・quasiIso保存との同値、U12cの上有界flat、導来tensorと
 導来bimodule合成・係数変更も未完。U11e・U13〜U17・D4mも未完のまま継続する。
+共有系列への追加要求はなく、担当外ファイルを編集していない。
+
+### 17.59 U12b4：local Hom仮定付きobjectwise K-flat性（U12b受入、2026-10-16）
+
+`Tensor/ObjectwiseKFlat.lean`はlocalHomKFlatとmoduleObjectwiseKFlatを別々に定義し、
+相対K-flat性と同一視しない。前者は対象のsmallnessなしでも定義できる。
+次数ごと分裂するA複体の拡張についてK-flat性を証明し、評価後のgraded-split拡張へ適用する。
+freeAt_objectwiseKFlatは生成複体のK-flat性と各HomのA上K-flat性を明示する。
+評価の余極限保存、sphere-free表示、各filtration段階の帰納、exactな逐次余極限から
+moduleSemifree_objectwiseKFlatを得る。exists_objectwiseKFlat_resolutionはsemifree・相対K-flat・
+objectwise K-flat・次数ごと全射・指定quasiIsoを同時に保持する。
+
+Checks.ObjectwiseKFlat・Checks.SemifreeKFlat・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2820 jobs、終了コード0、警告なし）。独立対象宇宙、負次数sphere、
+一対象環AのlocalHom条件、ZMod 2の追加flat仮定なしの解像度を検査した。
+主要10宣言の直接公理監査は終了コード0、標準公理のみ。監査累計1732宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査も成功。
+今回の2ファイルにsorry/admit/新規axiomはない。
+
+U12bの受入照合：representable (§17.53)、任意Kの自由tensor評価・sphere-free段階 (§17.56)、
+全作用graded-split拡張 (§17.57)、実際の網羅的逐次余極限とsemifree解像度 (§17.58)、
+local Homの仮定を付けたobjectwise結果 (本節) が揃った。相対結果にはlocalHomKFlatを加えていない。
+これでU12bを受け入れるが、U12全体は未完。U12aの残り・U12cの上有界flat・U12d〜f、
+U11eのcoherence・U13〜U17・D4mも継続する。共有系列への追加要求はない。
+
+### 17.60 U12d1：tensorのホモトピー保存と射影的解像度比較（2026-10-16）
+
+`Tensor/Homotopy.lean`は主rightHomMapの閉零要素が既存rightTensorMapのofHomに一致すること、
+rightTensorDGの閉零制限が既存通常関手の射に一致することを生成元で証明した。
+全dg自然なModuleHomotopyはtensorで既存chain homotopyになり、
+rightTensorHomotopyFunctorは主K(D)から既存K(A)への関手と商関手との可換等式を公開する。
+
+`Tensor/ProjectiveComparison.lean`は既存K(D)での準同型の逆を持ち上げ、
+homotopically projective対象間の準同型のtensor像を実際のHomotopyEquivにする。
+そのhomは元のrightTensorFunctor.map fである。任意の左加群を固定でき、flat条件は不要。
+semifree対象間の準同型にも適用する。
+`Tensor/ProjectiveKFlat.lean`はsemifree解像度とのこの比較から
+moduleHomotopicallyProjective_relativeKFlatを証明し、射影性と相対K-flat性を別定義のまま接続した。
+
+Checks.TensorHomotopy・Checks.ObjectwiseKFlat・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2838 jobs、終了コード0、警告なし）。任意A・独立対象宇宙、
+全dg自然なホモトピー、semifree解像度間の準同型、比較homの実際の射との一致、ZMod 2を検査。
+主要9宣言の直接公理監査は終了コード0、標準公理のみ。監査累計1741宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査も成功。
+今回の4ファイルにsorry/admit/新規axiomはない。§17.57〜59の節順も番号順に整理した。
+
+U12dの導来双関手・左変数の準同型保存・任意解像度計算・選択の自己/推移整合性はなお未完。
+U12aの相対版の残り、U12c/e/f、U11eのcoherence・U13〜U17・D4mも継続する。
 共有系列への追加要求はなく、担当外ファイルを編集していない。
