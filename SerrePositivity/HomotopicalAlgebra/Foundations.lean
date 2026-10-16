@@ -1,5 +1,10 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftIteration
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarUnit
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarIdentity
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarSpan
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ReplacementBarComparisonSpan
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.BarSize
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.BarConstruction
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.BarAugmentation
