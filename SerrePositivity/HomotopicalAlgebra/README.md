@@ -3186,3 +3186,15 @@ small augmentationの局所化後の可逆性はambient側の可逆性に帰着�
 augmentation自体の可逆性、元の基底への小さいstrictification、小さい厳密なRMapは残る。
 ここでsmall Homはsmall頂点間の補助宇宙のHomであり、SSet.{v}への縮小を主張しない。
 受入検証は`check_diagonal_hom_augmentation`（54宣言・5モジュール）。
+
+
+### 分裂頂点のない表示とambient Homの実同型（§373）
+
+`AmbientWords`は元の射と各対象でのword作用だけで生成する商圏とその評価を構成する。
+`AmbientWordKaroubi`と`AmbientWordComparison`はsmall頂点をword(0)の冪等元として復元し、
+既存RetractWordsのambient Homと新表示のHomの実同値・両逆則を証明する。
+`AmbientWordMap`は元の関手・word準同型との交換を全商射について与える。
+`OrdinaryBarAmbientWordComparison`は実対角SSet同型、全単体作用の実関手での計算、
+元の基底へのaugmentationを構成し、small augmentationの可逆性を新表示へ帰着する。
+すべてモデル構造不要。augmentationの弱同値と小さい厳密なRMapは残る。
+受入検証は`check_ambient_word_comparison`（137宣言・5モジュール）。

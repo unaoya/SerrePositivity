@@ -20833,3 +20833,74 @@ ambient augmentationが可逆であることの同値を証明した。
 
 元のCᵒᵖ×Cへの小ささを保つstrictificationと降下、小さい厳密なRMap、F2の不変性・Kan・
 π₀とHo(C)の同定などは未完了である。L/E/Sの完了記録は維持し、F1/F2を含む全体目標は継続する。
+
+
+## 373. 分裂頂点を除いた語表示とのambient Homの実同型（2026-10-17）
+
+実装コミット`29fd7a58`。§372.5のambient augmentationの解析に向け、分裂頂点とその関係を
+取り除いた表示を構成し、既存ambient Homとの実同型を証明した。
+五モジュールともモデル構造を要求しない。今回もaugmentation自体の弱同値はまだ主張しない。
+
+### 373.1 sourceとwordだけによる一般の商圏
+
+`CategoryTheory/Presentation/AmbientWords`は任意の圏Cと任意のモノイドMについて、
+元の射source(f)と各対象でのword(t)だけを生成射とする商圏を構成する。
+関係はsourceの恒等・合成、wordの単位・積の四種類である。small頂点やsection・projection、
+それらの分裂関係はこの表示に含まれない。実Realizationからの評価関手と生成射での外延性も与える。
+この最初の表示にはMのzeroさえ不要である。
+
+### 373.2 既存の語表示への比較はambient Hom上で全単射
+
+`AmbientWordKaroubi`はMがMonoidWithZeroの場合に既存RetractWordsへの実関手toRetractを構成する。
+逆向きには、small頂点Xを新表示のword(0)という冪等元の形式的像としてKaroubi包絡内に復元する。
+section・projectionはともにword(0)で実現し、既存表示の八つの関係をすべて検証した。
+
+`AmbientWordComparison`はtoRetractの後のdecodeが標準のtoKaroubi関手に等しいと証明する。
+他方の合成は、ambient頂点で恒等、small頂点で実projectionを成分とする自然変換によって比較する。
+この自然性は四種類の生成射から全商射へ延長する。これによりambient頂点間のHomについて、
+実toRetract.mapとdecode.mapのunderlying arrowが互いに逆となる`ambientHomEquiv`を得る。
+引用した存在定理や、ambient埋め込みのfullness・faithfulnessの仮定は用いない。
+
+`AmbientWordMap`は元の圏の関手とwordパラメータの準同型から実関手を構成し、
+toRetractとの交換を全商射について証明する。対象・Hom・wordの宇宙は独立である。
+
+### 373.3 実際の全対角SSetへの適用
+
+`OrdinaryBarAmbientWordComparison`は373.2の次数ごとの同値を使い、分裂頂点のない表示のHomを
+実SSetとして構成する。既存ambient Homとの実SSet同型を与え、任意の単体写像の作用が
+373.2の移送で得た写像であるだけでなく、元のliteralMapとwordのdegreeMapが誘導する
+実関手のHom写像そのものであることも証明した。
+
+その同型を既存ambient augmentationに合成し、元の基底の定数Homへの実augmentationを構成する。
+§372のsmall augmentationがanodyne局所化後に可逆であることを、今回の分裂頂点のない表示の
+augmentationの可逆性へ帰着した。値宇宙は補助宇宙max(u,v)であり、小さいSSet.{v}への縮小ではない。
+
+### 373.4 受入検証
+
+すべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`（3141 jobs、警告なし）。
+- `check_ambient_word_comparison`：独立した対象・Hom・word宇宙での実Hom同値と両逆則、
+  任意の元の圏の関手・word準同型との交換、実対角SSet同型、全単体写像の実関手としての計算、
+  元の基底へのaugmentationとsmall側の可逆性の帰着。5モジュール全137宣言の標準公理監査。
+- `check_diagonal_hom_augmentation`：54宣言・5モジュールの回帰検証。
+- `check_diagonal_closed_compatibility`：35宣言・6モジュールの回帰検証。
+- `audit_homotopical_foundations`：全12800宣言・911モジュール、
+  propext・Classical.choice・Quot.soundのみ。sorry・引用axiomなし。
+- ソースの行長・証明用マーカー、stage差分の空白検査。
+
+### 373.5 次の受入単位と残作業
+
+外側の固定次数Nのsourceは`FreeGeneratorCategories.degree (D C) (N+1)`、すなわち
+前次数の生成グラフの自由道圏である。従ってまず一般のグラフGについて、
+AmbientWords(Paths G,M)のHomを「Gの道と、その各頂点間に配置したMの語」で表し、
+実商圏との双方向の逆則を証明する。元の圏のsource合成とword積だけの表示へ移せたため、
+この段階でsmall頂点の分裂関係を再び扱う必要はない。
+
+その後、外側の固定次数についてwordの既存収縮を使うHom比較を構成し、
+二方向のSSet図式の比較から対角へ移す定理、外側の自由道augmentationのHom比較へ接続する。
+固定次数のホモトピーが外側の任意の写像でも自然であるとは仮定しない。
+外側の写像が一つの生成射を道へ展開する場合には、中間頂点の語の扱いを実際に検証する。
+
+augmentationの弱同値、元のCᵒᵖ×Cへの小ささを保つstrictificationと降下、
+小さい厳密なRMap、F2の不変性・Kan・π₀とHo(C)の同定等は未完了であり、全体目標は継続する。
