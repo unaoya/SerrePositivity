@@ -857,6 +857,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBase
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorCoefficient
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBaseChangeH0Coefficient
 public import SerrePositivity.BhattScholze.CompletedBaseChangeCoefficientComparison
+public import SerrePositivity.BhattScholze.PerfectoidizationCompletedBaseChange
 
 /-!
 # Serre の交点重複度の正値性の形式化

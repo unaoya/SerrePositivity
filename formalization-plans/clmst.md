@@ -7902,6 +7902,21 @@ G2-C2後半・C3の通常tensor perfectoid化係数への接続（2026-10-17）�
 次は有限代数A→Cの普遍perfectoid化とその通常底変換を含む元の図式に適用する。
 その後の絶対整閉側のalmost比較・rank還元・実Tor零化、KL-QとDは未完了である。
 
+G2-C3・元の代数のperfectoid化を含む底変換係数比較（2026-10-17）：
+`PerfectoidizationFunctor.precomp_ringEquiv`で元環の表示変更による普遍性の保存を証明した。
+`BhattScholze/PerfectoidizationCompletedBaseChange.lean`では、指定した元の普遍写像A→Cから
+S⊗A→H⁰(completedTensor(S,C))を構成し、この同じ写像がperfectoid化であることを証明した。
+既存の左因子版底変換を通常tensorの交換同型で移し、Sを左因子に保持する。
+S⊗Aの選択済みperfectoid化Dとの単位図式・S代数同型と、元のS完備底変換H⁰との
+S線形同値を供給した。完全忠実平坦な場合、元のC係数Torの零作用をこのD係数の
+通常Torで両方向に検出する。Aのperfectoid性や通常平坦性、試験加群の有限性は不要である。
+対象3676ジョブ、全体5873ジョブ、KL1091宣言、専用公開7宣言・名前付き適用例2宣言が成功。
+全9宣言はsorry非依存・標準3公理のみ。適用例ではB3で選ぶ元の主イデアル商の
+perfectoid化とその新基底加群を比較し、別の例で元のS⊗A上の核の一致を確認した。
+これでG2-C1〜C3の係数比較を元のperfectoid化の図式へ接続した。
+一つの実André拡大への組込みと絶対整閉側の実almost比較・rank還元を経てKL-Tを合流する。
+KL-Tの零化そのもの、KL-Q、D-I/U/Qはこの比較だけでは完成していない。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。

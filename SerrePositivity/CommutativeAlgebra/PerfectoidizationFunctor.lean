@@ -26,6 +26,28 @@ theorem lift_unique (hf : IsPerfectoidization p f) (hD : IsIntegralPerfectoid D 
     (k : S →+* D) (l : C →+* D) (hl : l.comp f = k) : l = lift hf hD k :=
   (hf.2 D hD k).choose_spec.2 l hl
 
+/-- Changing the presentation of the source preserves its universal perfectoidization. -/
+theorem precomp_ringEquiv (hf : IsPerfectoidization p f) (e : T ≃+* S) :
+    IsPerfectoidization p (f.comp e.toRingHom) := by
+  refine ⟨hf.1, ?_⟩
+  intro U _ hU k
+  obtain ⟨l, hl, huniq⟩ := hf.2 U hU (k.comp e.symm.toRingHom)
+  refine ⟨l, ?_, ?_⟩
+  · apply RingHom.ext
+    intro x
+    change l (f (e x)) = k x
+    have hx := RingHom.congr_fun hl (e x)
+    change l (f (e x)) = k (e.symm (e x)) at hx
+    simpa only [e.symm_apply_apply] using hx
+  · intro m hm
+    apply huniq
+    apply RingHom.ext
+    intro x
+    change m (f x) = k (e.symm x)
+    have hx := RingHom.congr_fun hm (e.symm x)
+    change m (f (e (e.symm x))) = k (e.symm x) at hx
+    simpa only [e.apply_symm_apply] using hx
+
 /-- 環準同型を、固定した二つの perfectoid 化の間の射へ移す。 -/
 def map (hf : IsPerfectoidization p f) (hg : IsPerfectoidization p g) (k : S →+* T) :
     C →+* D := lift hf hg.1 (g.comp k)
