@@ -3105,3 +3105,17 @@ SSet.{v}の実写像へ写し、恒等・合成・代入を保持する。
 自由分解方向の全面・全退化との接続、augmentationの比較・弱同値、
 元の基底への小ささを保つ降下と小さい厳密なRMapは残る。
 受入検証は`check_word_presentation_action`（22宣言・4モジュール）。
+
+
+### source関手性と全自由分解作用素での実評価交換（§367）
+
+`PathFunctorExt`と`RetractWordExt`は道と商の実関手の生成辺による外延性を与える。
+`RetractWordPullback`は任意のsource functor・零付きモノイド準同型による実評価の引き戻しと
+実商関手による評価の一致を証明する。
+`WordPresentationSourceMap`は語Homの実SSet写像と単体自然性、恒等・合成・単位の保持を与える。
+`OrdinaryBarWordEvaluationOperators`は全自由分解次数・全面・全退化・全パラメータの
+実評価関手の交換を全商射について証明する。
+`OrdinaryBarWordActionOperators`はnativeな小さいSSetの任意商射族で同じ交換則を与える。
+両単体方向を持つ実図式とaugmentationの組立て、比較の弱同値、元の基底への小ささを保つ降下、
+小さい厳密なRMapは残る。
+受入検証は`check_word_source_operators`（24宣言・6モジュール）。

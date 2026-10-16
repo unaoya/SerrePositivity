@@ -20422,3 +20422,69 @@ f:ULift(T)→Hom_word(X,Y)から、次の実写像を構成した。
 元のCᵒᵖ×Cへの降下を進める。
 今回の作用は補助的な語圏上のものであり、元の基底上の小さい厳密なRMapではない。
 F2の不変性・Kan・π₀とHo(C)の同定なども残り、全体目標F→L→E→Sは継続する。
+
+
+## 367. 語Homのsource関手性と全自由分解作用素での実評価交換（2026-10-17）
+
+実装コミット`a181718e`。§366で残っていた自由分解方向の全面・全退化との接続を、
+全商射の関手等式とnativeな小さいSSetの族の等式として証明した。
+
+### 367.1 共有する一般論
+
+- `CategoryTheory/Quiver/PathFunctorExt`：道の圏からの実関手は対象と生成辺の像で決まる。
+  独立した宇宙を持つprefunctorのHEqによる外延性も証明した。
+- `CategoryTheory/Presentation/RetractWordExt`：語圏の商からの任意の二つの実関手は、
+  対象と四種類の生成辺の像が一致すれば等しい。道の普遍性と商の普遍性を使い、
+  生成関係を評価kernelに置き換えない。
+- `RetractWordPullback`：任意のsource functor Gと零付きモノイド準同型hに沿って
+  実Realizationを引き戻す構成を与える。商関手map(G,h)の後に実評価を行う関手は、
+  引き戻したRealizationの実評価関手そのものに等しい。
+  source・パラメータ・評価先の宇宙は独立である。
+- `Simplicial/WordPresentationSourceMap`：任意のsource functorが語Homの実SSet写像を誘導する。
+  異なる宇宙のsourceには両Homを共通補助宇宙へULiftする版を与え、
+  同じ対象・Hom宇宙のsourceには直接の写像を与える。
+  任意の単体写像との交換、恒等sourceとsource合成、語Homの合成・単位の保持を証明した。
+
+これら四モジュールにモデル構造は不要である。
+
+### 367.2 全自由分解次数への実適用
+
+`HomotopyFunctionComplex/OrdinaryBarWordEvaluationOperators`は、任意のn、
+任意の面iまたは退化i、任意の単体次数k、任意の実パラメータtについて、
+source作用素による語圏の関手の後の実評価が、対応する単体パラメータ代入での
+実評価に等しいことを証明する。これは全商射を対象とするstrictな関手等式である。
+証明では生成source辺に既存fixedActionの実面・退化等式を適用し、
+語・切断・射影の像は既存の実縮約系そのものを使い、367.1の商の外延性で全射へ延長する。
+新しい高次整合性条件を入力に置かない。
+
+`OrdinaryBarWordActionOperators`はこの関手等式を、§366のnativeな小さい族へ移す。
+任意の小さいT、任意の全パラメータj、任意の実SSet商射族fについて、
+sourceの面・退化でfを移すことと、対応するパラメータ代入でsmall(X)⊗T→small(Y)を
+評価することが等しい。面・退化の添字、自由分解次数、前提のsource射を限定していない。
+元のCにはModelCategory以外の追加条件を課さず、小さいSSet.{v}のモデル構造だけを使う。
+補助SSet.{max u v}のモデル構造は要求しない。
+
+### 367.3 受入検証
+
+すべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`（3100 jobs、警告なし）。
+- `check_word_source_operators`：異なるsource宇宙での実SSet Hom写像、任意の実評価の引き戻し、
+  共通宇宙でのsource恒等・合成と単位、全次数・全添字・全パラメータの評価の面・退化等式、
+  nativeな小さいSSetの任意商射族での両作用素則。
+  新規6モジュール全24宣言の標準公理監査。
+- `check_word_presentation_action`（22宣言・4モジュール）、
+  `check_retract_word_presentation`（190宣言・6モジュール）の回帰検証。
+- `audit_homotopical_foundations`：全12455宣言・885モジュール。
+  PathFunctorExtも全体監査へ明示的に追加した。
+  propext・Classical.choice・Quot.soundのみ、sorry・引用axiomなし。
+- ソースの行長・証明用マーカー・stage差分の空白検査。
+
+### 367.4 次の受入単位と残作業
+
+単体方向の自然性と自由分解方向の全面・全退化での評価交換が接続済みとなった。
+次は語圏の構成自体をCat上の実関手としてまとめ、既存の通常のΔᵒᵖ上の自由分解へ適用して、
+両単体方向を持つ実図式とaugmentationを組み立てる。
+元の圏へのaugmentationが比較として必要な弱同値を持つことは、今回まだ証明していない。
+その比較、小ささを保つstrictification、元のCᵒᵖ×Cへの降下、小さい厳密なRMap、
+F2の不変性・Kan・π₀とHo(C)の同定などは残り、全体目標は継続する。
