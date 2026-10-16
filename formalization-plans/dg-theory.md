@@ -3987,3 +3987,18 @@ Checks.AssociatorRightActionを含む関連入口・Checks.StageSeven・既存Sp
 全Hom自然性の草稿は検証中であり、今回の受入には含めない。次は左右の全Hom自然性を
 確定し、結合比較を実際のbimodule同型へ束ね、三角・五角と全変数自然性を証明する。
 U11全受入・U12〜U17・D4mは未完。共有系列への追加要求はない。
+
+### 17.52 U11e21：全Hom自然性のための抽象評価補題（2026-10-16）
+
+`Complexes/HomMapEvaluation.lean`は閉零射と任意次数cochainの前後合成の評価式、
+四つの元の可換squareからの等式、斉次cochainの等式から主Hom自然性を作る補題を公開する。
+`Complexes/UnitScalarEvaluation.lean`はchain mapと整数単元の作用の可換式、
+`Bimodule/ActionEvaluation.lean`はleftCochainの評価とleftActionの一致を公開する。
+これらは反復coendを展開せず、抽象的な複体・bimoduleの段階で評価するためのAPIである。
+
+Checks.ActionEvaluationの対象ビルドは成功（1788 jobs、終了コード0）。正負次数の合成、
+ZMod 2での単元作用を検査した。主要6宣言の直接実行も終了コード0。
+element_squareは公理なし、残る5宣言は標準公理のみ。監査累計1671宣言。
+担当差分の空白検査は成功し、今回の4ファイルにsorry/admit/新規axiomはない。
+結合比較の左右自然性と右加群同型の草稿は引き続き検証中であり、この受入に含めない。
+U11全受入・U12〜U17・D4mは未完。共有一般論の重複実装・担当外ファイルの編集はない。
