@@ -5386,3 +5386,23 @@ Checks.StrictComplexProjective・Checks.RingDGComparison・Checks.StrictComplexE
 次は有限射影複体の主導来像がPerfに入ることと、Perfのretractの有限射影代表を検証する。
 今回の射影性だけから主Perfの本質的全射を主張しない。U13e全受入・U13d・U11eのcoherence・
 U12e/f・U14〜U17・D4mは未完。採用済み引用は0件。共有ルート・既存PerfectComplex・他系列は変更していない。
+
+
+### 17.103 U13e16：全Hom同型の境界反映と一対象AのH⁰同値（2026-10-16）
+
+`Functor/HomIso.lean`は各Hom写像がchain isoである実際のdg関手について、閉零関手の完全忠実性、
+境界関係の反映、H⁰関手の完全忠実性を証明する。逆chain mapでホモトピーを戻すため、
+単なる閉零射の全単射性だけで境界反映を仮定していない。対象・Homの宇宙は独立のまま。
+`Module/RingHomotopyComparison.lean`は一対象Aの全Hom評価同型とその逆に適用し、
+ringConstantDGとmoduleEvaluationDGのH⁰が実際の圏同値であることを構成した。
+
+Checks.RingHomotopyComparison・Checks.StrictComplexDerived・Checks.StrictComplexProjective・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（3296 jobs、終了コード0、警告なし）。
+独立対象宇宙の一般判定、任意可換環、一対象Aの双方の同値、A線形H⁰関手、ZMod 2を検査した。
+主要13宣言の直接公理監査は標準公理のみ。監査累計2367宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次はこのH⁰の完全忠実性と主射影的始域の局所化Hom計算を合成する。
+U13e全受入・U13d・U11eのcoherence・U12e/f・U14〜U17・D4mは未完。
+採用済み引用は0件。共有一般論・共有ルート・既存PerfectComplex・他系列は変更していない。
