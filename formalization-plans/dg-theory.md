@@ -6360,3 +6360,41 @@ Checks.TensorCochainFactors・Checks.ErasureTensorRight・Checks.CompositionPref
 一般の最終Hom間の合成、単位・結合・収縮方程式、U15b全受入は未完。
 U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mも未完。採用済み引用は0件。
 共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.134 U15b19：任意左path・全pathの消去Leibniz則と最終Hom間の合成（2026-10-17）
+
+`Complexes/PrefixTensorCochain.lean`は固定前方二因子を持つ括弧変更と、後方・右因子の
+任意次数cochainの自然性を証明する。`Quotient/ErasureTensorTransport.lean`は後方chain mapを
+含む先頭ε消去の移送式を与え、`AppendErasureHead.lean`はこれをappendRightへ適用する。
+`AppendLiftCochain.lean`は短い左語の連結cochainへ前方Homとεを戻す加法的な操作と、
+左語後方項・右語項の移送式を公開する。大きなcochain合成は括弧を正規化してからつなぎ、
+未展開のterm(b::w)が残る型照合はterm_consで明示的に揃えた。
+
+`AppendErasureRecursion.lean`は非空左語の消去を「先頭ε」と「短い語の式の持ち上げ」に分解する。
+`AppendErasure.lean`は左語の長さに関する帰納法により、任意の左pathについて左右の消去の
+Leibniz則appendRight_erasureを証明する。
+`TensorRightPathCochainExt.lean`は右tensorした全path直和の任意次数cochainのextを与える。
+`CompositionErasure.lean`は各左pathへの制限から、全path合成に対する
+internalComposition_erasureを証明する。右消去項のKoszul符号はtensorLeftHomから得る。
+
+`CompositionDifferential.lean`はその成分式internalComposition_erasure_applyと内部微分の
+chain map条件を加え、最終微分についてのinternalComposition_total_d_applyを証明する。
+その結果、quotientComposition : quotientHom S x y ⊗ quotientHom S y z → quotientHom S x z
+をtensorLiftにより実際のchain mapとして構成した。quotientComposition_ιは全次数のtensor成分が
+既存internalCompositionの成分そのものであることを保証する。
+任意可換環・非有界・独立対象宇宙・Small.{u} Dを維持する。
+
+Checks.AppendErasure・Checks.CompositionDifferential・Checks.TensorCochainFactors・
+Checks.ErasureTensorRight・Checks.CompositionPrefix・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（2708 jobs、終了コード0、警告なし）。
+任意pathの式、次数−1と+1から次数0への合成成分、ZMod 2での最終Hom間合成を検査した。
+主要16宣言の直接公理監査は標準公理のみ。監査累計2713宣言。
+文書検査は13 Markdown・320 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次は最終Homの単位を元のHomの包含から構成し、左右単位・全path合成の結合則を証明する。
+さらに指定次数−1のεについて最終微分が恒等射となること、通常順と豊穣順の成分符号を照合する。
+最終合成のchain map構成だけでU15b全受入や最終dg商の完成とは扱わない。
+U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mは未完。採用済み引用は0件。
+共有一般論・共有ルートimport・他系列は編集していない。
