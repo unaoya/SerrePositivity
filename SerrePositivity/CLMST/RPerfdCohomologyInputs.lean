@@ -4,6 +4,8 @@ public import SerrePositivity.CLMST.ConditionalCohomologyVanishing
 public import SerrePositivity.HomologicalAlgebra.TorFiniteCoefficients
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FiniteTensorComplete
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FiniteCoefficientPowerComparison
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerDerivedComparison
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerTorComparison
 public import SerrePositivity.CommutativeAlgebra.PerfectoidDerivedComplete
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdeal
 public import SerrePositivity.CommutativeAlgebra.RegularParameters
@@ -21,6 +23,7 @@ existence input; this file does not remove that input or prove almost flatness.
 universe u
 namespace SerrePositivity.CLMST
 open CategoryTheory Section2 IsLocalRing
+attribute [local instance] HasDerivedCategory.standard
 
 variable (A : Type u) [CommRing A] [IsRegularLocalRing A]
     {h : ℕ} (t : Fin h → A)
@@ -64,6 +67,17 @@ lemma rPerfd_finiteCoefficientPowerComparison_quasiIso
         (ModuleCat.of A (RPerfd A D t p hperf)) N)) :=
   DerivedCompletion.finiteCoefficientPowerComparison_quasiIso A (p : A)
     (ModuleCat.of A (RPerfd A D t p hperf)) N (rPerfd_isModuleComplete A t D p hperf)
+
+/-- Each original power cokernel is the actual derived tensor of the selected
+RPerfd with N/pⁿN. N need not be finite, flat, regular, or complete. -/
+def rPerfd_modulePowerDerivedTensorIso (N : ModuleCat.{u} A) (n : ℕ) :
+    DerivedCategory.Q.obj (DerivedCompletion.powerCokernelComplex (p : A)
+      ((moduleTensorCochainFunctor (extRes (projectiveResolution
+        (ModuleCat.of A (RPerfd A D t p hperf))))).obj N) n) ≅
+      (boundedAboveDerivedTensorModuleFunctor (ModuleCat.of A (RPerfd A D t p hperf))).obj
+        (DerivedCompletion.modulePowerReduction (p : A) N n) :=
+  DerivedCompletion.modulePowerDerivedTensorIso (p : A)
+    (ModuleCat.of A (RPerfd A D t p hperf)) N n
 
 /-- The actual finite-stage map has the base compatibility required by the
 Koszul/local-cohomology theorem. -/

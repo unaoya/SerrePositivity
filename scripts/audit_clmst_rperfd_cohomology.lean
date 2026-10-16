@@ -13,6 +13,7 @@ assert_no_sorry parameter_power_isKoszulResolution
 #print axioms rPerfd_isModuleComplete
 #print axioms rPerfd_derivedTensor_isComplete
 #print axioms rPerfd_finiteCoefficientPowerComparison_quasiIso
+#print axioms rPerfd_modulePowerDerivedTensorIso
 #print axioms rPerfd_cohomology_vanishing_of_tor_idempotent
 
 -- The original selected RPerfd has a known existence dependency. Reject all
@@ -44,6 +45,7 @@ elab "assert_rperfd_cohomology_dependencies" : command => do
   let roots := [``toRPerfd_algebraMap_A, ``rPerfd_p_coordinate,
     ``rPerfd_tor_eq_zero_of_finite, ``rPerfd_isModuleComplete,
     ``rPerfd_derivedTensor_isComplete, ``rPerfd_finiteCoefficientPowerComparison_quasiIso,
+    ``rPerfd_modulePowerDerivedTensorIso,
     ``rPerfd_cohomology_vanishing_of_tor_idempotent]
   let _ ← liftCoreM <| checkRPerfdDependencies roots {}
   logInfo "Only the existing integral-perfectoidization existence sorry is permitted."
@@ -75,3 +77,73 @@ example (n : ℕ) (x : A) :
       (algebraMap D (StageAlgebra A D t p n) (algebraMap A D x)) =
         algebraMap A (RPerfd A D t p hperf) x :=
   toRPerfd_algebraMap_A A t D p hperf n x
+
+open CategoryTheory CategoryTheory.Limits DerivedCompletion
+attribute [local instance] HasDerivedCategory.standard
+local notation "C₀" => ModuleCat.of A (RPerfd A D t p hperf)
+local notation "K₀" => extRes (projectiveResolution C₀)
+
+private lemma rperfd_power_stage_quotient_map (N : ModuleCat.{u} A) (n : ℕ) :
+    DerivedCategory.Q.map (cokernel.π
+      (smulId ((p : A) ^ n) ((moduleTensorCochainFunctor K₀).obj N))) ≫
+        (rPerfd_modulePowerDerivedTensorIso A t D p hperf N n).hom =
+      (derivedTensorCoefficientModelIso C₀ N).inv ≫
+        (boundedAboveDerivedTensorModuleFunctor C₀).map (modulePowerReductionMap (p : A) N n) :=
+  modulePowerDerivedTensorIso_π (p : A) C₀ N n
+
+private lemma rperfd_power_stage_transition (N : ModuleCat.{u} A) (n : ℕ) :
+    DerivedCategory.Q.map (powerCokernelComplexTransition (p : A)
+      ((moduleTensorCochainFunctor K₀).obj N) n) ≫
+        (rPerfd_modulePowerDerivedTensorIso A t D p hperf N n).hom =
+      (rPerfd_modulePowerDerivedTensorIso A t D p hperf N (n + 1)).hom ≫
+        (boundedAboveDerivedTensorModuleFunctor C₀).map (modulePowerReductionTransition (p : A) N n) :=
+  modulePowerDerivedTensorIso_transition (p : A) C₀ N n
+
+private lemma rperfd_power_stage_scalar (N : ModuleCat.{u} A) (n : ℕ)
+    (c : RPerfd A D t p hperf) :
+    let f : C₀ ⟶ C₀ := ModuleCat.ofHom (LinearMap.mulLeft A c)
+    DerivedCategory.Q.map (modulePowerTensorCokernelMap (p : A) N
+      (extLift (projectiveResolution C₀) f (projectiveResolution C₀)) n) ≫
+        (rPerfd_modulePowerDerivedTensorIso A t D p hperf N n).hom =
+      (rPerfd_modulePowerDerivedTensorIso A t D p hperf N n).hom ≫
+        (boundedAboveDerivedTensor.map (CategoryTheory.Prod.mkHom
+          (boundedAboveDerivedSingleFunctor.map f)
+          (𝟙 (boundedAboveDerivedSingleFunctor.obj (modulePowerReduction (p : A) N n))))).hom :=
+  modulePowerDerivedTensorIso_naturality (p : A) N
+    (ModuleCat.ofHom (LinearMap.mulLeft A c)) n
+
+private lemma rperfd_power_stage_tor_scalar (N : ModuleCat.{u} A) (n i : ℕ)
+    (c : RPerfd A D t p hperf) :
+    HomologicalComplex.homologyMap (modulePowerTensorCokernelMap (p : A) N
+      (extLift (projectiveResolution C₀) (ModuleCat.ofHom (LinearMap.mulLeft A c))
+        (projectiveResolution C₀)) n) (-(i : ℤ)) = 0 ↔
+      torCoefficientScalarEndomorphism (RPerfd A D t p hperf)
+        (modulePowerReduction (p : A) N n) i c = 0 :=
+  modulePowerCokernelTorIso_scalar_zero_iff (p : A) N (RPerfd A D t p hperf) n i c
+
+private lemma rperfd_power_stage_torsion_input (N : ModuleCat.{u} A) (i : ℕ)
+    (c : RPerfd A D t p hperf)
+    (hTor : ∀ (L : ModuleCat.{u} A) (k : ℕ), 0 < k →
+      (∀ x : L, (p : A) ^ k • x = 0) →
+        torCoefficientScalarEndomorphism (RPerfd A D t p hperf) L i c = 0) (n : ℕ) :
+    HomologicalComplex.homologyMap (modulePowerTensorCokernelMap (p : A) N
+      (extLift (projectiveResolution C₀) (ModuleCat.ofHom (LinearMap.mulLeft A c))
+        (projectiveResolution C₀)) n) (-(i : ℤ)) = 0 :=
+  modulePowerCokernel_scalar_zero_of_power_torsion_tests (p : A) N
+    (RPerfd A D t p hperf) i c hTor n
+
+meta section
+open Lean Elab Command
+elab "assert_rperfd_power_stage_dependencies" : command => do
+  let _ ← liftCoreM <| checkRPerfdDependencies [``rperfd_power_stage_quotient_map,
+    ``rperfd_power_stage_transition, ``rperfd_power_stage_scalar,
+    ``rperfd_power_stage_tor_scalar, ``rperfd_power_stage_torsion_input] {}
+  logInfo "Actual RPerfd power stages: quotient, transition, derived scalar and standard Tor actions checked."
+end
+
+assert_rperfd_power_stage_dependencies
+#print axioms rperfd_power_stage_quotient_map
+#print axioms rperfd_power_stage_transition
+#print axioms rperfd_power_stage_scalar
+#print axioms rperfd_power_stage_tor_scalar
+#print axioms rperfd_power_stage_torsion_input

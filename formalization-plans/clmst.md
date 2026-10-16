@@ -5934,6 +5934,43 @@ Mの上限が全項へ一様に移り、KL-A2bの実tensorの完備性を元の�
 その合流、p冪ねじれ係数でのalmost Tor入力、BS10.2/10.3の拡大閉性、hIと存在入力の解消を
 引き続き必要とする。KL全体・Cor 4.0.4の引用置換は未完了であり、Dへはまだ着手しない。
 
+KL-A2d・通常M/pⁿMとの実導来比較とTor作用（2026-10-16）：
+`ModulePowerReduction.lean`で、任意Mの元の通常商、標準商写像、aⁿによる零化、
+正確なスカラー→商の列、恒等写像が誘導する剰余遷移とその全射性を公開した。
+n=0も含み、Mの有限性・平坦性・正則性・完備性は不要。
+`ModulePowerTensorModel.lean`は、固定した全項平坦な分解Kとのtensorでこの列を保ち、
+未分解M⊗Kの元の冪余核を(M/aⁿM)⊗Kへ、商写像と遷移を保って同定する。
+任意のK間の写像への自然性も証明した。
+
+`DerivedTensorFixedModuleModel.lean`は、同じ係数Cの元の射影分解によるモデルを
+実`boundedAboveDerivedTensorModuleFunctor`へ接続し、未分解試験加群の写像と
+係数Cの写像の両方に対して、元の分解持ち上げを保つ比較を証明した。
+`ModulePowerDerivedComparison.lean`の`modulePowerDerivedTensorIso`はこれらを合成し、
+KL-A2cの各段を実際の`C ⊗ᴸ_R (M/aⁿM)`へ移す。標準商射・元の冪余核遷移・
+任意係数写像（特に係数元の乗法）の三つの実導来図式を証明した。
+ここでもRの正則性・完備性やC、Mの有限性は要求しない。
+
+`DerivedTensorTorNaturality.lean`で実導来tensorの負次数比較と標準Torの係数写像を照合した。
+`ModulePowerTorComparison.lean`では元の冪余核の実ホモロジーと
+`Tor_i^R(C,M/aⁿM)`を同定し、標準剰余遷移と係数写像を保った。
+元の分解に持ち上げた乗法の零作用と、既存`torCoefficientScalarEndomorphism`の零性が
+同値であることまで証明した。任意の正指数で消える試験加群に対するTor零化入力から、
+元の冪余核塔の全段のホモロジー上の零作用を実際に供給できる。段n=0にも指数n+1で適用する。
+この最後の含意は条件付きであり、Prop 2.4.9(a)やその基底変更入力を証明したものではない。
+
+同じ選択の実RPerfdへの`rPerfd_modulePowerDerivedTensorIso`を公開した。
+専用監査は任意N・全nに対する標準商・遷移・導来スカラー・標準Torスカラー・
+p冪ねじれ入力の5宣言を直接検証し、既存B-I以外のsorryや消滅・isogeny・冪等性引用を拒否する。
+共通37宣言はsorry非依存・標準3公理のみで、合成import閉包154モジュールに
+BS・CLMST・Inputs・Paperへの依存なし。対象3846ジョブ、専用37宣言と2型検査、
+実RPerfd限定依存監査、KL550件、全体5735ジョブが成功した。
+
+次は、この各段の比較を元の遷移のままholimへまとめ、KL-A2cの再構成に合成する。
+続いて、p冪ねじれ係数Tor入力からの塔の零作用をMilnor列で元の実tensorへ移し、
+必要なalmost拡大閉性をBS10.2/10.3の正確な入力に接続する。
+Prop 2.4.9(a)の具体的入力・hI・実RPerfdの存在入力は未解消である。
+KL-QおよびDの実適用は未完了。一般のTorスカラー零化を追加仮定なしで得たとは扱わない。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
