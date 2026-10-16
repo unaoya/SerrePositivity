@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarSmallFreeWordChainTransfer
+
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordContraction
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.WordSegmentComparison
