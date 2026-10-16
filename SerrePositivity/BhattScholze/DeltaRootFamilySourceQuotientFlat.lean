@@ -127,13 +127,11 @@ theorem deltaRootFamilySourceQuotientDerivedH0_faithfullyFlat (s : Fin m ≃ σ)
         ((DerivedCategory.homologyFunctor (ModuleCat Q₀) 0).obj
           (DeltaRootSourceQuotientDerived D d b).obj)) := by
   have hpP : Function.Injective (fun x : P₀ => (p : P₀) * x) := by
-    have h := (show IsSMulRegular A (p : A) from hpA).of_flat (S := P₀)
-    have h' : IsSMulRegular P₀ (p : P₀) := by simpa only [map_natCast] using h
-    exact h'
+    simpa only [map_natCast, IsSMulRegular, smul_eq_mul] using
+      (show IsSMulRegular A (p : A) from hpA).of_flat (S := P₀)
   have hpL : Function.Injective (fun x : L₀ => (p : L₀) * x) := by
-    have h := (show IsSMulRegular P₀ (p : P₀) from hpP).of_flat (S := L₀)
-    have h' : IsSMulRegular L₀ (p : L₀) := by simpa only [map_natCast] using h
-    exact h'
+    simpa only [map_natCast, IsSMulRegular, smul_eq_mul] using
+      (show IsSMulRegular A (p : A) from hpA).of_flat (S := L₀)
   have hg := witt_ghostMap_injective_of_mul_prime_injective p L₀ hpL
   let := (deltaRootSourceQuotientResidueMap D d b).toAlgebra
   let : Module Q₀ Res₀ := Algebra.toModule

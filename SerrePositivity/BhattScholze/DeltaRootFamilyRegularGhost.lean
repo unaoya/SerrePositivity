@@ -29,13 +29,10 @@ private theorem finiteSourceGhost
     (hpA : Function.Injective (fun z : A => (p : A) * z)) (T : Finset σ) :
     Function.Injective (WittVector.ghostMap :
       WittVector p (RelativeFreeDeltaRing (R := P) T) → ℕ → RelativeFreeDeltaRing (R := P) T) := by
-  have hpP : IsSMulRegular P (p : P) := by
-    simpa only [map_natCast] using
-      (show IsSMulRegular A (p : A) from hpA).of_flat (S := P)
-  have hpL : IsSMulRegular (RelativeFreeDeltaRing (R := P) T)
-      (p : RelativeFreeDeltaRing (R := P) T) := by
-    simpa only [map_natCast] using hpP.of_flat (S := RelativeFreeDeltaRing (R := P) T)
-  exact witt_ghostMap_injective_of_mul_prime_injective p _ hpL
+  apply witt_ghostMap_injective_of_mul_prime_injective
+  simpa only [map_natCast, IsSMulRegular, smul_eq_mul] using
+    (show IsSMulRegular A (p : A) from hpA).of_flat
+      (S := RelativeFreeDeltaRing (R := P) T)
 
 private theorem nextSourceGhost (T : Finset σ)
     (hpB : Function.Injective (fun z : DeltaAdjoinDivision E (p : P)
@@ -49,13 +46,10 @@ private theorem nextSourceGhost (T : Finset σ)
         (fun t : T => DeltaStructure.frobeniusLift E (r t))) PUnit.{u+1}) := by
   let C := DeltaAdjoinDivision E (p : P)
     (fun t : T => DeltaStructure.frobeniusLift E (r t))
-  have hpL : IsSMulRegular (RelativeFreeDeltaRing (R := C) PUnit.{u+1})
-      (p : RelativeFreeDeltaRing (R := C) PUnit.{u+1}) := by
-    have h := (show IsSMulRegular C (p : C) from hpB).of_flat
-      (S := RelativeFreeDeltaRing (R := C) PUnit.{u+1})
-    rw [map_natCast (algebraMap C (RelativeFreeDeltaRing (R := C) PUnit.{u+1})) p] at h
-    exact h
-  exact witt_ghostMap_injective_of_mul_prime_injective p _ hpL
+  have h := (show IsSMulRegular C (p : C) from hpB).of_flat
+    (S := RelativeFreeDeltaRing (R := C) PUnit.{u+1})
+  rw [map_natCast (algebraMap C (RelativeFreeDeltaRing (R := C) PUnit.{u+1})) p] at h
+  exact witt_ghostMap_injective_of_mul_prime_injective p _ h
 
 /-- 任意根族のraw p除算包のp正則性。外部ghost仮定は不要。 -/
 theorem deltaRootFamilyRaw_p_mul_injective_of_p_regular

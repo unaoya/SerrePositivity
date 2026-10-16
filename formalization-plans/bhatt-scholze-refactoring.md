@@ -65,7 +65,7 @@ BS側が変更するのは `SerrePositivity/BhattScholze/`、このBS計画、BS
 | R3c | DP表示の正則性で不要なp局所性を外した一般入口 | 証明拡張 | `PrincipalDPRegular` | 完了。一般入口2件と旧包装2件の監査、旧完全署名の一致を確認 |
 | R4a | 初期係数表示を既存モニック表示比較へ接続 | 再利用・比較 | `DeltaDivisionFirstCoefficientPowerEquiv`、`MonicPowerFamilyBaseQuotient` | 完了 |
 | R4b | 根関係式の通常の冪指数を非零指数に一般化 | 証明拡張 | 新 `MonicPowerFamilyRelationRegularity`、`DeltaRootRelationKoszul`、`DeltaRootSubsetQuotient`、`DeltaRootFiniteRegularSequence`、`DeltaDivisionSourceGraphKoszul` | 完了。新6宣言・源グラフ利用先の監査、旧24完全署名の一致を確認 |
-| R4c | hpAからhpL・ghost単射を供給する公開入口を揃える | 再利用 | `DeltaRootSourceRegularGhost`、`DeltaRootFamilyRegularGhost`、`DeltaRootFamilySourceQuotientFlat`、`DeltaRootBoundedSupportQuotientFlat` | 新APIは不要。既存of_flatとG4へ委譲する4モジュールを一時検証中 |
+| R4c | hpAからhpL・ghost単射を供給する公開入口を揃える | 再利用 | `DeltaRootSourceRegularGhost`、`DeltaRootFamilyRegularGhost`、`DeltaRootFamilySourceQuotientFlat`、`DeltaRootBoundedSupportQuotientFlat` | 完了。旧22完全署名と6入口の監査を確認 |
 | R5a | 未完備perfection・合成標準射のhom_extと既存PD外延性の適用 | 抽出 | `DeltaPerfectionUniversal`、`DeltaPerfectionPDCompletionUniversal`、`DeltaPerfectionPDCompletionComparison` | 3モジュールの一時検査済み、repo未反映 |
 | R5b | 完全prismのWitt表示とイデアル像の入力供給 | 抽出 | 新 `PerfectPrismWittPresentation`、`PerfectPrismHomLift`、`PerfectPrismQuotientPerfectoid` | 3モジュールの一時検査済み、repo未反映 |
 | R5c | 単一根の上位perfectoid証明を任意族から特殊化 | 比較 | 新 `CompatibleRootSingletonComparison`、`CompatibleRootCompletionPerfectoid` | 循環のない上位特殊化を一時検証中、repo未反映 |
@@ -393,6 +393,10 @@ R4bも計画済み5ファイルの一時検証から再開する。これらを�
   係数環の非零性・Noether性・δ構造は要求しない。旧素数指数の入口と元の商・関係式・Koszul対象は保持。
   534対象・4,569ジョブ、基礎584件・B4 2,560件、追加6宣言と源グラフ利用先のfocused監査が成功。
   旧24完全署名が一致。新sorry・追加公理・引用依存なし。
+
+- R4c：既存の平坦性によるp正則性移送とG4のghost単射を直接再利用した。新API・instance・同型は追加せず、低層で必要なhpP/hpL/hgと局所作用を保持した。旧22完全署名と6入口のfocused監査が成功。
+  538対象の統合ビルド、基礎584件・B4 2,560件に加え、工程別の対象ビルドと集約focused監査が成功。
+  新sorry・追加公理・引用依存なし。
 
 ## 10 再調査の反映と残りの実施契約
 

@@ -23,12 +23,9 @@ local notation "L₀" => RelativeFreeDeltaRing (R := P₀) σ
 theorem deltaRootSource_ghostMap_injective
     (hpA : Function.Injective (fun x : A => (p : A) * x)) :
     Function.Injective (WittVector.ghostMap : WittVector p L₀ → ℕ → L₀) := by
-  have hpP : IsSMulRegular P₀ (p : P₀) := by
-    simpa only [map_natCast] using
-      (show IsSMulRegular A (p : A) from hpA).of_flat (S := P₀)
-  have hpL : IsSMulRegular L₀ (p : L₀) := by
-    simpa only [map_natCast] using hpP.of_flat (S := L₀)
-  exact witt_ghostMap_injective_of_mul_prime_injective p L₀ hpL
+  apply witt_ghostMap_injective_of_mul_prime_injective
+  simpa only [map_natCast, IsSMulRegular, smul_eq_mul] using
+    (show IsSMulRegular A (p : A) from hpA).of_flat (S := L₀)
 
 variable [Unique σ]
 variable (D : DeltaStructure p A) (d : A) (b : σ → A) (n : ℕ) (hn : 0 < n)
