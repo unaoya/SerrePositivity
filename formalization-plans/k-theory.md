@@ -15268,3 +15268,65 @@ bisimplicial diagonal全体の一つのホモトピーへまとめる作業は�
 元のSSet[v]に値を持つ新しい厳密な基底関手への自然な小値化も残る。
 F1の最終RMap、不変性・Kan性・π0比較への統合、F2の最終自然弱同値zigzag比較は未完了。
 全体目標F→L→E→Sを維持する。
+
+
+## 289. 恒等射影barの対角全体の収縮と実左脚のホモトピー逆（2026-10-16）
+
+§288で残したdegree間の整合性を証明し、恒等射影barの実対角全体に一つの
+simplicial homotopyを構成した。さらに同じホモトピーを実際の自然比較spanへ移送し、
+前回と同じsectionによる左脚のホモトピー逆のデータを得た。
+一般部分にも適用にも、大きい宇宙のSSetのモデル構造は使用しない。
+
+### 289.1 区間の全関手を用いた全単体写像との両立
+
+`RelativeBarContractionOperators`は、各degreeの実自然変換から作る
+Fin2×comma圏→comma圏という区間関手を扱う。
+任意の単体写像θについて、区間関手の後にdegreeを移す関手と、
+先にθで移してから新しい区間関手を適用する関手が等しいことを証明する。
+両端だけでなく混合する0→1の射も含む、実関手全体の等式である。
+対象での比較には元のFの単体写像自然性、射での比較には実comma射のデータを使う。
+
+`RelativeBarDiagonalContraction`はこの等式を使い、各degreeの全nerve intervalを
+実対角上の写像bar(id,F)(d)×Δ1→bar(id,F)(d)として貼り合わせる。
+その0端点は恒等写像、1端点は同じaugmentationの後に同じsectionを合成した写像である。
+結果の`identityDiagonalHomotopy`は実際のSSet.Homotopyであり、
+degreeごとの別々のホモトピーの存在主張ではない。
+
+### 289.2 同じ実左脚と同じsectionへの移送
+
+`UniverseLiftHomotopy`は全simplicial homotopyを、同じ全区間族と両端を保持したまま
+実際のUniverseLift.simplexTensorMapで移す。モデル構造は要求しない。
+`RelativeBarSpanContraction`は前回の二重liftの自然同型を打ち消し、
+spanの左脚の後にそのsectionを合成した写像が、元のaugmentation・sectionの合成の
+実liftと等しいことを証明する。289.1のホモトピーを移し、
+中間barの恒等写像からこの合成への、対角全体の実ホモトピーを構成する。
+反対の合成は§288で既に厳密な恒等写像である。
+
+`ReplacementBarLeftContraction`はこれを実replacement図式へ適用する。
+`auxiliaryLeft_has_homotopyInverse`は元の小さい写像空間のliftとauxiliaryMiddleの間の
+実左脚について、section、sectionの後に左脚を合成した厳密な恒等式、
+左脚の後にsectionを合成した写像と恒等写像の間の全simplicial homotopyを同時に出力する。
+源の任意ModelCategory C、対象宇宙u・Hom宇宙vの独立性を保つ。
+関手的分解、combinatorial性、大きいSSetモデルを追加仮定にしていない。
+
+### 289.3 受入検証と次の作業単位
+
+実装コミット`1a068872`。全て成功した。
+
+- 共有入口の合同build：2809 jobs、追加警告なし。
+- `check_relative_bar_diagonal_contraction`：モデル不要の全区間関手のθ両立、
+  対角全体の実ホモトピーと両端、同じ全ホモトピーの宇宙lift、
+  span左脚と同じsectionの両合成、任意モデル源の実左脚への適用。
+  新規21宣言・5モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：8463宣言・613モジュール、標準公理のみ。
+- `check_relative_bar_span`：36宣言・5モジュールの回帰確認。
+- `check_model_free_bar`：31宣言・6モジュールの回帰確認。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+§288の対角全体の収縮は完了した。次はこの実ホモトピー逆のデータを、
+大きい宇宙のモデル構造なしに、必要な弱同値比較の公開定理へ接続する。
+今回の公開定理の型はSSet.Homotopyを含む逆データであり、幾何的弱同値や
+元のSSet[v]内の最終zigzagの型を持つ定理はまだ出力していない。
+span右脚の比較の弱同値性と、元の小さいSSet[v]に値を持つ新しい厳密関手への自然な小値化も残る。
+F1の最終RMap・不変性・Kan性・π0比較への統合、F2の最終自然弱同値zigzag比較は引き続き未完了。
+全体目標F→L→E→Sを維持する。

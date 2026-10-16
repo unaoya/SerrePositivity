@@ -2185,3 +2185,18 @@ section自体を全基底射で自然だとは扱わず、degreeごとのホモ�
 両脚の弱同値性、対角全体の収縮、最終の小さい厳密関手と最終比較は残る。
 実装`8f58d0eb`、詳細は計画§288。新規36宣言・5モジュール、共有8442宣言・608モジュールの
 標準公理監査、共有入口2804 jobs、既存bar・両変数降下の回帰確認が成功。
+
+
+## 恒等射影barの対角収縮と同じ実左脚のホモトピー逆（2026-10-16）
+
+`RelativeBarContractionOperators`は区間関手全体が全単体写像と両立することを証明する。
+`RelativeBarDiagonalContraction`はその両立で、恒等写像からaugmentation・sectionの合成への
+一つの実SSet.Homotopyを対角全体に構成する。
+`UniverseLiftHomotopy`と`RelativeBarSpanContraction`は同じ全ホモトピーを実liftで移し、
+二重liftの自然同型を打ち消して、同じ比較spanの左脚と同じsectionへ接続する。
+`ReplacementBarLeftContraction.auxiliaryLeft_has_homotopyInverse`は実replacement図式で、
+一方の合成の厳密な恒等式と他方の合成の全simplicial homotopyを同時に出力する。
+一般部分はモデル不要で、適用でも大きいSSetモデルや源の関手的分解を要求しない。
+弱同値の公開定理への接続、span右脚の弱同値性、最終の小さい厳密関手と最終比較は残る。
+実装`1a068872`、詳細は計画§289。新規21宣言・5モジュール、共有8463宣言・613モジュールの
+標準公理監査、共有入口2809 jobs、既存span・barの回帰確認が成功。
