@@ -7,6 +7,14 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.CategoryTheory.Quiver.WeightedPaths,
+    `SerrePositivity.CategoryTheory.Quiver.WeightedPathMaps,
+    `SerrePositivity.CategoryTheory.Presentation.WeightedPathRealization,
+    `SerrePositivity.CategoryTheory.Presentation.WeightedPathParameterMap,
+    `SerrePositivity.CategoryTheory.Presentation.AmbientWordAugmentation,
+    `SerrePositivity.HomotopicalAlgebra.Simplicial.WeightedWordHom,
+    `SerrePositivity.HomotopicalAlgebra.Simplicial.FreeWordHom,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFixedRowWordHom,
     `SerrePositivity.CategoryTheory.Presentation.AmbientWords,
     `SerrePositivity.CategoryTheory.Presentation.AmbientWordKaroubi,
     `SerrePositivity.CategoryTheory.Presentation.AmbientWordComparison,
@@ -948,6 +956,8 @@ run_cmd do
     let mod := env.header.modules[idx.toNat]!.module
     unless #[`SerrePositivity.HomotopicalAlgebra,
         `SerrePositivity.CategoryTheory.Presentation,
+        `SerrePositivity.CategoryTheory.Quiver.WeightedPaths,
+        `SerrePositivity.CategoryTheory.Quiver.WeightedPathMaps,
         `SerrePositivity.CategoryTheory.Quiver.PathIntersections,
         `SerrePositivity.CategoryTheory.Quiver.PathNatTrans,
         `SerrePositivity.CategoryTheory.Quiver.PathFunctorExt,
