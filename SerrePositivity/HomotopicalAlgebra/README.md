@@ -2924,3 +2924,13 @@ EssSurj・IsEquivalenceを証明し、次数を保つ実逆関手と両合成の
 六端点、三頂点の重なり、六つの退化制限、二重退化の共通像での一定性を関手の実等式で証明する。
 P × ∂Δ²上の実境界関手、退化の生成射像の交差全体の特徴付け、相対充填は残る。
 受入検証は`check_free_triangle_boundary`（49宣言・2モジュール）。
+
+
+### 三辺を実際の境界図式へ貼り合わせる（§351）
+
+`BoundaryTensorGluing`は任意のパラメータを持つ全次数の境界族の貼り合わせと外延性を与える。
+`OrdinaryBarChoiceTriangleGluing`は端点等式から基底射の付け替えも導き、元の三選択射へ戻る
+実境界族を作る。`OrdinaryBarFreeTriangleGluing`は§350の実三辺へ適用し、
+Paths³(Cᵒᵖ × C) → Choice(P × ∂Δ²)という実境界関手と、全三面への制限の実等式を構成する。
+退化を保持するΔ²相対充填、全次数の整合性、小さい厳密なRMapは残る。
+受入検証は`check_free_triangle_gluing`（50宣言・3モジュール）。
