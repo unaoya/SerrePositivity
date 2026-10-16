@@ -2548,3 +2548,16 @@ pushout後の単射性、一般augmentation・評価・最終小値化・F2は�
 基底・全空間のKan性や補助モデル構造は不要。元の引き戻し射はQと任意のanodyne反転関手で可逆になる。
 内部Homの前合成への移送、一般骨格比較、一般augmentation・評価、最終小値化・F2は未完了。
 検証：`scripts/check_kan_pullback_deformation.lean`、計画書§318。
+
+
+### 内部Homの実収縮とモデル不要の一般左固有性（§319）
+
+`PrecompositionHomotopy`は元の区間を内部Homの前合成へ移し、後合成・定数区間との整合性を証明する。
+`MappingPrecompositionRetraction`は垂直な収縮から前合成の像を全区間で固定する強変形収縮を構成する。
+`PushoutInternalHomPullback`は元のpushoutの内部Homが実pullbackであることを証明する。
+`HomotopyRetractionTests`は単位対象での後合成テストを元の前合成テストへ戻す。
+`MonoRightPushoutEquivalence`は境界右クラスのモノ射に沿う実pushoutの可逆性を証明する。
+`KanLocalizedLeftProper`は任意の局所化同値の、任意のモノ射に沿う実pushoutの可逆性を証明する。
+比較射のモノ射性・元の対象のKan性・補助モデル構造は不要。
+境界も動くcubeと骨格の比較、一般augmentation・評価、最終小値化・F2は未完了。
+検証：`scripts/check_kan_localized_left_proper.lean`、計画書§319。
