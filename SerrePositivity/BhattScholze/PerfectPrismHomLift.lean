@@ -1,8 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.WittQuotientHomLift
-public import SerrePositivity.BhattScholze.PerfectDeltaWittRecovery
-public import SerrePositivity.BhattScholze.PerfectOrientedPrism
+public import SerrePositivity.BhattScholze.PerfectPrismWittPresentation
 public import SerrePositivity.BhattScholze.OrientedPrismHom
 
 /-! # 一般の完全prism商の射の一意持上げ
@@ -29,40 +28,24 @@ theorem existsUnique_perfectPrismHomLift
   let : Fact (¬ IsUnit (p : B)) :=
     ⟨fun h ↦ (Fact.out : ¬ IsUnit (p : B ⧸ Q.ideal))
     (by simpa only [map_natCast] using h.map (Ideal.Quotient.mk Q.ideal))⟩
-  let := P.isAdicComplete_p_of_perfect hP
-  let := Q.isAdicComplete_p_of_perfect hQ
-  let := P.isAdicComplete_generator
-  let := Q.isAdicComplete_generator
   let := hP.perfectRing_mod_p
   let := hQ.perfectRing_mod_p
   let k := ModP A p
   let l := ModP B p
-  let ea := perfectDeltaWittRecoveryEquiv P.deltaStructure hP
-  let eb := perfectDeltaWittRecoveryEquiv Q.deltaStructure hQ
-  let d := ea.symm P.generator
-  let e := eb.symm Q.generator
-  have hd := (perfectDeltaWittRecoveryEquiv_symm_isDeltaHom P.deltaStructure hP).map_isDistinguished
-     (P.isDistinguished_of_perfect hP)
-  have he := (perfectDeltaWittRecoveryEquiv_symm_isDeltaHom Q.deltaStructure hQ).map_isDistinguished
-     (Q.isDistinguished_of_perfect hQ)
-  let : IsAdicComplete (Ideal.span {d}) (WittVector p k) := by
-    have h := (IsAdicComplete.congr_ringEquiv (Ideal.span {P.generator}) ea.symm).mpr
-      P.isAdicComplete_generator
-    simpa only [Ideal.map_span, Set.image_singleton] using h
-  let : IsAdicComplete (Ideal.span {e}) (WittVector p l) := by
-    have h := (IsAdicComplete.congr_ringEquiv (Ideal.span {Q.generator}) eb.symm).mpr
-      Q.isAdicComplete_generator
-    simpa only [Ideal.map_span, Set.image_singleton] using h
+  let ea := perfectPrismWittRecoveryEquiv P hP
+  let eb := perfectPrismWittRecoveryEquiv Q hQ
+  let d := perfectPrismWittGenerator P hP
+  let e := perfectPrismWittGenerator Q hQ
+  have hd := perfectPrismWittGenerator_isDistinguished P hP
+  have he := perfectPrismWittGenerator_isDistinguished Q hQ
+  let : IsAdicComplete (Ideal.span {d}) (WittVector p k) :=
+    perfectPrismWitt_isAdicComplete_generator P hP
+  let : IsAdicComplete (Ideal.span {e}) (WittVector p l) :=
+    perfectPrismWitt_isAdicComplete_generator Q hQ
   let qa : WittVector p k ⧸ Ideal.span {d} ≃+* A ⧸ P.ideal :=
-    Ideal.quotientEquiv _ _ ea (by
-      simp only [OrientedPrism.ideal, Ideal.map_span, Set.image_singleton]
-      change Ideal.span {P.generator} = Ideal.span {ea (ea.symm P.generator)}
-      rw [ea.apply_symm_apply])
+    perfectPrismWittQuotientEquiv P hP
   let qb : WittVector p l ⧸ Ideal.span {e} ≃+* B ⧸ Q.ideal :=
-    Ideal.quotientEquiv _ _ eb (by
-      simp only [OrientedPrism.ideal, Ideal.map_span, Set.image_singleton]
-      change Ideal.span {Q.generator} = Ideal.span {eb (eb.symm Q.generator)}
-      rw [eb.apply_symm_apply])
+    perfectPrismWittQuotientEquiv Q hQ
   let : Fact (¬ IsUnit (p : WittVector p k ⧸ Ideal.span {d})) :=
     ⟨fun h ↦ (Fact.out : ¬ IsUnit (p : A ⧸ P.ideal))
     (by simpa only [map_natCast] using h.map qa.toRingHom)⟩
@@ -86,8 +69,8 @@ theorem existsUnique_perfectPrismHomLift
     rw [ea.symm_apply_apply]
     exact hh
   have hdelta : P.deltaStructure.IsDeltaHom Q.deltaStructure f :=
-    (perfectDeltaWittRecoveryEquiv_isDeltaHom Q.deltaStructure hQ).comp
-      (hF.1.comp (perfectDeltaWittRecoveryEquiv_symm_isDeltaHom P.deltaStructure hP))
+    (perfectPrismWittRecoveryEquiv_isDeltaHom Q hQ).comp
+      (hF.1.comp (perfectPrismWittRecoveryEquiv_symm_isDeltaHom P hP))
   have hI : P.ideal ≤ Q.ideal.comap f := by
     intro x hx
     change f x ∈ Q.ideal
@@ -116,8 +99,8 @@ theorem existsUnique_perfectPrismHomLift
     have h := congrArg qb.symm hh
     change Ideal.Quotient.mk _ (eb.symm (K.toRingHom (ea x))) =
       Ideal.Quotient.mk _ (eb.symm (H.toRingHom (ea x)))
-    simpa only [qb, RingHom.comp_apply, Ideal.quotientEquiv_symm_mk,
-      RingEquiv.coe_toRingHom] using h
+    exact (perfectPrismWittQuotientEquiv_symm_mk Q hQ (K.toRingHom (ea x))).symm.trans
+      (h.trans (perfectPrismWittQuotientEquiv_symm_mk Q hQ (H.toRingHom (ea x))))
   apply RingHom.ext
   intro a
   obtain ⟨x, rfl⟩ := ea.surjective a

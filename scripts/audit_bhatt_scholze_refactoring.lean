@@ -1,3 +1,5 @@
+import SerrePositivity.BhattScholze.PerfectPrismHomLift
+import SerrePositivity.BhattScholze.PerfectPrismQuotientPerfectoid
 import SerrePositivity.BhattScholze.DeltaPerfectionPDCompletionComparison
 import SerrePositivity.BhattScholze.DeltaRootSourceRegularGhost
 import SerrePositivity.BhattScholze.DeltaRootFamilyRegularGhost
@@ -313,3 +315,62 @@ assert_no_sorry SerrePositivity.BhattScholze.deltaPerfectionPDCompletionEquiv_sp
 #print axioms SerrePositivity.BhattScholze.deltaPerfectionPDCompletionEquiv
 #print axioms SerrePositivity.BhattScholze.deltaPerfectionPDCompletionEquiv_spec
 end R5AContracts
+
+-- R5b: validated refactoring contracts.
+section R5BContracts
+
+/- Focused R5b audit: all presentation declarations, both consumers,
+   and preservation of the selected recovery equivalence, generator and quotient maps. -/
+open SerrePositivity SerrePositivity.BhattScholze
+universe u
+section OriginalChoices
+variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
+variable (P : OrientedPrism p A) (hP : P.deltaStructure.IsPerfect)
+variable [IsAdicComplete (Ideal.span {(p : A)}) A]
+example : perfectPrismWittRecoveryEquiv P hP =
+    perfectDeltaWittRecoveryEquiv P.deltaStructure hP := rfl
+example : perfectPrismWittGenerator P hP =
+    (perfectDeltaWittRecoveryEquiv P.deltaStructure hP).symm P.generator := rfl
+example (hI : P.ideal =
+    (Ideal.span {(perfectDeltaWittRecoveryEquiv P.deltaStructure hP).symm P.generator}).map
+      (perfectDeltaWittRecoveryEquiv P.deltaStructure hP).toRingHom) :
+    perfectPrismWittQuotientEquiv P hP =
+      Ideal.quotientEquiv _ _ (perfectDeltaWittRecoveryEquiv P.deltaStructure hP) hI := rfl
+example (x : WittVector p (ModP A p)) :
+    perfectPrismWittQuotientEquiv P hP (Ideal.Quotient.mk _ x) =
+      Ideal.Quotient.mk P.ideal (perfectPrismWittRecoveryEquiv P hP x) := rfl
+example (a : A) :
+    (perfectPrismWittQuotientEquiv P hP).symm (Ideal.Quotient.mk P.ideal a) =
+      Ideal.Quotient.mk _ ((perfectPrismWittRecoveryEquiv P hP).symm a) := rfl
+end OriginalChoices
+
+assert_no_sorry SerrePositivity.BhattScholze.perfectPrismWittRecoveryEquiv
+assert_no_sorry SerrePositivity.BhattScholze.perfectPrismWittGenerator
+assert_no_sorry SerrePositivity.BhattScholze.perfectPrismWittRecoveryEquiv_generator
+assert_no_sorry SerrePositivity.BhattScholze.perfectPrismWittGenerator_map_span
+assert_no_sorry SerrePositivity.BhattScholze.perfectPrismWittRecoveryEquiv_symm_map_ideal
+assert_no_sorry SerrePositivity.BhattScholze.perfectPrismWitt_isAdicComplete_generator
+assert_no_sorry SerrePositivity.BhattScholze.perfectPrismWittQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.perfectPrismWittQuotientEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.perfectPrismWittQuotientEquiv_symm_mk
+assert_no_sorry SerrePositivity.BhattScholze.perfectPrismWittRecoveryEquiv_isDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.perfectPrismWittRecoveryEquiv_symm_isDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.perfectPrismWittGenerator_isDistinguished
+assert_no_sorry SerrePositivity.BhattScholze.existsUnique_perfectPrismHomLift
+assert_no_sorry SerrePositivity.BhattScholze.OrientedPrism.quotient_isIntegralPerfectoid
+
+#print axioms SerrePositivity.BhattScholze.perfectPrismWittRecoveryEquiv
+#print axioms SerrePositivity.BhattScholze.perfectPrismWittGenerator
+#print axioms SerrePositivity.BhattScholze.perfectPrismWittRecoveryEquiv_generator
+#print axioms SerrePositivity.BhattScholze.perfectPrismWittGenerator_map_span
+#print axioms SerrePositivity.BhattScholze.perfectPrismWittRecoveryEquiv_symm_map_ideal
+#print axioms SerrePositivity.BhattScholze.perfectPrismWitt_isAdicComplete_generator
+#print axioms SerrePositivity.BhattScholze.perfectPrismWittQuotientEquiv
+#print axioms SerrePositivity.BhattScholze.perfectPrismWittQuotientEquiv_mk
+#print axioms SerrePositivity.BhattScholze.perfectPrismWittQuotientEquiv_symm_mk
+#print axioms SerrePositivity.BhattScholze.perfectPrismWittRecoveryEquiv_isDeltaHom
+#print axioms SerrePositivity.BhattScholze.perfectPrismWittRecoveryEquiv_symm_isDeltaHom
+#print axioms SerrePositivity.BhattScholze.perfectPrismWittGenerator_isDistinguished
+#print axioms SerrePositivity.BhattScholze.existsUnique_perfectPrismHomLift
+#print axioms SerrePositivity.BhattScholze.OrientedPrism.quotient_isIntegralPerfectoid
+end R5BContracts
