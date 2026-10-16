@@ -53,6 +53,7 @@ elab "assert_rperfd_cohomology_dependencies" : command => do
     ``rPerfd_torMilnor_endpoints_isModuleComplete, ``rPerfd_torMilnor_endpoints_annihilated,
     ``rPerfd_torMilnorShortComplex, ``rPerfd_torMilnorShortComplex_shortExact,
     ``rPerfd_tor_eq_zero_of_power_torsion_and_extensions,
+    ``rPerfd_tor_eq_zero_of_power_torsion_and_quotientTorOne,
     ``rPerfd_cohomology_vanishing_of_tor_idempotent]
   let _ ← liftCoreM <| checkRPerfdDependencies roots {}
   logInfo "Only the existing integral-perfectoidization existence sorry is permitted."
@@ -411,3 +412,37 @@ end
 
 assert_rperfd_cor4_torsion_extensions_dependencies
 #print axioms rperfd_cor4_from_torsion_extensions
+
+#print axioms SerrePositivity.CLMST.rPerfd_tor_eq_zero_of_power_torsion_and_quotientTorOne
+
+-- Both conclusions with the original quotient self-Tor input.
+private def rperfd_cor4_from_torsion_quotientTorOne
+    [IsLocalRing D] [IsNoetherianRing D]
+    (hsop : IsSystemOfParameters D (algebraMap A D ∘ t))
+    (j₀ : Fin h) (htp : t j₀ = (p : A)) (g : A)
+    (hI : ∀ k : ℕ, 0 < k → IsIdempotentElem
+      ((perfectoidIdeal (CompletedTower A t p) p hperf
+        (algebraMap A (CompletedTower A t p) g)).map
+          (Ideal.Quotient.mk (Ideal.span {(p : CompletedTower A t p) ^ k}))))
+    (hQ : Function.Surjective (fun x : TorModule (CompletedTower A t p) 1
+      ((CompletedTower A t p) ⧸ perfectoidIdeal (CompletedTower A t p) p hperf
+        (algebraMap A (CompletedTower A t p) g))
+      ((CompletedTower A t p) ⧸ perfectoidIdeal (CompletedTower A t p) p hperf
+        (algebraMap A (CompletedTower A t p) g)) => (p : CompletedTower A t p) • x))
+    (hTor : ∀ (L : ModuleCat.{u} A) (k : ℕ), 0 < k →
+      (∀ x : L, (p : A) ^ k • x = 0) → ∀ j : ℕ, 0 < j →
+        ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+          (algebraMap A (CompletedTower A t p) g),
+          torCoefficientScalarEndomorphism (RPerfd A D t p hperf) L j
+            (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0) :=
+  rPerfd_cohomology_vanishing_of_tor_idempotent A t D p hperf ht hdim hsop j₀ htp g hI
+    (rPerfd_tor_eq_zero_of_power_torsion_and_quotientTorOne A t D p hperf g hQ hTor)
+
+meta section
+open Lean Elab Command
+elab "assert_rperfd_cor4_torsion_quotientTorOne_dependencies" : command => do
+  let _ ← liftCoreM <| checkRPerfdDependencies [``rperfd_cor4_from_torsion_quotientTorOne] {}
+  logInfo "Both Cor 4.0.4 conclusions accept the actual first quotient Tor criterion."
+end
+assert_rperfd_cor4_torsion_quotientTorOne_dependencies
+#print axioms rperfd_cor4_from_torsion_quotientTorOne

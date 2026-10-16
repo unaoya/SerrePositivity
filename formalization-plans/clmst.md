@@ -6250,6 +6250,35 @@ BS10.2の拡大閉性自体はまだ仮定であり、mod pⁿのイデアル冪
 元のA上のp冪ねじれ試験入力を供給し、hIをB5の実証明へ接続する。
 B-I自体、これらの実入力、KL-Q、Dの実適用と原典引用の置換は引き続き未完了である。
 
+KL-E1・実conormalと自己Tor₁による完備almost拡大閉性（2026-10-16）：
+`DivisibleHomZero.lean`は、a倍が全射な加群から導来a完備加群への任意の線形写像が零であることを、
+既存の列漸化式の単射性から証明した。古典的分離性・有界ねじれは要求しない。
+`ConormalExtension.lean`で、I/I²上のa倍全射性の下でI²零化をI零化へ改善し、
+短完全列の両端のI零化を中央へ移した。既存の`CompleteIdealExtensionClosed`の定義は
+独立モジュールへ移し、型を変更せず、Milnor構成への不要な依存を除いた。
+
+`QuotientTorOneConormal.lean`で元の標準Tor₁(R/I,R/I)とMathlibの実conormalの線形同型を構成し、
+スカラー全射性と、自己Tor₁消滅／イデアル冪等性の同値を証明した。
+比較は既存のTor長完全列から選ぶ線形同型であり、境界の符号正規化や環射への自然性は主張しない。
+`TorOneCompleteExtension.lean`は自己Tor₁、または元の実商tensorのH⁻¹上のa倍全射性から
+拡大閉性を供給する。`PowerTorsionTorConormal.lean`はこれを実Milnor列の証明へ接続し、
+p冪ねじれ試験とconormal／自己Tor₁条件から任意A加群の全正次数Tor零化へ合流した。
+`PerfectRadicalIdeal.lean`と`PerfectQuotientTorOne.lean`は、完全標数p環の根基イデアルの
+冪等性と商の自己Tor₁消滅を証明する。これは全高次Tor独立性の証明ではない。
+
+実`rPerfd_tor_eq_zero_of_power_torsion_and_quotientTorOne`も公開した。
+元の完備塔・perfectoid ideal・商・作用を保持し、自己Tor₁上のp倍全射性と
+p冪ねじれTor試験を明示入力とする。実適用監査でCor 4.0.4の両結論まで接続した。
+共通15宣言と3型検査、既存Milnor29宣言の回帰監査、KL685件の監査、
+実RPerfdの限定依存監査、実適用3881ジョブのビルドが成功した。
+共通の合成import閉包262モジュールにBS・CLMST・Inputs・Paper依存なし。
+新しい共通宣言はsorry非依存・標準3公理のみ。実適用は既存B-Iの存在依存だけを許す。
+全体ビルドはこの保存時点で継続中であり、成功とはまだ記録しない。
+
+拡大閉性の一般証明は供給したが、実際のB・Iについてのp倍全射性は未供給。
+次はBS10.3の完備化した実乗法からこの条件へ移す。元の通常tensorのH⁰比較だけでは足りない。
+Prop 2.4.9(a)の実p冪ねじれTor入力、B5のhI、B-I自体、KL-QとDの実適用は引き続き残る。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。

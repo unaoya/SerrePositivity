@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteIdealExtension
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TorAlgebraMilnorSequence
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TorAlgebraComplete
 public import SerrePositivity.HomologicalAlgebra.TorFiniteCoefficients
@@ -18,12 +19,6 @@ set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.DerivedCompletion
 open CategoryTheory
 
-/-- Extension closure of I-annihilated objects inside actual derived-a-complete modules. -/
-def CompleteIdealExtensionClosed (B : Type u) [CommRing B] (a : B) (I : Ideal B) : Prop :=
-  ∀ S : ShortComplex (ModuleCat.{u} B), S.ShortExact →
-    IsModuleComplete B a S.X₁ → IsModuleComplete B a S.X₂ → IsModuleComplete B a S.X₃ →
-    I ≤ Module.annihilator B S.X₁ → I ≤ Module.annihilator B S.X₃ →
-      I ≤ Module.annihilator B S.X₂
 
 variable {R : Type u} [CommRing R] [IsRegularLocalRing R]
   (p : ℕ) (C : Type u) [CommRing C] [Algebra R C]
