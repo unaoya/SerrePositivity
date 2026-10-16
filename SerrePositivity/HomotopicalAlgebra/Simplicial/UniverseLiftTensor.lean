@@ -76,6 +76,12 @@ lemma simplexTensorMap_source {V : SSet.{v}} (i : V ⟶ K) {n : ℕ}
   ext d x
   rfl
 
+lemma simplexTensorMap_target {Q : SSet.{v}} {n : ℕ}
+    (h : K ⊗ SSet.stdSimplex.{v}.obj (SimplexCategory.mk n) ⟶ P) (q : P ⟶ Q) :
+    simplexTensorMap.{w} h ≫ map q = simplexTensorMap (h ≫ q) := by
+  ext d x
+  rfl
+
 lemma simplexTensorMap_constant (b : K ⟶ P) (n : ℕ) :
     simplexTensorMap.{w} (fst K (SSet.stdSimplex.obj (SimplexCategory.mk n)) ≫ b) =
       fst (obj.{w} K) (SSet.stdSimplex.obj (SimplexCategory.mk n)) ≫ map b := by
