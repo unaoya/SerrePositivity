@@ -744,6 +744,9 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PerfectResidu
 
 public import SerrePositivity.BhattScholze.PerfectDeltaCompletedTensorDiscrete
 
+public import SerrePositivity.HomologicalAlgebra.PerfectResidueTensorRegular
+public import SerrePositivity.BhattScholze.PerfectDeltaTensorRegular
+
 /-!
 # Serre の交点重複度の正値性の形式化
 
