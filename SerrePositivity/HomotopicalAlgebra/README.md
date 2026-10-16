@@ -2170,3 +2170,18 @@ B上の厳密な相対bar関手を構成する。`RelativeBarAugmentation`はF�
 入力の小ささから生のbarの小ささを推論せず、別の小さい値と自然弱同値を構成する必要がある。
 実装`4ff11f4e`、詳細は計画§287。新規31宣言・6モジュール、共有8406宣言・603モジュールの
 標準公理監査、共有入口2799 jobs、両変数降下・固定値反例の回帰確認が成功。
+
+
+## 元の実replacement図式と補助barの自然比較span（2026-10-16）
+
+`RelativeBarUnit`は恒等射影のbarから、pで全comma射を移した相対barの制限への自然変換を作る。
+`RelativeBarIdentity`は固定対象でのaugmentation sectionと実合成が恒等になる式、
+degreeごとの実collapse、全列の回収、各degreeの全nerve homotopyを構成する。
+section自体を全基底射で自然だとは扱わず、degreeごとのホモトピーを対角全体のものとは扱わない。
+`UniverseLiftIteration`は二重liftを一重liftへ明示的・自然に比較する。
+`RelativeBarSpan`と`ReplacementBarComparisonSpan`は、元の小さい写像空間の明示的liftから
+補助barの制限へ至る自然なspanを、恒等射影のbarを中間に置いて構成する。
+一般部分はモデル不要で、適用でも大きいSSetのモデル構造や源の関手的分解は要求しない。
+両脚の弱同値性、対角全体の収縮、最終の小さい厳密関手と最終比較は残る。
+実装`8f58d0eb`、詳細は計画§288。新規36宣言・5モジュール、共有8442宣言・608モジュールの
+標準公理監査、共有入口2804 jobs、既存bar・両変数降下の回帰確認が成功。

@@ -15198,3 +15198,73 @@ Bの対象宇宙uBまで値域を上げる必要はなく、Hom宇宙vBのみが
 補助候補の厳密性や各有限列族の小ささを、最終の小さいRMapの存在に置き換えない。
 F1の最終厳密RMapとその不変性・Kan性・π0比較への統合、F2の最終自然弱同値zigzag比較は未完了。
 全体目標F→L→E→Sを維持する。
+
+
+## 288. 実replacement図式と補助barを結ぶ自然なspan（2026-10-16）
+
+§287の次の作業単位であった、恒等射影のbarを中間に置く自然な比較spanを構成した。
+両脚は局所化前の実自然変換であり、点ごとのbar包含を自然だと仮定していない。
+恒等射影側のaugmentationは点ごとのsectionを持ち、各degreeの実nerveでの収縮も構成した。
+これらの結果を、対角全体でのホモトピーや両脚の弱同値性とはまだ同一視しない。
+
+### 288.1 恒等射影barから相対barへの実unit
+
+`Simplicial/RelativeBarUnit`は任意のp:D→BとF:D→SSet[v]について、
+恒等射影のbarの各comma射d₀→dをpで移すことで、
+lift(bar(idD,F))→p⋙bar(p,F)を構成する。
+全単体写像での両立と全presentation射での自然性を証明する。
+後者にはpが実際の合成を保つ等式を使用し、比較を自然同型のみに置き換えない。
+恒等射影側の実augmentation bar(idD,F)→lift(F)も公開する。
+この一般論にモデル構造は不要で、索引の対象・Hom・値の宇宙は独立である。
+
+### 288.2 恒等射影側の実sectionとdegreeごとの収縮
+
+`RelativeBarIdentity`は固定したdについて、F(d)の各単体を恒等comma対象の定数列へ送る
+実simplicial sectionを構成する。sectionの後にaugmentationを合成すると恒等写像になる。
+このsection自体がdの全射で自然だとは主張しない。
+
+各degree nでは、全comma対象(d₀,x,k:d₀→d)を
+(d,F(k)(x),id_d)へ送る実collapse関手を定義する。
+恒等関手からこのcollapseへの実自然変換を構成し、nerve上の全simplicial homotopyを得る。
+実合成列全体をcollapseした結果が、augmentationの値を恒等comma対象の定数列へ戻したものに
+等しいことも証明する。頂点だけの一致ではない。
+これらは各degreeのnerveにおけるホモトピーであり、degree間の整合性を証明して
+bisimplicial diagonal全体の一つのホモトピーへまとめる作業は残る。
+
+### 288.3 明示的な宇宙liftを持つ自然spanと実双関手への適用
+
+`UniverseLiftIteration`は二重のSSet.uliftFunctorと一重のliftの間に、
+実ULiftのup/downを使う自然同型を構成する。独立の宇宙パラメータを等置しない。
+`RelativeBarSpan`はこの自然同型で中間barのliftとaugmentationのliftを整理し、
+元のFの一重lift ← 中間barのlift → p⋙相対barという全図式の自然spanを与える。
+左脚の点ごとのsectionと、その合成が恒等となる式も証明する。
+
+`ReplacementBarComparisonSpan`はこれを§285の実射影と小さい厳密双関手へ適用する。
+`auxiliaryMiddle`、`auxiliaryLeft`、`auxiliaryRight`は実際の自然な図式・写像であり、
+左端は元のSSet[v]の写像空間の明示的lift、右端は§287のauxiliaryBarの制限である。
+値域は補助的なSSet[max(u,v)]であり、そこにモデル構造は要求しない。
+任意の源ModelCategory Cに関手的分解その他の追加条件を要求しない。
+
+### 288.4 受入検証と残項目
+
+実装コミット`8f58d0eb`。全て成功した。
+
+- 共有入口の合同build：2804 jobs、追加警告なし。
+- `check_relative_bar_span`：独立宇宙のlift自然同型、モデル不要の実unitと両脚の
+  全presentation射での自然性、固定対象でのaugmentation section、全列collapse、
+  各degreeの全nerve homotopy、実replacement双関手への自然spanの適用。
+  新規36宣言・5モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：8442宣言・608モジュール、標準公理のみ。
+- `check_model_free_bar`：31宣言・6モジュールの回帰確認。
+- `check_replacement_mapping_descent`：128宣言・5モジュールの回帰確認。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+次は288.2のdegreeごとの収縮を全単体写像と両立させ、対角全体のホモトピーへまとめる。
+大きいSSetのモデル構造を仮定して対角弱同値定理を適用する経路には変更しない。
+その上で左augmentationの弱同値性を得て、右脚の実comparisonの弱同値性を
+既存の全整合系・実lift選択空間と接続して証明する必要がある。
+現在のspanは実自然spanであり、両脚を弱同値と証明した自然zigzagではまだない。
+
+元のSSet[v]に値を持つ新しい厳密な基底関手への自然な小値化も残る。
+F1の最終RMap、不変性・Kan性・π0比較への統合、F2の最終自然弱同値zigzag比較は未完了。
+全体目標F→L→E→Sを維持する。
