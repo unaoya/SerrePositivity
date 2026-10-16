@@ -807,6 +807,9 @@ public import SerrePositivity.HomologicalAlgebra.DerivedBaseChangeAugmentationCo
 
 public import SerrePositivity.HomologicalAlgebra.DerivedQuotientTensorAugmentation
 
+public import SerrePositivity.HomologicalAlgebra.PureDerivedCartierModuleRepresentatives
+public import SerrePositivity.HomologicalAlgebra.DerivedTensorPureFactorization
+
 /-!
 # Serre の交点重複度の正値性の形式化
 
