@@ -7439,3 +7439,46 @@ Bᵒᵖ⊗C上のsemifreeから片側の相対K-flat性を得る制限定理、b
 local Homの条件を明示した版とdg圏の解像度を使う版を区別し、U12e全受入とはしない。
 U12f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完。U17までの目標を保持する。
 共有系列への新しいAPI要求はない。
+
+
+### 17.163 U12e4：固定因子の射に関する導来結合自然性と導来三角coherence（2026-10-17）
+
+`Derived/BimoduleTensorEvaluation.lean`は、標準局所化の元の対象・射上の計算式を公開する。
+derivedComposeWith_map_baseは局所化前の射fの像をcomposeMap(f,id)の局所化として計算し、
+derivedComposeWithMap_base_appは固定因子の射gの自然変換をcomposeMap(id,g)の局所化として計算する。
+derivedRightUnitIso_base_appとderivedAssociatorIso_base_appは対応する元の単位・結合射の像。
+§17.161/162の計算同型を含む式から、構成された標準局所化のfactorizationの同型を
+恒等射として計算して得る。任意の別の局所化で同じ厳密な計算が成立すると仮定していない。
+
+`BimoduleTensorNaturality.lean`の**derivedAssociatorIso_naturality**は、Q/Q'・R/R'の
+右相対K-flat性の下で、任意の閉零bimodule射g:Q→Q'・h:R→R'に関する結合比較の自然性。
+二つの導来自然変換をwhiskerしてから結合比較を行う経路と、結合比較後にcomposeMap(g,h)の
+導来自然変換を行う経路が、実際の導来圏を始域とする自然変換として等しい。
+準同型や射影性をg/hへの追加仮定にしていない。
+局所化の自然変換の外延性で元のPへ戻し、上の計算式とcomposeMapの因子分解、
+元のassociatorIso_naturalityを使用する。中間対象の型の別名の書換え失敗は、
+composeWith.objのまま扱わず、元のBimoduleCategory.ofの対象を明示して解消した。
+
+`BimoduleTensorTriangle.lean`の**derivedTriangle**は、対角Cと右相対K-flatなQに対する
+導来結合比較の後でQの左単位の射を作用させる経路が、前の変数Pの導来右単位を
+Qとの導来合成で送る経路に一致する、自然変換としての三角coherence。
+元の閉零bimodule射のtriangleを標準局所化に送り、元の対象だけの等式から
+局所化上の自然変換全体の等式へ戻す。単に三角の各射の型を揃えただけではない。
+任意CommRing A・非有界・独立対象宇宙を保持する。
+自然性にはSmall.{u} B/C/Eを、三角にはSmall.{u} B/Cのみを要求し、終域のsmall性は要求しない。
+
+Checks.DerivedBimoduleNaturality・Checks.DerivedBimoduleComparison・Checks.DerivedBimoduleTensor・
+Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功
+（3017 jobs、終了コード0、警告なし）。独立宇宙での二射の自然性squareと導来三角等式、
+ZMod 2でも任意の右相対K-flatなQに対する同じ三角等式を検査した。
+主要6宣言の直接公理監査は標準公理のみ。監査累計3120宣言。
+今回の実装にsorry/admit/新規axiomはない。採用済み引用は0件。
+全体文書検査は13 Markdown・320 exposition参照まで進み、§17.162と同じ担当外の
+BhattScholze互換宣言の未解決参照1件で失敗した。共有ルート・共有一般論・該当系列は編集していない。
+
+次は三つの固定K-flat因子に関する導来五角coherenceを、同じ標準局所化の計算式から証明する。
+Bᵒᵖ⊗C上のsemifreeから片側の相対K-flat性を得る制限定理、bimodule解像度の存在、
+任意の二つの解像度に対する選択独立性、両変数を局所化した導来合成は引き続き未完。
+local Homの条件を明示した版とdg圏の解像度を使う版を区別し、U12e全受入とはしない。
+U12f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完。U17までの目標を保持する。
+共有系列への新しいAPI要求はない。
