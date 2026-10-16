@@ -6140,3 +6140,33 @@ prependMap_eraseFace_succを統合し、長いpathはappendMapの再帰式で処
 内部合成の構成だけでU15bや最終dg商の完成とはしない。
 U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mも未完。採用済み引用は0件。
 共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.127 U15b12：先頭Hom作用と全消去作用素のLeibniz基底式（2026-10-16）
+
+`Quotient/PrependErasureRows.lean`はprependMap_eraseFirstとprependMap_eraseFace_succを統合し、
+任意位置のε消去と先頭Hom合成の可換式prependMap_eraseFaceを証明した。空語・範囲外の位置も含む。
+全path合成へ元のHomの空path包含を前合成したinternalPrependと、path包含上の計算式を構成する。
+各消去項を消去後のpath包含へ送ったeraseSummandの可換式を証明し、加法準同型で有限和を移して
+eraseRowの可換式へ拡張した。
+
+`Quotient/TensorPathCochainExt.lean`は左tensorがpath直和を保存するcofanと次数別評価の余積保存から、
+左tensorした全path直和の任意次数cochainを各pathへの制限で判定する補題を構成した。
+`Quotient/PrependErasure.lean`はそのext、eraseRowの可換式、作用素のpathへの制限公式から、
+internalPrependと全erasureの可換式を証明した。これは空pathを左に置く合成のε消去Leibniz基底式であり、
+左の元のHomには消去項がない。斉次成分では右の消去に(-1)^pが付くことも全整数次数で証明した。
+任意可換環・非有界Hom・独立対象宇宙を保持し、全path直和にはSmall.{u} Dを要求する。
+
+Checks.PrependErasure・Checks.QuotientDifferential・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（2683 jobs、終了コード0、警告なし）。任意dg圏の全消去作用素との可換式と、
+ZMod 2での全path先頭作用の型を検査した。
+主要8宣言の直接公理監査は標準公理のみ。監査累計2660宣言。
+文書検査は24 Markdown・311 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次はこの基底式とinternalPrependのchain map条件を加え、元のHomとquotientHomのtensorから
+quotientHomへの最終微分に関する先頭作用を構成する。一般の二つのpathについてはappendMapの
+再帰と各側のε消去に分けたLeibniz則がなお必要である。
+右単位・結合・収縮方程式も残り、U15b全受入や最終dg商の完成とは扱わない。
+U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mも未完。採用済み引用は0件。
+共有一般論・共有ルートimport・他系列は編集していない。
