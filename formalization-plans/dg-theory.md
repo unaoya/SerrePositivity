@@ -5052,3 +5052,33 @@ U13eの小さいdg代表系とH⁰の線形同値は構成できたが、全受�
 次は実際の加群shift/coneによる閉性と比較の構造整合性を証明し、一対象Aで既存PerfectHomotopyと比較する。
 U13dのcompact⇒Perf、U11eのcoherence、U12e/f、U14〜U17、D4mは未完。採用済み引用は0件。
 共有系列への追加要求はなく、共有一般論・共有ルート・他系列のファイルを変更していない。
+
+
+### 17.91 U13e4：実際の射影的perfect加群の有限操作と主局所化比較（2026-10-16）
+
+`Category/Restriction.lean`は性質PをQへ送るdg関手を充満dg部分圏へ制限し、
+制限後の包含と元の関手との可換性を全Hom上の関手等式として証明した。
+抽象的な対象型でこの等式を証明することで、具体的な大きいHom endをカーネルで展開する問題を避ける。
+
+`Perfect/EnhancementOperations.lean`は実際の右dg加群の零・整数shift・二項和・任意の閉零射の
+標準coneが射影的perfectであることを証明した。射影性は既存の主Hom計算、perfect性は
+主局所化のshift/biprod比較とdistinguished cone三角形から得る。
+これらの実際の対象を全射影的perfect dg部分圏の対象として公開する。
+整数shiftは既存moduleShiftDGを上の制限APIで制限した真のdg関手であり、包含との可換性も証明した。
+
+閉零代表からH⁰比較を通る主導来関手と、全加群への包含の後に元のQを適用する関手との
+自然同型perfectDGModuleClosedToDerivedIsoを構成した。
+実際のdg shift対象の比較像と、比較像の主導来整数shiftの対象同型も公開する。
+これはHasShiftのzero/add coherenceや三角構造の全比較を完成したという主張ではない。
+
+Checks.PerfectEnhancementOperations・Checks.SmallPerfectEnhancement・Checks.PerfectSmallness・
+Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功（2883 jobs、終了コード0、警告なし）。
+任意A・独立対象宇宙・任意S、実際のshift/cone対象、全Hom関手等式、正負shift、ZMod 2を検査した。
+主要14宣言の直接公理監査は終了コード0、標準公理のみ。監査累計2233宣言。
+今回の3 Leanファイルにsorry/admit/新規axiomはない。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査も成功。
+
+次は実際のshiftに対するH⁰のzero/add coherence、cone三角形と主Perfの構造比較、
+小さい代表系への運搬、一対象Aと既存PerfectHomotopyの比較を進める。U13e全受入は未完。
+U13dのcompact⇒Perf、U11eのcoherence、U12e/f、U14〜U17、D4mも未完。
+採用済み引用は0件。共有一般論・共有ルート・他系列のファイルを変更していない。
