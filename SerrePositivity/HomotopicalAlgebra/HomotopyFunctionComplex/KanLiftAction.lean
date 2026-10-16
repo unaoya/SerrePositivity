@@ -88,6 +88,29 @@ abbrev action (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) (Z : C) :
       target hcof hfib X Z :=
   parameterized hcof hfib X Y f Z prod.fst prod.snd
 
+@[reassoc]
+lemma parameterized_naturality (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) (Z : C)
+    {T U : SSet.{v}} (u : U ⟶ T) (s : T ⟶ ResolutionLiftSpace.obj X Y f)
+    (t : T ⟶ (cosimplicialHom Y.resolution.obj).obj Z) :
+    u ≫ parameterized hcof hfib X Y f Z s t =
+      parameterized hcof hfib X Y f Z (u ≫ s) (u ≫ t) := by
+  rw [← Category.assoc, ResolutionLiftAction.naturality]
+
+lemma parameterized_target_naturality (X Y : ResolutionObject C) (f : X.base ⟶ Y.base)
+    {Z Z' : C} (h : Z ⟶ Z') {T : SSet.{v}} (s : T ⟶ ResolutionLiftSpace.obj X Y f)
+    (t : T ⟶ (cosimplicialHom Y.resolution.obj).obj Z) :
+    parameterized hcof hfib X Y f Z' s (t ≫ (cosimplicialHom Y.resolution.obj).map h) =
+      parameterized hcof hfib X Y f Z s t ≫ (targetFunctor hcof hfib X).map h := by
+  have hu := (SimplicialModel.KanReplacement.unit hcof hfib).naturality
+    ((cosimplicialHom (DiagonalFrame.obj (ResolutionLiftSpace.frame X).obj)).map h)
+  change (cosimplicialHom (DiagonalFrame.obj (ResolutionLiftSpace.frame X).obj)).map h ≫
+      (SimplicialModel.KanReplacement.unit hcof hfib).app (ResolutionLiftAction.target X Z') =
+    (SimplicialModel.KanReplacement.unit hcof hfib).app (ResolutionLiftAction.target X Z) ≫
+      (targetFunctor hcof hfib X).map h at hu
+  change ResolutionLiftAction.parameterized X Y f Z' s
+      (t ≫ (cosimplicialHom Y.resolution.obj).map h) ≫ _ = (_ ≫ _) ≫ _
+  rw [ResolutionLiftAction.target_naturality, Category.assoc, hu, ← Category.assoc]
+
 lemma ofLift {X Y : ResolutionObject C} (f : X ⟶ Y) (Z : C) {T : SSet.{v}}
     (d : T ⟶ SSet.stdSimplex.{v}.obj (SimplexCategory.mk 0))
     (t : T ⟶ (cosimplicialHom Y.resolution.obj).obj Z) :
