@@ -1,3 +1,6 @@
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteFlatReductionPure
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTowerLimitBound
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteFlatReductionBounded
 import SerrePositivity.HomologicalAlgebra.ModelTensorFlatCriterion
 import SerrePositivity.HomologicalAlgebra.ScalarExtensionTensorTests
 import SerrePositivity.HomologicalAlgebra.FlatDerivedPowerReductions
@@ -301,3 +304,40 @@ example : Function.Surjective (homologyMap
   powerCokernel_homology_zero_transition_surjective a X hPure hFlat 0
 
 end PowerInput
+
+-- Full G9: purity of X itself and bounded torsion of its actual H0.
+assert_no_sorry SerrePositivity.DerivedCompletion.powerCokernel_homology_isZero_of_flat_reduction
+#print axioms SerrePositivity.DerivedCompletion.powerCokernel_homology_isZero_of_flat_reduction
+assert_no_sorry SerrePositivity.DerivedCompletion.powerCokernelHomologyDifference_surjective
+#print axioms SerrePositivity.DerivedCompletion.powerCokernelHomologyDifference_surjective
+assert_no_sorry SerrePositivity.DerivedCompletion.powerCokernel_holim_homology_isZero
+#print axioms SerrePositivity.DerivedCompletion.powerCokernel_holim_homology_isZero
+assert_no_sorry SerrePositivity.DerivedCompletion.completeFlatReductionH0LimitIso
+#print axioms SerrePositivity.DerivedCompletion.completeFlatReductionH0LimitIso
+assert_no_sorry SerrePositivity.DerivedCompletion.derived_pure_of_complete_flat_reduction
+#print axioms SerrePositivity.DerivedCompletion.derived_pure_of_complete_flat_reduction
+assert_no_sorry SerrePositivity.DerivedCompletion.moduleTowerLimit_power_torsion_bound_of_relations
+#print axioms SerrePositivity.DerivedCompletion.moduleTowerLimit_power_torsion_bound_of_relations
+assert_no_sorry SerrePositivity.DerivedCompletion.powerCokernelH0_power_annihilated
+#print axioms SerrePositivity.DerivedCompletion.powerCokernelH0_power_annihilated
+assert_no_sorry SerrePositivity.DerivedCompletion.powerCokernelH0_torsion_relation
+#print axioms SerrePositivity.DerivedCompletion.powerCokernelH0_torsion_relation
+assert_no_sorry SerrePositivity.DerivedCompletion.derived_pure_bounded_torsion_of_complete_flat_reduction
+#print axioms SerrePositivity.DerivedCompletion.derived_pure_bounded_torsion_of_complete_flat_reduction
+
+-- Exact original G9 signature, with its actual derived quotient and completion.
+example {T : Type u} [CommRing T] (p : ℕ) [Fact p.Prime]
+    (X : DerivedCategory.Minus (ModuleCat.{u} T))
+    (hT : ∃ N : ℕ, ∀ n : ℕ, ∀ t : T, (p : T) ^ n * t = 0 → (p : T) ^ N * t = 0)
+    (hX : IsComplete T (p : T) X.obj)
+    (hPure : ∀ i : ℤ, i ≠ 0 → CategoryTheory.Limits.IsZero
+      ((DerivedCategory.homologyFunctor (ModuleCat.{u} (T ⧸ Ideal.span {(p : T)})) i).obj
+        ((boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {(p : T)}))).obj X).obj))
+    (hFlat : Module.Flat (T ⧸ Ideal.span {(p : T)})
+      ((DerivedCategory.homologyFunctor (ModuleCat.{u} (T ⧸ Ideal.span {(p : T)})) 0).obj
+        ((boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {(p : T)}))).obj X).obj)) :
+    X.obj.IsGE 0 ∧ X.obj.IsLE 0 ∧
+      ∃ N : ℕ, ∀ n : ℕ,
+        ∀ x : (DerivedCategory.homologyFunctor (ModuleCat.{u} T) 0).obj X.obj,
+          (p : T) ^ n • x = 0 → (p : T) ^ N • x = 0 :=
+  derived_pure_bounded_torsion_of_complete_flat_reduction (p : T) X hPure hFlat hT hX
