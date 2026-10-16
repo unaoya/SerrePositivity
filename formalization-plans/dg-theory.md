@@ -5406,3 +5406,31 @@ Checks.RingHomotopyComparison・Checks.StrictComplexDerived・Checks.StrictCompl
 次はこのH⁰の完全忠実性と主射影的始域の局所化Hom計算を合成する。
 U13e全受入・U13d・U11eのcoherence・U12e/f・U14〜U17・D4mは未完。
 採用済み引用は0件。共有一般論・共有ルート・既存PerfectComplex・他系列は変更していない。
+
+
+### 17.104 U13e17：既存PerfectHomotopyから主dg導来圏への線形完全忠実関手（2026-10-16）
+
+`Perfect/StrictComplexDerived.lean`は有限射影複体のdg包含とringConstantDGを合成する。
+実際のdg関手のH⁰に、既存moduleHomotopyToDerivedClosedを合成し、指定準同型局所化への比較を構成した。
+前節のH⁰の完全忠実性と、有限射影複体を一対象Aの主射影的dg加群へ移す§17.102の証明により、
+moduleProjectiveLocalization_map_bijectiveを適用して比較の充満性・忠実性を証明した。
+
+`Perfect/StrictComplexDerivedLinear.lean`はこの比較の加法性・A線形性を公開し、
+既存PerfectHomotopyとのH⁰線形同値の逆を合成してperfectHomotopyToDGDerivedを構成する。
+これは主dg加群導来圏へのA線形完全忠実関手であり、有限射影dg enhancementを経由する
+自然同型strictPerfectDGComplexToPerfectCompDerivedも公開した。
+像が主Perfに入ることや主Perfへの本質的全射はまだ主張しない。
+
+Checks.StrictComplexDerived・Checks.RingHomotopyComparison・Checks.StrictComplexProjective・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（3296 jobs、終了コード0、警告なし）。
+任意可換環、主dg比較と既存PerfectHomotopyの両関手の完全忠実性・A線形性・加法性、ZMod 2を検査した。
+主要14宣言の直接公理監査は標準公理のみ。監査累計2381宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次は像がPerfに入ることとPerfのretractの有限射影代表を証明する。
+各次数の有限射影加群の有限自由加群へのretractには既存PerfectComplex.ProjectiveBoundsの
+finiteProjective_exists_retractを再利用できることを確認した。ただし有界複体全体の比較や
+ホモトピー冪等の分裂は別途必要である。U13e全受入・U13d・U11eのcoherence・U12e/f・
+U14〜U17・D4mは未完。採用済み引用は0件。共有系列への追加要求はない。
+共有ルート・既存PerfectComplex・共有モデル一般論・他系列は変更していない。
