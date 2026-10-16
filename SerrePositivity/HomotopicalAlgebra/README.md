@@ -2228,3 +2228,15 @@ anodyne局所化での可逆性の保存を証明する。
 元の小さいモデルの全弱同値のliftにも適用するが、大きい宇宙のモデル構造は要求しない。
 判定の反映、bar右脚の比較、最終の小さい厳密RMapは引き続き未完了。
 検証：`scripts/check_universe_lift_anodyne.lean`、計画書§291。
+
+
+### 宇宙liftの反映と元の弱同値の検出（§292）
+
+`Simplicial/HomotopyClasses`と`KanHomotopyExtension`・`KanHomotopyClasses`は、
+実ホモトピー類を使ったモデル不要のKan対象への検出を提供する。
+`UniverseLiftHomotopyClasses`は実ホモトピーを小さい宇宙へ戻す。
+`UniverseLiftAnodyneReflection.anodyneQ_map_isIso_iff`は任意の射について、
+元とlift後のanodyne局所化での可逆性の同値を証明する。両宇宙ともモデル構造は不要。
+元の小さいモデルを指定した場合の実弱同値判定と、全自然変換についての同値も公開する。
+bar右脚と最終の小さい厳密RMapは未完了。
+検証：`scripts/check_universe_lift_anodyne_reflection.lean`、計画書§292。
