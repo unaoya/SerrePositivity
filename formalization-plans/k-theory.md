@@ -17517,3 +17517,87 @@ presentationIsoも得る。refinement projectionのfaithfulness・cofinality・�
 基底は大きくてもよいため、基底全体の小さいskeletonを無条件には仮定しない。
 その後、最終小さい厳密RMapへKan性・両変数の不変性・π₀比較・選択独立性を接続する。
 自然な小値化、最終小さい厳密RMap・F2は未完了。全体目標F→L→E→Sは継続中である。
+
+
+## 325. 小さいKan参照への実写像・局所化Homの小ささ・基底射の実代表（2026-10-17）
+
+今回は§324の局所化後の同型を実際の単体写像へ戻し、小値化の入力を具体化した。
+最終の小さい厳密RMapを得たとは判定しない。
+
+### 325.1 Kan対象への局所化射の実代表と実ホモトピーによる分類
+
+`Simplicial/KanLocalizedRepresentatives`は、任意の値宇宙でモデル構造を使わず、
+anodyne局所化LにおけるKan対象Kへの任意の射L(X)→L(K)が、実単体写像X→Kの像であると証明する。
+Mathlibのinduction_costructuredArrowを用い、通常射のステップを実前合成へ、
+anodyneの逆のステップを既存のKan延長へ戻す。得た代表のLによる像は指定射そのものに等しい。
+
+さらにKan値のホモトピー類関手をLを通して降下させ、L(f)=L(g)から
+元の二つの写像のホモトピー類の等式を得る。
+既存のKanActualHomotopyにより、この等式は一つの実区間ホモトピーで表される。
+従って元のホモトピー類型と局所化Homの実全単射を得る。
+Lがanodyneを反転するだけでなく、その局所化であることをこの表現定理の入力として明示する。
+
+### 325.2 小さい宇宙からのHomの完全性と小ささ
+
+`Simplicial/UniverseLiftLocalizedHom`は325.1と既存のhomotopyClassEquivを組み合わせる。
+元の小さいX,K（KはKan）について、HomotopyClasses.obj X Kと、
+任意の補助宇宙への明示的liftの間の局所化Homを実全単射で結ぶ。
+従ってその局所化Homは元のvでsmallであり、任意の射を元の小さい実写像X→Kで表せる。
+lift後の射の像の等しさも元の小さい実区間ホモトピーと同値である。
+両値宇宙のモデル構造は不要。元の大きい単体集合の次数ごとの小ささとは区別する。
+
+一般部分の実装コミット：`0c60cd4b`。
+
+### 325.3 元のbarから小さいKan値への実写像
+
+`OrdinaryBarSmallReference`は各基底Xについて、既存のReplacementMapping.ofBase Xを使い、
+元の小さいKan replacement値をvalue Xとする。
+§324のpresentationIsoの逆を325.1で表し、元のbar(X)→lift(value X)という実単体写像を構成する。
+そのQによる像は元の比較同型の逆そのものに等しく、従って可逆である。
+同じ局所化射を表す別の実写像との間にも、両写像を端点とする実区間ホモトピーを供給する。
+
+325.2と元の比較同型によって、任意の二つのbar値の間の局所化Homを、
+小さい参照値間の元のホモトピー類型と同一視し、そのv-small性を証明する。
+これは局所化Homの小ささであり、生のbar自体を同型でshrinkする主張ではない。
+
+### 325.4 全基底射の小さい実代表と比較square
+
+`OrdinaryBarSmallAction`は元の厳密bar.map fを比較同型で移し、
+325.2によって各基底射f:X→Yに小さい実写像arrow f:value X→value Yを対応させる。
+そのliftのQによる像は移した基底作用そのものに等しい。
+この同じ像の計算から、arrow(id)とid、およびarrow(f≫g)とarrow(f)≫arrow(g)を結ぶ
+元の小さい宇宙内の実区間ホモトピーを供給する。
+
+元のbar.map fと325.3の実比較、arrow fのliftからなるsquareも、一つの実区間ホモトピーで結ぶ。
+両基底成分が元のCの弱同値ならば、arrow fは元の小さいモデルの弱同値である。
+源の関手的分解・combinatorial性・単体的モデル源、大きいSSetのモデル構造を追加しない。
+
+適用部分の実装コミット：`679d1164`。
+
+### 325.5 受入検証と次の厳密化要件
+
+すべて成功した。
+
+- 共有入口のbuild：2956 jobs、追加警告なし。
+- `check_kan_localized_representatives`：23宣言・2モジュール、標準公理のみ。
+  両値宇宙でモデルを仮定せず、任意の局所化・実代表の元の射との等式・実ホモトピー分類・
+  独立宇宙のlift間の局所化Homの小ささと小さい実代表を検証。
+- `check_ordinary_bar_small_reference`：25宣言・2モジュール、標準公理のみ。
+  任意モデル源・独立u,vで、元のbarからの実比較の可逆性・局所化Homのv-small性・
+  全基底射の小さい実写像・単位と合成の実ホモトピー・元の比較square・弱同値性を検証。
+- `check_ordinary_bar_mapping_comparison`：既存21宣言・3モジュールの回帰検証。
+- `audit_homotopical_foundations`：10063宣言・759モジュール、標準公理のみ。
+- 新規ソースの行長・証明用マーカーとstage差分の空白検査。
+
+得られたarrowは厳密関手とは主張しない。各単位・二項合成のホモトピーの存在だけでは、
+全高次の整合性や自然変換は得られない。
+次は今回の実比較を保って全基底図式の小値化を構成する必要があり、
+個別のホモトピーを独立に選ぶだけの手順で最終契約を満たしたとは扱わない。
+§286の反例に従い、小値化では参照値の弱同値による変更を許す。
+基底全体のv-small性、projectionのfaithfulness・cofinality・厳密sectionも仮定しない。
+
+参考確認として、Dwyer–Hirschhorn–Kanの[Model Categories and More General Abstract Homotopy Theory](https://ncatlab.org/nlab/files/DwyerHirschhornKan-ModelCategories.pdf)
+§1.2ではモデル圏の公理に関手的分解を含めている。
+その関手的resolutionの記述を、今回の任意モデル源での小さい厳密RMapの存在定理として引用しない。
+以上の実装は文献定理の新規公理化に依存しない。
+自然な小値化、最終小さい厳密RMap・F2は未完了。全体目標F→L→E→Sを継続する。

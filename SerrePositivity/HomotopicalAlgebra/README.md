@@ -2621,3 +2621,18 @@ pushout後の単射性、一般augmentation・評価・最終小値化・F2は�
 源の関手的分解、projectionのfaithfulness・cofinality・厳密section、大きいSSetのモデル構造は不要。
 自然な小値化・最終小さい厳密RMap・F2は未完了。
 検証：`scripts/check_ordinary_bar_mapping_comparison.lean`、計画書§324。
+
+
+### 小さいKan参照への実比較と基底射の小さい代表（§325）
+
+`KanLocalizedRepresentatives`はモデル不要で、Kan対象へのanodyne局所化射を実単体写像で表し、
+射の等しさを実区間ホモトピーで分類する。
+`UniverseLiftLocalizedHom`はlift間の局所化Homのv-small性と元の小さい実写像による代表を供給する。
+`OrdinaryBarSmallReference`は元のbar値から小さいKan参照値のliftへの実写像を構成し、
+その像が元の比較同型の逆であることと、bar値間の局所化Homの小ささを証明する。
+`OrdinaryBarSmallAction`は全基底射を小さい実写像で表し、単位・合成・元の比較squareを実ホモトピーで結ぶ。
+両基底成分の弱同値は元の小さいモデルの弱同値へ移る。
+単位・合成のホモトピーから厳密関手や全高次整合性が得られたとは主張しない。
+自然な小値化・最終小さい厳密RMap・F2は未完了。
+検証：`scripts/check_kan_localized_representatives.lean`、
+`scripts/check_ordinary_bar_small_reference.lean`、計画書§325。
