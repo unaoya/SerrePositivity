@@ -859,6 +859,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBase
 public import SerrePositivity.BhattScholze.CompletedBaseChangeCoefficientComparison
 public import SerrePositivity.BhattScholze.PerfectoidizationCompletedBaseChange
 public import SerrePositivity.CLMST.AndrePerfectoidizationTorDescent
+public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedFibers
 
 /-!
 # Serre の交点重複度の正値性の形式化
