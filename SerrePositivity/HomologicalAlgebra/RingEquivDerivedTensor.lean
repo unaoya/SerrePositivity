@@ -149,6 +149,40 @@ lemma derivedRestrictScalars_isLE_iff (φ : R →+* S)
   rw [DerivedCategory.isLE_iff, DerivedCategory.isLE_iff]
   simp only [derivedRestrictScalars_homology_isZero_iff]
 
+/-- A compatible algebra presentation identifies the original restricted coefficient module. -/
+def ringEquivAlgebraRestrictionModuleIso
+    {A B : Type u} [CommRing A] [CommRing B] [Algebra R A] [Algebra S B]
+    (eA : A ≃+* B)
+    (h : eA.toRingHom.comp (algebraMap R A) = (algebraMap S B).comp e.toRingHom) :
+    (ModuleCat.restrictScalars e.toRingHom).obj (ModuleCat.of S B) ≅ ModuleCat.of R A := by
+  letI : Module R B := Module.compHom B e.toRingHom
+  exact
+    { hom := ModuleCat.ofHom
+        { toFun := fun x => eA.symm x
+          map_add' := eA.symm.map_add
+          map_smul' := fun r x => by
+            apply eA.injective
+            change eA (eA.symm ((e r) • x)) = eA (r • eA.symm x)
+            simp only [Algebra.smul_def, eA.apply_symm_apply, map_mul]
+            exact congrArg (fun z => z * x) (RingHom.congr_fun h r).symm }
+      inv := ModuleCat.ofHom
+        { toFun := fun x => eA x
+          map_add' := eA.map_add
+          map_smul' := fun r x => by
+            change eA (r • x) = (e r) • eA x
+            simp only [Algebra.smul_def, map_mul]
+            exact congrArg (fun z => z * eA x) (RingHom.congr_fun h r) }
+      hom_inv_id := by
+        apply ModuleCat.hom_ext
+        apply LinearMap.ext
+        intro x
+        exact eA.apply_symm_apply x
+      inv_hom_id := by
+        apply ModuleCat.hom_ext
+        apply LinearMap.ext
+        intro x
+        exact eA.symm_apply_apply x }
+
 /-- Vanishing in every degree is equivalent for the original completed module tensors. -/
 lemma completedTensorModulesRingEquivRestriction_homology_isZero_iff
     (a : R) (M N : ModuleCat.{u} S) (n : ℤ) :
