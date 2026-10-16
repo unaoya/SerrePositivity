@@ -16339,3 +16339,50 @@ F:D→SSetについて、relative(q≫p,q≫F)→relative(p,F)という実自然
 元のreplacement mapping図式への自然弱同値比較、基底Cᵒᵖ×C上の自然な小値化、
 F1の最終小さい厳密RMap、F2の最終自然弱同値zigzagという元の到達条件は変更しない。
 全体目標F→L→E→Sを維持する。
+
+
+## 306. 実middleの比較と通常resolution右脚への同値な帰着（2026-10-16）
+
+A0・A1の受入条件は§166で完了済みである。継続中の全体目標F→L→E→SのF1について、
+§305の新しい右脚を通常resolution上の右脚へ帰着する部分を実装した。
+
+### 306.1 任意の索引関手による実middle比較
+
+`Simplicial/RelativeBarMiddleReindex`は任意のq:E→D、p:D→B、F:D→SSetについて、
+spanMiddle(q≫p,q≫F)からq≫spanMiddle(p,F)への実自然変換を構成する。
+同じ要素ラベルを保持し、元の恒等projection comma射hをq(h)へ送る。
+索引の対象・Hom宇宙は二圏で共通だが、値・基底の宇宙とは独立である。
+
+この比較と左右の実脚が可換であることを全自然変換の等式で証明した。
+左脚の既存の収縮から、anodyne射を反転する任意の関手Lの下でmiddle比較が全自然同型になる。
+右脚の因子分解と組み合わせると、元のmiddleからreindex先barへの右脚がLの下で可逆であることと、
+通常索引の右脚がq(e)で可逆であることが同値になる。
+qのcofinalityや、大きい宇宙のSSetモデル構造は使用しない。
+
+### 306.2 元の全自然比較への適用
+
+`OrdinaryResolutionBarReduction`はqを実際のforgetFramesとして上記を適用する。
+元のmiddleから通常middleへの実自然変換と、§305の右脚の厳密な因子分解を構成した。
+そのmiddle比較はanodyne反転後の全自然同型になる。
+
+さらに、§305の右脚全体のLによる像が自然同型であることと、通常索引上の右脚全体の像が
+自然同型であることの同値を証明した。逆向きでは、各通常resolution pairに対象ごとの
+canonical frameを付けるだけでよい。射に対するsection、faithfulness、cofinalityは要求しない。
+モデル構造を要求しないcanonical anodyne局所化も、この定理の実際の適用例として検証した。
+
+### 306.3 受入検証と残項目
+
+実装コミット`72407006`。以下はすべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`：2877 jobs、追加警告なし。
+- `check_ordinary_resolution_bar_reduction`：独立宇宙の一般middle比較、実右脚の因子分解、
+  任意のanodyne反転関手とcanonical局所化による全自然同型条件の同値。
+  新規22宣言・2モジュール、標準公理のみ。
+- `check_ordinary_resolution_bar`：既存37宣言・4モジュールの回帰確認。
+- `audit_homotopical_foundations`：9330宣言・680モジュール、標準公理のみ。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+通常右脚そのものの可逆性はまだ証明していない。次は通常comma圏上の実行図式と
+既存のordinary-resolution cone図式を接続し、通常barの評価・収縮を証明する。
+元のreplacement mapping図式への自然弱同値比較、自然な小値化、最終の小さい厳密RMap、
+F2の最終自然弱同値zigzagは引き続き未完了である。全体目標の完了とはしない。

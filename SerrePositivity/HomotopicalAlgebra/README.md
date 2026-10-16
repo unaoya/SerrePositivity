@@ -2398,3 +2398,14 @@ forgetFramesのcofinality・strict section・新しい右脚の弱同値性は�
 今後の右脚の証明は通常索引で進める。値はまだ補助の大きい宇宙にあり、
 元のmapping図式への自然弱同値比較と最終小さい厳密RMap・F2は未完了。
 検証：`scripts/check_ordinary_resolution_bar.lean`、計画書§305。
+
+
+### 通常resolution右脚への同値な帰着（§306）
+
+`RelativeBarMiddleReindex`は任意の索引関手による実middle比較と左右の可換性を構成する。
+anodyne射を反転する任意の関手の下で、このmiddle比較は全自然同型になる。
+`OrdinaryResolutionBarReduction`は実forgetFramesへ適用し、元の右脚の像が全自然同型になる条件を、
+通常resolution上の右脚の像が全自然同型になる条件と同値にする。
+対象ごとのframeだけを使い、忘却のfunctorial section・faithfulness・cofinalityを要求しない。
+通常右脚の可逆性、自然な小値化、最終小さいRMap・F2は未完了。
+検証：`scripts/check_ordinary_resolution_bar_reduction.lean`、計画書§306。
