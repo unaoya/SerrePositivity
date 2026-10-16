@@ -2216,3 +2216,15 @@ canonicalなanodyneQでの同型によって正確に判定できることを証
 宇宙liftとの判定の保存・反映、span右脚、最終の小さい厳密関手と最終比較は残る。
 実装`42d73f52`、詳細は計画§290。新規31宣言・5モジュール、共有8494宣言・618モジュールの
 標準公理監査、共有入口2814 jobs、既存収縮・spanの回帰確認が成功。
+
+
+### 宇宙liftのモデル不要のanodyne保存（§291）
+
+`Generated/FunctorClosure.generatedLeft_map`は、小さいcolimitとpushoutを保存する
+関手が、生成射の保存から生成左類全体の保存を導く一般入口である。
+値域は四つのcell操作に閉じた射のクラスだけを持てばよい。
+`Simplicial/UniverseLiftAnodyne`はこれを実hornへ適用し、宇宙liftのanodyne保存と、
+anodyne局所化での可逆性の保存を証明する。
+元の小さいモデルの全弱同値のliftにも適用するが、大きい宇宙のモデル構造は要求しない。
+判定の反映、bar右脚の比較、最終の小さい厳密RMapは引き続き未完了。
+検証：`scripts/check_universe_lift_anodyne.lean`、計画書§291。
