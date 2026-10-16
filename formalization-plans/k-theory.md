@@ -16386,3 +16386,63 @@ canonical frameを付けるだけでよい。射に対するsection、faithfulne
 既存のordinary-resolution cone図式を接続し、通常barの評価・収縮を証明する。
 元のreplacement mapping図式への自然弱同値比較、自然な小値化、最終の小さい厳密RMap、
 F2の最終自然弱同値zigzagは引き続き未完了である。全体目標の完了とはしない。
+
+
+## 307. 通常barの実評価と同じcomma圏内の全自然cone（2026-10-16）
+
+§306の帰着先について、元の実ラベルを保持した通常barの評価を構成した。
+加えて、従来はunderlying resolution図式としてのみ自然だったconeを、通常索引では
+同じcomma圏内の全自然変換として構成できた。F1・F2の最終条件は変更しない。
+
+### 307.1 同じ小さい参照Homへの評価
+
+`OrdinaryBarCenters`は通常comma圏の実基底射と実resolution射から両側のlift centerを作る。
+`OrdinaryBarFirstAction`は全coherent systemによる作用を構成し、全単体作用素との整合性を証明する。
+`OrdinaryBarEvaluation`はこれを用い、§305・§306で実際に使う通常barから、
+固定参照resolutionの小さい混合HomのUniverseLiftへの実単体的写像を構成する。
+barの全頂点・全射・元のラベルを使う。評価写像そのものの可逆性はまだ主張しない。
+
+`OrdinaryBarReference`では、同じbarへの恒等参照sectionとの合成が、
+元の小さい混合作用を持ち上げた射に正確に等しいことを証明した。
+この小さい作用は任意の与えられた二つのwhole systemについて弱同値となる。
+従って参照sectionと評価の合成はcanonical anodyne局所化後に可逆となる。
+小さいSSetの元のモデルだけを使い、大きい宇宙のモデル構造は要求しない。
+
+### 307.2 実ラベル付き単体比較と全comma cone
+
+`OrdinaryBarSimplexCone`は各実bar単体の最初の頂点から、同じ次数の実row pairへの射を構成する。
+追加のouter-frame liftを選ばず、元のwhole lift familyの全resolution写像を直接使用する。
+その基底写像が元のcomma射であることと、元のHomラベルの像が評価値そのものであることを証明した。
+従って同じ次数の実要素comma圏内に、元の頂点から評価値付きrow対象への実射がある。
+
+`OrdinaryBarRowDiagram`は両側の全resolution比較を、全nerve単体圏上の自然変換として構成する。
+`OrdinaryBarCommaCone`は両者を合わせ、first頂点から全rowへの比較を
+**同じ通常resolution comma圏内の自然変換**として構成する。
+忘却したラベル以外の全chainを保持し、元のbar.Elementsへの引き戻しも全自然変換となる。
+元の各単体での比較射を正確に回収する。独立に選んだframe liftの関手性は使わない。
+
+### 307.3 元の右脚の可逆性との正確な同値
+
+`OrdinaryBarRightEvaluation.right_isIso_iff_evaluation`は、元の§305の右脚がRで
+canonical anodyne局所化後に可逆であることと、307.1の評価が可逆であることの同値を証明する。
+§306の実middle比較、恒等barの既存の収縮、明示的なUniverseLift padding同型、
+307.1の実合成の可逆性を組み合わせる。評価の可逆性を仮定として隠してはいない。
+
+### 307.4 受入検証と残項目
+
+実装コミット`5ae9d031`。すべて成功した。
+
+- 共有入口のbuild：2885 jobs、追加警告なし。
+- `check_ordinary_bar_evaluation`：元の右脚で使用するbarとの一致、評価、参照sectionとの
+  実合成、実ラベルの回収と要素comma射、同じcomma圏内の全自然coneと各元単体での回収、
+  小さいモデルからのwhole systemの構成、参照合成の局所化後可逆性、元の右脚との同値。
+  新規92宣言・8モジュール、標準公理のみ。
+- `check_ordinary_resolution_bar_reduction`：既存22宣言・2モジュールの回帰確認。
+- `audit_homotopical_foundations`：9422宣言・688モジュール、標準公理のみ。
+- ソース行長・証明用マーカー、stage差分の空白検査。
+
+comma圏内の自然coneと、bar全体の単体的収縮は区別する。
+rowの次数はbar単体とともに変化するため、coneだけで評価の可逆性を証明したことにはならない。
+次はこの全自然coneを次数変化も含むbar比較・収縮へ組み込み、評価の可逆性を証明する。
+その後、元のreplacement mapping図式への自然弱同値比較と基底上の自然な小値化を行う。
+最終小さい厳密RMap、F2の最終自然弱同値zigzag、全体目標F→L→E→Sは引き続き未完了である。

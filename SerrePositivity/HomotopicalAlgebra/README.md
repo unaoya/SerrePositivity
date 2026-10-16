@@ -2409,3 +2409,15 @@ anodyne射を反転する任意の関手の下で、このmiddle比較は全自�
 対象ごとのframeだけを使い、忘却のfunctorial section・faithfulness・cofinalityを要求しない。
 通常右脚の可逆性、自然な小値化、最終小さいRMap・F2は未完了。
 検証：`scripts/check_ordinary_resolution_bar_reduction.lean`、計画書§306。
+
+
+### 通常barの実評価とcomma圏内の全自然cone（§307）
+
+`OrdinaryBarCenters`・`OrdinaryBarFirstAction`・`OrdinaryBarEvaluation`は通常barの全実chainと
+ラベルを使い、同じ小さい参照混合Homの持ち上げへの実単体的評価を構成する。
+`OrdinaryBarReference`は恒等参照sectionとの合成を元の小さい弱同値として回収する。
+`OrdinaryBarSimplexCone`は同じ実要素comma圏内の単体比較を構成し、ラベルが評価値と等しいと証明する。
+`OrdinaryBarRowDiagram`・`OrdinaryBarCommaCone`は全比較を同じcomma圏内の自然変換としてまとめる。
+`OrdinaryBarRightEvaluation`は元の右脚と評価のanodyne局所化後可逆性の同値を証明する。
+評価自身の可逆性・bar全体の収縮、元のreplacement図式との自然比較、最終小さいRMap・F2は未完了。
+検証：`scripts/check_ordinary_bar_evaluation.lean`、計画書§307。
