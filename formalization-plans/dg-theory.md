@@ -6898,3 +6898,43 @@ Checks.AssociatorTransforms・Checks.AssociatorBimodule・Checks.QuotientUnivers
 Mathlibの通常のEnrichedNatTrans圏の同型を併用する場合も、上で証明した全Hom自然性を保持する。
 U11e全受入は未完。U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mの目標を保持する。
 共有系列への追加要求はない。共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.149 U11e26：全Hom自然な閉零bimodule圏・評価・実際の結合同型（2026-10-17）
+
+`Bimodule/ClosedComponents.lean`は閉零の全豊穣自然変換から右B加群射の成分族を取り出し、
+全Hom endの可換式を復元する。Centerの単位パラメータの半braidingを先に明示してから比較し、
+閉零変換と成分族の両往復を証明した。
+`ClosedMapFamily.lean`はこの全Hom自然な成分族をsubtypeとして表示し、
+BimoduleParamTrans (𝟙_ (Complex A))とのEquivを構成する。
+`Module/HomSquareComposition.lean`は既存の豊穣Homの前後合成則・交換則から四角形の恒等と合成を証明する。
+これを使い、成分族の恒等・合成が全次数自然性を保つことを証明した。
+
+`Bimodule/Category.lean`のBimoduleCategoryは、対象を既存Bimodule A B Cのままとする閉零射の圏である。
+Homは上の全Hom自然な成分族とし、圏の両単位・結合則を成分ごとに証明した。
+独立したdg圏構造体や弱い通常自然変換を主モデルに追加するものではない。
+このHomは全次数のGradedNatTransと同値であり、Cのsmall性は要求しない。
+`Evaluation.lean`は任意c:Cで右B加群へ評価する関手、評価による射の外延性、
+Hom同値の成分公式と合成時の単位パラメータunitorの式を公開する。
+`Isomorphism.lean`は全Hom自然な右加群同型族からこの圏の実際のIsoを構成し、
+順逆の評価式と両順序の恒等式を証明する。
+
+`Tensor/AssociatorIso.lean`は§17.147/148の全次数自然性と同型族から
+**associatorIso**をBimoduleCategoryの実際のIsoとして構成する。
+評価はassociatorRightModuleIsoへ戻り、Hom同値で順逆の射を読むと既存associatorHom・associatorInvに
+構造体として一致する。したがって今回の圏での同型と前回の全次数自然変換は別々の比較ではない。
+任意CommRing A・非有界・独立B/C/E/F宇宙を保持し、Small.{u} B/C/Eのみを使用する。
+右端Fのsmall性や、すべてのHomが非正に集中する仮定は追加していない。
+
+Checks.BimoduleCategory・Checks.AssociatorTransforms・Checks.QuotientUniversal・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（2853 jobs、終了コード0、警告なし）。
+全次数変換とのHom同値、評価の合成保存、独立宇宙のFでの実際の結合同型、
+ZMod 2でのbimodule射としての順逆合成の恒等式を検査した。
+主要28宣言の直接公理監査は標準公理のみ。監査累計2916宣言。
+文書検査は13 Markdown・320 exposition参照、失敗0件。担当差分の空白検査も成功。
+今回の実装にsorry/admit/新規axiomはない。採用済み引用は0件。
+
+次はBimoduleCategoryの射を相対tensorで運ぶ両変数mapと、その値・作用の成分公式を構成する。
+それを結合比較の三変数自然性と三角・五角coherenceに使う。U11e全受入はなお未完。
+U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mの目標を保持する。
+共有系列への追加要求はない。共有一般論・共有ルートimport・他系列は編集していない。
