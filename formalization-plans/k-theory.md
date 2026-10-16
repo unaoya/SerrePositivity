@@ -17453,3 +17453,67 @@ evaluationNerveMapとrowNerveMapの合成も可逆である。
 元の全基底図式を自然に小値化するための実装契約を確認する。
 大きい生barを同型で縮めたり、選んだ各小さい値を変更せず全基底射を厳密化できるとはみなさない。
 基底上の自然な小値化、最終小さい厳密RMap・F2は未完了。全体目標F→L→E→Sを維持する。
+
+
+## 324. 元のreplacement mapping図式への自然比較と基底上の不変性（2026-10-17）
+
+§323の元の右脚全体の可逆性を、既存の小さいmapping図式へ接続した。
+比較は任意のanodyne反転関手で自然同型となる。源は任意のModelCategory C、
+対象宇宙uとHom宇宙vは独立であり、値側モデルは元のSSet.{v}だけを使う。
+A0・A1は§166で完了済みである。継続中のF→L→E→SのF1を進めた。
+
+### 324.1 右resolution上の図式全体の比較
+
+`OrdinaryBarMappingComparison`は任意のanodyne反転関手Lに対して、
+小さい弱同値の明示的な宇宙liftの像が可逆であることを供給する。
+元のordinary barの左脚と§323の右脚から、mixed raw図式のliftと
+基底projectionから引き戻したordinary barのLによる像を自然同型で結ぶ。
+既存のMixedResolutionInvariance.comparisonを反転してright resolution mapping図式へ、
+さらに既存のzero-to-diagonal比較を通してdegree zeroのreplacement mapping図式へ戻す。
+すべて図式全体の自然同型であり、対象ごとに選んだ評価射を基底上の自然変換とはみなさない。
+
+### 324.2 元の厳密barの基底弱同値不変性
+
+`OrdinaryBarBaseInvariance`は任意の基底射fについて、両成分が元のCの弱同値ならば、
+ordinary bar.map fのLによる像が可逆であることを証明する。
+証明では基底の二対象を個別に右resolution indexへ持ち上げ、fの実liftを一つ選ぶ。
+既存のmixed rawの弱同値不変性と324.1の自然同型で結果を移す。
+このliftに関手の単位・合成則を要求せず、すでに厳密なbarの基底作用を検証している。
+また各基底値に対して、元の小さいdegree-zero replacement値のliftとの明示的な同型をLの後で供給する。
+
+### 324.3 元のreplacement図式を覆うrefinement上の自然比較
+
+`OrdinaryBarReplacementComparison`は既存のRightResolutionRefinement.Index全体を使う。
+resolved側とoriginal側の基底図式間の実自然変換baseComparisonは、
+記録されたtarget comparisonの基底射をそのまま保持する。
+その右成分の弱同値性と324.2から、barとLを合成した自然変換全体が可逆となる。
+
+既存のrefinement左脚の小さい弱同値、324.1のzeroIso、上のbaseComparisonを合成し、
+original側へ引き戻した元のreplacement mapping図式のliftと、
+同じoriginal基底上のordinary barの間の自然同型refinementIsoを得た。
+これはrefinement圏のすべての射と両立する。
+既存のofOriginalにより任意の元のpresentationが覆われ、元の値と元の基底を持つ
+presentationIsoも得る。refinement projectionのfaithfulness・cofinality・厳密sectionを仮定しない。
+
+### 324.4 受入検証と残る小値化の契約
+
+実装コミット`64bc55bf`。以下はすべて成功した。
+
+- 共有入口のbuild：2952 jobs、追加警告なし。
+- `check_ordinary_bar_mapping_comparison`：21宣言・3モジュール、標準公理のみ。
+  独立したu,v、任意のanodyne反転関手、zero図式全体の自然同型、
+  任意の両変数の基底弱同値、refinement全体の自然比較、任意の元のpresentationの被覆を検証。
+- `check_ordinary_bar_evaluation_equivalence`：既存37宣言・4モジュールの回帰検証。
+- `audit_homotopical_foundations`：10015宣言・755モジュール、標準公理のみ。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+ここで得たのは補助値宇宙の厳密barと、小さい参照図式を結ぶ自然な局所化後の比較である。
+次は元の全基底Cᵒᵖ×C上でSSet.{v}に値を持つ厳密図式を構成し、
+今回のbarとの自然な比較を与える必要がある。
+各基底値が個別に小さい参照値と弱同値であることだけから、
+各参照値を変更せず厳密な基底作用が得られるとはみなさない。
+大きい生barを同型で縮小する案も採用しない（§286）。
+小値化では弱同値による値の変更を許し、すべての基底射・単位・合成との両立を証明する。
+基底は大きくてもよいため、基底全体の小さいskeletonを無条件には仮定しない。
+その後、最終小さい厳密RMapへKan性・両変数の不変性・π₀比較・選択独立性を接続する。
+自然な小値化、最終小さい厳密RMap・F2は未完了。全体目標F→L→E→Sは継続中である。

@@ -2609,3 +2609,15 @@ pushout後の単射性、一般augmentation・評価・最終小値化・F2は�
 源は任意のModelCategory、値側モデルは元の小さいSSetだけで足りる。
 基底上の自然な小値化、最終小さい厳密RMap・F2は未完了。
 検証：`scripts/check_ordinary_bar_evaluation_equivalence.lean`、計画書§323。
+
+
+### 元のreplacement図式への自然比較と基底不変性（§324）
+
+`OrdinaryBarMappingComparison`はmixed raw・right resolution・degree-zero replacementの
+各小さい図式のliftとordinary barを、任意のanodyne反転関手の後で自然同型により結ぶ。
+`OrdinaryBarBaseInvariance`は元の厳密barが両基底変数の弱同値を反転することを証明する。
+`OrdinaryBarReplacementComparison`は既存のrefinement圏全体で元のreplacement図式と自然に比較し、
+任意の元のpresentationの値・基底との比較も供給する。
+源の関手的分解、projectionのfaithfulness・cofinality・厳密section、大きいSSetのモデル構造は不要。
+自然な小値化・最終小さい厳密RMap・F2は未完了。
+検証：`scripts/check_ordinary_bar_mapping_comparison.lean`、計画書§324。
