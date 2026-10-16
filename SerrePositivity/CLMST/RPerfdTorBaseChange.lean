@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.RPerfdCohomologyInputs
+public import SerrePositivity.CLMST.PerfectoidIdealCompletedMul
 public import SerrePositivity.CommutativeAlgebra.RootTower.CompletionFlat
 public import SerrePositivity.HomologicalAlgebra.PowerTorsionTorBaseChange
 
@@ -79,5 +80,39 @@ lemma rPerfd_cohomology_vanishing_of_completed_quotient_mul_and_tower_power_tors
   rPerfd_cohomology_vanishing_of_completed_quotient_mul_and_power_torsion
     A t D p hperf ht hdim hsop j₀ htp g hμ
     (rPerfd_power_torsion_tor_eq_zero_of_completedTower A t D p hperf g hTor)
+
+/-- The actual quotient product is proved; only the original tower-side Tor tests remain explicit. -/
+lemma rPerfd_cohomology_vanishing_of_tower_power_torsion
+    [IsLocalRing D] [IsNoetherianRing D]
+    (ht : Ideal.span (Set.range t) = maximalIdeal A) (hdim : ringKrullDim A = h)
+    (hsop : IsSystemOfParameters D (algebraMap A D ∘ t))
+    (j₀ : Fin h) (htp : t j₀ = (p : A)) (g : A)
+    (hTor : ∀ (L : ModuleCat.{u} (CompletedTower A t p)) (k : ℕ), 0 < k →
+      (∀ x : L, (p : CompletedTower A t p) ^ k • x = 0) → ∀ j : ℕ, 0 < j →
+        ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+          (algebraMap A (CompletedTower A t p) g),
+          torCoefficientScalarEndomorphism (RPerfd A D t p hperf) L j
+            (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0) :
+    (∀ i : ℕ, i < h →
+      ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+        (algebraMap A (CompletedTower A t p) g),
+        HomologicalAlgebra.localCohomologyScalarEndomorphism (maximalIdeal D) i
+          (RPerfd A D t p hperf)
+          (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0) ∧
+    (∀ n : ℕ,
+      let _ := stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+      ∀ (y : Fin h → StageAlgebra A D t p n),
+        IsSystemOfParameters (StageAlgebra A D t p n) y → ∀ i : ℕ, 0 < i →
+          let _ := Module.compHom
+            (koszulHomologySelf (fun j => toRPerfd A D t p hperf n (y j)) i)
+            (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))
+          perfectoidIdeal (CompletedTower A t p) p hperf
+            (algebraMap A (CompletedTower A t p) g) ≤
+              Module.annihilator (CompletedTower A t p)
+                (koszulHomologySelf (fun j => toRPerfd A D t p hperf n (y j)) i)) :=
+  rPerfd_cohomology_vanishing_of_completed_quotient_mul_and_tower_power_torsion
+    A t D p hperf ht hdim hsop j₀ htp g
+    (perfectoidIdeal_completedQuotientMul_isIso (CompletedTower A t p) p hperf
+      (algebraMap A (CompletedTower A t p) g)) hTor
 
 end SerrePositivity.CLMST

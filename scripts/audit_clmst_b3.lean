@@ -169,16 +169,17 @@ elab "assert_cyclic_B3_dependencies" : command => do
 elab "assert_almost_B3_dependencies" : command => do
   let roots := [``SerrePositivity.CLMST.completedLength_eq_of_perfectoid_mod_almost_iso]
   let allowed := [
-    ``SerrePositivity.BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotient,
-    ``SerrePositivity.CLMST.Inputs.perfectoidIdealMod_idempotent]
+    ``SerrePositivity.BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotient]
   let forbidden := [`SerrePositivity.BhattScholze.Inputs.exists_perfectoidization_of_integral,
     `SerrePositivity.Inputs.exists_perfectoidization_of_finite,
     `SerrePositivity.Perfectoidization, `SerrePositivity.toPerfectoidization]
   let seen ← liftCoreM <| checkDependencies roots {} allowed forbidden
   for n in allowed do
     unless seen.contains n do throwError "Expected dependency is missing: {n}"
-  logInfo "Almost length comparison: old B-I absent; only B-S and B-R contain sorry."
+  logInfo "Almost length comparison: old B-I absent; only B-S contains sorry; B-R is proved."
 end
 
 assert_cyclic_B3_dependencies
 assert_almost_B3_dependencies
+
+assert_no_sorry SerrePositivity.CLMST.Inputs.perfectoidIdealMod_idempotent

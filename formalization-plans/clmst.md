@@ -1,6 +1,6 @@
 # CLMST とその準備の形式化計画
 
-作成日：2026-10-13。更新日：2026-10-14。状態：必要な数値結果・Serre接続・標準完備塔を実装済み。共通要求F1〜F7の公開APIまで実装済み。次は深い入力を使わない固有定理の準備とBS成果の接続。
+作成日：2026-10-13。更新日：2026-10-17。状態：G系列の共通要求・受渡しとKL-Eの実入力を実装済み。mod p冪のperfectoid ideal像の冪等性引用を証明へ置換。次はKL-Tの実Tor入力とDの実適用。
 原典は `paper/refs/CLMST-2209.04046v4.pdf`（手元のみ）と
 [同じ版の HTML](https://arxiv.org/html/2209.04046v4)。実装の到達点は §0 に記す。
 
@@ -13,7 +13,7 @@
 multiplicity, and an application to local fundamental groups*, arXiv:2209.04046v4
 （以下 CLMST）。準備として、Faltings の正規化長さ、perfectoid 塔、Bhatt–Scholze の perfectoid 化を含む。
 
-## 0. 現在の到達点と見直した方針（2026-10-14）
+## 0. 現在の到達点と見直した方針（2026-10-17）
 
 この節の到達点・引用台帳、§0.2の担当・待合せ、§9の実装順を現在の作業計画とする。
 §0.2の「実施記録」以降と§0.1の「続き」は経過記録であり、
@@ -27,7 +27,7 @@ multiplicity, and an application to local fundamental groups*, arXiv:2209.04046v
 | 共通の正規化長さ | 有限段、有限生成・有限表示一致、必要な加法性・近似・係数制限を実装 | 旧C1/C2の直接の引用を除去。共通層の証明を使う |
 | 完備化と有限代数 | 平坦性、有限表示テンソル比較、具体的な塔への適用を実装 | 共通可換環論として証明。古い「完備塔の平坦性が残る」は解消済み |
 | perfectoid環のpねじれ商 | S/S[p]のperfectoid性と一般のp因子除去を実装 | Fontaine核を含む定義条件から証明。巡回商の選択はB3へ移行済み。一般有限代数の選択は別途存在引用に依存する |
-| 命題4.0.10の数値部分 | 非零gの巡回長さ零、一般加群への帰着、almost比較からの長さ一致を実装 | 巡回評価の直接のsorryを除去。B3の証明済み存在とB-Sの全射性引用を使う。実際のalmost局所化圏の同型版は別途イデアル冪等性の引用も使う |
+| 命題4.0.10の数値部分 | 非零gの巡回長さ零、一般加群への帰着、almost比較からの長さ一致を実装 | 巡回評価の直接のsorryを除去。B3の証明済み存在と既存B-S互換引用を使う。実almost局所化圏で使うmod p冪イデアル冪等性は証明済み |
 | 命題4.0.14 | 任意の有限段・パラメータ系について長さと重複度の公式を実装 | 共通Euler・錐の理論から証明。Prop 2.4.7、Cor 4.0.4等の明示引用に相対的な証明 |
 | 標準完備塔のperfectoid性 | 元のWitt係数表示と添字のまま証明済み | 有限段Frobenius核・tilt核・Fontaine核を共通層で証明。旧Inputsは引用非依存の互換入口 |
 | Serreへの接続 | 上記から混標数の長さ代数の性質を供給する接続を実装 | 接続そのものに直接のsorryを置かず、基礎入力へ依存を分離 |
@@ -44,14 +44,17 @@ multiplicity, and an application to local fundamental groups*, arXiv:2209.04046v
 | BS Thm 7.4：pねじれのない完備商のperfectoid化の全射性 | `BhattScholze/Inputs/SemiperfectoidSurjectivity.lean` | 主定理へ到達。原典の適用形。p正則な場合の古典的／導来p完備性の同値は共通層で証明済み |
 | CLMST Prop 2.4.7：perfectoid化の錐のg冪による消滅 | `CLMST/Inputs/PerfectoidIsogeny.lean` | 主定理へ到達 |
 | CLMST Cor 4.0.4：局所コホモロジー・Koszulホモロジーのalmost消滅 | `CLMST/Inputs/CohomologyVanishing.lean` | 主定理へ到達。Thm 4.0.3は別の直接引用としては置いていない |
-| perfectoid idealのmod p^N像の冪等性 | `CLMST/Inputs/BasicSetup.lean` | 一般のalmost局所化圏を使う。直近の主定理監査には到達しない |
 
 BS全射性の具体的な適用条件（巡回商のp正則性・p進完備性・商写像の全射性）と、
 選んだ普遍対象への移送は証明済み。上記完備性の同値も、p正則な場合に共通層で証明済み。
 B3の一般商のperfectoid化の存在・普遍性はBS側で証明済み（2026-10-14）。
 CLMST側の主イデアル商の選択・巡回評価・almost長さ比較は§9.7bのC2で接続済み。
-巡回評価の未証明入力はB-Sのみ、実almost同型による長さ比較はB-SとB-Rのみ。
-B4の全射性・B5の冪等性、一般整代数のB-I/B6は引き続き未解消である。
+巡回評価と実almost同型による長さ比較に残る未証明入力は既存B-S互換引用のみ。
+証明済みB4を元の主イデアル商へ接続し、perfectoid idealの核商のperfectoid性、
+元の完備導来乗法の同型性、完備almost零加群の拡大閉性、全mod p冪像の冪等性を証明した。
+`CLMST/Inputs/BasicSetup.lean`はsorry非依存の互換入口となった。
+KL-Eの実入力は完成し、KLではProp 2.4.9(a)の実Tor入力が残る。
+既存巡回評価のB-S互換入力の呼出し移行、一般整代数のB-I/B6は引き続き残る。
 
 主定理全体の現在の`#print sorries`では、上表の4件に加え、
 `intersectionVanishing`、`theorem_3_1_K0`、`supportedRankK0_descent`が到達する。
@@ -7485,6 +7488,39 @@ KL-Eの残る実入力は、元のperfectoid ideal Iの商R/Iのperfectoid性で
 既存引用も同じ元のイデアルと商写像で置換する。
 KL-TのProp 2.4.9(a)、KL-Q、Dの実入力と引用置換、任意二因子のH⁰ perfectoid性の一般化と
 C3の残りのイデアル三主張、RPerfd存在のB-Iは引き続き残る。
+
+KL-E完了・実perfectoid ideal商と引用の置換（2026-10-17）：
+`CLMST/PerfectoidIdealCompletedMul.lean`で、元の主イデアル商の導来p完備性を
+証明済みB4の全射性へ供給し、選択済みperfectoid化への元の写像の全射性を証明した。
+元の核イデアルによる商を同じ選択対象へ標準同型で同定し、その商のperfectoid性を移した。
+この実R/Iに前工程の元の完備導来乗法の定理を適用し、元のperfectoid idealについて
+完備乗法の同型性・完備almost零加群の拡大閉性・全mod p冪像の冪等性を供給した。
+根の選択やgの非零性、商のp正則性を追加していない。
+
+`CLMST/Inputs/BasicSetup.lean`の`perfectoidIdealMod_idempotent`のsorryをこの証明で置換した。
+公開型と元のイデアル・標準商写像は維持する。
+B3監査はB-Rを許容sorry一覧から削除し、同宣言への`assert_no_sorry`を追加した。
+実almost長さ比較に残る引用がB-S互換入力のみであることを確認した。
+
+`RPerfdTorBaseChange.lean`には、完備塔・同じgのideal・同じRPerfdを用いる
+`rPerfd_cohomology_vanishing_of_tower_power_torsion`を追加した。
+完備商乗法の入力は今回の実証明から供給し、Cor 4.0.4の局所コホモロジーと全有限段の
+任意パラメータ系Koszul消滅の両結論に残る明示的数学入力を、Prop 2.4.9(a)の
+完備塔側p冪ねじれTor試験一つへ減らした。RPerfdの存在選択に関するB-Iは別に保持する。
+
+対象4405・4669ジョブ、全体5853ジョブ、専用の公開5宣言・置換した互換入口・
+元の完備塔商乗法を使う名前付き型検査が成功した。これらはsorry非依存・標準3公理のみ。
+KL-E1〜E3はこれで完成し、KLの次の実装対象はKL-T1/T2、その後KL-QとD-I/U/Qである。
+KL-Tでは全k>0、pᵏで消える任意のB加群L、全j>0・s∈Iへの元のC係数作用を維持する。
+André拡大後の元の係数比較、絶対整閉側の有限自由almost比較、rank還元と忠実平坦降下の
+実入力を供給する。KL-EからこのTor零化を推論しない。
+既存巡回評価のB-S互換引用の呼出し移行も、証明済み主イデアル商の全射性で処理できる次の区切りとなる。
+任意二因子のH⁰ perfectoid性の一般化とC3の残りのイデアル比較は、必要な後続適用で別途保持する。
+
+この合流のKL992件、B3依存監査、RPerfd限定依存監査、公理監査も終了コード0を確認した。
+RPerfd限定監査には新しいTor入力だけの入口を追加し、既存のRPerfd存在選択のB-I以外の
+sorryとCor 4.0.4・Prop 2.4.7・旧冪等性入力への依存を引き続き拒否する。
+全CLMST監査はこの記録時点では実行中であり、成功とはまだ記録しない。
 
 ### 9.8. 各区切りの保存と検証
 

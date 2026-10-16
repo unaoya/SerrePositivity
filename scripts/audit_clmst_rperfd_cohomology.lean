@@ -46,7 +46,7 @@ private partial def checkRPerfdDependencies (todo : List Name) (visited : NameSe
     checkRPerfdDependencies (deps.toList ++ todo) visited
 
 elab "assert_rperfd_cohomology_dependencies" : command => do
-  let roots := [``toRPerfd_algebraMap_A, ``rPerfd_p_coordinate,
+  let roots := [``rPerfd_cohomology_vanishing_of_tower_power_torsion, ``toRPerfd_algebraMap_A, ``rPerfd_p_coordinate,
     ``rPerfd_tor_eq_zero_of_finite, ``rPerfd_isModuleComplete,
     ``rPerfd_derivedTensor_isComplete, ``rPerfd_finiteCoefficientPowerComparison_quasiIso,
     ``rPerfd_modulePowerDerivedTensorIso, ``rPerfd_finiteCoefficientPowerHolimIso,
