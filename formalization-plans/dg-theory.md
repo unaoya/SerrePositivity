@@ -4595,3 +4595,34 @@ U13aの受入照合：有限操作の構成データ・生成元への依存・�
 次は指定D(D)内のfinite cellのretractとしてPerfを定義し、既存三角構造・Karoubiとの比較へ進む。
 U11eのcoherence・U12e/f・U13残部・U14〜U17・D4mは未完。
 共有系列への追加要求はなく、担当外ファイルを編集していない。
+
+
+### 17.76 U13b1：指定導来圏内のPerf・retract・shift・有限生成元（2026-10-16）
+
+`Perfect/Basic.lean`はderivedFiniteCellOver Sを既存moduleToDerivedによるfinite cellの本質的像、
+modulePerfectOver SをMathlib ObjectProperty.retractClosureとして定義する。
+modulePerfectはS=univとし、PerfectModuleCategoryOver/PerfectModuleCategoryは同じ指定D(D)の
+充満部分圏とする。新しい導来圏や一般retract閉包は導入していない。
+
+中間の同型をretractへ吸収し、実際のfinite cell MについてXがmoduleToDerived.obj Mのretractであるという
+具体的な判定式を公開した。finite cellと代表対象の包含、生成元集合の単調性、retract・同型閉性、
+零対象・非空性、有限個の生成元への制限、retract閉な性質への最小性も証明する。
+このretractはD(D)内のものであり、加群上のstrict dg retractへ持ち上がるとは仮定しない。
+
+`Perfect/Shift.lean`はfinite cellの整数shift閉性を登録し、既存moduleToDerived.commShiftIsoを用いて
+本質的像のshift閉性を証明する。retract閉包のshift閉性と充満部分圏のHasShiftはMathlibを再利用し、
+perfectModuleInclusionのCommShiftもその既存zero/add coherenceから得る。
+対象宇宙は既存D(D)のままであり、smallなenhancementやcompact性はまだ主張しない。
+
+Checks.PerfectBasic・Checks.FiniteCellProjective・Checks.StageSeven・既存Spectra.StageTwoの同時ビルドは成功
+（2851 jobs、終了コード0、警告なし）。任意A・独立対象宇宙・任意生成元集合・
+具体的retract判定・有限生成元・零対象を持つPerf・HasShift/CommShift・包含の忠実性・ZMod 2を検査した。
+主要29宣言の直接公理監査は終了コード0、標準公理のみ。監査累計1973宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。
+今回の3 Leanファイルにsorry/admit/新規axiomはない。担当差分の空白検査も成功。
+
+U13b全受入は未完。次は既存KaroubiFullyFaithfulの本質像判定へ、finite cellの本質的像の
+充満部分圏からの包含を渡してKaroubi比較を具体化する。厚い三角閉性ではfinite cellを始域とする
+導来射を実際の加群射へ持ち上げ、cone計算との可換性を証明する。
+U11eのcoherence・U12e/f・U13残部・U14〜U17・D4mも未完。
+共有系列への追加要求はなく、担当外ファイルを編集していない。
