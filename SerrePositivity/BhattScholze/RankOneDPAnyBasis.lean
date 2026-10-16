@@ -1,6 +1,9 @@
 module
 
 public import SerrePositivity.BhattScholze.RankOneDPBaseChangeUniversal
+public import SerrePositivity.BhattScholze.RankOneDPBasis
+public import Mathlib.LinearAlgebra.TensorProduct.Basis
+public import Mathlib.RingTheory.Flat.TorsionFree
 
 /-! # 任意係数環上の既存一元分冪代数の実基底
 

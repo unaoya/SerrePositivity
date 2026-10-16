@@ -16,6 +16,7 @@ import SerrePositivity.BhattScholze.DeltaDivisionBoundedSupportTor
 import SerrePositivity.BhattScholze.DeltaDivisionFirstResidueFlat
 import SerrePositivity.BhattScholze.RelativeFreeWittInverseSupport
 import SerrePositivity.BhattScholze.DeltaDivisionFiniteRelationsRegular
+import SerrePositivity.BhattScholze.RankOneDPBaseChange
 import Mathlib.Util.AssertNoSorry
 
 /-! Focused dependency checks for the BS refactoring steps.
@@ -71,3 +72,24 @@ assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFirstRelation_isSMulRe
 assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFiniteStage_next_isSMulRegular_of_frobenius_regular
 #print axioms SerrePositivity.BhattScholze.relativeFreeWittSupportedEquiv
 #print axioms SerrePositivity.BhattScholze.deltaDivisionFiniteStage_next_isSMulRegular_of_frobenius_regular
+
+-- R3a: general DP maps and bases under the original specialized public signatures.
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPBaseChangeMap
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPBaseChangeMap_tmul
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPBaseChangeMap_dp
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPPrimeBasis
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPPrimeBasis_apply
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPPrime_moduleFree
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPPrime_p_mul_injective
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPBaseChangeMap_bijective
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPBaseChangeEquiv
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPBaseChangeEquiv_tmul
+#print axioms SerrePositivity.BhattScholze.rankOneDPPrimeBasis
+#print axioms SerrePositivity.BhattScholze.rankOneDPBaseChangeEquiv
+
+-- Keep the explicit prime instance and the former binder order, including unused hypotheses.
+noncomputable example : ∀ {p : ℕ} [Fact p.Prime] {A : Type*} [CommRing A],
+    (∀ m : ℕ, ¬p ∣ m → IsUnit (m : A)) →
+    Function.Injective (fun a : A ↦ (p : A) * a) →
+    Module.Basis ℕ A (DividedPowerAlgebra A A) :=
+  @SerrePositivity.BhattScholze.rankOneDPPrimeBasis

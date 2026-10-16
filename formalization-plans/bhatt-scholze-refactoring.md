@@ -55,7 +55,7 @@ BS側が変更するのは `SerrePositivity/BhattScholze/`、このBS計画、BS
 | R2c | 変数のδ値を指定する多項式構成とδ射判定 | 抽出 | 新 `PolynomialDelta`、`RelativeFreeDelta`、`PolynomialRankOneDelta`、普遍性利用先 | 未着手 |
 | R2d | 有向環余極限上のδ構造と普遍射 | 抽出 | 新 `DeltaDirectLimit`、`DeltaPerfection`、`DeltaAdjoinDivisionFiniteColimit` | 未着手 |
 | R2e | δ閉包の生成元定理を基礎層へ集約 | 配置・再利用 | `DeltaClosureGeneration`、`DeltaDivisionIteratedRelations` | 未着手 |
-| R3a | rank-one DPの一般比較射を分離し特殊版を一般版へ委譲 | 配置・再利用 | 新 `RankOneDPBaseChangeMap`、`RankOneDPTensorRelations`、`RankOneDPAnyBasis`、`RankOneDPPrimeBasis`、`RankOneDPBaseChange` | ビルド・統合監査済み、未コミット |
+| R3a | rank-one DPの一般比較射を分離し特殊版を一般版へ委譲 | 配置・再利用 | 新 `RankOneDPBaseChangeMap`、`RankOneDPTensorRelations`、`RankOneDPAnyBasis`、`RankOneDPPrimeBasis`、`RankOneDPBaseChange` | 完了 |
 | R3b | principal DPの一般関係式を分離し基底変更を一本化 | 配置・再利用 | 新 `PrincipalDPBaseChangeRelations`、`PrincipalDPBaseChange`、`PrincipalDPBaseChangeUniversal` | 一時ファイルで検証済み、未反映 |
 | R3c | DP表示の正則性で不要なp局所性を外した一般入口 | 証明拡張 | `PrincipalDPRegular` | R3a後 |
 | R4a | 初期係数表示を既存モニック表示比較へ接続 | 再利用・比較 | `DeltaDivisionFirstCoefficientPowerEquiv`、`MonicPowerFamilyBaseQuotient` | 一時試作の型変換コストを検証中、未反映 |
@@ -185,3 +185,5 @@ CLMSTの標準Torの積・J²による零化は、元のイデアル自身の零
 - 2026-10-16 R1b：逐次・有限部分集合のTor消滅を共通G7 APIへ、初期剰余の自由性・忠実平坦性を既存monicPowerFamilyPolynomial APIへ委譲。元の評価図式・同型・係数作用と条件付き入口の引数は維持した。対象と下流を含む528対象ビルド、基礎/B4監査、focused監査が成功。追加公理・引用依存なし。
 
 - 2026-10-16 R1c：多項式評価のsupport保存をMvPolynomial.eval₂_memへ、一次多項式の正則性を最高係数の非零因子判定へ委譲。零環枝と既存の一般性を維持した。対象と下流を含む528対象ビルド、基礎/B4監査、focused監査が成功。追加公理・引用依存なし。
+
+- 2026-10-16 R3a：rank-one DPの比較射と2計算式をRankOneDPBaseChangeMapへ分離。一般基底を特殊基底の証明源にし、旧比較同型の構成本体と純テンソル式を維持した。一般比較のプロジェクトimport閉包は40から3、一般基底は41から5へ減少。旧素数instanceと引数順を明示して保持し、完全署名確認・focused型契約・528対象ビルド・基礎/B4監査が成功。追加公理・引用依存なし。

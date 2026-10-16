@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.RankOneDPBaseChange
+public import SerrePositivity.BhattScholze.RankOneDPBaseChangeMap
 public import Mathlib.Data.Nat.Choose.Sum
 
 /-! # 任意係数への一元分冪テンソル族の関係式

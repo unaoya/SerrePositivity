@@ -1,31 +1,30 @@
 module
 
-public import SerrePositivity.BhattScholze.RankOneDPBasis
-public import SerrePositivity.BhattScholze.DeltaPDivisionFactorialPDTarget
-public import Mathlib.RingTheory.Flat.TorsionFree
+public import SerrePositivity.BhattScholze.RankOneDPAnyBasis
 
-/-! # p局所・p正則な環上の一元分冪代数の基底とp正則性 -/
+/-! # p局所・p正則な環上の一元分冪代数の基底とp正則性
+
+任意係数の標準基底を使い、従来の仮定を持つ公開署名を互換入口として保つ。
+-/
 
 @[expose] public noncomputable section
 universe u
 namespace SerrePositivity.BhattScholze
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
 
-/-- 具体的p局所化に評価して得られる、p局所・p正則係数での実分冪基底。 -/
-def rankOneDPPrimeBasis (hA : ∀ m : ℕ, ¬p ∣ m → IsUnit (m : A))
+set_option linter.unusedVariables false in
+/-- 任意係数の標準分冪基底を返す、p局所・p正則係数の互換入口。 -/
+def rankOneDPPrimeBasis {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
+    (hA : ∀ m : ℕ, ¬p ∣ m → IsUnit (m : A))
     (hpA : Function.Injective (fun a : A ↦ (p : A) * a)) :
-    Module.Basis ℕ A (DividedPowerAlgebra A A) := by
-  letI : Algebra ℚ (Localization.Away (p : A)) :=
-    DeltaStructure.primeDividedPowersAwayRatAlgebra hA
-  exact rankOneDPBasis (Localization.Away (p : A)) (fun x z h ↦
-    pDivisionFactorialBase_injective hpA (fun _ : Unit ↦ (0 : A)) (Subtype.ext h))
+    Module.Basis ℕ A (DividedPowerAlgebra A A) :=
+  rankOneDPAnyBasis A
 
 /-- p局所係数での実基底の各元は、元のγ_n(1)そのもの。 -/
 theorem rankOneDPPrimeBasis_apply (hA : ∀ m : ℕ, ¬p ∣ m → IsUnit (m : A))
     (hpA : Function.Injective (fun a : A ↦ (p : A) * a)) (n : ℕ) :
-    rankOneDPPrimeBasis hA hpA n = DividedPowerAlgebra.dp A n (1 : A) := by
-  dsimp only [rankOneDPPrimeBasis, rankOneDPBasis]
-  exact Module.Basis.mk_apply _ _ _
+    rankOneDPPrimeBasis hA hpA n = DividedPowerAlgebra.dp A n (1 : A) :=
+  rankOneDPAnyBasis_apply A n
 
 /-- 既存一元分冪代数の、p局所・p正則な元の環上の自由性。 -/
 theorem rankOneDPPrime_moduleFree (hA : ∀ m : ℕ, ¬p ∣ m → IsUnit (m : A))
