@@ -4272,3 +4272,23 @@ Checks.FunctorModuleCone・Checks.DerivedTensorLeftNaturality・Checks.StageSeve
 次はconeの射影/包含の行列恒等式を主Homへ持ち上げ、dg関手による像でも比較射が可逆であることを証明する。
 それを右/左tensorへ適用して相対K-flatのcone/shift閉性・指定quasiIso保存へ接続する。
 U11e・U12残部・U13〜U17・D4mは未完。共有系列への追加要求はない。
+
+### 17.65 U12a5：coneの主Hom行列恒等式とdg関手による保存（2026-10-16）
+
+`Module/ConeElementRelations.lean`は閉零の第二包含を主Hom要素として読み、
+次数−1/+1の第一包含/第一射影、次数0の第二包含/第二射影の四つの合成と
+二つの射影–包含の和による恒等写像の分解を主Hom end内で証明した。
+通常順composeを使い、対象ごとの独立な等式だけで代用しない。
+
+`Functor/ModuleConeRelations.lean`は第一/第二射影のdg関手による像をcochainとして公開し、
+上記五恒等式を任意の複体値dg関手へ運んだ。通常順の合成保存、閉零射/単位の既存公式を再利用する。
+この一般化の仮定にtensorやflat性はなく、次のcone比較射の次数ごとの逆を構成する入力になる。
+
+Checks.ConeElementRelations・Checks.FunctorModuleCone・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2659 jobs、終了コード0、警告なし）。任意A・独立対象宇宙・任意複体値dg関手、
+次数−1/+1の合成・分解とZMod 2を検査。主要14宣言の直接公理監査は終了コード0、標準公理のみ。
+監査累計1804宣言。文書検査は22 Markdown・311 exposition参照、失敗0件。
+担当差分の空白検査も成功。今回の3ファイルにsorry/admit/新規axiomはない。
+
+cone比較の可逆性・相対K-flatと指定quasiIso保存の接続はなお未完。
+U11e・U12残部・U13〜U17・D4mも継続する。共有系列への追加要求はない。
