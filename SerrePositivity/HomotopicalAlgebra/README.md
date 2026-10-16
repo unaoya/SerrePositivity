@@ -2687,3 +2687,13 @@ bar用の合同関係と三条件、最終小さい厳密RMap・F2は未完了�
 SSetのモデル構造は不要。π₀写像の全単射性、粗商の高次情報の保存は主張しない。
 高次を保つ自然な小値化・最終小さい厳密RMap・F2は未完了。
 検証：`scripts/check_ordinary_bar_mapping_classes.lean`、計画書§329。
+
+
+### 通常の射の全次数の代表と粗商の同定（§330）
+
+`OrdinaryBarLabelSurjectivity`は任意のresolution pair・任意の次数でrawラベルの全射性を証明する。
+全barのラベル・augmentationの次数ごとの全射性と、π₀ラベルの全射性も得る。
+`DiagramQuotient`の全射kernel比較の一般同型判定により、粗商の明示的uliftは
+通常の射の定数単体集合図式のuliftと自然同型であり、元の射影とラベルの因子分解も一致する。
+源の通常のモデル公理だけでよい。π₀ラベルの単射性・高次を保つ自然な小値化・F2は未完了。
+検証：`scripts/check_ordinary_bar_label_surjectivity.lean`、計画書§330。
