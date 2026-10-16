@@ -812,6 +812,8 @@ public import SerrePositivity.HomologicalAlgebra.DerivedTensorPureFactorization
 
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorCartierProducts
 
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedTensorCartierProducts
+
 /-!
 # Serre の交点重複度の正値性の形式化
 

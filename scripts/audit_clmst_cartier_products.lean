@@ -25,12 +25,12 @@ set_option quotPrecheck false in
 local notation "Q" => R ⧸ Ideal.span {d}
 set_option quotPrecheck false in
 local notation "q" => Ideal.Quotient.mk (Ideal.span {d})
-variable (hS : scalarExtensionTorVanishing (q) (ModuleCat.of R S))
-    (hT : scalarExtensionTorVanishing (q) (ModuleCat.of R T))
-    (hA : IsSMulRegular H d) (u : B ⟶ A)
 
 -- The original normalized tensor unit retains its original Cartier unit.
-example :
+theorem audit_cartier_tensor_unit
+    (hS : scalarExtensionTorVanishing (q) (ModuleCat.of R S))
+    (hT : scalarExtensionTorVanishing (q) (ModuleCat.of R T))
+    (hA : IsSMulRegular H d) (u : B ⟶ A) :
     letI := derivedH0CommRing B
     letI := derivedH0Algebra B
     letI := derivedH0CommRing A
@@ -50,7 +50,10 @@ example :
   exact h
 
 -- A zero representative still gives zero, with no regularity hypothesis on the source tensor.
-example (t : T) :
+theorem audit_cartier_tensor_zero
+    (hS : scalarExtensionTorVanishing (q) (ModuleCat.of R S))
+    (hT : scalarExtensionTorVanishing (q) (ModuleCat.of R T))
+    (hA : IsSMulRegular H d) (u : B ⟶ A) (t : T) :
     letI := derivedH0CommRing B
     letI := derivedH0Algebra B
     letI := derivedH0CommRing A
@@ -67,4 +70,9 @@ example (t : T) :
   have h := pureDerivedAlgebraCartierQuotientH0Iso_tensor_representative R d hd S T A
     hS hT hA u 0 t
   simp only [TensorProduct.zero_tmul, map_zero] at h
-  exact h
+  simpa only [TensorProduct.zero_tmul] using h
+
+assert_no_sorry audit_cartier_tensor_unit
+assert_no_sorry audit_cartier_tensor_zero
+#print axioms audit_cartier_tensor_unit
+#print axioms audit_cartier_tensor_zero
