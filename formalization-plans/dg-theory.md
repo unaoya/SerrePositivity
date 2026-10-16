@@ -4626,3 +4626,36 @@ U13b全受入は未完。次は既存KaroubiFullyFaithfulの本質像判定へ�
 導来射を実際の加群射へ持ち上げ、cone計算との可換性を証明する。
 U11eのcoherence・U12e/f・U13残部・U14〜U17・D4mも未完。
 共有系列への追加要求はなく、担当外ファイルを編集していない。
+
+
+### 17.77 U13b2：finite cellのKaroubi延長とPerfの本質像判定（2026-10-16）
+
+`Perfect/KaroubiCriterion.lean`はderivedFiniteCellOver Sの充満部分圏
+DerivedFiniteCellCategoryOver、指定D(D)への完全忠実な包含、既存functorExtension₂による
+finiteCellKaroubiFunctorを構成する。比較先はKaroubi(D(D))である。
+共有KaroubiFullyFaithfulの完全忠実性・本質像判定と、Mathlibの自然な因子化同型を再利用する。
+共有一般論のファイルは変更していない。
+
+modulePerfectOver_iff_karoubi_essImageは、D(D)の対象Xについて、
+Perf_S(D)に属することとtoKaroubi(X)がこの延長の本質像に入ることの同値を証明する。
+順方向はD(D)内のretractをtoKaroubiで送り、共有の本質像判定へ適用する。
+逆方向は形式的対象の標準retractと因子化自然同型を合成し、
+Karoubi.Hom.fを取り出して実際のD(D)内のretractを得る。
+全生成元版modulePerfectについても同じ判定を公開した。
+
+既存のObjectPropertyのshiftと共有KaroubiTriangulatedFunctorのCommShiftを再利用し、
+元の包含、Karoubi延長、因子化自然同型のzero/add shift整合性も登録した。
+この対象判定にはD(D)全体のIsIdempotentCompleteを追加していない。
+Karoubi延長のすべての形式的対象をD(D)へ戻す同値の構成は、冪等分裂の検証とともに残る。
+
+Checks.PerfectKaroubi・Checks.PerfectBasic・Checks.FiniteCellProjective・Checks.StageSeven・
+既存Spectra.StageTwoの同時ビルドは成功（2865 jobs、終了コード0、警告なし）。
+任意A・独立対象宇宙・任意生成元集合・完全忠実性・本質像判定・CommShift・ZMod 2を検査した。
+主要13宣言の直接公理監査は終了コード0、標準公理のみ。監査累計1986宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。
+今回の2 Leanファイルにsorry/admit/新規axiomはない。担当差分の空白検査も成功。
+
+U13b全受入は未完。次はfinite cell間の導来射の加群射への持ち上げとconeの比較から
+finite cellの本質的像の三角閉性を証明し、retract閉包へ運ぶ。
+U11eのcoherence・U12e/f・U13残部・U14〜U17・D4mも未完。
+共有系列への追加要求はなく、担当外ファイルを編集していない。
