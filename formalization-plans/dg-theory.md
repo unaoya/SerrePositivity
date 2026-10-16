@@ -6815,3 +6815,47 @@ ZMod 2の次数−1作用を検査した。主要5宣言の直接公理監査は
 今回作成した失敗実験専用の三つの草稿は整理し、左輸送とその後続の作業草稿を保持した。
 次は作用結果の元を独立変数にした等式を入力として比較することで、合同の引数で発生する
 型照合を分離する。共有系列への要求や受入済みAPIの変更はない。
+
+
+### 17.147 U11e24：成分関数による再表示・両作用の全Hom自然性・右加群同型（2026-10-17）
+
+`Complexes/MapComponentFunctions.lean`は既存chain map f、指定された全次数の成分関数F、
+F n x=f.f n xの証拠から、成分をFで明示したchain mapを構成する。
+加法・A線形性・微分整合性を証明し、成分評価と元のchain mapとの等式を公開する。
+`Tensor/AssociatorLeftActionMap.lean`は作用の生成元公式を任意の値写像の後で使える形にする。
+`AssociatorComponent.lean`は元の結合同型の成分を始域・終域を固定した関数として定義し、
+元の成分との一致と三重生成元上の計算を証明する。
+`AssociatorComponentTransport.lean`と`AssociatorComponentCompatibility.lean`は、
+この関数表示を使って左作用後の輸送と左作用の可換式を証明した（各2秒前後）。
+
+元の結合同型の成分表示へ各点で戻す草稿検査は成功しなかった。
+そのため`AssociatorValueHom.lean`は上の一般構成で結合比較のchain mapを再表示し、
+成分が指定関数であることと、**射全体として元の結合同型のhomに等しいこと**を証明した。
+`AssociatorValueHomNaturality.lean`は再表示した射の左作用可換性と全Hom自然性を証明する。
+`AssociatorLeftNaturality.lean`は射全体の等式を使って、元の結合同型の全Hom自然性へ戻す。
+後者のビルドは1.9秒で成功した。最終の成分型照合を巨大な射の展開へ戻していない。
+
+`AssociatorRightComponentCompatibility.lean`は同じ成分関数表示で右B作用の可換式を証明する。
+符号は左括弧の(-1)^(p*(k+r))と右括弧の(-1)^(p*l)、l=k+rを比較し、
+再表示したchain mapの線形性で符号を輸送する（2.0秒で成功）。
+`AssociatorRightValueHomNaturality.lean`と`AssociatorRightNaturality.lean`は、
+元の結合同型の右B作用の主Hom写像の自然性と実際の右B加群同型associatorRightModuleIsoを構成する。
+評価すると順逆とも元の結合同型へ戻る。
+`AssociatorBimodule.lean`はこの右加群同型の左F作用に関する自然性を、値のHomだけでなく
+**右B加群の主Hom endへの射の等式**として証明した。
+任意CommRing A、非有界複体、独立B/C/E/F宇宙、Small.{u} B/C/Eを保持し、Fのsmall性は不要。
+新規の計算上限拡大や引用は使っていない。
+
+Checks.AssociatorBimodule・Checks.AssociatorTransport・Checks.QuotientUniversal・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（2842 jobs、終了コード0、警告なし）。
+任意対象宇宙での右加群同型と評価、両作用の全Hom自然性、ZMod 2の次数−1作用の可換式を検査した。
+主要24宣言の直接公理監査は標準公理のみ。累計2867宣言。
+文書検査は13 Markdown・320 exposition参照、失敗0件。担当差分の空白検査も成功。
+今回の受入実装にsorry/admit/新規axiomはない。採用済み引用は0件。
+未受入の古いLeftTransport/LeftCompatibility/RightCompatibility等は今回の依存閉包・コミットに含めない。
+
+次は右加群同型族と左作用の全Hom自然性を、全次数自然なbimodule比較へ束ね、
+三変数自然性と三角・五角coherenceを完成させる。通常の閉零関手間の自然同型だけを
+全次数dg自然性の代用にはしない。U11e全受入はなお未完。
+U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mの目標を保持する。
+共有系列への追加要求はない。共有一般論・共有ルートimport・他系列は編集していない。
