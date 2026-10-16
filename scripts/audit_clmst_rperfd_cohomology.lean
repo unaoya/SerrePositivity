@@ -54,6 +54,8 @@ elab "assert_rperfd_cohomology_dependencies" : command => do
     ``rPerfd_torMilnorShortComplex, ``rPerfd_torMilnorShortComplex_shortExact,
     ``rPerfd_tor_eq_zero_of_power_torsion_and_extensions,
     ``rPerfd_tor_eq_zero_of_power_torsion_and_quotientTorOne,
+    ``rPerfd_tor_eq_zero_of_power_torsion_and_completed_quotient_mul,
+    ``rPerfd_cohomology_vanishing_of_completed_quotient_mul_and_power_torsion,
     ``rPerfd_cohomology_vanishing_of_tor_idempotent]
   let _ ← liftCoreM <| checkRPerfdDependencies roots {}
   logInfo "Only the existing integral-perfectoidization existence sorry is permitted."
@@ -446,3 +448,7 @@ elab "assert_rperfd_cor4_torsion_quotientTorOne_dependencies" : command => do
 end
 assert_rperfd_cor4_torsion_quotientTorOne_dependencies
 #print axioms rperfd_cor4_from_torsion_quotientTorOne
+
+#print axioms SerrePositivity.CLMST.rPerfd_tor_eq_zero_of_power_torsion_and_completed_quotient_mul
+
+#print axioms SerrePositivity.CLMST.rPerfd_cohomology_vanishing_of_completed_quotient_mul_and_power_torsion

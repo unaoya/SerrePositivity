@@ -6,6 +6,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TorAlgebraCom
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerTorAlgebraMilnor
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTorsionTorExtension
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTorsionTorConormal
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedQuotientTensorExtension
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FiniteTensorComplete
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FiniteCoefficientPowerComparison
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerDerivedComparison
@@ -203,6 +204,33 @@ lemma rPerfd_tor_eq_zero_of_power_torsion_and_extensions (g : A)
     (perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))
     (rPerfd_isModuleComplete A t D p hperf) hExt hTor N i hi s hs
 
+/-- The original completed quotient multiplication supplies the extension input
+for full Tor annihilation; torsion tests remain explicit. -/
+lemma rPerfd_tor_eq_zero_of_power_torsion_and_completed_quotient_mul (g : A)
+    (hμ : IsIso ((DerivedCompletion.derivedComplexCompletionFunctor
+      (CompletedTower A t p) (p : CompletedTower A t p)).map
+        (boundedAboveDerivedAlgebraMul (R := CompletedTower A t p)
+          ((CompletedTower A t p) ⧸ perfectoidIdeal (CompletedTower A t p) p hperf
+            (algebraMap A (CompletedTower A t p) g))).hom))
+    (hTor : ∀ (L : ModuleCat.{u} A) (k : ℕ), 0 < k →
+      (∀ x : L, (p : A) ^ k • x = 0) → ∀ j : ℕ, 0 < j →
+        ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+          (algebraMap A (CompletedTower A t p) g),
+          torCoefficientScalarEndomorphism (RPerfd A D t p hperf) L j
+            (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0)
+    (N : ModuleCat.{u} A) (i : ℕ) (hi : 0 < i) (s : CompletedTower A t p)
+    (hs : s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+      (algebraMap A (CompletedTower A t p) g)) :
+    torCoefficientScalarEndomorphism (RPerfd A D t p hperf) N i
+      (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0 :=
+  DerivedCompletion.tor_eq_zero_of_power_torsion_and_complete_extensions p
+    (RPerfd A D t p hperf) (CompletedTower A t p)
+    (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))
+    (perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))
+    (rPerfd_isModuleComplete A t D p hperf)
+    (DerivedCompletion.completeIdealExtensionClosed_of_completed_quotient_mul_isIso
+      (p : CompletedTower A t p) _ hμ) hTor N i hi s hs
+
 /-- Full Tor annihilation from explicit torsion tests and scalar surjectivity on
 the actual first self-Tor of the original almost quotient. -/
 lemma rPerfd_tor_eq_zero_of_power_torsion_and_quotientTorOne (g : A)
@@ -303,5 +331,45 @@ lemma rPerfd_cohomology_vanishing_of_tor_idempotent
     (perfectoidIdeal (CompletedTower A t p) p hperf
       (algebraMap A (CompletedTower A t p) g))
     (p : CompletedTower A t p) j₀ (rPerfd_p_coordinate A t D p hperf j₀ htp) hI hTor
+
+/-- Both original Cor 4.0.4 conclusions from the completed standard quotient
+multiplication and power-torsion Tor tests; image idempotence is derived. -/
+lemma rPerfd_cohomology_vanishing_of_completed_quotient_mul_and_power_torsion
+    [IsLocalRing D] [IsNoetherianRing D]
+    (ht : Ideal.span (Set.range t) = maximalIdeal A) (hdim : ringKrullDim A = h)
+    (hsop : IsSystemOfParameters D (algebraMap A D ∘ t))
+    (j₀ : Fin h) (htp : t j₀ = (p : A)) (g : A)
+    (hμ : IsIso ((DerivedCompletion.derivedComplexCompletionFunctor
+      (CompletedTower A t p) (p : CompletedTower A t p)).map
+        (boundedAboveDerivedAlgebraMul (R := CompletedTower A t p)
+          ((CompletedTower A t p) ⧸ perfectoidIdeal (CompletedTower A t p) p hperf
+            (algebraMap A (CompletedTower A t p) g))).hom))
+    (hTor : ∀ (L : ModuleCat.{u} A) (k : ℕ), 0 < k →
+      (∀ x : L, (p : A) ^ k • x = 0) → ∀ j : ℕ, 0 < j →
+        ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+          (algebraMap A (CompletedTower A t p) g),
+          torCoefficientScalarEndomorphism (RPerfd A D t p hperf) L j
+            (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0) :
+    (∀ i : ℕ, i < h →
+      ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+        (algebraMap A (CompletedTower A t p) g),
+        HomologicalAlgebra.localCohomologyScalarEndomorphism (maximalIdeal D) i
+          (RPerfd A D t p hperf)
+          (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0) ∧
+    (∀ n : ℕ,
+      let _ := stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+      ∀ (y : Fin h → StageAlgebra A D t p n),
+        IsSystemOfParameters (StageAlgebra A D t p n) y → ∀ i : ℕ, 0 < i →
+          let _ := Module.compHom
+            (koszulHomologySelf (fun j => toRPerfd A D t p hperf n (y j)) i)
+            (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))
+          perfectoidIdeal (CompletedTower A t p) p hperf
+            (algebraMap A (CompletedTower A t p) g) ≤
+              Module.annihilator (CompletedTower A t p)
+                (koszulHomologySelf (fun j => toRPerfd A D t p hperf n (y j)) i)) :=
+  rPerfd_cohomology_vanishing_of_tor_idempotent A t D p hperf ht hdim hsop j₀ htp g
+    (fun k _ => DerivedCompletion.ideal_mod_power_idempotent_of_completed_quotient_mul_isIso
+      (p : CompletedTower A t p) _ hμ k)
+    (rPerfd_tor_eq_zero_of_power_torsion_and_completed_quotient_mul A t D p hperf g hμ hTor)
 
 end SerrePositivity.CLMST
