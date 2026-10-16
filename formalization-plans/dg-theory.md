@@ -5685,3 +5685,31 @@ Karoubiを付けた同値で元の一対象比較の本質的全射を代用し�
 次は元の比較へのfactorのshift整合性と、有限射影代表の構成を進める。
 U13d・U11eのcoherence・U12e/f・U14〜U17・D4mも未完。採用済み引用は0件。
 共有系列への追加要求はなく、共有ルート・既存PerfectComplex・他系列は変更していない。
+
+
+### 17.113 U13e26：Karoubi実現のfactor・導来比較・三角形図式のshift整合性（2026-10-16）
+
+`Category/EquivalenceComparison.lean`は同値の逆関手による実現の成分を、unit/counitの
+三角恒等式と自然性で比較する。因子化自然同型を順関手で送ると、実現を埋め込みへ戻す比較と
+元の延長の比較の合成になることを、任意の圏・関手を抽象的に保って証明した。
+実際の大きいKaroubi対象や主dg導来関手の射を成分計算中に展開しない。
+
+`Perfect/RingKaroubiFactors.lean`はこの抽象的な自然変換等式を、§17.112の実際の実現に適用する。
+toKaroubiの忠実性に沿ってNatTrans.CommShiftを反映し、
+ringPerfectKaroubiRealizationFacCommShiftを証明した。前節で保留したfactor自然同型の
+shift整合性はここで解消した。ringPerfectKaroubiRealizationTriangleIsoは
+元のPerfectHomotopy上の三角形関手と、Karoubi包含・実現による三角形関手を比較する。
+主導来包含を合成するringPerfectKaroubiRealizationDerivedIsoと、そのshift整合性も公開する。
+
+Checks.RingKaroubiFactors・Checks.RingKaroubi・Checks.RingPerfectTriangulated・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（3535 jobs、終了コード0、警告なし）。
+任意可換環、実際のfactor・主導来比較のNatTrans.CommShift、三角形関手の自然同型、ZMod 2を検査した。
+主要7宣言の直接公理監査は標準公理のみ。監査累計2476宣言。
+文書検査は24 Markdown・311 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+元のPerfectHomotopy自身の冪等完備性と、一対象比較のKaroubiなしの本質的全射は残る。
+U13e全受入・U13d・U11eのcoherence・U12e/f・U14〜U17・D4mは未完。採用済み引用は0件。
+U11eの旧ジョブ7882・1019は双方Unknown process idでハンドルの消失を確認した。
+旧ログは空で成功とは扱わず、再開時には証明構成を見直して新しい対象ビルドで検証する。
+共有系列への追加要求はなく、共有ルート・既存PerfectComplex・他系列は変更していない。
