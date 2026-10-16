@@ -2421,3 +2421,15 @@ anodyne射を反転する任意の関手の下で、このmiddle比較は全自�
 `OrdinaryBarRightEvaluation`は元の右脚と評価のanodyne局所化後可逆性の同値を証明する。
 評価自身の可逆性・bar全体の収縮、元のreplacement図式との自然比較、最終小さいRMap・F2は未完了。
 検証：`scripts/check_ordinary_bar_evaluation.lean`、計画書§307。
+
+
+### 次数・ラベル付き総要素coneと実nerveホモトピー（§308）
+
+`OrdinaryBarTotalCone`は実comma対象・次数・Homラベルを記録する同じ総要素圏で、
+全bar単体から全rowへの実自然変換を構成する。
+`OrdinaryBarTotalEvaluation`はrow側が元の小さい評価先の単体圏を経由することを全関手で証明する。
+`OrdinaryBarTotalHomotopy`は元のbar単体圏のnerveから総要素圏のnerveへの実ホモトピーを構成する。
+独立宇宙の`NerveHomotopyUniverse`と、元の要素を保持する`ElementsNaturalPrecomp`を使用する。
+`UniverseLiftElements`は既知の持ち上げの単体圏同値だけを構成し、任意のbarを縮小しない。
+補助nerveと元のbarとの比較、評価の可逆性、自然な最終小値化・F2は未完了。
+検証：`scripts/check_ordinary_bar_total_cone.lean`、計画書§308。
