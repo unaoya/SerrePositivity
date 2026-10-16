@@ -4020,3 +4020,24 @@ Checks.KFlat・Checks.StageSeven・既存Spectra.StageTwoの同時ビルドは�
 U12a全受入にはshift/cone/余積閉性とquasiIso保存との同値がなお必要であり、
 semifree・上有界flat・導来tensor・導来bimodule合成・係数変更も未完。
 U11eの左右自然性・三角/五角、U13〜U17、D4mも未完。共有系列への追加要求はない。
+
+### 17.54 U12a2：A上K-flatの閉性と準同型保存の同値（2026-10-16）
+
+`Tensor/KFlatComplex.lean`はK-flat複体の単位・任意整数shift・cone・tensor閉性を証明した。
+既存cochainTensorShiftLeft/cochainTensorConeLeftとacyclic複体の対応する閉性を再利用する。
+complexKFlat_of_flat_boundsは既存bounded-flat定理を、相手が非有界でもよいK-flat条件へ接続する。
+これは上有界flatの場合のU12c全受入を意味しない。
+complexKFlat_quasiIso_left/rightは両方のtensor配置で準同型を保ち、
+complexKFlat_iff_preserves_quasiIsoは任意準同型の保存とacyclic消滅条件の同値を証明する。
+逆方向ではacyclic Lから零複体への準同型を使い、tensorが零対象を保つことを明示する。
+
+Checks.KFlatComplex・Checks.KFlat・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2771 jobs、終了コード0、警告なし）。任意A、整数shift−1/+1、
+非有界cone/tensor、ZMod 2を検査した。主要8宣言の直接公理監査は終了コード0、標準公理のみ。
+監査累計1688宣言。担当差分の空白検査は成功。今回の2ファイルにsorry/admit/新規axiomはない。
+
+相対K-flatのshift/cone/余積閉性と準同型保存の同値はなお未完。
+U11e右B成分整合性の草稿は既定カーネル予算でdeterministic timeoutとなったため、
+該当補題に限りmaxHeartbeats 800000で再検査中。左右の自然性・bimodule同型の草稿は
+受入済み宣言に含めない。三角/五角・U12の残部・U13〜U17・D4mも未完。
+共有系列への追加要求はなく、既存PerfectComplex・共有ルート・担当外ファイルを編集していない。
