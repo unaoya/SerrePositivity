@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanRetractionRightLifting
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanMonoPushoutExtension
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanTestDetection
