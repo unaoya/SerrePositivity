@@ -2757,3 +2757,14 @@ anodyne拡張上の実kernel、実商型のv-small性、有限境界持ち上げ
 基底は全resolution presentation圏であり、Cᵒᵖ × Cへの降下・最終小さい厳密RMap・F2は未完了。
 射影のsectionやcofinalityを仮定せず、固定Kan bar上のQuotientDataの存在とも区別する。
 検証：`scripts/check_presentation_kernel_quotient.lean`、計画書§335。
+
+
+### 小さいKan値の通常圏的な基底降下（§336）
+
+`SmallKanHomotopy`は小さいKan値とHom宇宙vの区間ホモトピー類を持つ通常の圏を構成し、
+任意の大きいanodyne局所化への完全忠実な実現を供給する。SSetモデルは不要である。
+`OrdinaryBarHomotopyDescent`は元のCᵒᵖ × C上のこの通常圏への厳密関手、元のbarとの実現後の全自然同型、
+両変数の弱同値反転、§335のpresentation商との通常圏内の全自然同型を得る。
+同じ基底射のpresentation比較の像は同じホモトピー類となり、射影のsection等は仮定しない。
+元の小さいSSetモデルだけを使う。実写像を射とするSSet値の厳密化・高次整合性・最終RMap・F2は未完了。
+検証：`scripts/check_ordinary_bar_homotopy_descent.lean`、計画書§336。
