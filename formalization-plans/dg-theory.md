@@ -6042,3 +6042,35 @@ Checks.ErasureAdjacent・Checks.ErasureFirstTail・Checks.StageSeven・既存Spe
 全erasure²=0・全微分・U15b全受入は未完。
 U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mも未完。採用済み引用は0件。
 共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.124 U15b9：依存対による二位置の反交換・実際の有限和相殺・全消去作用素の二乗零（2026-10-16）
+
+`Quotient/DoubleFaces.lean`は二重消去の終域の語と次数2 cochainをDoubleFaceという依存対で保持する。
+前方Homとεを残すprefixDoubleFace、負号の保存、後方二重消去と先頭消去の帰納式を構成した。
+先頭の場合の反交換を後方へ帰納的に運び、i≤jについて「先にi、次にjを消す」と
+「先にj+1、次にiを消す」の反交換を、終域の語も含めた依存対の等式として証明した。
+終域の複体を曖昧に同一視せず、語の一致をこの等式の第一成分として保持する。
+
+`Quotient/DoubleFaceSum.lean`は二重消去を対応するpathの包含と合成し、共通の全path直和を
+終域とするerasurePairを構成した。swapErasureが実際の項を負にすることと、
+長さnとn−1の範囲の実際の有限二重和が零であることを証明した。
+`Quotient/PathCochainExt.lean`は複体の各次数の余積普遍性から、閉性を仮定しない任意次数の
+cochainをpath包含への制限で判定する補題を構成した。
+`Quotient/ErasureSquare.lean`は作用素の二乗を各pathへ制限し、実際の二重消去項の有限和へ
+展開する。最初の消去が有効な範囲で消去後の語の長さがn−1となることを使い、有限和相殺と
+上記extから全erasure²=0を証明した。この二乗零を外部仮定や引用として置いてはいない。
+任意可換環・非有界Hom・独立対象宇宙を保持し、直和を使う部分のみSmall.{u} Dを要求する。
+
+Checks.ErasureSquare・Checks.ErasureAdjacent・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（2676 jobs、終了コード0、警告なし）。任意の二位置の依存対等式、
+任意dg圏での全消去作用素二乗零、ZMod 2で全pathを含む作用素の二乗零を検査した。
+主要18宣言の直接公理監査は標準公理のみ。監査累計2626宣言。
+文書検査は24 Markdown・311 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次は証明済みの内部微分との反交換と全erasure²=0をperturbComplexへ適用し、
+最終Hom複体・元のHomのchain mapとしての包含を構成する。
+最終微分とpath合成のLeibniz、単位・結合・収縮方程式の検証は残るためU15b全受入は未完。
+U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mも未完。採用済み引用は0件。
+共有一般論・共有ルートimport・他系列は編集していない。
