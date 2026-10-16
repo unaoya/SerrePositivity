@@ -6678,3 +6678,51 @@ quotientComposition ≫ quotientEvaluation = (quotientEvaluation ⊗ₘ quotient
 延長・制限の往復と一意性を証明する。対象の定義的等しさと同型を混同しない。
 U15c全受入、U11e・U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mは未完。
 採用済み引用は0件。共有系列への追加要求はない。共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.143 U15c5：任意二pathの合成保存・dg関手への延長・指定収縮データへの往復（2026-10-17）
+
+`Complexes/TensorZeroCochainLaws.lean`は閉性を仮定しない次数0 tensorの合成保存、associatorとの
+整合性、左右の恒等cochainとの一致を証明する。直接の成分型照合で検出した再帰深さの制限は、
+既存tensorCochain_interchangeと左右Hom写像の合成保存を使って解消した。上限拡大は採用していない。
+`TensorZeroCochainEvaluation.lean`は閉零写像による左右後合成と両因子前合成、結合的な三項の
+評価式、評価の合成保存を固定左cochainの追加へ運ぶtensorCarry_evaluationを証明する。
+固定左cochainの閉性も仮定しないので、指定εの評価にも適用できる。
+
+`Quotient/PathEvaluationAppend.lean`は任意二pathについて
+ofHom(appendMap w v).comp(pathEvaluation(w++v)) =
+(tensorZeroCochain(pathEvaluation w)(pathEvaluation v)).comp(ofHom(eComp_E))を証明する。
+左語の空語はprepend則、非空語は帰納仮定へεと元の前方Homを順に追加する二回のcarryで得る。
+この有限語の結果はSmall仮定を必要としない。
+`TensorTwoPathCochainExt.lean`は二つの全path直和のtensorからの任意次数cochainのextを与え、
+`InternalEvaluationComposition.lean`は各二pathへの制限から全直和の合成保存を証明する。
+`EvaluationComposition.lean`は純tensor上の最終合成の直接評価を使って、実際のchain mapの式
+quotientComposition ≫ quotientEvaluation = (quotientEvaluation ⊗ₘ quotientEvaluation) ≫ eComp_E
+を証明する。
+
+`Quotient/Extension.lean`は既存quotientEvaluation_unitとこの合成保存から、
+**extension : ContractedFunctor A D S E → DGFunctor A (QuotientObject D S) E**を構成する。
+元の包含との合成がC.toDGFunctorに等しいこと、制限後の指定収縮元が元のh_bであること、
+**restrict_extension：restrictContractedFunctor(extension C) = C**を証明した。
+最後の等式は、dg関手だけでなく選択済み収縮を含む構造体そのものの等式である。
+ContractedFunctor.extはdg関手の等式と依存する収縮族のHEqから証明し、不要なSmall仮定は置かない。
+EnrichedFunctor.extでは両関手を明示して対象成分のrflによる誤ったメタ変数同一化を避けた。
+任意可換環・非有界Hom・独立対象宇宙・全直和でのSmall.{u} Dを維持し、Eのsmall性は仮定しない。
+
+Checks.QuotientExtension・Checks.QuotientEvaluation・Checks.EvaluationPrepend・Checks.PathEvaluation・
+Checks.QuotientContraction・Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功
+（2759 jobs、終了コード0、警告なし）。任意有限語の連結と実際のdg延長、
+任意対象宇宙のEに対する指定収縮付きデータの往復、ZMod 2での同じ往復を検査した。
+主要18宣言の直接公理監査は標準公理のみ。監査累計2818宣言。
+文書検査は13 Markdown・320 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次は逆向きのextension(restrict G)=Gと延長の一意性を証明し、厳密普遍性のEquivを構成する。
+各pathが元のHomと指定εの反復合成で生成されることを具体的な成分等式として証明する。
+単一ε pathを後方pathへ連結する式では、epsilonTermの両側の単位とprependMap_left_unitを使う。
+前方の元のHomを合成する段階では、対象側の右単位則とassociator整合性を使ってprefixPathを復元する。
+任意Gについてこれらの生成式とG.map_comp/G.map_unitElementからpath成分を同定する経路、
+又は標準収縮データの評価が恒等となることと評価の後合成自然性を組み合わせる経路が候補。
+一方の往復だけでU15c全受入や厳密普遍性の完成とはしない。
+U11e・U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完。採用済み引用は0件。
+共有系列への追加要求はない。共有一般論・共有ルートimport・他系列は編集していない。
