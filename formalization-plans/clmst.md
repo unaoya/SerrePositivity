@@ -7733,6 +7733,21 @@ p冪根を保持する。全perfectoid係数C、任意のp冪torsion試験加群
 元の実H⁰と選んだperfectoid化の比較、絶対整閉側の実有限自由almost比較・rank還元を供給し、
 KL-T→KL-Q、続いてDの実入力・一様指数・引用置換へ進む。
 
+KL-T環比較・元の完備tensor H⁰の環構造と単位を保つ表示移送（2026-10-17）：
+`PrincipalCompletionFunctor.lean`で主元完備化の環射・環同型と元の単位図式を構成した。
+`CommutativeAlgebra/TensorRingEquiv.lean`では基底・二因子の両立する環同型から
+元の通常tensorの環同型を構成し、純tensorの代表元を保つことを確認した。
+`CompletedTensorH0RingTransport.lean`では既存F3/G2の実H⁰比較を主元完備化へ接続し、
+通常tensorの環同型から、基底も変更した元の完備tensor H⁰の環同型を得た。
+元の完備化単位が、通常tensorの指定した環同型を通じて元の目標単位へ移る図式も証明した。
+通常tensor上のp正則性・有限性・bounded torsion・平坦性を要求しない。
+共通対象2776ジョブ、全体5864ジョブ、KL1040件、専用公開15宣言と名前付き型検査2宣言が成功した。
+全17宣言はsorry非依存・標準3公理のみ。型検査はp=0での二因子交換と元の単位、
+通常平坦性を仮定しない基底RからSへの変更を元の完備tensorで扱う。
+これにより、Cartier商の環同型を実Fontaine表示先へ移すための共通比較が揃った。
+次はその表示の実入力へ適用して元のH⁰環のperfectoid性を供給し、
+選んだperfectoid化との標準写像を保つ比較、実almost比較・rank還元へ進む。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
