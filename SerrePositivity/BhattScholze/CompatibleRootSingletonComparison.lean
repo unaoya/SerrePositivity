@@ -17,12 +17,14 @@ variable {R : Type u} [CommRing R]
 /-- 一元添字族の初期イデアルは、元の単一根の初期主イデアル。 -/
 theorem compatibleRootFamilyZeroIdeal_singleton (ρ : ℕ → R) :
     compatibleRootFamilyZeroIdeal (fun _ : PUnit.{u+1} ↦ ρ) = Ideal.span {ρ 0} := by
-  simp only [compatibleRootFamilyZeroIdeal, Set.range_const]
+  change Ideal.span (Set.range (fun _ : PUnit.{u+1} ↦ ρ 0)) = Ideal.span {ρ 0}
+  rw [Set.range_const]
 
 /-- 一元添字族の全根イデアルは、元の単一根イデアル。 -/
 theorem compatibleRootFamilyIdeal_singleton (ρ : ℕ → R) :
     compatibleRootFamilyIdeal (fun _ : PUnit.{u+1} ↦ ρ) = compatibleRootIdeal ρ := by
-  unfold compatibleRootFamilyIdeal compatibleRootIdeal
+  change Ideal.span (Set.range (fun x : PUnit.{u+1} × ℕ ↦ ρ x.2)) =
+    Ideal.span (Set.range ρ)
   congr 1
   ext x
   constructor

@@ -515,7 +515,7 @@ BS担当は本計画、BS専用監査、下記N1/N2のBSファイルを編集す
 | --- | --- | --- | --- |
 | N0 | 本計画 | 現在地、担当、共通化候補、検証・保存の順序を記録 | `54f3d966`で保存済み |
 | N1 | `CompatibleRootFamilyQuotient.lean` | 被約なp進完備終域への一意延長を一般入口に抽出。旧perfectoid入口を同じ型の包装にする。仮定弱化を伴う証明拡張 | 未実装 |
-| N1a | `CompatibleRootSingletonComparison.lean` | 並行alias移管後の二つのイデアル一致証明を、元のspan表示への明示的changeで修復。型・同型・標準射は維持 | 下流ビルドで必要性を確認。修復を予定 |
+| N1a | `CompatibleRootSingletonComparison.lean` | 並行alias移管後の二つのイデアル一致証明を、元のspan表示への明示的changeで修復。型・同型・標準射は維持 | 修復・下流ビルド・既存169件のfocused監査済み |
 | N2 | `CompatibleRootPDComparison.lean`、`CompatibleRootFamilyPDComparison.lean` | 同じ完備化環上のpイデアル像の計算を既存 `pIdeal_map` へ置換。新宣言・import・instanceなし | 未実装 |
 | N3 | `scripts/audit_bhatt_scholze_structure.py`、BS専用監査 | 引用・共有監査掲載・aliasの参照分類を追加。ソース解析をLeanの証明監査と区別する | 実装・自己テスト11件・11基盤入口検査済み |
 
@@ -608,3 +608,13 @@ B-I/B6、André条件付き入力、残るCLMST引用は維持する。
   N1の監査追記前の状態では未掲載候補14件（共有参照7、引用元2、引用import到達4、新N1入口1）。
   旧assert名31件のうち30件はソースalias候補に一致し、tmul旧名1件は照合未解決。
   後者を未証明と呼ばず、並行移管の互換性問題として引き続き扱う。
+
+
+- N1a：並行alias移管後、単一根・一元添字族のイデアル一致の二証明が失敗した。
+  旧名の一段unfoldに依存せず、同じspan表示への `change` を明示して修復した。
+  比較同型・標準射・公開型は変更せず、専用監査のR5c節もBS名前空間内に置いて名前の曖昧性を除いた。
+  最初の統合ビルドの失敗は成功扱いにせず、修復後の下流4,299ジョブ、
+  BS専用監査の全536入口・4,582ジョブ、既存169件のrefactoring監査の終了コード0を確認した。
+  ビルド中のBSソースハッシュ変化なし。既存の単一根比較のrfl・標準射図式も監査に含む。
+  通常B4監査は移管側の `compatibleRootIdealTensorMap_tmul` 不足による2コマンドだけが失敗。
+  この別件を修復済みと数えず、共通移管ファイルや監査の対象宣言を変更していない。

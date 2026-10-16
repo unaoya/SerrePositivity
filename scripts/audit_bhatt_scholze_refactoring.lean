@@ -382,12 +382,11 @@ assert_no_sorry SerrePositivity.BhattScholze.OrientedPrism.quotient_isIntegralPe
 end R5BContracts
 
 -- R5c: validated refactoring contracts.
-section R5CContracts
+namespace SerrePositivity.BhattScholze.R5CContracts
 
 /- Focused R5c audit: all singleton comparisons, old high-level APIs,
    exact old completion/map, commuting standard-map diagrams,
    and the unrestricted reduced p-adically complete target contract. -/
-open SerrePositivity SerrePositivity.BhattScholze
 universe u
 section StandardMaps
 variable {R : Type u} [CommRing R] (p : ℕ) (ρ : ℕ → R)
@@ -469,7 +468,7 @@ assert_no_sorry SerrePositivity.BhattScholze.existsUnique_compatibleRootCompleti
 #print axioms SerrePositivity.BhattScholze.CompatibleRootCompletion
 #print axioms SerrePositivity.BhattScholze.compatibleRootCompletionMap
 #print axioms SerrePositivity.BhattScholze.existsUnique_compatibleRootCompletionLift
-end R5CContracts
+end SerrePositivity.BhattScholze.R5CContracts
 
 -- R6: validated refactoring contracts.
 /-! R6 focused audit: 9 new + 1 moved + 18 existing consumer declarations.
