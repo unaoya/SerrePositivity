@@ -169,6 +169,49 @@ theorem deltaDivisionEvaluationRelation_mem_finite (D : DeltaStructure p A) (d :
   rw [← deltaDivisionFiniteEvaluationIdeal_eq]
   exact Ideal.subset_span ⟨(s, ⟨n, by omega⟩), rfl⟩
 
+/-- 全下位関係の後では、一根の次の評価関係とδ反復関係は同じイデアルを追加する。 -/
+theorem deltaDivisionEvaluation_next_sup_span_eq (D : DeltaStructure p A) (d : A)
+    (a : σ → A) (t : σ) (N : ℕ) :
+    deltaDivisionFiniteRelationIdeal D d a N ⊔
+        Ideal.span {deltaDivisionEvaluationRelation D d a t (N + 1)} =
+      deltaDivisionFiniteRelationIdeal D d a N ⊔
+        Ideal.span {deltaDivisionIteratedRelation D d a t (N + 1)} := by
+  let E := relativeFreeDeltaStructure σ D
+  let x : Unit → RelativeFreeDeltaRing (R := A) σ :=
+    fun _ => MvPolynomial.C d * MvPolynomial.X (t, 0)
+  let y : Unit → RelativeFreeDeltaRing (R := A) σ := fun _ => MvPolynomial.C (a t)
+  have hEval : deltaDivisionEvaluationRelation D d a t (N + 1) ∈
+      deltaDivisionFiniteRelationIdeal D d a N ⊔
+        Ideal.span {deltaDivisionIteratedRelation D d a t (N + 1)} := by
+    have hm := pairEvaluation_mem_difference E x y () (N + 1)
+    apply (show pairDifferenceIdeal E x y (N + 1) ≤ _ from Ideal.span_le.mpr ?_) hm
+    rintro _ ⟨⟨_, i⟩, rfl⟩
+    by_cases hi : i.val ≤ N
+    · apply (show deltaDivisionFiniteRelationIdeal D d a N ≤ _ from le_sup_left)
+      exact Ideal.subset_span ⟨(t, ⟨i.val, by omega⟩), rfl⟩
+    · have he : i.val = N + 1 := by omega
+      change deltaDivisionIteratedRelation D d a t i.val ∈ _
+      rw [he]
+      exact (show Ideal.span {deltaDivisionIteratedRelation D d a t (N + 1)} ≤ _
+        from le_sup_right) (Ideal.mem_span_singleton_self _)
+  have hIter : deltaDivisionIteratedRelation D d a t (N + 1) ∈
+      deltaDivisionFiniteRelationIdeal D d a N ⊔
+        Ideal.span {deltaDivisionEvaluationRelation D d a t (N + 1)} := by
+    have hm := pairDifference_mem_evaluation E x y () (N + 1)
+    apply (show pairEvaluationIdeal E x y (N + 1) ≤ _ from Ideal.span_le.mpr ?_) hm
+    rintro _ ⟨⟨_, i⟩, rfl⟩
+    by_cases hi : i.val ≤ N
+    · exact (show deltaDivisionFiniteRelationIdeal D d a N ≤ _ from le_sup_left)
+        (deltaDivisionEvaluationRelation_mem_finite D d a t i.val N hi)
+    · have he : i.val = N + 1 := by omega
+      change deltaDivisionEvaluationRelation D d a t i.val ∈ _
+      rw [he]
+      exact (show Ideal.span {deltaDivisionEvaluationRelation D d a t (N + 1)} ≤ _
+        from le_sup_right) (Ideal.mem_span_singleton_self _)
+  apply le_antisymm
+  · exact sup_le le_sup_left (Ideal.span_le.mpr (Set.singleton_subset_iff.mpr hEval))
+  · exact sup_le le_sup_left (Ideal.span_le.mpr (Set.singleton_subset_iff.mpr hIter))
+
 /-- 自由δ射の全評価関係は、実raw δ除算包の標準商射で零となる。 -/
 theorem deltaDivisionEvaluationRelation_quotient_eq_zero
     (D : DeltaStructure p A) (d : A) (a : σ → A) (s : σ) (n : ℕ) :
