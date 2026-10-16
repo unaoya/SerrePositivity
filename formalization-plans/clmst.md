@@ -7211,6 +7211,42 @@ KL-E2d-4・tensor底変換と元の標準augmentationの可換図式（2026-10-1
 既存の導来剰余tensor比較のH⁰上で同定する。その後Cartier像の公式と完備化の一意性へ接続する。
 この図式だけでCartier線形同型の乗法保存、C2全体、C3やKL・Dの実適用を完成とはしない。
 
+KL-E2d-4・元の導来剰余tensorのH⁰と純tensorの標準化（2026-10-17）：
+`DerivedQuotientTensorAugmentation.lean`で、元の通常tensorの係数拡大から元の二つの
+通常因子商のtensorへの標準線形比較を構成し、Tor仮定なしに同型であることを確認した。
+元の`1 ⊗ (s ⊗ t)`は、元の商写像による`[s] ⊗ [t]`へそのまま移る。
+
+元の`derivedTensorQuotientAlgebraIso`について、前工程の導来底変換の図式へ元の二つの
+通常因子商の同型を合成し、標準tensor augmentationとの可換性を証明した。
+これを実H⁰へ移し、元のsingle-H⁰比較と係数変更のH⁰比較を使って、上記の通常線形比較と
+一致することを確認した。
+さらに両側の係数変更Tor条件から、元のtensor augmentationの導来剰余がH⁰同型であることを
+導き、その元のH⁰写像を用いた正規化同型`derivedTensorQuotientBaseChangeH0Iso`を公開した。
+この同型の逆で戻した`1 ⊗ (s ⊗ t)`の像が、元の導来剰余tensor比較の下で
+通常の`[s] ⊗ [t]`になる公式を証明した。源の二因子どうしのTor独立性や、通常tensorの
+Cartier生成元の正則性を追加していない。
+
+新規八宣言はsorry非依存・標準3公理のみ。対象2484ジョブ、専用監査8宣言・3型検査、
+全体5836ジョブ、KL926件が終了コード0で成功した。
+型検査は元の零代表元の像、正規化した実導来クラスの零右因子、係数商が零環になる単位イデアルを含む。
+共通import閉包105モジュールはBS・CLMST・Inputs・Paper非依存。
+前工程の係数変更augmentationは`56a321bd`、tensor可換図式は`c89c2d47`で保存済み。
+
+次のCartier像との合流は、以下の順で証明する。
+
+1. 純粋な目標ADとその実H⁰のCartier正則性を使い、任意の離散R加群からADへの線形写像の
+   代表元公式を用意する。源の加群のd正則性は要求せず、既存の
+   `quotientBaseChangeH0Iso`と目標だけの正規化Cartier比較を使う。
+2. 元の未完備な導来tensorは非正、ADは次数0に集中するため、既存の
+   `derivedNonpositiveHomologyZero_map_bijective`で、元の二つの完備化単位の合成を
+   標準augmentationから通常tensorのsingle対象を通る線形写像へ因子化する。
+   その通常tensorから実H⁰への写像は、元のH⁰代数写像と`derivedTensorH0AlgEquiv`から得る。
+3. 今回の純tensorの正規化公式へ1・2を適用し、Cartier像を元の左右因子の像の積と同定する。
+   その後、純tensor上の一致と完備化H⁰延長の一意性で標準代数写像と既存線形同型の一致を得る。
+
+この三工程は今後の証明方針であり、完成したとは扱わない。
+標準Cartier代数同型、C2・C3全体、Prop 2.4.9(a)、KL・Dの実適用、B-Iは引き続き残る。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。

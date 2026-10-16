@@ -805,6 +805,8 @@ public import SerrePositivity.HomologicalAlgebra.DerivedBaseChangeAugmentationMo
 public import SerrePositivity.HomologicalAlgebra.CochainTensorBaseChangeSingle
 public import SerrePositivity.HomologicalAlgebra.DerivedBaseChangeAugmentationComparison
 
+public import SerrePositivity.HomologicalAlgebra.DerivedQuotientTensorAugmentation
+
 /-!
 # Serre の交点重複度の正値性の形式化
 
