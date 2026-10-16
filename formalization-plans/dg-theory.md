@@ -5296,3 +5296,28 @@ U13eの実際のshift・標準cone三角形・小さい代表系と主Perfの三
 全受入には一対象Aの既存PerfectHomotopyとの比較と、そのretract・線形性を含む照合が残る。
 U13dのcompact⇒Perf、U11eのcoherence、U12e/f、U14〜U17、D4mも未完。採用済み引用は0件。
 共有一般論・共有ルート・他系列のファイルを変更していない。
+
+
+### 17.99 U13e12：主dg複体H⁰と既存の非有界ホモトピー圏（2026-10-16）
+
+`Category/ComplexHomotopyComparison.lean`は既存complex_boundary_iffを使い、
+主dg複体圏Ch(A)のH⁰からMathlib HomotopyCategory (ModuleCat.{u} A) (.up ℤ)への関手を構成した。
+複体・射を別モデルへ置き換えず、既存の閉零比較closedToComplexと既存のホモトピー商を合成して
+境界関係で降ろす。比較の充満性は二つの商/比較の充満性、忠実性は既存の商での等式から
+chain homotopyを取り境界関係へ戻すことで証明した。全対象は同じ複体の代表から得られる。
+
+閉零比較のA線形性をHom cochainで証明し、H⁰比較の加法性・A線形性を商の充満・本質的全射性で降下した。
+実際のA線形同値complexHomotopyEquivalenceと商関手の可換四角形を公開する。
+環Aと加群の宇宙uを明示し、通常複体のHomotopyCategoryをdg加群の二重複体として扱わない。
+
+Checks.ComplexHomotopyComparison・Checks.PerfectEnhancementConeComparison・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（2900 jobs、終了コード0、警告なし）。
+任意可換環・非有界複体、実際のchain mapの商像の計算、順逆のA線形性と加法性、ZMod 2を検査した。
+主要12宣言の直接公理監査は終了コード0、標準公理のみ。監査累計2322宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査も成功。
+今回の2 Leanファイルにsorry/admit/新規axiomはない。
+
+次は既存strictlyPerfectComplexの対象へ制限し、その主Homを持つdg圏のH⁰を既存PerfectHomotopyと比較する。
+これは一対象Aの主Perfとの比較の中間段階であり、主Perfのretract閉包と有限射影代表の一致を先取りしない。
+U13e全受入・U13d・U11eのcoherence・U12e/f・U14〜U17・D4mは未完。採用済み引用は0件。
+共有ルート・既存PerfectComplex・共有一般論・他系列のファイルを変更していない。
