@@ -852,6 +852,7 @@ public import SerrePositivity.BhattScholze.PerfectoidCompletedBaseChangeDiscrete
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorH0RingTransport
 public import SerrePositivity.BhattScholze.PerfectDeltaPresentedTensorRing
 public import SerrePositivity.BhattScholze.CompletedTensorPerfectoidization
+public import SerrePositivity.HomologicalAlgebra.RestrictedBaseChangeScalar
 
 /-!
 # Serre の交点重複度の正値性の形式化
