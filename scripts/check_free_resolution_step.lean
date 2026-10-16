@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeResolutionStep
+import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeResolutionTower
 
 universe v u vD uD
 noncomputable section
@@ -66,6 +66,30 @@ example (i : Fin (n + 2)) : degeneracyFunctor D (n + 1) i ⋙
   filler_degeneracy hcof hfib D n P F G faceLaw degeneracyLaw i
 end Step
 
+section Tower
+open CategoryTheory.MonoidalCategory FreeGeneratorCategories OrdinaryBarFreeResolutionTower
+open OrdinaryBarFreeResolutionDegeneracyValues
+variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
+  [HomotopicalAlgebra.ModelCategory SSet.{v}]
+  (hcof : HomotopicalAlgebra.cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
+  (hfib : HomotopicalAlgebra.fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
+  (D : Type uD) [Category.{vD} D] (P : SSet.{max u v})
+  (A : Seed (C := C) hcof hfib D P)
+example : OrdinaryBarFreeResolutionTower.diagram hcof hfib D P A 0 = A.previous := rfl
+example : OrdinaryBarFreeResolutionTower.diagram hcof hfib D P A 1 = A.current := rfl
+example (m : ℕ) (i : Fin (m + 2)) :
+    OrdinaryBarFreeResolutionTower.diagram hcof hfib D P A (m + 1) ⋙
+      OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ SSet.stdSimplex.δ i) =
+    FreeGeneratorFaces.fixedFace D (m + 1) i ⋙
+      OrdinaryBarFreeResolutionTower.diagram hcof hfib D P A m :=
+  diagram_face hcof hfib D P A m i
+example (m : ℕ) (i : Fin (m + 1)) : degeneracyFunctor D m i ⋙
+    OrdinaryBarFreeResolutionTower.diagram hcof hfib D P A (m + 1) =
+      OrdinaryBarFreeResolutionTower.diagram hcof hfib D P A m ⋙
+        OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ sigma m i) :=
+  diagram_degeneracy hcof hfib D P A m i
+end Tower
+
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
@@ -76,7 +100,8 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Simplicial.ReversedSimplexParameters,
     Name.str modulePrefix "OrdinaryBarFreeResolutionMixedFaces",
     Name.str modulePrefix "OrdinaryBarFreeResolutionDegenerateBoundary",
-    Name.str modulePrefix "OrdinaryBarFreeResolutionStep"]
+    Name.str modulePrefix "OrdinaryBarFreeResolutionStep",
+    Name.str modulePrefix "OrdinaryBarFreeResolutionTower"]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
