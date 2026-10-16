@@ -514,6 +514,7 @@ public import SerrePositivity.CommutativeAlgebra.ParameterRadicalImage
 public import SerrePositivity.HomologicalAlgebra.FiniteParameterKoszulAnnihilator
 public import SerrePositivity.CLMST.FiniteStageKoszulAnnihilator
 public import SerrePositivity.CLMST.ConditionalCohomologyVanishing
+public import SerrePositivity.CLMST.RPerfdCohomologyInputs
 public import SerrePositivity.HomologicalAlgebra.ArtinReesHomology
 public import SerrePositivity.HomologicalAlgebra.KoszulTransitionDepth
 public import SerrePositivity.HomologicalAlgebra.InjectiveLinearYoneda

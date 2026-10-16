@@ -5829,6 +5829,32 @@ G1・G3〜G11、全体公理、CLMST、KL、Dの各監査も終了コード0を�
 BS固有のperfectoid性・完全平坦性の最終適用はBS担当の工程として維持する。
 次はKL-I/A/Q、続いてD-I/U/Qを実行する。KL・Dの実入力と原典引用の置換はまだ完成していない。
 
+KL-I/A1・実RPerfdへの標準入力接続（2026-10-16）：
+`CLMST/RPerfdCohomologyInputs.lean`で、基底Aの正則局所性、極大イデアルを生成する
+標準列t、次元の一致から、全k（k=0も含む）の実Koszul分解を供給した。
+全有限段の元の`toRPerfd`についてA作用との可換性を証明し、指定座標t[j₀]=pと
+完備塔→同じ選択のRPerfdの作用を照合した。
+`rPerfd_cohomology_vanishing_of_tor_idempotent`はこれらの入力を実際に埋め、
+同じalmostイデアルについてCor 4.0.4の両結論へ接続する。残す数学的入力はhI・hTorである。
+
+| 入力 | 現在の供給状況 |
+| --- | --- |
+| hres | `parameter_power_isKoszulResolution`で供給済み。sorry非依存・標準3公理のみ |
+| φ・hφ | 元の`toRPerfd`と`toRPerfd_algebraMap_A`。全n、元のD作用を保持 |
+| a・j₀・ha | a=p、指定座標j₀、`rPerfd_p_coordinate`。原典適用時はj₀=0 |
+| hI | なお未供給。B5の任意g・全正指数の冪等性が必要。既存の`Inputs.perfectoidIdealMod_idempotent`を証明の代わりに使わない |
+| hTor | なお未供給。全A加群・全正次数での零化が必要。Prop 2.4.9(a)のp冪ねじれ版からThm 4.0.3(a)の全係数版への接続も証明工程として残す |
+| 選ばれたCの存在 | 実`RPerfd`の型・環構造自体は既存の`BhattScholze.Inputs.exists_perfectoidization_of_integral`に依存。この依存を監査して明示し、B3の主イデアル商版の完成と混同しない |
+
+`scripts/audit_clmst_rperfd_cohomology.lean`は標準列の分解のsorry非依存性と
+k=0・列長0・任意有限段の3型検査を行う。
+実RPerfdを含む3宣言については既存の整代数perfectoid化存在入力だけを許す依存監査を行い、
+Cor 4.0.4、Prop 2.4.7、イデアル冪等性の引用への到達と、それ以外のsorryを機械的に拒否する。
+これは存在引用に相対的な実適用の検証であり、3宣言が無条件にsorry非依存という主張ではない。
+KL専用監査は従来487件に標準列の1件を加えた488件の`assert_no_sorry`を保持する。
+対象ビルド3665ジョブ、専用依存監査、KL488件の監査、全体5222ジョブ、CLMST・全体公理監査が成功。
+KL-A2・KL-QとDの実適用は未完了で、原典の消滅・isogeny引用は維持する。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。

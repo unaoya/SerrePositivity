@@ -1,4 +1,5 @@
 import SerrePositivity.CLMST.ConditionalCohomologyVanishing
+import SerrePositivity.CLMST.RPerfdCohomologyInputs
 import SerrePositivity.HomologicalAlgebra.ParameterLocalCohomologyAnnihilator
 import SerrePositivity.HomologicalAlgebra.LocalCohomologyScalarBaseChange
 import SerrePositivity.HomologicalAlgebra.GeneralLocalCohomologyBaseChange
@@ -989,3 +990,17 @@ assert_no_sorry SerrePositivity.parameterLocalCohomologyScalarEndomorphism_eq_ze
 -- KL6-b: both actual conclusions of conditional Corollary 4.0.4.
 assert_no_sorry SerrePositivity.CLMST.conditional_corollary_4_0_4
 #print axioms SerrePositivity.CLMST.conditional_corollary_4_0_4
+
+-- KL-A1: concrete regular parameters, original finite-stage maps and selected RPerfd.
+assert_no_sorry SerrePositivity.CLMST.parameter_power_isKoszulResolution
+
+#print axioms SerrePositivity.CLMST.parameter_power_isKoszulResolution
+#print axioms SerrePositivity.CLMST.toRPerfd_algebraMap_A
+#print axioms SerrePositivity.CLMST.rPerfd_p_coordinate
+#print axioms SerrePositivity.CLMST.rPerfd_cohomology_vanishing_of_tor_idempotent
+
+-- The selected RPerfd still uses the existing integral-perfectoidization existence input.
+-- The dedicated audit checks that this is the only reachable sorry declaration.
+#print sorries SerrePositivity.CLMST.toRPerfd_algebraMap_A
+#print sorries SerrePositivity.CLMST.rPerfd_p_coordinate
+#print sorries SerrePositivity.CLMST.rPerfd_cohomology_vanishing_of_tor_idempotent

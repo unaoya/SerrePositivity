@@ -1,0 +1,95 @@
+module
+
+public import SerrePositivity.CLMST.ConditionalCohomologyVanishing
+public import SerrePositivity.CommutativeAlgebra.PerfectoidIdeal
+public import SerrePositivity.CommutativeAlgebra.RegularParameters
+
+/-! # Concrete inputs for the cohomology comparison on the selected RPerfd
+
+The standard parameter resolutions and all finite-stage maps are supplied here.
+Quotient-image idempotence and higher Tor annihilation remain separate inputs.
+The original perfectoidization choice, coefficient actions, and stage maps are retained.
+The selected RPerfd still depends on the existing integral-perfectoidization
+existence input; this file does not remove that input or prove almost flatness.
+-/
+
+@[expose] public noncomputable section
+universe u
+namespace SerrePositivity.CLMST
+open CategoryTheory Section2 IsLocalRing
+
+variable (A : Type u) [CommRing A] [IsRegularLocalRing A]
+    {h : ℕ} (t : Fin h → A)
+
+/-- Every power of the actual regular parameter system resolves its quotient,
+including power zero. No regularity of RPerfd is used. -/
+lemma parameter_power_isKoszulResolution
+    (ht : Ideal.span (Set.range t) = maximalIdeal A)
+    (hdim : ringKrullDim A = h) (k : ℕ) :
+    IsKoszulResolution (fun j => t j ^ k) :=
+  isKoszulResolution_all_powers t ht
+    (isWeaklyRegular_of_span_eq_maximalIdeal A t ht hdim) k
+
+variable (D : Type u) [CommRing D] [Algebra A D] [Module.Finite A D]
+    (p : ℕ) [Fact p.Prime]
+    (hperf : IsIntegralPerfectoid (CompletedTower A t p) p)
+
+/-- The actual finite-stage map has the base compatibility required by the
+Koszul/local-cohomology theorem. -/
+lemma toRPerfd_algebraMap_A (n : ℕ) (x : A) :
+    toRPerfd A D t p hperf n
+      (algebraMap D (StageAlgebra A D t p n) (algebraMap A D x)) =
+        algebraMap A (RPerfd A D t p hperf) x := by
+  rw [toRPerfd_algebraMap_D]
+  exact (IsScalarTower.algebraMap_apply A D (RPerfd A D t p hperf) x).symm
+
+/-- The distinguished p-coordinate agrees under the original completed-tower
+action on RPerfd. -/
+lemma rPerfd_p_coordinate (j₀ : Fin h) (htp : t j₀ = (p : A)) :
+    algebraMap (CompletedTower A t p) (RPerfd A D t p hperf)
+      (p : CompletedTower A t p) = algebraMap A (RPerfd A D t p hperf) (t j₀) := by
+  simp only [htp, map_natCast]
+
+/-- Apply the common comparison to the selected RPerfd and the actual almost
+ideal. The two remaining inputs are kept at their full original quantifiers. -/
+lemma rPerfd_cohomology_vanishing_of_tor_idempotent
+    [IsLocalRing D] [IsNoetherianRing D]
+    (ht : Ideal.span (Set.range t) = maximalIdeal A) (hdim : ringKrullDim A = h)
+    (hsop : IsSystemOfParameters D (algebraMap A D ∘ t))
+    (j₀ : Fin h) (htp : t j₀ = (p : A)) (g : A)
+    (hI : ∀ k : ℕ, 0 < k → IsIdempotentElem
+      ((perfectoidIdeal (CompletedTower A t p) p hperf
+        (algebraMap A (CompletedTower A t p) g)).map
+          (Ideal.Quotient.mk (Ideal.span {(p : CompletedTower A t p) ^ k}))))
+    (hTor : ∀ (N : ModuleCat.{u} A) (j : ℕ), 0 < j →
+      ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+        (algebraMap A (CompletedTower A t p) g),
+        torCoefficientScalarEndomorphism (RPerfd A D t p hperf) N j
+          (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0) :
+    (∀ i : ℕ, i < h →
+      ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+        (algebraMap A (CompletedTower A t p) g),
+        HomologicalAlgebra.localCohomologyScalarEndomorphism (maximalIdeal D) i
+          (RPerfd A D t p hperf)
+          (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0) ∧
+    (∀ n : ℕ,
+      let _ := stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+      ∀ (y : Fin h → StageAlgebra A D t p n),
+        IsSystemOfParameters (StageAlgebra A D t p n) y → ∀ i : ℕ, 0 < i →
+          let _ := Module.compHom
+            (koszulHomologySelf (fun j => toRPerfd A D t p hperf n (y j)) i)
+            (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))
+          perfectoidIdeal (CompletedTower A t p) p hperf
+            (algebraMap A (CompletedTower A t p) g) ≤
+              Module.annihilator (CompletedTower A t p)
+                (koszulHomologySelf (fun j => toRPerfd A D t p hperf n (y j)) i)) := by
+  exact conditional_corollary_4_0_4 t p hsop
+    (parameter_power_isKoszulResolution A t ht hdim)
+    (fun n => (toRPerfd A D t p hperf n).toRingHom)
+    (toRPerfd_algebraMap_A A t D p hperf)
+    (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))
+    (perfectoidIdeal (CompletedTower A t p) p hperf
+      (algebraMap A (CompletedTower A t p) g))
+    (p : CompletedTower A t p) j₀ (rPerfd_p_coordinate A t D p hperf j₀ htp) hI hTor
+
+end SerrePositivity.CLMST
