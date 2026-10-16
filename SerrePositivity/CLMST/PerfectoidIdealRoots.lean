@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.PerfectoidIdeal
+public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealRadical
 public import SerrePositivity.CommutativeAlgebra.RootTower.CompletedRoots
 public import SerrePositivity.CommutativeAlgebra.RootTower.Stage
 public import SerrePositivity.CommutativeAlgebra.PerfectoidCharacteristicP
@@ -11,8 +11,8 @@ public import Mathlib.RingTheory.Nilpotent.Basic
 
 商環から被約環への写像は、生成イデアルに冪が属する元を消す。
 perfectoid ideal の核の定義へこの一般論を適用し、完備塔の根の座標についても具体化する。
-一般の主イデアル商では被約性を明示的な引数として保つ。
-pによる商は標数pのperfectoid環がperfectであることから被約性を供給する。
+任意の主イデアル商のperfectoid化の被約性を、一般perfectoid被約性から供給する。
+明示的な被約性を受け取る旧入口も互換用に残す。
 被約性の引用や大域的なインスタンスは追加しない。
 -/
 
@@ -69,7 +69,7 @@ def perfectoidIdealQuotientEquiv
          (Ideal.Quotient.mk (Ideal.span {g}) x)) := rfl
 
 /-- 選ばれた perfectoid 化の被約性が与えられれば、冪の所属から perfectoid ideal への所属が従う。
-被約性は現在未供給の条件であり、型クラスの大域的登録では隠さない。 -/
+被約性を明示的に受け取る互換入口。条件不要の入口は下の一般定理を使う。 -/
 theorem mem_perfectoidIdeal_of_pow_mem_span_of_reduced
     (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
     (hR : IsIntegralPerfectoid R p) (g : R)
@@ -82,26 +82,27 @@ theorem mem_perfectoidIdeal_of_pow_mem_span_of_reduced
   exact mem_kernel_comp_quotient_of_pow_mem_span g
     (toQuotientPerfectoidization R (Ideal.span {g}) p hR) x k hx
 
-/-- pによる商のperfectoid化は標数pなので、定義から証明した被約性を使える。 -/
+/-- Every chosen principal quotient perfectoidization is reduced, including p-torsion bases. -/
+theorem perfectoidQuotient_isReduced
+    (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
+    (hR : IsIntegralPerfectoid R p) (g : R) :
+    IsReduced (perfectoidQuotient R p hR g) := by
+  let : Algebra.FinitePresentation R (R ⧸ Ideal.span {g}) :=
+    Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g)
+  exact (isPerfectoidization_toQuotientPerfectoidization R (Ideal.span {g}) p hR).1.isReduced _ p
+
+/-- Powers in the original principal ideal give membership without a reducedness hypothesis. -/
+theorem mem_perfectoidIdeal_of_pow_mem_span
+    (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
+    (hR : IsIntegralPerfectoid R p) (g x : R) (k : ℕ)
+    (hx : x ^ k ∈ Ideal.span {g}) : x ∈ perfectoidIdeal R p hR g :=
+  radical_span_le_perfectoidIdeal R p hR g ⟨k, hx⟩
+
+/-- Compatibility for the principal quotient by p. -/
 theorem perfectoidQuotient_p_isReduced
     (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
-    (hR : IsIntegralPerfectoid R p) : IsReduced (perfectoidQuotient R p hR (p : R)) := by
-  let : Algebra.FinitePresentation R (R ⧸ Ideal.span {(p : R)}) :=
-    Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton (p : R))
-  let Q := R ⧸ Ideal.span {(p : R)}
-  let T := QuotientPerfectoidization R (Ideal.span {(p : R)}) p hR
-  let f := toQuotientPerfectoidization R (Ideal.span {(p : R)}) p hR
-  have hT : IsIntegralPerfectoid T p :=
-    (isPerfectoidization_toQuotientPerfectoidization R (Ideal.span {(p : R)}) p hR).1
-  have hpQ : (p : Q) = 0 := by
-    rw [← map_natCast (Ideal.Quotient.mk (Ideal.span {(p : R)}))]
-    exact Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.subset_span (Set.mem_singleton _))
-  have hpT : (p : T) = 0 := by
-    calc
-      (p : T) = f (p : Q) := (map_natCast f p).symm
-      _ = f 0 := congrArg f hpQ
-      _ = 0 := f.map_zero
-  exact hT.isReduced_of_p_eq_zero T p hpT
+    (hR : IsIntegralPerfectoid R p) : IsReduced (perfectoidQuotient R p hR (p : R)) :=
+  perfectoidQuotient_isReduced R p hR (p : R)
 
 variable (A : Type u) [CommRing A] {h : ℕ} (t : Fin h → A) (p : ℕ) [Fact p.Prime]
 
@@ -129,6 +130,16 @@ omit [Fact p.Prime] in
 theorem completedTowerRoot_pow_of_le (n m : ℕ) (hnm : n ≤ m) (i : Fin h) :
     completedTowerRoot A t p m i ^ (p ^ (m - n)) = completedTowerRoot A t p n i :=
   Section2.completedTowerRoot_pow_of_le A t p n m hnm i
+
+/-- All original parameter roots in the completed tower belong to their perfectoid ideal. -/
+theorem completedTowerRoot_mem_perfectoidIdeal
+    (hperf : IsIntegralPerfectoid (CompletedTower A t p) p)
+    (n : ℕ) (i : Fin h) :
+    completedTowerRoot A t p n i ∈ perfectoidIdeal (CompletedTower A t p) p hperf
+      (algebraMap A (CompletedTower A t p) (t i)) := by
+  apply mem_perfectoidIdeal_of_pow_mem_span _ p hperf _ _ (p ^ n)
+  rw [completedTowerRoot_pow]
+  exact Ideal.subset_span (Set.mem_singleton _)
 
 /-- 基底の座標が p であるとき、完備塔のその根は `(p)_perfd` に属する。
 選ばれた `(C/p)_perfd` の被約性を明示的に受け取り、他の入力は用いない。 -/
