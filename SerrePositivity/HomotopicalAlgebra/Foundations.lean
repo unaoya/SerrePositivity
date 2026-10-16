@@ -1,5 +1,8 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalAnodyne
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordRowsDiagonal
+
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFixedRowWordHom
 
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarAmbientWordComparison

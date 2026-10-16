@@ -1,0 +1,62 @@
+module
+
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordRows
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarAmbientWordComparison
+
+/-! # The augmented row diagonal is the actual previously constructed word Hom -/
+
+@[expose] public section
+universe v u
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+open CategoryTheory
+open SerrePositivity.SimplicialModel
+
+namespace SerrePositivity.HomotopyFunctionComplex.OrdinaryBarWordRowsDiagonal
+open OrdinaryBarFreeResolutionSeed OrdinaryBarWordRows OrdinaryBarWordRowMaps
+variable (C : Type u) [Category.{v} C] (X Y : D C)
+
+def comparisonIso : diagonal C X Y ≅ OrdinaryBarAmbientWordComparison.hom C X Y :=
+  NatIso.ofComponents (fun _ => Iso.refl _) (by
+    intro n m θ
+    apply ConcreteCategory.hom_ext
+    intro f
+    change (row C X Y m).map θ
+        ((AmbientWords.map (OrdinaryBarFixedSource.literalMap C θ)
+          (MonoidWithZeroHom.id (WordSegment.degree.{max u v} n))).map f) =
+      (OrdinaryBarAmbientWordComparison.hom C X Y).map θ f
+    rw [OrdinaryBarFixedRowWordHom.map_eq, OrdinaryBarAmbientWordComparison.map_eq]
+    rfl)
+
+def toSource : OrdinaryBarAmbientWordComparison.hom C X Y ⟶
+    UniverseLift.obj.{max u v} (OrdinaryBarSourceHom.hom C X Y) :=
+  (comparisonIso C X Y).inv ≫ OrdinaryBarWordRows.toSource C X Y
+
+lemma toSource_app (n : SimplexCategoryᵒᵖ)
+    (f : (OrdinaryBarAmbientWordComparison.hom C X Y).obj n) :
+    (toSource C X Y).app n f = ULift.up
+      ((AmbientWords.augmentation (FreeGeneratorCategories.degree (D C) (n.unop.len + 1))
+        (WordSegment.degree.{max u v} n)).map f) := by
+  change (OrdinaryBarFixedRowWordHom.augmentation C n.unop.len X Y).app n f = _
+  exact OrdinaryBarFixedRowWordHom.augmentation_app C n.unop.len X Y n f
+
+lemma augmentation_factorization : OrdinaryBarAmbientWordComparison.augmentation C X Y =
+    toSource C X Y ≫ OrdinaryBarSourceHom.augmentation C X Y := by
+  ext n f
+  change ULift.up ((OrdinaryBarFixedAugmentation.sourceProjection C n).map
+      ((RetractWords.augmentation
+        (FreeGeneratorCategories.degree (D C) (n.unop.len + 1))
+          (WordSegment.degree.{max u v} n)).map
+            ((AmbientWords.toRetract
+              (FreeGeneratorCategories.degree (D C) (n.unop.len + 1))
+                (WordSegment.degree.{max u v} n)).map f))) =
+      ULift.up ((OrdinaryBarFixedAugmentation.sourceProjection C n).map
+        (((toSource C X Y).app n f).down))
+  rw [toSource_app]
+  have h := congr($(AmbientWords.toRetract_augmentation
+    (C := FreeGeneratorCategories.degree (D C) (n.unop.len + 1))
+    (M := WordSegment.degree.{max u v} n)).map f)
+  exact congrArg (fun g => ULift.up ((OrdinaryBarFixedAugmentation.sourceProjection C n).map g)) h
+
+end SerrePositivity.HomotopyFunctionComplex.OrdinaryBarWordRowsDiagonal
