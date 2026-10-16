@@ -1,5 +1,8 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BalancedResolutionComparison
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BiresolutionRightAction
+
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.RightResolutionRefinement
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftAnodyneReflection
