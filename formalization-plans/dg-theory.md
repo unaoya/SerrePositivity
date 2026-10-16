@@ -4431,3 +4431,27 @@ U12dの受入照合：
 
 次はU12aの相対K-flatのshift閉性と準同型保存条件の逆向きを完成させ、U12cの上有界flatを検証する。
 U11eのcoherence・U12e/f・U13〜U17・D4mも未完。共有系列への追加要求はなく、担当外を編集していない。
+
+
+### 17.71 U12a8：相対K-flat条件と左準同型保存の同値（2026-10-16）
+
+`Module/LeftZero.lean`は既存leftRightOppositeEquivalenceの逆関手から左加群の具体的零対象を
+構成し、完全忠実な比較関手による反映で零性を証明する。HasZeroObject、左評価の加法性、
+各評価がこの零対象を零複体へ送ることを公開した。新しい左加群モデルは導入していない。
+
+`Tensor/KFlatCriterion.lean`は§17.67の準同型保存の逆向きを証明する。
+任意のobjectwise acyclic左加群から上記零対象への射は指定leftModuleQuasiIsoであり、
+leftTensorFunctorの余極限保存による零対象保存と、既存の複体の準同型判定から
+元のtensorのacyclic性を得る。これによりmoduleRelativeKFlat_iff_preserves_leftQuasiIsoを公開した。
+零右加群の相対K-flat性も、既存rightTensorFunctorの零対象保存から証明した。
+
+Checks.KFlatCriterion・Checks.TensorComputation・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2872 jobs、終了コード0、警告なし）。任意A・独立対象宇宙・ZMod 2を検査する。
+主要7宣言の直接公理監査は終了コード0、標準公理のみ。監査累計1869宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。
+今回の3 Leanファイルにsorry/admit/新規axiomはない。担当差分の空白検査も成功。
+
+U12aは相対K-flatの整数shift閉性がなお残るため全受入とはしない。
+次は既存の全次数shift要素と複体値dg関手の主Hom写像を照合してtensorのshift比較を得る。
+U12cの上有界flat、U11eのcoherence、U12e/f、U13〜U17・D4mも未完。
+共有系列への追加要求はなく、担当外ファイルを編集していない。
