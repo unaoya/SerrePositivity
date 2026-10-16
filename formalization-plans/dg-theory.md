@@ -4486,3 +4486,42 @@ ZMod 2・実際の切り詰め余極限同型を検査した。
 相手も上に有界な既存定理だけを使った結論ではない。
 次はU12aの相対K-flat整数shift閉性を完成させる。
 U11eのcoherence、U12e/f、U13〜U17・D4mは未完。共有系列への追加要求はなく、担当外を編集していない。
+
+
+### 17.73 U12a9：複体値dg関手のshift比較と相対K-flat閉性（U12a受入、2026-10-16）
+
+`Complexes/HomogeneousTransport.lean`は既存の始域次数輸送の逆向き補題を追加する。
+`Module/ShiftUnitElements.lean`は既存moduleHomLeftShiftElementを単位へ適用して次数sの射影を作り、
+右shiftした単位から次数−sの包含を作る。Mathlib leftShiftが持つ定数符号
+(-1)^(s*s+s*(s-1)/2)を包含側で補正する。全次数自然性、射影の閉性、評価成分を証明した。
+`Module/ShiftUnitRelations.lean`は両方の通常順合成が主Hom endの単位となることを証明する。
+
+`Functor/ModuleShift.lean`は任意の複体値dg関手についてこの射影・包含の像を構成し、
+微分と通常順合成の保存で閉性・両逆恒等式を運ぶ。
+Mathlib Cocycle.equivHomShiftを用いて実際のchain map F(M[s])→F(M)[s]を作り、
+各次数の逆を包含の像で明示して全単射・IsIso・moduleShiftImageIsoを公開した。
+単なる各評価の同型からdg自然性を仮定せず、元の加群の全Hom要素を使用している。
+一般のCommShiftインスタンスやshiftの加法coherenceまで今回のobject比較から主張するものではない。
+
+`Tensor/Shift.lean`は実際のrightTensorDGへ適用し、balanced tensorの右加群整数shift比較、
+moduleRelativeKFlat_shift、および既存HasShiftに対するmoduleRelativeKFlat_shiftObjを証明する。
+任意整数s・任意可換環であり、Hom_DのA-flat性は仮定しない。
+
+Checks.ShiftKFlat・Checks.KFlat・Checks.KFlatComplex・Checks.KFlatColimits・Checks.KFlatCriterion・
+Checks.FunctorModuleConeIso・Checks.BoundedAboveKFlat・Checks.TensorComputation・Checks.StageSeven・
+既存Spectra.StageTwoの同時ビルドは成功（2886 jobs、終了コード0、警告なし）。
+任意A・独立対象宇宙・任意複体値dg関手・全整数shift、次数−1/0/+1の実例、ZMod 2を検査した。
+主要22宣言の直接公理監査は終了コード0、標準公理のみ。監査累計1904宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。
+今回の6 Leanファイルにsorry/admit/新規axiomはない。担当差分の空白検査も成功。
+
+U12aの受入照合：A上/相対K-flatの区別と同型/retract不変性（§17.53）、
+A上のshift/cone/tensor閉性と準同型保存の同値（§17.54）、相対の余積/逐次余極限閉性（§17.55）、
+相対cone閉性（§17.66）、左準同型保存とその逆向き・零対象（§17.67・71）、
+相対整数shift閉性（本節）。これでU12aを受け入れる。
+U12a〜dが受入済みとなったが、U12全体は導来bimodule合成・coherence・係数変更（U12e/f）を残す。
+U11eのcoherence、U13〜U17・D4mも未完。次はU11eの検査結果を確認し、導来bimodule合成へ進む。
+共有系列への追加要求はなく、担当外ファイルを編集していない。
+
+U11eの左右成分整合性の草稿検査はプロセスを確認し、両LeanプロセスともCPU使用を伴って継続中。
+今回の受入・監査件数には含めず、検査の観測待ちだけを理由に再起動していない。
