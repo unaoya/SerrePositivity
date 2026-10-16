@@ -7188,6 +7188,29 @@ R加群圏の自己関手から異なる係数環Sの加群圏への任意の加
 この準備だけで純tensor全体の比較、Cartier線形同型の乗法保存やC2全体を完成とはしない。
 C3、Prop 2.4.9(a)、KL・Dの実適用、B-Iは引き続き残る。
 
+KL-E2d-4・tensor底変換と元の標準augmentationの可換図式（2026-10-17）：
+`CochainTensorBaseChangeSingle.lean`で、元のcochain tensor底変換と次数0 tensor比較が
+可換することを、唯一の非零次数の元の包含上で証明した。
+`DerivedBaseChangeAugmentationComparison.lean`では、これを任意の元のcochain augmentationへ
+延長し、元のtensor底変換比較と実導来augmentationとの図式まで証明した。
+
+主定理`boundedAboveDerivedTensorBaseChangeModuleIso_augmentation`は、元の導来tensorを
+係数変更して通常の二因子へ比較した後の標準augmentationが、元のtensor augmentationを
+導来係数変更し、その通常の係数拡大のtensor比較を合成した射に一致することを述べる。
+左右の係数変更Tor条件だけを要求し、源の二加群どうしのTor独立性は追加していない。
+そのため、一般の導来対象から離散加群への射についても元のモデル公式を証明し、
+源のtensorを通常tensorへ同型で置き換える迂回は行っていない。
+通常因子の射影モデルは元の係数変更した同じ複体を使い、選択モデルの自己比較の恒等性も確認した。
+
+新規八宣言はsorry非依存・標準3公理のみ。対象2050・2346ジョブ、専用監査17宣言・3型検査、
+全体5835ジョブ、KL918件が終了コード0で成功した。
+型検査では任意の環準同型と二加群について、両側の係数変更Tor条件だけで元の標準射の
+図式を使えることを確認した。前工程の全CLMST監査も終了コード0を確認した。
+
+次はこの図式を元の商環への係数変更と通常の因子商同型へ合成し、純tensorの代表元の像を
+既存の導来剰余tensor比較のH⁰上で同定する。その後Cartier像の公式と完備化の一意性へ接続する。
+この図式だけでCartier線形同型の乗法保存、C2全体、C3やKL・Dの実適用を完成とはしない。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。

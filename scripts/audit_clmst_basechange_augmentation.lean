@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.DerivedBaseChangeAugmentationComparison
 import SerrePositivity.HomologicalAlgebra.DerivedBaseChangeAugmentationModels
 import Mathlib.Util.AssertNoSorry
 
@@ -23,7 +24,7 @@ assert_no_sorry SerrePositivity.boundedAboveDerivedBaseChangeModuleAugmentation_
 
 noncomputable section
 universe u
-open CategoryTheory SerrePositivity
+open CategoryTheory SerrePositivity MonoidalCategory
 attribute [local instance] HasDerivedCategory.standard
 
 -- An arbitrary quotient, with no flatness, regularity or Tor hypothesis.
@@ -51,3 +52,35 @@ example (R S : Type u) [CommRing R] [CommRing S] (φ : R →+* S)
         (HomologicalComplex.singleMapHomologicalComplex
           (ModuleCat.restrictScalars φ) (.up ℤ) 0).hom.app M :=
   mapExtendIso_resolution_augmentation _ P
+
+assert_no_sorry SerrePositivity.cochainTensorBaseChangeIso_single
+assert_no_sorry SerrePositivity.boundedAboveDerivedBaseChangeModuleAugmentation_map_model
+assert_no_sorry SerrePositivity.cochainTensorBaseChangeIso_augmentation
+assert_no_sorry SerrePositivity.boundedAboveDerivedBaseChangeModelIso_chosen_hom
+assert_no_sorry SerrePositivity.boundedAboveDerivedTensorModelIso_chosen_hom
+assert_no_sorry SerrePositivity.boundedAboveDerivedBaseChangeSingleModel
+assert_no_sorry SerrePositivity.boundedAboveDerivedBaseChangeSingleModel_augmentation
+assert_no_sorry SerrePositivity.boundedAboveDerivedTensorBaseChangeModuleIso_augmentation
+
+#print axioms SerrePositivity.cochainTensorBaseChangeIso_single
+#print axioms SerrePositivity.boundedAboveDerivedBaseChangeModuleAugmentation_map_model
+#print axioms SerrePositivity.cochainTensorBaseChangeIso_augmentation
+#print axioms SerrePositivity.boundedAboveDerivedBaseChangeModelIso_chosen_hom
+#print axioms SerrePositivity.boundedAboveDerivedTensorModelIso_chosen_hom
+#print axioms SerrePositivity.boundedAboveDerivedBaseChangeSingleModel
+#print axioms SerrePositivity.boundedAboveDerivedBaseChangeSingleModel_augmentation
+#print axioms SerrePositivity.boundedAboveDerivedTensorBaseChangeModuleIso_augmentation
+
+-- Only scalar-extension Tor conditions on the two factors; no Tor independence between them.
+example (R S : Type u) [CommRing R] [CommRing S] (φ : R →+* S)
+    (M N : ModuleCat.{u} R)
+    (hM : scalarExtensionTorVanishing φ M) (hN : scalarExtensionTorVanishing φ N) :
+    (boundedAboveDerivedTensorBaseChangeModuleIso φ M N hM hN).hom.hom ≫
+        (boundedAboveDerivedTensorModuleAugmentation ((ModuleCat.extendScalars φ).obj M)).app
+          ((ModuleCat.extendScalars φ).obj N) =
+      ((boundedAboveDerivedBaseChange φ).map
+        (ObjectProperty.homMk ((boundedAboveDerivedTensorModuleAugmentation M).app N))).hom ≫
+        (boundedAboveDerivedBaseChangeModuleAugmentation φ).app (M ⊗ N) ≫
+        (DerivedCategory.singleFunctor (ModuleCat S) 0).map
+          (Functor.OplaxMonoidal.δ (ModuleCat.extendScalars φ) M N) :=
+  boundedAboveDerivedTensorBaseChangeModuleIso_augmentation φ M N hM hN
