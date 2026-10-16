@@ -7063,3 +7063,35 @@ BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_
 閉零変数の自然性だけでU11eの全豊穣自然性を代用せず、任意パラメータ版も残課題として保持する。
 U11e全受入、U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mは引き続き未完。
 U17までの目標を保持する。共有系列への新しいAPI要求はない。
+
+
+### 17.153 U11e30：閉零bimodule単位同型と三角coherence（2026-10-17）
+
+`Tensor/UnitBimoduleIso.lean`は既存のleftUnitIso/rightUnitIsoと両作用の全Hom自然性を再利用し、
+BimoduleCategoryの実際の同型leftBimoduleUnitIso/rightBimoduleUnitIsoへ持ち上げる。
+両対象での評価は順逆とも既存のleftUnitValueIso/rightUnitValueIsoに戻る。
+左単位はSmall.{u} Bのみ、右単位はSmall.{u} B/Cを用いる。
+
+`Complexes/TensorGeneratorMaps.lean`は、生成元を指定したmapをtensorの前後に合成する二つの法則と、
+associatorでbalanced関係を移す法則を証明する。
+`Tensor/TriangleGenerators.lean`は三角の両経路を実際の三重包含上で計算する。
+型の別名を含む包含・whiskerのunfold後のrewriteは失敗したため、独立した複体変数に対して
+先に証明した上の法則を、包含と単位評価へ適用して解消した。計算上限は変更していない。
+一方は中間の対角HomをPの左作用で消す経路、他方はQの右作用で消す経路である。
+`Tensor/Triangle.lean`のtriangleValueは既存BalancedTensor.conditionから両経路を同定する。
+**triangle**は全b/eの評価による外延性でこれを戻した、実際の閉零bimodule射としての三角coherenceである。
+右作用のKoszul符号は既存のbalanced関係に含まれ、符号を省略した別の関係式は使わない。
+任意CommRing A・非有界・独立B/C/E宇宙・Small.{u} B/Cを維持し、Eのsmall性は不要。
+
+Checks.Triangle・Checks.AssociatorNaturality・Checks.BimoduleComposition・Checks.QuotientUniversal・
+Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功（2896 jobs、終了コード0、警告なし）。
+独立宇宙での左右の単位同型、bimodule射としての三角式、ZMod 2の三角式を検査した。
+主要13宣言の直接公理監査は標準公理のみ。監査累計2982宣言。
+今回の実装にsorry/admit/新規axiomはない。採用済み引用は0件。担当差分の空白検査は成功。
+全体文書検査は13 Markdown・320 exposition参照を検査し、§17.151/152と同じ担当外の
+BhattScholze互換宣言の未解決参照1件で失敗した。共有ルートや該当系列は編集していない。
+
+次は四重生成元で五角coherenceを証明する。単位同型のbimodule変数に関する自然性と、
+任意パラメータの変換に関する三変数の豊穣自然性も、U11e全受入の残課題として保持する。
+U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mは引き続き未完。U17までの目標を保持する。
+共有系列への新しいAPI要求はない。
