@@ -84,4 +84,32 @@ lemma kan (f : A ⟶ K) : SSet.modelCategoryQuillen.J.rlp
   intro U V j hj
   exact terminal_mono_rlp i hi hK f j (SSet.modelCategoryQuillen.J_le_monomorphisms j hj)
 
+include hi hK in
+lemma interval (f : A ⟶ K)
+    (s t : SSet.stdSimplex.obj (SimplexCategory.mk 0) ⟶ RelativeChoiceSpace.obj i f) :
+    ∃ e : SSet.stdSimplex.obj (SimplexCategory.mk 1) ⟶ RelativeChoiceSpace.obj i f,
+      SSet.stdSimplex.δ (1 : Fin 2) ≫ e = s ∧ SSet.stdSimplex.δ (0 : Fin 2) ≫ e = t := by
+  let a := HomotopyFunctionComplex.BoundaryOne.isColimit.desc (BinaryCofan.mk s t)
+  obtain ⟨e, he⟩ := parameter_extension i hi hK f (SSet.boundary 1).ι a
+  refine ⟨e, ?_, ?_⟩
+  · rw [← SSet.boundary.ι_ι (1 : Fin 2), Category.assoc, he]
+    exact HomotopyFunctionComplex.BoundaryOne.isColimit.fac
+      (BinaryCofan.mk s t) ⟨WalkingPair.left⟩
+  · rw [← SSet.boundary.ι_ι (0 : Fin 2), Category.assoc, he]
+    exact HomotopyFunctionComplex.BoundaryOne.isColimit.fac
+      (BinaryCofan.mk s t) ⟨WalkingPair.right⟩
+
+include hi hK in
+lemma nonempty_fixedBoundaryHomotopy (f : A ⟶ K) (e₀ e₁ : B ⟶ K)
+    (h₀ : i ≫ e₀ = f) (h₁ : i ≫ e₁ = f) :
+    Nonempty (RelativeChoiceSpace.FixedBoundaryHomotopy i f e₀ e₁) := by
+  obtain ⟨e, hs, ht⟩ := interval i hi hK f
+    (RelativeChoiceSpace.ofExtension i f e₀ h₀) (RelativeChoiceSpace.ofExtension i f e₁ h₁)
+  change SSet.stdSimplex.map (SimplexCategory.δ (1 : Fin 2)) ≫ e = _ at hs
+  change SSet.stdSimplex.map (SimplexCategory.δ (0 : Fin 2)) ≫ e = _ at ht
+  refine ⟨⟨RelativeChoiceSpace.family i f e, ?_, ?_,
+    RelativeChoiceSpace.family_fixed_boundary i f e⟩⟩
+  · rw [← RelativeChoiceSpace.family_naturality, hs, RelativeChoiceSpace.family_ofExtension]
+  · rw [← RelativeChoiceSpace.family_naturality, ht, RelativeChoiceSpace.family_ofExtension]
+
 end SerrePositivity.SimplicialModel.LocalizedRelativeChoice

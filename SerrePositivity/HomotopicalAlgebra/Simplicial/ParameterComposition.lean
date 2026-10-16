@@ -40,6 +40,10 @@ lemma comp_const (f : X ⊗ T ⟶ Y) (g : Y ⟶ Z) :
 lemma const_comp_family (f : X ⟶ Y) (g : Y ⊗ T ⟶ Z) :
     comp (const T f) g = f ▷ T ≫ g := by ext n x; rfl
 
+lemma pre_comp {V : SSet.{v}} (i : V ⟶ X)
+    (f : X ⊗ T ⟶ Y) (g : Y ⊗ T ⟶ Z) :
+    i ▷ T ≫ comp f g = comp (i ▷ T ≫ f) g := by ext n x; rfl
+
 lemma substitute_comp (j : U ⟶ T) (f : X ⊗ T ⟶ Y) (g : Y ⊗ T ⟶ Z) :
     substitute j (comp f g) = comp (substitute j f) (substitute j g) := by ext n x; rfl
 
