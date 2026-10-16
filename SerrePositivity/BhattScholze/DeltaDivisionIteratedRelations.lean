@@ -14,32 +14,6 @@ universe u v
 namespace SerrePositivity.BhattScholze
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
 
-/-- 生成イデアルのδ閉包は、指定生成元だけの全反復δ像で生成される。 -/
-theorem DeltaStructure.deltaClosure_span_eq_span_generator_iterates
-    (D : DeltaStructure p A) (s : Set A) :
-    D.deltaClosure (Ideal.span s) = Ideal.span (⋃ n : ℕ, D.delta^[n] '' s) := by
-  let t : Set A := ⋃ n : ℕ, D.delta^[n] '' s
-  have hle : Ideal.span s ≤ Ideal.span t := by
-    apply Ideal.span_le.mpr
-    intro x hx
-    exact Ideal.subset_span (Set.mem_iUnion.mpr ⟨0, x, hx, rfl⟩)
-  have hstable : D.IsStable (Ideal.span t) := by
-    apply D.isStable_span
-    intro x hx
-    obtain ⟨n, a, ha, rfl⟩ := Set.mem_iUnion.mp hx
-    apply Ideal.subset_span
-    exact Set.mem_iUnion.mpr ⟨n + 1, a, ha, Function.iterate_succ_apply' D.delta n a⟩
-  apply le_antisymm (D.deltaClosure_le hle hstable)
-  apply Ideal.span_le.mpr
-  intro x hx
-  obtain ⟨n, a, ha, rfl⟩ := Set.mem_iUnion.mp hx
-  clear hx
-  induction n with
-  | zero => exact D.le_deltaClosure _ (Ideal.subset_span ha)
-  | succ n ih =>
-      rw [Function.iterate_succ_apply']
-      exact D.isStable_deltaClosure _ _ ih
-
 variable {σ : Type v}
 
 /-- δ除算包の指定した全反復関係式。 -/

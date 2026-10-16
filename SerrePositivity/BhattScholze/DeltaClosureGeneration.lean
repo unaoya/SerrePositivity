@@ -46,30 +46,37 @@ theorem isStable_span (D : DeltaStructure p A) (s : Set A)
             ((Ideal.span s).pow_mem_of_mem hx p (Fact.out : p.Prime).pos)))
         ((Ideal.span s).mul_mem_left ((p : A) * D.delta r) ih)
 
-/-- δ閉包はIのすべての反復δ像で生成されるイデアル（BS Example 2.10）。
-抽象的な交わりによる構成に、具体的な生成元表示を与える。 -/
-theorem deltaClosure_eq_span_iterates (D : DeltaStructure p A) (I : Ideal A) :
-    D.deltaClosure I = Ideal.span (⋃ n : ℕ, D.delta^[n] '' (I : Set A)) := by
-  let s : Set A := ⋃ n : ℕ, D.delta^[n] '' (I : Set A)
-  have hI : I ≤ Ideal.span s := by
+/-- 生成イデアルのδ閉包は、指定生成元だけの全反復δ像で生成される。 -/
+theorem deltaClosure_span_eq_span_generator_iterates
+    (D : DeltaStructure p A) (s : Set A) :
+    D.deltaClosure (Ideal.span s) = Ideal.span (⋃ n : ℕ, D.delta^[n] '' s) := by
+  let t : Set A := ⋃ n : ℕ, D.delta^[n] '' s
+  have hle : Ideal.span s ≤ Ideal.span t := by
+    apply Ideal.span_le.mpr
     intro x hx
-    apply Ideal.subset_span
-    exact Set.mem_iUnion.mpr ⟨0, x, hx, rfl⟩
-  have hs : D.IsStable (Ideal.span s) := by
-    apply D.isStable_span s
+    exact Ideal.subset_span (Set.mem_iUnion.mpr ⟨0, x, hx, rfl⟩)
+  have hstable : D.IsStable (Ideal.span t) := by
+    apply D.isStable_span
     intro x hx
     obtain ⟨n, a, ha, rfl⟩ := Set.mem_iUnion.mp hx
     apply Ideal.subset_span
     exact Set.mem_iUnion.mpr ⟨n + 1, a, ha, Function.iterate_succ_apply' D.delta n a⟩
-  apply le_antisymm (D.deltaClosure_le hI hs)
+  apply le_antisymm (D.deltaClosure_le hle hstable)
   apply Ideal.span_le.mpr
   intro x hx
   obtain ⟨n, a, ha, rfl⟩ := Set.mem_iUnion.mp hx
   clear hx
   induction n with
-  | zero => exact D.le_deltaClosure I ha
+  | zero => exact D.le_deltaClosure _ (Ideal.subset_span ha)
   | succ n ih =>
       rw [Function.iterate_succ_apply']
-      exact D.isStable_deltaClosure I _ ih
+      exact D.isStable_deltaClosure _ _ ih
+
+/-- δ閉包はIのすべての反復δ像で生成されるイデアル（BS Example 2.10）。
+抽象的な交わりによる構成に、具体的な生成元表示を与える。 -/
+theorem deltaClosure_eq_span_iterates (D : DeltaStructure p A) (I : Ideal A) :
+    D.deltaClosure I = Ideal.span (⋃ n : ℕ, D.delta^[n] '' (I : Set A)) := by
+  simpa only [Ideal.span_eq] using
+    D.deltaClosure_span_eq_span_generator_iterates (I : Set A)
 
 end SerrePositivity.BhattScholze.DeltaStructure

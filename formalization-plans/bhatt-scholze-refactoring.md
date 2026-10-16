@@ -59,7 +59,7 @@ BS側が変更するのは `SerrePositivity/BhattScholze/`、このBS計画、BS
 | R2b | 環同型によるδ構造移送を統一 | 抽出 | 新 `DeltaTransport`、`DeltaDivisionSourceTensorDelta`、`DeltaRootSourceRawH0Delta` | 完了 |
 | R2c | 変数のδ値を指定する多項式構成とδ射判定 | 抽出 | 新 `PolynomialDelta`、`RelativeFreeDelta`、`PolynomialRankOneDelta`、普遍性利用先 | 6モジュールの一時試作を検査済み、repo未反映 |
 | R2d | 有向環余極限上のδ構造と普遍射 | 抽出 | 新 `DeltaDirectLimit`、`DeltaPerfection`、`DeltaPerfectionUniversal`、`DeltaAdjoinDivisionFiniteColimit` | 一時ファイルで構成を検証中、repo未反映 |
-| R2e | δ閉包の生成元定理を基礎層へ集約 | 配置・再利用 | `DeltaClosureGeneration`、`DeltaDivisionIteratedRelations` | 反映・対象ビルド済み、統合監査・保存待ち |
+| R2e | δ閉包の生成元定理を基礎層へ集約 | 配置・再利用 | `DeltaClosureGeneration`、`DeltaDivisionIteratedRelations` | 完了 |
 | R3a | rank-one DPの一般比較射を分離し特殊版を一般版へ委譲 | 配置・再利用 | 新 `RankOneDPBaseChangeMap`、`RankOneDPTensorRelations`、`RankOneDPAnyBasis`、`RankOneDPPrimeBasis`、`RankOneDPBaseChange` | 完了 |
 | R3b | principal DPの一般関係式を分離し基底変更を一本化 | 配置・再利用 | 新 `PrincipalDPBaseChangeRelations`、`PrincipalDPBaseChange`、`PrincipalDPBaseChangeUniversal` | 反映・対象ビルド済み、統合監査・保存待ち |
 | R3c | DP表示の正則性で不要なp局所性を外した一般入口 | 証明拡張 | `PrincipalDPRegular` | 一時試作を検査済み、repo未反映 |
@@ -351,3 +351,7 @@ R4bも計画済み5ファイルの一時検証から再開する。これらを�
   実テンソル源と実raw H0の二箇所へ適用した。異なるuniverse、零環、pねじれを許し、元の環同型・作用を保持。
   530対象・4,566ジョブの統合ビルド、基礎584件・B4 2,560件の監査、追加9宣言のfocused監査が成功。
   新4宣言と利用先の公理は標準3公理のみ。新sorry・引用依存なし。対象3モジュール・専用監査・計画を個別保存。
+- R2e：指定生成元の全δ反復でδ閉包を表示する既存定理を一般δイデアル層へ移した。
+  イデアル全体の反復像の定理をその特殊化に置換し、既存公開名・型を維持。新しい宣言は追加していない。
+  同じ530対象・4,566ジョブの統合ビルド、基礎/B4監査、移動した定理と特殊化のfocused監査が成功。
+  標準3公理のみ。対象2モジュール・専用監査・計画を個別保存。

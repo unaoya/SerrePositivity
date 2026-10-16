@@ -19,6 +19,8 @@ import SerrePositivity.BhattScholze.DeltaDivisionFiniteRelationsRegular
 import SerrePositivity.BhattScholze.RankOneDPBaseChange
 import SerrePositivity.BhattScholze.DeltaTransport
 import SerrePositivity.BhattScholze.DeltaRootSourceRawH0Delta
+import SerrePositivity.BhattScholze.DeltaClosureGeneration
+import SerrePositivity.BhattScholze.DeltaDivisionIteratedRelations
 import Mathlib.Util.AssertNoSorry
 
 /-! Focused dependency checks for the BS refactoring steps.
@@ -113,3 +115,9 @@ assert_no_sorry SerrePositivity.BhattScholze.deltaRootSourceRawH0AlgEquiv_isDelt
 #print axioms SerrePositivity.BhattScholze.deltaDivisionSourceTensorDelta
 #print axioms SerrePositivity.BhattScholze.deltaRootSourceRawH0DeltaStructure
 #print axioms SerrePositivity.BhattScholze.deltaRootSourceRawH0AlgEquiv_isDeltaHom
+
+-- R2e: the generator formula lives in the general delta-ideal layer under its old name.
+assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.deltaClosure_span_eq_span_generator_iterates
+assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.deltaClosure_eq_span_iterates
+#print axioms SerrePositivity.BhattScholze.DeltaStructure.deltaClosure_span_eq_span_generator_iterates
+#print axioms SerrePositivity.BhattScholze.DeltaStructure.deltaClosure_eq_span_iterates
