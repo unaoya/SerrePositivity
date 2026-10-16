@@ -1781,3 +1781,17 @@ direct射の像の単射性の下ではlatching索引も同様に扱う。有限
 基底Cへの降下、最終RMapと最終比較は引き続き残る。
 実装`c5b8792f`、詳細は計画§260。新規36宣言・2モジュール、共有6637宣言・492モジュールの
 標準公理監査とnerve整合系・Reedyモデル圏の回帰確認が成功。
+
+
+## 実際のlatching境界包含と全列パラメータのReedy cofibrancy（2026-10-16）
+
+`Reedy/ElementsMatchingEquivalence`は要素圏のmatching索引と底圏のmatching索引を圏同値で結び、
+反対圏のlatching索引についても実際の三角形とsource図式を保つ圏同値を構成する。
+`Simplicial/SimplexLatchingBoundary`は任意サイズのXの単体圏上で、標準単体パラメータの
+latching余極限を標準境界と同型にし、比較写像を境界包含そのものと同定する。
+独立したSSet値の宇宙を保つ。Arrow同型・単射性・明示したSSetモデルでのReedy cofibrancyを得る。
+nerveの場合は既存のNerveCoherentFamily.simplicesそのものであり、自然な持ち上げの左条件を
+仮定として残さず証明した。次は値図式のmatching条件と相対延長。
+既選択系の全外部合成列への組立て、基底Cへの降下、最終RMapと最終比較は残る。
+実装`95d8d9bb`、詳細は計画§261。新規90宣言・2モジュール、共有6727宣言・494モジュールの
+標準公理監査と有限境界・nerve整合系の回帰確認が成功。

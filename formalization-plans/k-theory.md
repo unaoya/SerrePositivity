@@ -13392,3 +13392,62 @@ X=nerve Dとすると、§259の実際のReedy構造と260.2の構造は定義�
 続いて値図式のmatchingと相対持ち上げを計算し、指定した部分自然系を保持する延長を構成する。
 既選択比較の全外部合成列への組立て、基底Cへの降下、最終RMapと最終比較は未完了であり、
 F1と全体目標F→L→E→Sは継続する。
+
+
+## 261. F1進捗：実際の境界図式の圏同値・latching境界包含・パラメータのcofibrancy（2026-10-16）
+
+§259の次ゲート(2)を完了した。任意サイズの単体集合Xの実際の単体圏について、
+標準単体パラメータ図式のlatching余極限と標準境界を同型にし、比較写像を境界包含と同定した。
+索引の宇宙と値域SSetの宇宙は独立である。
+
+### 261.1 要素の圏の実際の境界図式の圏同値
+
+`Reedy/ElementsMatchingEquivalence`は§260の単射符号化を、射・三角形を含む圏同値へ拡張した。
+任意のType値関手PとReedy構造について、P.Elementsのmatching索引と底圏のmatching索引を
+実際の圏同値で結ぶ。各底圏の可換三角形から、始点要素の像を使って実際の要素射を持ち上げる。
+元のtarget図式との可換性も証明した。有限性、小ささ、射影の充満性・対象上単射性は不要である。
+
+反対圏側についても、P.Elementsᵒᵖのlatching索引と底圏の反対圏のlatching索引の圏同値を構成し、
+source図式を保つことを証明した。対象の対応だけから余極限を同定するのではなく、
+実際のfully faithful・essentially surjectiveな関手を使う。
+
+### 261.2 単体パラメータのlatching余極限と境界包含
+
+`Simplicial/SimplexLatchingBoundary`は任意のXの実際の単体圏からΔへの射影を構成し、
+Δ[n]を値とするパラメータ図式を定義する。各単体sのlatching索引を、
+対応するΔのlatching索引へ送る実際の圏同値を構成した。source図式も可換である。
+
+この同値に沿う実際の余極限射と、既存の標準単体の境界同型を合成して`boundaryIso`を得た。
+`boundaryIso_fac`は、この同型に続く標準境界包含が元のlatching比較写像そのものであることを示す。
+`boundaryArrowIso`は両者をArrow SSet内の実際の同型として供給する。
+全次元についてlatching比較写像の単射性を証明した。
+
+### 261.3 全外部文脈列のパラメータ図式のReedy cofibrancy
+
+明示したSSetモデルとcof=monoの一致から、261.2のパラメータ図式のReedy cofibrancyを証明した。
+初期図式からの相対latching写像への接続は、既存の`latchingInitialArrowIso`を使う。
+
+X=nerve Dの場合、この図式は§259の`NerveCoherentFamily.simplices`そのものである。
+任意の対象・射の宇宙を持つDと、独立した小さいSSet値域について、
+パラメータの初期射とReedy trivial fibrationの間の自然な持ち上げを一般定理から得られることを
+受入例で検証した。左側のcofibrancyはここで証明済みであり、仮定として残していない。
+右側の値図式の相対matching条件は引き続き証明する必要がある。
+
+### 261.4 受入検証と残項目
+
+実装コミット`95d8d9bb`。全て成功した。
+
+- 共有入口の合同build：2689 jobs、追加警告なし。
+- `check_simplex_latching_boundary`：一般の要素圏の境界図式の圏同値とtarget可換性、
+  独立宇宙の実際の境界同型・Arrow同型・比較写像の式、nerve上の元の整合パラメータの
+  Reedy cofibrancy、証明済み左条件からの一般Reedy持ち上げ。90宣言・2モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：6727宣言・494モジュール、標準公理のみ。
+- `check_simplex_index_finite`：36宣言・2モジュールの回帰確認。
+- `check_nerve_coherent_family`：63宣言・3モジュールの回帰確認。
+- 新規ソースの行長・空白・証明用マーカー確認、stageした差分の空白検査。
+
+次は値図式のmatchingを計算する。特に退化単体の非退化表示と逆境界索引の関係を使い、
+§259で証明した逆射の終点同型性から必要な相対matching持ち上げ条件へ接続する。
+その後、指定済みの部分自然系を保つ相対延長、§258の独立に選択済みの比較族の組立てへ進む。
+全外部合成列の高次整合性、基底Cへの降下、最終RMapと最終比較は未完了であり、
+F1と全体目標F→L→E→Sを引き続き維持する。
