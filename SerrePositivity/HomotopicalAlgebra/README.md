@@ -2847,3 +2847,15 @@ ambient値への厳密な評価、全パラメータ置換と両関手の可換s
 全pathを元の小さい宇宙の実族へ戻し、空path・一射・0面/1面・全パラメータ自然性も検証した。
 元の基底上への厳密な降下・内部の恒等射の退化・最終RMap・F2は引き続き未完了。
 検証：`scripts/check_moving_choice_chain_transfer.lean`、計画書§343。
+
+
+### 基底射の離散空間への全mono右持ち上げ性を持つ選択射空間（§344）
+
+`DiscreteFiber`・`DiscreteFamily`・`DiscreteFamilyLifting`は離散ラベル上の実ファイバー、
+実total空間とそのファイバー同型、全パラメータの分解・再構成をモデル不要で供給する。
+各ファイバーの全mono延長性から、射影全体の全mono右持ち上げ性と局所化後可逆性を証明した。
+`OrdinaryBarChoiceMappingSpace`は全次数の実選択圏の射からSSet射空間を構成し、
+基底射の離散空間への射影・全mono右持ち上げ性・Kan性・局所化後可逆性、
+厳密な合成・単位と射影による保存を証明する。最終RMapそのものではない。
+射影の厳密なsectionやcofinalityは主張しない。小さいSSet値降下・移送後の内部単位・最終RMap・F2は未完了。
+検証：`scripts/check_choice_mapping_space.lean`、計画書§344。
