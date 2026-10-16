@@ -10003,3 +10003,17 @@ PerfectPrismRootedPerfectoidExtension.leanの公開3宣言で、同じ標準基�
 元の核の全元を添字族として、既存の根付き核降下を適用し、完全prism商からの導来p完備全射商の任意IsPerfectoidizationの全射性を証明した。
 対象4283ジョブ成功、pure B4監査2555宣言成功、標準3公理のみ。André・B-I/B6・全射性引用への依存なし。
 一般perfectoid源への商表示を通じた移送と旧B-S入口の解消を残す。
+
+## B4-7の既存B-S入口の最終接続計画（2026-10-16）
+任意perfectoid源・導来p完備全射商・任意IsPerfectoidizationの一般全射性と、B3と合成した全射perfectoid化の存在がビルド済みとなった。
+pねじれのない古典的完備商の既存Inputs/SemiperfectoidSurjectivity.leanの同じ署名を維持し、一般存在定理と既存の正則な場合の古典的/導来完備性比較により既存sorryを証明へ置き換える。
+既存PerfectoidizationSurjectivity.leanの公開APIは維持し、文献引用とする説明のみ証明済みの入口へ更新する。これらはいずれもBS専用ファイル。
+新一般定理の842到達モジュールに旧B-S入力のimportがなく循環しないことを確認済み。一般定理・旧B-S存在API・任意普遍対象への旧移送APIをpure監査し、CLMST/CyclicPerfectoidizationのビルドで利用先との互換性を確認する（利用先は編集しない）。
+B-I/B6とAndréの既存引用は変更しない。
+
+## 一般B4の公開定理の証明結果（2026-10-16）
+SemiperfectoidSurjectivity.leanの公開3定理で、任意perfectoid源・導来p完備全射商の任意IsPerfectoidizationの全射性を証明した。
+非零源は既存のFontaine/完全prism商表示を用い全射qと商表示を合成して完全prism商での既証全射性へ移し、零環枝も処理した。
+B3と合成して一般の全射perfectoid化の存在も証明し、古典的p進完備商の互換入口も共通の完備性比較から証明した。p正則性・有限性・古典的完備性を一般入口へ追加していない。
+対象4284ジョブ成功、pure B4監査2558宣言成功、標準3公理のみ。André・B-I/B6・旧B-S引用への依存なし。
+B4-7の残作業は既存B-S引用入口の同じ署名での証明置換・旧利用入口のビルドと監査・最終完了記録である。
