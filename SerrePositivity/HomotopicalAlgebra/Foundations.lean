@@ -1,5 +1,8 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.StrictValueObstruction
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.StrictValueDescentCounterexample
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.StrictValuePresentationCounterexample
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ReplacementMappingDescent
 public import SerrePositivity.HomotopicalAlgebra.Replacement.FibrantCategory
 public import SerrePositivity.HomotopicalAlgebra.Replacement.FibrantLocalization
