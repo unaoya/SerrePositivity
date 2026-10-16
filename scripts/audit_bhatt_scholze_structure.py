@@ -39,6 +39,10 @@ AUDIT_KINDS = {
     "audit_bhatt_scholze_refactoring.lean": "pure-suite",
     "audit_bhatt_scholze_andre_conditional.lean": "andre-conditional-suite",
 }
+# Read these shared files only for assertion-name coverage. They do not become
+# dedicated BS suites, and their proof policy or successful execution is not
+# inferred from source text.
+REFERENCE_AUDITS = ("audit_clmst_b3.lean",)
 DEFAULT_FORBIDDEN = (BS, "SerrePositivity.CLMST", "SerrePositivity.Inputs", "SerrePositivity.Paper")
 NOTICE = ("Source/import analysis only. Import coverage and source-name matching do not "
           "establish theorem dependencies, absence of sorry, or successful Lean compilation. "
@@ -46,17 +50,22 @@ NOTICE = ("Source/import analysis only. Import coverage and source-name matching
 INVENTORY_NOTICE = ("Reference inventory only: explicit named declarations, simple namespace/section "
                     "tracking, and explicit public sections. Generated names and anonymous instances "
                     "are omitted. Unmarked declarations in module files have uncertain visibility. "
+                    "Simple source aliases are separate candidates, not verified generated declarations. "
                     "No inventory difference changes the exit status.")
+COVERAGE_CLASSIFICATION_NOTICE = ("Classification of source-name coverage only. Shared audit listings "
+                                 "do not add dedicated BS coverage or certify audit success. Named citation "
+                                 "imports describe source reachability, not theorem dependency or purity.")
 COMPONENT = r"(?:«[^»\n]+»|[^\W\d][\w']*)"
 NAME = COMPONENT + r"(?:\." + COMPONENT + r")*"
 NAME_RE = re.compile(NAME)
 MODIFIERS = r"(?:(?:public|private|protected|noncomputable|unsafe|partial|nonrec|local|scoped)[ \t]+)*"
 COMMAND = re.compile(r"^[ \t]*(?P<mods>" + MODIFIERS + r")"
                      r"(?P<kind>namespace|section|mutual|end|theorem|lemma|def|abbrev|opaque|axiom|"
-                     r"structure|class|instance)\b", re.M)
+                     r"structure|class|instance|alias)\b", re.M)
+SIMPLE_ALIAS = re.compile(r"\s*(?P<name>" + NAME + r")\s*:=\s*(?P<target>" + NAME + r")(?=\s|$)")
 RESERVED = {"module", "prelude", "import", "public", "private", "meta", "namespace", "section",
             "end", "universe", "variable", "open", "set_option", "noncomputable", "theorem", "def",
-            "abbrev", "instance", "attribute", "class", "structure", "initialize", "syntax", "elab"}
+            "abbrev", "instance", "attribute", "class", "structure", "initialize", "syntax", "elab", "alias"}
 
 
 def strip_noncode(text: str) -> str:
@@ -159,7 +168,7 @@ def qualify(namespace: str, name: str) -> str:
 def declarations(text: str, path: str, module: str) -> dict:
     code = mask_attributes(strip_noncode(text))
     visibility = "unspecified-module" if re.search(r"^module\s*$", code, re.M) else "public"
-    namespace, stack, found, anonymous = "", [], [], 0
+    namespace, stack, found, aliases, anonymous = "", [], [], [], 0
     for command in COMMAND.finditer(code):
         kind, modifiers = command["kind"], command["mods"].split()
         tail = code[command.end():]
@@ -176,6 +185,16 @@ def declarations(text: str, path: str, module: str) -> dict:
         elif kind == "end":
             if stack:
                 namespace, visibility = stack.pop()
+        elif kind == "alias":
+            # Batteries' simple alias syntax only. Do not infer generated
+            # declaration types, target resolution, or support iff aliases.
+            alias = SIMPLE_ALIAS.match(tail)
+            if alias and alias["name"] not in RESERVED and alias["target"] not in RESERVED:
+                actual = "private" if "private" in modifiers else "public" if "public" in modifiers else visibility
+                aliases.append({"name": qualify(namespace, alias["name"]),
+                                "target_as_written": alias["target"], "kind": "source-alias-candidate",
+                                "visibility": actual, "path": path,
+                                "line": code.count("\n", 0, command.start()) + 1, "module": module})
         elif name and name not in RESERVED:
             actual = "private" if "private" in modifiers else "public" if "public" in modifiers else visibility
             found.append({"name": qualify(namespace, name), "kind": kind, "visibility": actual,
@@ -183,7 +202,7 @@ def declarations(text: str, path: str, module: str) -> dict:
                           "module": module})
         elif kind == "instance":
             anonymous += 1
-    return {"declarations": found, "anonymous_instances": anonymous}
+    return {"declarations": found, "source_alias_candidates": aliases, "anonymous_instances": anonymous}
 
 
 def listed_assertions(text: str) -> list[str]:
@@ -294,20 +313,58 @@ def make_report(root: Path, foundation_roots: list[str], forbidden: list[str]) -
                        "assert_no_sorry_occurrences": len(name_list),
                        "assert_no_sorry_names": sorted(set(name_list)),
                        "repeated_assertions": {name: count for name, count in sorted(Counter(name_list).items()) if count > 1}})
-    inventory, anonymous = [], 0
+    inventory, aliases, anonymous = [], [], 0
     for module in sorted(bs):
         path, text = sources[module]
         result = declarations(text, path, module)
         inventory.extend(result["declarations"])
+        aliases.extend(result["source_alias_candidates"])
         anonymous += result["anonymous_instances"]
     public = [item for item in inventory if item["visibility"] == "public"]
     public_names, all_source_names, asserted = {d["name"] for d in public}, {d["name"] for d in inventory}, set(assertions)
+    alias_names = {item["name"] for item in aliases}
+    public_alias_names = {item["name"] for item in aliases if item["visibility"] == "public"}
+    reference_audits, reference_names = [], {}
+    for filename in REFERENCE_AUDITS:
+        path = "scripts/" + filename
+        module = ".".join(Path(path).with_suffix("").parts)
+        names = sorted(set(listed_assertions(sources[module][1]))) if module in sources else []
+        matched = sorted(set(names) & (all_source_names | alias_names))
+        reference_audits.append({"path": path, "source_found": module in sources,
+                                 "role": "assertion-name-reference-only",
+                                 "assert_no_sorry_names": names, "matched_bs_source_names": matched})
+        for name in matched:
+            reference_names.setdefault(name, []).append(path)
+    unlisted_categories = {category: [] for category in (
+        "listed-in-reference-audit", "named-citation-source",
+        "named-citation-import-reachable", "unclassified")}
+    unlisted_details = []
+    for item in sorted(public, key=lambda item: (item["name"], item["path"], item["line"])):
+        name, module = item["name"], item["module"]
+        if name in asserted:
+            continue
+        refs = reference_names.get(name, [])
+        kind = categories[module]
+        category = ("listed-in-reference-audit" if refs else
+                    "named-citation-source" if module in CITATIONS.values() else
+                    "named-citation-import-reachable" if kind != "no-named-bs-citation-import" else
+                    "unclassified")
+        unlisted_categories[category].append(name)
+        unlisted_details.append({**item, "coverage_category": category, "reference_audits": refs,
+                                 "citation_import_class": kind})
+    # Preserve the original declaration-only inventory fields. Alias matches
+    # explain source parsing gaps; they do not establish a Lean declaration.
+    asserted_not_declarations = {n for n in asserted - all_source_names if under(n, BS)}
     warnings = []
     uncovered = sorted(bs - covered)
     if uncovered:
         warnings.append(f"{len(uncovered)} BS modules are outside all dedicated audit import closures; reference warning only.")
     if public_names - asserted:
-        warnings.append(f"{len(public_names - asserted)} public source-name candidates lack an assert_no_sorry entry in these BS audits.")
+        warnings.append(f"{len(public_names - asserted)} public source-name candidates lack an assert_no_sorry entry in these BS audits; see the separate source/reference classifications, not an unproved count.")
+    if asserted_not_declarations - alias_names:
+        warnings.append(f"{len(asserted_not_declarations - alias_names)} asserted BS names match neither a parsed declaration nor a simple source alias candidate; name-resolution review only, not an unproved count.")
+    if any(not audit["source_found"] for audit in reference_audits):
+        warnings.append("A configured shared reference audit source was not found; reference coverage may be incomplete.")
     if not foundation_roots:
         warnings.append("Foundation dependency boundary NOT CHECKED: no --foundation-root was supplied.")
     if not audits:
@@ -335,12 +392,21 @@ def make_report(root: Path, foundation_roots: list[str], forbidden: list[str]) -
                                                     for kind in sorted(set(categories.values()))},
                                "classification_note": "Named citation import reachability only; not proof-term purity."},
         "audit_suites": audits,
+        "reference_audits": {"notice": COVERAGE_CLASSIFICATION_NOTICE, "sources": reference_audits},
         "inventory": {"notice": INVENTORY_NOTICE, "named_source_declarations": len(inventory),
                       "public_candidates": len(public), "anonymous_instances_omitted": anonymous,
                       "visibility_counts": dict(sorted(Counter(d["visibility"] for d in inventory).items())),
                       "declarations": inventory,
                       "public_candidates_without_assertion": sorted(public_names - asserted),
-                      "asserted_bs_names_not_in_source_inventory": sorted(n for n in asserted - all_source_names if under(n, BS)),
+                      "public_candidates_without_assertion_classification": {
+                          "notice": COVERAGE_CLASSIFICATION_NOTICE,
+                          "categories": {kind: sorted(set(names)) for kind, names in unlisted_categories.items()},
+                          "details": unlisted_details},
+                      "source_alias_candidates": aliases,
+                      "public_alias_candidates_without_assertion": sorted(public_alias_names - asserted),
+                      "asserted_bs_names_not_in_source_inventory": sorted(asserted_not_declarations),
+                      "asserted_bs_names_matching_source_aliases": sorted(asserted_not_declarations & alias_names),
+                      "asserted_bs_names_without_declaration_or_alias_candidate": sorted(asserted_not_declarations - alias_names),
                       "assertions_outside_bs_namespace": sorted(n for n in asserted if not under(n, BS))},
     }
 
@@ -360,7 +426,16 @@ def text_report(report: dict) -> None:
     inventory = report["inventory"]
     print(f"Reference inventory: public candidates={inventory['public_candidates']}, "
           f"without listed assertion={len(inventory['public_candidates_without_assertion'])}, "
-          f"asserted BS names not parsed={len(inventory['asserted_bs_names_not_in_source_inventory'])}")
+          f"asserted BS names without parsed declaration={len(inventory['asserted_bs_names_not_in_source_inventory'])}")
+    print(f"  Of those assertion names: source alias candidates={len(inventory['asserted_bs_names_matching_source_aliases'])}, "
+          f"without declaration or alias candidate={len(inventory['asserted_bs_names_without_declaration_or_alias_candidate'])}")
+    classification = inventory["public_candidates_without_assertion_classification"]
+    for category, names in classification["categories"].items():
+        print(f"  Dedicated assertion-list gaps [{category}]: {len(names)}")
+    for audit in report["reference_audits"]["sources"]:
+        print(f"  Shared reference only: {audit['path']}; source found={audit['source_found']}, "
+              f"matched BS source names={len(audit['matched_bs_source_names'])}")
+    print(classification["notice"])
     print(inventory["notice"])
     for message in report["reference_warnings"]:
         print("WARNING: " + message)
@@ -433,6 +508,81 @@ def uncertain := 1
     def test_assertions_comments_multiline_duplicates(self):
         source = 'assert_no_sorry A.first\n-- assert_no_sorry Fake\nassert_no_sorry\n A.first\n#print axioms A.other\n'
         self.assertEqual(listed_assertions(source), ["A.first", "A.first"])
+
+    def test_source_alias_candidates_are_separate(self):
+        source = '''module
+@[expose] public section
+namespace A
+alias old := External.original
+@[simp] alias
+  multiline :=
+  External.multiline
+private alias hidden := External.hidden
+alias _root_.B.old := _root_.External.original
+alias «quoted--name» := External.«quoted target»
+-- alias fakeComment := External.fake
+/- alias fakeNested := External.fake /- alias nested := External.fake -/ -/
+def text := "alias fakeString := External.fake"
+alias ⟨forward, backward⟩ := External.iff
+end A
+end
+alias uncertain := External.uncertain
+'''
+        result = declarations(source, "Example.lean", "Example")
+        self.assertEqual([item["name"] for item in result["declarations"]], ["A.text"])
+        aliases = {item["name"]: item for item in result["source_alias_candidates"]}
+        self.assertEqual(set(aliases), {"A.old", "A.multiline", "A.hidden", "B.old",
+                                        "A.«quoted--name»", "uncertain"})
+        self.assertEqual(aliases["A.old"]["kind"], "source-alias-candidate")
+        self.assertEqual(aliases["A.old"]["target_as_written"], "External.original")
+        self.assertEqual(aliases["A.multiline"]["line"], 5)
+        self.assertEqual(aliases["A.hidden"]["visibility"], "private")
+        self.assertEqual(aliases["B.old"]["target_as_written"], "_root_.External.original")
+        self.assertEqual(aliases["uncertain"]["visibility"], "unspecified-module")
+
+    def test_shared_reference_classification_does_not_expand_dedicated_coverage(self):
+        with tempfile.TemporaryDirectory(prefix="bs-structure-reference-test-") as directory:
+            root = Path(directory)
+            bs = root / "SerrePositivity" / "BhattScholze"
+            (bs / "Inputs").mkdir(parents=True)
+            (root / "scripts").mkdir()
+            (bs / "Inputs" / "AndreFlatness.lean").write_text(
+                "namespace SerrePositivity.BhattScholze.Inputs\ntheorem cited : True := by trivial\nend\n")
+            (bs / "Relative.lean").write_text(
+                "import " + CITATIONS["andre-relative"] + "\nnamespace " + BS +
+                "\ndef relative := 0\nend\n")
+            (bs / "Shared.lean").write_text("namespace SerrePositivity\ndef shared := 0\nend\n")
+            (bs / "Unlisted.lean").write_text("namespace " + BS + "\ndef unlisted := 0\nend\n")
+            (bs / "Aliases.lean").write_text("namespace " + BS + "\nalias old := External.original\nend\n")
+            (root / "scripts" / "audit_bhatt_scholze.lean").write_text(
+                "import " + BS + ".Aliases\nassert_no_sorry " + BS + ".old\nassert_no_sorry " + BS + ".missing\n")
+            (root / "scripts" / REFERENCE_AUDITS[0]).write_text(
+                "import " + BS + ".Shared\nimport " + BS + ".Relative\n"
+                "assert_no_sorry SerrePositivity.shared\n"
+                "-- assert_no_sorry " + BS + ".unlisted\n"
+                "/- outer /- assert_no_sorry " + BS + ".relative -/ -/\n"
+                'def text := "assert_no_sorry ' + BS + '.Inputs.cited"\n')
+            report = make_report(root, [], list(DEFAULT_FORBIDDEN))
+            inventory = report["inventory"]
+            categories = inventory["public_candidates_without_assertion_classification"]["categories"]
+            self.assertEqual(categories, {
+                "listed-in-reference-audit": ["SerrePositivity.shared"],
+                "named-citation-source": [BS + ".Inputs.cited"],
+                "named-citation-import-reachable": [BS + ".relative"],
+                "unclassified": [BS + ".unlisted"],
+            })
+            self.assertEqual(len(inventory["public_candidates_without_assertion"]), 4)
+            self.assertEqual(inventory["named_source_declarations"], 4)
+            self.assertEqual(inventory["asserted_bs_names_not_in_source_inventory"],
+                             [BS + ".missing", BS + ".old"])
+            self.assertEqual(inventory["asserted_bs_names_matching_source_aliases"], [BS + ".old"])
+            self.assertEqual(inventory["asserted_bs_names_without_declaration_or_alias_candidate"], [BS + ".missing"])
+            self.assertEqual(report["bs_import_coverage"]["covered"], 1)
+            self.assertEqual(len(report["audit_suites"]), 1)
+            self.assertEqual(report["audit_suites"][0]["named_citation_imports"], [])
+            self.assertEqual(report["reference_audits"]["sources"][0]["matched_bs_source_names"],
+                             ["SerrePositivity.shared"])
+            self.assertEqual(report["structural_status"], "pass")
 
     def test_cycles_and_closure(self):
         graph = {"A": {"B"}, "B": {"C"}, "C": {"B"}, "D": set()}
