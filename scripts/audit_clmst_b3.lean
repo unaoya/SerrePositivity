@@ -116,6 +116,11 @@ example {R : Type} [CommRing R] (p : ℕ) [Fact p.Prime]
 
 -- C2-4: all elementary cyclic components remain sorry-free.
 assert_no_sorry SerrePositivity.CLMST.completedTowerCyclicQuotient_p_regular_and_complete
+assert_no_sorry SerrePositivity.CLMST.toPerfectoidization_cyclic_surjective_of_not_dvd
+assert_no_sorry SerrePositivity.CLMST.cyclic_length_eq_zero_of_not_dvd
+assert_no_sorry SerrePositivity.CLMST.cyclic_length_eq_zero
+assert_no_sorry SerrePositivity.CLMST.completedLength_eq_zero_of_perfectoidIdeal_annihilates
+assert_no_sorry SerrePositivity.CLMST.completedLength_eq_of_perfectoid_mod_almost_iso
 assert_no_sorry SerrePositivity.CLMST.exists_cyclic_root_stage_length_estimate
 assert_no_sorry SerrePositivity.CLMST.exists_stage_root_normalized_bound
 assert_no_sorry SerrePositivity.CLMST.exists_completed_cyclic_div_pow_bound_of_surjective
@@ -158,25 +163,25 @@ elab "assert_cyclic_B3_dependencies" : command => do
     ``SerrePositivity.CLMST.cyclic_length_eq_zero_of_not_dvd,
     ``SerrePositivity.CLMST.cyclic_length_eq_zero,
     ``SerrePositivity.CLMST.completedLength_eq_zero_of_perfectoidIdeal_annihilates]
-  let allowed := [``SerrePositivity.BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotient]
+  let allowed : List Name := []
   let forbidden := [`SerrePositivity.BhattScholze.Inputs.exists_perfectoidization_of_integral,
     `SerrePositivity.Inputs.exists_perfectoidization_of_finite,
-    `SerrePositivity.Perfectoidization, `SerrePositivity.toPerfectoidization]
-  let seen ← liftCoreM <| checkDependencies roots {} allowed forbidden
-  unless seen.contains allowed.head! do throwError "Expected B-S dependency is missing"
-  logInfo "Cyclic proof paths: old B-I absent; only B-S contains sorry."
+    `SerrePositivity.Perfectoidization, `SerrePositivity.toPerfectoidization,
+    `SerrePositivity.BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotient,
+    `SerrePositivity.BhattScholze.Inputs.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed]
+  let _seen ← liftCoreM <| checkDependencies roots {} allowed forbidden
+  logInfo "Cyclic proof paths: sorry-free; old B-I, B-S, and Andre inputs absent."
 
 elab "assert_almost_B3_dependencies" : command => do
   let roots := [``SerrePositivity.CLMST.completedLength_eq_of_perfectoid_mod_almost_iso]
-  let allowed := [
-    ``SerrePositivity.BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotient]
+  let allowed : List Name := []
   let forbidden := [`SerrePositivity.BhattScholze.Inputs.exists_perfectoidization_of_integral,
     `SerrePositivity.Inputs.exists_perfectoidization_of_finite,
-    `SerrePositivity.Perfectoidization, `SerrePositivity.toPerfectoidization]
-  let seen ← liftCoreM <| checkDependencies roots {} allowed forbidden
-  for n in allowed do
-    unless seen.contains n do throwError "Expected dependency is missing: {n}"
-  logInfo "Almost length comparison: old B-I absent; only B-S contains sorry; B-R is proved."
+    `SerrePositivity.Perfectoidization, `SerrePositivity.toPerfectoidization,
+    `SerrePositivity.BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotient,
+    `SerrePositivity.BhattScholze.Inputs.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed]
+  let _seen ← liftCoreM <| checkDependencies roots {} allowed forbidden
+  logInfo "Almost length comparison: sorry-free; old B-I, B-S, and Andre inputs absent; B-R is proved."
 end
 
 assert_cyclic_B3_dependencies

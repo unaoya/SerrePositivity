@@ -120,3 +120,28 @@ assert_no_sorry SerrePositivity.chi_pos_of_residueCharZero
 assert_no_sorry SerrePositivity.Inputs.cohen_gabber_normalization
 #print axioms SerrePositivity.Section2.lemma_2_2
 assert_no_sorry SerrePositivity.Section2.lemma_2_2
+
+-- The main theorem may retain separately audited inputs, but the old B-S citation must not return.
+meta section
+open Lean Elab Command
+private partial def checkNoLegacySurjectivity (todo : List Name) (seen : NameSet) : CoreM Unit := do
+  match todo with
+  | [] => return
+  | n :: rest =>
+    if seen.contains n then return ← checkNoLegacySurjectivity rest seen
+    if n == `SerrePositivity.BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotient ||
+        n == `SerrePositivity.BhattScholze.surjective_of_isPerfectoidization_of_complete_torsionFree_quotient then
+      throwError "Main theorem reached the legacy B-S surjectivity citation: {n}"
+    let seen := seen.insert n
+    let some info := (← getEnv).find? n | return ← checkNoLegacySurjectivity rest seen
+    let mut deps := info.type.getUsedConstants
+    if let some value := info.value? (allowOpaque := true) then
+      deps := deps ++ value.getUsedConstants
+    checkNoLegacySurjectivity (deps.toList ++ rest) seen
+
+elab "assert_main_no_legacy_surjectivity" : command => do
+  liftCoreM <| checkNoLegacySurjectivity [``SerrePositivity.main_statement] {}
+  logInfo "Main theorem: legacy B-S surjectivity citation absent."
+end
+
+assert_main_no_legacy_surjectivity

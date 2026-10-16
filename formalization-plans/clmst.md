@@ -27,7 +27,7 @@ multiplicity, and an application to local fundamental groups*, arXiv:2209.04046v
 | 共通の正規化長さ | 有限段、有限生成・有限表示一致、必要な加法性・近似・係数制限を実装 | 旧C1/C2の直接の引用を除去。共通層の証明を使う |
 | 完備化と有限代数 | 平坦性、有限表示テンソル比較、具体的な塔への適用を実装 | 共通可換環論として証明。古い「完備塔の平坦性が残る」は解消済み |
 | perfectoid環のpねじれ商 | S/S[p]のperfectoid性と一般のp因子除去を実装 | Fontaine核を含む定義条件から証明。巡回商の選択はB3へ移行済み。一般有限代数の選択は別途存在引用に依存する |
-| 命題4.0.10の数値部分 | 非零gの巡回長さ零、一般加群への帰着、almost比較からの長さ一致を実装 | 巡回評価の直接のsorryを除去。B3の証明済み存在と既存B-S互換引用を使う。実almost局所化圏で使うmod p冪イデアル冪等性は証明済み |
+| 命題4.0.10の数値部分 | 非零gの巡回長さ零、一般加群への帰着、almost比較からの長さ一致を実装 | 巡回評価・almost長さ比較はB3/B4の証明済み存在・全射性へ接続しsorry非依存。実almost局所化圏で使うmod p冪イデアル冪等性も証明済み |
 | 命題4.0.14 | 任意の有限段・パラメータ系について長さと重複度の公式を実装 | 共通Euler・錐の理論から証明。Prop 2.4.7、Cor 4.0.4等の明示引用に相対的な証明 |
 | 標準完備塔のperfectoid性 | 元のWitt係数表示と添字のまま証明済み | 有限段Frobenius核・tilt核・Fontaine核を共通層で証明。旧Inputsは引用非依存の互換入口 |
 | Serreへの接続 | 上記から混標数の長さ代数の性質を供給する接続を実装 | 接続そのものに直接のsorryを置かず、基礎入力へ依存を分離 |
@@ -41,7 +41,6 @@ multiplicity, and an application to local fundamental groups*, arXiv:2209.04046v
 | 入力 | 所在 | 現在の使われ方 |
 | --- | --- | --- |
 | BS Thm 1.17(1)：整代数の普遍perfectoid化の存在 | `BhattScholze/Inputs/Perfectoidization.lean` | 一般有限代数の選択を通じ主定理へ到達。巡回評価・almost長さ比較からは除去済み |
-| BS Thm 7.4：pねじれのない完備商のperfectoid化の全射性 | `BhattScholze/Inputs/SemiperfectoidSurjectivity.lean` | 主定理へ到達。原典の適用形。p正則な場合の古典的／導来p完備性の同値は共通層で証明済み |
 | CLMST Prop 2.4.7：perfectoid化の錐のg冪による消滅 | `CLMST/Inputs/PerfectoidIsogeny.lean` | 主定理へ到達 |
 | CLMST Cor 4.0.4：局所コホモロジー・Koszulホモロジーのalmost消滅 | `CLMST/Inputs/CohomologyVanishing.lean` | 主定理へ到達。Thm 4.0.3は別の直接引用としては置いていない |
 
@@ -49,16 +48,19 @@ BS全射性の具体的な適用条件（巡回商のp正則性・p進完備性�
 選んだ普遍対象への移送は証明済み。上記完備性の同値も、p正則な場合に共通層で証明済み。
 B3の一般商のperfectoid化の存在・普遍性はBS側で証明済み（2026-10-14）。
 CLMST側の主イデアル商の選択・巡回評価・almost長さ比較は§9.7bのC2で接続済み。
-巡回評価と実almost同型による長さ比較に残る未証明入力は既存B-S互換引用のみ。
+巡回評価と実almost同型による長さ比較は、既存B-S互換引用の呼出しを証明済みの
+`perfectoidIdeal_quotientMap_surjective`へ移し、全経路のsorry非依存性を監査済み。
+旧B-S入力とその互換定理は残るが、上記経路と主定理へ到達しない。
 証明済みB4を元の主イデアル商へ接続し、perfectoid idealの核商のperfectoid性、
 元の完備導来乗法の同型性、完備almost零加群の拡大閉性、全mod p冪像の冪等性を証明した。
 `CLMST/Inputs/BasicSetup.lean`はsorry非依存の互換入口となった。
 KL-Eの実入力は完成し、KLではProp 2.4.9(a)の実Tor入力が残る。
-既存巡回評価のB-S互換入力の呼出し移行、一般整代数のB-I/B6は引き続き残る。
+一般整代数のB-I/B6、KL-TとDの実適用は引き続き残る。
 
-主定理全体の現在の`#print sorries`では、上表の4件に加え、
-`intersectionVanishing`、`theorem_3_1_K0`、`supportedRankK0_descent`が到達する。
-計7宣言（外部引用5件・保留中のK理論2件）であり、独立した原典定理の数とは区別する。
+主定理全体の現在の`#print sorries`では、上表の3件に加え、
+`theorem_3_1_K0`、`supportedRankK0_descent`が到達する。
+計5宣言（外部引用3件・保留中のK理論2件）であり、独立した原典定理の数とは区別する。
+`intersectionVanishing`は別担当の証明によりsorry非依存となったことを今回の監査でも確認した。
 Robertsの`frobenius_homology_length_tendsto_zero`、`serrePositivity_of_field`、
 `cohen_gabber_normalization`は現在の主定理へ到達しない。
 Cohen–Gabberの引用除去は別担当の成果であり、今回のF3による引用削減とは区別する。
@@ -7656,6 +7658,18 @@ KL-T底変換準備・元のperfectoid idealと商の関手性（2026-10-17）�
 この包含と写像だけからperfectoid化の底変換同型を主張しない。
 元の実導来tensorと拡大先のperfectoid化係数のTorの比較、実almost比較とrank還元、
 KL-Q・Dの実適用、B-Iは引き続き残る。
+
+巡回・almost長さ経路と主定理から旧B-S引用を除去（2026-10-17）：
+`CyclicPerfectoidization.lean`の元の公開署名を保ち、証明を完成済みの
+`perfectoidIdeal_quotientMap_surjective`へ移した。従来のp正則性・完備性補題も保持する。
+B3監査では新たに巡回評価・一般加群の長さ零・実almost長さ一致をsorry非依存として検査し、
+二つの依存走査の許可sorryリストを空にした。旧B-I/B-SとAndré入力を明示的に禁止する。
+全体5858ジョブ、B3監査84件と二つの依存走査、CLMST監査1067件、公理監査が成功した。
+主定理の証明定数を再帰走査するB-S回帰ガードも追加し、引用が到達しないことを確認した。
+最新の主定理の未証明宣言はB-I・Prop 2.4.7・Cor 4.0.4とK理論2件の計5件。
+同時に別担当によるintersectionVanishingのsorry非依存化を確認し、§0の台帳へ反映した。
+旧B-S引用宣言そのものは互換層に残るが、巡回・almost長さ経路と主定理には使用しない。
+KL-T・KL-Q、Dの実適用、一般整代数の存在入力B-Iは引き続き残る。
 
 ### 9.8. 各区切りの保存と検証
 
