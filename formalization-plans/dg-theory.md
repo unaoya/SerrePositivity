@@ -4292,3 +4292,28 @@ Checks.ConeElementRelations・Checks.FunctorModuleCone・Checks.StageSeven・既
 
 cone比較の可逆性・相対K-flatと指定quasiIso保存の接続はなお未完。
 U11e・U12残部・U13〜U17・D4mも継続する。共有系列への追加要求はない。
+
+### 17.66 U12a6：cone比較の複体同型と相対K-flatのcone閉性（2026-10-16）
+
+`Complexes/ConeRepresentation.lean`は任意複体の四つの包含/射影に五つの行列恒等式を仮定し、
+既存mappingCone.descの各次数の逆をcomplexConeElementMkで明示した。
+第一/第二射影との合成式、左右の逆恒等式、各次数の全単射を証明し、
+MathlibのHom.isIso_of_componentsで比較射が同型となることを証明する。
+
+`Functor/ModuleConeIso.lean`は§17.65のdg関手像の恒等式を渡し、
+任意の複体値dg関手についてmoduleConeImageComparisonのIsIsoとmoduleConeImageIsoを公開する。
+そのhomは§17.64で定義した比較射そのものである。
+`Tensor/Cone.lean`は既存rightTensorDGの閉零比較を使って通常rightTensorFunctorへの同型に接続し、
+moduleRelativeKFlat_coneを証明した。両端が相対K-flatなら任意の標準coneも相対K-flatである。
+
+Checks.FunctorModuleConeIso・Checks.ConeElementRelations・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2693 jobs、終了コード0、警告なし）。任意A・独立対象宇宙・任意dg関手、
+評価関手・実際のbalanced tensor、相対K-flat cone、ZMod 2を検査した。
+主要12宣言の直接公理監査は終了コード0、標準公理のみ。監査累計1816宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査も成功。
+今回の4ファイルにsorry/admit/新規axiomはない。
+
+U12aの残るshift閉性と相対K-flat条件の指定quasiIso保存との同値、
+左変数も導来化したtensor双関手、U12c/e/fはなお未完。
+次はopposite上の既存左右加群同値とswapを使い、このcone比較を左変数の準同型保存へ適用する。
+U11eのcoherence・U13〜U17・D4mも未完。共有系列への追加要求はない。
