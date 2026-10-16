@@ -2966,3 +2966,13 @@ Paths³(Cᵒᵖ × C) → Choice(P × ∂Δ²)という実境界関手と、全�
 `OrdinaryBarFreeDegeneracyExtension`は実Prescribedと相対延長を作り、境界・射影・全退化関手を保持する。
 元の自由分解からの全次数の帰納入力の構成と、小さい厳密なRMapは残る。
 受入検証は`check_free_latching_extension`（50宣言・4モジュール）。
+
+
+### 実自由分解からの全次数の境界・退化指定値（§355）
+
+`FreeGeneratorFaces`は実余モナドの面との比較、固定対象の逆順面、全面の重なりを証明する。
+`OrdinaryBarFreeResolutionBoundary`は低次数の面等式から重なりを導き、次の実境界関手と全面制限を作る。
+`OrdinaryBarFreeResolutionDegeneracyValues`は低次数Fをσで引き戻し、低次数の退化等式から
+交差全体の整合性を導く。全退化像上の指定値を作り、実引き戻し図式との一致も証明する。
+指定退化値の境界制限の一致と、全次数の帰納構成、小さい厳密なRMapは残る。
+受入検証は`check_free_resolution_boundary_data`（48宣言・3モジュール）。

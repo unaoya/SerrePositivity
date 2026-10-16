@@ -19579,3 +19579,76 @@ boundary_faceはすべての元の面図式との等式を関手全体で証明�
 元の自由分解について必要な全次数の入力が構成済みであるとは扱わない。
 全次数の整合的選択関手、元の基底上の小さい厳密なRMap、内部単位、自然弱同値比較、最終F2は残る。
 全体目標F→L→E→Sを維持し、未完了として継続する。
+
+
+## 355. 実自由分解から全次数の境界と退化指定値を構成（2026-10-17）
+
+実装コミット`7848305b`。前回は§354の実貼り合わせと相対延長を構成した進捗ターンだった。
+今回は、その入力のうち面データ・面の重なり・退化指定値・交差上の整合式を、
+既存の自由分解と低次数の関手の面・退化等式から導いた。
+指定退化値の境界への制限の一致と、帰納データ全体の構成は引き続き残る。
+
+### 355.1 固定対象表示上の実面関手
+
+`FreeGeneratorFaces`は任意の通常の圏Dについて、§353のdegree D n上の面関手を構成する。
+face_comparisonは既存の余モナド反復の実face演算子との比較等式を全次数・全添字で証明する。
+face_faceとfaceFunctor_faceFunctorは比較等式から既存の面関係式を移し、
+faceFunctor_overlapは任意の異なる二添字の面の重なりを扱う。
+
+reverseFaceはパラメータとの逆順規約を適用する。fixedFaceは対象関数を定義上の恒等に直し、
+fixedFace_eqでreverseFaceそのものに等しいことを証明する。
+fixedFace_overlapは、§354の境界貼り合わせが要求する順序の面重なりを関手全体の等式で与える。
+対象型とHom宇宙は独立で、モデル構造は不要である。
+
+### 355.2 低次数の面等式から次の実境界を作る
+
+`OrdinaryBarFreeResolutionBoundary`は任意の圏D、任意のP、低次数の実関手F・Gを入力とする。
+Fはdegree D (n+2) → Choice(P × Δⁿ⁺¹)、Gはdegree D (n+1) → Choice(P × Δⁿ)である。
+faceLawはFの各パラメータ面への制限が、fixedFaceとGの合成へ等しいという帰納仮定である。
+
+次の各面をfixedFace D (n+2) kとFの実合成として定義する。
+face_overlapはfaceLawと355.1の面関係式から全面の重なりを導く。
+生成射へ制限して§354の実境界貼り合わせを適用し、
+boundary : degree D (n+3) → Choice(P × ∂Δⁿ⁺²)という実関手を構成する。
+boundary_faceは各面への制限がfixedFace D (n+2) k ⋙ Fに厳密に等しいことを証明する。
+面の重なりを別途仮定する入力は不要になった。
+
+### 355.3 実退化値と交差全体での整合性
+
+`OrdinaryBarFreeResolutionDegeneracyValues`は、逆順のσをsigmaとして定義する。
+sigma_sigmaは固定MathlibのSimplexCategory.σ_comp_σへrevを適用し、
+標準単体関手で写して証明する。tensor_sigma_sigmaは任意のPについて対応する等式を与える。
+このパラメータ部分にはモデル構造を要求しない。
+
+低次数F・Gについて、degeneracyLawを「実degeneracyFunctor D n i ⋙ Fが
+GをP × sigma n iで引き戻したものに等しい」という帰納仮定とする。
+次の指定退化図式diagramは、FをP × sigma (n+1) iで実際に引き戻した関手である。
+diagram_overlapはdegeneracyLawとsigma_sigmaから全二重退化の関手等式を導く。
+
+valueはこの実図式のsingleton生成射への像である。
+values_compatibleは実生成射の像の計算を通じ、§354のCompatibleを証明する。
+diagram_from_generatorsは値から自由に延長した関手が元の実引き戻し図式に等しいことを示す。
+prescribedValueは全退化像の和集合上の指定を作り、prescribedValue_degeneracyは
+任意の退化表示・任意のFixedの証明で元の指定値へ等しいことを証明する。
+交差上での整合性を追加仮定せず、低次数の実退化等式から導いた。
+
+### 355.4 受入検証と次の実装単位
+
+すべて成功した。
+
+- 共有入口のbuild：3056 jobs、追加警告なし。
+- `check_free_resolution_boundary_data`：48宣言・3モジュール、標準公理のみ。
+  全次数の実面比較、対象関数が定義上恒等であること、逆順の面の重なり、
+  実境界の全面制限、実退化値の整合性と全退化像への一致を検証。
+  源DにはCategoryだけを要求し、対象・Hom宇宙を独立に保つ。
+- `check_free_latching_extension`：既存50宣言・4モジュールの回帰検証。
+- `audit_homotopical_foundations`：11653宣言・841モジュール、標準公理のみ。
+- 新規ソース・受入スクリプトの行長、証明用マーカー、stage差分の空白検査。
+
+次は全次数の退化と面の混合関係式を固定対象表示へ接続し、各パラメータ面上で
+指定退化図式と355.2の境界の退化制限が一致することを証明する。
+全境界の同時忠実性でまとめると、§354のrestrictionが追加仮定なしで得られる。
+その後、faceLaw・degeneracyLawを帰納データとして束ね、実相対充填で次数を上げる。
+今回のF・Gは任意の帰納入力であり、元の選択関手から全次数を生成済みとは扱わない。
+全次数の整合的選択関手、元の基底上の小さい厳密なRMap、内部単位、自然弱同値比較、最終F2は残る。
+全体目標F→L→E→Sは未完了であり、継続する。
