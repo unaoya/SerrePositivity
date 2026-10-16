@@ -4002,3 +4002,21 @@ element_squareは公理なし、残る5宣言は標準公理のみ。監査累�
 担当差分の空白検査は成功し、今回の4ファイルにsorry/admit/新規axiomはない。
 結合比較の左右自然性と右加群同型の草稿は引き続き検証中であり、この受入に含めない。
 U11全受入・U12〜U17・D4mは未完。共有一般論の重複実装・担当外ファイルの編集はない。
+
+### 17.53 U12a1：K-flat性の区別・retract閉性・representable（2026-10-16）
+
+U11eの自然性検査と独立に、受入済みYoneda評価を使うU12の入口を進めた。
+`Tensor/KFlat.lean`は任意の非有界acyclic複体とのtensorを試験するcomplexKFlatと、
+objectwise acyclic左dg加群とのbalanced tensorを試験するmoduleRelativeKFlatを区別する。
+左加群のacyclic性、複体のacyclic性のretract保存、両K-flat条件の同型/retract保存を公開した。
+representable_relativeKFlatはYoneda評価同型から証明し、dg圏のHomのA-flat性は要求しない。
+
+Checks.KFlat・Checks.StageSeven・既存Spectra.StageTwoの同時ビルドは成功
+（2657 jobs、終了コード0）。任意A・独立対象宇宙、representableのretractとZMod 2を検査。
+新規9宣言の直接公理監査も終了コード0、標準公理のみ。監査累計1680宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査も成功。
+今回の2ファイルにsorry/admit/新規axiomはない。
+
+U12a全受入にはshift/cone/余積閉性とquasiIso保存との同値がなお必要であり、
+semifree・上有界flat・導来tensor・導来bimodule合成・係数変更も未完。
+U11eの左右自然性・三角/五角、U13〜U17、D4mも未完。共有系列への追加要求はない。
