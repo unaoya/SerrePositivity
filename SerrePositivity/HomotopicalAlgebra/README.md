@@ -2026,3 +2026,17 @@ UniverseLiftTensorの標準単体付き全写像に、値の後合成との実�
 基底Cへの小さいSSet値降下、最終RMapと最終比較も残る。源の仮定・宇宙契約は維持する。
 実装`17aa144d`、詳細は計画§277。今回の監査対象163宣言・6モジュール、共有7840宣言・559モジュールの
 標準公理監査と同じ旧全区間系・既存混合三角形の回帰確認が成功。
+
+
+## 同じ四辺全系の八端点と四共有隅の全次数での一致（2026-10-16）
+
+`NerveBiparameterComposition`・`NerveArrowComparisonComposition`は全系の移送・合成と中間交換、
+等しい索引関手の移送による厳密同定を証明する。`NerveProductEndpointTransport`は全端点式を実移送する。
+`SelectedIntervalEndpoints`は元の全区間系の固定Q境界から、両端と任意の再添字付け後の全端点式を回収する。
+`ResolutionMixedReassociationEquality`はBD最終中心の関手がcornerDそのものと等しく、
+既存toFinalがその等号からのeqToIsoと等しいことを証明する。一般の自然同型への厳密自然性は仮定しない。
+`ResolutionMixedRawEndpoints`・`ResolutionMixedEndpointCompatibility`は同じ四辺全系の八端点を
+元の同じ全tuple系から得る四つのcorner系へ同定し、共有端点の一致を全外部次数の等式で得る。
+共有対角線と二つの∂Δ2全境界の構成・三角形全系の延長、基底Cへの降下、最終RMap・最終比較は残る。
+実装`7583f39c`、詳細は計画§278。新規79宣言・7モジュール、共有7919宣言・566モジュールの
+標準公理監査と同じ混合四辺・既存全区間系の回帰確認が成功。
