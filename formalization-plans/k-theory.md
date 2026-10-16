@@ -15597,3 +15597,68 @@ bar unitの弱同値性をこの対象被覆だけから推論してはいない
 基底Cᵒᵖ×C上の新しい小さい厳密関手への自然な小値化も残る。
 F1の最終RMap・不変性・Kan性・π0比較への統合、F2の最終自然弱同値zigzag比較は未完了。
 全体目標F→L→E→Sを維持する。
+
+
+## 294. 実二重Homの両側Kan比較と終域側lift作用への接続（2026-10-16）
+
+§293の次項目であったraw二重Homと両側の比較を構成し、反対モデル圏の実lift作用を
+新しい右mapping行へ接続した。すべて元のHom宇宙vのSSetで実装し、
+源Cの関手的因子分解や、大きい宇宙のSSetモデル構造は要求していない。
+
+### 294.1 同じraw二重Homからの左右の比較
+
+`BiresolutionRawMapping`は、源のcosimplicial resolution Aと終域のsimplicial resolution Bから
+n単体が実際の射A[n]→B[n]であるraw対角を作る。
+各終域次数で既存のraw→源framed Kan Hom比較を使い、§293の左framed対角への
+全図式の自然変換を構成する。全行の弱同値性と既存対角定理から成分の実弱同値を証明する。
+
+`BiresolutionRightMapping`は、源の各次数A[n]を反対モデル圏のfibrant対象として扱い、
+反対圏で同じFramedResolution.hom一般論を適用する。
+ここでA[n]のcofibrancyは既存のReedy resolutionから導く。
+二方向を入れ替えたraw対角と294.1のraw対角を、実射のop/unopによる自然同型で結ぶ。
+全単体作用素と全presentation比較の自然性を証明しており、局所化後だけの比較ではない。
+このraw右対角から右framed対角への自然比較も、元の小さいモデル弱同値となる。
+
+### 294.2 共通の小さいKan中間を持つ自然弱同値span
+
+`BalancedResolutionComparison`は、同じraw二重Homの小さいKan置換を共通中間にする。
+左側は§293のKan図式そのもの、右側は294.1の右framed対角の小さいKan置換である。
+両脚は実自然変換で、その成分が元の小さいモデル弱同値であることを証明する。
+中間と両端がKanであるため、両脚のπ0の全単射も証明できる。
+右端のπ0と元のbase対象間の局所化Homとの同値を、左端の既存比較を通じて構成する。
+空間の局所化後には、両脚そのものから全図式の実自然同型を得る。
+
+このspanの索引は引き続き源・終域の実resolutionを記録する装飾付き索引である。
+基底Cᵒᵖ×C上の最終RMapや、その最終自然弱同値zigzagが完成したとは扱わない。
+
+### 294.3 終域側の全中心lift選択が実右mapping行に作用
+
+`BiresolutionRightAction`は、既存ResolutionArrowDiagram(Cᵒᵖ)の小さい実lift空間を使う。
+入力と出力を294.1のraw右行・framed右行の実値として型付けし、
+反対モデル圏での既存parameterized actionがこの実右mapping行に作用することを公開する。
+
+全中心のlift空間に境界fillersがあること、一つの全中心coherent systemがあること、
+その0次評価が既存の同じselectedPointを保持することを、既存一般論から得る。
+選択点での作用は、同じ実選択liftによる前合成と既存比較の合成に等しい。
+さらに任意の小さい全パラメータ写像、任意の源側単体作用素、
+源・終域resolutionと中心射を同時に動かす任意の実比較射との整合式を証明する。
+新しい別の点選択や、局所化での等式だけに置き換えてはいない。
+
+### 294.4 受入検証と残項目
+
+実装コミット`51e5ba85`。全て成功した。
+
+- 共有入口のbuild：2829 jobs、追加警告なし。
+- `check_balanced_resolution_comparison`：独立宇宙の任意モデル源での実op/unop自然同型、
+  小さいKan中間と両自然弱同値、元のbase間Homとの右端π0同値、全図式の局所化後自然同型、
+  終域側選択空間のfillersと選択点保持、実右行作用の全源単体作用素・全中心移送との整合性。
+  新規68宣言・4モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：8709宣言・632モジュール、標準公理のみ。
+- `check_right_resolution_mapping`：76宣言・3モジュールの回帰確認。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+次はこの終域側作用と既存の源側全整合系を、同じraw二重Homを通じた混合作用として接続する。
+全chain・全因子分解で必要な両側の混合整合性、およびそれから実bar span右脚の
+弱同値を導く部分はまだ証明していない。基底上の小さい厳密関手への自然な小値化も残る。
+F1の最終RMap・不変性・Kan性・π0比較への統合、F2の最終自然弱同値zigzag比較は未完了。
+全体目標F→L→E→Sを維持する。

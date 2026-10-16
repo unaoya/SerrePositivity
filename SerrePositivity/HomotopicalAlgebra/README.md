@@ -2251,3 +2251,15 @@ bar右脚と最終の小さい厳密RMapは未完了。
 `RightResolutionRefinement`は全旧presentationを含む補助索引で、旧図式と新図式を結ぶ
 実自然弱同値spanを構成する。対象被覆だけでcofinalityやbar右脚の弱同値は主張しない。
 検証：`scripts/check_right_resolution_mapping.lean`、計画書§293。
+
+
+### 実二重Homの両側比較と右lift作用（§294）
+
+`BiresolutionRawMapping`と`BiresolutionRightMapping`は、実二重Homのop/unop自然同型と
+左右のframed対角への自然弱同値を構成する。
+`BalancedResolutionComparison`は共通の小さいKan中間から両側への自然弱同値span、
+右端の元のbase間Homへのπ0比較、局所化後の全図式の自然同型を提供する。
+`BiresolutionRightAction`は反対モデル圏の既存全中心lift選択を実右mapping行へ接続し、
+同じ選択点の保持・全パラメータ・全源単体作用素・実中心移送との整合式を公開する。
+両側の混合整合性、実bar右脚の弱同値、基底上の最終小さい厳密RMapは引き続き未完了。
+検証：`scripts/check_balanced_resolution_comparison.lean`、計画書§294。
