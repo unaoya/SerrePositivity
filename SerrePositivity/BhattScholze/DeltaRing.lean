@@ -170,6 +170,17 @@ theorem IsDeltaHom.comp {B : Type v} {C : Type w} [CommRing B] [CommRing C]
   change g (f (D.delta x)) = F.delta (g (f x))
   rw [hf x, hg (f x)]
 
+/-- δ射である環同型の逆もδ射。完全性やp正則性は要求しない。 -/
+theorem IsDeltaHom.symm {B : Type v} [CommRing B] {D : DeltaStructure p A}
+    {E : DeltaStructure p B} {e : A ≃+* B} (he : D.IsDeltaHom E e.toRingHom) :
+    E.IsDeltaHom D e.symm.toRingHom := by
+  intro x
+  apply e.injective
+  change e (e.symm (E.delta x)) = e (D.delta (e.symm x))
+  have h := he (e.symm x)
+  change e (D.delta (e.symm x)) = E.delta (e (e.symm x)) at h
+  simpa only [e.apply_symm_apply] using h.symm
+
 /-- pを零に送る任意の環準同型上で、φはp乗と一致する。
 特にA/(p)上のFrobeniusを持ち上げるというBS Remark 2.2の主張を与える。 -/
 theorem map_frobeniusLift_of_map_p_eq_zero {B : Type v} [CommRing B]

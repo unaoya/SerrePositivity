@@ -20,17 +20,6 @@ theorem isDeltaHom_frobeniusLift (D : DeltaStructure p A)
     (hp : Function.Injective (fun x : A ↦ (p : A) * x)) : D.IsDeltaHom D D.frobeniusLift :=
   isDeltaHom_of_map_frobeniusLift D.frobeniusLift hp (fun _ ↦ rfl)
 
-/-- δ射である環同型の逆もδ射。完全δ環の逆Frobeniusに使う。 -/
-theorem IsDeltaHom.symm {B : Type v} [CommRing B] {D : DeltaStructure p A}
-    {E : DeltaStructure p B} {e : A ≃+* B} (he : D.IsDeltaHom E e.toRingHom) :
-    E.IsDeltaHom D e.symm.toRingHom := by
-  intro x
-  apply e.injective
-  change e (e.symm (E.delta x)) = e (D.delta (e.symm x))
-  have h := he (e.symm x)
-  change e (D.delta (e.symm x)) = E.delta (e (e.symm x)) at h
-  simpa only [e.apply_symm_apply] using h.symm
-
 /-- 完全δ環のFrobeniusを環同型として束ねる。 -/
 def frobeniusEquiv (D : DeltaStructure p A) (hD : D.IsPerfect) : A ≃+* A :=
   RingEquiv.ofBijective D.frobeniusLift hD

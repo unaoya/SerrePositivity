@@ -66,17 +66,7 @@ theorem deltaDivisionSourceTensorEquiv_symm_isDeltaHom :
   let := deltaDivisionSourceEvaluationAlgebra D c
   let := deltaDivisionSourceTargetAlgebra (σ := σ) D d
   let : Module P₀ P₀ := Algebra.toModule
-  let e := deltaDivisionSourceTensorEquiv (σ := σ) D d c
-  intro r
-  apply e.injective
-  change e (e.symm ((deltaAdjoinDivisionStructure D d a₀).delta r)) =
-    e ((deltaDivisionSourceTensorDelta (σ := σ) D d c).delta (e.symm r))
-  rw [RingEquiv.apply_symm_apply]
-  have h := deltaDivisionSourceTensorEquiv_isDeltaHom (σ := σ) D d c (e.symm r)
-  change e ((deltaDivisionSourceTensorDelta (σ := σ) D d c).delta (e.symm r)) =
-    (deltaAdjoinDivisionStructure D d a₀).delta (e (e.symm r)) at h
-  rw [RingEquiv.apply_symm_apply] at h
-  exact h.symm
+  exact (deltaDivisionSourceTensorEquiv_isDeltaHom (σ := σ) D d c).symm
 
 /-- 通常テンソルの元の基底Aの標準包含はδ射。 -/
 theorem deltaDivisionSourceTensor_includeLeft_isDeltaHom :

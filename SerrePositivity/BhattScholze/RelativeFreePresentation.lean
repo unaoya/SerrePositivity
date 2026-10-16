@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.RelativeFreeUniversal
+public import SerrePositivity.BhattScholze.DeltaQuotient
 
 /-! # 基底δ環上の生成元と関係式
 

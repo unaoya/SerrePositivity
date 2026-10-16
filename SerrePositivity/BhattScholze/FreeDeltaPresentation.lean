@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.FreeDeltaUniversal
+public import SerrePositivity.BhattScholze.DeltaQuotient
 
 /-! # 自由δ環に関係式を課す普遍性
 

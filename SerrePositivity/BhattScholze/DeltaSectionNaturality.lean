@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.DeltaQuotient
+public import SerrePositivity.BhattScholze.WittTwoMap
 
 /-! # δ射とW₂切断の自然性
 

@@ -94,14 +94,8 @@ theorem relativeFreeSubsetSplitAlgEquiv_isDeltaHom :
 
 /-- 同じ分離同型の逆方向もδ構造を保つ。 -/
 theorem relativeFreeSubsetSplitAlgEquiv_symm_isDeltaHom :
-    (G).IsDeltaHom E (e).symm.toRingHom := by
-  intro x
-  apply (e).injective
-  change e ((e).symm ((G).delta x)) = e ((E).delta ((e).symm x))
-  have h := relativeFreeSubsetSplitAlgEquiv_isDeltaHom T D ((e).symm x)
-  change e ((E).delta ((e).symm x)) = (G).delta (e ((e).symm x)) at h
-  rw [(e).apply_symm_apply] at h
-  exact ((e).apply_symm_apply ((G).delta x)).trans h.symm
+    (G).IsDeltaHom E (e).symm.toRingHom :=
+  (relativeFreeSubsetSplitAlgEquiv_isDeltaHom T D).symm
 
 /-- 部分族内の元の反復δ関係は、補集合を係数にした同じ反復関係へ送られる。 -/
 theorem relativeFreeSubsetSplitAlgEquiv_iteratedRelation (d : A) (a : σ → A)

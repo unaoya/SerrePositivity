@@ -2,6 +2,13 @@ import SerrePositivity.BhattScholze.PDCompletionInterface
 import SerrePositivity.BhattScholze.OrientedPrismHom
 import SerrePositivity.BhattScholze.PerfectDeltaPDQuotientEquiv
 import SerrePositivity.BhattScholze.PerfectDeltaPDQuotientComparison
+import SerrePositivity.BhattScholze.WittTwoMap
+import SerrePositivity.BhattScholze.DeltaSectionNaturality
+import SerrePositivity.BhattScholze.FreeDeltaPresentation
+import SerrePositivity.BhattScholze.RelativeFreePresentation
+import SerrePositivity.BhattScholze.PerfectDeltaFrobenius
+import SerrePositivity.BhattScholze.DeltaDivisionSourceTensorDelta
+import SerrePositivity.BhattScholze.RelativeFreeSubsetSplit
 import Mathlib.Util.AssertNoSorry
 
 /-! Focused dependency checks for the BS refactoring steps.
@@ -24,3 +31,13 @@ assert_no_sorry SerrePositivity.BhattScholze.exists_perfectDeltaPDQuotientEquiv_
 #print axioms SerrePositivity.BhattScholze.OrientedPrism.Hom.quotientMap_surjective
 #print axioms SerrePositivity.BhattScholze.exists_perfectDeltaPDQuotientEquiv
 #print axioms SerrePositivity.BhattScholze.exists_perfectDeltaPDQuotientEquiv_of_perfectoidExtension
+
+-- R2a: moving declarations keeps their public names and inverse-map contracts.
+assert_no_sorry SerrePositivity.BhattScholze.wittTwoMap
+assert_no_sorry SerrePositivity.BhattScholze.wittTwoMap_coeff
+assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.IsDeltaHom.symm
+assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionSourceTensorEquiv_symm_isDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.relativeFreeSubsetSplitAlgEquiv_symm_isDeltaHom
+
+#print axioms SerrePositivity.BhattScholze.wittTwoMap
+#print axioms SerrePositivity.BhattScholze.DeltaStructure.IsDeltaHom.symm
