@@ -4399,3 +4399,35 @@ U12dの両変数自然性・解像度族選択独立性の自己/推移法則・
 次の統合確認では局所化比較の成分式と実際の計算同型を結ぶ可換図式を検査してU12dを受け入れる。
 U12aのshift閉性・保存条件の逆向き、U12c/e/f、U11eのcoherence、U13〜U17・D4mは未完。
 共有系列への追加要求はなく、担当外ファイルを編集していない。
+
+
+### 17.70 U12d8：比較と計算の可換図式（U12d受入、2026-10-16）
+
+`Derived/TensorComputationNaturality.lean`は既存moduleTensorHomotopyComputationの
+加群射に関する自然性と、QhおよびquotientCompQhIsoを通じたD(A)値計算同型の自然性を証明する。
+解像度関手の比較成分を既存の因子化・K(D)の比較射へ展開し、
+moduleResolutionDerivedTensorIsoが実際のmoduleProjectiveResolutionTensorIsoと
+計算同型を通じて可換となることを証明した。
+
+`Derived/TensorBifunctorComputationChoice.lean`は左変数の局所化前の比較成分と厳密な因子化の
+整合式を公開し、それを既存の両変数導来tensorの計算同型へ接続する。
+任意の同じ個別射影解像度Pで計算したとき、二つの解像度族R/Sによる計算が比較自然同型を通じて
+一致することも証明した。新しい比較射を選び直さず、既存の比較射と計算同型そのものを使用する。
+
+Checks.TensorComputation・Checks.TensorChoice・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2870 jobs、終了コード0、警告なし）。任意A・独立対象宇宙・独立D(A)射宇宙・
+任意の個別解像度・ZMod 2での射の自然性を検査した。
+主要7宣言の直接公理監査は終了コード0、標準公理のみ。監査累計1862宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。
+今回の3 Leanファイルにsorry/admit/新規axiomはない。担当差分の空白検査も成功。
+
+U12dの受入照合：
+- 右射影解像度間のtensorホモトピー同値とホモトピー保存：§17.60。
+- 射影性から相対K-flat性、左準同型の保存：§17.60・67。
+- 指定された左右の準同型局所化上の実際の双関手：§17.61〜63・68。
+- 解像度族比較の両変数自然性・自己/推移整合性：§17.62・69。
+- 任意解像度の計算と比較との可換図式：§17.62・69・本節。
+これでU12dを受け入れる。導来bimodule合成・そのcoherence・係数変更はU12e/fであり未完。
+
+次はU12aの相対K-flatのshift閉性と準同型保存条件の逆向きを完成させ、U12cの上有界flatを検証する。
+U11eのcoherence・U12e/f・U13〜U17・D4mも未完。共有系列への追加要求はなく、担当外を編集していない。
