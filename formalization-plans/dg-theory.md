@@ -6449,3 +6449,38 @@ Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功（2716 job
 U15b全受入・最終dg商・U15cの指定収縮データ付き普遍性は未完。
 U11e・U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完。採用済み引用は0件。
 共有系列への追加要求はない。共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.137 U15b22：全path結合則・最終結合則・主豊穣dg商と包含（2026-10-17）
+
+`Complexes/TensorCarryAssociativity.lean`は右作用の結合図式が固定左tensor因子の追加で保たれる
+ことをassociator自然性とpentagonから証明する。`Quotient/AppendRightAssociativity.lean`は
+先頭Hom作用を基底に、左語に関する帰納法でappendRightの結合図式を構成する。
+`Complexes/TensorRightTwoCoproductExt.lean`は二つの右tensor因子を持つ指定余積からのhom_extを
+与える。添字宇宙は独立で、余積の存在は明示的なHasCoproduct仮定にする。
+`Quotient/InternalAssociativity.lean`はそれを使い内部全path合成の結合則を証明する。
+
+最終微分への移送を一つの三重tensor成分証明で行った案はkernelのdeterministic timeoutとなった。
+`Complexes/TensorCompositionAssociativity.lean`へ抽象複体の結合図式と純tensor成分式の往復を
+分離し、`Quotient/CompositionEvaluation.lean`で最終合成の純tensor評価をtensorLiftの包含式から
+直接取り出すことで解消した。成分射全体の定義的照合を繰り返さず、明示した評価式を使う。
+`Quotient/Associativity.lean`の最終結合則は標準設定で1.8秒、主豊穣構造は2.7秒でビルド成功。
+heartbeat等の上限拡大は採用していない。
+
+`Quotient/Category.lean`は元のDと同じ対象宇宙vのQuotientObjectを置く。対象の対応は実際のEquiv。
+最終Hom・閉単位・chain map合成・左右単位・結合則からMathlib EnrichedCategory (Complex A)を
+構成し、quotientDGCategoryと空path包含によるdg関手inclusionを公開する。
+新たな独立dg構造体は導入していない。quotientComposition_eq_signed_composeは全整数次数について
+豊穣合成成分と通常順composeの(-1)^(p*q)比較を証明する。
+任意可換環・非有界・独立対象宇宙・Small.{u} Dを維持する。
+
+Checks.QuotientCategory・Checks.QuotientRightIdentity・Checks.QuotientIdentity・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（2725 jobs、終了コード0、警告なし）。
+任意dg圏の商dg構造と包含、ZMod 2での主豊穣構造、次数−1/+1の通常順符号比較を検査した。
+主要12宣言の直接公理監査は標準公理のみ。監査累計2736宣言。
+文書検査は13 Markdown・320 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+指定ε生成元の成分とdε=idの証明を続ける。収縮方程式の受入前なのでU15b全受入とはしない。
+U15cの指定収縮データ付き普遍性・U11e・U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mは未完。
+採用済み引用は0件。共有系列への追加要求はない。共有一般論・共有ルートimport・他系列は編集していない。
