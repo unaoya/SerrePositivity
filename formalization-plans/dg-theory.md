@@ -5111,3 +5111,30 @@ Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功（2886 job
 小さい代表系へ構造を運び、一対象Aで既存PerfectHomotopyとの比較を証明する。U13e全受入は未完。
 U13d・U11eのcoherence・U12e/f・U14〜U17・D4mも未完。採用済み引用は0件。
 共有一般論・共有ルート・他系列のファイルを変更していない。
+
+
+### 17.93 U13e6：実際のdg shiftを保ったH⁰三角構造（2026-10-16）
+
+`Category/TriangulatedTransport.lean`は既に与えた整数shiftと整合する加法的同値について、
+対象側のdistinguished三角形の逆像がPretriangulatedの各公理を満たすことを証明する。
+零対象は同値で選んで完全忠実性で反映する。coconeは対象側で選び、順関手の充満性で射を戻し、
+三角形の同型を明示する。回転の公理はmapTriangleRotateIso、三角形の射の完成は
+対象側の完成とshift比較の自然性から得る。一般モデル圏・Quillen・転送の理論は変更しない。
+
+`Perfect/EnhancementTriangulated.lean`は上の構成を実際の射影的perfect dg加群のH⁰へ適用した。
+§17.92で構成した各整数の実際のdg shiftのH⁰とzero/add coherenceをそのまま維持する。
+主Perfへの比較は三角関手で、完全忠実性から八面体公理を反映する。
+順・逆関手を含む三角同値と、主Perfでの像によるdistinguished性の判定を公開した。
+
+Checks.PerfectEnhancementTriangulated・Checks.PerfectEnhancementShift・Checks.SmallPerfectEnhancement・
+Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功（2896 jobs、終了コード0、警告なし）。
+任意A・独立対象宇宙・任意S、零対象・三角構造・八面体・順逆三角関手、
+distinguished性の反映・contractible三角形・ZMod 2上の空生成集合を検査した。
+主要8宣言の直接公理監査は終了コード0、標準公理のみ。監査累計2253宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査も成功。
+今回の3 Leanファイルにsorry/admit/新規axiomはない。
+
+三角構造を同値で引き戻せたことと、実際のdg coneによる標準三角形との一致は区別する。
+次は小さい代表系のshift/三角比較を受け入れた後、標準cone三角形との一致と一対象Aの既存PerfectHomotopy比較を証明する。
+U13e全受入・U13d・U11eのcoherence・U12e/f・U14〜U17・D4mは未完。採用済み引用は0件。
+共有ルート・共有モデル一般論・他系列のファイルを変更していない。
