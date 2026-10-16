@@ -20633,3 +20633,69 @@ augmentationの比較が必要な弱同値であること、小ささを保つst
 元のCᵒᵖ×Cへの降下はまだ証明されていない。
 今回の対角語Homは補助的な大きい宇宙にあり、元の基底上の小さい厳密なRMapではない。
 そのRMapとF2の不変性・Kan・π₀とHo(C)の同定などは残り、全体目標は継続する。
+
+
+## 370. 全対角作用と小さい内部Homへの写像・nativeな標準合成則（2026-10-17）
+
+実装コミット`933d8490`。§369の小さいパラメータ族の評価から、対角の全パラメータを
+同時に扱う実SSet作用を作り、小さい内部Homの宇宙持ち上げへ値を取る実写像へまとめた。
+
+### 370.1 実評価の全パラメータ自然性と大きい補助作用
+
+`OrdinaryBarDiagonalEvaluation.evaluation_naturality`を取り出し、任意のPの単体、
+任意の対角語射、任意の持ち上げた小さい値について、全単体写像との交換を証明した。
+既存のnativeな小さい族はこの一般式を使う形に整理し、値と法則は維持した。
+
+`HomotopyFunctionComplex/OrdinaryBarDiagonalAction`は、これから実SSet写像
+
+`ULift(small(X))⊗(P⊗Hom_diag(X,Y)) → ULift(small(Y))`
+
+を構成する。小さいTへ限定しない任意の補助T、j:T→P、f:T→Hom_diag(X,Y)から
+実作用族を構成し、恒等・合成・代入を保持することを証明した。
+小さいTに制限してUniverseLift.lowerTensorで降ろすと、§369のnativeな小さい評価族そのものになる。
+元のCにはModelCategory以外の追加条件を課さず、小さいSSet.{v}のモデル構造だけを使う。
+補助SSet.{max u v}のモデル構造は要求しない。
+
+### 370.2 実内部Homへの写像と標準合成
+
+`Simplicial/ClosedParameterComposition`はモデル構造不要の一般の実SSetについて、
+共有パラメータで写像族を合成してからcurryすることが、二つのcurryの積を通じて
+Mathlibの標準のMonoidalClosed.compへ写すことに等しいと証明する。
+fstのcurryは、toUnitの後に標準のMonoidalClosed.idを適用する写像となる。
+別の合成演算を定義して標準合成の代わりに使ってはいない。
+
+`OrdinaryBarDiagonalClosedAction.mapping`は、370.1の実作用をcurryし、既存の
+UniverseLiftParameterHom.closedIsoの逆を合成することで、次の実SSet写像を構成する。
+
+`P⊗Hom_diag(X,Y) → ULift((ihom small(X)).obj small(Y))`。
+
+実closedIsoを戻してuncurryすると370.1の全作用そのものになる。
+任意の補助Tからの族の制限は、その大きい実作用族のcurryとclosedIsoの逆の合成に一致する。
+小さいTについてはnativeな内部Hom値のnativeFamilyも構成し、
+任意の小さいパラメータ代入、標準の内部Homの単位、標準の内部Homの合成を保つことを証明した。
+これらの単位・合成則はnativeなSSet.{v}で成立する。
+
+### 370.3 受入検証
+
+すべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`（3113 jobs、警告なし）。
+- `check_diagonal_closed_action`：モデル構造不要の標準内部Hom合成とのcurryの対応、
+  恒等のcurry、独立した対象宇宙u・Hom宇宙vでの全対角パラメータの実写像、
+  closedIsoを戻して評価すると元の全作用に一致すること、小さい評価へのlowerの一致、
+  nativeな内部Homでの標準合成・単位・代入。新規3モジュール全18宣言の標準公理監査。
+- `check_diagonal_word_evaluation`：変更した既存5モジュール全63宣言の回帰検証。
+- `check_word_resolution_diagram`：56宣言・5モジュールの回帰検証。
+- `audit_homotopical_foundations`：全12592宣言・898モジュール。
+  propext・Classical.choice・Quot.soundのみ、sorry・引用axiomなし。
+- ソースの行長・証明用マーカー・stage差分の空白検査。
+
+### 370.4 次の受入単位と残作業
+
+次はUniverseLift.closedIsoと小さい族のcurryの交換を証明し、全mappingの小さいパラメータへの
+制限がnativeFamilyの持ち上げに一致することを接続する。
+今回、nativeFamilyの標準単位・合成則は証明したが、closedIsoを含む全mappingについての
+標準の持ち上げた内部Hom合成との整合性まではまだ主張しない。
+その接続後、augmentationによる実Hom比較と必要な弱同値の証明へ進める。
+元のCᵒᵖ×Cへの小ささを保つstrictificationと降下、小さい厳密なRMap、
+F2の不変性・Kan・π₀とHo(C)の同定などは未完了であり、全体目標は継続する。

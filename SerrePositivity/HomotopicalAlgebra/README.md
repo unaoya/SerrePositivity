@@ -3148,3 +3148,16 @@ SSet.{v}の実写像へ移す。恒等・合成・代入を保持し、二方向
 内部Homへの対角作用、augmentationの比較・弱同値、元の基底への小さいstrictification、
 小さい厳密なRMapは残る。
 受入検証は`check_diagonal_word_evaluation`（62宣言・5モジュール）。
+
+
+### 全対角作用と小さい内部Homへの写像（§370）
+
+`OrdinaryBarDiagonalEvaluation.evaluation_naturality`は任意の対角語射とPの単体で全自然性を与える。
+`OrdinaryBarDiagonalAction`は全パラメータP⊗Hom_diagの実SSet作用と任意の大きい作用族を構成し、
+恒等・合成・代入、既存の小さい評価へのlowerの一致を証明する。
+`ClosedParameterComposition`はcurryが共有パラメータの合成とMathlib標準内部Hom合成を対応させると証明する。
+`OrdinaryBarDiagonalClosedAction`は小さい内部HomのULiftに値を取る全mappingと、その実作用への復元を与える。
+nativeな小さい内部Hom族の標準単位・合成・代入則も証明した。
+closedIsoと小さいcurryの接続、全mappingの持ち上げた標準合成との整合性、
+augmentationの弱同値、元の基底への小さいstrictificationと小さい厳密なRMapは残る。
+受入検証は`check_diagonal_closed_action`（18宣言・3モジュール）。
