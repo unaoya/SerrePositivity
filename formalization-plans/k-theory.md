@@ -20275,3 +20275,78 @@ p ≫ sを吸収元とすることである。§361の左右吸収則を使い�
 その後、実自由分解から元の基底へ降下させる構成と、小ささ・自然比較を証明する。
 今回の内部恒等消去だけを高次整合性や降下の完了とは扱わない。
 小さい厳密なRMapとF2の不変性・Kan・π₀とHo(C)の同定などは残り、全体目標は継続する。
+
+
+## 365. 生成関係による実simplicial語圏と全次数の小さい評価（2026-10-17）
+
+実装コミット`ca5e648b`。§364の語付き列の等式を、生成関係から作る商の圏へ接続した。
+元の射列に始点・終点の型を保つambient頂点とsmall頂点を用意し、
+元の射、語収縮、切断、射影を生成射とする道の圏を構成した。
+
+### 365.1 一般の圏・零付きモノイドに対する表示
+
+`CategoryTheory/Presentation/RetractWords`は、次の八種類の関係とその合同閉包だけで商を作る。
+評価写像のkernelを定義に使うものではない。
+
+- 元の恒等射と合成の保持。
+- 語の単位と積の作用則。積は左の語を先に作用させる。
+- 切断の後の射影がsmall頂点の恒等となるsplit則。
+- 語の零が射影の後の切断となる則。
+- 切断の後の任意語の消去と、任意語の後の射影の消去。
+
+Mathlibの道の圏と商の圏を使うため、商の合成・恒等・結合則が実際に得られる。
+small頂点のfull subcategory、元の圏へのaugmentation、ambient頂点へのsource functor、
+その合成が元の恒等関手に等しいことも構成・証明した。
+対象宇宙u、Hom宇宙v、パラメータ宇宙wは独立であり、射の宇宙はmax u v wである。
+small頂点という名前は縮約先の頂点を意味し、この商のHomが元の小さい宇宙に入るとは主張しない。
+
+`RetractWordRealization`は、任意の圏Dへの実source functor、各対象のsplit retract、
+八つの関係を満たす実語作用から、商とそのsmall full subcategoryを評価する実関手を構成する。
+生成射の値とsource functorへの制限も計算できる。
+`RetractWordMap`はsource functorと零付きモノイド準同型による実商関手を構成し、
+生成射の計算、恒等則、合成則をstrictな関手等式として証明した。
+これら三モジュールにはモデル構造を要求しない。
+
+### 365.2 実simplicial対象と実bar系の評価
+
+`Simplicial/WordPresentationDiagram`は実WordSegmentの各次数へ365.1を適用し、
+通常のΔᵒᵖ上の実Cat値図式を構成する。small頂点の各対のHomはSSet.{max u v w}となり、
+任意の単体写像、実SSetの合成写像、結合則、左右単位則を持つ。
+補助的な大きいSSetのモデル構造は使わない。
+
+`Simplicial/WordPresentationRealization`は、共有パラメータTを持つ実ambient functorと
+既存の強い収縮から、Tの任意の単体tにおける商の実評価関手を作る。
+語作用の八つの関係はすべて既存の証明から導出し、追加の整合性証明を入力させない。
+
+`HomotopyFunctionComplex/OrdinaryBarWordPresentation`は、全次数の実自由分解の
+fixedAction、既存のsection・projection・strong contractionへ適用する。
+各自由分解次数n、各単体次数k、各実パラメータtに対し、商のsmall full subcategoryから
+元の小さいType vへ入る実関手を構成した。対象値は既存のsmall値のk単体集合そのものである。
+切断→実source射→射影という商の射の評価は、既存の実移送族の評価に一致する。
+元のCにはModelCategory以外の追加条件を課さず、小さいSSet.{v}のモデル構造だけを使う。
+
+### 365.3 受入検証
+
+すべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`（3090 jobs、警告なし）。
+- `check_retract_word_presentation`：独立した三宇宙での商とsmall full subcategory、
+  augmentationとsourceの分裂、実split関係、任意の評価関手、パラメータ変更、
+  実simplicial図式・Hom・結合則、元のCの全自由分解次数への小さいType v値評価と
+  実移送族への一致。新規6モジュール全190宣言の標準公理監査。
+- `check_word_chain_transfer`（155宣言・4モジュール）、
+  `check_word_retraction_action`（71宣言・3モジュール）の回帰検証。
+- `audit_homotopical_foundations`：全12409宣言・875モジュール。
+  propext・Classical.choice・Quot.soundのみ、sorry・引用axiomなし。
+  新しいCategoryTheory/Presentation三モジュールも全体監査の対象へ明示的に加えた。
+- ソースの行長・証明用マーカー・stage差分の空白検査。
+
+### 365.4 次の受入単位と残作業
+
+各次数の評価は実関手になったが、それらの評価と単体写像との交換はまだ全商射について
+証明していない。次は生成射での実自然性（source族、語作用、切断、射影）を
+道の合成と商へ延長し、SSet値の実作用へまとめる。
+自由分解方向の全面・全退化との交換も同様に接続する。
+商のaugmentationの比較・弱同値、小ささを保つstrictificationと元の基底への降下は残る。
+この補助simplicial圏上の評価を、元のCᵒᵖ×C上の小さい厳密なRMapとは扱わない。
+F2の不変性・Kan・π₀とHo(C)の同定なども未完了であり、全体目標は継続する。

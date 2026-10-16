@@ -3076,3 +3076,18 @@ nativeなSSet.{v}の実写像へ降ろす。
 語列の生成関係によるsimplicialな射対象と合成・単体作用、元の基底への降下、
 小さい厳密なRMapと自然比較は残る。
 受入検証は`check_word_chain_transfer`（155宣言・4モジュール）。
+
+
+### 生成関係による実simplicial語圏と小さい次数別評価（§365）
+
+`CategoryTheory/Presentation/RetractWords`はambient/small頂点と元の射・語・切断・射影から
+八種類の明示的関係で商の圏、small full subcategory、元の圏へのaugmentationを構成する。
+`RetractWordRealization`と`RetractWordMap`は任意の圏への評価、source・語パラメータの変更と
+strictな恒等・合成則を与える。評価kernelで割るものではない。
+`WordPresentationDiagram`は実Cat値simplicial図式、実SSetのHomと合成・結合・単位則を与える。
+`WordPresentationRealization`は既存の強い収縮で全生成関係を検証し、次数ごとの実評価を構成する。
+`OrdinaryBarWordPresentation`は全自由分解次数に適用し、元の小さいType v値の実関手と
+既存の実移送族への一致を与える。
+全商射での評価の単体自然性、自由分解方向の交換、augmentationの比較・弱同値、
+元の基底への小ささを保つ降下と小さい厳密なRMapは残る。
+受入検証は`check_retract_word_presentation`（190宣言・6モジュール）。
