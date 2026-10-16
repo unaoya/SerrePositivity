@@ -8356,3 +8356,35 @@ pure B4監査2122報告成功、標準3公理のみ、新sorry・公理・引用
 元の実導来(p,d)対象との比較・離散性（G9）、r/dによる最終prism候補のCFF、
 そのperfectoid商、一般B4全射性は引き続き未完成として区別する。
 実導来完備化を古典的完備化へ無条件に置き換える変更はしていない。
+
+## 元のr/d対象への完全prism入力供給計画（2026-10-16）
+
+BS担当でPerfectPrismRootSourcePowerInputs.leanを新設する。
+対象は元のDeltaRootSourceIteratedPDCompletion P.deltaStructure P.generator bであり、
+φ(r)/pのraw包の完全化へ置き換えない。現在の単根工程[Unique σ]を明示する。
+完全prismからp正則性・生成元正則性・δd単元性を供給し、各n>0の生成元冪商T=A/(dⁿ)について
+実T対象のp導来完備性、標準mod p実還元の全非零次数消滅・H0忠実平坦性を供給する。
+既存DistinguishedPowerTorsionによりTのp冪ねじれがpⁿで消える評価も同じ公開入力へまとめる。
+共通G9-4の実冪余核モデル比較に適用し、選択した元の射影モデルのp余核複体の次数消滅も証明する。
+G9の最終離散性判定は共通担当の完成を待ち、同等の一般判定をBSに新設しない。
+対象ビルド・BS依存監査後に個別コミットする。
+
+## 元のr/d実対象に対する完全prismからのG9入力（2026-10-16）
+
+PerfectPrismRootSourcePowerInputs.leanに4公開定理を実装した。
+対象は元のDeltaRootSourceIteratedPDCompletion P.deltaStructure P.generator bそのものであり、
+φ(r)/pのraw包やその完全化との同型を仮定・主張していない。
+完全prismから係数p正則性、生成元d正則性、δd単元性を内部供給し、各n>0について
+実T=A/(dⁿ)還元のT上p導来完備性、標準mod p実還元の全非零次数消滅とH0忠実平坦性を公開した。
+Tのp冪ねじれがpⁿで消える既存評価も、perfectPrismRootSourcePower_G9_inputsにまとめた。
+T自体のp正則性・pねじれのなさは要求せず、一般のねじれを許す生成元冪商を扱う。
+共通G9-4のpowerCokernel_homology_isZero_of_reductionを同じ実T対象へ適用し、
+選択した元の上有界射影モデルのp余核複体の非零次数ホモロジー消滅も証明した。
+p^1=pは、係数環商と実導来対象全体の型族に沿って等式輸送し、別の商作用を混同していない。
+現在の単根工程[Unique σ]を明示し、一般元族への完成とは数えない。
+対象3920ジョブ成功（共有既存警告のみ、自分のコード警告なし）、pure B4監査2126報告成功。
+標準3公理のみ、新sorry・公理・引用なし。共通G9-4の既存証明済みAPIに依存する。
+共有の未コミット・未追跡共通ファイルはそのまま利用・検証し、自分のBS専用変更のみをコミットする。
+共通G9の一般離散性判定はなお未完成。今回の次数消滅は標準mod p還元とp余核複体についてであり、
+元の実T対象自体の離散性やH0の有界ねじれ、候補CFF、一般B4を完成とはしない。
+共有・CLMST・利用先は編集せず、他チャットへの追加送信も行っていない。
