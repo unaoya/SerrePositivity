@@ -1,6 +1,6 @@
 # dg 理論（M5）の独立実装計画
 
-作成・調査：2026-10-14。更新：2026-10-17。状態：U0〜U10 を実装・検証済み。U11〜U17の実装を開始（§17）。U10後の比較・整理案と後続詳細計画は§14〜§16。
+作成・調査：2026-10-14。更新：2026-10-17。状態：U0〜U10 を実装・検証済み。U11〜U17は部分実装済み、明示的dg商U15a/bを受入（§17.138）。U10後の比較・整理案と後続詳細計画は§14〜§16。
 U0〜U3の記録は§11、U4/U5の実績と後続契約は§12。D0〜D10全体の完了ではない。
 この計画だけを受け取る実装担当者向けの仕様である。
 ホモトピー論の共有契約は [k-theory.md §123](k-theory.md#123-次段階の設計i抽象モデル圏とその当てはめ2026-10-14)。
@@ -6484,3 +6484,45 @@ Checks.QuotientCategory・Checks.QuotientRightIdentity・Checks.QuotientIdentity
 指定ε生成元の成分とdε=idの証明を続ける。収縮方程式の受入前なのでU15b全受入とはしない。
 U15cの指定収縮データ付き普遍性・U11e・U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mは未完。
 採用済み引用は0件。共有系列への追加要求はない。共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.138 U15b23：指定次数−1生成元・収縮方程式dε=id・U15b受入（2026-10-17）
+
+`Complexes/UnitSandwichEvaluation.lean`は任意複体の元の両側へ閉単位射を挿入した操作の
+純tensor表示を証明する。`Quotient/EpsilonElement.lean`は単一ε pathの生成元が元の単位元・
+ε生成元・元の単位元のtensorとなることを示し、最終Homの次数−1の元epsilonElementを定義する。
+具体的なterm[b]の別名を含む型照合を直接繰り返さず、抽象複体の成分補題を適用する。
+`Quotient/EpsilonContraction.lean`は先頭消去をこの生成元へ適用すると元の単位元になること、
+全erasureの同じ評価、内部微分の零を証明する。最後に最終微分d_internal+erasureから
+**differential_epsilonElement：dε_b=id_b**を実際の商dg圏のunitElementとの等式として証明する。
+収縮の存在だけでなく、各bについて指定された次数−1の元を公開している。
+
+U15bの受入との対応は次のとおり。
+
+| 要求 | 実際の証拠 |
+| --- | --- |
+| 各Homの全微分・二乗零 | quotientHom・quotientHom_d、erasure_closed・erasure_square_zeroからperturbComplexへ渡す証明（§17.124/125） |
+| 合成と最終微分の両立 | internalComposition_total_d_apply・quotientComposition（§17.134） |
+| 左右単位・結合 | quotientIdentity・quotientComposition_left_unit/right_unit/assoc（§17.135〜137） |
+| Enriched主モデル | quotientDGCategory : EnrichedCategory (Complex A) (QuotientObject D S)、対象対応のEquivとdg関手inclusion（§17.137） |
+| 通常順との符号比較 | quotientComposition_eq_signed_compose、全整数次数で(-1)^(p*q)（§17.137） |
+| 指定εの収縮方程式 | epsilonElementの次数−1とdifferential_epsilonElementの次数−1→0の等式（本節） |
+
+任意可換環・非有界Hom・独立対象宇宙・Small.{u} Dを維持し、元のHomの非正性を仮定しない。
+これでU15a/bを受入済みとする。入口はQuotient.CategoryとQuotient.EpsilonContraction。
+厳密普遍性、係数変更、Verdier比較はこの受入に含めず、U15c〜eに保持する。
+
+Checks.QuotientContraction・Checks.QuotientCategory・Checks.QuotientRightIdentity・Checks.QuotientIdentity・
+Checks.CompositionDifferential・Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功
+（2730 jobs、終了コード0、警告なし）。任意dg圏とZMod 2で収縮方程式を検査した。
+主要7宣言の直接公理監査は標準公理のみ。§17.136以降の今回25宣言を直接ログで再照合した。
+監査累計2743宣言。文書検査は13 Markdown・320 exposition参照、失敗0件。
+担当差分の空白検査は成功。今回の実装にsorry/admit/新規axiomはない。
+
+次のU15cでは、dg関手F:D→Eに対し、各b:SのHom_E(Fb,Fb)の指定次数−1の元h_bと
+その微分がunitElementとなる等式をデータとして固定する。各pathのεをh_bへ送る評価を構成し、
+消去微分との整合性から最終Homのchain mapを作り、dg関手への延長・制限との往復・一意性を証明する。
+収縮の単なる存在を選択済みデータと同一視しない。U15dのunderived係数変更とU15eの
+local K-flat版／解像度版のVerdier比較、次数0 Homの具体例は引き続き残る。
+U11e・U12e/f・U13d/e残部・U14・U16/U17・D4mも未完。採用済み引用は0件。
+共有系列への追加要求はない。共有一般論・共有ルートimport・他系列は編集していない。
