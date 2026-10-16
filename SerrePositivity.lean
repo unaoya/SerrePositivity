@@ -798,6 +798,8 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedTenso
 
 public import SerrePositivity.BhattScholze.PerfectDeltaCartierTensorAlgebra
 
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedTensorCartierLinearComparison
+
 /-!
 # Serre の交点重複度の正値性の形式化
 

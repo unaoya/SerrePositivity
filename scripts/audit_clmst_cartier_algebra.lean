@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedTensorCartierLinearComparison
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedTensorQuotientComparison
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedTensorCartierAlgebra
 import Mathlib.Util.AssertNoSorry
@@ -33,7 +34,7 @@ assert_no_sorry SerrePositivity.DerivedCompletion.iteratedTensorCartierCompleted
 noncomputable section
 universe u
 open CategoryTheory SerrePositivity SerrePositivity.DerivedCompletion
-open scoped TensorProduct
+open scoped TensorProduct ChangeOfRings
 attribute [local instance] HasDerivedCategory.standard adicQuotientAlgebra principalAdicQuotientAlgebra
 variable (R : Type u) [CommRing R] (a d : R) (S T : Type u)
     [CommRing S] [CommRing T] [Algebra R S] [Algebra R T]
@@ -76,3 +77,69 @@ example (s : S) :
 
 assert_no_sorry SerrePositivity.DerivedCompletion.iteratedCompletedTensorQuotientIso_inv_units
 #print axioms SerrePositivity.DerivedCompletion.iteratedCompletedTensorQuotientIso_inv_units
+
+assert_no_sorry SerrePositivity.DerivedCompletion.iteratedCompletedTensorCartierH0Iso
+assert_no_sorry SerrePositivity.DerivedCompletion.iteratedCompletedTensorCartierH0Iso_units
+assert_no_sorry SerrePositivity.DerivedCompletion.iteratedCompletedTensorCartierH0Iso_single_map
+
+#print axioms SerrePositivity.DerivedCompletion.iteratedCompletedTensorCartierH0Iso
+#print axioms SerrePositivity.DerivedCompletion.iteratedCompletedTensorCartierH0Iso_units
+#print axioms SerrePositivity.DerivedCompletion.iteratedCompletedTensorCartierH0Iso_single_map
+
+assert_no_sorry SerrePositivity.DerivedCompletion.iteratedCompletedTensorCartierH0Iso_left
+assert_no_sorry SerrePositivity.DerivedCompletion.iteratedCompletedTensorCartierH0Iso_right
+assert_no_sorry SerrePositivity.DerivedCompletion.iteratedCompletedTensorCartierH0Iso_eq_derived
+
+#print axioms SerrePositivity.DerivedCompletion.iteratedCompletedTensorCartierH0Iso_left
+#print axioms SerrePositivity.DerivedCompletion.iteratedCompletedTensorCartierH0Iso_right
+#print axioms SerrePositivity.DerivedCompletion.iteratedCompletedTensorCartierH0Iso_eq_derived
+
+-- Original left factor units give the original Cartier unit, including the zero quotient.
+example (hd : IsSMulRegular R d)
+    (hS : scalarExtensionTorVanishing (Ideal.Quotient.mk (Ideal.span {d})) (ModuleCat.of R S))
+    (hT : scalarExtensionTorVanishing (Ideal.Quotient.mk (Ideal.span {d})) (ModuleCat.of R T))
+    (hC : IsSMulRegular C d)
+    (hpure : (AD).X.obj.IsGE 0 ∧ (AD).X.obj.IsLE 0) (hsrc : IsSMulRegular S d) :
+    letI := derivedH0CommRing AD
+    letI := derivedH0Algebra AD
+    (iteratedCompletedTensorCartierH0Iso R a d hd S T hS hT hC hpure).hom
+        ((DerivedCategory.homologyFunctor (ModuleCat Q) 0).map
+          ((derivedComplexCompletionUnit Q (Ideal.Quotient.mk (Ideal.span {d}) a)).app
+            (boundedAboveDerivedTensorAlgebra (R := Q) SQ TQ).X.obj)
+          ((DerivedCategory.homologyFunctor (ModuleCat Q) 0).map
+            (derivedTensorQuotientAlgebraIso (Ideal.span {d}) S T hS hT).hom.hom
+            ((DerivedCategory.homologyFunctor (ModuleCat Q) 0).map
+              (((boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {d}))).map
+                (boundedAboveDerivedTensorAlgebraLeft (R := R) S T).hom.hom).hom)
+              ((boundedAboveDerivedBaseChangeModuleH0Iso (Ideal.Quotient.mk (Ideal.span {d}))).inv.app
+                (ModuleCat.of R S) ((1 : Q) ⊗ₜ[R, Ideal.Quotient.mk (Ideal.span {d})] (1 : S)))))) =
+      1 := by
+  let := derivedH0CommRing AD
+  let := derivedH0Algebra AD
+  rw [iteratedCompletedTensorCartierH0Iso_left R a d hd S T hS hT hC hpure hsrc]
+  simp only [map_one]
+
+-- Original right factor units give the original Cartier unit, including the zero quotient.
+example (hd : IsSMulRegular R d)
+    (hS : scalarExtensionTorVanishing (Ideal.Quotient.mk (Ideal.span {d})) (ModuleCat.of R S))
+    (hT : scalarExtensionTorVanishing (Ideal.Quotient.mk (Ideal.span {d})) (ModuleCat.of R T))
+    (hC : IsSMulRegular C d)
+    (hpure : (AD).X.obj.IsGE 0 ∧ (AD).X.obj.IsLE 0) (hsrc : IsSMulRegular T d) :
+    letI := derivedH0CommRing AD
+    letI := derivedH0Algebra AD
+    (iteratedCompletedTensorCartierH0Iso R a d hd S T hS hT hC hpure).hom
+        ((DerivedCategory.homologyFunctor (ModuleCat Q) 0).map
+          ((derivedComplexCompletionUnit Q (Ideal.Quotient.mk (Ideal.span {d}) a)).app
+            (boundedAboveDerivedTensorAlgebra (R := Q) SQ TQ).X.obj)
+          ((DerivedCategory.homologyFunctor (ModuleCat Q) 0).map
+            (derivedTensorQuotientAlgebraIso (Ideal.span {d}) S T hS hT).hom.hom
+            ((DerivedCategory.homologyFunctor (ModuleCat Q) 0).map
+              (((boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {d}))).map
+                (boundedAboveDerivedTensorAlgebraRight (R := R) S T).hom.hom).hom)
+              ((boundedAboveDerivedBaseChangeModuleH0Iso (Ideal.Quotient.mk (Ideal.span {d}))).inv.app
+                (ModuleCat.of R T) ((1 : Q) ⊗ₜ[R, Ideal.Quotient.mk (Ideal.span {d})] (1 : T)))))) =
+      1 := by
+  let := derivedH0CommRing AD
+  let := derivedH0Algebra AD
+  rw [iteratedCompletedTensorCartierH0Iso_right R a d hd S T hS hT hC hpure hsrc]
+  simp only [map_one]
