@@ -1,5 +1,8 @@
 module
 
+public import SerrePositivity.CategoryTheory.Presentation.RetractWordPullback
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordActionOperators
+
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordAction
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationDiagram
