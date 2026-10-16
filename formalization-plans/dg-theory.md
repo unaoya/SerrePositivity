@@ -6424,3 +6424,28 @@ Checks.QuotientIdentity・Checks.CompositionDifferential・Checks.AppendErasure�
 U15b全受入・最終dg商・U15cの指定収縮データ付き普遍性は未完。
 U11e・U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完。採用済み引用は0件。
 共有系列への追加要求はない。共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.136 U15b21：任意左path・内部全直和・最終Homの右単位（2026-10-17）
+
+`Complexes/TensorCarryUnit.lean`は右単位を固定左tensor因子の内側へ移す構造式を証明する。
+`Quotient/AppendRightUnit.lean`は左語に関する帰納法と二つの固定前方因子への適用から、
+appendRightの右単位律を証明する。帰納ステップの比較は具体的なterm(b::w)へ直接書き換えず、
+抽象的tensorの等式を先に作りprefixPathへの後合成で結ぶ。
+`InternalRightUnit.lean`はpath直和の普遍性とunitor自然性で全内部合成の右単位へ拡張する。
+`Complexes/RightUnitorEvaluation.lean`は逆右unitorの単位生成元表示と順方向の評価式を公開する。
+`Quotient/RightIdentity.lean`はその評価と既存の最終合成の成分比較により、
+最終微分を持つHomの実際のchain mapの等式quotientComposition_right_unitを証明する。
+任意可換環・非有界・独立対象宇宙・Small.{u} Dを維持する。
+
+Checks.QuotientRightIdentity・Checks.QuotientIdentity・Checks.CompositionDifferential・
+Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功（2716 jobs、終了コード0、警告なし）。
+任意左pathの式とZMod 2での最終右単位を検査した。
+主要6宣言の直接公理監査は標準公理のみ。監査累計2724宣言。
+文書検査は13 Markdown・320 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次は全path合成の結合則、指定εの次数−1の元とdε=id、通常順と豊穣順の符号比較。
+U15b全受入・最終dg商・U15cの指定収縮データ付き普遍性は未完。
+U11e・U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完。採用済み引用は0件。
+共有系列への追加要求はない。共有一般論・共有ルートimport・他系列は編集していない。
