@@ -2597,3 +2597,15 @@ pushout後の単射性、一般augmentation・評価・最終小値化・F2は�
 `OrdinaryBarAugmentationEquivalences`は元のbar評価squareの大きい・小さい両augmentationを可逆にする。
 補助モデル構造は不要。row比較・評価の可逆性、自然な小値化・最終小さい厳密RMap・F2は未完了。
 検証：`scripts/check_simplex_nerve_equivalence.lean`、計画書§322。
+
+
+### 元のrow比較・bar評価・右脚全体の可逆性（§323）
+
+`OrdinaryBarReferenceRows`は小さいraw単体圏上のreferenceとrowを、全ラベル・作用素を保つ自然変換で結ぶ。
+`OrdinaryBarReferenceRowHomotopy`はこれを元のbar上の実ホモトピーへ移し、両端点の実因数分解を証明する。
+`SimplexNerveEquivalence.map_localized_isIso`は元の単体圏nerve関手の可逆射保存を供給する。
+`OrdinaryBarEvaluationEquivalence`は任意のcoherent systemに対する元のbar評価をQで可逆にする。
+既存の還元を通し、rightとordinaryRightの自然変換全体もQで可逆になる。
+源は任意のModelCategory、値側モデルは元の小さいSSetだけで足りる。
+基底上の自然な小値化、最終小さい厳密RMap・F2は未完了。
+検証：`scripts/check_ordinary_bar_evaluation_equivalence.lean`、計画書§323。

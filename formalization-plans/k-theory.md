@@ -17382,3 +17382,74 @@ U,V:SSet→SSetと実自然変換η:U→Vを扱う。
 row側から元の小さい出力への比較を証明し、元のbar評価の可逆性へ接続する必要がある。
 元のreplacement mapping図式との自然比較、基底上の自然な小値化、最終小さい厳密RMap・F2も未完了。
 全体目標F→L→E→Sを維持する。
+
+
+## 323. 元のrow比較・bar評価・右脚全体の可逆性（2026-10-17）
+
+§322で残したrow側比較を構成し、元のordinary resolution barの評価と右脚の可逆性を証明した。
+既存の任意のcoherent first-choice systemを保持して扱い、補助の大きいSSetモデル構造を追加していない。
+最終小値化・小さい厳密RMap・F2の完了とは区別する。
+
+### 323.1 小さいraw出力の単体圏からの実ラベル付き比較
+
+`OrdinaryBarReferenceRows`は、元の小さいraw出力の単体圏からラベル付き全要素圏へ、
+reference側とrow側の二つの実関手を構成する。
+row側のラベルは既存のMixedResolutionComparison.comparisonによる像そのものである。
+元のcommaAugmentationと同じ次数の恒等射から両関手の実自然変換を作り、
+全単体作用素の自然性を証明した。単体ごとの独立なframe liftを選んでいない。
+
+`OrdinaryBarReferenceRowHomotopy`はこの自然変換のnerveホモトピーを元のbarへ移す。
+row端点は、小さいmixed augmentationに単体圏nerve関手を適用してliftした射と、
+既存のrowNerveMapの合成に厳密に等しい。
+reference端点は、小さいraw出力の元の単体圏augmentationのlift、元のpadding同型の逆、
+既存のreference sectionの合成に厳密に等しい。
+後者は元のbar chainの基底全体と最初のラベルを比較して証明する。
+
+### 323.2 rowの合成から元の評価へ
+
+`SimplexNerveEquivalence.map_localized_isIso`を追加し、元の自然augmentationの可逆性から、
+単体圏nerve関手がすべてのQ可逆射を保つことを証明した。値宇宙のモデル構造は不要である。
+
+`OrdinaryBarEvaluationEquivalence`は、小さいmixed augmentationの既存の弱同値性を使い、
+323.1のnerve augmentationのliftがQで可逆であることを示す。
+reference端点と評価の合成は、§307のreference sectionと評価の合成の可逆性、
+§322の一般augmentationから可逆になる。
+323.1の実ホモトピーを評価後に合成し、rowNerveMapと元の評価の合成がQで可逆であることを得る。
+
+一方、§310の元のホモトピーと§322の大きいaugmentationの可逆性から、
+evaluationNerveMapとrowNerveMapの合成も可逆である。
+この二つの実合成によりrow写像はmonoかつsplit epiとなり、可逆になる。
+従って元の評価OrdinaryBarEvaluation.evaluation R a b自体もQで可逆である。
+任意のanodyne反転関手による同じ評価射の像の可逆性も供給する。
+
+### 323.3 元の右脚全体への復帰
+
+§307の`right_isIso_iff_evaluation`へ323.2を適用し、OrdinaryResolutionBar.rightの各成分の可逆性を得る。
+全Rについて既存のcoherent systemを供給し、Qで反転した元の右脚の自然変換全体がIsIsoであると証明した。
+さらに§306の既存の自然な還元により、ordinaryRightの自然変換全体もIsIsoとなる。
+対象ごとに選んだ評価を基底上の自然変換とみなさず、もともと自然な右脚へ戻している。
+
+入力は任意の源ModelCategory C、元の独立した宇宙u,v、小さいSSet.{v}の元のモデル構造と
+既存のcofibration・fibrationクラスとの一致である。
+源Cに関手的分解・combinatorial性・simplicial性を追加せず、SSet.{max u v}のモデル構造も要求しない。
+
+### 323.4 受入検証と残る自然小値化
+
+実装コミット`db8c43be`。以下はすべて成功した。
+
+- 共有入口のbuild：2949 jobs、追加警告なし。
+- `check_ordinary_bar_evaluation_equivalence`：補助値宇宙での単体圏nerveの可逆射保存、
+  元の全ラベル付き自然変換・実ホモトピー・reference端点の厳密な因数分解、
+  任意のcoherent systemに対する元の評価の可逆性、任意のanodyne反転関手での像、
+  元のrightとordinaryRightの自然変換全体の可逆性。
+  対象37宣言・4モジュール（既存の更新モジュールを含む）、標準公理のみ。
+- `check_simplex_nerve_equivalence`：更新後29宣言・4モジュールの回帰確認。
+- `check_ordinary_bar_endpoints`：既存61宣言・6モジュール、元の区間とsquareの回帰確認。
+- `audit_homotopical_foundations`：9994宣言・752モジュール、標準公理のみ。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+次は、この自然な右脚と既存の左脚を、元のreplacement mapping図式との自然弱同値比較へ接続する。
+同時に、各基底値で小さい参照出力と弱同値であるという今回の結果から、
+元の全基底図式を自然に小値化するための実装契約を確認する。
+大きい生barを同型で縮めたり、選んだ各小さい値を変更せず全基底射を厳密化できるとはみなさない。
+基底上の自然な小値化、最終小さい厳密RMap・F2は未完了。全体目標F→L→E→Sを維持する。
