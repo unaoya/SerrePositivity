@@ -843,6 +843,9 @@ public import SerrePositivity.CLMST.PerfectoidIdealTorComparison
 
 public import SerrePositivity.HomologicalAlgebra.TorCoefficientPowerTorsionDescent
 
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlatEquiv
+public import SerrePositivity.CLMST.AndreTorDescent
+
 /-!
 # Serre の交点重複度の正値性の形式化
 
