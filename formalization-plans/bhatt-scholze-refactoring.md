@@ -7,7 +7,8 @@
 §8の再調査は、ユーザーの「コードを書き換えない」という指定に従い、計画書のみを更新した記録である。
 その後の目標継続指示により、この計画に沿うBS独立部分の実装・検証・個別コミットを再開する。
 共通担当のファイルは変更せず、既存の未コミット差分を先に検証・保存する。
-状態表と§9の実施記録、§10の再調査による修正を優先し、過去の件数と検証記録は各実施時点の記録として読む。
+現在の実施順・担当・受入条件は§11を優先する。R1〜R6の完了記録は§9、§10はその実装途中の調査と並行移管の記録である。
+過去の件数と検証記録は各実施時点の記録として読む。
 
 ## 1 調査の基準
 
@@ -70,7 +71,7 @@ BS側が変更するのは `SerrePositivity/BhattScholze/`、このBS計画、BS
 | R5b | 完全prismのWitt表示とイデアル像の入力供給 | 抽出 | 新 `PerfectPrismWittPresentation`、`PerfectPrismHomLift`、`PerfectPrismQuotientPerfectoid` | 完了。新12宣言・旧表示のrfl契約を確認 |
 | R5c | 単一根の上位perfectoid証明を任意族から特殊化 | 比較 | 新 `CompatibleRootSingletonComparison`、`CompatibleRootCompletionPerfectoid` | 完了。新10比較・標準射・一般終域契約を確認 |
 | R6 | 相対δのイデアル冪評価・剰余算術を共有 | 証明拡張 | 新 `RelativeDeltaEstimate`、`DeltaAdicEstimate`、`RelativeFreeFiniteDeltaAdicEstimate`、`DeltaResidueArithmetic`、`RelativeFreeFiniteDeltaResidue` | 完了。新9宣言・移動1宣言・旧18利用先を監査 |
-| R7 | BS監査の宣言列挙・公開境界検査、文書の現況整理 | 監査・文書 | BS専用スクリプト、BS計画 | 構造監査を実装・検証済み。最終集計は残りの実装後 |
+| R7 | BS監査の宣言列挙・公開境界検査、文書の現況整理 | 監査・文書 | BS専用スクリプト、BS計画 | 構造監査は実装済み。並行移管後の互換性確認と§11の分類整理を続ける |
 
 ### R1の既存API
 
@@ -90,7 +91,7 @@ Torの零性には `TorSequentialColimits`・`TorExactColimits` を使う。条�
 `IsDeltaHom.symm` は完全性を使わないため一般δ射層へ移す。商APIを推移的importだけで使っていた `FreeDeltaPresentation`・`RelativeFreePresentation` 等には、必要な直接importを明示する。
 多項式δ射判定は任意の既存多項式δ構造にも適用できる形とし、自由整数δ環は再定義しない。
 δ余極限では同じ台型・遷移射と `section_of`・`delta_of`・`lift_of` を保持する。
-`Ring.DirectLimit.hom_ext` による非空性・有向性の仮定削減は未検証の候補であり、現構成の抽出と分ける。
+R2dでは抽出を実装・検証済み。今後さらに仮定を削減する場合は、現在の公開署名と構成を基準に別工程とする。
 
 ### R3の依存方向
 
@@ -414,7 +415,9 @@ R4bも計画済み5ファイルの一時検証から再開する。これらを�
   538対象の統合ビルド、基礎584件・B4 2,560件に加え、工程別の対象ビルドと集約focused監査が成功。
   R5/R6の旧37完全署名は変更前と一致。新sorry・追加公理・引用依存なし。
 
-## 10 再調査の反映と残りの実施契約
+## 10 実装途中の再調査と並行移管の記録
+
+この節の「残る工程」は当時の記録であり、R4c〜R6は§9のとおりコミット済み。現在の工程は§11を参照する。
 
 2026-10-16の再調査時点ではBSは576モジュール・54,611行。
 R2c/R2d/R3c/R4bの既存未コミット差分を含み、ソースimportグラフに循環はない。
@@ -462,3 +465,133 @@ import被覆は証明項の依存監査ではない。公開宣言とassert_no_s
 証明済みB4、André条件付き、B-I、B-Rの依存境界を別々に扱う。
 各工程は通常のlake設定で対象・下流のビルドと基礎/B4/追加宣言の監査を行い、
 宇宙・暗黙引数・局所作用・標準射・必要なrflを保つ。ソース短縮だけでなく検証時間も確認する。
+
+
+### 並行移管後の互換性確認（最終保存前）
+
+R4c〜R6は工程別コミットを完了した。BS独立変更の538対象・4,575ジョブ、基礎584件・B4 2,560件の監査は成功済み。
+その後、共通担当が根イデアル・完全係数テンソルの7モジュールを共通層へ移し、BS側をexport互換入口にした。
+この並行差分を含む538対象・4,582ジョブの再ビルド、基礎584件、refactoring 169件、André条件付き監査も成功した。
+旧37完全署名は `SerrePositivity.BhattScholze.compatibleRootIdeal` の正確なalias先への置換と、
+表示上の空白・改行だけを対応付けると一致する。その他の名前・宇宙・引数・instanceは変更されていない。
+
+移管後の通常のB4監査だけは、次の旧公開名のexport漏れにより584〜585行の2コマンドが失敗した。
+共通側には同じ定理本体があり、数学的な未証明部分ではない。
+
+- 対象：`SerrePositivity/BhattScholze/CompatibleRootIdealTensor.lean` の `export SerrePositivity` リスト。
+- 追加する1行：`compatibleRootIdealTensorMap_tmul`（`compatibleRootIdealTensorMap` の直後）。
+- このaliasだけを一時的な監査ファイルへ加えたB4全2,560件の検査は成功し、標準3公理のみ。
+- 並行作業の対象ファイルは編集・ステージしていない。担当チャットへの修正依頼は、元のユーザー指定に従って送信許可を確認中。
+
+移管前の成功、移管後の通常監査の未解消、修正案を含む一時監査の成功を区別する。
+最終集計R7は、この旧名の互換性が担当側で復旧した後に確定する。
+
+
+## 11 今回の調査を反映した次期実施計画（2026-10-16）
+
+ユーザーのgoal継続指示により、読み取り調査の結果を保存し、BS側で独立して進められる部分を実施する。
+今回の開始時HEADは `23e89923`。BSは579モジュール、約5.4万行で、R1〜R6は既に実装・個別コミット済み。
+調査対象の全ソースimportグラフに循環はなく、明示した5つの基盤入口からの禁止依存もなかった。
+これはLeanビルドや証明項の公理監査の代わりではない。
+
+### 11.1 担当と現状の確定
+
+BS担当は本計画、BS専用監査、下記N1/N2のBSファイルを編集する。
+共通CA/HA、CLMST、RootTower、DG・ホモトピー基盤、ルートimport、共有監査は変更しない。
+並行移管中のBS互換入口7ファイルも移管担当の差分として保持し、BS独立変更へ混ぜない。
+
+移管7ファイルは現在Batteriesの `alias` による実宣言の互換入口へ変わった。
+旧31名のうち `compatibleRootIdealTensorMap_tmul` のみが未列挙で、共通側の本体は存在する。
+復旧は移管担当の範囲。過去のexport版のビルド・完全署名比較を、現在のalias版の検証と同一視しない。
+移管側のソース確定後、旧31名、完全型、標準射、rfl/simp契約、通常B4監査を再確認する。
+他チャットへの新たな送信は行わない。
+
+共有 `audit_clmst_b3.lean` は旧B-S宣言をsorry許可リストに残し、B-Sが未証明とする表示を持つ。
+宣言への到達とsorry依存を区別する更新は共通担当が行う。B-I/B6・André・B-Rの引用境界は維持する。
+
+### 11.2 BS側で独立して実施する工程
+
+| ID | 対象 | 契約と分類 | 状態 |
+| --- | --- | --- | --- |
+| N0 | 本計画 | 現在地、担当、共通化候補、検証・保存の順序を記録 | 今回保存する |
+| N1 | `CompatibleRootFamilyQuotient.lean` | 被約なp進完備終域への一意延長を一般入口に抽出。旧perfectoid入口を同じ型の包装にする。仮定弱化を伴う証明拡張 | 未実装 |
+| N2 | `CompatibleRootPDComparison.lean`、`CompatibleRootFamilyPDComparison.lean` | 同じ完備化環上のpイデアル像の計算を既存 `pIdeal_map` へ置換。新宣言・import・instanceなし | 未実装 |
+| N3 | `scripts/audit_bhatt_scholze_structure.py`、BS専用監査 | 引用・共有監査掲載・aliasの参照分類を追加。ソース解析をLeanの証明監査と区別する | 未実装 |
+
+N1の新公開名は `existsUnique_compatibleRootFamilyCompletionLift` とする。
+任意の `p : ℕ`、`ρ : σ → ℕ → R`、`hρ : ∀ s n, ρ s (n+1)^p = ρ s n`、
+被約かつ `span {(p:T)}` について古典的完備なT、
+`g : R / compatibleRootFamilyZeroIdeal ρ →+* T` を入力とし、
+`∃! l : CompatibleRootFamilyCompletion p ρ →+* T,
+ l.comp (compatibleRootFamilyCompletionMap p ρ) = g` を結論する。
+新入口にはp素数・Rのperfectoid性・有限性・添字の非空性を要求しない。
+元の商・完備化・標準射を変更せず、非素数p、空族、零環、旧公開型とrflを監査する。
+単一版を任意族版へ全面的に委譲すると現在のimportが循環するので、その依存反転は行わない。
+
+N2は二つの `hm` の証明のみを `pIdeal_map Q (AdicCompletion I Q) p (algebraMap Q _)` に置換する。
+既存の `IsAdicComplete.map_algebraMap_iff` と完備化自身の完備性を再利用し、汎用APIを新設しない。
+
+N3の調査時の参照差分13件は、引用関連6件と共有 `audit_clmst_b3` に掲載済みの7件。
+別にalias等のためソース宣言として未解析のassert名31件がある。未証明件数とは扱わない。
+共有監査は読み取りの参照だけとし、専用監査の被覆や成功件数へ合算しない。
+名前・importからの分類は証明依存を保証しないため、曖昧なものは未分類として残す。
+旧公開名の完全性は現ソースのリストだけから判定せず、移管前の31名を基準にLean環境で検証する。
+
+### 11.3 共通担当と調整する抽出候補
+
+Q1〜Q10の最小契約は既存証明の包装・抽出であり、B4用Gの未到着として扱わない。
+優先はQ1・Q8・Q10、続いて二段延長とQ7・Q4〜Q6、その後Q2・Q3・Q9。
+
+| 項目 | 現在の契約・配置案 | BSで残す内容 |
+| --- | --- | --- |
+| Q1 | CA `CompletelyFlatCriterion`。標準商のTor消滅と同じextendScalarsの忠実平坦性から完全忠実平坦性。正則性・FG・完備性不要 | prism/PD/根付き拡大の実入力供給 |
+| Q8 | HA `DerivedCompletion/ReflectionRing`。反射性、完備なR代数T、指定済み線形同型EとE(e)=1から、順射が同じEの代数同型 | 選択済み同型、実H0・標準単位の照合 |
+| Q10 | CA `PerfectoidizationFunctor`。hfと源同型eからIsPerfectoidization p (f.comp e.toRingHom)。同じuniverse | 実際の核商・生成族商の同型と全射性 |
+| Q4 | CA `AdicCompletionExt`近傍。I.map f≤Jによる環射延長。存在にはI.FG不要、一意性にはI.FGとJ分離性 | δ両立性と具体的剰余公式 |
+| Q5 | HA `DerivedCompletion`の閉性。導来完備Mの1−bL全単射、a,b完備からa+b完備、aⁿ完備からa完備(n≠0) | Frobenius公式への適用 |
+| Q6 | HA `DerivedCompletion`。実Λ_dΛ_f(single R)のH0反射性と合成単位。通常H0環の反復とは比較で接続 | 根raw環とδ完全化環への具体化 |
+| Q7 | HA `DerivedCompletion/RestrictionCompletion`近傍。二段係数制限比較と合成単位の等式。実導来圏版とMinus版を分ける | 元の係数射と像の具体式、H0作用 |
+| Q2 | HAの商加群colimit。Preorder＋OrderBot、単調K、全射β、kerβ=⨆Kから元の評価先を頂点とするIsColimit | 有限関係式・核・局所Algebra作用の計算 |
+| Q3 | CAの正則族入口。各有限S外のf(s)の商上正則性からnodupリストの弱正則性。Nontrivial不要 | 根関係式の正則性。独立したprefix重複は現在2件 |
+| Q9 | HA `DerivedCompletion`。正則d、上有界X、d完備、全正冪還元の負次数消滅からIsGE 0 | IsLE 0、離散性・平坦性の追加入力 |
+
+追加候補：二段実導来完備化のHom同値。
+任意 `X Y : DerivedCategory.Minus (ModuleCat A)`、Yのa・b導来完備性から
+`Hom(Λ_b Λ_a X,Y) ≃ Hom(X,Y)` を既存 `derivedComplexCompletionHomEquiv` の二回適用で包装する。
+順方向は元の合成単位との前合成、逆方向は既存逆写像の合成とする。
+共通側の予定配置はHA `DerivedCompletion` の反射性API近傍（担当調整後にファイルを確定）。
+BSの `DeltaRootSourceCandidateCompletion`、`DeltaRootSourceCandidateFactorization`、
+`DeltaAlgebraPerfectionPDCompletionMap` は具体的対象への特殊化を担当する。
+δ非依存の汎用版をBSへ二重実装しない。
+
+### 11.4 到着中APIの利用と並行数学の境界
+
+共通側の未コミット `FiniteSupQuotientColimit` は、Finset σ上の有限イデアル和の商と頂点R/⨆Iを扱う。
+受渡し検証後、BSの `DeltaDivisionEvaluationFiniteSupportColimit` に適用できる。
+まず各段K(S)=S.sup(I_z)、次に核商から元のβ作用付き評価先への同型、最後に遷移射・評価射の公式を証明する。
+ℕ図式の二つの評価余極限をそのまま置換せず、一般Q2または図式比較を別に用意する。
+現時点では受渡し待ちの接続候補であり、N1〜N3の開始条件にはしない。
+
+有限根族・任意根族・完全環の根基商/全射の全正次数Tor消滅は共通側で実装中。
+BSで同じ有限族帰納法や商余極限を作り直さない。新ソースの存在と検証済み公開APIを区別する。
+RootTowerはcofinal tail、明示基底・ランク・冪遷移を保持する。
+DGの通常複体K-flat性は具体的な重複と担当契約を確認してから検討し、相対DG作用と全Hom自然性は残す。
+
+B5の具体的完備導来乗法の同型性hμは新しい数学として別工程。
+通常商B/Iと選んだperfectoid商をB4と核の一致で同定し、元の実乗法・完備化の図式を保つ。
+共通 `CompletedQuotientTensorExtension` のhμから拡大閉性・全mod pⁿ像の冪等性への含意は再証明しない。
+CLMSTの完備塔上の実p冪ねじれTor入力も別に必要で、既存の移送定理だけで供給済みとはしない。
+B-I/B6、André条件付き入力、残るCLMST引用は維持する。
+
+### 11.5 検証と保存の順序
+
+1. N0を文書単独で差分確認してコミットする。
+2. N1/N2は別ファイルで実装し、各公開型・具体的標準射・必要なrfl/simpを保つ。
+3. 各工程の対象と下流を通常lake設定でビルドし、focused公理監査を行ってから個別コミットする。
+4. N3は分類・alias・コメント等の自己テストと実ソースの構造検査を行う。これはLean検証とは別記する。
+5. ソースを固定して基礎・B4・refactoring・André条件付きの統合監査を行う。
+   並行移管の旧名漏れが残ればその失敗を明示し、監査を弱めたり共有ファイルを修正して通したりしない。
+6. 自分のファイルだけを明示的にステージする。実施済みと受渡し待ちを記録し、未検証項目を完了にしない。
+
+大規模な型クラス化、既存δ構造の再定義、全ファイルの再配置、局所instanceのglobal化は行わない。
+二〜三行の既存API適用だけになった残余比較を、大きなデータ構造へ包み直す工程も採用しない。
