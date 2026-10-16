@@ -753,6 +753,8 @@ public import SerrePositivity.BhattScholze.PerfectDeltaTensorStructure
 
 public import SerrePositivity.BhattScholze.PerfectDeltaTensorPCompletion
 
+public import SerrePositivity.CommutativeAlgebra.AdicCompletionAlgebraUniversal
+
 /-!
 # Serre の交点重複度の正値性の形式化
 
