@@ -7,6 +7,11 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.HomotopicalAlgebra.Simplicial.VertexTuplesFunctor,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionArrowTuples,
+    `SerrePositivity.HomotopicalAlgebra.Simplicial.NerveNaturalBoundary,
+    `SerrePositivity.HomotopicalAlgebra.Simplicial.NerveRelativeNaturalBoundary,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionArrowTupleCoherence,
     `SerrePositivity.CategoryTheory.NerveSimplexStart,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBiparameter,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.NerveDiagramExtension,
