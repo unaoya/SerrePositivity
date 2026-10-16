@@ -2801,3 +2801,15 @@ sectionの像上でも一定な垂直収縮を持つ。実際のbarの収縮も�
 左右どちらかが恒等射なら比較区間全体が定数になることを、元の小さい宇宙でも証明する。
 選んだ基底作用の全高次整合性・厳密なSSet値降下・最終RMap・F2は引き続き未完了。
 検証：`scripts/check_strong_retract_transfer.lean`、計画書§339。
+
+
+### 任意長のambient鎖のcube族と途中の面（§340）
+
+`ParameterComposition`と`RetractChainFamily`は、任意の共通パラメータを保つ合成、
+任意長の実ambient鎖の収縮付き評価・移送、全パラメータ置換をモデル不要で構成する。
+任意のprefix/suffix内で、0面は隣接実射の合成、1面は前後の移送の合成になる実等式を証明した。
+`ParameterCube`は実有限区間積と任意位置の面・座標公式を供給する。
+`OrdinaryBarChainFamily`は全次数の実cube族と面の置換公式を元の小さい宇宙で構成し、
+低次数が既存の移送射・選択済みの全二射比較区間と一致することも証明する。
+基底作用の高次選択・恒等射の内部退化・厳密なSSet値降下・最終RMap・F2は未完了。
+検証：`scripts/check_finite_chain_cube.lean`、計画書§340。
