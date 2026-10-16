@@ -6556,3 +6556,43 @@ Checks.ContractedFunctor・Checks.QuotientContraction・Checks.QuotientCategory�
 制限との往復・一意性を残すためU15c全受入は未完。
 U11e・U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完。採用済み引用は0件。
 共有系列への追加要求はない。共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.140 U15c2：閉性を仮定しないtensor・有限path評価・全直和への評価貼合せ（2026-10-17）
+
+`Complexes/TensorZeroCochain.lean`は二つの任意次数0 cochainのtensorを、既存右/左tensor Hom写像の
+合成で構成する。閉性は仮定しない。chain mapのtensorとの一致、純tensor上の評価式、
+左右のHom微分による二項の微分公式を証明した。Hom複体のchain mapが任意二次数のδを保つ
+homComplexMap_differentialも公開する。次数引数を明示して成分型を揃え、上限拡大は行っていない。
+
+`Quotient/PathEvaluation.lean`はContractedFunctorの実際のHom写像と指定収縮cochainを各pathの
+因子へ作用させ、対象Eの豊穣合成で畳み込むpathEvaluationを構成する。
+これは内部微分に関する閉性をまだ持たない次数0 cochainである。
+空語の公式、前方Hom・標準ε・後方pathの純tensor公式、単一ε pathの単位因子を消した評価を
+証明した。有限pathの構成・成分公式にはDのsmall性を要求しない。
+具体的term(b::w)を含むcochainの評価は、両辺の始域表示を明示的に揃えて検証した。
+
+`Quotient/PathCochainDesc.lean`は任意次数pのpath cochain族を全path直和からのcochainへ
+貼り合わせ、その包含上の公式と一意性を証明する。閉性やshift先のchain mapへの変換は仮定しない。
+評価関手による余積保存では、Discrete.functorとの合成図式の別名に依存せず、
+isColimitOfHasCoproductOfPreservesColimitのcofanを使う。
+`Quotient/InternalEvaluation.lean`はこの構成をpathEvaluationへ適用し、internalEvaluationと
+各pathへの制限、元のHom上でF.mapとの一致、ε上で選択したcontractionCochainとの一致を証明する。
+全直和では既存のSmall.{u} Dを使い、Eのsmall性・Homの有界性は仮定しない。
+
+Checks.PathEvaluation・Checks.ContractedFunctor・Checks.QuotientContraction・Checks.QuotientCategory・
+Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功（2737 jobs、終了コード0、警告なし）。
+small性を要求しない単一pathの評価、全直和の空path、ZMod 2でのε上の一致を検査した。
+主要16宣言の直接公理監査は標準公理のみ。監査累計2768宣言。
+文書検査は13 Markdown・320 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次はpathEvaluationの元のHomによるprependMapとの整合性を証明し、収縮cochainの微分公式と
+tensorZeroCochain_differentialから、δ(pathEvaluation w)が各εを消して短いpathを評価した和と
+一致することを帰納的に証明する。目標はδ 0 1 (internalEvaluation x y) =
+(erasure x y).comp (internalEvaluation x y) (add_zero 1)。これを最終Homのchain map条件へ移す。
+prepend整合性は空語でF.map_comp、非空語で前方二Homの合成保存と対象Eの結合則を使う。
+既存tensorJoin_cochain_naturalityと、次数0のtensorの合成・括弧変更の補助式が使用候補。
+商dg関手への延長、合成・単位保存、制限との往復・一意性を残し、U15c全受入は未完。
+U11e・U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完。採用済み引用は0件。
+共有系列への追加要求はない。共有一般論・共有ルートimport・他系列は編集していない。
