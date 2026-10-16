@@ -7595,8 +7595,8 @@ KL-Eも`9979a899`までで実perfectoid ideal商へ接続済みであり、元�
 完備almost零加群の拡大閉性、全mod p冪像の冪等性を再実装する必要はない。
 `14969a68`では有限自由almost比較から元のTor作用の零化を、`da71d55b`では
 p完全忠実平坦拡大後の実導来tensorから元のTor作用への降下判定を保存済み。
-作業ツリーの`AndreTorDescent.lean`と`CompletelyFlatEquiv.lean`、関連監査・import変更は
-検証結果の確認・保存待ちとし、既存BS Theorem 7.14に相対的な適用として管理する。
+`AndreTorDescent.lean`と`CompletelyFlatEquiv.lean`、関連監査・import変更は
+`2d81567a`で保存済み。既存BS Theorem 7.14に相対的な適用として管理する。
 
 | 系列 | 次に供給するもの | 完了条件 |
 | --- | --- | --- |
@@ -7642,6 +7642,20 @@ G2の共通基盤全体や任意二因子のH⁰ perfectoid性の一般化を、
 sorry非依存性と区別する。KL-Q・D-Qでは全体ビルドと主定理までの依存監査を行う。
 RPerfd存在のB-IとBS Theorem 7.14そのものは別の入力として残り、この二つの引用置換だけで
 CLMST全体が引用非依存になったとは主張しない。
+
+KL-T底変換準備・元のperfectoid idealと商の関手性（2026-10-17）：
+`CommutativeAlgebra/PerfectoidIdealFunctor.lean`で、任意のperfectoid環間の写像と
+対応するイデアル包含から、B3で選んだ元の商perfectoid化間の写像を構成した。
+元の商写像との可換性と代表元の像を証明し、元のperfectoid idealの像が
+像生成元のperfectoid idealへ入ること、元の核商間の標準写像を得た。
+平坦性・単射性・非零性・根の選択は不要である。
+対象3276ジョブ、全体5860ジョブ、KL1013件、専用公開7宣言と名前付き適用例2宣言が成功した。
+全9宣言はsorry非依存・標準3公理のみ。適用例では拡大先の有限自由almost比較から
+元の基底スカラーalgMap(s)へのTor零作用を得て、三つの代数作用の一致を確認した。
+もう一つの適用例は実核商への写像とその目標のperfectoid性を確認し、零環への写像も許す。
+この包含と写像だけからperfectoid化の底変換同型を主張しない。
+元の実導来tensorと拡大先のperfectoid化係数のTorの比較、実almost比較とrank還元、
+KL-Q・Dの実適用、B-Iは引き続き残る。
 
 ### 9.8. 各区切りの保存と検証
 
