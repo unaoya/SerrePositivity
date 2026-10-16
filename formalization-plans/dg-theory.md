@@ -6300,3 +6300,35 @@ internalComposition_prependを合わせ、非空左pathのLeibniz則へ運ぶ。
 一般の最終Hom間の合成、単位・結合・収縮方程式、U15b全受入は未完。
 U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mも未完。採用済み引用は0件。
 共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.132 U15b17：先頭Hom・ε追加と全path合成の図式、カーネル検査の解消（2026-10-17）
+
+§17.131の未受入草稿`Quotient/CompositionPrefix.lean`を検証済みに移した。
+各path上で、左側の先頭追加後の合成、中間associator、外側associatorの比較を独立した補題に分けた。
+それらをappendRight_consへ接続するcomposition_prefix_restrictを構成し、
+固定左右tensor因子を持つ余積のhom_extから全path図式internalComposition_prefixPathを証明した。
+先頭Homとεを追加してから全path合成を行う場合と、後方の二つのHomを先に合成してから
+同じ先頭を追加する場合が一致する。
+
+分割後も比較式のEq.transでカーネルのdeterministic timeoutを検出したが、
+比較式をつなぐ前にCategory.assocで合成の括弧を正規化することで解消した。
+大きな複体射の合成の結合を定義的な簡約に任せず、明示した結合則の証明を使う。
+標準設定で対象ビルドは4.4秒で成功し、heartbeat等の上限拡大は採用していない。
+任意可換環・非有界Hom・独立対象宇宙・Small.{u} Dを保持する。
+この図式は内部微分についてのもので、一般の最終微分のLeibniz則はまだ主張しない。
+
+Checks.CompositionPrefix・Checks.CompositionPrepend・Checks.ErasureRowRecursion・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（2686 jobs、終了コード0、警告なし）。
+任意dg圏の全path図式、ZMod 2で前方εを含む全path図式を検査した。
+主要5宣言の直接公理監査は標準公理のみ。監査累計2689宣言。
+文書検査は13 Markdown・320 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次は各左語wについて、appendRight後の消去作用素を「左語のeraseRow」と「右の全erasure」の
+二項へ分ける式を帰納的に証明する。空語では§17.127の基底式、非空語では
+prefixPath_erasure・今回の図式・internalComposition_prependを用いる。
+cochain合成の等式も、推移的に結ぶ前に括弧を明示して型照合の負荷を抑える。
+一般の最終Hom間の合成、単位・結合・収縮方程式、U15b全受入は未完。
+U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mも未完。採用済み引用は0件。
+共有一般論・共有ルートimport・他系列は編集していない。
