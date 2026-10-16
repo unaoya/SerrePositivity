@@ -4778,3 +4778,29 @@ U13c全受入は未完。今回の射集合の同値について自然性・加�
 u-small余積保存、代表加群のcompact性・生成性、Perf⇒compactへ進める。
 U11eのcoherence・U12e/f・U13d/e・U14〜U17・D4mも未完。
 共有系列への追加要求はなく、担当外ファイル・共有ルートを変更していない。
+
+
+### 17.82 U13c2：H⁰の線形比較とcycle類の自然性（2026-10-16）
+
+`Category/HomotopyHomologyLinear.lean`は閉零射のcycle表示、cycle/boundary商、
+H⁰の射と主Hom複体のホモロジーとの同値がA線形であることを証明する。
+`Category/HomotopyHomologyNaturality.lean`は具体的なzeroCyclesからMathlibのcyclesへの写像を作り、
+iCyclesによる包含とhomologyπによる類の一致を証明した。任意のchain mapに対するcycle類の自然性、
+全dg圏のH⁰の射計算と閉零射による後合成の自然性も公開する。
+
+`Derived/Linear.lean`は既存K(D)経由の因子化同型から主局所化moduleToDerivedの加法性を登録する。
+導来圏と局所化関手のA線形構造はMathlib.Localization.Linearの既存構成をそのまま使う。
+`Perfect/RepresentableHomologyLinear.lean`は射影的始域のK(D)/D(D)のHom同値の加法・スカラー保存を
+閉零射への持ち上げから証明し、主HomのH⁰および代表加群による導来評価の同値を線形同値へ強めた。
+任意導来対象での線形同値の台は§17.81の同じEquivである。
+
+Checks.RepresentableHomologyLinear・Checks.RepresentableHomology・Checks.PerfectKaroubiEquivalence・
+Checks.StageSeven・既存Spectra.StageTwoの同時ビルドは成功（2888 jobs、終了コード0、警告なし）。
+任意宇宙・A線形構造・任意導来対象の線形Hom同値・スカラー保存・cycle類の自然性・ZMod 2を検査した。
+主要23宣言の直接公理監査は終了コード0、標準公理のみ。監査累計2078宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。
+今回の5 Leanファイルにsorry/admit/新規axiomはない。担当差分の空白検査も成功。
+
+U13c全受入は未完。次は代表加群の全導来射に対する自然同型、u-small余積保存、compact性・生成性、
+Perf⇒compactを検証する。U11eのcoherence・U12e/f・U13d/e・U14〜U17・D4mも未完。
+共有系列への追加要求はなく、共有ルート・他系列のファイルを変更していない。
