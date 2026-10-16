@@ -94,4 +94,14 @@ lemma pairing_target_naturality {Z' : C} (h : Z ⟶ Z') {T : SSet.{v}}
     ((Category.assoc ((a.app n x).app n.unop) (b.app n x) h).symm.trans
       (congrArg (fun k => k ≫ h) (pairing_app A B Z a b n x).symm))
 
+/-- Composition through an actual map of the intermediate resolution is associative. -/
+lemma pairing_middle_naturality {B' : SimplexCategory ⥤ C} (k : B ⟶ B') {T : SSet.{v}}
+    (a : T ⟶ (cosimplicialHom A).obj B) (b : T ⟶ (cosimplicialHom B').obj Z) :
+    pairing A B' Z (a ≫ (cosimplicialHom A).map k) b =
+      pairing A B Z a (b ≫ (cosimplicialHomMap k).app Z) := by
+  ext n x
+  exact (pairing_app A B' Z (a ≫ (cosimplicialHom A).map k) b n x).trans
+    ((Category.assoc ((a.app n x).app n.unop) (k.app n.unop) (b.app n x)).trans
+      (pairing_app A B Z a (b ≫ (cosimplicialHomMap k).app Z) n x).symm)
+
 end SerrePositivity.HomotopyFunctionComplex.DiagonalHom
