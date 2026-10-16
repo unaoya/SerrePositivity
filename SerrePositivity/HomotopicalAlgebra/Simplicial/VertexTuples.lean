@@ -28,6 +28,16 @@ abbrev vertices (A : Type v) : SSet.{v} := (Functor.const SimplexCategoryᵒᵖ)
 def inclusion (A : Type v) : vertices A ⟶ obj A where
   app _ := ↾fun a _ => a
 
+def map {A B : Type v} (f : A → B) : obj A ⟶ obj B where
+  app _ := ↾fun a i => f (a i)
+
+def verticesMap {A B : Type v} (f : A → B) : vertices A ⟶ vertices B where
+  app _ := ↾f
+
+@[reassoc]
+lemma inclusion_map {A B : Type v} (f : A → B) :
+    inclusion A ≫ map f = verticesMap f ≫ inclusion B := rfl
+
 instance (A : Type v) : Mono (inclusion A) := by
   have : ∀ n, Mono ((inclusion A).app n) := fun n =>
     (CategoryTheory.mono_iff_injective _).mpr (fun a b h => congrFun h 0)
@@ -57,6 +67,14 @@ def pointsMap {A : Type v} {K : SSet.{v}}
   naturality {n m} θ := by
     ext a
     exact congrArg (fun k => k (SSet.stdSimplex.const 0 0 n)) ((p a).naturality θ)
+
+lemma pointsMap_postcomp {A : Type v} {K L : SSet.{v}}
+    (p : A → (SSet.stdSimplex.{v}.obj (SimplexCategory.mk 0) ⟶ K)) (f : K ⟶ L) :
+    pointsMap p ≫ f = pointsMap (fun a => p a ≫ f) := rfl
+
+lemma verticesMap_pointsMap {A B : Type v} {K : SSet.{v}} (f : A → B)
+    (p : B → (SSet.stdSimplex.{v}.obj (SimplexCategory.mk 0) ⟶ K)) :
+    verticesMap f ≫ pointsMap p = pointsMap (fun a => p (f a)) := rfl
 
 @[reassoc]
 lemma vertex_pointsMap {A : Type v} {K : SSet.{v}}
