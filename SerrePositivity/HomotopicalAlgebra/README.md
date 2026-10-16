@@ -2956,3 +2956,13 @@ Paths³(Cᵒᵖ × C) → Choice(P × ∂Δ²)という実境界関手と、全�
 全退化関手との比較等式と実生成射像の交差定理を与える。三モジュールともモデル構造を仮定しない。
 全次数の相対充填の帰納構成と、最終的な小さい厳密なRMapは残る。
 受入検証は`check_all_degree_free_generators`（58宣言・3モジュール）。
+
+
+### 全次数の境界貼り合わせと全退化を保持する相対延長（§354）
+
+`FreeGeneratorLatchingValues`は二重退化の整合式から全退化像上の値を一意に貼り合わせる。
+`OrdinaryBarChoiceBoundaryGluing`は各面の重なりから基底射の一致も導き、元の各面へ戻る実境界射を作る。
+`OrdinaryBarFreeBoundaryGluing`は任意quiver上で全次数の実境界関手と全面制限の等式を構成する。
+`OrdinaryBarFreeDegeneracyExtension`は実Prescribedと相対延長を作り、境界・射影・全退化関手を保持する。
+元の自由分解からの全次数の帰納入力の構成と、小さい厳密なRMapは残る。
+受入検証は`check_free_latching_extension`（50宣言・4モジュール）。
