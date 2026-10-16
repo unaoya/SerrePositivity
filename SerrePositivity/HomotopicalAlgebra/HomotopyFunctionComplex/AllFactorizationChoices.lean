@@ -68,6 +68,22 @@ include hcof hfib in
 lemma fillers : UniverseLift.BoundaryFillers (obj hcof f g) :=
   fun n b => extension hcof hfib f g (SSet.boundary.{max u v} n).ι b
 
+include hcof hfib in
+/-- Existing systems and moving factorization-point data are both retained as actual maps. -/
+lemma extendMovingVertices {A K : SSet.{max u v}} (j : A ⟶ K) [Mono j]
+    (a : nerve (ArrowFactorization g) ⊗ A ⟶
+      UniverseLift.obj.{u} (AllFactorizationComparison.choiceSpace f g))
+    (c : NerveVertices.vertices (ArrowFactorization g) ⊗ K ⟶
+      UniverseLift.obj.{u} (AllFactorizationComparison.choiceSpace f g))
+    (hc : NerveVertices.inclusion (ArrowFactorization g) ▷ A ≫ a =
+      NerveVertices.vertices (ArrowFactorization g) ◁ j ≫ c) :
+    ∃ e : nerve (ArrowFactorization g) ⊗ K ⟶
+        UniverseLift.obj.{u} (AllFactorizationComparison.choiceSpace f g),
+      nerve (ArrowFactorization g) ◁ j ≫ e = a ∧
+        NerveVertices.inclusion (ArrowFactorization g) ▷ K ≫ e = c :=
+  LargeParameterRelativeChoice.family_lifting (valueFillers hcof hfib f g)
+    (NerveVertices.inclusion (ArrowFactorization g)) j a c hc
+
 abbrev collapse : obj hcof f g ⟶ SSet.stdSimplex.{max u v}.obj (SimplexCategory.mk 0) :=
   SSet.stdSimplex.isTerminalObj₀.from _
 

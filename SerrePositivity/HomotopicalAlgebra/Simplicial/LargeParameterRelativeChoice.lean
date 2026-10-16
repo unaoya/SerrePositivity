@@ -41,6 +41,23 @@ lemma restriction_lifting {A K U V : SSet.{max w v}} (j : A ⟶ K) [Mono j]
   have : Mono pp.ι := simplicial_pushoutProduct_mono j l pp
   exact (internalHomAdjunction₂.hasLiftingProperty_iff pp ph).1 (terminal_lifting hp pp.ι)
 
+include hp in
+/-- Lift moving boundary families while retaining an already prescribed entire subfamily. -/
+lemma family_lifting {A K U V : SSet.{max w v}} (j : A ⟶ K) [Mono j]
+    (l : U ⟶ V) [Mono l] (a : K ⊗ U ⟶ UniverseLift.obj.{w} P)
+    (c : A ⊗ V ⟶ UniverseLift.obj.{w} P)
+    (hc : j ▷ U ≫ a = A ◁ l ≫ c) :
+    ∃ e : K ⊗ V ⟶ UniverseLift.obj.{w} P, K ◁ l ≫ e = a ∧ j ▷ V ≫ e = c := by
+  have : HasLiftingProperty l ((pre j).app (UniverseLift.obj.{w} P)) := restriction_lifting hp j l
+  let sq : CommSq (curry a) l ((pre j).app (UniverseLift.obj.{w} P))
+      (curry c) := ⟨by
+    apply uncurry_injective
+    rw [uncurry_pre_app, uncurry_curry, uncurry_natural_left, uncurry_curry]
+    exact hc⟩
+  refine ⟨uncurry sq.lift, ?_, ?_⟩
+  · rw [← uncurry_natural_left, sq.fac_left, uncurry_curry]
+  · rw [← uncurry_pre_app, sq.fac_right, uncurry_curry]
+
 variable {A K : SSet.{max w v}} (j : A ⟶ K) [Mono j] (b : A ⟶ UniverseLift.obj.{w} P)
 
 include hp in

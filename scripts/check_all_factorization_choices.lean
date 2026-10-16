@@ -30,6 +30,12 @@ example (e₀ e₁ : K ⟶ UniverseLift.obj.{w} P) (h₀ : j ≫ e₀ = b) (h₁
       A ◁ (SSet.stdSimplex.isTerminalObj₀.from _ ≫ RelativeChoiceSpace.pointUnitIso.hom) ≫
         (ρ_ A).hom ≫ b :=
   LargeParameterRelativeChoice.homotopy_relative hp j b e₀ e₁ h₀ h₁
+-- Moving boundary data are retained together with the old full parameterized family.
+example {U V : SSet.{max w v}} (l : U ⟶ V) [Mono l]
+    (a : K ⊗ U ⟶ UniverseLift.obj.{w} P) (c : A ⊗ V ⟶ UniverseLift.obj.{w} P)
+    (hc : j ▷ U ≫ a = A ◁ l ≫ c) :
+    ∃ e : K ⊗ V ⟶ UniverseLift.obj.{w} P, K ◁ l ≫ e = a ∧ j ▷ V ≫ e = c :=
+  LargeParameterRelativeChoice.family_lifting hp j l a c hc
 end LargeParameters
 
 section ArbitraryModel
@@ -55,6 +61,20 @@ example : nerve (ArrowFactorization g) ◁ SSet.ι₁ ≫
     AllFactorizationChoices.universalContraction hcof hfib f g =
       AllFactorizationChoices.universalFamily hcof f g :=
   AllFactorizationChoices.universalContraction_one hcof hfib f g
+
+-- Move every prescribed factorization point, retaining the old systems as whole maps.
+example {A K : SSet.{max u v}} (j : A ⟶ K) [Mono j]
+    (a : nerve (ArrowFactorization g) ⊗ A ⟶
+      UniverseLift.obj.{u} (AllFactorizationComparison.choiceSpace f g))
+    (c : NerveVertices.vertices (ArrowFactorization g) ⊗ K ⟶
+      UniverseLift.obj.{u} (AllFactorizationComparison.choiceSpace f g))
+    (hc : NerveVertices.inclusion (ArrowFactorization g) ▷ A ≫ a =
+      NerveVertices.vertices (ArrowFactorization g) ◁ j ≫ c) :
+    ∃ e : nerve (ArrowFactorization g) ⊗ K ⟶
+        UniverseLift.obj.{u} (AllFactorizationComparison.choiceSpace f g),
+      nerve (ArrowFactorization g) ◁ j ≫ e = a ∧
+        NerveVertices.inclusion (ArrowFactorization g) ▷ K ≫ e = c :=
+  AllFactorizationChoices.extendMovingVertices hcof hfib f g j a c hc
 
 variable (s : nerve (ArrowFactorization g) ⟶
     UniverseLift.obj.{u} (AllFactorizationComparison.choiceSpace f g))
