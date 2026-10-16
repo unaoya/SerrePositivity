@@ -1,4 +1,5 @@
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionUpperBound
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionH0Comparison
 import Mathlib.Util.AssertNoSorry
 
 open CategoryTheory CategoryTheory.Limits SerrePositivity SerrePositivity.DerivedCompletion
@@ -33,3 +34,36 @@ example {R : Type u} [CommRing R] (a : R)
     (X : ConcreteDerivedCategory R) (k : ℤ) (hX : X.IsLE k) :
     ((derivedComplexCompletionFunctor R a).obj X).IsLE k :=
   derivedComplexCompletionFunctor_isLE R a X k hX
+
+assert_no_sorry completionH0HomEquiv
+#print axioms completionH0HomEquiv
+assert_no_sorry completionH0HomEquiv_apply
+#print axioms completionH0HomEquiv_apply
+assert_no_sorry completionH0HomEquiv_precomp
+#print axioms completionH0HomEquiv_precomp
+assert_no_sorry derivedComplexCompletion_h0_map_isIso
+#print axioms derivedComplexCompletion_h0_map_isIso
+assert_no_sorry boundedAboveDerivedCompletion_h0_map_isIso
+#print axioms boundedAboveDerivedCompletion_h0_map_isIso
+
+-- Exact second G11 request, for the original morphism and the original functor.
+example {R : Type u} [CommRing R] (a : R)
+    {X Y : DerivedCategory.Minus (ModuleCat.{u} R)} (f : X ⟶ Y)
+    (hX : X.obj.IsLE 0) (hY : Y.obj.IsLE 0)
+    (hf : IsIso ((DerivedCategory.homologyFunctor (ModuleCat.{u} R) 0).map f.hom)) :
+    IsIso ((DerivedCategory.homologyFunctor (ModuleCat.{u} R) 0).map
+      (((boundedAboveDerivedCompletionFunctor R a).map f).hom)) :=
+  boundedAboveDerivedCompletion_h0_map_isIso R a f hX hY hf
+
+-- Two successive principal completions, using precisely the same twice-mapped morphism.
+example {R : Type u} [CommRing R] (p : ℕ) (d : R)
+    {X Y : DerivedCategory.Minus (ModuleCat.{u} R)} (f : X ⟶ Y)
+    (hX : X.obj.IsLE 0) (hY : Y.obj.IsLE 0)
+    (hf : IsIso ((DerivedCategory.homologyFunctor (ModuleCat.{u} R) 0).map f.hom)) :
+    IsIso ((DerivedCategory.homologyFunctor (ModuleCat.{u} R) 0).map
+      (((boundedAboveDerivedCompletionFunctor R d).map
+        ((boundedAboveDerivedCompletionFunctor R (p : R)).map f)).hom)) := by
+  apply boundedAboveDerivedCompletion_h0_map_isIso R d
+  · exact boundedAboveDerivedCompletionFunctor_isLE R (p : R) X 0 hX
+  · exact boundedAboveDerivedCompletionFunctor_isLE R (p : R) Y 0 hY
+  · exact boundedAboveDerivedCompletion_h0_map_isIso R (p : R) f hX hY hf
