@@ -4750,3 +4750,31 @@ compact性で使う余積宇宙は引き続きu-smallであり、全加群圏の
 U11eのcoherence・U12e/f・U13c〜e・U14〜U17・D4mは未完。
 次はU11eの既存検査を確認しつつ、独立なU13cのrepresentableのHom＝評価ホモロジーから進める。
 共有系列への追加要求はなく、担当外ファイル・共有ルートを変更していない。
+
+
+### 17.81 U13c1：主HomのH⁰と代表加群からの導来射（2026-10-16）
+
+`Category/HomotopyHomology.lean`は任意の主dg圏について、cycleからH⁰の射への全射を構成し、
+二つのcycleの像が等しい条件を−1境界の差で判定する。
+MathlibのShortComplex.moduleCatLeftHomologyDataの具体的cycle/boundary商を使い、
+その商から実際のH⁰の射への全単射を証明した。homologyIsoSc'とmoduleCatHomologyIsoにより
+主Hom複体のMathlib homology 0への同値に接続し、cycle・閉零射での計算式を公開する。
+
+`Perfect/RepresentableHomology.lean`は既存の射影的始域の局所化Hom同値と上記同値を合成し、
+全Hom endのH⁰による実際の導来射の計算を与える。
+representableの場合は全次数dg Yoneda同型のhomologyMapを合成し、任意の主導来対象Xについて
+Hom_D(Q(representable x), X) ≃ (moduleDerivedHomology x 0).obj Xを構成する。
+元の加群射に対する計算式と、任意X版がQ(N)上でこの計算に戻る式も検証した。
+Aは任意可換環、Dの対象宇宙は独立、Small.{u} Dを明示し、Hom_DのA-flat性は仮定しない。
+
+Checks.RepresentableHomology・Checks.PerfectKaroubiEquivalence・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2880 jobs、終了コード0、警告なし）。任意対象でのHom同値、
+全射・単射による射の判定、ZMod 2を検査した。
+主要16宣言の直接公理監査は終了コード0、標準公理のみ。監査累計2055宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。
+今回の3 Leanファイルにsorry/admit/新規axiomはない。担当差分の空白検査も成功。
+
+U13c全受入は未完。今回の射集合の同値について自然性・加法との比較を公開し、
+u-small余積保存、代表加群のcompact性・生成性、Perf⇒compactへ進める。
+U11eのcoherence・U12e/f・U13d/e・U14〜U17・D4mも未完。
+共有系列への追加要求はなく、担当外ファイル・共有ルートを変更していない。
