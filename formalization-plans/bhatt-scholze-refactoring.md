@@ -63,7 +63,7 @@ BS側が変更するのは `SerrePositivity/BhattScholze/`、このBS計画、BS
 | R3a | rank-one DPの一般比較射を分離し特殊版を一般版へ委譲 | 配置・再利用 | 新 `RankOneDPBaseChangeMap`、`RankOneDPTensorRelations`、`RankOneDPAnyBasis`、`RankOneDPPrimeBasis`、`RankOneDPBaseChange` | 完了 |
 | R3b | principal DPの一般関係式を分離し基底変更を一本化 | 配置・再利用 | 新 `PrincipalDPBaseChangeRelations`、`PrincipalDPBaseChange`、`PrincipalDPBaseChangeUniversal` | 完了 |
 | R3c | DP表示の正則性で不要なp局所性を外した一般入口 | 証明拡張 | `PrincipalDPRegular` | 一時試作を検査済み、repo未反映 |
-| R4a | 初期係数表示を既存モニック表示比較へ接続 | 再利用・比較 | `DeltaDivisionFirstCoefficientPowerEquiv`、`MonicPowerFamilyBaseQuotient` | 旧同型を保つ案を反映・対象ビルド済み、統合監査・保存待ち |
+| R4a | 初期係数表示を既存モニック表示比較へ接続 | 再利用・比較 | `DeltaDivisionFirstCoefficientPowerEquiv`、`MonicPowerFamilyBaseQuotient` | 完了 |
 | R4b | 根関係式の通常の冪指数を非零指数に一般化 | 証明拡張 | 新 `MonicPowerFamilyRelationRegularity`、`DeltaRootRelationKoszul`、`DeltaRootSubsetQuotient`、`DeltaRootFiniteRegularSequence`、`DeltaDivisionSourceGraphKoszul` | 一般補題単体の一時検査済み、利用先は未検証・repo未反映 |
 | R4c | hpAからhpL・ghost単射を供給する公開入口を揃える | API整理 | `DeltaDivision*`、既存G4利用箇所 | 未着手 |
 | R5a | 未完備perfection・合成標準射のhom_extと既存PD外延性の適用 | 抽出 | `DeltaPerfectionUniversal`、`DeltaPerfectionPDCompletionUniversal`、`DeltaPerfectionPDCompletionComparison` | 一時ファイルで構成を検証中、repo未反映 |
@@ -359,3 +359,7 @@ R4bも計画済み5ファイルの一時検証から再開する。これらを�
   旧 `principalDPBaseChangeEquiv` の構成本体・公開署名・選択済み逆射を保持。新しい公開宣言は追加していない。
   対象6入口のビルドに加え、同じ530対象の統合ビルド・基礎/B4監査・公開7宣言のfocused監査が成功。
   標準3公理のみ。対象3モジュール・専用監査・計画を個別保存。
+- R4a：初期係数イデアルを基底イデアルとモニック関係式の和に同定し、既存一般比較の標準商元上の式と全射性を再利用した。
+  旧26公開署名と9定義本体を維持し、旧順射・逆射・同型を再選択していない。
+  対象ビルド、同じ530対象の統合ビルド・基礎/B4監査、新3宣言と旧比較入口のfocused監査が成功。
+  標準3公理のみ。対象1モジュール・専用監査・計画を個別保存。

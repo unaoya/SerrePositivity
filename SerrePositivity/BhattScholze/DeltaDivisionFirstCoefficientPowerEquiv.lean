@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.DeltaDivisionFirstResiduePowerPresentation
 public import SerrePositivity.BhattScholze.MonicPowerFamilyPresentation
+public import SerrePositivity.BhattScholze.MonicPowerFamilyBaseQuotient
 
 /-! # 初期係数商と通常根添加環の比較射
 
@@ -55,53 +56,39 @@ def deltaDivisionFirstPowerEvaluation (D : DeltaStructure p A) (d : A) (a : σ �
   change MvPolynomial.eval₂Hom _ _ (MvPolynomial.X s) = _
   rw [MvPolynomial.eval₂Hom_X']
 
+/-- 初期係数イデアルは基底イデアルと指定モニック冪関係式の和。 -/
+theorem deltaDivisionFirstPolynomialIdeal_eq_base_sup
+    (D : DeltaStructure p A) (d : A) (a : σ → A) (u : Aˣ) :
+    deltaDivisionFirstPolynomialIdeal D d a u =
+      (deltaDivisionFirstBaseIdeal (p := p) d a).map
+        (MvPolynomial.C : A →+* MvPolynomial σ A) ⊔
+      monicPowerFamilyRelationIdeal p σ A (fun s => (u⁻¹ : Aˣ) * D.delta (a s)) := by
+  simp only [deltaDivisionFirstPolynomialIdeal, deltaDivisionFirstBaseIdeal,
+    monicPowerFamilyRelationIdeal, Ideal.map_sup, Ideal.map_span,
+    Set.image_pair, ← Set.range_comp', map_natCast]
+
+/-- 従来の根評価射は、一般の係数商比較の標準商元上の射と一致する。 -/
+theorem deltaDivisionFirstPowerEvaluation_eq_baseQuotient
+    (D : DeltaStructure p A) (d : A) (a : σ → A) (u : Aˣ) (x : MvPolynomial σ A) :
+    deltaDivisionFirstPowerEvaluation D d a u x =
+      monicPowerFamilyBaseQuotientEquiv p σ A
+        (deltaDivisionFirstBaseIdeal (p := p) d a) (fun s => (u⁻¹ : Aˣ) * D.delta (a s))
+        (Ideal.Quotient.mk _ x) := by
+  rw [monicPowerFamilyBaseQuotientEquiv_mk]
+  change MvPolynomial.eval₂Hom _ _ x =
+    MvPolynomial.eval₂Hom _ _ (MvPolynomial.map (Ideal.Quotient.mk _) x)
+  rw [MvPolynomial.eval₂Hom_map_hom]
+  rfl
+
 /-- 初期根への評価射は、実際の初期係数多項式イデアルを消す。 -/
 theorem deltaDivisionFirstPowerEvaluation_kills
     (D : DeltaStructure p A) (d : A) (a : σ → A) (u : Aˣ) :
     ∀ x ∈ deltaDivisionFirstPolynomialIdeal D d a u,
       deltaDivisionFirstPowerEvaluation D d a u x = 0 := by
-  let I := deltaDivisionFirstBaseIdeal (p := p) d a
-  let q := Ideal.Quotient.mk I
-  have hbase : Ideal.span {(p : A), d} ≤ I := le_sup_left
-  have hcoeff : Ideal.span (Set.range a) ≤ I := le_sup_right
-  have hp : q (p : A) = 0 :=
-    Ideal.Quotient.eq_zero_iff_mem.mpr (hbase (Ideal.subset_span (by simp)))
-  have hd : q d = 0 :=
-    Ideal.Quotient.eq_zero_iff_mem.mpr (hbase (Ideal.subset_span (by simp)))
-  have ha (s : σ) : q (a s) = 0 :=
-    Ideal.Quotient.eq_zero_iff_mem.mpr (hcoeff (Ideal.subset_span (Set.mem_range_self s)))
-  have hle : deltaDivisionFirstPolynomialIdeal D d a u ≤
-      RingHom.ker (deltaDivisionFirstPowerEvaluation D d a u) := by
-    apply sup_le
-    · apply sup_le
-      · apply Ideal.span_le.mpr
-        intro x hx
-        simp only [Set.mem_insert_iff, Set.mem_singleton_iff] at hx
-        rcases hx with rfl | rfl
-        · change deltaDivisionFirstPowerEvaluation D d a u (p : MvPolynomial σ A) = 0
-          rw [map_natCast]
-          have he := congrArg (algebraMap (A ⧸ I) (DeltaDivisionFirstPowerCover D d a u)) hp
-          simpa only [map_natCast, map_zero] using he
-        · change deltaDivisionFirstPowerEvaluation D d a u (MvPolynomial.C d) = 0
-          rw [deltaDivisionFirstPowerEvaluation_C]
-          change algebraMap (A ⧸ I) (DeltaDivisionFirstPowerCover D d a u) (q d) = 0
-          rw [hd, map_zero]
-      · apply Ideal.span_le.mpr
-        rintro _ ⟨s, rfl⟩
-        change deltaDivisionFirstPowerEvaluation D d a u (MvPolynomial.C (a s)) = 0
-        rw [deltaDivisionFirstPowerEvaluation_C]
-        change algebraMap (A ⧸ I) (DeltaDivisionFirstPowerCover D d a u) (q (a s)) = 0
-        rw [ha, map_zero]
-    · apply Ideal.span_le.mpr
-      rintro _ ⟨s, rfl⟩
-      change deltaDivisionFirstPowerEvaluation D d a u (_ - _) = 0
-      rw [map_sub, map_pow, deltaDivisionFirstPowerEvaluation_X,
-        deltaDivisionFirstPowerEvaluation_C]
-      change (monicPowerFamilyRoot p σ _ (deltaDivisionFirstPowerCoefficients D d a u) s) ^ p -
-        algebraMap (A ⧸ I) (DeltaDivisionFirstPowerCover D d a u)
-          (deltaDivisionFirstPowerCoefficients D d a u s) = 0
-      rw [monicPowerFamilyRoot_pow, sub_self]
-  exact fun x hx => hle hx
+  intro x hx
+  rw [deltaDivisionFirstPolynomialIdeal_eq_base_sup] at hx
+  rw [deltaDivisionFirstPowerEvaluation_eq_baseQuotient,
+    Ideal.Quotient.eq_zero_iff_mem.mpr hx, map_zero]
 
 /-- 初期多項式商から適切な基底商上の通常根添加環への写像。 -/
 def deltaDivisionFirstPolynomialToPowerCover
@@ -135,18 +122,26 @@ theorem deltaDivisionFirstPolynomialToPowerCover_mk
   change MvPolynomial.eval₂Hom _ _ (MvPolynomial.X s) = _
   rw [MvPolynomial.eval₂Hom_X']
 
+/-- 従来の標準商射は、一般のモニック係数商表示によって全射。 -/
+theorem deltaDivisionFirstPolynomialToPowerCover_surjective
+    (D : DeltaStructure p A) (d : A) (a : σ → A) (u : Aˣ) :
+    Function.Surjective (deltaDivisionFirstPolynomialToPowerCover D d a u) := by
+  let e := monicPowerFamilyBaseQuotientEquiv p σ A
+    (deltaDivisionFirstBaseIdeal (p := p) d a) (fun s => (u⁻¹ : Aˣ) * D.delta (a s))
+  intro z
+  obtain ⟨x, hx⟩ := Ideal.Quotient.mk_surjective (e.symm z)
+  refine ⟨Ideal.Quotient.mk _ x, ?_⟩
+  change deltaDivisionFirstPowerEvaluation D d a u x = z
+  rw [deltaDivisionFirstPowerEvaluation_eq_baseQuotient]
+  change e (Ideal.Quotient.mk _ x) = z
+  rw [hx, e.apply_symm_apply]
+
 /-- 基底係数イデアルの多項式環への像は初期関係式イデアルに含まれる。 -/
 theorem deltaDivisionFirstBaseIdeal_map_C_le
     (D : DeltaStructure p A) (d : A) (a : σ → A) (u : Aˣ) :
     (deltaDivisionFirstBaseIdeal (p := p) d a).map
       (MvPolynomial.C : A →+* MvPolynomial σ A) ≤ deltaDivisionFirstPolynomialIdeal D d a u := by
-  have he : (deltaDivisionFirstBaseIdeal (p := p) d a).map
-      (MvPolynomial.C : A →+* MvPolynomial σ A) =
-      Ideal.span {(p : MvPolynomial σ A), MvPolynomial.C d} ⊔
-        Ideal.span (Set.range fun s => MvPolynomial.C (a s)) := by
-    simp only [deltaDivisionFirstBaseIdeal, Ideal.map_sup, Ideal.map_span,
-      Set.image_pair, ← Set.range_comp', map_natCast]
-  rw [he]
+  rw [deltaDivisionFirstPolynomialIdeal_eq_base_sup]
   exact le_sup_left
 
 /-- 適切な基底商から初期多項式商への標準係数射。 -/
@@ -235,23 +230,11 @@ theorem deltaDivisionFirstPolynomialToPowerCover_comp_backward
     (D : DeltaStructure p A) (d : A) (a : σ → A) (u : Aˣ) :
     (deltaDivisionFirstPolynomialToPowerCover D d a u).comp
       (deltaDivisionFirstPowerCoverToPolynomial D d a u) = RingHom.id _ := by
-  apply monicPowerFamilyCoverHom_ext
-  · apply RingHom.ext
-    intro r
-    obtain ⟨r, rfl⟩ := Ideal.Quotient.mk_surjective r
-    change deltaDivisionFirstPolynomialToPowerCover D d a u
-      (deltaDivisionFirstPowerCoverToPolynomial D d a u
-        (algebraMap _ _ (Ideal.Quotient.mk _ r))) = _
-    rw [deltaDivisionFirstPowerCoverToPolynomial_coeff,
-      deltaDivisionFirstPolynomialToPowerCover_coeff]
-    rfl
-  · intro s
-    change deltaDivisionFirstPolynomialToPowerCover D d a u
-      (deltaDivisionFirstPowerCoverToPolynomial D d a u
-        (monicPowerFamilyRoot p σ _ (deltaDivisionFirstPowerCoefficients D d a u) s)) = _
-    rw [deltaDivisionFirstPowerCoverToPolynomial_root,
-      deltaDivisionFirstPolynomialToPowerCover_root]
-    rfl
+  apply RingHom.ext
+  intro y
+  obtain ⟨x, rfl⟩ := deltaDivisionFirstPolynomialToPowerCover_surjective D d a u y
+  exact congrArg (deltaDivisionFirstPolynomialToPowerCover D d a u)
+    (RingHom.congr_fun (deltaDivisionFirstPowerCoverToPolynomial_comp_forward D d a u) x)
 
 /-- 初期係数多項式商は、A/(p,d,a_s)上の通常根添加環と同型。 -/
 def deltaDivisionFirstCoefficientPowerEquiv
