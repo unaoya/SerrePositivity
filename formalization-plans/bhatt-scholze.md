@@ -22,6 +22,43 @@ arXiv:1905.08229v3 とは、§1・§2、§7.3 以降の §7、§8・§9 の番�
 André の補題は著者版 Thm 7.14（v3 では 7.12）。
 以下の番号はすべて著者版に従う。既存コードの引用番号（1.17(1)、7.3、7.4、10.7）も著者版と一致する。
 
+### Prop 8.13の環版：今回の作業（2026-10-17）
+
+CLMST-DのProp 2.4.7引用除去に渡す一般定理。未採用のbs-clmst-citation-elimination.mdは根拠にしない。
+原典の著者版Prop 8.13は印刷pp.69–70。任意の導来p完備simplicial環の図式S1←S3→S2で、
+S3がperfectoid環からの射を持つとき、
+`S1,perfd ⊗̂^L_(S3,perfd) S2,perfd → (S1 ⊗̂^L_S3 S2)_perfd`が同値である。
+原典の主張には平坦性仮定はない。原典の証明はprismatic cohomologyの対称モノイダル性を使う。
+手元PDFのsha256は`4cb49a42c80fc734fb7585da273538e09632431ba06709ae05a11ded6673c27a`。
+
+今回のLean成果物は環としての普遍perfectoid化を持つ図式に対する環版とする。
+既存IsPerfectoidizationを入力とし、perfectoid化後の三環の元のG2完備導来tensorが離散かつperfectoidである
+既証APIを使う。その実H0への元の図式の写像がIsPerfectoidizationを満たし、
+元のG2完備導来tensorのH0の任意の指定済みperfectoid化と、標準射を保つ環同型を持つことを証明する。
+反射対象の存在は一般の環について新たに主張せず、B3で得る商、または指定済みIsPerfectoidizationを使う。
+これは原典の離散perfectoid化領域における環としての帰結であり、任意のsimplicial/E∞対象のProp 8.13全体の形式化ではない。
+元のtensorの高次ホモロジーをH0と同一視せず、古典的完備化への無条件置換もしない。
+
+証明経路は原典と異なり、既存の環の普遍性・G2のH0主元完備化比較・perfectoid完備tensor定理を合成する。
+p完全平坦なperfectoid底変換への適用は、この一般環版から標準射付きで取り出す。
+H0上の環の普遍性自体に不要な平坦性・p正則性・非零性・有限性は追加しない。
+一般の商の存在はB3、導来p完備な商での全射性が必要な場合はB4を使用し、pねじれなしの商だけへ限定しない。
+
+予定BS専用ファイルと工程：
+
+1. `CompletedTensorPerfectoidUniversal.lean`：元のG2完備tensor H0からperfectoid試験環への唯一延長。
+   既存principalCompletion_existsUnique_ringHomとcompletedTensorH0PrincipalRingEquivを使用する。
+2. `PerfectoidizationTensorCompatibility.lean`：指定済み三つのIsPerfectoidizationと両基底射を持つ一般図式について、
+   perfectoid化した基底上の完備tensorへの標準合成射のIsPerfectoidizationを証明する。
+3. `PerfectoidizationCompletedTensorCompatibility.lean`：元の完備tensor H0への延長、指定済みperfectoid化との
+   環同型と標準単位・両因子の式、perfectoid底変換およびB3/B4の商への適用を公開する。
+4. BS専用`audit_bhatt_scholze_prop813.lean`で全新公開宣言・完全型・標準写像・零環を監査し、工程ごとに保存する。
+
+PerfectDeltaTensor*・PerfectPrismResidueTensor*と既存の任意perfectoid図式の離散性・perfectoid性、
+共通完備tensor基盤は受領済みAPIとして使い、編集しない。
+CLMST-D所有のInputs/内のCor 8.12引用入力も編集しない。
+完成時は本節に公開名・正確な型・検証範囲を追記する。チャット間送信は別途ユーザー許可がある場合だけ行う。
+
 ## 2. 解消する引用
 
 | # | Lean の宣言 | 原典 | 利用先 |
