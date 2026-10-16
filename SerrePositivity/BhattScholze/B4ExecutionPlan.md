@@ -9968,3 +9968,20 @@ PerfectPrismRootPrismCompletelyFlat.leanの公開5宣言で、任意根族の実
 次は生成元商のp完全忠実平坦性へ降ろし、既存の互換根族・perfectoid性と束ねて任意根族の根付き拡大の具体的存在へ進む。
 一般B4の全射性は未完成。André引用に相対的な結果とは引き続き区別し、B-I/B6引用も変更していない。
 計画冒頭の現在の合流点を既存prism台環候補のCFFまで更新した。
+
+## 生成元商の実mod p還元への移送計画（2026-10-16）
+新規BS専用PrismaticGeneratorPowerModPFaithful.leanで既存の二段階実還元同型に沿ってH0忠実平坦性を移す。平坦性のみの既存入口を維持する。
+続く新規PerfectPrismRootQuotientReduction.leanで、候補prismの生成元正則性と元の生成元正則性から実生成元商を通常商singleへ同定する。
+商のA/(d)作用は既存deltaRootPerfectoidCandidateBaseMapを使い、通常係数拡大との同型を標準代表上で照合する。
+これらから候補perfectoid商のp完全忠実平坦性を実Tor判定で証明する。共有基盤は編集しない。
+
+## perfectoid候補商のp完全忠実平坦性の実装計画（2026-10-16）
+新規BS専用PerfectPrismRootPerfectoidCompletelyFlat.leanで、既存根prismの(p,d)実還元の次数消滅・H0忠実平坦性を、二段階商比較と生成元商single同型でperfectoid候補のmod p実還元へ移す。
+その同じA/(d)基底射の高次Tor消滅・通常剰余係数拡大の忠実平坦性を供給し、共通完全平坦性判定でp完全忠実平坦性を証明する。
+生成元商にp正則性を追加せず、元のperfectoid候補のpねじれと零環を許す。
+
+## 生成元商の実mod p還元への移送の入力結果（2026-10-16）
+PrismaticGeneratorPowerModPFaithful.leanの公開1定理で、既存の標準商同型に沿い実mod p還元H0の忠実平坦性を移した。
+PerfectPrismRootQuotientReduction.leanの公開4宣言で、既存prism候補の元Aのd作用の正則性、実生成元商のTor消滅、通常係数拡大と既存perfectoid商の基底射の同型、同じ実生成元還元と通常商singleの同型を証明した。
+両対象ビルド成功（根商4227ジョブ）。pure B4監査2545宣言成功、標準3公理のみ。新sorry・公理・外部引用なし。
+次はこれらを同じ実mod p還元へ適用し、perfectoid候補の標準基底射のp完全忠実平坦性を証明する。
