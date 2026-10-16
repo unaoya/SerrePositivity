@@ -2350,3 +2350,15 @@ paired raw bar右脚全体の局所化後の可逆性を全referenceの0次行se
 0次行sectionが可逆であること自体は未証明。右脚の無条件の弱同値、
 元のreplacement barとの比較、基底上の最終小さい厳密RMapは未完了。
 検証：`scripts/check_resolution_bar_row_homotopy.lean`、計画書§301。
+
+
+### 全bar単体の評価を持つ実row presentationへの射（§302）
+
+`ResolutionLiftRows`は高次liftの各単体から、全自然変換を持つ実row resolution射を取り出す。
+`ResolutionCenterRowLifts`は同じ全fiber familyを使い、両端中心の実移送式を証明する。
+`ResolutionBarSimplexCone`は各bar単体の最初の頂点から実row presentationへの射を構成し、
+元のHomラベルの像が同じ既存評価値に正確に一致することを証明する。
+両基底成分が弱同値なら、そのraw Hom写像全体も弱同値になる。
+次数ごとの行対象とouter-frame liftの整合性は残り、bar全体の収縮とはまだなっていない。
+0次行section・右脚の可逆性、元のreplacement barとの比較、最終小さい厳密RMapは未完了。
+検証：`scripts/check_resolution_bar_simplex_cone.lean`、計画書§302。

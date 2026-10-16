@@ -16101,3 +16101,60 @@ reference写像のanodyne局所化での可逆性を任意の固定行のsection
 元のreplacement barとの接続、実bar右脚の無条件の弱同値、基底Cᵒᵖ×C上の自然な小値化、
 F1の最終小さい厳密RMap、F2の最終自然弱同値zigzagは引き続き未完了。
 全体目標F→L→E→Sを維持する。
+
+
+## 302. 全bar単体の評価を実row presentationへの射として実現（2026-10-16）
+
+§301で残った可逆性の証明に向け、§299の評価を単なる小さいHom単体としてだけでなく、
+元のbar単体の最初の頂点から実row presentationへの射の像として実現した。
+今回は各単体での実射を構成した段階であり、bar全体の収縮や右脚の可逆性は未証明である。
+
+### 302.1 高次lift単体からの全resolution射
+
+`ResolutionLiftRows`は、元の実ResolutionLiftSpaceへの全family s:T→Lift(X,Y,f)について、
+各n単体xからrow(X,n)→Yという実ResolutionObject射を取り出す。
+二重Homの対角成分だけでなく、row(X,n)からY.resolutionへの自然変換全体を保持する。
+元の基底射fの上にあるという式は、実lift空間のpullback条件から導く。
+全単体作用素についてrowMapとの整合性、任意のparameter写像での制限との交換も証明した。
+fが弱同値なら、この実resolution射の全内側成分も弱同値である。
+ここまでSSetモデル構造は要求しない。
+
+`ResolutionCenterRowLifts`は、同じ既存changing-center fiber diagramの全familyに適用する。
+元の実inclusionから全自然変換を回収し、中心の両端を動かす任意の実比較について、
+sourceの実frame行写像・元のrow lift・targetの実resolution写像による全射の移送式を証明する。
+互換式を追加仮定として受け取るものではない。
+
+### 302.2 同じbar単体・同じ評価値を持つ実要素comma射
+
+`ResolutionBarSimplexCone`は§299の同じ両側先頭systemを受け取る。
+任意の実bar n単体cについて、両側のsystemのn単体を302.1で全resolution射に変換する。
+その実outer-frame liftを個々の射について選び、cの最初のpaired presentationから
+referenceのn次row pairへの実射を構成する。その基底射は元のcomma対象の射に等しい。
+
+この射が元のHomラベルに誘導するn単体は、§299の同じ評価写像の値と正確に一致する。
+従って、barを定義する同じdegreewise要素comma圏内で、cの最初の頂点から、
+その評価値をラベルに持つ実row presentationへの射が得られる。
+元の小さいlift空間・全system・実bar単体・評価値のいずれも別の選択に置き換えていない。
+元のcomma射の両基底成分が弱同値なら、誘導される小さいraw Hom写像全体も弱同値になる。
+この条件付きの不変性は、一般のcomma射が弱同値であるという主張ではない。
+
+### 302.3 受入検証と残項目
+
+実装コミット`8eed9197`。全て成功した。
+
+- 共有入口のbuild：2864 jobs、追加警告なし。
+- `check_resolution_bar_simplex_cone`：独立宇宙・任意モデル源での実row resolution射、
+  全単体作用素の整合性、両端中心移送、同じbar内の実要素comma射、
+  誘導された元のHomラベルと既存評価値の正確な一致、基底弱同値の場合のraw Hom不変性、
+  元の選択点を保持する実両側全systemへの適用。
+  新規44宣言・3モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：9178宣言・667モジュール、標準公理のみ。
+- `check_resolution_bar_row_homotopy`：39宣言・5モジュールの回帰確認。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+n次の比較先はn次row pairなので、個々の実要素comma射を得ただけでは
+全次数のbar収縮にはならない。row対象の次数変化と、選んだouter-frame liftを含む
+全体の整合性を扱う比較が残る。§301の0次行sectionの可逆性はまだ証明していない。
+元のreplacement barとの接続、実bar右脚の無条件の弱同値、基底Cᵒᵖ×C上の自然な小値化、
+F1の最終小さい厳密RMap、F2の最終自然弱同値zigzagも未完了。
+全体目標F→L→E→Sを維持する。
