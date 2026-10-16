@@ -9390,3 +9390,36 @@ DeltaRootPDCompletedPerfectionComparison.leanに8公開宣言を実装した。
 未解決の実源比較は、元の実二因子導来源を逐次導来完備化したH0をこのraw環のPDCompletionH0と同定し、
 そのδ構造・標準射を照合する工程である。今回の環同型をその離散化・比較の証明としては扱わない。
 共通G9全体は現ソース・共通正本・監査でなお未完成。候補CFF・引用なし一般B4は引き続き未完成。
+
+## 共通基盤への要求 G11：実主元導来完備化の非正性保存とH0比較（2026-10-16、未送信）
+
+対象：任意可換環R、a:R、既存X,Y:DerivedCategory.Minus (ModuleCat.{u} R)。
+要求1：X.obj.IsLE 0から、((boundedAboveDerivedCompletionFunctor R a).obj X).obj.IsLE 0。
+可能なら任意k:ℤでIsLE kを同じkのまま保つ入口も供給する。正則性・Noether性・ねじれ有界性・完備性の追加仮定はしない。
+要求2：X.obj.IsLE 0、Y.obj.IsLE 0、f:X⟶Y、IsIso ((DerivedCategory.homologyFunctor (ModuleCat R) 0).map f.hom)から、
+IsIso ((DerivedCategory.homologyFunctor (ModuleCat R) 0).map
+  (((boundedAboveDerivedCompletionFunctor R a).map f).hom))。
+関手・射・ホモロジーはいずれも既存の実対象を用いる。要求2を要求1と既存t構造・三角関手APIから導く場合も、元fそのものを保つ形を希望する。
+利用工程：B4の元の実二因子根添加源からraw singleへの標準augmentationのH0同型を、p,dの逐次導来完備化後へ運ぶ。
+これにより元の実源の完備化H0とraw環の同じ実完備化H0との比較へ進む。G9による負次数消滅・δ構造照合とは区別する。
+既存API不足：BoundedAboveCompletion.leanのcomplexCompletion_isStrictlyLEとderivedComplexCompletionFunctor_isBoundedAboveは
+上界をb+1とするだけで、H0比較に必要な同じ上界での非正性保存を与えない。既存DerivedTensorNonpositiveは源の入力を供給する。
+本要求は主元Koszul塔の最上位ホモロジーの全射遷移とMilnor列の一般論であり、共通担当の範囲。BS内に同等の一般補題を重複実装しない。
+待つ工程：標準augmentationのH0同型を実p,d完備化後へ運ぶ段階。G9の一般離散性判定もなお別途必要。
+独立作業：DeltaRootSourceNonpositive.leanをBS担当で新設し、元Aへ制限した実源の正次数消滅・非正性、
+および同じ実係数制限augmentationのH0同型を既存共通APIから証明する。新たな源・完備化・一般t構造定義は作らない。
+G11はチャット間送信の許可を得ていないため未送信。各ビルド・BS専用監査後に独立部分を個別コミットする。
+
+## 元の実根添加源の非正性と標準augmentationのH0入力の実装結果（2026-10-16）
+
+DeltaRootSourceNonpositive.leanに4公開定理を実装した。
+元の二つの係数作用を保持した既存射影分解モデルのテンソルを用い、その項ごとの非正性を
+元Aへの実係数制限後も保持することで、元の実源の非正性と全正次数ホモロジー消滅を証明した。
+同じ標準augmentationの終域である係数制限raw singleの非正性も、既存single比較で証明した。
+元のL上での標準augmentationのH0同型と、同じ実係数制限ホモロジー自然同型の図式から、
+元A上のdeltaRootSourceRawCoefficientAugmentationそのもののH0同型を証明した。
+任意根族・任意dを扱い、正則性・有限性・完備性・平坦性・源の離散性は仮定しない。
+対象3856ジョブ成功、自分のコード警告なし（共有既存警告のみ）。pure B4監査2379宣言成功、標準3公理以外なし。
+新sorry・公理・外部引用なし。G11の具体的X,Y,fについて両対象の非正性と元fのH0同型が揃った。
+G11を共通基盤への要求として記録し、元のご指定に従い送信許可を非同期に確認中。現在は未送信。
+G11によるp,d逐次完備化後のH0比較と、G9による源の離散化・δ構造照合、候補CFF・一般B4は未完成。
