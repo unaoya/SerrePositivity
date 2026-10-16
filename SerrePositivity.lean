@@ -732,6 +732,8 @@ public import SerrePositivity.IntersectionMultiplicity.DiagonalPositivity
 public import SerrePositivity.IntersectionMultiplicity.EqualCharZeroPositivity
 public import SerrePositivity.Inputs.SerrePositivity
 
+public import SerrePositivity.CommutativeAlgebra.PerfectPolynomial
+
 /-!
 # Serre の交点重複度の正値性の形式化
 
