@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedHenselian
 public import SerrePositivity.CommutativeAlgebra.LocalResidueLinearMap
+public import SerrePositivity.CommutativeAlgebra.FiniteAlgebraLocalizationLift
 public import Mathlib.LinearAlgebra.TensorProduct.Pi
 
 /-! # Actual finite étale splitting over a local absolutely integrally closed base -/
@@ -67,5 +68,27 @@ theorem IsAbsolutelyIntegrallyClosed.finiteEtale_localized_exists_algEquiv
     ∃ r : ℕ, Nonempty ((Localization.AtPrime p) ⊗[R] A ≃ₐ[Localization.AtPrime p]
       (Fin r → Localization.AtPrime p)) :=
   (hR.localization p.primeCompl (Localization.AtPrime p)).finiteEtale_local_exists_algEquiv
+
+/-- All coordinates of the actual stalk splitting descend to one principal neighborhood,
+as an algebra map with exactly the specified stalk values. Bijectivity on the principal
+neighborhood is the subsequent isomorphism-locus step. -/
+theorem IsAbsolutelyIntegrallyClosed.finiteEtale_exists_principal_comparison
+    {R A : Type u} [CommRing R] [CommRing A] [Algebra R A]
+    [Module.Finite R A] [Algebra.Etale R A] (hR : IsAbsolutelyIntegrallyClosed R)
+    (p : Ideal R) [p.IsPrime] :
+    ∃ (r : ℕ) (d : R) (hd : d ∉ p) (ψ : A →ₐ[R] (Fin r → Localization.Away d))
+      (e : (Localization.AtPrime p) ⊗[R] A ≃ₐ[Localization.AtPrime p]
+        (Fin r → Localization.AtPrime p)),
+      ∀ a i, IsLocalization.Away.liftAlgHom d (f := Algebra.ofId R (Localization.AtPrime p))
+        (IsLocalization.map_units (M := p.primeCompl) (Localization.AtPrime p) ⟨d, hd⟩) (ψ a i) =
+          e ((1 : Localization.AtPrime p) ⊗ₜ[R] a) i := by
+  letI : Module.FinitePresentation R A := Module.FinitePresentation.of_finite_of_finitePresentation R A
+  obtain ⟨r, ⟨e⟩⟩ := hR.finiteEtale_localized_exists_algEquiv (A := A) p
+  let φ : A →ₐ[R] (Fin r → Localization.AtPrime p) :=
+    (e.toAlgHom.restrictScalars R).comp
+      (Algebra.TensorProduct.includeRight : A →ₐ[R] (Localization.AtPrime p) ⊗[R] A)
+  obtain ⟨d, hd, ψ, hψ⟩ := finiteAlgebra_exists_away_lift_pi p.primeCompl
+    (Localization.AtPrime p) r φ
+  exact ⟨r, d, hd, ψ, e, hψ⟩
 
 end SerrePositivity
