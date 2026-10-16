@@ -8692,3 +8692,31 @@ DeltaRootFamilyResidueSourceDerived.leanに2公開宣言を実装した。
 標準3公理以外なし、新sorry・公理・外部引用なし。既存係数同値や一般導来判定を重複定義していない。
 次は元の二因子源の実三因子係数商還元へこの同型を結び、元の商係数環上のホモロジーと忠実平坦性を有限根族で供給する。
 無限根族のfiltered colimit・G9・候補比較同型・CFF・一般B4は未完成として保持する。
+
+## 有限根族の元二因子源の実係数商還元計画（2026-10-16）
+
+BS担当でDeltaRootFamilySourceCoefficientResidue.leanを新設する。
+既存DeltaRootSourceCoefficientReducedをそのまま使い、既存associator・実base-change/tensor比較と、
+前段の有限根族の実導来β比較を合成して既存raw(p,d)商の次数零対象への同型を証明する。
+同じ実対象のH0比較と非零次数ホモロジー消滅を公開する。
+続いてDeltaRootFamilySourceQuotientFlat.leanを新設し、既存DeltaRootSourceQuotientDerivedと
+係数制限・既存商作用を再利用して実商係数環上の消滅とH0同型、元のA/(p,d)上の忠実平坦性を証明する。
+Unique σ・外部ghost/G7仮定を除いた有限根族の入力を用い、定義・一般判定・既存標準射は重複しない。
+各段階のビルド・BS専用監査後に個別コミットする。無限根族・G9・候補CFF・一般B4は別工程。
+
+同工程の補足：実商係数環上の次数零集中から、共通normalizedPureHomologyIsoで既存raw残余商のsingle比較も構成する。
+そのH0が既証の商環線形同型そのものであることを、共通正規化のH0図式で照合する。
+新たな離散化・同値の一般定義は作らない。
+
+## 有限根族の元二因子源の実係数商還元の実装結果（2026-10-16）
+
+DeltaRootFamilySourceCoefficientResidue.leanに3公開宣言を実装した。
+既存DeltaRootSourceCoefficientReducedを再利用し、既存associator・実base-change/tensor比較と
+有限根族の実導来β比較を合成して、元の二因子源の実三因子係数商還元を既存raw(p,d)商のsingleへ同定した。
+同じ実対象のH0とraw残余商の比較、および非零次数ホモロジー消滅を証明した。
+有限全列挙s : Fin m ≃ σ・元の係数のp正則性・δd指定単元を明示する。
+Unique σ・外部ghost/G7仮定は不要。既存実対象・一般係数比較を重複していない。
+対象3850ジョブ成功。後続対象からの最終再ビルドも成功し、自分のコード警告なし。
+pure B4監査全2218宣言成功、標準3公理以外なし。新sorry・公理・外部引用なし。
+次は同じ対象の実商係数環上の消滅・H0比較・元のA/(p,d)上の忠実平坦性へ進む。
+無限根族・G9・候補比較同型/CFF・一般B4は未完成として保持する。
