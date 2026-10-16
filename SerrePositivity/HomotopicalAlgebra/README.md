@@ -2824,3 +2824,15 @@ sectionの像上でも一定な垂直収縮を持つ。実際のbarの収縮も�
 間には元のbar境界を全区間で固定するcompositeComparisonを構成した。大きいSSetモデルは不要。
 全高次の選択・内部の恒等射の退化・厳密なSSet値降下・最終RMap・F2は引き続き未完了。
 検証：`scripts/check_relative_choice_composition.lean`、計画書§341。
+
+
+### パラメータ付き選択圏と厳密な単体的図式（§342）
+
+`ParameterCategory`は共通パラメータTを持つ実族の圏と厳密なパラメータ置換を供給する。
+`OrdinaryBarChoiceCategory`は基底射と全相対延長族を保持する実際の圏、基底への射影、
+ambient値への厳密な評価、全パラメータ置換と両関手の可換squareを構成する。
+任意monoの制限は充満で、指定済みの射の族全体が元の基底射の上で延長できる。
+基底射影も充満だが、faithful・cofinal・厳密なsection付きとは主張しない。
+`OrdinaryBarChoiceSimplicialCategory`は標準単体をパラメータとする実Cat値関手を構成する。
+元の基底上の小さい厳密なSSet値降下・移送後の内部単位条件・最終RMap・F2は未完了。
+検証：`scripts/check_parameter_choice_category.lean`、計画書§342。
