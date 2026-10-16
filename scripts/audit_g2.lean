@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorH0Comparison
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RegularTensorReduction
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorPDComparison
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedAlgebraPDComparison
@@ -1463,3 +1464,47 @@ assert_no_sorry SerrePositivity.DerivedCompletion.regularCompletedTensorQuotient
 #print axioms SerrePositivity.DerivedCompletion.regularCompletedTensorQuotientAlgebraIso
 assert_no_sorry SerrePositivity.DerivedCompletion.regularCompletedTensorQuotientAlgebraIso_unit
 #print axioms SerrePositivity.DerivedCompletion.regularCompletedTensorQuotientAlgebraIso_unit
+
+-- Unconditional H0 comparison; no whole-augmentation isomorphism hypothesis.
+assert_no_sorry SerrePositivity.derivedH0AlgEquivOfIsoHomology
+#print axioms SerrePositivity.derivedH0AlgEquivOfIsoHomology
+assert_no_sorry SerrePositivity.derivedH0AlgEquivOfIsoHomology_apply
+#print axioms SerrePositivity.derivedH0AlgEquivOfIsoHomology_apply
+assert_no_sorry SerrePositivity.DerivedCompletion.completedTensorAlgebraAugmentation_h0_isIso
+#print axioms SerrePositivity.DerivedCompletion.completedTensorAlgebraAugmentation_h0_isIso
+assert_no_sorry SerrePositivity.DerivedCompletion.completedTensorH0PDAlgEquiv
+#print axioms SerrePositivity.DerivedCompletion.completedTensorH0PDAlgEquiv
+assert_no_sorry SerrePositivity.DerivedCompletion.completedTensorH0PDAlgEquiv_apply
+#print axioms SerrePositivity.DerivedCompletion.completedTensorH0PDAlgEquiv_apply
+assert_no_sorry SerrePositivity.DerivedCompletion.completedTensorH0PDAlgEquiv_unit
+#print axioms SerrePositivity.DerivedCompletion.completedTensorH0PDAlgEquiv_unit
+assert_no_sorry SerrePositivity.DerivedCompletion.completedTensorH0PDAlgEquiv_left
+#print axioms SerrePositivity.DerivedCompletion.completedTensorH0PDAlgEquiv_left
+assert_no_sorry SerrePositivity.DerivedCompletion.completedTensorH0PDAlgEquiv_right
+#print axioms SerrePositivity.DerivedCompletion.completedTensorH0PDAlgEquiv_right
+assert_no_sorry SerrePositivity.DerivedCompletion.completedTensorH0PDAlgEquiv_eq_ofIso_apply
+#print axioms SerrePositivity.DerivedCompletion.completedTensorH0PDAlgEquiv_eq_ofIso_apply
+assert_no_sorry SerrePositivity.DerivedCompletion.completedTensorH0PDAlgEquiv_eq_ofTor_apply
+#print axioms SerrePositivity.DerivedCompletion.completedTensorH0PDAlgEquiv_eq_ofTor_apply
+assert_no_sorry SerrePositivity.DerivedCompletion.completedTensorH0PDAlgEquiv_eq_ofKoszul_apply
+#print axioms SerrePositivity.DerivedCompletion.completedTensorH0PDAlgEquiv_eq_ofKoszul_apply
+
+-- The actual H0 augmentation is invertible for arbitrary algebras and arbitrary a.
+example {R S T : Type u} [CommRing R] [CommRing S] [CommRing T]
+    [Algebra R S] [Algebra R T] (a : R) :
+    IsIso ((DerivedCategory.homologyFunctor (ModuleCat.{u} R) 0).map
+      (DerivedCompletion.boundedAboveCompletedTensorAlgebraAugmentation R a S T).hom.hom.hom) :=
+  DerivedCompletion.completedTensorAlgebraAugmentation_h0_isIso R a S T
+
+-- Original G2 F3 comparison without additional Tor, regularity, or discreteness inputs.
+open scoped TensorProduct in
+example {R S T : Type u} [CommRing R] [CommRing S] [CommRing T]
+    [Algebra R S] [Algebra R T] (p : ℕ) :
+    letI := derivedH0CommRing (DerivedCompletion.boundedAboveCompletedTensorAlgebra R (p : R) S T)
+    letI := derivedH0Algebra (DerivedCompletion.boundedAboveCompletedTensorAlgebra R (p : R) S T)
+    letI := DerivedCompletion.pdCompletionCommRing (S ⊗[R] T) p 0
+    letI := DerivedCompletion.pdCompletionBaseAlgebra R (S ⊗[R] T) p 0
+    (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj
+      (DerivedCompletion.boundedAboveCompletedTensorAlgebra R (p : R) S T).X.obj ≃ₐ[R]
+        DerivedCompletion.PDCompletionH0 (S ⊗[R] T) p 0 :=
+  DerivedCompletion.completedTensorH0PDAlgEquiv R p S T

@@ -5745,6 +5745,19 @@ G2-HではこのH⁰保存を標準augmentationへ適用し、H⁰環比較に�
 完備化したaugmentation全体の同型と、その実H⁰のみの同型を区別して公開・監査し、
 G2の実利用照合を完了させてからKL、Dへ進む。G系列全体・KL・D全体の完成とはまだしない。
 
+G2-H⁰・無条件のF3環比較（2026-10-16）：`CompletedTensorH0Comparison.lean`でG11を
+元の標準augmentationへ適用し、任意R,S,T,aについて、完備化したaugmentationの実H⁰同型を証明した。
+実導来テンソルと通常テンソルのsingleはともに非正で、元のaugmentationのH⁰同型は既証明である。
+`derivedH0AlgEquivOfIsoHomology`で元のH⁰代数射を同じ関数のまま逆にし、F3比較へ合成した。
+`completedTensorH0PDAlgEquiv`は任意のR代数S,Tについて、元の実完備テンソルH⁰と
+`PDCompletionH0 (S⊗[R]T) p 0`のR代数同型を、Tor・正則性・完備化後の離散性の追加仮定なしで与える。
+元の完備化単位・左右因子の標準図式と、従来のOfIso／OfTor／OfKoszul比較との関数の一致も証明した。
+従来のKoszul条件は完備化augmentation全体を同型にする入口として維持するが、H⁰比較だけには不要と確定した。
+対象2625ジョブ、G2専用監査797宣言、全体5220ジョブが成功。追加11宣言はsorry非依存、標準3公理のみ。
+共通import閉包220モジュールにBS・CLMST・Inputs・Paper依存なし。
+残るG2-Hは、元のBS根添加二因子の係数作用・実標準射と、通常剰余に必要な両側のTor入力の具体的照合。
+このH⁰環比較から、一般のRでKoszul剰余と環商導来剰余が一致するとは推論しない。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
