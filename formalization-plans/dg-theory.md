@@ -6526,3 +6526,33 @@ Checks.CompositionDifferential・Checks.StageSeven・既存Spectra.StageTwoの�
 local K-flat版／解像度版のVerdier比較、次数0 Homの具体例は引き続き残る。
 U11e・U12e/f・U13d/e残部・U14・U16/U17・D4mも未完。採用済み引用は0件。
 共有系列への追加要求はない。共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.139 U15c1：指定収縮付きdg関手・商からの制限・ε評価の微分（2026-10-17）
+
+`Functor/ContractingElements.lean`はdg関手による微分の保存と、指定次数−1の元の微分が単位なら
+その像も同じ収縮方程式を満たすことを証明する。
+`Quotient/ContractedFunctor.lean`はdg関手F:D→Eと各b:Sの選択済み収縮元h_b、d h_b=idの等式を
+ContractedFunctorとして保持する。Eの対象宇宙は独立で、Eのsmall性は仮定しない。
+データのpostcomp、商の包含と指定εによるcanonicalContractedFunctor、商からの任意dg関手から
+このデータを取り出すrestrictContractedFunctorと、その収縮元の評価式を公開する。
+収縮の存在命題から任意に選択する構成へ弱めていない。
+
+`Quotient/ContractionCochain.lean`はh_bをε複体からHom_E(Fb,Fb)への次数0 cochainへ移す。
+標準ε生成元の像がh_bであり、そのHom微分がeraseEpsilon後に像対象の単位射を入れるcochainと
+一致することを証明する。この次数0 cochainは閉じているとは主張しない。
+これが任意pathの評価を最終Hom微分と両立させるための入力となる。
+任意可換環・非有界Hom・独立対象宇宙の契約を維持する。
+
+Checks.ContractedFunctor・Checks.QuotientContraction・Checks.QuotientCategory・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（2732 jobs、終了コード0、警告なし）。
+任意の対象宇宙のEへの制限と収縮cochainの微分式、ZMod 2での標準収縮データを検査した。
+主要9宣言の直接公理監査は標準公理のみ。監査累計2752宣言。
+文書検査は13 Markdown・320 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次は閉性を仮定しない次数0 cochainのtensorとその微分式から、各有限pathの評価を構成する。
+消去和に関する微分の帰納式、全path直和への貼合せ、最終Hom上のchain map、dg関手の延長、
+制限との往復・一意性を残すためU15c全受入は未完。
+U11e・U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完。採用済み引用は0件。
+共有系列への追加要求はない。共有一般論・共有ルートimport・他系列は編集していない。
