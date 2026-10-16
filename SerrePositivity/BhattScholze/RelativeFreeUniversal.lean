@@ -35,36 +35,13 @@ def relativeFreeDeltaEval (E : DeltaStructure p A) (f : R →+* A) (a : σ → A
 theorem relativeFreeDeltaEval_isDeltaHom (D : DeltaStructure p R) (E : DeltaStructure p A)
     (f : R →+* A) (hf : D.IsDeltaHom E f) (a : σ → A) :
     (relativeFreeDeltaStructure σ D).IsDeltaHom E (relativeFreeDeltaEval E f a) := by
-  apply (DeltaStructure.isDeltaHom_iff_sectionHom_comp _ _ _).mpr
-  apply MvPolynomial.ringHom_ext
+  apply DeltaStructure.isDeltaHom_mvPolynomial
   · intro r
-    apply TruncatedWittVector.ext
-    intro i
-    fin_cases i
-    · simp only [RingHom.comp_apply, wittTwoMap_coeff]
-      change relativeFreeDeltaEval E f a
-        (((relativeFreeDeltaStructure σ D).sectionHom (MvPolynomial.C r)).coeff 0) =
-          (E.sectionHom (relativeFreeDeltaEval E f a (MvPolynomial.C r))).coeff 0
-      rw [DeltaStructure.coeff_zero, E.coeff_zero]
-    · simp only [RingHom.comp_apply, wittTwoMap_coeff]
-      change relativeFreeDeltaEval E f a ((relativeFreeDeltaStructure σ D).delta
-        (MvPolynomial.C r)) = E.delta (relativeFreeDeltaEval E f a (MvPolynomial.C r))
-      rw [relativeFreeDeltaStructure_delta_C, relativeFreeDeltaEval_C,
-        relativeFreeDeltaEval_C, hf r]
+    rw [relativeFreeDeltaStructure_delta_C, relativeFreeDeltaEval_C,
+      relativeFreeDeltaEval_C, hf r]
   · rintro ⟨s, n⟩
-    apply TruncatedWittVector.ext
-    intro i
-    fin_cases i
-    · simp only [RingHom.comp_apply, wittTwoMap_coeff]
-      change relativeFreeDeltaEval E f a
-        (((relativeFreeDeltaStructure σ D).sectionHom (MvPolynomial.X (s, n))).coeff 0) =
-          (E.sectionHom (relativeFreeDeltaEval E f a (MvPolynomial.X (s, n)))).coeff 0
-      rw [DeltaStructure.coeff_zero, E.coeff_zero]
-    · simp only [RingHom.comp_apply, wittTwoMap_coeff]
-      change relativeFreeDeltaEval E f a ((relativeFreeDeltaStructure σ D).delta
-        (MvPolynomial.X (s, n))) = E.delta (relativeFreeDeltaEval E f a (MvPolynomial.X (s, n)))
-      rw [relativeFreeDeltaStructure_delta_X, relativeFreeDeltaEval_X,
-        relativeFreeDeltaEval_X, Function.iterate_succ_apply']
+    rw [relativeFreeDeltaStructure_delta_X, relativeFreeDeltaEval_X,
+      relativeFreeDeltaEval_X, Function.iterate_succ_apply']
 
 /-- 相対自由δ環からのδ射では、全座標の像が初期座標の像から決まる。 -/
 theorem relativeFreeDeltaHom_X_iterates (D : DeltaStructure p R) (E : DeltaStructure p A)

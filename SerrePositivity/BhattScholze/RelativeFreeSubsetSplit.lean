@@ -67,30 +67,17 @@ local notation "e" => relativeFreeSubsetSplitAlgEquiv (A := A) T
 /-- 全δ深さを保つ部分族分離は、既存の二つの自由δ構造と両立する。 -/
 theorem relativeFreeSubsetSplitAlgEquiv_isDeltaHom :
     (E).IsDeltaHom G (e).toRingHom := by
-  apply (DeltaStructure.isDeltaHom_iff_sectionHom_comp _ _ _).mpr
-  apply MvPolynomial.ringHom_ext
+  apply DeltaStructure.isDeltaHom_mvPolynomial
   · intro a
-    apply TruncatedWittVector.ext
-    intro i
-    fin_cases i
-    · change e (((E).sectionHom (MvPolynomial.C a)).coeff 0) =
-        ((G).sectionHom (e (MvPolynomial.C a))).coeff 0
-      rw [(E).coeff_zero, (G).coeff_zero]
-    · change e ((E).delta (MvPolynomial.C a)) = (G).delta (e (MvPolynomial.C a))
-      simp
+    change e ((E).delta (MvPolynomial.C a)) = (G).delta (e (MvPolynomial.C a))
+    simp
   · rintro ⟨s, n⟩
-    apply TruncatedWittVector.ext
-    intro i
-    fin_cases i
-    · change e (((E).sectionHom (MvPolynomial.X (s, n))).coeff 0) =
-        ((G).sectionHom (e (MvPolynomial.X (s, n)))).coeff 0
-      rw [(E).coeff_zero, (G).coeff_zero]
-    · change e ((E).delta (MvPolynomial.X (s, n))) = (G).delta (e (MvPolynomial.X (s, n)))
-      by_cases hs : s ∈ T
-      · have h (k : ℕ) := relativeFreeSubsetSplitAlgEquiv_X_mem (A := A) T ⟨s, hs⟩ k
-        simp only [relativeFreeDeltaStructure_delta_X, h]
-      · have h (k : ℕ) := relativeFreeSubsetSplitAlgEquiv_X_compl (A := A) T ⟨s, hs⟩ k
-        simp only [relativeFreeDeltaStructure_delta_X, h, relativeFreeDeltaStructure_delta_C]
+    change e ((E).delta (MvPolynomial.X (s, n))) = (G).delta (e (MvPolynomial.X (s, n)))
+    by_cases hs : s ∈ T
+    · have h (k : ℕ) := relativeFreeSubsetSplitAlgEquiv_X_mem (A := A) T ⟨s, hs⟩ k
+      simp only [relativeFreeDeltaStructure_delta_X, h]
+    · have h (k : ℕ) := relativeFreeSubsetSplitAlgEquiv_X_compl (A := A) T ⟨s, hs⟩ k
+      simp only [relativeFreeDeltaStructure_delta_X, h, relativeFreeDeltaStructure_delta_C]
 
 /-- 同じ分離同型の逆方向もδ構造を保つ。 -/
 theorem relativeFreeSubsetSplitAlgEquiv_symm_isDeltaHom :

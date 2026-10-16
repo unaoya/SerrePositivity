@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.FreeDeltaRing
+public import SerrePositivity.BhattScholze.PolynomialDelta
 public import Mathlib.Logic.Function.Iterate
 
 /-! # 自由整数δ環の普遍性
@@ -27,22 +28,11 @@ def freeDeltaEval (D : DeltaStructure p A) (a : σ → A) : FreeDeltaRing σ →
 終域のp正則性は仮定せず、単なるFrobenius可換性だけでδ射と判定しない。 -/
 theorem freeDeltaEval_isDeltaHom (D : DeltaStructure p A) (a : σ → A) :
     (freeDeltaStructure p σ).IsDeltaHom D (freeDeltaEval D a) := by
-  apply (DeltaStructure.isDeltaHom_iff_sectionHom_comp _ _ _).mpr
-  apply MvPolynomial.ringHom_ext' (Subsingleton.elim _ _)
+  apply DeltaStructure.isDeltaHom_mvPolynomial_of_sectionHom_comp_C _ _ _
+    (Subsingleton.elim _ _)
   rintro ⟨s, n⟩
-  apply TruncatedWittVector.ext
-  intro i
-  fin_cases i
-  · simp only [RingHom.comp_apply, wittTwoMap_coeff]
-    change freeDeltaEval D a (((freeDeltaStructure p σ).sectionHom
-      (MvPolynomial.X (s, n))).coeff 0) =
-        (D.sectionHom (freeDeltaEval D a (MvPolynomial.X (s, n)))).coeff 0
-    rw [DeltaStructure.coeff_zero, DeltaStructure.coeff_zero]
-  · simp only [RingHom.comp_apply, wittTwoMap_coeff]
-    change freeDeltaEval D a ((freeDeltaStructure p σ).delta (MvPolynomial.X (s, n))) =
-      D.delta (freeDeltaEval D a (MvPolynomial.X (s, n)))
-    rw [freeDeltaStructure_delta_X, freeDeltaEval_X, freeDeltaEval_X,
-      Function.iterate_succ_apply']
+  rw [freeDeltaStructure_delta_X, freeDeltaEval_X, freeDeltaEval_X,
+    Function.iterate_succ_apply']
 
 /-- 自由δ環からのδ射の生成元像は、初期座標の像の反復δとなる。 -/
 theorem freeDeltaHom_X_iterates (D : DeltaStructure p A) (f : FreeDeltaRing σ →+* A)

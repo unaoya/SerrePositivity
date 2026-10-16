@@ -23,6 +23,8 @@ import SerrePositivity.BhattScholze.DeltaClosureGeneration
 import SerrePositivity.BhattScholze.DeltaDivisionIteratedRelations
 import SerrePositivity.BhattScholze.PrincipalDPBaseChange
 import SerrePositivity.BhattScholze.DeltaDivisionFirstCoefficientPowerEquiv
+import SerrePositivity.BhattScholze.PolynomialDelta
+import SerrePositivity.BhattScholze.RelativeFreeFiniteDeltaStep
 import Mathlib.Util.AssertNoSorry
 
 /-! Focused dependency checks for the BS refactoring steps.
@@ -148,3 +150,41 @@ assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionFirstResiduePowerPolyn
 #print axioms SerrePositivity.BhattScholze.deltaDivisionFirstPowerEvaluation_eq_baseQuotient
 #print axioms SerrePositivity.BhattScholze.deltaDivisionFirstPolynomialToPowerCover_surjective
 #print axioms SerrePositivity.BhattScholze.deltaDivisionFirstCoefficientPowerEquiv
+
+-- R2c: generic polynomial sections, their calculation API, and the original universal maps.
+assert_no_sorry SerrePositivity.BhattScholze.polynomialDeltaSection
+assert_no_sorry SerrePositivity.BhattScholze.polynomialDeltaSection_C
+assert_no_sorry SerrePositivity.BhattScholze.polynomialDeltaSection_X
+assert_no_sorry SerrePositivity.BhattScholze.polynomialDeltaSection_projection
+assert_no_sorry SerrePositivity.BhattScholze.polynomialDeltaStructure
+assert_no_sorry SerrePositivity.BhattScholze.polynomialDeltaStructure_delta_C
+assert_no_sorry SerrePositivity.BhattScholze.polynomialDeltaStructure_delta_X
+assert_no_sorry SerrePositivity.BhattScholze.polynomialDeltaStructure_C_isDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.isDeltaHom_mvPolynomial_of_sectionHom_comp_C
+assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.isDeltaHom_mvPolynomial
+assert_no_sorry SerrePositivity.BhattScholze.freeDeltaEval_isDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.relativeFreeDeltaEval_isDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.relativeFreeSubsetSplitAlgEquiv_isDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.relativeFreeFiniteDeltaStepSection_naturality
+assert_no_sorry SerrePositivity.BhattScholze.relativeFreeFiniteDeltaStep_delta_image
+#print axioms SerrePositivity.BhattScholze.polynomialDeltaSection_C
+#print axioms SerrePositivity.BhattScholze.polynomialDeltaSection_X
+#print axioms SerrePositivity.BhattScholze.polynomialDeltaStructure
+#print axioms SerrePositivity.BhattScholze.DeltaStructure.isDeltaHom_mvPolynomial
+#print axioms SerrePositivity.BhattScholze.relativeFreeFiniteDeltaStepSection_naturality
+
+section PolynomialSectionContracts
+open SerrePositivity.BhattScholze
+variable {p : ℕ} [Fact p.Prime] {R : Type*} [CommRing R] (σ : Type*)
+
+-- Preserve the former W₂ eval₂Hom functions, not only isomorphic delta rings.
+noncomputable example (D : DeltaStructure p R) : relativeFreeDeltaSection σ D =
+    MvPolynomial.eval₂Hom ((wittTwoMap MvPolynomial.C).comp D.sectionHom)
+      (fun v ↦ TruncatedWittVector.mk p (fun i ↦
+        if i = 0 then MvPolynomial.X v else MvPolynomial.X (v.1, v.2 + 1))) := rfl
+
+noncomputable example (D : DeltaStructure p R) : polynomialRankOneDeltaSection σ D =
+    MvPolynomial.eval₂Hom ((wittTwoMap MvPolynomial.C).comp D.sectionHom)
+      (fun s ↦ TruncatedWittVector.mk p (fun i ↦
+        if i = 0 then MvPolynomial.X s else 0)) := rfl
+end PolynomialSectionContracts

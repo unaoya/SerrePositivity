@@ -57,7 +57,7 @@ BS側が変更するのは `SerrePositivity/BhattScholze/`、このBS計画、BS
 | R1d | 零完備性・係数制限・商射の外延性を既存APIへ接続 | 再利用 | `PerfectDeltaPDQuotientEquiv`、`PerfectDeltaPDQuotientComparison`、`PDCompletionInterface`、`OrientedPrismHom` | 完了 |
 | R2a | W₂写像と逆δ射を低層へ移す | 配置 | 新 `WittTwoMap`、`DeltaRing`、`DeltaQuotient`、`DeltaSectionNaturality`、直接利用先 | 完了 |
 | R2b | 環同型によるδ構造移送を統一 | 抽出 | 新 `DeltaTransport`、`DeltaDivisionSourceTensorDelta`、`DeltaRootSourceRawH0Delta` | 完了 |
-| R2c | 変数のδ値を指定する多項式構成とδ射判定 | 抽出 | 新 `PolynomialDelta`、`RelativeFreeDelta`、`PolynomialRankOneDelta`、普遍性利用先 | 統合ビルドで有限段自然性が失敗。切断のC/X計算APIを整えて再検証する |
+| R2c | 変数のδ値を指定する多項式構成とδ射判定 | 抽出 | 新 `PolynomialDelta`、`RelativeFreeDelta`、`PolynomialRankOneDelta`、普遍性利用先 | 完了 |
 | R2d | 有向環余極限上のδ構造と普遍射 | 抽出 | 新 `DeltaDirectLimit`、`DeltaPerfection`、`DeltaPerfectionUniversal`、`DeltaAdjoinDivisionFiniteColimit` | 一時検査済みの4モジュールを反映、統合検証中 |
 | R2e | δ閉包の生成元定理を基礎層へ集約 | 配置・再利用 | `DeltaClosureGeneration`、`DeltaDivisionIteratedRelations` | 完了 |
 | R3a | rank-one DPの一般比較射を分離し特殊版を一般版へ委譲 | 配置・再利用 | 新 `RankOneDPBaseChangeMap`、`RankOneDPTensorRelations`、`RankOneDPAnyBasis`、`RankOneDPPrimeBasis`、`RankOneDPBaseChange` | 完了 |
@@ -371,6 +371,12 @@ R4bも計画済み5ファイルの一時検証から再開する。これらを�
   この時点のBS import被覆は574/576で、未被覆2件はB-I入力と互換入口。
   未被覆・宣言差分は参考警告、基盤入口未指定は未検査として表示する。
   Leanの証明・公理監査は既存スクリプトで別に行う。残る実装後に最終集計を更新する。
+
+- R2c：変数のδ値を指定する多項式切断・δ構造と、係数/変数上でのδ射判定を共有した。
+  切断のC/X計算補題も公開し、有限段自然性を下流のソース変更なしで復旧した。
+  534対象・4,569ジョブ、基礎584件・B4 2,560件、追加10宣言と利用先のfocused監査が成功。
+  R2c/R2d/R3cの旧75完全署名が変更前と一致し、旧二つのW₂ eval₂Homのrfl契約も成功。
+  零環・pねじれ・異なる宇宙を維持し、新sorry・追加公理・引用依存なし。
 
 ## 10 再調査の反映と残りの実施契約
 

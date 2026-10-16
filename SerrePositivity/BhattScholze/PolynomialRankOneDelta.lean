@@ -1,8 +1,7 @@
 module
 
-public import SerrePositivity.BhattScholze.DeltaSectionNaturality
+public import SerrePositivity.BhattScholze.PolynomialDelta
 public import SerrePositivity.BhattScholze.DeltaRankOne
-public import Mathlib.Algebra.MvPolynomial.CommRing
 
 /-! # rank 1変数を持つ補助多項式δ構造
 
@@ -19,48 +18,34 @@ variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] (σ : Type v)
 /-- 係数のδ切断と、rank 1変数のW₂座標による多項式切断。 -/
 def polynomialRankOneDeltaSection (D : DeltaStructure p A) :
     MvPolynomial σ A →+* WittTwo p (MvPolynomial σ A) :=
-  MvPolynomial.eval₂Hom ((wittTwoMap (p := p) MvPolynomial.C).comp D.sectionHom)
-    (fun s => TruncatedWittVector.mk p (fun i => if i = 0 then MvPolynomial.X s else 0))
+  polynomialDeltaSection σ D (fun _ ↦ 0)
 
 /-- 補助切断の第0座標は恒等射。 -/
 theorem polynomialRankOneDeltaSection_projection (D : DeltaStructure p A) :
     (wittTwoProjection p (MvPolynomial σ A)).comp (polynomialRankOneDeltaSection σ D) =
-      RingHom.id _ := by
-  apply MvPolynomial.ringHom_ext
-  · intro a
-    simp only [RingHom.comp_apply, polynomialRankOneDeltaSection, MvPolynomial.eval₂Hom_C,
-      wittTwoProjection_apply, wittTwoMap_coeff]
-    rw [D.coeff_zero]
-    rfl
-  · intro s
-    simp [polynomialRankOneDeltaSection]
+      RingHom.id _ :=
+  polynomialDeltaSection_projection σ D _
 
 /-- 変数がrank 1である補助多項式δ構造。 -/
 def polynomialRankOneDeltaStructure (D : DeltaStructure p A) :
-    DeltaStructure p (MvPolynomial σ A) where
-  sectionHom := polynomialRankOneDeltaSection σ D
-  coeff_zero := by
-    intro f
-    exact RingHom.congr_fun (polynomialRankOneDeltaSection_projection σ D) f
+    DeltaStructure p (MvPolynomial σ A) :=
+  polynomialDeltaStructure σ D (fun _ ↦ 0)
 
 /-- 補助δ構造は基底係数上で元のδ構造に一致する。 -/
 @[simp] theorem polynomialRankOneDeltaStructure_delta_C (D : DeltaStructure p A) (a : A) :
     (polynomialRankOneDeltaStructure σ D).delta (MvPolynomial.C a) =
       MvPolynomial.C (D.delta a) := by
-  simp [DeltaStructure.delta, polynomialRankOneDeltaStructure, polynomialRankOneDeltaSection,
-    MvPolynomial.eval₂Hom_C]
+  exact polynomialDeltaStructure_delta_C σ D _ a
 
 /-- 補助δ構造では各変数のδは零。 -/
 @[simp] theorem polynomialRankOneDeltaStructure_delta_X (D : DeltaStructure p A) (s : σ) :
     (polynomialRankOneDeltaStructure σ D).delta (MvPolynomial.X s) = 0 := by
-  simp [DeltaStructure.delta, polynomialRankOneDeltaStructure, polynomialRankOneDeltaSection,
-    MvPolynomial.eval₂Hom_X']
+  exact polynomialDeltaStructure_delta_X σ D _ s
 
 /-- 補助多項式δ構造への係数射はδ射。 -/
 theorem polynomialRankOneDeltaStructure_C_isDeltaHom (D : DeltaStructure p A) :
-    D.IsDeltaHom (polynomialRankOneDeltaStructure σ D) MvPolynomial.C := by
-  intro a
-  exact (polynomialRankOneDeltaStructure_delta_C σ D a).symm
+    D.IsDeltaHom (polynomialRankOneDeltaStructure σ D) MvPolynomial.C :=
+  polynomialDeltaStructure_C_isDeltaHom σ D _
 
 /-- rank 1変数のFrobenius像はp乗。 -/
 @[simp] theorem polynomialRankOneDeltaStructure_frobenius_X (D : DeltaStructure p A) (s : σ) :
