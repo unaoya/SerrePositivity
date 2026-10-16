@@ -7524,3 +7524,49 @@ BhattScholze互換宣言の未解決参照1件で失敗した。共有ルート�
 任意の二つの解像度の比較射・選択独立性も残課題とし、U12e全受入とはしない。
 U12f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完。U17までの目標を保持する。
 共有系列への新しいAPI要求はない。
+
+
+### 17.165 U12e6：積dg圏上の加群から主bimodule圏への射・評価・準同型比較（2026-10-17）
+
+`Category/TensorSmall.lean`はSmall.{u} B/CからDGTensorCategory A B Cの対象のSmall.{u}を与える。
+Mathlib TransportEnrichmentの対象は元の積の型の別名であり、対象やHomの新モデルを作っていない。
+`Module/LeftMapNaturality.lean`は既存LeftModuleCategoryの射の全Hom自然性を、
+各複体への評価の前後合成のchain map等式として公開する。
+
+`Bimodule/TensorModuleMaps.lean`の**BimoduleTensorModuleCategory**は、
+Bᵒᵖ⊗C上の既存LeftModuleCategory。semifreeを扱うときには既存左右同値により
+そのopposite上のRightModuleCategoryへ接続する向きを保持する。
+rightMapはこの圏の射を各C対象で右B加群の射へ制限する。
+積dg圏の全Hom自然性をdgTensorFirstHomに沿って前合成し、右Bに関する全次数自然性を証明する。
+rightMap_left_naturalityはdgTensorSecondHomに沿った同じ制限から、主Hom endでの左C自然性を証明する。
+端の対象とmoduleMorphismMkのM/Nを明示し、結合則の書換えによるHom endのequalizer展開は
+型を固定したcongrArgとCategory.assocの合成に置換して解消した。
+符号付きtensor圏の既存の包含関手を使い、閉零Homだけの通常自然性に弱めていない。
+
+`TensorModuleFunctor.lean`の**BimoduleTensorModule.functor**は、既存の対象変換toBimoduleを
+両作用に全Hom自然な閉零射の関手へ拡張する。恒等・合成を保存し、
+**evaluationIso**はこの関手を値(b,c)へ評価すると元の積dg圏上の(op b,c)での評価に一致する自然同型。
+全対象での評価による射の外延性から、この関手の忠実性も証明した。
+`TensorModuleComparison.lean`は既存toTensorFunctorと対象の往復定理を使って
+objectPreimage/objectPreimageIsoと本質的全射性を構成する。
+**functor_quasiIso_iff**はBimoduleCategory.quasiIsoと元のleftModuleQuasiIsoの保存・反映を与える。
+忠実性と本質的全射性だけで圏同値を宣言していない。充満性・逆向きの射の構成は残る。
+任意CommRing A・非有界・独立B/C対象宇宙・Small.{u} B/Cを維持する。
+
+Checks.BimoduleTensorModule・Checks.DerivedBimodulePentagon・Checks.DerivedBimoduleNaturality・
+Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功
+（3023 jobs、終了コード0、警告なし）。積対象のsmall性、忠実性・本質的全射性、
+評価の自然同型、元のbimoduleへの対象比較、準同型の保存・反映、合成保存、
+ZMod 2でも独立対象宇宙の忠実性を検査した。
+主要19宣言の直接公理監査は標準公理のみ。監査累計3147宣言。
+今回の実装にsorry/admit/新規axiomはない。計算上限の追加もなく、採用済み引用は0件。
+全体文書検査は13 Markdown・320 exposition参照まで進み、§17.162〜164と同じ担当外の
+BhattScholze互換宣言の未解決参照1件で失敗した。共有ルート・共有一般論・該当系列は編集していない。
+
+次は逆向きの射の構成と閉零圏の比較を完成し、積dg圏上のsemifree解像度を主bimodule圏へ運ぶ。
+その後、各右制限の相対K-flat性を、生成cell・graded-split拡張・逐次余極限から証明する。
+必要な相手側Homのlocal K-flat仮定と、dg圏の解像度を使う版を区別する。
+bimodule解像度の存在・片側のK-flat性・任意の解像度の比較射と選択独立性・
+両変数を局所化した導来合成は未完で、U12e全受入とはしない。
+U12f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完。U17までの目標を保持する。
+共有系列への新しいAPI要求はない。
