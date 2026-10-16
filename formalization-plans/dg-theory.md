@@ -5508,3 +5508,28 @@ retractの有限射影代表・本質的全射・shift/三角構造の整合性�
 ホモトピー冪等の厳密化は未証明であり両者を同一視しない。
 U13e全受入・U13d・U11eのcoherence・U12e/f・U14〜U17・D4mは未完。
 採用済み引用は0件。共有系列への追加要求はない。共有ルート・既存PerfectComplex・他系列は変更していない。
+
+
+### 17.107 U13e20：既存PerfectHomotopyから主Perfへの線形完全忠実比較（2026-10-16）
+
+`Perfect/RingPerfectComparison.lean`は実際のstrictPerfectDGComplexToPerfectDGのH⁰と
+主射影的enhancementから主Perfへの既存同値を合成し、strictPerfectDGComplexToDGPerfectを構成する。
+既存PerfectHomotopyとのH⁰線形同値の逆を合成し、perfectHomotopyToDGPerfectを公開した。
+両関手は充満・忠実・加法的・A線形である。
+
+dg包含との関手等式をDGFunctor.onHomotopy_compでH⁰へ送り、主局所化と合成することで、
+既存のstrictPerfectDGComplexToDerivedとの自然同型を構成した。
+主Perf包含と既存PerfectHomotopyからの主導来比較も
+perfectHomotopyToDGPerfectCompInclusionによって自然同型で一致する。
+対象ごとのperfect性だけでなく、実際のdg関手に基づく射の比較を保持する。
+
+Checks.RingPerfectComparison・Checks.RingFiniteCell・Checks.RingEnhancement・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（3518 jobs、終了コード0、警告なし）。
+任意可換環、両比較の完全忠実性・線形性・加法性、主Perf包含との自然同型、ZMod 2を検査した。
+主要13宣言の直接公理監査は標準公理のみ。監査累計2420宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+U13e全受入には本質的全射とshift/三角構造・retractの比較が残る。
+U13d・U11eのcoherence・U12e/f・U14〜U17・D4mも未完。採用済み引用は0件。
+共有系列への追加要求はなく、共有ルート・既存PerfectComplex・他系列は変更していない。
