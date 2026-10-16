@@ -2154,3 +2154,19 @@ presentation系と全因子分解の接続、基底Cへの小さいSSet値降下
 最終RMapの不可能性は主張しない。次の厳密化はこの値変更を含めて構成する。
 実装`21a2851d`、詳細は計画§286。新規45宣言・3モジュール、共有8375宣言・597モジュールの
 標準公理監査、共有入口2793 jobs、前回の両変数降下128宣言の回帰確認が成功。
+
+
+## モデル不要のbarと基底上の厳密な補助候補（2026-10-16）
+
+`BarConstruction`は次数ごとの実要素圏のnerveとdiagonalから厳密なbar関手を作る。
+`BarAugmentation`は任意の実coconeへの写像を定義する。
+`RelativeBarConstruction`は実射影p:D→Bと小さい値図式Fから、costructured arrowを使い、
+B上の厳密な相対bar関手を構成する。`RelativeBarAugmentation`はF→p⋙Gから
+全単体写像・全基底射で自然なaugmentationを構成する。一般部分にモデル構造は不要。
+`ReplacementBarCandidate.auxiliaryBar`はこれを実replacement双関手へ適用し、
+(Cᵒᵖ×C)→SSet[max(u,v)]を構成する。大きいSSetのモデル構造は要求しない。
+値域は最終契約のvではなく、元の双関手との自然弱同値比較・小さい厳密関手への移行は残る。
+`BarSize`は点だけの図式でも索引対象がbarの0単体へ単射し、具体的に非smallとなる例を証明する。
+入力の小ささから生のbarの小ささを推論せず、別の小さい値と自然弱同値を構成する必要がある。
+実装`4ff11f4e`、詳細は計画§287。新規31宣言・6モジュール、共有8406宣言・603モジュールの
+標準公理監査、共有入口2799 jobs、両変数降下・固定値反例の回帰確認が成功。

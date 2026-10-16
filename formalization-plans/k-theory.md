@@ -15120,3 +15120,81 @@ SSetでの単位・合成を得るには追加の構成が必要である。
 
 F1の最終厳密RMapとF2の最終自然弱同値zigzag比較は引き続き未完了。
 今回の証明は次の構成を値変更を許す厳密化へ絞るためのもので、全体目標F→L→E→Sを維持する。
+
+
+## 287. モデル構造を使わないbar構成と基底上の厳密な補助候補（2026-10-16）
+
+§286の値変更を許す方針に従い、bar型の実対象と実作用を構成した。
+一般部分はモデル構造を一切要求しない。実replacement図式へ適用すると、
+基底Cᵒᵖ×C上で単位・合成がSSet内で厳密な補助関手が得られる。
+その値域はSSet[max(u,v)]であり、最終契約のSSet[v]値RMapとは区別する。
+大きいSSetのモデル構造を仮定した結果ではない。
+
+### 287.1 独立宇宙の通常のbar関手と実augmentation
+
+`Simplicial/BarConstruction`は任意のD→SSet[v]について、各次数nの型値図式の
+実際の要素圏を取り、そのnerveをbisimplicial diagonalへ制限する。
+結果のn単体は、n次数の要素圏内の長さnの実合成列である。
+図式間の自然変換にも作用し、全図式を引数とする厳密な関手になる。
+Dの対象宇宙uD、Hom宇宙vDと値宇宙vは独立で、出力宇宙はmax(uD,vD,v)である。
+
+`BarAugmentation`は任意の実cocone F→const(K)からbar(F)→lift(K)を定義する。
+各合成列の最初の要素を実coconeで評価し、全単体写像での自然性を証明する。
+この定義にaugmentationの弱同値性は仮定しない。
+
+### 287.2 射影に沿う相対barと基底変数での厳密な作用
+
+`RelativeBarConstruction`は任意のp:D→BとF:D→SSet[v]について、
+次数nの要素圏からBへの実射影のcostructured arrow圏(p(d)→b)を使う。
+そのnerveとbisimplicial diagonalにより、実関手B→SSet[max(uD,vD,v,vB)]を構成する。
+基底b→b'はcostructured arrowの後合成で作用する。単位・合成は局所化前から厳密である。
+Bの対象宇宙uBまで値域を上げる必要はなく、Hom宇宙vBのみが追加される。
+
+`RelativeBarAugmentation`は、実際の自然変換a:F→p⋙Gが与えられるとき、
+相対barからlift(G)への自然変換を構成する。
+要素(d,x)と射p(d)→bをaとGで評価し、要素圏の実射、全単体写像、
+全基底射に対する両立を証明する。これは一般の自然なaugmentationであり、
+最終RMapとの比較やその弱同値性を入力なしで得たとは扱わない。
+
+### 287.3 実際の両変数replacement双関手への適用
+
+`ReplacementBarCandidate`は§285の実射影と小さい厳密なpresentation双関手を
+287.2へそのまま適用する。得られた`auxiliaryBar`の型は
+(Cᵒᵖ×C)→SSet[max(u,v)]である。
+その単体は実replacement要素圏から指定した基底対へのcostructured arrowの実合成列であり、
+基底作用はこれらの後合成である。源は任意のModelCategory Cのままである。
+源の関手的分解・combinatorial性・単体的モデル源を要求しない。
+元のSSet[v]には従来のモデル条件を使うが、SSet[max(u,v)]のモデル構造は要求しない。
+この段階ではauxiliaryBarのKan性、弱同値不変性、π0比較、元の双関手との弱同値は未証明である。
+
+### 287.4 bar値の小ささを自動とは扱えないことの検証
+
+`BarSize`は定数の点図式でも索引Dの全対象がbarの0単体へ単射することを証明する。
+従ってその0単体がv-smallならDもv-smallでなければならない。
+具体的にD=Codiscrete(Type v)を使い、この点図式のbarの0単体がv-smallでないことを証明した。
+モデル構造や弱同値に関する仮定は不要である。
+これは実replacementのauxiliaryBar自体が非smallだと証明したものではなく、
+入力値が小さいという理由だけで生のbarをshrinkする一般手順が不十分であるという検証である。
+弱同値を介して別の小さい厳密な関手へ移す可能性は否定していない。
+
+### 287.5 受入検証と次の作業単位
+
+実装コミット`4ff11f4e`。全て成功した。
+
+- 共有入口の合同build：2799 jobs、追加警告なし。
+- `check_model_free_bar`：対象・Hom・値の独立宇宙、モデル不要の通常bar・実cocone評価、
+  相対barの全基底作用と厳密な合成、実比較からの自然augmentation、
+  索引対象の単射と具体的な非small例、任意モデル源の実replacementからの基底上補助候補。
+  新規31宣言・6モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：8406宣言・603モジュール、標準公理のみ。
+- `check_replacement_mapping_descent`：128宣言・5モジュールの回帰確認。
+- `check_strict_value_descent_counterexample`：45宣言・3モジュールの回帰確認。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+次は、恒等射影に対するbarのaugmentationとpに沿うbarの比較から、
+元の実presentation図式とauxiliaryBarの制限を結ぶ自然なspanを構成する。
+点ごとのbar包含をそのまま全presentation射で自然だとは扱わず、全図式の比較を証明する。
+そのaugmentation・比較の弱同値性と、元のSSet[v]に値を持つ新しい厳密な関手への自然な小値化が必要である。
+補助候補の厳密性や各有限列族の小ささを、最終の小さいRMapの存在に置き換えない。
+F1の最終厳密RMapとその不変性・Kan性・π0比較への統合、F2の最終自然弱同値zigzag比較は未完了。
+全体目標F→L→E→Sを維持する。
