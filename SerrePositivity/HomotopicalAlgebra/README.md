@@ -2538,3 +2538,13 @@ pushout後の単射性、一般augmentation・評価・最終小値化・F2は�
 比較射自身・基底変更射のモノ射性、補助モデル構造は不要。
 境界も動く骨格比較、一般augmentation・評価、最終小値化・F2は未完了。
 検証：`scripts/check_kan_pushout_comparison.lean`、計画書§317。
+
+
+### 強変形レトラクトの実Kan引き戻し（§318）
+
+`KanFibrationEndpointExtension.exists_from_zero`は元の始点・全制限区間・基底区間を保つ延長を供給する。
+`KanPullbackDeformation`は強変形レトラクトを任意のKan fibrationに沿う元の実pullbackへ移す。
+同じ部分対象を全区間で固定し、元の基底区間を保持する実retractionと収縮を構成する。
+基底・全空間のKan性や補助モデル構造は不要。元の引き戻し射はQと任意のanodyne反転関手で可逆になる。
+内部Homの前合成への移送、一般骨格比較、一般augmentation・評価、最終小値化・F2は未完了。
+検証：`scripts/check_kan_pullback_deformation.lean`、計画書§318。
