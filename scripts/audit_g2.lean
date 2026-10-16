@@ -1,4 +1,5 @@
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorH0Comparison
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorModuleReduction
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RegularTensorReduction
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorPDComparison
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedAlgebraPDComparison
@@ -1508,3 +1509,8 @@ example {R S T : Type u} [CommRing R] [CommRing S] [CommRing T]
       (DerivedCompletion.boundedAboveCompletedTensorAlgebra R (p : R) S T).X.obj ≃ₐ[R]
         DerivedCompletion.PDCompletionH0 (S ⊗[R] T) p 0 :=
   DerivedCompletion.completedTensorH0PDAlgEquiv R p S T
+
+assert_no_sorry SerrePositivity.DerivedCompletion.boundedAboveDerivedCompletedTensorQuotientModuleIso
+#print axioms SerrePositivity.DerivedCompletion.boundedAboveDerivedCompletedTensorQuotientModuleIso
+assert_no_sorry SerrePositivity.DerivedCompletion.boundedAboveDerivedCompletedTensorQuotientModuleIso_unit
+#print axioms SerrePositivity.DerivedCompletion.boundedAboveDerivedCompletedTensorQuotientModuleIso_unit
