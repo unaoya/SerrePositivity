@@ -2779,3 +2779,14 @@ anodyne拡張上の実kernel、実商型のv-small性、有限境界持ち上げ
 受入例で実際の小さいbar参照値間にも適用した。
 元の基底作用の全高次整合性・SSet値の厳密な降下・最終RMap・F2は未完了。
 検証：`scripts/check_universe_lift_parameter_hom.lean`、計画書§337。
+
+
+### 厳密な参照retractと全パラメータの相対射選択（§338）
+
+`LocalizedRelativeChoice`は局所化後可逆なmonoに沿うKan対象への実延長と、
+その選択空間の全monoに対するパラメータ延長・有限境界充填をモデル不要で供給する。
+`OrdinaryBarRetractSystem`は各Kan bar値をmono等価拡張し、小さい参照への厳密なretractと垂直収縮を得る。
+各基底射の実延長空間、単位・ambient合成の点、任意の大きい族の小さい写像空間への移送と指定族の保持、
+単位の正規化および中間retractの収縮による実合成ホモトピーも構成した。
+対象ごとのenlargementを基底上の関手とは仮定しない。全高次の組立て・厳密なSSet値降下・最終RMap・F2は未完了。
+検証：`scripts/check_ordinary_bar_retract_system.lean`、計画書§338。
