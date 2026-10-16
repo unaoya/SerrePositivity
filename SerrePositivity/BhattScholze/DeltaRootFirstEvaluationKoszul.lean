@@ -31,6 +31,14 @@ private theorem neg_list_regular {R : Type u} [CommRing R] (l : List R)
   exact neg_injective (by simpa only [neg_smul] using hxy)
 
 variable {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
+/-- 負のモニック根関係の異なる有限族も、任意係数環上で弱正則。 -/
+theorem deltaRootRelation_neg_fin_isWeaklyRegular (b : σ → A) {m : ℕ}
+    (s : Fin m → σ) (hs : Function.Injective s) :
+    RingTheory.Sequence.IsWeaklyRegular (MvPolynomial σ A)
+      (List.ofFn fun i => -deltaRootRelationFamily (p := p) b (s i)) := by
+  simpa only [List.map_ofFn, Function.comp_def] using
+    neg_list_regular _ (deltaRootRelation_fin_isWeaklyRegular (p := p) b s hs)
+
 variable (D : DeltaStructure p A) (d : A) (b : σ → A)
 local notation "P₀" => MvPolynomial σ A
 local notation "E₀" => polynomialRankOneDeltaStructure σ D
