@@ -19035,3 +19035,65 @@ faceZeroとfaceOne自体の一致、またはそれらの相対ホモトピー�
 余モナドの公理があることだけから、構成していない全次数の選択や相対境界の整合性を完成とは扱わない。
 小さいSSet値への厳密な降下、移送後の内部単位、自然弱同値比較、最終RMap・F2は引き続き残る。
 全体目標F→L→E→Sを維持し、完成とは扱わない。
+
+
+## 347. 任意の余モナドの全次数の関係式と、表示された単体圏上の実augmentation（2026-10-17）
+
+実装コミット`991011af`。A0・A1は§166で受入条件まで完了済みであり、最終入口の再検証も成功した。
+継続中のF1について、§346の自由path余モナドを全次数の実図式へ組み立てた。
+添字は固定MathlibのSimplexCategoryGenRelであり、通常のSimplexCategoryとの比較は未完了である。
+
+### 347.1 モデル不要の余モナド一般論
+
+`ComonadResolutionOperators`は任意の通常の圏C、余モナドG、対象Xだけを入力とする。
+反復power、全次数のfaceとdegeneracyを定義し、次の六つの関係式を任意の次数・許される添字で証明した。
+
+- 面と面の交換。
+- 退化の後の対応する面が恒等になる二つの式。
+- 退化と退化の交換。
+- 面と退化が異なる位置にある二つの交換式。
+
+余単位を反復したaugmentationについて、すべての面・退化との可換性も証明した。
+個々の次数を有限個確認した結果ではなく、次数に関する帰納法による全次数の定理である。
+モデル構造、関手的分解、combinatorial性、simplicial性を入力に要求しない。
+
+### 347.2 関係式による商への実際の降下
+
+`ComonadResolutionPresentation`は、生成元のquiverから自由圏への関手を構成し、
+固定MathlibのFreeSimplexQuiver.homRelの六ケースすべてを上記の実定理で検証して、
+Quotient.liftで実際の関手SimplexCategoryGenRelᵒᵖ → Cへ降下する。
+第n項はGのn+1回反復であり、面・退化に対する射の像も実等式として計算できる。
+全射に対するaugmentationの自然性をhom_inductionで証明し、定値Xへの実自然変換を得た。
+
+固定版MathlibのGeneratorsRelationsには、通常の単体圏への標準関手、epi/mono分解、
+normal formの部品がある。一方、その標準関手の同値性を利用できる完成済み入口は確認できなかった。
+したがって、この成果を通常のSimplexCategoryᵒᵖ上のSimplicialObjectの完成とは扱わない。
+通常の単体圏との比較を証明するか、その単体圏上に直接構成する追加作業が必要である。
+
+### 347.3 自由path余モナドへの実適用と宇宙
+
+`FreePathResolutionPresentation`は、任意のC : Type uとCategory.{v} Cに適用する。
+HomだけをULiftしてCat.{max u v, u}へ配置し、対象宇宙uとHom宇宙vを独立に保つ。
+第0項はPaths(ULiftHom C)、第1項はPaths(Paths(ULiftHom C))であり、
+全次数のaugmentationからULiftHom.downで元のCへの実関手projectionを得る。
+すべての添字射でprojectionが可換することを、関手全体の実等式として証明した。
+大きいSSetへのモデル構造は一切使用していない。
+
+### 347.4 受入検証と残項目
+
+すべて成功した。
+
+- 共有入口のbuild：3026 jobs、追加警告なし。
+- `check_comonad_resolution_presentation`：54宣言・3モジュール、標準公理のみ。
+  任意の余モナドでの六関係式、実商圏上の関手とaugmentation、
+  独立した対象・Hom宇宙での自由path図式と元の圏への射影を検証。
+- `check_free_path_comonad`：既存34宣言・2モジュールの回帰検証。
+- `check_weak_equivalences_accessible`：A0・A1の最終入口、21宣言・5モジュール。
+- `audit_homotopical_foundations`：11174宣言・814モジュール、標準公理のみ。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+次の受入単位は、通常の単体圏との実比較、およびこの全次数の自由分解と
+§345の相対延長を接続する際の、面・退化と固定境界が同時に整合する構成である。
+各自由図式を個別に持ち上げられることだけから、全次数で整合する選択を推論しない。
+小さいSSet値への元の基底上の厳密な降下、移送後の内部単位、自然弱同値比較、
+最終RMap・F2は引き続き残る。全体目標F→L→E→Sを維持し、完成とは扱わない。

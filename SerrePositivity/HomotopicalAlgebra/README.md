@@ -2881,3 +2881,15 @@ ambient値への厳密な評価、全パラメータ置換と両関手の可換s
 基底への射影の一致と、退化を前合成したとき両方が元のfreeCoverへ戻る実等式を証明した。
 二面そのものの相対比較、全次数の単体的分解、小さいSSet値降下、最終RMap・F2は未完了。
 検証：`scripts/check_free_path_comonad.lean`、計画書§346。
+
+
+### 全次数の余モナド分解（§347）
+
+`ComonadResolutionOperators`は任意の余モナドの面・退化の六関係式とaugmentationの
+可換性を全次数で証明する。`ComonadResolutionPresentation`は実際に関係式の商へ降下し、
+`SimplexCategoryGenRelᵒᵖ`上の実関手と定値対象への実自然変換を構成する。
+`FreePathResolutionPresentation`は自由path余モナドへ適用し、独立した対象・Hom宇宙の
+任意の圏への実射影と、その全添字射に対する可換性を与える。モデル構造は不要。
+通常の`SimplexCategory`との比較は未完了であり、この段階では通常の単体的分解の完成や、
+元の基底上の厳密な小さい`RMap`の完成を主張しない。
+受入検証は`check_comonad_resolution_presentation`（54宣言・3モジュール）。
