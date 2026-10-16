@@ -2433,3 +2433,15 @@ anodyne射を反転する任意の関手の下で、このmiddle比較は全自�
 `UniverseLiftElements`は既知の持ち上げの単体圏同値だけを構成し、任意のbarを縮小しない。
 補助nerveと元のbarとの比較、評価の可逆性、自然な最終小値化・F2は未完了。
 検証：`scripts/check_ordinary_bar_total_cone.lean`、計画書§308。
+
+
+### 実nerve augmentationと元のbar値ホモトピー（§309）
+
+`SimplexChainParameter`・`SimplexNerveAugmentation`は任意Xについてnerve(X.Elements)→Xを構成し、
+全単体作用素・任意のX→Yでの自然性を証明する。
+`LabelledChain`・`TotalNerveBarAugmentation`は総要素圏の実chainと同じラベルを既存の対角barへ送る。
+`RelativeBarCommaPresentation`は同じrelative barとの明示的同型を作り、全元射・ラベルを保持する。
+`OrdinaryBarNerveBridge`は同じ総要素nerveから元の通常barへの実bridgeを構成し、
+前のnerveホモトピーを元bar値のホモトピーへ移す。
+標準単体圏augmentationとの端点の同定、augmentation・評価の可逆性、最終小値化・F2は未完了。
+検証：`scripts/check_ordinary_bar_nerve_bridge.lean`、計画書§309。

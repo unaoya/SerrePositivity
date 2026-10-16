@@ -16512,3 +16512,64 @@ row側ラベルは既存の評価値そのものである。面・退化写像�
 圏のnerve上のホモトピーだけから元のbarの弱同値を結論してはいない。
 元のreplacement mapping図式との自然弱同値比較、基底上の自然な小値化、
 最終小さい厳密RMap・F2の最終自然弱同値zigzagは未完了。全体目標F→L→E→Sを維持する。
+
+
+## 309. 補助nerveから元のbarへの実比較とbar値ホモトピー（2026-10-16）
+
+§308の補助nerve上の比較を元のbarへ接続するため、二種類の実augmentationを構成した。
+どちらも全単体作用素に整合する実射であり、弱同値性はまだ定義・結論に含めていない。
+
+### 309.1 任意の単体集合の単体圏nerveからの実augmentation
+
+`CategoryTheory/SimplexChainParameter`はΔᵒᵖ内の実chainについて、
+各頂点の0番目の点を実prefix写像で最初の単体へ送り、一つの単調な単体作用素を構成する。
+全θによる制限が、新しい最初の単体への実prefixを通して分解することを証明した。
+
+`Simplicial/SimplexNerveAugmentation`は、この共通parameterを用い、任意のXについて
+nerve(X.Elements)→Xを構成する。全ての面・退化写像との整合性と、任意の実単体的写像X→Yに
+対する自然性を証明した。値宇宙のモデル構造・小さいHom型・追加の源の分解データは不要である。
+このaugmentationの弱同値性は未証明である。
+
+### 309.2 総要素nerveから対角barへの実augmentation
+
+`CategoryTheory/LabelledChain`は、任意の実chainとその最初の元のラベルから、
+全ラベルを実prefixで運ぶ要素圏のchainを構成する。
+制限では新しい最初の頂点の実輸送ラベルを使い、値関手の自然変換とも整合することを全関手の等式で証明した。
+
+`Simplicial/TotalNerveBarAugmentation`は、F:D→SSetのuncurryした総要素圏のnerveから
+既存の対角barへの実写像を構成する。chain全体に最初の単体内の一つのparameterを使い、
+その同じラベルをDの実prefix写像で運ぶ。値次数とchain次数の両方を変える全作用素に対する
+整合性を証明した。索引の対象・Hom宇宙と値宇宙は独立であり、大きいSSetモデル構造は使わない。
+
+### 309.3 同じrelative barと元のbar値ホモトピー
+
+`Simplicial/RelativeBarCommaPresentation`は、実base comma圏上でproj≫Fを使うbarと、
+元のrelative(p,F)(b)との明示的同型を構成する。
+comma射とHomラベルを記録する順序だけを変え、両方向の全実単体的写像が逆であることを証明した。
+この同型に309.2を続け、同じrelative barへの総要素nerve augmentationを得る。
+
+`OrdinaryBarNerveBridge`はこれを§308の同じ実総要素圏へ適用する。
+元の通常barを標的とする実bridgeと、独立に構成した309.1の単体圏augmentationを用意した。
+§308のホモトピーを実bridgeへ続け、元のbarを値に持つ全単体的ホモトピーを構成した。
+二端点の像はanodyne射を反転する任意の関手の下で等しい。補助宇宙のモデル構造は要求しない。
+
+### 309.4 受入検証と残る証明
+
+実装コミット`8f5e8bfe`。以下はすべて成功した。
+
+- 共有入口のbuild：2897 jobs、追加警告なし。
+- `check_ordinary_bar_nerve_bridge`：任意Xの実単体圏augmentationと自然性、
+  独立宇宙の一般総要素nerve augmentation、全実射・ラベルを保持するcomma表示の同型、
+  元の実通常barへのbridge、元bar値のホモトピーと任意のanodyne反転関手での等式。
+  新規69宣言・6モジュール、標準公理のみ。
+- `check_ordinary_bar_total_cone`：既存65宣言・6モジュールの回帰確認。
+- `audit_homotopical_foundations`：9556宣言・700モジュール、標準公理のみ。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+ホモトピーの標的は今回元のbarになったが、源はまだ持ち上げたbar単体圏のnerveである。
+firstCompositeと独立に構成した標準のsimplexAugmentationとの全写像の同定は未証明である。
+さらに、augmentationのanodyne局所化後可逆性を証明し、もう一つの端点の小さい評価を経由する
+因子分解を元bar上の評価へ接続する必要がある。
+実写像が存在することだけから、これらのaugmentationや評価が弱同値であるとは結論していない。
+最終小さい厳密RMap、元のreplacement mapping図式との自然弱同値比較、
+基底上の自然な小値化・F2は未完了。全体目標F→L→E→Sを維持する。
