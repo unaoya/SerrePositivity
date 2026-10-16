@@ -15969,3 +15969,70 @@ referenceから評価へ進む合成の可逆性だけでは、評価写像やba
 referenceの選択を基底上で厳密に関手化したわけでもない。
 実bar右脚の弱同値、基底Cᵒᵖ×C上の自然な小値化、F1の最終小さい厳密RMap、
 F2の最終自然弱同値zigzagは引き続き未完了。全体目標F→L→E→Sを維持する。
+
+
+## 300. 混合frameの各行を実resolution・既存barのpresentationとして実現（2026-10-16）
+
+§299の評価の逆向き比較に向け、二重frameの各行を元の基底対象の実resolutionとして
+構成し、その元のresolutionへの実augmentationを既存bar内部の射へ接続した。
+各行の小さい混合Hom比較は弱同値であり、行図式の対角は同じ既存混合出力となる。
+
+### 300.1 元の基底上の実row resolution
+
+`ResolutionFrameRows`は、frameの各行のaugmentationと元のresolutionのaugmentationを
+合成する。両者は実Reedyモデル内の自明fibrationなので、その合成も自明Reedy fibrationとなる。
+各行のReedy cofibrancyと合わせ、同じ元の基底対象のCofibrantResolutionを構成する。
+各行の元のresolutionへの比較は基底上の恒等射を持つ実ResolutionObject射である。
+全行作用素も同じ基底の恒等上の実射として構成し、厳密な行関手と比較自然変換を得る。
+frame対角全体のReedy cofibrancyは要求しない。
+
+`ResolutionFrameRowFunctor`は実framed比較射のframe成分を各行に評価し、
+上記row resolution間の実射を構成する。これらは行作用素と可換で、恒等・合成も保つ。
+全framed presentationから通常のresolution圏に値を取る行図式への厳密な関手と、
+元のresolutionへの全図式の比較自然変換を公開した。
+新しい行resolutionのouter frameを関手的に選ぶ、という主張は含めない。
+
+### 300.2 同じ混合出力の実row presentation
+
+`MixedHomBifunctor`は、cosimplicial図式の実pair上の厳密な小さい混合Hom関手を公開する。
+`ResolutionRowMixedMapping`は両側の実frame行に適用し、全framed presentationと
+全行作用素について厳密なbisimplicial混合Hom図式を構成する。
+各行の値は300.1の実resolution pairの混合Homに等しい。
+
+元の実raw混合Homから全行への比較は300.1の実augmentationによる写像である。
+それぞれの基底射は恒等なので、§298の実resolution間の不変性により各行比較は弱同値になる。
+比較の自然性と二対三性から、全行作用素も弱同値である。
+その対角と既存MixedResolutionComparison.outputとの自然同型を、同じ実Hom射について
+恒等な成分で構成した。単体互換性には実二重frameの自然性を使う。
+従って別の出力へ置換したのではなく、§299で評価先に使った同じ混合出力の行表示である。
+
+### 300.3 既存bar内の実対象・実射
+
+`ResolutionBarRowPresentations`は各行resolutionをFramedResolution.ofResolutionで既存の
+paired indexの対象に置く。指定した行augmentationのouter-frame liftを個々の射について選び、
+referenceからこのrow pairへの実射を構成する。その基底射は恒等であり、
+raw Homに誘導する写像は300.2の同じ行比較写像に等しい。
+
+この射を§299と同じcomma圏内の射として構成する。さらに任意の内側次数・元のHom単体に
+対し、barを定義する実degreewise要素comma圏での射を構成し、その元の比較射を回収する。
+row pairを既存barに置けることを示した段階であり、独立に選んだouter-frame liftが
+行方向に厳密な関手を成すとは仮定も主張もしていない。
+
+### 300.4 受入検証と残項目
+
+実装コミット`60697ddb`。全て成功した。
+
+- 共有入口のbuild：2856 jobs、追加警告なし。
+- `check_resolution_frame_rows`：独立宇宙の任意モデル源での同じ基底上の実row resolution、
+  行augmentation・全行作用素・実framed比較の可換性、同じ混合出力の全図式の自然同型、
+  既存bar内の実要素comma射、その同じraw行比較写像の回収、全行比較と全行作用素の弱同値。
+  新規96宣言・5モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：9095宣言・659モジュール、標準公理のみ。
+- `check_resolution_bar_evaluation`：67宣言・5モジュールの回帰確認。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+各行への実comma射をbarのホモトピー比較にまとめ、§299の評価のもう一方の合成を
+扱う部分が残る。全row pairをouter-frame liftも含めて関手的にしたわけではない。
+元のreplacement barとの接続、実bar右脚の弱同値、基底Cᵒᵖ×C上の自然な小値化、
+F1の最終小さい厳密RMap、F2の最終自然弱同値zigzagは未完了。
+全体目標F→L→E→Sを維持する。

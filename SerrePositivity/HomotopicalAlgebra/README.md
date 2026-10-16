@@ -2324,3 +2324,16 @@ parameter・入力・出力の実移送を含む整合式を証明する。
 大きいモデルを使わず、その実合成のanodyne局所化での可逆性を証明する。
 評価自体・bar右脚の弱同値、元のreplacement barとの比較、最終小さい厳密RMapは未完了。
 検証：`scripts/check_resolution_bar_evaluation.lean`、計画書§299。
+
+
+### 実row resolutionと既存bar内の行presentation（§300）
+
+`ResolutionFrameRows`は二つの自明Reedy fibrationを合成し、同じ基底上の実row resolutionと
+全行作用素を構成する。`ResolutionFrameRowFunctor`は全実framed比較への自然性を証明する。
+`MixedHomBifunctor`と`ResolutionRowMixedMapping`は同じ混合出力の実行表示を作り、
+全行比較・全行作用素の弱同値と、対角の全図式の自然同型を提供する。
+`ResolutionBarRowPresentations`は行augmentationを既存barの実comma射・要素comma射へ接続し、
+誘導されるraw写像として同じ行比較を回収する。
+新しいouter-frame liftの関手性は主張しない。barの逆向きホモトピー比較・右脚、
+元のreplacement barとの比較、基底上の最終小さい厳密RMapは未完了。
+検証：`scripts/check_resolution_frame_rows.lean`、計画書§300。
