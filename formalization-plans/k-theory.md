@@ -14456,3 +14456,79 @@ Dataに対応する具体的入力を構成して、旧全区間の小さい写�
 元の二つの三角形と四辺・共有対角線の全写像を同時に保持し、全外部次数で同じ境界へ制限する。
 その後、presentation・全因子分解の整合系から基底Cへの小さいSSet値降下、
 最終の厳密RMapと最終比較へ進む。F1と全体目標F→L→E→Sは継続中である。
+
+
+## 277. F1進捗：全中心混合正方形と同じ四辺全系の制限・旧三角形facetの全写像回収（2026-10-16）
+
+混合三角形を動く全tuple・vertex系へ接続するため、すべての中心での混合正方形とその間の実可換立方体を
+一つの索引にした。既存の同じSelectedIntervalDiagram.coherentから四辺全系を制限・実移送で構成し、
+各対象での評価が旧混合三角形の対応する四facetの全写像に等しいことを証明した。
+BD辺は合成の括弧付けを自然同型で比較し、値図式の移送が既存castMapそのものになる。
+旧二つの三角形・全facet・共有対角線の実座標への移送と小さい全写像の回収も構成した。
+共有対角線を含む全facet系の全外部次数の適合性と、それを固定した三角形全系の延長はまだ残る。
+
+### 277.1 全中心の実混合正方形・可換立方体と自然な共通vertex境界
+
+`ResolutionMixedDiagram.Presentation`は任意の実framed射X→Y、中心射g:Y→W、標的射W→Vを記録する。
+四隅は実際の全中心索引Iの対象(Y,W,g)、(X,W,fg)、(Y,V,gh)、(X,V,f(gh))である。
+四辺を実Iの射として作り、AB≫BD=AC≫CDを実際の射の等式として証明する。
+BDは左結合(fg)hと右結合f(gh)を同じ最終中心へ合わせる実base equalityを保持する。
+
+これをArrow(Arrow I)の対象へまとめ、その実可換立方体を射とするpresentation索引を構成する。
+四隅・四辺は実関手と自然変換になり、全辺の可換性も自然変換の等式として成立する。
+corner Aの動く旧tuple・vertex図式とcorner Dの小さい実lift値図式を用意し、
+既存vertexDataと実対角移送から自然な共通vertex境界を構成する。包含のmonoも証明する。
+補助presentation索引の構成であり、元のresolution射影の充満忠実性や関手的因子分解は仮定しない。
+
+### 277.2 元の二つの全三角形・全facet・共有対角線の実座標比較
+
+`ResolutionMixedTriangles`は既存CoherentLiftMixedComparison.triangleの二つの選択を変更せず、
+実familyをUniverseLiftTensorの標準単体比較で大きい動くtupleパラメータへ移す。
+小さい旧boundaryと277.1の自然なvertexBoundaryが一致することを証明する。
+全facet・共有対角線の制限式を保ち、二つの三角形の実際の共有対角線が一致する。
+区間全体より高い三角形全体でもstrict vertex境界を固定する対象ごとの式を証明する。
+元の小さい三角形・facet・対角線の全写像へ戻す操作は、元の写像そのものを回収する。
+これらは三角形全系へ延長するための実入力であり、この段階で三角形の全外部次数の整合性を
+得たとは判定しない。
+
+### 277.3 BD辺の実再結合と旧base-changeの同一性
+
+`ResolutionMixedReassociation`は左結合の最終中心を関手へまとめ、右結合の最終中心との
+実際の自然同型を構成する。そのI上の射は基底中心の等式からのeqToIsoであり、
+小さいlift値図式での移送は旧CoherentLiftMixedComparison.castMapそのものである。
+BDの実I射は、旧post射とこの自然な再結合の合成に等しい。
+従ってその小さいfiber移送は、旧postTailそのものであり、追加の同値や独立選択へ置き換えない。
+
+### 277.4 同じ既存全区間系から得る四辺と旧facetの回収
+
+`ResolutionMixedIntervalRestrictions`は混合presentationから既存のpre/post presentationへの
+三つの直接の関手と、277.3を使うBDの関手を構成する。
+四辺全系AB・AC・CD・BDは、すべて前回の同じSelectedIntervalDiagram.coherentの再添字付けと
+実tuple前合成・実lift値後合成から得る。新しい独立な区間全系は選ばない。
+四辺の各対象での評価は、元のselected pre/post区間写像をこれらの実写像で移送したものと等しい。
+
+UniverseLiftTensorへ、全標準単体パラメータを持つ写像の値後合成との交換式を追加した。
+`ResolutionMixedEdgeRecovery`は既存RelativeChoiceSpaceのpostMap・preMapの実family式を使い、
+移送した四辺全系の対象評価が、旧三角形のAB=true facet2、AC=false facet2、
+CD=false facet0、BD=true facet0そのものと等しいことを証明する。
+下げれば元の小さい旧facetの全写像になる。全外部面・退化は、四辺全系の構成によって
+同じ既存区間全系の実際の始点パラメータ・終点値移送に整合する。
+
+### 277.5 受入検証と残項目
+
+実装コミット`17aa144d`。全て成功した。
+
+- 共有入口の合同build：2754 jobs、追加警告なし。
+- `check_resolution_mixed_edges`：実正方形・全四辺の可換性、旧castMapの同一性、元の二つの全三角形の
+  小写像回収と実共有対角線、同じ既存全区間系からの四辺の旧facetとしての回収、
+  facetの元の全小写像回収、四辺全系の全外部面・退化の実移送。新規5モジュールと変更したUniverseLiftTensorの163宣言・6モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：7840宣言・559モジュール、標準公理のみ。
+- `check_selected_interval_diagram`：107宣言・5モジュールの回帰確認。
+- `check_selected_mixed_comparison`：108宣言・3モジュールの回帰確認。
+- 新規・変更ソースの行長・証明用マーカー確認とstage差分の空白検査。
+
+次は四隅の全tuple系から四辺全系の両端を同定し、同じ始終点と元の全対角線を保持する
+共有対角線全系を構成する。その五辺から二つの∂Δ2全境界系を貼り合わせ、区間に加えて
+三角形全体のvertex境界も同時に固定し、旧二つの全三角形を保持する延長へ進む。
+同じ四辺全系を変更せずに使うことを受入条件とし、旧facetの対象ごとの一致だけで代替しない。
+その後の基底Cへの小さいSSet値降下、最終の厳密RMapと最終比較も引き続き残り、全体目標を維持する。
