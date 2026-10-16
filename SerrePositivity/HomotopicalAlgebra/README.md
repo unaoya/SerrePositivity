@@ -2526,3 +2526,15 @@ pushout後の単射性、一般augmentation・評価・最終小値化・F2は�
 補助モデル構造・Qのcolimit保存は不要。二つの骨格図式間の比較、一般augmentation・評価、
 最終小値化・F2は未完了。
 検証：`scripts/check_kan_transfinite_equivalence.lean`、計画書§316。
+
+
+### 境界分解と固定境界上のpushout比較（§317）
+
+`MonoRightLiftingContraction`は全モノ射右持ち上げから厳密sectionと基底上で定数な実収縮を構成する。
+`MonoLocalizedFactorization`は値宇宙内の実関手的境界分解を供給し、右因子の局所化後可逆性を証明する。
+`UnderMonoBrown`はモノ射の構造射を持つUnder対象間でBrownの議論をモデル不要で行う。
+`KanPushoutComparison`は固定境界Aからの両構造射がモノ射なら、任意の基底変更後の一般比較が
+局所化で可逆であると証明する。二つの実pushout間の指定比較にも適用できる。
+比較射自身・基底変更射のモノ射性、補助モデル構造は不要。
+境界も動く骨格比較、一般augmentation・評価、最終小値化・F2は未完了。
+検証：`scripts/check_kan_pushout_comparison.lean`、計画書§317。
