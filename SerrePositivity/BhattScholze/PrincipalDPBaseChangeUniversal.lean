@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.PrincipalDPBaseChange
+public import SerrePositivity.BhattScholze.PrincipalDPBaseChangeRelations
 public import SerrePositivity.BhattScholze.RankOneDPBaseChangeUniversal
 
 /-! # 一元分冪表示環の任意係数への実基底変更

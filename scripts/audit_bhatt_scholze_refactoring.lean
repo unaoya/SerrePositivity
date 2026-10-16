@@ -21,6 +21,7 @@ import SerrePositivity.BhattScholze.DeltaTransport
 import SerrePositivity.BhattScholze.DeltaRootSourceRawH0Delta
 import SerrePositivity.BhattScholze.DeltaClosureGeneration
 import SerrePositivity.BhattScholze.DeltaDivisionIteratedRelations
+import SerrePositivity.BhattScholze.PrincipalDPBaseChange
 import Mathlib.Util.AssertNoSorry
 
 /-! Focused dependency checks for the BS refactoring steps.
@@ -121,3 +122,15 @@ assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.deltaClosure_span_eq
 assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure.deltaClosure_eq_span_iterates
 #print axioms SerrePositivity.BhattScholze.DeltaStructure.deltaClosure_span_eq_span_generator_iterates
 #print axioms SerrePositivity.BhattScholze.DeltaStructure.deltaClosure_eq_span_iterates
+
+-- R3b: general relation transport and the old specialized base-change equivalence.
+assert_no_sorry SerrePositivity.BhattScholze.rankOneDPBaseChangeMap_relation
+assert_no_sorry SerrePositivity.BhattScholze.principalDPBaseChangeUniversal_relationIdeal
+assert_no_sorry SerrePositivity.BhattScholze.principalDPBaseChangeUniversalEquiv
+assert_no_sorry SerrePositivity.BhattScholze.principalDPBaseChange_relationIdeal
+assert_no_sorry SerrePositivity.BhattScholze.principalDPBaseChangeEquiv
+assert_no_sorry SerrePositivity.BhattScholze.principalDPBaseChangeEquiv_coeff
+assert_no_sorry SerrePositivity.BhattScholze.principalDPBaseChangeEquiv_tmul_generator
+#print axioms SerrePositivity.BhattScholze.rankOneDPBaseChangeMap_relation
+#print axioms SerrePositivity.BhattScholze.principalDPBaseChangeEquiv
+#print axioms SerrePositivity.BhattScholze.principalDPBaseChangeEquiv_tmul_generator
