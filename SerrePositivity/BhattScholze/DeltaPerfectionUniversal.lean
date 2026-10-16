@@ -89,4 +89,14 @@ theorem existsUnique_deltaPerfectionHom (D : DeltaStructure p A) (E : DeltaStruc
   obtain ⟨n, a, rfl⟩ := Ring.DirectLimit.exists_of x
   exact (hstage n a).trans (hg n a).symm
 
+/-- 完全δ終域へのδ射は、元の環からの第0段の射上の値で決まる。 -/
+theorem deltaPerfectionHom_ext (D : DeltaStructure p A) (E : DeltaStructure p B)
+    (hE : E.IsPerfect) (f g : DeltaPerfection D →+* B)
+    (hf : (deltaPerfectionStructure D).IsDeltaHom E f)
+    (hg : (deltaPerfectionStructure D).IsDeltaHom E g)
+    (hfg : f.comp (deltaPerfectionOf D 0) = g.comp (deltaPerfectionOf D 0)) : f = g := by
+  obtain ⟨_, _, hu⟩ := existsUnique_deltaPerfectionHom D E hE
+    (g.comp (deltaPerfectionOf D 0)) (hg.comp (deltaPerfectionOf_isDeltaHom D 0))
+  exact (hu f ⟨hf, hfg⟩).trans (hu g ⟨hg, rfl⟩).symm
+
 end SerrePositivity.BhattScholze

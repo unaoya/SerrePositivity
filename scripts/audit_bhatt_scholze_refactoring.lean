@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.DeltaPerfectionPDCompletionComparison
 import SerrePositivity.BhattScholze.DeltaRootSourceRegularGhost
 import SerrePositivity.BhattScholze.DeltaRootFamilyRegularGhost
 import SerrePositivity.BhattScholze.DeltaRootFamilySourceQuotientFlat
@@ -265,3 +266,50 @@ assert_no_sorry SerrePositivity.BhattScholze.deltaRootFamilySourceQuotientDerive
 
 assert_no_sorry SerrePositivity.BhattScholze.deltaRootBoundedSupportQuotientDerivedH0_faithfullyFlat
 #print axioms SerrePositivity.BhattScholze.deltaRootBoundedSupportQuotientDerivedH0_faithfullyFlat
+
+-- R5a: validated refactoring contracts.
+section R5AContracts
+
+/- Focused R5a audit: new extensionality APIs, existing universal/comparison consumers,
+   and definitional preservation of the two chosen comparison maps. -/
+open SerrePositivity.BhattScholze SerrePositivity.DerivedCompletion
+universe u
+section ChosenMaps
+variable {p : ℕ} [Fact p.Prime] {B : Type u} [CommRing B]
+variable (E : DeltaStructure p B) (b : B)
+example :
+    letI := pdCompletionCommRing (DeltaPerfection E) p (deltaPerfectionOf E 0 b)
+    letI := pdCompletionCommRing (PCompletedDeltaPerfection E) p (pCompletedDeltaPerfectionMap E b)
+    (deltaPerfectionPDCompletionEquiv E b).toRingHom =
+      deltaPerfectionPDCompletionComparison E b := rfl
+example :
+    letI := pdCompletionCommRing (DeltaPerfection E) p (deltaPerfectionOf E 0 b)
+    letI := pdCompletionCommRing (PCompletedDeltaPerfection E) p (pCompletedDeltaPerfectionMap E b)
+    (deltaPerfectionPDCompletionEquiv E b).symm.toRingHom =
+      deltaPerfectionPDCompletionInverse E b := rfl
+end ChosenMaps
+
+assert_no_sorry SerrePositivity.BhattScholze.deltaPerfectionHom_ext
+assert_no_sorry SerrePositivity.BhattScholze.deltaPerfectionPDCompletionHom_ext
+assert_no_sorry SerrePositivity.BhattScholze.pCompletedDeltaPerfectionPDCompletionHom_ext
+assert_no_sorry SerrePositivity.BhattScholze.existsUnique_deltaPerfectionPDCompletionHom
+assert_no_sorry SerrePositivity.BhattScholze.existsUnique_pCompletedDeltaPerfectionPDCompletionHom
+assert_no_sorry SerrePositivity.BhattScholze.deltaPerfectionPDCompletionComparison
+assert_no_sorry SerrePositivity.BhattScholze.deltaPerfectionPDCompletionComparison_spec
+assert_no_sorry SerrePositivity.BhattScholze.deltaPerfectionPDCompletionInverse
+assert_no_sorry SerrePositivity.BhattScholze.deltaPerfectionPDCompletionInverse_spec
+assert_no_sorry SerrePositivity.BhattScholze.deltaPerfectionPDCompletionEquiv
+assert_no_sorry SerrePositivity.BhattScholze.deltaPerfectionPDCompletionEquiv_spec
+
+#print axioms SerrePositivity.BhattScholze.deltaPerfectionHom_ext
+#print axioms SerrePositivity.BhattScholze.deltaPerfectionPDCompletionHom_ext
+#print axioms SerrePositivity.BhattScholze.pCompletedDeltaPerfectionPDCompletionHom_ext
+#print axioms SerrePositivity.BhattScholze.existsUnique_deltaPerfectionPDCompletionHom
+#print axioms SerrePositivity.BhattScholze.existsUnique_pCompletedDeltaPerfectionPDCompletionHom
+#print axioms SerrePositivity.BhattScholze.deltaPerfectionPDCompletionComparison
+#print axioms SerrePositivity.BhattScholze.deltaPerfectionPDCompletionComparison_spec
+#print axioms SerrePositivity.BhattScholze.deltaPerfectionPDCompletionInverse
+#print axioms SerrePositivity.BhattScholze.deltaPerfectionPDCompletionInverse_spec
+#print axioms SerrePositivity.BhattScholze.deltaPerfectionPDCompletionEquiv
+#print axioms SerrePositivity.BhattScholze.deltaPerfectionPDCompletionEquiv_spec
+end R5AContracts

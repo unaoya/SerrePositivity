@@ -30,7 +30,7 @@ theorem existsUnique_deltaPerfectionPDCompletionHom :
       g.comp ((pdCompletionUnit (DeltaPerfection E) p (deltaPerfectionOf E 0 b)).comp
         (deltaPerfectionOf E 0)) = f := by
   let := pdCompletionCommRing (DeltaPerfection E) p (deltaPerfectionOf E 0 b)
-  obtain ⟨k, hk, hku⟩ := existsUnique_deltaPerfectionHom E F hF f hf
+  obtain ⟨k, hk, _⟩ := existsUnique_deltaPerfectionHom E F hF f hf
   have hkb : k (deltaPerfectionOf E 0 b) = f b := RingHom.congr_fun hk.2 b
   have hdk : IsModuleComplete T (k (deltaPerfectionOf E 0 b)) (ModuleCat.of T T) := by
     rw [hkb]
@@ -41,9 +41,9 @@ theorem existsUnique_deltaPerfectionPDCompletionHom :
   · rw [← RingHom.comp_assoc, hg.2, hk.2]
   · intro l hl
     have hlk : l.comp (pdCompletionUnit (DeltaPerfection E) p (deltaPerfectionOf E 0 b)) = k := by
-      apply hku
-      exact ⟨hl.1.comp (pdCompletionUnit_isDeltaHom _ _),
-        by simpa only [RingHom.comp_assoc] using hl.2⟩
+      apply deltaPerfectionHom_ext E F hF _ _
+        (hl.1.comp (pdCompletionUnit_isDeltaHom _ _)) hk.1
+      simpa only [RingHom.comp_assoc, hk.2] using hl.2
     exact hgu l ⟨hl.1, hlk⟩
 
 /-- p完備化を先に施す既存候補も、同じ完全なp,f(b)完備δ試験環への普遍性を持つ。 -/
@@ -74,5 +74,39 @@ theorem existsUnique_pCompletedDeltaPerfectionPDCompletionHom :
       exact ⟨hl.1.comp (pdCompletionUnit_isDeltaHom _ _),
         by simpa only [RingHom.comp_assoc] using hl.2⟩
     exact hgu l ⟨hl.1, hlk⟩
+
+/-- 直接PD完備化からのδ射は、元の環からの合成標準単位上で決まる。 -/
+theorem deltaPerfectionPDCompletionHom_ext :
+    letI := pdCompletionCommRing (DeltaPerfection E) p (deltaPerfectionOf E 0 b)
+    ∀ g k : PDCompletionH0 (DeltaPerfection E) p (deltaPerfectionOf E 0 b) →+* T,
+      (deltaPDCompletionStructure (deltaPerfectionStructure E) (deltaPerfectionOf E 0 b)).IsDeltaHom
+        F g →
+      (deltaPDCompletionStructure (deltaPerfectionStructure E) (deltaPerfectionOf E 0 b)).IsDeltaHom
+        F k →
+      g.comp ((pdCompletionUnit (DeltaPerfection E) p (deltaPerfectionOf E 0 b)).comp
+        (deltaPerfectionOf E 0)) = f →
+      k.comp ((pdCompletionUnit (DeltaPerfection E) p (deltaPerfectionOf E 0 b)).comp
+        (deltaPerfectionOf E 0)) = f → g = k := by
+  let := pdCompletionCommRing (DeltaPerfection E) p (deltaPerfectionOf E 0 b)
+  obtain ⟨_, _, hu⟩ := existsUnique_deltaPerfectionPDCompletionHom E b F hF f hf hp hd
+  intro g k hg hk hgf hkf
+  exact (hu g ⟨hg, hgf⟩).trans (hu k ⟨hk, hkf⟩).symm
+
+/-- p先行PD完備化からのδ射も、元の環からの合成標準単位上で決まる。 -/
+theorem pCompletedDeltaPerfectionPDCompletionHom_ext :
+    letI := pdCompletionCommRing (PCompletedDeltaPerfection E) p (pCompletedDeltaPerfectionMap E b)
+    ∀ g k : PDCompletionH0 (PCompletedDeltaPerfection E) p (pCompletedDeltaPerfectionMap E b) →+* T,
+      (deltaPDCompletionStructure (pCompletedDeltaPerfectionStructure E)
+        (pCompletedDeltaPerfectionMap E b)).IsDeltaHom F g →
+      (deltaPDCompletionStructure (pCompletedDeltaPerfectionStructure E)
+        (pCompletedDeltaPerfectionMap E b)).IsDeltaHom F k →
+      g.comp ((pdCompletionUnit (PCompletedDeltaPerfection E) p
+        (pCompletedDeltaPerfectionMap E b)).comp (pCompletedDeltaPerfectionMap E)) = f →
+      k.comp ((pdCompletionUnit (PCompletedDeltaPerfection E) p
+        (pCompletedDeltaPerfectionMap E b)).comp (pCompletedDeltaPerfectionMap E)) = f → g = k := by
+  let := pdCompletionCommRing (PCompletedDeltaPerfection E) p (pCompletedDeltaPerfectionMap E b)
+  obtain ⟨_, _, hu⟩ := existsUnique_pCompletedDeltaPerfectionPDCompletionHom E b F hF f hf hp hd
+  intro g k hg hk hgf hkf
+  exact (hu g ⟨hg, hgf⟩).trans (hu k ⟨hk, hkf⟩).symm
 
 end SerrePositivity.BhattScholze

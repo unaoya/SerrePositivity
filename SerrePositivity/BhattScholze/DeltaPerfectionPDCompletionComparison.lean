@@ -86,20 +86,18 @@ def deltaPerfectionPDCompletionEquiv :
   have hf := deltaPerfectionPDCompletionComparison_spec E b
   have hg := deltaPerfectionPDCompletionInverse_spec E b
   have hgf : g.comp f = RingHom.id H₀ := by
-    obtain ⟨_, _, hu₀⟩ := existsUnique_deltaPerfectionPDCompletionHom E b D₀
+    apply deltaPerfectionPDCompletionHom_ext E b D₀
       (deltaPDCompletionStructure_isPerfect _ (deltaPerfection_isPerfect E) x)
       r₀ ((pdCompletionUnit_isDeltaHom _ _).comp (deltaPerfectionOf_isDeltaHom E 0))
       (pdCompletionH0_self_complete_p C p x) (pdCompletionH0_self_complete_d C p x)
-    apply (hu₀ (g.comp f) ⟨hg.1.comp hf.1, ?_⟩).trans
-      (hu₀ (RingHom.id H₀) ⟨(D₀).isDeltaHom_id, RingHom.id_comp r₀⟩).symm
+      (g.comp f) (RingHom.id H₀) (hg.1.comp hf.1) (D₀).isDeltaHom_id ?_ (RingHom.id_comp r₀)
     rw [RingHom.comp_assoc, hf.2, hg.2]
   have hfg : f.comp g = RingHom.id H₁ := by
-    obtain ⟨_, _, hu₁⟩ := existsUnique_pCompletedDeltaPerfectionPDCompletionHom E b D₁
+    apply pCompletedDeltaPerfectionPDCompletionHom_ext E b D₁
       (deltaPDCompletionStructure_isPerfect _ (pCompletedDeltaPerfection_isPerfect E) y)
       r₁ ((pdCompletionUnit_isDeltaHom _ _).comp (pCompletedDeltaPerfectionMap_isDeltaHom E))
       (pdCompletionH0_self_complete_p P p y) (pdCompletionH0_self_complete_d P p y)
-    apply (hu₁ (f.comp g) ⟨hf.1.comp hg.1, ?_⟩).trans
-      (hu₁ (RingHom.id H₁) ⟨(D₁).isDeltaHom_id, RingHom.id_comp r₁⟩).symm
+      (f.comp g) (RingHom.id H₁) (hf.1.comp hg.1) (D₁).isDeltaHom_id ?_ (RingHom.id_comp r₁)
     rw [RingHom.comp_assoc, hg.2, hf.2]
   exact RingEquiv.ofRingHom f g hfg hgf
 
