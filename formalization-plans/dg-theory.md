@@ -7647,3 +7647,54 @@ BhattScholze互換宣言の未解決参照1件で失敗した。共有ルート�
 右K-flat置換による両変数導来合成・その計算同型とcoherenceまでU12eの残課題に保持する。
 U12f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完で、U17までの目標を保持する。
 共有系列への新しいAPI要求はない。
+
+### 17.168 U12e9：制限関手による分裂・余極限保存と右相対K-flat性の生成cellへの帰着（2026-10-17）
+
+`Module/Restriction.lean`はF:Dᵒᵖ→Eᵒᵖというdg関手に沿った**restrictModule/moduleRestriction**を
+構成する。対象は元の豊穣関手への前合成、射は元の全Hom自然性をFのHom射で前合成して作る。
+**moduleRestrictionEvaluationIso**、零射保存と指定moduleQuasiIsoの保存を公開した。
+閉零射だけの通常自然性へ弱めず、任意可換環・非有界・独立D/E対象宇宙を維持する。
+`RestrictionGradedSplit.lean`の**ModuleGradedSplit.restrict**は、元のsection/retractionを
+Fの対象で評価し、全斉次作用との自然性をFの斉次Hom射に沿って制限する。
+分裂写像のchain map条件を新たに要求せず、inclusion/projectionと分解恒等式を保持する。
+
+`RestrictionColimits.lean`は評価との関手等式と、評価の余極限保存・反映を使い、
+**moduleRestrictionIsColimit**とu-smallな対象添字の**PreservesColimitsOfShape**を与える。
+図式の射宇宙は独立で、任意の大きい対象添字の余極限を無条件に主張していない。
+**moduleRestrictionColimitIso**は選ばれた余極限との標準比較。
+`Tensor/RestrictionSemifree.lean`は、すべての自由sphereの制限が相対K-flatという明示的な
+仮定hfreeの下で、sphere-free余積・graded-split拡張・網羅的な逐次余極限を順に扱い、
+**moduleSemifree_restriction_relativeKFlat**を証明する。
+余積の添字は実際のModuleSphereFreePresentation.smallIndexを使って縮小し、
+逐次余極限ではModuleCatのAB5を適用する。
+
+`Bimodule/RightRestriction.lean`は第一因子の包含とdgDoubleOppositeから
+**tensorRightRestrictionInclusion/tensorRightRestriction**を構成し、右B制限の向きを固定する。
+評価は元の積対象op(op b,c)での評価に一致する。
+**rightModuleBimoduleRightRestrictionIso**は、選択された左右同値の逆を使う主bimoduleの
+右制限とこの直接の制限との、全Hom自然な右B加群同型。
+左右同値のcounitの評価成分を使い、二つの恒等Hom射の挿入を除いて自然性を証明した。
+`Tensor/BimoduleRestrictionKFlat.lean`は、この同型と上記filtrationの定理を合わせ、
+**rightModuleBimodule_semifree_rightRelativeKFlat**と解像度に対する
+**BimoduleSemifreeResolution.rightRelativeKFlat_of_cells**を与える。
+これらには各生成cellの右制限の相対K-flat性という仮定hcellが明示的に残っている。
+localHomKFlatからhcellを証明済みとは扱わず、無条件のbimodule K-flat解像度の存在も主張しない。
+
+Checks.ModuleRestriction・Checks.BimoduleSemifreeResolution・Checks.DerivedBimodulePentagon・
+Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功
+（3032 jobs、終了コード0、警告なし）。独立対象宇宙・任意の制限dg関手、逐次余極限保存、
+graded-split制限、準同型保存、生成cell条件からのsemifree制限、主bimoduleの右制限同型、
+ZMod 2での右制限同型を検査した。主要24宣言の直接公理監査は標準公理のみ。
+監査累計3200宣言。今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は13 Markdown・320 exposition参照を検査し、従前と同じ担当外の
+BhattScholze互換宣言の未解決参照1件で失敗した。共有ルート・共有一般論・該当系列は編集していない。
+
+次の具体的な証明対象は、c,c₀:C、b₀:B、n:ℤについての右B加群同型
+`tensorRightRestriction c (freeSphere (op(op b₀,c₀)) n) ≅
+ freeAt b₀ (complexSphere n ⊗ Hom_C(c₀,c))`である（表示ではAと圏引数を省略）。
+値のtensor因子を並べ替えるchain同型だけでなく、全Hom作用とのKoszul符号を照合する。
+この同型からcomplexSphereとlocalHomKFlat A CによるK-flat生成複体を使い、hcellを証明する。
+Hom_BのA上K-flat性をこの片側の主張に追加しない。
+dg圏自体を解像度で置き換える経路、両変数の導来合成・計算同型・coherenceはなお残る。
+U12e全受入、U12f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完で、U17までの目標を保持する。
+共有系列への新しいAPI要求はない。
