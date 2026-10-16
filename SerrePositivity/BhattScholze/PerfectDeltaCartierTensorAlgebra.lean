@@ -9,6 +9,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze
 open CategoryTheory SerrePositivity.DerivedCompletion
+open scoped TensorProduct
 attribute [local instance] HasDerivedCategory.standard adicQuotientAlgebra
   principalAdicQuotientAlgebra
 variable (p : ℕ) [Fact p.Prime] (R S T : Type u)
@@ -87,5 +88,72 @@ def perfectDelta_completedResidueTensorCartierAlgHom :
     subst c
     exact k
   exact aux (p : Q) (map_natCast (q) p)
+
+local notation "RX" => boundedAboveDerivedTensorAlgebra (R := Q) SQ TQ
+
+/-- Scalar normalization preserves the original completed residue-tensor unit diagram. -/
+lemma perfectDelta_completedResidueTensorCartierAlgHom_unit
+    (x : (DerivedCategory.homologyFunctor (ModuleCat Q) 0).obj (RX).X.obj) :
+    let := derivedH0CommRing AD
+    let := derivedH0Algebra AD
+    let := derivedH0CommRing RX
+    let := derivedH0Algebra RX
+    let := derivedH0CommRing RES
+    let := derivedH0Algebra RES
+    perfectDelta_completedResidueTensorCartierAlgHom p R S T
+        DR DS DT hR hS hT hRS hRT d hd
+        (derivedH0AlgMap (boundedAboveCompletionAlgebraUnit Q (p : Q) RX) x) =
+      iteratedTensorCartierTensorAlgHom R (p : R) d S T
+        (derivedTensorH0AlgEquiv (R := Q) SQ TQ x) := by
+  let := derivedH0CommRing AD
+  let := derivedH0Algebra AD
+  let := derivedH0CommRing RX
+  let := derivedH0Algebra RX
+  let hp := perfectDelta_iteratedTensorCartier_isModuleComplete p R S T
+    DR DS DT hR hS hT hRS hRT d hd
+  let k := iteratedTensorCartierCompletedAlgHom R (p : R) d S T hp
+  let lift (c : Q) (hc : (q) (p : R) = c) :
+      let := derivedH0CommRing (boundedAboveCompletedTensorAlgebra Q c SQ TQ)
+      let := derivedH0Algebra (boundedAboveCompletedTensorAlgebra Q c SQ TQ)
+      (DerivedCategory.homologyFunctor (ModuleCat Q) 0).obj
+        (boundedAboveCompletedTensorAlgebra Q c SQ TQ).X.obj →ₐ[Q] CQ := by
+    subst c
+    exact k
+  have aux (c : Q) (hc : (q) (p : R) = c) :
+      let := derivedH0CommRing (boundedAboveCompletedTensorAlgebra Q c SQ TQ)
+      let := derivedH0Algebra (boundedAboveCompletedTensorAlgebra Q c SQ TQ)
+      lift c hc (derivedH0AlgMap (boundedAboveCompletionAlgebraUnit Q c RX) x) =
+        iteratedTensorCartierTensorAlgHom R (p : R) d S T
+          (derivedTensorH0AlgEquiv (R := Q) SQ TQ x) := by
+    subst c
+    exact iteratedTensorCartierCompletedAlgHom_unit R (p : R) d S T hp x
+  exact aux (p : Q) (map_natCast (q) p)
+
+/-- Completed pure tensors of the original residue representatives keep their factor images. -/
+lemma perfectDelta_completedResidueTensorCartierAlgHom_unit_tmul (s : S) (t : T) :
+    letI := derivedH0CommRing AD
+    letI := derivedH0Algebra AD
+    letI := derivedH0CommRing RX
+    letI := derivedH0Algebra RX
+    letI := derivedH0CommRing RES
+    letI := derivedH0Algebra RES
+    perfectDelta_completedResidueTensorCartierAlgHom p R S T
+        DR DS DT hR hS hT hRS hRT d hd
+        (derivedH0AlgMap (boundedAboveCompletionAlgebraUnit Q (p : Q) RX)
+          ((derivedTensorH0AlgEquiv (R := Q) SQ TQ).symm
+            (Ideal.Quotient.mk (Ideal.map (algebraMap R S) (Ideal.span {d})) s ⊗ₜ[Q]
+              Ideal.Quotient.mk (Ideal.map (algebraMap R T) (Ideal.span {d})) t))) =
+      Ideal.Quotient.mk (Ideal.span {algebraMap R C d})
+          (iteratedTensorH0LeftAlgHom R (p : R) d S T s) *
+        Ideal.Quotient.mk (Ideal.span {algebraMap R C d})
+          (iteratedTensorH0RightAlgHom R (p : R) d S T t) := by
+  let := derivedH0CommRing AD
+  let := derivedH0Algebra AD
+  let := derivedH0CommRing RX
+  let := derivedH0Algebra RX
+  let := derivedH0CommRing RES
+  let := derivedH0Algebra RES
+  rw [perfectDelta_completedResidueTensorCartierAlgHom_unit,
+    AlgEquiv.apply_symm_apply, iteratedTensorCartierTensorAlgHom_tmul]
 
 end SerrePositivity.BhattScholze
