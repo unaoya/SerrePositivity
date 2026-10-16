@@ -7443,6 +7443,27 @@ Witt標準δ構造の完全性・p完備性・Witt写像のδ両立を供給し�
 このFontaine実入力の供給とC3の元の標準乗法・イデアル三主張は、まだ完成とはしない。
 KL-T・KL-Q、Dの実入力と引用置換、RPerfd存在のB-Iは引き続き残る。
 
+KL-E2e・任意perfectoid図式の元の完備導来tensorの離散性（2026-10-17）：
+`BhattScholze/FontaineCompletedTensorDiscrete.lean`で、元のFontaine写像の核生成元dを固定し、
+基底の核商同型と因子の`fontaineBaseWittQuotientEquiv`を実際に供給した。
+基底イデアルの像による商との比較を合成し、商の代表元上で元のFontaine自然性を確認した。
+標準Witt δ構造の完全性・p完備性・係数写像のδ両立も供給し、余分なTor条件を追加せず
+元の係数環における実p完備導来tensorの次数0集中を得た。
+
+`DerivedCompletion/CompletedTensorZero.lean`では、零加群の元のsingle対象・零係数の実tensor・
+実完備化が零になることを証明した。
+`BhattScholze/PerfectoidCompletedTensorDiscrete.lean`はこの零環の枝とFontaine比較を合流し、
+任意のintegral perfectoid図式S←R→Tの元の完備導来tensorの離散性を証明した。
+非零性・p正則性・有限性・平坦性を追加せず、元の環と係数作用を維持する。
+対象2525・3624・3626ジョブ、全体5850ジョブ、KL980件、専用公開6宣言と名前付き型検査2宣言が成功した。
+全新宣言と型検査はsorry非依存・標準3公理のみ。型検査は元の対角図式と零因子の実対象を含む。
+
+次はこの離散性を元の完備導来乗法に適用する。
+全射perfectoid代数、特にperfectoid商R/Iについて、元の乗法のH⁰同型をG11で完備化後へ移し、
+両対象の離散性から対象全体の同型を得る。これはKL-Eが必要とする実乗法の入口を直接供給する。
+任意の二因子に対するH⁰環のperfectoid性の一般化、C3の残りのイデアル比較、実B/Iの入力供給、
+Prop 2.4.9(a)、KL-Q、Dの実入力と引用置換、RPerfd存在のB-Iは引き続き残る。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。

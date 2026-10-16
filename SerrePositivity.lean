@@ -828,6 +828,10 @@ public import SerrePositivity.BhattScholze.PerfectPrismResidueTensorTransport
 
 public import SerrePositivity.BhattScholze.PerfectDeltaResidueTensorTransport
 
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorZero
+public import SerrePositivity.BhattScholze.FontaineCompletedTensorDiscrete
+public import SerrePositivity.BhattScholze.PerfectoidCompletedTensorDiscrete
+
 /-!
 # Serre の交点重複度の正値性の形式化
 
