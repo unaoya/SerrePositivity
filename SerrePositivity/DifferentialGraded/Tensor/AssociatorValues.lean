@@ -27,6 +27,8 @@ lemma compose_leftAt_eq (P : Bimodule A B C) (Q : Bimodule A C E) (b : B) :
 variable (F : Type t) [DGCategory A F] [Small.{u} E]
 
 /-- 右端Fのsmallnessを要求しない、三つのbimoduleの結合比較の値。 -/
+-- Keep the equality transport behind the generator computation API.
+@[irreducible]
 def associatorValueIso (P : Bimodule A B C) (Q : Bimodule A C E) (R : Bimodule A E F)
     (b : B) (f : F) :
     (compose A B E F (compose A B C E P Q) R).value b f ≅

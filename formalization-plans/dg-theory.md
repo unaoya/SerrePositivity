@@ -3968,3 +3968,22 @@ U11e全受入は未完。次は今回の生成元の式を全cochain外延性で
 その草稿AssociatorLeftNaturality/Checks.AssociatorLeftActionはまだ未受入・未コミットである。
 右Bの主Hom自然性、bimodule同型、三角/五角、U12〜U17・D4mも継続対象。
 共有系列への新しい不足要求はなく、担当外ファイル・共有ルートを編集していない。
+
+### 17.51 U11e20：両括弧付けの右作用のKoszul符号（2026-10-16）
+
+`Tensor/AssociatorRightAction.lean`は実際の三重合成の右B作用を両括弧で計算する。
+左括弧では二回の作用による符号を合成し、右括弧ではR/Q因子の総次数を用いる。
+両者は同じ符号 `(-1)^(p*(k+r))` を持ち、P因子だけに右作用が入る。
+結合比較の等式輸送を定義境界に保つためassociatorValueIsoをirreducibleとし、
+その三重包含公式では定義を明示的にunfoldする。対象や同型の定義内容は保持した。
+
+Checks.AssociatorRightActionを含む関連入口・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2704 jobs、終了コード0、警告なし）。任意A・独立対象宇宙・Small Fなし、
+負次数の右作用とZMod 2の例を検査した。新規2宣言と変更した既存2宣言の直接公理監査は
+標準公理のみ。監査累計1665宣言（既存2宣言の再監査は加算しない）。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査も成功。
+今回の2ファイルにsorry/admit/新規axiomはない。
+
+全Hom自然性の草稿は検証中であり、今回の受入には含めない。次は左右の全Hom自然性を
+確定し、結合比較を実際のbimodule同型へ束ね、三角・五角と全変数自然性を証明する。
+U11全受入・U12〜U17・D4mは未完。共有系列への追加要求はない。

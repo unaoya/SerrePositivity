@@ -64,7 +64,8 @@ lemma associatorLeftι_hom (P : Bimodule A B C) (Q : Bimodule A C E) (R : Bimodu
     (BalancedTensor.Fubini.iso A C E Q (R.rightAt f) (P.leftAt b)).hom)
     (associatorLeftι_transport A B C E F P Q R b c e f)
   rw [BalancedTensor.Fubini.leftι_iso_hom] at h
-  dsimp only [associatorValueIso, Iso.trans_hom, eqToIso.hom]
+  unfold associatorValueIso
+  simp only [Iso.trans_hom, eqToIso.hom]
   rw [← Category.assoc]
   exact h
 
