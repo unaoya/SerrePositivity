@@ -8113,3 +8113,31 @@ DeltaRootFamilyRegularGhost.leanに3公開定理を実装した。
 標準3公理のみ、新sorry・公理・引用なし。共通・CLMST・利用先は編集せず追加送信も行っていない。
 共通G9は最新記録G9-4まで進行したが、最終離散性と実H0への有界ねじれ評価は未完成。
 今回の任意根族の入力解消は、それを待たず独立に完了した。環候補のCFF・一般B4は未完成。
+
+## 任意根族raw包のG3適用計画（2026-10-16）
+
+BS担当でDeltaRootFamilyRawCompletelyFlat.leanを新設する。
+既存deltaRootRawCoefficientAlgebraの実A作用を用い、標準剰余テンソル
+(A/p)⊗_A Bを既存の通常係数拡大と同型で結び、既証raw実p商との標準線形比較に接続する。
+G4接続からghost単射を供給し、通常剰余テンソルの忠実平坦性を証明する。
+Aのp正則性と任意根族raw包のp正則性を正確なAスカラー作用に直して共通G3へ渡し、
+元のA→Bがp完全忠実平坦であることを証明する。
+Aのp正則性と指定単元δpは明示し、任意perfectoid環上の最終B4への仮定追加はしない。
+既存の商・テンソル・完全平坦性定義を再利用し、新sorry・引用なしでビルド・監査・個別コミットする。
+
+## 任意根族raw p除算包のp完全忠実平坦性（2026-10-16）
+
+DeltaRootFamilyRawCompletelyFlat.leanに3公開定理を実装した。
+元のA作用は既存deltaRootRawCoefficientAlgebraを使用し、その実係数射の一致は
+既存deltaRootRawCoefficientAlgebra_algebraMapで保証される。
+通常の剰余テンソル(A/p)⊗_A Bは、既存deltaRootRawBaseChangeModPAlgEquivで
+標準A/p作用を持つ実raw p商へ直接比較できたため、同等の比較同型を新設しなかった。
+G4でghost入力を供給した既存raw p商の忠実平坦性をこの比較で移し、
+任意根族raw包のp正則性を正確なAのpスカラーについて示した。
+共通G3へ両環のp正則性と通常剰余テンソル忠実平坦性を渡し、
+deltaRootFamilyRaw_isCompletelyFaithfullyFlatを証明した。
+任意σを許し、p正則性と指定単元δpを明示する。Noether性・有限生成性・完備性は追加しない。
+対象3859ジョブ成功（共有既存警告のみ、自分のコード警告なし）、pure B4監査2069報告成功。
+標準3公理のみ、新sorry・公理・引用なし。共有・CLMST・利用先は編集していない。
+これは実Frobenius根関係のraw p除算包のCFFであり、完備化・完全化後のperfectoid候補のCFFや
+任意perfectoid環に関する一般B4全射性まで完成したとはしない。G9最終APIは現在も未完成。
