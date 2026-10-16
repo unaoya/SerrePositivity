@@ -14037,3 +14037,74 @@ Fの成分ごとの境界充填から、[K(start), UniverseLift(F(end))]の全�
 旧固定中心への制限が指定済み比較写像全体と一致すること、相対延長の低次数適合性を証明する。
 その後に基底Cへの小さいSSet値降下と最終比較を構成する。
 これらの接続と最終の厳密RMapは引き続き未完了であり、F1と全体目標F→L→E→Sを維持する。
+
+
+## 271. F1進捗：旧tuple interpolation全体とstrict vertex境界の全中心接続（2026-10-16）
+
+§270の一般入口に、実際の旧strict lift tuple図式とvertex境界を接続した。
+全中心で独立に選んだ旧interpolationを全写像として保持し、strict vertex境界を全外部次数で固定する。
+既選択pre/post比較辺・混合三角形の保持は、この新しい全中心系への次の接続として残す。
+
+### 271.1 旧strict lift・tuple・vertexの実際の全中心図式
+
+`Simplicial/VertexTuplesFunctor`は旧ordered tuple空間と定数vertex空間を実際の関手にし、
+旧vertex包含を自然変換にする。
+`ResolutionArrowTuples.strictLifts`は§269の全中心索引上で、旧strict liftを実際の前後合成で移送する。
+単位・合成を証明し、旧tuple図式・vertex図式・その包含を構成した。
+
+`point_naturality`は、strict liftのこの移送が、小さい実lift図式の射による旧点の移送と等しいことを示す。
+rawなHomへの包含と実際のFrameMapのaugmentation式から証明しており、strict liftを選び直さない。
+これによって全旧strict vertexの点族が一つの自然変換`vertexData`になる。
+この層にSSet側のモデル構造は不要である。
+
+### 271.2 自然な固定境界から全境界系と低次数適合性を導く一般論
+
+`NerveNaturalBoundary`は、鎖のprefix・全体の射・tailの実際の合成式を証明する。
+自然変換b:L→Fから、各鎖で始点のbに終点までのF移送を施したパラメータ写像を使い、
+選択を追加せずに一つの全整合境界系`ofNatTrans`を構成する。
+全単体作用素での自然性はbの自然性と鎖の合成式から導く。
+
+`NerveRelativeNaturalBoundary`は小さい値図式F、動くmono i:L→K、
+実際の自然な境界b:L→UniverseLift(F)、各対象で指定した全写像e(d):K(d)→UniverseLift(F(d))を扱う。
+元の境界式i(d)≫e(d)=b(d)のみから、§270の低次数適合性を導く。
+整合した境界系やその低次数適合性を別途入力する必要はない。
+`extend_evaluate`は全e(d)を厳密に回収し、`extend_boundary`は全境界系を全外部次数で固定する。
+大きい補助写像空間にモデル構造を仮定しない。
+
+### 271.3 旧interpolationと全strict vertex境界の同時保持
+
+`ResolutionArrowTupleCoherence`は、旧tuple・vertex図式をUniverseLiftしたものに271.2を適用する。
+境界は実際の`vertexData`のlift、指定全写像は元の`CoherentLiftTuples.interpolation`のliftである。
+低次数適合性は旧`interpolation_vertices`から証明し、mono性も既存の包含から導く。
+
+`system_evaluate`は各中心で旧interpolation全体のliftを回収する。
+`interpolation_recover`はその評価を元のHom宇宙へ戻した小さい写像が、旧interpolationそのものと等しいことを示す。
+`simplex_recover`は全ordered tuple単体の回収であり、頂点だけの一致に限定しない。
+旧定数tupleの実際の退化とstrict lift点も同じ写像の保持から回収する。
+
+`vertices_fixed`は全strict vertex境界系が自然変換として固定されることを示し、
+`vertex_component`は任意の外部鎖での固定式を実際の全鎖移送まで明示する。
+始点tupleの実際の前合成と終点lift値の実際の後合成を含む全外部面・退化も同じ系で成立する。
+源は一般のモデル圏、元のlift値とtuple値はHom宇宙vのままである。
+
+### 271.4 受入検証と残項目
+
+実装コミット`fb287c15`。全て成功した。
+
+- 共有入口の合同build：2726 jobs、追加警告なし。
+- `check_resolution_arrow_tuple_coherence`：自然な境界の式からの一般相対延長と全写像・全境界保持、
+  実際のstrict点移送・vertexData自然性、旧interpolation全体の小さい写像としての回収、
+  旧固定中心での回収、全tuple単体・定数tuple退化の保持、全次数のstrict vertex固定、全外部面・退化。
+  53宣言・5モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：7383宣言・531モジュール、標準公理のみ。
+- `check_nerve_moving_parameter`：91宣言・6モジュールの回帰確認。
+- `check_resolution_arrow_diagram`：73宣言・4モジュールの回帰確認。
+- 新規ソースの行長・空白・証明用マーカー確認、stageした差分の空白検査。
+
+次は既選択のpre/post比較区間を補助パラメータとして、この全中心tuple系へ接続する。
+区間の両端における旧interpolationと、区間全体のstrict vertex境界を同時に固定するため、
+tuple×∂Δ1とvertex×Δ1を合わせた境界系を先に構成し、旧区間写像の全体を保持する。
+その後、既存の混合三角形・全因子分解比較の全境界保持へ進む。
+今回の旧interpolation保持を、既選択の全比較辺・三角形の接続完了とは同一視しない。
+これらの接続、基底Cへの小さいSSet値降下、最終の厳密RMapと最終比較は引き続き未完了であり、
+F1と全体目標F→L→E→Sを維持する。

@@ -1917,3 +1917,16 @@ cotensorへの全facet写像を貼り合わせ、制限式と一意性を示す�
 旧比較の具体的な動くtuple/vertex境界との接続、基底Cへの降下、最終RMapと最終比較は残る。
 実装`ff1ca062`、詳細は計画§270。新規91宣言・6モジュール、共有7330宣言・526モジュールの
 標準公理監査と全中心lift図式・大きいパラメータの回帰確認が成功。
+
+
+## 旧tuple interpolationとstrict vertex境界の全中心接続（2026-10-16）
+
+`VertexTuplesFunctor`・`ResolutionArrowTuples`は実際のstrict liftの前後合成から旧tuple・vertex図式を作り、
+旧点の移送式によりvertexDataを自然変換にする。
+`NerveNaturalBoundary`・`NerveRelativeNaturalBoundary`は自然な境界から全境界系を作り、
+元の各対象での境界式から低次数適合性を導く。全境界・元の全写像を同時に保持する。
+`ResolutionArrowTupleCoherence`は全中心の旧interpolationを全写像として保持し、
+旧tuple単体・定数tuple退化も回収する。全strict vertex境界を全外部次数で固定する。
+既選択pre/post区間と混合三角形の全境界接続、基底Cへの降下、最終RMapと最終比較は残る。
+実装`fb287c15`、詳細は計画§271。新規53宣言・5モジュール、共有7383宣言・531モジュールの
+標準公理監査と動くパラメータ・全中心図式の回帰確認が成功。
