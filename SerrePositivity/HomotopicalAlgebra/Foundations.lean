@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanPushoutCube
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedCoproducts
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedLeftProper
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanPullbackDeformation
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanPushoutComparison
