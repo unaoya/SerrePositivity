@@ -7199,3 +7199,42 @@ associatorの可換式を生成元で証明して全chain mapへ上げる。
 評価APIや生成元公式だけで任意パラメータに関する結合自然性の完成とはしない。
 U11e全受入、U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mは引き続き未完。
 U17までの目標を保持する。共有系列への新しいAPI要求はない。
+
+
+### 17.157 U11e34：任意パラメータの相対tensor作用の全Hom自然性と実際のbimodule変換（2026-10-17）
+
+`Tensor/BimoduleParameterElements.lean`はfirstParamHom/secondParamHomのcochain評価を
+任意の入出力次数で与える。作用と整数単位のスカラー倍、tensorの前方因子のスカラー倍の
+補助式も証明した。`BimoduleParameterRight.lean`は外側の右B作用と各パラメータ作用の
+符号付きcochain可換式を生成元の外延性から証明する。前の因子では元の変換の全Hom自然性、
+後の因子ではk*p+p*(k+r)=p*r+2*(k*p)による符号の一致を使う。
+**firstParamRightAt/secondParamRightAt**はこれを任意Kパラメータの全次数自然な右B加群変換へまとめる。
+`BimoduleParameterLeft.lean`は外側の左E作用との対応する二つのcochain可換式を証明した。
+前の因子ではk*(r+p)=k*r+k*p、後の因子では元の変換の左E作用に関する自然性を使う。
+
+`Bimodule/ParameterFamily.lean`は左加群の符号付きcochain式から全Hom自然性を復元する
+leftParamNaturality_of_cochainと、両作用の自然性を持つ右加群変換族から
+BimoduleParamTransを構成する**paramFamilyTrans**を公開する。
+後者の自然性は主Hom endを評価し、moduleComposition_πで合成を計算して証明する。
+`Tensor/BimoduleParameters.lean`の**firstParam/secondParam**はこれを使う実際の
+合成bimodule間の任意Kパラメータ変換であり、値への評価は既存firstParamHom/secondParamHomに戻る。
+両外側作用の自然性を仮定として呼出し側へ残していない。
+任意CommRing A・非有界・独立B/C/E宇宙・Small.{u} B/Cを維持し、Eのsmall性は不要。
+Kの閉性・有界性を要求しない。Mathlibの閉零EnrichedNatTransによる代用も行っていない。
+
+Checks.BimoduleParameterNaturality・Checks.BimoduleParameters・Checks.UnitNaturality・
+Checks.Pentagon・Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功
+（2788 jobs、終了コード0、警告なし）。独立宇宙での各変数の実際の変換、
+元の値の作用との一致、三変数の左右括弧付けそれぞれへの六通りの反復適用、
+ZMod 2での任意K変換を検査した。六通りの型の検査は結合自然性の等式の証明とは区別する。
+主要18宣言の直接公理監査は標準公理のみ。監査累計3040宣言。
+今回の実装にsorry/admit/新規axiomはない。計算上限の追加もなく、採用済み引用は0件。
+全体文書検査は13 Markdown・320 exposition参照を検査し、§17.151〜156と同じ担当外の
+BhattScholze互換宣言の未解決参照1件で失敗した。共有ルートや該当系列は編集していない。
+
+次はfirstParam/secondParamの値の評価式を反復し、P/Q/R各変数のパラメータ作用と
+associatorValueHomの前後合成の等式を三重生成元で証明する。
+その等式を全chain map、主Hom end、実際のbimodule変換の比較へ上げる。
+今回の変換の構成だけでassociatorの任意パラメータ自然性を受入済みとはしない。
+U11e全受入、U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mは引き続き未完。
+U17までの目標を保持する。共有系列への新しいAPI要求はない。
