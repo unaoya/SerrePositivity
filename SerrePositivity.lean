@@ -837,6 +837,10 @@ public import SerrePositivity.BhattScholze.PerfectoidCompletedQuotientMul
 
 public import SerrePositivity.CLMST.PerfectoidIdealCompletedMul
 
+public import SerrePositivity.CommutativeAlgebra.FiniteFreeScalarFactorization
+public import SerrePositivity.HomologicalAlgebra.TorFiniteFreeComparisonAnnihilator
+public import SerrePositivity.CLMST.PerfectoidIdealTorComparison
+
 /-!
 # Serre の交点重複度の正値性の形式化
 
