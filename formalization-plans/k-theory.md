@@ -20488,3 +20488,75 @@ sourceの面・退化でfを移すことと、対応するパラメータ代入�
 元の圏へのaugmentationが比較として必要な弱同値を持つことは、今回まだ証明していない。
 その比較、小ささを保つstrictification、元のCᵒᵖ×Cへの降下、小さい厳密なRMap、
 F2の不変性・Kan・π₀とHo(C)の同定などは残り、全体目標は継続する。
+
+
+## 368. Cat関手による両単体図式・対角化・実augmentation（2026-10-17）
+
+実装コミット`242f0f56`。§367で個別に接続した二方向を、通常のΔᵒᵖ上の実図式として組み立てた。
+今回の全構成はモデル構造を要求しない。
+
+### 368.1 語圏の関手と自然なaugmentation
+
+`Simplicial/WordPresentationCat`は、任意の零付きモノイドMから、
+Cat.{v,u}→Cat.{max u v w,u}の実関手を構成する。
+任意のsource functorに対する既存の商関手を使い、恒等と合成の保持を証明した。
+零付きモノイド準同型による変更はこのCat関手の間の実自然変換となる。
+パラメータ変更の恒等・合成則を証明し、WordSegmentの各次数を代入することで、
+Cat関手値の実simplicial objectと、そのflipであるCat→SimplicialObject Catを構成した。
+任意の実simplicialな圏Aへ合成すれば、両単体方向を持つ実図式を得る。
+
+`CategoryTheory/Presentation/RetractWordAugmentation`は、実augmentationの
+source・語パラメータ両方についての自然性を、全商射の関手等式として証明する。
+生成source辺・語・切断・射影での計算と、ambient source functorの変更則も与える。
+
+`Simplicial/WordPresentationAugmentation`は、対象・Hom・語の宇宙を含む共通Cat上で、
+語圏から元の圏へのaugmentationをCat関手の実自然変換として構成する。
+さらに、語方向の実simplicial augmentation、source圏に自然な変換、
+両単体方向を持つ図式からsource図式へのaugmentationを与える。
+Mathlibのuncurryと対角関手から実対角図式を作り、内側が定数の図式の対角との
+明示的な自然同型を介して、対角図式からAへの実augmentationを構成した。
+
+`WordPresentationSection`は、ambient source functorから語方向と対角方向の実切断を構成し、
+対角切断の後のaugmentationがAの恒等自然変換に等しいことを証明する。
+これは表示に実在するambient埋め込みの分裂であり、small頂点のaugmentationの切断や
+比較の弱同値を仮定・導出したものではない。
+
+### 368.2 元のbar基底への実適用
+
+`HomotopyFunctionComplex/OrdinaryBarWordResolution`は、既存の通常のΔᵒᵖ上の
+反転した実自由道分解へ368.1を適用する。
+
+- 両単体方向とも通常のΔᵒᵖであるCat値の実二重図式と、その実対角図式。
+- 任意の二方向の単体写像の混合自然性と、対角写像の計算式。
+- 対角語図式から実自由道分解への自然な射影とambient切断、その分裂等式。
+- 既存の実自由道分解のaugmentationとの合成による、元の基底のULiftHomへの
+  実augmentation。成分は語augmentationと既存augmentationの合成そのものとなる。
+- ULiftHom.downを介した、対角図式の各圏から元のCᵒᵖ×Cへの実関手。
+  任意の単体写像について射影の自然性を証明した。
+
+Cの対象宇宙uとHom宇宙vは独立である。補助CatのHom宇宙はmax u vとなる。
+CにもSSetにもモデル構造を要求していない。
+
+### 368.3 受入検証
+
+すべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`（3105 jobs、警告なし）。
+- `check_word_resolution_diagram`：独立したsource・語宇宙でのaugmentationとambient埋め込みの
+  自然性、Cat関手、Cat関手値のsimplicial object、実二重図式、対角augmentationの分裂、
+  モデル構造不要の元のCへの実適用、全単体写像の混合自然性と元の基底への射影の自然性。
+  新規5モジュール全56宣言の標準公理監査。
+- `check_word_source_operators`（24宣言・6モジュール）、
+  `check_word_presentation_action`（22宣言・4モジュール）の回帰検証。
+- `audit_homotopical_foundations`：全12511宣言・890モジュール。
+  propext・Classical.choice・Quot.soundのみ、sorry・引用axiomなし。
+- ソースの行長・証明用マーカー・stage差分の空白検査。
+
+### 368.4 次の受入単位と残作業
+
+両単体方向の実図式と元の基底へのaugmentationは構成済みとなった。
+次は、既存のdegree比較を介して§367の実評価・小さい作用をこの通常の単体図式へ運び、
+対角上の標準単体とPのパラメータを用いた実評価へまとめる。
+augmentationを定義したことやambient切断の存在だけでは、比較の弱同値や元の基底への
+小さいstrictificationは証明されない。それらの証明、元のCᵒᵖ×Cへの降下、
+小さい厳密なRMap、F2の不変性・Kan・π₀とHo(C)の同定などは残り、全体目標は継続する。

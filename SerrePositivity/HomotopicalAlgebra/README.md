@@ -3119,3 +3119,17 @@ SSet.{v}の実写像へ写し、恒等・合成・代入を保持する。
 両単体方向を持つ実図式とaugmentationの組立て、比較の弱同値、元の基底への小ささを保つ降下、
 小さい厳密なRMapは残る。
 受入検証は`check_word_source_operators`（24宣言・6モジュール）。
+
+
+### 実Cat関手・両単体図式・対角augmentation（§368）
+
+`WordPresentationCat`は語圏をCat上の実関手にまとめ、語パラメータ変更を自然変換として与える。
+`RetractWordAugmentation`はaugmentationとambient source functorの変更則を証明する。
+`WordPresentationAugmentation`は語方向とsource方向に自然なaugmentation、実二重図式と
+対角図式からのaugmentationを構成する。
+`WordPresentationSection`はambient埋め込みの実切断と対角augmentationの分裂を証明する。
+`OrdinaryBarWordResolution`は既存の通常のΔᵒᵖ上の自由道分解へ適用し、全混合単体写像の交換、
+元の基底への実augmentationと射影の自然性を与える。全五モジュールともモデル構造は不要。
+既存実評価の通常の図式・対角への移送、比較の弱同値、元の基底への小さいstrictification、
+小さい厳密なRMapは残る。ambient分裂からsmall切断や弱同値は主張しない。
+受入検証は`check_word_resolution_diagram`（56宣言・5モジュール）。
