@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanMonoPushoutExtension
+
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanTestDetection
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneLocalizedTensor
 
