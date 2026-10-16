@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Perfect.EnhancementTriangulated
+public import SerrePositivity.DifferentialGraded.Category.TriangleComparison
 
 /-! # 射影的perfect dg加群の実際の標準cone三角形
 
@@ -10,7 +11,7 @@ Hom複体を共有する充満dg部分圏の射を使い、元のmoduleCone・�
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-universe u v
+universe u v w w'
 namespace SerrePositivity.DifferentialGraded
 open CategoryTheory Pretriangulated
 variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
@@ -132,5 +133,29 @@ lemma perfectDGModuleHomotopyMap_toDerived (S : Set D) {M N : PerfectDGModuleOve
   exact (congrArg (fun g => g ≫ (moduleToHomotopyDerivedIso A D).hom.app
     (ForgetEnrichment.of (Complex A) N.val)) hc).trans
       ((moduleToHomotopyDerivedIso A D).hom.naturality f)
+
+/-- 標準cone三角形の第三射は、実際のconnecting射のH⁰像である。 -/
+lemma perfectDGModuleConeTriangle_mor₃ (S : Set D) (M N : PerfectDGModuleOver A D S)
+    (f : ForgetEnrichment.of (Complex A) M.val ⟶ ForgetEnrichment.of (Complex A) N.val) :
+    (perfectDGModuleConeTriangle A D S M N f).mor₃ =
+      perfectDGModuleHomotopyMap A D S
+        (M := perfectDGModuleCone A D S M N f) (N := perfectDGModuleShiftObj A D S 1 M)
+        (moduleConeConnecting A D f) :=
+  Category.comp_id _
+
+/-- 任意のshift整合関手で写した標準cone三角形の第三射を、実際のconnecting射で評価する。 -/
+lemma perfectDGModuleConeTriangle_map_mor₃ (S : Set D) {E : Type w} [Category.{w'} E]
+    [HasShift E ℤ] (F : PerfectDGHomotopyCategoryOver A D S ⥤ E) [F.CommShift ℤ]
+    (M N : PerfectDGModuleOver A D S)
+    (f : ForgetEnrichment.of (Complex A) M.val ⟶ ForgetEnrichment.of (Complex A) N.val) :
+    (F.mapTriangle.obj (perfectDGModuleConeTriangle A D S M N f)).mor₃ =
+      F.map (perfectDGModuleHomotopyMap A D S
+        (M := perfectDGModuleCone A D S M N f) (N := perfectDGModuleShiftObj A D S 1 M)
+        (moduleConeConnecting A D f)) ≫
+      (F.commShiftIso (1 : ℤ)).hom.app (perfectDGModuleHomotopyObj A D S M) :=
+  triangleComparison_mor₃ F (perfectDGModuleConeTriangle A D S M N f)
+    (perfectDGModuleHomotopyMap A D S
+      (M := perfectDGModuleCone A D S M N f) (N := perfectDGModuleShiftObj A D S 1 M)
+      (moduleConeConnecting A D f)) (perfectDGModuleConeTriangle_mor₃ A D S M N f)
 
 end SerrePositivity.DifferentialGraded

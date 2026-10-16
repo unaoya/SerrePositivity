@@ -5260,3 +5260,39 @@ Checks.PerfectEnhancementCone・Checks.SmallPerfectEnhancementTriangulated・Che
 合成し、実際の標準cone三角形と主導来cone三角形の同型を構成する。
 U13e全受入・既存PerfectHomotopy比較、U13d、U11eのcoherence、U12e/f、U14〜U17、D4mは未完。
 採用済み引用は0件。共有一般論・共有ルート・他系列のファイルを変更していない。
+
+
+### 17.98 U13e11：実際の標準dg cone三角形と三角構造の一致（2026-10-16）
+
+`Category/TriangleComparison.lean`は第三射の計算式をshift整合関手のmapTriangleへ運ぶ。
+`Perfect/EnhancementCone.lean`は実際のconnecting射による第三射の計算式と、任意のshift整合関手で
+写した第三射の計算式を公開した。関手を抽象的なまま評価してから主導来関手へ特殊化することで、
+具体的な局所化関手の写像を投影の型照合中に展開するカーネルのタイムアウトを避けた。
+
+`Perfect/EnhancementConeComparison.lean`は§17.97のshift評価、既存moduleToHomotopyDerivedIsoの
+CommShift整合性、実際のconnecting射の自然性を合成する。
+標準dg cone三角形の主導来像と、元の加群のmoduleDerivedConeTriangleとの同型を構成した。
+三つの対象同型は既存moduleToHomotopyDerivedIsoの成分であり、第三射の比較も実際のconnecting射を使う。
+主導来比較の完全忠実性と三角性から、標準dg cone三角形のdistinguished性を反映した。
+
+さらにH⁰射を閉零代表へ持ち上げ、包含の完全忠実性で実際の加群射へ戻す計算式を証明した。
+任意のdistinguished三角形の第一射をこの代表で表し、同じ第一射を持つdistinguished三角形の
+既存比較定理から標準cone三角形との同型を得る。
+これによりperfectDGHomotopy_distinguished_iff_coneを公開した。
+移送した三角構造は、実際の射影的perfect dg加群の標準cone三角形の同型閉包と一致する。
+
+Checks.PerfectEnhancementConeComparison・Checks.PerfectEnhancementShiftEvaluation・
+Checks.PerfectEnhancementDerivedComparison・Checks.SmallPerfectEnhancementTriangulated・
+Checks.PerfectEnhancementTriangulated・Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功
+（2907 jobs、終了コード0、警告なし）。任意A・独立対象宇宙・任意S、標準coneの主導来同型、
+distinguished性、第二/第三射の零合成、ZMod 2上の空生成集合を検査した。
+主要9宣言の直接公理監査は終了コード0、標準公理のみ。監査累計2310宣言。
+今回の4 Leanファイルにsorry/admit/新規axiomはない。
+共有側TorFiniteCoefficients.oleanの再生成を確認し、文書検査を再試行した。
+22 Markdown・311 exposition参照、失敗0件。前節で保留したexport検査もここで解消した。
+担当差分の空白検査も成功。
+
+U13eの実際のshift・標準cone三角形・小さい代表系と主Perfの三角比較は構成できた。
+全受入には一対象Aの既存PerfectHomotopyとの比較と、そのretract・線形性を含む照合が残る。
+U13dのcompact⇒Perf、U11eのcoherence、U12e/f、U14〜U17、D4mも未完。採用済み引用は0件。
+共有一般論・共有ルート・他系列のファイルを変更していない。
