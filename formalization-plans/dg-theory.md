@@ -5341,3 +5341,23 @@ Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功（3427 job
 次は複体と一対象Aの右dg加群との実際のdg比較を確定し、有限射影複体の射影性と
 主Perfのretract閉包との比較へ接続する。U13e全受入・U13d・U11eのcoherence・U12e/f・
 U14〜U17・D4mは未完。採用済み引用は0件。共有ルート・既存PerfectComplex・他系列は変更していない。
+
+
+### 17.101 U13e14：非有界複体と一対象Aの右dg加群の実際の準同値（2026-10-16）
+
+`Module/RingDGComparison.lean`はringConstantHomIsoの逆を全Hom写像に用いてringConstantDGを構成する。
+既存の評価の単位・合成保存を逆同型で反映し、全整数次数の豊穣合成を保つことを証明した。
+評価との合成はdg恒等関手に等しい。既存ringModule_recoverによりH⁰の本質的全射を証明し、
+ringConstantDGとmoduleEvaluationDGの双方が準同値であることを公開する。
+各Hom写像は準同型であるだけでなくchain isoである。任意可換環・非有界複体を扱う。
+
+Checks.RingDGComparison・Checks.StrictComplexEnhancement・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（3279 jobs、終了コード0）。任意A、HomのIsIso、dg恒等関手への復元、ZMod 2を検査した。
+主要8宣言の直接公理監査は標準公理のみ。監査累計2348宣言。
+全体文書検査は共有側CLMST.CompletedTargetLength.olean不在でexport段階が停止したため成功とは記録しない。
+Markdownのローカルリンクは別途22ファイルを検査し失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次は有限射影複体のK-projective性を全次数Homのacyclic性へ接続し、一対象加群の主射影性を証明する。
+主Perfのretract閉包と有限射影代表の一致は残る。U13e全受入・U13d・U11eのcoherence・U12e/f・
+U14〜U17・D4mは未完。採用済み引用は0件。共有ルート・既存PerfectComplex・他系列は変更していない。
