@@ -18652,3 +18652,68 @@ smallTransferCompositionHomotopyの区間全体の座標引き戻しと等しい
 恒等射を鎖の内部から除く退化条件と、厳密な小さいSSet値関手への構成も残る。
 強い収縮の二つの固定条件だけから、異なる区間パラメータによる収縮の合成則が従うとは推論しない。
 最終RMap・F2と全体目標F→L→E→Sは未完了のまま継続する。
+
+
+## 341. 相対延長空間全体の合成・単位・結合則と、選択済み延長の相対比較（2026-10-17）
+
+実装コミット`47c0de8a`。元の厳密Kan barの基底作用に対するchoices(f)全体に、
+任意のパラメータを保つ合成を構成した。選んだaction(f)自体に厳密な合成則を課したものではない。
+
+### 341.1 全パラメータ族としての相対延長空間の普遍性
+
+`Simplicial/RelativeChoiceFamilies`は、任意のi : A → Bとf : A → Kについて、
+T → RelativeChoiceSpace.obj i fと、境界i上でfst ≫ fに等しい実族B ⊗ T → Kとの
+実際の同値familyEquivを構成する。mono性・Kan性・モデル構造を必要としない。
+
+実族から選択空間へのofFamily、両方向の逆写像則、任意のU → Tによる自然性を証明した。
+同じ実族を持つ選択空間への射は等しいというfamily_injectiveも供給する。
+固定境界をホモトピー類で扱うのではなく、全パラメータ上の実等式で扱う入口である。
+
+### 341.2 元の基底射に沿う選択空間全体の合成
+
+`OrdinaryBarChoiceComposition.compose`は、基底射f : a → b、g : b → c、任意の大きいT、
+s : T → choices(f)、t : T → choices(g)から、T → choices(f ≫ g)を構成する。
+実族は§340のParameterComposition.compそのものであり、固定境界が元のKan barの
+厳密関手法則によって保たれることを証明した。
+
+任意のU → Tに沿う自然性、全パラメータの恒等延長identity、単位・結合則を実装した。
+単位や結合によって基底射の添字が変わる箇所には、基底の等式から得るrelabelを明示する。
+left_unit/right_unit/associativityは、この移送後に選択空間への射そのものが等しいという結果である。
+実族の等式だけで止めていない。
+
+両選択空間の積からchoices(f ≫ g)への実SSet射compositionも構成した。
+composition_pairは、任意の共通Tからの二つの族をこの射へ入力するとcomposeに等しいことを証明する。
+従って単体だけでなく任意の境界・cubeパラメータについて同じ合成を使える。
+compose_actionPointにより、選択済みの二つの点の合成は§338の実際のcompositePointと等しい。
+これはactionPoint(f ≫ g)との等式を意味しない。
+
+### 341.3 選択済み合成射との境界全体を固定した比較
+
+`LocalizedRelativeChoice.interval`は、局所化後可逆なmonoに沿うKan対象への相対延長空間で、
+任意の二点を結ぶ実区間を構成する。既存の全monoパラメータ延長を区間境界へ適用しており、
+大きいSSetのモデル構造や対象の可縮性を追加仮定していない。
+nonempty_fixedBoundaryHomotopyは、二つの実延長間で、両端点とA上の境界全体を保つ
+実ホモトピーをこの区間から構成する。
+
+`OrdinaryBarChoiceComposition.compositeComparison`は、実際のaction(f ≫ g)と
+実合成action(f) ≫ action(g)の間の、この相対ホモトピーを構成する。
+元のKan barからのunit上では、区間全体が固定された境界に等しい。
+§340の収縮挿入ホモトピーとは端点が異なるので、同じものとは同一視しない。
+
+### 341.4 受入検証と残項目
+
+すべて成功した。
+
+- 共有入口のbuild：3010 jobs、追加警告なし。
+- `check_relative_choice_composition`：52宣言・3モジュール、標準公理のみ。
+  モデル不要の全パラメータ普遍性と相対ホモトピー、独立した対象/Hom宇宙の一般源モデル、
+  実SSet合成・relabel後の単位と結合・全パラメータ自然性・既存の合成点との一致を検証。
+- `check_finite_chain_cube`：既存131宣言・4モジュールの回帰検証。
+- `audit_homotopical_foundations`：10821宣言・799モジュール、標準公理のみ。
+- 変更ソースの行長・証明用マーカー、stage差分の空白検査。
+
+次は、これらの合成可能な相対延長空間から、元の基底作用の全高次の選択を組み立て、
+§340の実cube移送へ接続する。二点間の相対ホモトピーを独立に選ぶだけでは、
+三つ以上の射の全境界に関する整合性はまだ従わない。
+内部の恒等射の退化、厳密な小さいSSet値関手と自然弱同値比較も残る。
+最終RMap・F2と全体目標F→L→E→Sは未完了のまま継続する。

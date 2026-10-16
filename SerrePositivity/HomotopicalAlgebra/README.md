@@ -2813,3 +2813,14 @@ sectionの像上でも一定な垂直収縮を持つ。実際のbarの収縮も�
 低次数が既存の移送射・選択済みの全二射比較区間と一致することも証明する。
 基底作用の高次選択・恒等射の内部退化・厳密なSSet値降下・最終RMap・F2は未完了。
 検証：`scripts/check_finite_chain_cube.lean`、計画書§340。
+
+
+### 相対延長空間全体の合成と選択済み合成射の比較（§341）
+
+`RelativeChoiceFamilies`は、選択空間への任意パラメータ射と、全境界を保つ実族との同値を供給する。
+`OrdinaryBarChoiceComposition`は元の基底作用に沿うchoicesの全族を合成し、実SSet合成、
+全パラメータ自然性、基底等式の明示的relabel後の単位・結合則を証明する。
+選択済みの二点の合成は既存のcompositePointと等しく、action(f ≫ g)と実合成action(f) ≫ action(g)の
+間には元のbar境界を全区間で固定するcompositeComparisonを構成した。大きいSSetモデルは不要。
+全高次の選択・内部の恒等射の退化・厳密なSSet値降下・最終RMap・F2は引き続き未完了。
+検証：`scripts/check_relative_choice_composition.lean`、計画書§341。
