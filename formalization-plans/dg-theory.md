@@ -5361,3 +5361,28 @@ Markdownのローカルリンクは別途22ファイルを検査し失敗0件。
 次は有限射影複体のK-projective性を全次数Homのacyclic性へ接続し、一対象加群の主射影性を証明する。
 主Perfのretract閉包と有限射影代表の一致は残る。U13e全受入・U13d・U11eのcoherence・U12e/f・
 U14〜U17・D4mは未完。採用済み引用は0件。共有ルート・既存PerfectComplex・他系列は変更していない。
+
+
+### 17.102 U13e15：K-projective条件と全Hom endの射影性の照合（2026-10-16）
+
+`Complexes/KProjectiveHom.lean`はMathlibのIsKProjectiveと全次数線形Homがacyclic対象を消す条件の同値を証明する。
+次数nのcycleをN[n]への閉零射に移し、K-projective性によるchain homotopyをrightUnshiftで戻す。
+微分の符号n.negOnePowを補正し、全整数次数で境界表示を得る。逆方向は次数0の境界から通常のchain homotopyを構成する。
+任意可換環上の非有界複体で成立し、値域の有界性・flat性を仮定しない。
+
+`Module/RingProjective.lean`は一対象AのHom end評価同型でこの判定を運び、
+主moduleHomotopicallyProjective条件と評価複体のIsKProjective条件の同値を公開する。
+一般の多対象dg圏で評価ごとの射影性を主Homの射影性と同一視する主張ではない。
+`Perfect/StrictComplexProjective.lean`は既存strictlyPerfectComplexの上界と各次数のModule.Projectiveから
+既存Mathlibの有界上射影判定を使い、一対象Aの主射影的dg加群となることを証明する。
+
+Checks.StrictComplexProjective・Checks.RingDGComparison・Checks.StrictComplexEnhancement・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（3290 jobs、終了コード0、警告なし）。
+任意A・非有界相手・全次数判定・有限射影対象・ZMod 2を検査した。
+主要6宣言の直接公理監査は標準公理のみ。監査累計2354宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。前節の共有olean不在によるexport保留も再試行成功で解消した。
+担当差分の空白検査は成功。今回の実装にsorry/admit/新規axiomはない。
+
+次は有限射影複体の主導来像がPerfに入ることと、Perfのretractの有限射影代表を検証する。
+今回の射影性だけから主Perfの本質的全射を主張しない。U13e全受入・U13d・U11eのcoherence・
+U12e/f・U14〜U17・D4mは未完。採用済み引用は0件。共有ルート・既存PerfectComplex・他系列は変更していない。
