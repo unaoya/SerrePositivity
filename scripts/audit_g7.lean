@@ -1,3 +1,5 @@
+import SerrePositivity.HomologicalAlgebra.ExactChainHomologyColimits
+import SerrePositivity.HomologicalAlgebra.TorExactColimits
 import SerrePositivity.HomologicalAlgebra.TorSequentialColimits
 import Mathlib.Util.AssertNoSorry
 
@@ -72,3 +74,57 @@ example {R C : Type u} [CommRing R] [CommRing C] (φ : R →+* C)
     (h : ∀ n, IsZero (((ModuleCat.extendScalars.{u, u, u} φ).leftDerived i).obj (F.obj n))) :
     IsZero (((ModuleCat.extendScalars.{u, u, u} φ).leftDerived i).obj (colimit F)) :=
   torAlg_colimit_isZero_of_stages φ F i h
+
+-- Exact arbitrary shapes and the original G7-Finset requirement.
+assert_no_sorry SerrePositivity.chainDiagramComplex
+#print axioms SerrePositivity.chainDiagramComplex
+assert_no_sorry SerrePositivity.chainDiagramHomologyIso
+#print axioms SerrePositivity.chainDiagramHomologyIso
+assert_no_sorry SerrePositivity.chainColimitHomologyIso
+#print axioms SerrePositivity.chainColimitHomologyIso
+assert_no_sorry SerrePositivity.chainColimitHomologyIso_ι
+#print axioms SerrePositivity.chainColimitHomologyIso_ι
+assert_no_sorry SerrePositivity.chainHomology_preservesExactColimits
+#print axioms SerrePositivity.chainHomology_preservesExactColimits
+assert_no_sorry SerrePositivity.moduleTensorChain_preservesColimitsOfShape
+#print axioms SerrePositivity.moduleTensorChain_preservesColimitsOfShape
+assert_no_sorry SerrePositivity.tor_preservesExactColimits
+#print axioms SerrePositivity.tor_preservesExactColimits
+assert_no_sorry SerrePositivity.torAlg_preservesExactColimits
+#print axioms SerrePositivity.torAlg_preservesExactColimits
+assert_no_sorry SerrePositivity.moduleCat_hasExactFinsetColimits
+#print axioms SerrePositivity.moduleCat_hasExactFinsetColimits
+assert_no_sorry SerrePositivity.torAlg_preservesFinsetColimits
+#print axioms SerrePositivity.torAlg_preservesFinsetColimits
+assert_no_sorry SerrePositivity.torAlgFinsetColimitIso
+#print axioms SerrePositivity.torAlgFinsetColimitIso
+assert_no_sorry SerrePositivity.torAlgFinsetColimitIso_ι
+#print axioms SerrePositivity.torAlgFinsetColimitIso_ι
+assert_no_sorry SerrePositivity.torAlg_finsetColimit_isZero_of_stages
+#print axioms SerrePositivity.torAlg_finsetColimit_isZero_of_stages
+
+-- Exact requested signature: no finiteness, countability, or map assumptions.
+example {R S : Type u} [CommRing R] [CommRing S] (φ : R →+* S) (ι : Type u) (n : ℕ) :
+    PreservesColimitsOfShape (Finset ι) ((ModuleCat.extendScalars.{u, u, u} φ).leftDerived n) :=
+  torAlg_preservesFinsetColimits ι φ n
+
+-- BS's actual indexing shape, with arbitrary root-family type σ.
+example {R S σ : Type u} [CommRing R] [CommRing S] (φ : R →+* S)
+    (F : Finset (σ × ℕ) ⥤ ModuleCat.{u} R) (n : ℕ) :
+    PreservesColimit F ((ModuleCat.extendScalars.{u, u, u} φ).leftDerived n) := by
+  let := torAlg_preservesFinsetColimits (σ × ℕ) φ n
+  infer_instance
+
+-- The actual comparison preserves every standard stage map.
+example {R S : Type u} [CommRing R] [CommRing S] (φ : R →+* S) (ι : Type u)
+    (F : Finset ι ⥤ ModuleCat.{u} R) (i : ℕ) (s : Finset ι) :
+    ((ModuleCat.extendScalars.{u, u, u} φ).leftDerived i).map (colimit.ι F s) ≫
+        (torAlgFinsetColimitIso ι φ F i).hom =
+      colimit.ι (F ⋙ (ModuleCat.extendScalars.{u, u, u} φ).leftDerived i) s :=
+  torAlgFinsetColimitIso_ι ι φ F i s
+
+-- Empty root families and degree zero are also covered.
+example {R S : Type u} [CommRing R] [CommRing S] (φ : R →+* S) :
+    PreservesColimitsOfShape (Finset (PEmpty : Type u))
+      ((ModuleCat.extendScalars.{u, u, u} φ).leftDerived 0) :=
+  torAlg_preservesFinsetColimits PEmpty φ 0
