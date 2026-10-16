@@ -7129,3 +7129,37 @@ BhattScholze互換宣言の未解決参照1件で失敗した。共有ルート�
 任意パラメータの自然性を代用しない。U11e全受入は引き続き未完。
 U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完。U17までの目標を保持する。
 共有系列への新しいAPI要求はない。
+
+
+### 17.155 U11e32：単位同型の閉零bimodule変数自然性と単位自然同型（2026-10-17）
+
+`Tensor/UnitMapNaturality.lean`のBalancedTensor.leftUnitValueHom_map_naturalityは
+対角の左制限による単位評価の、右加群射に関する自然性を証明する。
+包含上のmap公式・既存単位評価・rightAction_morphismから従い、符号付き右作用を保持する。
+leftUnitValue_map_naturalityはこれをbimoduleの値へ適用し、
+**leftBimoduleUnitIso_naturality**は値による射の外延性から実際のbimodule射の等式を得る。
+右側は既存yonedaEvaluation_naturalityとleftEvaluation_map_evalを再利用して、
+rightUnitValue_map_naturalityと**rightBimoduleUnitIso_naturality**を構成した。
+
+`Tensor/UnitFunctors.lean`は対角bimoduleの定値関手と恒等関手の積をcomposeFunctorへ合成し、
+leftUnitFunctor/rightUnitFunctorを定義する。
+**leftUnitNatIso/rightUnitNatIso**は各単位合成関手から恒等関手への自然同型であり、
+成分は既存のleftBimoduleUnitIso/rightBimoduleUnitIsoそのもの。
+射は両作用に全Hom自然な閉零bimodule射のままである。
+任意CommRing A・非有界・独立B/C宇宙を保持する。左単位の全結果はSmall.{u} Bのみで成立し、
+Cのsmall性を要求しない。右単位ではSmall.{u} Cも明示する。
+
+Checks.UnitNaturality・Checks.Pentagon・Checks.Triangle・Checks.AssociatorNaturality・
+Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功（2790 jobs、終了コード0、警告なし）。
+左単位をCのsmall性なしで検査し、左右の自然性squareとZMod 2の単位自然同型も検査した。
+主要11宣言の直接公理監査は標準公理のみ。監査累計3008宣言。
+今回の実装にsorry/admit/新規axiomはない。採用済み引用は0件。
+全体文書検査は13 Markdown・320 exposition参照を検査し、§17.151〜154と同じ担当外の
+BhattScholze互換宣言の未解決参照1件で失敗した。共有ルートや該当系列は編集していない。
+
+次は任意パラメータKのGradedNatTransに関する三変数の豊穣自然性を完成する。
+既存BalancedTensor.leftParamMap/rightParamMapと全Hom endへの評価を再利用し、
+各変数のパラメータ付き作用と結合比較の可換式を、生成元計算から全chain mapへ上げる。
+今回の閉零変数の単位自然性を任意パラメータの三変数自然性と同一視しない。
+U11e全受入、U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mは引き続き未完。
+U17までの目標を保持する。共有系列への新しいAPI要求はない。
