@@ -1,6 +1,6 @@
 # dg 理論（M5）の独立実装計画
 
-作成・調査：2026-10-14。更新：2026-10-17。状態：U0〜U10 を実装・検証済み。U11〜U17は部分実装済み、明示的dg商U15a/bと厳密普遍性U15cを受入（§17.144）。U10後の比較・整理案と後続詳細計画は§14〜§16。
+作成・調査：2026-10-14。更新：2026-10-17。状態：U0〜U11 を実装・検証済み（U11統合受入§17.159）。U12〜U17は部分実装済み、明示的dg商U15a/bと厳密普遍性U15cを受入（§17.144）。U10後の比較・整理案と後続詳細計画は§14〜§16。
 U0〜U3の記録は§11、U4/U5の実績と後続契約は§12。D0〜D10全体の完了ではない。
 この計画だけを受け取る実装担当者向けの仕様である。
 ホモトピー論の共有契約は [k-theory.md §123](k-theory.md#123-次段階の設計i抽象モデル圏とその当てはめ2026-10-14)。
@@ -7238,3 +7238,65 @@ associatorValueHomの前後合成の等式を三重生成元で証明する。
 今回の変換の構成だけでassociatorの任意パラメータ自然性を受入済みとはしない。
 U11e全受入、U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mは引き続き未完。
 U17までの目標を保持する。共有系列への新しいAPI要求はない。
+
+
+### 17.158 U11e35：結合比較の任意パラメータ三変数自然性（2026-10-17）
+
+`Tensor/AssociatorParameterExt.lean`は三重生成元の外延性から、K→Homの前後合成の等式を
+生成元で判定するassociatorLeft_homMap_post_pre_eqを証明する。
+`TripleParameterFirst.lean`と`TripleParameterRest.lean`は、P/Q/R各変数のパラメータ作用を
+左右の反復合成の三重生成元で計算する六つの公式を公開した。
+P変数では(-1)^(p*k)と(-1)^(p*r)が(-1)^(p*(k+r))に一致し、Q変数ではRの次数kとの
+(-1)^(p*k)、R変数では追加の交差符号なしという式を保つ。
+
+`AssociatorParameterValues.lean`はこれらと結合同型の固定成分公式を組み合わせ、
+**associator_firstParam_value/middleParam_value/lastParam_value**を証明した。
+これらは任意Kから値の主Hom複体へのchain mapとしての等式であり、生成元や閉零射だけの等式ではない。
+`Bimodule/ParameterSquare.lean`は値の可換式を右加群の主Hom endへ戻すparam_square_of_valuesを与える。
+`Tensor/AssociatorParameters.lean`の**associator_firstParam/middleParam/lastParam**は、
+実際のfirstParam/secondParamと元のassociatorRightModuleIsoの射を使う全Hom endでの自然性。
+各作用は§17.157で両外側作用の全次数自然性まで証明済みのbimodule変換である。
+任意CommRing A・非有界・独立B/C/E/F宇宙・Small.{u} B/C/Eを維持し、Fのsmall性は不要。
+Kの閉性・有界性・次数零性は課さない。閉零三変数の自然同型による代用は行っていない。
+
+Checks.AssociatorParameters・Checks.BimoduleParameterNaturality・Checks.AssociatorNaturality・
+Checks.UnitNaturality・Checks.Pentagon・Checks.Triangle・Checks.EnrichedHomNaturality・
+Checks.LeftTensorColimits・Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功
+（2835 jobs、終了コード0、警告なし）。独立宇宙で三つの全Hom endの等式、
+ZMod 2でも任意Kに対する同じ主Hom endの自然性を検査した。
+主要14宣言の直接公理監査は標準公理のみ。監査累計3054宣言。
+今回の実装にsorry/admit/新規axiomはない。計算上限の追加もなく、採用済み引用は0件。
+
+
+### 17.159 U11統合受入とU12e/fへの引継ぎ（2026-10-17）
+
+U11の残る受入条件を元の§15.1と照合し、独立入口**StageEight.lean（U0〜U11）**を追加した。
+既存StageSeven・共有ルートimportは変更していない。次の実装を同じ入口から利用できる。
+
+| 受入条件 | 実装・証拠 |
+| --- | --- |
+| 左加群とopposite・符号 | Module.Left/LeftAction、既存の全Hom endによるLeftModuleCategory。U11aの既受入記録 |
+| bimoduleと積dg圏表示 | Bimodule.TensorComparisonの往復を持つbimoduleEquivTensorFunctor。U11bの既受入記録 |
+| 多対象balanced tensorと普遍性・map | Tensor.Balanced/Functor、任意パラメータの族の普遍性。U11cの既受入記録 |
+| Yoneda・一対象環・残る両作用 | Tensor.Yoneda/LeftYoneda/YonedaRepresentative/Ring/Bimodule。U11dの既受入記録 |
+| tensor–Homと全変数自然性 | Tensor.EnrichedHomAdjunction/Points/Source/Left/Target。主Hom複体の同型・閉零比較・K自然性・M/N/T全Hom自然性（§17.35〜40） |
+| 両変数の余極限保存 | Tensor.HomAdjunctionLawsとLeftColimits。存在する余極限を保存し、全宇宙の余極限の存在を自動仮定しない（§17.35/42） |
+| Fubiniと実際の結合同型 | Tensor.FubiniとAssociatorBimodule/AssociatorNaturality。両作用全Hom自然・実際のbimodule同型・閉零三変数自然同型 |
+| 任意パラメータ三変数自然性 | Tensor.BimoduleParameters/AssociatorParameters。任意Kの実際の変換とP/Q/Rそれぞれに対する主Hom endでの等式（§17.156〜158） |
+| 単位とcoherence | UnitFunctorsの左右単位自然同型、Triangle.triangle、Pentagon.pentagon。実際の閉零bimodule射としての等式（§17.153〜155） |
+
+Checks.StageEight・Checks.AssociatorParameters・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（2840 jobs、終了コード0）。統合Checksの長行警告を修正した再ビルドも成功
+（2426 jobs、警告なし）。StageEightだけのビルドも成功し、Checksの追加importに依存せず公開APIが揃う。
+統合入口からの直接実行は終了コード0、主要16宣言の再監査は標準公理のみ。
+この16宣言は既監査対象なので累計3054へ重複加算しない。
+Lean v4.35.0-rc4・Mathlib e6bbacd0e1b7307ff6e17da09cd2455f60804fa6を再確認した。
+全体文書検査は13 Markdown・320 exposition参照を検査し、§17.151〜157と同じ担当外の
+BhattScholze互換宣言の未解決参照1件で失敗した。全体文書検査の成功は主張しない。
+共有ルート・共有一般論・該当系列・他チャットの変更は編集していない。
+
+これでU11a〜eを受入済みとする。U12a〜dの既存導来tensorを保持し、次はU12eで導来bimodule合成へ進む。
+Bᵒᵖ⊗C上のsemifreeからBに関する相対K-flat性を得る条件を別証明し、必要なHomのlocal K-flat性と
+dg圏の解像度を使う版を区別する。単純に二変数をsemifree置換して無条件の導来合成としない。
+U12fの非flat係数変更の導来版、U13d/e残部、U14、U15d/e、U16/U17、D4mは未完。
+U17までの目標を保持し、共有系列への新しいAPI要求はない。採用済み引用は0件。
