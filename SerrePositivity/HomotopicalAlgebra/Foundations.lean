@@ -1,5 +1,8 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.MixedBiresolutionComparison
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.MixedDiagonalHomRecovery
+
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BalancedResolutionComparison
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BiresolutionRightAction
 
