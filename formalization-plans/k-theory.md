@@ -17255,3 +17255,69 @@ fがQで可逆ならleft fは局所化後可逆な実モノ射、right fは全�
 各有限段階のcube比較だけから極限の比較を可逆とみなさず、この接続後に一般augmentationを扱う。
 一般augmentation・元の評価の可逆性、自然な小値化、最終小さい厳密RMap・F2は未完了。
 全体目標F→L→E→Sを維持する。
+
+
+## 321. 実逐次図式の相対分解とcolimit比較（2026-10-17）
+
+§320で残していた逐次colimit比較を証明した。
+F・Gを実ℕ図式、α:F→Gを元の自然変換とする。
+Fの各接続射がモノ射で、各α_nが元のQで可逆なら、colim(α)もQで可逆である。
+Gの接続射のモノ射性、各対象のKan性、補助SSetモデル構造、Qのcolimit保存は要求しない。
+
+### 321.1 境界右クラスの実colimit保存
+
+`BoundaryRightColimit`は、元の境界生成族Iの始域・終域の有限可呈示性から、
+filteredな実Arrow図式の指定colimitにI.rlpが保たれることを証明する。
+一般の`Smith.AccessibleLiftingClosure`へ実際の両端点の可呈示性を供給する。
+ℕ図式についてはAsSmallによる圏の同値で添字だけを値宇宙側へ移し、
+同じcolimit coconeをwhiskerして適用する。生のSSet値の縮小や別のcolimit対象への交換は行わない。
+同じcolimit射がQで可逆であることも、§317の全モノ射右持ち上げから導く。
+
+### 321.2 元の前段を保つ逐次相対分解
+
+`SequentialBoundaryFactorization`は、元のαをF→Z→Gへ分解する。
+初段はα_0の境界分解を取り、後続段では元のF_n→F_(n+1)と、
+既に作ったF_n→Z_nの実pushoutからG_(n+1)への射を境界分解する。
+二つの自然変換、全次数の厳密な合成式、右因子のI.rlpを証明した。
+後続段で前段の中間対象や選んだ写像を取り直さない。
+
+`SequentialFactorLiftingClasses`は、左因子の各成分のモノ射性と可逆性を証明する。
+源Fの接続射がモノ射なら、実相対pushout因子も§319の一般左固有性と2-out-of-3で可逆になる。
+この実相対因子が§316の固定右テスト族へのllpに属することを証明する。
+対象ごとの左因子の可逆性だけを図式全体の持ち上げと同一視しない。
+
+### 321.3 整合する全図式liftとcolimitの両因子
+
+`SequentialFactorLift`は、左図式因子と任意の定数射に対する元のsquareを解く。
+初段の実liftを選び、後続段では前段のそのliftと源側の次の写像を実相対pushoutで貼り合わせて持ち上げる。
+その制限が前段のliftに厳密に等しいため、全段のliftは元のsquareを解く自然変換になる。
+
+`KanSequentialColimitComparison`は、この自然変換の持ち上げをcolimと定数図式の随伴で移す。
+左colimit因子は固定右テスト族へのllpに属するので、元のQで可逆になる。
+右colimit因子は321.1によりI.rlpに属し、これも元のQで可逆になる。
+元のαのcolimit射がこの二射の合成と正確に等しいことから、Q(colim α)が可逆である。
+
+さらに任意の指定された二つの実colimit coconeと元の比較mを受け取る入口を証明した。
+両coconeの全成分でmがαと可換なら、同じmのQによる像が可逆になる。
+任意のanodyne反転関手によるcolim(α)の像も可逆になる。
+
+### 321.4 受入検証と一般augmentationへの次の接続
+
+実装コミット`1fe08147`。以下はすべて成功した。
+
+- 共有入口のbuild：2942 jobs、追加警告なし。
+- `check_kan_sequential_comparison`：独立した補助値宇宙で、実無限Arrow-colimitのI.rlp、
+  元の自然変換の厳密な図式分解、各右因子のI.rlp、実相対後続因子の固定族へのllp、
+  G側の接続射に条件を置かない元のcolimit比較、任意の実colimit cocone間の指定比較、
+  任意のanodyne反転関手での可逆性。
+  新規103宣言・5モジュール、標準公理のみ。
+- `check_kan_cube_coproduct`：既存10宣言・2モジュールの回帰確認。
+- `check_kan_localized_left_proper`：既存29宣言・6モジュールの回帰確認。
+- `audit_homotopical_foundations`：9934宣言・745モジュール、標準公理のみ。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+次は§311のcolimit・モノ射を保存する単体圏nerve関手と、その元の自然augmentationへ、
+§320のcoproduct・cube比較と今回の逐次比較を適用する。
+標準単体だけでの既存の可逆性を、境界・骨格・元の全SSetへ移す帰納を証明する必要がある。
+一般augmentation・元のbar評価の可逆性、自然な小値化、最終小さい厳密RMap・F2は未完了。
+全体目標F→L→E→Sを維持する。

@@ -2572,3 +2572,16 @@ pushout後の単射性、一般augmentation・評価・最終小値化・F2は�
 任意の実coproduct cocone間の指定比較にも結論する。
 補助モデル構造は不要。逐次colimit比較、一般augmentation・評価、最終小値化・F2は未完了。
 検証：`scripts/check_kan_cube_coproduct.lean`、計画書§320。
+
+
+### 実逐次図式の相対分解とcolimit比較（§321）
+
+`BoundaryRightColimit`は両端点の有限可呈示性から境界右クラスの実逐次colimit保存を証明する。
+`SequentialBoundaryFactorization`は既に作った前段を保って相対pushoutを分解し、元のαをF→Z→Gへ分解する。
+`SequentialFactorLiftingClasses`は各実相対後続因子を固定右テスト族のllpへ入れる。
+`SequentialFactorLift`は前段の実liftを保持して全図式の自然なliftを構成する。
+`KanSequentialColimitComparison`は源の接続射だけのモノ射性と各成分の局所化同値から、
+元の逐次colimit比較、および指定された二つの実cocone間の元の比較の可逆性を証明する。
+補助モデル構造・Qのcolimit保存は不要。
+一般augmentation・評価の可逆性、最終小値化・F2は未完了。
+検証：`scripts/check_kan_sequential_comparison.lean`、計画書§321。
