@@ -15839,3 +15839,65 @@ frame対角全体のReedy cofibrancyは仮定も主張もせず、源の関手�
 基底Cᵒᵖ×C上の小さい厳密関手への自然な小値化は残る。
 F1の最終RMapへの統合とF2の最終自然弱同値zigzag比較は未完了。
 全体目標F→L→E→Sを維持する。
+
+
+## 298. 任意の全lift familyによる混合作用の弱同値（2026-10-16）
+
+§297の比較を使い、両側の基底射が弱同値であるとき、任意の全lift familyによる
+混合作用が弱同値になることを証明した。familyをstrict lift点に固定する仮定は置かない。
+入力のparameter写像が弱同値であることは要求し、その条件を結論まで明示する。
+
+### 298.1 収縮可能なパラメータの一般論
+
+`Quillen/ContractibleParameters`は任意のモデル圏で、終対象への自明fibrationを持つ
+二つのparameter対象S・Rに対し、S×(R×V)→Vが自明fibrationであることを証明する。
+実二項積が終対象への射のpullbackであることと、自明fibrationのbase change・合成への
+閉性だけを使う。任意のs:T→S・r:T→R・弱同値t:T→Vについて、
+その実graph T→S×(R×V)が弱同値であることを二対三性から導く。
+この共有補題はsimplicial enrichmentや関手的因子分解を要求しない。
+
+### 298.2 同じ実raw Homと普遍混合作用
+
+`MixedResolutionInvariance`は既存のraw自然同型と左側比較を通し、元の実混合Hom写像が
+両基底射の弱同値を保つことを証明する。指定したstrict liftでの実混合作用も、
+そのHom写像と§297の両augmentation比較との合成として弱同値になる。
+
+`MixedLiftActionWeakEquivalence`は、元の両側lift空間そのものの積をparameterとする
+普遍混合作用を構成する。その射影の自明fibration性は298.1と、既存の実lift空間の
+射影の自明fibration性から証明する。各基底射について一つの実strict liftを選び、
+そのgraphが弱同値であることと298.2のstrict作用の弱同値から、普遍作用の弱同値を導く。
+この一度の選択を関手的選択とはみなさず、最終定理にはstrict liftや選択点を入力しない。
+
+任意の全family s・rと入力tによる元の作用は、同じgraphと普遍作用の合成に等しい。
+従って両基底射とtが弱同値なら、元の全作用も弱同値となる。
+特にTを入力全体、tを恒等とした任意の両familyにも適用できる。
+元の小さいKan置換へ出力する作用についても弱同値を証明する。
+
+### 298.3 同じ全中心・全chain作用への接続
+
+`MixedCenterActionWeakEquivalence`は§296の実center familyを元のlift空間のfamilyとして
+回収し、298.2の定理をその同じ作用へ適用する。
+両側の任意の全moving-parameter system、任意のchainに対し、末尾中心の両基底射と
+入力parameter写像が弱同値なら、既存NerveMixedAction.actionが弱同値となる。
+以前の全単体作用素の整合式と同じsystem・同じ作用を保持する。
+補助systemの宇宙は独立で、大きい宇宙のSSetモデル構造は要求しない。
+
+### 298.4 受入検証と残項目
+
+実装コミット`52539e1e`。全て成功した。
+
+- 共有入口のbuild：2846 jobs、追加警告なし。
+- `check_mixed_lift_action_weak_equivalence`：一般モデル圏での実graphの弱同値、
+  元の全lift空間の射影の自明fibration性、普遍作用の弱同値、
+  入力全体に依存する任意の全familyの作用、任意の弱同値parameter入力、
+  小さいKan出力、独立した大きい宇宙の全systemによる全chain作用への適用。
+  新規25宣言・4モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：8932宣言・649モジュール、標準公理のみ。
+- `check_mixed_resolution_comparison`：57宣言・4モジュールの回帰確認。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+今回の定理を実bar右脚へ適用するには、その実bar図式に対応する入力・familyを構成し、
+必要な入力の弱同値条件を証明する接続が残る。元の全因子分解・混合三角形systemの
+具体的接続、bar右脚自体の弱同値、基底Cᵒᵖ×C上の自然な小値化も未完了である。
+F1の最終小さい厳密RMapとF2の最終自然弱同値zigzagはまだ得ていない。
+全体目標F→L→E→Sを維持する。

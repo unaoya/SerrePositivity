@@ -2299,3 +2299,15 @@ parameter・入力・出力の実移送を含む整合式を証明する。
 `MixedCenterComparison`はこれを既存の全chain作用の同じ全中心KanOutputへ接続する。
 具体的な全因子分解systemへの接続、bar右脚、基底上の最終小さい厳密RMapは未完了。
 検証：`scripts/check_mixed_resolution_comparison.lean`、計画書§297。
+
+
+### 任意の全lift familyの混合作用の弱同値（§298）
+
+`Quillen/ContractibleParameters`は一般モデル圏で、収縮可能な二つのparameterを
+加えたgraphの弱同値を実pullbackと二対三性から導く。
+`MixedResolutionInvariance`は同じ実raw Hom写像とstrict lift作用の弱同値を証明する。
+`MixedLiftActionWeakEquivalence`は元の全lift空間の普遍作用と、任意の全familyの作用に適用する。
+両基底射と入力写像が弱同値なら、元の作用と小さいKan出力への作用が弱同値となる。
+`MixedCenterActionWeakEquivalence`は同じ全中心・全chain作用へ接続する。
+実bar入力への適用条件の証明、bar右脚、基底上の最終小さい厳密RMapは未完了。
+検証：`scripts/check_mixed_lift_action_weak_equivalence.lean`、計画書§298。
