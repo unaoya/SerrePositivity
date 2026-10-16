@@ -5167,3 +5167,33 @@ ZMod 2上の空生成集合を検査した。
 U13e全受入は、実際の標準dg cone三角形との一致と一対象Aの既存PerfectHomotopy比較を残す。
 U13d・U11eのcoherence・U12e/f・U14〜U17・D4mも未完。採用済み引用は0件。
 共有一般論・共有ルート・他系列のファイルを変更していない。
+
+
+### 17.95 U13e8：実際のdg coneによるH⁰標準三角形と射の計算（2026-10-16）
+
+`Perfect/EnhancementCone.lean`は実際の射影的perfect dg加群のH⁰対象と、閉零加群射のH⁰像を定義した。
+全Homを共有する閉零包含の完全忠実性を明示し、そのpreimageで射を持ち上げる。
+持ち上げた射は包含後に元のK(D)の像へ戻り、恒等射・合成・零射を保つ。
+整数shiftの対象は既存の実際のdg shift対象と定義的に一致する。
+主導来比較の像と元のQの射がmoduleToHomotopyDerivedIsoで可換となる計算式も証明した。
+
+実際のmoduleConeとmoduleConeInr・moduleConeConnectingをそのまま使うH⁰三角形
+perfectDGModuleConeTriangleを構成した。第三射の標的はshift 1であり、
+前節の逆関手で恣意的なcone対象や射を選んだものではない。
+第一射・第二射の計算式を公開し、最初の二射の合成が零となることを
+包含の忠実性と元のK(D)の標準cone三角形から証明した。
+
+Checks.PerfectEnhancementCone・Checks.SmallPerfectEnhancementTriangulated・
+Checks.PerfectEnhancementTriangulated・Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功
+（2898 jobs、終了コード0、警告なし）。任意A・独立対象宇宙・任意S、閉零包含の完全忠実性、
+実際のcone対象、第一/第二射の零合成、負shift、ZMod 2上の空生成集合の標準三角形を検査した。
+主要14宣言の直接公理監査は終了コード0、標準公理のみ。監査累計2286宣言。
+今回の2 Leanファイルにsorry/admit/新規axiomはない。
+文書検査は共有ルートのolean不在により一度実行できなかったが、再生成後の再試行は
+22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査も成功。
+
+この標準三角形のdistinguished性はまだ証明していない。
+残る照合は、§17.92で誘導した整合的CommShiftと標準connecting射の比較が、
+主PerfのmapTriangleで用いる第三射と一致すること。その後に前節の三角構造でのdistinguished性を得る。
+一対象Aの既存PerfectHomotopy比較も未完。U13e全受入、U13d、U11eのcoherence、U12e/f、U14〜U17、D4mは未完。
+採用済み引用は0件。共有一般論・共有ルート・他系列のファイルを変更していない。
