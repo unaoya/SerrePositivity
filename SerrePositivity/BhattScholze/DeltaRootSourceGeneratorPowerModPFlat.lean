@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.DeltaRootSourcePowerResidueDiscrete
+public import SerrePositivity.BhattScholze.DeltaRootSourcePowerResidueFaithful
 public import SerrePositivity.BhattScholze.PrismaticGeneratorPowerModP
 public import SerrePositivity.BhattScholze.DeltaRootSourceGeneratorPowerComplete
 
@@ -9,6 +9,7 @@ public import SerrePositivity.BhattScholze.DeltaRootSourceGeneratorPowerComplete
 @[expose] public noncomputable section
 universe u
 set_option backward.isDefEq.respectTransparency false
+set_option backward.defeqAttrib.useBackward true
 namespace SerrePositivity.BhattScholze
 open CategoryTheory CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
@@ -48,5 +49,39 @@ theorem deltaRootSourceGeneratorPower_G9_inputs :
   exact ⟨deltaRootSourceGeneratorPowerReduction_isComplete_over_quotient D d b hd n,
     deltaRootSourceGeneratorPowerModP_homology_isZero D d b n hn hpA hd v hv,
     deltaRootSourceGeneratorPowerModPH0_flat D d b n hn hpA hd v hv⟩
+
+include hn hpA hd v hv in
+/-- 実二生成剰余の忠実性を標準mod p商の正確な作用へ移す。 -/
+theorem deltaRootSourceGeneratorPowerModPH0_faithfullyFlat :
+    Module.FaithfullyFlat Mₙ
+      ((DerivedCategory.homologyFunctor (ModuleCat Mₙ) 0).obj (Wₙ).obj) := by
+  let Q := A ⧸ Ideal.span (Set.insert (p : A) (Set.singleton (d ^ n)))
+  let e := prismaticGeneratorPowerModPEquiv p d n
+  let Y := (boundedAboveDerivedBaseChange
+    (Ideal.Quotient.mk (Ideal.span (Set.insert (p : A) (Set.singleton (d ^ n)))))).obj X₀
+  let M := (DerivedCategory.homologyFunctor (ModuleCat Q) 0).obj Y.obj
+  let := e.toRingHom.toAlgebra
+  let : Module Mₙ M := Module.compHom M e.toRingHom
+  let : IsScalarTower Mₙ Q M := IsScalarTower.of_algebraMap_smul (fun _ _ => rfl)
+  let eA : Mₙ ≃ₐ[Mₙ] Q := AlgEquiv.ofBijective (Algebra.ofId Mₙ Q) e.bijective
+  have : Module.FaithfullyFlat Mₙ Q :=
+    Module.FaithfullyFlat.of_linearEquiv Mₙ Mₙ eA.symm.toLinearEquiv
+  have : Module.FaithfullyFlat Q M :=
+    deltaRootSourcePowerResidueH0_faithfullyFlat D d b n hn hpA hd v hv
+  have : Module.FaithfullyFlat Mₙ M := Module.FaithfullyFlat.trans Mₙ Q M
+  exact Module.FaithfullyFlat.of_linearEquiv Mₙ M
+    (prismaticGeneratorPowerModPHomologyIso p d n X₀ 0).toLinearEquiv
+
+include hn hpA hd v hv in
+/-- 標準mod p実還元と、その実H0の次数零対象の正規化同型。 -/
+def deltaRootSourceGeneratorPowerModPSingleIso :
+    Wₙ ≅ boundedAboveDerivedSingleFunctor.obj
+      ((DerivedCategory.homologyFunctor (ModuleCat Mₙ) 0).obj (Wₙ).obj) := by
+  have hPure := deltaRootSourceGeneratorPowerModP_homology_isZero D d b n hn hpA hd v hv
+  let : (Wₙ).obj.IsGE 0 := (DerivedCategory.isGE_iff _ _).mpr
+    (fun i hi => hPure i (by omega))
+  let : (Wₙ).obj.IsLE 0 := (DerivedCategory.isLE_iff _ _).mpr
+    (fun i hi => hPure i (by omega))
+  exact ObjectProperty.isoMk _ (normalizedPureHomologyIso (Wₙ).obj 0)
 
 end SerrePositivity.BhattScholze
