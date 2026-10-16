@@ -4804,3 +4804,30 @@ Checks.StageSeven・既存Spectra.StageTwoの同時ビルドは成功（2888 job
 U13c全受入は未完。次は代表加群の全導来射に対する自然同型、u-small余積保存、compact性・生成性、
 Perf⇒compactを検証する。U11eのcoherence・U12e/f・U13d/e・U14〜U17・D4mも未完。
 共有系列への追加要求はなく、共有ルート・他系列のファイルを変更していない。
+
+
+### 17.83 U13c3：代表加群によるHom表示の全導来射に関する自然同型（2026-10-16）
+
+`Perfect/RepresentableHomologyNaturality.lean`は射影的始域からの任意導来射を閉零射へ持ち上げ、
+§17.82のH⁰の後合成自然性を使って全Homのホモロジー計算に運ぶ。
+全次数dg Yoneda同型と加群射による後合成の可換式を主Hom endの成分で証明し、
+代表加群によるHom表示が元の加群射に対して自然であることを得た。
+
+`Perfect/RepresentableHomologyNaturalIso.lean`は、Homの射宇宙max(u+1,v)と評価ホモロジーの宇宙uを
+区別し、後者をULiftする関手moduleDerivedHomologyLiftを定義する。
+主導来圏のcoyonedaとこの関手の、moduleToDerivedによる前合成上の自然同型を構成し、
+Mathlib.Localization.liftNatIsoで主局所化そのものの自然同型に延長した。
+対象ごとの成分が§17.81の同じHom同値であることを検証し、任意の導来射に対する自然性を公開する。
+§17.82の線形同値についても同じ自然性が成り立つ。局所小性を使って主圏を別の小さい圏へ置き換えない。
+
+Checks.RepresentableHomologyNaturality・Checks.RepresentableHomologyLinear・Checks.PerfectKaroubiEquivalence・
+Checks.StageSeven・既存Spectra.StageTwoの同時ビルドは成功（2890 jobs、終了コード0、警告なし）。
+任意導来射、指定quasiIsoの逆射、線形同値の自然性、自然同型の宇宙、ZMod 2を検査した。
+主要11宣言の直接公理監査は終了コード0、標準公理のみ。監査累計2089宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。
+今回の3 Leanファイルにsorry/admit/新規axiomはない。担当差分の空白検査も成功。
+
+U13c全受入は未完。次はu-small余積における評価ホモロジーの有限support表示と保存性を証明し、
+代表加群のcompact性・生成性、Perf⇒compactへ接続する。
+U11eのcoherence・U12e/f・U13d/e・U14〜U17・D4mも未完。
+共有系列への追加要求はなく、共有一般論・共有ルート・他系列のファイルを変更していない。
