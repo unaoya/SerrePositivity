@@ -2054,3 +2054,22 @@ UniverseLiftTensorの標準単体付き全写像に、値の後合成との実�
 実∂Δ2系への貼り合わせ・三角形全体の延長、基底Cへの降下、最終RMap・最終比較は残る。
 実装`e376cab5`、詳細は計画§279。新規50宣言・3モジュール、共有7969宣言・569モジュールの
 標準公理監査と同じ混合四辺・全端点の回帰確認、A0・A1の最終利用例が成功。
+
+
+## 実∂Δ2境界と全vertex境界を同時に固定する旧全三角形の延長（2026-10-16）
+
+`ProductBoundaryCotensor`は閉随伴で境界パラメータを移し、動く追加パラメータを保持して実境界を
+貼り合わせる。`NerveMovingBoundary`は全facetを保持する整合系と一意性、共通全vertex制限を構成する。
+`ResolutionMixedBoundary`は同じ五辺から二つの実∂Δ2全境界を作り、旧全三角形の実適合性を証明する。
+実装`da71d1d9`、詳細は計画§280。
+
+`SelectedIntervalVertices`・`NerveNaturalBoundaryTransport`は元の区間全系の固定全vertex境界を
+実再添字付け・実可換正方形で運ぶ。`ResolutionMixedVertexRestrictions`は同じ四辺と共有対角線の
+全vertex制限を、同じ自然な共通境界へ同定する。
+`ResolutionMixedTriangleBoundary`はQ2の実pushout境界・monoを構成し、旧全三角形の適合性を導く。
+`ResolutionMixedCoherentTriangles`は旧二つの全三角形を保ち、同じ四辺・対角線・三角形全体の
+vertex境界をすべての外部次数で固定する。元の小さい全三角形を回収し、共有AD制限も全系で等しい。
+源の一般性・独立宇宙・小さいlift値を維持する。大きいモデル構造や源の関手的因子分解は不要。
+presentation系と全因子分解の接続、基底Cへの小さいSSet値降下、最終RMap・最終比較は残る。
+実装`1c295db1`、詳細は計画§281。今回57宣言・6モジュール、共有8054宣言・577モジュールの
+標準公理監査、共有入口2772 jobs、元の全境界・共有対角線の回帰確認が成功。
