@@ -15330,3 +15330,79 @@ spanの左脚の後にそのsectionを合成した写像が、元のaugmentation
 span右脚の比較の弱同値性と、元の小さいSSet[v]に値を持つ新しい厳密関手への自然な小値化も残る。
 F1の最終RMap・不変性・Kan性・π0比較への統合、F2の最終自然弱同値zigzag比較は引き続き未完了。
 全体目標F→L→E→Sを維持する。
+
+
+## 290. モデル不要のanodyne反転と元の小さい弱同値判定への接続（2026-10-16）
+
+§289の左脚の実ホモトピー逆を、anodyne拡張の通常の局所化での自然同型へ接続した。
+この比較は補助的な大きいSSetでもモデル構造なしに成立する。
+併せて元の小さいSSet[v]のモデルでは、anodyne局所化による判定が元のモデル弱同値と
+正確に一致することを証明した。最終の弱同値類を新しく定義し直す方針ではない。
+
+### 290.1 区間端点と全ホモトピーのモデル不要の反転
+
+`AnodyneIntervalEndpoints`はΔ0→Δ1の両端包含がanodyneであることを、
+1次元hornの実持ち上げから証明する。点tensorとの明示的な同型と
+anodyneのtensor保存から、任意Xの両包含X→X×Δ1もanodyneとなる。
+使用するのは固定版Mathlibにモデル構造なしで定義されるhorn右類とanodyne左類である。
+
+`AnodyneHomotopyLocalization`は、anodyneを同型へ送る任意の関手Lについて、
+両区間端点の像が等しくなることを証明する。共通のprojectionへの右逆という実等式と
+端点の可逆性を用いる。任意のSSet.Homotopyの両端の像は従って等しい。
+実retractionと全ホモトピー逆のデータから、L(f)を順写像、同じL(section)を逆写像とする
+実際の同型を構成する。Lの値域にモデル構造は要求しない。
+
+同じファイルはcanonicalな通常のanodyne局所化anodyneQを公開する。
+anodyneQ(f)が同型なら、anodyneを反転する任意Lの像も同型であることを、
+局所化の普遍性と実自然同型で証明する。
+
+### 290.2 元の小さいモデル弱同値と判定の一致
+
+`AnodyneModelDetection`は元のSSet[v]にのみ従来のモデル条件を置く。
+任意の弱同値fをcofibration・trivial fibrationに分解すると、前半はtrivial cofibrationとなる。
+後半には全SSet対象のcofibrancyからsectionがあり、sectionはmonoかつ弱同値なので
+trivial cofibrationとなる。固定クラスではtrivial cofibration=anodyneである。
+従ってanodyneを反転する関手は、元のモデルの全弱同値を反転する。
+逆向きはanodyneが元の弱同値であることから従う。
+
+さらに既存のモデル弱同値の飽和性を用い、公開定理
+`weakEquivalences_iff_anodyneQ_isIso`で
+「元のモデルの弱同値f」と「anodyneQ(f)が同型」が同値であることを証明する。
+実simplicial homotopy inverseを持つfは元の弱同値である、という公開定理も得た。
+追加の幾何的弱同値との同定や、新しい弱同値類の入力は要求しない。
+
+### 290.3 実bar比較全体の自然同型
+
+`RelativeBarAnodyneComparison`は、anodyneを反転する任意Lでspan左脚の全図式が
+自然同型となることを証明する。成分の順写像はLを適用した実左脚そのものであり、
+逆は§289と同じ実sectionの像である。canonicalなanodyneQにも適用する。
+`ReplacementBarAnodyneComparison`はこれを任意モデル源の実replacement図式へ適用し、
+補助bar宇宙max(u,v)にモデル構造を要求せず、実左脚の全図式の自然同型を出力する。
+
+元のv-smallな補助索引に制限すれば、290.2を直接使ってspan左脚が
+元のSSet[v]の実モデル弱同値であることも受入例で検証した。
+これは最終の源Cの対象宇宙uをvに制限した結果ではない。
+任意源Cの大きい補助barに対して現在出力しているのはanodyne局所化での自然同型であり、
+SSet[v]値の最終zigzagや大きい宇宙の幾何的弱同値定理を出力したとは扱わない。
+
+### 290.4 受入検証と次の作業単位
+
+実装コミット`42d73f52`。全て成功した。
+
+- 共有入口の合同build：2814 jobs、追加警告なし。
+- `check_anodyne_bar_comparison`：モデル不要の両端anodyne性と全ホモトピーの像の等式、
+  同じ実逆データによる同型、独立宇宙のbar比較の全図式の自然同型、
+  元の小さいモデル弱同値との判定一致、実小索引でのbar左脚のモデル弱同値、
+  任意源Cで大きいモデルを要求しない実比較への適用。
+  新規31宣言・5モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：8494宣言・618モジュール、標準公理のみ。
+- `check_relative_bar_diagonal_contraction`：21宣言・5モジュールの回帰確認。
+- `check_relative_bar_span`：36宣言・5モジュールの回帰確認。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+次はこの判定と宇宙liftの両立を、大きいモデルを仮定せず検証する。
+元の小さい射をliftした場合の保存・反映は、290.2のみから自動では従わない。
+span右脚の比較、既存の全整合系・実lift選択空間との接続、
+元のSSet[v]に値を持つ新しい厳密な関手への自然な小値化も引き続き必要である。
+F1の最終RMap・不変性・Kan性・π0比較への統合、F2の最終自然弱同値zigzag比較は未完了。
+全体目標F→L→E→Sを維持する。

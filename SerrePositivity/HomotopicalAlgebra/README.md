@@ -2200,3 +2200,19 @@ section自体を全基底射で自然だとは扱わず、degreeごとのホモ�
 弱同値の公開定理への接続、span右脚の弱同値性、最終の小さい厳密関手と最終比較は残る。
 実装`1a068872`、詳細は計画§289。新規21宣言・5モジュール、共有8463宣言・613モジュールの
 標準公理監査、共有入口2809 jobs、既存span・barの回帰確認が成功。
+
+
+## Anodyne反転による実左脚の比較と元の小さいモデル弱同値（2026-10-16）
+
+`AnodyneIntervalEndpoints`は任意Xの両区間端点がanodyneであることをモデル不要で証明する。
+`AnodyneHomotopyLocalization`はanodyne反転関手で全simplicial homotopyの像の等式を得て、
+実retractionと同じ全ホモトピーから実際の同型を構成する。
+`AnodyneModelDetection`は元のSSet[v]の固定モデル条件の下で、
+anodyne反転が元の全弱同値を反転することと、元のモデル弱同値が
+canonicalなanodyneQでの同型によって正確に判定できることを証明する。
+`RelativeBarAnodyneComparison`と`ReplacementBarAnodyneComparison`は、
+実span左脚の全図式がanodyne反転後に自然同型となることを証明する。
+任意モデル源で大きいSSetモデルを要求しない。小索引では実モデル弱同値まで検証する。
+宇宙liftとの判定の保存・反映、span右脚、最終の小さい厳密関手と最終比較は残る。
+実装`42d73f52`、詳細は計画§290。新規31宣言・5モジュール、共有8494宣言・618モジュールの
+標準公理監査、共有入口2814 jobs、既存収縮・spanの回帰確認が成功。
