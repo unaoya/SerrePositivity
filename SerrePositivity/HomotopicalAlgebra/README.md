@@ -2722,3 +2722,14 @@ barのπ₀単射性の残項目は解消。高次を保つ自然な小値化・
 π₀については有限境界持ち上げ性や高次保存を仮定しない。
 高次を保つ合同関係の存在・自然小値化・最終小さい厳密RMap・F2は未完了。
 検証：`scripts/check_ordinary_quotient_pi_zero.lean`、計画書§332。
+
+
+### 実Kan barへの一意な自然ラベルの延長（§333）
+
+`DiscreteKanExtension`はanodyne拡張に沿う離散値写像の一意な実延長を構成し、
+任意の大きい基底上で全自然変換を値ごとの実Kan置換へ一意に延長する。モデル構造は不要である。
+`OrdinaryKanBarMappingClasses`は厳密な大きいKan bar、元のbarからの自然単位、
+全Ho(C)ラベルの自然で一意な延長、kernelの各実商型のv-small性を供給する。
+元の小さいSSetモデルだけでπ₀同値・全基底自然性・元のbar比較との一致と両変数の弱同値不変性も得る。
+高次を保つ合同関係の存在・自然小値化・最終小さい厳密RMap・F2は未完了。
+検証：`scripts/check_ordinary_kan_bar_mapping_classes.lean`、計画書§333。
