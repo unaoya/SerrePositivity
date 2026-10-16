@@ -56,16 +56,19 @@ lemma torCoefficientScalarEndomorphism_acyclicBaseChange_eq_zero_iff (M : Module
     apply (cancel_mono e.hom).mp
     rw [he, h, comp_zero, zero_comp]
 
-/-- Flatness supplies acyclicity for every test module, with the actual restricted scalar ring. -/
-lemma scalarExtensionTorVanishing_of_flat_algebra [Module.Flat R B] (M : ModuleCat.{u} R) :
-    scalarExtensionTorVanishing (algebraMap R B) M := by
-  let e : baseChangeScalarModule (algebraMap R B) ≃ₗ[R] B :=
+/-- The actual restricted scalar module has the original algebra action on its carrier. -/
+def baseChangeScalarAlgebraEquiv : baseChangeScalarModule (algebraMap R B) ≃ₗ[R] B :=
     { toFun := fun x => x
       invFun := fun x => x
       left_inv := fun _ => rfl
       right_inv := fun _ => rfl
       map_add' := fun _ _ => rfl
       map_smul' := fun r b => (Algebra.smul_def r (show B from b)).symm }
+
+/-- Flatness supplies acyclicity for every test module, with the actual restricted scalar ring. -/
+lemma scalarExtensionTorVanishing_of_flat_algebra [Module.Flat R B] (M : ModuleCat.{u} R) :
+    scalarExtensionTorVanishing (algebraMap R B) M := by
+  let e := baseChangeScalarAlgebraEquiv (R := R) (B := B)
   have := Module.Flat.of_linearEquiv e
   intro i hi
   obtain ⟨j, rfl⟩ := Nat.exists_eq_succ_of_ne_zero (Nat.ne_of_gt hi)
