@@ -101,7 +101,8 @@ lemma completedTensorH0_p_mul_injective_of_perfect_residue
   let := derivedH0CommRing A
   let := derivedH0Algebra A
   have hreg := (completedTensorAlgebra_pure_of_perfect_residue p R S T ha hS hT).2.2
-  change Function.Injective (fun x : (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj A.X.obj =>
+  change Function.Injective
+    (fun x : (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj A.X.obj =>
     (p : (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj A.X.obj) * x)
   intro x y hxy
   apply hreg

@@ -742,6 +742,8 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteScala
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PerfectResidueCompletedTensor
 
+public import SerrePositivity.BhattScholze.PerfectDeltaCompletedTensorDiscrete
+
 /-!
 # Serre の交点重複度の正値性の形式化
 
