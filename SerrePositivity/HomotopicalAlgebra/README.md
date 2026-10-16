@@ -1724,3 +1724,16 @@ projectionは成分ごとに自明fibration、pointは弱同値である。任�
 混合文脈の図式、既選択比較族の全整合性、最終C上のRMapの厳密化・比較は残る。
 実装`f975a211`、詳細は計画§256。新規47宣言・2モジュール、共有6419宣言・482モジュールの
 標準公理監査と後合成文脈・framed二変数関手の回帰確認が成功。
+
+
+## 前後合成の混合文脈と実際のfiber図式（2026-10-16）
+
+共有`Simplicial/FiberFunctor`は任意の自然変換と自然な点から実際のpullback fiberの厳密関手を
+構成し、指定点上の自然な族をfiberへ持ち上げる。モデル構造は不要である。
+`MixedChoiceFunctor`は実際のFrameMap付きOver圏の反対圏とresolutionのUnder圏の積へ適用する。
+各fiberを元のResolutionLiftSpaceとprojectionを保つ実際の同型で結び、前後移送の厳密交換則を示す。
+根の全lift族・固定頂点を運ぶ自然変換と相対選択空間の厳密関手を構成した。
+自然なpoint・projectionとpoint≫projection=idがあり、成分の自明fibration性・弱同値性も証明する。
+任意モデル源と小さいSSet値を維持する。旧独立比較族の全整合性、基底Cへの降下、最終RMapは残る。
+実装`7c8e969c`、詳細は計画§257。新規63宣言・2モジュール、共有6482宣言・484モジュールの
+標準公理監査と前後合成の各文脈関手の回帰確認が成功。

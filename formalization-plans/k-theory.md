@@ -13153,3 +13153,64 @@ pointの各成分の弱同値性を証明した。
 整合性を構成する。源側因子分解点での既存preEdgeとの比較、旧独立選択・全括弧付け、
 全外部合成列の高次整合性、任意標的へのSSet値拡張、最終C上の厳密化と最終比較は未完了である。
 F1および全体目標F→L→E→Sを維持する。
+
+
+## 257. F1進捗：前後両変数の混合文脈と実際のfiberの厳密関手（2026-10-16）
+
+§256の前合成文脈と後合成文脈を、一つの小さいSSet値の厳密図式へ接続した。
+一般のモデル源と独立した対象・射の宇宙を維持し、∞圏や引用axiomは導入しない。
+A0・A1の受入条件は§166で完了しており、継続中の目標F→L→E→SのF1を進めた。
+
+### 257.1 通常の圏論としてのfiberの関手化
+
+共有`Simplicial/FiberFunctor`は、任意のD、自然変換p:F→Gと自然な点Δ[0]→Gに対し、
+各対象での実際のpullback fiberを値とするD→SSetを構成する。
+移送はpullbackの普遍性で定義し、恒等射・合成則、自然なinclusion・projectionを証明した。
+さらに、指定した点の上にある自然な族をfiberへの自然変換に持ち上げる。
+この層にモデル構造、単射性、Dの小ささは要求しない。
+
+### 257.2 一つの混合文脈と元のlift空間との同型
+
+`MixedChoiceFunctor`では、FrameMapを持つY、resolution対象W、基底射g:Y→Wを固定する。
+文脈圏は`(Over Y)ᵒᵖ × Under W`で、源側は実際のFrameMap、標的側は実際のresolution射を記録する。
+cosimplicial Homの厳密二変数関手をuncurryし、augmentationへの自然変換と自然な基底点を構成した。
+`FiberFunctor`を適用した`fibers`は、両変数を同時に動かす小さいSSet値の厳密関手である。
+
+`total`は各文脈の基底射a.base≫g≫b.baseを表す。
+`basepoint_eq`で運んだ点を元のaugmentationから作る点と同定し、`fiberIso`により各fiberを
+そのtotalに対する元の`ResolutionLiftSpace`と実際の単体的同型で結んだ。
+この同型はprojectionとも可換であり、成分の自明fibration性へ接続できる。
+`fibers_interchange`は前合成→後合成と後合成→前合成が、実際の単体写像として一致することを示す。
+
+### 257.3 全lift族・固定頂点・相対選択空間
+
+根のlift空間全体から各文脈への写像を一つの自然変換`family`として構成した。
+元の`CoherentLiftTuples.interpolation`をこの族で運ぶ`leftFamily`と、全strict lift頂点を
+運ぶ自然な`boundary`を定義した。`RelativeChoiceFunctor`を適用すると、混合文脈全体で
+固定頂点付き相対選択空間の厳密関手`functor`を得る。
+自然なpoint・projection、point≫projection=id、両変数の厳密交換則を証明した。
+明示した小さいSSetのモデル・cofibration/fibrationクラス一致の下で、projectionの各成分は
+自明fibration、pointの各成分は弱同値である。
+
+ここでの境界は根の全strict lift頂点を両側へ運んだものを用いる。
+既存preChoiceSpace・postChoiceSpace全体との自然同型や、独立に選んだpreRight・postRight、
+既選択のpreEdge・postEdgeの自然性を、この構成だけから主張するものではない。
+また、FrameMap付き文脈を基底Cへ降下する関手的な選択もまだ構成していない。
+
+### 257.4 受入検証と残項目
+
+実装コミット`7c8e969c`。全て成功した。
+
+- 共有入口の合同build：2679 jobs、追加警告なし。
+- `check_mixed_choice_functor`：モデル不要の一般fiber関手、独立宇宙・任意モデル源での
+  混合文脈図式、元のlift空間との実際の同型、前後移送の厳密交換則、自然な点とprojection、
+  成分の自明fibration性と弱同値性。新規63宣言・2モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：6482宣言・484モジュール、標準公理のみ。
+- `check_framed_pre_choice_functor`：47宣言・2モジュールの回帰確認。
+- `check_post_choice_functor`：56宣言・4モジュールの回帰確認。
+- 新規ソースの行長・空白・証明用マーカー確認、stageした差分の空白検査。
+
+次は混合文脈の自然な族と、§249〜255の既選択全列比較族・既存の前後合成比較との接続を進める。
+源側因子分解点での既存preEdgeとの比較、旧独立選択・全括弧付け、全外部合成列の高次整合性、
+任意標的へのSSet値拡張、最終C上の厳密化と最終比較は未完了である。
+F1および全体目標F→L→E→Sを維持する。
