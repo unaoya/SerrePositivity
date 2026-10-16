@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarMappingClasses
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.StarDiagramSmallQuotient
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SmallSubdiagramObstruction
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarSmallSubcomplex
