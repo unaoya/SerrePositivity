@@ -4342,3 +4342,30 @@ Checks.LeftTensorQuasiIso・Checks.FunctorModuleConeIso・Checks.StageSeven・�
 自然変換の可逆性へ運び、左変数の局所化へ延長する。
 U12aのshift閉性・保存条件との逆向き、U12c/e/f、U11eのcoherence、U13〜U17・D4mも未完。
 共有系列への追加要求はなく、担当外ファイルを編集していない。
+
+
+### 17.68 U12d6：左右の指定局所化上の導来tensor双関手（2026-10-16）
+
+`Derived/LeftBasic.lean`はleftModuleQuasiIsoによる実際の局所化DerivedLeftModuleCategory、
+leftModuleToDerived、指定準同型の像の同型を公開する。射・対象の宇宙はMathlibの構成された
+局所化に従い、小さいHom宇宙を追加主張しない。
+
+`Derived/LeftTensorInversion.lean`は射影的右加群を固定した左準同型保存をD(A)の同型へ送り、
+既存の解像度関手の計算同型と局所化関手の本質的全射性を用いて、
+moduleResolutionDerivedTensorLeftFunctorが左の指定準同型を反転することを証明する。
+`Derived/TensorBifunctor.lean`はこれをMathlibの局所化普遍性で延長し、
+DerivedLeftModuleCategoryからDerivedModuleCategory上のD(A)値関手圏への双関手を構成した。
+任意の右射影解像度族版、標準semifree解像度版、左の局所化前での厳密な因子化、
+任意解像度族による具体的balanced tensorへの計算同型を公開する。
+
+Checks.TensorBifunctor・Checks.LeftTensorQuasiIso・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2864 jobs、終了コード0、警告なし）。任意可換環・独立対象宇宙・
+独立したD(A)の射宇宙・ZMod 2を検査する。一般モデル圏・Quillen・転送を使わない。
+主要13宣言の直接公理監査は終了コード0、標準公理のみ。監査累計1839宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。
+今回の4 Leanファイルにsorry/admit/新規axiomはない。担当差分の空白検査も成功。
+
+U12d全受入には解像度族比較の左変数を含めた自然性・自己/推移整合性と任意解像度計算の統合が残る。
+次は既存moduleResolutionDerivedTensorIsoを左変数の射と可換にし、両変数局所化上へ延長する。
+U12aの残部・U12c/e/f、U11eのcoherence、U13〜U17・D4mも未完。
+共有系列への追加要求はなく、担当外ファイルを編集していない。
