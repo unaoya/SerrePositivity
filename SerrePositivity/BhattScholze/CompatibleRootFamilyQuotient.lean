@@ -5,7 +5,8 @@ public import SerrePositivity.BhattScholze.CompatibleRootCompletionSurjective
 
 /-! # B4-4：任意根族の商とp完備化の普遍性・標準射
 
-候補のperfectoid性は別の仮定とし、任意イデアルへの拡張を完成とは数えない。
+被約なp進完備試験環への普遍性を先に示し、perfectoid試験環への入口を特殊化する。
+候補自身のperfectoid性は別の仮定とする。
 -/
 
 @[expose] public noncomputable section
@@ -28,15 +29,16 @@ def compatibleRootFamilyCompletionMap (p : ℕ) (ρ : σ → ℕ → R) :
     R ⧸ compatibleRootFamilyZeroIdeal ρ →+* CompatibleRootFamilyCompletion p ρ :=
   (algebraMap (R ⧸ compatibleRootFamilyIdeal ρ) _).comp (compatibleRootFamilyQuotientMap ρ)
 
-/-- 任意perfectoid試験環への射は、全根族の商のp完備化を一意に経由する。 -/
-theorem existsUnique_compatibleRootFamilyCompletionLift_to_perfectoid
+omit [Fact p.Prime] in
+/-- 被約なp進完備試験環への射は、全根族商のp完備化を一意に経由する。
+pの素数性、源の完備性、生成族の有限性や非空性は要求しない。 -/
+theorem existsUnique_compatibleRootFamilyCompletionLift
     (ρ : σ → ℕ → R) (hρ : ∀ s n, ρ s (n + 1) ^ p = ρ s n)
-    {T : Type u} [CommRing T] (hT : IsIntegralPerfectoid T p)
+    {T : Type u} [CommRing T] [IsReduced T]
+    [IsAdicComplete (Ideal.span {(p : T)}) T]
     (g : R ⧸ compatibleRootFamilyZeroIdeal ρ →+* T) :
     ∃! l : CompatibleRootFamilyCompletion p ρ →+* T,
       l.comp (compatibleRootFamilyCompletionMap p ρ) = g := by
-  let := hT.isReduced T p
-  let := hT.isAdicComplete T p
   let f := g.comp (Ideal.Quotient.mk (compatibleRootFamilyZeroIdeal ρ))
   have hf : ∀ s, f (ρ s 0) = 0 := by
     intro s
@@ -62,6 +64,17 @@ theorem existsUnique_compatibleRootFamilyCompletionLift_to_perfectoid
     Ideal.quotientMap_surjective Function.surjective_id
   obtain ⟨s, rfl⟩ := hsurj x
   exact (RingHom.congr_fun hk s).trans (RingHom.congr_fun hq s).symm
+
+/-- 任意perfectoid試験環への射は、全根族の商のp完備化を一意に経由する。 -/
+theorem existsUnique_compatibleRootFamilyCompletionLift_to_perfectoid
+    (ρ : σ → ℕ → R) (hρ : ∀ s n, ρ s (n + 1) ^ p = ρ s n)
+    {T : Type u} [CommRing T] (hT : IsIntegralPerfectoid T p)
+    (g : R ⧸ compatibleRootFamilyZeroIdeal ρ →+* T) :
+    ∃! l : CompatibleRootFamilyCompletion p ρ →+* T,
+      l.comp (compatibleRootFamilyCompletionMap p ρ) = g := by
+  let := hT.isReduced T p
+  let := hT.isAdicComplete T p
+  exact existsUnique_compatibleRootFamilyCompletionLift ρ hρ g
 
 omit [Fact p.Prime] in
 /-- 任意根族商は、p前完備な基底からの全射によりp前完備。 -/

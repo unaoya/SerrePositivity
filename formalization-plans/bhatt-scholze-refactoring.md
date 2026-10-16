@@ -514,7 +514,7 @@ BS担当は本計画、BS専用監査、下記N1/N2のBSファイルを編集す
 | ID | 対象 | 契約と分類 | 状態 |
 | --- | --- | --- | --- |
 | N0 | 本計画 | 現在地、担当、共通化候補、検証・保存の順序を記録 | `54f3d966`で保存済み |
-| N1 | `CompatibleRootFamilyQuotient.lean` | 被約なp進完備終域への一意延長を一般入口に抽出。旧perfectoid入口を同じ型の包装にする。仮定弱化を伴う証明拡張 | 未実装 |
+| N1 | `CompatibleRootFamilyQuotient.lean` | 被約なp進完備終域への一意延長を一般入口に抽出。旧perfectoid入口を同じ型の包装にする。仮定弱化を伴う証明拡張 | 実装・境界例・旧7型一致・172件のfocused監査済み |
 | N1a | `CompatibleRootSingletonComparison.lean` | 並行alias移管後の二つのイデアル一致証明を、元のspan表示への明示的changeで修復。型・同型・標準射は維持 | 修復・下流ビルド・既存169件のfocused監査済み |
 | N2 | `CompatibleRootPDComparison.lean`、`CompatibleRootFamilyPDComparison.lean` | 同じ完備化環上のpイデアル像の計算を既存 `pIdeal_map` へ置換。新宣言・import・instanceなし | 未実装 |
 | N3 | `scripts/audit_bhatt_scholze_structure.py`、BS専用監査 | 引用・共有監査掲載・aliasの参照分類を追加。ソース解析をLeanの証明監査と区別する | 実装・自己テスト11件・11基盤入口検査済み |
@@ -618,3 +618,14 @@ B-I/B6、André条件付き入力、残るCLMST引用は維持する。
   ビルド中のBSソースハッシュ変化なし。既存の単一根比較のrfl・標準射図式も監査に含む。
   通常B4監査は移管側の `compatibleRootIdealTensorMap_tmul` 不足による2コマンドだけが失敗。
   この別件を修復済みと数えず、共通移管ファイルや監査の対象宣言を変更していない。
+
+
+- N1：`existsUnique_compatibleRootFamilyCompletionLift` を任意の自然数pについて証明した。
+  終域の被約性・古典的p進完備性を明示し、旧perfectoid入口は同じ型の包装として保持した。
+  元の商・完備化・標準射の定義は不変。根の消去と完備化延長は既存APIを使い、新引用・公理・instanceなし。
+  旧7宣言の完全署名はbaselineビルド後の取得と変更後でbyte一致。
+  一般p、空添字族、非素数p=4と非零終域ZMod 2、p=0と終域ℤ、任意pでの零源・零終域、
+  既存台環と標準射・代表元公式のrfl 4件を検証した。
+  境界監査初版の両名前空間openによる曖昧性は監査側で修正し、修正後に終了コード0を確認した。
+  536対象・4,582ジョブの統合ビルドと基礎584件が成功。追加3入口を含むfocused172件も終了コード0、標準3公理のみ。
+  通常B4監査の移管側旧名1件の不足は別件として残り、成功と報告しない。

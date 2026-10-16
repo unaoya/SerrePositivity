@@ -43,6 +43,7 @@ import SerrePositivity.BhattScholze.PrincipalDPBaseChange
 import SerrePositivity.BhattScholze.DeltaDivisionFirstCoefficientPowerEquiv
 import SerrePositivity.BhattScholze.PolynomialDelta
 import SerrePositivity.BhattScholze.RelativeFreeFiniteDeltaStep
+import Mathlib.Algebra.Ring.PUnit
 import Mathlib.Util.AssertNoSorry
 
 /-! Focused dependency checks for the BS refactoring steps.
@@ -519,3 +520,100 @@ assert_no_sorry SerrePositivity.BhattScholze.relativeFreeFiniteDeltaStep_map_pri
 #print axioms SerrePositivity.BhattScholze.wittTwoLift_map_delta_add_of_right_zero
 #print axioms SerrePositivity.BhattScholze.wittTwoLift_map_delta_mul_of_prime_zero
 #print axioms SerrePositivity.BhattScholze.wittAdditionCarry_mem_of_right_mem
+
+
+-- N1: general root-family universality and boundary contracts.
+
+/- Audit of the general family-completion universal property.
+   The old declarations and standard maps stay fixed; only the target hypotheses broaden.
+   No primality, source completeness, source reducedness, or nonempty index is assumed below. -/
+namespace SerrePositivity.BhattScholze.RefactoringFamilyAudit
+universe u
+
+section GenericContract
+variable {p : ℕ} {R σ T : Type u} [CommRing R] [CommRing T]
+variable (ρ : σ → ℕ → R) (hρ : ∀ s n, ρ s (n + 1) ^ p = ρ s n)
+variable [IsReduced T] [IsAdicComplete (Ideal.span {(p : T)}) T]
+example (g : R ⧸ compatibleRootFamilyZeroIdeal ρ →+* T) :
+    ∃! l : CompatibleRootFamilyCompletion p ρ →+* T,
+      l.comp (compatibleRootFamilyCompletionMap p ρ) = g :=
+  existsUnique_compatibleRootFamilyCompletionLift ρ hρ g
+end GenericContract
+
+section OldStandardMaps
+variable {R σ : Type u} [CommRing R] (p : ℕ) (ρ : σ → ℕ → R)
+example : CompatibleRootFamilyCompletion p ρ =
+    AdicCompletion (Ideal.span {(p : R ⧸ compatibleRootFamilyIdeal ρ)})
+      (R ⧸ compatibleRootFamilyIdeal ρ) := rfl
+example : compatibleRootFamilyCompletionMap p ρ =
+    (algebraMap (R ⧸ compatibleRootFamilyIdeal ρ) _).comp
+      (compatibleRootFamilyQuotientMap ρ) := rfl
+example (r : R) : compatibleRootFamilyQuotientMap ρ
+    (Ideal.Quotient.mk (compatibleRootFamilyZeroIdeal ρ) r) =
+      Ideal.Quotient.mk (compatibleRootFamilyIdeal ρ) r := rfl
+example (r : R) : compatibleRootFamilyCompletionMap p ρ
+    (Ideal.Quotient.mk (compatibleRootFamilyZeroIdeal ρ) r) =
+      algebraMap (R ⧸ compatibleRootFamilyIdeal ρ) _
+        (Ideal.Quotient.mk (compatibleRootFamilyIdeal ρ) r) := rfl
+end OldStandardMaps
+
+section EmptyFamily
+variable {R T : Type u} [CommRing R] [CommRing T] (p : ℕ)
+variable [IsReduced T] [IsAdicComplete (Ideal.span {(p : T)}) T]
+example (ρ : PEmpty.{u+1} → ℕ → R) (g : R ⧸ compatibleRootFamilyZeroIdeal ρ →+* T) :
+    ∃! l : CompatibleRootFamilyCompletion p ρ →+* T,
+      l.comp (compatibleRootFamilyCompletionMap p ρ) = g :=
+  existsUnique_compatibleRootFamilyCompletionLift ρ (fun s => PEmpty.elim s) g
+example (ρ : PEmpty.{u+1} → ℕ → R) : compatibleRootFamilyZeroIdeal ρ = ⊥ := by
+  change Ideal.span (Set.range (fun s => ρ s 0)) = ⊥
+  simp
+example (ρ : PEmpty.{u+1} → ℕ → R) : compatibleRootFamilyIdeal ρ = ⊥ := by
+  change Ideal.span (Set.range (fun x : PEmpty.{u+1} × ℕ => ρ x.1 x.2)) = ⊥
+  simp
+end EmptyFamily
+
+/- A composite completion parameter with a nontrivial reduced complete target.
+   Fact 2.Prime is a target-ring fact; no Fact 4.Prime is introduced. -/
+example (g : ZMod 2 ⧸ compatibleRootFamilyZeroIdeal
+    (fun (_ : PUnit) (_ : ℕ) => (0 : ZMod 2)) →+* ZMod 2) :
+    ∃! l : CompatibleRootFamilyCompletion 4
+        (fun (_ : PUnit) (_ : ℕ) => (0 : ZMod 2)) →+* ZMod 2,
+      l.comp (compatibleRootFamilyCompletionMap 4
+        (fun (_ : PUnit) (_ : ℕ) => (0 : ZMod 2))) = g := by
+  let : Fact (Nat.Prime 2) := ⟨Nat.prime_two⟩
+  let : IsAdicComplete (Ideal.span {(4 : ZMod 2)}) (ZMod 2) := by
+    have hz : (4 : ZMod 2) = 0 := by decide
+    rw [hz, Ideal.span_singleton_zero]
+    infer_instance
+  exact existsUnique_compatibleRootFamilyCompletionLift _ (by intros; simp) g
+
+/- Parameter zero, empty family, and an ordinary reduced target: no source
+   precompleteness or prime assumption is available. -/
+example {R : Type} [CommRing R] (ρ : PEmpty → ℕ → R)
+    (g : R ⧸ compatibleRootFamilyZeroIdeal ρ →+* ℤ) :
+    ∃! l : CompatibleRootFamilyCompletion 0 ρ →+* ℤ,
+      l.comp (compatibleRootFamilyCompletionMap 0 ρ) = g := by
+  let : IsAdicComplete (Ideal.span {(0 : ℤ)}) ℤ := by
+    rw [Ideal.span_singleton_zero]
+    infer_instance
+  exact existsUnique_compatibleRootFamilyCompletionLift ρ (fun s => PEmpty.elim s) g
+
+/- A literal zero source and target with arbitrary p, including p = 1. -/
+example {σ : Type u} (p : ℕ) (ρ : σ → ℕ → PUnit.{u+1})
+    (g : PUnit.{u+1} ⧸ compatibleRootFamilyZeroIdeal ρ →+* PUnit.{u+1}) :
+    ∃! l : CompatibleRootFamilyCompletion p ρ →+* PUnit.{u+1},
+      l.comp (compatibleRootFamilyCompletionMap p ρ) = g := by
+  let : IsReduced PUnit.{u+1} := ⟨fun _ _ => Subsingleton.elim _ _⟩
+  exact existsUnique_compatibleRootFamilyCompletionLift ρ
+    (fun _ _ => Subsingleton.elim _ _) g
+
+#check @existsUnique_compatibleRootFamilyCompletionLift
+#print axioms existsUnique_compatibleRootFamilyCompletionLift
+#print axioms existsUnique_compatibleRootFamilyCompletionLift_to_perfectoid
+#print axioms compatibleRootFamilyCompletionMap_isPerfectoidization_of_isIntegralPerfectoid
+
+end SerrePositivity.BhattScholze.RefactoringFamilyAudit
+
+assert_no_sorry SerrePositivity.BhattScholze.existsUnique_compatibleRootFamilyCompletionLift
+assert_no_sorry SerrePositivity.BhattScholze.existsUnique_compatibleRootFamilyCompletionLift_to_perfectoid
+assert_no_sorry SerrePositivity.BhattScholze.compatibleRootFamilyCompletionMap_isPerfectoidization_of_isIntegralPerfectoid
