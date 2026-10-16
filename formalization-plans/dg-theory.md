@@ -6775,3 +6775,36 @@ U15c受入コミットはb8f116c7。U11eの未コミット草稿AssociatorLeftCo
 各宣言の型照合と最終可換式の型照合を別に測定する。汎用四角形への最終項の置換だけでは
 計算負荷が解消しないという今回の結果を踏まえ、同じ検査の無変更再実行は行わない。
 計算上限の拡大やsorryによる回避は採用していない。U11e全体とU17までの残目標を保持する。
+
+
+### 17.146 U11e23：作用の値表示と結合比較後の作用輸送（2026-10-17）
+
+`Tensor/AssociatorRightTransport.lean`のassociatorRightCochain_transportは、
+結合同型の後に左F作用を適用した生成元を、R成分へ作用した右括弧の生成元として計算する。
+associatorValueIso_hom_elementと既存の右括弧の作用公式から証明し、単独ビルドは1.9秒で成功した。
+`Bimodule/ActionElement.lean`はleftActionElementを全Hom cochainから定義する。
+始域・終域の型をM.valueに固定し、既存の左加群作用との一致leftActionElement_eqを証明する。
+
+`Tensor/AssociatorActionDegree.lean`は作用後の次数jと中間次数lを独立変数として、
+hj:k+p=j、hl:j+r=l、hn:j+i=nを明示した生成元輸送を証明する。
+全Homによる値表示と元のleftAction表示の両方を公開する。
+この版の二宣言を含むビルドは1.8秒で成功した。
+対して、jをk+pの式へ固定した元の作用表示の特殊化と全Hom値表示の特殊化は、
+それぞれkernel deterministic timeoutとなった。後者は130秒で失敗を確認した。
+したがって単なる作用表示の置換だけで解消したとは扱わない。
+
+左右の二段へ分離した草稿も、左側の宣言で133秒のkernel timeoutとなった。
+局所haveを使わない直接証明項の版も失敗した。
+命題の型だけを定義した一時検査は成功しており、検査負荷は証明項側に残る。
+未受入のLeftTransport/LeftCompatibility/Naturalityおよび実験用草稿は本受入やコミットに含めない。
+
+Checks.AssociatorTransport・Checks.QuotientUniversal・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（2828 jobs、終了コード0、警告なし）。任意環、独立対象宇宙、全整数次数、
+ZMod 2の次数−1作用を検査した。主要5宣言の直接公理監査は標準公理のみ。累計2843宣言。
+文書検査は13 Markdown・320 exposition参照、失敗0件。担当差分の空白検査も成功。
+今回の受入実装にsorry/admit/新規axiomはない。引用採用は0件。
+
+次は独立次数版を左側の輸送と最終可換式へ接続する。必要なら作用の結果の元も独立変数として
+指定し、その元との等式から元の作用公式へ戻す。U11eの両作用自然性・実際のbimodule同型・
+三角/五角coherenceはなお未完。U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mの目標を保持する。
+共有系列への追加要求はない。共有一般論・共有ルートimport・他系列は編集していない。
