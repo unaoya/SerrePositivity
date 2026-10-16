@@ -2945,3 +2945,14 @@ Paths³(Cᵒᵖ × C) → Choice(P × ∂Δ²)という実境界関手と、全�
 境界全体・三面・両退化像全体を厳密に保つP × Δ²上の充填関手を構成する。
 次数2の相対充填は完了。全次数の帰納構成と、最終的な小さい厳密なRMapは残る。
 受入検証は`check_relative_free_triangle_filler`（63宣言・5モジュール）。
+
+
+### 全次数の退化生成射像の交差（§353）
+
+`CategoryTheory.Quiver.PathIntersections`は、
+辺の共通原像から任意長pathの共通原像を作る一般定理を与える。
+`FreeGeneratorDegeneracies`は全次数の退化の単射性・関係式・交差の一意な共通原像を証明する。
+`FreeGeneratorCategories`は生成射表示を実自由path余モナドの反復へ接続し、
+全退化関手との比較等式と実生成射像の交差定理を与える。三モジュールともモデル構造を仮定しない。
+全次数の相対充填の帰納構成と、最終的な小さい厳密なRMapは残る。
+受入検証は`check_all_degree_free_generators`（58宣言・3モジュール）。
