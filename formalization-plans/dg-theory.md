@@ -5849,3 +5849,37 @@ Checks.ErasureOperator・Checks.ErasureFaces・Checks.StageSeven・既存Spectra
 その後に内部微分との和を最終Hom微分とし、path合成とのLeibniz・単位・結合を検証する。
 U15b全受入、U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mは未完。
 採用済み引用は0件。共有一般論・共有ルートimport・他系列は変更していない。
+
+
+### 17.118 U15b3：後方二重消去の帰納式・添字の対合・二乗零微分の構成（2026-10-16）
+
+`Complexes/TensorCochainComposition.lean`は豊穣合成の保存から通常順cochain合成の保存を
+取り出し、共通のKoszul単位スカラーを消して証明した。左tensorが符号付き反交換式を保つ。
+`Quotient/ErasureTailComposition.lean`は範囲外のeraseFaceが零であることと、二つの消去位置が
+ともに先頭より後の場合の二重消去を短いpathの二重消去へ帰着する式を証明した。
+後者は二重のtensorLeftHomが全次数合成を保つことを使い、任意非有界Homを扱う。
+
+`Quotient/ErasureCancellation.lean`は、最初の位置iと消去後の位置jを反対の順序へ移す
+swapErasureを定義し、固定点なし・対合・長さnとn−1の有限添字の保存を証明した。
+この交換で互いに負となる項の二重和が零であることを、Finset.sum_involutionから証明する。
+標数2を除外せず、任意のAddCommGroupに対して成立する。
+実際のpathの項が互いに負になるという仮定はこの補題の入力であり、未証明のdg商の性質を
+一般論や引用axiomとして導入したものではない。
+
+`Complexes/Perturbation.lean`は次数+1の自己cochain θに対し、δθ=0からdとの反交換を、
+θ²=0から成分の合成零を取り出し、d+θの二乗零を証明した。
+この二つの証明を受け取って、各次数の加群を保持する非有界複体perturbComplexを構成する。
+dg商に適用するには実際のerasureの二乗零を証明する必要があり、条件付きの最終dg商を
+受入済みの対象として公開してはいない。
+
+Checks.ErasureCancellation・Checks.ErasureOperator・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（2656 jobs、終了コード0、警告なし）。独立対象宇宙で範囲外face、
+任意非有界複体の微分変更、消去順序の具体例、ZMod 2での有限和相殺を検査した。
+主要15宣言の直接公理監査は標準公理のみ。監査累計2574宣言。
+文書検査は24 Markdown・311 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次は先頭εを含む二重消去の順序交換式と、eraseFirstの隣接Hom合成との整合性を証明する。
+既存の後方帰納式と添字対合により任意長のerasure²=0へ接続し、perturbComplexに適用する。
+U15b全受入、U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mは未完。
+採用済み引用は0件。共有一般論・共有ルートimport・他系列は編集していない。
