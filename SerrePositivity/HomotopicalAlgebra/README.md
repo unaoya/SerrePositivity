@@ -2503,3 +2503,15 @@ augmentation・評価の可逆性、自然な最終小値化・F2は未完了。
 値宇宙は任意で補助モデル構造は不要。局所化の可逆性から実収縮への接続、
 pushout後の単射性、一般augmentation・評価・最終小値化・F2は未完了。
 検証：`scripts/check_kan_retraction_lifting.lean`、計画書§314。
+
+
+### 両端点指定の相対延長と実pushout後の可逆性（§315）
+
+`KanActualHomotopy`はKan値の商の等式を単一の実ホモトピーへ戻す。
+`KanFibrationLocalizedLifting`はKan基底上の局所化で可逆なKan fibrationに全モノ射持ち上げを供給する。
+`HomotopyClassesClosed`は元の閉随伴を区間ホモトピーとその商へ降ろす。
+`KanRestrictionLifting`は局所化で可逆なモノ射の実内部Hom制限写像に全モノ射持ち上げを構成する。
+`KanMonoRelativeHomotopy`は両端点と元の全制限区間を保つ延長を供給する。
+`KanMonoPushoutEquivalence`は任意の実pushout後のテストの単射性・全単射性と可逆性を証明する。
+補助宇宙のモデル構造は不要。逐次・超限貼り合わせ、一般augmentation・評価、最終小値化・F2は未完了。
+検証：`scripts/check_kan_pushout_equivalence.lean`、計画書§315。
