@@ -12862,3 +12862,72 @@ triangle_AB・triangle_BD・triangle_AC・triangle_CDは、二つの三角形が
 最終契約Cᵒᵖ→(C→SSet)への厳密化と最終比較は残る。
 次は既存の全次元境界充填を使い、実際のFrameMapの合成を含む外部合成列へ整合系を組み立てる。
 固定した低次元の存在だけをF1全体の完成とはせず、F→L→E→Sの全体目標を維持する。
+
+
+## 253. F1進捗：実際のFrameMapの圏・厳密Kan二変数関手・任意長合成列（2026-10-16）
+
+§252の混合比較から多重外部合成の整合系へ進むため、既存の実際のFrameMapの恒等・合成を
+一つの圏へまとめ、その上で小さいKan値の厳密二変数関手を構成した。
+最終要求の源CそのものへのSSet値降下とは区別する。
+
+### 253.1 実際のFrameMapを保持する圏
+
+新規`HomotopyFunctionComplex/FramedResolutionCategory`のFramedResolutionは、
+既存のResolutionObjectを対象とし、射には内側のresolution射と実際の外側FrameMapを記録する。
+合成はその二つの実際の射を合成する。圏の単位・結合則を証明し、内側・外側のresolutionと
+実際の対角cosimplicial図式への関手、および対角augmentationの自然変換を構成した。
+
+FrameMapを忘れる関手と基底Cへの射影はfullである。通常のモデル公理によるliftを用いて、
+任意の内側射と任意の基底射に対する実際の持ち上げを供給する。
+独立に選んだliftが関手をなすことや、fullな射影に厳密な切断があることは仮定しない。
+源に関手的分解・combinatorial性・単体的構造を要求しない。
+
+### 253.2 厳密なKan二変数関手と比較
+
+新規`FramedMappingBifunctor`のhomは、FramedResolution(C)ᵒᵖ→(C→SSet[v])という
+実際の二変数関手である。値と源側の写像は、従来のKanLiftAction.targetFunctorと
+ResolutionLiftPrecomposition.kanTargetNatTransをそのまま使用する。
+FrameMapの実際の合成則から関手の恒等・合成を証明し、選び直した合成liftを使わない。
+
+元のresolution Homからhomへの比較は両変数で自然である。
+全ての値のKan性、fibrant標的における比較の弱同値性と両変数の弱同値不変性を証明した。
+π₀は任意の通常の局所化Qに対するHom(QX,QZ)と同値で、源・標的双方の自然性を持つ。
+同じ基底射を持つ選択はπ₀上で同じ写像を誘導する。値域は元のHom宇宙vを維持する。
+
+### 253.3 任意長の合成列と選択の局所化比較
+
+新規`FramedResolutionChains`は、任意の長さnのresolution合成列と、指定した各隣接辺の
+FrameMapから、一つの実際のframed図式を構成する。隣接のFrameMapそのものを保持し、
+長い射にはその合成を使う。忘れた図式が元の列に厳密に一致することを証明する。
+従ってforgetのnerve写像は全次数で全射である。
+
+既に持ち上げた図式を任意の単体写像θで再添字付けすると、忘れた図式は元の列をθで
+再添字付けしたものに一致する。homによる列全体の反変図式にも厳密な再添字付け則と
+任意の三切断の合成則がある。再添字付け後にFrameMapを選び直していない。
+ただし、独立に選ぶ全列のlift同士が面・退化で一致することや、指定境界の持ち上げまでは主張しない。
+
+新規`FramedMappingLocalization`は、SSetを任意の通常の局所化Lで送った後、
+元のresolution Homと新しいKan二変数関手の間の二変数自然同型を構成する。
+同じ基底射を持つ二つのframed射は、完全なHo(SSet)の射として同じ作用を持つことを証明した。
+π₀だけでの一致に限定していない。一方、この局所化後の一致は、SSet上の写像そのものの
+一致や、最終C上の厳密関手の構成には置き換えない。
+
+### 253.4 受入検証と残項目
+
+実装コミット`00bdacac`。全て成功した。
+
+- 共有入口の合同build：2669 jobs、追加警告なし。
+- `check_framed_mapping_bifunctor`：独立の対象・Hom宇宙、通常のモデル公理だけからのlift、
+  射影のfullness、任意長の指定辺を保持する列のliftと全θの再添字付け、全次数のnerve全射性、
+  小さいKan値の厳密二変数関手、必要なfibrant条件下の両変数不変性、π₀比較、
+  独立宇宙の任意の空間局所化に対する二変数自然同型と完全な写像の選択独立性を確認。
+  新規118宣言・4モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：6261宣言・474モジュール、標準公理のみ。
+- `check_all_factorization_mixed`：101宣言・3モジュールの回帰確認。
+- 新規ソースの行長・空白・証明用マーカー確認とstageした差分の空白検査。
+
+任意の実際のFrameMap列に沿う厳密な単位・合成の土台ができた。
+射影のfullnessやnerveの次数別全射性だけでは、選択済み高次境界の持ち上げやSSet値の降下は得られない。
+これらの列上の図式を§249〜252の全体的な比較と接続し、選択の全高次整合性を満たす系へ
+組み立てる部分は残る。任意標的へのSSet値での拡張、最終契約Cᵒᵖ→(C→SSet)への厳密化、
+最終の自然弱同値zigzag比較も未完了である。F1および全体目標F→L→E→Sを維持する。
