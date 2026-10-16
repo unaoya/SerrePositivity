@@ -3091,3 +3091,17 @@ strictな恒等・合成則を与える。評価kernelで割るものではな�
 全商射での評価の単体自然性、自由分解方向の交換、augmentationの比較・弱同値、
 元の基底への小ささを保つ降下と小さい厳密なRMapは残る。
 受入検証は`check_retract_word_presentation`（190宣言・6モジュール）。
+
+
+### 全商射の単体自然性とnativeな小さい値への作用（§366）
+
+`CategoryTheory/Quiver/PathNatTrans`は生成辺の自然性から道の圏の実自然変換を構成する。
+`WordPresentationNaturality`は実source族・語作用・切断・射影の自然性を道と商へ延長し、
+任意の商射の評価が任意の単体写像と交換することを証明する。
+`WordPresentationAction`はモデル構造不要で実SSetの評価写像を組み立て、
+共有パラメータによる作用族の恒等・合成・代入則を与える。
+`OrdinaryBarWordAction`は全自由分解次数へ適用し、任意の商射族をnativeな小さい
+SSet.{v}の実写像へ写し、恒等・合成・代入を保持する。
+自由分解方向の全面・全退化との接続、augmentationの比較・弱同値、
+元の基底への小ささを保つ降下と小さい厳密なRMapは残る。
+受入検証は`check_word_presentation_action`（22宣言・4モジュール）。

@@ -20350,3 +20350,75 @@ fixedAction、既存のsection・projection・strong contractionへ適用する�
 商のaugmentationの比較・弱同値、小ささを保つstrictificationと元の基底への降下は残る。
 この補助simplicial圏上の評価を、元のCᵒᵖ×C上の小さい厳密なRMapとは扱わない。
 F2の不変性・Kan・π₀とHo(C)の同定なども未完了であり、全体目標は継続する。
+
+
+## 366. 全商射での単体自然性とnativeな小さいSSetへの実作用（2026-10-17）
+
+実装コミット`3ff83b21`。§365の次数別評価を任意の単体写像について接続し、
+実際のSSetの写像として組み立てた。評価の自然性は生成射に限らず、すべての商射について成立する。
+
+### 366.1 一般論
+
+`CategoryTheory/Quiver/PathNatTrans`は、道の圏から任意の圏への二つの実関手に対し、
+頂点の成分と生成辺での自然性だけから実自然変換を構成する。
+対象・辺・行き先の対象・Homの宇宙は独立であり、道の合成に関する帰納法で自然性を証明する。
+
+`Simplicial/WordPresentationNaturality`は、共有パラメータTを持つ任意の実ambient functorと
+既存の強い収縮に対して次を構成する。
+
+- 任意の単体写像θと任意のt∈T_nにおける、ambient/small両頂点の実単体写像。
+- source射族、実語作用、切断、射影の四種類の生成辺での自然性。
+  元の射族の自然性、既存の語作用の全単体自然性、実切断・射影の自然性だけを用いる。
+- これらを道へ延長した自然変換と、Mathlibの商の自然変換持ち上げによる全商射の自然変換。
+- small頂点の任意の商射fについて、K_Y(θ)(eval_n(t,f)(x))が
+  eval_m(T(θ)t,Hom(θ)f)(K_X(θ)x)に等しい実等式。
+
+追加の整合性証明を入力にせず、商の関係を評価kernelで置き換えることもない。
+モデル構造は不要であり、元の圏の対象・Hom・値の三宇宙は独立である。
+
+`Simplicial/WordPresentationAction`はこの自然性から、実SSetの評価写像
+ULift(K_X)⊗(ULift(T)⊗Hom_word(X,Y))→ULift(K_Y)を構成する。
+ULiftは独立した宇宙のtensor因子を補助宇宙へそろえるために使う。
+任意のUから指定したTパラメータと商射族に対する作用族を構成し、
+全パラメータ代入、恒等、合成を実SSetの等式として保持することを証明した。
+
+### 366.2 実bar系と元の小さい値の宇宙
+
+`HomotopyFunctionComplex/OrdinaryBarWordAction`は全自由分解次数nで、
+既存のfixedActionと実strong contractionへ366.1を適用する。
+任意の小さいT、j:ULift(T)→parameters(P,n)、任意の実SSet商射族
+f:ULift(T)→Hom_word(X,Y)から、次の実写像を構成した。
+
+`small(X)⊗T → small(Y)`（nativeなSSet.{v}）。
+
+各単体で既存の実商評価を使い、その自然性は366.1とj・fの自然性から導出する。
+恒等商射族はfst、合成商射族は共有パラメータを保つ写像族の合成となり、
+小さいパラメータの任意の代入とも交換する。sourceも語も任意の商射を許す。
+元のCにはModelCategory以外の追加条件を課さず、小さいSSet.{v}のモデル構造だけを使う。
+補助SSet.{max u v}のモデル構造は導入していない。
+
+### 366.3 受入検証
+
+すべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`（3094 jobs、警告なし）。
+- `check_word_presentation_action`：モデル構造不要の独立した三宇宙の一般論、
+  任意の単体写像・商射についての自然性、実SSet作用、共有パラメータの合成則、
+  元のCの全自由分解次数とnativeな小さいSSetの値、恒等・合成・代入。
+  新規4モジュール全22宣言の標準公理監査。
+- `check_retract_word_presentation`（190宣言・6モジュール）、
+  `check_word_chain_transfer`（155宣言・4モジュール）の回帰検証。
+- `audit_homotopical_foundations`：全12431宣言・879モジュール。
+  新しいPathNatTransも全体監査へ明示的に追加した。
+  propext・Classical.choice・Quot.soundのみ、sorry・引用axiomなし。
+- ソースの行長・証明用マーカー・stage差分の空白検査。
+
+### 366.4 次の受入単位と残作業
+
+評価の単体方向は全商射について接続済みとなった。
+次はsource functorによる語Homの実SSet写像と評価のsource変更則を構成し、
+既存fixedActionの面・退化等式を使って自由分解方向の全面・全退化へ適用する。
+この二方向の接続後、augmentationの比較と弱同値、小ささを保つstrictification、
+元のCᵒᵖ×Cへの降下を進める。
+今回の作用は補助的な語圏上のものであり、元の基底上の小さい厳密なRMapではない。
+F2の不変性・Kan・π₀とHo(C)の同定なども残り、全体目標F→L→E→Sは継続する。
