@@ -6332,3 +6332,31 @@ cochain合成の等式も、推移的に結ぶ前に括弧を明示して型照�
 一般の最終Hom間の合成、単位・結合・収縮方程式、U15b全受入は未完。
 U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mも未完。採用済み引用は0件。
 共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.133 U15b18：右tensor合成保存・associator全次数自然性・ε消去との整合（2026-10-17）
+
+`Complexes/TensorRightComposition.lean`は右tensorの任意整数次数の通常順cochain合成保存と
+閉零chain mapとの一致を証明する。純tensorの成分比較では前合成を含む射の等式を
+両辺ともcochain評価へ明示的に戻し、射の合成を元への作用へ移して検証した。
+`Complexes/AssociatorCochainFactors.lean`は三重tensorの任意cochainのextと、
+associatorの左・中間因子に関する全次数自然性を証明する。
+中間因子の符号は左因子の次数iに対して(-1)^(p*i)となり、両辺で一致する。
+
+`Quotient/ErasureTensorRight.lean`はこれらをeraseEpsilonへ適用し、eraseHeadの右tensor保存と、
+eraseMiddleの二段階associatorを通じた整合式を証明する。
+非空左pathの先頭εを消す項を、右の全pathを保ったまま移動するための補題である。
+任意可換環・非有界・全整数次数の契約を維持し、特性2を除外しない。
+
+Checks.TensorCochainFactors・Checks.ErasureTensorRight・Checks.CompositionPrefix・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（2679 jobs、終了コード0、警告なし）。
+次数−1と+1の合成、およびZMod 2での中間因子自然性の受入例を検査した。
+主要8宣言の直接公理監査は標準公理のみ。監査累計2697宣言。
+文書検査は13 Markdown・320 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次は固定前方Hom・εの括弧変更と後方cochainの自然性をつなぎ、appendRightの非空語帰納式で
+先頭ε項・左語後方項・右語項の三項を識別する。
+一般の最終Hom間の合成、単位・結合・収縮方程式、U15b全受入は未完。
+U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mも未完。採用済み引用は0件。
+共有一般論・共有ルートimport・他系列は編集していない。
