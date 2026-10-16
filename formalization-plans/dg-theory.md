@@ -7300,3 +7300,45 @@ Bᵒᵖ⊗C上のsemifreeからBに関する相対K-flat性を得る条件を別
 dg圏の解像度を使う版を区別する。単純に二変数をsemifree置換して無条件の導来合成としない。
 U12fの非flat係数変更の導来版、U13d/e残部、U14、U15d/e、U16/U17、D4mは未完。
 U17までの目標を保持し、共有系列への新しいAPI要求はない。採用済み引用は0件。
+
+
+### 17.160 U12e1：bimoduleの右相対K-flat性の合成閉性と準同型保存（2026-10-17）
+
+`Bimodule/RelativeKFlat.lean`の**rightRelativeKFlat**は、Pの各左対象cにおける右B加群
+P.rightAt cの相対K-flat性。A上のobjectwise K-flat性とは区別する。
+全dg自然なbimodule同型・retractで不変であり、各右制限のsemifree性又は全Hom射影性から従う。
+ここで要求するのは各右制限の性質そのものであり、積dg圏上のsemifree性からの制限定理を
+仮定なしに導いたとはしていない。対角bimoduleはYoneda評価によりこの条件を満たす。
+**rightRelativeKFlat_compose**はFubini同型を用いた合成閉性の証明。
+acyclicな左B加群Nに対し、P⊗_B Nの各値がacyclicとなり、Qの右相対K-flat性により
+Q⊗_C(P⊗_B N)がacyclicとなる。Fubiniでcompose(P,Q)⊗_B Nへ戻す。
+この閉性には各HomのA-flat性やEのsmall性を追加しない。
+
+`Bimodule/QuasiIso.lean`は全Hom自然な閉零BimoduleCategory上で、両対象の各値が複体の
+quasiIsoとなる射のクラス**BimoduleCategory.quasiIso**を固定する。
+二重iInfによる評価の逆像表示、恒等/合成・2-out-of-3・retract・同型整合性を証明し、
+右加群評価と左加群評価が既存moduleQuasiIso/leftModuleQuasiIsoへ送ることも公開した。
+
+`Tensor/BimoduleQuasiIso.lean`の**composeMap_first_quasiIso**は、後の因子Qの右制限が
+相対K-flatなら、前の因子の任意の指定準同型を合成が保存することを証明する。
+**composeMap_second_projective_quasiIso**は、Q/Q'の各右制限が全Hom射影的なら、
+前の因子Pが任意でもQ→Q'の指定準同型を保存する。既存の射影的加群間の準同型の
+tensorによるホモトピー同値を再利用し、Pの左制限へflat性を自動付与していない。
+**composeMap_projective_quasiIso**は合成mapの因子分解から両変数の同時保存を得る。
+任意CommRing A・非有界・独立B/C/E宇宙を保持。合成の中間CにSmall.{u}を要求し、Eには要求しない。
+
+Checks.BimoduleKFlat・Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（3005 jobs、終了コード0、警告なし）。独立宇宙でのK-flat合成閉性、
+準同型の2-out-of-3/retract、片側semifreeの十分条件、両変数の準同型保存、ZMod 2の対角例を検査した。
+主要19宣言の直接公理監査は標準公理のみ。監査累計3073宣言。
+今回の実装にsorry/admit/新規axiomはない。採用済み引用は0件。
+全体文書検査は13 Markdown・320 exposition参照を検査し、§17.151〜159と同じ担当外の
+BhattScholze互換宣言の未解決参照1件で失敗した。共有ルートや該当系列は編集していない。
+
+次はこの準同型クラスの標準局所化を定義し、固定した右相対K-flat因子との合成を局所化へ降ろす。
+さらにBᵒᵖ⊗C上のsemifreeから片側の相対K-flat性/全Hom射影性を得る制限定理を証明する。
+相手側Homのlocal K-flat性が必要な版と、dg圏の解像度を使う版を区別し、
+実際のbimodule解像度の存在・導来合成の両変数性・単位/結合coherenceまでU12eの残課題として保持する。
+今回の十分条件・閉性・準同型保存だけでU12e全受入としない。
+U12f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完。U17までの目標を保持する。
+共有系列への新しいAPI要求はない。
