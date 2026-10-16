@@ -1,3 +1,4 @@
+import SerrePositivity.HomologicalAlgebra.NilpotentDerivedReduction
 import SerrePositivity.HomologicalAlgebra.DerivedFlatModelTensor
 import SerrePositivity.CommutativeAlgebra.CompletelyFlatNilpotent
 import Mathlib.Util.AssertNoSorry
@@ -28,7 +29,7 @@ example {R M : Type u} [CommRing R] [AddCommGroup M] [Module R M]
     (I : Ideal R) (hI : I ^ 0 = ⊥) (hM : IsCompletelyFlat I M) : Module.Flat R M :=
   flat_of_completelyFlat_nilpotent I ⟨0, hI⟩ M hM
 
--- Only the already discrete case is claimed at this preparatory stage.
+-- The earlier discrete criterion remains compatible with the full derived result below.
 example {R M : Type u} [CommRing R] [AddCommGroup M] [Module R M]
     (I : Ideal R) (hI : ∃ n : ℕ, I ^ n = ⊥)
     (hTor : scalarExtensionTorVanishing (Ideal.Quotient.mk I) (ModuleCat.of R M))
@@ -68,3 +69,36 @@ example {R : Type u} [CommRing R]
     (M : ModuleCat.{u} R) (i : ℤ) (hi : i ≠ 0) :
     IsZero (((moduleTensorCochainFunctor P.complex).obj M).homology i) :=
   moduleTensorCochain_model_homology_isZero_of_pure_flat X P hPure hFlat M i hi
+
+-- Full G10: actual derived reduction, arbitrary bounded-above X, and actual H0 flatness.
+assert_no_sorry SerrePositivity.modelTensor_homology_isZero_of_flat_reduction
+#print axioms SerrePositivity.modelTensor_homology_isZero_of_flat_reduction
+assert_no_sorry SerrePositivity.derived_pure_flat_of_nilpotent_reduction
+#print axioms SerrePositivity.derived_pure_flat_of_nilpotent_reduction
+
+attribute [local instance] HasDerivedCategory.standard in
+example {R : Type u} [CommRing R] (I : Ideal R) (hI : ∃ n : ℕ, I ^ n = ⊥)
+    (X : DerivedCategory.Minus (ModuleCat.{u} R))
+    (hPure : ∀ i : ℤ, i ≠ 0 → IsZero
+      ((DerivedCategory.homologyFunctor (ModuleCat.{u} (R ⧸ I)) i).obj
+        ((boundedAboveDerivedBaseChange (Ideal.Quotient.mk I)).obj X).obj))
+    (hFlat : Module.Flat (R ⧸ I)
+      ((DerivedCategory.homologyFunctor (ModuleCat.{u} (R ⧸ I)) 0).obj
+        ((boundedAboveDerivedBaseChange (Ideal.Quotient.mk I)).obj X).obj)) :
+    X.obj.IsGE 0 ∧ X.obj.IsLE 0 ∧
+      Module.Flat R ((DerivedCategory.homologyFunctor (ModuleCat.{u} R) 0).obj X.obj) :=
+  derived_pure_flat_of_nilpotent_reduction I X hPure hFlat hI
+
+-- Exponent zero is included under its exact nilpotence hypothesis, without Nontrivial R.
+attribute [local instance] HasDerivedCategory.standard in
+example {R : Type u} [CommRing R] (I : Ideal R) (hI : I ^ 0 = ⊥)
+    (X : DerivedCategory.Minus (ModuleCat.{u} R))
+    (hPure : ∀ i : ℤ, i ≠ 0 → IsZero
+      ((DerivedCategory.homologyFunctor (ModuleCat.{u} (R ⧸ I)) i).obj
+        ((boundedAboveDerivedBaseChange (Ideal.Quotient.mk I)).obj X).obj))
+    (hFlat : Module.Flat (R ⧸ I)
+      ((DerivedCategory.homologyFunctor (ModuleCat.{u} (R ⧸ I)) 0).obj
+        ((boundedAboveDerivedBaseChange (Ideal.Quotient.mk I)).obj X).obj)) :
+    X.obj.IsGE 0 ∧ X.obj.IsLE 0 ∧
+      Module.Flat R ((DerivedCategory.homologyFunctor (ModuleCat.{u} R) 0).obj X.obj) :=
+  derived_pure_flat_of_nilpotent_reduction I X hPure hFlat ⟨0, hI⟩
