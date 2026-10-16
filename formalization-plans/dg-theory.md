@@ -4870,3 +4870,34 @@ U13cのrepresentableのcompact性は得られたが、全受入は未完。
 compact⇒Perf・小さいdg enhancement・既存PerfectHomotopy比較は引き続きU13d/eに残る。
 U11eのcoherence・U12e/f・U14〜U17・D4mも未完。
 共有系列への追加要求はなく、共有一般論・共有ルート・他系列のファイルを変更していない。
+
+
+### 17.85 U13c5：compact性のshift・三角閉性とPerf⇒compact（2026-10-16）
+
+`Perfect/CompactShift.lean`は加法的な導来圏の自己同値がcompact性を保つことを、
+加法的随伴Hom同値とMathlibの余積保存同型から証明し、整数shiftへ適用する。
+`Derived/CoproductProjection.lean`は余積から各成分への射、有限supportへの射影、
+指定supportに属する包含を補射影が殺す恒等式を証明した。
+
+`Perfect/CompactTriangles.lean`は標準Hom直和比較の像を部分加群として使う。
+三角形X→Y→Z→X[1]でX/Yがcompactなら、Zから余積への射fについてYからの合成のsupportを有限集合tへ取る。
+fの有限射影成分は比較の像に入り、補射影成分はYからの合成が零となる。
+三角形のHom完全性により後者をX[1]経由で因子化し、X[1]のcompact性から有限supportを得る。
+これによりcompact対象の三角閉性を証明し、既存のshift・retract閉性と合わせて厚い部分圏となる。
+
+`Perfect/PerfectCompact.lean`は主局所化でのshift・二項直和・標準coneにcompact性を運び、
+ModuleFiniteCellCodeの構成木で帰納する。同型とretractの閉性から
+任意生成集合SについてmodulePerfectOver_compact、全生成元についてmodulePerfect_compactを証明した。
+compact⇒Perfは仮定しておらず、U13dの結論を先取りしない。
+
+Checks.PerfectCompact・Checks.Compact・Checks.PerfectKaroubiEquivalence・Checks.StageSeven・
+既存Spectra.StageTwoの同時ビルドは成功（2900 jobs、終了コード0、警告なし）。
+任意整数shift・任意distinguished三角形・任意生成集合SのPerf⇒compact・ZMod 2を検査した。
+主要25宣言の直接公理監査は終了コード0、標準公理のみ。監査累計2135宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。
+今回の5 Leanファイルにsorry/admit/新規axiomはない。担当差分の空白検査も成功。
+
+U13c全受入は代表加群の全shiftによる生成性を残して未完。
+次は評価ホモロジーの全次数消滅と主導来対象の零性を比較し、生成性を証明する。
+U11eのcoherence・U12e/f・U13d/e・U14〜U17・D4mも未完。
+共有系列への追加要求はなく、担当外・共有ルートを変更していない。
