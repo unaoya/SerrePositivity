@@ -9800,3 +9800,15 @@ BS側の具体的X,Y,fとDeltaRootSourceNonpositiveの証明済み入力、p,d�
 同じ実完備化射・標準単位の既存比較、およびG9の離散性判定とは別工程であることを添えた。
 これでG7-Finset・G11の両要求の送信は完了した。両APIの実装完了や一般B4の完成は意味しない。
 Leanコードは変更しておらず、今回は送信記録のみ更新した。
+
+## G7-Finset・G9到着後のBS接続計画（2026-10-16）
+共通のTorExactColimitsとCompleteFlatReductionBoundedの完成を確認した。
+新規BS専用DeltaRootBoundedSupportTorInputs.leanで、任意根族の標準有限部分集合図式のTor交換を供給し、全源Tor消滅の明示交換仮定を外す。
+続くPerfectPrismRootPowerDiscrete.leanで、同じ元の実逐次源の生成元冪商へG9を適用し、次数零集中とH0の有界p冪ねじれを証明する。
+各段階で対象ビルド・pure BS監査を行い個別コミットする。全源の離散性、G11のH0比較、候補CFF、一般B4とは区別する。
+
+## G7-FinsetのBS適用結果（2026-10-16）
+DeltaRootBoundedSupportTorInputs.leanの公開3宣言で、任意根族の標準図式のTor交換と全評価源・実β評価の高次Tor消滅を証明した。
+共通torAlg_preservesFinsetColimitsを適用し、従来の明示交換仮定を追加しない入口を供給した。既存条件付きAPIは維持。
+対象3873ジョブ成功。pure B4監査2470宣言成功、標準3公理のみ、新sorry・公理・引用なし。
+G9の冪商離散性への接続を次段で行う。
