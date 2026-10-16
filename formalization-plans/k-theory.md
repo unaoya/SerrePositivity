@@ -17944,3 +17944,77 @@ small性と有限境界持ち上げ性を証明する作業が残る。
 
 次は同じHo(C)射を表すbar頂点のπ₀での一致と、高次を保つ自然な小値化を証明する。
 最終小さい厳密RMap・π₀同値への統合・F2は未完了。全体目標F→L→E→Sを維持する。
+
+
+## 331. 元のbarの実際のπ₀とHo(C)の射の自然な全単射（2026-10-17）
+
+§329・§330で残したπ₀ラベルの単射性を証明した。実装コミット`b89d729d`。
+対象は元の大きい厳密なordinary resolution barであり、最終の小さいRMapの存在は依然未完了である。
+
+### 331.1 離散Kanテストによるモデル不要のπ₀検出
+
+`Simplicial/PiZeroConstant`は任意の単体集合Xについて、任意の単体の頂点が同じ成分に入ることから
+X → const(T)とπ₀(X) → Tの実際の全単射を構成する。
+全単体作用素との整合性を証明し、離散単体集合const(T)がKanであることを
+hornの互換な面の値の一致から直接証明する。Tの非空性もSSetのモデル構造も不要である。
+離散値への区間ホモトピーが写像の等式を与えることも証明した。
+
+`PiZeroLocalization`はこれを区間ホモトピー類の分類へ移し、
+anodyne局所化で可逆な任意の実写像f : X → Yについて、
+すべてのTへの関数の前合成(π₀Y → T) → (π₀X → T)が全単射であることを
+既存のKanテスト検出から得る。T = π₀XとT = π₀Yのテストで両側逆を作り、
+実際のSSet.mapπ₀ fが全単射であることを証明する。
+従ってπ₀Functorはすべてのanodyne extensionを反転する。
+どの値宇宙にもモデル構造は要求せず、X・YのKan性も要求しない。
+
+### 331.2 同じrawラベルを持つ頂点を実辺で結ぶ
+
+`OrdinaryRawLabelHomotopy`は任意のordinary resolution pair Rについて、
+次数0のraw射f,gのラベルが等しければQf = Qgとなることを、両増大射の像の相殺から証明する。
+sourceのA₀はcofibrant、targetのB₀はfibrantなので、固定版Mathlibの基本補題から
+fとgは左ホモトピックである。
+
+source resolutionのA₁から作った既存の良い円筒を用い、実射h : A₁ → B₀を得る。
+targetの退化射B₀ → B₁との合成は、raw diagonalの実際の1単体となる。
+両端がfとgであることを両resolutionの単体恒等式から証明し、
+この実辺のuliftとentryへの像によってbar内の成分の一致を得る。
+この段階にはSSetのモデル構造も関手的な源の分解も不要である。
+
+### 331.3 entryのπ₀全単射とbarの自然なπ₀同値
+
+`OrdinaryBarPiZero.entry_localized_isIso`は、任意のRに既存の外側frameを付け、
+§323のbar evaluationの可逆性とreference sectionとの合成の可逆性から、
+元のentry自体がanodyne局所化で可逆であることを証明する。
+uliftのパラメータの違いには明示的な次数ごとの同型を挟む。
+この議論は元のSSet.{v}だけのモデル構造を使い、SSet.{max u v}のモデル構造は使わない。
+
+331.1により、entryは実際のπ₀に全単射を誘導する。
+任意のbar成分を固定したpairのentryで表し、ラベルが等しい二成分に331.2を適用して
+`piZeroLabel_injective`を得た。§330の全射性と合わせ、`piZeroLabel_bijective`を証明した。
+
+`piZeroEquiv`は、元のbarの実際のπ₀とHom_H(QX,QY)の全単射である。
+`piZeroEquiv_mk`はraw包含上で(Qa)⁻¹ ≫ Qf ≫ (Qb)⁻¹に等しいこと、
+`piZeroEquiv_naturality`は全基底射についてQ(source)による前合成と
+Q(target)による後合成に対応することを証明する。
+また実際のbarのπ₀が元のHom宇宙vでsmallであることも得た。
+Cの対象宇宙uとHom宇宙v、通常の局所化先Hの対象・Hom宇宙は独立である。
+源にcombinatorial性・simplicial性・関手的分解を追加していない。
+
+### 331.4 受入検証と最終RMapに残るゲート
+
+すべて成功した。
+
+- 共有入口のbuild：2975 jobs、追加警告なし。
+- `check_ordinary_bar_pi_zero`：63宣言・4モジュール、標準公理のみ。
+  モデル不要の離散値分類・Kan性・anodyne局所化での実π₀検出、
+  一般の源モデルだけでのraw実辺、独立宇宙と元の小さいSSetモデルだけでの
+  任意のentryのπ₀全単射・barのπ₀全単射・small性・元の分数式・全基底自然性を検証した。
+- `check_ordinary_bar_label_surjectivity`：既存53宣言・2モジュールの回帰検証。
+- `audit_homotopical_foundations`：10358宣言・777モジュール、標準公理のみ。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+§330までのbarのπ₀単射性の未完了記録は解消した。
+最終小さい厳密RMapに対しては、高次情報を保つ自然な小値化、その自然弱同値比較、
+今回のbarのπ₀同値への接続、F2の残項目を完成させる必要がある。
+ラベルkernelの粗商は高次を保持するものとは扱わない。
+全体目標F→L→E→Sを維持する。

@@ -2697,3 +2697,16 @@ SSetのモデル構造は不要。π₀写像の全単射性、粗商の高次�
 通常の射の定数単体集合図式のuliftと自然同型であり、元の射影とラベルの因子分解も一致する。
 源の通常のモデル公理だけでよい。π₀ラベルの単射性・高次を保つ自然な小値化・F2は未完了。
 検証：`scripts/check_ordinary_bar_label_surjectivity.lean`、計画書§330。
+
+
+### 元のbarの実際のπ₀と通常の局所化の射（§331）
+
+`PiZeroConstant`は離散単体集合への写像をπ₀上の関数で分類し、離散値のKan性とホモトピーの剛性を証明する。
+`PiZeroLocalization`はKanテストから、anodyne局所化で可逆な実写像の実際のπ₀全単射を得る。
+どちらにもSSetのモデル構造は不要である。
+`OrdinaryRawLabelHomotopy`は同じHo(C)ラベルを持つraw頂点を、sourceの良い円筒とtargetの退化から実辺で結ぶ。
+`OrdinaryBarPiZero`はentryの局所化後の可逆性とπ₀全単射を証明し、
+元のbarのπ₀とHom_H(QX,QY)の自然な全単射、そのraw包含上の分数式、π₀のv-small性を得る。
+源は任意のモデル圏、モデル構造を使うSSetは元の小さい宇宙だけでよい。
+barのπ₀単射性の残項目は解消。高次を保つ自然な小値化・最終小さい厳密RMap・F2は未完了。
+検証：`scripts/check_ordinary_bar_pi_zero.lean`、計画書§331。
