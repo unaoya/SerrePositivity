@@ -7799,3 +7799,54 @@ cylinderとホモトピーの同一視を先に整え、得られた比較同値
 単位・結合coherenceの輸送、local Hom条件のないdg圏解像度の経路もU12eに残る。
 U12f・U13d/e残部・U14・U15d/e・U16/U17・D4mは未完で、U17までの目標を保持する。
 共有系列への新しいAPI要求はない。
+
+### 17.171 U12e12：K-flat cylinder・ホモトピー同一視と導来置換関手（2026-10-17）
+
+`Tensor/TensorModuleIso.lean`の**tensorModuleIso**は、任意の非有界複体Kについて
+`(K⊗M)⊗_D N ≅ K⊗(M⊗_D N)`を構成する。既存のパラメータ付きbalanced族の普遍性から
+順逆射を作り、生成元の包含との式**ι_tensorModuleHom/Inv**と両方向の逆関係を証明した。
+余極限の一般論を複製せず、元の全作用を保持するbalanced構成を再利用している。
+`Tensor/ModuleCylinderKFlat.lean`は**complexKFlat_interval**と
+**moduleRelativeKFlat_tensor/modulePrecylinder_relativeKFlat**を与える。
+intervalのK-flat性は任意複体をtensorした既存の収縮同値から得る。
+
+`Bimodule/CylinderKFlat.lean`の**rightModuleBimodule_cylinder_rightRelativeKFlat**は、
+積dg圏のopposite上の加群Mを主bimoduleへ送った対象が右相対K-flatなら、
+Mのcylinderを送った対象も右相対K-flatであることを証明する。
+直接の右制限との比較同型、制限とtensorの同型、上記tensor閉性を合成する。
+ここにlocal Hom条件は不要であり、対象ごとの独立なホモトピーを仮定していない。
+
+`Derived/KFlatBimoduleHomotopy.lean`は、右相対K-flatな像を持つ積dg加群と射を
+**rightKFlatOfModule/rightKFlatOfModuleMap**で実際の充満部分圏へ入れ、恒等・合成を保存する。
+**rightKFlat_equalizes_source_boundary**は全dg自然な加群境界をこの部分圏の局所化で同一視する。
+上記cylinderが部分圏内にあること、その射影が指定準同型であること、元のcylinder descの両端式を使う。
+**rightKFlat_map_eq_of_source_homotopy**は元のK(D)で等しい射に対する同一視の公開形。
+全導来bimodule圏へ送った後だけの等式に弱めず、K-flat部分圏自身の局所化で証明している。
+
+`Derived/KFlatBimoduleReplacement.lean`は、比較同値の逆による指定準同型クラスの保存・反映、
+**bimoduleSourceProjectiveResolution**と実際の持ち上げ射**rightKFlatReplacementMap**を与える。
+localHomKFlat A Cの下で、持ち上げ射をK-flat部分圏の局所化へ送った後の恒等・合成則を
+上記ホモトピー同一視から証明し、**rightKFlatReplacementFunctor**を構成した。
+これは全閉零bimodule圏から部分圏の局所化への厳密な関手であり、
+閉零圏での射の持ち上げ自体が厳密に関手的だとは主張していない。
+指定準同型を反転することから、**derivedRightKFlatReplacement**を全導来bimodule圏から
+K-flat部分圏の局所化への関手として構成し、**derivedRightKFlatReplacement_fac**を証明した。
+Small.{u} B/C、独立対象宇宙、任意可換環、非有界の契約を保持する。
+
+Checks.KFlatBimoduleReplacement・Checks.KFlatBimoduleLocalization・Checks.BimoduleSemifreeKFlat・
+Checks.DerivedBimodulePentagon・Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（3057 jobs、終了コード0、警告なし）。任意生成複体とのbalanced tensor比較、
+interval・加群cylinderのK-flat性、置換関手の型・合成・factorization、ZMod 2を検査した。
+主要24宣言の直接公理監査は標準公理のみ。監査累計3266宣言。
+今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は13 Markdown・320 exposition参照まで進み、担当外BhattScholze互換宣言の
+未解決参照1件で失敗した。共有ルート・共有一般論・該当系列は編集していない。
+
+次は増大射から、rightKFlatDerivedInclusionとderivedRightKFlatReplacementの両合成の
+自然同型を構成する。K-flat部分圏側の自然性はrightKFlat_map_eq_of_source_homotopyを使い、
+全導来圏側では既存の準同型局所化でのホモトピー同一視を使う。
+射影解像度のlift_fac、圏同値のcounit自然性、増大射の元の定義を組み合わせ、
+両同型が証明できるまで充満忠実性や比較同値を宣言しない。
+その後、後因子の全導来圏への拡張と単位・結合coherenceを輸送する。
+local Hom条件のないdg圏解像度の経路、U12e全受入、U12f・U13d/e残部・U14・U15d/e・U16/U17・D4mは残る。
+U17までの目標を保持し、共有系列への新しいAPI要求はない。
