@@ -208,6 +208,12 @@ lemma betweenChosen_evaluate (d : D) :
       (betweenChosen F p₀ p₁ edges h₀ h₁ hcof hfib hp) d = edges d :=
   extend_evaluate _ _ _ _ _ _ _ _ _ _ _ _ _ d
 
+lemma betweenChosen_restrict :
+    Functor.whiskerLeft (lowerInclusion (NerveCoherentFamily.reedy D) 1)
+      (betweenChosen F p₀ p₁ edges h₀ h₁ hcof hfib hp) =
+        NerveParameterExtension.familyVertices F edges :=
+  NerveParameterExtension.extend_restrict F hcof hfib hp _ _ _ _ _
+
 lemma betweenChosen_zero : betweenChosen F p₀ p₁ edges h₀ h₁ hcof hfib hp ≫
     NerveRelativeValueExtension.valueMap _ _
       (NerveParameterExtension.restriction F (SSet.stdSimplex.δ (1 : Fin 2))) =

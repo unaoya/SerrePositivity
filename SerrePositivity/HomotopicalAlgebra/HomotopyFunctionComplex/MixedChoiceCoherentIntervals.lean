@@ -6,8 +6,8 @@ public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.MixedCh
 /-! # Coherent mixed intervals retaining all four old comparisons and shared endpoints
 
 Each original interval is recovered whole at every mixed context. The
-four interval systems use the same four independently constructed
-coherent endpoint systems, including along identity context maps.
+four edge systems and the common diagonal use the same four independently
+constructed coherent endpoint systems, including along identity context maps.
 -/
 
 @[expose] public section
@@ -23,17 +23,17 @@ inductive Vertex where
   | A | B | C | D
 
 inductive Edge where
-  | AB | BD | AC | CD
+  | AB | BD | AC | CD | AD
 
 def source : Edge → Vertex
-  | .AB | .AC => .A
+  | .AB | .AC | .AD => .A
   | .BD => .B
   | .CD => .C
 
 def target : Edge → Vertex
   | .AB => .B
   | .AC => .C
-  | .BD | .CD => .D
+  | .BD | .CD | .AD => .D
 
 variable {C : Type u} [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}]
   (hcof : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
@@ -65,6 +65,8 @@ def oldEdge (e : Edge) (t : MixedChoiceFunctor.Context Y W) :
       t.1.unop.hom.map g t.2.hom (FramedResolution.frameMap t.1.unop.hom)
   | .CD => CoherentLiftMixedComparison.edgeCD hcof hfib t.1.unop.left.inner Y.inner W t.2.right
       t.1.unop.hom.map g t.2.hom (FramedResolution.frameMap t.1.unop.hom)
+  | .AD => CoherentLiftMixedComparison.diagonal hcof hfib t.1.unop.left.inner Y.inner W t.2.right
+      t.1.unop.hom.map g t.2.hom (FramedResolution.frameMap t.1.unop.hom)
 
 lemma oldEdge_zero (e : Edge) (t : MixedChoiceFunctor.Context Y W) :
     SSet.stdSimplex.δ (1 : Fin 2) ≫ oldEdge hcof hfib Y W g e t =
@@ -78,6 +80,9 @@ lemma oldEdge_zero (e : Edge) (t : MixedChoiceFunctor.Context Y W) :
       t.1.unop.hom.map g t.2.hom (FramedResolution.frameMap t.1.unop.hom)
   · exact CoherentLiftMixedComparison.edgeCD_zero hcof hfib t.1.unop.left.inner Y.inner W t.2.right
       t.1.unop.hom.map g t.2.hom (FramedResolution.frameMap t.1.unop.hom)
+  · exact CoherentLiftMixedComparison.diagonal_zero hcof hfib
+      t.1.unop.left.inner Y.inner W t.2.right
+      t.1.unop.hom.map g t.2.hom (FramedResolution.frameMap t.1.unop.hom)
 
 lemma oldEdge_one (e : Edge) (t : MixedChoiceFunctor.Context Y W) :
     SSet.stdSimplex.δ (0 : Fin 2) ≫ oldEdge hcof hfib Y W g e t =
@@ -90,6 +95,8 @@ lemma oldEdge_one (e : Edge) (t : MixedChoiceFunctor.Context Y W) :
   · exact CoherentLiftMixedComparison.edgeAC_one hcof hfib t.1.unop.left.inner Y.inner W t.2.right
       t.1.unop.hom.map g t.2.hom (FramedResolution.frameMap t.1.unop.hom)
   · exact CoherentLiftMixedComparison.edgeCD_one hcof hfib t.1.unop.left.inner Y.inner W t.2.right
+      t.1.unop.hom.map g t.2.hom (FramedResolution.frameMap t.1.unop.hom)
+  · exact CoherentLiftMixedComparison.diagonal_one hcof hfib t.1.unop.left.inner Y.inner W t.2.right
       t.1.unop.hom.map g t.2.hom (FramedResolution.frameMap t.1.unop.hom)
 
 include hfib in
@@ -126,6 +133,15 @@ lemma interval_evaluate (e : Edge) (t : MixedChoiceFunctor.Context Y W) :
     NerveParameterExtension.evaluate (values hcof Y W g) (interval hcof hfib Y W g e) t =
       oldEdge hcof hfib Y W g e t :=
   NerveIntervalBoundary.betweenChosen_evaluate _ _ _ _ _ _ _ _ _ t
+
+lemma interval_component (e : Edge)
+    (s : Reedy.Lower (NerveCoherentFamily.reedy (MixedChoiceFunctor.Context Y W)) 1) :
+    (interval hcof hfib Y W g e).app s.obj = SSet.stdSimplex.isTerminalObj₀.from _ ≫
+      RelativeChoiceSpace.name (oldEdge hcof hfib Y W g e (NerveSimplexEndpoint.endpoint s.obj)) :=
+  congr_app (NerveIntervalBoundary.betweenChosen_restrict (values hcof Y W g)
+    (point hcof Y W g (source e)) (point hcof Y W g (target e)) (oldEdge hcof hfib Y W g e)
+    (oldEdge_zero hcof hfib Y W g e) (oldEdge_one hcof hfib Y W g e) hcof hfib
+    (projection_trivialFibration hcof hfib Y W g)) s
 
 lemma interval_zero (e : Edge) : interval hcof hfib Y W g e ≫
     NerveRelativeValueExtension.valueMap _ _ (NerveParameterExtension.restriction
