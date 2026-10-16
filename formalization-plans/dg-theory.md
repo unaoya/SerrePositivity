@@ -6170,3 +6170,31 @@ quotientHomへの最終微分に関する先頭作用を構成する。一般の
 右単位・結合・収縮方程式も残り、U15b全受入や最終dg商の完成とは扱わない。
 U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mも未完。採用済み引用は0件。
 共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.128 U15b13：最終Hom微分に関する先頭Hom作用（2026-10-16）
+
+`Quotient/PrependDifferential.lean`はinternalPrependの内部chain map条件を斉次純tensorで評価し、
+§17.127の消去Leibniz基底式を足し合わせた。得られるinternalPrepend_total_d_applyは、
+左の元のHomの微分と、右のquotientHomの最終微分についてのLeibniz則を、全整数次数で与える。
+右側の項には(-1)^pが付く。内部Homと最終Homは各次数の加群が同じであることを使うが、
+異なる微分を持つ複体をchain mapとして無条件に同一視しない。
+
+この成分式を既存tensorLiftへ渡し、実際のchain map
+quotientPrepend : Hom_D(x,y)⊗quotientHom(S,y,z)→quotientHom(S,x,z)を構成した。
+quotientPrepend_ιは各二次数のtensor包含への制限が従来の内部作用の成分と一致することを証明する。
+これは左に空pathを置く合成の最終微分への移行である。
+任意可換環・非有界Hom・独立対象宇宙・Small.{u} Dを保持し、flatnessやモデル構造の仮定は不要。
+
+Checks.PrependDifferential・Checks.PrependErasure・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（2684 jobs、終了コード0、警告なし）。任意dg圏での最終微分のchain mapの型、
+全整数次数のtensor包含上の成分式、ZMod 2での最終先頭作用を検査した。
+主要3宣言の直接公理監査は標準公理のみ。監査累計2663宣言。
+文書検査は24 Markdown・311 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次は非空の左pathについて、ε消去和を先頭消去と後方消去に分ける再帰式を用い、
+appendMapの再帰へLeibniz基底式を運ぶ。一般の二つのquotientHomのtensorからの最終合成は未構成。
+その単位・結合・収縮方程式と通常順の合成符号の検証も残り、U15b全受入とはしない。
+U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mも未完。採用済み引用は0件。
+共有一般論・共有ルートimport・他系列は編集していない。
