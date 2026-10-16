@@ -734,6 +734,8 @@ public import SerrePositivity.Inputs.SerrePositivity
 
 public import SerrePositivity.CommutativeAlgebra.PerfectPolynomial
 
+public import SerrePositivity.CommutativeAlgebra.PerfectPolynomialFlat
+
 /-!
 # Serre の交点重複度の正値性の形式化
 
