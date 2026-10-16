@@ -17,6 +17,24 @@ Mathlibへの相対パスはすべて `.lake/packages/mathlib/Mathlib/` から�
 リポジトリへのパスは `SerrePositivity/` からのパス。
 本調査ではこの固定版のソースを読んだ。将来のMathlib masterにあるという推測は採用しない。
 
+## 0. 現行の分担と合流順（2026-10-17更新）
+
+ユーザー指定の分担変更により、以下をこの文書の従来の一系列実施順より優先する。
+
+| 範囲 | 担当チャット・所有範囲 | 実装記録 |
+| --- | --- | --- |
+| U12eの受入、その後U16（導来Morita） | このチャット。既存のdg加群・bimodule・導来合成の公開APIを管理 | この文書§17 |
+| U14（指定生成元・endomorphism表示） | 「dg-U14」。`DifferentialGraded/Endomorphism/` | `dg-theory-u14.md` |
+| U12fとU15d（係数変更） | 「dg-U12f/U15d」 | `dg-theory-scalar-extension.md` |
+| U15eとU17 | U12f・U14・U16がそろってからこのチャットで扱う | 合流時にこの文書§17へ記録 |
+
+両並行チャットは既存の`Derived/KFlatBimodule*`や`Bimodule/`の合成系を読み、再利用するが、
+それらを編集しない。このチャットで公開APIの名前・型を変更する際は、変更名、旧型と新型、
+仮定・宇宙の差、利用側の移行方法をこの文書§17へ記録する。
+新規APIの追加でも使用条件と使用箇所を記録し、共有利用者が暗黙の仮定に依存しないようにする。
+並行チャットの記録ファイルは各担当が管理し、この文書§17は引き続きこのチャットが管理する。
+共有モデル圏・Quillen・転送・monoidal model・SM7一般論の所有は元のK理論系列のままとする。
+
 ## 1. 現状との差分と再利用入口
 
 「未確認」はHomology・Enriched・ModelCategoryとリポジトリの対応するファイルを検索した範囲で
@@ -8023,3 +8041,47 @@ Checks.DerivedBimoduleUnits・Checks.DerivedBimodulePentagon・Checks.StageEight
 その後、§17.173の左右単位と今回の結合同型を使う全因子上の三角・五角恒等式を証明する。
 local Hom条件のないdg圏自体の解像度経路、U12e全受入、U12f・U13d/e残部・U14・U15d/e・
 U16/U17・D4mは残る。U17までの目標を保持し、共有系列への新しいAPI要求はない。
+
+
+### 17.176 U12e17：任意解像度による結合同型計算・選択独立性と分担変更（2026-10-17）
+
+ユーザーの分担変更を本書§0へ記録した。「dg-U14」はU14を
+`DifferentialGraded/Endomorphism/`で担当し、記録を`dg-theory-u14.md`で管理する。
+「dg-U12f/U15d」はU12f/U15dと`dg-theory-scalar-extension.md`を担当する。
+このチャットはU12eの受入からU16へ進み、U15e/U17はU12f・U14・U16がそろってから扱う。
+この文書§17、既存Derived/KFlatBimodule*とBimodule合成系はこのチャットが管理する。
+今回、既存公開APIの名前・型の変更はなく、以下の追加APIだけを導入した。
+
+`Derived/BimoduleResolutionLift.lean`の**bimoduleCanonicalResolutionSourceLift**は、
+任意の指定準同型q:N→Mへ標準bimodule解像度から持ち上げるsource dg加群射を与える。
+標的Nの射影性・K-flat性、local HomのK-flat性は要求しない。
+既存の圏同値のcounitを後合成した**bimoduleCanonicalResolutionLift**は実際のbimodule射。
+**bimoduleCanonicalResolutionLift_fac**はその増大三角形の導来圏での可換性を証明する。
+持ち上げは全dg自然なホモトピーまで可換であり、閉零圏での厳密可換性や
+厳密な関手的解像度を宣言していない。Small.{u} B/C、任意可換環・非有界を保持する。
+この追加APIはU12eの任意解像度比較に使用し、後続Morita比較にも再利用できる。
+
+`Derived/BimoduleCompositionAssociatorIndependence.lean`は上の持ち上げを二つの後因子で使い、
+§17.175の指定解像度版自然性の二squareを充足する。
+**derivedBimoduleAssociatorBaseIso_resolution**は標準解像度版と任意指定解像度版の一致、
+**derivedBimoduleAssociatorIso_resolution_app**は全導来結合同型の任意解像度計算式。
+二つの任意解像度の間の比較射を入力として要求せず、両者は同じ全導来結合同型に一致する。
+**derivedBimoduleAssociatorIso_resolution_fac**は任意解像度での計算比較図式を与える。
+`Derived/BimoduleCompositionAssociatorKFlat.lean`は恒等解像度におけるpair/inner/nested比較の
+自己整合性を証明し、**derivedBimoduleAssociatorIso_kFlat_fac**で全導来結合同型を
+既存rightKFlatDerivedAssociatorへ比較する。後続の三角・五角coherence輸送の入口になる。
+こちらはSmall.{u} B/C/E/F、localHomKFlat A E/Fと独立対象宇宙を明示する。
+
+Checks.DerivedBimoduleAssociatorIndependence・Checks.DerivedBimoduleAssociator・
+Checks.DerivedBimoduleUnits・Checks.DerivedBimodulePentagon・Checks.StageEight・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（3077 jobs、終了コード0、警告なし）。
+標的の射影性を要求しない持ち上げ、任意解像度の計算と二解像度間の選択独立性、
+独立対象宇宙・ZMod 2を検査した。主要10宣言の直接公理監査は標準公理のみ。
+監査累計3339宣言。今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は13 Markdown・320 exposition参照まで進み、担当外BhattScholze互換宣言の
+未解決参照1件で失敗した。共有ルート・共有一般論・該当系列は編集していない。
+
+次は全因子上の左右単位・結合同型の三角・五角恒等式を上記K-flat比較図式から証明する。
+local Hom条件のないdg圏自体の解像度経路もU12eに残り、U12e全受入後にU16へ進む。
+U12f/U14/U15dは並行担当の成果を受け取り、実装を重複しない。
+U13d/e残部、D4mおよび合流後のU15e/U17は未完。共有一般論への新しいAPI要求はない。
