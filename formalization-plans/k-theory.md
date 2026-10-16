@@ -20986,3 +20986,79 @@ Paths Gはdegree(D C,N+1)そのものであることを使い、任意の外側�
 元の全対角small augmentationへ戻す。全対角augmentationの弱同値、元のCᵒᵖ×Cへの小ささを保つ
 strictificationと降下、小さい厳密なRMap、F2の不変性・Kan・π₀とHo(C)の同定等は残る。
 L/E/Sの完了記録を維持し、F1/F2を含む全体目標は継続する。
+
+
+## 375. 実augmentationの二重単体図式・対角への接続と、モデル構造不要の対角anodyne保存（2026-10-17）
+
+実装コミット`b801be5f`。§374.5の外側の全単体写像との自然性を接続し、実augmentationを
+二重単体図式と対角にまとめた。さらに、補助宇宙のModelCategoryを仮定せずに対角のanodyne保存を証明した。
+
+### 375.1 外側の全単体写像と実augmentationの自然性
+
+`CategoryTheory/Presentation/AmbientWordFunctoriality`は、任意の元の圏の関手とword準同型について、
+AmbientWords.mapの恒等・合成則、sourceとwordの変更の交換を証明する。
+wordを忘れる実augmentationとの自然性、既存RetractWordsへのtoRetractの後のaugmentationが
+AmbientWordsのaugmentationそのものであることも、全商射について証明した。
+
+`OrdinaryBarWordRowMaps`は、任意の外側単体写像θについてliteralMap(θ)で誘導する実行間写像を構成する。
+内側の単体写像との交換、外側の恒等・合成則を証明して、§374の固定次数の行を実関手rowsにまとめる。
+固定次数のfill(0)やその収縮の外側自然性を仮定していない。
+
+`OrdinaryBarSourceHom`は、外側の元の自由道図式の実Hom SSetと、元のD=Cᵒᵖ×Cの定数Homへの
+実augmentationを構成する。対象写像が文字通り恒等である既存sourceProjectionを使う。
+
+`OrdinaryBarWordRows`は、各行の実augmentationを外側にも自然な一つの自然変換にまとめる。
+各成分がanodyne局所化後に可逆であることは§374の証明から得る。
+この自然変換の実対角と、ターゲットの対角が元のsource HomのULiftに等しい実同型も構成した。
+対象宇宙uとHom宇宙vは独立であり、ここまでCには圏以外の仮定を課さない。
+
+### 375.2 既存の全対角word Homとの実同型とaugmentationの分解
+
+`OrdinaryBarWordRowsDiagonal`は375.1の対角が§373の実word Homと自然同型であると証明する。
+任意の単体写像の作用を、外側のliteralMapの作用と内側のdegreeMapの作用の合成として実際に照合した。
+この同型を通じて、既存の全対角word Homから元のsource HomのULiftへの実toSourceを構成する。
+
+元のDの定数Homへの§373のaugmentationは、今回のtoSourceの後に375.1のsource augmentationを
+合成した写像そのものである。これは実SSet写像の等式であり、別の比較を選んでいない。
+従って残る比較は、wordを忘れる対角写像と、元の自由道分解のaugmentationの二段に分かれる。
+
+### 375.3 対角のReedy anodyne保存をモデル構造なしで証明
+
+既存`DiagonalQuillen.diagonal_map_weakEquivalence`は値域SSetのModelCategoryを入力とする。
+補助宇宙にこの仮定を置かないため、同定理を今回の大きい図式へ直接適用しない。
+
+`Simplicial/DiagonalAnodyne.relativeMatching_horn_rlp`は、任意のhorn右持ち上げ性を持つpについて、
+対角の実右随伴の相対matching写像も同じ右持ち上げ性を持つことを証明する。
+既存の境界pullback-Homとの実arrow同型と、Mathlibのモデル構造不要のpullback-Homのfibration性を使う。
+
+`diagonal_map_anodyne`は、全相対latching写像がanodyneである任意の二重単体写像fに対し、
+実対角写像もanodyneであることを証明する。相対latchingと相対matchingの持ち上げを各次数で与え、
+既存の一般Reedy持ち上げ構成で全図式の自然なliftを作り、実随伴を通して対角へ移す。
+これによりanodyne局所化後の対角写像の可逆性も得る。値域のModelCategoryは不要である。
+
+### 375.4 受入検証
+
+すべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`（3155 jobs、警告なし）。
+- `check_word_rows_diagonal`：実行間写像と外側自然性、全行の可逆性、実対角の両同型、
+  元のaugmentationの実分解、モデル構造不要の右随伴のhorn右持ち上げ性と対角anodyne保存。
+  6モジュール全36宣言の標準公理監査。
+- `check_free_word_hom`：165宣言・8モジュールの回帰検証。
+- `check_ambient_word_comparison`：137宣言・5モジュールの回帰検証。
+- `audit_homotopical_foundations`：全13001宣言・925モジュール、
+  propext・Classical.choice・Quot.soundのみ。sorry・引用axiomなし。
+- ソースの行長・証明用マーカー、stage差分の空白検査。
+
+### 375.5 次の受入単位と残作業
+
+今回、実図式の自然性・対角との同定・augmentationの分解は完了した。
+**行ごとのanodyne局所化後の可逆性から、対角の可逆性を得る一般定理はまだ未完了である。**
+375.3は全相対latching写像がanodyneという条件に対する証明であり、今回のaugmentationが
+その条件を満たすとは主張しない。行ごとの可逆性から直接その条件を推論してはならない。
+
+次は375.3と、モデル構造不要のKanテスト・因子分解・貼り合わせの既存一般論を使い、
+行ごとの局所化同値から対角の局所化同値への保存を証明する。
+元の自由道augmentationのHom比較も必要であり、全対角augmentationの弱同値はまだ完了していない。
+元の基底への小ささを保つstrictificationと降下、小さい厳密なRMap、
+F2の不変性・Kan・π₀とHo(C)の同定等も残り、全体目標は継続する。

@@ -3211,3 +3211,16 @@ word準同型が重み置換に一致することを証明する。
 `OrdinaryBarFixedRowWordHom`は既存の任意の固定外側次数へ適用する。すべてモデル構造不要である。
 行ごとの比較から対角への接続、外側のaugmentation、小さい厳密なRMapは残る。
 受入検証は`check_free_word_hom`（165宣言・8モジュール）。
+
+
+### 実word行図式と対角anodyne保存（§375）
+
+`AmbientWordFunctoriality`は元の関手・word準同型の恒等・合成則とaugmentationの自然性を証明する。
+`OrdinaryBarWordRowMaps`は外側の全単体写像による実行間写像と二重単体図式を構成する。
+`OrdinaryBarSourceHom`と`OrdinaryBarWordRows`は元のsource Hom、実augmentationの外側自然性、
+実対角とターゲットの対角同型を与える。
+`OrdinaryBarWordRowsDiagonal`は既存のword Homとの実対角同型と、元のaugmentationの実分解を証明する。
+`DiagonalAnodyne`は右随伴の相対matchingのhorn右持ち上げ性から、モデル構造不要で
+Reedy anodyne写像の実対角がanodyneとなることを証明する。
+行ごとの局所化同値から対角への保存、外側のaugmentation、小さい厳密なRMapは残る。
+受入検証は`check_word_rows_diagonal`（36宣言・6モジュール）。
