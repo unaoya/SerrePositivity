@@ -7342,3 +7342,50 @@ BhattScholze互換宣言の未解決参照1件で失敗した。共有ルート�
 今回の十分条件・閉性・準同型保存だけでU12e全受入としない。
 U12f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完。U17までの目標を保持する。
 共有系列への新しいAPI要求はない。
+
+
+### 17.161 U12e2：導来bimodule圏と固定K-flat因子による合成の降下・関手性（2026-10-17）
+
+`Derived/BimoduleBasic.lean`の**DerivedBimoduleCategory**は、§17.160で固定した
+全Hom自然な閉零BimoduleCategoryの値ごとのquasiIsoによるMathlibの構成された標準局所化。
+**bimoduleToDerived**は指定局所化関手。反転する射の同型、反転する任意の関手の延長、
+延長の厳密なfactorizationと一意性、自然変換の成分による外延性を既存Mathlibの普遍性から公開する。
+任意A : Type u・B : Type v・C : Type wに対し標準射宇宙max (u+1) v wを使用する。
+この段階でより小さいHomやモデル構造を仮定せず、Small.{u} Bのみを要求する。
+
+`Derived/BimoduleTensor.lean`の**composeWith Q**は後の因子Qを固定した既存の合成関手。
+Qの各右C制限の相対K-flat性があれば、前の因子の準同型を保存し、出力を標準局所化へ送った関手は
+指定quasiIsoを反転する。これをMathlibの局所化普遍性で降ろしたのが**derivedComposeWith**。
+**derivedComposeWith_fac**は局所化前の合成との厳密な一致、derivedComposeWith_uniqueは一意性。
+具体的なLocalization.Lifting証拠と、元のbimodule対象における計算同型も公開する。
+局所化の対象を別のモデルへ差し替えていない。
+
+`Derived/BimoduleTensorMaps.lean`は後の因子の任意の射gからcomposeWithMapを作り、
+合成双関手の法則から自然性・恒等・合成を証明する。
+**derivedComposeWithMap**はこの自然変換を同じ局所化へ降ろしたもの。
+元の対象上の成分は計算同型で元のcomposeMap(id,g)を挟む式に一致し、恒等・合成を保つ。
+`BimoduleTensorFunctor.lean`のRightKFlatBimoduleCategoryは元の閉零bimodule圏の充満部分圏であり、
+**derivedComposeWithFunctor**はこの圏から(DerivedBimoduleCategory A B C ⥤ DerivedBimoduleCategory A B E)
+への実際の関手。後の因子も局所化済みの双導来関手を構成したとはしていない。
+任意CommRing・非有界・独立B/C/E宇宙・Small.{u} B/Cを維持し、Eのsmall性は不要。
+
+Checks.DerivedBimoduleTensor・Checks.BimoduleKFlat・Checks.StageEight・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（3010 jobs、終了コード0、警告なし）。
+標準射宇宙max (u+1) v w、独立な対象/射宇宙の終域への局所化のfactorization、
+固定因子との合成の降下・一意性、右K-flat部分圏での射の恒等/合成法則、ZMod 2の対角因子を検査した。
+主要25宣言の直接公理監査は標準公理のみ。監査累計3098宣言。
+今回の実装にsorry/admit/新規axiomはない。採用済み引用は0件。
+
+全体文書検査は、共有ルートが参照する担当外CommutativeAlgebra.PerfectoidizationFunctorの
+olean不足により、最初の宣言exportで終了コード1となった。今回の実行はMarkdown/expositionの検査に
+到達しておらず、以前のBhattScholze参照エラーの再検査結果は得られていない。
+共有ルートは他チャットにより変更中であり、M5から編集・巻き戻し・担当外ビルドは行っていない。
+文書検査の成功は主張しない。
+
+次は後の因子の準同型が誘導する自然変換の同型性と解像度選択独立性、
+導来合成の単位・結合同型とcoherenceを接続する。
+Bᵒᵖ⊗C上のsemifreeから片側の相対K-flat性を得る制限定理と、実際のbimodule解像度の存在は未完。
+local Homの条件を固定した版とdg圏の解像度を使う版を区別する。
+固定K-flat因子に対する関手性だけでU12e全受入としない。
+U12f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完。U17までの目標を保持する。
+共有系列への新しいAPI要求はない。
