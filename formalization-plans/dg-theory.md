@@ -1,6 +1,6 @@
 # dg 理論（M5）の独立実装計画
 
-作成・調査：2026-10-14。更新：2026-10-17。状態：U0〜U10 を実装・検証済み。U11〜U17は部分実装済み、明示的dg商U15a/bを受入（§17.138）。U10後の比較・整理案と後続詳細計画は§14〜§16。
+作成・調査：2026-10-14。更新：2026-10-17。状態：U0〜U10 を実装・検証済み。U11〜U17は部分実装済み、明示的dg商U15a/bと厳密普遍性U15cを受入（§17.144）。U10後の比較・整理案と後続詳細計画は§14〜§16。
 U0〜U3の記録は§11、U4/U5の実績と後続契約は§12。D0〜D10全体の完了ではない。
 この計画だけを受け取る実装担当者向けの仕様である。
 ホモトピー論の共有契約は [k-theory.md §123](k-theory.md#123-次段階の設計i抽象モデル圏とその当てはめ2026-10-14)。
@@ -6725,4 +6725,39 @@ Checks.QuotientContraction・Checks.StageSeven・既存Spectra.StageTwoの統合
 又は標準収縮データの評価が恒等となることと評価の後合成自然性を組み合わせる経路が候補。
 一方の往復だけでU15c全受入や厳密普遍性の完成とはしない。
 U11e・U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完。採用済み引用は0件。
+共有系列への追加要求はない。共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.144 U15c6：path生成・任意商dg関手の再構成・厳密普遍性の受入（2026-10-17）
+
+`Complexes/TensorUnitInsertion.lean`は両側単位の挿入と三項tensorの結合比較を証明する。
+`Quotient/EpsilonAppend.lean`と`PrefixGeneration.lean`は単一ε pathの連結からprefixPathを復元し、
+`PathGeneration.lean`は各非空pathの純tensorを、元のHom・指定ε・後方pathの反復合成で表す。
+`EpsilonCochainExt.lean`はε複体の次数−1の標準生成元による生成と他次数の零性から、
+標準εを含む純tensor上の評価だけで次数0 cochainを判定する。有限pathの補題にSmall Dは不要。
+
+`Quotient/Reconstruction.lean`は任意G:D/S→EのHom写像を内部graded族上のcochainとして読み、
+path長の帰納法とGの合成保存から制限データのpath評価との一致を証明する。
+これを全path直和へ貼り合わせ、**extension_restrict：extension(restrict G)=G**を得た。
+型の別名term(b::w)と明示的tensor表示をまたぐrewriteの失敗は、評価の等式と合同を別に作り、
+等式の推移で結ぶことで解消した。計算上限の拡大はしていない。
+
+`Quotient/Universal.lean`は既存restrict_extensionと合わせて
+**universalEquiv : DGFunctor A (QuotientObject D S) E ≃ ContractedFunctor A D S E**を構成する。
+extension_unique・existsUnique_extensionは、指定収縮を含む制限データに対する厳密な一意性である。
+restrictContractedFunctor_comp・extension_postcompは任意H:E→Tによる後合成との整合性を証明する。
+任意CommRing A、非有界Hom、独立したD/E/Tの対象宇宙を保持する。
+全path直和にはSmall.{u} Dを用い、E/Tのsmall性は要求しない。
+収縮の単なる存在と選択済みデータを同一視しない。これでU15cを受入済みとする。
+
+Checks.QuotientUniversal・Checks.QuotientExtension・Checks.QuotientEvaluation・
+Checks.QuotientContraction・Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功
+（2763 jobs、終了コード0）。独立対象宇宙、両方向の往復、一意存在、後合成自然性とZMod 2を検査した。
+既存Checks.QuotientEvaluationの長行警告2件を観測した。
+新規Checksの長行警告は修正して再ビルド成功。文書検査は13 Markdown・320 exposition参照、失敗0件。
+担当差分の空白検査も成功。主要20宣言の直接公理監査は標準公理のみ、累計2838宣言。
+今回の実装にsorry/admit/新規axiomはない。採用済み引用は0件。
+
+次はU11eの残る作用・結合比較自然性・coherenceを完成し、U12e/fの導来bimodule合成と係数変更へ接続する。
+U13d/e残部・U14・U15d/e・U16/U17・D4mも未完で、U17までの目標を保持する。
 共有系列への追加要求はない。共有一般論・共有ルートimport・他系列は編集していない。
