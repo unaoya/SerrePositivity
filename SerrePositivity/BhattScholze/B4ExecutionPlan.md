@@ -8025,3 +8025,20 @@ n>0、Unique σ、Aのp正則性、d正則性、指定単元δdを正確に保�
 対象3883ジョブ成功（共有の既存警告のみ）、pure B4監査2054報告成功、標準3公理のみ。
 新sorry・公理・引用なし。G10側の入力だけの成果から、実冪剰余自体の離散・平坦性へ進んだ。
 G9・環候補との接続・一般CFF根拡大・一般B4は未完成として保持する。
+
+## G9標準mod p入力のBS接続完了（2026-10-16）
+
+DeltaRootSourceGeneratorPowerModPFlat.leanに3公開定理を実装した。
+G10で得たA/(p,dⁿ)への実還元の次数消滅・H0平坦性を、既存の
+prismaticGeneratorPowerModP比較でT=A/(dⁿ)上の標準mod p実還元へ移した。
+さらにG8による実T対象のT上p導来完備性と合わせ、
+deltaRootSourceGeneratorPower_G9_inputsで3条件を具体的対象のまま公開した。
+共通G9はFlatPowerTorsionの逆極限ねじれ評価までは完成したが、
+元の実導来対象の離散性を結論する一般APIは未完成（共通正本G9-1）。
+そのためG9自体の適用と実T対象H0の有界ねじれは未実装として区別する。
+係数環Tの有界ねじれは完全δ環の場合の既証
+IsPerfect.distinguished_quotient_power_p_pow_torsion_killed_by_p_powを再利用する予定で、
+同等の一般ねじれ定義・補題を重複作成していない。
+対象3897ジョブ成功（共有の既存警告のみ）、pure B4監査2057報告成功、標準3公理のみ。
+新sorry・公理・引用なし。2段階を個別コミットし、共有・CLMST・利用先は編集していない。
+一般B4全射性・候補環との接続・一般CFF根拡大は引き続き未完成。他チャットへ送信していない。
