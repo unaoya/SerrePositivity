@@ -516,7 +516,7 @@ BS担当は本計画、BS専用監査、下記N1/N2のBSファイルを編集す
 | N0 | 本計画 | 現在地、担当、共通化候補、検証・保存の順序を記録 | `54f3d966`で保存済み |
 | N1 | `CompatibleRootFamilyQuotient.lean` | 被約なp進完備終域への一意延長を一般入口に抽出。旧perfectoid入口を同じ型の包装にする。仮定弱化を伴う証明拡張 | 実装・境界例・旧7型一致・172件のfocused監査済み |
 | N1a | `CompatibleRootSingletonComparison.lean` | 並行alias移管後の二つのイデアル一致証明を、元のspan表示への明示的changeで修復。型・同型・標準射は維持 | 修復・下流ビルド・既存169件のfocused監査済み |
-| N2 | `CompatibleRootPDComparison.lean`、`CompatibleRootFamilyPDComparison.lean` | 同じ完備化環上のpイデアル像の計算を既存 `pIdeal_map` へ置換。新宣言・import・instanceなし | 未実装 |
+| N2 | `CompatibleRootPDComparison.lean`、`CompatibleRootFamilyPDComparison.lean` | 同じ完備化環上のpイデアル像の計算を既存 `pIdeal_map` へ置換。新宣言・import・instanceなし | 実装・旧4型一致・176件のfocused監査済み |
 | N3 | `scripts/audit_bhatt_scholze_structure.py`、BS専用監査 | 引用・共有監査掲載・aliasの参照分類を追加。ソース解析をLeanの証明監査と区別する | 実装・自己テスト11件・11基盤入口検査済み |
 
 N1の新公開名は `existsUnique_compatibleRootFamilyCompletionLift` とする。
@@ -629,3 +629,11 @@ B-I/B6、André条件付き入力、残るCLMST引用は維持する。
   境界監査初版の両名前空間openによる曖昧性は監査側で修正し、修正後に終了コード0を確認した。
   536対象・4,582ジョブの統合ビルドと基礎584件が成功。追加3入口を含むfocused172件も終了コード0、標準3公理のみ。
   通常B4監査の移管側旧名1件の不足は別件として残り、成功と報告しない。
+
+
+- N2：単一根・任意根族のp完備化の自己作用について、二つのイデアル像の計算を既存 `pIdeal_map` へ置換。
+  新しい定義・import・instanceを増やさず、`omit [Fact p.Prime]` と元の完備化を保持した。
+  元HEADの二ファイルを一時ファイルで再elaborateして取得した4完全署名と、
+  最新importからの署名は表示空白・改行のみの正規化で一致した。
+  536対象・4,582ジョブの統合ビルド、4入口のfocused依存監査、追加後の集約176件が終了コード0。
+  依存公理は標準3公理のみ。新sorry・外部引用なし。

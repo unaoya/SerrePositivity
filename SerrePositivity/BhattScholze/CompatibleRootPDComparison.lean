@@ -26,11 +26,8 @@ theorem compatibleRootCompletion_isAdicComplete (ρ : ℕ → R) :
   let I : Ideal Q := Ideal.span {(p : Q)}
   have h := AdicCompletion.isAdicComplete (M := Q) (Submodule.fg_span_singleton (p : Q))
   have hm : I.map (algebraMap Q (AdicCompletion I Q)) =
-      Ideal.span {(p : AdicCompletion I Q)} := by
-    rw [Ideal.map_span, Set.image_singleton]
-    have he : algebraMap Q (AdicCompletion I Q) (p : Q) = (p : AdicCompletion I Q) :=
-      map_natCast _ p
-    exact congrArg (fun x ↦ Ideal.span {x}) he
+      Ideal.span {(p : AdicCompletion I Q)} :=
+    pIdeal_map Q (AdicCompletion I Q) p (algebraMap Q (AdicCompletion I Q))
   rw [← hm]
   exact (IsAdicComplete.map_algebraMap_iff _ _).mpr h
 
