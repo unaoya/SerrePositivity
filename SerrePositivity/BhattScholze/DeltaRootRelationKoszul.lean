@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.DeltaRootRelationCoefficientQuotient
 public import SerrePositivity.CommutativeAlgebra.KoszulResolution
+public import SerrePositivity.BhattScholze.MonicPowerFamilyRelationRegularity
 public import Mathlib.Algebra.MvPolynomial.Equiv
 public import Mathlib.Algebra.Polynomial.Monic
 public import Mathlib.Logic.Equiv.Option
@@ -20,21 +21,8 @@ variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] {σ : Type v}
 
 /-- 任意の指定変数の根関係は、係数環に依らず非零因子。 -/
 theorem deltaRootRelation_isSMulRegular (b : σ → A) (s : σ) :
-    IsSMulRegular (MvPolynomial σ A) (deltaRootRelationFamily (p := p) b s) := by
-  classical
-  let e := (MvPolynomial.renameEquiv A (Equiv.optionSubtypeNe s).symm).trans
-    (MvPolynomial.optionEquivLeft A {t : σ // t ≠ s})
-  have he : e (deltaRootRelationFamily (p := p) b s) =
-      Polynomial.X ^ p - Polynomial.C (MvPolynomial.C (b s)) := by
-    simp [e, deltaRootRelationFamily, MvPolynomial.renameEquiv]
-  have h := (Polynomial.monic_X_pow_sub_C
-    (MvPolynomial.C (b s) : MvPolynomial {t : σ // t ≠ s} A)
-    (Fact.out : p.Prime).ne_zero).isRegular.left
-  intro x y hxy
-  apply e.injective
-  apply h
-  have hh := congrArg e hxy
-  simpa only [smul_eq_mul, map_mul, he] using hh
+    IsSMulRegular (MvPolynomial σ A) (deltaRootRelationFamily (p := p) b s) :=
+  monicPowerFamilyRelation_isSMulRegular (Fact.out : p.Prime).ne_zero b s
 
 /-- 一つの根関係の列は弱正則。零環も許す。 -/
 theorem deltaRootRelation_singleton_isWeaklyRegular (b : σ → A) (s : σ) :

@@ -88,7 +88,7 @@ theorem deltaRootSubsetQuotientEquiv_X_mem (T : Set σ) (b : σ → A) (s : T) :
   exact deltaRootPartialQuotientEquiv_X_inr _ s
 
 /-- 先行部分集合に属さない根関係は、その商において非零因子。 -/
-theorem deltaRootSubsetQuotient_remaining_isSMulRegular [Fact p.Prime]
+theorem deltaRootSubsetQuotient_remaining_isSMulRegular_of_ne_zero (hp : p ≠ 0)
     (T : Set σ) (b : σ → A) (s : σ) (hs : s ∉ T) :
     IsSMulRegular (MvPolynomial σ A ⧸ deltaRootSubsetRelationIdeal (p := p) T b)
       (Ideal.Quotient.mk (deltaRootSubsetRelationIdeal (p := p) T b)
@@ -102,13 +102,25 @@ theorem deltaRootSubsetQuotient_remaining_isSMulRegular [Fact p.Prime]
     simp only [deltaRootRelationFamily, map_sub, map_pow, e,
       deltaRootSubsetQuotientEquiv_C]
     rw [deltaRootSubsetQuotientEquiv_X_notMem T b ⟨s, hs⟩]
-  have h := deltaRootRelation_isSMulRegular (p := p)
+  have h := monicPowerFamilyRelation_isSMulRegular hp
     (fun t : (Tᶜ : Set σ) ↦ algebraMap A (MonicPowerFamilyCover p T A
       (fun r ↦ b r)) (b t)) (⟨s, hs⟩ : (Tᶜ : Set σ))
   intro x y hxy
   apply e.injective
   apply h
   have hh := congrArg e hxy
-  simpa only [smul_eq_mul, map_mul, he] using hh
+  simp only [smul_eq_mul, map_mul] at hh
+  rw [he] at hh
+  simpa only [deltaRootRelationFamily, smul_eq_mul] using hh
+
+
+/-- 先行部分集合に属さない根関係は、その商において非零因子。 -/
+theorem deltaRootSubsetQuotient_remaining_isSMulRegular [Fact p.Prime]
+    (T : Set σ) (b : σ → A) (s : σ) (hs : s ∉ T) :
+    IsSMulRegular (MvPolynomial σ A ⧸ deltaRootSubsetRelationIdeal (p := p) T b)
+      (Ideal.Quotient.mk (deltaRootSubsetRelationIdeal (p := p) T b)
+        (deltaRootRelationFamily (p := p) b s)) :=
+  deltaRootSubsetQuotient_remaining_isSMulRegular_of_ne_zero
+    (Fact.out : p.Prime).ne_zero T b s hs
 
 end SerrePositivity.BhattScholze
