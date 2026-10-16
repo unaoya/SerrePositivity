@@ -820,6 +820,8 @@ public import SerrePositivity.BhattScholze.PerfectPrismResidueFactor
 
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorAlgebraCongruence
 
+public import SerrePositivity.BhattScholze.PerfectPrismCartierTensorComparison
+
 /-!
 # Serre の交点重複度の正値性の形式化
 

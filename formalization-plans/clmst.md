@@ -7385,6 +7385,25 @@ single代数対象と二因子の実導来tensorの可換代数対象同型を�
 対象2524ジョブ、全体5843ジョブ、KL954件、専用9宣言の監査が成功した。
 新宣言はsorry非依存・標準3公理のみ。各prism自身の二因子商への実適用は次の保存単位とする。
 
+KL-E2d-4b・各prism自身のCartier剰余tensorとperfectoid性（2026-10-17）：
+`BhattScholze/PerfectPrismCartierTensorComparison.lean`で、基底prismイデアルの延長による
+二因子商と、各因子prism自身の商による実p完備導来tensorを、可換代数対象として同定した。
+各剰余因子の係数作用は元のprism射の商写像そのものであり、前工程の元の単位・左右因子の
+図式を保つ共通tensor同型をそのまま適用している。
+その実H⁰と元の反復完備tensorのCartier商との代数同型を構成した。
+さらに元の対象全体の次数0集中を同型で移し、元のH⁰環構造のintegral perfectoid性を
+既存のCartier商のperfectoid性から移した。純粋性・Tor消滅・p完備性は追加入力にせず、
+完全prismと元のprism射から供給する。
+対象3631ジョブ、全体5844ジョブ、KL958件、公開4宣言と実prismによる名前付き型検査1宣言が成功した。
+全てsorry非依存・標準3公理のみ。型検査は同じ実対象の純粋性・perfectoid性と代数同型の単位保存を同時に確認した。
+全CLMST監査はこの記録時点では実行中であり、新たな成功とは記録しない。
+
+これで完全prism商表示でのC2のCartier比較・離散性・H⁰ perfectoid性が揃った。
+次は任意のperfectoid図式の元のFontaine表示と係数作用へ接続し、元の環を係数とする
+p完備導来tensorについて同じ結論を得る。通常tensorのperfectoid化の存在やmod p同型だけで
+この導来比較を代用しない。その後C3の標準乗法・イデアル三主張とB/Iの実同定へ進む。
+Prop 2.4.9(a)、KL-Q、Dの実入力と引用置換、RPerfd存在のB-Iは引き続き残る。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
