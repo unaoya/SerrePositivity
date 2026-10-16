@@ -72,4 +72,22 @@ lemma hom_ext {m : ℕ}
   intro k
   exact congr_app (h k) s
 
+/-- A common whole natural vertex boundary survives the actual facet gluing. -/
+lemma boundary_vertices (V : D ⥤ SSet.{w}) (i : V ⟶ K) (b : V ⟶ F)
+    (hv : ∀ k : Fin (n + 3), faces k ≫ restriction _ _ F
+      (horizontal V K i (SSet.stdSimplex.obj (SimplexCategory.mk (n + 1)))) =
+      NerveNaturalBoundary.ofNatTrans _ _
+        (NerveProductParameter.projection V
+          (SSet.stdSimplex.obj (SimplexCategory.mk (n + 1))) ≫ b)) :
+    boundary K F faces hf ≫ restriction _ _ F
+      (horizontal V K i (SSet.boundary (n + 2)).toSSet) =
+      NerveNaturalBoundary.ofNatTrans _ _
+        (NerveProductParameter.projection V (SSet.boundary (n + 2)).toSSet ≫ b) := by
+  apply hom_ext V F
+  intro k
+  rw [Category.assoc, restriction_comp, ← commute V K i (SSet.boundary.ι k),
+    ← restriction_comp, ← Category.assoc, boundary_face, hv k, restrict_natural]
+  apply congrArg (NerveNaturalBoundary.ofNatTrans _ _)
+  rw [← Category.assoc, NerveProductParameter.projection_vertical]
+
 end SerrePositivity.SimplicialModel.NerveMovingBoundary
