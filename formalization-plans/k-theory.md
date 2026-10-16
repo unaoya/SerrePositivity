@@ -15727,3 +15727,53 @@ Kan置換が積を保存するという仮定や、Kan置換を通した両側�
 混合出力と§294の両側Kan図式の比較、および実bar span右脚の弱同値の導出も残る。
 基底上の小さい厳密関手への自然な小値化、F1の最終RMap・不変性・Kan性・π0比較への統合、
 F2の最終自然弱同値zigzag比較は未完了である。全体目標F→L→E→Sを維持する。
+
+
+## 296. 両側の全中心移送と全chain作用素に対する混合作用（2026-10-16）
+
+§295の混合作用を、両側の実中心・frame・target resolutionを同時に動かす射へ拡張した。
+さらに任意の索引圏の全chainと全単体作用素に対する作用式を証明した。
+A0・A1全体という回答も再確認した。両者の受入条件は§166で完了済みである。
+
+### 296.1 実中心図式と移送
+
+`MixedDiagonalHomTransport`は混合Homの恒等・合成と、両側familyの移送公式を証明する。
+`MixedResolutionCenters`は両側の既存ResolutionArrowDiagramから、実target resolutionの
+混合Hom入力と、実frame対角の混合Hom出力を厳密な図式として構成する。
+familyの移送式は元の実inclusionの自然性から導き、独立の追加仮定にはしない。
+従来のMixedResolutionLiftActionのfamilyも同じ写像として回収する。
+
+両側中心の任意の射について、入力の反変移送と出力の共変移送を含む作用式を証明した。
+出力だけを元の小さいSSetのKan置換へ送った作用も、unitの実自然性により同じ移送式を満たす。
+源Cには通常のモデル公理だけを要求し、関手的因子分解は要求しない。
+
+### 296.2 任意の全chainと指定済み選択の保持
+
+`NerveMixedAction`は両側の既存moving-parameter systemをそのまま受け取り、
+各chainで小さいparameterから小さいKan出力への混合作用を構成する。
+任意の単体作用素について、先頭側のparameter移送・末尾側の中心移送・入力移送を含む
+全写像の整合式を証明した。頂点の整合性だけでなく、両側の同じ全systemを使う式である。
+
+`NerveMixedChoices`は元の小さいlift空間のfillersから、任意の索引図式とparameter図式に
+対する両側systemを構成する。指定された各対象での全familyを0次でそのまま回収する。
+任意の低次数全systemを指定して延長し、その制限が元の全systemに等しいことも証明した。
+既存selectedPointを使う無条件の両側systemも公開した。
+補助systemの宇宙は独立に大きくできるが、その宇宙のSSetモデル構造は使わない。
+
+### 296.3 受入検証と残項目
+
+実装コミット`c9f8a250`。全て成功した。
+
+- 共有入口のbuild：2838 jobs、追加警告なし。
+- `check_mixed_center_chain_action`：独立宇宙の任意モデル源での両側実中心移送、
+  両側全systemの存在、指定済み全familyと任意の低次数全systemの保持、
+  全chain・全単体作用素の混合作用式、小さいKan出力。
+  新規54宣言・4モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：8850宣言・641モジュール、標準公理のみ。
+- `check_mixed_resolution_lift_action`：87宣言・5モジュールの回帰確認。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+既存の全因子分解・混合三角形の具体的systemを今回の両側中心図式へ代入する接続は残る。
+混合出力と§294の両側Kan図式との弱同値比較、実bar span右脚の弱同値も未証明である。
+基底上の小さい厳密関手への自然な小値化、F1の最終RMap・不変性・Kan性・π0比較への統合、
+F2の最終自然弱同値zigzag比較は未完了。全体目標F→L→E→Sを維持する。

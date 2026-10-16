@@ -2275,3 +2275,15 @@ bar右脚と最終の小さい厳密RMapは未完了。
 `MixedDiagonalHomRecovery`は元の両側の片側作用を同じ全写像として回収する。
 全中心・全因子分解の大域的整合性、bar右脚、最終の基底上の小さい厳密RMapは未完了。
 検証：`scripts/check_mixed_resolution_lift_action.lean`、計画書§295。
+
+
+### 両側中心と全chain作用素の混合整合性（§296）
+
+`MixedResolutionCenters`は両側の実frame・target resolutionを動かす入力・出力図式を作り、
+元のinclusionから混合作用の全中心移送式を導く。
+`NerveMixedAction`は同じ両側systemを使い、全chain・全単体作用素について
+parameter・入力・出力の実移送を含む整合式を証明する。
+`NerveMixedChoices`は両側systemを構成し、指定済み全familyと任意の低次数全systemを保持する。
+モデル構造は元の小さいSSetだけで使う。
+具体的な全因子分解systemへの接続、混合出力の弱同値比較、bar右脚、最終RMapは未完了。
+検証：`scripts/check_mixed_center_chain_action.lean`、計画書§296。
