@@ -1,6 +1,6 @@
 # dg 理論（M5）の独立実装計画
 
-作成・調査：2026-10-14。更新：2026-10-16。状態：U0〜U10 を実装・検証済み。U11〜U17の実装を開始（§17）。U10後の比較・整理案と後続詳細計画は§14〜§16。
+作成・調査：2026-10-14。更新：2026-10-17。状態：U0〜U10 を実装・検証済み。U11〜U17の実装を開始（§17）。U10後の比較・整理案と後続詳細計画は§14〜§16。
 U0〜U3の記録は§11、U4/U5の実績と後続契約は§12。D0〜D10全体の完了ではない。
 この計画だけを受け取る実装担当者向けの仕様である。
 ホモトピー論の共有契約は [k-theory.md §123](k-theory.md#123-次段階の設計i抽象モデル圏とその当てはめ2026-10-14)。
@@ -6230,5 +6230,36 @@ ZMod 2での前方追加、主要宣言の全作用素再帰式を検査した�
 次は左有限pathを固定した全pathへの連結を構成し、その空語・cons再帰をprefixPathと整合させる。
 これらとprefixPath_erasureを使って、非空の左pathへ最終微分のLeibniz則を帰納的に運ぶ。
 一般の最終Hom間の合成、単位・結合・収縮方程式は未完で、U15b全受入とはしない。
+U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mも未完。採用済み引用は0件。
+共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.130 U15b15：左有限pathを固定した連結と空語・非空語再帰（2026-10-17）
+
+`Quotient/AppendRight.lean`は左の有限path wを固定した内部chain map
+appendRight : term(w,x,y)⊗internalHom(S,y,z)→internalHom(S,x,z)を右直和の普遍性で構成した。
+各右path vへの制限はappendMap w vの後に連結語w++vの包含を合成したものに一致する。
+全internalCompositionへ左path包含を前合成した場合とも一致することを証明した。
+左の語が空の場合は、既存のinternalPrependと同じchain mapに戻る。
+
+非空の左語b::wの場合のappendRight_consを証明した。
+二度のassociatorによって右path直和を後方へ移し、短い左語wのappendRightをεと先頭Homで
+tensorした後、prefixPathを合成した写像に一致する。
+証明は各右pathへの制限、associatorの右因子に関する自然性、appendMapの再帰、
+prefixPathの包含公式を用いる。余積cofanの射とpath包含の別表記は明示的に正規化する。
+任意可換環・非有界Hom・独立対象宇宙・Small.{u} Dを保持する。
+
+Checks.AppendRight・Checks.ErasureRowRecursion・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（2679 jobs、終了コード0、警告なし）。任意の左右pathへの連結公式、
+空の左語との比較、ZMod 2で非空左pathから全右pathへの連結を検査した。
+主要5宣言の直接公理監査は標準公理のみ。監査累計2678宣言。
+文書検査は23 Markdown・311 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次はこのcons再帰を全internalCompositionとprefixPathの可換図式へ拡張する。
+その図式とprefixPath_erasureを用い、左語の長さに関する帰納で両側のε消去項を比較し、
+一般の二つのpathのLeibniz則と最終Hom間の合成へ接続する。
+ここでのappendRightは内部微分に関するchain mapであり、最終微分の合成とは扱わない。
+単位・結合・収縮方程式も残り、U15b全受入は未完。
 U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mも未完。採用済み引用は0件。
 共有一般論・共有ルートimport・他系列は編集していない。
