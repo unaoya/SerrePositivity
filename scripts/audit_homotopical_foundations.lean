@@ -31,6 +31,8 @@ run_cmd do
     `SerrePositivity.CategoryTheory.AnchoredChainTransport,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterHomotopy,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AllFactorizationPost,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AllFactorizationPre,
+    `SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterMapping,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AnchoredPostComparison,
     `SerrePositivity.CategoryTheory.Limits.SequentialExtension,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.CoherentLiftUnitFamilies,
