@@ -5713,3 +5713,40 @@ U13e全受入・U13d・U11eのcoherence・U12e/f・U14〜U17・D4mは未完。�
 U11eの旧ジョブ7882・1019は双方Unknown process idでハンドルの消失を確認した。
 旧ログは空で成功とは扱わず、再開時には証明構成を見直して新しい対象ビルドで検証する。
 共有系列への追加要求はなく、共有ルート・既存PerfectComplex・他系列は変更していない。
+
+
+### 17.114 U11e22：反復tensorの全次数作用写像の分離とcochain作用の局所検証（2026-10-16）
+
+U11eの未受入部分へ戻り、左右の結合括弧におけるHom写像とcochain評価を
+`Tensor/AssociatorLeftMaps.lean`・`Tensor/AssociatorRightMaps.lean`へ分離した。
+左F作用は右B加群のHom endを評価して得る主Hom写像、右B作用は評価右加群の実際の写像である。
+各斉次成分が既存の作用cochainに等しいことを証明し、任意整数次数の評価式を公開する。
+対象宇宙は独立、B/C/Eはu-small、外側Fのsmall性は要求しない。
+
+`Tensor/AssociatorCochainAction.lean`は左右の括弧付けそれぞれについて、F作用cochainと
+右B作用cochainの三重生成元上の計算を独立の定理へ分離した。
+F作用はR成分に作用し、B作用はP成分に作用する。後者の符号は左括弧で
+(-1)^(p*(k+r))、右括弧で(-1)^(p*l)、l=k+rで一致する。
+既存の作用公式と主Hom/cochain評価だけを使い、結合同型の自然性は仮定しない。
+
+検査コストの切り分け：今回のAssociatorBimoduleビルドの左右compatibility検査が
+3時間以上CPUを使用中であることをpsで確認し、自分の該当ビルドだけを停止した。
+補助宣言までの両prefixは直接Lean検査に成功した。左の型だけの検査も成功。
+証明本体の各段階を一時ファイルで計測した結果、すべての段階と最終項の組み立てに到達し、
+その後にkernel deterministic timeoutとなることを確認した。
+既約性を尊重する設定の別検査は45秒で意図的に停止し、成功とは数えていない。
+上の4つのcochain作用定理への分離後は対象ファイルが2秒でビルドできた。
+左の最終可換式は短い証明へ変更して検査したが、まだ受入に至らず意図的に停止した。
+未受入のcompatibility/naturalityファイルは今回の受入やコミットへ含めない。
+
+Checks.AssociatorMaps・Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功
+（2707 jobs、終了コード0、警告なし）。任意可換環・独立対象宇宙・全整数次数のHom/cochain評価、
+ZMod 2の次数−1を検査した。主要20宣言の直接公理監査は標準公理のみ。監査累計2496宣言。
+全体文書検査は共有PrimeReduction.olean不在で一度停止したが、その再生成を確認後の再試行は
+24 Markdown・311 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の受入実装にsorry/admit/新規axiomはない。
+
+次は結合同型の可換式のkernel型照合をさらに分離し、全Homの左右自然性・実際のbimodule同型、
+三角・五角coherenceへ進む。U11e全受入は未完。
+U13eの元の有限射影代表・本質的全射、U13d・U12e/f・U14〜U17・D4mも未完。採用済み引用は0件。
+共有系列への追加要求はなく、共有ルート・既存PerfectComplex・他系列は変更していない。
