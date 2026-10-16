@@ -6978,3 +6978,48 @@ Checks.BimoduleTensorMaps・Checks.BimoduleCategory・Checks.QuotientUniversal�
 U11e全受入、U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mは引き続き未完。
 U17までの目標を保持する。共有系列への追加要求はない。
 共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.151 U11e28：外側両作用の全Hom自然性・実際のbimodule合成双関手（2026-10-17）
+
+`Complexes/HomNaturalityEvaluation.lean`は主Homのchain mapの可換式を任意整数次数の元へ評価する。
+`Bimodule/ValueActions.lean`はこれと既存の閉零右加群射の作用公式を使い、
+bimodule射の値成分が左作用・右作用と斉次元で可換であることを証明する。
+`Tensor/BimoduleMapComponent.lean`は§17.150のcomposeValueMapを固定した成分関数として表示し、
+元の成分との一致・生成元公式・整数単位によるスカラー倍との可換性を証明した。
+
+`BimoduleMapLeftAction.lean`・`BimoduleMapRightAction.lean`は、値のmapと外側の両作用の
+可換式をbalanced tensorの生成元上で証明する。右B作用の符号(-1)^(p*k)は両辺で一致し、
+mapの線形性で輸送する。左E作用には追加符号は生じない。
+`BimoduleValueHom.lean`は既存chainMapOfComponentFunctionsで値のmapを再表示する。
+`BimoduleMapNaturality.lean`は生成元の外延性を使い、**右B作用・左E作用の全Hom chain mapの自然性**を証明した。
+`BimoduleMapFamilies.lean`はこの値のmapを実際の右B加群射composeRightMapへ持ち上げ、
+その射族が左E作用の右B加群の主Hom endに関しても全次数自然であることを証明する。
+
+`Bimodule/ValueExt.lean`は全b/eでの複体評価が一致すれば閉零bimodule射が等しいことを証明する。
+`Tensor/BimoduleFunctor.lean`は全Hom自然な射族から**composeMap**を構成し、
+評価が元のcomposeValueMapへ戻る式、恒等・合成保存を証明した。
+これにより**composeFunctor : BimoduleCategory A B C × BimoduleCategory A C E ⥤ BimoduleCategory A B E**
+を構成した。対象は既存のbimodule合成のままであり、閉零自然性だけの射への置換はない。
+任意CommRing A・非有界・独立B/C/E宇宙・Small.{u} B/Cを維持し、Eのsmall性は不要。
+新規の計算上限拡大・共有モデル圏一般論の複製・引用は使用していない。
+
+Checks.BimoduleComposition・Checks.BimoduleTensorMaps・Checks.BimoduleCategory・Checks.QuotientUniversal・
+Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功（2869 jobs、終了コード0）。
+新規Checksの長行警告2件を修正して再ビルド成功（1897 jobs、警告なし）。
+独立対象宇宙での実際の合成双関手、値への評価、射としての合成保存、特性2の特殊化、
+右作用次数−1・前方因子次数1・後方因子次数0の符号付き可換式を検査した。
+主要25宣言の直接公理監査は標準公理のみ。監査累計2955宣言。
+今回の実装にsorry/admit/新規axiomはない。採用済み引用は0件。担当差分の空白検査は成功。
+
+全体文書検査は13 Markdown・320 exposition参照を検査し、別系列の互換宣言
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの未解決参照1件で失敗した。
+この宣言のソースはBhattScholze/Inputs/SemiperfectoidSurjectivity.leanに存在することを確認した。
+共有ルートの読込環境での未解決をM5の変更で修正したとは扱わず、共有ルートや該当系列は編集していない。
+Markdownのリンクについて追加の失敗は報告されていない。全体文書検査の成功は主張しない。
+
+次はcomposeFunctorを反復した二つの三変数関手とassociatorIsoの自然性を構成する。
+その後、単位比較を同じ閉零bimodule圏へ接続し、三角・五角coherenceを証明する。
+U11e全受入、U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mは引き続き未完。
+U17までの目標を保持する。共有系列への新たなAPI要求はない。
+共有一般論・共有ルートimport・他系列は編集していない。
