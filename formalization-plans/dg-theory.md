@@ -7570,3 +7570,35 @@ bimodule解像度の存在・片側のK-flat性・任意の解像度の比較射
 両変数を局所化した導来合成は未完で、U12e全受入とはしない。
 U12f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完。U17までの目標を保持する。
 共有系列への新しいAPI要求はない。
+
+### 17.166 U12e7：積dg圏上の加群と主bimodule圏の閉零圏同値（2026-10-17）
+
+`Bimodule/UncurryNaturality.lean`の**valueMap_uncurry_naturality**は、
+実際の閉零bimodule射がuncurryHomに関して全Hom自然であることを証明する。
+tensorの純粋斉次元で外延性を適用し、uncurryHomの(p*q).negOnePowの符号を保持したまま、
+左右の作用と値のchain mapとの可換式へ帰着した。通常の閉零Homだけの自然性には弱めていない。
+
+`Bimodule/TensorModuleFull.lean`はこの式と元の積dg関手のHomの成分比較から
+**preimage_naturality**を与え、**preimageMap**を既存leftModuleMorphismMkで構成する。
+preimageMap_evalは各積対象での値が元のbimodule射の評価に一致することを示す。
+**map_preimageMap/preimageMap_map**は射の両方向の往復、
+**preimageMap_quasiIso_iff**は逆向きの射に関する指定準同型クラスの一致である。
+これにより比較関手の**full/isEquivalence**を登録し、**equivalence**を公開した。
+§17.165の忠実性・本質的全射性と合わせ、対象データだけの同値を実際の閉零圏の同値へ拡張した。
+任意CommRing A・非有界・独立B/C対象宇宙・Small.{u} B/Cを維持する。
+
+Checks.BimoduleTensorEquivalence・Checks.BimoduleTensorModule・Checks.DerivedBimodulePentagon・
+Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功
+（3023 jobs、終了コード0、警告なし）。独立対象宇宙でのFull/IsEquivalence・射の往復、
+ZMod 2での圏同値を検査した。主要10宣言の直接公理監査は標準公理のみ。
+監査累計3157宣言。今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は13 Markdown・320 exposition参照を検査し、従前と同じ担当外の
+BhattScholze互換宣言の未解決参照1件で失敗した。共有ルート・共有一般論・該当系列は編集していない。
+
+次は既存左右加群同値と今回の圏同値を使い、積dg圏のopposite上のsemifree解像度を
+主bimodule圏の実際の準同型として移送する。その後、右制限の相対K-flat性を生成cell・
+graded-split拡張・逐次余極限で証明する。必要な相手側Homのlocal K-flat仮定と
+dg圏の解像度を使う版を区別し、global semifreeから各fiber semifreeを無条件に推論しない。
+解像度比較・選択独立性・両変数の導来合成は残り、U12e全受入とはしない。
+U12f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完で、U17までの目標を保持する。
+共有系列への新しいAPI要求はない。
