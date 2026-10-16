@@ -8659,3 +8659,23 @@ Unique σ不要、空の有限添字も許す。既存一元APIは保持し、�
 標準3公理以外なし、新sorry・公理・外部引用なし。
 次はG7をこの具体的図式へ供給し、有限段の実残余Tor消滅を全源評価環へ渡す。
 無限根族への合流、G9最終判定、候補比較同型・CFF、一般B4は別工程として保持する。
+
+## 有限根族の実導来評価とraw残余商の比較計画（2026-10-16）
+
+BS担当でDeltaRootFamilyResidueSourceDerived.leanを新設する。
+全源Tor消滅から共通boundedAboveDerivedBaseChangeModuleAugmentationIsoを適用する。
+既存deltaRootResidueSourceEvalScalarEquivとdeltaDivisionSourceResidueTensorAlgEquivを再利用し、
+実βに沿う残余終域の導来拡大を既存raw(p,d)商の次数零対象へ比較する。
+順射が標準導来augmentationと具体的残余商比較の合成であることも公開する。
+Unique σ・外部G7/ghost入力を加えず、標準写像を保持する。ビルド・BS監査後に別コミットする。
+
+## 有限根族の全源Tor消滅の実装結果（2026-10-16）
+
+DeltaRootFamilySourceColimitTor.leanに3公開定理を実装した。
+共通G7を実有限根族の源グラフ逐次図式へ供給し、実評価環へのcolimit同型で有限段Tor消滅を全源へ移した。
+根関係族についてp正則性とδd指定単元から有限段入力を供給し、実残余自由δ射に沿う全β評価環の正次数Tor消滅を証明した。
+既存Tor対称性と導来base-changeホモロジー比較で、βに沿う実残余終域のscalarExtensionTorVanishingへ移した。
+外部PreservesColimit・ghost入力は不要。有限添字の列挙sを明示しており、Unique σは要求しない。
+対象3828ジョブ成功、自分のコード警告なし（共有既存警告のみ）。pure B4監査全2213宣言成功。
+標準3公理以外なし、新sorry・公理・外部引用なし。次は標準導来augmentationを既存raw残余商へ比較する。
+無限根族、G9、候補比較同型・CFF、一般B4は未完成として保持する。
