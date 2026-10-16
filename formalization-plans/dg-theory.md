@@ -5082,3 +5082,32 @@ Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功（2883 job
 小さい代表系への運搬、一対象Aと既存PerfectHomotopyの比較を進める。U13e全受入は未完。
 U13dのcompact⇒Perf、U11eのcoherence、U12e/f、U14〜U17、D4mも未完。
 採用済み引用は0件。共有一般論・共有ルート・他系列のファイルを変更していない。
+
+
+### 17.92 U13e5：実際のdg shiftのH⁰と整合的な整数shift（2026-10-16）
+
+`Module/ShiftHomotopyComparison.lean`は既存moduleShiftDGのH⁰関手とK(D)の商shiftとの
+自然同型を、商のnatIsoLiftと閉零shiftの比較から構成した。
+`Perfect/EnhancementShiftComparison.lean`は§17.91の全Hom関手等式をH⁰へ運び、
+射影的perfect dg shiftのH⁰が包含後のK(D)のshiftと自然に可換であることを証明する。
+既存K(D)→D(D)のCommShiftから主導来比較を得て、Perf包含への右whiskeringの完全忠実性から
+主Perfへの自然比較も引き戻した。対象ごとの同型だけでなく、全H⁰射で自然な比較である。
+
+`Perfect/EnhancementShift.lean`は主Perf同値の逆関手と上記の実際のshift関手との比較を構成し、
+固定版MathlibのHasShift.inducedを適用する。
+各整数のshift関手は実際のperfectDGModuleShiftDGのH⁰そのものであり、zero/addとその整合性を
+既存の誘導shift APIから得る。各shiftは加法的であり、主Perf同値の順・逆関手、単位・余単位が
+この整数shiftと整合する。主モデルの複体shiftを別の対象操作に置き換えない。
+
+Checks.PerfectEnhancementShift・Checks.PerfectEnhancementOperations・Checks.SmallPerfectEnhancement・
+Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功（2886 jobs、終了コード0、警告なし）。
+任意A・独立対象宇宙・任意S、実際のdg shiftとの関手一致、順逆CommShift、同値のcoherence、
+2と−3の合成、ZMod 2上の空生成集合を検査した。
+主要12宣言の直接公理監査は終了コード0、標準公理のみ。監査累計2245宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査も成功。
+今回の4 Leanファイルにsorry/admit/新規axiomはない。
+
+次はこの実際のshiftの下でcone三角形と主Perfの三角構造を比較し、
+小さい代表系へ構造を運び、一対象Aで既存PerfectHomotopyとの比較を証明する。U13e全受入は未完。
+U13d・U11eのcoherence・U12e/f・U14〜U17・D4mも未完。採用済み引用は0件。
+共有一般論・共有ルート・他系列のファイルを変更していない。
