@@ -145,6 +145,23 @@ lemma kernelComparison_injective (d : D) (n : SimplexCategoryᵒᵖ) :
   obtain ⟨y, rfl⟩ := Quotient.exists_rep y
   exact Quotient.sound hxy
 
+lemma kernelComparison_surjective (d : D) (n : SimplexCategoryᵒᵖ)
+    (ha : Function.Surjective ((a.app d).app n)) :
+    Function.Surjective (((kernelComparison a).app d).app n) := by
+  intro z
+  obtain ⟨x, hx⟩ := ha z
+  exact ⟨Quotient.mk _ x, hx⟩
+
+lemma kernelComparison_isIso
+    (ha : ∀ d n, Function.Surjective ((a.app d).app n)) :
+    IsIso (kernelComparison a) := by
+  have (d : D) (n : SimplexCategoryᵒᵖ) :
+      IsIso (((kernelComparison a).app d).app n) :=
+    (CategoryTheory.isIso_iff_bijective _).mpr
+      ⟨kernelComparison_injective a d n, kernelComparison_surjective a d n (ha d n)⟩
+  have (d : D) : IsIso ((kernelComparison a).app d) := NatIso.isIso_of_isIso_app _
+  exact NatIso.isIso_of_isIso_app _
+
 include a in
 lemma kernel_small (d : D) (n : SimplexCategoryᵒᵖ)
     [Small.{v} ((G.obj d).obj n)] : Small.{v} (Quotient ((kernel a).rel d n)) :=
