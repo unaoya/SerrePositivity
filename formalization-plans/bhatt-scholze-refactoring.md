@@ -782,9 +782,9 @@ BS担当はこの計画、N4/N7の下記BSファイル、BS専用監査のみを
 外部チャットへの新たな送信は、ユーザーの許可がある場合だけ行う。
 
 再開時に欠けていた旧`compatibleRootIdealTensorMap_tmul`のBS互換名は、ユーザーの個別送信許可後に
-修復案と監査エラーをCLMSTへ送り、移管担当がaliasと旧simp属性を復旧した。BS側では当該ファイルを編集していない。
+修復案と監査エラーをCLMSTへ送り、移管担当が`e2215f2c`でaliasと旧simp属性を復旧した。BS側では当該ファイルを編集していない。
 復旧後の通常B4監査は終了0。旧31名の完全性を基準にし、一時aliasや監査対象の削減は行っていない。
-移管前31名の完全型・計算契約の追加照合は、以前の別37宣言の型比較記録と混同せず実施する。
+移管前31名の完全型・計算契約の追加照合も完了した。以前の別37宣言の型比較記録とは区別し、結果を§13.6に記す。
 
 調査最終時のBSは作業中ファイルを含め580モジュール・約5.4万行。
 読み取り構造監査は循環・未解決importなし、指定した計8基盤入口の禁止依存なし。
@@ -795,9 +795,9 @@ BS担当はこの計画、N4/N7の下記BSファイル、BS専用監査のみを
 
 | ID | 対象・内容 | 受入条件・開始時の状態 |
 | --- | --- | --- |
-| N4確定 | DeltaDivisionEvaluationFiniteSupportColimitの共通有限和商colimitへの委譲 | 元の9公開型、図式・局所作用・標準射、空有限集合・空族・零環、下流Torを検証。旧構成との同型比較を確認し、単独保存する |
-| N7 | PerfectPrismRootSourceDiscrete、PerfectPrismDeltaAlgebraDiscreteのpure本体を新しい共通離散性判定へ接続 | 旧10公開型、元の実対象、正規化single/H0比較を保持。公開冪余核補題を削除せず、新仮定・引用なし。調査では型の照合のみで、試作検証から始める |
-| N6測定 | DeltaDivisionSecondCoefficientPowerEquiv等の型照合時間を測定 | 通常設定で宣言単位の費用を確認。実同型・係数/変数公式を保ち、改善の根拠がある場合だけコード変更を別工程として採用する |
+| N4確定 | DeltaDivisionEvaluationFiniteSupportColimitの共通有限和商colimitへの委譲 | 元の9公開型、図式・局所作用・標準射、空有限集合・空族・零環、下流Tor、旧新同型を検証。`c34770f7`で保存済み |
+| N7 | PerfectPrismRootSourceDiscrete、PerfectPrismDeltaAlgebraDiscreteのpure本体を新しい共通離散性判定へ接続 | 旧10公開型、元の実対象、正規化single/H0比較、旧public importを保持。公開冪余核補題を削除せず、新仮定・引用なし。`86288280`で保存済み |
+| N6測定 | DeltaDivisionSecondCoefficientPowerEquivの型照合時間を測定 | 宣言単位の原因を特定し、直接証明の試作まで通常設定で検証済み。安定した改善の根拠がないためコード変更は未採用 |
 
 N4は§12.2の具体的L、β、J、Kと図式を固定する。IsColimitはデータを含むため、旧新の同型は
 全段ι公式とhom_extから命題的一致を示し、同型全体・逆射の一致も確認する。元のrfl契約は別に検査する。
@@ -882,3 +882,43 @@ CA/PerfectoidIdealのようなB3を消費する接続層を、BS非依存の純�
   536監査対象の統合buildも4,586ジョブで終了0。対象closureと監査の909ソースhashは実行中不変。
   指定8基盤の構造監査が成功し、通常B4は復旧後の2,560件が終了0・2,556公理出力が標準3公理のみ。
   以前のN4/N5時の旧名不足による失敗記録を成功へ書き換えず、今回の復旧後検証として区別した。
+- N6測定：同一ソースの通常設定実行は139.55秒、集計profilerは140.77秒、宣言別profilerは138.50秒で全て終了0。
+  集計ではkernel type checkingが129秒、宣言別traceでは
+  `deltaDivisionSecondCoefficientPowerEquiv_mk`単独のカーネル検査が125.696217秒だった。
+  通常のtactic展開時間だけを短縮する対象ではないことが分かった。
+  同じ商同型の標準元公式をcongrArgで直接運ぶ試作も終了0だが、全体130.13秒・カーネル123秒で大きな費用が残った。
+  各版1回・並行負荷あり・import時間も異なるため、安定した高速化とは判断せず採用しなかった。
+  リポジトリの対象ソースと、Lean --depsで確認した直接依存4oleanのhashは開始時と終了時で一致。
+  測定ログ・宣言名付きtrace・試作差分は`/tmp/bs-n6/`へ保存した。生ログだけに依存しないよう本節に結果・採否を記録する。
+  今回の性能工程は測定・判断まで完了し、さらに大きな同型表示の変更は別計画とする。
+- 共通移管の追加互換性監査：移管前`adfb4fbf`の7原本を現在の外部依存下で再コンパイルし、旧31宣言の完全型を省略なしで取得した。
+  印字の無加工一致は9件、明示したalias名と表示空白だけの正規化後は31件が一致した。
+  さらに、alias置換を一切しない旧31完全型を期待型として、現在の各宣言をLeanで検査し、全31件が終了0。
+  復旧した`compatibleRootIdealTensorMap_tmul`は旧型、標準元のrfl、旧名によるrw/simp only、
+  旧名のsimp登録、共通定理を局所的にsimpから外した場合のsimpも成功した。
+  31件のassert_no_sorryと公理監査も成功し、依存は標準3公理のみ。
+  証跡は`/tmp/bs-root-core-compat/`。原本7ファイル・共有監査・Gitはこの追加調査で変更していない。
+- 統合監査：基礎584件が終了0、581公理出力は標準3公理のみ。
+  André条件付き監査も終了0だが、既存の名前付きAndré入力へのsorryAx依存を2つの条件付き成果に保持する。
+  これを引用非依存とは数えず、今回のN4/N7と通常B4の純粋な依存監査から分ける。B-I/B6の引用も変更していない。
+
+N6の宣言別計測は、対象ファイルを無変更で複写した`/tmp/bs-n6/Baseline.lean`に対して、
+リポジトリ直下で次のコマンドを実行した。profiler用のset_optionはソースへ追加していない。
+
+```sh
+/usr/bin/time -p lake env lean --profile \
+  -Dtrace.profiler=true \
+  -Dtrace.profiler.threshold=100 \
+  -Dpp.unicode.fun=true \
+  -DrelaxedAutoImplicit=false \
+  -Dweak.linter.mathlibStandardSet=true \
+  -Dweak.linter.style.header=false \
+  -DmaxSynthPendingDepth=3 \
+  /tmp/bs-n6/Baseline.lean \
+  > /tmp/bs-n6/declaration-profile.log 2>&1
+```
+
+今回採用したBS独立工程N4・N7と、N6の測定・採否判断は完了した。
+最終記録時にも統合検証対象909ソースのhashが一致することを確認した。
+検証範囲はBS専用監査のimport closureであり、並行追加を含む共有ルート全体のbuild成功を主張しない。
+§13.3の共通抽出候補は担当調整後の提案として残り、§13.4のB5等の新しい数学的工程も今回の完了対象に含めない。
