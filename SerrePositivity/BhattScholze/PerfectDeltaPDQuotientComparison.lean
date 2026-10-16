@@ -64,11 +64,8 @@ theorem exists_perfectDeltaPDQuotientEquiv_of_perfectoidExtension
   have hβd : β (w d) = 0 := by
     have hh : β (w d) = qR (θ d) := RingHom.congr_fun hβ d
     rw [hh, hθd, map_zero]
-  have hz (T : Type u) [CommRing T] : IsModuleComplete T (0 : T) (ModuleCat.of T T) := by
-    rw [isModuleComplete_iff_recurrence_bijective]
-    change Function.Bijective (fun x : ℕ → T ↦ fun n ↦ x n - (0 : T) • x (n + 1))
-    simp only [zero_smul, sub_zero]
-    exact ⟨fun x y h ↦ funext (fun n ↦ congrFun h n), fun x ↦ ⟨x, rfl⟩⟩
+  have hz (T : Type u) [CommRing T] : IsModuleComplete T (0 : T) (ModuleCat.of T T) :=
+    isModuleComplete_of_pow_smul_zero T 0 _ 1 (by simp)
   have hpC := isModuleComplete_of_isAdicComplete C (p : C) (ModuleCat.of C C)
   have hdC : IsModuleComplete C (β (w d)) (ModuleCat.of C C) := hβd ▸ hz C
   obtain ⟨b, hb, _⟩ := existsUnique_pdCompletionRingHom B p (w d) C β hpC hdC
@@ -79,31 +76,18 @@ theorem exists_perfectDeltaPDQuotientEquiv_of_perfectoidExtension
     exact hh.trans hβd)
   have hbq : b0.comp qU = b := rfl
   have hbi : b0.comp i = qR := by
-    apply RingHom.ext
-    intro r
-    obtain ⟨x, rfl⟩ := hθ r
-    have hh : i (θ x) = qU (j (w x)) := RingHom.congr_fun hiθ x
-    change b0 (i (θ x)) = qR (θ x)
-    rw [hh]
-    exact (RingHom.congr_fun hb (w x)).trans (RingHom.congr_fun hβ x)
+    apply (RingHom.cancel_right hθ).mp
+    rw [RingHom.comp_assoc, hiθ, ← RingHom.comp_assoc, hbq,
+      ← RingHom.comp_assoc, hb, hβ]
   have hbc : b0.comp c = RingHom.id C := by
-    apply RingHom.ext
-    intro x
-    obtain ⟨r, rfl⟩ := hqR x
-    change b0 (c (qR r)) = qR r
-    have hh : c (qR r) = i r := RingHom.congr_fun hcR r
-    rw [hh]
-    exact RingHom.congr_fun hbi r
+    apply (RingHom.cancel_right hqR).mp
+    rw [RingHom.comp_assoc, hcR, hbi, RingHom.id_comp]
   have hcb : c.comp b0 = RingHom.id U := by
     apply Ideal.Quotient.ringHom_ext
     have hcbβ : c.comp β = qU.comp j := by
-      apply RingHom.ext
-      intro y
-      obtain ⟨x, rfl⟩ := hw y
-      have hh : β (w x) = qR (θ x) := RingHom.congr_fun hβ x
-      change c (β (w x)) = qU (j (w x))
-      rw [hh]
-      exact (RingHom.congr_fun hcR (θ x)).trans (RingHom.congr_fun hiθ x)
+      apply (RingHom.cancel_right hw).mp
+      rw [RingHom.comp_assoc, hβ, ← RingHom.comp_assoc, hcR, hiθ,
+        RingHom.comp_assoc]
     have hpU := isModuleComplete_of_isAdicComplete U (p : U) (ModuleCat.of U U)
     have hqd : (qU.comp j) (w d) = 0 :=
       Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.mem_span_singleton_self _)

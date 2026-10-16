@@ -99,10 +99,7 @@ theorem map_ideal_eq_of_perfect (f : Hom P Q)
 /-- 台の環射が全射なら、標準商への誘導射も全射。 -/
 theorem quotientMap_surjective (f : Hom P Q) (hf : Function.Surjective f.toRingHom) :
     Function.Surjective f.quotientMap := by
-  intro x
-  obtain ⟨b, rfl⟩ := Ideal.Quotient.mk_surjective x
-  obtain ⟨a, rfl⟩ := hf b
-  exact ⟨Ideal.Quotient.mk P.ideal a, rfl⟩
+  exact Ideal.quotientMap_surjective hf
 
 end Hom
 end SerrePositivity.BhattScholze.OrientedPrism

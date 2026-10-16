@@ -1,0 +1,26 @@
+import SerrePositivity.BhattScholze.PDCompletionInterface
+import SerrePositivity.BhattScholze.OrientedPrismHom
+import SerrePositivity.BhattScholze.PerfectDeltaPDQuotientEquiv
+import SerrePositivity.BhattScholze.PerfectDeltaPDQuotientComparison
+import Mathlib.Util.AssertNoSorry
+
+/-! Focused dependency checks for the BS refactoring steps.
+
+Build the imported project modules before running `lake env lean` on this file.
+The existing BS foundation and B4 audits remain the integration checks.
+-/
+
+-- R1d: preserve the actual scalar actions and quotient comparisons.
+assert_no_sorry SerrePositivity.BhattScholze.pdCompletionH0_self_complete_p
+assert_no_sorry SerrePositivity.BhattScholze.pdCompletionH0_self_complete_d
+assert_no_sorry SerrePositivity.BhattScholze.existsUnique_pdCompletionRingHom
+assert_no_sorry SerrePositivity.BhattScholze.pdCompletionRingHom_ext
+assert_no_sorry SerrePositivity.BhattScholze.OrientedPrism.Hom.quotientMap_surjective
+assert_no_sorry SerrePositivity.BhattScholze.exists_perfectDeltaPDQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.exists_perfectDeltaPDQuotientEquiv_of_perfectoidExtension
+
+#print axioms SerrePositivity.BhattScholze.pdCompletionH0_self_complete_p
+#print axioms SerrePositivity.BhattScholze.pdCompletionH0_self_complete_d
+#print axioms SerrePositivity.BhattScholze.OrientedPrism.Hom.quotientMap_surjective
+#print axioms SerrePositivity.BhattScholze.exists_perfectDeltaPDQuotientEquiv
+#print axioms SerrePositivity.BhattScholze.exists_perfectDeltaPDQuotientEquiv_of_perfectoidExtension

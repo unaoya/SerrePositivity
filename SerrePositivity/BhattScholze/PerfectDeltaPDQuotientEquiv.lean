@@ -34,11 +34,8 @@ theorem exists_perfectDeltaPDQuotientEquiv
     rw [hk]
     exact Ideal.mem_span_singleton_self _
   have hpT := isModuleComplete_of_isAdicComplete T (p : T) (ModuleCat.of T T)
-  have hz (B : Type u) [CommRing B] : IsModuleComplete B (0 : B) (ModuleCat.of B B) := by
-    rw [isModuleComplete_iff_recurrence_bijective]
-    change Function.Bijective (fun x : ℕ → B ↦ fun n ↦ x n - (0 : B) • x (n + 1))
-    simp only [zero_smul, sub_zero]
-    exact ⟨fun x y h ↦ funext (fun n ↦ congrFun h n), fun x ↦ ⟨x, rfl⟩⟩
+  have hz (B : Type u) [CommRing B] : IsModuleComplete B (0 : B) (ModuleCat.of B B) :=
+    isModuleComplete_of_pow_smul_zero B 0 _ 1 (by simp)
   have hdT : IsModuleComplete T (f d) (ModuleCat.of T T) := hfd ▸ hz T
   obtain ⟨g, hg, _⟩ := existsUnique_pdCompletionRingHom A p d T f hpT hdT
   have hgd : g (j d) = 0 := by
@@ -57,13 +54,8 @@ theorem exists_perfectDeltaPDQuotientEquiv
   let i : T →+* Q := f.liftOfSurjective hf ⟨q.comp j, hi⟩
   have hij : i.comp f = q.comp j := f.liftOfSurjective_comp hf _
   have hbi : b.comp i = RingHom.id T := by
-    apply RingHom.ext
-    intro t
-    obtain ⟨a, rfl⟩ := hf t
-    have he : i (f a) = q (j a) := RingHom.congr_fun hij a
-    change b (i (f a)) = f a
-    rw [he]
-    exact RingHom.congr_fun hg a
+    apply (RingHom.cancel_right hf).mp
+    rw [RingHom.comp_assoc, hij, ← RingHom.comp_assoc, hb, hg, RingHom.id_comp]
   let : IsAdicComplete (Ideal.span {(p : Q)}) Q :=
     perfectDeltaPDPrism_quotient_isAdicComplete D hD d hd
   have hpQ := isModuleComplete_of_isAdicComplete Q (p : Q) (ModuleCat.of Q Q)

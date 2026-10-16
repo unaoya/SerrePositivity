@@ -22,13 +22,11 @@ theorem pdCompletionH0_self_complete_p :
     IsModuleComplete (PDCompletionH0 A p d) (p : PDCompletionH0 A p d)
       (ModuleCat.of (PDCompletionH0 A p d) (PDCompletionH0 A p d)) := by
   let := pdCompletionCommRing A p d
-  have h := pdCompletionH0_isComplete_p A p d
-  rw [isModuleComplete_iff_recurrence_bijective] at h ⊢
-  convert h using 1
-  funext x n
-  change x n - (p : PDCompletionH0 A p d) * x (n + 1) =
-    x n - pdCompletionUnit A p d (p : A) * x (n + 1)
-  rw [map_natCast]
+  let := (pdCompletionUnit A p d).toAlgebra
+  let : Module A (PDCompletionH0 A p d) := (pdCompletionUnit A p d).toAlgebra.toModule
+  simpa only [map_natCast] using
+    (isModuleComplete_algebraMap_iff A (PDCompletionH0 A p d) (p : A)
+      (PDCompletionH0 A p d)).mpr (pdCompletionH0_isComplete_p A p d)
 
 /-- 実H⁰は自身の作用について標準像j(d)導来完備。 -/
 theorem pdCompletionH0_self_complete_d :
@@ -36,9 +34,10 @@ theorem pdCompletionH0_self_complete_d :
     IsModuleComplete (PDCompletionH0 A p d) (pdCompletionUnit A p d d)
       (ModuleCat.of (PDCompletionH0 A p d) (PDCompletionH0 A p d)) := by
   let := pdCompletionCommRing A p d
-  have h := pdCompletionH0_isComplete_d A p d
-  rw [isModuleComplete_iff_recurrence_bijective] at h ⊢
-  exact h
+  let := (pdCompletionUnit A p d).toAlgebra
+  let : Module A (PDCompletionH0 A p d) := (pdCompletionUnit A p d).toAlgebra.toModule
+  exact (isModuleComplete_algebraMap_iff A (PDCompletionH0 A p d) d
+    (PDCompletionH0 A p d)).mpr (pdCompletionH0_isComplete_d A p d)
 
 /-- 試験環自身のp,g(d)導来完備性から、実H⁰の環としての一意延長を得る。 -/
 theorem existsUnique_pdCompletionRingHom (T : Type u) [CommRing T] (g : A →+* T)
