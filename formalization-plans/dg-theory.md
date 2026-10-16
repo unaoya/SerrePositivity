@@ -4225,3 +4225,27 @@ Checks.DerivedRightTensor・Checks.ResolutionFunctor・Checks.StageSeven・既�
 指定quasiIso保存を示し、左側の主導来圏へも降ろす両変数関手を次に構成する。
 U12aの残り・U12c/e/f、U11eの結合coherence・U13〜U17・D4mも継続する。
 共有系列への追加要求はなく、担当外ファイルを編集していない。
+
+### 17.63 U12d4：左加群の通常射に関する導来tensorの関手性（2026-10-16）
+
+`Tensor/LeftNaturality.lean`は左加群の閉零射gから固定左加群との通常tensor関手間の
+rightTensorLeftMapを構成した。両変数mapの既存合成則を使い、右変数の自然性とgの恒等/合成を証明する。
+Mathlib Quotient.natTransLiftでこれを主K(D)上のrightTensorHomotopyLeftMapへ送り、
+元の対象での成分・恒等/合成を検証した。rightTensorHomotopyBifunctorは左加群の閉零圏から
+K(D)→K(A)関手の圏への実際の関手である。
+
+`Derived/RightTensorLeftFunctor.lean`は解像度関手による前合成と既存K(A)→D(A)による後合成を使い、
+moduleResolutionDerivedTensorLeftFunctorを構成する。その対象は既存の固定Lの導来tensorと一致し、
+射の成分はQhで送ったrightTensorHomotopyLeftMapである。標準族を用いるmoduleDerivedTensorLeftFunctorも公開した。
+左変数の通常射と、主D(D)の任意射の間の自然性を保持する。
+
+Checks.DerivedTensorLeftNaturality・Checks.DerivedRightTensor・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2690 jobs、終了コード0、警告なし）。任意A・独立対象宇宙・明示したD(A)宇宙、
+K(D)の対象上の成分、主導来圏の任意射との可換square、ZMod 2を検査。
+主要13宣言の直接公理監査は終了コード0、標準公理のみ。監査累計1781宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査も成功。
+今回の3ファイルにsorry/admit/新規axiomはない。
+
+左変数の指定quasiIsoを反転する証明はなお未完であり、左側も導来化した双関手とはしない。
+次は主dg関手による標準cone比較を構成して、相対K-flat条件と準同型保存の接続へ進む。
+U11e・U12の残部・U13〜U17・D4mも未完。共有系列への追加要求はない。
