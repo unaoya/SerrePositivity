@@ -9985,3 +9985,15 @@ PrismaticGeneratorPowerModPFaithful.leanの公開1定理で、既存の標準商
 PerfectPrismRootQuotientReduction.leanの公開4宣言で、既存prism候補の元Aのd作用の正則性、実生成元商のTor消滅、通常係数拡大と既存perfectoid商の基底射の同型、同じ実生成元還元と通常商singleの同型を証明した。
 両対象ビルド成功（根商4227ジョブ）。pure B4監査2545宣言成功、標準3公理のみ。新sorry・公理・外部引用なし。
 次はこれらを同じ実mod p還元へ適用し、perfectoid候補の標準基底射のp完全忠実平坦性を証明する。
+
+## 根付きperfectoid拡大と一般B4の最終合流計画（2026-10-16）
+新規BS専用PerfectPrismRootedPerfectoidExtension.leanで、候補商の同じ基底射のp完全忠実平坦性を通常のAlgebra作用でも公開し、任意のA/(d)内の族の代表を選んで、具体的perfectoid拡大・係数射・互換根族を束ねた存在定理を証明する。
+同じモジュールで既証の根付き核降下を適用し、完全prism商からの導来p完備全射商の任意perfectoid化の全射性を証明する。
+続く新規SemiperfectoidSurjectivity.leanで既存perfectoidTrialPrismの商表示を用い、任意perfectoid源へ移す。源の環同型は全射qとの合成に吸収し、CFFの新しい基底変更定義を追加しない。零環枝も処理する。
+B3の存在・普遍性と合成して全射perfectoid化の存在も供給する。André引用・B-I/B6引用に戻らず、公開定理の全依存をpure監査する。
+
+## perfectoid候補商のp完全忠実平坦性の結果（2026-10-16）
+PerfectPrismRootPerfectoidCompletelyFlat.leanの公開7宣言で、任意根族の既存perfectoid候補商の標準基底射A/(d)→候補についてp完全忠実平坦性を証明した。
+元のprismの(p,d)還元から、既存の二段階商比較と生成元商single同型を経て、同じ商のmod p実還元の消滅・H0忠実平坦性、Tor消滅、通常係数拡大の忠実平坦性を供給した。
+生成元商のp正則性や有限性は仮定していない。対象4229ジョブ成功、pure B4監査2552宣言成功、標準3公理のみ。
+先の忠実平坦性補題の長行警告も解消した。新sorry・公理・引用なし。次は任意根族の拡大存在と既証降下への最終合流。

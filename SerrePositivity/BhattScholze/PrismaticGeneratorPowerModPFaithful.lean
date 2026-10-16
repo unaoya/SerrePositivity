@@ -41,7 +41,8 @@ theorem prismaticGeneratorPowerModPH0_faithfullyFlat
   let : Module Mₙ M := Module.compHom M (eₙ).toRingHom
   let : IsScalarTower Mₙ Qₙ M := IsScalarTower.of_algebraMap_smul (fun _ _ => rfl)
   let eA : Mₙ ≃ₐ[Mₙ] Qₙ := AlgEquiv.ofBijective (Algebra.ofId Mₙ Qₙ) (eₙ).bijective
-  have : Module.FaithfullyFlat Mₙ Qₙ := Module.FaithfullyFlat.of_linearEquiv Mₙ Mₙ eA.symm.toLinearEquiv
+  have : Module.FaithfullyFlat Mₙ Qₙ :=
+    Module.FaithfullyFlat.of_linearEquiv Mₙ Mₙ eA.symm.toLinearEquiv
   have : Module.FaithfullyFlat Qₙ M := h
   have : Module.FaithfullyFlat Mₙ M := Module.FaithfullyFlat.trans Mₙ Qₙ M
   exact Module.FaithfullyFlat.of_linearEquiv (R := Mₙ) (M := M)
