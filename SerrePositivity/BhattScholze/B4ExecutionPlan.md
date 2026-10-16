@@ -9863,3 +9863,14 @@ DeltaRootRawCompletionReflection.leanの公開8宣言で、raw環上の実逐次
 元の実根添加源H0からrawのPDCompletionH0への具体的A線形同型deltaRootSourcePDH0Isoを公開した。
 追加正則性・有限性・古典的完備性仮定なし。対象4056ジョブ成功、pure B4監査2496宣言成功、標準3公理のみ。
 環・δ構造との照合、候補CFF・根付き拡大の存在、一般B4は引き続く工程。
+
+## raw実逐次H0の環構造との照合計画（2026-10-16）
+新規BS専用DeltaRootRawCompletedH0Ring.leanで、同じ実H0の元の加法・Raw作用を保つ既存反射環構造を使い、上の正規化線形同型をRaw代数同型へ上げる。
+標準単位を保つことと既存reflection.linearMap_map_mulによる積の一致を証明し、実PD完備化環との同定を公開する。
+共通の環・反射定義は再実装しない。δ構造との照合と候補CFFは後続工程。
+
+## raw実逐次H0の環構造との照合結果（2026-10-16）
+DeltaRootRawCompletedH0Ring.leanの公開5宣言で、元の実H0の加法・Raw作用を保つ既存反射環・代数構造を設定し、同じ線形比較がRaw代数同型になることを証明した。
+その関数は既存の正規化線形比較そのものであり、全raw係数を元のpdCompletionUnitの像へ送る。
+対象4057ジョブ成功、pure B4監査2501宣言成功、標準3公理のみ。新sorry・公理・外部引用なし。
+次は源の離散性とA線形PD比較から実PD環の(p,d)完全忠実平坦性へ移し、δ完全化後の候補CFFへ進む。
