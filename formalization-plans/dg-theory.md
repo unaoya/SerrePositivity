@@ -5974,3 +5974,35 @@ associatorとcochainの可換式を検査した。主要6宣言の直接公理�
 全erasure²=0、全微分、U15b全受入は依然未完。
 U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mも未完。採用済み引用は0件。
 共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.122 U15b7：全Hom写像による型照合の解消と先頭・非隣接εの反交換（2026-10-16）
+
+§17.121の適用草稿2件の型照合を解消した。
+`Complexes/TensorJoinHomNaturality.lean`は、任意の複体間のchain map c:U⊗V→Wについて、
+前方二因子の合成と後方tensor作用の可換式を全Homのchain map等式として証明する。
+`Quotient/PrependHomNaturality.lean`はこれを元のdg圏のeCompへ特殊化し、
+pathの型を保持するprependMap_tail_homを構成した。さらにεを保持するtensor写像を
+先に合成したprependMap_suffix_homを公開した。
+pathの型を含むHom等式を最初から直接証明する草稿は200000 heartbeatで失敗したが、
+任意の複体上の補題を経由する形では同じ標準設定で通る。予算上限の増大は採用していない。
+
+`Quotient/PrependErasureNaturality.lean`は全Hom等式へ実際のeraseFaceを代入し、
+prependMapと先頭より後のeraseFaceの可換式を証明した。
+`Quotient/ErasureFirstTailInterchange.lean`はこれと§17.120の中間消去の反交換を接続し、
+先頭εと非隣接の後方εを消す順序の交換で負号が付くことを証明した。
+これで上記2ファイルは未受入草稿から受入済みに移る。
+隣接する二つのεの場合は、隣接Hom合成の結合則を用いる別の証明が必要であり、
+全erasure²=0はまだ主張しない。任意可換環・非有界Hom・独立対象宇宙を保持し、Small Dは不要。
+
+Checks.ErasureFirstTail・Checks.PrependTail・Checks.ErasureMiddle・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（2665 jobs、終了コード0、警告なし）。
+任意dg圏・任意長path・任意の後方位置で先頭との非隣接反交換、ZMod 2の長さ3の例を検査した。
+主要5宣言の直接公理監査は標準公理のみ。監査累計2598宣言。
+文書検査は24 Markdown・311 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次はprependMapの結合則と中間ε消去の括弧変更との整合性を証明し、隣接するεの二重消去を扱う。
+その後、後方帰納式と有限添字の対合へ接続して全erasure²=0と全微分を構成する。
+U15b全受入、U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mは未完。
+採用済み引用は0件。共有一般論・共有ルートimport・他系列は編集していない。
