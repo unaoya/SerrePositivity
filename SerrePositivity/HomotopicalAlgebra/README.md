@@ -2662,3 +2662,15 @@ pushout後の単射性、一般augmentation・評価・最終小値化・F2は�
 したがって値ごとの小さい閉包から全基底に閉じる小部分図式を自動に推論しない。
 最終の自然弱同値zigzag、小さい厳密RMap・F2は未完了。
 検証：`scripts/check_small_subdiagram_obstruction.lean`、計画書§327。
+
+
+### 安定な合同関係による小さい厳密商図式（§328）
+
+`DiagramQuotient`は全基底射・全単体作用素に安定な次数ごとのSetoidから、実商図式と自然射影を構成する。
+`SmallDiagramQuotient`は実商型のv-small性と元の商射の有限境界持ち上げ性から、
+元のSSet.{v}値の厳密関手と、任意のanodyne反転関手で可逆となる全図式の自然比較を供給する。
+元の値がKanなら小さい商値もKanであり、基底射のQ可逆性は元の小さいモデルの弱同値へ移る。
+`StarDiagramSmallQuotient`は前回の星形例で全条件を証明し、同じ一般構成による実小値化を得る。
+大きい値宇宙のモデル構造・小さい基底は不要。
+bar用の合同関係と三条件、最終小さい厳密RMap・F2は未完了。
+検証：`scripts/check_small_diagram_quotient.lean`、計画書§328。
