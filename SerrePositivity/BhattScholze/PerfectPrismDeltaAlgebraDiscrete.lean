@@ -5,6 +5,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteFlatR
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionUpperBound
 public import SerrePositivity.HomologicalAlgebra.DerivedPureHomology
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.MilnorAnnihilator
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteScalarConePurity
 
 /-! # 完全prism上の実δ完全化逐次対象の離散性 -/
 
@@ -77,47 +78,18 @@ theorem perfectPrismDeltaAlgebraCompletion_powerCokernel_homology_isZero
 /-- 完全prism上の実δ完全化逐次対象は離散。 -/
 theorem perfectPrismDeltaAlgebraCompletion_pure :
     (X).obj.IsGE 0 ∧ (X).obj.IsLE 0 := by
-  let K := boundedAboveDerivedChosenModel X
-  have hK : ∀ i, Module.Flat A (K.complex.X i) := by
-    intro i
-    have : Module.Projective A (K.complex.X i) := inferInstance
-    infer_instance
-  have ht : ∀ n : ℕ, ∀ x : A, d ^ n * x = 0 → d ^ 0 * x = 0 := by
-    intro n x hx
-    have hd : IsSMulRegular A d := P.generator_regular
-    have hr : Function.Injective (fun z : A => d ^ n * z) :=
-      IsSMulRegular.pow n hd
-    have hz : x = 0 := hr (by simpa using hx)
-    simp [hz]
-  have hc := isComplete_of_iso A d K.iso.symm
-    (deltaAlgebraPerfectionIteratedPDCompletion_isComplete_d E j d)
-  have := powerCokernelReconstruction_quasiIso d K.complex hK 0 ht hc
-  have hLE : (X).obj.IsLE 0 := by
-    apply boundedAboveDerivedCompletionFunctor_isLE A d _ 0
-    apply boundedAboveDerivedCompletionFunctor_isLE A (p : A) _ 0
-    change ((DerivedCategory.singleFunctor (ModuleCat A) 0).obj
-      (baseChangeScalarModule (deltaAlgebraPerfectionCoefficient E j))).IsLE 0
-    infer_instance
-  refine ⟨(DerivedCategory.isGE_iff _ _).mpr ?_, hLE⟩
-  intro i hi
-  have hz : IsZero ((complexTowerHomotopyLimit A
-      (powerCokernelComplex d K.complex)
-      (powerCokernelComplexTransition d K.complex)).homology i) := by
-    apply ModuleCat.isZero_iff_subsingleton.mpr
-    refine ⟨fun x y => sub_eq_zero.mp ?_⟩
-    simpa only [one_mul, one_smul] using
-      complexTowerHomotopyLimit_homology_annihilated A
-        (powerCokernelComplex d K.complex) (powerCokernelComplexTransition d K.complex) i 1 1
-        (fun n _ => (ModuleCat.isZero_iff_subsingleton.mp
-          (perfectPrismDeltaAlgebraCompletion_powerCokernel_homology_isZero
-            P E j hP hj hzero hFF n i hi)).elim _ _)
-        (fun n _ => (ModuleCat.isZero_iff_subsingleton.mp
-          (perfectPrismDeltaAlgebraCompletion_powerCokernel_homology_isZero
-            P E j hP hj hzero hFF n (i - 1) (by omega))).elim _ _)
-        (x - y)
-  have hzK := hz.of_iso (asIso (homologyMap (powerCokernelReconstruction d K.complex) i))
-  exact hzK.of_iso ((DerivedCategory.homologyFunctor (ModuleCat.{u} A) i).mapIso K.iso.symm ≪≫
-    (DerivedCategory.homologyFunctorFactors (ModuleCat.{u} A) i).app K.complex)
+  have hmod (i : ℤ) (hi : i ≠ 0) : IsZero
+      ((DerivedCategory.homologyFunctor (ModuleCat (A ⧸ Ideal.span {d})) i).obj
+        ((boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {d}))).obj X).obj) := by
+    let F (t : A) := IsZero
+      ((DerivedCategory.homologyFunctor (ModuleCat (A ⧸ Ideal.span {t})) i).obj
+        ((boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {t}))).obj X).obj)
+    exact Eq.mp (congrArg F (pow_one d))
+      (perfectPrismDeltaAlgebraCompletionPower_homology_isZero
+          P E j hP hj hzero hFF 1 (by omega) i hi)
+  obtain ⟨hGE, hLE, _⟩ := derived_pure_of_complete_regular_quotient_pure d
+    P.generator_regular X (deltaAlgebraPerfectionIteratedPDCompletion_isComplete_d E j d) hmod
+  exact ⟨hGE, hLE⟩
 
 /-- 同じ実δ完全化逐次対象をその実H0のsingleに正規化して同定する。 -/
 def perfectPrismDeltaAlgebraCompletionSingleIso :

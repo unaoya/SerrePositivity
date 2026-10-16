@@ -633,7 +633,7 @@ assert_no_sorry SerrePositivity.BhattScholze.compatibleRootFamilyCompletion_isAd
 assert_no_sorry SerrePositivity.BhattScholze.exists_compatibleRootFamilyCompletionPDQuotientEquiv
 #print axioms SerrePositivity.BhattScholze.exists_compatibleRootFamilyCompletionPDQuotientEquiv
 
--- N5: all ten old public declarations, including both actual single comparisons.
+-- N5/N7: all ten old public declarations, including both actual single comparisons.
 assert_no_sorry SerrePositivity.BhattScholze.perfectPrismRootSource_powerCokernel_homology_isZero
 #print axioms SerrePositivity.BhattScholze.perfectPrismRootSource_powerCokernel_homology_isZero
 assert_no_sorry SerrePositivity.BhattScholze.perfectPrismRootSource_pure
@@ -867,3 +867,28 @@ end BoundaryCases
 
 end
 end SerrePositivity.BhattScholze.RefactoringFiniteSupportAudit
+
+-- N7: the direct common purity criterion retains the old boundary cases.
+namespace SerrePositivity.BhattScholze.RefactoringScalarPurityAudit
+noncomputable section
+universe u
+open CategoryTheory
+attribute [local instance] HasDerivedCategory.standard
+variable {p : ℕ} [Fact p.Prime]
+
+example {A : Type u} [CommRing A] (P : OrientedPrism p A)
+    (hP : P.deltaStructure.IsPerfect) :
+    let b : PEmpty.{u + 1} → A := fun s => nomatch s
+    let X := DeltaRootSourceIteratedPDCompletion P.deltaStructure P.generator b
+    X.obj.IsGE 0 ∧ X.obj.IsLE 0 := by
+  let b : PEmpty.{u + 1} → A := fun s => nomatch s
+  exact perfectPrismRootSource_pure P hP b
+
+example {σ : Type u} (P : OrientedPrism p PUnit.{u + 1})
+    (hP : P.deltaStructure.IsPerfect) (b : σ → PUnit.{u + 1}) :
+    let X := DeltaRootSourceIteratedPDCompletion P.deltaStructure P.generator b
+    X.obj.IsGE 0 ∧ X.obj.IsLE 0 :=
+  perfectPrismRootSource_pure P hP b
+
+end
+end SerrePositivity.BhattScholze.RefactoringScalarPurityAudit
