@@ -738,6 +738,8 @@ public import SerrePositivity.CommutativeAlgebra.PerfectPolynomialFlat
 
 public import SerrePositivity.HomologicalAlgebra.PerfectRingTor
 
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteScalarConePurity
+
 /-!
 # Serre の交点重複度の正値性の形式化
 
