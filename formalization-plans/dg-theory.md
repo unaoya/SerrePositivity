@@ -7023,3 +7023,43 @@ Markdownのリンクについて追加の失敗は報告されていない。全
 U11e全受入、U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mは引き続き未完。
 U17までの目標を保持する。共有系列への新たなAPI要求はない。
 共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.152 U11e29：閉零bimodule射の三変数に関する結合自然同型（2026-10-17）
+
+`Tensor/TripleFunctors.lean`は同じ三変数の積圏を源として、composeFunctorを二回使う
+左括弧・右括弧の反復合成関手leftTripleFunctor/rightTripleFunctorを構成する。
+`TripleMapElements.lean`は両括弧のmapを三重斉次生成元で計算し、R/Q/Pの各値に
+対応する閉零射を適用することを証明する。内側のcomposeMapの値への評価は§17.151の式を再利用する。
+`TripleMapComponents.lean`は固定した成分関数による同じ計算を公開する。
+
+`AssociatorMapElements.lean`は、この二つのmap公式と元の結合同型の生成元公式を
+可換四角形へ組み合わせ、三変数の閉零bimodule射についての生成元自然性を証明する。
+`AssociatorMapNaturality.lean`は、反復tensorからのcochainの外延性でこれを全体へ貼り合わせ、
+値のchain mapの等式へ移す。次数0の等式を除去する際は、m+0=nを先に正規化して
+その等式を直接除去する。曖昧なsubstでn=m+0が残る型照合の失敗を解消した。
+再表示した値のchain mapとの等式を使い、元のassociatorValueIsoのhomに対する自然性を得る。
+
+`AssociatorValueEvaluation.lean`は、閉零bimodule結合同型の順逆を値の複体へ評価すると
+元の結合同型の順逆のchain mapへ戻ることを証明する。
+`AssociatorNaturality.lean`は全b/dの評価による外延性から、実際のbimodule射としての
+**associatorIso_naturality**を証明し、**associatorNatIso : leftTripleFunctor ≅ rightTripleFunctor**
+を構成する。その成分は構造体として既存associatorIsoに一致する。
+任意CommRing A・非有界・独立B/C/E/F宇宙、Small.{u} B/C/Eを保持し、Fのsmall性は要求しない。
+各変数の射は全Hom自然性を保持したBimoduleCategoryの射である。
+今回受け入れる三変数自然性は閉零bimodule射に関するもの。
+任意パラメータKのGradedNatTransに対する三変数の豊穣自然性は、この記録の受入に含めない。
+
+Checks.AssociatorNaturality・Checks.BimoduleComposition・Checks.BimoduleCategory・Checks.QuotientUniversal・
+Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功（2876 jobs、終了コード0、警告なし）。
+独立対象宇宙での二つの三変数関手・自然同型・成分公式・射の自然性square、ZMod 2の特殊化を検査した。
+主要14宣言の直接公理監査は標準公理のみ。監査累計2969宣言。
+今回の実装にsorry/admit/新規axiomはない。採用済み引用は0件。担当差分の空白検査は成功。
+全体文書検査は13 Markdown・320 exposition参照を検査し、§17.151と同じ担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの未解決参照1件で失敗した。
+共有ルートや別系列を編集していない。全体文書検査の成功は主張しない。
+
+次は単位比較をBimoduleCategoryの同型へ持ち上げ、三角・五角coherenceを証明する。
+閉零変数の自然性だけでU11eの全豊穣自然性を代用せず、任意パラメータ版も残課題として保持する。
+U11e全受入、U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mは引き続き未完。
+U17までの目標を保持する。共有系列への新しいAPI要求はない。
