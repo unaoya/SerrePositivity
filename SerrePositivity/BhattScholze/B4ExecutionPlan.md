@@ -9997,3 +9997,9 @@ PerfectPrismRootPerfectoidCompletelyFlat.leanの公開7宣言で、任意根族�
 元のprismの(p,d)還元から、既存の二段階商比較と生成元商single同型を経て、同じ商のmod p実還元の消滅・H0忠実平坦性、Tor消滅、通常係数拡大の忠実平坦性を供給した。
 生成元商のp正則性や有限性は仮定していない。対象4229ジョブ成功、pure B4監査2552宣言成功、標準3公理のみ。
 先の忠実平坦性補題の長行警告も解消した。新sorry・公理・引用なし。次は任意根族の拡大存在と既証降下への最終合流。
+
+## 根付きperfectoid拡大と完全prism商での全射性の結果（2026-10-16）
+PerfectPrismRootedPerfectoidExtension.leanの公開3宣言で、同じ標準基底代数作用のp完全忠実平坦性と、完全prism商内の任意元族の互換根を備える具体的perfectoid拡大の存在を証明した。
+元の核の全元を添字族として、既存の根付き核降下を適用し、完全prism商からの導来p完備全射商の任意IsPerfectoidizationの全射性を証明した。
+対象4283ジョブ成功、pure B4監査2555宣言成功、標準3公理のみ。André・B-I/B6・全射性引用への依存なし。
+一般perfectoid源への商表示を通じた移送と旧B-S入口の解消を残す。
