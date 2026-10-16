@@ -2871,3 +2871,13 @@ ambient値への厳密な評価、全パラメータ置換と両関手の可換s
 元の源モデルの自由性、関係付き図式の自動的な持ち上げ、基底上の厳密なsectionは要求・主張しない。
 高次の組立て・小さいSSet値降下・移送後の内部単位・最終RMap・F2は未完了。
 検証：`scripts/check_relative_free_diagram_extension.lean`、計画書§345。
+
+
+### 自由path余モナドとfreeCoverの最初の二面・退化（§346）
+
+`FreePathResolution`は通常の関手の自由pathへの移送、path合成の余単位、生成射の二重化、
+それらの自然性・両余単位則・余結合則をモデル不要で証明し、実Mathlib Comonadを構成する。
+`OrdinaryBarFreeResolutionFaces`は元の基底の二重自由圏からfreeCoverへの二つの面を構成し、
+基底への射影の一致と、退化を前合成したとき両方が元のfreeCoverへ戻る実等式を証明した。
+二面そのものの相対比較、全次数の単体的分解、小さいSSet値降下、最終RMap・F2は未完了。
+検証：`scripts/check_free_path_comonad.lean`、計画書§346。
