@@ -6102,3 +6102,41 @@ quotientHom上の豊穣合成を構成する。単位・結合・通常順dg合�
 指定εの収縮方程式も必要であり、U15b全受入や最終dg商の完成とはまだ扱わない。
 U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mも未完。採用済み引用は0件。
 共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.126 U15b11：全path直和の内部合成・包含上の成分式・左単位（2026-10-16）
+
+`Complexes/TensorCoproduct.lean`は指定した二つの複体余積のtensorからの普遍写像を構成した。
+左tensorの余積保存は既存閉構造、右tensorの保存は既存tensorRightHomAdjunctionから得る。
+片側のdescと包含上の公式、両側のdescと各二因子上の公式、二因子への制限によるhom_extを
+公開する。添字は独立のType v/Type wで、各余積の存在を明示的に仮定し、宇宙を不当に縮小しない。
+一般モデル圏・転送・SM7は使用も再実装もしていない。
+
+`Quotient/InternalComposition.lean`は有限path連結appendMapをこの普遍性へ適用し、
+内部微分を持つ全path Hom直和のchain map internalCompositionを構成した。
+二つのpath包含への制限はappendMapの後に連結語の包含を合成したものに一致する。
+空pathを左に置く公式、空path同士では元のeCompとなる公式、任意整数次数の純tensor上の
+成分式、二つのpathへの制限によるhom_extを証明した。
+ここでのchain mapは内部微分に関するもので、quotientHomの最終微分との両立は未証明である。
+
+`Complexes/TensorJoinUnit.lean`は前方Hom合成の左単位則が右tensor因子を残しても保たれることを、
+unitor/associatorの自然性とMathlib monoidal coherenceから証明した。
+`Quotient/PrependUnit.lean`は任意長pathのprependMapの左単位則を元のdg圏のe_id_compから得る。
+`Quotient/InternalUnit.lean`は元の単位を空pathへ入れたinternalIdentityを構成し、
+各pathへの制限、tensorの交換式、上記prependMapの単位則からinternalCompositionの左単位を証明した。
+任意可換環・非有界Hom・独立対象宇宙を保持し、全path直和にはSmall.{u} Dを要求する。
+
+Checks.InternalComposition・Checks.QuotientDifferential・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（2683 jobs、終了コード0、警告なし）。元の豊穣合成との空path比較、
+全path直和の左単位、ZMod 2での負/正次数の純tensor成分式を検査した。
+主要18宣言の直接公理監査は標準公理のみ。監査累計2652宣言。
+文書検査は24 Markdown・311 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次はappendMapとε消去のLeibniz則を各有限path上で証明し、直和へ移してinternalCompositionと
+最終Hom微分との両立へ接続する。先頭Homの作用についてはprependMap_eraseFirstと
+prependMap_eraseFace_succを統合し、長いpathはappendMapの再帰式で処理する。
+右単位・結合、最終Hom上の単位、収縮方程式と通常順dg合成の符号比較も残る。
+内部合成の構成だけでU15bや最終dg商の完成とはしない。
+U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mも未完。採用済み引用は0件。
+共有一般論・共有ルートimport・他系列は編集していない。
