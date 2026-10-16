@@ -7850,3 +7850,51 @@ interval・加群cylinderのK-flat性、置換関手の型・合成・factorizat
 その後、後因子の全導来圏への拡張と単位・結合coherenceを輸送する。
 local Hom条件のないdg圏解像度の経路、U12e全受入、U12f・U13d/e残部・U14・U15d/e・U16/U17・D4mは残る。
 U17までの目標を保持し、共有系列への新しいAPI要求はない。
+
+### 17.172 U12e13：K-flat局所化比較同値と両変数の全導来bimodule合成（2026-10-17）
+
+`Derived/KFlatBimoduleAugmentation.lean`は実際のK-flat対象Mへの増大射を
+**rightKFlatAugmentation**として充満部分圏の射にする。
+**rightKFlatAugmentation_naturality**は、射影解像度のlift_facによる全dg自然な
+ホモトピーを§17.171の部分圏内の局所化で同一視し、比較同値のcounitを後合成して証明する。
+これにより**rightKFlatAugmentationIso**は包含後の置換関手と元の部分圏の局所化関手との自然同型を与える。
+`Derived/KFlatBimoduleGlobalAugmentation.lean`は同じ増大射の自然性を全導来圏で証明し、
+**rightKFlatGlobalAugmentationIso**を与える。射の計算には包含のfactorizationからの
+**rightKFlatDerivedInclusion_map_base**を使い、定義上の射の一致には依存しない。
+
+`Derived/KFlatBimoduleEquivalence.lean`は明示的なLocalization.Liftingとfactorization同型を与え、
+上の二つの増大自然同型を局所化へ降下する。
+**rightKFlatReplacementUnitIso/rightKFlatReplacementCounitIso**は比較関手と置換関手の両合成を
+それぞれの恒等関手に結ぶ自然同型。**rightKFlatDerivedEquivalence**はこれらから
+Mathlib CategoryTheory.Equivalence.mkのadjointificationを使い、三角恒等式も備えた圏同値を構成する。
+**rightKFlatDerivedInclusion_isEquivalence/fullyFaithful**により、§17.170で未証明だった
+比較関手の充満忠実性も証明できた。任意可換環・非有界・独立対象宇宙・Small.{u} B/C、
+localHomKFlat A Cの条件を明示的に保持する。局所Hom条件を暗黙の型クラスへ変更していない。
+
+`Derived/BimoduleComposition.lean`の**derivedBimoduleComposeFunctor**は、C–E因子の導来K-flat置換と
+既存の後因子局所化関手を合成し、
+`DerivedBimoduleCategory A C E ⥤
+ (DerivedBimoduleCategory A B C ⥤ DerivedBimoduleCategory A B E)`を構成する。
+両変数とも全閉零bimodule圏の指定準同型局所化上にあり、後変数をK-flat対象に限定した関手ではない。
+必要条件はlocalHomKFlat A EとSmall.{u} B/C/E。Hom_BやHom_Cの局所K-flat条件はこの関手自体には不要。
+**derivedBimoduleComposeKFlatFamilyIso/KFlatIso**は後因子が右K-flatの場合の既存固定因子関手との比較、
+**KFlatValueIso**は元のbimodule Pと右K-flat Qを使ったunderived合成の導来像との値の比較。
+**derivedBimoduleComposeResolutionComputation**は任意の指定された右K-flat解像度R→Qにより
+同じ導来合成関手を計算できる自然同型であり、標準解像度だけの式には限定していない。
+**derivedBimoduleComposeKFlatIso_naturality**はK-flat因子間の任意の射に関する比較の自然性。
+
+Checks.DerivedBimoduleComposition・Checks.KFlatBimoduleReplacement・Checks.KFlatBimoduleLocalization・
+Checks.DerivedBimodulePentagon・Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（3062 jobs、終了コード0、警告なし）。比較関手のFull/Faithful、
+圏同値の三角恒等式、独立した四対象宇宙での全導来合成、任意解像度の計算同型、ZMod 2を検査した。
+主要21宣言の直接公理監査は標準公理のみ。監査累計3287宣言。
+今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は13 Markdown・320 exposition参照まで進み、担当外BhattScholze互換宣言の
+未解決参照1件で失敗した。共有ルート・共有一般論・該当系列は編集していない。
+
+次は全導来合成上の単位・結合比較と三角・五角coherenceを、既存K-flat因子上の図式から輸送する。
+K-flat部分圏の局所化比較が同値であることを用い、元の固定因子でのcoherenceと
+今回の全後因子上のcoherenceを同一視するための自然性・計算図式を証明する。
+さらに解像度計算同型の自己・推移整合性を整理する。
+local Hom条件のないdg圏自体の解像度経路、U12e全受入、U12f・U13d/e残部・U14・U15d/e・U16/U17・D4mは残る。
+U17までの目標を保持し、共有系列への新しいAPI要求はない。
