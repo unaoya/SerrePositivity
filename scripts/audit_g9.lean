@@ -1,3 +1,8 @@
+import SerrePositivity.HomologicalAlgebra.ModelTensorFlatCriterion
+import SerrePositivity.HomologicalAlgebra.ScalarExtensionTensorTests
+import SerrePositivity.HomologicalAlgebra.FlatDerivedPowerReductions
+import SerrePositivity.HomologicalAlgebra.ModelTensorHomologySurjective
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerCokernelTransitions
 import SerrePositivity.HomologicalAlgebra.ModuleTensorCochainExact
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerCokernelTensorModel
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedPowerCokernelModel
@@ -245,3 +250,54 @@ example {R : Type u} [CommRing R] (a : R) (n : ℕ)
   derivedPowerCokernelHomologyIso a n X i
 
 end
+
+-- Pure flat power reductions and the actual surjective H0 transitions.
+assert_no_sorry SerrePositivity.derived_pure_flat_of_modelTensor_tests
+#print axioms SerrePositivity.derived_pure_flat_of_modelTensor_tests
+assert_no_sorry SerrePositivity.derivedBaseChange_pure_flat_of_tensor_tests
+#print axioms SerrePositivity.derivedBaseChange_pure_flat_of_tensor_tests
+assert_no_sorry SerrePositivity.modelTensor_isZero_of_power_annihilated
+#print axioms SerrePositivity.modelTensor_isZero_of_power_annihilated
+assert_no_sorry SerrePositivity.derived_power_reduction_pure_flat
+#print axioms SerrePositivity.derived_power_reduction_pure_flat
+assert_no_sorry SerrePositivity.modelTensor_homology_zero_map_surjective_of_power_annihilated
+#print axioms SerrePositivity.modelTensor_homology_zero_map_surjective_of_power_annihilated
+assert_no_sorry SerrePositivity.DerivedCompletion.powerPrincipalIdeal_antitone_step
+#print axioms SerrePositivity.DerivedCompletion.powerPrincipalIdeal_antitone_step
+assert_no_sorry SerrePositivity.DerivedCompletion.powerQuotientCoefficientTransition
+#print axioms SerrePositivity.DerivedCompletion.powerQuotientCoefficientTransition
+assert_no_sorry SerrePositivity.DerivedCompletion.powerQuotientCoefficientMap_transition
+#print axioms SerrePositivity.DerivedCompletion.powerQuotientCoefficientMap_transition
+assert_no_sorry SerrePositivity.DerivedCompletion.powerQuotientCoefficientTransition_epi
+#print axioms SerrePositivity.DerivedCompletion.powerQuotientCoefficientTransition_epi
+assert_no_sorry SerrePositivity.DerivedCompletion.powerCokernelTensorModelIso_transition
+#print axioms SerrePositivity.DerivedCompletion.powerCokernelTensorModelIso_transition
+assert_no_sorry SerrePositivity.DerivedCompletion.powerCokernel_homology_zero_transition_surjective
+#print axioms SerrePositivity.DerivedCompletion.powerCokernel_homology_zero_transition_surjective
+
+section PowerInput
+open CategoryTheory.Limits
+variable {R : Type u} [CommRing R] (a : R)
+    (X : DerivedCategory.Minus (ModuleCat.{u} R))
+    (hPure : ∀ i : ℤ, i ≠ 0 → IsZero
+      ((DerivedCategory.homologyFunctor (ModuleCat.{u} (R ⧸ Ideal.span {a})) i).obj
+        ((boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {a}))).obj X).obj))
+    (hFlat : Module.Flat (R ⧸ Ideal.span {a})
+      ((DerivedCategory.homologyFunctor (ModuleCat.{u} (R ⧸ Ideal.span {a})) 0).obj
+        ((boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {a}))).obj X).obj))
+
+-- All powers, with no ring torsion bound or completeness required for this step.
+example (n : ℕ) :
+    ((boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {a ^ n}))).obj X).obj.IsGE 0 ∧
+      ((boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {a ^ n}))).obj X).obj.IsLE 0 ∧
+      Module.Flat (R ⧸ Ideal.span {a ^ n})
+        ((DerivedCategory.homologyFunctor (ModuleCat.{u} (R ⧸ Ideal.span {a ^ n})) 0).obj
+          ((boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {a ^ n}))).obj X).obj) :=
+  derived_power_reduction_pure_flat a X hPure hFlat n
+
+-- The actual zero-power transition is included.
+example : Function.Surjective (homologyMap
+    (powerCokernelComplexTransition a (boundedAboveDerivedChosenModel X).complex 0) 0) :=
+  powerCokernel_homology_zero_transition_surjective a X hPure hFlat 0
+
+end PowerInput
