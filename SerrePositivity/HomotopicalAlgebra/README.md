@@ -1945,3 +1945,19 @@ Q→K×Tの各成分がmonoであることをモデル構造不要のpushout-pro
 最終RMapと最終比較も残る。実装`9d61c8af`、詳細は計画§272。
 新規61宣言・5モジュール、共有7444宣言・536モジュールの標準公理監査が成功し、
 旧tuple系とA0・A1最終入口の回帰確認も成功した。
+
+
+## 比較の両端系の全中心射圏接続と旧pre/post端点の回収（2026-10-16）
+
+`NerveBiparameterMapLaws`は自然な全境界を保持する制限・値移送・再添字付けの式を扱う。
+`NerveBiparameterEvaluation`はこれらの全系の対象評価を実際の前後合成へ戻す。
+`NerveArrowComparison`は同じ一つの全系をsource・targetへ再添字付けして二つの比較端点を作り、
+両端の全vertex境界が同じ自然な全境界系と等しいことを証明する。
+`ResolutionArrowComparisonEndpoints`は旧全中心tuple系へ適用し、その評価を小さい元の写像として回収する。
+`ResolutionArrowElementary`は前後合成を実際の全中心索引の射として構成し、そのfiber・tuple移送を
+旧移送と比較する。旧postLeft・postRight・preLeft・preRightの四端点が全小写像として回収される。
+任意の実frame mapを使い、源の関手的因子分解や選択frame liftの合成則は追加仮定にしない。
+旧比較区間全体を同時保持するための両端系のΔ1境界への貼り合わせ、vertex cylinderとの適合性、
+混合三角形の全境界接続、基底Cへの降下、最終RMap・最終比較は引き続き残る。
+実装`2e786e3d`、詳細は計画§273。新規49宣言・5モジュール、共有7493宣言・541モジュールの
+標準公理監査と区間境界相対延長・旧全tuple系の回帰確認が成功。
