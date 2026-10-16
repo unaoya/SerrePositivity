@@ -7095,3 +7095,37 @@ BhattScholze互換宣言の未解決参照1件で失敗した。共有ルート�
 任意パラメータの変換に関する三変数の豊穣自然性も、U11e全受入の残課題として保持する。
 U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mは引き続き未完。U17までの目標を保持する。
 共有系列への新しいAPI要求はない。
+
+
+### 17.154 U11e31：四重生成元と閉零bimodule射の五角coherence（2026-10-17）
+
+`Tensor/AssociatorDegreeExt.lean`は三重生成元による各次数の線形写像の外延性を証明する。
+`QuadElements.lean`は四つのbimoduleの両端と中間の括弧付けの斉次生成元を定義し、
+`QuadCochainExt.lean`は完全左合成からの任意次数cochainを四重生成元で判定する。
+合成P,Q,R,Sの完全左括弧付けの値はS⊗(R⊗(Q⊗P))であり、
+完全右括弧付けの値は((S⊗R)⊗Q)⊗Pである。合成順と値のtensor順を区別した。
+
+`Bimodule/ValueIdentity.lean`と`Tensor/BimoduleMapElementValues.lean`は恒等射と指定した値の
+生成元評価を与える。`AssociatorIsoElements.lean`は実際の閉零結合同型を値へ評価し、
+既存の固定成分関数の生成元公式に戻す。`PentagonShortElements.lean`は二辺、
+`PentagonLongElements.lean`は三辺の経路を計算し、同じ完全右生成元へ移ることを証明した。
+`Pentagon.lean`のpentagonValueHomは外延性で両経路を同定し、pentagonValueで元の値の
+chain mapへ戻す。**pentagon**は全対象での値への評価による外延性を使った、
+実際の閉零bimodule射の五角等式である。生成元上の等式だけで受入とはしていない。
+任意CommRing A・非有界・独立B/C/E/F/G宇宙を保持し、Small.{u}はB/C/E/Fに要求する。
+Gのsmall性は不要。計算上限の追加、共有一般論の複製、引用は使用していない。
+
+Checks.Pentagon・Checks.Triangle・Checks.AssociatorNaturality・Checks.BimoduleComposition・
+Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功（2788 jobs、終了コード0）。
+Checksの長行警告を修正後、再ビルド成功（1952 jobs、警告なし）。
+独立対象宇宙でのbimodule射の五角等式とZMod 2の特殊化を検査した。
+主要15宣言の直接公理監査は標準公理のみ。監査累計2997宣言。
+今回の実装にsorry/admit/新規axiomはない。採用済み引用は0件。
+全体文書検査は13 Markdown・320 exposition参照を検査し、§17.151〜153と同じ担当外の
+BhattScholze互換宣言の未解決参照1件で失敗した。共有ルートや該当系列は編集していない。
+
+次は単位同型のbimodule変数に関する自然性と、任意パラメータKのGradedNatTransに
+関する三変数の豊穣自然性を完成する。閉零射に関する五角と三変数自然性だけで
+任意パラメータの自然性を代用しない。U11e全受入は引き続き未完。
+U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完。U17までの目標を保持する。
+共有系列への新しいAPI要求はない。
