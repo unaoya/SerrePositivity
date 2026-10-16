@@ -1,5 +1,8 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanTestDetection
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneLocalizedTensor
+
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveStandard
 
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarEvaluatedEndpoint

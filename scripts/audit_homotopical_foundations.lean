@@ -7,6 +7,9 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneKanReplacement,
+    `SerrePositivity.HomotopicalAlgebra.Simplicial.KanTestDetection,
+    `SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneLocalizedTensor,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveFunctor,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveMonos,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.NerveInitialImage,
