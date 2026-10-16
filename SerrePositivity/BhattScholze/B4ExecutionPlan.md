@@ -8983,3 +8983,35 @@ PerfectDeltaFrobeniusStageFlat.leanに4公開宣言を実装した。
 既存baseChangeScalarModule j_nを使い、実φ_Aⁿ制限加群との恒等線形同型・single比較を構成して今回の判定へ渡す。
 新たな同等の一般加群定義は作らず、実δ完全化の環段へ接続する。その後、実段図式とδ完全化のfiltered colimitを照合する。
 G9・元の源の環としての離散性・filtered colimit/完備化・候補CFF・一般B4は未完成として保持する。
+
+## 実δ環のFrobenius各段の係数作用と線形比較計画（2026-10-16）
+
+BS担当でDeltaAlgebraFrobeniusStages.leanを新設する。
+δ環射j : (A,D)→(B,E)と実係数射j_n=φ_Bⁿ∘jを用い、δ自然性でj_n=j∘φ_Aⁿを照合する。
+既存baseChangeScalarModule j_nを各実環段のA加群として使い、実φ_Aⁿ制限加群との恒等線形同型、
+既存の係数制限single比較による実次数零対象の比較を構成する。
+実φ_BによるA線形隣接遷移と、その具体的逐次ModuleCat図式も公開する。
+次にDeltaAlgebraFrobeniusStageFlat.leanを新設し、元の実Bの(p,d)還元が次数零・H0忠実平坦である入力から、
+全実環段B（正確なj_n作用）の標準還元の非零次数消滅・H0忠実平坦性を証明する。
+既存の加群定義・一般導来底変換・Frobeniusねじれ判定を再利用し、G9や環としての源の離散性は仮定に隠さない。
+各段階をビルド・BS監査後に個別コミットする。実δ完全化とのcolimit比較は次工程。
+
+## 実δ完全化への正確なA線形標準余錐計画（2026-10-16）
+
+BS担当でDeltaAlgebraPerfectionCocone.leanを新設する。
+既存DeltaPerfection Eと第0段の係数射jの合成を実完全化のA係数射とし、既存δ自然性でδ環射であることを証明する。
+各実段のj_n作用から標準deltaPerfectionOf E nへのA線形性を係数図式で証明する。
+隣接Frobenius遷移との可換性を示し、前段の具体的ModuleCat逐次図式から実δ完全化加群への標準余錐を構成する。
+加群・環の余極限を再定義せず、既存環余極限の値と係数作用を保持する。
+余錐の普遍性と実δ完全化の還元判定は次工程として区別し、対象ビルド・BS監査後に個別コミットする。
+
+## 実δ環のFrobenius各段の係数加群の実装結果（2026-10-16）
+
+DeltaAlgebraFrobeniusStages.leanに7公開宣言を実装した。
+実係数射j_n=φ_Bⁿ∘jを定め、δ環射jの自然性からj_n=j∘φ_Aⁿを証明した。
+既存baseChangeScalarModule j_nを各実環段の正確なA加群として使い、実基底Frobenius制限加群との恒等線形同型とsingle比較を構成した。
+隣接する実φ_BのA線形遷移、およびその具体的逐次ModuleCat図式と標準隣接射を公開した。
+新たな同等の加群・環段の定義は作らず、別々の係数作用を束ねた既存加群を使用する。
+対象2608ジョブ成功、自分のコード警告なし。pure B4監査全2279宣言成功、標準3公理以外なし。
+新sorry・公理・外部引用なし。次は既証の実ねじれ判定をこの同じ実環段の還元へ渡す。
+G9・源の離散性・実δ完全化とのcolimit比較・候補CFF・一般B4は未完成として保持する。
