@@ -1,0 +1,59 @@
+module
+
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLift
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.Generators
+public import SerrePositivity.HomotopicalAlgebra.Generated.FunctorClosure
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneModelDetection
+
+/-! # Universe lift preserves anodyne extensions without model structures
+
+Only the small horn small-object argument and colimit preservation are used.
+The categorical localization comparison is consequently model independent.
+-/
+
+@[expose] public section
+universe w v
+noncomputable section
+open CategoryTheory
+
+namespace SerrePositivity.SimplicialModel.UniverseLift
+
+lemma hornGenerator_anodyne_map : SSet.modelCategoryQuillen.J.{v} ≤
+    SSet.anodyneExtensions.{max v w}.inverseImage SSet.uliftFunctor.{w, v} := by
+  intro X Y f hf
+  simp only [SSet.modelCategoryQuillen.J, MorphismProperty.iSup_iff] at hf
+  obtain ⟨n, ⟨i⟩⟩ := hf
+  exact (SSet.anodyneExtensions.arrow_iso_iff (hornArrowIso.{w, v} (n + 1) i)).mpr
+    (SSet.anodyneExtensions.horn_ι i)
+
+/-- The larger universe needs no model category structure. -/
+lemma anodyne_map : SSet.anodyneExtensions.{v} ≤
+    SSet.anodyneExtensions.{max v w}.inverseImage SSet.uliftFunctor.{w, v} := by
+  rw [SSet.anodyneExtensions_eq_llp_rlp]
+  exact ModelGeneration.generatedLeft_map SSet.uliftFunctor SSet.anodyneExtensions
+    SSet.modelCategoryQuillen.J hornGenerator_anodyne_map
+
+open AnodyneHomotopy in
+lemma anodyneQ_lift_inverts : SSet.anodyneExtensions.{v}.IsInvertedBy
+    (SSet.uliftFunctor.{w, v} ⋙ anodyneQ.{max v w}) := by
+  intro X Y f hf
+  exact Localization.inverts anodyneQ SSet.anodyneExtensions _ (anodyne_map f hf)
+
+open AnodyneHomotopy in
+lemma anodyneQ_map_isIso_of_small {X Y : SSet.{v}} (f : X ⟶ Y)
+    (hf : IsIso (anodyneQ.{v}.map f)) :
+    IsIso (anodyneQ.{max v w}.map (SSet.uliftFunctor.{w, v}.map f)) :=
+  map_isIso_of_anodyneQ_isIso (SSet.uliftFunctor ⋙ anodyneQ) anodyneQ_lift_inverts f hf
+
+open HomotopicalAlgebra AnodyneHomotopy in
+/-- All weak equivalences in the original small model become invertible after
+lifting. Only the original small universe has a model structure. -/
+lemma anodyneQ_map_isIso_of_weakEquivalence [ModelCategory SSet.{v}]
+    (hcof : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
+    (hfib : fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
+    {X Y : SSet.{v}} (f : X ⟶ Y) (hf : weakEquivalences SSet.{v} f) :
+    IsIso (anodyneQ.{max v w}.map (SSet.uliftFunctor.{w, v}.map f)) :=
+  anodyneQ_map_isIso_of_small f
+    ((weakEquivalences_iff_anodyneQ_isIso hcof hfib f).mp hf)
+
+end SerrePositivity.SimplicialModel.UniverseLift
