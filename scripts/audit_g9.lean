@@ -1,3 +1,6 @@
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerImageTower
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerCokernelReconstruction
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.KoszulPowerCokernelComparison
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.UniformZeroTower
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.UniformZeroTowerHomology
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTorsionTower
@@ -97,3 +100,85 @@ example {R : Type u} [CommRing R] (M : ℕ → Type v)
     (h : ∀ n, moduleTowerComposite R M t n 0 = 0) :
     Function.Bijective (moduleTowerDifference R M t) :=
   moduleTowerDifference_bijective_of_uniform_zero R M t 0 h
+
+-- Standard image, cokernel, reconstruction, and Koszul augmentation diagrams.
+assert_no_sorry powerCokernelComplex
+#print axioms powerCokernelComplex
+assert_no_sorry powerImageComplex
+#print axioms powerImageComplex
+assert_no_sorry powerScalar_square
+#print axioms powerScalar_square
+assert_no_sorry powerCokernelComplexTransition
+#print axioms powerCokernelComplexTransition
+assert_no_sorry powerImageComplexTransition
+#print axioms powerImageComplexTransition
+assert_no_sorry powerImageComplexTransition_ι
+#print axioms powerImageComplexTransition_ι
+assert_no_sorry powerImageComplexTransition_factor
+#print axioms powerImageComplexTransition_factor
+assert_no_sorry powerTorsionComplexInclusion
+#print axioms powerTorsionComplexInclusion
+assert_no_sorry powerTorsionComplexInclusion_transition
+#print axioms powerTorsionComplexInclusion_transition
+assert_no_sorry powerTorsionComplexInclusion_factor_zero
+#print axioms powerTorsionComplexInclusion_factor_zero
+assert_no_sorry powerTorsionImageShortComplex
+#print axioms powerTorsionImageShortComplex
+assert_no_sorry powerTorsionImageShortComplex_shortExact
+#print axioms powerTorsionImageShortComplex_shortExact
+assert_no_sorry powerImageCokernelShortComplex
+#print axioms powerImageCokernelShortComplex
+assert_no_sorry powerImageCokernelShortComplex_shortExact
+#print axioms powerImageCokernelShortComplex_shortExact
+assert_no_sorry powerTorsionImageHolimShortComplex
+#print axioms powerTorsionImageHolimShortComplex
+assert_no_sorry powerTorsionImageHolimShortComplex_shortExact
+#print axioms powerTorsionImageHolimShortComplex_shortExact
+assert_no_sorry powerImageComplex_holim_acyclic
+#print axioms powerImageComplex_holim_acyclic
+assert_no_sorry powerCokernelComplexTransition_π
+#print axioms powerCokernelComplexTransition_π
+assert_no_sorry powerImageCokernelHolimShortComplex
+#print axioms powerImageCokernelHolimShortComplex
+assert_no_sorry powerImageCokernelHolimShortComplex_shortExact
+#print axioms powerImageCokernelHolimShortComplex_shortExact
+assert_no_sorry powerCokernelReconstruction
+#print axioms powerCokernelReconstruction
+assert_no_sorry powerCokernelReconstruction_eq_lift
+#print axioms powerCokernelReconstruction_eq_lift
+assert_no_sorry powerCokernelReconstruction_projection
+#print axioms powerCokernelReconstruction_projection
+assert_no_sorry powerCokernelReconstruction_quasiIso
+#print axioms powerCokernelReconstruction_quasiIso
+assert_no_sorry powerScalarCokernelShortComplex
+#print axioms powerScalarCokernelShortComplex
+assert_no_sorry koszulPowerCokernelAugmentation
+#print axioms koszulPowerCokernelAugmentation
+assert_no_sorry koszulPowerCokernelAugmentation_inr
+#print axioms koszulPowerCokernelAugmentation_inr
+assert_no_sorry koszulPowerCokernelAugmentation_transition
+#print axioms koszulPowerCokernelAugmentation_transition
+assert_no_sorry koszulPowerCokernelComparison
+#print axioms koszulPowerCokernelComparison
+assert_no_sorry complexCompletionUnit_comp_koszulPowerCokernelComparison
+#print axioms complexCompletionUnit_comp_koszulPowerCokernelComparison
+assert_no_sorry koszulPowerCokernelComparison_quasiIso
+#print axioms koszulPowerCokernelComparison_quasiIso
+
+open CategoryTheory HomologicalComplex
+attribute [local instance] HasDerivedCategory.standard
+
+-- The actual augmentation, with no regularity or boundedness added to K.
+example {R : Type u} [CommRing R] (a : R)
+    (K : CochainComplex (ModuleCat.{u} R) ℤ) (hK : ∀ i, Module.Flat R (K.X i))
+    (N : ℕ) (h : ∀ n : ℕ, ∀ r : R, a ^ n * r = 0 → a ^ N * r = 0)
+    (hc : IsComplete R a (DerivedCategory.Q.obj K)) :
+    QuasiIso (koszulPowerCokernelComparison a K) :=
+  koszulPowerCokernelComparison_quasiIso a K hK N h hc
+
+-- The unit diagram holds without even the torsion bound or completeness.
+example {R : Type u} [CommRing R] (a : R)
+    (K : CochainComplex (ModuleCat.{u} R) ℤ) :
+    complexCompletionUnit R a K ≫ koszulPowerCokernelComparison a K =
+      powerCokernelReconstruction a K :=
+  complexCompletionUnit_comp_koszulPowerCokernelComparison a K
