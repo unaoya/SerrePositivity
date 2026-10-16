@@ -4901,3 +4901,37 @@ U13c全受入は代表加群の全shiftによる生成性を残して未完。
 次は評価ホモロジーの全次数消滅と主導来対象の零性を比較し、生成性を証明する。
 U11eのcoherence・U12e/f・U13d/e・U14〜U17・D4mも未完。
 共有系列への追加要求はなく、担当外・共有ルートを変更していない。
+
+
+### 17.86 U13c6：小さいcompact生成族と主導来圏の零性判定（U13c受入、2026-10-16）
+
+`Derived/AcyclicZero.lean`はobjectwise acyclic加群への零加群からの射が指定quasiIsoであることを証明する。
+主局所化でこの射を反転し、acyclic加群の像の零性を得た。
+任意の主導来対象について全評価ホモロジーの消滅と零性が同値であり、
+元の加群についてはQ(N)が零であることとmoduleAcyclic Nが同値となる。
+主導来圏を別の局所化やモデル的Hoへ置き換えていない。
+
+`Perfect/Generators.lean`は加群評価のCommShiftとMathlibのhomology shift同型を合成し、
+H⁰(ev_x(N[n])) ≅ Hⁿ(ev_x N)を構成する。代表加群のHom計算と主局所化のshift比較により、
+全x/nについてHom(Q(representable x), X[n])が零であることとIsZero Xの同値を証明した。
+shift随伴で始域をshiftした同値へ変換し、D×ℤで添字付けたmoduleCompactGeneratorsを定義した。
+その像はSmall.{u}で、各対象がcompactであり、この族からのHom消滅が正確に主導来対象の零性を検出する。
+D(D)全体の対象集合がsmallであるとは主張しない。
+
+Checks.CompactGenerators・Checks.PerfectCompact・Checks.Compact・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2892 jobs、終了コード0、警告なし）。独立対象宇宙・生成族のsmallness・compact性・
+Hom消滅による零性・acyclic判定・正負shift（2と−3）・ZMod 2を検査した。
+主要11宣言の直接公理監査は終了コード0、標準公理のみ。監査累計2146宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。
+今回の3 Leanファイルにsorry/admit/新規axiomはない。担当差分の空白検査も成功。
+
+U13cの受入照合：代表加群による評価ホモロジーのHom計算（§17.81）、線形性（§17.82）、
+全導来射での自然性（§17.83）、任意u-small余積での標準Hom直和比較とrepresentableのcompact性（§17.84）、
+compact性の厚い閉性・Perf⇒compact（§17.85）、小さいcompact生成族と零性検出（本節）。
+これでU13cを受け入れる。compact生成性の零性検出という用語はKeller v5 §3.5、p.8とも照合した。
+採用済み引用は引き続き0件で、上記の主張はすべてLeanで証明した。
+
+U13dのcompact⇒Perfは未完。DG-PERの原典Keller v5 Cor.3.7（p.8）は再確認したが、まだ採用していない。
+採用する場合もfinite cell/retractとしての本Perfと原典のthick閉包の一致、対象・宇宙・射クラスを
+固定した契約を先に照合する。U13eの小さいdg enhancement・既存perfect比較も未完。
+U11eのcoherence・U12e/f・U14〜U17・D4mも未完。共有系列への追加要求はない。
