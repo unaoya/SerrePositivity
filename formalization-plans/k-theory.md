@@ -20560,3 +20560,76 @@ CにもSSetにもモデル構造を要求していない。
 augmentationを定義したことやambient切断の存在だけでは、比較の弱同値や元の基底への
 小さいstrictificationは証明されない。それらの証明、元のCᵒᵖ×Cへの降下、
 小さい厳密なRMap、F2の不変性・Kan・π₀とHo(C)の同定などは残り、全体目標は継続する。
+
+
+## 369. 対象を固定した通常の自由分解とnativeな小さい対角評価（2026-10-17）
+
+実装コミット`819cb7c4`。§368の通常の単体図式へ既存の実評価を運び、
+対角上の実語射族からnativeな小さいSSetの写像を構成した。
+
+### 369.1 既存の次数比較と対象ラベル
+
+`HomotopyFunctionComplex/OrdinaryBarFixedSource`は、既存のdegree_power比較で
+通常のΔᵒᵖ上の自由道分解を、各次数の対象型が元のCᵒᵖ×Cである実generator圏へ移す。
+元の分解との自然同型、実augmentation、元の基底への射影を構成した。
+射影は既存の再帰的augmentationに等しく、その対象写像は恒等である。
+この射影の全単体自然性から、任意の単体作用素が対象ラベルを保つことを証明し、
+対象写像が定義上恒等となるliteralMapと実simplicial図式literalを構成した。
+元の図式との同一性も実関手等式として証明している。
+モデル構造は不要であり、元の対象宇宙uとHom宇宙vは独立である。
+
+`OrdinaryBarFixedChoices`は、既存の実choice自然変換をこの表示へ運ぶ。
+各成分が既存の全次数の実choice functorそのものになることを証明し、
+対象がliteralなambient fixedActionについて、任意の単体写像との自然性を得た。
+`OrdinaryBarFixedWordEvaluation`は、その自然性を語圏の全商射へ延長する。
+任意の外側単体写像、任意の内側次数、任意の実パラメータに対する実評価関手の等式と、
+nativeな小さいSSetの任意商射族での作用の等式を証明した。
+生成する面・退化だけでなく、通常のΔᵒᵖの全写像を対象とする。
+
+### 369.2 実対角Homと対角評価
+
+`OrdinaryBarFixedWordResolution`はliteralな自由分解へ語構成を適用し、実対角図式を作る。
+§368の既存対角図式との自然同型を、元の次数比較と語Cat関手から構成した。
+元の基底の各対X,Yをliteralなラベルとする実Hom SSet.{max u v}を構成し、
+任意の単体写像、合成・恒等、結合則、左右単位則を証明した。
+対角作用素を「source変更の後に語変更」と「語変更の後にsource変更」の両順序で計算できる。
+このモジュールにもモデル構造は不要である。
+
+`OrdinaryBarDiagonalEvaluation`は、各Δⁿ_nの実恒等単体とその自然性を使う。
+元のC、既存の小さいSSetモデル、任意の補助Pについて、任意の小さいTと
+j:ULift(T)→P、任意の対角語Hom族f:ULift(T)→Hom_diag(X,Y)から、
+次の実写像を構成した。
+
+`small(X)⊗T → small(Y)`（nativeなSSet.{v}）。
+
+各n単体の評価では、PパラメータとΔⁿの恒等n単体を対にして既存の実語評価へ代入する。
+内側の全単体自然性、369.1の外側の全単体評価交換、対角作用素の二順序の一致、
+標準単体の自然性を合わせ、実SSet写像の自然性を証明した。
+任意の小さいパラメータ代入と交換し、対角語の恒等はfst、合成は共有パラメータの族の合成となる。
+元のCにはModelCategory以外の追加条件を課さず、小さいSSet.{v}のモデル構造だけを使う。
+補助SSet.{max u v}のモデル構造は要求しない。
+
+### 369.3 受入検証
+
+すべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`（3110 jobs、警告なし）。
+- `check_diagonal_word_evaluation`：モデル構造不要のliteralな対象写像と既存図式との自然同型、
+  実対角Hom、標準単体の自然性、任意の外側・内側単体写像での実評価交換、
+  独立した対象宇宙u・Hom宇宙vにおけるnativeな小さい対角評価と恒等・合成・代入。
+  新規5モジュール全62宣言の標準公理監査。
+- `check_word_resolution_diagram`（56宣言・5モジュール）、
+  `check_word_source_operators`（24宣言・6モジュール）の回帰検証。
+- `audit_homotopical_foundations`：全12573宣言・895モジュール。
+  propext・Classical.choice・Quot.soundのみ、sorry・引用axiomなし。
+- ソースの行長・証明用マーカー・stage差分の空白検査。
+
+### 369.4 次の受入単位と残作業
+
+通常の単体図式と対角での実評価は、小さいSSetの写像まで構成済みとなった。
+次はこの対角作用を、補助宇宙上の実評価写像と小さい内部Homへの写像としてまとめ、
+augmentationによるHomの比較を実際に構成・検証する。
+augmentationの比較が必要な弱同値であること、小ささを保つstrictification、
+元のCᵒᵖ×Cへの降下はまだ証明されていない。
+今回の対角語Homは補助的な大きい宇宙にあり、元の基底上の小さい厳密なRMapではない。
+そのRMapとF2の不変性・Kan・π₀とHo(C)の同定などは残り、全体目標は継続する。

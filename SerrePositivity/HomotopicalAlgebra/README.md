@@ -3133,3 +3133,18 @@ SSet.{v}の実写像へ写し、恒等・合成・代入を保持する。
 既存実評価の通常の図式・対角への移送、比較の弱同値、元の基底への小さいstrictification、
 小さい厳密なRMapは残る。ambient分裂からsmall切断や弱同値は主張しない。
 受入検証は`check_word_resolution_diagram`（56宣言・5モジュール）。
+
+
+### 対象を固定した通常の自由分解と小さい対角評価（§369）
+
+`OrdinaryBarFixedSource`は既存の次数比較とaugmentationから、任意の単体作用素の対象写像が
+元のCᵒᵖ×Cの恒等となる実simplicial図式を構成する。
+`OrdinaryBarFixedChoices`と`OrdinaryBarFixedWordEvaluation`は既存choiceとambient評価を移し、
+全単体写像での語評価交換を全商射について証明する。
+`OrdinaryBarFixedWordResolution`は既存対角図式と自然同型なliteral表示、実Hom SSetと
+合成・恒等・結合・単位則を与える。
+`OrdinaryBarDiagonalEvaluation`は標準恒等単体を代入し、任意の対角語射族をnativeな小さい
+SSet.{v}の実写像へ移す。恒等・合成・代入を保持し、二方向の実自然性を使う。
+内部Homへの対角作用、augmentationの比較・弱同値、元の基底への小さいstrictification、
+小さい厳密なRMapは残る。
+受入検証は`check_diagonal_word_evaluation`（62宣言・5モジュール）。
