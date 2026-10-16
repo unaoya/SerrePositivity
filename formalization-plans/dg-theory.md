@@ -4107,3 +4107,24 @@ Checks.TensorGradedSplit・Checks.SphereFreeKFlat・Checks.StageSeven・既存Sp
 次はこの拡張閉性を実際のsemifree filtrationの各段階へ適用し、逐次余極限と網羅性の同型を使う。
 U11eの左右自然性と結合coherence、U12残部・U13〜U17・D4mも未完。
 共有系列への追加要求はなく、担当外ファイルを編集していない。
+
+### 17.58 U12b3：semifreeの相対K-flat性と解像度の存在（2026-10-16）
+
+`Tensor/Semifree.lean`は既存ModuleSemifreeFiltrationの各段階の相対K-flat性を帰納する。
+初期段と各商にはsphere-free表示の定理を使い、全作用と可換するgraded-split拡張の
+tensor短完全性で次段へ進む。逐次余極限閉性とfiltrationの実際のIsColimit・網羅性同型を使い、
+moduleSemifree_relativeKFlatを証明した。
+exists_relativeKFlat_resolutionは既存exists_semifree_resolutionへこの結果を追加し、
+semifree・相対K-flat・次数ごと全射・指定quasiIsoを同時に保持する。
+Hom_DのA-flat性やモデル圏は仮定しない。
+
+Checks.SemifreeKFlat・Checks.TensorGradedSplit・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2819 jobs、終了コード0、警告なし）。任意A・独立対象宇宙・非有界加群、
+任意filtrationとZMod 2の解像度を検査した。新規4宣言の直接公理監査も終了コード0、標準公理のみ。
+監査累計1722宣言。§17.57/58の文書検査は22 Markdown・311 exposition参照、失敗0件。
+担当差分の空白検査も成功。今回の2ファイルにsorry/admit/新規axiomはない。
+
+U12bの相対結果は得られたが、local A-K-flat Homの仮定からのobjectwise結果はなお未完。
+相対K-flatのshift/cone閉性・quasiIso保存との同値、U12cの上有界flat、導来tensorと
+導来bimodule合成・係数変更も未完。U11e・U13〜U17・D4mも未完のまま継続する。
+共有系列への追加要求はなく、担当外ファイルを編集していない。
