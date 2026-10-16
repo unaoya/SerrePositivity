@@ -3,6 +3,7 @@ public import SerrePositivity.BhattScholze.Inputs.AndreFlatness
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlatEquiv
 public import SerrePositivity.HomologicalAlgebra.AlgebraRestrictionSingle
 public import SerrePositivity.HomologicalAlgebra.TorCoefficientPowerTorsionDescent
+public import SerrePositivity.BhattScholze.PerfectoidCompletedBaseChangeDiscrete
 
 /-! # The existing André extension detects original power-torsion Tor coefficient actions
 
@@ -54,5 +55,38 @@ lemma exists_andre_extension_detects_powerTorsion_Tor
   intro C _ _ N k hN i s
   exact torCoefficientScalar_eq_zero_iff_powerTorsion_baseChange
     (algebraMap R E) (p : R) hφ N k hN i s
+
+/-- One actual André extension detects all original Tor tests on every perfectoid coefficient
+using ordinary Tor over the extension with the actual completed coefficient H⁰. -/
+lemma exists_andre_extension_detects_completedBaseChangeTor
+    (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p) :
+    ∃ (E : Type u) (_ : CommRing E) (_ : Algebra R E),
+      IsIntegralPerfectoid E p ∧
+      IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) E ∧
+      IsAbsolutelyIntegrallyClosed E ∧
+      ∃ ρ : E → ℕ → E, (∀ s, ρ s 0 = s) ∧
+      (∀ s n, ρ s (n + 1) ^ p = ρ s n) ∧
+      ∀ (C : Type u) [CommRing C] [Algebra R C] (_hC : IsIntegralPerfectoid C p)
+        (N : ModuleCat.{u} R) (k : ℕ) (_hN : ∀ x : N, (p : R) ^ k • x = 0)
+        (i : ℕ) (s : R),
+        let X := (DerivedCompletion.boundedAboveDerivedCompletionFunctor E (p : E)).obj
+          ((boundedAboveDerivedBaseChange (algebraMap R E)).obj
+            (boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R C)))
+        let M := (DerivedCategory.homologyFunctor (ModuleCat E) 0).obj X.obj
+        torCoefficientScalarEndomorphism C N i (algebraMap R C s) = 0 ↔
+          ∀ x : (((Tor (ModuleCat E) i).obj M).obj
+            ((ModuleCat.extendScalars (algebraMap R E)).obj N)), algebraMap R E s • x = 0 := by
+  obtain ⟨E, hEring, hEalg, hE, hflat, haic, ρ, hρ0, hρ, _hdet⟩ :=
+    exists_andre_extension_detects_powerTorsion_Tor R p hR
+  letI := hEring
+  letI := hEalg
+  have hφ : IsCompletelyFaithfullyFlat (Ideal.span {(p : R)})
+      (baseChangeScalarModule (algebraMap R E)) :=
+    isCompletelyFaithfullyFlat_of_linearEquiv (Ideal.span {(p : R)})
+      (algebraSelfRestrictionIso R E).toLinearEquiv.symm hflat
+  refine ⟨E, hEring, hEalg, hE, hflat, haic, ρ, hρ0, hρ, ?_⟩
+  intro C _ _ hC N k hN i s
+  exact BhattScholze.integralPerfectoid_torCoefficientScalar_eq_zero_iff_completedBaseChangeTor
+    p R E C hR hE hC hφ N k hN i s
 
 end SerrePositivity.CLMST
