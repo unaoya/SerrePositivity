@@ -6596,3 +6596,34 @@ prepend整合性は空語でF.map_comp、非空語で前方二Homの合成保存
 商dg関手への延長、合成・単位保存、制限との往復・一意性を残し、U15c全受入は未完。
 U11e・U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完。採用済み引用は0件。
 共有系列への追加要求はない。共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.141 U15c3：任意後方cochainの前方合成整合性と有限・全path評価のprepend則（2026-10-17）
+
+`Complexes/RightTripleCochainExt.lean`は右括弧三重tensorの任意次数cochainの純tensor extと、
+次数0の対角成分に固定したextを証明する。
+`TensorJoinEvaluation.lean`は前方二因子の合成を保つchain map族、対象側の結合的な作用、
+閉性を仮定しない任意の後方次数0 cochainについて、先に前方合成する場合と先に因子を評価する
+場合の一致を証明する。次数0のextを使い、成分の始域・終域を同じ次数へ揃えてから検査した。
+`Quotient/PathEvaluationPrepend.lean`は空語でF.map_comp、非空語でこの抽象補題と対象Eの
+豊穣結合則を適用し、pathEvaluation_prependを証明する。有限語の結果にSmall仮定は不要。
+
+`Complexes/TensorZeroCochainNaturality.lean`は右因子のchain mapによる前合成と、閉零の左写像を
+持つcochain tensorの自然性を証明する。`Quotient/InternalEvaluationPrepend.lean`はpath直和の
+包含への制限で有限語の結果を貼り合わせ、internalEvaluation_prependを得る。
+これは内部微分に対する閉性を要求しないcochainの等式であり、最終Homのchain mapの存在を
+この時点で仮定していない。任意可換環・非有界Hom・独立対象宇宙を維持する。
+
+Checks.EvaluationPrepend・Checks.PathEvaluation・Checks.ContractedFunctor・Checks.QuotientContraction・
+Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功（2742 jobs、終了コード0、警告なし）。
+任意有限語、ZMod 2でεを含む非空pathを検査した。
+主要6宣言の直接公理監査は標準公理のみ。監査累計2774宣言。
+文書検査は13 Markdown・320 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次はε評価と後方Homの合成をcontractionActionとして分離し、δ(contractionAction)=eraseHeadを証明する。
+任意後方次数0 cochainとの合成の微分を、先頭ε消去と後方微分の二項に分ける。
+これを元のHomによる作用へ運び、非空path評価のδの再帰式を作る。
+全erasureとの微分整合性、最終Homのchain map、dg関手の延長と普遍性を残しU15c全受入は未完。
+U11e・U12e/f・U13d/e残部・U14・U15d/e・U16/U17・D4mも未完。採用済み引用は0件。
+共有系列への追加要求はない。共有一般論・共有ルートimport・他系列は編集していない。
