@@ -6006,3 +6006,39 @@ Checks.ErasureFirstTail・Checks.PrependTail・Checks.ErasureMiddle・Checks.Sta
 その後、後方帰納式と有限添字の対合へ接続して全erasure²=0と全微分を構成する。
 U15b全受入、U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mは未完。
 採用済み引用は0件。共有一般論・共有ルートimport・他系列は編集していない。
+
+
+### 17.123 U15b8：先頭Hom結合則・隣接εの反交換・先頭と任意位置の統一（2026-10-16）
+
+`Complexes/TensorJoinAssociativity.lean`は、前方三因子の二通りの合成が一致するとき、
+任意の右因子を残した括弧変更付き合成も一致することを証明した。
+使用する構造射の等式はMathlibのmonoidal coherence、残る自然性は既存associator自然性から得る。
+`Quotient/PrependAssociativity.lean`はこれと元のdg圏のe_assoc'を用い、任意長pathについて
+二つの元のHomを先に合成する場合と、pathへ順に合成する場合の一致prependMap_assocを証明した。
+
+`Quotient/ErasureHead.lean`は左端εを消して単位因子も除くeraseHeadとその閉性を構成する。
+中間ε消去がeraseHeadの左tensorであることを証明し、tensorJoinの全次数自然性を使って
+前方二因子の合成と中間ε消去の可換式を得た。
+`Quotient/PrependFirstNaturality.lean`はこれをprependMap_assocへ接続し、最初のεの消去と
+prependMapの可換式prependMap_eraseFirstを証明した。最終の等式適用では中間cochainの型を
+明示し、カーネルの大きな型比較を避けて標準heartbeat設定で検証した。
+
+`Quotient/ErasureAdjacentInterchange.lean`はprependMap_eraseFirstと中間消去の反交換から、
+先頭の隣接する二つのεの二重消去が反交換することを証明した。
+さらに§17.122の非隣接の場合と合わせ、先頭εと任意の後方位置の消去の反交換を
+一つのeraseFirst_face_anticommuteへ統合した。空path・範囲外の位置も零として含む。
+任意可換環・非有界Hom・独立対象宇宙を保持し、Small Dを要求しない。
+
+Checks.ErasureAdjacent・Checks.ErasureFirstTail・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（2668 jobs、終了コード0、警告なし）。任意dg圏の先頭と任意後方位置の
+反交換、ZMod 2の長さ2の隣接消去を検査した。
+主要10宣言の直接公理監査は標準公理のみ。監査累計2608宣言。
+文書検査は24 Markdown・311 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次は二回消去後の語の同一視を明示し、先頭位置の反交換を後方二重消去の帰納式へ運ぶ。
+一般の二位置の項を全path直和への包含後に比較し、swapErasureによる有限和相殺から
+全erasure²=0へ進む。その後perturbComplexを適用し、最終Hom微分と合成のLeibnizを検証する。
+全erasure²=0・全微分・U15b全受入は未完。
+U11e・U12e/f・U13d/e残部・U14・U15c〜e・U16/U17・D4mも未完。採用済み引用は0件。
+共有一般論・共有ルートimport・他系列は編集していない。
