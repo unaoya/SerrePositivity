@@ -832,6 +832,9 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTens
 public import SerrePositivity.BhattScholze.FontaineCompletedTensorDiscrete
 public import SerrePositivity.BhattScholze.PerfectoidCompletedTensorDiscrete
 
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedSurjectiveAlgebraMul
+public import SerrePositivity.BhattScholze.PerfectoidCompletedQuotientMul
+
 /-!
 # Serre の交点重複度の正値性の形式化
 

@@ -7464,6 +7464,28 @@ KL-E2e・任意perfectoid図式の元の完備導来tensorの離散性（2026-10
 任意の二因子に対するH⁰環のperfectoid性の一般化、C3の残りのイデアル比較、実B/Iの入力供給、
 Prop 2.4.9(a)、KL-Q、Dの実入力と引用置換、RPerfd存在のB-Iは引き続き残る。
 
+KL-E3準備・全射perfectoid代数の元の完備導来乗法（2026-10-17）：
+`DerivedCompletion/CompletedSurjectiveAlgebraMul.lean`で、全射構造写像を持つ代数の
+元の導来乗法がH⁰同型であることを、通常の乗法の全単射性と元のtensor augmentationから証明した。
+G11でその元の射のH⁰同型を完備化後へ移し、実完備self-tensorの離散性と係数代数の
+導来完備性から、完備化した元の乗法全体の同型性を証明した。
+
+`BhattScholze/PerfectoidCompletedQuotientMul.lean`では任意の全射perfectoid代数へ適用し、
+任意のperfectoid商R/Iについて、元の`(R/I) ⊗ᴸ_R (R/I) → R/I`の導来p完備化が同型と証明した。
+同じIに対する完備almost零加群の拡大閉性と全mod pⁿ像の冪等性も供給した。
+H⁰比較だけから同型性を推論せず、前工程の実完備tensorの次数0集中を使っている。
+元の標準乗法を別の同型へ置き換えていない。
+対象2545・3639ジョブ、全体5852ジョブ、KL986件、専用公開6宣言と零商の元の乗法を使う
+名前付き型検査1宣言が成功した。全新宣言と型検査はsorry非依存・標準3公理のみ。
+任意perfectoid図式の離散性は`0150b9a5`で保存済み。
+
+KL-Eの残る実入力は、元のperfectoid ideal Iの商R/Iのperfectoid性である。
+元の主イデアル商の導来完備性、証明済みB4の全射性、選択済みperfectoid化と核商の
+標準同型を接続して供給する。これにより実B/Iと拡大閉性へ合流し、mod pⁿ冪等性の
+既存引用も同じ元のイデアルと商写像で置換する。
+KL-TのProp 2.4.9(a)、KL-Q、Dの実入力と引用置換、任意二因子のH⁰ perfectoid性の一般化と
+C3の残りのイデアル三主張、RPerfd存在のB-Iは引き続き残る。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
