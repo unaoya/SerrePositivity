@@ -5434,3 +5434,39 @@ finiteProjective_exists_retractを再利用できることを確認した。た�
 ホモトピー冪等の分裂は別途必要である。U13e全受入・U13d・U11eのcoherence・U12e/f・
 U14〜U17・D4mは未完。採用済み引用は0件。共有系列への追加要求はない。
 共有ルート・既存PerfectComplex・共有モデル一般論・他系列は変更していない。
+
+
+### 17.105 U13e18：全整数次数の有限射影項の主導来perfect性（2026-10-16）
+
+`Perfect/FiniteProjectiveImage.lean`は指定生成集合の主Perfの有限biproduct閉性を、
+主Perfの充満部分圏でのbiproductと包含の比較同型を使って証明する。
+任意の加法的関手F:ModuleCat A→D(D)について、F(A)が指定Perfに入れば
+任意の有限射影加群MのF像も入ることを証明した。有限自由加群へのretractは既存の
+PerfectComplex.ProjectiveBounds.finiteProjective_exists_retractを再利用し、
+Fの有限biproduct保存と主Perfのretract閉性を適用する。既存PerfectComplexは変更していない。
+
+`Module/RingComplexFunctor.lean`はMathlibの明示的ForgetEnrichment.equivInverseと
+既存ringConstantDGの閉零関手を合成し、通常のchain mapから実際の一対象A加群への
+加法的関手complexToRingModuleを構成する。対象は元の複体のringModuleそのものである。
+`Perfect/RingSingle.lean`は単位複体の定数加群と一対象の代表加群の厳密な一致を証明し、
+次数0の有限射影加群の主導来像がperfectとなることを得た。
+
+`Perfect/RingSingleShift.lean`はringModuleの実際のshift対象を厳密な復元で照合し、
+sphere nとsphere 0の−n shiftの同型、主局所化のCommShiftを合成する。
+これによりringSingleToDerived_finiteProjective_perfectを任意の整数次数nで公開した。
+この段階ではshiftの対象同型を使用し、complexToRingModuleのCommShift coherenceを新しく主張しない。
+
+Checks.RingSingle・Checks.StrictComplexDerived・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（3481 jobs、終了コード0、警告なし）。任意可換環、独立対象宇宙・指定S、
+有限biproduct、任意加法的関手の有限射影像、全整数次数、ZMod 2の次数−3と2を検査した。
+主要15宣言の直接公理監査は標準公理のみ。監査累計2396宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査は成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次は有界有限射影複体全体の導来perfect性を証明する。
+既存HomologicalAlgebra.BasicのbottomProjection・bottomProjection_epi・bottomProjectionKernelXIso、
+およびPerfectComplex.KoszulLengthBoundsの有限幅帰納法を確認した。
+下端項への射影の核の次数範囲と有限射影性を戻し、その短完全列を主導来三角形へ接続する。
+Perfのretractの有限射影代表は別の残課題である。U13e全受入・U13d・U11eのcoherence・U12e/f・
+U14〜U17・D4mは未完。採用済み引用は0件。共有系列への追加要求はない。
+共有ルート・既存PerfectComplex・共有モデル一般論・他系列は変更していない。
