@@ -7937,3 +7937,42 @@ Checks.DerivedBimodulePentagon・Checks.StageEight・Checks.StageSeven・既存S
 左右単位の存在のみでU12eのcoherence受入とはしない。
 local Hom条件のないdg圏自体の解像度経路、U12e全受入、U12f・U13d/e残部・U14・U15d/e・
 U16/U17・D4mは残る。U17までの目標を保持し、共有系列への新しいAPI要求はない。
+
+
+### 17.174 U12e15：指定解像度による全導来結合比較と計算図式（2026-10-17）
+
+`Derived/BimoduleCompositionPairResolution.lean`は二つの後因子Q:C–E、R:E–Fと、
+指定右K-flat解像度S→Q、T→Rを使う三つの比較を構成する。
+**derivedBimoduleComposePairResolutionIso**は全導来関手の逐次適用から既存固定K-flat関手の
+逐次適用への自然同型。**derivedBimoduleComposeInnerResolutionIso**は
+QとRの全導来合成の値を通常合成S⊗_E Tの導来像へ比較する。
+Tによる導来関手がS→Qを同型へ送ることを使い、Q側に追加のfiber射影性を要求しない。
+**derivedBimoduleComposeNestedResolutionIso**はこの値の同型を後因子の全導来合成関手へ送り、
+右K-flat合成閉性で得たS⊗_E Tによる固定因子関手へ比較する。
+
+`Derived/BimoduleCompositionAssociatorResolution.lean`の
+**derivedBimoduleAssociatorResolutionIso**は上の二つの括り方の比較を既存
+rightKFlatDerivedAssociatorで結び、全導来合成関手の間の自然同型を構成する。
+前因子は全DerivedBimoduleCategory A B C上にあり、その任意の導来射に自然。
+後二因子は元の閉零圏の対象を局所化したものとして指定し、それぞれの解像度を入力する。
+**derivedBimoduleAssociatorResolutionIso_fac/base_fac**は、得た結合比較を解像度の
+計算同型へ送ると、既存K-flat結合比較・元のbimodule結合同型の導来像に戻ることを証明する。
+**derivedBimoduleAssociatorBaseIso**は標準解像度による特殊化。
+任意可換環・非有界・五つの独立対象宇宙を保持し、Small.{u} B/C/E/Fと
+localHomKFlat A E/Fを明示する。
+
+Checks.DerivedBimoduleAssociatorResolution・Checks.DerivedBimoduleUnits・
+Checks.DerivedBimodulePentagon・Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（3067 jobs、終了コード0、警告なし）。全導来関手間の結合比較、
+前因子の任意の導来射に関する自然性、独立対象宇宙とZMod 2を検査した。
+主要7宣言の直接公理監査は標準公理のみ。監査累計3312宣言。
+今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は13 Markdown・320 exposition参照まで進み、担当外BhattScholze互換宣言の
+未解決参照1件で失敗した。共有ルート・共有一般論・該当系列は編集していない。
+
+次は後二因子の射に関する自然性と解像度選択独立性を証明し、
+局所化の全後因子上の結合自然同型へ降下する。その後、§17.173の左右単位を使う
+三角恒等式と、全因子上の五角恒等式を固定K-flat計算図式へ比較して証明する。
+今回の結合比較は前因子に自然な指定解像度版であり、全因子のcoherenceの完成とは扱わない。
+local Hom条件のないdg圏自体の解像度経路、U12e全受入、U12f・U13d/e残部・U14・U15d/e・
+U16/U17・D4mは残る。U17までの目標を保持し、共有系列への新しいAPI要求はない。
