@@ -2457,3 +2457,14 @@ anodyne射を反転する任意の関手の下で、このmiddle比較は全自�
 元のbar値ホモトピーは、標準augmentationからこの実小さい因子分解へ向かうものになる。
 augmentation・評価の可逆性、自然な最終小値化・F2は未完了。
 検証：`scripts/check_ordinary_bar_endpoints.lean`、計画書§310。
+
+
+### 単体圏nerveの構造と標準単体augmentationの可逆性（§311）
+
+`SimplexNerveFunctor`は元の実chainを作用素chainと最初のラベルの直和として自然に分解し、
+任意の小さいcolimit coconeの保存を証明する。
+`SimplexNerveMonos`は元の単射成分から全次数の単射とモノ射保存を導く。
+`NerveInitialImage`は実始対象によるnerveの収縮を任意のanodyne反転関手での同型にする。
+`SimplexNerveStandard`は補助宇宙を含む任意の値宇宙で、標準単体上の元のaugmentationの可逆性を証明する。
+補助SSetモデル構造は不要。一般Xへの貼り合わせ、元の評価の可逆性、最終小値化・F2は未完了。
+検証：`scripts/check_simplex_nerve_standard.lean`、計画書§311。
