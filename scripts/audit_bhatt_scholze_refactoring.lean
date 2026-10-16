@@ -9,6 +9,7 @@ import SerrePositivity.BhattScholze.RelativeFreePresentation
 import SerrePositivity.BhattScholze.PerfectDeltaFrobenius
 import SerrePositivity.BhattScholze.DeltaDivisionSourceTensorDelta
 import SerrePositivity.BhattScholze.RelativeFreeSubsetSplit
+import SerrePositivity.BhattScholze.DeltaDivisionNormalizedDirectLimitFlat
 import Mathlib.Util.AssertNoSorry
 
 /-! Focused dependency checks for the BS refactoring steps.
@@ -41,3 +42,7 @@ assert_no_sorry SerrePositivity.BhattScholze.relativeFreeSubsetSplitAlgEquiv_sym
 
 #print axioms SerrePositivity.BhattScholze.wittTwoMap
 #print axioms SerrePositivity.BhattScholze.DeltaStructure.IsDeltaHom.symm
+
+-- R1a: the original normalized module and its scalar action stay fixed.
+assert_no_sorry SerrePositivity.BhattScholze.deltaDivisionNormalizedModuleDirectLimit_moduleFlat
+#print axioms SerrePositivity.BhattScholze.deltaDivisionNormalizedModuleDirectLimit_moduleFlat
