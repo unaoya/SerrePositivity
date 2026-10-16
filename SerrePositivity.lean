@@ -769,6 +769,9 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionH0P
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedAlgebraH0Comparison
 
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedTensorH0Complete
+public import SerrePositivity.BhattScholze.PerfectDeltaIteratedTensorH0
+
 /-!
 # Serre の交点重複度の正値性の形式化
 
