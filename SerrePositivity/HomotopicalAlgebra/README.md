@@ -3064,3 +3064,15 @@ nativeなSSet.{v}の実写像へ降ろす。
 小さいSSetのモデル構造だけを用いる。内部恒等消去への全射列での接続、自然比較、
 元の基底への降下、小さい厳密なRMapは残る。
 受入検証は`check_word_retraction_action`（71宣言・3モジュール）。
+
+
+### 任意語パラメータによる全有限列の内部恒等消去（§364）
+
+`WordRetractChainFamily`はモデル構造不要の語パラメータ列と評価・移送を構成し、
+任意の前後列の間の内部恒等を、任意の隣接二語の連結で消去する。
+`OrdinaryBarWordChainFamily`、`OrdinaryBarFreeWordChainTransfer`、
+`OrdinaryBarSmallFreeWordChainTransfer`は全次数の実自由分解とnativeな小さい族へ適用し、
+全面・全退化・代入・両境界・内部恒等消去を保持する。文字への制限は元の区間族に一致する。
+語列の生成関係によるsimplicialな射対象と合成・単体作用、元の基底への降下、
+小さい厳密なRMapと自然比較は残る。
+受入検証は`check_word_chain_transfer`（155宣言・4モジュール）。
