@@ -7,6 +7,9 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.HomotopicalAlgebra.Simplicial.RetractEndomorphisms,
+    `SerrePositivity.HomotopicalAlgebra.Simplicial.WordRetractionAction,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordContraction,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.SegmentWords,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.WordSegment,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.WordSegmentComparison,
