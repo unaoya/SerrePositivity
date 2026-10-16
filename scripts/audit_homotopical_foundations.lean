@@ -8,6 +8,8 @@ run_cmd do
   let env ← getEnv
   let expected := #[
     `SerrePositivity.HomotopicalAlgebra.Simplicial.SelectedLoopContraction,
+    `SerrePositivity.HomotopicalAlgebra.Simplicial.RecursiveChoiceExtension,
+    `SerrePositivity.CategoryTheory.Limits.SequentialExtension,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.CoherentLiftUnitFamilies,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.CoherentLiftUnitComparison,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.SelectedTriangle,
@@ -455,6 +457,7 @@ run_cmd do
     unless #[`SerrePositivity.HomotopicalAlgebra,
         `SerrePositivity.CategoryTheory.PointwiseAdjunction,
         `SerrePositivity.CategoryTheory.Enriched,
+        `SerrePositivity.CategoryTheory.Limits.SequentialExtension,
         `SerrePositivity.CategoryTheory.Monoidal.InternalHomExchange,
         `SerrePositivity.CategoryTheory.RelativeArrow,
         `SerrePositivity.CategoryTheory.MorphismProperty.UnderFactorization,
