@@ -2893,3 +2893,15 @@ ambient値への厳密な評価、全パラメータ置換と両関手の可換s
 通常の`SimplexCategory`との比較は未完了であり、この段階では通常の単体的分解の完成や、
 元の基底上の厳密な小さい`RMap`の完成を主張しない。
 受入検証は`check_comonad_resolution_presentation`（54宣言・3モジュール）。
+
+
+### 単体圏の表示の同値と通常の単体的分解（§348）
+
+`CategoryTheory/Simplex/PresentationDegeneracies`と`PresentationFaces`は、退化と面の
+標準形を実単調写像から復元する。`PresentationEquivalence`は標準関手のFull・Faithful・
+EssSurj・IsEquivalenceを証明し、次数を保つ実逆関手と両合成の恒等を与える。
+これにより、§347で残った通常の単体圏との比較は解消した。
+`ComonadSimplicialResolution`は任意の余モナドの実SimplicialObjectとaugmentationを構成し、
+`FreePathSimplicialResolution`は独立した対象・Hom宇宙の任意の圏へ適用する。
+モデル構造は不要。選択圏への全次数の整合的な持ち上げと、元の基底上の小さい厳密なRMapは残る。
+受入検証は`check_simplex_presentation_equivalence`（92宣言・5モジュール）。
