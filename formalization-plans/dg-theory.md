@@ -5321,3 +5321,23 @@ Checks.ComplexHomotopyComparison・Checks.PerfectEnhancementConeComparison・Che
 これは一対象Aの主Perfとの比較の中間段階であり、主Perfのretract閉包と有限射影代表の一致を先取りしない。
 U13e全受入・U13d・U11eのcoherence・U12e/f・U14〜U17・D4mは未完。採用済み引用は0件。
 共有ルート・既存PerfectComplex・共有一般論・他系列のファイルを変更していない。
+
+
+### 17.100 U13e13：既存有限射影複体の全Hom dg表示（2026-10-16）
+
+`Perfect/StrictComplexEnhancement.lean`は既存strictlyPerfectComplexを対象条件に持つ
+主dg複体圏の充満dg部分圏StrictPerfectDGComplexを構成した。Homは既存homComplexの
+全整数次数を保つ。主H⁰から既存PerfectHomotopyへの比較を構成し、充満・忠実・本質的全射を証明した。
+`Perfect/StrictComplexEnhancementLinear.lean`は比較と同値のA線形性・加法性、包含との自然同型を公開する。
+この対象型全体のsmall性や、一対象Aの主Perfとの一致はまだ主張しない。
+
+Checks.StrictComplexEnhancement・Checks.ComplexHomotopyComparison・Checks.PerfectEnhancementConeComparison・
+Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功（3427 jobs、終了コード0、警告なし）。
+任意可換環、全次数Homと微分の一致、順逆の線形性・加法性、ZMod 2を検査した。
+主要18宣言の直接公理監査は標準公理のみ。監査累計2340宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。担当差分の空白検査も成功。
+今回の実装にsorry/admit/新規axiomはない。
+
+次は複体と一対象Aの右dg加群との実際のdg比較を確定し、有限射影複体の射影性と
+主Perfのretract閉包との比較へ接続する。U13e全受入・U13d・U11eのcoherence・U12e/f・
+U14〜U17・D4mは未完。採用済み引用は0件。共有ルート・既存PerfectComplex・他系列は変更していない。
