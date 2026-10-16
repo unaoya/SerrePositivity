@@ -16702,3 +16702,64 @@ terminalな0単体への元の射が、anodyne射を反転する任意のLの下
 その後、§310のrow側比較とaugmentation正方形を元の評価の可逆性へ接続する。
 元のreplacement mapping図式との自然弱同値比較、基底上の自然な小値化、
 最終小さい厳密RMap・F2は未完了。全体目標F→L→E→Sを維持する。
+
+
+## 312. モデル不要のKan置換・局所化の完全なKanテスト判定・直積保存（2026-10-16）
+
+§311から一般Xへ拡張する貼り合わせに向け、補助宇宙にモデル構造を置かずに
+局所化後の可逆性を扱う判定定理を証明した。pushout・逐次colimitの貼り合わせ自体はまだ未証明である。
+
+### 312.1 horn小対象論法だけによる実Kan置換
+
+`Simplicial/AnodyneKanReplacement`は、固定版Mathlibのhorn小対象論法から、
+anodyne左因子・J.rlp右因子の実関手的分解データを選ぶ。
+terminalへの実Arrow関手へ制限し、全SSet上の実Kan置換関手と自然なunitを構成する。
+そのunitが元のanodyne射であり、出力のterminal射がJ.rlpに属すると証明した。
+
+この構成は元のsmall-modelの`KanReplacement`とは別のモデル不要の入口である。
+弱同値クラス・完全なモデル構造・源Cの関手的分解を要求しない。
+値宇宙は任意であり、補助の大きい宇宙でも同じ証明を利用できる。
+
+### 312.2 元のanodyne局所化の完全なKan値テスト
+
+`Simplicial/KanTestDetection`は任意の実f:X→Yについて、次の同値を証明する。
+
+- 元のcanonical anodyne局所化Qの下でQ(f)が可逆である。
+- 任意のJ.rlp-fibrantなKについて、前合成による元の写像のホモトピー類
+  HomotopyClasses(Y,K)→HomotopyClasses(X,K)が全単射である。
+
+逆向きでは312.1の実unitの自然性を使い、fのテストを実Kan置換のRfへ移す。
+Kan値のテストをRX・RY自体へ適用することで、元のホモトピー類から局所化内の実逆射を得る。
+元の二つのanodyne unitの可逆性でfへ戻る。
+順向きでは既存のモデル不要のKanHomotopyClassesがanodyne射を反転することと、
+元のQの普遍性を使う。候補の弱同値クラスを元のQの可逆性と仮定で同一視するのではない。
+
+また、同じKanテストから、anodyne射を反転する任意の実LによるL(f)の可逆性を直接導く。
+引用axiomや補助宇宙のモデル構造は使用しない。
+
+### 312.3 局所化後可逆性の左右の直積保存
+
+`Simplicial/AnodyneLocalizedTensor`は、Q(f)が可逆なら任意のAについて
+Q(A◁f)とQ(f▷A)が可逆になることを証明する。
+左右のtensor関手が元のanodyne射を保つことと、元のQの普遍性だけを使う。
+より一般に、これらの実tensor射は、anodyneを反転する任意のLでも可逆になる。
+単に生成anodyne射だけでなく、Qで可逆になる全ての実射を扱う。
+
+### 312.4 受入検証と次の証明
+
+実装コミット`15e2b839`。以下はすべて成功した。
+
+- 共有入口のbuild：2907 jobs、追加警告なし。
+- `check_kan_test_detection`：元のhorn分解による実unitとKan性、実unitの全自然性、
+  元のQの可逆性と全Kanテストの同値、任意のanodyne反転関手への検出、
+  補助宇宙を含む左右tensorによる保存、§311の標準単体augmentationからの実Kanテスト。
+  新規24宣言・3モジュール、標準公理のみ。
+- `check_simplex_nerve_standard`：既存43宣言・4モジュールの回帰確認。
+- `audit_homotopical_foundations`：9654宣言・710モジュール、標準公理のみ。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+次はこのKan値判定を、モノ射に沿う実ホモトピーの延長と相対的な貼り合わせへ接続する。
+pushout・骨格の逐次colimit後の可逆性は今回まだ結論していない。
+一般Xの標準augmentation、§310のrow側比較から元の評価の可逆性への接続、
+元のreplacement mapping図式との自然弱同値比較、基底上の自然な小値化、
+最終小さい厳密RMap・F2は未完了。全体目標F→L→E→Sを維持する。

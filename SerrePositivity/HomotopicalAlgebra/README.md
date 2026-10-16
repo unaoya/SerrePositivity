@@ -2468,3 +2468,14 @@ augmentation・評価の可逆性、自然な最終小値化・F2は未完了。
 `SimplexNerveStandard`は補助宇宙を含む任意の値宇宙で、標準単体上の元のaugmentationの可逆性を証明する。
 補助SSetモデル構造は不要。一般Xへの貼り合わせ、元の評価の可逆性、最終小値化・F2は未完了。
 検証：`scripts/check_simplex_nerve_standard.lean`、計画書§311。
+
+
+### モデル不要のKan値判定と局所化後の直積保存（§312）
+
+`AnodyneKanReplacement`は元のhorn小対象論法だけで実Kan置換関手と自然なanodyne unitを構成する。
+`KanTestDetection`は、元のanodyne局所化後可逆性と、全Kan値の元のホモトピー類テストの全単射性の
+同値を証明する。同じテストから任意のanodyne反転関手でも実射が可逆になる。
+`AnodyneLocalizedTensor`はQで可逆な全射について、任意の左右直積後の可逆性を証明する。
+値宇宙は任意で、補助SSetモデル構造・源の関手的分解は要求しない。
+モノ射に沿う相対貼り合わせ・一般augmentationの可逆性、元の評価・最終小値化・F2は未完了。
+検証：`scripts/check_kan_test_detection.lean`、計画書§312。
