@@ -4176,3 +4176,26 @@ Checks.TensorHomotopy・Checks.ObjectwiseKFlat・Checks.StageSeven・既存Spect
 U12dの導来双関手・左変数の準同型保存・任意解像度計算・選択の自己/推移整合性はなお未完。
 U12aの相対版の残り、U12c/e/f、U11eのcoherence・U13〜U17・D4mも継続する。
 共有系列への追加要求はなく、担当外ファイルを編集していない。
+
+### 17.61 U12d2：主導来圏からの解像度関手と選択整合性（2026-10-16）
+
+`Derived/ResolutionFunctor.lean`は任意の証明付き射影解像度族Rを、主K(D)に値を持つ
+moduleResolutionHomotopyFunctorへ関手化した。射は既存liftで与え、K(D)でのlift_id/compを使う。
+指定objectwise quasiIsoを反転することを既存射影的対象間の比較で証明し、
+同じ主局所化D(D)からのmoduleDerivedResolutionFunctor、Mathlib Lifting、計算自然同型を得る。
+モデル構造を使わず、局所化や対象宇宙を別の型へ変更しない。
+
+`Derived/ResolutionFunctorChoice.lean`は任意の二つの解像度族の比較を、K(D)とD(D)からの
+両関手間の自然同型へ束ねた。比較射による成分、自己比較＝恒等、三つの選択の推移整合性を
+それぞれ証明した。局所化上の自然同型は既存Localization.liftNatIsoを使用する。
+後続の導来tensorでは、この関手とK(D)からの既存tensorを合成できる。
+
+Checks.ResolutionFunctor・Checks.TensorHomotopy・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2839 jobs、終了コード0、警告なし）。任意A・独立対象宇宙、
+任意解像度族の計算と推移整合性、ZMod 2を検査。主要14宣言の直接公理監査は終了コード0、
+標準公理のみ。監査累計1755宣言。文書検査は22 Markdown・311 exposition参照、失敗0件。
+担当差分の空白検査も成功。今回の3ファイルにsorry/admit/新規axiomはない。
+
+U12d全受入は未完。固定左加群との導来tensorの組立て、左変数の指定quasiIso保存と
+両変数の導来双関手、任意解像度での計算比較を続ける。U11eのcoherence・U12残部・U13〜U17・D4mも未完。
+共有系列への追加要求はなく、担当外ファイルを編集していない。
