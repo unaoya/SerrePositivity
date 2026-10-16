@@ -4935,3 +4935,33 @@ U13dのcompact⇒Perfは未完。DG-PERの原典Keller v5 Cor.3.7（p.8）は再
 採用する場合もfinite cell/retractとしての本Perfと原典のthick閉包の一致、対象・宇宙・射クラスを
 固定した契約を先に照合する。U13eの小さいdg enhancement・既存perfect比較も未完。
 U11eのcoherence・U12e/f・U14〜U17・D4mも未完。共有系列への追加要求はない。
+
+
+### 17.87 U13d1：finite cellとPerfの最小性・原典の閉包との照合（2026-10-16）
+
+`Perfect/UniversalProperty.lean`は主導来圏の任意の三角閉・同型閉な性質Pについて、
+指定代表加群を含めばそのfinite cellの全本質的像を含むことを構成木の帰納法で証明する。
+二項直和の場合は加法的主局所化のbiprod保存同型とdistinguishedなsplit三角形を使い、
+標準coneの場合は既存moduleDerivedConeTriangleを使う。一般の閉包や三角構造を新設しない。
+
+Pがさらにretract閉ならmodulePerfectOver S ≤ Pと「PがSの代表加群をすべて含む」ことが同値になる。
+全生成元についてのmodulePerfect_le_iff_generatorsも公開した。
+既存の厚い閉性と合わせ、現在定義したPerfは代表加群を含む最小の厚い部分圏である。
+この最小性をP=compactへ適用する例で、別に証明済みのPerf⇒compactも再確認する。
+
+Checks.PerfectUniversalProperty・Checks.CompactGenerators・Checks.PerfectCompact・Checks.StageSeven・
+既存Spectra.StageTwoの同時ビルドは成功（2893 jobs、終了コード0、警告なし）。
+任意生成集合・任意の三角閉かつretract閉なP・最小性からのPerf⇒compactを検査した。
+主要6宣言の直接公理監査は終了コード0、標準公理のみ。監査累計2152宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。
+今回の2 Leanファイルにsorry/admit/新規axiomはない。担当差分の空白検査も成功。
+
+DG-PER原典の再照合：Keller math/0601185v5、2006-06-19版、§2.1〜2.2 pp.2〜4、§3.1〜3.2 pp.5〜6、§3.5 p.8、Cor.3.7。
+原典は可換基礎環、非有界cochain複体（dの次数+1）、小さいdg圏、右dg加群の準同型局所化を扱う。
+triaは代表加群からのshift/extension閉包、perはその直和因子閉包であり、今回の最小性が定義照合を与える。
+compact性の標準Hom直和比較は§17.84、u-small生成族と零性検出は§17.86で証明済み。
+採用する場合の対象は既存DerivedModuleCategory A D、射クラスはmoduleQuasiIso、
+環A : Type u、D : Type vにSmall.{u} D、余積添字はType uに固定し、追加のflatnessを仮定しない。
+採用範囲は逆方向compact⇒modulePerfectだけとし、Brown表現性・Morita・enhancementの存在を混ぜない。
+今回も引用は採用していない。U13d全受入とU13eは未完で、採用済み引用は0件。
+U11eのcoherence・U12e/f・U14〜U17・D4mも未完。共有系列への追加要求はない。
