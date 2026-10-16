@@ -4695,3 +4695,27 @@ U13bの厚い三角閉性は受入を満たした。全体の残課題は、Karo
 次は既存の冪等分裂APIとD(D)の余積を再確認し、この比較を完成させる。
 U11eのcoherence・U12e/f・U13残部・U14〜U17・D4mも未完。
 共有系列への追加要求はなく、担当外ファイルを編集していない。
+
+
+### 17.79 U13b4：可算telescopeによる指定導来圏の冪等完備性（2026-10-16）
+
+`Category/IdempotentTelescope.lean`は、preadditiveなpretriangulated圏内の冪等射pについて、
+対象Xの可算余積だけを仮定して分裂を構成する。shift作用は加法的とし、対象・射の宇宙は独立に保つ。
+余積上のshift sの第n成分をpと第n+1包含の合成とし、1−sの左逆を有限和で明示した。
+そのdistinguished coneの第二射はepiとなり、定数成分pの射をconeから因子化する。
+各包含のconeへの像が等しいことから二つの分裂恒等式を証明する。
+一般の余極限の完全性、bounded t-structure、モデル構造は使っていない。
+
+`Derived/IdempotentComplete.lean`は、既存のu-small導来余積と三角構造を同じ主導来圏に適用し、
+`moduleDerivedIsIdempotentComplete`を登録した。Aは任意可換環、Dの対象宇宙は独立、Small.{u} Dを明示する。
+一般モデル圏・Quillen・転送・SM7の共有APIは重複実装していない。
+
+Checks.DerivedIdempotentComplete・Checks.PerfectTriangulated・Checks.StageSeven・既存Spectra.StageTwoの
+同時ビルドは成功（2869 jobs、終了コード0、警告なし）。任意宇宙・冪等射の分裂とZMod 2を検査した。
+主要7宣言の直接公理監査は終了コード0、標準公理のみ。監査累計2009宣言。
+文書検査は22 Markdown・311 exposition参照、失敗0件。
+今回の3 Leanファイルにsorry/admit/新規axiomはない。担当差分の空白検査も成功。
+
+U13b全受入には、この分裂からKaroubi延長を主導来圏へ戻してPerfとの圏同値を構成し、
+shift・三角性と元の包含との比較を検証することが残る。
+U11eのcoherence・U12e/f・U13残部・U14〜U17・D4mも未完。共有系列への追加要求はない。
