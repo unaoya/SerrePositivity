@@ -3224,3 +3224,16 @@ word準同型が重み置換に一致することを証明する。
 Reedy anodyne写像の実対角がanodyneとなることを証明する。
 行ごとの局所化同値から対角への保存、外側のaugmentation、小さい厳密なRMapは残る。
 受入検証は`check_word_rows_diagonal`（36宣言・6モジュール）。
+
+
+### モデル構造不要の行ごとの局所化同値の対角保存（§376）
+
+`KanLocalizedMonoLifting`は局所化同値な単射のKan基底を持つKan fibrationに対する厳密liftを構成する。
+`DiagonalKanTests`と`LocalizedMonoReedy`はKanテストと閉クラスのReedy判定から、
+Reedy単射で各行が局所化同値となる写像の対角保存を証明する。
+`BoundaryReedyFactorization`の実WFSと分裂を使い、`DiagonalLocalizedEquivalence`は
+任意の行ごとの局所化同値の実対角が局所化同値となることを証明する。値域のModelCategoryは不要である。
+`OrdinaryBarWordDiagonalEquivalence`は実toSourceの可逆性と、元の全対角small augmentationの
+source augmentationへの帰着を与える。
+source augmentationの可逆性、小さいstrictificationと小さい厳密なRMapは残る。
+受入検証は`check_diagonal_localized_equivalence`（39宣言・6モジュール）。

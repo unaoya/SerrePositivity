@@ -21062,3 +21062,76 @@ AmbientWordsのaugmentationそのものであることも、全商射につい�
 元の自由道augmentationのHom比較も必要であり、全対角augmentationの弱同値はまだ完了していない。
 元の基底への小ささを保つstrictificationと降下、小さい厳密なRMap、
 F2の不変性・Kan・π₀とHo(C)の同定等も残り、全体目標は継続する。
+
+
+## 376. 行ごとの局所化同値から対角への保存をモデル構造なしで完成（2026-10-17）
+
+実装コミット`916916fe`。§375.5に残していた、任意の二重単体写像の行ごとの
+anodyne局所化同値から実対角の局所化同値への保存を証明した。
+補助宇宙のSSetのModelCategoryは仮定・導入していない。
+
+### 376.1 局所化単射の厳密な持ち上げ
+
+`Simplicial/KanLocalizedMonoLifting`は、局所化後に可逆な単射iが、Kan対象を基底に持つ
+任意のKan fibration pに対して実際の持ち上げ性を持つと証明する。
+元のsquareの上辺をまず厳密に延長し、基底での相対ホモトピーを構成・延長し、
+pに沿ってその全区間を持ち上げて端点を修正する。元のsquareを別のsquareに置き換えない。
+
+`DiagonalKanTests`は、対角の実右随伴の相対matching写像のターゲットがKanとなることと、
+既存の固定Kanテストの写像がKan基底を持つKan fibrationであることを証明する。
+376.1と一般Reedy持ち上げ構成から、全相対latching写像が局所化同値な単射である任意の写像の
+実対角が、元のanodyne局所化後に可逆となることを証明した。
+
+### 376.2 任意の行ごとの局所化同値への拡張
+
+`LocalizedMonoReedy`は局所化同値な単射の積・retract・小さいcoproduct・pushoutに関する閉性を
+固定持ち上げクラスから構成する。既存の超限閉性と一般の閉クラスのReedy判定を使い、
+相対latching写像が局所化同値な単射であることを、Reedy単射性と行ごとの局所化同値により判定する。
+SSetの局所可呈示性は既存の一般定理から導出し、入力に追加しない。
+
+`BoundaryReedyFactorization`は実boundary小対象論法から、単射とboundary右持ち上げ写像のWFSを構成し、
+Reedy図式へ持ち上げる。右因子の各成分の局所化後の可逆性と、すべての二重単体対象の
+initial射のReedy単射性もモデル構造なしで証明する。
+
+`DiagonalLocalizedEquivalence.localized_diagonal_map`は任意の行ごとの局所化同値fについて、
+fと恒等のcoproductからの写像をこのReedy WFSで分解する。
+分解対象への左右の包含はReedy単射で、右因子の成分が局所化同値であることから
+両包含の各成分も局所化同値となる。376.1の対角保存を両包含へ適用し、
+右側の包含の後の右因子が恒等となる実分裂等式から、元のfの対角の可逆性を得る。
+対角の右因子の可逆性を別途仮定する循環はない。
+
+### 376.3 実際の全対角への適用
+
+`OrdinaryBarWordDiagonalEquivalence`は376.2を§375の実augmentationへ適用し、
+全対角word Homから元のsource HomのULiftへの実toSourceがanodyne局所化後に可逆であると証明する。
+既存の実augmentation分解と§372〜§373の実比較を使い、
+元の全対角small augmentationが可逆であることを、元の自由道分解のsource augmentationが
+可逆であることへ帰着する同値を証明した。Cには圏以外の追加条件がなく、対象・Hom宇宙は独立である。
+
+ここでのHomの値宇宙は引き続き補助宇宙max(u,v)である。
+この結果は小さいSSet.{v}への縮小、元の基底での小さいstrictificationの完成を意味しない。
+
+### 376.4 受入検証
+
+すべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`（3161 jobs、警告なし）。
+- `check_diagonal_localized_equivalence`：モデル構造不要の厳密lift、Reedy判定・boundary WFS、
+  任意の行ごとの局所化同値の対角保存、独立した対象・Hom宇宙での実toSourceの可逆性、
+  元のsmall augmentationのsource augmentationへの帰着。6モジュール全39宣言の標準公理監査。
+- `check_word_rows_diagonal`：36宣言・6モジュールの回帰検証。
+- `check_free_word_hom`：165宣言・8モジュールの回帰検証。
+- `audit_homotopical_foundations`：全13040宣言・931モジュール、
+  propext・Classical.choice・Quot.soundのみ。sorry・引用axiomなし。
+- ソースの行長・証明用マーカー、stage差分の空白検査。
+
+### 376.5 次の受入単位と残作業
+
+行ごとの比較から対角への保存と、実word比較への適用は今回完了した。
+次は元の自由道分解のsource augmentationについて、射を一つの生成元として包む追加退化写像を構成する。
+既存のreversed simplexの規約に合わせて全顔・退化式とaugmentationのsection式を検証し、
+実simplicialホモトピー、または同等のモデル構造不要の証明から可逆性を得る。
+これを376.3へ接続して初めて、全対角small augmentationの可逆性が完了する。
+
+元のCᵒᵖ×Cへの小ささを保つstrictificationと降下、小さい厳密なRMap、
+F2の不変性・Kan・π₀とHo(C)の同定等は残る。L/E/Sの完了記録を維持し、全体目標は継続する。
