@@ -781,6 +781,9 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionQuo
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IteratedTensorQuotientComparison
 
+public import SerrePositivity.HomologicalAlgebra.PureDerivedCartierQuotient
+public import SerrePositivity.BhattScholze.PerfectDeltaCartierTensorComparison
+
 /-!
 # Serre の交点重複度の正値性の形式化
 
