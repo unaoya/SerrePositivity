@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.CompatibleRootCompletionPerfectoid
 import SerrePositivity.BhattScholze.PerfectPrismHomLift
 import SerrePositivity.BhattScholze.PerfectPrismQuotientPerfectoid
 import SerrePositivity.BhattScholze.DeltaPerfectionPDCompletionComparison
@@ -374,3 +375,93 @@ assert_no_sorry SerrePositivity.BhattScholze.OrientedPrism.quotient_isIntegralPe
 #print axioms SerrePositivity.BhattScholze.existsUnique_perfectPrismHomLift
 #print axioms SerrePositivity.BhattScholze.OrientedPrism.quotient_isIntegralPerfectoid
 end R5BContracts
+
+-- R5c: validated refactoring contracts.
+section R5CContracts
+
+/- Focused R5c audit: all singleton comparisons, old high-level APIs,
+   exact old completion/map, commuting standard-map diagrams,
+   and the unrestricted reduced p-adically complete target contract. -/
+open SerrePositivity SerrePositivity.BhattScholze
+universe u
+section StandardMaps
+variable {R : Type u} [CommRing R] (p : ℕ) (ρ : ℕ → R)
+example : CompatibleRootCompletion p ρ =
+    AdicCompletion (Ideal.span {(p : R ⧸ compatibleRootIdeal ρ)})
+      (R ⧸ compatibleRootIdeal ρ) := rfl
+example : compatibleRootCompletionMap p ρ =
+    (algebraMap (R ⧸ compatibleRootIdeal ρ) (CompatibleRootCompletion p ρ)).comp
+      (compatibleRootQuotientMap ρ) := rfl
+example (r : R) :
+    compatibleRootSingletonZeroQuotientEquiv ρ (Ideal.Quotient.mk _ r) =
+      Ideal.Quotient.mk _ r := rfl
+example (r : R) :
+    compatibleRootSingletonQuotientEquiv ρ (Ideal.Quotient.mk _ r) =
+      Ideal.Quotient.mk _ r := rfl
+example : compatibleRootSingletonCompletionEquiv p ρ =
+    RingEquiv.cast (R := fun I : Ideal R ↦
+      AdicCompletion (Ideal.span {(p : R ⧸ I)}) (R ⧸ I))
+      (compatibleRootFamilyIdeal_singleton ρ) := rfl
+example :
+    (compatibleRootSingletonQuotientEquiv ρ).toRingHom.comp
+        (compatibleRootFamilyQuotientMap (fun _ : PUnit.{u+1} ↦ ρ)) =
+      (compatibleRootQuotientMap ρ).comp
+        (compatibleRootSingletonZeroQuotientEquiv ρ).toRingHom :=
+  compatibleRootSingletonQuotientEquiv_comp_quotientMap ρ
+example :
+    (compatibleRootSingletonCompletionEquiv p ρ).toRingHom.comp
+        (compatibleRootFamilyCompletionMap p (fun _ : PUnit.{u+1} ↦ ρ)) =
+      (compatibleRootCompletionMap p ρ).comp
+        (compatibleRootSingletonZeroQuotientEquiv ρ).toRingHom :=
+  compatibleRootSingletonCompletionEquiv_comp_completionMap p ρ
+example (x : R ⧸ compatibleRootFamilyIdeal (fun _ : PUnit.{u+1} ↦ ρ)) :
+    compatibleRootSingletonCompletionEquiv p ρ (algebraMap _ _ x) =
+      algebraMap _ (CompatibleRootCompletion p ρ) (compatibleRootSingletonQuotientEquiv ρ x) :=
+  compatibleRootSingletonCompletionEquiv_algebraMap p ρ x
+end StandardMaps
+
+section OriginalGeneralTarget
+variable {p : ℕ} {R : Type u} [CommRing R]
+variable (ρ : ℕ → R) (hρ : ∀ n, ρ (n + 1) ^ p = ρ n)
+variable {T : Type u} [CommRing T] [IsReduced T]
+variable [IsAdicComplete (Ideal.span {(p : T)}) T]
+example (g : R ⧸ Ideal.span {ρ 0} →+* T) :
+    ∃! l : CompatibleRootCompletion p ρ →+* T,
+      l.comp (compatibleRootCompletionMap p ρ) = g :=
+  existsUnique_compatibleRootCompletionLift ρ hρ g
+end OriginalGeneralTarget
+
+assert_no_sorry SerrePositivity.BhattScholze.compatibleRootFamilyZeroIdeal_singleton
+assert_no_sorry SerrePositivity.BhattScholze.compatibleRootFamilyIdeal_singleton
+assert_no_sorry SerrePositivity.BhattScholze.compatibleRootSingletonZeroQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.compatibleRootSingletonZeroQuotientEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.compatibleRootSingletonQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.compatibleRootSingletonQuotientEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.compatibleRootSingletonQuotientEquiv_comp_quotientMap
+assert_no_sorry SerrePositivity.BhattScholze.compatibleRootSingletonCompletionEquiv
+assert_no_sorry SerrePositivity.BhattScholze.compatibleRootSingletonCompletionEquiv_algebraMap
+assert_no_sorry SerrePositivity.BhattScholze.compatibleRootSingletonCompletionEquiv_comp_completionMap
+assert_no_sorry SerrePositivity.BhattScholze.compatibleRootCompletion_isIntegralPerfectoid
+assert_no_sorry SerrePositivity.BhattScholze.compatibleRootCompletionMap_isPerfectoidization
+assert_no_sorry SerrePositivity.BhattScholze.surjective_of_isPerfectoidization_of_compatibleRoots_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.CompatibleRootCompletion
+assert_no_sorry SerrePositivity.BhattScholze.compatibleRootCompletionMap
+assert_no_sorry SerrePositivity.BhattScholze.existsUnique_compatibleRootCompletionLift
+
+#print axioms SerrePositivity.BhattScholze.compatibleRootFamilyZeroIdeal_singleton
+#print axioms SerrePositivity.BhattScholze.compatibleRootFamilyIdeal_singleton
+#print axioms SerrePositivity.BhattScholze.compatibleRootSingletonZeroQuotientEquiv
+#print axioms SerrePositivity.BhattScholze.compatibleRootSingletonZeroQuotientEquiv_mk
+#print axioms SerrePositivity.BhattScholze.compatibleRootSingletonQuotientEquiv
+#print axioms SerrePositivity.BhattScholze.compatibleRootSingletonQuotientEquiv_mk
+#print axioms SerrePositivity.BhattScholze.compatibleRootSingletonQuotientEquiv_comp_quotientMap
+#print axioms SerrePositivity.BhattScholze.compatibleRootSingletonCompletionEquiv
+#print axioms SerrePositivity.BhattScholze.compatibleRootSingletonCompletionEquiv_algebraMap
+#print axioms SerrePositivity.BhattScholze.compatibleRootSingletonCompletionEquiv_comp_completionMap
+#print axioms SerrePositivity.BhattScholze.compatibleRootCompletion_isIntegralPerfectoid
+#print axioms SerrePositivity.BhattScholze.compatibleRootCompletionMap_isPerfectoidization
+#print axioms SerrePositivity.BhattScholze.surjective_of_isPerfectoidization_of_compatibleRoots_unconditional
+#print axioms SerrePositivity.BhattScholze.CompatibleRootCompletion
+#print axioms SerrePositivity.BhattScholze.compatibleRootCompletionMap
+#print axioms SerrePositivity.BhattScholze.existsUnique_compatibleRootCompletionLift
+end R5CContracts

@@ -68,7 +68,7 @@ BS側が変更するのは `SerrePositivity/BhattScholze/`、このBS計画、BS
 | R4c | hpAからhpL・ghost単射を供給する公開入口を揃える | 再利用 | `DeltaRootSourceRegularGhost`、`DeltaRootFamilyRegularGhost`、`DeltaRootFamilySourceQuotientFlat`、`DeltaRootBoundedSupportQuotientFlat` | 完了。旧22完全署名と6入口の監査を確認 |
 | R5a | 未完備perfection・合成標準射のhom_extと既存PD外延性の適用 | 抽出 | `DeltaPerfectionUniversal`、`DeltaPerfectionPDCompletionUniversal`、`DeltaPerfectionPDCompletionComparison` | 完了。新3宣言・選択済み順逆射のrflを確認 |
 | R5b | 完全prismのWitt表示とイデアル像の入力供給 | 抽出 | 新 `PerfectPrismWittPresentation`、`PerfectPrismHomLift`、`PerfectPrismQuotientPerfectoid` | 完了。新12宣言・旧表示のrfl契約を確認 |
-| R5c | 単一根の上位perfectoid証明を任意族から特殊化 | 比較 | 新 `CompatibleRootSingletonComparison`、`CompatibleRootCompletionPerfectoid` | 循環のない上位特殊化を一時検証中、repo未反映 |
+| R5c | 単一根の上位perfectoid証明を任意族から特殊化 | 比較 | 新 `CompatibleRootSingletonComparison`、`CompatibleRootCompletionPerfectoid` | 完了。新10比較・標準射・一般終域契約を確認 |
 | R6 | 相対δのイデアル冪評価・剰余算術を共有 | 証明拡張 | 新 `RelativeDeltaEstimate`、`DeltaAdicEstimate`、`RelativeFreeFiniteDeltaAdicEstimate`、`DeltaResidueArithmetic`、`RelativeFreeFiniteDeltaResidue` | 5モジュールの一時検査済み、repo未反映 |
 | R7 | BS監査の宣言列挙・公開境界検査、文書の現況整理 | 監査・文書 | BS専用スクリプト、BS計画 | 構造監査を実装・検証済み。最終集計は残りの実装後 |
 
@@ -403,6 +403,10 @@ R4bも計画済み5ファイルの一時検証から再開する。これらを�
   R5/R6の旧37完全署名は変更前と一致。新sorry・追加公理・引用依存なし。
 
 - R5b：同じWitt復元同型と生成元逆像を使う表示を抽出し、商のperfectoid性とprism射持上げへ適用した。零環を含む環比較とCharPを要するδ両立を分離し、choiceを増やしていない。新12宣言と旧利用先2件の監査、旧同型・生成元・商に関するrfl契約5件が成功。
+  538対象の統合ビルド、基礎584件・B4 2,560件に加え、工程別の対象ビルドと集約focused監査が成功。
+  R5/R6の旧37完全署名は変更前と一致。新sorry・追加公理・引用依存なし。
+
+- R5c：一元添字族とのイデアル・商・完備化・標準射の比較10件を証明し、単一根の上位perfectoid性を族版へ委譲した。元の台環・標準射と一般の被約p完備終域への普遍性は保持。16入口の監査、rfl契約5件、標準射の二つの可換図式と完備化単位の比較が成功。旧6完全署名も一致。比較自体に素数性・正則性・非自明性を加えていない。
   538対象の統合ビルド、基礎584件・B4 2,560件に加え、工程別の対象ビルドと集約focused監査が成功。
   R5/R6の旧37完全署名は変更前と一致。新sorry・追加公理・引用依存なし。
 
