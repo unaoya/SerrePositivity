@@ -7,6 +7,8 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.HomotopicalAlgebra.Simplicial.VertexTuples,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.CoherentLiftTuples,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.KanLiftCoherence,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.KanReplacement,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.KanLiftAction,
