@@ -11792,3 +11792,48 @@ lift点の実際の退化単体であり、作用も元の前合成に厳密に�
 ∞圏の導入、新規sorry・引用axiomもない。
 次は実際のresolution射によるlift族の前後合成と、その作用との両立を構成し、異なる
 基底射間の高次合成の境界を接続する。F1の最終契約Cᵒᵖ→(C→SSet)と全体目標は継続中。
+
+
+## 233. F1進捗：高次lift族の実際の後合成と作用の厳密な両立（2026-10-16）
+
+§232で残した異なる基底射間の合成に対して、厳密なresolution射による後合成を構成した。
+源側の前合成、選択した比較族の合成適合性、および最終的な厳密化は引き続き残る。
+
+### 233.1 lift空間間の実際の射
+
+新規`HomotopyFunctionComplex/ResolutionLiftPostcomposition`の`map X Y W f g`は、
+厳密なresolution射g:Y→Wに対して、Lift(X,Y;f)→Lift(X,W;f≫g.base)を与える。
+実際のpullbackの第一射をcosimplicial Homによるg.diagramの像へ後合成し、点への射は
+保持する。g.overと基底射の合成公式からpullbackの交換条件を証明している。
+単に新しいliftの存在や、その空間の可縮性を引用したものではない。
+
+包含への合成式、点への射との両立、ofLift(k)をofLift(k≫g)へ送る厳密な等式を証明した。
+任意の単体的parameterと、既に指定した任意の境界i≫e=bを保ったまま後合成できる。
+この構成自体にSSetのモデル構造やKan置換は不要である。
+
+### 233.2 元のHomとKan化した作用への接続
+
+`DiagonalHomComposition.pairing_middle_naturality`は、中間のcosimplicial対象の実際の射を
+通す合成の結合性を証明する。これを使い、lift族sをgで後合成して作用させることと、
+元のHomのparameterをg.diagramで前合成してsを作用させることが厳密に一致すると示した。
+この等式を値側Kan置換の単位へ後合成し、KanTargetへの作用でも同じ厳密な等式を得た。
+
+従って§232の全次元の比較単体を、面・退化・既定境界を保ちながら別の基底射のlift空間へ
+送り、その作用を元のHomの前合成と照合できる。源Cの指定関手的分解、局所可呈示性、
+豊穣構造、Kan置換の積保存は使っていない。
+
+### 233.3 受入検証と残項目
+
+実装コミット`259e43be`。全て成功した。
+
+- 共有入口の合同build：2609 jobs。
+- `check_lift_postcomposition`：厳密なlift点での合成、全次元の同時比較単体の作用との接続、
+  任意のmono上の境界延長を保つ後合成と全標的・全parameterでの作用の一致。
+  30宣言・2モジュール、標準公理のみ。
+- `audit_homotopical_foundations`：4989宣言・421モジュール、標準公理のみ。
+- `check_coherent_lift_tuples`：§232の49宣言・2モジュールの回帰確認、標準公理のみ。
+- 新規ソースの行長・空白・証明用マーカー確認とstageした差分の空白検査。
+
+この後合成と、別々に選んだ§232のinterpolationとの可換性はまだ主張していない。
+次は源側の外側resolutionに沿う前合成を構成し、二つの比較族が共有する頂点・既定境界を
+保つ高次比較を組み立てる。F1の厳密なCᵒᵖ→(C→SSet)と全体目標F→L→E→Sは未完了。
