@@ -6,6 +6,7 @@ public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedHom
 public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedAdjunction
 public import SerrePositivity.DifferentialGraded.Endomorphism.EnhancementComparison
 public import SerrePositivity.DifferentialGraded.Endomorphism.ShiftConeComparison
+public import SerrePositivity.DifferentialGraded.Endomorphism.GeneratorHomIso
 public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedTensorEvaluation
 public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension
 public import SerrePositivity.DifferentialGraded.Perfect.EnhancementShiftComparison

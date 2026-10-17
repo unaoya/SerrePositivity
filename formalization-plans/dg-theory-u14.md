@@ -257,6 +257,17 @@
 - `ChecksShiftConeComparison` と更新した `ChecksCompatibility` の対象ビルド成功。
   新規11主要宣言の公理は標準3公理のみ。U14公開入口へimport済み。
 
+## U14b.1：指定対象を始域とする全Hom写像の同型（2026-10-17）
+
+- `GeneratorHomIso.lean`：正則End加群とHom(E,E)との加群同型を成分の恒等写像として照合。
+  任意の右D加群Mについて、Hom関手の全次数写像をその同型に沿って前合成すると、
+  既存のdg Yoneda同型の逆になることを証明した。
+- したがってHom(E,−)の `(E,M)` における全Hom写像はchain isoであり、特に擬同型。
+  この基点の主張にはEのホモトピー射影性・compact性は不要。
+  thick生成からの一般の始域への拡張と本質的全射は未証明である。
+- `ChecksGeneratorHomIso` と更新した `ChecksCompatibility` の対象ビルド成功。
+  新規6主要宣言の公理は標準3公理のみ。U14公開入口へimport済み。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
