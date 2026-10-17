@@ -95,6 +95,18 @@
 - `lake build SerrePositivity.DifferentialGraded.Endomorphism.ChecksModuleEvaluation` 成功。
   9主要宣言の公理は標準3公理のみ。
 
+## U14a.7：再構成Homへの実際のEnd(E)加群挿入（2026-10-17）
+
+- `ModuleInsertion.lean`：Nの元mを、Eの元tにm⊗tを対応させるHom要素に送るchain mapを構成。
+  D上の全次数自然性を主Hom endの普遍性で課し、balanced関係を使ってEnd(E)作用との
+  可換性も証明した。結果は実際の閉零End(E)加群射 `N → Hom(E,N⊗_End(E)E)`。
+- 入力総次数を任意の和表示にしたD作用公式を `ModuleTensorElements.lean` に追加。
+  中間次数s+pを固定し、p+sとの比較に暗黙の型同一視を使わない。
+- `lake build SerrePositivity.DifferentialGraded.Endomorphism.ChecksModuleInsertion` 成功。
+  新規8主要宣言の公理は標準3公理のみ。
+- 単位・余単位としての両加群変数の自然性と三角恒等式は次の証明義務。
+  作業は通常の追加コミットのみで進め、amend・rebase・resetは行わない。
+
 ## 残る受入条件
 
 - U14a：enhancement／End(E)加群間の再構成随伴と、その単位・余単位。

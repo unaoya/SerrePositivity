@@ -45,4 +45,35 @@ lemma endomorphismModuleTensor_action_element
   rw [h]
   rfl
 
+/-- 入力tensorの総次数を別名にしたD作用の生成元公式。 -/
+lemma endomorphismModuleTensor_action_element_of_sum
+    (N : RightModule A (EndomorphismObject E)) (x y : Dᵒᵖ)
+    {p r s a n : ℤ} (f : GradedHom A x y p)
+    (m : (N.obj (op (.point : EndomorphismObject E))).X r) (t : (E.obj x).X s)
+    (ha : r + s = a) (hn : a + p = n) :
+    moduleAction A ((endomorphismModuleTensor A D E).obj N) (x := x) (y := y) f
+      (BalancedTensor.element A (EndomorphismObject E) N
+        ((endomorphismModuleAction A D E).leftAt x.unop) .point m t ha) hn =
+    (p * r).negOnePow • BalancedTensor.element A (EndomorphismObject E) N
+      ((endomorphismModuleAction A D E).leftAt y.unop) .point m
+        (moduleAction A E (x := x) (y := y) f t (rfl : s + p = s + p)) (by omega) := by
+  change (((BalancedTensor.leftHomMap A (EndomorphismObject E) N
+      ((endomorphismModuleAction A D E).leftAt x.unop)
+      ((endomorphismModuleAction A D E).leftAt y.unop)).f p
+        (((endomorphismModuleAction A D E).transposeHom x y).f p f)).v a n hn) _ = _
+  have he := BalancedTensor.leftHomMap_element_of_sum A (EndomorphismObject E) N
+    (N := (endomorphismModuleAction A D E).leftAt x.unop)
+    (N' := (endomorphismModuleAction A D E).leftAt y.unop)
+    (((endomorphismModuleAction A D E).transposeHom x y).f p f) .point m t ha
+      (by omega : p + s = s + p) hn
+  have h := congrArg (fun k => k.f p f) (endomorphismModuleAction_transpose A D E x y)
+  change (leftModuleHomπ A (EndomorphismObject E)
+      ((endomorphismModuleAction A D E).leftAt x.unop)
+      ((endomorphismModuleAction A D E).leftAt y.unop) .point).f p
+        (((endomorphismModuleAction A D E).transposeHom x y).f p f) = (E.map x y).f p f at h
+  have hv := congrArg (fun c => c.v s (s + p) rfl t) h
+  exact he.trans (congrArg (fun z => (p * r).negOnePow •
+    BalancedTensor.element A (EndomorphismObject E) N
+      ((endomorphismModuleAction A D E).leftAt y.unop) .point m z (by omega : r + (s + p) = n)) hv)
+
 end SerrePositivity.DifferentialGraded
