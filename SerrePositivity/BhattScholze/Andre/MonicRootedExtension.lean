@@ -57,6 +57,7 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicVarpiFlat
 public import SerrePositivity.BhattScholze.Andre.PowerRootMonicModPairRegular
 public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicRawRegular
 public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicRawPairRegular
+public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCompletionRegular
 
 /-!
 # André E1・E2 の集約

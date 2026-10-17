@@ -3434,3 +3434,78 @@ p 正則性、原典の prismatic 源との同定は引き続き未完了。
 raw mod p 比較・分母飽和性・分母正則性、全主冪商・古典的主完備化、実二座標完備化、
 無限根モニック入力の二つの完備化に関する公開型 8 本を `#check` で確認した
 （終了コード 0）。
+
+
+### E1.54：実二座標完備化と分母商の p 正則性・通常 p 完備性（検証済み）
+
+新規 `Andre/PrincipalCompletionResidue.lean` は、任意の可換環 R と b∈R に対し、
+実主完備化 H⁰ をその標準像 j(b) で割った商と R/(b) の環同型
+`principalCompletionResidueEquiv` を構成した。
+両剰余で b が零となることから導来完備性を得て、実 H⁰ の環としての一意延長を使う。
+順逆合成は元の商射の外延性と一意延長の一意性から確認する。
+標準像 j(r) の商を元の代表元 r の商へ送る公式も証明した。
+正則性・Noether 性・R の完備性は不要。一般の制限係数作用で像が零の場合の
+導来完備性を含め、3 公開宣言を追加した。
+
+新規 `Andre/PrincipalPairCompletionFirstRegular.lean` は正則対 b,c に適用する。
+前提は
+
+```lean
+{R : Type u} [CommRing R] (b c : R) (hb : IsSMulRegular R b)
+(hc : IsSMulRegular (R ⧸ Ideal.span {b}) (Ideal.Quotient.mk (Ideal.span {b}) c))
+```
+
+である。第一主完備化の b 正則性を古典的比較で示し、その mod b における c 正則性を
+上の実主剰余比較で示す。これが `principalPair_principalCompletion_pair_regular`。
+第一主完備化上で順序を交換すると、c が正則で、その c 商で b が正則になる。
+E1.53 の一般計算を c,b に適用して、第二主完備化でも b が正則となる。
+第二主完備化の c 商は、上の剰余比較で第一主完備化の c 商と同型なので、
+そこでも b は正則となる。標準射を保つ既存の反復比較で元の実二座標 H⁰ へ戻す。
+
+公開定理 `principalPair_pairCompletion_first_regular` の結論は
+
+```lean
+let := pairCompletionCommRing R b c
+IsSMulRegular (PairCompletionH0 R b c) (pairCompletionUnitRingHom R b c b)
+```
+
+であり、`principalPair_pairCompletion_mod_second_first_regular` の結論は
+
+```lean
+let := pairCompletionCommRing R b c
+let j := pairCompletionUnitRingHom R b c
+IsSMulRegular (PairCompletionH0 R b c ⧸ Ideal.span {j c})
+  (Ideal.Quotient.mk (Ideal.span {j c}) (j b))
+```
+
+である。元の Koszul 完備化 H⁰ と標準写像を保持する。3 公開宣言を追加した。
+
+新規 `Andre/PowerRootPrismMonicCompletionRegular.lean` は E1.52–53 の元の無限根入力
+P、δ 構造 E、分母 dP、一元分子族 a、raw 包 L に適用する。
+dL は元の raw 包における dP の標準像、H=PDCompletionH0 L p dL、
+uL=pdCompletionUnit L p dL、T=H/(uL(dL)) とする。
+完全 prism W、prism 商 A/W.ideal の p 正則性 hpR、f のモニック性 hf の下で、
+
+- `powerRootPrismMonic_pdCompletion_prime_regular`：`IsSMulRegular H (p : H)`。
+- `powerRootPrismMonic_pdCompletion_hodgeTate_prime_regular`：`IsSMulRegular T (p : T)`。
+- `powerRootPrismMonic_pdCompletion_hodgeTate_isAdicComplete`：
+  `IsAdicComplete (Ideal.span {(p : T)}) T`。
+
+を証明した。最後の主張は実 H⁰ の導来 p 完備性を主商に移し、p 正則性による
+古典的完備性との既存比較を適用する。いずれも正次数は不要。
+hpR を一般の公開根付き存在定理へ追加しない。3 公開宣言を追加した。
+
+BS Rem 7.15（著者版 p.62）の p ねじれなしの場合を、原典とは異なる正則対の
+順序交換・反復主完備化の方法で補完した。
+E1.53 に残っていた実完備化の p 正則性と Hodge–Tate 候補商の p 正則性は、
+この p 正則な prism 商の場合について解消した。
+この具体的候補を原典の prismatic 源と同定すること、元の f の Frobenius 引戻しに
+関する pd 包同定、通常 ϖ 剰余の既存忠実平坦性からこの候補の p 完全忠実平坦性への
+接続は引き続き未完了であり、一般の場合まで完成したとは数えない。
+
+3 対象および集約の `set -o pipefail; lake build` は終了コード 0
+（集約 4504 jobs）。新規 9 公開宣言の `assert_no_sorry` と専用監査は
+終了コード 0。生成宣言を含む 4922 宣言の推移的公理依存は標準 3 公理のみ。
+実主剰余比較と係数公式、第一主完備化の正則対、実二座標完備化とその分母商の
+正則性、および無限根モニックへの適用の公開型 8 本を `#check` で確認した
+（終了コード 0）。

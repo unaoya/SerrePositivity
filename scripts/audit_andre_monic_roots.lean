@@ -994,6 +994,16 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicRaw_mod_pr
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicRaw_pAdic_regular_pair
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicRaw_pdCompletion_generator_regular
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.moduleComplete_of_ringHom_scalar_zero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalCompletionResidueEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalCompletionResidueEquiv_unit
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalPair_principalCompletion_pair_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalPair_pairCompletion_first_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalPair_pairCompletion_mod_second_first_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonic_pdCompletion_prime_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonic_pdCompletion_hodgeTate_prime_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonic_pdCompletion_hodgeTate_isAdicComplete
+
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
@@ -1158,7 +1168,10 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.DeltaDivisionUnaryRawPairRegular,
     `SerrePositivity.BhattScholze.Andre.PrincipalPairPowerRegular,
     `SerrePositivity.BhattScholze.Andre.PrincipalPairCompletionRegular,
-    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicRawPairRegular]
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicRawPairRegular,
+    `SerrePositivity.BhattScholze.Andre.PrincipalCompletionResidue,
+    `SerrePositivity.BhattScholze.Andre.PrincipalPairCompletionFirstRegular,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCompletionRegular]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
