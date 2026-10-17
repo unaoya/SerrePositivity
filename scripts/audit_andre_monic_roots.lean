@@ -629,6 +629,27 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientPDEnvelop
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientRing_prime_eq_zero
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientPDEnvelope_truncatedEquiv
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPInputQuotient_input_eq_zero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPAugmentation
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPAugmentation_generator_succ
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPPositiveQuotientToInput
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPPositiveQuotientToInput_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPInputToPositiveQuotient
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPInputToPositiveQuotient_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPPositiveQuotientToInput_comp_inputToPositive
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPInputToPositiveQuotient_comp_positiveToInput
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPPositiveQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPower_regular_span_inf_isSubDPIdeal
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowersQuotientOfRegular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowersQuotientOfRegular_apply
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowersQuotientOfRegular_isDPMorphism
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientInputQuotient_free
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientPDPositiveQuotient_free
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientPDPositiveQuotient_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientPDRegularReduction
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientPDRegularReduction_base_apply
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientPDRegularReduction_isDPMorphism
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -738,7 +759,10 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PowerRootMonicModPrimePDEnvelope,
     `SerrePositivity.BhattScholze.Andre.PrincipalDPRingEquiv,
     `SerrePositivity.BhattScholze.Andre.PrincipalDPTransport,
-    `SerrePositivity.BhattScholze.Andre.PowerRootCoefficientPDEnvelope]
+    `SerrePositivity.BhattScholze.Andre.PowerRootCoefficientPDEnvelope,
+    `SerrePositivity.BhattScholze.Andre.PrincipalDPPositiveQuotient,
+    `SerrePositivity.BhattScholze.Andre.DividedPowerRegularQuotient,
+    `SerrePositivity.BhattScholze.Andre.PowerRootCoefficientPDRegularReduction]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

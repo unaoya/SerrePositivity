@@ -2120,3 +2120,66 @@ SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（
 生成宣言を含む 3243 宣言の推移的公理依存は標準 3 公理のみ。
 一般係数同型・構造移送・実係数商上の構造と普遍性・自由性・忠実平坦性・
 切断表示の公開型 7 本を `#print` で確認した（終了コード 0）。
+
+### E1.35：正次数商の自由性と正則係数元による実分冪構造の降下
+
+新規 `Andre/PrincipalDPPositiveQuotient.lean` は、任意の可換環 A と y に対して
+一次関係商 D=`PrincipalDPPresentation A y` の正次数イデアル J による商を、
+元の入力商 A/(y) と A 代数同型にする。
+零イデアルの分冪構造への標準評価を augmentation とし、係数からの逆射を構成する。
+逆合成は商の係数代表元と全標準分冪生成元で確認する。
+標数・正則性・非零性も、D 自身の分冪構造も要求しない。
+
+```lean
+def principalDPPositiveQuotientEquiv
+    {A : Type u} [CommRing A] (y : A) :
+    (PrincipalDPPresentation A y ⧸ principalDPPositiveIdeal y) ≃ₐ[A]
+      (A ⧸ Ideal.span {y})
+```
+
+新規 `Andre/DividedPowerRegularQuotient.lean` は、分冪イデアル J を持つ D の元 a が
+D/J で正則なら、実商 D/(a) 内の J の像に実分冪構造が降りることを証明する。
+ab が J に属せば b も属すため、γₙ(ab)=aⁿγₙ(b) は正次数 n で (a) に属する。
+これにより (a) と J の交わりの分冪安定性を得て、既存の商分冪構成を適用する。
+商での分冪値の公式と標準商射の分冪保存も公開した。
+D 自身での a の正則性は不要であり、D/J での正則性を正確な仮定にしている。
+
+```lean
+def dividedPowersQuotientOfRegular
+    {D : Type u} [CommRing D] {J : Ideal D} (H : DividedPowers J) (a : D)
+    (ha : IsSMulRegular (D ⧸ J) (Ideal.Quotient.mk J a)) :
+    DividedPowers (J.map (Ideal.Quotient.mk (Ideal.span {a})))
+```
+
+新規 `Andre/PowerRootCoefficientPDRegularReduction.lean` は、E1.34 の同じ実台環 D と
+正次数イデアル J にこの降下を適用する。
+通常のモニック入力商の既存基底と上記の同型により、D/J は R=A/(p) 上自由。
+従って R 内で正則な a は D/J でも正則となる。
+平坦性インスタンスはこの同じ自由性から型を明示して供給し、追加仮定は置かない。
+完全 prism W とモニック f に対する `powerRootCoefficientPDRegularReduction` は
+D 内の係数像 a による実商上の分冪構造。
+`powerRootCoefficientPDRegularReduction_base_apply` は入力元の n 次分冪が
+標準生成元の商像に一致することを、同 `_isDPMorphism` は標準商射の分冪保存を主張する。
+
+ここで R=A/(p)、N=`PowerRootPolynomial R p hp`、z=`powerRootCoefficientPDInput p f`、
+D=`PowerRootCoefficientPDEnvelope p f`、J=`principalDPPositiveIdeal z` とすると、主要公開型は
+
+```lean
+def powerRootCoefficientPDRegularReduction
+    {A : Type u} [CommRing A] (p : ℕ) [Fact p.Prime]
+    (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
+    (f : Polynomial A) (hf : f.Monic) (a : R) (ha : IsSMulRegular R a) :
+    DividedPowers (J.map (Ideal.Quotient.mk (Ideal.span {algebraMap R D a})))
+```
+
+BS Rem 7.15(1)（著者版 p.62）の R/ϖ 係数への比較を進めるための降下である。
+原典の Prop 7.11 は使わず、通常入力商の基底と分冪イデアルの交わりの計算を使う。
+a と原典の ϖ の対応、その係数商・台環・普遍性の比較、および prismatic envelope の
+Frobenius 引戻しとの同定はなお未完了。正則係数元を明示した今回の降下だけで
+依頼全体の完成とは数えない。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4427 jobs）。
+新規 20 公開宣言の `assert_no_sorry` を追加した専用監査は終了コード 0。
+生成宣言を含む 3301 宣言の推移的公理依存は標準 3 公理のみ。
+正次数商の同型・一般分冪降下・無限根正次数商の自由性と正則性・実還元構造・
+標準値・商射の分冪保存の公開型 7 本を `#print` で確認した（終了コード 0）。
