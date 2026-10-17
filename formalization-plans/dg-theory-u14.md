@@ -988,6 +988,15 @@
 - `ChecksScalarModuleShiftImage` 対象ビルド成功（3057 jobs）。主要8宣言の公理は標準3公理のみ。
   既存APIの名前・型は変更していない。新しいsorry・axiom・引用は追加していない。
 
+## U14b.60：Hom要素の各評価とcochainの係数拡大（2026-10-17）
+
+- `ScalarHomElementComponents.lean`：全次数Homの係数変更比較の純粋生成元の像が、
+  cochainの各成分を実際に係数拡大したものに等しいことを随伴のHom同値で証明した。
+- 実際の加群Hom要素の各評価も同じcochain係数拡大に一致する。
+  coneの包含・射影等、微分と可換しない斉次要素にも適用できる。
+- `ChecksScalarHomElementComponents` 対象ビルド成功（3027 jobs）。主要2宣言の公理は標準3公理のみ。
+  既存APIの名前・型は変更していない。新しいsorry・axiom・引用は追加していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
