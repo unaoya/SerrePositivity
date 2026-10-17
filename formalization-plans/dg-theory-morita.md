@@ -76,7 +76,7 @@ def kernelDerivedTensorComputation (P : Bimodule A E D)
 DのHomのA-flat性なしで相対K-flatであり、kernelの準同型に関する不変性をこのモデルで証明する方針。
 任意指定射影解像度Rの計算を公開し、単なる対象上の計算で関手・自然性を代用しない。
 
-### 4. 導来右随伴・unit/counit（型のみ確定）
+### 4. 導来右随伴・unit/counit（実装・検証済み、U16a13）
 
 ```lean
 def kernelDerivedHom (P : Kernel A D E) :
@@ -99,12 +99,14 @@ lemma kernelDerived_right_triangle (P : Kernel A D E)
     (kernelDerivedHom A D E P).map ((kernelDerivedCounit A D E P).app Y) = 𝟙 _
 ```
 
-unit/counitは上の実際の随伴の成分とする。随伴の存在・成分の可逆性を入力仮定として受け取らない。
-右随伴の一般kernelに対する構成は残る証明課題。localHomKFlatを列のhomotopically projective性と
-同一視しない。一対象Endでの既存随伴を任意kernelの証明の代わりにしない。
-この型の確定は右随伴の実装が完成したという意味ではない。
-通常Homのdg関手はAdjunctionHom.leanで実装・検証済み（U16a10）。
-一般導来右随伴の表現対象構成はtelescopeと全shift代表生成元上のHom全単射まで進んでいるが、全入力の表現可能性と随伴存在は未完（U16a12）。
+unit/counitは上の実際の随伴の成分。随伴の存在・成分の可逆性を入力仮定として受け取らない。
+Morita/AdjunctionDerived.leanをimportすれば、上記6宣言を任意kernelについて利用できる。
+公開名・引数・仮定・宇宙は従来の型と同じで、局所Hom K-flat性・kernel列の射影性は不要。
+通常Homのdg関手はAdjunctionHom.lean、実際の導来右随伴はtelescopeによる全入力のHom表現から構成した。
+kernelDerivedHomEquivは全入力のHom同値、kernelDerivedHomEquiv_naturalityは始域の全導来射自然性。
+kernelDerivedHom_objで右随伴の値をtelescopeへ、kernelDerivedCounit_modelで余単位をその標的射へ計算する。
+左右三角恒等式に加え、右随伴関手・unit/counitの自然性は実際のMathlib Adjunctionのものを使える。
+U16a全体には恒等・結合の作用coherenceを残す。随伴の実装だけで全受入とはしない。
 
 ### 5. 恒等作用（実装・検証済み、U16a4）・合成比較（実装・検証済み、U16a6）
 
@@ -145,7 +147,7 @@ lemma kernelCompositionIso_kFlat (hD : localHomKFlat A D)
 | Kernel・kernelIdentity・kernelGraph・kernelCompose・kernelComposeMap | 実装・対象ビルド済み | 型・向きは上記で固定 |
 | kernelTensor・値・graph一致 | 実装・対象ビルド済み | 同上 |
 | 主導来作用・任意解像度計算 | 実装・検証済み（U16a3） | Morita/KernelDerivedFunctor.leanをimportして利用できる |
-| 一般右随伴・unit/counit | 型のみ確定 | 同上 |
+| 一般右随伴・unit/counit・左右三角恒等式 | 実装・検証済み（U16a13） | Morita/AdjunctionDerived.lean。公開型は変更なし |
 | 恒等作用比較 | 実装・検証済み（U16a4） | Morita/CoherenceIdentity.leanのkernelIdentityIso |
 | 合成の作用比較・全kernel射の自然性 | 実装・検証済み（U16a9）。恒等・結合coherenceは未完 | Morita/CoherenceComposition.leanのkernelCompositionIso・kernelCompositionIso_naturality・kernelCompositionIso_kFlat |
 
@@ -548,3 +550,32 @@ compact性による有限段階因子分解と後続関係消去を用い、引�
 
 AdjunctionKernelTelescopeChecksを新旧入口と合同ビルドし成功（4124 jobs、警告0）。
 新規14宣言の直接公理監査は標準3公理以内。詳細はdg-theory.md §17.264。
+
+
+## U16a13：全入力のHom表現と実際の導来右随伴（2026-10-17）
+
+AdjunctionHomTrianglesで指定射L(R)→YのHom比較の全単射性を三角形の両端から中央へ運んだ。
+AdjunctionHomClosureでは同型・retract・保存される余積の閉性を証明し、
+全shiftでの比較が全単射になる入力brownHomPropertyが三角部分圏を定めることを示した。
+AdjunctionHomGenerationのbrownHomComparison_allは既存moduleLocalizing_allにより
+全shift代表生成元での全単射性を全主導来入力へ拡張する。
+kernelBrownTelescope_hom_bijectiveとkernelBrownTelescopeHomEquivが、任意kernelの実際のtelescopeへ適用する入口。
+
+AdjunctionDerivedのkernelDerivedHomEquivと始域自然性から、Mathlibの
+Adjunction.rightAdjointOfEquiv／adjunctionOfEquivRightで実際のkernelDerivedHomと
+kernelDerivedAdjunctionを構成した。unit/counitと左右三角恒等式も公開契約どおり証明済み。
+公開型・仮定は変更していない。局所Hom K-flat性・kernel列の射影性は不要。
+余単位はkernelDerivedCounit_modelで構成時の標的射そのものと比較できる。
+
+AdjunctionDerivedChecksを新旧telescope・合成自然性・QuasiEquivalence・局所入口・
+一般入口・Spectra.StageTwoと合同ビルドし成功（4129 jobs、警告0）。
+新規27宣言（abbrev・instanceを含む）の直接公理監査は標準3公理以内。
+新規sorry・axiom・引用・資源上限変更なし。詳細はdg-theory.md §17.265。
+
+次は恒等・結合の作用coherenceを検証してU16aを受け入れ、その後別担当のCriterionPerf*・
+CriterionDerived*を実際の右随伴と統合する。U16全体の受入はまだ行っていない。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Morita.AdjunctionDerivedChecks
+lake env lean SerrePositivity/DifferentialGraded/Morita/AdjunctionDerivedChecks.lean
+```

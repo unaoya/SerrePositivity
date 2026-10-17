@@ -12604,3 +12604,45 @@ f ↦ L.map f ≫ S.targetが全単射であることを証明する。
 lake build SerrePositivity.DifferentialGraded.Morita.AdjunctionKernelTelescopeChecks SerrePositivity.DifferentialGraded.Morita.AdjunctionKernelSequenceChecks SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionCanonicalChecks SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.DifferentialGraded.Checks.U12eGeneralInventory SerrePositivity.Spectra.StageTwo
 lake env lean SerrePositivity/DifferentialGraded/Morita/AdjunctionKernelTelescopeChecks.lean
 ```
+
+
+### 17.265 U16a：全入力Hom表現・一般右随伴・unit/counit（2026-10-17）
+
+AdjunctionHomTrianglesは指定射L(R)→Yから定まるHom比較を三角形に沿って追跡する。
+brownHomComparison_triangleは両端と必要なshiftでの比較から中央の全単射性を証明した。
+AdjunctionHomClosureは同型・retract・保存余積の閉性を与え、全shiftで比較が全単射となる
+brownHomPropertyの三角性・同型閉性・retract閉性を証明する。
+AdjunctionHomGenerationはその余積閉性をshiftの余積比較から得て、既存moduleLocalizing_allと
+modulePerfect_le_iff_generatorsで全入力のHom全単射brownHomComparison_allを証明した。
+これはMorita同値判定ではなく、任意kernelの右随伴の存在証明のための局所化帰納である。
+CriterionPerf*・CriterionDerived*は編集していない。
+
+kernelBrownTelescope_hom_bijectiveは前単位で構成した実際のtelescopeが全入力でHomを表現することを示す。
+AdjunctionDerived.leanはこれをHom同値kernelDerivedHomEquivと始域自然性へまとめ、
+Mathlibの右随伴構成を適用した。以下の公開契約が実装・検証済みとなった。
+
+- kernelDerivedHom、kernelDerivedAdjunction。
+- kernelDerivedUnit、kernelDerivedCounit。
+- kernelDerived_left_triangle、kernelDerived_right_triangle。
+- 計算API：kernelDerivedHomEquiv_symm_apply、kernelDerivedHom_obj、kernelDerivedCounit_model。
+
+任意可換環・非有界複体・独立対象宇宙とSmall.{u}のまま。
+局所Hom K-flat性・kernel列の射影性・随伴存在・unit/counit可逆性を仮定にしていない。
+公開名・正確な型・仮定・宇宙は従来の仕様から変更していない。
+dg-theory-morita.md冒頭の公開API第4節と状態表を「実装・検証済み」に更新した。
+余単位は構成時のtelescopeの標的射と一致し、実際の随伴の自然性を二担当が利用できる。
+
+保存済みAdjunctionDerivedChecksは任意kernelの随伴・両三角恒等式・余単位自然性・標数2を検査する。
+新旧telescope・合成自然性・QuasiEquivalence・U12eLocal・General入口・Spectra.StageTwoとの
+合同ビルド成功（4129 jobs、警告0）。新規27宣言を直接公理監査し標準3公理以内。
+新規監査累計5038。新規sorry・axiom・引用・資源上限変更なし。
+
+U16a全体には恒等・結合の作用coherenceが残るため、全受入とはしない。
+次はそのcoherenceを検証し、U16a受入後にCriterionPerf*・CriterionDerived*の逆同値と
+実際の右随伴を比較してunit/counit可逆性・U16全体の受入へ進む。
+一般U12eとU15e分解版は中断を維持する。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Morita.AdjunctionDerivedChecks SerrePositivity.DifferentialGraded.Morita.AdjunctionKernelTelescopeChecks SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionCanonicalChecks SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.DifferentialGraded.Checks.U12eGeneralInventory SerrePositivity.Spectra.StageTwo
+lake env lean SerrePositivity/DifferentialGraded/Morita/AdjunctionDerivedChecks.lean
+```
