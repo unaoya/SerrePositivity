@@ -349,3 +349,26 @@ HEAD からの差分全体が自分の変更だけであることも確認する
   新規 sorry・axiom・引用なし。既存の他担当ファイルは編集していない。
 - U15e8 のコミット：`b2674f98`（自分の5ファイルのみと直後に確認）。
   U15e の完全忠実性と U17b 全体は引き続き未完。
+
+### U15e10：厳密余極限の擬同型保存と直交対象上の Hom 比較
+
+- `Quotient/DerivedComparisonColimitQuasiIso.lean`：厳密な複体図式の自然変換を関手圏内の
+  複体の射へ転置し、評価による擬同型判定と exact な colim 関手による保存を使う。
+  次数ごとの余極限で作った複体との比較同型とその自然性を証明し、指定された
+  `colimMap` 自身が擬同型になることを `complex_colimMap_quasiIso` で示した。
+- この補題は **厳密な複体図式と厳密自然変換** に対するもの。
+  Drinfeld §8.4 のホモトピー圏内だけの図式の主張を仮定・引用したものではない。
+- `Quotient/DerivedComparisonLocalHom.lean`：短完全列の第三項が acyclic なら第一射が
+  擬同型となることを長完全列から証明。全ての正の固定長層が acyclic なら、零段から各長さ段階への
+  射は擬同型となる。これらを厳密な ℕ 図式の自然変換にし、上記補題と長さ余極限同型により
+  `originalHomInclusion : Hom_D(x,y) ⟶ quotientHom ... x y` 自身の擬同型性を証明。
+- その仮定を、入る側 K-flat と全 Hom(b,y) の acyclic 性、または出る側 K-flat と全 Hom(x,b) の
+  acyclic 性から供給する `originalHomInclusion_quasiIso_into` / `_outOf` を公開。
+  実際の D の対象 x,y に対する補題であり、任意の x,y 上の無条件な Hom 擬同型とはしない。
+- 対象ビルド：`Checks.QuotientColimitQuasiIso` と `Checks.QuotientLocalHom` をそれぞれ
+  完全なモジュール名で指定して成功。後者は2323 jobs。主要9宣言の公理監査は標準3公理のみ。
+  project import 依存5・158ファイルに、禁止された dg 圏分解系への依存なし。
+  新規 sorry・axiom・引用なし。ルートおよび他担当の既存ファイルは編集していない。
+- U15e9 のコミット：`83b0a72a`（自分の3ファイルのみと直後に確認）。
+- 残部：この Hom 計算を tria の対象および Verdier 分母の比較へ延長し、実際の
+  `quotientVerdierComparison` の完全忠実性を証明すること。U17b の完備化比較も未完。
