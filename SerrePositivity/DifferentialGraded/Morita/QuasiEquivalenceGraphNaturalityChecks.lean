@@ -1,0 +1,15 @@
+module
+public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceGraphNaturality
+
+/-! # 自然なgraphモデルからの主導来・主Perf比較の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded.Morita
+#print axioms quasiEquivalenceGraphResolutionModel
+#print axioms quasiEquivalenceGraphDerivedModelIso
+#print axioms quasiEquivalenceGraphResolutionModel_naturality
+#print axioms quasiEquivalenceGraphComparisonOfModel
+#print axioms quasiEquivalenceGraphComparisonOfModel_precomp
+#print axioms quasiEquivalenceGraphComparisonOfModel_unique
+#print axioms quasiEquivalenceGraphComparisonOfModel_perfect
+#print axioms quasiEquivalenceGraphComparisonOfModel_isEquivalence
+#print axioms quasiEquivalenceGraphComparisonOnPerfect

@@ -130,6 +130,19 @@
 - `Morita.ScalarExtensionPerfectChecks` ビルド成功（3068 jobs、警告なし）。
   主要4宣言の公理監査は標準3公理のみ。
 
+## U16b.8：自然なgraphモデルからの比較の復元
+
+- `Morita/QuasiEquivalenceGraphNaturality.lean`：任意の射影解像度族Rについて、
+  通常graph作用による自然なモデルと既存導来延長の前合成との自然同型を構成した。
+  元の加群の射と選んだliftに関する計算自然性も明示した。
+- 指定関手Kが同じモデルを自然に計算するという自然同型eKを入力すると、
+  主局所化の前合成の完全忠実性でKと既存導来延長の自然同型を復元する。
+  前合成後の計算式・その式による比較の一意性・Perf保存とPerf上の比較も証明した。
+  Fが擬同値ならKの同値性は既存の同値から運び、再実装しない。
+- eKは必要な自然性を明示した入力であり、対象ごとの同型だけから作ったとは主張しない。
+- `Morita.QuasiEquivalenceGraphNaturalityChecks` ビルド成功（2803 jobs、警告なし）。
+  主要9宣言の公理監査は標準3公理のみ。
+
 ## 合同検証と公開入口（2026-10-17）
 
 - 新規10監査対象・公開入口・既存 `Checks.DGFunctorDerivedEquivalence` の12対象を
