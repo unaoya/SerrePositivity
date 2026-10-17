@@ -64,6 +64,7 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCompletionUn
 public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCompletedPerfection
 public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCompletionPairFlat
 public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicPerfectionPairFaithful
+public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicPerfectionQuotientFaithful
 
 /-!
 # André E1・E2 の集約

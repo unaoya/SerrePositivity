@@ -1079,6 +1079,14 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletedP
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletedPerfection_pairH0_faithfullyFlat
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletedPerfection_pair_completelyFaithfullyFlat
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.completelyFaithfullyFlat_principal_quotient_of_pair
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectedDeltaAlgebraQuotientBaseMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectedDeltaAlgebraQuotientBaseMap_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectedDeltaAlgebraQuotientBaseMap_completelyFaithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicPerfectionAlgebra
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicPerfection_generator_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletedPerfectionBaseMap_completelyFaithfullyFlat
+
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
@@ -1265,7 +1273,10 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCompletionPairFlat,
     `SerrePositivity.BhattScholze.Andre.CompletelyFaithfulPairReduction,
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCompletionPairFaithful,
-    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicPerfectionPairFaithful]
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicPerfectionPairFaithful,
+    `SerrePositivity.BhattScholze.Andre.RegularQuotientCompleteFaithful,
+    `SerrePositivity.BhattScholze.Andre.PerfectedDeltaAlgebraQuotientFaithful,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicPerfectionQuotientFaithful]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

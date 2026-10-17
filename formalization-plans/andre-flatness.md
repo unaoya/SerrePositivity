@@ -3984,3 +3984,98 @@ E1.58 の具体的な完全化後商・自然基底射との比較も次工程�
 （集約 4529 jobs）。新規 7 公開宣言の `assert_no_sorry` と専用監査は
 終了コード 0。生成宣言を含む 5642 宣言の推移的公理依存は標準 3 公理のみ。
 新規 7 公開宣言の正確な型を `#check` で確認した（終了コード 0）。
+
+
+### E1.61 正則生成元商への完全忠実平坦性の下降（2026-10-17）
+
+新規 `Andre/RegularQuotientCompleteFaithful.lean` の
+`completelyFaithfullyFlat_principal_quotient_of_pair` は可換環 A、自然数 p、d : A、
+A 代数 S に対し、正確に次を証明する。商の作用は
+`principalAdicQuotientAlgebra d S` を局所インスタンスとして固定する。
+
+```lean
+(p : ℕ) (d : A) (hd : IsSMulRegular A d)
+(S : Type u) [CommRing S] [Algebra A S]
+(hSd : IsSMulRegular S (algebraMap A S d))
+(hS : IsCompletelyFaithfullyFlat (Ideal.span {(p : A), d}) S) :
+IsCompletelyFaithfullyFlat (Ideal.span {(p : A ⧸ Ideal.span {d})})
+  (S ⧸ Ideal.span {algebraMap A S d})
+```
+
+正則主剰余の標準増大同型と通常商のスカラー拡大比較を合成する。
+元の二元剰余の離散性と H⁰ の忠実平坦性を二段階剰余へ移し、
+商上の p 完全忠実平坦性の定義へ戻す。p の素数性・完備性・Noether 性は不要。
+
+新規 `Andre/PerfectedDeltaAlgebraQuotientFaithful.lean` は
+P : OrientedPrism p A、E : DeltaStructure p B、j : A →+* B に対する一般判定。
+C=DeltaPerfection E、κ=deltaAlgebraPerfectionCoefficient E j、R=A/(P.generator)
+とする。任意の b : C と hb : κ P.generator = b に対し
+`perfectedDeltaAlgebraQuotientBaseMap` は
+
+```lean
+let := pdCompletionCommRing C p b
+R →+* (PDCompletionH0 C p b ⧸ Ideal.span {pdCompletionUnit C p b b})
+```
+
+を通常主商への降下射として構成する。
+`perfectedDeltaAlgebraQuotientBaseMap_mk` は元の A の任意の代表元を
+`Ideal.Quotient.mk _ (pdCompletionUnit C p b (κ r))` に送ることを証明する。
+
+`perfectedDeltaAlgebraQuotientBaseMap_completelyFaithfullyFlat` の結論は
+上記の環射を g_b、商を T_b と書くと
+
+```lean
+let := pdCompletionCommRing C p b
+let := g_b.toAlgebra
+IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) T_b
+```
+
+である。引数は P、E、j、P.deltaStructure.IsPerfect、P.deltaStructure.IsDeltaHom E j と、
+同じ j の実導来 (p,P.generator) 剰余の全非零次数消滅・H⁰ の忠実平坦性、b、hb。
+これらの実剰余入力の型は既存の `perfectPrismDeltaAlgebraPD_*` と同じ形を保つ。
+b の等式で標準生成元表記へ戻し、完全 δ 環の実完備化 prism の正則性と二元完全忠実平坦性を
+一般の主商下降判定へ渡す。自然な係数射の作用は標準主商代数作用と代表元上で一致する。
+
+新規 `Andre/PowerRootPrismMonicPerfectionQuotientFaithful.lean` は E1.60 と同じ
+W : OrientedPrism p A、hW、無限根多項式環 P と δ 構造 E、dP、分子族 a、
+raw 包 L と射 jL、実完備化 H、DH、c : A →+* H を使う。
+C=DeltaPerfection DH、x=deltaPerfectionOf DH 0 (pdCompletionUnit L p (jL dP) (jL dP))、
+H∞=PDCompletionH0 C p x、sC=pdCompletionUnit C p x、T∞=H∞/(sC x) とする。
+これは E1.58 の具体的な最終商と同じ対象。
+
+`powerRootPrismMonicPerfectionAlgebra` は標準射
+`(sC.comp (deltaAlgebraPerfectionCoefficient DH c)).toAlgebra : Algebra A H∞` を固定する。
+`powerRootPrismMonicPerfection_generator_regular` は同じ標準射による W.generator の像が
+H∞ 上正則であることを証明する。モニック性・正次数・prism 商の p 正則性はここには不要。
+
+`powerRootPrismMonicCompletedPerfectionBaseMap_completelyFaithfullyFlat` は
+E1.58 の自然な基底射 g=powerRootPrismMonicCompletedPerfectionBaseMap W hW f に対し
+正確に次を結論する。
+
+```lean
+let := pdCompletionCommRing L p (jL dP)
+let := pdCompletionCommRing C p x
+let := g.toAlgebra
+IsCompletelyFaithfullyFlat (Ideal.span {(p : A ⧸ W.ideal)}) T∞
+```
+
+引数は W、hW、および
+`hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal)`、
+f : Polynomial A、hf : f.Monic、hdeg : 0 < f.natDegree。
+E1.59–60 の実剰余入力を一般判定に渡し、一般の基底射と g の一致を
+`Ideal.Quotient.ringHom_ext` により元の A の係数上で証明する。
+商の代表元を文脈全体で置換する方法は巨大なホモロジーの定義展開を招くので採らない。
+係数射を引数にする完全忠実平坦性の述語に射の等式を適用し、依存する作用も移す。
+
+BS Rem 7.15（著者版 p.62）の一元根付き候補について、原典とは異なる
+Tor 底変換と完全 δ 化の剰余計算を用いる経路である。新しい引用・公理・sorry は追加しない。
+prism 商の p 正則性仮定を解消する原典経路、絶対 prismatic envelope の同定、
+元の f の Frobenius 引戻し pd 包の同定は引き続き未完了。
+この条件付き一元結果を任意族の原典経路の完成とは数えず、既存の承認済み hdeg を持つ
+任意族存在定理の型を変更しない。
+
+3 対象を含む対象ビルドと集約の `set -o pipefail; lake build` は終了コード 0
+（集約 4532 jobs）。新規 7 公開宣言の `assert_no_sorry` と専用監査は
+終了コード 0。生成宣言を含む 5739 宣言の推移的公理依存は標準 3 公理のみ。
+新規 7 公開宣言の正確な型を `#check` で確認した（終了コード 0）。
+一時的な診断設定と拡大した heartbeat 上限は保存コードから全て除いた。
