@@ -300,6 +300,16 @@
 - `lake build SerrePositivity.DifferentialGraded.Endomorphism.ChecksGradedSplitImage` 成功。
   新規14主要宣言の公理は標準3公理のみ。
 
+## U14b.5：短完全列の比較と全Hom比較の三角閉性（2026-10-17）
+
+- `ShortExactComparison.lean`：複体の短完全列の間の射について、両端が擬同型なら中央も擬同型。
+  前後のconnecting morphismを含む5項のHomology列を構成し、Mathlibの五項補題を適用した。
+- `HomComparisonCone.lean`：全次数分裂のHom短完全列の間に、dg関手の全Hom写像を成分とする
+  射を構成。分裂のdg像にも既存のHom短完全性を適用し、再構成比較のcone閉性を証明。
+- K(D)の全distinguished triangleへ同型で運び、全Hom比較成立対象の性質が三角部分圏である
+  ことを証明。retract閉性と合わせ、指定生成対象を含むthickな性質を得た。
+- `ChecksHomComparisonCone` 対象ビルド成功。新規9主要宣言の公理は標準3公理のみ。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
