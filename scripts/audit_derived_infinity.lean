@@ -50,6 +50,20 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.derivedInfinityCategoryEdgeEquiv
 #print axioms SerrePositivity.InfinityCategories.derivedInfinityCategoryTriangleEquiv
 
+#print axioms SerrePositivity.InfinityCategories.complexSemifree_of_iso
+#print axioms SerrePositivity.InfinityCategories.complexSemifree_zero
+#print axioms SerrePositivity.InfinityCategories.complexSemifree_sphere
+#print axioms SerrePositivity.InfinityCategories.complexSemifree_shift
+#print axioms SerrePositivity.InfinityCategories.semifreeHomotopyObject
+#print axioms SerrePositivity.InfinityCategories.semifreeShiftObject
+#print axioms SerrePositivity.InfinityCategories.semifreeShiftObjectIso
+#print axioms SerrePositivity.InfinityCategories.semifreeShift
+#print axioms SerrePositivity.InfinityCategories.semifreeShiftComparisonIso
+#print axioms SerrePositivity.InfinityCategories.semifreeHomotopyHasShift
+#print axioms SerrePositivity.InfinityCategories.semifreeHomotopyComparisonCommShift
+#print axioms SerrePositivity.InfinityCategories.semifreeDerivedComparisonCommShift
+#print axioms SerrePositivity.InfinityCategories.semifreeDerivedEquivalenceCommShift
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -59,7 +73,9 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.SemifreeResolution,
     `SerrePositivity.InfinityCategories.Derived.SemifreeSubcategory,
     `SerrePositivity.InfinityCategories.Derived.DerivedComparison,
-    `SerrePositivity.InfinityCategories.Derived.InfinityCategory]
+    `SerrePositivity.InfinityCategories.Derived.InfinityCategory,
+    `SerrePositivity.InfinityCategories.Derived.SemifreeClosure,
+    `SerrePositivity.InfinityCategories.Derived.DerivedComparisonShift]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

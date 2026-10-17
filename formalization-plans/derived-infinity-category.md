@@ -254,3 +254,65 @@ derivedInfinityCategoryTriangleEquiv (S : Type u) [CommRing S] :
 公理監査は公開27宣言と、生成補題を含む6モジュール47宣言で標準3公理のみ。
 D1 の定義・低次特徴づけは完了。quasicategory instance は N2 完了記録待ちで未実装。
 D2f・D2h は未完了、D2i は任意・未着手。D3 は別途指示待ち。
+
+### D2f・D2h 途中／依存先の並行変更による停止（2026-10-17）
+
+未完了。`Derived/SemifreeClosure.lean` に同型・零・sphere・整数シフトの閉性を実装し、
+`Derived/DerivedComparisonShift.lean` に元の複体のシフトによる H⁰ のシフトと、
+`semifreeDerivedEquivalence` の順関手の `CommShift ℤ` を実装した。
+`set -o pipefail; lake build SerrePositivity.InfinityCategories.Derived.DerivedComparisonShift`
+は終了コード 0（2174 jobs）。ただし保存単位の公理監査は未実施なので完了扱いしない。
+
+続く `set -o pipefail; lake build SerrePositivity.InfinityCategories.Derived` が終了コード 1。
+並行変更中の `InfinityCategories/DGNerve/Algebra.lean:116:8` で
+`typeclass instance problem is stuck: SMulCommClass ?m.45 ?m.46 ?m.47`。
+ビルドと `&&` でつないだ公理監査は起動されなかった。
+指示に従い依存先には手を加えず、import の迂回も作らず停止した。
+新規2ファイル、集約入口・Checks・監査スクリプトの変更は未コミットで保持。
+D1 の保存済み成果（`f67411c3`）とは区別する。
+
+未完了：D2f の集約ビルド・公理監査・保存、D2h の余積と任意の射の cone の閉性、
+D2h 全体の監査・保存。D2i は未着手。D1 の quasicategory は N2 完了記録待ち。
+依存先が復旧した後は同じ集約ビルドと監査を再実行して続ける。
+
+### D2f 完了・D2h のシフトまで（2026-10-17）
+
+依存先の復旧を集約ビルドで確認し、監査を再実行して成功した。
+以下は namespace `SerrePositivity.InfinityCategories`。共通前提は
+`(S : Type u) [CommRing S]`。表示用に `H := DifferentialGraded.HomotopyCategory S (Semifree S)`、
+`C := semifreeHomotopyComparison S` と略記する。
+公開宣言の正確な型：
+
+```lean
+complexSemifree_of_iso (S : Type u) [CommRing S] {P Q : Complex S}
+  (e : P ≅ Q) (hP : complexSemifree S P) : complexSemifree S Q
+complexSemifree_zero (S : Type u) [CommRing S] : complexSemifree S (0 : Complex S)
+complexSemifree_sphere (S : Type u) [CommRing S] (n : ℤ) : complexSemifree S (complexSphere S n)
+complexSemifree_shift (S : Type u) [CommRing S] {P : Complex S}
+  (hP : complexSemifree S P) (s : ℤ) : complexSemifree S (P⟦s⟧)
+semifreeHomotopyObject (S : Type u) [CommRing S] (X : H) : Semifree S
+semifreeShiftObject (S : Type u) [CommRing S] (s : ℤ) (X : H) : H
+semifreeShiftObjectIso (S : Type u) [CommRing S] (s : ℤ) (X : H) :
+  C.obj (semifreeShiftObject S s X) ≅ (C.obj X)⟦s⟧
+semifreeShift (S : Type u) [CommRing S] (s : ℤ) : H ⥤ H
+semifreeShiftComparisonIso (S : Type u) [CommRing S] (s : ℤ) :
+  semifreeShift S s ⋙ C ≅ C ⋙ shiftFunctor (_root_.HomotopyCategory (ModuleCat S) (.up ℤ)) s
+semifreeHomotopyHasShift (S : Type u) [CommRing S] : HasShift H ℤ
+semifreeHomotopyComparisonCommShift (S : Type u) [CommRing S] : C.CommShift ℤ
+semifreeDerivedComparisonCommShift (S : Type u) [CommRing S]
+  [HasDerivedCategory.{w} (ModuleCat.{u} S)] : (semifreeDerivedComparison S).CommShift ℤ
+semifreeDerivedEquivalenceCommShift (S : Type u) [CommRing S]
+  [HasDerivedCategory.{w} (ModuleCat.{u} S)] : (semifreeDerivedEquivalence S).functor.CommShift ℤ
+```
+
+零・sphere は定数 filtration、シフトは段・商・次数付き分裂をシフトして構成した。
+H⁰ のシフトは対象として元の複体を実際にシフトし、通常のホモトピー圏のシフトを
+充満忠実比較で引き戻して零・加法の整合性を付けた。`Qh` と合成して D2f を得る。
+Checks に任意環および整数環での標準導来圏に対する `CommShift ℤ` の具体化を追加した。
+
+`set -o pipefail; lake build SerrePositivity.InfinityCategories.Derived` は終了コード 0（3581 jobs）。
+`set -o pipefail; lake env lean scripts/audit_derived_infinity.lean` は終了コード 0。
+公開40宣言と生成補題を含む8モジュール120宣言の公理は標準3公理のみ。
+D2f は完了。D2h は同型・零・sphere・シフトのみ完了で、全体の完成とは数えない。
+未完了：D2h の余積・任意の射の cone。D2i は任意・未着手。
+D1 の quasicategory は N2 完了記録待ち、D3 は別途指示待ち。

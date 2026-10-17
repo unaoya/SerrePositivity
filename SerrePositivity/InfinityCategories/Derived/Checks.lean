@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DerivedComparison
+public import SerrePositivity.InfinityCategories.Derived.DerivedComparisonShift
 
 /-! # 標準導来圏での semifree 比較の具体化
 
@@ -33,5 +34,10 @@ example (S : Type u) [CommRing S] :
 example (S : Type u) [CommRing S] :
     (semifreeDerivedEquivalence S).inverse ⋙ (semifreeDerivedEquivalence S).functor ≅ 𝟭 _ :=
   (semifreeDerivedEquivalence S).counitIso
+
+example (S : Type u) [CommRing S] :
+    (semifreeDerivedEquivalence S).functor.CommShift ℤ := inferInstance
+
+example : (semifreeDerivedEquivalence ℤ).functor.CommShift ℤ := inferInstance
 
 end SerrePositivity.InfinityCategories
