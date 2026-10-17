@@ -11067,6 +11067,341 @@ instance fullInclusion_mono : Mono (dgNerve.map (dgFullSubcategoryInclusion A D 
 N7d 完了。N7a–N7c も完了済み。未完了の必須項目は N7e。N7f は任意項目。
 今回の標準四角形の制限を、任意の引き戻しから標準 fiber への比較の完成とは数えない。
 
+
+
+### N7e：任意の引き戻しから標準 fiber への比較（N7 必須項目完了、2026-10-18）
+
+任意の複体 dg nerve の四角形 F から、右上二辺の三複体・二射を抽出し、
+その標準 fiber の cospan と元の cospan の厳密な一致を導出した。
+したがって最終定理には図式一致などの追加仮定はない。
+
+主要な定義と型は次のとおり。
+
+```lean
+squareStandardFiber F : Complex A
+squareFiberComparison F : (pullbackCone F).vertex.obj 0 ⟶ squareStandardFiber F
+squareFiberComparison_nerve_isIso F (hF : IsPullbackSquare F) :
+  IsIso (SSet.Truncated.HomotopyCategory₂.homMk (squareFiberComparisonEdge F))
+squareFiberComparison_H0_isIso F (hF : IsPullbackSquare F) :
+  IsIso ((toHomotopy A (Complex A)).map (edgeClosed (squareFiberComparisonEdge F)))
+squareFiberComparison_homotopyEquivalence F (hF : IsPullbackSquare F) :
+  HomologicalComplex.homotopyEquivalences (ModuleCat A) (.up ℤ) (squareFiberComparison F)
+squareFiberComparison_quasiIso F (hF : IsPullbackSquare F) : QuasiIso (squareFiberComparison F)
+```
+
+F の型は `(Δ[1] ⊗ Δ[1] : SSet.{u+1}) ⟶ dgNerve A (Complex A)`。
+環 A は任意の可換環、複体は非有界。追加の整合性・閉性・擬同型性の仮定はない。
+誘導射は標準 fiber 錐の終対象性による slice の比較辺を選び、頂点への射影と N3 の閉零射で定義した。
+比較元の極限性は射の構成には不要で、同型・ホモトピー同値・擬同型の証明でのみ使用する。
+
+以下は今回の新規公開 37 宣言の正確な型。
+共通前提は `{A : Type u} [CommRing A]`、複体 B,C,D が現れるときは `{B C D : Complex A}`。
+TerminalEdgeIso は任意の quasicategory、RebaseCone は任意の単体集合と図式についての補題。
+
+`SerrePositivity.InfinityCategories.DGNerve.terminalEdgeIso`：
+
+```lean
+def terminalEdgeIso {X : SSet.{u}} [SSet.Quasicategory X] {x y : X _⦋0⦌}
+    (hx : IsTerminalVertex x) (hy : IsTerminalVertex y)
+    (f : Edge (X := (SSet.truncation 2).obj X) x y) :
+    HomotopyCategory₂.mk (A := (SSet.truncation 2).obj X) x ≅ HomotopyCategory₂.mk y
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.isIso_homMk_of_terminal`：
+
+```lean
+lemma isIso_homMk_of_terminal {X : SSet.{u}} [SSet.Quasicategory X] {x y : X _⦋0⦌}
+    (hx : IsTerminalVertex x) (hy : IsTerminalVertex y)
+    (f : Edge (X := (SSet.truncation 2).obj X) x y) :
+    IsIso (HomotopyCategory₂.homMk f)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.edgeTransportTarget`：
+
+```lean
+def edgeTransportTarget {X : SSet.{u}} {x y z : X _⦋0⦌} (h : y = z)
+    (f : Edge (X := (SSet.truncation 2).obj X) x y) :
+    Edge (X := (SSet.truncation 2).obj X) x z
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.isIso_homMk_edgeTransportTarget`：
+
+```lean
+lemma isIso_homMk_edgeTransportTarget {X : SSet.{u}} [SSet.Quasicategory X]
+    {x y z : X _⦋0⦌} (h : y = z) (f : Edge (X := (SSet.truncation 2).obj X) x y)
+    (hf : IsIso (HomotopyCategory₂.homMk f)) :
+    IsIso (HomotopyCategory₂.homMk (edgeTransportTarget h f))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.edgeChainMap`：
+
+```lean
+def edgeChainMap {x y : (dgNerve A (Complex A)) _⦋0⦌}
+    (f : SSet.Truncated.Edge (X := twoTruncation A (Complex A)) x y) : x.obj 0 ⟶ y.obj 0
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.edgeChainMap_quotient`：
+
+```lean
+lemma edgeChainMap_quotient {x y : (dgNerve A (Complex A)) _⦋0⦌}
+    (f : SSet.Truncated.Edge (X := twoTruncation A (Complex A)) x y) :
+    (_root_.HomotopyCategory.quotient (ModuleCat.{u} A) (.up ℤ)).map (edgeChainMap f) =
+      (complexHomotopyComparison A).map ((toH0 A (Complex A)).map
+        (SSet.Truncated.HomotopyCategory₂.homMk f))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.edgeChainMap_homotopyEquivalence`：
+
+```lean
+lemma edgeChainMap_homotopyEquivalence {x y : (dgNerve A (Complex A)) _⦋0⦌}
+    (f : SSet.Truncated.Edge (X := twoTruncation A (Complex A)) x y)
+    (hf : IsIso (SSet.Truncated.HomotopyCategory₂.homMk f)) :
+    HomologicalComplex.homotopyEquivalences (ModuleCat.{u} A) (.up ℤ) (edgeChainMap f)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberConeComparisonSliceEdge`：
+
+```lean
+def fiberConeComparisonSliceEdge (g : B ⟶ D) (h : C ⟶ D)
+    (c : JoinCone (pullbackCospan (standardFiberSquare g h))) :
+    SSet.Truncated.Edge (X := (SSet.truncation 2).obj
+      (sliceOver (pullbackCospan (standardFiberSquare g h)))) c (standardFiberCone g h)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberConeComparisonEdge`：
+
+```lean
+def fiberConeComparisonEdge (g : B ⟶ D) (h : C ⟶ D)
+    (c : JoinCone (pullbackCospan (standardFiberSquare g h))) :
+    SSet.Truncated.Edge (X := twoTruncation A (Complex A))
+      c.vertex (standardFiberCone g h).vertex
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.standardFiberCone_vertex_obj`：
+
+```lean
+lemma standardFiberCone_vertex_obj (g : B ⟶ D) (h : C ⟶ D) :
+    ((standardFiberCone g h).vertex).obj 0 = pullbackFiber g h
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberConeComparisonCanonicalEdge`：
+
+```lean
+def fiberConeComparisonCanonicalEdge (g : B ⟶ D) (h : C ⟶ D)
+    (c : JoinCone (pullbackCospan (standardFiberSquare g h))) :
+    SSet.Truncated.Edge (X := twoTruncation A (Complex A))
+      c.vertex (Simplex.vertex (pullbackFiber g h))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberConeComparison`：
+
+```lean
+def fiberConeComparison (g : B ⟶ D) (h : C ⟶ D)
+    (c : JoinCone (pullbackCospan (standardFiberSquare g h))) :
+    c.vertex.obj 0 ⟶ pullbackFiber g h
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberConeComparisonEdge_isIso`：
+
+```lean
+lemma fiberConeComparisonEdge_isIso (g : B ⟶ D) (h : C ⟶ D)
+    (c : JoinCone (pullbackCospan (standardFiberSquare g h))) (hc : IsLimitCone c) :
+    IsIso (SSet.Truncated.HomotopyCategory₂.homMk (fiberConeComparisonEdge g h c))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberConeComparisonCanonicalEdge_isIso`：
+
+```lean
+lemma fiberConeComparisonCanonicalEdge_isIso (g : B ⟶ D) (h : C ⟶ D)
+    (c : JoinCone (pullbackCospan (standardFiberSquare g h))) (hc : IsLimitCone c) :
+    IsIso (SSet.Truncated.HomotopyCategory₂.homMk
+      (fiberConeComparisonCanonicalEdge g h c))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberConeComparisonEdge_H0_isIso`：
+
+```lean
+lemma fiberConeComparisonEdge_H0_isIso (g : B ⟶ D) (h : C ⟶ D)
+    (c : JoinCone (pullbackCospan (standardFiberSquare g h))) (hc : IsLimitCone c) :
+    IsIso ((toHomotopy A (Complex A)).map (edgeClosed (fiberConeComparisonCanonicalEdge g h c)))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberConeComparison_homotopyEquivalence`：
+
+```lean
+lemma fiberConeComparison_homotopyEquivalence (g : B ⟶ D) (h : C ⟶ D)
+    (c : JoinCone (pullbackCospan (standardFiberSquare g h))) (hc : IsLimitCone c) :
+    HomologicalComplex.homotopyEquivalences (ModuleCat.{u} A) (.up ℤ)
+      (fiberConeComparison g h c)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberConeComparison_quasiIso`：
+
+```lean
+lemma fiberConeComparison_quasiIso (g : B ⟶ D) (h : C ⟶ D)
+    (c : JoinCone (pullbackCospan (standardFiberSquare g h))) (hc : IsLimitCone c) :
+    QuasiIso (fiberConeComparison g h c)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.simplexChainMap`：
+
+```lean
+def simplexChainMap (s : Simplex A (Complex A) 1) : s.obj 0 ⟶ s.obj 1
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.simplexChainMap_cochain`：
+
+```lean
+lemma simplexChainMap_cochain (s : Simplex A (Complex A) 1) :
+    Cochain.ofHom (simplexChainMap s) = s.edgeHom 0 1 (by decide)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.simplexAsEdge`：
+
+```lean
+def simplexAsEdge (s : Simplex A (Complex A) 1) :
+    SSet.Truncated.Edge (X := twoTruncation A (Complex A))
+      (Simplex.vertex (s.obj 0)) (Simplex.vertex (s.obj 1))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.complexEdge_simplexChainMap`：
+
+```lean
+lemma complexEdge_simplexChainMap (s : Simplex A (Complex A) 1) :
+    (complexEdge (simplexChainMap s)).edge = s
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.complexEdge_comp_eqToHom`：
+
+```lean
+lemma complexEdge_comp_eqToHom {X Y Z : Complex A} (f : X ⟶ Y) (h : Y = Z) :
+    (complexEdge (f ≫ eqToHom h)).edge = (complexEdge f).edge
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.ComplexCospanPresentation`：
+
+```lean
+structure ComplexCospanPresentation
+    (p : (SSet.horn 2 2 : SSet.{u + 1}) ⟶ dgNerve A (Complex A))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.presentComplexCospan`：
+
+```lean
+def presentComplexCospan
+    (p : (SSet.horn 2 2 : SSet.{u + 1}) ⟶ dgNerve A (Complex A)) :
+    ComplexCospanPresentation p
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.rebaseCone`：
+
+```lean
+def rebaseCone {K X : SSet.{u}} {p q : K ⟶ X} (h : p = q) (c : JoinCone q) : JoinCone p
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.rebaseCone_vertex`：
+
+```lean
+lemma rebaseCone_vertex {K X : SSet.{u}} {p q : K ⟶ X} (h : p = q) (c : JoinCone q) :
+    (rebaseCone h c).vertex = c.vertex
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.rebaseCone_isLimit`：
+
+```lean
+lemma rebaseCone_isLimit {K X : SSet.{u}} {p q : K ⟶ X} (h : p = q) (c : JoinCone q)
+    (hc : IsLimitCone c) : IsLimitCone (rebaseCone h c)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.squareCospanPresentation`：
+
+```lean
+abbrev squareCospanPresentation
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ dgNerve A (Complex A))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.squareStandardFiber`：
+
+```lean
+def squareStandardFiber
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ dgNerve A (Complex A)) : Complex A
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.squareFiberComparisonCone`：
+
+```lean
+def squareFiberComparisonCone
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ dgNerve A (Complex A)) :
+    JoinCone (pullbackCospan (standardFiberSquare (squareCospanPresentation F).leftMap
+      (squareCospanPresentation F).rightMap))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.squareFiberComparisonEdge`：
+
+```lean
+def squareFiberComparisonEdge
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ dgNerve A (Complex A)) :
+    SSet.Truncated.Edge (X := twoTruncation A (Complex A))
+      (pullbackCone F).vertex (Simplex.vertex (squareStandardFiber F))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.squareFiberComparison`：
+
+```lean
+def squareFiberComparison
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ dgNerve A (Complex A)) :
+    (pullbackCone F).vertex.obj 0 ⟶ squareStandardFiber F
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.squareFiberComparisonCone_isLimit`：
+
+```lean
+lemma squareFiberComparisonCone_isLimit
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ dgNerve A (Complex A)) (hF : IsPullbackSquare F) :
+    IsLimitCone (squareFiberComparisonCone F)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.squareFiberComparison_nerve_isIso`：
+
+```lean
+lemma squareFiberComparison_nerve_isIso
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ dgNerve A (Complex A)) (hF : IsPullbackSquare F) :
+    IsIso (SSet.Truncated.HomotopyCategory₂.homMk (squareFiberComparisonEdge F))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.squareFiberComparison_H0_isIso`：
+
+```lean
+lemma squareFiberComparison_H0_isIso
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ dgNerve A (Complex A)) (hF : IsPullbackSquare F) :
+    IsIso ((toHomotopy A (Complex A)).map (edgeClosed (squareFiberComparisonEdge F)))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.squareFiberComparison_homotopyEquivalence`：
+
+```lean
+lemma squareFiberComparison_homotopyEquivalence
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ dgNerve A (Complex A)) (hF : IsPullbackSquare F) :
+    HomologicalComplex.homotopyEquivalences (ModuleCat.{u} A) (.up ℤ) (squareFiberComparison F)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.squareFiberComparison_quasiIso`：
+
+```lean
+lemma squareFiberComparison_quasiIso
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ dgNerve A (Complex A)) (hF : IsPullbackSquare F) :
+    QuasiIso (squareFiberComparison F)
+```
+
+検証：上記七対象と自分の集約 `SerrePositivity.InfinityCategories.DGNerve` を
+`set -e; set -o pipefail` 下でビルドし終了コード 0。
+公開 1081 宣言の明示型と基礎 dg 五宣言を含む 1086 件の公理監査を確認。標準三公理のみ。
+
+N7a–N7e は完了し、N7 の必須項目に残りなし。
+N7f の cofiber の双対は任意項目として未実装。次の作業はユーザー追加指示の計画分割と γ1。
+N7 の証明ではモデル構造・Joyal の定理・coherent nerve を使っていない。
+γ1 は別の系列として coherent nerve を扱う新しい明示指示に従う。
+
 ## 6. 次のマイルストーン D（本計画の範囲外）
 
 - Semifree(S) を `DGFullSubcategory`（`moduleSemifree` または一点 dg 圏上の複体版）として置き、

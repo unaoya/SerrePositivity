@@ -2144,6 +2144,82 @@ noncomputable section
 #print axioms SerrePositivity.InfinityCategories.DGNerve.fullInclusion_mono
 #check @SerrePositivity.InfinityCategories.DGNerve.fullInclusion_mono
 
+-- N7e: 任意の引き戻しから標準 fiber への比較の同型・擬同型性。
+#print axioms SerrePositivity.InfinityCategories.DGNerve.terminalEdgeIso
+#check @SerrePositivity.InfinityCategories.DGNerve.terminalEdgeIso
+#print axioms SerrePositivity.InfinityCategories.DGNerve.isIso_homMk_of_terminal
+#check @SerrePositivity.InfinityCategories.DGNerve.isIso_homMk_of_terminal
+#print axioms SerrePositivity.InfinityCategories.DGNerve.edgeTransportTarget
+#check @SerrePositivity.InfinityCategories.DGNerve.edgeTransportTarget
+#print axioms SerrePositivity.InfinityCategories.DGNerve.isIso_homMk_edgeTransportTarget
+#check @SerrePositivity.InfinityCategories.DGNerve.isIso_homMk_edgeTransportTarget
+#print axioms SerrePositivity.InfinityCategories.DGNerve.edgeChainMap
+#check @SerrePositivity.InfinityCategories.DGNerve.edgeChainMap
+#print axioms SerrePositivity.InfinityCategories.DGNerve.edgeChainMap_quotient
+#check @SerrePositivity.InfinityCategories.DGNerve.edgeChainMap_quotient
+#print axioms SerrePositivity.InfinityCategories.DGNerve.edgeChainMap_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.DGNerve.edgeChainMap_homotopyEquivalence
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberConeComparisonSliceEdge
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberConeComparisonSliceEdge
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberConeComparisonEdge
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberConeComparisonEdge
+#print axioms SerrePositivity.InfinityCategories.DGNerve.standardFiberCone_vertex_obj
+#check @SerrePositivity.InfinityCategories.DGNerve.standardFiberCone_vertex_obj
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberConeComparisonCanonicalEdge
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberConeComparisonCanonicalEdge
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberConeComparison
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberConeComparison
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberConeComparisonEdge_isIso
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberConeComparisonEdge_isIso
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberConeComparisonCanonicalEdge_isIso
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberConeComparisonCanonicalEdge_isIso
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberConeComparisonEdge_H0_isIso
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberConeComparisonEdge_H0_isIso
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberConeComparison_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberConeComparison_homotopyEquivalence
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberConeComparison_quasiIso
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberConeComparison_quasiIso
+#print axioms SerrePositivity.InfinityCategories.DGNerve.simplexChainMap
+#check @SerrePositivity.InfinityCategories.DGNerve.simplexChainMap
+#print axioms SerrePositivity.InfinityCategories.DGNerve.simplexChainMap_cochain
+#check @SerrePositivity.InfinityCategories.DGNerve.simplexChainMap_cochain
+#print axioms SerrePositivity.InfinityCategories.DGNerve.simplexAsEdge
+#check @SerrePositivity.InfinityCategories.DGNerve.simplexAsEdge
+#print axioms SerrePositivity.InfinityCategories.DGNerve.complexEdge_simplexChainMap
+#check @SerrePositivity.InfinityCategories.DGNerve.complexEdge_simplexChainMap
+#print axioms SerrePositivity.InfinityCategories.DGNerve.complexEdge_comp_eqToHom
+#check @SerrePositivity.InfinityCategories.DGNerve.complexEdge_comp_eqToHom
+#print axioms SerrePositivity.InfinityCategories.DGNerve.ComplexCospanPresentation
+#check @SerrePositivity.InfinityCategories.DGNerve.ComplexCospanPresentation
+#print axioms SerrePositivity.InfinityCategories.DGNerve.presentComplexCospan
+#check @SerrePositivity.InfinityCategories.DGNerve.presentComplexCospan
+#print axioms SerrePositivity.InfinityCategories.DGNerve.rebaseCone
+#check @SerrePositivity.InfinityCategories.DGNerve.rebaseCone
+#print axioms SerrePositivity.InfinityCategories.DGNerve.rebaseCone_vertex
+#check @SerrePositivity.InfinityCategories.DGNerve.rebaseCone_vertex
+#print axioms SerrePositivity.InfinityCategories.DGNerve.rebaseCone_isLimit
+#check @SerrePositivity.InfinityCategories.DGNerve.rebaseCone_isLimit
+#print axioms SerrePositivity.InfinityCategories.DGNerve.squareCospanPresentation
+#check @SerrePositivity.InfinityCategories.DGNerve.squareCospanPresentation
+#print axioms SerrePositivity.InfinityCategories.DGNerve.squareStandardFiber
+#check @SerrePositivity.InfinityCategories.DGNerve.squareStandardFiber
+#print axioms SerrePositivity.InfinityCategories.DGNerve.squareFiberComparisonCone
+#check @SerrePositivity.InfinityCategories.DGNerve.squareFiberComparisonCone
+#print axioms SerrePositivity.InfinityCategories.DGNerve.squareFiberComparisonEdge
+#check @SerrePositivity.InfinityCategories.DGNerve.squareFiberComparisonEdge
+#print axioms SerrePositivity.InfinityCategories.DGNerve.squareFiberComparison
+#check @SerrePositivity.InfinityCategories.DGNerve.squareFiberComparison
+#print axioms SerrePositivity.InfinityCategories.DGNerve.squareFiberComparisonCone_isLimit
+#check @SerrePositivity.InfinityCategories.DGNerve.squareFiberComparisonCone_isLimit
+#print axioms SerrePositivity.InfinityCategories.DGNerve.squareFiberComparison_nerve_isIso
+#check @SerrePositivity.InfinityCategories.DGNerve.squareFiberComparison_nerve_isIso
+#print axioms SerrePositivity.InfinityCategories.DGNerve.squareFiberComparison_H0_isIso
+#check @SerrePositivity.InfinityCategories.DGNerve.squareFiberComparison_H0_isIso
+#print axioms SerrePositivity.InfinityCategories.DGNerve.squareFiberComparison_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.DGNerve.squareFiberComparison_homotopyEquivalence
+#print axioms SerrePositivity.InfinityCategories.DGNerve.squareFiberComparison_quasiIso
+#check @SerrePositivity.InfinityCategories.DGNerve.squareFiberComparison_quasiIso
+
 section
 universe u v
 variable (A : Type u) [CommRing A] (D : Type v)

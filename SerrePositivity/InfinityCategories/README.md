@@ -1089,3 +1089,33 @@ D2h 完了（§5、2026-10-18）と D2h′ 完了の記録を確認した。
 
 N7a–N7d は完了。残る必須項目は N7e（任意の引き戻しの頂点と標準 fiber の比較・擬同型性）。
 N7f は任意項目。新規公開 28 宣言の正確な型と前提は計画 §5 の N7d に記録する。
+
+
+## N7.17：任意の引き戻しの頂点から標準 fiber への誘導射（N7e・N7 必須項目完了、2026-10-18）
+
+任意の `F : (Δ[1] ⊗ Δ[1] : SSet.{u+1}) ⟶ dgNerve A (Complex A)` に対し、
+`presentComplexCospan (pullbackCospan F)` が右上二辺から三複体・二射を抽出する。
+共通終域の等式はホーンの二辺の共通頂点から導出し、
+その二射の標準 fiber 四角形の cospan が元の cospan と厳密に等しいことも証明した。
+図式の一致を外部の追加仮定として要求しない。
+
+`squareStandardFiber F` はこの二射の差の mapping cone の −1 シフト。
+`squareFiberComparisonEdge F` は元の錐から標準 fiber 錐への slice の比較辺を射影し、
+終点を実際の標準 fiber に同定した辺である。
+`squareFiberComparison F : (pullbackCone F).vertex.obj 0 ⟶ squareStandardFiber F` はその辺の chain map。
+比較辺は標準錐の終対象性から選択するので、比較元の極限性は構成には不要。
+これは極限の普遍性による誘導射の選択であり、孤立した二対象間の任意の射を選んでいるのではない。
+
+前提が `hF : IsPullbackSquare F` のとき、
+`squareFiberComparison_nerve_isIso` は同じ比較辺の類が nerveHomotopyCategory で同型であること、
+`squareFiberComparison_H0_isIso` はその閉零射の H⁰ の類が同型であること、
+`squareFiberComparison_homotopyEquivalence` は同じ chain map がホモトピー同値であること、
+`squareFiberComparison_quasiIso` はその擬同型性を与える。
+A は任意の可換環で複体は非有界。整合式・閉性・図式一致などの追加前提はない。
+
+証明は、終対象間の指定された辺に A2 の片側逆射を二回与えて同型にし、
+N3 の H⁰ 比較と既存の complexHomotopyComparison、Mathlib のホモトピー商の同型の特徴づけを通す。
+標準 cospan 上の任意の極限錐に対する同じ比較も `FiberConeComparison` に公開した。
+
+N7a–N7e は完了。N7f の cofiber の双対は任意項目として未実装。
+新規公開 37 宣言の正確な型と全前提は計画の実施記録（分割後は archive/dg-nerve-log.md）に記録する。
