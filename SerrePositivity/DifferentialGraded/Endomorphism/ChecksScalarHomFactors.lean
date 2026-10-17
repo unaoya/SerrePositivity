@@ -1,0 +1,22 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarHomFactors
+
+/-! # 係数変更と実際のHom因子比較の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+
+#print axioms endomorphismScalarForward_one
+#print axioms endomorphismBaseChangeHomRight
+#print axioms endomorphismScalarHomRight_eq
+#print axioms endomorphismBaseChangeHomLeft
+#print axioms endomorphismScalarHomLeft_eq
+#print axioms endomorphismBaseChangeInclusion_eq
+#print axioms endomorphismBaseChangeHomRight_actual
+#print axioms endomorphismBaseChangeHomLeft_actual
+#print axioms endomorphismScalarHomRightIso
+#print axioms endomorphismScalarHomLeftIso
+#print axioms endomorphismScalarHomRightIso_hom_eval
+#print axioms endomorphismScalarHomLeftIso_hom_eval
+#print axioms balancedTensorEqIso_ι
+#print axioms endomorphismScalarHomTensorIso
+#print axioms endomorphismScalarHomTensorIso_ι
