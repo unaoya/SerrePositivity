@@ -1,0 +1,14 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.PerfectEquivalence
+
+/-! # 主Perf同値とenhancement準同値の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+
+#print axioms perfectEndomorphismEssentialImageIsTriangulated
+#print axioms perfectEndomorphismEssentialImage_containsPerfect
+#print axioms perfectEndomorphismHomToPerfectEssSurj
+#print axioms perfectEndomorphismHomToPerfectIsEquivalence
+#print axioms perfectEndomorphismEquivalence
+#print axioms perfectEndomorphismDGHomotopyEssSurj
+#print axioms perfectEndomorphismDG_quasiEquivalence

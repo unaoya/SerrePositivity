@@ -405,6 +405,19 @@
   dg像の同型と三角形の同型延長を使って第三対象が本質的像に入ることを証明した。
 - `ChecksEssentialImageTriangles` 対象ビルド成功。新規3主要宣言の公理は標準3公理のみ。
 
+## U14b.15：主Perf同値とenhancement準同値（2026-10-17）
+
+- `PerfectEquivalence.lean`：本質的像の三角性・retract閉性と正則生成対象の包含から、
+  U13のPerfの最小thick性を適用し、全perfect対象が本質的像に入ることを証明。
+- 主導来HomのPerf制限の本質的全射性を構成し、完全忠実性と合わせて
+  `perfectEndomorphismEquivalence` を構成した。順関手は実際の主導来Homの制限である。
+- U13の同値との自然な正方形から、enhancement間のdg比較のH⁰本質的全射を別に証明し、
+  既に証明した全Hom擬同型と組み合わせて `perfectEndomorphismDG_quasiEquivalence` を得た。
+- `ChecksPerfectEquivalence` と更新した `ChecksCompatibility` の対象ビルド成功。
+  新規7主要宣言の公理は標準3公理のみ。DG-GEN/DG-MORは採用していない。
+- U14bの同値と準同値の数学的中心部分は証明済み。受入条件の整合的shift・三角性・
+  導来係数変更の図式は引き続き照合が必要である。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
@@ -413,7 +426,8 @@
   U13のenhancementへの制限・受入図式の最終照合が残る。
 - U14b：明示したthick生成仮定からenhancement上の全Hom擬同型は証明済み。
   Hom像のPerf保存と主導来HomのPerfへの制限は構成済み。
-  H⁰の本質的全射、Perf同値の組立てが残る。
+  H⁰の本質的全射、主Perf同値、enhancement準同値も構成済み。
+  受入条件の整合的shift・三角性・導来係数変更の図式が残る。
 - U14c：導来圏全体の比較にはcompact生成性が必要。
   無限生成集合の直和はcompactとは限らず、thick生成だけから全導来圏の比較は出さない。
   DG-GEN/DG-MORの採用が必要になったら採用せず停止・報告する。
