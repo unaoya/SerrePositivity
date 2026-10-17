@@ -13134,3 +13134,41 @@ dg-theory-morita-qe.mdは編集していない。
 lake build SerrePositivity.DifferentialGraded.Morita.CoherencePerfectChecks SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.Spectra.StageTwo
 lake env lean SerrePositivity/DifferentialGraded/Morita/CoherencePerfectChecks.lean
 ```
+
+
+### 17.276 U16の独立統合入口と全現行Checksの合同検証（2026-10-17）
+
+Morita/U16.leanを新規production入口として、AdjunctionPerfectInverse・CoherencePerfectAssociator・
+別担当QuasiEquivalenceの3入口を公開importした。共有ルートは変更しない。
+U16Checksは一般随伴・Morita逆関手比較・実際のPerf作用coherenceに加えて、
+既存の局所化係数変更増大・Perf正方形自然性・全導来同値・dg擬同値のChecksを同時importする。
+この入口の存在・ビルドは、未実装の係数変更図式や中心作用の証明を代用しない。
+
+検証時点のMorita/*Checks.lean全89入口とU12eLocal・U12eGeneralInventory・Spectra.StageTwoの
+計92対象を合同ビルドし成功（4271 jobs、警告・エラー0）。U16Checksから主作用・実際の随伴・
+単位／結合・Morita逆関手比較・Perf図式の主要13宣言を直接再監査し、すべて標準3公理以内。
+新しい数学的宣言を追加しておらず、新規監査累計5107を保持する。
+対象は次の手順で再現できる。後続で他担当がChecksを追加すれば対象数は増える。
+
+```python
+from pathlib import Path
+import subprocess
+paths = sorted(Path("SerrePositivity/DifferentialGraded/Morita").glob("*Checks.lean"))
+modules = [str(p.with_suffix("")).replace("/", ".") for p in paths]
+modules += ["SerrePositivity.DifferentialGraded.Checks.U12eLocal",
+            "SerrePositivity.DifferentialGraded.Checks.U12eGeneralInventory",
+            "SerrePositivity.Spectra.StageTwo"]
+subprocess.run(["lake", "build", *modules], check=True)
+subprocess.run(["lake", "env", "lean",
+    "SerrePositivity/DifferentialGraded/Morita/U16Checks.lean"], check=True)
+```
+
+**進行と残ゲート。** ユーザーの明示許可を得て「dg U14」に、§17.273〜275の完成APIと
+660ee832・bdc030cb・fb7a99a6・a17b756eを伝え、担当の係数変更3接続の継続を依頼した。
+同チャットはactive・最新turn inProgressで、Perf作用coherenceの完成を記録に反映し、
+既存増大・評価比較の型とモデル条件を確認して係数変更3接続を進める旨を確認した。
+単なるidle状態のまま完了を待つ記録ではない。他チャットの担当ファイルは引き続き編集しない。
+
+U16全体の受入には、局所化係数変更への正方形接続・U12f評価比較との成分同定・
+実際のkernel合成との係数変更図式の実装／監査と、中心作用の保留を含む§15.6の範囲照合を要する。
+現行の限定受入をU16d全体の受入へ読み替えない。U16aとU16c統合の受入は維持する。

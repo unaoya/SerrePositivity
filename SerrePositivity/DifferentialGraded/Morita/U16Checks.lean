@@ -1,0 +1,40 @@
+module
+public import SerrePositivity.DifferentialGraded.Morita.U16
+public import SerrePositivity.DifferentialGraded.Morita.U16aChecks
+public import SerrePositivity.DifferentialGraded.Morita.CriterionChecks
+public import SerrePositivity.DifferentialGraded.Morita.CoherencePerfectChecks
+public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelLocalizationAugmentationChecks
+public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelPerfectNaturalityChecks
+public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedEquivalenceChecks
+public import SerrePositivity.DifferentialGraded.Checks.DGFunctorDerivedEquivalence
+
+/-! # 現行U16の独立合同検証入口
+
+## 概要
+一般右随伴・Morita統合・Perf作用coherenceと、別担当の現行係数変更を同時に検証する。
+
+## 方針
+各担当の保存済みChecksを同時importし、実際の公開作用・随伴の統合成分を直接監査する。
+
+## 規約と注意
+未実装の係数変更図式や中心作用を入力公理で代用しない。U16全体の受入判定とは区別する。
+
+## 使われ方
+残接続の到着後も再利用する合同ビルド入口。共有ルートはimportしない。
+-/
+@[expose] public section
+open SerrePositivity.DifferentialGraded.Morita
+
+#print axioms kernelDerivedAdjunction
+#print axioms kernelCompositionIso_associator
+#print axioms kernelCompositionIso_leftUnit
+#print axioms kernelCompositionIso_rightUnit
+#print axioms kernelMoritaHomIsoInverse
+#print axioms kernelMoritaHomIsoInverse_unit
+#print axioms kernelMoritaHomIsoInverse_counit
+#print axioms kernelMoritaAdjunctionEquivalence
+#print axioms kernelMoritaPerfInverseIso
+#print axioms kernelMoritaPerfInverseIso_counit
+#print axioms perfectKernelCompositionIso_associator
+#print axioms perfectKernelCompositionIso_leftUnit
+#print axioms perfectKernelCompositionIso_rightUnit
