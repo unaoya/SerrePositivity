@@ -814,6 +814,19 @@
 - `ChecksEnhancementTensorTriangles` 対象ビルド成功。新規4主要宣言の公理は標準3公理のみ。
   既存APIの名前・型は変更していない。
 
+## U14b.43：実際の主Perf tensor・U12d・導来係数変更の接続（2026-10-17）
+
+- `PerfectScalarTensor.lean`：主Perfの実際のtensor制限・包含をU12d評価比較へ接続し、
+  導来係数変更後の自然同型を構成した。これは対象ごとの一致だけでなく全Perf射に自然である。
+- 各成分を、実際のPerf包含比較と既存のU12d導来tensor評価比較との合成として同定した。
+  指定加群代表と射影解像度の下で、受入済み非flat導来tensor係数変更同型へ接続した。
+- 計算条件は既存APIのとおり、選択したcoendのA-K-flat性と係数変更した解像度の相対K-flat性を
+  明示して受け取る。任意環のflat性やHomのlocal flatnessに置き換えていない。
+- `ChecksPerfectScalarTensor` 対象ビルド成功。新規3主要宣言の公理は標準3公理のみ。
+  U14a.40–U14b.43を公開入口へ接続した。既存APIの名前・型は変更していない。
+- これは実際の主Perf tensorから、係数変更した再構成作用bimoduleによるtensorへの比較である。
+  係数変更したEndを、実際の係数変更加群のEndと無条件に同一視する主張は含まない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
