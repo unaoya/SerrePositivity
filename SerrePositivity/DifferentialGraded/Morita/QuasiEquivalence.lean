@@ -23,6 +23,7 @@ public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionPerfect
 public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionPerfectSquares
 public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelTensor
 public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernel
+public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelFunctor
 public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelAction
 /-! # U16b・U16d担当の比較API入口
 既存の実際の導来延長・制限同値、主Perf・shift・三角性、U13/U14との比較、

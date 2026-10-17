@@ -317,6 +317,18 @@
   主要6宣言の公理監査は標準3公理のみ。既存のU16d.6および他担当のソースは変更していない。
 - 出力dg加群の係数変更と評価を交換する定理は、この比較からは無条件には得られない。
 
+## U16d.16：通常kernelの係数変更の射関手性
+
+- `Morita/ScalarExtensionKernelFunctor.lean`：実際の通常kernelの係数変更を、全Hom自然な
+  閉零kernel射に対する `scalarKernelMap` と通常圏の関手 `scalarKernelFunctor` へ拡張した。
+  左Dの全Hom自然性には既存の実際のHom係数変更比較の前後合成自然性を用いる。
+- 値の評価式と `scalarKernelLeftEvaluationIso` を証明した。後者は左評価と係数変更が
+  kernelの任意の閉零射にも自然に交換することを表す。
+- `Morita.ScalarExtensionKernelFunctorChecks` ビルド成功（2641 jobs、警告なし）。
+  主要4宣言の公理監査は標準3公理のみ。underived係数変更がkernel準同型を無条件に保つとは主張しない。
+- U16d.15のコミット `0b816652` の直後のHEADは別担当の `97b86690` に進んでいた。
+  自分のコミットIDのstatも照合し、担当4ファイルだけの収録と確認した。履歴変更は行っていない。
+
 ## 合同検証と公開入口（2026-10-17）
 
 - 新規10監査対象・公開入口・既存 `Checks.DGFunctorDerivedEquivalence` の12対象を
