@@ -35,6 +35,17 @@ def toInputs (j : J) : S j ⟶ (inputs S b).toSSet :=
 
 lemma toInputs_inclusion (j : J) : toInputs S b j ≫ (inputs S b).ι = b j := rfl
 
+lemma hom_ext {D : SSet.{v}} {f g : (inputs S b).toSSet ⟶ D}
+    (h : ∀ j, toInputs S b j ≫ f = toInputs S b j ≫ g) : f = g := by
+  apply NatTrans.ext
+  funext m
+  apply ConcreteCategory.hom_ext
+  intro x
+  obtain ⟨j, y, hy⟩ := (mem_inputs S b m x.val).mp x.property
+  have hx : (toInputs S b j).app m y = x := Subtype.ext hy
+  simpa only [NatTrans.comp_app, types_comp_apply, hx] using
+    types_congr_hom (congr_app (h j) m) y
+
 def witness (m : SimplexCategoryᵒᵖ) (x : ((inputs S b).toSSet).obj m) :
     Σ j, { y : (S j).obj m // (b j).app m y = x.val } :=
   let h := (mem_inputs S b m x.val).mp x.property

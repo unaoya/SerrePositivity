@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornTargetComparison
+
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedComparisonSquare
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornFilling

@@ -21,6 +21,51 @@ variable {E B : SSet.{v}} (p : E ⟶ B)
   (hp : (MorphismProperty.monomorphisms SSet.{v}).rlp p)
 
 include hp in
+lemma exists_vertical_homotopy {Y : SSet.{v}} (f g : Y ⟶ E)
+    (hfg : f ≫ p = g ≫ p) :
+    ∃ H : SSet.Homotopy f g,
+      H.h ≫ p = fst Y (SSet.stdSimplex.obj (SimplexCategory.mk 1)) ≫ f ≫ p := by
+  let b := LargeParameterHomotopy.boundaryMap f g
+  let q := fst Y (SSet.stdSimplex.obj (SimplexCategory.mk 1)) ≫ f ≫ p
+  have hw : b ≫ p = Y ◁ (SSet.boundary 1).ι ≫ q := by
+    apply (LargeParameterHomotopy.boundaryColimit Y).hom_ext
+    rintro ⟨j⟩
+    cases j
+    · change (Y ◁ SSet.boundary.ι (1 : Fin 2)) ≫ (b ≫ p) =
+        (Y ◁ SSet.boundary.ι (1 : Fin 2)) ≫ (Y ◁ (SSet.boundary 1).ι ≫ q)
+      dsimp only [b, q]
+      rw [← Category.assoc, LargeParameterHomotopy.boundaryMap_zero]
+      conv_rhs => rw [← Category.assoc, ← whiskerLeft_comp, SSet.boundary.ι_ι,
+        SSet.stdSimplex.δ_one_eq_const]
+      rfl
+    · change (Y ◁ SSet.boundary.ι (0 : Fin 2)) ≫ (b ≫ p) =
+        (Y ◁ SSet.boundary.ι (0 : Fin 2)) ≫ (Y ◁ (SSet.boundary 1).ι ≫ q)
+      dsimp only [b, q]
+      rw [← Category.assoc, LargeParameterHomotopy.boundaryMap_one, Category.assoc, ← hfg]
+      conv_rhs => rw [← Category.assoc, ← whiskerLeft_comp, SSet.boundary.ι_ι,
+        SSet.stdSimplex.δ_zero_eq_const]
+      rfl
+  have : HasLiftingProperty (Y ◁ (SSet.boundary 1).ι) p := hp _ inferInstance
+  let sq : CommSq b (Y ◁ (SSet.boundary 1).ι) p q := ⟨hw⟩
+  refine ⟨{ h := sq.lift, h₀ := ?_, h₁ := ?_, rel := ?_ }, sq.fac_right⟩
+  · change SSet.ι₀ ≫ sq.lift = f
+    rw [← LargeParameterHomotopy.section_zero Y, Category.assoc,
+      ← SSet.boundary.ι_ι (1 : Fin 2), whiskerLeft_comp, Category.assoc, sq.fac_left]
+    dsimp only [b]
+    rw [LargeParameterHomotopy.boundaryMap_zero]
+    rfl
+  · change SSet.ι₁ ≫ sq.lift = g
+    rw [← LargeParameterHomotopy.section_one Y, Category.assoc,
+      ← SSet.boundary.ι_ι (0 : Fin 2), whiskerLeft_comp, Category.assoc, sq.fac_left]
+    dsimp only [b]
+    rw [LargeParameterHomotopy.boundaryMap_one]
+    rfl
+  · apply NatTrans.ext
+    funext n
+    exact ConcreteCategory.hom_ext _ _ (fun x => False.elim x.1.property)
+
+
+include hp in
 lemma exists_extension {X Y : SSet.{v}} (i : X ⟶ Y) [Mono i]
     {f g : Y ⟶ E} (H : SSet.Homotopy f g)
     (A : SSet.Homotopy (i ≫ f) (i ≫ g))
@@ -71,6 +116,27 @@ lemma exists_extension {X Y : SSet.{v}} (i : X ⟶ Y) [Mono i]
   · apply NatTrans.ext
     funext n
     exact ConcreteCategory.hom_ext _ _ (fun x => False.elim x.1.property)
+
+include hp in
+lemma exists_relative_vertical_homotopy {X Y : SSet.{v}} (i : X ⟶ Y) [Mono i]
+    (f g : Y ⟶ E) (hfg : f ≫ p = g ≫ p) (hi : i ≫ f = i ≫ g) :
+    ∃ H : SSet.Homotopy f g,
+      H.h ≫ p = fst Y (SSet.stdSimplex.obj (SimplexCategory.mk 1)) ≫ f ≫ p ∧
+      i ▷ SSet.stdSimplex.obj (SimplexCategory.mk 1) ≫ H.h =
+        fst X (SSet.stdSimplex.obj (SimplexCategory.mk 1)) ≫ i ≫ f := by
+  obtain ⟨H, hH⟩ := exists_vertical_homotopy p hp f g hfg
+  let A : SSet.Homotopy (i ≫ f) (i ≫ g) := {
+    h := fst X (SSet.stdSimplex.obj (SimplexCategory.mk 1)) ≫ i ≫ f
+    h₀ := by ext n x; rfl
+    h₁ := by rw [← hi]; ext n x; rfl
+    rel := by
+      apply NatTrans.ext
+      funext n
+      exact ConcreteCategory.hom_ext _ _ (fun x => False.elim x.1.property) }
+  obtain ⟨V, hV, hrel⟩ := exists_extension p hp i H A (by
+    change (fst X _ ≫ i ≫ f) ≫ p = i ▷ _ ≫ H.h ≫ p
+    rw [hH, whiskerRight_fst_assoc, Category.assoc, Category.assoc])
+  exact ⟨V, hV.trans hH, hrel⟩
 
 include hp in
 lemma exists_strong_contraction (s : B ⟶ E) (hs : s ≫ p = 𝟙 B) :
