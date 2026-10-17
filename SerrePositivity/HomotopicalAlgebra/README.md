@@ -3333,3 +3333,17 @@ augmentationの交換・局所化可逆性を証明する。
 SSet.{v}値の実図式、制限した既存の合成選択空間との対象ごとの同型、実評価の制限式を証明する。
 元のCᵒᵖ×C上のRMapと異なるHomをまたぐ全高次整合性は残る。
 受入検証は`check_composition_parameter_diagram`（54宣言・3モジュール）。
+
+
+### 指定面を保持する四面体とnative三重合成の比較円板（§384）
+
+`KanComparisonTetrahedron`は同じ終点への区間が支える三つの指定三角形を面に保ち、
+第四面の全三辺が元の比較辺に一致する実四面体を構成する。
+`KanComparisonSquare`は一つの対角三角形を共有する二つの四面体から四辺を保持する円板データを作る。
+`ComparisonTriangleBinary`は三角形と区間を左右から合成し、比較辺で第三の射を始点に固定する。
+`OrdinaryBarTripleComparison`は元の六つのHom降下選択を使う四つの比較と円錐面を用意する。
+`OrdinaryBarAssociativityCoherence`は元の小さい内部Homへ適用し、
+以前の二つの外側合成比較と、内側比較に第三の降下射を合成した全四辺、共通対角線を保持する。
+出力は二つの実三角形による円板であり、単位・全高次の整合性と小さい厳密なRMapは残る。
+受入検証は`check_comparison_tetrahedra`（106宣言・3モジュール）と
+`check_native_associativity_coherence`（98宣言・2モジュール）。
