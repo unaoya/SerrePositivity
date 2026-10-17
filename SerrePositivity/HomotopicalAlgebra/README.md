@@ -3322,3 +3322,14 @@ augmentationの交換・局所化可逆性を証明する。
 移送した前回の三角形と新たに選んだ三角形を、指定horn全体を保つ実ホモトピーで比較する。
 元の基底上の小さいRMapの関手性と全高次の整合性は残る。
 受入検証は`check_composition_reindex`（24宣言・3モジュール）。
+
+
+### 全制限先の小さい図式と自然な三角形族（§383）
+
+`ParameterChoiceDiagram`は実制限に沿う全境界延長の図式と、元の選択空間からの自然変換を構成する。
+`ComparisonTriangleParameterDiagram`は指定二辺を保つ全三角形へ適用し、
+元の三角形の自然な点、族の相対延長、二つの元の選択を結ぶ自然な区間と端点式を与える。
+`OrdinaryBarCompositionParameterDiagram`は元のnative合成比較へ適用し、
+SSet.{v}値の実図式、制限した既存の合成選択空間との対象ごとの同型、実評価の制限式を証明する。
+元のCᵒᵖ×C上のRMapと異なるHomをまたぐ全高次整合性は残る。
+受入検証は`check_composition_parameter_diagram`（54宣言・3モジュール）。
