@@ -9324,6 +9324,24 @@ assert_no_sorry 成功・標準3公理のみ。
 改名後に係数正規化・H⁰ 比較・完備化単位の専用監査3本（公開13宣言）も再実行して成功した。
 Cor 8.12 の保留は継続し、新しい sorry・axiom・引用は追加していない。
 
+**D-I・元の射の実標準四角形の完成（2026-10-17）。** `Prop247StandardSquare.lean` は、
+元の指定 perfectoid 化 f:S→C と通常 tensor の指定 perfectoid 化 β:B⊗R S→P について、
+始域・終域の実比較が元の f の完備導来底変換と β を結ぶことを証明した。
+`prop247_targetH0LinearEquiv_unit_map` で元の通常 tensor の元に対する一致を示し、
+完備化の既存 Hom 普遍性と零次数加群への射の既存 H⁰ 判定で実導来射の等式へ移す。
+`prop247_completedBaseChange_adic_standard_square` は元の古典完備化からの
+`prop247_completionMap p β hβ`、すなわち原典の α について同じ実四角形を与える。
+有限かつ有限表示な元の S、元の bounded p∞ torsion、完全平坦性と perfectoid な基底の仮定を使い、
+環上の p 正則性・通常平坦性・大域的な自由比較を追加していない。
+対象3735ジョブ、ルート公開を含む全体6497ジョブ、専用監査の公開3宣言が成功。
+全3宣言は assert_no_sorry 成功・標準3公理のみ。
+主定理監査の初回は担当外 `DifferentialGraded/Endomorphism/ShiftNaturality.olean` の欠落で
+import 時に失敗したため証明追加を停止した。その後同ファイルの再生成を確認し、
+監査の範囲を変更せず元の主定理監査を再実行したが、今度はルート `SerrePositivity.olean` が
+欠落して import 時に失敗した。並行ビルドの生成物が安定していないため、全体監査は未完了として
+証明追加を停止する。担当外のファイルや監査の範囲は変更していない。
+Cor 8.12 は引き続き保留し、新しい sorry・axiom・引用は追加していない。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。

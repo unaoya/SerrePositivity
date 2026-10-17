@@ -1,0 +1,9 @@
+import SerrePositivity.CLMST.Prop247StandardSquare
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.CLMST.prop247_targetH0LinearEquiv_unit_map
+assert_no_sorry SerrePositivity.CLMST.prop247_completedBaseChange_standard_square
+assert_no_sorry SerrePositivity.CLMST.prop247_completedBaseChange_adic_standard_square
+#print axioms SerrePositivity.CLMST.prop247_targetH0LinearEquiv_unit_map
+#print axioms SerrePositivity.CLMST.prop247_completedBaseChange_standard_square
+#print axioms SerrePositivity.CLMST.prop247_completedBaseChange_adic_standard_square
