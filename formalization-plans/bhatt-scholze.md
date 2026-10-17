@@ -10913,3 +10913,22 @@ p正則性・有限性・非零性の追加仮定なし。原典の短完全列�
 対象ビルド4416ジョブ成功（終了コード0）。新公開9宣言と工程1・三角形入力をBS専用監査で再検査し、
 全assert_no_sorry成功、標準3公理のみ。新sorry・公理・引用なし。
 Remark 10.7、指定Prop 10.2の公開と原典経路、集約import・最終監査は未完了。
+
+### 工程3：Remark 10.7の結果（2026-10-17）
+
+新規BS専用PerfectoidIdealIdempotent.leanの公開3定理を証明した。
+`perfectoidIdeal_conormal_pow_smul_surjective R p hR g n`は、K=perfectoidIdeal R p hR gの
+通常のconormal加群K.Cotangentにおけるp^n作用の全射性。
+`perfectoidIdeal_eq_square_sup_pow_mul R p hR g n`は
+K=K*K ⊔ Ideal.span{(p:R)^n}*K（n=1を含む）。
+`perfectoidIdealMod_idempotent R p hR g N`は、既存CLMST略記を使い、
+perfectoidIdealMod R p hR g N * perfectoidIdealMod R p hR g N =
+perfectoidIdealMod R p hR g NというBasicSetupの定理と同じ署名である。
+仮定は可換環R、素数p、hR:IsIntegralPerfectoid R p、g:R、任意nまたはNのみ。
+
+Lemma 10.3の第二主張から共通の実Tor₁・conormal比較でp可除性を取り出し、反復して
+元のKに代表を持ち上げK²との差を計算した。mod p^N像の最後の判定も共通証明を再利用した。
+CLMST.Almostは既存の略記を使うためimportするが、BasicSetupや外部入力引用へ依存しない。
+BasicSetup自体は開始時点ですでに別レーンの証明へ置換済みだったので編集しない。
+対象ビルド4431ジョブ成功（終了コード0）、全新公開宣言と先行工程のassert_no_sorry・公理監査成功。
+標準3公理のみ。Prop 10.2の原典のtensorによる証明と集約import・最終監査は未完了。

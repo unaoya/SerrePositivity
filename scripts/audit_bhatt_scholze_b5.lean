@@ -1,5 +1,6 @@
 import SerrePositivity.BhattScholze.Lemma103PerfectoidTensor
 import SerrePositivity.BhattScholze.PerfectoidIdealLemma103
+import SerrePositivity.BhattScholze.PerfectoidIdealIdempotent
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorShortExact
 import SerrePositivity.CommutativeAlgebra.PerfectTorIndependence.Basic
 import Mathlib.Util.AssertNoSorry
@@ -57,3 +58,12 @@ assert_no_sorry SerrePositivity.BhattScholze.perfectoidIdeal_isModuleComplete
 
 assert_no_sorry SerrePositivity.BhattScholze.perfectoidIdeal_lemma103
 #print axioms SerrePositivity.BhattScholze.perfectoidIdeal_lemma103
+
+assert_no_sorry SerrePositivity.BhattScholze.perfectoidIdeal_conormal_pow_smul_surjective
+#print axioms SerrePositivity.BhattScholze.perfectoidIdeal_conormal_pow_smul_surjective
+
+assert_no_sorry SerrePositivity.BhattScholze.perfectoidIdeal_eq_square_sup_pow_mul
+#print axioms SerrePositivity.BhattScholze.perfectoidIdeal_eq_square_sup_pow_mul
+
+assert_no_sorry SerrePositivity.BhattScholze.perfectoidIdealMod_idempotent
+#print axioms SerrePositivity.BhattScholze.perfectoidIdealMod_idempotent
