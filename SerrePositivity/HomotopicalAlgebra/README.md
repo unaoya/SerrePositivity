@@ -3369,3 +3369,14 @@ SSet.{v}値の実図式、制限した既存の合成選択空間との対象ご
 降下作用の単位則を厳密化したとの主張はせず、全次数の構成と小さいRMapへの接続は残る。
 受入検証は`check_comparison_unit_triangles`（47宣言・3モジュール）と
 `check_native_unit_coherence`（69宣言・2モジュール）。
+
+
+### 任意次元の全指定面と、変化するhorn族の相対延長（§387）
+
+`ParameterizedHornChoices`は任意次元の互換な指定された全ての面から小さい全filler空間を作る。
+全指定面の保持、単射に沿う以前の全族の延長、filler間の相対比較、全制限先の自然な族を証明する。
+`KanHornFamilyLifting`は変化するhorn族を一様に埋め、任意のパラメータ写像での厳密な自然性を持つ。
+指定された単射境界上の以前の全fillerと、全horn族を同時に保持する相対延長も構成する。
+元のnative単位四面体で、保持・復元・可変horn族への延長を検証した。一般論にモデル構造は不要である。
+互換な境界自体の全次数の構成・退化面の保持・小さい厳密なRMapへの接続は残る。
+受入検証は`check_parameterized_horn_choices`（19宣言）と`check_horn_family_lifting`（22宣言）。
