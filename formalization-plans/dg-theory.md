@@ -19,14 +19,14 @@ Mathlibへの相対パスはすべて `.lake/packages/mathlib/Mathlib/` から�
 
 ## 0. 現行の分担と合流順（2026-10-17更新）
 
-最新の目標更新により、このチャットの現行目標はU12eの完成・受入に限定する。
-以下のU16・U15eの実施順は従来の引継ぎ情報として保持し、現行目標の作業には含めない。
+最新のユーザー指定により、このチャットはU12eの完成・受入→U16→U15eの分解版を担当する。
+直近の受入対象はU12eとし、その受入後にU16へ進む。
 
 ユーザー指定の分担変更により、以下をこの文書の従来の一系列実施順より優先する。
 
 | 範囲 | 担当チャット・所有範囲 | 実装記録 |
 | --- | --- | --- |
-| U12eの完成・受入 | このチャット。既存のdg加群・bimodule・導来合成の公開APIを管理 | この文書§17 |
+| U12eの完成・受入 → U16 → U15eの分解版 | このチャット。既存のdg加群・bimodule・導来合成の公開APIを管理 | この文書§17 |
 | U14（指定生成元・endomorphism表示） | 「dg-U14」。`DifferentialGraded/Endomorphism/` | `dg-theory-u14.md` |
 | U12f・U15d（係数変更）、追加のU17a・U13d | 「dg-U12f/U15d」。このチャットの担当外 | `dg-theory-scalar-extension.md` |
 | U15eの局所K-flat版 → U17bの局所K-flatの場合 | U17a・U13dを終えたチャット。`Quotient/DerivedComparison*.lean`・`Verdier/` | `dg-theory-u17a-u13d.md`を参照 |
@@ -41,12 +41,12 @@ Mathlibへの相対パスはすべて `.lake/packages/mathlib/Mathlib/` から�
 ユーザー指定により履歴のamend・rebase・resetは禁止。検証済みの小単位を新規コミットで記録する。
 新規ファイル作成前には同名既存ファイルの有無を確認する。共有ルートSerrePositivity.leanと
 共有監査スクリプトを変更するときは自分のhunkだけをgit add -pでstageする。
-従来のU16b引継ぎではEndomorphism/の再構成随伴・endomorphism比較と、受入済みの
+U16bではEndomorphism/の再構成随伴・endomorphism比較と、受入済みの
 Tensor/ScalarExtension*・Derived/ScalarExtension*を読み取り専用で再利用する。
-このチャットはU12eの完成・受入までを進める。U16・U15eには着手しない。
+このチャットはU12eを受け入れてからU16へ進み、その後U15eの分解版を扱う。
 U15eの局所K-flat仮定を置く版はU17a・U13dを終えたチャットが担当し、
 続けてU17bの局所K-flatの場合を扱う。この局所K-flat版の作業は、このチャットの合流待ちとは分離する。
-従来のU15e分解版の開始条件はU12f・U14・U16の受入条件がそろうことであり、
+U15e分解版の開始条件はU12f・U14・U16の受入条件がそろうことであり、
 局所K-flat版の`Quotient/DerivedComparison*.lean`と`Verdier/`を読んで再利用する。
 局所K-flat版の比較・Verdier一般論を重複実装せず、分解とその比較APIへの接続を担当する。
 U16cでDG-MOR、U15eでDG-DRの引用採用が必要になったら、採用せず停止して報告する。
@@ -11072,3 +11072,72 @@ K-flatモデル上の等式を全導来後因子へ持ち上げる。
 U12e全体は未受入。現行目標はU12eの完成・受入のままで、U16・U15eへは着手していない。
 共有一般論への新しいAPI要求はない。共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・
 ScalarExtension*・並行作業のTensor/Associator*と他チャットの記録を編集していない。
+
+### 17.236 U15e分割とこのチャットの担当順の再指定（2026-10-17）
+
+最新のユーザー指定を§0へ反映した。このチャットの担当順は
+U12eの完成・受入→U16→U15eの分解版とする。
+§17.233〜17.235のU12eのみへの目標限定は、その時点の記録として保持し、
+今後の担当範囲には今回の指定を優先する。U12eは引き続き未受入である。
+
+U15eの局所K-flat仮定を置く版は、U17a・U13dを終えたチャットが担当し、
+続けてU17bの局所K-flatの場合も扱う。成果の配置は
+`Quotient/DerivedComparison*.lean`と`Verdier/`、担当記録は
+[`dg-theory-u17a-u13d.md`](dg-theory-u17a-u13d.md)を参照する。
+分解版に着手する際は、その定義・仮定・宇宙・比較APIを読み、再利用する。
+局所K-flat版の比較やVerdier一般論を重複実装せず、分解および分解変更との接続を担当する。
+公開APIの名前・型を変更する場合の§17への記録責任も保持する。
+
+今回は担当境界と順序のみを更新した。Leanコード・公開API・受入済み検証結果・監査累計は変更しない。
+
+### 17.237 U12e76：source正規化と対角でのモデル経路・全導来左単位子の計算（2026-10-17）
+
+**一般のsource正規化。** Derived/BimoduleRestrictionSourceNormalization.leanの
+restrictedMiddleSourcePrefixは、後因子の右制限表示、前因子の右制限表示、実際の全導来外側右比較、
+出力で制限した前因子の左制限表示を続ける経路である。
+restrictedMiddleSourcePrefix_normalizeは、後因子の表示を自然性で移すと、
+既存middleDerivedSourceFamilyIdentificationを使う経路に一致することを証明した。
+外側比較と両合成関手の自然性の三つのsquareを、privateの圏論的貼合せ補題で接続する。
+restrictedMiddleSourcePrefix_modelは、任意の指定右相対K-flat解像度の計算同型の逆を前置すると、
+既存restrictedMiddleModelPrefixと中間source表示を続ける経路に一致する式である。
+六つの宇宙を独立に保持し、局所Hom K-flat性は終端Eだけ、F・Gは任意のdg関手のままである。
+
+**対角への特殊化。** Derived/LeftUnitRestrictionNormalization.leanは、
+既存の対角bimoduleをそのまま使うleftUnitRestrictedModelPrefixと、
+対角射、既存の外側・中間比較、K-flat計算同型、通常左単位子を続ける
+leftUnitRestrictionModelPathを定義した。
+leftUnitRestrictionModelPath_eqは、この経路がRの通常左単位子の局所化、増大射qの局所化、
+後因子Qの右制限表示を続けた射に一致することを証明する。
+§17.235の実際のモデル計算square、制限表示の自然性、§17.234の増大付き左単位squareを接続する。
+同じ圏が複数引数に現れる特殊化では増大射と証拠を関数の引数として推論させ、
+型照合でcoendの内部を過剰に展開する問題を避けた。資源上限は変更していない。
+
+**既存の全導来左単位子との同一sourceでの計算。** Derived/LeftUnitRestrictionSource.leanの
+leftUnitRestrictionModelSourceIsoは、指定解像度の計算同型の逆と、
+右制限表示を既存derivedBimoduleLeftUnitFunctorへ送った同型の合成である。
+leftUnitRestrictionModelSourceIso_leftUnitは、このsource表示を通した実際の全導来左単位子が、
+上と同じRの通常左単位子・増大射・右制限表示に計算されることを証明した。
+leftUnitRestrictionModelPath_eq_sourceLeftUnitで二つの計算を接続した。
+Qは右相対K-flat、Rは制限後の任意の指定右相対K-flat解像度、qは準同型であり、
+F : D → Bの準同値性やB・Dの局所Hom K-flat性は仮定しない。終端Cの条件だけを使う。
+既存の公開APIの名前・型は変更せず、一般APIを9宣言追加した。
+
+**検証。** Checks.DGRestrictionSourceNormalizationは、任意のFと独立した対象宇宙についての
+宣言型、ZMod 2での指定モデル経路と既存全導来左単位子の一致を検査した。
+前回のモデル計算・左右単位・対角恒等/合成則・三圏同時制限・中間比較の全導来合成則・
+解像度比較・導来同値・随伴・五角形・StageEight・StageSeven・Spectra.StageTwoとの
+統合ビルド成功（3541 jobs、警告なし）。直接公理監査は9公開宣言を重複・欠落なく網羅し、
+全てpropext・Classical.choice・Quot.sound以内。新規監査累計4674宣言。
+今回の4 Leanファイルにsorry・admit・新規axiom・資源上限変更は0件。採用済み引用0件。
+Lean v4.35.0-rc4、Mathlib manifest/HEAD e6bbacd0e1b7307ff6e17da09cd2455f60804fa6を再確認した。
+文書検査は21 Markdown・326 exposition参照、失敗0件。
+
+**受入に残る作業。** leftUnitRestrictionDerivedComparisonそのものを、今回のsource表示を通して
+leftUnitRestrictionModelPathへ計算する等式はまだ証明していない。
+対角射に対する解像度計算同型と後因子制限表示の自然性を使って対角射を移し、
+restrictedMiddleSourcePrefix_modelへ接続する。その後今回の一致式でsource同型を打ち消し、
+K-flat対象上の等式を全導来後因子へ持ち上げる。
+結合子保存、左右単位経路と三圏同時制限の正規化の一致、changeEquivalenceの単位・結合保存と
+自己・推移比較、外側左右・中間比較の恒等・合成則も残り、§15.2全体の受入監査は未完である。
+U12e全体は未受入。共有一般論への新しいAPI要求はない。
+共有ルート・共有監査スクリプト・並行担当ファイル・他チャットの記録は編集していない。
