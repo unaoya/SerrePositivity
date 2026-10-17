@@ -413,3 +413,21 @@ dgNerve A D ⊗ Δ[1] ⟶ dgNerve A E
 任意の可換環 A と dg 圏 D,E に対する構成であり、方程式の追加仮定はない。
 これで N5a の未完了項目が解消し N5 は完了。N4 と N6 は未完了。
 公開宣言 335 件と既存 5 則の公理監査は標準三公理の範囲内である。
+
+## N4a：一般の右 pinched Hom（2026-10-18、N4 は未完了）
+
+`PinchedHom/Basic.lean` の `InfinityCategories.pinchedHom x y` は任意の単体的集合 X に対して定義する。
+n 単体は X の (n+1) 単体で、先頭の n+1 頂点が張る面全体が x に定値、最終頂点が y となるもの。
+`PinchedHom/Index.lean` は [m] → [n] を最終頂点を固定して [m+1] → [n+1] へ延長する。
+先頭の面と最終点の可換性および延長の恒等・合成則から、全ての面・退化を持つ SSet を構成した。
+quasicategory や Kan 性はこの一般の定義に仮定していない。
+
+`PinchedHom/Edges.lean` の `vertexEquiv` は、この空間の零単体と X の端点付き辺の同値。
+`DGNerve/PinchedHom.lean` の `DGNerve.pinchedHom A D x y` は dg 圏の二対象間への適用で、
+`DGNerve.PinchedHom.vertexCycleEquiv` はその零単体を `zeroCycles (homObject A D x y)` に同定する。
+任意の可換環と dg 圏で成立し、宇宙は `max u v`。
+
+全次数の線形族との比較、各次数の A 加群構造と単体的写像の線形性、
+直接の線形ホーン充填による Kan 性、π₀ と H⁰ の射の同定は未完了。
+N4 全体の完了とは数えない。N6 も未完了。
+今回までの公開宣言 361 件と既存 5 則は標準三公理の範囲で監査済み。

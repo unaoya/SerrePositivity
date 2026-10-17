@@ -689,6 +689,59 @@ dg nerve と内部ホーン充填および quasicategory instance を監査す�
 #print axioms SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.homotopy
 #check @SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.homotopy
 
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.extendOrderHom
+#check @SerrePositivity.InfinityCategories.PinchedHom.extendOrderHom
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.extendOrderHom_castSucc
+#check @SerrePositivity.InfinityCategories.PinchedHom.extendOrderHom_castSucc
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.extendOrderHom_last
+#check @SerrePositivity.InfinityCategories.PinchedHom.extendOrderHom_last
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.extend
+#check @SerrePositivity.InfinityCategories.PinchedHom.extend
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.front
+#check @SerrePositivity.InfinityCategories.PinchedHom.front
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.lastVertex
+#check @SerrePositivity.InfinityCategories.PinchedHom.lastVertex
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.front_extend
+#check @SerrePositivity.InfinityCategories.PinchedHom.front_extend
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.lastVertex_extend
+#check @SerrePositivity.InfinityCategories.PinchedHom.lastVertex_extend
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.extend_id
+#check @SerrePositivity.InfinityCategories.PinchedHom.extend_id
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.extend_comp
+#check @SerrePositivity.InfinityCategories.PinchedHom.extend_comp
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.front_eq_δ
+#check @SerrePositivity.InfinityCategories.PinchedHom.front_eq_δ
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.front_zero
+#check @SerrePositivity.InfinityCategories.PinchedHom.front_zero
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.lastVertex_zero
+#check @SerrePositivity.InfinityCategories.PinchedHom.lastVertex_zero
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.constant
+#check @SerrePositivity.InfinityCategories.PinchedHom.constant
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.constant_pullback
+#check @SerrePositivity.InfinityCategories.PinchedHom.constant_pullback
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.Simplex
+#check @SerrePositivity.InfinityCategories.PinchedHom.Simplex
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.Simplex.ext
+#check @SerrePositivity.InfinityCategories.PinchedHom.Simplex.ext
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.Simplex.pullback
+#check @SerrePositivity.InfinityCategories.PinchedHom.Simplex.pullback
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.Simplex.pullback_id
+#check @SerrePositivity.InfinityCategories.PinchedHom.Simplex.pullback_id
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.Simplex.pullback_comp
+#check @SerrePositivity.InfinityCategories.PinchedHom.Simplex.pullback_comp
+#print axioms SerrePositivity.InfinityCategories.pinchedHom
+#check @SerrePositivity.InfinityCategories.pinchedHom
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.constant_zero
+#check @SerrePositivity.InfinityCategories.PinchedHom.constant_zero
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.vertexEquiv
+#check @SerrePositivity.InfinityCategories.PinchedHom.vertexEquiv
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.vertexEquiv_edge
+#check @SerrePositivity.InfinityCategories.PinchedHom.vertexEquiv_edge
+#print axioms SerrePositivity.InfinityCategories.DGNerve.pinchedHom
+#check @SerrePositivity.InfinityCategories.DGNerve.pinchedHom
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.vertexCycleEquiv
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.vertexCycleEquiv
+
 section
 universe u v
 variable (A : Type u) [CommRing A] (D : Type v)

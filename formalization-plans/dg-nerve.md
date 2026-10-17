@@ -3344,6 +3344,147 @@ N0〜N3 と N5 は完了しているが、目標 N0〜N6 全体の完了とは�
                 (SerrePositivity.InfinityCategories.dgNerve.map G)
 ```
 
+### N4a：一般の右 pinched Hom と閉零頂点（2026-10-18、N4 は未完了）
+
+`PinchedHom/Index.lean` は任意の単体圏の射 α を最終頂点固定で一段延長する `extend` を定義する。
+その単調写像は先頭頂点で α、最終点で最終点を取り、先頭面の包含 `front`、最終頂点の選択
+`lastVertex` との可換性、恒等射と合成の保存を証明した。`front_eq_δ` は先頭面が最終頂点を
+飛ばす面であることを確認し、零次では `front_zero` と `lastVertex_zero` が一単体の二つの面に一致する。
+
+`PinchedHom/Basic.lean` は任意の `X : SSet` と `x y : X _⦋0⦌` に対する
+`InfinityCategories.pinchedHom x y : SSet` を定義した。n 単体は次の二条件付きの元 `s : X _⦋n+1⦌`：
+先頭の n+1 頂点が張る面全体の引き戻しが `constant x n` に一致し、最終頂点が y に一致する。
+複数の余次元一の面全てを定値にする条件は課していない。引き戻しには `extend` を用い、
+二条件の保存と、単体的恒等・合成の法則を証明した。任意の X の構成であり quasicategory は仮定しない。
+
+`PinchedHom/Edges.lean` の `vertexEquiv` はこの右 pinched Hom の零単体を X の端点付き辺
+`X.Edge x y` に同定する。順逆とも元の一単体をそのまま使う。
+`DGNerve/PinchedHom.lean` は dg 圏の二対象 x,y に対する `DGNerve.pinchedHom A D x y` を定義し、
+`DGNerve.PinchedHom.vertexCycleEquiv` により、その零単体を
+`zeroCycles (homObject A D x y)` に同定した。後者は一般の頂点の同値と N3 の辺の閉零成分の同値の合成。
+
+前提：一般の構成は任意の単体的集合 X と二頂点のみ。dg 圏での構成は任意の可換環 A、
+任意の `[DGCategory A D]` と二対象 x,y のみ。対象宇宙 v と Hom 宇宙 u は独立で、
+写像空間の宇宙は `max u v`。有界性・平坦性・標数や追加の単体方程式の仮定はない。
+N0 に記録した先頭面全体という規約および計画 §3 の設計を変更していない。
+
+検証：`set -e`、`set -o pipefail` の下で
+`lake build SerrePositivity.InfinityCategories.DGNerve` が 3464 jobs、終了コード 0。
+続く `lake env lean scripts/audit_dg_nerve.lean` も終了コード 0。
+担当する DGNerve/ と PinchedHom/ の全 361 個の明示的公開宣言と既存 5 則、計 366 件を監査し、
+依存公理は全件で `propext`・`Classical.choice`・`Quot.sound` の部分集合。
+全ソース宣言名を `#print axioms` と `#check @` の対象と照合して漏れなし。
+新しい sorry・axiom・引用はない。
+
+未完了：N4 の全 n 単体と非空有限部分集合の線形族の同値、線形方程式の導出、
+各次数の A 加群構造と面・退化の線形性、全ホーンの直接充填による Kan 性、
+π₀ と H⁰ の射の同定。今回の零単体の同値だけでそれらを完了とは数えない。
+N6 の具体例と最終の全体検査も未完了。N0〜N3・N5 の完了状態は変わらない。
+
+今回の全新規公開宣言の正確な型（`#check @` の出力）：
+
+```lean
+@SerrePositivity.InfinityCategories.PinchedHom.extendOrderHom : {m n : ℕ} →
+  (Fin (m + 1) →o Fin (n + 1)) → Fin (m + 2) →o Fin (n + 2)
+
+@SerrePositivity.InfinityCategories.PinchedHom.extendOrderHom_castSucc : ∀ {m n : ℕ} (α : Fin (m + 1) →o Fin (n + 1))
+  (i : Fin (m + 1)), (SerrePositivity.InfinityCategories.PinchedHom.extendOrderHom α) i.castSucc = (α i).castSucc
+
+@SerrePositivity.InfinityCategories.PinchedHom.extendOrderHom_last : ∀ {m n : ℕ} (α : Fin (m + 1) →o Fin (n + 1)),
+  (SerrePositivity.InfinityCategories.PinchedHom.extendOrderHom α) (Fin.last (m + 1)) = Fin.last (n + 1)
+
+@SerrePositivity.InfinityCategories.PinchedHom.extend : {m n : SimplexCategory} →
+  (m ⟶ n) → ({ len := m.len + 1 } ⟶ { len := n.len + 1 })
+
+SerrePositivity.InfinityCategories.PinchedHom.front : (n : ℕ) → { len := n } ⟶ { len := n + 1 }
+
+SerrePositivity.InfinityCategories.PinchedHom.lastVertex : (n : ℕ) → { len := 0 } ⟶ { len := n + 1 }
+
+@SerrePositivity.InfinityCategories.PinchedHom.front_extend : ∀ {m n : SimplexCategory} (α : m ⟶ n),
+  CategoryTheory.CategoryStruct.comp (SerrePositivity.InfinityCategories.PinchedHom.front m.len)
+      (SerrePositivity.InfinityCategories.PinchedHom.extend α) =
+    CategoryTheory.CategoryStruct.comp α (SerrePositivity.InfinityCategories.PinchedHom.front n.len)
+
+@SerrePositivity.InfinityCategories.PinchedHom.lastVertex_extend : ∀ {m n : SimplexCategory} (α : m ⟶ n),
+  CategoryTheory.CategoryStruct.comp (SerrePositivity.InfinityCategories.PinchedHom.lastVertex m.len)
+      (SerrePositivity.InfinityCategories.PinchedHom.extend α) =
+    SerrePositivity.InfinityCategories.PinchedHom.lastVertex n.len
+
+SerrePositivity.InfinityCategories.PinchedHom.extend_id : ∀ (n : SimplexCategory),
+  SerrePositivity.InfinityCategories.PinchedHom.extend (CategoryTheory.CategoryStruct.id n) =
+    CategoryTheory.CategoryStruct.id { len := n.len + 1 }
+
+@SerrePositivity.InfinityCategories.PinchedHom.extend_comp : ∀ {l m n : SimplexCategory} (α : l ⟶ m) (β : m ⟶ n),
+  SerrePositivity.InfinityCategories.PinchedHom.extend (CategoryTheory.CategoryStruct.comp α β) =
+    CategoryTheory.CategoryStruct.comp (SerrePositivity.InfinityCategories.PinchedHom.extend α)
+      (SerrePositivity.InfinityCategories.PinchedHom.extend β)
+
+SerrePositivity.InfinityCategories.PinchedHom.front_eq_δ : ∀ (n : ℕ),
+  SerrePositivity.InfinityCategories.PinchedHom.front n = SimplexCategory.δ (Fin.last (n + 1))
+
+SerrePositivity.InfinityCategories.PinchedHom.front_zero : SerrePositivity.InfinityCategories.PinchedHom.front 0 =
+  SimplexCategory.δ 1
+
+SerrePositivity.InfinityCategories.PinchedHom.lastVertex_zero : SerrePositivity.InfinityCategories.PinchedHom.lastVertex
+    0 =
+  SimplexCategory.δ 0
+
+@SerrePositivity.InfinityCategories.PinchedHom.constant : {X : SSet} →
+  X.obj (Opposite.op { len := 0 }) → (n : ℕ) → X.obj (Opposite.op { len := n })
+
+@SerrePositivity.InfinityCategories.PinchedHom.constant_pullback : ∀ {X : SSet} (x : X.obj (Opposite.op { len := 0 }))
+  {m n : SimplexCategory} (α : m ⟶ n),
+  (CategoryTheory.ConcreteCategory.hom (X.map α.op)) (SerrePositivity.InfinityCategories.PinchedHom.constant x n.len) =
+    SerrePositivity.InfinityCategories.PinchedHom.constant x m.len
+
+@SerrePositivity.InfinityCategories.PinchedHom.Simplex : {X : SSet} →
+  X.obj (Opposite.op { len := 0 }) → X.obj (Opposite.op { len := 0 }) → ℕ → Type u_1
+
+@SerrePositivity.InfinityCategories.PinchedHom.Simplex.ext : ∀ {X : SSet} {x y : X.obj (Opposite.op { len := 0 })}
+  {n : ℕ} {s t : SerrePositivity.InfinityCategories.PinchedHom.Simplex x y n}, s.val = t.val → s = t
+
+@SerrePositivity.InfinityCategories.PinchedHom.Simplex.pullback : {X : SSet} →
+  {x y : X.obj (Opposite.op { len := 0 })} →
+    {m n : SimplexCategory} →
+      SerrePositivity.InfinityCategories.PinchedHom.Simplex x y n.len →
+        (m ⟶ n) → SerrePositivity.InfinityCategories.PinchedHom.Simplex x y m.len
+
+@SerrePositivity.InfinityCategories.PinchedHom.Simplex.pullback_id : ∀ {X : SSet}
+  {x y : X.obj (Opposite.op { len := 0 })} {n : SimplexCategory}
+  (s : SerrePositivity.InfinityCategories.PinchedHom.Simplex x y n.len),
+  s.pullback (CategoryTheory.CategoryStruct.id n) = s
+
+@SerrePositivity.InfinityCategories.PinchedHom.Simplex.pullback_comp : ∀ {X : SSet}
+  {x y : X.obj (Opposite.op { len := 0 })} {l m n : SimplexCategory}
+  (s : SerrePositivity.InfinityCategories.PinchedHom.Simplex x y n.len) (α : l ⟶ m) (β : m ⟶ n),
+  (s.pullback β).pullback α = s.pullback (CategoryTheory.CategoryStruct.comp α β)
+
+@SerrePositivity.InfinityCategories.pinchedHom : {X : SSet} →
+  X.obj (Opposite.op { len := 0 }) → X.obj (Opposite.op { len := 0 }) → SSet
+
+@SerrePositivity.InfinityCategories.PinchedHom.constant_zero : ∀ {X : SSet} (x : X.obj (Opposite.op { len := 0 })),
+  SerrePositivity.InfinityCategories.PinchedHom.constant x 0 = x
+
+@SerrePositivity.InfinityCategories.PinchedHom.vertexEquiv : {X : SSet} →
+  (x y : X.obj (Opposite.op { len := 0 })) →
+    (SerrePositivity.InfinityCategories.pinchedHom x y).obj (Opposite.op { len := 0 }) ≃ SSet.Edge x y
+
+@SerrePositivity.InfinityCategories.PinchedHom.vertexEquiv_edge : ∀ {X : SSet} (x y : X.obj (Opposite.op { len := 0 }))
+  (s : (SerrePositivity.InfinityCategories.pinchedHom x y).obj (Opposite.op { len := 0 })),
+  ((SerrePositivity.InfinityCategories.PinchedHom.vertexEquiv x y) s).edge = s.val
+
+SerrePositivity.InfinityCategories.DGNerve.pinchedHom : (A : Type u_1) →
+  [inst : CommRing A] → (D : Type u_2) → [SerrePositivity.DifferentialGraded.DGCategory A D] → D → D → SSet
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.vertexCycleEquiv : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        (x y : D) →
+          (SerrePositivity.InfinityCategories.DGNerve.pinchedHom A D x y).obj (Opposite.op { len := 0 }) ≃
+            ↥(SerrePositivity.DifferentialGraded.zeroCycles (SerrePositivity.DifferentialGraded.homObject A D x y))
+```
+
 ## 6. 次のマイルストーン D（本計画の範囲外）
 
 - Semifree(S) を `DGFullSubcategory`（`moduleSemifree` または一点 dg 圏上の複体版）として置き、
