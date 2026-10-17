@@ -183,6 +183,16 @@
 - `lake build SerrePositivity.DifferentialGraded.Endomorphism.ChecksProjectiveCriterion` 成功。
   3主要宣言の公理は標準3公理のみ。
 
+## U14a.15：再構成tensorのホモトピー射影性保存（2026-10-17）
+
+- `TensorProjective.lean`：Eがホモトピー射影的なとき、Homの主K関手が指定擬同型を保つ
+  ことを証明。主Kの再構成随伴とU14a.14の判定を使い、再構成tensorが射影的右End(E)
+  加群を射影的右D加群へ送ることを証明した。
+- 証明では始域のprojectivityをHomの擬同型不変性へ移し、随伴のHom同値で輸送している。
+  EやHom(E,E)のA上のflat性で代用していない。
+- `lake build SerrePositivity.DifferentialGraded.Endomorphism.ChecksTensorProjective` 成功。
+  2主要宣言の公理は標準3公理のみ。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
