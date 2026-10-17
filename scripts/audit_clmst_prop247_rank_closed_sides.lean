@@ -1,0 +1,5 @@
+import SerrePositivity.CLMST.Prop247RankClosedSides
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.CLMST.prop247_rankSource_closedSide_completeness
+#print axioms SerrePositivity.CLMST.prop247_rankSource_closedSide_completeness
