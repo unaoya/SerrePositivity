@@ -24,7 +24,9 @@ Mathlibへの相対パスはすべて `.lake/packages/mathlib/Mathlib/` から�
 
 | 範囲 | 担当・所有範囲 | 記録 |
 | --- | --- | --- |
-| U12e-local受入 → U16a公開API固定 → 一般成果棚卸し → U16a完成 → U16c | このチャット。Morita/Kernel*・Adjunction*・Coherence*・Criterion*、既存の一般経路のdocstring整理 | 本文§17、dg-theory-morita.md、dg-theory-u12e-general-inventory.md |
+| U16a完成 → U16c最終統合 → U16全体受入 | このチャット。Morita/Kernel*・Adjunction*・Coherence*、統合用Criterion.lean／U16.lean | 本文§17、dg-theory-morita.md |
+| U16c：Perf Morita判定・逆 | 局所K-flat版チャット。Morita/CriterionPerf* | dg-theory-morita-criterion.md |
+| U16c：導来圏全体への拡張 | dg-U14チャット。Morita/CriterionDerived* | dg-theory-morita-qe.md |
 | U16b → U16d | dg-U14チャット。Morita/QuasiEquivalence*・Perfect*・ScalarExtension*・Center* | dg-theory-morita-qe.md |
 | U17c・U17dの一部 | 局所K-flat版担当。Verdier/・Quotient/DerivedComparison*の新規ファイル | dg-theory-u17a-u13d.md |
 | U12e-general | 部分実装済み・中断・未受入。再開条件とR1〜R7は§17.249 | dg-theory-u12e-general-inventory.md |
@@ -12563,3 +12565,42 @@ CoherenceCompositionCanonicalChecks 572、DerivedComparisonPerfect 568のproject
 M9の局所商入口も既にあるため、一般版の5〜12時間を並行投資する優先性は低い。
 既存U16b/dとの並行分担は維持できる。M9の具体的な平坦性・無限積比較の供給は別途必要。
 方針はユーザーが決める。報告後は指示があるまで新しい単位に着手しない。
+
+
+### 17.264 U16a再開：一般kernelのtelescopeと生成元Hom全単射（2026-10-17）
+
+新しいユーザー指定により、U16cの右随伴を使わない部分を二担当へ分担した。
+局所K-flat版チャットはMorita/CriterionPerf*（記録dg-theory-morita-criterion.md）、
+dg-U14チャットはMorita/CriterionDerived*を担当。この二接頭辞はこのチャットでは編集しない。
+このチャットはKernel*・Adjunction*・Coherence*と統合用Criterion.lean／U16.leanを所有する。
+U16a受入後、両担当の逆同値と実際の右随伴を比較し、unit/counitの可逆性を示してU16全体を統合する。
+§17.263の調査記録はそのまま保存し、一般U12e・U15e分解版は中断を維持する。
+
+AdjunctionKernelTelescope.leanで可算近似のtelescopeとその像からYへの射を構成した。
+kernelBrownSumTargetは実際の作用の余積保存で各段階の標的射を束ね、
+kernelBrownSumTarget_relationはその射が1-shiftの像を消すことを示す。
+三角性・Hom完全性からKernelBrownTelescopeの存在kernelBrownTelescope_nonemptyを証明し、
+kernelBrownTelescopeで実際の対象を選ぶ。随伴存在や表現可能性を入力仮定にはしていない。
+kernelBrownStageMap_fac・_succで各段階との互換性を検証した。
+
+AdjunctionKernelGeneratorHom.leanのkernelBrownTelescope_generator_bijectiveは、
+全p : D × ℤでHom(moduleCompactGenerators p, S.obj) → Hom(L(generator p), Y)、
+f ↦ L.map f ≫ S.targetが全単射であることを証明する。
+全射は初期被覆から、単射は既存moduleCompact_telescope_factorと直後の関係消去から得た。
+任意可換環、独立対象宇宙・Small.{u}、局所Hom K-flat性・kernel列の射影性なしで成立する。
+
+保存済みAdjunctionKernelTelescopeChecksは実際の選択対象にも全単射を適用し、標数2を含めて検査する。
+新旧近似列・合成自然性・QuasiEquivalence・U12eLocal・General入口・Spectra.StageTwoとの
+合同ビルド成功（4124 jobs、警告0）。新規14宣言を直接公理監査し標準3公理以内。
+新規監査累計5011。新規sorry・axiom・引用・資源上限変更なし。
+
+全入力へのHom比較の拡張、実際の右随伴・unit/counit・三角恒等式、
+恒等・結合の作用coherenceは未完。U16aの公開型は維持し、「型のみ確定」を未完成のまま残す。
+次は全整数shiftでのHom比較が同型になる入力の局所化閉性を証明し、
+既存moduleLocalizing_allで全入力の自然なHom同値へ接続する。
+これはCriterionPerf*・CriterionDerived*のMorita判定の重複実装ではなく、任意kernelの右随伴の存在証明。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Morita.AdjunctionKernelTelescopeChecks SerrePositivity.DifferentialGraded.Morita.AdjunctionKernelSequenceChecks SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionCanonicalChecks SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.DifferentialGraded.Checks.U12eGeneralInventory SerrePositivity.Spectra.StageTwo
+lake env lean SerrePositivity/DifferentialGraded/Morita/AdjunctionKernelTelescopeChecks.lean
+```

@@ -1,4 +1,4 @@
-# 導来Morita：このチャットのU16a・U16c
+# 導来Morita：このチャットのU16a・U16c統合
 
 ## U16a 公開 API（2026-10-17固定）
 
@@ -104,7 +104,7 @@ unit/counitは上の実際の随伴の成分とする。随伴の存在・成分
 同一視しない。一対象Endでの既存随伴を任意kernelの証明の代わりにしない。
 この型の確定は右随伴の実装が完成したという意味ではない。
 通常Homのdg関手はAdjunctionHom.leanで実装・検証済み（U16a10）。
-一般導来右随伴の表現対象構成は初期被覆・関係消去・可算近似列まで進んでいるが、存在証明は未完（U16a11）。
+一般導来右随伴の表現対象構成はtelescopeと全shift代表生成元上のHom全単射まで進んでいるが、全入力の表現可能性と随伴存在は未完（U16a12）。
 
 ### 5. 恒等作用（実装・検証済み、U16a4）・合成比較（実装・検証済み、U16a6）
 
@@ -519,3 +519,32 @@ lake env lean SerrePositivity/DifferentialGraded/Morita/AdjunctionKernelCoproduc
 lake env lean SerrePositivity/DifferentialGraded/Morita/AdjunctionKernelSuccessorChecks.lean
 lake env lean SerrePositivity/DifferentialGraded/Morita/AdjunctionKernelSequenceChecks.lean
 ```
+
+
+## U16cの新分担（2026-10-17）
+
+ユーザーの新しい指定により、このチャットはU16aの一般右随伴・unit/counit・受入に集中し、
+その後U16cの最終統合とU16全体の受入を担当する。
+CriterionPerf*は局所K-flat版チャット（記録dg-theory-morita-criterion.md）、
+CriterionDerived*はdg-U14チャットの所有とし、読み取り専用で利用する。
+このチャットはKernel*・Adjunction*・Coherence*と統合用Criterion.lean／U16.leanを使う。
+統合では両担当が作った同値の逆関手を実際の右随伴と比較し、unit/counitの可逆性を証明する。
+一般右随伴の公開型は本書冒頭の型を維持し、証明完成時に実装状態を更新する。
+
+
+## U16a12：telescopeと生成元上のHom全単射（2026-10-17）
+
+AdjunctionKernelTelescopeのKernelBrownTelescopeは可算近似列のtelescopeと、
+その実際のkernel像からYへの延長射を持つ。kernelBrownTelescope_nonemptyで存在を証明し、
+kernelBrownTelescopeで選んだ対象を公開した。局所Hom K-flat性・kernel列の射影性は不要。
+AdjunctionKernelGeneratorHomのkernelBrownTelescope_generator_bijectiveは、
+全ての整数shiftした代表加群Gpに対して、f ↦ L.map f ≫ targetが
+Hom(Gp,S.obj)とHom(L(Gp),Y)の全単射であることを証明する。
+compact性による有限段階因子分解と後続関係消去を用い、引用を追加していない。
+
+次は全入力へこのHom全単射を拡張し、実際の右随伴・unit/counit・三角恒等式へ進む。
+冒頭の公開型は変えていない。右随伴存在は依然「型のみ確定」であり、U16a全受入ではない。
+一般右随伴を完成させた後、別担当CriterionPerf*・CriterionDerived*を読み取り専用で統合する。
+
+AdjunctionKernelTelescopeChecksを新旧入口と合同ビルドし成功（4124 jobs、警告0）。
+新規14宣言の直接公理監査は標準3公理以内。詳細はdg-theory.md §17.264。
