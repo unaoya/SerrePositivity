@@ -1106,6 +1106,17 @@
   U14b.69の比較データを定義的に簡素化し、追記後の対象ビルドを再検証中。
   この単位はまだ公理監査・コミット・公開入口への接続を完了していない。
 
+## U14b.72：U13 enhancementの主K包含の整合的shift・三角性（2026-10-17）
+
+- `ProjectiveHomotopyComparison.lean`：射影的加群の主K部分圏から主導来圏への関手の
+  充満忠実性を、既存の射影的始域の局所化Hom計算から証明した。
+- U13 enhancementの主K包含をこの部分圏で因子化し、U13で既に固定したshiftと
+  主導来比較から零・加法shiftと整合する包含の比較データと三角性を構成した。
+  U13のshiftや既存比較の名前・型は変更していない。compact⇒Perfは再実装していない。
+- `ChecksProjectiveHomotopyComparison` 対象ビルド成功（2550 jobs）。
+  主要11宣言の公理は `propext`, `Classical.choice`, `Quot.sound` のみ。
+  新しいsorry・axiom・引用は追加していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
