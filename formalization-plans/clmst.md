@@ -8216,6 +8216,77 @@ g=0・g=1・零環の境界を確認した。Andréの存在引用はこの共�
 perfectoid化比較の核を各両立根で零化する。一般の整な変更の余核・被覆合流、
 KL-T/Q、D-I/U/Qの実入力と引用置換は引き続き未完了。
 
+#### Prop 2.4.7 専任系列：原典から D-I/U/Q への型付き受渡し（2026-10-17）
+
+本節は統合表 D-I・D-U・D-Q の実入力を固定する。未採用の別計画は根拠にしない。
+ユーザー指定の実行順は、受渡し → D-U → almost 非依存の D-I → 底変換図式 →
+定 rank → 一般 rank。KL-T の実 almost 比較と BS 8.13 の環版は他系列が担当する。
+その存在を仮定した条件付き定理は許すが、実入力を供給済みとは数えない。
+
+**原典。** CLMST v4 pp.17–19 の Prop 2.4.7 と Claim 2.4.8、BS 著者版
+Cor 8.12、Prop 8.13、Theorem 10.9 の最後の段落を使う。
+CLMST の α は完備底変換後の標準射、β は通常 tensor からその perfectoid 化への標準射。
+β の始域から α の始域への古典完備化写像は全射で、終域の同型と可換する。
+これにより ker β ↠ ker α、coker β ≃ coker α を得る。
+almost 比較は一般には単一の通常同型ではなく、実中間代数を通る射も許す。
+原典脚注5の通り、定 rank でも一つの大域的な自由比較の存在を仮定しない。
+
+以下では `B := R′`、`φ : R →+* B`、`a := (p : R)`、
+`f := perfectoidizationModuleMap R S p hR`、`C := moduleMapCone R f` とする。
+
+| 原典の対象・入力 | Lean の型・既存入口 | 分担・状態 |
+| --- | --- | --- |
+| 元の標準射 S → S_perfd | `f : S →ₗ[R] Perfectoidization R S p hR` | 既存 `PerfectoidizationCone.lean` |
+| 実錐と完全三角形 | `C : DerivedCompletion.ConcreteDerivedCategory R`、`perfectoidizationTriangle_distinguished R S p hR` | 既存。抽象的な錐述語を導入しない |
+| André 拡大 | `φ : R →+* B`、`IsIntegralPerfectoid B p`、B の絶対整閉性、`IsCompletelyFaithfullyFlat (Ideal.span {a}) (baseChangeScalarModule φ)` | 存在は既存 BS 7.14。実拡大の選択と各 instance の接続は本系列。KL-T の選択済み拡大も再利用可 |
+| C の導来完備性 | `DerivedCompletion.IsComplete R a C` | 本系列 `Prop247Cone.lean`。有限表示による導来完備性の閉性を使用。bounded torsion は不要 |
+| E5 の有限自由比較 | `[IsReduced B]`、`[Module.Finite B L]`、`u : L →ₗ[B] (Fin r → B)`、`Function.Bijective (awayModuleMap (φ g) u)` | E1〜E5 は既存。実 L は原典の通常 tensor S⊗R B。局所的な実分解は KL-T |
+| E5 の出力 | `∃ q : ℕ, moduleMapConeScalar B u ((φ g)^q) = 0` | `finiteFreeConeIsogeny`。各 n に適用し直さず、剰余の前に q を選ぶ |
+| 中間対象を通る比較 | `β : L →ₗ[B] P`、`v : P →ₗ[B] E`、`w : (Fin r → B) →ₗ[B] E`、`v.comp β = w.comp u` | 実 perfectoid 化射とその核・余核の almost 零化は KL-T。本系列はこれらを明示入力にする。almost 圏の逆射を通常射として選ばない |
+| 全剰余の比較 | 下記 `comparison` | 本系列。G2 の標準単位・スカラー図式を再利用。BS 8.13 の環版は明示仮定として受領 |
+| 全段共通指数 | 下記 `uniform` | 本系列 D-U。固定した実錐の零射から全段へ。局所指数の被覆合流は既存 `PrincipalCoverNumerators.lean` |
+| 降下 | `moduleMapConeIsogeny_descent φ a hB f hC g uniform` | 既存 D1〜D6 を再実装しない。Milnor で 2q、二段錐で 4q |
+| 一般 rank | Spec R ∖ V(J) の rank 別開閉部分、閉包 Ri と (Ri)_perfd、有限直積比較 | 本系列。BS Cor 8.12 の新引用は 2026-10-17 承認済み。宣言前に付値環条件と原典の一般性を照合する |
+
+```lean
+comparison : ∀ n : ℕ,
+  ((boundedAboveDerivedBaseChange φ).obj
+    ((boundedAboveDerivedScalarCone R (a ^ n)).obj
+      (moduleMapConeBoundedAbove f))).obj ≅
+  (derivedScalarConeFunctor B ((φ a) ^ n)).obj (moduleMapCone B β)
+
+uniform : ∃ q : ℕ, ∀ n : ℕ, ∀ i ∈ Set.Icc (-2 : ℤ) 0,
+  ∀ x : (DerivedCategory.homologyFunctor (ModuleCat B) i).obj
+    ((boundedAboveDerivedBaseChange φ).obj
+      ((boundedAboveDerivedScalarCone R (a ^ n)).obj
+        (moduleMapConeBoundedAbove f))).obj,
+    (φ g) ^ q • x = 0
+```
+
+上記 `comparison` の β は **α を表す実加群写像** でなければならない。
+原典の通常 tensor からの β の錐をそのまま右辺に置いて同型と主張しない。
+`Prop247Uniform.lean` の固定錐の移送はまず原典の β へ適用し、
+全射な始域の完備化から α の核・余核へ移してから、この比較へ渡す。
+この区別は実際の標準射の図式を証明して解消する。
+
+**bounded torsion の用途。** 元の S の仮定
+`∃ N : ℕ, ∀ (n : ℕ) (s : S), (p : S)^n * s = 0 → (p : S)^N * s = 0`
+は CLMST Lemma 2.3.5 による S の完備導来底変換と通常 tensor の古典完備化との
+同定に使う。有限表示加群の導来完備性や E5 に勝手に追加しない。
+
+**Cor 8.12 の境界。** 原典は任意の導来 p 完備環 S→S′ と導来 p 完備 ideal I、
+任意の p 完備 rank 1 付値環 V への I を零化しない射の一意延長を仮定し、
+perfectoid 化の商四角形が E∞-S 代数の pullback であると主張する。
+単なる離散 perfectoid 環の核・余核の零化へ狭めて原典全体の引用とは呼ばない。
+離散環で宣言する場合は原典の導来環の意味との同値の根拠とモデルを先に固定する。
+整写像が V(I) の外で同型なら上の付値環条件を満たすという脚注14の含意は証明する。
+新入力の正確な Lean 型をコミット前に報告し、主定理の公理監査で到達経路を確認する。
+
+**検証前の実装状況。** 共通層 `FinitePresentationComplete.lean` の対象ビルドは成功。
+`Prop247Uniform.lean` と `Prop247Cone.lean` は実装・検証中。
+KL-T の実 almost 比較、原典の α/β 完備化図式、BS 8.13 の環版、定 rank と一般 rank の
+実組立ては未完了。Prop 2.4.7 の引用は現時点で維持する。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
