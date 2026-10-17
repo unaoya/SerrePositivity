@@ -23,9 +23,10 @@ Mathlibへの相対パスはすべて `.lake/packages/mathlib/Mathlib/` から�
 
 | 範囲 | 担当チャット・所有範囲 | 実装記録 |
 | --- | --- | --- |
-| U12eの完成・受入 → U16a〜d → U15e | このチャット。既存のdg加群・bimodule・導来合成の公開APIを管理 | この文書§17 |
+| U12eの完成・受入 → U16a〜d → U15eの分解版 | このチャット。既存のdg加群・bimodule・導来合成の公開APIを管理 | この文書§17 |
 | U14（指定生成元・endomorphism表示） | 「dg-U14」。`DifferentialGraded/Endomorphism/` | `dg-theory-u14.md` |
 | U12f・U15d（係数変更）、追加のU17a・U13d | 「dg-U12f/U15d」。このチャットの担当外 | `dg-theory-scalar-extension.md` |
+| U15eの局所K-flat版 → U17bの局所K-flatの場合 | U17a・U13dを終えたチャット。`Quotient/DerivedComparison*.lean`・`Verdier/` | `dg-theory-u17a-u13d.md`を参照 |
 | D4m（dg加群モデル構造） | 当面未割当。U17までの主線には使わない | 未着手 |
 
 両並行チャットは既存の`Derived/KFlatBimodule*`や`Bimodule/`の合成系を読み、再利用するが、
@@ -39,9 +40,12 @@ Mathlibへの相対パスはすべて `.lake/packages/mathlib/Mathlib/` から�
 共有監査スクリプトを変更するときは自分のhunkだけをgit add -pでstageする。
 このチャットのU16bではEndomorphism/の再構成随伴・endomorphism比較と、受入済みの
 Tensor/ScalarExtension*・Derived/ScalarExtension*を読み取り専用で再利用する。
-U15eはU12e受入後に扱い、局所K-flat版とdg圏の分解を使う版を分ける。
-このチャットによるU15eとU17の合流作業は、U12f・U14・U16の受入条件がそろってから開始する。
-並行担当によるU17a・U13dの作業とその個別記録は、この合流待ちとは別に保持する。
+このチャットはU12eの完成・受入、U16a〜d、U15eのdg圏の分解を使う版の順に進める。
+U15eの局所K-flat仮定を置く版はU17a・U13dを終えたチャットが担当し、
+続けてU17bの局所K-flatの場合を扱う。この局所K-flat版の作業は、このチャットの合流待ちとは分離する。
+このチャットのU15e分解版はU12f・U14・U16の受入条件がそろってから開始し、
+局所K-flat版の`Quotient/DerivedComparison*.lean`と`Verdier/`を読んで再利用する。
+局所K-flat版の比較・Verdier一般論を重複実装せず、分解とその比較APIへの接続を担当する。
 U16cでDG-MOR、U15eでDG-DRの引用採用が必要になったら、採用せず停止して報告する。
 新しいsorry・axiom・引用は追加しない。この規則は以下の従来の引用許容案に優先する。
 
@@ -2804,9 +2808,14 @@ U15b `Quotient/Differential.lean`：各Homの微分とdε_b=idをLeibnizで延�
 U15c `Quotient/Universal.lean`：Bの像の指定収縮を持つdg関手との厳密普遍性。収縮の存在だけと、収縮を選んだデータを区別する。
 U15d `Quotient/ScalarExtension.lean`：path添字を固定した係数変更の同型・単位/合成整合性。underivedの構成法則として証明する。
 U12f・U15d の係数変更の実装・明示仮定・検証記録：[dg-theory-scalar-extension.md](dg-theory-scalar-extension.md)。
-U15e `Quotient/DerivedComparison.lean`：U12e受入後、local K-flat仮定の版と解像度を使う版を分け、
-定義済みtriaのVerdier商と比較する。現行§0の指定により、DG-DRの引用採用が必要になったら
+U15e：局所K-flat仮定の版とdg圏の分解を使う版を分け、定義済みtriaのVerdier商と比較する。
+局所K-flat版はU17a・U13dを終えたチャットが`Quotient/DerivedComparison*.lean`や
+`Verdier/`で担当し、続けてU17bの局所K-flatの場合も扱う。
+このチャットはU12e受入→U16の後に分解版を担当し、局所K-flat版の定義・比較定理を
+読み取り専用で再利用して、分解とその変更に関する比較へ接続する。重複実装はしない。
+現行§0の指定により、DG-DRの引用採用が必要になったら
 採用せず停止して報告する。
+局所 K-flat 版 U15e・U17b の担当記録：[dg-theory-u17a-u13d.md](dg-theory-u17a-u13d.md)。
 元のHomが次数0の場合はpath長rの次数−rと正次数ホモロジー消滅を具体例として証明する。
 対象・普遍性まではU11/U12と独立に先行可能だが、導来/Verdier比較はflatnessの受入後とする。
 
@@ -2824,6 +2833,7 @@ U16d：Perfへの制限と係数変更・中心作用の自然性、合成のcoh
 U17a：tria(D)とBの像の三角閉包を定義し、殺す対象クラスの一致を証明する。
 U17a・U13d の担当実装と検証記録：[`dg-theory-u17a-u13d.md`](dg-theory-u17a-u13d.md)。
 U17b：H⁰(Perf_dg(D/B))とKaroubi(tria(D)/tria(B))の比較を、U15の商とU16の自然性から構成。
+局所K-flatの場合はU17a・U13dを終えたチャットが、U15eの局所K-flat版に続けて担当する。
 U17c：既存`karoubiVerdierOrderEquivalence`、`paperRankEquivalence`、`paperSequenceComparison`との可換squareをshift・三角性・線形性付きで公開。
 U17d：中心局所化・支持・retract、係数変更、Gのstrict作用の比較を個別の図式として検証。
 M9の環S・列s・小ランク条件は具体的当てはめで固定し、一般dg定理へ埋め込まない。
@@ -9383,3 +9393,57 @@ BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_
 接続してU12eを受け入れる。代表加群ごとの往復同型だけで一般同値やU12e完成とはしない。
 U12e全受入後のU16a〜d、U15eの順と§0の分担・合流条件・引用禁止を維持する。
 共有一般論への新しいAPI要求はない。
+
+### 17.204 U15eの局所K-flat版と分解版の分担更新（2026-10-17）
+
+ユーザー指定により§0・§15.5・§15.7の現行分担を更新した。
+このチャットはU12eの完成・受入→U16a〜d→U15eの分解版を担当する。
+U17a・U13dを終えたチャットがU15eの局所K-flat版を担当し、
+続けてU17bの局所K-flatの場合を扱う。
+分解版を構成する際は、その成果である`Quotient/DerivedComparison*.lean`と`Verdier/`を
+読んで再利用し、比較定理やVerdier側の構成を重複実装しない。
+局所K-flat版の作業を、このチャットのU12e・U16の受入待ちとはしない。
+§17の管理と、公開APIの名前・型を変更する際の記録責任はこのチャットが保持する。
+
+この項は分担変更の記録であり、U12e・U16・U15eの受入完了を意味しない。
+Leanの検証・公理監査の受入済み結果と累計は§17.203のまま。
+進行中の全加群での延長–制限随伴から作業を継続する。
+
+### 17.205 U12e45：graph延長の評価・自然な余単位・単位挿入成分（2026-10-17）
+
+**追加API。** `Tensor/RestrictBalanced.lean`でdg関手に沿う左右作用のchain map比較と
+`BalancedTensor.restrictFamily`を構成した。右作用のKoszul交換を保ってbalanced関係を
+引き戻す。対象型の宇宙は独立とし、左右作用の比較にはsource smallnessを要求しない。
+`Module/FunctorExtensionEvaluation.lean`で`functorExtensionEvaluationFamily`と
+`functorExtensionEvaluationComponent`を定義した。既存の
+`endomorphismYonedaApp`を読み取り専用で再利用してgraphの左作用を照合した。
+任意整数次数r,sの生成元m⊗hの評価は`(-1)^(r*s) • moduleAction h m`である。
+
+`Module/FunctorExtensionCounit.lean`の`functorExtensionEvaluation_naturality`は
+全Homの自然性を証明し、`functorExtensionCounit`を実際の閉零加群射として構成する。
+`Module/FunctorExtensionMaps.lean`ではgraph延長のHom写像を
+`BalancedTensor.rightHomMap`と、閉零射の評価を`rightTensorMap`と照合した。
+これを用いた`Module/FunctorExtensionCounitNaturality.lean`の`dgModuleCounit`は
+制限→延長から恒等関手への自然変換である。
+`Module/FunctorExtensionInsertion.lean`では単位挿入chain map成分と、
+制限加群を挿入して評価すると恒等射になる式を証明した。
+既存公開APIの名前・型の変更はない。元のHomのflatness・有界性を仮定しない。
+
+**検証。** 新規`Checks.DGFunctorCounit`は独立宇宙・任意整数次数の評価式・
+ZMod 2上の自然な余単位・挿入と評価の恒等式を型検査する。
+同チェックとChecks.DGFunctorExtension・Checks.DGDerivedRestriction・
+Checks.DGResolutionComparison・Checks.DerivedBimoduleFullPentagon・Checks.StageEight・
+Checks.StageSeven・Spectra.StageTwoの統合ビルド成功（3308 jobs、警告なし）。
+主要21宣言の直接公理監査は重複・欠落なく標準3公理以内。監査累計4020宣言。
+今回の受入ソースのsorry・admit・新規axiom・資源上限変更は0件。採用済み引用は0件。
+全体文書検査は20 Markdown・320 exposition参照を検査し、担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+未解決参照1件で失敗した。この計画書のローカルリンクと担当差分の空白検査は成功。
+
+**残る受入条件。** 単位の挿入成分を全Hom自然な加群射へ束ねる作業は継続中である。
+未受入の`Module/FunctorExtensionUnit.lean`は型の照合エラーが残る草稿で、
+今回のチェックのimport・受入・コミットには含めない。自然な単位、両三角恒等式、
+随伴の導来化、準同値に沿う全加群の導来同値を証明し、解像度変更と導来bimodule合成の
+自然性・単位・結合のcoherenceへ接続する。今回の余単位だけでU12e全体を受け入れない。
+その後U16a〜d、U15eの分解版へ進む。局所K-flat版は§0の並行担当成果を再利用する。
+共有モデル一般論への新しいAPI要求はない。共有ルート・Endomorphism/・係数変更系列は変更していない。
