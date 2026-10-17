@@ -8599,6 +8599,32 @@ IsPullback
 次は、実有限整共通モデルと Cor 8.12 の導来 p 完備性の前提を接続する。
 有限性だけから完備性を断言せず、必要なら有限表示の共通モデルへの近似を構成する。
 
+#### KL-T：単射性を要求しない共通モデルの余核評価（2026-10-17）
+
+`CommutativeAlgebra/LocalizationComparisonBounds.lean` に次の公開補題を追加した。
+R 加群の実線形写像 f : M → N、l : M → T、v : N → T を固定し、
+v.comp f = l および l と v がともに powers d による局所化を表すことを前提とする。
+
+- `localizationComparison_coker_power_torsion_of_localized_target`：
+  ∀ y : N / range f, ∃ n, d^n • y = 0。有限性は不要。
+- `localizationComparison_exists_pow_annihilates_coker_of_localized_target`：
+  N が有限 R 加群なら ∃ n, ∀ y : N / range f, d^n • y = 0。
+- `localizationComparisons_exists_common_pow_annihilates_cokers_of_localized_target`：
+  f' : M' → N、l' : M' → T も同じ条件を満たせば、両余核を消す一つの指数を返す。
+
+v の単射性は要求しない。分母払い後の誤差が ker v に入ることと、
+局所化の核の元が d の冪で消えることを合成し、有限生成性で指数を一様化する。
+既存の単射を前提とする公開 API は保持した。
+有限表示共通モデルが局所化先へ単射とは限らない場合にも使うための準備であり、
+有限表示モデルの存在や導来 p 完備性をこの補題だけで供給したとはしない。
+
+対象ビルドと `scripts/audit_clmst_localized_target_bounds.lean` は成功した。
+公開3補題と、零元の反転で局所化写像が非単射かつ比較の余核が非零となる例は
+`assert_no_sorry` が通り、標準三公理のみ。新しい引用は追加していない。
+全体ビルドは今回未編集の DG Endomorphism/Compatibility.olean が見つからず失敗した。
+KL 専用監査 `scripts/audit_clmst_koszul_local.lean` は成功（1203 assert）。
+有限表示共通モデル、Cor 8.12 の実適用と離散対象との同定、包含比較、KL-T/Q は未完了。
+
 #### Prop 2.4.7 専任系列：原典から D-I/U/Q への型付き受渡し（2026-10-17）
 
 本節は統合表 D-I・D-U・D-Q の実入力を固定する。未採用の別計画は根拠にしない。
