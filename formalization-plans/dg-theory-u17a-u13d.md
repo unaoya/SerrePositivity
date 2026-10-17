@@ -528,3 +528,28 @@ HEAD からの差分全体が自分の変更だけであることも確認する
 - 残部：個々の path 項の性質を、固定長直和の導来像と長さ余極限に運ぶこと、
   そこから商への代表加群比較の cone の有限因子分解性と実際の Verdier 比較の完全忠実性を示すこと。
   U17b 全体も未完。U15e16 のコミットは `a4d21297`（自分の3ファイルのみと直後に確認）。
+
+### U15e18：導来局所化の余積保存と有限長比較 cone の局所生成
+
+- `Verdier/DerivedCoproductComparison.lean`：厳密な加群図式の自然変換が objectwise 擬同型なら、
+  評価先の加群余極限が exact である形の余極限でも擬同型になることを証明。
+  u-small な加群の直和写像にも適用した。
+- 任意の加群族を項ごとに普通の射影置換へ置き換え、置換間の余積比較と上記の擬同型保存を使って、
+  局所化した元の余積包含が導来圏の真の余積になることを証明。
+  `moduleDerivedCofanIsColimit`、`moduleDerivedCoproductIso` と全包含に対する整合式、
+  `moduleToDerived_preservesCoproducts` を公開。加群族そのものに射影性は仮定しない。
+- `Quotient/DerivedComparisonLayerGeneration.lean`：受け入れ済みの有限因子分解性の余積閉性を
+  underived 加群余積の導来像へ運んだ。逐次余極限についても、標準の逐次余極限の cone 表示、
+  その objectwise 擬同型、および cone 三角形を使って同じ閉性を証明した。
+- 局所 K-flat 仮定から個々の正の path 項の生成性を全ての正の固定長層へ運び、
+  相隣る長さ段階間の比較 cone の有限因子分解性を証明。
+  distinguished triangle による `trW` 判定とその合成閉性を使い、零段階から任意の有限長段階への
+  比較が `trW` に入ることと、その実際の加群 cone の有限因子分解性まで証明した。
+- 対象ビルド `Checks.DerivedCoproductComparison`（2201 jobs）、
+  `Checks.QuotientLayerGeneration`（2707 jobs）成功。主要13宣言の公理監査は標準3公理のみ。
+  project import 依存146・506ファイルに禁止された dg 圏分解系への依存なし。
+  新規 sorry・axiom・引用なし。他担当およびルートの既存ファイルは編集していない。
+- 残部：有限長比較 cone の厳密な図式の余極限を、商の制限代表加群全体への比較 cone と
+  同定すること。その有限因子分解性から実際の Verdier 比較の完全忠実性を導くこと。
+  U17b 全体も引き続き未完。
+- U15e17 のコミット：`d60bd909`（自分の5ファイルのみと指定 SHA でも確認）。
