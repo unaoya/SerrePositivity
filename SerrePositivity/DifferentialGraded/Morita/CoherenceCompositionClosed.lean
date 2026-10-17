@@ -66,9 +66,22 @@ def kernelTensorCompositionSourceIso :
       (BimoduleTensor.compose A F E (RightModule A D) Q
         (BimoduleTensor.compose A E D (RightModule A D) P
           (DGFunctor.id (RightModule A D)))).toFunctor.onClosed :=
-  (EnrichedFunctor.forgetComp (kernelTensor A D E P) (kernelTensor A E F Q)).symm ≪≫
-    eqToIso (congrArg (fun G : DGFunctor A (RightModule A D) (RightModule A F) => G.onClosed)
-      (kernelTensorComposition_eq A D E F P Q))
+  NatIso.ofComponents (fun _ => Iso.refl _) (by
+    intro M N f
+    simp only [Iso.refl_hom, Functor.comp_map, Category.comp_id, Category.id_comp]
+    change ForgetEnrichment.homOf (Complex A)
+        (ForgetEnrichment.homTo (Complex A)
+          (ForgetEnrichment.homOf (Complex A)
+            (ForgetEnrichment.homTo (Complex A) f ≫ (kernelTensor A D E P).map _ _)) ≫
+          (kernelTensor A E F Q).map _ _) =
+      ForgetEnrichment.homOf (Complex A)
+        (ForgetEnrichment.homTo (Complex A) f ≫
+          (BimoduleTensor.compose A F E (RightModule A D) Q
+            (BimoduleTensor.compose A E D (RightModule A D) P
+              (DGFunctor.id (RightModule A D)))).toFunctor.map _ _)
+    rw [ForgetEnrichment.homTo_homOf, Category.assoc]
+    erw [kernelTensorComposition_map A D E F P Q
+      (ForgetEnrichment.to (Complex A) M) (ForgetEnrichment.to (Complex A) N)])
 
 /-- 入れ子tensorを合成kernelの作用へ送る、既存bimodule結合子の閉零表示。 -/
 def kernelTensorAssociatorClosedIso :

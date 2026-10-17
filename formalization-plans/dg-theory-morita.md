@@ -362,3 +362,20 @@ Spectra.StageTwoとの合同ビルド成功（3565 jobs）。新規sorry・axiom
 lake build SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionChecks
 lake env lean SerrePositivity/DifferentialGraded/Morita/CoherenceCompositionChecks.lean
 ```
+
+
+## U16a7：kernel射に関する増大・計算と通常合成の自然性（2026-10-17）
+
+KernelAugmentationNaturalityは任意の通常kernel射について、H⁰計算・任意入力解像度計算・
+主導来増大の自然性を証明する。kernelResolutionTensorModelMapは自然なモデル間の実際の自然変換、
+kernelResolutionTensorModelIso_kernel_naturalityは主導来作用の射との比較square。
+CoherenceCompositionNaturalityは通常作用射の水平合成を入れ子bimodule射として計算し、
+kernelTensorCompositionClosedIso_kernel_naturalityを既存結合子の三変数自然性から証明する。
+いずれにもlocalHomKFlatは不要。追加8公開宣言の直接監査は標準3公理以内。
+既存kernelCompositionIsoも再監査して同じ。合同ビルド成功（4087 jobs）。
+
+kernelTensorCompositionSourceIsoの公開型は維持し、定義を恒等成分と全Hom map計算による
+直接のNatIso.ofComponentsへ変更した。これにより成分の計算を、巨大な関手等式の輸送を展開せず使える。
+資源上限の変更・新規sorry・axiom・引用はない。
+全導来kernelの合成比較のkernel射自然性はまだ未完で、通常自然性からK-flat計算と
+主局所化へ運ぶ必要がある。一般右随伴・unit/counitと作用coherence、U16cも未完。
