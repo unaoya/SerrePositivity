@@ -1,0 +1,10 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.EssentialImageTriangles
+
+/-! # 再構成本質的像の三角閉性の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+
+#print axioms perfectEndomorphismEssentialImage_triangle_obj₃
+#print axioms perfectEndomorphismEssentialImageTriangulatedClosed₃
+#print axioms perfectEndomorphismEssentialImageTriangulatedClosed₂

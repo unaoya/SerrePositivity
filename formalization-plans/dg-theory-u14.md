@@ -397,6 +397,14 @@
 - `ChecksEssentialImageRetracts` と `ChecksEssentialImageShift` の対象ビルド成功。
   新規9主要宣言の公理は標準3公理のみ。
 
+## U14b.14：本質的像のdistinguished triangle閉性（2026-10-17）
+
+- `EssentialImageTriangles.lean`：本質的像の二つの対象の間の射を完全性で始域のPerfへ
+  持ち上げ、射影解像度間の実際の閉零射で表示した。
+- 導来Homの計算同型の自然性から最初の射の可換正方形を証明し、標準coneの
+  dg像の同型と三角形の同型延長を使って第三対象が本質的像に入ることを証明した。
+- `ChecksEssentialImageTriangles` 対象ビルド成功。新規3主要宣言の公理は標準3公理のみ。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
