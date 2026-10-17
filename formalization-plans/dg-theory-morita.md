@@ -56,7 +56,7 @@ lemma kernelTensor_graph (f : DGFunctor A D E) :
 
 通常作用にlocalHomKFlatは不要。準同型保存は任意入力について主張せず、入力の射影解像度を使う。
 
-### 3. 主導来作用（型のみ確定）
+### 3. 主導来作用（実装・検証済み、U16a3）
 
 ```lean
 def kernelDerivedTensorFunctor :
@@ -126,7 +126,7 @@ kernelComposeMapへの自然性、恒等と三因子の結合比較のcoherence�
 | --- | --- | --- |
 | Kernel・kernelIdentity・kernelGraph・kernelCompose・kernelComposeMap | 実装・対象ビルド済み | 型・向きは上記で固定 |
 | kernelTensor・値・graph一致 | 実装・対象ビルド済み | 同上 |
-| 主導来作用・任意解像度計算 | 型のみ確定 | この節の型を前提に設計可能。Lean宣言はまだ未実装 |
+| 主導来作用・任意解像度計算 | 実装・検証済み（U16a3） | Morita/KernelDerivedFunctor.leanをimportして利用できる |
 | 一般右随伴・unit/counit | 型のみ確定 | 同上 |
 | 恒等・合成の作用比較 | 型のみ確定 | 同上 |
 
@@ -202,7 +202,7 @@ kernelResolutionDerivedTensorIso_self・_transは二つ／三つの解像度族�
 これらは既存公開型の変更ではなく追加APIである。graph一致は既存導来延長そのものとの等式で、
 U16b担当はこの通常kernel版を直接利用できる。
 
-主導来kernel P : Kernel A D E全体のkernelDerivedTensorFunctorは、まだ型のみ確定。
+U16a2の時点では、主導来kernel全体のkernelDerivedTensorFunctorは型のみ確定だった。
 今回の通常kernel作用をkernelの射に自然な族へまとめ、kernelの準同型を反転して降ろす必要がある。
 一般右随伴・恒等／合成の作用比較・U16cも残る。U16a全受入ではない。
 
@@ -215,3 +215,64 @@ lake env lean SerrePositivity/DifferentialGraded/Morita/KernelResolutionChecks.l
 検証：KernelResolutionChecks・既存kernel型検査・局所受入・General入口検査・Spectra.StageTwoの
 合同ビルド成功（3524 jobs、警告なし）。追加10宣言の直接公理監査は標準3公理のみ。
 文書検査は24 Markdown・326 exposition参照、失敗0件。新しいsorry・axiom・引用なし。
+
+
+## U16a3：kernelの射・準同型反転と主導来作用の実装（2026-10-17）
+
+**冒頭§3の三宣言は型を変えずに実装・検証済みへ更新した。**
+主導来kernelの利用者は以下をimportする。一般分解の入口は経由しない。
+
+```lean
+public import SerrePositivity.DifferentialGraded.Morita.KernelDerivedFunctor
+```
+
+KernelNaturality.leanのkernelClosedFamilyNatTransは、全Hom自然な加群値bimodule射を
+閉零関手の自然変換にする。源の全加群型にSmallを要求しない。
+kernelTensorMap、kernelTensorHomotopyMapは通常／H⁰の入力上の作用の自然変換で、
+_app・_id・_compを証明した。kernelTensorMap_valueは各値のbalanced tensor mapとの一致。
+kernelTensorMap_projective_quasiIsoは、任意kernel準同型と射影的右D入力について
+出力が準同型になることを示す。射影性⇒相対K-flat性の既存APIを再利用している。
+
+KernelDerivedFunctor.leanでは次の追加公開型を固定した。共通変数は冒頭と同じ。
+
+```lean
+def kernelResolutionDerivedTensorMap
+  (R : ∀ M : ModuleCategory A D, ModuleProjectiveResolution A D M)
+  {P P' : BimoduleCategory A E D} (f : P ⟶ P') :
+  kernelResolutionDerivedTensor A D E (BimoduleCategory.underlying A E D P) R ⟶
+    kernelResolutionDerivedTensor A D E (BimoduleCategory.underlying A E D P') R
+lemma kernelResolutionDerivedTensorMap_isIso
+  (R : ∀ M : ModuleCategory A D, ModuleProjectiveResolution A D M)
+  {P P' : BimoduleCategory A E D} (f : P ⟶ P')
+  (hf : BimoduleCategory.quasiIso A E D f) :
+  IsIso (kernelResolutionDerivedTensorMap A D E R f)
+def kernelDerivedTensorOnBimoduleFunctor :
+  BimoduleCategory A E D ⥤ (DerivedModuleCategory A D ⥤ DerivedModuleCategory A E)
+lemma kernelDerivedTensorFunctor_fac :
+  bimoduleToDerived A E D ⋙ kernelDerivedTensorFunctor A D E =
+    kernelDerivedTensorOnBimoduleFunctor A D E
+def kernelDerivedTensorOnBimoduleIso (P : BimoduleCategory A E D) :
+  kernelDerivedTensor A D E ((bimoduleToDerived A E D).obj P) ≅
+    kernelDerivedTensorOnBimodule A D E (BimoduleCategory.underlying A E D P)
+```
+
+作用の準同型反転にはlocalHomKFlatを要求しない。H⁰上の出力準同型を主導来圏で反転し、
+任意の導来入力へ既存の入力解像度計算と局所化の本質的全射性で運ぶ。
+従って対象だけでなくkernelの任意の導来射に対する作用も同じ主局所化上で定まる。
+
+kernelDerivedTensorOnBimoduleIsoとU16a2のkernelDerivedTensorOnBimodule_graphを合成すれば、
+U16b担当は主導来graph kernelの作用を既存のdgDerivedExtensionへ比較できる。
+こちらでQuasiEquivalence*の比較を重複実装していない。既存公開型の変更は0件。
+
+KernelDerivedFunctorChecksは任意可換環・独立宇宙、任意指定入力解像度族、標数2で検査する。
+同入口とKernelResolutionChecks・U12eLocal・General入口検査・Spectra.StageTwoの合同ビルド成功
+（3526 jobs、警告なし）。追加公開22宣言の直接公理監査は重複・欠落なく標準3公理以内。
+文書検査は24 Markdown・326 exposition参照、失敗0件。
+主導来作用入口の推移的project依存は434ファイル、Resolution/依存0件。
+一般右随伴・unit/counit、恒等と合成の作用比較はまだ型のみ確定であり、U16a全受入ではない。
+次はこれらを証明し、その後U16cへ進む。DG-MOR等の引用は追加していない。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Morita.KernelDerivedFunctorChecks
+lake env lean SerrePositivity/DifferentialGraded/Morita/KernelDerivedFunctorChecks.lean
+```

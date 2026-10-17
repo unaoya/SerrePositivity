@@ -12005,3 +12005,27 @@ KernelResolutionChecks・KernelChecks・U12e-local・General入口検査・Spect
 新規監査累計4853宣言。文書検査は24 Markdown・326 exposition参照、失敗0件。
 今回の2 Leanファイルにsorry・admit・新規axiom・資源上限変更は0件。
 次は通常kernelの射に対する自然性とkernelの準同型反転を証明し、主導来kernel全体へ作用を降ろす。
+
+
+### 17.253 U16a：主導来kernel全体の作用関手と準同型反転（2026-10-17）
+
+Morita/KernelNaturality.leanは通常kernel射の全Hom自然性を閉零入力射で評価し、
+kernelTensorMapとH⁰上のkernelTensorHomotopyMapを構成した。恒等・合成・成分式を証明し、
+全右加群型にはSmallを課していない。kernelTensorMap_projective_quasiIsoは、
+射影的右D入力の相対K-flat性により任意kernel準同型が出力準同型になることを示す。
+
+Morita/KernelDerivedFunctor.leanのkernelResolutionDerivedTensorMapは、任意指定入力解像度族で
+同じ射を主導来作用の自然変換へ送る。_isIsoはkernel準同型の反転を任意の導来入力まで証明する。
+これを既存bimodule局所化へ降ろし、kernelDerivedTensorFunctor、kernelDerivedTensorを構成した。
+kernelDerivedTensorComputationは任意指定入力射影解像度による計算同型。
+冒頭で固定した公開型を変更せず実装した。出力HomのlocalHomKFlatはこの作用そのものには不要。
+
+kernelDerivedTensorOnBimoduleIsoは通常kernel上の作用との自然同型であり、既存のgraph等式と
+組み合わせてU16b担当が利用できる。QuasiEquivalence*・Perfect*等の担当ファイルは編集していない。
+追加公開型と状態をdg-theory-morita.md冒頭およびU16a3へ記録した。
+対象Checksと入力解像度・局所受入・General入口・Spectra.StageTwoの合同ビルド成功
+（3526 jobs、警告なし）。追加公開22宣言の直接公理監査は重複・欠落なく標準3公理以内。
+新規監査累計4875宣言。文書検査は24 Markdown・326 exposition参照、失敗0件。
+KernelDerivedFunctorの推移的project依存は434ファイル、Resolution/依存0件。
+今回の3 Leanファイルにsorry・admit・新規axiom・資源上限変更は0件。
+U16aの一般右随伴・unit/counit・恒等／合成比較、U16cは未完として保持する。
