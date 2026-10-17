@@ -9636,6 +9636,22 @@ Noether 性・整域性・rank 正値性・Ui 非空性は不要。対象2773ジ
 有限直積の元の環写像を接続する。perfectoid 化後の almost 比較は依然として未供給であり、
 Cor 8.12 の保留は継続する。新しい sorry・axiom・引用は追加していない。
 
+**一般 rank の独立準備・Ri 上の任意の底変換の定 rank（2026-10-17）。**
+`Prop247RankBaseChange.lean` は原典の像 Ri への元の写像とスカラー塔を保持する。
+`prop247_awayRank_of_point_over_rankImage` は任意の Ri 代数 T の g の外の点が
+元の rank 部分へ写ることを前工程の実 Spec の像から証明する。
+`prop247_rankAtStalk_baseChange_of_isUnit` は g が T で可逆な場合、
+元の T⊗R S の全ての stalk rank が所定の n であることを証明する。
+元の S の R 上の平坦性を要求せず、g の局所化上の étale 性から平坦性を供給し、
+既存の局所化・tensor の代数同型と mathlib の stalk rank の底変換を使う。
+`prop247_awayRank_baseChange_over_rankImage` は T を実際に g で局所化し、
+任意の T に対する元の底変換 T⊗R S の実 D(g) 上の rank が一定であると述べる。
+従って、指定した (Ri)_perfd への適用もその Ri 代数構造と元のスカラー塔だけで可能。
+T の平坦性、Noether 性、g 正則性、rank 正値性は不要であり、T の perfectoid 化の存在を引用しない。
+対象2776ジョブと専用監査の公開3宣言が成功。全3宣言は assert_no_sorry 成功・標準3公理のみ。
+次は有限直積の元の環写像へ接続する。perfectoid 化後の almost 比較は未供給であり、
+Cor 8.12 の保留は継続する。新しい sorry・axiom・引用は追加していない。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
