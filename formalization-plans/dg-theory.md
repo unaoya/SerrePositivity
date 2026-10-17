@@ -8219,3 +8219,51 @@ derivedBimodulePentagonShort=derivedBimodulePentagonLongを任意の全導来後
 local Hom条件のないdg圏自体の解像度経路とU12e全受入も残る。
 U12e受入後はU16へ進み、U15e/U17はU12f・U14・U16がそろってから扱う。
 公開APIの名前・型の変更、共有一般論への新しいAPI要求はない。
+
+
+### 17.180 U12e21：任意の全導来因子上の五角恒等式（2026-10-17）
+
+`Derived/CompositionFamilies.lean`は任意のパラメータ圏Tに対する関手族の点ごとの合成
+**compositionFamily**と自然変換の合成**compositionFamilyMap**を、Mathlibのprod'・uncurry・
+whiskeringLeftから構成する。**compositionFamilyAssociator**は通常のFunctor.associatorを
+成分に持つ自然同型。共有モデル一般論を実装せず、dg合成で使う関手計算の補助を担当範囲に置いた。
+Tと各関手の始域・終域の対象宇宙、射宇宙を独立に保つ。
+
+`Derived/BimoduleCompositionFamilies.lean`は導来bimodule族の合成
+**derivedBimoduleComposeFamily**、作用関手族の結合比較**derivedBimoduleAssociatorFamily**、
+内側の合成対象族の結合比較**derivedBimoduleInnerAssociatorFamily**を構成する。
+最後の自然性は、全導来結合同型の後二因子の同時自然性と前因子の自然性を合成して証明する。
+`Derived/BimoduleCompositionPentagonFamilies.lean`はこれらを組み合わせて五角の二経路を
+**derivedBimodulePentagonShortFamily/LongFamily**として自然変換に束ねる。
+**ShortFamily_app/LongFamily_app**は各成分が§17.178の元の五角経路に一致する計算式。
+この段階で後三因子を同時に動かした自然性が得られ、個別の射の分解を選ぶ必要がない。
+
+`Derived/BimoduleCompositionPentagon.lean`の**exists_rightKFlat_derived_iso**は任意の全導来対象を
+元の右K-flat対象の導来像と結ぶ同型の存在を与える。
+K-flat部分圏の局所化比較の本質的全射性と、その局所化関手の本質的全射性を合成する。
+**derivedBimodulePentagon**は後三因子の導来圏の積をパラメータ圏に取り、
+それぞれのK-flat代表への同型を積圏の一つの同型に束ねる。
+K-flat三因子での§17.179の経路一致を使い、上の両自然変換の自然性と
+始域関手がその同型を同型へ送ることにより、元の任意の全導来後三因子での経路一致へ戻す。
+前因子も任意の導来対象であり、結果はその全導来圏上の自然変換の等式。
+これで主全導来合成・左右単位・結合同型について、全因子上の三角・五角coherenceがそろった。
+任意可換環・非有界・六つの独立対象宇宙・Small.{u} B/C/E/F/G、localHomKFlat A E/F/Gを保持する。
+これらの条件を暗黙化したり、dg圏の解像度なしに除いたりしていない。
+
+Checks.DerivedBimoduleFullPentagon・Checks.DerivedBimodulePentagonKFlat・
+Checks.DerivedBimoduleTriangle・Checks.DerivedBimoduleAssociatorIndependence・
+Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功
+（3091 jobs、終了コード0、警告なし）。任意の全導来四因子の成分式、全後三因子の五角、
+dg対象宇宙から独立した対象・射宇宙のパラメータ族、ZMod 2を検査した。
+主要12宣言の直接公理監査は標準公理のみ。監査累計3380宣言。
+今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は15 Markdown・320 exposition参照まで進み、担当外BhattScholze互換宣言の
+未解決参照1件で失敗した。共有ルート・共有一般論・並行所有ファイルは編集していない。
+
+次はU12eの残条件であるlocal Hom条件なしのdg圏自体の解像度経路を具体化する。
+解像度版のbimodule圏と、既存のunderived積dg圏上の主bimodule圏を無条件に同一視しない。
+対象・準同型クラス・宇宙を別に固定し、local Hom条件下で主合成との比較を証明する方針。
+dg圏の解像度を取っただけで、underivedな積dg圏も自動的に準同値になるとは扱わない。
+今回のcoherence完成だけで残る解像度経路を完了とせず、U12e全受入は引き続き未完。
+U12e受入後にU16へ進む。U12f/U14/U15dは並行担当、U15e/U17は指定の合流条件を待つ。
+既存公開APIの名前・型の変更、共有一般論への新しいAPI要求はない。
