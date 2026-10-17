@@ -195,9 +195,37 @@ E3.4 の剰余比較の未接続点は本工程で解消した。
 完備化による完全忠実平坦性、可算極限段の構成はまだ必要。
 元環・完備化の有界ねじれの証明を、通常／導来完備化の比較の証明の代用にはしない。
 
+### E3.8：完全 δ 表示からの通常完備化の perfectoid 性
+
+`PrismaticCompletion.lean` と `PerfectDeltaColimit.lean` を追加。
+
+- `isIntegralPerfectoid_adicCompletion_of_distinguished_kernel`：
+  完全 δ 環 A の distinguished 元 d と、全射 q:A→T、ker q=(d) が与えられれば、
+  T の通常の p 進完備化は perfectoid。T の p 正則性・被約性・有界ねじれ・完備性は不要。
+  BS Thm 3.10（著者版 p.32）について既に証明済みの完全 prism の商の perfectoid 性を使用。
+- `deltaDirectLimit_isPerfect`：完全 δ 環の δ 図式の環余極限上の既存 δ 構造は完全。
+  各段の Frobenius 同型を環余極限に移し、その写像が既存の Frobenius 持上げと一致すると示した。
+  添字の非空性・有向性や遷移射の単射性を追加しない。
+
+**原典・経路の記録：** BS Lemma 3.9（著者版 pp.31–32）と Thm 3.10（p.32）、
+Thm 7.14（p.61）の極限操作の補足として、既存の実 PD 完備化で得た完全 prism の商 Q を用いる。
+通常の p 進完備化 C と Q の間の二つの環準同型を、通常完備化と実 PD 完備化の普遍性から作り、
+合成が恒等であることをそれぞれの普遍性で検証した。
+通常完備化と実導来完備化を無条件に同一視する議論は使わない。
+一般の Fontaine 核の逆判定を新仮定にはせず、**raw 余極限の完全 δ 表示を構成する経路**を採る。
+E3.7 の Frobenius 条件の保存は独立に証明済みの部品として保持する。
+
+対象 build 終了コード 0（3500 jobs、新規モジュールの警告なし）。
+専用監査終了コード 0、公開全 40 宣言の assert_no_sorry と全 99 宣言の再帰監査に成功。
+標準 3 公理のみ。全公開宣言の完全型を #print で確認した。
+
+**未完了：** perfectoid 塔の Fontaine 環の遷移射・自然性、固定した distinguished 生成元の移送、
+raw 余極限での全射と単項核の同定を供給し、上記の一般定理を実際の塔に適用する段階。
+この表示の仮定を最終定理に追加して完成とすることはしない。
+
 ### 残る範囲
 
-1. 有向余極限の p 進完備化の perfectoid 性（特に p ねじれを許す Fontaine 核の単項性）。
+1. perfectoid 塔の raw 余極限の完全 δ 表示を構成し、E3.8 を適用して p 進完備化の perfectoid 性を得る。
 2. p 完全忠実平坦性の完備化による保存。有向余極限と合成による保存は E3.5・E3.6 で証明済み。
 3. 可算共終性の極限での完備化。ω₁ の可算上界条件と終段の自動的 p 進完備性は E3.2・E3.3 で証明済み。
 4. Type u に留まる ω₁ までの超限塔の構成、訂正済み step による後続段の供給。
@@ -529,3 +557,46 @@ Prop 7.11 を使う原典とは異なる、任意族の通常関係商と明示�
 SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4129 jobs）。
 専用監査は新規 31 公開宣言を追加し、`assert_no_sorry` と生成宣言を含む 345 宣言の
 標準 3 公理限定検査に成功した（終了コード 0）。
+
+### E1.9：補助 raw 包の実導来 mod p 入力と δ 完全化
+
+新規 `Andre/MonicRawDerivedReduction.lean` は、raw 包の元の係数射 j による
+`baseChangeScalarModule j` を固定し、標準 augmentation による実導来 p 還元の離散化を証明する。
+`monicRaw_modP_homology_isZero` は全 i ≠ 0 の実ホモロジー消滅を、
+`monicRaw_modPH0_faithfullyFlat` は同じ実還元の H⁰ の A/p 上忠実平坦性を与える。
+前提は E1.8 の D、f、hpA、hf、hdp（H⁰ の忠実性には加えて hdeg）。
+制限加群と標準 raw 作用の比較は恒等関数による A 線形同型で明示し、
+単なる環同型から剰余の元の係数作用を推論していない。
+
+新規 `Andre/MonicRawPerfectionFlat.lean` は、一般 δ 完全化の既存剰余比較を再利用する。
+一般定理の第二基底元を零として A/(p,0) を A/p に同定し、上記実導来入力を適用した。
+Frobenius 各段の図式と余極限の証明を複製していない。
+主要公開定理の型は以下。局所的に定めた代数作用も明記する。
+
+```lean
+theorem monicRawPerfection_isCompletelyFaithfullyFlat
+    {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
+    (D : DeltaStructure p A) (f : σ → Polynomial A)
+    (hD : D.IsPerfect) (hf : ∀ s, (f s).Monic)
+    (hdeg : ∀ s, 0 < (f s).natDegree) (hdp : D.IsDistinguished (p : A)) :
+    let E := polynomialRankOneDeltaStructure σ D
+    let F := deltaAdjoinDivisionStructure E (p : MvPolynomial σ A)
+      (fun s : σ => DeltaStructure.frobeniusLift E (monicRelation (f s) s))
+    letI := monicRawPerfectionAlgebra D f
+    IsCompletelyFaithfullyFlat (Ideal.span {(p : A)}) (DeltaPerfection F)
+```
+
+係数射 `monicRawPerfectionCoefficientMap D f` は実 raw 係数射と完全化の第零段射の合成。
+任意族・零係数環を許し、外部 ghost 単射仮定は残さない。
+`monicRawPerfection_residueTensor_faithfullyFlat` は同じ A 作用の通常剰余テンソルの
+忠実平坦性を、`monicRawPerfection_p_smul_regular` は p スカラーの正則性を与える。
+後者自体には hf、hdeg、hD、hdp を要求しない。
+
+BS Cor 2.39（著者版 p.25）、Rem 7.15（p.62）の補助計算であり、原典の Prop 7.11 を使う
+証明とは異なる経路。ここでの完全化は Frobenius 余極限のみで、p 進完備化前である。
+f/d 包の実導来 pd 比較、無限 p 冪根変数の自由基底、最終 perfectoid 候補の
+p 完全忠実平坦性は引き続き未完成。目標存在定理は未宣言であり、本工程を完成と数えない。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4180 jobs）。
+専用監査も終了コード 0。新規 14 公開宣言の `assert_no_sorry` を追加し、
+生成宣言を含む 442 宣言の推移的な公理依存が標準 3 公理のみであることを確認した。

@@ -140,6 +140,21 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRaw_p_smul_regular
 assert_no_sorry SerrePositivity.BhattScholze.Andre.monicFamilyRaw_isCompletelyFaithfullyFlat
 assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicFamilyRaw_isCompletelyFaithfullyFlat
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRaw_scalarModule_p_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRaw_scalarExtensionTorVanishing
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRaw_modPAugmentationIso
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRaw_modP_homology_isZero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRaw_scalarResidueTensorEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRaw_modPH0_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawCoefficient_isDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawPerfectionCoefficientMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawPerfectionAlgebra
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawPerfection_scalarResidue_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawPerfection_scalarResidueTensorEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawPerfection_residueTensor_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawPerfection_p_smul_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawPerfection_isCompletelyFaithfullyFlat
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -168,7 +183,9 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.MonicFamilyCoefficientQuotient,
     `SerrePositivity.BhattScholze.Andre.MonicFrobeniusCoefficient,
     `SerrePositivity.BhattScholze.Andre.MonicRawModPFlat,
-    `SerrePositivity.BhattScholze.Andre.MonicRawCompletelyFlat]
+    `SerrePositivity.BhattScholze.Andre.MonicRawCompletelyFlat,
+    `SerrePositivity.BhattScholze.Andre.MonicRawDerivedReduction,
+    `SerrePositivity.BhattScholze.Andre.MonicRawPerfectionFlat]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

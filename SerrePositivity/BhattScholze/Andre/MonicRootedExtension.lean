@@ -9,6 +9,7 @@ public import SerrePositivity.BhattScholze.Andre.MonicFamilyRawRegular
 public import SerrePositivity.BhattScholze.Andre.MonicFiniteFamilyFlat
 public import SerrePositivity.BhattScholze.Andre.MonicFamilyFaithfullyFlat
 public import SerrePositivity.BhattScholze.Andre.MonicRawCompletelyFlat
+public import SerrePositivity.BhattScholze.Andre.MonicRawPerfectionFlat
 
 /-!
 # André E1・E2 の集約
