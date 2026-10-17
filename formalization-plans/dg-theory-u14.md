@@ -887,6 +887,16 @@
 - 一般のPerfへの拡張には、shift・coneの閉性と、実際の係数拡大のホモトピー保存に基づく
   H⁰内retractへの拡張を引き続き確認する。U14全体はまだ受入完了としない。
 
+## U14b.50：実際の加群係数拡大による全dg自然なホモトピーの保存（2026-10-17）
+
+- `ScalarModuleHomotopy.lean`：Hom endの係数変更比較が閉零射のcycleを実際の
+  係数拡大射のcycleへ送ることを証明し、次数−1の要素を送って加群ホモトピーを構成した。
+  各評価での独立したchain homotopyへ弱めず、全dg作用との自然性を保つ。
+- 実際の加群係数拡大をH⁰の商へ降ろす関手 `scalarModuleExtensionHomotopy` と
+  閉零加群圏からの包含正方形を構成した。任意の環準同型で成り立つ。
+- `ChecksScalarModuleHomotopy` 対象ビルド成功（1994 jobs）。主要4宣言の公理は標準3公理のみ。
+  新しいsorry・axiom・引用は追加していない。既存APIの名前・型は変更していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
