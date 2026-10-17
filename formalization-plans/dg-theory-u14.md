@@ -364,6 +364,16 @@
   ホモトピー射影的であることを証明。perfectな導来像だけで代用していない。
 - `ChecksProjectiveImage` 対象ビルド成功。新規9主要宣言の公理は標準3公理のみ。
 
+## U14b.11：実際のperfect dg enhancement間の比較関手（2026-10-17）
+
+- `PerfectDGComparison.lean`：Hom像のホモトピー射影性とperfect性の両証拠を保持し、
+  U13の指定enhancementからEnd(E)上のperfect dg enhancementへの実際のdg関手を定義。
+- 全Hom擬同型とH⁰の完全忠実性を、この関手について個別に証明。
+  全加群への包含とのdgレベルの可換正方形も証明した。
+- `ChecksPerfectDGComparison` と更新した `ChecksCompatibility` の対象ビルド成功。
+  新規5主要宣言の公理は標準3公理のみ。U14公開入口へimport済み。
+  H⁰の本質的全射はまだ証明していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。

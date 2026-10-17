@@ -11,6 +11,7 @@ public import SerrePositivity.DifferentialGraded.Endomorphism.HomComparisonShift
 public import SerrePositivity.DifferentialGraded.Endomorphism.ThickHomComparison
 public import SerrePositivity.DifferentialGraded.Endomorphism.QuasiFullyFaithful
 public import SerrePositivity.DifferentialGraded.Endomorphism.PerfectImage
+public import SerrePositivity.DifferentialGraded.Endomorphism.PerfectDGComparison
 public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedTensorEvaluation
 public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension
 public import SerrePositivity.DifferentialGraded.Perfect.EnhancementShiftComparison
