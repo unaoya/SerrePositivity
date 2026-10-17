@@ -868,3 +868,17 @@ M9 の適用については、商を取る前の次数零の平坦 Hom を持つ
   予定型を証明済み宣言として import せず、U17b の自然性は受入済みの範囲を見て接続する。
 - 残部は U17d の係数変更・支持・retract の個別の図式と、U16 受入後の Morita 自然性。
   中心作用・G 作用は引き続き保留。U17c1 のコミットは `29c75ef9`（自分の3ファイルのみと確認）。
+
+### U17d1：retract と形式的直和因子の個別の比較図式
+
+- `Verdier/RetractSquare.lean`：完全忠実な関手の像の間の retract を、分裂単射と分裂全射の
+  両方ごと引き戻す `comparisonRetractPreimage` を構成。両射の map が元の射に等しいことを
+  `comparisonRetract_i_square`・`comparisonRetract_r_square` として公開した。
+- `localTriaRetract_iff`・`localPerfectRetract_iff` は、実際の局所商・perfect enhancement 比較が
+  retract 関係を保存・反映することを述べる。完備化上では `localCompletedRetract` により
+  Karoubi の標準 retract を運び、その二つの分裂射の underlying map が元の冪等元の像と
+  一致することと、分裂の等式をそれぞれ証明した。
+- 対象ビルド `Verdier.ChecksRetractSquare` 成功（2789 jobs）、新規ファイルの警告なし。
+  主要9宣言の公理監査は標準3公理の範囲内。新規 sorry・axiom・引用なし。
+  既存の比較や他担当ファイルは編集していない。U17c2 は `8b27ed9d`（自分の3ファイルのみ）。
+- この単位は U16 に依存しない。支持・係数変更・U16 受入後の自然性は引き続き進行中。
