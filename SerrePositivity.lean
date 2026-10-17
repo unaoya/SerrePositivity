@@ -884,6 +884,7 @@ public import SerrePositivity.BhattScholze.PerfectoidizationSupportedQuotientKer
 public import SerrePositivity.CLMST.PerfectoidIdealTorCover
 public import SerrePositivity.BhattScholze.PerfectoidizationSupportedQuotientLinear
 public import SerrePositivity.CLMST.PerfectoidizationImageTorComparison
+public import SerrePositivity.CLMST.PerfectoidFiniteProductTor
 
 /-!
 # Serre の交点重複度の正値性の形式化

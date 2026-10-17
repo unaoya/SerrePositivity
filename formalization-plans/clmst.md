@@ -8453,6 +8453,53 @@ C と D の間で同値にする。`exists_localization_image_perfectoidization_
 **未完了なのは像の包含の perfectoid 化の almost 比較**であり、この分解自体から
 一般の整な変更の almost 不変性や KL-T/Q 全体の完成を主張しない。
 
+#### KL-T：有限自由側の実像に対する全 Tor 入力（2026-10-17）
+
+`CommutativeAlgebra/PerfectoidizationIdentity.lean` の
+`SerrePositivity.IsIntegralPerfectoid.isPerfectoidization_id` は、perfectoid 環自身の
+恒等射の普遍性を標準三公理のみで供給する。
+
+`BhattScholze/PerfectoidFiniteProduct.lean` は次を公開する。
+
+- `SerrePositivity.BhattScholze.isIntegralPerfectoid_finPi`：
+  `(R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
+  (hR : IsIntegralPerfectoid R p) (r : ℕ) : IsIntegralPerfectoid (Fin r → R) p`。
+- `finiteProduct_perfectoidization_exists_algEquiv`：指定した実普遍射
+  `f : (Fin r → R) →ₐ[R] C` と hf から、
+  `∃ e : (Fin r → R) ≃ₐ[R] C, e.toAlgHom = f` を返す。
+
+この有限直積の証明は、**既存の B-I 存在引用に相対的**である。
+B-I で選んだ普遍対象から各 R への射を座標ごとに延長し、実逆射を構成する。
+その逆合成も普遍性で恒等射となる。Fontaine 核の有限直積公式を証明済みとはしない。
+空直積、零環を含み、r>0 を要求しない。
+
+`CLMST/PerfectoidFiniteProductTor.lean` は次の実入力を公開する。
+
+- `SerrePositivity.CLMST.finiteProduct_perfectoidization_flat`：上の指定 f の終域 C は
+  元の R 加群として平坦である。
+- `finiteProduct_perfectoidization_Tor_zero`：任意 N・任意正次数・任意 c∈C の
+  実 `torCoefficientScalarEndomorphism C N i c` が零。N の torsion 仮定も不要。
+- `supported_finiteProduct_image_powerTorsionTorInput`：実写像
+  `φ : (Fin r → R) →ₐ[R] E` の核が `ρ 0` の元ごとの冪で消えれば、
+  `g : φ.range →ₐ[R] D` が指定普遍 perfectoid 化であるとき、元の ideal
+  `perfectoidIdeal R p hR (ρ 0)` の全 Tor 入力を D に供給する。
+- `localizationSplitting_exists_finiteProduct_image_TorInput`：通常の実分解
+  `e : L ⊗[R] A ≃ₐ[L] (Fin r → L)` と `[IsLocalization (.powers (ρ 0)) L]`、
+  `[Module.Finite R A]` から、保存済みの有限整共通モデル E と実 u, v を取り、
+  `∃ D, ∃ CommRing D, ∃ Algebra R D, ∃ g : v.range →ₐ[R] D, ...` の順に一つの対象を選ぶ。
+  u, v の元の分解図式を保持し、核の support は通常局所化比較から供給する。
+  この選択後に、全 N・k・正次数 i・元の ideal の全 s の Tor 作用を零にする。
+
+対象ビルドと専用監査 `scripts/audit_clmst_finite_product_tor.lean` が成功。
+実有限整モデルの u, v と像の実単位 g、全 Tor 入力と、
+`g (v.rangeRestrict (fun _ => s)) = algebraMap R D s` を一つの存在命題で検証した。
+rank 0 の実像の終域が零環となる境界も確認した。
+有限直積・平坦性・その Tor 零化は既存 B-I のみ、実像の全 Tor 入力はそれと
+既存 BS 7.14 のみへ到達し、新しい引用は加えていない。
+**D は E の perfectoid 化ではなく v.range の perfectoid 化**である。
+残る実像の包含の almost 比較を通して初めて E 側と A 側にこの入力を渡せる。
+従って Prop 2.4.9(a) と KL-Q は引き続き未完成である。
+
 #### Prop 2.4.7 専任系列：原典から D-I/U/Q への型付き受渡し（2026-10-17）
 
 本節は統合表 D-I・D-U・D-Q の実入力を固定する。未採用の別計画は根拠にしない。
