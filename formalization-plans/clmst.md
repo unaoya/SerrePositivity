@@ -10319,6 +10319,17 @@ Ti の perfectoid 性・絶対整閉性、元の Si=Ti⊗R S の有限性・有�
 André 拡大の存在を未証明の追加入力とは扱わず、担当外 BS の証明・公開署名は編集しない。
 原典 E∞ 版 Cor 8.12 の保留を継続し、新しい sorry・axiom・引用は追加していない。
 
+**定 rank の条件付き完成・André 存在を仮定から除いた原典の実写像（2026-10-17）。**
+`Prop247ConstantRank.lean` は元の R・S・指定 f と、元の bounded torsion・g の外の定 rank から、
+André 拡大を証明済み D-I 入口で実際に選び、元の錐・核・余核の共通冪零化へ接続する。
+André 拡大の存在、底変換後の étale 性・rank、各剰余段の比較を追加仮定にしない。
+残る比較入力は、perfectoid・絶対整閉な基底上の KLFiniteComparisonExcision の明示仮定である。
+同じ結果を原典の Perfectoidization R S p hR と perfectoidizationModuleMap にも適用した。
+元の Prop 2.4.7 引用は一切使わず、循環していない。
+対象4781ジョブと公開2宣言の専用到達監査が成功。André 存在・実局所錐・実被覆は assert_no_sorry 成功。
+選択入口の型・証明に到達する未証明依存は既存 B-I のみと確認し、sorry-free とは扱わない。
+原典 E∞ 版 Cor 8.12 の保留を継続し、新しい sorry・axiom・引用は追加していない。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
