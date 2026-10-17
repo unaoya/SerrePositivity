@@ -1,0 +1,5 @@
+import SerrePositivity.CommutativeAlgebra.FiniteProductIsogeny
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.exists_uniform_pow_ker_coker_piMap
+#print axioms SerrePositivity.exists_uniform_pow_ker_coker_piMap
