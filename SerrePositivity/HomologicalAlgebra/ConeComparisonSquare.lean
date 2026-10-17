@@ -9,9 +9,9 @@ public import SerrePositivity.HomologicalAlgebra.TwoTermConeAnnihilator
 -/
 
 @[expose] public noncomputable section
-universe u
+universe u v w
 namespace SerrePositivity
-variable {R M L N P : Type u} [CommRing R]
+variable {R M N : Type u} {L : Type v} {P : Type w} [CommRing R]
     [AddCommGroup M] [Module R M] [AddCommGroup L] [Module R L]
     [AddCommGroup N] [Module R N] [AddCommGroup P] [Module R P]
 

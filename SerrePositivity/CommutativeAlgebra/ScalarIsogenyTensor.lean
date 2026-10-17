@@ -10,12 +10,12 @@ public import Mathlib.LinearAlgebra.TensorProduct.Associator
 -/
 
 @[expose] public noncomputable section
-universe u
+universe u v w
 namespace SerrePositivity
 open scoped TensorProduct
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
-variable (R T M : Type u) [CommRing R] [CommRing T] [Algebra R T]
+variable (R : Type u) (T : Type v) (M : Type w) [CommRing R] [CommRing T] [Algebra R T]
     [AddCommGroup M] [Module R M]
 
 /-- 元の R→T の核・余核の零化から、元の M→T⊗R M の両側スカラー逆を作る。 -/

@@ -10124,6 +10124,16 @@ Cor 8.12 に依存せず供給した。一般の基底について無条件に�
 終域比較と成分 isogeny は引き続き別入力であり、原典 E∞ 版 Cor 8.12 は保留のままとする。
 新しい sorry・axiom・引用は追加していない。
 
+**実 rank 指標との接続・補助 API の universe 一般化（2026-10-17）。**
+自然数の有限 rank 指標と任意 universe の原典の環を接続するため、
+既存 ScalarIsogenyInverse と本系列の ScalarIsogenyTensor の係数環・加群・終域を
+別 universe へ一般化した。ConeComparisonSquare の中間二対象、FiniteProductIsogeny と
+Prop247RankAssembly の指標集合についても同様に分離した。元の主張は全て保持し、仮定は追加しない。
+この一般化を経た自然数の有限 rank 分解への実適用が対象4519ジョブで成功した。
+変更した公開11宣言の専用監査は assert_no_sorry 成功・標準3公理のみ。
+担当外の KL・BS・作業中 Localization 系ファイルや既存 IsogenyDescent は編集しない。
+原典 E∞ 版 Cor 8.12 は保留のままで、新しい sorry・axiom・引用は追加していない。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。

@@ -4,10 +4,11 @@ public import Mathlib.LinearAlgebra.Quotient.Basic
 
 /-! # A scalar inverse for a map with annihilated kernel and cokernel -/
 @[expose] public noncomputable section
-universe u
+universe u v w
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity
-variable {R M N : Type u} [CommRing R] [AddCommGroup M] [Module R M]
+variable {R : Type u} {M : Type v} {N : Type w}
+    [CommRing R] [AddCommGroup M] [Module R M]
     [AddCommGroup N] [Module R N]
 
 /-- Kernel and cokernel annihilators give a two-sided scalar inverse for the actual map.

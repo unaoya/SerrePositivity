@@ -19,7 +19,7 @@ open scoped TensorProduct
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 variable (R S : Type u) [CommRing R] [CommRing S] [Algebra R S]
-    {ι : Type u} [Finite ι] (T : ι → Type u)
+    {ι : Type*} [Finite ι] (T : ι → Type u)
     [∀ i, CommRing (T i)] [∀ i, Algebra R (T i)]
 
 /-- 元の S を各元の Ti⊗R S に送る標準代数写像の直積。 -/

@@ -17,7 +17,7 @@ set_option backward.defeqAttrib.useBackward true
 
 /-- 有限個の成分ごとの指数を、実直積写像の核・余核の同じ一つの指数へまとめる。 -/
 theorem exists_uniform_pow_ker_coker_piMap
-    {ι : Type u} [Finite ι] {R : Type u} [CommRing R]
+    {ι : Type*} [Finite ι] {R : Type u} [CommRing R]
     {M N : ι → Type u} [∀ i, AddCommGroup (M i)] [∀ i, Module R (M i)]
     [∀ i, AddCommGroup (N i)] [∀ i, Module R (N i)]
     (f : ∀ i, M i →ₗ[R] N i) (g : R)
