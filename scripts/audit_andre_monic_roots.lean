@@ -1087,6 +1087,24 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicPerfection
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicPerfection_generator_regular
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletedPerfectionBaseMap_completelyFaithfullyFlat
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.tensorBaseChangeAlgEquivOfSemilinearRingEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.tensorBaseChangeAlgEquivOfSemilinearRingEquiv_tmul
+assert_no_sorry SerrePositivity.BhattScholze.Andre.varpiPrimeFrobenius_inverse_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootVarpiPrimeFrobeniusEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootVarpiPrimeFrobeniusEquiv_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootVarpiPrimeFrobeniusEquiv_variable
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootVarpiPrimeFrobeniusEquiv_input
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootVarpiPrimeFrobeniusPDEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootVarpiPrimeFrobeniusPDEquiv_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootVarpiPrimeFrobeniusPDEquiv_generator
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicVarpiFrobeniusResidueEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicVarpiFrobeniusResidueEquiv_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicVarpiFrobeniusBaseChangeAlgEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicVarpiFrobeniusBaseChangeAlgEquiv_tmul
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrimeFrobeniusDividedPowers
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrimeFrobeniusDividedPowers_base_apply
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrimeFrobeniusPDMorphism
+
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
@@ -1276,7 +1294,11 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicPerfectionPairFaithful,
     `SerrePositivity.BhattScholze.Andre.RegularQuotientCompleteFaithful,
     `SerrePositivity.BhattScholze.Andre.PerfectedDeltaAlgebraQuotientFaithful,
-    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicPerfectionQuotientFaithful]
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicPerfectionQuotientFaithful,
+    `SerrePositivity.BhattScholze.Andre.SemilinearTensorBaseChange,
+    `SerrePositivity.BhattScholze.Andre.PowerRootVarpiPrimeFrobeniusPD,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicFrobeniusBaseChange,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrimeFrobeniusPDEnvelope]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

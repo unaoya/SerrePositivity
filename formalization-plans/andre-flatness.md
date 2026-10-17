@@ -4079,3 +4079,104 @@ prism 商の p 正則性仮定を解消する原典経路、絶対 prismatic env
 終了コード 0。生成宣言を含む 5739 宣言の推移的公理依存は標準 3 公理のみ。
 新規 7 公開宣言の正確な型を `#check` で確認した（終了コード 0）。
 一時的な診断設定と拡大した heartbeat 上限は保存コードから全て除いた。
+
+
+### E1.62 係数 Frobenius に沿う実テンソル底変換と元の mod p 入力の pd 包（2026-10-17）
+
+BS Rem 7.15（著者版 p.62）の画像と本文を再確認した。
+既存の明示係数 Frobenius 同型の向きは e : R/ϖ ≃+* R/p であり、A の元 a に対して
+`e (a mod (d,ϖ)) = φ_A(a) mod (d,p)` である。
+これを使って逆 Frobenius 係数の f′ を元の f の mod p 像に戻す。
+本工程では底環を R/p と明示し、R/ϖ と R/p や二つの入力を暗黙に同一視しない。
+
+新規 `Andre/SemilinearTensorBaseChange.lean` に 2 公開宣言を追加した。
+`tensorBaseChangeAlgEquivOfSemilinearRingEquiv` は任意の可換環 R,S,B,C、
+Algebra R B、Algebra S C、e : R ≃+* S、F : B ≃+* C と
+
+```lean
+(hF : ∀ r : R, F (algebraMap R B r) = algebraMap S C (e r)) :
+let := e.toRingHom.toAlgebra
+S ⊗[R] B ≃ₐ[S] C
+```
+
+を構成する。順射はテンソル普遍射、逆射は c ↦ 1⊗F⁻¹(c)。
+`tensorBaseChangeAlgEquivOfSemilinearRingEquiv_tmul` は s⊗b を
+`algebraMap S C s * F b` に送ることを証明する。
+平坦性・標数・正則性・非零性は不要。
+
+新規 `Andre/PowerRootVarpiPrimeFrobeniusPD.lean` に 8 公開宣言を追加した。
+W : OrientedPrism p A、hW : W.deltaStructure.IsPerfect、f : Polynomial A とする。
+R=A/W.ideal、Rv=R/(perfectPrismVarpi W hW)、Rp=R/p、
+Nv=PowerRootPolynomial Rv p hp、Np=PowerRootPolynomial Rp p hp、
+bv : A →+* Rv、bp : A →+* Rp を通常の二段商射、
+f′=perfectPrismInverseFrobeniusPolynomial W hW f と書く。
+zv=powerRootPolynomialBaseMap Rv p hp (f′.map bv)、
+zp=powerRootPolynomialBaseMap Rp p hp (f.map bp)、
+Dv=PrincipalDPPresentation Nv zv、Dp=PrincipalDPPresentation Np zp とする。
+
+`varpiPrimeFrobenius_inverse_coeff` は `e (bv (φ_A⁻¹(a))) = bp a` を証明する。
+`powerRootVarpiPrimeFrobeniusEquiv : Nv ≃+* Np` は変数を固定する係数環同型。
+係数・全根変数上の公式と `powerRootVarpiPrimeFrobeniusEquiv_input` の結論
+`powerRootVarpiPrimeFrobeniusEquiv W hW zv = zp` を証明した。
+`powerRootVarpiPrimeFrobeniusPDEquiv : Dv ≃+* Dp` はこの入力同型を持ち上げる。
+同 pd 同型の係数公式と全標準分冪生成元の次数を保つ公式も公開した。
+このファイルにはモニック性・次数・prism 商の p 正則性仮定はない。
+
+新規 `Andre/PowerRootPrismMonicFrobeniusBaseChange.lean` に 4 公開宣言を追加した。
+E1.55–61 と同じ raw 包 L、その実完備化 H と標準射 uL,jL、dP と ϖ 持上げ xP を使う。
+T=H/(uL(jL dP))、φ=powerRootPrismMonicHodgeTateBaseMap W hW f、
+Iv=Ideal.span {perfectPrismVarpi W hW}、Mv=T ⧸ Ideal.map φ Iv とする。
+Mv は元の T の自然な ϖ 商であり、係数作用は
+`powerRootPrismMonicHodgeTateVarpiAlgebra W hW f` そのもの。
+
+`powerRootPrismMonicVarpiFrobeniusResidueEquiv (hf : f.Monic)` は
+元の Mv ≃+* Dp を構成し、係数公式は
+
+```lean
+powerRootPrismMonicVarpiFrobeniusResidueEquiv W hW f hf (algebraMap Rv Mv r) =
+  algebraMap Rp Dp (e r)
+```
+
+である。二重商と二元商の既存 Rv 代数同型、逆係数入力の pd 表示、係数 Frobenius を合成した。
+`powerRootPrismMonicVarpiFrobeniusBaseChangeAlgEquiv` の正確な型は
+
+```lean
+(hf : f.Monic) :
+let := pdCompletionCommRing L p (jL dP)
+let := powerRootPrismMonicHodgeTateVarpiAlgebra W hW f
+let := e.toRingHom.toAlgebra
+Rp ⊗[Rv] Mv ≃ₐ[Rp] Dp
+```
+
+である。`powerRootPrismMonicVarpiFrobeniusBaseChangeAlgEquiv_tmul` は
+任意の r : Rp、m : Mv を含む単純テンソルの値を
+`algebraMap Rp Dp r * powerRootPrismMonicVarpiFrobeniusResidueEquiv W hW f hf m`
+と指定する。これらの実底変換同型には正次数・prism 商の p 正則性は不要。
+
+新規 `Andre/PowerRootPrimeFrobeniusPDEnvelope.lean` に 3 公開宣言を追加した。
+`powerRootPrimeFrobeniusDividedPowers` は
+`hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal)` と hf : f.Monic の下で
+`DividedPowers (principalDPPositiveIdeal zp)` を構成する。
+逆係数入力の実分冪構造を、入力を保つ係数環同型で移送する。
+`powerRootPrimeFrobeniusDividedPowers_base_apply` は任意 n : ℕ に対し
+入力 zp の n 次分冪が principalDPGenerator zp n に一致することを証明する。
+`existsUnique_powerRootPrimeFrobeniusPDMorphism` は任意宇宙の可換環 B と Algebra Np B、
+I : Ideal B、Ht : DividedPowers I、hzB : algebraMap Np B zp ∈ I に対し、
+
+```lean
+∃! F : Dp →ₐ[Np] B,
+  (powerRootPrimeFrobeniusDividedPowers W hW f hpR hf).IsDPMorphism Ht F.toRingHom
+```
+
+を証明する。標的のねじれ・完備性・非零性には条件を加えない。
+
+これは原典とは異なる、既存の Witt 座標比較・係数環同型・通常テンソルを経る証明。
+元の f の mod p 入力と実分冪包への係数比較を前進させたが、
+A 上の φ_A 引戻し全体との同定、Np の自然な作用の根変数上の照合、原典の R/ϖ 表記との
+最終照合はまだ残る。prism 商の p 正則性仮定の解消と絶対 prismatic envelope の同定も未完了。
+これらを実底変換同型だけから完成したと数えない。承認済み hdeg を持つ存在定理の型は変更しない。
+
+4 対象を含む対象ビルドと集約の `set -o pipefail; lake build` は終了コード 0
+（集約 4536 jobs）。新規 17 公開宣言の `assert_no_sorry` と専用監査は
+終了コード 0。生成宣言を含む 5947 宣言の推移的公理依存は標準 3 公理のみ。
+新規 17 公開宣言の正確な型を `#check` で確認した（終了コード 0）。
