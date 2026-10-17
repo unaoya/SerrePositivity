@@ -1243,6 +1243,111 @@ noncomputable section
 #print axioms SerrePositivity.InfinityCategories.DGNerve.isInitialVertex_zero
 #check @SerrePositivity.InfinityCategories.DGNerve.isInitialVertex_zero
 
+#print axioms SerrePositivity.InfinityCategories.DGNerve.biproductHomCoordinates
+#check @SerrePositivity.InfinityCategories.DGNerve.biproductHomCoordinates
+#print axioms SerrePositivity.InfinityCategories.DGNerve.biproductHomCoordinates_symm
+#check @SerrePositivity.InfinityCategories.DGNerve.biproductHomCoordinates_symm
+#print axioms SerrePositivity.InfinityCategories.DGNerve.biproductHomCoordinates_symm_differential
+#check @SerrePositivity.InfinityCategories.DGNerve.biproductHomCoordinates_symm_differential
+#print axioms SerrePositivity.InfinityCategories.DGNerve.complexEdge
+#check @SerrePositivity.InfinityCategories.DGNerve.complexEdge
+#print axioms SerrePositivity.InfinityCategories.DGNerve.complexEdge_cycle
+#check @SerrePositivity.InfinityCategories.DGNerve.complexEdge_cycle
+#print axioms SerrePositivity.InfinityCategories.DGNerve.complexCompStruct
+#check @SerrePositivity.InfinityCategories.DGNerve.complexCompStruct
+#print axioms SerrePositivity.InfinityCategories.DGNerve.coneHomCoordinates
+#check @SerrePositivity.InfinityCategories.DGNerve.coneHomCoordinates
+#print axioms SerrePositivity.InfinityCategories.DGNerve.coneHomCoordinates_fst
+#check @SerrePositivity.InfinityCategories.DGNerve.coneHomCoordinates_fst
+#print axioms SerrePositivity.InfinityCategories.DGNerve.coneHomCoordinates_snd
+#check @SerrePositivity.InfinityCategories.DGNerve.coneHomCoordinates_snd
+#print axioms SerrePositivity.InfinityCategories.DGNerve.coneHomCoordinates_symm
+#check @SerrePositivity.InfinityCategories.DGNerve.coneHomCoordinates_symm
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanConeTriangleLeft_first
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanConeTriangleLeft_first
+#print axioms SerrePositivity.InfinityCategories.DGNerve.standardFiberCone_vertex
+#check @SerrePositivity.InfinityCategories.DGNerve.standardFiberCone_vertex
+#print axioms SerrePositivity.InfinityCategories.DGNerve.standardFiber
+#check @SerrePositivity.InfinityCategories.DGNerve.standardFiber
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberHomCoordinates
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberHomCoordinates
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberHomCoordinates_fst
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberHomCoordinates_fst
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberHomCoordinates_snd
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberHomCoordinates_snd
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberHomCoordinates_symm
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberHomCoordinates_symm
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberHomCoordinates_symm_differential
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberHomCoordinates_symm_differential
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberShiftCocycle_val
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberShiftCocycle_val
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberUnshift_eq_comp
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberUnshift_eq_comp
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberHomCoordinates_fst_eq_comp
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberHomCoordinates_fst_eq_comp
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberHomCoordinates_snd_eq_comp
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberHomCoordinates_snd_eq_comp
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberShiftCocycle
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberShiftCocycle
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberProjectionCycle
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberProjectionCycle
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberProjection
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberProjection
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberProjection_cochain
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberProjection_cochain
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberNullHomotopy
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberNullHomotopy
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberNullHomotopy_differential
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberNullHomotopy_differential
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberDifference
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberDifference
+#print axioms SerrePositivity.InfinityCategories.DGNerve.pullbackFiber
+#check @SerrePositivity.InfinityCategories.DGNerve.pullbackFiber
+#print axioms SerrePositivity.InfinityCategories.DGNerve.pullbackProjectionB
+#check @SerrePositivity.InfinityCategories.DGNerve.pullbackProjectionB
+#print axioms SerrePositivity.InfinityCategories.DGNerve.pullbackProjectionC
+#check @SerrePositivity.InfinityCategories.DGNerve.pullbackProjectionC
+#print axioms SerrePositivity.InfinityCategories.DGNerve.pullbackDiagonal
+#check @SerrePositivity.InfinityCategories.DGNerve.pullbackDiagonal
+#print axioms SerrePositivity.InfinityCategories.DGNerve.pullbackHomotopy_differential
+#check @SerrePositivity.InfinityCategories.DGNerve.pullbackHomotopy_differential
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberLowerTriangle
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberLowerTriangle
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberUpperTriangle
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberUpperTriangle
+#print axioms SerrePositivity.InfinityCategories.DGNerve.standardFiberSquare
+#check @SerrePositivity.InfinityCategories.DGNerve.standardFiberSquare
+#print axioms SerrePositivity.InfinityCategories.DGNerve.standardFiberSquare_upper
+#check @SerrePositivity.InfinityCategories.DGNerve.standardFiberSquare_upper
+#print axioms SerrePositivity.InfinityCategories.DGNerve.standardFiberSquare_lower
+#check @SerrePositivity.InfinityCategories.DGNerve.standardFiberSquare_lower
+#print axioms SerrePositivity.InfinityCategories.DGNerve.standardFiberSquare_right
+#check @SerrePositivity.InfinityCategories.DGNerve.standardFiberSquare_right
+#print axioms SerrePositivity.InfinityCategories.DGNerve.standardFiberSquare_top
+#check @SerrePositivity.InfinityCategories.DGNerve.standardFiberSquare_top
+#print axioms SerrePositivity.InfinityCategories.DGNerve.standardFiberCone
+#check @SerrePositivity.InfinityCategories.DGNerve.standardFiberCone
+#print axioms SerrePositivity.InfinityCategories.DGNerve.pullbackHomCoordinates
+#check @SerrePositivity.InfinityCategories.DGNerve.pullbackHomCoordinates
+#print axioms SerrePositivity.InfinityCategories.DGNerve.pullbackHomCoordinates_symm
+#check @SerrePositivity.InfinityCategories.DGNerve.pullbackHomCoordinates_symm
+#print axioms SerrePositivity.InfinityCategories.DGNerve.biproductHomCoordinates_comp_difference
+#check @SerrePositivity.InfinityCategories.DGNerve.biproductHomCoordinates_comp_difference
+#print axioms SerrePositivity.InfinityCategories.DGNerve.pullbackHomCoordinates_symm_differential
+#check @SerrePositivity.InfinityCategories.DGNerve.pullbackHomCoordinates_symm_differential
+#print axioms SerrePositivity.InfinityCategories.DGNerve.pullbackHomCoordinates_left_eq_comp
+#check @SerrePositivity.InfinityCategories.DGNerve.pullbackHomCoordinates_left_eq_comp
+#print axioms SerrePositivity.InfinityCategories.DGNerve.pullbackHomCoordinates_right_eq_comp
+#check @SerrePositivity.InfinityCategories.DGNerve.pullbackHomCoordinates_right_eq_comp
+#print axioms SerrePositivity.InfinityCategories.DGNerve.pullbackHomCoordinates_homotopy_eq_comp
+#check @SerrePositivity.InfinityCategories.DGNerve.pullbackHomCoordinates_homotopy_eq_comp
+#print axioms SerrePositivity.InfinityCategories.DGNerve.pullbackHomBoundaryLift
+#check @SerrePositivity.InfinityCategories.DGNerve.pullbackHomBoundaryLift
+#print axioms SerrePositivity.InfinityCategories.DGNerve.pullbackHomBoundaryLift_coordinates
+#check @SerrePositivity.InfinityCategories.DGNerve.pullbackHomBoundaryLift_coordinates
+#print axioms SerrePositivity.InfinityCategories.DGNerve.pullbackHomBoundaryLift_differential
+#check @SerrePositivity.InfinityCategories.DGNerve.pullbackHomBoundaryLift_differential
+
 section
 universe u v
 variable (A : Type u) [CommRing A] (D : Type v)

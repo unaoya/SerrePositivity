@@ -5935,6 +5935,473 @@ lemma isInitialVertex_zero :
 ユーザーが追記済みの §7 は作業ツリーにそのまま保持し、この保存のコミットには混ぜない。
 次は N7c の標準 fiber と Hom 複体の厳密な座標表示・錐・直接の ∞ 引き戻し充填へ進む。
 
+### N7c1：標準 fiber の錐と Hom の全次数座標（2026-10-18、極限性は未証明）
+
+任意の可換環 A、非有界複体 B,C,D と二つの chain map g:B→D、h:C→D に対し、
+`fiberDifference g h = biprod.desc g (-h)` と
+`pullbackFiber g h = mappingCone (fiberDifference g h)⟦−1⟧` を構成した。
+`fiberProjection` はシフトの恒等射を閉次数 −1 元として cone の fst と合成して得る chain map。
+`fiberNullHomotopy` は同じシフト閉元と snd の合成の負であり、その微分が
+`ofHom (fiberProjection f ≫ f)` となることを `δ_snd` から証明した。
+
+`ComplexTriangles.lean` は通常の chain map を端点付き辺へ、合成の差の原始元を
+実際の二単体の `CompStruct` へ送る。二つの脚を fiber の射影と二項直和の射影で作り、
+対角を C を通る厳密な合成に選ぶ。
+B を通る三角形は標準ホモトピー、C を通る三角形は零ホモトピーとして構成した。
+Core の `square_isPushout` で二つの二単体を貼り合わせた `standardFiberSquare g h` は実際の
+`Δ[1]⊗Δ[1] → dgNerve A (Complex A)`。
+右辺・上辺が g,h の辺であること、各三角形が指定した三角形であることを計算した。
+`standardFiberCone` は Core の `JoinCone` そのもので、その頂点は
+`Simplex.vertex (pullbackFiber g h)` に等しい。
+
+`ConeHomCoordinates.lean` は fst・snd と liftCochain を互いに逆として全次数の線形同値を構成する。
+`FiberHomCoordinates.lean` は右シフトの線形同値と第二座標の負を合成し、
+`BiproductHomCoordinates.lean` は二項直和を二つの脚に分解する。
+これらを合成した `pullbackHomCoordinates g h n` は
+
+```
+Cochain X (pullbackFiber g h) (n+1) ≃ₗ[A]
+  ((Cochain X B (n+1) × Cochain X C (n+1)) × Cochain X D n)
+```
+
+であり、逆写像の微分が
+`(δb,δc,gb−hc−δz)` という N7.1 の fiber の行列微分と可換であることを証明した。
+全 n:ℤ を扱うので全次数の結果であり、有界性や対象の有限性の仮定はない。
+三座標が標準の B,C への脚と標準ホモトピーへの後合成に一致することも証明した。
+従って N7.1 の比較 Φ は単に別の線形同値ではなく、構成した標準錐の脚と高次成分を使う比較である。
+ここでは座標と微分の等式を構成済みだが、Hom(X,P) と Hom 複体側の mappingCone[-1] の
+実際の複体 Iso としてのパッケージはまだ公開していない。
+
+`PullbackHomLift.lean` は座標同値の逆の負として明示解 `pullbackHomBoundaryLift` を構成する。
+`pullbackHomBoundaryLift_coordinates` は Φa=−R を示す。
+`pullbackHomBoundaryLift_differential` は整合条件 δR=−Φr₀ を明示的に仮定し、δa=r₀ を証明する。
+これは I=V の制約を省略しない条件付きの代数補題である。
+実際の slice 境界から既知成分と右辺 R,r₀ を回収して整合条件を導くことは、まだ行っていない。
+
+したがって今回の保存では標準 fiber・錐の構成、全次数の Hom 座標・微分・脚との一致、
+整合条件付きの明示解までが証明済み。`IsLimitCone`・`IsPullbackSquare` はまだ主張しない。
+次は join と cospan の二セルの成分の回収、境界から整合条件の導出、全方程式の検証、
+境界の一致と slice の終対象性を証明する。N7c〜N7e は未完了。
+
+新規公開52宣言の正確な型は以下。共通に `{A : Type u} [CommRing A]` と
+必要な `{X B C D : Complex A}`（ComplexTriangles では `{X Y Z : Complex A}`）を暗黙引数とする。
+BiproductHomCoordinates の X,B,C はファイル冒頭の明示的な引数 `(X B C : Complex A)`。
+`open CategoryTheory Limits DifferentialGraded CochainComplex HomComplex` と必要に応じた
+`open scoped Simplicial` のもとで記す。`JoinCone`・`pullbackCospan` は Core の定義。
+`cospanConeTriangleLeft_first` は環を使わない一般の宇宙 u の標準単体の補題。
+
+`SerrePositivity.InfinityCategories.DGNerve.biproductHomCoordinates`
+
+```lean
+def biproductHomCoordinates (n : ℤ) :
+    Cochain X (B ⊞ C) n ≃ₗ[A] (Cochain X B n × Cochain X C n)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.biproductHomCoordinates_symm`
+
+```lean
+lemma biproductHomCoordinates_symm (n : ℤ) (a : Cochain X B n × Cochain X C n) :
+    (biproductHomCoordinates X B C n).symm a =
+      a.1.comp (Cochain.ofHom biprod.inl) (add_zero n) +
+        a.2.comp (Cochain.ofHom biprod.inr) (add_zero n)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.biproductHomCoordinates_symm_differential`
+
+```lean
+lemma biproductHomCoordinates_symm_differential (n : ℤ) (a : Cochain X B n) (b : Cochain X C n) :
+    δ n (n + 1) ((biproductHomCoordinates X B C n).symm (a, b)) =
+      (biproductHomCoordinates X B C (n + 1)).symm (δ n (n + 1) a, δ n (n + 1) b)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.complexEdge`
+
+```lean
+def complexEdge (f : X ⟶ Y) :
+    (dgNerve A (Complex A)).Edge (Simplex.vertex X) (Simplex.vertex Y)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.complexEdge_cycle`
+
+```lean
+lemma complexEdge_cycle (f : X ⟶ Y) :
+    (HomotopyComparison.edgeCycle (complexEdge f).toTruncated).val = Cochain.ofHom f
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.complexCompStruct`
+
+```lean
+def complexCompStruct (f : X ⟶ Y) (g : Y ⟶ Z) (h : X ⟶ Z)
+    (t : Cochain X Z (-1)) (ht : δ (-1) 0 t = Cochain.ofHom (f ≫ g) - Cochain.ofHom h) :
+    SSet.Edge.CompStruct (complexEdge f) (complexEdge g) (complexEdge h)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.coneHomCoordinates`
+
+```lean
+def coneHomCoordinates (f : B ⟶ D) (n : ℤ) :
+    Cochain X (mappingCone f) n ≃ₗ[A] (Cochain X B (n + 1) × Cochain X D n)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.coneHomCoordinates_fst`
+
+```lean
+lemma coneHomCoordinates_fst (f : B ⟶ D) (n : ℤ) (a : Cochain X (mappingCone f) n) :
+    (coneHomCoordinates f n a).1 = a.comp (mappingCone.fst f).val rfl
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.coneHomCoordinates_snd`
+
+```lean
+lemma coneHomCoordinates_snd (f : B ⟶ D) (n : ℤ) (a : Cochain X (mappingCone f) n) :
+    (coneHomCoordinates f n a).2 = a.comp (mappingCone.snd f) (add_zero n)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.coneHomCoordinates_symm`
+
+```lean
+lemma coneHomCoordinates_symm (f : B ⟶ D) (n : ℤ)
+    (a : Cochain X B (n + 1) × Cochain X D n) :
+    (coneHomCoordinates f n).symm a = mappingCone.liftCochain f a.1 a.2 rfl
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanConeTriangleLeft_first`
+
+```lean
+lemma cospanConeTriangleLeft_first :
+    SSet.stdSimplex.map (SimplexCategory.const ⦋0⦌ ⦋2⦌ 0) ≫ cospanConeTriangleLeft.{u} =
+      joinInl Δ[0] (SSet.horn 2 2 : SSet.{u})
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.standardFiberCone_vertex`
+
+```lean
+lemma standardFiberCone_vertex (g : B ⟶ D) (h : C ⟶ D) :
+    (standardFiberCone g h).vertex = Simplex.vertex (pullbackFiber g h)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.standardFiber`
+
+```lean
+abbrev standardFiber (f : B ⟶ D) : Complex A
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberHomCoordinates`
+
+```lean
+def fiberHomCoordinates (f : B ⟶ D) (n : ℤ) :
+    Cochain X (standardFiber f) (n + 1) ≃ₗ[A] (Cochain X B (n + 1) × Cochain X D n)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberHomCoordinates_fst`
+
+```lean
+lemma fiberHomCoordinates_fst (f : B ⟶ D) (n : ℤ) (a : Cochain X (standardFiber f) (n + 1)) :
+    (fiberHomCoordinates f n a).1 =
+      (a.rightUnshift n (by omega)).comp (mappingCone.fst f).val rfl
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberHomCoordinates_snd`
+
+```lean
+lemma fiberHomCoordinates_snd (f : B ⟶ D) (n : ℤ) (a : Cochain X (standardFiber f) (n + 1)) :
+    (fiberHomCoordinates f n a).2 =
+      -((a.rightUnshift n (by omega)).comp (mappingCone.snd f) (add_zero n))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberHomCoordinates_symm`
+
+```lean
+lemma fiberHomCoordinates_symm (f : B ⟶ D) (n : ℤ)
+    (a : Cochain X B (n + 1) × Cochain X D n) :
+    (fiberHomCoordinates f n).symm a =
+      (mappingCone.liftCochain f a.1 (-a.2) rfl).rightShift (-1) (n + 1) (by omega)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberHomCoordinates_symm_differential`
+
+```lean
+lemma fiberHomCoordinates_symm_differential (f : B ⟶ D) (n : ℤ)
+    (a : Cochain X B (n + 1)) (b : Cochain X D n) :
+    δ (n + 1) (n + 1 + 1) ((fiberHomCoordinates f n).symm (a, b)) =
+      (fiberHomCoordinates f (n + 1)).symm
+        (δ (n + 1) (n + 1 + 1) a,
+          a.comp (Cochain.ofHom f) (add_zero (n + 1)) - δ n (n + 1) b)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberShiftCocycle_val`
+
+```lean
+lemma fiberShiftCocycle_val (f : B ⟶ D) :
+    (fiberShiftCocycle f).val =
+      (Cochain.ofHom (𝟙 (standardFiber f))).rightUnshift (-1) (zero_add (-1))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberUnshift_eq_comp`
+
+```lean
+lemma fiberUnshift_eq_comp (f : B ⟶ D) (n : ℤ) (a : Cochain X (standardFiber f) (n + 1)) :
+    a.rightUnshift n (by omega) = a.comp (fiberShiftCocycle f).val (by omega)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberHomCoordinates_fst_eq_comp`
+
+```lean
+lemma fiberHomCoordinates_fst_eq_comp (f : B ⟶ D) (n : ℤ)
+    (a : Cochain X (standardFiber f) (n + 1)) :
+    (fiberHomCoordinates f n a).1 =
+      a.comp (Cochain.ofHom (fiberProjection f)) (add_zero (n + 1))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberHomCoordinates_snd_eq_comp`
+
+```lean
+lemma fiberHomCoordinates_snd_eq_comp (f : B ⟶ D) (n : ℤ)
+    (a : Cochain X (standardFiber f) (n + 1)) :
+    (fiberHomCoordinates f n a).2 = a.comp (fiberNullHomotopy f) (by omega)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberShiftCocycle`
+
+```lean
+def fiberShiftCocycle (f : B ⟶ D) : Cocycle (standardFiber f) (mappingCone f) (-1)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberProjectionCycle`
+
+```lean
+def fiberProjectionCycle (f : B ⟶ D) : Cocycle (standardFiber f) B 0
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberProjection`
+
+```lean
+def fiberProjection (f : B ⟶ D) : standardFiber f ⟶ B
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberProjection_cochain`
+
+```lean
+lemma fiberProjection_cochain (f : B ⟶ D) :
+    Cochain.ofHom (fiberProjection f) =
+      (fiberShiftCocycle f).val.comp (mappingCone.fst f).val (by omega)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberNullHomotopy`
+
+```lean
+def fiberNullHomotopy (f : B ⟶ D) : Cochain (standardFiber f) D (-1)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberNullHomotopy_differential`
+
+```lean
+lemma fiberNullHomotopy_differential (f : B ⟶ D) :
+    δ (-1) 0 (fiberNullHomotopy f) = Cochain.ofHom (fiberProjection f ≫ f)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberDifference`
+
+```lean
+def fiberDifference (g : B ⟶ D) (h : C ⟶ D) : B ⊞ C ⟶ D
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.pullbackFiber`
+
+```lean
+abbrev pullbackFiber (g : B ⟶ D) (h : C ⟶ D) : Complex A
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.pullbackProjectionB`
+
+```lean
+def pullbackProjectionB (g : B ⟶ D) (h : C ⟶ D) : pullbackFiber g h ⟶ B
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.pullbackProjectionC`
+
+```lean
+def pullbackProjectionC (g : B ⟶ D) (h : C ⟶ D) : pullbackFiber g h ⟶ C
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.pullbackDiagonal`
+
+```lean
+def pullbackDiagonal (g : B ⟶ D) (h : C ⟶ D) : pullbackFiber g h ⟶ D
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.pullbackHomotopy_differential`
+
+```lean
+lemma pullbackHomotopy_differential (g : B ⟶ D) (h : C ⟶ D) :
+    δ (-1) 0 (fiberNullHomotopy (fiberDifference g h)) =
+      Cochain.ofHom (pullbackProjectionB g h ≫ g) - Cochain.ofHom (pullbackDiagonal g h)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberLowerTriangle`
+
+```lean
+def fiberLowerTriangle (g : B ⟶ D) (h : C ⟶ D) :
+    SSet.Edge.CompStruct (complexEdge (pullbackProjectionB g h)) (complexEdge g)
+      (complexEdge (pullbackDiagonal g h))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberUpperTriangle`
+
+```lean
+def fiberUpperTriangle (g : B ⟶ D) (h : C ⟶ D) :
+    SSet.Edge.CompStruct (complexEdge (pullbackProjectionC g h)) (complexEdge h)
+      (complexEdge (pullbackDiagonal g h))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.standardFiberSquare`
+
+```lean
+def standardFiberSquare (g : B ⟶ D) (h : C ⟶ D) :
+    (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ dgNerve A (Complex A)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.standardFiberSquare_upper`
+
+```lean
+lemma standardFiberSquare_upper (g : B ⟶ D) (h : C ⟶ D) :
+    squareTriangle 0 ≫ standardFiberSquare g h =
+      SSet.yonedaEquiv.symm (fiberUpperTriangle g h).simplex
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.standardFiberSquare_lower`
+
+```lean
+lemma standardFiberSquare_lower (g : B ⟶ D) (h : C ⟶ D) :
+    squareTriangle 1 ≫ standardFiberSquare g h =
+      SSet.yonedaEquiv.symm (fiberLowerTriangle g h).simplex
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.standardFiberSquare_right`
+
+```lean
+lemma standardFiberSquare_right (g : B ⟶ D) (h : C ⟶ D) :
+    squareRightEdge ≫ standardFiberSquare g h = SSet.yonedaEquiv.symm (complexEdge g).edge
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.standardFiberSquare_top`
+
+```lean
+lemma standardFiberSquare_top (g : B ⟶ D) (h : C ⟶ D) :
+    squareTopEdge ≫ standardFiberSquare g h = SSet.yonedaEquiv.symm (complexEdge h).edge
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.standardFiberCone`
+
+```lean
+def standardFiberCone (g : B ⟶ D) (h : C ⟶ D) :
+    JoinCone (pullbackCospan (standardFiberSquare g h))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.pullbackHomCoordinates`
+
+```lean
+def pullbackHomCoordinates (g : B ⟶ D) (h : C ⟶ D) (n : ℤ) :
+    Cochain X (pullbackFiber g h) (n + 1) ≃ₗ[A]
+      ((Cochain X B (n + 1) × Cochain X C (n + 1)) × Cochain X D n)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.pullbackHomCoordinates_symm`
+
+```lean
+lemma pullbackHomCoordinates_symm (g : B ⟶ D) (h : C ⟶ D) (n : ℤ)
+    (a : (Cochain X B (n + 1) × Cochain X C (n + 1)) × Cochain X D n) :
+    (pullbackHomCoordinates g h n).symm a =
+      (fiberHomCoordinates (fiberDifference g h) n).symm
+        ((biproductHomCoordinates X B C (n + 1)).symm a.1, a.2)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.biproductHomCoordinates_comp_difference`
+
+```lean
+lemma biproductHomCoordinates_comp_difference (g : B ⟶ D) (h : C ⟶ D) (n : ℤ)
+    (a : Cochain X B n) (b : Cochain X C n) :
+    ((biproductHomCoordinates X B C n).symm (a, b)).comp
+        (Cochain.ofHom (fiberDifference g h)) (add_zero n) =
+      a.comp (Cochain.ofHom g) (add_zero n) - b.comp (Cochain.ofHom h) (add_zero n)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.pullbackHomCoordinates_symm_differential`
+
+```lean
+lemma pullbackHomCoordinates_symm_differential (g : B ⟶ D) (h : C ⟶ D) (n : ℤ)
+    (a : Cochain X B (n + 1)) (b : Cochain X C (n + 1)) (c : Cochain X D n) :
+    δ (n + 1) (n + 1 + 1) ((pullbackHomCoordinates g h n).symm ((a, b), c)) =
+      (pullbackHomCoordinates g h (n + 1)).symm
+        ((δ (n + 1) (n + 1 + 1) a, δ (n + 1) (n + 1 + 1) b),
+          (a.comp (Cochain.ofHom g) (add_zero (n + 1)) -
+            b.comp (Cochain.ofHom h) (add_zero (n + 1))) - δ n (n + 1) c)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.pullbackHomCoordinates_left_eq_comp`
+
+```lean
+lemma pullbackHomCoordinates_left_eq_comp (g : B ⟶ D) (h : C ⟶ D) (n : ℤ)
+    (a : Cochain X (pullbackFiber g h) (n + 1)) :
+    (pullbackHomCoordinates g h n a).1.1 =
+      a.comp (Cochain.ofHom (pullbackProjectionB g h)) (add_zero (n + 1))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.pullbackHomCoordinates_right_eq_comp`
+
+```lean
+lemma pullbackHomCoordinates_right_eq_comp (g : B ⟶ D) (h : C ⟶ D) (n : ℤ)
+    (a : Cochain X (pullbackFiber g h) (n + 1)) :
+    (pullbackHomCoordinates g h n a).1.2 =
+      a.comp (Cochain.ofHom (pullbackProjectionC g h)) (add_zero (n + 1))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.pullbackHomCoordinates_homotopy_eq_comp`
+
+```lean
+lemma pullbackHomCoordinates_homotopy_eq_comp (g : B ⟶ D) (h : C ⟶ D) (n : ℤ)
+    (a : Cochain X (pullbackFiber g h) (n + 1)) :
+    (pullbackHomCoordinates g h n a).2 =
+      a.comp (fiberNullHomotopy (fiberDifference g h)) (by omega)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.pullbackHomBoundaryLift`
+
+```lean
+def pullbackHomBoundaryLift (g : B ⟶ D) (h : C ⟶ D) (n : ℤ)
+    (a : Cochain X B (n + 1)) (b : Cochain X C (n + 1)) (c : Cochain X D n) :
+    Cochain X (pullbackFiber g h) (n + 1)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.pullbackHomBoundaryLift_coordinates`
+
+```lean
+lemma pullbackHomBoundaryLift_coordinates (g : B ⟶ D) (h : C ⟶ D) (n : ℤ)
+    (a : Cochain X B (n + 1)) (b : Cochain X C (n + 1)) (c : Cochain X D n) :
+    pullbackHomCoordinates g h n (pullbackHomBoundaryLift g h n a b c) = -((a, b), c)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.pullbackHomBoundaryLift_differential`
+
+```lean
+lemma pullbackHomBoundaryLift_differential (g : B ⟶ D) (h : C ⟶ D) (n : ℤ)
+    (a : Cochain X B (n + 1)) (b : Cochain X C (n + 1)) (c : Cochain X D n)
+    (r : Cochain X (pullbackFiber g h) (n + 1 + 1))
+    (hR : ((δ (n + 1) (n + 1 + 1) a, δ (n + 1) (n + 1 + 1) b),
+        (a.comp (Cochain.ofHom g) (add_zero (n + 1)) -
+          b.comp (Cochain.ofHom h) (add_zero (n + 1))) - δ n (n + 1) c) =
+      -(pullbackHomCoordinates g h (n + 1) r)) :
+    δ (n + 1) (n + 1 + 1) (pullbackHomBoundaryLift g h n a b c) = r
+```
+
+検証：`set -e; set -o pipefail` の下で
+`lake build SerrePositivity.InfinityCategories.DGNerve.PullbackHomLift SerrePositivity.InfinityCategories.DGNerve`
+が終了コード 0（3643 jobs）。続く `lake env lean scripts/audit_dg_nerve.lean` も終了コード 0。
+全ソースの公開宣言656件の型検査と、N0 の既存5則を含む661件の公理監査の網羅性を照合し、
+全て標準三公理の範囲内。新規52宣言も全件監査済み。新しい穴・公理・引用はない。
+Core・既存 dg 層のファイルは編集せず、ユーザーが追記済みの §7 はそのまま保持してコミットに混ぜない。
+N7a と N7b の複体版の成果を維持し、承認待ちをせず N7c の直接の充填へ継続する。
+
 ## 6. 次のマイルストーン D（本計画の範囲外）
 
 - Semifree(S) を `DGFullSubcategory`（`moduleSemifree` または一点 dg 圏上の複体版）として置き、

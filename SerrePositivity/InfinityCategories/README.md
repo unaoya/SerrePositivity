@@ -772,3 +772,22 @@ Core の境界充填による `IsTerminalVertex` と `IsInitialVertex` を直接
 全公開宣言604件の型検査、既存5則を含む609件の公理監査は標準三公理の範囲内。
 正確な新規公開型と前提は計画 §5 の N7b に記録した。
 N7b の複体版は完了。充満部分圏への制限は N7d、fiber の錐と引き戻しは N7c 以降の未完了範囲。
+
+## N7.3：標準 fiber の錐と Hom 座標（2026-10-18、極限性は未証明）
+
+`fiberDifference g h` を `biprod.desc g (-h)`、`pullbackFiber g h` をその mappingCone の −1 シフトとする。
+標準射影から二脚を作り、`fiberNullHomotopy` の微分が二つの脚の合成の差になることを証明した。
+B を通る標準ホモトピーの三角形と C を通る零ホモトピーの三角形を貼って
+`standardFiberSquare g h` を構成し、その右辺・上辺が g,h であることを確認した。
+`standardFiberCone` は Core の JoinCone で、その頂点は標準 fiber の頂点そのもの。
+
+`pullbackHomCoordinates g h n` は全 n:ℤ に対し、Hom(X,P) の次数 n+1 の成分を
+Hom(X,B)、Hom(X,C) の同次数成分と Hom(X,D) の次数 n 成分へ A 線形に同定する。
+微分は `(δb,δc,gb−hc−δz)` であり、三座標が標準の脚・ホモトピーへの後合成と一致することも証明した。
+`pullbackHomBoundaryLift` はこの座標の逆の負による明示解。
+`pullbackHomBoundaryLift_differential` は整合条件 δR=−Φr₀ のもとで δa=r₀ を証明する。
+
+対象・集約ビルドは終了コード 0（3643 jobs）、公開宣言656件の型検査と既存5則を含む661件の
+公理監査は標準三公理の範囲内。正確な公開型・前提は計画 §5 の N7c1 に記録した。
+まだ実際の slice 境界から右辺の整合条件を導いておらず、境界全体との一致も未検証。
+`IsLimitCone`・`IsPullbackSquare` の証明と N7d・N7e は未完了。

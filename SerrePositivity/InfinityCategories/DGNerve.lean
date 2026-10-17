@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.DGNerve.PullbackHomLift
 public import SerrePositivity.InfinityCategories.DGNerve.ZeroObject
 public import SerrePositivity.InfinityCategories.DGNerve.Checks
 public import SerrePositivity.InfinityCategories.DGNerve.Basic
