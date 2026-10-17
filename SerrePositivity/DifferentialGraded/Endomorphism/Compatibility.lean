@@ -2,6 +2,7 @@ module
 public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedEvaluation
 public import SerrePositivity.DifferentialGraded.Endomorphism.ModuleComparison
 public import SerrePositivity.DifferentialGraded.Endomorphism.ModuleAdjunction
+public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedHom
 public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension
 public import SerrePositivity.DifferentialGraded.Perfect.EnhancementShiftComparison
 

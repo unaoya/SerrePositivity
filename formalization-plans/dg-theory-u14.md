@@ -131,6 +131,19 @@
   既存公開入口 `Compatibility.lean` へimportを追加し、ルートは編集していない。
 - 導来随伴、Perf比較、Hom擬同型と本質的全射の証明、三角性との整合性は未完。
 
+## U14a.10：射影的指定対象からの導来Hom（2026-10-17）
+
+- `DerivedHom.lean`：Hom関手の閉零成分が既存 `eHomWhiskerLeft` に一致することを証明。
+  Eのホモトピー射影性の下で、既存 `moduleHomotopicallyProjective_postcompose_quasiIso`
+  によりHom(E,−)の擬同型保存を得る。
+- `moduleDerivedLift` を使い主導来加群圏間の関手へ降ろした。
+  指定局所化と厳密に可換となる因子化等式を公開し、U13のperfect dg代表に保持された
+  射影性から得る導来Homも構成した。Eをcompact generatorと仮定したことにはしない。
+- `ChecksDerivedHom` と更新した `ChecksCompatibility` の対象ビルド成功。
+  6主要宣言の公理は標準3公理のみ。新規sorry・axiom・引用はない。
+- 次はtensor側をEnd(E)上の射影解像度で導来化し、解像度計算・Hom側との導来随伴を
+  接続する。その後でthick生成によるPerf比較の二つの証拠を証明する。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
