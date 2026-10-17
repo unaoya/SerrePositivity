@@ -1202,3 +1202,42 @@ PD 先行 δ 完全化の具体的比較を使う経路である。
 SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4303 jobs）。
 専用監査も終了コード 0。新規 23 公開宣言へ `assert_no_sorry` を追加し、
 生成宣言を含む 1857 宣言の推移的公理依存は標準 3 公理のみと確認した。
+
+### E1.18：完全 prism 商上の一元・有限族の根付き拡大の存在
+
+新規 `Andre/PerfectPrismMonicRootedExtension.lean` で、元の商上の族を同次数モニックに
+持ち上げて、E1.17 の同じ標準基底射の完全忠実平坦性を適用する。
+評価の自然性で元の多項式族の根方程式へ移す。
+BS Thm 7.14（著者版 p.61）、Rem 7.15（p.62）の原典とは異なる
+PD 先行 δ 完全化と具体的候補比較による経路である。
+
+主要公開型（namespace `SerrePositivity.BhattScholze.Andre`）：
+
+```lean
+theorem exists_finiteMonicRootedPerfectoidExtension_of_perfectPrism
+    {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
+    (P : OrientedPrism p A) (hP : P.deltaStructure.IsPerfect)
+    (f : σ → Polynomial (A ⧸ Ideal.span {P.generator}))
+    (hf : ∀ s, (f s).Monic) (hdeg : ∀ s, 0 < (f s).natDegree)
+    {m : ℕ} (eσ : Fin m ≃ σ) :
+    ∃ (T : Type u) (_ : CommRing T)
+      (φ : A ⧸ Ideal.span {P.generator} →+* T) (ρ : σ → T),
+      IsIntegralPerfectoid T p ∧
+      (letI := φ.toAlgebra;
+        IsCompletelyFaithfullyFlat
+          (Ideal.span {(p : A ⧸ Ideal.span {P.generator})}) T) ∧
+      ∀ s, (f s).eval₂ φ (ρ s) = 0
+```
+
+`exists_monicRootedPerfectoidExtension_of_perfectPrism_fintype` は全列挙の代わりに
+`[Fintype σ]` を与える同じ結論。
+`exists_monicRootPerfectoidExtension_of_perfectPrism` は単一多項式 `f`、
+前提 `f.Monic` と `0 < f.natDegree`、根 `ρ : T`、結論 `f.eval₂ φ ρ = 0` の一元版。
+完全 prism、有限性、モニック性と正次数以外の補助仮定はない。
+任意族の最終定理および一般 perfectoid 基底への移送はまだ未完了。
+無限 p 冪根変数の明示的な自由基底も残り、全体の目標を完成とは数えない。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4304 jobs）。
+専用監査は終了コード 0。新規 3 公開定理の `assert_no_sorry` と、
+生成宣言を含む 1862 宣言の推移的な標準 3 公理のみの依存を確認した。
+3 定理の公開型を `#print` で確認（終了コード 0）。
