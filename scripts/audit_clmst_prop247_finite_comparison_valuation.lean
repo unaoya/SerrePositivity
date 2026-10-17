@@ -1,0 +1,5 @@
+import SerrePositivity.CLMST.Prop247FiniteComparisonValuation
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.CLMST.prop247_finiteComparison_valuation_extension
+#print axioms SerrePositivity.CLMST.prop247_finiteComparison_valuation_extension
