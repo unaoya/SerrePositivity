@@ -23,7 +23,7 @@ def completedAlgebraBaseChangeTensorIso :
           (boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R S))).obj) ≅
       (boundedAboveCompletedTensorAlgebra R a B S).X.obj :=
   ((derivedCompletionRestrictionIso (algebraMap R B) a).app _).symm ≪≫
-    (derivedComplexCompletionFunctor R a).mapIso (algebraBaseChangeTensorIso R B S)
+    (derivedComplexCompletionFunctor R a).mapIso (algebraDerivedBaseChangeTensorIso R B S)
 
 /-- 新しい対象を選ばず、既存の係数正規化を含む G2 の比較そのものに等しい。 -/
 theorem completedAlgebraBaseChangeTensorIso_eq :
@@ -34,7 +34,7 @@ theorem completedAlgebraBaseChangeTensorIso_eq :
       DerivedCategory.Minus.ι.mapIso (completedScalarTensorNormalizationIso R B S a) := by
   apply Iso.ext
   simp only [completedAlgebraBaseChangeTensorIso, completedBaseChangeTensorRestrictionIso,
-    completedScalarTensorNormalizationIso, algebraBaseChangeTensorIso,
+    completedScalarTensorNormalizationIso, algebraDerivedBaseChangeTensorIso,
     baseChangeScalarNormalizationIso, Functor.mapIso_hom, Iso.trans_hom, Iso.symm_hom,
     Functor.map_comp, Category.assoc]
   rfl
@@ -46,13 +46,13 @@ theorem completedAlgebraBaseChangeTensorIso_unit :
           ((boundedAboveDerivedBaseChange (algebraMap R B)).obj
             (boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R S))).obj) ≫
       (completedAlgebraBaseChangeTensorIso R B S a).hom =
-    (algebraBaseChangeTensorIso R B S).hom ≫
+    (algebraDerivedBaseChangeTensorIso R B S).hom ≫
       (derivedComplexCompletionUnit R a).app
         (boundedAboveDerivedTensorAlgebra (R := R) B S).X.obj := by
   change _ ≫ ((derivedCompletionRestrictionIso (algebraMap R B) a).inv.app _ ≫ _) = _
   rw [← Category.assoc, derivedCompletionRestrictionIso_inv_unit]
   exact ((derivedComplexCompletionUnit R a).naturality
-    (algebraBaseChangeTensorIso R B S).hom).symm
+    (algebraDerivedBaseChangeTensorIso R B S).hom).symm
 
 /-- 元の G2 の H⁰ 比較は、元の二つの完備化標準単位と可換。 -/
 theorem completedBaseChangeTensorH0Iso_unit :

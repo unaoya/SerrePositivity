@@ -30,7 +30,7 @@ def algebraBaseChangeTensorH0Iso :
         (boundedAboveDerivedTensorAlgebra (R := R) B S).X.obj :=
   ((derivedRestrictScalarsHomologyIso (algebraMap R B) 0).app _).symm ≪≫
     (DerivedCategory.homologyFunctor (ModuleCat R) 0).mapIso
-      (algebraBaseChangeTensorIso R B S)
+      (algebraDerivedBaseChangeTensorIso R B S)
 
 /-- 元の augmentation の H⁰ 比較は、通常 tensor への標準正規化を保つ。 -/
 theorem algebraBaseChangeTensorH0Iso_augmentation :
@@ -53,7 +53,7 @@ theorem algebraBaseChangeTensorH0Iso_augmentation :
   let X := ((boundedAboveDerivedBaseChange φ).obj (boundedAboveDerivedSingleFunctor.obj M)).obj
   let a := (boundedAboveDerivedBaseChangeModuleAugmentation φ).app M
   let eN := algebraBaseChangeModuleNormalizationIso R B S
-  let eT := algebraBaseChangeTensorIso R B S
+  let eT := algebraDerivedBaseChangeTensorIso R B S
   let ρ := (derivedRestrictScalarsHomologyIso φ 0).app X
   let hT := (derivedTensorH0AlgEquiv (R := R) B S).toLinearEquiv.toModuleIso.hom
   have ht : hT = H.map (boundedAboveDerivedTensorAlgebraAugmentation (R := R) B S).hom.hom.hom ≫
@@ -79,7 +79,7 @@ theorem algebraBaseChangeTensorH0Iso_augmentation :
       ρ.hom ≫ U.map ((boundedAboveDerivedBaseChangeModuleH0Iso φ).hom.app M) ≫ eN.hom := by
     rw [ht]
     have he := congrArg (fun k => H.map k ≫ ε.hom.app (ModuleCat.of R (B ⊗[R] S)))
-      (algebraBaseChangeTensorIso_augmentation R B S)
+      (algebraDerivedBaseChangeTensorIso_augmentation R B S)
     simp only [Functor.map_comp, Category.assoc] at he
     rw [show H.map eT.hom ≫
         H.map (boundedAboveDerivedTensorAlgebraAugmentation (R := R) B S).hom.hom.hom ≫

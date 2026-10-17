@@ -9218,7 +9218,7 @@ Cor 8.12 は引き続き保留し、新しい sorry・axiom・引用は追加し
 **D-I・通常の環 tensor への正規化と augmentation の一致（2026-10-17）。** 共通層
 `HomologicalAlgebra/AlgebraBaseChangeTensorAugmentation.lean` は係数環を左に置く元の
 B⊗R S を終域とする実加群比較と、元の導来 tensor 代数を終域とする実導来比較
-`algebraBaseChangeTensorIso` を構成した。`algebraBaseChangeTensorIso_augmentation` は
+`algebraDerivedBaseChangeTensorIso` を構成した。`algebraDerivedBaseChangeTensorIso_augmentation` は
 この比較が元の底変換 augmentation と既存の導来 tensor 代数 augmentation を保つ可換式を与える。
 係数制限と通常 tensor の係数正規化を全て含める。
 `algebraBaseChangeModuleNormalizationIso_apply` は、この R 線形正規化が始域比較で使う
@@ -9258,6 +9258,22 @@ Cor 8.12 は保留を継続する。
 次は前工程の通常 tensor の元の同定をこの単位可換式へ適用し、BS が公開する元の
 `completedTensorPerfectoidizationMap` と終域比較の標準写像の四角形へ接続する。
 Cor 8.12 の保留は継続する。
+
+**D-I・BS の元の通常 tensor 写像との単位対応（2026-10-17）。**
+`Prop247TensorUnit.lean` の `prop247_completedBaseChangeTensorH0_unit` は、元の完備底変換単位と
+既存 G2 の元の B 線形 H⁰ 比較の合成が、BS の `completedTensorPerfectoidizationMap` に
+元の通常 tensor の元を渡した写像と一致することを証明する。perfectoid 性、平坦性、有限性は不要。
+共通層 `AlgebraScalarExtensionModule.lean` の `algebraScalarExtensionModuleIso_algMap_apply` で、
+元の代数写像の係数拡大と通常の環 tensor 写像の元ごとの一致も証明した。
+対象 `Prop247TensorUnit` のビルドと新規公開2宣言の専用監査が成功。全2宣言は
+assert_no_sorry 成功・標準3公理のみ。
+
+依存を合流したビルドで、新設した導来比較名が既存の通常複体用
+`KoszulAlgebraTorComparison.lean` の `algebraBaseChangeTensorIso` と衝突することを検出した。
+本系列の新設名を `algebraDerivedBaseChangeTensorIso`・`_augmentation` に修正し、
+本系列の利用箇所と計画の公開名を更新した。既存 Koszul 側の API は編集していない。
+改名後に係数正規化・H⁰ 比較・完備化単位の専用監査3本（公開13宣言）も再実行して成功した。
+Cor 8.12 の保留は継続し、新しい sorry・axiom・引用は追加していない。
 
 ### 9.8. 各区切りの保存と検証
 

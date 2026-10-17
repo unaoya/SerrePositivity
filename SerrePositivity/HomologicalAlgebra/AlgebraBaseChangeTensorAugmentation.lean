@@ -45,7 +45,7 @@ theorem algebraBaseChangeModuleNormalizationIso_apply
   | add x y hx hy => simpa only [map_add] using congrArg₂ (· + ·) hx hy
 
 /-- 元の係数作用で正規化した、実底変換と実導来 tensor の比較。 -/
-def algebraBaseChangeTensorIso :
+def algebraDerivedBaseChangeTensorIso :
     (derivedRestrictScalars (algebraMap R B)).obj
       ((boundedAboveDerivedBaseChange (algebraMap R B)).obj
         (boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R S))).obj ≅
@@ -58,7 +58,7 @@ def algebraBaseChangeTensorIso :
       (Iso.refl (boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R S)))))
 
 /-- 元の通常環 tensor への正規化後も、底変換と tensor の augmentation は一致する。 -/
-theorem algebraBaseChangeTensorIso_augmentation :
+theorem algebraDerivedBaseChangeTensorIso_augmentation :
     (derivedRestrictScalars (algebraMap R B)).map
         ((boundedAboveDerivedBaseChangeModuleAugmentation (algebraMap R B)).app
           (ModuleCat.of R S)) ≫
@@ -66,7 +66,7 @@ theorem algebraBaseChangeTensorIso_augmentation :
         ((ModuleCat.extendScalars (algebraMap R B)).obj (ModuleCat.of R S)) ≫
       (DerivedCategory.singleFunctor (ModuleCat R) 0).map
         (algebraBaseChangeModuleNormalizationIso R B S).hom =
-    (algebraBaseChangeTensorIso R B S).hom ≫
+    (algebraDerivedBaseChangeTensorIso R B S).hom ≫
       (boundedAboveDerivedTensorAlgebraAugmentation (R := R) B S).hom.hom.hom := by
   let M := ModuleCat.of R S
   let e := boundedAboveDerivedBaseChangeTensorIso (algebraMap R B)
@@ -76,7 +76,7 @@ theorem algebraBaseChangeTensorIso_augmentation :
   have hn := boundedAboveDerivedTensorModuleAugmentation_naturality
     (algebraSelfRestrictionIso R B).hom (𝟙 M)
   rw [boundedAboveDerivedSingleFunctor.map_id] at hn
-  have he : (algebraBaseChangeTensorIso R B S).hom = e.hom.hom ≫
+  have he : (algebraDerivedBaseChangeTensorIso R B S).hom = e.hom.hom ≫
       (boundedAboveDerivedTensor.map (CategoryTheory.Prod.mkHom
         (boundedAboveDerivedSingleFunctor.map (algebraSelfRestrictionIso R B).hom)
         (𝟙 (boundedAboveDerivedSingleFunctor.obj M)))).hom := rfl

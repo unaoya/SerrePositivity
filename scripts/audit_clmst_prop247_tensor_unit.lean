@@ -1,0 +1,7 @@
+import SerrePositivity.CLMST.Prop247TensorUnit
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.algebraScalarExtensionModuleIso_algMap_apply
+assert_no_sorry SerrePositivity.CLMST.prop247_completedBaseChangeTensorH0_unit
+#print axioms SerrePositivity.algebraScalarExtensionModuleIso_algMap_apply
+#print axioms SerrePositivity.CLMST.prop247_completedBaseChangeTensorH0_unit

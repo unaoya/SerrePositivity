@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.AlgebraRestrictionSingle
+public import Mathlib.RingTheory.TensorProduct.Maps
 
 /-! # 環代数の係数拡大と通常 tensor の係数を保つ比較 -/
 
@@ -34,5 +35,23 @@ def algebraScalarExtensionModuleIso (M : ModuleCat.{u} R) :
 theorem algebraScalarExtensionModuleIso_tmul (M : ModuleCat.{u} R) (b : B) (m : M) :
     (algebraScalarExtensionModuleIso R B M).hom
       (b ⊗ₜ[R,algebraMap R B] m) = b ⊗ₜ[R] m := rfl
+
+/-- 元の代数写像の係数拡大は、通常の環 tensor の標準写像と各元で一致する。 -/
+theorem algebraScalarExtensionModuleIso_algMap_apply
+    {S T : Type u} [CommRing S] [CommRing T] [Algebra R S] [Algebra R T]
+    (f : S →ₐ[R] T)
+    (x : (ModuleCat.extendScalars (algebraMap R B)).obj (ModuleCat.of R S)) :
+    (algebraScalarExtensionModuleIso R B (ModuleCat.of R T)).hom
+        ((ModuleCat.extendScalars (algebraMap R B)).map (ModuleCat.ofHom f.toLinearMap) x) =
+      Algebra.TensorProduct.map (AlgHom.id R B) f
+        ((algebraScalarExtensionModuleIso R B (ModuleCat.of R S)).hom x) := by
+  induction x using TensorProduct.inductionOn with
+  | tmul b s =>
+    change (algebraScalarExtensionModuleIso R B (ModuleCat.of R T)).hom
+      (b ⊗ₜ[R,algebraMap R B] f s) = _
+    rw [algebraScalarExtensionModuleIso_tmul, algebraScalarExtensionModuleIso_tmul,
+      Algebra.TensorProduct.map_tmul]
+    rfl
+  | add x y hx hy => simpa only [map_add] using congrArg₂ (· + ·) hx hy
 
 end SerrePositivity
