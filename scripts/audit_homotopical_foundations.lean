@@ -7,6 +7,16 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.CategoryTheory.Simplex.Prefix,
+    `SerrePositivity.CategoryTheory.Simplex.PrefixInterval,
+    `SerrePositivity.CategoryTheory.Quiver.PathObjectTransport,
+    `SerrePositivity.HomotopicalAlgebra.Simplicial.ExtraDegeneracyInterval,
+    `SerrePositivity.HomotopicalAlgebra.Simplicial.ExtraDegeneracyContraction,
+    `SerrePositivity.HomotopicalAlgebra.Simplicial.OppositeHomotopy,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarSourceOperators,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarSourceExtraOperators,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarSourceExtraDegeneracy,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarSourceContraction,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedMonoLifting,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalKanTests,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.LocalizedMonoReedy,
@@ -973,6 +983,7 @@ run_cmd do
         `SerrePositivity.CategoryTheory.Quiver.PathIntersections,
         `SerrePositivity.CategoryTheory.Quiver.PathNatTrans,
         `SerrePositivity.CategoryTheory.Quiver.PathFunctorExt,
+        `SerrePositivity.CategoryTheory.Quiver.PathObjectTransport,
         `SerrePositivity.CategoryTheory.Simplex,
         `SerrePositivity.CategoryTheory.NerveSimplexFirstFunctor,
         `SerrePositivity.CategoryTheory.SimplexChainParameter,
