@@ -7355,3 +7355,73 @@ powerRootPrismMonicCompletedPerfectionBaseMap_completelyFaithfullyFlat W hW f hf
 検証：ps で他レーンの lake build がないことを確認して対象ビルド（4486 jobs）を実行し終了コード0。文書修正後の対象・集約ビルド（4611 jobs）も終了コード0。import 整理で従来の一般補題3本が集約から外れていたことを監査が検出したため、集約へ `CompletelyFaithfullyFlatPrincipalPower` の明示 import を追加して従来の公開範囲を維持した。修正後の集約ビルド（4613 jobs）は `set -o pipefail` 付きで終了コード0。9更新宣言と置換先1宣言の10本の `#check` は終了コード0。専用監査は `André monic root audit passed: 8182 declarations, standard axioms only.`。削除した旧宣言の assert を除くとともに、置換先 `Unconditional.PowerRootHodgeTateReduction` 全宣言を監査範囲へ加えた。一般補題3本の assert とモジュール監査は維持した。
 
 A1-f の保存済み成果 `6358b55c` の到着を確認した。既存定義は変更せず、R1 の保存後に公開型と範囲を読み、A1-c2 の成果と合わせた最終合流に用いる。
+
+### E1.85／R1 Frobenius PD 包の旧8宣言を無条件版へ移行（2026-10-17）
+
+本節は A1-a／R1 の追記。`PowerRootPrismMonicFrobeniusTensorPD.lean` と
+`PowerRootPrismMonicFullFrobeniusPD.lean` の不要な hpR 付き公開宣言を各4本削除した。
+同じ名前の `_of_unconditional` 版を `MonicRootedExtension` から明示的に公開する。
+全リポジトリの Lean ファイルと監査で旧名を検索し、これら2ファイルの内部と自分の監査以外に
+呼出しがないことを確認した。A1-c2 が使う native PD 包の旧名は変更していない。
+並列担当の `Unconditional/` と `VarpiComparison/` のファイルは編集していない。
+
+削除した8名は次のとおり。namespace は `SerrePositivity.BhattScholze.Andre`。
+右に同じ名前へ `_of_unconditional` を付けた公開宣言が正本である。
+
+- `powerRootPrismMonicFrobeniusTensorDividedPowers`
+- `powerRootPrismMonicFrobeniusTensorInputAlgEquiv_isDPMorphism`
+- `powerRootPrismMonicFrobeniusTensorDividedPowers_input_apply`
+- `existsUnique_powerRootPrismMonicFrobeniusTensorPDMorphism`
+- `powerRootPrismMonicFullFrobeniusDividedPowers`
+- `powerRootPrismMonicFullFrobeniusInputAlgEquiv_isDPMorphism`
+- `powerRootPrismMonicFullFrobeniusDividedPowers_input_apply`
+- `existsUnique_powerRootPrismMonicFullFrobeniusPDMorphism`
+
+旧2ファイルの係数作用・比較同型・指定 PD イデアル・入力の所属は保持する。
+置換先は既存の `Unconditional/FrobeniusTensorPD.lean` と `Unconditional/FullFrobeniusPD.lean`。
+モニック性を保持し、hpR と正次数仮定を要求しない。零次数 f=1 も含めた主張の範囲を維持する。
+新しい引用・sorry・axiom は追加していない。BS Rem 7.15(1)（著者版 p.62）とは異なる
+半線形比較・通常テンソル・分冪構造の移送という証明経路を変更した docstring に明記した。
+
+公開8宣言の正確な型を共通記号で記す。引数は独立宇宙 u,w、{A:Type u} [CommRing A]、
+{p:ℕ} [Fact p.Prime]、W:OrientedPrism p A、hW:W.deltaStructure.IsPerfect、
+f:Polynomial A、hf:f.Monic。H,T,R,ϖ は E1.80 の元の構成、
+Rp=R/(p)、Rv=R/(ϖ)、Np=PowerRootPolynomial Rp p hp、bp=(A→R→Rp)、
+zp=powerRootPolynomialBaseMap Rp p hp (f.map bp)、Dp=PrincipalDPPresentation Np zp、
+φ=powerRootPrismMonicHodgeTateBaseMap W hW f、Mv=T/Ideal.map φ (Ideal.span {ϖ}) とする。
+
+二つの実台環 K と指定 J、比較 e、分冪構造 hK は次の対応である。
+
+| K | J | e | hK |
+|---|---|---|---|
+| Ft=Rp⊗[Rv]Mv | `powerRootPrismMonicFrobeniusTensorPDIdeal W hW f hf` | `powerRootPrismMonicFrobeniusTensorInputAlgEquiv W hW f hf` | `powerRootPrismMonicFrobeniusTensorDividedPowers_of_unconditional W hW f hf` |
+| At=TensorBaseCopy A⊗[A]Mv | `powerRootPrismMonicFullFrobeniusPDIdeal W hW f hf` | `powerRootPrismMonicFullFrobeniusInputAlgEquiv W hW f hf` | `powerRootPrismMonicFullFrobeniusDividedPowers_of_unconditional W hW f hf` |
+
+Rp の Rv 作用は既存の `perfectPrismVarpiFrobeniusQuotientEquiv W hW` の作用。
+At の左 A 作用は既存の `αc=(frobeniusEquiv W.deltaStructure hW).trans
+(tensorBaseCopyRingEquiv A).symm`、右作用は自然な `powerRootPrismMonicVarpiBaseMap`。
+各型には元の H の標準環構造・これらの標準代数構造・対応する
+`powerRootPrismMonicFrobeniusTensorInputAlgebra` または `FullFrobeniusInputAlgebra` の let を先頭に置く。
+比較先の構造 hDp は `powerRootPrimeFrobeniusDividedPowers_of_unconditional W hW f hf`。
+各行の4公開宣言は正確に次の結論を持つ。
+
+```lean
+hK : DividedPowers J
+
+-- 対応する ...InputAlgEquiv_isDPMorphism_of_unconditional
+hK.IsDPMorphism hDp e.toRingHom
+
+-- 対応する ...DividedPowers_input_apply_of_unconditional (n : ℕ)
+hK.dpow n (algebraMap Np K zp) = e.symm (principalDPGenerator zp n)
+
+-- 対応する existsUnique_...PDMorphism_of_unconditional
+{B : Type w} [CommRing B] [Algebra Np B] {I : Ideal B}
+(Ht : DividedPowers I) (hzB : algebraMap Np B zp ∈ I) :
+∃! F : K →ₐ[Np] B, hK.IsDPMorphism Ht F.toRingHom
+```
+
+普遍性の標的には p ねじれなし・完備性・正則性を追加しない。
+元の H や係数・根変数の像を変えず、旧8宣言を無条件な同じ計算の公開名へ移した。
+残る R1 の native PD と raw 中間定理の整理、A1-c2・A1-f の最終合流は未完了。
+
+検証：他レーンの lake build がないことを ps で確認し、`set -o pipefail` 付きで対象4モジュールと集約をビルドした（4616 jobs、終了コード0）。公開置換先8宣言の `assert_no_sorry` と8本の `#check` は終了コード0。専用監査は `André monic root audit passed: 8370 declarations, standard axioms only.`。置換先2モジュールの全生成宣言も監査範囲に加え、保持した旧モジュールの残る全宣言も引き続き監査した。

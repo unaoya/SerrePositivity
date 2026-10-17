@@ -5,25 +5,26 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootPrimeFrobeniusPDEnvelo
 public import SerrePositivity.BhattScholze.Andre.PrincipalPDSourceTransport
 
 /-!
-# André E1・E2：自然な実 Frobenius テンソル上の実 pd 包
+# André R1：自然な Frobenius テンソルの PD 入力とイデアル
 
 ## 概要
 
-根変数上で自然性を確認した実テンソルに、元の mod p 入力の実分冪構造と pd 普遍性を与える。
-BS Rem 7.15(1)（著者版 p.62）の入力環上の構造比較。
+自然な Frobenius テンソルにおける標準入力環作用、比較同型、分冪イデアルを保持する。
+BS Rem 7.15(1)（著者版 p.62）の元の入力と同じ台環を使う。
 
 ## 方針
 
-同じ無限根環上の実代数同型に沿って、正次数イデアル・分冪構造・普遍性を戻す。
-原典とは異なり、Witt 座標による半線形比較と通常テンソルを経て実分冪構造を移送する。
+係数と根変数を保つ比較同型により入力作用と指定イデアルを作る。
+原典とは異なる半線形比較・通常テンソルを使う経路。
 
 ## 規約
 
-モニック性と prism 商の p 正則性を明示する。絶対 prismatic 源の同定はまだ主張しない。
+不要になった hpR 付きの分冪構造・分冪射・分冪公式・普遍性の4宣言を削除した。
+対応する `_of_unconditional` 版を集約から公開し、モニック性を保持して正次数は追加しない。
 
 ## 使われ方
 
-元の自然な T/ϖ の係数 Frobenius テンソルを、自然な入力環作用を持つ pd 包として扱う。
+無条件の分冪構造を、同じ元の実引戻しと同じ入力作用に関して適用する。
 -/
 
 @[expose] public noncomputable section
@@ -87,24 +88,6 @@ def powerRootPrismMonicFrobeniusTensorPDIdeal :
   let := powerRootPrismMonicFrobeniusTensorInputAlgebra W hW f hf
   exact principalPDSourceIdeal zp Ein
 
-/-- 概要：自然な実テンソル上に元の mod p 入力の実分冪構造を与える。
-方針：係数を保つ実同型に沿って比較先の構造を戻す。
-規約：prism 商の p 正則性を明示する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 包の構造。 -/
-def powerRootPrismMonicFrobeniusTensorDividedPowers
-    (hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal)) :
-    let := pdCompletionCommRing L p (jL dP)
-    let := powerRootPrismMonicHodgeTateVarpiAlgebra W hW f
-    let := (evp).toRingHom.toAlgebra
-    let := powerRootPrismMonicFrobeniusTensorInputAlgebra W hW f hf
-    DividedPowers (powerRootPrismMonicFrobeniusTensorPDIdeal W hW f hf) := by
-  let := pdCompletionCommRing L p (jL dP)
-  let := powerRootPrismMonicHodgeTateVarpiAlgebra W hW f
-  let := (evp).toRingHom.toAlgebra
-  let := powerRootPrismMonicFrobeniusTensorInputAlgebra W hW f hf
-  exact principalPDSourceDividedPowers zp Ein
-    (powerRootPrimeFrobeniusDividedPowers W hW f hpR hf)
-
 /-- 概要：自然な実テンソルの分冪イデアルは元の入力の像を含む。
 方針：係数を保つ同型の源への入力所属の一般公式を使う。
 規約：モニック性のみを仮定する。
@@ -120,68 +103,5 @@ theorem powerRootPrismMonicFrobeniusTensorPDIdeal_input_mem :
   let := (evp).toRingHom.toAlgebra
   let := powerRootPrismMonicFrobeniusTensorInputAlgebra W hW f hf
   exact principalPDSourceIdeal_base_mem zp Ein
-
-/-- 概要：実テンソル比較は元の実分冪構造を比較先へ保つ。
-方針：同型の源へ戻した構造の分冪射性を使う。
-規約：同じ入力環作用と同じイデアルを使う。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実 pd 比較。 -/
-theorem powerRootPrismMonicFrobeniusTensorInputAlgEquiv_isDPMorphism
-    (hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal)) :
-    let := pdCompletionCommRing L p (jL dP)
-    let := powerRootPrismMonicHodgeTateVarpiAlgebra W hW f
-    let := (evp).toRingHom.toAlgebra
-    let := powerRootPrismMonicFrobeniusTensorInputAlgebra W hW f hf
-    (powerRootPrismMonicFrobeniusTensorDividedPowers W hW f hf hpR).IsDPMorphism
-      (powerRootPrimeFrobeniusDividedPowers W hW f hpR hf) (Ein).toRingHom := by
-  let := pdCompletionCommRing L p (jL dP)
-  let := powerRootPrismMonicHodgeTateVarpiAlgebra W hW f
-  let := (evp).toRingHom.toAlgebra
-  let := powerRootPrismMonicFrobeniusTensorInputAlgebra W hW f hf
-  exact principalPDSourceEquiv_isDPMorphism zp Ein
-    (powerRootPrimeFrobeniusDividedPowers W hW f hpR hf)
-
-/-- 概要：自然な入力元の全分冪は標準分冪生成元の実同型による逆像。
-方針：比較先の標準分冪値を係数を保つ同型で戻す。
-規約：零次数を含む全次数 n を指定する。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実分冪値の同定。 -/
-theorem powerRootPrismMonicFrobeniusTensorDividedPowers_input_apply
-    (hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal)) (n : ℕ) :
-    let := pdCompletionCommRing L p (jL dP)
-    let := powerRootPrismMonicHodgeTateVarpiAlgebra W hW f
-    let := (evp).toRingHom.toAlgebra
-    let := powerRootPrismMonicFrobeniusTensorInputAlgebra W hW f hf
-    (powerRootPrismMonicFrobeniusTensorDividedPowers W hW f hf hpR).dpow n
-      (algebraMap Np Ft zp) = (Ein).symm (principalDPGenerator zp n) := by
-  let := pdCompletionCommRing L p (jL dP)
-  let := powerRootPrismMonicHodgeTateVarpiAlgebra W hW f
-  let := (evp).toRingHom.toAlgebra
-  let := powerRootPrismMonicFrobeniusTensorInputAlgebra W hW f hf
-  exact principalPDSourceDividedPowers_base_apply zp Ein
-    (powerRootPrimeFrobeniusDividedPowers W hW f hpR hf)
-    (powerRootPrimeFrobeniusDividedPowers_base_apply W hW f hpR hf) n
-
-/-- 概要：自然な実 Frobenius テンソルは元の mod p 入力の pd 包の普遍性を持つ。
-方針：同じ入力環上の代数同型で標準主分冪包の普遍性を移す。
-原典とは異なる半線形比較・通常テンソル・実分冪構造の移送による証明。
-規約：標的の宇宙・ねじれ・完備性は制約しない。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の実引戻し側の pd 包性。 -/
-theorem existsUnique_powerRootPrismMonicFrobeniusTensorPDMorphism
-    (hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal))
-    {B : Type w} [CommRing B] [Algebra Np B] {I : Ideal B}
-    (Ht : DividedPowers I) (hzB : algebraMap Np B zp ∈ I) :
-    let := pdCompletionCommRing L p (jL dP)
-    let := powerRootPrismMonicHodgeTateVarpiAlgebra W hW f
-    let := (evp).toRingHom.toAlgebra
-    let := powerRootPrismMonicFrobeniusTensorInputAlgebra W hW f hf
-    ∃! F : Ft →ₐ[Np] B,
-      (powerRootPrismMonicFrobeniusTensorDividedPowers W hW f hf hpR).IsDPMorphism
-        Ht F.toRingHom := by
-  let := pdCompletionCommRing L p (jL dP)
-  let := powerRootPrismMonicHodgeTateVarpiAlgebra W hW f
-  let := (evp).toRingHom.toAlgebra
-  let := powerRootPrismMonicFrobeniusTensorInputAlgebra W hW f hf
-  exact existsUnique_principalPDSourceMorphism zp Ein
-    (powerRootPrimeFrobeniusDividedPowers W hW f hpR hf)
-    (powerRootPrimeFrobeniusDividedPowers_base_apply W hW f hpR hf) Ht hzB
 
 end SerrePositivity.BhattScholze.Andre

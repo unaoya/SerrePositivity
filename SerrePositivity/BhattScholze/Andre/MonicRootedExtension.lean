@@ -88,6 +88,8 @@ public import SerrePositivity.BhattScholze.Andre.BoundedPrismTiltQuotient
 public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicSourceInitiality
 public import SerrePositivity.BhattScholze.Andre.PerfectPrismBoundedTargetLift
 public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicAbsoluteUniversal
+public import SerrePositivity.BhattScholze.Andre.Unconditional.FrobeniusTensorPD
+public import SerrePositivity.BhattScholze.Andre.Unconditional.FullFrobeniusPD
 
 /-!
 # André E1・E2 の集約
