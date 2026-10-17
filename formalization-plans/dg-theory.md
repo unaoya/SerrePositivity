@@ -10949,3 +10949,58 @@ e6bbacd0e1b7307ff6e17da09cd2455f60804fa6を再確認した。
 §15.2全体を照合してU12eを受け入れる。U12e全体はなお未受入であり、目標を完了扱いにしない。
 共有一般論への新しいAPI要求はない。共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・
 ScalarExtension*・並行作業のTensor/Associator*と他チャットの記録を編集していない。
+
+### 17.234 U12e74：左単位squareの通常・増大・指定解像度での計算（2026-10-17）
+
+**通常の左単位square。** Tensor/LeftUnitRestriction.leanのleftUnitRestrictionは、
+対角のHom比較を前因子に作用させ、外側右制限比較、中間圏比較、制限した左単位子を続ける射が、
+制限後の左単位子そのものに一致することを証明した。
+ι_leftUnitRestriction_comparisonは最初の二つの比較をcoend包含で計算する式であり、
+外側右制限比較が保持する左加群の同一視を省略していない。
+最後は既存のYoneda評価とrightAction_restrictへ帰着する。
+任意の可換環・任意のF : D → Bを扱い、Hom準同型性・本質的全射性・局所Hom K-flat性は不要。
+終端Cの対象型のsmallnessも不要で、B・Dのsmallnessだけを明示する。
+
+**任意の増大射。** Tensor/LeftUnitRestrictionAugmentation.leanは
+q : R → rightRestriction F Pを任意の閉零bimodule射として扱う。
+leftUnitRestriction_augmentation_exchangeは、qを対角比較および外側右制限比較と交換する式であり、
+既存の外側右制限の自然性とcomposeMapの合成則から証明した。
+leftUnitRestriction_augmentationは、中間比較へqを先に作用させる経路の出力が、
+Rの左単位子にqを続けた射と一致することを示す。qの準同型性・RのK-flat性はここでは不要。
+新たな解像度の選択や、別の中間比較を導入していない。
+
+**既存の導来左単位子によるモデル計算。** Derived/LeftUnitRestrictionModel.leanはこのsquareを
+既存局所化へ送ったleftUnitRestriction_localized_augmentationを証明した。
+この局所化の式にもC-smallnessは要求しない。
+derivedLeftUnitRestriction_resolutionは、Rを任意の指定右相対K-flatモデル、qを準同型としたとき、
+既存の導来合成の解像度計算、対角比較、外側比較、qを使う実際のmiddleRestrictionResolvedMap、
+左単位子を続けた射が、既存derivedBimoduleLeftUnitIsoそのものになることを示す。
+元のPのK-flat性や制限によるK-flat保存を仮定せず、制限後のRにだけ右相対K-flat性を要求する。
+Fは任意のままで、全導来合成に必要な終端Cの局所Hom K-flat性を明示する。
+B・Dの同条件は追加しない。
+
+**実際の中間比較からの計算回復。** Derived/BimoduleMiddleCalculation.leanの
+derivedMiddleRestrictionComparison_calculationは、任意の前因子・指定後因子モデル・制限後モデルについて、
+source計算同型の逆、既存derivedMiddleRestrictionComparison、target計算同型を続けると、
+既存の通常の解像度比較射を局所化した射に一致することを証明した。
+後続の制限表示の移送に使う一般補題であり、具体的対角への特殊化や左単位coherenceの完成とは区別する。
+既存公開APIの名前・型は変更していない。一般API 8宣言とChecksの標数2検査宣言1件を追加した。
+
+**検証。** Checks.DGLeftUnitRestrictionは終端Cのsmallnessなしの通常左単位square、
+元のPのK-flat性なしの任意の指定解像度による導来左単位子の計算、ZMod 2での包含計算を検査した。
+前回の全導来右単位square・任意K-flat解像度の中間比較独立性、対角の恒等・合成則、三圏同時制限、
+外側左右制限、中間比較の全導来合成則・恒等則、解像度比較・導来同値・導来随伴・五角形・
+StageEight・StageSeven・Spectra.StageTwoとの統合ビルド成功（3531 jobs、警告なし）。
+9公開宣言の直接公理監査は重複・欠落なく標準3公理以内。新規監査累計4651宣言。
+今回の5 Leanファイルにsorry・admit・新規axiom・資源上限変更は0件。採用済み引用0件。
+Lean v4.35.0-rc4とMathlib manifest/HEAD e6bbacd0e1b7307ff6e17da09cd2455f60804fa6を再確認した。
+文書検査は21 Markdown・326 exposition参照、失敗0件。
+
+**受入に残る作業。** 左単位子のモデルsquareは今回証明したが、既存の全導来中間比較・
+外側右制限比較・制限表示同型で構成する自然変換の可換図式は未完である。
+一般の両因子で表示同型の自然性を先に証明し、対角を代入してモデルsquareを全導来対象へ運ぶ。
+結合子の保存、左右単位経路と三圏同時制限の正規化の一致、changeEquivalenceの単位・結合保存と
+自己・推移比較、外側左右・中間比較の恒等・合成則も仕上げ、§15.2全体を監査する。
+U12e全体は未受入。現行目標をU12eの完成・受入に保ち、U16・U15eへは着手していない。
+共有一般論への新しいAPI要求はない。共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・
+ScalarExtension*・並行作業のTensor/Associator*と他チャットの記録を編集していない。
