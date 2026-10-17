@@ -562,6 +562,19 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.monicModPrimeCoefficient_prim
 assert_no_sorry SerrePositivity.BhattScholze.Andre.monicModPrimePDEnvelope_truncatedEquiv
 assert_no_sorry SerrePositivity.BhattScholze.Andre.monicModPrimePDEnvelope_quotient_free
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootExponentPrimeScale
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialFrobenius
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialFrobenius_single
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialFrobenius_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomial_primeRegular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialFrobenius_mod_prime
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPolynomialDelta
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialDelta
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialDelta_frobenius
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialFrobenius_variable
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialDelta_coeff_isDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialDelta_variable
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -665,7 +678,8 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PrincipalDPPositiveUniversal,
     `SerrePositivity.BhattScholze.Andre.RegularPrincipalModPrimeUniversal,
     `SerrePositivity.BhattScholze.Andre.MonicModPrimePDEnvelope,
-    `SerrePositivity.BhattScholze.Andre.PerfectPrismMonicModPrimePDEnvelope]
+    `SerrePositivity.BhattScholze.Andre.PerfectPrismMonicModPrimePDEnvelope,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPolynomialDelta]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

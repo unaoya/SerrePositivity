@@ -1956,3 +1956,52 @@ SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（
 生成宣言を含む 3086 宣言の推移的公理依存は標準 3 公理のみ。
 モニック入力と完全 prism の実分冪構造・完全 prism の普遍性・係数商上の切断同型・
 自由性の公開型 5 本を `#print` で確認した（終了コード 0）。
+
+### E1.32：無限 p 冪根多項式環の実 Frobenius 持ち上げと δ 構造
+
+新規 `Andre/PowerRootPolynomialDelta.lean` は既存の実単項式モデル
+`PowerRootPolynomial A p hp` の台環上で、係数に元の δ 環の Frobenius を、
+指数に p 倍を作用させる環自己射 `powerRootPolynomialFrobenius` を構成する。
+単項式・係数・全根変数上の値をそれぞれ証明した。
+
+実 mod p 商でこの射が通常の p 乗と一致することを加法モノイド環の帰納法で示す。
+加法の場合は素数の二項係数公式、係数倍の場合は元の δ 環の Frobenius 恒等式を使う。
+零環を含めるため CharP インスタンスは仮定しない。
+係数環で p が正則なら単項式基底の自由性で同じ環の p 正則性を得るので、
+既存の `DeltaStructure.existsUnique_of_mod_p` により指定した Frobenius を持つ δ 構造を構成できる。
+
+主要公開型（namespace `SerrePositivity.BhattScholze.Andre`）：
+
+```lean
+def powerRootPolynomialDelta
+    {A : Type u} [CommRing A] (p : ℕ) [Fact p.Prime]
+    (hpA : Function.Injective (fun a : A => (p : A) * a)) (D : DeltaStructure p A) :
+    DeltaStructure p (PowerRootPolynomial A p (Fact.out : p.Prime).pos)
+
+theorem powerRootPolynomialDelta_coeff_isDeltaHom
+    {A : Type u} [CommRing A] (p : ℕ) [Fact p.Prime]
+    (hpA : Function.Injective (fun a : A => (p : A) * a)) (D : DeltaStructure p A) :
+    D.IsDeltaHom (powerRootPolynomialDelta p hpA D)
+      (algebraMap A (PowerRootPolynomial A p (Fact.out : p.Prime).pos))
+
+theorem powerRootPolynomialDelta_variable
+    {A : Type u} [CommRing A] (p : ℕ) [Fact p.Prime]
+    (hpA : Function.Injective (fun a : A => (p : A) * a)) (D : DeltaStructure p A) (n : ℕ) :
+    (powerRootPolynomialDelta p hpA D).delta
+      (powerRootPolynomialVariable A p (Fact.out : p.Prime).pos n) = 0
+```
+
+`existsUnique_powerRootPolynomialDelta` は同じ台環の指定した Frobenius を持つ構造の一意存在を主張する。
+係数の δ 互換性は Frobenius の互換性と終域の p 正則性から得る。
+根変数の δ の零性は Frobenius が p 乗になる式を p 正則性で消去して得る。
+BS Rem 7.15（著者版 p.62）の無限根多項式上の実 pd 計算への持ち上げであり、
+原典の Prop 7.11 を使用しない。
+この環上のモニック入力の実 mod p 正則性と E1.30 の分冪包の構成への適用、
+R/ϖ 係数との比較、prismatic envelope の Frobenius 引戻しとの同定はなお未完了。
+δ 構造ができたことだけで依頼全体の完成とは数えない。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4419 jobs）。
+新規 12 公開宣言の `assert_no_sorry` を追加した専用監査は終了コード 0。
+生成宣言を含む 3111 宣言の推移的公理依存は標準 3 公理のみ。
+Frobenius の実 mod p 一致・δ 構造の一意存在・実構造・係数射の δ 互換性・
+全根変数の δ 零性の公開型 5 本を `#print` で確認した（終了コード 0）。
