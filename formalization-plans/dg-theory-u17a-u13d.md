@@ -882,3 +882,23 @@ M9 の適用については、商を取る前の次数零の平坦 Hom を持つ
   主要9宣言の公理監査は標準3公理の範囲内。新規 sorry・axiom・引用なし。
   既存の比較や他担当ファイルは編集していない。U17c2 は `8b27ed9d`（自分の3ファイルのみ）。
 - この単位は U16 に依存しない。支持・係数変更・U16 受入後の自然性は引き続き進行中。
+
+### U17d2：支持部分圏への制限と忘却正方形
+
+- `Verdier/SupportSquare.lean`：線形同値の支持部分圏への制限と、元の同値への忘却の
+  `supportForgetSquare` を構成。線形性、比較自然同型の shift 整合性、三角形関手への
+  `supportForgetSquareTriangle` を公開した。
+- 実際の局所 tria 商比較、Karoubi 完備化された比較、perfect enhancement 比較をそれぞれ
+  `localSupportedTriaEquivalence`・`localSupportedCompletedEquivalence`・
+  `localSupportedPerfectEquivalence` として制限し、三角同値と忘却正方形を与えた。
+  支持の条件は同じ有限個のスカラーの共通の正の冪による恒等射の消去であり、
+  `localTriaSupport_iff` で保存だけでなく反映も明記している。
+- 支持部分圏の shift を構成するため、加群評価・加群 shift・導来 shift・tria shift の線形性を
+  既存関手から証明した。perfect enhancement の実際の shift の線形性は、完全忠実な
+  perfect 比較とその shift 同型から反映する。既存ファイルの shift の定義は変えていない。
+- 対象ビルド `Verdier.ChecksSupportSquare` 成功（2793 jobs）、新規ファイルの警告なし。
+  主要14宣言の公理監査は標準3公理のみ。新規 sorry・axiom・引用なし。
+  直前の retract 単位 `ac38cc8e` はコミット直後の `git show --stat HEAD` で自分の3ファイルのみと確認。
+- 残る独立部分は係数変更。U16a の記録は依然として主導来作用・一般随伴・合成作用比較が
+  「型のみ確定」であり、U17b の対応する自然性は未受入の宣言を前提にしない。
+  中心作用・群 G の作用は保留を維持する。

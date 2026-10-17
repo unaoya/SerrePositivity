@@ -1,0 +1,21 @@
+module
+public import SerrePositivity.DifferentialGraded.Verdier.SupportSquare
+
+/-! # 支持比較正方形の公理監査 -/
+@[expose] public section
+open SerrePositivity.DifferentialGraded
+open SerrePositivity.DifferentialGraded.DGQuotient
+#print axioms supportForgetSquare
+#print axioms supportEquivalenceFunctorLinear
+#print axioms supportForgetSquareCommShift
+#print axioms supportForgetSquareTriangle
+#print axioms supportShiftLinearOfFaithful
+#print axioms supportPerfectShiftLinear
+#print axioms localTriaSupport_iff
+#print axioms localSupportedTriaEquivalenceIsTriangulated
+#print axioms localTriaSupportSquareCommShift
+#print axioms localSupportedCompletedEquivalenceIsTriangulated
+#print axioms localCompletedSupportSquareCommShift
+#print axioms localSupportedPerfectEquivalenceIsTriangulated
+#print axioms localPerfectSupportSquareCommShift
+#print axioms localPerfectSupportSquareTriangle
