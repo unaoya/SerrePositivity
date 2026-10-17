@@ -5297,7 +5297,8 @@ H の正則性の無条件の供給は A1-b、係数表記の最終照合は A1-
 2026-10-17。既存 Andre/ ファイルと他担当節は変更しない。
 新規成果はすべて `Andre/Unconditional/` に置き、差替えは A1-a に委ねる。
 元の H・分母商に関する A1-a の最小接続点は証明・監査済み。
-raw 自身とその古典的 p 完備化の正則性は、引き続き解消対象として残す。
+raw 自身とその古典的 p 完備化の正則性も、末尾の無条件版で解消した。
+以下の途中記録の残課題は履歴であり、完了時の分類は本節末尾を正本とする。
 主定理・引用件数は変更しない。
 
 ### 原典の適用範囲と分類の基準
@@ -5815,6 +5816,144 @@ Frobenius 安定分母の mod p 像が元の分母の冪集合に等しいので
 終了コード 0（4654 jobs）。専用監査は 206 公開宣言の `assert_no_sorry`・
 `#print axioms`、今回追加 26 宣言の `#check`、49,228 依存宣言の型・値の推移的公理走査に成功。
 公理依存は標準三公理 `propext`、`Classical.choice`、`Quot.sound` のみで、sorryAx はない。
+
+
+
+### 全モニック入力の raw p 正則性と通常 p 完備化の正則対（2026-10-17）
+
+新規 `UnitNumeratorRawRegular.lean`、`RawPrimeRegularAllMonic.lean`、
+`PrincipalSourceRegularity.lean`、`RawPrincipalH0Comparison.lean`、`RawPAdicPairRegular.lean` の
+12 公開宣言を追加した。置き場所はすべて `Andre/Unconditional/`。
+既存 André ファイルと A1-d のファイルは変更していない。
+
+前節と同じ P,E,dP,a,Raw を用い、`j := deltaAdjoinDivisionMap E dP a`、
+`CP := AdicCompletion (Ideal.span {(p : Raw)}) Raw` とする。
+名前空間は `SerrePositivity.BhattScholze.Andre`。
+新しい二つの置換先は、旧型から hpR だけを除いた次の型である。
+
+```lean
+powerRootPrismMonicRaw_p_mul_injective_of_unconditional W hW f (hf : f.Monic) :
+  Function.Injective (fun r : Raw => (p : Raw) * r)
+
+powerRootPrismMonicRaw_pAdic_regular_pair_of_unconditional W hW f (hf : f.Monic) :
+  let CP := AdicCompletion (Ideal.span {(p : Raw)}) Raw
+  IsSMulRegular CP (p : CP) ∧
+    IsSMulRegular CP (algebraMap Raw CP (j dP))
+```
+
+正次数仮定は不要。次数零モニック入力は f=1 なので、元の除算関係が j(dP) の逆元を与える。
+`unconditionalRaw_prime_regular_of_unit_numerator` は、元の raw 包から
+Frobenius 安定係数局所化への実 δ 射に左逆を作る。
+係数環の p 正則性は平坦な局所化へ移り、その単射性によって元の raw 包へ戻る。
+一般の単元分母包に置き換えず、元の δ 閉包商のままで証明している。
+
+通常 p 完備化での p 正則性は raw p 正則性の主完備化保存から従う。
+分母の正則性には、一般には偽の raw mod p 分母正則性を使わない。
+`unconditionalHomology_regular_of_completionSingleIso` は、a 完備化が a 正則な single なら、
+元の H⁰ でも a が単射になることを、元の完備化単位の a 錐同値性から証明する。
+これを元の実 p 完備化源へ適用し、既証明の逐次完備化の純性・分母正則性を戻す。
+`powerRootPrismMonicSourcePrincipalH0Iso_of_unconditional` が、その H⁰ を
+元の raw 主完備化の H⁰ へ、標準 A 作用のまま比較する。
+最後に `principalCompletionAdicAlgEquiv` の Raw 線形性で元の CP へ移す。
+f=1 では j(dP) の単元性を標準射で CP へ移すため、全モニック入力を処理できる。
+BS Rem 7.15（著者版 p.62）の p ねじれなしへの帰着と異なる、元の実源による補足計算である。
+
+### 完了時の分類と受渡し
+
+対象8ファイルの hpR 付き公開宣言を現在のファイルと照合した。
+A1-a が既に削除・差替えした旧公開名も、上の17宣言の一覧の無条件版を正本とする。
+単に証明から消せるだけの (a) はなく、正則性入力を射影性・被約性・有界ねじれ・
+元の実完備化純性で代替した (b) が本系列の成果である。
+
+- 17 の分冪構造・分冪公式・分冪射・普遍性：本節冒頭の正確な `_of_unconditional` 一覧。
+  元の環・指定イデアル・係数作用・任意宇宙の標的を保持する。
+- `powerRootPrismMonicRaw_p_mul_injective` と `powerRootPrismMonicRaw_pAdic_regular_pair`：
+  今回の同名 `_of_unconditional` 版へ置換でき、hf 以外の仮定は追加しない。
+- `powerRootPrismMonicRaw_pdCompletion_generator_regular`：
+  `powerRootPrismMonicRaw_pdCompletion_generator_regular_of_monic_unconditional`。
+- `powerRootPrismMonic_pdCompletion_prime_regular`：
+  `powerRootPrismMonic_pdCompletion_prime_regular_of_unconditional`。
+  後二つも f=1 を含む同じ H、同じ標準射であり、正次数は不要。
+- H/dH の p 完全忠実平坦性と H の (p,d) 完全平坦性・標準剰余の忠実平坦性：
+  既述の `powerRootPrismMonicHodgeTate_prime_completelyFaithfullyFlat_of_unconditional`、
+  `powerRootPrismMonicCompletion_pair_completelyFlat_of_unconditional`、
+  `powerRootPrismMonicCompletion_pair_scalarExtension_faithfullyFlat_of_unconditional`。
+  これらは元から必要な正次数を保持し、A1-d の仮定は解消済み。
+
+(c) として元の強い署名を残す正確な旧名は次の8個である。
+
+1. `perfectPrism_generator_modPrime_regular`
+2. `perfectPrismVarpiLift_modPrime_regular`
+3. `powerRootPrismGenerator_modPrime_regular`
+4. `powerRootPrismFirstModPrimeRelation_regular`
+5. `powerRootPrismMonicFirstModPrime_generator_regular`
+6. `powerRootPrismMonicFinite_all_regular`
+7. `powerRootPrismMonicRaw_mod_prime_generator_regular`
+8. `powerRootPrismMonic_pdCompletion_hodgeTate_prime_regular`
+
+1–3 の d または varpi の mod p 正則性は、既証明の同値で hpR と同じ強さである。
+4 は任意の非モニック f まで量化する旧型であり、d=p,f=0 の場合には初期関係が mod p で零となる。
+原典のモニック設定では `powerRootPrismFirstModPrimeRelation_regular_of_monic_unconditional` が
+hpR なしに供給済み。5–8 も mod p の分母正則性や H/dH の p 正則性という強い結論を含む。
+非零な標数 p の perfectoid 基底まで許す一般の設定では成立しない。
+原典 Rem 7.15（著者版 p.62）の計算は p ねじれなしへの基底変更後にこれらを使う。
+従ってその帰着後なら hpR を供給できるが、一般の R=A/(d) 自体で自動的に成り立つ理由はない。
+この違いを無条件化や新たな引用で隠していない。
+
+`PowerRootMonicPDFlat` の二つの同名 hpR は `(p:R)=0` であり、p 正則性ではない。
+任意 R に対する元の標数条件は残す。実係数 Rv では
+`perfectPrismVarpiQuotient_prime_eq_zero_of_unconditional` が自動供給し、
+`powerRootMonicDPPresentation_free_of_unconditional` と
+`powerRootMonicDPPresentation_faithfullyFlat_of_unconditional` が原典で使う形を満たす。
+
+既存定理の差替えは依頼どおり A1-a の担当とし、この系列は新規無条件版の供給で完了する。
+主定理、引用件数、BS Thm 1.17(1)、Cor 8.12 は変更していない。
+
+### A1-d への受渡し（受領済みの記録）
+
+依頼された初期係数段の受渡しの正確な型・API は、既存の同名節（A1-d 節内）に保存されている。
+本担当節にも、受領と仮定解消の最終状態を明記する。
+P,E,dP,a は上記の元の対象、`L₀ := PowerRootUnaryFreeDeltaRing A p hp`、
+`Q := L₀ ⧸ Ideal.span {(p:L₀), MvPolynomial.C dP}`、
+`Qinit := P ⧸ deltaDivisionFirstBaseIdeal (p:=p) dP a`、`R₀ := A/(p,d)` とする。
+比較する通常のモニック無限根商は
+`PowerRootPolynomialQuotient R₀ p hp (f.map (Ideal.Quotient.mk (Ideal.span {(p:A), W.generator})))`。
+Qinit の通常商比較と `powerRootPolynomialQuotient_faithfullyFlat`、
+`deltaAdjoinDivisionResidue_moduleFaithfullyFlat`、`Module.FaithfullyFlat.trans` を合成するのが受渡しの第一段。
+A1-d の配置先は `Andre/Unconditional/InitialCoefficient/` で、このディレクトリは編集していない。
+
+A1-b が受け取る `InitialCoefficient.sourceResidueH0_faithfullyFlat` の型は、
+完全 prism W、hW、f、hf、hdeg に対して正確に次の結論である。
+
+```lean
+let R₀ := A ⧸ Ideal.span {(p : A), W.generator}
+Module.FaithfullyFlat R₀
+  ((DerivedCategory.homologyFunctor (ModuleCat R₀) 0).obj
+    ((boundedAboveDerivedBaseChange
+      (Ideal.Quotient.mk (Ideal.span {(p : A), W.generator}))).obj
+        (PowerRootPrismMonicSourceCoefficientObject_of_unconditional W hW f)).obj)
+```
+
+`InitialCoefficient.rawResidue_faithfullyFlat` とともに受領済みであり、
+その依存は今回の専用監査の型・値の推移的走査でも検査する。
+途中の明示仮定を最終公開型に残していない。
+
+### 最終検証と完了判定
+
+`MonicRootedExtension` と専用監査の全 import 対象のビルドは `set -o pipefail` 付きで
+4663 jobs、終了コード0。`scripts/audit_andre_unconditional.lean` は終了コード0で、
+218 公開宣言の `assert_no_sorry`・`#print axioms` と新規12宣言の `#check` を実行し、
+型・値の49,858依存宣言を走査した。許可公理は `propext`、`Classical.choice`、`Quot.sound` のみ。
+担当の Lean ファイル・監査・計画節の差分を確認し、新しい sorry・axiom・引用がないことを確認した。
+
+対象8ファイルの旧 hpR の使用箇所は (b)・(c) と別の標数条件へ分類済み。
+(b) の17分冪宣言、元の H と標準剰余への接続、raw p 正則性、通常 p 完備化の正則対は、
+元の対象と標準係数作用を保持する無条件版で供給済み。
+(c) の強い中間主張は一般の perfectoid 基底では偽なので無条件化しない。
+原典の p ねじれなしへの帰着後の使用範囲を明記した。
+A1-d の受領済み成果を使い、依頼された鎖の未証明仮定を最終公開型に残していない。
+以上により A1-b の新規無条件版供給は完了。既存名の差替え・集約への公開・他系列との最終合流は、
+依頼どおり別担当の作業である。
 
 
 ## A1-c：係数表記の照合
