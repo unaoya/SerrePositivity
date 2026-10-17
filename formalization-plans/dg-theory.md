@@ -24,7 +24,7 @@ Mathlibへの相対パスはすべて `.lake/packages/mathlib/Mathlib/` から�
 
 | 範囲 | 担当・所有範囲 | 記録 |
 | --- | --- | --- |
-| U16a完成 → U16c最終統合 → U16全体受入 | このチャット。Morita/Kernel*・Adjunction*・Coherence*、統合用Criterion.lean／U16.lean | 本文§17、dg-theory-morita.md |
+| U16a受入済み・U16c統合済み → U16全体受入（U16d残接続待ち） | このチャット。Morita/Kernel*・Adjunction*・Coherence*、統合用Criterion.lean／U16.lean | 本文§17、dg-theory-morita.md |
 | U16c：Perf Morita判定・逆 | 局所K-flat版チャット。Morita/CriterionPerf* | dg-theory-morita-criterion.md |
 | U16c：導来圏全体への拡張 | dg-U14チャット。Morita/CriterionDerived* | dg-theory-morita-qe.md |
 | U16b → U16d | dg-U14チャット。Morita/QuasiEquivalence*・Perfect*・ScalarExtension*・Center* | dg-theory-morita-qe.md |
@@ -13056,4 +13056,52 @@ U16aChecksと自然性Checks・QuasiEquivalence・完成したCriterionPerfCheck
 lake build SerrePositivity.DifferentialGraded.Morita.U16aChecks SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorNaturalityChecks SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence SerrePositivity.DifferentialGraded.Morita.CriterionPerfChecks SerrePositivity.DifferentialGraded.Morita.CriterionDerivedConditionsChecks SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.DifferentialGraded.Checks.U12eGeneralInventory SerrePositivity.Spectra.StageTwo
 lake env lean SerrePositivity/DifferentialGraded/Morita/U16aChecks.lean
 lake env lean SerrePositivity/DifferentialGraded/Morita/CoherenceAssociatorMainChecks.lean
+```
+
+
+### 17.274 U16c統合：Perf・全導来Morita逆関手と実際の右随伴（2026-10-17）
+
+別担当のPerf判定1e5ee4a0と、CriterionDerivedの完成した三条件による全導来同値入口を
+読み取り専用で利用した。旧hPerf入力の成立をこちらで仮定することなく、
+criterionDerivedKernelEquivalenceOfMoritaConditionsを直接使う。
+三条件はCriterionPerfConditionsのcolumnsPerfect・fullHomQuasiIso・columnsThickGenerate。
+両側の生成族G・HとCriterionDerivedCompactGenerationを引数に保持し、その自動供給を主張しない。
+任意可換環・非有界複体・独立対象／生成添字宇宙とSmall.{u}を維持する。
+局所Hom K-flat性・kernel列の射影性は本統合に追加していない。
+
+| 統合項目 | 実際の公開証拠 |
+| --- | --- |
+| 他担当の全導来Morita同値 | kernelMoritaEquivalence（Criterion.lean）。順関手はkernelDerivedTensorそのもの |
+| 逆関手と一般右随伴の同定 | kernelMoritaHomIsoInverse。dc0d9824のkernelDerivedAdjunctionと完成した同値の随伴へAdjunction.rightAdjointUniqを適用 |
+| 単位・余単位の比較square | kernelMoritaHomIsoInverse_unit／_counit。実際のkernelDerivedUnit／Counitと同値のunitIso／counitIsoの一致 |
+| 実際のunit/counitの可逆性 | kernelMoritaUnit_isIso、kernelMoritaCounit_isIso。各自然変換全体のIsIso |
+| 実際の一般右随伴を逆とする同値 | kernelMoritaAdjunctionEquivalence。_functor／_inverse／_unit／_counitはすべて既存公開作用・随伴成分への定義的な一致 |
+| Perf逆関手からの接続 | kernelMoritaPerfInverseActionIsoとkernelMoritaPerfInverseIso（AdjunctionPerfectInverse.lean）。Perf同値の逆関手に主導来包含を続けたものを、終域Perf包含に一般右随伴を続けたものへ比較 |
+| Perf比較と実際の余単位 | kernelMoritaPerfInverseIso_counit。転置した比較を元の実作用比較へ戻す実際のsquare |
+
+この表のCriterion／AdjunctionPerfectInverseはファイル名で、すべてMorita名前空間の宣言。
+Perf判定の逆関手も全導来拡張の逆関手も同じ実際の一般右随伴に接続した。
+unit/counitが同型であることを入力にして同値を作るだけの循環的な定義ではない。
+既存の全導来作用の同値性から実際の随伴のunit/counitの可逆性を証明してから、その随伴の同値を構成した。
+
+CriterionChecksは独立宇宙・標数2で両逆関手比較と実際のunit/counit可逆性を検査する。
+U16aChecks・完成したCriterionPerfChecks・CriterionDerivedConditionsChecksを同時importし、
+QuasiEquivalence・U12eLocal・Spectra.StageTwoと合同ビルド成功（3869 jobs、警告0）。
+追加15公開宣言の直接公理監査は重複・欠落なく標準3公理以内、新規監査累計5104。
+新規sorry・axiom・引用・資源上限変更なし。共有ルート・他担当ファイルは編集していない。
+
+これにより、三条件と明示した両側compact生成を入力とするU16cの最終統合を受け入れる。
+Perf上の必要十分条件はcriterionPerfMorita_iff、全導来圏への拡張は上記の十分性の契約である。
+全導来同値から三条件を逆算する新しい必要十分条件は今回の公開結論に含めない。
+
+**U16全体は未受入。** dg-theory-morita-qe.mdの最新の最終受入記録は、U16d.1〜26の
+明示条件下の実装範囲のみを受け入れ、U16d全体の完了を明確に否定している。
+残る4接続は、(1)作用coherenceのPerf移送、(2)局所化した係数変更関手への正方形接続、
+(3)出力加群評価と出力複体の係数変更の比較を介したU12f成分同定、(4)実際のkernel合成との係数変更図式。
+(1)の元となる左右単位・任意kernel結合coherenceは§17.273で供給済み。
+中心作用の保留もその記録のまま。これらを完成扱いにしてU16全体を受け入れない。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Morita.CriterionChecks SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.Spectra.StageTwo
+lake env lean SerrePositivity/DifferentialGraded/Morita/CriterionChecks.lean
 ```

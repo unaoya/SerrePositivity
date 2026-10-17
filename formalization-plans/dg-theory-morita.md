@@ -222,7 +222,7 @@ U16b→dはdg-U14チャットのMorita/QuasiEquivalence*・Perfect*・ScalarExte
 U16cではmoduleCompact_iff_perfect、perfectEndomorphismDG_quasiEquivalence、
 endomorphismDerivedEquivalence_ofCompactGeneratorを再利用する。
 perfect性・全Homの擬同型・compact生成は独立条件であり、局所Hom K-flat性から自動にはしない。
-U16aは受入済み。U16cの実際の右随伴との統合、U16全体の受入は続ける。
+U16aとU16cの実際の右随伴との統合は受入済み（§17.273・274）。U16全体はU16dの残接続を待つ。
 
 
 ## U16a1：公開型と通常作用の固定・検証（2026-10-17）
@@ -755,3 +755,25 @@ U16aの公開APIは本節冒頭のすべてを実装・検証済みとする。�
 合成はD、右単位はD、左単位・結合図式はD・EのlocalHomKFlatを保持。
 一般分解変更のcoherenceは含まない。詳細・受入表はdg-theory.md §17.273。
 次は完成済みCriterionPerf*とCriterionDerived*を一般右随伴と統合する。
+
+
+## U16c最終統合：二つの逆関手と一般右随伴（2026-10-17、受入）
+
+Morita/Criterion.leanは、完成した三条件Perf判定とCriterionDerivedの全導来拡張を直接利用する。
+両側のCriterionDerivedCompactGeneration、三独立条件、対象・生成添字の独立宇宙を保持する。
+局所Hom K-flat性・kernel列の射影性・右随伴の存在を追加仮定にはしていない。
+
+- kernelMoritaEquivalence：他担当の実際の主作用の同値。
+- kernelMoritaHomIsoInverse：その逆関手とkernelDerivedHomの自然同型。
+- kernelMoritaHomIsoInverse_unit／_counit：実際のunit/counitを運ぶsquare。
+- kernelMoritaUnit_isIso／kernelMoritaCounit_isIso：実際の自然変換全体の可逆性。
+- kernelMoritaAdjunctionEquivalence：順関手kernelDerivedTensor、逆関手kernelDerivedHom、
+  単位kernelDerivedUnit、余単位kernelDerivedCounitをそのまま持つ同値。四つの計算補題は定義的な一致。
+- AdjunctionPerfectInverseのkernelMoritaPerfInverseActionIso／kernelMoritaPerfInverseIso：
+  Perf同値の逆関手も、包含後に同じ一般右随伴へ接続。
+- kernelMoritaPerfInverseIso_counit：Perf比較を実際の余単位で元の実作用比較へ戻すsquare。
+
+CriterionChecksの合同ビルド3869 jobs・警告0、追加15宣言の直接公理監査は標準3公理以内。
+詳細はdg-theory.md §17.274。U16c統合をこの明示仮定下で受け入れる。
+U16d全体の受入記録はまだなく、Perf作用coherence移送・係数変更の3接続を残すため、U16全体は未受入。
+他担当のCriterionPerf*・CriterionDerived*・Perfect*・ScalarExtension*と専用記録は編集していない。
