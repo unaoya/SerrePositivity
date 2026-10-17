@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.DGNerve.FiberBoundaryComponents
 public import SerrePositivity.InfinityCategories.DGNerve.CospanPrefixObjects
 public import SerrePositivity.InfinityCategories.DGNerve.CospanTwoTailCoordinates
-public import SerrePositivity.InfinityCategories.DGNerve.HomTransport
+public import SerrePositivity.InfinityCategories.DGNerve.HomHEqAlgebra
 
 /-! # 実際の境界の残差の fiber Hom 座標
 
@@ -71,7 +71,7 @@ def fiberBoundaryRhs0 {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
     (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
       SSet.yonedaEquiv.symm (standardFiberCone g h)) :
     Cochain (fiberBoundarySource g h b) (pullbackFiber g h) (fiberBoundaryDegree n + 1 + 1) :=
-  gradedHomTransport (A := A) (rfl) (fiberSliceBoundary_left_apex g h b hb)
+  gradedHomTransport (A := A) (D := Complex A) (rfl) (fiberSliceBoundary_left_apex g h b hb)
     (by dsimp only [fiberBoundaryDegree]; omega)
     ((fiberBoundaryLeftBase g h b).cospanPrefixRhs)
 
@@ -84,9 +84,26 @@ def fiberBoundaryRhsB {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
     (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
       SSet.yonedaEquiv.symm (standardFiberCone g h)) :
     Cochain (fiberBoundarySource g h b) (B) (fiberBoundaryDegree n + 1) :=
-  gradedHomTransport (A := A) (rfl) (fiberSliceBoundary_left_B g h b hb)
+  gradedHomTransport (A := A) (D := Complex A) (rfl) (fiberSliceBoundary_left_B g h b hb)
     rfl
     ((fiberBoundaryLeftBase g h b).cospanOneTailRhs (cospanFirstTail n) (cospanApex_lt_firstTail n))
+
+/-- 概要：右側の残差を標準 Hom へ移し、元の射との異種等号も保存する。
+方針：対象と次数の移送を証明とともに記録する。
+規約：HA Proposition 1.3.1.10。使われ方：具体的な残差の型検査の展開を抑える。 -/
+opaque fiberBoundaryRhsCWithHEq {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h)) :
+    {z : Cochain (fiberBoundarySource g h b) C (fiberBoundaryDegree n + 1) // HEq z
+      ((fiberBoundaryRightBase g h b).cospanOneTailRhs
+        (cospanFirstTail n) (cospanApex_lt_firstTail n))} :=
+  (gradedHomTransportWithHEq (A := A) (D := Complex A) (fiberBoundarySource_right_eq g h b)
+    (fiberSliceBoundary_right_C g h b hb)
+    rfl
+    ((fiberBoundaryRightBase g h b).cospanOneTailRhs
+      (cospanFirstTail n) (cospanApex_lt_firstTail n)))
 
 /-- 概要：C 側の既知の右辺を標準 fiber の Hom 座標に移す。
 方針：共通の始点・指定された終点・次数の等式に沿う線形移送を使う。
@@ -97,11 +114,7 @@ def fiberBoundaryRhsC {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
     (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
       SSet.yonedaEquiv.symm (standardFiberCone g h)) :
     Cochain (fiberBoundarySource g h b) (C) (fiberBoundaryDegree n + 1) :=
-  gradedHomTransport (A := A) (fiberBoundarySource_right_eq g h b)
-    (fiberSliceBoundary_right_C g h b hb)
-    rfl
-    ((fiberBoundaryRightBase g h b).cospanOneTailRhs
-      (cospanFirstTail n) (cospanApex_lt_firstTail n))
+  (fiberBoundaryRhsCWithHEq g h b hb).val
 
 /-- 概要：D 側の左の既知の右辺を標準 fiber の Hom 座標に移す。
 方針：共通の始点・指定された終点・次数の等式に沿う線形移送を使う。
@@ -112,7 +125,7 @@ def fiberBoundaryRhsD {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
     (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
       SSet.yonedaEquiv.symm (standardFiberCone g h)) :
     Cochain (fiberBoundarySource g h b) (D) (fiberBoundaryDegree n + 1) :=
-  gradedHomTransport (A := A) (rfl) (fiberSliceBoundary_left_D g h b hb)
+  gradedHomTransport (A := A) (D := Complex A) (rfl) (fiberSliceBoundary_left_D g h b hb)
     rfl
     ((fiberBoundaryLeftBase g h b).cospanOneTailRhs (cospanLastTail n)
       ((cospanApex_lt_firstTail n).trans (cospanFirstTail_lt_lastTail n)))
@@ -126,9 +139,24 @@ def fiberBoundaryRhsBD {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
     (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
       SSet.yonedaEquiv.symm (standardFiberCone g h)) :
     Cochain (fiberBoundarySource g h b) (D) (fiberBoundaryDegree n) :=
-  gradedHomTransport (A := A) (rfl) (fiberSliceBoundary_left_D g h b hb)
+  gradedHomTransport (A := A) (D := Complex A) (rfl) (fiberSliceBoundary_left_D g h b hb)
     (by dsimp only [fiberBoundaryDegree]; omega)
     ((fiberBoundaryLeftBase g h b).cospanTwoTailRhs)
+
+/-- 概要：右側の残差を標準 Hom へ移し、元の射との異種等号も保存する。
+方針：対象と次数の移送を証明とともに記録する。
+規約：HA Proposition 1.3.1.10。使われ方：具体的な残差の型検査の展開を抑える。 -/
+opaque fiberBoundaryRhsCDWithHEq {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h)) :
+    {z : Cochain (fiberBoundarySource g h b) D (fiberBoundaryDegree n) // HEq z
+      (fiberBoundaryRightBase g h b).cospanTwoTailRhs} :=
+  (gradedHomTransportWithHEq (A := A) (D := Complex A) (fiberBoundarySource_right_eq g h b)
+    (fiberSliceBoundary_right_D g h b hb)
+    (by dsimp only [fiberBoundaryDegree]; omega)
+    ((fiberBoundaryRightBase g h b).cospanTwoTailRhs))
 
 /-- 概要：右の三角形側の既知の右辺を標準 fiber の Hom 座標に移す。
 方針：共通の始点・指定された終点・次数の等式に沿う線形移送を使う。
@@ -139,9 +167,6 @@ def fiberBoundaryRhsCD {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
     (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
       SSet.yonedaEquiv.symm (standardFiberCone g h)) :
     Cochain (fiberBoundarySource g h b) (D) (fiberBoundaryDegree n) :=
-  gradedHomTransport (A := A) (fiberBoundarySource_right_eq g h b)
-    (fiberSliceBoundary_right_D g h b hb)
-    (by dsimp only [fiberBoundaryDegree]; omega)
-    ((fiberBoundaryRightBase g h b).cospanTwoTailRhs)
+  (fiberBoundaryRhsCDWithHEq g h b hb).val
 
 end SerrePositivity.InfinityCategories.DGNerve

@@ -939,3 +939,29 @@ c を `standardFiberCone g h` とすると、`fiberSliceBoundary_left_triangle`�
 ただし実際の候補の δa=r₀ と δd=t a+r_D は未証明。
 未知成分を入れた単体データ・全方程式・境界の一致・`IsPullbackSquare`、N7d・N7e は未完了。
 公開型・全前提は計画 §5 の N7c8 に記録する。
+
+
+## N7.11：実際の境界の微分整合式と明示解の微分（2026-10-18）
+
+`FiberBoundaryLegCompatibility` と `FiberBoundaryTriangleCompatibility` により、
+実際の slice 境界 b（次元 n+1）の最後の頂点が標準錐であるという条件 hb だけから、
+型付き残差について δr_B=−p r₀、δr_C=−q r₀、
+δr_BD=r_D−g r_B−u r₀、δr_CD=r_D−h r_C を証明した。
+`CospanOneTailTransport`・`CospanTwoTailTransport` は一般 dg 圏の Bianchi を
+対象と次数の等式と成分の異種等号に沿って移す。
+`cospanTwoTailLastRhs` は三角形の計算と同じ次数で D 側右辺を評価し、
+`cospanTwoTailLastRhs_heq` が既存の脚側右辺と比較する。
+
+`fiberBoundaryUnknownA_differential` は実際の候補 a=−φ⁻¹(r_B,r_C,r_CD−r_BD) に対し
+δa=r₀ を、`fiberBoundaryUnknownD_differential` は d=r_CD に対し δd=t a+r_D を与える。
+これらの定理には微分整合式や極限性の追加仮定はない。環 A は任意の可換環、複体は非有界。
+N7.10 の射影・ホモトピー・対角射・左三角形の式と合わせて明示候補の有限線形系を検証した。
+
+右側の r_C,r_CD は、移送した cochain と生の右辺との異種等号を同時に記録する
+`fiberBoundaryRhsCWithHEq`・`fiberBoundaryRhsCDWithHEq` の値として定義した。
+この二つは本体を検査した `opaque` 定義であり、移送の大きな項を比較時に再展開しないためのもの。
+公理は追加していない。`gradedHomTransportWithHEq` がその一般的な構成を与える。
+
+未完了：明示解を入れた単体データの構成、未知四集合の方程式との一致、全境界の一致と貼合せ、
+標準四角形の `IsPullbackSquare`、N7d と N7e。候補の微分式を最終的な充填定理とは数えない。
+新規公開宣言 33 個の正確な型と前提は計画 §5 の N7c9 に記録する。

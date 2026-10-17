@@ -9090,6 +9090,418 @@ lemma fiberBoundaryUnknown_left_triangle {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
 終対象性と `IsPullbackSquare`。N7c〜N7e は未完了。
 保存後は承認を待たず、型付きの微分整合式と候補の微分式の証明へ続ける。
 
+
+
+### N7c9：実際の境界の型付き整合式と明示解の微分（2026-10-18）
+
+N7c8 の条件付き線形代数に渡す四つの微分整合式を、実際の境界から証明した。
+公開対象は次の 33 宣言。一般補題は `{A : Type u} [CommRing A] {D : Type v} [DGCategory A D]`、
+複体への適用は `{A : Type u} [CommRing A] {B C D : Complex A}` を前提とする。
+`SimplexData` 名前空間は一般 dg 圏に対する補題であり、他は DGNerve 名前空間。
+`fiberBoundaryDegree n=−n−1`、共通始点は `fiberBoundarySource g h b`。
+実際の境界に対する定理の条件 hb は最後の頂点が `standardFiberCone g h` であることだけであり、
+整合式・極限性・擬同型性などを追加仮定していない。
+
+`SerrePositivity.InfinityCategories.DGNerve.gradedHomTransportWithHEq`：
+
+```lean
+def gradedHomTransportWithHEq {x y x' y' : D} {k l : ℤ}
+    (hx : x = x') (hy : y = y') (hk : k = l) (f : GradedHom A x y k) :
+    {g : GradedHom A x' y' l // HEq g f}
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.gradedHom_differential_heq`：
+
+```lean
+lemma gradedHom_differential_heq {x y x' y' : D} {k l : ℤ}
+    (hx : x = x') (hy : y = y') (hk : k = l)
+    (f : GradedHom A x y k) (g : GradedHom A x' y' l) (hfg : HEq f g) :
+    HEq (differential A f) (differential A g)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.gradedHom_neg_heq`：
+
+```lean
+lemma gradedHom_neg_heq {x y x' y' : D} {k l : ℤ}
+    (hx : x = x') (hy : y = y') (hk : k = l)
+    (f : GradedHom A x y k) (g : GradedHom A x' y' l) (hfg : HEq f g) :
+    HEq (-f) (-g)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.gradedHom_add_heq`：
+
+```lean
+lemma gradedHom_add_heq {x y x' y' : D} {k l : ℤ}
+    (hx : x = x') (hy : y = y') (hk : k = l)
+    (f₁ f₂ : GradedHom A x y k) (g₁ g₂ : GradedHom A x' y' l)
+    (h₁ : HEq f₁ g₁) (h₂ : HEq f₂ g₂) : HEq (f₁ + f₂) (g₁ + g₂)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.gradedHom_sub_heq`：
+
+```lean
+lemma gradedHom_sub_heq {x y x' y' : D} {k l : ℤ}
+    (hx : x = x') (hy : y = y') (hk : k = l)
+    (f₁ f₂ : GradedHom A x y k) (g₁ g₂ : GradedHom A x' y' l)
+    (h₁ : HEq f₁ g₁) (h₂ : HEq f₂ g₂) : HEq (f₁ - f₂) (g₁ - g₂)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.gradedHom_compose_heq`：
+
+```lean
+lemma gradedHom_compose_heq {x y z x' y' z' : D} {p q k p' q' k' : ℤ}
+    (hx : x = x') (hy : y = y') (hz : z = z') (hp : p = p') (hq : q = q') (hk : k = k')
+    (g : GradedHom A y z q) (f : GradedHom A x y p)
+    (g' : GradedHom A y' z' q') (f' : GradedHom A x' y' p')
+    (hg : HEq g g') (hf : HEq f f') (h : p + q = k) (h' : p' + q' = k') :
+    HEq (compose A g f h) (compose A g' f' h')
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.gradedHom_zero_heq`：
+
+```lean
+lemma gradedHom_zero_heq {x y x' y' : D} {k l : ℤ}
+    (hx : x = x') (hy : y = y') (hk : k = l) :
+    HEq (0 : GradedHom A x y k) (0 : GradedHom A x' y' l)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospan_oneTail_differential_of_heq`：
+
+```lean
+lemma cospan_oneTail_differential_of_heq {n : ℕ} (s : SimplexData A D (n + 3))
+    (hknown : ∀ I, ¬ cospanPrefixFaces n ⊆ I → s.Equation I)
+    (hzero : s.cospanPrefixHom = 0) (b : Fin (n + 4)) (hb : cospanApex n < b)
+    {X P Y : D} (hx : s.obj 0 = X) (hP : s.obj (cospanApex n) = P) (hy : s.obj b = Y)
+    {l : ℤ} (hl : -(n : ℤ) - 1 + 1 = l)
+    (r0 : GradedHom A X P (l + 1)) (rB : GradedHom A X Y l) (g : GradedHom A P Y 0)
+    (h0 : HEq s.cospanPrefixRhs r0) (hB : HEq (s.cospanOneTailRhs b hb) rB)
+    (hg : HEq (s.edgeHom (cospanApex n) b hb) g) :
+    differential A rB = -compose A g r0 (add_zero (l + 1))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospanTwoTailLastRhs`：
+
+```lean
+def cospanTwoTailLastRhs {n : ℕ} (s : SimplexData A D (n + 3)) :
+    GradedHom A (s.obj 0) (s.obj (cospanLastTail n)) (-(n : ℤ) - 2 + 1 + 1)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospanTwoTailRhs_differential_of_unknown_zero`：
+
+```lean
+lemma cospanTwoTailRhs_differential_of_unknown_zero {n : ℕ} (s : SimplexData A D (n + 3))
+    (hknown : ∀ I, ¬ cospanPrefixFaces n ⊆ I → s.Equation I)
+    (hzero : ∀ I, cospanPrefixFaces n ⊆ I →
+      ∀ a b k hI ha hb hk, s.hom I a b k hI ha hb hk = 0) :
+    differential A s.cospanTwoTailRhs =
+      -(compose A (n := -(n : ℤ) - 2 + 1 + 1)
+          (s.tripleHom (cospanApex n) (cospanFirstTail n) (cospanLastTail n)
+          (cospanApex_lt_firstTail n) (cospanFirstTail_lt_lastTail n))
+          s.cospanPrefixRhs (by omega) +
+        (-s.cospanTwoTailLastRhs +
+          compose A (n := -(n : ℤ) - 2 + 1 + 1) (s.edgeHom (cospanFirstTail n) (cospanLastTail n)
+            (cospanFirstTail_lt_lastTail n))
+            (s.cospanOneTailRhs (cospanFirstTail n) (cospanApex_lt_firstTail n))
+            (by omega)))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_heq_of_degrees`：
+
+```lean
+lemma rhs_heq_of_degrees {m : ℕ} (s : SimplexData A D m)
+    (I : Finset (Fin (m + 1))) (a b : Fin (m + 1)) (k l : ℤ)
+    (hI : 2 ≤ I.card) (ha : a = I.min' (Index.nonempty hI))
+    (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hl : l = 2 - (I.card : ℤ)) :
+    HEq (s.rhs I a b k hI ha hb hk) (s.rhs I a b l hI ha hb hl)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospanTwoTailLastRhs_heq`：
+
+```lean
+lemma cospanTwoTailLastRhs_heq {n : ℕ} (s : SimplexData A D (n + 3)) :
+    HEq s.cospanTwoTailLastRhs (s.cospanOneTailRhs (cospanLastTail n)
+      ((cospanApex_lt_firstTail n).trans (cospanFirstTail_lt_lastTail n)))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospan_twoTail_differential_of_heq`：
+
+```lean
+lemma cospan_twoTail_differential_of_heq {n : ℕ} (s : SimplexData A D (n + 3))
+    (hknown : ∀ I, ¬ cospanPrefixFaces n ⊆ I → s.Equation I)
+    (hzero : ∀ I, cospanPrefixFaces n ⊆ I →
+      ∀ a b k hI ha hb hk, s.hom I a b k hI ha hb hk = 0)
+    {X P B Y : D} (hx : s.obj 0 = X) (hP : s.obj (cospanApex n) = P)
+    (hB : s.obj (cospanFirstTail n) = B) (hy : s.obj (cospanLastTail n) = Y)
+    {l : ℤ} (hl : -(n : ℤ) - 2 + 1 = l)
+    (r0 : GradedHom A X P (l + 1 + 1))
+    (rB : GradedHom A X B (l + 1)) (rD : GradedHom A X Y (l + 1))
+    (rT : GradedHom A X Y l) (g : GradedHom A B Y 0) (u : GradedHom A P Y (-1))
+    (h0 : HEq s.cospanPrefixRhs r0)
+    (hfirst : HEq (s.cospanOneTailRhs (cospanFirstTail n) (cospanApex_lt_firstTail n)) rB)
+    (hlast : HEq s.cospanTwoTailLastRhs rD)
+    (hT : HEq s.cospanTwoTailRhs rT)
+    (hg : HEq (s.edgeHom (cospanFirstTail n) (cospanLastTail n)
+      (cospanFirstTail_lt_lastTail n)) g)
+    (hu : HEq (s.tripleHom (cospanApex n) (cospanFirstTail n) (cospanLastTail n)
+      (cospanApex_lt_firstTail n) (cospanFirstTail_lt_lastTail n)) u) :
+    differential A rT =
+      -(compose A (n := l + 1) u r0 (by omega) +
+        (-rD + compose A g rB (add_zero (l + 1))))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsCWithHEq`：
+
+```lean
+opaque fiberBoundaryRhsCWithHEq {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h)) :
+    {z : Cochain (fiberBoundarySource g h b) C (fiberBoundaryDegree n + 1) // HEq z
+      ((fiberBoundaryRightBase g h b).cospanOneTailRhs
+        (cospanFirstTail n) (cospanApex_lt_firstTail n))}
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsCDWithHEq`：
+
+```lean
+opaque fiberBoundaryRhsCDWithHEq {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h)) :
+    {z : Cochain (fiberBoundarySource g h b) D (fiberBoundaryDegree n) // HEq z
+      (fiberBoundaryRightBase g h b).cospanTwoTailRhs}
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhs0_heq_raw`：
+
+```lean
+lemma fiberBoundaryRhs0_heq_raw {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h)) :
+    HEq (fiberBoundaryRhs0 g h b hb) ((fiberBoundaryLeftBase g h b).cospanPrefixRhs)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsB_heq_raw`：
+
+```lean
+lemma fiberBoundaryRhsB_heq_raw {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h)) :
+    HEq (fiberBoundaryRhsB g h b hb) ((fiberBoundaryLeftBase g h b).cospanOneTailRhs
+      (cospanFirstTail n) (cospanApex_lt_firstTail n))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsC_heq_raw`：
+
+```lean
+lemma fiberBoundaryRhsC_heq_raw {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h)) :
+    HEq (fiberBoundaryRhsC g h b hb) ((fiberBoundaryRightBase g h b).cospanOneTailRhs
+      (cospanFirstTail n) (cospanApex_lt_firstTail n))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsD_heq_raw`：
+
+```lean
+lemma fiberBoundaryRhsD_heq_raw {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h)) :
+    HEq (fiberBoundaryRhsD g h b hb) ((fiberBoundaryLeftBase g h b).cospanOneTailRhs
+      (cospanLastTail n)
+        ((cospanApex_lt_firstTail n).trans (cospanFirstTail_lt_lastTail n)))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsBD_heq_raw`：
+
+```lean
+lemma fiberBoundaryRhsBD_heq_raw {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h)) :
+    HEq (fiberBoundaryRhsBD g h b hb) ((fiberBoundaryLeftBase g h b).cospanTwoTailRhs)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsCD_heq_raw`：
+
+```lean
+lemma fiberBoundaryRhsCD_heq_raw {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h)) :
+    HEq (fiberBoundaryRhsCD g h b hb) ((fiberBoundaryRightBase g h b).cospanTwoTailRhs)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryLeftBase_equation`：
+
+```lean
+lemma fiberBoundaryLeftBase_equation {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (I : Finset (Fin (n + 4))) (hI : ¬ cospanPrefixFaces n ⊆ I) :
+    (fiberBoundaryLeftBase g h b).Equation I
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryLeftBase_prefixHom`：
+
+```lean
+lemma fiberBoundaryLeftBase_prefixHom {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h))) :
+    (fiberBoundaryLeftBase g h b).cospanPrefixHom = 0
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryLeftBase_unknownHom`：
+
+```lean
+lemma fiberBoundaryLeftBase_unknownHom {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (I : Finset (Fin (n + 4))) (hprefix : cospanPrefixFaces n ⊆ I)
+    (a c : Fin (n + 4)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hc : c = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) :
+    (fiberBoundaryLeftBase g h b).hom I a c k hI ha hc hk = 0
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightBase_equation`：
+
+```lean
+lemma fiberBoundaryRightBase_equation {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (I : Finset (Fin (n + 4))) (hI : ¬ cospanPrefixFaces n ⊆ I) :
+    (fiberBoundaryRightBase g h b).Equation I
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightBase_prefixHom`：
+
+```lean
+lemma fiberBoundaryRightBase_prefixHom {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h))) :
+    (fiberBoundaryRightBase g h b).cospanPrefixHom = 0
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightBase_unknownHom`：
+
+```lean
+lemma fiberBoundaryRightBase_unknownHom {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (I : Finset (Fin (n + 4))) (hprefix : cospanPrefixFaces n ⊆ I)
+    (a c : Fin (n + 4)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hc : c = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) :
+    (fiberBoundaryRightBase g h b).hom I a c k hI ha hc hk = 0
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsB_differential`：
+
+```lean
+lemma fiberBoundaryRhsB_differential {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h)) :
+    δ (fiberBoundaryDegree n + 1) (fiberBoundaryDegree n + 1 + 1)
+        (fiberBoundaryRhsB g h b hb) =
+      -(fiberBoundaryRhs0 g h b hb).comp (Cochain.ofHom (pullbackProjectionB g h))
+        (add_zero (fiberBoundaryDegree n + 1 + 1))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsC_differential`：
+
+```lean
+lemma fiberBoundaryRhsC_differential {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h)) :
+    δ (fiberBoundaryDegree n + 1) (fiberBoundaryDegree n + 1 + 1)
+        (fiberBoundaryRhsC g h b hb) =
+      -(fiberBoundaryRhs0 g h b hb).comp (Cochain.ofHom (pullbackProjectionC g h))
+        (add_zero (fiberBoundaryDegree n + 1 + 1))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsBD_differential`：
+
+```lean
+lemma fiberBoundaryRhsBD_differential {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h)) :
+    δ (fiberBoundaryDegree n) (fiberBoundaryDegree n + 1)
+        (fiberBoundaryRhsBD g h b hb) =
+      fiberBoundaryRhsD g h b hb -
+        (fiberBoundaryRhsB g h b hb).comp (Cochain.ofHom g)
+          (add_zero (fiberBoundaryDegree n + 1)) -
+        (fiberBoundaryRhs0 g h b hb).comp (fiberNullHomotopy (fiberDifference g h))
+          (by omega)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsCD_differential`：
+
+```lean
+lemma fiberBoundaryRhsCD_differential {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h)) :
+    δ (fiberBoundaryDegree n) (fiberBoundaryDegree n + 1)
+        (fiberBoundaryRhsCD g h b hb) =
+      fiberBoundaryRhsD g h b hb -
+        (fiberBoundaryRhsC g h b hb).comp (Cochain.ofHom h)
+          (add_zero (fiberBoundaryDegree n + 1))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryUnknownA_differential`：
+
+```lean
+lemma fiberBoundaryUnknownA_differential {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h)) :
+    δ (fiberBoundaryDegree n + 1) (fiberBoundaryDegree n + 1 + 1)
+      (fiberBoundaryUnknownA g h b hb) = fiberBoundaryRhs0 g h b hb
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryUnknownD_differential`：
+
+```lean
+lemma fiberBoundaryUnknownD_differential {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h)) :
+    δ (fiberBoundaryDegree n) (fiberBoundaryDegree n + 1) (fiberBoundaryUnknownD g h b hb) =
+      (fiberBoundaryUnknownA g h b hb).comp (Cochain.ofHom (pullbackDiagonal g h))
+        (add_zero (fiberBoundaryDegree n + 1)) + fiberBoundaryRhsD g h b hb
+```
+
+検証：上記全対象と `SerrePositivity.InfinityCategories.DGNerve` を `set -e; set -o pipefail` 下で
+ビルドし終了コード 0。`scripts/audit_dg_nerve.lean` は全公開宣言の `#print axioms` と `#check @` を検査。
+今回の右側二残差の証明付き値の定義は `opaque` だが本体を Lean が検査しており、監査対象にも含める。
+
+未完了：未知成分を入れた単体データ、四未知集合の方程式との一致、境界一致・左右の貼合せ、
+`IsPullbackSquare (standardFiberSquare g h)`、N7d・N7e。N7c は未完了。
+標準 fiber 候補の微分が解けたことは最終的な slice の充填・終対象性の証明とは区別する。
+
 ## 6. 次のマイルストーン D（本計画の範囲外）
 
 - Semifree(S) を `DGFullSubcategory`（`moduleSemifree` または一点 dg 圏上の複体版）として置き、

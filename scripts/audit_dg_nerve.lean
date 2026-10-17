@@ -1833,6 +1833,74 @@ noncomputable section
 #print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryUnknown_left_triangle
 #check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryUnknown_left_triangle
 
+-- N7c9: 実際の境界の型付き整合式と未知候補の微分。
+#print axioms SerrePositivity.InfinityCategories.DGNerve.gradedHomTransportWithHEq
+#check @SerrePositivity.InfinityCategories.DGNerve.gradedHomTransportWithHEq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.gradedHom_differential_heq
+#check @SerrePositivity.InfinityCategories.DGNerve.gradedHom_differential_heq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.gradedHom_neg_heq
+#check @SerrePositivity.InfinityCategories.DGNerve.gradedHom_neg_heq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.gradedHom_add_heq
+#check @SerrePositivity.InfinityCategories.DGNerve.gradedHom_add_heq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.gradedHom_sub_heq
+#check @SerrePositivity.InfinityCategories.DGNerve.gradedHom_sub_heq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.gradedHom_compose_heq
+#check @SerrePositivity.InfinityCategories.DGNerve.gradedHom_compose_heq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.gradedHom_zero_heq
+#check @SerrePositivity.InfinityCategories.DGNerve.gradedHom_zero_heq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospan_oneTail_differential_of_heq
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospan_oneTail_differential_of_heq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospanTwoTailLastRhs
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospanTwoTailLastRhs
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospanTwoTailRhs_differential_of_unknown_zero
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospanTwoTailRhs_differential_of_unknown_zero
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_heq_of_degrees
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_heq_of_degrees
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospanTwoTailLastRhs_heq
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospanTwoTailLastRhs_heq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospan_twoTail_differential_of_heq
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospan_twoTail_differential_of_heq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsCWithHEq
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsCWithHEq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsCDWithHEq
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsCDWithHEq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhs0_heq_raw
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhs0_heq_raw
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsB_heq_raw
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsB_heq_raw
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsC_heq_raw
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsC_heq_raw
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsD_heq_raw
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsD_heq_raw
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsBD_heq_raw
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsBD_heq_raw
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsCD_heq_raw
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsCD_heq_raw
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryLeftBase_equation
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryLeftBase_equation
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryLeftBase_prefixHom
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryLeftBase_prefixHom
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryLeftBase_unknownHom
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryLeftBase_unknownHom
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightBase_equation
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightBase_equation
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightBase_prefixHom
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightBase_prefixHom
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightBase_unknownHom
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightBase_unknownHom
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsB_differential
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsB_differential
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsC_differential
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsC_differential
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsBD_differential
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsBD_differential
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsCD_differential
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRhsCD_differential
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryUnknownA_differential
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryUnknownA_differential
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryUnknownD_differential
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryUnknownD_differential
+
 section
 universe u v
 variable (A : Type u) [CommRing A] (D : Type v)
