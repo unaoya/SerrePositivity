@@ -831,3 +831,27 @@ dg nerve を標的とすると、`cospanBoundaryLeftData F unknown`・`cospanBou
 
 次は共通成分の比較、標準 fiber への対象の移送、未知六成分の残差恒等式と解を実装する。
 `IsPullbackSquare` および N7d・N7e は未完了。正確な公開型と前提は計画 §5 の N7c3 に記録する。
+
+
+## N7.6：先頭と脚の残差整合条件（2026-10-18）
+
+`cospanApex n` は先頭集合の最後の点で、その集合の濃度は `n+2`。
+先頭の一点を削除した集合、錐頂点より前で終わる左切断、零より後で始まる右切断は既知集合。
+これらの事実で Bianchi の有限和の既知残差を消去した。
+
+`SimplexData.differential_rhs_zero_of_proper_equations` は全真部分集合の方程式から右辺の閉性を導く。
+先頭集合に適用すると `cospanPrefixRhs_closed`、すなわち `δr₀=0` を得る。
+末尾一点を加えた集合では、錐頂点の Bianchi の寄与だけが残る。
+その点の符号は負一、右切断の次数は零なので、
+`cospanOneTailRhs_differential` は右辺の微分を脚と先頭残差の合成に同定する。
+先頭の未知成分を零とすれば、`cospanOneTailRhs_differential_of_prefix_zero` により
+`δr_B=−p r₀`・`δr_C=−q r₀`・`δr_D=−t r₀` に対応する式になる。
+
+`cospanBoundaryLeftZeroData F`・`cospanBoundaryRightZeroData F` は実際の join 境界写像の
+全未知成分を零としたデータ。両者の先頭成分の零、先頭右辺の閉性、脚側微分の式を証明した。
+ここで脚は回収した `edgeHom` であり、標準 fiber の射との同定はまだ行っていない。
+次数は先頭成分が `−n`、先頭右辺が `−n+1`、脚側右辺が `−n−1+1`。
+後者は `−n` と等しいが、定義では微分の出力次数をそのまま保持する。
+
+残る三角形成分の微分恒等式、左右の共通成分と錐の対象・射の同定、fiber 座標による未知成分の解、
+全方程式と境界の一致、`IsPullbackSquare` は未完了。公開型と前提は計画 §5 の N7c4 に記録する。

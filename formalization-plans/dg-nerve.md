@@ -7084,6 +7084,405 @@ fiber の座標による解、未知方程式、二単体の貼り合わせと s
 終対象性と `IsPullbackSquare`。N7c〜N7e は未完了。
 保存後も承認を待たず、未知方程式の計算へ続ける。
 
+### N7c4：実際の境界の先頭・脚側の残差整合条件（2026-10-18）
+
+先頭集合の端点・濃度と既知集合の削除・切断の判定を証明した。
+主残差恒等式 Bianchi から、先頭の右辺の閉性 δr₀=0 と、
+末尾一点を加えた右辺の微分が脚と先頭残差の合成になることを証明した。
+先頭の未知成分を零にした場合は、脚側の右辺の微分が脚と先頭右辺の合成の負になる。
+実際の join 境界写像からの左右の零未知データにこれを適用し、
+既知方程式・先頭成分の零・残差整合性を追加前提なしに証明した。
+
+前提・規約：`{A : Type u} [CommRing A] {D : Type v} [DGCategory A D]`。
+集合幾何の宣言はこれらに依存しない。
+`hknown : ∀ I, ¬ cospanPrefixFaces n ⊆ I → s.Equation I` は一般データの既知方程式の条件で、
+実際の境界データでは N7c3 の回収定理から証明済み。
+`hzero : s.cospanPrefixHom = 0` は零未知データについて直接証明した。
+脚は回収した `s.edgeHom (cospanApex n) b hb`。まだ標準 fiber の脚との同定を主張しない。
+先頭の次数は `−n`、先頭右辺は `−n+1`、脚側右辺は `−n−1+1`。
+`differential_rhs_cospan_oneTail` は任意の指定次数 k とその濃度の証明を保つ型であり、
+`cospanOneTailRhs_differential` で固定次数の座標へ移している。
+
+公開宣言の正確なソース型（節変数は上記の通り）：
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanApex`
+
+```lean
+def cospanApex (n : ℕ) : Fin (n + 4)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.mem_cospanPrefixFaces_iff_le`
+
+```lean
+lemma mem_cospanPrefixFaces_iff_le {n : ℕ} (i : Fin (n + 4)) :
+    i ∈ cospanPrefixFaces n ↔ i ≤ cospanApex n
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.card_cospanPrefixFaces`
+
+```lean
+lemma card_cospanPrefixFaces (n : ℕ) : (cospanPrefixFaces n).card = n + 2
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanPrefixFaces_min`
+
+```lean
+lemma cospanPrefixFaces_min (n : ℕ) (h : (cospanPrefixFaces n).Nonempty) :
+    (0 : Fin (n + 4)) = (cospanPrefixFaces n).min' h
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanPrefixFaces_max`
+
+```lean
+lemma cospanPrefixFaces_max (n : ℕ) (h : (cospanPrefixFaces n).Nonempty) :
+    cospanApex n = (cospanPrefixFaces n).max' h
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanApex_pos`
+
+```lean
+lemma cospanApex_pos (n : ℕ) : (0 : Fin (n + 4)) < cospanApex n
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanApex_lt_firstTail`
+
+```lean
+lemma cospanApex_lt_firstTail (n : ℕ) : cospanApex n < cospanFirstTail n
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanFirstTail_lt_lastTail`
+
+```lean
+lemma cospanFirstTail_lt_lastTail (n : ℕ) : cospanFirstTail n < cospanLastTail n
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospan_erase_known`
+
+```lean
+lemma cospan_erase_known {n : ℕ} (I : Finset (Fin (n + 4)))
+    (j : Fin (n + 4)) (hj : j ∈ cospanPrefixFaces n) :
+    ¬ cospanPrefixFaces n ⊆ I.erase j
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospan_leftCut_known`
+
+```lean
+lemma cospan_leftCut_known {n : ℕ} (I : Finset (Fin (n + 4)))
+    (j : Fin (n + 4)) (hj : j < cospanApex n) :
+    ¬ cospanPrefixFaces n ⊆ I.filter (· ≤ j)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospan_rightCut_known`
+
+```lean
+lemma cospan_rightCut_known {n : ℕ} (I : Finset (Fin (n + 4)))
+    (j : Fin (n + 4)) (hj : 0 < j) :
+    ¬ cospanPrefixFaces n ⊆ I.filter (j ≤ ·)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SimplexData.differential_rhs_zero_of_proper_equations`
+
+```lean
+lemma differential_rhs_zero_of_proper_equations {n : ℕ} (s : SimplexData A D n)
+    (I : Finset (Fin (n + 1))) (hproper : ∀ J ⊂ I, s.Equation J)
+    (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) :
+    differential A (s.rhs I a b k hI ha hb hk) = 0
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanPrefix_proper_known`
+
+```lean
+lemma cospanPrefix_proper_known {n : ℕ} (J : Finset (Fin (n + 4)))
+    (hJ : J ⊂ cospanPrefixFaces n) : ¬ cospanPrefixFaces n ⊆ J
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SimplexData.differential_rhs_cospanPrefix`
+
+```lean
+lemma differential_rhs_cospanPrefix {n : ℕ} (s : SimplexData A D (n + 3))
+    (hknown : ∀ I, ¬ cospanPrefixFaces n ⊆ I → s.Equation I)
+    (a b : Fin (n + 4)) (k : ℤ) (hI : 2 ≤ (cospanPrefixFaces n).card)
+    (ha : a = (cospanPrefixFaces n).min' (Index.nonempty hI))
+    (hb : b = (cospanPrefixFaces n).max' (Index.nonempty hI))
+    (hk : k = 2 - ((cospanPrefixFaces n).card : ℤ)) :
+    differential A (s.rhs (cospanPrefixFaces n) a b k hI ha hb hk) = 0
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLeftData_prefix_rhs_closed`
+
+```lean
+lemma cospanBoundaryLeftData_prefix_rhs_closed {n : ℕ}
+    (F : join (SSet.boundary (n + 1) : SSet.{max u v}) (SSet.horn 2 2) ⟶ dgNerve A D)
+    (unknown : HomFamily A D (SelectedFaces.vertexObj _ (cospanPrefixFaces_covers n)
+      (cospanBoundaryLeft F)))
+    (a b : Fin (n + 4)) (k : ℤ) (hI : 2 ≤ (cospanPrefixFaces n).card)
+    (ha : a = (cospanPrefixFaces n).min' (Index.nonempty hI))
+    (hb : b = (cospanPrefixFaces n).max' (Index.nonempty hI))
+    (hk : k = 2 - ((cospanPrefixFaces n).card : ℤ)) :
+    differential A ((cospanBoundaryLeftData F unknown).rhs
+      (cospanPrefixFaces n) a b k hI ha hb hk) = 0
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryRightData_prefix_rhs_closed`
+
+```lean
+lemma cospanBoundaryRightData_prefix_rhs_closed {n : ℕ}
+    (F : join (SSet.boundary (n + 1) : SSet.{max u v}) (SSet.horn 2 2) ⟶ dgNerve A D)
+    (unknown : HomFamily A D (SelectedFaces.vertexObj _ (cospanPrefixFaces_covers n)
+      (cospanBoundaryRight F)))
+    (a b : Fin (n + 4)) (k : ℤ) (hI : 2 ≤ (cospanPrefixFaces n).card)
+    (ha : a = (cospanPrefixFaces n).min' (Index.nonempty hI))
+    (hb : b = (cospanPrefixFaces n).max' (Index.nonempty hI))
+    (hk : k = 2 - ((cospanPrefixFaces n).card : ℤ)) :
+    differential A ((cospanBoundaryRightData F unknown).rhs
+      (cospanPrefixFaces n) a b k hI ha hb hk) = 0
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanTail_notMem_prefix`
+
+```lean
+lemma cospanTail_notMem_prefix {n : ℕ} (b : Fin (n + 4)) (hb : cospanApex n < b) :
+    b ∉ cospanPrefixFaces n
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.card_cospanPrefix_insert`
+
+```lean
+lemma card_cospanPrefix_insert {n : ℕ} (b : Fin (n + 4)) (hb : cospanApex n < b) :
+    (insert b (cospanPrefixFaces n)).card = n + 3
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanPrefix_insert_min`
+
+```lean
+lemma cospanPrefix_insert_min {n : ℕ} (b : Fin (n + 4))
+    (h : (insert b (cospanPrefixFaces n)).Nonempty) :
+    (0 : Fin (n + 4)) = (insert b (cospanPrefixFaces n)).min' h
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanPrefix_insert_max`
+
+```lean
+lemma cospanPrefix_insert_max {n : ℕ} (b : Fin (n + 4)) (hb : cospanApex n < b)
+    (h : (insert b (cospanPrefixFaces n)).Nonempty) :
+    b = (insert b (cospanPrefixFaces n)).max' h
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanPrefix_insert_leftCut`
+
+```lean
+lemma cospanPrefix_insert_leftCut {n : ℕ} (b : Fin (n + 4)) :
+    (insert b (cospanPrefixFaces n)).filter (· ≤ cospanApex n) = cospanPrefixFaces n
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanPrefix_insert_rightCut`
+
+```lean
+lemma cospanPrefix_insert_rightCut {n : ℕ} (b : Fin (n + 4)) (hb : cospanApex n < b) :
+    (insert b (cospanPrefixFaces n)).filter (cospanApex n ≤ ·) = {cospanApex n, b}
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanPrefix_insert_above`
+
+```lean
+lemma cospanPrefix_insert_above {n : ℕ} (b : Fin (n + 4)) (hb : cospanApex n < b) :
+    (insert b (cospanPrefixFaces n)).filter (cospanApex n < ·) = {b}
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanPrefix_insert_sign`
+
+```lean
+lemma cospanPrefix_insert_sign {n : ℕ} (b : Fin (n + 4)) (hb : cospanApex n < b) :
+    Index.sign (insert b (cospanPrefixFaces n)) (cospanApex n) = -1
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SimplexData.differential_rhs_cospan_oneTail_single`
+
+```lean
+lemma differential_rhs_cospan_oneTail_single {n : ℕ} (s : SimplexData A D (n + 3))
+    (hknown : ∀ I, ¬ cospanPrefixFaces n ⊆ I → s.Equation I)
+    (b : Fin (n + 4)) (hb : cospanApex n < b) (k : ℤ)
+    (hI : 2 ≤ (insert b (cospanPrefixFaces n)).card)
+    (ha : (0 : Fin (n + 4)) = (insert b (cospanPrefixFaces n)).min' (Index.nonempty hI))
+    (hmax : b = (insert b (cospanPrefixFaces n)).max' (Index.nonempty hI))
+    (hk : k = 2 - ((insert b (cospanPrefixFaces n)).card : ℤ)) :
+    differential A (s.rhs (insert b (cospanPrefixFaces n)) 0 b k hI ha hmax hk) =
+      s.residualContribution (insert b (cospanPrefixFaces n)) 0 b k hI ha hmax hk
+        (cospanApex n)
+        (Finset.mem_insert_of_mem ((mem_cospanPrefixFaces_iff_le _).mpr le_rfl))
+        (cospanApex_pos n) hb
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospanPrefixHom`
+
+```lean
+def cospanPrefixHom {n : ℕ} (s : SimplexData A D (n + 3)) :
+    GradedHom A (s.obj 0) (s.obj (cospanApex n)) (-(n : ℤ))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospanPrefixRhs`
+
+```lean
+def cospanPrefixRhs {n : ℕ} (s : SimplexData A D (n + 3)) :
+    GradedHom A (s.obj 0) (s.obj (cospanApex n)) (-(n : ℤ) + 1)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospanPrefixResidual`
+
+```lean
+def cospanPrefixResidual {n : ℕ} (s : SimplexData A D (n + 3)) :
+    GradedHom A (s.obj 0) (s.obj (cospanApex n)) (-(n : ℤ) + 1)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospanOneTailRhs`
+
+```lean
+def cospanOneTailRhs {n : ℕ} (s : SimplexData A D (n + 3))
+    (b : Fin (n + 4)) (hb : cospanApex n < b) :
+    GradedHom A (s.obj 0) (s.obj b) (-(n : ℤ) - 1 + 1)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospanPrefixResidual_eq`
+
+```lean
+lemma cospanPrefixResidual_eq {n : ℕ} (s : SimplexData A D (n + 3)) :
+    s.cospanPrefixResidual = differential A s.cospanPrefixHom - s.cospanPrefixRhs
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospanPrefixRhs_closed`
+
+```lean
+lemma cospanPrefixRhs_closed {n : ℕ} (s : SimplexData A D (n + 3))
+    (hknown : ∀ I, ¬ cospanPrefixFaces n ⊆ I → s.Equation I) :
+    differential A s.cospanPrefixRhs = 0
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SimplexData.differential_rhs_cospan_oneTail`
+
+```lean
+lemma differential_rhs_cospan_oneTail {n : ℕ} (s : SimplexData A D (n + 3))
+    (hknown : ∀ I, ¬ cospanPrefixFaces n ⊆ I → s.Equation I)
+    (b : Fin (n + 4)) (hb : cospanApex n < b) (k : ℤ)
+    (hI : 2 ≤ (insert b (cospanPrefixFaces n)).card)
+    (ha : (0 : Fin (n + 4)) = (insert b (cospanPrefixFaces n)).min' (Index.nonempty hI))
+    (hmax : b = (insert b (cospanPrefixFaces n)).max' (Index.nonempty hI))
+    (hk : k = 2 - ((insert b (cospanPrefixFaces n)).card : ℤ)) :
+    differential A (s.rhs (insert b (cospanPrefixFaces n)) 0 b k hI ha hmax hk) =
+      compose A (s.edgeHom (cospanApex n) b hb)
+        (s.residual (cospanPrefixFaces n) 0 (cospanApex n)
+          (2 - ((cospanPrefixFaces n).card : ℤ))
+          (by rw [card_cospanPrefixFaces]; omega)
+          (cospanPrefixFaces_min n _) (cospanPrefixFaces_max n _) rfl)
+        (by rw [card_cospanPrefix_insert b hb] at hk
+            rw [card_cospanPrefixFaces]
+            push_cast at hk ⊢
+            omega)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospanOneTailRhs_differential`
+
+```lean
+lemma cospanOneTailRhs_differential {n : ℕ} (s : SimplexData A D (n + 3))
+    (hknown : ∀ I, ¬ cospanPrefixFaces n ⊆ I → s.Equation I)
+    (b : Fin (n + 4)) (hb : cospanApex n < b) :
+    differential A (s.cospanOneTailRhs b hb) =
+      compose A (s.edgeHom (cospanApex n) b hb) s.cospanPrefixResidual (by omega)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospanOneTailRhs_differential_of_prefix_zero`
+
+```lean
+lemma cospanOneTailRhs_differential_of_prefix_zero {n : ℕ} (s : SimplexData A D (n + 3))
+    (hknown : ∀ I, ¬ cospanPrefixFaces n ⊆ I → s.Equation I)
+    (hzero : s.cospanPrefixHom = 0) (b : Fin (n + 4)) (hb : cospanApex n < b) :
+    differential A (s.cospanOneTailRhs b hb) =
+      -compose A (s.edgeHom (cospanApex n) b hb) s.cospanPrefixRhs (by omega)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLeftZeroData`
+
+```lean
+def cospanBoundaryLeftZeroData {n : ℕ}
+    (F : join (SSet.boundary (n + 1) : SSet.{max u v}) (SSet.horn 2 2) ⟶ dgNerve A D) :
+    SimplexData A D (n + 3)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryRightZeroData`
+
+```lean
+def cospanBoundaryRightZeroData {n : ℕ}
+    (F : join (SSet.boundary (n + 1) : SSet.{max u v}) (SSet.horn 2 2) ⟶ dgNerve A D) :
+    SimplexData A D (n + 3)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLeftZeroData_prefixHom`
+
+```lean
+lemma cospanBoundaryLeftZeroData_prefixHom {n : ℕ}
+    (F : join (SSet.boundary (n + 1) : SSet.{max u v}) (SSet.horn 2 2) ⟶ dgNerve A D) :
+    (cospanBoundaryLeftZeroData F).cospanPrefixHom = 0
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryRightZeroData_prefixHom`
+
+```lean
+lemma cospanBoundaryRightZeroData_prefixHom {n : ℕ}
+    (F : join (SSet.boundary (n + 1) : SSet.{max u v}) (SSet.horn 2 2) ⟶ dgNerve A D) :
+    (cospanBoundaryRightZeroData F).cospanPrefixHom = 0
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLeftZeroData_prefixRhs_closed`
+
+```lean
+lemma cospanBoundaryLeftZeroData_prefixRhs_closed {n : ℕ}
+    (F : join (SSet.boundary (n + 1) : SSet.{max u v}) (SSet.horn 2 2) ⟶ dgNerve A D) :
+    differential A (cospanBoundaryLeftZeroData F).cospanPrefixRhs = 0
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryRightZeroData_prefixRhs_closed`
+
+```lean
+lemma cospanBoundaryRightZeroData_prefixRhs_closed {n : ℕ}
+    (F : join (SSet.boundary (n + 1) : SSet.{max u v}) (SSet.horn 2 2) ⟶ dgNerve A D) :
+    differential A (cospanBoundaryRightZeroData F).cospanPrefixRhs = 0
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLeftZeroData_oneTail_differential`
+
+```lean
+lemma cospanBoundaryLeftZeroData_oneTail_differential {n : ℕ}
+    (F : join (SSet.boundary (n + 1) : SSet.{max u v}) (SSet.horn 2 2) ⟶ dgNerve A D)
+    (b : Fin (n + 4)) (hb : cospanApex n < b) :
+    differential A ((cospanBoundaryLeftZeroData F).cospanOneTailRhs b hb) =
+      -compose A ((cospanBoundaryLeftZeroData F).edgeHom (cospanApex n) b hb)
+        (cospanBoundaryLeftZeroData F).cospanPrefixRhs (by omega)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryRightZeroData_oneTail_differential`
+
+```lean
+lemma cospanBoundaryRightZeroData_oneTail_differential {n : ℕ}
+    (F : join (SSet.boundary (n + 1) : SSet.{max u v}) (SSet.horn 2 2) ⟶ dgNerve A D)
+    (b : Fin (n + 4)) (hb : cospanApex n < b) :
+    differential A ((cospanBoundaryRightZeroData F).cospanOneTailRhs b hb) =
+      -compose A ((cospanBoundaryRightZeroData F).edgeHom (cospanApex n) b hb)
+        (cospanBoundaryRightZeroData F).cospanPrefixRhs (by omega)
+```
+
+検証：対象 `CospanBoundaryZeroData` と集約 `SerrePositivity.InfinityCategories.DGNerve` を
+`set -e; set -o pipefail` でビルドし、終了コード 0 を確認。
+新規 42 宣言の `#print axioms`・`#check @` を監査スクリプトへ追加。
+自分の全公開 770 宣言と既存則 5 宣言の公理監査計 775 件、公開 770 宣言の明示型検査を通過。
+公理は `propext`・`Classical.choice`・`Quot.sound` の範囲内。
+自分のパスだけの `git diff --check` を実施し、自分のファイルだけを `git commit --only` で保存する。
+
+未完了：末尾二点を含む三角形成分の残差整合条件、左右の共通成分の同定、
+錐の対象・射の同定、fiber の座標による未知六成分の解、未知方程式、
+二単体の貼り合わせと slice 境界の一致、終対象性と `IsPullbackSquare`。
+N7c〜N7e は未完了。保存後は承認を待たず三角形成分の計算へ続ける。
+
 ## 6. 次のマイルストーン D（本計画の範囲外）
 
 - Semifree(S) を `DGFullSubcategory`（`moduleSemifree` または一点 dg 圏上の複体版）として置き、
