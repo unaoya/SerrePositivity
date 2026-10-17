@@ -9111,6 +9111,21 @@ KL-T の実 almost 比較と有限被覆・定 rank の組立ては依然とし�
 この四角形や実 almost 比較を未供給のまま Prop 2.4.7 を証明済みとは扱わない。
 Cor 8.12 の保留は継続し、新しい sorry・axiom・引用は追加していない。
 
+**D-I・底変換と tensor の元の augmentation の一致（2026-10-17）。** 共通層
+`HomologicalAlgebra/DerivedBaseChangeTensorAugmentation.lean` で、任意の環写像 φ:R→B と任意の
+R 加群 M に対し、実 `boundedAboveDerivedBaseChangeTensorIso` が底変換側と tensor 側の
+元の標準 augmentation を保つことを証明した。係数制限の single 比較と通常の
+`extendRestrictTensorIso` を含む実可換式を公開する。
+複体上の零次数比較・任意の augmentation の比較、一方の解消を外した実 tensor モデルの比較を経由する。
+既存 `DerivedBaseChangeAugmentationModels.lean`・`DerivedTensorAugmentationModels.lean` の
+任意射影モデルでの計算を再利用し、恒等モデルの補題は既存
+`DerivedBaseChangeAugmentationComparison.lean` から利用した。
+平坦性・正則性・完備性・有限性を追加していない。共通層に BS・CLMST・Inputs・Paper 依存はない。
+対象2347ジョブが成功し、公開4宣言は専用監査で assert_no_sorry 成功・標準3公理のみ。
+次はこの実 augmentation 可換式を通常の B⊗R S への係数正規化と完備化の標準単位へ接続する。
+その接続後に始域・終域の比較による最終四角形を得る。最終四角形はまだ未完成である。
+Cor 8.12 は引き続き保留し、新しい sorry・axiom・引用は追加していない。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
