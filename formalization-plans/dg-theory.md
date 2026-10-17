@@ -8124,3 +8124,49 @@ Checks.DerivedBimoduleUnits・Checks.DerivedBimodulePentagon・Checks.StageEight
 三角恒等式だけでU12e全受入とはしない。local Hom条件のないdg圏自体の解像度経路も残る。
 U12e全受入後はこのチャットでU16を進める。U12f/U14/U15dは並行担当とし、
 U15e/U17はU12f・U14・U16がそろってから扱う。共有一般論への新しいAPI要求はない。
+
+
+### 17.178 U12e19：導来同型で指定したK-flat代表との結合比較と五角経路（2026-10-17）
+
+`Derived/BimoduleCompositionAssociatorComponents.lean`は全結合同型の成分を
+**derivedBimoduleAssociator**として公開する。入力は任意の導来Q:C–E、R:E–F、
+localHomKFlat A E/Fで、出力は前因子全体に自然な結合同型。
+既存derivedBimoduleAssociatorIsoの名前・型は変更せず、その二重評価の入口を追加した。
+**derivedBimoduleAssociator_naturality**は任意の導来射f:Q→Q'、g:R→R'を同時に動かす自然性。
+§17.175で局所化前の射について証明した自然性を、全局所化の任意の射へ拡張した公開形である。
+
+`Derived/BimoduleCompositionAssociatorComparison.lean`は、導来対象Q/Rと右K-flat対象S/Tを結ぶ
+任意の導来同型q:Q≅L(S)、r:R≅L(T)から、逐次合成・合成対象・その作用関手の比較同型
+**derivedBimoduleComposePairComparisonIso/InnerComparisonIso/NestedComparisonIso**を構成する。
+これらは元のbimodule射としての解像度を要求しない。
+五角図式の中間因子Q⊗ᴸRを通常合成の導来像へ比較する場合にも使える。
+**derivedBimoduleAssociator_comparison_fac**は、この一般の導来同型による比較と
+全導来結合同型が既存rightKFlatDerivedAssociatorを介して可換であることを証明する。
+証明は上の全導来射の同時自然性と§17.176のK-flat計算図式を合成する。
+
+`Derived/BimoduleCompositionPentagonPaths.lean`は任意の導来Q:C–E、R:E–F、S:F–Gについて
+**derivedBimodulePentagonShort/Long**を構成する。
+短経路は後二因子の結合比較を前の合成関手でwhiskerしてから、前二因子の結合比較を適用する。
+長経路は前二因子の結合比較を後の合成関手でwhiskerし、次の結合比較と
+内側の三因子の結合射を全導来合成関手へ送った射を適用する。
+両経路は同じ始域・終域の自然変換として型検査済みであるが、今回それらの一致はまだ証明していない。
+任意可換環・非有界・六つの独立対象宇宙・Small.{u} B/C/E/F/GとlocalHomKFlat A E/F/Gを保持する。
+
+Checks.DerivedBimodulePentagonPaths・Checks.DerivedBimoduleTriangle・
+Checks.DerivedBimoduleAssociatorIndependence・Checks.DerivedBimodulePentagon・
+Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功
+（3083 jobs、終了コード0、警告なし）。任意導来同型によるK-flat比較図式、
+五角二経路の共通型、独立対象宇宙とZMod 2での全結合比較を検査した。
+主要8宣言の直接公理監査は標準公理のみ。監査累計3354宣言。
+今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は15 Markdown・320 exposition参照まで進み、担当外BhattScholze互換宣言の
+未解決参照1件で失敗した。共有ルート・共有一般論・並行所有ファイルは編集していない。
+
+次は五角の各頂点を三つのK-flat因子の通常合成へ比較する。
+特に内側の全結合射をInnerComparisonIsoで比較すると元の結合射の導来像に戻ること、
+短・長の各経路を同じ両端比較で送ると既存derivedPentagonの両経路になることを証明する。
+その後、比較同型の可逆性と全後因子への自然性で全五角恒等式を得る。
+型が一致しただけではcoherenceを受け入れない。
+local Hom条件のないdg圏自体の解像度経路、U12e全受入は残る。
+分担は§0のまま、U12e受入後にU16へ進み、U15e/U17は指定の合流条件を待つ。
+共有一般論への新しいAPI要求はなく、既存公開APIの名前・型の変更もない。
