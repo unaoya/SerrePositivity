@@ -1255,6 +1255,25 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootMonicCompletedInputE
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootMonicCompletedInput_isAdicComplete
 assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicCompletionHom_of_original_completed_input
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTateRoots
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTateRoots_pow
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTateRoots_eval
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicEquationInputMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicEquationInputMap_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicEquationInputMap_root
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicReductionMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicReductionMap_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicReductionMap_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicEquationInputSquare_iff_roots
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicHom_preserving_equation_input
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicOriginalInputMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicOriginalInputMap_poly
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicOriginalInputMap_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicOriginalInputMap_root
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootMonicCompletedInput_ringHom_ext
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicOriginalInputSquare_iff_roots
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicHom_preserving_original_input
+
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
@@ -1485,7 +1504,12 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PowerRootPolynomialModScalar,
     `SerrePositivity.BhattScholze.Andre.PrimeAdicCompletionQuotientExchange,
     `SerrePositivity.BhattScholze.Andre.PowerRootMonicCompletedInput,
-    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicOriginalCompletedInput]
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicOriginalCompletedInput,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicStandardEquationInput,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicEquationInputSquare,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicStandardCompletedInput,
+    `SerrePositivity.BhattScholze.Andre.PowerRootMonicCompletedInputExt,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicOriginalInputSquare]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

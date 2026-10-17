@@ -5816,3 +5816,159 @@ theorem sourceResidueH0_faithfullyFlat (W : OrientedPrism p A) (hW : W.deltaStru
 `/tmp/andre-a1d-drafts/PowerRootRawResidueFlat.lean` に退避した。
 これらはビルド済み成果ではなく、必要なら参考として使える。
 A1-b は以後この最初の段を実装せず、A1-d の成果で上記の明示仮定を解消する。
+
+### E1.73／A1-a 標準入力作用と可換図式による普遍性（2026-10-17）
+
+本節は A1-a の追記。通常の入力環から元の H/d への標準射を無条件に構成し、
+その作用を保つ試験射の一意存在を証明した。原典の完備入力作用に対しては、
+H/d の通常の p 完備性を明示引数 hT にして同じ可換図式の普遍性を接続した。
+既存 hpR 付き定理と並列担当のファイル・記録節は変更していない。
+
+以下の公開名はすべて `SerrePositivity.BhattScholze.Andre` 内。
+共通の入力は {A : Type u} [CommRing A]、{p : ℕ} [Fact p.Prime]、
+W : OrientedPrism p A、hW : W.deltaStructure.IsPerfect、f : Polynomial A。
+P、E、dP、a、L、jL、H、uL、DH は E1.72 と同じ元の raw 実完備化のデータ。
+dH=uL (jL dP)、T=H ⧸ Ideal.span {dH}、qH=Ideal.Quotient.mk (Ideal.span {dH})、
+R=A ⧸ W.ideal、fR=f.map (Ideal.Quotient.mk W.ideal)、
+S₀=PowerRootEquationQuotient p hp fR、cS と rS は S₀ の標準係数射・根列、
+φ₀=powerRootPrismMonicHodgeTateBaseMap W hW f、baseH=powerRootPrismMonicCompletionBaseMap W hW f。
+以下で H と T を使う型の先頭には、コードと同じく
+`let := pdCompletionCommRing L p (jL dP)` が付く。
+
+#### 通常の標準入力射（6 公開宣言）
+
+新規 `Andre/PowerRootPrismMonicStandardEquationInput.lean`。
+
+```lean
+-- powerRootPrismMonicHodgeTateRoots W hW f (n : ℕ)
+T
+-- powerRootPrismMonicHodgeTateRoots_pow W hW f n
+powerRootPrismMonicHodgeTateRoots W hW f (n+1)^p =
+  powerRootPrismMonicHodgeTateRoots W hW f n
+-- powerRootPrismMonicHodgeTateRoots_eval W hW f
+fR.eval₂ φ₀ (powerRootPrismMonicHodgeTateRoots W hW f 0) = 0
+-- powerRootPrismMonicEquationInputMap W hW f
+S₀ →+* T
+-- powerRootPrismMonicEquationInputMap_coeff W hW f
+(powerRootPrismMonicEquationInputMap W hW f).comp cS = φ₀
+-- powerRootPrismMonicEquationInputMap_root W hW f n
+powerRootPrismMonicEquationInputMap W hW f (rS n) =
+  powerRootPrismMonicHodgeTateRoots W hW f n
+```
+
+標準根の定義は qH (uL (jL Y_n))。全根の互換性を環射で写し、
+既存の raw 関係による第零根の評価定理を再利用する。
+方程式商の普遍性で input₀=powerRootPrismMonicEquationInputMap W hW f を構成する。
+モニック性・正次数・hpR・T の通常の p 完備性はいずれも不要。
+
+#### H の剰余射と通常入力作用を保つ普遍性（5 公開宣言）
+
+新規 `Andre/PowerRootPrismMonicEquationInputSquare.lean`。
+{B : Type u} [CommRing B]、Q : OrientedPrism p B、k : OrientedPrism.Hom W Q、
+qB=Ideal.Quotient.mk Q.ideal を固定する。
+
+- `powerRootPrismMonicReductionMap W hW f Q k` の型は
+  `(F : H →+* B) → F.comp baseH=k.toRingHom → T →+* B ⧸ Q.ideal`。
+- `powerRootPrismMonicReductionMap_mk W hW f Q k` は
+  ∀ (F : H →+* B) (hF : F.comp baseH=k.toRingHom) (x : H),
+  `powerRootPrismMonicReductionMap W hW f Q k F hF (qH x)=qB (F x)`。
+- `powerRootPrismMonicReductionMap_coeff W hW f Q k` は同じ F、hF に対し
+  `(powerRootPrismMonicReductionMap W hW f Q k F hF).comp φ₀=k.quotientMap`。
+- `powerRootPrismMonicEquationInputSquare_iff_roots` は η:S₀→+*B⧸Q.ideal、
+  hη:η.comp cS=k.quotientMap、同じ F、hF の下で
+
+```lean
+(powerRootPrismMonicReductionMap W hW f Q k F hF).comp input₀ = η ↔
+  ∀ n, qB (F (uL (jL (powerRootPolynomialVariable A p hp n)))) = η (rS n)
+```
+
+を証明する。δ 条件を課さない任意の基底保存環射について成り立つ。
+`existsUnique_powerRootPrismMonicHom_preserving_equation_input` はさらに
+hB:∃N:ℕ,∀n:ℕ,∀x:B⧸Q.ideal,(p:B⧸Q.ideal)^n*x=0→(p:B⧸Q.ideal)^N*x=0
+の下で、正確に
+
+```lean
+∃! F : H →+* B, DH.IsDeltaHom Q.deltaStructure F ∧
+  ∃ hF : F.comp baseH=k.toRingHom,
+    (powerRootPrismMonicReductionMap W hW f Q k F hF).comp input₀ = η
+```
+
+を証明する。基底生成元の像が Q.ideal に入ることから剰余射を降下する。
+係数と全根による方程式商の外延性で、根保存から入力環全体の可換性へ移す。
+H 自体の prism 性・T の通常の p 完備性・モニック性・正次数・hpR は不要。
+
+#### 原典の完備入力環の標準作用（4 公開宣言、条件付き）
+
+新規 `Andre/PowerRootPrismMonicStandardCompletedInput.lean`。
+PR=PowerRootPolynomial R p hp、CR=AdicCompletion (Ideal.span {(p:PR)}) PR、
+zR=powerRootPolynomialBaseMap R p hp fR、SI=PowerRootMonicCompletedInput p hp fR、
+lS:PR→+*SI は CR の主商射と algebraMap PR CR の合成。
+hf:f.Monic の下で、先頭の H の環構造の let の後に
+**hT:IsAdicComplete (Ideal.span {(p:T)}) T を明示引数として要求する**。
+
+```lean
+-- powerRootPrismMonicOriginalInputMap W hW f hf hT
+SI →+* T
+-- powerRootPrismMonicOriginalInputMap_poly W hW f hf (x : PR) hT
+powerRootPrismMonicOriginalInputMap W hW f hf hT (lS x) =
+  input₀ (Ideal.Quotient.mk (Ideal.span {zR}) x)
+-- powerRootPrismMonicOriginalInputMap_coeff W hW f hf hT
+(powerRootPrismMonicOriginalInputMap W hW f hf hT).comp
+  (lS.comp (algebraMap R PR)) = φ₀
+-- powerRootPrismMonicOriginalInputMap_root W hW f hf (n : ℕ) hT
+powerRootPrismMonicOriginalInputMap W hW f hf hT (lS (powerRootPolynomialVariable R p hp n)) =
+  powerRootPrismMonicHodgeTateRoots W hW f n
+```
+
+input₀ を通常の商の p 完備化へ一意に延長し、E1.72 のモニック交換同型を合成する。
+hT を hpR で供給したとはみなさず、無条件の完備入力作用の完成とは数えない。
+
+#### 完備入力射の外延性（1 公開定理）
+
+新規 `Andre/PowerRootMonicCompletedInputExt.lean` の
+`powerRootMonicCompletedInput_ringHom_ext`。
+この定理だけは一般の {R:Type u} [CommRing R]、p:ℕ、hp:0<p、f:Polynomial R、
+{B:Type v} [CommRing B] [IsAdicComplete (Ideal.span {(p:B)}) B] を使い、宇宙は独立。
+P=PowerRootPolynomial R p hp、SI=PowerRootMonicCompletedInput p hp f、
+lS は通常の無限根多項式環から SI への標準射として、
+F G:SI→+*B、hc:(F.comp lS).comp (algebraMap R P)=(G.comp lS).comp (algebraMap R P)、
+hr:∀n,F(lS Y_n)=G(lS Y_n) の下で F=G を証明する。
+主商・p 完備化・無限根多項式環の外延性を順に適用する。モニック性は不要。
+
+#### 原典の完備入力作用を保つ普遍性（2 公開定理、条件付き）
+
+新規 `Andre/PowerRootPrismMonicOriginalInputSquare.lean`。
+共通の W、hW、f、Q、k、hf と、有界性 hB、
+η:SI→+*B⧸Q.ideal、hη:(η.comp lS).comp (algebraMap R PR)=k.quotientMap を使う。
+H の環構造の let の後に hT を明示的に量化する。
+`powerRootPrismMonicOriginalInputSquare_iff_roots` は同じ F、hF の下で
+
+```lean
+(powerRootPrismMonicReductionMap W hW f Q k F hF).comp
+  (powerRootPrismMonicOriginalInputMap W hW f hf hT) = η ↔
+    ∀ n, qB (F (uL (jL (powerRootPolynomialVariable A p hp n)))) = η (lS Y_n)
+```
+
+を証明する。`existsUnique_powerRootPrismMonicHom_preserving_original_input` は
+
+```lean
+∀ hT : IsAdicComplete (Ideal.span {(p : T)}) T,
+∃! F : H →+* B, DH.IsDeltaHom Q.deltaStructure F ∧
+  ∃ hF : F.comp baseH=k.toRingHom,
+    (powerRootPrismMonicReductionMap W hW f Q k F hF).comp
+      (powerRootPrismMonicOriginalInputMap W hW f hf hT) = η
+```
+
+を証明する。有界試験 prism の商の通常の p 完備性を内部で供給し、
+全根の保存から原典の完備入力環全体の可換性を結論する。
+
+BS Rem 7.15（著者版 p.62）への接続として、原典とは異なる具体的な入力射、
+通常の主商と完備化の普遍性、全根による外延性を用いたことを docstring に記録した。
+未完了は hT の無条件の供給、H の生成元正則性と prism 化、prism の射としての
+初期性の合流、A1-c の最終係数照合との接続。条件付きの完備入力の成果を
+A1-a 全体の完成とは数えない。既存 hpR 付き定理は差し替えていない。
+
+検証：新規 5 ファイルの対象ビルドと集約ビルドは終了コード 0
+（集約 4579 jobs）。新規 18 公開宣言の `assert_no_sorry` と専用監査は終了コード 0。
+生成宣言を含む 7631 宣言の推移的公理依存は標準 3 公理のみ。
+新規 18 公開宣言の正確な型を `#check` で確認した（終了コード 0）。
