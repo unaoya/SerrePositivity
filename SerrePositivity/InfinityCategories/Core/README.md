@@ -223,3 +223,14 @@ inner anodyne となることを使い、slice の制限が全境界の rlp を�
 `pullbackCone F` が四角形を錐に直し、`IsPullbackSquare F` はその極限性。
 A2g 完了、A2h〜A2i は未完了。Core ビルドと累計 315 件の公理監査は成功。
 全 36 新規公開宣言の正確な型・前提は計画 §6 に記録した。
+
+### A2h 完了（2026-10-18）
+
+`initialCofinality` は、実装前に固定した文言通り、小圏の始対象 c と
+任意の `F : nerve I ⟶ X`、`[Quasicategory X]` に対し
+`TrivialKanFibration (initialRestriction F c)` を証明する。
+`nervePoint_leftAnodyne` は始対象の頂点包含の left anodyne 性。
+`sliceOverRestrict_trivialKanFibration` は一般の left anodyne 単射に沿う制限の性質。
+点を左から join した単射の left anodyne 性と、始対象の一意な射から作った錐の retract を用いた。
+A2h 完了、A2i は未完了。Core ビルドと累計 356 件の公理監査は成功。
+全 41 新規公開宣言の正確な型・前提は計画 §6 に記録した。

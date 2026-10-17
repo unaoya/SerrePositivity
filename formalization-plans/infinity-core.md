@@ -2178,3 +2178,335 @@ lemma isPullbackSquare_iff_trivialKanFibration {X : SSet.{u}} (F : Δ[1] ⊗ Δ[
 Core の対象ビルド・公理監査は終了コード 0。累計 315 件が標準三公理のみ
 （公理なしも含む）。A2g 完了。A2h〜A2i は未完了。
 A2h の正確な文言・前提と原典の向きを README に実装前に固定し、報告してから着手する。
+
+### A2h 完了（2026-10-18）：始対象による slice の制限
+
+実装前に README に正確な文言・前提・向き・原典を固定して報告し、
+追加承認を待たず着手するというユーザー指示に従った。
+`InitialCofinality.lean` の `initialCofinality` は、任意の小圏 I の通常の始対象 c と
+任意の単体集合の射 `F : nerve I ⟶ X`、`[Quasicategory X]` に対し
+`TrivialKanFibration (initialRestriction F c)` を証明する。制限の標的は
+`sliceOver (nervePoint c ≫ F)` であり、全図式から c での値へ向かう。
+
+`SliceRestriction.lean` は A2c を用い、一般の left anodyne 単射による slice の制限の
+trivial Kan fibration 性を証明した。単射を像への同型と部分複体包含に分け、前者での制限は同型。
+`ConeAnodyne.lean` は点を左から join した任意の単射の left anodyne 性を、
+境界セルでの最初のホーンの同定と coslice の普遍性・境界セル分解で証明した。
+`NerveCone.lean` は各射列に始対象からの一意な射を前置して自然な錐を作り、
+c 上で恒等辺になることを示した。元の c 側の端点を使う矢の retract により、
+`nervePoint_leftAnodyne` が成立する。c に入る非恒等射がないという余分な仮定はない。
+一般の cofinality 理論やモデル構造は使っていない。
+
+全 41 新規公開宣言の正確な型を以下に記録する。namespace は
+`SerrePositivity.InfinityCategories`、宇宙 `u` は任意、
+`open CategoryTheory Limits SSet MorphismProperty` と `open scoped Simplicial` の下の型。
+
+SliceRestriction.lean：
+
+```lean
+lemma sliceOverRestrict_hasLiftingProperty {A K X : SSet.{u}} [Quasicategory X]
+    (p : K ⟶ X) (A₀ : A.Subcomplex) (K₀ : K.Subcomplex)
+    (hK : leftAnodyneExtensions K₀.ι) : HasLiftingProperty A₀.ι (sliceOverRestrict p K₀.ι)
+```
+
+SliceRestriction.lean：
+
+```lean
+lemma sliceOverRestrict_subcomplex_trivialKanFibration {K X : SSet.{u}} [Quasicategory X]
+    (p : K ⟶ X) (K₀ : K.Subcomplex) (hK : leftAnodyneExtensions K₀.ι) :
+    TrivialKanFibration (sliceOverRestrict p K₀.ι)
+```
+
+SliceRestriction.lean：
+
+```lean
+lemma sliceOverRestrict_comp {K₀ K₁ K X : SSet.{u}} (p : K ⟶ X)
+    (f : K₀ ⟶ K₁) (g : K₁ ⟶ K) :
+    sliceOverRestrict p (f ≫ g) = sliceOverRestrict p g ≫ sliceOverRestrict (g ≫ p) f
+```
+
+SliceRestriction.lean：
+
+```lean
+lemma sliceOverRestrict_isIso {K₀ K X : SSet.{u}} (p : K ⟶ X) (f : K₀ ⟶ K) [IsIso f] :
+    IsIso (sliceOverRestrict p f)
+```
+
+SliceRestriction.lean：
+
+```lean
+lemma sliceOverRestrict_trivialKanFibration {K₀ K X : SSet.{u}} [Quasicategory X]
+    (p : K ⟶ X) (f : K₀ ⟶ K) [Mono f] (hf : leftAnodyneExtensions f) :
+    TrivialKanFibration (sliceOverRestrict p f)
+```
+
+ConeAnodyne.lean：
+
+```lean
+lemma coneBoundary_horn_preimage (n : ℕ) :
+    (horn (0 + n + 1) 0).preimage (joinStdSimplexIso.{u} 0 n).hom =
+      joinSubcomplexRight Δ[0] (boundary n)
+```
+
+ConeAnodyne.lean：
+
+```lean
+lemma joinPoint_boundary_leftAnodyne (n : ℕ) :
+    leftAnodyneExtensions (joinMap (𝟙 (Δ[0] : SSet.{u})) (boundary n).ι)
+```
+
+ConeAnodyne.lean：
+
+```lean
+lemma sliceUnderPostcomp_boundary_lifting {X Y : SSet.{u}} (p : (Δ[0] : SSet.{u}) ⟶ X)
+    (q : X ⟶ Y) [LeftFibration q] (n : ℕ) :
+    HasLiftingProperty (boundary n).ι (sliceUnderPostcomp p q)
+```
+
+ConeAnodyne.lean：
+
+```lean
+lemma sliceUnderPostcomp_trivialKanFibration {X Y : SSet.{u}}
+    (p : (Δ[0] : SSet.{u}) ⟶ X) (q : X ⟶ Y) [LeftFibration q] :
+    TrivialKanFibration (sliceUnderPostcomp p q)
+```
+
+ConeAnodyne.lean：
+
+```lean
+lemma joinPoint_mono_leftAnodyne {A B : SSet.{u}} (f : A ⟶ B) [Mono f] :
+    leftAnodyneExtensions (joinMap (𝟙 (Δ[0] : SSet.{u})) f)
+```
+
+NerveCone.lean：
+
+```lean
+def prependOrderHom {m n : ℕ} (α : Fin (m + 1) →o Fin (n + 1)) :
+    Fin (m + 2) →o Fin (n + 2)
+```
+
+NerveCone.lean：
+
+```lean
+lemma prependOrderHom_zero {m n : ℕ} (α : Fin (m + 1) →o Fin (n + 1)) :
+    prependOrderHom α 0 = 0
+```
+
+NerveCone.lean：
+
+```lean
+lemma prependOrderHom_succ {m n : ℕ} (α : Fin (m + 1) →o Fin (n + 1)) (i : Fin (m + 1)) :
+    prependOrderHom α i.succ = (α i).succ
+```
+
+NerveCone.lean：
+
+```lean
+lemma Join.stdAugEquiv_augHom {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌) (r : ℕ)
+    (a : Join.augObj (Δ[m] : SSet.{u}) r) :
+    Join.stdAugEquiv n r (Join.augHom (stdSimplex.map α) r a) =
+      α.toOrderHom.comp (Join.stdAugEquiv m r a)
+```
+
+NerveCone.lean：
+
+```lean
+lemma concat_prependOrderHom {m n r : ℕ} (α : Fin (m + 1) →o Fin (n + 1))
+    (ℓ : ℕ) (hℓ : ℓ ≤ r) (f : Fin ℓ →o Fin 1) (g : Fin (r - ℓ) →o Fin (m + 1))
+    (i : Fin r) :
+    (Join.concat ℓ hℓ f (α.comp g) i).val =
+      (prependOrderHom α (Fin.cast (by omega) (Join.concat ℓ hℓ f g i))).val
+```
+
+NerveCone.lean：
+
+```lean
+def simplexCastIso {m n : ℕ} (h : m = n) : (Δ[m] : SSet.{u}) ≅ Δ[n]
+```
+
+NerveCone.lean：
+
+```lean
+lemma simplexCastIso_hom_app_val {m n : ℕ} (h : m = n) (d : ℕ)
+    (s : (Δ[m] : SSet.{u}) _⦋d⦌) (i : Fin (d + 1)) :
+    ((simplexCastIso h).hom.app (Opposite.op ⦋d⦌) s i).val = (s i).val
+```
+
+NerveCone.lean：
+
+```lean
+def pointJoinStdSimplexIso (n : ℕ) : join (Δ[0] : SSet.{u}) Δ[n] ≅ Δ[n + 1]
+```
+
+NerveCone.lean：
+
+```lean
+lemma pointJoinStdSimplexIso_hom_app_val (n d : ℕ)
+    (s : Join.Simplex (Δ[0] : SSet.{u}) Δ[n] d) (i : Fin (d + 1)) :
+    ((pointJoinStdSimplexIso n).hom.app (Opposite.op ⦋d⦌) s i).val =
+      (Join.stdEncode 0 n d s i).val
+```
+
+NerveCone.lean：
+
+```lean
+lemma joinStdSimplexIso_point_naturality {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌) :
+    joinMap (𝟙 (Δ[0] : SSet.{u})) (stdSimplex.map α) ≫ (pointJoinStdSimplexIso n).hom =
+      (pointJoinStdSimplexIso m).hom ≫ stdSimplex.map
+        (SimplexCategory.mkHom (prependOrderHom α.toOrderHom))
+```
+
+NerveCone.lean：
+
+```lean
+def nerveVertex {I : Type u} [Category.{u} I] (c : I) : (nerve I) _⦋0⦌
+```
+
+NerveCone.lean：
+
+```lean
+def nervePoint {I : Type u} [Category.{u} I] (c : I) : (Δ[0] : SSet.{u}) ⟶ nerve I
+```
+
+NerveCone.lean：
+
+```lean
+noncomputable def initialChain {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c)
+    {n : ℕ} (F : ComposableArrows I n) : ComposableArrows I (n + 1)
+```
+
+NerveCone.lean：
+
+```lean
+lemma initialChain_naturality {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c)
+    {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌) (F : (nerve I) _⦋n⦌) :
+    (nerve I).map (SimplexCategory.mkHom (prependOrderHom α.toOrderHom)).op (initialChain hc F) =
+      initialChain hc ((nerve I).map α.op F)
+```
+
+NerveCone.lean：
+
+```lean
+lemma initialChain_tail {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c)
+    {n : ℕ} (F : (nerve I) _⦋n⦌) : (nerve I).δ 0 (initialChain hc F) = F
+```
+
+NerveCone.lean：
+
+```lean
+lemma initialChain_vertex {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c)
+    {n : ℕ} (F : (nerve I) _⦋n⦌) :
+    (nerve I).map (SimplexCategory.const ⦋0⦌ ⦋n + 1⦌ 0).op (initialChain hc F) = nerveVertex c
+```
+
+NerveCone.lean：
+
+```lean
+lemma pointJoinStdSimplexIso_inl_vertex (n : ℕ) :
+    joinInl (Δ[0] : SSet.{u}) Δ[n] ≫ (pointJoinStdSimplexIso n).hom =
+      SSet.yonedaEquiv.symm (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 2)))
+```
+
+NerveCone.lean：
+
+```lean
+lemma pointJoinStdSimplexIso_inr (n : ℕ) :
+    joinInr (Δ[0] : SSet.{u}) Δ[n] ≫ (pointJoinStdSimplexIso n).hom = stdSimplex.δ 0
+```
+
+NerveCone.lean：
+
+```lean
+noncomputable def nerveInitialConeSimplex {I : Type u} [Category.{u} I] {c : I}
+    (hc : IsInitial c) {n : ℕ} (F : (nerve I) _⦋n⦌) : (sliceUnder (nervePoint c)) _⦋n⦌
+```
+
+NerveCone.lean：
+
+```lean
+noncomputable def nerveInitialSection {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c) :
+    nerve I ⟶ sliceUnder (nervePoint c)
+```
+
+NerveCone.lean：
+
+```lean
+lemma nerveInitialSection_projection {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c) :
+    nerveInitialSection hc ≫ sliceUnderProjection (nervePoint c) = 𝟙 (nerve I)
+```
+
+NerveCone.lean：
+
+```lean
+noncomputable def nerveInitialCone {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c) :
+    join (Δ[0] : SSet.{u}) (nerve I) ⟶ nerve I
+```
+
+NerveCone.lean：
+
+```lean
+lemma nerveInitialCone_inr {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c) :
+    joinInr (Δ[0] : SSet.{u}) (nerve I) ≫ nerveInitialCone hc = 𝟙 (nerve I)
+```
+
+NerveCone.lean：
+
+```lean
+lemma initialChain_self {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c) :
+    initialChain hc (nerveVertex c) = (nerve I).σ 0 (nerveVertex c)
+```
+
+NerveCone.lean：
+
+```lean
+lemma nerveInitialSection_at_point {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c) :
+    nervePoint c ≫ nerveInitialSection hc =
+      (SSet.yonedaEquiv (X
+```
+
+NerveCone.lean：
+
+```lean
+lemma nerveInitialCone_at_point {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c) :
+    joinMap (𝟙 (Δ[0] : SSet.{u})) (nervePoint c) ≫ nerveInitialCone hc =
+      SSet.const (nerveVertex c)
+```
+
+NerveCone.lean：
+
+```lean
+instance nervePoint_mono {I : Type u} [Category.{u} I] (c : I) : Mono (nervePoint c)
+```
+
+NerveCone.lean：
+
+```lean
+noncomputable def nervePointRetract {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c) :
+    RetractArrow (nervePoint c) (joinMap (𝟙 (Δ[0] : SSet.{u})) (nervePoint c))
+```
+
+NerveCone.lean：
+
+```lean
+lemma nervePoint_leftAnodyne {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c) :
+    leftAnodyneExtensions (nervePoint c)
+```
+
+InitialCofinality.lean：
+
+```lean
+def initialRestriction {I : Type u} [Category.{u} I] {X : SSet.{u}}
+    (F : nerve I ⟶ X) (c : I) : sliceOver F ⟶ sliceOver (nervePoint c ≫ F)
+```
+
+InitialCofinality.lean：
+
+```lean
+lemma initialCofinality {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c)
+    {X : SSet.{u}} [Quasicategory X] (F : nerve I ⟶ X) :
+    TrivialKanFibration (initialRestriction F c)
+```
+
+Core の対象ビルド・公理監査はともに終了コード 0。累計 356 件は標準三公理のみ
+（公理なしも含む）。A2h は固定した一般性で完了。A2i は未完了。
+次に通常の圏の nerve における具体的な極限の検算と最終監査へ進む。

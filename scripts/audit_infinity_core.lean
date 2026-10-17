@@ -663,3 +663,87 @@ import SerrePositivity.InfinityCategories.Core
 #print axioms SerrePositivity.InfinityCategories.IsPullbackSquare
 #check @SerrePositivity.InfinityCategories.isPullbackSquare_iff_trivialKanFibration
 #print axioms SerrePositivity.InfinityCategories.isPullbackSquare_iff_trivialKanFibration
+
+-- A2h: left anodyne な図式の制限、始対象の頂点包含、cofinality
+#check @SerrePositivity.InfinityCategories.sliceOverRestrict_hasLiftingProperty
+#print axioms SerrePositivity.InfinityCategories.sliceOverRestrict_hasLiftingProperty
+#check @SerrePositivity.InfinityCategories.sliceOverRestrict_subcomplex_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.sliceOverRestrict_subcomplex_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.sliceOverRestrict_comp
+#print axioms SerrePositivity.InfinityCategories.sliceOverRestrict_comp
+#check @SerrePositivity.InfinityCategories.sliceOverRestrict_isIso
+#print axioms SerrePositivity.InfinityCategories.sliceOverRestrict_isIso
+#check @SerrePositivity.InfinityCategories.sliceOverRestrict_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.sliceOverRestrict_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.coneBoundary_horn_preimage
+#print axioms SerrePositivity.InfinityCategories.coneBoundary_horn_preimage
+#check @SerrePositivity.InfinityCategories.joinPoint_boundary_leftAnodyne
+#print axioms SerrePositivity.InfinityCategories.joinPoint_boundary_leftAnodyne
+#check @SerrePositivity.InfinityCategories.sliceUnderPostcomp_boundary_lifting
+#print axioms SerrePositivity.InfinityCategories.sliceUnderPostcomp_boundary_lifting
+#check @SerrePositivity.InfinityCategories.sliceUnderPostcomp_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.sliceUnderPostcomp_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.joinPoint_mono_leftAnodyne
+#print axioms SerrePositivity.InfinityCategories.joinPoint_mono_leftAnodyne
+#check @SerrePositivity.InfinityCategories.prependOrderHom
+#print axioms SerrePositivity.InfinityCategories.prependOrderHom
+#check @SerrePositivity.InfinityCategories.prependOrderHom_zero
+#print axioms SerrePositivity.InfinityCategories.prependOrderHom_zero
+#check @SerrePositivity.InfinityCategories.prependOrderHom_succ
+#print axioms SerrePositivity.InfinityCategories.prependOrderHom_succ
+#check @SerrePositivity.InfinityCategories.Join.stdAugEquiv_augHom
+#print axioms SerrePositivity.InfinityCategories.Join.stdAugEquiv_augHom
+#check @SerrePositivity.InfinityCategories.concat_prependOrderHom
+#print axioms SerrePositivity.InfinityCategories.concat_prependOrderHom
+#check @SerrePositivity.InfinityCategories.simplexCastIso
+#print axioms SerrePositivity.InfinityCategories.simplexCastIso
+#check @SerrePositivity.InfinityCategories.simplexCastIso_hom_app_val
+#print axioms SerrePositivity.InfinityCategories.simplexCastIso_hom_app_val
+#check @SerrePositivity.InfinityCategories.pointJoinStdSimplexIso
+#print axioms SerrePositivity.InfinityCategories.pointJoinStdSimplexIso
+#check @SerrePositivity.InfinityCategories.pointJoinStdSimplexIso_hom_app_val
+#print axioms SerrePositivity.InfinityCategories.pointJoinStdSimplexIso_hom_app_val
+#check @SerrePositivity.InfinityCategories.joinStdSimplexIso_point_naturality
+#print axioms SerrePositivity.InfinityCategories.joinStdSimplexIso_point_naturality
+#check @SerrePositivity.InfinityCategories.nerveVertex
+#print axioms SerrePositivity.InfinityCategories.nerveVertex
+#check @SerrePositivity.InfinityCategories.nervePoint
+#print axioms SerrePositivity.InfinityCategories.nervePoint
+#check @SerrePositivity.InfinityCategories.initialChain
+#print axioms SerrePositivity.InfinityCategories.initialChain
+#check @SerrePositivity.InfinityCategories.initialChain_naturality
+#print axioms SerrePositivity.InfinityCategories.initialChain_naturality
+#check @SerrePositivity.InfinityCategories.initialChain_tail
+#print axioms SerrePositivity.InfinityCategories.initialChain_tail
+#check @SerrePositivity.InfinityCategories.initialChain_vertex
+#print axioms SerrePositivity.InfinityCategories.initialChain_vertex
+#check @SerrePositivity.InfinityCategories.pointJoinStdSimplexIso_inl_vertex
+#print axioms SerrePositivity.InfinityCategories.pointJoinStdSimplexIso_inl_vertex
+#check @SerrePositivity.InfinityCategories.pointJoinStdSimplexIso_inr
+#print axioms SerrePositivity.InfinityCategories.pointJoinStdSimplexIso_inr
+#check @SerrePositivity.InfinityCategories.nerveInitialConeSimplex
+#print axioms SerrePositivity.InfinityCategories.nerveInitialConeSimplex
+#check @SerrePositivity.InfinityCategories.nerveInitialSection
+#print axioms SerrePositivity.InfinityCategories.nerveInitialSection
+#check @SerrePositivity.InfinityCategories.nerveInitialSection_projection
+#print axioms SerrePositivity.InfinityCategories.nerveInitialSection_projection
+#check @SerrePositivity.InfinityCategories.nerveInitialCone
+#print axioms SerrePositivity.InfinityCategories.nerveInitialCone
+#check @SerrePositivity.InfinityCategories.nerveInitialCone_inr
+#print axioms SerrePositivity.InfinityCategories.nerveInitialCone_inr
+#check @SerrePositivity.InfinityCategories.initialChain_self
+#print axioms SerrePositivity.InfinityCategories.initialChain_self
+#check @SerrePositivity.InfinityCategories.nerveInitialSection_at_point
+#print axioms SerrePositivity.InfinityCategories.nerveInitialSection_at_point
+#check @SerrePositivity.InfinityCategories.nerveInitialCone_at_point
+#print axioms SerrePositivity.InfinityCategories.nerveInitialCone_at_point
+#check @SerrePositivity.InfinityCategories.nervePoint_mono
+#print axioms SerrePositivity.InfinityCategories.nervePoint_mono
+#check @SerrePositivity.InfinityCategories.nervePointRetract
+#print axioms SerrePositivity.InfinityCategories.nervePointRetract
+#check @SerrePositivity.InfinityCategories.nervePoint_leftAnodyne
+#print axioms SerrePositivity.InfinityCategories.nervePoint_leftAnodyne
+#check @SerrePositivity.InfinityCategories.initialRestriction
+#print axioms SerrePositivity.InfinityCategories.initialRestriction
+#check @SerrePositivity.InfinityCategories.initialCofinality
+#print axioms SerrePositivity.InfinityCategories.initialCofinality
