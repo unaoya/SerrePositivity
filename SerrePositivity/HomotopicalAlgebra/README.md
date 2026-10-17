@@ -3252,3 +3252,19 @@ source augmentationの可逆性、小さいstrictificationと小さい厳密なR
 anodyne局所化後の可逆性を証明する。任意の圏Cで使え、モデル構造は不要である。
 Hom値は補助宇宙max(u,v)にあり、小さいstrictificationと小さい厳密なRMapは残る。
 受入検証は`check_source_contraction`（85宣言・10モジュール）。
+
+
+### Hom sectionと全パラメータ作用の元のHomへの降下（§378）
+
+`OrdinaryBarSourceSection`は追加退化から元のHom augmentationの単体的sectionを与える。
+`OrdinaryBarSourceWordEmbedding`は全作用に自然な実source→ambient・small word Hom比較と
+augmentationの交換・局所化可逆性を証明する。
+`OrdinaryBarHomSections`は実ambient・small Hom augmentationのSplitEpiと全次数の全射性を与える。
+これらはHomのsectionであり、合成を保つ圏のsectionではない。
+`SplitLocalizedDescent`はsplitな局所化同値に沿って、全P族のKan対象への実写像を降下させ、
+元の写像および同じ基底族の持ち上げを比較する実区間ホモトピーを得る。
+`OrdinaryBarClosedHomDescent`と`OrdinaryBarClosedHomDescentLaws`は既存の実作用へ適用し、
+元の基底Homを引数とする小さい内部Homへのnativeな族、厳密なパラメータ置換則、
+小さい宇宙の実単位・合成比較ホモトピーを与える。
+高次の整合性と小さい厳密な基底関手は未完了である。
+受入検証は`check_hom_parameter_descent`（37宣言・6モジュール）。

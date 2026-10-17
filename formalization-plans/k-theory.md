@@ -21216,3 +21216,89 @@ strict section、大きいSSetのモデル構造は仮定しない。
 今回の局所化可逆性だけからnative Hom値のsmallnessやstrictな降下を推論してはならない。
 小さい厳密なRMapと、F2の弱同値不変性・Kan性・π₀とHo(C)の同定・選択独立性・
 単体的モデル圏との比較は残る。L/E/Sの完了記録を維持し、全体目標は継続する。
+
+
+## 378. Homの単体的sectionと元のHomへの全パラメータ作用の降下（2026-10-17）
+
+実装コミット`87fa0f1f`。現在のユーザー目標は「Fを完了、こまめにコミット、
+amend・rebase・reset禁止」に更新された。Fの元の受入条件は縮小しない。
+前回の§377は実augmentationの局所化可逆性までの進捗であり、今回はその実射に沿った
+Homごとのsectionと、元の基底Homを入力とする小さい内部Homへの実作用を構成した。
+
+### 378.1 augmentationの実sectionと全次数の全射性
+
+`OrdinaryBarSourceSection`は§377の追加退化のsectionをrevで戻し、
+元のsource augmentationのsectionを実SSet射として構成する。
+全単体作用素に自然な一つの射であり、次数ごとのばらばらな選択ではない。
+元のaugmentationとの合成が恒等となる等式から、全次数の全射性を得る。
+
+`OrdinaryBarSourceWordEmbedding`は元のsource HomのULiftから実ambient word Homへの射を
+sourceFunctorで構成し、全単体写像での自然性と元のaugmentationとの交換を証明する。
+実transferとの合成によるsmall頂点Homへの射も構成する。
+両射は元のaugmentationを保ち、その局所化像は可逆である。
+
+`OrdinaryBarHomSections`はこの比較を通じて、実ambient Homと実small頂点Homのaugmentationの
+`SplitEpi`データと全次数の全射性を得る。Cに必要なのは圏だけで、対象u・Hom vは独立である。
+ここでのsectionは個々のHomに対するSSet射であり、合成を保つ圏のsectionではない。
+choice射影にstrict sectionを仮定したり、証明したりするものではない。
+
+### 378.2 splitな局所化同値に沿う実写像と実区間の降下
+
+`Simplicial/SplitLocalizedDescent`は、anodyne局所化後に可逆なa:A→Bとそのsection sについて、
+任意のKan対象Kへの実写像h:A→Kをsの後のhによりB上へ移す。
+そのaによる制限が元のhと局所化後に等しいことと、両者の間の実`SSet.Homotopy`を証明する。
+
+任意のパラメータTからの二つの持ち上げf,g:T→Aがaの後で等しければ、
+fの後のhとgの後のhの間にも実ホモトピーを構成できる。
+任意のPについてP⊗aのsplitデータと局所化可逆性を導き、全P族に同じ定理を適用する。
+値域宇宙のModelCategory、源・標的のKan性、aの単射性は追加しない。KだけがKanである。
+
+### 378.3 元の基底Homに対する実作用とnativeな比較
+
+`OrdinaryBarClosedHomDescent`は、任意のP:SSet.{max(u,v)}と元のX,Yについて
+P⊗baseHom(X,Y)から、実際の小さい内部HomのULiftへの実SSet射mappingを構成する。
+元の全対角Homのaugmentationによる制限と、§370〜§371の元の実作用との間に
+実区間ホモトピーを与える。内部HomのKan性は既存一般論から導く。
+
+任意の小さいT:SSet.{v}、j:UT→P、f:UT→baseHom(X,Y)に対しては、
+**元のSSet.{v}内の**射nativeFamily:T→Map(small(X),small(Y))を構成する。
+パラメータの任意の置換に関する自然性は厳密な等式である。
+同じ基底族に写る二つの持ち上げの作用を比較する実ホモトピーも、
+UniverseLiftの局所化Hom比較を通じて元の小さい宇宙へ戻す。
+元の全対角Hom上の任意のnativeな族と、降下後の制限を比較する実ホモトピーを得た。
+
+`OrdinaryBarClosedHomDescentLaws`はこの結果と元の厳密な作用の単位・合成則を使い、
+任意の小さいTに対して、降下後の恒等との比較および合成との比較を
+元の小さい内部Homにおける実区間ホモトピーとして証明する。
+標準の`MonoidalClosed.id`・`MonoidalClosed.comp`と比較している。
+
+### 378.4 受入検証
+
+すべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`（3217 jobs、警告なし）。
+- `check_hom_parameter_descent`：独立した対象・Hom宇宙での実source・small HomのSplitEpi、
+  全次数の全射性、実source→small word比較の局所化可逆性、一般の全P実区間降下、
+  実作用の制限ホモトピー、小さい内部Homでの任意のnativeパラメータ族の合成比較。
+  新規6モジュール全37宣言の標準公理監査。
+- `check_source_contraction`：85宣言・10モジュールの回帰検証。
+- `check_weak_equivalences_accessible`：21宣言・5モジュールの再検証。
+- `audit_homotopical_foundations`：全13162宣言・947モジュール。
+  propext・Classical.choice・Quot.soundのみで、sorry・引用axiomなし。
+- ソースの行長・証明用マーカー、stage差分の空白検査。
+
+### 378.5 次の受入単位とFの残作業
+
+今回得たのはHomごとの実降下写像と、任意のnativeな族の単位・合成比較ホモトピーである。
+**比較ホモトピーを高次まで整合的に選ぶ構成と、厳密なSSet.{v}値の基底関手は未完了である。**
+元の基底射が等しい作用を単に商で同一視するだけでは、比較の弱同値性は証明されない。
+今回そのような商を最終RMapとして採用していない。
+
+次の受入単位では、既存の全相対境界を保持する選択空間・持ち上げ一般論と、
+元の実augmentation・実作用を接続し、既に指定された単位・合成比較を保つ高次の整合性を構成する。
+その上で小ささを保つ厳密化・自然な弱比較を与える。独立した区間の存在を
+そのまま整合的な選択やstrictificationの完成とは扱わない。
+
+Fの最終受入には、任意の源モデル圏からの小さい厳密なRMap、両変数の弱同値不変性、Kan性、
+π₀と通常のHo(C)の射の自然な比較、resolution・置換の自然な弱比較による選択独立性、
+単体的モデル圏の実Map(QX,RY)との比較への統合が残る。Fの完了目標を継続する。
