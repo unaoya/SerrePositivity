@@ -8406,6 +8406,23 @@ E5 の指数を q とすると、ker β は g^(q+1)、coker β は g^(q+2) で�
 KL-T の実 almost 比較、原典の α/β 完備化の実標準射図式、BS 8.13 の環版、定 rank と一般 rank の
 実組立ては未完了。Prop 2.4.7 の引用を維持する。
 
+**D-I・実錐の導来完備性（2026-10-17）。** 共通層
+`DerivedCompletion/FinitePresentationComplete.lean` で導来完備環上の任意の有限表示加群の
+導来完備性を、有限自由表示と既存の余核閉性から証明した。
+`Prop247Cone.lean` は元の有限かつ代数として有限表示な S にこれを適用し、
+任意に指定した perfectoid な終域への実射の錐が導来 p 完備であることを証明する。
+特に元の `perfectoidizationModuleMap` の実錐の導来 p 完備性を供給した。
+bounded torsion・エタール性・André・almost 比較はこの証明に不要。
+対象3464ジョブ、専用監査は共通補題・始域完備性・任意の実 perfectoid 終域の錐・
+零写像 R→R の実適用例について assert_no_sorry 成功、全て標準3公理のみ。
+選択済み Perfectoidization を型に含む二宣言は、型そのものから既存の B-I
+`BhattScholze.Inputs.exists_perfectoidization_of_integral` に依存するため、
+sorry 非依存とは主張しない。依存グラフを走査し、直接 sorry を持つ宣言がこの既存 B-I
+だけであることを専用監査で確認した。新しい引用・sorry・axiom は追加していない。
+`scripts/audit_axioms.lean` も終了コード0。ルート公開はまだ変更しておらず、
+この実行は現在の公開済み主定理の依存を確認するもので、新ファイルの合流監査とは区別する。
+原典の完備底変換の標準 α/β 図式と実剰余比較を次に供給する。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
