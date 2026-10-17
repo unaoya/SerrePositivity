@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.CLMST.AllModuleAlmostTor
 public import SerrePositivity.CLMST.ConditionalCohomologyFromPowerTorsion
+public import SerrePositivity.CLMST.CompletedTowerAllModuleTor
 
 /-!
 # KL の全加群 Tor と条件付き合流の集約

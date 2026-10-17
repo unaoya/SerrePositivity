@@ -9161,6 +9161,42 @@ Cor 4.0.4, p.28。公開三定理の `assert_no_sorry` と標準三公理だけ�
 Cor 8.12 を宣言・使用・形の前提とせず、Cor 4.0.4 の既存引用は置換していない。
 Prop247・BhattScholze の担当ファイルも編集していない。
 
+#### KL-T：CompletedTower への実代入と全パラメータ系への条件付き接続（2026-10-17）
+
+`CLMST/CompletedTowerAllModuleTor.lean` に、指定された R=A∞ をそのまま使う入口を追加。
+係数環 C は任意の指定された integral perfectoid A 代数かつ CompletedTower 代数とし、
+別の perfectoid 化を選ばない。このため公開二定理は既存の存在引用 B-I にも依存しない。
+
+公開 `completedTower_allModule_tor_annihilated` の前提は正則局所 A、
+`t : Fin e → A`、素数 p、`hperf : IsIntegralPerfectoid (CompletedTower A t p) p`、
+`hC : IsIntegralPerfectoid C p`、`g : A` と、指定された (a)(b) を
+`R := CompletedTower A t p`、`I := perfectoidIdeal R p hperf (algebraMap A R g)`、
+`ψ := algebraMap R C` とした二入力。結論は正確に
+`∀ (N : ModuleCat.{u} A) (j : ℕ), 0 < j → ∀ s ∈ I,
+ torCoefficientScalarEndomorphism C N j (algebraMap R C s) = 0`。
+二入力とも既存の指定型を保持し、有限生成性・完備性を任意 N に追加しない。
+
+公開 `completedTower_cohomology_vanishing_of_powerTorsion_and_extension` は、
+さらに元の有限 A 代数 D の Noether 局所性、A→D→C の scalar tower、
+`ht : Ideal.span (Set.range t) = maximalIdeal A`、`hdim : ringKrullDim A = e`、
+D 上の hsop、全段の元の φ と A 上の整合式 hφ、`htp : t j₀ = (p : A)`、
+従来の hI を受け取る。hres と ha は追加入力にせず、前者を
+`isKoszulResolution_all_powers` と `isWeaklyRegular_of_span_eq_maximalIdeal`、
+後者を htp と natCast の保存から供給する。結論は前節の両消滅で、S は実 CompletedTower、
+ψ は元の algebraMap、全有限段 n・各段の任意パラメータ系 y・全 i>0 を保つ。
+完全な引数と結論の型はこの二つの公開宣言に保存した。
+
+原典は CLMST v4 Thm 4.0.3(a), pp.27–28、Cor 4.0.4, p.28。
+証明は前節の二入力からの帰着と条件付き合流の実適用であり、新引用はない。
+集約 `KLAllModule` と専用 `scripts/audit_clmst_all_module_tor.lean` を更新。
+対象ビルド・公開五定理の assert_no_sorry と標準三公理限定監査・ルートビルドが成功
+（ルート6581 jobs、pipefail 付きの終了コード0）。ルートへの追加は前工程の一行のまま。
+
+レーン B の `perfectoidIdeal_isAlmostZero_extension` は今回確認時点で未公開のため、
+(b) は同じ型の引数として残す。(a) の実供給、(b) の受領・仮定解消、既存引用の置換は未完了。
+条件付き成果を Thm 4.0.3(a) や KL-Q の無条件な完成とは数えない。
+Cor 8.12 の宣言・使用・形の前提、他レーンの担当ファイルの変更は行っていない。
+
 #### Prop 2.4.7 専任系列：原典から D-I/U/Q への型付き受渡し（2026-10-17）
 
 本節は統合表 D-I・D-U・D-Q の実入力を固定する。未採用の別計画は根拠にしない。
