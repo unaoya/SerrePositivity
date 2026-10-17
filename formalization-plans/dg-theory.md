@@ -12848,3 +12848,148 @@ CriterionPerf*・CriterionDerived*は読み取り専用、一般U12e・U15e分�
 lake build SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorPathsChecks SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorModelsChecks SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorChecks SerrePositivity.DifferentialGraded.Morita.CoherenceUnitChecks SerrePositivity.DifferentialGraded.Morita.AdjunctionDerivedChecks SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionCanonicalChecks SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.DifferentialGraded.Checks.U12eGeneralInventory SerrePositivity.Spectra.StageTwo
 lake env lean SerrePositivity/DifferentialGraded/Morita/CoherenceAssociatorPathsChecks.lean
 ```
+
+### 17.271 U12eの進路判断材料の再照合（2026-10-17、調査記録・受入判定ではない）
+
+今回の依頼を優先し、Leanコードは変更せず、新しい証明単位に着手していない。
+検証済みの作用結合比較の区切りは§17.270・ca63ec9a。
+作業木にあるCoherenceAssociatorNaturality・CoherenceAssociatorRightNaturalityは未コミットの途中成果で、
+今回の受入根拠・コミット対象には含めない。既存の他担当の変更も保持する。
+過去の調査§17.248・255・263のうち、U16aの右随伴が未実装という記述は§17.265で更新された。
+以下は現時点の証拠の整理であり、新しい受入・担当移管・一般版再開を決定しない。
+§0・249に記録済みの局所版受入／一般版中断と、今回の推奨を区別する。
+
+#### 1. §15.2のU12e：完了と残り
+
+名前空間は特記しないものについてBimoduleTensor。完了は各宣言の型・仮定の範囲での意味。
+
+| 項目 | 状態 | 公開名・適用範囲 |
+| --- | --- | --- |
+| 積dg圏の加群とbimodule主導来圏の比較 | 完了 | rightModuleBimoduleDerivedEquivalence |
+| 積圏上semifreeから片側相対K-flat性への別証明 | 完了 | BimoduleSemifreeResolution.rightRelativeKFlat、exists_rightRelativeKFlat_bimodule_resolution。B–CではlocalHomKFlat A Cを明示 |
+| 指定解像度とK-flat部分圏の局所化比較 | 完了 | bimoduleCanonicalSemifreeResolution、rightKFlatDerivedEquivalence |
+| 固定K-flat因子による合成と準同型保存 | 完了 | derivedComposeWith、derivedComposeWithFunctor、composeMap_second_kFlat_quasiIso |
+| 主導来両因子の合成・射自然性 | 完了 | derivedBimoduleComposeFunctor、derivedBimoduleComposeKFlatIso_naturality、derivedBimoduleComposeKFlatValueIso_naturality。B–C–E合成の条件はlocalHomKFlat A E |
+| 任意指定解像度の計算・自己・比較整合性 | 完了 | derivedBimoduleComposeResolutionComputation、_fac、_self、_naturality |
+| 左右単位・結合子 | 完了 | derivedBimoduleLeftUnitIso、derivedBimoduleRightUnitIso、derivedBimoduleAssociatorIso、_resolution_fac |
+| 三角・五角 | 完了 | derivedBimoduleTriangle、derivedBimodulePentagon。各出力Hom条件を保持 |
+| 元のHomに条件を課さないdg圏分解の存在 | 完了 | KFlatDGResolution.canonical、nonempty。Small.{u} Dと独立宇宙を保持 |
+| 指定分解上の合成と全coherence | 完了 | ResolutionBimodule.composeFunctor、leftUnitIso、rightUnitIso、associator、triangle、pentagon |
+| 共通sourceと分解間の比較同値 | 完了 | comparisonLeft_quasiEquivalence、comparisonRight_quasiEquivalence、moduleDerivedEquivalence、changeModuleDerivedEquivalence、ResolutionBimodule.changeEquivalence |
+| 分解変更の合成・対角比較の存在 | 完了 | ResolutionBimodule.changeComposeIso、changeDiagonalIso。単位・結合保存までは含まない |
+| 個別制限の整合性 | 完了 | derivedMiddleRestrictionIsoと_functor_id／_functor_comp、四位置のderivedBimoduleAssociator_*Restriction、leftUnitRestrictionDerivedComparison_eq、rightUnitRestrictionDerivedComparison_eq、leftUnitOuterLeftRestrictionComparison_eq |
+| R1：全導来外側右制限の右単位保存 | 残り | 通常squareから全導来右単位への接続 |
+| R2：同時制限の左右単位保存 | 残り | source表示・制限順序・対角射の正規化と貼合せ |
+| R3：同時制限の結合子保存 | 残り | 四位置の個別squareを実際の同時比較へ接続 |
+| R4：外側・同時制限の恒等・合成・交換 | 残り | 単独中間比較の恒等・合成は既に完了。二重輸送の組合せが残る |
+| R5：分解変更の単位・結合保存 | 残り | changeComposeIso・changeDiagonalIsoと指定単位子・結合子の図式 |
+| R6：分解変更の自己・三選択推移coherence | 残り | 逆同値のunit/counitを含む比較を合成・対角比較に接続 |
+| R7：一般版統合受入 | 残り | R1〜R6の独立入口、宇宙・射のクラス、全主要監査 |
+
+局所版は既存§17.249の範囲で受入済み。一般版全体は未受入である。
+U16の作用coherenceの残件を、この表のU12eの三角・五角の未証明と取り違えない。
+
+#### 2. 局所K-flat条件下のU16a〜dへの依存
+
+U12a/b/d/e-local/fは基盤として足り、一般版R1〜R7を先行する必要はない。
+ここでの局所条件はTensor.localHomKFlat。商のDGQuotient.localKFlatという片側条件とは区別する。
+
+| 単位 | 局所版で書けるか・実装済みの基盤 | 必要なU12e残件 | 独立の残作業・限界 |
+| --- | --- | --- | --- |
+| U16a | 書ける。kernelDerivedTensorFunctor、kernelDerivedTensorComputation、kernelIdentityIso、kernelCompositionIso、_naturality。任意kernelのkernelDerivedHom、kernelDerivedAdjunction、kernelDerivedUnit／Counit、左右三角恒等式は§17.265で証明済み | 不要 | 合成は始域DのlocalHomKFlat。作用・右随伴は局所Hom条件不要。右単位作用coherenceは完成、公開結合二経路はK-flat代表上で一致。任意主kernelへの移送と左単位作用coherenceが残る。U16a全受入は未実施 |
+| U16b | 書ける。dgFunctorDerivedEquivalence、dgDerivedExtensionRestrictionAdjunction、graph作用比較・Perf・shift／三角性の接続。担当範囲受入済み | 不要 | 本体の準同値⇒加群導来同値には局所Hom条件も不要。積dg圏の準同値を使う補助比較の交差Hom条件は保持 |
+| U16c | 書ける。moduleCompact_iff_perfect、列のperfect性とPerf保存の同値、全Hom比較・解像度選択独立性・全shiftの実作用比較、二変数thick帰納。CriterionDerivedにはPerf同値から全導来同値への拡張もある | 不要 | 三条件の最終Perf入口CriterionPerf.leanは調査時点で未コミット。確定成果として受入扱いしない。三条件を結ぶ最終検証、明示したcompact生成の供給、別担当の逆同値と実際の右随伴の比較・unit/counit可逆性の統合が必要。局所K-flat性から三条件自体は導けない |
+| U16d | 明示条件下で書ける。実際のPerf制限・恒等／合成比較・両kernel射自然性、モデル条件付き係数変更正方形。U16d.25でkernel変数の係数変更の主局所化、.26で自然な増大まで完成 | 固定圏の契約では不要。全分解変更にまで自然な主張へ拡張する場合だけR1〜R6が必要 | 作用coherenceのPerfへの移送、係数変更主関手への比較接続、U12f評価との成分同定、kernel合成との係数変更図式が残る。中心作用は保留 |
+
+局所版では書けないのは、局所Hom条件のない全dg圏に対する分解変更まで含めた同じ主張。
+また任意非平坦なA→A'について、単なるunderived係数変更が全準同型を保存するという主張でもない。
+U12fのderivedTensorBaseChangeはφのflat性を要求しないが、指定モデルごとのhPN・hP'と
+ModuleCatの導来圏の宇宙を保持する。U16dの一般比較はhAug・hP'、十分条件版は出力hE・hPN・hP'を明示する。
+一般U12eを完成させてもこれらの係数変更条件が自動で消えるわけではない。
+
+M9にはallHomKFlat_of_flat_zeroとlocalPerfectQuotientEquivalence_of_flat_zeroが既存。
+元の全Homの非零次数でのIsZeroと次数零のModule.Flatを具体的に供給すればよい。
+その供給、無限積とtensorの比較、商／EndのHomへの追加適用は別問題として残す。
+局所U15e/U17bの既存実装を複製する必要はない。
+
+#### 3. 一般版の残工数
+
+一般経路の固定点d4e14c9fまでのdg計画更新16コミットから15区間を再計算した。
+中央値10.6分、最短6.5分、最長29.4分。ビルド待ちを含む経過時間で、純証明時間ではない。
+その後のU16の作用比較・一般右随伴はR1〜R6を解消していないため、従前の見積もりを維持する。
+
+| 残件 | 対象ビルド・監査を終える小単位数 | 見積もりの難所 |
+| --- | --- | --- |
+| R1 | 1〜2 | 固定対角の比較と全導来右単位 |
+| R2 | 3〜5 | 同時制限のsource正規化と単位経路 |
+| R3 | 2〜4 | 四位置の結合squareの貼合せ |
+| R4 | 3〜5 | 二重輸送の恒等・合成・交換 |
+| R5 | 3〜6 | inverseCompositionComparisonと逆同値のunit/counit |
+| R6 | 3〜5 | 自己・三選択推移と合成比較 |
+| R7 | 1〜2 | 受入入口と全主要監査 |
+| 合計 | 16〜29 | U16・M9具体化・U15e分解版は含まない |
+
+中央値の単純外挿は2.8〜5.1時間。R2/R5/R6の貼合せ方針に未検証部分があるため、
+計画上は5〜12実作業時間程度を見込む。上限保証ではない。再開時はR1・R2の最初の区切りで再見積もりする。
+
+#### 4. 局所版で閉じる案と再開可能な中断記録
+
+| 区分 | 範囲・保存方法 |
+| --- | --- |
+| 受け入れる範囲 | 固定dg圏と必要な出力Hom条件下の主導来合成・両因子自然性・任意解像度計算・左右単位・結合子・三角／五角。既存§17.249と同じ |
+| 範囲外 | 局所Hom条件なしの分解変更の完全coherence、R1〜R7、U15e分解版 |
+| 成果の保存 | dg-theory-u12e-general-inventory.md、固定点d4e14c9f、棚卸し09fcd575。519モジュールを再利用可能444・残coherenceの足場75に分類。名前・型・証明・位置を保持 |
+| 状態名 | U12e-local：限定範囲で受入済み。U12e-general：部分実装済み・中断・未受入。一般U12e全体の完了とは記録しない |
+| 最初の再開単位 | R1：Tensor/OuterUnitRestriction.rightBimoduleUnitIso_rightRestriction → Derived/AssociatorRightRestrictionPresentation.derivedBimoduleComposeRightRestrictionIso_model_calculation（固定対角）→ Derived/BimoduleCompositionRightUnit.derivedBimoduleRightUnitIso |
+| 続く順序 | R2 → R3/R4 → R5 → R6 → R7。Resolution/GeneralとChecks.U12eGeneralInventoryを維持し、入口の存在だけでは受入としない |
+
+#### 5. U16を並行移管する場合の境界・API
+
+下記は案であり、今回新しいチャットを作成・送信・移管していない。
+既にCriterionPerf*とCriterionDerived*の担当が分かれているため、Morita/全体の一括移管は避ける。
+
+| 担当案 | 編集範囲 | 境界 |
+| --- | --- | --- |
+| このチャットが一般U12eを再開する場合 | Derived/・Resolution/のR1〜R6用新規ファイル、専用Checks、dg-theory.md §17 | Morita/を編集しない。既存合成の公開名・型は凍結 |
+| U16a・最終統合の新担当 | 所有を明示して移したMorita/Adjunction*・Coherence*、統合用Criterion.lean／U16.lean、dg-theory-morita.md | Kernel*は原則読み取り専用。途中の自然性2ファイルも明示的に引き渡す。既存prefixと重ならないだけの新ディレクトリでは、現在の未完証明の所有問題は解決しない |
+| 既存Perf判定担当 | Morita/CriterionPerf*、dg-theory-morita-criterion.md | 他の担当は読み取り専用 |
+| 既存全導来拡張・U16b/d担当 | Morita/CriterionDerived*・QuasiEquivalence*・Perfect*・ScalarExtension*・Center*、dg-theory-morita-qe.md | 他の担当は読み取り専用 |
+| その他 | Quotient/DerivedComparison*・Verdier/・Endomorphism/、U12f ScalarExtension* | 従来所有を維持。共有ルート・共有モデル圏も対象外 |
+| §17 | このチャット | 各担当は専用記録を編集し、本文への同時書込みを避ける |
+
+| 受渡API群 | 固定する公開入口・契約 |
+| --- | --- |
+| K-flat・解像度 | complexKFlat、moduleRelativeKFlat、localHomKFlat、moduleSemifree_relativeKFlat、moduleHomotopicallyProjective_relativeKFlat |
+| U12d/e-local | moduleDerivedTensorBifunctor、計算比較の_self／_trans、Derived/BimoduleLocal、derivedBimoduleComposeFunctor、任意解像度計算、左右単位・結合・三角・五角、exists_rightKFlat_derived_iso |
+| kernel作用 | Kernel、kernelCompose／Map、kernelDerivedTensorFunctor、kernelDerivedTensorComputation、kernelDerivedTensorOnBimoduleIso、kernelIdentityIso、kernelCompositionIso、_naturality、_model、_kFlat |
+| 実際の随伴 | kernelDerivedHomEquiv、kernelDerivedHom、kernelDerivedAdjunction、kernelDerivedUnit、kernelDerivedCounit、kernelDerived_left_triangle／_right_triangle |
+| 作用coherenceの停止点 | kernelCompositionIso_rightUnit、kernelAssociatorIso、kernelAssociatorLeftPath／RightPath、kernelCompositionIso_associator_model。最後は指定K-flat代表に限定 |
+| 三角・生成・Perf | mainKernelActionCommShift／IsTriangulated、moduleCompactGenerators、moduleLocalizing_all、moduleCompact_iff_perfect、kernelColumnsPerfect_iff_preservesPerfect、CriterionPerfConditions、CriterionPerfEquivalenceWitness、criterionDerivedKernelEquivalenceOfPerfWitness |
+| 係数変更・局所商 | derivedExtension、derivedTensorBaseChange、scalarKernelDerivedBaseChangeIso／_ofKFlatModels、allHomKFlat_of_flat_zero、localPerfectQuotientEquivalence_of_flat_zero |
+
+Kernel A D EはDerivedBimoduleCategory A E D（右E・左D）。A : Type u、[CommRing A]、
+独立対象宇宙とSmall.{u}を維持する。正確な型の正本はdg-theory-morita.md冒頭とLeanソース。
+公開名・型の変更が必要なら§17へ旧新の型・仮定・宇宙・使用先・移行手順を記録する。
+
+#### 今回の検証・推奨・停止
+
+固定版Lean／Mathlibを再照合し、下記6対象の合同ビルド成功（4139 jobs、警告・エラー0）。
+U12eLocalの21宣言とAdjunctionDerivedChecksの27宣言を直接再監査し、すべて
+propext・Classical.choice・Quot.sound以内。再監査なので既存累計へ加算しない。
+import走査はBimoduleLocal 423、AdjunctionDerived 630、CoherenceAssociatorPaths 460、
+CriterionDerived 648、DerivedComparisonPerfect 568のprojectモジュールを確認し、Resolution/依存はすべて0。
+一般経路のR1〜R7を経由せず局所版を進められることを、実際の依存からも確認した。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.DifferentialGraded.Checks.U12eGeneralInventory SerrePositivity.DifferentialGraded.Morita.AdjunctionDerivedChecks SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorPathsChecks SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence SerrePositivity.Spectra.StageTwo
+lake env lean SerrePositivity/DifferentialGraded/Checks/U12eLocal.lean
+lake env lean SerrePositivity/DifferentialGraded/Morita/AdjunctionDerivedChecks.lean
+```
+
+**推奨は(ii)。** 既存の局所版受入を維持して一般版を再開可能な中断として残し、
+指示後はU16の未完作用coherenceとMorita判定の統合を優先する。
+R1〜R7を並行で完成させてもU16自身の残証明を代替せず、M9には局所商入口が既にある。
+一般版へさらに5〜12時間を投じる優先性は低い。Perf判定・全導来拡張の既存並行分担は維持できる。
+M9の具体的平坦性・無限積比較、U16dのモデル条件付き係数変更は別途必要である。
+共有モデル圏・Quillen・転送・SM7への新しいAPI要求はない。
+今回は調査文書だけを更新する。方針はユーザーが決定し、指示があるまで新しい単位に着手しない。
