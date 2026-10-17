@@ -1119,3 +1119,69 @@ N3 の H⁰ 比較と既存の complexHomotopyComparison、Mathlib のホモト�
 
 N7a–N7e は完了。N7f の cofiber の双対は任意項目として未実装。
 新規公開 37 宣言の正確な型と全前提は計画の実施記録（分割後は archive/dg-nerve-log.md）に記録する。
+
+
+## γ1：局所 Kan な単体的圏の coherent nerve（着手前の照合）
+
+目標は任意の `C : Type u`、`[Category.{v} C]`、`[SimplicialCategory C]` に対する
+`(∀ X Y : C, SSet.KanComplex (SimplicialCategory.sHom X Y)) →
+SSet.Quasicategory (CategoryTheory.SimplicialNerve C)`。
+局所 Kan 性以外に充填の選択・整合性・モデル構造を仮定しない。
+原典は HTT 1.1.5.10 と [Kerodon 2.4.5.1](https://kerodon.net/tag/00LH)。
+配置は `InfinityCategories/Coherent/`。以下は数学的設計であり、γ1 の証明完了を表さない。
+
+### Path[n] と順序の向き
+
+Mathlib `AlgebraicTopology/SimplicialNerve.lean` の `SimplicialThickening J` は、
+対象が線形順序 J、a から b への path が端点を含む区間 [a,b] の部分集合。
+Hom 単体集合はこの path の圏の通常 nerve、合成は和集合、単位は singleton。
+Mathlib の path 間の射は **包含**。したがって m 単体は増大列
+`I₀ ⊆ ⋯ ⊆ Iₘ` である。`SimplicialNerve C` の n 単体は
+`EnrichedFunctor SSet (SimplicialThickening (ULift (Fin (n+1)))) C`。
+ULift は宇宙の調整であり、対象や path の数学を変更しない。
+
+[Kerodon 2.4.3.1・2.4.3.5](https://kerodon.net/tag/00KM) は path を逆包含で順序付ける。
+よって同じ記号をそのまま同一視しない。Mathlib の 2 単体の Hom 内の辺は
+直接辺 f₀₂ から合成 f₁₂∘f₀₁ へ向かい、Kerodon 2.4.3.10 は逆向きである。
+以下の証明は Mathlib の包含規約を直接使い、Kerodon の空洞立方体の上下を交換する。
+これは `SimplicialNerve` の再定義や設計変更を必要としない。
+
+### 内部ホーンを一つの Hom の延長問題へ戻す
+
+[Kerodon §2.4.4](https://kerodon.net/tag/00L0) は Path[S] を単体の Path[n] の余極限で構成し、
+Path[-] と coherent nerve の随伴を得る。γ1 では任意の S に対するこの左随伴を先に作らず、
+ホーンを構成する面の豊穣関手を貼り合わせる局所的な普遍性を証明する。
+
+a<b の path を内部点の部分集合へ送ると、その Hom は (b−a−1) 次元立方体の nerve。
+Mathlib では座標 xⱼ=1 が j を含むことを表し、合成は切断点の座標 xⱼ=1 の面に入る。
+内部ホーン Λ[n,i]（0<i<n）から既知となるデータは、(a,b)≠(0,n) の Hom 全体と、
+(0,n) の Hom 立方体の次の部分単体集合である：
+
+- すべての内部点 j に対する xⱼ=1 の面（合成から既知）。
+- j≠i に対する xⱼ=0 の面（ホーンに含まれる面から既知）。
+
+増大列 I₀⊆⋯⊆Iₘ では「I₀ が内部点を含む、または Iₘ が i 以外の内部点を欠く」
+がこの部分単体集合への所属条件になる。欠ける面は xᵢ=0 だけ。
+これは [Kerodon 2.4.5.8](https://kerodon.net/tag/00LR) の包含規約での翻訳である。
+ホーンが与える元の面上で一致することと、合成面との一致を証明してから貼る。
+
+### Kan 性による延長と豊穣関手の復元
+
+内部点 i の座標を Δ[1] として分離し、残りの立方体を Q、その境界を ∂Q とする。
+既知部分は `(∂Q × Δ[1]) ∪ (Q × {1})`。
+包含は `∂Q ↪ Q` と `{1} ↪ Δ[1]` の pushout-product なので anodyne。
+Mathlib `AnodyneExtensions/PushoutProduct.lean` の
+`anodyneExtensions_unionProd_ι` と `anodyneExtensions.horn_ι` を利用できる。
+従って Kan な `sHom X₀ Xₙ` への写像は全立方体へ延長する。
+[Kerodon 2.4.5.12](https://kerodon.net/tag/00LV) の空洞立方体の充填に対応する。
+n=2 では Q は一点、既知部分は合成を表す {1} で、同じ議論が適用される。
+
+延長は合成面を固定するため、全 Hom の写像は単位・合成を保つ豊穣関手になる。
+端点以外の Hom は既知のまま。これを `SimplicialNerve C` の n 単体とし、
+`horn.hom_ext` により元のホーンへの制限を確認する。
+[Kerodon 2.4.5.9–2.4.5.10](https://kerodon.net/tag/00LT) の方法を用いる。
+Mathlib の `Quasicategory` が求める n+2 次元の全内部ホーンをこの方法で充填する。
+
+実装順：path の順序と区間分割、空洞立方体の anodyne 性、ホーンの面からの Hom データの回収と
+貼合せ、延長からの豊穣関手の復元、`Quasicategory`、公開宣言の公理監査。
+各段の実施記録はコミットメッセージへ置き、計画本文には現在地と残工程を短く残す。
