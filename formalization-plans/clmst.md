@@ -8944,6 +8944,25 @@ a 正則な任意加群 M の実完備導来底変換が零次数に集中し、
 Noether 性、環上の a 正則性、通常の平坦性を追加していない。原典の最終適用に必要な実 tensor の
 係数作用の正規化と、始域の古典完備化への標準比較を次に接続する。
 
+**D-I・Prop 2.4.7 の実始域比較の完成（2026-10-17）。**
+`Prop247SourceComparison.lean` は原典の有限かつ有限表示な S と perfectoid な拡大先 B に対し、
+通常 tensor B⊗R S の導来完備性を有限表示から供給する。完全平坦性と元の bounded p∞ torsion
+仮定から、その古典 p 完備性、実完備導来底変換から通常 tensor への同型、さらにその古典完備化への
+同型を構成した。追加の環上の p 正則性・Noether 性・通常平坦性を仮定しない。
+公開入口は `prop247_sourceCompletedBaseChangeIso`・`prop247_sourceCompletedAdicIso` であり、
+それぞれの `_unit` が元の導来底変換 augmentation、完備化の標準単位、通常 tensor の
+古典完備化標準写像との可換式を与える。全ての B 係数作用を保持する。
+共通層 `AlgebraScalarExtensionModule.lean` で係数拡大の内部の制限スカラーを通常 tensor へ
+正規化し、純 tensor の元を保つことを証明した。`AdicCompleteLinearEquiv.lean` は古典完備性の
+線形同値による移送を既存の AdicCompletion 関手・標準単位から証明する。
+対象3483ジョブ、ルート公開を含む全体6373ジョブ、専用監査の公開9宣言は成功。
+全9宣言は assert_no_sorry 成功・標準3公理のみ。主定理の公理監査も終了コード0。
+この完成範囲は今回の有限かつ有限表示な実始域であり、原典 Lemma 2.3.5 全体の新定理ではない。
+次は既存 BS の `perfectoidizationCompletedBaseChangeMap_exists_algEquiv` と
+`integralPerfectoid_completedBaseChange_pure` を使い、終域全体の実同型と元の標準射の
+四角形を構成して `prop247_isogeny_of_standard_square` へ接続する。Cor 8.12 は保留のまま。
+KL-T の実 almost 比較と有限被覆・定 rank の組立ては依然として実入力の供給を要する。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。

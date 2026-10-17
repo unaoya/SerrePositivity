@@ -479,6 +479,7 @@ public import SerrePositivity.CLMST.Prop247BaseChange
 public import SerrePositivity.CLMST.Prop247Conditional
 public import SerrePositivity.CLMST.Prop247ConeComparison
 public import SerrePositivity.CLMST.Prop247CompletedDescent
+public import SerrePositivity.CLMST.Prop247SourceComparison
 public import SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedModule
 public import SerrePositivity.HomologicalAlgebra.DerivedRestriction
 public import SerrePositivity.HomologicalAlgebra.DerivedBaseChangeTensor
