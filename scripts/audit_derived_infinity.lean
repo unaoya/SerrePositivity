@@ -44,6 +44,12 @@ import Lean.Util.CollectAxioms
 
 #print axioms SerrePositivity.InfinityCategories.semifreeDerivedEquivalence
 
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityCategory
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityCategory_obj
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityCategoryVertexEquiv
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityCategoryEdgeEquiv
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityCategoryTriangleEquiv
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -52,7 +58,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.SemifreeKProjective,
     `SerrePositivity.InfinityCategories.Derived.SemifreeResolution,
     `SerrePositivity.InfinityCategories.Derived.SemifreeSubcategory,
-    `SerrePositivity.InfinityCategories.Derived.DerivedComparison]
+    `SerrePositivity.InfinityCategories.Derived.DerivedComparison,
+    `SerrePositivity.InfinityCategories.Derived.InfinityCategory]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

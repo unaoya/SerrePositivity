@@ -230,3 +230,27 @@ E.inverse ⋙ E.functor ≅ 𝟭 _
 
 D2a〜D2e・D2g は無条件の数学的成果として完了（宣言上は可換環と導来圏の選択のみ）。
 未完了：任意工程 D2f の `CommShift`。D1・D3・D4 は別途指示の範囲であり未着手。
+
+### D1（2026-10-17、N1 完了後）
+
+`dg-nerve.md` §5 の「N1d・N1 完了」を確認して着手した。N2〜N6 は未完了の記録。
+公開宣言（namespace `SerrePositivity.InfinityCategories`、共通前提 `(S : Type u) [CommRing S]`）：
+```lean
+derivedInfinityCategory (S : Type u) [CommRing S] : SSet.{u + 1}
+derivedInfinityCategory_obj (S : Type u) [CommRing S] (n : ℕ) :
+  (derivedInfinityCategory S) _⦋n⦌ = DGNerve.Simplex S (Semifree S) n
+derivedInfinityCategoryVertexEquiv (S : Type u) [CommRing S] :
+  (derivedInfinityCategory S) _⦋0⦌ ≃ Semifree S
+derivedInfinityCategoryEdgeEquiv (S : Type u) [CommRing S] :
+  (derivedInfinityCategory S) _⦋1⦌ ≃ Σ obj : Fin 2 → Semifree S,
+    zeroCycles (homObject S (Semifree S) (obj 0) (obj 1))
+derivedInfinityCategoryTriangleEquiv (S : Type u) [CommRing S] :
+  (derivedInfinityCategory S) _⦋2⦌ ≃ DGNerve.TriangleData S (Semifree S)
+```
+
+定義は `dgNerve S (Semifree S)`。辺・三角形の特徴づけを N1 の公開同値から具体化した。
+`set -o pipefail` の下で `lake build SerrePositivity.InfinityCategories.Derived` と
+`lake env lean scripts/audit_derived_infinity.lean` が終了コード 0。
+公理監査は公開27宣言と、生成補題を含む6モジュール47宣言で標準3公理のみ。
+D1 の定義・低次特徴づけは完了。quasicategory instance は N2 完了記録待ちで未実装。
+D2f・D2h は未完了、D2i は任意・未着手。D3 は別途指示待ち。
