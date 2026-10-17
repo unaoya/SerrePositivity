@@ -5605,6 +5605,39 @@ N0 の既存5則を含む公理監査は計576件で、全て propext・Classica
 両端固定模型との比較・quasi-equivalence の判定・テンソル積との両立・導来 ∞ 圏そのものの定義は
 元から本計画の範囲外であり、達成条件には追加していない。
 
+### N7a：slice の終対象条件と dg fiber の紙の検証（2026-10-18、N7 は継続中）
+
+正本 §7 を読み、Core の Terminal・Slice・Limit・Pullback と mappingCone の cochain API を確認した。
+Core と既存 dg 層は編集していない。InfinityCategories/README.md の N7.1 に次を記録した。
+
+* 境界 `∂Δ[m] → sliceOver p`（m≥1）の最後の頂点が固定した錐 c であるとき、
+  可変頂点全体 V と K の非退化支持の組から、未知は V、VB、VC、VD、VBD、VCD の六成分。
+* 錐の三辺を p,q,t、二つの次数 −1 成分を u,v として `δu=gp−t`, `δv=hq−t`。
+  未知成分 a,b,c′,d,e,f は、それぞれ次数 1−m、−m、−m、−m、−m−1、−m−1。
+  方程式は `δa=r₀`, `δb=pa+rB`, `δc′=qa+rC`, `δd=ta+rD`,
+  `δe=gb−d−ua+rBD`, `δf=hc′−d−va+rCD`。各 r は既知の境界成分だけから決まる。
+  特に V 自身の式 `δa=r₀` は既知データへの制約であり、a を無条件に零にできない。
+* F を `Hom(X₀,B)⊕Hom(X₀,C) → Hom(X₀,D)` の fiber とし、
+  `δF(b,c′,z)=(δb,δc′,gb−hc′−δz)` という座標を選ぶ。
+  これは mappingCone の [−1] シフトの D 座標を負にした規約。
+  `w=u−v`, `Φa=(pa,qa,wa)` は Hom(X₀,A) から F への複体の射となる。
+  六式は `δa=r₀`, `δF U−Φa=R`（U=(b,c′,e−f)、R=(rB,rC,rCD−rBD)）に帰着する。
+* 主残差恒等式から必要となる整合性は `δr₀=0`, `δR=−Φr₀`,
+  `rD=hrC+vr₀+δrCD`。これにより比較写像の錐の右辺は閉元となる。
+  A が厳密 dg fiber なら Φ は全次数で厳密同型なので、
+  `a=−Φ⁻¹R`, `b=c′=e=f=0`, `d=−va+rCD` が六式の明示解。
+  `δa=r₀` も整合性から従い、V 自身の制約を飛ばしていない。
+
+この工程は紙の検証のみで、新規 Lean 公開宣言はない。
+N7b〜N7e の直接の充填・join の成分回収・全次数の符号・境界の一致は未証明。
+N7a を ∞ 極限定理の完成とは数えない。設計 §3 の変更はない。
+
+検証：`set -e; set -o pipefail` の下で
+`lake build SerrePositivity.InfinityCategories.Core.Pullback SerrePositivity.InfinityCategories.Core.Terminal SerrePositivity.InfinityCategories.DGNerve`
+が終了コード 0（3589 jobs）。続く `lake env lean scripts/audit_dg_nerve.lean` は終了コード 0、
+既存576件の公理監査を再照合し標準三公理の範囲内。
+新規の公理・引用・穴は追加していない。次は N7b の零対象の直接の境界充填へ進む。
+
 ## 6. 次のマイルストーン D（本計画の範囲外）
 
 - Semifree(S) を `DGFullSubcategory`（`moduleSemifree` または一点 dg 圏上の複体版）として置き、
