@@ -1,0 +1,5 @@
+import SerrePositivity.CLMST.Prop247AicRankCoefficients
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.CLMST.prop247_aic_rankCoefficient_annihilators
+#print axioms SerrePositivity.CLMST.prop247_aic_rankCoefficient_annihilators
