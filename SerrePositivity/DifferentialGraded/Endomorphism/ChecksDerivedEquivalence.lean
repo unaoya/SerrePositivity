@@ -1,0 +1,13 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedEquivalence
+
+/-! # compact生成による全主導来圏同値の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+
+#print axioms endomorphismDerivedCounit_isIso_all
+#print axioms endomorphismDerivedEquivalence
+#print axioms endomorphismDerivedEquivalence_functor
+#print axioms endomorphismDerivedEquivalence_inverse
+#print axioms endomorphismDerivedEquivalence_unit
+#print axioms endomorphismDerivedEquivalence_counit
