@@ -265,3 +265,57 @@ import SerrePositivity.InfinityCategories.Core
 #print axioms SerrePositivity.InfinityCategories.sliceUnderEval_curry
 #print axioms SerrePositivity.InfinityCategories.sliceUnderEval_yoneda
 #print axioms SerrePositivity.InfinityCategories.sliceUnderEquiv
+
+-- A2c: ホーン・境界の生成セル（一般の閉包定理は未完了）
+#check @SerrePositivity.InfinityCategories.rightHornInclusions
+#print axioms SerrePositivity.InfinityCategories.rightHornInclusions
+#check @SerrePositivity.InfinityCategories.rightHornInclusions.intro
+#print axioms SerrePositivity.InfinityCategories.rightHornInclusions.intro
+#check @SerrePositivity.InfinityCategories.leftHornInclusions
+#print axioms SerrePositivity.InfinityCategories.leftHornInclusions
+#check @SerrePositivity.InfinityCategories.leftHornInclusions.intro
+#print axioms SerrePositivity.InfinityCategories.leftHornInclusions.intro
+#check @SerrePositivity.InfinityCategories.rightAnodyneExtensions
+#print axioms SerrePositivity.InfinityCategories.rightAnodyneExtensions
+#check @SerrePositivity.InfinityCategories.leftAnodyneExtensions
+#print axioms SerrePositivity.InfinityCategories.leftAnodyneExtensions
+#check @SerrePositivity.InfinityCategories.rightAnodyneExtensions_horn
+#print axioms SerrePositivity.InfinityCategories.rightAnodyneExtensions_horn
+#check @SerrePositivity.InfinityCategories.leftAnodyneExtensions_horn
+#print axioms SerrePositivity.InfinityCategories.leftAnodyneExtensions_horn
+#check @SerrePositivity.InfinityCategories.Join.augMem
+#print axioms SerrePositivity.InfinityCategories.Join.augMem
+#check @SerrePositivity.InfinityCategories.Join.augMem_iff_exists
+#print axioms SerrePositivity.InfinityCategories.Join.augMem_iff_exists
+#check @SerrePositivity.InfinityCategories.Join.mem_joinSubcomplexLeft
+#print axioms SerrePositivity.InfinityCategories.Join.mem_joinSubcomplexLeft
+#check @SerrePositivity.InfinityCategories.Join.mem_joinSubcomplexRight
+#print axioms SerrePositivity.InfinityCategories.Join.mem_joinSubcomplexRight
+#check @SerrePositivity.InfinityCategories.Join.mem_joinUnion
+#print axioms SerrePositivity.InfinityCategories.Join.mem_joinUnion
+#check @SerrePositivity.InfinityCategories.Join.augMem_boundary_iff
+#print axioms SerrePositivity.InfinityCategories.Join.augMem_boundary_iff
+#check @SerrePositivity.InfinityCategories.Join.augMem_horn_iff
+#print axioms SerrePositivity.InfinityCategories.Join.augMem_horn_iff
+#check @SerrePositivity.InfinityCategories.Join.mem_range_concat_left
+#print axioms SerrePositivity.InfinityCategories.Join.mem_range_concat_left
+#check @SerrePositivity.InfinityCategories.Join.mem_range_concat_right
+#print axioms SerrePositivity.InfinityCategories.Join.mem_range_concat_right
+#check @SerrePositivity.InfinityCategories.Join.missing_concat_iff
+#print axioms SerrePositivity.InfinityCategories.Join.missing_concat_iff
+#check @SerrePositivity.InfinityCategories.Join.missing_cast_iff
+#print axioms SerrePositivity.InfinityCategories.Join.missing_cast_iff
+#check @SerrePositivity.InfinityCategories.Join.mem_horn_joinStdSimplexIso_iff
+#print axioms SerrePositivity.InfinityCategories.Join.mem_horn_joinStdSimplexIso_iff
+#check @SerrePositivity.InfinityCategories.Join.horn_boundary_preimage
+#print axioms SerrePositivity.InfinityCategories.Join.horn_boundary_preimage
+#check @SerrePositivity.InfinityCategories.Join.boundary_horn_preimage
+#print axioms SerrePositivity.InfinityCategories.Join.boundary_horn_preimage
+#check @SerrePositivity.InfinityCategories.subcomplexPreimageIso
+#print axioms SerrePositivity.InfinityCategories.subcomplexPreimageIso
+#check @SerrePositivity.InfinityCategories.innerAnodyne_preimage_iff
+#print axioms SerrePositivity.InfinityCategories.innerAnodyne_preimage_iff
+#check @SerrePositivity.InfinityCategories.joinUnion_rightHorn_boundary_innerAnodyne
+#print axioms SerrePositivity.InfinityCategories.joinUnion_rightHorn_boundary_innerAnodyne
+#check @SerrePositivity.InfinityCategories.joinUnion_boundary_leftHorn_innerAnodyne
+#print axioms SerrePositivity.InfinityCategories.joinUnion_boundary_leftHorn_innerAnodyne

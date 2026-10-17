@@ -103,3 +103,38 @@ A2b の slice・coslice・射影・頂点上の特殊化と curry を実装し�
 右単体に付いた錐を `(k,id)` で評価し、自然性・固定条件・両逆関係を証明している。
 A2b は完了。A2c 以降は未完了。
 累計 120 明示的公開宣言と生成された整合性補題 2 件、計 122 件を公理監査する。
+
+## A2c：pushout-join の正確な文言（2026-10-17、実装前の照合）
+
+原典は [HTT Lemma 2.1.2.3](https://www.math.ias.edu/~lurie/papers/HTT.pdf)
+（印刷頁 62）と [Kerodon Proposition 4.3.6.4](https://kerodon.net/tag/018J)。
+両者の向きは一致する。A₀ ≤ A、B₀ ≤ B に対し、
+`U := joinUnion A₀ B₀ = (A₀ ⋆ B) ∪ (A ⋆ B₀)` と置く。
+包含 `U.ι : U ⟶ A ⋆ B` は、次のいずれかの仮定で inner anodyne である。
+
+1. **左因子の包含** `A₀.ι` が **right anodyne**（右因子の包含は任意の単射）。
+2. **右因子の包含** `B₀.ι` が **left anodyne**（左因子の包含は任意の単射）。
+
+right anodyne は `Λ[p,i] ⟶ Δ[p]`、`p≥1`・`0<i≤p` で生成される
+弱飽和クラス。left anodyne は `p≥1`・`0≤i<p` のホーンで生成される弱飽和クラス。
+Lean ではそれぞれのホーンの rlp の llp として定義し、追加のモデル構造は使わない。
+
+基本セルは次の二つで、ともに標準単体の join の同型を通じた内ホーンになる。
+
+- 左が `Λ[p,i]`（`0<i≤p`）、右が `∂Δ[q]`（`q≥0`）なら、
+  和の部分複体は `Λ[p+q+1,i]`。欠けた頂点 i は全頂点集合の内点。
+- 左が `∂Δ[p]`（`p≥0`）、右が `Λ[q,j]`（`0≤j<q`）なら、
+  和の部分複体は `Λ[p+q+1,p+1+j]`。欠けた頂点 p+1+j は全頂点集合の内点。
+
+証明はこれらのホーン・境界セルの計算と、境界包含による単射のセル分解、
+ホーン生成クラスの lifting property による弱飽和閉包を用いる方針。
+Mathlib の `rlp_monomorphisms` は単射の境界セル分解により証明されており、
+このセル分解を利用できる。slice・coslice の直接構成した普遍性で持ち上げ問題を移す。
+この節は証明する文言の固定であり、A2c の Lean 証明の完成を意味しない。
+A2h の文言の固定と実装はまだ行っていない。
+
+A2c の生成セル二つを `JoinAnodyne.lean` に実装済み。
+`joinUnion_rightHorn_boundary_innerAnodyne` と
+`joinUnion_boundary_leftHorn_innerAnodyne` は各和の包含の inner anodyne 性を与える。
+一般の単射・anodyne 射への閉包は未完了であり、A2c 全体は未完了。
+対象ビルドと累計 148 件の公理監査は成功。正確な型・前提は計画 §6 に記録した。

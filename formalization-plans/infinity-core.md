@@ -769,3 +769,207 @@ A2c〜A2i は未完了。A2b の完成から持ち上げ性・極限の理論の
 `lake env lean scripts/audit_infinity_core.lean` は終了コード 0。
 累計 122 公開宣言（明示的 120、生成補題 2）の監査出力を照合し、標準三公理のみ。
 追加公理・引用・`sorry` はない。
+
+### A2c 生成セル（2026-10-17、A2c 全体は未完了）
+
+README に HTT Lemma 2.1.2.3・Kerodon Proposition 4.3.6.4 の正確な向きを実装前に記録した。
+左の right anodyne、または右の left anodyne が仮定である。追加承認は不要というユーザー指示に従った。
+`Core/JoinAnodyne.lean` にホーン生成クラスと二つの基本セルを実装した。
+宇宙 `u` は任意、`open CategoryTheory SSet MorphismProperty` と `open scoped Simplicial` の下で、
+公開宣言の正確な型は以下の通り。各コードブロックの namespace を明示する。
+
+namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+inductive rightHornInclusions : MorphismProperty SSet.{u} where
+  | intro {n : ℕ} (i : Fin (n + 2)) (h0 : 0 < i) : rightHornInclusions Λ[n + 1, i].ι
+```
+
+namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+inductive leftHornInclusions : MorphismProperty SSet.{u} where
+  | intro {n : ℕ} (i : Fin (n + 2)) (hn : i < Fin.last (n + 1)) :
+      leftHornInclusions Λ[n + 1, i].ι
+```
+
+namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+def rightAnodyneExtensions : MorphismProperty SSet.{u}
+```
+
+namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+def leftAnodyneExtensions : MorphismProperty SSet.{u}
+```
+
+namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma rightAnodyneExtensions_horn {n : ℕ} (i : Fin (n + 2)) (h0 : 0 < i) :
+    rightAnodyneExtensions.{u} (horn (n + 1) i).ι
+```
+
+namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma leftAnodyneExtensions_horn {n : ℕ} (i : Fin (n + 2)) (hn : i < Fin.last (n + 1)) :
+    leftAnodyneExtensions.{u} (horn (n + 1) i).ι
+```
+
+namespace `SerrePositivity.InfinityCategories.Join`：
+
+```lean
+def augMem {K : SSet.{u}} (K₀ : K.Subcomplex) : (r : ℕ) → augObj K r → Prop
+```
+
+namespace `SerrePositivity.InfinityCategories.Join`：
+
+```lean
+lemma augMem_iff_exists {K : SSet.{u}} (K₀ : K.Subcomplex) (r : ℕ) (a : augObj K r) :
+    augMem K₀ r a ↔ ∃ b : augObj (K₀ : SSet.{u}) r, augHom K₀.ι r b = a
+```
+
+namespace `SerrePositivity.InfinityCategories.Join`：
+
+```lean
+lemma mem_joinSubcomplexLeft {A B : SSet.{u}} (A₀ : A.Subcomplex)
+    {n : ℕ} (s : Simplex A B n) :
+    s ∈ (joinSubcomplexLeft A₀ B).obj (Opposite.op ⦋n⦌) ↔
+      augMem A₀ s.1.val s.2.1
+```
+
+namespace `SerrePositivity.InfinityCategories.Join`：
+
+```lean
+lemma mem_joinSubcomplexRight {A B : SSet.{u}} (B₀ : B.Subcomplex)
+    {n : ℕ} (s : Simplex A B n) :
+    s ∈ (joinSubcomplexRight A B₀).obj (Opposite.op ⦋n⦌) ↔
+      augMem B₀ (n + 1 - s.1.val) s.2.2
+```
+
+namespace `SerrePositivity.InfinityCategories.Join`：
+
+```lean
+lemma mem_joinUnion {A B : SSet.{u}} (A₀ : A.Subcomplex) (B₀ : B.Subcomplex)
+    {n : ℕ} (s : Simplex A B n) :
+    s ∈ (joinUnion A₀ B₀).obj (Opposite.op ⦋n⦌) ↔
+      augMem A₀ s.1.val s.2.1 ∨ augMem B₀ (n + 1 - s.1.val) s.2.2
+```
+
+namespace `SerrePositivity.InfinityCategories.Join`：
+
+```lean
+lemma augMem_boundary_iff (p r : ℕ) (a : augObj (Δ[p] : SSet.{u}) r) :
+    augMem (boundary p) r a ↔ ∃ v : Fin (p + 1), v ∉ Set.range (stdAugEquiv p r a)
+```
+
+namespace `SerrePositivity.InfinityCategories.Join`：
+
+```lean
+lemma augMem_horn_iff (p r : ℕ) (i : Fin (p + 2))
+    (a : augObj (Δ[p + 1] : SSet.{u}) r) :
+    augMem (horn (p + 1) i) r a ↔
+      ∃ v : Fin (p + 2), v ≠ i ∧ v ∉ Set.range (stdAugEquiv (p + 1) r a)
+```
+
+namespace `SerrePositivity.InfinityCategories.Join`：
+
+```lean
+lemma mem_range_concat_left {p q r : ℕ} (ℓ : ℕ) (hℓ : ℓ ≤ r)
+    (f : Fin ℓ →o Fin p) (g : Fin (r - ℓ) →o Fin q) (v : Fin p) :
+    v.castAdd q ∈ Set.range (concat ℓ hℓ f g) ↔ v ∈ Set.range f
+```
+
+namespace `SerrePositivity.InfinityCategories.Join`：
+
+```lean
+lemma mem_range_concat_right {p q r : ℕ} (ℓ : ℕ) (hℓ : ℓ ≤ r)
+    (f : Fin ℓ →o Fin p) (g : Fin (r - ℓ) →o Fin q) (v : Fin q) :
+    v.natAdd p ∈ Set.range (concat ℓ hℓ f g) ↔ v ∈ Set.range g
+```
+
+namespace `SerrePositivity.InfinityCategories.Join`：
+
+```lean
+lemma missing_concat_iff {p q r : ℕ} (ℓ : ℕ) (hℓ : ℓ ≤ r)
+    (f : Fin ℓ →o Fin p) (g : Fin (r - ℓ) →o Fin q) (w : Fin (p + q)) :
+    (∃ v : Fin (p + q), v ≠ w ∧ v ∉ Set.range (concat ℓ hℓ f g)) ↔
+      (∃ v : Fin p, v.castAdd q ≠ w ∧ v ∉ Set.range f) ∨
+      (∃ v : Fin q, v.natAdd p ≠ w ∧ v ∉ Set.range g)
+```
+
+namespace `SerrePositivity.InfinityCategories.Join`：
+
+```lean
+lemma missing_cast_iff {p q r : ℕ} (h : p = q) (f : Fin r → Fin p) (w : Fin p) :
+    (∃ v : Fin q, v ≠ Fin.cast h w ∧ v ∉ Set.range (fun a ↦ Fin.cast h (f a))) ↔
+      ∃ v : Fin p, v ≠ w ∧ v ∉ Set.range f
+```
+
+namespace `SerrePositivity.InfinityCategories.Join`：
+
+```lean
+lemma mem_horn_joinStdSimplexIso_iff (p q n : ℕ)
+    (s : Simplex (Δ[p] : SSet.{u}) Δ[q] n) (w : Fin ((p + 1) + (q + 1))) :
+    (joinStdSimplexIso p q).hom.app (Opposite.op ⦋n⦌) s ∈
+      (horn (p + q + 1) (Fin.cast (by omega) w)).obj (Opposite.op ⦋n⦌) ↔
+        ∃ v, v ≠ w ∧ v ∉ Set.range (stdEncode p q n s)
+```
+
+namespace `SerrePositivity.InfinityCategories.Join`：
+
+```lean
+lemma horn_boundary_preimage (p q : ℕ) (i : Fin (p + 2)) :
+    (horn ((p + 1) + q + 1) (Fin.cast (by omega) (i.castAdd (q + 1)))).preimage
+      (joinStdSimplexIso.{u} (p + 1) q).hom = joinUnion (horn (p + 1) i) (boundary q)
+```
+
+namespace `SerrePositivity.InfinityCategories.Join`：
+
+```lean
+lemma boundary_horn_preimage (p q : ℕ) (j : Fin (q + 2)) :
+    (horn (p + (q + 1) + 1) (Fin.cast (by omega) (j.natAdd (p + 1)))).preimage
+      (joinStdSimplexIso.{u} p (q + 1)).hom = joinUnion (boundary p) (horn (q + 1) j)
+```
+
+namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+def subcomplexPreimageIso {X Y : SSet.{u}} (B : Y.Subcomplex) (e : X ≅ Y) :
+    (B.preimage e.hom : SSet.{u}) ≅ (B : SSet.{u})
+```
+
+namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma innerAnodyne_preimage_iff {X Y : SSet.{u}} (B : Y.Subcomplex) (e : X ≅ Y) :
+    innerAnodyneExtensions (B.preimage e.hom).ι ↔ innerAnodyneExtensions B.ι
+```
+
+namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma joinUnion_rightHorn_boundary_innerAnodyne (p q : ℕ) (i : Fin (p + 2)) (h0 : 0 < i) :
+    innerAnodyneExtensions (joinUnion (horn (p + 1) i) (boundary q)).ι
+```
+
+namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma joinUnion_boundary_leftHorn_innerAnodyne (p q : ℕ) (j : Fin (q + 2))
+    (hn : j < Fin.last (q + 1)) :
+    innerAnodyneExtensions (joinUnion (boundary p) (horn (q + 1) j)).ι
+```
+
+`rightAnodyneExtensions`・`leftAnodyneExtensions` はそれぞれ生成族の `rlp.llp`。
+両者に IsMultiplicative・RespectsIso・IsStableUnderCobaseChange・IsStableUnderRetracts・
+IsStableUnderTransfiniteComposition・IsStableUnderCoproducts のインスタンスを導出した。
+生成セルの前提は左が正次元の右ホーン（0<i）、右が任意次元の境界、またはその左右双対。
+標準単体の join の同型の下で和の部分複体が内ホーンに一致することから証明した。
+Core の対象ビルド、公理監査とも終了コード 0。新規 24 明示的宣言とホーン生成族の構成子 2 件、
+累計 148 件を監査し、標準三公理以外への依存はない（公理なしの宣言もある）。
+一般の単射と right/left anodyne 射への閉包、A2d〜A2i は未完了。
+従ってこの保存単位を A2c 全体の完成とは数えない。引き続き持ち上げ問題の移送を実装する。
