@@ -777,6 +777,16 @@
   任意環の比較射として構成し、非flat係数変更の比較を無条件の同型とは主張していない。
 - 既存APIの名前・型は変更していない。Perf制限・導来tensorとの最終接続と受入照合を残す。
 
+## 共有indexの競合記録（2026-10-17、U14a/b.39）
+
+- U14a/b.39の検証済み4ファイルを明示してstageした後、`git commit --only` が
+  `index.lock: File exists` で失敗した。ロックは削除していない。
+- 再試行時には対象差分がなく、`git show ba07c9b6` により別チャットのコミットが
+  `ActualScalarEvaluation.lean`・そのChecks・`Compatibility.lean`の自分の2 import行・
+  専用記録のU14a/b.39を取り込んでいたことを確認した。
+- 内容は監査済み差分と一致する。amend/rebase/resetは行わず、この記録を独立コミットで残す。
+  他チャットのファイルや履歴は編集していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
