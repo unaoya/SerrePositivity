@@ -144,6 +144,18 @@
 - 次はtensor側をEnd(E)上の射影解像度で導来化し、解像度計算・Hom側との導来随伴を
   接続する。その後でthick生成によるPerf比較の二つの証拠を証明する。
 
+## U14a.11：再構成tensorの導来化と任意解像度計算（2026-10-17）
+
+- `DerivedTensor.lean`：End(E)上の任意の右射影解像度族からK(End(E))を経由して
+  主D(D)へ送る関手を構成。標準semifree解像度族を使う主導来tensorも定義。
+  Eの成分のA-flat性やEのホモトピー射影性は、この構成には不要。
+- 族の選択独立な自然同型と自己一致・推移整合性を証明。
+  二つの任意射影解像度の実際のtensor計算も比較し、任意解像度での計算同型を公開。
+  tensor後の擬同型保存は、射影的右加群間の擬同型に限定して証明した。
+  一般の右加群間の擬同型をunderived tensorが保つとはしていない。
+- `lake build SerrePositivity.DifferentialGraded.Endomorphism.ChecksDerivedTensor` 成功。
+  14主要宣言の公理は標準3公理のみ。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
