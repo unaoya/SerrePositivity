@@ -1,0 +1,9 @@
+import SerrePositivity.CLMST.Prop247RankTargetComparison
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.CLMST.prop247_rankProductUnit
+assert_no_sorry SerrePositivity.CLMST.prop247_rankPerfectoidComparison_eq_canonical
+assert_no_sorry SerrePositivity.CLMST.prop247_rankPerfectoidComparison_ker_of_canonical_excision
+#print axioms SerrePositivity.CLMST.prop247_rankProductUnit
+#print axioms SerrePositivity.CLMST.prop247_rankPerfectoidComparison_eq_canonical
+#print axioms SerrePositivity.CLMST.prop247_rankPerfectoidComparison_ker_of_canonical_excision
