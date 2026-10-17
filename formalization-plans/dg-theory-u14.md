@@ -662,6 +662,16 @@
   対象ビルド成功、公理は標準3公理のみ。
 - 既存の公開APIの名前・型は変更していない。DG-GEN/DG-MORは採用していない。
 
+## U14c.4：導来Homの余積比較をcompact Homで検証（2026-10-17）
+
+- `CoproductHomComparison.lean`：実際の導来Hom・tensorの加法性を既存の随伴と
+  Kからの局所化比較から得た。余積比較と各射影の可換式を証明した。
+- compactな始域Pから余積比較へのHom写像は単射であり、tensor像L(P)がcompactなら全射である。
+  単射性には既存の有限supportと射影の補題、全射性には実際の導来随伴を使用した。
+- 無限余積のcompact性を仮定・結論していない。compact⇒Perfはこの単位では使用していない。
+- 新規6主要宣言の `ChecksCoproductHomComparison` 対象ビルド成功、公理は標準3公理のみ。
+  既存の公開APIの名前・型は変更していない。全導来圏同値はまだ結論していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
