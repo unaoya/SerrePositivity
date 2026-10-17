@@ -11421,3 +11421,72 @@ U12e全体は未受入。U16・U15e分解版には着手していない。共有
 U15e分解版では別担当のQuotient/DerivedComparison*・Verdier/を読んで再利用する。
 共有ルート・共有監査スクリプト・並行担当Tensor/Associator*・Perfect/・Endomorphism/・
 ScalarExtension*・他チャットの記録は編集していない。
+
+
+### 17.243 U12e82：二つの中間位置の通常結合子squareと制限後モデルの増大（2026-10-17）
+
+**第一中間圏の通常square。** Tensor/AssociatorMiddleRestrictionElements.lean・
+AssociatorMiddleRestrictionPaths.leanは、P : B–C、Q : C–E、R : E–Tと
+任意のF : D → Cについて、次の二経路が同じ三重斉次生成元を与えることを証明する。
+
+- Pの左制限とQの右制限を合成した後、Dについての結合子、QとRの外側右制限比較、
+  PとQ⊗Rの中間制限比較を続ける経路。
+- PとQの中間制限比較をRとの合成に作用させ、元の結合子を続ける経路。
+
+Tensor/MiddleRestrictionValueHom.leanは既存chainMapOfComponentFunctionsを再利用し、
+中間比較の固定成分関数とchain mapによる表示を追加する。
+middleRestrictionValueHom_eqにより、元のmiddleRestrictionComparisonValueと同じ射である。
+Tensor/AssociatorMiddleRestrictionComponents.lean・AssociatorMiddleRestrictionValues.leanは、
+固定成分計算と既存の三重tensorの外延性から値のchain mapの一致を得る。
+Tensor/AssociatorMiddleRestriction.leanのassociatorIso_middleRestrictionは、
+この一致を実際の通常bimodule圏の可換squareへ束ねる。
+
+**第二中間圏の通常square。** Tensor/AssociatorSecondMiddleRestrictionElements.lean・
+AssociatorSecondMiddleRestrictionPaths.leanは、任意のF : D → Eについて、次の二経路を計算する。
+
+- PとQの外側左制限比較をRの右制限との合成に作用させ、P⊗QとRの中間制限比較、
+  元の結合子を続ける経路。
+- Dについての結合子を先に適用し、QとRの中間制限比較をPとの合成に作用させる経路。
+
+Tensor/AssociatorSecondMiddleRestrictionComponents.lean・AssociatorSecondMiddleRestrictionValues.leanは
+同じ固定成分表示を再利用し、Tensor/AssociatorSecondMiddleRestriction.leanの
+associatorIso_secondMiddleRestrictionが通常bimodule圏の可換squareを与える。
+どちらの通常squareも、係数は任意の可換環、六つの宇宙を独立に保持する。
+smallnessはB・C・D・Eのみで、終端Tには要求しない。
+局所Hom K-flat性やFのHom準同型性・本質的全射性は仮定しない。
+比較は射の一致であり、一般のFで比較の同型性を主張しない。
+
+**第一中間圏の制限後モデル。** Derived/AssociatorMiddleRestrictionResolved.leanの
+middleRestrictionComposeAugmentationは、q : S → F*QをRと合成し、
+QとRの通常の外側右制限比較を続けて、S⊗R → F*(Q⊗R)を作る。
+middleRestrictionComposeAugmentation_quasiIsoは、qが準同型でRが右相対K-flatなら、
+この合成増大も準同型であることを証明する。F*QのK-flat性、QのK-flat性、局所Hom条件は不要。
+SとRが右相対K-flatの場合には、既存rightKFlatComposeを使って合成後のモデルも同じ部分圏で扱える。
+associatorIso_middleRestriction_resolvedは、任意のqを使う既存middleRestrictionResolvedMapについて、
+合成増大を使う側と、P・Qの中間比較をRへ作用させる側が結合子と可換であることを証明する。
+この射の一致にはqの準同型性やS・Q・RのK-flat性は不要。
+既存の結合子自然性と上の第一中間squareをprivateの圏論的貼合せ補題で接続した。
+制限後のK-flat性を無条件に仮定する構成にはしていない。
+
+**検証。** Checks.DGAssociatorMiddleRestrictionは、標数2・次数−2・3・−1の三因子について、
+二つの中間位置の経路計算を確認し、合成増大の準同型性もRの右相対K-flat条件だけで検査した。
+次数検査は、元の比較射との一致を証明済みの固定成分関数を使う。
+§17.242までの全導来外側左右比較・単位・三圏同時制限・解像度・中間比較・導来随伴・五角形・
+StageEight・StageSeven・Spectra.StageTwoとの統合ビルド成功（3586 jobs、警告なし）。
+一般API29宣言とChecksの3宣言を追加した。32公開宣言の直接公理監査は重複・欠落なく標準3公理以内。
+新規監査累計4776宣言。今回の13 Leanファイルにsorry・admit・新規axiom・資源上限変更は0件。
+旧公開APIの名前・型は変更していない。採用済み引用0件。
+Lean v4.35.0-rc4とMathlib manifest/HEAD e6bbacd0e1b7307ff6e17da09cd2455f60804fa6を再確認した。
+文書検査は21 Markdown・326 exposition参照、失敗0件。
+
+**次工程と未受入条件。** 今回の二つの中間squareは通常版であり、
+実際の全導来中間比較と全導来結合子のsquareはまだ完了していない。
+次は制限後の指定右相対K-flatモデルを使い、第一位置では上の合成増大と既存K-flat合成閉性、
+導来中間比較の解像度計算を接続する。指定モデルの比較・独立性を通して全導来三因子へ運び、
+第二中間位置も扱う。左右単位経路と三圏同時制限の正規化、changeEquivalenceの単位・結合保存と
+自己・推移比較、外側左右・中間の恒等・合成則も残る。
+これらの後に、dg圏の分解の一般的な存在・比較を含め§15.2全体を受入監査する。
+U12e全体は未受入。U16・U15e分解版には着手していない。共有一般論への新しいAPI要求はない。
+U15e分解版では別担当のQuotient/DerivedComparison*・Verdier/を読んで再利用する。
+共有ルート・共有監査スクリプト・並行担当Tensor/Associator*・Perfect/・Endomorphism/・
+ScalarExtension*・他チャットの記録は編集していない。
