@@ -1,0 +1,18 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.EnhancementComparison
+
+/-! # U13の指定対象と再構成導来関手の比較の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+
+#print axioms endomorphismDerivedTensorProjectiveComputation
+#print axioms endomorphismDerivedTensor_regularIso
+#print axioms endomorphismDerivedHom_selfIso
+#print axioms perfectEndomorphismUnderlying
+#print axioms perfectEndomorphismUnderlying_map
+#print axioms perfectEndomorphismUnderlying_homQuasiIso
+#print axioms perfectEndomorphismUnderlying_essSurj
+#print axioms perfectEndomorphismUnderlying_quasiEquivalence
+#print axioms perfectEndomorphismModuleHom
+#print axioms perfectEndomorphismHomRight_comparison
+#print axioms perfectEndomorphismDerivedAdjunction

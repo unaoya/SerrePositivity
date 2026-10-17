@@ -233,6 +233,19 @@
 - `ChecksDerivedAdjunction` と更新した `ChecksCompatibility` の対象ビルド成功。
   新規9主要宣言の公理は標準3公理のみ。既存のU14公開入口からimportし、ルートは未編集。
 
+## U14a.20：指定enhancementのEndと導来生成対象の比較（2026-10-17）
+
+- `DerivedGenerators.lean`：射影的加群の恒等解像度で導来tensorを計算。
+  正則End(E)加群の導来tensor像とEとの同型、およびEの導来Hom像と正則加群との同型を構成。
+  前者は既存のYoneda balanced tensor単位を導来圏へ送ったもの。
+- `EnhancementComparison.lean`：U13の充満dg enhancement内のEnd(E)と全加群内のEnd(E.val)
+  の比較を構成。全Homの恒等写像による擬同型とH⁰の本質的全射を個別に証明。
+  これは同じEndの二つの表示の比較であり、U14bのPerf同値ではない。
+- enhancement上のHom関手を定義し、元のHom(E,−)がEnd比較に沿った制限と一致することを証明。
+  Eの射影性はU13の対象の証拠から取得して導来随伴に接続した。
+- `ChecksEnhancementComparison` と更新した `ChecksCompatibility` の対象ビルド成功。
+  新規11主要宣言の公理は標準3公理のみ。U14公開入口へimport済み。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
