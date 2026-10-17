@@ -1,5 +1,26 @@
 # U16c：一般 kernel の Perf 上の Morita 判定
 
+## 現在の受入状態（2026-10-17：Perf 判定と逆を完了）
+
+公開入口は `SerrePositivity.DifferentialGraded.Morita.CriterionPerf`。
+最終検証入口は同じディレクトリの `CriterionPerfChecks.lean`。
+以下の経過記録の「未完」は各時点の状態であり、今回の Perf 担当範囲は本節と末尾の
+最終監査で受入済みである。
+
+`criterionPerfMorita_iff` は、三条件 `CriterionPerfConditions A D E K` と
+`Nonempty (CriterionPerfEquivalenceWitness A D E K)` の必要十分条件。
+`criterionPerfEquivalenceOfConditions` は十分性の実際の同値証拠を構成し、
+`CriterionPerfEquivalenceWitness.conditions` は必要性の三条件を返す。
+列の perfect 性が既に指定された場合の入口は `criterionPerfAction_isEquivalence_iff`。
+
+一般可換環、独立した対象宇宙、既存 API と同じ `Small.{u} D`・`Small.{u} E` の下で成立。
+局所 Hom の K-flat 性・係数環の平坦性・列そのものの射影性を追加しない。
+一般 kernel の右随伴は使っていない。Perf 上の生成条件には厚い生成性で十分。
+第二条件は実際の全 Hom 複体の比較の擬同型性であり、通常の射集合条件を定義に採用しない。
+
+最終合同ビルドは成功（2826 jobs、警告0・エラー0）。主要88宣言の公理監査は
+`propext`・`Classical.choice`・`Quot.sound` の範囲内。新規 sorry・axiom・引用なし。
+
 ## 契約と所有範囲
 
 正本は `dg-theory.md` §15.6。一般 kernel の右随伴を使わず、次の三条件を独立に
@@ -28,7 +49,7 @@ dg 関手を用いた証明であり、グラフ kernel に限定されない。
 （2778 jobs）。`CriterionPerfTriangulatedChecks` も対象ビルド成功（2779 jobs、警告なし）。
 上記6宣言の公理監査はすべて `propext`・`Classical.choice`・`Quot.sound` のみ。
 
-## 未完の受入項目
+## 初期時点の受入項目（現在は全項目を証明済み）
 
 全 Hom 比較は、通常 kernel の左作用を、源の列の射影置換の増強による前合成へ
 続けた実際の複体射として構成する。両方の列を通常のまま Hom に入れた複体を
@@ -84,25 +105,6 @@ retract に閉じることを実際に冪等元を分裂して証明する。
 検証：GenerationChecks（2785 jobs）と EquivalenceChecks（2786 jobs）の対象ビルド成功、
 警告なし。計11宣言の監査は標準3公理のみ。右随伴・平坦性・局所 K-flat 条件を使わず、
 新規 sorry・axiom・引用なし。
-
-## 全 Hom 条件と実作用の全整数 shift の比較の同値
-
-主作用との全次数接続は `bc671c6a`（直後の stat は自分の4ファイルのみ）。
-`CriterionPerfFullHomCriterion.lean` の
-`criterionPerfFullHomQuasiIso_iff_representableMaps` は、通常代表 P の列の全 Hom 複体の
-比較が全対で擬同型であることと、実際の主作用の全ての整数 shift の表現可能対象間の
-射写像が全単射であることの同値。源の shift の計算から始め、既存の主作用の
-`CommShift` を使った両変数の同時 shift により、任意の二整数 m,n を扱う。
-左辺はあくまで全 Hom 複体の実際の射の擬同型条件であり、射集合の条件を定義に採用していない。
-
-`criterionPerfKernelFullHomQuasiIso_iff_representableMaps` はこの結果を主 kernel に
-移し、kernel の同型を作用関手の自然同型として使う。
-`criterionPerfKernelFullHomQuasiIso_model_iff` は、任意の通常代表 Q と `Q(Q) ≅ K` に
-対して第二条件が同じであることを証明する。初期記録で未主張だった、通常代表の選択
-独立性もこれで完了した。射影解像度の選択独立性は先の全次数の補題を再利用する。
-
-検証：`CriterionPerfFullHomCriterionChecks` を最終入口の依存先として対象ビルド。
-今回の主要3宣言の公理監査は標準3公理のみ。追加の平坦性条件・引用・sorry・axiom なし。
 
 ## 表現可能対象からの二変数の厚い帰納
 
@@ -252,3 +254,74 @@ Yoneda の chain 同型と右単位による Hom の同型を用い、元の列�
 検証：`CriterionPerfResolvedActionChecks` を最終入口の依存先として対象ビルド。
 主要12宣言は標準3公理のみ。局所 Hom の K-flat 性・係数環の平坦性・一般右随伴は不要。
 新規 sorry・axiom・引用なし。
+
+## 全 Hom 条件と実作用の全整数 shift の比較の同値
+
+主作用との全次数接続は `bc671c6a`（直後の stat は自分の4ファイルのみ）。
+`CriterionPerfFullHomCriterion.lean` の
+`criterionPerfFullHomQuasiIso_iff_representableMaps` は、通常代表 P の列の全 Hom 複体の
+比較が全対で擬同型であることと、実際の主作用の全ての整数 shift の表現可能対象間の
+射写像が全単射であることの同値。源の shift の計算から始め、既存の主作用の
+`CommShift` を使った両変数の同時 shift により、任意の二整数 m,n を扱う。
+左辺はあくまで全 Hom 複体の実際の射の擬同型条件であり、射集合の条件を定義に採用していない。
+
+`criterionPerfKernelFullHomQuasiIso_iff_representableMaps` はこの結果を主 kernel に
+移し、kernel の同型を作用関手の自然同型として使う。
+`criterionPerfKernelFullHomQuasiIso_model_iff` は、任意の通常代表 Q と `Q(Q) ≅ K` に
+対して第二条件が同じであることを証明する。初期記録で未主張だった、通常代表の選択
+独立性もこれで完了した。射影解像度の選択独立性は先の全次数の補題を再利用する。
+
+検証：`CriterionPerfFullHomCriterionChecks` を最終入口の依存先として対象ビルド。
+今回の主要3宣言の公理監査は標準3公理のみ。追加の平坦性条件・引用・sorry・axiom なし。
+
+## 最終必要十分条件と受入監査
+
+全 Hom 条件の全 shift 比較との同値は `9b325c38`（直後の stat は自分の3ファイルのみ）。
+`CriterionPerf.lean` の最終定理は次の通り。
+
+```lean
+criterionPerfMorita_iff :
+  CriterionPerfConditions A D E K ↔ Nonempty (CriterionPerfEquivalenceWitness A D E K)
+
+criterionPerfAction_isEquivalence_iff (hK : kernelColumnsPerfect A D E K) :
+  (perfectDerivedKernelAction A D E K hK).IsEquivalence ↔
+    criterionPerfKernelFullHomQuasiIso A D E K ∧ criterionPerfColumnsThickGenerate A D E K
+```
+
+十分性は、全 Hom 複体の比較から全整数 shift の実際の射比較を得て、既存の二変数の
+厚い帰納による充満忠実性へ接続する。本質像の三角閉性と、冪等完備性を使った
+retract 閉性から、厚い生成条件により本質的全射となる。最後に実際の制限関手から
+逆関手・二つの自然同型を持つ圏同値を構成し、主作用との包含比較も保持する。
+
+必要性は、同値証拠に含まれる主作用との自然同型から Perf 保存と列の perfect 性を得る。
+実際の Perf 制限の充満忠実性を全 shift の表現可能対象に適用し、全 Hom 複体の
+比較の擬同型性を得る。厚い生成性は同値の本質的全射性と U13 の最小性から従う。
+通常代表・射影解像度の選択によらないことも、それぞれ全次数の同値として証明済み。
+
+| 依頼の受入項目 | 現在の証拠 |
+| --- | --- |
+| 一般 kernel の shift・完全三角形保存の公開 | `CriterionPerfTriangulated` の6宣言、主作用自身を対象とする |
+| 三条件を独立に定義 | `CriterionPerfConditions` の3フィールド。第二条件の中身は `Hom_D → moduleHom(R_d,P_d')` の擬同型 |
+| 表現可能対象から厚い閉包への充満忠実性の帰納 | `criterionPerf_hom_bijective_of_representables`。U13 の最小性を終域と反対圏の始域へ適用 |
+| 生成性から本質的全射 | `criterionPerf_essSurj_iff_columnsThickGenerate`。厚い生成性で十分 |
+| 十分性の実際の同値証拠 | `criterionPerfEquivalenceOfConditions` |
+| 同値から三条件の必要性 | `CriterionPerfEquivalenceWitness.conditions` |
+| 局所 K-flat 条件を限定 | 本担当の判定には不要。作用・比較・帰納のいずれにも追加していない |
+| 指定ファイル境界・引用なし | 新規 `CriterionPerf*` と本記録のみ。既存担当のファイル・共有ルート・正本は非編集 |
+
+最終検証コマンド：
+
+```text
+lake build SerrePositivity.DifferentialGraded.Morita.CriterionPerfChecks
+```
+
+成功（2826 jobs、警告0・エラー0）。同じ import 閉包で主要88宣言を公理監査し、
+標準3公理以外は0件。最終5宣言も全て標準3公理のみ。恒等 kernel の実作用との同型から
+三条件を再現する例と、`ZMod 2` 上の一般 kernel の最終必要十分条件を型検査した。
+ログは `/tmp/criterion-perf-final-audit.log`。新規 sorry・admit・axiom 宣言の検索結果は0件。
+
+新規ファイルごとに作成前の同名確認を行った。全コミットで自分の対象パスを明示し、
+直後の `git show --stat HEAD` で他人のファイルの混入がないことを確認する。
+amend・rebase・reset・index.lock の削除は行っていない。
+一般右随伴との一致・その unit/counit、導来圏全体への拡張、U16 全体の統合は各担当の範囲。
+
