@@ -1,0 +1,25 @@
+module
+public import SerrePositivity.DifferentialGraded.Verdier.ScalarExtensionTria
+
+/-! # 局所商・完備商の非平坦係数変更図式の公理監査 -/
+@[expose] public section
+open SerrePositivity.DifferentialGraded
+open SerrePositivity.DifferentialGraded.DGQuotient
+#print axioms quotientScalarPerfectFunctor
+#print axioms quotientScalarPerfectFunctorIsTriangulated
+#print axioms quotientScalarPerfectInclusionIso
+#print axioms quotientScalarPerfectHomotopySquareCommShift
+#print axioms quotientScalarPerfectHomotopySquareTriangle
+#print axioms completedScalarExtensionIsTriangulated
+#print axioms localPerfectScalarExtensionSquareCommShift
+#print axioms localPerfectScalarExtensionSquareTriangle
+#print axioms exactPerfectFunctor_tria
+#print axioms quotientScalarRepresentableIso
+#print axioms quotientScalarPerfect_tria
+#print axioms quotientScalarTriaFunctorIsTriangulated
+#print axioms quotientScalarTriaPerfectSquare
+#print axioms quotientScalarTriaInclusionIso
+#print axioms localScalarTriaExtensionIsTriangulated
+#print axioms localScalarTriaSquareCommShift
+#print axioms canonicalScalarTriaSquare
+#print axioms localScalarTriaSquareTriangle

@@ -902,3 +902,38 @@ M9 の適用については、商を取る前の次数零の平坦 Hom を持つ
 - 残る独立部分は係数変更。U16a の記録は依然として主導来作用・一般随伴・合成作用比較が
   「型のみ確定」であり、U17b の対応する自然性は未受入の宣言を前提にしない。
   中心作用・群 G の作用は保留を維持する。
+
+### U17d3：非平坦係数変更の tria・Perf・完備商上の図式
+
+- `Verdier/ScalarExtensionSquare.lean`：U12f の実際の主導来係数拡大を Perf に制限し、
+  U15d の `quotientBaseChangeDGFunctor` に沿う実際の導来延長を後置した
+  `quotientScalarPerfectFunctor` を構成した。包含正方形はこの二つの元の導来関手の
+  合成へ戻る。A′ の A 上平坦性も Hom の全体的な平坦性も仮定しない。
+- 既存の U14 の構造付き Perf 係数変更を読み、整数 shift・三角性を引き継いだ。
+  既存の perfect enhancement の H⁰ へ運んだ関手と主 Perf の比較正方形、その
+  shift 整合性と三角形関手への自然同型も公開した。新しい dg 関手を H⁰ の運搬だけから
+  構成したという主張ではない。入力 dg 関手は U15d の固定 path 比較そのものである。
+- `completedScalarExtension` は既存の局所 perfect 同値に沿って完備 Verdier 商へ運んだ関手。
+  両係数環での `localKFlat` は独立の明示入力。`localPerfectScalarExtensionSquare` と
+  その shift・三角形版が局所 perfect 比較との正方形である。
+- `Verdier/ScalarExtensionTria.lean`：完全な Perf 関手が代表加群を tria に送れば
+  tria 全体を tria に送ることを生成性から証明。係数変更と固定 path 比較の合成での
+  代表加群の像を `quotientScalarRepresentableIso` で具体的に計算し、
+  実際の導来関手の tria 制限 `quotientScalarTriaFunctor` を得た。
+  tria→Perf および主導来包含との正方形は元の射写像のまま可換する。
+- `localScalarTriaExtension` は未完備の指定 Verdier 商に局所同値を使って運んだ関手。
+  `localScalarTriaSquare` は局所比較との shift 整合な正方形、
+  `canonicalScalarTriaSquare` は既存の指定 `quotientVerdierComparison` そのものとの正方形。
+  **構成の範囲**：元の D 上で先に係数変更を行い、その後 Verdier 局所化して得る別構成と
+  この運搬の一致までは証明していない。canonical square の自然同型そのものの shift 整合性も
+  既存の二モデル比較の構造との照合として残る。局所 square の shift・三角形版は証明済み。
+- 対象ビルド `Verdier.ChecksScalarExtensionSquare` 成功（3365 jobs）、新規ファイルの警告なし。
+  主要18宣言の公理監査は標準3公理のみ。新規 sorry・axiom・引用なし。
+  既存の Derived/・Endomorphism/・Morita/・Quotient/ のファイルは読み取りのみ。
+- 前単位 `88d231ca` は直後の stat で自分の3ファイルのみと確認した。
+  ルート・README・Stage・正本の共有本文は今回編集・stage していない。
+- 最新の `dg-theory-morita.md` の **U16a2** では通常 bimodule 上の
+  `kernelDerivedTensorOnBimodule` と任意射影解像度計算、graph と `dgDerivedExtension` の
+  関手の等式が実装・検証済みとなった。冒頭の古い状態表だけを見て「通常作用しかない」とはしない。
+  ただし主導来 kernel 全体の `kernelDerivedTensorFunctor`、一般随伴、恒等・合成作用比較は
+  未実装であり、U17b 全体の自然性は未完。中心作用・G 作用の保留も維持する。
