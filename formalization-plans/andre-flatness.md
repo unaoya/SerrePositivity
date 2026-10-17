@@ -5669,3 +5669,40 @@ A1-a 全体の完成とは数えず、既存 hpR 付き定理は成果到着ま�
 （集約 4574 jobs）。新規 19 公開宣言の `assert_no_sorry` と専用監査は終了コード 0。
 生成宣言を含む 7307 宣言の推移的公理依存は標準 3 公理のみ。
 新規 19 公開宣言の正確な型を `#check` で確認した（終了コード 0）。
+
+### 第二の区切り：元の A 上の実残余比較
+
+`0418adfe` の最初の検証区切りに続き、次の新規4ファイルで元の A 作用へ接続した。
+既存 Andre/ ファイルは変更していない。
+
+- `Unconditional/FreeCoefficientSquare.lean`：自由 A 代数 S 上の射影モデルを A に制限し、
+  A/(I) 還元と S/(IS) 還元の係数制限を比較する。自由性は一般補題の instance であり、
+  今回の S=無限根自由 δ 環については A 自由性を内部供給する。
+- `Unconditional/PowerRootCoefficientReduction.lean`：元の二因子導来テンソルの
+  実自由 δ 源上での係数還元と、作用を β で制限した元の raw 残余商の single を比較する。
+- `Unconditional/PowerRootQuotientDerived.lean`：源商の全射性で H⁰ の線形比較を
+  実商環 Q=L₀/(p,dP) の作用へ降下し、実商環上での single 比較を構成する。
+- `Unconditional/PowerRootAResidue.lean`：A のイデアル (p,d) の拡張と L₀ の (p,dP) を同定し、
+  上の自由代数の正方形比較により、元の A/(p,d) に沿う実導来還元を同じ raw 残余商へ戻す。
+
+`PowerRootPrismMonicSourceCoefficientObject_of_unconditional W hW f` は、
+元の自由 δ 射 α=deltaDivisionSourceMap E dP、評価射 β=deltaDivisionSourceEval E a の
+二つの実スカラー加群の導来テンソルを、元の A 係数射に沿って制限した対象である。
+`powerRootPrismMonicSourceCoefficientPDResidueIso_of_unconditional W hW f hf` は
+この実対象の A/(p,d) 導来還元と、実商環 Q の自然な作用を A/(p,d) に制限した
+元の raw (p,d) 残余商の single との同型を与える。
+`powerRootPrismMonicSourceCoefficientPDResidue_homology_isZero_of_unconditional`
+は全非零整数次数の消滅を供給する。hpR・Tor 消滅・追加の平坦性を呼出し側に要求しない。
+
+この第二の区切りでは、まだ同じ残余商の元の A/(p,d) 上の忠実平坦性を供給していない。
+次は P の初期係数商 P/(p,dP,a) を (A/(p,d)) 上の通常モニック無限根商と比較して
+忠実平坦性を得て、既存の raw 残余商の初期係数商上の忠実平坦性と合成する。
+その後、実逐次完備化単位と生成元冪商の有界ねじれによる純性を接続し、
+元の H と dH の分母正則性、H/dH の p 完全忠実平坦性、H の (p,d) 完全平坦性へ進む。
+これらの最終接続は未完了であり、目標を達成扱いにしない。
+
+第二の区切りの検証：`MonicRootedExtension` と全新規対象を含むビルドは
+4586ジョブで成功した。拡張した `scripts/audit_andre_unconditional.lean` は
+65 公開宣言をすべて `assert_no_sorry` で検査し、45,431 宣言の依存走査も
+終了コード0で成功した。標準三公理以外の公理・sorry 依存はない。
+本節に明示した最終接続は依然として未完了であり、目標は継続する。
