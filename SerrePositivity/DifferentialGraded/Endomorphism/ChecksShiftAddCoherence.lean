@@ -1,0 +1,15 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.ShiftAddCoherence
+
+/-! # 加法shift整合性の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+
+#print axioms normalizedModuleShiftOut_v_eq
+#print axioms normalizedModuleShiftOut_add
+#print axioms normalizedDGModuleFunctorShiftIso_add_square
+#print axioms shiftComparison_eq_isoAdd_of_square
+#print axioms normalizedDGModuleFunctorCommShiftIso
+#print axioms normalizedDGModuleFunctorCommShiftIso_zero
+#print axioms normalizedDGModuleFunctorShiftNatIso_add
+#print axioms dgModuleFunctorCommShift

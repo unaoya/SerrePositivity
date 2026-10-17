@@ -447,6 +447,20 @@
 - `ChecksShiftZeroCoherence` の対象ビルド成功。新規2主要宣言の公理は標準3公理のみ。
 - 加法shiftの整合性と主Perfへの接続は未完了。
 
+## U14b.19：加法shiftの整合性とCommShift（2026-10-17）
+
+- `ShiftAdditionElements.lean`：正規化斉次射影と加法shift同型の合成公式を、
+  通常順合成のKoszul符号と次数の付け替えを含めて証明した。
+- `ShiftAddCoherence.lean`：全Hom写像で上記公式を送り、shift比較の加法正方形を証明。
+  Mathlibの `Functor.CommShift.isoAdd` との一致を導き、任意の加群値dg関手の
+  閉零関手に対する `dgModuleFunctorCommShift` を構成した。
+- 公開APIの既存の名前・型は変更していない。登録済みshift型との橋渡しとして
+  `normalizedDGModuleFunctorCommShiftIso` を追加した。CommShiftは明示して使う定義であり、
+  大域instanceとしては登録していない。
+- `ChecksShiftAddCoherence` と更新した `ChecksCompatibility` の対象ビルド成功。
+  新規8主要宣言の公理は標準3公理のみ。U14公開入口から利用できる。
+- 主K・主導来圏・主Perfへの接続と三角性は引き続き受入条件として残す。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
