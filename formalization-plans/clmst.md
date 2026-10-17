@@ -9116,6 +9116,51 @@ BS 著者版 Prop 10.2, p.78 は引用せず、その拡大部分だけを明示
 これは (a)(b) からの帰着の成果であり、(a)(b) 自体の供給や KL-Q の引用置換は未完了。
 Cor 8.12 の宣言・使用・形の仮定は行わず、Prop247・BhattScholze の担当ファイルは変更しない。
 
+#### KL-T：指定された二入力から KL-Q の両結論への条件付き合流（2026-10-17）
+
+`CLMST/ConditionalCohomologyFromPowerTorsion.lean` の公開定理
+`conditional_corollary_4_0_4_of_powerTorsion_and_extension` を追加した。
+正確な型は同ファイルの宣言に保存した。基底 A は正則局所、D は有限 A 代数かつ
+Noether 局所、C は A・D 代数（scalar tower を保持）で integral perfectoid、
+係数源 S も integral perfectoid とする。元の t、hsop、hres、全段の φ と hφ、
+`ψ : S →+* C`、`a : S`、`j₀`、`ha : ψ a = algebraMap A C (t j₀)` を保持する。
+I は独立の追加仮定でなく `perfectoidIdeal S p hS g` そのものである。
+
+元の `conditional_corollary_4_0_4` との変更点は次のとおり。
+
+- 全 A 加群の hTor を前節の (a)（全 k : ℕ を含む p 冪ねじれ版）と
+  (b)（完備短完全列の三項と両端の IsAlmostZero を受け取る型）に置換した。
+- C の導来 p 完備性は perfectoid 性から証明して供給する。
+- `hI : ∀ k, 0 < k → IsIdempotentElem (I.map (Ideal.Quotient.mk (Ideal.span {a^k})))`
+  は従来どおりであり、拡大閉性から混同して推論しない。
+
+結論は元の二つをそのまま保つ。
+
+```lean
+(∀ i : ℕ, i < e → ∀ s ∈ I,
+  HomologicalAlgebra.localCohomologyScalarEndomorphism
+    (IsLocalRing.maximalIdeal D) i C (ψ s) = 0) ∧
+(∀ n : ℕ,
+  let _ := stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+  ∀ y : Fin e → StageAlgebra A D t p n,
+    IsSystemOfParameters (StageAlgebra A D t p n) y → ∀ i : ℕ, 0 < i →
+      let _ := Module.compHom (koszulHomologySelf (φ n ∘ y) i) ψ
+      I ≤ Module.annihilator S (koszulHomologySelf (φ n ∘ y) i))
+```
+
+証明は `perfectoidIdeal_allModule_tor_annihilated` で全加群 hTor を実際に証明し、
+既存 `conditional_corollary_4_0_4` に渡す。原典は CLMST v4 Thm 4.0.3(a), pp.27–28、
+Cor 4.0.4, p.28。公開三定理の `assert_no_sorry` と標準三公理だけの依存閉包検査を
+`scripts/audit_clmst_all_module_tor.lean` に集約した。
+集約 `CLMST/KLAllModule.lean` を更新し、ルートには前工程の一行だけを維持する。
+対象ビルド・専用監査・ルートビルドの終了コードを pipefail 付きで確認する。
+
+今回依頼された「二つの明示仮定から全加群版を証明し、条件付き両結論へ接続する」
+工程の成果であり、Thm 4.0.3(a) の無条件な実供給や KL 全体の完成ではない。
+(a) の実供給、レーン B の (b) の受領と仮定解消、hI の実適用は残る。
+Cor 8.12 を宣言・使用・形の前提とせず、Cor 4.0.4 の既存引用は置換していない。
+Prop247・BhattScholze の担当ファイルも編集していない。
+
 #### Prop 2.4.7 専任系列：原典から D-I/U/Q への型付き受渡し（2026-10-17）
 
 本節は統合表 D-I・D-U・D-Q の実入力を固定する。未採用の別計画は根拠にしない。
