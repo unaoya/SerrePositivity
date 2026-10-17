@@ -1,5 +1,71 @@
 # André の平坦性補題の引用解消
 
+## E3：超限反復（2026-10-17）
+
+担当範囲は BS Thm 7.14（著者版 `paper/refs/BS-prisms-author.pdf`、p.61）の
+超限反復、極限段の完備性・perfectoid 性・p 完全忠実平坦性、および終段の絶対整閉性。
+E3 の作業記録は本節に限る。E1・E2 の節は編集しない。
+原典の証明は超限反復を一文で述べており、本レーンの極限段の詳細はその補足である。
+
+### step の仕様訂正（利用者承認済み）
+
+当初指定された型は定数モニック多項式 `1` にも根を要求するため、非零環では不整合。
+利用者の回答「正の次数条件を追加する」により、今後は次の型を採用する。
+他の引数・宇宙・結論は変更しない。
+
+```lean
+step : ∀ (R : Type u) [CommRing R] (hR : IsIntegralPerfectoid R p)
+    {σ : Type u} (f : σ → Polynomial R),
+    (∀ s, (f s).Monic ∧ 0 < (f s).natDegree) →
+    ∃ (T : Type u) (_ : CommRing T) (φ : R →+* T) (ρ : σ → T),
+      IsIntegralPerfectoid T p ∧
+      (letI := φ.toAlgebra; IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) T) ∧
+      ∀ s, (f s).eval₂ φ (ρ s) = 0
+```
+
+既存の `IsAbsolutelyIntegrallyClosed` も正の次数を要求しており、この訂正と一致する。
+元の不整合な step から最終定理を導く証明は追加していない。
+
+### E3.1：step に依存しない余極限の部品
+
+配置：`SerrePositivity/BhattScholze/Andre/Transfinite/`。
+集約 `Basic.lean` の import をルートに一行だけ追加。
+
+- `isAbsolutelyIntegrallyClosed_directLimit_of_eventual_roots`：
+  各段の正次数モニック多項式に後の段で根があれば、`Ring.DirectLimit` は絶対整閉。
+  有限係数を降ろした後にモニック性と同次数を保つリフトを選ぶ。
+  遷移写像の単射性は不要。この結論だけなら可算の塔にも適用できるが、
+  **可算塔の後の完備化の絶対整閉性は結論しない**。
+- `directLimit_mod_p_pow_surjective`：各段の mod p Frobenius 全射性が有向余極限に保存される。
+- `directLimit_mod_p_pow_surjective_of_perfectoid`：全段が perfectoid の場合の適用。
+  零環と p ねじれを除外しない。余極限の perfectoid 性はまだ主張しない。
+- `exists_stage_countable_family`：添字の任意の可算集合が上界を持つ場合、
+  余極限の可算族は一段に同時に持ち上がる。環と塔の添字は Type u に留まる。
+  可算族の添字 κ は任意の宇宙でよい。
+
+いずれも step、BS の引用、Cor 8.12、未採用の計画ファイルに依存しない。
+既存の Frobenius 判定 `CompatibleRootsPerfectoid.isIntegralPerfectoid_of_compatible_p_roots`
+は p 正則性を要求するため、一般の step の極限にそのまま適用しない。
+`PerfectoidFrobeniusCriterion.lean` 単独も四条件との同値の完成を主張していない。
+
+検証：`set -o pipefail; lake build SerrePositivity.BhattScholze.Andre.Transfinite.Basic`
+が終了コード 0（2510 jobs、最終版に警告なし）。
+`lake env lean scripts/audit_andre_e3_transfinite.lean` も終了コード 0。
+公開 4 宣言の `assert_no_sorry` と全生成宣言の再帰公理監査を通し、
+許可公理は propext・Classical.choice・Quot.sound のみ。
+全公開宣言の完全型も同スクリプトの `#print` で確認した。共有ルート全体のビルドは主張しない。
+
+### 残る範囲
+
+1. 有向余極限の p 進完備化の perfectoid 性（特に p ねじれを許す Fontaine 核の単項性）。
+2. p 完全忠実平坦性の有向余極限・完備化・合成による保存。
+3. 非可算共終性の極限での自動的 p 進完備性と、可算共終性の極限での完備化。
+4. Type u に留まる ω₁ までの超限塔の構成、訂正済み step による後続段の供給。
+5. 元の Inputs と同じ結論の公開定理、A1 合流による step 解消と再監査。
+
+したがって E3.1 は一般論の部品であり、条件付きの Thm 7.14 自体もまだ証明していない。
+`BhattScholze/Inputs/AndreFlatness.lean` は編集していない。
+
 ## E1・E2：モニック根付き拡大（2026-10-17）
 
 ### 仕様訂正と原典
