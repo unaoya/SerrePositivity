@@ -1170,3 +1170,18 @@ M9 の適用については、商を取る前の次数零の平坦 Hom を持つ
   shift 整合性、完備化経路への接続、従来の二モデル比較の構造照合は引き続き区別する。
   一般 kernel の射・合成に関する自然性・coherence は U16 の進展を読んで接続する。
   中心作用・G 作用は保留を維持する。
+
+### U17d8：直接局所化の Karoubi 完備化と局所 perfect 正方形
+
+- `Verdier/ScalarDirectCompletion.lean`：`sourceScalarVerdierFunctor` の実際の Karoubi 延長を
+  `sourceScalarCompletedFunctor` として公開した。この関手の shift・三角性と、未完備商からの
+  標準包含に関する因子化同型の shift 整合性・三角形版を証明した。局所 K-flat 条件は不要。
+- 直接局所化と旧輸送経路の比較を Karoubi 延長し、商側の完備 tria、実際の Perf 係数変更、
+  局所 perfect enhancement の H⁰ 比較に対する正方形を構成した。
+  以前の完備 perfect 輸送経路との自然同型も公開し、元の係数変更の直接構成へ接続した。
+  これらの局所比較には両側の局所 K-flat 条件を別々に明示する。
+- `Verdier/ChecksScalarDirectCompletion.lean`：主要9宣言の公理監査は標準3公理のみ。
+  整数から mod 2 への係数変更を具体的に代入した標準 Karoubi 正方形も検証した。
+  係数環の平坦性は仮定していない。合同対象ビルドで成功・警告なし（4041 jobs）。
+- 前単位 `2cb002ad` は直後の stat で自分の8ファイルのみと確認済み。
+  新規 sorry・axiom・引用なし。中心作用・G 作用は保留。
