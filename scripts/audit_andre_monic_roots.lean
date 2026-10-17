@@ -108,6 +108,38 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.monicFamilyColimit_faithfully
 assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyQuotient_faithfullyFlat
 assert_no_sorry SerrePositivity.BhattScholze.Andre.exists_familyMonicRootedFaithfullyFlat
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyIdeal_map_coefficientQuotient
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyBaseQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyBaseQuotientEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.MonicFrobeniusCoefficientQuotient
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicFrobeniusCoefficientIdeal_eq
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicFrobeniusCoefficientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicFrobeniusCoefficientEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicFrobeniusCoefficientEquiv_C
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicFrobeniusCoefficientBaseMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicFrobeniusCoefficientBaseMap_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicFrobeniusCoefficientBaseAlgebra
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicFrobeniusCoefficientAlgEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicFrobeniusCoefficient_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawResidueBaseMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawResidueBaseMap_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawResidueBaseAlgebra
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawResidue_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawModPBaseMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawModPBaseMap_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawModPBaseAlgebra
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawModPResidueAlgEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawModP_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawCoefficientMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawCoefficient_algebraMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawCoefficient_map_span_p
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawCoefficientQuotientAlgEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawBaseChangeModPAlgEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRaw_residueTensor_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRaw_p_smul_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicFamilyRaw_isCompletelyFaithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicFamilyRaw_isCompletelyFaithfullyFlat
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -132,7 +164,11 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.MonicFiniteFamilyFlat,
     `SerrePositivity.BhattScholze.Andre.MonicFamilyFiniteSystem,
     `SerrePositivity.BhattScholze.Andre.MonicFamilyColimit,
-    `SerrePositivity.BhattScholze.Andre.MonicFamilyFaithfullyFlat]
+    `SerrePositivity.BhattScholze.Andre.MonicFamilyFaithfullyFlat,
+    `SerrePositivity.BhattScholze.Andre.MonicFamilyCoefficientQuotient,
+    `SerrePositivity.BhattScholze.Andre.MonicFrobeniusCoefficient,
+    `SerrePositivity.BhattScholze.Andre.MonicRawModPFlat,
+    `SerrePositivity.BhattScholze.Andre.MonicRawCompletelyFlat]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

@@ -483,3 +483,49 @@ SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（
 専用監査も終了コード 0。全新規公開宣言の `assert_no_sorry` と、生成宣言を含む
 221 宣言の標準 3 公理限定検査に成功した。再利用する A2 の通常忠実平坦余極限定理も
 明示的な `assert_no_sorry` の対象に加えた。
+
+### E1.8：任意モニック族の補助 raw φ/p 包の p 完全忠実平坦性
+
+新規 `Andre/MonicFamilyCoefficientQuotient.lean` は、全族のモニック関係商と係数商の
+交換を、係数と各多項式の代表元を保つ実環同型で証明する。モニック性はこの同型には不要。
+`Andre/MonicFrobeniusCoefficient.lean` は、raw φ/p 包の最初の係数剰余イデアルを
+`(p, f_s(Y_s)^p | s ∈ σ)` と同定し、その実商を A/p 上の通常モニック族商に同定する。
+E1.7 を適用し、任意濃度の正次数モニック族について忠実平坦性を得た。
+零係数環も許し、自由性や遷移射の単射性を仮定しない。
+
+`Andre/MonicRawModPFlat.lean` は一般 δ 除算包の既存剰余計算を再利用する。
+その実 raw mod p 商に A/p の係数作用を明示し、代表元公式から元の標準係数射と一致することを
+確認した。この作用について剰余の忠実平坦性を証明した。
+`Andre/MonicRawCompletelyFlat.lean` は G4 の既存 ghost 単射定理を内部で供給し、
+通常剰余テンソルと実商の A/p 代数同型、E1.5 の raw p 正則性、主元の判定を接続する。
+主要公開型は次のとおり。
+
+```lean
+theorem monicFamilyRaw_isCompletelyFaithfullyFlat
+    {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
+    (D : DeltaStructure p A) (f : σ → Polynomial A)
+    (hpA : Function.Injective (fun x : A => (p : A) * x))
+    (hf : ∀ s, (f s).Monic) (hdeg : ∀ s, 0 < (f s).natDegree)
+    (hdp : D.IsDistinguished (p : A)) :
+    IsCompletelyFaithfullyFlat (Ideal.span {(p : A)})
+      (DeltaAdjoinDivision (polynomialRankOneDeltaStructure σ D)
+        (p : MvPolynomial σ A)
+        (fun s : σ => DeltaStructure.frobeniusLift
+          (polynomialRankOneDeltaStructure σ D) (monicRelation (f s) s)))
+```
+
+`perfectPrismMonicFamilyRaw_isCompletelyFaithfullyFlat` は同じ結論で、D・hpA・hdp の代わりに
+`(P₀ : OrientedPrism p A) (hP : P₀.deltaStructure.IsPerfect)` を受け取る。
+δ 構造には P₀.deltaStructure を用い、hf と hdeg はそのまま要求する。
+完全 δ 構造の p 正則性と、完全 prism の p 完備性から δ(p) の単元性を供給する。
+外部の ghost 単射仮定・有限性仮定・他レーンの未証明仮定は残さない。
+
+BS Cor 2.39（著者版 p.25）、Rem 7.15（p.62）の補助 pd 計算に相当する。
+Prop 7.11 を使う原典とは異なる、任意族の通常関係商と明示係数射を経る証明である。
+補助 φ(f)/p 包の結果であり、f/d 包とその perfectoid 商の忠実平坦性を証明したわけではない。
+実導来 pd 比較、無限 p 冪根変数の自由基底、最終候補の p 完全忠実平坦性は未完成。
+`exists_monicRootedPerfectoidExtension` は引き続き未宣言である。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4129 jobs）。
+専用監査は新規 31 公開宣言を追加し、`assert_no_sorry` と生成宣言を含む 345 宣言の
+標準 3 公理限定検査に成功した（終了コード 0）。
