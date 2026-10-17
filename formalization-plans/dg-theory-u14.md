@@ -492,6 +492,16 @@
 - これは任意の加群値dg関手に適用可能であり、実際の再構成Hom・tensorを含む。
   主導来圏・主Perfの三角性との比較は引き続き残る。
 
+## U14b.23：実際の導来Homの整合的shift（2026-10-17）
+
+- `DerivedShiftCoherence.lean`：射影的指定対象Eに対する実際の導来Hom関手を
+  Mathlibの局所化Liftingに接続し、正規化した閉零HomのCommShiftを局所化した。
+- `endomorphismDerivedHomCommShift` と、既存の厳密な局所化因子分解同型がshiftと
+  整合する証拠 `endomorphismDerivedHomFac_commShift` を構成した。
+- `ChecksDerivedShiftCoherence` と更新した `ChecksCompatibility` の対象ビルド成功。
+  新規3主要宣言の公理は標準3公理のみ。既存公開APIの型は変更していない。
+- 主Kとの比較自然同型のshift整合性、導来Homの三角性、主Perfへの接続は引き続き残る。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
