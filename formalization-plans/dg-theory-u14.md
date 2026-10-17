@@ -857,6 +857,15 @@
 - `ChecksScalarYonedaIso` 対象ビルド成功。新規4主要宣言の公理は標準3公理のみ。
   一般のPerf始域への拡張はまだこの単位では結論しない。既存APIの名前・型は変更していない。
 
+## U14b.47：実際のHom比較と閉零加群射の係数拡大（2026-10-17）
+
+- `ScalarClosedMap.lean`：複体の全次数Hom比較が、単位複体を係数変更した後の閉零射を
+  実際に係数変更したchain mapへ送ることを、単位cycleと純粋tensor生成元上で証明した。
+- Hom endの各評価成分により、実際の加群Hom比較が受入済みの通常の加群係数拡大関手
+  `ScalarExtension.moduleExtension` の射写像と一致することを証明した。
+- `ChecksScalarClosedMap` 対象ビルド成功。新規2主要宣言の公理は標準3公理のみ。
+  一般のPerf係数変更比較への拡張は継続中。既存APIの名前・型は変更していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
