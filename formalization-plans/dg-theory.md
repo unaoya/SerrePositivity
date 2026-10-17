@@ -11364,3 +11364,60 @@ Lean v4.35.0-rc4とMathlib manifest/HEAD e6bbacd0e1b7307ff6e17da09cd2455f60804fa
 共有一般論への新しいAPI要求はない。共有ルート・共有監査スクリプト・並行担当Tensor/Associator*・
 Perfect/・Endomorphism/・ScalarExtension*・Quotient/DerivedComparison*・Verdier/・
 他チャットの記録は編集していない。
+
+
+### 17.242 U12e81：全導来三因子の外側右制限と結合子のcoherence（2026-10-17）
+
+**局所化前の計算。** Derived/AssociatorRightRestrictionBase.leanの
+derivedComposeWithRightRestrictionIso_base_appは、固定K-flat後因子の右制限比較を、
+入力側の既存制限表示の逆の導来合成による像、通常比較の局所化、出力側の制限表示へ正規化する。
+associatorRightRestriction_localized_squareは§17.241の通常squareを局所化し、
+出力制限表示の自然性を続けた式である。制限表示を恒等射と仮定せず、両端の同型を保つ。
+
+**固定K-flat導来比較。** Derived/AssociatorRightRestrictionKFlat.leanの
+rightKFlatDerivedAssociator_rightRestrictionは、Q : C–E、R : E–Tを右相対K-flatとし、
+任意の導来前因子に自然な外側右制限と結合子のsquareを証明する。
+F : D → Bは任意のdg関手で、局所Hom K-flat性をどの圏にも要求しない。
+入力制限表示に関する結合子の自然性と、二段階合成の間の制限表示の打消しを使う。
+
+**実際の全導来比較の表示。** Derived/AssociatorRightRestrictionPresentation.leanは、
+既存source/target表示をそれぞれ固定K-flat合成表示の入力側・出力側whiskerへ計算する。
+derivedBimoduleComposeRightRestrictionIso_model_calculationは、この表示を通して、
+実際の全導来右制限比較と固定K-flat右制限比較を結ぶsquareである。
+Derived/AssociatorRightRestrictionNested.leanのderivedRightRestriction_nested_model_squareは、
+既存内側合成表示の同型に関する全導来比較の自然性から、入れ子合成の表示へ接続する。
+Derived/AssociatorRightRestrictionPair.leanのderivedRightRestriction_pair_model_squareは、
+前因子に対する二つの固定合成表示と比較の自然性を貼り合わせ、二段階合成の表示へ接続する。
+貼合せのprivate補題は通常の圏の射の等式として証明し、coherenceを仮定に追加しない。
+
+**モデル上から全三因子へ。** Derived/AssociatorRightRestrictionModel.leanの
+derivedBimoduleAssociator_rightRestriction_rightKFlatは、両側の既存結合子比較squareと
+上の二つの表示square、固定K-flat導来比較を貼り合わせる。
+後二因子が指定K-flatモデルの局所化像の場合に、実際の全導来結合子と右制限が可換になる。
+Derived/AssociatorRightRestrictionFamilies.leanは両経路をR・Qにも自然な関手族へ束ねる。
+Derived/AssociatorRightRestrictionCoherence.leanのrightRestrictionAssociatorPaths_eqは、
+rightKFlatDerivedNatTrans_extを二回適用してモデル上の一致を任意の導来後二因子へ持ち上げる。
+derivedBimoduleAssociator_rightRestrictionは、任意の導来Q・R、任意の導来前因子について、
+実際の全導来結合子を前因子で右制限してから外側比較を続ける経路と、
+二段階の全導来右制限比較の後に元の結合子を出力で制限する経路の一致である。
+全導来版の局所Hom K-flat条件はE・Tのみ。B・C・Dには追加せず、Fの準同値性も要求しない。
+係数は任意の可換環、六つの宇宙を独立に保持し、各対象添字にSmall.{u}を要求する。
+旧公開APIの名前・型は変更せず、一般API17宣言とChecksの2宣言を追加した。
+
+**検証。** Checks.DGAssociatorRightRestrictionCoherenceは標数2で、固定K-flat版と
+全導来版の両方を任意の導来前因子に適用し、上の仮定と独立な宇宙を確認する。
+§17.241までの外側左制限・左右単位・三圏同時制限・解像度・中間比較・導来随伴・五角形・
+StageEight・StageSeven・Spectra.StageTwoとの統合ビルド成功（3573 jobs、警告なし）。
+19公開宣言の直接公理監査は重複・欠落なく標準3公理以内。新規監査累計4744宣言。
+今回の9 Leanファイルにsorry・admit・新規axiom・資源上限変更は0件。採用済み引用0件。
+Lean v4.35.0-rc4とMathlib manifest/HEAD e6bbacd0e1b7307ff6e17da09cd2455f60804fa6を再確認した。
+文書検査は21 Markdown・326 exposition参照、失敗0件。
+
+**次工程と未受入条件。** 外側左右の制限と結合子のsquareは全導来三因子まで完了した。
+中間制限の結合子square、左右単位経路と三圏同時制限の正規化、changeEquivalenceの
+単位・結合保存と自己・推移比較、外側左右・中間の恒等・合成則が残る。
+これらを仕上げた後、dg圏の一般的な分解の存在・比較を含め§15.2全体を受入監査する。
+U12e全体は未受入。U16・U15e分解版には着手していない。共有一般論への新しいAPI要求はない。
+U15e分解版では別担当のQuotient/DerivedComparison*・Verdier/を読んで再利用する。
+共有ルート・共有監査スクリプト・並行担当Tensor/Associator*・Perfect/・Endomorphism/・
+ScalarExtension*・他チャットの記録は編集していない。
