@@ -138,3 +138,12 @@ A2c の生成セル二つを `JoinAnodyne.lean` に実装済み。
 `joinUnion_boundary_leftHorn_innerAnodyne` は各和の包含の inner anodyne 性を与える。
 一般の単射・anodyne 射への閉包は未完了であり、A2c 全体は未完了。
 対象ビルドと累計 148 件の公理監査は成功。正確な型・前提は計画 §6 に記録した。
+
+### A2c 完了（2026-10-18）
+
+`JoinAnodyne.lean` の `joinUnion_innerAnodyne_of_rightAnodyne` と
+`joinUnion_innerAnodyne_of_leftAnodyne` により、固定した文言の一般形を証明した。
+`JoinCells.lean` の生成セルを、`JoinLifting.lean` の pushout と相対 slice・coslice の
+持ち上げ問題の往復、単射の境界セル分解を用いて一般の射へ広げている。
+A2c まで完了、A2d〜A2i は未完了。Core 対象ビルドと累計 192 件の公理監査は成功。
+新規 44 公開宣言の正確な型と仮定は計画 §6 に列挙した。

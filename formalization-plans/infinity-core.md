@@ -973,3 +973,333 @@ Core の対象ビルド、公理監査とも終了コード 0。新規 24 明示
 累計 148 件を監査し、標準三公理以外への依存はない（公理なしの宣言もある）。
 一般の単射と right/left anodyne 射への閉包、A2d〜A2i は未完了。
 従ってこの保存単位を A2c 全体の完成とは数えない。引き続き持ち上げ問題の移送を実装する。
+
+### A2c 完了（2026-10-18）：一般の pushout-join 補題
+
+`JoinCells.lean` は前保存単位の生成セル（宣言名・型は維持）、`SliceMap.lean` は制限と標的の作用、
+`JoinLifting.lean` は和の pushout と相対 slice・coslice による持ち上げ問題の往復、
+`JoinAnodyne.lean` は主定理を公開する。§4 の設計は維持し、モデル構造は用いない。
+
+主定理は、任意の宇宙 `u`、`A B : SSet.{u}` と部分複体 `A₀`・`B₀` に対し、
+**左の包含が right anodyne** または **右の包含が left anodyne** のいずれかだけを仮定する。
+反対側の包含には部分複体包含という単射性以上の仮定はない。
+生成ホーン・境界の計算を、相対 slice・coslice の持ち上げ問題の同値を通じて広げた。
+`SSet.rlp_monomorphisms` の境界によるセル分解を用い、Kan–Quillen や Joyal のモデル構造は使わない。
+条件付きの一般化の仮定束ではなく、指定された一般の補題を証明した。
+
+追加公開宣言 44 件の正確な型を以下に列挙する。全て namespace は
+`SerrePositivity.InfinityCategories`、宇宙 `u` は任意。
+`open CategoryTheory Limits SSet MorphismProperty`、`open scoped Simplicial` とする。
+
+SliceMap.lean
+```lean
+def sliceUnderRestrict {K₀ K X : SSet.{u}} (p : K ⟶ X) (f : K₀ ⟶ K) :
+    sliceUnder p ⟶ sliceUnder (f ≫ p)
+```
+
+SliceMap.lean
+```lean
+def sliceUnderPostcomp {K X Y : SSet.{u}} (p : K ⟶ X) (q : X ⟶ Y) :
+    sliceUnder p ⟶ sliceUnder (p ≫ q)
+```
+
+SliceMap.lean
+```lean
+def sliceOverRestrict {K₀ K X : SSet.{u}} (p : K ⟶ X) (f : K₀ ⟶ K) :
+    sliceOver p ⟶ sliceOver (f ≫ p)
+```
+
+SliceMap.lean
+```lean
+def sliceOverPostcomp {K X Y : SSet.{u}} (p : K ⟶ X) (q : X ⟶ Y) :
+    sliceOver p ⟶ sliceOver (p ≫ q)
+```
+
+SliceMap.lean
+```lean
+lemma sliceUnderRestrict_postcomp {K₀ K X Y : SSet.{u}} (p : K ⟶ X)
+    (f : K₀ ⟶ K) (q : X ⟶ Y) :
+    sliceUnderPostcomp p q ≫ sliceUnderRestrict (p ≫ q) f =
+      sliceUnderRestrict p f ≫ sliceUnderPostcomp (f ≫ p) q
+```
+
+SliceMap.lean
+```lean
+lemma sliceOverRestrict_postcomp {K₀ K X Y : SSet.{u}} (p : K ⟶ X)
+    (f : K₀ ⟶ K) (q : X ⟶ Y) :
+    sliceOverPostcomp p q ≫ sliceOverRestrict (p ≫ q) f =
+      sliceOverRestrict p f ≫ sliceOverPostcomp (f ≫ p) q
+```
+
+SliceMap.lean
+```lean
+lemma sliceUnderCurry_uncurry {A K X : SSet.{u}} {p : K ⟶ X} (f : A ⟶ sliceUnder p) :
+    sliceUnderCurry (sliceUnderUncurry f) (sliceUnderUncurry_fixed f) = f
+```
+
+SliceMap.lean
+```lean
+lemma sliceUnderUncurry_curry {A K X : SSet.{u}} {p : K ⟶ X}
+    (F : join K A ⟶ X) (hF : joinInl K A ≫ F = p) :
+    sliceUnderUncurry (sliceUnderCurry F hF) = F
+```
+
+SliceMap.lean
+```lean
+lemma sliceUnderCurry_precomp {A₀ A K X : SSet.{u}} {p : K ⟶ X}
+    (F : join K A ⟶ X) (hF : joinInl K A ≫ F = p) (g : A₀ ⟶ A) :
+    g ≫ sliceUnderCurry F hF =
+      sliceUnderCurry (joinMap (𝟙 K) g ≫ F)
+        (by rw [← Category.assoc, joinInl_joinMap, Category.id_comp, hF])
+```
+
+SliceMap.lean
+```lean
+lemma sliceUnderCurry_restrict {A K₀ K X : SSet.{u}} {p : K ⟶ X}
+    (F : join K A ⟶ X) (hF : joinInl K A ≫ F = p) (f : K₀ ⟶ K) :
+    sliceUnderCurry F hF ≫ sliceUnderRestrict p f =
+      sliceUnderCurry (joinMap f (𝟙 A) ≫ F)
+        (by rw [← Category.assoc, joinInl_joinMap, Category.assoc, hF])
+```
+
+SliceMap.lean
+```lean
+lemma sliceUnderCurry_postcomp {A K X Y : SSet.{u}} {p : K ⟶ X}
+    (F : join K A ⟶ X) (hF : joinInl K A ≫ F = p) (q : X ⟶ Y) :
+    sliceUnderCurry F hF ≫ sliceUnderPostcomp p q =
+      sliceUnderCurry (F ≫ q) (by rw [← Category.assoc, hF])
+```
+
+SliceMap.lean
+```lean
+lemma sliceUnderUncurry_precomp {A₀ A K X : SSet.{u}} {p : K ⟶ X}
+    (f : A ⟶ sliceUnder p) (g : A₀ ⟶ A) :
+    sliceUnderUncurry (g ≫ f) = joinMap (𝟙 K) g ≫ sliceUnderUncurry f
+```
+
+SliceMap.lean
+```lean
+lemma sliceUnderUncurry_restrict {A K₀ K X : SSet.{u}} {p : K ⟶ X}
+    (f : A ⟶ sliceUnder p) (g : K₀ ⟶ K) :
+    sliceUnderUncurry (f ≫ sliceUnderRestrict p g) = joinMap g (𝟙 A) ≫ sliceUnderUncurry f
+```
+
+SliceMap.lean
+```lean
+lemma sliceUnderUncurry_postcomp {A K X Y : SSet.{u}} {p : K ⟶ X}
+    (f : A ⟶ sliceUnder p) (q : X ⟶ Y) :
+    sliceUnderUncurry (f ≫ sliceUnderPostcomp p q) = sliceUnderUncurry f ≫ q
+```
+
+SliceMap.lean
+```lean
+lemma sliceOverCurry_uncurry {A K X : SSet.{u}} {p : K ⟶ X} (f : A ⟶ sliceOver p) :
+    sliceOverCurry (sliceOverUncurry f) (sliceOverUncurry_fixed f) = f
+```
+
+SliceMap.lean
+```lean
+lemma sliceOverUncurry_curry {A K X : SSet.{u}} {p : K ⟶ X}
+    (F : join A K ⟶ X) (hF : joinInr A K ≫ F = p) :
+    sliceOverUncurry (sliceOverCurry F hF) = F
+```
+
+SliceMap.lean
+```lean
+lemma sliceOverCurry_precomp {A₀ A K X : SSet.{u}} {p : K ⟶ X}
+    (F : join A K ⟶ X) (hF : joinInr A K ≫ F = p) (g : A₀ ⟶ A) :
+    g ≫ sliceOverCurry F hF =
+      sliceOverCurry (joinMap g (𝟙 K) ≫ F)
+        (by rw [← Category.assoc, joinInr_joinMap, Category.id_comp, hF])
+```
+
+SliceMap.lean
+```lean
+lemma sliceOverCurry_restrict {A K₀ K X : SSet.{u}} {p : K ⟶ X}
+    (F : join A K ⟶ X) (hF : joinInr A K ≫ F = p) (f : K₀ ⟶ K) :
+    sliceOverCurry F hF ≫ sliceOverRestrict p f =
+      sliceOverCurry (joinMap (𝟙 A) f ≫ F)
+        (by rw [← Category.assoc, joinInr_joinMap, Category.assoc, hF])
+```
+
+SliceMap.lean
+```lean
+lemma sliceOverCurry_postcomp {A K X Y : SSet.{u}} {p : K ⟶ X}
+    (F : join A K ⟶ X) (hF : joinInr A K ≫ F = p) (q : X ⟶ Y) :
+    sliceOverCurry F hF ≫ sliceOverPostcomp p q =
+      sliceOverCurry (F ≫ q) (by rw [← Category.assoc, hF])
+```
+
+SliceMap.lean
+```lean
+lemma sliceOverUncurry_precomp {A₀ A K X : SSet.{u}} {p : K ⟶ X}
+    (f : A ⟶ sliceOver p) (g : A₀ ⟶ A) :
+    sliceOverUncurry (g ≫ f) = joinMap g (𝟙 K) ≫ sliceOverUncurry f
+```
+
+SliceMap.lean
+```lean
+lemma sliceOverUncurry_restrict {A K₀ K X : SSet.{u}} {p : K ⟶ X}
+    (f : A ⟶ sliceOver p) (g : K₀ ⟶ K) :
+    sliceOverUncurry (f ≫ sliceOverRestrict p g) = joinMap (𝟙 A) g ≫ sliceOverUncurry f
+```
+
+SliceMap.lean
+```lean
+lemma sliceOverUncurry_postcomp {A K X Y : SSet.{u}} {p : K ⟶ X}
+    (f : A ⟶ sliceOver p) (q : X ⟶ Y) :
+    sliceOverUncurry (f ≫ sliceOverPostcomp p q) = sliceOverUncurry f ≫ q
+```
+
+JoinLifting.lean
+```lean
+lemma joinMap_range_inf {A B : SSet.{u}} (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) :
+    Subfunctor.range (joinMap A₀.ι B₀.ι) =
+      joinSubcomplexLeft A₀ B ⊓ joinSubcomplexRight A B₀
+```
+
+JoinLifting.lean
+```lean
+noncomputable def joinIntersectionIso {A B : SSet.{u}} (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) :
+    join (A₀ : SSet.{u}) (B₀ : SSet.{u}) ≅
+      ((joinSubcomplexLeft A₀ B ⊓ joinSubcomplexRight A B₀ :
+        (join A B).Subcomplex) : SSet.{u})
+```
+
+JoinLifting.lean
+```lean
+lemma joinIntersectionIso_hom_ι {A B : SSet.{u}} (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) :
+    (joinIntersectionIso A₀ B₀).hom ≫
+      (joinSubcomplexLeft A₀ B ⊓ joinSubcomplexRight A B₀).ι = joinMap A₀.ι B₀.ι
+```
+
+JoinLifting.lean
+```lean
+def joinUnionLeft {A B : SSet.{u}} (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) :
+    join (A₀ : SSet.{u}) B ⟶ (joinUnion A₀ B₀ : SSet.{u})
+```
+
+JoinLifting.lean
+```lean
+def joinUnionRight {A B : SSet.{u}} (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) :
+    join A (B₀ : SSet.{u}) ⟶ (joinUnion A₀ B₀ : SSet.{u})
+```
+
+JoinLifting.lean
+```lean
+lemma joinUnion_isPushout {A B : SSet.{u}} (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) :
+    IsPushout (joinMap (𝟙 (A₀ : SSet.{u})) B₀.ι)
+      (joinMap A₀.ι (𝟙 (B₀ : SSet.{u}))) (joinUnionLeft A₀ B₀) (joinUnionRight A₀ B₀)
+```
+
+JoinLifting.lean
+```lean
+lemma joinUnionLeft_ι {A B : SSet.{u}} (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) :
+    joinUnionLeft A₀ B₀ ≫ (joinUnion A₀ B₀).ι = joinMap A₀.ι (𝟙 B)
+```
+
+JoinLifting.lean
+```lean
+lemma joinUnionRight_ι {A B : SSet.{u}} (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) :
+    joinUnionRight A₀ B₀ ≫ (joinUnion A₀ B₀).ι = joinMap (𝟙 A) B₀.ι
+```
+
+JoinLifting.lean
+```lean
+lemma sliceUnderUncurry_injective {A K X : SSet.{u}} (p : K ⟶ X) :
+    Function.Injective (sliceUnderUncurry (A
+```
+
+JoinLifting.lean
+```lean
+noncomputable def relativeSliceUnder {K₀ K X Y : SSet.{u}}
+    (p : K ⟶ X) (f : K₀ ⟶ K) (q : X ⟶ Y) : SSet.{u}
+```
+
+JoinLifting.lean
+```lean
+noncomputable def relativeSliceUnderMap {K₀ K X Y : SSet.{u}} (p : K ⟶ X) (f : K₀ ⟶ K) (q : X ⟶ Y) :
+    sliceUnder p ⟶ relativeSliceUnder p f q
+```
+
+JoinLifting.lean
+```lean
+lemma relativeSliceUnderMap_hasLiftingProperty {A B X Y : SSet.{u}}
+    (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) (q : X ⟶ Y)
+    (h : HasLiftingProperty (joinUnion A₀ B₀).ι q) (p : A ⟶ X) :
+    HasLiftingProperty B₀.ι (relativeSliceUnderMap p A₀.ι q)
+```
+
+JoinLifting.lean
+```lean
+lemma joinUnion_hasLiftingProperty_of_relativeSliceUnderMap {A B X Y : SSet.{u}}
+    (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) (q : X ⟶ Y)
+    (h : ∀ p : A ⟶ X, HasLiftingProperty B₀.ι (relativeSliceUnderMap p A₀.ι q)) :
+    HasLiftingProperty (joinUnion A₀ B₀).ι q
+```
+
+JoinLifting.lean
+```lean
+lemma joinUnion_rightHorn_innerAnodyne {B : SSet.{u}} (B₀ : B.Subcomplex)
+    (n : ℕ) (i : Fin (n + 2)) (h0 : 0 < i) :
+    innerAnodyneExtensions (joinUnion (horn (n + 1) i) B₀).ι
+```
+
+JoinLifting.lean
+```lean
+lemma sliceOverUncurry_injective {A K X : SSet.{u}} (p : K ⟶ X) :
+    Function.Injective (sliceOverUncurry (A
+```
+
+JoinLifting.lean
+```lean
+noncomputable def relativeSliceOver {K₀ K X Y : SSet.{u}}
+    (p : K ⟶ X) (f : K₀ ⟶ K) (q : X ⟶ Y) : SSet.{u}
+```
+
+JoinLifting.lean
+```lean
+noncomputable def relativeSliceOverMap {K₀ K X Y : SSet.{u}} (p : K ⟶ X) (f : K₀ ⟶ K) (q : X ⟶ Y) :
+    sliceOver p ⟶ relativeSliceOver p f q
+```
+
+JoinLifting.lean
+```lean
+lemma relativeSliceOverMap_hasLiftingProperty {A B X Y : SSet.{u}}
+    (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) (q : X ⟶ Y)
+    (h : HasLiftingProperty (joinUnion B₀ A₀).ι q) (p : A ⟶ X) :
+    HasLiftingProperty B₀.ι (relativeSliceOverMap p A₀.ι q)
+```
+
+JoinLifting.lean
+```lean
+lemma joinUnion_hasLiftingProperty_of_relativeSliceOverMap {A B X Y : SSet.{u}}
+    (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) (q : X ⟶ Y)
+    (h : ∀ p : A ⟶ X, HasLiftingProperty B₀.ι (relativeSliceOverMap p A₀.ι q)) :
+    HasLiftingProperty (joinUnion B₀ A₀).ι q
+```
+
+JoinLifting.lean
+```lean
+lemma joinUnion_leftHorn_innerAnodyne {A : SSet.{u}} (A₀ : A.Subcomplex)
+    (n : ℕ) (i : Fin (n + 2)) (hn : i < Fin.last (n + 1)) :
+    innerAnodyneExtensions (joinUnion A₀ (horn (n + 1) i)).ι
+```
+
+JoinAnodyne.lean
+```lean
+lemma joinUnion_innerAnodyne_of_rightAnodyne {A B : SSet.{u}}
+    (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) (hA : rightAnodyneExtensions A₀.ι) :
+    innerAnodyneExtensions (joinUnion A₀ B₀).ι
+```
+
+JoinAnodyne.lean
+```lean
+lemma joinUnion_innerAnodyne_of_leftAnodyne {A B : SSet.{u}}
+    (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) (hB : leftAnodyneExtensions B₀.ι) :
+    innerAnodyneExtensions (joinUnion A₀ B₀).ι
+```
+
+Core の対象ビルドと公理監査はともに終了コード 0。累計 192 件の監査対象は標準三公理のみ
+（公理なしも含む）。A2c は完了。A2d〜A2i は未完了。全体ビルドは工程の区切りで実施する。
+次は A2d の left/right fibration と slice 射影の right fibration 性へ進む。
