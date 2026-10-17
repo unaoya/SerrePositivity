@@ -1016,3 +1016,24 @@ M9 の適用については、商を取る前の次数零の平坦 Hom を持つ
 - これは graph kernel の場合の実際の主導来接続であり、任意 kernel の商への降下や
   恒等・合成・自然変換の全 coherence まで完了したという主張ではない。
   構造照合と係数変更の直接構成との一致を継続する。中心作用・G 作用は保留。
+
+### U17d5：既存の tria–Perf・Karoubi–Perf 係数変更正方形の構造照合
+
+- `Verdier/ShiftReflection.lean`：前合成が関手圏上で忠実なら、前合成した自然変換の
+  shift 整合性から元の自然変換の shift 整合性が従うことを証明した。
+  既存の shift 構造を変えず、前合成の shift 同型と自然性・可逆射の消去を使う。
+- `Verdier/KaroubiSquareShift.lean`：既存 `triaKaroubiPerfectFactors` と
+  `triaKaroubiPerfectSquare` の比較自然同型そのものが整数 shift と整合することを証明した。
+  正方形の辺だけの exactness で代用せず、実際の比較を Karoubi の標準包含に前合成し、
+  結合同型・既存の充満部分圏への持ち上げ比較を明示した合成に一致させて反映する。
+- `Verdier/ScalarKaroubiShift.lean`：前単位の **既存** `quotientScalarTriaPerfectSquare` と
+  `quotientScalarKaroubiPerfectSquare` に `NatTrans.CommShift` を与えた。
+  `quotientScalarKaroubiPerfectSquareTriangle` が三角形関手への実際の比較自然同型である。
+  非平坦係数変更の元の関手を取り替えたり、比較が可換になるよう別の shift を選んだりしない。
+- 対象ビルド `Verdier.ChecksScalarKaroubiShift` 成功（3369 jobs）、警告なし。
+  主要7宣言の公理監査は標準3公理のみ。新規 sorry・axiom・引用なし。
+  他担当のファイル・既存比較のファイルは読み取りのみ。
+- 前単位 `aa100ec6` は直後の stat で自分の3ファイルのみと確認済み。
+  残る構造照合は導来 graph 合成・二モデル比較・完備化全体の比較など。
+  係数変更の元の tria からの直接局所化構成との一致、一般 kernel の自然性も継続する。
+  中心作用・G 作用は引き続き保留。
