@@ -873,6 +873,27 @@ dg nerve と内部ホーン充填および quasicategory instance を監査す�
 #print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.term_heq_linear
 #check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.term_heq_linear
 
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withLastEquiv
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withLastEquiv
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.sum_withLast
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.sum_withLast
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.sum_linear_terms
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.sum_linear_terms
+#print axioms SerrePositivity.InfinityCategories.DGNerve.sum_heq_of_obj_eq
+#check @SerrePositivity.InfinityCategories.DGNerve.sum_heq_of_obj_eq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.differential_heq_of_obj_eq
+#check @SerrePositivity.InfinityCategories.DGNerve.differential_heq_of_obj_eq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.rhs_withLast
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.rhs_withLast
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.rhs_heq_linear_terms
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.rhs_heq_linear_terms
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.rhs_heq_linear
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.rhs_heq_linear
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.toLinearData_equation
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.toLinearData_equation
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.toLinearSimplex
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.toLinearSimplex
+
 section
 universe u v
 variable (A : Type u) [CommRing A] (D : Type v)
