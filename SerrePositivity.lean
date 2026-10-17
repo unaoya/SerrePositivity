@@ -1,8 +1,7 @@
 module
 
 public import SerrePositivity.DifferentialGraded.Derived.ScalarExtensionTensorCoherence
-public import SerrePositivity.DifferentialGraded.Quotient.ScalarExtensionComposition
-public import SerrePositivity.DifferentialGraded.Quotient.ScalarExtensionEpsilon
+public import SerrePositivity.DifferentialGraded.Quotient.ScalarExtensionErasure
 
 public import SerrePositivity.DifferentialGraded.Endomorphism.Compatibility
 

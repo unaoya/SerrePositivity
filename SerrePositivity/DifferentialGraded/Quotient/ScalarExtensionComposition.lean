@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Quotient.ScalarExtensionPaths
 public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionDiagrams
-public import SerrePositivity.DifferentialGraded.Quotient.PathComposition
+public import SerrePositivity.DifferentialGraded.Quotient.InternalComposition
 
 /-! # 係数変更と有限 path の先頭合成 -/
 @[expose] public section
@@ -113,5 +113,39 @@ lemma appendMap_baseChange {S : Set D} (w v : Word S) (x y z : D) :
     erw [houter]
     rw [← Category.assoc, hα, Category.assoc]
     rw [id_tensorHom]
+
+variable [Small.{u} D]
+
+lemma internalComposition_baseChange (S : Set D) (x y z : D) :
+    (extension φ).map (internalComposition A D S x y z) ≫
+        (internalHomBaseChangeIso φ D S x z).hom =
+      compareTensor φ (internalHomBaseChangeIso φ D S x y).hom
+        (internalHomBaseChangeIso φ D S y z).hom ≫
+          internalComposition A' (DGBaseChange φ D) S x y z := by
+  apply ((adjunction φ).homEquiv _ _).injective
+  apply internalComposition_hom_ext A D S x y z
+  intro w v
+  let c := compareTensor φ (termBaseChangeIso φ D w x y).hom (termBaseChangeIso φ D v y z).hom
+  let t := appendMap A' (DGBaseChange φ D) w v x y z ≫
+    ι A' (DGBaseChange φ D) S x z (w ++ v)
+  have hl : (extension φ).map (ι A D S x y w ⊗ₘ ι A D S y z v) ≫
+      ((extension φ).map (internalComposition A D S x y z) ≫
+        (internalHomBaseChangeIso φ D S x z).hom) = c ≫ t := by
+    rw [← CategoryTheory.Functor.map_comp_assoc, internalComposition_ι,
+      CategoryTheory.Functor.map_comp, Category.assoc, map_ι_internalHomBaseChangeIso,
+      ← Category.assoc, appendMap_baseChange, Category.assoc]
+  have ht := compareTensor_naturality φ (ι A D S x y w) (ι A D S y z v)
+    (ι A' (DGBaseChange φ D) S x y w) (ι A' (DGBaseChange φ D) S y z v)
+    (map_ι_internalHomBaseChangeIso φ D S x y w)
+    (map_ι_internalHomBaseChangeIso φ D S y z v)
+  have hr : (extension φ).map (ι A D S x y w ⊗ₘ ι A D S y z v) ≫
+      (compareTensor φ (internalHomBaseChangeIso φ D S x y).hom
+        (internalHomBaseChangeIso φ D S y z).hom ≫
+          internalComposition A' (DGBaseChange φ D) S x y z) = c ≫ t := by
+    rw [← Category.assoc, ht, Category.assoc, internalComposition_ι]
+  have h := congrArg ((adjunction φ).homEquiv _ _) (hl.trans hr.symm)
+  rw [(adjunction φ).homEquiv_naturality_left,
+    (adjunction φ).homEquiv_naturality_left] at h
+  exact h
 
 end SerrePositivity.DifferentialGraded.DGQuotient

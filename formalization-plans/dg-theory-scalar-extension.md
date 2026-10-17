@@ -355,3 +355,21 @@ U15d へ進む。U12f の受入範囲は上記の計算モデル条件を含む�
 
 残る U15d の受入：各位置の ε 消去、有限和と全直和の消去作用素、最終微分に対する
 Hom 同型、最終単位・合成の比較。既存 Quotient ファイルは編集していない。
+
+
+## 2026-10-17：ε 消去の全有限和と全直和への貼合せ
+
+有限 path 合成と cochain 比較は `6d8777ab` にコミット済み。
+`Quotient/ScalarExtensionErasure.lean` は先頭・中間・各位置の ε 消去を比較し、
+`eraseSummand_baseChange`・`eraseRow_baseChange` で同じ eraseIdx と同じ有限和を保持する。
+余積を保存する係数拡大を各次数で使い、`erasure_baseChange` により全直和上の次数 +1
+消去作用素の可換性まで証明した。内部微分との反交換だけを代用したものではない。
+`ScalarExtensionComposition.lean` の `internalComposition_baseChange` は、先の有限 path
+連結比較を随伴の Hom 同値と二つの path 直和の普遍性によって全直和へ延長する。
+
+検証：`lake build SerrePositivity.DifferentialGraded.Checks.QuotientScalarExtensionErasure` 成功
+（2069 jobs、警告なし）。今回の主要8宣言はすべて標準3公理のみ。
+新規 sorry・axiom・引用は0件。ルートは自分の import hunk のみ部分 stage。
+
+最終 Hom の chain 同型と元の Hom 包含の比較も対象ビルド済み。最終単位・合成の
+比較と、それらを持つ実際の dg 関手の最終監査を続ける。
