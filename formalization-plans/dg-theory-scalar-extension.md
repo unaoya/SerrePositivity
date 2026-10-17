@@ -317,3 +317,19 @@ coend が A-K-flat なら同型。全 dg 自然な両変数の射との自然性
 
 U15d へ進む。U12f の受入範囲は上記の計算モデル条件を含む。全体の完了参照は U15d の
 最終微分・単位・合成の検証後にだけ正本へ追加する。
+
+
+## 2026-10-17：U15d の固定 path 添字比較
+
+導来 tensor の計算モデル比較は `2ea75b10` にコミット済み。
+`Quotient/ScalarExtensionPaths.lean` の `termBaseChangeIso` は、同じ `Word S = List S` に
+対する有限 path 項の chain 同型を、tensor 比較と次数 −1 sphere 比較から再帰的に作る。
+`internalHomBaseChangeIso` は同じ有限語添字の全直和の同型であり、各 path 包含と
+空 path の元の Hom 包含との整合性を証明した。係数環の flatness は不要。
+
+検証：`lake build SerrePositivity.DifferentialGraded.Checks.QuotientScalarExtensionPaths` 成功
+（2046 jobs、警告なし）。非 flat な `ℤ → ZMod 2` の path 同型を型検査。主要5宣言は
+すべて標準3公理のみ。新規 sorry・axiom・引用は0件。ルートへ自分の import 行を追加し部分 stage。
+
+これは内部微分についての同型である。ε 消去を加えた最終微分、単位・合成との整合性は
+引き続き証明中。U15d 全受入および正本への完了参照はまだ行わない。
