@@ -207,3 +207,25 @@ HEAD からの差分全体が自分の変更だけであることも確認する
 - 残部：tria(D) 全体への比較の延長、Verdier 分母の像と path 長 filtration の比較、
   局所 K-flat 下の完全忠実性・本質的全射、U17b の perfect/Karoubi 比較。
   目的全体は継続中であり、DG-DR は採用していない。
+
+### U15e4：tria 全体への実際の比較関手と tria(S) の零性
+
+- `Quotient/DerivedComparisonCells.lean`：shift・有限和・標準 cone を保存する
+  加群上の関手に対し、finite cell の操作木に沿う像の判定を証明。
+  既存の一般 dg 加群関手の cone 比較を読み取り専用で用いた。
+- 既存の graph tensor と加群の射影置換による `dgDerivedExtension` を使用。
+  有限 cell は既にホモトピー射影的なので、その恒等射影置換による計算同型から
+  任意の有限 cell 本質像上で三角部分圏への所属を示した。dg 圏の分解は使わない。
+- `Quotient/DerivedComparisonExtension.lean`：空 path 包含に沿う実際の関手
+  `derivedComparisonTria : tria(D) ⥤ tria(D/S)` を全ての対象・射に定義。
+  代表対象上の計算同型、tria(S) 全体の零性、代表像による商側 tria の三角生成性を証明。
+- この段階では関手の三角性、Verdier 分母の反転、局所 K-flat 下の完全忠実性・
+  本質的全射は未証明。生成性だけで本質的全射性とはしない。U15e・U17b 全体は未完。
+- 対象ビルド：`lake build SerrePositivity.DifferentialGraded.Checks.QuotientDerivedExtension`
+  成功（2629 jobs）。主要9宣言の公理監査は `propext`・`Classical.choice`・`Quot.sound` のみ。
+  新規 sorry・axiom・引用なし。
+- U15e3 のコミット：`0254e2de`（直後の `git show --stat HEAD` で自分の3ファイルのみと確認）。
+- ルートの先行する並行差分が解消していることを確認し、自分の比較拡張・制限の import 2行を追加。
+  正本の参照一行は既存記録どおりとし、追加変更しない。
+- project import 依存422ファイルを走査し、`Resolution/`、`Derived/KFlatBimodule*`、
+  `Derived/Bimodule*` への依存なし。標準加群解像度と dg 圏解像度は区別する。
