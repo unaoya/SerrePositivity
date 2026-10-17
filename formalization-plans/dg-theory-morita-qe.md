@@ -229,6 +229,16 @@
 - `Morita.ScalarExtensionKernelChecks` ビルド成功（2628 jobs、警告なし）。
   主要4宣言の公理監査は標準3公理のみ。
 
+## U16d.10：係数変更した実際のkernel作用を終域とする評価比較
+
+- `Morita/ScalarExtensionKernelAction.lean`：U16d.9の全Hom付き左評価等式により、
+  U16d.7のU12f終域tensorを、係数変更した実際のkernelの主導来作用の出力評価と同定した。
+  実際のPerf作用を始域とする版も構成した。
+- hPN・hP'をそのまま明示して受け取る。sourceは出力評価複体の導来係数変更である。
+  dg加群の導来係数変更と出力評価の交換を無条件に仮定するものではない。
+- `Morita.ScalarExtensionKernelActionChecks` ビルド成功（3235 jobs、警告なし）。
+  主要2宣言の公理監査は標準3公理のみ。
+
 ## 合同検証と公開入口（2026-10-17）
 
 - 新規10監査対象・公開入口・既存 `Checks.DGFunctorDerivedEquivalence` の12対象を
