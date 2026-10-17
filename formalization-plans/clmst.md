@@ -10585,3 +10585,21 @@ Koszul ホモロジーの両消滅を保持し、g の選択を内部へ隠さ�
 `exists_perfectoidization_of_integral` と `perfectoidization_excision_isPullback`
 の二つだけであることを検査した。BS 7.14 は証明済みとして展開し、許可境界に置かない。
 元の Cor 4.0.4 入力の引用には依存しない。入力の置換はこの報告後の別コミットで行う。
+
+**Cor 4.0.4 の引用元の置換と最終監査（2026-10-17）。**
+実証明・専用監査を先行コミット `601f3b2b` に保存し、二入力だけへの依存を報告した後、
+`CLMST/Inputs/CohomologyVanishing.lean` の `corollary_4_0_4` の sorry を
+同署名の `CLMST.corollary_4_0_4` の適用へ置換した（別コミット `6308dca1`）。
+新しい sorry・axiom・引用は追加していない。
+専用監査は公開証明と元の Inputs 入口の双方を根にして、同署名と到達する未証明宣言を検査する。
+
+置換後の全体 `lake build` は7063ジョブで成功した。
+`scripts/audit_axioms.lean`、`scripts/audit_clmst.lean`、
+`scripts/audit_clmst_corollary404.lean` はすべて終了コード0で成功した。
+双方の Cor 4.0.4 の `#print axioms` は標準三公理と `sorryAx`、
+到達する未証明宣言は `exists_perfectoidization_of_integral` と
+`perfectoidization_excision_isPullback` の二件だけである。
+主定理の `#print sorries` に `corollary_4_0_4` が現れないことも確認した。
+主定理全体の未証明一覧は BS の上記二件と既存の
+`Section4.supportedRankK0_descent`、`theorem_3_1_K0` の四件である。
+BhattScholze/ と Prop247 系のファイルは編集していない。
