@@ -78,4 +78,15 @@ def homotopyAdjunction : L.onHomotopy ⊣ R.onHomotopy :=
         Functor.comp_obj, Functor.id_obj, NatTrans.id] using
           homotopyAdjunction_right_triangle L R adj X }
 
+/-- 商へ送った実際の射について随伴Hom同値も商への関手と可換。 -/
+lemma homotopyAdjunction_homEquiv_map (X : ClosedCategory A D) (Y : ClosedCategory A E)
+    (f : L.onClosed.obj X ⟶ Y) :
+    (homotopyAdjunction L R adj).homEquiv ((toHomotopy A D).obj X)
+        ((toHomotopy A E).obj Y) ((toHomotopy A E).map f) =
+      (toHomotopy A D).map (adj.homEquiv X Y f) := by
+  rw [Adjunction.homEquiv_unit]
+  change (toHomotopy A D).map (adj.unit.app X) ≫
+    (toHomotopy A D).map (R.onClosed.map f) = _
+  rw [← CategoryTheory.Functor.map_comp]
+
 end SerrePositivity.DifferentialGraded.DGFunctor

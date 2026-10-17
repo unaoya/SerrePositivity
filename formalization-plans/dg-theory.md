@@ -9537,3 +9537,47 @@ BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_
 準同値に沿う全加群の導来同値、解像度変更とbimodule合成の自然性・単位・結合のcoherenceは未完。
 U12e全受入→U16a〜d→U15eの分解版という順序と局所K-flat版の並行所有は維持する。
 共有一般論への新しいAPI要求はない。共有ルート・Endomorphism/・係数変更系列は変更していない。
+
+### 17.208 U12e48：導来延長Hom同値の両変数自然性と実際の導来随伴（2026-10-17）
+
+**追加API。** `Functor/HomotopyAdjunction.lean`に
+`DGFunctor.homotopyAdjunction_homEquiv_map`を追加し、実際の閉零射の像について
+主K随伴のHom同値と商への関手が可換であることを証明した。
+`Derived/FunctorExtensionProjectiveNaturality.lean`では、射影的始域における
+`dgProjectiveDerivedExtensionHomEquiv`の実際の射上の計算式と両変数自然性を証明した。
+射の持ち上げは既存`moduleProjectiveToDerived_map_surjective`を再利用する。
+
+`Derived/FunctorExtensionNaturality.lean`で主K経由の計算同型と、任意の指定解像度族による
+導来延長計算同型の自然性を証明した。標準解像度を再度指定した計算同型の一致は
+`ModuleProjectiveResolution.comparison_self`を用い、選択したchain map自体が恒等であるとは
+仮定しない。標準解像度間のliftに対する計算同型の逆射の自然性も得た。
+
+`Derived/FunctorExtensionHomNaturality.lean`では、解像度liftの増大とのsquareを
+境界の局所化による等化で証明し、実際の加群射について導来Hom同値の両変数自然性を得た。
+`Derived/FunctorExtensionAdjunction.lean`はU14の既存
+`localizationHom_naturality_left/right`を読み取り専用で再利用し、
+局所化後の任意の射へ自然性を延長する。
+`dgDerivedExtensionRestrictionAdjunction`は実際の主導来関手
+`dgDerivedExtension ⊣ dgDerivedRestriction`の随伴である。
+`dgDerivedExtensionUnit`・`dgDerivedExtensionCounit`と両三角恒等式を公開した。
+任意可換環・独立対象宇宙・u-smallな対象型で、元のHomのflatness・有界性や
+FのHom準同型性は要求しない。既存公開APIの名前・型の変更はない。
+
+**検証。** `Checks.DGDerivedExtensionAdjunction`は任意の導来射に対する両変数自然性、
+導来随伴、両三角恒等式、ZMod 2上の随伴を型検査した。
+同チェック、Checks.DGExtensionProjective・Checks.DGFunctorAdjunction・Checks.DGFunctorCounit・
+Checks.DGFunctorExtension・Checks.DGDerivedRestriction・Checks.DGResolutionComparison・
+Checks.DerivedBimoduleFullPentagon・Checks.StageEight・Checks.StageSeven・Spectra.StageTwoの
+統合ビルド成功（3325 jobs、警告なし）。主要21宣言の直接公理監査は重複・欠落なく標準3公理以内。
+監査累計4073宣言。今回の受入ソースのsorry・admit・新規axiom・資源上限変更は0件。
+採用済み引用は0件。全体文書検査は共有ルート読込時に、担当外の
+BhattScholze.Andre.MonicRootedExtension.olean不在で参照収集前に停止した。
+担当外のソース・ビルドや共有監査スクリプトは変更していない。
+
+**残る受入条件。** 次は代表加群上の既存往復同型と今回の実際の導来単位の一致を示し、
+Hom準同型性の下でその単位の同型性を得る。U14のiso locusと局所化・生成性の既存APIを再利用して
+全加群へ拡張し、準同値に沿う導来同値を証明する。
+解像度変更と導来bimodule合成・対角単位・結合の自然性およびcoherenceへの接続は未完。
+導来随伴を得たことだけでU12e全体を受け入れない。
+U12e全受入→U16a〜d→U15eの分解版の順と局所K-flat版の並行所有を維持する。
+共有一般論への新しいAPI要求はない。Endomorphism/・係数変更系列は読み取り専用で保持した。
