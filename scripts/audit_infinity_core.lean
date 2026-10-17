@@ -73,3 +73,81 @@ import SerrePositivity.InfinityCategories.Core
 #print axioms SerrePositivity.InfinityCategories.Join.leftMap
 #print axioms SerrePositivity.InfinityCategories.Join.rightMap
 #print axioms SerrePositivity.InfinityCategories.Join.simplexMap
+
+-- A2a 途中：直接構成の関手法則・包含・部分複体・空 join。
+#check @SerrePositivity.InfinityCategories.Join.augHom
+#check @SerrePositivity.InfinityCategories.Join.augHom_naturality
+#check @SerrePositivity.InfinityCategories.Join.augHom_id
+#check @SerrePositivity.InfinityCategories.Join.augHom_comp
+#check @SerrePositivity.InfinityCategories.Join.augHom_injective
+#check @SerrePositivity.InfinityCategories.Join.stdAugEquiv
+#check @SerrePositivity.InfinityCategories.Join.concat
+#check @SerrePositivity.InfinityCategories.Join.concat_lt_iff
+#check @SerrePositivity.InfinityCategories.Join.Simplex.ext
+#check @SerrePositivity.InfinityCategories.Join.augMap_congr
+#check @SerrePositivity.InfinityCategories.Join.pullCut_zero
+#check @SerrePositivity.InfinityCategories.Join.pullCut_all
+#check @SerrePositivity.InfinityCategories.Join.pullCut_concat
+#check @SerrePositivity.InfinityCategories.Join.simplexMap_id
+#check @SerrePositivity.InfinityCategories.Join.simplexMap_comp
+#check @SerrePositivity.InfinityCategories.Join.Simplex.inl
+#check @SerrePositivity.InfinityCategories.Join.Simplex.inr
+#check @SerrePositivity.InfinityCategories.Join.simplexMap_inl
+#check @SerrePositivity.InfinityCategories.Join.simplexMap_inr
+#check @SerrePositivity.InfinityCategories.join
+#check @SerrePositivity.InfinityCategories.joinMap
+#check @SerrePositivity.InfinityCategories.joinMap_id
+#check @SerrePositivity.InfinityCategories.joinMap_comp
+#check @SerrePositivity.InfinityCategories.joinMap_mono
+#check @SerrePositivity.InfinityCategories.joinInl
+#check @SerrePositivity.InfinityCategories.joinInr
+#check @SerrePositivity.InfinityCategories.joinInl_joinMap
+#check @SerrePositivity.InfinityCategories.joinInr_joinMap
+#check @SerrePositivity.InfinityCategories.joinSubcomplexLeft
+#check @SerrePositivity.InfinityCategories.joinSubcomplexRight
+#check @SerrePositivity.InfinityCategories.joinUnion
+#check @SerrePositivity.InfinityCategories.joinSubcomplexLeftIso
+#check @SerrePositivity.InfinityCategories.joinSubcomplexRightIso
+#check @SerrePositivity.InfinityCategories.joinSubcomplexLeftIso_hom_ι
+#check @SerrePositivity.InfinityCategories.joinSubcomplexRightIso_hom_ι
+#check @SerrePositivity.InfinityCategories.emptyJoinIso
+#check @SerrePositivity.InfinityCategories.joinInl_joinMap_assoc
+#check @SerrePositivity.InfinityCategories.joinInr_joinMap_assoc
+#print axioms SerrePositivity.InfinityCategories.Join.augHom
+#print axioms SerrePositivity.InfinityCategories.Join.augHom_naturality
+#print axioms SerrePositivity.InfinityCategories.Join.augHom_id
+#print axioms SerrePositivity.InfinityCategories.Join.augHom_comp
+#print axioms SerrePositivity.InfinityCategories.Join.augHom_injective
+#print axioms SerrePositivity.InfinityCategories.Join.stdAugEquiv
+#print axioms SerrePositivity.InfinityCategories.Join.concat
+#print axioms SerrePositivity.InfinityCategories.Join.concat_lt_iff
+#print axioms SerrePositivity.InfinityCategories.Join.Simplex.ext
+#print axioms SerrePositivity.InfinityCategories.Join.augMap_congr
+#print axioms SerrePositivity.InfinityCategories.Join.pullCut_zero
+#print axioms SerrePositivity.InfinityCategories.Join.pullCut_all
+#print axioms SerrePositivity.InfinityCategories.Join.pullCut_concat
+#print axioms SerrePositivity.InfinityCategories.Join.simplexMap_id
+#print axioms SerrePositivity.InfinityCategories.Join.simplexMap_comp
+#print axioms SerrePositivity.InfinityCategories.Join.Simplex.inl
+#print axioms SerrePositivity.InfinityCategories.Join.Simplex.inr
+#print axioms SerrePositivity.InfinityCategories.Join.simplexMap_inl
+#print axioms SerrePositivity.InfinityCategories.Join.simplexMap_inr
+#print axioms SerrePositivity.InfinityCategories.join
+#print axioms SerrePositivity.InfinityCategories.joinMap
+#print axioms SerrePositivity.InfinityCategories.joinMap_id
+#print axioms SerrePositivity.InfinityCategories.joinMap_comp
+#print axioms SerrePositivity.InfinityCategories.joinMap_mono
+#print axioms SerrePositivity.InfinityCategories.joinInl
+#print axioms SerrePositivity.InfinityCategories.joinInr
+#print axioms SerrePositivity.InfinityCategories.joinInl_joinMap
+#print axioms SerrePositivity.InfinityCategories.joinInr_joinMap
+#print axioms SerrePositivity.InfinityCategories.joinSubcomplexLeft
+#print axioms SerrePositivity.InfinityCategories.joinSubcomplexRight
+#print axioms SerrePositivity.InfinityCategories.joinUnion
+#print axioms SerrePositivity.InfinityCategories.joinSubcomplexLeftIso
+#print axioms SerrePositivity.InfinityCategories.joinSubcomplexRightIso
+#print axioms SerrePositivity.InfinityCategories.joinSubcomplexLeftIso_hom_ι
+#print axioms SerrePositivity.InfinityCategories.joinSubcomplexRightIso_hom_ι
+#print axioms SerrePositivity.InfinityCategories.emptyJoinIso
+#print axioms SerrePositivity.InfinityCategories.joinInl_joinMap_assoc
+#print axioms SerrePositivity.InfinityCategories.joinInr_joinMap_assoc

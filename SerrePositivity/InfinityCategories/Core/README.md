@@ -52,6 +52,26 @@ coslice は `{σ : join K Δ[n] ⟶ X // joinInl K Δ[n] ≫ σ = p}`。
 この節は型と実装方針の設計であり、join・slice の Lean 実装の完成を意味しない。
 A2c・A2h の anodyne 性の正確な文言と証明は未着手。
 
+### 承認後の追加要件（2026-10-17）
+
+設計 §4 は維持する。単体の ext 補題で切断の命題的等式と左右の cast を扱い、
+これを先に実装してから `simplexMap` の合成則を示す。
+A2a に部分複体の join を含め、`A₀ ≤ A`・`B₀ ≤ B` に対する
+`A₀ ⋆ B` と `A ⋆ B₀` を `A ⋆ B` の部分複体として構成する。
+A2c の pushout-join の始域はこの二つの部分複体の和とする。
+
+A2b は任意の単体集合 A に対する普遍性
+
+```text
+(A ⟶ sliceOver p) ≃ {F : join A K ⟶ X // joinInr A K ≫ F = p}
+```
+
+と coslice の双対を含む。各単体 a の `σ_a : join Δ[dim a] K ⟶ X` を
+`F(ℓ,a,k) := σ_a(ℓ,id,k)` により束ねる直接構成を使い、余極限の一般論は使わない。
+A2a 完了、A2b 完了、A2c の順に進める。
+A2c・A2h は正確な文言を原典と照合してこの README に記録・報告してから実装する。
+その報告後の追加承認は不要。
+
 ## 検証と現在の範囲
 
 A1a の比較同値、A1b の関手性・自然性、A1c のホモトピーからの自然変換を実装。
@@ -59,9 +79,15 @@ A1d の通常の圏の nerve での具体化も実装。A1a〜A1d は完了、A2
 対象ビルド後、`lake env lean scripts/audit_infinity_core.lean` で
 全ての明示的公開宣言の型と公理を確認する。
 
-A2a の前段階として `Join.lean` に `augObj`・`augMap` とその恒等・合成則、
-次数ごとの型 `Join.Simplex`、切断の逆像 `pullCut` とその特徴づけ・恒等・合成則、
-左右の制限写像 `leftMap`・`rightMap`、次数ごとの作用 `simplexMap` を実装した。
-`simplexMap` 自身の関手法則は未証明で、`join : SSet → SSet → SSet` はまだ未構成。
-包含・標準単体の同型・空 join の同型・射への関手性・slice は未実装。
-前段階の 14 宣言を含む累計 30 宣言を監査し、全て標準三公理のみ。
+A2a は実装途中。`Join.Simplex.ext` は切断の等式に伴う左右の cast を明示する。
+`simplexMap` の恒等・合成則から `join : SSet → SSet → SSet` を構成済み。
+`joinInl`・`joinInr`、`joinMap` とその恒等・合成・単射性・包含との整合性を実装した。
+`joinSubcomplexLeft`・`joinSubcomplexRight` は、単射な joinMap の像による部分複体。
+`joinUnion` はその和で、各像と元の join との同型および包含との整合性も実装済み。
+`emptyJoinIso A L` は、任意の A の空部分複体と L の join が L と同型であることを与える。
+
+標準単体の join の同型に向けて `stdAugEquiv`、有限順序写像の `concat` と
+切断を復元する補題を実装したが、`Δ[i] ⋆ Δ[j] ≅ Δ[i+j+1]` 自体は未構成。
+この同型が残っているため A2a は完了と数えない。
+A2b の slice・coslice・射影・普遍性、A2c 以降は未実装。
+累計 66 明示的公開宣言と生成された整合性補題 2 件、計 68 件を監査し、全て標準三公理のみ。

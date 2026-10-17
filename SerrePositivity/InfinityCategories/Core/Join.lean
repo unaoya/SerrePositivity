@@ -12,6 +12,8 @@ public import Mathlib.Order.Interval.Finset.Fin
 
 @[expose] public section
 
+set_option backward.isDefEq.respectTransparency false
+
 universe u
 
 open CategoryTheory SSet
@@ -65,12 +67,148 @@ lemma augMap_comp (K : SSet.{u}) {l m n : ℕ}
         exact ConcreteCategory.congr_hom
           (K.map_comp (SimplexCategory.mkHom α).op (SimplexCategory.mkHom β).op) x
 
+/-- 概要：単体集合の射は空単体を補った各次数にも作用する。
+方針：空区間では恒等、非空区間では射の成分を使う。
+規約：空単体の唯一の元を保つ。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の join の射への関手性。 -/
+def augHom {K L : SSet.{u}} (f : K ⟶ L) : (n : ℕ) → augObj K n → augObj L n
+  | 0 => id
+  | _n + 1 => f.app _
+
+/-- 概要：空単体を補った射の作用は順序写像による引き戻しと可換。
+方針：空区間を分け、非空区間では自然性を適用する。
+規約：任意の単体集合の射を扱う。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の joinMap の自然性。 -/
+lemma augHom_naturality {K L : SSet.{u}} (f : K ⟶ L) {m n : ℕ}
+    (α : Fin m →o Fin n) (x : augObj K n) :
+    augHom f m (augMap K α x) = augMap L α (augHom f n x) := by
+  cases m with
+  | zero => rfl
+  | succ m =>
+    cases n with
+    | zero => exact Fin.elim0 (α 0)
+    | succ n => exact ConcreteCategory.congr_hom (f.naturality (SimplexCategory.mkHom α).op) x
+
+/-- 概要：補った単体への恒等射の作用は恒等。
+方針：頂点数で場合分けする。規約：空単体も含む。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の joinMap の恒等則。 -/
+lemma augHom_id (K : SSet.{u}) (n : ℕ) (x : augObj K n) : augHom (𝟙 K) n x = x := by
+  cases n <;> rfl
+
+/-- 概要：補った単体への射の作用は合成を保つ。
+方針：頂点数で場合分けする。規約：合成は Mathlib の順序。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の joinMap の合成則。 -/
+lemma augHom_comp {K L M : SSet.{u}} (f : K ⟶ L) (g : L ⟶ M) (n : ℕ) (x : augObj K n) :
+    augHom (f ≫ g) n x = augHom g n (augHom f n x) := by
+  cases n <;> rfl
+
+/-- 概要：単射な単体集合の射は補った単体の型でも単射。
+方針：空区間では一点性、非空区間では成分の単射性を使う。
+規約：仮定は圏論的な単射 `Mono f`。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の部分複体の join。 -/
+lemma augHom_injective {K L : SSet.{u}} (f : K ⟶ L) [Mono f] (n : ℕ) :
+    Function.Injective (augHom f n) := by
+  cases n with
+  | zero => intro x y _; exact @Subsingleton.elim PUnit inferInstance x y
+  | succ n => exact (mono_iff_injective (f.app _)).mp inferInstance
+
 /-- 概要：join の n 単体の型を切断位置ごとの直和として与える。
 方針：左側の頂点数を `Fin (n+2)` で走らせ、右側は残りの頂点数とする。
 規約：切断 0 と n+1 は、それぞれ右と左だけの単体。
 使われ方：HTT §1.2.8、Kerodon §4.3.5 の直接構成の次数ごとの型。 -/
 def Simplex (K L : SSet.{u}) (n : ℕ) : Type u :=
   Σ ℓ : Fin (n + 2), augObj K ℓ.val × augObj L (n + 1 - ℓ.val)
+
+/-- 概要：補った標準単体は、空区間も許す有限順序集合の順序写像と同値。
+方針：非空区間では標準単体の表現可能性、空区間では唯一の空写像を使う。
+規約：r は頂点数であり、標準単体の次数ではない。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の標準単体の join の同型。 -/
+def stdAugEquiv (n r : ℕ) : augObj (Δ[n] : SSet.{u}) r ≃ (Fin r →o Fin (n + 1)) :=
+  match r with
+  | 0 =>
+    { toFun := fun _ ↦ ⟨Fin.elim0, fun i ↦ Fin.elim0 i⟩
+      invFun := fun _ ↦ PUnit.unit
+      left_inv := fun _ ↦ rfl
+      right_inv := fun _ ↦ by ext i; exact Fin.elim0 i }
+  | r + 1 =>
+    { toFun := fun x ↦ (stdSimplex.objEquiv x).toOrderHom
+      invFun := fun f ↦ stdSimplex.objEquiv.symm (SimplexCategory.mkHom f)
+      left_inv := fun _ ↦ rfl
+      right_inv := fun _ ↦ rfl }
+
+/-- 概要：有限順序集合の二つの順序写像を、切断で連結する。
+方針：左側の値を保ち、右側の値には左終域の頂点数を加える。
+規約：空区間を許し、r 頂点の始域を切断 ℓ で二分する。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の標準単体の join。 -/
+def concat {p q r : ℕ} (ℓ : ℕ) (_hℓ : ℓ ≤ r)
+    (f : Fin ℓ →o Fin p) (g : Fin (r - ℓ) →o Fin q) : Fin r →o Fin (p + q) where
+  toFun i := if h : i.val < ℓ then
+      ⟨(f ⟨i.val, h⟩).val, by have := (f ⟨i.val, h⟩).isLt; omega⟩
+    else
+      ⟨p + (g ⟨i.val - ℓ, by have := i.isLt; omega⟩).val,
+        by have := (g ⟨i.val - ℓ, by have := i.isLt; omega⟩).isLt; omega⟩
+  monotone' a b hab := by
+    dsimp only
+    split_ifs with ha hb hb
+    · exact f.monotone hab
+    · change (f _).val ≤ p + (g _).val
+      have := (f ⟨a.val, ha⟩).isLt
+      omega
+    · have : a.val ≤ b.val := hab
+      omega
+    · change p + (g _).val ≤ p + (g _).val
+      exact Nat.add_le_add_left (g.monotone (Nat.sub_le_sub_right hab ℓ)) p
+
+/-- 概要：連結した順序写像の値が左終域に入るのは、始域が左区間にあるときに限る。
+方針：切断の左右で場合分けし、それぞれの値の境界を使う。
+規約：終域の切断は左側の頂点数 p。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の標準単体の join の逆写像。 -/
+lemma concat_lt_iff {p q r : ℕ} (ℓ : ℕ) (hℓ : ℓ ≤ r)
+    (f : Fin ℓ →o Fin p) (g : Fin (r - ℓ) →o Fin q) (i : Fin r) :
+    (concat ℓ hℓ f g i).val < p ↔ i.val < ℓ := by
+  by_cases hi : i.val < ℓ
+  · simp only [concat, OrderHom.coe_mk, dite_eq_left hi]
+    exact iff_of_true (f ⟨i.val, hi⟩).isLt hi
+  · simp only [concat, OrderHom.coe_mk, dite_eq_right hi]
+    constructor
+    · omega
+    · exact fun h ↦ (hi h).elim
+
+/-- 概要：join の単体は切断と、その等式で移送した左右の因子で一意に決まる。
+方針：切断の等式で置換し、積と依存和の外延性を適用する。
+規約：切断の等式は命題的でよく、両因子の cast を明示する。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の join の関手法則と部分複体。 -/
+@[ext (iff := false)]
+lemma Simplex.ext {K L : SSet.{u}} {n : ℕ} (s t : Simplex K L n)
+    (hcut : s.1 = t.1)
+    (hleft : cast (congrArg (fun ℓ : Fin (n + 2) ↦ augObj K ℓ.val) hcut) s.2.1 = t.2.1)
+    (hright : cast (congrArg (fun ℓ : Fin (n + 2) ↦ augObj L (n + 1 - ℓ.val)) hcut)
+      s.2.2 = t.2.2) : s = t := by
+  rcases s with ⟨ℓ, x, y⟩
+  rcases t with ⟨ℓ', x', y'⟩
+  dsimp only at hcut
+  cases hcut
+  cases hleft
+  cases hright
+  rfl
+
+/-- 概要：頂点数を等式で移送しても、同じ順序写像に沿う単体の引き戻しは一致する。
+方針：頂点数と単体を置換し、順序写像の外延性を使う。
+規約：写像の一致は頂点の自然数値で与え、始域と終域の cast を明示する。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の切断の等式に沿う移送。 -/
+lemma augMap_congr (K : SSet.{u}) {m m' n n' : ℕ} (hm : m = m') (hn : n = n')
+    (α : Fin m →o Fin n) (β : Fin m' →o Fin n')
+    (hα : ∀ (i : Fin m) (j : Fin m'), i.val = j.val → (α i).val = (β j).val)
+    (x : augObj K n) (x' : augObj K n')
+    (hx : cast (congrArg (augObj K) hn) x = x') :
+    cast (congrArg (augObj K) hm) (augMap K α x) = augMap K β x' := by
+  subst m' n'
+  dsimp only [cast_eq] at hx ⊢
+  subst x'
+  have h : α = β := by
+    ext i
+    exact hα i i rfl
+  rw [h]
 
 /-- 概要：順序写像による先頭区間の逆像の頂点数。
 方針：先頭区間に入る頂点の有限集合の濃度を取る。
@@ -149,6 +287,30 @@ lemma pullCut_comp {l m n : ℕ} (α : Fin m →o Fin n) (β : Fin l →o Fin m)
   ext i
   simpa [pullCut] using (lt_pullCut_iff α ℓ (β i)).symm
 
+/-- 概要：空の先頭区間の逆像は空。
+方針：空の条件でフィルターした有限集合の濃度を計算する。
+規約：始域が空でも成り立つ。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の右包含。 -/
+lemma pullCut_zero {m n : ℕ} (α : Fin m →o Fin n) : pullCut α 0 = 0 := by
+  simp [pullCut]
+
+/-- 概要：終域全体の逆像は始域全体。
+方針：すべての頂点が終域の頂点数未満であることを使う。
+規約：始域が空でも成り立つ。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の左包含。 -/
+lemma pullCut_all {m n : ℕ} (α : Fin m →o Fin n) : pullCut α n = m := by
+  simp [pullCut]
+
+/-- 概要：二つの順序写像を連結してから左終域の逆像を取ると元の切断に戻る。
+方針：連結した値の左終域への所属で切断を特徴づける。
+規約：空の左右区間も含む。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の標準単体の join の同型。 -/
+lemma pullCut_concat {p q r : ℕ} (ℓ : ℕ) (hℓ : ℓ ≤ r)
+    (f : Fin ℓ →o Fin p) (g : Fin (r - ℓ) →o Fin q) :
+    pullCut (concat ℓ hℓ f g) p = ℓ :=
+  cut_ext (pullCut_le _ _) hℓ (fun i ↦
+    (lt_pullCut_iff _ _ i).trans (concat_lt_iff ℓ hℓ f g i))
+
 /-- 概要：順序写像を左側の先頭区間に制限した写像。
 方針：逆像の切断の特徴づけから終域が左区間に入ることを示す。
 規約：始域・終域とも頂点数零を許す。
@@ -186,4 +348,323 @@ def simplexMap (K L : SSet.{u}) {m n : ℕ} (α : Fin (m + 1) →o Fin (n + 1)) 
     ⟨⟨pullCut α ℓ.val, by have := pullCut_le α ℓ.val; omega⟩,
       augMap K (leftMap α ℓ.val) x, augMap L (rightMap α ℓ.val) y⟩
 
+/-- 概要：join の次数ごとの単体作用は恒等順序写像を恒等に送る。
+方針：切断を `pullCut_id` で移送し、左右の制限が恒等になることを示す。
+規約：移送は `Simplex.ext` で明示し、空区間も含める。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の join の恒等則。 -/
+lemma simplexMap_id (K L : SSet.{u}) (n : ℕ) (s : Simplex K L n) :
+    simplexMap K L OrderHom.id s = s := by
+  rcases s with ⟨ℓ, x, y⟩
+  have hc := pullCut_id ℓ.val (Nat.le_of_lt_succ ℓ.isLt)
+  apply Simplex.ext _ _ (Fin.ext hc)
+  · exact (augMap_congr K hc rfl (leftMap OrderHom.id ℓ.val) OrderHom.id
+      (fun i j hij ↦ hij) x x rfl).trans (augMap_id K _ x)
+  · exact (augMap_congr L (congrArg (fun c ↦ n + 1 - c) hc) rfl
+      (rightMap OrderHom.id ℓ.val) OrderHom.id
+      (fun i j hij ↦ by
+        change pullCut OrderHom.id ℓ.val + i.val - ℓ.val = j.val
+        omega) y y rfl).trans (augMap_id L _ y)
+
+/-- 概要：join の次数ごとの単体作用は順序写像の合成に対して反変的。
+方針：切断を `pullCut_comp` で移送し、左右の制限写像の合成を比較する。
+規約：右側の添字の原点移動を自然数の等式で確認する。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の join の合成則。 -/
+lemma simplexMap_comp (K L : SSet.{u}) {l m n : ℕ}
+    (α : Fin (m + 1) →o Fin (n + 1)) (β : Fin (l + 1) →o Fin (m + 1))
+    (s : Simplex K L n) :
+    simplexMap K L (α.comp β) s = simplexMap K L β (simplexMap K L α s) := by
+  rcases s with ⟨ℓ, x, y⟩
+  have hc := pullCut_comp α β ℓ.val
+  apply Simplex.ext _ _ (Fin.ext hc)
+  · refine (augMap_congr K hc rfl (leftMap (α.comp β) ℓ.val)
+      ((leftMap α ℓ.val).comp (leftMap β (pullCut α ℓ.val))) ?_ x x rfl).trans ?_
+    · intro i j hij
+      change (α (β ⟨i.val, _⟩)).val = (α (β ⟨j.val, _⟩)).val
+      exact congrArg (fun z : Fin (l + 1) ↦ (α (β z)).val) (Fin.ext hij)
+    · exact augMap_comp K _ _ x
+  · refine (augMap_congr L (congrArg (fun c ↦ l + 1 - c) hc) rfl
+      (rightMap (α.comp β) ℓ.val)
+      ((rightMap α ℓ.val).comp (rightMap β (pullCut α ℓ.val))) ?_ y y rfl).trans ?_
+    · intro i j hij
+      have hβ : pullCut α ℓ.val ≤
+          (β ⟨pullCut β (pullCut α ℓ.val) + j.val, by have := j.isLt; omega⟩).val := by
+        apply Nat.le_of_not_lt
+        intro h
+        have := (lt_pullCut_iff β (pullCut α ℓ.val) _).mpr h
+        dsimp only at this
+        omega
+      change (α (β ⟨pullCut (α.comp β) ℓ.val + i.val, _⟩)).val - ℓ.val =
+        (α ⟨pullCut α ℓ.val +
+          ((β ⟨pullCut β (pullCut α ℓ.val) + j.val, _⟩).val - pullCut α ℓ.val), _⟩).val - ℓ.val
+      apply congrArg (fun z : Fin (m + 1) ↦ (α z).val - ℓ.val)
+      apply Fin.ext
+      have he : (⟨pullCut (α.comp β) ℓ.val + i.val, by have := i.isLt; omega⟩ : Fin (l + 1)) =
+          ⟨pullCut β (pullCut α ℓ.val) + j.val, by have := j.isLt; omega⟩ :=
+        Fin.ext (by
+          change pullCut (α.comp β) ℓ.val + i.val = pullCut β (pullCut α ℓ.val) + j.val
+          omega)
+      change (β _).val = pullCut α ℓ.val + ((β _).val - pullCut α ℓ.val)
+      rw [he]
+      omega
+    · exact augMap_comp L _ _ y
+
+/-- 概要：左因子の単体を右区間が空の join の単体にする。
+方針：切断を全頂点数に取り、空の右区間に一点を補う。
+規約：左単体の次数は変えない。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の左包含。 -/
+def Simplex.inl {K L : SSet.{u}} {n : ℕ} (x : K _⦋n⦌) : Simplex K L n :=
+  ⟨⟨n + 1, by omega⟩, x, by simp only [Nat.sub_self, augObj]; exact PUnit.unit⟩
+
+/-- 概要：右因子の単体を左区間が空の join の単体にする。
+方針：切断を零に取り、空の左区間に一点を補う。
+規約：右単体の次数は変えない。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の右包含。 -/
+def Simplex.inr {K L : SSet.{u}} {n : ℕ} (y : L _⦋n⦌) : Simplex K L n :=
+  ⟨⟨0, by omega⟩, PUnit.unit, y⟩
+
+/-- 概要：左包含は順序写像による引き戻しと可換。
+方針：全区間の逆像を移送し、左の制限が元の写像であることを確認する。
+規約：空の右因子は一点の一意性で処理する。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の joinInl の自然性。 -/
+lemma simplexMap_inl (K L : SSet.{u}) {m n : ℕ}
+    (α : Fin (m + 1) →o Fin (n + 1)) (x : K _⦋n⦌) :
+    simplexMap K L α (Simplex.inl x) = Simplex.inl (augMap K α x) := by
+  have hc := pullCut_all α
+  apply Simplex.ext _ _ (Fin.ext hc)
+  · exact augMap_congr K hc rfl _ α (fun i j hij ↦ by
+      change (α ⟨i.val, _⟩).val = (α j).val
+      exact congrArg (fun z ↦ (α z).val) (Fin.ext hij)) x x rfl
+  · exact @Subsingleton.elim (augObj L (m + 1 - (m + 1)))
+      (by simp only [Nat.sub_self, augObj]; infer_instance) _ _
+
+/-- 概要：右包含は順序写像による引き戻しと可換。
+方針：空の先頭区間の逆像を移送し、右の制限が元の写像であることを確認する。
+規約：空の左因子は一点の一意性で処理する。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の joinInr の自然性。 -/
+lemma simplexMap_inr (K L : SSet.{u}) {m n : ℕ}
+    (α : Fin (m + 1) →o Fin (n + 1)) (y : L _⦋n⦌) :
+    simplexMap K L α (Simplex.inr y) = Simplex.inr (augMap L α y) := by
+  have hc := pullCut_zero α
+  apply Simplex.ext _ _ (Fin.ext hc)
+  · exact @Subsingleton.elim PUnit inferInstance _ _
+  · exact augMap_congr L (congrArg (fun c ↦ m + 1 - c) hc) rfl _ α
+      (fun i j hij ↦ by
+        change (α ⟨pullCut α 0 + i.val, _⟩).val - 0 = (α j).val
+        apply congrArg (fun z ↦ (α z).val)
+        exact Fin.ext (by change pullCut α 0 + i.val = j.val; omega)) y y rfl
+
 end SerrePositivity.InfinityCategories.Join
+
+namespace SerrePositivity.InfinityCategories
+
+/-- 概要：二つの単体集合の join を、切断ごとの単体の直和から直接構成する。
+方針：順序写像の先頭区間の逆像に沿って両因子を引き戻す。
+規約：空区間の因子は一点。Day 畳み込みやモデル構造は用いない。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の slice と錐の基礎。 -/
+def join (K L : SSet.{u}) : SSet.{u} where
+  obj n := Join.Simplex K L n.unop.len
+  map α := ↾(Join.simplexMap K L α.unop.toOrderHom)
+  map_id n := by
+    apply ConcreteCategory.hom_ext
+    intro s
+    exact Join.simplexMap_id K L n.unop.len s
+  map_comp α β := by
+    apply ConcreteCategory.hom_ext
+    intro s
+    exact Join.simplexMap_comp K L α.unop.toOrderHom β.unop.toOrderHom s
+
+/-- 概要：二つの単体集合の射が join に誘導する射。
+方針：切断を固定し、左右の単体にそれぞれ射を適用する。
+規約：空区間の一点は固定する。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の slice の単体作用と図式の変更。 -/
+def joinMap {K K' L L' : SSet.{u}} (f : K ⟶ K') (g : L ⟶ L') :
+    join K L ⟶ join K' L' where
+  app n := ↾fun s ↦ ⟨s.1, Join.augHom f _ s.2.1, Join.augHom g _ s.2.2⟩
+  naturality a b α := by
+    apply ConcreteCategory.hom_ext
+    rintro ⟨ℓ, x, y⟩
+    refine Join.Simplex.ext _ _ ?_ ?_ ?_
+    · rfl
+    · exact Join.augHom_naturality f _ x
+    · exact Join.augHom_naturality g _ y
+
+/-- 概要：join に誘導される恒等射は恒等射。
+方針：切断を固定したまま両因子の恒等則を使う。
+規約：空区間も含める。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の join の関手性。 -/
+lemma joinMap_id (K L : SSet.{u}) : joinMap (𝟙 K) (𝟙 L) = 𝟙 (join K L) := by
+  apply SSet.hom_ext
+  intro n
+  apply ConcreteCategory.hom_ext
+  rintro ⟨ℓ, x, y⟩
+  refine Join.Simplex.ext _ _ ?_ ?_ ?_
+  · rfl
+  · exact Join.augHom_id K _ x
+  · exact Join.augHom_id L _ y
+
+/-- 概要：join の射への作用は左右の合成を保つ。
+方針：切断を固定し、補った単体に対する合成則を使う。
+規約：左右それぞれの合成の向きを保つ。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の slice の関手法則。 -/
+lemma joinMap_comp {K K' K'' L L' L'' : SSet.{u}}
+    (f : K ⟶ K') (f' : K' ⟶ K'') (g : L ⟶ L') (g' : L' ⟶ L'') :
+    joinMap (f ≫ f') (g ≫ g') = joinMap f g ≫ joinMap f' g' := by
+  apply SSet.hom_ext
+  intro n
+  apply ConcreteCategory.hom_ext
+  rintro ⟨ℓ, x, y⟩
+  refine Join.Simplex.ext _ _ ?_ ?_ ?_
+  · rfl
+  · exact Join.augHom_comp f f' _ x
+  · exact Join.augHom_comp g g' _ y
+
+/-- 概要：左右の射が単射なら join に誘導される射も単射。
+方針：像の切断の一致と、両因子の成分の単射性を使う。
+規約：仮定は `Mono f` と `Mono g`。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の部分複体の join の包含。 -/
+instance joinMap_mono {K K' L L' : SSet.{u}} (f : K ⟶ K') (g : L ⟶ L') [Mono f] [Mono g] :
+    Mono (joinMap f g) := by
+  rw [NatTrans.mono_iff_mono_app]
+  intro n
+  rw [mono_iff_injective]
+  rintro ⟨ℓ, x, y⟩ ⟨ℓ', x', y'⟩ h
+  have hc : ℓ = ℓ' := congrArg Sigma.fst h
+  subst ℓ'
+  have hp := eq_of_heq (Sigma.mk.inj h).2
+  have hl := (Join.augHom_injective f ℓ.val) (congrArg Prod.fst hp)
+  have hr := (Join.augHom_injective g (n.unop.len + 1 - ℓ.val)) (congrArg Prod.snd hp)
+  exact congrArg (Sigma.mk ℓ) (Prod.ext hl hr)
+
+/-- 概要：join の左因子からの包含。
+方針：各単体を右区間が空の単体に送る。
+規約：切断はその次数の全頂点数。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の slice の射影。 -/
+def joinInl (K L : SSet.{u}) : K ⟶ join K L where
+  app _ := ↾Join.Simplex.inl
+  naturality _ _ α := ConcreteCategory.hom_ext _ _ (fun x ↦
+    (Join.simplexMap_inl K L α.unop.toOrderHom x).symm)
+
+/-- 概要：join の右因子からの包含。
+方針：各単体を左区間が空の単体に送る。
+規約：切断は零。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の slice の固定条件。 -/
+def joinInr (K L : SSet.{u}) : L ⟶ join K L where
+  app _ := ↾Join.Simplex.inr
+  naturality _ _ α := ConcreteCategory.hom_ext _ _ (fun y ↦
+    (Join.simplexMap_inr K L α.unop.toOrderHom y).symm)
+
+/-- 概要：左包含は左右の射に関して自然。
+方針：左因子の単体と空の右区間への作用を計算する。
+規約：合成は左包含の後に joinMap を適用する順序。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の slice の固定条件。 -/
+@[reassoc]
+lemma joinInl_joinMap {K K' L L' : SSet.{u}} (f : K ⟶ K') (g : L ⟶ L') :
+    joinInl K L ≫ joinMap f g = f ≫ joinInl K' L' := by
+  apply SSet.hom_ext
+  intro n
+  apply ConcreteCategory.hom_ext
+  intro x
+  refine Join.Simplex.ext _ _ ?_ ?_ ?_
+  · rfl
+  · rfl
+  · exact @Subsingleton.elim (Join.augObj L' (n.unop.len + 1 - (n.unop.len + 1)))
+      (by simp only [Nat.sub_self, Join.augObj]; infer_instance) _ _
+
+/-- 概要：右包含は左右の射に関して自然。
+方針：右因子の単体と空の左区間への作用を計算する。
+規約：合成は右包含の後に joinMap を適用する順序。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の slice の固定条件。 -/
+@[reassoc]
+lemma joinInr_joinMap {K K' L L' : SSet.{u}} (f : K ⟶ K') (g : L ⟶ L') :
+    joinInr K L ≫ joinMap f g = g ≫ joinInr K' L' := by
+  apply SSet.hom_ext
+  intro n
+  apply ConcreteCategory.hom_ext
+  intro y
+  rfl
+
+/-- 概要：左の部分複体と全右因子の join を、全 join の部分複体として実現する。
+方針：単射 `joinMap A₀.ι (𝟙 B)` の像を取る。
+規約：部分複体の単体集合との同型は `joinSubcomplexLeftIso`。
+使われ方：HTT 2.1.2.3、Kerodon §4.3.6 の pushout-join の始域。 -/
+def joinSubcomplexLeft {A : SSet.{u}} (A₀ : A.Subcomplex) (B : SSet.{u}) :
+    (join A B).Subcomplex :=
+  Subfunctor.range (joinMap A₀.ι (𝟙 B))
+
+/-- 概要：全左因子と右の部分複体の join を、全 join の部分複体として実現する。
+方針：単射 `joinMap (𝟙 A) B₀.ι` の像を取る。
+規約：部分複体の単体集合との同型は `joinSubcomplexRightIso`。
+使われ方：HTT 2.1.2.3、Kerodon §4.3.6 の pushout-join の始域。 -/
+def joinSubcomplexRight (A : SSet.{u}) {B : SSet.{u}} (B₀ : B.Subcomplex) :
+    (join A B).Subcomplex :=
+  Subfunctor.range (joinMap (𝟙 A) B₀.ι)
+
+/-- 概要：二つの片側の部分複体の join の和。
+方針：部分複体の完備束の上限を取る。
+規約：始域は `(A₀ ⋆ B) ∪ (A ⋆ B₀)`。
+使われ方：HTT 2.1.2.3、Kerodon §4.3.6 の pushout-join の包含の始域。 -/
+def joinUnion {A B : SSet.{u}} (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) :
+    (join A B).Subcomplex :=
+  joinSubcomplexLeft A₀ B ⊔ joinSubcomplexRight A B₀
+
+/-- 概要：左の部分複体の join と、その全 join 内の像は同型。
+方針：単射な自然変換から像への射が同型であることを使う。
+規約：対象は部分複体の単体集合。
+使われ方：HTT 2.1.2.3、Kerodon §4.3.6 の部分複体による pushout-join。 -/
+noncomputable def joinSubcomplexLeftIso {A : SSet.{u}} (A₀ : A.Subcomplex) (B : SSet.{u}) :
+    join (A₀ : SSet.{u}) B ≅ (joinSubcomplexLeft A₀ B : SSet.{u}) :=
+  by
+    letI : Mono (joinMap A₀.ι (𝟙 B)) := joinMap_mono _ _
+    letI := Subfunctor.instIsIsoFunctorTypeToRangeOfMono (joinMap A₀.ι (𝟙 B))
+    exact asIso (Subfunctor.toRange (joinMap A₀.ι (𝟙 B)))
+
+/-- 概要：右の部分複体の join と、その全 join 内の像は同型。
+方針：単射な自然変換から像への射が同型であることを使う。
+規約：対象は部分複体の単体集合。
+使われ方：HTT 2.1.2.3、Kerodon §4.3.6 の部分複体による pushout-join。 -/
+noncomputable def joinSubcomplexRightIso (A : SSet.{u}) {B : SSet.{u}} (B₀ : B.Subcomplex) :
+    join A (B₀ : SSet.{u}) ≅ (joinSubcomplexRight A B₀ : SSet.{u}) :=
+  by
+    letI : Mono (joinMap (𝟙 A) B₀.ι) := joinMap_mono _ _
+    letI := Subfunctor.instIsIsoFunctorTypeToRangeOfMono (joinMap (𝟙 A) B₀.ι)
+    exact asIso (Subfunctor.toRange (joinMap (𝟙 A) B₀.ι))
+
+/-- 概要：左の部分複体の像への同型は全 join への包含と整合する。
+方針：像への射の定義から計算する。
+規約：同型の順方向の射を使う。
+使われ方：HTT 2.1.2.3、Kerodon §4.3.6 の持ち上げ問題の翻訳。 -/
+lemma joinSubcomplexLeftIso_hom_ι {A : SSet.{u}} (A₀ : A.Subcomplex) (B : SSet.{u}) :
+    (joinSubcomplexLeftIso A₀ B).hom ≫ (joinSubcomplexLeft A₀ B).ι =
+      joinMap A₀.ι (𝟙 B) := rfl
+
+/-- 概要：右の部分複体の像への同型は全 join への包含と整合する。
+方針：像への射の定義から計算する。
+規約：同型の順方向の射を使う。
+使われ方：HTT 2.1.2.3、Kerodon §4.3.6 の持ち上げ問題の翻訳。 -/
+lemma joinSubcomplexRightIso_hom_ι (A : SSet.{u}) {B : SSet.{u}} (B₀ : B.Subcomplex) :
+    (joinSubcomplexRightIso A B₀).hom ≫ (joinSubcomplexRight A B₀).ι =
+      joinMap (𝟙 A) B₀.ι := rfl
+
+/-- 概要：空の単体集合と L の join は L と同型。
+方針：左区間が非空なら空の部分複体の単体が存在せず、切断零のみが残る。
+規約：空の単体集合を任意の A の空部分複体として表す。追加の仮定はない。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の空 join の単位則。 -/
+noncomputable def emptyJoinIso (A L : SSet.{u}) :
+    join ((⊥ : A.Subcomplex) : SSet.{u}) L ≅ L := by
+  let E : SSet.{u} := (⊥ : A.Subcomplex)
+  haveI : IsIso (joinInr E L) := by
+    rw [NatTrans.isIso_iff_isIso_app]
+    intro n
+    rw [isIso_iff_bijective]
+    constructor
+    · intro x y h
+      exact congrArg Prod.snd (eq_of_heq (Sigma.mk.inj h).2)
+    · rintro ⟨⟨ℓ, hℓ⟩, x, y⟩
+      cases ℓ with
+      | zero =>
+        exact ⟨y, by cases x; rfl⟩
+      | succ ℓ =>
+        exact False.elim x.property
+  exact (asIso (joinInr E L)).symm
+
+end SerrePositivity.InfinityCategories

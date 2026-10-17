@@ -276,3 +276,174 @@ A2a〜A2i のいずれも完了とは数えない。
 原典：HTT §1.2.8、Kerodon §4.3.5。追加公理・引用・`sorry` はない。
 
 前段階を集約した全体 `set -o pipefail; lake build` も終了コード 0（7349 jobs）。
+
+
+### A2a 途中②（2026-10-17）：join の関手法則・包含・部分複体
+
+**A2a はまだ未完了。** 承認された直接構成を維持し、追加された三要件を
+Core/README.md に記録した。今回、切断と左右の cast を扱う ext 補題を先に用意し、
+その後に単体作用の恒等・合成則と `join : SSet → SSet → SSet` を構成した。
+`joinMap` の関手性・単射性、左右の包含とその自然性、部分複体の join とその和、
+部分複体の像との同型、空 join の同型を実装した。
+
+以下は今回追加した全 36 明示的公開宣言の正確な型。宇宙 `u` は任意、
+`open CategoryTheory SSet` と `open scoped Simplicial` の下で記す。
+`[Mono f]` のある宣言以外には単射の前提を置かず、quasicategory の仮定も不要。
+namespace：`SerrePositivity.InfinityCategories.Join`。
+
+```lean
+augHom {K L : SSet.{u}} (f : K ⟶ L) : (n : ℕ) → augObj K n → augObj L n
+
+augHom_naturality {K L : SSet.{u}} (f : K ⟶ L) {m n : ℕ}
+    (α : Fin m →o Fin n) (x : augObj K n) :
+    augHom f m (augMap K α x) = augMap L α (augHom f n x)
+
+augHom_id (K : SSet.{u}) (n : ℕ) (x : augObj K n) : augHom (𝟙 K) n x = x
+
+augHom_comp {K L M : SSet.{u}} (f : K ⟶ L) (g : L ⟶ M) (n : ℕ) (x : augObj K n) :
+    augHom (f ≫ g) n x = augHom g n (augHom f n x)
+
+augHom_injective {K L : SSet.{u}} (f : K ⟶ L) [Mono f] (n : ℕ) :
+    Function.Injective (augHom f n)
+
+stdAugEquiv (n r : ℕ) : augObj (Δ[n] : SSet.{u}) r ≃ (Fin r →o Fin (n + 1))
+
+concat {p q r : ℕ} (ℓ : ℕ) (_hℓ : ℓ ≤ r)
+    (f : Fin ℓ →o Fin p) (g : Fin (r - ℓ) →o Fin q) : Fin r →o Fin (p + q)
+
+concat_lt_iff {p q r : ℕ} (ℓ : ℕ) (hℓ : ℓ ≤ r)
+    (f : Fin ℓ →o Fin p) (g : Fin (r - ℓ) →o Fin q) (i : Fin r) :
+    (concat ℓ hℓ f g i).val < p ↔ i.val < ℓ
+
+Simplex.ext {K L : SSet.{u}} {n : ℕ} (s t : Simplex K L n)
+    (hcut : s.1 = t.1)
+    (hleft : cast (congrArg (fun ℓ : Fin (n + 2) ↦ augObj K ℓ.val) hcut) s.2.1 = t.2.1)
+    (hright : cast (congrArg (fun ℓ : Fin (n + 2) ↦ augObj L (n + 1 - ℓ.val)) hcut)
+      s.2.2 = t.2.2) : s = t
+
+augMap_congr (K : SSet.{u}) {m m' n n' : ℕ} (hm : m = m') (hn : n = n')
+    (α : Fin m →o Fin n) (β : Fin m' →o Fin n')
+    (hα : ∀ (i : Fin m) (j : Fin m'), i.val = j.val → (α i).val = (β j).val)
+    (x : augObj K n) (x' : augObj K n')
+    (hx : cast (congrArg (augObj K) hn) x = x') :
+    cast (congrArg (augObj K) hm) (augMap K α x) = augMap K β x'
+
+pullCut_zero {m n : ℕ} (α : Fin m →o Fin n) : pullCut α 0 = 0
+
+pullCut_all {m n : ℕ} (α : Fin m →o Fin n) : pullCut α n = m
+
+pullCut_concat {p q r : ℕ} (ℓ : ℕ) (hℓ : ℓ ≤ r)
+    (f : Fin ℓ →o Fin p) (g : Fin (r - ℓ) →o Fin q) :
+    pullCut (concat ℓ hℓ f g) p = ℓ
+
+simplexMap_id (K L : SSet.{u}) (n : ℕ) (s : Simplex K L n) :
+    simplexMap K L OrderHom.id s = s
+
+simplexMap_comp (K L : SSet.{u}) {l m n : ℕ}
+    (α : Fin (m + 1) →o Fin (n + 1)) (β : Fin (l + 1) →o Fin (m + 1))
+    (s : Simplex K L n) :
+    simplexMap K L (α.comp β) s = simplexMap K L β (simplexMap K L α s)
+
+Simplex.inl {K L : SSet.{u}} {n : ℕ} (x : K _⦋n⦌) : Simplex K L n
+
+Simplex.inr {K L : SSet.{u}} {n : ℕ} (y : L _⦋n⦌) : Simplex K L n
+
+simplexMap_inl (K L : SSet.{u}) {m n : ℕ}
+    (α : Fin (m + 1) →o Fin (n + 1)) (x : K _⦋n⦌) :
+    simplexMap K L α (Simplex.inl x) = Simplex.inl (augMap K α x)
+
+simplexMap_inr (K L : SSet.{u}) {m n : ℕ}
+    (α : Fin (m + 1) →o Fin (n + 1)) (y : L _⦋n⦌) :
+    simplexMap K L α (Simplex.inr y) = Simplex.inr (augMap L α y)
+
+```
+
+namespace：`SerrePositivity.InfinityCategories`。
+
+```lean
+join (K L : SSet.{u}) : SSet.{u}
+
+joinMap {K K' L L' : SSet.{u}} (f : K ⟶ K') (g : L ⟶ L') :
+    join K L ⟶ join K' L'
+
+joinMap_id (K L : SSet.{u}) : joinMap (𝟙 K) (𝟙 L) = 𝟙 (join K L)
+
+joinMap_comp {K K' K'' L L' L'' : SSet.{u}}
+    (f : K ⟶ K') (f' : K' ⟶ K'') (g : L ⟶ L') (g' : L' ⟶ L'') :
+    joinMap (f ≫ f') (g ≫ g') = joinMap f g ≫ joinMap f' g'
+
+joinMap_mono {K K' L L' : SSet.{u}} (f : K ⟶ K') (g : L ⟶ L') [Mono f] [Mono g] :
+    Mono (joinMap f g)
+
+joinInl (K L : SSet.{u}) : K ⟶ join K L
+
+joinInr (K L : SSet.{u}) : L ⟶ join K L
+
+joinInl_joinMap {K K' L L' : SSet.{u}} (f : K ⟶ K') (g : L ⟶ L') :
+    joinInl K L ≫ joinMap f g = f ≫ joinInl K' L'
+
+joinInr_joinMap {K K' L L' : SSet.{u}} (f : K ⟶ K') (g : L ⟶ L') :
+    joinInr K L ≫ joinMap f g = g ≫ joinInr K' L'
+
+joinSubcomplexLeft {A : SSet.{u}} (A₀ : A.Subcomplex) (B : SSet.{u}) :
+    (join A B).Subcomplex
+
+joinSubcomplexRight (A : SSet.{u}) {B : SSet.{u}} (B₀ : B.Subcomplex) :
+    (join A B).Subcomplex
+
+joinUnion {A B : SSet.{u}} (A₀ : A.Subcomplex) (B₀ : B.Subcomplex) :
+    (join A B).Subcomplex
+
+joinSubcomplexLeftIso {A : SSet.{u}} (A₀ : A.Subcomplex) (B : SSet.{u}) :
+    join (A₀ : SSet.{u}) B ≅ (joinSubcomplexLeft A₀ B : SSet.{u})
+
+joinSubcomplexRightIso (A : SSet.{u}) {B : SSet.{u}} (B₀ : B.Subcomplex) :
+    join A (B₀ : SSet.{u}) ≅ (joinSubcomplexRight A B₀ : SSet.{u})
+
+joinSubcomplexLeftIso_hom_ι {A : SSet.{u}} (A₀ : A.Subcomplex) (B : SSet.{u}) :
+    (joinSubcomplexLeftIso A₀ B).hom ≫ (joinSubcomplexLeft A₀ B).ι =
+      joinMap A₀.ι (𝟙 B)
+
+joinSubcomplexRightIso_hom_ι (A : SSet.{u}) {B : SSet.{u}} (B₀ : B.Subcomplex) :
+    (joinSubcomplexRightIso A B₀).hom ≫ (joinSubcomplexRight A B₀).ι =
+      joinMap (𝟙 A) B₀.ι
+
+emptyJoinIso (A L : SSet.{u}) :
+    join ((⊥ : A.Subcomplex) : SSet.{u}) L ≅ L
+
+```
+
+`@[reassoc]` が生成する以下の公開宣言 2 件も監査した。
+
+```lean
+joinInl_joinMap_assoc {K K' L L' Z : SSet.{u}}
+  (f : K ⟶ K') (g : L ⟶ L') (h : join K' L' ⟶ Z) :
+  joinInl K L ≫ joinMap f g ≫ h = f ≫ joinInl K' L' ≫ h
+
+joinInr_joinMap_assoc {K K' L L' Z : SSet.{u}}
+  (f : K ⟶ K') (g : L ⟶ L') (h : join K' L' ⟶ Z) :
+  joinInr K L ≫ joinMap f g ≫ h = g ≫ joinInr K' L' ≫ h
+```
+
+`emptyJoinIso A L` は任意の A の空部分複体を空の単体集合の模型に取る。
+これは条件付きの空性の仮定を課さない実際の同型である。
+`stdAugEquiv`・`concat`・`concat_lt_iff`・`pullCut_concat` は
+標準単体の join の同型に向けた有限順序集合の計算であり、同型自体の完成ではない。
+
+対象 `lake build SerrePositivity.InfinityCategories.Core` と
+`lake env lean scripts/audit_infinity_core.lean` は終了コード 0。
+累計 66 明示的公開宣言と生成補題 2 件、計 68 件は標準三公理のみ。
+原典：HTT §1.2.8・2.1.2.3、Kerodon §4.3.5–4.3.6。
+
+未完了：`Δ[i] ⋆ Δ[j] ≅ Δ[i+j+1]`。したがって A2a は未完了。
+A2b の slice・coslice・射影・直接構成による普遍性も未実装で、A2c 以降には進んでいない。
+A2c・A2h の正確な anodyne の文言は、実装前に照合して README に記録・報告する。
+
+全体ビルドの結果：`set -o pipefail; lake build` は終了コード 1。
+Core の対象ビルドと公理監査は成功したが、編集禁止の並行作業範囲
+`SerrePositivity/InfinityCategories/Derived/SemifreeClosure.lean` が失敗した。
+202 行・230 行に `Unknown identifier Limits.Limits.Sigma.map`、
+219 行に書き換えの失敗、230 行・233 行に heartbeat 超過、
+255 行に `Unknown identifier coproductFiltrationIsColimit` が報告された。
+このファイルは変更せず、依存先破損時は止める指示に従い以降の実装を停止した。
+回避策・依存先の差し替えは作っていない。全体ビルドの成功は主張しない。
