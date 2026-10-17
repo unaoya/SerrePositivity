@@ -2183,3 +2183,47 @@ SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（
 生成宣言を含む 3301 宣言の推移的公理依存は標準 3 公理のみ。
 正次数商の同型・一般分冪降下・無限根正次数商の自由性と正則性・実還元構造・
 標準値・商射の分冪保存の公開型 7 本を `#print` で確認した（終了コード 0）。
+
+### E1.36：逆 Frobenius による ϖ の選択と実係数商の同型
+
+新規 `Andre/PerfectPrismVarpi.lean` は完全 oriented prism W=(A,(d)) に対し、
+x=φ⁻¹(d) と ϖ=x mod d を具体的に選ぶ。
+逆 Frobenius の δ 射性から δ(x) は単元であり、d=x^p+pδ(x) を商へ移すと
+ϖ^p=p·(−δ(x) mod d)。従って (ϖ^p)=(p) となる。
+これらは R=A/(d) の p 正則性・非零性を仮定せず成立する。
+一般 δ 環の distinguished 元について (φ(x),x)=(p,x) を証明し、
+ここでは (d,x)=(p,x) を得る。
+
+主要公開宣言は、p:ℕ、[Fact p.Prime]、[CommRing A]、
+W:`OrientedPrism p A`、hW:`W.deltaStructure.IsPerfect` に対する
+
+```lean
+theorem perfectPrismVarpi_span_pow :
+    Ideal.span {perfectPrismVarpi W hW ^ p} =
+      Ideal.span {(p : A ⧸ W.ideal)}
+
+def perfectPrismVarpiQuotientEquiv :
+    ((A ⧸ W.ideal) ⧸ Ideal.span {perfectPrismVarpi W hW}) ≃+*
+      ((A ⧸ Ideal.span {(p : A)}) ⧸
+        Ideal.span {Ideal.Quotient.mk (Ideal.span {(p : A)})
+          (perfectPrismVarpiLift W hW)})
+```
+
+同 `_mk` は A から来る二重商の代表元を保つことを主張する。
+主イデアル二重商の一般同型 `principalDoubleQuotEquiv` とその代表元公式も公開した。
+単なる型の書換えで同型を定義せず、標準二重商同型と等しいイデアル間の商同型を合成し、
+係数上で計算できる射を指定する。
+
+BS Rem 7.15（著者版 p.62）の R/ϖ 係数の具体化である。
+原典の ϖ の選択を指定 prism の生成元の逆 Frobenius で明示したものであり、
+今回だけでは prismatic envelope の Frobenius 引戻しを pd 包と同定していない。
+x mod p の正則性を R の p 正則性から導く工程、E1.35 の分冪降下との接続、
+その商の pd 普遍性・切断表示の係数比較、prismatic envelope との同定は未完了。
+存在定理は承認済み hdeg 付きで既に証明済みだが、依頼全体の完成とは数えない。
+
+対象および集約の `set -o pipefail; lake build` は終了コード 0
+（集約 `SerrePositivity.BhattScholze.Andre.MonicRootedExtension`：4428 jobs）。
+新規 12 公開宣言の `assert_no_sorry` を含む専用監査は終了コード 0。
+生成宣言を含む 3328 宣言の推移的公理依存は標準 3 公理のみ。
+主イデアル等式・二元イデアル等式・係数商同型・代表元公式の公開型 4 本を
+`#print` で確認した（終了コード 0）。

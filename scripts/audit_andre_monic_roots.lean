@@ -650,6 +650,19 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientPDRegular
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientPDRegularReduction_base_apply
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientPDRegularReduction_isDPMorphism
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiLift
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiLift_frobenius
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiLift_delta_isUnit
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpi
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpi_pow
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpi_span_pow
+assert_no_sorry SerrePositivity.BhattScholze.Andre.distinguished_frobenius_pair_span
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiLift_pair_span
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDoubleQuotEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDoubleQuotEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiQuotientEquiv_mk
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -762,7 +775,8 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PowerRootCoefficientPDEnvelope,
     `SerrePositivity.BhattScholze.Andre.PrincipalDPPositiveQuotient,
     `SerrePositivity.BhattScholze.Andre.DividedPowerRegularQuotient,
-    `SerrePositivity.BhattScholze.Andre.PowerRootCoefficientPDRegularReduction]
+    `SerrePositivity.BhattScholze.Andre.PowerRootCoefficientPDRegularReduction,
+    `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpi]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
