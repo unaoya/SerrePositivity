@@ -648,3 +648,23 @@ HEAD からの差分全体が自分の変更だけであることも確認する
   さらに整数 shift と三角生成性で終域を全 tria 対象へ広げ、充満忠実性と同値を得ること。
   U17b 全体も未完。U15e21 のコミットは `d000e04c`。
   直後に別チャットが HEAD を進めたため、指定 SHA で自分の5ファイルのみと確認した。
+
+
+### U15e23：導来随伴で正規化した代表加群の延長同型
+
+- `Quotient/DerivedComparisonAdjointUnit.lean`：普通の加群の標準射影置換の増強を延長し、
+  `derivedExtensionUnderivedMap` を構成した。任意の underived 延長からの加群射を後置し、
+  導来随伴で転置すると、元の underived 随伴での転置を導来化した射に一致する。
+  射影置換の増強の可逆性と underived 随伴の自然性から直接証明した。
+- 加群がホモトピー射影的なら、この比較射は同型になる。相手側 Hom の K-flat 性は不要。
+  代表加群に適用し、既存の underived 代表加群同型と合成して
+  `derivedExtensionRepresentableUnitIso` を構成した。
+- この同型の随伴転置は、既存の `representableRestrictionMap` を導来化した射に
+  制限の計算同型の逆を後置したものと、実際に等しい。
+  `derivedExtensionRepresentableUnitIso_homEquiv` がこの正規化を固定する。
+  dg 圏の解像度、原典の比較定理の引用、または射写像の一致の仮定は使っていない。
+- 対象ビルド `Checks.QuotientAdjointUnit` 成功（2523 jobs）、警告なし。
+  主要5宣言の公理監査は標準3公理のみ。禁止された dg 圏分解系への依存なし。
+  新規 sorry・axiom・引用なし。ルート・他担当の既存ファイルは編集していない。
+- 残部：この正規化を U15e22 の Hom 同値に適用し、実際の比較関手の射写像との一致を示す。
+  全 tria 対象への拡張と U17b も未完。U15e22 のコミットは `f24ecc0e`。
