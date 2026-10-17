@@ -5121,6 +5121,270 @@ lemma rhs_eq_zero_of_deletionSolution {n : ℕ} (f : LinearData A x y n)
 面の一致と KanComplex instance、π₀ と H⁰ の Hom の比較、および N6 の具体例と最終監査。
 N0・N1・N2・N3・N5 の完了状態は維持する。N4 全体・N6 は未完了。
 
+### N4j：全ホーンの直接の線形充填と Kan 性（2026-10-18、N4 は π₀ 比較が未完了）
+
+`PinchedHornData.lean` は、右 pinched 写像空間への実際のホーン写像から各面の線形成分を回収する。
+`face_component_eq` は二面の同じ大域部分集合に対応する成分の一致を、ホーンの共通の単体への
+自然性と線形表示の自然性から証明する。`recoverComponent_eq_face` は回収が任意の利用可能な面の
+値に一致することを示す。`knownData` は全体集合と欠けた面の二成分を零として既知成分を回収し、
+`knownData_pullback_face` は全ての利用可能な面への引き戻しが元の面の線形族に戻ることを証明する。
+
+`PinchedLinearEquationTransfer.lean` の `LinearData.pullback_rhs_of_inj` は、集合上単射な引き戻しが
+線形右辺を保存することを証明する。削除集合の像、右側点数の保存、および所属証明付きの像への
+全単射で有限和を比較した。`PinchedHornFilling.lean` の `equation_of_faces` はこの移送を使い、
+利用可能な面に制限される族が全体集合と欠けた面以外の全方程式を満たすと示す。
+
+`fillerData` は `knownData` の欠けた面の成分だけを N4i の `deletionSolution` に置き換える。
+全体成分は零のままであり、全ての利用可能な面も保存する。
+`fillerData_top_rhs_zero` は明示解による削除和の相殺を証明する。
+`fillerData_missing_equation` は最上位右辺が零であることと他の削除面の既知の方程式を
+N4i の残差恒等式に入れ、欠けた面自身の方程式を導く。
+`fillerData_mem` は三場合に分けて全方程式を検証し、`HornData.filler` は実際の線形解を与える。
+欠けた面の方程式を追加の前提として仮定していない。
+
+`PinchedKan.lean` の `PinchedHom.filler` は線形解を実際の右 pinched 単体へ戻す。
+`filler_face` は各面が元のホーン面と一致することを、線形表示の単射性・自然性・逆則から示す。
+`hornFilling` は米田対応とホーンの外延性で標準単体への延長を与え、
+`instKanComplex` は Mathlib の全ホーンによる特徴づけ `SSet.KanComplex.iff` を満たす。
+一般の単体的群の Kan 性やモデル構造による充填を使わず、各ホーンを削除方程式で直接充填した。
+
+前提は任意の可換環 `A : Type u`、`D : Type v` の `DGCategory A D` と二対象 `x y : D` のみ。
+全 `n : ℕ`、全 `i : Fin (n+2)` の `Λ[n+1,i]` を扱うため、両端のホーンと次元一も含む。
+これで N4 の直接の線形ホーン充填と Kan 性は完了。N4 の π₀ と H⁰ の Hom の比較、および N6 は未完了。
+
+公開宣言の正確な型を以下に記す。各名前空間では
+`{A : Type u} [CommRing A] {D : Type v} [DGCategory A D] {x y : D}` を共通の暗黙引数とし、
+`open CategoryTheory Opposite DifferentialGraded`、`open scoped Simplicial` のもとで記す。
+型中の `HornData` は `DGNerve.PinchedHom.HornData`、`LinearData` などは
+`DGNerve.PinchedHom` 内の既存定義を指す。
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.pullback_rhs_of_inj`
+
+```lean
+lemma pullback_rhs_of_inj {m n : ℕ} (f : LinearData A x y n)
+    (α : Fin (m + 1) →o Fin (n + 1)) (J : Finset (Fin (m + 1))) (k : ℤ)
+    (hk : k = 1 - (J.card : ℤ)) (hi : Set.InjOn α (J : Set (Fin (m + 1)))) :
+    (pullback α f).rhs J k hk =
+      f.rhs (J.image α) k (by rw [Finset.card_image_of_injOn hi]; exact hk)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.HornData.faceData`
+
+```lean
+def faceData {n : ℕ} {i : Fin (n + 2)}
+    (σ : (Λ[n + 1, i] : SSet.{max u v}) ⟶ DGNerve.pinchedHom A D x y)
+    (j : Fin (n + 2)) (hji : j ≠ i) : LinearData A x y n
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.HornData.face_component_eq`
+
+```lean
+lemma face_component_eq {n : ℕ} {i : Fin (n + 2)}
+    (σ : (Λ[n + 1, i] : SSet.{max u v}) ⟶ DGNerve.pinchedHom A D x y)
+    (j l : Fin (n + 2)) (hji : j ≠ i) (hli : l ≠ i)
+    (J L : Finset (Fin (n + 1))) (k : ℤ) (hJ : J.Nonempty) (hL : L.Nonempty)
+    (hk : k = 1 - (J.card : ℤ)) (hk' : k = 1 - (L.card : ℤ))
+    (hImage : J.image j.succAbove = L.image l.succAbove) :
+    (faceData σ j hji).component J k hJ hk = (faceData σ l hli).component L k hL hk'
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.HornData.recoverComponent`
+
+```lean
+def recoverComponent {n : ℕ} {i : Fin (n + 2)}
+    (σ : (Λ[n + 1, i] : SSet.{max u v}) ⟶ DGNerve.pinchedHom A D x y)
+    (I : Finset (Fin (n + 2))) (k : ℤ) (hI : I.Nonempty) (hk : k = 1 - (I.card : ℤ))
+    (hfull : I ≠ Finset.univ) (hmissing : I ≠ Finset.univ.erase i) : GradedHom A x y k
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.HornData.recoverComponent_eq_face`
+
+```lean
+lemma recoverComponent_eq_face {n : ℕ} {i : Fin (n + 2)}
+    (σ : (Λ[n + 1, i] : SSet.{max u v}) ⟶ DGNerve.pinchedHom A D x y)
+    (I : Finset (Fin (n + 2))) (k : ℤ) (hI : I.Nonempty) (hk : k = 1 - (I.card : ℤ))
+    (hfull : I ≠ Finset.univ) (hmissing : I ≠ Finset.univ.erase i)
+    (j : Fin (n + 2)) (hji : j ≠ i) (J : Finset (Fin (n + 1)))
+    (hJ : J.Nonempty) (hk' : k = 1 - (J.card : ℤ)) (hImage : J.image j.succAbove = I) :
+    recoverComponent σ I k hI hk hfull hmissing = (faceData σ j hji).component J k hJ hk'
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.HornData.image_known`
+
+```lean
+lemma image_known {n : ℕ} {i : Fin (n + 2)} (j : Fin (n + 2)) (hji : j ≠ i)
+    (J : Finset (Fin (n + 1))) :
+    J.image j.succAbove ≠ Finset.univ ∧ J.image j.succAbove ≠ Finset.univ.erase i
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.HornData.knownData`
+
+```lean
+def knownData {n : ℕ} {i : Fin (n + 2)}
+    (σ : (Λ[n + 1, i] : SSet.{max u v}) ⟶ DGNerve.pinchedHom A D x y) :
+    LinearData A x y (n + 1)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.HornData.knownData_pullback_face`
+
+```lean
+lemma knownData_pullback_face {n : ℕ} {i : Fin (n + 2)}
+    (σ : (Λ[n + 1, i] : SSet.{max u v}) ⟶ DGNerve.pinchedHom A D x y)
+    (j : Fin (n + 2)) (hji : j ≠ i) :
+    LinearData.pullback j.succAboveOrderEmb.toOrderHom (knownData σ) = faceData σ j hji
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.HornData.equation_of_faces`
+
+```lean
+lemma equation_of_faces {n : ℕ} {i : Fin (n + 2)}
+    (σ : (Λ[n + 1, i] : SSet.{max u v}) ⟶ DGNerve.pinchedHom A D x y)
+    (f : LinearData A x y (n + 1))
+    (hfaces : ∀ j (hji : j ≠ i),
+      LinearData.pullback j.succAboveOrderEmb.toOrderHom f = faceData σ j hji)
+    (I : Finset (Fin (n + 2))) (k : ℤ) (hI : I.Nonempty) (hk : k = 1 - (I.card : ℤ))
+    (hfull : I ≠ Finset.univ) (hmissing : I ≠ Finset.univ.erase i) :
+    differential A (f.component I k hI hk) = f.rhs I k hk
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.HornData.fillerData`
+
+```lean
+def fillerData {n : ℕ} {i : Fin (n + 2)}
+    (σ : (Λ[n + 1, i] : SSet.{max u v}) ⟶ DGNerve.pinchedHom A D x y) :
+    LinearData A x y (n + 1)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.HornData.fillerData_component_of_ne`
+
+```lean
+lemma fillerData_component_of_ne {n : ℕ} {i : Fin (n + 2)}
+    (σ : (Λ[n + 1, i] : SSet.{max u v}) ⟶ DGNerve.pinchedHom A D x y)
+    (J : Finset (Fin (n + 2))) (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ))
+    (hne : J ≠ Finset.univ.erase i) :
+    (fillerData σ).component J k hJ hk = (knownData σ).component J k hJ hk
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.HornData.fillerData_pullback_face`
+
+```lean
+lemma fillerData_pullback_face {n : ℕ} {i : Fin (n + 2)}
+    (σ : (Λ[n + 1, i] : SSet.{max u v}) ⟶ DGNerve.pinchedHom A D x y)
+    (j : Fin (n + 2)) (hji : j ≠ i) :
+    LinearData.pullback j.succAboveOrderEmb.toOrderHom (fillerData σ) = faceData σ j hji
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.HornData.fillerData_top_zero`
+
+```lean
+lemma fillerData_top_zero {n : ℕ} {i : Fin (n + 2)}
+    (σ : (Λ[n + 1, i] : SSet.{max u v}) ⟶ DGNerve.pinchedHom A D x y)
+    (k : ℤ) (hJ : (Finset.univ : Finset (Fin (n + 2))).Nonempty)
+    (hk : k = 1 - ((Finset.univ : Finset (Fin (n + 2))).card : ℤ)) :
+    (fillerData σ).component Finset.univ k hJ hk = 0
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.HornData.fillerData_componentOrZero_of_ne`
+
+```lean
+lemma fillerData_componentOrZero_of_ne {n : ℕ} {i : Fin (n + 2)}
+    (σ : (Λ[n + 1, i] : SSet.{max u v}) ⟶ DGNerve.pinchedHom A D x y)
+    (J : Finset (Fin (n + 2))) (k : ℤ) (hne : J ≠ Finset.univ.erase i) :
+    (fillerData σ).componentOrZero J k = (knownData σ).componentOrZero J k
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.HornData.fillerData_missing_component`
+
+```lean
+lemma fillerData_missing_component {n : ℕ} {i : Fin (n + 2)}
+    (σ : (Λ[n + 1, i] : SSet.{max u v}) ⟶ DGNerve.pinchedHom A D x y)
+    (k : ℤ) (hJ : (Finset.univ.erase i).Nonempty)
+    (hk : k = 1 - ((Finset.univ.erase i).card : ℤ)) :
+    (fillerData σ).component (Finset.univ.erase i) k hJ hk =
+      deletionSolution Finset.univ i
+        (fun j => (knownData σ).componentOrZero (Finset.univ.erase j) k)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.HornData.fillerData_top_rhs_zero`
+
+```lean
+lemma fillerData_top_rhs_zero {n : ℕ} {i : Fin (n + 2)}
+    (σ : (Λ[n + 1, i] : SSet.{max u v}) ⟶ DGNerve.pinchedHom A D x y)
+    (k : ℤ) (hk : k = 1 - ((Finset.univ : Finset (Fin (n + 2))).card : ℤ)) :
+    (fillerData σ).rhs Finset.univ k hk = 0
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.HornData.fillerData_missing_equation`
+
+```lean
+lemma fillerData_missing_equation {n : ℕ} {i : Fin (n + 2)}
+    (σ : (Λ[n + 1, i] : SSet.{max u v}) ⟶ DGNerve.pinchedHom A D x y)
+    (k : ℤ) (hk : k = 1 - ((Finset.univ : Finset (Fin (n + 2))).card : ℤ)) :
+    differential A ((fillerData σ).component (Finset.univ.erase i) (k + 1)
+      (LinearData.erase_nonempty (by simp) i (Finset.mem_univ _))
+      (by have
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.HornData.fillerData_mem`
+
+```lean
+lemma fillerData_mem {n : ℕ} {i : Fin (n + 2)}
+    (σ : (Λ[n + 1, i] : SSet.{max u v}) ⟶ DGNerve.pinchedHom A D x y) :
+    fillerData σ ∈ linearSubmodule A x y (n + 1)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.HornData.filler`
+
+```lean
+def filler {n : ℕ} {i : Fin (n + 2)}
+    (σ : (Λ[n + 1, i] : SSet.{max u v}) ⟶ DGNerve.pinchedHom A D x y) :
+    LinearSimplex A x y (n + 1)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.filler`
+
+```lean
+def filler {n : ℕ} {i : Fin (n + 2)}
+    (σ : (Λ[n + 1, i] : SSet.{max u v}) ⟶ DGNerve.pinchedHom A D x y) :
+    (DGNerve.pinchedHom A D x y) _⦋n + 1⦌
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.filler_face`
+
+```lean
+lemma filler_face {n : ℕ} {i : Fin (n + 2)}
+    (σ : (Λ[n + 1, i] : SSet.{max u v}) ⟶ DGNerve.pinchedHom A D x y)
+    (j : Fin (n + 2)) (hji : j ≠ i) :
+    (DGNerve.pinchedHom A D x y).δ j (filler σ) = σ.app _ (SSet.horn.face i j hji)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.hornFilling`
+
+```lean
+lemma hornFilling {n : ℕ} {i : Fin (n + 2)}
+    (σ : (Λ[n + 1, i] : SSet.{max u v}) ⟶ DGNerve.pinchedHom A D x y) :
+    ∃ τ : (Δ[n + 1] : SSet.{max u v}) ⟶ DGNerve.pinchedHom A D x y,
+      σ = Λ[n + 1, i].ι ≫ τ
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.instKanComplex`
+
+```lean
+instance instKanComplex : SSet.KanComplex (DGNerve.pinchedHom A D x y)
+```
+
+検証：`set -e; set -o pipefail` の下で対象 `PinchedKan` と集約 `DGNerve` の
+`lake build` が終了コード 0（3498 jobs）、続く `lake env lean scripts/audit_dg_nerve.lean` も終了コード 0。
+新規23宣言を含む全公開宣言553件と既存5則、合計558件の `#print axioms` を照合し、
+全てが propext・Classical.choice・Quot.sound の範囲内（`reconstructObj` 一件は公理非依存）。
+全新規宣言の `#check @`、全ソースの明示的な公開宣言の監査網羅性、任意の二対象での
+`SSet.KanComplex (DGNerve.pinchedHom A D x y)` の型クラス推論も確認した。
+新しい sorry・axiom・引用は追加していない。
+
+残る必須作業：Mathlib の π₀ と `HomotopyCategory A D` の Hom の同値、
+N6 の一点 dg 圏・Complex A での二単体の具体例と最終監査。
+N0・N1・N2・N3・N5 の完了状態は維持する。正規化 Moore 複体の比較は任意項目。
+
 ## 6. 次のマイルストーン D（本計画の範囲外）
 
 - Semifree(S) を `DGFullSubcategory`（`moduleSemifree` または一点 dg 圏上の複体版）として置き、
