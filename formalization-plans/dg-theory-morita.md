@@ -632,3 +632,23 @@ CoherenceUnitChecksを新旧増大・一般随伴・合成自然性・QuasiEquiv
 一般入口・Spectra.StageTwoと合同ビルドし成功（4136 jobs、警告0）。
 新規7宣言の直接公理監査は標準3公理以内。新規sorry・axiom・引用・資源上限変更なし。
 詳細はdg-theory.md §17.267。
+
+
+## U16a16：三因子作用の通常・右K-flatモデル上の結合coherence（2026-10-17）
+
+CoherenceAssociatorClosedのkernelTensorCompositionClosedIso_associatorは、
+通常作用の合成比較の二経路を元のbimodule結合子で比較する実際の等式。
+既存pentagonを逆向きへ変形し、全右加群で評価して証明した。
+CoherenceAssociatorAugmentationのkernelTripleAugmentationと左右の増大計算は、
+導来経路が同じ増大を通る通常図式へ降りることを示す。
+
+CoherenceAssociatorKFlatのkernelDerivedTensorOnBimoduleCompositionIso_associatorは、
+全主導来入力について自然変換としての結合図式を証明する。
+P : Bimodule A E DとQ : Bimodule A F Eの右相対K-flat性を要求し、R : Bimodule A G Fは任意。
+局所Hom K-flat性・Rの射影性やK-flat性を追加していない。
+公開主導来kernelの結合図式への移送と左単位coherenceは引き続き未完。
+U16a全受入を宣言せず、公開kernelCompositionIsoの型・定義は保持する。
+
+CoherenceAssociatorChecksを新旧入口と合同ビルドし成功（4140 jobs、警告0）。
+新規公開8宣言の直接公理監査は標準3公理以内。新規sorry・axiom・引用なし。
+詳細・再現手順・次の接続点はdg-theory.md §17.268。
