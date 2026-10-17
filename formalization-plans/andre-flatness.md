@@ -5715,19 +5715,73 @@ A1-a 全体の完成とは数えず、既存 hpR 付き定理は成果到着ま�
 完全 prism W : OrientedPrism p A、hW、モニック f : Polynomial A、0<f.natDegree に対し、
 P=PowerRootPolynomial A p hp、E=powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure、
 dP=algebraMap A P W.generator、a=powerRootPrismMonicUnaryFamily f、
-R=A/(p,W.generator)、J=deltaDivisionFirstBaseIdeal dP a、Q=P/J、
+R=A/(p,W.generator)、J=deltaDivisionFirstBaseIdeal dP a、Qinit=P/J、
 Res=DeltaAdjoinDivisionResidue E dP a とする。
 
 新規 namespace `SerrePositivity.BhattScholze.Andre.InitialCoefficient` に、
 R 上の自然な作用を保持する
-`initialCoefficientAlgEquiv : Q ≃ₐ[R] PowerRootPolynomialQuotient R p hp (f.map (Ideal.Quotient.mk _))`、
-`initialCoefficient_faithfullyFlat : Module.FaithfullyFlat R Q`、
-`rawResidue_faithfullyFlat : Module.FaithfullyFlat R Res` を公開する。
+`initialCoefficientAlgEquiv : Qinit ≃ₐ[R] PowerRootPolynomialQuotient R p hp (f.map (Ideal.Quotient.mk _))`、
+`initialCoefficient_faithfullyFlat : Module.FaithfullyFlat R Qinit`、
+`rawResidueBase_faithfullyFlat : Module.FaithfullyFlat R Res` を公開する。
 最後の作用は A1-b の実係数射 κ と実 raw 残余射の合成との一致を照合する。
 一般の `deltaAdjoinDivisionResidue_moduleFaithfullyFlat` を初期商上の既存結果として用いる。
 hpR、係数商の非零性、追加の平坦性・Tor 消滅は仮定しない。
 既存の André ファイルと他担当の節は編集せず、成果と専用監査は
 `Andre/Unconditional/InitialCoefficient/` の新規ファイルだけに置く。
+
+### A1-d の実装と受渡しの検証
+
+着手後に A1-b が正式な受渡しを追記した。最終公開型はその二つの型に合わせた。
+`Comparison.lean` は d を任意の係数元として、初期イデアルの表示、
+全 P 代表元を保つ環同型、元の A 係数の保存、R 代数同型、自由性・忠実平坦性を証明する。
+忠実平坦性の非零枝だけでモニック次数保存を用い、零係数商は別枝で処理する。
+
+`RawResidue.lean` は完全 prism から P と自由 δ 源 L₀ の p 正則性、
+ghost 単射性、δ(dP) の単元を内部供給する。
+`deltaAdjoinDivisionResidue_moduleFaithfullyFlat` と初期商の忠実平坦性を
+`Module.FaithfullyFlat.trans` で合成する。係数射について
+
+```lean
+rawResidueBaseMap W hW f =
+  (powerRootPrismMonicSourceQuotientResidueMap_of_unconditional W hW f).comp
+    (powerRootSourceQuotientCoefficientMap_of_unconditional W)
+```
+
+を全 A 代表元で証明する `rawResidueBaseMap_eq_source` を公開した。
+この等式による、元の Res の元を保つ線形同型で、受渡し指定の作用に忠実平坦性を移す。
+初期商 Qinit と自由 δ 源商 Q₀=L₀/(p,C dP) は別の環のまま保持する。
+
+共通引数は `{A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]`、
+`W : OrientedPrism p A`、`hW : W.deltaStructure.IsPerfect`、`f : Polynomial A`、
+`hf : f.Monic`、`hdeg : 0 < f.natDegree`。名前空間は上記 `Andre.InitialCoefficient`。
+κ と ψ をそれぞれ受渡しの指定係数射・実 raw 残余射とすると、公開型は次のとおり。
+
+```lean
+rawResidue_faithfullyFlat W hW f hf hdeg :
+  letI := ψ.toAlgebra
+  letI : Module Q₀ Res := Algebra.toModule
+  Module.FaithfullyFlat R ((ModuleCat.restrictScalars κ).obj (ModuleCat.of Q₀ Res))
+
+sourceResidueH0_faithfullyFlat W hW f hf hdeg :
+  Module.FaithfullyFlat R
+    ((DerivedCategory.homologyFunctor (ModuleCat R) 0).obj
+      ((boundedAboveDerivedBaseChange (Ideal.Quotient.mk
+        (Ideal.span {(p : A), W.generator}))).obj
+        (PowerRootPrismMonicSourceCoefficientObject_of_unconditional W hW f)).obj)
+```
+
+後者は既存の `powerRootPrismMonicSourceCoefficientPDResidueH0Iso_of_unconditional` への移送。
+hpR、係数商の非零性、追加の Tor 消滅や平坦性を仮定しない。
+A1-b の正式な二つの結論型を専用監査内に固定し、追加仮定なしに適用できることを検査した。
+
+検証：`lake build SerrePositivity.BhattScholze.Andre.Unconditional.InitialCoefficient.Audit`
+は4110ジョブで成功。新規20公開宣言は全件 `assert_no_sorry` が成功し、
+生成宣言を含む新規2モジュールの51宣言の推移的公理も標準三公理だけと確認した。
+初期商・合成係数射の一致・raw 残余商・H⁰ の `#print axioms` は
+`propext`、`Classical.choice`、`Quot.sound` のみ。新しい sorry・axiom・引用はない。
+既存ファイル・他担当の節・主定理の引用入力を変更せず、担当ファイルだけを個別保存する。
+この成果は鎖の第一段の受渡しであり、実逐次完備化後の正則性・完全忠実平坦性や
+A1-c2 の hpR 除去を完成扱いにしない。
 
 ### A1-d への受渡し
 
