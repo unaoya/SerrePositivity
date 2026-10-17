@@ -637,3 +637,135 @@ sliceOverEquiv {A K X : SSet.{u}} (p : K ⟶ X) :
 `lake env lean scripts/audit_infinity_core.lean` は終了コード 0。
 累計 102 公開宣言（明示的 100、生成補題 2）の公理監査を照合し、標準三公理のみ。
 追加公理・引用・`sorry` はない。全体ビルドは新しい指示どおりこの保存単位では行わない。
+
+
+### A2b 完了（2026-10-17）：coslice 側の直接構成による普遍性
+
+`Core/Coslice.lean` に coslice 側の普遍性を直接構成した。左右の頂点数の和で
+既存の join の単体を表示し、右単体 a に付いた錐を `(k,id)` で評価して束ねる。
+引き戻しの自然性と固定条件を証明し、Yoneda 射による制限との両逆関係を示した。
+join・slice の定義や §4 の設計は変えていない。余極限の一般論も用いていない。
+
+追加した全 20 公開宣言の正確な型。宇宙 `u` は任意、
+`open CategoryTheory SSet`、`open scoped Simplicial` の下で記す。
+単体集合・射・単体と、左右の頂点数や切断を指定する算術等式のみを前提とし、
+quasicategory 性・単射性は仮定しない。
+
+namespace：`SerrePositivity.InfinityCategories.Join`。
+
+```lean
+mkOfSum {K L : SSet.{u}} {n l r : ℕ} (h : l + r = n + 1)
+    (a : augObj K l) (b : augObj L r) : Simplex K L n
+
+rightMapOfSum {m n l r c d : ℕ} (α : Fin (m + 1) →o Fin (n + 1))
+    (hn : l + r = n + 1) (hm : c + d = m + 1) (hc : pullCut α l = c) : Fin d →o Fin r
+
+simplexMap_mkOfSum (K L : SSet.{u}) {m n l r c d : ℕ}
+    (α : Fin (m + 1) →o Fin (n + 1)) (hn : l + r = n + 1) (hm : c + d = m + 1)
+    (hc : pullCut α l = c) (a : augObj K l) (b : augObj L r) :
+    simplexMap K L α (mkOfSum hn a b) =
+      mkOfSum hm (augMap K (leftMapAt α l c hc) a) (augMap L (rightMapOfSum α hn hm hc) b)
+
+augHom_cast {K L : SSet.{u}} (f : K ⟶ L) {r s : ℕ} (h : r = s) (a : augObj K r) :
+    cast (congrArg (augObj L) h) (augHom f r a) =
+      augHom f s (cast (congrArg (augObj K) h) a)
+
+```
+
+namespace：`SerrePositivity.InfinityCategories`。
+
+```lean
+joinMap_mkOfSum {K K' L L' : SSet.{u}} (f : K ⟶ K') (g : L ⟶ L')
+    {n l r : ℕ} (h : l + r = n + 1) (a : Join.augObj K l) (b : Join.augObj L r) :
+    (joinMap f g).app (Opposite.op ⦋n⦌) (Join.mkOfSum h a b) =
+      Join.mkOfSum h (Join.augHom f l a) (Join.augHom g r b)
+
+```
+
+namespace：`SerrePositivity.InfinityCategories.Join`。
+
+```lean
+mkOfSum_zero_right {K L : SSet.{u}} {n : ℕ} (h : (n + 1) + 0 = n + 1)
+    (k : augObj K (n + 1)) (a : augObj L 0) : mkOfSum h k a = Simplex.inl k
+
+mkOfSum_eta {K L : SSet.{u}} {n : ℕ} (s : Simplex K L n) :
+    mkOfSum (by have
+
+```
+
+namespace：`SerrePositivity.InfinityCategories`。
+
+```lean
+sliceUnderEval {A K X : SSet.{u}} {p : K ⟶ X} (f : A ⟶ sliceUnder p) (n l : ℕ) :
+    (r : ℕ) → (h : l + r = n + 1) → Join.augObj K l → Join.augObj A r → X _⦋n⦌
+
+sliceUnderEval_castRight {A K X : SSet.{u}} {p : K ⟶ X} (f : A ⟶ sliceUnder p)
+    {n l r r' : ℕ} (he : r = r') (h : l + r = n + 1) (h' : l + r' = n + 1)
+    (k : Join.augObj K l) (a : Join.augObj A r) :
+    sliceUnderEval f n l r h k a =
+      sliceUnderEval f n l r' h' k (cast (congrArg (Join.augObj A) he) a)
+
+sliceUnderUncurryApp {A K X : SSet.{u}} {p : K ⟶ X} (f : A ⟶ sliceUnder p) (n : ℕ)
+    (s : Join.Simplex K A n) : X _⦋n⦌
+
+sliceUnderUncurryApp_mkOfSum {A K X : SSet.{u}} {p : K ⟶ X}
+    (f : A ⟶ sliceUnder p) {n l r : ℕ} (h : l + r = n + 1)
+    (k : Join.augObj K l) (a : Join.augObj A r) :
+    sliceUnderUncurryApp f n (Join.mkOfSum h k a) = sliceUnderEval f n l r h k a
+
+sliceUnderGenerator_map_succ (K : SSet.{u}) {m n l r c d : ℕ}
+    (α : Fin (m + 1) →o Fin (n + 1)) (hn : l + (r + 1) = n + 1)
+    (hm : c + (d + 1) = m + 1) (hc : Join.pullCut α l = c) (k : Join.augObj K l) :
+    Join.simplexMap K Δ[r] α (Join.mkOfSum hn k (stdSimplex.objEquiv.symm (𝟙 ⦋r⦌))) =
+      (joinMap (𝟙 K) (stdSimplex.map (SimplexCategory.mkHom
+        (Join.rightMapOfSum α hn hm hc)))).app (Opposite.op ⦋m⦌)
+        (Join.mkOfSum hm (Join.augMap K (Join.leftMapAt α l c hc) k)
+          (stdSimplex.objEquiv.symm (𝟙 ⦋d⦌)))
+
+sliceUnderEval_naturality {A K X : SSet.{u}} {p : K ⟶ X} (f : A ⟶ sliceUnder p)
+    {m n l r c d : ℕ} (α : Fin (m + 1) →o Fin (n + 1))
+    (hn : l + r = n + 1) (hm : c + d = m + 1) (hc : Join.pullCut α l = c)
+    (k : Join.augObj K l) (a : Join.augObj A r) :
+    sliceUnderEval f m c d hm (Join.augMap K (Join.leftMapAt α l c hc) k)
+        (Join.augMap A (Join.rightMapOfSum α hn hm hc) a) =
+      X.map (SimplexCategory.mkHom α).op (sliceUnderEval f n l r hn k a)
+
+sliceUnderUncurryApp_naturality {A K X : SSet.{u}} {p : K ⟶ X}
+    (f : A ⟶ sliceUnder p) {m n : ℕ} (α : Fin (m + 1) →o Fin (n + 1))
+    (s : Join.Simplex K A n) :
+    sliceUnderUncurryApp f m (Join.simplexMap K A α s) =
+      X.map (SimplexCategory.mkHom α).op (sliceUnderUncurryApp f n s)
+
+sliceUnderUncurry {A K X : SSet.{u}} {p : K ⟶ X} (f : A ⟶ sliceUnder p) : join K A ⟶ X
+
+sliceUnderUncurryApp_inl {A K X : SSet.{u}} {p : K ⟶ X}
+    (f : A ⟶ sliceUnder p) (n : ℕ) (k : K _⦋n⦌) :
+    sliceUnderUncurryApp f n ((joinInl K A).app _ k) = p.app _ k
+
+sliceUnderUncurry_fixed {A K X : SSet.{u}} {p : K ⟶ X} (f : A ⟶ sliceUnder p) :
+    joinInl K A ≫ sliceUnderUncurry f = p
+
+sliceUnderEval_curry {A K X : SSet.{u}} {p : K ⟶ X}
+    (F : join K A ⟶ X) (hF : joinInl K A ≫ F = p) {n l r : ℕ}
+    (h : l + r = n + 1) (k : Join.augObj K l) (a : Join.augObj A r) :
+    sliceUnderEval (sliceUnderCurry F hF) n l r h k a = F.app _ (Join.mkOfSum h k a)
+
+sliceUnderEval_yoneda {A K X : SSet.{u}} {p : K ⟶ X}
+    (f : A ⟶ sliceUnder p) {n d l r : ℕ} (a : A _⦋n⦌) (h : l + r = d + 1)
+    (k : Join.augObj K l) (b : Join.augObj (Δ[n] : SSet.{u}) r) :
+    sliceUnderEval f d l r h k (Join.augHom (SSet.yonedaEquiv.symm a) r b) =
+      (f.app _ a).val.app (Opposite.op ⦋d⦌) (Join.mkOfSum h k b)
+
+sliceUnderEquiv {A K X : SSet.{u}} (p : K ⟶ X) :
+    (A ⟶ sliceUnder p) ≃ {F : join K A ⟶ X // joinInl K A ≫ F = p}
+
+```
+
+A2b の全要求（slice・coslice・射影・頂点の場合・両側の任意の単体集合に対する
+普遍性）を実装した。原典：HTT §1.2.8・2.1.2、Kerodon §4.3.5。
+A2c〜A2i は未完了。A2b の完成から持ち上げ性・極限の理論の完成を主張しない。
+
+`lake build SerrePositivity.InfinityCategories.Core` と
+`lake env lean scripts/audit_infinity_core.lean` は終了コード 0。
+累計 122 公開宣言（明示的 120、生成補題 2）の監査出力を照合し、標準三公理のみ。
+追加公理・引用・`sorry` はない。

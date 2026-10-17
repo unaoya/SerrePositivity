@@ -6,3 +6,4 @@ public import SerrePositivity.InfinityCategories.Core.HomotopyNatTrans
 public import SerrePositivity.InfinityCategories.Core.Checks
 public import SerrePositivity.InfinityCategories.Core.Join
 public import SerrePositivity.InfinityCategories.Core.Slice
+public import SerrePositivity.InfinityCategories.Core.Coslice

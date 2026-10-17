@@ -223,3 +223,45 @@ import SerrePositivity.InfinityCategories.Core
 #print axioms SerrePositivity.InfinityCategories.sliceOverUncurry_fixed
 #print axioms SerrePositivity.InfinityCategories.sliceOverUncurryApp_yoneda
 #print axioms SerrePositivity.InfinityCategories.sliceOverEquiv
+
+-- A2b 完了：coslice 側の直接構成による普遍性。
+#check @SerrePositivity.InfinityCategories.Join.mkOfSum
+#check @SerrePositivity.InfinityCategories.Join.rightMapOfSum
+#check @SerrePositivity.InfinityCategories.Join.simplexMap_mkOfSum
+#check @SerrePositivity.InfinityCategories.Join.augHom_cast
+#check @SerrePositivity.InfinityCategories.joinMap_mkOfSum
+#check @SerrePositivity.InfinityCategories.Join.mkOfSum_zero_right
+#check @SerrePositivity.InfinityCategories.Join.mkOfSum_eta
+#check @SerrePositivity.InfinityCategories.sliceUnderEval
+#check @SerrePositivity.InfinityCategories.sliceUnderEval_castRight
+#check @SerrePositivity.InfinityCategories.sliceUnderUncurryApp
+#check @SerrePositivity.InfinityCategories.sliceUnderUncurryApp_mkOfSum
+#check @SerrePositivity.InfinityCategories.sliceUnderGenerator_map_succ
+#check @SerrePositivity.InfinityCategories.sliceUnderEval_naturality
+#check @SerrePositivity.InfinityCategories.sliceUnderUncurryApp_naturality
+#check @SerrePositivity.InfinityCategories.sliceUnderUncurry
+#check @SerrePositivity.InfinityCategories.sliceUnderUncurryApp_inl
+#check @SerrePositivity.InfinityCategories.sliceUnderUncurry_fixed
+#check @SerrePositivity.InfinityCategories.sliceUnderEval_curry
+#check @SerrePositivity.InfinityCategories.sliceUnderEval_yoneda
+#check @SerrePositivity.InfinityCategories.sliceUnderEquiv
+#print axioms SerrePositivity.InfinityCategories.Join.mkOfSum
+#print axioms SerrePositivity.InfinityCategories.Join.rightMapOfSum
+#print axioms SerrePositivity.InfinityCategories.Join.simplexMap_mkOfSum
+#print axioms SerrePositivity.InfinityCategories.Join.augHom_cast
+#print axioms SerrePositivity.InfinityCategories.joinMap_mkOfSum
+#print axioms SerrePositivity.InfinityCategories.Join.mkOfSum_zero_right
+#print axioms SerrePositivity.InfinityCategories.Join.mkOfSum_eta
+#print axioms SerrePositivity.InfinityCategories.sliceUnderEval
+#print axioms SerrePositivity.InfinityCategories.sliceUnderEval_castRight
+#print axioms SerrePositivity.InfinityCategories.sliceUnderUncurryApp
+#print axioms SerrePositivity.InfinityCategories.sliceUnderUncurryApp_mkOfSum
+#print axioms SerrePositivity.InfinityCategories.sliceUnderGenerator_map_succ
+#print axioms SerrePositivity.InfinityCategories.sliceUnderEval_naturality
+#print axioms SerrePositivity.InfinityCategories.sliceUnderUncurryApp_naturality
+#print axioms SerrePositivity.InfinityCategories.sliceUnderUncurry
+#print axioms SerrePositivity.InfinityCategories.sliceUnderUncurryApp_inl
+#print axioms SerrePositivity.InfinityCategories.sliceUnderUncurry_fixed
+#print axioms SerrePositivity.InfinityCategories.sliceUnderEval_curry
+#print axioms SerrePositivity.InfinityCategories.sliceUnderEval_yoneda
+#print axioms SerrePositivity.InfinityCategories.sliceUnderEquiv

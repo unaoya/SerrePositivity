@@ -669,6 +669,8 @@ noncomputable def emptyJoinIso (A L : SSet.{u}) :
 
 end SerrePositivity.InfinityCategories
 
+
+
 namespace SerrePositivity.InfinityCategories.Join
 
 /-- 概要：逆像の切断を命題的に等しい頂点数 c で表示した左の制限。
@@ -936,3 +938,114 @@ def joinStdSimplexIso (i j : ℕ) :
       rfl)
 
 end SerrePositivity.InfinityCategories
+
+namespace SerrePositivity.InfinityCategories.Join
+
+/-- 概要：左右の頂点数の和を指定して join の単体を作る。
+方針：右側の頂点数を既存の切断表示に移送する。
+規約：join の定義は変えず、l+r=n+1 という等式による構成子を補う。
+使われ方：HTT §1.2.8・2.1.2、Kerodon §4.3.5 の coslice の直接評価。 -/
+def mkOfSum {K L : SSet.{u}} {n l r : ℕ} (h : l + r = n + 1)
+    (a : augObj K l) (b : augObj L r) : Simplex K L n :=
+  ⟨⟨l, by omega⟩, a, cast (congrArg (augObj L) (by omega : r = n + 1 - l)) b⟩
+
+/-- 概要：始域と終域の左右の頂点数を指定した右の制限写像。
+方針：始域の左頂点数を加え、終域の左頂点数を値から引く。
+規約：hc は左区間の逆像の頂点数を指定する。
+使われ方：HTT §1.2.8・2.1.2、Kerodon §4.3.5 の coslice の直接評価の自然性。 -/
+def rightMapOfSum {m n l r c d : ℕ} (α : Fin (m + 1) →o Fin (n + 1))
+    (hn : l + r = n + 1) (hm : c + d = m + 1) (hc : pullCut α l = c) : Fin d →o Fin r where
+  toFun i :=
+    let a : Fin (m + 1) := ⟨c + i.val, by have := i.isLt; omega⟩
+    ⟨(α a).val - l, by
+      have hα : l ≤ (α a).val := by
+        apply Nat.le_of_not_lt
+        intro h
+        have := (lt_pullCut_iff α l a).mpr h
+        dsimp [a] at this
+        omega
+      have := (α a).isLt
+      omega⟩
+  monotone' i j h := Nat.sub_le_sub_right (α.monotone (Nat.add_le_add_left h c)) l
+
+/-- 概要：左右の頂点数の和を指定した単体の引き戻しの式。
+方針：切断の等式と両因子の移送を `Simplex.ext` と `augMap_congr` で扱う。
+規約：両方の区間が空になる場合も含む。
+使われ方：HTT §1.2.8・2.1.2、Kerodon §4.3.5 の coslice の普遍性。 -/
+lemma simplexMap_mkOfSum (K L : SSet.{u}) {m n l r c d : ℕ}
+    (α : Fin (m + 1) →o Fin (n + 1)) (hn : l + r = n + 1) (hm : c + d = m + 1)
+    (hc : pullCut α l = c) (a : augObj K l) (b : augObj L r) :
+    simplexMap K L α (mkOfSum hn a b) =
+      mkOfSum hm (augMap K (leftMapAt α l c hc) a) (augMap L (rightMapOfSum α hn hm hc) b) := by
+  dsimp only [mkOfSum]
+  rw [simplexMap_eq_at K L α _ c hc]
+  refine Simplex.ext _ _ ?_ ?_ ?_
+  · rfl
+  · rfl
+  · have he : r = n + 1 - l := by omega
+    have hd : d = m + 1 - c := by omega
+    exact (augMap_congr L hd he (rightMapOfSum α hn hm hc) (rightMapAt α l c hc)
+      (fun i j hij ↦ by
+        change (α ⟨c + i.val, _⟩).val - l = (α ⟨c + j.val, _⟩).val - l
+        exact congrArg (fun z ↦ (α z).val - l) (Fin.ext (by
+          change c + i.val = c + j.val
+          omega))) b (cast (congrArg (augObj L) he) b) rfl).symm
+
+end SerrePositivity.InfinityCategories.Join
+
+namespace SerrePositivity.InfinityCategories.Join
+
+/-- 概要：補った単体への射の作用は頂点数の等式による移送と可換。
+方針：等式で頂点数を置換する。
+規約：空の単体も含む。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の左右の頂点数による単体表示。 -/
+lemma augHom_cast {K L : SSet.{u}} (f : K ⟶ L) {r s : ℕ} (h : r = s) (a : augObj K r) :
+    cast (congrArg (augObj L) h) (augHom f r a) =
+      augHom f s (cast (congrArg (augObj K) h) a) := by
+  subst s
+  rfl
+
+end SerrePositivity.InfinityCategories.Join
+
+namespace SerrePositivity.InfinityCategories
+
+/-- 概要：joinMap は左右の頂点数による単体の構成と可換。
+方針：切断と左因子を固定し、右因子の移送と射の作用を交換する。
+規約：左右の頂点数は空でもよい。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の coslice の直接構成。 -/
+lemma joinMap_mkOfSum {K K' L L' : SSet.{u}} (f : K ⟶ K') (g : L ⟶ L')
+    {n l r : ℕ} (h : l + r = n + 1) (a : Join.augObj K l) (b : Join.augObj L r) :
+    (joinMap f g).app (Opposite.op ⦋n⦌) (Join.mkOfSum h a b) =
+      Join.mkOfSum h (Join.augHom f l a) (Join.augHom g r b) := by
+  refine Join.Simplex.ext _ _ ?_ ?_ ?_
+  · rfl
+  · rfl
+  · exact (Join.augHom_cast g (by omega : r = n + 1 - l) b).symm
+
+end SerrePositivity.InfinityCategories
+
+namespace SerrePositivity.InfinityCategories.Join
+
+/-- 概要：右区間が空の和による単体表示は左包含に一致する。
+方針：切断と左因子を保ち、右因子の一点性を使う。
+規約：空の右単体の選択には依存しない。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の coslice の固定条件。 -/
+lemma mkOfSum_zero_right {K L : SSet.{u}} {n : ℕ} (h : (n + 1) + 0 = n + 1)
+    (k : augObj K (n + 1)) (a : augObj L 0) : mkOfSum h k a = Simplex.inl k := by
+  refine Simplex.ext _ _ ?_ ?_ ?_
+  · rfl
+  · rfl
+  · exact @Subsingleton.elim (augObj L (n + 1 - (n + 1)))
+      (by simp only [Nat.sub_self, augObj]; infer_instance) _ _
+
+/-- 概要：任意の join の単体は左右の頂点数の和による構成子から回収される。
+方針：単体の切断と両因子を展開する。
+規約：join の元の依存和表示を保つ。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の直接構成の検証。 -/
+lemma mkOfSum_eta {K L : SSet.{u}} {n : ℕ} (s : Simplex K L n) :
+    mkOfSum (by have := s.1.isLt; omega : s.1.val + (n + 1 - s.1.val) = n + 1)
+      s.2.1 s.2.2 = s := by
+  rcases s with ⟨⟨l, hl⟩, a, b⟩
+  rfl
+
+end SerrePositivity.InfinityCategories.Join
