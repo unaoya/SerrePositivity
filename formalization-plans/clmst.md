@@ -10534,3 +10534,36 @@ K理論・Cohen–Gabberの別作業・Lech拡張・CLMST全体のsignatureと�
 - Bhatt–Iyengar–Ma, arXiv:1803.03229（Lemma 4.1.2 の背景。今回は対象外）。
 - 現在のコード：`Inputs/CLMST.lean`、`Paper/Section2/TowerLength.lean`、
   `Paper/Section2/MixedLengthAlgebra.lean`、`Inputs/PerfectoidTower.lean`、`Inputs/Perfectoidization.lean`。
+
+#### KL-T：有限比較 excision の実供給と Cor 4.0.4 の同署名証明（2026-10-17）
+
+`CLMST/KLFiniteComparisonExcision.lean` に次を公開した。
+
+- `klFiniteComparisonExcision_of_perfectoid (R) (p) (hR) : KLFiniteComparisonExcision R p`。
+  有限かつ有限表示な A、B の加群としての有限表示性から、A、B と指定主イデアルの
+  導来 p 完備性を得る。q の有限性を q 自身の A 作用の整性へ渡す。
+  核の a 冪ねじれと余核の一様零化から元の `Localization.awayMap` の全単射性を得て、
+  BS の `klCanonicalExcisionSquare_of_integral_away` を適用する。
+- `perfectoidIdeal_powerTorsionTorInput`：有限表示有限 R 代数 A と指定された
+  perfectoid 化 f : A →ₐ[R] C があり、A が a の外でエタールなら、任意の
+  R 加群 N、全 k、p^k N=0、全 i>0、全 s∈perfectoidIdeal R p hR a について
+  `torCoefficientScalarEndomorphism C N i (algebraMap R C s) = 0`。
+  一つの André 拡大を全試験に先行して選ぶ既存の忠実降下へ上の実証明を渡す。
+
+共通モデルへの A → E と R^r → E の hPBu、hPBv はこの実供給により解消する。
+R^r 側の perfectoid 化は既存の `isIntegralPerfectoid_finPi` と恒等射の普遍性を使う。
+`RPerfdTorBaseChange` の `flat_completedTower_over_base` による A 側への移送は接続済み。
+`ConditionalCohomologyFromPowerTorsion` の `perfectoidIdeal_allModule_tor_annihilated`
+を通る既存 KL-Q の合流をそのまま用いる。
+
+`CLMST/Corollary404.lean` の `SerrePositivity.CLMST.corollary_4_0_4` は
+`CLMST.Inputs.corollary_4_0_4` と同じ全仮定・全結論・宇宙引数を持つ。
+極大支持の i<h 局所コホモロジーと、全有限段・任意パラメータ系の正次数
+Koszul ホモロジーの両消滅を保持し、g の選択を内部へ隠さない。
+
+専用監査 `scripts/audit_clmst_corollary404.lean` は両署名の式と宇宙引数の一致を検査する。
+`#print axioms` は `[propext, sorryAx, Classical.choice, Quot.sound]`。
+値と型の依存グラフを辿り、到達する未証明宣言が BS の
+`exists_perfectoidization_of_integral` と `perfectoidization_excision_isPullback`
+の二つだけであることを検査した。BS 7.14 は証明済みとして展開し、許可境界に置かない。
+元の Cor 4.0.4 入力の引用には依存しない。入力の置換はこの報告後の別コミットで行う。
