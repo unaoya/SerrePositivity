@@ -1239,3 +1239,66 @@ discreteEmbeddingHomologyZeroIso (B : Under (CommRingCat.of S)) :
         (discreteAlgebraModule S).obj B
 end SerrePositivity.InfinityCategories
 ```
+
+
+### D5c
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u v
+open CategoryTheory MonoidalCategory DifferentialGraded DGNerve HomologicalComplex
+open DifferentialGraded.ScalarExtension
+variable {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T)
+DGRestrictScalars (D : Type v) [DGCategory T D] : Type v
+variable {D : Type v} [DGCategory T D]
+restrictScalars_compose {x y z : D} {p q n : ℤ}
+    (g : GradedHom T y z q) (h : GradedHom T x y p) (hpq : p + q = n) :
+    compose S (D := DGRestrictScalars f D) g h hpq = compose T g h hpq
+restrictScalars_unit (x : DGRestrictScalars f D) :
+    (unitElement S x).val = (unitElement T (D := D) x).val
+restrictScalarsData {n : ℕ} (s : SimplexData T D n) :
+    SimplexData S (DGRestrictScalars f D) n
+restrictScalars_rhs {n : ℕ} (s : SimplexData T D n)
+    (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) :
+    (restrictScalarsData f s).rhs I a b k hI ha hb hk = s.rhs I a b k hI ha hb hk
+restrictScalarsSimplex {n : ℕ} (s : Simplex T D n) :
+    Simplex S (DGRestrictScalars f D) n
+unrestrictScalarsSimplex {n : ℕ} (s : Simplex S (DGRestrictScalars f D) n) :
+    Simplex T D n
+restrictScalarsSimplex_pullback {m n : ℕ} (s : Simplex T D n)
+    (α : Fin (m + 1) →o Fin (n + 1)) :
+    restrictScalarsSimplex f (s.pullback α) = (restrictScalarsSimplex f s).pullback α
+dgNerveRestrictScalarsIso (D : Type v) [DGCategory T D] :
+    dgNerve S (DGRestrictScalars f D) ≅ dgNerve T D
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u v w
+open CategoryTheory MonoidalCategory DifferentialGraded
+open DifferentialGraded.ScalarExtension
+variable {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T)
+transposeBaseChangeDG {D : Type v} {E : Type w} [DGCategory S D] [DGCategory T E]
+    (F : DGFunctor T (DGBaseChange f D) E) : DGFunctor S D (DGRestrictScalars f E)
+complexBaseChangeDG : DGFunctor S (Complex S) (DGRestrictScalars f (Complex T))
+semifreeBaseChangeDG : DGFunctor S (Semifree S) (DGRestrictScalars f (Semifree T))
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u
+open CategoryTheory DifferentialGraded
+open scoped Simplicial
+variable {S T : Type u} [CommRing S] [CommRing T]
+derivedInfinityBaseChange (f : S →+* T) :
+    derivedInfinityCategory S ⟶ derivedInfinityCategory T
+derivedInfinityBaseChange_vertex (f : S →+* T)
+    (x : (derivedInfinityCategory S) _⦋0⦌) :
+    (derivedInfinityCategoryVertexEquiv T ((derivedInfinityBaseChange f).app _ x)).val =
+      (complexBaseChange f).obj (derivedInfinityCategoryVertexEquiv S x).val
+end SerrePositivity.InfinityCategories
+```

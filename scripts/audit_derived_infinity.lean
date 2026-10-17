@@ -315,10 +315,28 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.discreteEmbedding
 #print axioms SerrePositivity.InfinityCategories.discreteEmbeddingHomologyZeroIso
 
+#print axioms SerrePositivity.InfinityCategories.DGRestrictScalars
+#print axioms SerrePositivity.InfinityCategories.restrictScalars_compose
+#print axioms SerrePositivity.InfinityCategories.restrictScalars_unit
+#print axioms SerrePositivity.InfinityCategories.restrictScalarsData
+#print axioms SerrePositivity.InfinityCategories.restrictScalars_rhs
+#print axioms SerrePositivity.InfinityCategories.restrictScalarsSimplex
+#print axioms SerrePositivity.InfinityCategories.unrestrictScalarsSimplex
+#print axioms SerrePositivity.InfinityCategories.restrictScalarsSimplex_pullback
+#print axioms SerrePositivity.InfinityCategories.dgNerveRestrictScalarsIso
+#print axioms SerrePositivity.InfinityCategories.transposeBaseChangeDG
+#print axioms SerrePositivity.InfinityCategories.complexBaseChangeDG
+#print axioms SerrePositivity.InfinityCategories.semifreeBaseChangeDG
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityBaseChange
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityBaseChange_vertex
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.ScalarRestrictionNerve,
+    `SerrePositivity.InfinityCategories.Derived.BaseChangeDG,
+    `SerrePositivity.InfinityCategories.Derived.BaseChange,
     `SerrePositivity.InfinityCategories.Derived.FiltrationCoordinates,
     `SerrePositivity.InfinityCategories.Derived.SemifreeBasisEquivalence,
     `SerrePositivity.InfinityCategories.Derived.ConeBasis,

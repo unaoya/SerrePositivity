@@ -27,6 +27,9 @@ public import SerrePositivity.InfinityCategories.Derived.DerivedComparisonShift
 public import SerrePositivity.InfinityCategories.Derived.HomotopyCategoryComparison
 public import SerrePositivity.InfinityCategories.Derived.Checks
 public import SerrePositivity.InfinityCategories.Derived.InfinityCategory
+public import SerrePositivity.InfinityCategories.Derived.ScalarRestrictionNerve
+public import SerrePositivity.InfinityCategories.Derived.BaseChangeDG
+public import SerrePositivity.InfinityCategories.Derived.BaseChange
 
 /-! # Semifree 複体による導来圏の dg 表示
 
