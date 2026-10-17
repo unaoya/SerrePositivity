@@ -100,6 +100,35 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.natAdicCompletion
 assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.natAdicCompletionLift_of
 assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.natAdicCompletion_ringHom_ext
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.carrier
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.commRing
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.baseMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.perfectoid
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.flat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.andreTowerAlgebraCoeSort
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.andreTowerAlgebraAlgebra
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.Hom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.Hom.mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.Hom.toRingHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.Hom.commutes
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.Hom.ext
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.category
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.complete
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.diagramRing
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.diagramCommRing
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.diagramAlgebra
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.diagramMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.diagramSystem
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.colimitObject
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.colimitOf
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.colimitCocone
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.colimitDesc
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.colimitDesc_fac
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.colimitIsColimit
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.andreTowerAlgebra_hasColimitsOfShape
+
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
@@ -125,7 +154,8 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.Transfinite.Terminal,
     `SerrePositivity.BhattScholze.Andre.Transfinite.CountableRelations,
     `SerrePositivity.BhattScholze.Andre.Transfinite.AlgebraColimit,
-    `SerrePositivity.BhattScholze.Andre.Transfinite.CompletionUniversal]
+    `SerrePositivity.BhattScholze.Andre.Transfinite.CompletionUniversal,
+    `SerrePositivity.BhattScholze.Andre.Transfinite.AlgebraCategory]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
@@ -240,3 +270,32 @@ run_cmd do
 #print SerrePositivity.BhattScholze.Andre.Transfinite.natAdicCompletionLift
 #print SerrePositivity.BhattScholze.Andre.Transfinite.natAdicCompletionLift_of
 #print SerrePositivity.BhattScholze.Andre.Transfinite.natAdicCompletion_ringHom_ext
+
+#print SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra
+#print SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.mk
+#print SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.carrier
+#print SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.commRing
+#print SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.baseMap
+#print SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.perfectoid
+#print SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.flat
+#print SerrePositivity.BhattScholze.Andre.Transfinite.andreTowerAlgebraCoeSort
+#print SerrePositivity.BhattScholze.Andre.Transfinite.andreTowerAlgebraAlgebra
+#print SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.Hom
+#print SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.Hom.mk
+#print SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.Hom.toRingHom
+#print SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.Hom.commutes
+#print SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.Hom.ext
+#print SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.category
+#print SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.complete
+#print SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.diagramRing
+#print SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.diagramCommRing
+#print SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.diagramAlgebra
+#print SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.diagramMap
+#print SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.diagramSystem
+#print SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.colimitObject
+#print SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.colimitOf
+#print SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.colimitCocone
+#print SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.colimitDesc
+#print SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.colimitDesc_fac
+#print SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.colimitIsColimit
+#print SerrePositivity.BhattScholze.Andre.Transfinite.andreTowerAlgebra_hasColimitsOfShape
