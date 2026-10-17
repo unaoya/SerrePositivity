@@ -13,6 +13,67 @@ set_option pp.universes true
 set_option pp.explicit true
 
 
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.cube
+#check @SerrePositivity.InfinityCategories.Coherent.cube
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.cubeCoordinate
+#check @SerrePositivity.InfinityCategories.Coherent.cubeCoordinate
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.cubeCoordinateFunctor
+#check @SerrePositivity.InfinityCategories.Coherent.cubeCoordinateFunctor
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.cubeCoordinateMap
+#check @SerrePositivity.InfinityCategories.Coherent.cubeCoordinateMap
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.cubeRestFunctor
+#check @SerrePositivity.InfinityCategories.Coherent.cubeRestFunctor
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.cubeCoordinateMap_apply
+#check @SerrePositivity.InfinityCategories.Coherent.cubeCoordinateMap_apply
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.cubeCombineSimplex
+#check @SerrePositivity.InfinityCategories.Coherent.cubeCombineSimplex
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.cubeSplit
+#check @SerrePositivity.InfinityCategories.Coherent.cubeSplit
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.cubeUnsplit
+#check @SerrePositivity.InfinityCategories.Coherent.cubeUnsplit
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.cubeSplit_comp_cubeUnsplit
+#check @SerrePositivity.InfinityCategories.Coherent.cubeSplit_comp_cubeUnsplit
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.cubeUnsplit_comp_cubeSplit
+#check @SerrePositivity.InfinityCategories.Coherent.cubeUnsplit_comp_cubeSplit
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.cubeSplitIso
+#check @SerrePositivity.InfinityCategories.Coherent.cubeSplitIso
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.mem_upperEndpoint_iff
+#check @SerrePositivity.InfinityCategories.Coherent.mem_upperEndpoint_iff
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.cubeBoundary
+#check @SerrePositivity.InfinityCategories.Coherent.cubeBoundary
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hollowCube
+#check @SerrePositivity.InfinityCategories.Coherent.hollowCube
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.mem_hollowCube_iff
+#check @SerrePositivity.InfinityCategories.Coherent.mem_hollowCube_iff
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hollowCubeIso
+#check @SerrePositivity.InfinityCategories.Coherent.hollowCubeIso
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hollowCube_anodyne
+#check @SerrePositivity.InfinityCategories.Coherent.hollowCube_anodyne
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.mem_hollowCube_endpoints_iff
+#check @SerrePositivity.InfinityCategories.Coherent.mem_hollowCube_endpoints_iff
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hollowCube_extension
+#check @SerrePositivity.InfinityCategories.Coherent.hollowCube_extension
+
 #print axioms SerrePositivity.InfinityCategories.Coherent.hollowCylinder
 #check @SerrePositivity.InfinityCategories.Coherent.hollowCylinder
 
@@ -52,6 +113,18 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.Coherent.pathPrefix_comp_pathSuffix
 #check @SerrePositivity.InfinityCategories.Coherent.pathPrefix_comp_pathSuffix
 
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathHollow
+#check @SerrePositivity.InfinityCategories.Coherent.pathHollow
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.mem_pathHollow_iff
+#check @SerrePositivity.InfinityCategories.Coherent.mem_pathHollow_iff
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathHollow_anodyne
+#check @SerrePositivity.InfinityCategories.Coherent.pathHollow_anodyne
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathHollow_extension
+#check @SerrePositivity.InfinityCategories.Coherent.pathHollow_extension
+
 #print axioms SerrePositivity.InfinityCategories.Coherent.pathInteriorFunctor
 #check @SerrePositivity.InfinityCategories.Coherent.pathInteriorFunctor
 
@@ -66,3 +139,12 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.Coherent.pathInteriorNerveIso
 #check @SerrePositivity.InfinityCategories.Coherent.pathInteriorNerveIso
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.subcomplexPreimageIso
+#check @SerrePositivity.InfinityCategories.Coherent.subcomplexPreimageIso
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.subcomplexPreimageArrowIso
+#check @SerrePositivity.InfinityCategories.Coherent.subcomplexPreimageArrowIso
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.anodyne_subcomplexPreimage
+#check @SerrePositivity.InfinityCategories.Coherent.anodyne_subcomplexPreimage
