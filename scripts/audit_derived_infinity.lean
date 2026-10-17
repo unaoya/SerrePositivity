@@ -1,6 +1,7 @@
 import SerrePositivity.InfinityCategories.Derived.SemifreeKProjective
 import SerrePositivity.InfinityCategories.Derived.SemifreeResolution
 import SerrePositivity.InfinityCategories.Derived.SemifreeSubcategory
+import SerrePositivity.InfinityCategories.Derived.DerivedComparison
 
 #print axioms SerrePositivity.InfinityCategories.complexSemifree
 #print axioms SerrePositivity.InfinityCategories.complexSemifree_iff
@@ -23,3 +24,17 @@ import SerrePositivity.InfinityCategories.Derived.SemifreeSubcategory
 #print axioms SerrePositivity.InfinityCategories.semifreeHomotopyComparisonFull
 
 #print axioms SerrePositivity.InfinityCategories.semifreeHomotopyComparisonFaithful
+
+#print axioms SerrePositivity.InfinityCategories.semifreeDerivedComparison
+
+#print axioms SerrePositivity.InfinityCategories.semifreeDerivedComparison_map_bijective
+
+#print axioms SerrePositivity.InfinityCategories.semifreeDerivedComparisonFull
+
+#print axioms SerrePositivity.InfinityCategories.semifreeDerivedComparisonFaithful
+
+#print axioms SerrePositivity.InfinityCategories.semifreeDerivedComparisonEssSurj
+
+#print axioms SerrePositivity.InfinityCategories.semifreeDerivedComparisonIsEquivalence
+
+#print axioms SerrePositivity.InfinityCategories.semifreeDerivedEquivalence

@@ -170,3 +170,33 @@ semifreeHomotopyComparisonFaithful (S : Type u) [CommRing S] :
 対象ビルド `lake build SerrePositivity.InfinityCategories.Derived.SemifreeSubcategory` と
 `lake env lean scripts/audit_derived_infinity.lean` は終了コード 0。
 全15公開宣言の公理は標準3公理のみ。D2d に残りなし。未完了は D2e・D2g。
+
+### D2e（2026-10-17）
+
+完了。共通前提は `(S : Type u) [CommRing S]
+[HasDerivedCategory.{w} (ModuleCat.{u} S)]`。namespace は同上。
+以下の全宣言にこの前提を付す（`H := DifferentialGraded.HomotopyCategory S (Semifree S)`、
+`D := DerivedCategory (ModuleCat.{u} S)` は型を短縮して表示するための記号）：
+
+```lean
+semifreeDerivedComparison : H ⥤ D
+semifreeDerivedComparison_map_bijective (X Y : H) :
+  Function.Bijective ((semifreeDerivedComparison S).map :
+    (X ⟶ Y) → ((semifreeDerivedComparison S).obj X ⟶ (semifreeDerivedComparison S).obj Y))
+semifreeDerivedComparisonFull : (semifreeDerivedComparison S).Full
+semifreeDerivedComparisonFaithful : (semifreeDerivedComparison S).Faithful
+semifreeDerivedComparisonEssSurj : (semifreeDerivedComparison S).EssSurj
+semifreeDerivedComparisonIsEquivalence : (semifreeDerivedComparison S).IsEquivalence
+semifreeDerivedEquivalence (S : Type u) [CommRing S]
+  [HasDerivedCategory.{w} (ModuleCat.{u} S)] :
+  DifferentialGraded.HomotopyCategory S (Semifree S) ≌ DerivedCategory (ModuleCat.{u} S)
+```
+
+比較関手は D2d の関手と `DerivedCategory.Qh` の合成。
+K-projective からの `CochainComplex.IsKProjective.Qh_map_bijective` により充満忠実、
+D2c と `Q` が擬同型を同型に送ることにより本質的全射。
+`HasDerivedCategory` は導来圏の選択であり、未証明の数学的性質を仮定する束ではない。
+対象ビルド `lake build SerrePositivity.InfinityCategories.Derived.DerivedComparison` と
+`lake env lean scripts/audit_derived_infinity.lean` は終了コード 0。
+全22公開宣言の公理は標準3公理のみ。D2e に残りなし。未完了は D2g（標準 instance での
+具体化、集約ファイル、ルートの import）。D2f は任意で未実装、D1・D3・D4 は範囲外。
