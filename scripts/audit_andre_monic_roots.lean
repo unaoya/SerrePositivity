@@ -1214,6 +1214,13 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_boundedPrismComp
 assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPolynomialDeltaHom_of_boundedPrism_residue_roots
 assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicCompletionHom_of_bounded_residue_roots
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_boundedPrismHom_generator_unit
+assert_no_sorry SerrePositivity.BhattScholze.Andre.boundedPrismHom_generator_span
+assert_no_sorry SerrePositivity.BhattScholze.Andre.boundedPrismHom_generator_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.boundedPrismHom_generator_complete
+assert_no_sorry SerrePositivity.BhattScholze.Andre.boundedPrismHom_map_ideal_eq
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicCompletionHom_over_bounded_prism
+
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
@@ -1432,7 +1439,9 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.BoundedPrismAdicComplete,
     `SerrePositivity.BhattScholze.Andre.BoundedPrismCompatibleRootsLift,
     `SerrePositivity.BhattScholze.Andre.PowerRootPolynomialBoundedPrismLift,
-    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicBoundedResidueRootUniversal]
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicBoundedResidueRootUniversal,
+    `SerrePositivity.BhattScholze.Andre.BoundedPrismHomRigidity,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicBasePrismUniversal]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

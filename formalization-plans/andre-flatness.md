@@ -4882,3 +4882,72 @@ BS Rem 7.15（著者版 p.62）に対する原典とは異なる、主イデア�
 （集約 4562 jobs）。新規 9 公開宣言の `assert_no_sorry` と専用監査は
 終了コード 0。生成宣言を含む 6938 宣言の推移的公理依存は標準 3 公理のみ。
 新規 9 公開宣言の正確な型を `#check` で確認した（終了コード 0）。
+
+### E1.69 一般の基底 prism 射に対する実完備化の普遍性（2026-10-17）
+
+本節は André E1・E2 の追記。E1.68 の基底生成元の厳密な一致条件を解消した。
+新規 `Andre/BoundedPrismHomRigidity.lean` に 5 公開定理を追加した。
+共通の型と仮定は次の通り（源・標的の宇宙は独立）。
+
+```lean
+{p : ℕ} [Fact p.Prime]
+{A : Type u} {B : Type v} [CommRing A] [CommRing B]
+{P : OrientedPrism p A} {Q : OrientedPrism p B}
+(F : OrientedPrism.Hom P Q)
+(hP : P.deltaStructure.IsDistinguished P.generator)
+(hB : ∃ N : ℕ, ∀ n : ℕ, ∀ x : B ⧸ Q.ideal,
+  (p : B ⧸ Q.ideal)^n*x=0 → (p : B ⧸ Q.ideal)^N*x=0)
+```
+
+これらの引数の下で、各定理の結論は正確に以下。
+
+```lean
+-- existsUnique_boundedPrismHom_generator_unit
+∃! z : Bˣ, F.toRingHom P.generator = Q.generator * z
+-- boundedPrismHom_generator_span
+Ideal.span {F.toRingHom P.generator} = Q.ideal
+-- boundedPrismHom_generator_regular
+Function.Injective (fun x : B => F.toRingHom P.generator * x)
+-- boundedPrismHom_generator_complete
+IsModuleComplete B (F.toRingHom P.generator) (ModuleCat.of B B)
+-- boundedPrismHom_map_ideal_eq
+P.ideal.map F.toRingHom = Q.ideal
+```
+
+像の distinguished 性と標的の (p,d) 古典的完備性から、生成元の像の係数が単元であることを示す。
+一意性には標的生成元の正則性を使う。標的の完全性・p 正則性は不要。
+源も完全性までは要求せず、指定生成元の distinguished 性だけを引数にする。
+
+新規 `Andre/PowerRootPrismMonicBasePrismUniversal.lean` に 1 公開定理を追加した。
+完全な源 prism W、hW、f : Polynomial A に対し、P、E、dP、a、L、jL、H、uL、DH は
+E1.68 と同じ実際の環・写像・δ 構造を指す。
+`existsUnique_powerRootPrismMonicCompletionHom_over_bounded_prism` の引数は、
+同じ宇宙の B、Q、上記 hB、一般の基底 prism 射 k : OrientedPrism.Hom W Q、
+ρ : ℕ → B ⧸ Q.ideal、hρ : ∀ n, ρ (n+1)^p=ρ n、
+hroot : f.eval₂ ((Ideal.Quotient.mk Q.ideal).comp k.toRingHom) (ρ 0)=0。
+元の H の環構造 `pdCompletionCommRing L p (jL dP)` を let で導入した後の結論は
+
+```lean
+∃! F : H →+* B,
+  DH.IsDeltaHom Q.deltaStructure F ∧
+    F.comp (powerRootPrismMonicCompletionBaseMap W hW f)=k.toRingHom ∧
+      ∀ n, Ideal.Quotient.mk Q.ideal
+        (F (uL (jL (powerRootPolynomialVariable A p hp n))))=ρ n
+```
+
+である。`k.toRingHom W.generator=Q.generator` は仮定しない。
+一意な入力 δ 射の生成元の像について、新しい補題で可除性・正則性・完備性を供給し、
+既存の raw 実完備化の普遍性を適用する。source の prism 商の p 正則性、
+f のモニック性・正次数はこの普遍射の前提ではない。
+
+BS Rem 7.15（著者版 p.62）への応用であり、原典とは異なる有界ねじれ・
+共通古典的完備性・生成元の単元係数による経路であることを docstring に明記した。
+原典の完備入力環 S との接続、源 H 自体の prism 性、raw と実完備化の正則性・
+完全忠実平坦性に残る hpR、原典の係数表記との最終照合は未完了。
+一般基底射に対する普遍射は証明したが、絶対 prismatic envelope 全体の同定とは数えない。
+承認済み hdeg を持つ任意族存在定理の型は変更していない。
+
+検証：新規 2 ファイルの対象ビルドと集約ビルドは終了コード 0
+（集約 4564 jobs）。新規 6 公開宣言の `assert_no_sorry` と専用監査は
+終了コード 0。生成宣言を含む 6987 宣言の推移的公理依存は標準 3 公理のみ。
+新規 6 公開宣言の正確な型を `#check` で確認した（終了コード 0）。
