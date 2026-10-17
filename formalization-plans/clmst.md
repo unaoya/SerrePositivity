@@ -10144,6 +10144,16 @@ Prop247RankAssembly の指標集合についても同様に分離した。元の
 係数零化は明示仮定でなく証明済みの実入力となったが、終域比較と成分 isogeny は未供給である。
 原典 E∞ 版 Cor 8.12 の保留と元の Prop 2.4.7 引用を維持し、新しい sorry・axiom・引用は追加していない。
 
+**一般 rank の実係数入力と KL 受渡しの全体公開・監査（2026-10-17）。**
+Prop247RankAIC・Prop247ExcisionLocal・Prop247AicRankAssembly をルートへ公開した。
+実 rank 主開表示、元の annihilator 商との同定、AIC 基底上の Ri の perfectoid 性、
+元の R→∏Ti の核・余核の冪零化、その入力を供給した組立てが公開依存に含まれる。
+自然数の rank 指標との接続に必要な universe 一般化後、元の全体 lake build は
+6860ジョブで成功し、scripts/audit_axioms.lean と scripts/audit_clmst.lean は全て終了コード0。
+共有ルートは別 index の git add -p で自分の3 import の hunk だけを選択した。
+監査範囲・既存引用の許可範囲は変更しない。既存の一般 integral 存在 B-I の解消とは扱わない。
+原典 E∞ 版 Cor 8.12 の保留と元の Prop 2.4.7 の引用を維持し、新しい sorry・axiom・引用は追加していない。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
