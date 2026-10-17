@@ -8410,6 +8410,49 @@ end SerrePositivity.BhattScholze
 この共有 API も **全射 q の場合**であり、一般の整な包含の完成を主張しない。
 ルートビルド（6248 jobs）・KL 監査（1178 assert）も成功した。
 
+#### KL-T：実像への全射部分と全 Tor 試験の移送（2026-10-17）
+
+一般の比較 `φ : A →ₐ[R] E` を実像 `φ.range` への全射と、その包含に分けた。
+`CommutativeAlgebra/PerfectoidizationAlgebraMap.lean` の
+`SerrePositivity.IsPerfectoidization.mapAlgHom_mapAlgHom` が実誘導射の合成を保存する。
+
+独立 import `BhattScholze/PerfectoidizationImageComparison.lean` は次を公開する。
+
+- `SerrePositivity.BhattScholze.perfectoidization_image_ker_coker_annihilated`：
+  元の perfectoid 基底 R、A の指定 perfectoid 化 `f : A →ₐ[R] C`、
+  実像の指定 perfectoid 化 `g : φ.range →ₐ[R] D`、両立根 `ρ : ℕ → R` と
+  `∀ a, φ a = 0 → ∃ N, ρ 0 ^ N • a = 0` から、
+  実線形写像 `(IsPerfectoidization.mapAlgHom hf hg φ.rangeRestrict).toLinearMap` の
+  核・余核に対する `perfectoidIdeal R p hR (ρ 0)` の零作用を返す。
+  前の独立線形 API と同じ二つの forall 型で、元の R の作用を維持する。
+- `exists_image_perfectoidization_almost_comparison`：`[Module.Finite R A]` のもとで、
+  `∃ (D : Type u) (_ : CommRing D) (_ : Algebra R D) (g : φ.range →ₐ[R] D),
+  ∃ hg : IsPerfectoidization p g.toRingHom, ...` の順に、実像の対象と上の二結論を構成する。
+  E の有限性は要求しない。像が A の全射像として R 有限であることを証明し、既存 B-I を使う。
+- `perfectoidization_image_factorization`：E の指定 perfectoid 化 `h : E →ₐ[R] F` に対し、
+  実写像の正確な因子分解を返す。
+
+```lean
+(IsPerfectoidization.mapAlgHom hg hh φ.range.val).comp
+  (IsPerfectoidization.mapAlgHom hf hg φ.rangeRestrict) =
+    IsPerfectoidization.mapAlgHom hf hh φ
+```
+
+`CLMST/PerfectoidizationImageTorComparison.lean` の
+`SerrePositivity.CLMST.perfectoidIdeal_TorInput_iff_image` は、指定した像の対象について、
+任意の p^k torsion 試験加群 N・任意次数 i の全元 s∈I に関する元の係数 Tor 作用の零性を
+C と D の間で同値にする。`exists_localization_image_perfectoidization_Tor_comparison` は、
+`α : A →ₗ[R] X` が `ρ 0` の局所化、`j : E →ₗ[R] X` と `j.comp φ.toLinearMap = α`
+という通常の比較図式から核の support を実際に供給し、一つの D, g を全試験より先に選ぶ。
+対象は有限性なしの任意 N、全 k、全 i（特に全正次数）、全 s∈I を保つ。
+
+対象ビルドと専用監査 `scripts/audit_clmst_image_tor_comparison.lean` が成功。
+実際の `A → Localization.Away (ρ 0) ⊗[R] A` に適用し、全 Tor 試験を一つの像の対象へ
+移す例を確認した。合成・因子分解は標準三公理のみ。指定対象版は既存 BS 7.14 のみ、
+対象選択版はそれと既存 B-I のみへ到達することを依存監査した。
+**未完了なのは像の包含の perfectoid 化の almost 比較**であり、この分解自体から
+一般の整な変更の almost 不変性や KL-T/Q 全体の完成を主張しない。
+
 #### Prop 2.4.7 専任系列：原典から D-I/U/Q への型付き受渡し（2026-10-17）
 
 本節は統合表 D-I・D-U・D-Q の実入力を固定する。未採用の別計画は根拠にしない。

@@ -36,4 +36,14 @@ theorem mapAlgHom_comp (hf : IsPerfectoidization p f.toRingHom)
   ext a
   exact RingHom.congr_fun (hf.map_comp hg q.toRingHom) a
 
+/-- Functorial composition retains the same original scalar action. -/
+theorem mapAlgHom_mapAlgHom {U E : Type u} [CommRing U] [CommRing E]
+    [Algebra R U] [Algebra R E] {h : U →ₐ[R] E}
+    (hf : IsPerfectoidization p f.toRingHom) (hg : IsPerfectoidization p g.toRingHom)
+    (hh : IsPerfectoidization p h.toRingHom)
+    (q : A →ₐ[R] B) (r : B →ₐ[R] U) :
+    (mapAlgHom hg hh r).comp (mapAlgHom hf hg q) = mapAlgHom hf hh (r.comp q) := by
+  ext x
+  exact RingHom.congr_fun (hf.map_map hg hh q.toRingHom r.toRingHom) x
+
 end SerrePositivity.IsPerfectoidization

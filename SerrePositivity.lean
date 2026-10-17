@@ -883,6 +883,7 @@ public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedPerfe
 public import SerrePositivity.BhattScholze.PerfectoidizationSupportedQuotientKernel
 public import SerrePositivity.CLMST.PerfectoidIdealTorCover
 public import SerrePositivity.BhattScholze.PerfectoidizationSupportedQuotientLinear
+public import SerrePositivity.CLMST.PerfectoidizationImageTorComparison
 
 /-!
 # Serre の交点重複度の正値性の形式化
