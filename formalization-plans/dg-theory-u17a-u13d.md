@@ -307,3 +307,25 @@ HEAD からの差分全体が自分の変更だけであることも確認する
   Hom 比較を証明すること。これによる完全忠実性と U17b の完備化比較は引き続き未完。
 - U15e6 のコミット：`868beacb`（自分の3ファイルのみと直後に確認）。
   ルートには他チャットの import が引き続き混在しているため、今回も編集・コミットしない。
+
+### U15e8：正の随伴次数部分の固定長 path 計算
+
+- `Quotient/DerivedComparisonGradedProjection.lean`：指定された word 部分集合の直和、
+  全内部 path 直和への包含、その分裂射影を構成。固定長 n+1 への射影は第 n 段階を消す。
+  ε 消去もその射影の下で零になるため、最終微分を持つ `lengthComplex (n+1)` から
+  内部微分だけを持つ `fixedLengthHom (n+1)` への実際の chain map を構成。
+- `Quotient/DerivedComparisonGraded.lean`：内部微分の cutoff 射影を使い、射影の核が
+  第 n 段階の像に一致することと各次数での全射性を証明。次数ごとの加群 cokernel 計算を
+  評価関手による余極限判定へ運び、複体としての cokernel 普遍性を証明。
+- `lengthGradedIso` は
+  `cokernel (lengthMap ... (Nat.le_succ n)) ≅ fixedLengthHom ... (n+1)` という実際の同型。
+  `lengthGradedIso_π` は cokernel 射影との整合式である。
+  同じ写像からの複体の短完全列も `lengthLayer_shortExact` で証明した。
+- 対象ビルド：`Checks.QuotientGradedProjection`（1869 jobs）、`Checks.QuotientGraded`
+  （1872 jobs）をそれぞれ完全なモジュール名で指定して成功。主要14宣言の公理監査は標準3公理のみ。
+  project import 依存87・88ファイルに、禁止された dg 圏分解系への依存なし。
+  新規 sorry・axiom・引用なし。既存の他担当ファイルは編集していない。
+- 係数の片側 K-flat 性はまだこの同型の仮定に不要。次段階は、この固定長直和を前方係数と
+  Hom(b,−) の tensor に分解し、Verdier 分母での Hom ホモロジー余極限消滅へつなぐこと。
+  完全忠実性と U17b 全体は引き続き未完。
+- U15e7 のコミット：`266ef182`（自分の7ファイルのみと直後に確認）。
