@@ -634,6 +634,15 @@
 - 全主導来圏における同値は未完。特に全対象への単位の可逆性の拡張はまだ必要であり、
   compact上で同型であることだけから全対象の同値は結論していない。
 
+## U14a.34：実際のtensorのU13 dg enhancement制限（2026-10-17）
+
+- `PerfectTensorDG.lean`：HPかつperfectなEnd(E)加群に実際のunderived tensorを適用し、
+  既存の射影性保存と射影的入力での導来計算同型から、HPかつperfectなD加群となることを証明した。
+- 全Hom写像を元のtensor dg関手から継承して `perfectEndomorphismTensorDG` を構成。
+  U13 enhancementの包含正方形がdgレベルで可換することを証明した。
+- `ChecksPerfectTensorDG` の対象ビルド成功。新規3主要宣言の公理は標準3公理のみ。
+- この制限自体にはthick生成仮定は不要。対象を任意の選択された同値の逆像へ置き換えていない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
