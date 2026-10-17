@@ -9489,3 +9489,51 @@ BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_
 自然性・単位・結合のcoherenceは引き続き必要である。U12e全体はまだ受け入れない。
 その後U16a〜d、U15eの分解版へ進む。局所K-flat版の所有と再利用方針は§0を保持する。
 共有一般論への新しいAPI要求はなく、共有ルート・Endomorphism/・係数変更系列は変更していない。
+
+### 17.207 U12e47：全Hom制限・主K随伴・延長の射影性保存と導来Hom同値（2026-10-17）
+
+**追加API。** `Module/RestrictionEnriched.lean`で`moduleRestrictionParam`により
+任意パラメータの全次数自然変換を引き戻し、`moduleRestrictionHom`を主Hom endへの
+chain mapとして構成した。単位・豊穣合成を保つ`dgModuleRestriction`を定義し、
+`dgModuleRestriction_map_eval`と`dgModuleRestriction_onClosed_eq`で、閉零制限が
+既存の`moduleRestriction`と一致することを証明した。パラメータ付き変換の引き戻し自体には
+対象型のsmallnessは不要。主Hom endを取るdg関手では両対象型をu-smallとする。
+
+`Functor/HomotopyAdjunction.lean`の`DGFunctor.homotopyAdjunction`は、
+任意の二つのdg関手の閉零随伴から主ホモトピー圏上の随伴を構成する。
+単位・余単位と両三角恒等式を境界商へ送り、対象型のsmallnessは要求しない。
+U14の降下実装を参照し、graph固有の同じ降下を別実装せず、このdg一般補題に切り出した。
+
+`Derived/FunctorExtensionProjective.lean`では`dgModuleHomotopyAdjunction`を得た。
+制限の主K上の準同型保存と、U14の既存
+`moduleHomotopicallyProjective_of_coyoneda_inverts`を読み取り専用で再利用し、
+`dgModuleExtension_homotopicallyProjective`を証明した。
+これは任意dg関手のgraph延長がホモトピー射影的右加群を保つ定理で、
+元のHomのflatness・有界性やFのHom準同型性を仮定しない。
+
+`Derived/FunctorExtensionHom.lean`では、既存の射影的始域の局所化Hom計算と
+主K随伴、指定射影解像度による延長計算同型を組み合わせた。
+`dgProjectiveDerivedExtensionHomEquiv`、`dgDerivedExtensionHomEquivOnModules`、
+`dgDerivedExtensionHomEquiv`により、実際の主導来関手の射集合同値を得た。
+この段階では両変数自然性はまだ証明しておらず、導来随伴としては受け入れない。
+既存公開APIの名前・型の変更はない。
+
+**検証。** `Checks.DGExtensionProjective`で、独立宇宙の主K随伴・射影性保存・
+導来射集合同値、対象型のsmallnessを要求しないdg一般の随伴降下と単位成分、
+ZMod 2上の射影性保存を検査した。同チェックとChecks.DGFunctorAdjunction・
+Checks.DGFunctorCounit・Checks.DGFunctorExtension・Checks.DGDerivedRestriction・
+Checks.DGResolutionComparison・Checks.DerivedBimoduleFullPentagon・Checks.StageEight・
+Checks.StageSeven・Spectra.StageTwoの統合ビルド成功（3319 jobs、警告なし）。
+主要21宣言の直接公理監査は重複・欠落なく標準3公理以内。監査累計4052宣言。
+固定Lean v4.35.0-rc4とMathlib e6bbacd0e1b7307ff6e17da09cd2455f60804fa6を再確認し、
+Mathlib HEADとmanifestは一致した。新しいsorry・axiom・引用・資源上限変更は0件。
+全体文書検査は20 Markdown・320 exposition参照を検査し、担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+未解決参照1件で失敗した。計画書のローカルリンクと担当差分の空白検査は成功。
+
+**残る接続。** 射集合同値の実際の加群射に対する両変数自然性、解像度liftとの整合性を
+証明する。U14の既存局所化Hom自然性APIを再利用して全導来射へ延長し、
+導来随伴の単位・余単位と代表加群上の比較の一致を得る。
+準同値に沿う全加群の導来同値、解像度変更とbimodule合成の自然性・単位・結合のcoherenceは未完。
+U12e全受入→U16a〜d→U15eの分解版という順序と局所K-flat版の並行所有は維持する。
+共有一般論への新しいAPI要求はない。共有ルート・Endomorphism/・係数変更系列は変更していない。

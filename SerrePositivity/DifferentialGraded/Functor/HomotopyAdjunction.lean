@@ -1,0 +1,81 @@
+module
+public import SerrePositivity.DifferentialGraded.Functor.Basic
+public import Mathlib.CategoryTheory.Adjunction.Basic
+
+/-! # dg関手の閉零随伴の主ホモトピー圏への降下 -/
+@[expose] public section
+noncomputable section
+universe u v w
+namespace SerrePositivity.DifferentialGraded.DGFunctor
+open CategoryTheory
+variable {A : Type u} [CommRing A] {D : Type v} {E : Type w}
+  [DGCategory A D] [DGCategory A E]
+  (L : DGFunctor A D E) (R : DGFunctor A E D) (adj : L.onClosed ⊣ R.onClosed)
+
+/-- 閉零随伴の単位を境界商へ送る。 -/
+def homotopyAdjunctionUnit : 𝟭 (HomotopyCategory A D) ⟶ L.onHomotopy ⋙ R.onHomotopy where
+  app X := (toHomotopy A D).map (adj.unit.app X.as)
+  naturality {X Y} f := by
+    obtain ⟨X⟩ := X
+    obtain ⟨Y⟩ := Y
+    obtain ⟨f, rfl⟩ := (toHomotopy A D).map_surjective f
+    change (toHomotopy A D).map f ≫ (toHomotopy A D).map (adj.unit.app Y) =
+      (toHomotopy A D).map (adj.unit.app X) ≫
+        (toHomotopy A D).map (R.onClosed.map (L.onClosed.map f))
+    rw [← CategoryTheory.Functor.map_comp, ← CategoryTheory.Functor.map_comp]
+    exact congrArg (toHomotopy A D).map (adj.unit.naturality f)
+
+/-- 閉零随伴の余単位を境界商へ送る。 -/
+def homotopyAdjunctionCounit : R.onHomotopy ⋙ L.onHomotopy ⟶ 𝟭 (HomotopyCategory A E) where
+  app X := (toHomotopy A E).map (adj.counit.app X.as)
+  naturality {X Y} f := by
+    obtain ⟨X⟩ := X
+    obtain ⟨Y⟩ := Y
+    obtain ⟨f, rfl⟩ := (toHomotopy A E).map_surjective f
+    change (toHomotopy A E).map (L.onClosed.map (R.onClosed.map f)) ≫
+      (toHomotopy A E).map (adj.counit.app Y) =
+        (toHomotopy A E).map (adj.counit.app X) ≫ (toHomotopy A E).map f
+    rw [← CategoryTheory.Functor.map_comp, ← CategoryTheory.Functor.map_comp]
+    exact congrArg (toHomotopy A E).map (adj.counit.naturality f)
+
+lemma homotopyAdjunction_left_triangle (X : HomotopyCategory A D) :
+    L.onHomotopy.map ((homotopyAdjunctionUnit L R adj).app X) ≫
+      (homotopyAdjunctionCounit L R adj).app (L.onHomotopy.obj X) = 𝟙 _ := by
+  obtain ⟨X⟩ := X
+  change (toHomotopy A E).map (L.onClosed.map (adj.unit.app X)) ≫
+    (toHomotopy A E).map (adj.counit.app (L.onClosed.obj X)) = 𝟙 _
+  rw [← CategoryTheory.Functor.map_comp]
+  exact (congrArg (toHomotopy A E).map (adj.left_triangle_components X)).trans
+    ((toHomotopy A E).map_id _)
+
+lemma homotopyAdjunction_right_triangle (X : HomotopyCategory A E) :
+    (homotopyAdjunctionUnit L R adj).app (R.onHomotopy.obj X) ≫
+      R.onHomotopy.map ((homotopyAdjunctionCounit L R adj).app X) = 𝟙 _ := by
+  obtain ⟨X⟩ := X
+  change (toHomotopy A D).map (adj.unit.app (R.onClosed.obj X)) ≫
+    (toHomotopy A D).map (R.onClosed.map (adj.counit.app X)) = 𝟙 _
+  rw [← CategoryTheory.Functor.map_comp]
+  exact (congrArg (toHomotopy A D).map (adj.right_triangle_components X)).trans
+    ((toHomotopy A D).map_id _)
+
+/-- 二つのdg関手の閉零随伴は主ホモトピー圏の随伴を誘導する。 -/
+def homotopyAdjunction : L.onHomotopy ⊣ R.onHomotopy :=
+  Adjunction.mkOfUnitCounit {
+    unit := homotopyAdjunctionUnit L R adj
+    counit := homotopyAdjunctionCounit L R adj
+    left_triangle := by
+      apply NatTrans.ext
+      funext X
+      simpa only [NatTrans.comp_app, Functor.whiskerRight_app, Functor.whiskerLeft_app,
+        Functor.associator_hom_app, Category.id_comp, Category.comp_id,
+        Functor.comp_obj, Functor.id_obj, NatTrans.id] using
+          homotopyAdjunction_left_triangle L R adj X
+    right_triangle := by
+      apply NatTrans.ext
+      funext X
+      simpa only [NatTrans.comp_app, Functor.whiskerRight_app, Functor.whiskerLeft_app,
+        Functor.associator_inv_app, Category.id_comp, Category.comp_id,
+        Functor.comp_obj, Functor.id_obj, NatTrans.id] using
+          homotopyAdjunction_right_triangle L R adj X }
+
+end SerrePositivity.DifferentialGraded.DGFunctor
