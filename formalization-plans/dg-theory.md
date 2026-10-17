@@ -10246,3 +10246,78 @@ U12eは未受入であり、受入後のU16a〜d、U15e分解版の順を保持�
 U15e分解版では局所K-flat版のQuotient/DerivedComparison*・Verdier/を読んで再利用する。
 共有一般論への新しいAPI要求はない。共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・
 ScalarExtension*・Quotient/DerivedComparison*・Verdier/は編集していない。
+
+
+### 17.222 U12e62：指定モデルと標準解像度による中間比較の自己・推移則（2026-10-17）
+
+**制限の恒等・合成比較。** `Bimodule/ValueIsomorphism.lean`は右加群同型族の左作用との
+全Hom自然性を、値のHom複体で確認して`isoOfFamily`へ束ねる入口を追加した。
+`Bimodule/MiddleLeftRestrictionCoherence.lean`と`Bimodule/MiddleRightRestrictionCoherence.lean`は、
+直接の左右制限の恒等・合成比較を、任意の閉零bimodule射に自然な自然同型として構成した。
+左制限は各左対象で恒等の右加群同型を使い、右制限は既存の加群制限の恒等・合成同型を再利用する。
+いずれも値の成分は恒等で、全次数の左作用との自然性を別に証明している。
+局所Hom K-flat性や準同値性は要求しない。
+
+**指定増大とtensorの自己・推移則。** `Tensor/ResolvedRestrictionCoherence.lean`は
+二段階のモデルの増大を合成関手への増大へまとめ、各値の計算式と準同型性の保存を証明した。
+左作用の反復制限と合成制限の間の表示同型を明記したうえで、
+`resolvedRestrictionComparison_comp`は二段階の実際のtensor比較が合成増大による比較と一致することを示す。
+`Tensor/ResolvedRestrictionIdentity.lean`は恒等関手の場合の式を証明し、
+表示を戻して正規化した増大とtensorする射そのものになることを示した。
+これらのchain mapの等式にはモデルのK-flat性さえ要求しない。
+`Bimodule/ResolvedRestrictionAugmentation.lean`は同じ増大の恒等・合成処理を全Hom自然な
+bimodule射として構成し、値の計算と準同型保存を証明した。
+
+**実際のbimodule比較の整合性。** `Derived/BimoduleMiddleResolvedCoherence.lean`は
+左右制限の表示同型を指定後因子との合成のsource同型へ送る。
+`ι_middleRestrictionResolvedMap_value`で既存の比較を各coend包含において計算し、
+`middleRestrictionResolvedMap_functor_comp`は二段階の指定増大による既存の実際の比較射が
+合成増大による一段階の比較と可換であることを閉零bimodule圏で証明した。
+`middleRestrictionResolvedMap_functor_id`とそのexchange形は恒等関手の比較を正規化した増大と
+左制限の恒等同型で計算する。新しい比較射を作って等式を定義で仮定したものではない。
+
+**実際の導来比較の自己・推移則。** `Derived/BimoduleMiddleIdentity.lean`の
+`derivedMiddleIdentitySourceIso`は既存の左右の恒等制限比較を実際の全導来合成へ送った同型である。
+`derivedMiddleRestrictionComparison_functor_id`は任意の指定右K-flat解像度による既存の導来比較が
+この同型のhomに一致することを示した。右因子の計算同型の前因子自然性と、
+指定増大の正規化を通じて証明し、解像度を含まない右辺を得ている。
+`Derived/BimoduleMiddleFunctorComposition.lean`は後因子の準同型増大をさらに制限した射と
+左制限の合成同型から`derivedMiddleCompositeSourceIso`を構成した。
+同じ最終モデルを用いた計算との可換式を証明したうえで、
+`derivedMiddleRestrictionComparison_functor_comp`は二つの実際の導来比較と合成関手の比較の
+可換式を証明した。指定増大の導来合成計算式と前項の厳密な比較射の合成則を再利用する。
+元の中間圏D・E・Tの局所Hom K-flat性も、二つの関手F・Gの準同値性も要求しない。
+使う局所Hom K-flat性は終端Lだけで、Q・R・Sには指定右相対K-flatモデルを使う。
+
+**標準解像度への接続。** `Bimodule/SemifreeRetarget.lean`はsourceとfiltrationを保持して
+semifree解像度の増大を準同型で後合成する。
+`Derived/BimoduleMiddleCanonicalComposition.lean`はこの操作で二段階目の標準解像度を
+合成関手への増大を持つ解像度に読み替え、既存の任意semifree解像度による比較の独立性を適用した。
+`derivedMiddleRestrictionCanonicalComparison_functor_comp`は二段階の標準解像度と、
+合成関手へ直接適用する標準比較の合成則である。
+解像度間の追加の比較射や可換squareを利用者に要求しない。
+標準解像度の恒等則も`derivedMiddleRestrictionCanonicalComparison_functor_id`として公開した。
+既存公開APIの名前・型・定義は変更していない。
+
+**検証。** 新規`Checks.DGBimoduleMiddleFunctorCoherence`は独立した五つの対象宇宙、
+D・E・Tの局所Hom K-flat性およびF・Gの準同値性なしでの指定モデルの実際の導来合成則、
+前因子のK-flat性なしの恒等則、追加squareなしの標準解像度の合成則、ZMod 2での恒等則を検査した。
+準同値での可逆性・全導来source同定・解像度独立性・ホモトピー・tensor制限・解像度同値・
+導来随伴・単位・制限・導来bimodule五角形・StageEight・StageSeven・Spectra.StageTwoとの
+統合ビルド成功（3465 jobs、警告なし）。主要60宣言の直接公理監査は重複・欠落なく標準3公理以内。
+新規監査累計4426宣言。今回の12受入Leanファイルのsorry・admit・新規axiom・資源上限変更は0件。
+採用済み引用0件。Lean v4.35.0-rc4とMathlib manifest/HEAD
+`e6bbacd0e1b7307ff6e17da09cd2455f60804fa6`を再確認した。
+全体文書検査は21 Markdown・320 exposition参照を検査し、担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+未解決参照1件で失敗した。
+
+**残件と次工程。** 今回の自己・推移則は、前因子の閉零対象と指定右K-flat後因子上の
+実際の導来比較および標準semifree計算について証明したものである。
+これらの等式とsource同型を両変数の全導来圏上の関手族へ束ねて降ろし、
+§17.220の既存の導来制限表示と整合させる作業を残す。
+さらに共通dg圏解像度による変更に適用し、対角単位・結合子との整合性とcoherenceを仕上げる。
+U12e全体は未受入であり、受入後のU16a〜d、U15e分解版の順を維持する。
+U15e分解版では局所K-flat版のQuotient/DerivedComparison*・Verdier/を読んで再利用する。
+共有一般論への新しいAPI要求はない。共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・
+ScalarExtension*・Quotient/DerivedComparison*・Verdier/と、並行作業のTensor/Associator*は編集していない。
