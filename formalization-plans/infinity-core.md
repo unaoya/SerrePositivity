@@ -527,3 +527,113 @@ A2a の全要求を実装した：直接構成の `join`、`joinInl`・`joinInr`
 `lake env lean scripts/audit_infinity_core.lean` は終了コード 0。
 累計 80 公開宣言（明示的 78、生成補題 2）の監査出力を照合し、標準三公理のみ。
 追加公理・引用・`sorry` はない。
+
+
+### A2b 途中①（2026-10-17）：slice・coslice と slice 側の普遍性
+
+承認された部分型表示の `sliceOver` と `sliceUnder`、左右の射影、
+頂点上の特殊化、join からの射を各単体上に制限する curry を構成した。
+さらに slice 側では各単体 a の錐を `(ℓ,id,k)` で評価して束ねる直接構成を行い、
+自然性、固定条件、制限との両逆関係を証明して `sliceOverEquiv` を構成した。
+余極限の一般論は使わない。§4 の設計変更はない。
+
+追加した全 22 公開宣言の正確な型を以下に記す。宇宙 `u` は任意、
+`open CategoryTheory SSet` と `open scoped Simplicial` の下での型。
+単体集合・射・単体の指定以外に、quasicategory 性・単射性等の追加前提はない。
+
+namespace：`SerrePositivity.InfinityCategories.Join`。
+
+```lean
+leftMapAt {m n : ℕ} (α : Fin m →o Fin n) (ℓ c : ℕ) (hc : pullCut α ℓ = c) :
+    Fin c →o Fin ℓ
+
+rightMapAt {m n : ℕ} (α : Fin m →o Fin n) (ℓ c : ℕ) (hc : pullCut α ℓ = c) :
+    Fin (m - c) →o Fin (n - ℓ)
+
+simplexMap_eq_at (A K : SSet.{u}) {m n : ℕ}
+    (α : Fin (m + 1) →o Fin (n + 1)) (ℓ : Fin (n + 2))
+    (c : ℕ) (hc : pullCut α ℓ.val = c) (a : augObj A ℓ.val) (k : augObj K (n + 1 - ℓ.val)) :
+    simplexMap A K α ⟨ℓ, a, k⟩ =
+      ⟨⟨c, by have
+
+```
+
+namespace：`SerrePositivity.InfinityCategories`。
+
+```lean
+sliceOver {K X : SSet.{u}} (p : K ⟶ X) : SSet.{u}
+
+sliceUnder {K X : SSet.{u}} (p : K ⟶ X) : SSet.{u}
+
+sliceOverProjection {K X : SSet.{u}} (p : K ⟶ X) : sliceOver p ⟶ X
+
+sliceUnderProjection {K X : SSet.{u}} (p : K ⟶ X) : sliceUnder p ⟶ X
+
+sliceOverVertex {X : SSet.{u}} (x : X _⦋0⦌) : SSet.{u}
+
+sliceUnderVertex {X : SSet.{u}} (x : X _⦋0⦌) : SSet.{u}
+
+sliceOverCurry {A K X : SSet.{u}} {p : K ⟶ X}
+    (F : join A K ⟶ X) (hF : joinInr A K ≫ F = p) : A ⟶ sliceOver p
+
+sliceUnderCurry {A K X : SSet.{u}} {p : K ⟶ X}
+    (F : join K A ⟶ X) (hF : joinInl K A ≫ F = p) : A ⟶ sliceUnder p
+
+sliceOverUncurryApp {A K X : SSet.{u}} {p : K ⟶ X} (f : A ⟶ sliceOver p) (n : ℕ) :
+    (join A K) _⦋n⦌ → X _⦋n⦌
+
+sliceOverUncurryApp_inr {A K X : SSet.{u}} {p : K ⟶ X}
+    (f : A ⟶ sliceOver p) (n : ℕ) (k : K _⦋n⦌) :
+    sliceOverUncurryApp f n ((joinInr A K).app _ k) = p.app _ k
+
+sliceOverUncurryApp_curry {A K X : SSet.{u}} {p : K ⟶ X}
+    (F : join A K ⟶ X) (hF : joinInr A K ≫ F = p) (n : ℕ) (s : (join A K) _⦋n⦌) :
+    sliceOverUncurryApp (sliceOverCurry F hF) n s = F.app _ s
+
+sliceOverGenerator (K : SSet.{u}) (n r : ℕ) (hr : r + 1 ≤ n + 1)
+    (k : Join.augObj K (n + 1 - (r + 1))) : Join.Simplex (Δ[r] : SSet.{u}) K n
+
+sliceOverGenerator_map_zero (K : SSet.{u}) {m n r : ℕ}
+    (α : Fin (m + 1) →o Fin (n + 1)) (hr : r + 1 ≤ n + 1)
+    (hc : Join.pullCut α (r + 1) = 0) (k : Join.augObj K (n + 1 - (r + 1))) :
+    Join.simplexMap Δ[r] K α (sliceOverGenerator K n r hr k) =
+      (joinInr Δ[r] K).app _ (Join.augMap K (Join.rightMapAt α (r + 1) 0 hc) k)
+
+sliceOverGenerator_map_succ (K : SSet.{u}) {m n r c : ℕ}
+    (α : Fin (m + 1) →o Fin (n + 1)) (hr : r + 1 ≤ n + 1)
+    (hc : Join.pullCut α (r + 1) = c + 1) (k : Join.augObj K (n + 1 - (r + 1))) :
+    Join.simplexMap Δ[r] K α (sliceOverGenerator K n r hr k) =
+      (joinMap (stdSimplex.map (SimplexCategory.mkHom (Join.leftMapAt α (r + 1) (c + 1) hc)))
+        (𝟙 K)).app (Opposite.op ⦋m⦌)
+        (sliceOverGenerator K m c (by have
+
+sliceOverUncurryApp_naturality {A K X : SSet.{u}} {p : K ⟶ X}
+    (f : A ⟶ sliceOver p) {m n : ℕ} (α : Fin (m + 1) →o Fin (n + 1))
+    (s : (join A K) _⦋n⦌) :
+    sliceOverUncurryApp f m (Join.simplexMap A K α s) =
+      X.map (SimplexCategory.mkHom α).op (sliceOverUncurryApp f n s)
+
+sliceOverUncurry {A K X : SSet.{u}} {p : K ⟶ X} (f : A ⟶ sliceOver p) : join A K ⟶ X
+
+sliceOverUncurry_fixed {A K X : SSet.{u}} {p : K ⟶ X} (f : A ⟶ sliceOver p) :
+    joinInr A K ≫ sliceOverUncurry f = p
+
+sliceOverUncurryApp_yoneda {A K X : SSet.{u}} {p : K ⟶ X}
+    (f : A ⟶ sliceOver p) {n d : ℕ} (a : A _⦋n⦌) (s : (join Δ[n] K) _⦋d⦌) :
+    sliceOverUncurryApp f d ((joinMap (SSet.yonedaEquiv.symm a) (𝟙 K)).app _ s) =
+      (f.app _ a).val.app _ s
+
+sliceOverEquiv {A K X : SSet.{u}} (p : K ⟶ X) :
+    (A ⟶ sliceOver p) ≃ {F : join A K ⟶ X // joinInr A K ≫ F = p}
+
+```
+
+原典：HTT §1.2.8・2.1.2、Kerodon §4.3.5。
+**A2b は未完了。** coslice 側の curry はあるが、直接束ねる逆写像と
+`(A ⟶ sliceUnder p) ≃ {F : join K A ⟶ X // joinInl K A ≫ F = p}` は未構成。
+この双対の普遍性を残して A2b の完成とは数えない。A2c 以降にも未着手。
+
+`lake build SerrePositivity.InfinityCategories.Core` と
+`lake env lean scripts/audit_infinity_core.lean` は終了コード 0。
+累計 102 公開宣言（明示的 100、生成補題 2）の公理監査を照合し、標準三公理のみ。
+追加公理・引用・`sorry` はない。全体ビルドは新しい指示どおりこの保存単位では行わない。

@@ -5,3 +5,4 @@ public import SerrePositivity.InfinityCategories.Core.HomotopyCategoryMap
 public import SerrePositivity.InfinityCategories.Core.HomotopyNatTrans
 public import SerrePositivity.InfinityCategories.Core.Checks
 public import SerrePositivity.InfinityCategories.Core.Join
+public import SerrePositivity.InfinityCategories.Core.Slice

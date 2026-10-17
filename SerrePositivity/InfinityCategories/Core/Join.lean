@@ -671,6 +671,61 @@ end SerrePositivity.InfinityCategories
 
 namespace SerrePositivity.InfinityCategories.Join
 
+/-- 概要：逆像の切断を命題的に等しい頂点数 c で表示した左の制限。
+方針：先頭区間の逆像の特徴づけに切断の等式を適用する。
+規約：切断の移送は hc で明示する。
+使われ方：HTT §1.2.8・2.1.2、Kerodon §4.3.5 の slice の直接評価。 -/
+def leftMapAt {m n : ℕ} (α : Fin m →o Fin n) (ℓ c : ℕ) (hc : pullCut α ℓ = c) :
+    Fin c →o Fin ℓ where
+  toFun i := ⟨(α ⟨i.val, by have := pullCut_le α ℓ; omega⟩).val,
+    (lt_pullCut_iff α ℓ _).mp (by change i.val < pullCut α ℓ; have := i.isLt; omega)⟩
+  monotone' _ _ h := α.monotone h
+
+/-- 概要：逆像の切断を命題的に等しい頂点数 c で表示した右の制限。
+方針：切断 c だけ始域の添字をずらし、終域の切断を値から引く。
+規約：空区間も含む。
+使われ方：HTT §1.2.8・2.1.2、Kerodon §4.3.5 の slice の直接評価。 -/
+def rightMapAt {m n : ℕ} (α : Fin m →o Fin n) (ℓ c : ℕ) (hc : pullCut α ℓ = c) :
+    Fin (m - c) →o Fin (n - ℓ) where
+  toFun i :=
+    let a : Fin m := ⟨c + i.val, by have := i.isLt; omega⟩
+    ⟨(α a).val - ℓ, by
+      have hn := (α a).isLt
+      have hα : ℓ ≤ (α a).val := by
+        apply Nat.le_of_not_lt
+        intro h
+        have := (lt_pullCut_iff α ℓ a).mpr h
+        dsimp [a] at this
+        omega
+      omega⟩
+  monotone' i j h := Nat.sub_le_sub_right (α.monotone (Nat.add_le_add_left h c)) ℓ
+
+/-- 概要：単体作用を指定した逆像の切断 c で計算する。
+方針：切断の ext 補題と補った単体の移送補題を適用する。
+規約：逆像の頂点数が零か非零かで場合分けするための形。
+使われ方：HTT §1.2.8・2.1.2、Kerodon §4.3.5 の直接評価の自然性。 -/
+lemma simplexMap_eq_at (A K : SSet.{u}) {m n : ℕ}
+    (α : Fin (m + 1) →o Fin (n + 1)) (ℓ : Fin (n + 2))
+    (c : ℕ) (hc : pullCut α ℓ.val = c) (a : augObj A ℓ.val) (k : augObj K (n + 1 - ℓ.val)) :
+    simplexMap A K α ⟨ℓ, a, k⟩ =
+      ⟨⟨c, by have := pullCut_le α ℓ.val; omega⟩,
+        augMap A (leftMapAt α ℓ.val c hc) a, augMap K (rightMapAt α ℓ.val c hc) k⟩ := by
+  refine Simplex.ext _ _ (Fin.ext hc) ?_ ?_
+  · exact augMap_congr A hc rfl _ _ (fun i j hij ↦ by
+      change (α ⟨i.val, _⟩).val = (α ⟨j.val, _⟩).val
+      exact congrArg (fun z ↦ (α z).val) (Fin.ext hij)) a a rfl
+  · exact augMap_congr K (congrArg (fun d ↦ m + 1 - d) hc) rfl _ _
+      (fun i j hij ↦ by
+        change (α ⟨pullCut α ℓ.val + i.val, _⟩).val - ℓ.val =
+          (α ⟨c + j.val, _⟩).val - ℓ.val
+        exact congrArg (fun z ↦ (α z).val - ℓ.val) (Fin.ext (by
+          change pullCut α ℓ.val + i.val = c + j.val
+          omega))) k k rfl
+
+end SerrePositivity.InfinityCategories.Join
+
+namespace SerrePositivity.InfinityCategories.Join
+
 /-- 概要：補った標準単体の順序写像表示は引き戻しと可換。
 方針：空区間を除き、表現可能単体の作用を計算する。
 規約：r と s は頂点数。

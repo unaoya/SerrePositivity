@@ -177,3 +177,49 @@ import SerrePositivity.InfinityCategories.Core
 #print axioms SerrePositivity.InfinityCategories.Join.stdEncode_naturality
 #print axioms SerrePositivity.InfinityCategories.Join.stdSimplexTargetEquiv
 #print axioms SerrePositivity.InfinityCategories.joinStdSimplexIso
+
+-- A2b 途中：slice・coslice・射影と slice 側の直接構成による普遍性。
+#check @SerrePositivity.InfinityCategories.Join.leftMapAt
+#check @SerrePositivity.InfinityCategories.Join.rightMapAt
+#check @SerrePositivity.InfinityCategories.Join.simplexMap_eq_at
+#check @SerrePositivity.InfinityCategories.sliceOver
+#check @SerrePositivity.InfinityCategories.sliceUnder
+#check @SerrePositivity.InfinityCategories.sliceOverProjection
+#check @SerrePositivity.InfinityCategories.sliceUnderProjection
+#check @SerrePositivity.InfinityCategories.sliceOverVertex
+#check @SerrePositivity.InfinityCategories.sliceUnderVertex
+#check @SerrePositivity.InfinityCategories.sliceOverCurry
+#check @SerrePositivity.InfinityCategories.sliceUnderCurry
+#check @SerrePositivity.InfinityCategories.sliceOverUncurryApp
+#check @SerrePositivity.InfinityCategories.sliceOverUncurryApp_inr
+#check @SerrePositivity.InfinityCategories.sliceOverUncurryApp_curry
+#check @SerrePositivity.InfinityCategories.sliceOverGenerator
+#check @SerrePositivity.InfinityCategories.sliceOverGenerator_map_zero
+#check @SerrePositivity.InfinityCategories.sliceOverGenerator_map_succ
+#check @SerrePositivity.InfinityCategories.sliceOverUncurryApp_naturality
+#check @SerrePositivity.InfinityCategories.sliceOverUncurry
+#check @SerrePositivity.InfinityCategories.sliceOverUncurry_fixed
+#check @SerrePositivity.InfinityCategories.sliceOverUncurryApp_yoneda
+#check @SerrePositivity.InfinityCategories.sliceOverEquiv
+#print axioms SerrePositivity.InfinityCategories.Join.leftMapAt
+#print axioms SerrePositivity.InfinityCategories.Join.rightMapAt
+#print axioms SerrePositivity.InfinityCategories.Join.simplexMap_eq_at
+#print axioms SerrePositivity.InfinityCategories.sliceOver
+#print axioms SerrePositivity.InfinityCategories.sliceUnder
+#print axioms SerrePositivity.InfinityCategories.sliceOverProjection
+#print axioms SerrePositivity.InfinityCategories.sliceUnderProjection
+#print axioms SerrePositivity.InfinityCategories.sliceOverVertex
+#print axioms SerrePositivity.InfinityCategories.sliceUnderVertex
+#print axioms SerrePositivity.InfinityCategories.sliceOverCurry
+#print axioms SerrePositivity.InfinityCategories.sliceUnderCurry
+#print axioms SerrePositivity.InfinityCategories.sliceOverUncurryApp
+#print axioms SerrePositivity.InfinityCategories.sliceOverUncurryApp_inr
+#print axioms SerrePositivity.InfinityCategories.sliceOverUncurryApp_curry
+#print axioms SerrePositivity.InfinityCategories.sliceOverGenerator
+#print axioms SerrePositivity.InfinityCategories.sliceOverGenerator_map_zero
+#print axioms SerrePositivity.InfinityCategories.sliceOverGenerator_map_succ
+#print axioms SerrePositivity.InfinityCategories.sliceOverUncurryApp_naturality
+#print axioms SerrePositivity.InfinityCategories.sliceOverUncurry
+#print axioms SerrePositivity.InfinityCategories.sliceOverUncurry_fixed
+#print axioms SerrePositivity.InfinityCategories.sliceOverUncurryApp_yoneda
+#print axioms SerrePositivity.InfinityCategories.sliceOverEquiv
