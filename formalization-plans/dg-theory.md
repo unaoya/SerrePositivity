@@ -11243,3 +11243,75 @@ rightKFlatDerivedAssociatorの局所化前の計算式へ適用し、固定し�
 共有一般論への新しいAPI要求はない。既存の並行担当Tensor/AssociatorLeftCompatibility・
 AssociatorLeftTransport・AssociatorRightCompatibilityとそのChecks、共有ルート・共有監査スクリプト・
 他チャットの記録は編集していない。
+
+### 17.240 U12e79：固定K-flat因子の結合子保存と実際の全導来比較のモデルsquare（2026-10-17）
+
+**固定K-flat二因子。** Derived/AssociatorLeftRestrictionBase.leanの
+derivedComposeWithLeftRestrictionIso_base_appは、固定右相対K-flat後因子の左制限比較を、
+元の前因子上で通常比較の局所化と既存の出力制限表示の合成へ正規化する。
+Derived/AssociatorLeftRestrictionKFlat.leanの
+rightKFlatDerivedAssociator_leftRestrictionは、Q : C–E、R : E–Tを右相対K-flatとし、
+G : D → Tの左制限について、次の二経路の一致を任意の導来前因子に自然な自然変換として証明した。
+
+- QとG*Rの固定K-flat導来結合子、内側の通常左制限比較を導来合成へ送った射、
+  Q⊗Rの固定K-flat左制限比較を続ける経路。
+- Rの固定K-flat左制限比較をQとの導来合成へ作用させ、
+  Q・Rの既存固定K-flat導来結合子を出力の左制限へ送る経路。
+
+§17.239の通常squareを局所化し、出力制限表示の自然性を接続する証明である。
+前因子のK-flat性、局所Hom K-flat性、GのHom準同型性・本質的全射性は不要。
+係数Aは任意の可換環、B・C・E・T・Dの対象宇宙は独立、各添字にSmall.{u}を要求する。
+
+**実際の全導来左比較の逆の計算。** Derived/AssociatorLeftRestrictionPresentation.leanは、
+既存derivedBimoduleComposeLeftRestrictionIsoの逆について、指定モデルの可換squareを証明した。
+derivedBimoduleComposeLeftRestrictionIso_inv_model_squareは、既存hom側のsquareからの打消しで得る。
+leftRestrictionDerivedComposeSourceBaseIso_hom_appと
+leftRestrictionDerivedComposeTargetBaseIso_hom_appは、
+source表示をK-flat合成表示の出力制限、target表示を後因子制限表示の逆と
+制限後K-flat合成表示の合成として同定する。
+derivedBimoduleComposeLeftRestrictionIso_inv_model_calculationは、この計算を
+任意の導来前因子に自然な固定K-flat比較として明示した式である。
+_inv_base_calculationは、元の前因子Pに対して、実際の逆比較とK-flat値計算を続ける経路が、
+後因子の表示の逆、制限後のK-flat値計算、通常左制限比較、出力制限表示に戻る式である。
+これらは終端二圏の局所Hom K-flat条件を明示し、PのK-flat性は要求しない。
+
+**内側・入れ子・二段階合成の表示。** Derived/AssociatorLeftRestrictionInner.leanの
+derivedLeftRestriction_inner_model_squareは、上の逆比較を、既存の
+derivedBimoduleComposeInnerComparisonIsoによる両側の内側合成の表示へ接続した。
+Derived/AssociatorLeftRestrictionNested.leanのderivedLeftRestriction_nested_prefix_squareと
+_nested_model_squareは、その内側square、実際の全導来比較の自然性、
+K-flat合成表示の自然性を貼り合わせ、既存の入れ子表示を通して固定モデルの経路へ計算する。
+Derived/AssociatorLeftRestrictionPair.leanのderivedLeftRestriction_pair_model_squareは、
+二段階合成側でも既存derivedBimoduleComposePairComparisonIsoを通した同じ計算を証明する。
+貼合せは通常の圏・関手圏のprivate補題で行い、coherenceを新しい仮定にしていない。
+全導来逆比較の計算を独立した補題として検証してから貼り合わせ、資源上限は変更していない。
+
+**既存の全導来結合子との合流。** Derived/AssociatorLeftRestrictionModel.leanの
+derivedBimoduleAssociator_leftRestriction_rightKFlatは、後二因子が指定Q・Rの局所化像の場合に、
+実際のderivedBimoduleAssociatorと実際の全導来左制限比較の逆からなる二経路を同一視する。
+両側の既存associator比較square、入れ子側と二段階合成側の計算、
+今回の固定K-flat結合子保存を接続し、共通の入れ子表示同型を右から打ち消す。
+前因子は任意の導来対象、局所Hom K-flat条件はE・T・Dで、B・Cには追加しない。
+Gは任意のままであり、後二因子も任意の導来対象とした結論はまだ主張しない。
+旧公開APIの名前・型は変更していない。一般APIを12宣言、Checksの標数2検査を1宣言追加した。
+
+**検証。** Checks.DGAssociatorLeftRestrictionKFlatは、標数2・任意の導来前因子について、
+局所Hom K-flat条件やGの準同値性なしの固定因子の可換図式を検査した。
+実際の全導来モデルsquareの型もZMod 2へ適用して確認している。
+§17.239までの通常square、全導来左単位・右単位・source正規化・三圏同時制限・
+中間比較の恒等/合成則・解像度比較・導来随伴・同値・五角形・StageEight・StageSeven・
+Spectra.StageTwoとの統合ビルド成功（3554 jobs、警告なし）。
+13公開宣言の直接公理監査は重複・欠落なく標準3公理以内。新規監査累計4696宣言。
+今回の8 Leanファイルにsorry・admit・新規axiom・資源上限変更は0件。採用済み引用0件。
+Lean v4.35.0-rc4とMathlib manifest/HEAD e6bbacd0e1b7307ff6e17da09cd2455f60804fa6を再確認した。
+文書検査は21 Markdown・326 exposition参照、失敗0件。
+
+**次工程と未受入条件。** 今回の外側左制限の全導来結合子squareは、
+後二因子が指定K-flatモデルの局所化像である場合までである。
+次は両経路を後二因子にも自然な関手族として束ねるか、既存の導来同型による比較squareを使い、
+任意の全導来後二因子へ持ち上げる。必要なE・T・Dの局所Hom条件を省略しない。
+外側右・中間制限の結合子square、左右単位経路と三圏同時制限の正規化、
+changeEquivalenceの単位・結合保存と自己・推移比較、外側左右・中間の恒等・合成則も残る。
+§15.2全体の受入監査は未完であり、U12e全体を完了扱いにしない。
+共有一般論への新しいAPI要求はない。共有ルート・共有監査スクリプト・既存の並行担当
+Tensor/Associator*・Perfect/・Endomorphism/・ScalarExtension*・他チャットの記録は編集していない。
