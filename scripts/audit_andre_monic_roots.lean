@@ -1330,6 +1330,10 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.wittTwoHom_ext_of_perfectSour
 assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectSource_ringHom_isDeltaHom
 assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectSource_ringHom_isDeltaHom_to_boundedPrism
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.boundedPrism_preTiltQuotient_bijective
+assert_no_sorry SerrePositivity.BhattScholze.Andre.boundedPrism_preTiltQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.boundedPrism_preTiltQuotientEquiv_coeff
+
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
@@ -1574,7 +1578,8 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PerfectPrismBoundedTargetRigidity,
     `SerrePositivity.BhattScholze.Andre.BoundedPrismInputRigidity,
     `SerrePositivity.BhattScholze.Andre.BoundedPrismPrimeComplete,
-    `SerrePositivity.BhattScholze.Andre.PerfectSourceDeltaHom]
+    `SerrePositivity.BhattScholze.Andre.PerfectSourceDeltaHom,
+    `SerrePositivity.BhattScholze.Andre.BoundedPrismTiltQuotient]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

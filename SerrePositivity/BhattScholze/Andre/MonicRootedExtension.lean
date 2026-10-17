@@ -83,6 +83,7 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicEnvelopeInit
 public import SerrePositivity.BhattScholze.Andre.BoundedPrismInputRigidity
 public import SerrePositivity.BhattScholze.Andre.BoundedPrismPrimeComplete
 public import SerrePositivity.BhattScholze.Andre.PerfectSourceDeltaHom
+public import SerrePositivity.BhattScholze.Andre.BoundedPrismTiltQuotient
 
 /-!
 # André E1・E2 の集約

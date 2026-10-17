@@ -6582,3 +6582,48 @@ ghost が同じなので、ε はその共通 ghost 射に沿う導分となる�
 並列担当のファイル・記録節と既存 hpR 付き定理は変更していない。
 
 検証：対象ビルド（2749 jobs）と集約ビルド（4588 jobs）は `set -o pipefail` 付きで終了コード0。公開4定理の `assert_no_sorry` と4本の `#check` は終了コード0。専用監査の結果は `André monic root audit passed: 7955 declarations, standard axioms only.`。私有補題もモジュール全宣言監査に含む。
+
+### E1.79／A1-a 一般有界 prism の台環と商の tilt 比較（2026-10-17）
+
+本節は A1-a の追記。新規 `Andre/BoundedPrismTiltQuotient.lean` に、一般有界 prism の
+台環と prism 商の tilt 比較を追加した。BS Lemma 4.8（著者版 pp.38–39）の基底環射の存在を、
+tilt 上の係数持上げと Fontaine 写像へ帰着するための準備である。原典の変形理論とは異なる
+Teichmüller モノイド同型と互換根列の一意持上げによる経路。新引用は追加していない。
+
+公開名はすべて `SerrePositivity.BhattScholze.Andre` 内。共通設定は
+{B:Type u} [CommRing B]、{p:ℕ} [Fact p.Prime]、Q:OrientedPrism p B、
+[Fact (¬ IsUnit (p:B))]、[Fact (¬ IsUnit (p:B⧸Q.ideal))]、および
+
+```lean
+hB : ∃ N : ℕ, ∀ n : ℕ, ∀ x : B ⧸ Q.ideal,
+  (p : B ⧸ Q.ideal)^n*x=0 → (p : B ⧸ Q.ideal)^N*x=0
+```
+
+とする。台環での p 非可逆性は商での非可逆性から従うが、標数の型クラスのため明示した。
+標的の完全性・p 正則性は不要。公開3宣言の型は次のとおり。
+
+```lean
+boundedPrism_preTiltQuotient_bijective Q hB :
+  Function.Bijective (Perfection.map p (modPMap p (Ideal.Quotient.mk Q.ideal)))
+
+boundedPrism_preTiltQuotientEquiv Q hB :
+  PreTilt B p ≃+* PreTilt (B ⧸ Q.ideal) p
+
+boundedPrism_preTiltQuotientEquiv_coeff Q hB (x : PreTilt B p) (n : ℕ) :
+  PreTilt.coeff n (boundedPrism_preTiltQuotientEquiv Q hB x) =
+    modPMap p (Ideal.Quotient.mk Q.ideal) (PreTilt.coeff n x)
+```
+
+台環の p 完備性は E1.77、商の p 完備性は E1.68 から供給する。
+両方の tilt を台環内の実互換根列と乗法的に同一視する。
+既存 `existsUnique_boundedPrismCompatibleRootsLift` が実根列の全単射性を与え、
+標準 tilt 環射の全単射性へ移せる。環構造の加法性は標準の `Perfection.map` が既に持つため、
+Teichmüller の乗法同型に加法性を別途仮定していない。
+
+未完了：tilt 係数持上げから Fontaine 写像を合成した基底環射の構成と商図式の確認、
+零商の場合の統合、絶対 site の対象との比較、A1-b の正則性・有界性の結果と源の初期性の合流、
+A1-c の係数照合との合流。本節の型は p 非可逆性を明示しており、条件なしの Lemma 4.8
+全体を完成したとはしない。A1-b の成果 `84c99b11` の到着を確認したが、
+今回の保存単位では既存 hpR 付き定理の差替え・並列担当ファイルの編集はしていない。
+
+検証：対象ビルド（3095 jobs）と最終対象・集約ビルド（4589 jobs）は `set -o pipefail` 付きで終了コード0。公開3宣言の `assert_no_sorry` と3本の `#check` は終了コード0。専用監査は `André monic root audit passed: 7961 declarations, standard axioms only.`。
