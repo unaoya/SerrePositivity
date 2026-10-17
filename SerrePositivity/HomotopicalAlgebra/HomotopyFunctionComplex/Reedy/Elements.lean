@@ -96,14 +96,15 @@ def elementsFactorization {x y : F.Elements} (f : x ⟶ y) :
     exact f.map_val
   · exact Functor.Elements.hom_ext q.fac
 
-/- 旧宣言の技術注記：Unique base factorizations lift to actual unique element factorizations. -/
+/- 旧宣言の技術注記：
+Unique base factorizations lift to actual unique element factorizations.
+-/
 /-- Reedy圏上の図式の要素の圏にReedy構造を構成する。
 
 圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
 Reedy境界の添字と比較写像を明示し、境界の普遍性を照合する。
 次数ごとの構成を既存の低次数の系と整合させる。
 -/
-
 def elementsReedy : ReedyStructure
     (elementsInverse (inverse := inverse) F) (elementsDirect (direct := direct) F) α where
   deg x := r.deg x.obj

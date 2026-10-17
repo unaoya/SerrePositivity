@@ -13,7 +13,7 @@ public import Mathlib.CategoryTheory.Functor.Currying
 
 ## 方針（定義・証明）
 自然変換を区間圏と元の圏の直積からの関手として表し、nerveに適用する。
-全射列を保ったまま、二つの端点と単体作用素との交換を確認する。
+各射列を単体として評価し、二つの端点と単体作用素との交換を確認する。
 
 ## 規約と注意
 通常の圏と自然変換を入力し、圏が群oidであることは仮定しない。
@@ -76,7 +76,7 @@ lemma at_one : SSet.ι₁ ≫ hom α = nerveMap G := by
 
 通常の圏と自然変換を入力し、圏が群oidであることは仮定しない。
 自然変換を区間圏と元の圏の直積からの関手として表し、nerveに適用する。
-全射列を保ったまま、二つの端点と単体作用素との交換を確認する。
+各射列を単体として評価し、二つの端点と単体作用素との交換を確認する。
 -/
 def homotopy : SSet.Homotopy (nerveMap F) (nerveMap G) where
   h := hom α

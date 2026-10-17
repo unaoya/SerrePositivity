@@ -105,14 +105,15 @@ lemma reindexArrow_endpoint {n m : ℕ} (c : ComposableArrows D n)
       c.map (homOfLE (Fin.le_last (θ.toOrderHom (Fin.last m)))) := by
   simp only [endpointMap, tail, eqToHom_refl, Category.id_comp]
 
-/- 旧宣言の技術注記：Evaluate each actual nerve simplex at its last object and each operator at its tail. -/
+/- 旧宣言の技術注記：
+Evaluate each actual nerve simplex at its last object and each operator at its tail.
+-/
 /-- nerveの単体圏から終端頂点を評価する関手を構成する。
 
 圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
 単体を表す合成可能射列の先頭または終端を評価する。
 単体圏の射と射列の制限を照合し、関手の法則とaugmentationの式を確認する。
 -/
-
 def functor (D : Type u) [Category.{v} D] : Index D ⥤ D where
   obj s := endpoint s
   map f := endpointMap f

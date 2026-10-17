@@ -65,14 +65,15 @@ def isLimit : IsLimit (cone r j A H) :=
 
 variable [HasLimitsOfShape (MatchingIndex r.op (op j)) W]
 
-/- 旧宣言の技術注記：The concrete boundary-Hom object is the actual matching object. -/
+/- 旧宣言の技術注記：
+The concrete boundary-Hom object is the actual matching object.
+-/
 /-- latching側の余極限を反変Homでmatching側の極限へ移す同型を構成する。
 
 圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
 Reedy境界の添字と比較写像を明示し、境界の普遍性を照合する。
 次数ごとの構成を既存の低次数の系と整合させる。
 -/
-
 def iso : H.obj (op ((latchingEvaluation r j).obj A)) ≅
     (matchingEvaluation r.op (op j)).obj (A.op ⋙ H) :=
   (isLimit r j A H).conePointUniqueUpToIso (limit.isLimit _)

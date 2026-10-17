@@ -13,7 +13,7 @@ public import Mathlib.CategoryTheory.Functor.Currying
 
 ## 方針（定義・証明）
 自然変換を区間圏と元の圏の直積からの関手として表し、nerveに適用する。
-全射列を保ったまま、二つの端点と単体作用素との交換を確認する。
+各射列を単体として評価し、二つの端点と単体作用素との交換を確認する。
 
 ## 規約と注意
 対象とHomの宇宙は独立に保ち、両nerveを明示した共通宇宙へULiftする。
@@ -64,7 +64,7 @@ def hom : SSet.uliftFunctor.{max uD vD, max uC vC}.obj (nerve C) ⊗
 
 対象とHomの宇宙は独立に保ち、両nerveを明示した共通宇宙へULiftする。
 自然変換を区間圏と元の圏の直積からの関手として表し、nerveに適用する。
-全射列を保ったまま、二つの端点と単体作用素との交換を確認する。
+各射列を単体として評価し、二つの端点と単体作用素との交換を確認する。
 -/
 lemma at_zero : SSet.ι₀ ≫ hom α = map F := by
   apply NatTrans.ext
@@ -94,7 +94,7 @@ lemma at_one : SSet.ι₁ ≫ hom α = map G := by
 
 対象とHomの宇宙は独立に保ち、両nerveを明示した共通宇宙へULiftする。
 自然変換を区間圏と元の圏の直積からの関手として表し、nerveに適用する。
-全射列を保ったまま、二つの端点と単体作用素との交換を確認する。
+各射列を単体として評価し、二つの端点と単体作用素との交換を確認する。
 -/
 def homotopy : SSet.Homotopy (map F) (map G) where
   h := hom α

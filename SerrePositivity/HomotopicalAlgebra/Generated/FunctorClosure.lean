@@ -57,15 +57,16 @@ lemma inverseImage_cobaseChange [PreservesColimitsOfShape WalkingSpan F]
     [W.IsStableUnderCobaseChange] : (W.inverseImage F).IsStableUnderCobaseChange where
   of_isPushout sq hf := MorphismProperty.of_isPushout (P := W) (sq.map F) hf
 
-/- 旧宣言の技術注記：Small colimits and preservation of generating arrows suffice to preserve
-the generated left class, with no lifting property imposed on the target. -/
+/- 旧宣言の技術注記：
+Small colimits and preservation of generating arrows suffice to preserve
+the generated left class, with no lifting property imposed on the target.
+-/
 /-- 余極限を保つ関手が生成射上で左クラスを保てば生成された左クラス全体を保つ。
 
 宇宙・境界・比較射は各宣言に指定されたものを用いる。
 構成に現れる射と比較写像を明示し、各成分の等式を照合する。
 既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
 -/
-
 lemma generatedLeft_map (I : MorphismProperty C) [I.HasSmallObjectArgument.{w}]
     [PreservesColimitsOfSize.{w, w} F] [PreservesColimitsOfShape WalkingSpan F]
     [W.IsStableUnderRetracts] [W.IsStableUnderCobaseChange]

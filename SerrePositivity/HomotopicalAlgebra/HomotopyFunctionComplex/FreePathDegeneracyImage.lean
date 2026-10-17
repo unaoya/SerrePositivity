@@ -91,14 +91,15 @@ lemma counit_duplicate {X Y : C} (p : Quiver.Path X Y) :
     (counit (Paths C)).map ((duplicate C).map p) = p :=
   congr($(left_counit (C := C)).map p)
 
-/- 旧宣言の技術注記：Both types of degenerate generators have a common image exactly at double singletons. -/
+/- 旧宣言の技術注記：
+Both types of degenerate generators have a common image exactly at double singletons.
+-/
 /-- 自由な道の分解の次数二の二つの退化生成元像の交わりを計算する。
 
 宇宙・境界・比較射は各宣言に指定されたものを用いる。
 余単位と余乗法、または自由な道の生成射を各次数で明示する。
 面・退化の関係式と生成射上の一致から、全体の自然性と比較を導く。
 -/
-
 lemma generator_image_intersection {X Y : C} (p q : Quiver.Path X Y) :
     Quiver.Hom.toPath (V := Paths C) q = (duplicate C).map p ↔
       ∃ f : X ⟶ Y, p = f.toPath ∧ q = f.toPath := by

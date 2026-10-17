@@ -85,14 +85,15 @@ lemma naturality_inverse {x y : Lower r (n + 1)} (f : x ⟶ y) (hf : inverse f.h
       rw [app, dite_eq_left hy, app, dite_eq_right hx]
       exact d.outgoing x.obj _ (x := ⟨y.obj, hy⟩) f.hom hf
 
-/- 旧宣言の技術注記：The actual natural transformation containing all old and newly specified cells. -/
+/- 旧宣言の技術注記：
+The actual natural transformation containing all old and newly specified cells.
+-/
 /-- 新しい次数の指定セルと既存の低次数の図式を自然な一つの低次数系に貼り合わせる。
 
 圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
 Reedy境界の添字と比較写像を明示し、境界の普遍性を照合する。
 次数ごとの構成を既存の低次数の系と整合させる。
 -/
-
 def assemble : lowerInclusion r (n + 1) ⋙ F ⟶ lowerInclusion r (n + 1) ⋙ G :=
   natTransOnLowerOfReedy r (n + 1) d.app d.naturality_inverse d.naturality_direct
 
