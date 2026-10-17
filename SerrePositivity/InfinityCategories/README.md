@@ -607,3 +607,19 @@ N4 全体の完了とは数えない。N6 も未完了。
 
 対象・集約ビルドと公理監査は終了コード 0。全公開宣言553件と既存5則は標準三公理の範囲内。
 N4 の直接の線形充填と Kan 性は完了。π₀ と H⁰ の Hom の比較、N6 は未完了。
+
+## N4k：π₀ と H⁰ の Hom の同値（2026-10-18、N4 必須項目完了）
+
+`PinchedHom/Paths.lean` は一般の単体的集合で、右 pinched Hom の道を
+`CompStruct (id x) (vertexEquiv t) (vertexEquiv s)` として両方向に読む。
+`PinchedPiZero.lean` はこれを N3 の右辺ホモトピーと境界関係の比較につなぐ。
+`path_iff_boundary` は道の存在と閉零射の境界関係の同値、
+`piZero_mk_eq_iff_boundary` は Mathlib の連結成分の等しさと境界関係の同値。
+
+`PinchedHom.piZeroEquiv x y` は任意の可換環 A と dg 圏 D に対して、
+Mathlib の `SSet.π₀ (DGNerve.pinchedHom A D x y)` と既存の `HomotopyCategory A D` の
+x,y の像の間の Hom を同定する。追加仮定はない。
+
+対象・集約ビルドと公理監査は終了コード 0。全公開宣言568件と既存5則は標準三公理の範囲内。
+これで N4 の必須項目は完了。N6 の具体例と最終監査が残る。
+正規化 Moore 複体の比較は任意項目として見送る。

@@ -1137,6 +1137,37 @@ noncomputable section
 #print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.instKanComplex
 #check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.instKanComplex
 
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.extend_δ_zero
+#check @SerrePositivity.InfinityCategories.PinchedHom.extend_δ_zero
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.extend_δ_one
+#check @SerrePositivity.InfinityCategories.PinchedHom.extend_δ_one
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.constant_one
+#check @SerrePositivity.InfinityCategories.PinchedHom.constant_one
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.lastVertex_one
+#check @SerrePositivity.InfinityCategories.PinchedHom.lastVertex_one
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.pathCompStruct
+#check @SerrePositivity.InfinityCategories.PinchedHom.pathCompStruct
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.pathOfCompStruct
+#check @SerrePositivity.InfinityCategories.PinchedHom.pathOfCompStruct
+#print axioms SerrePositivity.InfinityCategories.PinchedHom.path_iff_compStruct
+#check @SerrePositivity.InfinityCategories.PinchedHom.path_iff_compStruct
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.vertexClosedEquiv
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.vertexClosedEquiv
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.path_iff_boundary
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.path_iff_boundary
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.piZeroToH0
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.piZeroToH0
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.piZeroToH0_mk
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.piZeroToH0_mk
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.piZero_mk_eq_iff_boundary
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.piZero_mk_eq_iff_boundary
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.piZeroToH0_injective
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.piZeroToH0_injective
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.piZeroToH0_surjective
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.piZeroToH0_surjective
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.piZeroEquiv
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.piZeroEquiv
+
 section
 universe u v
 variable (A : Type u) [CommRing A] (D : Type v)

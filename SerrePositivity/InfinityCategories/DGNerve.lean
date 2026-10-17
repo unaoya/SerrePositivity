@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.DGNerve.Triangle
 public import SerrePositivity.InfinityCategories.DGNerve.Computations
 public import SerrePositivity.InfinityCategories.DGNerve.Quasicategory
 public import SerrePositivity.InfinityCategories.DGNerve.HomotopyCategory
+public import SerrePositivity.InfinityCategories.DGNerve.PinchedPiZero
 public import SerrePositivity.InfinityCategories.DGNerve.PinchedKan
 public import SerrePositivity.InfinityCategories.DGNerve.PinchedLinearResidual
 public import SerrePositivity.InfinityCategories.DGNerve.PinchedModuleObject
@@ -30,5 +31,5 @@ public import SerrePositivity.InfinityCategories.DGNerve.HornEquation
 quasicategory 性、ホモトピー圏の比較、dg 関手の写像と厳密自然変換のホモトピーを公開する。
 一般の右 pinched 写像空間と dg nerve の閉零頂点の比較も公開する。
 写像空間の全次数の線形表示と単体的 A 加群構造、直接の線形充填に向けた残差恒等式を公開する。
-全ホーンの直接の線形充填と Kan 性を公開する。π₀ 比較は後続工程。
+全ホーンの直接の線形充填と Kan 性、Mathlib の π₀ と H⁰ の Hom の比較を公開する。
 -/

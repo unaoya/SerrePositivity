@@ -5385,6 +5385,146 @@ instance instKanComplex : SSet.KanComplex (DGNerve.pinchedHom A D x y)
 N6 の一点 dg 圏・Complex A での二単体の具体例と最終監査。
 N0・N1・N2・N3・N5 の完了状態は維持する。正規化 Moore 複体の比較は任意項目。
 
+### N4k：Mathlib の π₀ と H⁰ の Hom の比較（2026-10-18、N4 必須項目完了）
+
+`PinchedHom/Paths.lean` は一般の単体的集合で、右 pinched Hom の道を、始点側が恒等辺である
+元の二単体に読み替える。道の始点 s は三角形の 02 辺、終点 t は 12 辺となるため、
+`path_iff_compStruct` は `CompStruct (id x) (vertexEquiv t) (vertexEquiv s)` の存在と同値になる。
+両方向で同じ元の二単体を使い、低次の延長写像・先頭面・最終頂点の計算で条件を検証する。
+一般の X に Kan 性や quasicategory 性を仮定しない。
+
+`PinchedPiZero.lean` は N3 の `homotopicR_iff_boundary` を適用し、境界関係の対称性を用いて
+`path_iff_boundary` を得る。`vertexClosedEquiv` は実際の頂点と既存の閉零圏の射の同値。
+`piZeroToH0` はこれを閉零射の境界類へ送り、Mathlib の `SSet.π₀.lift` で連結成分に降ろす。
+`piZero_mk_eq_iff_boundary` は連結成分の等しさと境界関係を両方向に同定する。
+単射性はこの同値、全射性は H⁰ の閉零代表元と頂点の同値から従う。
+`piZeroEquiv x y` は実際の Mathlib の `SSet.π₀` と `HomotopyCategory A D` の Hom の同値。
+既存の H⁰ と別の商を定義して代用していない。
+
+前提は任意の可換環 A、dg 圏 D、二対象 x,y のみ。目標の同値の対象は
+`(toHomotopy A D).obj (ForgetEnrichment.of (Complex A) x)` と y の同じ像であり、
+H⁰ の対象が元の dg 対象であることを明示するため豊穣忘却と商関手の記法を残した。
+N4 の一般の右 pinched Hom、全次数の線形表示、単体的 A 加群、直接の線形 Kan 充填、π₀ 比較は完了。
+正規化 Moore 複体の比較は指定された任意項目として今回の必須範囲に含めない。
+N6 の具体例と最終監査は未完了。
+
+公開宣言の正確な型を以下に記す。Paths では `{X : SSet.{u}} {x y : X _⦋0⦌}`、
+PinchedPiZero では `{A : Type u} [CommRing A] {D : Type v} [DGCategory A D]` を共通の暗黙引数とする。
+いずれも `open CategoryTheory` と `open scoped Simplicial` のもとで記し、前者は `Opposite`、
+後者は `DifferentialGraded` も開く。
+
+`SerrePositivity.InfinityCategories.PinchedHom.extend_δ_zero`
+
+```lean
+lemma extend_δ_zero : extend (SimplexCategory.δ (0 : Fin 2)) = SimplexCategory.δ (0 : Fin 3)
+```
+
+`SerrePositivity.InfinityCategories.PinchedHom.extend_δ_one`
+
+```lean
+lemma extend_δ_one : extend (SimplexCategory.δ (1 : Fin 2)) = SimplexCategory.δ (1 : Fin 3)
+```
+
+`SerrePositivity.InfinityCategories.PinchedHom.constant_one`
+
+```lean
+lemma constant_one (x : X _⦋0⦌) : constant x 1 = X.σ 0 x
+```
+
+`SerrePositivity.InfinityCategories.PinchedHom.lastVertex_one`
+
+```lean
+lemma lastVertex_one :
+    lastVertex 1 = SimplexCategory.δ (0 : Fin 2) ≫ SimplexCategory.δ (0 : Fin 3)
+```
+
+`SerrePositivity.InfinityCategories.PinchedHom.pathCompStruct`
+
+```lean
+def pathCompStruct {s t : (pinchedHom x y) _⦋0⦌} (e : (pinchedHom x y).Edge s t) :
+    SSet.Edge.CompStruct (SSet.Edge.id x) (vertexEquiv x y t) (vertexEquiv x y s)
+```
+
+`SerrePositivity.InfinityCategories.PinchedHom.pathOfCompStruct`
+
+```lean
+def pathOfCompStruct {s t : (pinchedHom x y) _⦋0⦌}
+    (h : SSet.Edge.CompStruct (SSet.Edge.id x) (vertexEquiv x y t) (vertexEquiv x y s)) :
+    (pinchedHom x y).Edge s t
+```
+
+`SerrePositivity.InfinityCategories.PinchedHom.path_iff_compStruct`
+
+```lean
+lemma path_iff_compStruct (s t : (pinchedHom x y) _⦋0⦌) :
+    Nonempty ((pinchedHom x y).Edge s t) ↔
+      Nonempty (SSet.Edge.CompStruct (SSet.Edge.id x) (vertexEquiv x y t) (vertexEquiv x y s))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.vertexClosedEquiv`
+
+```lean
+def vertexClosedEquiv (x y : D) : (DGNerve.pinchedHom A D x y) _⦋0⦌ ≃
+    (ForgetEnrichment.of (Complex A) x ⟶ ForgetEnrichment.of (Complex A) y)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.path_iff_boundary`
+
+```lean
+lemma path_iff_boundary {x y : D} (s t : (DGNerve.pinchedHom A D x y) _⦋0⦌) :
+    Nonempty ((DGNerve.pinchedHom A D x y).Edge s t) ↔
+      boundaryRelation A D (vertexClosedEquiv x y s) (vertexClosedEquiv x y t)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.piZeroToH0`
+
+```lean
+def piZeroToH0 (x y : D) : SSet.π₀ (DGNerve.pinchedHom A D x y) →
+    ((toHomotopy A D).obj (ForgetEnrichment.of (Complex A) x) ⟶
+      (toHomotopy A D).obj (ForgetEnrichment.of (Complex A) y))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.piZeroToH0_mk`
+
+```lean
+lemma piZeroToH0_mk {x y : D} (s : (DGNerve.pinchedHom A D x y) _⦋0⦌) :
+    piZeroToH0 x y (SSet.π₀.mk s) = (toHomotopy A D).map (vertexClosedEquiv x y s)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.piZero_mk_eq_iff_boundary`
+
+```lean
+lemma piZero_mk_eq_iff_boundary {x y : D} (s t : (DGNerve.pinchedHom A D x y) _⦋0⦌) :
+    SSet.π₀.mk s = SSet.π₀.mk t ↔
+      boundaryRelation A D (vertexClosedEquiv x y s) (vertexClosedEquiv x y t)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.piZeroToH0_injective`
+
+```lean
+lemma piZeroToH0_injective (x y : D) : Function.Injective (piZeroToH0 (A
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.piZeroToH0_surjective`
+
+```lean
+lemma piZeroToH0_surjective (x y : D) : Function.Surjective (piZeroToH0 (A
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.piZeroEquiv`
+
+```lean
+def piZeroEquiv (x y : D) : SSet.π₀ (DGNerve.pinchedHom A D x y) ≃
+    ((toHomotopy A D).obj (ForgetEnrichment.of (Complex A) x) ⟶
+      (toHomotopy A D).obj (ForgetEnrichment.of (Complex A) y))
+```
+
+検証：`set -e; set -o pipefail` の下で対象 `PinchedPiZero` と集約 `DGNerve` の
+`lake build` が終了コード 0（3502 jobs）、続く `lake env lean scripts/audit_dg_nerve.lean` も終了コード 0。
+新規15宣言を含む全公開宣言568件と既存5則、合計573件の公理監査は標準三公理の範囲内。
+全新規宣言の `#check @` とソース宣言の監査網羅性を照合した。
+新しい sorry・axiom・引用は追加していない。N0〜N5 の必須項目は完了、残りは N6。
+
 ## 6. 次のマイルストーン D（本計画の範囲外）
 
 - Semifree(S) を `DGFullSubcategory`（`moduleSemifree` または一点 dg 圏上の複体版）として置き、
