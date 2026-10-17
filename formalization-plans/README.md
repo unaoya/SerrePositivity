@@ -55,6 +55,9 @@ Lean の docstring へ要約済みで、各ファイルの冒頭に要約先を�
 | [外部引用5：消滅定理を Adams 作用素で](archive/intersection-vanishing-adams.md) | 完了（2026-10-15） | 解説の注意 `rem:adams-vanishing` |
 | [外部引用6を主定理から外す（初等版）](archive/frobenius-koszul-elementary.md) | 完了（2026-10-14） | 解説の注意 `rem:koszul-elementary` |
 | [Frobenius 高次ホモロジー消滅（一般形）](archive/frobenius-homology.md) | 主定理・Lech の主定理とも不要。一般形は Lech の系 5.4 だけ | `Inputs/RobertsFrobenius.lean` |
+| [BS：B3 の実行計画](archive/bhatt-scholze-b3-execution.md) | B3（Cor 7.3 の存在・普遍性）完了 | 解説の付録 A（`par:bs-thm74`）、`BhattScholze/` の docstring |
+| [BS：Prop 7.2 の接続設計](archive/bhatt-scholze-prop72-construction.md) | 実装済み | 同上 |
+| [BS：F3 受領後の実装順](archive/bhatt-scholze-f3-next.md) | 完了 | 同上 |
 | [CLMST の長さの引用監査](archive/clmst-length-audit.md) | 監査済み（2026-10-13） | [CLMST 主計画](clmst.md) |
 | [CLMST の実装境界と作業単位](archive/clmst-interfaces.md) | 初回の接続実装まで完了 | [CLMST 主計画](clmst.md) |
 

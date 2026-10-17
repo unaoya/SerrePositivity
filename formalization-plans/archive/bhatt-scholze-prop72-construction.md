@@ -1,5 +1,8 @@
 # N4：著者公開版Prop 7.2の接続設計
 
+> **アーカイブ（2026-10-17）**：この計画は完了した。内容の要約先：解説の付録 A（`par:bs-thm74`）と `BhattScholze/` の各モジュールの docstring。原典の証明経路は[BS 主計画](../bhatt-scholze.md)。将来は削除する予定で、以下は当時の計画と実施記録のまま。
+
+
 対象：`paper/refs/BS-prisms-author.pdf`、印刷p.55のProp 7.2、p.56のCor 7.3。
 δ延長は著者版Lemma 2.18（pp.17–18）、prism完全化はLemma 3.9（pp.31–32）、
 perfectoid対応はTheorem 3.10（p.32）。arXiv v3の番号は使用しない。
@@ -9,7 +12,7 @@ perfectoid対応はTheorem 3.10（p.32）。arXiv v3の番号は使用しない�
 更新（2026-10-14）：F3本体は受領済み。実H⁰環・標準射・二座標完備性・
 環普遍性・反復比較、ScalarRestrictionの係数制限を再要求しない。
 以下はN4時点の調査記録として残す。最新の受領状態と実装順は
-[F3受領後計画](F3NextPlan.md)とBS主計画§41を参照。
+[F3受領後計画](bhatt-scholze-f3-next.md)とBS主計画§41を参照。
 W₂の具体的ねじれ作用の比較とH⁰へのδ延長はBS側のP1〜P3で実装済み。
 ω₁の完備性保存は追加接続条件として残る。
 

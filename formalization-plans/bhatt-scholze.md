@@ -2260,7 +2260,7 @@ N3a/N3bのimport閉包は6/7モジュール、Inputs・CLMST・Paper・RootTower
 
 ### N4調査完了（2026-10-14）
 
-詳細は[BS専用Prop 7.2接続設計](../SerrePositivity/BhattScholze/Prop72Construction.md)。
+詳細は[BS専用Prop 7.2接続設計](archive/bhatt-scholze-prop72-construction.md)。
 本主計画の未追跡ファイル全体に既存の記録があるため、それを一括ステージせず、
 今回のN4の成果だけをBS内の専用設計記録として個別コミットする。
 
@@ -2299,7 +2299,7 @@ N1・N2・N3a・N3bの証明とN4の限定的調査という独立作業列は�
 ## 41. F3受領後の次の実装計画（2026-10-14）
 
 実行順・仮定・公開成果・受入条件は
-[BS専用F3受領後計画](../SerrePositivity/BhattScholze/F3NextPlan.md)に記録する。
+[BS専用F3受領後計画](archive/bhatt-scholze-f3-next.md)に記録する。
 共通側のPDCompletion公開入口を読み、対象ビルド（2422ジョブ）と
 全14公開宣言のassert_no_sorry・公理依存をBS側でも確認した。
 propext・Classical.choice・Quot.soundのみ。F3本体を受領済みとする。
@@ -2330,7 +2330,7 @@ F3受領だけで一般B3/B4/B5の完成や引用削除を主張しない。
 
 共通F3本体を再実装せず、実PDCompletionH0のδ構造とδ普遍性まで接続した。
 予定と実際のファイル・公開APIは
-[専用計画の完了記録](../SerrePositivity/BhattScholze/F3NextPlan.md)に記録する。
+[専用計画の完了記録](archive/bhatt-scholze-f3-next.md)に記録する。
 
 P1は`9a86ace`、P2は`ea0ba86`。P3は実際のH⁰に唯一のδ構造を与え、
 標準射をδ射にし、p,g(d)実導来完備なδ試験環への唯一の環延長がδ射となることを証明した。
@@ -2356,7 +2356,7 @@ P1〜P3の7新規Leanモジュールを個別ビルドし、全25公開宣言の
 ## 43. 一般B3を完成させる実行計画（2026-10-14）
 
 ユーザー指定の目標を一般B3の存在とIsPerfectoidization普遍性として開始した。
-[専用実行計画](../SerrePositivity/BhattScholze/B3ExecutionPlan.md)に最終受渡し型、
+[専用実行計画](archive/bhatt-scholze-b3-execution.md)に最終受渡し型、
 ステップ・受入条件・担当と依存を記録した。各ステップを個別コミットする。
 共通計画でF4・F5が完了したことを確認。再監査して接続し、F3を作り直さない。
 最初はP4：δ除算添加・旧ねじれδ閉包商・実導来H⁰の一段操作を実装する。
@@ -2398,7 +2398,7 @@ Cor 7.3に必要な完全試験prismの始対象を直接構成した。
 任意perfectoid環の試験prism商表示、一般商射の唯一持上げをすべて証明したため採用する。
 原典Prop 7.2の全prismの始対象・ω₁反復・一般Lemma 4.8を証明済みとは数えない。
 これらは別の未実装の補助工程であり、今回の一般B3への待合せ条件ではなくなった。
-詳細と各工程は[B3専用実行計画](../SerrePositivity/BhattScholze/B3ExecutionPlan.md)。
+詳細と各工程は[B3専用実行計画](archive/bhatt-scholze-b3-execution.md)。
 
 F6の一般主イデアル商のperfection核を受領して標準tilt射へ接続した。
 一般完備distinguished Witt商の比較射の同型を証明し、Fontaine核を同型で移した。
