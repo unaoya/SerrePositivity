@@ -3,6 +3,7 @@ public import SerrePositivity.DifferentialGraded.Morita.U16
 public import SerrePositivity.DifferentialGraded.Morita.U16aChecks
 public import SerrePositivity.DifferentialGraded.Morita.CriterionChecks
 public import SerrePositivity.DifferentialGraded.Morita.CoherencePerfectChecks
+public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionOutputEvaluationChecks
 public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelLocalizedSquareChecks
 public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelLocalizationAugmentationChecks
 public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelPerfectNaturalityChecks
@@ -46,3 +47,16 @@ open SerrePositivity.DifferentialGraded.Morita
 #print axioms scalarKernelLocalized_columnsPerfect
 #print axioms scalarKernelLocalizedPerfectSquare
 #print axioms scalarKernelLocalizedPerfectSquare_inclusion
+
+#print axioms scalarOutputModuleEvaluationAugmentation
+#print axioms scalarOutputComplexEvaluationAugmentation
+#print axioms scalarOutputModuleEvaluationAugmentation_isIso
+#print axioms scalarOutputComplexEvaluationAugmentation_isIso
+#print axioms scalarOutputEvaluationModelIso
+#print axioms scalarOutputEvaluationModelIso_augmentation
+#print axioms scalarOutputEvaluationModelIso_naturality
+#print axioms scalarOutputEvaluationModelIso_ofObjectwiseKFlat
+#print axioms scalarOutputEvaluationIso
+#print axioms scalarOutputEvaluationIso_model
+#print axioms scalarKernelOutputEvaluationIso
+#print axioms scalarKernelOutputEvaluationIso_ofKFlatModels

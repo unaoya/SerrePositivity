@@ -13209,3 +13209,39 @@ U12fとの成分同定、実際のkernel合成との係数変更図式、局所�
 lake build SerrePositivity.DifferentialGraded.Morita.U16Checks SerrePositivity.Spectra.StageTwo
 lake env lean SerrePositivity/DifferentialGraded/Morita/U16Checks.lean
 ```
+
+
+### 17.278 U16d.28の統合：出力加群と評価複体の導来係数変更比較（2026-10-17）
+
+別担当の確定コミット4e386dc9とU16d.28の受入記録を照合した。
+ScalarExtensionOutputEvaluation・ScalarExtensionKernelOutputEvaluationの12公開宣言を、
+既存QuasiEquivalence→U16のproduction入口から利用できることを確認し、
+U16Checksへ専用Checksの同時importと12宣言の直接再監査を追加した。
+
+| 比較 | 実装済みの証拠・明示する条件 |
+| --- | --- |
+| 加群／複体の係数変更から共通評価モデルへの増大 | scalarOutputModuleEvaluationAugmentation、scalarOutputComplexEvaluationAugmentationと各_isIso |
+| 指定出力モデルの評価比較 | scalarOutputEvaluationModelIso。評価複体のcomplexKFlatと加群側増大のIsIsoを保持 |
+| 実際の増大とのsquareとモデル間自然性 | scalarOutputEvaluationModelIso_augmentation、_naturality。許容モデル間の全閉零射を扱う |
+| 十分条件と主導来出力への移送 | scalarOutputEvaluationModelIso_ofObjectwiseKFlat、scalarOutputEvaluationIso、_model。指定計算モデルと比較同型を明示 |
+| 実際のkernel出力の比較 | scalarKernelOutputEvaluationIso、_ofKFlatModels。標準右解像度tensorをモデルとし、各評価のhPNと増大条件、十分条件版のhEを保持 |
+
+複体導来圏の宇宙z・z'と各ModuleCatのHasDerivedCategoryは独立の入力で、
+主加群導来圏の宇宙に固定していない。環準同型のflat性を無条件に追加・推論しない。
+二つの増大から独立に構成した比較であり、所望のU12f成分一致から逆に定義したものではない。
+
+更新後U16ChecksとSpectra.StageTwoの合同ビルド成功（4029 jobs、警告・エラー0）。
+統合入口の主要31宣言を直接再監査し、重複・欠落なく標準3公理以内。
+追加12件は別担当の既監査宣言の再出力なので、こちらの新規監査累計5107を維持する。
+新しい数学的宣言・sorry・axiom・引用・資源上限変更はない。担当外ファイルは編集していない。
+
+**未完との区別。** 出力評価の二つの導来係数変更を比較する射・同型は得られたが、
+これを挿入した全dg加群正方形の成分が既存U12f比較と一致する等式はまだ証明中である。
+kernel合成との係数変更図式、局所化正方形の全主kernel射自然性、中心作用の保留も残る。
+別担当の未コミットScalarExtensionKernelOutputComponents・OutputModelsは受入根拠に含めない。
+U16a・U16c統合の受入は維持し、U16全体の受入は行わない。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Morita.U16Checks SerrePositivity.Spectra.StageTwo
+lake env lean SerrePositivity/DifferentialGraded/Morita/U16Checks.lean
+```
