@@ -253,6 +253,7 @@ public import SerrePositivity.CommutativeAlgebra.AdicCompletionInjective
 public import SerrePositivity.CommutativeAlgebra.FlatTensorFiltration
 public import SerrePositivity.CommutativeAlgebra.AdicCompletionFlat
 public import SerrePositivity.BhattScholze.Perfectoidization
+public import SerrePositivity.BhattScholze.PerfectoidizationInterface
 public import SerrePositivity.BhattScholze.PerfectoidAlmost
 public import SerrePositivity.BhattScholze.PerfectoidizationExcisionResults
 public import SerrePositivity.BhattScholze.Inputs.AndreFlatness
