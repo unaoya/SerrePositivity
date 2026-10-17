@@ -10415,3 +10415,54 @@ U12e全体は未受入、U16a〜d・U15e分解版は未着手であり、全体�
 局所K-flat版のQuotient/DerivedComparison*・Verdier/は分解版で読んで再利用する。
 共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・ScalarExtension*・並行作業の
 Tensor/Associator*および他チャットの記録を編集していない。
+
+
+### 17.225 U12e65：二段階source表示の正規化squareと移送付き比較計算（2026-10-17）
+
+**二段階表示。** Derived/MiddleRestrictionIteratedPresentation.leanは二段階の直接左右制限の
+局所化を、既存の二段階導来制限へ送る自然同型を構成した。
+middleLeftIteratedDerivedIso_normalize・middleRightIteratedDerivedIso_normalizeは、
+この表示同型に導来制限の合成同型を続ける経路と、直接制限の合成同型に一段階の表示同型を
+続ける経路の一致を自然変換の等式として証明する。§17.224の表示squareを再利用する。
+任意の可換環と独立した四つのdg圏の対象宇宙を保ち、K-flat性・準同値性は要求しない。
+
+**実際の全導来sourceとの整合性。** Derived/BimoduleMiddleCompositePresentation.leanは
+middleIteratedClosedSourceIsoで閉零両因子上の二段階sourceを既存の全導来sourceへ送り、
+middleIteratedClosedNormalizationIsoで同じ閉零表示を合成dg関手のsourceへ正規化する。
+middleIteratedClosedSourceIso_normalizeは、この二つの経路と既存の全導来source正規化・
+一段階の表示同型からなるsquareの可換性を証明した。
+左右の表示squareを導来合成関手の両変数の自然性で貼り合わせる証明であり、
+source同型を比較射から逆算して定義したものではない。
+必要な局所Hom K-flat性は終端Lだけで、D・E・Tの仮定やF・Gの準同値性は不要。
+
+**比較射の移送付き計算。** Derived/BimoduleMiddleTransportComputation.leanの
+base_facは既存source表示同型を全導来比較へ前合成すると標準K-flatモデル計算を回復することを示す。
+transport_facは、任意の導来射g・fで両因子を移送してから比較する経路を、
+元の指定右K-flatモデルで比較してから同じ導来射で移送する経路と一致させる。
+g・fの可逆性や、移送先が閉零対象から指定されることは要求しない。
+これにより二段階目のsourceに現れる導来制限の値を、標準semifreeモデルとその増大を通して
+計算する入口を得た。既存APIの名前・型は変更せず、9公開宣言を追加した。
+
+**検証。** 新規Checks.DGBimoduleMiddleCompositePresentationは、独立した五つの対象宇宙、
+中間圏の局所Hom K-flat性・関手の準同値性なしの実際のsource square、
+可逆性を課さない任意の導来射での移送式、ZMod 2での右制限表示の正規化を検査した。
+既存全導来恒等則・指定モデル合成則・導来同値・解像度独立性・導来随伴・五角形・
+StageEight・StageSeven・Spectra.StageTwoを含む統合ビルド成功（3477 jobs、警告なし）。
+9公開宣言の直接公理監査は重複・欠落なく標準3公理以内。新規監査累計4477宣言。
+今回の4 Leanファイルにsorry・admit・新規axiom・資源上限変更は0件。採用済み引用0件。
+Lean v4.35.0-rc4とMathlib manifest/HEAD e6bbacd0e1b7307ff6e17da09cd2455f60804fa6を再確認した。
+
+文書検査は21 Markdown・320 exposition参照を検査し、担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+既存未解決参照1件で失敗した。
+
+**残件と次工程。** 全導来比較の合成則そのものは未証明である。
+次に後因子のG制限の標準semifree増大を指定し、今回のsource squareとtransport_facを使って
+二段階の実際の全導来比較を§17.222の標準モデル上の合成式へ接続する。
+その等式を§17.224のmiddleDerivedFamily_extで全導来圏へ降ろす。
+その後、共通dg圏解像度の変更と対角単位・結合子との整合性・coherenceを仕上げ、§15.2を監査する。
+U12e全体は未受入、U16a〜d・U15e分解版は未着手。全体の目標と順序を保持する。
+共有一般論への新しいAPI要求はない。U15e分解版では局所K-flat版の
+Quotient/DerivedComparison*・Verdier/を読んで再利用し、重複実装しない。
+共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・ScalarExtension*・並行作業の
+Tensor/Associator*と他チャットの記録を編集していない。
