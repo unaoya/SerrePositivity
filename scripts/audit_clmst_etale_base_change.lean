@@ -1,4 +1,4 @@
-import SerrePositivity.CommutativeAlgebra.EtaleAwayBaseChange
+import SerrePositivity.CommutativeAlgebra.EtaleAwayTensorBaseChange
 import SerrePositivity.CLMST.PerfectoidEtaleCommonCover
 import Mathlib.Util.AssertNoSorry
 

@@ -8878,7 +8878,7 @@ D-I/U/Q・Cor 8.12 の担当部分には着手していない。
 
 #### KL-T：元の悪い元を保つ任意基底拡大のエタール性（2026-10-17）
 
-`CommutativeAlgebra/EtaleAwayBaseChange.lean` の公開定理
+`CommutativeAlgebra/EtaleAwayTensorBaseChange.lean` の公開定理
 `etaleAway_tensor_baseChange` は、任意の R 代数 A,B と g:R について、
 元の A[1/g] の R[1/g] 上のエタール性から、
 (B⊗R A)[1/algebraMap R B g] の B[1/algebraMap R B g] 上のエタール性を返す。
@@ -8904,11 +8904,19 @@ Algebra.Etale (Localization.Away g) (Localization.Away (algebraMap R A g)) →
 元の g の像を反転した有限被覆上で、B 有限表示・導来 p 完備な同じ実モデルと
 (B⊗R A)→M←Bʳ の実有限写像を得る。通常平坦性を instance として導入していない。
 公開定理とこの適用例は `assert_no_sorry` 成功・標準三公理のみ。新しい引用はない。
-KL 専用監査は成功（1222 assert）。全体ビルドは今回未編集の
-`CLMST/TensorIsogeny.lean:51` の
-`GenericEtale.etale_away_baseChange_of_mem_span_singleton` 未定義、および
-`DifferentialGraded/Quotient/ScalarExtension.lean` のタイムアウトと未定義定数で失敗した。
-今回の対象モジュール・専用監査は成功している。並行系列のファイルは修正していない。
+KL 専用監査は成功（1222 assert）。初回の全体ビルドでは
+`CLMST/TensorIsogeny.lean:51` の未定義参照と DG 側の失敗を記録したが、
+前者はコミット差分の点検で、本工程が同名の既存ファイルを上書きしたことが原因と判明した。
+`034d1af8` の後続修復で、`5e8e3424` にあった既存の
+`GenericEtale.etale_away_baseChange` と主イデアルへの拡張を含むファイル全体を復元した。
+元ファイルの宣言を削除せず、KL の公開名は別ファイル `EtaleAwayTensorBaseChange.lean` に移し、
+既存の `GenericEtale.etale_away_baseChange` を再利用する入口に改めた。
+これにより重複した証明実装も除去した。復元元と元ファイルが一致することを確認し、
+`CLMST.TensorIsogeny` と移設入口の対象ビルドが成功した（3468 jobs）。
+履歴の amend・rebase・reset は行わず、別の修復コミットとして保存する。
+修復後の専用監査と KL 監査（1222 assert）は成功。全体ビルドの
+TensorIsogeny の未定義参照は解消し、残る失敗は今回未編集の DG 側の
+`ScalarExtension.lean:68` のタイムアウトと `:123` の未定義定数だけである。
 
 これで一つの André 拡大後にも、元の悪い元の像に対応する実被覆を使える。
 各モデルの canonical excision の実 pullback 性と perfectoid 化のモデル同定は未供給である。

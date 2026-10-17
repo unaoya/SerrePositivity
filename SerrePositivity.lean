@@ -897,6 +897,7 @@ public import SerrePositivity.CLMST.PerfectoidizationExcisionComparison
 public import SerrePositivity.CLMST.PerfectoidFinitePresentationCommonModel
 public import SerrePositivity.CLMST.PerfectoidEtaleCommonCover
 public import SerrePositivity.CommutativeAlgebra.EtaleAwayBaseChange
+public import SerrePositivity.CommutativeAlgebra.EtaleAwayTensorBaseChange
 public import SerrePositivity.CLMST.CanonicalExcisionTorInput
 
 /-!
