@@ -9069,6 +9069,53 @@ D-I/U/Q・Cor 8.12 の担当実装は編集していない。
 ユーザーの指示により CLMST-D への追加連絡を行わず、Cor 8.12 入力の
 保留を維持する。KL 完了・Cor 4.0.4 の置換完了とは扱わない。
 
+#### KL-T：Thm 4.0.3(a) の全加群帰着・指定型の二入力（2026-10-17）
+
+今回の範囲は Cor 8.12 非依存の全加群帰着である。
+`CLMST/AllModuleAlmostTor.lean` の公開定理
+`allModule_tor_annihilated_of_powerTorsion_and_extension` は、正則局所環 A、
+任意の係数源 R、A 代数 C、`ψ : R →+* C`、`I : Ideal R`、自然数 p に対し、
+C の A 加群としての導来 p 完備性と次の二つを明示引数として受け取る。
+
+```lean
+hExt : ∀ (S : ShortComplex (ModuleCat.{u} R)), S.ShortExact →
+  IsModuleComplete R (p : R) S.X₁ → IsModuleComplete R (p : R) S.X₂ →
+  IsModuleComplete R (p : R) S.X₃ →
+  Almost.IsAlmostZero I S.X₁ → Almost.IsAlmostZero I S.X₃ → Almost.IsAlmostZero I S.X₂
+hTor : ∀ (N : ModuleCat.{u} A) (k : ℕ),
+  (∀ x : N, (p : A) ^ k • x = 0) → ∀ j : ℕ, 0 < j →
+    ∀ s ∈ I, torCoefficientScalarEndomorphism C N j (ψ s) = 0
+```
+
+結論は `∀ (N : ModuleCat.{u} A) (j : ℕ), 0 < j → ∀ s ∈ I,
+ torCoefficientScalarEndomorphism C N j (ψ s) = 0`。
+指数 k=0 を除外せず、任意 N に有限生成性・完備性を追加しない。
+公開 `perfectoidIdeal_allModule_tor_annihilated` は p が素数、R と C が
+integral perfectoid の場合を受け持ち、I を `perfectoidIdeal R p hR g` に固定する。
+C の導来完備性は `IsIntegralPerfectoid.isModuleComplete_algebra` で証明して供給する。
+R は CompletedTower にそのまま具体化できる。hExt は指定されたレーン B の
+`perfectoidIdeal_isAlmostZero_extension` の型であり、その存在は仮定していない。
+
+証明は既存 `PowerTorsionTorExtension.tor_eq_zero_of_power_torsion_and_complete_extensions`
+（実際の namespace は `DerivedCompletion`）を再利用する。
+有限生成部分加群の余極限は `TorFiniteCoefficients`、実 Tor の余極限保存は
+`TorExactColimits`、有限自由分解は `RegularLocalResolution.regularResolution` と
+`exists_finite_free_resolution_of_regular_generators` にある。
+Mathlib の `Module.Finite.exists_fin'`、`ProjectiveResolution`、`FGModuleCat` を利用し、
+最終核の自由性は本リポジトリで証明済みの正則列の補題から導く。
+有界ねじれ比較・再構成は `FiniteCoefficientCokernelHolim`、
+元の作用を保つ実短完全列は `TorAlgebraMilnorSequence`、両端の零化と完備性は
+`ModulePowerTorAlgebraAlmost`、中央の完備性は `TorAlgebraComplete` を使う。
+lim¹ を消去せず、hExt で中央へ渡す。原典 CLMST v4 Thm 4.0.3(a), pp.27–28 と同じ方針で、
+既存の具体的な分解・塔・係数線形比較により実装する。
+BS 著者版 Prop 10.2, p.78 は引用せず、その拡大部分だけを明示引数にする。
+
+集約ファイルは `CLMST/KLAllModule.lean`、ルートへの追加はこの一行だけ。
+対象ビルドと `scripts/audit_clmst_all_module_tor.lean` により公開二定理の
+`assert_no_sorry` と依存閉包の標準三公理限定を検証する。
+これは (a)(b) からの帰着の成果であり、(a)(b) 自体の供給や KL-Q の引用置換は未完了。
+Cor 8.12 の宣言・使用・形の仮定は行わず、Prop247・BhattScholze の担当ファイルは変更しない。
+
 #### Prop 2.4.7 専任系列：原典から D-I/U/Q への型付き受渡し（2026-10-17）
 
 本節は統合表 D-I・D-U・D-Q の実入力を固定する。未採用の別計画は根拠にしない。
