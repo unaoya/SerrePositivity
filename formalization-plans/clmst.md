@@ -10459,6 +10459,40 @@ André 存在・直積普遍性の指定データ中核・canonical 比較から
 原典 E∞ 版 Cor 8.12 と同値と主張しない。原典の入力宣言と E∞ 結果からこの四角形への対応は保留する。
 新しい sorry・axiom・引用は追加せず、元の Prop 2.4.7 引用は維持する。
 
+**Cor 8.12 保留時の独立作業の検収と全体公開（2026-10-17）。**
+Prop247CanonicalRankDescent をルートへ公開し、有限直積単位の普遍性と元の canonical 比較への同定を含む
+今回の全変更を取り込んだ。共有ルートは別 index の git add -p で自分の1 import hunk のみを選択した。
+積の実成分の型略記も専用 assert_no_sorry と公理監査の対象へ追加し、公開5宣言を確認した。
+元の全体 lake build は7027ジョブで成功し、実成分の専用監査、最終 canonical 接続の専用到達監査、
+scripts/audit_axioms.lean、scripts/audit_clmst.lean は全て終了コード0で完了した。
+監査範囲や既存引用の許可範囲は変更しない。
+
+原典と統合表 D-I・D-U・D-Q に対する、Cor 8.12 に依存しない作業の検収は次のとおり。
+
+| 要求 | 実装・証拠 | 検収結果 |
+|---|---|---|
+| 原典対象と実降下への型付き受渡し | 本節の対応表、Prop247RankData・GeneralRank・CanonicalRankDescent の実対象・元の単位を保持した型 | 実対象の存在を仮定に隠さず構成 |
+| 全剰余段に共通の指数 | prop247_uniform_of_standard_fixed_cone と最終組立ての呼出し | 固定した実錐の指数を先に選び、∃q∀n の D-U へ渡す |
+| 実射・実錐の導来 p 完備性 | prop247_cone_isComplete_of_perfectoid_target と元の moduleMapCone | 不特定の錐や完備性を仮定しない |
+| 原典の底変換・perfectoid 化の標準図式 | Prop247StandardSquare・StandardCone・標準剰余錐同型 | 元の augmentation と作用を保持し、既存 BS 8.13 環 API と G2 を再利用 |
+| André 拡大の実存在 | prop247_exists_andre_descent_base | 証明済み BS 7.14 から供給、assert_no_sorry 成功・標準3公理のみ |
+| 定 rank の組立て | prop247_constantRank_actual_isogeny_of_excision | 指定 excision 入力の下で元の選択写像の錐・核・余核へ接続 |
+| 一般 rank の原典の帰着 | 原典の Ui、Ri、Ti、Si と prop247_exists_canonical_generalRank_descent_data | 全対象・直積普遍性・係数比較・成分証明を構成し、残る実 canonical 四角形へ接続 |
+| Cor 適用の通常環の準備 | 元の I とその像・両商の導来完備性、元の比較の付値環への一意延長 | V の perfectoid 性・離散性等を追加せず原典の試験付値環を含む |
+| 一般論の再利用・境界 | D1〜D6・E1〜E5・G2、KL の指定比較 API、mathlib の冪等元分解 | 再実装せず、担当外 KL・BS・作業中 Localization 系は編集しない |
+
+現在の Prop247 全56モジュールがルートの import グラフに含まれることを確認した。
+本系列のソースには新しい直接の sorry・axiom 宣言がなく、指定データの中核は各専用監査で標準3公理のみ。
+選択入口は既存 B-I を保持するため sorry-free とは扱わず、型と証明を再帰走査して既存 B-I のみの到達を確認した。
+原典 Prop 2.4.7 入力と主定理・CLMST 監査スクリプトは変更していない。
+
+以上で、Cor 8.12 を保留した範囲の独立した準備・条件付き組立ては検収済みである。
+保留中なのは、原典全体の E∞ 版 Cor 8.12 の入力宣言と、その E∞ 結果を局所比較および
+実一般 rank の指定 KLCanonicalExcisionSquare へ対応させて供給する部分である。
+通常環の条件付き組立てを原典 E∞ 版と同値とは主張せず、原典の一般性を落とした引用は宣言しない。
+この保留入力を供給するまで、元の CLMST.Inputs.proposition_2_4_7 の引用は置換しない。
+新しい sorry・axiom・引用は追加していない。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
