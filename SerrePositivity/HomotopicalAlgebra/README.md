@@ -3380,3 +3380,24 @@ SSet.{v}値の実図式、制限した既存の合成選択空間との対象ご
 元のnative単位四面体で、保持・復元・可変horn族への延長を検証した。一般論にモデル構造は不要である。
 互換な境界自体の全次数の構成・退化面の保持・小さい厳密なRMapへの接続は残る。
 受入検証は`check_parameterized_horn_choices`（19宣言）と`check_horn_family_lifting`（22宣言）。
+
+
+### 指定入力族と退化を保持する一様filling操作（§388–389）
+
+`RelativeHornFillingOperation`は指定入力部分単体集合上の全fillerを保持する一つの切断を構成する。
+`DegenerateHornInput`は任意次元の各退化について、hornに残るsection面で入力を復元し、
+退化入力のsplit monoと、その全族を保持する操作を構成する。
+`CompatibleInputUnion`は大きい添字の入力像の和を小さい値宇宙に保ち、互換な出力族を降下させる。
+`CompatibleHornFillingOperation`はその和を使い、すべての互換な指定全族を一つの操作に保持する。
+受入検証は`check_relative_horn_operation`（31宣言）と`check_compatible_horn_operation`（31宣言）。
+
+
+### 両退化の同時保持と、元のTに厳密に自然なnative合成比較（§390）
+
+`DegenerateTriangleOverlap`は三角形の両退化の重なりで、全fillerが等しいことを証明する。
+`NormalizedTriangleHorn`は両退化を同時に保持する一つの切断を構成する。
+`NaturalHornFilling`は任意次元で元のKに切断を固定し、Tの変更に厳密に自然な実fillerを与える。
+`NormalizedComparisonTriangle`は指定二辺を保持する三角形を構成し、退化一致・厳密な定数辺を証明する。
+`OrdinaryBarNormalizedCompositionTriangle`は実native入力の再評価に対する厳密な全三角形・全区間の式と、
+以前の独立した三角形との相対比較を与える。Kの変更や元の基底上のRMapの関手性は残る。
+受入検証は`check_normalized_native_triangles`（64宣言・5モジュール）。
