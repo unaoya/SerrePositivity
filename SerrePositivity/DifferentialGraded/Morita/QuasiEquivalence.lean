@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelEvaluationModels
 public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelLocalizedComposition
 public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelOutputModels
 public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelOutputEvaluation

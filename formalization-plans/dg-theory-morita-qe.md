@@ -895,3 +895,19 @@ U16dの受入範囲・残る接続、U16aのcoherenceの進捗とは独立した
 およびその同型を通す場合の既存正方形との一致は、この貼合せだけからは主張しない。
 従来の残接続(4)のこの比較・整合性は引き続き未完である。
 中心作用は保留。U16d全体・U16全体の受入は宣言しない。
+
+
+## U16d.31：kernel評価比較とU12d計算・増大の成分同定
+
+- `ScalarExtensionKernelEvaluationModels.lean` の
+  `scalarKernelResolutionEvaluation_computation` は、任意の右射影解像度族について、
+  既存 `perfectKernelResolutionDerivedTensorEvaluationIso` の成分と、実際のkernel計算同型の評価を同定する。
+  閉零代表上のH⁰比較とU12d比較の計算を先に証明し、H⁰自然性で解像度へ運んだ。
+- `scalarKernelEvaluationAugmentation_relativeKFlat` は、相対K-flat入力における
+  実際のkernel増大の評価が、既存U12dの `relativeKFlatTensorComputation` と一致する等式。
+  評価比較を別に選び直さず、元のkernel増大と既存の比較そのものを計算している。
+- 複体導来圏のHasDerivedCategoryとその射宇宙zは明示したまま保持する。
+  元のdg圏の局所Hom K-flat性や環のflat性は追加していない。
+- 監査入口のビルド成功（3248 jobs、警告・エラー0）。5宣言は標準3公理のみ。
+  ログは `/tmp/serre-u16d-evaluation-models-audit.log`。
+  U12f比較の成分同定へ使う実際の計算補題として受け入れるが、U16d全体の受入は引き続き未完。
