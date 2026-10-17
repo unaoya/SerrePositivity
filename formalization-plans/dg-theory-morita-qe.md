@@ -156,6 +156,18 @@
 - `Morita.QuasiEquivalenceGraphActionChecks` ビルド成功（2805 jobs、警告なし）。
   主要8宣言の公理監査は標準3公理のみ。
 
+## U16d.4：係数変更正方形のPerf制限・自然性・合成整合性
+
+- `Morita/ScalarExtensionPerfectSquares.lean`：主導来圏上の指定された自然な係数変更正方形を入力し、
+  U16d.3の実際の非flat係数変更とU16d.1の実際のPerf制限との正方形へ移した。
+  主導来包含後の式は元の正方形そのものであり、関手間の自然変換に対する可換式も保つ。
+- 二つの主導来係数変更正方形を合成してからPerfへ制限する経路と、
+  二つのPerf正方形を合成し、実際のPerf制限の合成同型で比較する経路が一致することを証明した。
+- kernel固有の正方形の存在は入力eとして明示する。U12fのhPN・hP'を自動化したり省略したりする結果ではない。
+  実際のkernelの評価計算でeを構成する接続は、U16aの該当API実装後に行う。
+- `Morita.ScalarExtensionPerfectSquaresChecks` ビルド成功（3071 jobs、警告なし）。
+  主要6宣言の公理監査は標準3公理のみ。
+
 ## 合同検証と公開入口（2026-10-17）
 
 - 新規10監査対象・公開入口・既存 `Checks.DGFunctorDerivedEquivalence` の12対象を
