@@ -204,6 +204,16 @@
 - `ChecksDerivedHomEquiv` と更新した `ChecksCompatibility` の対象ビルド成功。
   4主要宣言の公理は標準3公理のみ。最新APIを既存のU14公開入口へimportし、ルートは未編集。
 
+## U14a.17：射影的始域における導来Hom同値の自然性（2026-10-17）
+
+- `DerivedProjectiveHomNaturality.lean`：主Kの随伴Hom同値が実際の加群射上で
+  閉零加群圏の随伴と一致することを証明。射影的始域の導来Hom同値の具体的計算式を得た。
+- 導来Homの計算同型の逆の自然性と、導来Hom同値の両変数における
+  実際の加群射に対する自然性を証明。導来射自体には射影的始域からの持上げを使った。
+  任意対象の解像度比較および局所化で追加される逆射への自然性の拡張は次の段階。
+- `lake build SerrePositivity.DifferentialGraded.Endomorphism.ChecksDerivedProjectiveHomNaturality`
+  成功。5主要宣言の公理は標準3公理のみ。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。

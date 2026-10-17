@@ -1,0 +1,12 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedProjectiveHomNaturality
+
+/-! # 射影的始域の再構成Hom自然性の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+
+#print axioms endomorphismHomotopyHomEquiv_map
+#print axioms endomorphismProjectiveDerivedHomEquiv_map
+#print axioms endomorphismDerivedHomComputation_inv_naturality
+#print axioms endomorphismProjectiveDerivedHomEquiv_naturality_right
+#print axioms endomorphismProjectiveDerivedHomEquiv_naturality_left
