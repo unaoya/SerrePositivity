@@ -4230,6 +4230,165 @@ differential A ((toLinearData s).component J k hJ hk) = (toLinearData s).rhs J k
               SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex A x y n
 ```
 
+### N4f：データの逆構成と端点・片側の逆則（2026-10-18、N4 は未完了）
+
+`PinchedRecoverIndex.lean` は `withoutLast I` を、castSucc により I に属する先頭添字の集合と定義する。
+像が I.erase last に一致すること、最終点を含む I に対する `withLast (withoutLast I)=I`、
+任意の J に対する `withoutLast (withLast J)=J` を証明した。
+濃度の一つの差、二点以上の I の最小点が最終点でないこと、先頭集合の非空性と最小点の対応も証明した。
+
+`PinchedReadData.lean` の `SimplexData.toPinchedLinearData` は、全先頭対象が x、最終対象が y の
+任意の単体データから全終端成分を回収する。単体方程式は要求しない。
+既存の実際の単体からの `PinchedHom.toLinearData` は、この共通の操作に `source_obj` と `target_obj`
+を渡す定義に整理した。公開型は変更せず、N4e の全方程式の証明も再ビルドした。
+
+`PinchedReconstructData.lean` の `reconstructObj x y` は先頭点で x、最終点で y。
+`LinearData.toSimplexData` は全ての I の成分を次の三分岐で再構成する：
+最大点が最終点なら `withoutLast I` の線形成分、最終点以外を終点とする二点なら単位、その他なら零。
+対象と次数の移送だけを cast で行う。三つの `toSimplexData_hom_*` 補題で全分岐を計算した。
+`toSimplexData_toPinchedLinearData` は、再構成したデータの全終端成分を回収すると元の線形族に戻ると示す。
+これは全 n、任意の線形族 f に対するデータの片側の逆則で、線形方程式の仮定は不要である。
+
+`PinchedReconstructFaces.lean` の `toSimplexData_front` は先頭面全体が x の定値単体のデータに一致し、
+`toSimplexData_last` は最終頂点が y の零単体のデータに一致することを示す。
+前者は単射な先頭埋め込みの引き戻しの単位・零の比較、後者は零単体の射族の一意性による。
+これらはいずれも方程式を添える前の `SimplexData` の等式である。
+
+前提：任意の可換環 A、任意の dg 圏 D、二対象 x,y、全次数 n、任意の `LinearData A x y n`。
+データの型を実際の単体の代わりにして完成扱いにはしていない。
+線形解 `LinearSimplex` から実際の `Simplex` にするには、その線形方程式から全単体方程式を導く必要があり、
+これは未完了。元の `Simplex.hom` の添字・次数は変更せず、§3 の設計変更はない。
+
+検証：`set -e`、`set -o pipefail` の下で
+`lake build SerrePositivity.InfinityCategories.DGNerve` が 3480 jobs、終了コード 0。
+`lake env lean scripts/audit_dg_nerve.lean` も終了コード 0。
+新規 21 宣言を含む全 456 個の担当する明示的公開宣言と既存 5 則、計 461 件を監査した。
+460 件の依存公理の表示は標準三公理の部分集合、`reconstructObj` の 1 件は公理への依存なし。
+両形式を合わせた全表示名と監査対象名を照合して一致し、全ソース宣言の型検査も漏れなし。
+新しい sorry・axiom・引用はない。
+
+未完了：再構成データの全単体方程式と実際の右 pinched 単体への逆写像、
+両逆則による全次数の同値、実際の写像空間への A 加群構造・単体的な線形性の移送、
+直接ホーン充填・Kan 性、π₀ と H⁰ の射の比較、N6 の具体例と最終検査。
+今回のデータの逆構成と片側の逆則で N4 全体を完了とは数えない。
+
+今回の全新規公開宣言の正確な型（`#check @` の出力）：
+
+```lean
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withoutLast : {n : ℕ} →
+  Finset (Fin (n + 2)) → Finset (Fin (n + 1))
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.image_withoutLast : ∀ {n : ℕ} (I : Finset (Fin (n + 2))),
+  Finset.image Fin.castSucc (SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withoutLast I) =
+    I.erase (Fin.last (n + 1))
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withLast_withoutLast : ∀ {n : ℕ} (I : Finset (Fin (n + 2))),
+  Fin.last (n + 1) ∈ I →
+    SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withLast
+        (SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withoutLast I) =
+      I
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withoutLast_withLast : ∀ {n : ℕ} (J : Finset (Fin (n + 1))),
+  SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withoutLast
+      (SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withLast J) =
+    J
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.card_withoutLast : ∀ {n : ℕ} (I : Finset (Fin (n + 2))),
+  Fin.last (n + 1) ∈ I → I.card = (SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withoutLast I).card + 1
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withoutLast_nonempty : ∀ {n : ℕ} {I : Finset (Fin (n + 2))},
+  2 ≤ I.card → Fin.last (n + 1) ∈ I → (SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withoutLast I).Nonempty
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.min_ne_last : ∀ {n : ℕ} (I : Finset (Fin (n + 2)))
+  (hI : 2 ≤ I.card), I.min' ⋯ ≠ Fin.last (n + 1)
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.min_withoutLast : ∀ {n : ℕ} (I : Finset (Fin (n + 2)))
+  (hI : 2 ≤ I.card) (h : Fin.last (n + 1) ∈ I),
+  ((SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withoutLast I).min' ⋯).castSucc = I.min' ⋯
+
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.toPinchedLinearData : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        {n : ℕ} →
+          (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData A D (n + 1)) →
+            (x y : D) →
+              (∀ (i : Fin (n + 1)), s.obj i.castSucc = x) →
+                s.obj (Fin.last (n + 1)) = y → SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData A x y n
+
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.toPinchedLinearData_component_heq : ∀ {A : Type u_1}
+  [inst : CommRing A] {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {n : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData A D (n + 1)) (x y : D)
+  (hx : ∀ (i : Fin (n + 1)), s.obj i.castSucc = x) (hy : s.obj (Fin.last (n + 1)) = y) (J : Finset (Fin (n + 1)))
+  (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - ↑J.card),
+  (s.toPinchedLinearData x y hx hy).component J k hJ hk ≍
+    s.hom (SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withLast J) (J.min' hJ).castSucc (Fin.last (n + 1)) k ⋯
+      ⋯ ⋯ ⋯
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.reconstructObj : {D : Type u_1} →
+  D → D → {n : ℕ} → Fin (n + 2) → D
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.reconstructObj_of_ne_last : ∀ {D : Type u_1} (x y : D) {n : ℕ}
+  {i : Fin (n + 2)},
+  i ≠ Fin.last (n + 1) → SerrePositivity.InfinityCategories.DGNerve.PinchedHom.reconstructObj x y i = x
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.reconstructObj_of_eq_last : ∀ {D : Type u_1} (x y : D) {n : ℕ}
+  {i : Fin (n + 2)},
+  i = Fin.last (n + 1) → SerrePositivity.InfinityCategories.DGNerve.PinchedHom.reconstructObj x y i = y
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.reconstructObj_castSucc : ∀ {D : Type u_1} (x y : D) {n : ℕ}
+  (i : Fin (n + 1)), SerrePositivity.InfinityCategories.DGNerve.PinchedHom.reconstructObj x y i.castSucc = x
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.toSimplexData : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        {x y : D} →
+          {n : ℕ} →
+            SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData A x y n →
+              SerrePositivity.InfinityCategories.DGNerve.SimplexData A D (n + 1)
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.toSimplexData_hom_last : ∀ {A : Type u_1}
+  [inst : CommRing A] {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {x y : D} {n : ℕ}
+  (f : SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData A x y n) (I : Finset (Fin (n + 2)))
+  (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card) (ha : a = I.min' ⋯) (hb : b = I.max' ⋯) (hk : k = 2 - ↑I.card)
+  (hbLast : b = Fin.last (n + 1)),
+  f.toSimplexData.hom I a b k hI ha hb hk ≍
+    f.component (SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withoutLast I) k ⋯ ⋯
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.toSimplexData_hom_unit : ∀ {A : Type u_1}
+  [inst : CommRing A] {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {x y : D} {n : ℕ}
+  (f : SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData A x y n) (I : Finset (Fin (n + 2)))
+  (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card) (ha : a = I.min' ⋯) (hb : b = I.max' ⋯) (hk : k = 2 - ↑I.card),
+  b ≠ Fin.last (n + 1) →
+    I.card = 2 → f.toSimplexData.hom I a b k hI ha hb hk ≍ ↑(SerrePositivity.DifferentialGraded.unitElement A x)
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.toSimplexData_hom_zero : ∀ {A : Type u_1}
+  [inst : CommRing A] {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {x y : D} {n : ℕ}
+  (f : SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData A x y n) (I : Finset (Fin (n + 2)))
+  (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card) (ha : a = I.min' ⋯) (hb : b = I.max' ⋯) (hk : k = 2 - ↑I.card),
+  b ≠ Fin.last (n + 1) → I.card ≠ 2 → f.toSimplexData.hom I a b k hI ha hb hk = 0
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.toSimplexData_toPinchedLinearData : ∀ {A : Type u_1}
+  [inst : CommRing A] {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {x y : D} {n : ℕ}
+  (f : SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData A x y n),
+  f.toSimplexData.toPinchedLinearData x y ⋯ ⋯ = f
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.toSimplexData_front : ∀ {A : Type u_1}
+  [inst : CommRing A] {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {x y : D} {n : ℕ}
+  (f : SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData A x y n),
+  f.toSimplexData.pullback Fin.castSuccOrderEmb.toOrderHom =
+    (SerrePositivity.InfinityCategories.PinchedHom.constant
+        (SerrePositivity.InfinityCategories.DGNerve.Simplex.vertex x) n).toSimplexData
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.toSimplexData_last : ∀ {A : Type u_1}
+  [inst : CommRing A] {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {x y : D} {n : ℕ}
+  (f : SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData A x y n),
+  f.toSimplexData.pullback
+      (SimplexCategory.Hom.toOrderHom (SerrePositivity.InfinityCategories.PinchedHom.lastVertex n)) =
+    (SerrePositivity.InfinityCategories.DGNerve.Simplex.vertex y).toSimplexData
+```
+
 ## 6. 次のマイルストーン D（本計画の範囲外）
 
 - Semifree(S) を `DGFullSubcategory`（`moduleSemifree` または一点 dg 圏上の複体版）として置き、

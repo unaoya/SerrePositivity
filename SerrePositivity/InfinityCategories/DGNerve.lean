@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.DGNerve.Triangle
 public import SerrePositivity.InfinityCategories.DGNerve.Computations
 public import SerrePositivity.InfinityCategories.DGNerve.Quasicategory
 public import SerrePositivity.InfinityCategories.DGNerve.HomotopyCategory
+public import SerrePositivity.InfinityCategories.DGNerve.PinchedReconstructFaces
 public import SerrePositivity.InfinityCategories.DGNerve.PinchedRhs
 public import SerrePositivity.InfinityCategories.DGNerve.PinchedTermLinear
 public import SerrePositivity.InfinityCategories.DGNerve.PinchedFront

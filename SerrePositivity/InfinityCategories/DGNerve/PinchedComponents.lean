@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.DGNerve.PinchedHom
-public import SerrePositivity.InfinityCategories.DGNerve.PinchedLinear
+public import SerrePositivity.InfinityCategories.DGNerve.PinchedReadData
 public import SerrePositivity.InfinityCategories.DGNerve.PinchedIndex
 
 /-! # 右 pinched 単体からの全斉次成分の回収
@@ -42,14 +42,7 @@ lemma target_obj {n : ℕ} (s : (DGNerve.pinchedHom A D x y) _⦋n⦌) :
 方針：J に最終点を加えた集合の成分を取り、両端の対象だけを等式で移送する。
 規約：HA Construction 1.3.1.6、Kerodon §4.6.5。使われ方：全次数の線形表示への順写像のデータ。 -/
 def toLinearData {n : ℕ} (s : (DGNerve.pinchedHom A D x y) _⦋n⦌) : LinearData A x y n :=
-  fun i => by
-    let J := i.val.1
-    let k := i.val.2
-    have hJ : J.Nonempty := i.property.1
-    have hk : k = 1 - (J.card : ℤ) := i.property.2
-    let f := s.val.hom (withLast J) (J.min' hJ).castSucc (Fin.last (n + 1)) k
-      (two_withLast hJ) (min_withLast hJ _) (max_withLast J _) (by rw [card_withLast]; omega)
-    exact cast (by rw [source_obj s (J.min' hJ), target_obj s]) f
+  s.val.toSimplexData.toPinchedLinearData x y (source_obj s) (target_obj s)
 
 /-- 概要：回収した各成分は元の最終点を含む成分と異種等号で一致する。
 方針：対象の等式による cast を異種等号で除く。

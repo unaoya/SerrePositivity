@@ -894,6 +894,49 @@ dg nerve と内部ホーン充填および quasicategory instance を監査す�
 #print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.toLinearSimplex
 #check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.toLinearSimplex
 
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withoutLast
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withoutLast
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.image_withoutLast
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.image_withoutLast
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withLast_withoutLast
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withLast_withoutLast
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withoutLast_withLast
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withoutLast_withLast
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.card_withoutLast
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.card_withoutLast
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withoutLast_nonempty
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withoutLast_nonempty
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.min_ne_last
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.min_ne_last
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.min_withoutLast
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.min_withoutLast
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.toPinchedLinearData
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.toPinchedLinearData
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.toPinchedLinearData_component_heq
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.toPinchedLinearData_component_heq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.reconstructObj
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.reconstructObj
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.reconstructObj_of_ne_last
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.reconstructObj_of_ne_last
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.reconstructObj_of_eq_last
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.reconstructObj_of_eq_last
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.reconstructObj_castSucc
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.reconstructObj_castSucc
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.toSimplexData
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.toSimplexData
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.toSimplexData_hom_last
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.toSimplexData_hom_last
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.toSimplexData_hom_unit
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.toSimplexData_hom_unit
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.toSimplexData_hom_zero
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.toSimplexData_hom_zero
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.toSimplexData_toPinchedLinearData
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.toSimplexData_toPinchedLinearData
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.toSimplexData_front
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.toSimplexData_front
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.toSimplexData_last
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.toSimplexData_last
+
 section
 universe u v
 variable (A : Type u) [CommRing A] (D : Type v)
