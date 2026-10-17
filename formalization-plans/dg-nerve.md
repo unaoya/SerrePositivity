@@ -4943,6 +4943,184 @@ N6 の一点 dg 圏・複体 dg 圏での具体化と最終検査も未完了。
     (CategoryTheory.ConcreteCategory.hom ((SerrePositivity.InfinityCategories.DGNerve.pinchedHom A D x y).map f)) s
 ```
 
+### N4i：線形削除作用素と欠けた面の方程式（2026-10-18、N4 は未完了）
+
+`PinchedDeletion.lean` は右 pinched 方程式の係数 `deletionSign` と全頂点の削除和
+`deleteSum` を定義した。`deletionSign_eq_neg` により既存の dg nerve の削除係数の負であり、
+`deleteSum_squared` は二重削除の相殺から削除和の二乗が零であることを示す。
+`deletionSolution` は指定した点以外の寄与の和に指定係数の逆元を掛けて負にした明示解。
+`sum_eq_zero_of_deletionSolution` はこの値を選ぶと最上位の削除和が零になることを示す。
+指定点は内部点という仮定を持たず、端点にも同じ式を使う。
+
+`PinchedLinearResidual.lean` は空集合と不適切な次数の成分を零で全域化し、
+`rhs_eq_deleteSum` で既存の線形右辺を削除和に同定した。
+`sum_rhs_eq_zero` は一段小さい右辺の削除和の相殺、`differential_rhs_residual` は
+右辺の微分が削除した面の残差の符号付き和になることを示す。
+`missing_equation` は、最上位の右辺が零かつ指定点以外の全削除面の残差が零なら、
+指定点を削除した面自身の微分方程式が従うことを証明する。
+`rhs_eq_zero_of_deletionSolution` は上の明示解の値から最上位右辺が零であることを導く。
+
+前提は任意の可換環 A、dg 圏 D、二対象 x,y。一般の削除作用素は任意の線形順序の添字と
+加法可換群の値で成立する。欠けた面の方程式については集合の濃度が二以上、指定点の所属、
+最上位右辺が零、他の削除面の残差が零を明示的に仮定する。
+これは実際のホーンからの成分回収・一致・充填の構成ではなく、条件付きの代数補題であり、
+Kan 性の完成とは数えない。
+
+公開宣言の正確な型は以下。`LinearData` 名前空間の型では
+`{A : Type u} [CommRing A] {D : Type v} [DGCategory A D] {x y : D}` を共通の暗黙引数とし、
+`open CategoryTheory DifferentialGraded` のもとで記す。
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.deletionSign`
+
+```lean
+def deletionSign {α : Type*} [LinearOrder α] (J : Finset α) (j : α) : ℤˣ
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.deletionSign_eq_neg`
+
+```lean
+lemma deletionSign_eq_neg {α : Type*} [LinearOrder α] (J : Finset α) (j : α) :
+    deletionSign J j = -Index.sign J j
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.deleteSum`
+
+```lean
+def deleteSum {α M : Type*} [LinearOrder α] [AddCommGroup M]
+    (f : Finset α → M) (J : Finset α) : M
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.deleteSum_squared`
+
+```lean
+lemma deleteSum_squared {α M : Type*} [LinearOrder α] [AddCommGroup M]
+    (f : Finset α → M) (J : Finset α) : deleteSum (deleteSum f) J = 0
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.deletionSolution`
+
+```lean
+def deletionSolution {α M : Type*} [LinearOrder α] [AddCommGroup M]
+    (J : Finset α) (i : α) (f : α → M) : M
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.sum_eq_zero_of_deletionSolution`
+
+```lean
+lemma sum_eq_zero_of_deletionSolution {α M : Type*} [LinearOrder α] [AddCommGroup M]
+    (J : Finset α) (i : α) (hi : i ∈ J) (f : α → M)
+    (hf : f i = deletionSolution J i f) :
+    (∑ j ∈ J, deletionSign J j • f j) = 0
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.componentOrZero`
+
+```lean
+def componentOrZero {n : ℕ} (f : LinearData A x y n) (J : Finset (Fin (n + 1))) (k : ℤ) :
+    GradedHom A x y k
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.componentOrZero_eq`
+
+```lean
+lemma componentOrZero_eq {n : ℕ} (f : LinearData A x y n) (J : Finset (Fin (n + 1))) (k : ℤ)
+    (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ)) :
+    f.componentOrZero J k = f.component J k hJ hk
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.componentOrZero_empty`
+
+```lean
+lemma componentOrZero_empty {n : ℕ} (f : LinearData A x y n) (k : ℤ) :
+    f.componentOrZero ∅ k = 0
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.rhs_eq_deleteSum`
+
+```lean
+lemma rhs_eq_deleteSum {n : ℕ} (f : LinearData A x y n) (J : Finset (Fin (n + 1))) (k : ℤ)
+    (hk : k = 1 - (J.card : ℤ)) :
+    f.rhs J k hk = deleteSum (fun K => f.componentOrZero K (k + 1)) J
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.sum_rhs_eq_zero`
+
+```lean
+lemma sum_rhs_eq_zero {n : ℕ} (f : LinearData A x y n) (J : Finset (Fin (n + 1))) (k : ℤ)
+    (hk : k = 1 - (J.card : ℤ)) :
+    (∑ j : J, deletionSign J j.val • f.rhs (J.erase j.val) (k + 1)
+      (by have
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.residual`
+
+```lean
+def residual {n : ℕ} (f : LinearData A x y n) (J : Finset (Fin (n + 1))) (k : ℤ)
+    (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ)) : GradedHom A x y (k + 1)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.residual_eq_zero_iff`
+
+```lean
+lemma residual_eq_zero_iff {n : ℕ} (f : LinearData A x y n) (J : Finset (Fin (n + 1))) (k : ℤ)
+    (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ)) :
+    f.residual J k hJ hk = 0 ↔ differential A (f.component J k hJ hk) = f.rhs J k hk
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.differential_rhs`
+
+```lean
+lemma differential_rhs {n : ℕ} (f : LinearData A x y n) (J : Finset (Fin (n + 1))) (k : ℤ)
+    (hJ : 2 ≤ J.card) (hk : k = 1 - (J.card : ℤ)) :
+    differential A (f.rhs J k hk) =
+      ∑ j : J, deletionSign J j.val • differential A
+        (f.component (J.erase j.val) (k + 1) (erase_nonempty hJ j.val j.property)
+          (by have
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.differential_rhs_residual`
+
+```lean
+lemma differential_rhs_residual {n : ℕ} (f : LinearData A x y n)
+    (J : Finset (Fin (n + 1))) (k : ℤ) (hJ : 2 ≤ J.card) (hk : k = 1 - (J.card : ℤ)) :
+    differential A (f.rhs J k hk) =
+      ∑ j : J, deletionSign J j.val • f.residual (J.erase j.val) (k + 1)
+        (erase_nonempty hJ j.val j.property)
+        (by have
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.missing_equation`
+
+```lean
+lemma missing_equation {n : ℕ} (f : LinearData A x y n)
+    (J : Finset (Fin (n + 1))) (k : ℤ) (hJ : 2 ≤ J.card) (hk : k = 1 - (J.card : ℤ))
+    (i : Fin (n + 1)) (hi : i ∈ J) (hrhs : f.rhs J k hk = 0)
+    (hother : ∀ j : J, j.val ≠ i → f.residual (J.erase j.val) (k + 1)
+      (erase_nonempty hJ j.val j.property)
+      (by have
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.rhs_eq_zero_of_deletionSolution`
+
+```lean
+lemma rhs_eq_zero_of_deletionSolution {n : ℕ} (f : LinearData A x y n)
+    (J : Finset (Fin (n + 1))) (k : ℤ) (hk : k = 1 - (J.card : ℤ))
+    (i : Fin (n + 1)) (hi : i ∈ J)
+    (hsolution : f.componentOrZero (J.erase i) (k + 1) =
+      deletionSolution J i (fun j => f.componentOrZero (J.erase j) (k + 1))) :
+    f.rhs J k hk = 0
+```
+
+検証：`set -e; set -o pipefail` の下で対象 `PinchedLinearResidual` と集約 `DGNerve` の
+`lake build` が終了コード 0（3494 jobs）、続く `lake env lean scripts/audit_dg_nerve.lean` も終了コード 0。
+新規17宣言を含む全公開宣言530件と既存5則、合計535件の `#print axioms` と型検査を確認した。
+`reconstructObj` 一件は公理非依存、他は propext・Classical.choice・Quot.sound の範囲内。
+新しい sorry・axiom・引用は追加していない。
+
+残る必須作業は、実際のホーンからの既知線形成分の回収と整合性、明示解を用いた全方程式の検証、
+面の一致と KanComplex instance、π₀ と H⁰ の Hom の比較、および N6 の具体例と最終監査。
+N0・N1・N2・N3・N5 の完了状態は維持する。N4 全体・N6 は未完了。
+
 ## 6. 次のマイルストーン D（本計画の範囲外）
 
 - Semifree(S) を `DGFullSubcategory`（`moduleSemifree` または一点 dg 圏上の複体版）として置き、

@@ -1055,6 +1055,41 @@ noncomputable section
 #print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.moduleObject_map_apply
 #check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.moduleObject_map_apply
 
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.deletionSign
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.deletionSign
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.deletionSign_eq_neg
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.deletionSign_eq_neg
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.deleteSum
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.deleteSum
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.deleteSum_squared
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.deleteSum_squared
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.deletionSolution
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.deletionSolution
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.sum_eq_zero_of_deletionSolution
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.sum_eq_zero_of_deletionSolution
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.componentOrZero
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.componentOrZero
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.componentOrZero_eq
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.componentOrZero_eq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.componentOrZero_empty
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.componentOrZero_empty
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.rhs_eq_deleteSum
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.rhs_eq_deleteSum
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.sum_rhs_eq_zero
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.sum_rhs_eq_zero
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.residual
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.residual
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.residual_eq_zero_iff
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.residual_eq_zero_iff
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.differential_rhs
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.differential_rhs
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.differential_rhs_residual
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.differential_rhs_residual
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.missing_equation
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.missing_equation
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.rhs_eq_zero_of_deletionSolution
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.rhs_eq_zero_of_deletionSolution
+
 section
 universe u v
 variable (A : Type u) [CommRing A] (D : Type v)
