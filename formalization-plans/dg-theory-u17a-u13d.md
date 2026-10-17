@@ -167,3 +167,24 @@ HEAD からの差分全体が自分の変更だけであることも確認する
 今回のコミット直前に正本へ他チャットの分担更新が加わったため、正本は対象から除外した。
 自分の参照一行は working tree に残し、その一行だけの cached patch を逆適用して部分 stage を解除。
 他チャットの正本変更・index は変更していない。ルートは HEAD 差分が自分の import 一行のみと確認。
+
+### U15e2：代表対象の零性と実際の生成元比較
+
+- `Quotient/DerivedComparisonContraction.lean`：単位が次数−1の境界である対象は既存 H⁰ で
+  零となることを証明。dg Yoneda と主導来局所化でその代表加群の零性へ運ぶ。
+  明示的商の `epsilonElement` と `differential_epsilonElement` から
+  `quotientObject_homotopy_isZero`、`quotientRepresentable_derived_isZero` を得た。
+- `Quotient/DerivedComparisonGenerators.lean`：空 path 包含の H⁰ 関手、商側 dg Yoneda、
+  既存の主局所化を合成した実際の `derivedComparisonOnGenerators` を定義。
+  商側の代表加群との対象計算同型、および `TriaCategory A (QuotientObject D S)` への持ち上げを構成。
+  S の代表対象を殺すことと、この像が商側 tria 全体を三角生成することを証明した。
+  H⁰(D) 自体からの本質的全射性は主張しない。
+- この単位の零性と生成性には局所 K-flat 仮定を置かない。後続の Verdier 商上の
+  完全忠実性で仮定を使う。U15e 全体・U17b は引き続き未完。
+- 対象ビルド：`lake build SerrePositivity.DifferentialGraded.Checks.QuotientDerivedContraction` 成功。
+  主要11宣言の公理監査は標準3公理のみ。新規 sorry・axiom・引用なし。
+- project import 依存372ファイルを走査し、dg 圏分解の `Resolution/`、
+  `Derived/KFlatBimodule*`、`Derived/Bimodule*` への依存なし。
+- ルートには他チャットの4行の import が混在しているため、この単位では編集・コミットしない。
+  正本の参照一行も並行変更と混在しており、引き続き専用記録と対象ファイルだけをコミットする。
+- U15e1 のコミット：`60ad82cd`（4ファイル。直後の `git show --stat HEAD` で確認済み）。
