@@ -8,3 +8,4 @@ public import SerrePositivity.InfinityCategories.Core.Join
 public import SerrePositivity.InfinityCategories.Core.Slice
 public import SerrePositivity.InfinityCategories.Core.Coslice
 public import SerrePositivity.InfinityCategories.Core.JoinAnodyne
+public import SerrePositivity.InfinityCategories.Core.RightFibration

@@ -409,3 +409,53 @@ import SerrePositivity.InfinityCategories.Core
 #print axioms SerrePositivity.InfinityCategories.joinUnion_innerAnodyne_of_rightAnodyne
 #check @SerrePositivity.InfinityCategories.joinUnion_innerAnodyne_of_leftAnodyne
 #print axioms SerrePositivity.InfinityCategories.joinUnion_innerAnodyne_of_leftAnodyne
+
+-- A2d: 左右ファイブレーションと slice・coslice 射影
+#check @SerrePositivity.InfinityCategories.rightFibrations
+#print axioms SerrePositivity.InfinityCategories.rightFibrations
+#check @SerrePositivity.InfinityCategories.leftFibrations
+#print axioms SerrePositivity.InfinityCategories.leftFibrations
+#check @SerrePositivity.InfinityCategories.RightFibration
+#print axioms SerrePositivity.InfinityCategories.RightFibration
+#check @SerrePositivity.InfinityCategories.RightFibration.mk
+#print axioms SerrePositivity.InfinityCategories.RightFibration.mk
+#check @SerrePositivity.InfinityCategories.RightFibration.mem
+#print axioms SerrePositivity.InfinityCategories.RightFibration.mem
+#check @SerrePositivity.InfinityCategories.LeftFibration
+#print axioms SerrePositivity.InfinityCategories.LeftFibration
+#check @SerrePositivity.InfinityCategories.LeftFibration.mk
+#print axioms SerrePositivity.InfinityCategories.LeftFibration.mk
+#check @SerrePositivity.InfinityCategories.LeftFibration.mem
+#print axioms SerrePositivity.InfinityCategories.LeftFibration.mem
+#check @SerrePositivity.InfinityCategories.rightFibration_innerFibration
+#print axioms SerrePositivity.InfinityCategories.rightFibration_innerFibration
+#check @SerrePositivity.InfinityCategories.leftFibration_innerFibration
+#print axioms SerrePositivity.InfinityCategories.leftFibration_innerFibration
+#check @SerrePositivity.InfinityCategories.joinEmptyIso
+#print axioms SerrePositivity.InfinityCategories.joinEmptyIso
+#check @SerrePositivity.InfinityCategories.joinEmptyIso_inv
+#print axioms SerrePositivity.InfinityCategories.joinEmptyIso_inv
+#check @SerrePositivity.InfinityCategories.joinEmptyIso_naturality
+#print axioms SerrePositivity.InfinityCategories.joinEmptyIso_naturality
+#check @SerrePositivity.InfinityCategories.sliceOverCurry_projection
+#print axioms SerrePositivity.InfinityCategories.sliceOverCurry_projection
+#check @SerrePositivity.InfinityCategories.sliceOverUncurry_projection
+#print axioms SerrePositivity.InfinityCategories.sliceOverUncurry_projection
+#check @SerrePositivity.InfinityCategories.sliceOverProjection_hasLiftingProperty
+#print axioms SerrePositivity.InfinityCategories.sliceOverProjection_hasLiftingProperty
+#check @SerrePositivity.InfinityCategories.sliceOverProjection_rightFibration
+#print axioms SerrePositivity.InfinityCategories.sliceOverProjection_rightFibration
+#check @SerrePositivity.InfinityCategories.sliceOver_quasicategory
+#print axioms SerrePositivity.InfinityCategories.sliceOver_quasicategory
+#check @SerrePositivity.InfinityCategories.emptyJoinIso_inv
+#print axioms SerrePositivity.InfinityCategories.emptyJoinIso_inv
+#check @SerrePositivity.InfinityCategories.sliceUnderCurry_projection
+#print axioms SerrePositivity.InfinityCategories.sliceUnderCurry_projection
+#check @SerrePositivity.InfinityCategories.sliceUnderUncurry_projection
+#print axioms SerrePositivity.InfinityCategories.sliceUnderUncurry_projection
+#check @SerrePositivity.InfinityCategories.sliceUnderProjection_hasLiftingProperty
+#print axioms SerrePositivity.InfinityCategories.sliceUnderProjection_hasLiftingProperty
+#check @SerrePositivity.InfinityCategories.sliceUnderProjection_leftFibration
+#print axioms SerrePositivity.InfinityCategories.sliceUnderProjection_leftFibration
+#check @SerrePositivity.InfinityCategories.sliceUnder_quasicategory
+#print axioms SerrePositivity.InfinityCategories.sliceUnder_quasicategory

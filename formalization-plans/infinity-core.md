@@ -1303,3 +1303,123 @@ lemma joinUnion_innerAnodyne_of_leftAnodyne {A B : SSet.{u}}
 Core の対象ビルドと公理監査はともに終了コード 0。累計 192 件の監査対象は標準三公理のみ
 （公理なしも含む）。A2c は完了。A2d〜A2i は未完了。全体ビルドは工程の区切りで実施する。
 次は A2d の left/right fibration と slice 射影の right fibration 性へ進む。
+
+### A2d 完了（2026-10-18）：左右のファイブレーションと slice・coslice
+
+`Core/RightFibration.lean` に実装した。左右のホーンの `rlp` がそれぞれ
+right/left fibration であり、どちらも inner fibration へ接続する。
+任意の `p : K ⟶ X` と `[Quasicategory X]` に対し slice 射影は右ファイブレーション、
+coslice 射影は左ファイブレーション。K の有限性等の仮定はない。
+各 slice/coslice の quasicategory 性は Mathlib の `quasicategory_of_innerFibration` を使った。
+射影の持ち上げは、空部分複体と元の錐を pushout-join で貼り合わせ、A2c で延長した。
+モデル構造や追加公理を用いていない。
+
+任意の宇宙 `u`、namespace `SerrePositivity.InfinityCategories`、
+`open CategoryTheory Limits SSet MorphismProperty` と `open scoped Simplicial` の下で
+全ての明示的公開宣言の正確な型は次の通り。クラスの構成子 `.mk` と射影 `.mem` も監査した。
+
+```lean
+def rightFibrations : MorphismProperty SSet.{u}
+```
+
+```lean
+def leftFibrations : MorphismProperty SSet.{u}
+```
+
+```lean
+class RightFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where
+  mem : rightFibrations p
+```
+
+```lean
+class LeftFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where
+  mem : leftFibrations p
+```
+
+```lean
+instance rightFibration_innerFibration {X Y : SSet.{u}} (p : X ⟶ Y) [RightFibration p] :
+    InnerFibration p
+```
+
+```lean
+instance leftFibration_innerFibration {X Y : SSet.{u}} (p : X ⟶ Y) [LeftFibration p] :
+    InnerFibration p
+```
+
+```lean
+noncomputable def joinEmptyIso (A K : SSet.{u}) :
+    join A ((⊥ : K.Subcomplex) : SSet.{u}) ≅ A
+```
+
+```lean
+lemma joinEmptyIso_inv (A K : SSet.{u}) :
+    (joinEmptyIso A K).inv = joinInl A ((⊥ : K.Subcomplex) : SSet.{u})
+```
+
+```lean
+lemma joinEmptyIso_naturality {A B : SSet.{u}} (f : A ⟶ B) (K : SSet.{u}) :
+    joinMap f (𝟙 ((⊥ : K.Subcomplex) : SSet.{u})) ≫ (joinEmptyIso B K).hom =
+      (joinEmptyIso A K).hom ≫ f
+```
+
+```lean
+lemma sliceOverCurry_projection {A K X : SSet.{u}} {p : K ⟶ X}
+    (F : join A K ⟶ X) (hF : joinInr A K ≫ F = p) :
+    sliceOverCurry F hF ≫ sliceOverProjection p = joinInl A K ≫ F
+```
+
+```lean
+lemma sliceOverUncurry_projection {A K X : SSet.{u}} {p : K ⟶ X} (f : A ⟶ sliceOver p) :
+    joinInl A K ≫ sliceOverUncurry f = f ≫ sliceOverProjection p
+```
+
+```lean
+lemma sliceOverProjection_hasLiftingProperty {A K X : SSet.{u}} [Quasicategory X]
+    (p : K ⟶ X) (A₀ : A.Subcomplex) (hA : rightAnodyneExtensions A₀.ι) :
+    HasLiftingProperty A₀.ι (sliceOverProjection p)
+```
+
+```lean
+instance sliceOverProjection_rightFibration {K X : SSet.{u}} [Quasicategory X] (p : K ⟶ X) :
+    RightFibration (sliceOverProjection p)
+```
+
+```lean
+instance sliceOver_quasicategory {K X : SSet.{u}} [Quasicategory X] (p : K ⟶ X) :
+    Quasicategory (sliceOver p)
+```
+
+```lean
+lemma emptyJoinIso_inv (K A : SSet.{u}) :
+    (emptyJoinIso K A).inv = joinInr ((⊥ : K.Subcomplex) : SSet.{u}) A
+```
+
+```lean
+lemma sliceUnderCurry_projection {A K X : SSet.{u}} {p : K ⟶ X}
+    (F : join K A ⟶ X) (hF : joinInl K A ≫ F = p) :
+    sliceUnderCurry F hF ≫ sliceUnderProjection p = joinInr K A ≫ F
+```
+
+```lean
+lemma sliceUnderUncurry_projection {A K X : SSet.{u}} {p : K ⟶ X} (f : A ⟶ sliceUnder p) :
+    joinInr K A ≫ sliceUnderUncurry f = f ≫ sliceUnderProjection p
+```
+
+```lean
+lemma sliceUnderProjection_hasLiftingProperty {A K X : SSet.{u}} [Quasicategory X]
+    (p : K ⟶ X) (A₀ : A.Subcomplex) (hA : leftAnodyneExtensions A₀.ι) :
+    HasLiftingProperty A₀.ι (sliceUnderProjection p)
+```
+
+```lean
+instance sliceUnderProjection_leftFibration {K X : SSet.{u}} [Quasicategory X] (p : K ⟶ X) :
+    LeftFibration (sliceUnderProjection p)
+```
+
+```lean
+instance sliceUnder_quasicategory {K X : SSet.{u}} [Quasicategory X] (p : K ⟶ X) :
+    Quasicategory (sliceUnder p)
+```
+
+Core の対象ビルド・公理監査は終了コード 0。累計 216 件が標準三公理のみ
+（公理なしも含む）。A2d は完了。A2e〜A2i は未完了。引き続き終対象の充填条件へ進む。

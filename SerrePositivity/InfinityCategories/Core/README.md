@@ -147,3 +147,13 @@ A2c の生成セル二つを `JoinAnodyne.lean` に実装済み。
 持ち上げ問題の往復、単射の境界セル分解を用いて一般の射へ広げている。
 A2c まで完了、A2d〜A2i は未完了。Core 対象ビルドと累計 192 件の公理監査は成功。
 新規 44 公開宣言の正確な型と仮定は計画 §6 に列挙した。
+
+### A2d 完了（2026-10-18）
+
+`RightFibration.lean` で左右のホーンの rlp を `rightFibrations`・`leftFibrations` として定義した。
+`RightFibration`・`LeftFibration` は所属の型クラスで、両方から `InnerFibration` へ接続する。
+`[Quasicategory X]` と任意の `p : K ⟶ X` に対し、
+`sliceOverProjection_rightFibration` と `sliceUnderProjection_leftFibration` が射影の性質を与え、
+`sliceOver_quasicategory`・`sliceUnder_quasicategory` が Mathlib の標的からの引き戻し補題で
+quasicategory 性を与える。A2d 完了、A2e〜A2i は未完了。
+Core 対象ビルドと累計 216 件の公理監査は成功。型・仮定は計画 §6 に記録した。
