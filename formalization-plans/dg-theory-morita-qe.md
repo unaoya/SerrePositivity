@@ -106,3 +106,16 @@
   それらが実装された後、同じ保存条件・自然同型をこのアダプタへ適用する。
 - `Morita.PerfectFunctorialityChecks` ビルド成功（2455 jobs、警告なし）。
   主要10宣言の公理監査は標準3公理のみ。
+
+## U16d.2：係数変更の二変数モデルと実際のU12f比較
+
+- `Morita/ScalarExtensionTensorModels.lean`：右加群・左加群の積圏上に、balanced tensor後の
+  導来係数変更と、両加群の係数変更後のbalanced tensorを二つの実際の関手として構成した。
+  既存の自然な比較射を用い、hPN・hP'を満たすモデルの充満部分圏上で自然同型を与えた。
+- hPNはA上のbalanced tensorのK-flat性、hP'は係数変更した右加群の相対K-flat性であり、
+  φのflatnessや自動的な条件へ置き換えない。モデルの射は両変数の全ての閉零射である。
+- 任意射影解像度Pについて、実際の `derivedTensorBaseChange φ D P N hPN hP'` が
+  この自然同型と前後の解像度計算同型の合成になる正方形を証明した。
+  主導来kernel作用への適用・kernel合成との比較はまだ未完である。
+- `Morita.ScalarExtensionTensorModelsChecks` ビルド成功（2903 jobs、警告なし）。
+  主要7宣言の公理監査は標準3公理のみ。
