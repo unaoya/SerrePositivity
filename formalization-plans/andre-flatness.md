@@ -1241,3 +1241,44 @@ SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（
 専用監査は終了コード 0。新規 3 公開定理の `assert_no_sorry` と、
 生成宣言を含む 1862 宣言の推移的な標準 3 公理のみの依存を確認した。
 3 定理の公開型を `#print` で確認（終了コード 0）。
+
+### E1.19：一般 perfectoid 基底への有限根付き拡大の移送
+
+新規 `Andre/MonicRootedBaseEquiv.lean` で、自己拡大・環同型の任意イデアルに関する
+完全忠実平坦性と、根付き拡大の基底環同型による移送を証明する。
+環同型を同じ基底上の線形同型とみなし、検証済みの E3 合成定理
+`Transfinite.isCompletelyFaithfullyFlat_natCast_comp` を使う。
+原典で使う Hodge–Tate 比較や新しい引用は追加しない。
+
+新規 `Andre/FiniteMonicRootedExtension.lean` は一般の `IsIntegralPerfectoid R p` を
+零枝と四条件の非零枝に分ける。非零枝では既存の
+`exists_perfectoidTrialPrism` による実 PD 完備化の完全 prism 商表示を使い、
+E1.18 の有限族構成に同じ次数とモニック性を保って移した多項式を入力する。
+標準射の合成と `eval₂_map` で元の基底へ戻す。零枝は自己拡大で処理する。
+BS Thm 7.14（著者版 p.61）、Rem 7.15（p.62）の原典とは異なる具体的 PD 計算の経路。
+
+主要公開型（namespace は `SerrePositivity.BhattScholze.Andre`）：
+
+```lean
+theorem exists_finiteMonicRootedPerfectoidExtension
+    (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p)
+    {σ : Type u} (f : σ → Polynomial R) (hf : ∀ s, (f s).Monic)
+    (hdeg : ∀ s, 0 < (f s).natDegree) {m : ℕ} (eσ : Fin m ≃ σ) :
+    ∃ (T : Type u) (_ : CommRing T) (φ : R →+* T) (ρ : σ → T),
+      IsIntegralPerfectoid T p ∧
+      (letI := φ.toAlgebra; IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) T) ∧
+      ∀ s, (f s).eval₂ φ (ρ s) = 0
+```
+
+`exists_monicRootedPerfectoidExtension_of_finite` は全列挙を `[Finite σ]` に置き換えた同じ型。
+`exists_monicRootPerfectoidExtension` は同じ基底前提で単一の
+`f : Polynomial R`、`hf : f.Monic`、`hdeg : 0 < f.natDegree` を受け取り、
+根を `ρ : T`、最後の結論を `f.eval₂ φ ρ = 0` とする一元版。
+有限性と正次数モニック性以外に、基底の表示・p 正則性・ねじれなし・平坦性の補助仮定はない。
+一般基底への移送はこの有限版で解消した。任意族への接続と無限 p 冪根変数の明示的自由基底は残る。
+最終目標 `exists_monicRootedPerfectoidExtension` は引き続き未宣言であり、全体完成とは数えない。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4311 jobs）。
+新規 6 公開宣言の `assert_no_sorry` を追加した専用監査は終了コード 0。
+生成宣言を含む 1868 宣言の推移的公理依存は標準 3 公理のみ。
+存在定理 3 本の公開型も `#print` で確認した（終了コード 0）。

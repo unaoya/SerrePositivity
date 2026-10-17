@@ -332,6 +332,13 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.exists_finiteMonicRootedPerfe
 assert_no_sorry SerrePositivity.BhattScholze.Andre.exists_monicRootedPerfectoidExtension_of_perfectPrism_fintype
 assert_no_sorry SerrePositivity.BhattScholze.Andre.exists_monicRootPerfectoidExtension_of_perfectPrism
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRootedBase_self_isCompletelyFaithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRootedBase_equiv_isCompletelyFaithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRootedExtension_of_baseEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.exists_finiteMonicRootedPerfectoidExtension
+assert_no_sorry SerrePositivity.BhattScholze.Andre.exists_monicRootedPerfectoidExtension_of_finite
+assert_no_sorry SerrePositivity.BhattScholze.Andre.exists_monicRootPerfectoidExtension
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -393,7 +400,9 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PerfectPrismMonicPrismResidue,
     `SerrePositivity.BhattScholze.Andre.PerfectPrismMonicQuotientReduction,
     `SerrePositivity.BhattScholze.Andre.PerfectPrismMonicPerfectoidCompletelyFlat,
-    `SerrePositivity.BhattScholze.Andre.PerfectPrismMonicRootedExtension]
+    `SerrePositivity.BhattScholze.Andre.PerfectPrismMonicRootedExtension,
+    `SerrePositivity.BhattScholze.Andre.MonicRootedBaseEquiv,
+    `SerrePositivity.BhattScholze.Andre.FiniteMonicRootedExtension]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
