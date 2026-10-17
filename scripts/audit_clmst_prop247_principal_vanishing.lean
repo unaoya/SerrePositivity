@@ -1,0 +1,5 @@
+import SerrePositivity.CommutativeAlgebra.ReducedPrincipalVanishing
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.vanishingIdeal_basicOpen_eq_annihilator
+#print axioms SerrePositivity.vanishingIdeal_basicOpen_eq_annihilator
