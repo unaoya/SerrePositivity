@@ -1016,6 +1016,15 @@
 - `ChecksScalarPerfectImage` 対象ビルド成功（3067 jobs）。主要4宣言の公理は標準3公理のみ。
   既存APIの名前・型は変更していない。新しいsorry・axiom・引用は追加していない。
 
+## U14b.63：実際の係数拡大のU13 enhancementへの制限（2026-10-17）
+
+- `ScalarPerfectEnhancement.lean`：射影性・指定perfect性の証拠を実際の係数変更加群に付け、
+  係数変更した元のenhancementから、係数変更後の実際のenhancementへのdg関手を構成した。
+- U14b.57から全Hom擬同型とH⁰での完全忠実性を得た。実際の加群圏への包含正方形をdgレベルで証明。
+  係数変更した対象集合が自動で全ての新しいperfect対象を尽くすとは主張しない。
+- `ChecksScalarPerfectEnhancement` 対象ビルド成功（3074 jobs）。主要5宣言の公理は標準3公理のみ。
+  既存APIの名前・型は変更していない。新しいsorry・axiom・引用は追加していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
