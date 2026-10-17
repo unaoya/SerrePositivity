@@ -739,3 +739,33 @@ HEAD からの差分全体が自分の変更だけであることも確認する
   新規 sorry・axiom・引用なし。他担当・ルートの既存ファイルは編集していない。
 - 残部：既存のホモトピー有限 cell モデルの `quotientVerdierComparison` との自然同型と、
   U17b の perfect enhancement・Karoubi 比較。U15e25 のコミットは `dc80a204`。
+
+
+### U17b1：局所 K-flat 版の perfect enhancement と指定完備 Verdier 商の三角同値
+
+- `Verdier/KaroubiTransport.lean`：既存の Karoubi 関手延長を使って圏同値を完備化する。
+  完備化した関手の本質的全射性は、形式的直和因子の標準 retract を元の圏の同値で移し、
+  既存の `karoubiExtension_mem_essImage` に適用して証明した。完備化の代替構成は作っていない。
+- `Quotient/DerivedComparisonPerfect.lean`：U15e26 の同値を Karoubi 完備化した
+  `localCompletedQuotientEquivalence` を構成。既存の有限 cell Karoubi–Perf 同値と
+  perfect dg 加群の H⁰–Perf 同値を合成して、
+  `localPerfectQuotientEquivalence` : H⁰(Perf_dg(D/S)) ≌ CompletedTriaQuotient A D S を得た。
+  `localSmallPerfectQuotientEquivalence` は既存の小さい dg 代表系を使った同じ比較。
+- 両 perfect 比較は整数 shift に整合する三角同値であることも明示的に証明した。
+  任意の係数環、非有界加群、元の局所 K-flat 仮定を保持し、dg 圏の解像度には依存しない。
+- `localPerfectKaroubiFirstEquivalence` と `localPerfectPaperSequenceComparison` によって、
+  U17a の `triaKaroubiOrderEquivalence`・`triaKaroubiComparison` に実際に接続した。
+  後者は既存の順序交換比較を perfect enhancement への逆比較に後置する自然同型であり、
+  別の零対象クラスや異なる完備 Verdier 商を使っていない。
+- M9 入力を受け取る `localPerfectQuotientEquivalence_of_flat_zero` も公開。
+  元の dg 圏の次数零に集中した平坦 Hom から必要な K-flat 性を供給できる。
+  商側 Hom の非正次数性だけでは供給しない。
+- 対象ビルド `Checks.KaroubiTransport`（1000 jobs）・`Checks.QuotientLocalPerfect`
+  （2783 jobs）成功、警告なし。主要12宣言の公理監査は標準3公理のみ。
+  project import 依存2・568ファイルに禁止された dg 圏分解系への依存なし。
+  新規 sorry・axiom・引用なし。他担当・ルートの既存ファイルは編集していない。
+- U16 の Morita 比較の関手・自然変換に関する自然性は、この点ごとの同値の構成には使わず後回し。
+  その入力の型と可換図式を追加する段階で接続する。既存のホモトピー有限 cell モデルの
+  `quotientVerdierComparison` と導来延長に基づく今回の比較との自然同型も残る。
+  これらの接続を未検証のまま全目標完了とはしない。
+  U15e26 のコミットは `4ff8cb8b`（自分の3ファイルのみと直後に確認）。
