@@ -3,11 +3,13 @@ public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedGenerati
 public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedHomCoproducts
 public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedFullyFaithful
 public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedEquivalence
+public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedConditions
 
 /-! # U16c：右随伴を使わない全主導来圏へのMorita拡張の入口
 
 余積保存、Hom比較の三角・余積閉性、Perfから全対象への充満忠実性の帰納、
 本質的全射、および明示した両側のcompact生成下の全導来圏同値を公開する。
 Perf判定の結論は実際のPerf制限の同値、またはCriterionPerfEquivalenceWitnessとして受け取る。
+三条件を直接受け取る入口では、Perf十分性定理の型CriterionDerivedPerfSufficiencyを入力に明示する。
 一般導来右随伴との一致・unit/counitとの比較は扱わない。
 -/

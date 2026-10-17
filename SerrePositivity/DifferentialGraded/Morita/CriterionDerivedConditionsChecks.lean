@@ -1,0 +1,10 @@
+module
+public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedConditions
+
+/-! # 明示したPerf判定入力と元の三条件による導来拡張の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded.Morita
+#print axioms CriterionDerivedPerfSufficiency
+#print axioms criterionDerivedKernelIsEquivalenceOfConditions
+#print axioms criterionDerivedKernelEquivalenceOfConditions
+#print axioms criterionDerivedKernelEquivalenceOfConditions_functor

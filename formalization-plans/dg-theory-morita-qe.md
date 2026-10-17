@@ -544,6 +544,41 @@
   その最終公開APIからこの拡張への直接の接続は残す。三条件⇒全主導来同値の完成はまだ主張しない。
   U16dの未受入状態も変更していない。
 
+## U16c.4：元の三条件と明示したPerf十分性入力による入口
+
+- `CriterionDerivedConditions.lean`：他担当の `CriterionPerfConditions` を変更せずに受け取り、
+  三条件から実際の `CriterionPerfEquivalenceWitness` を与える十分性定理の型を
+  `CriterionDerivedPerfSufficiency` として定義した。これは入力命題の名前であり、成立の宣言ではない。
+- `criterionDerivedKernelIsEquivalenceOfConditions` と
+  `criterionDerivedKernelEquivalenceOfConditions` は、この十分性を `hPerf` として明示して受け取り、
+  元の三条件と両側のcompact生成から全主導来圏同値を構成する。順関手が実際のkernel作用であることも証明した。
+  `hPerf` の証明を新しいaxiom・引用・暗黙のinstanceで補ってはいない。
+- 対象ビルド成功（2851 jobs）。さらに全8監査入口・CriterionDerived入口・従来の
+  QuasiEquivalence入口の10対象の合同ビルド成功（3482 jobs、終了コード0、警告・エラー0件）。
+  担当40宣言の公理は標準3公理のみ。担当17 Leanファイルに新規sorry・admit・axiom・デバッグtraceはない。
+
+### 条件付き契約の要件監査
+
+| 依頼事項 | 現在の証拠 |
+| --- | --- |
+| 任意kernelの実際の作用の余積保存 | `criterionDerivedKernelPreservesCoproducts`。射影入力とtensorによる既存証明を再利用し、局所Hom・kernel列の射影性を追加しない |
+| 三角性を他担当から使用 | 一般kernelの最終定理で `criterionPerfKernelCommShift`・`criterionPerfKernelIsTriangulated` を使用 |
+| Hom比較のshift・錐・余積閉性 | `CriterionDerivedHomLocus` の各instanceとcoproduct補題。Hom完全列を直接使う |
+| 両変数の局所化帰納・充満忠実性 | `criterionDerivedHom_fromPerfect_all`・`criterionDerivedHom_all`・`criterionDerivedFullyFaithful` |
+| 本質的全射 | `criterionDerivedEssSurj_of_perfectImage`。最終同値では帰納で証明した充満性を供給し、全対象での充満性を追加仮定にしない |
+| compact生成を明示 | `CriterionDerivedCompactGeneration`。各生成元のcompact性と、余積閉三角部分圏の最小性を別フィールドで保持し、両側の証拠を最終型に明示 |
+| 無限直和のcompact性を使わない | 固定した各perfect始域とその像だけにcompact性を使用。生成族の無限直和のcompact性を仮定する宣言なし |
+| 実際のPerf判定の結論との接続 | `criterionDerivedKernelEquivalenceOfPerfWitness` とそのPerf包含図式 |
+| Perf判定未完の間の明示した条件付き形式 | `criterionDerivedKernelEquivalenceOfConditions` の `hPerf`。三条件そのものは既存の型のまま |
+| 実際の順関手を保持 | `criterionDerivedKernelEquivalenceOfConditions_functor` などは定義的等式 |
+| 右随伴・unit/counit比較を担当しない | 一般右随伴の存在・一致・unit/counitを入力にも証明にも使わず、それらとの比較宣言なし |
+| 所有境界と記録 | 新規実装はCriterionDerived*、記録は本ファイルのみ。既存Kernel*・Adjunction*・Coherence*・CriterionPerf*、共有ルート、Stage*、READMEは編集していない |
+
+**担当する全導来拡張は、依頼で許可された条件付き形式で検証済み。**
+三条件からPerf同値を作る `hPerf` 自体の証明、およびその完成後の仮定を外した直接入口は、
+引き続き他担当の最終公開APIを待つ。三条件⇒全導来同値を無条件に証明したとはしない。
+U16dの未受入状態、一般右随伴との比較の担当境界も変更しない。
+
 ## 合同検証と公開入口（2026-10-17）
 
 - 新規10監査対象・公開入口・既存 `Checks.DGFunctorDerivedEquivalence` の12対象を
