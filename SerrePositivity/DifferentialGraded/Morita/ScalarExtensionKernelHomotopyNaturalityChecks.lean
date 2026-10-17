@@ -1,0 +1,10 @@
+module
+public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelHomotopyNaturality
+
+/-! # H⁰におけるkernel係数変更比較の射自然性の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded.Morita
+#print axioms scalarKernelBalancedHomotopyIso_app
+#print axioms scalarKernelExtensionHomotopy_map_closed
+#print axioms scalarKernelBalancedHomotopyIso_kernel_naturality
+#print axioms scalarKernelBalancedHomotopyDerivedIso_kernel_naturality

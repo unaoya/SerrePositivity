@@ -414,6 +414,18 @@
 - `Morita.ScalarExtensionKernelPerfectSquareChecks` ビルド成功（3281 jobs、警告なし）。
   主要6宣言の公理監査は標準3公理のみ。既存のEndomorphism/・Perfect/のAPIは変更していない。
 
+## U16d.23：kernel射に関する係数変更比較の通常・H⁰自然性
+
+- `Morita/ScalarExtensionKernelMapNaturality.lean`：左評価の比較、balanced tensorの比較、
+  dg加群値の比較および入力に関する自然同型が、通常kernelの全閉零射に自然であることを証明した。
+- `Morita/ScalarExtensionKernelHomotopyNaturality.lean`：H⁰比較の通常入力上の成分式を計算し、
+  kernel射自然性をH⁰および主導来値のH⁰関手へ降ろした。局所Hom条件・環準同型のflat性は不要。
+  U16d.21の増大比較と合成して導来係数変更正方形のkernel射自然性へ接続する準備であり、
+  この単位だけでkernel変数の主局所化への係数変更の降下を主張しない。
+- 二つの監査入口と公開入口の合同ビルド成功（3438 jobs、終了コード0、警告・エラーなし）。
+  主要8宣言の公理監査はすべて標準3公理のみ。検査上限の変更は残していない。
+  新規sorry・admit・axiom・引用はなく、他担当ファイルと既存公開APIの型は変更していない。
+
 ## 合同検証と公開入口（2026-10-17）
 
 - 新規10監査対象・公開入口・既存 `Checks.DGFunctorDerivedEquivalence` の12対象を

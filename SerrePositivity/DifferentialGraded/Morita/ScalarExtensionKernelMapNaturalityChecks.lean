@@ -1,0 +1,10 @@
+module
+public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelMapNaturality
+
+/-! # kernel射に関する通常係数変更比較の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded.Morita
+#print axioms scalarKernelLeftValueIso_kernel_naturality
+#print axioms scalarKernelBalancedValueIso_kernel_naturality
+#print axioms scalarKernelBalancedIso_kernel_naturality
+#print axioms scalarKernelBalancedNatIso_kernel_naturality

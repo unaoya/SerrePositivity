@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelHomotopyNaturality
 public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceTriangles
 public import SerrePositivity.DifferentialGraded.Morita.PerfectQuasiEquivalence
 public import SerrePositivity.DifferentialGraded.Morita.PerfectQuasiEquivalenceTriangles
