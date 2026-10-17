@@ -1288,6 +1288,31 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMo
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicSourceQuotient_complete_of_bounded
 assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicPrismHom_of_bounded_source
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput.Hom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput.hom_ext
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput.homId
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput.homComp
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput.category
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput.id_toHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput.comp_toHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput.isInitialOfPrismUniversal
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput.isoRingEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicSourceInputObject
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicSourceInput_isInitial
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicSourceInputIso
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicSourceEnvelopeRingEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicSourceEnvelopeRingEquiv_base_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput.ring
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput.prism
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput.base
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput.input
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput.input_base
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput.bounded
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput.Hom.toHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput.Hom.over_base
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput.Hom.over_input
+
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
@@ -1525,7 +1550,9 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PowerRootMonicCompletedInputExt,
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicOriginalInputSquare,
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicRegularSource,
-    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicSourcePrismUniversal]
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicSourcePrismUniversal,
+    `SerrePositivity.BhattScholze.Andre.BoundedPrismInputCategory,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicEnvelopeInitial]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

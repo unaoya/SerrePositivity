@@ -6176,3 +6176,125 @@ BS Rem 7.15（著者版 p.62）の源と普遍性に対し、原典とは異な�
 （集約 4581 jobs）。新規 13 公開宣言の `assert_no_sorry` と専用監査は終了コード 0。
 生成宣言を含む 7785 宣言の推移的公理依存は標準 3 公理のみ。
 新規 13 公開宣言の正確な型を `#check` で確認した（終了コード 0）。
+
+### E1.75／A1-a 入力作用を持つ有界 prism の圏と条件付き初期性（2026-10-17）
+
+本節は A1-a の追記。E1.74 の基底・完備入力作用を保つ prism 射の一意存在を、
+固定基底 W 上の有界な向き付き入力 prism の圏の IsInitial へ接続した。
+hreg と hBound は引き続き明示仮定であり、原典の絶対 prismatic site との比較も未完了。
+既存 hpR 付き定理と並列担当のファイル・記録節は変更していない。
+
+以下の公開名はすべて名前空間 `SerrePositivity.BhattScholze.Andre` 内。
+
+#### 入力作用を持つ有界 prism の圏（10 公開宣言）
+
+新規 `Andre/BoundedPrismInputCategory.lean`。
+{p : ℕ} [Fact p.Prime]、{A S : Type u} [CommRing A] [CommRing S]、
+W : OrientedPrism p A、c : A ⧸ W.ideal →+* S を固定する。
+
+`BoundedPrismInput W c : Type (u+1)` の正確なフィールドは次の通り。
+
+```lean
+ring : CommRingCat.{u}
+prism : OrientedPrism p ring
+base : OrientedPrism.Hom W prism
+input : S →+* ring ⧸ prism.ideal
+input_base : input.comp c = base.quotientMap
+bounded : ∃ N : ℕ, ∀ n : ℕ, ∀ x : ring ⧸ prism.ideal,
+  (p : ring ⧸ prism.ideal)^n*x=0 → (p : ring ⧸ prism.ideal)^N*x=0
+```
+
+X,Y : BoundedPrismInput W c に対し、`BoundedPrismInput.Hom X Y` は
+`OrientedPrism.Hom X.prism Y.prism` を親構造とし、以下を追加する。
+
+```lean
+over_base : toHom.comp X.base = Y.base
+over_input : toHom.quotientMap.comp X.input = Y.input
+```
+
+親構造の射は orientation の厳密な保存を要求せず、δ 構造とイデアルの保存を要求する。
+その他の公開宣言の正確な型は、同じ W,c の下で以下。
+
+- `BoundedPrismInput.hom_ext`：{f g : BoundedPrismInput.Hom X Y}、
+  h:f.toHom=g.toHom の下で f=g。
+- `BoundedPrismInput.homId (X : BoundedPrismInput W c) : BoundedPrismInput.Hom X X`。
+- `BoundedPrismInput.homComp`：{X Y Z : BoundedPrismInput W c}、
+  f:Hom X Y、g:Hom Y Z を受け取り `Hom X Z` を返す。
+- `BoundedPrismInput.category : Category.{u} (BoundedPrismInput W c)`。
+- `BoundedPrismInput.id_toHom X`：`(𝟙 X : X ⟶ X).toHom=OrientedPrism.Hom.id X.prism`。
+- `BoundedPrismInput.comp_toHom`：f:X⟶Y、g:Y⟶Z の下で
+  `(f ≫ g).toHom=g.toHom.comp f.toHom`。
+- `BoundedPrismInput.isInitialOfPrismUniversal`：X:BoundedPrismInput W c と
+
+```lean
+h : ∀ Y : BoundedPrismInput W c,
+  ∃! f : OrientedPrism.Hom X.prism Y.prism,
+    f.comp X.base=Y.base ∧ f.quotientMap.comp X.input=Y.input
+```
+
+を受け取り `IsInitial X` を返す。
+- `BoundedPrismInput.isoRingEquiv`：{X Y : BoundedPrismInput W c} と e:X≅Y を受け取り
+  `X.ring ≃+* Y.ring` を返す。
+
+恒等射・合成の可換性は既存の prism 射・標準商射の合成公式で示す。
+入力作用を持つ射の外延性で圏の法則と初期性を構成する。
+この圏の定義自体は、任意の入力環に初期対象が存在するという仮定・引用ではない。
+環同型は圏の同型の往復射から取り出すため、基底・入力・δ 構造の保存も元の射に保持される。
+
+#### 元の H の対象・初期性・比較同型（5 公開宣言、条件付き）
+
+新規 `Andre/PowerRootPrismMonicEnvelopeInitial.lean`。
+共通の入力は {A:Type u} [CommRing A]、{p:ℕ} [Fact p.Prime]、
+W:OrientedPrism p A、hW:W.deltaStructure.IsPerfect、f:Polynomial A、hf:f.Monic。
+P、E、dP、a、L、jL、H、uL、DH、R、fR、PR、SI、lS、baseH、T は E1.74 と同じ。
+cS=lS.comp (algebraMap R PR) : R→+*SI とする。
+H を使う型の先頭には `let := pdCompletionCommRing L p (jL dP)` が付く。
+以下の二つの仮定の型は共通。
+
+```lean
+hreg : IsSMulRegular H (uL (jL dP))
+hBound : ∃ N : ℕ, ∀ n : ℕ, ∀ x : T,
+  (p : T)^n*x=0 → (p : T)^N*x=0
+```
+
+公開宣言の正確な型・結論は次の通り。
+
+```lean
+-- powerRootPrismMonicSourceInputObject W hW f hf hreg hBound
+BoundedPrismInput W cS
+-- powerRootPrismMonicSourceInput_isInitial W hW f hf hreg hBound
+IsInitial (powerRootPrismMonicSourceInputObject W hW f hf hreg hBound)
+```
+
+元の H を台環として、同じ標準分母像の prism、同じ基底射、同じ完備入力射を束ねる。
+入力の基底保存性は E1.73 の係数公式を再利用し、対象の有界性は hBound をそのまま供給する。
+任意の比較対象 Y について、その Q=Y.prism、k=Y.base、hB=Y.bounded、η=Y.input、
+hη=Y.input_base を E1.74 の prism 射の一意存在に渡す。
+
+任意の Z : BoundedPrismInput W cS、hZ : IsInitial Z に対して、さらに
+
+```lean
+-- powerRootPrismMonicSourceInputIso W hW f hf hreg hBound Z hZ
+powerRootPrismMonicSourceInputObject W hW f hf hreg hBound ≅ Z
+-- powerRootPrismMonicSourceEnvelopeRingEquiv W hW f hf hreg hBound Z hZ
+H ≃+* Z.ring
+-- powerRootPrismMonicSourceEnvelopeRingEquiv_base_coeff W hW f hf (a₀ : A)
+--   hreg hBound Z hZ
+powerRootPrismMonicSourceEnvelopeRingEquiv W hW f hf hreg hBound Z hZ
+  (powerRootPrismMonicCompletionBaseMap W hW f a₀) = Z.base.toRingHom a₀
+```
+
+を公開した。IsInitial は初期射を持つデータであり、存在を仮定する新しい axiom ではない。
+比較同型は二つの初期対象の一意な同型から得る。元の H の環同型と全係数像の保存も明示した。
+
+BS Rem 7.15（著者版 p.62）の envelope 比較への接続として、原典とは異なる
+入力作用を持つ有界な向き付き prism の明示的な圏、元の実完備化、初期対象の同型を使う経路を
+各 docstring に記録した。これは固定基底 W・向き付き対象の圏での条件付き初期性である。
+原典の絶対 prismatic site 全体との比較を暗黙に済ませたとは主張しない。
+未完了は hreg・hBound の無条件の供給、その圏との比較、A1-c の最終係数照合との合流。
+これらが残るため、絶対 prismatic envelope 全体の同定完了とは数えない。
+
+検証：新規 2 ファイルの対象ビルドと集約ビルドは終了コード 0
+（集約 4583 jobs）。新規 15 公開宣言と主要射影 9 件の `assert_no_sorry`、専用監査は終了コード 0。
+生成宣言を含む 7934 宣言の推移的公理依存は標準 3 公理のみ。
+同じ 24 件の正確な型を `#check` で確認した（終了コード 0）。
