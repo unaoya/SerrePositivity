@@ -590,6 +590,16 @@
 - 左関手の構造は明示したEの射影性を使う定義として保持し、推論不能な大域instanceは追加していない。
   既存の導来tensor・随伴・単位・余単位の名前や型は変更していない。
 
+## U14a/b.32：実際の導来tensorのPerf保存と制限（2026-10-17）
+
+- `PerfectTensor.lean`：実際の主導来tensorの逆像としてperfect対象クラスを取り、
+  三角性・retract閉性と正則End加群の像がEである計算から、全perfect End加群のPerf_S保存を証明。
+- この保存性はEのperfect性から従い、thick生成仮定は不要である。
+- `perfectEndomorphismTensorToPerfect` は実際の導来tensorの制限として定義。
+  その整合的shift・三角性、主導来圏への包含自然同型とそのshift整合性を保持した。
+- `ChecksPerfectTensor` の対象ビルド成功。新規6主要宣言の公理は標準3公理のみ。
+- 既存の主Perf同値の順関手や実際の導来tensorの名前・型は変更していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。

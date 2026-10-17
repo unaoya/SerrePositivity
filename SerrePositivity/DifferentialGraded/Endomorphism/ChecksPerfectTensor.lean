@@ -1,0 +1,13 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.PerfectTensor
+
+/-! # 実際の導来tensorのPerf保存・制限・包含図式の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+
+#print axioms perfectEndomorphismTensor_obj_perfect
+#print axioms perfectEndomorphismTensorToPerfect
+#print axioms perfectEndomorphismTensorCommShift
+#print axioms perfectEndomorphismTensorIsTriangulated
+#print axioms perfectEndomorphismTensorInclusionIso
+#print axioms perfectEndomorphismTensorInclusionIso_commShift
