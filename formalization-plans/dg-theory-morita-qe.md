@@ -12,7 +12,7 @@
 | U16b：実際の随伴shift・三角性・Perf・U13/U14比較 | U16b.1–10で実装・合同ビルド・公理監査済み。主導来graph比較を含め担当範囲を受入済み |
 | 積dg圏上の擬同値 | 既存 `derivedBimoduleRestrictionEquivalence` の `localHomKFlat A C`・`localHomKFlat A D` を保持する。無条件化しない |
 | U16aグラフ作用との計算比較 | U16b.10でkernel変数の主局所化上の実際の作用との自然同型、随伴・単位・余単位・shift・三角性・Perfを検証済み |
-| U16d：Perf・係数変更・合成自然性 | U16d.1–14で主導来kernelの全射に自然なPerf作用と実際の恒等・合成比較を構成。合成のkernel射自然性だけを入力とする制限、およびU12fの評価ごとの係数変更と全左因子射の自然性を検証済み。全体の残項目は末尾参照 |
+| U16d：Perf・係数変更・合成自然性 | U16d.1–17で主導来kernelの全射に自然なPerf作用と実際の恒等・合成比較を構成。合成のkernel射自然性だけを入力とする制限、および許容する通常kernelの全閉零射に自然なU12f作用評価比較を検証済み。全体の残項目は末尾参照 |
 | 中心作用 | 保留。今回の実装対象にしない |
 
 新規Leanファイルは `Morita/QuasiEquivalence*`・`Perfect*`・`ScalarExtension*` のみ。
@@ -329,6 +329,22 @@
 - U16d.15のコミット `0b816652` の直後のHEADは別担当の `97b86690` に進んでいた。
   自分のコミットIDのstatも照合し、担当4ファイルだけの収録と確認した。履歴変更は行っていない。
 
+## U16d.17：kernel射に自然な実際の作用評価の係数変更
+
+- `Morita/ScalarExtensionKernelBaseChangeNaturality.lean`：固定した入力Mと任意の指定右射影解像度R、
+  出力評価eについて、hPN・hP'を満たす通常kernelの充満部分圏 `scalarKernelBaseChangeModels` を定義した。
+  hPN・hP'を別のflat性・局所Hom条件で置き換えず保持する。
+- 実際の通常kernelの主導来作用の評価を係数変更する関手と、
+  実際に係数変更したkernelを導来係数変更後の入力に作用させて評価する関手を定義した。
+  U16d.15のkernel評価自然性、U16d.16の左評価自然性、U16d.13のU12f自然同型を合成し、
+  この充満部分圏上の自然同型 `scalarKernelBaseChangeIso` を構成した。
+- 成分の計算式 `scalarKernelBaseChangeIso_hom_app` では、元のU12fの比較射をそのまま使用する。
+  従ってkernelの任意の閉零射に自然な比較であり、kernelごとに独立に同型を選んだものではない。
+- `Morita.ScalarExtensionKernelBaseChangeNaturalityChecks` ビルド成功（3241 jobs、警告なし）。
+  主要6宣言の公理監査は標準3公理のみ。
+- 始域は出力評価の複体の導来係数変更である。出力dg加群の導来係数変更との交換、
+  kernel変数の主局所化への係数変更の降下、合成比較との図式は未完であり、ここでは主張しない。
+
 ## 合同検証と公開入口（2026-10-17）
 
 - 新規10監査対象・公開入口・既存 `Checks.DGFunctorDerivedEquivalence` の12対象を
@@ -370,6 +386,14 @@
 - 新しいsorry・axiom・引用はない。相手の公開記録を再確認し、合成比較は引き続き未公開と確認した。
   全体の未完項目を以下のまま保持する。
 
+## 追加合同検証（2026-10-17、U16d.14–17）
+
+- 新旧27監査対象・公開入口・既存dg擬同値監査の29対象の合同ビルドに成功した
+  （3606 jobs、終了コード0、警告・エラー0件）。206宣言の公理監査はすべて標準3公理のみ。
+- 担当55 Leanファイルを走査し、新しいsorry・admit・axiomは0件。引用も追加していない。
+  実際の主導来合成比較のPerf制限、kernel作用評価の二変数自然性、通常kernelの係数変更関手、
+  許容kernelの全閉零射に自然なU12f作用評価比較を同時importで確認した。
+
 ## 公開入口と残る接続
 
 公開入口は `SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence`。
@@ -385,7 +409,8 @@ U16bの担当範囲は受入済み。U16d全体は未受入で、次の接続を
    合成に必要な始域dg圏のlocalHomKFlat条件は保持する。
 2. 通常kernelの係数変更を全Hom作用込みで定義し、U12fの終域tensorを
    係数変更した実際のkernel作用の評価へ同定した（U16d.9–10）。
-   係数変更したkernel全体の作用へ束ね上げる比較と、kernel変数の射に対する自然性・合成比較を残す。
+   通常kernelの全閉零射に自然な、実際の導来作用の評価の係数変更比較はU16d.15–17で完成した。
+   係数変更したkernel全体の作用へ束ね上げる比較、kernel変数の主局所化への降下と合成図式を残す。
    選択した右射影解像度とkernelの左評価ごとのhPN・hP'は明示したままにする。
    U12f比較自体の全左因子射の自然性と許容モデル上の自然同型はU16d.13で完成した。
    U16d.4のPerf係数変更正方形・合成比較アダプタをその実際の比較へ適用する。
@@ -393,7 +418,7 @@ U16bの担当範囲は受入済み。U16d全体は未受入で、次の接続を
    これを出力dg加群の導来係数変更の評価と同一視する定理・仮定は別途必要であり、無条件には主張しない。
 3. 中心作用は保留。今回の残項目の完了条件には入れない。
 
-直近のU16a担当記録ではCoherenceCompositionまで実装・検証済み。
+直近のU16a担当記録ではCoherenceCompositionと通常kernelの増大・合成自然性まで実装・検証済み。
 主局所化上のkernel作用・恒等比較・合成比較を再利用した。
 一般右随伴、kernel射の合成自然性、代表選択および恒等・結合coherenceは未完である。
 その未実装宣言をimport可能な定理として扱わず、不足する射・同型をsorry・axiomで置かない。
