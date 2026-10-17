@@ -913,6 +913,7 @@ public import SerrePositivity.CLMST.KLOriginalTorFromExcision
 public import SerrePositivity.CLMST.KLCohomologyFromExcision
 public import SerrePositivity.CommutativeAlgebra.DerivedSingleTrianglePullback
 public import SerrePositivity.CLMST.KLCanonicalSingleTriangleBridge
+public import SerrePositivity.BhattScholze.Andre.MonicRootedExtension
 public import SerrePositivity.CLMST.KLAllModule
 
 /-!
