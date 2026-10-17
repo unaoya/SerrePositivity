@@ -717,3 +717,25 @@ HEAD からの差分全体が自分の変更だけであることも確認する
 - 残部：商側 tria に値域を制限した同値、既存のホモトピー有限 cell モデルによる
   `quotientVerdierComparison` との自然同型、および U17b。
   U15e24 のコミットは `2ef7745f`（自分の5ファイルのみと直後に確認）。
+
+
+### U15e26：局所 K-flat 版の指定 Verdier 商と明示的 dg 商の tria の実際の同値
+
+- `Quotient/DerivedComparisonEquivalence.lean`：導来延長の因子化の値が商側の有限 cell
+  本質像に属することを、指定局所化の本質的全射性と因子化同型から証明した。
+  値域を `TriaCategory A (QuotientObject D S)` に制限した `localQuotientTriaFunctor` は
+  実際の導来延長から構成され、整数 shift と三角構造を保つ。
+- `localQuotientTriaFullyFaithful` は前段の全対象での充満忠実性を充満部分圏へ制限する。
+  代表対象の像を正規化済みの代表同型で計算し、充満な三角関手の本質像の三角閉性と
+  商側の代表生成性から本質的全射性を証明した。
+- `localQuotientTriaEquivalence`：局所 K-flat 仮定を明示的に受け取り、
+  指定した `TriaQuotient A D S` と明示的 dg 商の `TriaCategory` の実際の同値を構成した。
+  原典の比較定理の引用や dg 圏の解像度による代替は使っていない。
+- M9 用の `localQuotientTriaEquivalence_of_flat_zero` も公開。
+  商を取る前の全 Hom が次数零に集中し、次数零加群が平坦であることから K-flat 性を供給する。
+  非零次数の平坦性を別途要求せず、商側 Hom の非正次数性から K-flat 性を推論していない。
+- 対象ビルド `Checks.QuotientLocalEquivalence` 成功（2768 jobs）、警告なし。
+  主要7宣言の公理監査は標準3公理のみ。禁止された dg 圏分解系への依存なし。
+  新規 sorry・axiom・引用なし。他担当・ルートの既存ファイルは編集していない。
+- 残部：既存のホモトピー有限 cell モデルの `quotientVerdierComparison` との自然同型と、
+  U17b の perfect enhancement・Karoubi 比較。U15e25 のコミットは `dc80a204`。
