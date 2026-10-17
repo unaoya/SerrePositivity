@@ -440,6 +440,32 @@
   この単位は通常kernel間の全閉零射についての結果である。
   kernel変数の主局所化への係数変更の降下、U12fの成分同定とkernel合成図式は引き続き残る。
 
+## U16d.25：主導来kernel変数の非flatな係数変更関手
+
+- `Morita/ScalarExtensionKernelProduct.lean`：積dg圏の右加群表示の値比較を用い、
+  標準cylinderの射影がkernelの係数変更後も擬同型になることを証明した。
+  その射影だけを反転して全dg自然な境界を同一視し、積上のH⁰から主導来kernelへの関手を構成した。
+  underived係数変更による任意擬同型の保存は使っていない。
+- `Morita/ScalarExtensionKernelLocalization.lean`：既存の積表示の主導来同値と
+  射影解像度関手を合成し、全主導来kernel射に作用する `scalarKernelDerivedExtension` を構成した。
+  任意の証明付き積上射影解像度での計算、全閉零kernel射に自然な計算同型、
+  解像度族変更の自然同型と自己・推移則も公開した。局所Hom K-flat性も環準同型のflat性も不要。
+- 二つの監査入口と公開入口の合同ビルド成功（3442 jobs、終了コード0、警告・エラーなし）。
+  主要14宣言の公理は標準3公理のみ。新規sorry・admit・axiom・引用はない。
+  主導来kernel係数変更関手そのものの構成と、U16d.21–24のモデル条件付き正方形を
+  この関手へ移すことは分けている。後者とU12f成分同定・合成図式は引き続き未完。
+
+## U16c担当追加（2026-10-17）
+
+- U16d受入後の担当として、一般kernelのMorita判定を主導来圏全体へ広げる。
+  右随伴・unit/counitは扱わず、compact生成を明示する。
+- Perf判定と作用の三角性は他担当の `Morita/CriterionPerf*` を使用する。
+  公開前はその結論を明示した仮定として受け取れる。新規実装は `Morita/CriterionDerived*` に置く。
+  他担当のKernel*・Adjunction*・Coherence*・CriterionPerf*は編集しない。
+- U14cの `moduleLocalizing_all` は既に多対象dg圏を扱い、perfect対象を含む余積閉三角部分圏の
+  全対象への拡張を提供する。これを再利用し、作用の余積保存・局所化帰納・本質的全射へ接続する。
+  無限個の生成元の直和のcompact性や、thick生成だけから全導来圏同値を結論する仮定は追加しない。
+
 ## 合同検証と公開入口（2026-10-17）
 
 - 新規10監査対象・公開入口・既存 `Checks.DGFunctorDerivedEquivalence` の12対象を
@@ -539,7 +565,8 @@ U16bの担当範囲は受入済み。U16d全体は未受入で、次の接続を
    dg加群全体のunderived比較と入力自然性・H⁰降下はU16d.18・20で完成した。
    モデル条件付きの全導来入力射自然なdg加群値の比較と実際のPerf正方形はU16d.21–22で完成した。
    kernel射に関するこの導来・Perf正方形の自然性はU16d.23–24で完成した。
-   kernel変数の主局所化への係数変更の降下、
+   kernel変数の主局所化への係数変更関手はU16d.25で構成した。
+   この関手へのモデル条件付き正方形の接続、
    既存U12f評価比較との成分同定およびkernel合成との係数変更図式を残す。
    選択した右射影解像度とkernelの左評価ごとのhPN・hP'は明示したままにする。
    U12f比較自体の全左因子射の自然性と許容モデル上の自然同型はU16d.13で完成した。

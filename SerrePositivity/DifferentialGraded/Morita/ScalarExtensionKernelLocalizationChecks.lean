@@ -1,0 +1,14 @@
+module
+public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelLocalization
+
+/-! # 主導来kernel係数変更の構成と解像度計算の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded.Morita
+#print axioms scalarKernelResolutionExtension
+#print axioms scalarKernelDerivedExtension
+#print axioms scalarKernelResolutionExtensionFacIso
+#print axioms scalarKernelResolutionExtensionComputation
+#print axioms scalarKernelResolutionExtensionIso
+#print axioms scalarKernelResolutionExtensionIso_self
+#print axioms scalarKernelResolutionExtensionIso_trans
+#print axioms scalarKernelDerivedExtensionResolutionComputation
