@@ -569,6 +569,17 @@
   Dが加群enhancementの場合、これを `DGBaseChange φ` 後の元の基礎dg圏の
   加群enhancementと無条件に同一視するものではない。この後者への接続は別途必要。
 
+## U14a/b.30：実際の係数変更先Homによる評価正方形（2026-10-17）
+
+- `ScalarEvaluationActual.lean`：係数変更のtensor比較・braiding整合性を用い、
+  Koszul符号付き合成評価成分の係数変更が、実際の係数変更先dg圏の合成評価成分と一致することを証明。
+- U14a/b.29の左右Hom因子のtensor同型が合成評価を保つことを証明し、
+  導来比較射の正方形を実際の `DGBaseChange φ D` のHom因子・評価へ接続した。
+- `ChecksScalarEvaluationActual` と更新した `ChecksCompatibility` の対象ビルド成功。
+  新規3主要宣言の公理は標準3公理のみ。U14a/b.29–30のAPIを公開した。
+- 指定dg圏そのものの係数変更と、基礎dg圏を係数変更した後の加群enhancementとの比較は
+  区別を維持している。主Perfの導来係数変更図式の最終照合は残る。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
