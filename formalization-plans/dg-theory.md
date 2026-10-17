@@ -8170,3 +8170,52 @@ Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの統合ビルド
 local Hom条件のないdg圏自体の解像度経路、U12e全受入は残る。
 分担は§0のまま、U12e受入後にU16へ進み、U15e/U17は指定の合流条件を待つ。
 共有一般論への新しいAPI要求はなく、既存公開APIの名前・型の変更もない。
+
+
+### 17.179 U12e20：K-flat三因子上の全導来五角恒等式（2026-10-17）
+
+`Derived/BimoduleCompositionPentagonInner.lean`は三つの右K-flat因子Q:C–E、R:E–F、S:F–Gについて、
+左括りと右括りの全導来合成の値を通常合成の導来像へ結ぶ
+**derivedBimoduleTripleLeftValueIso/RightValueIso**を構成する。
+**derivedBimoduleTripleValueIso_associator**は、内側の全導来結合射を両比較で送ると
+元のassociatorIsoの導来像に戻ることを証明する。これは§17.178で必要とした内側の比較square。
+
+`Derived/BimoduleCompositionPentagonComparison.lean`は三作用関手の共通始域比較
+**derivedBimoduleTripleSourceIso**と、両括り方の作用関手の終域比較
+**derivedBimoduleTripleLeftFunctorIso/RightFunctorIso**を構成する。
+**derivedBimoduleTripleFunctorIso_associator**は内側のsquareを全導来作用関手へ送り、
+通常結合射に関するK-flat計算同型の自然性を合成して、五角の最後の辺の比較を与える。
+
+`Derived/BimoduleCompositionPentagonShort.lean`は、全導来五角の短経路の比較を証明する。
+後二因子の結合比較と、導来合成された後因子R⊗ᴸSを扱う§17.178の一般比較を組み合わせる。
+途中で、QのK-flat計算同型の射に関するR⊗Sの計算自然性と既存結合同型の自然性を使う。
+**derivedBimodulePentagonShort_kFlat_fac**は共通の始域・終域比較を使った短経路の計算式。
+
+`Derived/BimoduleCompositionPentagonKFlat.lean`の**derivedBimoduleTripleSourceAltIso_eq**は、
+前二因子から先に計算する始域比較が、短経路で使った後二因子からの始域比較に一致することを証明する。
+**derivedBimodulePentagonLong_kFlat_fac**は前二因子の結合比較、一般の導来代表による比較、
+内側のsquareを合成して、長経路を同じ両端比較で既存K-flat五角の長経路へ送る。
+**derivedBimodulePentagon_kFlat**は短・長の比較と既存derivedPentagonを使い、
+可逆な終域比較をキャンセルして**全導来結合同型で作った**五角の二経路の一致を証明する。
+前因子は任意の導来対象。後三因子は右K-flat対象の全導来像であり、
+任意の全導来後因子への拡張は今回の定理には含めていない。
+任意可換環・非有界・六つの独立対象宇宙・Small.{u} B/C/E/F/G、localHomKFlat A E/F/Gを保持する。
+
+Checks.DerivedBimodulePentagonKFlat・Checks.DerivedBimodulePentagonPaths・
+Checks.DerivedBimoduleTriangle・Checks.DerivedBimoduleAssociatorIndependence・
+Checks.DerivedBimodulePentagon・Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（3088 jobs、終了コード0、警告なし）。全導来結合同型を使う五角の二経路の一致、
+任意導来前因子への評価、独立対象宇宙とZMod 2を検査した。
+主要14宣言の直接公理監査は標準公理のみ。監査累計3368宣言。
+今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は15 Markdown・320 exposition参照まで進み、担当外BhattScholze互換宣言の
+未解決参照1件で失敗した。共有ルート・共有一般論・並行所有ファイルは編集していない。
+
+次は五角の二経路を後三因子についても自然な族に束ねるか、各変数の導来同型に関する
+可換squareを証明して、全後因子への置換に対する不変性を得る。
+各因子のK-flat局所化比較同値と今回のK-flat三因子の五角から、
+derivedBimodulePentagonShort=derivedBimodulePentagonLongを任意の全導来後因子で証明する。
+それまでは全因子の五角coherenceを受け入れない。
+local Hom条件のないdg圏自体の解像度経路とU12e全受入も残る。
+U12e受入後はU16へ進み、U15e/U17はU12f・U14・U16がそろってから扱う。
+公開APIの名前・型の変更、共有一般論への新しいAPI要求はない。
