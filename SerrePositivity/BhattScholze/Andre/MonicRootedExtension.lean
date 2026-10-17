@@ -49,6 +49,8 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootPrismFrobeniusResidue
 public import SerrePositivity.BhattScholze.Andre.PowerRootDivisionFrobeniusFactors
 public import SerrePositivity.BhattScholze.Andre.DeltaDivisionFrobeniusCompletedResidue
 public import SerrePositivity.BhattScholze.Andre.DeltaDivisionFrobeniusCompletionToRaw
+public import SerrePositivity.BhattScholze.Andre.DeltaDivisionWittEvaluation
+public import SerrePositivity.BhattScholze.Andre.DistinguishedWittDenominator
 
 /-!
 # André E1・E2 の集約

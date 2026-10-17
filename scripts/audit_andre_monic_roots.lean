@@ -817,6 +817,27 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFrobeniusComplet
 assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFrobeniusCompletionToRawEquiv
 assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFrobeniusCompletionToRawEquiv_coeff
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionWittEval
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionWittEval_C
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionWittEval_coefficient
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionWittEval_witt_X
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionWittEval_witt_C
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionWittEval_kills_witt_relation
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionWittEval_kills_iterated_relation
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionWittMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionWittMap_comp_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionWittMap_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionRawWittPoint
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionWittMap_point
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionRingHom_ext_of_wittPoint
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionRawWittPoint_relation
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_deltaDivisionWittMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.distinguishedWittDenominator_coeff_zero_isUnit
+assert_no_sorry SerrePositivity.BhattScholze.Andre.distinguishedWittDenominatorUnit
+assert_no_sorry SerrePositivity.BhattScholze.Andre.distinguishedWittDenominatorUnit_val
+assert_no_sorry SerrePositivity.BhattScholze.Andre.distinguishedWittDenominatorUnit_mul
+assert_no_sorry SerrePositivity.BhattScholze.Andre.distinguishedWittDivisionSolutionEquiv
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -954,7 +975,9 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.DeltaDivisionFrobeniusCompletedResidue,
     `SerrePositivity.BhattScholze.Andre.PDCompletionKilledCoordinates,
     `SerrePositivity.BhattScholze.Andre.PDCompletionPairResidue,
-    `SerrePositivity.BhattScholze.Andre.DeltaDivisionFrobeniusCompletionToRaw]
+    `SerrePositivity.BhattScholze.Andre.DeltaDivisionFrobeniusCompletionToRaw,
+    `SerrePositivity.BhattScholze.Andre.DeltaDivisionWittEvaluation,
+    `SerrePositivity.BhattScholze.Andre.DistinguishedWittDenominator]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

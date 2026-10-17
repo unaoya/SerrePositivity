@@ -2868,3 +2868,65 @@ T=overline(Δ)_S との同定は引き続き未完了。
 標準延長、一般剰余同型とその単位公式、二元剰余同型、
 Frobenius 完備化から raw への同型と係数公式の公開型 6 本を
 `#print` で確認した（終了コード 0）。
+
+
+### E1.47：Witt 解による raw 包の通常普遍性と分母の単元正規化（検証済み）
+
+新規 `Andre/DeltaDivisionWittEvaluation.lean` は、源 A の p 正則性、
+自由 δ 環 L₀=`RelativeFreeDeltaRing σ` の ghost 射の単射性を明示して、
+任意の通常係数射 q:A→B と全 Witt 点 w_s から通常環射を構成する。
+W_D(r)=`deltaWittGhostVector D r` と略記すると、公開する主な型は次である。
+
+```lean
+def deltaDivisionWittMap
+    (D : DeltaStructure p A) (hpA : Function.Injective (fun x : A => (p : A) * x))
+    (q : A →+* B) (w : σ → WittVector p B) (d : A) (a : σ → A)
+    (hgL : Function.Injective (WittVector.ghostMap : WittVector p L₀ → ℕ → L₀))
+    (hw : ∀ s, WittVector.map q (W_D d) * w s = WittVector.map q (W_D (a s))) :
+    DeltaAdjoinDivision D d a →+* B
+```
+
+逆 Witt 座標へ w_s の全係数を代入することで、初期除算関係の全 Witt 元を殺す。
+既存の jet 消滅比較で全 δ 反復関係を殺し、通常商へ降ろす。
+終域 B には δ 構造・p 正則性・完備性・標数の仮定を置かない。
+`deltaDivisionRawWittPoint` は自由変数の全 Witt 元の raw 商像を定義する。
+同 `_relation` はこの点が元の全 Witt 方程式を満たすと述べる。
+`deltaDivisionRingHom_ext_of_wittPoint` は、通常環射二つが係数と全 raw Witt 点で
+一致すれば等しいことを、可逆な Witt 座標変換から示す。
+`existsUnique_deltaDivisionWittMap` は指定した係数射と全 Witt 点を保つ
+通常環射の一意存在を述べる。評価公式を含め 15 公開宣言を追加した。
+
+新規 `Andre/DistinguishedWittDenominator.lean` は distinguished d の分母を正規化する。
+q:A→B、B は標数 p、q(d)=0 とし、A の p 正則性と A の ghost 射の単射性を明示する。
+既存の具体的な係数ずらし v=`deltaPDivisionWittResidueSolution D q d` は
+p v=`WittVector.map q (W_D (φ(d)))` を満たす。
+v の定数係数は q(δd) であり、distinguished 性から単元である。
+Mathlib の `WittVector.mkUnit` による再帰的逆元を使い、
+値を v のまま保持する `distinguishedWittDenominatorUnit` を構成した。
+
+```lean
+def distinguishedWittDivisionSolutionEquiv
+    (D : DeltaStructure p A) (hpA : Function.Injective (fun x : A => (p : A) * x))
+    (q : A →+* B) (d : A) (hd : D.IsDistinguished d)
+    (hgA : Function.Injective (WittVector.ghostMap : WittVector p A → ℕ → A))
+    (hqd : q d = 0) (z : WittVector p B) :
+    {w : WittVector p B // WittVector.map q (W_D (φ(d))) * w = z} ≃
+      {w : WittVector p B // (p : WittVector p B) * w = z}
+```
+
+順方向を v 倍、逆方向を v⁻¹ 倍とし、両逆合成を証明した。
+単元の定数係数・値・分母公式を含め 5 公開宣言を追加した。
+BS Rem 7.15（著者版 p.62）の pd 包比較のための、原典とは異なる
+具体的 Witt 座標による補助段階である。
+
+次の工程は、これらの実通常環射を (p,d) 商へ降ろし、
+A{φ(a)/φ(d)}/(p,d) と A{φ(a)/p}/(p,d) を比較すること。
+今回その商環同型自体はまだ宣言・証明していない。
+具体的 pd 包との同定、原典の T=overline(Δ)_S との同定も引き続き未完了。
+公開存在定理に追加仮定・引用は増やしていない。
+
+両対象および集約の `set -o pipefail; lake build` は終了コード 0
+（集約 4458 jobs）。新規 20 公開宣言の `assert_no_sorry` と専用監査は
+終了コード 0。生成宣言を含む 4046 宣言の推移的公理依存は標準 3 公理のみ。
+通常環射・Witt 点公式・外延性・raw 方程式・一意存在・単元の分母公式・
+解の同値の公開型 7 本を `#check` で確認した（終了コード 0）。
