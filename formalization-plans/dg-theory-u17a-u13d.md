@@ -440,3 +440,28 @@ HEAD からの差分全体が自分の変更だけであることも確認する
   project import 依存126・166ファイルに禁止された dg 圏分解系への依存なし。
   新規 sorry・axiom・引用なし。ルートおよび他担当の既存ファイルは編集していない。
 - U15e12 のコミット：`3a215fcf`（自分の5ファイルのみと直後に確認）。
+
+### U15e14：加群 filtration の cokernel と導来三角形
+
+- `Quotient/DerivedComparisonLayerModule.lean`：固定長への層射影が全次数の先頭作用と
+  可換であることを、内部射影の可換式から証明。評価同型を経由して、
+  `lengthLayerModuleProjection` を実際の全次数自然な右 dg 加群射として構成した。
+  相隣る長さ部分加群の包含との合成は零。
+- 評価後の cokernel cocone を既存の複体の cokernel と三成分の同型で比較し、
+  評価による余極限反映を適用した。`lengthLayerModule_isColimit` は加群圏での真の普遍性。
+  `lengthModuleGradedIso` と cokernel 射影との整合式、および前段の自由加群表示を合成した
+  `lengthModuleGradedFreeIso` を公開。従って随伴次数部分の自由加群表示は、値ごとの同型だけでなく
+  加群圏内の実際の cokernel からの同型になった。
+- `Quotient/DerivedComparisonLayerTriangle.lean`：評価後の列の短完全性を証明。
+  包含の実際の加群 cone から層への延長 `lengthLayerConeDesc` を作り、
+  複体の短完全列に対する cone 比較から objectwise 擬同型であることを示した。
+  これを導来圏で反転し、相隣る長さ部分加群と固定長 path 加群を結ぶ
+  `lengthLayerDerivedTriangle` が distinguished であることを証明した。
+- 以上に K-flat 仮定は不要。残部は、片側 K-flat 仮定の下で自由加群表示の導来像が
+  S の代表加群から生成されること、長さの余極限へその主張を移すこと、
+  そこから `quotientVerdierComparison` の完全忠実性を導くこと。U17b 全体も未完。
+- 対象ビルド：`Checks.QuotientLayerModule`（2372 jobs）、
+  `Checks.QuotientLayerTriangle`（2456 jobs）成功。主要17宣言の公理監査は標準3公理のみ。
+  project import 依存210・275ファイルに禁止された dg 圏分解系への依存なし。
+  新規 sorry・axiom・引用なし。ルートおよび他担当の既存ファイルは編集していない。
+- U15e13 のコミット：`8be670fe`（自分の5ファイルのみと直後に確認）。
