@@ -219,6 +219,16 @@
 - `Morita.PerfectKernelCompositionChecks` ビルド成功（2742 jobs、警告なし）。
   主要5宣言の公理監査は標準3公理のみ。
 
+## U16d.9：実際の通常kernelの係数変更と全Hom付き評価
+
+- `Morita/ScalarExtensionKernel.lean`：kernelのdg関手を係数変更し、ambient加群圏から
+  実際の係数変更加群圏への既存dg関手と合成して `scalarKernel` を構成した。
+- 右評価・値の係数変更との一致に加え、左評価が元の左加群の係数変更と一致することを
+  **全Hom作用を含むdg関手の等式**として証明した。単なる成分の同型ではない。
+- これは通常kernelの係数変更であり、任意のkernel準同型をunderived係数変更が保つとはしない。
+- `Morita.ScalarExtensionKernelChecks` ビルド成功（2628 jobs、警告なし）。
+  主要4宣言の公理監査は標準3公理のみ。
+
 ## 合同検証と公開入口（2026-10-17）
 
 - 新規10監査対象・公開入口・既存 `Checks.DGFunctorDerivedEquivalence` の12対象を
