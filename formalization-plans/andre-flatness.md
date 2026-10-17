@@ -7998,3 +7998,80 @@ R1 の残りは A1-c が使う旧 native 分冪構造・係数還元構造の整
 専用監査は終了コード0、`André monic root audit passed: 8653 declarations, standard axioms only.`。
 置換先2名の assert_no_sorry と、新規に import した2モジュールの全生成宣言も監査した。
 新しい sorry・axiom・引用を追加していない。
+
+## A1-c2
+
+2026-10-17。担当範囲は `Andre/VarpiComparison/` の hpR 除去と本節。
+BS Rem 7.15（著者版 p.62）を出典とし、旧名は A1-e のため保持した。
+既存の VarpiComparison ファイル、Unconditional 側、集約 import は編集していない。
+
+Unconditional の `PowerRootHodgeTateReduction`・`PrimeReductionPurity`・
+`MonicPDEnvelope`・`VarpiPDReduction` から import 閉包を先に検査した。
+外部モジュールの葉を含む 1000 モジュールに循環はなく、VarpiComparison への逆参照もない。
+A1-a の既存の共有係数定義・作用をそのまま利用し、移動は不要だった。
+
+公開名は全て `SerrePositivity.BhattScholze.Andre.VarpiComparison` 名前空間。
+`W : OrientedPrism p A`、`hW : W.deltaStructure.IsPerfect`、`f : Polynomial A`、
+`[CommRing A] [Fact p.Prime]` を共通引数とする。以下では
+`R=A/W.ideal`、`v=perfectPrismVarpi W hW`、`Rv=R/(v)`、`R₀=A/(p)`、
+`D=PowerRootCoefficientPDEnvelope p f`、`Nv=PowerRootPolynomial Rv p hp`、
+`zv` は f の自然な Rv 係数像の無限根入力、`Dv=PrincipalDPPresentation Nv zv`、
+`e=perfectPrismPDTensorVarpiEquiv W hW f` と略記する。
+
+`UnconditionalPD.lean` の三宣言：
+
+- `perfectPrismPDTensorVarpiDividedPowers_of_unconditional W hW f hf`：
+  `DividedPowers ((principalDPPositiveIdeal zv).map e.symm.toRingHom)`。
+- `perfectPrismPDTensorVarpiDividedPowers_generator_of_unconditional W hW f hf i`：
+  上の構造の `dpow i (1 ⊗ algebraMap _ D (powerRootCoefficientPDInput p f))` が
+  `1 ⊗ principalDPGenerator (powerRootCoefficientPDInput p f) i` に等しい。
+- `perfectPrismPDTensorVarpi_isDPMorphism_of_unconditional W hW f hf`：
+  元の `powerRootCoefficientDividedPowers p W hW f hf` から上の構造への
+  `Algebra.TensorProduct.includeRight.toRingHom` は `IsDPMorphism`。
+
+いずれも `hf : f.Monic` だけを追加し、hpR も正次数も要求しない。
+通常テンソルの係数作用は既存の `varpiCoefficientAlgebra W hW` に一致する。
+分冪射は生成元だけでなく全ての元で標準射と照合した。
+
+`UnconditionalCandidate.lean` の二宣言。T は元の Hodge–Tate 候補、
+`Tv=T/(v)`、`f'=perfectPrismInverseFrobeniusPolynomial W hW f`、
+`zv'` は f' の Rv 係数像の入力、`Qv=Nv/(zv'^p)` と略記する。
+環・代数作用の let は旧定理と同じ：
+
+```lean
+hodgeTate_completelyFaithfullyFlat_iff_of_unconditional W hW f
+  (hf : f.Monic) :
+  IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) T ↔
+    Module.FaithfullyFlat Rv Tv
+
+hodgeTate_coefficient_comparison_of_unconditional W hW f
+  (hf : f.Monic) (hdeg : 0 < f.natDegree) :
+  (IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) T ↔
+    Module.FaithfullyFlat Rv Tv) ∧
+  Module.Free Qv Tv ∧ Module.FaithfullyFlat Rv Tv ∧
+  IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) T ∧
+  Nonempty (Rv ⊗[R₀] PowerRootCoefficientPDEnvelope p f' ≃+* Tv)
+```
+
+同値の正次数分岐では A1-b の実際の導来 p 還元による完全忠実平坦性を使う。
+次数零分岐では `powerRootPrismMonic_pdCompletion_subsingleton_of_natDegree_zero` により
+H とその商 T が零環となるため通常平坦性を使い、ϖ 剰余の忠実性を仮定から戻す。
+同値に新たな hdeg は追加していない。一般加群 M の通常商による逆向き判定には
+承認どおり M 上の ϖ 正則性が必要で、既存 `Flatness.lean` の hMv を保持する。
+H の p 正則性から、その分母商 T の p・ϖ 正則性を無条件に推論していない。
+
+専用監査は `UnconditionalAudit.lean`。五公開宣言の `assert_no_sorry` と
+`#print axioms`、二モジュールの生成宣言込み公理検査、型・opaque 値を辿る依存グラフ検査を行う。
+旧 hpR 付きの三つのテンソル分冪宣言・二つの候補比較宣言、旧 native 分冪構造・
+係数還元分冪構造と公式・分冪射、旧候補の ϖ 正則性への依存を明示的に拒否する。
+二つの候補比較の結論が旧名と同じ型であることも Lean の例で検査する。
+
+検証：`lake build SerrePositivity.BhattScholze.Andre.VarpiComparison.UnconditionalCandidate`
+は 4425 jobs、専用 `UnconditionalAudit` は 4428 jobs で成功。
+五公開宣言は全て `propext`・`Classical.choice`・`Quot.sound` のみ。
+二モジュールの生成宣言込み 18 宣言も標準三公理のみ。
+公開五宣言を起点とする型と値の 6769 依存宣言に、禁止した旧 hpR 宣言はなかった。
+構文の autoParam 値は論理的証明項と区別し、import 済み定理の公理情報には
+Lean 標準の `collectAxioms` を用いる。二つの旧比較との結論の型検査も成功した。
+新しい sorry・axiom・引用は追加していない。
+全体ビルドはこの担当の検証には実行していない。
