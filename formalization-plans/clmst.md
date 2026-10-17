@@ -10258,6 +10258,18 @@ A の bounded torsion、通常の平坦性や g 正則性・rank 正値性は追
 BhattScholze.Inputs.exists_perfectoidization_of_integral のみであることを確認した。
 原典 E∞ 版 Cor 8.12 の保留を継続し、新しい sorry・axiom・引用は追加していない。
 
+**定 rank の独立準備・元の rank を通常の任意底変換へ移送（2026-10-17）。**
+`Prop247RankTransport.lean` は元の D(g) の対応点における rank を、g が可逆な任意の
+底変換環 T の元の通常 tensor T⊗R S の stalk rank に移す。
+元の S_g の étale 性による平坦性と既存 Module.rankAtStalk_baseChange を使い、
+S や T の大域的平坦性を要求しない。
+この比較を任意の R→B の標準局所化へ適用し、元の D(g) 上の定 rank が
+B⊗R S の D(algebraMap R B g) 上で保存されることを証明した。
+従来の Prop247RankBaseChange の Ri 代数に特化した計算はこの共通計算へ置換し、重複させない。
+対象2777ジョブ、新規2宣言と既存3宣言の専用監査が全て成功。
+全5宣言は assert_no_sorry 成功・標準3公理のみ。原典の仮定・結論の一般性は保持する。
+原典 E∞ 版 Cor 8.12 は保留のままで、新しい sorry・axiom・引用は追加していない。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
