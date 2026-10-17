@@ -710,3 +710,57 @@ raw 剰余の通常忠実平坦性であり、raw single の実導来 (p,d) 還�
 SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4184 jobs）。
 専用監査も終了コード 0。新規 16 公開宣言の `assert_no_sorry` を追加し、
 生成宣言を含む 594 宣言の公理依存が標準 3 公理のみであることを確認した。
+
+### E1.12：有限モニック族の全有限 δ 深さの実残余 Koszul 分解と導来評価
+
+新規 `Andre/MonicRelationRegularSequence.lean` は、異なる有限添字のモニック関係が
+任意係数環上の弱正則列をなすことを証明する。先行添字集合の商の後続正則性を各位置に適用する。
+`monicRelation_fin_isWeaklyRegular` の型は
+`(f : σ → Polynomial A) → (∀ s, (f s).Monic) →
+ (s : Fin n → σ) → Function.Injective s →
+ RingTheory.Sequence.IsWeaklyRegular (MvPolynomial σ A)
+   (List.ofFn fun i => monicRelation (f (s i)) (s i))`。
+正次数や係数環の非零性は不要。負の関係族にも同じ結果を公開した。
+
+新規 `Andre/MonicPrismaticFirstResidueKoszul.lean` は、二重多項式係数商の表示により、
+最初の δ 関係を負のモニック関係へ移して実 (p,d) 商上の弱正則性と Koszul 分解を証明する。
+この最初の段には係数環の p 正則性も δ(d) 単元性も不要。
+新規 `Andre/MonicPrismaticFiniteResidueKoszul.lean` は、一般 δ 除算の既存有限深さ定理へ
+初項入力を渡し、全有限 δ 深さの弱正則性、評価関係の Koszul 分解、実残余自由 δ 射に沿う
+有限源グラフ商の全高次 Tor 消滅を証明する。これには hpA と δ(d) の単元性を用いる。
+
+新規 `Andre/MonicPrismaticSourceResidue.lean` は、有限添字族の有限深さの Tor 消滅を
+既存の逐次余極限定理と Tor 対称性で全評価源へ移す。標準 augmentation による主要公開型：
+
+```lean
+def monicPrismaticResidueSourceDerivedIso
+    {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
+    (D : DeltaStructure p A) (d : A) (f : σ → Polynomial A)
+    {m : ℕ} (s : Fin m ≃ σ) (hf : ∀ t, (f t).Monic)
+    (hpA : Function.Injective (fun z : A => (p : A) * z))
+    (v : Aˣ) (hv : (v : A) = D.delta d) :
+    let P := MvPolynomial σ A
+    let L := RelativeFreeDeltaRing (R := P) σ
+    let E := polynomialRankOneDeltaStructure σ D
+    let r := fun t : σ => monicRelation (f t) t
+    let K := Ideal.span {(p : L), MvPolynomial.C (MvPolynomial.C d)}
+    let ψ := (Ideal.Quotient.mk K).comp (deltaDivisionSourceMap (σ := σ) E (MvPolynomial.C d))
+    let β := deltaDivisionSourceEval E r
+    (boundedAboveDerivedBaseChange β).obj
+      (boundedAboveDerivedSingleFunctor.obj (baseChangeScalarModule ψ)) ≅
+    boundedAboveDerivedSingleFunctor.obj
+      (ModuleCat.of P (DeltaAdjoinDivisionResidue E (MvPolynomial.C d) r))
+```
+
+全評価源の結果に外部 ghost 仮定や余極限保存仮定は残さない。有限性は明示した s のみで、
+正次数は不要である。source の射・商射・評価射を固定して、標準 augmentation と通常残余テンソル
+の具体的同型を合成した。抽象的な同型の存在から係数作用を推論していない。
+
+BS Rem 7.15（著者版 p.62）の実導来剰余比較の評価側であり、Prop 7.11 を使う原典とは
+異なる経路である。残るのは元の A/(p,d) 係数側への比較、完備化後の離散性、
+最終 perfectoid 商の p 完全忠実平坦性、無限 p 冪根変数の自由基底、任意族への最終接続。
+目標存在定理は引き続き未宣言である。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4188 jobs）。
+専用監査も終了コード 0。新規 15 公開宣言の `assert_no_sorry` を追加し、
+生成宣言を含む 703 宣言の推移的公理依存が標準 3 公理のみであることを確認した。

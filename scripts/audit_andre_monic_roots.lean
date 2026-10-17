@@ -184,6 +184,22 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticRawResidue_fait
 assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticRawResidueAlgebraOfDistinguished
 assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticRawResidue_faithfullyFlat_of_distinguished
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRelation_ofList_eq_subset
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRelation_list_isWeaklyRegular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRelation_fin_isWeaklyRegular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRelation_fin_isKoszulResolution
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRelation_neg_list_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRelation_neg_fin_isWeaklyRegular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticFirstRelation_mod_pd_fin_isWeaklyRegular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticFirstRelation_mod_pd_fin_isKoszulResolution
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticFiniteResidueFamilyList_isWeaklyRegular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticFiniteResidueFamilyList_isKoszulResolution
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticFiniteResidueEvaluationFamily_isKoszulResolution
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticFiniteResidueEvaluationFamilySource_tor_subsingleton
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticResidueSource_tor_subsingleton
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticResidueSourceEval_torVanishing
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticResidueSourceDerivedIso
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -217,7 +233,11 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.MonicRawPerfectionFlat,
     `SerrePositivity.BhattScholze.Andre.MonicRawPCompletionFlat,
     `SerrePositivity.BhattScholze.Andre.MonicPrismaticCoefficient,
-    `SerrePositivity.BhattScholze.Andre.MonicPrismaticRawResidue]
+    `SerrePositivity.BhattScholze.Andre.MonicPrismaticRawResidue,
+    `SerrePositivity.BhattScholze.Andre.MonicRelationRegularSequence,
+    `SerrePositivity.BhattScholze.Andre.MonicPrismaticFirstResidueKoszul,
+    `SerrePositivity.BhattScholze.Andre.MonicPrismaticFiniteResidueKoszul,
+    `SerrePositivity.BhattScholze.Andre.MonicPrismaticSourceResidue]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
