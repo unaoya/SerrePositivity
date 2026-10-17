@@ -2,7 +2,7 @@
 
 正本は `dg-theory.md` §15冒頭・§15.4。任意可換環、非有界cochain複体、
 微分次数+1、ホモトピー次数−1、Mathlib Enrichedを主モデルとする。
-引用・追加公理・sorryは導入しない。U14全受入はまだ未完。
+引用・追加公理・sorryは導入しない。U14a–cは2026-10-17に以下の明示的仮定の範囲で受入完了。
 
 ## U14a.1：一対象EndとHom bimodule（2026-10-17）
 
@@ -1154,38 +1154,47 @@
   主要3宣言の公理は標準3公理のみ。新しいsorry・axiom・引用は追加していない。
   既存APIの名前・型は変更していない。
 
-## 残る受入条件
+## U14 最終受入（2026-10-17）
 
-- U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
-  導来Hom・導来tensor・主Kの随伴・導来射集合同値も構成済み。
-  導来射集合同値の全導来射自然性と導来随伴も構成済み。
-  U13の実際のenhancementへのtensor・Hom制限、閉零再構成随伴、その単位・余単位の
-  包含図式はU14a.34–35で構成済み。H⁰随伴と主Perf tensorとの自然比較・
-  単位余単位・shift・三角形上の比較はU14a.40–U14a/b.42で構成済み。最終照合を残す。
-- U14b：明示したthick生成仮定からenhancement上の全Hom擬同型は証明済み。
-  Hom像のPerf保存と主導来HomのPerfへの制限は構成済み。
-  H⁰の本質的全射、主Perf同値、enhancement準同値も構成済み。
-  主Perfとenhancementの整合的shift・三角性・包含正方形はU14b.25–26で証明済み。
-  主Perf tensorからU12dと係数変更した作用bimoduleへの自然比較はU14b.43で構成済み。
-  実際のD係数変更加群のEnd・Hom・評価はU14a/b.36–39、代表加群とYoneda評価はU14b.44–45で接続済み。
-  perfect始域の全Hom係数変更比較はU14b.57で証明済み。
-  実際の係数拡大のperfect射影的対象の保存はU14b.58・62、enhancementへの制限はU14b.63で証明済み。
-  受入済み導来係数変更の主Perfへの制限と実際のH⁰係数変更との自然比較はU14b.65–67で構成済み。
-  この係数変更比較の零・加法shift整合性、三角上の図式、再構成比較との統合と最終受入照合が残る。
-  ambient加群圏と主Kの係数拡大の零・加法shift整合性はU14b.68–70で構成済み。
-  enhancement・主Perfの比較との整合性と、U14b.71作業中の三角性は引き続き確認する。
-- U14c：明示した指定compact生成仮定の下で導来Homの保守性をU14c.1で証明済み。
-  Perf上の単位・余単位の可逆性と、外部compact⇒Perf入力によるcompact上の結論はU14c.2で証明済み。
-  必要な余積比較と、外部compact⇒Perf入力下での余積保存はU14c.3–5で証明済み。
-  全対象での単位・余単位の可逆性と全主導来圏同値はU14c.8–9で証明済み。
-  同値のshift・三角性・Perf包含比較はU14c.10で証明済み。最終受入照合を残す。
-  無限生成集合の直和はcompactとは限らず、thick生成だけから全導来圏の比較は出さない。
-  DG-GEN/DG-MORの採用が必要になったら採用せず停止・報告する。
-- U12dとの全導来射自然なtensor評価比較、評価成分のshift・cone同型と包含図式は構成済み。
-  Perf比較に対する整合的shift・三角性の図式はU14b.25–26で証明済み。
-  主Perf tensorからU12dと係数変更した作用bimoduleへの自然比較はU14b.43で構成済み。
-  実際のD係数変更加群のEnd・Hom・評価はU14a/b.36–39、代表加群とYoneda評価はU14b.44–45で接続済み。
-  perfect始域の全Hom係数変更比較はU14b.57で証明済み。
-  実際の係数拡大のperfect射影的対象の保存はU14b.58・62、enhancementへの制限はU14b.63で証明済み。
-  受入済み導来係数変更の主Perfへの制限と実際のH⁰係数変更との自然比較はU14b.65–67で構成済み。
-  この係数変更比較の零・加法shift整合性、三角上の図式、再構成比較との統合と最終受入照合が残る。
+§15冒頭の契約と§15.4の受入条件を照合し、U14a–cを以下の範囲で受け入れた。
+任意可換環・非有界cochain複体・dの次数+1・ホモトピー次数−1・Mathlib Enriched主モデルを維持する。
+
+| 条件 | 照合した構成・証拠 |
+| --- | --- |
+| U14a：指定対象とEnd、Hom bimodule、evaluation | `Basic`, `HomBimodule`, `Evaluation`。一対象Endの全Homは元の全Hom複体を使う。U13の実際の指定perfect dg加群と小さい代表系への適用を保持 |
+| U14a：実際の再構成随伴・単位余単位 | `endomorphismModuleAdjunction`, `endomorphismDerivedAdjunction` と三角恒等式。U13への制限は `perfectEndomorphismEnhancementAdjunction`, `perfectEndomorphismEnhancementHomotopyAdjunction`。単位・余単位の包含比較はU14a.35・U14a/b.42 |
+| U14b：thick生成からの全Hom擬同型 | `perfectEndomorphismDG_homQuasiIso`。仮定は `endomorphismThickGeneratesPerfect`。全次数Homの比較であり、H⁰の充満忠実性だけで代用していない |
+| U14b：H⁰本質的全射とPerf同値 | 独立の `perfectEndomorphismDGHomotopyEssSurj` と `perfectEndomorphismEquivalence`。準同値は `perfectEndomorphismDG_quasiEquivalence` で二つの証拠を組み合わせる |
+| Yoneda・U12d比較 | U14a.2以降のbalanced評価・随伴との式、U14b.44–45の代表加群・Yoneda評価、`endomorphismDerivedTensorEvaluationIso` の全導来射自然性。主Perfへの制限はU14b.43 |
+| shift・三角性 | U14b.25–26・U14a/b.42の主Perfと実際のenhancementの比較。係数変更はU14b.68–74で零・加法shift、標準cone三角形、H⁰と主Perfの既存比較自然同型そのものの整合性を証明 |
+| 係数変更と再構成の統合 | `ScalarReconstructionTriangles` で実際のH⁰再構成tensorと受入済み主Perf導来係数変更を合成した自然同型・shift整合性・三角正方形。`PerfectScalarTensor` の同じ主Perf再構成関手からU12d評価・導来係数変更へ接続 |
+| U14c：全主導来圏同値 | `endomorphismDerivedEquivalence`。順関手は実際の導来tensor、逆関手は実際の導来Hom。単位・余単位も既存導来随伴のものと一致。shift・三角性・Perf包含の正方形は `DerivedEquivalenceTriangles` |
+
+### 仮定表と係数変更の範囲
+
+- Perfの比較では、U13の指定対象 `E : PerfectDGModuleOver A D S` と
+  `hgen : endomorphismThickGeneratesPerfect A D S E` を明示する。
+- 全導来圏同値では、さらに `hCG : endomorphismCompactGenerator A D E.val` と
+  End側の `compactToPerfect : ∀ P, moduleCompact … P → modulePerfect … P` を明示した入力として受け取る。
+  U13dのcompact⇒Perfは重複実装していない。thick生成だけから全導来圏同値は出さない。
+- 無限個の生成元の直和はcompactとは限らない。無限直和による指定生成元のcompact性を仮定なしに使うAPIは追加していない。
+- 導来tensorの非flat係数変更では、受入済みU12f APIの `hPN`（balanced tensor複体のK-flat性）と
+  `hP'`（係数変更した解像度の相対K-flat性）をそのまま明示する（`PerfectScalarTensor`, `DerivedScalarTensor`）。
+  実際のunderived End係数変更の比較と、この条件付き導来比較を区別する。
+- 実際の係数変更はperfect射影的対象を保ち、perfect始域の全Hom比較は擬同型となる。
+  係数変更後の全perfect対象へのH⁰本質的全射性は結論していない。
+- DG-GEN・DG-MORを採用していない。既存の `Perfect/`, `Tensor/`, `Derived/`, `Bimodule/`,
+  `Quotient/`、dg README、Stageファイルは本担当の実装で編集していない。
+
+### 最終検証と公開入口
+
+- U14の `Checks*.lean` 全108対象を合同ビルドし、3289 jobsで成功した。
+  公開入口 `Endomorphism.Compatibility` からU14b.71–75も到達できる。
+  ルートの既存U14 importをそのまま利用し、今回ルートは変更していない。
+- 588件の公理監査出力を照合し、すべて `propext`, `Classical.choice`, `Quot.sound` の範囲だった。
+  Endomorphism配下の全Leanソースを走査し、sorry・admit・axiom宣言の追加がないことも確認した。
+- 新規公開APIは各単位に記録した。既存公開APIの名前・型は変更していない。
+  最終仕上げの各単位は自分の対象パスを明示して個別コミットし、各コミット後の
+  `git show --stat HEAD` で自分のファイルだけが含まれることを確認した。
+
+U14の未完受入項目はない。後続U16は上の明示的仮定・係数変更条件を保持して利用する。

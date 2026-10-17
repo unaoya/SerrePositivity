@@ -2799,6 +2799,7 @@ U14b：thick生成仮定の下でPerf上の比較を証明し、Hom quasiIsoと�
 U14c：導来圏全体の同値はcompact生成性がある場合だけ扱い、DG-GEN/DG-MORの採用候補とする。
 生成集合を無限直和で一対象にまとめた際にcompact性が失われ得ることを仮定表に残す。
 受入は既存Yoneda・導来tensorとの比較、shift/三角性・係数変更図式。
+U14a–cの実装・明示的仮定・受入記録（2026-10-17）：[`dg-theory-u14.md`](dg-theory-u14.md)。
 
 ### 15.5 U15：明示的dg商（D8）
 
