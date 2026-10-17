@@ -9977,3 +9977,57 @@ BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_
 U12e受入→U16a〜d→U15e分解版の順を維持する。共有一般論への新しいAPI要求はない。
 共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・ScalarExtension*・
 Quotient/DerivedComparison*・Verdier/は編集していない。
+
+### 17.217 U12e57：導来中間圏比較の制限後semifree解像度からの独立性（2026-10-17）
+
+**値での計算同型の変換則。** `Derived/BimoduleCompositionResolutionValues.lean`は
+既存の`derivedBimoduleComposeResolutionComputation_naturality`を再利用し、
+指定解像度による値の計算同型`derivedBimoduleComposeResolutionValueIso`を構成した。
+増大squareが導来圏で可換なら、値の計算同型の変更は既存の`composeMap`の導来像によることを示す。
+`derivedComposeWithMap_computation`が局所化前の値での可換squareを補う。
+`Derived/BimoduleSourceHomotopy.lean`は既存のsemifree比較のホモトピー同一視と
+右加群–bimodule同値の余単位の自然性から、任意の実際のbimodule射の逆表示での主Kの一致を
+主導来圏の射の一致へ送る補助APIを公開する。
+
+**実際の比較射の一致。** `Derived/BimoduleMiddleIndependence.lean`は、
+増大squareと合成後の計算squareの二つの導来可換性から
+`derivedMiddleRestrictionComparison`自体の一致を示す。
+`derivedMiddleRestrictionComparison_eq_of_source_homotopy`は前項のホモトピー整合性を適用し、
+増大squareが積dg圏表示の主Kで可換なら十分であることを証明する。
+この段階ではFの準同値性を必要としない。
+
+**任意の制限後semifree解像度。** `Derived/BimoduleSemifreeComposeComparison.lean`は
+既存の任意semifree解像度間の比較射と、sourceでの射影解像度比較のホモトピー可換式を使う。
+`composeAfter_comparison_fac`は、任意の前因子と合成した後も、標準の比較増大squareが
+導来圏で可換であることを証明する。前因子のflatnessを追加せず、前項のcylinder計算を再利用する。
+`Derived/BimoduleMiddleSemifreeIndependence.lean`の
+`derivedMiddleRestrictionComparison_semifree_independent`は、制限後に選ぶ任意の二つの
+semifree解像度R・Sについて、実際の導来比較射が一致することを証明した。
+追加の比較射・可換squareの仮定を利用者に要求しない。
+同じ独立性を前因子の閉零圏上の自然変換と、前因子の全導来圏上の自然変換にも証明した。
+`derivedMiddleRestrictionCanonicalLocalized`は既存の制限後標準semifree解像度を使う
+全導来圏上の自然変換であり、任意の指定semifree解像度を使う自然変換と一致する。
+Qの指定右K-flatモデルと終端Eの局所Hom K-flat性を保持し、制限されたQ自体のK-flat性や
+C・Dの局所Hom K-flat性は追加していない。
+任意の単なる右K-flat解像度について無条件の独立性を示したとの主張とは区別する。
+既存公開APIの名前・型・定義は変更していない。
+
+**検証。** 新規`Checks.DGBimoduleMiddleIndependence`は独立した四つの対象宇宙、
+追加squareの仮定なしでの任意の二つのsemifree解像度の比較射の一致、
+前因子の全導来圏上の自然変換の一致、標準解像度との一致、ZMod 2の場合を検査した。
+既存のホモトピー・中間圏自然性・tensor制限・解像度同値・導来随伴・単位・制限・
+導来bimodule五角形・StageEight・StageSeven・Spectra.StageTwoとの統合ビルド成功
+（3430 jobs、警告なし）。主要14宣言の直接公理監査は重複・欠落なく標準3公理以内。
+新規監査累計4257宣言。今回の6受入Leanファイルのsorry・admit・新規axiom・資源上限変更は0件。
+採用済み引用0件。Lean v4.35.0-rc4とMathlib manifest/HEAD
+`e6bbacd0e1b7307ff6e17da09cd2455f60804fa6`を再確認した。
+全体文書検査は20 Markdown・320 exposition参照を検査し、担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+未解決参照1件で失敗した。計画書のローカルリンクと担当差分の空白検査は成功。
+
+**残件。** 後因子の射に関する自然性と全導来化、既存の積dg圏表示の制限との同定、
+準同値の場合の比較の可逆性を進める。それらをdg圏解像度変更へ適用し、
+導来合成・対角単位・結合子の整合性とcoherenceを仕上げる。
+U12e全体は未受入であり、U12e受入→U16a〜d→U15e分解版の順を維持する。
+共有モデル圏一般論への新しいAPI要求はない。共有ルート・共有監査スクリプト・Perfect/・
+Endomorphism/・ScalarExtension*・Quotient/DerivedComparison*・Verdier/は編集していない。
