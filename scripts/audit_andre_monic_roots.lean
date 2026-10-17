@@ -304,6 +304,30 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticPDPerfectionCan
 assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticPDPerfectionCandidateModuleIso
 assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicPrism_isCompletelyFaithfullyFlat
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialPrism
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialPrism_isPerfect
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialPrismRawMap_isDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialPrismCoefficientMap_isDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialPrismCoefficientMap_generator
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialPrismCoefficientMap_ideal
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialPrismCoefficientAlgebra
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialPrismBaseHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialPrismBaseHom_quotientMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicPrism_torVanishing
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicPrism_scalarExtension_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicPrism_generator_smul_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicPrism_generator_torVanishing
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicPrism_ordinaryQuotientIso
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicPrism_derivedQuotientIso
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicPrism_pair_homology_isZero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicPrism_pairH0_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicPerfectoid_modP_homology_isZero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicPerfectoid_modPH0_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicPerfectoid_torVanishing
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicPerfectoid_scalarExtension_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicPerfectoid_isCompletelyFaithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicPerfectoidBaseMap_isCompletelyFaithfullyFlat
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -360,7 +384,11 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PerfectPrismMonicRawPDCompletelyFlat,
     `SerrePositivity.BhattScholze.Andre.PerfectPrismMonicPDPerfectionInputs,
     `SerrePositivity.BhattScholze.Andre.MonicPrismaticCandidateComparison,
-    `SerrePositivity.BhattScholze.Andre.PerfectPrismMonicPrismCompletelyFlat]
+    `SerrePositivity.BhattScholze.Andre.PerfectPrismMonicPrismCompletelyFlat,
+    `SerrePositivity.BhattScholze.Andre.MonicPrismaticPrismBaseMap,
+    `SerrePositivity.BhattScholze.Andre.PerfectPrismMonicPrismResidue,
+    `SerrePositivity.BhattScholze.Andre.PerfectPrismMonicQuotientReduction,
+    `SerrePositivity.BhattScholze.Andre.PerfectPrismMonicPerfectoidCompletelyFlat]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

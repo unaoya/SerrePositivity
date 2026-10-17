@@ -17,6 +17,7 @@ public import SerrePositivity.BhattScholze.Andre.MonicPrismaticPDReduction
 public import SerrePositivity.BhattScholze.Andre.PerfectPrismMonicSourceDiscrete
 public import SerrePositivity.BhattScholze.Andre.PerfectPrismMonicRawPDCompletelyFlat
 public import SerrePositivity.BhattScholze.Andre.PerfectPrismMonicPrismCompletelyFlat
+public import SerrePositivity.BhattScholze.Andre.PerfectPrismMonicPerfectoidCompletelyFlat
 
 /-!
 # André E1・E2 の集約

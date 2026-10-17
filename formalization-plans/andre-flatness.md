@@ -1110,3 +1110,43 @@ BS Rem 7.15（著者版 p.62）の原典と異なる PD 先行構成と既存候
 SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4297 jobs）。
 専用監査も終了コード 0。新規 15 公開宣言の `assert_no_sorry` を追加し、
 生成宣言を含む 1652 宣言の推移的公理依存が標準 3 公理のみであることを確認した。
+
+### E1.17：標準生成元商の実導来比較と perfectoid 候補の p 完全忠実平坦性
+
+`Andre/MonicPrismaticPrismBaseMap.lean` で既存候補を `polynomialPrism` として束ね、
+標準係数射の δ 射性・生成元保存・イデアル像と prism 射を構成した。
+`Andre/PerfectPrismMonicPrismResidue.lean` では同じ標準係数作用に関する
+実 (p,d) Tor 消滅と通常係数拡大の忠実平坦性を得る。
+`Andre/PerfectPrismMonicQuotientReduction.lean` では候補生成元の正則性から、
+元の A/d への実導来係数拡大を標準 perfectoid 商の single に同定する。
+この生成元商の比較はモニック性・正次数・有限性を要求しない。
+
+`Andre/PerfectPrismMonicPerfectoidCompletelyFlat.lean` で (p,d) 剰余から
+元の A/d 上の mod p 剰余への実基底変更比較を適用し、高次 Tor 消滅と
+忠実平坦性を移した。主要公開型（namespace は `SerrePositivity.BhattScholze.Andre`）：
+
+```lean
+theorem perfectPrismMonicPerfectoidBaseMap_isCompletelyFaithfullyFlat
+    {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
+    (P : OrientedPrism p A) (hP : P.deltaStructure.IsPerfect)
+    (f : σ → Polynomial A) (hf : ∀ t, (f t).Monic)
+    (hdeg : ∀ t, 0 < (f t).natDegree) {m : ℕ} (eσ : Fin m ≃ σ) :
+    letI := polynomialPrismCommRing P.deltaStructure P.generator f
+    letI := (polynomialPerfectoidCandidateBaseMap P.deltaStructure P.generator f
+      (OrientedPrism.isDistinguished_of_perfect P hP)).toAlgebra
+    IsCompletelyFaithfullyFlat
+      (Ideal.span {(p : A ⧸ Ideal.span {P.generator})})
+      (PolynomialPerfectoidCandidate P.deltaStructure P.generator f
+        (OrientedPrism.isDistinguished_of_perfect P hP))
+```
+
+前提は完全 prism、有限全列挙、各多項式のモニック性と正次数。
+別の Tor・ghost・有界ねじれ仮定は残らず、基底射は既存候補の標準射そのもの。
+BS Rem 7.15（著者版 p.62）、Thm 7.14（p.61）の原典と異なる、
+PD 先行 δ 完全化の具体的比較を使う経路である。
+任意族への接続、一般 perfectoid 基底への移送、無限 p 冪根変数の明示的自由基底は未完了。
+目標存在定理は引き続き未宣言であり、この有限候補の結果を全体完成とは数えない。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4303 jobs）。
+専用監査も終了コード 0。新規 23 公開宣言へ `assert_no_sorry` を追加し、
+生成宣言を含む 1857 宣言の推移的公理依存は標準 3 公理のみと確認した。
