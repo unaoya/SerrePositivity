@@ -11,8 +11,8 @@
 | U16b：導来同値本体・延長/制限・unit/counit | 既存APIあり。`Checks.DGFunctorDerivedEquivalence` ビルド成功、2768 jobs、主要18宣言は標準3公理のみ |
 | U16b：実際の随伴shift・三角性・Perf・U13/U14比較 | U16b.1–3・5–7で実装・対象ビルド・公理監査済み。主導来graph作用との比較を残し、U16b全体の最終受入はまだ行わない |
 | 積dg圏上の擬同値 | 既存 `derivedBimoduleRestrictionEquivalence` の `localHomKFlat A C`・`localHomKFlat A D` を保持する。無条件化しない |
-| U16aグラフ作用との計算比較 | 初回確認時はAPI節未作成。その後「U16a 公開 API」節を確認。kernelは右E・左D。通常作用を先に接続し、主導来作用の実装を待って関手自然同型へ進む |
-| U16d：Perf・係数変更・合成自然性 | 公開型確定後に着手。Perf制限の関手性、係数変更の二変数モデル、非flatな導来係数変更のPerf保存をU16d.1–3で証明。主導来kernel作用・合成比較への適用は未完 |
+| U16aグラフ作用との計算比較 | 公開API節と実装を確認し、通常kernelの実際の主導来作用との関手自然同型をU16b.9で構成。kernel変数の主局所化上の作用への移送は未完 |
+| U16d：Perf・係数変更・合成自然性 | 公開型確定後に着手。U16d.1–5で実際の通常kernelのPerf作用・係数変更正方形の制限と合成整合性を証明。kernel固有の係数変更正方形と合成比較への接続は未完 |
 | 中心作用 | 保留。今回の実装対象にしない |
 
 新規Leanファイルは `Morita/QuasiEquivalence*`・`Perfect*`・`ScalarExtension*` のみ。
@@ -194,6 +194,13 @@
 - 担当の新規21 Leanファイルを走査し、新規sorry・admit・axiomは0件。引用も0件。
   各単位を自分のパスだけで個別コミットし、statを照合した。
 
+## 追加合同検証（2026-10-17、U16b.8–9・U16d.4–5）
+
+- 公開入口に今回の4実装ファイルを加え、新旧14監査対象・公開入口・既存dg擬同値監査の
+  16対象を合同ビルドし成功（3571 jobs、終了コード0、警告・エラー0件）。
+- 124宣言の公理監査はすべて標準3公理のみ。今回追加した29主要宣言も同じ。
+  新しいsorry・axiom・引用はない。U16a担当のファイル・記録は読み取り専用で再利用した。
+
 ## 公開入口と残る接続
 
 公開入口は `SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence`。
@@ -202,17 +209,18 @@
 
 U16b・U16d全体はまだ未受入であり、次の接続を残す。
 
-1. U16aの `kernelDerivedTensorFunctor`・任意解像度計算の実装後、
-   `kernelGraph` の主導来作用と既存 `dgDerivedExtension` の**関手自然同型**を構成する。
-   U16b.4の対象ごとの通常graph計算だけで代用しない。
-2. 実際のkernel作用の代表加群計算からPerf保存条件を証明し、U16d.1の制限へ適用する。
-   kernelの恒等・合成自然同型とその自然性・coherenceを同じ制限で移す。
+1. 通常kernelの実際の主導来graph作用の関手自然同型はU16b.9で完成した。
+   U16aの `kernelDerivedTensorFunctor` の実装後、kernel変数の主局所化上の作用へも移送する。
+   必要な自然計算と比較の一意性はU16b.8で明示した。
+2. 通常kernelの各列のperfect性からのPerf保存と実際の制限はU16d.5で完成した。
+   kernel変数の主局所化上の作用へ移し、kernelの恒等・合成自然同型とその自然性・coherenceを同じ制限で移す。
    合成に必要な始域dg圏のlocalHomKFlat条件を消さない。
 3. 実際のkernel作用の各評価をU12fのtensor計算と同定し、U16d.2の二変数自然同型を接続する。
    選択した右射影解像度とkernelの左評価ごとのhPN・hP'を明示したままにし、
    U16d.3の実際の係数変更Perf制限との自然な正方形・合成比較を証明する。
 4. 中心作用は保留。今回の残項目の完了条件には入れない。
 
-直近のU16a担当記録ではKernelBasic・KernelTensor・KernelChecksのみ検証済み。
-主導来作用・一般右随伴・恒等/合成の作用比較は「型のみ確定」と明記されている。
+直近のU16a担当記録ではKernelResolution・KernelResolutionChecksまで検証済み。
+通常kernelの主導来作用は公開されたが、kernel変数の主局所化上の作用・一般右随伴・
+恒等/合成の作用比較は「型のみ確定」と明記されている。
 その未実装宣言をimport可能な定理として扱わず、不足する射・同型をsorry・axiomで置かない。
