@@ -89,6 +89,16 @@
 - 任意の `HasDerivedCategory.{w} (ModuleCat.{u} A)` を明示して使い、主導来圏を再定義していない。
   `Perfect.ChecksRingDerivedFiniteCover` 対象ビルド成功（3168 jobs）。主要4宣言の公理監査は標準3公理のみ。
 
+## U13e.33：retract・補対象の三角形と有限射影coneの比較
+
+- `Perfect/RingRetractTriangle.lean`：既存の分裂三角形からretract X⊂Yの補対象Zと
+  Y≅X⊞Zを構成した。retractの存在を仮定しているため、ここでは冪等完備性の追加仮定は不要。
+- X・Zを終域とする二つのdistinguished三角形の直和を取り、始域が有限射影singleのQ像、
+  終域がQ(P)である場合に、第一射を実際のchain mapへ持ち上げてconeを比較した。
+  第一射のHᵇ上全射性を保ち、元の片方の第三頂点をそのconeのQ像のretractとして表した。
+- ホモロジーと二項直和の比較には既存のhomological functorのbiproduct保存を用いた。
+  `Perfect.ChecksRingRetractTriangle` 対象ビルド成功（3170 jobs）。主要4宣言の公理監査は標準3公理のみ。
+
 ## 既存項目の再検証
 
 - finite cell・全Hom射影性・PerfとKaroubi・compact生成・compact⇒Perf・
