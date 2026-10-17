@@ -155,6 +155,18 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawPerfection_residueTen
 assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawPerfection_p_smul_regular
 assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawPerfection_isCompletelyFaithfullyFlat
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawPCompletedPerfectionOverPerfection
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawPCompletedPerfectionCoefficientMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawPCompletedPerfectionAlgebra
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawPCompletedPerfectionCoefficientMap_comp
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawPCompletedPerfectionResidueEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawPCompletedPerfectionResidueEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawPCompletedPerfectionResidueLinearEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawPCompletedPerfectionResidueTensorEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawPCompletedPerfection_residueTensor_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawPCompletedPerfection_p_smul_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawPCompletedPerfection_isCompletelyFaithfullyFlat
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -185,7 +197,8 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.MonicRawModPFlat,
     `SerrePositivity.BhattScholze.Andre.MonicRawCompletelyFlat,
     `SerrePositivity.BhattScholze.Andre.MonicRawDerivedReduction,
-    `SerrePositivity.BhattScholze.Andre.MonicRawPerfectionFlat]
+    `SerrePositivity.BhattScholze.Andre.MonicRawPerfectionFlat,
+    `SerrePositivity.BhattScholze.Andre.MonicRawPCompletionFlat]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

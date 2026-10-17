@@ -605,3 +605,41 @@ p 完全忠実平坦性は引き続き未完成。目標存在定理は未宣言
 SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4180 jobs）。
 専用監査も終了コード 0。新規 14 公開宣言の `assert_no_sorry` を追加し、
 生成宣言を含む 442 宣言の推移的な公理依存が標準 3 公理のみであることを確認した。
+
+### E1.10：補助 raw 包の p 進完備 δ 完全化への保存
+
+新規 `Andre/MonicRawPCompletionFlat.lean` は、E1.9 の Frobenius 余極限を既存の
+`PCompletedDeltaPerfection` で p 進完備化する。開イデアル商の既存比較を再利用し、
+元の A の係数像を保つ剰余環同型と A/p 線形同型を明示した。
+通常剰余テンソルの忠実平坦性を移し、完全 δ 構造の p 正則性と主元判定を組み合わせる。
+
+主要公開型：
+
+```lean
+theorem monicRawPCompletedPerfection_isCompletelyFaithfullyFlat
+    {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
+    (D : DeltaStructure p A) (f : σ → Polynomial A)
+    (hD : D.IsPerfect) (hf : ∀ s, (f s).Monic)
+    (hdeg : ∀ s, 0 < (f s).natDegree) (hdp : D.IsDistinguished (p : A)) :
+    let E := polynomialRankOneDeltaStructure σ D
+    let F := deltaAdjoinDivisionStructure E (p : MvPolynomial σ A)
+      (fun s : σ => DeltaStructure.frobeniusLift E (monicRelation (f s) s))
+    letI := monicRawPCompletedPerfectionAlgebra D f
+    IsCompletelyFaithfullyFlat (Ideal.span {(p : A)}) (PCompletedDeltaPerfection F)
+```
+
+この代数構造の係数射は `pCompletedDeltaPerfectionMap F` と実 raw 係数射の合成。
+`monicRawPCompletedPerfectionResidueEquiv_mk` と同じ A/p 線形比較により、
+環同型だけから元の係数作用の忠実平坦性を推論していない。
+族は任意濃度で、外部 ghost 単射仮定を要求しない。
+線形性の具体的作用の照合では、既存冪根版と同じ局所 heartbeat 上限 800000 が必要だった。
+
+BS Cor 2.39（著者版 p.25）、Rem 7.15（p.62）の補助計算。
+Prop 7.11 を使う原典と異なる経路であることを docstring に記載した。
+これは補助 φ(f)/p 包の完備化であり、一般 f/d 包との実導来比較および最終 perfectoid 商の
+p 完全忠実平坦性は未完成。無限 p 冪根変数の自由基底も未証明。
+目標存在定理は未宣言であり、補助完備化の定理を担当全体の完成と数えない。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4182 jobs）。
+専用監査も終了コード 0。新規 11 公開宣言の `assert_no_sorry` を追加し、
+生成宣言を含む 525 宣言について標準 3 公理のみの推移的公理依存を確認した。
