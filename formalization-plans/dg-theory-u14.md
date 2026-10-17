@@ -47,6 +47,19 @@
 - `lake build SerrePositivity.DifferentialGraded.Endomorphism.ChecksDerived` 成功。
   4主要宣言の公理監査は標準3公理のみ。
 
+## U14a.4：Endのshift・underived係数変更図式（2026-10-17）
+
+- `Endomorphism/Compatibility.lean`：Endのunderived係数変更から、係数変更した指定対象の
+  Endへのdg関手を構成し、指定対象への包含の正方形を証明。
+  U12fの `ScalarExtension.DGBaseChange` を使い、平坦性は仮定しない。
+  全Homの係数変更比較の同型性や導来版との一致は含まない。
+- U13の実際のdg shiftについて、Endの写像と指定対象の包含の正方形を証明。
+  再構成関手の三角性はなお未証明。
+- `lake build SerrePositivity.DifferentialGraded.Endomorphism.ChecksCompatibility` 成功。
+  3主要宣言の公理は標準3公理のみ。
+- ルートにはこの公開入口のimportだけを追加し、`git add -p`で当該hunkのみstage。
+  `dg-theory.md`・README・Stageおよび既存Perfect/Tensor/Derived/Bimodule/Quotientは未編集。
+
 ## 残る受入条件
 
 - U14a：enhancement／End(E)加群間の再構成随伴と、その単位・余単位。

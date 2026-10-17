@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.DifferentialGraded.Endomorphism.Compatibility
+
 public import SerrePositivity.LinearAlgebra.IndependentPerturbation
 public import SerrePositivity.CommutativeAlgebra.DerivationIdealSpan
 public import SerrePositivity.FieldTheory.PMonomial
@@ -873,6 +875,7 @@ public import SerrePositivity.CommutativeAlgebra.FiniteCommonLocalizationBounds
 public import SerrePositivity.CLMST.PerfectoidIdealTorRoots
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedPerfectoidQuotient
 public import SerrePositivity.BhattScholze.PerfectoidizationSupportedQuotientKernel
+public import SerrePositivity.CLMST.PerfectoidIdealTorCover
 
 /-!
 # Serre の交点重複度の正値性の形式化
