@@ -31,4 +31,3 @@ elab "assert_prop247_constant_rank_dependencies" : command => do
   logInfo "Actual constant rank assembly: only existing B-I citation is permitted."
 end
 assert_prop247_constant_rank_dependencies
-

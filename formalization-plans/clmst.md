@@ -10270,6 +10270,20 @@ B⊗R S の D(algebraMap R B g) 上で保存されることを証明した。
 全5宣言は assert_no_sorry 成功・標準3公理のみ。原典の仮定・結論の一般性は保持する。
 原典 E∞ 版 Cor 8.12 は保留のままで、新しい sorry・axiom・引用は追加していない。
 
+**定 rank の条件付き完成・元の指定写像の実錐・核・余核への降下（2026-10-17）。**
+`Prop247ConstantRankDescent.lean` は元の R、有限・有限表示 S、指定 f:S→C、
+元の bounded p∞ torsion、元の D(g) の定 rank を保持する。
+指定した André 基底 B の perfectoid 性・絶対整閉性・p 完全忠実平坦性と
+KLFiniteComparisonExcision B p を受け取り、通常 B⊗R S の perfectoid 化を選ぶ。
+元の étale 性と定 rank の底変換保存は既存 API と前工程から供給し、
+定 rank の実有限被覆の錐零化を全段共通指数の D-U と既存 D1〜D6 へ合流する。
+元の f の実錐・核・余核を同じ g の冪で零化する結論を得た。
+底変換後の bounded torsion、通常の平坦性、g 正則性、rank 正値性を追加しない。
+対象4682ジョブと専用到達監査が成功。指定データの局所錐・実被覆は assert_no_sorry 成功。
+選択入口の未証明依存は既存 B-I のみと再帰監査で確認し、sorry-free とは扱わない。
+既存の定 rank 監査の末尾空行も整え、同じ監査を再実行して成功を確認した。
+原典 E∞ 版 Cor 8.12 の保留と元の Prop 2.4.7 引用を維持し、新しい sorry・axiom・引用は追加していない。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
