@@ -576,3 +576,77 @@ basisCoordinateCut_add (s t : Set I) (hst : Disjoint s t) {x : V}
 `set -o pipefail; lake env lean scripts/audit_derived_infinity.lean` は終了コード 0。
 新規公開10宣言と14モジュール284宣言の公理は標準3公理のみ。
 未完了は各高さの自由商・既存 filtration との同値・cone 閉性。補助補題をそれらの完成とは数えない。
+
+### D2h semibasis から既存 filtration の構成（2026-10-18）
+
+semibasis から既存 `ModuleSemifreeFiltration` への構成と、既存の `complexSemifree` を満たすことを証明した。
+これは同値の十分性側の完成であり、逆向きと cone 閉性は未完了。
+namespace は `SerrePositivity.InfinityCategories.ComplexSemifreeBasis`。
+以下の全宣言の共通引数は `{S : Type u} [CommRing S] {P : Complex S}
+(B : ComplexSemifreeBasis S P)`。公開型をソースの宣言からそのまま記録する：
+
+`Derived/SemifreeBasisLayers.lean`：
+```lean
+layerSubmodule (n : ℕ) (k : ℤ) : Submodule S (P.X k)
+layerBasis (n : ℕ) (k : ℤ) :
+    Module.Basis {i : B.Index k // B.height k i = n} S (B.layerSubmodule n k)
+layerComplex (n : ℕ) : Complex S
+layerSubmodule_le_stage (n : ℕ) (k : ℤ) :
+    B.layerSubmodule n k ≤ B.stageSubmodule n k
+lowRetraction (n : ℕ) (k : ℤ) :
+    (B.stageComplex (n + 1)).X k ⟶ (B.stageComplex n).X k
+highProjection (n : ℕ) (k : ℤ) :
+    (B.stageComplex (n + 1)).X k ⟶ (B.layerComplex (n + 1)).X k
+highSection (n : ℕ) (k : ℤ) :
+    (B.layerComplex (n + 1)).X k ⟶ (B.stageComplex (n + 1)).X k
+inclusion_lowRetraction (n : ℕ) (k : ℤ) :
+    (B.stageMap (Nat.le_succ n)).f k ≫ B.lowRetraction n k = 𝟙 _
+highSection_projection (n : ℕ) (k : ℤ) :
+    B.highSection n k ≫ B.highProjection n k = 𝟙 _
+highSection_lowRetraction (n : ℕ) (k : ℤ) :
+    B.highSection n k ≫ B.lowRetraction n k = 0
+inclusion_highProjection (n : ℕ) (k : ℤ) :
+    (B.stageMap (Nat.le_succ n)).f k ≫ B.highProjection n k = 0
+highProjection_differential (n : ℕ) (k : ℤ)
+    (x : B.stageSubmodule (n + 1) k) :
+    basisCoordinateCut (B.basis (k + 1)) {i | B.height (k + 1) i = n + 1}
+      ((P.d k (k + 1)) x.val) = 0
+layerQuotientMap (n : ℕ) : B.stageComplex (n + 1) ⟶ B.layerComplex (n + 1)
+low_high_decomposition (n : ℕ) (k : ℤ) :
+    B.lowRetraction n k ≫ (B.stageMap (Nat.le_succ n)).f k +
+      B.highProjection n k ≫ B.highSection n k = 𝟙 _
+layerSpherePresentation (n : ℕ) : ModuleSphereFreePresentation S PUnit.{1}
+    (ForgetEnrichment.of (Complex S) (ringModule S (B.layerComplex n)))
+initialSpherePresentation : ModuleSphereFreePresentation S PUnit.{1}
+    (ForgetEnrichment.of (Complex S) (ringModule S (B.stageComplex 0)))
+layerModuleGradedSplit (n : ℕ) : ModuleGradedSplit S PUnit.{1}
+    (ringComplexMap S (B.stageMap (Nat.le_succ n)))
+    (ringComplexMap S (B.layerQuotientMap n))
+```
+
+`Derived/SemifreeBasisFiltration.lean`：
+```lean
+moduleStage (n : ℕ) : ModuleCategory S PUnit.{1}
+moduleTransition (n : ℕ) : B.moduleStage n ⟶ B.moduleStage (n + 1)
+moduleSequenceEvaluationIso :
+    Functor.ofSequence B.moduleTransition ⋙ moduleEvaluation S PUnit.{1} PUnit.unit ≅
+      B.stageDiagram
+moduleStageCocone : Cocone (Functor.ofSequence B.moduleTransition)
+moduleStageIsColimit : IsColimit B.moduleStageCocone
+toModuleFiltration : ModuleSemifreeFiltration S PUnit.{1}
+    (ForgetEnrichment.of (Complex S) (ringModule S P))
+complexSemifree : SerrePositivity.InfinityCategories.complexSemifree S P
+```
+
+高さ = n の基底元の線形包を微分零の自由商とし、低い座標と高い座標への射影で分裂した。
+初期段と各商の自由 sphere 表示を構成し、評価による余極限反映で一点加群上の網羅性を証明した。
+`ComplexSemifreeBasis.toModuleFiltration` は既存の構造体そのものを返す。
+公開定理 `ComplexSemifreeBasis.complexSemifree` の正確な型は
+`{S : Type u} [CommRing S] {P : Complex S} (B : ComplexSemifreeBasis S P) :
+SerrePositivity.InfinityCategories.complexSemifree S P`。既存定義に変更はない。
+
+`set -o pipefail; lake build SerrePositivity.InfinityCategories.Derived` は終了コード 0（3700 jobs）。
+`set -o pipefail; lake env lean scripts/audit_derived_infinity.lean` は終了コード 0。
+16モジュール339宣言の公理は標準3公理のみ。新規公開宣言は 24 件。
+未完了：既存 filtration から semibasis の構成と両向きの同値、cone の基底への高さの適用、無条件の cone 閉性。
+D2i は D2h 後の任意工程として未着手。D1 の quasicategory は N2 完了記録待ち。

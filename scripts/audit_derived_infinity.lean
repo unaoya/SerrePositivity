@@ -126,6 +126,31 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.basisCoordinateCut_disjoint
 #print axioms SerrePositivity.InfinityCategories.basisCoordinateCut_add
 
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.layerSubmodule
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.layerBasis
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.layerComplex
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.layerSubmodule_le_stage
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.lowRetraction
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.highProjection
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.highSection
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.inclusion_lowRetraction
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.highSection_projection
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.highSection_lowRetraction
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.inclusion_highProjection
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.highProjection_differential
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.layerQuotientMap
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.low_high_decomposition
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.layerSpherePresentation
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.initialSpherePresentation
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.layerModuleGradedSplit
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.moduleStage
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.moduleTransition
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.moduleSequenceEvaluationIso
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.moduleStageCocone
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.moduleStageIsColimit
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.toModuleFiltration
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.complexSemifree
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -142,6 +167,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.SemifreeBasisHeight,
     `SerrePositivity.InfinityCategories.Derived.ZeroBasisSpheres,
     `SerrePositivity.InfinityCategories.Derived.BasisCut,
+    `SerrePositivity.InfinityCategories.Derived.SemifreeBasisFiltration,
+    `SerrePositivity.InfinityCategories.Derived.SemifreeBasisLayers,
     `SerrePositivity.InfinityCategories.Derived.RingGradedSplit,
     `SerrePositivity.InfinityCategories.Derived.DerivedComparisonShift]
   let mut count : Nat := 0
