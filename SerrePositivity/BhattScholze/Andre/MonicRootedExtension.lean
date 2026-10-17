@@ -25,6 +25,7 @@ public import SerrePositivity.BhattScholze.Andre.ArbitraryMonicPrismaticIterated
 public import SerrePositivity.BhattScholze.Andre.ArbitraryPerfectPrismMonicPerfectoidCompletelyFlat
 public import SerrePositivity.BhattScholze.Andre.MonicRootedPerfectoidExtension
 public import SerrePositivity.BhattScholze.Andre.PowerRootPolynomial
+public import SerrePositivity.BhattScholze.Andre.PowerRootMonicPDFlat
 
 /-!
 # André E1・E2 の集約
@@ -43,7 +44,7 @@ BS Thm 7.14（著者版 p.61）、Rem 7.15（p.62）の正次数モニック族�
 
 `exists_monicRootedPerfectoidExtension` は承認済みの正次数仮定を明示する。
 添字型全体の有限性や基底の p 正則性・ねじれなしは仮定しない。
-無限 p 冪根変数の単項式基底も公開する。原典の具体的 pd 包との比較の補完は別工程である。
+無限 p 冪根変数の単項式・小数指数基底とモニック冪商の自由性も公開する。原典の具体的 pd 包との比較の補完は別工程である。
 
 ## 使われ方
 

@@ -1612,3 +1612,63 @@ SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（
 新規 20 公開宣言の `assert_no_sorry` を追加した専用監査は終了コード 0。
 生成宣言を含む 2742 宣言の推移的公理依存は標準 3 公理のみ。
 指数分解・具体的基底・自由性・生成の公開型を `#print` で確認した（終了コード 0）。
+
+### E1.25：小数指数基底、モニック冪商、無限変数内の分冪表示環
+
+`PowerRootPolynomialCoordinates.lean` は、指数の自然数・小数部分への一意分解を使い、
+単項式座標を小数指数ごとの通常多項式に変換する元の係数環上の線形同型を構成した。
+通常変数を Y₀ に送る標準評価射と、その単項式上の式を明示する。
+`PowerRootPolynomialFractionBasis.lean` は自然数指数の加法の公式を使って、
+同じ座標が通常多項式環上でも線形であることを証明する。
+標準評価射の toAlgebra に関して、小数指数の係数 1 の単項式が具体的自由基底となる。
+
+`PowerRootMonicQuotient.lean` は、この基底を通常多項式商へ基底変更し、
+実拡張イデアル商とテンソルの標準同型で戻した。
+元の係数作用と商環作用のスカラー塔を代表元上で検証し、通常モニック商の冪基底と合成する。
+結果の基底の添字は `Fin f.natDegree × PowerRootFraction p hp`。
+正次数の場合、零係数環を分けて非空基底から忠実平坦性も得る。
+モニック f の像は、通常多項式環上の自由性による平坦性で非零因子となる。
+
+`PowerRootMonicPDFlat.lean` は標数 p の場合に、同じ実 fᵖ 商上の分冪表示環の
+自由性・忠実平坦性を合成し、無限 p 冪根変数内の分冪表示環の元の係数環上の性質を証明した。
+BS Rem 7.15（著者版 p.62）の具体的通常代数計算であり、原典の Prop 7.11 による経路は使わない。
+
+主要公開型（namespace `SerrePositivity.BhattScholze.Andre`）：
+
+```lean
+def powerRootPolynomialFractionBasis
+    (R : Type u) [CommRing R] (p : ℕ) (hp : 0 < p) :
+    letI := powerRootPolynomialBaseAlgebra R p hp
+    Module.Basis (PowerRootFraction p hp) R[X] (PowerRootPolynomial R p hp)
+
+def powerRootPolynomialQuotientBasis
+    (R : Type u) [CommRing R] (p : ℕ) (hp : 0 < p) (f : R[X]) (hf : f.Monic) :
+    Module.Basis (Fin f.natDegree × PowerRootFraction p hp) R
+      (PowerRootPolynomialQuotient R p hp f)
+
+theorem powerRootPolynomialPowerQuotient_free
+    (R : Type u) [CommRing R] (p : ℕ) (hp : 0 < p) (f : R[X]) (hf : f.Monic) :
+    Module.Free R (PowerRootPolynomialQuotient R p hp (f ^ p))
+
+theorem powerRootMonicDPPresentation_free
+    (R : Type u) [CommRing R] (p : ℕ) (hp : 0 < p)
+    (hprime : p.Prime) (hpR : (p : R) = 0) (f : R[X]) (hf : f.Monic) :
+    Module.Free R (PrincipalDPPresentation (PowerRootPolynomial R p hp)
+      (powerRootPolynomialBaseMap R p hp f))
+```
+
+`PowerRootPolynomialQuotient` の定義イデアルは f の標準評価像の主イデアルに一致する。
+従って fᵖ に適用した上記商は P/(f(Y₀)ᵖ) そのもの。
+`powerRootPolynomialPowerQuotient_faithfullyFlat` は同じ入力に `0 < f.natDegree` を加え、
+結論を `Module.FaithfullyFlat R (PowerRootPolynomialQuotient R p hp (f ^ p))` とする。
+`powerRootMonicDPPresentation_faithfullyFlat` も上記分冪表示環の入力に同じ正次数を加えた型。
+自由性だけには正次数・係数環の非零性を要求しない。多項式商の結果には標数の仮定も不要。
+残る要求は、分冪表示環を実 pd 包・具体的切断多項式表示に同定し、
+原典の prismatic envelope の Frobenius 引戻しの計算と照合する部分。
+指定出力の存在定理は E1.23 で証明済みだが、依頼全体の完成とはまだ数えない。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4359 jobs）。
+新規 23 公開宣言の `assert_no_sorry` を追加した専用監査は終了コード 0。
+生成宣言を含む 2808 宣言の推移的公理依存は標準 3 公理のみ。
+主要な基底・冪商の自由性と忠実平坦性・分冪表示環の自由性と忠実平坦性の
+公開型 6 本を `#print` で確認した（終了コード 0）。

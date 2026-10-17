@@ -427,6 +427,30 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialBasis_appl
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomial_free
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomial_adjoin_variables
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialBaseMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialBaseAlgebra
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialCoordinates
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialCoordinates_single
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialBaseMap_monomial
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialCoordinates_smul
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialCoordinatesPolynomialLinearEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialFractionBasis
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialFractionBasis_apply
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomial_free_over_polynomial
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialBase_isScalarTower
+assert_no_sorry SerrePositivity.BhattScholze.Andre.PowerRootPolynomialQuotient
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialQuotient_ideal
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialQuotient_isScalarTower
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialQuotientFractionBasis
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialQuotientBasis
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialQuotient_free
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialQuotient_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomial_monic_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialPowerQuotient_free
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialPowerQuotient_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootMonicDPPresentation_free
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootMonicDPPresentation_faithfullyFlat
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -510,7 +534,11 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.ArbitraryPerfectPrismMonicRootedExtension,
     `SerrePositivity.BhattScholze.Andre.MonicRootedPerfectoidExtension,
     `SerrePositivity.BhattScholze.Andre.PowerRootExponents,
-    `SerrePositivity.BhattScholze.Andre.PowerRootPolynomial]
+    `SerrePositivity.BhattScholze.Andre.PowerRootPolynomial,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPolynomialCoordinates,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPolynomialFractionBasis,
+    `SerrePositivity.BhattScholze.Andre.PowerRootMonicQuotient,
+    `SerrePositivity.BhattScholze.Andre.PowerRootMonicPDFlat]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
