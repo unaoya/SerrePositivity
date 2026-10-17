@@ -8328,6 +8328,47 @@ BS 7.14 のみである。一般の整な包含と A → E ← Rʳ 全体の alm
 商 R/J の分離性・完備性は仮定せず、零環・単位 ideal も含む。
 対象ビルドと両専用監査は成功し、全射性補題の公理は標準三公理のみである。
 
+#### KL-T：局所 perfectoid ideal の被覆合流と実 Tor 作用（2026-10-17）
+
+`CommutativeAlgebra/PerfectoidIdealCover.lean` の公開補題により、
+両立根族 `ρ : σ → ℕ → R` の最初の元の ideal が `g^N` を含めば、全 k について
+
+```lean
+perfectoidIdeal R p hR g ≤
+  (⨆ s, perfectoidIdeal R p hR (ρ s 0)) ⊔ Ideal.span {(p : R) ^ k}
+```
+
+を得る。実根族商の完備化が perfectoid である既存の証明を使い、その完備化への
+写像が g を零化することと、mod p^k の実評価写像を用いる。
+公開名は `SerrePositivity.perfectoidIdeal_le_ker_of_eq_zero`、
+`perfectoidIdeal_le_compatibleRootFamilyIdeal_sup_p_pow`、
+`perfectoidIdeal_le_iSup_sup_p_pow_of_rooted_cover`、
+`perfectoidIdeal_annihilates_of_rooted_cover`。
+最後の補題は p^k で消える任意の加群上で局所 ideal の零作用を元の ideal へ合流する。
+被覆や試験加群の有限性、g や p の正則性は要求しない。
+
+`CLMST/PerfectoidIdealTorCover.lean` は次の公開入口を提供する。
+
+- `SerrePositivity.CLMST.perfectoidIdeal_torCoefficientScalar_eq_zero_of_rooted_cover`：
+  固定した任意の p^k torsion 試験加群・任意次数について、同じ係数代数 C 上の
+  実 `torCoefficientScalarEndomorphism` の零性を合流する。
+- `perfectoidIdeal_powerTorsionTorInput_of_aic_cover`：基底 R が絶対整閉なら、
+  `d : σ → R` と `∃ N, g^N ∈ Ideal.span (Set.range d)` から、各 d の全 Tor 入力を
+  g の全 Tor 入力へ合流する。両立根は試験加群・精度・次数より先に一度選ぶ。
+- `perfectoidIdeal_powerTorsionTorInput_of_aic_principal_cover`：
+  `t : Finset (Localization.Away g)`、`Ideal.span (t : Set _) = ⊤` に対し、
+  元の `g * (IsLocalization.Away.sec g f).1` の局所入力を合流する。
+  既存の実被覆分子の冪包含をそのまま用い、局所化を元の基底に取り違えない。
+
+いずれも元の R、C、`algebraMap R C` の係数作用を維持し、全試験加群・全 k・
+全正次数・ideal の全元を量化する。C の perfectoid 性や有限性は追加しない。
+対象ビルドと専用監査 `scripts/audit_clmst_perfectoid_ideal_cover.lean` が成功。
+公開7補題と、実商での零化・異なる二生成元の合流・空被覆の適用例3件はすべて
+`assert_no_sorry` が通り、標準三公理のみ。
+これで **局所 Tor 入力から元の ideal の Tor 入力への被覆合流** は供給できた。
+局所入力自体を生む一般の整な包含 A → E ← Rʳ の almost 比較は引き続き未完成であり、
+Prop 2.4.9(a) や KL-Q を完成済みとはしない。
+
 #### Prop 2.4.7 専任系列：原典から D-I/U/Q への型付き受渡し（2026-10-17）
 
 本節は統合表 D-I・D-U・D-Q の実入力を固定する。未採用の別計画は根拠にしない。
