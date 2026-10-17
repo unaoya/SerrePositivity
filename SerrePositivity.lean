@@ -512,6 +512,8 @@ public import SerrePositivity.CLMST.Prop247RankClosedSides
 public import SerrePositivity.CLMST.Prop247FiniteComparisonValuation
 public import SerrePositivity.CLMST.Prop247ConstantRankDescent
 public import SerrePositivity.CLMST.Prop247RankComponentExcision
+public import SerrePositivity.CLMST.Prop247ConstantRank
+public import SerrePositivity.CLMST.Prop247GeneralRank
 public import SerrePositivity.CommutativeAlgebra.ScalarIsogenyTensor
 public import SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedModule
 public import SerrePositivity.HomologicalAlgebra.DerivedRestriction
