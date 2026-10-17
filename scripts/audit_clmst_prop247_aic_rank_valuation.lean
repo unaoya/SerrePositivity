@@ -1,0 +1,7 @@
+import SerrePositivity.CLMST.Prop247AicRankValuation
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.CLMST.prop247_aic_rankTargetProductMap_bijective
+assert_no_sorry SerrePositivity.CLMST.prop247_aic_rankTargetProduct_valuation_extension
+#print axioms SerrePositivity.CLMST.prop247_aic_rankTargetProductMap_bijective
+#print axioms SerrePositivity.CLMST.prop247_aic_rankTargetProduct_valuation_extension
