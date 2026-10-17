@@ -284,3 +284,36 @@ objectwise 擬同型性として明示している。
 
 続けて相対 tensor の導来比較を、この複体の導来係数変更と実際の主導来加群関手を
 使って構成する。必要な K-flat 計算モデル条件を明示し、その後 U15d に進む。
+
+
+## 2026-10-17：導来 tensor 比較と比較自然変換の整合性
+
+K-flat 複体での非有界計算は `09947d90` にコミット済み。
+`Derived/ScalarExtensionNaturality.lean` の `derivedExtensionAugmentation` は主導来加群関手と
+underived 係数拡大を結ぶ自然変換。`ScalarExtensionComplexNaturality.lean` は既存複体導来圏で
+対応する `complexDerivedExtensionAugmentation` を構成する。A-K-flat な複体上では成分が
+同型となり、`complexDerivedExtensionKFlatIso_naturality` が実際の導来関手の射との自然性を示す。
+
+`ScalarExtensionTensor.lean` の `derivedTensorBaseChange` は
+Lφ(M ⊗ᴸ_D N) ≅ (Lφ M) ⊗ᴸ_{D′} (φ N) を、任意の証明付き右射影解像度 P によって構成する。
+この式で左加群 N は選択済み計算モデルであり、その係数変更 φ N を無条件に Lφ N と
+同一視しない。必要な計算モデル仮定は次の二つを明示的に受け取る：
+
+1. `P ⊗_D N` が A 上 K-flat。
+2. `φ P` が D′ 上の右相対 K-flat。
+
+これらの仮定から、複体の導来係数変更と、係数変更後の実際の導来 tensor の両方の
+計算同型を合成する。任意の dg 圏でこれらの仮定が自動的に成り立つとは主張しない。
+U12e の不足する置換互換性は、ユーザー指定に従い明示仮定として保持する。
+同ファイルには、相対 K-flat な右加群での導来 tensor の underived 計算も含めた。
+
+`ScalarExtensionTensorCoherence.lean` の `derivedBalancedComparison` は一般モデルでは比較射、
+coend が A-K-flat なら同型。全 dg 自然な両変数の射との自然性、左右 representable の評価単位、
+複体パラメータの結合同型との可換図式を、実際の複体導来係数変更関手を含めて証明した。
+
+検証：`lake build SerrePositivity.DifferentialGraded.Checks.ScalarExtensionTensor` 成功
+（2902 jobs、警告なし）。主要17宣言の公理監査はすべて標準3公理のみ。
+新規 sorry・axiom・引用は0件。ルートは自分の import hunk のみ部分 stage。
+
+U15d へ進む。U12f の受入範囲は上記の計算モデル条件を含む。全体の完了参照は U15d の
+最終微分・単位・合成の検証後にだけ正本へ追加する。
