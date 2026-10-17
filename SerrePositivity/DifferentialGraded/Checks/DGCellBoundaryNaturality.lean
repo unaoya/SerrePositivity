@@ -1,0 +1,18 @@
+module
+public import SerrePositivity.DifferentialGraded.Resolution.Cells.BoundaryNaturality
+
+/-! # 任意位置のcell境界置換と先頭Hom作用の公理監査 -/
+@[expose] public section
+
+#print axioms SerrePositivity.DifferentialGraded.tensorJoin_action_cochain
+#print axioms SerrePositivity.DifferentialGraded.DGCellAttachment.Family.replaceHead
+#print axioms SerrePositivity.DifferentialGraded.DGCellAttachment.Family.replaceHead_closed
+#print axioms SerrePositivity.DifferentialGraded.DGCellAttachment.Family.replaceFirst_eq_head
+#print axioms SerrePositivity.DifferentialGraded.DGCellAttachment.Family.prependMap_replaceHead
+#print axioms SerrePositivity.DifferentialGraded.DGCellAttachment.Family.prependMap_replaceFirst
+#print axioms SerrePositivity.DifferentialGraded.DGCellAttachment.Family.replaceFace_nil
+#print axioms SerrePositivity.DifferentialGraded.DGCellAttachment.Family.replaceFace_zero
+#print axioms SerrePositivity.DifferentialGraded.DGCellAttachment.Family.replaceFace_succ
+#print axioms SerrePositivity.DifferentialGraded.DGCellAttachment.Family.prependMap_tail_hom
+#print axioms SerrePositivity.DifferentialGraded.DGCellAttachment.Family.prependMap_suffix_hom
+#print axioms SerrePositivity.DifferentialGraded.DGCellAttachment.Family.prependMap_replaceFace

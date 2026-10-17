@@ -8602,3 +8602,28 @@ Checks.DerivedBimoduleFullPentagon・Checks.StageEight・Checks.StageSeven・既
 二乗零の一般版、d+replacementと実際のdg圏cell付加、最終K-flat性、解像度の存在・比較は未完。
 この反交換補題だけでU12eを受入済みとせず、U12e受入後のU16と合流後のU15e/U17の目標を保持する。
 公開APIの名前・型の変更と共有一般論への新しい要求はない。§0の分担を維持する。
+
+
+### 17.189 U12e30：左端境界挿入への分解と全位置のHom作用自然性（2026-10-17）
+
+`Complexes/TensorJoinActionNaturality.lean`の**tensorJoin_action_cochain**は、
+前方二因子の合成と結合的な作用について任意次数cochainの自然性を証明する。
+具体的な非有界複体tensor上の補題であり、共有の任意V豊穣一般論を複製しない。
+型を小さくした補題を再利用することで、以下は標準heartbeat内で検査できる。
+
+`Resolution/Cells/BoundaryHead.lean`の**Family.replaceHead**は、左端生成元を指定境界に置き換え、
+後続pathへ元のHomとして作用させる次数+1 cochain。**replaceHead_closed**が閉性を与える。
+**replaceFirst_eq_head**は先頭置換をこの左端操作と既存Hom作用へ分解し、
+**prependMap_replaceHead/prependMap_replaceFirst**は前方Hom合成との自然性を証明する。
+元の豊穣合成とprependMapの結合則を使うため、隣接cellを扱う際にも適用できる。
+
+`BoundaryNaturality.lean`の**replaceFace_nil/replaceFace_zero/replaceFace_succ**は既存再帰定義の計算式。
+**prependMap_tail_hom/prependMap_suffix_hom**は後方自然性を全Hom複体のchain mapの等式にまとめ、
+**prependMap_replaceFace**が全ての置換位置で既存Hom作用との可換性を与える。
+生成元の次数・端点の制限、Smallやlocal K-flat仮定は不要。公開APIの名前・型の変更はない。
+
+Checks.DGCellBoundaryNaturalityの対象ビルドと主要12宣言の直接公理監査が成功。
+全宣言の公理は標準3公理のみ。監査累計3560宣言。
+今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全位置の自然性を得ただけでcell付加を受入済みとはしない。
+次に二重置換の反交換・相殺と最終Hom微分へ接続する。分担と合流順は§0のまま保持する。
