@@ -289,6 +289,17 @@
   新規6主要宣言の公理は標準3公理のみ。retract閉性も公開入口からimport済み。
   cone閉性、thick生成による全Hom比較、本質的全射は残る。
 
+## U14b.4：dg関手による全次数分裂の保存（2026-10-17）
+
+- `GradedSplitRelations.lean`：既存の全次数分裂を零次数Hom要素の4つの行列恒等式へ変換。
+- `ZeroHomComponents.lean` と `GradedSplitOfElements.lean`：微分と可換とは限らない零次数Hom要素から
+  全斉次作用と可換する次数付き成分を取り出し、行列恒等式から既存のModuleGradedSplitを復元。
+- `GradedSplitImage.lean`：任意の主dg加群間のdg関手について、全Hom写像を用い分裂要素を送り、
+  全次数分裂の保存を構成。chain mapでない分裂をchain mapと誤認していない。
+  coneのHom短完全列の比較に使用する。
+- `lake build SerrePositivity.DifferentialGraded.Endomorphism.ChecksGradedSplitImage` 成功。
+  新規14主要宣言の公理は標準3公理のみ。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
