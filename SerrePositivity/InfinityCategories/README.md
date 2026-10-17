@@ -246,3 +246,29 @@ missingComponent = composed(i) - ε(I,i) Σ_{j∈K\\{i}} ε(I,j)(deleted(j)-comp
 このデータはまだ充填単体ではない。欠けた面の成分を最上位方程式の解へ置き換えること、
 その変更後も既知方程式が保たれること、主残差恒等式による欠けた面自身の方程式、
 貼合せと `Quasicategory` instance が残る。N2 と N3〜N6 は引き続き未完了。
+
+## N2c：欠けた成分の補正と最上位方程式（2026-10-17、N2 は未完了）
+
+`Replace.lean` は一集合 M の成分だけを置き換える `SimplexData.replace` を与える。
+M を含まない像への制限と、M 自身の方程式の右辺は置換で変わらない。
+`EquationTransfer.lean` は各既知の面に一致する任意のデータが既知方程式を満たすことを証明し、
+欠けた面の成分を任意に置き換えた場合にも適用する。
+
+`TopCorrection.lean` は、I の内部点 i に対して M=I\\{i} の成分を f'_M に置き換えると
+
+```
+F'_I - F_I = ε(I,i) (f'_M - f_M)
+```
+
+となることを、有限和のうち i の削除項だけが変わることから示す。ここで F_I は方程式の右辺。
+`correctingHom` は `f'_M=f_M-ε(I,i)F_I` とし、`rhs_solveTop` は `F'_I=0` を証明する。
+既知データでは f_M=0 なので、これは N0 の最上位方程式の解と同じ補正である。
+
+`HornFilling.lean` の `HornData.fillerData` はこの補正を内部ホーンの既知データに適用する。
+既知の面との一致、既知の全方程式、最上位成分の零、最上位方程式を証明済み。
+残るのは欠けた面 M 自身の方程式である。
+
+`fillerOfMissingEquation` と `extensionOfMissingEquation` は、**その欠けた面の方程式を
+明示的な前提として**単体とホーン写像の延長を構成する。貼合せの証明には `horn.hom_ext` を用いる。
+この前提を満たす証明と主残差恒等式は未構成であり、無条件の内部ホーン充填と
+`Quasicategory` instance は未完了。N2 の完成とは数えず、N3〜N6 も未完了。

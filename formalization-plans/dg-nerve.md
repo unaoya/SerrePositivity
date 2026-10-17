@@ -1357,6 +1357,372 @@ N2 全体の完了とは数えない。N3〜N6 も未完了。
         (SerrePositivity.InfinityCategories.DGNerve.HornData.knownData σ).rhs I a b k hI ha hb hk
 ```
 
+### N2c 保存（2026-10-17、未知成分の補正と最上位方程式、N2 は未完了）
+
+`Replace.lean` は対象族を固定した一集合の成分の置換 `SimplexData.replace` と、その集合以外の
+成分の保存、像が指定集合を避ける引き戻しの保存、指定集合自身の右辺の保存を証明する。
+`EquationTransfer.lean` は一集合の方程式を `SimplexData.Equation` に束ね、面の制限が単体なら
+その像の集合で方程式が成り立つことを示す。`HornData.equation_of_faces` は既知の面への制限
+だけから既知方程式を回収する。`replace_missing_pullback_face` と `replace_missing_equation` は
+欠けた面の成分を任意に置き換えても、既知の面と既知方程式が保たれることを証明する。
+
+`TopCorrection.lean` の `term_replace_of_ne`、`term_replace_same`、`rhs_replace` は、
+I の内部点 i と M=I\{i} に対し `F'_I-F_I=ε(I,i)(f'_M-f_M)` を証明する。
+ここで F_I は単体の方程式の右辺。左右切断は両端を同時に含まないので M と異なり、
+有限和では i の削除項だけが変わる。`correctingHom` は `f'_M=f_M-ε(I,i)F_I` を与え、
+`rhs_solveTop` は補正後の右辺が零であることを示す。既知データでは f_M=0 なので、
+この補正は N0 の最上位方程式の解である。
+
+`HornFilling.lean` の `HornData.fillerData` は、内部ホーンの既知データにこの補正を適用する。
+`fillerData_pullback_face` は既知の面との一致、`fillerData_known_equation` は全ての既知方程式、
+`fillerData_top_zero` は最上位成分の零、`fillerData_top_equation` は最上位方程式を証明する。
+残る欠けた面の方程式を明示的な前提として、`fillerOfMissingEquation` は実際の単体を作り、
+`extensionOfMissingEquation` は米田対応と `horn.hom_ext` で元のホーン写像の延長を与える。
+**この前提付きの延長を、無条件の内部ホーン充填や N2 の完成とは数えない。**
+
+前提：dg 圏は `A : Type u`、`[CommRing A]`、`D : Type v`、`[DGCategory A D]`。
+補正は集合 I の端点 a,b と次数 k に加え `i ∈ I`、`a < i`、`i < b` を要求する。
+充填候補は `σ : Λ[n+2,i] ⟶ dgNerve A D`、`0 < i`、`i < Fin.last (n+2)` に対する。
+既知集合の方程式には `I ≠ univ`、`I ≠ univ.erase i` を要求する。
+末尾三宣言の単体・面の一致・延長には、追加で
+`(fillerData σ h0 hlast).Equation (univ.erase i)` という未証明の前提を要求する。
+全ての従属する端点・濃度・次数の証明は、以下の正確な型に表示した通り。
+
+検証：`set -e` と `set -o pipefail` の下で
+`lake build SerrePositivity.InfinityCategories.DGNerve` が 3349 jobs、終了コード 0。
+続く `lake env lean scripts/audit_dg_nerve.lean` も終了コード 0。
+全 197 件の明示的公開宣言（今回 28 件追加）と既存 dg 則 5 件、全 202 件の依存公理は
+`propext`・`Classical.choice`・`Quot.sound` のみ。新規四モジュールの対象ビルドに警告なし。
+ルートは変更せず、集約入口は `HornFilling` を公開する。
+
+未完了：主残差恒等式と、それによる `fillerData` の欠けた面自身の方程式の無条件の証明、
+その証明を適用した無条件の延長と `Quasicategory (dgNerve A D)` instance。
+貼合せの構成は上記の前提付きで検証したが、内部ホーンの充填存在はまだ証明していない。
+N2 全体と N3〜N6 は未完了。§3 の設計と他節は変更しない。
+
+今回の全公開宣言名・正確な型（`#check @...` の出力。`⋯` は N1a と同じく Lean が
+省略表示した命題証明引数。前提付きの結果の前提もそのまま表示する）：
+
+```lean
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.replace : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        {n : ℕ} →
+          (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData A D n) →
+            (M : Finset (Fin (n + 1))) →
+              ((a b : Fin (n + 1)) →
+                  (k : ℤ) →
+                    (hM : 2 ≤ M.card) →
+                      a = M.min' ⋯ →
+                        b = M.max' ⋯ →
+                          k = 2 - ↑M.card → ↑(SerrePositivity.DifferentialGraded.GradedHom A (s.obj a) (s.obj b) k)) →
+                SerrePositivity.InfinityCategories.DGNerve.SimplexData A D n
+
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.replace_hom_same : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {n : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData A D n) (M : Finset (Fin (n + 1)))
+  (f :
+    (a b : Fin (n + 1)) →
+      (k : ℤ) →
+        (hM : 2 ≤ M.card) →
+          a = M.min' ⋯ →
+            b = M.max' ⋯ → k = 2 - ↑M.card → ↑(SerrePositivity.DifferentialGraded.GradedHom A (s.obj a) (s.obj b) k))
+  (a b : Fin (n + 1)) (k : ℤ) (hM : 2 ≤ M.card) (ha : a = M.min' ⋯) (hb : b = M.max' ⋯) (hk : k = 2 - ↑M.card),
+  (s.replace M f).hom M a b k hM ha hb hk = f a b k hM ha hb hk
+
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.replace_hom_of_ne : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {n : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData A D n) (M : Finset (Fin (n + 1)))
+  (f :
+    (a b : Fin (n + 1)) →
+      (k : ℤ) →
+        (hM : 2 ≤ M.card) →
+          a = M.min' ⋯ →
+            b = M.max' ⋯ → k = 2 - ↑M.card → ↑(SerrePositivity.DifferentialGraded.GradedHom A (s.obj a) (s.obj b) k))
+  (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card) (ha : a = I.min' ⋯) (hb : b = I.max' ⋯)
+  (hk : k = 2 - ↑I.card), I ≠ M → (s.replace M f).hom I a b k hI ha hb hk = s.hom I a b k hI ha hb hk
+
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.replace_pullback_of_omits : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {m n : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData A D n) (M : Finset (Fin (n + 1)))
+  (f :
+    (a b : Fin (n + 1)) →
+      (k : ℤ) →
+        (hM : 2 ≤ M.card) →
+          a = M.min' ⋯ →
+            b = M.max' ⋯ → k = 2 - ↑M.card → ↑(SerrePositivity.DifferentialGraded.GradedHom A (s.obj a) (s.obj b) k))
+  (α : Fin (m + 1) →o Fin (n + 1)), ∀ j ∈ M, (∀ (x : Fin (m + 1)), α x ≠ j) → (s.replace M f).pullback α = s.pullback α
+
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.term_replace_self : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {n : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData A D n) (I : Finset (Fin (n + 1)))
+  (f :
+    (a b : Fin (n + 1)) →
+      (k : ℤ) →
+        (hI : 2 ≤ I.card) →
+          a = I.min' ⋯ →
+            b = I.max' ⋯ → k = 2 - ↑I.card → ↑(SerrePositivity.DifferentialGraded.GradedHom A (s.obj a) (s.obj b) k))
+  (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card) (ha : a = I.min' ⋯) (hb : b = I.max' ⋯) (hk : k = 2 - ↑I.card)
+  (j : Fin (n + 1)) (hj : j ∈ I) (haj : a < j) (hjb : j < b),
+  (s.replace I f).term I a b k hI ha hb hk j hj haj hjb = s.term I a b k hI ha hb hk j hj haj hjb
+
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_replace_self : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {n : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData A D n) (I : Finset (Fin (n + 1)))
+  (f :
+    (a b : Fin (n + 1)) →
+      (k : ℤ) →
+        (hI : 2 ≤ I.card) →
+          a = I.min' ⋯ →
+            b = I.max' ⋯ → k = 2 - ↑I.card → ↑(SerrePositivity.DifferentialGraded.GradedHom A (s.obj a) (s.obj b) k))
+  (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card) (ha : a = I.min' ⋯) (hb : b = I.max' ⋯) (hk : k = 2 - ↑I.card),
+  (s.replace I f).rhs I a b k hI ha hb hk = s.rhs I a b k hI ha hb hk
+
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.Equation : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        {n : ℕ} → SerrePositivity.InfinityCategories.DGNerve.SimplexData A D n → Finset (Fin (n + 1)) → Prop
+
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.equation_image_of_pullback : ∀ {A : Type u_1}
+  [inst : CommRing A] {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {m n : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData A D n) (α : Fin (m + 1) →o Fin (n + 1))
+  (t : SerrePositivity.InfinityCategories.DGNerve.Simplex A D m),
+  s.pullback α = t.toSimplexData → ∀ (J : Finset (Fin (m + 1))), Set.InjOn ⇑α ↑J → s.Equation (Finset.image (⇑α) J)
+
+@SerrePositivity.InfinityCategories.DGNerve.HornData.equation_of_faces : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {n : ℕ} {i : Fin (n + 3)}
+  (σ : (SSet.horn (n + 2) i).toSSet ⟶ SerrePositivity.InfinityCategories.dgNerve A D)
+  (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData A D (n + 2)),
+  (∀ (j : Fin (n + 3)) (hji : j ≠ i),
+      s.pullback j.succAboveOrderEmb.toOrderHom =
+        ((CategoryTheory.ConcreteCategory.hom (σ.app (Opposite.op { len := n + 1 })))
+            (SSet.horn.face i j hji)).toSimplexData) →
+    ∀ (I : Finset (Fin (n + 3))), I ≠ Finset.univ → I ≠ Finset.univ.erase i → s.Equation I
+
+@SerrePositivity.InfinityCategories.DGNerve.HornData.replace_missing_pullback_face : ∀ {A : Type u_1}
+  [inst : CommRing A] {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {n : ℕ}
+  {i : Fin (n + 3)} (σ : (SSet.horn (n + 2) i).toSSet ⟶ SerrePositivity.InfinityCategories.dgNerve A D)
+  (f :
+    (a b : Fin (n + 3)) →
+      (k : ℤ) →
+        (hM : 2 ≤ (Finset.univ.erase i).card) →
+          a = (Finset.univ.erase i).min' ⋯ →
+            b = (Finset.univ.erase i).max' ⋯ →
+              k = 2 - ↑(Finset.univ.erase i).card →
+                ↑(SerrePositivity.DifferentialGraded.GradedHom A
+                    (SerrePositivity.InfinityCategories.DGNerve.HornData.vertexObj σ a)
+                    (SerrePositivity.InfinityCategories.DGNerve.HornData.vertexObj σ b) k))
+  (j : Fin (n + 3)) (hji : j ≠ i),
+  ((SerrePositivity.InfinityCategories.DGNerve.HornData.knownData σ).replace (Finset.univ.erase i) f).pullback
+      j.succAboveOrderEmb.toOrderHom =
+    ((CategoryTheory.ConcreteCategory.hom (σ.app (Opposite.op { len := n + 1 })))
+        (SSet.horn.face i j hji)).toSimplexData
+
+@SerrePositivity.InfinityCategories.DGNerve.HornData.replace_missing_equation : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {n : ℕ} {i : Fin (n + 3)}
+  (σ : (SSet.horn (n + 2) i).toSSet ⟶ SerrePositivity.InfinityCategories.dgNerve A D)
+  (f :
+    (a b : Fin (n + 3)) →
+      (k : ℤ) →
+        (hM : 2 ≤ (Finset.univ.erase i).card) →
+          a = (Finset.univ.erase i).min' ⋯ →
+            b = (Finset.univ.erase i).max' ⋯ →
+              k = 2 - ↑(Finset.univ.erase i).card →
+                ↑(SerrePositivity.DifferentialGraded.GradedHom A
+                    (SerrePositivity.InfinityCategories.DGNerve.HornData.vertexObj σ a)
+                    (SerrePositivity.InfinityCategories.DGNerve.HornData.vertexObj σ b) k))
+  (I : Finset (Fin (n + 3))),
+  I ≠ Finset.univ →
+    I ≠ Finset.univ.erase i →
+      ((SerrePositivity.InfinityCategories.DGNerve.HornData.knownData σ).replace (Finset.univ.erase i) f).Equation I
+
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.term_replace_of_ne : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {n : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData A D n) (I : Finset (Fin (n + 1))) (a b : Fin (n + 1))
+  (k : ℤ) (hI : 2 ≤ I.card) (ha : a = I.min' ⋯) (hb : b = I.max' ⋯) (hk : k = 2 - ↑I.card),
+  ∀ i ∈ I,
+    a < i →
+      i < b →
+        ∀
+          (f :
+            (c d : Fin (n + 1)) →
+              (q : ℤ) →
+                (hM : 2 ≤ (I.erase i).card) →
+                  c = (I.erase i).min' ⋯ →
+                    d = (I.erase i).max' ⋯ →
+                      q = 2 - ↑(I.erase i).card →
+                        ↑(SerrePositivity.DifferentialGraded.GradedHom A (s.obj c) (s.obj d) q))
+          (j : Fin (n + 1)) (hj : j ∈ I) (haj : a < j) (hjb : j < b),
+          j ≠ i →
+            (s.replace (I.erase i) f).term I a b k hI ha hb hk j hj haj hjb = s.term I a b k hI ha hb hk j hj haj hjb
+
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.term_replace_same : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {n : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData A D n) (I : Finset (Fin (n + 1))) (a b : Fin (n + 1))
+  (k : ℤ) (hI : 2 ≤ I.card) (ha : a = I.min' ⋯) (hb : b = I.max' ⋯) (hk : k = 2 - ↑I.card) (i : Fin (n + 1))
+  (hi : i ∈ I) (hai : a < i) (hib : i < b)
+  (f :
+    (c d : Fin (n + 1)) →
+      (q : ℤ) →
+        (hM : 2 ≤ (I.erase i).card) →
+          c = (I.erase i).min' ⋯ →
+            d = (I.erase i).max' ⋯ →
+              q = 2 - ↑(I.erase i).card → ↑(SerrePositivity.DifferentialGraded.GradedHom A (s.obj c) (s.obj d) q)),
+  (s.replace (I.erase i) f).term I a b k hI ha hb hk i hi hai hib - s.term I a b k hI ha hb hk i hi hai hib =
+    SerrePositivity.InfinityCategories.DGNerve.Index.sign I i •
+      (f a b (k + 1) ⋯ ⋯ ⋯ ⋯ - s.hom (I.erase i) a b (k + 1) ⋯ ⋯ ⋯ ⋯)
+
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_replace : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {n : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData A D n) (I : Finset (Fin (n + 1))) (a b : Fin (n + 1))
+  (k : ℤ) (hI : 2 ≤ I.card) (ha : a = I.min' ⋯) (hb : b = I.max' ⋯) (hk : k = 2 - ↑I.card) (i : Fin (n + 1))
+  (hi : i ∈ I) (hai : a < i) (hib : i < b)
+  (f :
+    (c d : Fin (n + 1)) →
+      (q : ℤ) →
+        (hM : 2 ≤ (I.erase i).card) →
+          c = (I.erase i).min' ⋯ →
+            d = (I.erase i).max' ⋯ →
+              q = 2 - ↑(I.erase i).card → ↑(SerrePositivity.DifferentialGraded.GradedHom A (s.obj c) (s.obj d) q)),
+  (s.replace (I.erase i) f).rhs I a b k hI ha hb hk - s.rhs I a b k hI ha hb hk =
+    SerrePositivity.InfinityCategories.DGNerve.Index.sign I i •
+      (f a b (k + 1) ⋯ ⋯ ⋯ ⋯ - s.hom (I.erase i) a b (k + 1) ⋯ ⋯ ⋯ ⋯)
+
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.correctingHom : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        {n : ℕ} →
+          (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData A D n) →
+            (I : Finset (Fin (n + 1))) →
+              (a b : Fin (n + 1)) →
+                (k : ℤ) →
+                  (hI : 2 ≤ I.card) →
+                    a = I.min' ⋯ →
+                      b = I.max' ⋯ →
+                        k = 2 - ↑I.card →
+                          (i : Fin (n + 1)) →
+                            i ∈ I →
+                              a < i →
+                                i < b →
+                                  (c d : Fin (n + 1)) →
+                                    (q : ℤ) →
+                                      (hM : 2 ≤ (I.erase i).card) →
+                                        c = (I.erase i).min' ⋯ →
+                                          d = (I.erase i).max' ⋯ →
+                                            q = 2 - ↑(I.erase i).card →
+                                              ↑(SerrePositivity.DifferentialGraded.GradedHom A (s.obj c) (s.obj d) q)
+
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.correctingHom_self : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {n : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData A D n) (I : Finset (Fin (n + 1))) (a b : Fin (n + 1))
+  (k : ℤ) (hI : 2 ≤ I.card) (ha : a = I.min' ⋯) (hb : b = I.max' ⋯) (hk : k = 2 - ↑I.card) (i : Fin (n + 1))
+  (hi : i ∈ I) (hai : a < i) (hib : i < b) (hM : 2 ≤ (I.erase i).card) (haM : a = (I.erase i).min' ⋯)
+  (hbM : b = (I.erase i).max' ⋯) (hkM : k + 1 = 2 - ↑(I.erase i).card),
+  s.correctingHom I a b k hI ha hb hk i hi hai hib a b (k + 1) hM haM hbM hkM =
+    s.hom (I.erase i) a b (k + 1) hM haM hbM hkM -
+      SerrePositivity.InfinityCategories.DGNerve.Index.sign I i • s.rhs I a b k hI ha hb hk
+
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.solveTop : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        {n : ℕ} →
+          SerrePositivity.InfinityCategories.DGNerve.SimplexData A D n →
+            (I : Finset (Fin (n + 1))) →
+              (a b : Fin (n + 1)) →
+                (k : ℤ) →
+                  (hI : 2 ≤ I.card) →
+                    a = I.min' ⋯ →
+                      b = I.max' ⋯ →
+                        k = 2 - ↑I.card →
+                          (i : Fin (n + 1)) →
+                            i ∈ I → a < i → i < b → SerrePositivity.InfinityCategories.DGNerve.SimplexData A D n
+
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_solveTop : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {n : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData A D n) (I : Finset (Fin (n + 1))) (a b : Fin (n + 1))
+  (k : ℤ) (hI : 2 ≤ I.card) (ha : a = I.min' ⋯) (hb : b = I.max' ⋯) (hk : k = 2 - ↑I.card) (i : Fin (n + 1))
+  (hi : i ∈ I) (hai : a < i) (hib : i < b), (s.solveTop I a b k hI ha hb hk i hi hai hib).rhs I a b k hI ha hb hk = 0
+
+SerrePositivity.InfinityCategories.DGNerve.HornData.univ_min_zero : ∀ (n : ℕ) (h : Finset.univ.Nonempty),
+  0 = Finset.univ.min' h
+
+SerrePositivity.InfinityCategories.DGNerve.HornData.univ_max_last : ∀ (n : ℕ) (h : Finset.univ.Nonempty),
+  Fin.last (n + 2) = Finset.univ.max' h
+
+@SerrePositivity.InfinityCategories.DGNerve.HornData.fillerData : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        {n : ℕ} →
+          {i : Fin (n + 3)} →
+            ((SSet.horn (n + 2) i).toSSet ⟶ SerrePositivity.InfinityCategories.dgNerve A D) →
+              0 < i → i < Fin.last (n + 2) → SerrePositivity.InfinityCategories.DGNerve.SimplexData A D (n + 2)
+
+@SerrePositivity.InfinityCategories.DGNerve.HornData.fillerData_pullback_face : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {n : ℕ} {i : Fin (n + 3)}
+  (σ : (SSet.horn (n + 2) i).toSSet ⟶ SerrePositivity.InfinityCategories.dgNerve A D) (h0 : 0 < i)
+  (hlast : i < Fin.last (n + 2)) (j : Fin (n + 3)) (hji : j ≠ i),
+  (SerrePositivity.InfinityCategories.DGNerve.HornData.fillerData σ h0 hlast).pullback j.succAboveOrderEmb.toOrderHom =
+    ((CategoryTheory.ConcreteCategory.hom (σ.app (Opposite.op { len := n + 1 })))
+        (SSet.horn.face i j hji)).toSimplexData
+
+@SerrePositivity.InfinityCategories.DGNerve.HornData.fillerData_known_equation : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {n : ℕ} {i : Fin (n + 3)}
+  (σ : (SSet.horn (n + 2) i).toSSet ⟶ SerrePositivity.InfinityCategories.dgNerve A D) (h0 : 0 < i)
+  (hlast : i < Fin.last (n + 2)) (I : Finset (Fin (n + 3))),
+  I ≠ Finset.univ →
+    I ≠ Finset.univ.erase i → (SerrePositivity.InfinityCategories.DGNerve.HornData.fillerData σ h0 hlast).Equation I
+
+@SerrePositivity.InfinityCategories.DGNerve.HornData.fillerData_top_zero : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {n : ℕ} {i : Fin (n + 3)}
+  (σ : (SSet.horn (n + 2) i).toSSet ⟶ SerrePositivity.InfinityCategories.dgNerve A D) (h0 : 0 < i)
+  (hlast : i < Fin.last (n + 2)) (a b : Fin (n + 3)) (k : ℤ) (hI : 2 ≤ Finset.univ.card) (ha : a = Finset.univ.min' ⋯)
+  (hb : b = Finset.univ.max' ⋯) (hk : k = 2 - ↑Finset.univ.card),
+  (SerrePositivity.InfinityCategories.DGNerve.HornData.fillerData σ h0 hlast).hom Finset.univ a b k hI ha hb hk = 0
+
+@SerrePositivity.InfinityCategories.DGNerve.HornData.fillerData_top_equation : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {n : ℕ} {i : Fin (n + 3)}
+  (σ : (SSet.horn (n + 2) i).toSSet ⟶ SerrePositivity.InfinityCategories.dgNerve A D) (h0 : 0 < i)
+  (hlast : i < Fin.last (n + 2)),
+  (SerrePositivity.InfinityCategories.DGNerve.HornData.fillerData σ h0 hlast).Equation Finset.univ
+
+@SerrePositivity.InfinityCategories.DGNerve.HornData.fillerOfMissingEquation : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        {n : ℕ} →
+          {i : Fin (n + 3)} →
+            (σ : (SSet.horn (n + 2) i).toSSet ⟶ SerrePositivity.InfinityCategories.dgNerve A D) →
+              (h0 : 0 < i) →
+                (hlast : i < Fin.last (n + 2)) →
+                  (SerrePositivity.InfinityCategories.DGNerve.HornData.fillerData σ h0 hlast).Equation
+                      (Finset.univ.erase i) →
+                    SerrePositivity.InfinityCategories.DGNerve.Simplex A D (n + 2)
+
+@SerrePositivity.InfinityCategories.DGNerve.HornData.fillerOfMissingEquation_face : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {n : ℕ} {i : Fin (n + 3)}
+  (σ : (SSet.horn (n + 2) i).toSSet ⟶ SerrePositivity.InfinityCategories.dgNerve A D) (h0 : 0 < i)
+  (hlast : i < Fin.last (n + 2))
+  (hmissing :
+    (SerrePositivity.InfinityCategories.DGNerve.HornData.fillerData σ h0 hlast).Equation (Finset.univ.erase i))
+  (j : Fin (n + 3)) (hji : j ≠ i),
+  (CategoryTheory.ConcreteCategory.hom
+        (CategoryTheory.SimplicialObject.δ (SerrePositivity.InfinityCategories.dgNerve A D) j))
+      (SerrePositivity.InfinityCategories.DGNerve.HornData.fillerOfMissingEquation σ h0 hlast hmissing) =
+    (CategoryTheory.ConcreteCategory.hom (σ.app (Opposite.op { len := n + 1 }))) (SSet.horn.face i j hji)
+
+@SerrePositivity.InfinityCategories.DGNerve.HornData.extensionOfMissingEquation : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {n : ℕ} {i : Fin (n + 3)}
+  (σ : (SSet.horn (n + 2) i).toSSet ⟶ SerrePositivity.InfinityCategories.dgNerve A D) (h0 : 0 < i)
+  (hlast : i < Fin.last (n + 2)),
+  (SerrePositivity.InfinityCategories.DGNerve.HornData.fillerData σ h0 hlast).Equation (Finset.univ.erase i) →
+    ∃ τ, σ = CategoryTheory.CategoryStruct.comp (SSet.horn (n + 2) i).ι τ
+```
+
 ## 6. 次のマイルストーン D（本計画の範囲外）
 
 - Semifree(S) を `DGFullSubcategory`（`moduleSemifree` または一点 dg 圏上の複体版）として置き、

@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.DGNerve.Basic
 public import SerrePositivity.InfinityCategories.DGNerve.Triangle
 public import SerrePositivity.InfinityCategories.DGNerve.Computations
-public import SerrePositivity.InfinityCategories.DGNerve.HornPartial
+public import SerrePositivity.InfinityCategories.DGNerve.HornFilling
 public import SerrePositivity.InfinityCategories.DGNerve.Residual
 public import SerrePositivity.InfinityCategories.DGNerve.HornEquation
 

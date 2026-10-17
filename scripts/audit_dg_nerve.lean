@@ -184,6 +184,34 @@ dg nerve は構成済み。ホーン充填の完成をこの監査から主張�
 #print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.knownData_pullback_face
 #print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.knownData_equation_image
 #print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.knownData_equation
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.replace
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.replace_hom_same
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.replace_hom_of_ne
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.replace_pullback_of_omits
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.term_replace_self
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_replace_self
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.Equation
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.equation_image_of_pullback
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.equation_of_faces
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.replace_missing_pullback_face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.replace_missing_equation
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.term_replace_of_ne
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.term_replace_same
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_replace
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.correctingHom
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.correctingHom_self
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.solveTop
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_solveTop
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.univ_min_zero
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.univ_max_last
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.fillerData
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.fillerData_pullback_face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.fillerData_known_equation
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.fillerData_top_zero
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.fillerData_top_equation
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.fillerOfMissingEquation
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.fillerOfMissingEquation_face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.extensionOfMissingEquation
 
 #check @SerrePositivity.InfinityCategories.DGNerve.compose_zero
 #check @SerrePositivity.InfinityCategories.DGNerve.zero_compose
@@ -354,3 +382,31 @@ dg nerve は構成済み。ホーン充填の完成をこの監査から主張�
 #check @SerrePositivity.InfinityCategories.DGNerve.HornData.knownData_pullback_face
 #check @SerrePositivity.InfinityCategories.DGNerve.HornData.knownData_equation_image
 #check @SerrePositivity.InfinityCategories.DGNerve.HornData.knownData_equation
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.replace
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.replace_hom_same
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.replace_hom_of_ne
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.replace_pullback_of_omits
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.term_replace_self
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_replace_self
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.Equation
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.equation_image_of_pullback
+#check @SerrePositivity.InfinityCategories.DGNerve.HornData.equation_of_faces
+#check @SerrePositivity.InfinityCategories.DGNerve.HornData.replace_missing_pullback_face
+#check @SerrePositivity.InfinityCategories.DGNerve.HornData.replace_missing_equation
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.term_replace_of_ne
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.term_replace_same
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_replace
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.correctingHom
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.correctingHom_self
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.solveTop
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_solveTop
+#check @SerrePositivity.InfinityCategories.DGNerve.HornData.univ_min_zero
+#check @SerrePositivity.InfinityCategories.DGNerve.HornData.univ_max_last
+#check @SerrePositivity.InfinityCategories.DGNerve.HornData.fillerData
+#check @SerrePositivity.InfinityCategories.DGNerve.HornData.fillerData_pullback_face
+#check @SerrePositivity.InfinityCategories.DGNerve.HornData.fillerData_known_equation
+#check @SerrePositivity.InfinityCategories.DGNerve.HornData.fillerData_top_zero
+#check @SerrePositivity.InfinityCategories.DGNerve.HornData.fillerData_top_equation
+#check @SerrePositivity.InfinityCategories.DGNerve.HornData.fillerOfMissingEquation
+#check @SerrePositivity.InfinityCategories.DGNerve.HornData.fillerOfMissingEquation_face
+#check @SerrePositivity.InfinityCategories.DGNerve.HornData.extensionOfMissingEquation
