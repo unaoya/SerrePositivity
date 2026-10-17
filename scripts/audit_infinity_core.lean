@@ -38,3 +38,8 @@ import SerrePositivity.InfinityCategories.Core
 #print axioms SerrePositivity.InfinityCategories.homotopyNatTrans
 #print axioms SerrePositivity.InfinityCategories.homotopyNatTrans_app
 #print axioms SerrePositivity.InfinityCategories.homotopyNatTransOfEndpoints
+
+#check @SerrePositivity.InfinityCategories.nerveHomotopyCategoryEquivalence
+#check @SerrePositivity.InfinityCategories.nerveBridge_map_edge
+#print axioms SerrePositivity.InfinityCategories.nerveHomotopyCategoryEquivalence
+#print axioms SerrePositivity.InfinityCategories.nerveBridge_map_edge

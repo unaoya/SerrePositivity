@@ -178,3 +178,27 @@ A1d と A2a〜A2i は未完了。
 対象 `lake build SerrePositivity.InfinityCategories.Core` と
 `lake env lean scripts/audit_infinity_core.lean` は終了コード 0。
 累計 14 公開宣言を監査し、許された標準三公理以外への依存はない。
+
+### A1d（2026-10-17）：通常の圏の nerve での検査
+
+`Core/Checks.lean` の公開宣言は次の 2 件。
+namespace は `SerrePositivity.InfinityCategories`。宇宙 `u` は任意。
+`open CategoryTheory SSet SSet.Truncated` の下での正確な型：
+
+```lean
+nerveHomotopyCategoryEquivalence (C : Type u) [Category.{u} C] :
+  HomotopyCategory₂ ((truncation 2).obj (nerve C)) ≌ C
+
+nerveBridge_map_edge {C : Type u} [Category.{u} C] {x y : C} (f : x ⟶ y) :
+  (homotopyCategoryBridge (nerve C)).functor.map
+    (HomotopyCategory₂.homMk (CategoryTheory.nerve.edgeMk f).toTruncated) =
+      SSet.HomotopyCategory.homMk (CategoryTheory.nerve.edgeMk f)
+```
+
+前提は通常の小さい圏のみ。A1a の同値と nerve 随伴の可逆な余単位を合成した。
+辺では A1a が元の射に対応する辺を保持することを定義から確認した。
+原典：HTT §1.2.3、Kerodon Example 1.4.5.4。
+`lake build SerrePositivity.InfinityCategories.Core` と
+`lake env lean scripts/audit_infinity_core.lean` は終了コード 0。
+累計全 16 公開宣言が標準三公理のみ。A1a〜A1d は完了。
+A2a〜A2i は未完了であり、nerve における極限の一致はこの工程に含めない。

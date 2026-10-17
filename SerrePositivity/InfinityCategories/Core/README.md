@@ -22,6 +22,6 @@ HTT §1.2.3、Kerodon [Construction 1.4.5.1](https://kerodon.net/tag/004A) と
 ## 検証と現在の範囲
 
 A1a の比較同値、A1b の関手性・自然性、A1c のホモトピーからの自然変換を実装。
-A1d と A2 は未完了。
+A1d の通常の圏の nerve での具体化も実装。A1a〜A1d は完了、A2 は未完了。
 対象ビルド後、`lake env lean scripts/audit_infinity_core.lean` で
 全ての明示的公開宣言の型と公理を確認する。
