@@ -9,6 +9,8 @@ public import SerrePositivity.InfinityCategories.Derived.BasisCut
 public import SerrePositivity.InfinityCategories.Derived.SemifreeBasisLayers
 public import SerrePositivity.InfinityCategories.Derived.SplitSequence
 public import SerrePositivity.InfinityCategories.Derived.SphereBasis
+public import SerrePositivity.InfinityCategories.Derived.FiltrationCoordinates
+public import SerrePositivity.InfinityCategories.Derived.SemifreeBasisEquivalence
 public import SerrePositivity.InfinityCategories.Derived.SemifreeBasisFiltration
 public import SerrePositivity.InfinityCategories.Derived.SemifreeKProjective
 public import SerrePositivity.InfinityCategories.Derived.SemifreeResolution

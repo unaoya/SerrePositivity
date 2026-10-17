@@ -181,10 +181,33 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.spherePresentation_degree_free
 #print axioms SerrePositivity.InfinityCategories.spherePresentation_d
 
+#print axioms SerrePositivity.InfinityCategories.SemifreeFiltration.splitSequence
+#print axioms SerrePositivity.InfinityCategories.SemifreeFiltration.degreeCocone
+#print axioms SerrePositivity.InfinityCategories.SemifreeFiltration.degreeDiagramIso
+#print axioms SerrePositivity.InfinityCategories.SemifreeFiltration.degreeIsColimit
+#print axioms SerrePositivity.InfinityCategories.SemifreeFiltration.degreeLinearEquiv
+#print axioms SerrePositivity.InfinityCategories.SemifreeFiltration.piece_free
+#print axioms SerrePositivity.InfinityCategories.SemifreeFiltration.stageLeg
+#print axioms SerrePositivity.InfinityCategories.SemifreeFiltration.degreeLinearEquiv_stageLeg
+#print axioms SerrePositivity.InfinityCategories.SemifreeFiltration.degreeLinearEquiv_symm_lof
+#print axioms SerrePositivity.InfinityCategories.SemifreeFiltration.pieceBasis
+#print axioms SerrePositivity.InfinityCategories.SemifreeFiltration.basis
+#print axioms SerrePositivity.InfinityCategories.SemifreeFiltration.basis_repr
+#print axioms SerrePositivity.InfinityCategories.SemifreeFiltration.basis_apply
+#print axioms SerrePositivity.InfinityCategories.SemifreeFiltration.degreeLinearEquiv_symm_lof_zero
+#print axioms SerrePositivity.InfinityCategories.SemifreeFiltration.degreeLinearEquiv_symm_lof_succ
+#print axioms SerrePositivity.InfinityCategories.SemifreeFiltration.stageLeg_zero_d
+#print axioms SerrePositivity.InfinityCategories.SemifreeFiltration.section_d_coordinates
+#print axioms SerrePositivity.InfinityCategories.SemifreeFiltration.toBasis
+#print axioms SerrePositivity.InfinityCategories.complexSemifree_nonempty_basis
+#print axioms SerrePositivity.InfinityCategories.complexSemifree_iff_nonempty_basis
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.FiltrationCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.SemifreeBasisEquivalence,
     `SerrePositivity.InfinityCategories.Derived.SplitSequence,
     `SerrePositivity.InfinityCategories.Derived.SphereBasis,
     `SerrePositivity.InfinityCategories.Derived.Semifree,

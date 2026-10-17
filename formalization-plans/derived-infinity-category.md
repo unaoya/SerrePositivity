@@ -738,3 +738,83 @@ spherePresentation_d {M : ModuleCategory S PUnit.{1}}
 公理監査は終了コード0、18モジュール398宣言すべて標準3公理のみ。
 未完了：filtration の座標への接続、semibasis の必要性・同値、任意の射の cone 閉性。
 これらを完成扱いにせず、続行する。
+
+
+### D2h・既存 filtration と semibasis の両向き同値（2026-10-18）
+
+完了。namespace `SerrePositivity.InfinityCategories`。共通前提は
+`{S : Type u} [CommRing S]`。`SemifreeFiltration` 名前空間の宣言では
+`{M : ModuleCategory S PUnit.{1}} (F : ModuleSemifreeFiltration S PUnit.{1} M)`。
+公開型は以下（各宣言に共通変数を補う）：
+
+```lean
+splitSequence (k : ℤ) : SplitModuleSequence S
+degreeCocone (k : ℤ) : Cocone (Functor.ofSequence ((splitSequence F) k).inclusion)
+degreeDiagramIso (k : ℤ) :
+    Functor.ofSequence F.transition ⋙ moduleEvaluation S PUnit.{1} PUnit.unit ⋙
+      HomologicalComplex.eval (ModuleCat S) (.up ℤ) k ≅
+      Functor.ofSequence ((splitSequence F) k).inclusion
+degreeIsColimit (k : ℤ) : IsColimit ((degreeCocone F) k)
+degreeLinearEquiv (k : ℤ) :
+    ((moduleEvaluation S PUnit.{1} PUnit.unit).obj M).X k ≃ₗ[S]
+      ⨁ n, ((splitSequence F) k).piece n
+piece_free (k : ℤ) (n : ℕ) : Module.Free S (((splitSequence F) k).piece n)
+stageLeg (n : ℕ) : complexSemifreeStage S F n ⟶
+    (moduleEvaluation S PUnit.{1} PUnit.unit).obj M
+degreeLinearEquiv_stageLeg (k : ℤ) (n : ℕ)
+    (x : (complexSemifreeStage S F n).X k) :
+    degreeLinearEquiv F k (((stageLeg F n).f k).hom x) =
+      (splitSequence F k).coordinates n x
+degreeLinearEquiv_symm_lof (k : ℤ) (n : ℕ)
+    (x : (splitSequence F k).piece n) :
+    (degreeLinearEquiv F k).symm
+      (DirectSum.lof S ℕ (fun n => (splitSequence F k).piece n) n x) =
+    (((moduleEvaluation S PUnit.{1} PUnit.unit).map F.iso.hom).f k).hom
+      ((splitSequence F k).pieceMap (degreeCocone F k) n x)
+pieceBasis (k : ℤ) (n : ℕ) :
+    Module.Basis (letI
+basis (k : ℤ)
+basis_repr (k : ℤ)
+    (x : ((moduleEvaluation S PUnit.{1} PUnit.unit).obj M).X k)
+    (a : Σ n, letI
+basis_apply (k : ℤ)
+    (a : Σ n, letI
+degreeLinearEquiv_symm_lof_zero (k : ℤ)
+    (x : (complexSemifreeStage S F 0).X k) :
+    (degreeLinearEquiv F k).symm
+      (DirectSum.lof S ℕ (fun n => (splitSequence F k).piece n) 0 x) =
+      ((stageLeg F 0).f k).hom x
+degreeLinearEquiv_symm_lof_succ (k : ℤ) (n : ℕ)
+    (x : (complexSemifreeQuotient S F n).X k) :
+    (degreeLinearEquiv F k).symm
+      (DirectSum.lof S ℕ (fun n => (splitSequence F k).piece n) (n + 1) x) =
+      ((stageLeg F (n + 1)).f k).hom (((F.split n).section_ PUnit.unit k).hom x)
+stageLeg_zero_d (k : ℤ) (x : (complexSemifreeStage S F 0).X k) :
+    ((((moduleEvaluation S PUnit.{1} PUnit.unit).obj M).d k (k + 1)).hom)
+      (((stageLeg F 0).f k).hom x) = 0
+section_d_coordinates (k : ℤ) (n j : ℕ) (hj : n < j)
+    (x : (complexSemifreeQuotient S F n).X k) :
+    degreeLinearEquiv F (k + 1)
+      ((((moduleEvaluation S PUnit.{1} PUnit.unit).obj M).d k (k + 1)).hom
+        (((stageLeg F (n + 1)).f k).hom
+          (((F.split n).section_ PUnit.unit k).hom x))) j = 0
+toBasis (F : ModuleSemifreeFiltration S PUnit.{1} M) :
+    ComplexSemifreeBasis S ((moduleEvaluation S PUnit.{1} PUnit.unit).obj M)
+complexSemifree_nonempty_basis {P : Complex S} (hP : complexSemifree S P) :
+    Nonempty (ComplexSemifreeBasis S P)
+complexSemifree_iff_nonempty_basis (P : Complex S) :
+    complexSemifree S P ↔ Nonempty (ComplexSemifreeBasis S P)
+```
+
+主定理の完全な型：
+```lean
+complexSemifree_iff_nonempty_basis {S : Type u} [CommRing S] (P : Complex S) :
+  complexSemifree S P ↔ Nonempty (ComplexSemifreeBasis S P)
+```
+有界性、有限生成性、射による filtration 保存は仮定しない。
+初期段および商の基底に段番号を与え、商の微分零から厳密な高さ下降を証明した。
+`complexSemifree` の定義は変更していない。
+対象集約ビルドは終了コード0（3771 jobs）、公理監査は終了コード0。
+20モジュール442宣言は標準3公理のみ。
+未完了：cone の実際の基底への高さの適用と任意の射の無条件 cone 閉性。
+D2h 全体の完了とは数えず、そのまま続行する。
