@@ -1,0 +1,27 @@
+module
+public import SerrePositivity.DifferentialGraded.Verdier.MoritaPairEquivalence
+
+/-! # 一般 Morita kernel と指定商・perfect enhancement の比較の公理監査 -/
+@[expose] public section
+open SerrePositivity.DifferentialGraded
+open SerrePositivity.DifferentialGraded.DGQuotient
+#print axioms karoubiNullEnvelope_eq_perfectNull
+#print axioms karoubiNullEnvelope_iff_perfect
+#print axioms perfectNullEquivalence
+#print axioms karoubiPerfect_denominators
+#print axioms karoubiFirstPerfectQuotientEquivalence
+#print axioms karoubiFirstPerfectQuotientSquareCommShift
+#print axioms perfectCompletedToTriaQuotientIsTriangulated
+#print axioms localPerfectToPerfectVerdierIsTriangulated
+#print axioms localPerfectVerdierFactorsCommShift
+#print axioms mainKernelCompletedQuotientFunctorIsTriangulated
+#print axioms mainKernelQuotientPerfectHomotopyFunctorIsTriangulated
+#print axioms mainKernelPerfectVerdierSquareCommShift
+#print axioms mainKernelLocalPerfectSquareCommShift
+#print axioms mainKernelLocalPerfectSquareTriangle
+#print axioms perfectKernelPairDenominators
+#print axioms perfectKernelPairVerdierIsEquivalence
+#print axioms mainKernelCompletedMoritaEquivalence
+#print axioms mainKernelLocalMoritaIsTriangulated
+#print axioms mainKernelMoritaLocalPerfectSquareCommShift
+#print axioms mainKernelMoritaLocalPerfectSquareTriangle

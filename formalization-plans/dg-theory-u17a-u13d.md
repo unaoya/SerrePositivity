@@ -1091,3 +1091,28 @@ M9 の適用については、商を取る前の次数零の平坦 Hom を持つ
   局所 perfect dg 商比較の同値へつなぐこと。kernel の射・合成の自然性、graph 用の既存構造との
   照合、係数変更の直接局所化構成との一致も未完として保持する。
   中心作用・G 作用は保留を維持する。
+
+### U17b4：実際の Perf 商と Karoubi-first 商の同定・一般 Morita 正方形
+
+- `Verdier/PerfectNullComparison.lean`：既存の tria–Perf 比較の下で、Karoubi-first の
+  零部分圏が全 Perf の中の実際の Perf_S の逆像に等しいことを証明した。
+  生成対象の像と retract の反映を用い、所望の商同値を仮定しない。
+- `Verdier/PerfectQuotientEquivalence.lean`：この等式から分母射の等式を導き、実際の
+  Karoubi-first 商と Perf/Perf_S の同値および商関手の因子化正方形を構成した。
+  完備化して既存の完備 tria 商へ接続し、局所 perfect enhancement の H⁰ との同値にも
+  shift・三角性を与えた。
+- `Verdier/KernelLocalPerfectSquare.lean`：前単位で元の Perf 上の主 kernel 作用を実際に
+  Verdier 局所化した関手を、この同値へ接続した。指定列の Perf_T 条件と全列の perfect 性を
+  区別して入力し、既存の局所 perfect 比較との正方形そのものに shift 整合性と三角形版を与えた。
+  H⁰ 上で輸送した関手を新しい dg 関手とみなす主張はしていない。
+- `Verdier/MoritaPairEquivalence.lean`：元の主 Perf 作用の Morita 同値性と零部分圏の反映を
+  別々の仮定として受け、実際の誘導 Verdier 関手・完備商関手・局所 perfect H⁰ 関手の同値性を
+  証明した。商上の同値や可換正方形の存在を入力としていない。Morita 版の正方形にも
+  shift 整合性と三角形版を公開した。
+- 対象ビルド `Verdier.ChecksKernelLocalPerfectSquare` 成功（3556 jobs）、警告なし。
+  主要20宣言の公理監査は `propext`・`Classical.choice`・`Quot.sound` のみ。
+  新規 sorry・axiom・引用なし。他担当ファイルと共有ルートは編集していない。
+- 前単位 `25baea49` は直後の stat で自分の5ファイルのみと確認済み。
+  元の tria で係数変更してから直接局所化する経路との一致、導来 graph 合成・二モデル比較の
+  構造照合、kernel の射・合成に関する自然性・coherence は引き続き未完として区別する。
+  中心作用・G 作用は保留を維持する。
