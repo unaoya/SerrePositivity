@@ -481,6 +481,17 @@
 - `ChecksConeConnectingComparison` の対象ビルド成功。新規3主要宣言の公理は標準3公理のみ。
 - 三角形全体の同型と主K・主導来圏・主Perfの三角性への接続は引き続き残る。
 
+## U14b.22：標準cone三角形の同型と主Kの三角性（2026-10-17）
+
+- `ConeTriangleComparison.lean`：正規化した整合的shiftを固定し、加群値dg関手の像と
+  標準cone三角形の実際の同型を構成した。第三射の可換性にはU14b.21の連結射公式を使う。
+- 閉零加群圏と主Kの因子分解自然同型のshift整合性を使って三角形比較を主Kへ降ろし、
+  `dgModuleFunctorHomotopyIsTriangulated` を証明した。
+- `ChecksConeTriangleComparison` と更新した `ChecksCompatibility` の対象ビルド成功。
+  新規3主要宣言の公理は標準3公理のみ。U14公開入口へ接続済み。
+- これは任意の加群値dg関手に適用可能であり、実際の再構成Hom・tensorを含む。
+  主導来圏・主Perfの三角性との比較は引き続き残る。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
