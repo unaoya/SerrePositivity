@@ -194,3 +194,21 @@ Yoneda 像であること、表現可能対象間の導来射にもそのよう�
 主要4宣言は標準3公理のみ。H⁰ の主作用比較と同時 import している。
 新規 sorry・axiom・引用なし。tensor dg 関手自身の shift 比較との接続と、最終必要十分
 条件は未完のまま保持する。
+
+## dg 関手と射影増強後の比較の全次数 shift
+
+源 shift と前合成の単位は `b46d1445`（直後の stat は自分の3ファイルのみ）。
+`CriterionPerfDGFunctorShift.lean` は正規化した shift の射影・包含の合成関係を
+任意の加群値 dg 関手が保つことを証明する。`criterionPerfDGFunctor_shiftIn_hom` と
+`criterionPerfDGFunctor_shiftIn_inv` は、その関手の shift 同型と次数 -s の包含との
+両方向の可換式。`criterionPerfDGFunctorHom_sourceShift` は全 Hom chain map の可換図式。
+符号を捨てたり次数零だけで代用したりせず、全整数次数で証明した。
+
+`CriterionPerfResolvedHom.lean` は、関手の像の源の列だけを射影置換した比較と、
+正規化 shift 同型を通した増強を持つ解像度の shift を構成する。
+`criterionPerfResolvedHomComparison_quasiIso_iff_shifts` により、この比較の擬同型性は
+全ての源 shift に対する H⁰ の擬同型性と同値になる。
+入力対象の射影性や局所 Hom の K-flat 性は、この全 Hom の図式には不要。
+
+検証：`CriterionPerfDGFunctorShiftChecks` を最終入口の依存先として対象ビルド。
+今回の主要11宣言の公理監査は標準3公理のみ。新規 sorry・axiom・引用なし。

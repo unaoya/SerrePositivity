@@ -1,0 +1,18 @@
+module
+public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfResolvedHom
+public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfResolvedHomShiftChecks
+
+@[expose] public section
+namespace SerrePositivity.DifferentialGraded.Morita
+#print axioms criterionPerf_forward_units_smul_right
+#print axioms criterionPerfShiftIn_normalizedOut
+#print axioms criterionPerfDGFunctor_shiftInOut
+#print axioms criterionPerfDGFunctor_shiftIn_hom
+#print axioms criterionPerfDGFunctor_shiftIn_inv
+#print axioms criterionPerfDGFunctorHom_sourceShift
+#print axioms criterionPerfResolvedHomComparison
+#print axioms criterionPerfDGFunctorShiftResolution
+#print axioms criterionPerfResolvedHomComparison_sourceShift
+#print axioms criterionPerfResolvedHomComparison_shift_zero_iff
+#print axioms criterionPerfResolvedHomComparison_quasiIso_iff_shifts
+end SerrePositivity.DifferentialGraded.Morita
