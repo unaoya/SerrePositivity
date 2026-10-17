@@ -9312,3 +9312,74 @@ BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_
 接続してU12eを受け入れる。単なる制限関手の存在をU12e全受入の代用としない。
 その後のU16a〜d、U15eの順と§0の分担・合流条件・引用禁止を保持する。
 共有一般論への新しいAPI要求はない。
+
+
+### 17.203 U12e44：graph tensorの導来延長と代表加群での延長・制限比較（2026-10-17）
+
+前回の導来制限に対応する延長の構成を進めた。U14のModuleComparison・ModuleAdjunction・
+HomotopyAdjunction・DerivedAdjunction・DerivedTensor・TensorProjectiveを読み、
+全Hom自然なtensor関手、主Kを通る導来化、解像度比較の構成を確認した。
+係数変更のScalarExtensionHomotopyと既存dg oppositeも確認し、同名APIを重複実装しない。
+Endomorphism/・Tensor/ScalarExtension*・Derived/ScalarExtension*は編集していない。
+
+`Module/FunctorExtension.lean`の**functorGraph A D E F**は、dg関手F:D→Eと既存dgYonedaの
+合成から右E・左D bimoduleを作る。値はHom_E(e,Fd)であり、全次数の両作用を持つ。
+**dgModuleExtension**は、このgraphと恒等dg関手を既存BimoduleTensor.composeへ入力した
+実際のdg関手RightModule D→RightModule E。
+**dgModuleExtension_value**はbalanced tensorによる各値の式、
+**dgModuleExtensionRepresentableIso**は右代表D(-,d)をE(-,Fd)へ送る同型である。
+後者は既存の全Hom自然なtensor右単位を直接再利用した。
+D/Eの対象宇宙は独立、直和に必要なSmall.{u}を仮定し、
+全加群型のsmallness・元のHomのK-flat性・有界性は要求しない。
+
+`Module/FunctorGraphActions.lean`の**functorGraph_leftAt**は、graphの左D作用が
+共変representable Hom_E(e,−)をFに沿って制限した作用と等しいことを証明する。
+U14の既存**endomorphismYonedaApp**を実際の証明に再利用し、重複証明しなかった。
+この作用比較自体はsource対象型DのSmallを要求しない。
+**dgModuleExtensionValueIso**は延長の各値をこの制限左加群とのbalanced tensorとして計算する。
+
+`Derived/FunctorExtension.lean`は、既存の証明付き射影解像度関手と
+**dgExtensionHomotopyToDerived**を合成して**dgResolutionDerivedExtension/dgDerivedExtension**を構成する。
+一般のunderived延長が全準同型を保つことは仮定せず、主Kを通してから主導来圏へ送る。
+**dgResolutionDerivedExtensionComputation/dgDerivedExtensionResolutionComputation**は、
+指定した任意の射影解像度による実際の計算同型である。
+**dgResolutionDerivedExtensionIso**と**_self/_trans**は、解像度族の変更による自然同型と
+自己・推移整合性。これらは既存moduleDerivedResolutionIsoをwhiskerして得た。
+
+`Derived/ModuleFunctorProjective.lean`の**dgModuleFunctor_projective_quasiIso**は、
+任意のdg加群関手がホモトピー射影的加群間の準同型を保つことを証明する。
+主Kでその射が同型になり、dg関手のH⁰関手と各ホモロジー関手がそれを保つためである。
+**dgModuleExtension_projective_quasiIso**はgraph tensorへの適用。
+相手側のHom flatnessやモデル構造を仮定しない。
+
+`Module/RestrictionRepresentable.lean`の**representableRestrictionMap**は、
+各成分がF.map(x,d)である代表D加群→制限代表E加群の全Hom自然な閉零射。
+**representableRestriction_naturality**は任意整数次数の合成保存から証明し、
+**representableRestrictionMap_eval/_quasiIso**は評価式とHom準同型の下での準同型性を与える。
+
+`Derived/FunctorExtensionRepresentable.lean`は、既にホモトピー射影的な加群の恒等解像度
+**moduleIdentityProjectiveResolution**を追加し、
+**dgDerivedExtensionRepresentableIso**で代表加群の導来延長を計算する。
+**representableDerivedRestrictionIso**はHom準同型の下での代表加群の導来比較、
+**dgDerivedRoundTripRepresentableIso**は代表加群と導来延長後の導来制限との同型である。
+これは代表加群ごとの同型の構成までであり、全加群上の随伴単位を構成・同定したとは主張しない。
+既存公開APIの名前・型の変更はなく、今回も追加のみ。
+
+**検証。** Checks.DGFunctorExtension・Checks.DGDerivedRestriction・
+Checks.DGResolutionComparison・Checks.DerivedBimoduleFullPentagon・Checks.StageEight・
+Checks.StageSeven・Spectra.StageTwoの統合ビルド成功（3301 jobs、警告なし）。
+独立したsource/target宇宙、Hom flatness仮定なしの導来延長と任意射影解像度計算、
+Hom準同型の下での代表加群の往復同型、source smallnessなしのgraph作用比較、
+ZMod 2での代表加群の導来延長と射影的加群間の準同型保存を型検査した。
+主要26宣言の直接公理監査は重複・欠落なく標準3公理以内。監査累計3999宣言。
+新しいsorry・axiom・引用は追加していない。採用済み引用は0件。
+全体文書検査は19 Markdown・320 exposition参照を検査し、担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+未解決参照1件で失敗した。共有ルート・監査スクリプト・並行担当ファイルは編集していない。
+
+**残る受入条件。** 次は延長・制限の全加群での単位・余単位/随伴を構成し、
+代表加群上の比較との一致と、semifree列・準同値の本質的全射性を用いた導来同値性を証明する。
+その後、解像度変更と導来bimodule合成・対角単位・結合の自然性、選択独立性・coherenceを
+接続してU12eを受け入れる。代表加群ごとの往復同型だけで一般同値やU12e完成とはしない。
+U12e全受入後のU16a〜d、U15eの順と§0の分担・合流条件・引用禁止を維持する。
+共有一般論への新しいAPI要求はない。
