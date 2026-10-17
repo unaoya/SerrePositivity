@@ -1044,6 +1044,16 @@
 - `ChecksScalarDerivedPerfect` 対象ビルド成功（3076 jobs）。主要3宣言の公理は標準3公理のみ。
   既存APIの名前・型は変更していない。新しいsorry・axiom・引用は追加していない。
 
+## U14b.66：元と係数変更後のenhancementの閉零圏・H⁰の実際の比較（2026-10-17）
+
+- `ScalarEnhancementClosed.lean`：係数環の異なる元と係数変更後のU13 enhancementの閉零圏間に、
+  実際の加群係数拡大による関手を構成し、ambient加群圏への包含正方形を自然同型で証明した。
+- 全dg自然な加群ホモトピー保存から、この関手を元のH⁰から係数変更後のH⁰へ降ろした。
+  元の係数環でのH⁰を、係数変更したHom複体のH⁰と無条件に同一視していない。
+- 既存導来係数拡大との計算同型を、閉零enhancement上の自然同型として構成した。
+- `ChecksScalarEnhancementClosed` 対象ビルド成功（3077 jobs）。主要5宣言の公理は標準3公理のみ。
+  既存APIの名前・型は変更していない。新しいsorry・axiom・引用は追加していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
