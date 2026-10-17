@@ -236,3 +236,26 @@ E1.2 のコミット `ba07c9b6` に、同時にステージされた別レーン
 `formalization-plans/dg-theory-u14.md` が混入した。これらは本レーンの成果・検証対象に数えない。
 当該レーン側の記録コミットは `eaf5b4ff`。amend・rebase・reset は行っていない。
 以降は自分の検証済みパスを `git commit --only` で明示する。
+
+### E1.4：係数商の正則性と一元 raw φ/p 包の p 正則性
+
+`Andre/MonicRelationResidue.lean` の
+`monicRelation_coefficientQuotient_isSMulRegular` は任意係数イデアル I に対し、
+`MvPolynomial σ R / I.map C` 内の f(X_s) の像が非零因子であることを証明する。
+前提は任意可換環 R と f のモニック性だけ。`monicRelation_modP_isSMulRegular` は
+実際の `Ideal.span {(p : MvPolynomial σ R)}` による商での同じ正則性。
+`monicRelation_map` は任意係数射とこの評価関係式の可換性を与える。
+
+`Andre/MonicRawPDivision.lean` の `monicRawPDivision_p_mul_injective` は、
+p 正則な δ 環 A、distinguished な `(p : A)`、モニック f と独立変数 s に対し、
+`B = MvPolynomial τ A`、`E = polynomialRankOneDeltaStructure τ D`、`y = f(X_s)` の
+`DeltaAdjoinDivision E (p : B) (fun _ : PUnit.{u+1} => E.frobeniusLift y)` で
+p の乗法が単射であることを証明する。ghost 単射は G4 から内部で供給する。
+`perfectPrismMonicRawPDivision_p_mul_injective` は完全 prism とその δ 完全性から
+同じ入力をすべて供給する。正次数はこの p 正則性には不要。
+
+これは Cor 2.39（著者版 p.25）の一元補助 φ/p 計算であり、最終候補の f/d 包の
+p 完全忠実平坦性を証明したものではない。
+集約対象ビルドは `set -o pipefail` 付きで終了コード 0（3984 jobs）。
+専用監査は全公開宣言の `assert_no_sorry` と生成宣言を含む 71 宣言の
+標準 3 公理限定検査に成功（終了コード 0）。
