@@ -10516,6 +10516,24 @@ scripts/audit_axioms.lean、scripts/audit_clmst.lean は全て終了コード0�
 `perfectoidization_excision_isPullback` の二件だけであり、両方に到達することを確認した。
 この段階では元の文献入力を変更せず、証明・専用監査・本記録を先に保存する。
 
+**Prop 2.4.7 の引用元の置換（2026-10-17）。**
+証明と専用監査を先行コミット `55957e61` に保存して報告した後、
+`CLMST/Inputs/PerfectoidIsogeny.lean` の `proposition_2_4_7` を
+`proposition_2_4_7_proved` の呼出しへ置換した。署名は変更していない。
+専用監査の依存走査も公開証明と互換入口の両方を根にするよう拡張した。
+最初の全体ビルドは他レーンの編集中の `Inputs/CohomologyVanishing.olean` 欠落で失敗し、
+指示どおり停止・報告した。継続時にその生成を確認してから再実行し、
+全体 `lake build` は7063ジョブで成功した。
+置換後の専用監査と `scripts/audit_axioms.lean` は終了コード0で成功した。
+公開証明・互換入口の双方の公理は標準三公理と `sorryAx`、
+到達未証明宣言は指定の BS 二件のみである。
+主定理の `#print sorries` に Prop 2.4.7 はなく、BS excision が現れることを確認した。
+主定理全体の一覧は `exists_perfectoidization_of_integral`、
+`perfectoidization_excision_isPullback`、`Section4.supportedRankK0_descent`、
+`theorem_3_1_K0` の四件である。Cor 4.0.4 の引用除去は同時進行の KL-T レーンの成果である。
+`scripts/audit_clmst.lean` も既存の全監査範囲を保ったまま終了コード0で成功した。
+引用元・専用監査の拡張・本節の記録を、先行証明とは別コミットで保存する。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。

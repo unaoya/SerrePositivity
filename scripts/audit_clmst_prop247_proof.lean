@@ -6,6 +6,7 @@ example : @SerrePositivity.CLMST.Inputs.proposition_2_4_7 =
     @SerrePositivity.CLMST.proposition_2_4_7_proved := Subsingleton.elim _ _
 
 #print axioms SerrePositivity.CLMST.proposition_2_4_7_proved
+#print axioms SerrePositivity.CLMST.Inputs.proposition_2_4_7
 
 meta section
 open Lean Elab Command
@@ -30,7 +31,8 @@ private partial def checkDependencies (todo : List Name) (seen : NameSet) : Core
 
 elab "assert_prop247_proof_dependencies" : command => do
   let seen ← liftCoreM <| checkDependencies
-    [``SerrePositivity.CLMST.proposition_2_4_7_proved] {}
+    [``SerrePositivity.CLMST.proposition_2_4_7_proved,
+     ``SerrePositivity.CLMST.Inputs.proposition_2_4_7] {}
   unless seen.contains ``sorryAx do
     throwError "Prop 2.4.7：sorryAx への到達を確認できない"
   for n in permitted do
