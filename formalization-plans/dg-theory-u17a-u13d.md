@@ -329,3 +329,23 @@ HEAD からの差分全体が自分の変更だけであることも確認する
   Hom(b,−) の tensor に分解し、Verdier 分母での Hom ホモロジー余極限消滅へつなぐこと。
   完全忠実性と U17b 全体は引き続き未完。
 - U15e7 のコミット：`266ef182`（自分の7ファイルのみと直後に確認）。
+
+### U15e9：随伴次数部分の tensor 表示と局所直交条件からの消滅
+
+- `Quotient/DerivedComparisonGradedTensor.lean`：長さ n+1 の word を
+  「先頭 b と長さ n の残り」または「末尾 b と長さ n の残り」で添字付けする明示的同値を構成。
+  既存の全次数 tensor の結合子による同型を使い、固定長直和とその cokernel 表示を
+  `∐ (b,w), pathPrefixWeight w x b ⊗ Hom(b,y)` および
+  `∐ (b,w), Hom(x,b) ⊗ pathSuffixWeight w b y` という複体の同型へ移した。
+- 添字族の small 性から、Shrink による同値で加群余積の exact 性を供給。
+  u-small な非有界 acyclic 複体の直和が acyclic であることを証明し、
+  元の word の添字を変えずに利用する補題 `pathCoproduct_acyclic` として公開。
+- 入る側の K-flat 仮定と全 Hom(b,y) の acyclic 性、または出る側の K-flat 仮定と
+  全 Hom(x,b) の acyclic 性から、全ての正の固定長層が acyclic と証明。
+  これは実際の dg 圏の対象 x,y に対する消滅であり、まだ Verdier 分母上の余極限の消滅ではない。
+- 対象ビルド：`lake build SerrePositivity.DifferentialGraded.Checks.QuotientGradedTensor`
+  成功（2316 jobs）。主要9宣言の公理監査は標準3公理のみ。
+  project import 依存154ファイルに、禁止された dg 圏分解系への依存なし。
+  新規 sorry・axiom・引用なし。既存の他担当ファイルは編集していない。
+- U15e8 のコミット：`b2674f98`（自分の5ファイルのみと直後に確認）。
+  U15e の完全忠実性と U17b 全体は引き続き未完。
