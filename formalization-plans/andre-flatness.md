@@ -5296,7 +5296,8 @@ H の正則性の無条件の供給は A1-b、係数表記の最終照合は A1-
 
 2026-10-17。既存 Andre/ ファイルと他担当節は変更しない。
 新規成果はすべて `Andre/Unconditional/` に置き、差替えは A1-a に委ねる。
-この節は進捗記録であり、A1-a の最小接続点までの完成報告ではない。
+元の H・分母商に関する A1-a の最小接続点は証明・監査済み。
+raw 自身とその古典的 p 完備化の正則性は、引き続き解消対象として残す。
 主定理・引用件数は変更しない。
 
 ### 原典の適用範囲と分類の基準
@@ -5528,6 +5529,52 @@ H の環構造は元の `pdCompletionCommRing L p (jL dP)` であり、対象を
 今回の分母正則性・完全平坦性の完成を raw p 正則性の証明と混同しない。
 また mod p の d 正則性や H/dH の p 正則性は既述の通り一般には成り立たず、
 原典の p ねじれなしへの帰着後の強い主張として区別する。
+
+
+
+### 先行 p 還元の純性と、正次数を追加しない H の正則性（2026-10-17）
+
+新規 `Unconditional/PrimeReductionPurity.lean` の 12 公開宣言を追加した。
+旧 `powerRootPrismMonic_pdCompletion_prime_regular` は hpR から raw の正則対を作り、
+第一元正則性の反復完備化保存へ渡していた。この経路を使わず、(b) として解消した。
+
+元の実逐次完備化を X、`Y := A/(p) ⊗ᴸ_A X` とする。
+A/(p) は完全 δ 構造から被約であり、任意 n,x について dⁿx=0 なら dx=0。
+従って Y の d 還元の純性・H⁰ 平坦性、Y の商環上の d 導来完備性を
+既存の有界ねじれ純性判定へ渡せる。
+`powerRootPrismMonicSourcePrimeReduction_pure_of_unconditional` がその純性を供給し、
+`powerRootPrismMonicSourceIteratedPDCompletion_prime_injective_of_unconditional` が
+元の X の H⁰ 上で p が単射に作用することを供給する。
+A→A/(p)→(A/(p))/(d) の標準主商比較は全係数を保持し、d mod p 正則性を仮定しない。
+
+正次数のモニック入力について、元の A 線形 H⁰ 比較により
+`powerRootPrismMonic_pdCompletion_prime_regular_of_positive_unconditional W hW f hf hdeg`
+を得た。これは raw の p 正則性を仮定していない。
+
+さらに、次数零モニック入力 f=1 の場合は、raw の除算関係が分母の乗法逆元を与える。
+標準完備化射の像でもその逆元公式を保ち、H 自身の分母に関する導来完備性から H=0 を得る。
+`powerRootPrismMonic_pdCompletion_subsingleton_of_natDegree_zero` がこの結果である。
+これにより以下の二定理は、旧定理から hpR だけを除いた仮定で公開できた。
+共通名前空間は `SerrePositivity.BhattScholze.Andre`。
+
+- `powerRootPrismMonic_pdCompletion_prime_regular_of_unconditional W hW f hf`：
+  元の `pdCompletionCommRing` の下で `IsSMulRegular H (p : H)`。
+- `powerRootPrismMonicRaw_pdCompletion_generator_regular_of_monic_unconditional W hW f hf`：
+  同じ元の H の標準分母像 dH に対する `IsSMulRegular H dH`。
+
+両者とも hdeg・hpR・raw p 正則性・追加の平坦性仮定は不要。
+H/dH の p 完全忠実平坦性は従来どおり正次数の場合に述べる。
+H の p 正則性から H/dH の p 正則性を結論したとはせず、その旧強条件は既述の (c) に残す。
+原典 Rem 7.15（著者版 p.62）を補う、元の実対象の二方向の導来還元による経路である。
+
+検証：`MonicRootedExtension` を含む対象ビルドは終了コード 0（4611 jobs）。
+専用監査は合計 150 公開宣言の `assert_no_sorry`・`#print axioms` と追加宣言の `#check`、
+48,382 依存宣言の型・値の推移的公理走査に成功した。
+許可公理は `propext`、`Classical.choice`、`Quot.sound` の三つのみで、sorryAx はない。
+
+この時点の未解消候補は `powerRootPrismMonicRaw_p_mul_injective` と
+`powerRootPrismMonicRaw_pAdic_regular_pair`。
+それらを本質的な (c) と断定せず、raw の有限段・局所化・完備化の証明調査を続ける。
 
 
 ## A1-c：係数表記の照合
