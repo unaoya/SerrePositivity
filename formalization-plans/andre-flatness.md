@@ -5291,3 +5291,140 @@ H の正則性の無条件の供給は A1-b、係数表記の最終照合は A1-
 終了コード 0。生成宣言を含む 7138 宣言の推移的公理依存は標準 3 公理のみ。
 新規 4 公開宣言の正確な型と、受渡しの hpR 付き 8 定理の型を `#check` で確認した
 （いずれも終了コード 0）。受渡し節は再作成・書換えしていない。
+
+## A1-b：hpR の解消
+
+2026-10-17。既存 Andre/ ファイルと他担当節は変更しない。
+新規成果はすべて `Andre/Unconditional/` に置き、差替えは A1-a に委ねる。
+この節は進捗記録であり、A1-a の最小接続点までの完成報告ではない。
+主定理・引用件数は変更しない。
+
+### 原典の適用範囲と分類の基準
+
+BS Rem 7.15、著者版 p.62
+（https://people.mpim-bonn.mpg.de/scholze/prisms.pdf#page=62）を確認した。
+原典は ind-syntomic 性の計算を基底変更で p ねじれなしの場合へ帰着してから行う。
+一般の perfectoid 環 R=A/(d) が p 正則、という意味ではない。
+従って、(c) の正則性補題はこの帰着後なら hpR を定義どおりに供給できるが、
+帰着前の R に自動的に供給したとは主張しない。
+
+(a) は証明内で hpR が使われない場合、(b) は既存の弱い性質で代替した場合、
+(c) は結論そのものが一般には成立しない場合とする。
+現行証明で使っているというだけで (c) に分類しない。
+
+### (b) 射影的正次数商で解消した 17 宣言
+
+コミット `4c97d497` の方法を用いる。旧証明の hpR は
+`perfectPrismVarpiLift_modPrime_regular` を経由して係数元の正則性を供給していた。
+モニック入力の正次数商の自由性・射影性と商射の線形切断で代替し、
+同じ実商環・分冪イデアル・入力環作用を保つ。新しい仮定はない。
+Native、Prime、Full の既存 OfMonic 版も再利用した同じ証明経路である。
+以下は旧名の末尾に `_of_unconditional` を付けて新規公開した名前の一覧。
+
+- `perfectPrismVarpiPowerRootDividedPowers_of_unconditional`
+- `perfectPrismVarpiPowerRootDividedPowers_base_apply_of_unconditional`
+- `perfectPrismVarpiPowerRootDividedPowers_isDPMorphism_of_unconditional`
+- `perfectPrismVarpiNativeDividedPowers_of_unconditional`
+- `perfectPrismVarpiNativeDividedPowers_base_apply_of_unconditional`
+- `existsUnique_perfectPrismVarpiNativePDMorphism_of_unconditional`
+- `powerRootPrimeFrobeniusDividedPowers_of_unconditional`
+- `powerRootPrimeFrobeniusDividedPowers_base_apply_of_unconditional`
+- `existsUnique_powerRootPrimeFrobeniusPDMorphism_of_unconditional`
+- `powerRootPrismMonicFrobeniusTensorDividedPowers_of_unconditional`
+- `powerRootPrismMonicFrobeniusTensorInputAlgEquiv_isDPMorphism_of_unconditional`
+- `powerRootPrismMonicFrobeniusTensorDividedPowers_input_apply_of_unconditional`
+- `existsUnique_powerRootPrismMonicFrobeniusTensorPDMorphism_of_unconditional`
+- `powerRootPrismMonicFullFrobeniusDividedPowers_of_unconditional`
+- `powerRootPrismMonicFullFrobeniusInputAlgEquiv_isDPMorphism_of_unconditional`
+- `powerRootPrismMonicFullFrobeniusDividedPowers_input_apply_of_unconditional`
+- `existsUnique_powerRootPrismMonicFullFrobeniusPDMorphism_of_unconditional`
+
+型は、元の完全 prism W、完全性 hW、f とモニック性 hf を保持する。
+構造の結論は元の指定イデアル上の `DividedPowers`、値の公式は全 n、
+分冪射性は元の比較射、普遍性は任意宇宙の分冪標的への `∃!` を保持する。
+ファイルは `VarpiPDReduction`、`MonicPDEnvelope`、`FrobeniusTensorPD`、`FullFrobeniusPD`。
+
+### PowerRootMonicPDFlat の同名引数は別条件
+
+同ファイルの二つの hpR は `IsSMulRegular R p` ではなく `(p : R)=0` である。
+この標数条件自体を一般の係数環から除去したとは主張しない。
+原典の実係数環 Rv=(A/W.ideal)/(ϖ) では `(ϖ^p)=(p)` から p=0 を内部供給した。
+`Unconditional/MonicPDFlat.lean` の
+`powerRootMonicDPPresentation_free_of_unconditional` と
+`powerRootMonicDPPresentation_faithfullyFlat_of_unconditional` はこの Rv に対する版。
+後者は元の正次数 hdeg を保持し、R の p 正則性は仮定しない。
+`perfectPrismVarpiQuotient_prime_eq_zero_of_unconditional` が自動供給の証明である。
+
+### (c) 結論が一般には成立しない正則性補題
+
+`Unconditional/RegularityBoundary.lean` で次の同値を証明した。
+
+- `perfectPrism_generator_modPrime_regular_iff`：d mod p の正則性 ↔ hpR。
+- `perfectPrismVarpiLift_modPrime_regular_iff`：φ⁻¹(d) mod p の正則性 ↔ hpR。
+
+逆向きは完全 δ 環の p 正則性と正則対の順序交換を使う。
+従って次の旧名を単に無条件化することはしない。
+
+- `perfectPrism_generator_modPrime_regular`
+- `perfectPrismVarpiLift_modPrime_regular`
+- `powerRootPrismGenerator_modPrime_regular`
+- `powerRootPrismFirstModPrimeRelation_regular`
+- `powerRootPrismMonicFirstModPrime_generator_regular`
+- `powerRootPrismMonicFinite_all_regular`
+
+後二つは mod p の d 正則性を結論に含む。d=p、f=Y の crystalline な場合には、
+非零な対応商でその元は零となる。任意 f の最初の線形関係の正則性も、
+d=p、f=0 では mod p で零となり一般には成立しない。
+`not_prime_regular_of_charP` は非零な標数 p 環では p が正則でないことを形式的に確認する。
+
+受渡しの `powerRootPrismMonicRaw_mod_prime_generator_regular` と
+`powerRootPrismMonic_pdCompletion_hodgeTate_prime_regular` も同じ強い中間主張である。
+原典の p ねじれなしへの帰着後の使用と、帰着前に必要な弱い入力の供給を区別する。
+
+### 無条件の弱い入力と残る接続
+
+`perfectPrism_generator_power_bounded_torsion_of_unconditional` は
+任意 n,N と x∈A/(d^n) について p^N x=0 なら p^n x=0 を供給する。
+完全性、p 進分離性、distinguished 元の既存定理を使い、hpR は不要。
+これを p 正則性へ強めたとは扱わない。
+
+`Unconditional/PowerRootResidueKoszul.lean` は元の P、δ 構造 E、dP、
+分子 a=f(Y₀) と同じ一元自由 δ 環 L₀ を保持する。
+初期の mod(p,d) 関係は負のモニック入力なので hpR なしに正則。
+その後の全有限 δ 関係列は既存の Witt 計算により弱正則で、Koszul 分解を与える。
+実評価列との三角比較と G7 の Tor の逐次余極限保存により、
+`powerRootPrismMonicResidueSource_tor_subsingleton_of_unconditional` は
+実射 ψ=(L₀→L₀/(p,dP))∘deltaDivisionSourceMap E dP に沿う全評価環 P の
+全正次数 `TorAlg ψ (i+1) P` が Subsingleton であることを供給する。
+G7 の交換条件は内部で証明済みの API から供給し、仮定に残さない。
+
+`Unconditional/PowerRootResidueSource.lean` は Tor 対称性と標準 augmentation により、
+同じ実残余源の β に沿う導来評価を元の raw (p,d) 剰余の single に同定する。
+これは P 上の比較であり、まだ元の A 上の実逐次完備化との同定ではない。
+
+次の旧名は完成した (b) とも本質的な (c) とも断定せず、引き続き解消対象とする。
+
+- `powerRootPrismMonicRaw_p_mul_injective`：現行証明は d mod p 正則性を有限段帰納へ渡す。
+  上の残余 Koszul 計算だけで raw の p 正則性が従うとは主張しない。
+- `powerRootPrismMonicRaw_pAdic_regular_pair`：古典的 p 完備化での p と d の個別正則性。
+  mod p の d 正則性を結論する定理ではないので、(c) へ混同しない。
+- `powerRootPrismMonicRaw_pdCompletion_generator_regular`：現行証明は raw の正則対を使う。
+- `powerRootPrismMonic_pdCompletion_prime_regular`：同じ raw 正則対を使う。
+- `powerRootPrismMonicHodgeTate_prime_completelyFaithfullyFlat`：現行証明は基底と T の ϖ 正則性を使う。
+- `powerRootPrismMonicCompletion_pair_completelyFlat`：上の分母正則性と T の完全平坦性を使う。
+- `powerRootPrismMonicCompletion_pair_scalarExtension_faithfullyFlat`：T の完全忠実平坦性を使う。
+
+次の具体的作業は、実残余源の比較を元の A 係数作用へ制限し、
+p,d の逐次完備化単位の比較へ接続すること。その後、生成元冪商の有界 p ねじれと
+導来完備性による純性・正則性を使い、同じ H と同じ dH のまま A1-a の最小接続点を供給する。
+特に H の分母正則性と完全忠実平坦性の無条件版は、この時点では未完了である。
+
+### 最初の検証区切り
+
+上記 8 新規ファイルの 32 公開宣言について
+`scripts/audit_andre_unconditional.lean` の全件 `assert_no_sorry` と
+値・型の推移的公理依存走査が終了コード0で成功した。
+44,835 宣言を走査し、許可公理は `propext`、`Classical.choice`、`Quot.sound` のみ。
+`lake build SerrePositivity.BhattScholze.Andre.MonicRootedExtension` を含む
+全新規対象のビルドも4577ジョブで成功した。
+ここで保存するのは検証済みの途中成果であり、上記の未解消接続を完了したとはしない。

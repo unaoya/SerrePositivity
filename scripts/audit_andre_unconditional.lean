@@ -1,0 +1,135 @@
+import SerrePositivity.BhattScholze.Andre.Unconditional.FrobeniusTensorPD
+import SerrePositivity.BhattScholze.Andre.Unconditional.FullFrobeniusPD
+import SerrePositivity.BhattScholze.Andre.Unconditional.MonicPDEnvelope
+import SerrePositivity.BhattScholze.Andre.Unconditional.MonicPDFlat
+import SerrePositivity.BhattScholze.Andre.Unconditional.PowerRootResidueKoszul
+import SerrePositivity.BhattScholze.Andre.Unconditional.PowerRootResidueSource
+import SerrePositivity.BhattScholze.Andre.Unconditional.RegularityBoundary
+import SerrePositivity.BhattScholze.Andre.Unconditional.VarpiPDReduction
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFrobeniusTensorDividedPowers_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFrobeniusTensorDividedPowers_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFrobeniusTensorInputAlgEquiv_isDPMorphism_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFrobeniusTensorInputAlgEquiv_isDPMorphism_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFrobeniusTensorDividedPowers_input_apply_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFrobeniusTensorDividedPowers_input_apply_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicFrobeniusTensorPDMorphism_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicFrobeniusTensorPDMorphism_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFullFrobeniusDividedPowers_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFullFrobeniusDividedPowers_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFullFrobeniusInputAlgEquiv_isDPMorphism_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFullFrobeniusInputAlgEquiv_isDPMorphism_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFullFrobeniusDividedPowers_input_apply_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFullFrobeniusDividedPowers_input_apply_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicFullFrobeniusPDMorphism_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicFullFrobeniusPDMorphism_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiNativeDividedPowers_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.perfectPrismVarpiNativeDividedPowers_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiNativeDividedPowers_base_apply_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.perfectPrismVarpiNativeDividedPowers_base_apply_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_perfectPrismVarpiNativePDMorphism_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.existsUnique_perfectPrismVarpiNativePDMorphism_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrimeFrobeniusDividedPowers_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.powerRootPrimeFrobeniusDividedPowers_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrimeFrobeniusDividedPowers_base_apply_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.powerRootPrimeFrobeniusDividedPowers_base_apply_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrimeFrobeniusPDMorphism_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrimeFrobeniusPDMorphism_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiQuotient_prime_eq_zero_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.perfectPrismVarpiQuotient_prime_eq_zero_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootMonicDPPresentation_free_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.powerRootMonicDPPresentation_free_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootMonicDPPresentation_faithfullyFlat_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.powerRootMonicDPPresentation_faithfullyFlat_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFirst_mod_pair_regular_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFirst_mod_pair_regular_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFiniteResidue_isWeaklyRegular_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFiniteResidue_isWeaklyRegular_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFiniteResidue_isKoszulResolution_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFiniteResidue_isKoszulResolution_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFiniteResidueEvaluation_isKoszulResolution_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFiniteResidueEvaluation_isKoszulResolution_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFiniteResidueSource_tor_subsingleton_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFiniteResidueSource_tor_subsingleton_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicResidueSource_tor_subsingleton_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.powerRootPrismMonicResidueSource_tor_subsingleton_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicResidueSourceEval_torVanishing_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.powerRootPrismMonicResidueSourceEval_torVanishing_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicResidueSourceDerivedIso_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.powerRootPrismMonicResidueSourceDerivedIso_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrism_generator_modPrime_regular_iff
+#print axioms SerrePositivity.BhattScholze.Andre.perfectPrism_generator_modPrime_regular_iff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiLift_modPrime_regular_iff
+#print axioms SerrePositivity.BhattScholze.Andre.perfectPrismVarpiLift_modPrime_regular_iff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrism_generator_power_bounded_torsion_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.perfectPrism_generator_power_bounded_torsion_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.not_prime_regular_of_charP
+#print axioms SerrePositivity.BhattScholze.Andre.not_prime_regular_of_charP
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPowerRootDividedPowers_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPowerRootDividedPowers_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPowerRootDividedPowers_base_apply_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPowerRootDividedPowers_base_apply_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPowerRootDividedPowers_isDPMorphism_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPowerRootDividedPowers_isDPMorphism_of_unconditional
+
+meta section
+open Lean Elab Command
+private partial def checkA1bAxioms (todo : List Name) (seen : NameSet) : CoreM NameSet := do
+  match todo with
+  | [] => return seen
+  | n :: rest =>
+    if seen.contains n then return ← checkA1bAxioms rest seen
+    let seen := seen.insert n
+    let some info := (← getEnv).find? n | return ← checkA1bAxioms rest seen
+    match info with
+    | .axiomInfo _ =>
+      unless n == ``propext || n == ``Classical.choice || n == ``Quot.sound do
+        throwError "A1-b: unexpected axiom {n}"
+    | _ => pure ()
+    let mut deps := info.type.getUsedConstants
+    if let some value := info.value? (allowOpaque := true) then
+      deps := deps ++ value.getUsedConstants
+    if deps.contains ``sorryAx then throwError "A1-b: unexpected sorry in {n}"
+    checkA1bAxioms (deps.toList ++ rest) seen
+
+elab "audit_A1b_unconditional" : command => do
+  let roots : List Name := [
+    ``SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFrobeniusTensorDividedPowers_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFrobeniusTensorInputAlgEquiv_isDPMorphism_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFrobeniusTensorDividedPowers_input_apply_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicFrobeniusTensorPDMorphism_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFullFrobeniusDividedPowers_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFullFrobeniusInputAlgEquiv_isDPMorphism_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFullFrobeniusDividedPowers_input_apply_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicFullFrobeniusPDMorphism_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.perfectPrismVarpiNativeDividedPowers_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.perfectPrismVarpiNativeDividedPowers_base_apply_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.existsUnique_perfectPrismVarpiNativePDMorphism_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.powerRootPrimeFrobeniusDividedPowers_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.powerRootPrimeFrobeniusDividedPowers_base_apply_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrimeFrobeniusPDMorphism_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.perfectPrismVarpiQuotient_prime_eq_zero_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.powerRootMonicDPPresentation_free_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.powerRootMonicDPPresentation_faithfullyFlat_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFirst_mod_pair_regular_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFiniteResidue_isWeaklyRegular_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFiniteResidue_isKoszulResolution_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFiniteResidueEvaluation_isKoszulResolution_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFiniteResidueSource_tor_subsingleton_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.powerRootPrismMonicResidueSource_tor_subsingleton_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.powerRootPrismMonicResidueSourceEval_torVanishing_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.powerRootPrismMonicResidueSourceDerivedIso_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.perfectPrism_generator_modPrime_regular_iff,
+    ``SerrePositivity.BhattScholze.Andre.perfectPrismVarpiLift_modPrime_regular_iff,
+    ``SerrePositivity.BhattScholze.Andre.perfectPrism_generator_power_bounded_torsion_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.not_prime_regular_of_charP,
+    ``SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPowerRootDividedPowers_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPowerRootDividedPowers_base_apply_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPowerRootDividedPowers_isDPMorphism_of_unconditional
+  ]
+  let seen ← liftCoreM <| checkA1bAxioms roots {}
+  logInfo m!"A1-b: {roots.length} public declarations; {seen.size} dependencies; standard axioms only."
+end
+
+audit_A1b_unconditional
