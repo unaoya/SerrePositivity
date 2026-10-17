@@ -21,9 +21,10 @@
    非 flat な係数変更も扱い、underived との一致に必要な置換条件を記載する。
 3. U15d：固定した path 添字の比較、最終微分、単位・合成との整合性。
 
-現時点では U12f・U15d の全受入を完了扱いしない。
+U12f・U15d は末尾の受入範囲・明示仮定に従い完了。以下は段階ごとの記録であり、
+途中の「未完」はその時点の状態を示す。
 
-## 実装中の API
+## 基礎 API
 
 `Tensor/ScalarExtensionColimits.lean` の namespace は
 `SerrePositivity.DifferentialGraded.ScalarExtension`。
@@ -373,3 +374,45 @@ Hom 同型、最終単位・合成の比較。既存 Quotient ファイルは編
 
 最終 Hom の chain 同型と元の Hom 包含の比較も対象ビルド済み。最終単位・合成の
 比較と、それらを持つ実際の dg 関手の最終監査を続ける。
+
+
+## 2026-10-17：U15d の最終微分・単位・合成と担当単位の受入
+
+全 ε 消去と内部合成の比較は `2f859832` にコミット済み。
+`Quotient/ScalarExtension.lean` の `quotientHomBaseChangeIso` は、全直和の各次数の
+同型と `erasure_baseChange` を用いて、内部微分に ε 消去を加えた最終微分について
+構成した実際の chain 同型である。`quotientHomBaseChangeIso_path_component` は
+同じ `w : List S` の包含成分を保つ公式。途中で path 添字を再選択していない。
+
+`quotientIdentity_baseChange`・`quotientComposition_baseChange` は、係数変更の単位・
+tensor 比較を含めた最終単位・合成の可換式。合成の証明では、同じ斉次生成項上の
+比較を小さな可換図式として合成し、異なる微分を持つ tensor 複体の全体を直接
+型変換することを避けた。特別な reducibility 変更や追加仮定は不要。
+`quotientBaseChangeDGFunctor` はこれらを持つ実際の dg 関手で、すべての Hom 射は
+上記 chain 同型の順方向。元の dg 圏の包含との可換性も dg 関手の等式として証明した。
+これらは underived の構成法則であり、A′ の A-flatness を要求しない。
+
+最終検証：`lake build SerrePositivity.DifferentialGraded.Checks.QuotientScalarExtension` 成功
+（2985 jobs、警告なし）。導来係数変更と最終 dg 商の両方を import し、
+非 flat な `ℤ → ZMod 2` の最終 Hom 同型・dg 関手を型検査した。主要9宣言と導来版2宣言、
+計11宣言の公理監査はすべて `propext`・`Classical.choice`・`Quot.sound` の標準3公理のみ。
+新規 sorry・axiom・引用は0件。
+
+### 完了範囲と仮定
+
+- U12f underived：dg 圏、左右 dg 加群、射と関手、係数拡大 ⊣ 係数制限の加群随伴、
+  同じ添字の直和・coequalizer・相対 tensor の同型、両変数自然性・評価単位・結合比較。
+  係数環の flatness は不要。
+- U12f derived：任意の非有界右 dg 加群の主導来係数拡大・係数制限、任意射影解像度
+  による計算・選択独立性、既存の非有界複体導来圏での係数拡大。
+  underived 比較を同型とする条件を、exact/flat 条件および両端の評価ごとの A-K-flat 条件
+  として区別した。導来 tensor の比較は前節の二つの K-flat 計算モデル仮定を明示し、
+  左加群 N は選択済みモデルとする。φN を無条件に左導来係数変更と同一視しない。
+  比較自然変換の両変数自然性・左右評価単位・パラメータ結合の可換図式も証明済み。
+- U15d：同じ有限語・path 直和の比較、各 ε 消去とその全有限和・全直和、最終微分の
+  chain 同型、最終単位・合成と元の包含との整合性。すべて underived、flatness 不要。
+
+`Derived/KFlatBimodule*`・既存 bimodule 合成系・既存 Quotient ファイル・Perfect/・
+DifferentialGraded/README.md・Stage*.lean は編集していない。
+ルート import は自分の hunk のみ `git add -p` で stage。正本 `dg-theory.md` には
+この記録への参照を一行だけ追加する。amend・rebase・reset は行っていない。
