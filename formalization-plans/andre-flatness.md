@@ -1397,3 +1397,48 @@ SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（
 新規 8 公開宣言の `assert_no_sorry` を追加した専用監査は終了コード 0。
 生成宣言を含む 1988 宣言の推移的公理依存は標準 3 公理のみ。
 主要な全評価 Tor 消滅と実導来評価同型の公開型を `#print` で確認した（終了コード 0）。
+
+### E1.21：任意族の実係数剰余と逐次 p,d 完備化後の剰余
+
+新規 `ArbitraryMonicPrismaticCoefficientReduction.lean` は E1.20 の全評価源比較を
+一般結合子と右因子の商比較へ接続し、実三因子還元を同じ raw (p,d) 剰余の single に同定。
+`ArbitraryMonicPrismaticQuotientDerived.lean` は全射商での係数作用の降下、
+H⁰ の商線形比較、実商対象の非零次数消滅・純性・single 比較を任意族に一般化する。
+候補環や元の係数射の定義は既存のまま使う。
+`ArbitraryMonicPrismaticQuotientFlat.lean` はこの H⁰ 比較を元の係数商へ制限し、
+任意モニック族の raw 剰余の忠実平坦性へ移す。
+`ArbitraryMonicPrismaticPDReduction.lean` は二重多項式源の一般正方形比較を使って
+元の A/(p,d) に沿う実還元の離散性と H⁰ 忠実平坦性を得る。
+`ArbitraryMonicPrismaticIteratedResidue.lean` は p,d の個別正則性による既存の単位比較を用い、
+逐次 p,d 実導来完備化後にも同じ実剰余比較を与える。
+原典の Prop 7.11 を使う証明とは異なる、BS Rem 7.15（著者版 p.62）の具体的 PD 計算の経路。
+
+主要公開型（namespace `SerrePositivity.BhattScholze.Andre`）：
+
+```lean
+theorem monicPrismaticSourceIteratedPDResidueH0_faithfullyFlat_arbitrary
+    {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
+    (D : DeltaStructure p A) (d : A) (f : σ → Polynomial A)
+    (hf : ∀ t, (f t).Monic) (hdeg : ∀ t, 0 < (f t).natDegree)
+    (hpA : Function.Injective (fun x : A => (p : A) * x)) (hd : IsSMulRegular A d)
+    (v : Aˣ) (hv : (v : A) = D.delta d) :
+    Module.FaithfullyFlat (A ⧸ Ideal.span {(p : A), d})
+      ((DerivedCategory.homologyFunctor (ModuleCat (A ⧸ Ideal.span {(p : A), d})) 0).obj
+        ((boundedAboveDerivedBaseChange (Ideal.Quotient.mk (Ideal.span {(p : A), d}))).obj
+          (MonicPrismaticSourceIteratedPDCompletion D d f)).obj)
+```
+
+`monicPrismaticSourceIteratedPDResidue_homology_isZero_arbitrary` は同じ入力から正次数条件を外し、
+`(i : ℤ) (hi : i ≠ 0)` を加えた型で、上記対象の i 次ホモロジーが `IsZero` であると述べる。
+`monicPrismaticSourceIteratedPDResidueIso_arbitrary` とその `_unit_arbitrary` は
+実 raw 剰余への比較と元の標準完備化単位の像の公式を保持する。
+有限全列挙・有限性の仮定は全て外した。p 正則性、d 正則性、δ(d) 単元性は明示的に残り、
+完全 prism 上では次工程で既存の性質から供給する。
+残るのは任意族の完備化源の離散性、raw PD・完全化・候補環比較への接続、
+最終存在定理の公開、および無限 p 冪根変数の明示的自由基底。
+最終目標はまだ未宣言であり、全体完成とは数えない。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4342 jobs）。
+新規 18 公開宣言の `assert_no_sorry` を追加した専用監査は終了コード 0。
+生成宣言を含む 2296 宣言の推移的公理依存は標準 3 公理のみ。
+主要な逐次完備化後の実剰余の公開型 2 本を `#print` で確認した（終了コード 0）。

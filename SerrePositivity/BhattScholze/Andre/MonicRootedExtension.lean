@@ -21,6 +21,7 @@ public import SerrePositivity.BhattScholze.Andre.PerfectPrismMonicPerfectoidComp
 public import SerrePositivity.BhattScholze.Andre.PerfectPrismMonicRootedExtension
 public import SerrePositivity.BhattScholze.Andre.FiniteMonicRootedExtension
 public import SerrePositivity.BhattScholze.Andre.MonicPrismaticArbitraryResidue
+public import SerrePositivity.BhattScholze.Andre.ArbitraryMonicPrismaticIteratedResidue
 
 /-!
 # André E1・E2 の集約
