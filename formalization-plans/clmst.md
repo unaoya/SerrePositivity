@@ -9013,6 +9013,24 @@ Noether 性、環上の a 正則性、通常の平坦性を追加していない
 四角形を構成して `prop247_isogeny_of_standard_square` へ接続する。Cor 8.12 は保留のまま。
 KL-T の実 almost 比較と有限被覆・定 rank の組立ては依然として実入力の供給を要する。
 
+**D-I・実終域全体の比較（2026-10-17）。** `Prop247TargetComparison.lean` は、
+元の指定 perfectoid 化 f:S→C と通常 tensor B⊗R S の指定 perfectoid 化 β を受け取り、
+既存 BS の `perfectoidizationCompletedBaseChangeMap_exists_algEquiv` が与える B 代数同型を固定し、
+その元の通常 tensor の標準射との可換式を公開した。`completedBaseChangeTensorH0LinearEquiv` で
+全ての元の B 係数作用を保ち、`integralPerfectoid_completedBaseChange_pure` と正規化 H⁰ 同型を
+用いて、C の実完備導来底変換全体から β の終域の single 対象への同型を構成する。
+`prop247_targetCompletedBaseChangeIso_homology` は対象全体の同型が所定の H⁰ 線形同値を誘導する
+ことを証明する。対象3677ジョブ・専用監査の公開5宣言は成功。全5宣言は assert_no_sorry 成功・
+標準3公理のみであり、普遍対象の存在を新しく引用せず指定された実射を使う。
+先行する始域公開後の CLMST 監査も終了コード0を確認した。
+
+始域・終域の実同型の供給はここまでで揃ったが、両者を結ぶ元の射の標準四角形は未完成。
+次は元の加群射 f の完備底変換について、その H⁰ と BS の元の tensor 標準射の対応を示し、
+始域比較の `_unit` と終域比較の `_homology` を使って四角形を証明する。
+その後 `prop247_completedModuleConeIso` と既存の全段比較・D1〜D6 へ合流する。
+この四角形や実 almost 比較を未供給のまま Prop 2.4.7 を証明済みとは扱わない。
+Cor 8.12 の保留は継続し、新しい sorry・axiom・引用は追加していない。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
