@@ -8790,6 +8790,50 @@ B-I は既存の有限直積 perfectoid 化の同定経路に由来する。
 原典の前提と perfectoid 化のモデル同定に接続してこの二つの証明を供給することが残る。
 その後、保存済みの被覆合流・一つの André 拡大での忠実検出・KL-Q の両消滅へ合成する。
 
+#### KL-T：元の perfectoid ideal 全体と有限被覆入力の忠実降下（2026-10-17）
+
+`CLMST/AndrePerfectoidIdealTorDescent.lean` は元の基底上の Tor 入力へ戻る公開入口を供給する。
+
+1. `perfectoidIdeal_powerTorsionTorInput_of_baseChangedPerfectoidization` は、
+   指定した perfectoid 拡大 R→E の p 完全忠実平坦性、元の普遍射 f:A→C、
+   実 tensor E⊗R A の指定普遍射 g:E⊗R A→D を受け取る。
+   D の E 上の全 p 冪 torsion Tor 入力を、C の元の R 上の全入力へ戻す。
+   元の s∈perfectoidIdeal R p hR a を、その像が
+   perfectoidIdeal E p hE (algebraMap R E a) に入ることから検出する。
+   試験 N を実 `ModuleCat.extendScalars (algebraMap R E)` で係数拡大し、
+   同じ k の零化を保持する。新たな通常平坦性や試験加群の有限性は要求しない。
+2. `perfectoidIdeal_powerTorsionTorInput_of_baseChanged_aic_principal_cover` は、
+   さらに E が絶対整閉で、E[1/algebraMap R E a] の有限主開被覆 t が指定された場合に、
+   各 q:t の元の分子に対応する局所入力から元の R 上の全入力を返す。
+   局所生成元は正確に
+   `algebraMap R E a * (IsLocalization.Away.sec (algebraMap R E a) q.1).1`。
+   指定モデル D と被覆 t は全試験 N,k,i,s に先行し、ideal を置き換えない。
+3. `exists_andre_extension_descends_perfectoidIdeal_powerTorsionTorInput` は、
+   既存 BS 7.14 で一つの E を選び、その perfectoid 性・完全忠実平坦性・絶対整閉性と
+   全元に対する compatible roots の選択を保持する。量化順は
+   **∃ E,hE,ρ, …, ∀ A,C,f,hf,D,g,hg,a, (E 上の全 Tor 入力) → (R 上の全 Tor 入力)**。
+   元の代数・元・普遍モデル・試験対象ごとに拡大を選び直さない。
+
+いずれも最終出力は次の元の係数作用である。
+
+```lean
+∀ (N : ModuleCat.{u} R) (k : ℕ), (∀ x : N, (p : R) ^ k • x = 0) →
+  ∀ i : ℕ, 0 < i → ∀ s ∈ perfectoidIdeal R p hR a,
+    torCoefficientScalarEndomorphism C N i (algebraMap R C s) = 0
+```
+
+対象ビルドと専用監査 `scripts/audit_clmst_andre_ideal_tor_descent.lean` は成功。
+指定拡大の二定理は `assert_no_sorry` 成功・標準三公理のみ。
+存在定理の依存閉包は標準三公理と既存 BS 7.14 だけを許す監査に成功し、
+B-I、Cor 8.12、Prop 2.4.9(a)、Cor 4.0.4 を隠れた引用として使っていない。
+全体ビルド成功（6406 jobs）、KL 専用監査も成功（1220 assert と存在定理の型検査）。
+
+これは局所入力から元の基底の全入力までの実降下であり、局所入力を供給した証明ではない。
+Cor 8.12 入力は現時点で未宣言、担当記録では保留のまま。
+二つの canonical excision の実 pullback 性、モデル同定、実被覆への適用と
+KL-Q の低次局所コホモロジー・全段 Koszul 消滅および引用置換は引き続き未完了。
+D-I/U/Q や Cor 8.12 の担当ファイルは編集していない。
+
 #### Prop 2.4.7 専任系列：原典から D-I/U/Q への型付き受渡し（2026-10-17）
 
 本節は統合表 D-I・D-U・D-Q の実入力を固定する。未採用の別計画は根拠にしない。
