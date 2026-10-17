@@ -10243,6 +10243,21 @@ scripts/audit_clmst.lean は全て終了コード0で完了した。監査範囲
 各 Si の bounded torsion を追加する必要はない。元の Prop 2.4.7 引用はまだ置換しない。
 原典 E∞ 版 Cor 8.12 の保留を継続し、新しい sorry・axiom・引用は追加していない。
 
+**定 rank の条件付き組立て・元の実被覆と共通モデルを選択した錐零化（2026-10-17）。**
+`Prop247ConstantRankExcision.lean` は絶対整閉 perfectoid 基底上の元の有限・有限表示 A、
+元の指定 β:A→P、g の外の定 rank を受け取り、実有限分裂被覆と各共通モデルを
+既存 KL API から構成する。各共通モデルの指定 perfectoid 化を選び、二つの
+KLCanonicalExcisionSquare を KLFiniteComparisonExcision の明示仮定から得て、
+既存の局所実錐比較と有限被覆の指数合流により元の β の錐を一つの g の冪で零化する。
+元の大域的な一つの自由比較を仮定しない。被覆構成には rank 値が不要だが、原典の
+定 rank 段階の入口としてその仮定を保持し、一般 rank の原典の帰着を置換したとは扱わない。
+A の bounded torsion、通常の平坦性や g 正則性・rank 正値性は追加しない。
+対象4632ジョブと専用監査が成功。指定データの局所錐中核と実共通被覆は assert_no_sorry 成功。
+本選択入口は共通モデルと有限自由環の perfectoid 化に既存 B-I を使用するため sorry-free とは扱わない。
+型と証明を再帰走査する専用監査で、到達する未証明宣言は既存
+BhattScholze.Inputs.exists_perfectoidization_of_integral のみであることを確認した。
+原典 E∞ 版 Cor 8.12 の保留を継続し、新しい sorry・axiom・引用は追加していない。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
