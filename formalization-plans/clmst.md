@@ -10165,6 +10165,16 @@ V の perfectoid 性・離散性・rank・p 完備性は不要で、原典の p 
 原典 E∞ 版 Cor 8.12 の引き戻し性・終域比較の零化はなお別途必要であり、保留を継続する。
 新しい sorry・axiom・引用は追加していない。
 
+**実 perfectoid rank 付値環延長の公開と依存更新後の復旧確認（2026-10-17）。**
+Prop247AicRankValuation の本系列の import を別 index の git add -p で選択した。
+全体6876ジョブの成功後、最初の主定理監査は担当外 Andre/Transfinite/Basic.olean の
+欠落により失敗し、続く CLMST 監査は実行されなかった。新しい証明の追加を停止した。
+同じ object file が戻ったことを確認後、迂回編集や監査範囲の変更をせず、同じ元の
+全体 lake build と scripts/audit_axioms.lean・scripts/audit_clmst.lean を再実行した。
+復旧後の全体6876ジョブと両監査は全て終了コード0で完了し、その後に証明追加を再開する。
+公開2宣言の専用監査も assert_no_sorry 成功・標準3公理のみ。
+原典 E∞ 版 Cor 8.12 の保留を継続し、新しい sorry・axiom・引用は追加していない。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
