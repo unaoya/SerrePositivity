@@ -8625,6 +8625,42 @@ v の単射性は要求しない。分母払い後の誤差が ker v に入る�
 KL 専用監査 `scripts/audit_clmst_koszul_local.lean` は成功（1203 assert）。
 有限表示共通モデル、Cor 8.12 の実適用と離散対象との同定、包含比較、KL-T/Q は未完了。
 
+#### KL-T：有限表示を保つ実共通モデル（2026-10-17）
+
+`CommutativeAlgebra/FinitePresentationCommonLocalizationModel.lean` の
+`exists_finitePresentation_common_localization_model` は、有限かつ代数として有限表示な
+R 代数 A,B、実写像 f : A →ₐ[R] X、h : B →ₐ[R] X と、
+f が powers d による加群局所化を表すことから、次を一括して構成する。
+
+```text
+∃ (E : Type u) (_ : CommRing E) (_ : Algebra R E),
+  Module.Finite R E ∧ Algebra.FinitePresentation R E ∧ Module.FinitePresentation R E ∧
+  ∃ (u : A →ₐ[R] E) (v : B →ₐ[R] E) (w : E →ₐ[R] X),
+    w.comp u = f ∧ w.comp v = h ∧ IsLocalizedModule (.powers d) w.toLinearMap
+```
+
+B の有限加群生成系の像を f に沿って分母払いし、その有限個の関係式で
+A⊗R B を割る。像を取る操作と異なり、有限表示性が残る。
+`isLocalizedModule_of_comparison_power_torsion_coker` は実比較の余核が冪 torsion
+であることから局所化構造を移す一般補題で、ここでは商 E の実写像 w に適用した。
+w の単射性や基底の Noether 性、d の正則性は要求しない。
+
+`FinitePresentationCommonLocalizationBounds.lean` の
+`localizationSplitting_exists_finitePresentation_common_model_bounds` は、
+元の分解 e : L⊗R A ≃ₐ[L] (Fin r → L) に適用する公開入口。
+元の A→E←Rʳ と w:E→Lʳ、各合成の指定された値、u,v の有限性、
+両核の点ごとの d 冪 torsion 性、両余核を消す一つの指数を保持し、
+E の有限性・代数有限表示性・加群有限表示性を同時に返す。
+rank 0・零環・零因子を除外しない。
+
+対象ビルド、専用監査 `scripts/audit_clmst_fp_common_model.lean` は成功。
+公開3補題と、rank 0 ではモデル全体が一つの d 冪で消える実適用は、
+`assert_no_sorry` が通り標準三公理のみ。新引用なし。
+全体ビルドも成功（6357 jobs）。前工程で報告した別系列の olean 欠落は今回再現しなかった。
+KL 専用監査も成功（1206 assert）。
+次は既存の有限表示加群の導来完備性をこの E に適用する。
+Cor 8.12 の実 excision・既存環版との同定、包含比較、KL-T/Q は引き続き未完了。
+
 #### Prop 2.4.7 専任系列：原典から D-I/U/Q への型付き受渡し（2026-10-17）
 
 本節は統合表 D-I・D-U・D-Q の実入力を固定する。未採用の別計画は根拠にしない。
