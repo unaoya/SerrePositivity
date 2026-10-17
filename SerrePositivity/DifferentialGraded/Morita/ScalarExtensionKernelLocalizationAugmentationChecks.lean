@@ -1,0 +1,11 @@
+module
+public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelLocalizationAugmentation
+
+/-! # 主導来kernel係数変更の自然な増大比較の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded.Morita
+#print axioms scalarKernelProductHomotopyToDerived_map_closed
+#print axioms scalarKernelResolutionAugmentation
+#print axioms scalarKernelDerivedExtensionAugmentation
+#print axioms scalarKernelDerivedExtensionAugmentation_app
+#print axioms scalarKernelDerivedExtensionAugmentation_isIso

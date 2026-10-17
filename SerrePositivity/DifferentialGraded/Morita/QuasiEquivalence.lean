@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelLocalizationAugmentation
 public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelLocalization
 public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelPerfectNaturality
 public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelHomotopyNaturality
