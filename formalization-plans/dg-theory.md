@@ -9813,3 +9813,58 @@ BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_
 その後U16a〜d、U15e分解版へ進む。局所K-flat版のQuotient/DerivedComparison*・Verdier/、
 Endomorphism/、ScalarExtension*は再利用対象であり編集していない。
 共有モデル圏一般論への新しいAPI要求はない。
+
+### 17.214 U12e54：中間dg圏の制限と全Hom自然なbimodule合成比較（2026-10-17）
+
+**既存の豊穣制限による二因子。** `Bimodule/MiddleRestriction.lean`ではF:D→Cに対し、
+P:B–Cの左側の制限をFへの前合成、Q:C–Eの右側の制限を既存の
+`dgModuleRestriction A D C F.op`への後合成として定義した。
+いずれもMathlibのdg関手の合成であり、右加群の全Hom endを保持する。
+左因子のleftAt比較と、右因子の左作用の全次数評価を公開した。
+既存の`bimoduleRestriction`の名前・型・定義は変更していない。
+
+**実際のbimodule射。** `Tensor/BimoduleMiddleComparison.lean`は前項の
+`BalancedTensor.restrictFamily`を再利用し、中間圏を制限した合成の各値から元の合成へ送る
+`middleRestrictionComparisonValue`を構成した。包含と任意次数の純粋tensorでの計算式を公開する。
+`Tensor/BimoduleMiddleActions.lean`は外側の右B作用と左E作用に対する可換性を証明する。
+右作用のKoszul符号は先頭因子の次数との積で既存の合成公式と一致し、左作用には追加符号がない。
+純粋斉次元での計算から主Hom複体の前後合成の等式へ戻した。
+`Tensor/BimoduleMiddleMap.lean`はこれを全Hom自然な右加群射族、さらに
+`middleRestrictionComparisonMap`という実際の閉零bimodule射へ束ねる。
+値での計算に加え、外側の任意次数Homに対する自然性を証明済みである。
+この段階ではEの対象型のsmallnessも要求しない。
+
+**制限後の解像度を使う導来比較。** `Derived/BimoduleMiddleComparison.lean`は
+制限された後因子への増大qを合成に入れる`middleRestrictionResolvedMap`を定義し、
+厳密な増大squareに関する合成式を証明した。
+`middleRestrictionSourceComputation`は既存の全導来合成と指定右K-flat解像度での計算を結ぶ。
+`derivedMiddleRestrictionComparison`は、後因子Qの右K-flatモデルと、制限後の右K-flat解像度Rを
+指定して、既存の二つの`derivedBimoduleComposeFunctor`の値の間の射を構成する。
+`derivedMiddleRestrictionCanonicalComparison`は制限後の既存標準semifree解像度を選んだもの。
+仮定する局所Hom K-flat性は終端Eのもので、C・Dの局所Hom K-flat性や
+制限されたQの右相対K-flat性を追加要求しない。
+元のQの右K-flatモデルは既存の`rightKFlatResolutionObj`で得られる。
+これは比較射の構成であり、準同値Fの場合の可逆性・解像度独立性は未証明である。
+
+**検証。** 新規`Checks.DGBimoduleMiddleComparison`は独立した四つの対象宇宙、
+Eのsmallnessなしでの全Hom自然な射、任意整数次数の値の計算、
+制限後のK-flat仮定なしでの標準解像度による導来比較、ZMod 2の場合を検査した。
+既存のtensor制限比較・解像度bimodule同値・導来随伴・単位・制限・導来bimodule五角形・
+StageEight・StageSeven・Spectra.StageTwoとの統合ビルド成功（3411 jobs、警告なし）。
+主要25宣言の直接公理監査は重複・欠落なく標準3公理以内。新規監査累計4200宣言。
+今回の6受入Leanファイルのsorry・admit・新規axiom・資源上限変更は0件。採用済み引用0件。
+Lean v4.35.0-rc4とMathlib manifest/HEAD
+`e6bbacd0e1b7307ff6e17da09cd2455f60804fa6`を再確認した。
+
+全体文書検査は20 Markdown・320 exposition参照を検査し、担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+未解決参照1件で失敗した。計画書のローカルリンクと担当差分の空白検査は成功。
+
+**残件と次工程。** 今回の比較射を両因子の閉零射および既存の積dg圏表示の制限と比較し、
+増大squareがホモトピーで可換な場合の解像度独立性を証明する。
+そのうえで準同値の場合の可逆性を示し、全導来圏上の合成比較自然同型へ降ろす。
+対角単位・結合子との整合性と解像度変更coherenceは引き続き未完であり、U12e全体は未受入。
+U12e受入→U16a〜d→U15e分解版の順と、局所K-flat版の並行所有を維持する。
+共有モデル圏一般論への新しいAPI要求はない。
+共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・ScalarExtension*・
+Quotient/DerivedComparison*・Verdier/は編集していない。
