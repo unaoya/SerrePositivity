@@ -1274,6 +1274,20 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootMonicCompletedInput_
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicOriginalInputSquare_iff_roots
 assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicHom_preserving_original_input
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletionPrismOfRegular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletionPrismOfRegular_generator
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletionPrismOfRegular_deltaStructure
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletionPrismOfRegular_ideal
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletionPrismBaseHomOfRegular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletionPrismBaseHomOfRegular_toRingHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicSourceHomOfDelta
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicSourceHomOfDelta_toRingHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicSourceHomOfDelta_comp_base
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicSourceHom_quotientMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicPrismHom_preserving_original_input
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicSourceQuotient_complete_of_bounded
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicPrismHom_of_bounded_source
+
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
@@ -1509,7 +1523,9 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicEquationInputSquare,
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicStandardCompletedInput,
     `SerrePositivity.BhattScholze.Andre.PowerRootMonicCompletedInputExt,
-    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicOriginalInputSquare]
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicOriginalInputSquare,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicRegularSource,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicSourcePrismUniversal]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

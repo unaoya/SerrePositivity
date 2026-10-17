@@ -5972,3 +5972,127 @@ A1-a 全体の完成とは数えない。既存 hpR 付き定理は差し替え�
 （集約 4579 jobs）。新規 18 公開宣言の `assert_no_sorry` と専用監査は終了コード 0。
 生成宣言を含む 7631 宣言の推移的公理依存は標準 3 公理のみ。
 新規 18 公開宣言の正確な型を `#check` で確認した（終了コード 0）。
+
+### E1.74／A1-a 元の H の条件付き prism 化と prism 射の普遍性（2026-10-17）
+
+本節は A1-a の追記。E1.73 の δ 環射による普遍性を、元の H と元の標準分母を使う
+prism 射の一意存在へ接続した。生成元正則性と有界ねじれは明示仮定のまま残す。
+既存 hpR 付き定理、並列担当のファイル・記録節は変更していない。
+
+以下の名前はすべて名前空間 `SerrePositivity.BhattScholze.Andre` 内。
+共通の入力は {A : Type u} [CommRing A]、{p : ℕ} [Fact p.Prime]、
+W : OrientedPrism p A、hW : W.deltaStructure.IsPerfect、f : Polynomial A。
+P、E、dP、a、L、jL、H、uL、DH、R、fR、PR、SI、lS、baseH、T は E1.73 と同じ。
+dH=uL (jL dP)。以下で H、T を使う型の先頭にはコードと同じく
+`let := pdCompletionCommRing L p (jL dP)` が付く。
+
+#### 元の H の条件付き prism 構造（6 公開宣言）
+
+新規 `Andre/PowerRootPrismMonicRegularSource.lean`。
+`powerRootPrismMonicCompletionPrismOfRegular W hW f` の正確な型は
+
+```lean
+let := pdCompletionCommRing L p (jL dP)
+IsSMulRegular H dH → OrientedPrism p H
+```
+
+である。以下、hreg:IsSMulRegular H dH、
+PH=powerRootPrismMonicCompletionPrismOfRegular W hW f hreg と書く。
+
+- `powerRootPrismMonicCompletionPrismOfRegular_generator W hW f hreg` は `PH.generator=dH`。
+- `powerRootPrismMonicCompletionPrismOfRegular_deltaStructure W hW f hreg` は
+  `PH.deltaStructure=DH`。
+- `powerRootPrismMonicCompletionPrismOfRegular_ideal W hW f hreg` は
+  `PH.ideal=Ideal.span {dH}`。
+- `powerRootPrismMonicCompletionPrismBaseHomOfRegular W hW f hreg : OrientedPrism.Hom W PH`。
+- `powerRootPrismMonicCompletionPrismBaseHomOfRegular_toRingHom W hW f hreg` は
+  `(powerRootPrismMonicCompletionPrismBaseHomOfRegular W hW f hreg).toRingHom=baseH`。
+
+既存の標準 δ 射で distinguished 性を移し、実完備化の p と dH の導来完備性を供給する。
+正則性だけを hreg として渡して `OrientedPrism.ofDistinguished` を使う。
+元の環・δ 構造・生成元・商 H/dH を変更しない。モニック性・正次数・hpR は不要。
+hreg を無条件に証明したとは主張せず、既存の hpR 付き構成も差し替えていない。
+
+#### 基底を保つ δ 射と prism 射（4 公開宣言）
+
+新規 `Andre/PowerRootPrismMonicSourcePrismUniversal.lean`。
+{B : Type u} [CommRing B]、Q : OrientedPrism p B、k : OrientedPrism.Hom W Q を固定する。
+basePH=powerRootPrismMonicCompletionPrismBaseHomOfRegular W hW f hreg とする。
+
+- `powerRootPrismMonicSourceHomOfDelta W hW f Q k` は、H の環構造の let の後に
+  (hreg:IsSMulRegular H dH)、(F:H→+*B)、hδ:DH.IsDeltaHom Q.deltaStructure F、
+  hF:F.comp baseH=k.toRingHom を受け取り、`OrientedPrism.Hom PH Q` を返す。
+- `powerRootPrismMonicSourceHomOfDelta_toRingHom W hW f Q k hreg F hδ hF` は
+  `(powerRootPrismMonicSourceHomOfDelta W hW f Q k hreg F hδ hF).toRingHom=F`。
+- `powerRootPrismMonicSourceHomOfDelta_comp_base W hW f Q k hreg F hδ hF` は
+  `(powerRootPrismMonicSourceHomOfDelta W hW f Q k hreg F hδ hF).comp basePH=k`。
+- `powerRootPrismMonicSourceHom_quotientMap W hW f Q k` は、同じ hreg、
+  G:OrientedPrism.Hom PH Q、hG:G.toRingHom.comp baseH=k.toRingHom に対し
+  `G.quotientMap=powerRootPrismMonicReductionMap W hW f Q k G.toRingHom hG`。
+
+F(dH)=k(W.generator)∈Q.ideal からイデアル保存性を供給する。
+prism 射の剰余射を E1.73 の実際の H/dH の剰余射へ同定し、標準入力作用を保持する。
+
+#### 原典の完備入力作用を保つ prism 射の一意存在（1 公開定理、条件付き）
+
+同ファイルの `existsUnique_powerRootPrismMonicPrismHom_preserving_original_input`。
+W、hW、f、Q、k の後の明示引数は
+hf:f.Monic、
+hB:∃N:ℕ,∀n:ℕ,∀x:B⧸Q.ideal,(p:B⧸Q.ideal)^n*x=0→(p:B⧸Q.ideal)^N*x=0、
+η:SI→+*B⧸Q.ideal、hη:(η.comp lS).comp (algebraMap R PR)=k.quotientMap。
+H の環構造の let の後の正確な結論は
+
+```lean
+∀ (hreg : IsSMulRegular H dH)
+  (hT : IsAdicComplete (Ideal.span {(p : T)}) T),
+∃! G : OrientedPrism.Hom
+    (powerRootPrismMonicCompletionPrismOfRegular W hW f hreg) Q,
+  G.comp (powerRootPrismMonicCompletionPrismBaseHomOfRegular W hW f hreg) = k ∧
+    G.quotientMap.comp (powerRootPrismMonicOriginalInputMap W hW f hf hT) = η
+```
+
+である。入力作用を保つ一意な δ 射を prism 射として構成し、台の環射による外延性で一意性を移す。
+源は既存の実 H⁰ と同一であり、ねじれ除去商や別の完備化へ変更していない。
+
+#### 有界な源の剰余から通常の完備性を供給する合流点（2 公開定理）
+
+同ファイルの `powerRootPrismMonicSourceQuotient_complete_of_bounded W hW f` は、
+H の環構造の let の後に、正確に
+
+```lean
+(∃ N : ℕ, ∀ n : ℕ, ∀ x : T, (p : T)^n*x=0 → (p : T)^N*x=0) →
+  IsAdicComplete (Ideal.span {(p : T)}) T
+```
+
+を証明する。この定理に Q、k、hf、hreg は引数として残らない。
+実 H⁰ の導来 p 完備性を通常の主商 T に移し、有界ねじれ比較を使う。
+p 正則性を要求せず、T の有界 p ねじれから hT を供給する。
+
+`existsUnique_powerRootPrismMonicPrismHom_of_bounded_source` の引数は上の
+prism 射の一意存在と同じ W、hW、f、Q、k、hf、hB、η、hη。
+H の環構造の let の後の正確な結論は
+
+```lean
+∀ (hreg : IsSMulRegular H dH)
+  (hBound : ∃ N : ℕ, ∀ n : ℕ, ∀ x : T,
+    (p : T)^n*x=0 → (p : T)^N*x=0),
+let hT := powerRootPrismMonicSourceQuotient_complete_of_bounded W hW f hBound
+∃! G : OrientedPrism.Hom
+    (powerRootPrismMonicCompletionPrismOfRegular W hW f hreg) Q,
+  G.comp (powerRootPrismMonicCompletionPrismBaseHomOfRegular W hW f hreg) = k ∧
+    G.quotientMap.comp (powerRootPrismMonicOriginalInputMap W hW f hf hT) = η
+```
+
+である。hT を独立の仮定とせず、剰余 T の有界 p ねじれから内部で供給する。
+ただし hreg と hBound を無条件に証明したとはみなさない。
+
+BS Rem 7.15（著者版 p.62）の源と普遍性に対し、原典とは異なる raw 実完備化の構造、
+具体的な標準入力作用、通常の主商の剰余射、有界ねじれ比較による経路を docstring に記録した。
+最小の残る接続点は、**同じ H の標準分母像の正則性**と**同じ T=H/dH の有界 p ねじれ**。
+これらの無条件の供給と A1-c の最終係数照合との合流が残る。
+条件付きの prism 構造・初期性を、絶対 prismatic envelope 全体の同定完了とは数えない。
+
+検証：新規 2 ファイルの対象ビルドと集約ビルドは終了コード 0
+（集約 4581 jobs）。新規 13 公開宣言の `assert_no_sorry` と専用監査は終了コード 0。
+生成宣言を含む 7785 宣言の推移的公理依存は標準 3 公理のみ。
+新規 13 公開宣言の正確な型を `#check` で確認した（終了コード 0）。
