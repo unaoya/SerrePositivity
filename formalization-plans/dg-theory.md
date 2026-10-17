@@ -13105,3 +13105,32 @@ Perf上の必要十分条件はcriterionPerfMorita_iff、全導来圏への拡�
 lake build SerrePositivity.DifferentialGraded.Morita.CriterionChecks SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.Spectra.StageTwo
 lake env lean SerrePositivity/DifferentialGraded/Morita/CriterionChecks.lean
 ```
+
+
+### 17.275 U16dへの接続：既存Perf比較そのものの両単位・結合coherence（2026-10-17）
+
+CoherencePerfectUnitのperfectKernelCompositionIso_rightUnit／_leftUnitは、
+別担当の既存perfectKernelCompositionIso、perfectDerivedKernelIdentityIso、perfectDerivedKernelMapによる
+実際の両単位図式を証明した。CoherencePerfectAssociatorのperfectKernelCompositionIso_associatorは、
+同じ既存Perf合成比較の三因子図式を主導来kernel結合子の射で閉じる。
+Perf包含の忠実性で主導来射へ戻し、§17.273の公開等式と既存Perf比較の成分定義を使う。
+新しい比較の存在を入力にせず、既存比較の定義・型を変更していない。
+合成kernelの列のperfect性はkernelCompose_columnsPerfect_of_columnsから得る。
+右単位はD、左単位・結合図式はD・EのlocalHomKFlatを明示し、各入力kernelの列のperfect性を保持する。
+
+CoherencePerfectChecksはU16a・U16c・別担当Perf／全導来判定を同時importし、
+QuasiEquivalence・U12eLocal・Spectra.StageTwoと合同ビルド成功（3872 jobs、警告0）。
+追加3宣言の直接公理監査は標準3公理以内、新規監査累計5107。
+新規sorry・axiom・引用・資源上限変更なし。他担当のPerfect*・ScalarExtension*・CriterionDerived*と
+dg-theory-morita-qe.mdは編集していない。
+
+これにより同担当記録の残接続(1)「作用coherenceのPerf移送」に必要な実際の等式を供給した。
+同担当が完了したという記録に代えてU16d全体を受け入れるものではない。
+残る係数変更接続は(2)局所化したkernel係数変更関手への正方形接続、(3)出力加群評価と複体の
+係数変更の比較を介したU12f成分同定、(4)実際のkernel合成との係数変更図式。
+中心作用の保留も維持する。U16a・U16c統合は受入済み、U16全体の受入はこれらの完了を待つ。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Morita.CoherencePerfectChecks SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.Spectra.StageTwo
+lake env lean SerrePositivity/DifferentialGraded/Morita/CoherencePerfectChecks.lean
+```

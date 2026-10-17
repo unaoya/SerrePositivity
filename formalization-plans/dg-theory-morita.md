@@ -777,3 +777,18 @@ CriterionChecksの合同ビルド3869 jobs・警告0、追加15宣言の直接�
 詳細はdg-theory.md §17.274。U16c統合をこの明示仮定下で受け入れる。
 U16d全体の受入記録はまだなく、Perf作用coherence移送・係数変更の3接続を残すため、U16全体は未受入。
 他担当のCriterionPerf*・CriterionDerived*・Perfect*・ScalarExtension*と専用記録は編集していない。
+
+
+## U16d接続：既存Perf比較の作用coherence（2026-10-17）
+
+CoherencePerfectUnitとCoherencePerfectAssociatorは、別担当の既存perfectKernelCompositionIso・
+perfectDerivedKernelIdentityIso・perfectDerivedKernelMapをそのまま使う図式を証明する。
+公開名はperfectKernelCompositionIso_rightUnit／_leftUnit／_associator。
+右単位はD、左単位・結合はD・EのlocalHomKFlat、入力kernelの列のperfect性を保持する。
+合成kernelの列のperfect性は既存APIから供給し、追加仮定にしない。
+
+合同ビルド3872 jobs・警告0、追加3宣言の直接公理監査は標準3公理以内。
+CoherencePerfectChecksがU16a・cと同時の再現入口。詳細はdg-theory.md §17.275。
+U16dのPerf作用coherenceへの移送を供給したが、局所化係数変更への正方形接続・
+U12f成分同定・kernel合成との係数変更図式と中心作用の保留は別担当の残接続として維持する。
+U16全体の受入はまだ行わない。
