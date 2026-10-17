@@ -502,6 +502,17 @@
   新規3主要宣言の公理は標準3公理のみ。既存公開APIの型は変更していない。
 - 主Kとの比較自然同型のshift整合性、導来Homの三角性、主Perfへの接続は引き続き残る。
 
+## U14b.24：主K比較のshift整合性と導来Hom三角性（2026-10-17）
+
+- `ShiftNaturalTransformation.lean`：忠実な前合成による自然変換のshift整合性の検出と、
+  商の自然同型持上げがshift整合性を保つことを証明した。
+- `DerivedTriangleComparison.lean`：既存の主K・主導来Hom比較自然同型が、正規化した
+  主K shiftと局所化した導来shiftに整合することを証明した。
+- その比較を主Kからの三角局所化に沿って使い、実際の主導来Homが三角関手であることを
+  `endomorphismDerivedHomIsTriangulated` として証明した。
+- `ChecksDerivedTriangleComparison` と更新した `ChecksCompatibility` の対象ビルド成功。
+  新規5主要宣言の公理は標準3公理のみ。既存の比較自然同型の名前・型は変更していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
