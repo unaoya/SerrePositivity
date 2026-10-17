@@ -1,0 +1,13 @@
+module
+public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelOutputModels
+
+/-! # 出力係数変更のモデル成分の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded.Morita
+#print axioms scalarOutputHomotopyDerivedIso_inv_app
+#print axioms scalarKernelOutputHomotopyComputation_hom
+#print axioms scalarKernelOutputLeft_closed
+#print axioms scalarKernelOutputModelComputation
+#print axioms scalarKernelOutputLeft_model
+#print axioms scalarKernelOutputRight_closed
+#print axioms scalarKernelOutputRight_model

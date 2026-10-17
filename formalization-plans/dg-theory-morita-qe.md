@@ -857,3 +857,19 @@ U16dの受入範囲・残る接続、U16aのcoherenceの進捗とは独立した
 残接続(3)の「出力加群の導来係数変更と複体評価を比較する射・同型」は条件を明示して構成した。
 **この比較を挿入した全dg加群正方形の成分が既存U12f比較と一致する等式は、引き続き証明中である。**
 残接続(4)のkernel合成との係数変更図式も未完。中心作用は保留し、U16d全体の受入は宣言しない。
+
+
+## U16d.29：導来正方形の左右増大の実際のモデル計算
+
+- `ScalarExtensionKernelOutputModels.lean` は、既存のH⁰・主導来比較の成分を計算し、
+  `scalarKernelOutputLeft_closed` と `scalarKernelOutputRight_closed` で通常入力上の増大経路を同定した。
+  左経路は実際の `scalarKernelBalancedIso`、右経路は実際の `kernelDerivedTensorAugmentation` を使う。
+- `scalarKernelOutputModelComputation` は正方形の共通モデルを標準右解像度で計算する。
+  `scalarKernelOutputLeft_model`・`scalarKernelOutputRight_model` は、元の全導来正方形の
+  左右の比較をこのモデル上の増大射そのものへ計算する等式である。
+  H⁰上の自然性で解像度計算を運び、別の比較射を選び直していない。
+- この7宣言はモデル計算の等式であり、K-flat性や増大の可逆性を必要としない。
+  可逆性を使う正方形は従来のhAug・hP'を引き続き保持する。
+- 監査入口のビルド成功（3244 jobs）。7宣言の公理は標準3公理のみ。
+  ログは `/tmp/serre-u16d-output-models-audit.log`。
+  U12f成分同定はこれらの計算と評価比較を合わせる次の接続であり、この単位では未完とする。
