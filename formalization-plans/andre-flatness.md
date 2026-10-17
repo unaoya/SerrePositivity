@@ -412,3 +412,46 @@ Prop 7.11 を使う原典の証明とは異なる、明示的なモニック剰�
 集約の対象ビルドは `set -o pipefail` 付きで終了コード 0（4005 jobs）。
 専用監査は全新規公開宣言の `assert_no_sorry` と、生成宣言を含む 176 宣言の
 標準 3 公理限定検査に成功（終了コード 0）。
+
+### E1.7：有限部分族余極限と任意モニック族の通常忠実平坦性
+
+新規 `Andre/MonicFamilyFiniteSystem.lean` は、固定した族 f の有限部分族に対する
+実通常関係商 `PolynomialFamilyFiniteStage f T` と、包含に沿う標準 R 代数射を構成する。
+各射は元の係数と指定根を保ち、恒等・合成則を満たす。
+`Andre/MonicFamilyColimit.lean` の `polynomialFamilyColimitEquiv` は
+`PolynomialFamilyColimit f ≃ₐ[R] PolynomialFamilyQuotient f` を与える。
+各根を一元部分族の段から余極限に写して逆射を作り、各有限段と全族の標準根で相互逆性を証明した。
+この代数同型にはモニック性・正次数・遷移射の単射性を仮定しない。
+
+`Andre/MonicFamilyFaithfullyFlat.lean` の主要公開型：
+
+```lean
+theorem polynomialFamilyQuotient_faithfullyFlat
+    {R σ : Type u} [CommRing R]
+    (f : σ → Polynomial R) (hf : ∀ s, (f s).Monic)
+    (hdeg : ∀ s, 0 < (f s).natDegree) :
+    Module.FaithfullyFlat R (PolynomialFamilyQuotient f)
+```
+
+`exists_familyMonicRootedFaithfullyFlat` の結論は正確に
+`∃ (T : Type u) (_ : CommRing T) (φ : R →+* T) (ρ : σ → T),
+ (letI := φ.toAlgebra; Module.FaithfullyFlat R T) ∧
+ ∀ s, (f s).eval₂ φ (ρ s) = 0`。
+同じモニック性・正次数だけを仮定し、任意濃度の族と零係数環を許す。
+
+有限段の忠実平坦性は E1.6 による。余極限の通常忠実平坦性は A2 の既存成果
+`Transfinite.faithfullyFlat_algebraDirectLimit` を直接再利用した。
+依存対象 `Andre.Transfinite.FaithfullyFlatColimit` の対象ビルドは終了コード 0（2052 jobs）。
+全族の実商への移送では元の係数作用を保つ上記の R 代数同型を使う。
+自由加群の余極限であることから自由性を推論していない。
+
+BS Thm 7.14（著者版 p.61）、Rem 7.15（p.62）の通常同時根添加の部分であり、
+Prop 7.11 を使う原典と異なる有限部分族の明示商による経路。
+これにより通常の根族商の忠実平坦性は任意族まで得られたが、分冪包・prismatic envelope の
+実導来比較、無限 p 冪根変数の自由基底、最終 perfectoid 候補の p 完全忠実平坦性は未完成。
+`exists_monicRootedPerfectoidExtension` は依然未宣言で、通常拡大を目標の完成と数えない。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4009 jobs）。
+専用監査も終了コード 0。全新規公開宣言の `assert_no_sorry` と、生成宣言を含む
+221 宣言の標準 3 公理限定検査に成功した。再利用する A2 の通常忠実平坦余極限定理も
+明示的な `assert_no_sorry` の対象に加えた。

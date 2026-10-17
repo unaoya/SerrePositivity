@@ -80,6 +80,34 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.monicFiniteFamilyQuotient_fre
 assert_no_sorry SerrePositivity.BhattScholze.Andre.monicFiniteFamilyQuotient_free_faithfullyFlat
 assert_no_sorry SerrePositivity.BhattScholze.Andre.exists_finiteMonicRootedFaithfullyFlat
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.faithfullyFlat_algebraDirectLimit
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyQuotientLiftAlgHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyQuotientAlgHom_ext
+assert_no_sorry SerrePositivity.BhattScholze.Andre.PolynomialFamilyFiniteStage
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyFiniteMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyFiniteMap_root
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyFiniteMap_self
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyFiniteMap_comp
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyFiniteDirectedSystem
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyFiniteToFull
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyFiniteToFull_root
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyFiniteToFull_compatible
+assert_no_sorry SerrePositivity.BhattScholze.Andre.PolynomialFamilyColimit
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyColimitOf
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyColimitOf_compatible
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyColimitRoot
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyColimitOf_root
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyColimit_eval
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyColimitToFull
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyColimitToFull_comp_of
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyFullToColimit
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyFullToColimit_root
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyFullToColimit_comp_toFull
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyColimitEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicFamilyColimit_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyQuotient_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.exists_familyMonicRootedFaithfullyFlat
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -101,7 +129,10 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.MonicFamilyQuotientUniversal,
     `SerrePositivity.BhattScholze.Andre.MonicFamilyOptionQuotient,
     `SerrePositivity.BhattScholze.Andre.MonicFamilyQuotientReindex,
-    `SerrePositivity.BhattScholze.Andre.MonicFiniteFamilyFlat]
+    `SerrePositivity.BhattScholze.Andre.MonicFiniteFamilyFlat,
+    `SerrePositivity.BhattScholze.Andre.MonicFamilyFiniteSystem,
+    `SerrePositivity.BhattScholze.Andre.MonicFamilyColimit,
+    `SerrePositivity.BhattScholze.Andre.MonicFamilyFaithfullyFlat]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
