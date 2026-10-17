@@ -603,3 +603,22 @@ HEAD からの差分全体が自分の変更だけであることも確認する
 - 残部：これらの射の表示と核消滅を、商側導来 Hom と実際の `quotientVerdierComparison`
   に接続し、充満忠実性を全 tria 対象へ運ぶこと。U17b 全体も未完。
   U15e19 のコミットは `beaf1d1b`（自分の7ファイルのみと直後に確認）。
+
+
+### U15e21：導来制限の全有限 cell に対する右直交性と Hom の局所化
+
+- `Quotient/DerivedComparisonLocalObjects.lean`：導来制限の本質像は整数 shift で閉じる。
+  その左直交部分圏に S の全代表加群が入ることから、生成性によって S 上の全有限 cell に
+  対する右直交性を証明した。商の任意の導来加群の制限に適用し、K-flat 仮定は不要。
+- `quotientDerivedRestriction_isLocal` は、指定有限 cell の cone を持つ射の前置が、
+  制限の像への Hom 上で全単射であることを示す。U17a の tria 分母にもそのまま適用する。
+  置換を要さない制限の計算式によって、実際の制限代表加群にも同じ局所性を得た。
+- `Quotient/DerivedComparisonHomPresheaf.lean`：制限代表加群への導来 Hom の反変関手を、
+  指定した `(triaQuotient A D S).op` に沿って局所化した。
+  局所化上の値を元の導来 Hom と同定する同値と、元の tria の射に沿う前置との自然性を公開。
+  別の Verdier 商や代替の mapping object は導入していない。
+- 対象ビルド `Checks.QuotientLocalObjects`（2622 jobs）・`Checks.QuotientHomPresheaf`
+  （2623 jobs）成功、警告なし。主要11宣言の公理監査は標準3公理のみ。
+  project import 依存409・410ファイルに禁止された dg 圏分解系への依存なし。
+  新規 sorry・axiom・引用なし。既存の他担当ファイル・ルートは編集していない。
+- U15e20 のコミットは `5ac8a3eb`（自分の3ファイルのみと直後に確認）。

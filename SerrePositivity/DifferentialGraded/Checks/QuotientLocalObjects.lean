@@ -1,0 +1,11 @@
+module
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonLocalObjects
+
+/-! # 商の導来制限の右直交性と局所性の監査 -/
+@[expose] public section
+open SerrePositivity.DifferentialGraded.DGQuotient
+#print axioms quotientDerivedRestriction_rightOrthogonal
+#print axioms quotientDerivedRestriction_isLocal
+#print axioms quotientDerivedRestriction_tria_precomp_bijective
+#print axioms quotientRepresentableRestriction_isLocal
+#print axioms quotientRepresentableRestriction_tria_precomp_bijective
