@@ -1,3 +1,6 @@
+import SerrePositivity.BhattScholze.Andre.Unconditional.LocalizedScalarModule
+import SerrePositivity.BhattScholze.Andre.Unconditional.LocalizedDeltaSourceTarget
+import SerrePositivity.BhattScholze.Andre.Unconditional.SourceUnitPurity
 import SerrePositivity.BhattScholze.Andre.Unconditional.SourceUnitDenominator
 import SerrePositivity.BhattScholze.Andre.Unconditional.CompletionTorsionDetection
 import SerrePositivity.BhattScholze.Andre.Unconditional.RawInitialRegular
@@ -26,6 +29,35 @@ import SerrePositivity.BhattScholze.Andre.Unconditional.PowerRootResidueSource
 import SerrePositivity.BhattScholze.Andre.Unconditional.RegularityBoundary
 import SerrePositivity.BhattScholze.Andre.Unconditional.VarpiPDReduction
 import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.BhattScholze.Andre.unconditionalScalarModuleCoefficientMap
+#print axioms SerrePositivity.BhattScholze.Andre.unconditionalScalarModuleCoefficientMap
+#check SerrePositivity.BhattScholze.Andre.unconditionalScalarModuleCoefficientMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.unconditionalScalarModuleCoefficientMap_isLocalizedModule
+#print axioms SerrePositivity.BhattScholze.Andre.unconditionalScalarModuleCoefficientMap_isLocalizedModule
+#check SerrePositivity.BhattScholze.Andre.unconditionalScalarModuleCoefficientMap_isLocalizedModule
+assert_no_sorry SerrePositivity.BhattScholze.Andre.unconditionalScalarModuleLocalizationEquiv
+#print axioms SerrePositivity.BhattScholze.Andre.unconditionalScalarModuleLocalizationEquiv
+#check SerrePositivity.BhattScholze.Andre.unconditionalScalarModuleLocalizationEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.unconditionalDeltaSourceTargetLocalizationEquiv
+#print axioms SerrePositivity.BhattScholze.Andre.unconditionalDeltaSourceTargetLocalizationEquiv
+#check SerrePositivity.BhattScholze.Andre.unconditionalDeltaSourceTargetLocalizationEquiv
+
+assert_no_sorry SerrePositivity.BhattScholze.Andre.unconditionalSourceUnit_scalarModule_flat
+#print axioms SerrePositivity.BhattScholze.Andre.unconditionalSourceUnit_scalarModule_flat
+#check SerrePositivity.BhattScholze.Andre.unconditionalSourceUnit_scalarModule_flat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.unconditionalSourceUnit_tor_isZero
+#print axioms SerrePositivity.BhattScholze.Andre.unconditionalSourceUnit_tor_isZero
+#check SerrePositivity.BhattScholze.Andre.unconditionalSourceUnit_tor_isZero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.unconditionalSourceUnit_augmentation_isIso
+#print axioms SerrePositivity.BhattScholze.Andre.unconditionalSourceUnit_augmentation_isIso
+#check SerrePositivity.BhattScholze.Andre.unconditionalSourceUnit_augmentation_isIso
+assert_no_sorry SerrePositivity.BhattScholze.Andre.unconditionalSourceUnit_homology_isZero
+#print axioms SerrePositivity.BhattScholze.Andre.unconditionalSourceUnit_homology_isZero
+#check SerrePositivity.BhattScholze.Andre.unconditionalSourceUnit_homology_isZero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.unconditionalSourceSaturatedLocalization_homology_isZero
+#print axioms SerrePositivity.BhattScholze.Andre.unconditionalSourceSaturatedLocalization_homology_isZero
+#check SerrePositivity.BhattScholze.Andre.unconditionalSourceSaturatedLocalization_homology_isZero
 
 assert_no_sorry SerrePositivity.BhattScholze.Andre.unconditionalDeltaDivisionSourceMap_comp
 #print axioms SerrePositivity.BhattScholze.Andre.unconditionalDeltaDivisionSourceMap_comp
@@ -488,6 +520,17 @@ private partial def checkA1bAxioms (todo : List Name) (seen : NameSet) : CoreM N
 
 elab "audit_A1b_unconditional" : command => do
   let roots : List Name := [
+    ``SerrePositivity.BhattScholze.Andre.unconditionalScalarModuleCoefficientMap,
+    ``SerrePositivity.BhattScholze.Andre.unconditionalScalarModuleCoefficientMap_isLocalizedModule,
+    ``SerrePositivity.BhattScholze.Andre.unconditionalScalarModuleLocalizationEquiv,
+    ``SerrePositivity.BhattScholze.Andre.unconditionalDeltaSourceTargetLocalizationEquiv,
+
+    ``SerrePositivity.BhattScholze.Andre.unconditionalSourceUnit_scalarModule_flat,
+    ``SerrePositivity.BhattScholze.Andre.unconditionalSourceUnit_tor_isZero,
+    ``SerrePositivity.BhattScholze.Andre.unconditionalSourceUnit_augmentation_isIso,
+    ``SerrePositivity.BhattScholze.Andre.unconditionalSourceUnit_homology_isZero,
+    ``SerrePositivity.BhattScholze.Andre.unconditionalSourceSaturatedLocalization_homology_isZero,
+
     ``SerrePositivity.BhattScholze.Andre.unconditionalDeltaDivisionSourceMap_comp,
     ``SerrePositivity.BhattScholze.Andre.unconditionalDeltaDivisionSourceUnitEquiv,
     ``SerrePositivity.BhattScholze.Andre.unconditionalDeltaDivisionSourceMap_bijective_of_isUnit,
