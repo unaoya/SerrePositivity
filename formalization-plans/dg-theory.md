@@ -10798,3 +10798,49 @@ BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_
 U15e分解版では局所K-flat版のQuotient/DerivedComparison*・Verdier/を読んで再利用し、重複実装しない。
 共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・ScalarExtension*・並行作業の
 Tensor/Associator*と他チャットの記録を編集していない。
+
+### 17.231 U12e71：対角bimoduleの制限比較と既存解像度変更による保存（2026-10-17）
+
+**Hom写像からの対角比較。** Bimodule/DiagonalRestriction.leanは、既存の
+representableRestrictionMapを各右加群成分として使い、diagonalRestrictionMapを構成した。
+対角の左作用との可換性はYonedaの全次数公式とdg関手の通常順合成保存で証明し、
+Koszul符号を閉次数零だけに制限していない。各値の複体で比較射がF.mapそのものになる。
+diagonalRestrictionMap_quasiIso_iffは比較射の準同型性とHomQuasiIso Fの同値であり、
+本質的全射性を条件に含まない。いずれのdg圏にも局所Hom K-flat性を追加しない。
+
+**既存の導来制限への接続。** Derived/DiagonalRestriction.leanは上の射を局所化し、
+pairedRestrictionDerivedIsoで既存derivedBimoduleRestriction F Fへ送る
+derivedDiagonalRestrictionMapを定義した。
+derivedDiagonalRestrictionIsoはHomQuasiIso Fだけからこの射を同型化し、homの一致も証明する。
+既存の右相対K-flat対角を再利用し、新しい対角や導来圏を定義していない。
+
+**解像度変更。** Resolution/DiagonalComparison.leanのcomparisonLeftDiagonalIsoは、
+指定解像度の対角を共通比較sourceの対角へ送る既存comparisonLeftの同型である。
+元の対象型のsmallness・HomのK-flat性は不要。
+comparisonRightDiagonalIsoとcanonicalComparisonDiagonalIsoは標準解像度側への接続であり、
+標準解像度に必要な元の対象型のsmallnessを明示する。
+changeDiagonalIsoは既存changeEquivalenceの実際のfunctorによる対角対象の保存を与える。
+変更前後のsource宇宙は独立で、逆同値の単位同型を明示して構成した。
+既存公開APIの名前・型は変更せず、14公開宣言を追加した。
+これは対角対象の保存であり、changeComposeIsoと左右単位子との可換squareの証明ではない。
+
+**検証。** Checks.DGDiagonalRestrictionは、Hom写像での値、HomQuasiIsoとの同値、
+本質的全射性・局所Hom K-flat性なしの導来同型、元の対象型のsmallnessなしの比較左脚、
+変更前後の独立したsource宇宙、ZMod 2を検査した。
+既存同時制限・左右制限・K-flat移送・中間比較・解像度比較・導来同値・導来随伴・五角形・
+StageEight・StageSeven・Spectra.StageTwoとの統合ビルド成功（3514 jobs、警告なし）。
+14公開宣言の直接公理監査は重複・欠落なく標準3公理以内。新規監査累計4613宣言。
+今回の4 Leanファイルにsorry・admit・新規axiom・資源上限変更は0件。採用済み引用0件。
+Lean v4.35.0-rc4とMathlib manifest/HEAD e6bbacd0e1b7307ff6e17da09cd2455f60804fa6を再確認した。
+文書検査は21 Markdown・320 exposition参照を検査し、担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+既存未解決参照1件で失敗した。
+
+**残件と順序。** 合成保存と対角対象保存は既存の解像度変更同値へ接続した。
+左右単位子・結合子とのcoherence、変更の自己・推移比較との整合性、
+外側左右・中間制限の組合せの恒等・合成則を続け、§15.2全体を監査する。
+U12eは未受入であり、U16a〜d、続くU15e分解版は未着手。目標全体の完了とはしない。
+共有一般論への新しいAPI要求はない。U15e分解版では別担当の局所K-flat版
+Quotient/DerivedComparison*・Verdier/を読んで再利用し、重複実装しない。
+共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・ScalarExtension*・並行作業の
+Tensor/Associator*と他チャットの記録を編集していない。
