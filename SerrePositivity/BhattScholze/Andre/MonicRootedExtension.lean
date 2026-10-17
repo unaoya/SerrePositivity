@@ -3,6 +3,7 @@ module
 public import SerrePositivity.BhattScholze.Andre.OrdinaryMonicRoot
 public import SerrePositivity.BhattScholze.Andre.MonicRelation
 public import SerrePositivity.BhattScholze.Andre.PerfectPrismMonicCandidate
+public import SerrePositivity.BhattScholze.Andre.MonicPDFlat
 
 /-!
 # André E1・E2 の集約

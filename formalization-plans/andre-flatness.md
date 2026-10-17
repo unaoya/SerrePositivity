@@ -184,3 +184,38 @@ lift する。この選択は公開定義 `perfectPrismMonicLift` で固定し�
 集約の対象ビルドは `set -o pipefail` 付きで終了コード 0（3266 jobs）。
 専用監査は新規公開宣言すべての `assert_no_sorry` と、生成宣言を含む 57 宣言の
 標準 3 公理限定検査に成功（終了コード 0）。
+
+### E1.3：分冪表示環の実 p 乗商上の自由性とモニック有限段
+
+新規 `Andre/PrincipalDPFree.lean` で、標数 p の任意の B と y に対し
+`principalDPPresentation_quotient_free` を証明した。正確な結論は
+`letI := principalDPQuotientAlgebra hprime.pos hp y;
+ Module.Free (B ⧸ Ideal.span {y ^ p}) (PrincipalDPPresentation B y)`。
+前提は `p.Prime` と `(p : B) = 0` で、y の非零因子性は不要。
+既存の切断多項式環上の自由基底を実評価商へ移し、指定された係数射を保っている。
+
+新規 `Andre/MonicPDFlat.lean` の公開結果：
+
+- `monicDPPresentation_free`：標数 p の R とモニック f に対し
+  `Module.Free R (PrincipalDPPresentation R[X] f)`。正次数不要。
+- `monicDPPresentation_faithfullyFlat`：さらに `0 < f.natDegree` なら
+  `Module.FaithfullyFlat R (PrincipalDPPresentation R[X] f)`。
+- `expandedMonicDPPresentation_faithfullyFlat`：正の n による f(Z^n) にも同じ忠実平坦性。
+- `principalDPPresentation_faithfullyFlat_of_quotient`：一般の基底 R → B について、
+  `B/(y^p)` の R 上の忠実平坦性から表示環の R 上の忠実平坦性を合成する。
+
+いずれも Rem 7.15(1)（著者版 p.62）の通常代数の計算。実 prismatic envelope の
+Frobenius 引戻しとの同定、無限 p 冪根変数の基底、有向余極限と完備化後の忠実平坦性は
+未完成であり、E1・E2 完成とは数えない。
+集約の対象ビルドは `set -o pipefail` 付きで終了コード 0（3327 jobs）。
+専用監査は全公開宣言の `assert_no_sorry` と生成宣言を含む 63 宣言の
+標準 3 公理限定検査に成功（終了コード 0）。
+
+### 保存時の共有インデックス事故
+
+E1.2 のコミット `ba07c9b6` に、同時にステージされた別レーンの
+`DifferentialGraded/Endomorphism/ActualScalarEvaluation.lean`、
+`ChecksActualScalarEvaluation.lean`、`Compatibility.lean`、
+`formalization-plans/dg-theory-u14.md` が混入した。これらは本レーンの成果・検証対象に数えない。
+当該レーン側の記録コミットは `eaf5b4ff`。amend・rebase・reset は行っていない。
+以降は自分の検証済みパスを `git commit --only` で明示する。

@@ -29,6 +29,12 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicLift
 assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicLift_map
 assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicLift_spec
 assert_no_sorry SerrePositivity.BhattScholze.Andre.exists_monicRootedPerfectoidCandidate_of_perfectPrism
+assert_no_sorry SerrePositivity.BhattScholze.Andre.evaluatedDP_quotient_free
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPPresentation_quotient_free
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicDPPresentation_free
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPPresentation_faithfullyFlat_of_quotient
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicDPPresentation_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.expandedMonicDPPresentation_faithfullyFlat
 
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
@@ -39,7 +45,9 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.MonicRelation,
     `SerrePositivity.BhattScholze.Andre.DivisionPerfectoidCandidate,
     `SerrePositivity.BhattScholze.Andre.PolynomialPerfectoidCandidate,
-    `SerrePositivity.BhattScholze.Andre.PerfectPrismMonicCandidate]
+    `SerrePositivity.BhattScholze.Andre.PerfectPrismMonicCandidate,
+    `SerrePositivity.BhattScholze.Andre.PrincipalDPFree,
+    `SerrePositivity.BhattScholze.Andre.MonicPDFlat]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
