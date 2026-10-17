@@ -342,6 +342,18 @@
 - `ChecksModuleConeImage` と `ChecksModuleShiftImage` の対象ビルド成功。
   新規11主要宣言の公理は標準3公理のみ。
 
+## U14b.9：Hom像のPerf保存と主導来HomのPerfへの制限（2026-10-17）
+
+- `PerfectImage.lean`：加群値dg関手の主Kから主導来圏への像に対し、整数shift同型と
+  cone同型を接続。像がperfectとなる始域の性質がshift・三角形・retractに閉じることを証明。
+- 像がperfectである指定対象Eの有限thick閉包はperfectに送られることを導いた。
+  これをHom(E,−)と正則End加群に適用し、明示したthick生成仮定からHom像のPerf保存を証明。
+- 任意の主Perf対象をU13の射影解像度で表して導来Homに輸送し、主導来Hom関手の
+  実際のPerf制限 `perfectEndomorphismHomToPerfect` を構成した。
+  本質的全射や同値はまだ結論していない。
+- `ChecksPerfectImage` と更新した `ChecksCompatibility` の対象ビルド成功。
+  新規10主要宣言の公理は標準3公理のみ。U14公開入口へimport済み。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
@@ -349,7 +361,8 @@
   導来射集合同値の全導来射自然性と導来随伴も構成済み。
   U13のenhancementへの制限・受入図式の最終照合が残る。
 - U14b：明示したthick生成仮定からenhancement上の全Hom擬同型は証明済み。
-  Hom像のPerf保存、H⁰の本質的全射、Perf同値の組立てが残る。
+  Hom像のPerf保存と主導来HomのPerfへの制限は構成済み。
+  H⁰の本質的全射、Perf同値の組立てが残る。
 - U14c：導来圏全体の比較にはcompact生成性が必要。
   無限生成集合の直和はcompactとは限らず、thick生成だけから全導来圏の比較は出さない。
   DG-GEN/DG-MORの採用が必要になったら採用せず停止・報告する。
