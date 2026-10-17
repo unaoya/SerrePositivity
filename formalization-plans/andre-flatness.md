@@ -2807,3 +2807,64 @@ BS Rem 7.15（著者版 p.62）の raw 比較を実導来完備化へ持ち上�
 生成宣言を含む 3939 宣言の推移的公理依存は標準 3 公理のみ。
 座標付き実完備化同型・単位公式・δ 互換性、raw 比較の実完備化同型、
 完備化後の Frobenius 剰余同型と係数公式の公開型 6 本を `#print` で確認した（終了コード 0）。
+
+
+### E1.46：実完備化 H⁰ の座標を殺す商から未完備剰余への比較（検証済み）
+
+新規 `Andre/PDCompletionKilledCoordinates.lean` は、可換環 A、自然数 p、
+d∈A、p,d を含む任意のイデアル I に対し、実導来 (p,d) 完備化の
+H=`PDCompletionH0 A p d`、標準単位 u=`pdCompletionUnit A p d` を用いて
+次の比較を構成する。
+
+```lean
+def pdCompletionQuotientEquivOfKilledCoordinates
+    (p : ℕ) (d : A) (I : Ideal A)
+    (hpI : (p : A) ∈ I) (hdI : d ∈ I) :
+    letI := pdCompletionCommRing A p d
+    (PDCompletionH0 A p d ⧸ I.map (pdCompletionUnit A p d)) ≃+* A ⧸ I
+```
+
+商 A/I と H/IH では両完備化座標が零なので導来完備である。
+実 H⁰ の環としての一意延長性から逆射を構成し、両逆合成を検証した。
+正則性・Noether 性・実源の離散性の仮定はこの通常商の比較には不要。
+E1.45 で未完了としていた「完備化後の通常剰余を未完備剰余へ戻す」部分を、
+この普遍性で解消した。高次ホモロジーの消滅をこの比較から主張しない。
+標準射の一意延長・代表元公式・両逆合成を含む 12 公開宣言を追加した。
+
+新規 `Andre/PDCompletionPairResidue.lean` の 3 公開宣言は、
+c∈(p,d) なら、(p,c) に沿う実完備化 H⁰ を (p,u(d)) で割った環と
+元の A/(p,d) が環同型であること、および u(b) の剰余が b の剰余へ
+送られることを述べる。
+
+新規 `Andre/DeltaDivisionFrobeniusCompletionToRaw.lean` は完全 δ 環 D、
+distinguished 元 d、任意族 a にこれを適用する。
+φ は D の Frobenius、x=φ⁻¹(d)、L=A{a/d}、M=A{φ(a)/φ(d)}、
+jL,jM は標準係数射、HL は L の実 (p,jL(d)) 完備化 H⁰、uL は標準単位とする。
+
+```lean
+def deltaDivisionFrobeniusCompletionToRawEquiv
+    (D : DeltaStructure p A) (hD : D.IsPerfect) (d : A) (a : σ → A)
+    (hd : D.IsDistinguished d) :
+    letI := pdCompletionCommRing L p (jL d)
+    (HL ⧸ Ideal.span {uL (jL d), uL (jL x)}) ≃+*
+      (M ⧸ Ideal.span {(p : M), jM d})
+```
+
+φ(d)=d^p+pδ(d)∈(p,d) により Frobenius 側の完備化座標が商で消える。
+E1.45 の実完備化後の Frobenius 同型に二元商比較を合成した。
+同 `_coeff` は係数 b が右辺の jM(φ(b)) の剰余へ送られると述べる。
+座標のイデアル所属を含む 3 公開宣言を追加した。
+
+BS Rem 7.15（著者版 p.62）の剰余計算への補助段階であり、
+原典とは異なる実 H⁰ の環普遍性による証明である。
+右辺の未完備 raw 剰余と具体的 pd 包の同定、および原典の
+T=overline(Δ)_S との同定は引き続き未完了。
+この工程だけで T/ϖ の忠実平坦性や T の p 正則性を結論しない。
+公開存在定理には既承認の正次数仮定以外を追加していない。
+
+3 対象および集約の `set -o pipefail; lake build` は終了コード 0
+（集約 4452 jobs）。新規 18 公開宣言の `assert_no_sorry` と専用監査は
+終了コード 0。生成宣言を含む 4011 宣言の推移的公理依存は標準 3 公理のみ。
+標準延長、一般剰余同型とその単位公式、二元剰余同型、
+Frobenius 完備化から raw への同型と係数公式の公開型 6 本を
+`#print` で確認した（終了コード 0）。
