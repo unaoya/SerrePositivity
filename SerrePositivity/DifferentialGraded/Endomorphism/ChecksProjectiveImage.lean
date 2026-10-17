@@ -1,0 +1,16 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.ProjectiveImage
+
+/-! # 再構成Hom像のホモトピー射影性の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+
+#print axioms dgModuleFunctorHomotopyImageComputation
+#print axioms dgModuleFunctorHomotopyShiftIso
+#print axioms dgModuleFunctor_thick_image
+#print axioms moduleHomotopyProjectiveLocusStableUnderRetracts
+#print axioms moduleHomotopyProjectiveLocusStableUnderShift
+#print axioms moduleHomotopyProjectiveLocus_triangle_obj₃
+#print axioms moduleHomotopyProjectiveLocusIsTriangulated
+#print axioms endomorphismHom_thick_projective
+#print axioms perfectEndomorphismHom_obj_projective

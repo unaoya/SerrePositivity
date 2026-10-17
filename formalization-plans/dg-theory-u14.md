@@ -354,6 +354,16 @@
 - `ChecksPerfectImage` と更新した `ChecksCompatibility` の対象ビルド成功。
   新規10主要宣言の公理は標準3公理のみ。U14公開入口へimport済み。
 
+## U14b.10：Hom像のホモトピー射影性（2026-10-17）
+
+- `HomotopyImage.lean`：加群値dg関手の主Kにおけるshift・cone同型を用い、指定対象の
+  有限thick閉包の像が、像を含む任意のthick部分圏に含まれることを証明。
+- `ProjectiveImage.lean`：主K内のホモトピー射影的対象の性質が、retract・整数shift・
+  distinguished triangleに閉じることを証明した。
+- 正則End加群の射影性とHom(E,E)との同型から、thick生成の下でHom像が実際に
+  ホモトピー射影的であることを証明。perfectな導来像だけで代用していない。
+- `ChecksProjectiveImage` 対象ビルド成功。新規9主要宣言の公理は標準3公理のみ。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
