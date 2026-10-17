@@ -320,3 +320,21 @@ coslice の制限の左ファイブレーション性、最後のホーンの jo
 追加した 26 公開宣言の型と前提は計画 §6 に記録。
 Core ビルドと累計 440 件の公理監査は成功、標準三公理のみ。
 逆向き・最初のホーン側・Kan の特徴づけは未完了で、続けて実装する。
+
+
+### A3b 完了（2026-10-18）
+
+公開入口 `Core/InvertibleEdge.lean` は、以下を追加の前提なしで公開する。
+
+```lean
+[Quasicategory X] → (IsInvertibleEdge e ↔ HasInitialHornFillers e)
+[Quasicategory X] → (IsInvertibleEdge e ↔ HasFinalHornFillers e)
+[Quasicategory X] → (KanComplex X ↔ IsGroupoid (hoFunctor.obj X))
+```
+
+実際の宣言名は `isInvertibleEdge_iff_hasInitialHornFillers`・
+`isInvertibleEdge_iff_hasFinalHornFillers`・`kanComplex_iff_isGroupoid`。
+最初の側を単体集合の反転で移し、最後の側の逆向きは二次・三次ホーンで直接証明した。
+`InvertibleEdgeLifting.lean` に前段階の API を分離したが、公開名・型は変えていない。
+新規 41 宣言の正確な型は計画 §6 に全件記録。
+Core ビルド・累計 481 件の公理監査は成功。A3a・A3b 完了、A3c–e は未完了。

@@ -3119,6 +3119,331 @@ Core 対象ビルドは終了コード 0（1550 jobs）。公理監査も終了�
 A3c–e も未完了。条件付き・片方向の成果を A3b の完成とは数えていない。
 次に二次・三次のホーンによる逆向きへ進む。
 
+
+### A3b 完了（2026-10-18）：Joyal の可逆辺の定理・Kan の特徴づけ
+
+`Core/InvertibleEdge.lean` を全結果の公開入口とした。
+前段階の実装は `InvertibleEdgeLifting.lean` に分離し、公開名・型は保持した。
+`isInvertibleEdge_iff_hasInitialHornFillers` と
+`isInvertibleEdge_iff_hasFinalHornFillers` により README で固定した三条件を
+それぞれ同値として証明した。全ての n≥2 を扱う。
+最後のホーンの逆向きは二次・三次ホーンのみを使い、quasicategory 性すら不要。
+最初の側は単体集合の反転、quasicategory 性の反転保存、充填と可逆辺の反転を証明して帰着した。
+`kanComplex_iff_isGroupoid X [Quasicategory X]` は Mathlib の KanComplex と
+命題値の IsGroupoid (hoFunctor.obj X) の同値。一次ホーンも定数辺で充填している。
+
+以下の追加 41 公開宣言の正確な型。namespace は
+`SerrePositivity.InfinityCategories`、任意の宇宙 u。
+`open CategoryTheory SSet`、`open scoped Simplicial`。
+前提は各型中に明記したものだけで、外側ホーンの充填や
+写像空間の Kan 性などを追加仮定にした条件付きの完成ではない。
+
+OuterHornConverse.lean：
+
+```lean
+lemma HasFinalHornFillers.nonempty_leftInverse {X : SSet.{u}} {x y : X _⦋0⦌}
+    {e : SSet.Truncated.Edge (X
+```
+
+OuterHornConverse.lean：
+
+```lean
+lemma isInvertibleEdge_of_hasFinalHornFillers {X : SSet.{u}} {x y : X _⦋0⦌}
+    (e : SSet.Truncated.Edge (X
+```
+
+OuterHornConverse.lean：
+
+```lean
+lemma isInvertibleEdge_iff_hasFinalHornFillers {X : SSet.{u}} [Quasicategory X]
+    {x y : X _⦋0⦌} (e : SSet.Truncated.Edge (X
+```
+
+OuterHornConverse.lean：
+
+```lean
+instance kanComplex_ho_isGroupoid (X : SSet.{u}) [KanComplex X] :
+    IsGroupoid (hoFunctor.obj X)
+```
+
+Opposite.lean：
+
+```lean
+def subcomplexOppositeIso {X : SSet.{u}} (A : X.Subcomplex) :
+    (A : SSet.{u}).op ≅ (A.op : SSet.{u})
+```
+
+Opposite.lean：
+
+```lean
+lemma subcomplexOppositeIso_hom_ι {X : SSet.{u}} (A : X.Subcomplex) :
+    (subcomplexOppositeIso A).hom ≫ A.op.ι = SSet.opFunctor.map A.ι
+```
+
+Opposite.lean：
+
+```lean
+def hornReverseIso (n : ℕ) (i : Fin (n + 1)) :
+    (horn n i.rev : SSet.{u}) ≅ (horn n i : SSet.{u}).op
+```
+
+Opposite.lean：
+
+```lean
+lemma hornReverseIso_hom_ι (n : ℕ) (i : Fin (n + 1)) :
+    (hornReverseIso.{u} n i).hom ≫ SSet.opFunctor.map (horn n i).ι =
+      (horn n i.rev).ι ≫ (stdSimplex.opIso ⦋n⦌).inv
+```
+
+Opposite.lean：
+
+```lean
+lemma stdSimplex_doubleReverse (n : ℕ) :
+    (stdSimplex.opIso.{u} ⦋n⦌).inv ≫ SSet.opFunctor.map (stdSimplex.opIso ⦋n⦌).inv ≫
+      (SSet.opFunctorCompOpFunctorIso.app (Δ[n] : SSet.{u})).hom = 𝟙 Δ[n]
+```
+
+Opposite.lean：
+
+```lean
+instance quasicategory_op (X : SSet.{u}) [Quasicategory X] : Quasicategory X.op
+```
+
+Opposite.lean：
+
+```lean
+def edgeOp {X : SSet.{u}} {x y : X _⦋0⦌}
+    (e : SSet.Truncated.Edge (X
+```
+
+Opposite.lean：
+
+```lean
+lemma edgeOp_id {X : SSet.{u}} (x : X _⦋0⦌) :
+    edgeOp (SSet.Truncated.Edge.id (X
+```
+
+Opposite.lean：
+
+```lean
+def compStructOp {X : SSet.{u}} {x y z : X _⦋0⦌}
+    {f : SSet.Truncated.Edge (X
+```
+
+Opposite.lean：
+
+```lean
+lemma IsInvertibleEdge.op {X : SSet.{u}} [Quasicategory X] {x y : X _⦋0⦌}
+    {e : SSet.Truncated.Edge (X
+```
+
+Opposite.lean：
+
+```lean
+lemma isInvertibleEdge_op_iff {X : SSet.{u}} [Quasicategory X] {x y : X _⦋0⦌}
+    (e : SSet.Truncated.Edge (X
+```
+
+Opposite.lean：
+
+```lean
+def reverseSimplex {X : SSet.{u}} (n : ℕ) (F : (Δ[n] : SSet.{u}) ⟶ X) :
+    (Δ[n] : SSet.{u}) ⟶ X.op
+```
+
+Opposite.lean：
+
+```lean
+lemma reverseSimplex_comp {X Y : SSet.{u}} (n : ℕ) (F : (Δ[n] : SSet.{u}) ⟶ X)
+    (q : X ⟶ Y) : reverseSimplex n (F ≫ q) = reverseSimplex n F ≫ SSet.opFunctor.map q
+```
+
+Opposite.lean：
+
+```lean
+lemma opFunctorCompOpFunctorIso_coherence (X : SSet.{u}) :
+    SSet.opFunctor.map (SSet.opFunctorCompOpFunctorIso.app X).hom =
+      (SSet.opFunctorCompOpFunctorIso.app X.op).hom
+```
+
+Opposite.lean：
+
+```lean
+lemma reverseSimplex_double {X : SSet.{u}} (n : ℕ) (F : (Δ[n] : SSet.{u}) ⟶ X) :
+    reverseSimplex n (reverseSimplex n F) ≫ (SSet.opFunctorCompOpFunctorIso.app X).hom = F
+```
+
+Opposite.lean：
+
+```lean
+lemma reverseSimplex_back {X : SSet.{u}} (n : ℕ) (F : (Δ[n] : SSet.{u}) ⟶ X.op) :
+    reverseSimplex n (reverseSimplex n F ≫ (SSet.opFunctorCompOpFunctorIso.app X).hom) = F
+```
+
+Opposite.lean：
+
+```lean
+def reverseHornMap {X : SSet.{u}} (n : ℕ) (i : Fin (n + 1))
+    (σ : (horn n i : SSet.{u}) ⟶ X) : (horn n i.rev : SSet.{u}) ⟶ X.op
+```
+
+Opposite.lean：
+
+```lean
+lemma reverseHornMap_restrict {X : SSet.{u}} (n : ℕ) (i : Fin (n + 1))
+    (F : (Δ[n] : SSet.{u}) ⟶ X) :
+    reverseHornMap n i ((horn n i).ι ≫ F) = (horn n i.rev).ι ≫ reverseSimplex n F
+```
+
+Opposite.lean：
+
+```lean
+lemma reverseHornMap_injective (X : SSet.{u}) (n : ℕ) (i : Fin (n + 1)) :
+    Function.Injective (reverseHornMap (X
+```
+
+Opposite.lean：
+
+```lean
+lemma hornFiller_of_reverseHornFiller {X : SSet.{u}} (n : ℕ) (i : Fin (n + 1))
+    (σ : (horn n i : SSet.{u}) ⟶ X) (F : (Δ[n] : SSet.{u}) ⟶ X.op)
+    (hF : (horn n i.rev).ι ≫ F = reverseHornMap n i σ) :
+    ∃ G : (Δ[n] : SSet.{u}) ⟶ X, (horn n i).ι ≫ G = σ
+```
+
+OuterHornDuality.lean：
+
+```lean
+def initialHornReverseIndexIso (n : ℕ) :
+    (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) ≅ horn (n + 2) (0 : Fin (n + 3)).rev
+```
+
+OuterHornDuality.lean：
+
+```lean
+def finalHornReverseIndexIso (n : ℕ) :
+    (horn (n + 2) 0 : SSet.{u}) ≅ horn (n + 2) (Fin.last (n + 2)).rev
+```
+
+OuterHornDuality.lean：
+
+```lean
+def reverseInitialHornMap {X : SSet.{u}} (n : ℕ)
+    (σ : (horn (n + 2) 0 : SSet.{u}) ⟶ X) :
+    (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) ⟶ X.op
+```
+
+OuterHornDuality.lean：
+
+```lean
+def reverseFinalHornMap {X : SSet.{u}} (n : ℕ)
+    (σ : (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) ⟶ X) :
+    (horn (n + 2) 0 : SSet.{u}) ⟶ X.op
+```
+
+OuterHornDuality.lean：
+
+```lean
+lemma reverseInitialHornMap_edge {X : SSet.{u}} (n : ℕ)
+    (σ : (horn (n + 2) 0 : SSet.{u}) ⟶ X) :
+    (reverseInitialHornMap n σ).app (Opposite.op ⦋1⦌) (finalHornEdge.{u} n) =
+      SSet.opObjEquiv.symm (σ.app (Opposite.op ⦋1⦌) (initialHornEdge.{u} n))
+```
+
+OuterHornDuality.lean：
+
+```lean
+lemma reverseFinalHornMap_edge {X : SSet.{u}} (n : ℕ)
+    (σ : (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) ⟶ X) :
+    (reverseFinalHornMap n σ).app (Opposite.op ⦋1⦌) (initialHornEdge.{u} n) =
+      SSet.opObjEquiv.symm (σ.app (Opposite.op ⦋1⦌) (finalHornEdge.{u} n))
+```
+
+OuterHornDuality.lean：
+
+```lean
+lemma initialHornReverseIndexIso_hom_ι (n : ℕ) :
+    (initialHornReverseIndexIso.{u} n).hom ≫ (horn (n + 2) (0 : Fin (n + 3)).rev).ι =
+      (horn (n + 2) (Fin.last (n + 2))).ι
+```
+
+OuterHornDuality.lean：
+
+```lean
+lemma finalHornReverseIndexIso_hom_ι (n : ℕ) :
+    (finalHornReverseIndexIso.{u} n).hom ≫ (horn (n + 2) (Fin.last (n + 2)).rev).ι =
+      (horn (n + 2) 0).ι
+```
+
+OuterHornDuality.lean：
+
+```lean
+lemma hasInitialHornFillers_of_hasFinalHornFillers_op {X : SSet.{u}} {x y : X _⦋0⦌}
+    (e : SSet.Truncated.Edge (X
+```
+
+OuterHornDuality.lean：
+
+```lean
+lemma hasFinalHornFillers_of_hasInitialHornFillers_op {X : SSet.{u}} {x y : X _⦋0⦌}
+    (e : SSet.Truncated.Edge (X
+```
+
+OuterHornDuality.lean：
+
+```lean
+lemma hasInitialHornFillers_congr {X : SSet.{u}} {x y x' y' : X _⦋0⦌}
+    {e : SSet.Truncated.Edge (X
+```
+
+OuterHornDuality.lean：
+
+```lean
+lemma HasInitialHornFillers.map_iso {X Y : SSet.{u}} {x y : X _⦋0⦌}
+    {e : SSet.Truncated.Edge (X
+```
+
+OuterHornDuality.lean：
+
+```lean
+lemma hasInitialHornFillers_of_isInvertibleEdge {X : SSet.{u}} [Quasicategory X]
+    {x y : X _⦋0⦌} (e : SSet.Truncated.Edge (X
+```
+
+OuterHornDuality.lean：
+
+```lean
+lemma isInvertibleEdge_of_hasInitialHornFillers {X : SSet.{u}} [Quasicategory X]
+    {x y : X _⦋0⦌} (e : SSet.Truncated.Edge (X
+```
+
+OuterHornDuality.lean：
+
+```lean
+lemma isInvertibleEdge_iff_hasInitialHornFillers {X : SSet.{u}} [Quasicategory X]
+    {x y : X _⦋0⦌} (e : SSet.Truncated.Edge (X
+```
+
+KanCharacterization.lean：
+
+```lean
+lemma kanComplex_of_isGroupoid (X : SSet.{u}) [Quasicategory X]
+    [IsGroupoid (hoFunctor.obj X)] : KanComplex X
+```
+
+KanCharacterization.lean：
+
+```lean
+lemma kanComplex_iff_isGroupoid (X : SSet.{u}) [Quasicategory X] :
+    KanComplex X ↔ IsGroupoid (hoFunctor.obj X)
+```
+
+
+Core 対象ビルドは終了コード 0（1555 jobs）、公理監査は終了コード 0。
+累計 481 件は標準三公理のみ。全 Core の明示的公開名の監査登録も確認。
+A3b 完了。A3a も完了済み。A3c–e は未完了、A3f は任意、A3g は保留。
+次に N レーンの PinchedHom/Basic.lean を変更せず読み込んで A3c を実装する。
+
 ## 7. A3 の工程（2026-10-18 追加）
 
 A1・A2 の完了を受けて着手する。優先順は G1（infinity-categories.md §0）と D4・ε が使う順。
