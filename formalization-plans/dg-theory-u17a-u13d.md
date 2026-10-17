@@ -392,3 +392,27 @@ HEAD からの差分全体が自分の変更だけであることも確認する
   禁止された dg 圏分解系への依存なし。新規 sorry・axiom・引用なし。
 - U15e10 のコミット：`680c2331`（自分の5ファイルのみと直後に確認）。
   U15e の完全忠実性と U17b 全体は引き続き未完。
+
+### U15e12：右 dg 加群としての長さ filtration と余極限
+
+- `Quotient/DerivedComparisonLengthModule.lean`：先頭作用が商の合成を元の Hom に
+  制限したものと等しいことを証明し、商の代表加群の制限との作用比較を構成。
+  `lengthModuleMap` と包含との全次数可換式を利用して、単位・合成法則を証明した。
+  `lengthModule` は豊穣関手としての実際の右 dg 加群である。
+- 包含 `lengthModuleInclusion` は全次数自然な実際の加群射であり、mono。
+  長さを増やす `lengthModuleTransition` とその包含整合式を証明し、
+  右 dg 加群圏内の厳密な ℕ 図式 `lengthModuleDiagram` と cocone を構成した。
+- `Quotient/DerivedComparisonModuleColimit.lean`：評価後の図式・cocone を既存の
+  Hom の長さ図式・cocone と比較する同型を構成。評価による余極限反映を使い、
+  商の制限代表加群がこの加群図式の真の余極限であることを証明。
+  `lengthModuleColimitIso` と、その全ての余極限包含に対する整合式を公開した。
+- ここまでの加群構成も underived で、K-flat 仮定不要。残る主要段階は、
+  正の層を S 上の自由加群で表し、片側 K-flat 仮定の下で局所化の核に入れること、
+  そして `quotientVerdierComparison` の完全忠実性を導くこと。U17b 全体も未完。
+- 対象ビルド：`Checks.QuotientLengthModule`（1932 jobs）、
+  `Checks.QuotientModuleColimit`（1940 jobs）成功。主要19宣言の公理監査は標準3公理のみ。
+  project import 依存145・149ファイルに禁止された dg 圏分解系への依存なし。
+  新規 sorry・axiom・引用なし。既存の他担当ファイルは編集していない。
+- ルートは他担当の CLMST import と同居しているため、今回のコミット対象から除外。
+  自分の以前の `DerivedComparisonPathFlatness` import は引き続き作業ツリー内に残っている。
+- U15e11 のコミット：`637a2212`（自分の5ファイルのみと直後に確認）。
