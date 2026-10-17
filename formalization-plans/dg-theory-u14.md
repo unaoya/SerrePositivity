@@ -1035,6 +1035,15 @@
 - `ChecksScalarDerivedProjectiveComparison` 対象ビルド成功。主要3宣言の公理は標準3公理のみ。
   既存APIの名前・型は変更していない。新しいsorry・axiom・引用は追加していない。
 
+## U14b.65：受入済み導来係数拡大の主Perfへの制限（2026-10-17）
+
+- `ScalarDerivedPerfect.lean`：主Perfの各対象を標準射影解像度で表し、U14b.62の実際の
+  perfect像とU14b.64の計算同型を用いて、受入済み導来係数拡大の指定perfect性保存を証明した。
+- 同じ導来係数拡大を主Perf間の関手 `perfectScalarDerivedExtension` へ制限し、
+  主導来圏への包含正方形を自然同型として公開した。指定生成集合は係数変更後も保持する。
+- `ChecksScalarDerivedPerfect` 対象ビルド成功（3076 jobs）。主要3宣言の公理は標準3公理のみ。
+  既存APIの名前・型は変更していない。新しいsorry・axiom・引用は追加していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
