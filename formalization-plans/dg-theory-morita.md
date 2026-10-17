@@ -710,3 +710,14 @@ CoherenceAssociatorPathsChecksを新旧入口と合同ビルドし成功（4145 
 新規公開8宣言の直接公理監査は標準3公理以内。新規sorry・axiom・引用なし。
 文書全体検査も27 Markdown・326 exposition参照で欠落0件。
 詳細・再現手順・次の接続点はdg-theory.md §17.270。
+
+
+## U16a19：公開結合経路の最初の二kernel射自然性（2026-10-17）
+
+CoherenceAssociatorNaturalityのkernelAssociatorIso_first_naturality／_second_naturalityと
+kernelAssociatorLeftPath_first_naturality／_second_naturality、
+CoherenceAssociatorRightNaturalityのkernelAssociatorRightPath_first_naturality／_second_naturalityを公開した。
+全主導来kernel射について、同じ合成kernelへの射を末尾とする左右経路の自然性を証明する。
+指定K-flat代表から任意kernelへの同型による移送に使う。
+6宣言の直接公理監査は標準3公理以内、合同ビルド3815 jobs・警告0。
+詳細はdg-theory.md §17.272。一般右随伴は実装済み、全kernel結合coherenceと左単位は継続中。

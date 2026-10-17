@@ -12993,3 +12993,26 @@ R1〜R7を並行で完成させてもU16自身の残証明を代替せず、M9�
 M9の具体的平坦性・無限積比較、U16dのモデル条件付き係数変更は別途必要である。
 共有モデル圏・Quillen・転送・SM7への新しいAPI要求はない。
 今回は調査文書だけを更新する。方針はユーザーが決定し、指示があるまで新しい単位に着手しない。
+
+
+### 17.272 U16a再開：kernel結合子と公開両経路の全導来射自然性（2026-10-17）
+
+ユーザーの再開指定により方針(ii)を確定済みとして扱う。§17.255・263・271は過去の調査として保持し、古い調査依頼の再送では実装を止めない。
+U12e-local受入・一般版中断は§17.249のまま、U16a→U16c統合→U16全体受入へ進む。
+
+CoherenceAssociatorNaturalityは、実際のcurried結合自然同型から最初の二kernel射の自然性を取り出し、
+公開左経路の自然性とともに証明した。CoherenceAssociatorRightNaturalityは、
+作用合成比較の二つの自然性squareとkernel結合子の自然性squareを成分で貼り合わせ、公開右経路の自然性を示す。
+任意の主導来kernel射を扱い、代表のK-flat性や射の同型性を追加していない。
+必要なlocalHomKFlatは既存の結合図式どおりD・Eのみ。公開比較の型・定義は変更していない。
+
+CoherenceAssociatorNaturalityChecksと既存一般随伴・右単位・QuasiEquivalence・局所受入・Spectra.StageTwoの
+合同ビルド成功（3815 jobs、警告0）。新規6宣言の直接公理監査は標準3公理以内、新規監査累計5084。
+新規sorry・axiom・引用・資源上限変更なし。他担当のCriterionPerf*・CriterionDerived*等は編集していない。
+次は同型自然性で任意の主導来kernelへ結合二経路の一致を移し、左単位作用coherenceを仕上げる。
+U16a全受入・U16c統合・U16全体受入はまだ行わない。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorNaturalityChecks SerrePositivity.DifferentialGraded.Morita.AdjunctionDerivedChecks SerrePositivity.DifferentialGraded.Morita.CoherenceUnitChecks SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.Spectra.StageTwo
+lake env lean SerrePositivity/DifferentialGraded/Morita/CoherenceAssociatorNaturalityChecks.lean
+```
