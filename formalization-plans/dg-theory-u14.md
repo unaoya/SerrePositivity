@@ -60,6 +60,31 @@
 - ルートにはこの公開入口のimportだけを追加し、`git add -p`で当該hunkのみstage。
   `dg-theory.md`・README・Stageおよび既存Perfect/Tensor/Derived/Bimodule/Quotientは未編集。
 
+## U14a.5：大きい全加群dg圏上のHom・tensor関手（2026-10-17）
+
+- `Endomorphism/LargeHomBimodule.lean`：Small Dを仮定せずHom(E,−)を構成。
+  Yoneda拡張のE成分を直接用い、D上のHom endは取らない。
+  Small DがあるときにはU14a.1の構成と一致する。
+- `Endomorphism/ModuleComparison.lean`：実際の右D加群Eに対して、
+  全加群dg圏から右End(E)加群へのHom関手と、逆向きのtensor関手を構成。
+  後者は既存のbimodule tensor合成に恒等dg関手を代入したもの。
+  全加群の対象型のsmall性を仮定していない。
+- Hom(E,E)が正則End(E)加群になる等式、および正則加群のtensor像がEに戻る
+  実際のD加群同型を証明。後者は既存 `BimoduleTensor.rightUnitIso` を使う。
+  U13の指定perfect dg加群への適用を公開。
+- `ChecksModuleComparison` と更新した `ChecksCompatibility` の対象ビルド成功。
+  新規9主要宣言の公理監査は標準3公理のみ。
+
+## 並行作業との境界で生じたコミット混入
+
+`f01103ce` のルート変更には、自分のimportに加え、並行作業が追加した
+`public import SerrePositivity.CLMST.PerfectoidIdealTorCover` が1行含まれた。
+`git add -p`では自分のhunkだけをstageしたが、その後の
+`git commit --only SerrePositivity.lean ...` が作業ツリーの別hunkも含めたのが原因。
+検出時には他作業の後続コミットが進んでいたため、共有履歴を書き換えず当該行を保持した。
+この混入を除き、既存の他系列ファイルの内容は変更していない。
+以後のコミットはU14専用ファイルだけに限定する。
+
 ## 残る受入条件
 
 - U14a：enhancement／End(E)加群間の再構成随伴と、その単位・余単位。

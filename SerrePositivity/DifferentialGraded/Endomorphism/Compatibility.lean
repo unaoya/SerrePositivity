@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedEvaluation
+public import SerrePositivity.DifferentialGraded.Endomorphism.ModuleComparison
 public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension
 public import SerrePositivity.DifferentialGraded.Perfect.EnhancementShiftComparison
 
