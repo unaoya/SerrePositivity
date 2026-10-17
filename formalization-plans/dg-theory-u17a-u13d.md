@@ -937,3 +937,39 @@ M9 の適用については、商を取る前の次数零の平坦 Hom を持つ
   関手の等式が実装・検証済みとなった。冒頭の古い状態表だけを見て「通常作用しかない」とはしない。
   ただし主導来 kernel 全体の `kernelDerivedTensorFunctor`、一般随伴、恒等・合成作用比較は
   未実装であり、U17b 全体の自然性は未完。中心作用・G 作用の保留も維持する。
+
+### U17b1：実際の graph 作用と誘導 Verdier 関手・完備化・perfect 比較
+
+- U16a2 の実装済み部分を読み、一般 kernel 全体を待つ必要のない graph の自然性を進めた。
+  `Quotient/DerivedComparisonFunctoriality.lean` は F : D→E と F(S)⊆T から、標的商の
+  標準 ε を指定収縮に取る実際の `quotientDGFunctor` を厳密普遍性で構成する。
+  包含との厳密な正方形、ε の像、対象の像を公開した。
+- `Verdier/DerivedGraphComposition.lean` は objectwise 制限の合成自然同型を主局所化へ降ろし、
+  既存の実際の延長–制限随伴の一意性から導来 graph 延長の合成自然同型を得る。
+  置換後の tensor 合成を無条件に同一視したり、左側 kernel の K-flat 性を省略したりしない。
+- `Quotient/DerivedComparisonGraphSquare.lean` は実際の graph 導来延長を tria に制限し、
+  F(S)⊆T が tria(S)→tria(T) を与えることを証明した。その後 **元の tria 関手を先に
+  Verdier 局所化** して `graphVerdierFunctor` を構成する。
+  `graphDerivedQuotientSquare`・`graphLocalVerdierSquare`・`graphCanonicalVerdierSquare` は
+  その関手と明示的 dg 商側の実際の graph 作用との自然同型である。
+  この比較自体には局所 K-flat 性も F の擬同値性も不要。
+- `Verdier/KaroubiFunctorSquare.lean` は実際の正方形の Karoubi 延長と、tria→Perf 正方形から
+  既存の finite cell Karoubi–Perf 比較への自然性を構成する。係数環の違う場合も扱い、
+  前単位の係数変更についても `quotientScalarKaroubiPerfectSquare` を得た。
+- `Verdier/GraphPerfectSquare.lean` の `graphCompletedVerdierSquare` は、上で本当に局所化した
+  関手を Karoubi 延長し、既存の `localCompletedQuotientEquivalence` と可換にする。
+  両側の局所 K-flat 条件は独立に明示する。`graphLocalPerfectSquare` は既存の
+  `localPerfectQuotientEquivalence` そのものと、商 dg 関手の実際の導来延長の Perf 制限を
+  使った enhancement の H⁰ 関手との正方形である。運搬で Verdier 関手を定義したのではない。
+- 各 graph tria/Verdier/完備関手は整数 shift と三角性を持つ。H⁰–Perf の比較自然同型も
+  shift と整合し、三角形関手への正方形を公開した。ただし主要な導来合成・局所比較の
+  **自然同型そのものの shift 整合性** は未照合。全ての square を構造付きとする主張はしない。
+- `Verdier/GraphKernelSquare.lean` は U16a2 の実際の `kernelDerivedTensorOnBimodule` を
+  graph に適用した正方形を公開する。対象ごとの計算だけでなく、全導来対象・全射に自然な
+  関手自然同型である。主導来 kernel 全体の未実装の関手を入力仮定として隠していない。
+- 対象ビルド `Verdier.ChecksGraphPerfectSquare` 成功（3579 jobs）、新規警告なし。
+  主要22宣言の公理監査は標準3公理のみ。新規 sorry・axiom・引用なし。
+  既存・他担当ファイル、共有ルート・README・Stage は変更していない。
+- 前単位 `ef74a640` は直後の stat で自分の4ファイルのみと確認済み。
+  残部は係数変更の元の tria からの局所化構成との一致、比較自然同型の構造照合、
+  主導来 kernel 全体と恒等・合成・自然変換の受入後の自然性。中心作用・G 作用は保留。
