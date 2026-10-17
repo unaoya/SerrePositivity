@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Coherent.Path
 public import SerrePositivity.InfinityCategories.Coherent.PathHollow
 public import SerrePositivity.InfinityCategories.Coherent.PathNerve
+public import SerrePositivity.InfinityCategories.Coherent.ZeroFaceCompatibility
 public import SerrePositivity.InfinityCategories.Coherent.FaceRestriction
 public import SerrePositivity.InfinityCategories.Coherent.FaceHom
 public import SerrePositivity.InfinityCategories.Coherent.HornCells
