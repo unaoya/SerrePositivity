@@ -833,3 +833,27 @@ U16dの受入範囲・残る接続、U16aのcoherenceの進捗とは独立した
 全主導来kernel射の自然性をこの単位だけで主張しない。
 残接続(3)のU12f成分同定、(4)の実際のkernel合成との係数変更図式は継続する。
 中心作用は保留。U16d全体・U16全体の受入はまだ行わない。
+
+
+## U16d.28：出力加群の導来係数変更と複体評価の実際の比較
+
+- `ScalarExtensionOutputEvaluation.lean` は、加群側と複体側から共通の通常評価モデルへ
+  `scalarOutputModuleEvaluationAugmentation` と `scalarOutputComplexEvaluationAugmentation` を構成した。
+  どちらも通常加群の全閉零射に自然な変換であり、比較の可逆性とその条件は別に証明する。
+- `scalarOutputEvaluationModelIso` は、評価値のcomplexKFlatと加群側増大のIsIsoを明示し、
+  出力加群の導来係数変更の評価と、出力複体の導来係数変更を比較する。
+  `_augmentation` で実際の二つの増大の可換図式、`_naturality` で許容モデル間の全閉零射自然性を証明した。
+  先にU12f比較を合成して定義した同型ではなく、両方の増大から独立に構成した比較である。
+- `scalarOutputEvaluationIso` は指定した計算モデルを持つ任意の主導来出力への比較で、
+  `_model` はモデルへの移送図式。`_ofObjectwiseKFlat` は出力hEを保った十分条件版。
+- `ScalarExtensionKernelOutputEvaluation.lean` の `scalarKernelOutputEvaluationIso` は、
+  標準右解像度tensorを計算モデルにして、kernel出力について比較を供給する。
+  各M,eでのhPNと出力モデルの増大のIsIsoを保持し、`_ofKFlatModels` は出力hEと全評価でのhPNを保持する。
+  複体導来圏の宇宙z・z'とそのHasDerivedCategoryを明示し、主加群導来圏の宇宙へ固定しない。
+- 公理監査入口のビルド成功（3250 jobs、警告・エラー0）。12宣言は標準3公理のみ。
+  ログは `/tmp/serre-u16d-output-eval-audit.log`。
+  公開入口との合同ビルドも成功（3445 jobs、警告・エラー0、`/tmp/serre-u16d-28-audit.log`）。
+
+残接続(3)の「出力加群の導来係数変更と複体評価を比較する射・同型」は条件を明示して構成した。
+**この比較を挿入した全dg加群正方形の成分が既存U12f比較と一致する等式は、引き続き証明中である。**
+残接続(4)のkernel合成との係数変更図式も未完。中心作用は保留し、U16d全体の受入は宣言しない。

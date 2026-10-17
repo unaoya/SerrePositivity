@@ -1,0 +1,18 @@
+module
+public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelOutputEvaluation
+
+/-! # 出力加群・複体の導来係数変更の比較の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded.Morita
+#print axioms scalarOutputModuleEvaluationAugmentation
+#print axioms scalarOutputComplexEvaluationAugmentation
+#print axioms scalarOutputModuleEvaluationAugmentation_isIso
+#print axioms scalarOutputComplexEvaluationAugmentation_isIso
+#print axioms scalarOutputEvaluationModelIso
+#print axioms scalarOutputEvaluationModelIso_augmentation
+#print axioms scalarOutputEvaluationModelIso_naturality
+#print axioms scalarOutputEvaluationModelIso_ofObjectwiseKFlat
+#print axioms scalarOutputEvaluationIso
+#print axioms scalarOutputEvaluationIso_model
+#print axioms scalarKernelOutputEvaluationIso
+#print axioms scalarKernelOutputEvaluationIso_ofKFlatModels
