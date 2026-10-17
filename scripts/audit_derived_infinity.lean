@@ -218,6 +218,12 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.cone
 #print axioms SerrePositivity.InfinityCategories.complexSemifree_mappingCone
 
+#print axioms SerrePositivity.InfinityCategories.complexSemifree_binaryCoproduct
+#print axioms SerrePositivity.InfinityCategories.complexSemifree_binaryBiproduct
+#print axioms SerrePositivity.InfinityCategories.complexSemifree_finiteBiproduct
+#print axioms SerrePositivity.InfinityCategories.complexSemifree_fiber
+#print axioms SerrePositivity.InfinityCategories.complexSemifree_biprodFiber
+
 open Lean in
 run_cmd do
   let env ← getEnv

@@ -887,3 +887,32 @@ cone の基底は次数 k に始域次数 k+1 と終域次数 k の直積基底�
 D2h（零・sphere・シフト・任意余積・有限余積・任意の射の cone）は全て完了。
 続行範囲：追加指示 D2h′（fiber と有限直和）、D1 の quasicategory、D3 の比較とシフト両立。
 D2i はその後に任意工程として見積もりを報告する。
+
+
+### D2h′ 完了・fiber と有限直和（2026-10-18）
+
+共通変数 `(S : Type u) [CommRing S]`、namespace `SerrePositivity.InfinityCategories`。
+公開宣言の型：
+```lean
+complexSemifree_binaryCoproduct {P Q : Complex S}
+    (hP : complexSemifree S P) (hQ : complexSemifree S Q) :
+    complexSemifree S (P ⨿ Q)
+complexSemifree_binaryBiproduct {P Q : Complex S}
+    (hP : complexSemifree S P) (hQ : complexSemifree S Q) :
+    complexSemifree S (P ⊞ Q)
+complexSemifree_finiteBiproduct {I : Type v} [Finite I] [Small.{u} I]
+    (P : I → Complex S) (hP : ∀ i, complexSemifree S (P i)) :
+    complexSemifree S (⨁ P)
+complexSemifree_fiber {P Q : Complex S} (f : P ⟶ Q)
+    (hP : complexSemifree S P) (hQ : complexSemifree S Q) :
+    complexSemifree S ((CochainComplex.mappingCone f)⟦(-1 : ℤ)⟧)
+complexSemifree_biprodFiber {B C D : Complex S} (f : B ⊞ C ⟶ D)
+    (hB : complexSemifree S B) (hC : complexSemifree S C) (hD : complexSemifree S D) :
+    complexSemifree S ((CochainComplex.mappingCone f)⟦(-1 : ℤ)⟧)
+```
+fiber は指定通り `mappingCone f` の −1 シフトであり、射に追加仮定を置かない。
+有限直和は `Type v` の任意の有限かつ u-small な添字集合。
+既存の `CochainBiproduct` の有限 biproduct instance を利用し、cone・シフト・余積の閉性から証明。
+対象集約ビルドは終了コード0（3936 jobs）、公理監査も終了コード0。
+21モジュール474宣言すべて標準3公理のみ。D2h′ に残りなし。
+未完了：D1 の quasicategory instance、D3 の同値とシフト両立。D2i の見積もりはその後。

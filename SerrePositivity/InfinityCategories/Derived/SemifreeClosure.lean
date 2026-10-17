@@ -3,6 +3,7 @@ public import SerrePositivity.InfinityCategories.Derived.Semifree
 public import SerrePositivity.InfinityCategories.Derived.ConeBasis
 public import SerrePositivity.DifferentialGraded.Module.ShiftCoproduct
 public import Mathlib.CategoryTheory.Limits.Connected
+public import SerrePositivity.HomologicalAlgebra.CochainBiproduct
 
 /-! # Semifree 複体の閉性
 
@@ -339,5 +340,50 @@ theorem complexSemifree_coproduct {I : Type v} [Small.{u} I] (P : I → Complex 
 theorem complexSemifree_finiteCoproduct (n : ℕ) (P : Fin n → Complex S)
     (hP : ∀ i, complexSemifree S (P i)) : complexSemifree S (∐ P) :=
   complexSemifree_coproduct S P hP
+
+/-- 概要：二項余積は semifree 性を保存する。
+方針：二点の添字集合の余積閉性を適用する。
+規約：Mathlib の選んだ二項余積。使われ方：二項直和の閉性。 -/
+theorem complexSemifree_binaryCoproduct {P Q : Complex S}
+    (hP : complexSemifree S P) (hQ : complexSemifree S Q) :
+    complexSemifree S (P ⨿ Q) :=
+  complexSemifree_coproduct S (pairFunction P Q) (fun i => by
+    cases i
+    · exact hP
+    · exact hQ)
+
+/-- 概要：二項直和は semifree 性を保存する。
+方針：直和と余積の標準同型で閉性を移す。
+規約：Mathlib の二項 biproduct。使われ方：fiber を作る始域。 -/
+theorem complexSemifree_binaryBiproduct {P Q : Complex S}
+    (hP : complexSemifree S P) (hQ : complexSemifree S Q) :
+    complexSemifree S (P ⊞ Q) :=
+  complexSemifree_of_iso S (biprod.isoCoprod P Q).symm
+    (complexSemifree_binaryCoproduct S hP hQ)
+
+/-- 概要：有限直和は semifree 性を保存する。
+方針：直和と余積の標準同型で任意余積の閉性を移す。
+規約：小さい有限添字集合。使われ方：有限の dg 錐の対象。 -/
+theorem complexSemifree_finiteBiproduct {I : Type v} [Finite I] [Small.{u} I]
+    (P : I → Complex S) (hP : ∀ i, complexSemifree S (P i)) :
+    complexSemifree S (⨁ P) :=
+  complexSemifree_of_iso S (biproduct.isoCoproduct P).symm
+    (complexSemifree_coproduct S P hP)
+
+/-- 概要：semifree 複体間の射の fiber は semifree である。
+方針：mapping cone の閉性と整数シフトの閉性を合成する。
+規約：fiber は cone の −1 シフト。使われ方：dg fiber の部分圏への制限。 -/
+theorem complexSemifree_fiber {P Q : Complex S} (f : P ⟶ Q)
+    (hP : complexSemifree S P) (hQ : complexSemifree S Q) :
+    complexSemifree S ((CochainComplex.mappingCone f)⟦(-1 : ℤ)⟧) :=
+  complexSemifree_shift S (complexSemifree_mappingCone f hP hQ) (-1)
+
+/-- 概要：B ⊕ C から D への任意の射の fiber は semifree である。
+方針：二項直和の閉性を fiber の閉性に渡す。
+規約：射に追加条件は課さない。使われ方：N7 の dg 極限の Semifree への制限。 -/
+theorem complexSemifree_biprodFiber {B C D : Complex S} (f : B ⊞ C ⟶ D)
+    (hB : complexSemifree S B) (hC : complexSemifree S C) (hD : complexSemifree S D) :
+    complexSemifree S ((CochainComplex.mappingCone f)⟦(-1 : ℤ)⟧) :=
+  complexSemifree_fiber S f (complexSemifree_binaryBiproduct S hB hC) hD
 
 end SerrePositivity.InfinityCategories
