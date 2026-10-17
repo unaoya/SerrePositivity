@@ -10284,6 +10284,19 @@ KLFiniteComparisonExcision B p を受け取り、通常 B⊗R S の perfectoid �
 既存の定 rank 監査の末尾空行も整え、同じ監査を再実行して成功を確認した。
 原典 E∞ 版 Cor 8.12 の保留と元の Prop 2.4.7 引用を維持し、新しい sorry・axiom・引用は追加していない。
 
+**一般 rank の条件付き組立て・各実成分への定 rank 証明の適用（2026-10-17）。**
+`Prop247RankComponentExcision.lean` は原典の実 Ri と各指定 Ri→Ti に対し、
+Ti の perfectoid 性・絶対整閉性、元の Si=Ti⊗R S の有限性・有限表示性・定 rank を供給し、
+各 Ti 上の KLFiniteComparisonExcision から定 rank の実被覆証明を適用する。
+元の βi:Si→Pi の R 代数構造を保持し、誘導した Ti 作用との塔の可換性を証明して、
+元の R 作用の核・余核の冪零化へ戻す。各 Si の bounded torsion は要求しない。
+一般 rank の AIC 入口では、係数零化に加えて成分 isogeny も構成するため、
+未供給の比較は元の終域写像の核の冪零化と各 Ti の指定 excision 入力である。
+修正後の全体6939ジョブと公開2宣言の専用監査が成功。
+型と証明の再帰監査で、選択入口の未証明依存は既存 B-I のみであることを確認した。
+指定データの局所錐・実被覆は assert_no_sorry 成功し、選択入口は sorry-free とは扱わない。
+原典 E∞ 版 Cor 8.12 と元の Prop 2.4.7 引用は保留のまま、新しい sorry・axiom・引用は追加していない。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
