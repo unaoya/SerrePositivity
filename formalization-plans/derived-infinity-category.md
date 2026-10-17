@@ -365,3 +365,61 @@ D2f は完了。D2i は任意・未着手。D1 の quasicategory は N2 完了�
 
 この補助表現の追加は初回指示の設計変更の承認条項に従い、承認前には実装しない。
 cone の閉性を、filtration を保存する射だけの条件付き成果へ置き換えない。
+
+### D2h 補助表現の承認・基礎部分（2026-10-17）
+
+ユーザーが選択肢「補助表現の追加を承認する（推奨）」に回答したため、上の設計提案を承認済みとする。
+`Derived/SemifreeBasis.lean` を追加した。既存の `complexSemifree` は変更していない。
+これは cone 閉性のための基礎部分の保存であり、D2h 全体の完成ではない。
+
+公開宣言：namespace `SerrePositivity.InfinityCategories` に
+`ComplexSemifreeBasis (S : Type u) [CommRing S] (P : Complex S) : Type (u + 1)`。
+これは次のフィールドを持つ数学的データであり、存在を仮定する追加公理ではない。
+```lean
+Index : ℤ → Type u
+basis : ∀ k, Module.Basis (Index k) S (P.X k)
+height : ∀ k, Index k → ℕ
+lowering : ∀ (k : ℤ) (i : Index k) (j : Index (k + 1)),
+  j ∈ ((basis (k + 1)).repr ((P.d k (k + 1)) (basis k i))).support →
+    height (k + 1) j < height k i
+```
+フィールドの公開名は `ComplexSemifreeBasis.Index`・`.basis`・`.height`・`.lowering`。
+以下は namespace `SerrePositivity.InfinityCategories.ComplexSemifreeBasis`。
+全ての共通引数は `{S : Type u} [CommRing S] {P : Complex S} (B : ComplexSemifreeBasis S P)`。
+公開宣言の正確な残りの型：
+```lean
+stageSubmodule (n : ℕ) (k : ℤ) : Submodule S (P.X k)
+mem_stageSubmodule_iff (n : ℕ) (k : ℤ) (x : P.X k) :
+  x ∈ B.stageSubmodule n k ↔ ∀ i ∈ ((B.basis k).repr x).support, B.height k i ≤ n
+stageSubmodule_mono {n m : ℕ} (h : n ≤ m) (k : ℤ) :
+  B.stageSubmodule n k ≤ B.stageSubmodule m k
+exists_mem_stageSubmodule (k : ℤ) (x : P.X k) : ∃ n, x ∈ B.stageSubmodule n k
+differential_mem_previous (n : ℕ) (k : ℤ) {x : P.X k}
+  (hx : x ∈ B.stageSubmodule (n + 1) k) :
+  (P.d k (k + 1)) x ∈ B.stageSubmodule n (k + 1)
+differential_mem_stage (n : ℕ) (k : ℤ) {x : P.X k}
+  (hx : x ∈ B.stageSubmodule n k) : (P.d k (k + 1)) x ∈ B.stageSubmodule n (k + 1)
+stageDifferential (n : ℕ) (k : ℤ) :
+  ModuleCat.of S (B.stageSubmodule n k) ⟶ ModuleCat.of S (B.stageSubmodule n (k + 1))
+stageDifferential_squared (n : ℕ) (k : ℤ) :
+  B.stageDifferential n k ≫ B.stageDifferential n (k + 1) = 0
+stageComplex (n : ℕ) : Complex S
+stageInclusion (n : ℕ) : B.stageComplex n ⟶ P
+stageMap {n m : ℕ} (h : n ≤ m) : B.stageComplex n ⟶ B.stageComplex m
+stageMap_inclusion {n m : ℕ} (h : n ≤ m) :
+  B.stageMap h ≫ B.stageInclusion m = B.stageInclusion n
+stageBasis (n : ℕ) (k : ℤ) :
+  Module.Basis {i : B.Index k // B.height k i ≤ n} S (B.stageSubmodule n k)
+stageDiagram : ℕ ⥤ Complex S
+stageCocone : CategoryTheory.Limits.Cocone B.stageDiagram
+differential_eq_zero_on_stageZero (k : ℤ) {x : P.X k}
+  (hx : x ∈ B.stageSubmodule 0 k) : (P.d k (k + 1)) x = 0
+```
+
+`set -o pipefail; lake build SerrePositivity.InfinityCategories.Derived` は終了コード 0（3614 jobs）。
+`set -o pipefail; lake env lean scripts/audit_derived_infinity.lean` は終了コード 0。
+新規21個の名前（構造と4フィールドを含む）を個別監査し、9モジュール193宣言を機械監査。
+許された標準3公理のみ。段の微分閉性、網羅性、初期段の微分零を実際に証明した。
+未完了：cocone の余極限性、自由商の表示、既存 filtration との同値、cone の高さ再構成。
+これらの未完了を `ComplexSemifreeBasis` の存在仮定で代替して完了とはしない。
+D2i は D2h 後の任意工程で未着手。D1 の quasicategory は N2 完了記録待ち。

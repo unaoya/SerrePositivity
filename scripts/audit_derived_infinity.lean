@@ -67,6 +67,28 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.complexSemifree_coproduct
 #print axioms SerrePositivity.InfinityCategories.complexSemifree_finiteCoproduct
 
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.Index
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.basis
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.height
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.lowering
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.stageSubmodule
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.mem_stageSubmodule_iff
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.stageSubmodule_mono
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.exists_mem_stageSubmodule
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.differential_mem_previous
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.differential_mem_stage
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.stageDifferential
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.stageDifferential_squared
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.stageComplex
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.stageInclusion
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.stageMap
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.stageMap_inclusion
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.stageBasis
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.stageDiagram
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.stageCocone
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.differential_eq_zero_on_stageZero
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -78,6 +100,7 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DerivedComparison,
     `SerrePositivity.InfinityCategories.Derived.InfinityCategory,
     `SerrePositivity.InfinityCategories.Derived.SemifreeClosure,
+    `SerrePositivity.InfinityCategories.Derived.SemifreeBasis,
     `SerrePositivity.InfinityCategories.Derived.DerivedComparisonShift]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
