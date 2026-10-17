@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarNormalizedCompositionTriangle
+
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.CompatibleHornFillingOperation
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DegenerateHornInput
