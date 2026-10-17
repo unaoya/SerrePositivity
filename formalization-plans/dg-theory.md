@@ -11703,3 +11703,32 @@ U12e全体は未受入。U16・U15e分解版には着手していない。共有
 U15e分解版では別担当のQuotient/DerivedComparison*・Verdier/を読んで再利用する。
 共有ルート・共有監査スクリプト・並行担当Tensor/Associator*・Perfect/・Endomorphism/・
 ScalarExtension*・他チャットの記録は編集していない。
+
+
+### 17.247 U12e86：外側制限と単位子の通常square・全導来左単位square（2026-10-17）
+
+Tensor/OuterUnitRestriction.leanのleftBimoduleUnitIso_leftRestrictionと
+rightBimoduleUnitIso_rightRestrictionは、外側だけを制限した通常合成比較と左右単位子の
+可換squareを証明する。値でのleftUnitValue_leftRestrictionと
+rightUnitValue_rightRestrictionを公開した。任意可換環・独立対象宇宙・任意dg関手に対応し、
+通常squareに局所Hom条件・準同値性は要求しない。左側は外側対象型C・Dのsmallnessも不要。
+右側はYoneda評価の既存の自然性を使い、smallnessを明示する。
+
+Derived/LeftUnitOuterRestriction.leanのleftUnitOuterLeftRestrictionComparisonは、
+実際の全導来外側左比較の逆と、制限した既存左単位子を続ける経路。
+_appは成分式、_modelは指定右K-flat後因子上の既存制限表示を使った計算、
+_kFlatはモデル上での実際の左単位子との一致、_eqは任意の全導来後因子での自然変換の一致。
+局所Hom K-flat条件は元と制限後の出力C・Dに要求し、FのHom準同型性は要求しない。
+通常square、既存の全導来比較のモデル計算と単位子の自然性を再利用した。
+
+Checks.DGOuterUnitRestrictionは標数2・独立対象宇宙・任意導来後因子で検査する。
+同入口、第二中間結合子・左右中間単位・全導来五角・StageEight・StageSeven・
+Spectra.StageTwoの対象ビルド成功（3205 jobs、警告なし）。
+新規公開9宣言の直接公理監査は重複・欠落なく標準3公理以内。新規監査累計4835宣言。
+文書検査は21 Markdown・326 exposition参照、失敗0件。
+今回の3 Leanファイルにsorry・admit・新規axiom・資源上限変更は0件。
+既存公開APIの名前・型は変更していない。共有ルートと他担当ファイルは編集していない。
+
+全導来外側右単位square、同時制限の単位・結合子の正規化、解像度変更のcoherenceは未完。
+今回の小単位を区切りとし、ユーザーの指示に従って新規実装を止め、次節で進路の調査を行う。
+U12e全受入・U16着手・U15e分解版の完了を宣言するものではない。
