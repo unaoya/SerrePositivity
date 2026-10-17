@@ -899,6 +899,7 @@ public import SerrePositivity.CLMST.PerfectoidEtaleCommonCover
 public import SerrePositivity.CommutativeAlgebra.EtaleAwayBaseChange
 public import SerrePositivity.CommutativeAlgebra.EtaleAwayTensorBaseChange
 public import SerrePositivity.CLMST.CanonicalExcisionTorInput
+public import SerrePositivity.CLMST.KLOriginalTorFromExcision
 
 /-!
 # Serre の交点重複度の正値性の形式化

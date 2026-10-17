@@ -8923,6 +8923,55 @@ TensorIsogeny の未定義参照は解消し、残る失敗は今回未編集の
 Cor 8.12 の担当部分は保留のまま変更せず、実 almost 比較・Prop 2.4.9(a)・KL-Q の引用置換を
 完成済みとはしない。
 
+#### KL-T：実被覆から元の全 Tor 入力までの合流と唯一残る excision 入力（2026-10-17）
+
+`CLMST/KLAicTorFromExcision.lean` に、残る入力の型を透明な命題として固定した。
+`KLCanonicalExcisionSquare hf hg q a` は、既存の実普遍写像と元の主イデアルから決まる
+四辺についての `CommRingCat` の `IsPullback` そのもの。
+`KLFiniteComparisonExcision R p` は、有限かつ有限表示な元の R 代数間の実有限写像 q、
+元の a 冪で支持される核・一つの冪で消える余核、指定した二つの普遍写像について、
+この同じ canonical square が pullback になるという命題である。
+**定義しただけで、証明・新しい引用・axiom として宣言していない。**
+原典の Cor 8.12 と導来モデルの同定からこれを供給する工程は未完了である。
+
+`perfectoidIdeal_powerTorsionTorInput_of_aic_finiteComparison_excision` は、
+この命題を明示した仮定として、AIC perfectoid な基底上の実有限エタール被覆と
+各有限表示共通モデルを構成し、同じ局所モデルの普遍 perfectoid 化を選ぶ。
+元の A と有限自由側からの二つの四角形へ仮定を適用し、全局所 Tor 入力を証明して
+元の perfectoidIdeal の全元へ被覆合流する。局所 rank 一定やほぼ零化の結論を仮定していない。
+局所モデルと普遍写像は、各被覆点で全 N,k,i,s より先に選ばれる。
+
+`CLMST/KLOriginalTorFromExcision.lean` の
+`exists_andre_extension_finiteComparison_excision_suffices` は、既存 BS 7.14 の
+**一つの拡大 E を A,C,f,a や全試験より先に選び**、その同じ E に対する
+`KLFiniteComparisonExcision E p` だけを未供給入力として残す。
+実 E⊗R A、元の a の像、標準局所化のエタール性、実有限被覆、同じ ideal の
+全 Tor 入力と元の完全忠実検出を合成した。
+`perfectoidIdeal_powerTorsionTorInput_of_finiteComparison_excision` は、
+AIC perfectoid 拡大ごとにこの excision 命題が供給されれば、元の任意の指定 perfectoid 化に
+次の全入力を返す公開入口である。
+
+```lean
+∀ (N : ModuleCat.{u} R) (k : ℕ), (∀ x : N, (p : R) ^ k • x = 0) →
+  ∀ i : ℕ, 0 < i → ∀ s ∈ perfectoidIdeal R p hR a,
+    torCoefficientScalarEndomorphism C N i (algebraMap R C s) = 0
+```
+
+元の A の有限性・代数有限表示性と A[1/a] の R[1/a] 上のエタール性を用い、
+試験加群の有限性、k>0、r>0、通常平坦な André 拡大などは追加していない。
+二つのファイルの対象ビルドと専用監査 `scripts/audit_clmst_kl_excision_pipeline.lean` が成功。
+透明な二命題は `assert_no_sorry` 成功。これは入力命題の成立を証明したという意味ではない。
+AIC 上の合流の依存閉包は標準三公理と既存 B-I のみ、元の基底への合流はそれと
+既存 BS 7.14 のみであることを監査した。Cor 8.12・Prop 2.4.9(a)・Cor 4.0.4 を
+隠れた引用として使っていない。新しい sorry・引用を追加していない。
+全体ビルド成功（6490 jobs）、KL 専用監査も成功（1224 assert と条件付き定理3本の型検査）。
+前工程で記録した並行系列のビルド失敗は今回再現しなかった。
+
+条件付き合流を完成済みの Prop 2.4.9(a) とは数えない。
+残る本体は `KLFiniteComparisonExcision` の実証明（原典 excision とモデル同定）であり、
+KL-Q の両消滅と既存 Cor 4.0.4 引用の置換も引き続き未完了。
+D-I/U/Q と Cor 8.12 の担当ファイルには着手していない。
+
 #### Prop 2.4.7 専任系列：原典から D-I/U/Q への型付き受渡し（2026-10-17）
 
 本節は統合表 D-I・D-U・D-Q の実入力を固定する。未採用の別計画は根拠にしない。
