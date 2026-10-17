@@ -827,6 +827,15 @@
 - これは実際の主Perf tensorから、係数変更した再構成作用bimoduleによるtensorへの比較である。
   係数変更したEndを、実際の係数変更加群のEndと無条件に同一視する主張は含まない。
 
+## U14b.44：実際の代表加群の係数変更（2026-10-17）
+
+- `ScalarRepresentable.lean`：受入済みの実際の `ScalarExtension.rightModule` による代表加群の
+  係数変更が、D係数変更先の代表加群に一致することを全次数作用上で証明した。
+- 元のHomと実際の係数変更先のHomの順方向合成を、純粋tensor生成元上で比較した。
+  環のflat性やHomのlocal flatnessは要求していない。
+- `ChecksScalarRepresentable` 対象ビルド成功。新規主要宣言の公理は標準3公理のみ。
+  この生成対象の計算から、実際のPerf Hom比較への拡張を続ける。既存APIの名前・型は変更していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
