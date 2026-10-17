@@ -108,6 +108,15 @@
   Q像のretractになる証拠を構成した。元のXを表す有限射影代表は、帰納結果と逆回転三角形から戻す。
 - `Perfect.ChecksRingRetractRangeReduction` 対象ビルド成功（3171 jobs）。主要宣言の公理監査は標準3公理のみ。
 
+## U13e.35：一次数の有限射影複体の導来retractのモデル
+
+- `Perfect/RingRetractSingle.lean`：有限射影加群FのsingleのQ像へのretractが与える冪等元を、
+  既存single関手の完全忠実性で加群Fの冪等元へ戻し、ModuleCatで分裂した。
+  分裂加群Gの有限生成性・射影性とQ(single G)≅Xを証明した。
+- [n,n]にある任意の有限射影複体Pを実際のsingleと同型で比較することで、
+  Q(P)の任意の導来retractにも[n,n]の有限射影代表を与えた。次数幅帰納法の基底ケースである。
+- `Perfect.ChecksRingRetractSingle` 対象ビルド成功（3174 jobs）。主要2宣言の公理監査は標準3公理のみ。
+
 ## 既存項目の再検証
 
 - finite cell・全Hom射影性・PerfとKaroubi・compact生成・compact⇒Perf・
