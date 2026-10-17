@@ -72,6 +72,7 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicFullFrobeniu
 public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicFullFrobeniusPDOfMonic
 public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicRootUniversal
 public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicResidueRootUniversal
+public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicBoundedResidueRootUniversal
 
 /-!
 # André E1・E2 の集約

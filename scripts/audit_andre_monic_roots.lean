@@ -1204,6 +1204,16 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_perfectPrismComp
 assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPolynomialDeltaHom_of_perfectPrism_residue_roots
 assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicCompletionHom_of_perfect_residue_roots
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.regular_power_quotient_torsion_bound_dvd
+assert_no_sorry SerrePositivity.BhattScholze.Andre.regular_power_quotient_torsion_bound
+assert_no_sorry SerrePositivity.BhattScholze.Andre.boundedPrism_generator_power_quotient_prime_complete
+assert_no_sorry SerrePositivity.BhattScholze.Andre.boundedPrism_pair_isAdicComplete
+assert_no_sorry SerrePositivity.BhattScholze.Andre.boundedPrism_quotient_isAdicComplete_prime
+assert_no_sorry SerrePositivity.BhattScholze.Andre.boundedPrism_isHausdorff_prime
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_boundedPrismCompatibleRootsLift
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPolynomialDeltaHom_of_boundedPrism_residue_roots
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicCompletionHom_of_bounded_residue_roots
+
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
@@ -1417,7 +1427,12 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PerfectPrismPairAdicComplete,
     `SerrePositivity.BhattScholze.Andre.PerfectPrismCompatibleRootsLift,
     `SerrePositivity.BhattScholze.Andre.PowerRootPolynomialPrismLift,
-    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicResidueRootUniversal]
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicResidueRootUniversal,
+    `SerrePositivity.BhattScholze.Andre.RegularPowerQuotientTorsion,
+    `SerrePositivity.BhattScholze.Andre.BoundedPrismAdicComplete,
+    `SerrePositivity.BhattScholze.Andre.BoundedPrismCompatibleRootsLift,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPolynomialBoundedPrismLift,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicBoundedResidueRootUniversal]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

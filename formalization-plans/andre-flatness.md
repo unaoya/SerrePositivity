@@ -4756,3 +4756,129 @@ raw 包・実完備化の正則性と完全忠実平坦性に残る hpR、原典
 （集約 4557 jobs）。新規 11 公開宣言の `assert_no_sorry` と専用監査は
 終了コード 0。生成宣言を含む 6880 宣言の推移的公理依存は標準 3 公理のみ。
 新規 11 公開宣言の正確な型を `#check` で確認した（終了コード 0）。
+
+
+### E1.68 一般有界試験 prism の根列持上げと入力 δ 射の普遍性（2026-10-17）
+
+前工程 E1.67 は完全試験 prism に対する剰余根列の一意持上げを検証・保存した進捗。
+本工程は試験 prism の完全性を外し、その商の p 冪ねじれの有界性から共通完備性を証明する。
+
+新規 `Andre/RegularPowerQuotientTorsion.lean` に 2 公開宣言を追加した。
+任意の可換環 B、a d : B、hd : Function.Injective (fun x:B => d*x)、N : ℕ を固定する。
+`regular_power_quotient_torsion_bound_dvd` は
+
+```lean
+hN : ∀ k : ℕ, ∀ x : B, d ∣ a^k*x → d ∣ a^N*x
+m k : ℕ
+x : B
+hx : d^m ∣ a^k*x
+⊢ d^m ∣ a^(N*m)*x
+```
+
+を証明する。a^N*x=d*y と書き、d の正則性で y を一段低い冪商へ帰着する。
+`regular_power_quotient_torsion_bound` は同じ内容を実商環で述べる。
+B/(d) の a 冪ねじれが a^N で消えるとき、全 m,k と x : B/(d^m) に対し
+
+```lean
+(qa)^k*x=0 → (qa)^(N*m)*x=0
+```
+
+を証明する。qa は a の該当商への標準像。a の正則性・素数性・δ 構造は不要で、
+零冪商・N=0 を含む。これは原典とは異なる可除性による帰納計算である。
+
+以下、Q : OrientedPrism p B の商の有界性を、正確に
+
+```lean
+hB : ∃ N : ℕ, ∀ n : ℕ, ∀ x : B ⧸ Q.ideal,
+  (p : B ⧸ Q.ideal)^n*x=0 → (p : B ⧸ Q.ideal)^N*x=0
+```
+
+とする。試験 prism の完全性、台環や商の p 正則性、非零性は仮定しない。
+
+新規 `Andre/BoundedPrismAdicComplete.lean` に 4 公開宣言を追加した。
+`boundedPrism_generator_power_quotient_prime_complete Q hB m` は
+
+```lean
+IsAdicComplete (Ideal.span {(p:B)}) (B ⧸ (Ideal.span {Q.generator})^m)
+```
+
+を証明する。一乗商の有界指数 N を N*m へ移し、Q.complete_p からの商の導来完備性と
+既存の有界ねじれ比較を使う。源 B 自体の古典的 p 完備性を仮定していない。
+`boundedPrism_pair_isAdicComplete Q hB` は d 完備性と全冪商の p 完備性から
+
+```lean
+IsAdicComplete (Ideal.span {(p:B), Q.generator}) B
+```
+
+を構成する。
+`boundedPrism_quotient_isAdicComplete_prime Q hB` は
+
+```lean
+IsAdicComplete (Ideal.span {(p:B ⧸ Q.ideal)}) (B ⧸ Q.ideal)
+```
+
+を商の導来 p 完備性と hB から証明する。
+`boundedPrism_isHausdorff_prime Q hB` は (p)⊆(p,d) の冪合同を使い、
+`IsHausdorff (Ideal.span {(p:B)}) B` を証明する。
+これにより全実根の rank 1 判定に必要な p 進分離性も供給できる。
+
+新規 `Andre/BoundedPrismCompatibleRootsLift.lean` に 1 公開宣言を追加した。
+`existsUnique_boundedPrismCompatibleRootsLift Q hB ρ hρ` は
+ρ : ℕ → B/Q.ideal、hρ : ∀ n, ρ(n+1)^p=ρ n の下で
+
+```lean
+∃! σ : ℕ → B,
+  (∀ n, σ(n+1)^p=σ n) ∧ ∀ n, Ideal.Quotient.mk Q.ideal (σ n)=ρ n
+```
+
+を証明する。(p,d) の Q.ideal 商での像が (p) である計算と、上記の二つの完備性を
+共通完備商の一般の根列持上げに供給する。零環と p ねじれを持つ台環・商を含む。
+完全試験 prism に限定していた根列の持上げは、一般有界試験 prism へ拡張した。
+
+新規 `Andre/PowerRootPolynomialBoundedPrismLift.lean` に 1 公開宣言を追加した。
+源 R の p 正則性 hpR、D : DeltaStructure p R、Q、hB、
+k : R →+* B、hk : D.IsDeltaHom Q.deltaStructure k、ρ、hρ に対し、
+P=PowerRootPolynomial R p hp として
+`existsUnique_powerRootPolynomialDeltaHom_of_boundedPrism_residue_roots` は
+
+```lean
+∃! g : P →+* B,
+  (powerRootPolynomialDelta p hpR D).IsDeltaHom Q.deltaStructure g ∧
+    g.comp (algebraMap R P)=k ∧
+      ∀ n, Ideal.Quotient.mk Q.ideal (g (powerRootPolynomialVariable R p hp n))=ρ n
+```
+
+を証明する。源と標的の宇宙は独立で、源の完全性は不要。
+実根列を一意に持ち上げ、p 進分離性から δ=0 を供給する。
+試験 prism の完全性を追加仮定に残さない。
+
+新規 `Andre/PowerRootPrismMonicBoundedResidueRootUniversal.lean` に 1 公開宣言を追加した。
+完全な源 prism W、hW、f : Polynomial A と、既存の P、E、dP、a、L、jL、H、uL、DH を使う。
+`existsUnique_powerRootPrismMonicCompletionHom_of_bounded_residue_roots` は同じ宇宙の Q、hB、
+基底 δ 射 k、hk、hd : k W.generator=Q.generator、ρ、hρ、
+hroot : f.eval₂ ((Ideal.Quotient.mk Q.ideal).comp k) (ρ 0)=0 の下で、
+元の H の環構造を let で導入した後の
+
+```lean
+∃! F : H →+* B,
+  DH.IsDeltaHom Q.deltaStructure F ∧
+    F.comp (powerRootPrismMonicCompletionBaseMap W hW f)=k ∧
+      ∀ n, Ideal.Quotient.mk Q.ideal
+        (F (uL (jL (powerRootPolynomialVariable A p hp n))))=ρ n
+```
+
+を証明する。実根列・指定入力 δ 射・試験 prism の完全性や p 正則性は前提に残らない。
+源の prism 商の p 正則性、f のモニック性・正次数もこの普遍射には不要。
+
+BS Rem 7.15（著者版 p.62）に対する原典とは異なる、主イデアルの可除性帰納・
+有界ねじれ比較・共通完備商・Perfection のモノイド同型・W₂ 切断の経路を docstring に明記した。
+これで一般有界試験 prism に対する根列の持上げと入力射の一意性を解消したが、
+生成元の単元係数を持つ一般の基底 prism 射、原典の完備入力環 S との接続、
+源 H 自体の prism 性・raw と実完備化の正則性と完全忠実平坦性に残る hpR は未完了。
+原典の係数表記との最終照合も残る。絶対 prismatic envelope 全体の同定とはまだ数えない。
+承認済み hdeg を持つ任意族存在定理の型は変更していない。
+
+検証：新規 5 ファイルの対象ビルドと集約ビルドは終了コード 0
+（集約 4562 jobs）。新規 9 公開宣言の `assert_no_sorry` と専用監査は
+終了コード 0。生成宣言を含む 6938 宣言の推移的公理依存は標準 3 公理のみ。
+新規 9 公開宣言の正確な型を `#check` で確認した（終了コード 0）。
