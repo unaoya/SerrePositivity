@@ -1185,3 +1185,37 @@ M9 の適用については、商を取る前の次数零の平坦 Hom を持つ
   係数環の平坦性は仮定していない。合同対象ビルドで成功・警告なし（4041 jobs）。
 - 前単位 `2cb002ad` は直後の stat で自分の8ファイルのみと確認済み。
   新規 sorry・axiom・引用なし。中心作用・G 作用は保留。
+
+### U17b6：U16b の実際の dg 擬同値を指定局所 Morita 比較へ適用
+
+- U16a の公開節と U16b の公開済み `Morita/QuasiEquivalenceDerivedGraph.lean` を再読した。
+  `Verdier/GraphPairMorita.lean` は graph kernel の列の perfect 性を証明し、U16b の
+  `quasiEquivalenceDerivedGraphOnPerfectIso` と実際の Perf 同値から元の主 Perf 作用の
+  Morita 性を証明する。元の作用の同値性も商の同値性も追加の入力にしていない。
+- S の像が T に入る条件から指定列の Perf_T 条件を証明し、零部分圏の反映条件と
+  両側の局所 K-flat 条件を独立に受け、`graphPairLocalMoritaEquivalence` を構成した。
+  誘導完備商関手と既存の局所 perfect 比較の正方形は、自然同型そのものの shift 整合性と
+  三角形版付き。全対象を指定した場合に反映条件を元の Perf 所属証拠で満たす例も検証した。
+- 公開入口 `Verdier/U17.lean` と同時 import 監査 `Verdier/ChecksU17Integration.lean` を追加した。
+  新規の Morita 7宣言と完備化9宣言を含め、171宣言の公理監査は標準3公理のみ。
+  合同ビルド成功（4041 jobs、警告・エラー0件）。新しい sorry・axiom・引用なし。
+  型検査例で U17c の局所 Karoubi-first 同値と既存 paperRankEquivalence の線形性・shift・
+  三角性、および既存の両 sequence comparison 自然同型の shift 整合性を同時確認した。
+- 前単位 `7bc96330` は直後の stat で自分の3ファイルのみと確認した。
+  他担当の Morita/・Derived/・Perfect/・Endomorphism/ は読み取りのみ。
+  共有ルート・Stage・README は編集していない。
+
+### U17 の検証範囲の再照合（2026-10-17）
+
+- U17c：既存順序交換と論文の列比較は `OrderSquare` の等式、局所 perfect への後置正方形、
+  `ComparisonLinear` の線形性、実際の自然同型の CommShift・三角形版まで合同検証済み。
+- U17d：支持は同じスカラーに対する保存・反映と忘却正方形、retract は i・r の個別等式と
+  Karoubi の分裂を検証済み。係数変更は元の tria の直接局所化から、明示的 dg 商側・既存の
+  指定 Verdier 比較・完備化・局所 perfect 比較まで実際の自然同型で接続した。
+  各関手の三角性と標準因子化の構造は検証済みだが、新しい直接経路比較の自然同型すべての
+  shift 整合性、および従来の二モデル比較の自然同型自身の構造照合はまだ主張しない。
+- U17b：一般 kernel の元の Perf_S の実際の局所化と Karoubi-first 商の零部分圏を同定し、
+  主 kernel 作用と完備商・局所 perfect 比較の正方形を検証済み。Morita 条件は元の Perf 作用の
+  同値性と零部分圏の反映に分離し、dg 擬同値の graph では前者を U16b から証明した。
+  kernel 射・合成の自然性と全 coherence の接続は U16 の公開状態に応じて引き続き区別する。
+- 目標は進行中として維持する。中心作用・G 作用は指示通り保留。
