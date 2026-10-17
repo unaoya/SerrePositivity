@@ -4626,3 +4626,133 @@ raw・実完備化の正則性と完全忠実平坦性に残る hpR、原典の�
 （集約 4551 jobs）。新規 19 公開宣言の `assert_no_sorry` と専用監査は
 終了コード 0。生成宣言を含む 6811 宣言の推移的公理依存は標準 3 公理のみ。
 新規 19 公開宣言の正確な型を `#check` で確認した（終了コード 0）。
+
+
+### E1.67 共通完備商による剰余根列の一意持上げと完全試験 prism への普遍性（2026-10-17）
+
+前工程 E1.66 は実根列からの入力 δ 射と実完備化の一意普遍射を検証・保存した進捗。
+本工程では根列を試験 prism の商に指定する形へ進めた。
+Witt 表示で各根を選び直す経路ではなく、Perfection の共通完備商の同型を用いる。
+
+新規 `Andre/CommonAdicCompatibleRoots.lean` に 5 公開宣言を追加した。
+`perfectionCongrMulEquiv` は任意の自然数 p、任意宇宙の可換モノイド M、N、同型 e : M ≃* N に対し
+`Perfection M p ≃* Perfection N p` を全座標への e と e⁻¹ の作用として与える。
+素数性・環構造は不要。
+
+可換環 B、素数 p、I J : Ideal B、hJI : J≤I を固定する。
+`[CharP (B ⧸ I) p]`、`[IsAdicComplete I B]` と
+`[IsAdicComplete (I.map (Ideal.Quotient.mk J)) (B ⧸ J)]` の下で、
+`perfectionQuotientEquivOfCommonAdic` は
+
+```lean
+Perfection B p ≃* Perfection (B ⧸ J) p
+```
+
+を構成する。二つの既存の完備商 Teichmüller 同型と第三同型定理で比較し、
+順射は元の商射を全座標へ作用させるものとする。
+同 `_coeff` は全 x : Perfection B p、n : ℕ に対し
+
+```lean
+Perfection.coeffMonoidHom (B ⧸ J) p n (E x) =
+  Ideal.Quotient.mk J (Perfection.coeffMonoidHom B p n x)
+```
+
+を証明する。
+`existsUnique_compatiblePowerRootsLift_of_common_adic` は上記の仮定と
+ρ : ℕ → B ⧸ J、hρ : ∀ n, ρ(n+1)^p=ρ n の下で
+
+```lean
+∃! σ : ℕ → B,
+  (∀ n, σ (n+1)^p = σ n) ∧ ∀ n, Ideal.Quotient.mk J (σ n) = ρ n
+```
+
+を証明する。列全体を同時に持ち上げるため、個々の根の任意選択には依存しない。
+
+`existsUnique_compatiblePowerRootsLift_of_adic_ideals` は標数インスタンスの仮定を除き、
+代わりに hpI : (p:B)∈I を使い、同じ結論を零環も含めて証明する。
+共通商 B/I が非零なら標数 p を供給し、零なら I=⊤ と I 完備性から B も零と示す。
+この一般結果は δ 構造・p 正則性・prism・非零性を仮定しない。
+
+新規 `Andre/PerfectPrismPairAdicComplete.lean` に 2 公開宣言を追加した。
+Q : OrientedPrism p B と hQ : Q.deltaStructure.IsPerfect を固定する。
+`perfectPrism_generator_power_quotient_prime_complete` は全 n : ℕ に対し
+
+```lean
+IsAdicComplete (Ideal.span {(p : B)}) (B ⧸ (Ideal.span {Q.generator}) ^ n)
+```
+
+を証明する。distinguished 冪商の p 完備性を元の B 作用へ戻す。
+`perfectPrism_pair_isAdicComplete` は d 完備性と全 d 冪商の p 完備性から
+
+```lean
+IsAdicComplete (Ideal.span {(p : B), Q.generator}) B
+```
+
+を証明する。商の p 正則性や p,d の正則列条件を使わない。
+
+新規 `Andre/PerfectPrismCompatibleRootsLift.lean` に 2 公開宣言を追加した。
+`prism_pair_map_ideal_eq_prime` は完全性を使わず、(p,d) の Q.ideal 商での像が p 主イデアルと示す。
+`existsUnique_perfectPrismCompatibleRootsLift Q hQ ρ hρ` は上記の二つの完備性と
+完全 prism 商の p 完備性を共通完備商の一般結果へ渡し、
+
+```lean
+∃! σ : ℕ → B,
+  (∀ n, σ(n+1)^p=σ n) ∧ ∀ n, Ideal.Quotient.mk Q.ideal (σ n)=ρ n
+```
+
+を証明する。ρ は B/Q.ideal 内の根列であり、B 内への持上げ自体を引数にしない。
+零環と p ねじれを持つ prism 商を含む。試験 prism の完全性は明示前提。
+
+新規 `Andre/PowerRootPolynomialPrismLift.lean` に 1 公開宣言を追加した。
+源 R の p 正則性 hpR、D : DeltaStructure p R、完全試験 prism Q、hQ、
+k : R →+* B、hk : D.IsDeltaHom Q.deltaStructure k、商内の根列 ρ、hρ の下で、
+`existsUnique_powerRootPolynomialDeltaHom_of_perfectPrism_residue_roots` は
+P=PowerRootPolynomial R p hp として
+
+```lean
+∃! g : P →+* B,
+  (powerRootPolynomialDelta p hpR D).IsDeltaHom Q.deltaStructure g ∧
+    g.comp (algebraMap R P)=k ∧
+      ∀ n, Ideal.Quotient.mk Q.ideal (g (powerRootPolynomialVariable R p hp n))=ρ n
+```
+
+を証明する。源の完全性は不要で、R と B の宇宙は独立。
+一意に持ち上げた実根列の rank 1 性を p 進分離性から供給する。
+台環内の根列と δ=0 の条件を引数に残さない。
+
+新規 `Andre/PowerRootPrismMonicResidueRootUniversal.lean` に 1 公開宣言を追加した。
+完全な源 prism W、hW、f : Polynomial A と既存の P、E、dP、a、L、jL、H、uL、DH を使う。
+`existsUnique_powerRootPrismMonicCompletionHom_of_perfect_residue_roots` は
+同じ宇宙の試験環 B、完全 prism Q、hQ、基底 δ 射 k、hk、
+hd : k W.generator=Q.generator、ρ : ℕ → B/Q.ideal、hρ と
+
+```lean
+hroot : f.eval₂ ((Ideal.Quotient.mk Q.ideal).comp k) (ρ 0)=0
+```
+
+の下で、元の H の環構造を let で導入した後の
+
+```lean
+∃! F : H →+* B,
+  DH.IsDeltaHom Q.deltaStructure F ∧
+    F.comp (powerRootPrismMonicCompletionBaseMap W hW f)=k ∧
+      ∀ n, Ideal.Quotient.mk Q.ideal
+        (F (uL (jL (powerRootPolynomialVariable A p hp n))))=ρ n
+```
+
+を証明する。指定入力 δ 射 g、実根列 σ、その rank 1 条件は前提に残らない。
+源の prism 商の p 正則性、f のモニック性・正次数もこの普遍射には不要。
+源 H 自体の prism 性を追加主張するものではない。
+
+BS Rem 7.15（著者版 p.62）に対する原典とは異なる、共通完備商・Teichmüller モノイド同型・
+有理指数評価・W₂ 切断・実完備化による経路を docstring と本記録に明記した。
+完全試験 prism では剰余根列の一意持上げを解消したが、一般の試験 prism についての
+共通完備性の供給、一般の基底 prism 射の生成元の単元係数、原典の完備入力環 S との接続は未完了。
+raw 包・実完備化の正則性と完全忠実平坦性に残る hpR、原典の係数表記との照合も残る。
+完全試験環に対する普遍性を絶対 prismatic envelope 全体の同定と数えない。
+承認済み hdeg を持つ任意族存在定理の型は変更していない。
+
+検証：新規 5 ファイルの対象ビルドと集約ビルドは終了コード 0
+（集約 4557 jobs）。新規 11 公開宣言の `assert_no_sorry` と専用監査は
+終了コード 0。生成宣言を含む 6880 宣言の推移的公理依存は標準 3 公理のみ。
+新規 11 公開宣言の正確な型を `#check` で確認した（終了コード 0）。

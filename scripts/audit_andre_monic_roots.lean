@@ -1192,6 +1192,18 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialEval_baseM
 assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicCompletionHom_of_roots
 assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicCompletionHom_of_p_regular_roots
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectionCongrMulEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectionQuotientEquivOfCommonAdic
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectionQuotientEquivOfCommonAdic_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_compatiblePowerRootsLift_of_common_adic
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_compatiblePowerRootsLift_of_adic_ideals
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrism_generator_power_quotient_prime_complete
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrism_pair_isAdicComplete
+assert_no_sorry SerrePositivity.BhattScholze.Andre.prism_pair_map_ideal_eq_prime
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_perfectPrismCompatibleRootsLift
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPolynomialDeltaHom_of_perfectPrism_residue_roots
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicCompletionHom_of_perfect_residue_roots
+
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
@@ -1400,7 +1412,12 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PowerRootExponentEvaluation,
     `SerrePositivity.BhattScholze.Andre.PowerRootPolynomialUniversal,
     `SerrePositivity.BhattScholze.Andre.PowerRootPolynomialDeltaUniversal,
-    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicRootUniversal]
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicRootUniversal,
+    `SerrePositivity.BhattScholze.Andre.CommonAdicCompatibleRoots,
+    `SerrePositivity.BhattScholze.Andre.PerfectPrismPairAdicComplete,
+    `SerrePositivity.BhattScholze.Andre.PerfectPrismCompatibleRootsLift,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPolynomialPrismLift,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicResidueRootUniversal]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
