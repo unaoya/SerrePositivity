@@ -17,40 +17,29 @@ Mathlibへの相対パスはすべて `.lake/packages/mathlib/Mathlib/` から�
 リポジトリへのパスは `SerrePositivity/` からのパス。
 本調査ではこの固定版のソースを読んだ。将来のMathlib masterにあるという推測は採用しない。
 
-## 0. 現行の分担と合流順（2026-10-17更新）
+## 0. 現行の分担と合流順（2026-10-17再指定）
 
-最新のユーザー指定により、このチャットはU12eの完成・受入→U16→U15eの分解版を担当する。
-直近の受入対象はU12eとし、その受入後にU16へ進む。
+ユーザーは§17.248の提案(ii)を採用した。従来の一般経路を先に完成させる順序を変更する。
+元の§15.2の一般受入条件は残し、U12e-localとU12e-generalを区別する。
 
-ユーザー指定の分担変更により、以下をこの文書の従来の一系列実施順より優先する。
-
-| 範囲 | 担当チャット・所有範囲 | 実装記録 |
+| 範囲 | 担当・所有範囲 | 記録 |
 | --- | --- | --- |
-| U12eの完成・受入 → U16 → U15eの分解版 | このチャット。既存のdg加群・bimodule・導来合成の公開APIを管理 | この文書§17 |
-| U14（指定生成元・endomorphism表示） | 「dg-U14」。`DifferentialGraded/Endomorphism/` | `dg-theory-u14.md` |
-| U12f・U15d（係数変更）、追加のU17a・U13d | 「dg-U12f/U15d」。このチャットの担当外 | `dg-theory-scalar-extension.md` |
-| U15eの局所K-flat版 → U17bの局所K-flatの場合 | U17a・U13dを終えたチャット。`Quotient/DerivedComparison*.lean`・`Verdier/` | `dg-theory-u17a-u13d.md`を参照 |
-| D4m（dg加群モデル構造） | 当面未割当。U17までの主線には使わない | 未着手 |
+| U12e-local受入 → U16a公開API固定 → 一般成果棚卸し → U16a完成 → U16c | このチャット。Morita/Kernel*・Adjunction*・Coherence*・Criterion*、既存の一般経路のdocstring整理 | 本文§17、dg-theory-morita.md、dg-theory-u12e-general-inventory.md |
+| U16b → U16d | dg-U14チャット。Morita/QuasiEquivalence*・Perfect*・ScalarExtension*・Center* | dg-theory-morita-qe.md |
+| U17c・U17dの一部 | 局所K-flat版担当。Verdier/・Quotient/DerivedComparison*の新規ファイル | dg-theory-u17a-u13d.md |
+| U12e-general | 部分実装済み・中断・未受入。再開条件とR1〜R7は§17.249 | dg-theory-u12e-general-inventory.md |
+| U15e分解版 | 範囲外（中断）。U12e-generalに依存するため | §17.249 |
+| U12f/U15d・U14・局所K-flat版U15e/U17b | 各担当で受入済み。明示された仮定を保持して読み取り専用で再利用 | 各担当の記録 |
 
-両並行チャットは既存の`Derived/KFlatBimodule*`や`Bimodule/`の合成系を読み、再利用するが、
-それらを編集しない。このチャットで公開APIの名前・型を変更する際は、変更名、旧型と新型、
-仮定・宇宙の差、利用側の移行方法をこの文書§17へ記録する。
-新規APIの追加でも使用条件と使用箇所を記録し、共有利用者が暗黙の仮定に依存しないようにする。
-並行チャットの記録ファイルは各担当が管理し、この文書§17は引き続きこのチャットが管理する。
-共有モデル圏・Quillen・転送・monoidal model・SM7一般論の所有は元のK理論系列のままとする。
-ユーザー指定により履歴のamend・rebase・resetは禁止。検証済みの小単位を新規コミットで記録する。
-新規ファイル作成前には同名既存ファイルの有無を確認する。共有ルートSerrePositivity.leanと
-共有監査スクリプトを変更するときは自分のhunkだけをgit add -pでstageする。
-U16bではEndomorphism/の再構成随伴・endomorphism比較と、受入済みの
-Tensor/ScalarExtension*・Derived/ScalarExtension*を読み取り専用で再利用する。
-このチャットはU12eを受け入れてからU16へ進み、その後U15eの分解版を扱う。
-U15eの局所K-flat仮定を置く版はU17a・U13dを終えたチャットが担当し、
-続けてU17bの局所K-flatの場合を扱う。この局所K-flat版の作業は、このチャットの合流待ちとは分離する。
-U15e分解版の開始条件はU12f・U14・U16の受入条件がそろうことであり、
-局所K-flat版の`Quotient/DerivedComparison*.lean`と`Verdier/`を読んで再利用する。
-局所K-flat版の比較・Verdier一般論を重複実装せず、分解とその比較APIへの接続を担当する。
-U16cでDG-MOR、U15eでDG-DRの引用採用が必要になったら、採用せず停止して報告する。
-新しいsorry・axiom・引用は追加しない。この規則は以下の従来の引用許容案に優先する。
+このチャットは他の二担当のファイルを編集しない。不足アダプタは自分のMorita/ファイルへ置く。
+U16aの名前・正確な型・仮定はdg-theory-morita.md冒頭を共有契約とする。
+既存APIの型の変更が必要なら変更前に同文書へ旧新の型・移行方法を書き、§17にも記録する。
+一般経路の既存コードは移動・削除・改名しない。局所版入口から一般経路へのimportを増やさない。
+共有モデル圏・Quillen・転送・monoidal model・SM7は元のK理論系列の所有を維持する。
+新しいsorry・axiom・引用は追加しない。DG-MOR等の引用が必要なら採用せず停止して報告する。
+コミットは対象パスを明示し、直後にgit show --stat HEADを確認する。amend・rebase・resetは禁止。
+新規ファイル作成前に同名既存ファイルの不在を確認する。index.lockは削除せず待って再試行する。
+共有ルートSerrePositivity.leanと共有監査スクリプトは編集せず、必要時も自分のhunkだけをstageする。
 
 ## 1. 現状との差分と再利用入口
 
@@ -11889,3 +11878,59 @@ U16自身の一般kernel・係数変更・中心作用、M9の具体的平坦性
 (i)も所有境界上は可能だが、一般経路へ追加5〜12時間を投じる主定理上の必須理由は現時点でない。
 商後／EndのHom条件、非flat係数変更の計算モデル、具体的生成性は別途証明すべき点として残す。
 最終方針はユーザーが決める。この記録は調査であり、推奨の実行・受入判定ではない。
+
+
+### 17.249 U12e-localの受入と一般経路の中断（2026-10-17）
+
+ユーザーは§17.248の提案(ii)と三チャット分担を承認した。
+固定した小さいdg圏上の主導来合成に受入範囲を限定し、以下を独立入口から検証した。
+元の§15.2の一般受入条件は削除しない。U12e-general全体の完了とは扱わない。
+
+| U12e-local受入条件 | 公開API・証拠 |
+| --- | --- |
+| 独立入口 | Derived/BimoduleLocal.lean。Checks.U12eLocalはこの入口だけから一般宣言を利用 |
+| 右相対K-flat解像度の必要条件 | exists_rightRelativeKFlat_bimodule_resolution。B–CではlocalHomKFlat A C |
+| 主導来bimodule合成 | derivedBimoduleComposeFunctor。B–C–E合成で必要な条件はlocalHomKFlat A E |
+| 任意指定K-flat解像度とモデル変更 | derivedBimoduleComposeResolutionComputation、_fac・_self・_naturality |
+| 両因子自然性 | derivedBimoduleComposeKFlatIso_naturality、derivedBimoduleComposeKFlatValueIso_naturalityと主関手の関手性 |
+| 左右単位 | derivedBimoduleLeftUnitIso、_resolution_app、derivedBimoduleRightUnitIso |
+| 三変数結合子とモデル比較 | derivedBimoduleAssociatorIso、derivedBimoduleAssociator_naturality、derivedBimoduleAssociatorIso_resolution_fac |
+| 三角 | derivedBimoduleTriangle、_app。localHomKFlat A C・E |
+| 五角 | derivedBimodulePentagon。localHomKFlat A E・F・G |
+| 環・宇宙・規約 | 任意可換環、非有界、独立対象宇宙とSmall.{u}、d:+1、homotopy:−1。標数2の検査も独立Checksに含む |
+
+受入対象の独立入口、Checks.U12eLocal、指定解像度の選択独立性、全導来五角、
+StageEight・StageSeven・Spectra.StageTwoの合同ビルド成功（3093 jobs、警告なし）。
+Checks.U12eLocalの21主要宣言を直接公理監査し、標準3公理のみ。既監査宣言の再監査なので
+新規監査累計4835に重複加算しない。入口の推移的project importは423ファイル、Resolution/依存0。
+したがって、この表の範囲の**U12e-localを受け入れる**。
+
+**U12e-general：部分実装済み・中断・未受入。** 固定点はd4e14c9f。
+残す契約は§17.248のR1〜R7：R1全導来外側右単位、R2同時制限の左右単位経路、
+R3同時制限の結合子経路、R4外側・同時制限の恒等・合成・交換、
+R5changeEquivalenceの単位・結合保存、R6分解変更の自己・推移比較とのcoherence、R7一般統合受入監査。
+再開点R1はTensor/OuterUnitRestriction.leanのrightBimoduleUnitIso_rightRestrictionを、
+Derived/AssociatorRightRestrictionPresentation.leanの
+ derivedBimoduleComposeRightRestrictionIso_model_calculation（固定対角）と、
+Derived/BimoduleCompositionRightUnit.leanのderivedBimoduleRightUnitIsoへ接続すること。
+既存のパス・名前・型・証明は保持する。詳細棚卸しは次工程のdg-theory-u12e-general-inventory.mdへ記録する。
+
+**U15e分解版：範囲外（中断）。** 一般経路に依存するため今回の主線から外す。
+局所K-flat版U15e・U17bは別担当で完成済みであり、Quotient/DerivedComparison*・Verdier/と
+ dg-theory-u17a-u13d.mdの最終照合を読み取り専用で再利用する。
+
+**リポジトリからの再現。** 一時ログを記録の正本にしない。以下の保存済みLeanファイルの
+`#print axioms`と例が、対象・監査集合を固定している。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Derived.BimoduleLocal SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.DifferentialGraded.Checks.DerivedBimoduleAssociatorIndependence SerrePositivity.DifferentialGraded.Checks.DerivedBimoduleFullPentagon SerrePositivity.DifferentialGraded.Checks.StageEight SerrePositivity.DifferentialGraded.Checks.StageSeven SerrePositivity.Spectra.StageTwo
+lake env lean SerrePositivity/DifferentialGraded/Checks/U12eLocal.lean
+lake build SerrePositivity.DifferentialGraded.Checks.DGOuterUnitRestriction SerrePositivity.DifferentialGraded.Checks.DGAssociatorSecondMiddleRestrictionCoherence SerrePositivity.DifferentialGraded.Checks.DGLeftUnitRestrictionCoherence SerrePositivity.DifferentialGraded.Checks.DGRightUnitRestriction SerrePositivity.DifferentialGraded.Checks.DerivedBimoduleFullPentagon SerrePositivity.DifferentialGraded.Checks.StageEight SerrePositivity.DifferentialGraded.Checks.StageSeven SerrePositivity.Spectra.StageTwo
+lake env lean SerrePositivity/DifferentialGraded/Checks/DGOuterUnitRestriction.lean
+python3 scripts/check_documentation.py
+```
+
+最後の三行が§17.248の/tmpログに対応する再現手順。既存の検証済み記録は§17.247、
+監査宣言集合はChecks/DGOuterUnitRestriction.leanの9宣言に保存されている。
+今回もChecks.U12eLocalの実行で21宣言の監査を再現した。
+次はU16aの公開契約を最優先で固定し、一般経路の新しい証明単位には入らない。
