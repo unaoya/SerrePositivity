@@ -2794,6 +2794,7 @@ U15a `Quotient/Paths.lean`：full B⊂D、有限pathの添字、ε_bの次数−
 U15b `Quotient/Differential.lean`：各Homの微分とdε_b=idをLeibnizで延長、d²=0、単位・結合・通常合成と豊穣合成の符号比較。
 U15c `Quotient/Universal.lean`：Bの像の指定収縮を持つdg関手との厳密普遍性。収縮の存在だけと、収縮を選んだデータを区別する。
 U15d `Quotient/ScalarExtension.lean`：path添字を固定した係数変更の同型・単位/合成整合性。underivedの構成法則として証明する。
+U12f・U15d の係数変更の実装・明示仮定・検証記録：[dg-theory-scalar-extension.md](dg-theory-scalar-extension.md)。
 U15e `Quotient/DerivedComparison.lean`：local K-flat仮定の版と解像度を使う版を分け、定義済みtriaのVerdier商との比較へDG-DRを適用する準備。
 元のHomが次数0の場合はpath長rの次数−rと正次数ホモロジー消滅を具体例として証明する。
 対象・普遍性まではU11/U12と独立に先行可能だが、導来/Verdier比較はflatnessの受入後とする。
@@ -8834,3 +8835,42 @@ BhattScholze互換宣言の未解決参照1件で失敗した。共有ルート�
 最終Hom K-flat性、列と解像度の一般存在・比較は引き続き未完。
 今回の最終合成chain mapだけでU12eを受入済みとはしない。受入後のU16、合流後のU15e/U17の
 目標と§0の分担を維持し、共有一般論への新しいAPI要求はない。
+
+
+### 17.195 U12e36：任意次数cell付加の主dg圏と包含dg関手（2026-10-17）
+
+`Resolution/Cells/CompositionComparison.lean`の**Family.attachedComposition_f**は、
+追加微分後の合成の各次数の射が内部合成と同じことを証明する。
+**attachedComposition_original**は元のHomの包含と豊穣合成の可換式。
+`CompositionEvaluation.lean`の**attachedComposition_apply**は純tensor成分での一致。
+`Identity.lean`の**attachedIdentity/attachedIdentity_f/attachedComposition_left_unit**、
+`RightIdentity.lean`の**attachedComposition_right_unit**と
+`Associativity.lean`の**attachedComposition_assoc**で、閉単位・左右単位則・結合則を
+追加微分後の実際のHom複体上に構成した。内部合成の法則を次数成分で輸送している。
+
+`Category.lean`の**Family.Objects/objectEquiv**はcell族ごとに区別した対象型と元の対象型の同値。
+**attachedDGCategory**は上のHom・単位・合成を持つMathlib豊穣dg圏instance。
+**embedding : DGFunctor A D (C.Objects A D I)**は元のHomを空pathへ入れる実際のdg関手。
+**attachedComposition_eq_signed_compose**で豊穣順と通常順の合成のKoszul符号を照合した。
+A : Type u、D : Type v、I : Type wの独立宇宙を保ち、直和にはSmall.{u} Iを要求する。
+DのsmallnessもHomのflatnessも主dg圏・包含関手には不要。
+**objectsSmall**だけがSmall.{u} Dから対象型のSmall.{u}を得る。
+これらは後続のcell充填・増大と解像度の反復構成で使う。既存公開APIの名前・型の変更はない。
+
+Checks.DGCellCategory・Checks.DGCellCompositionDifferential・Checks.DGCellBoundaryRecursion・
+Checks.DGCellPrependDifferential・Checks.DGCellInternalComposition・Checks.DGCellDifferential・
+Checks.DGCategoryResolution・Checks.DerivedBimoduleFullPentagon・Checks.StageEight・
+Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功（3183 jobs、終了コード0、警告なし）。
+独立宇宙・任意整数次数・別端点・ZMod 2と、追加仮定なしの主instance・包含dg関手を型検査した。
+主要14宣言の直接公理監査は標準3公理のみ。監査累計3669宣言。
+今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は担当外HomologicalAlgebra.AlgebraScalarExtensionModuleのolean欠落により
+Export.leanのimport段階で失敗した。今回、Markdown参照検査の完了とは扱わない。
+共有ルート・共有一般論・並行所有ファイルは編集していない。
+
+次はcell生成元の指定境界式と指定原始元への増大を構成する。その後、filtrationによる
+最終Hom K-flat性、列の反復、解像度の一般存在・比較を完成させてU12eを受け入れ、U16へ進む。
+主dg圏の構成だけでU12e全体を受入済みとはしない。
+§0の分担を維持し、U14とU12f/U15dの記録はそれぞれの担当文書を正本とする。
+U15e/U17はU12f・U14・U16の受入条件がそろった後に扱う。
+共有一般論への新しいAPI要求はない。
