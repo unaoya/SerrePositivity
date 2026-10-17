@@ -91,3 +91,20 @@ dg 加群の係数変更・その随伴、相対 tensor の比較、導来比較
    `Quotient/ScalarExtension.lean` は未作成。既存 `Quotient/` は未編集。
 
 正本 `dg-theory.md` への完了参照はまだ追加しない。
+
+
+## 2026-10-17：加群の射と係数拡大関手
+
+`Tensor/ScalarExtensionNaturality.lean` で全次数 Hom 比較の前合成・後合成自然性を証明した。
+`Tensor/ScalarExtensionModuleMaps.lean` の `moduleExtensionMap` は全次数自然な加群射の
+各成分を係数拡大して加群圏の実際の射に戻す。恒等・合成保存を証明した `moduleExtension`
+と、各対象での係数拡大との `moduleExtensionEvaluationIso` を公開した。
+この段階では `Small.{u} D` を加群圏の Hom end の構成に要求する。
+
+`lake build SerrePositivity.DifferentialGraded.Checks.ScalarExtensionModule` 成功
+（1986 jobs、警告なし）。`ℤ → ZMod 2` の加群圏間の関手を型検査し、今回追加の
+主要7宣言の公理監査はすべて標準3公理のみ。新規 sorry・axiom・引用は0件。
+ルートの自分の import 行を `ScalarExtensionModuleMaps` へ進め、部分 stage する。
+
+残る受入条件の第1項のうち、右加群の射と係数拡大関手までを実装済みとする。
+係数制限、加群圏上の随伴、相対 tensor 比較、導来版、U15d は引き続き未完。

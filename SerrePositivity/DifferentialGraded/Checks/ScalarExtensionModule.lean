@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionModule
+public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionModuleMaps
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 全次数 Hom と dg 加群の係数変更の検査 -/
@@ -16,6 +16,17 @@ example (M : LeftModule ℤ PUnit) :
     LeftModule (ZMod 2) (DGBaseChange (Int.castRingHom (ZMod 2)) PUnit) :=
   leftModule (Int.castRingHom (ZMod 2)) PUnit M
 
+example : ModuleCategory ℤ PUnit ⥤
+    ModuleCategory (ZMod 2) (DGBaseChange (Int.castRingHom (ZMod 2)) PUnit) :=
+  moduleExtension (Int.castRingHom (ZMod 2)) PUnit
+
+#print axioms homComparison_postcompose
+#print axioms homComparison_precompose
+#print axioms rightModule_family_naturality
+#print axioms moduleExtensionMap
+#print axioms moduleExtension
+#print axioms moduleExtension_eval
+#print axioms moduleExtensionEvaluationIso
 #print axioms homComparison
 #print axioms tensorIso_inv_apply
 #print axioms homComparison_apply
