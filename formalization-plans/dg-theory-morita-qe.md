@@ -263,6 +263,19 @@
 - `Morita.PerfectKernelColumnsChecks` ビルド成功（2746 jobs、警告なし）。
   主要11宣言の公理監査は標準3公理のみ。
 
+## U16d.12：主導来kernelの恒等と合成自然性のPerf制限
+
+- `Morita/PerfectDerivedKernelCoherence.lean`：公開済みの `kernelIdentityIso` を使い、
+  主導来対角kernelの各列のperfect性と、実際のPerf作用から恒等関手への自然同型を構成した。
+  この恒等比較にはlocalHomKFlatを要求しない。
+- 合成では `localHomKFlat A D` を保持し、主導来作用の比較同型 `eComp` を明示して受け取る。
+  合成kernelの列のperfect性、Perf上の比較同型、その包含像が元の比較と一致することを証明した。
+- 主導来kernelの任意の射による `perfectDerivedKernelMap` を公開した。
+  元の合成比較の自然性 `hNat` を明示して受け取り、Perf制限の合成比較の自然性を証明した。
+  これはU16aの未公開の合成比較やその自然性の存在証明を代替する主張ではない。
+- `Morita.PerfectDerivedKernelCoherenceChecks` ビルド成功（2748 jobs、警告なし）。
+  主要6宣言と追加の `perfectDerivedKernelMap` の公理監査は標準3公理のみ。
+
 ## 合同検証と公開入口（2026-10-17）
 
 - 新規10監査対象・公開入口・既存 `Checks.DGFunctorDerivedEquivalence` の12対象を

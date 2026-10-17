@@ -15,3 +15,4 @@ open SerrePositivity.DifferentialGraded.Morita
 #print axioms kernelColumnsPerfect_iff_preservesPerfect
 #print axioms perfectDerivedKernelActionInclusionIso
 #print axioms perfectDerivedKernelActionFunctor
+#print axioms perfectDerivedKernelMap

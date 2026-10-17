@@ -110,4 +110,11 @@ def perfectDerivedKernelActionFunctor :
     apply (modulePerfect A E).hom_ext
     exact NatTrans.congr_app ((kernelDerivedTensorFunctor A D E).map_comp f.hom g.hom) X.obj
 
+def perfectDerivedKernelMap {K L : Kernel A D E}
+    (hK : kernelColumnsPerfect A D E K) (hL : kernelColumnsPerfect A D E L) (f : K ⟶ L) :
+    perfectDerivedKernelAction A D E K hK ⟶ perfectDerivedKernelAction A D E L hL where
+  app X := ObjectProperty.homMk (((kernelDerivedTensorFunctor A D E).map f).app X.obj)
+  naturality _ _ g := (modulePerfect A E).hom_ext
+    (((kernelDerivedTensorFunctor A D E).map f).naturality g.hom)
+
 end SerrePositivity.DifferentialGraded.Morita
