@@ -188,3 +188,22 @@ HEAD からの差分全体が自分の変更だけであることも確認する
 - ルートには他チャットの4行の import が混在しているため、この単位では編集・コミットしない。
   正本の参照一行も並行変更と混在しており、引き続き専用記録と対象ファイルだけをコミットする。
 - U15e1 のコミット：`60ad82cd`（4ファイル。直後の `git show --stat HEAD` で確認済み）。
+
+### U15e3：導来制限の本質像の必要条件
+
+- `Quotient/DerivedComparisonRestriction.lean`：商の任意の右 dg 加群 M について、
+  全ての b∈S で M(b) が acyclic であることを証明。opposite 側も同じ ε の境界式を使い、
+  M の H⁰ 関手、既存の複体 H⁰ 比較、通常ホモロジー関手の順に零性を運ぶ。
+- 既存の `dgDerivedRestriction` は dg 関手に沿う対象ごとの制限であり、dg 圏の分解を使わない。
+  この API と既存の局所化因子化を読み取り専用で使い、導来制限の像における
+  b 上の全次数ホモロジー消滅を `quotientDerivedRestriction_homology_isZero` で証明。
+- 代表加群による既存 Hom 計算から、S の代表対象から導来制限の像への射は零だけと示した。
+  必要条件の証明であり、局所 K-flat 仮定下の逆向きの本質像判定や完全忠実性の代用とはしない。
+- 対象ビルド：`lake build SerrePositivity.DifferentialGraded.Checks.QuotientDerivedRestriction` 成功。
+  主要5宣言の公理監査は標準3公理のみ。新規 sorry・axiom・引用なし。
+- project import 依存359ファイルを走査し、dg 圏分解の `Resolution/`、
+  `Derived/KFlatBimodule*`、`Derived/Bimodule*` への依存なし。
+- U15e2 のコミット：`e4b0e0ba`（自分の4ファイルだけであることを `git show --stat HEAD` で確認）。
+- 残部：tria(D) 全体への比較の延長、Verdier 分母の像と path 長 filtration の比較、
+  局所 K-flat 下の完全忠実性・本質的全射、U17b の perfect/Karoubi 比較。
+  目的全体は継続中であり、DG-DR は採用していない。
