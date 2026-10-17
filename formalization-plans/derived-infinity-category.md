@@ -200,3 +200,33 @@ D2c と `Q` が擬同型を同型に送ることにより本質的全射。
 `lake env lean scripts/audit_derived_infinity.lean` は終了コード 0。
 全22公開宣言の公理は標準3公理のみ。D2e に残りなし。未完了は D2g（標準 instance での
 具体化、集約ファイル、ルートの import）。D2f は任意で未実装、D1・D3・D4 は範囲外。
+
+### D2g・集約（2026-10-17）
+
+完了。`Derived/Checks.lean` では `HasDerivedCategory.standard` を局所 instance にし、
+任意の `(S : Type u) [CommRing S]` に対して公開同値・逆関手・単位・余単位を型検査した。
+さらに `S = ℤ`、`ModuleCat.{0} ℤ` で具体化した。新しい名前付き公開宣言はない。
+型検査した型は次のとおり（`E := semifreeDerivedEquivalence S`）：
+
+```lean
+DifferentialGraded.HomotopyCategory S (Semifree S) ≌ DerivedCategory (ModuleCat.{u} S)
+DifferentialGraded.HomotopyCategory ℤ (Semifree ℤ) ≌ DerivedCategory (ModuleCat.{0} ℤ)
+DerivedCategory (ModuleCat.{u} S) ⥤ DifferentialGraded.HomotopyCategory S (Semifree S)
+𝟭 _ ≅ E.functor ⋙ E.inverse
+E.inverse ⋙ E.functor ≅ 𝟭 _
+```
+
+`InfinityCategories/Derived.lean` に D2 の各モジュールを集約し、ルート
+`SerrePositivity.lean` に `public import SerrePositivity.InfinityCategories.Derived` の1行を追加。
+既存の他チャットの import 変更はコミットに含めない。
+
+検証はすべて終了コード 0：
+- `set -o pipefail; lake build SerrePositivity.InfinityCategories.Derived`（2174 jobs）。
+- `set -o pipefail; lake env lean scripts/audit_derived_infinity.lean`。
+  公開22宣言を個別表示し、実装5モジュールの生成補題を含む42宣言を `collectAxioms` で検査。
+  標準3公理以外があればエラーにする監査が成功した。
+- `set -o pipefail; lake build SerrePositivity`（7323 jobs）。既存部分の警告はあるがエラーなし。
+- 新規 Lean ファイルに `sorry`・追加 `axiom` がなく、全公開名が個別監査に含まれることを確認。
+
+D2a〜D2e・D2g は無条件の数学的成果として完了（宣言上は可換環と導来圏の選択のみ）。
+未完了：任意工程 D2f の `CommShift`。D1・D3・D4 は別途指示の範囲であり未着手。

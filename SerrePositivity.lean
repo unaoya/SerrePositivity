@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Derived
 
 public import SerrePositivity.InfinityCategories.Core
 public import SerrePositivity.BhattScholze.Andre.Transfinite.Basic
