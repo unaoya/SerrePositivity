@@ -49,7 +49,45 @@ Mathlib の `TransportEnrichment` により `DGBaseChange` を定義した。
 （1970 jobs）。後者は `ℤ → ZMod 2` による強モノイダル構造と dg 圏の型検査を含む。
 同ファイルの主要14宣言の `#print axioms` はすべて
 `propext`・`Classical.choice`・`Quot.sound` の標準3公理のみ。
+コミット：`3368f633`。
 
 これは U12f の部分受入である。複体上の随伴を dg 加群上の随伴と同一視しない。
 dg 加群の係数変更・その随伴、相対 tensor の比較、導来比較、U15d の最終微分と
 単位・合成比較は未完であり、次の部分単位で実装する。
+
+## 2026-10-17：全次数 Hom 比較と加群の対象
+
+`Tensor/ScalarExtensionHom.lean`：
+
+- `homComparison` は評価射の係数拡大を tensor–Hom 転置して作る。
+  Hom の係数変更が同型であるとは主張しない。
+- `homComparison_apply` は全整数次数で `1 ⊗ f` と `1 ⊗ x` の評価を与える。
+- `homComparison_identity`・`homComparison_composition` から
+  `complexDGFunctor` を作る。後者は Koszul 符号を保持する。
+
+`Tensor/ScalarExtensionModule.lean`：
+
+- `tensorIso_braiding`・`oppositeDGFunctor` により係数変更と opposite を交換する。
+- `rightModule`・`leftModule` は実際の Mathlib 豊穣関手であり、
+  各値が複体の係数拡大になる。
+- `rightModule_action` は純粋生成元上の全次数作用の比較。
+
+検証：`lake build SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionModule` 成功
+（1978 jobs、警告なし）。
+`lake build SerrePositivity.DifferentialGraded.Checks.ScalarExtensionModule` 成功
+（1979 jobs）。後者は `ℤ → ZMod 2` による左右加群の型検査と、主要12宣言の
+`#print axioms` を含む。すべて標準3公理のみ。新規 sorry・axiom・引用は0件。
+ルートには `Tensor.ScalarExtensionModule` の import 行のみ追加し、`git add -p` で
+その hunk のみ stage した。
+
+### 残る受入条件（完了宣言しない）
+
+1. dg 加群の **射** の係数変更と関手、restriction と extension の加群圏上の随伴。
+   現在の `adjunction` は複体圏上のもの。
+2. 相対 balanced tensor の二つの関係射を上記 coequalizer 比較で運び、比較同型を作る。
+3. 非 flat な係数変更の導来関手と、underived 比較に必要な K-flat 置換条件。
+   `Derived/ScalarExtension.lean` は未作成。`Derived/KFlatBimodule*` は未編集。
+4. U15d の固定 path 添字の同型、最終微分、単位・合成の比較。
+   `Quotient/ScalarExtension.lean` は未作成。既存 `Quotient/` は未編集。
+
+正本 `dg-theory.md` への完了参照はまだ追加しない。

@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionModule
+
 public import SerrePositivity.DifferentialGraded.Endomorphism.Compatibility
 
 public import SerrePositivity.LinearAlgebra.IndependentPerturbation
