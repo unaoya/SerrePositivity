@@ -9393,6 +9393,21 @@ Cor 8.12 は引き続き保留し、新しい sorry・axiom・引用は追加し
 KL-T の実 almost 比較と幾何学的有限被覆の入力、定 rank の組立てはなお必要であり、
 Prop 2.4.7 の元の引用を維持する。Cor 8.12 の保留は継続し、新しい sorry・axiom・引用は追加していない。
 
+**D-I/U/Q・元の実写像への降下の接続（2026-10-17）。** 全体ビルド6501ジョブと
+元の主定理公理監査の終了コード0を確認し、前工程の並行ビルドによる生成物欠落からの復旧を確認した。
+監査の範囲や担当外ファイルは変更せず再開した。
+`Prop247ActualDescent.lean` の `prop247_isogeny_of_actual_common_comparison` は、元の選択済み
+`perfectoidizationModuleMap` に `prop247_standardCompletedConeIso` を適用して、
+既存 `prop247_isogeny_of_completed_comparison` へ実錐比較を構成して渡す。
+元の bounded p∞ torsion を使い、始域・終域・四角形・実錐・各剰余段の比較を追加仮定にはしない。
+残る入力は通常 tensor と有限自由加群の実共通比較・局所化同型・almost 零化であり、
+大域的な自由比較の存在や定 rank の原典全体を証明済みとは扱わない。
+対象3765ジョブと専用依存監査は成功。元の選択済み対象が既存 B-I から定義されるため、
+この入口の依存は標準3公理に加えて既存 `exists_perfectoidization_of_integral` のみである。
+assert_no_sorry 成功と混同せず、依存グラフを辿って他の sorry がないこと、実標準錐比較と既存
+D1〜D6 を通ること、除去対象 `CLMST.Inputs.proposition_2_4_7` を使わないことを専用監査で確認した。
+新しい sorry・axiom・引用は追加していない。Cor 8.12 の保留は継続する。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
