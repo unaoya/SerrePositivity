@@ -12189,3 +12189,34 @@ M9の局所条件を供給できれば、局所商・perfect比較は一般分�
 R1〜R6への先行投資は現在のU16a/cの不足を直接埋めず、既にあるU16b/dとの分担を保つ方が干渉も少ない。
 M9の具体的な平坦性・無限積比較が不要になったという判断ではない。
 今回の報告後はユーザーの指示まで、新しい証明単位・一般版の再開・追加チャットへの移管に着手しない。
+
+
+### 17.256 U16a再開：通常合成・相対K-flat入力増大・自然な解像度モデル（2026-10-17）
+
+ユーザーは方針(ii)を再確認し、再調査をせずU16aの合成比較→一般右随伴→U16cの順で再開するよう指定した。
+§17.255の調査はそのまま保持し、U12e-generalとU15e分解版は中断のまま。
+
+Morita/CoherenceCompositionClosed.leanのcomposeをBimoduleTensor.composeに限定し、
+EnrichedFunctor.extの両関手を明示した。kernelTensorCompositionClosedIsoと
+kernelTensorCompositionHomotopyIsoは、通常kernel作用の合成を既存bimodule結合子で自然同型へ比較する。
+通常／H⁰比較にlocalHomKFlatは不要。
+
+Morita/KernelAugmentation.leanはkernelTensor_map_eval、相対K-flat入力間の準同型保存、
+kernelDerivedTensorAugmentationとその成分計算を公開する。
+kernelRelativeKFlatComputationは相対K-flat入力上でこの増大比較を反転する。
+Morita/KernelResolutionModel.leanは任意の入力射影解像度族に対する
+kernelResolutionTensorModelFunctor、kernelResolutionTensorModelIsoとmap計算を公開する。
+通常圏でliftが厳密な関手であるとはせず、既存H⁰解像度関手を計算同型で輸送した実際の関手である。
+kernelTensor_relativeKFlatは、右相対K-flatなkernelが相対K-flat入力を相対K-flat出力へ送ることをFubiniで証明する。
+
+CoherenceCompositionClosedChecksは独立宇宙・任意可換環・任意解像度族と標数2を確認する。
+主導来作用・恒等比較・局所受入・一般入口監査・Spectra.StageTwoとの合同ビルド成功
+（3531 jobs）。追加公開21宣言の直接公理監査を名前集合と照合し、重複・欠落なく標準3公理以内。
+新規監査累計4903宣言。新規sorry・axiom・引用・資源上限変更なし。
+公開型・名前の変更はなく、今回は計算と比較の追加APIである。
+主導来kernel全体の合成比較・kernel射の自然性・作用coherence、一般右随伴・unit/counitとU16cは継続中。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionClosedChecks SerrePositivity.DifferentialGraded.Morita.KernelDerivedFunctorChecks SerrePositivity.DifferentialGraded.Morita.CoherenceIdentityChecks SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.DifferentialGraded.Checks.U12eGeneralInventory SerrePositivity.Spectra.StageTwo
+lake env lean SerrePositivity/DifferentialGraded/Morita/CoherenceCompositionClosedChecks.lean
+```

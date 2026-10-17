@@ -312,3 +312,24 @@ CoherenceIdentityChecksは任意の導来入力、任意の指定入力射影解
 lake build SerrePositivity.DifferentialGraded.Morita.CoherenceIdentityChecks
 lake env lean SerrePositivity/DifferentialGraded/Morita/CoherenceIdentityChecks.lean
 ```
+
+
+## U16a5：通常合成・相対K-flat入力での増大比較と自然な計算モデル（2026-10-17）
+
+ユーザーの再開指示に従い、CoherenceCompositionClosedの名前解決・dg関手外延性を修正した。
+kernelTensorCompositionClosedIsoは通常作用の合成を通常合成kernelの作用に、
+kernelTensorCompositionHomotopyIsoはそのH⁰関手を自然同型で比較する。
+KernelAugmentationのkernelDerivedTensorAugmentationは実際の入力増大により自然な比較を作り、
+kernelRelativeKFlatComputationは相対K-flat入力でそれを反転する。
+KernelResolutionModelのkernelResolutionTensorModelFunctorは任意の入力射影解像度族から
+通常tensorの主導来像を値に持つ実際の関手を作る。kernelResolutionTensorModelIsoと
+kernelResolutionTensorModelFunctor_mapが全ての通常入力射で計算を保証する。
+FubiniによるkernelTensor_relativeKFlatは合成比較の同型性に使う。
+
+いずれにもlocalHomKFlatは不要。kernelTensor_relativeKFlatのkernelには右相対K-flat性を明示する。
+主導来kernel全体のkernelCompositionIsoはこの時点ではまだ未実装であり、型のみ確定を維持する。
+一般右随伴・unit/counit、kernel射に自然な作用合成のcoherence、U16cも未完。
+
+CoherenceCompositionClosedChecksと既存作用・恒等・局所受入・一般入口・Spectra.StageTwoの
+合同ビルド成功（3531 jobs）、追加21公開宣言の直接公理監査は標準3公理以内。
+既存の公開APIの型・名前は変更していない。新規sorry・axiom・引用はない。
