@@ -897,3 +897,23 @@ N2 の単射の像の比較を方程式前の `SimplexData` と `rhs` に拡張�
 次は最後の頂点に指定された錐を境界から回収し、標準 fiber の対象・脚・三角形成分と比較する。
 その後の fiber 座標による六成分の解と最終充填、`IsPullbackSquare`、N7d・N7e は未完了。
 公開型・前提は計画 §5 の N7c6 に記録する。
+
+
+## N7.9：最後の頂点の標準 fiber 錐の回収（2026-10-18）
+
+`sliceOverUncurry_yoneda` と `sliceBoundary_last_cone` により、slice 境界 b の最後の頂点が錐 c なら、
+`joinMap (boundaryVertex n (Fin.last (n+1))) (𝟙 K) ≫ sliceOverUncurry b = c.val` を得る。
+`lastTriangleOrderHom n` は標準セルの最後の三頂点を選び、その三角形は零番目の既知面に含まれる。
+標準 join 同型と最後の左頂点の可換性を使い、左右の零未知データの最後の三角形が c の対応する三角形に
+等しいことを `sliceBoundaryLeftData_last_triangle`・右版で証明した。
+
+c を `standardFiberCone g h` とすると、`fiberSliceBoundary_left_triangle`・右版により、
+最後の三角形のデータは `fiberLowerTriangle g h`・`fiberUpperTriangle g h` に等しい。
+六つの対象の等式（両側の頂点 P、左の B・D、右の C・D）、六辺の cochain の異種等号
+（p,g,t と q,h,t）、三点成分の異種等号（u と零）を全て取り出した。
+`ComplexTriangleComponents` は chain map とホモトピーからの三角形の対象・三辺・三点成分を評価する。
+
+最後の頂点の条件 hb は終対象性の境界テストそのものの入力であり、別の極限性の仮定は使っていない。
+回収した射はまず異種等号で保持し、次に端点と次数の等式に沿って Hom 座標へ移す。
+未知六成分の解、未知方程式と最終充填、`IsPullbackSquare` と N7d・N7e は未完了。
+公開型と全前提は計画 §5 の N7c7 に記録する。
