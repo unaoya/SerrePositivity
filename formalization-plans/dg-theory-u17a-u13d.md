@@ -127,3 +127,43 @@ Karoubi を先に取った側は既存 `karoubiNullEnvelope` をそのまま使�
   `ZMod 4` の一対象 dg 圏でも型検証。新規 sorry・axiom・引用なし、DG-PER 不採用。
 - U13d5 のコミット：`23e1774b`。
 - U17b/c の実際の dg 商との比較や U13e の残部はこの単位の結論に含めない。
+
+## 追加担当：局所 K-flat 版 U15e・U17b（進行中）
+
+新しい目標は、既存の明示的 path 商を tria の Verdier 商と比較し、その後 perfect dg hull の
+H⁰ と `CompletedTriaQuotient` を比較すること。U12e の dg 圏分解版は担当外であり、
+この目標を仮定の宣言や後段の形式的合成だけに縮小しない。
+
+### 原典照合と仮定の入口
+
+- 原典の確認（比較定理の引用採用ではない）：
+  [Drinfeld v7 §3.3–3.4、証明 §8](https://arxiv.org/html/math/0210114)、
+  [Keller v5 §4.2、§4.4 Thm 4.8](https://arxiv.org/pdf/math/0601185)。
+- Drinfeld の条件 (3.3) は全 x∈D・b∈B について Hom_D(x,b) が A 上 homotopically flat。
+  条件 (3.4) は逆方向 Hom_D(b,x)。いずれか一方を全体として要求する。
+  組ごとに向きを選べるという選言ではない。Keller の k-flat は全 Hom との tensor が
+  擬同型を保存する条件で、既存の `complexKFlat_iff_preserves_quasiIso` と対応する。
+- `Quotient/DerivedComparisonFlatness.lean` に `homIntoKFlat`、`homOutOfKFlat`、
+  `localKFlat`、`allHomKFlat` と部分集合への制限を実装。
+- `allHomKFlat_of_flat_zero` は、非零次数が零で、次数零の Hom 加群が平坦なら全 Hom が K-flat
+  になることを、既存 U12a の有界平坦複体の補題から証明。M9 手順4〜8の商を取る前の
+  次数零の自由列 dg 圏に合う。商の Hom が非正次数であるというだけでは K-flat を結論しない。
+  T 側も T 上で同じ入力を検証する必要があり、T の A 平坦性では代用しない。
+- 対象ビルド：`lake build SerrePositivity.DifferentialGraded.Checks.QuotientDerivedFlatness` 成功。
+  主要9宣言の公理監査は標準3公理のみ。新規 sorry・axiom・引用なし。
+- この入口のプロジェクト import 依存81ファイルを走査し、`DifferentialGraded/Resolution/`、
+  `Derived/KFlatBimodule*`、`Derived/Bimodule*` への依存がないことを確認。
+- U15e の比較関手の完全忠実性・本質的全射、U17b の同値は未証明。
+  Drinfeld §8 の path 長 filtration と Verdier 分母の比較を次に検討する。
+  DG-DR の引用採用が必要と確定した場合は採用せず、必要な規模と特殊化した型を報告する。
+
+### 共有 index に関する追加規約
+
+コミットは常に対象パスを明示し、直後に `git show --stat HEAD` で確認する。
+共有ファイルは自分の hunk のみ部分 stage し、パス指定 commit が未 stage 部分も含めるため、
+HEAD からの差分全体が自分の変更だけであることも確認する。混在があればそのパスはコミットしない。
+`index.lock` は削除しない。amend・rebase・reset 禁止を維持する。
+
+今回のコミット直前に正本へ他チャットの分担更新が加わったため、正本は対象から除外した。
+自分の参照一行は working tree に残し、その一行だけの cached patch を逆適用して部分 stage を解除。
+他チャットの正本変更・index は変更していない。ルートは HEAD 差分が自分の import 一行のみと確認。

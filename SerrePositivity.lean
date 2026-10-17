@@ -4,6 +4,7 @@ public import SerrePositivity.BhattScholze.Andre.Transfinite.Basic
 public import SerrePositivity.CommutativeAlgebra.PerfectTorIndependence
 public import SerrePositivity.DifferentialGraded.Derived.ScalarExtensionTensorCoherence
 public import SerrePositivity.DifferentialGraded.Quotient.ScalarExtension
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonFlatness
 public import SerrePositivity.DifferentialGraded.Verdier.NullObjects
 public import SerrePositivity.DifferentialGraded.Perfect.CompactConverseTelescope
 public import SerrePositivity.DifferentialGraded.Perfect.CompactConverseExtensions
