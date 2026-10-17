@@ -533,3 +533,26 @@ N4 全体の完了とは数えない。N6 も未完了。
 線形解から全単体方程式を導くこと、実際の逆写像と両逆則、実際の加群構造、
 単体的な線形性、直接の線形ホーン充填・Kan 性・π₀ 比較、N6 は未完了。
 全公開宣言 456 件と既存 5 則は標準三公理の範囲で監査済み。`reconstructObj` は公理に依存しない。
+
+## N4g：全次数の線形表示の同値（2026-10-18、N4 は未完了）
+
+`PinchedData.lean` は先頭面と終端だけを固定したデータを共通の補助対象とする。
+`PinchedDataFront.lean`・`PinchedDataTerms.lean`・`PinchedDataRhs.lean` は、単体方程式を仮定せずに
+先頭面の単位・零と全右辺の線形化を証明する。
+`PinchedDataEquation.lean` の `Data.equation_of_linear` は、回収族の線形方程式から
+元の全単体方程式を導く。終端を含む集合は線形化、含まない集合は定値先頭面の方程式による。
+
+`PinchedReconstruct.lean` は線形解から実際の単体と右 pinched 単体を構成する。
+`PinchedLinearEquiv.lean` は全終端成分の回収が単射であることを示し、両逆則を得る。
+`PinchedHom.linearEquiv x y n` は任意の可換環 A、dg 圏 D、二対象 x,y、全 n に対して
+
+```
+(DGNerve.pinchedHom A D x y) _⦋n⦌ ≃ PinchedHom.LinearSimplex A x y n
+```
+
+を与える。入力の線形解の方程式から実際の単体方程式を証明しており、追加の方程式は仮定しない。
+これでデータだけの比較から、全次数の実際の単体の線形表示の同値へ進んだ。
+
+実際の写像空間への A 加群構造と単体的な線形性、直接の線形ホーン充填・Kan 性、
+π₀ 比較、N6 は未完了。N4 全体の完了とは数えない。
+全公開宣言 491 件と既存 5 則は標準三公理の範囲で監査済み。
