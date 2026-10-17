@@ -22,6 +22,16 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFlat_
 assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.directLimit_mem_ideal_smul
 assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.faithfullyFlat_algebraDirectLimit
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.residueTransition
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.residueDirectedSystem
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.residueTensorDirectLimitEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFaithfullyFlat_algebraDirectLimit
+
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.algebraModuleDiagram
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.algebraModuleCocone
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.algebraModuleIsColimit
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.residueDiagramIso
+
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
@@ -33,7 +43,8 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.Transfinite.PerfectoidLimitCompleteness,
     `SerrePositivity.BhattScholze.Andre.Transfinite.OmegaOne,
     `SerrePositivity.BhattScholze.Andre.Transfinite.CompleteFlatColimit,
-    `SerrePositivity.BhattScholze.Andre.Transfinite.FaithfullyFlatColimit]
+    `SerrePositivity.BhattScholze.Andre.Transfinite.FaithfullyFlatColimit,
+    `SerrePositivity.BhattScholze.Andre.Transfinite.ResidueTensorColimit]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
@@ -70,3 +81,13 @@ run_cmd do
 #print SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFlat_algebraDirectLimit
 #print SerrePositivity.BhattScholze.Andre.Transfinite.directLimit_mem_ideal_smul
 #print SerrePositivity.BhattScholze.Andre.Transfinite.faithfullyFlat_algebraDirectLimit
+
+#print SerrePositivity.BhattScholze.Andre.Transfinite.residueTransition
+#print SerrePositivity.BhattScholze.Andre.Transfinite.residueDirectedSystem
+#print SerrePositivity.BhattScholze.Andre.Transfinite.residueTensorDirectLimitEquiv
+#print SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFaithfullyFlat_algebraDirectLimit
+
+#print SerrePositivity.BhattScholze.Andre.Transfinite.algebraModuleDiagram
+#print SerrePositivity.BhattScholze.Andre.Transfinite.algebraModuleCocone
+#print SerrePositivity.BhattScholze.Andre.Transfinite.algebraModuleIsColimit
+#print SerrePositivity.BhattScholze.Andre.Transfinite.residueDiagramIso

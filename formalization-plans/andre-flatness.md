@@ -121,10 +121,34 @@ step : ∀ (R : Type u) [CommRing R] (hR : IsIntegralPerfectoid R p)
 元の余極限の剰余テンソルとの同型が必要。この接続と、完備化による完全忠実平坦性の保存は未実装。
 通常の忠実平坦性の保存を、この二つの証明の代わりにはしない。
 
+### E3.5：剰余比較と I 完全忠実平坦性の余極限保存
+
+`ResidueTensorColimit.lean` を追加。
+
+- `algebraModuleDiagram`、`algebraModuleCocone`、`algebraModuleIsColimit`：
+  代数の非交和余極限は元の係数作用を保つ加群余極限でもある。
+- `residueTransition`、`residueDirectedSystem`：各段の拡張イデアルによる環商の実有向系。
+  標準の R/I 作用を持ち、環準同型として単位元を保つ。
+- `residueDiagramIso`：元の加群図式の剰余スカラー拡大と、剰余環図式の自然同型。
+  既存の quotientAlgebraScalarExtensionEquiv の自然性を利用した。
+- `residueTensorDirectLimitEquiv`：元の余極限 L に対し、
+  `(R/I) ⊗[R] L` と各段の通常剰余環の余極限を **R/I 上線形**に比較。
+- `isCompletelyFaithfullyFlat_algebraDirectLimit`：固定基底 R 上 I 完全忠実平坦な
+  代数の有向余極限 L は、同じ R 作用に関して I 完全忠実平坦。
+  I は任意。p 正則性・単射性・Noether 性・I の有限生成性を要求しない。
+
+対象 build 終了コード 0（3219 jobs、新規モジュールの警告なし）。
+専用監査終了コード 0、公開全 25 宣言の assert_no_sorry と全 73 宣言の再帰公理監査に成功。
+許可公理は propext・Classical.choice・Quot.sound のみ。全公開宣言の完全型を #print で確認。
+E3.4 の剰余比較の未接続点は本工程で解消した。
+
+これは **完備化前の有向余極限** の保存であり、p 進完備化による完全忠実平坦性、
+合成による保存、極限段の perfectoid 性、超限塔の存在はまだ別の義務として残る。
+
 ### 残る範囲
 
 1. 有向余極限の p 進完備化の perfectoid 性（特に p ねじれを許す Fontaine 核の単項性）。
-2. p 完全忠実平坦性の有向余極限・完備化・合成による保存。
+2. p 完全忠実平坦性の完備化・合成による保存。有向余極限による保存は E3.5 で証明済み。
 3. 可算共終性の極限での完備化。ω₁ の可算上界条件と終段の自動的 p 進完備性は E3.2・E3.3 で証明済み。
 4. Type u に留まる ω₁ までの超限塔の構成、訂正済み step による後続段の供給。
 5. 元の Inputs と同じ結論の公開定理、A1 合流による step 解消と再監査。
