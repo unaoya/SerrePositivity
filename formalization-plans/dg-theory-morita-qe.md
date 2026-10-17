@@ -143,6 +143,19 @@
 - `Morita.QuasiEquivalenceGraphNaturalityChecks` ビルド成功（2803 jobs、警告なし）。
   主要9宣言の公理監査は標準3公理のみ。
 
+## U16b.9：公開された実際の通常kernel導来作用へのgraph接続
+
+- U16aが `KernelResolution`・その監査・通常kernelの主導来作用を公開したことを確認した。
+  `Morita/QuasiEquivalenceGraphAction.lean` は実際の `kernelDerivedTensorOnBimodule` を使い、
+  graph作用と既存 `dgDerivedExtension` の関手自然同型を構成した。
+- 既存 `dgFunctorDerivedEquivalence` の順関手はこの実際のgraph作用であることを証明し、
+  graph比較のshift整合性・三角性・Perf保存・Perf上の比較を監査した。
+  U16b.8の自然モデルから復元した比較も、この実際のgraph自然同型と一致する。
+- 通常kernel引数Pに対する主導来作用の比較はここで完了した。
+  `Kernel A D E`（kernel変数自体の主局所化）上の作用との比較は、その降下APIの実装後に行う。
+- `Morita.QuasiEquivalenceGraphActionChecks` ビルド成功（2805 jobs、警告なし）。
+  主要8宣言の公理監査は標準3公理のみ。
+
 ## 合同検証と公開入口（2026-10-17）
 
 - 新規10監査対象・公開入口・既存 `Checks.DGFunctorDerivedEquivalence` の12対象を
