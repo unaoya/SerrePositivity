@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Morita.U16
+public import SerrePositivity.DifferentialGraded.Morita.AdjunctionCoherenceChecks
 public import SerrePositivity.DifferentialGraded.Morita.AdjunctionSquareChecks
 public import SerrePositivity.DifferentialGraded.Morita.U16aChecks
 public import SerrePositivity.DifferentialGraded.Morita.CriterionChecks
@@ -84,3 +85,14 @@ open SerrePositivity.DifferentialGraded.Morita
 #print axioms scalarKernelLocalizedCompositionSquare_diagram
 #print axioms scalarKernelLocalizedCompositionPerfectSquare
 #print axioms scalarKernelLocalizedCompositionPerfectSquare_inclusion
+
+#print axioms kernelIdentityRightAdjunction
+#print axioms kernelDerivedHomIdentityIso
+#print axioms kernelDerivedHomIdentityIso_unit
+#print axioms kernelDerivedHomIdentityIso_counit
+#print axioms kernelCompositionRightAdjunction
+#print axioms kernelCompositionRightAdjunction_unit_app
+#print axioms kernelCompositionRightAdjunction_counit_app
+#print axioms kernelDerivedHomCompositionIso
+#print axioms kernelDerivedHomCompositionIso_unit
+#print axioms kernelDerivedHomCompositionIso_counit

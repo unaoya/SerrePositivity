@@ -13322,3 +13322,39 @@ U16入口のdocstringは上記の接続済み範囲へ更新し、U16全体は�
 lake build SerrePositivity.DifferentialGraded.Morita.U16Checks SerrePositivity.Spectra.StageTwo
 lake env lean SerrePositivity/DifferentialGraded/Morita/U16Checks.lean
 ```
+
+
+### 17.281 U16の一般右随伴：恒等・逆順合成と実際のunit/counit（2026-10-17）
+
+AdjunctionCoherenceは、受入済みkernelIdentityIso・kernelCompositionIsoを用いて随伴を移し、
+実際のkernelDerivedHomを恒等関手・右随伴の逆順合成と比較する。
+一般のkernelについて成立し、Morita性や列の射影性を追加していない。
+
+| 公開API | 結論・条件 |
+| --- | --- |
+| kernelIdentityRightAdjunction | 恒等kernelの作用と恒等関手の随伴。既存の恒等作用比較から構成 |
+| kernelDerivedHomIdentityIso | 恒等kernelの実際のkernelDerivedHomと恒等関手の自然同型。局所Hom条件不要 |
+| kernelDerivedHomIdentityIso_unit／_counit | 比較同型が実際のunit/counitをkernelIdentityIsoへ接続する成分等式 |
+| kernelCompositionRightAdjunction | 合成kernel作用とkernelDerivedHom Q ⋙ kernelDerivedHom Pの随伴。始域DのlocalHomKFlatだけを保持 |
+| kernelCompositionRightAdjunction_unit_app／_counit_app | 元の二つの実際のunit/counitとkernelCompositionIsoによる計算 |
+| kernelDerivedHomCompositionIso | 合成kernelの実際のkernelDerivedHomと、元の右随伴の逆順合成の自然同型 |
+| kernelDerivedHomCompositionIso_unit／_counit | 同じ比較が、実際の合成kernelのunit/counitと元の二随伴の成分を整合させる等式 |
+
+比較の構成はMathlibのAdjunction.comp・ofNatIsoLeft・rightAdjointUniqによる。
+元の実際の一般右随伴・unit/counitを定義し直していない。
+三因子の右随伴比較の全coherenceをこの二因子の計算だけから新しく受け入れるものではない。
+
+AdjunctionCoherenceChecksは独立対象宇宙・任意可換環と標数2で、
+恒等比較を局所Hom条件なし、合成比較をhDだけ、kernelを任意のままで型検査する。
+U16入口とU16Checksへ同時importし、Spectra.StageTwoとの合同ビルド成功（4038 jobs、警告・エラー0）。
+統合入口の主要60宣言を直接再監査し、追加10宣言を含め標準3公理以内。
+新規監査累計5124。新規sorry・axiom・引用・資源上限変更なし。
+既存公開名・型は変更せず、新しい公開APIとしてdg-theory-morita.md冒頭へ追記した。
+
+別担当のU12f成分同定・合成kernel自体の係数変更比較と整合性・中心作用の保留等は残り、
+今回の一般右随伴の計算でそれらを代用しない。U16全体は未受入を維持する。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Morita.U16Checks SerrePositivity.Spectra.StageTwo
+lake env lean SerrePositivity/DifferentialGraded/Morita/U16Checks.lean
+```

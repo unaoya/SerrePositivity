@@ -214,6 +214,26 @@ _counitは元の実際の左作用の正方形へ戻す図式。
 この条件付き右随伴比較で、未完のU12f成分一致や左作用のkernel合成係数変更図式を代用しない。
 既存の公開型は変更せず、新規APIとして追加した。
 
+### 10. 恒等・合成kernelの実際の一般右随伴（実装・検証済み）
+
+Morita/AdjunctionCoherence.leanをimportする。
+
+```lean
+def kernelDerivedHomIdentityIso :
+  kernelDerivedHom A D D (kernelIdentity A D) ≅ 𝟭 (DerivedModuleCategory A D)
+def kernelDerivedHomCompositionIso (hD : localHomKFlat A D)
+  (P : Kernel A D E) (Q : Kernel A E F) :
+  kernelDerivedHom A D F (kernelCompose A D E F hD P Q) ≅
+    kernelDerivedHom A E F Q ⋙ kernelDerivedHom A D E P
+```
+
+恒等比較には局所Hom条件不要、合成にはhDだけを保持し、Morita性・列の射影性は不要。
+kernelIdentityRightAdjunctionとkernelCompositionRightAdjunctionは、同じ公開作用比較で移した随伴。
+後者の_unit_app／_counit_appは、元の二随伴の実際の成分とkernelCompositionIsoによる計算。
+kernelDerivedHomIdentityIso_unit／_counitとkernelDerivedHomCompositionIso_unit／_counitは、
+実際のkernelDerivedUnit／Counitを同じ計算へ接続する等式である。
+元の一般右随伴とunit/counitの定義・型は変更していない。
+
 ### 実装状態と他担当の利用境界
 
 | API群 | 状態 | 他担当の利用 |
@@ -865,3 +885,12 @@ U16Checksで同時importし主要50宣言を直接再監査、標準3公理以�
 作用図式は、元と変更後の公開kernelCompositionIsoを使うが、終域kernelは二つの変更kernelの合成。
 元の合成kernelを係数変更した対象とのkernel同型と、その同型を通す正方形の一致はまだ未完。
 U12f成分一致などの残ゲートも維持し、U16全体の受入とはしない。
+
+
+## 恒等・逆順合成の一般右随伴比較（2026-10-17）
+
+AdjunctionCoherenceの10宣言を追加した。任意kernelでの実際の右随伴の比較と、
+実際のunit/counitの計算を公開する。正確な契約は冒頭§10、詳細はdg-theory.md §17.281。
+独立宇宙・標数2・最小限の局所Hom条件をAdjunctionCoherenceChecksで検査した。
+合同ビルド4038 jobs・警告0、統合入口の主要60宣言の直接再監査は標準3公理以内。
+係数変更側の残接続をこの一般右随伴の計算で代用せず、U16全体はまだ未受入。

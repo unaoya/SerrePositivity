@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.DifferentialGraded.Morita.AdjunctionCoherence
 public import SerrePositivity.DifferentialGraded.Morita.AdjunctionScalarExtension
 public import SerrePositivity.DifferentialGraded.Morita.AdjunctionPerfectInverse
 public import SerrePositivity.DifferentialGraded.Morita.CoherencePerfectAssociator
