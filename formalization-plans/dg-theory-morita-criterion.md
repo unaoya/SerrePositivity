@@ -325,3 +325,4 @@ lake build SerrePositivity.DifferentialGraded.Morita.CriterionPerfChecks
 amend・rebase・reset・index.lock の削除は行っていない。
 一般右随伴との一致・その unit/counit、導来圏全体への拡張、U16 全体の統合は各担当の範囲。
 
+最終定理・最終監査・受入記録のコミットは `1e5ee4a0`。直後の stat は自分の3ファイルのみ。
