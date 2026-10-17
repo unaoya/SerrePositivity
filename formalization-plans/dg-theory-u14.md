@@ -107,6 +107,16 @@
 - 単位・余単位としての両加群変数の自然性と三角恒等式は次の証明義務。
   作業は通常の追加コミットのみで進め、amend・rebase・resetは行わない。
 
+## U14a.8：Hom・tensor関手の全Hom写像と閉零成分（2026-10-17）
+
+- `ModuleFunctorMaps.lean`：Hom関手の全Hom写像を共変representableの写像として計算。
+  tensor関手の全Hom写像は既存balanced tensorの右Hom写像となることを証明。
+  双方の生成元公式と、閉零の通常射との比較も公開。
+- Hom側の閉零射の成分は、元のD加群射によるHom要素の後合成として計算できる。
+  tensor側はEnd(E)加群成分だけを動かす。随伴の自然性・三角恒等式の検証に使う。
+- `lake build SerrePositivity.DifferentialGraded.Endomorphism.ChecksModuleFunctorMaps` 成功。
+  7主要宣言の公理は標準3公理のみ。
+
 ## 残る受入条件
 
 - U14a：enhancement／End(E)加群間の再構成随伴と、その単位・余単位。
