@@ -19,11 +19,14 @@ Mathlibへの相対パスはすべて `.lake/packages/mathlib/Mathlib/` から�
 
 ## 0. 現行の分担と合流順（2026-10-17更新）
 
+最新の目標更新により、このチャットの現行目標はU12eの完成・受入に限定する。
+以下のU16・U15eの実施順は従来の引継ぎ情報として保持し、現行目標の作業には含めない。
+
 ユーザー指定の分担変更により、以下をこの文書の従来の一系列実施順より優先する。
 
 | 範囲 | 担当チャット・所有範囲 | 実装記録 |
 | --- | --- | --- |
-| U12eの完成・受入 → U16a〜d → U15eの分解版 | このチャット。既存のdg加群・bimodule・導来合成の公開APIを管理 | この文書§17 |
+| U12eの完成・受入 | このチャット。既存のdg加群・bimodule・導来合成の公開APIを管理 | この文書§17 |
 | U14（指定生成元・endomorphism表示） | 「dg-U14」。`DifferentialGraded/Endomorphism/` | `dg-theory-u14.md` |
 | U12f・U15d（係数変更）、追加のU17a・U13d | 「dg-U12f/U15d」。このチャットの担当外 | `dg-theory-scalar-extension.md` |
 | U15eの局所K-flat版 → U17bの局所K-flatの場合 | U17a・U13dを終えたチャット。`Quotient/DerivedComparison*.lean`・`Verdier/` | `dg-theory-u17a-u13d.md`を参照 |
@@ -38,12 +41,12 @@ Mathlibへの相対パスはすべて `.lake/packages/mathlib/Mathlib/` から�
 ユーザー指定により履歴のamend・rebase・resetは禁止。検証済みの小単位を新規コミットで記録する。
 新規ファイル作成前には同名既存ファイルの有無を確認する。共有ルートSerrePositivity.leanと
 共有監査スクリプトを変更するときは自分のhunkだけをgit add -pでstageする。
-このチャットのU16bではEndomorphism/の再構成随伴・endomorphism比較と、受入済みの
+従来のU16b引継ぎではEndomorphism/の再構成随伴・endomorphism比較と、受入済みの
 Tensor/ScalarExtension*・Derived/ScalarExtension*を読み取り専用で再利用する。
-このチャットはU12eの完成・受入、U16a〜d、U15eのdg圏の分解を使う版の順に進める。
+このチャットはU12eの完成・受入までを進める。U16・U15eには着手しない。
 U15eの局所K-flat仮定を置く版はU17a・U13dを終えたチャットが担当し、
 続けてU17bの局所K-flatの場合を扱う。この局所K-flat版の作業は、このチャットの合流待ちとは分離する。
-このチャットのU15e分解版はU12f・U14・U16の受入条件がそろってから開始し、
+従来のU15e分解版の開始条件はU12f・U14・U16の受入条件がそろうことであり、
 局所K-flat版の`Quotient/DerivedComparison*.lean`と`Verdier/`を読んで再利用する。
 局所K-flat版の比較・Verdier一般論を重複実装せず、分解とその比較APIへの接続を担当する。
 U16cでDG-MOR、U15eでDG-DRの引用採用が必要になったら、採用せず停止して報告する。
@@ -10889,3 +10892,60 @@ U12eは未受入、U16a〜dとU15e分解版は未着手。全体の目標と順�
 Quotient/DerivedComparison*・Verdier/を読んで再利用し、重複実装しない。
 共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・ScalarExtension*・並行作業の
 Tensor/Associator*と他チャットの記録を編集していない。
+
+### 17.233 U12e73：全導来中間比較と右単位子、任意K-flat解像度の比較（2026-10-17）
+
+**現行目標。** ユーザーの目標更新を§0へ反映した。このチャットはU12eの完成・受入までを担当する。
+U16・U15eは現行目標から外し、その従来の順序・分担は引継ぎ情報として保持する。
+
+**通常の右単位square。** Tensor/RightUnitRestriction.leanは、対角のHom比較を後因子に作用させ、
+中間圏制限比較、外側左制限の合成比較、制限した右単位子を続ける射が、
+制限後の右単位子に一致することをrightUnitRestrictionで証明した。
+各値ではbalanced tensorの包含とYoneda評価の式へ帰着し、既存の左作用の制限公式を使う。
+Fは任意のdg関手で、HomのK-flat性・Hom準同型性・本質的全射性はいずれも不要。
+
+**任意の右K-flat解像度への比較。** Derived/BimoduleResolutionLiftTensor.leanは既存の
+bimoduleCanonicalResolutionLiftを再利用し、任意の前因子との相対tensor後も、
+持ち上げの増大三角形が導来可換となることを証明した。
+全dg自然なsourceホモトピーを既存のcylinder経由で同一視し、前因子のK-flat性は追加しない。
+Derived/BimoduleMiddleKFlatIndependence.leanの
+**derivedMiddleRestrictionComparison_kFlat_eq_canonical**は、この増大squareと既存の
+解像度変更squareから、任意の右相対K-flat解像度による中間比較が既存標準比較に一致することを示す。
+従来のsemifree解像度間の比較を、semifree性を持たない右K-flat解像度にも拡張した。
+この結果にはFの準同値性は不要。終端Eの局所Hom K-flat性は既存の全導来合成と同じ条件である。
+
+**対角によるモデル計算。** Derived/RightUnitRestriction.leanはHomQuasiIso Fの場合に、
+既存対角を制限後の解像度として選び、増大射と導来合成の解像度計算同型の打消しを証明した。
+derivedRightUnitRestriction_modelは実際のderivedMiddleRestrictionComparisonについて、
+通常の右単位squareを局所化した計算式である。
+Cの局所Hom K-flat性やFの本質的全射性は要求せず、Dの局所Hom K-flat性を明示する。
+
+**全導来前因子上の右単位square。** Derived/RightUnitRestrictionFull.leanは、対角のHom比較、
+既存の右側導来制限表示、実際のderivedMiddleRestrictionNatTrans、外側左制限の比較、
+既存右単位子を合成し、rightUnitRestrictionDerivedComparisonを構成した。
+これは任意Fで定義できる自然変換で、別の中間比較に置き換えていない。
+source表示の成分を既存の前後因子の表示へ分解する式と、標準モデル計算への帰着も証明した。
+Derived/RightUnitRestrictionCoherence.leanの
+**rightUnitRestrictionDerivedComparison_eq**は、HomQuasiIso Fの下でこの自然変換が
+制限後の既存derivedBimoduleRightUnitIsoに一致することを証明する。
+前因子は任意の導来対象であり、その任意射に関する自然性を保持する。
+Dだけに局所Hom K-flat性を要求し、Cの同条件・Fの本質的全射性・環の体や標数条件は追加しない。
+独立した四つの対象・係数宇宙を保持する。既存公開APIの名前・型は変更せず、13公開宣言を追加した。
+
+**検証。** Checks.DGRightUnitRestrictionは任意の導来前因子での右単位square、
+任意の右K-flat解像度と標準モデルの一致、ZMod 2での全自然変換の等式を検査した。
+対角比較の恒等・合成則、三圏同時制限、外側左右制限、中間比較の全導来合成則・恒等則、
+解像度比較・導来同値・導来随伴・五角形・StageEight・StageSeven・Spectra.StageTwoとの
+統合ビルド成功（3526 jobs、警告なし）。13公開宣言の直接公理監査は重複・欠落なく標準3公理以内。
+新規監査累計4642宣言。今回の7 Leanファイルにsorry・admit・新規axiom・資源上限変更は0件。
+採用済み引用0件。Lean v4.35.0-rc4とMathlib manifest/HEAD
+e6bbacd0e1b7307ff6e17da09cd2455f60804fa6を再確認した。
+文書検査は21 Markdown・326 exposition参照、失敗0件。
+
+**受入に残る作業。** 左単位子・結合子との同様の可換図式、および今回の右単位経路と
+既存の三圏同時制限の正規化の一致を確認する。
+そのうえでchangeEquivalenceの合成保存・対角保存を、単位・結合・自己・推移比較へ接続する。
+外側左右・中間比較を組み合わせた恒等・合成則を仕上げ、dg圏解像度の既存の一般的存在・比較と
+§15.2全体を照合してU12eを受け入れる。U12e全体はなお未受入であり、目標を完了扱いにしない。
+共有一般論への新しいAPI要求はない。共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・
+ScalarExtension*・並行作業のTensor/Associator*と他チャットの記録を編集していない。
