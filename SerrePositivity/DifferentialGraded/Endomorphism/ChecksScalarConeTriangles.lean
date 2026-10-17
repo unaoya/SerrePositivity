@@ -1,0 +1,13 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarConeTriangles
+
+/-! # 実際の係数拡大のcone三角形の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+#print axioms coneTriangleMapIso
+#print axioms scalarModuleExtensionConeComparison_fst_eval
+#print axioms scalarModuleExtensionConnecting_eval_f
+#print axioms scalarModuleExtensionConeComparison_connecting
+#print axioms scalarModuleExtensionConeTriangleIso
+#print axioms scalarModuleExtensionHomotopyConeTriangleIso
+#print axioms scalarModuleExtensionHomotopyIsTriangulated
