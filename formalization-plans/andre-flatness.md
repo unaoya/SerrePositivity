@@ -764,3 +764,54 @@ BS Rem 7.15（著者版 p.62）の実導来剰余比較の評価側であり、P
 SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4188 jobs）。
 専用監査も終了コード 0。新規 15 公開宣言の `assert_no_sorry` を追加し、
 生成宣言を含む 703 宣言の推移的公理依存が標準 3 公理のみであることを確認した。
+
+### E1.13：実自由 δ 源商から元の A/(p,d) 上への導来比較
+
+新規 `Andre/MonicPrismaticCoefficientReduction.lean` は、実三因子還元を定義し、
+一般結合子と E1.12 の標準導来評価比較を合成して raw 剰余の single に同定する。
+新規 `Andre/MonicPrismaticQuotientDerived.lean` は実源商への基底変更対象
+`MonicPrismaticSourceQuotientDerived D d f` と、raw 剰余の実源商作用を明示する。
+商射の全射性で H⁰ 同型の線形性を実源商へ降下し、全非零次数ホモロジー消滅と
+正規化された single 比較 `monicPrismaticSourceQuotientDerivedSingleIso` を証明した。
+この比較は hf、有限全列挙 s、hpA、δ(d) の単元性だけを使い、hdeg は不要。
+
+新規 `Andre/MonicPrismaticQuotientFlat.lean` は、実源商上の H⁰ 比較を元の係数商へ制限し、
+係数の代表元公式により E1.11 の raw 剰余の作用と一致させる。
+新規 `Andre/MonicPrismaticPDReduction.lean` は、元の A 上の実二因子源
+`MonicPrismaticSourceCoefficientObject D d f` を定義し、二重多項式係数包含に対する
+既存の一般正方形比較 `deltaRootSourcePDDerivedSquareIso` を直接再利用した。
+この既存比較の型はモニック関係や根関係に依存しない任意の実源対象・射影モデルを受け取る。
+他レーンのファイルは変更していない。
+
+主要公開型（Y の略記を明示）：
+
+```lean
+theorem monicPrismaticSourceCoefficientPDResidueH0_faithfullyFlat
+    {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
+    (D : DeltaStructure p A) (d : A) (f : σ → Polynomial A)
+    {m : ℕ} (s : Fin m ≃ σ)
+    (hf : ∀ t, (f t).Monic) (hdeg : ∀ t, 0 < (f t).natDegree)
+    (hpA : Function.Injective (fun x : A => (p : A) * x))
+    (v : Aˣ) (hv : (v : A) = D.delta d) :
+    let I := Ideal.span {(p : A), d}
+    let Y := (boundedAboveDerivedBaseChange (Ideal.Quotient.mk I)).obj
+      (MonicPrismaticSourceCoefficientObject D d f)
+    Module.FaithfullyFlat (A ⧸ I)
+      ((DerivedCategory.homologyFunctor (ModuleCat (A ⧸ I)) 0).obj Y.obj)
+```
+
+`monicPrismaticSourceCoefficientPDResidue_homology_isZero` は同じ Y について
+`(i : ℤ) → i ≠ 0 → IsZero ((DerivedCategory.homologyFunctor (ModuleCat (A ⧸ I)) i).obj Y.obj)`。
+同じ前提から hdeg だけを除く。
+`monicPrismaticSourceCoefficientPDResidueIso` は同じ Y を、実源商を経由する元の A/(p,d) 作用を
+持つ raw 剰余の single に具体的に同定する。外部 ghost・余極限保存仮定は残さない。
+
+BS Rem 7.15（著者版 p.62）の実導来剰余比較を元の係数環上まで進めた。
+Prop 7.11 を使う原典と異なる明示関係・実作用の比較による証明である。
+残るのは逐次 p,d 実完備化後の離散性と一般 f/d 候補との環・δ 比較、
+最終 perfectoid 商の p 完全忠実平坦性、無限 p 冪根変数の自由基底、任意族の最終接続。
+目標存在定理は引き続き未宣言である。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4192 jobs）。
+専用監査も終了コード 0。新規 22 公開宣言の `assert_no_sorry` を追加し、
+生成宣言を含む 964 宣言の推移的公理依存が標準 3 公理のみであることを確認した。

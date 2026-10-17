@@ -200,6 +200,29 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticResidueSource_t
 assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticResidueSourceEval_torVanishing
 assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticResidueSourceDerivedIso
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.MonicPrismaticSourceCoefficientReduced
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticSourceCoefficientResidueIso
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticSourceCoefficientResidueHomologyZeroIso
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticSourceCoefficientResidue_homology_isZero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.MonicPrismaticSourceQuotientDerived
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticSourceQuotientResidueMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticSourceQuotientResidueMap_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticSourceQuotientResidueRestrictionIso
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticSourceQuotientDerivedRestrictionIso
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticSourceQuotientDerivedRestrictedH0Iso
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticSourceQuotientDerived_homology_isZero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticSourceQuotientDerivedH0Iso
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticSourceQuotientDerived_isGE_zero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticSourceQuotientDerived_isLE_zero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticSourceQuotientDerivedSingleIso
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticSourceQuotientDerivedH0_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.MonicPrismaticSourceCoefficientObject
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticSourceCoefficientPDReductionIso
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticSourceCoefficientPDResidueIso
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticSourceCoefficientPDResidueH0Iso
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticSourceCoefficientPDResidue_homology_isZero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticSourceCoefficientPDResidueH0_faithfullyFlat
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -237,7 +260,11 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.MonicRelationRegularSequence,
     `SerrePositivity.BhattScholze.Andre.MonicPrismaticFirstResidueKoszul,
     `SerrePositivity.BhattScholze.Andre.MonicPrismaticFiniteResidueKoszul,
-    `SerrePositivity.BhattScholze.Andre.MonicPrismaticSourceResidue]
+    `SerrePositivity.BhattScholze.Andre.MonicPrismaticSourceResidue,
+    `SerrePositivity.BhattScholze.Andre.MonicPrismaticCoefficientReduction,
+    `SerrePositivity.BhattScholze.Andre.MonicPrismaticQuotientDerived,
+    `SerrePositivity.BhattScholze.Andre.MonicPrismaticQuotientFlat,
+    `SerrePositivity.BhattScholze.Andre.MonicPrismaticPDReduction]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
