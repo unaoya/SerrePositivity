@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.DGNerve.Checks
 public import SerrePositivity.InfinityCategories.DGNerve.Basic
 public import SerrePositivity.InfinityCategories.DGNerve.Triangle
 public import SerrePositivity.InfinityCategories.DGNerve.Computations
@@ -32,4 +33,5 @@ quasicategory 性、ホモトピー圏の比較、dg 関手の写像と厳密自
 一般の右 pinched 写像空間と dg nerve の閉零頂点の比較も公開する。
 写像空間の全次数の線形表示と単体的 A 加群構造、直接の線形充填に向けた残差恒等式を公開する。
 全ホーンの直接の線形充填と Kan 性、Mathlib の π₀ と H⁰ の Hom の比較を公開する。
+一点 dg 圏と非有界複体 dg 圏の二単体の式を N6 の検査として含む。
 -/

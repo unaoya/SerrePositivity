@@ -5525,6 +5525,86 @@ def piZeroEquiv (x y : D) : SSet.π₀ (DGNerve.pinchedHom A D x y) ≃
 全新規宣言の `#check @` とソース宣言の監査網羅性を照合した。
 新しい sorry・axiom・引用は追加していない。N0〜N5 の必須項目は完了、残りは N6。
 
+### N6：具体例・全公開宣言の最終監査と N0〜N6 の受入確認（2026-10-18、必須範囲完了）
+
+`DGNerve/Checks.lean` は既存の `ringEnrichment : DGCategory A PUnit` と
+`complexEnrichment : DGCategory A (Complex A)` を import し、両方で二単体の方程式を具体化した。
+`ring_triangle_equation` は任意の可換環の一点 dg 圏で
+`δh = compose f₁₂ f₀₁ − f₀₂` を検査する。
+`complex_compose` は通常順の斉次 dg 合成が任意の次数で Mathlib の cochain 合成に一致することを、
+純粋 tensor の豊穣合成の式と二つの Koszul 符号の相殺から証明する。
+`complex_triangle_equation` は非有界複体の dg nerve の二単体について
+`HomComplex.δ (-1) 0 h = f₀₁.comp f₁₂ − f₀₂` を得る。
+型に書いた `Sub.sub` は cochain 加法群の通常の差である。
+両具体例で quasicategory instance と任意の二対象の pinched Hom の Kan instance も型検査した。
+環の標数や複体の有界性・平坦性は仮定しない。
+
+新規公開宣言の正確な型は以下。共通に `{A : Type u} [CommRing A]`、
+`open CategoryTheory DifferentialGraded HomologicalComplex CochainComplex HomComplex`、
+`open scoped Simplicial` のもとで記す。
+
+`SerrePositivity.InfinityCategories.DGNerve.Checks.ring_triangle_equation`
+
+```lean
+lemma ring_triangle_equation (s : (dgNerve A PUnit.{1}) _⦋2⦌) :
+    differential A s.triangleHom =
+      compose A (s.edgeHom 1 2 (by decide)) (s.edgeHom 0 1 (by decide)) (by decide) -
+        s.edgeHom 0 2 (by decide)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.Checks.complex_compose`
+
+```lean
+lemma complex_compose {X Y Z : Complex A} {p q n : ℤ}
+    (g : Homogeneous Y Z q) (f : Homogeneous X Y p) (h : p + q = n) :
+    compose (D
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.Checks.complex_triangle_equation`
+
+```lean
+lemma complex_triangle_equation (s : (dgNerve A (Complex A)) _⦋2⦌) :
+    HomComplex.δ (-1) 0 s.triangleHom =
+      @Sub.sub (Cochain (s.obj 0) (s.obj 2) 0) inferInstance
+        ((s.edgeHom 0 1 (by decide)).comp (s.edgeHom 1 2 (by decide))
+          (show (0 : ℤ) + 0 = 0 from rfl)) (s.edgeHom 0 2 (by decide))
+```
+
+最終検証は次の実コマンドを `set -e; set -o pipefail` の下で順に実行した。
+
+```sh
+lake build SerrePositivity.InfinityCategories.DGNerve.Checks SerrePositivity.InfinityCategories.DGNerve
+lake env lean scripts/audit_dg_nerve.lean
+```
+
+両コマンドは終了コード 0。対象・集約ビルドは 3505 jobs。
+全ソースの明示的な公開 def・abbrev・structure・lemma・theorem・名前付き instance を列挙し、
+571件全てに監査スクリプトの `#print axioms` と実際の `#check @` の出力があることを照合した。
+N0 の既存5則を含む公理監査は計576件で、全て propext・Classical.choice・Quot.sound の範囲内。
+`reconstructObj` 一件は公理非依存。他の公理はない。
+コメントを除いた担当ソースに sorry・admit・sorryAx・axiom・unsafe はない。
+全571宣言が概要・方針・規約・使われ方の docstring を持つことも確認した。
+ルート `SerrePositivity.lean` の集約 import は既存の一行のみで、今回ルートは編集していない。
+
+完了を仮定せず、目標ファイルと本計画の各必須項目を次の現在の成果に照合した。
+
+| 要件 | 確認した成果・型・検証 |
+| --- | --- |
+| N0：符号、二・三単体、残差と内部ホーン解、右 pinched 線形式と外端の可解性 | InfinityCategories/README.md の N0.1〜N0.3 に記録。SimplexData.term/rhs・残差恒等式・PinchedHom.deletionSign と一致。§1.1 の訂正は不要 |
+| N1：指定した有限部分集合・端点・次数の表現、全引き戻し、零・一・二単体、面・退化 | Simplex.lean・Pullback.lean・Basic.lean・LowDimensional.lean・Triangle.lean・Computations.lean。dgNerve : SSet.{max u v}、vertexEquiv・edgeEquiv・triangleEquiv と面・退化の全分岐が構成済み |
+| N2：内部ホーンから回収、明示解、全方程式、貼合せ、quasicategory | HornData/HornComponents/HornPartial/HornFilling/HornResidual と Quasicategory.lean。dgNerve.filler・hornFilling・instQuasicategory は内部番号の条件だけを持ち、欠けた面の方程式を追加仮定にしない |
+| N3：H⁰ の境界関係と合成、両向きの関手、圏同値 | EdgeHomotopy・ClosedComposition・HomotopyCategory。homotopicL/R_iff_boundary、comp_homotopic_strictComp、toH0・fromH0・equivalence・unitIso・counitIso が構成済み |
+| N4：一般の右 pinched Hom、全次数の線形表示、単体的 A 加群 | PinchedHom/Basic.lean と DGNerve の PinchedLinearEquiv・PinchedModule・PinchedModuleObject。linearEquiv、moduleEquiv、pullback_add/smul、moduleObject と元の SSet map との一致を確認 |
+| N4：直接の線形 Kan 充填、Mathlib の π₀ と H⁰ の Hom | PinchedHornData・PinchedHornFilling・PinchedKan の全番号の明示充填と instKanComplex、PinchedPiZero.lean の PinchedHom.piZeroEquiv。両端・次元一を含み、追加方程式の前提はない |
+| N5：dg 関手・恒等合成、充満部分圏の像、厳密自然変換のホモトピー | Functor.map/map_id/map_comp、FullSubcategory.range_inclusion、StrictNatTrans.homotopyMap と両端の計算・homotopy。全斉次射の厳密自然性を持つ構造を入力とする |
+| N6：一点と複体の具体例、全公開宣言の公理監査 | Checks.lean の上記3宣言と四つの instance 例、audit_dg_nerve.lean の576件。対象・集約ビルドと型・公理監査は終了コード 0 |
+| 設計と範囲の維持 | 本計画 §1〜§4 と §6 は変更せず、追記は §5 のみ。主定理・BS・CLMST・K 理論・既存 dg 層・他チャットのファイルは編集していない。今回の変更は担当ファイルだけを git commit --only で保存 |
+
+以上により N0〜N6 の全必須項目は完了。未完了の必須項目はない。
+正規化 Moore 複体と τ≤0 Hom の比較は、指示された任意項目として実施を見送った。
+両端固定模型との比較・quasi-equivalence の判定・テンソル積との両立・導来 ∞ 圏そのものの定義は
+元から本計画の範囲外であり、達成条件には追加していない。
+
 ## 6. 次のマイルストーン D（本計画の範囲外）
 
 - Semifree(S) を `DGFullSubcategory`（`moduleSemifree` または一点 dg 圏上の複体版）として置き、

@@ -6,9 +6,10 @@
 追加の有界性・平坦性・標数の仮定は置かない。
 正本は [計画](../../formalization-plans/dg-nerve.md)。この文書の N0 は紙の計算であり、
 Lean での dg nerve の存在やホーン充填の証明を意味しない。
-現在は N0〜N3 が完了し、任意の dg 圏の dg nerve、quasicategory instance、
-ホモトピー圏と H⁰ の圏同値を公開済み。
-以下の途中段階の記録は保存時点の状態を表す。N4〜N6 は未完了。
+N0〜N6 の必須項目は完了。任意の dg 圏の dg nerve と quasicategory instance、
+ホモトピー圏と H⁰ の圏同値、右 pinched Hom の単体的 A 加群・直接の線形 Kan 充填・π₀ 比較、
+dg 関手と厳密自然変換によるホモトピー、具体例と最終公理監査を公開済み。
+以下の途中段階の記録は保存時点の履歴を表す。最新の検証は末尾の N6 を参照。
 
 原典は [Higher Algebra](https://www.math.ias.edu/~lurie/papers/HA.pdf)
 Construction 1.3.1.6、Proposition 1.3.1.10、Remark 1.3.1.12 と、
@@ -623,3 +624,21 @@ x,y の像の間の Hom を同定する。追加仮定はない。
 対象・集約ビルドと公理監査は終了コード 0。全公開宣言568件と既存5則は標準三公理の範囲内。
 これで N4 の必須項目は完了。N6 の具体例と最終監査が残る。
 正規化 Moore 複体の比較は任意項目として見送る。
+
+## N6：具体例と最終検査（2026-10-18、N0〜N6 必須範囲完了）
+
+`DGNerve/Checks.lean` は、既存の一点 dg 圏の instance `ringEnrichment` と
+非有界複体 dg 圏の instance `complexEnrichment` で二単体の微分方程式を具体化する。
+`ring_triangle_equation` は `δh = f₁₂ ∘ f₀₁ − f₀₂`、
+`complex_compose` は通常順 dg 合成と Mathlib の cochain 合成の一致、
+`complex_triangle_equation` は `HomComplex.δ (-1) 0 h = f₀₁.comp f₁₂ − f₀₂` を証明する。
+任意の可換環に対して成立し、複体の有界性や平坦性の仮定はない。
+両具体例の quasicategory instance と写像空間の Kan instance も型検査した。
+
+対象 `Checks` と集約 `DGNerve` のビルドは終了コード 0（3505 jobs）。
+全公開宣言571件の型検査と、既存5則を含む計576件の公理監査を照合し、全て標準三公理の範囲内。
+全宣言の docstring 規約と担当ソースに新しい穴・公理がないことも確認した。
+受入基準ごとの実装・型・検証の対応表と正確な新規公開型は計画 §5 の N6 に記録した。
+
+N0〜N6 の必須項目は全て完了。正規化 Moore 複体と τ≤0 Hom の比較は任意項目として見送った。
+この文書の各途中記録にある未完了の記述は、その保存時点の履歴である。

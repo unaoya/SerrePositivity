@@ -2,13 +2,14 @@ import SerrePositivity.InfinityCategories.DGNerve
 /-!
 # dg nerve の公開宣言の公理監査
 
-概要：N0 の既存則と N1〜N3 と N5の全ての明示的な公開宣言を監査する。
+概要：N0 の既存則と N1〜N6 の全ての明示的な公開宣言を監査する。
 方針：各工程で公開宣言の公理表示と型の検査を追加する。
 規約：許される公理は propext・Classical.choice・Quot.sound のみ。
 使われ方：対象ビルド後に `lake env lean scripts/audit_dg_nerve.lean` を実行する。
 原典：HA Construction 1.3.1.6、Proposition 1.3.1.10。
 dg nerve と内部ホーン充填および quasicategory instance を監査する。
-ホモトピー圏の H⁰ との比較も監査する。N4 と N6 の完了はまだ主張しない。
+ホモトピー圏と H⁰ の比較、右 pinched Hom の線形表示・加群構造・Kan 性・π₀ 比較、
+一点 dg 圏と非有界複体 dg 圏の N6 の具体例も監査する。
 -/
 
 noncomputable section
@@ -1167,6 +1168,13 @@ noncomputable section
 #check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.piZeroToH0_surjective
 #print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.piZeroEquiv
 #check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.piZeroEquiv
+
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Checks.ring_triangle_equation
+#check @SerrePositivity.InfinityCategories.DGNerve.Checks.ring_triangle_equation
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Checks.complex_compose
+#check @SerrePositivity.InfinityCategories.DGNerve.Checks.complex_compose
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Checks.complex_triangle_equation
+#check @SerrePositivity.InfinityCategories.DGNerve.Checks.complex_triangle_equation
 
 section
 universe u v
