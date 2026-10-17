@@ -2727,3 +2727,83 @@ Prop 7.11・Hodge–Tate 比較を使わない構成のため、係数と指数�
 生成宣言を含む 3860 宣言の推移的公理依存は標準 3 公理のみ。
 二成分の同型等式・係数成分の δ 互換性・両成分の多項式評価公式・
 一般 raw 合成則・実入力の raw 合成則の公開型 6 本を `#print` で確認した（終了コード 0）。
+
+### E1.45：raw 同型の実導来完備化への延長と完備化後の二元剰余
+
+新規 `Andre/PDCompletionCoordinateEquiv.lean` は、既存 F3 の実際の
+`PDCompletionH0`、`pdCompletionCommRing`、`pdCompletionUnit` を用い、
+座標を保つ任意の環射 g:A→B、g(d)=d' の一意な延長を構成した。
+標的自身の p,d' 導来完備性を、既存の環としての実 H⁰ 普遍性へ供給する。
+環同型 e に対して順逆の延長を作り、標準単位との合成が一致することから
+逆合成を一意性で証明した。
+
+```lean
+def pdCompletionCoordinateEquiv
+    {A B : Type u} [CommRing A] [CommRing B] (p : ℕ)
+    (e : A ≃+* B) (d : A) (d' : B) (hd : e d = d') :
+    letI := pdCompletionCommRing A p d
+    letI := pdCompletionCommRing B p d'
+    PDCompletionH0 A p d ≃+* PDCompletionH0 B p d'
+```
+
+同 `_unit` は全 b:A について標準像を e(b) の標準像へ送る公式。
+任意の座標保存環射についての `existsUnique_pdCompletionCoordinateMap`、
+選択した標準射 `pdCompletionCoordinateMap` とその単位との合成公式も公開した。
+これらに素数性・正則性・Noether 性・古典的完備性を要求しない。
+素数 p の δ 環射に対しては既存の実完備化 δ 普遍性で標準延長の δ 互換性を証明し、
+同型版 `pdCompletionCoordinateEquiv_isDeltaHom` も公開する。
+完備化の定義や標準係数射を別のモデルへ取り替えない。
+
+新規 `Andre/DeltaDivisionCoefficientPDCompletion.lean` は、係数 δ 自己同型 e の
+raw 比較が分母の係数像を保つことを、この座標付き完備化比較へ供給する。
+L=A{a/d}、M=A{e(a)/e(d)}、jL,jM を元の係数射とすると
+
+```lean
+def deltaDivisionCoefficientPDCompletionEquiv
+    (D : DeltaStructure p A) (e : A ≃+* A) (he : D.IsDeltaHom D e.toRingHom)
+    (d : A) (a : σ → A) :
+    letI := pdCompletionCommRing L p (jL d)
+    letI := pdCompletionCommRing M p (jM (e d))
+    PDCompletionH0 L p (jL d) ≃+* PDCompletionH0 M p (jM (e d))
+```
+
+を得る。同 `_unit`、`_coeff`、`_isDeltaHom` は raw 全元の標準像の保存、
+元の係数 b の e(b) への半線形性、既存の完備化 δ 構造の保存を主張する。
+d の正則性などの補助仮定は置かない。
+
+新規 `Andre/DeltaDivisionFrobeniusCompletedResidue.lean` は、完全 δ 環 D の
+Frobenius 自己同型にこれを適用する。
+d は distinguished、x=φ⁻¹(d)、L=A{a/d}、M=A{φ(a)/φ(d)}、
+HL=`PDCompletionH0 L p (jL d)`、HM=`PDCompletionH0 M p (jM (φ d))`、
+uL,uM を標準完備化単位とすると
+
+```lean
+def deltaDivisionFrobeniusCompletedResidueEquiv
+    (D : DeltaStructure p A) (hD : D.IsPerfect) (d : A) (a : σ → A)
+    (hd : D.IsDistinguished d) :
+    letI := pdCompletionCommRing L p (jL d)
+    letI := pdCompletionCommRing M p (jM (φ d))
+    (HL ⧸ Ideal.span {uL (jL d), uL (jL x)}) ≃+*
+      (HM ⧸ Ideal.span {(p : HM), uM (jM d)})
+```
+
+を構成した。
+像イデアルの計算 `deltaDivisionFrobeniusCompleted_pairIdeal` と、
+係数 b を φ(b) の標準像の商へ送る同 `_coeff` も証明した。
+実 H⁰ の環構造を明示し、Frobenius 側の raw 環と完備化座標を
+同じ Frobenius 同型の順射で統一して供給している。
+
+BS Rem 7.15（著者版 p.62）の raw 比較を実導来完備化へ持ち上げた段階である。
+ここでの剰余比較は「実完備化 H⁰ を取った後の通常商」同士であり、
+完備化と剰余の順序を交換したとの主張ではない。
+未完備 pd 包の剰余との比較、実源の離散性・正則性による完備化後の剰余計算、
+および原典の T=overline(Δ)_S との同定は引き続き未完了。
+従って T/ϖ の忠実平坦性や T の p 正則性を今回の一般同型だけで結論しない。
+原典の引用や公開存在定理の追加仮定は増やしていない。
+
+対象・集約の `set -o pipefail; lake build` は終了コード 0
+（集約 `SerrePositivity.BhattScholze.Andre.MonicRootedExtension`：4449 jobs）。
+新規 14 公開宣言を `assert_no_sorry` に加えた専用監査は終了コード 0。
+生成宣言を含む 3939 宣言の推移的公理依存は標準 3 公理のみ。
+座標付き実完備化同型・単位公式・δ 互換性、raw 比較の実完備化同型、
+完備化後の Frobenius 剰余同型と係数公式の公開型 6 本を `#print` で確認した（終了コード 0）。

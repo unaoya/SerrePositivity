@@ -47,6 +47,7 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootPolynomialPerfectDelta
 public import SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiFrobeniusQuotient
 public import SerrePositivity.BhattScholze.Andre.PowerRootPrismFrobeniusResidue
 public import SerrePositivity.BhattScholze.Andre.PowerRootDivisionFrobeniusFactors
+public import SerrePositivity.BhattScholze.Andre.DeltaDivisionFrobeniusCompletedResidue
 
 /-!
 # André E1・E2 の集約

@@ -783,6 +783,21 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientDivisionF
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootVariableDivisionFrobeniusEquiv
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootDivisionFrobeniusFactors_comp
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_pdCompletionCoordinateMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.pdCompletionCoordinateMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.pdCompletionCoordinateMap_comp_unit
+assert_no_sorry SerrePositivity.BhattScholze.Andre.pdCompletionCoordinateEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.pdCompletionCoordinateEquiv_unit
+assert_no_sorry SerrePositivity.BhattScholze.Andre.pdCompletionCoordinateMap_isDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.pdCompletionCoordinateEquiv_isDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionCoefficientPDCompletionEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionCoefficientPDCompletionEquiv_unit
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionCoefficientPDCompletionEquiv_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionCoefficientPDCompletionEquiv_isDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFrobeniusCompleted_pairIdeal
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFrobeniusCompletedResidueEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFrobeniusCompletedResidueEquiv_coeff
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -914,7 +929,10 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismFrobeniusResidue,
     `SerrePositivity.BhattScholze.Andre.PowerRootFrobeniusFactors,
     `SerrePositivity.BhattScholze.Andre.DeltaDivisionCoefficientAutComposition,
-    `SerrePositivity.BhattScholze.Andre.PowerRootDivisionFrobeniusFactors]
+    `SerrePositivity.BhattScholze.Andre.PowerRootDivisionFrobeniusFactors,
+    `SerrePositivity.BhattScholze.Andre.PDCompletionCoordinateEquiv,
+    `SerrePositivity.BhattScholze.Andre.DeltaDivisionCoefficientPDCompletion,
+    `SerrePositivity.BhattScholze.Andre.DeltaDivisionFrobeniusCompletedResidue]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
