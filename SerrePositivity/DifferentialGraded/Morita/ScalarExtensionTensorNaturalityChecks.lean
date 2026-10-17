@@ -1,0 +1,15 @@
+module
+public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionTensorNaturality
+
+/-! # 解像度計算とU12f係数変更の自然性の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded.Morita
+#print axioms tensorResolutionComputation_left_naturality
+#print axioms tensorProjectiveResolutionComputation_left_naturality
+#print axioms relativeTensorComputation_left_naturality
+#print axioms scalarTensorBaseChange_left_naturality
+#print axioms scalarTensorLeftModels
+#print axioms scalarTensorBaseChangeLeftSource
+#print axioms scalarTensorBaseChangeLeftTarget
+#print axioms scalarTensorBaseChangeLeftIso
+#print axioms scalarTensorBaseChangeLeftIso_app

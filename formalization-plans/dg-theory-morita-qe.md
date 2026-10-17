@@ -12,7 +12,7 @@
 | U16b：実際の随伴shift・三角性・Perf・U13/U14比較 | U16b.1–10で実装・合同ビルド・公理監査済み。主導来graph比較を含め担当範囲を受入済み |
 | 積dg圏上の擬同値 | 既存 `derivedBimoduleRestrictionEquivalence` の `localHomKFlat A C`・`localHomKFlat A D` を保持する。無条件化しない |
 | U16aグラフ作用との計算比較 | U16b.10でkernel変数の主局所化上の実際の作用との自然同型、随伴・単位・余単位・shift・三角性・Perfを検証済み |
-| U16d：Perf・係数変更・合成自然性 | U16d.1–12で主導来kernelの全射に自然なPerf作用と実際の恒等比較を構成。合成比較・その自然性を入力とするPerf制限、およびU12fの評価ごとの係数変更を検証済み。全体の残項目は末尾参照 |
+| U16d：Perf・係数変更・合成自然性 | U16d.1–13で主導来kernelの全射に自然なPerf作用と実際の恒等比較を構成。合成比較・その自然性を入力とするPerf制限、およびU12fの評価ごとの係数変更と全左因子射の自然性を検証済み。全体の残項目は末尾参照 |
 | 中心作用 | 保留。今回の実装対象にしない |
 
 新規Leanファイルは `Morita/QuasiEquivalence*`・`Perfect*`・`ScalarExtension*` のみ。
@@ -276,6 +276,21 @@
 - `Morita.PerfectDerivedKernelCoherenceChecks` ビルド成功（2748 jobs、警告なし）。
   主要6宣言と追加の `perfectDerivedKernelMap` の公理監査は標準3公理のみ。
 
+## U16d.13：U12fの実際の比較同型の左因子自然性
+
+- `Morita/ScalarExtensionTensorNaturality.lean`：指定解像度族、任意の指定右射影解像度、
+  相対K-flatな右モデルでの導来tensor計算同型について、左因子の全閉零射に対する自然性を証明した。
+  既存の `moduleDerivedTensorLeftFunctor` が与える自然変換を使用する。
+- U12fの実際の `derivedTensorBaseChange` 自体の左因子自然性を証明した。
+  始点・終点のhPNと、係数変更後の右モデルのhP'を明示し、flat性や局所Hom条件で置き換えていない。
+- hPN・hP'を両方保持する左因子の充満部分圏 `scalarTensorLeftModels` 上で、
+  実際の導来tensorと実際の導来係数変更からなる二つの関手の自然同型
+  `scalarTensorBaseChangeLeftIso` を構成した。その成分は元のU12fの比較同型と一致する。
+- `Morita.ScalarExtensionTensorNaturalityChecks` ビルド成功（2905 jobs、警告なし）。
+  主要9宣言の公理監査は標準3公理のみ。既存Derived/・Tensor/のソースは編集していない。
+- この左因子自然性をkernel全体の作用の自然性と同一視する主張は含めていない。
+  kernel作用評価の比較同型のkernel射に関する自然性、および出力dg加群の係数変更との交換は残る。
+
 ## 合同検証と公開入口（2026-10-17）
 
 - 新規10監査対象・公開入口・既存 `Checks.DGFunctorDerivedEquivalence` の12対象を
@@ -310,6 +325,13 @@
   U16bの主導来graph比較・Perf・shift・三角性・U13/U14比較を同時importで確認し、U16bの担当範囲を受入とした。
 - U16d.12は `eb2dc737` に自分の5パスだけを明示してコミットし、直後のHEADのstatで一致を確認した。
 
+## 追加合同検証（2026-10-17、U16d.13）
+
+- 新旧23監査対象・公開入口・既存dg擬同値監査の25対象の合同ビルドに成功した
+  （3593 jobs、終了コード0、警告・エラー0件）。186宣言の公理監査はすべて標準3公理のみ。
+- 新しいsorry・axiom・引用はない。相手の公開記録を再確認し、合成比較は引き続き未公開と確認した。
+  全体の未完項目を以下のまま保持する。
+
 ## 公開入口と残る接続
 
 公開入口は `SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence`。
@@ -326,6 +348,7 @@ U16bの担当範囲は受入済み。U16d全体は未受入で、次の接続を
    係数変更した実際のkernel作用の評価へ同定した（U16d.9–10）。
    係数変更したkernel全体の作用へ束ね上げる比較と、kernel変数の射に対する自然性・合成比較を残す。
    選択した右射影解像度とkernelの左評価ごとのhPN・hP'は明示したままにする。
+   U12f比較自体の全左因子射の自然性と許容モデル上の自然同型はU16d.13で完成した。
    U16d.4のPerf係数変更正方形・合成比較アダプタをその実際の比較へ適用する。
    現在のU12f比較の始域は出力評価の複体の導来係数変更である。
    これを出力dg加群の導来係数変更の評価と同一視する定理・仮定は別途必要であり、無条件には主張しない。
