@@ -763,6 +763,26 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismGenerator_isDis
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismFrobeniusDoubleResidueEquiv
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismFrobeniusDoubleResidueEquiv_coeff
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientFrobeniusEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootVariableFrobeniusEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientFrobeniusEquiv_single
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootVariableFrobeniusEquiv_single
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientFrobeniusEquiv_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientFrobeniusEquiv_variable
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootVariableFrobeniusEquiv_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootVariableFrobeniusEquiv_variable
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootFrobeniusFactors_commute
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootFrobeniusFactors_apply
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientFrobeniusEquiv_isDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootVariableFrobeniusEquiv_isDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientFrobeniusEquiv_baseMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootFrobeniusFactors_equiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootVariableFrobeniusEquiv_baseMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionCoefficientAutMap_trans
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientDivisionFrobeniusEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootVariableDivisionFrobeniusEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootDivisionFrobeniusFactors_comp
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -891,7 +911,10 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PowerRootPolynomialPerfectDelta,
     `SerrePositivity.BhattScholze.Andre.DeltaDivisionFrobeniusResidue,
     `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiFrobeniusQuotient,
-    `SerrePositivity.BhattScholze.Andre.PowerRootPrismFrobeniusResidue]
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismFrobeniusResidue,
+    `SerrePositivity.BhattScholze.Andre.PowerRootFrobeniusFactors,
+    `SerrePositivity.BhattScholze.Andre.DeltaDivisionCoefficientAutComposition,
+    `SerrePositivity.BhattScholze.Andre.PowerRootDivisionFrobeniusFactors]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

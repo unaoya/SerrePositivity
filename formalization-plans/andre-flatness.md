@@ -2661,3 +2661,69 @@ BS Rem 7.15（著者版 p.62）の二つの剰余操作を係数射とともに�
 生成宣言を含む 3808 宣言の推移的公理依存は標準 3 公理のみ。
 一般 raw 二重剰余同型と係数公式、R/ϖ の Frobenius 同型と p 乗公式、
 実無限根入力の raw 同型と係数公式の公開型 6 本を `#print` で確認した（終了コード 0）。
+
+### E1.44：係数 Frobenius と指数 Frobenius の分解と raw 射の合成
+
+新規 `Andre/PowerRootFrobeniusFactors.lean` は完全 δ 係数環 D 上の
+P=`PowerRootPolynomial A p hp` の Frobenius を二つの環同型に分けた。
+C=`powerRootCoefficientFrobeniusEquiv p D hD` は係数だけを D.frobeniusLift で送り、
+全根変数を固定する。V=`powerRootVariableFrobeniusEquiv p` は係数を固定し、
+指数を p 倍して全根変数をその p 乗へ送る。
+単項式・係数・根変数での公式と C,V の環射としての可換性を証明した。
+E=`powerRootPolynomialDelta p hD.p_mul_injective D` とすると
+
+```lean
+theorem powerRootFrobeniusFactors_equiv
+    {A : Type u} [CommRing A] (p : ℕ) [Fact p.Prime]
+    (D : DeltaStructure p A) (hD : D.IsPerfect) :
+    (powerRootCoefficientFrobeniusEquiv p D hD).trans
+      (powerRootVariableFrobeniusEquiv (A := A) p) =
+    (powerRootPolynomialDelta p hD.p_mul_injective D).frobeniusEquiv
+      (powerRootPolynomialDelta_isPerfect p D hD)
+```
+
+を証明した。これは抽象的な分解の存在ではなく、既存の同じ δ 構造の Frobenius 同型との
+等式である。p 正則性と全体 Frobenius との可換性から、C,V がともに実 δ 自己同型である
+`powerRootCoefficientFrobeniusEquiv_isDeltaHom`、
+`powerRootVariableFrobeniusEquiv_isDeltaHom` も証明した。
+追加の係数環の非零性や正則性は要求せず、p 正則性は hD から供給する。
+
+通常多項式 f について `powerRootCoefficientFrobeniusEquiv_baseMap` は
+C(f(Y₀))=(f.map φ_A)(Y₀)、同 Variable 版は V(f(Y₀))=f(Y₀^p) を述べる。
+モニック性は不要。これにより φ_A による係数変更と、P 全体の Frobenius に含まれる
+指数 p 倍の作用を、同じ入力環と多項式評価の下で区別して追跡できる。
+
+新規 `Andre/DeltaDivisionCoefficientAutComposition.lean` は、任意の係数 δ 自己同型
+ e,f に対して、その raw 包の比較射が合成と両立することを証明した。
+係数・初期変数の公式と δ 射の外延性だけを使い、分母の正則性は要求しない。
+
+```lean
+theorem deltaDivisionCoefficientAutMap_trans
+    (D : DeltaStructure p A) (e f : A ≃+* A)
+    (he : D.IsDeltaHom D e.toRingHom) (hf : D.IsDeltaHom D f.toRingHom)
+    (d : A) (a : σ → A) :
+    (deltaDivisionCoefficientAutMap D f hf (e d) (fun s => e (a s))).comp
+      (deltaDivisionCoefficientAutMap D e he d a) =
+    deltaDivisionCoefficientAutMap D (e.trans f) (hf.comp he) d a
+```
+
+新規 `Andre/PowerRootDivisionFrobeniusFactors.lean` は C,V の δ 互換性を実入力の
+raw 比較へ供給し、`powerRootCoefficientDivisionFrobeniusEquiv` と
+`powerRootVariableDivisionFrobeniusEquiv` を構成する。
+`powerRootDivisionFrobeniusFactors_comp` は、前者の後に後者を適用した環射が
+合成自己同型 C.trans V の raw 比較射と一致することを、上記の一般合成則から証明した。
+任意の分母 d:P と任意族 a:σ→P を扱うため、モニック一元入力にも適用できる。
+
+BS Rem 7.15（著者版 p.62）の原典の φ_A 作用を raw 入力の全体 Frobenius と結ぶ
+具体的な代数計算である。原典にこの成分ごとのコード構成が述べられているわけではなく、
+Prop 7.11・Hodge–Tate 比較を使わない構成のため、係数と指数を別々に検証した。
+完備化後の商との可換性、T=overline(Δ)_S の剰余と pd 包との同定、
+その比較による T/ϖ の忠実平坦性と T の p 正則性は引き続き未完了。
+新しい引用や公開存在定理の追加仮定は加えていない。
+
+対象・集約の `set -o pipefail; lake build` は終了コード 0
+（集約 `SerrePositivity.BhattScholze.Andre.MonicRootedExtension`：4446 jobs）。
+新規 19 公開宣言を `assert_no_sorry` に加えた専用監査は終了コード 0。
+生成宣言を含む 3860 宣言の推移的公理依存は標準 3 公理のみ。
+二成分の同型等式・係数成分の δ 互換性・両成分の多項式評価公式・
+一般 raw 合成則・実入力の raw 合成則の公開型 6 本を `#print` で確認した（終了コード 0）。
