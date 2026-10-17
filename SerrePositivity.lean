@@ -3,6 +3,7 @@ module
 public import SerrePositivity.DifferentialGraded.Derived.ScalarExtensionTensorCoherence
 public import SerrePositivity.DifferentialGraded.Quotient.ScalarExtension
 public import SerrePositivity.DifferentialGraded.Verdier.NullObjects
+public import SerrePositivity.DifferentialGraded.Perfect.CompactConverseTelescope
 
 public import SerrePositivity.DifferentialGraded.Endomorphism.Compatibility
 

@@ -42,3 +42,19 @@ Karoubi を先に取った側は既存 `karoubiNullEnvelope` をそのまま使�
 ## U13d（継続中）
 
 compact ⇒ Perf はまだ未完。引用は採用していない。引用なしの telescope と有限因子分解の経路を検討する。
+
+### U13d2：可算 telescope の有限段階因子分解
+
+- `Perfect/CompactConverseTelescope.lean`：任意の導来対象列 F と遷移射 d に対して、
+  余積上の `1-shift` を定義。compact な始域の Hom 上で単射であることを、
+  各成分への射影と自然数帰納法で証明した。shift 後も随伴の Hom 加法同型で単射。
+- `moduleCompact_telescope_factor`：指定 telescope 三角形への射は有限段階 F n を経由する。
+  `moduleCompact_telescope_retract`：compact な telescope 対象はある F n の retract。
+  有限高さを有限個の cell と同一視していない。
+- 可算添字は `ULift.{u} ℕ`。既存の u-small 余積と compact 性のまま処理し、
+  導来圏全体の smallness や Hom_D の追加仮定を置かない。
+- 対象ビルド：`lake build SerrePositivity.DifferentialGraded.Checks.CompactConverseTelescope` 成功。
+  主要8宣言の公理監査は標準3公理のみ。新規 sorry・axiom・引用なし。
+- 残部：semifree filtration の余極限と telescope の比較、有限高さの無限自由 cell から
+  有限 cell への因子分解。U13d 全体は未完、引用採用の必要性はまだ確定していない。
+- U17a のコミット：`8c9f2e13`。
