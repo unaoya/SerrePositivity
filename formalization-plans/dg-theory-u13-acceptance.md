@@ -67,6 +67,17 @@
 - `Perfect.ChecksRingTopTruncation` 対象ビルド成功（3165 jobs）。
   主要6宣言の公理監査は標準3公理のみ。既存の切断・PerfectComplexのファイルは編集していない。
 
+## U13e.31：有限射影上端被覆のconeの短縮
+
+- `Perfect/RingHomologyCoverCone.lean`：Hᵇ上全射のchain mapと始域Hᵇ⁺¹の零性から、
+  既存cone長完全列を使ってconeのbでのexact性を証明した。
+- 次数bだけに置いた有限射影加群から、[a,b]にある有限射影複体Pへの上端被覆に対し、
+  a<bならconeを[a,b−1]の有限射影複体で表す標準quasiIsoを構成した。
+  U13e.30の良い切断を適用し、上下の次数範囲も明示的に保持する。
+- `Perfect.ChecksRingHomologyCoverCone` 対象ビルド成功（3166 jobs）。
+  主要5宣言の公理監査は標準3公理のみ。
+  retract対象と補対象の被覆をこの操作へ同時に接続する帰納ステップを引き続き実装する。
+
 ## 既存項目の再検証
 
 - finite cell・全Hom射影性・PerfとKaroubi・compact生成・compact⇒Perf・
