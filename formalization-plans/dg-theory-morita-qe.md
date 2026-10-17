@@ -182,6 +182,18 @@
 - `Morita.PerfectKernelImageChecks` ビルド成功（2741 jobs、警告なし）。
   主要6宣言の公理監査は標準3公理のみ。
 
+## U16d.6：実際のkernel作用の評価とU12dの全射自然な比較
+
+- `Morita/PerfectKernelEvaluation.lean`：任意kernelについて全Hom写像・閉零射の評価を計算し、
+  通常作用の評価をbalanced tensor関手と自然同型で比較した。
+- 同じ計算をH⁰へ降ろしてから入力解像度関手で前合成することで、任意の入力射影解像度族について
+  `kernelResolutionDerivedTensor ⋙ moduleDerivedEvaluation` とU12dの導来tensorの自然同型を構成した。
+  標準作用 `kernelDerivedTensorOnBimodule` と実際のPerf制限にも適用した。
+- 対象ごとの計算ではなく、全ての主導来入力射に自然な関手比較である。
+  既存Endomorphismのファイルは読み取り専用で使用し、その評価比較の証明を任意kernelへ一般化した。
+- `Morita.PerfectKernelEvaluationChecks` ビルド成功（2750 jobs、警告なし）。
+  主要9宣言の公理監査は標準3公理のみ。
+
 ## 合同検証と公開入口（2026-10-17）
 
 - 新規10監査対象・公開入口・既存 `Checks.DGFunctorDerivedEquivalence` の12対象を
