@@ -108,6 +108,39 @@ theorem perfectoidIdeal_le_iff_compatible_roots (J : Ideal R) (k : ℕ)
       exact h n
     · exact (Ideal.span_singleton_le_iff_mem J).mpr hp
 
+/-- A p-adically separated ideal quotient detects containment of the perfectoid
+ideal through the original compatible roots. -/
+theorem perfectoidIdeal_le_iff_compatible_roots_of_quotient_isHausdorff
+    (J : Ideal R) [IsHausdorff (Ideal.span {(p : R ⧸ J)}) (R ⧸ J)] :
+    perfectoidIdeal R p hR (ρ 0) ≤ J ↔ ∀ n, ρ n ∈ J := by
+  constructor
+  · intro h n
+    exact h ((compatibleRootIdeal_le_perfectoidIdeal R p hR ρ hρ)
+      (Ideal.mem_span_range_self (x := n)))
+  · intro h s hs
+    let Q := R ⧸ J
+    let q : R →+* Q := Ideal.Quotient.mk J
+    have hroot : SerrePositivity.compatibleRootIdeal ρ ≤ J := by
+      apply Ideal.span_le.mpr
+      rintro _ ⟨n, rfl⟩
+      exact h n
+    apply Ideal.Quotient.eq_zero_iff_mem.mp
+    apply IsHausdorff.haus
+      (inferInstance : IsHausdorff (Ideal.span {(p : Q)}) Q) (q s)
+    intro k
+    obtain ⟨y, hy, z, hz, hsum⟩ := Submodule.mem_sup.mp
+      (perfectoidIdeal_le_compatibleRootIdeal_sup_p_pow R p hR ρ hρ k hs)
+    have hqy : q y = 0 := Ideal.Quotient.eq_zero_iff_mem.mpr (hroot hy)
+    have hqz : q z ∈ (Ideal.span {(p : Q)}) ^ k := by
+      have hm := Ideal.mem_map_of_mem q hz
+      simpa only [Ideal.map_span, Set.image_singleton, map_pow, map_natCast,
+        Ideal.span_singleton_pow] using hm
+    have he : q s = q z := by rw [← hsum, map_add, hqy, zero_add]
+    apply SModEq.zero.mpr
+    change q s ∈ (Ideal.span {(p : Q)}) ^ k • (⊤ : Ideal Q)
+    rw [Ideal.smul_eq_mul, Ideal.mul_top, he]
+    exact hqz
+
 /-- On an arbitrary p-power torsion module, almost zero is detected by
 the action of each compatible root. -/
 theorem perfectoidIdeal_annihilates_iff_compatible_roots
