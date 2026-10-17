@@ -10031,3 +10031,58 @@ BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_
 U12e全体は未受入であり、U12e受入→U16a〜d→U15e分解版の順を維持する。
 共有モデル圏一般論への新しいAPI要求はない。共有ルート・共有監査スクリプト・Perfect/・
 Endomorphism/・ScalarExtension*・Quotient/DerivedComparison*・Verdier/は編集していない。
+
+### 17.218 U12e58：後因子自然性と両因子の全導来圏上の比較（2026-10-17）
+
+**異なるsemifree解像度間の持ち上げ。** `Derived/BimoduleSemifreeLift.lean`は
+既存の射影解像度の`lift`を積dg圏表示の同値で戻す。
+元の後因子間の任意の射を、指定された異なる二つのsemifree解像度間へ持ち上げる。
+その増大squareの主導来圏での可換性と、任意の前因子と合成した後の導来可換性を証明した。
+持ち上げの厳密な可換性や前因子のflatnessは要求しない。
+前項のcylinderによるsourceホモトピー同一視を再利用している。
+
+**後因子の射と計算同型。** `Derived/BimoduleCompositionValueNaturality.lean`は
+既存の導来合成の指定解像度計算自然性を値での計算へ移し、後因子の射を含む可換squareを公開する。
+`Derived/BimoduleMiddleSecondFactor.lean`は、増大と計算の二つの導来可換squareから、
+実際の`derivedMiddleRestrictionComparison`の後因子自然性を導く。
+`Derived/BimoduleMiddleSemifreeSecondFactor.lean`は指定semifree解像度の持ち上げを適用して、
+追加squareの仮定を利用者に要求しない自然性を証明する。
+特に標準解像度による比較射は任意の右K-flat後因子の閉零射と可換である。
+`Derived/BimoduleMiddleSecondFamily.lean`はこれを自然変換の等式へ束ね、
+前因子の全導来圏上の`derivedMiddleRestrictionCanonicalLocalized`についても後因子自然性を証明した。
+局所化の`comp_liftNatTrans`で、局所化前の自然性を保持している。
+
+**後因子も全導来化。** `Derived/BimoduleMiddleKFlatFamily.lean`はsourceの後因子への作用の
+恒等・合成を証明し、右K-flat後因子の圏から前因子の全導来圏上の関手への関手族
+`middleDerivedSourceKFlatFunctor`を構成する。標準比較をこの圏上の自然変換へ束ね、
+source関手族が値ごとの指定準同型を反転することを示した。
+制限された後因子自体のK-flat性を使わず、既存の導来合成と制限の準同型保存を使う。
+`Derived/BimoduleMiddleFullComparison.lean`は右K-flat後因子の指定局所化へ降ろし、
+既存の`derivedRightKFlatReplacement`および`rightKFlatReplacementCounitIso`を通して
+`middleFullDerivedSource`と`middleFullDerivedComparison`を構成した。
+両変数とも既存の全導来bimodule圏上にあり、後因子の任意の導来射・前因子の任意の導来射に自然。
+targetは既存の`derivedBimoduleComposeFunctor`そのものである。
+右K-flat局所化前で標準比較へ戻る計算式と、全導来後因子での置換による成分計算式も公開した。
+局所Hom K-flat性の仮定は終端Eだけで、C・Dや制限後の因子へ追加していない。
+sourceを既存の積dg圏表示の導来制限と導来合成の合成に同定する比較は、別途残す。
+今回構成したのは自然変換であり、準同値Fの場合の自然同型性は未証明である。
+既存公開APIの名前・型・定義は変更していない。
+
+**検証。** 新規`Checks.DGBimoduleMiddleFullComparison`は独立した四つの対象宇宙、
+C・Dの局所Hom-flat性および制限後のK-flat仮定なしでの全導来比較、
+両変数それぞれの任意の導来射に対する自然性、ZMod 2の場合を検査した。
+既存の解像度独立性・ホモトピー・中間圏自然性・tensor制限・解像度同値・導来随伴・単位・制限・
+導来bimodule五角形・StageEight・StageSeven・Spectra.StageTwoとの統合ビルド成功
+（3438 jobs、警告なし）。主要37宣言の直接公理監査は重複・欠落なく標準3公理以内。
+新規監査累計4294宣言。今回の8受入Leanファイルのsorry・admit・新規axiom・資源上限変更は0件。
+採用済み引用0件。Lean v4.35.0-rc4とMathlib manifest/HEAD
+`e6bbacd0e1b7307ff6e17da09cd2455f60804fa6`を再確認した。
+全体文書検査は20 Markdown・320 exposition参照を検査し、担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+未解決参照1件で失敗した。計画書のローカルリンクと担当差分の空白検査は成功。
+
+**次工程と残件。** sourceを既存の導来制限と導来合成の合成へ比較し、準同値の場合の可逆性を証明する。
+これをdg圏解像度変更の比較へ適用し、導来合成・対角単位・結合子の整合性とcoherenceを仕上げる。
+U12e全体は未受入であり、受入後にU16a〜d、U15e分解版へ進む。
+共有モデル圏一般論への新しいAPI要求はない。共有ルート・共有監査スクリプト・Perfect/・
+Endomorphism/・ScalarExtension*・Quotient/DerivedComparison*・Verdier/は編集していない。
