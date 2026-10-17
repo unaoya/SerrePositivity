@@ -15,7 +15,7 @@ public import SerrePositivity.DifferentialGraded.Morita.KernelNaturality
 
 ## 使われ方
 U16aの主導来作用とU16b/dのgraph・Perf比較の共通入口。
-公開契約はformalization-plans/dg-theory-morita.md冒頭に従う。
+受入範囲は`formalization-plans/dg-theory-m5-status.md`のU16の行に従う。
 -/
 @[expose] public section
 noncomputable section

@@ -14,7 +14,7 @@ public import Mathlib.Data.ZMod.Basic
 局所Hom条件なしのdg圏分解経路の受入ではない。共有ルートをimportしない。
 
 ## 使われ方
-formalization-plans/dg-theory.mdのU12e-local受入表からビルド・監査を再現する。
+`formalization-plans/dg-theory-m5-status.md`のU12e-local受入表からビルド・監査を再現する。
 -/
 @[expose] public section
 noncomputable section

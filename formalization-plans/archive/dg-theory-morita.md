@@ -1,5 +1,8 @@
 # 導来Morita：このチャットのU16a・U16c統合
 
+> **アーカイブ（2026-10-18）**：M5（dg 理論）は 2026-10-17 に完了（中心作用・群作用は M9 へ）。現状と再開点は [M5 の完了状況](../dg-theory-m5-status.md)。将来は削除する予定で、以下は当時の計画と実施記録のまま。
+
+
 ## U16a 公開 API（2026-10-17固定）
 
 名前空間は `SerrePositivity.DifferentialGraded.Morita`。
@@ -903,5 +906,5 @@ U16aは§17.273、U16cの実際の一般右随伴との一致とunit/counitは§
 Perf作用のcoherenceは§17.275、最終照合はdg-theory.md §17.282。
 U16dの残接続は保留し、中心作用と群作用はM9で扱う。
 過去の「全体未受入」は当時の履歴。受入範囲・全保留一覧とM9の公開入口は
-[dg-theory-m5-status.md](dg-theory-m5-status.md)を参照する。
+[dg-theory-m5-status.md](../dg-theory-m5-status.md)を参照する。
 新しい実装単位には着手せず停止する。既存公開名・型の変更なし。

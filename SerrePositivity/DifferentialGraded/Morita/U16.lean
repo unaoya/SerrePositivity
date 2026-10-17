@@ -21,5 +21,5 @@ U16dの局所化係数変更への正方形は通常代表とhα・hAug・hP'を
 中心作用と群作用はM9で扱う。各定理のモデル条件・局所Hom条件・生成性の入力はそのまま保持する。
 
 ## 使われ方
-U16の最終統合先。受入状態の正本はformalization-plans/dg-theory.md §17と各担当記録。
+U16の最終統合先。受入状態の正本は`formalization-plans/dg-theory-m5-status.md`。
 -/

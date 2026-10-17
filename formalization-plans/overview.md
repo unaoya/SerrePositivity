@@ -1,6 +1,6 @@
 # 残る形式化の全体像
 
-作成日：2026-10-13。更新：2026-10-16（§2・§3を現状へ更新）。状態：現状と計画の整理。
+作成日：2026-10-13。更新：2026-10-18（§2・§3を現状へ更新）。状態：現状と計画の整理。
 
 ## 1. この文書の範囲
 
@@ -19,17 +19,20 @@
 perfect 複体・ランク商による実現を実装している。
 利用する標準可換環論と、具体的な長さ代数から論文の主定理への接続も実装されている。
 
-主定理の未証明依存は、2026-10-16 の公理監査で **5件** である。
+主定理の未証明依存は、2026-10-18 の公理監査で **4件** である。
 
 - Bhatt–Scholze Thm 1.17(1)（整代数の perfectoid 化の存在）：`BhattScholze.Inputs.exists_perfectoidization_of_integral`。
-- CLMST の二結果：`CLMST.Inputs.corollary_4_0_4`、`CLMST.Inputs.proposition_2_4_7`。
+- Bhatt–Scholze Cor 8.12（perfectoid 化の切除、環としての帰結）：`BhattScholze.Inputs.perfectoidization_excision_isPullback`。
 - 保留中の K 理論の二件：`Section4.supportedRankK0_descent`、`theorem_3_1_K0`。
+
+BS の二件は [∞ 圏の計画](infinity-categories.md) の界面に保留して解消する方針（2026-10-17 決定）。
 
 `main_statement` と `core_statement` に直接の `sorry` はないが、これらの入力に依存する。
 引用1・2・3は実構成へ置換した。引用4は剰余標数零の対角線論法、引用6はパラメータ Koszul 複体の
 初等的な証明で、主定理が依存しないようにした（どちらも `Inputs` の宣言自体は `sorry` のまま残る）。
 引用5は巡回 Adams 作用素で証明した（2026-10-15）。
 BS Cor 7.3／Thm 7.4 の全射性は、André の補題を使わない根添加の構成で証明した（2026-10-16）。
+André の補題（BS Thm 7.14）、BS Lemma 10.3・Remark 10.7、CLMST の Prop 2.4.7・Cor 4.0.4 も証明した（2026-10-17）。
 実装変更後の依存は [公理監査](../scripts/audit_axioms.lean) で再確認する。
 
 ## 3. 外部引用の一覧
@@ -44,7 +47,7 @@ BS Cor 7.3／Thm 7.4 の全射性は、André の補題を使わない根添加�
 | 6（主定理から除外） | Roberts の Frobenius 高次ホモロジー消滅 | パラメータ Koszul 複体の場合を初等的に証明し、主定理は依存しない | [初等版の計画](archive/frobenius-koszul-elementary.md)。一般形は [専用計画](archive/frobenius-homology.md) |
 | 7（解消済み） | 標準パラメータ根の塔の完備化が integral perfectoid | Witt係数表示から条件を供給し、有限段Frobenius核・実際のtilt・Fontaine核から証明 | `RootTower/WittPresentation`。旧Inputsは証明済みの互換入口 |
 | 8 | 有限代数の perfectoidization の存在 | 混標数の具体的な代数を作る。現在は BS Thm 1.17(1) として残る | [BS](bhatt-scholze.md) |
-| 9〜11 | perfectoid ideal・Koszul ホモロジー・正規化長さの公式 | 混標数の長さの二性質。現在は CLMST Prop 2.4.7・Cor 4.0.4 の二件に集約 | [CLMST](clmst.md) |
+| 9〜11（解消済み） | perfectoid ideal・Koszul ホモロジー・正規化長さの公式 | CLMST Prop 2.4.7・Cor 4.0.4 を証明（2026-10-17）。その証明が BS Cor 8.12 を引用する | [CLMST](clmst.md)、[BS](bhatt-scholze.md) |
 | 12（解消済み） | 有限生成加群で正規化長さ `λ∞ = λ*` | Noether 局所基底の有限段計算から証明済み。有限表示の場合も一致 | `FiniteGeneration.lean`。引用としては残らない |
 | 13（解消済み） | 正規化長さの短完全列での加法性 | Noether局所基底の有限段評価から一般加法性を証明 | 共通の長さ層。引用としては残らない |
 

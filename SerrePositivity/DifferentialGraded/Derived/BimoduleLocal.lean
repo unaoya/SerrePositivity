@@ -17,5 +17,5 @@ public import SerrePositivity.DifferentialGraded.Derived.BimoduleCompositionValu
 
 ## 使われ方
 Moritaの局所版とChecks.U12eLocalから利用する。一般分解の入口Resolution.Generalは経由しない。
-受入表・再現コマンド・中断した一般経路はformalization-plans/dg-theory.md §17を参照。
+受入表と中断した一般経路は`formalization-plans/dg-theory-m5-status.md`を参照。
 -/

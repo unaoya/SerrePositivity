@@ -16,7 +16,7 @@ kernel自体の準同型局所化への降下と一般右随伴は、このフ�
 
 ## 使われ方
 U16aのkernelDerivedTensorFunctorの構成と、U16bのgraph作用比較の計算に使う。
-公開契約と実装状態はformalization-plans/dg-theory-morita.mdを参照。
+受入範囲は`formalization-plans/dg-theory-m5-status.md`を参照。
 -/
 @[expose] public section
 noncomputable section

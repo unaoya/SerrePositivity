@@ -1,5 +1,8 @@
 # U16c：一般 kernel の Perf 上の Morita 判定
 
+> **アーカイブ（2026-10-18）**：M5（dg 理論）は 2026-10-17 に完了（中心作用・群作用は M9 へ）。現状と再開点は [M5 の完了状況](../dg-theory-m5-status.md)。将来は削除する予定で、以下は当時の計画と実施記録のまま。
+
+
 ## 現在の受入状態（2026-10-17：Perf 判定と逆を完了）
 
 公開入口は `SerrePositivity.DifferentialGraded.Morita.CriterionPerf`。

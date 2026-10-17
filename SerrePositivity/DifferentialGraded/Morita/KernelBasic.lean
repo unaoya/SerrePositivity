@@ -16,7 +16,7 @@ DからEの右加群導来圏への作用を表すkernelを、右E・左Dの導�
 
 ## 使われ方
 U16aの作用・随伴・合成と、U16bのgraph比較から利用する。
-共有契約はformalization-plans/dg-theory-morita.md冒頭を参照。
+受入範囲は`formalization-plans/dg-theory-m5-status.md`を参照。
 -/
 @[expose] public section
 noncomputable section

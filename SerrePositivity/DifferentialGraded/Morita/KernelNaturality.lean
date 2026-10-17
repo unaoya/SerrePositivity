@@ -14,7 +14,7 @@ public import SerrePositivity.DifferentialGraded.Morita.KernelResolution
 
 ## 使われ方
 U16aの主導来kernel上の関手族を構成するための通常・H⁰の自然性。
-公開型と進捗はformalization-plans/dg-theory-morita.mdを参照。
+受入範囲は`formalization-plans/dg-theory-m5-status.md`を参照。
 -/
 @[expose] public section
 noncomputable section

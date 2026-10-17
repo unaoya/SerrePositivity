@@ -13,7 +13,7 @@ kernelの向き、主導来合成、graph作用との一致の公開契約を確
 一般右随伴など「型のみ確定」の予定宣言の存在を証明する検査ではない。
 
 ## 使われ方
-formalization-plans/dg-theory-morita.mdの公開API契約を再現する入口。
+`formalization-plans/dg-theory-m5-status.md`のU16の公開APIを再現する入口。
 -/
 @[expose] public section
 noncomputable section

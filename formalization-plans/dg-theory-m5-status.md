@@ -1,7 +1,7 @@
 # M5（dg一般論）の完了状況とM9への引継ぎ
 
 2026-10-17、ユーザー決定。**M5は中心作用と群作用を除いて完了。**
-U16全体の受入は[dg-theory.md §17.282](dg-theory.md#17282-u16全体受入とm5完了範囲の確定2026-10-17)。
+U16全体の受入は[dg-theory.md §17.282](archive/dg-theory.md#17282-u16全体受入とm5完了範囲の確定2026-10-17)。
 U16dは担当の最終受入表の範囲で完了し、残接続を保留するという線引きによる。
 旧計画の全一般化や中間記録の「未完」を、今回すべて証明したという意味ではない。
 中心作用と群Gの作用はM9の手順9・10で形を決め、M9で実装・比較する。
@@ -14,7 +14,7 @@ U16dは担当の最終受入表の範囲で完了し、残接続を保留する�
 ## (a) U0〜U17の受入表
 
 入口のパスは `SerrePositivity/DifferentialGraded/` 以下。
-記録の「本計画」は[dg-theory.md](dg-theory.md)を指す。
+記録の「本計画」は当時の計画 [archive/dg-theory.md](archive/dg-theory.md) を指す。
 
 | 単位 | 現在の状態 | 記録ファイル・節 | 主要な入口 |
 | --- | --- | --- | --- |
@@ -33,15 +33,15 @@ U16dは担当の最終受入表の範囲で完了し、残接続を保留する�
 | U12a/b/c/d：K-flat・導来tensor | 受入済み | 本計画§17.59・70・72・73 | Tensor/KFlatComplex.lean、Derived/TensorBifunctor.lean |
 | U12e-local | 受入済み、局所Hom K-flat条件を保持 | 本計画§17.249 | Derived/BimoduleLocal.lean、Checks/U12eLocal.lean |
 | U12e-general（R1〜R7） | 部分実装のまま中断・未受入 | [一般版棚卸し](dg-theory-u12e-general-inventory.md)、本計画§17.249 | Resolution/General.leanと棚卸しの既存パス（主線へ追加importしない） |
-| U12f：係数変更 | 明示条件下で受入済み | [係数変更記録](dg-theory-scalar-extension.md) | Tensor/ScalarExtension.lean、Derived/ScalarExtensionTensor.lean |
-| U13：perfect・compact・enhancement | U13a〜e受入済み | [U13受入記録](dg-theory-u13-acceptance.md) | Perfect/CompactConverse.lean、Perfect/SmallEnhancementTriangulated.lean、同記録の環比較 |
-| U14：endomorphism表示 | U14a〜c受入済み | [U14記録](dg-theory-u14.md)、最終受入 | Endomorphism/の再構成・Perf・全導来比較（下記公開名） |
+| U12f：係数変更 | 明示条件下で受入済み | [係数変更記録](archive/dg-theory-scalar-extension.md) | Tensor/ScalarExtension.lean、Derived/ScalarExtensionTensor.lean |
+| U13：perfect・compact・enhancement | U13a〜e受入済み | [U13受入記録](archive/dg-theory-u13-acceptance.md) | Perfect/CompactConverse.lean、Perfect/SmallEnhancementTriangulated.lean、同記録の環比較 |
+| U14：endomorphism表示 | U14a〜c受入済み | [U14記録](archive/dg-theory-u14.md)、最終受入 | Endomorphism/の再構成・Perf・全導来比較（下記公開名） |
 | U15a/b/c：明示的dg商と普遍性 | 受入済み | 本計画§17.138・144 | Quotient/Category.lean、Quotient/Universal.lean |
-| U15d：path係数変更 | 受入済み | [係数変更記録](dg-theory-scalar-extension.md) | Quotient/ScalarExtension.lean |
-| U15e：局所K-flat版 | 受入済み | [局所商記録](dg-theory-u17a-u13d.md)、U15e27・最終照合 | Quotient/DerivedComparisonEquivalence.lean、DerivedComparisonPerfect.lean |
+| U15d：path係数変更 | 受入済み | [係数変更記録](archive/dg-theory-scalar-extension.md) | Quotient/ScalarExtension.lean |
+| U15e：局所K-flat版 | 受入済み | [局所商記録](archive/dg-theory-u17a-u13d.md)、U15e27・最終照合 | Quotient/DerivedComparisonEquivalence.lean、DerivedComparisonPerfect.lean |
 | U15e：分解版 | 中断、今回作らない | 本計画§17.249・282 | U12e-general完成後の旧計画のみ（完成入口なし） |
-| U16a/b/c/d | ユーザー指定の範囲で全体受入済み | 本計画§17.282、[Morita統合](dg-theory-morita.md)、[Perf判定](dg-theory-morita-criterion.md)、[U16b/d最終表](dg-theory-morita-qe.md) | Morita/U16.lean、U16Checks.lean、ScalarExtensionAcceptanceChecks.lean |
-| U17a | 受入済み | [局所商記録](dg-theory-u17a-u13d.md)、U17a | Verdier/、Quotient/DerivedComparisonEquivalence.lean |
+| U16a/b/c/d | ユーザー指定の範囲で全体受入済み | 本計画§17.282、[Morita統合](archive/dg-theory-morita.md)、[Perf判定](archive/dg-theory-morita-criterion.md)、[U16b/d最終表](archive/dg-theory-morita-qe.md) | Morita/U16.lean、U16Checks.lean、ScalarExtensionAcceptanceChecks.lean |
+| U17a | 受入済み | [局所商記録](archive/dg-theory-u17a-u13d.md)、U17a | Verdier/、Quotient/DerivedComparisonEquivalence.lean |
 | U17b：局所perfect・Morita比較 | 最終担当表の範囲で受入済み | 同記録U17b1〜9・完了監査 | Verdier/U17.lean、KernelComparisonNaturality.lean |
 | U17c：既存順序交換・論文比較 | 受入済み | 同記録U17c1〜2・完了監査 | Verdier/OrderSquare.lean |
 | U17d：係数変更・支持・retractの個別図式 | 最終担当表の範囲で受入済み。中心・G作用はM9、高次整合性は保留 | 同記録U17d1〜8・完了監査 | Verdier/U17.lean、SupportSquare.lean、RetractSquare.lean、ScalarDirectCompletion.lean |
@@ -74,7 +74,7 @@ U16dは担当の最終受入表の範囲で完了し、残接続を保留する�
 | U16d：U12f成分同定 | 同上 | `scalarKernelTensorBaseChange`、`scalarKernelOutputEvaluationIso`、`scalarKernelOutputLeft_model`・`scalarKernelOutputRight_model`、`scalarKernelEvaluationAugmentation_relativeKFlat`。未コミットScalarExtensionKernelOutputComponents.leanは型照合とtensor写像簡約でビルド未完、受入対象外として保持 |
 | U16d：合成kernelの係数変更比較 | 同上 | `scalarKernelDerivedExtension`、`scalarKernelLocalizedCompositionSquare`、`scalarPerfectSquareComposition_eq`。貼合せ作用図式は完成。元の合成kernelの係数変更と変更済み二kernelの合成とのkernel同型・既存正方形との一致は保留 |
 
-U16dの正確な仮定と再開点は担当の[最終受入記録](dg-theory-morita-qe.md)を正本とする。
+U16dの正確な仮定と再開点は担当の[最終受入記録](archive/dg-theory-morita-qe.md)を正本とする。
 hπとhPN・hP'を代用しない。未検証ファイルは公開入口・受入ビルドから除外されている。
 過去の調査§17.255・263・271は保存し、方針(ii)を維持する。
 

@@ -1,5 +1,8 @@
 # 完全 F_p 環の Tor 独立性
 
+> **アーカイブ（2026-10-18）**：完了。要点は `CommutativeAlgebra/PerfectTorIndependence/Basic.lean` の docstring。将来は削除する予定で、以下は当時の計画と実施記録のまま。
+
+
 ## 担当と主張（2026-10-17）
 
 本レーンは BS 著者版 `paper/refs/BS-prisms-author.pdf` の Lemma 10.3
