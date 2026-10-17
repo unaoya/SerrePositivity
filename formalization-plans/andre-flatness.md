@@ -7030,3 +7030,124 @@ f=1 の場合の同じ H の零環性も A1-b で処理されているため、�
 A1-c2 との最終合流は未完了。並列担当のファイルは編集していない。
 
 監査：既存の9宣言の `assert_no_sorry` と個別9本の `#check` は終了コード0。専用監査は `André monic root audit passed: 8126 declarations, standard axioms only.`。型確認ログは `/tmp/andre-e183-retry-check.log`。同じ元の H と標準射を保つことを確認した。
+
+
+## A1-f：向きなし prism への一般化
+
+2026-10-17。A1-f として新規 `Andre/Unoriented/Category.lean` と
+`Andre/Unoriented/Initial.lean` を実装し、同ディレクトリの `Audit.lean` で専用監査した。
+E1.75・E1.80〜E1.82 と「A1-f への受渡し」の既存公開名・型・標準入力作用は変更していない。
+BS Thm 1.17(1) と Cor 8.12、および既存の `Andre/` ファイルには触れていない。
+
+### 対象と射
+
+名前空間は `SerrePositivity.BhattScholze.Andre`。共通設定は
+`{p : ℕ} [Fact p.Prime] {A S : Type u} [CommRing A] [CommRing S]`、
+`W : OrientedPrism p A`、`c : A ⧸ W.ideal →+* S`。
+`BoundedPrismInputUnoriented W c : Type (u+1)` は以下のデータ・条件を持つ。
+
+```lean
+ring : CommRingCat.{u}
+delta : DeltaStructure p ring
+base : A →+* ring
+base_delta : W.deltaStructure.IsDeltaHom delta base
+ideal : Ideal ring
+ideal_eq : ideal = Ideal.span {base W.generator}
+regular : Function.Injective (fun x : ring => base W.generator * x)
+complete_p : DerivedCompletion.IsModuleComplete ring (p : ring) (ModuleCat.of ring ring)
+complete_d : DerivedCompletion.IsModuleComplete ring (base W.generator) (ModuleCat.of ring ring)
+p_mem : (p : ring) ∈ ideal ⊔ ideal.map delta.frobeniusLift
+base_ideal : W.ideal ≤ ideal.comap base
+input : S →+* ring ⧸ ideal
+input_base : input.comp c = Ideal.quotientMap ideal base base_ideal
+bounded : ∃ N : ℕ, ∀ n : ℕ, ∀ x : ring ⧸ ideal,
+  (p : ring ⧸ ideal)^n*x = 0 → (p : ring ⧸ ideal)^N*x = 0
+```
+
+イデアル J 自体を保持するが、独立した生成元はデータとして持たない。
+J が基底の d の像で生成されることを `ideal_eq` で要求し、正則性はこの主イデアルの
+Cartier 条件として与える。導来完備性は既存 `OrientedPrism` と同じ p・d の表示を使う。
+BS Def 3.2（著者版 pp.28–29）、Lemma 3.5（p.29）、Prop 3.13（pp.33–35）を確認した。
+Prop 3.13 の普遍性を引用として導入せず、既存の証明済み初期性を使う。
+B2 の完全 prism と perfectoid の対応は既存の向き付き構造を使用しており、今回も
+完全性を標的へ課さず、基底 W のみに要求する。
+
+`BoundedPrismInputUnoriented.orient X : BoundedPrismInput W c` は、生成元を
+`X.base W.generator` とする。`orient_generator` はこの等式、`orient_ideal` は
+`(orient X).prism.ideal = X.ideal` を証明する。入力は `Ideal.quotEquivOfEq X.ideal_eq`
+に沿って標準商へ移す。射は `orient X ⟶ orient Y`、すなわち δ・イデアル・基底・入力を
+保つ環射であり、生成元の厳密保存を追加しない。この射に既存の恒等射・合成を使って圏を作る。
+
+### 忘却・標準的な向き・圏同値
+
+`hW : W.deltaStructure.IsPerfect` の下で、公開型は次のとおり。
+以下の補助名は `BoundedPrismInputUnoriented` 名前空間内。
+
+```lean
+orientFunctor : BoundedPrismInputUnoriented W c ⥤ BoundedPrismInput W c
+forget hW (X : BoundedPrismInput W c) : BoundedPrismInputUnoriented W c
+orientationIso hW (X : BoundedPrismInput W c) : orient (forget hW X) ≅ X
+forgetFunctor hW : BoundedPrismInput W c ⥤ BoundedPrismInputUnoriented W c
+equivalence hW : BoundedPrismInput W c ≌ BoundedPrismInputUnoriented W c
+```
+
+`forget` は元の台環・δ・イデアル・基底環射・入力作用・有界性をそのまま保つ。
+`W.isDistinguished_of_perfect hW` と既存の
+`boundedPrismHom_generator_span`・`boundedPrismHom_generator_regular`・
+`boundedPrismHom_generator_complete` を使い、J=(d)B と基底の像の正則性・完備性を得る。
+これらは `existsUnique_boundedPrismHom_generator_unit` を再利用した証明であり、
+標的の完全性や p 正則性を前提に残さない。
+`orientationIso` の往復と同値の単位・余単位はすべて台環上の恒等環射。
+`forgetFunctor_map_toRingHom` は忘却関手が台の環射を変更しないことを証明する。
+各向きなし対象 X は、同値の余単位により `forget hW (orient X)` と同型である。
+
+### 向きなし圏での初期性の公開型
+
+一般の移送は次の型で公開した。
+
+```lean
+BoundedPrismInput.initial_unoriented
+    (hW : W.deltaStructure.IsPerfect)
+    (X : BoundedPrismInput W c) (hX : IsInitial X) :
+  IsInitial (BoundedPrismInputUnoriented.forget hW X)
+```
+
+元の正次数モニック源についての最終公開型は、名前空間
+`SerrePositivity.BhattScholze.Andre` 内で正確に次のとおり。
+
+```lean
+powerRootPrismMonicSourceInput_initial_unoriented
+    (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
+    (f : Polynomial A) (hf : f.Monic) (hdeg : 0 < f.natDegree) :
+  IsInitial (BoundedPrismInputUnoriented.forget hW
+    (powerRootPrismMonicSourceInputObjectOfMonicPositive W hW f hf hdeg))
+```
+
+E1.80 の元の H と、完備してから f で割る `PowerRootMonicCompletedInput` の標準作用を保つ。
+`hreg`・`hBound`・`hpR` を追加仮定として残さない。
+同じ宇宙 u・固定完全基底 W 上で J=(d)B を満たす対象についての結果である。
+基底を動かした一般 Cartier イデアルの局所化降下や、絶対 prismatic site 全体の定式化まで
+完了したとは数えない。E1.82 の絶対入力の既存公開名も変更していない。
+
+### 検証と採用ファイル
+
+すべて `set -o pipefail` 付きで実行した。
+
+- 対象ビルド：`lake build SerrePositivity.BhattScholze.Andre.Unoriented.Initial`、
+  終了コード0（4393 jobs）。新規実装モジュールの警告なし。
+- 専用監査：`lake env lean SerrePositivity/BhattScholze/Andre/Unoriented/Audit.lean`、
+  終了コード0。公開13宣言の `assert_no_sorry`、同値と最終初期性の型の固定、
+  実装2モジュールの生成宣言を含む80宣言の推移的公理検査を実施した。
+  許可公理は `propext`・`Classical.choice`・`Quot.sound` のみ。
+- 集約ビルド：`lake build SerrePositivity SerrePositivity.BhattScholze.Andre.Unoriented.Initial`、
+  終了コード0（7214 jobs）。既存ファイル由来の警告は保持した。
+- ログ：`/tmp/andre-unoriented-initial.log`、`/tmp/andre-unoriented-audit.log`、
+  `/tmp/andre-unoriented-aggregate.log`。
+
+作業中に同名の構造を定義する別チャットの `Unoriented/InputCategory.lean` が現れた。
+ユーザーの明示回答により、本チャットの `Category.lean`・`Initial.lean`・`Audit.lean` を採用する。
+別チャットのファイルは編集・削除・取り込みしていない。
+合流時の import は `SerrePositivity.BhattScholze.Andre.Unoriented.Initial` とし、
+同名の別実装 `InputCategory` と併用しない。ルート集約ファイルへの import 追加は担当側に残す。
+本節は既存の他担当節を変更せず末尾に追記した。保存対象は新規3ファイルと本節だけとし、
+`git commit --only` で他担当の差分を巻き込まず保存する。
