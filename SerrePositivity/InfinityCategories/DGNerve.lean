@@ -1,4 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.DGNerve.CospanJoinCells
+public import SerrePositivity.InfinityCategories.DGNerve.SelectedFaceData
+public import SerrePositivity.InfinityCategories.DGNerve.SelectedFacesGluing
 public import SerrePositivity.InfinityCategories.DGNerve.PullbackHomLift
 public import SerrePositivity.InfinityCategories.DGNerve.ZeroObject
 public import SerrePositivity.InfinityCategories.DGNerve.Checks

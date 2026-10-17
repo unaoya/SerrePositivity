@@ -791,3 +791,22 @@ Hom(X,B)、Hom(X,C) の同次数成分と Hom(X,D) の次数 n 成分へ A 線�
 公理監査は標準三公理の範囲内。正確な公開型・前提は計画 §5 の N7c1 に記録した。
 まだ実際の slice 境界から右辺の整合条件を導いておらず、境界全体との一致も未検証。
 `IsLimitCone`・`IsPullbackSquare` の証明と N7d・N7e は未完了。
+
+
+## N7.4：cospan のセルと部分境界の成分回収（2026-10-18）
+
+任意の `n : ℕ` について、`join Δ[n] Λ[2,2]` を二つの `Δ[n+2]` で表示する
+`cospanJoin_isPushout` を証明した。共通面は `δ ((Fin.last (n+1)).castSucc)`、
+先頭の面 `j` の包含は大きい単体の `δ (j.castAdd 2)` と可換。
+`joinStdSimplexIso_inl`・`joinStdSimplexIso_inr` は左右の頂点の番号を明示する。
+
+`SelectedFaces.region S` は「選んだ頂点 `j ∈ S` のいずれかを避ける単体」の部分複体。
+`SelectedFaces.desc` は全ての共通の制限で一致する面の族を貼り合わせ、`desc_face` は元の面を復元する。
+`CoversVertices S := ∀ k, ∃ j ∈ S, j ≠ k` の下で対象族を回収し、
+`recoverHom` は `hknown : ∃ j ∈ S, j ∉ I` を満たす部分集合の斉次成分を取り出す。
+`recoverHom_heq_face` により、この値は I を含む任意の選んだ面の成分と異種等号で一致する。
+N2 の順序付き列挙と面による分解の証明を、ホーン以外の部分境界でも使える形にした。
+
+この保存単位は成分回収の準備まで。実際の slice 境界の面の族の整合性、
+未知六成分の残差恒等式、充填単体の方程式と境界一致、`IsPullbackSquare` は未証明。
+N7c〜N7e は未完了。公開型・前提・監査結果は計画 §5 の N7c2 に記録する。

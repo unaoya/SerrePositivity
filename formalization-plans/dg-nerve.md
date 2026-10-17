@@ -6402,6 +6402,372 @@ lemma pullbackHomBoundaryLift_differential (g : B ⟶ D) (h : C ⟶ D) (n : ℤ)
 Core・既存 dg 層のファイルは編集せず、ユーザーが追記済みの §7 はそのまま保持してコミットに混ぜない。
 N7a と N7b の複体版の成果を維持し、承認待ちをせず N7c の直接の充填へ継続する。
 
+### N7c2：cospan の標準セルと部分境界の成分回収（2026-10-18）
+
+任意次元の cospan の join の二セルの pushout、可変因子の面との可換性を証明した。
+N2 の回収法を選んだ面の和へ拡張し、面の族の貼り合わせ、対象と斉次成分の回収、
+回収の選択独立性を証明した。既知成分の回収に必要な前提を全て型に示した補助結果であり、
+実際の slice 境界への適用と未知六成分の方程式の解決を完成とは数えない。
+
+前提・規約：単体集合のみの宣言の宇宙は `u`。dg 圏の成分では
+`{A : Type u} [CommRing A] {D : Type v} [DGCategory A D]`、宇宙は `max u v`。
+`S` は既知の面番号の有限集合、`CoversVertices S := ∀ k, ∃ j ∈ S, j ≠ k`。
+`recoverHom` は `hknown : ∃ j ∈ S, j ∉ I` の下でのみ定義する。
+`Compatible` は任意の共通の順序写像への制限で二面の単体が一致する条件。
+その条件付き貼り合わせを `IsPullbackSquare` の証明の代用とはしていない。
+
+公開宣言の正確なソース型（各宣言の直前の節変数は上記の通り）：
+
+`SerrePositivity.InfinityCategories.DGNerve.hom_to_stdSimplex_ext_vertices`
+
+```lean
+lemma hom_to_stdSimplex_ext_vertices {X : SSet.{u}} {n : ℕ}
+    {f g : X ⟶ Δ[n]} (h : ∀ x : X _⦋0⦌, f.app _ x = g.app _ x) : f = g
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.join_hom_to_stdSimplex_ext`
+
+```lean
+lemma join_hom_to_stdSimplex_ext {K L : SSet.{u}} {n : ℕ}
+    {f g : join K L ⟶ Δ[n]} (hl : joinInl K L ≫ f = joinInl K L ≫ g)
+    (hr : joinInr K L ≫ f = joinInr K L ≫ g) : f = g
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.joinLeftOrderHom`
+
+```lean
+def joinLeftOrderHom (p q : ℕ) : Fin (p + 1) →o Fin (p + q + 2)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.joinRightOrderHom`
+
+```lean
+def joinRightOrderHom (p q : ℕ) : Fin (q + 1) →o Fin (p + q + 2)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.joinStdSimplexIso_inl`
+
+```lean
+lemma joinStdSimplexIso_inl (p q : ℕ) :
+    joinInl (Δ[p] : SSet.{u}) Δ[q] ≫ (joinStdSimplexIso p q).hom =
+      SSet.stdSimplex.map (SimplexCategory.mkHom (joinLeftOrderHom p q))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.joinStdSimplexIso_inr`
+
+```lean
+lemma joinStdSimplexIso_inr (p q : ℕ) :
+    joinInr (Δ[p] : SSet.{u}) Δ[q] ≫ (joinStdSimplexIso p q).hom =
+      SSet.stdSimplex.map (SimplexCategory.mkHom (joinRightOrderHom p q))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.succAbove_castAdd_two`
+
+```lean
+lemma succAbove_castAdd_two {n : ℕ} (j : Fin (n + 2)) (i : Fin (n + 1)) :
+    (j.castAdd 2).succAbove (i.castAdd 2) = (j.succAbove i).castAdd 2
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.joinStdSimplexIso_left_face`
+
+```lean
+lemma joinStdSimplexIso_left_face (n : ℕ) (j : Fin (n + 2)) :
+    joinMap (SSet.stdSimplex.δ j) (𝟙 (Δ[1] : SSet.{u})) ≫ (joinStdSimplexIso (n + 1) 1).hom =
+      (joinStdSimplexIso n 1).hom ≫ SSet.stdSimplex.δ (j.castAdd 2)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.joinStdSimplexIso_right_last`
+
+```lean
+lemma joinStdSimplexIso_right_last (n : ℕ) :
+    joinMap (𝟙 (Δ[n] : SSet.{u})) (SSet.stdSimplex.δ (0 : Fin 2)) ≫
+        (joinStdSimplexIso n 1).hom =
+      (joinStdSimplexIso n 0).hom ≫
+        SSet.stdSimplex.δ ((Fin.last (n + 1)).castSucc)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanJoinLeft`
+
+```lean
+def cospanJoinLeft (n : ℕ) : (Δ[n + 2] : SSet.{u}) ⟶ join Δ[n] (SSet.horn 2 2)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanJoinRight`
+
+```lean
+def cospanJoinRight (n : ℕ) : (Δ[n + 2] : SSet.{u}) ⟶ join Δ[n] (SSet.horn 2 2)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanJoin_isPushout`
+
+```lean
+lemma cospanJoin_isPushout (n : ℕ) :
+    IsPushout (SSet.stdSimplex.δ ((Fin.last (n + 1)).castSucc))
+      (SSet.stdSimplex.δ ((Fin.last (n + 1)).castSucc))
+      (cospanJoinLeft.{u} n) (cospanJoinRight n)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanJoinLeft_face`
+
+```lean
+lemma cospanJoinLeft_face (n : ℕ) (j : Fin (n + 2)) :
+    SSet.stdSimplex.δ (j.castAdd 2) ≫ cospanJoinLeft.{u} (n + 1) =
+      cospanJoinLeft n ≫ joinMap (SSet.stdSimplex.δ j) (𝟙 (SSet.horn 2 2 : SSet.{u}))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanJoinRight_face`
+
+```lean
+lemma cospanJoinRight_face (n : ℕ) (j : Fin (n + 2)) :
+    SSet.stdSimplex.δ (j.castAdd 2) ≫ cospanJoinRight.{u} (n + 1) =
+      cospanJoinRight n ≫ joinMap (SSet.stdSimplex.δ j) (𝟙 (SSet.horn 2 2 : SSet.{u}))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.region`
+
+```lean
+def region {n : ℕ} (S : Finset (Fin (n + 1))) : (Δ[n] : SSet.{u}).Subcomplex
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.cell`
+
+```lean
+def cell {m n : ℕ} (S : Finset (Fin (n + 1))) (θ : ⦋m⦌ ⟶ ⦋n⦌)
+    (j : Fin (n + 1)) (hjS : j ∈ S) (hj : ∀ k, θ.toOrderHom k ≠ j) :
+    (region.{u} S : SSet) _⦋m⦌
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.cell_eq`
+
+```lean
+lemma cell_eq {m n : ℕ} (S : Finset (Fin (n + 1))) (θ : ⦋m⦌ ⟶ ⦋n⦌)
+    (j l : Fin (n + 1)) (hjS : j ∈ S) (hlS : l ∈ S)
+    (hj : ∀ k, θ.toOrderHom k ≠ j) (hl : ∀ k, θ.toOrderHom k ≠ l) :
+    cell.{u} S θ j hjS hj = cell S θ l hlS hl
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.map_cell`
+
+```lean
+lemma map_cell {l m n : ℕ} (S : Finset (Fin (n + 1))) (θ : ⦋m⦌ ⟶ ⦋n⦌)
+    (j : Fin (n + 1)) (hjS : j ∈ S) (hj : ∀ k, θ.toOrderHom k ≠ j)
+    (α : ⦋l⦌ ⟶ ⦋m⦌) :
+    (region.{u} S : SSet).map α.op (cell S θ j hjS hj) =
+      cell S (α ≫ θ) j hjS (fun k => hj (α.toOrderHom k))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.face`
+
+```lean
+def face {n : ℕ} (S : Finset (Fin (n + 2))) (j : Fin (n + 2)) (hjS : j ∈ S) :
+    (region.{u} S : SSet) _⦋n⦌
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.map_face`
+
+```lean
+lemma map_face {m n : ℕ} (S : Finset (Fin (n + 2))) (θ : ⦋m⦌ ⟶ ⦋n + 1⦌)
+    (j : Fin (n + 2)) (hjS : j ∈ S) (hj : ∀ k, θ.toOrderHom k ≠ j) :
+    (region.{u} S : SSet).map (SimplexCategory.factor_δ θ j).op (face S j hjS) =
+      cell S θ j hjS hj
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.restriction_from_face`
+
+```lean
+lemma restriction_from_face {m n : ℕ} {X : SSet.{u}}
+    (S : Finset (Fin (n + 2))) (σ : (region S : SSet) ⟶ X)
+    (θ : ⦋m⦌ ⟶ ⦋n + 1⦌) (j : Fin (n + 2)) (hjS : j ∈ S)
+    (hj : ∀ k, θ.toOrderHom k ≠ j) :
+    σ.app _ (cell S θ j hjS hj) =
+      X.map (SimplexCategory.factor_δ θ j).op (σ.app _ (face S j hjS))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.restriction_independent`
+
+```lean
+lemma restriction_independent {m n : ℕ} {X : SSet.{u}}
+    (S : Finset (Fin (n + 2))) (σ : (region S : SSet) ⟶ X)
+    (θ : ⦋m⦌ ⟶ ⦋n + 1⦌) (j l : Fin (n + 2)) (hjS : j ∈ S) (hlS : l ∈ S)
+    (hj : ∀ k, θ.toOrderHom k ≠ j) (hl : ∀ k, θ.toOrderHom k ≠ l) :
+    X.map (SimplexCategory.factor_δ θ j).op (σ.app _ (face S j hjS)) =
+      X.map (SimplexCategory.factor_δ θ l).op (σ.app _ (face S l hlS))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.face_hom_heq`
+
+```lean
+lemma face_hom_heq {n : ℕ} (S : Finset (Fin (n + 3)))
+    (σ : (region S : SSet.{max u v}) ⟶ dgNerve A D)
+    (j l : Fin (n + 3)) (hjS : j ∈ S) (hlS : l ∈ S)
+    (J L : Finset (Fin (n + 2))) (a b c d : Fin (n + 2)) (k : ℤ)
+    (hJ : 2 ≤ J.card) (ha : a = J.min' (Index.nonempty hJ))
+    (hb : b = J.max' (Index.nonempty hJ)) (hk : k = 2 - (J.card : ℤ))
+    (hL : 2 ≤ L.card) (hc : c = L.min' (Index.nonempty hL))
+    (hd : d = L.max' (Index.nonempty hL)) (hk' : k = 2 - (L.card : ℤ))
+    (hImage : J.image j.succAbove = L.image l.succAbove) :
+    HEq ((σ.app _ (face S j hjS)).hom J a b k hJ ha hb hk)
+      ((σ.app _ (face S l hlS)).hom L c d k hL hc hd hk')
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.CoversVertices`
+
+```lean
+def CoversVertices {n : ℕ} (S : Finset (Fin (n + 1))) : Prop
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.vertexCell`
+
+```lean
+def vertexCell {n : ℕ} (S : Finset (Fin (n + 1))) (hS : CoversVertices S)
+    (k : Fin (n + 1)) : (region.{u} S : SSet) _⦋0⦌
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.map_const_face`
+
+```lean
+lemma map_const_face {n : ℕ} (S : Finset (Fin (n + 2))) (hS : CoversVertices S)
+    (j : Fin (n + 2)) (hjS : j ∈ S) (k : Fin (n + 1)) :
+    (region.{u} S : SSet).map (SimplexCategory.const ⦋0⦌ ⦋n⦌ k).op (face S j hjS) =
+      vertexCell S hS (j.succAbove k)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.vertexObj`
+
+```lean
+def vertexObj {n : ℕ} (S : Finset (Fin (n + 3))) (hS : CoversVertices S)
+    (σ : (region S : SSet.{max u v}) ⟶ dgNerve A D) (k : Fin (n + 3)) : D
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.face_obj`
+
+```lean
+lemma face_obj {n : ℕ} (S : Finset (Fin (n + 3))) (hS : CoversVertices S)
+    (σ : (region S : SSet.{max u v}) ⟶ dgNerve A D)
+    (j : Fin (n + 3)) (hjS : j ∈ S) (k : Fin (n + 2)) :
+    (σ.app _ (face S j hjS)).obj k = vertexObj S hS σ (j.succAbove k)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.componentOnFace`
+
+```lean
+def componentOnFace {n : ℕ} (S : Finset (Fin (n + 3))) (hS : CoversVertices S)
+    (σ : (region S : SSet.{max u v}) ⟶ dgNerve A D)
+    (j : Fin (n + 3)) (hjS : j ∈ S) (J : Finset (Fin (n + 2)))
+    (a b : Fin (n + 2)) (k : ℤ) (hJ : 2 ≤ J.card)
+    (ha : a = J.min' (Index.nonempty hJ)) (hb : b = J.max' (Index.nonempty hJ))
+    (hk : k = 2 - (J.card : ℤ)) :
+    GradedHom A (vertexObj S hS σ (j.succAbove a)) (vertexObj S hS σ (j.succAbove b)) k
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.componentOnFace_heq`
+
+```lean
+lemma componentOnFace_heq {n : ℕ} (S : Finset (Fin (n + 3))) (hS : CoversVertices S)
+    (σ : (region S : SSet.{max u v}) ⟶ dgNerve A D)
+    (j : Fin (n + 3)) (hjS : j ∈ S) (J : Finset (Fin (n + 2)))
+    (a b : Fin (n + 2)) (k : ℤ) (hJ : 2 ≤ J.card)
+    (ha : a = J.min' (Index.nonempty hJ)) (hb : b = J.max' (Index.nonempty hJ))
+    (hk : k = 2 - (J.card : ℤ)) :
+    HEq (componentOnFace S hS σ j hjS J a b k hJ ha hb hk)
+      ((σ.app _ (face S j hjS)).hom J a b k hJ ha hb hk)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.recoverHom`
+
+```lean
+def recoverHom {n : ℕ} (S : Finset (Fin (n + 3))) (hS : CoversVertices S)
+    (σ : (region S : SSet.{max u v}) ⟶ dgNerve A D)
+    (I : Finset (Fin (n + 3))) (a b : Fin (n + 3)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ))
+    (hknown : ∃ j ∈ S, j ∉ I) :
+    GradedHom A (vertexObj S hS σ a) (vertexObj S hS σ b) k
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.recoverHom_heq_face`
+
+```lean
+lemma recoverHom_heq_face {n : ℕ} (S : Finset (Fin (n + 3))) (hS : CoversVertices S)
+    (σ : (region S : SSet.{max u v}) ⟶ dgNerve A D)
+    (I : Finset (Fin (n + 3))) (a b : Fin (n + 3)) (k : ℤ)
+    (hI : 2 ≤ I.card) (ha : a = I.min' (Index.nonempty hI))
+    (hb : b = I.max' (Index.nonempty hI)) (hk : k = 2 - (I.card : ℤ))
+    (hknown : ∃ j ∈ S, j ∉ I)
+    (j : Fin (n + 3)) (hjS : j ∈ S) (J : Finset (Fin (n + 2)))
+    (c d : Fin (n + 2)) (hJ : 2 ≤ J.card)
+    (hc : c = J.min' (Index.nonempty hJ)) (hd : d = J.max' (Index.nonempty hJ))
+    (hk' : k = 2 - (J.card : ℤ)) (hImage : J.image j.succAbove = I) :
+    HEq (recoverHom S hS σ I a b k hI ha hb hk hknown)
+      ((σ.app _ (face S j hjS)).hom J c d k hJ hc hd hk')
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.factor_δ_comp`
+
+```lean
+lemma factor_δ_comp {l m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n + 1⦌) (j : Fin (n + 2))
+    (hj : ∀ k, θ.toOrderHom k ≠ j) (α : ⦋l⦌ ⟶ ⦋m⦌) :
+    SimplexCategory.factor_δ (α ≫ θ) j = α ≫ SimplexCategory.factor_δ θ j
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.Compatible`
+
+```lean
+def Compatible {n : ℕ} {X : SSet.{u}} (S : Finset (Fin (n + 2)))
+    (s : ∀ j ∈ S, X _⦋n⦌) : Prop
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.descValue`
+
+```lean
+def descValue {n m : ℕ} {X : SSet.{u}} (S : Finset (Fin (n + 2)))
+    (s : ∀ j ∈ S, X _⦋n⦌) (x : (region S : SSet) _⦋m⦌) : X _⦋m⦌
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.descValue_cell`
+
+```lean
+lemma descValue_cell {n m : ℕ} {X : SSet.{u}} (S : Finset (Fin (n + 2)))
+    (s : ∀ j ∈ S, X _⦋n⦌) (hs : Compatible S s)
+    (θ : ⦋m⦌ ⟶ ⦋n + 1⦌) (j : Fin (n + 2)) (hjS : j ∈ S)
+    (hj : ∀ k, θ.toOrderHom k ≠ j) :
+    descValue S s (cell S θ j hjS hj) =
+      X.map (SimplexCategory.factor_δ θ j).op (s j hjS)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.desc`
+
+```lean
+def desc {n : ℕ} {X : SSet.{u}} (S : Finset (Fin (n + 2)))
+    (s : ∀ j ∈ S, X _⦋n⦌) (hs : Compatible S s) : (region S : SSet) ⟶ X
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.factor_δ_self`
+
+```lean
+lemma factor_δ_self {n : ℕ} (j : Fin (n + 2)) :
+    SimplexCategory.factor_δ (SimplexCategory.δ j) j = 𝟙 ⦋n⦌
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.desc_face`
+
+```lean
+lemma desc_face {n : ℕ} {X : SSet.{u}} (S : Finset (Fin (n + 2)))
+    (s : ∀ j ∈ S, X _⦋n⦌) (hs : Compatible S s) (j : Fin (n + 2)) (hjS : j ∈ S) :
+    (desc S s hs).app _ (face S j hjS) = s j hjS
+```
+
+検証：対象三モジュールと集約 `SerrePositivity.InfinityCategories.DGNerve` を
+`set -e; set -o pipefail` でビルドし、終了コード 0 を確認。
+`scripts/audit_dg_nerve.lean` にこの保存単位の全 39 公開宣言の
+`#print axioms` と `#check @` を追加。全体 695 公開宣言と既存則 5 宣言、合計 700 宣言を監査し、
+標準三公理 `propext`・`Classical.choice`・`Quot.sound` の範囲内であることを確認。
+`git diff --check` は自分の変更パスだけで実施する。
+
+未完了：実際の slice 境界からの二面の族と整合性、先頭を全て含む未知六成分の
+残差恒等式、全方程式と境界の一致、slice の終対象性と `IsPullbackSquare`。
+N7c〜N7e は引き続き未完了。保存後は承認を待たず実際の境界への適用へ進む。
+
 ## 6. 次のマイルストーン D（本計画の範囲外）
 
 - Semifree(S) を `DGFullSubcategory`（`moduleSemifree` または一点 dg 圏上の複体版）として置き、

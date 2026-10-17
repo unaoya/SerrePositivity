@@ -1348,6 +1348,85 @@ noncomputable section
 #print axioms SerrePositivity.InfinityCategories.DGNerve.pullbackHomBoundaryLift_differential
 #check @SerrePositivity.InfinityCategories.DGNerve.pullbackHomBoundaryLift_differential
 
+#print axioms SerrePositivity.InfinityCategories.DGNerve.hom_to_stdSimplex_ext_vertices
+#check @SerrePositivity.InfinityCategories.DGNerve.hom_to_stdSimplex_ext_vertices
+#print axioms SerrePositivity.InfinityCategories.DGNerve.join_hom_to_stdSimplex_ext
+#check @SerrePositivity.InfinityCategories.DGNerve.join_hom_to_stdSimplex_ext
+#print axioms SerrePositivity.InfinityCategories.DGNerve.joinLeftOrderHom
+#check @SerrePositivity.InfinityCategories.DGNerve.joinLeftOrderHom
+#print axioms SerrePositivity.InfinityCategories.DGNerve.joinRightOrderHom
+#check @SerrePositivity.InfinityCategories.DGNerve.joinRightOrderHom
+#print axioms SerrePositivity.InfinityCategories.DGNerve.joinStdSimplexIso_inl
+#check @SerrePositivity.InfinityCategories.DGNerve.joinStdSimplexIso_inl
+#print axioms SerrePositivity.InfinityCategories.DGNerve.joinStdSimplexIso_inr
+#check @SerrePositivity.InfinityCategories.DGNerve.joinStdSimplexIso_inr
+#print axioms SerrePositivity.InfinityCategories.DGNerve.succAbove_castAdd_two
+#check @SerrePositivity.InfinityCategories.DGNerve.succAbove_castAdd_two
+#print axioms SerrePositivity.InfinityCategories.DGNerve.joinStdSimplexIso_left_face
+#check @SerrePositivity.InfinityCategories.DGNerve.joinStdSimplexIso_left_face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.joinStdSimplexIso_right_last
+#check @SerrePositivity.InfinityCategories.DGNerve.joinStdSimplexIso_right_last
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanJoinLeft
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanJoinLeft
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanJoinRight
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanJoinRight
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanJoin_isPushout
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanJoin_isPushout
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanJoinLeft_face
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanJoinLeft_face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanJoinRight_face
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanJoinRight_face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.region
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.region
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.cell
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.cell
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.cell_eq
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.cell_eq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.map_cell
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.map_cell
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.face
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.map_face
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.map_face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.restriction_from_face
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.restriction_from_face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.restriction_independent
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.restriction_independent
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.face_hom_heq
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.face_hom_heq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.CoversVertices
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.CoversVertices
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.vertexCell
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.vertexCell
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.map_const_face
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.map_const_face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.vertexObj
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.vertexObj
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.face_obj
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.face_obj
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.componentOnFace
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.componentOnFace
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.componentOnFace_heq
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.componentOnFace_heq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.recoverHom
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.recoverHom
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.recoverHom_heq_face
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.recoverHom_heq_face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.factor_δ_comp
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.factor_δ_comp
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.Compatible
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.Compatible
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.descValue
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.descValue
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.descValue_cell
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.descValue_cell
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.desc
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.desc
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.factor_δ_self
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.factor_δ_self
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.desc_face
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.desc_face
+
 section
 universe u v
 variable (A : Type u) [CommRing A] (D : Type v)
