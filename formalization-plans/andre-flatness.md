@@ -279,6 +279,32 @@ H0 の有界ねじれと実導来完備性から古典的完備性を得る。
 **未完了：** 各段から余極限・完備化への射の完全忠実平坦性との合成、超限塔の構成。
 条件付き Thm 7.14 はまだ未証明。
 
+### E3.11：標準極限射の完全忠実平坦性と終段の三性質
+
+`CompletedMaps.lean` と `Terminal.lean` を追加。
+
+- `isCompletelyFaithfullyFlat_adicCompletion_comp`：終域に有界 p 冪ねじれがあれば、
+  p 完全忠実平坦な射と標準完備化射の合成は p 完全忠実平坦。
+- `isCompletelyFaithfullyFlat_ringDirectLimit_of_orderBot`：最小段から各段への射が
+  p 完全忠実平坦なら、環余極限への最小段射も p 完全忠実平坦。
+- `isCompletelyFaithfullyFlat_completedRingDirectLimit_of_orderBot`：各段が perfectoid なら、
+  上記射と p 進完備化射の標準合成も p 完全忠実平坦。E3.7 の境界 1 を E3.10 に適用。
+- `omegaOne_directLimit_properties`：実際の ω₁ 塔について、全段 perfectoid・全遷移射 p 完全忠実平坦・
+  各後続段で全正次数モニックの根がある、という引数から、余極限の perfectoid 性・
+  初段からの p 完全忠実平坦性・絶対整閉性を同時に結論する。
+- `omegaOneIndex_orderBot` は既存の非空整列順序の最小元構造を供給する。
+
+**原典・経路の記録：** BS Thm 7.14（著者版 p.61）の極限操作を、E3.1–E3.10 の結果で合成。
+環余極限と代数の非交和余極限の比較は、束の型の違いによる非公開実装の簡約に依存せず、
+実際の二つの環普遍写像を作って逆写像を検証した。元の最小段の係数作用で線形性も確認。
+ω₁ 添字は既存 E3.3 の `Ordinal.ToType (Ordinal.omega 1)` の小さい表現を共用する。
+
+対象 build 終了コード 0（3626 jobs、新規モジュール警告なし）。
+専用監査終了コード 0、公開全 68 宣言の assert_no_sorry と全 162 宣言の再帰監査に成功。
+標準 3 公理のみ。全公開宣言の完全型を #print で確認。
+**未完了：** 訂正済み step だけを入力とする超限塔の構成。塔のデータを仮定した上記の
+終段定理を、条件付き Thm 7.14 の完成として数えない。
+
 ### 残る範囲
 
 1. 有向系の p 進完備化の perfectoid 性は E3.9 で証明済み。各極限段の実際の塔への適用は残る。

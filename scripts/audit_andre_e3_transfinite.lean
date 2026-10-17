@@ -76,6 +76,12 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.principalCompleti
 assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.boundedPrincipalCompletionAdicAlgEquiv
 assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFaithfullyFlat_adicCompletion_of_bounded_torsion
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFaithfullyFlat_adicCompletion_comp
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFaithfullyFlat_ringDirectLimit_of_orderBot
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFaithfullyFlat_completedRingDirectLimit_of_orderBot
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.omegaOneIndex_orderBot
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.omegaOne_directLimit_properties
+
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
@@ -96,7 +102,9 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.Transfinite.PerfectDeltaColimit,
     `SerrePositivity.BhattScholze.Andre.Transfinite.PresentationColimit,
     `SerrePositivity.BhattScholze.Andre.Transfinite.PerfectoidCompletionColimit,
-    `SerrePositivity.BhattScholze.Andre.Transfinite.BoundedCompletion]
+    `SerrePositivity.BhattScholze.Andre.Transfinite.BoundedCompletion,
+    `SerrePositivity.BhattScholze.Andre.Transfinite.CompletedMaps,
+    `SerrePositivity.BhattScholze.Andre.Transfinite.Terminal]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
@@ -187,3 +195,9 @@ run_cmd do
 #print SerrePositivity.BhattScholze.Andre.Transfinite.principalCompletionH0_isCompletelyFaithfullyFlat
 #print SerrePositivity.BhattScholze.Andre.Transfinite.boundedPrincipalCompletionAdicAlgEquiv
 #print SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFaithfullyFlat_adicCompletion_of_bounded_torsion
+
+#print SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFaithfullyFlat_adicCompletion_comp
+#print SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFaithfullyFlat_ringDirectLimit_of_orderBot
+#print SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFaithfullyFlat_completedRingDirectLimit_of_orderBot
+#print SerrePositivity.BhattScholze.Andre.Transfinite.omegaOneIndex_orderBot
+#print SerrePositivity.BhattScholze.Andre.Transfinite.omegaOne_directLimit_properties
