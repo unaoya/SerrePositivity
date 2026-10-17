@@ -1365,6 +1365,46 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicSourceEnve
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicSourceEnvelopeRingEquivOfMonicPositive_base_coeff_unoriented
 assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicPrismHom_of_absolute_input_unoriented
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicSource_initial_and_coefficient_comparison
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismFirstModPrimeRelation_regular_of_monic_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFinite_prime_regular_zero_of_unconditional
+
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.span_power_eq_of_unit
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.completelyFlat_of_le
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.completelyFlat_iff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.residueTensor_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.completelyFaithfullyFlat_iff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.completelyFlat_iff_flat_reduction
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.completelyFaithfullyFlat_iff_faithfullyFlat_reduction
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.algebraQuotient_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.powerRootPDTensorQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.powerRootPDTensorQuotientEquiv_generator
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.primeVarpiDoubleQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.varpiCoefficientAlgebra
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.varpiCoefficientAlgEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.perfectPrismPDTensorVarpiEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.perfectPrismPDTensorVarpiEquiv_one_tmul
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.perfectPrismPDTensorVarpiEquiv_generator
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.perfectPrismPDTensorVarpiDividedPowers
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.perfectPrismPDTensorVarpiDividedPowers_generator
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.perfectPrismPDTensorVarpi_isDPMorphism
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.hodgeTateVarpiPDAlgEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.hodgeTateVarpiPowerQuotientAlgebra
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.hodgeTateVarpi_free_over_powerQuotient
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.hodgeTate_completelyFaithfullyFlat_iff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.hodgeTate_coefficient_comparison
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.rootCoefficientChange_baseMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.quotientCoefficientAlgebra
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.quotientCoefficientAlgEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.powerRootPDTensorChangeEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.primePDTensorVarpiEquiv
+
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.perfectPrismPDTensorVarpiDividedPowers_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.perfectPrismPDTensorVarpiDividedPowers_generator_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.perfectPrismPDTensorVarpi_isDPMorphism_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.hodgeTate_completelyFaithfullyFlat_iff_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.VarpiComparison.hodgeTate_coefficient_comparison_of_unconditional
+
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
@@ -1623,7 +1663,16 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.Unoriented.Initial,
     `SerrePositivity.BhattScholze.Andre.Unoriented.SourceInitiality,
     `SerrePositivity.BhattScholze.Andre.Unconditional.RawPrimeRegularAllMonic,
-    `SerrePositivity.BhattScholze.Andre.Unconditional.RawPAdicPairRegular]
+    `SerrePositivity.BhattScholze.Andre.Unconditional.RawPAdicPairRegular,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCoefficientComparison,
+    `SerrePositivity.BhattScholze.Andre.Unconditional.RawInitialRegular,
+    `SerrePositivity.BhattScholze.Andre.VarpiComparison.Flatness,
+    `SerrePositivity.BhattScholze.Andre.VarpiComparison.PDBaseChange,
+    `SerrePositivity.BhattScholze.Andre.VarpiComparison.PDCompatibility,
+    `SerrePositivity.BhattScholze.Andre.VarpiComparison.Candidate,
+    `SerrePositivity.BhattScholze.Andre.VarpiComparison.PrimeReduction,
+    `SerrePositivity.BhattScholze.Andre.VarpiComparison.UnconditionalPD,
+    `SerrePositivity.BhattScholze.Andre.VarpiComparison.UnconditionalCandidate]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
@@ -1638,3 +1687,67 @@ run_cmd do
   unless seen.size == expected.size do
     throwError "Missing André monic root modules"
   logInfo m!"André monic root audit passed: {count} declarations, standard axioms only."
+
+/-!
+概要：最終合流の証明が旧 hpR 付き構造に依存しないことを検査する。
+方針：公開根から型と opaque 値の依存を辿り、旧11名への逆依存を拒否する。
+規約：import 自体と既定タクティクの Syntax 値は証明依存と区別する。
+使われ方：BS Rem 7.15（著者版 p.62）の最終合流の追加監査。
+-/
+meta section
+open Lean Elab Command
+open SerrePositivity.BhattScholze.Andre
+open SerrePositivity.BhattScholze.Andre.VarpiComparison
+private partial def checkAndreUnconditionalDependencies (todo : List (Name × List Name))
+    (seen : NameSet) : CoreM NameSet := do
+  match todo with
+  | [] => return seen
+  | (n, path) :: rest =>
+    if seen.contains n then return ← checkAndreUnconditionalDependencies rest seen
+    let seen := seen.insert n
+    let forbidden : Array Name := #[
+      ``perfectPrismPDTensorVarpiDividedPowers,
+      ``perfectPrismPDTensorVarpiDividedPowers_generator,
+      ``perfectPrismPDTensorVarpi_isDPMorphism,
+      ``hodgeTate_completelyFaithfullyFlat_iff,
+      ``hodgeTate_coefficient_comparison,
+      ``perfectPrismVarpiNativeDividedPowers,
+      ``perfectPrismVarpiNativeDividedPowers_base_apply,
+      ``perfectPrismVarpiPowerRootDividedPowers,
+      ``perfectPrismVarpiPowerRootDividedPowers_base_apply,
+      ``perfectPrismVarpiPowerRootDividedPowers_isDPMorphism,
+      ``powerRootPrismMonicHodgeTate_varpi_regular]
+    if forbidden.contains n then throwError "André 合流：旧 hpR 宣言への依存 {n}"
+    -- Lean 標準の collectAxioms と同じ kernel 環境で、非公開定義の仮の型を避ける。
+    let some info := (← getEnv).checked.get.find? n |
+      return ← checkAndreUnconditionalDependencies rest seen
+    -- autoParam の既定タクティクは Syntax 値であり、証明項ではない。
+    -- 論理的公理は別途 collectAxioms で全生成宣言について検査する。
+    if info.type.isConstOf ``Syntax then return ← checkAndreUnconditionalDependencies rest seen
+    match info with
+    | .axiomInfo _ =>
+      -- import 済み定理の不透明な型と実公理を標準の保存済み依存情報で区別する。
+      let axioms ← collectAxioms n
+      unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+        throwError "André 合流：標準三公理以外への依存 {n}: {axioms}、経路 {path.reverse}"
+    | _ => pure ()
+    let mut deps := info.type.getUsedConstants
+    if let some value := info.value? (allowOpaque := true) then
+      deps := deps ++ value.getUsedConstants
+    checkAndreUnconditionalDependencies (deps.toList.map (fun d => (d, n :: path)) ++ rest) seen
+
+set_option maxHeartbeats 0 in
+-- 公開最終根から型・opaque 値を含む全依存を走査するため。
+run_cmd do
+  let roots : List Name := [
+    ``powerRootPrismMonicSource_initial_and_coefficient_comparison,
+    ``powerRootPrismMonicSourceInput_isInitialOfMonicPositive_unoriented,
+    ``existsUnique_powerRootPrismMonicPrismHom_of_absolute_input_unoriented,
+    ``perfectPrismPDTensorVarpiDividedPowers_of_unconditional,
+    ``perfectPrismPDTensorVarpiDividedPowers_generator_of_unconditional,
+    ``perfectPrismPDTensorVarpi_isDPMorphism_of_unconditional,
+    ``hodgeTate_completelyFaithfullyFlat_iff_of_unconditional,
+    ``hodgeTate_coefficient_comparison_of_unconditional]
+  let deps ← liftCoreM <| checkAndreUnconditionalDependencies (roots.map (fun n => (n, []))) {}
+  logInfo m!"André merged dependency audit passed: {deps.size} declarations, no legacy hpR dependencies."
+end

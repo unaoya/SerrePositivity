@@ -8075,3 +8075,84 @@ H の p 正則性から、その分母商 T の p・ϖ 正則性を無条件に�
 Lean 標準の `collectAxioms` を用いる。二つの旧比較との結論の型検査も成功した。
 新しい sorry・axiom・引用は追加していない。
 全体ビルドはこの担当の検証には実行していない。
+
+### E1.90／A1-c2・A1-f と元の初期源の最終比較を合流（2026-10-17）
+
+本節は A1-a の追記。A1-c2 の `733631d5`・`94bbd0fb`・`1f50122d` と、
+A1-f の保存済み成果を、自分の新規 `PowerRootPrismMonicCoefficientComparison.lean` で合流する。
+`VarpiComparison/`・`Unconditional/`・`Unoriented/` のファイルは編集していない。
+主定理の引用入力、ルート集約、BS Thm 1.17(1) と Cor 8.12 は変更していない。
+
+作業中に用意した独立の係数テンソル構造・係数比較は、A1-c2 の成果の到着により重複した。
+未コミットの重複実装は残さず、受領した五つの `_of_unconditional` 公開名を直接使う。
+本工程の新規公開宣言は一つだけである。
+
+`SerrePositivity.BhattScholze.Andre.powerRootPrismMonicSource_initial_and_coefficient_comparison`。
+共通引数は {A:Type u} [CommRing A]、{p:ℕ} [Fact p.Prime]、
+W:OrientedPrism p A、hW:W.deltaStructure.IsPerfect、f:Polynomial A、
+hf:f.Monic、hdeg:0<f.natDegree。
+Raw,L,jL,H,uL,dP,T,R,v,Rv,φ は元の構成。Tv=T/Ideal.map φ (Ideal.span {v})、
+f'=perfectPrismInverseFrobeniusPolynomial W hW f、Nv=PowerRootPolynomial Rv p hp、
+zv は f' の Rv 係数像の零段入力、Qv=Nv/(zv^p)、R₀=A/(p)、
+Xu=powerRootPrismMonicSourceInputObjectOfMonicPositive_unoriented W hW f hf hdeg。
+正確な型は次のとおり。標準環構造と全係数作用を明示している。
+
+```lean
+powerRootPrismMonicSource_initial_and_coefficient_comparison W hW f hf hdeg :
+  let := pdCompletionCommRing L p (jL dP)
+  let := powerRootPrismMonicHodgeTateAlgebra W hW f
+  let := powerRootPrismMonicHodgeTateVarpiAlgebra W hW f
+  let := VarpiComparison.hodgeTateVarpiPowerQuotientAlgebra W hW f hf
+  let := VarpiComparison.varpiCoefficientAlgebra W hW
+  Nonempty (CategoryTheory.Limits.IsInitial Xu) ∧
+    (IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) T ↔
+      Module.FaithfullyFlat Rv Tv) ∧
+    Module.Free Qv Tv ∧ Module.FaithfullyFlat Rv Tv ∧
+    IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) T ∧
+    Nonempty (Rv ⊗[R₀] PowerRootCoefficientPDEnvelope p f' ≃+* Tv)
+```
+
+元の H の向きなし初期性の実証人と A1-c2 の無条件係数比較をそのまま合流した証明である。
+hpR・hreg・hBound を追加仮定に残さない。f' の逆 Frobenius 係数変更は省略しない。
+初期性は固定完全基底上の J=(d)B の入力圏についての主張であり、
+一般 Cartier イデアルの降下へ範囲を広げない。BS Rem 7.15(1)（著者版 p.62）とは
+異なる実源の純性・圏同値を使う証明経路を docstring と本節に明記する。
+
+受領した次の五公開名も集約と監査へ加えた。namespace は
+`SerrePositivity.BhattScholze.Andre.VarpiComparison`。
+
+- `perfectPrismPDTensorVarpiDividedPowers_of_unconditional`
+- `perfectPrismPDTensorVarpiDividedPowers_generator_of_unconditional`
+- `perfectPrismPDTensorVarpi_isDPMorphism_of_unconditional`
+- `hodgeTate_completelyFaithfullyFlat_iff_of_unconditional`
+- `hodgeTate_coefficient_comparison_of_unconditional`
+
+前三本は hf のみ、同値も hf のみ、最後の比較のみ hf と hdeg を要求する。
+正確な分冪イデアル・標準 includeRight・型は直前の A1-c2 節のとおりであり、変更していない。
+同値の零次数分岐を保ち、余分な正次数を付けた弱い同値へ差し替えていない。
+さらに `Unconditional.RawInitialRegular` の全生成宣言と、モニック初期関係・深さ零有限商の
+無条件な正則性の二公開名も集約から明示公開し、assert_no_sorry を追加した。
+それぞれの前提は元の hf であり、初期関係には hW も不要、変数族の宇宙 v は独立である。
+
+監査は全対象モジュールの全生成宣言の標準三公理検査に加え、最終合流・向きなし初期性・
+向きなし絶対入力普遍性・A1-c2 五公開名を根とする型と opaque 値の依存を辿る。
+旧 hpR 付き11宣言への逆依存を拒否する。Syntax の既定タクティクは証明依存と区別し、
+A1-c2 の検証済みの探索方法を自分の監査スクリプト内で用いる。
+
+R1 の残り：旧 native 構造二名と係数還元構造三名は、A1-c の旧 PDBaseChange・
+PDCompatibility と UnconditionalAudit の旧名検査が参照しているため保持している。
+本工程の新規最終定理と A1-c2 五公開名はこれらに依存しない。
+「他チャットのファイルを編集しない」の範囲を守っており、旧呼出し側をまだ変更していない。
+原典の p ねじれなしへの帰着に対応する八つの強い正則性主張も、無条件化せず保持する。
+この旧 API の整理を含む R1 全体の完了とは数えない。
+
+検証：各 lake build 前に ps で他レーンの lake build がないことを確認した。
+受領成果を直接使う最終の対象3モジュールと集約は `set -o pipefail` 付きで
+4671 jobs、終了コード0。新規1名・受領5名・初期関係2名の8本の #check は終了コード0。
+A1-c2 の専用 UnconditionalAudit は18生成宣言が標準三公理のみ、
+6769 の型・値依存に旧 hpR 宣言への依存がないことを再確認した。
+本レーン専用監査は終了コード0、
+`André monic root audit passed: 9087 declarations, standard axioms only.`、
+`André merged dependency audit passed: 49806 declarations, no legacy hpR dependencies.`。
+対象モジュールの全生成宣言と公開名の assert_no_sorry を検査した。
+新しい sorry・axiom・引用は追加していない。

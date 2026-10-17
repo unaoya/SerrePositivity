@@ -100,6 +100,11 @@ public import SerrePositivity.BhattScholze.Andre.Unoriented
 public import SerrePositivity.BhattScholze.Andre.Unconditional.RawPrimeRegularAllMonic
 public import SerrePositivity.BhattScholze.Andre.Unconditional.RawPAdicPairRegular
 
+public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCoefficientComparison
+public import SerrePositivity.BhattScholze.Andre.Unconditional.RawInitialRegular
+public import SerrePositivity.BhattScholze.Andre.VarpiComparison.PDCompatibility
+public import SerrePositivity.BhattScholze.Andre.VarpiComparison.PrimeReduction
+
 /-!
 # André E1・E2 の集約
 
