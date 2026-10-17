@@ -11490,3 +11490,72 @@ U12e全体は未受入。U16・U15e分解版には着手していない。共有
 U15e分解版では別担当のQuotient/DerivedComparison*・Verdier/を読んで再利用する。
 共有ルート・共有監査スクリプト・並行担当Tensor/Associator*・Perfect/・Endomorphism/・
 ScalarExtension*・他チャットの記録は編集していない。
+
+
+### 17.244 U12e83：指定K-flat中間比較の導来結合子squareと実際の全導来比較への接続（2026-10-17）
+
+**指定モデルの導来中間比較。** Derived/KFlatBimoduleMiddleComparison.leanは、
+Q : C–E、S : D–Eを右相対K-flatとし、任意のq : S → F*Qから、
+rightKFlatMiddleComparisonを構成する。sourceは前因子の既存導来左制限とSとの固定合成、
+targetはQとの固定合成である。rightKFlatMiddleSourceBaseIsoで局所化前のsourceを表示し、
+rightKFlatMiddlePreComparisonを既存middleRestrictionResolvedNatTransの局所化から作り、
+指定局所化の普遍性で任意の導来前因子へ延長する。
+rightKFlatMiddleComparison_base_appは、入力制限表示の逆の像と通常の指定増大比較の局所化へ計算する。
+_base_squareは、入力制限表示を前置すると、その通常比較の局所化を回復する式である。
+この構成にはqの準同型性や局所Hom K-flat性は不要で、Eの対象のsmallnessも追加しない。
+
+**固定K-flat導来結合子。** Derived/AssociatorMiddleRestrictionKFlat.leanの
+rightKFlatDerivedAssociator_middleRestrictionは、後因子R : E–Tも右相対K-flatとし、
+S⊗R → F*(Q⊗R)の既存合成増大を使う比較と、Q・Sの比較をRとの導来合成へ送る経路が、
+固定K-flat導来結合子と可換であることを証明する。
+§17.243のassociatorIso_middleRestriction_resolvedを局所化し、入力制限表示に関する
+結合子の自然性を接続する。前因子は任意の導来対象に自然である。
+qは任意で、F*QのK-flat性、Fの準同値性、局所Hom条件、Tのsmallnessは要求しない。
+係数は任意の可換環、六つの宇宙を独立に保持する。三重合成の添字B・C・D・EにはSmall.{u}を要求する。
+
+**実際の全導来中間比較への接続。** Derived/AssociatorMiddleRestrictionPresentation.leanの
+middleRestrictionKFlatSourceIsoは、全導来sourceを、後因子の既存制限表示と
+指定準同型増大qの既存解像度計算によって、前因子制限後のSとの固定合成へ同定する。
+_base_calculationは、前因子の制限表示と解像度計算を交換する式である。
+固定モデルの導来値と通常の合成の局所化の間には、既存derivedComposeWithComputationを明示する。
+derivedMiddleRestrictionNatTrans_kFlat_model_calculationは、任意の導来前因子に自然な式
+「実際の全導来中間比較→Qの固定モデル表示＝source表示→今回の指定モデル比較」を証明する。
+既存の任意解像度による全導来モデル計算と、今回のbase_squareをprivateの圏論的貼合せ補題で接続した。
+ここではEの局所Hom K-flat性とqの準同型性を明示する。Fの準同値性は追加しない。
+新しい比較を実際の全導来比較の代用にせず、その一致を証明した。
+
+**内側合成の増大square。** Derived/AssociatorMiddleRestrictionAugmentation.leanの
+rightKFlatMiddleComposeAugmentation_squareは、任意のqをRと合成した増大について、
+入力・出力の既存右制限表示と固定K-flat右比較の可換squareを証明する。
+Derived/AssociatorMiddleRestrictionInner.leanのmiddleRestrictionInnerAugmentation_model_squareは、
+実際の全導来内側右比較を指定増大で前置し、固定Rの両側の計算同型を続けると、
+合成増大の局所化と出力制限表示を続ける経路になることを証明する。
+既存の全導来右比較のモデル計算と固定合成表示の自然性を使う。
+この内側squareの条件はTの局所Hom K-flat性とRの右相対K-flat性であり、
+Q・SのK-flat性、qの準同型性、Fの準同値性は不要。
+C・D・E・TにはSmall.{u}を要求し、その宇宙は独立に保持する。
+
+**検証。** Checks.DGAssociatorMiddleRestrictionKFlatは、標数2で任意の導来前因子に対する
+固定モデルの結合子squareと実際の全導来中間比較のモデル計算を検査した。
+固定モデルの結合子squareはTのsmallness・局所Hom条件・qの準同型性なしで適用している。
+内側squareの全仮定と宇宙も標数2へ適用して確認した。
+§17.243までの中間通常比較・全導来外側左右比較・単位・三圏同時制限・解像度・導来随伴・五角形・
+StageEight・StageSeven・Spectra.StageTwoとの統合ビルド成功（3592 jobs、警告なし）。
+一般API11宣言とChecksの2宣言を追加した。13公開宣言の直接公理監査は重複・欠落なく標準3公理以内。
+新規監査累計4789宣言。今回の6 Leanファイルにsorry・admit・新規axiom・資源上限変更は0件。
+旧公開APIの名前・型は変更していない。採用済み引用0件。
+Lean v4.35.0-rc4とMathlib manifest/HEAD e6bbacd0e1b7307ff6e17da09cd2455f60804fa6を再確認した。
+文書検査は21 Markdown・326 exposition参照、失敗0件。
+
+**次工程と未受入条件。** 第一中間位置の固定モデルの導来結合子squareと、
+実際の全導来中間比較へのモデル計算までを接続した。
+次は指定準同型増大qの合成増大と既存K-flat合成閉性を使い、今回の内側squareを
+全導来結合子の入れ子表示へ接続する。二段階合成側の表示も作り、両側の既存結合子比較squareを
+通して実際の全導来結合子の可換図式を得る。その後、後二因子にも自然な関手族へ束ね、
+全導来三因子へ移す。第二中間位置の導来版も残る。
+左右単位経路と三圏同時制限の正規化、changeEquivalenceの単位・結合保存と自己・推移比較、
+外側左右・中間の恒等・合成則も残り、dg圏の一般的な分解の存在・比較を含む§15.2全体の受入監査は未完。
+U12e全体は未受入。U16・U15e分解版には着手していない。共有一般論への新しいAPI要求はない。
+U15e分解版では別担当のQuotient/DerivedComparison*・Verdier/を読んで再利用する。
+共有ルート・共有監査スクリプト・並行担当Tensor/Associator*・Perfect/・Endomorphism/・
+ScalarExtension*・他チャットの記録は編集していない。
