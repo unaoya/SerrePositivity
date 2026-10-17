@@ -1168,15 +1168,17 @@
 | Yoneda・U12d比較 | U14a.2以降のbalanced評価・随伴との式、U14b.44–45の代表加群・Yoneda評価、`endomorphismDerivedTensorEvaluationIso` の全導来射自然性。主Perfへの制限はU14b.43 |
 | shift・三角性 | U14b.25–26・U14a/b.42の主Perfと実際のenhancementの比較。係数変更はU14b.68–74で零・加法shift、標準cone三角形、H⁰と主Perfの既存比較自然同型そのものの整合性を証明 |
 | 係数変更と再構成の統合 | `ScalarReconstructionTriangles` で実際のH⁰再構成tensorと受入済み主Perf導来係数変更を合成した自然同型・shift整合性・三角正方形。`PerfectScalarTensor` の同じ主Perf再構成関手からU12d評価・導来係数変更へ接続 |
-| U14c：全主導来圏同値 | `endomorphismDerivedEquivalence`。順関手は実際の導来tensor、逆関手は実際の導来Hom。単位・余単位も既存導来随伴のものと一致。shift・三角性・Perf包含の正方形は `DerivedEquivalenceTriangles` |
+| U14c：全主導来圏同値 | `endomorphismDerivedEquivalence_ofCompactGenerator`（入力付き旧版も保持）。順関手は実際の導来tensor、逆関手は実際の導来Hom。単位・余単位も既存導来随伴のものと一致。shift・三角性・Perf包含の正方形にも入力なしの版を公開 |
 
 ### 仮定表と係数変更の範囲
 
 - Perfの比較では、U13の指定対象 `E : PerfectDGModuleOver A D S` と
   `hgen : endomorphismThickGeneratesPerfect A D S E` を明示する。
-- 全導来圏同値では、さらに `hCG : endomorphismCompactGenerator A D E.val` と
-  End側の `compactToPerfect : ∀ P, moduleCompact … P → modulePerfect … P` を明示した入力として受け取る。
-  U13dのcompact⇒Perfは重複実装していない。thick生成だけから全導来圏同値は出さない。
+- 全導来圏同値では、さらに `hCG : endomorphismCompactGenerator A D E.val` を明示する。
+  End側のcompact⇒PerfはU13dの `moduleCompact_iff_perfect` を適用して供給する。
+  `EndomorphismObject E.val : Type` は一対象で `Small.{u}` を満たすため、追加の宇宙条件はない。
+  `compactToPerfect` を入力として受け取る旧APIは互換性のため保持する。
+  U13dは重複実装していない。thick生成だけから全導来圏同値は出さない。
 - 無限個の生成元の直和はcompactとは限らない。無限直和による指定生成元のcompact性を仮定なしに使うAPIは追加していない。
 - 導来tensorの非flat係数変更では、受入済みU12f APIの `hPN`（balanced tensor複体のK-flat性）と
   `hP'`（係数変更した解像度の相対K-flat性）をそのまま明示する（`PerfectScalarTensor`, `DerivedScalarTensor`）。
@@ -1198,3 +1200,18 @@
   `git show --stat HEAD` で自分のファイルだけが含まれることを確認した。
 
 U14の未完受入項目はない。後続U16は上の明示的仮定・係数変更条件を保持して利用する。
+
+## U14c.11：U13dによるcompact⇒Perf入力の除去（2026-10-17）
+
+- `DerivedEquivalenceCompactGenerator.lean`：U13dの `moduleCompact_iff_perfect` を
+  一対象dg圏 `EndomorphismObject E` に適用する `endomorphismCompactToPerfect` を証明した。
+  元の対象型が大きくてもEndの対象型は一対象であり、Homの係数宇宙は従来のuのままである。
+- 旧定理を削除・改名・型変更せず、全主導来圏同値
+  `endomorphismDerivedEquivalence_ofCompactGenerator` と、単位・余単位、
+  実際のtensor/Homとの関手一致、shift・三角性、Perf包含正方形の入力なしの版を追加した。
+  指定対象のperfect性、thick生成、compact生成元の仮定は保持する。
+  単位の全対象同型性はthick生成まで、Homの余積保存はperfect対象であることまでで証明できる。
+- `ChecksDerivedEquivalenceCompactGenerator` 対象ビルド成功（2608 jobs）。
+  主要14宣言の公理監査は標準3公理のみ。引用・追加公理・sorryはない。
+  公開入口 `Compatibility` に新しいimportを追加した。旧公開APIの名前・型は変更していない。
+  接続後の `ChecksCompatibility` 統合ビルドも成功（3184 jobs）。
