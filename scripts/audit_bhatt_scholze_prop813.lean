@@ -1,0 +1,18 @@
+import SerrePositivity.BhattScholze.CompletedTensorPerfectoidUniversal
+import Mathlib.Util.AssertNoSorry
+
+/-! BS author-version Prop. 8.13: ring-valued universal properties and units.
+This audit excludes the CLMST-D-owned Cor. 8.12 input.
+-/
+
+assert_no_sorry SerrePositivity.BhattScholze.existsUnique_completedTensorPerfectoidLift
+assert_no_sorry SerrePositivity.BhattScholze.completedTensorPerfectoid_hom_ext
+assert_no_sorry SerrePositivity.BhattScholze.completedTensorPerfectoidLift
+assert_no_sorry SerrePositivity.BhattScholze.completedTensorPerfectoidLift_comp
+assert_no_sorry SerrePositivity.BhattScholze.completedTensorPerfectoidLift_isPerfectoidization
+
+#print axioms SerrePositivity.BhattScholze.existsUnique_completedTensorPerfectoidLift
+#print axioms SerrePositivity.BhattScholze.completedTensorPerfectoid_hom_ext
+#print axioms SerrePositivity.BhattScholze.completedTensorPerfectoidLift
+#print axioms SerrePositivity.BhattScholze.completedTensorPerfectoidLift_comp
+#print axioms SerrePositivity.BhattScholze.completedTensorPerfectoidLift_isPerfectoidization
