@@ -232,6 +232,16 @@ example (S : Type u) [CommRing S] :
 example : SSet.Quasicategory
     (SerrePositivity.InfinityCategories.derivedInfinityCategory ℤ) := inferInstance
 
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityHomotopyCategory
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityH0Equivalence
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityHomotopyShift
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityHomotopyShiftIso
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityHomotopyHasShift
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityH0EquivalenceCommShift
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityHomotopyEquivalence
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityHomotopyEquivalenceCommShift
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityHomotopyEquivalenceShiftIso
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -239,6 +249,7 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.FiltrationCoordinates,
     `SerrePositivity.InfinityCategories.Derived.SemifreeBasisEquivalence,
     `SerrePositivity.InfinityCategories.Derived.ConeBasis,
+    `SerrePositivity.InfinityCategories.Derived.HomotopyCategoryComparison,
     `SerrePositivity.InfinityCategories.Derived.SplitSequence,
     `SerrePositivity.InfinityCategories.Derived.SphereBasis,
     `SerrePositivity.InfinityCategories.Derived.Semifree,

@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DerivedComparison
+public import SerrePositivity.InfinityCategories.Derived.HomotopyCategoryComparison
 public import SerrePositivity.InfinityCategories.Derived.DerivedComparisonShift
 
 /-! # 標準導来圏での semifree 比較の具体化
@@ -43,5 +44,17 @@ example : (semifreeDerivedEquivalence ℤ).functor.CommShift ℤ := inferInstanc
 example {I : Type u} (P : I → Complex ℤ)
     (hP : ∀ i, complexSemifree ℤ (P i)) [Small.{0} I] :
     complexSemifree ℤ (Limits.sigmaObj P) := complexSemifree_coproduct ℤ P hP
+
+example (S : Type u) [CommRing S] :
+    SSet.Truncated.HomotopyCategory₂ ((SSet.truncation 2).obj (derivedInfinityCategory S)) ≌
+      DerivedCategory (ModuleCat.{u} S) := derivedInfinityHomotopyEquivalence S
+
+example : derivedInfinityHomotopyCategory ℤ ≌ DerivedCategory (ModuleCat.{0} ℤ) :=
+  derivedInfinityHomotopyEquivalence ℤ
+
+example (S : Type u) [CommRing S] :
+    (derivedInfinityHomotopyEquivalence S).functor.CommShift ℤ := inferInstance
+
+example : (derivedInfinityHomotopyEquivalence ℤ).functor.CommShift ℤ := inferInstance
 
 end SerrePositivity.InfinityCategories

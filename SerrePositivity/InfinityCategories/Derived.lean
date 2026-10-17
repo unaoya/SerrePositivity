@@ -18,6 +18,7 @@ public import SerrePositivity.InfinityCategories.Derived.SemifreeSubcategory
 public import SerrePositivity.InfinityCategories.Derived.DerivedComparison
 public import SerrePositivity.InfinityCategories.Derived.SemifreeClosure
 public import SerrePositivity.InfinityCategories.Derived.DerivedComparisonShift
+public import SerrePositivity.InfinityCategories.Derived.HomotopyCategoryComparison
 public import SerrePositivity.InfinityCategories.Derived.Checks
 public import SerrePositivity.InfinityCategories.Derived.InfinityCategory
 

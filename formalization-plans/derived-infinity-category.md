@@ -933,3 +933,57 @@ N2 の `dgNerve.instQuasicategory` を `Semifree S` に具体化した。
 21モジュール475宣言すべて標準3公理のみ。
 任意の可換環と整数環で instance の自動合成も型検査した。
 未完了：D3 の同値とシフト両立の保存、その後 D2i の見積もり。
+
+
+### D3 完了・導来 ∞ 圏のホモトピー圏とシフト比較（2026-10-18）
+
+N3 の無条件の `DGNerve.HomotopyComparison.equivalence` を具体化し、
+D2 の `semifreeDerivedEquivalence` と合成した。namespace は
+`SerrePositivity.InfinityCategories`、共通前提は `(S : Type u) [CommRing S]`。
+最後の三宣言では `[HasDerivedCategory.{w} (ModuleCat.{u} S)]` を加える。
+公開型：
+```lean
+derivedInfinityHomotopyCategory
+derivedInfinityH0Equivalence : derivedInfinityHomotopyCategory S ≌
+    DifferentialGraded.HomotopyCategory S (Semifree S)
+derivedInfinityHomotopyShift (s : ℤ) :
+    derivedInfinityHomotopyCategory S ⥤ derivedInfinityHomotopyCategory S
+derivedInfinityHomotopyShiftIso (s : ℤ) :
+    derivedInfinityHomotopyShift S s ⋙ (derivedInfinityH0Equivalence S).functor ≅
+      (derivedInfinityH0Equivalence S).functor ⋙ shiftFunctor _ s
+derivedInfinityHomotopyHasShift : HasShift (derivedInfinityHomotopyCategory S) ℤ
+derivedInfinityH0EquivalenceCommShift :
+    (derivedInfinityH0Equivalence S).functor.CommShift ℤ
+derivedInfinityHomotopyEquivalence :
+    derivedInfinityHomotopyCategory S ≌ DerivedCategory (ModuleCat.{u} S)
+derivedInfinityHomotopyEquivalenceCommShift :
+    (derivedInfinityHomotopyEquivalence S).functor.CommShift ℤ
+derivedInfinityHomotopyEquivalenceShiftIso (s : ℤ) :
+    shiftFunctor (derivedInfinityHomotopyCategory S) s ⋙
+      (derivedInfinityHomotopyEquivalence S).functor ≅
+        (derivedInfinityHomotopyEquivalence S).functor ⋙
+          shiftFunctor (DerivedCategory (ModuleCat.{u} S)) s
+```
+主定理の完全な型（始域の略記も展開）：
+```lean
+derivedInfinityHomotopyEquivalence (S : Type u) [CommRing S]
+    [HasDerivedCategory.{w} (ModuleCat.{u} S)] :
+  SSet.Truncated.HomotopyCategory₂ ((SSet.truncation 2).obj (derivedInfinityCategory S)) ≌
+    DerivedCategory (ModuleCat.{u} S)
+derivedInfinityHomotopyEquivalenceCommShift (S : Type u) [CommRing S]
+    [HasDerivedCategory.{w} (ModuleCat.{u} S)] :
+  (derivedInfinityHomotopyEquivalence S).functor.CommShift ℤ
+```
+ホモトピー圏の整数シフトは N3 の同値を通して D2f のシフトを移したもの。
+充満忠実関手から `HasShift` の零・加法の coherence を誘導し、比較関手の CommShift と
+D2f の CommShift を合成した。単なる各シフトでの同型にとどまらない。
+`HasDerivedCategory` は圏の選択だけであり、新たな数学的仮定ではない。
+標準 instance で任意の可換環と整数環の同値、シフト両立を具体化して検査。
+集約ビルドは終了コード0（3937 jobs）、公理監査は終了コード0、
+22モジュール487宣言すべて標準3公理のみ。D3 に残りなし。
+D2h・D2h′・D1・D3 は全て完了。D4・N7 の制限そのものは今回の追加指示には含まれない。
+D2i は未実装の任意工程。見積もり：3〜5保存単位（目安400〜800行、既存 API との接続で増減）。
+テンソル積では次数 p+q=k の直和と基底のテンソル積、微分の Leibniz 符号を接続し、
+高さを両因子の高さの和にする。底変更では各次数の基底の底変更と微分の高さ下降を接続する。
+既存の semifree 閉性定理は見つからず、今回の同値を利用した新しい構成が必要。
+着手するかはユーザー判断を仰ぐ。
