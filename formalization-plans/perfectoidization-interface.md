@@ -434,3 +434,35 @@ algebraNerve (R : Type u) [CommRing R] : SSet.{u + 1}
 perfectoidTargetNerve (p : ℕ) [Fact p.Prime] (S : CommRingCat.{u}) : SSet.{u + 1}
 end SerrePositivity.BhattScholze.PerfectoidizationInterface
 ```
+
+### Π2-1
+
+```lean
+namespace SerrePositivity.BhattScholze.PerfectoidizationInterface
+universe u
+open CategoryTheory CategoryTheory.Limits DifferentialGraded
+open SerrePositivity.InfinityCategories
+open scoped Simplicial
+variable (R : Type u) [CommRing R]
+J : algebraNerve R ⟶ derivedInfinityCategory R
+vertex (F : algebraNerve R ⟶ derivedInfinityCategory R) (S : A_R R) :
+    (derivedInfinityCategory R) _⦋0⦌
+edge (F : algebraNerve R ⟶ derivedInfinityCategory R) {S T : A_R R} (f : S ⟶ T) :
+    (derivedInfinityCategory R).Edge (vertex R F S) (vertex R F T)
+HFunctor (i : ℤ) : derivedInfinityHomotopyCategory R ⥤ ModuleCat.{u} R
+H (i : ℤ) (x : (derivedInfinityCategory R) _⦋0⦌) : ModuleCat.{u} R
+HMap (i : ℤ) {x y : (derivedInfinityCategory R) _⦋0⦌}
+    (e : (derivedInfinityCategory R).Edge x y) : H R i x ⟶ H R i y
+HIso (i : ℤ) (x : (derivedInfinityCategory R) _⦋0⦌) :
+    H R i x ≅ (derivedInfinityCategoryVertexEquiv R x).val.homology i
+JHZeroIso (S : A_R R) :
+    H R 0 (vertex R (J R) S) ≅ (discreteAlgebraModule R).obj S
+Disc (x : (derivedInfinityCategory R) _⦋0⦌) : Prop
+NatInfinity (F G : algebraNerve R ⟶ derivedInfinityCategory R) : Type (u + 1)
+component {F G : algebraNerve R ⟶ derivedInfinityCategory R}
+    (η : NatInfinity R F G) (S : A_R R) :
+    (derivedInfinityCategory R).Edge (vertex R F S) (vertex R G S)
+targetDiagram (p : ℕ) [Fact p.Prime] (S : A_R R) :
+    perfectoidTargetNerve p S.right ⟶ derivedInfinityCategory R
+end SerrePositivity.BhattScholze.PerfectoidizationInterface
+```
