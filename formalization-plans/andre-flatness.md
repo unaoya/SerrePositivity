@@ -5466,6 +5466,70 @@ H/dH の p 完全忠実平坦性、H の (p,d) 完全平坦性は次の接続に
 47,737 宣言を走査し、公理依存は `propext`、`Classical.choice`、`Quot.sound` のみ。
 
 
+
+### 元の H・分母商への移送と標準二元剰余（2026-10-17）
+
+純性の保存コミット `a9f224bd` に続き、新規 9 ファイルの 56 公開宣言を追加した。
+置き場所はすべて `Andre/Unconditional/`。既存 André ファイルと A1-d のファイルは変更していない。
+標準テンソル augmentation の抽象補助定理を使い、元の源の H⁰ と raw PD 環を
+元の A 線形作用のまま比較した。具体的な完備化単位の比較も保存している。
+
+正確な共通設定は、完全 prism W、`hW : W.deltaStructure.IsPerfect`、
+`f : Polynomial A`、`hf : f.Monic`、`hdeg : 0 < f.natDegree`。
+`P := PowerRootPolynomial A p hp`、`E := powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure`、
+`dP := algebraMap A P W.generator`、`a := powerRootPrismMonicUnaryFamily (p := p) f`、
+`L := DeltaAdjoinDivision E dP a`、`jL := deltaAdjoinDivisionMap E dP a`、
+`H := PDCompletionH0 L p (jL dP)`、`dH := pdCompletionUnit L p (jL dP) (jL dP)`、
+`T := H ⧸ Ideal.span {dH}`、`R := A ⧸ W.ideal` とする。
+H の環構造は元の `pdCompletionCommRing L p (jL dP)` であり、対象を変更していない。
+
+主要な公開名・型は次のとおり（共通名前空間 `SerrePositivity.BhattScholze.Andre`）。
+
+- `powerRootPrismMonicSourcePDH0Iso_of_unconditional W hW f`：
+  実逐次完備化の H⁰ と、元の L 加群 H を A へ係数制限した加群との A 線形同型。
+  この比較自体には hf・hdeg は不要。
+- `powerRootPrismMonicRaw_pdCompletion_generator_regular_of_unconditional W hW f hf hdeg`：
+  上記環構造の下で `IsSMulRegular H dH`。
+- `powerRootPrismMonicHodgeTateDerivedReductionIso_of_unconditional W hW f hf hdeg`：
+  実逐次完備化の A→R に沿う実導来還元と、自然な R 作用を持つ T の single の同型。
+- `powerRootPrismMonicHodgeTate_prime_completelyFaithfullyFlat_of_unconditional W hW f hf hdeg`：
+  既存の `powerRootPrismMonicHodgeTateAlgebra W hW f` の下で、
+  正確に `IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) T`。
+- `powerRootPrismMonicHodgeTate_bounded_prime_torsion_of_unconditional W hW f hf hdeg`：
+  `∃ N : ℕ, ∀ k : ℕ, ∀ x : T, (p : T)^k*x=0 → (p : T)^N*x=0`。
+- `powerRootPrismMonic_pdCompletion_hodgeTate_isAdicComplete_of_unconditional W hW f hf hdeg`：
+  `IsAdicComplete (Ideal.span {(p : T)}) T`。
+- `powerRootPrismMonicCompletion_pair_completelyFlat_of_unconditional W hW f hf hdeg`：
+  既存の `powerRootPrismMonicCompletionAlgebra W hW f` の下で、
+  `IsCompletelyFlat (Ideal.span {(p : A), W.generator}) H`。
+
+標準係数射 `baseH := powerRootPrismMonicCompletionBaseMap W hW f` と
+`q := Ideal.Quotient.mk (Ideal.span {(p : A), W.generator})` に対しても、
+`powerRootPrismMonicCompletion_pair_scalarExtensionTorVanishing_of_unconditional`、
+`powerRootPrismMonicCompletion_pair_reduction_homology_isZero_of_unconditional`、
+`powerRootPrismMonicCompletion_pair_scalarExtension_faithfullyFlat_of_unconditional`、
+`powerRootPrismMonicCompletion_pair_reductionH0_faithfullyFlat_of_unconditional` を公開した。
+元の `baseChangeScalarModule baseH` の標準 q 係数拡大の Tor 消滅・忠実平坦性と、
+その実導来還元の全非零次数消滅・H⁰ 忠実平坦性であり、A1-c の係数照合へそのまま渡せる。
+
+全結果に hpR・追加の平坦性・新引用はない。正次数は初期係数の忠実平坦性に使い、
+原典 Rem 7.15（著者版 p.62）の正次数モニック入力に対する成果として述べる。
+次数零までの生成元正則性の拡張は、この証明からは主張しない。
+既存名の差し替えは A1-a に委ねる。
+
+検証：`MonicRootedExtension` を含む対象ビルドは終了コード 0（4607 jobs）。
+`scripts/audit_andre_unconditional.lean` は 138 公開宣言の `assert_no_sorry`、
+`#print axioms`、追加 56 宣言の `#check`、型・値の推移的公理走査に成功した。
+48,340 依存宣言を走査し、標準三公理 `propext`、`Classical.choice`、`Quot.sound` のみ。
+
+残る分類・証明課題は raw の `powerRootPrismMonicRaw_p_mul_injective`、
+`powerRootPrismMonicRaw_pAdic_regular_pair`、
+`powerRootPrismMonic_pdCompletion_prime_regular` 等の p 正則性系列である。
+今回の分母正則性・完全平坦性の完成を raw p 正則性の証明と混同しない。
+また mod p の d 正則性や H/dH の p 正則性は既述の通り一般には成り立たず、
+原典の p ねじれなしへの帰着後の強い主張として区別する。
+
+
 ## A1-c：係数表記の照合
 
 2026-10-17。BS Rem 7.15（著者版 p.62）と E1.25・E1.55・E1.56 の補足。
