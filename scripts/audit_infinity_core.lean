@@ -1057,3 +1057,59 @@ import SerrePositivity.InfinityCategories.Core
 #print axioms SerrePositivity.InfinityCategories.pinchedHomLeft_kanComplex
 #check @SerrePositivity.InfinityCategories.pinchedHomLeftPiZeroEquiv
 #print axioms SerrePositivity.InfinityCategories.pinchedHomLeftPiZeroEquiv
+
+-- A3d 前半：可縮性、slice fiber、終対象から写像空間の可縮性。
+#check @SerrePositivity.InfinityCategories.IsContractibleKan
+#print axioms SerrePositivity.InfinityCategories.IsContractibleKan
+#check @SerrePositivity.InfinityCategories.isContractibleKan_iff_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.isContractibleKan_iff_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.IsContractibleKan.nonempty
+#print axioms SerrePositivity.InfinityCategories.IsContractibleKan.nonempty
+#check @SerrePositivity.InfinityCategories.IsContractibleKan.kanComplex
+#print axioms SerrePositivity.InfinityCategories.IsContractibleKan.kanComplex
+#check @SerrePositivity.InfinityCategories.IsContractibleKan.isTerminalVertex
+#print axioms SerrePositivity.InfinityCategories.IsContractibleKan.isTerminalVertex
+#check @SerrePositivity.InfinityCategories.IsContractibleKan.isInitialVertex
+#print axioms SerrePositivity.InfinityCategories.IsContractibleKan.isInitialVertex
+#check @SerrePositivity.InfinityCategories.IsContractibleKan.piZero_subsingleton
+#print axioms SerrePositivity.InfinityCategories.IsContractibleKan.piZero_subsingleton
+#check @SerrePositivity.InfinityCategories.isContractibleKan_of_nonempty_of_all_terminal
+#print axioms SerrePositivity.InfinityCategories.isContractibleKan_of_nonempty_of_all_terminal
+#check @SerrePositivity.InfinityCategories.isContractibleKan_of_iso
+#print axioms SerrePositivity.InfinityCategories.isContractibleKan_of_iso
+#check @SerrePositivity.InfinityCategories.vertexFiber
+#print axioms SerrePositivity.InfinityCategories.vertexFiber
+#check @SerrePositivity.InfinityCategories.vertexFiberι
+#print axioms SerrePositivity.InfinityCategories.vertexFiberι
+#check @SerrePositivity.InfinityCategories.vertexFiberι_comp
+#print axioms SerrePositivity.InfinityCategories.vertexFiberι_comp
+#check @SerrePositivity.InfinityCategories.vertexFiberLift
+#print axioms SerrePositivity.InfinityCategories.vertexFiberLift
+#check @SerrePositivity.InfinityCategories.vertexFiberLift_ι
+#print axioms SerrePositivity.InfinityCategories.vertexFiberLift_ι
+#check @SerrePositivity.InfinityCategories.vertexFiber_hom_ext
+#print axioms SerrePositivity.InfinityCategories.vertexFiber_hom_ext
+#check @SerrePositivity.InfinityCategories.vertexFiber_isContractibleKan
+#print axioms SerrePositivity.InfinityCategories.vertexFiber_isContractibleKan
+#check @SerrePositivity.InfinityCategories.vertexFiber_kanComplex
+#print axioms SerrePositivity.InfinityCategories.vertexFiber_kanComplex
+#check @SerrePositivity.InfinityCategories.concat_extendOrderHom
+#print axioms SerrePositivity.InfinityCategories.concat_extendOrderHom
+#check @SerrePositivity.InfinityCategories.joinStdSimplexIso_rightPoint_naturality
+#print axioms SerrePositivity.InfinityCategories.joinStdSimplexIso_rightPoint_naturality
+#check @SerrePositivity.InfinityCategories.joinStdSimplexIso_rightPoint_inl
+#print axioms SerrePositivity.InfinityCategories.joinStdSimplexIso_rightPoint_inl
+#check @SerrePositivity.InfinityCategories.joinStdSimplexIso_rightPoint_inr
+#print axioms SerrePositivity.InfinityCategories.joinStdSimplexIso_rightPoint_inr
+#check @SerrePositivity.InfinityCategories.pinchedSimplexToFiber
+#print axioms SerrePositivity.InfinityCategories.pinchedSimplexToFiber
+#check @SerrePositivity.InfinityCategories.pinchedHomToSliceFiber
+#print axioms SerrePositivity.InfinityCategories.pinchedHomToSliceFiber
+#check @SerrePositivity.InfinityCategories.fiberSimplexToPinched
+#print axioms SerrePositivity.InfinityCategories.fiberSimplexToPinched
+#check @SerrePositivity.InfinityCategories.pinchedHomSliceFiberIso
+#print axioms SerrePositivity.InfinityCategories.pinchedHomSliceFiberIso
+#check @SerrePositivity.InfinityCategories.IsTerminalVertex.pinchedHom_isContractibleKan
+#print axioms SerrePositivity.InfinityCategories.IsTerminalVertex.pinchedHom_isContractibleKan
+#check @SerrePositivity.InfinityCategories.IsTerminalVertex.isTerminalHo
+#print axioms SerrePositivity.InfinityCategories.IsTerminalVertex.isTerminalHo

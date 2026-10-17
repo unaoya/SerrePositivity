@@ -3677,6 +3677,115 @@ Core 対象ビルドは終了コード 0（1566 jobs）、公理監査は終了�
 A3a–c 完了。A3d–e は未完了、A3f は任意、A3g は保留。
 §4 の設計変更はない。次に終対象と写像空間の可縮性の同値へ進む。
 
+
+### A3d 前半保存：可縮性と slice fiber（2026-10-18）
+
+終対象から右 pinched 写像空間の可縮性を導く方向を実装。逆方向・同型不変性・終対象全体の可縮性は未完了であり、A3d 完了とは数えない。A3e も未着手。§4 の設計変更はない。以下の型は各ファイルの公開宣言の全ヘッダー。共通の `universe u`、`open CategoryTheory Limits SSet`、`open scoped Simplicial` の下で読む。
+
+ContractibleKan：
+
+```lean
+def IsContractibleKan (K : SSet.{u}) : Prop
+
+lemma isContractibleKan_iff_trivialKanFibration (K : SSet.{u}) :
+    IsContractibleKan K ↔ TrivialKanFibration (terminal.from K)
+
+lemma IsContractibleKan.nonempty {K : SSet.{u}} (h : IsContractibleKan K) : Nonempty (K _⦋0⦌)
+
+lemma IsContractibleKan.kanComplex {K : SSet.{u}} (h : IsContractibleKan K) : KanComplex K
+
+lemma IsContractibleKan.isTerminalVertex {K : SSet.{u}} (h : IsContractibleKan K)
+    (x : K _⦋0⦌) : IsTerminalVertex x
+
+lemma IsContractibleKan.isInitialVertex {K : SSet.{u}} (h : IsContractibleKan K)
+    (x : K _⦋0⦌) : IsInitialVertex x
+
+lemma IsContractibleKan.piZero_subsingleton {K : SSet.{u}} (h : IsContractibleKan K) :
+    Subsingleton (SSet.π₀ K)
+
+lemma isContractibleKan_of_nonempty_of_all_terminal {K : SSet.{u}}
+    (hne : Nonempty (K _⦋0⦌)) (hterm : ∀ x : K _⦋0⦌, IsTerminalVertex x) :
+    IsContractibleKan K
+
+lemma isContractibleKan_of_iso {K L : SSet.{u}} (e : K ≅ L) (h : IsContractibleKan K) :
+    IsContractibleKan L
+```
+
+VertexFiber：
+
+```lean
+def vertexFiber {E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) : SSet.{u}
+
+def vertexFiberι {E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) : vertexFiber p b ⟶ E
+
+lemma vertexFiberι_comp {E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) :
+    vertexFiberι p b ≫ p = SSet.const b
+
+def vertexFiberLift {A E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌)
+    (f : A ⟶ E) (hf : f ≫ p = SSet.const b) : A ⟶ vertexFiber p b
+
+lemma vertexFiberLift_ι {A E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌)
+    (f : A ⟶ E) (hf : f ≫ p = SSet.const b) : vertexFiberLift p b f hf ≫ vertexFiberι p b = f
+
+lemma vertexFiber_hom_ext {A E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌)
+    {f g : A ⟶ vertexFiber p b} (h : f ≫ vertexFiberι p b = g ≫ vertexFiberι p b) : f = g
+
+lemma vertexFiber_isContractibleKan {E B : SSet.{u}} (p : E ⟶ B) [TrivialKanFibration p]
+    (b : B _⦋0⦌) : IsContractibleKan (vertexFiber p b)
+
+lemma vertexFiber_kanComplex {E B : SSet.{u}} (p : E ⟶ B) [RightFibration p]
+    (b : B _⦋0⦌) : KanComplex (vertexFiber p b)
+```
+
+PinchedSlice：
+
+```lean
+lemma concat_extendOrderHom {m n r : ℕ} (α : Fin (m + 1) →o Fin (n + 1))
+    (ℓ : ℕ) (hℓ : ℓ ≤ r) (f : Fin ℓ →o Fin (m + 1)) (g : Fin (r - ℓ) →o Fin 1)
+    (i : Fin r) :
+    (Join.concat ℓ hℓ (α.comp f) g i).val =
+      (PinchedHom.extendOrderHom α (Join.concat ℓ hℓ f g i)).val
+
+lemma joinStdSimplexIso_rightPoint_naturality {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌) :
+    joinMap (stdSimplex.map α) (𝟙 (Δ[0] : SSet.{u})) ≫ (joinStdSimplexIso n 0).hom =
+      (joinStdSimplexIso m 0).hom ≫ stdSimplex.map (PinchedHom.extend α)
+
+lemma joinStdSimplexIso_rightPoint_inl (n : ℕ) :
+    joinInl (Δ[n] : SSet.{u}) Δ[0] ≫ (joinStdSimplexIso n 0).hom =
+      stdSimplex.map (PinchedHom.front n)
+
+lemma joinStdSimplexIso_rightPoint_inr (n : ℕ) :
+    joinInr (Δ[n] : SSet.{u}) Δ[0] ≫ (joinStdSimplexIso n 0).hom =
+      stdSimplex.map (PinchedHom.lastVertex n)
+
+def pinchedSimplexToFiber {X : SSet.{u}} {x y : X _⦋0⦌} {n : ℕ}
+    (s : PinchedHom.Simplex x y n) :
+    (vertexFiber (sliceOverProjection (SSet.yonedaEquiv.symm y)) x) _⦋n⦌
+
+def pinchedHomToSliceFiber {X : SSet.{u}} (x y : X _⦋0⦌) :
+    pinchedHom x y ⟶ vertexFiber (sliceOverProjection (SSet.yonedaEquiv.symm y)) x
+
+def fiberSimplexToPinched {X : SSet.{u}} {x y : X _⦋0⦌} {n : ℕ}
+    (s : (vertexFiber (sliceOverProjection (SSet.yonedaEquiv.symm y)) x) _⦋n⦌) :
+    PinchedHom.Simplex x y n
+
+noncomputable def pinchedHomSliceFiberIso {X : SSet.{u}} (x y : X _⦋0⦌) :
+    pinchedHom x y ≅ vertexFiber (sliceOverProjection (SSet.yonedaEquiv.symm y)) x
+```
+
+TerminalMappingSpace：
+
+```lean
+lemma IsTerminalVertex.pinchedHom_isContractibleKan {X : SSet.{u}} {x : X _⦋0⦌}
+    (hx : IsTerminalVertex x) (z : X _⦋0⦌) : IsContractibleKan (pinchedHom z x)
+
+noncomputable def IsTerminalVertex.isTerminalHo {X : SSet.{u}} [Quasicategory X]
+    {x : X _⦋0⦌} (hx : IsTerminalVertex x) :
+    IsTerminal (SSet.HomotopyCategory.mk x : hoFunctor.obj X)
+```
+
+Core 対象ビルド：終了コード 0（1570 jobs）。監査：終了コード 0、累計 536 宣言、許可された標準三公理のみ。全体ビルドは A3 完了時に実行する。
+
 ## 7. A3 の工程（2026-10-18 追加）
 
 A1・A2 の完了を受けて着手する。優先順は G1（infinity-categories.md §0）と D4・ε が使う順。

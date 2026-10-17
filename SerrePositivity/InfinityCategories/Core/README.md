@@ -370,3 +370,26 @@ A1 の辺のホモトピー類による圏を介して通常の hoFunctor の Ho
 N レーンの Basic・Index の変更はない。
 全 28 新規宣言の正確な型と前提は計画 §6 に記録。
 Core ビルド・累計 509 件の公理監査は成功。A3a–c 完了、A3d–e は未完了。
+
+## A3d：終対象と写像空間の可縮性（2026-10-18、実装前の照合）
+
+[HTT Propositions 1.2.12.4・1.2.12.9](https://www.math.ias.edu/~lurie/papers/HTT.pdf)、
+[Kerodon §4.7.3](https://kerodon.net/tag/02H6) と
+[Proposition 4.4.2.14](https://kerodon.net/tag/01NU) を照合した。
+現在の Kerodon では終対象の節は §4.7.3 である（計画の §4.6.7 は旧参照）。
+
+可縮な Kan 複体の条件 `IsContractibleKan K` は、全ての n≥0 の
+`∂Δ[n]→K` が `Δ[n]→K` に延長する、という境界の充填条件で定義する。
+これは点への射が A2 の TrivialKanFibration であることと同値であり、
+Kan 性・非空性・連結性を含む。π₀ が一点であるという弱い条件にはしない。
+目標の正確な文言は、`[Quasicategory X]` の下で
+`IsTerminalVertex x ↔ ∀ z, IsContractibleKan (pinchedHom z x)`。
+
+系は任意の `e : VertexIso x y` による終対象性の同値。
+同じ図式 p 上の錐 c,d については、h(sliceOver p) で c,d が同型なら
+`IsLimitCone c ↔ IsLimitCone d`。この仮定を hX での錐頂点だけの同型に弱めない。
+さらに終対象の頂点が張る全部分複体が非空なら可縮な Kan 複体となることを示す。
+証明は slice の右ファイブレーションとその fiber の境界充填条件、
+A3b の可逆辺のホーン充填を用いる。モデル構造は使わない。
+
+A3d 前半：`pinchedHomSliceFiberIso` は任意の単体集合の右 pinched 写像空間を slice 射影の頂点上の fiber と厳密に同定する。`IsTerminalVertex.pinchedHom_isContractibleKan` は quasicategory 性を仮定せず、終対象性から全ての右 pinched 写像空間の可縮性を導く。逆方向と同型不変性は未完了。
