@@ -716,6 +716,16 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiNativeDivide
 assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiNativeDividedPowers_base_apply
 assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_perfectPrismVarpiNativePDMorphism
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiCoefficient_prime_eq_zero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiRootRing_prime_eq_zero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiNativePDEnvelope_truncatedEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiNativePDEnvelope_free_over_powerQuotient
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiNativePDEnvelope_free
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiNativePDEnvelope_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiRootInput_free
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiRootPowerQuotient_free
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiNativePDEnvelope_truncated_dpow
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -838,7 +848,8 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.RankOneDPCoefficientQuotient,
     `SerrePositivity.BhattScholze.Andre.PrincipalDPCoefficientQuotient,
     `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiPDComparison,
-    `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiNativePDEnvelope]
+    `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiNativePDEnvelope,
+    `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiNativePDFlat]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

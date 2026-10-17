@@ -2471,3 +2471,58 @@ prismatic envelope の Frobenius 引戻しとの同定、および一般基底�
 生成宣言を含む 3587 宣言の推移的公理依存は標準 3 公理のみ。
 自由分冪・一次関係表示の係数商同型、ϖ 還元表示の同型とイデアル対応、
 原典係数上の実分冪構造・pd 普遍性の公開型 6 本を `#print` で確認した（終了コード 0）。
+
+### E1.41：原典係数上の同じ実 pd 台環の切断表示・自由性・忠実平坦性
+
+新規 `Andre/PerfectPrismVarpiNativePDFlat.lean` は、E1.40 で実分冪構造と普遍性を
+与えた標準台環そのものに、既存の可算切断表示とモニック冪商の計算を接続した。
+W=(A,(d)) は完全 oriented prism、x=φ⁻¹(d)、ϖ=x mod d、Rv=(A/(d))/(ϖ)、
+Nv=`PowerRootPolynomial Rv p hp`、barr:A→Rv は標準二重商射、
+zv=`powerRootPolynomialBaseMap Rv p hp (f.map barr)`、
+Dv=`PrincipalDPPresentation Nv zv` とする。
+Rv と (A/p)/(x mod p) の具体的環同型で p=0 を証明し、Nv にも移す。
+
+```lean
+def perfectPrismVarpiNativePDEnvelope_truncatedEquiv
+    (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A) :
+    letI := principalDPQuotientAlgebra hp (perfectPrismVarpiRootRing_prime_eq_zero W hW) zv
+    Dv ≃ₐ[Nv ⧸ Ideal.span {zv ^ p}] PrincipalDPTruncatedPresentation p zv
+```
+
+右辺は実際の可算変数多項式商 `(Nv/(zv^p))[g₁,g₂,…]/(gᵢ^p)`。
+係数作用は既存の `principalDPQuotientAlgebra` を固定しており、単なる環同型ではなく
+入力の p 乗商からの標準係数射を保つ代数同型である。
+`perfectPrismVarpiNativePDEnvelope_free_over_powerQuotient` はこの同じ係数商上の自由性、
+`perfectPrismVarpiRootInput_free` は Nv 自身の Rv 上の自由性、
+`perfectPrismVarpiRootPowerQuotient_free` はモニック f に対する Nv/(zv^p) の
+Rv 上の自由性、`perfectPrismVarpiNativePDEnvelope_free` は Dv の Rv 上の自由性を述べる。
+これらの加群の結果は prism 商の p 正則性を要求しない。
+正次数モニック f に対しては
+
+```lean
+theorem perfectPrismVarpiNativePDEnvelope_faithfullyFlat
+    (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
+    (f : Polynomial A) (hf : f.Monic) (hdeg : 0 < f.natDegree) :
+    Module.FaithfullyFlat Rv Dv
+```
+
+を証明した。非零 Rv ではモニック多項式の次数保存、零 Rv では任意加群の自明性を使い、
+係数環の非零性を追加仮定にしない。
+
+`perfectPrismVarpiNativePDEnvelope_truncated_dpow` は、E1.40 の実分冪構造の
+入力元における p^(i+1) 次分冪が切断表示の添字 i の変数に写ることを証明する。
+この分冪構造を含む公式には従前通り hpR（A/(d) の p 正則性）と hf を明示する。
+表示と加群の結果には hpR を要求しないことと区別する。
+BS Rem 7.15(1)（著者版 p.62）の P/(f^p) 上の自由な切断表示と R/ϖ 上の
+忠実平坦性の通常代数計算を、構成済みの同じ実 pd 台環に接続した。
+Prop 7.11 を使わず、具体的基底と係数射を保持する既存表示の経路である。
+prismatic envelope の Frobenius 引戻しとの同定、その比較を用いた T/ϖ の
+忠実平坦性・T の p ねじれなし、および一般基底への原典通りの比較は未完了。
+公開済みの根付き perfectoid 拡大の一般存在定理をこの条件付き比較で置き換えない。
+
+対象・集約の `set -o pipefail; lake build` は終了コード 0
+（集約 `SerrePositivity.BhattScholze.Andre.MonicRootedExtension`：4438 jobs）。
+新規 9 公開宣言を `assert_no_sorry` に加えた専用監査は終了コード 0。
+生成宣言を含む 3618 宣言の推移的公理依存は標準 3 公理のみ。
+切断代数同型・入力 p 乗商上の自由性・忠実平坦性・無限根環と冪商の自由性・
+実分冪値の切断変数への対応の公開型 6 本を `#print` で確認した（終了コード 0）。
