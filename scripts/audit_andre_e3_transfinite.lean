@@ -138,6 +138,9 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.rootSuccessorStru
 assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.andreTowerAlgebra_hasIterationOfShape
 assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFaithfullyFlat_ringEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.exists_monicRootPerfectoidExtension
+
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
@@ -165,7 +168,8 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.Transfinite.AlgebraColimit,
     `SerrePositivity.BhattScholze.Andre.Transfinite.CompletionUniversal,
     `SerrePositivity.BhattScholze.Andre.Transfinite.AlgebraCategory,
-    `SerrePositivity.BhattScholze.Andre.Transfinite.Existence]
+    `SerrePositivity.BhattScholze.Andre.Transfinite.Existence,
+    `SerrePositivity.BhattScholze.Andre.Transfinite.SingleRoot]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
@@ -318,3 +322,6 @@ run_cmd do
 #print SerrePositivity.BhattScholze.Andre.Transfinite.rootSuccessorStructure
 #print SerrePositivity.BhattScholze.Andre.Transfinite.andreTowerAlgebra_hasIterationOfShape
 #print SerrePositivity.BhattScholze.Andre.Transfinite.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed
+
+#print SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFaithfullyFlat_ringEquiv
+#print SerrePositivity.BhattScholze.Andre.Transfinite.exists_monicRootPerfectoidExtension

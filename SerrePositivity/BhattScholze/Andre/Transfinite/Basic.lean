@@ -31,6 +31,8 @@ public import SerrePositivity.BhattScholze.Andre.Transfinite.AlgebraCategory
 
 public import SerrePositivity.BhattScholze.Andre.Transfinite.Existence
 
+public import SerrePositivity.BhattScholze.Andre.Transfinite.SingleRoot
+
 /-! # André E3：超限反復の部品
 
 BS Thm 7.14（著者版 p.61）。現時点では剰余 Frobenius の保存、

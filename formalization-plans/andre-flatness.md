@@ -432,6 +432,29 @@ Mathlib の `SmallObject.SuccStruct.iterationFunctor` で実装。
 これは step に相対的な証明であり、無条件の BS Thm 7.14 の完成・引用解消としては数えない。
 Inputs の既存 sorry は編集していない。
 
+### E3.16：A1 の一元拡大を任意の perfectoid 基底へ移送
+
+`SingleRoot.lean` を追加。
+
+- `exists_monicRootPerfectoidExtension`：任意の perfectoid 環 R 上の一つの正次数モニック多項式に、
+  同じ Type u の p 完全忠実平坦な perfectoid 拡大で根が存在する。追加仮定なし。
+- `isCompletelyFaithfullyFlat_ringEquiv`：環同型の toAlgebra の作用について、
+  任意のイデアルに関する完全忠実平坦性を R 自身から線形同型で移す。
+
+**原典・経路の記録：** BS Thm 7.14（著者版 p.61）、Thm 3.10（p.32）。
+A1 の `PerfectPrismMonicRootedExtension.lean` の一元存在定理を利用する。
+非零基底は既存 `exists_perfectoidTrialPrism` で実 Fontaine・PD 構成の完全 prism 商と環同型にし、
+その商へ多項式を移す。環同型の単射性で次数が保存され、モニック性も保存される。
+A1 の商上の拡大射と基底環同型の逆射を合成し、元の toAlgebra の作用に関する
+完全忠実平坦性を E3.6 で合成する。零環には恒等射を使う。
+A1 の一元拡大の対象 build を実行し、終了コード 0（4242 jobs）を確認した。
+他レーンのファイル・記録・ハンクは編集しない。
+
+集約対象 build 終了コード 0（4344 jobs、新規モジュール警告なし）。
+専用監査終了コード 0、公開全 121 宣言の assert_no_sorry と全 341 宣言の再帰監査に成功。
+A1 の一元拡大への推移的依存も標準 3 公理のみ。
+**未完了：** 一元の根添加を任意の添字族に広げ、E3.15 の指定 step を解消する工程。
+
 ### 残る範囲
 
 1. A1 の成果から、正次数条件付きの指定 step を仮定なしで供給する。
