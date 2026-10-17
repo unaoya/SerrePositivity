@@ -416,3 +416,12 @@ tensor 比較を含めた最終単位・合成の可換式。合成の証明で�
 DifferentialGraded/README.md・Stage*.lean は編集していない。
 ルート import は自分の hunk のみ `git add -p` で stage。正本 `dg-theory.md` には
 この記録への参照を一行だけ追加する。amend・rebase・reset は行っていない。
+
+
+### 最終コミットと並行作業による参照行の取り込み
+
+最終 Hom・単位・合成・dg 関手・最終11宣言監査・受入記録は `4df99ae5`。
+正本に追加した上記参照一行は、部分 stage する前に並行コミット `741adc83` へ
+取り込まれていたことを `git blame` で確認した。参照を重複追加せず、履歴も変更しない。
+ルートの最終 import は `git add -p` で自分の hunk のみを stage し、別担当の import hunk は
+stage しなかった。本担当のコード変更は各記録の通常の追加コミットに分割している。
