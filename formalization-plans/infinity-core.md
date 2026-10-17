@@ -202,3 +202,77 @@ nerveBridge_map_edge {C : Type u} [Category.{u} C] {x y : C} (f : x ⟶ y) :
 `lake env lean scripts/audit_infinity_core.lean` は終了コード 0。
 累計全 16 公開宣言が標準三公理のみ。A1a〜A1d は完了。
 A2a〜A2i は未完了であり、nerve における極限の一致はこの工程に含めない。
+
+### A1 最終全体ビルド（2026-10-17）
+
+A1d までを含めた `set -o pipefail; lake build` は終了コード 0
+（7335 jobs）。他チャットのルート追加 import を含む作業ツリーで確認した。
+Core の変更には他チャットのハンクを含めていない。
+
+### A2a 前段階（2026-10-17）：直接表現と切断の計算
+
+**A2a は未完了。** A2a・A2b の設計を `Core/README.md` に記録して報告した。
+次数 −1 を頂点数 0 で表し、join の n 単体を計画通りの直和で直接定義する。
+slice は `{σ : join Δ[n] K ⟶ X // joinInr Δ[n] K ≫ σ = p}` とする設計。
+§4 の設計は変更していない。
+
+`Core/Join.lean` の前段階の公開宣言は次の 14 件。
+namespace は `SerrePositivity.InfinityCategories.Join`、宇宙 `u` は任意。
+`open CategoryTheory SSet`、`open scoped Simplicial` の下での正確な型：
+
+```lean
+augObj (K : SSet.{u}) : ℕ → Type u
+
+augMap (K : SSet.{u}) {m n : ℕ} (α : Fin m →o Fin n) :
+  augObj K n → augObj K m
+
+augMap_id (K : SSet.{u}) (n : ℕ) (x : augObj K n) :
+  augMap K (OrderHom.id : Fin n →o Fin n) x = x
+
+augMap_comp (K : SSet.{u}) {l m n : ℕ}
+  (α : Fin m →o Fin n) (β : Fin l →o Fin m) (x : augObj K n) :
+  augMap K (α.comp β) x = augMap K β (augMap K α x)
+
+Simplex (K L : SSet.{u}) (n : ℕ) : Type u
+
+pullCut {m n : ℕ} (α : Fin m →o Fin n) (ℓ : ℕ) : ℕ
+
+pullCut_le {m n : ℕ} (α : Fin m →o Fin n) (ℓ : ℕ) : pullCut α ℓ ≤ m
+
+lt_pullCut_iff {m n : ℕ} (α : Fin m →o Fin n) (ℓ : ℕ) (i : Fin m) :
+  i.val < pullCut α ℓ ↔ (α i).val < ℓ
+
+cut_ext {n a b : ℕ} (ha : a ≤ n) (hb : b ≤ n)
+  (h : ∀ i : Fin n, i.val < a ↔ i.val < b) : a = b
+
+pullCut_id {n : ℕ} (ℓ : ℕ) (hℓ : ℓ ≤ n) :
+  pullCut (OrderHom.id : Fin n →o Fin n) ℓ = ℓ
+
+pullCut_comp {l m n : ℕ} (α : Fin m →o Fin n) (β : Fin l →o Fin m) (ℓ : ℕ) :
+  pullCut (α.comp β) ℓ = pullCut β (pullCut α ℓ)
+
+leftMap {m n : ℕ} (α : Fin m →o Fin n) (ℓ : ℕ) :
+  Fin (pullCut α ℓ) →o Fin ℓ
+
+rightMap {m n : ℕ} (α : Fin m →o Fin n) (ℓ : ℕ) :
+  Fin (m - pullCut α ℓ) →o Fin (n - ℓ)
+
+simplexMap (K L : SSet.{u}) {m n : ℕ} (α : Fin (m + 1) →o Fin (n + 1)) :
+  Simplex K L n → Simplex K L m
+```
+
+仮定は任意の単体集合と有限順序集合の単調写像のみ。
+`augObj K 0 = PUnit`、`augObj K (r+1) = K _⦋r⦌`。
+`Simplex K L n = Σ ℓ : Fin (n+2), augObj K ℓ.val × augObj L (n+1-ℓ.val)`。
+切断の逆像が先頭区間になることを上下からの濃度比較で証明した。
+`simplexMap` は左右の制限から定義済みだが、その恒等・合成則は未証明。
+したがって `join : SSet → SSet → SSet`、包含、標準単体の同型、空 join の同型、
+join の射への関手性は未構成。slice も設計のみで未実装。
+A2a〜A2i のいずれも完了とは数えない。
+
+前段階の対象 `lake build SerrePositivity.InfinityCategories.Core` と
+`lake env lean scripts/audit_infinity_core.lean` は終了コード 0。
+累計 30 明示的公開宣言を監査し、全て `propext`・`Classical.choice`・`Quot.sound` のみ。
+原典：HTT §1.2.8、Kerodon §4.3.5。追加公理・引用・`sorry` はない。
+
+前段階を集約した全体 `set -o pipefail; lake build` も終了コード 0（7349 jobs）。

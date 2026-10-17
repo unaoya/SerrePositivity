@@ -43,3 +43,33 @@ import SerrePositivity.InfinityCategories.Core
 #check @SerrePositivity.InfinityCategories.nerveBridge_map_edge
 #print axioms SerrePositivity.InfinityCategories.nerveHomotopyCategoryEquivalence
 #print axioms SerrePositivity.InfinityCategories.nerveBridge_map_edge
+
+-- A2a の前段階：join 自体の関手法則・包含・同型の完成は未主張。
+#check @SerrePositivity.InfinityCategories.Join.augObj
+#check @SerrePositivity.InfinityCategories.Join.augMap
+#check @SerrePositivity.InfinityCategories.Join.augMap_id
+#check @SerrePositivity.InfinityCategories.Join.augMap_comp
+#check @SerrePositivity.InfinityCategories.Join.Simplex
+#check @SerrePositivity.InfinityCategories.Join.pullCut
+#check @SerrePositivity.InfinityCategories.Join.pullCut_le
+#check @SerrePositivity.InfinityCategories.Join.lt_pullCut_iff
+#check @SerrePositivity.InfinityCategories.Join.cut_ext
+#check @SerrePositivity.InfinityCategories.Join.pullCut_id
+#check @SerrePositivity.InfinityCategories.Join.pullCut_comp
+#check @SerrePositivity.InfinityCategories.Join.leftMap
+#check @SerrePositivity.InfinityCategories.Join.rightMap
+#check @SerrePositivity.InfinityCategories.Join.simplexMap
+#print axioms SerrePositivity.InfinityCategories.Join.augObj
+#print axioms SerrePositivity.InfinityCategories.Join.augMap
+#print axioms SerrePositivity.InfinityCategories.Join.augMap_id
+#print axioms SerrePositivity.InfinityCategories.Join.augMap_comp
+#print axioms SerrePositivity.InfinityCategories.Join.Simplex
+#print axioms SerrePositivity.InfinityCategories.Join.pullCut
+#print axioms SerrePositivity.InfinityCategories.Join.pullCut_le
+#print axioms SerrePositivity.InfinityCategories.Join.lt_pullCut_iff
+#print axioms SerrePositivity.InfinityCategories.Join.cut_ext
+#print axioms SerrePositivity.InfinityCategories.Join.pullCut_id
+#print axioms SerrePositivity.InfinityCategories.Join.pullCut_comp
+#print axioms SerrePositivity.InfinityCategories.Join.leftMap
+#print axioms SerrePositivity.InfinityCategories.Join.rightMap
+#print axioms SerrePositivity.InfinityCategories.Join.simplexMap
