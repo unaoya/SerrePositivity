@@ -916,3 +916,20 @@ fiber は指定通り `mappingCone f` の −1 シフトであり、射に追加
 対象集約ビルドは終了コード0（3936 jobs）、公理監査も終了コード0。
 21モジュール474宣言すべて標準3公理のみ。D2h′ に残りなし。
 未完了：D1 の quasicategory instance、D3 の同値とシフト両立。D2i の見積もりはその後。
+
+
+### D1 完了・導来単体的集合の quasicategory 性（2026-10-18）
+
+`dg-nerve.md` §5 の「N2e・N2 完了（2026-10-17）」を確認して着手。
+namespace `SerrePositivity.InfinityCategories`、公開 instance の正確な型：
+```lean
+derivedInfinityCategoryQuasicategory (S : Type u) [CommRing S] :
+  SSet.Quasicategory (derivedInfinityCategory S)
+```
+N2 の `dgNerve.instQuasicategory` を `Semifree S` に具体化した。
+内部ホーンの方程式・有界性・有限性・環の追加性質を仮定しない。
+既存の零・一・二単体同値と合わせて D1 は完了。
+集約ビルドは終了コード0（3936 jobs）、公理監査は終了コード0、
+21モジュール475宣言すべて標準3公理のみ。
+任意の可換環と整数環で instance の自動合成も型検査した。
+未完了：D3 の同値とシフト両立の保存、その後 D2i の見積もり。

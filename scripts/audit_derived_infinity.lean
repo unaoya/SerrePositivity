@@ -224,6 +224,14 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.complexSemifree_fiber
 #print axioms SerrePositivity.InfinityCategories.complexSemifree_biprodFiber
 
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityCategoryQuasicategory
+
+example (S : Type u) [CommRing S] :
+    SSet.Quasicategory (SerrePositivity.InfinityCategories.derivedInfinityCategory S) := inferInstance
+
+example : SSet.Quasicategory
+    (SerrePositivity.InfinityCategories.derivedInfinityCategory ℤ) := inferInstance
+
 open Lean in
 run_cmd do
   let env ← getEnv

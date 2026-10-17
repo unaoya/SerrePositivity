@@ -4,9 +4,9 @@ public import SerrePositivity.InfinityCategories.DGNerve
 
 /-! # Semifree 複体の dg nerve
 
-概要：導来単体的集合とその零・一・二単体を定義する。
+概要：導来単体的集合とその零・一・二単体、quasicategory 性を与える。
 方針：N1 の公開同値を semifree dg 部分圏へ具体化する。
-規約：quasicategory 性は N2 の完了後に扱う。
+規約：N2 の内部ホーン充填による quasicategory 性を用いる。
 使われ方：導来 ∞ 圏のホモトピー圏と安定性の比較の入口。
 -/
 @[expose] public section
@@ -48,5 +48,12 @@ def derivedInfinityCategoryEdgeEquiv :
 def derivedInfinityCategoryTriangleEquiv :
     (derivedInfinityCategory S) _⦋2⦌ ≃ DGNerve.TriangleData S (Semifree S) :=
   dgNerve.triangleEquiv S (Semifree S)
+
+/-- 概要：semifree 複体の dg nerve は quasicategory である。
+方針：N2 の無条件の内部ホーン充填の instance を具体化する。
+規約：可換環以外の追加前提なし。使われ方：導来 ∞ 圏としての構造。 -/
+instance derivedInfinityCategoryQuasicategory : SSet.Quasicategory (derivedInfinityCategory S) := by
+  unfold derivedInfinityCategory
+  infer_instance
 
 end SerrePositivity.InfinityCategories
