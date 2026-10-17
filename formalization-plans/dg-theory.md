@@ -9447,3 +9447,45 @@ BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_
 自然性・単位・結合のcoherenceへ接続する。今回の余単位だけでU12e全体を受け入れない。
 その後U16a〜d、U15eの分解版へ進む。局所K-flat版は§0の並行担当成果を再利用する。
 共有モデル一般論への新しいAPI要求はない。共有ルート・Endomorphism/・係数変更系列は変更していない。
+
+### 17.206 U12e46：graph延長–制限の自然な単位と両三角恒等式（2026-10-17）
+
+**追加API。** `Tensor/BalancedUnitElements.lean`に、出力次数の等式を変えた
+左作用のHEq比較と`BalancedTensor.element_balanced_zero`を追加した。
+後者は右側のtensor因子が次数0の場合のbalanced関係であり、一般の左加群について
+`p+0=p`に伴う依存型の移送を処理する。graphのHom endやtensorの余極限を展開せずに適用できる。
+
+前項で未受入だった`Module/FunctorExtensionUnit.lean`の型照合を解消した。
+`functorGraph_leftAction_unit`は既存の`endomorphismYonedaApp`を再利用し、
+graphの左作用を単位で評価するとdg関手のHom写像になることを示す。
+`functorExtensionInsertion_action`は任意整数次数のHom作用に関する挿入の自然性であり、
+`functorExtensionUnit`はその全Hom自然な閉零加群射である。
+`Module/FunctorExtensionUnitNaturality.lean`の`functorExtensionInsertion_map`と
+`dgModuleUnit`により、単位を加群変数についても自然変換へ束ねた。
+
+`Module/FunctorExtensionAdjunction.lean`で`dgModule_left_triangle`と
+`dgModule_right_triangle`を証明し、`dgModuleExtensionRestrictionAdjunction`を構成した。
+左三角恒等式はtensor生成元上で二つのKoszul符号を相殺し、右三角恒等式は
+既存の挿入–評価恒等式を用いる。任意可換環、独立のsource/target宇宙、u-smallな対象型で、
+元のHomのflatness・有界性を仮定せず、全dg加群の閉零射圏上の随伴を得る。
+既存公開APIの名前・型の変更はない。
+
+**検証。** 新規`Checks.DGFunctorAdjunction`は全次数作用の自然性、両三角恒等式、
+source smallnessを使わないgraph左作用の単位計算、ZMod 2上の随伴を型検査する。
+同チェック、Checks.DGFunctorCounit・Checks.DGFunctorExtension・Checks.DGDerivedRestriction・
+Checks.DGResolutionComparison・Checks.DerivedBimoduleFullPentagon・Checks.StageEight・
+Checks.StageSeven・Spectra.StageTwoの統合ビルド成功（3313 jobs、警告なし）。
+主要11宣言の直接公理監査は重複・欠落なく標準3公理以内。監査累計4031宣言。
+今回の受入ソースのsorry・admit・新規axiom・資源上限変更は0件。採用済み引用は0件。
+全体文書検査は20 Markdown・320 exposition参照を検査し、担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+未解決参照1件で失敗した。計画書のローカルリンクと担当差分の空白検査は成功。
+
+**次の接続。** 通常加群圏の随伴を主Kへ降下させ、制限の準同型保存と合わせて延長の
+ホモトピー射影性保存を証明する。U14の主K・導来再構成随伴とその射集合同値の構成を
+読み取り専用で確認した。既存の局所化Hom自然性・射影的始域のHom計算を再利用し、
+現在の射影解像度による`dgDerivedExtension`と`dgDerivedRestriction`の導来随伴へ接続する。
+代表加群上の単位の同定、準同値に沿う全加群の導来同値、解像度変更とbimodule合成の
+自然性・単位・結合のcoherenceは引き続き必要である。U12e全体はまだ受け入れない。
+その後U16a〜d、U15eの分解版へ進む。局所K-flat版の所有と再利用方針は§0を保持する。
+共有一般論への新しいAPI要求はなく、共有ルート・Endomorphism/・係数変更系列は変更していない。
