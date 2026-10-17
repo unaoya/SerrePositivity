@@ -622,3 +622,29 @@ HEAD からの差分全体が自分の変更だけであることも確認する
   project import 依存409・410ファイルに禁止された dg 圏分解系への依存なし。
   新規 sorry・axiom・引用なし。既存の他担当ファイル・ルートは編集していない。
 - U15e20 のコミットは `5ac8a3eb`（自分の3ファイルのみと直後に確認）。
+
+
+### U15e22：指定 Verdier 商の代表対象を終域とする実際の Hom 同値
+
+- `Quotient/DerivedComparisonRepresentableHom.lean`：指定局所化上に降りた Hom 反変関手を、
+  実際の代表加群比較写像に作用させて `quotientRepresentableHomMap` を定義した。
+  元の tria の射では、導来圏の射に比較写像を後置する写像そのものになる。
+  元の tria の射による前置との整合性も証明。
+- 局所 K-flat 仮定の下で、U15e20 の roof 表示と制限代表加群の局所性から全射性を証明。
+  任意の局所化の射を右分数に表示し、その比較値が零なら射自体が零になることも証明した。
+- 単射性では二つの右分数の分母を calculus of fractions によって共通化する。
+  共通の始域からの元の射の差に既存の核消滅を適用し、指定局所化で等しいことを得た。
+  Type 値の局所化された反変関手に、証明されていない加法性を仮定していない。
+- `quotientRepresentableHomEquiv` は、任意の X ∈ tria(D) と z ∈ D に対する
+  Hom(TriaQuotient, QX, Qrep(z)) ≃ Hom(D(D), X, restrict(rep(D/S,z))) の実際の同値。
+  `quotientDerivedRepresentableHomEquiv` は、受け入れ済みの普通の加群の導来延長–制限随伴を
+  合成し、右辺を明示的 dg 商側の Hom(Lextension(X), rep(z)) に直す。
+- 対象ビルド `Checks.QuotientRepresentableHom` 成功（2756 jobs）、警告なし。
+  主要8宣言の公理監査は標準3公理のみ。project import 依存541ファイルに
+  禁止された dg 圏分解系への依存なし。新規 sorry・axiom・引用なし。
+  他担当・ルートの既存ファイルは編集していない。
+- 残部：この Hom 同値が `quotientVerdierComparison` の実際の射写像に一致することを、
+  代表加群上の導来随伴の単位との整合性から確認すること。
+  さらに整数 shift と三角生成性で終域を全 tria 対象へ広げ、充満忠実性と同値を得ること。
+  U17b 全体も未完。U15e21 のコミットは `d000e04c`。
+  直後に別チャットが HEAD を進めたため、指定 SHA で自分の5ファイルのみと確認した。
