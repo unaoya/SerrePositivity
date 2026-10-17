@@ -58,3 +58,24 @@ compact ⇒ Perf はまだ未完。引用は採用していない。引用なし
 - 残部：semifree filtration の余極限と telescope の比較、有限高さの無限自由 cell から
   有限 cell への因子分解。U13d 全体は未完、引用採用の必要性はまだ確定していない。
 - U17a のコミット：`8c9f2e13`。
+
+### U13d3：引用なしの Neeman 型有限因子分解
+
+- `Perfect/CompactConverseFactor.lean`：`ModuleFiniteCellFactor` は実際の有限 cell 導来像への
+  因子分解。加法・前後合成・shift に閉じ、恒等射の場合は既存 Perf_S と同値。
+- 任意の compact な始域からの射がこの因子分解を持つ対象を `moduleFiniteCellFactorTarget` と定義。
+  有限 cell、u-small 余積、shift に対して閉じることを証明。
+- `Perfect/CompactConverseExtensions.lean`：この性質の拡大閉性を引用なしで証明。
+  X→P（X compact、P 有限 cell）の錐 Z が compact であることから、
+  障害射 Z→T.obj₁[1] を有限 cell Q で因子分解する。P→Q の三角形を
+  元の三角形へ写して有限 cell E を作り、残差を T.obj₁ への射で処理する。
+  単に三角形の両端への因子分解を独立に選ぶ不十分な議論は用いていない。
+- その結果、この対象クラスは三角部分圏であり、任意の指定 telescope 三角形でも閉じる。
+  `modulePerfectOver_of_compact_factorTarget` は明示した有限因子分解性から Perf を導く補題であり、
+  compact ⇒ Perf の無条件の結論を先取りしない。
+- 対象ビルド：`lake build SerrePositivity.DifferentialGraded.Checks.CompactConverseFactor` 成功。
+  主要15宣言の公理監査は標準3公理のみ。新規 sorry・axiom・引用なし。
+- 残部の中心は標準解像度の余極限と telescope の接続。標準解像度の各段は既存の
+  自由 sphere 余積と実際の cone により扱えるため、一般 semifree の各有限部分 cell を
+  明示列挙する経路は必要でない見込み。U13d 全体の完了はまだ主張しない。
+- U13d2 のコミット：`ce02b5b9`。
