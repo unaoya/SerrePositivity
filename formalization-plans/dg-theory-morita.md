@@ -4,7 +4,7 @@
 
 名前空間は `SerrePositivity.DifferentialGraded.Morita`。
 以下は他担当が依存してよい名前・正確な型・仮定の契約であり、実装状態を分けて記す。
-**「型のみ確定」は予定宣言であり、現時点でLeanからimportできることや証明済みであることを意味しない。**
+**本節の公開APIはすべて実装・検証済み。U16aはdg-theory.md §17.273の範囲で受入済み。**
 未証明のLean宣言・sorry・axiomは作らない。既存公開型を変更する必要があれば変更前に本節へ旧新型と移行方法を書く。
 
 共通の変数は次の通り。`D`・`E`・`F`の対象宇宙は独立である。
@@ -106,7 +106,7 @@ Morita/AdjunctionDerived.leanをimportすれば、上記6宣言を任意kernel�
 kernelDerivedHomEquivは全入力のHom同値、kernelDerivedHomEquiv_naturalityは始域の全導来射自然性。
 kernelDerivedHom_objで右随伴の値をtelescopeへ、kernelDerivedCounit_modelで余単位をその標的射へ計算する。
 左右三角恒等式に加え、右随伴関手・unit/counitの自然性は実際のMathlib Adjunctionのものを使える。
-U16a全体には恒等・結合の作用coherenceを残す。随伴の実装だけで全受入とはしない。
+両単位・結合の作用coherenceもU16a20で検証し、一般随伴と同時に受け入れた。
 
 ### 5. 恒等作用（実装・検証済み、U16a4）・合成比較（実装・検証済み、U16a6）
 
@@ -122,7 +122,7 @@ def kernelCompositionIso (hD : localHomKFlat A D)
 恒等比較にlocalHomKFlatは不要。合成比較はU12e-localの結合子と同じく始域Dだけに条件を置く。
 合成比較は入力導来加群と両kernelの任意の主導来射に自然（U16a9）。
 kernelComposeMapへの自然性はkernelCompositionIso_naturalityで利用できる。
-恒等を先に作用させる右単位coherenceはU16a15で検証済み。左単位と三因子の結合coherenceは未完で、Coherence*で続ける。
+右単位はU16a15、左単位と任意主導来kernelの結合coherenceはU16a20で実装・検証済み。
 
 ```lean
 lemma kernelCompositionIso_naturality (hD : localHomKFlat A D)
@@ -153,12 +153,12 @@ lemma kernelCompositionIso_rightUnit (hD : localHomKFlat A D) (P : Kernel A D E)
 ```
 
 bimoduleの順序では右単位、作用の順序では恒等kernelを先に作用させる図式である。
-終域Eの局所Hom条件やPのK-flat性は要求しない。左単位・結合coherenceの完成とは区別する。
+右単位図式には終域Eの局所Hom条件やPのK-flat性は要求しない。
 
 ### 7. kernel結合子と指定モデル計算（実装・検証済み、U16a17）
 
 Morita/CoherenceAssociatorModels.leanをimportする。名前空間はMorita。
-これは既存U12e-localの結合子への入口であり、作用の結合coherence自体の完成とは区別する。
+既存U12e-localの結合子を作用順に読む入口。任意主導来kernelの作用coherenceも以下の定理で検証済み。
 
 ```lean
 def kernelAssociatorIso (hD : localHomKFlat A D) (hE : localHomKFlat A E)
@@ -176,7 +176,26 @@ kernelCompositionIso_kFlat_facは同じ通常代表での作用比較を簡約�
 既存公開型・比較の定義は変更していない。
 CoherenceAssociatorPathsのkernelAssociatorLeftPath・kernelAssociatorRightPathは全kernel上の公開二経路。
 kernelCompositionIso_associator_modelは指定右K-flat二因子・任意通常後因子での二経路の等式として検証済み。
-全主導来kernelへの移送と左単位coherenceは未完。
+CoherenceAssociatorMainのkernelCompositionIso_associatorは、代表の条件を除いて任意の主導来kernelで
+kernelAssociatorLeftPath A D E F G hD P Q R = kernelAssociatorRightPath A D E F G hD hE P Q R
+を証明する。D・E以外の局所Hom条件は追加しない。
+
+### 8. 左単位coherence（実装・検証済み、U16a20）
+
+Morita/CoherenceLeftUnitMain.leanをimportする。
+
+```lean
+lemma kernelCompositionIso_leftUnit (hD : localHomKFlat A D) (hE : localHomKFlat A E)
+  (P : Kernel A D E) :
+  (kernelCompositionIso A D E E hD P (kernelIdentity A E)).hom ≫
+    (kernelDerivedTensorFunctor A D E).map ((derivedBimoduleLeftUnitIso A E D hD).hom.app P) =
+  Functor.whiskerLeft (kernelDerivedTensor A D E P) (kernelIdentityIso A E).hom ≫
+    (Functor.rightUnitor (kernelDerivedTensor A D E P)).hom
+```
+
+bimodule順で左単位、作用順では恒等kernelを後に作用させる図式。
+証明はD・EのlocalHomKFlatを明示して既存三角・右単位と全kernel結合coherenceを使う。
+PのK-flat性・列の射影性は不要。Morita/U16a.leanは公開API全体のproduction入口、U16aChecksは統合監査入口。
 
 ### 実装状態と他担当の利用境界
 
@@ -187,7 +206,7 @@ kernelCompositionIso_associator_modelは指定右K-flat二因子・任意通常�
 | 主導来作用・任意解像度計算 | 実装・検証済み（U16a3） | Morita/KernelDerivedFunctor.leanをimportして利用できる |
 | 一般右随伴・unit/counit・左右三角恒等式 | 実装・検証済み（U16a13） | Morita/AdjunctionDerived.lean。公開型は変更なし |
 | 恒等作用比較 | 実装・検証済み（U16a4） | Morita/CoherenceIdentity.leanのkernelIdentityIso |
-| 合成の作用比較・全kernel射の自然性 | 実装・検証済み（U16a9）。右単位coherenceはU16a15、左単位・結合coherenceは未完 | Morita/CoherenceComposition.leanのkernelCompositionIso・kernelCompositionIso_naturality・kernelCompositionIso_kFlat |
+| 合成の作用比較・全kernel射の自然性 | 実装・検証済み（U16a9・15・20）。両単位・任意kernel結合coherenceも受入済み | Morita/CoherenceComposition.leanのkernelCompositionIso・kernelCompositionIso_naturality・kernelCompositionIso_kFlat |
 
 U16b担当が構成するgraph作用と`dgDerivedExtension`の自然同型はQuasiEquivalence*に置く。
 このチャットは同ファイルを編集しない。導来作用が未実装の間も、通常graph一致はKernelTensorで提供する。
@@ -203,7 +222,7 @@ U16b→dはdg-U14チャットのMorita/QuasiEquivalence*・Perfect*・ScalarExte
 U16cではmoduleCompact_iff_perfect、perfectEndomorphismDG_quasiEquivalence、
 endomorphismDerivedEquivalence_ofCompactGeneratorを再利用する。
 perfect性・全Homの擬同型・compact生成は独立条件であり、局所Hom K-flat性から自動にはしない。
-U16a・c全体は未受入。
+U16aは受入済み。U16cの実際の右随伴との統合、U16全体の受入は続ける。
 
 
 ## U16a1：公開型と通常作用の固定・検証（2026-10-17）
@@ -721,3 +740,18 @@ CoherenceAssociatorRightNaturalityのkernelAssociatorRightPath_first_naturality�
 指定K-flat代表から任意kernelへの同型による移送に使う。
 6宣言の直接公理監査は標準3公理以内、合同ビルド3815 jobs・警告0。
 詳細はdg-theory.md §17.272。一般右随伴は実装済み、全kernel結合coherenceと左単位は継続中。
+
+
+## U16a20：任意主導来kernelの両単位・結合coherenceとU16a受入（2026-10-17）
+
+CoherenceAssociatorMainは既存K-flatモデル上の等式を最初の二kernelの同型で運び、
+kernelCompositionIso_associatorを任意の主導来kernelで証明する。
+CoherenceLeftUnitMainは、kernel三角図式とこの作用結合図式を恒等kernel二個に適用し、
+既存右単位図式に帰着する。恒等kernel作用の忠実性で後合成を消去し、左単位図式を得る。
+新規5宣言の直接公理監査は標準3公理以内。U16aChecks・他担当Perf判定と全導来拡張・
+QuasiEquivalence・局所／一般入口・Spectra.StageTwoの合同ビルド成功（4195 jobs、警告0）。
+
+U16aの公開APIは本節冒頭のすべてを実装・検証済みとする。作用・一般右随伴は局所Hom条件なし、
+合成はD、右単位はD、左単位・結合図式はD・EのlocalHomKFlatを保持。
+一般分解変更のcoherenceは含まない。詳細・受入表はdg-theory.md §17.273。
+次は完成済みCriterionPerf*とCriterionDerived*を一般右随伴と統合する。

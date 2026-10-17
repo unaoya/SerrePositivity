@@ -13016,3 +13016,44 @@ U16a全受入・U16c統合・U16全体受入はまだ行わない。
 lake build SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorNaturalityChecks SerrePositivity.DifferentialGraded.Morita.AdjunctionDerivedChecks SerrePositivity.DifferentialGraded.Morita.CoherenceUnitChecks SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.Spectra.StageTwo
 lake env lean SerrePositivity/DifferentialGraded/Morita/CoherenceAssociatorNaturalityChecks.lean
 ```
+
+
+### 17.273 U16a受入：任意主導来kernelの結合・両単位作用coherence（2026-10-17）
+
+CoherenceAssociatorMainのkernelAssociatorPaths_eq_of_first_iso／_second_isoは、
+両経路の自然性と代表同型のepi性により経路の一致を運ぶ。
+kernelCompositionIso_associatorはexists_rightKFlat_derived_isoを最初の二kernelに適用して、
+公開二経路の一致を任意の主導来kernelで証明する。最後のkernelにはK-flat性を課さない。
+
+CoherenceLeftUnitMainのkernelAssociatorIso_identity_triangleは、既存全導来三角図式を作用順で読む。
+kernelCompositionIso_leftUnitは、作用結合図式をP・恒等・恒等へ適用し、この三角図式と合成比較の自然性を貼る。
+既存kernelCompositionIso_rightUnitで二個の恒等作用の経路を計算し、恒等作用の忠実性で後合成を打ち消す。
+通常tensorの単位図式を再実装せず、既存公開比較そのものの等式を証明した。
+
+| U16a受入項目 | 公開証拠・仮定 |
+| --- | --- |
+| 任意主導来kernelによる実際の作用と射自然性 | kernelDerivedTensorFunctor、kernelDerivedTensorComputation。局所Hom条件不要 |
+| 実際の一般右随伴・Hom表示 | kernelDerivedHomEquiv、kernelDerivedHom、kernelDerivedAdjunction。列の射影性・局所Hom条件不要 |
+| 実際のunit/counit・両三角恒等式 | kernelDerivedUnit、kernelDerivedCounit、kernelDerived_left_triangle／_right_triangle |
+| 恒等作用 | kernelIdentityIso。局所Hom条件不要 |
+| 合成作用比較・全kernel射自然性・モデル計算 | kernelCompositionIso、_naturality、_model、_kFlat。始域DのlocalHomKFlat |
+| 右単位作用coherence | kernelCompositionIso_rightUnit。始域DのlocalHomKFlat |
+| 左単位作用coherence | kernelCompositionIso_leftUnit。D・EのlocalHomKFlat |
+| 任意三kernelの作用結合coherence | kernelCompositionIso_associator。D・EのlocalHomKFlat、F・Gやkernel代表には追加条件なし |
+| 独立production／監査入口 | Morita/U16a、U16aChecks。独立宇宙・任意可換環・標数2 |
+
+以上の範囲でU16aを受け入れる。dg-theory-morita.md冒頭の公開契約を実装・検証済みへ更新し、
+既存公開APIの型・向き・定義は変更していない。一般U12e・U15e分解版は中断のまま。
+新規5宣言の直接公理監査は標準3公理以内、新規監査累計5089。
+U16aChecksと自然性Checks・QuasiEquivalence・完成したCriterionPerfChecks・CriterionDerivedConditionsChecks・
+局所／一般入口・Spectra.StageTwoの合同ビルド成功（4195 jobs、警告0）。新規sorry・axiom・引用・資源上限変更なし。
+
+次はU16c統合。別担当Perf判定の1e5ee4a0とCriterionDerived*を読み取り専用で再利用し、
+その逆同値とdc0d9824の実際の右随伴の自然同型、実際のunit/counitの可逆性を証明する。
+調査時点のdg-theory-morita-qe.md末尾ではU16d全体は未受入であるため、U16全体の受入はまだ行わない。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Morita.U16aChecks SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorNaturalityChecks SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence SerrePositivity.DifferentialGraded.Morita.CriterionPerfChecks SerrePositivity.DifferentialGraded.Morita.CriterionDerivedConditionsChecks SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.DifferentialGraded.Checks.U12eGeneralInventory SerrePositivity.Spectra.StageTwo
+lake env lean SerrePositivity/DifferentialGraded/Morita/U16aChecks.lean
+lake env lean SerrePositivity/DifferentialGraded/Morita/CoherenceAssociatorMainChecks.lean
+```
