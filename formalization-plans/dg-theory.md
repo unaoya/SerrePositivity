@@ -40,6 +40,8 @@ Mathlibへの相対パスはすべて `.lake/packages/mathlib/Mathlib/` から�
 このチャットのU16bではEndomorphism/の再構成随伴・endomorphism比較と、受入済みの
 Tensor/ScalarExtension*・Derived/ScalarExtension*を読み取り専用で再利用する。
 U15eはU12e受入後に扱い、局所K-flat版とdg圏の分解を使う版を分ける。
+このチャットによるU15eとU17の合流作業は、U12f・U14・U16の受入条件がそろってから開始する。
+並行担当によるU17a・U13dの作業とその個別記録は、この合流待ちとは別に保持する。
 U16cでDG-MOR、U15eでDG-DRの引用採用が必要になったら、採用せず停止して報告する。
 新しいsorry・axiom・引用は追加しない。この規則は以下の従来の引用許容案に優先する。
 
@@ -9124,3 +9126,56 @@ Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの統合ビルド
 これらを確認して§15.2のU12eを受け入れ、その後U16a〜d、U15eへ進む。
 U12e全受入・U16・U15eは未完。§0の現行分担と引用禁止を維持する。
 共有一般論への新しいAPI要求はない。
+
+
+### 17.200 U12e41：cell延長の一意性・初期比較と付加後のHom比較（2026-10-17）
+
+前回の分担確認を終え、解像度比較の実装を再開した。一般存在は§17.199で受入済みだが、
+解像度変更の比較とcoherenceはまだ未完である。
+
+`Complexes/TensorTwoUnitInsertion.lean`は両端のHom・単位を区別したtensor補題を追加する。
+`Complexes/SphereCochainExt.lean`の**sphereMiddleCochain_ext₀**は、任意整数次数dの
+sphereを中央に持つtensorからの次数0 cochainを、その標準生成元上で判定する。
+他次数のsphere成分が零であることも証明に用い、標数零や次数の正性は要求しない。
+
+`Resolution/Cells/GeneratorAppend.lean`・`PrefixGeneration.lean`・`PathGeneration.lean`は、
+先頭cellを付けたpathを元のHom・指定生成元・tailの二回の豊穣合成で表す。
+`RestrictionData.lean`は付加後のdg関手から元の関手と各cell原始元の像を取り出す。
+`Reconstruction.lean`はpath帰納法と全Hom cochainの判定から**extension_restrict**を証明する。
+`Universal.lean`の**extension_unique**・**functor_ext**は、元の関手とcell生成元の像が
+一致するdg関手の一意性を与える。対象・cell添字・targetの宇宙は独立で、
+必要なsmallnessはcell添字のSmall.{u}のみ。元のHomのflatness・有界性は要求しない。
+
+`Resolution/CycleCoverFunctor.lean`はcycleのchain mapによる移送、全cycle被覆の写像、
+identity/comp、被覆増大との可換性を与える。
+`InitialComparison.lean`の**DGCategoryCycleCover.map**は任意dg関手Fに沿う初期自由被覆間の
+実際のdg関手で、**map_augmentation**は増大の厳密な可換squareである。
+`InitialStageComparison.lean`はこれを**DGCategoryCellResolution.initialComparison**へまとめる。
+
+`Resolution/FixedObjectMap.lean`の**FixedObjectAugmentation.Map S T F**は、
+対象写像F.obj、単位・合成を保つHom chain map、増大との可換squareを保持する。
+SはD上・TはE上の固定対象増大で、D/Eの対象宇宙は独立。
+**Map.cellMap**はcycleと指定原始元を同時に送り、cellの整数次数を保存する。
+`FixedObjectMapExtension.lean`の**Map.attachedFunctor/attachedHom**は、移送したcellの
+生成元を像に指定して付加後へ延長する。**transition_attachedHom**は元のHom包含との可換性、
+**attachedHom_id/attachedHom_comp**は単位・合成保存を証明する。
+ここではD/EのSmall.{u}を要求し、各HomのK-flat性は要求しない。
+段階の豊穣instanceを明示的に固定し、元のdg圏のinstanceと混同しない。
+既存公開APIの名前・型は変更していない。すべて解像度比較用の新規APIである。
+
+**検証。** Checks.DGCellComparison・Checks.DGCellResolutionExistence・
+Checks.DGCellLengthFiltration・Checks.DerivedBimoduleFullPentagon・Checks.StageEight・
+Checks.StageSeven・Spectra.StageTwoの統合ビルド成功（3234 jobs、警告なし）。
+任意次数・別端点cellの再構成、独立した対象/添字/target宇宙、初期増大比較、ZMod 2での
+比較を型検査した。主要46宣言の直接公理監査は宣言名の重複・欠落なく標準3公理以内。
+監査累計3914宣言。採用済み引用は0件。新しいsorry・axiom・引用は追加していない。
+全体文書検査は16 Markdown・320 exposition参照を検査し、従来と同じ担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+未解決参照1件で失敗した。共有ルート・監査スクリプト・並行担当ファイルは編集していない。
+
+**次の受入課題。** 付加後の比較と増大との可換性を証明してMap.attachへまとめ、
+全反復段階と逐次余極限へ比較を延長する。さらに準同値性、解像度変更の導来bimodule合成の
+比較・選択独立性・coherenceを証明してU12eを受け入れる。
+今回の一段のHom比較だけでU12e全体の受入とはしない。
+その後U16a〜dへ進む。U14・係数変更系は読み取り専用で再利用し、
+U15e/U17の合流条件と引用禁止は§0のまま保持する。共有一般論への新しいAPI要求はない。
