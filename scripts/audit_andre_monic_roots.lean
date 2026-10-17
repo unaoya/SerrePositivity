@@ -1597,7 +1597,9 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicAbsoluteUniversal,
     `SerrePositivity.BhattScholze.Andre.Unconditional.FrobeniusTensorPD,
     `SerrePositivity.BhattScholze.Andre.Unconditional.FullFrobeniusPD,
-    `SerrePositivity.BhattScholze.Andre.Unconditional.VarpiPDReduction]
+    `SerrePositivity.BhattScholze.Andre.Unconditional.VarpiPDReduction,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicHodgeTateComplete,
+    `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiNativePDFormula]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

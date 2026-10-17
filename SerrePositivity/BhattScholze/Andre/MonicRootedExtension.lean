@@ -92,6 +92,9 @@ public import SerrePositivity.BhattScholze.Andre.Unconditional.FrobeniusTensorPD
 public import SerrePositivity.BhattScholze.Andre.Unconditional.FullFrobeniusPD
 public import SerrePositivity.BhattScholze.Andre.Unconditional.MonicPDEnvelope
 
+public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicHodgeTateComplete
+public import SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiNativePDFormula
+
 /-!
 # André E1・E2 の集約
 

@@ -19,7 +19,7 @@ R/ϖ が p を殺すことを具体的な係数商同型から示す。
 ## 規約
 
 今回の環同型・加群の結果は prism 商の p 正則性を要求しない。
-実分冪構造は別ファイルの hpR 付き構成と同じ台環上にある。
+分冪値の公式は別ファイルの無条件版で提供する。
 
 ## 使われ方
 
@@ -129,22 +129,5 @@ theorem perfectPrismVarpiRootPowerQuotient_free (f : Polynomial A) (hf : f.Monic
   rw [powerRootPolynomialQuotient_ideal, map_pow] at h
   exact h
 
-/-- 概要：実 pd 包の素数冪分冪は切断表示の対応する変数へ写る。
-方針：実分冪の標準値を使い、素数冪標準生成元の表示公式を適用する。
-規約：g₁ を添字零の変数とし、次数は p^(i+1)。
-使われ方：BS Rem 7.15(1)（著者版 p.62）の gᵢ と分冪値の具体的な対応。 -/
-theorem perfectPrismVarpiNativePDEnvelope_truncated_dpow
-    (f : Polynomial A) (hf : f.Monic)
-    (hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal)) (i : ℕ) :
-    let := principalDPQuotientAlgebra hp (perfectPrismVarpiRootRing_prime_eq_zero W hW) (zv f)
-    perfectPrismVarpiNativePDEnvelope_truncatedEquiv W hW f
-      ((perfectPrismVarpiNativeDividedPowers W hW f hpR hf).dpow (p ^ (i + 1))
-        (algebraMap Nv (Dv f) (zv f))) = Ideal.Quotient.mk _ (MvPolynomial.X i) := by
-  let := principalDPQuotientAlgebra hp (perfectPrismVarpiRootRing_prime_eq_zero W hW) (zv f)
-  rw [perfectPrismVarpiNativeDividedPowers_base_apply]
-  change principalDPTruncatedEquiv p (perfectPrismVarpiRootRing_prime_eq_zero W hW) (zv f)
-    (principalDPGenerator (zv f) (p ^ (i + 1))) = _
-  exact principalDPTruncatedEquiv_generator_succ p
-    (perfectPrismVarpiRootRing_prime_eq_zero W hW) (zv f) i
 
 end SerrePositivity.BhattScholze.Andre

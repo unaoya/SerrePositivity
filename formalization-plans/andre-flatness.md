@@ -7687,3 +7687,64 @@ BS Rem 7.15(1)（著者版 p.62）とは異なる射影的係数商・分冪構�
 `André monic root audit passed: 8425 declarations, standard axioms only.`。
 5公開名の assert_no_sorry と、置換先3モジュールの全生成宣言を含めた監査を行った。
 残る R1 の raw 正則性・native 構造の整理と A1-c2・A1-f の最終合流は未完了。
+
+### E1.87／R1 旧公開2公式から hpR を除去（2026-10-17）
+
+本節は A1-a／R1 の追記。次の2公開名を保持し、hpR だけを除いた。
+名前空間は `SerrePositivity.BhattScholze.Andre`。
+
+- `perfectPrismVarpiNativePDEnvelope_truncated_dpow`
+- `powerRootPrismMonic_pdCompletion_hodgeTate_isAdicComplete`
+
+前者を新規 `PerfectPrismVarpiNativePDFormula.lean`、後者を新規
+`PowerRootPrismMonicHodgeTateComplete.lean` に移した。
+旧ファイル内の重複宣言は削除した。元の台環・標準射・切断同型・入力と添字は保持する。
+後者は正次数を追加せず、零次数モニック f=1 も扱う。
+前者の型に現れる分冪構造を既存の `_of_unconditional` 版へ変更した。
+全 Lean ファイルの検索で、旧宣言を呼ぶ他ファイルがないことを確認した。
+他レーンのファイルとルート集約は編集していない。
+
+正確な型は以下。共通引数は {A:Type u} [CommRing A]、{p:ℕ} [Fact p.Prime]、
+W:OrientedPrism p A、hW:W.deltaStructure.IsPerfect、f:Polynomial A、hf:f.Monic。
+Nv=PowerRootPolynomial ((A/W.ideal)/(ϖ)) p hp、zv は f の自然な係数像の零段入力、
+Dv=PrincipalDPPresentation Nv zv。Raw、dL、H は従来の実 δ 除算包、標準分母像、
+H=PDCompletionH0 Raw p dL をそのまま使う。
+
+```lean
+perfectPrismVarpiNativePDEnvelope_truncated_dpow W hW f hf (i : ℕ) :
+  let := principalDPQuotientAlgebra hp
+    (perfectPrismVarpiRootRing_prime_eq_zero W hW) zv
+  perfectPrismVarpiNativePDEnvelope_truncatedEquiv W hW f
+    ((perfectPrismVarpiNativeDividedPowers_of_unconditional W hW f hf).dpow
+      (p ^ (i + 1)) (algebraMap Nv Dv zv)) =
+    Ideal.Quotient.mk _ (MvPolynomial.X i)
+
+powerRootPrismMonic_pdCompletion_hodgeTate_isAdicComplete W hW f hf :
+  let := pdCompletionCommRing Raw p dL
+  let T := H ⧸ Ideal.span {pdCompletionUnit Raw p dL dL}
+  IsAdicComplete (Ideal.span {(p : T)}) T
+```
+
+前者は射影的係数商による分冪降下、後者は正次数で有界ねじれと導来完備性の比較、
+次数零で H の零環性を使う。BS Rem 7.15（著者版 p.62）の p ねじれなしへの帰着と
+異なる経路であることを新規 docstring と本節に記す。
+分母商自体の p 正則性を無条件に主張したものではない。
+
+最初の検証では、自分が追加した NativePDFlat→Unconditional.MonicPDEnvelope の import が
+既存の比較を経由して循環を作ることを検出した。分冪公式を新規ファイルへ移して
+既存の依存順序を保つ形に修正した。依存先の破損や並行ビルド競合ではない。
+
+修正中に検出した宣言の `include hf` 不足と集約 import の位置も修正した。
+検証：各ビルド前に ps で他レーンの lake build がないことを確認した。
+修正後の対象5モジュールと集約のビルドは `set -o pipefail` 付きで4620 jobs、終了コード0。
+末尾整形後の集約ビルドも4620 jobs、終了コード0。
+公開2本の #check と専用監査はそれぞれ終了コード0。
+`assert_no_sorry` と新規2モジュールの全生成宣言を含む監査は
+`André monic root audit passed: 8468 declarations, standard axioms only.`。
+
+R1 の残り：A1-c2 が使う旧係数還元・native 分冪構造は、その呼出しが残るため保持している。
+Raw 全体の p 正則性には別担当の無条件版がまだ到着していない。
+mod p の分母正則性・分母商の p 正則性は hpR を一般には除けない主張なので、
+単純に無条件版へ差し替えない。根環の δ 構造に使う係数環自身の p 正則性と、
+標数 p を示す等式に付いた局所変数名 hpR は、prism 商の余分な仮定とは区別する。
+A1-f の集約合流と A1-c2 を含む最終合流は未完了。
