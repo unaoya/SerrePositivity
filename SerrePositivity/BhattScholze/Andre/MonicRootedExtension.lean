@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.OrdinaryMonicRoot
+public import SerrePositivity.BhattScholze.Andre.CompletelyFaithfullyFlatPrincipalPower
 public import SerrePositivity.BhattScholze.Andre.MonicRelation
 public import SerrePositivity.BhattScholze.Andre.PerfectPrismMonicCandidate
 public import SerrePositivity.BhattScholze.Andre.MonicPDFlat

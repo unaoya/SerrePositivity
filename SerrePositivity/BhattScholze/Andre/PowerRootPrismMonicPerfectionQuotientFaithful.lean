@@ -16,9 +16,11 @@ BS Rem 7.15（著者版 p.62）の一元根付き候補の平坦性。
 
 完全化後の分母正則性を完全 δ prism で確認し、正則主商の一般下降判定を使う。
 
+基礎となる Hodge–Tate 商の完全忠実平坦性は、原典と異なる実源の純性による無条件版を使う。
+
 ## 規約
 
-元の係数射と具体的候補を保持し、prism 商の p 正則性・モニック性・正次数を明示する。
+元の係数射と具体的候補を保持し、モニック性・正次数を明示し、prism 商の p 正則性は要求しない。
 原典とは異なる Tor 底変換と完全 δ 化後の剰余判定の経路である。
 
 ## 使われ方
@@ -37,7 +39,6 @@ attribute [local instance] HasDerivedCategory.standard
 open SerrePositivity.DerivedCompletion
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
-variable (hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal))
 variable (f : Polynomial A) (hf : f.Monic) (hdeg : 0 < f.natDegree)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
 local notation "P" => PowerRootPolynomial A p hp
@@ -100,10 +101,10 @@ theorem powerRootPrismMonicPerfection_generator_regular :
   exact (perfectDeltaPDPrism (deltaPerfectionStructure DH) (deltaPerfection_isPerfect DH)
     x hd).generator_regular
 
-include hpR hf hdeg in
+include hf hdeg in
 /-- 概要：同じ完全化後 perfectoid 商の自然な基底射は p 完全忠実平坦。
 方針：一般の δ 代数商判定に実剰余入力を渡し、標準係数射を代表元上で照合する。
-規約：prism 商の p 正則性・モニック性・正次数を仮定する。
+規約：モニック性・正次数を仮定し、prism 商の p 正則性は要求しない。
 使われ方：BS Rem 7.15（著者版 p.62）の元の具体的根付き perfectoid 候補。 -/
 theorem powerRootPrismMonicCompletedPerfectionBaseMap_completelyFaithfullyFlat :
     let := pdCompletionCommRing L p (jL dP)
@@ -125,8 +126,8 @@ theorem powerRootPrismMonicCompletedPerfectionBaseMap_completelyFaithfullyFlat :
     rfl
   have h := perfectedDeltaAlgebraQuotientBaseMap_completelyFaithfullyFlat W G c hW
     (powerRootPrismMonicCompletionBaseMap_isDeltaHom W hW f)
-    (powerRootPrismMonicCompletion_pair_reduction_homology_isZero W hW hpR f hf hdeg)
-    (powerRootPrismMonicCompletion_pair_reductionH0_faithfullyFlat W hW hpR f hf hdeg) b hb
+    (powerRootPrismMonicCompletion_pair_reduction_homology_isZero W hW f hf hdeg)
+    (powerRootPrismMonicCompletion_pair_reductionH0_faithfullyFlat W hW f hf hdeg) b hb
   let F (qmap : (A ⧸ W.ideal) →+* T∞) :=
     let := qmap.toAlgebra
     IsCompletelyFaithfullyFlat (Ideal.span {(p : A ⧸ W.ideal)}) T∞

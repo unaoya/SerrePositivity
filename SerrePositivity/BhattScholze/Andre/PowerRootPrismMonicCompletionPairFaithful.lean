@@ -15,9 +15,11 @@ BS Rem 7.15（著者版 p.62）の δ 完全化への入力をそろえる。
 
 同じ自然な H/d の p 完全忠実平坦性を二段スカラー拡大と H⁰ 比較で移す。
 
+基礎となる Hodge–Tate 商の完全忠実平坦性は、原典と異なる実源の純性による無条件版を使う。
+
 ## 規約
 
-元の係数射を保持し、prism 商の p 正則性・モニック性・正次数を明示する。
+元の係数射を保持し、モニック性・正次数を明示し、prism 商の p 正則性は要求しない。
 
 ## 使われ方
 
@@ -35,7 +37,6 @@ attribute [local instance] HasDerivedCategory.standard
 open SerrePositivity.DerivedCompletion
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
-variable (hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal))
 variable (f : Polynomial A) (hf : f.Monic) (hdeg : 0 < f.natDegree)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
 local notation "P" => PowerRootPolynomial A p hp
@@ -57,7 +58,7 @@ local notation "DL" => deltaAdjoinDivisionStructure E dP a
 local notation "DH" => deltaPDCompletionStructure DL (jL dP)
 
 
-include hpR hf hdeg in
+include hf hdeg in
 /-- 概要：元の実完備化の標準二元剰余は忠実平坦。
 方針：自然な主環商作用を照合し、二段剰余の一般判定を適用する。
 規約：元の標準係数射で制限した実加群を使う。
@@ -74,7 +75,8 @@ theorem powerRootPrismMonicCompletion_pair_scalarExtension_faithfullyFlat :
       IsCompletelyFaithfullyFlat (Ideal.span {(p : A ⧸ Ideal.span {W.generator})})
         (H ⧸ Ideal.span {algebraMap A H W.generator}) := by
     rw [← powerRootPrismMonicHodgeTateAlgebra_eq_principal W hW f]
-    exact powerRootPrismMonicHodgeTate_prime_completelyFaithfullyFlat W hW hpR f hf hdeg
+    exact powerRootPrismMonicHodgeTate_prime_completelyFaithfullyFlat_of_unconditional
+      W hW f hf hdeg
   let := principalAdicQuotientAlgebra W.generator H
   let e := (ModuleCat.extendScalars qd).mapIso
       (powerRootPrismMonicCompletionScalarEquiv W hW f).toModuleIso ≪≫
@@ -83,7 +85,7 @@ theorem powerRootPrismMonicCompletion_pair_scalarExtension_faithfullyFlat :
   apply isCompletelyFaithfullyFlat_of_linearEquiv _ e.toLinearEquiv.symm
   simpa only [map_natCast] using hred
 
-include hpR hf hdeg in
+include hf hdeg in
 /-- 概要：元の実完備化の導来二元剰余 H⁰ は忠実平坦。
 方針：標準スカラー拡大と実導来底変換 H⁰ の自然な同型で移す。
 規約：同じ基底商と標準係数射を使う。
@@ -100,7 +102,7 @@ theorem powerRootPrismMonicCompletion_pair_reductionH0_faithfullyFlat :
   let := pdCompletionCommRing L p (jL dP)
   let q := Ideal.Quotient.mk (Ideal.span {(p : A), W.generator})
   let M := baseChangeScalarModule (powerRootPrismMonicCompletionBaseMap W hW f)
-  let := powerRootPrismMonicCompletion_pair_scalarExtension_faithfullyFlat W hW hpR f hf hdeg
+  let := powerRootPrismMonicCompletion_pair_scalarExtension_faithfullyFlat W hW f hf hdeg
   exact Module.FaithfullyFlat.of_linearEquiv _ ((ModuleCat.extendScalars q).obj M)
     ((boundedAboveDerivedBaseChangeModuleH0Iso q).app M).toLinearEquiv
 

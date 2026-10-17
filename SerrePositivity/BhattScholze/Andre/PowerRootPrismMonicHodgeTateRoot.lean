@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicHodgeTateCompletelyFaithfullyFlat
+public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicHodgeTateBase
 
 /-!
 # André E1・E2：元の無限根入力の Hodge–Tate 候補における実根

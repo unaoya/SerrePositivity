@@ -18,9 +18,11 @@ BS Rem 7.15（著者版 p.62）の δ 完全化に渡す導来剰余の計算。
 
 自然な H/d の係数作用と標準主環商の作用を照合し、d の正則性から p 完全平坦性を戻す。
 
+基礎となる Hodge–Tate 商の完全忠実平坦性は、原典と異なる実源の純性による無条件版を使う。
+
 ## 規約
 
-元の実 H⁰ と標準係数射を保持する。prism 商の p 正則性・モニック性・正次数を明示する。
+元の実 H⁰ と標準係数射を保持する。モニック性・正次数を明示し、prism 商の p 正則性は要求しない。
 
 ## 使われ方
 
@@ -38,7 +40,6 @@ attribute [local instance] HasDerivedCategory.standard
 open SerrePositivity.DerivedCompletion
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
-variable (hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal))
 variable (f : Polynomial A) (hf : f.Monic) (hdeg : 0 < f.natDegree)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
 local notation "P" => PowerRootPolynomial A p hp
@@ -86,7 +87,7 @@ theorem powerRootPrismMonicHodgeTateAlgebra_eq_principal :
   obtain ⟨r, rfl⟩ := Ideal.Quotient.mk_surjective r
   rfl
 
-include hpR hf hdeg in
+include hf hdeg in
 /-- 概要：元の無限根モニック実完備化は (p,d) 完全平坦。
 方針：分母正則性と標準作用に移した H/d の p 完全平坦性を一般判定へ渡す。
 規約：元の A 係数作用と実 H⁰ を用いる。
@@ -103,7 +104,8 @@ theorem powerRootPrismMonicCompletion_pair_completelyFlat :
       IsCompletelyFlat (Ideal.span {(p : A ⧸ Ideal.span {W.generator})})
         (H ⧸ Ideal.span {algebraMap A H W.generator}) := by
     rw [← powerRootPrismMonicHodgeTateAlgebra_eq_principal W hW f]
-    exact (powerRootPrismMonicHodgeTate_prime_completelyFaithfullyFlat W hW hpR f hf hdeg).1
+    exact (powerRootPrismMonicHodgeTate_prime_completelyFaithfullyFlat_of_unconditional
+      W hW f hf hdeg).1
   apply completelyFlat_pair_algebra_of_regular_reduction (p : A) W.generator
     W.generator_regular H hreg
   simpa only [map_natCast] using hred
@@ -120,7 +122,7 @@ def powerRootPrismMonicCompletionScalarEquiv :
   let := powerRootPrismMonicCompletionAlgebra W hW f
   exact baseChangeScalarAlgebraEquiv (B := H)
 
-include hpR hf hdeg in
+include hf hdeg in
 /-- 概要：元の実完備化の (p,d) 標準底変換の高次 Tor は零。
 方針：二元完全平坦性を標準剰余係数加群へ適用する。
 規約：標準係数作用を持つ加群そのものを使う。
@@ -135,9 +137,9 @@ theorem powerRootPrismMonicCompletion_pair_scalarExtensionTorVanishing :
   apply scalarExtensionTorVanishing_of_completelyFlat
   exact isCompletelyFlat_of_linearEquiv _
     (powerRootPrismMonicCompletionScalarEquiv W hW f).symm
-    (powerRootPrismMonicCompletion_pair_completelyFlat W hW hpR f hf hdeg)
+    (powerRootPrismMonicCompletion_pair_completelyFlat W hW f hf hdeg)
 
-include hpR hf hdeg in
+include hf hdeg in
 /-- 概要：元の実完備化の導来 (p,d) 剰余は非零次数で消える。
 方針：高次 Tor の消滅から標準増大同型を作り、単項複体のホモロジーを使う。
 規約：標準係数射で制限した実加群の導来底変換を扱う。
@@ -155,7 +157,7 @@ theorem powerRootPrismMonicCompletion_pair_reduction_homology_isZero
   let q := Ideal.Quotient.mk (Ideal.span {(p : A), W.generator})
   let M := baseChangeScalarModule (powerRootPrismMonicCompletionBaseMap W hW f)
   let e := boundedAboveDerivedBaseChangeModuleAugmentationIso q M
-    (powerRootPrismMonicCompletion_pair_scalarExtensionTorVanishing W hW hpR f hf hdeg)
+    (powerRootPrismMonicCompletion_pair_scalarExtensionTorVanishing W hW f hf hdeg)
   exact (derivedSingleHomology_isZero ((ModuleCat.extendScalars q).obj M) i hi).of_iso
     ((DerivedCategory.homologyFunctor (ModuleCat _) i).mapIso
       (DerivedCategory.Minus.ι.mapIso e))

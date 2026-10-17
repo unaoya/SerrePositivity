@@ -15,9 +15,11 @@ BS Rem 7.15（著者版 p.62）の完全化後への平坦性の保存。
 
 完全 δ 基底での一般 Frobenius 段・余極限・実完備化の剰余判定に具体的入力を渡す。
 
+基礎となる Hodge–Tate 商の完全忠実平坦性は、原典と異なる実源の純性による無条件版を使う。
+
 ## 規約
 
-元の係数射・δ 構造を保持し、prism 商の p 正則性・モニック性・正次数を明示する。
+元の係数射・δ 構造を保持し、モニック性・正次数を明示し、prism 商の p 正則性は要求しない。
 
 ## 使われ方
 
@@ -35,7 +37,6 @@ attribute [local instance] HasDerivedCategory.standard
 open SerrePositivity.DerivedCompletion
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
-variable (hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal))
 variable (f : Polynomial A) (hf : f.Monic) (hdeg : 0 < f.natDegree)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
 local notation "P" => PowerRootPolynomial A p hp
@@ -68,7 +69,7 @@ local notation "Q" => A ⧸ I
 local notation "q" => Ideal.Quotient.mk I
 local notation "Y" => CategoryTheory.Functor.obj (boundedAboveDerivedBaseChange q)
   (CategoryTheory.Functor.obj boundedAboveDerivedSingleFunctor M)
-include hpR hf hdeg
+include hf hdeg
 
 /-- 概要：完全 δ 化後の同じ実完備化の導来二元剰余の非零次数は消える。
 方針：元の実完備化の導来剰余計算を一般の完全化剰余判定へ渡す。
@@ -82,8 +83,8 @@ theorem powerRootPrismMonicCompletedPerfection_pair_homology_isZero (i : ℤ) (h
   let := pdCompletionCommRing Cp p (κ W.generator)
   exact perfectPrismDeltaAlgebraPD_reduction_homology_isZero W DH c hW
     (powerRootPrismMonicCompletionBaseMap_isDeltaHom W hW f)
-    (powerRootPrismMonicCompletion_pair_reduction_homology_isZero W hW hpR f hf hdeg)
-    (powerRootPrismMonicCompletion_pair_reductionH0_faithfullyFlat W hW hpR f hf hdeg) i hi
+    (powerRootPrismMonicCompletion_pair_reduction_homology_isZero W hW f hf hdeg)
+    (powerRootPrismMonicCompletion_pair_reductionH0_faithfullyFlat W hW f hf hdeg) i hi
 
 /-- 概要：完全 δ 化後の同じ実完備化の導来二元剰余 H⁰ は忠実平坦。
 方針：元の実完備化の導来剰余計算を一般の完全化剰余判定へ渡す。
@@ -97,8 +98,8 @@ theorem powerRootPrismMonicCompletedPerfection_pairH0_faithfullyFlat :
   let := pdCompletionCommRing Cp p (κ W.generator)
   exact perfectPrismDeltaAlgebraPD_reductionH0_faithfullyFlat W DH c hW
     (powerRootPrismMonicCompletionBaseMap_isDeltaHom W hW f)
-    (powerRootPrismMonicCompletion_pair_reduction_homology_isZero W hW hpR f hf hdeg)
-    (powerRootPrismMonicCompletion_pair_reductionH0_faithfullyFlat W hW hpR f hf hdeg)
+    (powerRootPrismMonicCompletion_pair_reduction_homology_isZero W hW f hf hdeg)
+    (powerRootPrismMonicCompletion_pair_reductionH0_faithfullyFlat W hW f hf hdeg)
 
 /-- 概要：完全 δ 化後の同じ実完備化の標準係数加群は二元完全忠実平坦。
 方針：元の実完備化の導来剰余計算を一般の完全化剰余判定へ渡す。
@@ -112,7 +113,7 @@ theorem powerRootPrismMonicCompletedPerfection_pair_completelyFaithfullyFlat :
   let := pdCompletionCommRing Cp p (κ W.generator)
   exact perfectPrismDeltaAlgebraPD_isCompletelyFaithfullyFlat W DH c hW
     (powerRootPrismMonicCompletionBaseMap_isDeltaHom W hW f)
-    (powerRootPrismMonicCompletion_pair_reduction_homology_isZero W hW hpR f hf hdeg)
-    (powerRootPrismMonicCompletion_pair_reductionH0_faithfullyFlat W hW hpR f hf hdeg)
+    (powerRootPrismMonicCompletion_pair_reduction_homology_isZero W hW f hf hdeg)
+    (powerRootPrismMonicCompletion_pair_reductionH0_faithfullyFlat W hW f hf hdeg)
 
 end SerrePositivity.BhattScholze.Andre

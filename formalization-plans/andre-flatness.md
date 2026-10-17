@@ -7265,3 +7265,93 @@ existsUnique_powerRootPrismMonicPrismHom_of_absolute_input_unoriented
 
 保存は新規3ファイル、本節、ルートの import 1 行だけを `git commit --only` で行う。
 ルートの他担当の import 差分はコミットに含めず、作業木に保持する。
+
+### E1.84／R1 完全忠実平坦性の無条件版への移行（2026-10-17）
+
+本節は A1-a／R1 の追記。元の Hodge–Tate 商の完全忠実平坦性の呼出しを
+A1-b の `powerRootPrismMonicHodgeTate_prime_completelyFaithfullyFlat_of_unconditional` へ移した。
+新しい引用・sorry・axiom は追加していない。BS Rem 7.15（著者版 p.62）と異なる
+実源の純性による経路を、変更したファイルの docstring に明記した。
+
+まず `PowerRootPrismMonicHodgeTateRoot.lean` の import を
+`HodgeTateCompletelyFaithfullyFlat` から必要な `HodgeTateBase` に狭めた。
+根の2公開宣言の主張・証明は不変。この変更により、A1-b の標準入力の普遍性を使う証明と
+旧完全忠実平坦性ファイルの間の循環を除いた。予定した import グラフに循環がないことを確認した。
+
+不要になった次の旧3定理は、全コード・監査の呼出しを置換した後に削除した。
+namespace は `SerrePositivity.BhattScholze.Andre`。
+
+- `powerRootPrismMonicHodgeTate_varpi_completelyFaithfullyFlat`
+- `powerRootPrismMonicHodgeTate_prime_completelyFlat`
+- `powerRootPrismMonicHodgeTate_prime_completelyFaithfullyFlat`
+
+`PowerRootPrismMonicHodgeTateCompletelyFaithfullyFlat.lean` は既存 import 用の移行ファイルとし、
+無条件版を公開する。`HodgeTateCompletelyFlat` の `regular_of_span_power_eq` と
+`powerRootPrismMonicHodgeTate_varpi_regular` は A1-c2 の Candidate が使うため保持した。
+これらの条件付き正則性を偽の無条件主張へ置換したわけではない。
+
+合わせて、以下の9公開宣言から hpR を除いた。共通引数は
+{A:Type u} [CommRing A]、{p:ℕ} [Fact p.Prime]、W:OrientedPrism p A、
+hW:W.deltaStructure.IsPerfect、f:Polynomial A、hf:f.Monic、hdeg:0<f.natDegree。
+H と dH は E1.80 の元の構成で、必要な型には標準の pdCompletionCommRing を先頭の let で供給する。
+I=Ideal.span {(p:A),W.generator}、Q=A/I、q=Ideal.Quotient.mk I、
+c=powerRootPrismMonicCompletionBaseMap W hW f、M₀=baseChangeScalarModule c と置く。
+Y₀ は `(boundedAboveDerivedBaseChange q).obj (boundedAboveDerivedSingleFunctor.obj M₀)` の台の導来対象。
+
+```lean
+powerRootPrismMonicCompletion_pair_completelyFlat W hW f hf hdeg :
+  let := pdCompletionCommRing L p (jL dP)
+  let := powerRootPrismMonicCompletionAlgebra W hW f
+  IsCompletelyFlat I H
+
+powerRootPrismMonicCompletion_pair_scalarExtensionTorVanishing W hW f hf hdeg :
+  let := pdCompletionCommRing L p (jL dP)
+  let := powerRootPrismMonicCompletionAlgebra W hW f
+  scalarExtensionTorVanishing q M₀
+
+powerRootPrismMonicCompletion_pair_reduction_homology_isZero W hW f hf hdeg
+    (i : ℤ) (hi : i ≠ 0) :
+  let := pdCompletionCommRing L p (jL dP)
+  IsZero ((DerivedCategory.homologyFunctor (ModuleCat Q) i).obj Y₀)
+
+powerRootPrismMonicCompletion_pair_scalarExtension_faithfullyFlat W hW f hf hdeg :
+  let := pdCompletionCommRing L p (jL dP)
+  Module.FaithfullyFlat Q ((ModuleCat.extendScalars q).obj M₀)
+
+powerRootPrismMonicCompletion_pair_reductionH0_faithfullyFlat W hW f hf hdeg :
+  let := pdCompletionCommRing L p (jL dP)
+  Module.FaithfullyFlat Q ((DerivedCategory.homologyFunctor (ModuleCat Q) 0).obj Y₀)
+```
+
+残る4宣言は元の H の δ 完全化後の同じ環に関するもの。
+DH=deltaPDCompletionStructure (deltaAdjoinDivisionStructure E dP a) (jL dP)、
+Cp=DeltaPerfection DH、κ=deltaAlgebraPerfectionCoefficient DH c、
+x=deltaPerfectionOf DH 0 dH（定義的に κ W.generator）、
+Hp=PDCompletionH0 Cp p x、t=(pdCompletionUnit Cp p x).comp κ、
+M∞=baseChangeScalarModule t、T∞=Hp/Ideal.span {pdCompletionUnit Cp p x x} と置く。
+Y∞ は `(boundedAboveDerivedBaseChange q).obj (boundedAboveDerivedSingleFunctor.obj M∞)` の台の導来対象。
+各型には H と Hp の標準環構造の let を先頭に置く。
+
+```lean
+powerRootPrismMonicCompletedPerfection_pair_homology_isZero W hW f hf hdeg
+    (i : ℤ) (hi : i ≠ 0) :
+  IsZero ((DerivedCategory.homologyFunctor (ModuleCat Q) i).obj Y∞)
+
+powerRootPrismMonicCompletedPerfection_pairH0_faithfullyFlat W hW f hf hdeg :
+  Module.FaithfullyFlat Q ((DerivedCategory.homologyFunctor (ModuleCat Q) 0).obj Y∞)
+
+powerRootPrismMonicCompletedPerfection_pair_completelyFaithfullyFlat W hW f hf hdeg :
+  IsCompletelyFaithfullyFlat I (ModuleCat.carrier M∞)
+
+powerRootPrismMonicCompletedPerfectionBaseMap_completelyFaithfullyFlat W hW f hf hdeg :
+  let := (powerRootPrismMonicCompletedPerfectionBaseMap W hW f).toAlgebra
+  IsCompletelyFaithfullyFlat (Ideal.span {(p : A ⧸ W.ideal)}) T∞
+```
+
+既存のモニック性・正次数・係数作用・環は保持し、hpR だけを除いた。
+忠実性を要求するため零次数には拡張しない。A1-f と A1-c2 の既存ファイルは編集していない。
+残る R1 の PD 包・raw 中間定理の呼出し移行と不要定理の整理、A1-f・A1-c2 の最終合流は未完了。
+
+検証：ps で他レーンの lake build がないことを確認して対象ビルド（4486 jobs）を実行し終了コード0。文書修正後の対象・集約ビルド（4611 jobs）も終了コード0。import 整理で従来の一般補題3本が集約から外れていたことを監査が検出したため、集約へ `CompletelyFaithfullyFlatPrincipalPower` の明示 import を追加して従来の公開範囲を維持した。修正後の集約ビルド（4613 jobs）は `set -o pipefail` 付きで終了コード0。9更新宣言と置換先1宣言の10本の `#check` は終了コード0。専用監査は `André monic root audit passed: 8182 declarations, standard axioms only.`。削除した旧宣言の assert を除くとともに、置換先 `Unconditional.PowerRootHodgeTateReduction` 全宣言を監査範囲へ加えた。一般補題3本の assert とモジュール監査は維持した。
+
+A1-f の保存済み成果 `6358b55c` の到着を確認した。既存定義は変更せず、R1 の保存後に公開型と範囲を読み、A1-c2 の成果と合わせた最終合流に用いる。

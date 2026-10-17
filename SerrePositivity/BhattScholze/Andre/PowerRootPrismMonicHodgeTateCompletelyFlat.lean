@@ -4,25 +4,25 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicHodgeTateVar
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlatPowerTorsion
 
 /-!
-# André E1・E2：無限根モニック Hodge–Tate 候補の完全平坦性
+# André R1：Hodge–Tate 商の条件付き ϖ 正則性
 
 ## 概要
 
-prism 商が p 正則なら、正次数モニック入力の自然な Hodge–Tate 候補は ϖ 完全忠実平坦で、
-p 完全平坦。BS Rem 7.15（著者版 p.62）の具体的候補の平坦性。
+prism 商が p 正則なら、元のモニック Hodge–Tate 商でも ϖ が正則。
+BS Rem 7.15（著者版 p.62）の条件付きの中間計算。
 
 ## 方針
 
-(ϖ^p)=(p) と p 正則性から基底と候補の ϖ 正則性を得る。
-自然な ϖ 剰余の忠実平坦性を正則主元判定へ渡し、冪ねじれの Tor 消滅で p へ移す。
+(ϖ^p)=(p) と条件付きの商の p 正則性から ϖ 正則性を得る。
 
 ## 規約
 
-元の実完備化と基底射を保持する。prismatic 源との同定は別工程。
+この正則性は一般には無条件化できない。旧完全平坦性の2定理は不要となったので削除し、
+完全忠実平坦性の呼出しは A1-b の実源の純性による無条件版へ移した。
 
 ## 使われ方
 
-通常 p 剰余の忠実性と合わせた p 完全忠実平坦性への入力。
+A1-c2 の既存の条件付き係数比較が使う正則性を、最終比較が届くまで保持する。
 -/
 
 @[expose] public noncomputable section
@@ -80,40 +80,5 @@ theorem powerRootPrismMonicHodgeTate_varpi_regular :
   have h := regular_of_span_power_eq (φ v) (p : T) p hp he
     (powerRootPrismMonic_pdCompletion_hodgeTate_prime_regular W hW hpR f hf)
   exact h
-
-include hpR hf hdeg in
-/-- 概要：正次数モニック入力の自然な Hodge–Tate 候補は ϖ 完全忠実平坦。
-方針：基底・候補の ϖ 正則性と自然な剰余の忠実平坦性を正則主元判定へ渡す。
-規約：prism 商の p 正則性を明示する。
-使われ方：BS Rem 7.15（著者版 p.62）の p 完全忠実平坦性への入力。 -/
-theorem powerRootPrismMonicHodgeTate_varpi_completelyFaithfullyFlat :
-    let := pdCompletionCommRing L p (jL dP)
-    let := powerRootPrismMonicHodgeTateAlgebra W hW f
-    IsCompletelyFaithfullyFlat (Ideal.span {v}) T := by
-  let := pdCompletionCommRing L p (jL dP)
-  let := powerRootPrismMonicHodgeTateAlgebra W hW f
-  let := adicQuotientAlgebra (Ideal.span {v}) T
-  have hvR := regular_of_span_power_eq v (p : R) p hp (perfectPrismVarpi_span_pow W hW) hpR
-  let := powerRootPrismMonicHodgeTateVarpi_faithfullyFlat W hW f hf hdeg
-  have hFF := Module.FaithfullyFlat.of_linearEquiv (R ⧸ Ideal.span {v})
-    (T ⧸ Ideal.map (algebraMap R T) (Ideal.span {v}))
-    (Algebra.TensorProduct.quotIdealMapEquivQuotTensor T (Ideal.span {v})).symm.toLinearEquiv
-  exact isCompletelyFaithfullyFlat_principal_of_regular v hvR T
-    (powerRootPrismMonicHodgeTate_varpi_regular W hW hpR f hf) hFF
-
-include hpR hf hdeg in
-/-- 概要：正次数モニック入力の自然な Hodge–Tate 候補は p 完全平坦。
-方針：ϖ 完全平坦性を p 乗へ移し、(ϖ^p)=(p) で書き換える。
-規約：p 剰余の忠実性は別途接続する。
-使われ方：BS Rem 7.15（著者版 p.62）の p 完全忠実平坦性の第一条件。 -/
-theorem powerRootPrismMonicHodgeTate_prime_completelyFlat :
-    let := pdCompletionCommRing L p (jL dP)
-    let := powerRootPrismMonicHodgeTateAlgebra W hW f
-    IsCompletelyFlat (Ideal.span {(p : R)}) T := by
-  let := pdCompletionCommRing L p (jL dP)
-  let := powerRootPrismMonicHodgeTateAlgebra W hW f
-  have h := isCompletelyFlat_principal_power v T
-    (powerRootPrismMonicHodgeTate_varpi_completelyFaithfullyFlat W hW hpR f hf hdeg).1 p
-  rwa [perfectPrismVarpi_span_pow W hW] at h
 
 end SerrePositivity.BhattScholze.Andre
