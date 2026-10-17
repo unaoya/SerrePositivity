@@ -374,6 +374,17 @@
   新規5主要宣言の公理は標準3公理のみ。U14公開入口へimport済み。
   H⁰の本質的全射はまだ証明していない。
 
+## U14b.12：enhancement比較と主Perf制限の自然同型・完全忠実性（2026-10-17）
+
+- `DerivedHomHomotopyComparison.lean`：主KのHom関手の局所化と主導来Hom関手を、
+  商の自然同型の持上げを用い全K射で自然に比較した。
+- U13のenhancement同値と再構成dg関手の包含正方形を接続し、主導来圏内および
+  主Perf内の自然な比較正方形を構成。
+- 主Perf間の導来Hom制限が、U13同値の逆・dg比較のH⁰・U13同値の合成と自然同型で
+  一致することを証明。その同型から主Perf比較関手の完全忠実性を導いた。
+- `ChecksDerivedHomHomotopyComparison` と更新した `ChecksCompatibility` の対象ビルド成功。
+  新規7主要宣言の公理は標準3公理のみ。U14公開入口へimport済み。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。

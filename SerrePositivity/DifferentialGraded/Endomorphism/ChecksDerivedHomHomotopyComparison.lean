@@ -1,0 +1,14 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedHomHomotopyComparison
+
+/-! # enhancement比較と主Perf比較の自然性・完全忠実性の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+
+#print axioms endomorphismDerivedHomHomotopyIso
+#print axioms perfectEndomorphismDG_homotopy_inclusion_square
+#print axioms perfectEndomorphismDerivedComparisonUnderlying
+#print axioms perfectEndomorphismDerivedComparison
+#print axioms perfectEndomorphismHomToPerfectViaEnhancement
+#print axioms perfectEndomorphismHomToPerfectFull
+#print axioms perfectEndomorphismHomToPerfectFaithful
