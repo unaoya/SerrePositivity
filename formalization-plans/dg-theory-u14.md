@@ -332,6 +332,16 @@
 - `ChecksQuasiFullyFaithful` と更新した `ChecksCompatibility` の対象ビルド成功。
   新規7主要宣言の公理は標準3公理のみ。U14公開入口へimport済み。
 
+## U14b.8：加群値dg関手の実際のcone・shift同型（2026-10-17）
+
+- `ModuleConeImage.lean`：全Hom写像で標準coneの次数−1包含を送り、既存の境界からの
+  cone延長を使い加群射を構成。各評価が既存の複体値cone比較と一致することを証明し、
+  評価による同型反映から実際の主加群同型を得た。次数0包含の図式も証明。
+- `ModuleShiftImage.lean`：全次数Hom要素の自然性からshift比較の全斉次作用に対する
+  自然性を導き、評価成分のshift同型を実際の主加群同型へ組み立てた。
+- `ChecksModuleConeImage` と `ChecksModuleShiftImage` の対象ビルド成功。
+  新規11主要宣言の公理は標準3公理のみ。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
