@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Semifree
+public import SerrePositivity.InfinityCategories.Derived.NerveInclusion
 public import SerrePositivity.InfinityCategories.Derived.SemifreeBasis
 public import SerrePositivity.InfinityCategories.Derived.SemifreeBasisColimit
 public import SerrePositivity.InfinityCategories.Derived.SemifreeBasisHeight

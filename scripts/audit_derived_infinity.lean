@@ -265,6 +265,19 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.tensor
 #print axioms SerrePositivity.InfinityCategories.complexSemifree_tensor
 
+#print axioms SerrePositivity.InfinityCategories.closedNerveHom
+#print axioms SerrePositivity.InfinityCategories.closedNerveHom_zero
+#print axioms SerrePositivity.InfinityCategories.closedNerveHom_of_ne
+#print axioms SerrePositivity.InfinityCategories.closedNerveHom_comp
+#print axioms SerrePositivity.InfinityCategories.closedNerveData
+#print axioms SerrePositivity.InfinityCategories.closedNerveData_term
+#print axioms SerrePositivity.InfinityCategories.closedNerveSimplex
+#print axioms SerrePositivity.InfinityCategories.closedNerveSimplex_pullback
+#print axioms SerrePositivity.InfinityCategories.closedNerveInclusion
+#print axioms SerrePositivity.InfinityCategories.closedNerveInclusion_vertex
+#print axioms SerrePositivity.InfinityCategories.closedNerveInclusion_edge
+#print axioms SerrePositivity.InfinityCategories.closedNerveInclusion_higher
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -278,6 +291,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.SemifreeTensor,
     `SerrePositivity.InfinityCategories.Derived.SplitSequence,
     `SerrePositivity.InfinityCategories.Derived.SphereBasis,
+    `SerrePositivity.InfinityCategories.Derived.NerveInclusionSimplex,
+    `SerrePositivity.InfinityCategories.Derived.NerveInclusion,
     `SerrePositivity.InfinityCategories.Derived.Semifree,
     `SerrePositivity.InfinityCategories.Derived.SemifreeKProjective,
     `SerrePositivity.InfinityCategories.Derived.SemifreeResolution,

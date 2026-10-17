@@ -1095,3 +1095,50 @@ D2i（テンソル積および任意の環準同型による底変更の保存�
 今回の指示 D2h・D2h′・D1・D3・承認後の D2i に未完了項目はない。
 D4、N7 の ∞ 極限定理を Semifree に制限する実装そのもの、
 テンソルの対称モノイダル ∞ 圏への昇格は別途の工程であり、今回の完成とは混同しない。
+
+
+### D5a
+
+```lean
+namespace SerrePositivity.InfinityCategories
+open CategoryTheory DifferentialGraded DGNerve
+universe u v
+variable {A : Type u} [CommRing A] {D : Type v} [DGCategory A D]
+closedNerveHom {x y : ClosedCategory A D} (f : x ⟶ y) (k : ℤ) :
+    GradedHom A (ForgetEnrichment.to (Complex A) x) (ForgetEnrichment.to (Complex A) y) k
+closedNerveHom_zero {x y : ClosedCategory A D} (f : x ⟶ y) :
+    closedNerveHom f 0 = (closedHomEquiv A D x y f).val
+closedNerveHom_of_ne {x y : ClosedCategory A D} (f : x ⟶ y)
+    (k : ℤ) (hk : k ≠ 0) : closedNerveHom f k = 0
+closedNerveHom_comp {x y z : ClosedCategory A D} (f : x ⟶ y) (g : y ⟶ z)
+    (p q r : ℤ) (hp : p = 0) (hq : q = 0) (hr : r = 0) (h : p + q = r) :
+    compose A (closedNerveHom g q) (closedNerveHom f p) h = closedNerveHom (f ≫ g) r
+closedNerveData {n : ℕ} (F : ComposableArrows (ClosedCategory A D) n) :
+    SimplexData A D n
+closedNerveData_term {n : ℕ} (F : ComposableArrows (ClosedCategory A D) n)
+    (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (j : Fin (n + 1)) (hj : j ∈ I)
+    (haj : a < j) (hjb : j < b) :
+    (closedNerveData F).term I a b k hI ha hb hk j hj haj hjb = 0
+closedNerveSimplex {n : ℕ} (F : ComposableArrows (ClosedCategory A D) n) : Simplex A D n
+closedNerveSimplex_pullback {m n : ℕ}
+    (F : ComposableArrows (ClosedCategory A D) n) (α : Fin (m + 1) →o Fin (n + 1)) :
+    closedNerveSimplex (α.monotone.functor ⋙ F) = (closedNerveSimplex F).pullback α
+variable (A D)
+closedNerveInclusion : nerve (ClosedCategory A D) ⟶ dgNerve A D
+closedNerveInclusion_vertex (F : (nerve (ClosedCategory A D)) _⦋0⦌) :
+    dgNerve.vertexEquiv A D ((closedNerveInclusion A D).app _ F) =
+      ForgetEnrichment.to (Complex A) (nerveEquiv F)
+closedNerveInclusion_edge (F : (nerve (ClosedCategory A D)) _⦋1⦌) :
+    dgNerve.edgeEquiv A D ((closedNerveInclusion A D).app _ F) =
+      ⟨fun i => ForgetEnrichment.to (Complex A) (F.obj i),
+        closedHomEquiv A D (F.obj 0) (F.obj 1) (F.map (homOfLE (by decide)))⟩
+closedNerveInclusion_higher {n : ℕ}
+    (F : (nerve (ClosedCategory A D)) _⦋n⦌) (I : Finset (Fin (n + 1)))
+    (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) (hthree : 3 ≤ I.card) :
+    (((closedNerveInclusion A D).app _ F) : Simplex A D n).hom I a b k hI ha hb hk = 0
+end SerrePositivity.InfinityCategories
+```
