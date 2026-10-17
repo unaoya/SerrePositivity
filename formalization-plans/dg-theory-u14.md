@@ -279,6 +279,16 @@
 - `lake build SerrePositivity.DifferentialGraded.Endomorphism.ChecksHomComparisonRetracts` 成功。
   新規7主要宣言の公理は標準3公理のみ。
 
+## U14b.3：全Hom比較の反変shift図式とshift閉性（2026-10-17）
+
+- `HomComparisonShift.lean`：dg関手の全Hom写像を、終域固定の反変representable間の
+  全次数自然なchain map族として照合。反変複体値dg関手のshift同型に対する自然性を証明。
+- その図式から、再構成Hom比較の擬同型性が始域の任意整数shiftに安定であることを証明。
+  K(D)内の比較成立対象の性質に `IsStableUnderShift ℤ` を構成した。
+- `ChecksHomComparisonShift` と更新した `ChecksCompatibility` の対象ビルド成功。
+  新規6主要宣言の公理は標準3公理のみ。retract閉性も公開入口からimport済み。
+  cone閉性、thick生成による全Hom比較、本質的全射は残る。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
