@@ -9604,6 +9604,19 @@ KL-T の元の perfectoid 化比較の almost 零化は引き続き明示入力�
 H⁰(Ui,O) 内の像との対応、有限直積と perfectoid 化の比較、元の Prop 2.4.7 の引用の置換は未完成。
 Cor 8.12 の原典 E∞ 版の検討は保留を継続し、離散版で代用しない。
 
+**一般 rank の独立準備・切断への像と閉包の消滅イデアル（2026-10-17）。**
+共通層 `CommutativeAlgebra/ReducedSectionImage.lean` の
+`ker_algebraMap_sections_eq_vanishingIdeal` は、被約環 R の任意の開集合 U について、
+原典の R→Γ(U,O) そのものの核が U の消滅イデアルに一致することを証明する。
+元の構造層の切断の各点での値を使い、逆向きには basic open の近傍と被約性を使う。
+R の Noether 性・整域性、U の準コンパクト性・非空性を要求しない。
+`zeroLocus_ker_algebraMap_sections` は既存の消滅イデアルの零点集合の定理を適用して、
+この元の核の零点集合が U の閉包であることを得る。
+共通層には BS・CLMST・Inputs・Paper の import 依存はない。
+対象2382ジョブと専用監査の公開2宣言が成功。全2宣言は assert_no_sorry 成功・標準3公理のみ。
+次は実 rank 別開集合 Ui へ適用し、原典の切断への像の環 Ri と閉包の環の対応を構成する。
+Cor 8.12 の保留は継続し、新しい sorry・axiom・引用は追加していない。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
