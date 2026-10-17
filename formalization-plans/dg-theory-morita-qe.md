@@ -384,6 +384,23 @@
 - 二つの監査入口の合同ビルド成功（2797 jobs、警告なし）。主要7宣言の公理監査は標準3公理のみ。
   既存Endomorphism/・Derived/および他担当のソースは編集していない。
 
+## U16d.21：dg加群全体の導来係数変更比較
+
+- `Morita/ScalarExtensionKernelDerivedComparison.lean`：係数変更とkernel作用の既存増大を
+  H⁰入力へ降ろし、両側の実際の導来関手から共通の計算モデルへの自然変換を構成した。
+  増大比較の存在と可逆性を分離している。
+- `scalarKernelDerivedBaseChangeIso` は、通常kernel Pの実際の主導来作用について
+  `K_P ⋙ derivedExtension φ E ≅ derivedExtension φ D ⋙ K_(scalarKernel φ P)` を与える。
+  全主導来入力射に自然であり、出力は評価ごとの複体ではなくdg加群全体である。
+  一般形は出力モデルの増大の可逆性hAugと、標準右解像度族の係数変更後の相対K-flat性hP'を明示して受け取る。
+- `scalarKernelDerivedBaseChangeIso_ofKFlatModels` では、出力圏の `localHomKFlat A E` と
+  各標準右解像度tensorのhPNからhAugを証明し、hPN・hP'を保持した比較を構成した。
+  hEは出力係数変更の増大を反転するための追加の十分条件である。入力Dの局所Hom条件や環準同型のflat性は追加しない。
+  hPN・hP'だけから出力の導来係数変更と評価が無条件に交換するとは主張しない。
+- 共通モデルへの二つの比較と係数変更同型の可換図式も証明した。
+  `Morita.ScalarExtensionKernelDerivedComparisonChecks` ビルド成功（3241 jobs、警告なし）。
+  主要15宣言の公理監査は標準3公理のみ。既存Derived/・Tensor/・他担当ソースは編集していない。
+
 ## 合同検証と公開入口（2026-10-17）
 
 - 新規10監査対象・公開入口・既存 `Checks.DGFunctorDerivedEquivalence` の12対象を

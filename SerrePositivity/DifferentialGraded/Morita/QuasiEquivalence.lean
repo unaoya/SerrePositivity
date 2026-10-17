@@ -26,6 +26,7 @@ public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernel
 public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelFunctor
 public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelBalancedModule
 public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelHomotopy
+public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelDerivedComparison
 public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelBaseChangeNaturality
 public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelAction
 /-! # U16b・U16d担当の比較API入口
