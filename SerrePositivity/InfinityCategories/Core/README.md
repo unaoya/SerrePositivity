@@ -179,3 +179,47 @@ A2e 完了、A2f〜A2i は未完了。Core ビルドと累計 271 件の公理�
 同型の仮定は X が quasicategory であることと両錐の極限性。
 A2f 完了、A2g〜A2i は未完了。Core ビルドと累計 279 件の公理監査は成功。
 全公開宣言の型・前提は計画 §6 に記録した。
+
+## A2h：始対象による制限の正確な文言（2026-10-18、実装前の照合）
+
+原典は [Kerodon Corollary 4.3.6.14](https://kerodon.net/tag/018L)、
+[Corollary 4.7.3.22](https://kerodon.net/tag/02H6) の左右双対、
+[§7.2.2](https://kerodon.net/tag/02NQ) と HTT §4.1.1 の必要な場合。
+ここでは一般の cofinality の理論全体を前提にせず、次を直接証明する。
+
+任意の小圏 `I : Type u`、`[Category.{u} I]`、対象 `c : I` と `hc : IsInitial c`、
+任意の `X : SSet.{u}`、`[Quasicategory X]`、任意の単体集合の射 `F : nerve I ⟶ X` に対し、
+`v_c : Δ[0] ⟶ nerve I` を c に対応する頂点包含と置くと、
+
+```text
+leftAnodyneExtensions v_c
+TrivialKanFibration (sliceOverRestrict F v_c)
+-- sliceOver F ⟶ sliceOver (v_c ≫ F)
+```
+
+が成立する。制限の向きは **全図式上の slice から c での値上の slice へ**。
+`F` が通常の圏の関手の nerve であること、I の有限性、他の前提束は要求しない。
+`IsInitial c` は元の 1 圏 I での始対象性である。
+
+証明方針：まず単射 f に対する `Δ[0]⋆f` の left anodyne 性を、
+境界セルでの `Λ[n+1,0]` の同定と coslice の普遍性・境界セル分解から示す
+（[Kerodon Lemma 4.3.7.8](https://kerodon.net/tag/0196)）。
+始対象 c からの一意な射で `Δ[0]⋆nerve I ⟶ nerve I` を直接構成し、
+`Δ[0]⋆{c} ⟶ Δ[0]⋆nerve I` から頂点包含 v_c への矢の retract を作る。
+この retract では点から `Δ[0]⋆{c}` への射は元の {c} 側の端点を使う。
+従って c に入る同型などがある場合にも、c が「厳密な」始対象であるという余分な仮定は不要。
+次に A2c により、右因子の left anodyne 射と左の任意の境界包含の pushout-join が
+inner anodyne となることを使い、slice の制限が全境界の rlp を持つと示す。
+モデル構造は使わない。
+
+これは実装前の文言と証明の固定であり、A2h の証明完了を意味しない。
+ユーザー指示に従い、この記録・報告後の追加承認は待たずに実装する。
+
+### A2g 完了（2026-10-18）
+
+`cospanConeSquareIso : join Δ[0] (horn 2 2) ≅ Δ[1] ⊗ Δ[1]` を実装。
+二つの三角形の和と対角の交わりの pushout を両側で構成した。
+`cospanSquareBoundary` は右辺と上辺からなる cospan で、各脚の式も証明した。
+`pullbackCone F` が四角形を錐に直し、`IsPullbackSquare F` はその極限性。
+A2g 完了、A2h〜A2i は未完了。Core ビルドと累計 315 件の公理監査は成功。
+全 36 新規公開宣言の正確な型・前提は計画 §6 に記録した。

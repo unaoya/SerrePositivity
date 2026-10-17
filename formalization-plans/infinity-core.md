@@ -1901,3 +1901,280 @@ noncomputable def limitVertexIso {K X : SSet.{u}} [Quasicategory X] {p : K ⟶ X
 
 Core の対象ビルド・公理監査は終了コード 0。累計 279 件が標準三公理のみ
 （公理なしも含む）。A2f 完了。A2g〜A2i は未完了。引き続き cospan と正方形の比較へ進む。
+
+### A2g 完了（2026-10-18）：cospan の錐と引き戻し四角形
+
+`Square.lean` の `cospanConeSquareIso` が、要求された同型
+`join Δ[0] (horn 2 2) ≅ Δ[1] ⊗ Δ[1]` を与える。
+両側を対角の辺に沿う二つの三角形の pushout として表示し、普遍性で比較した。
+正方形側は Mathlib の最大次元の非退化単体の列挙を用いて全次数の和・交わりを証明した。
+`JoinFunctor.lean` は右因子の部分複体の二項の和・交わりを join が保つ補助。
+
+座標は錐頂点が (0,0)、ホーンの頂点 0 が (1,0)、1 が (0,1)、2 が (1,1)。
+`cospanSquareBoundary_rightEdge`・`cospanSquareBoundary_topEdge` により
+0→2 と 1→2 がそれぞれ正方形の右辺と上辺になることを証明した。
+`Pullback.lean` の `pullbackCone F` はこの cospan 上の錐、
+`IsPullbackSquare F := IsLimitCone (pullbackCone F)` が求める引き戻し四角形の定義である。
+定義自体に quasicategory 性は不要。追加公理・モデル構造は使わない。
+
+新規全 36 公開宣言の正確な型を以下に記録する。宇宙 `u` は任意、namespace は
+`SerrePositivity.InfinityCategories`。`open CategoryTheory Limits MonoidalCategory SSet`、
+`open scoped Simplicial` の下の型。
+
+JoinFunctor.lean：
+
+```lean
+def joinRightFunctor (A : SSet.{u}) : SSet.{u} ⥤ SSet.{u}
+```
+
+JoinFunctor.lean：
+
+```lean
+lemma Join.augMem_inf {B : SSet.{u}} (B₀ B₁ : B.Subcomplex) (r : ℕ) (b : Join.augObj B r) :
+    Join.augMem (B₀ ⊓ B₁) r b ↔ Join.augMem B₀ r b ∧ Join.augMem B₁ r b
+```
+
+JoinFunctor.lean：
+
+```lean
+lemma Join.augMem_sup {B : SSet.{u}} (B₀ B₁ : B.Subcomplex) (r : ℕ) (b : Join.augObj B r) :
+    Join.augMem (B₀ ⊔ B₁) r b ↔ Join.augMem B₀ r b ∨ Join.augMem B₁ r b
+```
+
+JoinFunctor.lean：
+
+```lean
+lemma joinSubcomplexRight_inf (A : SSet.{u}) {B : SSet.{u}} (B₀ B₁ : B.Subcomplex) :
+    joinSubcomplexRight A (B₀ ⊓ B₁) = joinSubcomplexRight A B₀ ⊓ joinSubcomplexRight A B₁
+```
+
+JoinFunctor.lean：
+
+```lean
+lemma joinSubcomplexRight_sup (A : SSet.{u}) {B : SSet.{u}} (B₀ B₁ : B.Subcomplex) :
+    joinSubcomplexRight A (B₀ ⊔ B₁) = joinSubcomplexRight A B₀ ⊔ joinSubcomplexRight A B₁
+```
+
+JoinFunctor.lean：
+
+```lean
+lemma joinSubcomplexRight_bicartSq (A : SSet.{u}) {B : SSet.{u}}
+    {B₀ B₁ B₂ B₃ : B.Subcomplex} (h : Subcomplex.BicartSq B₀ B₁ B₂ B₃) :
+    Subcomplex.BicartSq (joinSubcomplexRight A B₀) (joinSubcomplexRight A B₁)
+      (joinSubcomplexRight A B₂) (joinSubcomplexRight A B₃)
+```
+
+JoinFunctor.lean：
+
+```lean
+noncomputable def joinRightSubcomplexIso (A : SSet.{u}) {B C : SSet.{u}}
+    (B₀ : B.Subcomplex) (e : C ≅ (B₀ : SSet.{u})) :
+    join A C ≅ (joinSubcomplexRight A B₀ : SSet.{u})
+```
+
+JoinFunctor.lean：
+
+```lean
+lemma joinRightSubcomplexIso_hom_ι (A : SSet.{u}) {B C : SSet.{u}}
+    (B₀ : B.Subcomplex) (e : C ≅ (B₀ : SSet.{u})) :
+    (joinRightSubcomplexIso A B₀ e).hom ≫ (joinSubcomplexRight A B₀).ι =
+      joinMap (𝟙 A) (e.hom ≫ B₀.ι)
+```
+
+JoinFunctor.lean：
+
+```lean
+lemma joinRight_horn₂₂_isPushout (A : SSet.{u}) :
+    IsPushout (joinMap (𝟙 A) (stdSimplex.δ (0 : Fin 2)))
+      (joinMap (𝟙 A) (stdSimplex.δ (0 : Fin 2)))
+      (joinMap (𝟙 A) horn₂₂.ι₀₂) (joinMap (𝟙 A) horn₂₂.ι₁₂)
+```
+
+Square.lean：
+
+```lean
+lemma mono_yoneda_prod_nonDegenerate {p q n : ℕ}
+    (s : (Δ[p] ⊗ Δ[q] : SSet.{u}).nonDegenerate n) : Mono (SSet.yonedaEquiv.symm s.val)
+```
+
+Square.lean：
+
+```lean
+noncomputable def squareTriangleSimplex (i : Fin 2) :
+    (Δ[1] ⊗ Δ[1] : SSet.{u}).nonDegenerate 2
+```
+
+Square.lean：
+
+```lean
+def squareDiagonalSimplex : (Δ[1] ⊗ Δ[1] : SSet.{u}).nonDegenerate 1
+```
+
+Square.lean：
+
+```lean
+noncomputable def squareTriangle (i : Fin 2) : (Δ[2] : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1]
+```
+
+Square.lean：
+
+```lean
+def squareDiagonal : (Δ[1] : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1]
+```
+
+Square.lean：
+
+```lean
+lemma squareTriangle_diagonal (i : Fin 2) :
+    stdSimplex.δ (1 : Fin 3) ≫ squareTriangle.{u} i = squareDiagonal
+```
+
+Square.lean：
+
+```lean
+lemma squareTriangle_inf :
+    Subcomplex.ofSimplex (squareTriangleSimplex.{u} 0).val ⊓
+      Subcomplex.ofSimplex (squareTriangleSimplex 1).val =
+        Subcomplex.ofSimplex squareDiagonalSimplex.val
+```
+
+Square.lean：
+
+```lean
+lemma squareTriangle_sup :
+    Subcomplex.ofSimplex (squareTriangleSimplex.{u} 0).val ⊔
+      Subcomplex.ofSimplex (squareTriangleSimplex 1).val = ⊤
+```
+
+Square.lean：
+
+```lean
+noncomputable def prodSimplexImageIso {p q n : ℕ}
+    (s : (Δ[p] ⊗ Δ[q] : SSet.{u}).nonDegenerate n) :
+    (Δ[n] : SSet.{u}) ≅ (Subcomplex.ofSimplex s.val : SSet.{u})
+```
+
+Square.lean：
+
+```lean
+lemma square_isPushout : IsPushout (stdSimplex.δ (1 : Fin 3)) (stdSimplex.δ (1 : Fin 3))
+    (squareTriangle.{u} 0) (squareTriangle 1)
+```
+
+Square.lean：
+
+```lean
+def cospanConeTriangleLeft : (Δ[2] : SSet.{u}) ⟶ join Δ[0] (horn 2 2 : SSet.{u})
+```
+
+Square.lean：
+
+```lean
+def cospanConeTriangleRight : (Δ[2] : SSet.{u}) ⟶ join Δ[0] (horn 2 2 : SSet.{u})
+```
+
+Square.lean：
+
+```lean
+lemma cospanCone_isPushout : IsPushout (stdSimplex.δ (1 : Fin 3)) (stdSimplex.δ (1 : Fin 3))
+    cospanConeTriangleLeft.{u} cospanConeTriangleRight
+```
+
+Square.lean：
+
+```lean
+noncomputable def cospanConeSquareIso :
+    join (Δ[0] : SSet.{u}) (horn 2 2 : SSet.{u}) ≅ Δ[1] ⊗ Δ[1]
+```
+
+Square.lean：
+
+```lean
+lemma cospanConeSquareIso_left :
+    cospanConeTriangleLeft ≫ cospanConeSquareIso.{u}.hom = squareTriangle 1
+```
+
+Square.lean：
+
+```lean
+lemma cospanConeSquareIso_right :
+    cospanConeTriangleRight ≫ cospanConeSquareIso.{u}.hom = squareTriangle 0
+```
+
+Pullback.lean：
+
+```lean
+def squareRightEdge : (Δ[1] : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1]
+```
+
+Pullback.lean：
+
+```lean
+def squareTopEdge : (Δ[1] : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1]
+```
+
+Pullback.lean：
+
+```lean
+lemma squareTriangle_rightEdge :
+    stdSimplex.δ (0 : Fin 3) ≫ squareTriangle.{u} 1 = squareRightEdge
+```
+
+Pullback.lean：
+
+```lean
+lemma squareTriangle_topEdge :
+    stdSimplex.δ (0 : Fin 3) ≫ squareTriangle.{u} 0 = squareTopEdge
+```
+
+Pullback.lean：
+
+```lean
+noncomputable def cospanSquareBoundary : (horn 2 2 : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1]
+```
+
+Pullback.lean：
+
+```lean
+lemma cospanSquareBoundary_rightEdge :
+    horn₂₂.ι₀₂ ≫ cospanSquareBoundary.{u} = squareRightEdge
+```
+
+Pullback.lean：
+
+```lean
+lemma cospanSquareBoundary_topEdge :
+    horn₂₂.ι₁₂ ≫ cospanSquareBoundary.{u} = squareTopEdge
+```
+
+Pullback.lean：
+
+```lean
+noncomputable def pullbackCospan {X : SSet.{u}} (F : Δ[1] ⊗ Δ[1] ⟶ X) :
+    (horn 2 2 : SSet.{u}) ⟶ X
+```
+
+Pullback.lean：
+
+```lean
+noncomputable def pullbackCone {X : SSet.{u}} (F : Δ[1] ⊗ Δ[1] ⟶ X) :
+    JoinCone (pullbackCospan F)
+```
+
+Pullback.lean：
+
+```lean
+def IsPullbackSquare {X : SSet.{u}} (F : Δ[1] ⊗ Δ[1] ⟶ X) : Prop
+```
+
+Pullback.lean：
+
+```lean
+lemma isPullbackSquare_iff_trivialKanFibration {X : SSet.{u}} (F : Δ[1] ⊗ Δ[1] ⟶ X) :
+    IsPullbackSquare F ↔ TrivialKanFibration
+      (sliceOverProjection (X
+```
+
+Core の対象ビルド・公理監査は終了コード 0。累計 315 件が標準三公理のみ
+（公理なしも含む）。A2g 完了。A2h〜A2i は未完了。
+A2h の正確な文言・前提と原典の向きを README に実装前に固定し、報告してから着手する。

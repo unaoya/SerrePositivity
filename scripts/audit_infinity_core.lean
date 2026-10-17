@@ -589,3 +589,77 @@ import SerrePositivity.InfinityCategories.Core
 #print axioms SerrePositivity.InfinityCategories.limitConeIso
 #check @SerrePositivity.InfinityCategories.limitVertexIso
 #print axioms SerrePositivity.InfinityCategories.limitVertexIso
+
+-- A2g: cospan の錐と正方形、引き戻し四角形
+#check @SerrePositivity.InfinityCategories.joinRightFunctor
+#print axioms SerrePositivity.InfinityCategories.joinRightFunctor
+#check @SerrePositivity.InfinityCategories.Join.augMem_inf
+#print axioms SerrePositivity.InfinityCategories.Join.augMem_inf
+#check @SerrePositivity.InfinityCategories.Join.augMem_sup
+#print axioms SerrePositivity.InfinityCategories.Join.augMem_sup
+#check @SerrePositivity.InfinityCategories.joinSubcomplexRight_inf
+#print axioms SerrePositivity.InfinityCategories.joinSubcomplexRight_inf
+#check @SerrePositivity.InfinityCategories.joinSubcomplexRight_sup
+#print axioms SerrePositivity.InfinityCategories.joinSubcomplexRight_sup
+#check @SerrePositivity.InfinityCategories.joinSubcomplexRight_bicartSq
+#print axioms SerrePositivity.InfinityCategories.joinSubcomplexRight_bicartSq
+#check @SerrePositivity.InfinityCategories.joinRightSubcomplexIso
+#print axioms SerrePositivity.InfinityCategories.joinRightSubcomplexIso
+#check @SerrePositivity.InfinityCategories.joinRightSubcomplexIso_hom_ι
+#print axioms SerrePositivity.InfinityCategories.joinRightSubcomplexIso_hom_ι
+#check @SerrePositivity.InfinityCategories.joinRight_horn₂₂_isPushout
+#print axioms SerrePositivity.InfinityCategories.joinRight_horn₂₂_isPushout
+#check @SerrePositivity.InfinityCategories.mono_yoneda_prod_nonDegenerate
+#print axioms SerrePositivity.InfinityCategories.mono_yoneda_prod_nonDegenerate
+#check @SerrePositivity.InfinityCategories.squareTriangleSimplex
+#print axioms SerrePositivity.InfinityCategories.squareTriangleSimplex
+#check @SerrePositivity.InfinityCategories.squareDiagonalSimplex
+#print axioms SerrePositivity.InfinityCategories.squareDiagonalSimplex
+#check @SerrePositivity.InfinityCategories.squareTriangle
+#print axioms SerrePositivity.InfinityCategories.squareTriangle
+#check @SerrePositivity.InfinityCategories.squareDiagonal
+#print axioms SerrePositivity.InfinityCategories.squareDiagonal
+#check @SerrePositivity.InfinityCategories.squareTriangle_diagonal
+#print axioms SerrePositivity.InfinityCategories.squareTriangle_diagonal
+#check @SerrePositivity.InfinityCategories.squareTriangle_inf
+#print axioms SerrePositivity.InfinityCategories.squareTriangle_inf
+#check @SerrePositivity.InfinityCategories.squareTriangle_sup
+#print axioms SerrePositivity.InfinityCategories.squareTriangle_sup
+#check @SerrePositivity.InfinityCategories.prodSimplexImageIso
+#print axioms SerrePositivity.InfinityCategories.prodSimplexImageIso
+#check @SerrePositivity.InfinityCategories.square_isPushout
+#print axioms SerrePositivity.InfinityCategories.square_isPushout
+#check @SerrePositivity.InfinityCategories.cospanConeTriangleLeft
+#print axioms SerrePositivity.InfinityCategories.cospanConeTriangleLeft
+#check @SerrePositivity.InfinityCategories.cospanConeTriangleRight
+#print axioms SerrePositivity.InfinityCategories.cospanConeTriangleRight
+#check @SerrePositivity.InfinityCategories.cospanCone_isPushout
+#print axioms SerrePositivity.InfinityCategories.cospanCone_isPushout
+#check @SerrePositivity.InfinityCategories.cospanConeSquareIso
+#print axioms SerrePositivity.InfinityCategories.cospanConeSquareIso
+#check @SerrePositivity.InfinityCategories.cospanConeSquareIso_left
+#print axioms SerrePositivity.InfinityCategories.cospanConeSquareIso_left
+#check @SerrePositivity.InfinityCategories.cospanConeSquareIso_right
+#print axioms SerrePositivity.InfinityCategories.cospanConeSquareIso_right
+#check @SerrePositivity.InfinityCategories.squareRightEdge
+#print axioms SerrePositivity.InfinityCategories.squareRightEdge
+#check @SerrePositivity.InfinityCategories.squareTopEdge
+#print axioms SerrePositivity.InfinityCategories.squareTopEdge
+#check @SerrePositivity.InfinityCategories.squareTriangle_rightEdge
+#print axioms SerrePositivity.InfinityCategories.squareTriangle_rightEdge
+#check @SerrePositivity.InfinityCategories.squareTriangle_topEdge
+#print axioms SerrePositivity.InfinityCategories.squareTriangle_topEdge
+#check @SerrePositivity.InfinityCategories.cospanSquareBoundary
+#print axioms SerrePositivity.InfinityCategories.cospanSquareBoundary
+#check @SerrePositivity.InfinityCategories.cospanSquareBoundary_rightEdge
+#print axioms SerrePositivity.InfinityCategories.cospanSquareBoundary_rightEdge
+#check @SerrePositivity.InfinityCategories.cospanSquareBoundary_topEdge
+#print axioms SerrePositivity.InfinityCategories.cospanSquareBoundary_topEdge
+#check @SerrePositivity.InfinityCategories.pullbackCospan
+#print axioms SerrePositivity.InfinityCategories.pullbackCospan
+#check @SerrePositivity.InfinityCategories.pullbackCone
+#print axioms SerrePositivity.InfinityCategories.pullbackCone
+#check @SerrePositivity.InfinityCategories.IsPullbackSquare
+#print axioms SerrePositivity.InfinityCategories.IsPullbackSquare
+#check @SerrePositivity.InfinityCategories.isPullbackSquare_iff_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.isPullbackSquare_iff_trivialKanFibration

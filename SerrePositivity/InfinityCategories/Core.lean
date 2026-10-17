@@ -13,3 +13,4 @@ public import SerrePositivity.InfinityCategories.Core.Terminal
 public import SerrePositivity.InfinityCategories.Core.TerminalUniqueness
 public import SerrePositivity.InfinityCategories.Core.InitialUniqueness
 public import SerrePositivity.InfinityCategories.Core.Limit
+public import SerrePositivity.InfinityCategories.Core.Pullback
