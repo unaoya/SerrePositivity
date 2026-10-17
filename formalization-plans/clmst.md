@@ -10493,6 +10493,29 @@ scripts/audit_axioms.lean、scripts/audit_clmst.lean は全て終了コード0�
 この保留入力を供給するまで、元の CLMST.Inputs.proposition_2_4_7 の引用は置換しない。
 新しい sorry・axiom・引用は追加していない。
 
+**BS Cor 8.12 の環の系による Prop 2.4.7 の証明（2026-10-17）。**
+上記の保留後、BS レーンが公開した
+`BhattScholze.klCanonicalExcisionSquare_of_excision` を採用した。
+未採用の `bs-clmst-citation-elimination.md` は根拠にしない。
+`Prop247Proof.lean` の `prop247_finiteComparison_excision` は、有限・有限表示の
+両始域と主イデアルの導来完備性、元の有限比較の付値環への一意延長を供給して
+定 rank 側の `KLFiniteComparisonExcision` を解消する。
+`prop247_isogeny_of_specified` は既存の実 rank データ・直積単位の普遍性を保ち、
+`prop247_rankSource_closedSide_completeness` と
+`prop247_aic_rankSourceProduct_valuation_extension` を同じ BS の系へ渡す。
+これにより `prop247_exists_canonical_generalRank_descent_data` の残仮定を解消し、
+指定した元の f の錐のスカラー冪零化を得る。
+公開入口 `SerrePositivity.CLMST.proposition_2_4_7_proved` は文献入力と同じ署名を持つ。
+型は元の R・S・p・hR・J・hJ・hEtale・hbounded に対する
+`∀ g ∈ J, ∃ N, moduleMapConeScalar R (perfectoidizationModuleMap R S p hR) (g ^ N) = 0`。
+担当外の BhattScholze・KL ファイルと共有ルートは変更しない。
+対象ビルド4913ジョブと `scripts/audit_clmst_prop247_proof.lean` が成功した。
+専用監査は文献入力との署名の定義上一致を検査し、型と証明の依存を再帰走査する。
+`#print axioms` は標準三公理と `sorryAx`。
+到達する未証明宣言が `exists_perfectoidization_of_integral` と
+`perfectoidization_excision_isPullback` の二件だけであり、両方に到達することを確認した。
+この段階では元の文献入力を変更せず、証明・専用監査・本記録を先に保存する。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
