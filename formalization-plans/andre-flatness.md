@@ -1442,3 +1442,49 @@ SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（
 新規 18 公開宣言の `assert_no_sorry` を追加した専用監査は終了コード 0。
 生成宣言を含む 2296 宣言の推移的公理依存は標準 3 公理のみ。
 主要な逐次完備化後の実剰余の公開型 2 本を `#print` で確認した（終了コード 0）。
+
+### E1.22：任意族の実源の離散性から既存 perfectoid 候補の p 完全忠実平坦性へ
+
+新規 `ArbitraryMonicPrismaticCanonicalPowerResidue.lean` と
+`ArbitraryMonicPrismaticSourcePowerInputs.lean` は、E1.21 の実剰余比較を
+正の生成元冪商へ移し、標準冪零還元と G9 用の実入力を任意族について供給する。
+`ArbitraryPerfectPrismMonicSourceDiscrete.lean` は完全 prism の生成元冪商の p ねじれ上界を使い、
+同じ逐次 p,d 完備化源が離散的となることを示す。
+`ArbitraryPerfectPrismMonicRawPDCompletelyFlat.lean` は既存の任意族に対する実 H⁰ 比較を再利用し、
+raw PD 環の元の A 上の実 (p,d) 還元の離散性・H⁰ 忠実平坦性・完全忠実平坦性を得る。
+`ArbitraryPerfectPrismMonicPDPerfectionInputs.lean` は既存の一般 δ 代数の定理へその実入力を渡し、
+PD 環の δ 完全化と再実 PD 完備化の完全忠実平坦性を示す。
+`ArbitraryPerfectPrismMonicPrismCompletelyFlat.lean` は、任意族について既に証明済みの
+具体的係数射を保つ環・加群同型で、既存多項式 prism 候補の標準係数射へ移す。
+`ArbitraryPerfectPrismMonicPrismResidue.lean` と
+`ArbitraryPerfectPrismMonicPerfectoidCompletelyFlat.lean` は標準生成元商の実導来比較を使い、
+元の A/d 上の p 完全忠実平坦性へ移す。
+どの段も族全体の有限性を仮定しない。原典と異なる BS Rem 7.15（著者版 p.62）の
+PD 先行構成と具体的係数比較による経路である。
+
+主要公開型（namespace `SerrePositivity.BhattScholze.Andre`）：
+
+```lean
+theorem perfectPrismMonicPerfectoidBaseMap_isCompletelyFaithfullyFlat_arbitrary
+    {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
+    (P : OrientedPrism p A) (hP : P.deltaStructure.IsPerfect)
+    (f : σ → Polynomial A) (hf : ∀ t, (f t).Monic)
+    (hdeg : ∀ t, 0 < (f t).natDegree) :
+    letI := polynomialPrismCommRing P.deltaStructure P.generator f
+    letI := (polynomialPerfectoidCandidateBaseMap P.deltaStructure P.generator f
+      (OrientedPrism.isDistinguished_of_perfect P hP)).toAlgebra
+    IsCompletelyFaithfullyFlat (Ideal.span {(p : A ⧸ Ideal.span {P.generator})})
+      (PolynomialPerfectoidCandidate P.deltaStructure P.generator f
+        (OrientedPrism.isDistinguished_of_perfect P hP))
+```
+
+`perfectPrismMonicSource_pure_arbitrary` は同じ完全 prism・正次数モニック族を前提に、
+`(MonicPrismaticSourceIteratedPDCompletion P.deltaStructure P.generator f).obj` の
+`IsGE 0 ∧ IsLE 0` を述べる。外部の ghost・有界ねじれ・Tor・完備化離散性の仮定は残らない。
+次はこの標準候補をモニック lift と一般基底への移送へ接続する存在定理の公開。
+無限 p 冪根変数の明示的な自由基底も残る。全体完成とは数えない。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4350 jobs）。
+新規 35 公開宣言の `assert_no_sorry` を追加した専用監査は終了コード 0。
+生成宣言を含む 2705 宣言の推移的公理依存は標準 3 公理のみ。
+候補標準基底射の完全忠実平坦性と実源純性の公開型を `#print` で確認した（終了コード 0）。
