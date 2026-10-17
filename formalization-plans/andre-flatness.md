@@ -7748,3 +7748,66 @@ mod p の分母正則性・分母商の p 正則性は hpR を一般には除け
 単純に無条件版へ差し替えない。根環の δ 構造に使う係数環自身の p 正則性と、
 標数 p を示す等式に付いた局所変数名 hpR は、prism 商の余分な仮定とは区別する。
 A1-f の集約合流と A1-c2 を含む最終合流は未完了。
+
+### E1.88／A1-f 保存済み成果を本レーンの集約・監査へ合流（2026-10-17）
+
+本節は A1-a の追記。A1-f の保存済み `6358b55c`・`f6cf93b1` を読み、
+`Andre.Unoriented` を自分の集約 `MonicRootedExtension` から公開した。
+A1-f のファイルは編集していない。ルートの他レーンの import も編集・stage していない。
+自分の専用監査に公開18宣言の assert_no_sorry と、
+`Unoriented.Category`・`Unoriented.Initial`・`Unoriented.SourceInitiality` の全生成宣言を加えた。
+
+主張の範囲：固定完全基底 W 上で J=(base(d)) を満たす向きなし有界入力対象の圏。
+独立な生成元は持たず、基底の d の像による標準 orientation と既存の入力圏との同値を使う。
+一般の Cartier イデアルの降下や全基底を動かす絶対サイトを実装したという主張には拡張しない。
+BS Def 3.2（著者版 pp.28–29）と Rem 7.15（p.62）に対応する固定基底の結果であり、
+Prop 3.13 を新たに引用しない。原典とは異なる圏同値・元の源の初期性の移送を使う。
+
+共通引数は {A:Type u} [CommRing A]、{p:ℕ} [Fact p.Prime]、
+W:OrientedPrism p A、hW:W.deltaStructure.IsPerfect、f:Polynomial A、
+hf:f.Monic、hdeg:0<f.natDegree。
+R=A/W.ideal、SI=PowerRootMonicCompletedInput p hp (f.map (Ideal.Quotient.mk W.ideal))、
+cS:R→+*SI は標準係数射、H は元の PDCompletionH0。
+X=powerRootPrismMonicSourceInputObjectOfMonicPositive W hW f hf hdeg、
+Xu=powerRootPrismMonicSourceInputObjectOfMonicPositive_unoriented W hW f hf hdeg とする。
+合流した主要公開名の正確な型は次のとおり。
+
+```lean
+-- BoundedPrismInputUnoriented.equivalence (任意の c : R →+* S)
+BoundedPrismInputUnoriented W c ≌ BoundedPrismInput W c
+
+powerRootPrismMonicSourceInputObjectOfMonicPositive_unoriented W hW f hf hdeg :
+  BoundedPrismInputUnoriented W cS
+
+powerRootPrismMonicSourceInput_isInitialOfMonicPositive_unoriented W hW f hf hdeg :
+  IsInitial Xu
+
+powerRootPrismMonicSourceEnvelopeRingEquivOfMonicPositive_unoriented W hW f hf hdeg
+  (Z : BoundedPrismInputUnoriented W cS) (hZ : IsInitial Z) :
+  let := pdCompletionCommRing Raw p dL
+  H ≃+* Z.ring
+
+powerRootPrismMonicSourceEnvelopeRingEquivOfMonicPositive_base_coeff_unoriented
+  W hW f hf hdeg (Z : BoundedPrismInputUnoriented W cS) (hZ : IsInitial Z) (a₀ : A) :
+  let := pdCompletionCommRing Raw p dL
+  powerRootPrismMonicSourceEnvelopeRingEquivOfMonicPositive_unoriented
+    W hW f hf hdeg Z hZ (powerRootPrismMonicCompletionBaseMap W hW f a₀) = Z.base a₀
+
+existsUnique_powerRootPrismMonicPrismHom_of_absolute_input_unoriented W hW f hf hdeg
+  (Q : BoundedPrismInputUnoriented W cS) (η : SI →+* Q.ring ⧸ Q.ideal) :
+  ∃! G : OrientedPrism.Hom X.prism Q.orient.prism,
+    G.quotientMap.comp X.input = (Ideal.quotEquivOfEq Q.ideal_eq).toRingHom.comp η
+```
+
+最後の型は η と Q.base との可換性を追加仮定にしない。
+全主張で元の H・入力環 SI・標準入力作用を保持し、hpR・hreg・hBound を追加しない。
+A1-f の既存の正次数仮定は保持する。残る R1 と A1-c2 を含む最終合流は未完了。
+
+検証：ps で他レーンの lake build がないことを確認して、向きなし集約・同 Audit と
+本レーン集約を `set -o pipefail` 付きでビルドし、4626 jobs、終了コード0。
+主要5公開名の #check は終了コード0。
+A1-f 専用監査は `André unoriented audit passed: 135 declarations, standard axioms only.`、
+本レーン監査は `André monic root audit passed: 8603 declarations, standard axioms only.`、
+ともに終了コード0。後者では assert の挿入でずれた局所 `open Lean in` と
+`maxHeartbeats` の適用位置を run_cmd の直前へ戻してから再実行した。
+新しい sorry・axiom・引用は追加していない。

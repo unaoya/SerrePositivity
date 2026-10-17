@@ -1346,6 +1346,25 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_perfectPrismHomL
 
 assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicPrismHom_of_absolute_input
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInputUnoriented
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInputUnoriented.orient
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInputUnoriented.orient_generator
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInputUnoriented.orient_ideal
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInputUnoriented.category
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInputUnoriented.orientFunctor
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInputUnoriented.forget
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInputUnoriented.orientationIso
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInputUnoriented.forgetFunctor
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInputUnoriented.forgetFunctor_map_toRingHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInputUnoriented.equivalence
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput.initial_unoriented
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicSourceInput_initial_unoriented
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicSourceInputObjectOfMonicPositive_unoriented
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicSourceInput_isInitialOfMonicPositive_unoriented
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicSourceEnvelopeRingEquivOfMonicPositive_unoriented
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicSourceEnvelopeRingEquivOfMonicPositive_base_coeff_unoriented
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicPrismHom_of_absolute_input_unoriented
+
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
@@ -1599,7 +1618,10 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.Unconditional.FullFrobeniusPD,
     `SerrePositivity.BhattScholze.Andre.Unconditional.VarpiPDReduction,
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicHodgeTateComplete,
-    `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiNativePDFormula]
+    `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiNativePDFormula,
+    `SerrePositivity.BhattScholze.Andre.Unoriented.Category,
+    `SerrePositivity.BhattScholze.Andre.Unoriented.Initial,
+    `SerrePositivity.BhattScholze.Andre.Unoriented.SourceInitiality]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
