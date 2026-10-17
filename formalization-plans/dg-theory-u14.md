@@ -672,6 +672,15 @@
 - 新規6主要宣言の `ChecksCoproductHomComparison` 対象ビルド成功、公理は標準3公理のみ。
   既存の公開APIの名前・型は変更していない。全導来圏同値はまだ結論していない。
 
+## U14c.5：外部compact⇒Perf入力による導来Homの余積保存（2026-10-17）
+
+- `HomPreservesCoproducts.lean`：Eが指定Perfの対象なら実際の導来tensorはperfect対象を
+  perfect対象へ送り、そのcompact性は既存のU13から従う。
+- End側のcompact⇒Perfを明示引数として受け取ってtensor像のcompact性を得た。
+  U14c.3–4を組み合わせ、実際の導来Homのu-small余積比較が同型であることと余積保存を証明。
+- `ChecksHomPreservesCoproducts` 対象ビルド成功。新規3主要宣言の公理は標準3公理のみ。
+  既存の公開APIの名前・型は変更していない。全導来圏同値はまだ結論していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
@@ -686,7 +695,8 @@
   導来係数変更の図式と最終受入照合が残る。
 - U14c：明示した指定compact生成仮定の下で導来Homの保守性をU14c.1で証明済み。
   Perf上の単位・余単位の可逆性と、外部compact⇒Perf入力によるcompact上の結論はU14c.2で証明済み。
-  全導来対象への単位の可逆性の拡張・必要な余積比較・全導来圏同値は未完了。
+  必要な余積比較と、外部compact⇒Perf入力下での余積保存はU14c.3–5で証明済み。
+  全導来対象への単位の可逆性の拡張・全導来圏同値は未完了。
   無限生成集合の直和はcompactとは限らず、thick生成だけから全導来圏の比較は出さない。
   DG-GEN/DG-MORの採用が必要になったら採用せず停止・報告する。
 - U12dとの全導来射自然なtensor評価比較、評価成分のshift・cone同型と包含図式は構成済み。
