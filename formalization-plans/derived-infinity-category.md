@@ -1015,3 +1015,83 @@ complexSemifree_baseChange (f : S →+* T) {P : Complex S}
 対象集約ビルドは終了コード0（3945 jobs）、公理監査も終了コード0。
 23モジュール497宣言すべて標準3公理のみ。
 D2i の残り：二つの semifree 複体のテンソル積の無条件の閉性。直ちに続行する。
+
+
+### D2i 完了・semifree テンソル積（2026-10-18）
+
+namespace `SerrePositivity.InfinityCategories`、共通変数 `{S : Type u} [CommRing S]`。
+`tensorDegreeEquiv`・成分の微分では `(P Q : Complex S)` を補う。
+下位名前空間 `ComplexSemifreeBasis` では `{P Q : Complex S}`、
+`(B : ComplexSemifreeBasis S P) (C : ComplexSemifreeBasis S Q)` を補う。
+汎用の直和基底補題の変数は宣言内に全て明記。公開型：
+```lean
+directSumBasis_apply {R : Type u} [CommRing R] {I : Type v} [DecidableEq I]
+    {V : I → Type w} [∀ i, AddCommGroup (V i)] [∀ i, Module R (V i)]
+    {J : I → Type w} (E : ∀ i, Module.Basis (J i) R (V i)) (a : Σ i, J i) :
+    DFinsupp.basis E a = DFinsupp.single a.1 (E a.1 a.2)
+TensorDegreeIndex (k : ℤ)
+tensorDegreeEquiv (k : ℤ) : (P ⊗ Q).X k ≃ₗ[S]
+    ⨁ a : TensorDegreeIndex k, (P.X a.1.1 ⊗ Q.X a.1.2 : ModuleCat S)
+tensorDegreeEquiv_symm_lof (k : ℤ) (a : TensorDegreeIndex k)
+    (x : (P.X a.1.1 ⊗ Q.X a.1.2 : ModuleCat S)) :
+    (tensorDegreeEquiv P Q k).symm
+      (DirectSum.lof S (TensorDegreeIndex k)
+        (fun a => (P.X a.1.1 ⊗ Q.X a.1.2 : ModuleCat S)) a x) =
+      (ιTensorObj P Q a.1.1 a.1.2 k a.2).hom x
+TensorIndex (k : ℤ)
+tensorBasis (k : ℤ) : Module.Basis (B.TensorIndex C k) S ((P ⊗ Q).X k)
+tensorBasis_apply (k : ℤ) (a : B.TensorIndex C k) :
+    B.tensorBasis C k a =
+      (ιTensorObj P Q a.1.1.1 a.1.1.2 k a.1.2).hom
+        (B.basis a.1.1.1 a.2.1 ⊗ₜ[S] C.basis a.1.1.2 a.2.2)
+tensorHeight (k : ℤ) (a : B.TensorIndex C k) : ℕ
+tensorLowerSpan (k : ℤ) (n : ℕ) : Submodule S ((P ⊗ Q).X k)
+tensor_mem_lowerSpan_left (p q k : ℤ) (h : p + q = k) (n : ℕ)
+    (j : C.Index q) (x : P.X p)
+    (hx : x ∈ Submodule.span S (B.basis p '' {i | B.height p i < n})) :
+    (ιTensorObj P Q p q k h).hom (x ⊗ₜ[S] C.basis q j) ∈
+      B.tensorLowerSpan C k (n + C.height q j)
+tensor_mem_lowerSpan_right (p q k : ℤ) (h : p + q = k) (n : ℕ)
+    (i : B.Index p) (y : Q.X q)
+    (hy : y ∈ Submodule.span S (C.basis q '' {j | C.height q j < n})) :
+    (ιTensorObj P Q p q k h).hom (B.basis p i ⊗ₜ[S] y) ∈
+      B.tensorLowerSpan C k (B.height p i + n)
+tensor_summand_d (p q k : ℤ) (h : p + q = k) :
+    ιTensorObj P Q p q k h ≫ (P ⊗ Q).d k (k + 1) =
+      ComplexShape.ε₁ (.up ℤ) (.up ℤ) (.up ℤ) (p, q) •
+        ((P.d p (p + 1) ▷ Q.X q) ≫ ιTensorObj P Q (p + 1) q (k + 1) (by omega)) +
+      ComplexShape.ε₂ (.up ℤ) (.up ℤ) (.up ℤ) (p, q) •
+        ((P.X p ◁ Q.d q (q + 1)) ≫ ιTensorObj P Q p (q + 1) (k + 1) (by omega))
+tensor_summand_d_apply (p q k : ℤ) (h : p + q = k) (x : P.X p) (y : Q.X q) :
+    ((P ⊗ Q).d k (k + 1)).hom ((ιTensorObj P Q p q k h).hom (x ⊗ₜ[S] y)) =
+      (ComplexShape.ε₁ (.up ℤ) (.up ℤ) (.up ℤ) (p, q) : ℤ) •
+        (ιTensorObj P Q (p + 1) q (k + 1) (by omega)).hom
+          ((P.d p (p + 1)).hom x ⊗ₜ[S] y) +
+      (ComplexShape.ε₂ (.up ℤ) (.up ℤ) (.up ℤ) (p, q) : ℤ) •
+        (ιTensorObj P Q p (q + 1) (k + 1) (by omega)).hom
+          (x ⊗ₜ[S] (Q.d q (q + 1)).hom y)
+tensorBasis_d_mem_lowerSpan (k : ℤ) (a : B.TensorIndex C k) :
+    ((P ⊗ Q).d k (k + 1)).hom (B.tensorBasis C k a) ∈
+      B.tensorLowerSpan C (k + 1) (B.tensorHeight C k a)
+tensor : ComplexSemifreeBasis S (P ⊗ Q)
+complexSemifree_tensor (hP : complexSemifree S P) (hQ : complexSemifree S Q) :
+    complexSemifree S (P ⊗ Q)
+```
+主定理の完全な型：
+```lean
+complexSemifree_tensor {S : Type u} [CommRing S] (P Q : Complex S)
+    (hP : complexSemifree S P) (hQ : complexSemifree S Q) :
+  complexSemifree S (P ⊗ Q)
+```
+テンソル積は既存の Mathlib の monoidal tensor（各次数に直和 totalization を使用）。
+基底は p+q=k ごとの左右の基底のテンソル積、自然数の高さは左右の高さの和。
+標準 total 微分の符号付き二項をそれぞれ低い基底の線形包へ入れ、
+基底表現の台が厳密に高さを下げることを証明した。
+有界性・有限性・平坦性・環の追加性質の仮定なし。
+対象集約ビルドは終了コード0（3954 jobs）。公理監査も終了コード0、
+25モジュール543宣言すべて `propext`・`Classical.choice`・`Quot.sound` のみ。
+`git diff --check` は今回の実装・集約・監査ファイルについて成功。
+D2i（テンソル積および任意の環準同型による底変更の保存）は完了。
+今回の指示 D2h・D2h′・D1・D3・承認後の D2i に未完了項目はない。
+D4、N7 の ∞ 極限定理を Semifree に制限する実装そのもの、
+テンソルの対称モノイダル ∞ 圏への昇格は別途の工程であり、今回の完成とは混同しない。

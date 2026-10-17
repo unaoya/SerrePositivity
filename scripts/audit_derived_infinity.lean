@@ -248,6 +248,23 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.baseChange
 #print axioms SerrePositivity.InfinityCategories.complexSemifree_baseChange
 
+#print axioms SerrePositivity.InfinityCategories.directSumBasis_apply
+#print axioms SerrePositivity.InfinityCategories.TensorDegreeIndex
+#print axioms SerrePositivity.InfinityCategories.tensorDegreeEquiv
+#print axioms SerrePositivity.InfinityCategories.tensorDegreeEquiv_symm_lof
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.TensorIndex
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.tensorBasis
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.tensorBasis_apply
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.tensorHeight
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.tensorLowerSpan
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.tensor_mem_lowerSpan_left
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.tensor_mem_lowerSpan_right
+#print axioms SerrePositivity.InfinityCategories.tensor_summand_d
+#print axioms SerrePositivity.InfinityCategories.tensor_summand_d_apply
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.tensorBasis_d_mem_lowerSpan
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.tensor
+#print axioms SerrePositivity.InfinityCategories.complexSemifree_tensor
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -257,6 +274,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.ConeBasis,
     `SerrePositivity.InfinityCategories.Derived.HomotopyCategoryComparison,
     `SerrePositivity.InfinityCategories.Derived.SemifreeBaseChange,
+    `SerrePositivity.InfinityCategories.Derived.TensorBasis,
+    `SerrePositivity.InfinityCategories.Derived.SemifreeTensor,
     `SerrePositivity.InfinityCategories.Derived.SplitSequence,
     `SerrePositivity.InfinityCategories.Derived.SphereBasis,
     `SerrePositivity.InfinityCategories.Derived.Semifree,

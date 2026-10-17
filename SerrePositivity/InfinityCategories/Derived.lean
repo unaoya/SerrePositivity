@@ -10,6 +10,8 @@ public import SerrePositivity.InfinityCategories.Derived.SemifreeBasisLayers
 public import SerrePositivity.InfinityCategories.Derived.SplitSequence
 public import SerrePositivity.InfinityCategories.Derived.SphereBasis
 public import SerrePositivity.InfinityCategories.Derived.FiltrationCoordinates
+public import SerrePositivity.InfinityCategories.Derived.TensorBasis
+public import SerrePositivity.InfinityCategories.Derived.SemifreeTensor
 public import SerrePositivity.InfinityCategories.Derived.SemifreeBaseChange
 public import SerrePositivity.InfinityCategories.Derived.SemifreeBasisEquivalence
 public import SerrePositivity.InfinityCategories.Derived.SemifreeBasisFiltration
