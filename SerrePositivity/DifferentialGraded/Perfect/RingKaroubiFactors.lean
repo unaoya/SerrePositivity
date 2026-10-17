@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Perfect.RingKaroubi
+public import SerrePositivity.DifferentialGraded.Perfect.RingPerfectCoherence
 public import SerrePositivity.DifferentialGraded.Category.EquivalenceComparison
 
 /-! # Karoubi実現の元の比較への因子化と整数shiftの整合性 -/

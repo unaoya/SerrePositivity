@@ -159,6 +159,19 @@
 - `Perfect.ChecksRingPerfectEquivalence` 対象ビルド成功（3206 jobs）。
   主要17宣言の公理監査は標準3公理のみ。追加の環の仮定・引用はない。
 
+## U13e.40：実際の閉零冪等分裂とretract・導来・三角図式
+
+- `Perfect/RingPerfectCoherence.lean`：有限射影dg複体のH⁰の冪等完備性と、
+  閉零射pが境界まで冪等な場合の実際の有界有限射影複体Y・閉零分裂射を構成した。
+  分裂の二式は全Hom複体の境界関係で成立し、strict冪等性の追加仮定を置かない。
+- 元のPerfectHomotopyでの分裂は、元の主Perf比較の下でも同じ冪等元と分裂等式を与える。
+  新同値の順関手は元の比較そのものであるため、主導来包含との既存の自然同型・整数shift整合性を保持し、
+  三角形関手の比較自然同型も構成した。同値のunit/counitのshift整合性も監査した。
+- `Perfect.ChecksRingPerfectCoherence` 対象ビルド成功（3207 jobs）。
+  主要8宣言の公理監査は標準3公理のみ。
+- 既存 `Perfect/RingKaroubiFactors.lean` への変更は、この新ファイルのpublic import一行だけ。
+  既存のKaroubi factor・shift・導来・三角比較と新しい元の同値を同じ入口から利用できる。
+
 ## 既存項目の再検証
 
 - finite cell・全Hom射影性・PerfとKaroubi・compact生成・compact⇒Perf・

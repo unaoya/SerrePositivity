@@ -1,0 +1,14 @@
+module
+public import SerrePositivity.DifferentialGraded.Perfect.RingPerfectCoherence
+
+/-! # 有限射影の閉零分裂・retract・導来三角図式の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+#print axioms strictPerfectDGComplexHomotopyIsIdempotentComplete
+#print axioms strictPerfectDGComplex_homotopyIdempotent_splits
+#print axioms ringPerfectHomotopyEquivalenceDerivedIso
+#print axioms ringPerfectHomotopyEquivalenceDerivedIsoCommShift
+#print axioms ringPerfectHomotopyEquivalenceTriangleIso
+#print axioms ringPerfectHomotopyEquivalenceUnitCommShift
+#print axioms ringPerfectHomotopyEquivalenceCounitCommShift
+#print axioms perfectHomotopy_idempotent_splits_comparison
