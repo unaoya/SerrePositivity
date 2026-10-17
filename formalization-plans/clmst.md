@@ -10009,6 +10009,18 @@ AdicCompletion 上の p^n の積の等式を、元の環からの algebraMap を
 原典 E∞ 版 Cor 8.12 の保留は継続し、新しい sorry・axiom・引用は追加していない。
 復旧確認後、一般 rank の有限成分の指数合流と元の錐への可換図式の移送を再開する。
 
+**一般 rank の独立準備・実可換図式の三辺から元の実錐へ移送（2026-10-17）。**
+共通層 `HomologicalAlgebra/ConeComparisonSquare.lean` は元の t∘f=h∘s という実可換式について、
+s の核・余核を a,b、h の核・余核を c,d、t の核を e が消せば、
+元の f の核を ac、余核を ebd が消すことを証明した。
+`moduleMapConeScalar_of_comparison_square` は既存の核・余核から実錐への定理を使い、
+元の f の錐のスカラー射 (ac)(ebd) が零であることを得る。
+終域比較 t の余核の零化、s の全射性、比較対象の有限性・平坦性は要求しない。
+一般 rank の合流で必要な三辺の条件を明示し、未知の Cor 8.12 の almost 比較を証明済みとは扱わない。
+共通層に BS・CLMST・Inputs・Paper の import 依存はない。
+対象1993ジョブと専用監査の公開2宣言が成功。全2宣言は assert_no_sorry 成功・標準3公理のみ。
+原典 E∞ 版 Cor 8.12 の保留は継続し、新しい sorry・axiom・引用は追加していない。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
