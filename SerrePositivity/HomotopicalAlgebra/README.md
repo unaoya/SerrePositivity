@@ -3268,3 +3268,19 @@ augmentationの交換・局所化可逆性を証明する。
 小さい宇宙の実単位・合成比較ホモトピーを与える。
 高次の整合性と小さい厳密な基底関手は未完了である。
 受入検証は`check_hom_parameter_descent`（37宣言・6モジュール）。
+
+
+### 相対境界を保つ降下選択とnativeな比較区間（§379）
+
+`KanPostDetection`と`KanRestrictionEquivalence`は単射性を仮定せず、Kan対象への内部Hom制限が
+局所化同値となることを証明する。
+`KanLocalizedComparisonResolution`はboundary分解からdecodeと一つの大域的な比較区間を与える。
+そのunit上の比較は厳密に定数である。
+`RestrictionDescentChoices`は実pullbackの選択空間と、既存の族・比較区間全体を同時に保持する
+任意の単射パラメータからの延長を構成する。
+`OrdinaryBarRelativeHomDescent`は元の実word作用へ適用し、nativeな小さい内部Homへの族を得る。
+`RestrictionDescentEvaluation`と`OrdinaryBarRelativeNativeComparison`は元の実作用との比較を
+元の小さい宇宙の実区間へ戻し、区間写像自体の置換則と、nativeな族・比較区間の同時相対延長を証明する。
+補助宇宙のモデル構造も選択空間の低い宇宙でのsmallnessも仮定しない。
+異なるHomをまたぐ単位・合成の高次整合性と、小さい厳密な基底関手は残る。
+受入検証は`check_relative_hom_descent`（84宣言・7モジュール）。
