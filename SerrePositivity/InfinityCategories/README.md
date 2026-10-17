@@ -6,6 +6,8 @@
 追加の有界性・平坦性・標数の仮定は置かない。
 正本は [計画](../../formalization-plans/dg-nerve.md)。この文書の N0 は紙の計算であり、
 Lean での dg nerve の存在やホーン充填の証明を意味しない。
+現在は N0・N1・N2 が完了し、任意の dg 圏の dg nerve と quasicategory instance を公開済み。
+以下の途中段階の記録は保存時点の状態を表す。N3〜N6 は未完了。
 
 原典は [Higher Algebra](https://www.math.ias.edu/~lurie/papers/HA.pdf)
 Construction 1.3.1.6、Proposition 1.3.1.10、Remark 1.3.1.12 と、
@@ -298,3 +300,25 @@ rhsContribution_j      = ε(I,j) (F_E - F_R∘f_L - (-1)^q f_R∘F_L)
 を証明する。主残差恒等式には、実際の `Σ_j rhsContribution_j=0` の証明がまだ必要。
 その接続、欠けた面自身の方程式、無条件の内部ホーン充填と `Quasicategory` instance が残る。
 N2 および N3〜N6 は引き続き未完了。
+
+## N2 完了（2026-10-17）
+
+`CutErasure.lean` と `CutBoundary.lean` は、削除後の切断と切断後の削除の集合・次数・合成値を
+そろえる。`MixedBoundary.lean` は実際の混合項全体の零を証明する。
+`NestedCut.lean` は二重切断の中間の集合と次数を同定し、通常順合成の結合律を適用する。
+`CubicBoundary.lean` は実際の三重合成項の総和の零を証明する。
+
+これらと二重削除の零から、`Bianchi.lean` は実際の `Σ rhsContribution=0` を証明し、
+主残差恒等式 `δF_I=Σ residualContribution` を得る。
+`HornResidual.lean` はこれを充填候補の全体集合に適用する。左辺は `δ²f_V=0`、
+既知の削除面と左右切断の残差は零なので `ε(V,i)R_{V\\{i}}=0` が残り、欠けた面の方程式が従う。
+これで N2d までの未証明部分は解消した。
+
+`Quasicategory.lean` の `dgNerve.filler` は追加の方程式の前提なしに充填単体を構成する。
+`filler_face` は全ての既知の面との一致、`hornFilling` はホーン写像の延長を証明する。
+`dgNerve.instQuasicategory` は `Quasicategory (dgNerve A D)` を公開する。
+前提は任意の可換環 A と dg 圏 D のみ。ホーンの充填では内部点の二不等式を要求する。
+有界性・平坦性・体・標数の追加仮定はない。
+
+N2 の全体が完了し、N3（H⁰ との比較）・N5（関手性）・N4（右 pinched 写像空間）・N6 は未完了。
+公開宣言の正確な型・前提・ビルドと公理監査の記録は計画 §5 の N2e を参照。

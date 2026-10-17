@@ -2,12 +2,13 @@ import SerrePositivity.InfinityCategories.DGNerve
 /-!
 # dg nerve の公開宣言の公理監査
 
-概要：N0 の既存則と N1 と N2 途中の全ての明示的な公開宣言を監査する。
+概要：N0 の既存則と N1 と N2 の全ての明示的な公開宣言を監査する。
 方針：各工程で公開宣言の公理表示と型の検査を追加する。
 規約：許される公理は propext・Classical.choice・Quot.sound のみ。
 使われ方：対象ビルド後に `lake env lean scripts/audit_dg_nerve.lean` を実行する。
 原典：HA Construction 1.3.1.6、Proposition 1.3.1.10。
-dg nerve は構成済み。ホーン充填の完成をこの監査から主張しない。
+dg nerve と内部ホーン充填および quasicategory instance を監査する。
+N3〜N6 の完了はまだ主張しない。
 -/
 
 #print axioms SerrePositivity.DifferentialGraded.differential_compose
@@ -236,6 +237,31 @@ dg nerve は構成済み。ホーン充填の完成をこの監査から主張�
 #print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhsContribution
 #print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.differential_term
 #print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.differential_rhs_expansion
+#print axioms SerrePositivity.InfinityCategories.DGNerve.compose_sum_left
+#print axioms SerrePositivity.InfinityCategories.DGNerve.compose_sum_right
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.cutCompose_erase_left
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.cutCompose_erase_right
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Index.interior_right_cut
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Index.interior_left_cut
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.cutBoundary
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.cutBoundary_linear
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.mixedBoundary_eq_zero
+#print axioms SerrePositivity.InfinityCategories.DGNerve.compose_assoc_of_sum
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.nestedCutRight
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.nestedCutLeft
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.nestedCutRight_eq_left
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.cutBoundary_quadratic
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.cubicBoundary_eq_zero
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhsContribution_eq_boundaries
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.sum_rhsContribution_eq_zero
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.bianchi
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.residual_zero_of_equation
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.residualContribution_of_cuts
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.fillerData_missing_equation
+#print axioms SerrePositivity.InfinityCategories.dgNerve.filler
+#print axioms SerrePositivity.InfinityCategories.dgNerve.filler_face
+#print axioms SerrePositivity.InfinityCategories.dgNerve.hornFilling
+#print axioms SerrePositivity.InfinityCategories.dgNerve.instQuasicategory
 
 #check @SerrePositivity.InfinityCategories.DGNerve.compose_zero
 #check @SerrePositivity.InfinityCategories.DGNerve.zero_compose
@@ -458,3 +484,35 @@ dg nerve は構成済み。ホーン充填の完成をこの監査から主張�
 #check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhsContribution
 #check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.differential_term
 #check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.differential_rhs_expansion
+#check @SerrePositivity.InfinityCategories.DGNerve.compose_sum_left
+#check @SerrePositivity.InfinityCategories.DGNerve.compose_sum_right
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.cutCompose_erase_left
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.cutCompose_erase_right
+#check @SerrePositivity.InfinityCategories.DGNerve.Index.interior_right_cut
+#check @SerrePositivity.InfinityCategories.DGNerve.Index.interior_left_cut
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.cutBoundary
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.cutBoundary_linear
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.mixedBoundary_eq_zero
+#check @SerrePositivity.InfinityCategories.DGNerve.compose_assoc_of_sum
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.nestedCutRight
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.nestedCutLeft
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.nestedCutRight_eq_left
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.cutBoundary_quadratic
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.cubicBoundary_eq_zero
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhsContribution_eq_boundaries
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.sum_rhsContribution_eq_zero
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.bianchi
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.residual_zero_of_equation
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.residualContribution_of_cuts
+#check @SerrePositivity.InfinityCategories.DGNerve.HornData.fillerData_missing_equation
+#check @SerrePositivity.InfinityCategories.dgNerve.filler
+#check @SerrePositivity.InfinityCategories.dgNerve.filler_face
+#check @SerrePositivity.InfinityCategories.dgNerve.hornFilling
+#check @SerrePositivity.InfinityCategories.dgNerve.instQuasicategory
+
+section
+universe u v
+variable (A : Type u) [CommRing A] (D : Type v)
+  [SerrePositivity.DifferentialGraded.DGCategory A D]
+example : SSet.Quasicategory (SerrePositivity.InfinityCategories.dgNerve A D) := inferInstance
+end

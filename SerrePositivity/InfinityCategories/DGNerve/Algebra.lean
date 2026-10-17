@@ -115,4 +115,20 @@ lemma compose_units_smul_right {x y z : D} {p q k : ℤ} (c : ℤˣ)
   simp only [compose, forward, Units.smul_def, ← TensorProduct.smul_tmul', map_zsmul]
   exact smul_comm _ _ _
 
+/-- 概要：通常順合成は後に作用する射の有限和を保つ。
+方針：tensor と豊穣合成の線形性および符号スカラーの有限和への分配を使う。
+規約：HA Proposition 1.3.1.10。使われ方：切断成分の境界の合成を二重和へ展開する。 -/
+lemma compose_sum_left {ι : Type*} {x y z : D} {p q k : ℤ}
+    (S : Finset ι) (g : ι → GradedHom A y z q) (f : GradedHom A x y p) (h : p + q = k) :
+    compose A (∑ i ∈ S, g i) f h = ∑ i ∈ S, compose A (g i) f h := by
+  simp [compose, forward, TensorProduct.tmul_sum, Finset.smul_sum]
+
+/-- 概要：通常順合成は先に作用する射の有限和を保つ。
+方針：tensor と豊穣合成の線形性および符号スカラーの有限和への分配を使う。
+規約：HA Proposition 1.3.1.10。使われ方：切断成分の境界の合成を二重和へ展開する。 -/
+lemma compose_sum_right {ι : Type*} {x y z : D} {p q k : ℤ}
+    (S : Finset ι) (g : GradedHom A y z q) (f : ι → GradedHom A x y p) (h : p + q = k) :
+    compose A g (∑ i ∈ S, f i) h = ∑ i ∈ S, compose A g (f i) h := by
+  simp [compose, forward, TensorProduct.sum_tmul, Finset.smul_sum]
+
 end SerrePositivity.InfinityCategories.DGNerve
