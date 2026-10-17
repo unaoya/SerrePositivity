@@ -16,6 +16,7 @@ set_option pp.explicit true
 
 
 
+
 #print axioms SerrePositivity.InfinityCategories.Coherent.cube
 #check @SerrePositivity.InfinityCategories.Coherent.cube
 
@@ -60,6 +61,12 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_on_face
 #check @SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_on_face
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornZeroFaceHom
+#check @SerrePositivity.InfinityCategories.Coherent.hornZeroFaceHom
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_restrict
+#check @SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_restrict
 
 #print axioms SerrePositivity.InfinityCategories.Coherent.faceRetraction
 #check @SerrePositivity.InfinityCategories.Coherent.faceRetraction
@@ -183,6 +190,30 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.Coherent.pathPrefix_comp_pathSuffix
 #check @SerrePositivity.InfinityCategories.Coherent.pathPrefix_comp_pathSuffix
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathAvoids
+#check @SerrePositivity.InfinityCategories.Coherent.pathAvoids
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathFaceMap
+#check @SerrePositivity.InfinityCategories.Coherent.pathFaceMap
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathFacePreimage
+#check @SerrePositivity.InfinityCategories.Coherent.pathFacePreimage
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathFacePreimageFunctor
+#check @SerrePositivity.InfinityCategories.Coherent.pathFacePreimageFunctor
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.range_pathFaceMap
+#check @SerrePositivity.InfinityCategories.Coherent.range_pathFaceMap
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathFaceMap_mono
+#check @SerrePositivity.InfinityCategories.Coherent.pathFaceMap_mono
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathFaceIso
+#check @SerrePositivity.InfinityCategories.Coherent.pathFaceIso
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathFaceIso_hom_ι
+#check @SerrePositivity.InfinityCategories.Coherent.pathFaceIso_hom_ι
 
 #print axioms SerrePositivity.InfinityCategories.Coherent.pathHollow
 #check @SerrePositivity.InfinityCategories.Coherent.pathHollow

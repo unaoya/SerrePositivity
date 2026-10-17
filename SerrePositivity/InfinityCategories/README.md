@@ -1190,7 +1190,10 @@ Mathlib の `Quasicategory` が求める n+2 次元の全内部ホーンをこ�
 任意の単体的制限との整合性 `hornHomOnCell_naturality` を証明済み。
 既知面を退化で引き戻す `hornHomViaFace` と、その面への制限が元の Hom 写像に等しい
 `hornHomViaFace_on_face` も証明済み。
-明示的な公開 68 宣言を公理監査済み。
+Path の面写像は単射で、像は除外頂点を避ける列の部分単体集合 `pathAvoids` に等しい。
+その同型 `pathFaceIso` を用い、零座標面上の実際の写像 `hornZeroFaceHom` と
+候補の制限の一致 `hornHomViaFace_restrict` まで証明済み。
+明示的な公開 78 宣言を公理監査済み。
 残工程：ホーンの面から Hom データを回収して空洞部分上へ貼り、
 延長から豊穣関手を復元して `Quasicategory` を証明する。γ1 全体は未完了。
 各段の実施記録はコミットメッセージへ置き、計画本文には現在地と残工程を短く残す。
