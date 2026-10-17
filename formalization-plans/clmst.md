@@ -9007,6 +9007,43 @@ CompletedTower の指定 perfectoid 性と、D[1/g] の A[1/g] 上のエター�
 入力命題の成立を仮定したまま KL 全体や KL-Q を完成済みとは数えない。
 D-I/U/Q・Cor 8.12 の担当実装は変更していない。
 
+#### KL-T：実 distinguished triangle から離散な環の pullback への反映（2026-10-17）
+
+`HomologicalAlgebra/SingleTriangleExactReflection.lean` は任意のアーベル圏について、
+指定した短複体 S の二射を singleFunctor で送った実 distinguished triangle から
+S.ShortExact を取り出す。公開名は `shortExact_of_distinguished_single_triangle` と
+`shortExact_iff_exists_distinguished_single_triangle`。
+負次数・正次数の single 対象のホモロジー消滅、長完全列、H⁰∘single≅id の自然同型を用いる。
+入力は実 connecting map δ とその triangle の distinguished 性である。
+
+`CommutativeAlgebra/DerivedSingleTrianglePullback.lean` は元の可換代数四角形
+f:A→B、l:A→C、r:B→D、b:C→D に対し、
+`a↦(f a,l a)` と `(x,y)↦r x-b y` を二射とする実加群短複体を固定する。
+公開 `algHomPullbackShortComplex`、`algHom_isPullback_of_module_shortExact`、
+`algHom_isPullback_of_distinguished_single_triangle` は、この実短複体の短完全性、
+または指定 single 対象・二射の実 distinguished triangle から、
+元の `CommRingCat.ofHom` 四角形の IsPullback を返す。
+環のどの辺の全射性も追加しない。
+
+絶対的な整数係数の入口も同じファイルに置いた。
+`ringHomPullbackShortComplex` と `ringHom_isPullback_of_distinguished_single_triangle` は
+四つの元の環準同型だけを受け取り、各環の標準 ℤ 加群を使う。
+環の値の universe u と係数環の universe v を分離し、任意の Type u の環に適用できる。
+ℤ 係数のまま元の環の universe を制限しない。追加の R 代数構造の選択は不要。
+
+対象ビルド、専用監査 `scripts/audit_clmst_single_triangle_pullback.lean` が成功。
+公開7宣言と、実代数ファイバー積の distinguished triangle とその環 pullback への反映、
+整数/mod 2 の具体的 triangle、同じ差写像の線形な切断の不存在を確認した3適用例は、
+すべて `assert_no_sorry` 成功・標準三公理のみ。
+全体ビルド成功（6512 jobs）、KL 専用監査も成功（1231 assert）。新引用なし。
+
+この一般補題は derived な excision の離散モデルを受け取った後の反映部分である。
+**原典の導来 perfectoid 化と現在の単位・四辺を持つ single 対象との同定、および
+その実 distinguished triangle の供給は未完了**。Cor 8.12 自体を宣言・証明したとは数えない。
+次は KL の実 canonical 四角形について、この入力型をそのまま固定する。
+`KLFiniteComparisonExcision` の成立・Cor 4.0.4 の引用置換は引き続き未完了。
+D-I/U/Q・Cor 8.12 の担当実装は編集していない。
+
 #### Prop 2.4.7 専任系列：原典から D-I/U/Q への型付き受渡し（2026-10-17）
 
 本節は統合表 D-I・D-U・D-Q の実入力を固定する。未採用の別計画は根拠にしない。

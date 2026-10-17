@@ -904,6 +904,7 @@ public import SerrePositivity.CommutativeAlgebra.EtaleAwayTensorBaseChange
 public import SerrePositivity.CLMST.CanonicalExcisionTorInput
 public import SerrePositivity.CLMST.KLOriginalTorFromExcision
 public import SerrePositivity.CLMST.KLCohomologyFromExcision
+public import SerrePositivity.CommutativeAlgebra.DerivedSingleTrianglePullback
 
 /-!
 # Serre の交点重複度の正値性の形式化
