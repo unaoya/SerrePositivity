@@ -3360,3 +3360,77 @@ prism 商の p 正則性は原典のこの場合の明示仮定であり、一�
 三元商の正則性保存、有限二重商の比較、次段保存、初期段、全有限段、
 一般 raw 包および無限根モニック raw 包の p 正則性など、公開型 8 本を
 `#check` で確認した（終了コード 0）。
+
+
+### E1.53：raw 包の mod p 正則対と実二座標完備化の分母正則性（検証済み）
+
+新規 `Andre/DeltaDivisionUnaryRawPairRegular.lean` は、実 raw 包 L の mod p を
+元の自由 δ 環 L₀ の ((p)+J) 商と同定する。J は元の δ 関係イデアルの全 δ 閉包。
+比較同型は全ての自由環代表元を保つ。
+さらに E1.52 の有限段の mod p の分母正則性を有向上限へ移した。
+(p)+J = ⨆ N, ((p)+I_N) と表示し、一有限段で分母を消去する。
+`deltaDivisionUnaryRaw_primeIdeal_d_saturated` は (p)+J の分母飽和性、
+`deltaDivisionUnaryRaw_mod_prime_d_regular` は実 L/p における分母の正則性を証明する。
+前提は E1.52 と同じ、A の p 正則性、d mod p の正則性、a mod(p,d) の正則性、
+自由 δ 環の ghost 単射性、δ(d) の単元性。一元添字型 Unique σ を用いる。
+4 公開宣言を追加した。
+
+新規 `Andre/PrincipalPairPowerRegular.lean` は一般可換環 R の正則対 b,c について、
+b が R で正則、c の像が R/b で正則なら、全ての n について (bⁿ) は c で飽和し、
+c の像は R/(bⁿ) で正則となることを証明する。
+帰納段では mod b で x=b y とし、b の正則性で一度消して帰納法を適用する。
+全座標にこの消去を適用して、古典的 b 完備化でも c の像が正則となる。
+`principalPair_adicCompletion_second_regular` の型は
+
+```lean
+{R : Type u} [CommRing R] (b c : R) (hb : IsSMulRegular R b)
+(hc : IsSMulRegular (R ⧸ Ideal.span {b}) (Ideal.Quotient.mk (Ideal.span {b}) c)) :
+IsSMulRegular (AdicCompletion (Ideal.span {b}) R)
+  (algebraMap R (AdicCompletion (Ideal.span {b}) R) c)
+```
+
+である。Noether 性・平坦性・R の完備性は不要。3 公開宣言を追加した。
+
+新規 `Andre/PrincipalPairCompletionRegular.lean` は元の実主完備化 H⁰ と実二座標
+完備化 H⁰ へ上の正則性を移す。第一主完備化を既存の標準写像を保つ古典的完備化比較へ
+移し、第二元 c が正則なことを得る。その実主 H⁰ を c で再び完備化して正則性を保存し、
+既存の反復比較で元の二座標 Koszul 完備化 H⁰ に戻す。
+`principalPair_pairCompletion_second_regular` の型は同じ hb,hc の下で
+
+```lean
+letI := pairCompletionCommRing R b c
+IsSMulRegular (PairCompletionH0 R b c) (pairCompletionUnitRingHom R b c c)
+```
+
+である。環構造の乗算と元の加群スカラー作用の一致には、既存の反映の
+`mul_scalar_unit` を使う。型の定義上一致を仮定しない。2 公開宣言を追加した。
+
+新規 `Andre/PowerRootPrismMonicRawPairRegular.lean` は完全 prism W の無限根モニック入力
+P、分母 dP、raw 包 L に適用する。
+前提は完全性 hW、prism 商 A/W.ideal の p 正則性 hpR、f のモニック性 hf。
+正次数は不要で、一般の公開存在定理へ hpR を追加しない。
+`powerRootPrismMonicRaw_mod_prime_generator_regular` は L/p の dL 正則性、
+`powerRootPrismMonicRaw_pAdic_regular_pair` は古典的 p 完備化の p と dL の正則性、
+`powerRootPrismMonicRaw_pdCompletion_generator_regular` は
+
+```lean
+let dL := deltaAdjoinDivisionMap E dP a dP
+letI := pdCompletionCommRing L p dL
+IsSMulRegular (PDCompletionH0 L p dL) (pdCompletionUnit L p dL dL)
+```
+
+を証明する。ここで E,dP,a,L は E1.52 の元の入力・raw 包そのもの。
+元の Koszul 完備化と標準射を保持する。3 公開宣言を追加した。
+
+BS Rem 7.15（著者版 p.62）の p ねじれなしの場合を、原典とは異なる有限 δ 関係商の
+正則対、有向上限、反復主完備化で計算している。
+E1.52 で残っていた raw 包の mod p の分母正則性と、実二座標完備化での分母正則性は
+この工程で解消した。実二座標完備化の p 正則性、分母を割った Hodge–Tate 商の
+p 正則性、原典の prismatic 源との同定は引き続き未完了。
+
+4 対象および集約の `set -o pipefail; lake build` は終了コード 0
+（集約 4501 jobs）。新規 12 公開宣言の `assert_no_sorry` と専用監査は
+終了コード 0。生成宣言を含む 4879 宣言の推移的公理依存は標準 3 公理のみ。
+raw mod p 比較・分母飽和性・分母正則性、全主冪商・古典的主完備化、実二座標完備化、
+無限根モニック入力の二つの完備化に関する公開型 8 本を `#check` で確認した
+（終了コード 0）。

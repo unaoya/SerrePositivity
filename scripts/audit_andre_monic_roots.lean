@@ -981,6 +981,19 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFinite_all
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicRaw_p_mul_injective
 
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionRawPrimeQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionRawPrimeQuotientEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionUnaryRaw_primeIdeal_d_saturated
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionUnaryRaw_mod_prime_d_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalPairPower_saturated
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalPairPower_quotient_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalPair_adicCompletion_second_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalPair_principalCompletion_second_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalPair_pairCompletion_second_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicRaw_mod_prime_generator_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicRaw_pAdic_regular_pair
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicRaw_pdCompletion_generator_regular
+
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
@@ -1141,7 +1154,11 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.DeltaDivisionFiniteRegularStep,
     `SerrePositivity.BhattScholze.Andre.DeltaDivisionUnaryFiniteInitialRegular,
     `SerrePositivity.BhattScholze.Andre.DeltaDivisionUnaryRawRegular,
-    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicRawRegular]
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicRawRegular,
+    `SerrePositivity.BhattScholze.Andre.DeltaDivisionUnaryRawPairRegular,
+    `SerrePositivity.BhattScholze.Andre.PrincipalPairPowerRegular,
+    `SerrePositivity.BhattScholze.Andre.PrincipalPairCompletionRegular,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicRawPairRegular]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
