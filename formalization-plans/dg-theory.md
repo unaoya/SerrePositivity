@@ -2820,6 +2820,7 @@ U16d：Perfへの制限と係数変更・中心作用の自然性、合成のcoh
 ### 15.7 U17：Verdier/KaroubiとM9への接続（D10）
 
 U17a：tria(D)とBの像の三角閉包を定義し、殺す対象クラスの一致を証明する。
+U17a・U13d の担当実装と検証記録：[`dg-theory-u17a-u13d.md`](dg-theory-u17a-u13d.md)。
 U17b：H⁰(Perf_dg(D/B))とKaroubi(tria(D)/tria(B))の比較を、U15の商とU16の自然性から構成。
 U17c：既存`karoubiVerdierOrderEquivalence`、`paperRankEquivalence`、`paperSequenceComparison`との可換squareをshift・三角性・線形性付きで公開。
 U17d：中心局所化・支持・retract、係数変更、Gのstrict作用の比較を個別の図式として検証。
