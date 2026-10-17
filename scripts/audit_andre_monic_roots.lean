@@ -1060,6 +1060,17 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletedP
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletedPerfectionRoot_eval
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletedPerfectionQuotientEquiv_coeff
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.scalarExtensionTorVanishing_of_completelyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.completelyFlat_pair_of_regular_principal_reduction
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalScalarExtensionAlgebraQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.completelyFlat_pair_algebra_of_regular_reduction
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletionAlgebra
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTateAlgebra_eq_principal
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletion_pair_completelyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletionScalarEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletion_pair_scalarExtensionTorVanishing
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletion_pair_reduction_homology_isZero
+
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
@@ -1240,7 +1251,10 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.RawDeltaDivisionPDTorsionComparison,
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCompletionUniversal,
     `SerrePositivity.BhattScholze.Andre.RawDivisionPDPerfectionComparison,
-    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCompletedPerfection]
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCompletedPerfection,
+    `SerrePositivity.BhattScholze.Andre.CompletelyFlatRegularReduction,
+    `SerrePositivity.BhattScholze.Andre.CompletelyFlatRegularAlgebraReduction,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCompletionPairFlat]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

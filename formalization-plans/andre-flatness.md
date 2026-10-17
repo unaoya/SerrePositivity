@@ -3815,3 +3815,85 @@ BS Cor 7.3（著者版 p.56）、Rem 7.15（p.62）の完全化・perfectoid 商
 終了コード 0。生成宣言を含む 5461 宣言の推移的公理依存は標準 3 公理のみ。
 一般比較・両方向の δ 性・商の係数保存・perfectoid 性、具体的な自然射・perfectoid 性・
 根の評価・全入力係数の保存の公開型 8 本を `#check` で確認した（終了コード 0）。
+
+
+### E1.59 正則主剰余から元の実完備化の二元完全平坦性と導来離散性（2026-10-17）
+
+新規 `Andre/CompletelyFlatRegularReduction.lean` は、任意イデアル I の完全平坦な
+加群 M の標準 I 剰余の高次 Tor 消滅を証明した。
+`scalarExtensionTorVanishing_of_completelyFlat` はイデアルで消える商基底自体を
+試験加群に取り、Tor の対称性で実際の制限スカラー加群へ移す。
+
+`completelyFlat_pair_of_regular_principal_reduction` の型は、R を可換環、
+M : ModuleCat R、q : R →+* R/(d) と書けば
+
+```lean
+(a d : R) (hd : IsSMulRegular R d)
+(M : ModuleCat R) (hMd : IsSMulRegular M d)
+(hred : IsCompletelyFlat (Ideal.span {q a})
+  ((ModuleCat.extendScalars q).obj M)) :
+IsCompletelyFlat (Ideal.span {a, d}) M
+```
+
+である。正則主剰余の Tor 非輪状性と底変換を使う。
+新規 `Andre/CompletelyFlatRegularAlgebraReduction.lean` は通常主環商と標準加群
+スカラー拡大の線形同型を公開し、同じ判定を代数 S の通常商 S/(dS) に移す。
+この二つのファイルに各 2 公開宣言を追加した。完備性や Noether 性は仮定しない。
+
+新規 `Andre/PowerRootPrismMonicCompletionPairFlat.lean` は E1.54–58 と同じ
+W : OrientedPrism p A、hW : W.deltaStructure.IsPerfect、一元モニック f : Polynomial A、
+無限根多項式環 P、δ 除算包 L とその標準射 jL、
+H = PDCompletionH0 L p (jL dP)、その標準単位 uL を使う。
+c = powerRootPrismMonicCompletionBaseMap W hW f : A →+* H とする。
+`powerRootPrismMonicCompletionAlgebra` は c.toAlgebra そのものである。
+自然な H/dH の既存の R=A/W.ideal 作用が標準主環商作用と等しいことを
+`powerRootPrismMonicHodgeTateAlgebra_eq_principal` で全代表元上証明した。
+
+`powerRootPrismMonicCompletion_pair_completelyFlat` の正確な結論は
+
+```lean
+let := pdCompletionCommRing L p (jL dP)
+let := powerRootPrismMonicCompletionAlgebra W hW f
+IsCompletelyFlat (Ideal.span {(p : A), W.generator}) H
+```
+
+であり、追加引数は
+`hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal)`、
+`hf : f.Monic`、`hdeg : 0 < f.natDegree`。
+W.generator の基底環と H 上の正則性、および同じ自然な H/dH の p 完全平坦性から従う。
+
+`powerRootPrismMonicCompletionScalarEquiv` は
+`baseChangeScalarModule c ≃ₗ[A] H` を与える。
+`powerRootPrismMonicCompletion_pair_scalarExtensionTorVanishing` は同じ hpR/hf/hdeg の下で
+
+```lean
+scalarExtensionTorVanishing
+  (Ideal.Quotient.mk (Ideal.span {(p : A), W.generator}))
+  (baseChangeScalarModule c)
+```
+
+を証明する。q₂ = Ideal.Quotient.mk (Ideal.span {(p : A), W.generator})、
+M = baseChangeScalarModule c、Q = A/(p,d) と書くと
+`powerRootPrismMonicCompletion_pair_reduction_homology_isZero` は任意 i : ℤ、hi : i ≠ 0 に対し
+
+```lean
+IsZero ((DerivedCategory.homologyFunctor (ModuleCat Q) i).obj
+  ((boundedAboveDerivedBaseChange q₂).obj
+    (boundedAboveDerivedSingleFunctor.obj M)).obj)
+```
+
+を与える。H の環構造の let を型に明示している。ここまで具体的ファイルは 6 公開宣言。
+BS Rem 7.15（著者版 p.62）の導来剰余を、原典とは異なる正則主剰余と Tor 底変換で計算した。
+
+この工程はまだ H の導来 (p,d) 剰余 H⁰ の忠実平坦性を証明していない。
+次に同じ自然な H/dH の p 完全忠実平坦性からその H⁰ の忠実平坦性を移し、
+既存の δ 完全化の剰余忠実平坦性へ渡す必要がある。
+元の完成後 perfectoid 候補の p 完全忠実平坦性、絶対 prismatic envelope の同定、
+元の f に対する Frobenius 引戻し pd 包の同定は未完了。
+hpR を既存の任意族存在定理へ追加しておらず、これらの条件付き中間結果を完成と数えない。
+
+3 対象を含む対象ビルドと集約の `set -o pipefail; lake build` は終了コード 0
+（集約 4526 jobs）。新規 10 公開宣言の `assert_no_sorry` と専用監査は
+終了コード 0。生成宣言を含む 5520 宣言の推移的公理依存は標準 3 公理のみ。
+一般主剰余判定・代数版・具体的二元完全平坦性・実制限加群の Tor 消滅・
+導来剰余の非零次数消滅の公開型 5 本を `#check` で確認した（終了コード 0）。
