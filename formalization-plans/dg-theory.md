@@ -10532,3 +10532,68 @@ U12e全体は未受入、U16a〜d・U15e分解版は未着手。全体の目標�
 Quotient/DerivedComparison*・Verdier/を読んで再利用し、重複実装しない。
 共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・ScalarExtension*・並行作業の
 Tensor/Associator*と他チャットの記録を編集していない。
+
+
+### 17.227 U12e67：外側左制限と両変数の全導来合成の自然同型（2026-10-17）
+
+**underivedの全Hom作用。** Tensor/ComposeLeftRestriction.leanのcompose_leftRestrictionは
+Pと、後因子Qの外側左作用をF : D → Eで制限したものの相対tensor合成が、
+PとQを合成してから同じ外側左作用を制限したものに一致することをdg関手の等式で証明する。
+右加群対象はそのままで、左作用の全Homへの射を既存compose_leftMap_πと豊穣合成の結合性で比較した。
+composeLeftRestrictionIsoは実際の閉零bimodule圏上の同型であり、値の成分は恒等である。
+両因子の任意の全Hom自然な閉零射に関する自然性を証明した。
+E・Dのsmallnessや、いずれのHomのK-flat性、Fの準同値性もこのunderived結果には要求しない。
+
+**右K-flatモデルの制限。** Derived/KFlatBimoduleLeftRestriction.leanは、外側左制限が
+右相対K-flat性と対象ごとの準同型を保存することを証明し、rightKFlatLeftRestrictionを構成した。
+Qの各右加群をF.obj dで再選択するため、追加のlocal Hom条件は不要である。
+rightKFlatInclusionとの因子化と右K-flat部分圏の準同型保存も公開した。
+この操作は中間圏の右作用を制限する場合とは区別する。
+
+**固定後因子の導来比較と自然性。** Derived/BimoduleLeftRestrictionBase.leanは
+underivedの比較を既存middleLeftRestrictionDerivedIsoで出力側の既存導来制限へ接続し、
+前因子の指定局所化を通じてderivedComposeWithLeftRestrictionIsoへ降ろした。
+後因子は任意の指定右K-flatモデルで、前因子は任意の導来対象を扱う。
+この固定モデル版にはE・D・Cのlocal Hom K-flat性もFの準同値性も要求しない。
+既存の導来制限を構成するための対象型のsmallnessは明示する。
+Derived/BimoduleLeftRestrictionFamily.leanは元の前因子上の成分計算式を公開し、
+両側の固定因子計算同型による表示から、後因子の任意の閉零射への自然性を証明した。
+leftRestrictionKFlatComposeIsoとして、実際の固定因子の導来合成関手族間の自然同型へ束ねた。
+
+**両変数の全導来圏への移送。** Derived/RightKFlatIsoLift.leanは
+rightKFlatDerivedIsoOfPrecompを追加した。右K-flatモデルへの前合成上で与えた自然同型を、
+右K-flat部分圏の指定局所化と既存の置換余単位を使って、指定された二つの全導来関手間へ移す。
+対象はdg bimoduleの既存局所化に限定し、新しいモデル圏一般論を作らない。
+rightKFlatComposePresentationIsoは既存の全導来合成を固定因子関手族へ自然に比較する入口である。
+
+Derived/BimoduleLeftRestrictionFull.leanの**derivedBimoduleComposeLeftRestrictionIso**は、
+合成後に出力の外側左作用を制限する関手族と、後因子の外側左作用を制限してから合成する関手族を
+自然同型で比較する。両者とも既存のderivedBimoduleRestriction・derivedBimoduleComposeFunctorだけで
+定義し、両変数とも任意の導来対象を扱う。
+全導来合成を両側で構成するためE・Dの局所Hom K-flat性を明示するが、Cの条件やFの準同値性は不要。
+右K-flatモデル上の両側の表示同型から移送しており、比較を仮定するpredicateを作っていない。
+任意の可換環と独立した四つの対象宇宙を保持する。
+既存公開APIの名前・型は変更せず、27公開宣言を追加した。
+
+**検証。** Checks.DGBimoduleLeftRestrictionは、固定モデル版にlocal Hom条件が不要なこと、
+両変数とも任意の導来対象での比較、Cの局所Hom K-flat性・Fの準同値性なしの型、
+後因子の任意の射への自然性、独立した対象宇宙とZMod 2での全導来自然同型を検査した。
+既存中間比較の全導来合成則・恒等則・解像度比較・導来同値・導来随伴・五角形・
+StageEight・StageSeven・Spectra.StageTwoを含む統合ビルド成功（3490 jobs、警告なし）。
+27公開宣言の直接公理監査は重複・欠落なく標準3公理以内。新規監査累計4516宣言。
+今回の7 Leanファイルにsorry・admit・新規axiom・資源上限変更は0件。採用済み引用0件。
+Lean v4.35.0-rc4とMathlib manifest/HEAD e6bbacd0e1b7307ff6e17da09cd2455f60804fa6を再確認した。
+
+文書検査は21 Markdown・320 exposition参照を検査し、担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+既存未解決参照1件で失敗した。
+
+**残件と次工程。** 外側左制限の全導来自然同型を構成した段階であり、
+移送後の全導来比較の指定モデル上の計算式、恒等・合成と他の制限比較との整合性は残す。
+外側右制限、対角単位・結合子の保存、両端の解像度を同時に変えるchangeEquivalenceとの整合性も必要である。
+これらを接続して共通dg圏解像度による変更のcoherenceを仕上げ、§15.2全体を監査する。
+U12e全体は未受入、U16a〜d・U15e分解版は未着手。全体の目標と順序を保持する。
+共有一般論への新しいAPI要求はない。U15e分解版では局所K-flat版の
+Quotient/DerivedComparison*・Verdier/を読んで再利用し、重複実装しない。
+共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・ScalarExtension*・並行作業の
+Tensor/Associator*と他チャットの記録を編集していない。
