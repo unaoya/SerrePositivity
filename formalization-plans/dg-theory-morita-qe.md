@@ -521,6 +521,29 @@
   主要13宣言の公理は標準3公理のみ。新規sorry・admit・axiom・引用はない。
   実際のPerf同値を入力とする形への接続と、本質的全射を合わせた全導来圏同値への統合を残す。
 
+## U16c.3：実際のPerf同値から全主導来圏同値への拡張
+
+- `CriterionDerivedEquivalence.lean`：実際のPerf制限の同値から、元の関手のPerf対象間の
+  Hom比較とPerf対象を含む本質的像を取り出した。U16c.1–2の両変数帰納と本質的全射を統合し、
+  両側の明示したcompact生成下での全主導来圏同値を構成した。
+- 一般kernel版では、余積保存と三角性を既存の実際の作用のAPIから供給し、順関手を
+  `kernelDerivedTensor` そのものに保った。型にPerf制限の同値性と両側のcompact生成を明示する。
+  本質的全射の最終段階で全導来関手の充満性を仮定せず、U16c.2で得た充満性を使う。
+- `criterionDerivedKernelEquivalenceOfPerfWitness` は、他担当の
+  `CriterionPerfEquivalenceWitness` を直接受け取る。列のperfect性と実際の制限の同値性は
+  この証拠の公開APIから得る。Perf包含との図式は証拠の元の比較をそのまま保持する。
+  一般導来右随伴との一致・unit/counitの比較は構成していない。
+- 監査入口と公開入口の合同ビルド成功（2847 jobs、終了コード0、警告・エラーなし）。
+  主要10宣言の公理は標準3公理のみ。新規sorry・admit・axiom・引用はない。
+- U16cの全7監査入口・公開入口・従来のQuasiEquivalence入口の9対象も合同ビルド成功
+  （3477 jobs、終了コード0、警告・エラー0件）。担当36宣言の公理は標準3公理のみ。
+  担当15 Leanファイルに新規sorry・admit・axiom・デバッグtraceはない。
+- **Perf判定の結論を明示した入力とする全導来拡張本体は実装済み。**
+  他担当の記録 `dg-theory-morita-criterion.md` を再確認したところ、三条件の全Hom擬同型比較と
+  実際の主作用の全shift射比較の同定、および三条件からPerf同値への最終定理は未完である。
+  その最終公開APIからこの拡張への直接の接続は残す。三条件⇒全主導来同値の完成はまだ主張しない。
+  U16dの未受入状態も変更していない。
+
 ## 合同検証と公開入口（2026-10-17）
 
 - 新規10監査対象・公開入口・既存 `Checks.DGFunctorDerivedEquivalence` の12対象を

@@ -2,10 +2,12 @@ module
 public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedGeneration
 public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedHomCoproducts
 public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedFullyFaithful
+public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedEquivalence
 
 /-! # U16c：右随伴を使わない全主導来圏へのMorita拡張の入口
 
 余積保存、Hom比較の三角・余積閉性、Perfから全対象への充満忠実性の帰納、
-および充満性を入力とする本質的全射を公開する。
-実際のPerf判定との接続と全導来圏同値への統合は残る。
+本質的全射、および明示した両側のcompact生成下の全導来圏同値を公開する。
+Perf判定の結論は実際のPerf制限の同値、またはCriterionPerfEquivalenceWitnessとして受け取る。
+一般導来右随伴との一致・unit/counitとの比較は扱わない。
 -/
