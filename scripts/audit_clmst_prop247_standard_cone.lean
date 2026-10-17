@@ -1,0 +1,9 @@
+import SerrePositivity.CLMST.Prop247StandardCone
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.CLMST.prop247_standardCompletedConeIso
+assert_no_sorry SerrePositivity.CLMST.prop247_standardCompletedConeIso_inclusion
+assert_no_sorry SerrePositivity.CLMST.prop247_standardReductionConeIso
+#print axioms SerrePositivity.CLMST.prop247_standardCompletedConeIso
+#print axioms SerrePositivity.CLMST.prop247_standardCompletedConeIso_inclusion
+#print axioms SerrePositivity.CLMST.prop247_standardReductionConeIso
