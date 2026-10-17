@@ -310,13 +310,26 @@
   ことを証明。retract閉性と合わせ、指定生成対象を含むthickな性質を得た。
 - `ChecksHomComparisonCone` 対象ビルド成功。新規9主要宣言の公理は標準3公理のみ。
 
+## U14b.6：thick生成仮定からenhancement上の全Hom擬同型（2026-10-17）
+
+- `ThickHomComparison.lean`：指定加群EのK(D)内のthick閉包を、零対象・整数shift・
+  distinguished triangle・retractによる有限操作として定義。その閉性と、Eを含む任意の
+  thick部分圏への包含を証明した。
+- U13の指定enhancementがEからこの閉包で生成される、という明示的なthick生成仮定を定義。
+  この仮定の下で `perfectEndomorphismModuleHom_homQuasiIso` を証明した。
+  全終域について成立するHom比較のthickな性質を適用しており、結論の擬同型を仮定に
+  組み込んでいない。H⁰本質的全射・像のPerf保存はなお別義務である。
+- `ChecksThickHomComparison` と更新した `ChecksCompatibility` の対象ビルド成功。
+  新規4主要宣言の公理は標準3公理のみ。最新APIをU14公開入口へimport済み。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
   導来Hom・導来tensor・主Kの随伴・導来射集合同値も構成済み。
   導来射集合同値の全導来射自然性と導来随伴も構成済み。
   U13のenhancementへの制限・受入図式の最終照合が残る。
-- U14b：thick生成からPerf比較。全Homの擬同型とH⁰の本質的全射を別々に証明する。
+- U14b：明示したthick生成仮定からenhancement上の全Hom擬同型は証明済み。
+  Hom像のPerf保存、H⁰の本質的全射、Perf同値の組立てが残る。
 - U14c：導来圏全体の比較にはcompact生成性が必要。
   無限生成集合の直和はcompactとは限らず、thick生成だけから全導来圏の比較は出さない。
   DG-GEN/DG-MORの採用が必要になったら採用せず停止・報告する。
