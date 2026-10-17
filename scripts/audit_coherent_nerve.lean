@@ -3,7 +3,7 @@ import SerrePositivity.InfinityCategories.Coherent
 # Coherent nerve の公理監査
 
 概要：γ1 の実装済みの明示的な公開宣言の公理と完全な型を表示する。
-方針：全宣言を #print axioms と #check @ で個別に検査する。
+方針：全宣言を公理表示と #check @ で個別に検査する。
 規約：許される公理は propext、Classical.choice、Quot.sound のみ。
 使われ方：対象と集約をビルド後、lake env lean scripts/audit_coherent_nerve.lean。
 原典：HTT 1.1.5.10、Kerodon 2.4.3–2.4.5。γ1 全体は未完了。
@@ -11,6 +11,7 @@ import SerrePositivity.InfinityCategories.Coherent
 
 set_option pp.universes true
 set_option pp.explicit true
+
 
 #print axioms SerrePositivity.InfinityCategories.Coherent.hollowCylinder
 #check @SerrePositivity.InfinityCategories.Coherent.hollowCylinder
@@ -51,3 +52,17 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.Coherent.pathPrefix_comp_pathSuffix
 #check @SerrePositivity.InfinityCategories.Coherent.pathPrefix_comp_pathSuffix
 
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathInteriorFunctor
+#check @SerrePositivity.InfinityCategories.Coherent.pathInteriorFunctor
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathOfInteriorFunctor
+#check @SerrePositivity.InfinityCategories.Coherent.pathOfInteriorFunctor
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathInteriorFunctor_comp_pathOfInteriorFunctor
+#check @SerrePositivity.InfinityCategories.Coherent.pathInteriorFunctor_comp_pathOfInteriorFunctor
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathOfInteriorFunctor_comp_pathInteriorFunctor
+#check @SerrePositivity.InfinityCategories.Coherent.pathOfInteriorFunctor_comp_pathInteriorFunctor
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathInteriorNerveIso
+#check @SerrePositivity.InfinityCategories.Coherent.pathInteriorNerveIso

@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Coherent.Path
+public import SerrePositivity.InfinityCategories.Coherent.PathNerve
 public import SerrePositivity.InfinityCategories.Coherent.HollowCylinder
 
 /-!
