@@ -1,0 +1,11 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedEquivalenceTriangles
+
+/-! # 全主導来圏同値のshift・三角性とPerf比較の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+
+#print axioms endomorphismDerivedEquivalence_commShift
+#print axioms endomorphismDerivedEquivalence_isTriangulated
+#print axioms endomorphismDerivedEquivalencePerfectTensorSquare
+#print axioms endomorphismDerivedEquivalencePerfectHomSquare

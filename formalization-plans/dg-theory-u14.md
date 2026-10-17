@@ -721,6 +721,19 @@
 - `ChecksDerivedEquivalence` 対象ビルド成功。新規6主要宣言の公理は標準3公理のみ。
   DG-GEN/DG-MORを採用せず証明した。既存APIの名前・型は変更していない。
 
+## U14c.10：全主導来圏同値のshift・三角性とPerf包含比較（2026-10-17）
+
+- `DerivedEquivalenceTriangles.lean`：同値の両側に既存の実際の導来tensor/Homのshift構造を使い、
+  実際の単位のshift整合性から同値全体のshift整合性を証明。両関手の三角性も証明した。
+- tensor側・Hom側それぞれのPerf包含自然同型を、既存の実際のPerf制限と全導来圏同値との
+  正方形として保持した。選択した別の逆関手で実際のHomを置き換えていない。
+- `ChecksDerivedEquivalenceTriangles` 対象ビルド成功。新規4主要宣言の公理は標準3公理のみ。
+- U14c.3–10を公開入口 `Compatibility.lean` に接続した。更新後の `ChecksCompatibility`
+  対象ビルド成功（3139 jobs）。今回の新規実装にsorry・axiom・引用は追加していない。
+- U14cの全主導来圏同値とshift・三角性・Perf包含比較は構成済み。
+  U14全体の受入は、係数変更図式とenhancement/Perfの最終照合を終えてから記録する。
+  既存APIの名前・型は変更していない。DG-GEN/DG-MORは採用していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
@@ -737,7 +750,7 @@
   Perf上の単位・余単位の可逆性と、外部compact⇒Perf入力によるcompact上の結論はU14c.2で証明済み。
   必要な余積比較と、外部compact⇒Perf入力下での余積保存はU14c.3–5で証明済み。
   全対象での単位・余単位の可逆性と全主導来圏同値はU14c.8–9で証明済み。
-  同値のshift・三角性・Perf比較と最終受入照合を引き続き確認する。
+  同値のshift・三角性・Perf包含比較はU14c.10で証明済み。最終受入照合を残す。
   無限生成集合の直和はcompactとは限らず、thick生成だけから全導来圏の比較は出さない。
   DG-GEN/DG-MORの採用が必要になったら採用せず停止・報告する。
 - U12dとの全導来射自然なtensor評価比較、評価成分のshift・cone同型と包含図式は構成済み。
