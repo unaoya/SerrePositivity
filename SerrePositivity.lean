@@ -472,6 +472,10 @@ public import SerrePositivity.HomologicalAlgebra.PowerTorsionDerivedDescent
 public import SerrePositivity.HomologicalAlgebra.DerivedKoszulDescent
 public import SerrePositivity.HomologicalAlgebra.CompleteFaithfullyFlatDescent
 public import SerrePositivity.CLMST.IsogenyDescent
+public import SerrePositivity.CLMST.Prop247Uniform
+public import SerrePositivity.CLMST.Prop247Cone
+public import SerrePositivity.CLMST.Prop247BaseChange
+public import SerrePositivity.CLMST.Prop247Conditional
 public import SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedModule
 public import SerrePositivity.HomologicalAlgebra.DerivedRestriction
 public import SerrePositivity.HomologicalAlgebra.DerivedBaseChangeTensor
