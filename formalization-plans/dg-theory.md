@@ -8359,3 +8359,48 @@ cell段階のgraded-split/filtration、Hom K-flat性、増大射のHom準同型�
 KFlatDGResolutionの存在は未完。今回もまだdg圏instanceを宣言しておらず、U12e全受入とはしない。
 既存APIの名前・型の変更、共有一般論への新しいAPI要求はない。
 分担は§0のまま、U12e受入後にU16へ進む。amend・rebase・resetは使用せず、新規コミットで記録する。
+
+
+### 17.183 U12e24：自由pathの右単位と任意dg圏への評価・合成保存（2026-10-17）
+
+`Resolution/Free/Units.lean`は**pathComposition_right_unit**、
+**composition_path_unit**、**composition_right_unit**を証明する。
+恒等path同士の場合はMathlib MonoidalCategory.unitors_equalを使い、
+一般の右単位は既存のtensorによる余積保存と各path上の右単位から得る。
+これで§17.182のHom直和の連結chain mapは左右単位を満たす。
+
+`Resolution/Free/Evaluation.lean`は任意の標的dg圏E、対象写像o:D→Eと辺のchain map
+f(x,y):K(x,y)→Hom_E(o x,o y)から、**wordEvaluation/pathEvaluation/homEvaluation**を構成する。
+非空pathは右括りの豊穣順合成、恒等pathはeIdに送る。
+**pathInclusion_homEvaluation/unitInclusion_homEvaluation/edgeInclusion_homEvaluation**は
+各path、単位、一辺での計算式。標的Eのsmallness、元の辺のK-flat性や有界性は要求しない。
+Hom直和での評価だけSmall.{u} Dを使い、単一有限pathの評価には不要。
+
+`Resolution/Free/EvaluationComposition.lean`の**evaluation_tensor_assoc**は、
+任意の三つのHomへのchain mapについて、tensorのassociator・その自然性と
+豊穣圏のe_assoc'を使って評価の括り方の整合性を証明する。
+**wordEvaluation_concatenation**は有限pathの連結tensor同型の後で評価する射が、
+二つのpathの評価を標的のeCompで合成する射に一致すると証明する。
+**pathEvaluation_composition**は恒等pathの場合を左右単位の自然性から補い、
+**homEvaluation_composition**はtensorCoproductの普遍性で全Hom直和へ延長する。
+通常順へ無符号で入れ替えず、既存の複体tensor・豊穣順合成の符号契約を維持する。
+任意可換環・非有界・独立したD/E対象宇宙を保つ。
+
+Checks.FreeDGEvaluation・Checks.FreeDGPaths・Checks.DGCategoryResolution・
+Checks.DerivedBimoduleFullPentagon・Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（3102 jobs、終了コード0、警告なし）。右単位、任意標的への評価の単位・合成保存、
+有限pathでの連結評価、標的のsmallnessを要求しない型、独立対象宇宙・ZMod 2を検査した。
+主要13宣言を完全修飾名で直接公理監査し、標準公理のみ。監査累計3440宣言。
+今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は15 Markdown・320 exposition参照まで進み、担当外BhattScholze互換宣言の
+未解決参照1件で失敗した。共有ルート・共有一般論・並行所有ファイルは編集していない。
+
+次はwordConcatenationIsoの三path連結に関する整合性を証明し、
+自由path Hom自身のcompositionの結合則をtensorCoproductの普遍性へ降ろす。
+標的dg圏で評価した後の結合整合性だけから、元のHomの結合則を推論しない。
+左右単位と結合則がそろった時点で主EnrichedCategory instanceを構成し、今回の
+homEvaluationを実際のDGFunctorへ束ね、普遍性を証明する。
+その後、cycleを新生成元の微分とするcell付加・K-flat性・augmentation準同値の証明へ進む。
+自由dg圏instanceとKFlatDGResolutionの存在は引き続き未完で、U12e全受入とはしない。
+既存公開APIの名前・型の変更、共有一般論への新しいAPI要求はない。
+分担・U16への着手順・U15e/U17の合流条件は§0のまま。履歴は新規コミットで記録する。
