@@ -117,9 +117,24 @@
 - `lake build SerrePositivity.DifferentialGraded.Endomorphism.ChecksModuleFunctorMaps` 成功。
   7主要宣言の公理は標準3公理のみ。
 
+## U14a.9：実際の加群圏上の再構成随伴（2026-10-17）
+
+- `ModuleAdjunction.lean`：挿入と評価の加群変数についての自然性を証明し、
+  閉零加群圏上の単位・余単位の自然変換へまとめた。
+  純粋斉次tensorおよび全Hom要素で両三角恒等式を直接証明し、
+  `endomorphismModuleAdjunction : (-⊗_End(E) E) ⊣ Hom(E,-)` を構成。
+- Eには任意の実際の右D加群を許し、このunderived随伴に射影性・compact性は不要。
+  Dのsmall性だけを仮定し、全加群dg圏をsmallとはしていない。
+  U13の実際のperfect dg加群にも適用できる例を監査ファイルに置いた。
+- `ChecksModuleAdjunction` と更新した `ChecksCompatibility` の対象ビルド成功。
+  単位・余単位・両三角恒等式・随伴の5主要宣言の公理は標準3公理のみ。
+  既存公開入口 `Compatibility.lean` へimportを追加し、ルートは編集していない。
+- 導来随伴、Perf比較、Hom擬同型と本質的全射の証明、三角性との整合性は未完。
+
 ## 残る受入条件
 
-- U14a：enhancement／End(E)加群間の再構成随伴と、その単位・余単位。
+- U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
+  U13のenhancementへの制限と導来化・受入図式の最終照合が残る。
 - U14b：thick生成からPerf比較。全Homの擬同型とH⁰の本質的全射を別々に証明する。
 - U14c：導来圏全体の比較にはcompact生成性が必要。
   無限生成集合の直和はcompactとは限らず、thick生成だけから全導来圏の比較は出さない。
