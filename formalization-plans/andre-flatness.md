@@ -6916,3 +6916,111 @@ BS Rem 7.15（著者版 p.62）と異なる実源の純性の経路を該当 doc
 監査と9本の `#check` はまだ実行していない。型確認用ファイルは `/tmp/andre-e183-check.lean`。
 本節・変更6ファイルはいずれも未コミットであり、旧名の差替え完了とは数えない。
 次回は共有生成物の現在状態を再確認してから検証を再開する。
+
+### A1-e・A1-f への受渡し
+
+2026-10-17 の担当変更による一度限りの受渡し。A1-a は E1.82 の仕上げと
+A1-c2・A1-f 到着後の最終定理・記録・監査の合流を担当する。
+以下の既存ファイルの差替え・削除を A1-e に委譲し、A1-a は今後編集しない。
+A1-e の既存コード編集対象をこの明示リストに限る。先頭13件は指定された系を含む。
+接頭辞はすべて `SerrePositivity/BhattScholze/Andre/`。
+
+- `PerfectPrismVarpiRegular.lean`
+- `PowerRootPrismMonicFullFrobeniusPD.lean`
+- `PowerRootPrismMonicFrobeniusTensorPD.lean`
+- `PowerRootPrimeFrobeniusPDEnvelope.lean`
+- `PowerRootMonicModPairRegular.lean`
+- `PerfectPrismVarpiNativePDEnvelope.lean`
+- `PowerRootMonicPDFlat.lean`
+- `PowerRootPrismMonicRawRegular.lean`
+- `PowerRootPrismMonicRawPairRegular.lean`
+- `PowerRootPrismMonicPerfectionQuotientFaithful.lean`
+- `PowerRootPrismMonicPerfectionPairFaithful.lean`
+- `PerfectPrismVarpiRootInput.lean`
+- `PerfectPrismVarpiPDUniversal.lean`
+- `PerfectPrismVarpiNativePDFlat.lean`
+- `PowerRootPrismMonicCompletionRegular.lean`
+- `PowerRootPrismMonicCompletionPrism.lean`
+- `PowerRootPrismMonicCompletionUniversal.lean`
+- `PowerRootPrismMonicCompletionPairFlat.lean`
+- `PowerRootPrismMonicCompletionPairFaithful.lean`
+- `PowerRootPrismMonicHodgeTateCompletelyFlat.lean`
+- `PowerRootPrismMonicHodgeTateCompletelyFaithfullyFlat.lean`
+- `PowerRootPrismMonicHodgeTateRoot.lean`
+- `PowerRootPrismMonicRootUniversal.lean`
+- `PowerRootPrismMonicCompletedPerfection.lean`
+- `PowerRootPrismMonicFullFrobeniusPDOfMonic.lean`
+
+リスト外の既存ファイルや他担当の `Unconditional/`、`VarpiComparison/` は A1-e で編集しない。
+追加の呼出し箇所が必要なら、型を保つ移行か受渡しへの追記で調整する。
+A1-e は専用の新規監査ファイルを用意し、A1-a の `scripts/audit_andre_monic_roots.lean` は編集しない。
+不要な旧名を削除したときは、A1-a が同監査の該当 assert の削除と最終監査を合流する。
+ルート集約の既存1行は A1-a が維持し、A1-e はルートを編集しない。
+
+#### 未コミット差分の所有権
+
+E1.83 の未検証差分は上記の `PowerRootPrismMonicRawPairRegular`、`CompletionRegular`、
+`CompletionPrism`、`CompletionUniversal`、`CompletionPairFlat` の5ファイルにある。
+これらを A1-e にそのまま引き継ぐ。A1-a は復元・上書き・コミットしない。
+主な変更は E1.83 の旧9公開名から hpR を除くもの。対象ビルドは通ったが集約ビルドは
+共有 `.olean` の読込み競合が疑われる終了コード1で止めた。未検証差分を完成と数えない。
+A1-e は現在の作業木を正本として検証し、自分の保存単位にする。
+A1-a の監査に置いた E1.83 のコメント2行は A1-a 側で保持する。
+
+#### 零次数 f=1 と型の差・望ましい扱い
+
+- 元の H の `powerRootPrismMonic_pdCompletion_prime_regular` と
+  `powerRootPrismMonicRaw_pdCompletion_generator_regular` の旧型は hf のみで正次数なし。
+  A1-b 初版の正次数版とは型が違うが、`aa1d72fd` の
+  `powerRootPrismMonic_pdCompletion_prime_regular_of_unconditional ... hf` と
+  `powerRootPrismMonicRaw_pdCompletion_generator_regular_of_monic_unconditional ... hf` は
+  零次数も処理済み。内部で `powerRootPrismMonic_pdCompletion_subsingleton_of_natDegree_zero` を使う。
+  旧名を残すならこの任意モニック版へ向け、hdeg を追加して弱めない。
+- `powerRootPrismMonicCompletionPrism`、`powerRootPrismMonicCompletionBaseMap_generator`、
+  `existsUnique_powerRootPrismMonicCompletionHom`、`powerRootPrismMonicCompletionTorsionEquiv` と
+  その係数・δ 公式、`powerRootPrismMonicCompletionHom_generator` も旧型は正次数なし。
+  f=1 の H が零環でも prism 性・正則性・相対普遍性は成立するので任意モニックの範囲を保持する。
+  旧名を削除して無条件版へ直接移行してよいが、使用される主張の範囲は弱めない。
+- `powerRootMonicDPPresentation_free` は零加群も自由なので hdeg を追加しない。
+  同 `_faithfullyFlat` は元々 hdeg が必要。`PowerRootMonicPDFlat` の hpR は
+  `(p:R)=0` であり p 正則性でない。一般係数環の標数条件を削除しない。
+  実係数環 R/ϖ では `Unconditional/MonicPDFlat.lean` がこの標数を内部供給する。
+- Hodge–Tate 商の p 完全忠実平坦性、H の二元剰余の忠実平坦性、完全化後の商・二元の忠実平坦性
+  （`HodgeTateCompletelyFaithfullyFlat`、`CompletionPairFaithful`、`PerfectionQuotientFaithful`、
+  `PerfectionPairFaithful`）は旧型が既に hf,hdeg を要求する。正次数版へ置換してよい。
+  非零な係数環から f=1 の零環への拡大は忠実平坦にならず、零次数へ強めない。
+- `PerfectPrismVarpiNativePDEnvelope`、`PowerRootPrismMonicFullFrobeniusPD`、
+  `PowerRootPrismMonicFrobeniusTensorPD`、`PowerRootPrimeFrobeniusPDEnvelope` の
+  PD 構造・分冪射・包の普遍性は、旧型で hdeg がない箇所では任意モニック版を保持する。
+  零次数の零包の普遍性と忠実平坦性を区別する。
+- d mod p の正則性、T の p 正則性など一般には偽となる中間主張を無条件化しない。
+  不要な hpR 付き中間定理は全呼出しを正しい弱い入力へ切り替えてから削除する。
+
+#### A1-f の定義ファイルと保存すべき公開名
+
+定義ファイルは `Andre/BoundedPrismInputCategory.lean`。
+namespace は `SerrePositivity.BhattScholze.Andre`。
+`BoundedPrismInput W c` は台環、prism、base、input、
+`input_base : input.comp c = base.quotientMap`、bounded を持つ。
+A1-f は新規ファイルで同値を作り、次の既存名・型・標準作用を保つ。
+
+- `BoundedPrismInput` と各フィールド、`BoundedPrismInput.Hom` と
+  `toHom`・`over_base`・`over_input`。
+- `BoundedPrismInput.category`、`hom_ext`、`homId`、`homComp`、`id_toHom`、`comp_toHom`、
+  `isInitialOfPrismUniversal`、`isoRingEquiv`。
+- `BoundedPrismInputRigidity.lean` の `BoundedPrismInput.prismHom_over_base_of_input`、
+  `homOfInput`、`homEquivInputPreserving`。
+- `BoundedPrismHomRigidity.lean` の `existsUnique_boundedPrismHom_generator_unit`、
+  `boundedPrismHom_generator_span`、`boundedPrismHom_map_ideal_eq`。
+  W の完全性から distinguished 性を供給し、base(d) の span が対象の prism イデアルに等しいことを使える。
+- `PowerRootPrismMonicSourceInitiality.lean` の
+  `powerRootPrismMonicCompletionPrismOfMonicPositive`、
+  `powerRootPrismMonicSourceInputObjectOfMonicPositive`、
+  `powerRootPrismMonicSourceInput_isInitialOfMonicPositive` と生成元・環同型・係数公式。
+- E1.82 の `existsUnique_powerRootPrismMonicPrismHom_of_absolute_input`。
+  完備してから f で割る `PowerRootMonicCompletedInput`、元の H、標準係数射・入力射を保持する。
+
+A1-f は J=(d)B を使い、生成元を base(d) とする向きなし対象との同値と初期性の移送を公開する。
+射には生成元の厳密な保存を追加せず、イデアル・入力作用・基底係数作用を保つ。
+A1-a は既存定義を変更せず新規の最終合流から利用する。
+一般 Cartier 対象・宇宙の範囲は同値の実際の型に従って記録し、定義だけで全 site と同定しない。
