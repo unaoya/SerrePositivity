@@ -1334,6 +1334,13 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.boundedPrism_preTiltQuotient_
 assert_no_sorry SerrePositivity.BhattScholze.Andre.boundedPrism_preTiltQuotientEquiv
 assert_no_sorry SerrePositivity.BhattScholze.Andre.boundedPrism_preTiltQuotientEquiv_coeff
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletionPrismOfMonicPositive
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletionPrismOfMonicPositive_generator
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicSourceInputObjectOfMonicPositive
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicSourceInput_isInitialOfMonicPositive
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicSourceEnvelopeRingEquivOfMonicPositive
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicSourceEnvelopeRingEquivOfMonicPositive_base_coeff
+
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
@@ -1579,7 +1586,8 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.BoundedPrismInputRigidity,
     `SerrePositivity.BhattScholze.Andre.BoundedPrismPrimeComplete,
     `SerrePositivity.BhattScholze.Andre.PerfectSourceDeltaHom,
-    `SerrePositivity.BhattScholze.Andre.BoundedPrismTiltQuotient]
+    `SerrePositivity.BhattScholze.Andre.BoundedPrismTiltQuotient,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicSourceInitiality]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

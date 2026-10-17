@@ -6627,3 +6627,88 @@ A1-c の係数照合との合流。本節の型は p 非可逆性を明示して
 今回の保存単位では既存 hpR 付き定理の差替え・並列担当ファイルの編集はしていない。
 
 検証：対象ビルド（3095 jobs）と最終対象・集約ビルド（4589 jobs）は `set -o pipefail` 付きで終了コード0。公開3宣言の `assert_no_sorry` と3本の `#check` は終了コード0。専用監査は `André monic root audit passed: 7961 declarations, standard axioms only.`。
+
+### E1.80／A1-a 元の H の prism 性と完備入力圏での初期性の合流（2026-10-17）
+
+本節は A1-a の追記。A1-b の保存済み成果 `84c99b11` を受領し、新規
+`Andre/PowerRootPrismMonicSourceInitiality.lean` で E1.74・E1.75 の二つの補助仮定を解消した。
+BS Rem 7.15（著者版 p.62）の元の源 H を保持する。原典とは異なる実逐次完備化・
+純性と明示的な入力圏による経路であり、新しい引用・sorry・axiom は追加していない。
+並列担当のファイル・記録節は編集していない。
+
+公開名はすべて `SerrePositivity.BhattScholze.Andre` 内。
+共通引数は {A:Type u} [CommRing A]、{p:ℕ} [Fact p.Prime]、
+W:OrientedPrism p A、hW:W.deltaStructure.IsPerfect、f:Polynomial A、
+hf:f.Monic、hdeg:0<f.natDegree である。以下の記号は元の定義そのもの。
+
+```lean
+hp := Nat.Prime.pos (Fact.out : p.Prime)
+P := PowerRootPolynomial A p hp
+E := powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+dP := algebraMap A P W.generator
+a := powerRootPrismMonicUnaryFamily (p := p) f
+L := DeltaAdjoinDivision E dP a
+jL := deltaAdjoinDivisionMap E dP a
+H := PDCompletionH0 L p (jL dP)
+uL := pdCompletionUnit L p (jL dP)
+dH := uL (jL dP)
+T := H ⧸ Ideal.span {dH}
+R := A ⧸ W.ideal
+fR := f.map (Ideal.Quotient.mk W.ideal)
+PR := PowerRootPolynomial R p hp
+CR := AdicCompletion (Ideal.span {(p : PR)}) PR
+zR := powerRootPolynomialBaseMap R p hp fR
+SI := PowerRootMonicCompletedInput p hp fR
+lS := (Ideal.Quotient.mk (Ideal.span {algebraMap PR CR zR})).comp (algebraMap PR CR)
+cS := lS.comp (algebraMap R PR)
+```
+
+H の環構造は `pdCompletionCommRing L p (jL dP)`。
+この let を必要な型の先頭に置く。公開6宣言の正確な型は次のとおり。
+
+```lean
+powerRootPrismMonicCompletionPrismOfMonicPositive W hW f hf hdeg :
+  let := pdCompletionCommRing L p (jL dP)
+  OrientedPrism p H
+
+powerRootPrismMonicCompletionPrismOfMonicPositive_generator W hW f hf hdeg :
+  let := pdCompletionCommRing L p (jL dP)
+  (powerRootPrismMonicCompletionPrismOfMonicPositive W hW f hf hdeg).generator = dH
+
+powerRootPrismMonicSourceInputObjectOfMonicPositive W hW f hf hdeg :
+  BoundedPrismInput W cS
+
+powerRootPrismMonicSourceInput_isInitialOfMonicPositive W hW f hf hdeg :
+  IsInitial (powerRootPrismMonicSourceInputObjectOfMonicPositive W hW f hf hdeg)
+
+powerRootPrismMonicSourceEnvelopeRingEquivOfMonicPositive W hW f hf hdeg
+    (Z : BoundedPrismInput W cS) (hZ : IsInitial Z) :
+  let := pdCompletionCommRing L p (jL dP)
+  H ≃+* Z.ring
+
+powerRootPrismMonicSourceEnvelopeRingEquivOfMonicPositive_base_coeff W hW f hf hdeg
+    (Z : BoundedPrismInput W cS) (hZ : IsInitial Z) (a₀ : A) :
+  let := pdCompletionCommRing L p (jL dP)
+  powerRootPrismMonicSourceEnvelopeRingEquivOfMonicPositive W hW f hf hdeg Z hZ
+    (powerRootPrismMonicCompletionBaseMap W hW f a₀) = Z.base.toRingHom a₀
+```
+
+A1-b の `powerRootPrismMonicRaw_pdCompletion_generator_regular_of_unconditional`
+と `powerRootPrismMonicHodgeTate_bounded_prime_torsion_of_unconditional` を既存の源構成へ渡す。
+元の H の環・δ 構造・標準生成元・標準係数射と、完備してから f で割った SI の標準入力作用を
+保持する。公開結果には hpR、hreg、hBound を仮定として残していない。
+初期性比較先の hZ は初期対象同士の比較に必要な普遍性であり、源の構成の条件ではない。
+
+この時点で正次数モニック入力について、同じ H の prism 性・同じ T の有界性と通常の p 完備性・
+原典の順序の完備入力環 SI の作用・固定完全基底と向き付き対象の入力圏での初期性が合流した。
+原典の絶対 site 全体との同定は未完了。一般有界対象への基底環射の存在と、
+向き付き対象から一般 Cartier イデアルの対象への比較、A1-c の係数照合との合流が残る。
+
+既存の hpR 付き公開名の差替えも未完了である。今回の新規定理は正次数を仮定する。
+既存の生成元正則性定理は正次数を仮定しないため単純に型を置換できず、零次数モニック f=1 の
+場合の処理が別途必要。また A1-b の実装は既存ファイルの係数作用の定義を import しているため、
+旧名側で新ファイルを直接 import すると循環する。共有の係数定義を新規ファイルへ移すなど、
+依存関係を確認してから正しい範囲の旧名を差し替える。元来偽となる mod p 正則性の中間主張は
+無条件化しない。これらを旧名の差替えまで完了したとは数えない。
+
+検証：対象ビルド（4390 jobs）と集約ビルド（4610 jobs）は `set -o pipefail` 付きで終了コード0。公開6宣言の `assert_no_sorry` と6本の `#check` は終了コード0。専用監査は `André monic root audit passed: 8046 declarations, standard axioms only.`。A1-b の受領結果への推移的公理依存もこの検査に含む。
