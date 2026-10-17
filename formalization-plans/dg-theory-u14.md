@@ -1025,6 +1025,16 @@
 - `ChecksScalarPerfectEnhancement` 対象ビルド成功（3074 jobs）。主要5宣言の公理は標準3公理のみ。
   既存APIの名前・型は変更していない。新しいsorry・axiom・引用は追加していない。
 
+## U14b.64：既存導来係数拡大の射影的加群上の実際の計算（2026-10-17）
+
+- `ScalarDerivedProjectiveComparison.lean`：射影的加群への標準解像度の増大射は主Kで同型となる。
+  受入済みの `moduleExtensionHomotopyToDerived` で送り、既存の導来係数拡大の
+  自然な増大比較が射影的加群上では同型になることを証明した。
+- この同型を計算用APIとして公開し、実際の加群射に関する自然性も既存の増大比較から得た。
+  元のdg圏の局所K-flat性や各評価のK-flat性を追加しない。
+- `ChecksScalarDerivedProjectiveComparison` 対象ビルド成功。主要3宣言の公理は標準3公理のみ。
+  既存APIの名前・型は変更していない。新しいsorry・axiom・引用は追加していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
