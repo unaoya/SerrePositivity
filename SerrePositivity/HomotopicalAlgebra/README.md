@@ -3347,3 +3347,13 @@ SSet.{v}値の実図式、制限した既存の合成選択空間との対象ご
 出力は二つの実三角形による円板であり、単位・全高次の整合性と小さい厳密なRMapは残る。
 受入検証は`check_comparison_tetrahedra`（106宣言・3モジュール）と
 `check_native_associativity_coherence`（98宣言・2モジュール）。
+
+
+### 整合性の実四面体全体を保つパラメータ移送（§385）
+
+`ComparisonCoherenceTransport`は指定全辺を保つ写像に沿って四面体と比較円板を移送し、
+四つの元の円錐三角形・共通対角三角形・両方の四面体全体を保持する。
+`ComparisonCoherenceRestriction`は実パラメータ制限へ適用し、円板・対角・四面体全体の実評価の
+制限式と、左右の四面体写像全体の厳密な恒等・合成則を証明する。モデル構造は不要である。
+元のnative三重合成円板と四面体を、独立したu・vのまま制限する利用例も検証した。
+受入検証は`check_comparison_coherence_restriction`（65宣言・2モジュール）。
