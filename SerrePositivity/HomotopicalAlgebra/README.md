@@ -3284,3 +3284,16 @@ augmentationの交換・局所化可逆性を証明する。
 補助宇宙のモデル構造も選択空間の低い宇宙でのsmallnessも仮定しない。
 異なるHomをまたぐ単位・合成の高次整合性と、小さい厳密な基底関手は残る。
 受入検証は`check_relative_hom_descent`（84宣言・7モジュール）。
+
+
+### 指定native比較の合成正方形と三角形（§380）
+
+`HomotopyBinarySquare`は二つの指定区間から、四辺を保持する実正方形とその対角の実比較を構成する。
+`ClosedHomotopyComposition`は標準内部Hom合成へ適用し、同時合成の区間写像の厳密な結合則を証明する。
+`OrdinaryBarRelativeComposition`は元の二つのnative比較へ適用し、四辺の式と対角の全パラメータ置換則を得る。
+`KanComparisonTriangle`は共通終点を持つ二つの指定比較をouter two-hornで埋め、両全辺を保持する。
+`OrdinaryBarRelativeCompositionTriangle`はXY・YZ・XZの実降下選択を受け取り、
+合成射の指定比較と二つの入力比較の同時合成を保持する実三角形を元の小さい内部Homに構成する。
+三辺目が降下合成を比較する実ホモトピーであり、標準内部恒等へのnativeな比較も与える。
+三角形の全fillerの相対延長、全高次の整合性、小さい厳密な基底関手は残る。
+受入検証は`check_relative_composition`（91宣言・5モジュール）。
