@@ -1,0 +1,14 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.EnhancementAdjunction
+
+/-! # U13 enhancementへの実際の随伴制限と包含図式の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+
+#print axioms perfectEndomorphismTensorClosedInclusionIso
+#print axioms perfectEndomorphismHomClosedInclusionIso
+#print axioms perfectEndomorphismEnhancementAdjunction
+#print axioms perfectEndomorphismEnhancement_left_triangle
+#print axioms perfectEndomorphismEnhancement_right_triangle
+#print axioms perfectEndomorphismEnhancementUnit_inclusion
+#print axioms perfectEndomorphismEnhancementCounit_inclusion
