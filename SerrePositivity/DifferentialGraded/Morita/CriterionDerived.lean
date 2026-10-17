@@ -10,6 +10,7 @@ public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedConditio
 余積保存、Hom比較の三角・余積閉性、Perfから全対象への充満忠実性の帰納、
 本質的全射、および明示した両側のcompact生成下の全導来圏同値を公開する。
 Perf判定の結論は実際のPerf制限の同値、またはCriterionPerfEquivalenceWitnessとして受け取る。
-三条件を直接受け取る入口では、Perf十分性定理の型CriterionDerivedPerfSufficiencyを入力に明示する。
+三条件を直接受け取る入口OfMoritaConditionsは、完成したPerf判定から十分性を供給する。
+従来のCriterionDerivedPerfSufficiencyを入力に明示する条件付き入口も維持する。
 一般導来右随伴との一致・unit/counitとの比較は扱わない。
 -/

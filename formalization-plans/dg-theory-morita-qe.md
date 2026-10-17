@@ -12,7 +12,7 @@
 | U16b：実際の随伴shift・三角性・Perf・U13/U14比較 | U16b.1–10で実装・合同ビルド・公理監査済み。主導来graph比較を含め担当範囲を受入済み |
 | 積dg圏上の擬同値 | 既存 `derivedBimoduleRestrictionEquivalence` の `localHomKFlat A C`・`localHomKFlat A D` を保持する。無条件化しない |
 | U16aグラフ作用との計算比較 | U16b.10でkernel変数の主局所化上の実際の作用との自然同型、随伴・単位・余単位・shift・三角性・Perfを検証済み |
-| U16d：Perf・係数変更・合成自然性 | U16d.1–22で主導来kernelの全射に自然なPerf作用と合成自然性を検証済み。許容モデル上のdg加群全体の導来係数変更比較、その実際のPerf正方形も構成。hAugまたは出力hEとhPN、hP'を明示する。全体の残項目は末尾参照 |
+| U16d：Perf・係数変更・合成自然性 | U16d.1–26の明示条件下の実装範囲を受入済み。全体の受入は未完。受入範囲・残る4接続・中心作用の保留は末尾の最終受入記録を参照 |
 | 中心作用 | 保留。今回の実装対象にしない |
 
 新規Leanファイルは `Morita/QuasiEquivalence*`・`Perfect*`・`ScalarExtension*` のみ。
@@ -579,6 +579,23 @@
 引き続き他担当の最終公開APIを待つ。三条件⇒全導来同値を無条件に証明したとはしない。
 U16dの未受入状態、一般右随伴との比較の担当境界も変更しない。
 
+## U16c.5：完成したPerf判定による十分性入力の供給（2026-10-17）
+
+- `CriterionPerf.lean`（コミット `1e5ee4a0`、記録 `dg-theory-morita-criterion.md`）の
+  `criterionPerfEquivalenceOfConditions` を再利用し、
+  `criterionDerivedPerfSufficiency : CriterionDerivedPerfSufficiency A D E` を証明した。
+  Perf側の定理と型・宇宙条件は一致し、変更や条件の追加による調整は不要だった。
+- 新公開名は `criterionDerivedKernelIsEquivalenceOfMoritaConditions`、
+  `criterionDerivedKernelEquivalenceOfMoritaConditions`、
+  `criterionDerivedKernelEquivalenceOfMoritaConditions_functor`。
+  三条件と両側のcompact生成から実際の主導来作用の同値を得る。
+  `hPerf` は証明済みの補題で供給し、利用者への仮定から外した。
+- 従来の `CriterionDerivedPerfSufficiency` と3つの `OfConditions` 宣言の型・証明は変更していない。
+  U16c.3–4の「Perf十分性を待つ」は当時の状態であり、この節でその接続を完了した。
+  両側のcompact生成は引き続き明示した仮定である。
+- 対象2入口のビルド成功（2867 jobs）。新旧8宣言の直接公理監査は標準3公理のみ。
+  最終合同監査は末尾参照。CriterionPerf*・共有ルート・Stage*・README・他担当ファイルは編集していない。
+
 ## 合同検証と公開入口（2026-10-17）
 
 - 新規10監査対象・公開入口・既存 `Checks.DGFunctorDerivedEquivalence` の12対象を
@@ -672,7 +689,8 @@ U16dの未受入状態、一般右随伴との比較の担当境界も変更し�
 元のU16b本体 `dgFunctorDerivedEquivalence` とEndomorphism/PerfectのAPIは変更していない。
 共有ルート・Stage・README・他担当ファイルは編集していない。
 
-U16bの担当範囲は受入済み。U16d全体は未受入で、次の接続を残す。
+U16bの担当範囲は受入済み。U16dは末尾の最終受入記録に記した範囲を受け入れ、
+全体の受入には次の接続を残す。
 
 1. 主導来kernelの列のperfect性とPerf保存の同値、全導来kernel射に自然な制限はU16d.11で完成した。
    実際の恒等作用の制限はU16d.12、実際の合成比較の制限はU16d.14で完成した。
@@ -697,7 +715,92 @@ U16bの担当範囲は受入済み。U16d全体は未受入で、次の接続を
    これを出力dg加群の導来係数変更の評価と同一視する定理・仮定は別途必要であり、無条件には主張しない。
 3. 中心作用は保留。今回の残項目の完了条件には入れない。
 
-直近のU16a担当記録では全主導来kernelの合成射自然性まで実装・検証済み。
-主局所化上のkernel作用・恒等比較・合成比較を再利用した。
-一般右随伴と恒等・結合coherenceは未完である。
-その未実装宣言をimport可能な定理として扱わず、不足する射・同型をsorry・axiomで置かない。
+U16aの一般右随伴・unit/counit・三角恒等式は既に実装済みである。
+上記の未接続項目と、一般右随伴自体の不存在を混同しない。
+本担当の全導来拡張は一般右随伴を使わず、その逆関手との比較はU16統合側に残す。
+U16aの作用coherenceの進捗と本担当のPerfへの移送は別であり、以下の受入記録を正とする。
+
+
+## U16d最終受入記録：明示条件下の担当範囲（2026-10-17）
+
+U16d.1–26のソース・監査入口と上記残項目を照合した。
+**次表の実装範囲を受入済みとする。U16d全体・U16全体の完了は宣言しない。**
+中心作用は保留のまま受入範囲から除く。
+
+| 受け入れる範囲 | 公開された証拠と適用条件 |
+| --- | --- |
+| 主導来kernelのPerf保存と射関手性 | `kernelColumnsPerfect_iff_preservesPerfect`、`perfectDerivedKernelActionFunctor`、`perfectDerivedKernelMap`。各kernelの列のperfect性を保持し、kernel変数の全主導来射を扱う |
+| 実際の恒等・合成比較のPerf制限 | `perfectDerivedKernelIdentityIso`、`perfectKernelCompositionIso`、`_inclusion`、`_kernel_naturality`。合成は始域の `localHomKFlat A D` と両kernelの列のperfect性を保持。実際の射自然性に追加のhNatは不要 |
+| 既存U12fとの評価比較 | `scalarKernelBaseChangeIso` と `_hom_app`。指定右射影モデルについてhPN・hP'を満たす許容kernel上で自然。同型の成分がU12f比較を使うことまで受入れ、出力dg加群全体の比較との成分同定は含めない |
+| 通常係数変更のdg加群値比較 | `scalarKernelBalancedIso`、入力自然性・H⁰降下・kernel射自然性。underived比較として受入れ、任意擬同型保存へ読み替えない |
+| dg加群値の実際の導来係数変更正方形 | `scalarKernelDerivedBaseChangeIso` と `_kernel_naturality`。一般形のhAug・hP'を保持し、全主導来入力射と通常kernel間の全閉零射の自然性を含む |
+| その実際のPerf正方形 | `scalarKernelPerfectDerivedSquare`、`_inclusion`、`_kernel_naturality`。元の列のperfect性とhAug・hP'を保持。係数変更後の列のperfect性は比較から導く |
+| K-flatモデルによる十分条件版 | 上記正方形・自然性の `_ofKFlatModels` 版。出力のhE : `localHomKFlat A E`、全標準右解像度tensorのhPN、係数変更後の右モデルのhP'をすべて保持 |
+| 主導来kernel変数の係数変更 | `scalarKernelDerivedExtension`、任意解像度計算・解像度変更同型の自己／推移則。局所Hom K-flat性や環準同型のflat性は不要 |
+| 通常モデルへの増大比較 | `scalarKernelDerivedExtensionAugmentation` と `_app`。比較射の存在を受入れ、可逆性は `_isIso` のhπ（係数変更後の積上解像度増大のkernel擬同型性）を明示。hPN・hP'でhπを代用しない |
+
+残る接続は次の4件である。
+
+1. **作用coherenceのPerfへの移送。** 恒等・合成の比較と射自然性の受入から、
+   左右単位・結合の全図式の受入は導かない。
+   U16aには `CoherenceUnitMain.lean` の `kernelCompositionIso_rightUnit` があり、
+   `dg-theory-morita.md` のU16a19時点では任意kernelの結合・左単位の統合が継続中。
+   共有ツリー内の進行中の未追跡Coherenceファイルは今回の受入根拠に含めない。
+2. **局所化した係数変更関手への正方形の接続。**
+   通常kernelに関する `scalarKernelDerivedBaseChangeIso` と、主kernel上の
+   `scalarKernelDerivedExtension` は別に完成している。
+   増大比較の存在だけでは両者を同一視せず、可逆性と図式を接続する証拠が残る。
+3. **U12fとの成分同定。** U12f側の始域は `complexDerivedExtension` による出力評価の係数変更、
+   全dg加群比較側は `derivedExtension` による出力加群の係数変更後の評価である。
+   この交換の比較と、二つの比較射の一致を証明する接続が残る。
+4. **kernel合成との係数変更図式。** `scalarPerfectSquareComposition_eq` は与えた正方形を
+   合成して制限するアダプタであり、実際のkernel合成の係数変更比較の証明には読み替えない。
+
+## U16統合用：導来Morita判定の最終公開名と仮定
+
+import入口は `SerrePositivity.DifferentialGraded.Morita.CriterionDerived`。
+以下の名前空間はすべて `SerrePositivity.DifferentialGraded.Morita`。
+
+| 公開名 | 結論 |
+| --- | --- |
+| `criterionDerivedPerfSufficiency A D E` | 完成したPerf判定から旧入力型 `CriterionDerivedPerfSufficiency A D E` を供給 |
+| `criterionDerivedKernelIsEquivalenceOfMoritaConditions A D E K hK G hG H hH` | `(kernelDerivedTensor A D E K).IsEquivalence` |
+| `criterionDerivedKernelEquivalenceOfMoritaConditions A D E K hK G hG H hH` | `DerivedModuleCategory A D ≌ DerivedModuleCategory A E` |
+| `criterionDerivedKernelEquivalenceOfMoritaConditions_functor A D E K hK G hG H hH` | 上の同値の順関手が `kernelDerivedTensor A D E K` と定義的に一致 |
+
+最終3宣言の仮定は共通である。
+
+- `A : Type u`、`[CommRing A]`。`D : Type v`、`E : Type w` に
+  `[DGCategory A D]`、`[DGCategory A E]`、`[Small.{u} D]`、`[Small.{u} E]`。
+  v・wをuへ固定せず、既存の加群・主導来圏の宇宙を保持する。
+- 任意の主kernel `K : Kernel A D E` と `hK : CriterionPerfConditions A D E K`。
+  三フィールドは `columnsPerfect`、`fullHomQuasiIso`、`columnsThickGenerate`。
+  全Hom比較は通常代表の存在を介した既存の条件そのものである。
+- `{I : Type z} [Small.{u} I]` と `G : I → DerivedModuleCategory A D`、
+  `hG : CriterionDerivedCompactGeneration A D G`。
+- `{J : Type z'} [Small.{u} J]` と `H : J → DerivedModuleCategory A E`、
+  `hH : CriterionDerivedCompactGeneration A E H`。
+  この構造は各生成元の `moduleCompact` と、u-small余積閉・同型閉な三角部分圏による
+  全対象の生成を別フィールドに持つ。両側のcompact生成を本定理で自動供給したとはしない。
+
+利用者からのhPerf入力は不要になった。局所Hom K-flat性、係数環のflat性、有界性、
+一般導来右随伴の存在を追加仮定にしない。
+これは三条件からの**十分性**の入口であり、全導来同値との必要十分条件や、構成した逆同値と
+他担当の一般右随伴との一致・unit/counit比較は追加していない。
+Perf側の必要十分条件は既存 `criterionPerfMorita_iff` を使う。
+旧 `OfConditions` の3宣言（hPerf明示）と `OfPerfWitness` も引き続き使用できる。
+U16dの受入範囲・残る接続、U16aのcoherenceの進捗とは独立した全導来拡張である。
+
+## 最終合同検証（2026-10-17、U16c.5・U16d受入照合）
+
+- 担当49公理監査入口と2公開入口の51対象を合同ビルドし成功（3701 jobs、終了コード0）。
+  警告・エラー0件。新旧332宣言の公理監査はすべて
+  `propext`、`Classical.choice`、`Quot.sound` の範囲内である。
+- 対象一覧 `/tmp/serre-u16-final-acceptance-targets.txt`、
+  ログ `/tmp/serre-u16-final-acceptance.log`。
+  再現方法は同一覧の各行を `lake build` の対象に渡すこと。
+  一覧はMorita内のQuasiEquivalence*・Perfect*・ScalarExtension*・CriterionDerived*の
+  全Checksと `Checks.DGFunctorDerivedEquivalence`、2公開入口から成る。
+- 担当98 Leanファイルを走査しsorry・admit・axiomトークン0件。
+  新規引用なし。今回の変更はCriterionDerivedの入口・条件・監査と本記録の4パスのみ。
+  他担当のCriterionPerf*・Coherence*、共有ルート・Stage*・READMEは変更していない。
