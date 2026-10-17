@@ -796,6 +796,15 @@
 - `ChecksEnhancementHomotopyAdjunction` 対象ビルド成功。新規3主要宣言の公理は標準3公理のみ。
   既存APIの名前・型は変更していない。
 
+## U14a/b.41：enhancementの実際のtensorと主Perf tensorの比較（2026-10-17）
+
+- `EnhancementTensorComparison.lean`：既存のHom比較をU13同値で運び、U14a.40の実際のH⁰随伴と
+  主Perf随伴の右随伴を揃えた。随伴の一意性からtensorの自然比較正方形を構成した。
+- この比較が単位・余単位と可換する自然変換の等式を、それぞれ独立に証明した。
+  比較は選択された別のdg tensorではなく、実際のunderived tensorのH⁰に対するもの。
+- `ChecksEnhancementTensorComparison` 対象ビルド成功。新規5主要宣言の公理は標準3公理のみ。
+  既存APIの名前・型は変更していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。

@@ -1,0 +1,12 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.EnhancementTensorComparison
+
+/-! # 実際のenhancement tensorと主Perf比較の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+
+#print axioms perfectEndomorphismEnhancementRightComparison
+#print axioms perfectEndomorphismEnhancementTransportedAdjunction
+#print axioms perfectEndomorphismEnhancementTensorComparison
+#print axioms perfectEndomorphismEnhancementTensorComparison_unit
+#print axioms perfectEndomorphismEnhancementTensorComparison_counit
