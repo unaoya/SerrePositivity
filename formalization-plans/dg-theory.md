@@ -9677,3 +9677,48 @@ BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_
 解像度変更と導来bimodule合成・対角単位・結合の自然性およびcoherenceは引き続き未完。
 U12e全受入→U16a〜d→U15eの分解版の順と局所K-flat版の並行所有を維持する。
 共有一般論への新しいAPI要求はない。Perfect/・Endomorphism/・局所K-flat版の所有範囲は編集していない。
+
+### 17.211 U12e51：準同値に沿う導来同値とdg圏解像度の主導来加群比較（2026-10-17）
+
+**保守性。** `Derived/RestrictionConservative.lean`でdg Yonedaを主Kへ送り、
+加群の主導来圏へ局所化する`representableHomotopyToDerived`と実際の代表加群での計算同型を構成した。
+`dgDerivedExtension_representable_essImage`は主K上の本質的全射性だけから、
+延長の像に終域の全代表加群が導来同型まで含まれることを示す。
+既存の導来随伴、shift比較、`moduleRepresentables_detect_zero`を再利用し、
+`dgDerivedRestriction_reflectsZero`と`dgDerivedRestriction_reflectsIso`を証明した。
+これらはHom準同型性を必要とせず、F.onHomotopyの本質的全射性だけを仮定する。
+明示した条件下で利用する`ReflectsIsomorphisms`の証拠も公開した。
+
+**実際の導来同値。** `Derived/FunctorDerivedEquivalence.lean`では、
+前項の全対象の導来単位の可逆性、右三角恒等式、今回の保守性から
+`dgDerivedExtensionCounit_isIso_all`を得た。
+`dgFunctorDerivedEquivalence`は任意の`QuasiEquivalence F`について
+主導来圏D(D)≌D(E)を構成し、順方向が既存の`dgDerivedExtension`、逆方向が
+既存の`dgDerivedRestriction`であること、単位・余単位が実際の導来随伴のものと一致することを公開する。
+任意可換環、独立対象宇宙、u-smallな対象型で、元のHomのflatness・有界性は仮定しない。
+抽象的な同値の存在だけでなく、指定された実際の両関手とその単位・余単位を保持する。
+
+**dg圏解像度への適用。** `Resolution/DerivedEquivalence.lean`は指定K-flat dg圏解像度Pの
+増大に沿う`P.moduleDerivedEquivalence`、標準zigzagの両脚に沿う導来同値を構成する。
+`P.changeModuleDerivedEquivalence Q`は元のdg圏を経由した二つの指定解像度の主導来加群圏の比較で、
+公開した順方向・逆方向は対応する実際の導来延長と導来制限の合成である。
+解像度sourceの宇宙は独立に許し、元のdg圏のHomに局所K-flat性は課さない。
+既存公開APIの名前・型の変更はない。
+
+**検証。** 新規`Checks.DGFunctorDerivedEquivalence`は本質的全射性だけでの保守性、
+実際の導来同値と逆関手・単位の一致、指定解像度の比較と独立source宇宙、ZMod 2上の同値を検査した。
+同チェックと既存の全対象単位・代表単位・導来随伴・graph延長・制限・分解比較・
+導来bimodule五角形・StageEight・StageSeven・Spectra.StageTwoの統合ビルド成功
+（3393 jobs、警告なし）。主要18宣言の直接公理監査は重複・欠落なく標準3公理以内。
+新規監査累計4127宣言。今回の受入ソースにsorry・admit・新規axiom・資源上限変更は0件。
+採用済み引用は0件。
+全体文書検査は20 Markdown・320 exposition参照を検査し、担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+未解決参照1件で失敗した。計画書のローカルリンクと担当差分の空白検査は成功。
+
+**残るU12e受入条件。** 今回の主導来加群圏の不変性を、局所K-flatな比較source間の
+積dg関手と既存の右加群–bimodule比較同値を通して、導来bimodule制限の同値性へ接続する。
+tensor積のHom準同型保存に必要な複体のK-flat性を明示し、元のunderived積上への無条件の同値は主張しない。
+その後、解像度変更と導来bimodule合成・対角単位・結合の自然性およびcoherenceを接続する。
+今回のdg準同値不変性だけでU12e全体を受け入れず、受入後のU16a〜d、U15eの分解版の順を保持する。
+共有一般論への新しいAPI要求はない。共有ルート・Perfect/・Endomorphism/・局所K-flat版は編集していない。
