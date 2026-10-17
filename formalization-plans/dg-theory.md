@@ -8496,3 +8496,41 @@ target側の原始元を指定したsphere/diskの可換squareを作り、既存
 初期増大のホモロジー全射性は単射性を含まず、準同値とは宣言していない。
 KFlatDGResolutionの一般存在・解像度比較、U12e全受入・U16は引き続き未完。
 U12f/U14/U15dの並行所有範囲には触れず、U15e/U17は§0の合流条件を保持する。
+
+
+### 17.186 U12e27：境界cellの増大squareと逐次充填によるHom準同型判定（2026-10-17）
+
+`Resolution/BoundaryCells.lean`の**ComplexBoundaryCell A f**は、任意の複体射f:K→Lについて
+degree q、Kの次数q+1のcycle z、Lの次数qの原始元b、db=fzの証拠を束ねる。
+f z=0に限定せず、ホモロジーの核の全代表を含める。
+**attachingMap**はsphere(q+1)→K、**targetDiskMap**は生成元をbへ送るdisk(q)→Lであり、
+**augmentation_square**がsphere境界包含との可換squareを証明する。
+**HasFilling**はKでの原始元tをdt=zかつft=bとともに要求する。
+**quasiIso_of_filling**は全cellの充填から既存の具体的cone判定でfの準同型性を得る。
+これは条件付きの判定であり、充填の存在を宣言したものではない。
+**DGCategoryBoundaryCells.Index**は全source対象対のcell添字である。
+sourceがSmall.{u}なら添字もSmall.{u}で、targetの対象集合のsmallnessは不要。
+
+`Resolution/BoundarySequence.lean`の**ComplexBoundaryCell.sequential_filling**は、
+複体列F:ℕ→Complex A、二つのcocone s/a、sのIsColimitの証拠を受け取る。
+各有限段の全cellが直後の段階でtransition後のcycleを境界とし、指定target原始元へ送られるなら、
+IsColimit.descで得る最終増大射の全cellも埋まると証明する。
+既存のfiltered余極限のcycle有限段表示、cocone可換性、chain mapの微分交換を使う。
+transitionの単射性、増大の次数ごとの全射性、有界性、flatnessは不要。
+**sequential_quasiIso**が最終増大射の準同型性を与える。
+今後のdg圏cell列の各Homに適用する判定であり、dg圏cell列自体を仮定から取り出してはいない。
+
+Checks.DGBoundarySequence・Checks.DGCategoryInitial・Checks.FreeDGUniversal・
+Checks.DGCategoryResolution・Checks.DerivedBimoduleFullPentagon・Checks.StageEight・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（3119 jobs、終了コード0、警告なし）。
+任意source/target宇宙、target smallness不要のcell添字、ZMod 2と初期増大のcell添字を検査した。
+主要11宣言（cellのデータ型と充填条件を含む）の直接公理監査は標準3公理のみ。
+監査累計3507宣言。今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は15 Markdown・320 exposition参照を検査し、§17.185と同じ担当外の
+BhattScholze互換宣言の未解決参照1件で失敗した。共有ルート・並行所有ファイルは編集していない。
+
+残る中心作業は、既存pathのcycleを新生成元の微分とする実際のdg圏cell付加である。
+追加微分の二乗零・全合成のLeibniz、filtrationによるHom K-flat性、列の構成と
+今回の準同型判定への接続、解像度選択の比較が未完。境界squareや判定だけで存在証明とはしない。
+公開APIの名前・型の変更と共有一般論への新しい要求はない。
+分担とU16への着手順、U15e/U17の合流条件は§0のまま保持し、履歴は新規コミットで記録する。
