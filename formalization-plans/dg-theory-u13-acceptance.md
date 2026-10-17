@@ -78,6 +78,17 @@
   主要5宣言の公理監査は標準3公理のみ。
   retract対象と補対象の被覆をこの操作へ同時に接続する帰納ステップを引き続き実装する。
 
+## U13e.32：任意の導来対象の有限自由被覆と有限射影始域の射の持ち上げ
+
+- `Perfect/RingDerivedFiniteCover.lean`：有限射影複体Pから任意の複体Kへの
+  既存DerivedCategoryの射が実際のchain mapで表されることを、MathlibのK-projective局所化Hom計算と
+  ホモトピー商の充満性から証明した。
+- 任意の導来対象XのHⁿが有限生成なら、有限自由singleのQ像からXへのHⁿ上全射の射を構成した。
+  元の複体での全射性を既存ホモロジー比較の自然同型で運ぶ。
+  導来retractの上端ホモロジーの有限生成性にも通常DerivedCategory上の版を与えた。
+- 任意の `HasDerivedCategory.{w} (ModuleCat.{u} A)` を明示して使い、主導来圏を再定義していない。
+  `Perfect.ChecksRingDerivedFiniteCover` 対象ビルド成功（3168 jobs）。主要4宣言の公理監査は標準3公理のみ。
+
 ## 既存項目の再検証
 
 - finite cell・全Hom射影性・PerfとKaroubi・compact生成・compact⇒Perf・

@@ -1,0 +1,10 @@
+module
+public import SerrePositivity.DifferentialGraded.Perfect.RingDerivedFiniteCover
+
+/-! # 導来有限自由被覆と射の持ち上げの公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+#print axioms ringComplexDerived_map_surjective
+#print axioms ringDerived_homologyMap_epi_of_chainMap
+#print axioms ringDerived_exists_finiteFree_homologyCover
+#print axioms ringDerivedRetract_topHomology_finite_usual
