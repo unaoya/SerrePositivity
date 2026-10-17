@@ -193,12 +193,26 @@
 - `lake build SerrePositivity.DifferentialGraded.Endomorphism.ChecksTensorProjective` 成功。
   2主要宣言の公理は標準3公理のみ。
 
+## U14a.16：主導来圏の任意対象でのtensor–Hom射集合同値（2026-10-17）
+
+- `DerivedHomEquiv.lean`：Eのホモトピー射影性の下で、射影的右End(E)加群Pについて
+  `Hom_D(D)(P⊗E,M) ≃ Hom_D(End(E))(P,RHom(E,M))` を構成。
+  tensorの射影性保存、主Kの随伴、既存の射影的始域の局所化Hom計算を順に使った。
+- 標準射影解像度と任意解像度計算同型を用い、主導来圏の任意対象X,Yについて
+  `Hom(LTensor(X),Y) ≃ Hom(X,RHom(Y))` を得た。
+  射集合同値の両変数自然性はまだ別の証明義務であり、導来随伴の完成とはしていない。
+- `ChecksDerivedHomEquiv` と更新した `ChecksCompatibility` の対象ビルド成功。
+  4主要宣言の公理は標準3公理のみ。最新APIを既存のU14公開入口へimportし、ルートは未編集。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
-  U13のenhancementへの制限と導来化・受入図式の最終照合が残る。
+  導来Hom・導来tensor・主Kの随伴・導来射集合同値も構成済み。
+  導来射集合同値の両変数自然性による導来随伴の組立て、
+  U13のenhancementへの制限・受入図式の最終照合が残る。
 - U14b：thick生成からPerf比較。全Homの擬同型とH⁰の本質的全射を別々に証明する。
 - U14c：導来圏全体の比較にはcompact生成性が必要。
   無限生成集合の直和はcompactとは限らず、thick生成だけから全導来圏の比較は出さない。
   DG-GEN/DG-MORの採用が必要になったら採用せず停止・報告する。
-- 既存導来tensorとの計算比較、shift・三角性・係数変更の図式。
+- U12dとの全導来射自然なtensor評価比較は構成済み。
+  Perf比較に対するshift・三角性・導来係数変更の図式が残る。
