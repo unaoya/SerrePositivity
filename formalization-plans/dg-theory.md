@@ -10726,3 +10726,75 @@ U12e全体は未受入、U16a〜d・U15e分解版は未着手。目標全体と�
 Quotient/DerivedComparison*・Verdier/を読んで再利用し、重複実装しない。
 共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・ScalarExtension*・並行作業の
 Tensor/Associator*と他チャットの記録を編集していない。
+
+
+### 17.230 U12e70：三圏同時制限と既存changeEquivalenceの導来合成保存（2026-10-17）
+
+**左右の直接制限。** Bimodule/PairedRestriction.leanは左作用、次に右作用を制限する
+pairedRestrictionFunctorを構成し、uncurry HomがF.op.mapとG.mapのtensorに一致することを証明した。
+既存の左右制限のuncurry式とtensor合成則を再利用する。
+左右制限の交換をdg関手の等式で証明し、右加群ごとに恒等の同型と閉零射への自然性も公開した。
+この直接制限の結果にHomのK-flat性・準同値性は不要で、左作用側の対象型のsmallnessも課さない。
+Bimodule/PairedRestrictionPresentation.leanは積dg圏上の既存の右加群表示へ接続し、
+値で恒等の全Hom自然なmodule同型と閉零射に自然な表示squareを証明した。
+
+**既存の同時導来制限との同定。** Derived/PairedRestrictionIdentification.leanは
+直接制限を既存bimoduleRestriction F Gへ比較し、pairedRestrictionDerivedIsoで局所化squareを得た。
+pairedRestrictionPartialDerivedIsoは左制限→右制限、pairedRestrictionReverseDerivedIsoは右制限→左制限の
+二つの既存導来制限の合成を、同じ既存derivedBimoduleRestriction F Gへ送る自然同型である。
+それぞれの元の対象上のhom計算式を公開した。いずれも任意の可換環上で、flatness・準同値性は不要。
+新しい両端制限を既存の導来制限の代わりに定義したものではない。
+
+**外側両端と三圏の同時制限。** Derived/BimoduleEndpointRestriction.leanは
+外側右比較、外側左比較の逆、上の出力側の両端制限同定を合成し、
+derivedBimoduleComposeEndpointRestrictionIsoを構成した。
+Derived/BimoduleSimultaneousRestriction.leanのsourceは、両因子へ既存の同時導来制限を施してから
+新しい中間圏上で合成する関手族であり、targetは元の合成の出力へ既存の同時導来制限を施す関手族である。
+sourceの同型は左右順序を含む両端制限の同定から独立に構成し、既存の中間圏比較を適用している。
+simultaneousRestrictionDerivedComparisonは任意のF・G・Hについて定義した自然変換、
+**derivedBimoduleComposeRestrictionIso**は中間Gだけが準同値の場合の自然同型であり、
+そのhomが前者に一致することも証明した。
+外側F・Hの準同値性や、B・D・C・Kの局所Hom K-flat性は要求しない。
+必要なlocal Hom条件は元と制限後の終端E・Lだけで、六つの対象宇宙を独立に保持する。
+両変数とも任意の導来対象を扱い、閉零モデルだけで比較を終えていない。
+
+**共通sourceへの両脚。** Resolution/CompositionComparison.leanのcomparisonLeftComposeIsoは、
+三つの指定解像度から共通比較sourceへの既存comparisonLeftを両因子と合成出力に使う、実際の導来合成比較である。
+元のdg圏B・C・Eの対象型のsmallnessやHomのK-flat性は追加しない。
+comparisonRightComposeIsoは標準解像度側から同じ共通sourceへの既存comparisonRightについて同様の比較を与える。
+標準解像度を作るための元の対象型のsmallnessは後者で明示する。
+
+**既存の解像度変更同値の合成保存。** Resolution/CompositionChange.leanの
+inverseCompositionComparisonは、三つの圏同値と与えられたcurried合成比較から、
+その逆同値に沿う合成比較を単位・余単位で構成する。
+この圏論的操作を右脚の既存同値へ適用し、左脚の合成比較と組み合わせて
+canonicalComparisonComposeIsoを構成した。
+**changeComposeIso**は変更前後の標準比較同値に同じ操作を適用し、
+既存のchangeEquivalenceが導来bimodule合成を自然同型で保つことを示す。
+対象は実際の既存の同値のfunctorであり、選択した別の比較関手で代用していない。
+変更前後の六つの解像度source宇宙は独立で、元のHomのK-flat性は不要。
+対角単位・結合子とのcoherenceをこの構成の定義に仮定していない。
+既存公開APIの名前・型は変更せず、34公開宣言を追加した。
+
+**検証。** Checks.DGBimoduleSimultaneousRestrictionは、左右逆順の導来制限同定、
+中間Gだけが準同値の場合の三圏同時比較と任意Gでの自然変換、独立した六つの対象宇宙、
+元の対象型のsmallnessなしの比較左脚、変更前後の独立した六つのsource宇宙での
+既存changeEquivalenceによる任意の導来両因子の合成保存、ZMod 2の同時比較を検査した。
+既存外側左右比較・K-flat移送計算・中間比較の全導来合成則・恒等則・解像度比較・導来同値・
+導来随伴・五角形・StageEight・StageSeven・Spectra.StageTwoとの統合ビルド成功（3510 jobs、警告なし）。
+34公開宣言の直接公理監査は重複・欠落なく標準3公理以内。新規監査累計4599宣言。
+今回の8 Leanファイルにsorry・admit・新規axiom・資源上限変更は0件。採用済み引用0件。
+Lean v4.35.0-rc4とMathlib manifest/HEAD e6bbacd0e1b7307ff6e17da09cd2455f60804fa6を再確認した。
+
+文書検査は21 Markdown・320 exposition参照を検査し、担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+既存未解決参照1件で失敗した。
+
+**残件と次工程。** 両端の解像度を同時に変える既存changeEquivalenceの合成保存は今回構成した。
+これらの比較が対角単位・結合子、および解像度変更の自己・推移比較と整合するcoherenceは残る。
+外側左右・中間制限の比較の組合せの恒等・合成則も、モデル計算と一意性へ帰着して確認する必要がある。
+これらを仕上げて§15.2全体を監査する。U12e全体は未受入、U16a〜d・U15e分解版は未着手。
+目標全体と順序を保持する。共有一般論への新しいAPI要求はない。
+U15e分解版では局所K-flat版のQuotient/DerivedComparison*・Verdier/を読んで再利用し、重複実装しない。
+共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・ScalarExtension*・並行作業の
+Tensor/Associator*と他チャットの記録を編集していない。
