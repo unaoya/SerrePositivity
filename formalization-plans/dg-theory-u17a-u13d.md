@@ -2,6 +2,9 @@
 
 正本：`dg-theory.md` §15.7 U17a、§15.3 U13d、§17.86–17.87。
 
+最終状態：U17a・U13d 完了。compact ⇔ Perf は引用なしで証明した。
+対象ビルド・主要53宣言の公理監査を実施し、全て標準3公理のみ。
+
 ## 担当・境界
 
 - U17a は `DifferentialGraded/Verdier/` に新設する。既存の有限 cell・Perf・Mathlib の三角構造と指定局所化を再利用する。
@@ -39,9 +42,9 @@ Karoubi を先に取った側は既存 `karoubiNullEnvelope` をそのまま使�
   主要10宣言の `#print axioms` は全て `propext, Classical.choice, Quot.sound` のみ。
   新規 sorry・axiom・引用なし。
 
-## U13d（継続中）
+## U13d（完了、以下は各段階の記録）
 
-compact ⇒ Perf はまだ未完。引用は採用していない。引用なしの telescope と有限因子分解の経路を検討する。
+当初は telescope と有限因子分解の経路を検討し、以下の小単位で引用なしの証明を完成した。
 
 ### U13d2：可算 telescope の有限段階因子分解
 
@@ -105,3 +108,22 @@ compact ⇒ Perf はまだ未完。引用は採用していない。引用なし
 - 対象ビルド：`lake build SerrePositivity.DifferentialGraded.Checks.CompactConverseSequential` 成功。
   主要11宣言の公理監査は標準3公理のみ。引用・新規 sorry・axiom なし。
 - U13d4 のコミット：`ba3c7265`。
+
+### U13d6：compact ⇔ Perf（完了）
+
+- `Perfect/CompactConverse.lean`：標準解像度の各段が homotopically projective であることを
+  既存の semifree filtration API から取得。既存の導来余積 cofan と cone 三角形を使い、
+  余積とその `1-shift` の cone が有限因子分解性を持つことを証明した。
+- U13d5 の具体的擬同型で標準解像度の余極限へ、既存の解像度増大射の擬同型で元の dg 加群へ
+  移す。`moduleFiniteCellFactorTarget_all` は任意の主導来対象への射の有限因子分解性。
+- `moduleCompact_perfect` は compact 対象の恒等射を有限 cell で因子分解して retract を与える。
+  `moduleCompact_iff_perfect` で既存 Perf⇒compact と合わせた双方向判定を公開した。
+- 一般可換環 A、独立な対象宇宙 v、`Small.{u} D`、既存の u-small 余積に関する compact 性を維持。
+  体性・有界性・局所有限性・Hom_D の平坦性・導来圏全体の smallness を追加しない。
+- 対象ビルド：`lake build SerrePositivity.DifferentialGraded.Checks.CompactConverseSequential
+  SerrePositivity.DifferentialGraded.Checks.CompactConverse
+  SerrePositivity.DifferentialGraded.Checks.VerdierTria` 成功（2529 jobs）。
+  結論4宣言の公理監査も標準3公理のみ。全段階の主要53宣言について同じ結果。
+  `ZMod 4` の一対象 dg 圏でも型検証。新規 sorry・axiom・引用なし、DG-PER 不採用。
+- U13d5 のコミット：`23e1774b`。
+- U17b/c の実際の dg 商との比較や U13e の残部はこの単位の結論に含めない。
