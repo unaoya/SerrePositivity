@@ -8874,3 +8874,47 @@ Export.leanのimport段階で失敗した。今回、Markdown参照検査の完�
 §0の分担を維持し、U14とU12f/U15dの記録はそれぞれの担当文書を正本とする。
 U15e/U17はU12f・U14・U16の受入条件がそろった後に扱う。
 共有一般論への新しいAPI要求はない。
+
+
+### 17.196 U12e37：生成cellの境界・disk squareと指定原始元による有限path評価（2026-10-17）
+
+`Resolution/Cells/GeneratorBoundary.lean`の**Family.generatorTerm_apply**は、
+別々の両端の単位を挿入する生成元pathの成分式。
+**forward_units_of_sum**は中間和次数を明示した両側単位の評価である。
+**replaceFirst_generatorTerm/replaceRow_singleton/replacement_generatorElement**で
+一生成元pathの全置換が指定境界の空path包含になることを示した。
+**generatorElement/internal_d_generatorElement/differential_generatorElement**は最終Hom内の
+次数degree(i)の実際の生成元と、d(generatorElement)=originalHomInclusion(boundary(i))の式。
+内部微分が零であることと追加置換による微分を区別して証明した。
+`GeneratorDisk.lean`の**generatorDisk/generatorDisk_generator/generatorDisk_boundary**は
+実際のdisk chain mapと、指定sphere境界の包含がこのdiskを通る可換squareを構成する。
+Homのflatness・対象Dのsmallnessは不要で、全path直和を使う部分にはSmall.{u} Iだけを要求する。
+
+`PrimitiveData.lean`の**Family.PrimitiveData**は、元のdg関手Fとcell族Cに対して
+各生成cellの像を次数degree(i)の原始元として指定し、その微分がF(boundary(i))であることを保持する。
+**PrimitiveData.cochain/cochain_generator/cochain_differential**は対応する次数0 cochainと
+その生成元評価・Hom微分の式。元のcell生成元がsphereに属していても、原始元が閉じているとはしない。
+**DGCategoryBoundaryCells.primitiveData**は、全境界cellの添字自身が持つ原始元を使う標準データ。
+`PathEvaluation.lean`の**PrimitiveData.pathEvaluation/pathEvaluation_nil**は有限path評価を再帰的に構成し、
+**pathEvaluation_cons_generator**は任意次数・別端点の三重tensorでの順合成表示、
+**pathEvaluation_generatorTerm**は一生成元pathが指定原始元へ評価されることを証明する。
+この有限path側にはD/Iのsmallness仮定を置かない。A : Type u、D : Type v、I : Type w、
+E : Type zを独立に保つ。これらは次の全Hom評価・増大dg関手の構成で使う。
+既存公開APIの名前・型の変更はない。
+
+Checks.DGCellGeneratorBoundary・Checks.DGCellCategory・Checks.DGCellCompositionDifferential・
+Checks.DGCellBoundaryRecursion・Checks.DGCellPrependDifferential・Checks.DGCellInternalComposition・
+Checks.DGCellDifferential・Checks.DGCategoryResolution・Checks.DerivedBimoduleFullPentagon・
+Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功
+（3189 jobs、終了コード0、警告なし）。独立宇宙、有限path側のSmall仮定なし、
+生成元の任意整数次数、disk square、ZMod 2での境界式を型検査した。
+主要20宣言の直接公理監査は標準3公理のみ。監査累計3689宣言。
+今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は15 Markdown・320 exposition参照を検査し、担当外BhattScholze互換宣言の
+未解決参照1件で失敗した。共有ルート・共有一般論・並行所有ファイルは編集していない。
+
+次は有限path評価を全Homのcochainへ貼り合わせ、Hom微分と全置換の整合性を証明して
+最終chain map・増大dg関手を構成する。今回の有限path評価はまだ最終Homのchain mapではない。
+その後、filtrationによる最終Hom K-flat性、反復列、解像度の一般存在・比較を完成させる。
+U12e全受入・U16は未完。U15e/U17の合流条件と§0の分担を維持する。
+共有一般論への新しいAPI要求はない。
