@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarRelativeHomDescent
+import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarRelativeNativeComparison
 import Lean.Util.CollectAxioms
 
 universe u v
@@ -47,11 +47,32 @@ example {U V : SSet.{v}} {X Y : D C} (i : U ⟶ V) [Mono i]
         (UniverseLift.map i ≫ j) (UniverseLift.map i ≫ f) c :=
   OrdinaryBarRelativeHomDescent.native_relative_extension hcof hfib P i j f c
 
+example {U V : SSet.{v}} {X Y : D C} (i : U ⟶ V) [Mono i]
+    (j : UniverseLift.obj.{max u v} V ⟶ P)
+    (g : UniverseLift.obj.{max u v} V ⟶ OrdinaryBarFixedWordResolution.hom C X Y)
+    (c : UniverseLift.obj.{max u v} U ⟶
+      OrdinaryBarRelativeHomDescent.choices hcof hfib P X Y) :
+    ∃ e : UniverseLift.obj.{max u v} V ⟶
+        OrdinaryBarRelativeHomDescent.choices hcof hfib P X Y,
+      UniverseLift.map i ≫ e = c ∧
+        i ≫ OrdinaryBarRelativeHomDescent.nativeFamily hcof hfib P j
+          (g ≫ OrdinaryBarDiagonalHomAugmentation.smallAugmentation C X Y) e =
+        OrdinaryBarRelativeHomDescent.nativeFamily hcof hfib P (UniverseLift.map i ≫ j)
+          ((UniverseLift.map i ≫ g) ≫
+            OrdinaryBarDiagonalHomAugmentation.smallAugmentation C X Y) c ∧
+        i ▷ SSet.stdSimplex.obj (SimplexCategory.mk 1) ≫
+          (OrdinaryBarRelativeHomDescent.nativeRestrictionComparison hcof hfib P j g e).h =
+          (OrdinaryBarRelativeHomDescent.nativeRestrictionComparison hcof hfib P
+            (UniverseLift.map i ≫ j) (UniverseLift.map i ≫ g) c).h :=
+  OrdinaryBarRelativeHomDescent.native_relative_comparison_extension hcof hfib P i j g c
+
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.HomotopicalAlgebra.Simplicial.RestrictionDescentEvaluation,
+    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarRelativeNativeComparison,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.KanPostDetection,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.KanRestrictionEquivalence,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedComparisonResolution,
