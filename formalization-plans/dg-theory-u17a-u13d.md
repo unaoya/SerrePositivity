@@ -128,7 +128,7 @@ Karoubi を先に取った側は既存 `karoubiNullEnvelope` をそのまま使�
 - U13d5 のコミット：`23e1774b`。
 - U17b/c の実際の dg 商との比較や U13e の残部はこの単位の結論に含めない。
 
-## 追加担当：局所 K-flat 版 U15e・U17b（進行中）
+## 追加担当：局所 K-flat 版 U15e・U17b（完了、U16 の自然性は後続）
 
 新しい目標は、既存の明示的 path 商を tria の Verdier 商と比較し、その後 perfect dg hull の
 H⁰ と `CompletedTriaQuotient` を比較すること。U12e の dg 圏分解版は担当外であり、
@@ -769,3 +769,49 @@ HEAD からの差分全体が自分の変更だけであることも確認する
   `quotientVerdierComparison` と導来延長に基づく今回の比較との自然同型も残る。
   これらの接続を未検証のまま全目標完了とはしない。
   U15e26 のコミットは `4ff8cb8b`（自分の3ファイルのみと直後に確認）。
+
+
+### U15e27：既存の指定比較関手との自然同型と最終受入
+
+- `Quotient/DerivedComparisonExtensionCoherence.lean`：普通の加群上の
+  `derivedExtensionUnderivedMap` の自然性を、underived と derived の随伴による転置の整合性から証明。
+  自然変換をホモトピー商へ降ろし、有限 cell 上ではホモトピー射影性から各成分が可逆になる。
+  `finiteCellHomotopyDerivedExtensionIso` は、その部分圏上の二つの延長計算の実際の自然同型。
+- `Quotient/DerivedComparisonCanonical.lean`：有限 cell のホモトピー圏と tria の既存の同値で
+  上の自然同型を運び、商側の充満部分圏へ制限した。
+  指定 Verdier 局所化の前置の完全忠実性で因子化後にも降ろし、
+  `quotientComparisonModelsIso` : localQuotientTriaFunctor ≅ quotientVerdierComparison を得た。
+- `quotientVerdierComparisonFullyFaithful` は、局所 K-flat 仮定から既存の指定関手そのものの
+  充満忠実性を証明する。`quotientVerdierLocalEquivalence` は、この指定関手を関手部分とする
+  実際の圏同値。整数 shift と三角構造にも整合する。
+  仮定として充満忠実性を受け取る経路や、代表対象上だけの集合の同値で置き換えていない。
+- 合同対象ビルド `Checks.QuotientExtensionCoherence`・`Checks.QuotientCanonicalComparison`・
+  `Checks.QuotientLocalPerfect` 成功（2789 jobs）、警告なし。
+  今回の主要13宣言と perfect 比較の10宣言の公理監査は全て標準3公理のみ。
+  今回の project import 依存355・557ファイル、および perfect 比較の568ファイルに
+  禁止された dg 圏分解系への依存なし。担当の DerivedComparison・Verdier ソースを再走査し、
+  新規 sorry・axiom がないことも確認。比較定理 DG-DR を含め、引用採用は0件。
+  他担当・ルート・README・Stage の既存ファイルは今回編集していない。
+- U17b1 のコミットは `9ea5e9ca`（自分の5ファイルのみと直後に確認）。
+
+### 局所 K-flat 版 U15e・U17b の完了照合
+
+| 要件 | 検証済みの公開 API・根拠 |
+|---|---|
+| 原典の片側仮定を固定 | 原典照合記録と `localKFlat`。全 Hom(−,b)、または全 Hom(b,−) の一方が K-flat。対象対ごとの選言ではない |
+| 明示的 dg 商と指定 Verdier 商の実際の比較 | `quotientVerdierLocalEquivalence`。関手部分は既存の `quotientVerdierComparison`、充満忠実性も構成済み |
+| dg 圏の解像度・DG-DR 引用を使わない | 最終エントリの transitive project import を走査。普通の加群の射影置換・path 長 filtration と三角形の Hom 完全性から証明 |
+| H⁰(Perf_dg(D/S)) と指定完備 Verdier 商 | `localPerfectQuotientEquivalence` と `localSmallPerfectQuotientEquivalence`。大小の dg モデルで三角同値 |
+| U17c への接続形 | `localPerfectKaroubiFirstEquivalence` と `localPerfectPaperSequenceComparison`。既存の順序交換同値・比較自然同型への実際の後置 |
+| M9 の平坦 Hom からの供給 | `localQuotientTriaEquivalence_of_flat_zero` と `localPerfectQuotientEquivalence_of_flat_zero`。元の Hom が次数零に集中し、その次数零加群が平坦なら適用できる |
+| 記録・正本への参照 | この文書に各単位を記録。`dg-theory.md` §15.5・§15.7 の既存の一行参照を維持し、本文には追記しない |
+
+この担当目標の点ごとの比較と三角同値は完了した。残す U16 の自然性は、依頼で明示的に
+後回しを認められた部分である。具体的には、S を対応させる Morita 比較に対して、
+誘導される Verdier 商・Karoubi 完備化の関手と上記の perfect enhancement 比較の可換 square、
+およびその自然変換・合成との整合性を追加する作業。これを今回の証明の仮定として隠していない。
+U17c 全体の線形・shift 付き square や U17d の係数変更・作用との自然性まで完了したとは主張しない。
+
+M9 の適用については、商を取る前の次数零の平坦 Hom を持つ dg 圏から必要な K-flat 性が得られる。
+商の Hom が非正次数にあるというだけの主張では足りない。一般の係数環 T 側には T 上で同じ
+平坦 Hom の入力を供給する必要があり、T の A 上平坦性を無条件に仮定することでは代用しない。
