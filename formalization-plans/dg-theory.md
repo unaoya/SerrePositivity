@@ -8786,3 +8786,51 @@ ZMod 2、任意次数・別端点の先頭境界作用素と全path再帰式を�
 今回の成功した統合ビルドには含めていない。標準上限を引き上げず、式の計算・輸送の粒度を整理して続ける。
 これらの完成、最終dg圏instance、増大・cell充填、最終K-flat性、解像度の存在と比較、
 U12e全受入・U16は引き続き未完。§0の分担とU15e/U17の合流条件を維持する。
+
+
+### 17.194 U12e35：任意左pathの全Leibniz則と最終Hom間の合成chain map（2026-10-17）
+
+§17.193で未受入とした後方cochainの持ち上げを修復した。
+`Resolution/Cells/PathEquations.lean`の**Family.term_nil/term_cons**は、未知の後続語全体を展開せずに
+先頭一段の計算を行う。複体の型を明示し、具体的複体tensorの証明を小さい宣言へ分割して、
+標準heartbeat内で以下を検査した。上限の引上げやunsafe reducibility設定は使用していない。
+
+`Complexes/PrefixTensorCochainAction.lean`の**prefixTensor_cochain_action_left/right**は、
+結合的な先頭追加の下で任意次数cochainを左右因子から持ち上げる。
+`PrefixTensorCochainPrecomp.lean`の**prefixTensor_cochain_precomp**はchain map前合成との整合性。
+いずれも具体的な複体上の補題で、共有の任意V一般論への追加ではない。
+
+`Resolution/Cells/AppendLiftCochain.lean`の**Family.appendLiftCochain/appendLiftCochain_add**は、
+前方Homと任意次数生成元を保つ後方cochainの持ち上げと加法性。
+**appendLiftCochain_left/right**は左右因子の項を短いpathでの項の持ち上げとして計算する。
+`AppendBoundaryRecursion.lean`の**appendRight_cons_factor/appendRight_replaceFirst_factored**は
+先頭追加の因子分解とその先頭境界項、**appendRight_replacement_cons**は連結後の境界置換の再帰式。
+`AppendBoundary.lean`の**appendRight_replacement**は左有限pathに関する帰納法で得る全Leibniz則。
+先頭生成元を置換する項と、前方Hom・生成元を通って後方を置換する項の両方を保持する。
+
+`TensorRightPathCochainExt.lean`の**tensorRightPathCochain_ext**は右tensorした全path直和のcochain判定。
+`CompositionBoundary.lean`の**internalComposition_replacement**で上のLeibnizを両因子の全Hom直和へ拡張した。
+`CompositionDifferential.lean`の**internalComposition_replacement_apply**は斉次成分式で、
+右因子の置換に左因子の次数pからの符号(-1)^pを持つ。
+**internalComposition_total_d_apply**は内部微分と置換を合わせた全微分のLeibniz則。
+**attachedComposition : attachedHom(x,y) ⊗ attachedHom(y,z) → attachedHom(x,z)**は、
+これを既存tensorLiftへ適用した実際のchain map。
+**attachedComposition_ι**は純tensorの包含成分で内部合成に一致することを示す。
+任意可換環・非有界・別端点・任意整数次数・独立D/I宇宙を維持し、Small.{u} Iだけを直和に使う。
+元のHomのflatnessとDのsmallnessは不要で、既存APIの名前・型の変更はない。
+
+Checks.DGCellCompositionDifferential・Checks.DGCellBoundaryRecursion・Checks.DGCellPrependDifferential・
+Checks.DGCellInternalComposition・Checks.DGCellDifferential・Checks.DGCategoryResolution・
+Checks.DerivedBimoduleFullPentagon・Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（3173 jobs、終了コード0、警告なし）。独立宇宙、元のHomのflatness仮定なしの
+最終合成chain map・純tensor成分、ZMod 2を検査した。
+主要19宣言の直接公理監査は標準3公理のみ。監査累計3655宣言。
+今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は15 Markdown・320 exposition参照を検査し、§17.193と同じ担当外の
+BhattScholze互換宣言の未解決参照1件で失敗した。共有ルート・共有一般論・並行所有ファイルは編集していない。
+
+次は内部合成との各次数の一致から左右単位と結合則を追加微分後へ移し、主dg圏instanceと
+元のdg圏からの包含関手を構成する。指定原始元への増大、cell生成元の充填式、filtrationによる
+最終Hom K-flat性、列と解像度の一般存在・比較は引き続き未完。
+今回の最終合成chain mapだけでU12eを受入済みとはしない。受入後のU16、合流後のU15e/U17の
+目標と§0の分担を維持し、共有一般論への新しいAPI要求はない。
