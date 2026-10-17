@@ -1,0 +1,12 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarHomHomotopyRetracts
+
+/-! # Hom係数変更比較のH⁰内retract閉性の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+
+#print axioms scalarModuleHom_quasiIso_of_homotopyRetract
+#print axioms scalarModuleHom_quasiIso_of_homotopyCategoryRetract
+#print axioms scalarModuleHomComparisonLocus
+#print axioms scalarModuleHomComparisonLocusStableUnderRetracts
+#print axioms scalarModuleHomComparisonLocus_representable

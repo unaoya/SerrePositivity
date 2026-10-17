@@ -897,6 +897,19 @@
 - `ChecksScalarModuleHomotopy` 対象ビルド成功（1994 jobs）。主要4宣言の公理は標準3公理のみ。
   新しいsorry・axiom・引用は追加していない。既存APIの名前・型は変更していない。
 
+## U14b.51：Hom係数変更比較のH⁰内始域retract閉性（2026-10-17）
+
+- `ScalarHomHomotopyRetracts.lean`：加群ホモトピーで分裂する始域のretractに対し、
+  全次数Hom係数変更比較が各次数のホモロジー上でretractとなることを示し、擬同型条件の保存を証明した。
+- sourceの前合成ホモトピーを通常の複体系数拡大で送り、targetではU14b.50の実際の
+  加群ホモトピー保存を使う。非flat係数変更による任意の擬同型保存は仮定も結論もしていない。
+- H⁰内のretractの閉零射代表を取り出す形と、H⁰内の性質のretract閉性instanceを構成した。
+  代表加群がこの性質を満たすこともU14b.46の実際のYoneda同型から接続した。
+- `ChecksScalarHomHomotopyRetracts` 対象ビルド成功（3029 jobs）。主要5宣言の公理は標準3公理のみ。
+  U14b.50–51を公開入口へ接続し、`ChecksCompatibility` 統合対象ビルド成功（3156 jobs）。
+  既存APIの名前・型は変更していない。
+  一般のPerfへ進むためのshift・cone閉性と、実際のPerf係数変更比較は引き続き残る。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
