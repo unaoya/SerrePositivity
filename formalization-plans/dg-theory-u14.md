@@ -471,6 +471,16 @@
 - `ChecksHomotopyShiftCoherence` の対象ビルド成功。新規3主要宣言の公理は標準3公理のみ。
 - coneの連結射との比較、三角性、主導来圏・主Perfへの接続は引き続き残る。
 
+## U14b.21：正規化shiftとcone連結射の可換式（2026-10-17）
+
+- `ConeConnectingComparison.lean`：Mathlibの標準cone三角形の第三射が、次数1の
+  第一射影の負号付きである既存規約を使い、閉零連結射と正規化斉次射影の合成が
+  cone第一射影の負となることを主Hom end内で証明した。
+- 全Hom写像でこの恒等式を送り、正規化shift比較を通した連結射の評価公式と、
+  実際の加群cone比較・第三射の可換式を証明した。
+- `ChecksConeConnectingComparison` の対象ビルド成功。新規3主要宣言の公理は標準3公理のみ。
+- 三角形全体の同型と主K・主導来圏・主Perfの三角性への接続は引き続き残る。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
