@@ -129,6 +129,15 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra
 assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.colimitIsColimit
 assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.andreTowerAlgebra_hasColimitsOfShape
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.exists_root_successor
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFaithfullyFlat_self
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.rootSuccessor
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.rootSuccessorMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.rootSuccessorMap_roots
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.rootSuccessorStructure
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.andreTowerAlgebra_hasIterationOfShape
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed
+
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
@@ -155,7 +164,8 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.Transfinite.CountableRelations,
     `SerrePositivity.BhattScholze.Andre.Transfinite.AlgebraColimit,
     `SerrePositivity.BhattScholze.Andre.Transfinite.CompletionUniversal,
-    `SerrePositivity.BhattScholze.Andre.Transfinite.AlgebraCategory]
+    `SerrePositivity.BhattScholze.Andre.Transfinite.AlgebraCategory,
+    `SerrePositivity.BhattScholze.Andre.Transfinite.Existence]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
@@ -299,3 +309,12 @@ run_cmd do
 #print SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.colimitDesc_fac
 #print SerrePositivity.BhattScholze.Andre.Transfinite.AndreTowerAlgebra.colimitIsColimit
 #print SerrePositivity.BhattScholze.Andre.Transfinite.andreTowerAlgebra_hasColimitsOfShape
+
+#print SerrePositivity.BhattScholze.Andre.Transfinite.exists_root_successor
+#print SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFaithfullyFlat_self
+#print SerrePositivity.BhattScholze.Andre.Transfinite.rootSuccessor
+#print SerrePositivity.BhattScholze.Andre.Transfinite.rootSuccessorMap
+#print SerrePositivity.BhattScholze.Andre.Transfinite.rootSuccessorMap_roots
+#print SerrePositivity.BhattScholze.Andre.Transfinite.rootSuccessorStructure
+#print SerrePositivity.BhattScholze.Andre.Transfinite.andreTowerAlgebra_hasIterationOfShape
+#print SerrePositivity.BhattScholze.Andre.Transfinite.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed

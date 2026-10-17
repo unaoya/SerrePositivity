@@ -380,15 +380,67 @@ Cauchy 列だけでなく、全差の冪割算の証人とそれらの等式も�
 **未完了：** 訂正済み step から後続操作を作り、実際の ω₁ 反復を構成する工程。
 条件付き Thm 7.14 はまだ未公開。
 
+### E3.15：訂正済み step に相対的な Thm 7.14 の超限反復
+
+`Existence.lean` を追加。公開主定理は
+`SerrePositivity.BhattScholze.Andre.Transfinite.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed`。
+入力の `step` は、ユーザー承認済みの正次数条件だけを追加した次の型をそのまま使う。
+
+```lean
+theorem exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed
+    (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
+    (hR : IsIntegralPerfectoid R p)
+    (step : ∀ (B : Type u) [CommRing B] (_hB : IsIntegralPerfectoid B p)
+      {σ : Type u} (f : σ → Polynomial B),
+      (∀ s, (f s).Monic ∧ 0 < (f s).natDegree) →
+      ∃ (T : Type u) (_ : CommRing T) (φ : B →+* T) (ρ : σ → T),
+        IsIntegralPerfectoid T p ∧
+        (letI := φ.toAlgebra;
+          IsCompletelyFaithfullyFlat (Ideal.span {(p : B)}) T) ∧
+        ∀ s, (f s).eval₂ φ (ρ s) = 0) :
+    ∃ (S : Type u) (_ : CommRing S) (_ : Algebra R S),
+      IsIntegralPerfectoid S p ∧
+      IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) S ∧
+      IsAbsolutelyIntegrallyClosed S
+```
+
+結論の存在量化・代数構造・三性質は Inputs の元の主張と同じ。追加前提は上記 step のみ。
+`exists_root_successor` は全正次数モニック多項式の部分型を一度に step に入力する。
+`rootSuccessor`・`rootSuccessorMap`・`rootSuccessorMap_roots` と `rootSuccessorStructure` が
+同じ選択に付随する後続対象・射・根の存在と、初段 R の後続操作を構成する。
+`isCompletelyFaithfullyFlat_self` は初段の恒等係数射の条件を検証する。
+`andreTowerAlgebra_hasIterationOfShape` は全体と真の極限初期区間に E3.14 の実余極限を供給する。
+
+**原典・証明経路の記録：** BS Thm 7.14（著者版 p.61）の全モニックへの根添加の超限反復を、
+Mathlib の `SmallObject.SuccStruct.iterationFunctor` で実装。
+原典の環拡大の塔に対し、実装では固定初段 R からの完全忠実平坦性を各対象に保持する圏を使う。
+後続射は step の完全忠実平坦射。極限の全遷移射の完全忠実平坦性を追加仮定とせず、
+各段の R 上の完全忠実平坦性を E3.5・E3.10 によって保つ。
+ω₁ 未満の真の極限段では通常 p 進完備化した環余極限を実余極限として用いる。
+終段 S は完備化前の環余極限であり、可算個の元・割算の証人・等式の同時降下から
+自動的 p 進完備性を得る（E3.12）。そのため、終段で完備化後の新係数を扱う問題は生じない。
+各多項式の有限係数は一段に入り、その後続段の根を終段に写す。
+後続同型との両立性は元の反復函手の射の公式と `Polynomial.hom_eval₂` で照合する。
+各環・終段・添字は Type u。圏の対象型のみ Type (u+1)。
+
+対象 build 終了コード 0（3665 jobs、新規モジュール警告なし）。
+専用監査終了コード 0、公開全 119 宣言の assert_no_sorry と全 339 宣言の再帰監査に成功。
+標準 3 公理（propext・Classical.choice・Quot.sound）のみ。
+`#print` で主定理に余分な塔・余極限・ねじれ・比較の仮定が残らないことも確認した。
+
+**未解消：** 指定 step 自身の A1 による構成はこの工程の成果に含まれない。
+これは step に相対的な証明であり、無条件の BS Thm 7.14 の完成・引用解消としては数えない。
+Inputs の既存 sorry は編集していない。
+
 ### 残る範囲
 
-1. 有向系の p 進完備化の perfectoid 性は E3.9 で証明済み。各極限段の実際の塔への適用は残る。
-2. p 完全忠実平坦性の完備化による保存は E3.10 で証明済み。E3.5・E3.6 の余極限・合成と各段の射で結合する。
-3. 可算共終性の極限での完備化。ω₁ の可算上界条件と終段の自動的 p 進完備性は E3.2・E3.3 で証明済み。
-4. Type u に留まる ω₁ までの超限塔の構成、訂正済み step による後続段の供給。
-5. 元の Inputs と同じ結論の公開定理、A1 合流による step 解消と再監査。
+1. A1 の成果から、正次数条件付きの指定 step を仮定なしで供給する。
+   E1・E2 のモニック性と正次数が別引数なら、それぞれを組の第 1・第 2 成分により接続する。
+2. 供給された step を E3.15 に入力し、余分な仮定のない元の署名で再監査する。
+3. 完了報告後に別コミットで `BhattScholze/Inputs/AndreFlatness.lean` の既存 sorry を置換する。
 
-したがって E3.1 は一般論の部品であり、条件付きの Thm 7.14 自体もまだ証明していない。
+超限反復・極限の perfectoid 性・完全忠実平坦性・終段の根の存在は E3.15 の条件付き主定理に統合済み。
+**未完了なのは step の解消と、その後の Inputs の置換である。条件付き成果を無条件の完成と数えない。**
 `BhattScholze/Inputs/AndreFlatness.lean` は編集していない。
 
 ## E1・E2：モニック根付き拡大（2026-10-17）
