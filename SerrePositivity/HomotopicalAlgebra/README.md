@@ -3357,3 +3357,15 @@ SSet.{v}値の実図式、制限した既存の合成選択空間との対象ご
 制限式と、左右の四面体写像全体の厳密な恒等・合成則を証明する。モデル構造は不要である。
 元のnative三重合成円板と四面体を、独立したu・vのまま制限する利用例も検証した。
 受入検証は`check_comparison_coherence_restriction`（65宣言・2モジュール）。
+
+
+### 元の合成比較・単位比較・定数区間を保つ左右単位の整合性（§386）
+
+`BinaryIntervalTriangles`は二つの指定区間の三角形を明示的に構成し全三辺を保持する。
+`ClosedParameterUnits`は任意の共有パラメータ・全区間での内部Homの厳密な単位則を証明する。
+`ComparisonTriangleDegeneracy`は退化円錐三角形と往復比較の四面体を構成し、定数辺を保持する。
+`OrdinaryBarUnitTriangles`は元の単位・合成比較をそのまま左右の往路・復路三角形に接続する。
+`OrdinaryBarUnitCoherence`は以前の合成三角形を面に保つ四面体を作り、残る面の全三辺を証明する。
+降下作用の単位則を厳密化したとの主張はせず、全次数の構成と小さいRMapへの接続は残る。
+受入検証は`check_comparison_unit_triangles`（47宣言・3モジュール）と
+`check_native_unit_coherence`（69宣言・2モジュール）。
