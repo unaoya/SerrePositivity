@@ -423,3 +423,32 @@ differential_eq_zero_on_stageZero (k : ℤ) {x : P.X k}
 未完了：cocone の余極限性、自由商の表示、既存 filtration との同値、cone の高さ再構成。
 これらの未完了を `ComplexSemifreeBasis` の存在仮定で代替して完了とはしない。
 D2i は D2h 後の任意工程で未着手。D1 の quasicategory は N2 完了記録待ち。
+
+### D2h semibasis の段の余極限（2026-10-17）
+
+`Derived/SemifreeBasisColimit.lean` を追加し、高さで切った部分複体の cocone の
+余極限普遍性を証明した。namespace は `SerrePositivity.InfinityCategories.ComplexSemifreeBasis`。
+以下の共通引数は `{S : Type u} [CommRing S] {P : Complex S} (B : ComplexSemifreeBasis S P)`。
+公開宣言の正確な残りの型：
+```lean
+basis_mem_stage (k : ℤ) (i : B.Index k) (n : ℕ) (h : B.height k i ≤ n) :
+  B.basis k i ∈ B.stageSubmodule n k
+colimitComponent (c : CategoryTheory.Limits.Cocone B.stageDiagram) (k : ℤ) :
+  P.X k →ₗ[S] c.pt.X k
+colimitComponent_comm (c : CategoryTheory.Limits.Cocone B.stageDiagram) (k : ℤ) :
+  ModuleCat.ofHom (B.colimitComponent c k) ≫ c.pt.d k (k + 1) =
+    P.d k (k + 1) ≫ ModuleCat.ofHom (B.colimitComponent c (k + 1))
+stageColimitDesc (c : CategoryTheory.Limits.Cocone B.stageDiagram) : P ⟶ c.pt
+stageColimitDesc_fac (c : CategoryTheory.Limits.Cocone B.stageDiagram) (n : ℕ) :
+  B.stageInclusion n ≫ B.stageColimitDesc c = c.ι.app n
+stageCoconeIsColimit : CategoryTheory.Limits.IsColimit B.stageCocone
+```
+各基底元をその高さの段から写すことで線形延長し、線形包上の帰納で各段との一致を証明した。
+各斉次要素がある段に属することから微分との可換性を示し、基底元上の値で一意性を示した。
+追加の有界性・有限生成性の仮定はない。
+
+`set -o pipefail; lake build SerrePositivity.InfinityCategories.Derived` は終了コード 0（3615 jobs）。
+`set -o pipefail; lake env lean scripts/audit_derived_infinity.lean` は終了コード 0。
+新規公開6宣言と、10モジュール206宣言の公理は標準3公理のみ。
+未完了：自由商の表示、既存 filtration との同値、cone の高さ再構成と閉性。
+D2h 全体を完成とは数えない。D2i は未着手、D1 の quasicategory は N2 完了記録待ち。

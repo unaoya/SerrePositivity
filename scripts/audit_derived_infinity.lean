@@ -89,6 +89,13 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.stageCocone
 #print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.differential_eq_zero_on_stageZero
 
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.basis_mem_stage
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.colimitComponent
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.colimitComponent_comm
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.stageColimitDesc
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.stageColimitDesc_fac
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.stageCoconeIsColimit
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -101,6 +108,7 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.InfinityCategory,
     `SerrePositivity.InfinityCategories.Derived.SemifreeClosure,
     `SerrePositivity.InfinityCategories.Derived.SemifreeBasis,
+    `SerrePositivity.InfinityCategories.Derived.SemifreeBasisColimit,
     `SerrePositivity.InfinityCategories.Derived.DerivedComparisonShift]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
