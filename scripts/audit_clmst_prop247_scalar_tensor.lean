@@ -1,0 +1,7 @@
+import SerrePositivity.CommutativeAlgebra.ScalarIsogenyTensor
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.exists_tensor_unit_scalar_inverse_of_ker_coker_annihilated
+assert_no_sorry SerrePositivity.tensor_unit_ker_coker_annihilated
+#print axioms SerrePositivity.exists_tensor_unit_scalar_inverse_of_ker_coker_annihilated
+#print axioms SerrePositivity.tensor_unit_ker_coker_annihilated
