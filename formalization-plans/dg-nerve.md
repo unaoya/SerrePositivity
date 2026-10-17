@@ -5638,6 +5638,303 @@ N7a を ∞ 極限定理の完成とは数えない。設計 §3 の変更はな
 既存576件の公理監査を再照合し標準三公理の範囲内。
 新規の公理・引用・穴は追加していない。次は N7b の零対象の直接の境界充填へ進む。
 
+### N7b：複体 dg nerve の零終対象・零始対象（2026-10-18、N7c へ継続）
+
+任意の `A : Type u`、`[CommRing A]` と任意の `Z : Complex A`、`hZ : IsZero Z` に対して、
+`isTerminalVertex_of_isZero Z hZ` と `isInitialVertex_of_isZero Z hZ` を直接の境界充填で証明した。
+特に `isTerminalVertex_zero A` と `isInitialVertex_zero A` が零複体そのものの両性質を与える。
+有界性・平坦性・非零性などの追加仮定はない。
+
+`ZeroFunctor.lean` は零定値 dg 関手と両方向の閉零成分の厳密自然変換を構成する。
+単位・合成・自然性は零複体へ向かう、またはそこから出る全次数 Hom の零性から従う。
+`ZeroExtension.lean` は最後の退化を零自然変換の二相の単体で写すことにより、
+任意の単体の末尾へ零頂点を加える `appendZero` を構成した。
+N5 の既に全成分で検証した構成を使うため、全単体方程式は追加仮定なく成立する。
+最終頂点が Z であることと、先頭面が元の単体であることを計算した。
+`ZeroInitialExtension.lean` は逆向きの零自然変換で先頭に零を加える双対の `prependZero` を構成する。
+この構成は抽象的な終対象判定を用いず、零成分の有限代数計算を再利用するもの。
+
+`ZeroExtensionality.lean` の `Simplex.ext_of_zero_last` は、零終端を持つ単体が先頭面で決まると示す。
+終端を使う Hom 成分は零、残りは先頭面の単射な像の成分として比較する。
+始域側の双対 `Simplex.ext_of_zero_first` も証明した。
+`BoundaryEvaluation.lean` は一般の単体的集合の指定境界について、各面の頂点と共通面の一致を示す。
+Core の定義・証明は一切編集していない。
+
+`ZeroTerminal.lean` は指定された任意の境界の先頭面へ零を追加する。
+最終面は構成で一致し、他の面は零終端と共通の先頭面の一致から外延性で一致する。
+次元一の境界も零単体と対象の同値を用いて直接確認した。
+全ての面で一致するため境界の外延性で指定された境界の延長を得る。
+`ZeroInitial.lean` は後続面から同じ議論の双対を行い、`ZeroObject.lean` は零複体へ適用する。
+終端・始域を固定した全ての正次元境界を扱い、任意に選んだ境界だけを埋めた主張ではない。
+
+今回の N7b の証明済みの範囲は複体 dg 圏。充満 dg 部分圏への制限は N7d で扱う。
+任意の抽象 dg 圏に零対象の構造を新設して一般化したという主張はしない。
+N7c〜N7e は未完了であり、ここで N7 全体の完了とは数えない。
+
+新規公開33宣言の正確な型は以下。
+共通に `{A : Type u} [CommRing A]`、`open CategoryTheory Limits DifferentialGraded` を用い、
+BoundaryEvaluation では環を使わず任意の `X : SSet.{u}` を扱う。
+`open scoped Simplicial` は面・境界の記法、ZeroObject の `open scoped ZeroObject` は零複体の記法。
+型中の `IsTerminalVertex`・`IsInitialVertex`・`boundaryVertex` は Core の定義そのもの。
+
+`SerrePositivity.InfinityCategories.DGNerve.constantZeroFunctor`
+
+```lean
+def constantZeroFunctor (Z : Complex A) (hZ : IsZero Z) : DGFunctor A (Complex A) (Complex A)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.toZeroStrict`
+
+```lean
+def toZeroStrict (Z : Complex A) (hZ : IsZero Z) :
+    StrictNatTrans (DGFunctor.id (Complex A)) (constantZeroFunctor Z hZ)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fromZeroStrict`
+
+```lean
+def fromZeroStrict (Z : Complex A) (hZ : IsZero Z) :
+    StrictNatTrans (constantZeroFunctor Z hZ) (DGFunctor.id (Complex A))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.terminalPhase`
+
+```lean
+def terminalPhase (n : ℕ) : Fin (n + 2) →o Fin 2
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.terminalPhase_castSucc`
+
+```lean
+lemma terminalPhase_castSucc (n : ℕ) (i : Fin (n + 1)) : terminalPhase n i.castSucc = 0
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.terminalPhase_last`
+
+```lean
+lemma terminalPhase_last (n : ℕ) : terminalPhase n (Fin.last (n + 1)) = 1
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.appendZero`
+
+```lean
+def appendZero (Z : Complex A) (hZ : IsZero Z) {n : ℕ} (s : Simplex A (Complex A) n) :
+    Simplex A (Complex A) (n + 1)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.appendZero_last`
+
+```lean
+lemma appendZero_last (Z : Complex A) (hZ : IsZero Z) {n : ℕ} (s : Simplex A (Complex A) n) :
+    (appendZero Z hZ s).obj (Fin.last (n + 1)) = Z
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.appendZero_front`
+
+```lean
+lemma appendZero_front (Z : Complex A) (hZ : IsZero Z) {n : ℕ} (s : Simplex A (Complex A) n) :
+    (appendZero Z hZ s).pullback Fin.castSuccOrderEmb.toOrderHom = s
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.zeroGradedHom_heq`
+
+```lean
+lemma zeroGradedHom_heq {D : Type v} [DGCategory A D] {x y x' y' : D}
+    (hx : x = x') (hy : y = y') (k : ℤ) :
+    HEq (0 : GradedHom A x y k) (0 : GradedHom A x' y' k)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.Simplex.ext_of_zero_last`
+
+```lean
+lemma Simplex.ext_of_zero_last (Z : Complex A) (hZ : IsZero Z) {n : ℕ}
+    (s t : Simplex A (Complex A) (n + 1))
+    (hf : s.pullback Fin.castSuccOrderEmb.toOrderHom = t.pullback Fin.castSuccOrderEmb.toOrderHom)
+    (hs : s.obj (Fin.last (n + 1)) = Z) (ht : t.obj (Fin.last (n + 1)) = Z) : s = t
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.BoundaryData.face`
+
+```lean
+def face {X : SSet.{u}} {n : ℕ} (b : (SSet.boundary (n + 1) : SSet.{u}) ⟶ X)
+    (i : Fin (n + 2)) : X _⦋n⦌
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.BoundaryData.vertex_face`
+
+```lean
+lemma vertex_face {n : ℕ} (j : Fin (n + 2)) (k : Fin (n + 1)) :
+    SSet.stdSimplex.map (SimplexCategory.const ⦋0⦌ ⦋n⦌ k) ≫ SSet.boundary.ι.{u} j =
+      boundaryVertex n (j.succAbove k)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.BoundaryData.face_vertex`
+
+```lean
+lemma face_vertex {X : SSet.{u}} {n : ℕ}
+    (b : (SSet.boundary (n + 1) : SSet.{u}) ⟶ X)
+    (j : Fin (n + 2)) (k : Fin (n + 1)) :
+    X.map (SimplexCategory.const ⦋0⦌ ⦋n⦌ k).op (face b j) =
+      SSet.yonedaEquiv (boundaryVertex n (j.succAbove k) ≫ b)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.BoundaryData.face_front`
+
+```lean
+lemma face_front {X : SSet.{u}} {n : ℕ}
+    (b : (SSet.boundary (n + 2) : SSet.{u}) ⟶ X) (j : Fin (n + 2)) :
+    X.δ (Fin.last (n + 1)) (face b j.castSucc) =
+      X.δ j (face b (Fin.last (n + 2)))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.BoundaryData.face_back`
+
+```lean
+lemma face_back {X : SSet.{u}} {n : ℕ}
+    (b : (SSet.boundary (n + 2) : SSet.{u}) ⟶ X) (j : Fin (n + 2)) :
+    X.δ 0 (face b j.succ) = X.δ j (face b 0)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.δ_last_pullback`
+
+```lean
+lemma δ_last_pullback {D : Type v} [DGCategory A D] {n : ℕ} (s : Simplex A D (n + 1)) :
+    (dgNerve A D).δ (Fin.last (n + 1)) s = s.pullback Fin.castSuccOrderEmb.toOrderHom
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.BoundaryData.face_last_obj`
+
+```lean
+lemma BoundaryData.face_last_obj (Z : Complex A) {n : ℕ}
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶ dgNerve A (Complex A))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b = SSet.yonedaEquiv.symm (Simplex.vertex Z))
+    (j : Fin (n + 2)) (hj : j ≠ Fin.last (n + 1)) :
+    (BoundaryData.face b j).obj (Fin.last n) = Z
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.appendZero_boundary_face`
+
+```lean
+lemma appendZero_boundary_face (Z : Complex A) (hZ : IsZero Z) {n : ℕ}
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶ dgNerve A (Complex A))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b = SSet.yonedaEquiv.symm (Simplex.vertex Z))
+    (j : Fin (n + 2)) :
+    (dgNerve A (Complex A)).δ j (appendZero Z hZ (BoundaryData.face b (Fin.last (n + 1)))) =
+      BoundaryData.face b j
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.isTerminalVertex_of_isZero`
+
+```lean
+lemma isTerminalVertex_of_isZero (Z : Complex A) (hZ : IsZero Z) :
+    IsTerminalVertex (X
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.initialPhase`
+
+```lean
+def initialPhase (n : ℕ) : Fin (n + 2) →o Fin 2
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.initialPhase_succ`
+
+```lean
+lemma initialPhase_succ (n : ℕ) (i : Fin (n + 1)) : initialPhase n i.succ = 1
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.initialPhase_zero`
+
+```lean
+lemma initialPhase_zero (n : ℕ) : initialPhase n 0 = 0
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.prependZero`
+
+```lean
+def prependZero (Z : Complex A) (hZ : IsZero Z) {n : ℕ} (s : Simplex A (Complex A) n) :
+    Simplex A (Complex A) (n + 1)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.prependZero_first`
+
+```lean
+lemma prependZero_first (Z : Complex A) (hZ : IsZero Z) {n : ℕ} (s : Simplex A (Complex A) n) :
+    (prependZero Z hZ s).obj 0 = Z
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.prependZero_back`
+
+```lean
+lemma prependZero_back (Z : Complex A) (hZ : IsZero Z) {n : ℕ} (s : Simplex A (Complex A) n) :
+    (prependZero Z hZ s).pullback (Fin.succOrderEmb (n + 1)).toOrderHom = s
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.Simplex.ext_of_zero_first`
+
+```lean
+lemma Simplex.ext_of_zero_first (Z : Complex A) (hZ : IsZero Z) {n : ℕ}
+    (s t : Simplex A (Complex A) (n + 1))
+    (hf : s.pullback (Fin.succOrderEmb (n + 1)).toOrderHom =
+      t.pullback (Fin.succOrderEmb (n + 1)).toOrderHom)
+    (hs : s.obj 0 = Z) (ht : t.obj 0 = Z) : s = t
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.δ_zero_pullback`
+
+```lean
+lemma δ_zero_pullback {D : Type v} [DGCategory A D] {n : ℕ} (s : Simplex A D (n + 1)) :
+    (dgNerve A D).δ 0 s = s.pullback (Fin.succOrderEmb (n + 1)).toOrderHom
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.BoundaryData.face_first_obj`
+
+```lean
+lemma BoundaryData.face_first_obj (Z : Complex A) {n : ℕ}
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶ dgNerve A (Complex A))
+    (hb : boundaryVertex n 0 ≫ b = SSet.yonedaEquiv.symm (Simplex.vertex Z))
+    (j : Fin (n + 2)) (hj : j ≠ 0) : (BoundaryData.face b j).obj 0 = Z
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.prependZero_boundary_face`
+
+```lean
+lemma prependZero_boundary_face (Z : Complex A) (hZ : IsZero Z) {n : ℕ}
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶ dgNerve A (Complex A))
+    (hb : boundaryVertex n 0 ≫ b = SSet.yonedaEquiv.symm (Simplex.vertex Z))
+    (j : Fin (n + 2)) :
+    (dgNerve A (Complex A)).δ j (prependZero Z hZ (BoundaryData.face b 0)) =
+      BoundaryData.face b j
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.isInitialVertex_of_isZero`
+
+```lean
+lemma isInitialVertex_of_isZero (Z : Complex A) (hZ : IsZero Z) :
+    IsInitialVertex (X
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.isTerminalVertex_zero`
+
+```lean
+lemma isTerminalVertex_zero :
+    IsTerminalVertex (X
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.isInitialVertex_zero`
+
+```lean
+lemma isInitialVertex_zero :
+    IsInitialVertex (X
+```
+
+検証：`set -e; set -o pipefail` の下で
+`lake build SerrePositivity.InfinityCategories.DGNerve.ZeroObject SerrePositivity.InfinityCategories.DGNerve`
+が終了コード 0（3585 jobs）。続く `lake env lean scripts/audit_dg_nerve.lean` も終了コード 0。
+全ソースの公開宣言604件の型検査と、N0 の既存5則を含む609件の公理監査の網羅性を照合し、
+全て標準三公理の範囲内。新規33宣言も全件監査済み。新しい穴・公理・引用はない。
+ユーザーが追記済みの §7 は作業ツリーにそのまま保持し、この保存のコミットには混ぜない。
+次は N7c の標準 fiber と Hom 複体の厳密な座標表示・錐・直接の ∞ 引き戻し充填へ進む。
+
 ## 6. 次のマイルストーン D（本計画の範囲外）
 
 - Semifree(S) を `DGFullSubcategory`（`moduleSemifree` または一点 dg 圏上の複体版）として置き、

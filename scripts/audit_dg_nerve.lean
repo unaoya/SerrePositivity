@@ -2,14 +2,14 @@ import SerrePositivity.InfinityCategories.DGNerve
 /-!
 # dg nerve の公開宣言の公理監査
 
-概要：N0 の既存則と N1〜N6 の全ての明示的な公開宣言を監査する。
+概要：N0 の既存則と N1〜N7 の実装済みの全ての明示的な公開宣言を監査する。
 方針：各工程で公開宣言の公理表示と型の検査を追加する。
 規約：許される公理は propext・Classical.choice・Quot.sound のみ。
 使われ方：対象ビルド後に `lake env lean scripts/audit_dg_nerve.lean` を実行する。
 原典：HA Construction 1.3.1.6、Proposition 1.3.1.10。
 dg nerve と内部ホーン充填および quasicategory instance を監査する。
 ホモトピー圏と H⁰ の比較、右 pinched Hom の線形表示・加群構造・Kan 性・π₀ 比較、
-一点 dg 圏と非有界複体 dg 圏の N6 の具体例も監査する。
+一点 dg 圏と非有界複体 dg 圏の N6 の具体例、N7b の零始対象・零終対象も監査する。
 -/
 
 noncomputable section
@@ -1175,6 +1175,73 @@ noncomputable section
 #check @SerrePositivity.InfinityCategories.DGNerve.Checks.complex_compose
 #print axioms SerrePositivity.InfinityCategories.DGNerve.Checks.complex_triangle_equation
 #check @SerrePositivity.InfinityCategories.DGNerve.Checks.complex_triangle_equation
+
+#print axioms SerrePositivity.InfinityCategories.DGNerve.constantZeroFunctor
+#check @SerrePositivity.InfinityCategories.DGNerve.constantZeroFunctor
+#print axioms SerrePositivity.InfinityCategories.DGNerve.toZeroStrict
+#check @SerrePositivity.InfinityCategories.DGNerve.toZeroStrict
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fromZeroStrict
+#check @SerrePositivity.InfinityCategories.DGNerve.fromZeroStrict
+#print axioms SerrePositivity.InfinityCategories.DGNerve.terminalPhase
+#check @SerrePositivity.InfinityCategories.DGNerve.terminalPhase
+#print axioms SerrePositivity.InfinityCategories.DGNerve.terminalPhase_castSucc
+#check @SerrePositivity.InfinityCategories.DGNerve.terminalPhase_castSucc
+#print axioms SerrePositivity.InfinityCategories.DGNerve.terminalPhase_last
+#check @SerrePositivity.InfinityCategories.DGNerve.terminalPhase_last
+#print axioms SerrePositivity.InfinityCategories.DGNerve.appendZero
+#check @SerrePositivity.InfinityCategories.DGNerve.appendZero
+#print axioms SerrePositivity.InfinityCategories.DGNerve.appendZero_last
+#check @SerrePositivity.InfinityCategories.DGNerve.appendZero_last
+#print axioms SerrePositivity.InfinityCategories.DGNerve.appendZero_front
+#check @SerrePositivity.InfinityCategories.DGNerve.appendZero_front
+#print axioms SerrePositivity.InfinityCategories.DGNerve.zeroGradedHom_heq
+#check @SerrePositivity.InfinityCategories.DGNerve.zeroGradedHom_heq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Simplex.ext_of_zero_last
+#check @SerrePositivity.InfinityCategories.DGNerve.Simplex.ext_of_zero_last
+#print axioms SerrePositivity.InfinityCategories.DGNerve.BoundaryData.face
+#check @SerrePositivity.InfinityCategories.DGNerve.BoundaryData.face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.BoundaryData.vertex_face
+#check @SerrePositivity.InfinityCategories.DGNerve.BoundaryData.vertex_face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.BoundaryData.face_vertex
+#check @SerrePositivity.InfinityCategories.DGNerve.BoundaryData.face_vertex
+#print axioms SerrePositivity.InfinityCategories.DGNerve.BoundaryData.face_front
+#check @SerrePositivity.InfinityCategories.DGNerve.BoundaryData.face_front
+#print axioms SerrePositivity.InfinityCategories.DGNerve.BoundaryData.face_back
+#check @SerrePositivity.InfinityCategories.DGNerve.BoundaryData.face_back
+#print axioms SerrePositivity.InfinityCategories.DGNerve.δ_last_pullback
+#check @SerrePositivity.InfinityCategories.DGNerve.δ_last_pullback
+#print axioms SerrePositivity.InfinityCategories.DGNerve.BoundaryData.face_last_obj
+#check @SerrePositivity.InfinityCategories.DGNerve.BoundaryData.face_last_obj
+#print axioms SerrePositivity.InfinityCategories.DGNerve.appendZero_boundary_face
+#check @SerrePositivity.InfinityCategories.DGNerve.appendZero_boundary_face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.isTerminalVertex_of_isZero
+#check @SerrePositivity.InfinityCategories.DGNerve.isTerminalVertex_of_isZero
+#print axioms SerrePositivity.InfinityCategories.DGNerve.initialPhase
+#check @SerrePositivity.InfinityCategories.DGNerve.initialPhase
+#print axioms SerrePositivity.InfinityCategories.DGNerve.initialPhase_succ
+#check @SerrePositivity.InfinityCategories.DGNerve.initialPhase_succ
+#print axioms SerrePositivity.InfinityCategories.DGNerve.initialPhase_zero
+#check @SerrePositivity.InfinityCategories.DGNerve.initialPhase_zero
+#print axioms SerrePositivity.InfinityCategories.DGNerve.prependZero
+#check @SerrePositivity.InfinityCategories.DGNerve.prependZero
+#print axioms SerrePositivity.InfinityCategories.DGNerve.prependZero_first
+#check @SerrePositivity.InfinityCategories.DGNerve.prependZero_first
+#print axioms SerrePositivity.InfinityCategories.DGNerve.prependZero_back
+#check @SerrePositivity.InfinityCategories.DGNerve.prependZero_back
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Simplex.ext_of_zero_first
+#check @SerrePositivity.InfinityCategories.DGNerve.Simplex.ext_of_zero_first
+#print axioms SerrePositivity.InfinityCategories.DGNerve.δ_zero_pullback
+#check @SerrePositivity.InfinityCategories.DGNerve.δ_zero_pullback
+#print axioms SerrePositivity.InfinityCategories.DGNerve.BoundaryData.face_first_obj
+#check @SerrePositivity.InfinityCategories.DGNerve.BoundaryData.face_first_obj
+#print axioms SerrePositivity.InfinityCategories.DGNerve.prependZero_boundary_face
+#check @SerrePositivity.InfinityCategories.DGNerve.prependZero_boundary_face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.isInitialVertex_of_isZero
+#check @SerrePositivity.InfinityCategories.DGNerve.isInitialVertex_of_isZero
+#print axioms SerrePositivity.InfinityCategories.DGNerve.isTerminalVertex_zero
+#check @SerrePositivity.InfinityCategories.DGNerve.isTerminalVertex_zero
+#print axioms SerrePositivity.InfinityCategories.DGNerve.isInitialVertex_zero
+#check @SerrePositivity.InfinityCategories.DGNerve.isInitialVertex_zero
 
 section
 universe u v

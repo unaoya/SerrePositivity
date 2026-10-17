@@ -755,3 +755,20 @@ m=1 では r₀=0（V は辺）、a は閉零射、残りの式が二つの錐�
 N7c ではこの代数計算だけでなく、join の成分回収の選択独立性、全次数の符号移送、
 既知境界との一致、`JoinCone` と正方形の比較まで Lean で検証する必要がある。
 N7b〜N7e は未完了であり、本紙の明示解を無条件の ∞ 引き戻し定理とは数えない。
+
+## N7.2：複体 dg nerve の零対象（2026-10-18）
+
+任意の可換環 A と任意の零対象 `Z : Complex A` に対し、
+`DGNerve.isTerminalVertex_of_isZero Z hZ` と `DGNerve.isInitialVertex_of_isZero Z hZ` を証明した。
+`isTerminalVertex_zero A` と `isInitialVertex_zero A` は零複体そのものへの適用。
+追加の有界性・平坦性の仮定はない。
+
+零定値 dg 関手と両方向の零自然変換から、`appendZero`・`prependZero` は任意の単体に零頂点を加える。
+終端へ向かう成分、始域から出る成分は全次数で零なので、単体は残りの面で一意に決まる。
+指定された任意の境界にこの拡張を適用し、共通面と端点を比較して全ての境界面との一致を証明した。
+Core の境界充填による `IsTerminalVertex` と `IsInitialVertex` を直接満たし、次元一も含む。
+
+対象 `ZeroObject` と集約 `DGNerve` のビルドは終了コード 0（3585 jobs）。
+全公開宣言604件の型検査、既存5則を含む609件の公理監査は標準三公理の範囲内。
+正確な新規公開型と前提は計画 §5 の N7b に記録した。
+N7b の複体版は完了。充満部分圏への制限は N7d、fiber の錐と引き戻しは N7c 以降の未完了範囲。
