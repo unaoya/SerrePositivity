@@ -8747,3 +8747,42 @@ replacementのLeibnizを証明する。その後、全Hom直和の最終合成ch
 今回の元のHomの先頭作用だけで、二つのattachedHom間の合成や最終dg圏を構成済みとはしない。
 増大・cell充填、最終Hom K-flat性、解像度の存在と比較、U12e全受入・U16も未完。
 §0の分担・U15e/U17の合流条件を維持し、共有一般論への新しいAPI要求はない。
+
+
+### 17.193 U12e34：全Homの先頭境界・置換再帰式と連結の先頭項（2026-10-17）
+
+`Complexes/TensorCarryCochain.lean`の**tensorRight_cochain_chain_naturality**は
+任意次数cochainと右因子のchain mapの自然性。
+**tensorCarry_cochain/tensorRight_action_cochain**は結合的な作用の下でのcochainの連結への輸送を証明する。
+`PrefixTensorCochainPostcompose.lean`の**prefixTensor_cochain_middle_postcompose**と
+**prefixTensor_cochain_right_postcompose**は前方二因子を保つ輸送に後合成を加えたもの。
+いずれも具体的な非有界複体tensorの補題で、共有の任意V一般論は追加していない。
+
+`Resolution/Cells/InternalBoundaryHead.lean`の**Family.internalReplaceHead/internalReplaceFirst**は、
+先頭生成元の指定境界を全Hom直和へ作用させる次数+1 cochain。
+前者はgenerator⊗Hom(target,y)→Hom(source,y)、後者は前方Homを戻したもの。
+**internalReplaceHead_inclusion/internalReplaceFirst_inclusion**で有限path上の既存置換に一致する。
+`BoundaryRowRecursion.lean`の**prefixTailCochain/replaceSummand_cons_succ/replaceRow_cons**は、
+先頭生成元の境界置換と後方の置換和への分解を与える。
+`PrefixBoundary.lean`の**prefixPath_replacement**がこの分解を全Hom直和上の作用素へ移す。
+`AppendBoundaryHead.lean`の**appendRight_replaceHead/appendRight_replaceFirst**は、
+後方pathの連結と先頭生成元の境界置換との整合性を証明する。
+任意整数次数・別端点・独立対象/添字宇宙を保持し、HomのflatnessやDのsmallnessは要求しない。
+公開APIの名前・型の変更はない。
+
+Checks.DGCellBoundaryRecursion・Checks.DGCellPrependDifferential・Checks.DGCellInternalComposition・
+Checks.DGCellDifferential・Checks.DGCategoryResolution・Checks.DerivedBimoduleFullPentagon・
+Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功
+（3163 jobs、終了コード0、警告なし）。主要15宣言の直接公理監査は標準3公理のみ。
+ZMod 2、任意次数・別端点の先頭境界作用素と全path再帰式を型検査した。
+監査累計3636宣言。今回の受入部分にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は15 Markdown・320 exposition参照を検査し、担当外BhattScholze互換宣言の
+未解決参照1件で失敗した。共有ルート・共有一般論・並行所有ファイルは編集していない。
+
+後方cochainの持ち上げと全Leibnizの接続は進行中である。
+`AppendLiftCochain.lean`の標準heartbeat内の型照合が未解決で、
+同ファイルを通るCompositionDifferentialの対象ビルドはまだ失敗している。
+この持ち上げと依存する一般Leibniz・最終合成の草稿は未受入・未コミットであり、
+今回の成功した統合ビルドには含めていない。標準上限を引き上げず、式の計算・輸送の粒度を整理して続ける。
+これらの完成、最終dg圏instance、増大・cell充填、最終K-flat性、解像度の存在と比較、
+U12e全受入・U16は引き続き未完。§0の分担とU15e/U17の合流条件を維持する。
