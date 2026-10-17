@@ -116,8 +116,23 @@ def kernelCompositionIso (hD : localHomKFlat A D)
 ```
 
 恒等比較にlocalHomKFlatは不要。合成比較はU12e-localの結合子と同じく始域Dだけに条件を置く。
-合成比較の公開型は実装・検証済みで、入力導来加群への自然性を持つ。kernel射の自然性・作用coherenceは未完。
-kernelComposeMapへの自然性、恒等と三因子の結合比較のcoherenceはCoherence*で証明する。
+合成比較は入力導来加群と両kernelの任意の主導来射に自然（U16a9）。
+kernelComposeMapへの自然性はkernelCompositionIso_naturalityで利用できる。
+恒等と三因子の結合比較のcoherenceは未完で、Coherence*で続ける。
+
+```lean
+lemma kernelCompositionIso_naturality (hD : localHomKFlat A D)
+  {P P' : Kernel A D E} {Q Q' : Kernel A E F} (f : P ⟶ P') (g : Q ⟶ Q') :
+  NatTrans.hcomp ((kernelDerivedTensorFunctor A D E).map f)
+      ((kernelDerivedTensorFunctor A E F).map g) ≫
+      (kernelCompositionIso A D E F hD P' Q').hom =
+    (kernelCompositionIso A D E F hD P Q).hom ≫
+      (kernelDerivedTensorFunctor A D F).map (kernelComposeMap A D E F hD f g)
+lemma kernelCompositionIso_kFlat (hD : localHomKFlat A D)
+  (P : RightKFlatBimoduleCategory A E D) (Q : BimoduleCategory A F E) :
+  kernelCompositionIso A D E F hD ((bimoduleToDerived A E D).obj P.obj)
+      ((bimoduleToDerived A F E).obj Q) = kernelCompositionKFlatIso A D E F hD P Q
+```
 三因子D→E→F→Gで必要なのは既存結合子に現れるD・EのlocalHomKFlat。
 同じkernel・固定dg圏の契約とし、中断した一般分解変更のcoherenceを待たない。
 
@@ -130,7 +145,7 @@ kernelComposeMapへの自然性、恒等と三因子の結合比較のcoherence�
 | 主導来作用・任意解像度計算 | 実装・検証済み（U16a3） | Morita/KernelDerivedFunctor.leanをimportして利用できる |
 | 一般右随伴・unit/counit | 型のみ確定 | 同上 |
 | 恒等作用比較 | 実装・検証済み（U16a4） | Morita/CoherenceIdentity.leanのkernelIdentityIso |
-| 合成の作用比較 | 実装・検証済み（U16a6）。kernel射の自然性と作用coherenceは未完 | Morita/CoherenceComposition.leanのkernelCompositionIso |
+| 合成の作用比較・全kernel射の自然性 | 実装・検証済み（U16a9）。恒等・結合coherenceは未完 | Morita/CoherenceComposition.leanのkernelCompositionIso・kernelCompositionIso_naturality・kernelCompositionIso_kFlat |
 
 U16b担当が構成するgraph作用と`dgDerivedExtension`の自然同型はQuasiEquivalence*に置く。
 このチャットは同ファイルを編集しない。導来作用が未実装の間も、通常graph一致はKernelTensorで提供する。
@@ -395,3 +410,34 @@ kernelDerivedTensorOnBimoduleCompositionIso_hom_appは、全導来入力へ延�
 全導来kernelのkernelCompositionIsoの射自然性・代表選択の整合性と作用coherenceは未完。
 次はモデル比較のkernel自然性と今回の成分計算を主局所化からの自然変換の一意性で接続し、
 K-flatkernel局所化と主導来kernel圏の比較へ運ぶ。一般右随伴・unit/counit、U16a全受入とU16cも未完。
+
+
+## U16a9：積局所化による全導来kernel射の自然性（2026-10-17）
+
+CoherenceCompositionDerivedNaturalityは、通常kernelの導来作用合成比較を両kernel射に自然にした。
+KernelComparisonNaturalityは主導来作用と通常代表作用の比較、およびその水平合成の自然性。
+CoherenceCompositionValueNaturalityはU12e-localのK-flat値計算を両kernel射に自然な一つのsquareへまとめる。
+CoherenceCompositionFamiliesは作用の合成族・合成kernelの作用族、CoherenceCompositionLocalizationは
+それらの積圏表示とkernelCompositionModelsを定義する。射のクラスは
+rightKFlatQuasiIsoとBimoduleCategory.quasiIsoの積。始域DのlocalHomKFlatの下で積関手が指定局所化になる。
+Mathlibの積局所化と既存rightKFlatDerivedEquivalenceを使い、一般の分解経路は経由しない。
+
+CoherenceCompositionNaturalIsoはモデル上の三つの自然な比較を合成し、
+kernelCompositionNaturalIsoを積局所化から全導来kernelへ延長する。
+CoherenceCompositionのkernelCompositionIsoは、同じ公開型のままこの自然な族の成分へ更新した。
+公開名・型・仮定・向きの変更はなく、利用側の移行は不要。
+kernelCompositionIso_naturalityは両kernelの任意の主導来射に対する比較square。
+kernelCompositionIso_modelは指定モデルでの計算、kernelCompositionIso_kFlatは既存の
+kernelCompositionKFlatIsoとの一致。K-flatモデルの既存計算も保持する。
+
+CoherenceCompositionCanonicalChecksは独立宇宙・任意可換環・標数2に加え、
+他担当のperfectDerivedKernelCompositionIso_naturalityのhNatをこの実際の定理で埋めて検査する。
+担当28宣言を直接監査し、追加26・既存2の再監査に欠落・重複なく標準3公理のみ。
+既存自然性・合成・局所受入・一般入口・別担当QuasiEquivalence入口・Spectra.StageTwoとの
+合同ビルド成功（4096 jobs、警告0件）。新しいsorry・axiom・引用・資源上限変更なし。
+恒等・結合の作用coherenceと一般右随伴・unit/counitは未完。U16a全受入とU16cは継続中。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionCanonicalChecks
+lake env lean SerrePositivity/DifferentialGraded/Morita/CoherenceCompositionCanonicalChecks.lean
+```
