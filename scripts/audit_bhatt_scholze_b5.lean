@@ -1,6 +1,7 @@
 import SerrePositivity.BhattScholze.Lemma103PerfectoidTensor
 import SerrePositivity.BhattScholze.PerfectoidIdealLemma103
 import SerrePositivity.BhattScholze.PerfectoidIdealIdempotent
+import SerrePositivity.BhattScholze.PerfectoidAlmostExtension
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorShortExact
 import SerrePositivity.CommutativeAlgebra.PerfectTorIndependence.Basic
 import Mathlib.Util.AssertNoSorry
@@ -67,3 +68,59 @@ assert_no_sorry SerrePositivity.BhattScholze.perfectoidIdeal_eq_square_sup_pow_m
 
 assert_no_sorry SerrePositivity.BhattScholze.perfectoidIdealMod_idempotent
 #print axioms SerrePositivity.BhattScholze.perfectoidIdealMod_idempotent
+
+assert_no_sorry SerrePositivity.DerivedCompletion.completedTensor_isZero_whiskerRight
+#print axioms SerrePositivity.DerivedCompletion.completedTensor_isZero_whiskerRight
+
+assert_no_sorry SerrePositivity.DerivedCompletion.completedTensor_isZero_of_action_retract
+#print axioms SerrePositivity.DerivedCompletion.completedTensor_isZero_of_action_retract
+
+assert_no_sorry SerrePositivity.DerivedCompletion.derivedTensor_module_action_retract
+#print axioms SerrePositivity.DerivedCompletion.derivedTensor_module_action_retract
+
+assert_no_sorry SerrePositivity.DerivedCompletion.completedTensor_isZero_of_algebraModule
+#print axioms SerrePositivity.DerivedCompletion.completedTensor_isZero_of_algebraModule
+
+assert_no_sorry SerrePositivity.DerivedCompletion.completedTensor_shortExact_rightMap_isIso_of_isZero
+#print axioms SerrePositivity.DerivedCompletion.completedTensor_shortExact_rightMap_isIso_of_isZero
+
+assert_no_sorry SerrePositivity.DerivedCompletion.completedTensor_isZero_of_shortExact
+#print axioms SerrePositivity.DerivedCompletion.completedTensor_isZero_of_shortExact
+
+assert_no_sorry SerrePositivity.BhattScholze.perfectoidIdeal_completedQuotientMul
+#print axioms SerrePositivity.BhattScholze.perfectoidIdeal_completedQuotientMul
+
+assert_no_sorry SerrePositivity.BhattScholze.perfectoidIdeal_completedQuotientMul_isIso
+#print axioms SerrePositivity.BhattScholze.perfectoidIdeal_completedQuotientMul_isIso
+
+assert_no_sorry SerrePositivity.BhattScholze.perfectoidIdeal_completedTensor_isZero_of_isAlmostZero
+#print axioms SerrePositivity.BhattScholze.perfectoidIdeal_completedTensor_isZero_of_isAlmostZero
+
+assert_no_sorry SerrePositivity.BhattScholze.perfectoidIdeal_isAlmostZero_of_completedTensor_isZero
+#print axioms SerrePositivity.BhattScholze.perfectoidIdeal_isAlmostZero_of_completedTensor_isZero
+
+assert_no_sorry SerrePositivity.BhattScholze.perfectoidIdeal_isAlmostZero_extension
+#print axioms SerrePositivity.BhattScholze.perfectoidIdeal_isAlmostZero_extension
+
+-- レーン K が受け取る定理の型を、指定された引数順・仮定で検査する。
+example
+    (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
+    (hR : IsIntegralPerfectoid R p) (g : R)
+    (S : ShortComplex (ModuleCat.{u} R)) (hS : S.ShortExact)
+    (h₁ : DerivedCompletion.IsModuleComplete R (p : R) S.X₁)
+    (h₂ : DerivedCompletion.IsModuleComplete R (p : R) S.X₂)
+    (h₃ : DerivedCompletion.IsModuleComplete R (p : R) S.X₃)
+    (hX₁ : Almost.IsAlmostZero (perfectoidIdeal R p hR g) S.X₁)
+    (hX₃ : Almost.IsAlmostZero (perfectoidIdeal R p hR g) S.X₃) :
+    Almost.IsAlmostZero (perfectoidIdeal R p hR g) S.X₂ :=
+  BhattScholze.perfectoidIdeal_isAlmostZero_extension R p hR g S hS h₁ h₂ h₃ hX₁ hX₃
+
+-- BasicSetup へ渡す mod p^N 冪等性も、同じ略記・等式の型で検査する。
+example (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
+    (hR : IsIntegralPerfectoid R p) (g : R) (N : ℕ) :
+    CLMST.perfectoidIdealMod R p hR g N * CLMST.perfectoidIdealMod R p hR g N =
+      CLMST.perfectoidIdealMod R p hR g N :=
+  BhattScholze.perfectoidIdealMod_idempotent R p hR g N
+
+assert_no_sorry SerrePositivity.BhattScholze.perfectoidIdeal_quotient_isIntegralPerfectoid
+#print axioms SerrePositivity.BhattScholze.perfectoidIdeal_quotient_isIntegralPerfectoid

@@ -10932,3 +10932,62 @@ CLMST.Almostは既存の略記を使うためimportするが、BasicSetupや外�
 BasicSetup自体は開始時点ですでに別レーンの証明へ置換済みだったので編集しない。
 対象ビルド4431ジョブ成功（終了コード0）、全新公開宣言と先行工程のassert_no_sorry・公理監査成功。
 標準3公理のみ。Prop 10.2の原典のtensorによる証明と集約import・最終監査は未完了。
+
+### 工程4の追加共通API（担当BS、2026-10-17）
+
+新規HomologicalAlgebra/DerivedCompletion/CompletedTensorModuleAction.leanで、
+完備化後に零となるXはX⊗ᴸYも完備化後に零となることを既存のtensor安定性から取り出す。
+さらにA加群Mは、既存の導来増大射と通常の作用によってA⊗ᴸMのretractになることを標準単位と照合する。
+これによりK⊗̂ᴸA=0からA加群MについてK⊗̂ᴸM=0を導く。
+これは原典Prop 10.4で商加群構造から得る消滅の実装であり、導来底変換の新定義は作らない。
+自分が追加したCompletedTensorShortExact.leanには、両端の零対象性から中央の零対象性、および
+第一対象が零なら第二射が同型という同じ完全三角形の判定を追加する予定である。
+
+### 工程4：Prop 10.2の原典経路での結果（2026-10-17）
+
+新規CompletedTensorModuleAction.leanの公開4定理と、CompletedTensorShortExact.leanの追加2定理を証明した。
+代数作用からMをA⊗ᴸMのretractとする射と恒等式を、既存増大射の自然性と標準左単位則で構成する。
+K⊗̂ᴸA=0なら結合則と完備化同値のtensor安定性でK⊗̂ᴸ(A⊗ᴸM)=0となり、retractからK⊗̂ᴸM=0となる。
+この方法は商環上の対象であることを使う原典Prop 10.4の加群の場合を、実射で具体化したものである。
+古典的完備化への置換や、単なるH⁰の一致によるtensor全体の同定は行わない。
+
+新規BS専用PerfectoidAlmostExtension.leanの公開3定理を証明した。
+`perfectoidIdeal_completedTensor_isZero_of_isAlmostZero`は、任意のK零化加群MについてK⊗̂ᴸM=0を与える。
+既存Almost.quotientModuleのR/K作用とscalarTowerを供給し、Lemma 10.3の混合積に上の一般結果を適用する。
+`perfectoidIdeal_isAlmostZero_of_completedTensor_isZero`は、導来p完備Mについて逆方向を与える。
+K→R→R/Kのtensor三角形からM≅(R/K)⊗̂ᴸMを得て、共通の実完備底変換のH⁰比較により
+元のR/K作用付き加群とR線形同型で結ぶ。商写像の核がその実H⁰を零化することをMへ移す。
+
+指定された公開定理の正確な型は次のとおり（namespace SerrePositivity.BhattScholze、
+open CategoryTheory SerrePositivity.DerivedCompletion SerrePositivity.Almost）。
+
+```lean
+theorem perfectoidIdeal_isAlmostZero_extension
+    (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
+    (hR : IsIntegralPerfectoid R p) (g : R)
+    (S : ShortComplex (ModuleCat.{u} R)) (hS : S.ShortExact)
+    (h₁ : IsModuleComplete R (p : R) S.X₁)
+    (h₂ : IsModuleComplete R (p : R) S.X₂)
+    (h₃ : IsModuleComplete R (p : R) S.X₃)
+    (hX₁ : IsAlmostZero (perfectoidIdeal R p hR g) S.X₁)
+    (hX₃ : IsAlmostZero (perfectoidIdeal R p hR g) S.X₃) :
+    IsAlmostZero (perfectoidIdeal R p hR g) S.X₂
+```
+
+両端の消滅を完全三角形で中央へ移し、上の逆方向で中央の零化を復元した。
+これは原典Prop 10.2・10.4のtensor経路であり、共通のconormalによる別証明への置換ではない。
+両端からtensor消滅を得る方向は完備性なしにも成立するため、指定署名を保つh₁,h₃は証明中では不要である。
+中央のh₂は標準完備化単位の同型性に実際に使用する。
+
+商の実積の標的も元の商とするため、PerfectoidIdealLemma103に
+`perfectoidIdeal_completedQuotientMul`とその`_isIso`を追加した。
+型はF.obj((R/K)⊗ᴸ(R/K))→(R/K)[0]で、元の導来積の完備化と標準単位の逆射の合成である。
+この定義の完備性証明を公開定義から参照するため、先のprivateな商perfectoid性を
+`perfectoidIdeal_quotient_isIntegralPerfectoid`として日本語説明付きで公開した。
+これはB4とB3の同じ核商表示の証明であり、既存CLMSTモジュールへの逆依存を追加しない。
+将来CLMSTの同じ特殊化をこちらの公開入口へ統合する余地はあるが、担当外ファイルは編集しない。
+
+対象ビルド4436ジョブ成功（終了コード0）。今回追加した全公開宣言、工程1–3、Tor入口の
+assert_no_sorry・公理監査に成功し、標準3公理のみ。指定署名二件も独立したexampleで検査した。
+BS構造監査も終了コード0。残作業は集約importと最終受渡し監査である。
+Prop 10.4の任意の非有界複体についての全体や、Prop 10.2の圏同値全体は今回の指定署名の範囲外である。

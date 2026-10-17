@@ -98,4 +98,70 @@ theorem completedTensor_shortExact_leftMap_isIso_of_isZero
   exact IsIso.of_isIso_comp_right
     (F.map ((boundedAboveDerivedTensorModuleFunctor C).map S.f)) e₂.hom
 
+/--
+## 概要
+短完全列の完備導来テンソルの第一対象が零なら、第二射は同型である。
+## 方針
+固定射影分解モデルの完全三角形で判定し、既存の自然同型で実射へ戻す。
+## 規約
+完備性・平坦性の追加仮定は置かない。
+## 使われ方
+BS 著者版 Prop 10.4（印刷 p.79）の商作用を復元する方向に使う。
+-/
+theorem completedTensor_shortExact_rightMap_isIso_of_isZero
+    (S : ShortComplex (ModuleCat.{u} R)) (hS : S.ShortExact)
+    (hz : IsZero ((derivedComplexCompletionFunctor R a).obj
+      ((boundedAboveDerivedTensorModuleFunctor C).obj S.X₁))) :
+    IsIso ((derivedComplexCompletionFunctor R a).map
+      ((boundedAboveDerivedTensorModuleFunctor C).map S.g)) := by
+  let F := derivedComplexCompletionFunctor R a
+  let K := extRes (projectiveResolution C)
+  have hs := moduleTensorCochain_shortExact K (moduleCoefficientResolution_flat C) S hS
+  let T := F.mapTriangle.obj (DerivedCategory.triangleOfSES hs)
+  have hd : T ∈ distTriang _ := F.map_distinguished _
+    (DerivedCategory.triangleOfSES_distinguished hs)
+  have hz' : IsZero T.obj₁ := hz.of_iso
+    (F.mapIso (derivedTensorCoefficientModelIso C S.X₁)).symm
+  have : IsIso T.mor₂ := (T.isZero₁_iff_isIso₂ hd).mp hz'
+  let e₂ := F.mapIso (derivedTensorCoefficientModelIso C S.X₂)
+  let e₃ := F.mapIso (derivedTensorCoefficientModelIso C S.X₃)
+  have hn : F.map ((boundedAboveDerivedTensorModuleFunctor C).map S.g) ≫ e₃.hom =
+      e₂.hom ≫ T.mor₂ := by
+    simpa [Functor.map_comp, e₂, e₃, T, DerivedCategory.triangleOfSES] using
+      congrArg F.map (derivedTensorCoefficientModelIso_naturality C S.g)
+  have : IsIso (F.map ((boundedAboveDerivedTensorModuleFunctor C).map S.g) ≫ e₃.hom) := by
+    rw [hn]; infer_instance
+  exact IsIso.of_isIso_comp_right _ e₃.hom
+
+/--
+## 概要
+短完全列の両端の完備導来テンソルが零なら、中央の完備導来テンソルも零である。
+## 方針
+同じ固定射影分解モデルの完全三角形で、両端の零対象性を用いる。
+## 規約
+元の短完全列に適用し、加群の通常の tensor 完全性は仮定しない。
+## 使われ方
+BS 著者版 Prop 10.2・10.4（印刷 pp.78–79）の拡大閉性に使う。
+-/
+theorem completedTensor_isZero_of_shortExact
+    (S : ShortComplex (ModuleCat.{u} R)) (hS : S.ShortExact)
+    (h₁ : IsZero ((derivedComplexCompletionFunctor R a).obj
+      ((boundedAboveDerivedTensorModuleFunctor C).obj S.X₁)))
+    (h₃ : IsZero ((derivedComplexCompletionFunctor R a).obj
+      ((boundedAboveDerivedTensorModuleFunctor C).obj S.X₃))) :
+    IsZero ((derivedComplexCompletionFunctor R a).obj
+      ((boundedAboveDerivedTensorModuleFunctor C).obj S.X₂)) := by
+  let F := derivedComplexCompletionFunctor R a
+  let K := extRes (projectiveResolution C)
+  have hs := moduleTensorCochain_shortExact K (moduleCoefficientResolution_flat C) S hS
+  let T := F.mapTriangle.obj (DerivedCategory.triangleOfSES hs)
+  have hd : T ∈ distTriang _ := F.map_distinguished _
+    (DerivedCategory.triangleOfSES_distinguished hs)
+  have hz₁ : IsZero T.obj₁ := h₁.of_iso
+    (F.mapIso (derivedTensorCoefficientModelIso C S.X₁)).symm
+  have hz₃ : IsZero T.obj₃ := h₃.of_iso
+    (F.mapIso (derivedTensorCoefficientModelIso C S.X₃)).symm
+  exact (T.isZero₂_of_isZero₁₃ hd hz₁ hz₃).of_iso
+    (F.mapIso (derivedTensorCoefficientModelIso C S.X₂))
+
 end SerrePositivity.DerivedCompletion

@@ -29,7 +29,17 @@ attribute [local instance] HasDerivedCategory.standard
 variable (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
     (hR : IsIntegralPerfectoid R p) (g : R)
 
-private lemma quotientPerfectoid :
+/--
+## 概要
+perfectoid 化の核で割った R/K は perfectoid 環である。
+## 方針
+B4 の一般全射性と既存の核商同型により、B3 の選ばれた perfectoid 化に移す。
+## 規約
+単項商の導来完備性を使い、p ねじれなしを仮定しない。
+## 使われ方
+BS 著者版 Lemma 10.3（印刷 pp.78–79）の商の実積の標的の完備性を供給する。
+-/
+theorem perfectoidIdeal_quotient_isIntegralPerfectoid :
     IsIntegralPerfectoid (R ⧸ perfectoidIdeal R p hR g) p := by
   let f := toQuotientPerfectoidization R (Ideal.span {g}) p hR
   have hf := isPerfectoidization_toQuotientPerfectoidization R (Ideal.span {g}) p hR
@@ -55,7 +65,7 @@ BS 著者版 Lemma 10.3（印刷 pp.78–79）の第一射の標的を固定す�
 theorem perfectoidIdeal_isModuleComplete :
     IsModuleComplete R (p : R) (ModuleCat.of R (perfectoidIdeal R p hR g)) :=
   integralPerfectoid_quotientIdeal_isModuleComplete p (perfectoidIdeal R p hR g) hR
-    (quotientPerfectoid R p hR g)
+    (perfectoidIdeal_quotient_isIntegralPerfectoid R p hR g)
 
 /--
 ## 概要
@@ -79,9 +89,45 @@ theorem perfectoidIdeal_lemma103 :
     IsZero ((derivedComplexCompletionFunctor R (p : R)).obj
       ((boundedAboveDerivedTensorModuleFunctor (ModuleCat.of R K)).obj
         (ModuleCat.of R (R ⧸ K)))) := by
-  have hQ := quotientPerfectoid R p hR g
+  have hQ := perfectoidIdeal_quotient_isIntegralPerfectoid R p hR g
   exact ⟨integralPerfectoid_completedDerivedIdealMul_isIso p _ hR hQ,
     integralPerfectoid_completedQuotientMul_isIso p R _ hR hQ,
     integralPerfectoid_completedIdealTensorQuotient_isZero p _ hR hQ⟩
+
+/--
+## 概要
+商の実完備導来自己テンソルから、元の商 (R/K)[0] への標準積を定義する。
+## 方針
+元の導来積の完備化に、perfectoid 商の標準完備化単位の逆を合成する。
+## 規約
+K は perfectoidIdeal であり、標的の別コピーへの抽象的同型で代用しない。
+## 使われ方
+BS 著者版 Lemma 10.3（印刷 pp.78–79）の第二射を元の商を標的として渡す。
+-/
+def perfectoidIdeal_completedQuotientMul :
+    let Q := R ⧸ perfectoidIdeal R p hR g
+    (derivedComplexCompletionFunctor R (p : R)).obj
+      ((boundedAboveDerivedTensorModuleFunctor (ModuleCat.of R Q)).obj (ModuleCat.of R Q)) ⟶
+      (DerivedCategory.singleFunctor (ModuleCat R) 0).obj (ModuleCat.of R Q) :=
+  (derivedComplexCompletionFunctor R (p : R)).map
+      (boundedAboveDerivedAlgebraMul (R := R) (R ⧸ perfectoidIdeal R p hR g)).hom ≫
+    (derivedComplexCompletionUnitIso R (p : R) _
+      ((perfectoidIdeal_quotient_isIntegralPerfectoid R p hR g).isModuleComplete_algebra R _ p)).inv
+
+/--
+## 概要
+元の商を標的とする実積 (R/K)⊗̂ᴸ(R/K)→(R/K)[0] は同型である。
+## 方針
+Lemma 10.3 の第二主張と、標的の perfectoid 性による標準単位同型を合成する。
+## 規約
+完備化単位によって定義した同じ積について主張する。
+## 使われ方
+BS 著者版 Lemma 10.3（印刷 pp.78–79）の元の商を標的とする第二主張である。
+-/
+theorem perfectoidIdeal_completedQuotientMul_isIso :
+    IsIso (perfectoidIdeal_completedQuotientMul R p hR g) := by
+  have := (perfectoidIdeal_lemma103 R p hR g).2.1
+  unfold perfectoidIdeal_completedQuotientMul
+  infer_instance
 
 end SerrePositivity.BhattScholze
