@@ -10185,3 +10185,64 @@ U12eは引き続き未受入であり、受入後のU16a〜d、U15e分解版の�
 U15e分解版では局所K-flat版のQuotient/DerivedComparison*・Verdier/を読んで再利用する。
 共有モデル圏一般論への新しいAPI要求はない。共有ルート・共有監査スクリプト・Perfect/・
 Endomorphism/・ScalarExtension*・Quotient/DerivedComparison*・Verdier/は編集していない。
+
+
+### 17.221 U12e61：準同値に沿う中間圏比較の全導来自然同型（2026-10-17）
+
+**K-flatモデルの延長と単位。** `Derived/FunctorExtensionKFlatUnit.lean`は既存の導来単位の
+計算式と全対象上の可逆性を逆向きに使い、標準の射影解像度上の実際の延長単位が準同型であることを
+証明した。`dgModuleExtension_relativeKFlat_quasiIso`はgraph延長が右相対K-flat加群間の
+準同型を保存することを示す。単位の自然性と合わせ、
+`functorExtensionUnit_relativeKFlat_quasiIso`はHom準同型に沿う単位の準同型性を
+任意の右相対K-flat加群へ拡張した。対象ごとのA-K-flat性や元のdg圏のHomのflatnessは使わない。
+`moduleRestriction_reflects_quasiIso`は主K上の本質的全射性から制限の準同型反映を導く。
+`functorExtensionTranspose`は制限への指定射の実際の閉零随伴転置であり、
+`functorExtensionTranspose_quasiIso`は準同値に沿う右K-flat増大の転置が準同型になることを示した。
+転置先の右加群のK-flat性は、この段階の準同型性には要求しない。
+
+**実際のtensor比較との同一視。** `Tensor/FunctorExtensionProjection.lean`は
+既存の全Hom自然なYoneda評価とFubini同型を使い、任意の右D加群R・左C加群Nについて
+(F_!R)⊗_C N ≅ R⊗_D F^*Nを実際の複体同型`functorExtensionTensorIso`として構成した。
+`graphTensorYonedaIso`は左D加群の全Hom自然な同型であり、単なる対象ごとの評価ではない。
+三重生成元の順R,graph,Nを保つ計算式を証明し、graph延長による右相対K-flat性の保存も導いた。
+`Tensor/FunctorRestrictionQuasiIso.lean`は制限後の指定モデルからのchain map
+`resolvedRestrictionComparison`を定義する。
+`functorExtensionTensorIso_resolvedComparison`は射影公式を通すとこの実際の比較が
+随伴転置とのtensorになることを証明した。balanced関係・associator自然性・既存の余単位の
+生成元計算を使い、符号や合成順序を省略していない。
+`resolvedRestrictionComparison_quasiIso`は、準同値と両端の右相対K-flat性から比較の準同型性を示す。
+制限された元の右加群自体や、左加群NのK-flat性を追加していない。
+
+**全導来bimodule比較の可逆性。** `Derived/BimoduleMiddleQuasiIso.lean`は左制限の表示変更同型を
+明記し、既存の`middleRestrictionResolvedMap`の各値を前項のtensor比較へ同定する。
+`middleRestrictionResolvedMap_quasiIso`は、任意の前因子と、元の後因子および制限後モデルの
+指定右K-flat性の下で、任意の準同型増大を使う実際のbimodule比較が準同型になることを示した。
+`Derived/BimoduleMiddleEquivalence.lean`はこの結果を指定局所化へ持ち上げ、
+`derivedMiddleRestrictionComparison`、前因子の局所化後の比較、右K-flat後因子族、
+後因子の局所化後の比較、両変数の全導来比較の各段階で可逆性を証明した。
+`derivedMiddleRestrictionIso`は§17.220の既存導来制限・導来合成で表したsourceから
+`derivedBimoduleComposeFunctor`への、両変数の任意の導来射に自然な自然同型である。
+そのhomは既存の`derivedMiddleRestrictionNatTrans`そのものであり、別の比較射に置き換えていない。
+全導来段階の局所Hom K-flat仮定は終端Eだけで、元の中間圏C・Dには課さない。
+既存公開APIの名前・型・定義は変更していない。
+
+**検証。** 新規`Checks.DGBimoduleMiddleEquivalence`は独立した四つの対象宇宙、
+C・Dの局所Hom K-flat性なしでの自然同型、任意の指定右K-flat解像度による比較の可逆性、
+両変数の任意の導来射に対する自然性、指定された任意のdg圏解像度の増大への適用、ZMod 2を検査した。
+全導来source同定・uncurry表示・解像度独立性・ホモトピー・tensor制限・解像度同値・
+導来随伴・単位・制限・導来bimodule五角形・StageEight・StageSeven・Spectra.StageTwoとの
+統合ビルド成功（3453 jobs、警告なし）。主要31宣言の直接公理監査は重複・欠落なく標準3公理以内。
+新規監査累計4366宣言。今回の6受入Leanファイルのsorry・admit・新規axiom・資源上限変更は0件。
+採用済み引用0件。Lean v4.35.0-rc4とMathlib manifest/HEAD
+`e6bbacd0e1b7307ff6e17da09cd2455f60804fa6`を再確認した。
+全体文書検査は21 Markdown・320 exposition参照を検査し、担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+未解決参照1件で失敗した。
+
+**残件。** 準同値に沿う実際の全導来中間圏比較の可逆性は今回仕上げた。
+これを共通dg圏解像度による変更へ適用し、比較の自己・推移整合性、対角単位・結合子との整合性、
+coherenceを仕上げてU12e全体の受入条件を確認する。
+U12eは未受入であり、受入後のU16a〜d、U15e分解版の順を保持する。
+U15e分解版では局所K-flat版のQuotient/DerivedComparison*・Verdier/を読んで再利用する。
+共有一般論への新しいAPI要求はない。共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・
+ScalarExtension*・Quotient/DerivedComparison*・Verdier/は編集していない。
