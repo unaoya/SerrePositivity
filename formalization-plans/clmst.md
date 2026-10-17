@@ -9819,6 +9819,21 @@ rank の底変換と本ファイルをルートへ公開し、全体6680ジョ�
 (Ri)_perfd の有限直積への元の写像の almost 比較、一般 rank 全体の帰着、元の引用の置換は未完成。
 Cor 8.12 の保留は継続し、新しい sorry・axiom・引用は追加していない。
 
+**Cor 8.12 の独立準備・整写像が主開の外で同型なら付値環へ一意延長（2026-10-17）。**
+共通層 `CommutativeAlgebra/IntegralAwayExtension.lean` の
+`existsUnique_extension_of_integral_away_bijective` は、整写像 R→S の g 局所化が同型なら、
+g を零にしない任意の整閉整域 V への元の R の写像が S→V に一意に延長することを証明する。
+分数体上で元の局所化同型を使って写像を構成し、整性と整閉性で V に戻す。
+一意性は元の局所化写像の全射性からの分母払いと V での g≠0 による消去で示す。
+`existsUnique_valuation_extension_of_integral_away_bijective` は mathlib の任意の付値環の
+整閉性からこれを適用する。離散性・rank 1・p 完備性を要求しないので、原典の
+p 完備 rank 1 付値環の全てに適用できる。R→S の有限性・単射性は不要。
+これは Cor 8.12 の付値環仮定を供給する独立補題であり、Cor 8.12 の結論を引用していない。
+共通層に BS・CLMST・Inputs・Paper の import 依存はない。
+対象1953ジョブと専用監査の公開2宣言が成功。全2宣言は assert_no_sorry 成功・標準3公理のみ。
+先行する rank 帰着のルート公開後の全体6680ジョブ・主定理監査・CLMST 監査も全て終了コード0を確認した。
+原典の E∞ 版 Cor 8.12 の入力宣言は保留のままで、新しい sorry・axiom・引用は追加していない。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
