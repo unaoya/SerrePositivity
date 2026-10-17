@@ -12220,3 +12220,29 @@ CoherenceCompositionClosedChecksは独立宇宙・任意可換環・任意解像
 lake build SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionClosedChecks SerrePositivity.DifferentialGraded.Morita.KernelDerivedFunctorChecks SerrePositivity.DifferentialGraded.Morita.CoherenceIdentityChecks SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.DifferentialGraded.Checks.U12eGeneralInventory SerrePositivity.Spectra.StageTwo
 lake env lean SerrePositivity/DifferentialGraded/Morita/CoherenceCompositionClosedChecks.lean
 ```
+
+
+### 17.257 U16a：全導来kernelの作用の合成比較（2026-10-17）
+
+Morita/CoherenceCompositionKFlat.leanで右相対K-flatな最初のkernelと任意の後のkernelの
+作用の合成を、通常合成kernelの導来作用へ比較した。自然な解像度モデル上の比較を
+Localization.liftNatIsoで全主導来入力へ延長している。局所Hom条件は不要。
+Morita/CoherenceComposition.leanのkernelCompositionKFlatIsoはこれをU12e-localの
+導来合成計算へ接続する。kernelCompositionIsoは任意主導来kernelのK-flat代表・通常代表を使い、
+事前に固定した公開型そのもので合成比較を返す。必要条件はlocalHomKFlat A Dだけ。
+
+公開契約の合成比較を「実装・検証済み」に更新した。
+入力導来加群には自然だが、kernel射に対する自然性と代表選択の整合性、恒等・結合coherenceは未完。
+一般右随伴・unit/counitとU16cも未完。これをU16aの全受入とはしない。
+
+CoherenceCompositionChecksは独立宇宙・任意可換環・標数2と、U16dの既存
+kernelCompose_columnsPerfectへこの実際の合成同型を渡せることを検査する。
+他担当のPerfコードを編集せず読み取り専用で再利用した。
+追加公開4宣言の直接公理監査を名前集合と照合し、重複・欠落なく標準3公理以内。
+新規監査累計4907宣言。基盤・作用・恒等・局所受入・一般入口・Spectra.StageTwoとの
+合同ビルド成功（3565 jobs）。新規sorry・axiom・引用・資源上限変更なし。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionChecks SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionClosedChecks SerrePositivity.DifferentialGraded.Morita.KernelDerivedFunctorChecks SerrePositivity.DifferentialGraded.Morita.CoherenceIdentityChecks SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.DifferentialGraded.Checks.U12eGeneralInventory SerrePositivity.Spectra.StageTwo
+lake env lean SerrePositivity/DifferentialGraded/Morita/CoherenceCompositionChecks.lean
+```

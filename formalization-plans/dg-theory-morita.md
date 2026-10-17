@@ -104,7 +104,7 @@ unit/counitは上の実際の随伴の成分とする。随伴の存在・成分
 同一視しない。一対象Endでの既存随伴を任意kernelの証明の代わりにしない。
 この型の確定は右随伴の実装が完成したという意味ではない。
 
-### 5. 恒等作用（実装・検証済み、U16a4）・合成比較（型のみ確定）
+### 5. 恒等作用（実装・検証済み、U16a4）・合成比較（実装・検証済み、U16a6）
 
 ```lean
 def kernelIdentityIso :
@@ -116,6 +116,7 @@ def kernelCompositionIso (hD : localHomKFlat A D)
 ```
 
 恒等比較にlocalHomKFlatは不要。合成比較はU12e-localの結合子と同じく始域Dだけに条件を置く。
+合成比較の公開型は実装・検証済みで、入力導来加群への自然性を持つ。kernel射の自然性・作用coherenceは未完。
 kernelComposeMapへの自然性、恒等と三因子の結合比較のcoherenceはCoherence*で証明する。
 三因子D→E→F→Gで必要なのは既存結合子に現れるD・EのlocalHomKFlat。
 同じkernel・固定dg圏の契約とし、中断した一般分解変更のcoherenceを待たない。
@@ -129,7 +130,7 @@ kernelComposeMapへの自然性、恒等と三因子の結合比較のcoherence�
 | 主導来作用・任意解像度計算 | 実装・検証済み（U16a3） | Morita/KernelDerivedFunctor.leanをimportして利用できる |
 | 一般右随伴・unit/counit | 型のみ確定 | 同上 |
 | 恒等作用比較 | 実装・検証済み（U16a4） | Morita/CoherenceIdentity.leanのkernelIdentityIso |
-| 合成の作用比較 | 型のみ確定 | 冒頭の型を前提に設計可能。Lean宣言はまだ未実装 |
+| 合成の作用比較 | 実装・検証済み（U16a6）。kernel射の自然性と作用coherenceは未完 | Morita/CoherenceComposition.leanのkernelCompositionIso |
 
 U16b担当が構成するgraph作用と`dgDerivedExtension`の自然同型はQuasiEquivalence*に置く。
 このチャットは同ファイルを編集しない。導来作用が未実装の間も、通常graph一致はKernelTensorで提供する。
@@ -333,3 +334,31 @@ FubiniによるkernelTensor_relativeKFlatは合成比較の同型性に使う。
 CoherenceCompositionClosedChecksと既存作用・恒等・局所受入・一般入口・Spectra.StageTwoの
 合同ビルド成功（3531 jobs）、追加21公開宣言の直接公理監査は標準3公理以内。
 既存の公開APIの型・名前は変更していない。新規sorry・axiom・引用はない。
+
+
+## U16a6：全導来kernelの作用の合成比較（2026-10-17）
+
+冒頭§5のkernelCompositionIsoを、型を変更せず実装・検証済みに更新した。
+利用入口はMorita/CoherenceComposition.lean。必要なlocalHomKFlatは始域Dだけで、E・Fには追加しない。
+
+CoherenceCompositionKFlatのkernelResolutionTensorCompositionIsoは、右相対K-flatな最初のkernelと
+任意の後のkernelについて、通常入力射に自然な解像度モデル上の比較を作る。
+kernelDerivedTensorOnBimoduleCompositionIsoは主局所化の普遍性から全導来入力へ延長する。
+CoherenceCompositionのkernelCompositionKFlatIsoはU12e-localの
+ derivedBimoduleComposeKFlatValueIsoと実際の主導来作用を接続する。
+kernelCompositionIsoは任意の主導来P・QをそれぞれK-flat代表・通常代表へ比較して運ぶ。
+入力導来加群への自然性はこの関手自然同型に含まれる。
+**kernel射に対する自然性、代表選択の整合性、恒等・結合coherenceは引き続き未完。**
+一般右随伴・unit/counitも型のみ確定であり、U16a全受入はまだ行わない。
+
+CoherenceCompositionChecksは任意可換環・独立宇宙・標数2を検査し、他担当の
+kernelCompose_columnsPerfectへ実際のkernelCompositionIsoを渡せることも確認する。
+他担当のPerfファイルは変更していない。U16dはeCompの入力をこの公開同型で埋められるが、
+hNatを要求する比較にはまだkernel射の自然性の証明が必要。
+追加4宣言の直接公理監査は標準3公理のみ。既存基盤・作用・恒等・局所受入・一般入口・
+Spectra.StageTwoとの合同ビルド成功（3565 jobs）。新規sorry・axiom・引用なし。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionChecks
+lake env lean SerrePositivity/DifferentialGraded/Morita/CoherenceCompositionChecks.lean
+```
