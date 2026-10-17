@@ -47,7 +47,6 @@ variable {D : Type uD} [Category.{vD} D]
   (K : D ⥤ SSet.{max w v}) (F : D ⥤ SSet.{v})
   (hp : ∀ d, UniverseLift.BoundaryFillers (F.obj d))
 
-abbrev lifted := NerveLargeParameter.lifted.{w} F
 abbrev values := NerveBiparameter.values K (lifted F)
 abbrev System := NerveBiparameter.System K (lifted F)
 abbrev LowerSystem (n : ℕ) := NerveDiagramExtension.LowerSystem (values K F) n

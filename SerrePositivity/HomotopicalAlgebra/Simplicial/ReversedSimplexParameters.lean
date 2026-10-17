@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeResolutionDegeneracyValues
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.ReversedDegeneracies
 
 /-!
 # 向きを反転した単体パラメータの面と退化の対応する恒等式を証明する

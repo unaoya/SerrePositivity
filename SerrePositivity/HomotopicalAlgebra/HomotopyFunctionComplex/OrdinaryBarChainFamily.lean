@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.RetractChainFamily
+
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarRetractTransfer
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterCube
 

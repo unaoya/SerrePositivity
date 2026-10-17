@@ -1,5 +1,8 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleDegeneracy
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanComparisonTetrahedron
+
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarUnitTriangles
 
 /-!

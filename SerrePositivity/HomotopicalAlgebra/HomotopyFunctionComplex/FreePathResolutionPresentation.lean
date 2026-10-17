@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ComonadResolutionPresentation
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreePathResolution
+public import SerrePositivity.CategoryTheory.Quiver.FreePathComonad
 public import Mathlib.CategoryTheory.Category.ULift
 
 /-!

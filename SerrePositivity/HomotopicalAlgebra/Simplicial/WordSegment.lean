@@ -1,5 +1,7 @@
 module
 
+public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
+
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SegmentWords
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterCube
 

@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.RetractChainFamily
+
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterComposition
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.WordRetractionAction
 

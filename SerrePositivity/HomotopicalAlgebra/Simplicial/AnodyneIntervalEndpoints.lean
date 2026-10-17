@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceSpace
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.FixedBoundaryExtensions
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.PushoutProduct
 
 /-!

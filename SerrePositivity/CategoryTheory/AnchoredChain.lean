@@ -2,6 +2,8 @@ module
 
 public import Mathlib.CategoryTheory.ComposableArrows.Basic
 
+public import SerrePositivity.CategoryTheory.ArrowFactorization
+
 /-!
 # 中断した任意モデル源への一般化：AnchoredChain
 
@@ -40,12 +42,6 @@ set_option backward.isDefEq.respectTransparency false
 open CategoryTheory
 
 namespace SerrePositivity
-
-structure ArrowFactorization {D : Type u} [Category.{v} D] {Y V : D} (g : Y ⟶ V) where
-  middle : D
-  left : Y ⟶ middle
-  right : middle ⟶ V
-  fac : left ≫ right = g
 
 structure AnchoredChain {D : Type u} [Category.{v} D] {Y V : D} (g : Y ⟶ V) (n : ℕ) where
   diagram : Fin (n + 1) ⥤ D

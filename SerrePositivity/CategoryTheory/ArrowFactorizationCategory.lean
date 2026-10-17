@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.AnchoredChain
+public import SerrePositivity.CategoryTheory.ArrowFactorization
 public import Mathlib.CategoryTheory.Limits.Shapes.IsTerminal
 
 /-!

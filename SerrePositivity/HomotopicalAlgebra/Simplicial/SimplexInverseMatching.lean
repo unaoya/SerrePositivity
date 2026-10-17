@@ -1,7 +1,6 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexMatchingTerminal
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveCoherentFamily
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexLatchingBoundary
 
 /-!

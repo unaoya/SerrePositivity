@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryGluing
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceSpace
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.FixedBoundaryExtensions
 
 /-!
 # 互換な余テンソルの面の全族を単体境界上に貼り合わせる

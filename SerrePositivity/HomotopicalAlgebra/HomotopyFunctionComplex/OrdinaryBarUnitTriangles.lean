@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.BinaryIntervalTriangles
+
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarRelativeCompositionTriangle
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleBinary
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.ClosedParameterUnits

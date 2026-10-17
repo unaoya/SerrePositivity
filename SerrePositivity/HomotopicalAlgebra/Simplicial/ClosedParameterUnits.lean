@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.ClosedHomotopyComposition
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.BinaryIntervalTriangles
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.BinaryIntervalEndpoints
 
 /-!
 # 共有パラメータ上の内部Homの左単位則が実写像の等式として成り立つ

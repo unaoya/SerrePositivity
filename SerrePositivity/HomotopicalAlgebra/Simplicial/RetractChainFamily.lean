@@ -3,6 +3,8 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterComposition
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyEndpointComparison
 
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.IntervalEndpoints
+
 /-!
 # 中断した任意モデル源への一般化：RetractChainFamily
 
@@ -44,14 +46,6 @@ open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory
 open CategoryTheory.CartesianMonoidalCategory
 
 namespace SerrePositivity.SimplicialModel.RetractChainFamily
-abbrev interval : SSet.{v} := SSet.stdSimplex.obj (SimplexCategory.mk 1)
-
-def zero (T : SSet.{v}) : T ⟶ interval :=
-  SSet.stdSimplex.isTerminalObj₀.from T ≫ SSet.stdSimplex.δ (1 : Fin 2)
-
-def one (T : SSet.{v}) : T ⟶ interval :=
-  SSet.stdSimplex.isTerminalObj₀.from T ≫ SSet.stdSimplex.δ (0 : Fin 2)
-
 variable {ι : Type u} (E : ι → SSet.{v})
 
 inductive Chain (T : SSet.{v}) (a : ι) : ι → Type (max u (v + 1))

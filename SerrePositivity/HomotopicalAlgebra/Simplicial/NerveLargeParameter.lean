@@ -5,6 +5,8 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveParameterExtens
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterMapping
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterRelativeChoice
 
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagramUniverseLift
+
 /-!
 # 中断した任意モデル源への一般化：NerveLargeParameter
 
@@ -47,7 +49,6 @@ namespace SerrePositivity.SimplicialModel.NerveLargeParameter
 variable {D : Type uD} [Category.{vD} D] (F : D ⥤ SSet.{v})
   (hp : ∀ d, UniverseLift.BoundaryFillers (F.obj d))
 
-abbrev lifted : D ⥤ SSet.{max w v} := F ⋙ SSet.uliftFunctor.{w, v}
 abbrev mapping (K : SSet.{max w v}) := NerveParameterExtension.cotensor (lifted.{w} F) K
 abbrev System (K : SSet.{max w v}) := NerveParameterExtension.System (lifted.{w} F) K
 

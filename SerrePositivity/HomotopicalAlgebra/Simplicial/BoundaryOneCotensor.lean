@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceSpace
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.FixedBoundaryExtensions
 public import Mathlib.CategoryTheory.Monoidal.Closed.Braided
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.BinaryProducts
 

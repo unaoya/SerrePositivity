@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyClasses
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyEndpointComparison
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyFaces
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.PushoutProduct
 
 /-!

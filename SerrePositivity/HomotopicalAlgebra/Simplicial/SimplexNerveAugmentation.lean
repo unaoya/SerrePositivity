@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.SimplexChainParameter
+public import SerrePositivity.CategoryTheory.SimplexChainVertices
 public import Mathlib.CategoryTheory.Elements
 
 /-!

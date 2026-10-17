@@ -3,6 +3,8 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.NervePushoutBoundary
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.ModelCompatibility
 
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagramTensor
+
 /-!
 # 中断した任意モデル源への一般化：NerveCylinderBoundary
 
@@ -40,20 +42,6 @@ open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory
 namespace SerrePositivity.SimplicialModel.NerveCylinderBoundary
 variable {D : Type uD} [Category.{vD} D]
   (V K : D ⥤ SSet.{w}) (i : V ⟶ K) {A T : SSet.{w}} (j : A ⟶ T)
-
-def product (K : D ⥤ SSet.{w}) (T : SSet.{w}) : D ⥤ SSet.{w} :=
-  K ⋙ (tensoringRight SSet.{w}).obj T
-
-def horizontal (T : SSet.{w}) : product V T ⟶ product K T :=
-  Functor.whiskerRight i ((tensoringRight SSet.{w}).obj T)
-
-def vertical (K : D ⥤ SSet.{w}) : product K A ⟶ product K T :=
-  Functor.whiskerLeft K ((tensoringRight SSet.{w}).map j)
-
-lemma commute : horizontal V K i A ≫ vertical j K =
-    vertical j V ≫ horizontal V K i T := by
-  ext d : 2
-  exact whisker_exchange (i.app d) j
 
 abbrev boundary : D ⥤ SSet.{w} := pushout (horizontal V K i A) (vertical j V)
 abbrev endpointInclusion : product K A ⟶ boundary V K i j := pushout.inl _ _

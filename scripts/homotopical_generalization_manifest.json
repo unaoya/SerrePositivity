@@ -1,0 +1,3188 @@
+{
+  "baseline": "6896e5b352c9256cc08938825a7543127ecc79c2",
+  "entries": [
+    {
+      "module": "SerrePositivity.CategoryTheory.AnchoredChain",
+      "class": "B",
+      "anchor": "m0001"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.AnchoredChainContraction",
+      "class": "B",
+      "anchor": "m0002"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.AnchoredChainNerve",
+      "class": "B",
+      "anchor": "m0003"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.AnchoredChainSimplicial",
+      "class": "B",
+      "anchor": "m0004"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.AnchoredChainTransport",
+      "class": "B",
+      "anchor": "m0005"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.ArrowContext",
+      "class": "B",
+      "anchor": "m0006"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.ArrowFactorizationCategory",
+      "class": "A",
+      "anchor": "m0007"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.ArrowFactorizationTransport",
+      "class": "A",
+      "anchor": "m0008"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.ElementsNaturalPrecomp",
+      "class": "A",
+      "anchor": "m0009"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.LabelledChain",
+      "class": "B",
+      "anchor": "m0010"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Limits.SequentialExtension",
+      "class": "A",
+      "anchor": "m0011"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.NerveHomotopy",
+      "class": "A",
+      "anchor": "m0012"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.NerveHomotopyUniverse",
+      "class": "A",
+      "anchor": "m0013"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.NerveSimplexEndpoint",
+      "class": "A",
+      "anchor": "m0014"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.NerveSimplexFirstFunctor",
+      "class": "A",
+      "anchor": "m0015"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.NerveSimplexStart",
+      "class": "A",
+      "anchor": "m0016"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.NerveVertices",
+      "class": "A",
+      "anchor": "m0017"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Presentation.AmbientWordAugmentation",
+      "class": "B",
+      "anchor": "m0018"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Presentation.AmbientWordComparison",
+      "class": "B",
+      "anchor": "m0019"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Presentation.AmbientWordFunctoriality",
+      "class": "B",
+      "anchor": "m0020"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Presentation.AmbientWordKaroubi",
+      "class": "B",
+      "anchor": "m0021"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Presentation.AmbientWordMap",
+      "class": "B",
+      "anchor": "m0022"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Presentation.AmbientWords",
+      "class": "B",
+      "anchor": "m0023"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Presentation.RetractWordAugmentation",
+      "class": "B",
+      "anchor": "m0024"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Presentation.RetractWordExt",
+      "class": "B",
+      "anchor": "m0025"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Presentation.RetractWordIdentities",
+      "class": "B",
+      "anchor": "m0026"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Presentation.RetractWordMap",
+      "class": "B",
+      "anchor": "m0027"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Presentation.RetractWordPullback",
+      "class": "B",
+      "anchor": "m0028"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Presentation.RetractWordRealization",
+      "class": "B",
+      "anchor": "m0029"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Presentation.RetractWords",
+      "class": "B",
+      "anchor": "m0030"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Presentation.WeightedPathParameterMap",
+      "class": "B",
+      "anchor": "m0031"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Presentation.WeightedPathRealization",
+      "class": "B",
+      "anchor": "m0032"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Quiver.PathFunctorExt",
+      "class": "A",
+      "anchor": "m0033"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Quiver.PathIntersections",
+      "class": "A",
+      "anchor": "m0034"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Quiver.PathNatTrans",
+      "class": "A",
+      "anchor": "m0035"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Quiver.PathObjectTransport",
+      "class": "A",
+      "anchor": "m0036"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Quiver.WeightedPathMaps",
+      "class": "B",
+      "anchor": "m0037"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Quiver.WeightedPaths",
+      "class": "B",
+      "anchor": "m0038"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Simplex.Naturality",
+      "class": "A",
+      "anchor": "m0039"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Simplex.Prefix",
+      "class": "A",
+      "anchor": "m0040"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Simplex.PrefixInterval",
+      "class": "A",
+      "anchor": "m0041"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Simplex.PresentationDegeneracies",
+      "class": "A",
+      "anchor": "m0042"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Simplex.PresentationEquivalence",
+      "class": "A",
+      "anchor": "m0043"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.Simplex.PresentationFaces",
+      "class": "A",
+      "anchor": "m0044"
+    },
+    {
+      "module": "SerrePositivity.CategoryTheory.SimplexChainParameter",
+      "class": "B",
+      "anchor": "m0045"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Generated.FunctorClosure",
+      "class": "A",
+      "anchor": "m0046"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AllFactorizationChoices",
+      "class": "B",
+      "anchor": "m0047"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AllFactorizationCoherentSquare",
+      "class": "B",
+      "anchor": "m0048"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AllFactorizationComparison",
+      "class": "B",
+      "anchor": "m0049"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AllFactorizationMixed",
+      "class": "B",
+      "anchor": "m0050"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AllFactorizationMixedContext",
+      "class": "B",
+      "anchor": "m0051"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AllFactorizationMixedTransport",
+      "class": "B",
+      "anchor": "m0052"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AllFactorizationPost",
+      "class": "B",
+      "anchor": "m0053"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AllFactorizationPostPoints",
+      "class": "B",
+      "anchor": "m0054"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AllFactorizationPostRelative",
+      "class": "B",
+      "anchor": "m0055"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AllFactorizationPre",
+      "class": "B",
+      "anchor": "m0056"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AllFactorizationSmallAction",
+      "class": "B",
+      "anchor": "m0057"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AllFactorizationSmallFamilies",
+      "class": "B",
+      "anchor": "m0058"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AnchoredPostComparison",
+      "class": "B",
+      "anchor": "m0059"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BalancedResolutionComparison",
+      "class": "B",
+      "anchor": "m0060"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BiresolutionRawMapping",
+      "class": "B",
+      "anchor": "m0061"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BiresolutionRightAction",
+      "class": "B",
+      "anchor": "m0062"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BiresolutionRightMapping",
+      "class": "B",
+      "anchor": "m0063"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.CoherentLiftBaseChange",
+      "class": "B",
+      "anchor": "m0064"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.CoherentLiftEdges",
+      "class": "B",
+      "anchor": "m0065"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.CoherentLiftFaces",
+      "class": "B",
+      "anchor": "m0066"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.CoherentLiftMixedComparison",
+      "class": "B",
+      "anchor": "m0067"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.CoherentLiftMixedFamilies",
+      "class": "B",
+      "anchor": "m0068"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.CoherentLiftPostComposition",
+      "class": "B",
+      "anchor": "m0069"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.CoherentLiftPreComposition",
+      "class": "B",
+      "anchor": "m0070"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.CoherentLiftRelative",
+      "class": "B",
+      "anchor": "m0071"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.CoherentLiftTuples",
+      "class": "B",
+      "anchor": "m0072"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.CoherentLiftUnitComparison",
+      "class": "B",
+      "anchor": "m0073"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.CoherentLiftUnitFamilies",
+      "class": "B",
+      "anchor": "m0074"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ComonadResolutionOperators",
+      "class": "A",
+      "anchor": "m0075"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ComonadResolutionPresentation",
+      "class": "A",
+      "anchor": "m0076"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ComonadSimplicialResolution",
+      "class": "A",
+      "anchor": "m0077"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.CosimplicialMapFamily",
+      "class": "A",
+      "anchor": "m0078"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.DiagonalFrame",
+      "class": "C",
+      "anchor": "m0079"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.DiagonalHomComposition",
+      "class": "C",
+      "anchor": "m0080"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.DiagonalMappingComparison",
+      "class": "B",
+      "anchor": "m0081"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.DiagonalMappingRows",
+      "class": "C",
+      "anchor": "m0082"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.DiagonalMappingWeakEquivalence",
+      "class": "C",
+      "anchor": "m0083"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.DualResolutionTargets",
+      "class": "B",
+      "anchor": "m0084"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameLiftSpace",
+      "class": "B",
+      "anchor": "m0085"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FrameSquareComparison",
+      "class": "B",
+      "anchor": "m0086"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FramedMappingBifunctor",
+      "class": "B",
+      "anchor": "m0087"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FramedMappingLocalization",
+      "class": "B",
+      "anchor": "m0088"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FramedPreChoiceFunctor",
+      "class": "B",
+      "anchor": "m0089"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FramedResolutionCategory",
+      "class": "B",
+      "anchor": "m0090"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FramedResolutionChains",
+      "class": "B",
+      "anchor": "m0091"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreeGeneratorCategories",
+      "class": "A",
+      "anchor": "m0092"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreeGeneratorDegeneracies",
+      "class": "A",
+      "anchor": "m0093"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreeGeneratorFaces",
+      "class": "A",
+      "anchor": "m0094"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreeGeneratorLatchingValues",
+      "class": "A",
+      "anchor": "m0095"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreeGeneratorMixedOperators",
+      "class": "B",
+      "anchor": "m0096"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreePathDegeneracyImage",
+      "class": "A",
+      "anchor": "m0097"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreePathResolution",
+      "class": "B",
+      "anchor": "m0098"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreePathResolutionDegreeTwo",
+      "class": "B",
+      "anchor": "m0099"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreePathResolutionPresentation",
+      "class": "A",
+      "anchor": "m0100"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreePathSimplicialResolution",
+      "class": "B",
+      "anchor": "m0101"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.KanLiftAction",
+      "class": "B",
+      "anchor": "m0102"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.KanLiftCoherence",
+      "class": "B",
+      "anchor": "m0103"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.LiftSpace",
+      "class": "B",
+      "anchor": "m0104"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.LiftSpaceAction",
+      "class": "B",
+      "anchor": "m0105"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.LiftSpaceFunctor",
+      "class": "B",
+      "anchor": "m0106"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.LiftSpacePrecomposition",
+      "class": "B",
+      "anchor": "m0107"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.LocalizedHomDiagram",
+      "class": "A",
+      "anchor": "m0108"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.LocalizedMappingBifunctor",
+      "class": "B",
+      "anchor": "m0109"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.LocalizedResolutionHom",
+      "class": "B",
+      "anchor": "m0110"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.MixedBiresolutionComparison",
+      "class": "B",
+      "anchor": "m0111"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.MixedCenterActionWeakEquivalence",
+      "class": "B",
+      "anchor": "m0112"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.MixedCenterComparison",
+      "class": "B",
+      "anchor": "m0113"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.MixedChoiceCoherentIntervals",
+      "class": "B",
+      "anchor": "m0114"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.MixedChoiceCoherentTriangles",
+      "class": "B",
+      "anchor": "m0115"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.MixedChoiceCompatibility",
+      "class": "B",
+      "anchor": "m0116"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.MixedChoiceFunctor",
+      "class": "B",
+      "anchor": "m0117"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.MixedDiagonalHom",
+      "class": "B",
+      "anchor": "m0118"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.MixedDiagonalHomRecovery",
+      "class": "B",
+      "anchor": "m0119"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.MixedDiagonalHomTransport",
+      "class": "B",
+      "anchor": "m0120"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.MixedDiagonalRows",
+      "class": "B",
+      "anchor": "m0121"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.MixedHomBifunctor",
+      "class": "B",
+      "anchor": "m0122"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.MixedLiftActionWeakEquivalence",
+      "class": "B",
+      "anchor": "m0123"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.MixedResolutionCenters",
+      "class": "B",
+      "anchor": "m0124"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.MixedResolutionComparison",
+      "class": "B",
+      "anchor": "m0125"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.MixedResolutionInvariance",
+      "class": "B",
+      "anchor": "m0126"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.MixedResolutionKanComparison",
+      "class": "B",
+      "anchor": "m0127"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.MixedResolutionLiftAction",
+      "class": "B",
+      "anchor": "m0128"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.NerveMixedAction",
+      "class": "B",
+      "anchor": "m0129"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.NerveMixedChoices",
+      "class": "B",
+      "anchor": "m0130"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.NerveSmallAction",
+      "class": "B",
+      "anchor": "m0131"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarAmbientWordComparison",
+      "class": "B",
+      "anchor": "m0132"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarAssociativityCoherence",
+      "class": "B",
+      "anchor": "m0133"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarAugmentationEquivalences",
+      "class": "B",
+      "anchor": "m0134"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarBaseInvariance",
+      "class": "B",
+      "anchor": "m0135"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarCenters",
+      "class": "B",
+      "anchor": "m0136"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarChainFamily",
+      "class": "B",
+      "anchor": "m0137"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarChoiceBoundaryExt",
+      "class": "B",
+      "anchor": "m0138"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarChoiceBoundaryGluing",
+      "class": "B",
+      "anchor": "m0139"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarChoiceCategory",
+      "class": "B",
+      "anchor": "m0140"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarChoiceChainTransfer",
+      "class": "B",
+      "anchor": "m0141"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarChoiceComposition",
+      "class": "B",
+      "anchor": "m0142"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarChoiceMappingSpace",
+      "class": "B",
+      "anchor": "m0143"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarChoiceSimplicialCategory",
+      "class": "B",
+      "anchor": "m0144"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarChoiceTriangleGluing",
+      "class": "B",
+      "anchor": "m0145"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarClosedHomDescent",
+      "class": "B",
+      "anchor": "m0146"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarClosedHomDescentLaws",
+      "class": "B",
+      "anchor": "m0147"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarCommaCone",
+      "class": "B",
+      "anchor": "m0148"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarCompositionChoices",
+      "class": "B",
+      "anchor": "m0149"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarCompositionParameterDiagram",
+      "class": "B",
+      "anchor": "m0150"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarCompositionReindex",
+      "class": "B",
+      "anchor": "m0151"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarCompositionReindexLaws",
+      "class": "B",
+      "anchor": "m0152"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarDiagonalAction",
+      "class": "B",
+      "anchor": "m0153"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarDiagonalAmbientHom",
+      "class": "B",
+      "anchor": "m0154"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarDiagonalClosedAction",
+      "class": "B",
+      "anchor": "m0155"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarDiagonalClosedCompatibility",
+      "class": "B",
+      "anchor": "m0156"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarDiagonalEvaluation",
+      "class": "B",
+      "anchor": "m0157"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarDiagonalHomAugmentation",
+      "class": "B",
+      "anchor": "m0158"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarDiagonalHomRetraction",
+      "class": "B",
+      "anchor": "m0159"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarEvaluatedEndpoint",
+      "class": "B",
+      "anchor": "m0160"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarEvaluation",
+      "class": "B",
+      "anchor": "m0161"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarEvaluationEquivalence",
+      "class": "B",
+      "anchor": "m0162"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFirstAction",
+      "class": "B",
+      "anchor": "m0163"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFirstEndpoint",
+      "class": "B",
+      "anchor": "m0164"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFixedAugmentation",
+      "class": "B",
+      "anchor": "m0165"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFixedChoices",
+      "class": "B",
+      "anchor": "m0166"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFixedRowWordHom",
+      "class": "B",
+      "anchor": "m0167"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFixedSource",
+      "class": "B",
+      "anchor": "m0168"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFixedWordEvaluation",
+      "class": "B",
+      "anchor": "m0169"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFixedWordResolution",
+      "class": "B",
+      "anchor": "m0170"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeAmbientFamilies",
+      "class": "B",
+      "anchor": "m0171"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeBoundaryGluing",
+      "class": "B",
+      "anchor": "m0172"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeChainTransfer",
+      "class": "B",
+      "anchor": "m0173"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeChainUnits",
+      "class": "B",
+      "anchor": "m0174"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeDegeneracyExtension",
+      "class": "B",
+      "anchor": "m0175"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeDiagramExtension",
+      "class": "B",
+      "anchor": "m0176"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeDiagramHomotopy",
+      "class": "B",
+      "anchor": "m0177"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeResolutionAction",
+      "class": "B",
+      "anchor": "m0178"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeResolutionBoundary",
+      "class": "B",
+      "anchor": "m0179"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeResolutionChoices",
+      "class": "B",
+      "anchor": "m0180"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeResolutionComparison",
+      "class": "B",
+      "anchor": "m0181"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeResolutionDegeneracyValues",
+      "class": "B",
+      "anchor": "m0182"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeResolutionDegenerateBoundary",
+      "class": "B",
+      "anchor": "m0183"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeResolutionFaces",
+      "class": "B",
+      "anchor": "m0184"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeResolutionMixedFaces",
+      "class": "B",
+      "anchor": "m0185"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeResolutionNaturalChoice",
+      "class": "B",
+      "anchor": "m0186"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeResolutionSeed",
+      "class": "B",
+      "anchor": "m0187"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeResolutionStep",
+      "class": "B",
+      "anchor": "m0188"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeResolutionTower",
+      "class": "B",
+      "anchor": "m0189"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeTransferredFamilies",
+      "class": "B",
+      "anchor": "m0190"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeTriangleBoundary",
+      "class": "B",
+      "anchor": "m0191"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeTriangleDegeneracy",
+      "class": "B",
+      "anchor": "m0192"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeTriangleFiller",
+      "class": "B",
+      "anchor": "m0193"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeTriangleGluing",
+      "class": "B",
+      "anchor": "m0194"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeWordChainTransfer",
+      "class": "B",
+      "anchor": "m0195"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarHomSections",
+      "class": "B",
+      "anchor": "m0196"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarHomotopyDescent",
+      "class": "B",
+      "anchor": "m0197"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarLabelSurjectivity",
+      "class": "B",
+      "anchor": "m0198"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarMappingClasses",
+      "class": "B",
+      "anchor": "m0199"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarMappingComparison",
+      "class": "B",
+      "anchor": "m0200"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarNerveBridge",
+      "class": "B",
+      "anchor": "m0201"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarNormalizedCompositionTriangle",
+      "class": "B",
+      "anchor": "m0202"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarParameterChoiceCategory",
+      "class": "B",
+      "anchor": "m0203"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarPiZero",
+      "class": "B",
+      "anchor": "m0204"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarReference",
+      "class": "B",
+      "anchor": "m0205"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarReferenceRowHomotopy",
+      "class": "B",
+      "anchor": "m0206"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarReferenceRows",
+      "class": "B",
+      "anchor": "m0207"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarRelativeComposition",
+      "class": "B",
+      "anchor": "m0208"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarRelativeCompositionTriangle",
+      "class": "B",
+      "anchor": "m0209"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarRelativeFreeDiagramExtension",
+      "class": "B",
+      "anchor": "m0210"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarRelativeHomDescent",
+      "class": "B",
+      "anchor": "m0211"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarRelativeNativeComparison",
+      "class": "B",
+      "anchor": "m0212"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarReplacementComparison",
+      "class": "B",
+      "anchor": "m0213"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarRetractSystem",
+      "class": "B",
+      "anchor": "m0214"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarRetractTransfer",
+      "class": "B",
+      "anchor": "m0215"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarRightEvaluation",
+      "class": "B",
+      "anchor": "m0216"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarRowDiagram",
+      "class": "B",
+      "anchor": "m0217"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarSimplexCone",
+      "class": "B",
+      "anchor": "m0218"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarSmallAction",
+      "class": "B",
+      "anchor": "m0219"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarSmallFreeChainTransfer",
+      "class": "B",
+      "anchor": "m0220"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarSmallFreeWordChainTransfer",
+      "class": "B",
+      "anchor": "m0221"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarSmallReference",
+      "class": "B",
+      "anchor": "m0222"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarSmallSubcomplex",
+      "class": "B",
+      "anchor": "m0223"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarSourceContraction",
+      "class": "B",
+      "anchor": "m0224"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarSourceExtraDegeneracy",
+      "class": "B",
+      "anchor": "m0225"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarSourceExtraOperators",
+      "class": "B",
+      "anchor": "m0226"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarSourceHom",
+      "class": "B",
+      "anchor": "m0227"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarSourceOperators",
+      "class": "B",
+      "anchor": "m0228"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarSourceSection",
+      "class": "B",
+      "anchor": "m0229"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarSourceWordEmbedding",
+      "class": "B",
+      "anchor": "m0230"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarTotalCone",
+      "class": "B",
+      "anchor": "m0231"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarTotalEvaluation",
+      "class": "B",
+      "anchor": "m0232"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarTotalHomotopy",
+      "class": "B",
+      "anchor": "m0233"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarTripleComparison",
+      "class": "B",
+      "anchor": "m0234"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarUnitCoherence",
+      "class": "B",
+      "anchor": "m0235"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarUnitTriangles",
+      "class": "B",
+      "anchor": "m0236"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordAction",
+      "class": "B",
+      "anchor": "m0237"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordActionOperators",
+      "class": "B",
+      "anchor": "m0238"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordChainFamily",
+      "class": "B",
+      "anchor": "m0239"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordContraction",
+      "class": "B",
+      "anchor": "m0240"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordDiagonalEquivalence",
+      "class": "B",
+      "anchor": "m0241"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordEvaluationOperators",
+      "class": "B",
+      "anchor": "m0242"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordPresentation",
+      "class": "B",
+      "anchor": "m0243"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordResolution",
+      "class": "B",
+      "anchor": "m0244"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordRowMaps",
+      "class": "B",
+      "anchor": "m0245"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordRows",
+      "class": "B",
+      "anchor": "m0246"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordRowsDiagonal",
+      "class": "B",
+      "anchor": "m0247"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryKanBarMappingClasses",
+      "class": "B",
+      "anchor": "m0248"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryKanBarQuotient",
+      "class": "B",
+      "anchor": "m0249"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryMappingClassLabel",
+      "class": "B",
+      "anchor": "m0250"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryQuotientPiZero",
+      "class": "B",
+      "anchor": "m0251"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryRawLabelHomotopy",
+      "class": "B",
+      "anchor": "m0252"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryResolutionBar",
+      "class": "B",
+      "anchor": "m0253"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryResolutionBarReduction",
+      "class": "B",
+      "anchor": "m0254"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryResolutionPairs",
+      "class": "B",
+      "anchor": "m0255"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryResolutionRows",
+      "class": "B",
+      "anchor": "m0256"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PostChainKanParameter",
+      "class": "B",
+      "anchor": "m0257"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PostChainReindexing",
+      "class": "B",
+      "anchor": "m0258"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PostChoiceFunctor",
+      "class": "B",
+      "anchor": "m0259"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PostCompositionChain",
+      "class": "B",
+      "anchor": "m0260"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PresentationKernelQuotient",
+      "class": "B",
+      "anchor": "m0261"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryHom",
+      "class": "A",
+      "anchor": "m0262"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Elements",
+      "class": "A",
+      "anchor": "m0263"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ElementsFinite",
+      "class": "A",
+      "anchor": "m0264"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ElementsMatchingEquivalence",
+      "class": "A",
+      "anchor": "m0265"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.IndexOppositeEquivalence",
+      "class": "A",
+      "anchor": "m0266"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.PrescribedLowerStep",
+      "class": "A",
+      "anchor": "m0267"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeLifting",
+      "class": "A",
+      "anchor": "m0268"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ReplacementBarAnodyneComparison",
+      "class": "B",
+      "anchor": "m0269"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ReplacementBarCandidate",
+      "class": "B",
+      "anchor": "m0270"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ReplacementBarComparisonSpan",
+      "class": "B",
+      "anchor": "m0271"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ReplacementBarLeftContraction",
+      "class": "B",
+      "anchor": "m0272"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ReplacementMappingBifunctor",
+      "class": "B",
+      "anchor": "m0273"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ReplacementMappingDescent",
+      "class": "B",
+      "anchor": "m0274"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ReplacementMappingLocalization",
+      "class": "B",
+      "anchor": "m0275"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionArrowActionFunctors",
+      "class": "B",
+      "anchor": "m0276"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionArrowActionTransport",
+      "class": "B",
+      "anchor": "m0277"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionArrowComparisonEndpoints",
+      "class": "B",
+      "anchor": "m0278"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionArrowCylinderBoundary",
+      "class": "B",
+      "anchor": "m0279"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionArrowCylinderFaces",
+      "class": "B",
+      "anchor": "m0280"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionArrowCylinderFamilyFit",
+      "class": "B",
+      "anchor": "m0281"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionArrowDiagram",
+      "class": "B",
+      "anchor": "m0282"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionArrowElementary",
+      "class": "B",
+      "anchor": "m0283"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionArrowParameters",
+      "class": "B",
+      "anchor": "m0284"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionArrowSelectedIntervals",
+      "class": "B",
+      "anchor": "m0285"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionArrowTupleCoherence",
+      "class": "B",
+      "anchor": "m0286"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionArrowTuples",
+      "class": "B",
+      "anchor": "m0287"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionBarCenters",
+      "class": "B",
+      "anchor": "m0288"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionBarConeDiagram",
+      "class": "B",
+      "anchor": "m0289"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionBarEvaluation",
+      "class": "B",
+      "anchor": "m0290"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionBarFirstAction",
+      "class": "B",
+      "anchor": "m0291"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionBarFrameSquares",
+      "class": "B",
+      "anchor": "m0292"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionBarReference",
+      "class": "B",
+      "anchor": "m0293"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionBarRowDiagram",
+      "class": "B",
+      "anchor": "m0294"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionBarRowHomotopy",
+      "class": "B",
+      "anchor": "m0295"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionBarRowOperators",
+      "class": "B",
+      "anchor": "m0296"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionBarRowPresentations",
+      "class": "B",
+      "anchor": "m0297"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionBarSimplexCone",
+      "class": "B",
+      "anchor": "m0298"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionCategory",
+      "class": "B",
+      "anchor": "m0299"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionCategoryHom",
+      "class": "B",
+      "anchor": "m0300"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionCenterRowLaws",
+      "class": "B",
+      "anchor": "m0301"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionCenterRowLifts",
+      "class": "B",
+      "anchor": "m0302"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionFrameRowFunctor",
+      "class": "B",
+      "anchor": "m0303"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionFrameRows",
+      "class": "B",
+      "anchor": "m0304"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionLiftAction",
+      "class": "B",
+      "anchor": "m0305"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionLiftFunctorLaws",
+      "class": "B",
+      "anchor": "m0306"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionLiftIndependence",
+      "class": "B",
+      "anchor": "m0307"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionLiftPostcomposition",
+      "class": "B",
+      "anchor": "m0308"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionLiftPrecomposition",
+      "class": "B",
+      "anchor": "m0309"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionLiftRows",
+      "class": "B",
+      "anchor": "m0310"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionLiftSpace",
+      "class": "B",
+      "anchor": "m0311"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionMixedActionOperators",
+      "class": "B",
+      "anchor": "m0312"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionMixedBoundary",
+      "class": "B",
+      "anchor": "m0313"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionMixedCoherentDiagonal",
+      "class": "B",
+      "anchor": "m0314"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionMixedCoherentTriangles",
+      "class": "B",
+      "anchor": "m0315"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionMixedDiagonalData",
+      "class": "B",
+      "anchor": "m0316"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionMixedDiagram",
+      "class": "B",
+      "anchor": "m0317"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionMixedEdgeRecovery",
+      "class": "B",
+      "anchor": "m0318"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionMixedEndpointCompatibility",
+      "class": "B",
+      "anchor": "m0319"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionMixedFaceSystems",
+      "class": "B",
+      "anchor": "m0320"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionMixedIntervalRestrictions",
+      "class": "B",
+      "anchor": "m0321"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionMixedRawEndpoints",
+      "class": "B",
+      "anchor": "m0322"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionMixedReassociation",
+      "class": "B",
+      "anchor": "m0323"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionMixedReassociationEquality",
+      "class": "B",
+      "anchor": "m0324"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionMixedSmallAction",
+      "class": "B",
+      "anchor": "m0325"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionMixedSmallFamilies",
+      "class": "B",
+      "anchor": "m0326"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionMixedTriangleBoundary",
+      "class": "B",
+      "anchor": "m0327"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionMixedTriangles",
+      "class": "B",
+      "anchor": "m0328"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionMixedVertexRestrictions",
+      "class": "B",
+      "anchor": "m0329"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionRowMixedMapping",
+      "class": "B",
+      "anchor": "m0330"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.RightResolutionMapping",
+      "class": "B",
+      "anchor": "m0331"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.RightResolutionRefinement",
+      "class": "B",
+      "anchor": "m0332"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SelectedIntervalDiagram",
+      "class": "B",
+      "anchor": "m0333"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SelectedIntervalEndpoints",
+      "class": "B",
+      "anchor": "m0334"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SelectedIntervalVertices",
+      "class": "B",
+      "anchor": "m0335"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Quillen.ContractibleParameters",
+      "class": "A",
+      "anchor": "m0336"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Replacement.FibrantCategory",
+      "class": "A",
+      "anchor": "m0337"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Replacement.FibrantLocalization",
+      "class": "A",
+      "anchor": "m0338"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.AnchoredChainFiniteTest",
+      "class": "B",
+      "anchor": "m0339"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization",
+      "class": "A",
+      "anchor": "m0340"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneIntervalEndpoints",
+      "class": "A",
+      "anchor": "m0341"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneKanReplacement",
+      "class": "A",
+      "anchor": "m0342"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneLocalizedTensor",
+      "class": "A",
+      "anchor": "m0343"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneModelDetection",
+      "class": "A",
+      "anchor": "m0344"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneNonempty",
+      "class": "A",
+      "anchor": "m0345"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.BarAugmentation",
+      "class": "A",
+      "anchor": "m0346"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.BarConstruction",
+      "class": "A",
+      "anchor": "m0347"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.BarSize",
+      "class": "B",
+      "anchor": "m0348"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.BinaryCotensor",
+      "class": "A",
+      "anchor": "m0349"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.BinaryIntervalTriangles",
+      "class": "B",
+      "anchor": "m0350"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.BisimplicialCofibrancy",
+      "class": "A",
+      "anchor": "m0351"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryCotensor",
+      "class": "A",
+      "anchor": "m0352"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryFillerLifting",
+      "class": "A",
+      "anchor": "m0353"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryGluing",
+      "class": "A",
+      "anchor": "m0354"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryOneCotensor",
+      "class": "A",
+      "anchor": "m0355"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+      "class": "A",
+      "anchor": "m0356"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryRightColimit",
+      "class": "A",
+      "anchor": "m0357"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryTensorGluing",
+      "class": "A",
+      "anchor": "m0358"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.CellularNaturalComparison",
+      "class": "A",
+      "anchor": "m0359"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ClosedHomotopyComposition",
+      "class": "A",
+      "anchor": "m0360"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ClosedParameterComposition",
+      "class": "A",
+      "anchor": "m0361"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ClosedParameterUnits",
+      "class": "A",
+      "anchor": "m0362"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.CodiscreteNerveExtension",
+      "class": "A",
+      "anchor": "m0363"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonCoherenceRestriction",
+      "class": "B",
+      "anchor": "m0364"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonCoherenceTransport",
+      "class": "B",
+      "anchor": "m0365"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleBinary",
+      "class": "B",
+      "anchor": "m0366"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleChoices",
+      "class": "B",
+      "anchor": "m0367"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleDegeneracy",
+      "class": "B",
+      "anchor": "m0368"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleHorn",
+      "class": "B",
+      "anchor": "m0369"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleParameterDiagram",
+      "class": "B",
+      "anchor": "m0370"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleTransport",
+      "class": "B",
+      "anchor": "m0371"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.CompatibleHornFillingOperation",
+      "class": "B",
+      "anchor": "m0372"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.CompatibleInputMap",
+      "class": "C",
+      "anchor": "m0373"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.CompatibleInputUnion",
+      "class": "C",
+      "anchor": "m0374"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.CosimplicialDegenerateHorn",
+      "class": "C",
+      "anchor": "m0375"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.CurriedHomotopy",
+      "class": "A",
+      "anchor": "m0376"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.DegenerateHornInput",
+      "class": "B",
+      "anchor": "m0377"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.DegenerateHornOverlap",
+      "class": "B",
+      "anchor": "m0378"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.DegenerateTriangleOverlap",
+      "class": "B",
+      "anchor": "m0379"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalAdjunction",
+      "class": "A",
+      "anchor": "m0380"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalAnodyne",
+      "class": "A",
+      "anchor": "m0381"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalCofibrations",
+      "class": "A",
+      "anchor": "m0382"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalInternalHom",
+      "class": "A",
+      "anchor": "m0383"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalKanTests",
+      "class": "A",
+      "anchor": "m0384"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "class": "A",
+      "anchor": "m0385"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalMatching",
+      "class": "A",
+      "anchor": "m0386"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalQuillen",
+      "class": "A",
+      "anchor": "m0387"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalRelativeMatching",
+      "class": "A",
+      "anchor": "m0388"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalRepresentables",
+      "class": "A",
+      "anchor": "m0389"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagramQuotient",
+      "class": "C",
+      "anchor": "m0390"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiscreteFamily",
+      "class": "A",
+      "anchor": "m0391"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiscreteFamilyLifting",
+      "class": "A",
+      "anchor": "m0392"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiscreteFiber",
+      "class": "A",
+      "anchor": "m0393"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiscreteKanExtension",
+      "class": "A",
+      "anchor": "m0394"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiscreteLocalizedExtension",
+      "class": "A",
+      "anchor": "m0395"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ExtraDegeneracyContraction",
+      "class": "A",
+      "anchor": "m0396"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ExtraDegeneracyInterval",
+      "class": "A",
+      "anchor": "m0397"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.FiberFunctor",
+      "class": "A",
+      "anchor": "m0398"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.FiberFunctorReindex",
+      "class": "A",
+      "anchor": "m0399"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.FreeWordHom",
+      "class": "B",
+      "anchor": "m0400"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyBinarySquare",
+      "class": "A",
+      "anchor": "m0401"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyClasses",
+      "class": "A",
+      "anchor": "m0402"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyClassesClosed",
+      "class": "A",
+      "anchor": "m0403"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyEndpointComparison",
+      "class": "B",
+      "anchor": "m0404"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyRetractionTests",
+      "class": "A",
+      "anchor": "m0405"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanActualHomotopy",
+      "class": "A",
+      "anchor": "m0406"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanComparisonSquare",
+      "class": "B",
+      "anchor": "m0407"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanComparisonTetrahedron",
+      "class": "B",
+      "anchor": "m0408"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanComparisonTriangle",
+      "class": "B",
+      "anchor": "m0409"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanFiberwiseContraction",
+      "class": "A",
+      "anchor": "m0410"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanFibrationEndpointExtension",
+      "class": "A",
+      "anchor": "m0411"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanFibrationLocalizedLifting",
+      "class": "A",
+      "anchor": "m0412"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanHomotopyClasses",
+      "class": "A",
+      "anchor": "m0413"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanHomotopyExtension",
+      "class": "A",
+      "anchor": "m0414"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanHornFamilyLifting",
+      "class": "B",
+      "anchor": "m0415"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedComparisonResolution",
+      "class": "B",
+      "anchor": "m0416"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedCoproducts",
+      "class": "A",
+      "anchor": "m0417"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedLeftProper",
+      "class": "A",
+      "anchor": "m0418"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedMonoLifting",
+      "class": "A",
+      "anchor": "m0419"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedRepresentatives",
+      "class": "A",
+      "anchor": "m0420"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedTransfinite",
+      "class": "A",
+      "anchor": "m0421"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanMonoEndpointExtension",
+      "class": "A",
+      "anchor": "m0422"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanMonoPushoutEquivalence",
+      "class": "A",
+      "anchor": "m0423"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanMonoPushoutExtension",
+      "class": "A",
+      "anchor": "m0424"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanMonoRelativeHomotopy",
+      "class": "A",
+      "anchor": "m0425"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanMonoStrictExtension",
+      "class": "A",
+      "anchor": "m0426"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanPostDetection",
+      "class": "A",
+      "anchor": "m0427"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanPullbackDeformation",
+      "class": "A",
+      "anchor": "m0428"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanPushoutComparison",
+      "class": "A",
+      "anchor": "m0429"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanPushoutCube",
+      "class": "A",
+      "anchor": "m0430"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanRelativeLifting",
+      "class": "A",
+      "anchor": "m0431"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanReplacement",
+      "class": "A",
+      "anchor": "m0432"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanRestrictionEquivalence",
+      "class": "A",
+      "anchor": "m0433"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanRestrictionLifting",
+      "class": "A",
+      "anchor": "m0434"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanRetractionRightLifting",
+      "class": "A",
+      "anchor": "m0435"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanSequentialColimitComparison",
+      "class": "A",
+      "anchor": "m0436"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanTestDetection",
+      "class": "A",
+      "anchor": "m0437"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanTestLiftingClass",
+      "class": "A",
+      "anchor": "m0438"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanTriangleFamily",
+      "class": "B",
+      "anchor": "m0439"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanTwoHornLift",
+      "class": "A",
+      "anchor": "m0440"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterExtension",
+      "class": "A",
+      "anchor": "m0441"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterHomotopy",
+      "class": "A",
+      "anchor": "m0442"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterMapping",
+      "class": "A",
+      "anchor": "m0443"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterRelativeChoice",
+      "class": "B",
+      "anchor": "m0444"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterSquare",
+      "class": "B",
+      "anchor": "m0445"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.LatchingDegeneracies",
+      "class": "A",
+      "anchor": "m0446"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.LatchingMonomorphisms",
+      "class": "A",
+      "anchor": "m0447"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.LocalizedMonoReedy",
+      "class": "A",
+      "anchor": "m0448"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.LocalizedRelativeChoice",
+      "class": "B",
+      "anchor": "m0449"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.MappingPrecompositionRetraction",
+      "class": "A",
+      "anchor": "m0450"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.MonoLocalizedFactorization",
+      "class": "A",
+      "anchor": "m0451"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingContraction",
+      "class": "A",
+      "anchor": "m0452"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingRelativeHomotopy",
+      "class": "A",
+      "anchor": "m0453"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightPushoutEquivalence",
+      "class": "A",
+      "anchor": "m0454"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NaturalHornFilling",
+      "class": "B",
+      "anchor": "m0455"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveArrowComparison",
+      "class": "B",
+      "anchor": "m0456"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveArrowComparisonComposition",
+      "class": "B",
+      "anchor": "m0457"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBinaryBoundary",
+      "class": "B",
+      "anchor": "m0458"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBiparameter",
+      "class": "B",
+      "anchor": "m0459"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBiparameterComposition",
+      "class": "B",
+      "anchor": "m0460"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBiparameterEvaluation",
+      "class": "B",
+      "anchor": "m0461"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBiparameterMapLaws",
+      "class": "B",
+      "anchor": "m0462"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBiparameterMaps",
+      "class": "B",
+      "anchor": "m0463"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBoundaryExtension",
+      "class": "B",
+      "anchor": "m0464"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveCoherentExtension",
+      "class": "B",
+      "anchor": "m0465"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveCoherentFamily",
+      "class": "B",
+      "anchor": "m0466"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveCoherentReindex",
+      "class": "B",
+      "anchor": "m0467"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveCylinderBoundary",
+      "class": "B",
+      "anchor": "m0468"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveCylinderExtension",
+      "class": "B",
+      "anchor": "m0469"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveDiagramExtension",
+      "class": "B",
+      "anchor": "m0470"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveEvaluationLaws",
+      "class": "B",
+      "anchor": "m0471"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveFillerExtension",
+      "class": "B",
+      "anchor": "m0472"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveFirstChoice",
+      "class": "B",
+      "anchor": "m0473"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveInitialImage",
+      "class": "B",
+      "anchor": "m0474"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveIntervalBoundary",
+      "class": "B",
+      "anchor": "m0475"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveLargeParameter",
+      "class": "B",
+      "anchor": "m0476"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveLargeSampling",
+      "class": "B",
+      "anchor": "m0477"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveLowerExtension",
+      "class": "B",
+      "anchor": "m0478"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMonomorphismLifting",
+      "class": "B",
+      "anchor": "m0479"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMovingBoundary",
+      "class": "B",
+      "anchor": "m0480"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMovingFamilyFit",
+      "class": "B",
+      "anchor": "m0481"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMovingIntervalBoundary",
+      "class": "B",
+      "anchor": "m0482"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMovingParameter",
+      "class": "B",
+      "anchor": "m0483"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMovingParameterRelative",
+      "class": "B",
+      "anchor": "m0484"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveNaturalBoundary",
+      "class": "B",
+      "anchor": "m0485"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveNaturalBoundaryTransport",
+      "class": "B",
+      "anchor": "m0486"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveParameterExtension",
+      "class": "B",
+      "anchor": "m0487"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NervePrescribedCells",
+      "class": "B",
+      "anchor": "m0488"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveProductEndpointTransport",
+      "class": "B",
+      "anchor": "m0489"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveProductParameter",
+      "class": "B",
+      "anchor": "m0490"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NervePushoutBoundary",
+      "class": "B",
+      "anchor": "m0491"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveRelativeNaturalBoundary",
+      "class": "B",
+      "anchor": "m0492"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveRelativeValueExtension",
+      "class": "B",
+      "anchor": "m0493"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveSmallFamilies",
+      "class": "B",
+      "anchor": "m0494"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedComparisonSquare",
+      "class": "B",
+      "anchor": "m0495"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedComparisonTetrahedron",
+      "class": "B",
+      "anchor": "m0496"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedComparisonTriangle",
+      "class": "B",
+      "anchor": "m0497"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornFilling",
+      "class": "B",
+      "anchor": "m0498"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornInputMap",
+      "class": "B",
+      "anchor": "m0499"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornTargetAssociativity",
+      "class": "B",
+      "anchor": "m0500"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornTargetComparison",
+      "class": "B",
+      "anchor": "m0501"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornTargetComposition",
+      "class": "B",
+      "anchor": "m0502"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornTargetFaces",
+      "class": "B",
+      "anchor": "m0503"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornTargetIdentity",
+      "class": "B",
+      "anchor": "m0504"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedTriangleHorn",
+      "class": "B",
+      "anchor": "m0505"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.OppositeHomotopy",
+      "class": "A",
+      "anchor": "m0506"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterCategory",
+      "class": "C",
+      "anchor": "m0507"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterChoiceDiagram",
+      "class": "B",
+      "anchor": "m0508"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterComposition",
+      "class": "C",
+      "anchor": "m0509"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterCube",
+      "class": "A",
+      "anchor": "m0510"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterizedHornChoices",
+      "class": "B",
+      "anchor": "m0511"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroConstant",
+      "class": "A",
+      "anchor": "m0512"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroLocalization",
+      "class": "A",
+      "anchor": "m0513"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.PrecompositionHomotopy",
+      "class": "A",
+      "anchor": "m0514"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ProductBoundaryCotensor",
+      "class": "A",
+      "anchor": "m0515"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.PushoutCotensor",
+      "class": "A",
+      "anchor": "m0516"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.PushoutInternalHomPullback",
+      "class": "A",
+      "anchor": "m0517"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RecursiveChoiceExtension",
+      "class": "B",
+      "anchor": "m0518"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarAnodyneComparison",
+      "class": "A",
+      "anchor": "m0519"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarAugmentation",
+      "class": "A",
+      "anchor": "m0520"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarCommaPresentation",
+      "class": "A",
+      "anchor": "m0521"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarConstruction",
+      "class": "A",
+      "anchor": "m0522"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarContractionOperators",
+      "class": "A",
+      "anchor": "m0523"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarDiagonalContraction",
+      "class": "A",
+      "anchor": "m0524"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarIdentity",
+      "class": "A",
+      "anchor": "m0525"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarMiddleReindex",
+      "class": "A",
+      "anchor": "m0526"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarReindex",
+      "class": "A",
+      "anchor": "m0527"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarSectionHomotopy",
+      "class": "A",
+      "anchor": "m0528"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarSectionUnit",
+      "class": "A",
+      "anchor": "m0529"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarSections",
+      "class": "A",
+      "anchor": "m0530"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarSpan",
+      "class": "A",
+      "anchor": "m0531"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarSpanContraction",
+      "class": "A",
+      "anchor": "m0532"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarUnit",
+      "class": "A",
+      "anchor": "m0533"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBoundaryFilling",
+      "class": "B",
+      "anchor": "m0534"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceBoundary",
+      "class": "B",
+      "anchor": "m0535"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceCells",
+      "class": "B",
+      "anchor": "m0536"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceFamilies",
+      "class": "B",
+      "anchor": "m0537"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceFunctor",
+      "class": "B",
+      "anchor": "m0538"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceIso",
+      "class": "B",
+      "anchor": "m0539"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceMaps",
+      "class": "B",
+      "anchor": "m0540"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceSpace",
+      "class": "B",
+      "anchor": "m0541"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeComparisonTriangle",
+      "class": "B",
+      "anchor": "m0542"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeHornFillingOperation",
+      "class": "B",
+      "anchor": "m0543"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeProductLifting",
+      "class": "A",
+      "anchor": "m0544"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RestrictionDescentChoices",
+      "class": "B",
+      "anchor": "m0545"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RestrictionDescentEvaluation",
+      "class": "B",
+      "anchor": "m0546"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RetractChainFamily",
+      "class": "B",
+      "anchor": "m0547"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RetractChainUnits",
+      "class": "B",
+      "anchor": "m0548"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RetractEndomorphisms",
+      "class": "C",
+      "anchor": "m0549"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ReversedSimplexParameters",
+      "class": "A",
+      "anchor": "m0550"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SegmentWords",
+      "class": "B",
+      "anchor": "m0551"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SelectedLoopContraction",
+      "class": "B",
+      "anchor": "m0552"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SelectedTriangle",
+      "class": "B",
+      "anchor": "m0553"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SequentialBoundaryFactorization",
+      "class": "A",
+      "anchor": "m0554"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SequentialFactorLift",
+      "class": "A",
+      "anchor": "m0555"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SequentialFactorLiftingClasses",
+      "class": "A",
+      "anchor": "m0556"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexIndexFinite",
+      "class": "A",
+      "anchor": "m0557"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexInverseMatching",
+      "class": "A",
+      "anchor": "m0558"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexLatchingBoundary",
+      "class": "A",
+      "anchor": "m0559"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexMatchingTerminal",
+      "class": "A",
+      "anchor": "m0560"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexMonomorphismLifting",
+      "class": "A",
+      "anchor": "m0561"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNaturalMatching",
+      "class": "A",
+      "anchor": "m0562"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveAugmentation",
+      "class": "A",
+      "anchor": "m0563"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveEquivalence",
+      "class": "A",
+      "anchor": "m0564"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveFunctor",
+      "class": "A",
+      "anchor": "m0565"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveMonos",
+      "class": "A",
+      "anchor": "m0566"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveStandard",
+      "class": "A",
+      "anchor": "m0567"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexParameterHom",
+      "class": "A",
+      "anchor": "m0568"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SkeletalCellGluing",
+      "class": "A",
+      "anchor": "m0569"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SkeletalDimension",
+      "class": "A",
+      "anchor": "m0570"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallDiagramQuotient",
+      "class": "B",
+      "anchor": "m0571"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallDominatedSubcomplex",
+      "class": "A",
+      "anchor": "m0572"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallKanHomotopy",
+      "class": "B",
+      "anchor": "m0573"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallParameterClosure",
+      "class": "B",
+      "anchor": "m0574"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallSimplicialValue",
+      "class": "A",
+      "anchor": "m0575"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallSubdiagramObstruction",
+      "class": "B",
+      "anchor": "m0576"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallTargetKernelQuotient",
+      "class": "B",
+      "anchor": "m0577"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SplitLocalizedDescent",
+      "class": "A",
+      "anchor": "m0578"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.StarDiagramSmallQuotient",
+      "class": "B",
+      "anchor": "m0579"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.StrictValueDescentCounterexample",
+      "class": "B",
+      "anchor": "m0580"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.StrictValueObstruction",
+      "class": "B",
+      "anchor": "m0581"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.StrictValuePresentationCounterexample",
+      "class": "B",
+      "anchor": "m0582"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.TotalNerveBarAugmentation",
+      "class": "A",
+      "anchor": "m0583"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.TriangleBook",
+      "class": "C",
+      "anchor": "m0584"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.TriangleBookMaps",
+      "class": "C",
+      "anchor": "m0585"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.TriangleDegeneracyParameters",
+      "class": "B",
+      "anchor": "m0586"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.UnderMonoBrown",
+      "class": "A",
+      "anchor": "m0587"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftAnodyne",
+      "class": "A",
+      "anchor": "m0588"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftAnodyneReflection",
+      "class": "A",
+      "anchor": "m0589"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftClosedComposition",
+      "class": "A",
+      "anchor": "m0590"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftClosedCurry",
+      "class": "A",
+      "anchor": "m0591"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftElements",
+      "class": "A",
+      "anchor": "m0592"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftFillers",
+      "class": "A",
+      "anchor": "m0593"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftFixedHomotopy",
+      "class": "B",
+      "anchor": "m0594"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftHomotopy",
+      "class": "A",
+      "anchor": "m0595"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftHomotopyClasses",
+      "class": "A",
+      "anchor": "m0596"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftIteration",
+      "class": "A",
+      "anchor": "m0597"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftLocalizedHom",
+      "class": "A",
+      "anchor": "m0598"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftPadding",
+      "class": "A",
+      "anchor": "m0599"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftParameterHom",
+      "class": "A",
+      "anchor": "m0600"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftPiZero",
+      "class": "A",
+      "anchor": "m0601"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftProductParameter",
+      "class": "A",
+      "anchor": "m0602"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftTensor",
+      "class": "A",
+      "anchor": "m0603"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.VertexTuples",
+      "class": "C",
+      "anchor": "m0604"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.VertexTuplesFunctor",
+      "class": "C",
+      "anchor": "m0605"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.WeightedWordHom",
+      "class": "B",
+      "anchor": "m0606"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationAction",
+      "class": "B",
+      "anchor": "m0607"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationAugmentation",
+      "class": "B",
+      "anchor": "m0608"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationCat",
+      "class": "B",
+      "anchor": "m0609"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationDiagram",
+      "class": "B",
+      "anchor": "m0610"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationNaturality",
+      "class": "B",
+      "anchor": "m0611"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationRealization",
+      "class": "B",
+      "anchor": "m0612"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationSection",
+      "class": "B",
+      "anchor": "m0613"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationSourceMap",
+      "class": "B",
+      "anchor": "m0614"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.WordRetractChainFamily",
+      "class": "B",
+      "anchor": "m0615"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.WordRetractionAction",
+      "class": "B",
+      "anchor": "m0616"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.WordSegment",
+      "class": "B",
+      "anchor": "m0617"
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.WordSegmentComparison",
+      "class": "B",
+      "anchor": "m0618"
+    }
+  ],
+  "cores": [
+    "SerrePositivity.CategoryTheory.ArrowFactorization",
+    "SerrePositivity.CategoryTheory.ElementsChainLifting",
+    "SerrePositivity.CategoryTheory.SimplexChainVertices",
+    "SerrePositivity.CategoryTheory.Quiver.FreePathComonad",
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.FixedBoundaryExtensions",
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyFaces",
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.MappingSpaceEdges",
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.BinaryIntervalEndpoints",
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.IntervalEndpoints",
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.ReversedDegeneracies",
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagramTensor",
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagramUniverseLift",
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveInitialContraction",
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallActionClosure"
+  ],
+  "extractions": [
+    {
+      "old": "SerrePositivity.CategoryTheory.AnchoredChain",
+      "core": "SerrePositivity.CategoryTheory.ArrowFactorization",
+      "portion": "structure ArrowFactorization以降の一般的な前半"
+    },
+    {
+      "old": "SerrePositivity.CategoryTheory.LabelledChain",
+      "core": "SerrePositivity.CategoryTheory.ElementsChainLifting",
+      "portion": "全公開宣言（一般的な構成）"
+    },
+    {
+      "old": "SerrePositivity.CategoryTheory.SimplexChainParameter",
+      "core": "SerrePositivity.CategoryTheory.SimplexChainVertices",
+      "portion": "全公開宣言（一般的な構成）"
+    },
+    {
+      "old": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreePathResolution",
+      "core": "SerrePositivity.CategoryTheory.Quiver.FreePathComonad",
+      "portion": "全公開宣言（一般的な構成）"
+    },
+    {
+      "old": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceSpace",
+      "core": "SerrePositivity.HomotopicalAlgebra.Simplicial.FixedBoundaryExtensions",
+      "portion": "全公開宣言（一般的な構成）"
+    },
+    {
+      "old": "SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyEndpointComparison",
+      "core": "SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyFaces",
+      "portion": "lemma face_zero以降の一般的な前半"
+    },
+    {
+      "old": "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterSquare",
+      "core": "SerrePositivity.HomotopicalAlgebra.Simplicial.MappingSpaceEdges",
+      "portion": "abbrev point以降の一般的な前半"
+    },
+    {
+      "old": "SerrePositivity.HomotopicalAlgebra.Simplicial.BinaryIntervalTriangles",
+      "core": "SerrePositivity.HomotopicalAlgebra.Simplicial.BinaryIntervalEndpoints",
+      "portion": "abbrev firstFixed以降の一般的な前半"
+    },
+    {
+      "old": "SerrePositivity.HomotopicalAlgebra.Simplicial.RetractChainFamily",
+      "core": "SerrePositivity.HomotopicalAlgebra.Simplicial.IntervalEndpoints",
+      "portion": "abbrev interval以降の一般的な前半"
+    },
+    {
+      "old": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeResolutionDegeneracyValues",
+      "core": "SerrePositivity.HomotopicalAlgebra.Simplicial.ReversedDegeneracies",
+      "portion": "/-- Parameter degeneracy以降の一般的な前半"
+    },
+    {
+      "old": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveCylinderBoundary",
+      "core": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagramTensor",
+      "portion": "def product以降の一般的な前半"
+    },
+    {
+      "old": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveLargeParameter",
+      "core": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagramUniverseLift",
+      "portion": "abbrev lifted以降の一般的な前半"
+    },
+    {
+      "old": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMovingParameter",
+      "core": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagramUniverseLift",
+      "portion": "liftedの別名"
+    },
+    {
+      "old": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveInitialImage",
+      "core": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveInitialContraction",
+      "portion": "全公開宣言（一般的な構成）"
+    },
+    {
+      "old": "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallParameterClosure",
+      "core": "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallActionClosure",
+      "portion": "全公開宣言（一般的な構成）"
+    }
+  ]
+}

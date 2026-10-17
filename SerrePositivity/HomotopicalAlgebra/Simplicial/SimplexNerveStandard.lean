@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveMonos
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveInitialImage
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveInitialContraction
 public import Mathlib.CategoryTheory.Elements
 
 /-!

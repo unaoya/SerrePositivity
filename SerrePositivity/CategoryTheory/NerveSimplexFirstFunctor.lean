@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CategoryTheory.NerveSimplexStart
-public import SerrePositivity.CategoryTheory.LabelledChain
+public import SerrePositivity.CategoryTheory.ElementsChainLifting
 public import SerrePositivity.CategoryTheory.NerveHomotopyUniverse
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveAugmentation
 

@@ -4,6 +4,8 @@ public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Ordinar
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreeGeneratorLatchingValues
 public import Mathlib.AlgebraicTopology.SimplexCategory.Rev
 
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.ReversedDegeneracies
+
 /-!
 # 中断した任意モデル源への一般化：OrdinaryBarFreeResolutionDegeneracyValues
 
@@ -45,24 +47,6 @@ open CategoryTheory CategoryTheory.MonoidalCategory
 namespace SerrePositivity.HomotopyFunctionComplex.OrdinaryBarFreeResolutionDegeneracyValues
 open FreeGeneratorCategories FreeGeneratorDegeneracies OrdinaryBarFreeDiagramExtension
 open OrdinaryBarChoiceBoundaryGluing
-
-/-- Parameter degeneracy with the reversed indexing of the source resolution. -/
-def sigma (n : ℕ) (i : Fin (n + 1)) :
-    SSet.stdSimplex.{r}.obj (SimplexCategory.mk (n + 1)) ⟶
-      SSet.stdSimplex.obj (SimplexCategory.mk n) :=
-  SSet.stdSimplex.map (SimplexCategory.σ i.rev)
-
-lemma sigma_sigma (n : ℕ) (i j : Fin (n + 1)) (h : i ≤ j) :
-    sigma (n + 1) i.castSucc ≫ sigma n j = sigma (n + 1) j.succ ≫ sigma n i := by
-  have hs := congrArg SimplexCategory.rev.map (SimplexCategory.σ_comp_σ h)
-  simp only [CategoryTheory.Functor.map_comp, SimplexCategory.rev_map_σ] at hs
-  exact (SSet.stdSimplex.map_comp _ _).symm.trans
-    ((congrArg SSet.stdSimplex.map hs).trans (SSet.stdSimplex.map_comp _ _))
-
-lemma tensor_sigma_sigma (P : SSet.{r}) (n : ℕ) (i j : Fin (n + 1)) (h : i ≤ j) :
-    P ◁ sigma (n + 1) i.castSucc ≫ P ◁ sigma n j =
-      P ◁ sigma (n + 1) j.succ ≫ P ◁ sigma n i := by
-  rw [← whiskerLeft_comp, ← whiskerLeft_comp, sigma_sigma n i j h]
 
 variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
   [HomotopicalAlgebra.ModelCategory SSet.{v}]

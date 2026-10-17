@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.RetractChainFamily
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.IntervalEndpoints
 public import Mathlib.Data.Fin.Tuple.Basic
 
 /-!

@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveCoherentFamily
+
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexInverseMatching
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem
 

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.BarConstruction
-public import SerrePositivity.CategoryTheory.SimplexChainParameter
-public import SerrePositivity.CategoryTheory.LabelledChain
+public import SerrePositivity.CategoryTheory.SimplexChainVertices
+public import SerrePositivity.CategoryTheory.ElementsChainLifting
 public import Mathlib.CategoryTheory.Functor.Currying
 
 /-!

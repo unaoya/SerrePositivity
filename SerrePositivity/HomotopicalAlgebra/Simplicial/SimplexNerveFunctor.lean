@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveAugmentation
-public import SerrePositivity.CategoryTheory.LabelledChain
+public import SerrePositivity.CategoryTheory.ElementsChainLifting
 public import Mathlib.CategoryTheory.Limits.Types.Coproducts
 public import Mathlib.CategoryTheory.Limits.Preserves.FunctorCategory
 public import Mathlib.CategoryTheory.Adjunction.Limits

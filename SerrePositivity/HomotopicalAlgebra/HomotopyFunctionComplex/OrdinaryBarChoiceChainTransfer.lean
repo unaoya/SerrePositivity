@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.RetractChainFamily
+
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarChoiceCategory
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarChainFamily
 public import Mathlib.Combinatorics.Quiver.Path

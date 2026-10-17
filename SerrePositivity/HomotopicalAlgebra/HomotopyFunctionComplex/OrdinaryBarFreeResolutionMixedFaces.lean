@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeResolutionDegeneracyValues
+
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreeGeneratorMixedOperators
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.ReversedSimplexParameters
 

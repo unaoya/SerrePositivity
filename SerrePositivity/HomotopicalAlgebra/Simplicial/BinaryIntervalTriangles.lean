@@ -3,6 +3,8 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleDegeneracy
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyBinarySquare
 
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.BinaryIntervalEndpoints
+
 /-!
 # 中断した任意モデル源への一般化：BinaryIntervalTriangles
 
@@ -47,9 +49,6 @@ namespace SerrePositivity.SimplicialModel.BinaryIntervalTriangles
 open ComparisonTriangleDegeneracy KanComparisonTriangle
 variable {T A B K : SSet.{v}} {f₀ f₁ : T ⟶ A} {g₀ g₁ : T ⟶ B}
   (F : SSet.Homotopy f₀ f₁) (G : SSet.Homotopy g₀ g₁) (k : A ⊗ B ⟶ K)
-
-abbrev firstFixed := HomotopyBinarySquare.simultaneous (KanActualHomotopy.refl f₁) G k
-abbrev secondFixed := HomotopyBinarySquare.simultaneous F (KanActualHomotopy.refl g₁) k
 
 abbrev lowerFamily : T ⊗ SSet.stdSimplex.obj (SimplexCategory.mk 2) ⟶ K :=
   lift (T ◁ SSet.stdSimplex.σ (1 : Fin 2) ≫ F.h)

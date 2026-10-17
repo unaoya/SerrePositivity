@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftFillers
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SkeletalCellGluing
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceSpace
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.FixedBoundaryExtensions
 
 /-!
 # 小さい比較空間の宇宙liftを値として大きいパラメータ上の指定族を相対延長する

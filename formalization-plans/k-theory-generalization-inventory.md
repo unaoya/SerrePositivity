@@ -1,5 +1,7 @@
 # 任意モデル源への一般化（中断）：モジュール棚卸し
 
+配置整理の現在の状況は末尾の[実施記録](#layout-execution)を参照。以下の棚卸し表・測定・提案は実施前の記録である。
+
 この記録は分類・docstring整備と配置提案であり、§396の一般化を再開・完了したものではない。宣言名・型・証明・importは変更せず、ファイルの移動・削除も行わない。
 
 ## 対象の確定
@@ -9632,3 +9634,37 @@ Simplicial側の測定ログで今回追加集合の再コンパイル時間を�
 - Foundations未収録の停止時保存2本も別途監査：23宣言、標準3公理のみ。
 
 新しいsorry・axiom・Leanの外部引用宣言は追加していない。上記の文献リンクは技法を探すための対応情報である。ルート・Foundations・共有監査スクリプトを編集せず、他チャットの差分・未追跡ファイルは保存した。
+
+<a id="layout-execution"></a>
+
+## 配置整理の実施記録（利用者承認後）
+
+利用者から、一般層の独立、Bの専用ディレクトリへの移動、旧import互換、段階ごとのビルド・公理監査・コミットを承認された。上の分類と依存表は棚卸し時点の記録として保持する。以下に実施後の入口と対応を記録する。
+
+### 第1段階：一般道具の独立
+
+一般入口 `SerrePositivity.HomotopicalAlgebra.GeneralTools` を追加し、A全190本と切り出した一般層14本を明示的に公開した。棚卸し時点のA→Bの直接依存21本はゼロになり、一般入口のプロジェクト内閉包355本にもBは含まれない。CのうちAから使う独立した圏論的道具は保持し、C全体の分類変更はしていない。
+
+名前の付け替えだけで依存を隠したものではない。因子分解の構造、要素の圏への射列の持ち上げ、自由な道の余モナド、固定境界の写像空間、ホモトピーの端点、反転退化、図式のテンソルと宇宙liftなど、専用の選択・正規化・厳密化を使わない構成を実際に切り出した。元の公開名前空間・宣言名・型・証明を保ち、専用側から一般層を再公開する。専用側が暗黙の再公開に頼っていた箇所は、必要なimportを明示した。
+
+|一般層の正規パス|切り出した元のモジュール|範囲|
+|---|---|---|
+|[ArrowFactorization](../SerrePositivity/CategoryTheory/ArrowFactorization.lean)|`SerrePositivity.CategoryTheory.AnchoredChain`|structure ArrowFactorization以降の一般的な前半|
+|[ElementsChainLifting](../SerrePositivity/CategoryTheory/ElementsChainLifting.lean)|`SerrePositivity.CategoryTheory.LabelledChain`|全公開宣言（一般的な構成）|
+|[SimplexChainVertices](../SerrePositivity/CategoryTheory/SimplexChainVertices.lean)|`SerrePositivity.CategoryTheory.SimplexChainParameter`|全公開宣言（一般的な構成）|
+|[FreePathComonad](../SerrePositivity/CategoryTheory/Quiver/FreePathComonad.lean)|`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreePathResolution`|全公開宣言（一般的な構成）|
+|[FixedBoundaryExtensions](../SerrePositivity/HomotopicalAlgebra/Simplicial/FixedBoundaryExtensions.lean)|`SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceSpace`|全公開宣言（一般的な構成）|
+|[HomotopyFaces](../SerrePositivity/HomotopicalAlgebra/Simplicial/HomotopyFaces.lean)|`SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyEndpointComparison`|lemma face_zero以降の一般的な前半|
+|[MappingSpaceEdges](../SerrePositivity/HomotopicalAlgebra/Simplicial/MappingSpaceEdges.lean)|`SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterSquare`|abbrev point以降の一般的な前半|
+|[BinaryIntervalEndpoints](../SerrePositivity/HomotopicalAlgebra/Simplicial/BinaryIntervalEndpoints.lean)|`SerrePositivity.HomotopicalAlgebra.Simplicial.BinaryIntervalTriangles`|abbrev firstFixed以降の一般的な前半|
+|[IntervalEndpoints](../SerrePositivity/HomotopicalAlgebra/Simplicial/IntervalEndpoints.lean)|`SerrePositivity.HomotopicalAlgebra.Simplicial.RetractChainFamily`|abbrev interval以降の一般的な前半|
+|[ReversedDegeneracies](../SerrePositivity/HomotopicalAlgebra/Simplicial/ReversedDegeneracies.lean)|`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeResolutionDegeneracyValues`|/-- Parameter degeneracy以降の一般的な前半|
+|[DiagramTensor](../SerrePositivity/HomotopicalAlgebra/Simplicial/DiagramTensor.lean)|`SerrePositivity.HomotopicalAlgebra.Simplicial.NerveCylinderBoundary`|def product以降の一般的な前半|
+|[DiagramUniverseLift](../SerrePositivity/HomotopicalAlgebra/Simplicial/DiagramUniverseLift.lean)|`SerrePositivity.HomotopicalAlgebra.Simplicial.NerveLargeParameter`|abbrev lifted以降の一般的な前半|
+|[DiagramUniverseLift](../SerrePositivity/HomotopicalAlgebra/Simplicial/DiagramUniverseLift.lean)|`SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMovingParameter`|liftedの別名|
+|[NerveInitialContraction](../SerrePositivity/HomotopicalAlgebra/Simplicial/NerveInitialContraction.lean)|`SerrePositivity.HomotopicalAlgebra.Simplicial.NerveInitialImage`|全公開宣言（一般的な構成）|
+|[SmallActionClosure](../SerrePositivity/HomotopicalAlgebra/Simplicial/SmallActionClosure.lean)|`SerrePositivity.HomotopicalAlgebra.Simplicial.SmallParameterClosure`|全公開宣言（一般的な構成）|
+
+第1段階の受入：一般入口の公理監査4770宣言・354宣言元モジュール、標準3公理のみ。A190入口と一般層14入口の保持、およびB/Rectificationへのimportがゼロであることも機械的に検査する。
+
+第1段階の対象buildは3288 jobsで成功。従来のFoundationsは14216宣言・1012宣言元モジュールで標準3公理のみ。元の公開名5861個の保全を一括確認した。L・E・Sは79入口・663依存、baselineからの変更と一般化への依存はともに0。契約監査8392宣言も標準3公理のみ。

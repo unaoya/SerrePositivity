@@ -1,7 +1,8 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftTensor
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveProductParameter
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagramUniverseLift
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagramTensor
 
 /-!
 # 動く小さいパラメータと標準単体の直積を小さい宇宙の対象で表す同型を構成する

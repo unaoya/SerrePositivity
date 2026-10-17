@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreePathResolutionDegreeTwo
+public import SerrePositivity.CategoryTheory.Quiver.FreePathComonad
 
 /-!
 # 自由な道の分解の次数二の二つの退化生成元像の交わりを計算する
