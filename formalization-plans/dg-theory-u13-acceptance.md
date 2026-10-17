@@ -135,6 +135,16 @@
 - 任意可換環、任意の既存 `HasDerivedCategory.{w}` で成立し、Noetherian性・flat性・引用を使わない。
   `Perfect.ChecksRingRetractFiniteRepresentative` 対象ビルド成功（3176 jobs）。主要2宣言の公理監査は標準3公理のみ。
 
+## U13e.38：一対象主Perfの全対象の有界有限射影代表
+
+- `Perfect/RingPerfectRepresentatives.lean`：既存の一対象主導来圏と通常DerivedCategoryの同値で
+  U13e.37のretractの有限射影代表を主dg導来圏へ戻した。
+- `modulePerfect_ring_has_strictlyPerfectRepresentative` は一対象Aの任意の主perfect対象Xに対して、
+  有界有限射影複体Kと、実際の定数dg加群の主局所化像Q(ringModule K)≅Xを返す。
+  finite cellの評価の有限射影性と、元の加群の厳密な復元を使用している。
+- 証明内の通常DerivedCategoryは標準宇宙u+1で選び、結論にはその選択を仮定として残さない。
+  `Perfect.ChecksRingPerfectRepresentatives` 対象ビルド成功（3177 jobs）。主要3宣言の公理監査は標準3公理のみ。
+
 ## 既存項目の再検証
 
 - finite cell・全Hom射影性・PerfとKaroubi・compact生成・compact⇒Perf・
