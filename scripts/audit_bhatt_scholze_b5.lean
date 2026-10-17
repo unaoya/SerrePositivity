@@ -1,4 +1,5 @@
 import SerrePositivity.BhattScholze.Lemma103PerfectoidTensor
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorShortExact
 import SerrePositivity.CommutativeAlgebra.PerfectTorIndependence.Basic
 import Mathlib.Util.AssertNoSorry
 
@@ -23,3 +24,8 @@ example (p : ℕ) [Fact p.Prime] :
 
 assert_no_sorry SerrePositivity.tor_vanishing_of_perfect
 #print axioms SerrePositivity.tor_vanishing_of_perfect
+
+assert_no_sorry SerrePositivity.DerivedCompletion.completedTensor_isZero_of_shortExact_rightMap_isIso
+assert_no_sorry SerrePositivity.DerivedCompletion.completedTensor_shortExact_leftMap_isIso_of_isZero
+#print axioms SerrePositivity.DerivedCompletion.completedTensor_isZero_of_shortExact_rightMap_isIso
+#print axioms SerrePositivity.DerivedCompletion.completedTensor_shortExact_leftMap_isIso_of_isZero

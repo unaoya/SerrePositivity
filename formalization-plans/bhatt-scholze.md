@@ -10862,3 +10862,22 @@ Tor入力自体の代数的証明と原典の参照経路との差異はレー�
 これは工程1・Tor入力確認の完了であり、工程2–4の完成ではない。
 既存の商自己積・conormal・mod p^n冪等性は再利用するが、Kの自己積と混合積の実射の証明、
 指定の拡大閉性の公開・原典経路、集約importと最終監査は引き続き必要である。
+
+### 工程2の三角形入力（2026-10-17）
+
+担当BSとして新規共通ファイルHomologicalAlgebra/DerivedCompletion/CompletedTensorShortExact.leanを追加する。
+固定係数の既存射影分解モデルとその自然性、次数ごとの平坦性、既存の完備化の三角関手性を使い、
+加群の短完全列の完備導来tensorについて、第二射が同型なら第一対象が零、第三対象が零なら第一射が同型、
+という判定を元の実tensor・実射の形で公開する。既存共通ファイルは編集しない。
+これはK→R→R/Kに適用するための入力であり、普通のtensorの完全性を仮定するものではない。
+
+この入力の公開2定理を実装・ビルドした（2885ジョブ、終了コード0）。
+`completedTensor_isZero_of_shortExact_rightMap_isIso`と
+`completedTensor_shortExact_leftMap_isIso_of_isZero`は、任意a:R、固定C:ModuleCat R、
+短完全列Sについて、F=derivedComplexCompletionFunctor R a と
+T=boundedAboveDerivedTensorModuleFunctor Cを用い、それぞれ
+IsIso(F.map(T.map S.g))→IsZero(F.obj(T.obj S.X₁))と、
+IsZero(F.obj(T.obj S.X₃))→IsIso(F.map(T.map S.f))を与える。
+固定射影分解は次数ごとに平坦なので、元の短完全列を複体の短完全列へ移せる。
+その三角形を完備化し、既存の自然同型で元の実射と照合した。
+全公開宣言のassert_no_sorryと公理監査に成功し、標準3公理のみ。
