@@ -553,3 +553,29 @@ HEAD からの差分全体が自分の変更だけであることも確認する
   同定すること。その有限因子分解性から実際の Verdier 比較の完全忠実性を導くこと。
   U17b 全体も引き続き未完。
 - U15e17 のコミット：`d60bd909`（自分の5ファイルのみと指定 SHA でも確認）。
+
+
+### U15e19：有限長比較 cone の余極限と代表加群比較の cone
+
+- `Quotient/DerivedComparisonConeDiagram.lean`：零段階から各有限長段階への射を
+  arrow 圏の厳密な図式にし、加群 cone 関手で比較 cone の逐次図式を構成した。
+  零段階から商全体への cone を頂点とする具体的な cocone も構成。
+- `Quotient/DerivedComparisonConeColimit.lean`：各評価・各次数で、cone 写像の
+  二成分表示から単射性と有限段階からの全射性を証明した。後者では商 Hom の
+  任意の元が有限長の path 和であることを使い、filtered colimit の判定を適用。
+  その結果を複体・全次数自然な加群の余極限性へ持ち上げた。
+- `Quotient/DerivedComparisonUnitCone.lean`：この厳密な余極限と前段の逐次余極限閉性から、
+  零段階から商全体への比較 cone の有限因子分解性を証明した。零段階の代表加群同型を
+  arrow 同型・実際の加群 cone 同型に運び、元の代表加群から商の制限代表加群への
+  `representableRestrictionMap` の cone に同じ性質を得た。
+  `quotientRepresentableComparison_trW` として比較射そのものの分母条件も公開。
+- 仮定は従来の `localKFlat`、すなわち全ての Hom(−,b) が K-flat、または
+  全ての Hom(b,−) が K-flat（b ∈ S）のいずれかの全体的な向き。
+  係数環は任意、複体は非有界で、商 Hom そのものの K-flat 性は仮定していない。
+- 対象ビルド `Checks.QuotientConeDiagram`・`Checks.QuotientConeColimit`・
+  `Checks.QuotientUnitCone` 成功（合同2720 jobs、追加監査対象2718 jobs）。
+  主要15宣言の公理監査は標準3公理のみ。project import 依存516ファイルに
+  禁止された dg 圏分解系への依存なし。新規 sorry・axiom・引用なし。
+  ルート・他担当の既存ファイルは編集していない。
+- 残部：この cone の有限因子分解性を実際の Verdier 比較の充満忠実性に結ぶこと。
+  U17b 全体も引き続き未完。U15e18 のコミットは `6c54be24`。
