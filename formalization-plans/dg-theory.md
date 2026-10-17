@@ -10364,3 +10364,54 @@ BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_
 共有モデル圏一般論への新しいAPI要求はない。
 共有ルート・Perfect/・Endomorphism/・ScalarExtension*・Quotient/DerivedComparison*・Verdier/・
 並行作業のTensor/Associator*と他チャットの記録は編集していない。
+
+
+### 17.224 U12e64：導来制限の合成同型と二段階比較の全導来source（2026-10-17）
+
+**左右の導来制限の合成。** Derived/MiddleRestrictionComposition.leanは
+直接制限の既存合成同型と、直接制限・積dg圏表示による制限の既存表示同型を組み合わせる。
+middleLeftDerivedCompPreIso・middleRightDerivedCompPreIsoを元の閉零対象に前合成した上で作り、
+指定局所化を通じてmiddleLeftDerivedCompIso・middleRightDerivedCompIsoへ降ろした。
+これらは既存のderivedBimoduleRestriction同士の自然同型である。
+新しい制限関手を代替定義せず、比較射を仮定して定義してもいない。
+元の対象上のhomの計算式、局所化への前合成の等式、直接制限との表示同型に関する
+合成squareの可換性を公開した。局所Hom K-flat性・準同値性は要求しない。
+任意の可換環と独立した四つのdg圏の対象宇宙を保持する。
+
+**二段階中間比較の関手族。** Derived/BimoduleMiddleCompositeFamily.leanは
+middleIteratedDerivedSourceを既存の導来制限・導来合成の合成として構成し、
+左右の導来制限の合成同型だけからmiddleIteratedDerivedSourceIsoを作った。
+その終域は合成dg関手F.comp Gに対する既存middleRestrictionDerivedSourceである。
+middleIteratedDerivedComparisonは既存の全導来比較を実際に二段階で適用する自然変換であり、
+両変数とも任意の導来対象を扱う。source正規化・二段階比較の成分計算式も公開した。
+ここで必要な局所Hom K-flat性は終端Lだけで、中間D・E・Tの仮定もF・Gの準同値性も不要。
+
+middleDerivedFamily_extは、この種の全導来関手族の自然変換の等式を、任意の指定右K-flat後因子と
+任意の閉零前因子上で検査できることを証明する。後因子の標準semifree解像度の導来同型と自然性を用い、
+前因子は既存の局所化の射の等式判定を再利用する。
+既存公開APIの名前・型は変更せず、16公開宣言を追加した。
+
+**検証。** 新規Checks.DGBimoduleMiddleCompositeFamilyは独立した五つの対象宇宙、
+中間圏の局所Hom K-flat性・準同値性なしのsource正規化、任意の導来前因子の射に関する自然性、
+右K-flat対象上での等式判定、ZMod 2での右制限合成を検査した。
+既存恒等則・指定モデル合成則・導来同値・source同定・解像度独立性・導来随伴・五角形・
+StageEight・StageSeven・Spectra.StageTwoを含む統合ビルド成功（3473 jobs、警告なし）。
+16公開宣言の直接公理監査は重複・欠落なく標準3公理以内。新規監査累計4468宣言。
+今回の3 Leanファイルにsorry・admit・新規axiom・資源上限変更は0件。採用済み引用0件。
+Lean v4.35.0-rc4とMathlib manifest/HEAD e6bbacd0e1b7307ff6e17da09cd2455f60804fa6を再確認した。
+
+文書検査は21 Markdown・320 exposition参照を検査し、担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+既存未解決参照1件で失敗した。
+
+**残件と次工程。** sourceの正規化と二段階比較を構成した段階であり、
+middleIteratedDerivedSourceIso.homと合成関手の比較の合成がmiddleIteratedDerivedComparisonに
+一致するという全導来合成則はまだ証明していない。
+次にmiddleDerivedFamily_extで後因子を指定右K-flatモデルへ帰着し、
+§17.223のapp_baseおよび今回の左右表示squareを使って、§17.222の標準解像度上の合成則へ接続する。
+その後、共通dg圏解像度の変更と対角単位・結合子の整合性・coherenceを仕上げて§15.2を監査する。
+U12e全体は未受入、U16a〜d・U15e分解版は未着手であり、全体の目標を縮小しない。
+共有一般論への新しいAPI要求はない。
+局所K-flat版のQuotient/DerivedComparison*・Verdier/は分解版で読んで再利用する。
+共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・ScalarExtension*・並行作業の
+Tensor/Associator*および他チャットの記録を編集していない。
