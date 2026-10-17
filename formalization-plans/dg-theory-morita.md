@@ -155,6 +155,26 @@ lemma kernelCompositionIso_rightUnit (hD : localHomKFlat A D) (P : Kernel A D E)
 bimoduleの順序では右単位、作用の順序では恒等kernelを先に作用させる図式である。
 終域Eの局所Hom条件やPのK-flat性は要求しない。左単位・結合coherenceの完成とは区別する。
 
+### 7. kernel結合子と指定モデル計算（実装・検証済み、U16a17）
+
+Morita/CoherenceAssociatorModels.leanをimportする。名前空間はMorita。
+これは既存U12e-localの結合子への入口であり、作用の結合coherence自体の完成とは区別する。
+
+```lean
+def kernelAssociatorIso (hD : localHomKFlat A D) (hE : localHomKFlat A E)
+  (P : Kernel A D E) (Q : Kernel A E F) (R : Kernel A F G) :
+  kernelCompose A D E G hD P (kernelCompose A E F G hE Q R) ≅
+    kernelCompose A D F G hD (kernelCompose A D E F hD P Q) R
+```
+
+共通変数にG : Type t、[DGCategory A G]・[Small.{u} G]を追加する。
+既存bimodule結合子の((R⊗Q)⊗P) → R⊗(Q⊗P)の向き。
+kernelAssociatorPairModelIso・kernelAssociatorNestedModelIsoは、最初の二kernelを右相対K-flatに選んだ
+二モデルの計算同型。kernelAssociatorIso_model_facと_action_model_facは通常結合子との可換square。
+KernelComparisonComponentsのkernelDerivedTensorOnBimoduleIso_refl・kernelDerivedTensorFunctor_map_base、
+kernelCompositionIso_kFlat_facは同じ通常代表での作用比較を簡約する入口。
+既存公開型・比較の定義は変更していない。
+
 ### 実装状態と他担当の利用境界
 
 | API群 | 状態 | 他担当の利用 |
@@ -652,3 +672,22 @@ U16a全受入を宣言せず、公開kernelCompositionIsoの型・定義は保�
 CoherenceAssociatorChecksを新旧入口と合同ビルドし成功（4140 jobs、警告0）。
 新規公開8宣言の直接公理監査は標準3公理以内。新規sorry・axiom・引用なし。
 詳細・再現手順・次の接続点はdg-theory.md §17.268。
+
+
+## U16a17：公開kernel結合子と作用の二モデルsquare（2026-10-17）
+
+CoherenceAssociatorModelsのkernelAssociatorIso_model_facは、U12e-localの実際の全導来結合子と
+二つの三因子kernelの通常モデルを同じassociatorIsoへ接続する。
+_action_model_facはその作用のsquare。kernelCompositionIso_kFlat_facは公開合成比較と通常作用比較の計算を接続する。
+KernelComparisonComponentsは通常代表での既存比較が恒等同型であることを証明し、通常kernel射での主作用を計算する。
+
+指定K-flat二因子・任意の通常後因子のままで、余分な局所Hom条件を追加していない。
+作用の結合図式の両経路の貼合せ・任意kernelへの移送、左単位coherenceは未完。
+公開API第7節はkernel結合子とモデル計算の実装状態を示し、U16a全受入は意味しない。
+
+CoherenceAssociatorModelsChecksを新旧入口と合同ビルドし成功（4142 jobs、警告0）。
+新規公開8宣言の直接公理監査は標準3公理以内。新規sorry・axiom・引用なし。
+詳細・再現手順・次の接続点はdg-theory.md §17.269。
+
+文書全体検査は共有ルートの担当外PowerRootHodgeTateReduction.olean未生成で失敗した。
+Markdownリンクの独立検査は26文書・欠落0件。今回exposition全API照合の成功は主張しない。

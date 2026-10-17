@@ -12762,3 +12762,52 @@ CriterionPerf*・CriterionDerived*は読み取り専用、一般U12e・U15e分�
 lake build SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorChecks SerrePositivity.DifferentialGraded.Morita.CoherenceUnitChecks SerrePositivity.DifferentialGraded.Morita.CoherenceAugmentationChecks SerrePositivity.DifferentialGraded.Morita.AdjunctionDerivedChecks SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionCanonicalChecks SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.DifferentialGraded.Checks.U12eGeneralInventory SerrePositivity.Spectra.StageTwo
 lake env lean SerrePositivity/DifferentialGraded/Morita/CoherenceAssociatorChecks.lean
 ```
+
+
+### 17.269 U16a：主導来kernel結合子の二モデル計算と作用square（2026-10-17）
+
+Morita/CoherenceAssociatorModels.leanのkernelAssociatorIsoは、既存derivedBimoduleAssociatorを
+kernelの作用順に読むだけの公開入口。D→E→F→Gで、
+Compose(P,Compose(Q,R)) → Compose(Compose(P,Q),R)の向きである。
+これはbimoduleの((R⊗Q)⊗P) → R⊗(Q⊗P)と同じ向き。
+必要な局所Hom条件はD・Eのみで、F・Gには追加していない。
+追加した型をdg-theory-morita.mdの公開API第7節へ記録した。
+
+kernelAssociatorPairModelIso・kernelAssociatorNestedModelIsoは、最初のP・Qを右相対K-flatに選び、
+最後のRを任意通常kernelとしたときの、二つの主導来三因子kernelの通常モデル計算。
+kernelAssociatorIso_model_facは既存derivedBimoduleAssociatorIso_kFlat_facを評価し、
+この二モデル計算が同じ通常associatorIsoの局所化像と整合することを証明した。
+
+KernelComparisonComponents.leanは公開比較の定義を変更せず、指定した標準局所化の通常代表で
+kernelDerivedTensorOnBimoduleIso_reflを証明した。比較のeqToIso成分を評価することで得る。
+kernelDerivedTensorFunctor_map_baseは、通常kernel射の主作用が元の入力解像度作用の射に一致することを示す。
+局所Hom K-flat性・kernelの射影性は不要。
+これにより、主作用の計算モデル移送で不要な比較因子を、その値を証明してから消去できる。
+
+kernelAssociatorIso_action_model_facは主導来結合子の作用について二モデルの可換squareを与える。
+kernelCompositionIso_kFlat_facは、公開合成比較の後にK-flatモデル計算の作用を合成すると、
+既存kernelDerivedTensorOnBimoduleCompositionIsoそのものになることを証明した。
+過去の公開比較を新しい選択に置き換えていない。旧公開名・型・仮定は変更していない。
+
+保存済みCoherenceAssociatorModelsChecksは独立対象宇宙で任意kernelの結合子の型と、
+同じモデル計算の同型の等式を検査し、標数2の通常代表比較も確認する。
+新旧結合モデル・右単位・一般随伴・主合成自然性・QuasiEquivalence・局所受入・一般入口・
+Spectra.StageTwoとの合同ビルド成功（4142 jobs、警告0）。
+新規公開8宣言の直接公理監査は標準3公理以内。新規監査累計5070。
+新規sorry・axiom・引用・資源上限変更なし。
+文書全体検査は共有ルートが参照する担当外BhattScholze/Andre/Unconditional/PowerRootHodgeTateReductionの
+olean未生成で失敗した。担当外のソース・ビルド状態は変更していない。
+同じスクリプトのMarkdownリンク検査を独立実行し、26文書・欠落0件を確認した。
+expositionの全API照合の成功は今回主張しない。
+
+この単位で主導来kernel結合子と作用の通常計算が接続したが、作用の結合図式そのものの
+二経路の貼合せと任意kernelへの移送はまだ残る。
+次は公開合成比較の両経路に同じ二モデル計算を合成し、§17.268の通常代表上の結合coherenceへ帰着する。
+その後、指定K-flat増大の可逆性と全kernel射の自然性で主導来kernel全体へ運ぶ。
+左単位coherenceも残るためU16a全受入とはしない。
+CriterionPerf*・CriterionDerived*は読み取り専用、一般U12e・U15e分解版は中断を維持する。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorModelsChecks SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorChecks SerrePositivity.DifferentialGraded.Morita.CoherenceUnitChecks SerrePositivity.DifferentialGraded.Morita.AdjunctionDerivedChecks SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionCanonicalChecks SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.DifferentialGraded.Checks.U12eGeneralInventory SerrePositivity.Spectra.StageTwo
+lake env lean SerrePositivity/DifferentialGraded/Morita/CoherenceAssociatorModelsChecks.lean
+```
