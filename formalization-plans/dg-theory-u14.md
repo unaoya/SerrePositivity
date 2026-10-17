@@ -926,6 +926,15 @@
 - `ChecksScalarGradedSplit` 対象ビルド成功。主要2宣言の公理は標準3公理のみ。
   既存APIの名前・型は変更していない。新しいsorry・axiom・引用は追加していない。
 
+## U14b.54：Hom短完全列の係数変更と比較の中央項（2026-10-17）
+
+- `ScalarHomShortExact.lean`：全次数分裂に付随するHom短完全列に、各次数の線形なsectionと
+  short complexのsplittingを構成した。それを加群の係数拡大で送り、非flatでも係数変更後の短完全性を証明。
+- 実際の加群係数拡大先のHom短完全列との間の射を、U14b.48の前合成自然性で構成した。
+  五項補題により両端のHom比較が擬同型なら中央項の比較も擬同型となる。
+- `ChecksScalarHomShortExact` 対象ビルド成功（3034 jobs）。主要5宣言の公理は標準3公理のみ。
+  既存APIの名前・型は変更していない。新しいsorry・axiom・引用は追加していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
