@@ -668,3 +668,28 @@ HEAD からの差分全体が自分の変更だけであることも確認する
   新規 sorry・axiom・引用なし。ルート・他担当の既存ファイルは編集していない。
 - 残部：この正規化を U15e22 の Hom 同値に適用し、実際の比較関手の射写像との一致を示す。
   全 tria 対象への拡張と U17b も未完。U15e22 のコミットは `f24ecc0e`。
+
+
+### U15e24：Hom 同値の正規化と実際の導来延長の因子化の射写像
+
+- `Quotient/DerivedComparisonHomNormalization.lean`：U15e22 の Hom 同値を随伴で転置した値を
+  明示的に計算した。U15e23 の正規化を使い、元の tria の射 f に対する値が、実際の
+  導来延長による f の像に正規化済みの代表同型を後置したものと等しいことを証明した。
+  任意の局所化の射に対して、元の tria の射による前置との整合性も公開。
+- `Quotient/DerivedComparisonDerivedLift.lean`：既存の `derivedComparisonFromTria`
+  （普通の加群の実際の導来延長を tria に制限した関手）の shift・三角性を付与し、
+  指定した `triaQuotient` に沿う因子化 `derivedQuotientLift` と因子化同型を構成。
+  これは導来加群圏に値を持つ実際の導来延長の因子化である。
+- 因子化関手の射写像を因子化同型と代表同型で移すと、U15e22 の Hom 同値と一致する。
+  元の射上の一致と前置の整合性を、右分数表示と分母の像の可逆性で全ての局所化の射へ広げた。
+- `derivedQuotientLift_map_bijective_representable`：任意の X ∈ tria(D)、z ∈ D について、
+  この因子化関手そのものの Hom(QX,Qrep(z)) 上の射写像が全単射である。
+  単に別途の集合の同値が存在するという主張ではなく、実際の関手の map に関する結論。
+- 対象ビルド `Checks.QuotientHomNormalization`（2760 jobs）・`Checks.QuotientDerivedLift`
+  （2764 jobs）成功、警告なし。主要11宣言の公理監査は標準3公理のみ。
+  project import 依存545・549ファイルに禁止された dg 圏分解系への依存なし。
+  新規 sorry・axiom・引用なし。他担当・ルートの既存ファイルは編集していない。
+- 残部：終域の整数 shift・三角生成性から全対象への射写像の全単射性を得ること。
+  有限 cell のホモトピー圏モデルから構成済みの `quotientVerdierComparison` と、
+  上記の実際の導来延長の因子化との自然同型も確認する。U17b 全体は未完。
+  U15e23 のコミットは `7a0b776c`（自分の3ファイルのみと直後に確認）。
