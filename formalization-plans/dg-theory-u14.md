@@ -1131,6 +1131,18 @@
   U14b.71・73・74の合同対象ビルド成功（3114 jobs）。公理は標準3公理のみ。
   新しいsorry・axiom・引用は追加していない。既存APIの名前・型は変更していない。
 
+## U14b.74：主Perf係数変更の整合的shift・三角正方形（2026-10-17）
+
+- `ScalarPerfectShiftTriangles.lean`：U13同値を介して、受入済み主導来係数変更の制限
+  `perfectScalarDerivedExtension` に零・加法shiftと整合する比較データと三角性を与えた。
+  関手の定義や名前・型は変更していない。
+- 単位・余単位を使った移送で得た自然同型が、既に構成した
+  `scalarPerfectHomotopyComparison` と等しいことを三角恒等式と自然性から証明した。
+  この既存自然同型そのもののshift整合性、および三角形の圏での自然な正方形を証明した。
+- `ChecksScalarPerfectShiftTriangles` 対象ビルド成功（3112 jobs）。
+  主要9宣言の公理は `propext`, `Classical.choice`, `Quot.sound` のみ。
+  新しいsorry・axiom・引用は追加していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。

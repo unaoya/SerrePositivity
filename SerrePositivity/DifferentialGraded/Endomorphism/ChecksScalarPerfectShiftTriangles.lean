@@ -1,0 +1,15 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarPerfectShiftTriangles
+
+/-! # 主Perf係数変更とU13の三角正方形の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+#print axioms scalarPerfectDerivedTransportIso
+#print axioms perfectScalarDerivedExtensionCommShift
+#print axioms scalarPerfectDerivedTransportIso_commShift
+#print axioms perfectScalarDerivedExtensionIsTriangulated
+#print axioms scalarPerfectHomotopyShiftComparison
+#print axioms scalarPerfectHomotopyShiftComparison_eq
+#print axioms scalarPerfectHomotopyShiftComparison_commShift
+#print axioms scalarPerfectHomotopyComparison_commShift
+#print axioms scalarPerfectHomotopyTriangleSquareIso
