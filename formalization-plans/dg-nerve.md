@@ -2685,6 +2685,196 @@ SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.twoTruncation : (A
       (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeClosed g)
 ```
 
+### N3b・N3 完了（2026-10-18）：合成の比較と H⁰ との圏同値
+
+namespace は `DGNerve.HomotopyComparison`。
+`ClosedComposition.lean` は既存の閉零圏の恒等射と合成の次数零評価を、dg 単位と通常順合成に
+それぞれ同定する。`strictComp` は実際の閉零射の合成を辺との同値の逆で戻した対角辺。
+`strictCompStruct` は f,g,strictComp f g と **h=0** による明示的な三角形の合成構造。
+`comp_homotopic_strictComp` は `CompStruct.comp_unique` をこれと Mathlib の合成構造に適用し、
+選択された `Edge.comp` が実際の合成と左ホモトピックであることを証明する。
+
+`HomotopyCategory.lean` の `nerveHomotopyCategory A D` は
+`SSet.Truncated.HomotopyCategory₂ ((SSet.truncation 2).obj (dgNerve A D))`。
+`toH0` はその辺のホモトピー類を、既存の閉零射の境界類へ送る関手。
+N3a の関係の同値で商へ降ろし、恒等辺の単位の計算と上記の合成比較で関手性を証明する。
+`toH0_homMk` は代表元での計算。`toH0_faithful` は H⁰ の等式が境界関係であることから、
+`toH0_full` は任意の閉零代表元に辺との同値の逆を適用して、
+`toH0_essSurj` は任意の dg 対象の定値零単体から、それぞれ三つの性質を証明する。
+`toH0_isEquivalence` はこれらをまとめた名前付き instance。
+
+`equivalence : nerveHomotopyCategory A D ≌ DifferentialGraded.HomotopyCategory A D`
+を構成した。`fromH0` は逆関手、`unitIso` と `counitIso` は両方向の往復の自然同型。
+逆関手と自然同型は、証明済みの充満・忠実・本質的全射性から Mathlib の一般の圏同値の
+構成で得る。したがって両向きの関手とその逆の確認まで含む。
+N3a の辺・左右ホモトピー・境界関係の比較と合わせ、§2 の N3 の全項目を満たした。
+
+前提：任意の `A : Type u`、`[CommRing A]`、`D : Type v`、`[DGCategory A D]` のみ。
+閉零合成の計算は既存の閉零圏の対象・合成可能な射を指定する。
+辺の合成比較は二次切断の三頂点と合成可能な二辺を指定する。
+関手・圏同値・逆関手・単位余単位には追加の方程式・有界性・平坦性・体・標数の前提はない。
+前提付きの結果を圏同値と数えていない。対象宇宙・射宇宙は既存の二つの圏のものをそのまま使う。
+
+検証：`set -e` と `set -o pipefail` の下で
+`lake build SerrePositivity.InfinityCategories.DGNerve` が 3439 jobs、終了コード 0。
+続く `lake env lean scripts/audit_dg_nerve.lean` も終了コード 0。
+全 292 件の明示的公開宣言（今回 18 件追加、名前付き instance を含む）と既存 dg 則 5 件、
+全 297 件の依存公理は `propext`・`Classical.choice`・`Quot.sound` のみ。
+全 DGNerve ソースを再走査し、292 件の宣言全てが監査されることを確認した。
+新規二モジュールの最終ビルドには警告なし。既存の dg 圏の H⁰ の定義は変更していない。
+ルートは編集せず、集約入口で `HomotopyCategory` を公開する。
+
+未完了：N5 の dg 関手・厳密自然変換・充満部分圏との両立、N4 の右 pinched 写像空間と
+Kan 性・π₀、N6 の具体例と最終監査。N0〜N3 は完了したが全体の目標は未完了。
+§3 の設計と他節、他チャットのファイルは変更していない。
+
+今回の全公開宣言名・正確な型（`#check @...` の出力。`⋯` や `_proof_...` は N3a と同じく
+Lean の命題証明引数。両方向の関手と自然同型の全前提をそのまま表示する）：
+
+```lean
+@SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.closedHom_id : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D]
+  (x : SerrePositivity.DifferentialGraded.ClosedCategory A D),
+  (SerrePositivity.DifferentialGraded.closedHomEquiv A D x x) (CategoryTheory.CategoryStruct.id x) =
+    SerrePositivity.DifferentialGraded.unitElement A
+      (CategoryTheory.ForgetEnrichment.to (SerrePositivity.DifferentialGraded.Complex A) x)
+
+@SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.closedHom_comp : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D]
+  {x y z : SerrePositivity.DifferentialGraded.ClosedCategory A D} (f : x ⟶ y) (g : y ⟶ z),
+  ↑((SerrePositivity.DifferentialGraded.closedHomEquiv A D x z) (CategoryTheory.CategoryStruct.comp f g)) =
+    SerrePositivity.DifferentialGraded.compose A (↑((SerrePositivity.DifferentialGraded.closedHomEquiv A D y z) g))
+      (↑((SerrePositivity.DifferentialGraded.closedHomEquiv A D x y) f))
+      SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.closedHom_comp._proof_1
+
+@SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeClosed_id : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D]
+  (x :
+    (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.twoTruncation A D).obj
+      (Opposite.op
+        { obj := { len := 0 },
+          property := SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeClosed_id._proof_1 })),
+  SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeClosed (SSet.Truncated.Edge.id x) =
+    CategoryTheory.CategoryStruct.id (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.vertexClosed x)
+
+@SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.strictComp : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        {x y z :
+            (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.twoTruncation A D).obj
+              (Opposite.op
+                { obj := { len := 0 },
+                  property := SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeClosed_id._proof_1 })} →
+          SSet.Truncated.Edge x y → SSet.Truncated.Edge y z → SSet.Truncated.Edge x z
+
+@SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeClosed_strictComp : ∀ {A : Type u_1}
+  [inst : CommRing A] {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D]
+  {x y z :
+    (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.twoTruncation A D).obj
+      (Opposite.op
+        { obj := { len := 0 },
+          property := SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeClosed_id._proof_1 })}
+  (f : SSet.Truncated.Edge x y) (g : SSet.Truncated.Edge y z),
+  SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeClosed
+      (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.strictComp f g) =
+    CategoryTheory.CategoryStruct.comp (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeClosed f)
+      (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeClosed g)
+
+@SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.strictCompStruct : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        {x y z :
+            (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.twoTruncation A D).obj
+              (Opposite.op
+                { obj := { len := 0 },
+                  property := SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeClosed_id._proof_1 })} →
+          (f : SSet.Truncated.Edge x y) →
+            (g : SSet.Truncated.Edge y z) →
+              f.CompStruct g (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.strictComp f g)
+
+@SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.comp_homotopic_strictComp : ∀ {A : Type u_1}
+  [inst : CommRing A] {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D]
+  {x y z :
+    (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.twoTruncation A D).obj
+      (Opposite.op
+        { obj := { len := 0 },
+          property := SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeClosed_id._proof_1 })}
+  (f : SSet.Truncated.Edge x y) (g : SSet.Truncated.Edge y z),
+  SSet.Truncated.HomotopicL (f.comp g) (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.strictComp f g)
+
+SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.nerveHomotopyCategory : (A : Type u_1) →
+  [inst : CommRing A] → (D : Type u_2) → [SerrePositivity.DifferentialGraded.DGCategory A D] → Type (max u_2 u_1)
+
+SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.toH0 : (A : Type u_1) →
+  [inst : CommRing A] →
+    (D : Type u_2) →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        CategoryTheory.Functor (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.nerveHomotopyCategory A D)
+          (SerrePositivity.DifferentialGraded.HomotopyCategory A D)
+
+SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.toH0_homMk : ∀ (A : Type u_1) [inst : CommRing A]
+  (D : Type u_2) [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D]
+  {x y :
+    (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.twoTruncation A D).obj
+      (Opposite.op
+        { obj := { len := 0 },
+          property := SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.toH0_homMk._proof_1 })}
+  (f : SSet.Truncated.Edge x y),
+  (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.toH0 A D).map
+      (SSet.Truncated.HomotopyCategory₂.homMk f) =
+    (SerrePositivity.DifferentialGraded.toHomotopy A D).map
+      (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeClosed f)
+
+SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.toH0_faithful : ∀ (A : Type u_1) [inst : CommRing A]
+  (D : Type u_2) [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D],
+  (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.toH0 A D).Faithful
+
+SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.toH0_full : ∀ (A : Type u_1) [inst : CommRing A]
+  (D : Type u_2) [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D],
+  (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.toH0 A D).Full
+
+SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.toH0_essSurj : ∀ (A : Type u_1) [inst : CommRing A]
+  (D : Type u_2) [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D],
+  (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.toH0 A D).EssSurj
+
+SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.toH0_isEquivalence : ∀ (A : Type u_1) [inst : CommRing A]
+  (D : Type u_2) [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D],
+  (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.toH0 A D).IsEquivalence
+
+SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.equivalence : (A : Type u_1) →
+  [inst : CommRing A] →
+    (D : Type u_2) →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.nerveHomotopyCategory A D ≌
+          SerrePositivity.DifferentialGraded.HomotopyCategory A D
+
+SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.fromH0 : (A : Type u_1) →
+  [inst : CommRing A] →
+    (D : Type u_2) →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        CategoryTheory.Functor (SerrePositivity.DifferentialGraded.HomotopyCategory A D)
+          (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.nerveHomotopyCategory A D)
+
+SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.counitIso : (A : Type u_1) →
+  [inst : CommRing A] →
+    (D : Type u_2) →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.fromH0 A D).comp
+            (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.toH0 A D) ≅
+          CategoryTheory.Functor.id (SerrePositivity.DifferentialGraded.HomotopyCategory A D)
+
+SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.unitIso : (A : Type u_1) →
+  [inst : CommRing A] →
+    (D : Type u_2) →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        CategoryTheory.Functor.id
+            (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.nerveHomotopyCategory A D) ≅
+          (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.toH0 A D).comp
+            (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.fromH0 A D)
+```
+
 ## 6. 次のマイルストーン D（本計画の範囲外）
 
 - Semifree(S) を `DGFullSubcategory`（`moduleSemifree` または一点 dg 圏上の複体版）として置き、

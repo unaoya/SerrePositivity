@@ -2,13 +2,13 @@ import SerrePositivity.InfinityCategories.DGNerve
 /-!
 # dg nerve の公開宣言の公理監査
 
-概要：N0 の既存則と N1・N2 と N3 途中の全ての明示的な公開宣言を監査する。
+概要：N0 の既存則と N1〜N3 の全ての明示的な公開宣言を監査する。
 方針：各工程で公開宣言の公理表示と型の検査を追加する。
 規約：許される公理は propext・Classical.choice・Quot.sound のみ。
 使われ方：対象ビルド後に `lake env lean scripts/audit_dg_nerve.lean` を実行する。
 原典：HA Construction 1.3.1.6、Proposition 1.3.1.10。
 dg nerve と内部ホーン充填および quasicategory instance を監査する。
-N3〜N6 の完了はまだ主張しない。
+ホモトピー圏の H⁰ との比較も監査する。N4〜N6 の完了はまだ主張しない。
 -/
 
 #print axioms SerrePositivity.DifferentialGraded.differential_compose
@@ -290,6 +290,24 @@ N3〜N6 の完了はまだ主張しない。
 #print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.boundary_iff_exists
 #print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.homotopicL_iff_boundary
 #print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.homotopicR_iff_boundary
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.closedHom_id
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.closedHom_comp
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeClosed_id
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.strictComp
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeClosed_strictComp
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.strictCompStruct
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.comp_homotopic_strictComp
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.nerveHomotopyCategory
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.toH0
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.toH0_homMk
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.toH0_faithful
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.toH0_full
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.toH0_essSurj
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.toH0_isEquivalence
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.equivalence
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.fromH0
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.counitIso
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.unitIso
 
 #check @SerrePositivity.InfinityCategories.DGNerve.compose_zero
 #check @SerrePositivity.InfinityCategories.DGNerve.zero_compose
@@ -565,6 +583,24 @@ N3〜N6 の完了はまだ主張しない。
 #check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.boundary_iff_exists
 #check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.homotopicL_iff_boundary
 #check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.homotopicR_iff_boundary
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.closedHom_id
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.closedHom_comp
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeClosed_id
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.strictComp
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeClosed_strictComp
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.strictCompStruct
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.comp_homotopic_strictComp
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.nerveHomotopyCategory
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.toH0
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.toH0_homMk
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.toH0_faithful
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.toH0_full
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.toH0_essSurj
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.toH0_isEquivalence
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.equivalence
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.fromH0
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.counitIso
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.unitIso
 
 section
 universe u v

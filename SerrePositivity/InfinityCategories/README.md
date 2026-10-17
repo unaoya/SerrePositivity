@@ -6,8 +6,9 @@
 追加の有界性・平坦性・標数の仮定は置かない。
 正本は [計画](../../formalization-plans/dg-nerve.md)。この文書の N0 は紙の計算であり、
 Lean での dg nerve の存在やホーン充填の証明を意味しない。
-現在は N0・N1・N2 が完了し、任意の dg 圏の dg nerve と quasicategory instance を公開済み。
-以下の途中段階の記録は保存時点の状態を表す。N3〜N6 は未完了。
+現在は N0〜N3 が完了し、任意の dg 圏の dg nerve、quasicategory instance、
+ホモトピー圏と H⁰ の圏同値を公開済み。
+以下の途中段階の記録は保存時点の状態を表す。N4〜N6 は未完了。
 
 原典は [Higher Algebra](https://www.math.ias.edu/~lurie/papers/HA.pdf)
 Construction 1.3.1.6、Proposition 1.3.1.10、Remark 1.3.1.12 と、
@@ -345,3 +346,27 @@ Nonempty (CompStruct f g h) ↔ ∃ t : Hom^{-1}(x,z), δt = g∘f-h
 既存の H⁰ を変更せずに辺のホモトピー関係まで比較した段階であり、圏同値は未構成。
 合成の対応、明示的な零ホモトピーの合成構造、商上の両向きの関手と逆同型が残る。
 N3 全体および N4〜N6 は未完了。
+
+## N3 完了（2026-10-18）
+
+`ClosedComposition.lean` は既存の閉零圏の恒等・合成の評価を dg 単位・通常順合成と同定する。
+`strictComp` は実際の閉零合成から作る対角辺、`strictCompStruct` はその辺を対角に持つ
+**零ホモトピー**の三角形。`comp_homotopic_strictComp` は `CompStruct.comp_unique` を使い、
+Mathlib が選ぶ辺の合成が実際の合成とホモトピックであることを示す。
+
+`HomotopyCategory.lean` の namespace は `DGNerve.HomotopyComparison`。
+`toH0` は二次切断のホモトピー圏から既存の H⁰ への関手で、辺の類をその閉零射の境界類に送る。
+恒等射・合成の保存を証明し、境界関係の比較から忠実性、閉零代表元から充満性、
+任意の dg 対象の定値零単体から本質的全射性を証明した。
+
+`equivalence` は
+
+```
+SSet.Truncated.HomotopyCategory₂ ((SSet.truncation 2).obj (dgNerve A D))
+  ≌ DifferentialGraded.HomotopyCategory A D
+```
+
+を与える。`fromH0` は逆関手、`unitIso` と `counitIso` は両方向の往復の自然同型。
+逆関手と自然同型は、充満・忠実・本質的全射な関手からの Mathlib の圏同値の構成を使う。
+任意の可換環 A と任意の dg 圏 D のみを前提とし、追加の方程式や有界性は仮定しない。
+これで N3a の未完了項目は解消した。N4〜N6 は未完了。
