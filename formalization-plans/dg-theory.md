@@ -34,6 +34,7 @@ Mathlibへの相対パスはすべて `.lake/packages/mathlib/Mathlib/` から�
 新規APIの追加でも使用条件と使用箇所を記録し、共有利用者が暗黙の仮定に依存しないようにする。
 並行チャットの記録ファイルは各担当が管理し、この文書§17は引き続きこのチャットが管理する。
 共有モデル圏・Quillen・転送・monoidal model・SM7一般論の所有は元のK理論系列のままとする。
+ユーザー指定により履歴のamend・rebase・resetは禁止。検証済みの小単位を新規コミットで記録する。
 
 ## 1. 現状との差分と再利用入口
 
@@ -8267,3 +8268,48 @@ dg圏の解像度を取っただけで、underivedな積dg圏も自動的に準�
 今回のcoherence完成だけで残る解像度経路を完了とせず、U12e全受入は引き続き未完。
 U12e受入後にU16へ進む。U12f/U14/U15dは並行担当、U15e/U17は指定の合流条件を待つ。
 既存公開APIの名前・型の変更、共有一般論への新しいAPI要求はない。
+
+
+### 17.181 U12e22：指定K-flat dg圏解像度と解像度版bimodule合成の入口（2026-10-17）
+
+固定版MathlibのEnriched・PathCategory・Free関連と既存dgコードを再確認した。
+通常の自由path圏、自由monoidal圏はあるが、任意の複体豊穣quiverの自由dg圏と
+そのcell解像度の存在を返すAPIは確認できなかった。
+共有モデル一般論を複製せず、まず解像度を使う対象・射・宇宙を具体化した。
+
+`Resolution/Basic.lean`の**KFlatDGResolution.{u,v,w} A D**は、
+source:Type w、DGCategory A source、Small.{u} source、
+augmentation:DGFunctor A source D、その準同値の証拠、localHomKFlat A sourceを束ねる。
+元のDの対象宇宙vとsourceの対象宇宙wは独立で、D自体のHomにK-flat性を要求しない。
+**refl**は元から局所K-flatな小さいDの恒等解像度、**ofQuasiEquivalence**は指定準同値からの構成。
+**postcompose**は標的の準同値D→Eを後合成し、同じK-flatなsourceを使う解像度を作る。
+いずれも解像度の存在をaxiomや型クラスで仮定したAPIではない。
+
+`Resolution/Bimodule.lean`の**ResolutionBimodule.DerivedCategory A P Q**は、
+指定された二解像度のsource間の主bimodule圏をobjectwise準同型で局所化したもの。
+元のunderived積dg圏Dᵒᵖ⊗Eのbimodule圏との同値は定義にも仮定にも含めていない。
+**diagonal/composeFunctor/rightUnitIso/leftUnitFunctor/leftUnitIso/associator**を既存APIから構成し、
+**triangle**と`Resolution/Coherence.lean`の**pentagon**で全導来因子のcoherenceを与える。
+元のdg圏にsmallnessやlocal Hom条件を追加せず、指定データのsourceの証拠を使う。
+**composeFunctor_refl**は恒等解像度で既存主導来合成に定義通り一致することを証明する。
+任意可換環・非有界を維持し、元の各対象宇宙と各source宇宙を独立に指定できる。
+公開APIの名前・型は変更せず、解像度版を別名前空間へ追加した。
+
+Checks.DGCategoryResolution・Checks.DerivedBimoduleFullPentagon・Checks.DerivedBimoduleTriangle・
+Checks.DerivedBimoduleAssociatorIndependence・Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（3094 jobs、終了コード0、警告なし）。元のHom条件を要求しない指定データ版の
+合成・三角恒等式、恒等解像度との比較、独立source宇宙・ZMod 2を検査した。
+主要14宣言（解像度のデータ型自体と導来圏の型を含む）の直接公理監査は標準公理のみ。
+監査累計3394宣言。今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は15 Markdown・320 exposition参照まで進み、担当外BhattScholze互換宣言の
+未解決参照1件で失敗した。共有ルート・共有一般論・並行所有ファイルは編集していない。
+
+未充足の存在契約は、任意のD:Type v、DGCategory A D、Small.{u} Dに対する
+`Nonempty (KFlatDGResolution.{u,v,v} A D)`である。**現在この宣言・instanceは存在しない。**
+sourceのHomがK-flatとなる自由dg圏/cell解像度を構成し、augmentationのHom準同型と
+H⁰本質的全射を証明する必要がある。指定データを受け取る今回の関数だけで存在証明の代用とはしない。
+続いて、異なる指定解像度でのbimodule圏・合成の比較と選択整合性、local Hom条件下の
+元の主bimodule圏との比較を証明する。underived積の準同値保存を無条件に仮定しない。
+この存在と比較はdg側の具体的構成であり、共有モデル一般論へ存在axiomを要求しない。
+U12e全受入・U16は未完。分担とU15e/U17の合流条件は§0のまま。
+ユーザーの追加指定によりamend・rebase・resetは禁止とし、この区切りも新規コミットで記録する。
