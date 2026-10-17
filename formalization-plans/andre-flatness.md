@@ -2227,3 +2227,50 @@ x mod p の正則性を R の p 正則性から導く工程、E1.35 の分冪降
 生成宣言を含む 3328 宣言の推移的公理依存は標準 3 公理のみ。
 主イデアル等式・二元イデアル等式・係数商同型・代表元公式の公開型 4 本を
 `#print` で確認した（終了コード 0）。
+
+### E1.37：p 正則な prism 商からの ϖ 持上げの正則性と実分冪降下
+
+新規 `Andre/PerfectPrismVarpiRegular.lean` は、完全 oriented prism W=(A,(d)) に対し
+R=A/(d) が p 正則なら、E1.36 の x=φ⁻¹(d) の mod p 像も正則であることを証明する。
+まず任意の可換環で a が正則、b が A/(a) で正則なら a は A/(b) で正則とする
+`principal_regular_swap` を証明した。ac=be を mod a で調べると e=at、
+a を消去して c=bt を得る。完備性・局所性・b 自身の正則性は不要。
+これを a=d、b=p に適用し、mod p の x^p=d と正の冪の正則性判定を使う。
+
+```lean
+theorem perfectPrismVarpiLift_modPrime_regular
+    (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
+    (hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal)) :
+    IsSMulRegular (A ⧸ Ideal.span {(p : A)})
+      (Ideal.Quotient.mk (Ideal.span {(p : A)}) (perfectPrismVarpiLift W hW))
+```
+
+A は任意の可換環、p は素数とする。
+この hpR を明示した上で、モニック f に対する E1.35 の実分冪降下に
+x mod p を供給する `perfectPrismVarpiPowerRootDividedPowers` を構成した。
+R₀=A/(p)、N=`PowerRootPolynomial R₀ p hp`、z=`powerRootCoefficientPDInput p f`、
+D=`PowerRootCoefficientPDEnvelope p f`、J=`principalDPPositiveIdeal z`、
+a=`Ideal.Quotient.mk (Ideal.span {(p : A)}) x` とすると、公開型は
+
+```lean
+def perfectPrismVarpiPowerRootDividedPowers
+    (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
+    (hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal))
+    (f : Polynomial A) (hf : f.Monic) :
+    DividedPowers (J.map (Ideal.Quotient.mk (Ideal.span {algebraMap R₀ D a})))
+```
+
+同 `_base_apply` は入力元の全 n 次分冪が標準分冪生成元の実商像であること、
+同 `_isDPMorphism` は還元前の実分冪構造からの標準商射が分冪を保つことを主張する。
+BS Rem 7.15（著者版 p.62）の p ねじれなしの場合に沿う接続であり、
+公開済みの一般の存在定理に hpR を加えたり、一般基底をこの場合に置き換えたりしない。
+今回の接続は条件付きの中間結果である。
+商台環の係数変更後の pd 普遍性・切断表示との同型、原典の prismatic envelope の
+Frobenius 引戻しとの同定、および一般基底に対する原典通りの比較は未完了。
+
+対象・集約の `set -o pipefail; lake build` は終了コード 0
+（集約 `SerrePositivity.BhattScholze.Andre.MonicRootedExtension`：4429 jobs）。
+新規 6 公開宣言を `assert_no_sorry` に追加した専用監査は終了コード 0。
+生成宣言を含む 3347 宣言の推移的公理依存は標準 3 公理のみ。
+順序交換・持上げの正則性・実分冪構造・標準値・商射の分冪保存の公開型 5 本を
+`#print` で確認した（終了コード 0）。
