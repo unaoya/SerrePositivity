@@ -43,6 +43,7 @@ public import SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiPDUniversal
 public import SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiRootInput
 public import SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiNativePDEnvelope
 public import SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiNativePDFlat
+public import SerrePositivity.BhattScholze.Andre.PowerRootPolynomialPerfectDelta
 
 /-!
 # André E1・E2 の集約

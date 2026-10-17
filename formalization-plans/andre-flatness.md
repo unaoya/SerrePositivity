@@ -2526,3 +2526,72 @@ prismatic envelope の Frobenius 引戻しとの同定、その比較を用い�
 生成宣言を含む 3618 宣言の推移的公理依存は標準 3 公理のみ。
 切断代数同型・入力 p 乗商上の自由性・忠実平坦性・無限根環と冪商の自由性・
 実分冪値の切断変数への対応の公開型 6 本を `#print` で確認した（終了コード 0）。
+
+### E1.42：無限根入力の δ 完全性と raw 除算包の Frobenius 係数変更
+
+原典の著者版 p.62 をページ画像でも再確認した。
+Rem 7.15 の T は `overline(Δ)_S` と記されている。したがって、ここで残る比較では
+prism 台環 Δ とその Hodge–Tate 商 T を区別し、Frobenius による係数作用の向きを
+追跡する必要がある。Cor 2.39（p.25）は φ(f)/p の δ 包と pd 包の比較であり、
+Frobenius を省略した f/p の包との同定は主張していない（原典 Warning 2.41 も参照）。
+今回の raw 係数変更同型だけを、Rem 7.15 の完備化済みの剰余比較と数えない。
+
+新規 `Andre/PowerRootPolynomialPerfectDelta.lean` は、無限根指数の p 倍の単射性・
+全射性を証明し、同じ加法射を `powerRootExponentPrimeScaleEquiv` として束ねた。
+全射性では有理数 q/p の分母条件を一段先で検証する。
+係数 Frobenius 同型と指数 p 倍の同型から無限根環の標準 Frobenius の環同型を構成し、
+既存の標準 δ 構造の完全性を証明した。
+
+```lean
+theorem powerRootPolynomialDelta_isPerfect
+    {A : Type u} [CommRing A] (p : ℕ) [Fact p.Prime]
+    (D : DeltaStructure p A) (hD : D.IsPerfect) :
+    (powerRootPolynomialDelta p hD.p_mul_injective D).IsPerfect
+```
+
+p 正則性は hD から供給し、係数環の非零性や追加の正則性を仮定しない。
+台環は従前と同じ未完備の `PowerRootPolynomial A p hp`。
+
+新規 `Andre/DeltaDivisionCoefficientAut.lean` は任意の δ 自己同型 e:A≃A に対し、
+raw δ 包 A{a/d} と A{e(a)/e(d)} の具体的な環同型を構成した。
+順・逆の係数射と同じ添字の除算変数を指定して既存の δ 除算の普遍性を使い、
+逆合成は係数と初期変数での外延性により確認する。
+
+```lean
+def deltaDivisionCoefficientAutEquiv
+    {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] {σ : Type v}
+    (D : DeltaStructure p A) (e : A ≃+* A) (he : D.IsDeltaHom D e.toRingHom)
+    (d : A) (a : σ → A) :
+    DeltaAdjoinDivision D d a ≃+*
+      DeltaAdjoinDivision D (e d) (fun s => e (a s))
+```
+
+同 `_coeff`、`_variable`、`_isDeltaHom` は e 半線形の係数公式、
+全初期変数の保存、実 δ 射であることを述べる。
+d の正則性や係数環の完全性はこの一般同型には要求しない。
+
+これを無限根 δ 環の Frobenius 自己同型へ適用し、
+`powerRootPolynomialDivisionFrobeniusEquiv` を構成した。
+P=`PowerRootPolynomial A p hp`、E=`powerRootPolynomialDelta p hD.p_mul_injective D`
+とすると公開型は
+
+```lean
+def powerRootPolynomialDivisionFrobeniusEquiv
+    (D : DeltaStructure p A) (hD : D.IsPerfect) (d : P) (a : σ → P) :
+    DeltaAdjoinDivision E d a ≃+*
+      DeltaAdjoinDivision E (E.frobeniusLift d) (fun s => E.frobeniusLift (a s))
+```
+
+同 `_coeff`、`_variable`、`_isDeltaHom` も公開した。
+任意の族を扱うため、一元モニック入力を定数 Unit 族として適用できる。
+BS Rem 7.15（著者版 p.62）の原典比較のための raw δ 環の係数変更であり、
+Cor 2.39（p.25）や Prop 7.11 を引用として追加していない。
+完備化、Hodge–Tate 商・ϖ 商への移行、係数 Frobenius の剰余環での作用、
+その pd 包との比較、T/ϖ の忠実平坦性と T の p 正則性は引き続き未完了。
+
+対象・集約の `set -o pipefail; lake build` は終了コード 0
+（集約 `SerrePositivity.BhattScholze.Andre.MonicRootedExtension`：4440 jobs）。
+新規 18 公開宣言を `assert_no_sorry` に加えた専用監査は終了コード 0。
+生成宣言を含む 3685 宣言の推移的公理依存は標準 3 公理のみ。
+無限根 δ 完全性、一般 raw 同型と係数公式、無限根 raw Frobenius 同型と
+その δ 互換性の公開型 5 本を `#print` で確認した（終了コード 0）。
