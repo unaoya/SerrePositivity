@@ -747,3 +747,73 @@ import SerrePositivity.InfinityCategories.Core
 #print axioms SerrePositivity.InfinityCategories.initialRestriction
 #check @SerrePositivity.InfinityCategories.initialCofinality
 #print axioms SerrePositivity.InfinityCategories.initialCofinality
+
+-- A2i: 通常の圏の nerve における極限の比較例
+#check @SerrePositivity.InfinityCategories.isIso_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.isIso_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.isTerminalVertex_of_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.isTerminalVertex_of_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.IsTerminalVertex.map_of_isIso
+#print axioms SerrePositivity.InfinityCategories.IsTerminalVertex.map_of_isIso
+#check @SerrePositivity.InfinityCategories.sliceOverPostcomp_isIso
+#print axioms SerrePositivity.InfinityCategories.sliceOverPostcomp_isIso
+#check @SerrePositivity.InfinityCategories.JoinCone.postcomp
+#print axioms SerrePositivity.InfinityCategories.JoinCone.postcomp
+#check @SerrePositivity.InfinityCategories.IsLimitCone.postcomp_of_isIso
+#print axioms SerrePositivity.InfinityCategories.IsLimitCone.postcomp_of_isIso
+#check @SerrePositivity.InfinityCategories.JoinCone.cast
+#print axioms SerrePositivity.InfinityCategories.JoinCone.cast
+#check @SerrePositivity.InfinityCategories.JoinCone.vertex_cast
+#print axioms SerrePositivity.InfinityCategories.JoinCone.vertex_cast
+#check @SerrePositivity.InfinityCategories.JoinCone.vertex_postcomp
+#print axioms SerrePositivity.InfinityCategories.JoinCone.vertex_postcomp
+#check @SerrePositivity.InfinityCategories.IsLimitCone.cast
+#print axioms SerrePositivity.InfinityCategories.IsLimitCone.cast
+#check @SerrePositivity.InfinityCategories.LimitChecks.hom_ext_to_stdSimplex
+#print axioms SerrePositivity.InfinityCategories.LimitChecks.hom_ext_to_stdSimplex
+#check @SerrePositivity.InfinityCategories.LimitChecks.join_hom_ext_to_stdSimplex
+#print axioms SerrePositivity.InfinityCategories.LimitChecks.join_hom_ext_to_stdSimplex
+#check @SerrePositivity.InfinityCategories.LimitChecks.intervalTerminalExtension
+#print axioms SerrePositivity.InfinityCategories.LimitChecks.intervalTerminalExtension
+#check @SerrePositivity.InfinityCategories.LimitChecks.intervalTerminalExtension_inl
+#print axioms SerrePositivity.InfinityCategories.LimitChecks.intervalTerminalExtension_inl
+#check @SerrePositivity.InfinityCategories.LimitChecks.intervalTerminalExtension_inr
+#print axioms SerrePositivity.InfinityCategories.LimitChecks.intervalTerminalExtension_inr
+#check @SerrePositivity.InfinityCategories.LimitChecks.intervalTerminalDiagram
+#print axioms SerrePositivity.InfinityCategories.LimitChecks.intervalTerminalDiagram
+#check @SerrePositivity.InfinityCategories.LimitChecks.intervalTerminalProjection_isIso
+#print axioms SerrePositivity.InfinityCategories.LimitChecks.intervalTerminalProjection_isIso
+#check @SerrePositivity.InfinityCategories.LimitChecks.intervalLast_isTerminal
+#print axioms SerrePositivity.InfinityCategories.LimitChecks.intervalLast_isTerminal
+#check @SerrePositivity.InfinityCategories.LimitChecks.intervalTerminalCone
+#print axioms SerrePositivity.InfinityCategories.LimitChecks.intervalTerminalCone
+#check @SerrePositivity.InfinityCategories.LimitChecks.intervalTerminalCone_isLimit
+#print axioms SerrePositivity.InfinityCategories.LimitChecks.intervalTerminalCone_isLimit
+#check @SerrePositivity.InfinityCategories.LimitChecks.intervalConeAtVertex
+#print axioms SerrePositivity.InfinityCategories.LimitChecks.intervalConeAtVertex
+#check @SerrePositivity.InfinityCategories.LimitChecks.intervalConeAtVertex_vertex
+#print axioms SerrePositivity.InfinityCategories.LimitChecks.intervalConeAtVertex_vertex
+#check @SerrePositivity.InfinityCategories.LimitChecks.intervalConeAtVertex_one_isLimit
+#print axioms SerrePositivity.InfinityCategories.LimitChecks.intervalConeAtVertex_one_isLimit
+#check @SerrePositivity.InfinityCategories.LimitChecks.walkingArrowTop
+#print axioms SerrePositivity.InfinityCategories.LimitChecks.walkingArrowTop
+#check @SerrePositivity.InfinityCategories.LimitChecks.topPairDiagram
+#print axioms SerrePositivity.InfinityCategories.LimitChecks.topPairDiagram
+#check @SerrePositivity.InfinityCategories.LimitChecks.topPairOrdinaryCone
+#print axioms SerrePositivity.InfinityCategories.LimitChecks.topPairOrdinaryCone
+#check @SerrePositivity.InfinityCategories.LimitChecks.topPairOrdinaryCone_one_isLimit
+#print axioms SerrePositivity.InfinityCategories.LimitChecks.topPairOrdinaryCone_one_isLimit
+#check @SerrePositivity.InfinityCategories.LimitChecks.topPairOrdinaryCone_isLimit_iff
+#print axioms SerrePositivity.InfinityCategories.LimitChecks.topPairOrdinaryCone_isLimit_iff
+#check @SerrePositivity.InfinityCategories.LimitChecks.topPairDiagram_nerve_eq
+#print axioms SerrePositivity.InfinityCategories.LimitChecks.topPairDiagram_nerve_eq
+#check @SerrePositivity.InfinityCategories.LimitChecks.topPairNerveCone
+#print axioms SerrePositivity.InfinityCategories.LimitChecks.topPairNerveCone
+#check @SerrePositivity.InfinityCategories.LimitChecks.topPairNerveCone_vertex
+#print axioms SerrePositivity.InfinityCategories.LimitChecks.topPairNerveCone_vertex
+#check @SerrePositivity.InfinityCategories.LimitChecks.topPairNerveCone_one_isLimit
+#print axioms SerrePositivity.InfinityCategories.LimitChecks.topPairNerveCone_one_isLimit
+#check @SerrePositivity.InfinityCategories.LimitChecks.topPairNerveCone_isLimit_iff
+#print axioms SerrePositivity.InfinityCategories.LimitChecks.topPairNerveCone_isLimit_iff
+#check @SerrePositivity.InfinityCategories.LimitChecks.topPair_limit_agreement
+#print axioms SerrePositivity.InfinityCategories.LimitChecks.topPair_limit_agreement

@@ -1,14 +1,15 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.HomotopyNatTrans
+public import SerrePositivity.InfinityCategories.Core.LimitExamples
 public import Mathlib.AlgebraicTopology.Quasicategory.Nerve
 public import Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction
 
 /-!
-概要：通常の圏の nerve でホモトピー圏の橋を具体化する。
-方針：A1a の比較と、nerve 随伴の可逆な余単位を合成する。
+概要：通常の圏の nerve でホモトピー圏の橋と極限を具体化する。
+方針：A1a の比較と nerve 随伴の可逆な余単位を合成し、LimitChecks の二項積の比較例を公開する。
 規約：圏の対象・射は同じ宇宙に置く。
-使われ方：HTT §1.2.3、Kerodon Example 1.4.5.4 の通常の圏との整合性確認。
+使われ方：HTT §1.2.3・§1.2.13、Kerodon Example 1.4.5.4・§7.1 の通常の圏との整合性確認。
 -/
 
 @[expose] public section

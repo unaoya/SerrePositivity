@@ -2510,3 +2510,263 @@ lemma initialCofinality {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c)
 Core の対象ビルド・公理監査はともに終了コード 0。累計 356 件は標準三公理のみ
 （公理なしも含む）。A2h は固定した一般性で完了。A2i は未完了。
 次に通常の圏の nerve における具体的な極限の検算と最終監査へ進む。
+
+
+### A2i 完了（2026-10-18）：通常の圏の nerve の極限の比較と最終監査
+
+`Checks.lean` から `LimitExamples.lean` を公開 import し、通常の順序圏
+`ULift.{0} (Fin 2)`（0→1）の二対象離散図式 `(1,1)` で極限を比較した。
+`topPairDiagram_nerve_eq` は図式の一致、`topPairNerveCone_vertex` は錐の頂点の一致。
+`topPairOrdinaryCone_isLimit_iff` と `topPairNerveCone_isLimit_iff` は両側とも
+極限性が `v = 1` と同値であることを示す。従って v=1 の正例だけでなく v=0 の負例も含む。
+主定理 `topPair_limit_agreement` は、同じ図式・頂点の通常の錐と join の錐の極限性の同値。
+さらに任意の単体集合 K について標準辺の終対象 1 への定数図式の極限錐を直接検証した。
+
+以下が新規の全 34 公開宣言の正確な型。TerminalMap は namespace
+`SerrePositivity.InfinityCategories`、LimitExamples はその内部の `LimitChecks`。
+`universe u`、`open CategoryTheory Limits SSet`、`open scoped Simplicial` を前提とする。
+有限の通常圏の比較例は宇宙 0、標準辺・移送の補題は任意の宇宙 u。
+quasicategory 等の前提は型中に全て明記しており、具体例には追加仮定はない。
+
+TerminalMap.lean：
+
+```lean
+instance isIso_trivialKanFibration {X Y : SSet.{u}} (q : X ⟶ Y) [IsIso q] :
+    TrivialKanFibration q
+```
+
+TerminalMap.lean：
+
+```lean
+lemma isTerminalVertex_of_trivialKanFibration {X Y : SSet.{u}} (q : X ⟶ Y)
+    [TrivialKanFibration q] {x : X _⦋0⦌} (hx : IsTerminalVertex (q.app (Opposite.op ⦋0⦌) x)) :
+    IsTerminalVertex x
+```
+
+TerminalMap.lean：
+
+```lean
+lemma IsTerminalVertex.map_of_isIso {X Y : SSet.{u}} (q : X ⟶ Y) [IsIso q]
+    {x : X _⦋0⦌} (hx : IsTerminalVertex x) :
+    IsTerminalVertex (q.app (Opposite.op ⦋0⦌) x)
+```
+
+TerminalMap.lean：
+
+```lean
+lemma sliceOverPostcomp_isIso {K X Y : SSet.{u}} (p : K ⟶ X) (q : X ⟶ Y) [IsIso q] :
+    IsIso (sliceOverPostcomp p q)
+```
+
+TerminalMap.lean：
+
+```lean
+def JoinCone.postcomp {K X Y : SSet.{u}} {p : K ⟶ X} (c : JoinCone p) (q : X ⟶ Y) :
+    JoinCone (p ≫ q)
+```
+
+TerminalMap.lean：
+
+```lean
+lemma IsLimitCone.postcomp_of_isIso {K X Y : SSet.{u}} {p : K ⟶ X} {c : JoinCone p}
+    (hc : IsLimitCone c) (q : X ⟶ Y) [IsIso q] : IsLimitCone (c.postcomp q)
+```
+
+TerminalMap.lean：
+
+```lean
+def JoinCone.cast {K X : SSet.{u}} {p q : K ⟶ X} (c : JoinCone p) (h : p = q) : JoinCone q
+```
+
+TerminalMap.lean：
+
+```lean
+lemma JoinCone.vertex_cast {K X : SSet.{u}} {p q : K ⟶ X} (c : JoinCone p) (h : p = q) :
+    (c.cast h).vertex = c.vertex
+```
+
+TerminalMap.lean：
+
+```lean
+lemma JoinCone.vertex_postcomp {K X Y : SSet.{u}} {p : K ⟶ X} (c : JoinCone p) (q : X ⟶ Y) :
+    (c.postcomp q).vertex = q.app (Opposite.op ⦋0⦌) c.vertex
+```
+
+TerminalMap.lean：
+
+```lean
+lemma IsLimitCone.cast {K X : SSet.{u}} {p q : K ⟶ X} {c : JoinCone p}
+    (hc : IsLimitCone c) (h : p = q) : IsLimitCone (c.cast h)
+```
+
+LimitExamples.lean：
+
+```lean
+lemma hom_ext_to_stdSimplex {A : SSet.{u}} {n : ℕ} (f g : A ⟶ Δ[n])
+    (h : f.app (Opposite.op ⦋0⦌) = g.app (Opposite.op ⦋0⦌)) : f = g
+```
+
+LimitExamples.lean：
+
+```lean
+lemma join_hom_ext_to_stdSimplex {A B : SSet.{u}} {n : ℕ} (f g : join A B ⟶ Δ[n])
+    (hA : joinInl A B ≫ f = joinInl A B ≫ g)
+    (hB : joinInr A B ≫ f = joinInr A B ≫ g) : f = g
+```
+
+LimitExamples.lean：
+
+```lean
+def intervalTerminalExtension : join (Δ[1] : SSet.{u}) Δ[0] ⟶ Δ[1]
+```
+
+LimitExamples.lean：
+
+```lean
+lemma intervalTerminalExtension_inl :
+    joinInl (Δ[1] : SSet.{u}) Δ[0] ≫ intervalTerminalExtension = 𝟙 Δ[1]
+```
+
+LimitExamples.lean：
+
+```lean
+lemma intervalTerminalExtension_inr :
+    joinInr (Δ[1] : SSet.{u}) Δ[0] ≫ intervalTerminalExtension =
+      SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
+```
+
+LimitExamples.lean：
+
+```lean
+def intervalTerminalDiagram (K : SSet.{u}) : K ⟶ (Δ[1] : SSet.{u})
+```
+
+LimitExamples.lean：
+
+```lean
+lemma intervalTerminalProjection_isIso (K : SSet.{u}) :
+    IsIso (sliceOverProjection (intervalTerminalDiagram K))
+```
+
+LimitExamples.lean：
+
+```lean
+lemma intervalLast_isTerminal :
+    IsTerminalVertex (stdSimplex.obj₀Equiv.{u}.symm (1 : Fin 2))
+```
+
+LimitExamples.lean：
+
+```lean
+def intervalTerminalCone (K : SSet.{u}) : JoinCone (intervalTerminalDiagram K)
+```
+
+LimitExamples.lean：
+
+```lean
+lemma intervalTerminalCone_isLimit (K : SSet.{u}) : IsLimitCone (intervalTerminalCone K)
+```
+
+LimitExamples.lean：
+
+```lean
+def intervalConeAtVertex (K : SSet.{u}) (v : Fin 2) : JoinCone (intervalTerminalDiagram K)
+```
+
+LimitExamples.lean：
+
+```lean
+lemma intervalConeAtVertex_vertex (K : SSet.{u}) (v : Fin 2) :
+    (intervalConeAtVertex K v).vertex = stdSimplex.obj₀Equiv.symm v
+```
+
+LimitExamples.lean：
+
+```lean
+lemma intervalConeAtVertex_one_isLimit (K : SSet.{u}) : IsLimitCone (intervalConeAtVertex K 1)
+```
+
+LimitExamples.lean：
+
+```lean
+def walkingArrowTop : ULift.{0} (Fin 2)
+```
+
+LimitExamples.lean：
+
+```lean
+def topPairDiagram : Discrete Bool ⥤ ULift.{0} (Fin 2)
+```
+
+LimitExamples.lean：
+
+```lean
+def topPairOrdinaryCone (v : Fin 2) : Limits.Cone topPairDiagram
+```
+
+LimitExamples.lean：
+
+```lean
+def topPairOrdinaryCone_one_isLimit : Limits.IsLimit (topPairOrdinaryCone 1)
+```
+
+LimitExamples.lean：
+
+```lean
+lemma topPairOrdinaryCone_isLimit_iff (v : Fin 2) :
+    Nonempty (Limits.IsLimit (topPairOrdinaryCone v)) ↔ v = 1
+```
+
+LimitExamples.lean：
+
+```lean
+lemma topPairDiagram_nerve_eq :
+    nerveMap topPairDiagram = intervalTerminalDiagram (nerve (Discrete Bool)) ≫
+      (stdSimplex.isoNerve.{0} 1).hom
+```
+
+LimitExamples.lean：
+
+```lean
+def topPairNerveCone (v : Fin 2) : JoinCone (nerveMap topPairDiagram)
+```
+
+LimitExamples.lean：
+
+```lean
+lemma topPairNerveCone_vertex (v : Fin 2) :
+    (topPairNerveCone v).vertex = CategoryTheory.nerveEquiv.symm (ULift.up v)
+```
+
+LimitExamples.lean：
+
+```lean
+lemma topPairNerveCone_one_isLimit : IsLimitCone (topPairNerveCone 1)
+```
+
+LimitExamples.lean：
+
+```lean
+lemma topPairNerveCone_isLimit_iff (v : Fin 2) : IsLimitCone (topPairNerveCone v) ↔ v = 1
+```
+
+LimitExamples.lean：
+
+```lean
+lemma topPair_limit_agreement (v : Fin 2) :
+    Nonempty (Limits.IsLimit (topPairOrdinaryCone v)) ↔ IsLimitCone (topPairNerveCone v)
+```
+
+
+検証：`lake build SerrePositivity.InfinityCategories.Core` と
+`lake env lean scripts/audit_infinity_core.lean` はともに終了コード 0。
+累計 390 件の `#print axioms` の出力を検査し、公理なし又は
+`propext`・`Classical.choice`・`Quot.sound` のみであることを確認した。
+Core/*.lean の明示的な公開宣言名を抽出して監査スクリプトと照合し、未登録名はない。
+工程末の全体 `set -o pipefail; lake build` も終了コード 0（7507 jobs）。
+ログは `/tmp/serre-core-a2i-build.log`・`/tmp/serre-core-a2i-audit.log`・
+`/tmp/serre-core-a2-full-build.log`。
+
+A1a–A1d、A2a–A2i は全て完了。これらの要求の範囲に未完了項目はない。
+A2i は指定通り具体例による検算であり、任意の通常圏の全ての極限を比較する一般定理は
+今回の要求に含まず、主張もしない。§4 の設計変更はない。A3 以降は別途指示を待つ。

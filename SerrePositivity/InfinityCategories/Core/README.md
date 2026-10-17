@@ -234,3 +234,26 @@ A2g 完了、A2h〜A2i は未完了。Core ビルドと累計 315 件の公理�
 点を左から join した単射の left anodyne 性と、始対象の一意な射から作った錐の retract を用いた。
 A2h 完了、A2i は未完了。Core ビルドと累計 356 件の公理監査は成功。
 全 41 新規公開宣言の正確な型・前提は計画 §6 に記録した。
+
+
+### A2i 完了・A1/A2 全工程の完了（2026-10-18）
+
+`Checks.lean` は `LimitExamples.lean` を公開 import する。
+`LimitChecks.topPair_limit_agreement (v : Fin 2)` は、通常の圏 `0→1` の
+二対象離散図式 `(1,1)` への通常の錐の極限性と、その nerve の join の錐の極限性の同値：
+
+```lean
+Nonempty (Limits.IsLimit (LimitChecks.topPairOrdinaryCone v)) ↔
+  IsLimitCone (LimitChecks.topPairNerveCone v)
+```
+
+両側が `v = 1` と同値であり、頂点 1 の正例・頂点 0 の負例を含む。
+図式の一致と錐の頂点の一致も証明した。具体例に追加前提はない。
+任意の形 K の標準辺の終対象 1 への定数図式も極限錐を持つ。
+`TerminalMap.lean` は trivial Kan fibration による終対象性の反映と、
+同型・図式の等式による極限錐の移送を整備する。
+新規 34 宣言の正確な型・前提は計画 §6 に全件記録した。
+
+A1a–d、A2a–i は全て完了。Core の対象ビルドと累計 390 件の公理監査は成功し、
+許した標準三公理以外はない。工程末の全体 `lake build` も終了コード 0（7507 jobs）。
+今回の範囲に未完了項目はなく、一般の全極限の比較定理は主張しない。A3 以降は別途指示。
