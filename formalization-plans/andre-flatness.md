@@ -7425,3 +7425,68 @@ hK.dpow n (algebraMap Np K zp) = e.symm (principalDPGenerator zp n)
 残る R1 の native PD と raw 中間定理の整理、A1-c2・A1-f の最終合流は未完了。
 
 検証：他レーンの lake build がないことを ps で確認し、`set -o pipefail` 付きで対象4モジュールと集約をビルドした（4616 jobs、終了コード0）。公開置換先8宣言の `assert_no_sorry` と8本の `#check` は終了コード0。専用監査は `André monic root audit passed: 8370 declarations, standard axioms only.`。置換先2モジュールの全生成宣言も監査範囲に加え、保持した旧モジュールの残る全宣言も引き続き監査した。
+
+### E1.86／R1 ϖ 還元・mod p の旧PD公開5宣言を置換（2026-10-17）
+
+本節は A1-a／R1 の追記。呼出しのない旧公開5宣言を削除し、同名の
+`_of_unconditional` 版を集約から公開する。新規
+`PerfectPrismVarpiPDUniversalUnconditional.lean` で係数消滅条件付きの普遍性を証明した。
+他の4宣言は既存の `Unconditional/MonicPDEnvelope.lean` を使う。
+`Unconditional/`・`VarpiComparison/`・`Unoriented/` のファイルは編集していない。
+A1-c2 が現在呼ぶ旧 native 分冪構造とその入力公式は保持した。
+
+置換した公開名（namespace `SerrePositivity.BhattScholze.Andre`）は次の5本。
+
+- `existsUnique_perfectPrismVarpiPDMorphism_of_unconditional`
+- `existsUnique_perfectPrismVarpiNativePDMorphism_of_unconditional`
+- `powerRootPrimeFrobeniusDividedPowers_of_unconditional`
+- `powerRootPrimeFrobeniusDividedPowers_base_apply_of_unconditional`
+- `existsUnique_powerRootPrimeFrobeniusPDMorphism_of_unconditional`
+
+正確な型を共通記号で記す。引数は独立宇宙 u,v、{A:Type u} [CommRing A]、
+{p:ℕ} [Fact p.Prime]、W:OrientedPrism p A、hW:W.deltaStructure.IsPerfect、
+f:Polynomial A、hf:f.Monic。全5本に hpR・正次数仮定はない。
+N0=PowerRootPolynomial (A/(p)) p hp、z0=powerRootCoefficientPDInput p f、
+D0=PowerRootCoefficientPDEnvelope p f、a0 は perfectPrismVarpiLift W hW の A/(p) への像、
+K0=Ideal.span {algebraMap (A/(p)) D0 a0}。
+Rv=(A/W.ideal)/(ϖ)、Rp=(A/W.ideal)/(p)、Nv=PowerRootPolynomial Rv p hp、
+Np=PowerRootPolynomial Rp p hp。zv,zp はそれぞれ f の自然な係数像の零段入力、
+Dv=PrincipalDPPresentation Nv zv、Dp=PrincipalDPPresentation Np zp。
+h0=`perfectPrismVarpiPowerRootDividedPowers_of_unconditional W hW f hf`、
+hv=`perfectPrismVarpiNativeDividedPowers_of_unconditional W hW f hf`、
+hpD=`powerRootPrimeFrobeniusDividedPowers_of_unconditional W hW f hf` とする。
+
+```lean
+-- existsUnique_perfectPrismVarpiPDMorphism_of_unconditional
+{B : Type v} [CommRing B] [Algebra N0 B] {I : Ideal B}
+(Ht : DividedPowers I) (hzB : algebraMap N0 B z0 ∈ I)
+(haB : algebraMap N0 B (algebraMap (A/(p)) N0 a0) = 0) :
+∃! F : (D0 ⧸ K0) →ₐ[N0] B, h0.IsDPMorphism Ht F.toRingHom
+
+-- existsUnique_perfectPrismVarpiNativePDMorphism_of_unconditional
+{B : Type v} [CommRing B] [Algebra Nv B] {I : Ideal B}
+(Ht : DividedPowers I) (hzB : algebraMap Nv B zv ∈ I) :
+∃! F : Dv →ₐ[Nv] B, hv.IsDPMorphism Ht F.toRingHom
+
+-- powerRootPrimeFrobeniusDividedPowers_of_unconditional
+DividedPowers (principalDPPositiveIdeal zp)
+
+-- powerRootPrimeFrobeniusDividedPowers_base_apply_of_unconditional (n : ℕ)
+hpD.dpow n (algebraMap Np Dp zp) = principalDPGenerator zp n
+
+-- existsUnique_powerRootPrimeFrobeniusPDMorphism_of_unconditional
+{B : Type v} [CommRing B] [Algebra Np B] {I : Ideal B}
+(Ht : DividedPowers I) (hzB : algebraMap Np B zp ∈ I) :
+∃! F : Dp →ₐ[Np] B, hpD.IsDPMorphism Ht F.toRingHom
+```
+
+標的のねじれなし・完備性を追加せず、旧型の係数作用・入力と最初の係数消滅条件を保った。
+BS Rem 7.15(1)（著者版 p.62）とは異なる射影的係数商・分冪構造移送を使う経路を
+新規ファイルの docstring と本節に記録する。新しい sorry・axiom・引用はない。
+
+検証：ps で他レーンの lake build がないことを確認して対象5モジュールと集約を
+`set -o pipefail` 付きでビルドし、4618 jobs、終了コード0。
+5本の型確認は終了コード0。専用監査は終了コード0、
+`André monic root audit passed: 8425 declarations, standard axioms only.`。
+5公開名の assert_no_sorry と、置換先3モジュールの全生成宣言を含めた監査を行った。
+残る R1 の raw 正則性・native 構造の整理と A1-c2・A1-f の最終合流は未完了。

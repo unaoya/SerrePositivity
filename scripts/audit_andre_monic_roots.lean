@@ -675,7 +675,7 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPQuotientEval_mk
 assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPQuotientEval_generator
 assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPQuotientEval_isDPMorphism
 assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_principalDPQuotientMorphism
-assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_perfectPrismVarpiPDMorphism
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_perfectPrismVarpiPDMorphism_of_unconditional
 
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientQuotientMap
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientQuotientMap_single
@@ -714,7 +714,7 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPDEnvelopeEq
 assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPDEnvelopeEquiv_positiveIdeal
 assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiNativeDividedPowers
 assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiNativeDividedPowers_base_apply
-assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_perfectPrismVarpiNativePDMorphism
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_perfectPrismVarpiNativePDMorphism_of_unconditional
 
 assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiCoefficient_prime_eq_zero
 assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiRootRing_prime_eq_zero
@@ -1101,9 +1101,9 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicVarpiFrobe
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicVarpiFrobeniusResidueEquiv_coeff
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicVarpiFrobeniusBaseChangeAlgEquiv
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicVarpiFrobeniusBaseChangeAlgEquiv_tmul
-assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrimeFrobeniusDividedPowers
-assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrimeFrobeniusDividedPowers_base_apply
-assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrimeFrobeniusPDMorphism
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrimeFrobeniusDividedPowers_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrimeFrobeniusDividedPowers_base_apply_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrimeFrobeniusPDMorphism_of_unconditional
 
 assert_no_sorry SerrePositivity.BhattScholze.Andre.principalPDSourceIdeal
 assert_no_sorry SerrePositivity.BhattScholze.Andre.principalPDSourceDividedPowers
@@ -1461,7 +1461,7 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpi,
     `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiRegular,
     `SerrePositivity.BhattScholze.Andre.PrincipalDPQuotientUniversal,
-    `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiPDUniversal,
+    `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiPDUniversalUnconditional,
     `SerrePositivity.BhattScholze.Andre.PowerRootCoefficientQuotient,
     `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiRootInput,
     `SerrePositivity.BhattScholze.Andre.RankOneDPCoefficientQuotient,
@@ -1539,7 +1539,7 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.SemilinearTensorBaseChange,
     `SerrePositivity.BhattScholze.Andre.PowerRootVarpiPrimeFrobeniusPD,
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicFrobeniusBaseChange,
-    `SerrePositivity.BhattScholze.Andre.PowerRootPrimeFrobeniusPDEnvelope,
+    `SerrePositivity.BhattScholze.Andre.Unconditional.MonicPDEnvelope,
     `SerrePositivity.BhattScholze.Andre.PrincipalPDSourceTransport,
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicFrobeniusRootAction,
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicFrobeniusTensorAlgebra,
@@ -1596,7 +1596,8 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PerfectPrismBoundedTargetLift,
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicAbsoluteUniversal,
     `SerrePositivity.BhattScholze.Andre.Unconditional.FrobeniusTensorPD,
-    `SerrePositivity.BhattScholze.Andre.Unconditional.FullFrobeniusPD]
+    `SerrePositivity.BhattScholze.Andre.Unconditional.FullFrobeniusPD,
+    `SerrePositivity.BhattScholze.Andre.Unconditional.VarpiPDReduction]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

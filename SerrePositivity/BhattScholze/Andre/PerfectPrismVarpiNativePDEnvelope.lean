@@ -17,6 +17,8 @@ BS Rem 7.15(1)（著者版 p.62）の pd 包の係数環を原典通りにする
 x=φ⁻¹(d) の係数像で還元した実分冪構造を、検証済みの表示環同型で移送する。
 入力元の標準分冪値を移し、一次関係商の一般の実普遍性を使う。
 
+旧 hpR 付きの普遍性は不要になったため削除し、無条件版を集約から公開する。
+
 ## 規約
 
 prism 商の p 正則性を明示し、標的のねじれ・完備性には条件を課さない。
@@ -71,19 +73,5 @@ theorem perfectPrismVarpiNativeDividedPowers_base_apply
     perfectPrismVarpiNativeDividedPowers, DividedPowers.ofRingEquiv_dpow_apply,
     perfectPrismVarpiPowerRootDividedPowers_base_apply,
     perfectPrismVarpiPDEnvelopeEquiv_generator]
-
-/-- 概要：原典の係数環上の実 pd 包から任意の分冪標的への射は一意に存在する。
-方針：移送済みの実分冪構造と標準値を一般の pd 普遍性へ供給する。
-規約：標的は無限根環 Nv の任意の代数。
-使われ方：BS Rem 7.15(1)（著者版 p.62）のモニック入力の実 pd 包の同定。 -/
-theorem existsUnique_perfectPrismVarpiNativePDMorphism
-    (hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal)) (hf : f.Monic)
-    {B : Type v} [CommRing B] [Algebra Nv B] {I : Ideal B}
-    (Ht : DividedPowers I) (hzB : algebraMap Nv B zv ∈ I) :
-    ∃! F : Dv →ₐ[Nv] B,
-      (perfectPrismVarpiNativeDividedPowers W hW f hpR hf).IsDPMorphism Ht F.toRingHom :=
-  existsUnique_principalDPPositiveMorphism zv
-    (perfectPrismVarpiNativeDividedPowers W hW f hpR hf)
-    (perfectPrismVarpiNativeDividedPowers_base_apply W hW f hpR hf) Ht hzB
 
 end SerrePositivity.BhattScholze.Andre
