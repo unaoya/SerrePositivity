@@ -1,0 +1,19 @@
+module
+public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfTensorHomComparison
+public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfDGFunctorShiftChecks
+
+@[expose] public section
+namespace SerrePositivity.DifferentialGraded.Morita
+#print axioms criterionPerfKernelMainAugmentation
+#print axioms criterionPerfKernelProjectiveComputation
+#print axioms criterionPerfKernelProjectiveActionMap
+#print axioms criterionPerfKernelProjectiveActionMap_closed
+#print axioms criterionPerfResolvedAction_homology_zero
+#print axioms criterionPerfResolvedAction_quasiIsoAt_zero_iff
+#print axioms criterionPerfResolvedAction_quasiIso_iff_sourceShifts
+#print axioms criterionPerfTensorRepresentableResolution
+#print axioms criterionPerfTensorYonedaHom_naturality
+#print axioms criterionPerfTensorHomComparison_square
+#print axioms criterionPerfTensorHomComparison_quasiIso_iff
+#print axioms criterionPerfHomComparison_quasiIso_iff_sourceShifts
+end SerrePositivity.DifferentialGraded.Morita

@@ -212,3 +212,24 @@ Yoneda 像であること、表現可能対象間の導来射にもそのよう�
 
 検証：`CriterionPerfDGFunctorShiftChecks` を最終入口の依存先として対象ビルド。
 今回の主要11宣言の公理監査は標準3公理のみ。新規 sorry・axiom・引用なし。
+
+## 通常 tensor の全 Hom 比較から主作用の全 shift の射比較へ
+
+全次数 shift の単位は `d5806d87`（直後の stat は自分の4ファイルのみ）。
+`CriterionPerfResolvedAction.lean` は、任意の射影的入力に対して主作用の計算同型を
+既存の自然な導来増強から取り、通常 tensor の Hom 射と主作用の H⁰ 射写像を同定する。
+`criterionPerfResolvedAction_quasiIso_iff_sourceShifts` は、源の像だけを射影置換した
+全 Hom 比較の擬同型性と、全ての源 shift 上の実際の主作用の射の全単射性との同値。
+ここで入力の射影性を使うが、tensor の出力そのものの射影性は仮定しない。
+
+`CriterionPerfTensorHomComparison.lean` は列の射影解像度の増強を右単位同型で戻し、
+表現可能入力の tensor の像の射影解像度を与える。全 Hom の右単位自然性から
+`criterionPerfTensorHomComparison_square` を chain map の等式として証明した。
+Yoneda の chain 同型と右単位による Hom の同型を用い、元の列の全 Hom 比較の擬同型性を
+通常 tensor の全 Hom 比較の擬同型性に移送する。最後に
+`criterionPerfHomComparison_quasiIso_iff_sourceShifts` が、元の dg 圏の Hom 複体を
+始域とする比較と、全ての源 shift 上の主作用の実際の射写像を接続する。
+
+検証：`CriterionPerfResolvedActionChecks` を最終入口の依存先として対象ビルド。
+主要12宣言は標準3公理のみ。局所 Hom の K-flat 性・係数環の平坦性・一般右随伴は不要。
+新規 sorry・axiom・引用なし。
