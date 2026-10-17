@@ -11187,3 +11187,24 @@ Cor 8.12引用そのものを解消したとは数えない。
 指定の`lake env lean scripts/audit_axioms.lean`も実行し、終了コード0だった。
 ただし全体ビルドが未成功なので、既存oleanに対する結果であり、現ソース全体の統合成功の証拠には数えない。
 残作業は並行側の型不一致解消後の全体ビルド・共有公理監査の再実行、およびルート一行の保存である。
+
+
+### 工程2の統合検証完了（2026-10-17）
+
+前回停止した担当外PowerRootPrismFrobeniusResidueは現在のコードで単体ビルド2750ジョブ成功。
+当該ファイルや他レーンを編集せずに、全体の`set -o pipefail; lake build`を再実行し、
+終了コード0・7057ジョブで成功した。続けて指定の
+`lake env lean scripts/audit_axioms.lean`も終了コード0で成功した。
+今回は全体ビルド成功後の共有公理監査であり、前回の旧oleanに関する留保は解消された。
+
+新しい二つの系の専用監査も再実行し、終了コード0。
+引用と二つの系それぞれの#print axiomsは標準3公理＋sorryAxだけであり、
+#print sorriesの到達先の公開名はArcExcisionの
+`SerrePositivity.BhattScholze.Inputs.perfectoidization_excision_isPullback`一件だけ。
+CLMSTを禁止するimport境界監査も再実行し、structural_status=pass、violation_paths=[]。
+二つの系の証明・完全型・(b)の引数順は先の記録と変更なし。
+
+ルートでは`public import SerrePositivity.BhattScholze.PerfectoidizationExcisionResults`の
+一行のみを今回の差分として選択する。ルートに残る他レーンのimport変更は保存対象に含めない。
+これにより今回指定された二定理、専用監査、集約import一行、全体ビルド、共有公理監査の工程は完了。
+Cor 8.12の環の引用自体は引き続き引用であり、この系の証明によって引用を解消したとは数えない。
