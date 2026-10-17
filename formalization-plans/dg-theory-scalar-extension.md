@@ -108,3 +108,26 @@ dg 加群の係数変更・その随伴、相対 tensor の比較、導来比較
 
 残る受入条件の第1項のうち、右加群の射と係数拡大関手までを実装済みとする。
 係数制限、加群圏上の随伴、相対 tensor 比較、導来版、U15d は引き続き未完。
+
+
+## 2026-10-17：係数制限関手
+
+前節の加群圏上の係数拡大関手は `9025b9af` にコミット済み。
+
+`Tensor/ScalarRestrictionHom.lean` は複体上の随伴から restriction の lax monoidal
+構造を導き、既存 `Cochain.map` を用いて全次数 Hom 比較を構成する。
+単位・合成保存、tensor の純粋生成元上の公式を証明した。
+`ScalarRestrictionCategory.lean` の `unitDGFunctor` はモノイダル随伴の単位から
+元の dg 圏と係数変更後の dg 圏を接続する。
+`ScalarRestrictionModule.lean` の左右加群の係数制限を、
+`ScalarRestrictionModuleMaps.lean` で右加群圏上の `moduleRestriction` にした。
+その全次数自然性と評価自然同型も証明済み。
+
+`lake build SerrePositivity.DifferentialGraded.Checks.ScalarRestriction` 成功
+（1991 jobs、警告なし）。非 flat な `ℤ → ZMod 2` の関手を型検査。
+主要17宣言の公理監査はすべて標準3公理のみ。新規 sorry・axiom・引用は0件。
+ルートの自分の import 行のみ `ScalarRestrictionModuleMaps` へ進める。
+
+係数拡大・係数制限の両関手まで実装済み。両者の加群圏上の随伴の証明を進める。
+相対 tensor 比較、導来版、U15d は未完のまま維持する。
+ユーザーの追加指示により amend・rebase・reset は禁止。通常の追加コミットのみを使う。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionModuleMaps
+public import SerrePositivity.DifferentialGraded.Tensor.ScalarRestrictionModuleMaps
 
 public import SerrePositivity.DifferentialGraded.Endomorphism.Compatibility
 
