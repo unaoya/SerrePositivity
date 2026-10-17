@@ -2,7 +2,7 @@ import SerrePositivity.InfinityCategories.DGNerve
 /-!
 # dg nerve の公開宣言の公理監査
 
-概要：N0 の既存則と N1 途中の全ての明示的な公開宣言を監査する。
+概要：N0 の既存則と N1 と N2 途中の全ての明示的な公開宣言を監査する。
 方針：各工程で公開宣言の公理表示と型の検査を追加する。
 規約：許される公理は propext・Classical.choice・Quot.sound のみ。
 使われ方：対象ビルド後に `lake env lean scripts/audit_dg_nerve.lean` を実行する。
@@ -15,7 +15,6 @@ dg nerve は構成済み。ホーン充填の完成をこの監査から主張�
 #print axioms SerrePositivity.DifferentialGraded.differential_unit
 #print axioms SerrePositivity.DifferentialGraded.compose_unit
 #print axioms SerrePositivity.DifferentialGraded.unit_compose
-
 #print axioms SerrePositivity.InfinityCategories.DGNerve.compose_zero
 #print axioms SerrePositivity.InfinityCategories.DGNerve.zero_compose
 #print axioms SerrePositivity.InfinityCategories.DGNerve.compose_unit_of_heq
@@ -126,8 +125,54 @@ dg nerve は構成済み。ホーン充填の完成をこの監査から主張�
 #print axioms SerrePositivity.InfinityCategories.DGNerve.Simplex.ofTriangle_toTriangle
 #print axioms SerrePositivity.InfinityCategories.DGNerve.Simplex.triangleEquiv
 #print axioms SerrePositivity.InfinityCategories.dgNerve.triangleEquiv
+#print axioms SerrePositivity.InfinityCategories.DGNerve.compose_add_left
+#print axioms SerrePositivity.InfinityCategories.DGNerve.compose_add_right
+#print axioms SerrePositivity.InfinityCategories.DGNerve.compose_sub_left
+#print axioms SerrePositivity.InfinityCategories.DGNerve.compose_sub_right
+#print axioms SerrePositivity.InfinityCategories.DGNerve.compose_units_smul_left
+#print axioms SerrePositivity.InfinityCategories.DGNerve.compose_units_smul_right
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornIndex.exists_covering_face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornIndex.coveringFace
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornIndex.coveringFace_ne
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornIndex.coveringFace_notMem
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornIndex.image_preimage
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornIndex.card_preimage
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornFaces.cell
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornFaces.cell_eq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornFaces.map_cell
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornFaces.map_face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornFaces.restriction_from_face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornFaces.restriction_independent
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.map_const_face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.vertexObj
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.face_obj
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.componentOnFace
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.componentOnFace_heq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.recoverHom
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Index.sign
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Index.right_filter_erase_le
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Index.right_card_erase_lt
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Index.sign_erase_of_lt
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Index.sign_erase_swap
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Index.double_erase_pair
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Index.sum_double_erase
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Index.sign_right_cut
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Index.right_cut_card
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Index.left_right_sign_card
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Index.sign_double_cut
+#print axioms SerrePositivity.InfinityCategories.DGNerve.differential_squared
+#print axioms SerrePositivity.InfinityCategories.DGNerve.differential_add
+#print axioms SerrePositivity.InfinityCategories.DGNerve.differential_sub
+#print axioms SerrePositivity.InfinityCategories.DGNerve.differential_units_smul
+#print axioms SerrePositivity.InfinityCategories.DGNerve.differential_sum
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.residual
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.residual_eq_zero_iff
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.differential_residual
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Simplex.residual_eq_zero
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornEquation.missingComponent
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornEquation.sum_missingComponent
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornEquation.missingComponent_eq
 
--- 全ての明示的公開宣言の型も同じ実行で確認する。
 #check @SerrePositivity.InfinityCategories.DGNerve.compose_zero
 #check @SerrePositivity.InfinityCategories.DGNerve.zero_compose
 #check @SerrePositivity.InfinityCategories.DGNerve.compose_unit_of_heq
@@ -238,3 +283,50 @@ dg nerve は構成済み。ホーン充填の完成をこの監査から主張�
 #check @SerrePositivity.InfinityCategories.DGNerve.Simplex.ofTriangle_toTriangle
 #check @SerrePositivity.InfinityCategories.DGNerve.Simplex.triangleEquiv
 #check @SerrePositivity.InfinityCategories.dgNerve.triangleEquiv
+#check @SerrePositivity.InfinityCategories.DGNerve.compose_add_left
+#check @SerrePositivity.InfinityCategories.DGNerve.compose_add_right
+#check @SerrePositivity.InfinityCategories.DGNerve.compose_sub_left
+#check @SerrePositivity.InfinityCategories.DGNerve.compose_sub_right
+#check @SerrePositivity.InfinityCategories.DGNerve.compose_units_smul_left
+#check @SerrePositivity.InfinityCategories.DGNerve.compose_units_smul_right
+#check @SerrePositivity.InfinityCategories.DGNerve.HornIndex.exists_covering_face
+#check @SerrePositivity.InfinityCategories.DGNerve.HornIndex.coveringFace
+#check @SerrePositivity.InfinityCategories.DGNerve.HornIndex.coveringFace_ne
+#check @SerrePositivity.InfinityCategories.DGNerve.HornIndex.coveringFace_notMem
+#check @SerrePositivity.InfinityCategories.DGNerve.HornIndex.image_preimage
+#check @SerrePositivity.InfinityCategories.DGNerve.HornIndex.card_preimage
+#check @SerrePositivity.InfinityCategories.DGNerve.HornFaces.cell
+#check @SerrePositivity.InfinityCategories.DGNerve.HornFaces.cell_eq
+#check @SerrePositivity.InfinityCategories.DGNerve.HornFaces.map_cell
+#check @SerrePositivity.InfinityCategories.DGNerve.HornFaces.map_face
+#check @SerrePositivity.InfinityCategories.DGNerve.HornFaces.restriction_from_face
+#check @SerrePositivity.InfinityCategories.DGNerve.HornFaces.restriction_independent
+#check @SerrePositivity.InfinityCategories.DGNerve.HornData.map_const_face
+#check @SerrePositivity.InfinityCategories.DGNerve.HornData.vertexObj
+#check @SerrePositivity.InfinityCategories.DGNerve.HornData.face_obj
+#check @SerrePositivity.InfinityCategories.DGNerve.HornData.componentOnFace
+#check @SerrePositivity.InfinityCategories.DGNerve.HornData.componentOnFace_heq
+#check @SerrePositivity.InfinityCategories.DGNerve.HornData.recoverHom
+#check @SerrePositivity.InfinityCategories.DGNerve.Index.sign
+#check @SerrePositivity.InfinityCategories.DGNerve.Index.right_filter_erase_le
+#check @SerrePositivity.InfinityCategories.DGNerve.Index.right_card_erase_lt
+#check @SerrePositivity.InfinityCategories.DGNerve.Index.sign_erase_of_lt
+#check @SerrePositivity.InfinityCategories.DGNerve.Index.sign_erase_swap
+#check @SerrePositivity.InfinityCategories.DGNerve.Index.double_erase_pair
+#check @SerrePositivity.InfinityCategories.DGNerve.Index.sum_double_erase
+#check @SerrePositivity.InfinityCategories.DGNerve.Index.sign_right_cut
+#check @SerrePositivity.InfinityCategories.DGNerve.Index.right_cut_card
+#check @SerrePositivity.InfinityCategories.DGNerve.Index.left_right_sign_card
+#check @SerrePositivity.InfinityCategories.DGNerve.Index.sign_double_cut
+#check @SerrePositivity.InfinityCategories.DGNerve.differential_squared
+#check @SerrePositivity.InfinityCategories.DGNerve.differential_add
+#check @SerrePositivity.InfinityCategories.DGNerve.differential_sub
+#check @SerrePositivity.InfinityCategories.DGNerve.differential_units_smul
+#check @SerrePositivity.InfinityCategories.DGNerve.differential_sum
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.residual
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.residual_eq_zero_iff
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.differential_residual
+#check @SerrePositivity.InfinityCategories.DGNerve.Simplex.residual_eq_zero
+#check @SerrePositivity.InfinityCategories.DGNerve.HornEquation.missingComponent
+#check @SerrePositivity.InfinityCategories.DGNerve.HornEquation.sum_missingComponent
+#check @SerrePositivity.InfinityCategories.DGNerve.HornEquation.missingComponent_eq

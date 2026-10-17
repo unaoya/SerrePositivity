@@ -1,12 +1,12 @@
 module
 public import SerrePositivity.DifferentialGraded.Category.Components
 
-/-! # dg nerve の成分計算に使う零の法則
+/-! # dg nerve の成分計算に使う合成の法則
 
-概要：通常順の斉次合成はどちらかの入力が零なら零。
+概要：通常順の斉次合成の零・単位・各変数の加法性と符号スカラーの法則を与える。
 方針：tensor の零と豊穣合成の線形性を使う。
 規約：HA Construction 1.3.1.6、通常順は `compose A g f h`。
-使われ方：退化単体の方程式の零となる合成項を除く。
+使われ方：退化単体の方程式の合成項の消去と、ホーン充填の残差の展開。
 -/
 
 @[expose] public section
@@ -64,5 +64,55 @@ lemma unit_compose_of_heq {x y z : D} {p q k : ℤ}
   have hk : k = p := by omega
   subst hk
   exact heq_of_eq (unit_compose A f)
+
+/-- 概要：通常順合成は後に作用する射の加法を保つ。
+方針：tensor と豊穣合成の線形性。
+規約：HA Proposition 1.3.1.10。使われ方：残差恒等式の合成項の展開。 -/
+lemma compose_add_left {x y z : D} {p q k : ℤ}
+    (g g' : GradedHom A y z q) (f : GradedHom A x y p) (h : p + q = k) :
+    compose A (g + g') f h = compose A g f h + compose A g' f h := by
+  simp [compose, forward, TensorProduct.tmul_add, smul_add]
+
+/-- 概要：通常順合成は先に作用する射の加法を保つ。
+方針：tensor と豊穣合成の線形性。
+規約：HA Proposition 1.3.1.10。使われ方：残差恒等式の合成項の展開。 -/
+lemma compose_add_right {x y z : D} {p q k : ℤ}
+    (g : GradedHom A y z q) (f f' : GradedHom A x y p) (h : p + q = k) :
+    compose A g (f + f') h = compose A g f h + compose A g f' h := by
+  simp [compose, forward, TensorProduct.add_tmul, smul_add]
+
+/-- 概要：通常順合成は後に作用する射の差を保つ。
+方針：tensor と豊穣合成の線形性。
+規約：HA Proposition 1.3.1.10。使われ方：微分と右辺の差の展開。 -/
+lemma compose_sub_left {x y z : D} {p q k : ℤ}
+    (g g' : GradedHom A y z q) (f : GradedHom A x y p) (h : p + q = k) :
+    compose A (g - g') f h = compose A g f h - compose A g' f h := by
+  simp [compose, forward, TensorProduct.tmul_sub, smul_sub]
+
+/-- 概要：通常順合成は先に作用する射の差を保つ。
+方針：tensor と豊穣合成の線形性。
+規約：HA Proposition 1.3.1.10。使われ方：微分と右辺の差の展開。 -/
+lemma compose_sub_right {x y z : D} {p q k : ℤ}
+    (g : GradedHom A y z q) (f f' : GradedHom A x y p) (h : p + q = k) :
+    compose A g (f - f') h = compose A g f h - compose A g f' h := by
+  simp [compose, forward, TensorProduct.sub_tmul, smul_sub]
+
+/-- 概要：通常順合成は後に作用する射の符号スカラーを外へ出せる。
+方針：整数スカラーと tensor の両立および線形性。
+規約：HA Proposition 1.3.1.10。使われ方：二重切断の符号の整理。 -/
+lemma compose_units_smul_left {x y z : D} {p q k : ℤ} (c : ℤˣ)
+    (g : GradedHom A y z q) (f : GradedHom A x y p) (h : p + q = k) :
+    compose A (c • g) f h = c • compose A g f h := by
+  simp only [compose, forward, Units.smul_def, TensorProduct.tmul_smul, map_zsmul]
+  exact smul_comm _ _ _
+
+/-- 概要：通常順合成は先に作用する射の符号スカラーを外へ出せる。
+方針：整数スカラーと tensor の両立および線形性。
+規約：HA Proposition 1.3.1.10。使われ方：二重切断の符号の整理。 -/
+lemma compose_units_smul_right {x y z : D} {p q k : ℤ} (c : ℤˣ)
+    (g : GradedHom A y z q) (f : GradedHom A x y p) (h : p + q = k) :
+    compose A g (c • f) h = c • compose A g f h := by
+  simp only [compose, forward, Units.smul_def, ← TensorProduct.smul_tmul', map_zsmul]
+  exact smul_comm _ _ _
 
 end SerrePositivity.InfinityCategories.DGNerve
