@@ -8490,7 +8490,7 @@ Checks.DerivedBimoduleFullPentagon・Checks.StageEight・Checks.StageSeven・既
 BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
 未解決参照1件で失敗した。共有ルート・共有一般論・並行所有ファイルは編集していない。
 
-次は増大射で境界へ送られるsourceのcycleを添字として、次数−1の新生成元を付加する。
+次は増大射で境界へ送られるsourceのcycleを添字として、そのcycleより次数が1低い新生成元を付加する。
 target側の原始元を指定したsphere/diskの可換squareを作り、既存pathを境界とする
 追加微分の二乗零・Leibniz、filtrationとK-flat性、逐次余極限のHom準同型性を証明する。
 初期増大のホモロジー全射性は単射性を含まず、準同値とは宣言していない。
@@ -8575,3 +8575,30 @@ olean不在で参照収集前に停止した。対象ビルドは成功してお
 内部微分版のK-flat性や長さ0/1の二乗零を全体の代用とせず、filtrationによる最終HomのK-flat性も証明する。
 実際のcell付加の完成、一般KFlatDGResolutionの存在・比較、U12e全受入・U16は引き続き未完。
 公開APIの名前・型の変更と共有一般論への新しい要求はない。分担と合流条件は§0のまま。
+
+
+### 17.188 U12e29：先頭Hom作用の結合・単位と指定境界挿入の反交換（2026-10-17）
+
+`Resolution/Cells/PathAction.lean`の**Family.prependMap_assoc/prependMap_left_unit**は、
+任意次数・別端点cellの有限path上で、既存Homの先頭作用が結合則と単位則を満たすことを証明する。
+既存の具体的複体tensorの結合・単位補題と元のdg圏の豊穣合成則を使い、境界を無符号で交換しない。
+**prependMap_tail_cochain**は先頭生成元を保持した後方tensor部分の任意次数cochainに対する自然性。
+
+`BoundaryInterchange.lean`の**Family.replaceMiddle_tail_anticommute**は、
+指定境界を挿入する次数+1 cochainと、その後ろの任意の次数+1 cochainとの反交換を証明する。
+既存のtensorCochain_odd_anticommuteとtensorLeftHom_cochain_anticommuteを再利用する。
+負号は二つの作用素の次数+1に由来し、生成元自身の次数を−1へ制限しない。
+任意可換環・非有界・独立D/I宇宙を保ち、この有限pathの証明にSmallやlocal K-flat仮定は不要。
+
+Checks.DGCellBoundaryInterchange・Checks.DGCellBoundaryOperator・Checks.DGBoundarySequence・
+Checks.DGCategoryInitial・Checks.FreeDGUniversal・Checks.DGCategoryResolution・
+Checks.DerivedBimoduleFullPentagon・Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（3130 jobs、終了コード0、警告なし）。追加4宣言の直接公理監査は標準3公理のみ。
+監査累計3548宣言。今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査の直近結果は§17.187の担当外olean不在による停止である。
+
+次はprependMapと境界置換の全位置での可換性を証明し、先頭生成元と任意後方生成元の
+二重置換の反交換へ進む。隣接する生成元の場合にも元の豊穣合成の結合則を使う。
+二乗零の一般版、d+replacementと実際のdg圏cell付加、最終K-flat性、解像度の存在・比較は未完。
+この反交換補題だけでU12eを受入済みとせず、U12e受入後のU16と合流後のU15e/U17の目標を保持する。
+公開APIの名前・型の変更と共有一般論への新しい要求はない。§0の分担を維持する。
