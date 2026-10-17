@@ -26,6 +26,7 @@ public import SerrePositivity.BhattScholze.Andre.ArbitraryPerfectPrismMonicPerfe
 public import SerrePositivity.BhattScholze.Andre.MonicRootedPerfectoidExtension
 public import SerrePositivity.BhattScholze.Andre.PowerRootPolynomial
 public import SerrePositivity.BhattScholze.Andre.PowerRootMonicPDFlat
+public import SerrePositivity.BhattScholze.Andre.DividedPowerPrimeGenerators
 
 /-!
 # André E1・E2 の集約

@@ -451,6 +451,25 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialPowerQuoti
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootMonicDPPresentation_free
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootMonicDPPresentation_faithfullyFlat
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.natCast_eq_of_modEq_of_prime_zero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeShiftLinear
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeShiftLinear_dp
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeShiftLinear_mul
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeShift
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeShift_dp
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimePower_pow_zero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeShiftLinear_injective
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeShift_injective
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeShift_mem_adjoin
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPower_dp_mem_prime_adjoin
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrime_adjoin_eq_top
+assert_no_sorry SerrePositivity.BhattScholze.Andre.DividedPowerPrimeTruncatedAlgebra
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTruncatedEval
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTruncatedEval_X
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTruncatedEval_surjective
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTruncated_relationIdeal
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTruncatedHom_ext
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -538,7 +557,9 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PowerRootPolynomialCoordinates,
     `SerrePositivity.BhattScholze.Andre.PowerRootPolynomialFractionBasis,
     `SerrePositivity.BhattScholze.Andre.PowerRootMonicQuotient,
-    `SerrePositivity.BhattScholze.Andre.PowerRootMonicPDFlat]
+    `SerrePositivity.BhattScholze.Andre.PowerRootMonicPDFlat,
+    `SerrePositivity.BhattScholze.Andre.DividedPowerPrimeShift,
+    `SerrePositivity.BhattScholze.Andre.DividedPowerPrimeGenerators]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

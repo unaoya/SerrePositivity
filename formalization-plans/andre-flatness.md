@@ -1672,3 +1672,56 @@ SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（
 生成宣言を含む 2808 宣言の推移的公理依存は標準 3 公理のみ。
 主要な基底・冪商の自由性と忠実平坦性・分冪表示環の自由性と忠実平坦性の
 公開型 6 本を `#print` で確認した（終了コード 0）。
+
+### E1.26：素数次数シフトと可算切断多項式商からの全射
+
+新規 `Andre/DividedPowerPrimeShift.lean` は任意の可換係数環 A について、
+標準分冪基底の γₙ を γₚₙ へ送る A 線形写像を構成する。
+p が A 内で零なら、Lucas の二項係数合同
+`Choose.choose_mul_mul_modEq_choose_nat` と双線形写像の基底上の比較から積保存を証明し、
+A 代数射 `dividedPowerPrimeShift` として束ねる。
+一次分冪生成元の p 乗消滅をこの射で順に移して、全 γₚⁱ の p 乗が零であることを得た。
+また、標準分冪基底の独立性を単射な指数写像 n↦pn に制限することで、
+この次数シフト自体の単射性も証明する。
+この次数シフトは通常の Frobenius とは異なる射であり、prismatic Frobenius との同定は主張しない。
+
+新規 `Andre/DividedPowerPrimeGenerators.lean` は、素数冪次数の分冪で生成した部分代数が
+次数シフトで保たれることを示す。次数 n の p による商・剰余を使う強帰納と、
+p 未満の階乗の単元性により、全ての標準分冪 γₙ の所属を得る。
+それらの A 線形生成から、素数冪次数の分冪が全一元分冪代数を生成することを証明した。
+各生成元の p 乗が零なので、可算切断多項式商からの標準 A 代数射を構成し、その全射性を証明した。
+関係イデアルが純粋に全変数の p 乗で生成される公式と、商からの射の変数上の外延性を付ける。
+BS Rem 7.15(1)（著者版 p.62）の具体的切断表示に至る計算。原典の Prop 7.11 は使わない。
+
+主要公開型（namespace `SerrePositivity.BhattScholze.Andre`）：
+
+```lean
+def dividedPowerPrimeShift
+    {A : Type u} [CommRing A] (p : ℕ) [Fact p.Prime] (hp : (p : A) = 0) :
+    DividedPowerAlgebra A A →ₐ[A] DividedPowerAlgebra A A
+
+theorem dividedPowerPrimePower_pow_zero
+    {A : Type u} [CommRing A] (p : ℕ) [Fact p.Prime] (hp : (p : A) = 0) (n : ℕ) :
+    DividedPowerAlgebra.dp A (p ^ n) (1 : A) ^ p = 0
+
+def dividedPowerPrimeTruncatedEval
+    {A : Type u} [CommRing A] (p : ℕ) [Fact p.Prime] (hp : (p : A) = 0) :
+    DividedPowerPrimeTruncatedAlgebra (A := A) p →ₐ[A] DividedPowerAlgebra A A
+
+theorem dividedPowerPrimeTruncatedEval_surjective
+    {A : Type u} [CommRing A] (p : ℕ) [Fact p.Prime] (hp : (p : A) = 0) :
+    Function.Surjective (dividedPowerPrimeTruncatedEval (A := A) p hp)
+```
+
+ここで `DividedPowerPrimeTruncatedAlgebra` は
+`MvPolynomial ℕ A ⧸ Ideal.span (Set.range fun i : ℕ => (MvPolynomial.X i)^p)` と同じ実商。
+変数 i の評価値は γₚⁱ。係数環の非零性や CharP インスタンスは要求しない。
+残るのはこの評価射の単射性、γ₁=f を課した係数商との比較、実 pd 包と
+prismatic envelope の Frobenius 引戻しとの同定。全射を同型とは数えず、
+指定出力の存在定理以外の残る計算があるため依頼全体も未完了とする。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4362 jobs）。
+新規 18 公開宣言の `assert_no_sorry` を追加した専用監査は終了コード 0。
+生成宣言を含む 2851 宣言の推移的公理依存は標準 3 公理のみ。
+次数シフト・p 乗消滅・シフト単射性・切断評価射とその全射性の公開型 5 本を
+`#print` で確認した（終了コード 0）。
