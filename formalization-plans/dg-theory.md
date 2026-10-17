@@ -8992,3 +8992,68 @@ Checks.DerivedBimoduleFullPentagon・Checks.StageEight・Checks.StageSeven・既
 解像度の一般存在・比較、既存の導来bimodule合成との接続を終えて§15.2のU12eを受け入れる。
 増大が一段で全Hom準同型になるとは主張しない。U12e全受入・U16・U15eは未完。
 共有一般論への新しいAPI要求はない。
+
+
+### 17.198 U12e39：path長filtration・次数ごとの分裂と最終HomのK-flat性（2026-10-17）
+
+`Complexes/CoproductSubfamily.lean`の**ComplexCoproduct.cochain_ext/cochainDesc/precomp**は
+任意のsmallな複体族のcochain判定・貼合せ。
+**subfamily/inclusion/projection/inclusion_projection**は部分族の直和と分裂する包含・射影。
+**select/ι_select_mem/ι_select_not_mem/select_self/select_inclusion/select_comp/select_zero**と
+**select_partition**で、二部分族間の成分選択と互いに素な分割による恒等射の分解を証明した。
+`PerturbationRestriction.lean`の**cochain_postcomp_injective_of_retraction**は分裂包含への後合成の単射性。
+**perturbation_closed_of_inclusion/perturbation_square_zero_of_inclusion**は、追加微分との可換式から
+部分複体側の閉性・二乗零を導く。**perturbMap/perturbMap_f**は両側の微分変更後の実際のchain map。
+いずれも具体的な非有界A複体の補助APIであり、共有の任意V一般論は追加していない。
+
+`Resolution/Cells/LengthBoundary.lean`の**lengthSet/lengthInternalHom/lengthInclusion/lengthProjection**は
+長さn以下のpath直和と内部複体での包含・射影。
+**lengthReplacement**は元の全境界置換をこの部分族へ制限した次数1 cochain。
+**replaceSummand_length_projection_inclusion/replaceRow_length_projection_inclusion**で
+置換後の語も長さ上限内に留まることを示し、**lengthReplacement_inclusion**で元の置換との可換式を得た。
+`LengthFiltration.lean`の**lengthReplacement_closed/square_zero/lengthHom/lengthHom_d**は
+追加微分を含む実際の有限長段階。**lengthHomInclusion/f/degreewiseMono/mono**は最終Homへの包含。
+この段階は内部微分だけのpath直和ではない。
+`LengthTransition.lean`の**lengthInternalMap/inclusion/replacement**と**lengthMap/f/inclusion/self/comp**は
+長さ上限を増やすchain mapとその圏法則、最終Homへの包含との整合性を与える。
+
+`LengthGraded.lean`の**exactLengthSet/exactLengthHom/exactLengthProjection**は固定長のpath直和。
+**replaceSummand_exactLength_projection/replaceRow_exactLength_projection**と
+**lengthReplacement_quotient_zero**は、境界置換が語長を一つ減らすため固定最上位長の商で消えることを示す。
+**lengthInternalQuotient/lengthQuotient/lengthQuotient_f**は追加微分後の段階からこの商へのchain map。
+**exactLengthHom_kFlat**は元のHomの局所K-flat性から固定長直和のK-flat性を得る。
+`LengthSplit.lean`の**lengthMap_quotient/lengthShortComplex/lengthSplitting**は隣接段階と固定長商の
+実際の短複体、および各次数でのsection/retractionと分裂等式。
+**lengthQuotient_zero_isIso**で初期段階を固定長0の内部複体と同型にし、
+**lengthHom_kFlat**で既存の次数ごと分裂する拡張のK-flat閉性を使って全有限段階を帰納した。
+
+`LengthColimit.lean`の**lengthDiagram/lengthCocone/lengthMap_ι/lengthEvalIsColimit/lengthIsColimit**は
+最終Homが長さ段階の逐次余極限であることを証明する。
+各pathが自分の語長の段階へ入ることから次数ごとの普遍性を直接構成し、
+HomologicalComplex.isColimitOfEvalで複体の普遍性へ移した。
+**Family.attachedHom_kFlat**は、有限段階のK-flat性とModuleCatのexactな逐次余極限を用いた最終結果。
+**attachedDGCategory_localHomKFlat**はcell付加後の主dg圏の局所K-flat性を与える。
+任意可換環・非有界・任意整数次数・別端点を維持する。
+A : Type u、D : Type v、I : Type wは独立で、必要なのはSmall.{u} Iと元のlocalHomKFlat A D。
+一般のcell付加のK-flat保存にSmall.{u} Dは不要。全境界cell族への適用ではその族のsmallnessに
+Small.{u} Dを使い、target dg圏のHomのflatnessや対象smallnessは要求しない。
+既存公開APIの名前・型の変更はない。このK-flat保存を解像度構成の各付加段階に使う。
+
+Checks.DGCellLengthFiltration・Checks.DGCellEvaluation・Checks.DGCellGeneratorBoundary・
+Checks.DGCellCategory・Checks.DGCellCompositionDifferential・Checks.DGCellBoundaryRecursion・
+Checks.DGCellPrependDifferential・Checks.DGCellInternalComposition・Checks.DGCellDifferential・
+Checks.DGCategoryResolution・Checks.DerivedBimoduleFullPentagon・Checks.StageEight・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（3221 jobs、終了コード0、警告なし）。
+独立宇宙、一般cell付加のD-small仮定なし、分裂・余極限の実データ、標準全境界cell族への適用、
+ZMod 2での最終局所K-flat性を型検査した。
+主要76宣言の直接公理監査は標準3公理の範囲内。監査累計3805宣言。
+今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は16 Markdown・320 exposition参照を検査し、担当外BhattScholze互換宣言の
+未解決参照1件で失敗した。共有ルート・共有監査スクリプト・共有一般論・並行所有ファイルは編集していない。
+
+次は全境界cell付加の反復列とその増大、Homの極限と豊穣合成を構成する。
+既存の列の境界充填criterionを適用して極限増大のHom準同型性を示し、初期cycle coverからの
+対象上の全射性と合わせて小さいdg圏のK-flat解像度の一般存在へ接続する。
+解像度の比較と既存の導来bimodule合成への接続も残る。
+今回の最終Hom K-flat性だけでU12e全体を受入済みとはしない。U12e全受入・U16・U15eは未完。
+§0の現行分担と引用禁止を維持し、共有一般論への新しいAPI要求はない。
