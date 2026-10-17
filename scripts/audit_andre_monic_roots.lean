@@ -41,6 +41,32 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRelation_modP_isSMulRegu
 assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawPDivision_p_mul_injective
 assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicRawPDivision_p_mul_injective
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyRelationIdeal
+assert_no_sorry SerrePositivity.BhattScholze.Andre.partialPolynomialRelationIdeal
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRelation_sum_inr
+assert_no_sorry SerrePositivity.BhattScholze.Andre.partialPolynomialRelationIdeal_map_sum
+assert_no_sorry SerrePositivity.BhattScholze.Andre.partialPolynomialQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.partialPolynomialQuotientEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.partialPolynomialQuotientEquiv_C
+assert_no_sorry SerrePositivity.BhattScholze.Andre.partialPolynomialQuotientEquiv_X_inl
+assert_no_sorry SerrePositivity.BhattScholze.Andre.partialPolynomialQuotient_remaining_isSMulRegular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRelation_rename
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialSubsetRelationIdeal
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialSubsetIndexEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialSubsetIndexEquiv_mem
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialSubsetIndexEquiv_notMem
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialSubsetRelationIdeal_map_rename
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialSubsetQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialSubsetQuotient_remaining_isSMulRegular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialSubsetIdeal_map_coefficientQuotient
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialSubsetBaseQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialSubsetBaseQuotientEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialSubsetBaseQuotient_remaining_isSMulRegular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialSubsetPowerModP_remaining_isSMulRegular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicFiniteRaw_p_mul_injective
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicFamilyRaw_p_mul_injective
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicFamilyRaw_p_mul_injective
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -54,7 +80,11 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PrincipalDPFree,
     `SerrePositivity.BhattScholze.Andre.MonicPDFlat,
     `SerrePositivity.BhattScholze.Andre.MonicRelationResidue,
-    `SerrePositivity.BhattScholze.Andre.MonicRawPDivision]
+    `SerrePositivity.BhattScholze.Andre.MonicRawPDivision,
+    `SerrePositivity.BhattScholze.Andre.MonicFamilyPartialQuotient,
+    `SerrePositivity.BhattScholze.Andre.MonicFamilySubsetRegular,
+    `SerrePositivity.BhattScholze.Andre.MonicFamilyPowerResidue,
+    `SerrePositivity.BhattScholze.Andre.MonicFamilyRawRegular]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

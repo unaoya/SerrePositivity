@@ -285,3 +285,45 @@ p 完全忠実平坦性を証明したものではない。
 集約対象ビルドは `set -o pipefail` 付きで終了コード 0（3984 jobs）。
 専用監査は全公開宣言の `assert_no_sorry` と生成宣言を含む 71 宣言の
 標準 3 公理限定検査に成功（終了コード 0）。
+
+### E1.5：先行モニック関係の冪商と任意族 raw φ/p 包の p 正則性
+
+新規ファイルはすべて本レーンの `Andre/` 直下：
+`MonicFamilyPartialQuotient.lean`、`MonicFamilySubsetRegular.lean`、
+`MonicFamilyPowerResidue.lean`、`MonicFamilyRawRegular.lean`。
+B4-6 で `X_s^p-b_s` に固定されていた先行商の正則性を任意の一変数多項式族に一般化した。
+変数分割と係数商の交換同型で実商を比較し、任意先行族の p 乗商での後続モニックの正則性を得た。
+
+主要公開定理の正確な型は、`P = MvPolynomial σ A`、
+`E = polynomialRankOneDeltaStructure σ D`、`r s = monicRelation (f s) s` とおくと：
+
+```lean
+monicFamilyRaw_p_mul_injective
+    (D : DeltaStructure p A) (f : σ → Polynomial A)
+    (hf : ∀ s, (f s).Monic)
+    (hpA : Function.Injective (fun x : A => (p : A) * x))
+    (hdp : D.IsDistinguished (p : A)) :
+    Function.Injective (fun x : DeltaAdjoinDivision E (p : P)
+      (fun s : σ => DeltaStructure.frobeniusLift E (r s)) =>
+      (p : DeltaAdjoinDivision E (p : P)
+        (fun s : σ => DeltaStructure.frobeniusLift E (r s))) * x)
+```
+
+共通の前提は `p : ℕ`、`[Fact p.Prime]`、`[CommRing A]`。
+`A : Type u` と `σ : Type v` を許す。正次数・族の有限性・ghost 単射を追加仮定にしない。
+有限部分族について `monicFiniteRaw_p_mul_injective` を、一入力追加の帰納で証明し、
+既存の有限部分族余極限 `deltaAdjoinDivisionFamily_p_mul_injective` で任意族へ移した。
+ghost 単射は各段の p 正則性と相対自由源の自由性から G4 により内部供給する。
+
+`perfectPrismMonicFamilyRaw_p_mul_injective` は `P₀ : OrientedPrism p A` と
+`hP : P₀.deltaStructure.IsPerfect` の下、`D = P₀.deltaStructure` として同じ結論を与える。
+係数環の p 正則性と δ(p) の単元性を完全 prism から供給するため、上記 hpA・hdp は引数にない。
+これは Cor 2.39（著者版 p.25）の補助 φ/p 計算であり、Rem 7.15（p.62）に向けた準備。
+最終候補の f/d 包の忠実平坦性、実 prismatic envelope の Frobenius 引戻しとの同定、
+通常モニック族商の自由基底と完備化後の p 完全忠実平坦性は引き続き未完成。
+本結果を目標 `exists_monicRootedPerfectoidExtension` の完成と数えない。
+
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4001 jobs）。
+専用監査も終了コード 0。全新規公開宣言の `assert_no_sorry` と、生成宣言・私有補助を含む
+132 宣言の標準 3 公理限定検査に成功した。新規 sorry・axiom・引用は追加していない。
