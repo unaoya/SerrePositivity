@@ -3,40 +3,36 @@ module
 public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed
+public import SerrePositivity.BhattScholze.Andre.Transfinite.Theorem714
 
 /-!
-# André の平坦性補題（文献入力）
+# André の平坦性補題の証明済み公開入口
 
 ## 概要
 
-Bhatt–Scholze, *Prisms and prismatic cohomology*, Theorem 7.14（著者版。arXiv v3 では 7.12）を引用する。
-任意の perfectoid 環 R に対して、perfectoid 環への p 完全忠実平坦な写像 R → S で、
-S が絶対整閉なものが存在する。
+Bhatt–Scholze, *Prisms and prismatic cohomology*, Thm 7.14（著者版 p.61）の第一文を証明する。
+perfectoid 環 R には、同じ宇宙の perfectoid・絶対整閉な環 S への
+p 完全忠実平坦な代数構造が存在する。
 
-## 引用の範囲
+## 方針
 
-原典の主張の第1文だけを引用する。
-第2文「特に S の任意の元は両立する p 冪根の系を持つ」は、
-`IsAbsolutelyIntegrallyClosed.exists_compatible_pow_roots` で証明済みである。
-第3文（R → S を mod p で ind-syntomic に取れる、Remark 7.15）は引用しない。
-p 完全忠実平坦性は BS §1.2 の定義（`IsCompletelyFaithfullyFlat`）をそのまま使う。
-perfectoid 環は `IsIntegralPerfectoid` で、BS が採用する [BMS18, §3] の定義と同じ条件である。
+`Andre/Transfinite/Theorem714.lean` の追加仮定のない存在定理を使う。
+A1 の完全 prism 商上の一元拡大を一般の perfectoid 基底へ移し、固定した族の一元飽和により
+任意族の一段根付き拡大を証明する。それを ω₁ まで反復し、自動的に p 進完備な終段で
+有限係数の降下と後続段の根から絶対整閉性を得る。
+原典の Prop 7.11 を経由する証明とは異なる PD 経路と補助反復は
+`formalization-plans/andre-flatness.md` の E1・E2・E3 に記録する。
 
-## 証明の状況
+## 規約
 
-原典の証明は Prop 7.11 を経由し、導来 prismatic cohomology と Hodge–Tate 比較を使う。
-ここでは証明しない。必要な場合に限った別経路の計画は
-`formalization-plans/bhatt-scholze.md` の §5 にある。
+公開署名と p 完全忠実平坦性の定義を保持する。一段拡大 step や塔を仮定しない。
+第二文の両立する p 冪根は `IsAbsolutelyIntegrallyClosed.exists_compatible_pow_roots` で証明済み。
+Remark 7.15（p.62）の mod p で ind-syntomic に取れるという強化は、この公開定理の結論に含めない。
 
 ## 使われ方
 
-Thm 7.4（semiperfectoid 環の perfectoid 化の全射性）に関する条件付き途中成果に使う。
-2026-10-15 時点では `AndreCompatibleRootsConditional` の根付き拡大と
-`AndreSurjectivityConditional.surjective_of_isPerfectoidization_of_andre` が依存する。
-これらはこの既存sorryに相対的であり、B4の引用なし完成・B-S引用解消とは数えない。
-引用なしの全射性降下は `RootedPerfectoidSurjectivityDescent` にあり、拡大データを入力する。
-
-出典：https://people.mpim-bonn.mpg.de/scholze/prisms.pdf （Theorem 7.14、印刷 p.61）。
+既存の `AndreCompatibleRootsConditional` と `AndreSurjectivityConditional` などに、
+元の Inputs の署名のまま、証明済みの André 拡大を供給する。
 -/
 
 @[expose] public section
@@ -45,15 +41,27 @@ universe u
 
 namespace SerrePositivity.BhattScholze.Inputs
 
-/-- BS Thm 7.14（André の平坦性補題）：perfectoid 環 R には、perfectoid 環 S への
-p 完全忠実平坦な代数構造で、S が絶対整閉となるものが存在する。
-S は R と同じ宇宙に取る。原典の構成は R 上の多項式環の商の超限的な余極限なので、宇宙は上がらない。 -/
+/-- ## 概要
+perfectoid 環 R には、同じ Type u の perfectoid・絶対整閉環 S への
+p 完全忠実平坦な代数構造が存在する。BS Thm 7.14（著者版 p.61）の第一文。
+
+## 方針
+一元根添加から任意族の step を証明し、ω₁ 反復を構成した既証の存在定理を適用する。
+
+## 規約
+元の公開署名を保持する。前提は R の perfectoid 性のみ。
+
+## 使われ方
+André 拡大を使う既存の公開入口として、追加仮定のない存在証明を返す。
+-/
 theorem exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed
     (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p) :
     ∃ (S : Type u) (_ : CommRing S) (_ : Algebra R S),
       IsIntegralPerfectoid S p ∧
       IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) S ∧
       IsAbsolutelyIntegrallyClosed S := by
-  sorry
+  exact
+    SerrePositivity.BhattScholze.Andre.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed
+      R p hR
 
 end SerrePositivity.BhattScholze.Inputs

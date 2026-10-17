@@ -35,14 +35,30 @@ public import SerrePositivity.BhattScholze.Andre.Transfinite.SingleRoot
 
 public import SerrePositivity.BhattScholze.Andre.Transfinite.Theorem714
 
-/-! # André E3：超限反復の部品
+public import SerrePositivity.BhattScholze.Andre.Transfinite.DirectedCompletion
 
-BS Thm 7.14（著者版 p.61）。現時点では剰余 Frobenius の保存、
-可算データの降下、非可算共終性と単射性の下での完備性、根を持つ有向系の絶対整閉性を集約する。
-最小元を持つ有向系の p 進完備化の perfectoid 性も証明する。
-有界ねじれによる完備化の完全忠実平坦性と ω₁ 塔の終段の三性質を証明する。
-訂正済み一段拡大 step を明示仮定として、ω₁ までの超限塔と Thm 7.14 の存在結論を証明する。
-A1 の一元拡大から任意族の step も証明し、追加仮定のない Thm 7.14 を
-SerrePositivity.BhattScholze.Andre.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed
-として供給する。Inputs の置換は公開成果の報告後に別保存単位で行う。
+/-!
+# André E3：BS Thm 7.14 の超限反復と証明済み存在定理
+
+## 概要
+
+BS Thm 7.14（著者版 p.61）の第一文を、追加の存在仮定なしで証明する。
+一般の非空有向系の完備化の perfectoid 性と完全忠実平坦性も供給する。
+
+## 方針
+
+A1 の完全 prism 商上の一元拡大を任意の perfectoid 基底へ移す。
+固定した族の一元飽和で指定 step を証明し、全正次数モニックの根添加を ω₁ まで反復する。
+終段は自動的に p 進完備な未完備余極限を使い、有限係数の降下から絶対整閉性を得る。
+
+## 規約
+
+環と反復の添字は Type u に留める。元の初段の標準係数作用に関して完全忠実平坦性を証明する。
+有向余極限の保存には、添字の最小元・遷移射の単射性・p 正則性を要求しない。
+
+## 使われ方
+
+`SerrePositivity.BhattScholze.Andre.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed`
+が元の署名の無条件存在定理を供給する。
+Inputs はこの無条件版の公開報告後、別保存単位で証明済み入口に置換した。
 -/

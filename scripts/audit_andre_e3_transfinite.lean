@@ -1,5 +1,6 @@
 import SerrePositivity.BhattScholze.Andre.Transfinite.Basic
 import Mathlib.Util.AssertNoSorry
+import SerrePositivity.BhattScholze.Inputs.AndreFlatness
 
 assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isAbsolutelyIntegrallyClosed_directLimit_of_eventual_roots
 assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.directLimit_mod_p_pow_surjective
@@ -152,6 +153,11 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.exists_familyRoot
 assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.exists_monicFamilyRootedPerfectoidExtension
 assert_no_sorry SerrePositivity.BhattScholze.Andre.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed
 
+assert_no_sorry SerrePositivity.BhattScholze.Inputs.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed
+
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isIntegralPerfectoid_adicCompletion_of_directed_perfectoid
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFaithfullyFlat_completedAlgebraRingDirectLimit
+
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
@@ -183,7 +189,9 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.Transfinite.SingleRoot,
     `SerrePositivity.BhattScholze.Andre.Transfinite.FamilySaturation,
     `SerrePositivity.BhattScholze.Andre.Transfinite.FamilyExtension,
-    `SerrePositivity.BhattScholze.Andre.Transfinite.Theorem714]
+    `SerrePositivity.BhattScholze.Andre.Transfinite.Theorem714,
+    `SerrePositivity.BhattScholze.Inputs.AndreFlatness,
+    `SerrePositivity.BhattScholze.Andre.Transfinite.DirectedCompletion]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
@@ -359,3 +367,8 @@ example (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
       SerrePositivity.IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) S ∧
       SerrePositivity.IsAbsolutelyIntegrallyClosed S :=
   SerrePositivity.BhattScholze.Andre.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed R p hR
+
+#print SerrePositivity.BhattScholze.Inputs.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed
+
+#print SerrePositivity.BhattScholze.Andre.Transfinite.isIntegralPerfectoid_adicCompletion_of_directed_perfectoid
+#print SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFaithfullyFlat_completedAlgebraRingDirectLimit
