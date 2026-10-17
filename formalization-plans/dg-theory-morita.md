@@ -379,3 +379,19 @@ kernelTensorCompositionSourceIsoの公開型は維持し、定義を恒等成分
 資源上限の変更・新規sorry・axiom・引用はない。
 全導来kernelの合成比較のkernel射自然性はまだ未完で、通常自然性からK-flat計算と
 主局所化へ運ぶ必要がある。一般右随伴・unit/counitと作用coherence、U16cも未完。
+
+
+## U16a8：K-flatモデルのkernel自然性と導来入力での成分計算（2026-10-17）
+
+CoherenceCompositionKFlatNaturalityのkernelResolutionTensorCompositionIso_kernel_naturalityは、
+両端が右相対K-flatな最初のkernelの任意射と、後の任意kernel射の作用合成square。
+任意の指定入力射影解像度族Rを使い、localHomKFlatは要求しない。
+kernelResolutionTensorCompositionIso_hom_appは増大と通常結合子での計算。
+kernelDerivedTensorOnBimoduleCompositionIso_hom_appは、全導来入力へ延長した比較を
+元の入力でそのモデル比較に計算する。公開名・型の変更はなく追加APIである。
+
+追加全3宣言の直接公理監査は標準3公理のみ。合同ビルド成功（4088 jobs）。
+資源上限を変更せず、成分計算を独立補題へ分けて検証した。新規sorry・axiom・引用なし。
+全導来kernelのkernelCompositionIsoの射自然性・代表選択の整合性と作用coherenceは未完。
+次はモデル比較のkernel自然性と今回の成分計算を主局所化からの自然変換の一意性で接続し、
+K-flatkernel局所化と主導来kernel圏の比較へ運ぶ。一般右随伴・unit/counit、U16a全受入とU16cも未完。
