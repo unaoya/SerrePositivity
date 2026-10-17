@@ -10823,3 +10823,42 @@ B3の存在・普遍性から同じ一般性で全射perfectoid化の存在も�
 旧任意普遍対象への移送APIとCLMST/CyclicPerfectoidizationを含む対象ビルド4363ジョブ成功。pure B4監査2560宣言成功、標準3公理propext・Classical.choice・Quot.soundのみ、新sorry・公理・外部引用なし。
 旧B-S入力に戻るimport経路がなく循環依存なし。CLMST・共有基盤・RootTower・Serre利用先・ルートimport・共有監査は編集せず、BS専用コード・計画・監査のみ更新した。
 André条件付き定理は条件付きのまま保持するが一般B4には依存しない。B-I/B6引用も維持。B5はこの完了範囲に含めない。
+
+## B5：Lemma 10.3・Remark 10.7・Prop 10.2
+
+### 範囲と保存単位（2026-10-17）
+
+著者版印刷pp.78–80の、単項商のperfectoid化の核Kに関する結果を扱う。
+Cor 8.12は宣言・利用せず、B-I/B6引用とB4ExecutionPlan.mdは変更しない。
+工程は、(1)一般perfectoid図式の完備導来tensor、(2)Kの自己積・商の自己積・混合積、
+(3)mod p^n像の冪等性、(4)指定された導来完備almost零加群の拡大閉性、
+(5)Tor入力の解消と全体監査、の順とする。工程ごとに検証済みの自分の変更だけをコミットする。
+最終的にBS専用の集約ファイルを作り、ルートにはそのimportを1行だけ追加する。
+
+### 工程1とTor受渡しの確認（2026-10-17）
+
+開始時点でPerfectoidCompletedTensorDiscreteの一般定理と、レーンTの
+`SerrePositivity.tor_vanishing_of_perfect`が既に証明済みだった。
+新規BS専用Lemma103PerfectoidTensor.leanの公開定理
+`BhattScholze.lemma103_perfectoidTensor`は、素数p、任意の可換環R,S,T、
+R代数作用、三環のIsIntegralPerfectoidを仮定し、元の
+`X := boundedAboveCompletedTensorAlgebra R (p : R) S T`について
+全i≠0で`IsZero ((DerivedCategory.homologyFunctor (ModuleCat R) i).obj X.X.obj)`、
+および`derivedH0CommRing X`を環構造とする同じH⁰のIsIntegralPerfectoidを結論する。
+零環・pねじれを許し、平坦性・有限性・正則性を追加しない。
+
+証明本体は既存のFontaine→完全prism→実(p,d)逐次完備化の証明を再利用する。
+Tor独立性の使用箇所は共通PerfectResidueCompletedTensorの
+`completedTensor_pure_of_perfect_residue`内の
+`perfectRing_derivedTensorAlgebraAugmentation_isIso_of_char_eq_zero`である。
+これは既証の`perfectRing_tor_subsingleton`を用いる。
+レーンTの公開入口も同じ証明に依存する。指定hTorの型を変えずに満たすことを
+新規BS監査`audit_bhatt_scholze_b5.lean`のexampleで検査した。
+したがって待機中という古い前提は解消されており、未使用hTor引数や条件付き定理は新設しない。
+Tor入力自体の代数的証明と原典の参照経路との差異はレーンTの計画に記録済み。
+
+対象ビルド3642ジョブ成功（終了コード0）。公開定理とTor入口のassert_no_sorry成功、
+依存公理はpropext・Classical.choice・Quot.soundのみ。BS専用構造監査にも登録した。
+これは工程1・Tor入力確認の完了であり、工程2–4の完成ではない。
+既存の商自己積・conormal・mod p^n冪等性は再利用するが、Kの自己積と混合積の実射の証明、
+指定の拡大閉性の公開・原典経路、集約importと最終監査は引き続き必要である。
