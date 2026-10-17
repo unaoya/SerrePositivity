@@ -48,6 +48,9 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.ringDirectLimit_f
 assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.ringDirectLimit_pow_mem_span_iff_of_stage_root
 assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.ringDirectLimit_exists_frobenius_root_data
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isIntegralPerfectoid_adicCompletion_of_distinguished_kernel
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.deltaDirectLimit_isPerfect
+
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
@@ -63,7 +66,9 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.Transfinite.ResidueTensorColimit,
     `SerrePositivity.BhattScholze.Andre.Transfinite.Composition,
     `SerrePositivity.BhattScholze.Andre.Transfinite.TorsionBound,
-    `SerrePositivity.BhattScholze.Andre.Transfinite.FrobeniusKernelColimit]
+    `SerrePositivity.BhattScholze.Andre.Transfinite.FrobeniusKernelColimit,
+    `SerrePositivity.BhattScholze.Andre.Transfinite.PrismaticCompletion,
+    `SerrePositivity.BhattScholze.Andre.Transfinite.PerfectDeltaColimit]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
@@ -126,3 +131,6 @@ run_cmd do
 #print SerrePositivity.BhattScholze.Andre.Transfinite.ringDirectLimit_frobenius_kernel_of_stage_root
 #print SerrePositivity.BhattScholze.Andre.Transfinite.ringDirectLimit_pow_mem_span_iff_of_stage_root
 #print SerrePositivity.BhattScholze.Andre.Transfinite.ringDirectLimit_exists_frobenius_root_data
+
+#print SerrePositivity.BhattScholze.Andre.Transfinite.isIntegralPerfectoid_adicCompletion_of_distinguished_kernel
+#print SerrePositivity.BhattScholze.Andre.Transfinite.deltaDirectLimit_isPerfect

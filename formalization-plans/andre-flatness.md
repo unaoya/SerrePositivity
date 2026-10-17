@@ -219,6 +219,11 @@ E3.7 の Frobenius 条件の保存は独立に証明済みの部品として保�
 専用監査終了コード 0、公開全 40 宣言の assert_no_sorry と全 99 宣言の再帰監査に成功。
 標準 3 公理のみ。全公開宣言の完全型を #print で確認した。
 
+保存時の検証済みソース SHA256：`PrismaticCompletion.lean` は
+`f823abb5d79e3ec56990b994b50402b5c0ff161dfbae80e18967b34e27fe7e45`、
+`PerfectDeltaColimit.lean` は
+`e8dcb7e64a9b003873d680cf3697f5576f1ebbc4816da8c52a73af920568016e`。
+
 **未完了：** perfectoid 塔の Fontaine 環の遷移射・自然性、固定した distinguished 生成元の移送、
 raw 余極限での全射と単項核の同定を供給し、上記の一般定理を実際の塔に適用する段階。
 この表示の仮定を最終定理に追加して完成とすることはしない。

@@ -12,6 +12,8 @@ public import SerrePositivity.BhattScholze.Andre.Transfinite.ResidueTensorColimi
 public import SerrePositivity.BhattScholze.Andre.Transfinite.Composition
 public import SerrePositivity.BhattScholze.Andre.Transfinite.TorsionBound
 public import SerrePositivity.BhattScholze.Andre.Transfinite.FrobeniusKernelColimit
+public import SerrePositivity.BhattScholze.Andre.Transfinite.PrismaticCompletion
+public import SerrePositivity.BhattScholze.Andre.Transfinite.PerfectDeltaColimit
 
 /-! # André E3：超限反復の部品
 
