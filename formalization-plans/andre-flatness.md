@@ -3104,3 +3104,96 @@ BS Cor 2.39（著者版 p.25）、Rem 7.15（p.62）の台環比較を、
 主分冪係数商同型と生成元公式、raw p 除算の任意係数商と二元商の pd 同型、
 一般の実完備化比較と係数公式、無限根モニック入力の比較と係数公式の
 公開型 8 本を `#check` で確認した（終了コード 0）。
+
+
+### E1.50：ϖ 係数への正確な移送と実完備化剰余の忠実平坦性（検証済み）
+
+新規 `Andre/PowerRootCoefficientIdealQuotient.lean` は、無限根多項式環の
+係数主イデアル商の比較を任意の係数イデアル I へ拡張する。
+各単項式係数の I への所属で核を I の係数像と同定し、第一同型定理を使う。
+係数・単項式・全根変数・通常多項式評価の公式を含め 9 公開宣言を追加した。
+
+新規 `Andre/PerfectPrismFrobeniusPairToVarpi.lean` は、完全 prism W=(A,(d))、
+x=φ⁻¹(d)、R=A/(d)、Rv=R/ϖ に対して
+
+```lean
+def perfectPrismVarpiToFrobeniusPairEquiv : Rv ≃+* A ⧸ Ideal.span {(p : A), W.generator}
+```
+
+を構成した。順写像は代表元 r を φ(r) の二元商へ送り、逆写像は任意の代表元 r を
+φ⁻¹(r) の ϖ 商へ送る。これは同 `_symm_mk` で全 r∈A について検証した。
+`perfectPrismInverseFrobeniusPolynomial W hW f` は f の全係数を φ⁻¹ で移した
+多項式を定義する。この多項式は f とは同一視せず、モニック性の保存だけを証明する。
+6 公開宣言を追加した。
+
+新規 `Andre/PowerRootFrobeniusPairVarpiInput.lean` は P=A[Y^(1/p^∞)] の
+(p,d) 商と Nv=Rv[Y^(1/p^∞)] の環同型を作る。係数は φ⁻¹ で移り、根変数の番号は保つ。
+従って y=f(Y₀) の像は f'=f.map(φ⁻¹) を Rv で評価した入力になる。
+単項式・係数・全根変数・通常評価・名前付き入力の像を含め 7 公開宣言を追加した。
+この係数変更を省略して元の f の pd 包と同定することはしていない。
+
+新規 `Andre/PowerRootPrismMonicVarpiPDComparison.lean` は、主分冪表示の係数同型を
+E1.49 の実完備化比較へ合成する。
+E は P の既存 δ 構造、dP と xP は d と x の係数像、L=P{f(Y₀)/dP}、
+H=`PDCompletionH0 L p (jL dP)`、uL は標準単位とする。
+
+```lean
+def powerRootPrismMonicVarpiCompletionPDEquiv
+    (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
+    (f : Polynomial A) (hf : f.Monic) :
+    letI := pdCompletionCommRing L p (jL dP)
+    (H ⧸ Ideal.span {uL (jL dP), uL (jL xP)}) ≃+*
+      PrincipalDPPresentation Nv
+        (powerRootPolynomialBaseMap Rv p hp (f'.map barr))
+```
+
+ここで barr:A→Rv は自然な係数商射である。
+同 `_coeff` は P 全体で Frobenius と入力環比較の合成を明示する。
+同 `_base_coeff` は A の係数 r に対し、uL(jL(coeff(r))) の剰余が
+右辺の自然な Rv 係数 barr(r) へ送られることを証明する。
+源の Frobenius 係数作用と逆係数 Frobenius が相殺する。
+標準分冪生成元と一般係数の公式を含め 6 公開宣言を追加した。
+
+新規 `Andre/PowerRootPrismMonicVarpiFlat.lean` は、この実商に Rv 係数作用を与える。
+台環 S=H/(uL(jL(dP)),uL(jL(xP))) は変更しない。
+`powerRootPrismMonicVarpiResidueAlgebra` は主 pd 同型の逆で標準係数作用を戻すが、
+同 `_base_coeff` で全 r∈A の像が元の完備化係数像に一致することを検証した。
+barr は全射なので、自然な係数作用を特定している。
+`powerRootPrismMonicVarpiResidueAlgEquiv` は同じ比較を Rv 代数同型に束ねる。
+
+```lean
+theorem powerRootPrismMonicVarpiResidue_free
+    (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
+    (f : Polynomial A) (hf : f.Monic) :
+    letI := pdCompletionCommRing L p (jL dP)
+    letI := powerRootPrismMonicVarpiResidueAlgebra W hW f hf
+    Module.Free Rv S
+
+theorem powerRootPrismMonicVarpiResidue_faithfullyFlat
+    (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
+    (f : Polynomial A) (hf : f.Monic) (hdeg : 0 < f.natDegree) :
+    letI := pdCompletionCommRing L p (jL dP)
+    letI := powerRootPrismMonicVarpiResidueAlgebra W hW f hf
+    Module.FaithfullyFlat Rv S
+```
+
+を証明した。逆 Frobenius による係数変更はモニック性と次数を保つため、
+既存の Rv 上の主 pd 表示の自由性・忠実平坦性を適用できる。
+この工程では prism 商の p 正則性を仮定しない。
+係数作用・代数同型・自然係数公式・自由性・忠実平坦性の 5 公開宣言を追加した。
+
+BS Rem 7.15（著者版 p.62）の通常平坦性計算の結論を、
+原典とは異なる逆 Frobenius 係数入力の経路で実完備化の二元剰余へ移した。
+この台環の係数作用と平坦性は明示前提だけで証明済みであり、比較同型は仮定していない。
+一方、原典に書かれた元の f の実 pd 包との同定、prismatic 源
+T=overline(Δ)_S との同定、T 自体の p 正則性とそこからの完全忠実平坦性の導出は
+引き続き未完了。今回の逆係数入力を元の f へ無断で置き換えない。
+公開の根付き存在定理には追加仮定・引用を増やしていない。
+
+
+5 対象および集約の `set -o pipefail; lake build` は終了コード 0
+（集約 4474 jobs）。新規 33 公開宣言の `assert_no_sorry` と専用監査は
+終了コード 0。生成宣言を含む 4558 宣言の推移的公理依存は標準 3 公理のみ。
+逆係数写像の代表元公式、移送後の入力、ϖ 主 pd 同型と自然係数公式、
+係数代数構造の自然係数公式、実完備化剰余の自由性・忠実平坦性の公開型 7 本を
+`#check` で確認した（終了コード 0）。
