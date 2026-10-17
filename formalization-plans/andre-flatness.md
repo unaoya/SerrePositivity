@@ -5211,3 +5211,83 @@ A1-a での現在の接続点：E1.69 は任意の基底 prism 射 k と有界�
 剰余根列を保つ H→B の一意な δ 射、E1.70 は未完備の通常の入力環
 (A/d)[Y^(1/p^∞)]/(f) から Q の商への射による同じ普遍性。
 原典の完備入力環の同定と H 自体の prism 化を担当し、A1-b・A1-c の新規成果で合流する。
+
+### E1.71／A1-a 方程式商の p 完備化からの入力射（2026-10-17）
+
+本節は並列分割後の A1-a の追記。上記の一度限りの受渡し後、
+通常の入力商の p 完備化と有界試験 prism への普遍性を接続した。
+既存の hpR 付き定理と A1-b・A1-c のファイル・記録節は変更していない。
+
+新規 `Andre/PrimeAdicCompletionUniversal.lean` の 2 公開定理の型は、
+(R : Type u) [CommRing R] (p : ℕ)、{B : Type v} [CommRing B]、
+[IsAdicComplete (Ideal.span {(p : B)}) B]、C=AdicCompletion (Ideal.span {(p : R)}) R
+の下で以下。宇宙 u と v は独立。
+
+```lean
+-- existsUnique_primeAdicCompletionHom R p (k : R →+* B)
+∃! F : C →+* B, F.comp (algebraMap R C) = k
+-- primeAdicCompletion_ringHom_ext R p (F G : C →+* B)
+--   (h : F.comp (algebraMap R C) = G.comp (algebraMap R C))
+F = G
+```
+
+指定した環射の代数作用を使い、既存の `adicCompletion_existsUnique_algHom`
+（`SerrePositivity/CommutativeAlgebra/AdicCompletionAlgebraUniversal.lean`）を再利用する。
+イデアルの像は環射が自然数を保存することにより標的の (p) に一致する。
+p の素数性、源や標的の p 正則性、Noether 性はいずれも不要。
+
+新規 `Andre/PowerRootEquationCompletionUniversal.lean` の 1 公開定理
+`existsUnique_powerRootEquationCompletionHom` は、
+{R : Type u} [CommRing R]、p : ℕ、hp : 0 < p、f : Polynomial R、
+{B : Type v} [CommRing B] [IsAdicComplete (Ideal.span {(p : B)}) B]、
+k : R →+* B、ρ : ℕ → B、hρ : ∀ n, ρ (n+1)^p=ρ n、
+hf : f.eval₂ k (ρ 0)=0 の下で、
+S=PowerRootEquationQuotient p hp f、C=AdicCompletion (Ideal.span {(p : S)}) S、
+j=algebraMap S C、c=powerRootEquationQuotientCoeff p hp f、
+r=powerRootEquationQuotientRoot p hp f として、正確に
+
+```lean
+∃! F : C →+* B, (F.comp j).comp c = k ∧ ∀ n, F (j (r n)) = ρ n
+```
+
+を証明する。通常の方程式商からの一意な射を、新しい完備化の普遍性で延長する。
+モニック性・正次数を仮定せず、係数射と全ての標準根の像を保つ。
+
+新規 `Andre/PowerRootPrismMonicCompletedEquationInput.lean` の 1 公開定理
+`existsUnique_powerRootPrismMonicCompletionHom_of_completed_equation_input` は、
+完全な源 prism W : OrientedPrism p A、hW、f : Polynomial A、p の素数性の下で、
+E1.70 と同じ P、E、dP、a、L、jL、H、uL、DH を使う。
+R=A ⧸ W.ideal、fR=f.map (Ideal.Quotient.mk W.ideal)、
+S=PowerRootEquationQuotient p hp fR、C=AdicCompletion (Ideal.span {(p : S)}) S、
+jS=algebraMap S C、cS と rS は S の標準係数射・根列とする。
+引数は {B : Type u} [CommRing B]、Q : OrientedPrism p B、
+hB : ∃ N : ℕ, ∀ n : ℕ, ∀ x : B ⧸ Q.ideal,
+  (p : B ⧸ Q.ideal)^n*x=0 → (p : B ⧸ Q.ideal)^N*x=0、
+k : OrientedPrism.Hom W Q、η : C →+* B ⧸ Q.ideal、
+hη : (η.comp jS).comp cS=k.quotientMap。
+H の環構造 `pdCompletionCommRing L p (jL dP)` を let で導入した後の結論は
+
+```lean
+∃! F : H →+* B,
+  DH.IsDeltaHom Q.deltaStructure F ∧
+    F.comp (powerRootPrismMonicCompletionBaseMap W hW f) = k.toRingHom ∧
+      ∀ n, Ideal.Quotient.mk Q.ideal
+        (F (uL (jL (powerRootPolynomialVariable A p hp n)))) = η (jS (rS n))
+```
+
+である。完備入力射を通常の商へ制限し、E1.70 の普遍性を使う。
+hpR、モニック性・正次数、試験 prism の完全性・p 正則性を要求しない。
+
+BS Rem 7.15（著者版 p.62）への接続として、通常の商を先に完備化する
+原典とは異なる明示的な経路であることを docstring に記録した。
+現在の C は (R[Y^(1/p^∞)]/(f)) の p 完備化であり、原典の
+R⟨Y^(1/p^∞)⟩/(f) との同定をまだ主張しない。モニック性を使う完備化と商の交換、
+元の H の prism 化、入力環作用を含む絶対 envelope の同定は A1-a の残り。
+H の正則性の無条件の供給は A1-b、係数表記の最終照合は A1-c の成果と合流する。
+この段階を A1-a 全体の完成とは数えない。
+
+検証：新規 3 ファイルの対象ビルドと集約ビルドは終了コード 0
+（集約 4569 jobs）。新規 4 公開宣言の `assert_no_sorry` と専用監査は
+終了コード 0。生成宣言を含む 7138 宣言の推移的公理依存は標準 3 公理のみ。
+新規 4 公開宣言の正確な型と、受渡しの hpR 付き 8 定理の型を `#check` で確認した
+（いずれも終了コード 0）。受渡し節は再作成・書換えしていない。

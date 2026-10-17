@@ -1230,6 +1230,11 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootEquationQuotient_rin
 assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootEquationQuotientHom
 assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicCompletionHom_of_equation_input
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_primeAdicCompletionHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.primeAdicCompletion_ringHom_ext
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootEquationCompletionHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicCompletionHom_of_completed_equation_input
+
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
@@ -1452,7 +1457,10 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.BoundedPrismHomRigidity,
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicBasePrismUniversal,
     `SerrePositivity.BhattScholze.Andre.PowerRootEquationQuotient,
-    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicEquationInput]
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicEquationInput,
+    `SerrePositivity.BhattScholze.Andre.PrimeAdicCompletionUniversal,
+    `SerrePositivity.BhattScholze.Andre.PowerRootEquationCompletionUniversal,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCompletedEquationInput]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
