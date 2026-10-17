@@ -969,6 +969,16 @@
 - 次に実際の係数拡大のperfect射影的対象の保存と、主Perfに降ろした係数変更図式の最終照合へ進む。
   Hom比較のshift・cone・H⁰内retract閉性はこの段階で証明済み。
 
+## U14b.58：実際の係数拡大のperfect射影性保存（2026-10-17）
+
+- `ScalarProjectiveImage.lean`：実際の加群係数拡大の加法性を評価で照合した。
+  任意の終域への全Homのshift表示と、全次数分裂保存から、finite cellの像の射影性を証明した。
+- perfect射影的対象の導来retractをH⁰のretractへ持ち上げ、U14b.50の実際の係数拡大の
+  ホモトピー保存で運んだ。実際の係数拡大がperfect射影的加群の射影性を保つことを得た。
+  各評価複体のK-projective性で代用せず、全次数Hom endで判定する。
+- `ChecksScalarProjectiveImage` 対象ビルド成功（3060 jobs）。主要5宣言の公理は標準3公理のみ。
+  既存APIの名前・型は変更していない。新しいsorry・axiom・引用は追加していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
