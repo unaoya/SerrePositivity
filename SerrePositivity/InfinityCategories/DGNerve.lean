@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.DGNerve.FiberBoundarySharedResiduals
+public import SerrePositivity.InfinityCategories.DGNerve.FiberBoundaryUnknowns
 public import SerrePositivity.InfinityCategories.DGNerve.FiberBoundaryComponents
 public import SerrePositivity.InfinityCategories.DGNerve.CospanCommonRhs
 public import SerrePositivity.InfinityCategories.DGNerve.CospanBoundaryTwoTailResidual

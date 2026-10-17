@@ -917,3 +917,25 @@ c を `standardFiberCone g h` とすると、`fiberSliceBoundary_left_triangle`�
 回収した射はまず異種等号で保持し、次に端点と次数の等式に沿って Hom 座標へ移す。
 未知六成分の解、未知方程式と最終充填、`IsPullbackSquare` と N7d・N7e は未完了。
 公開型と全前提は計画 §5 の N7c7 に記録する。
+
+
+## N7.10：型付き残差と未知成分の逆座標による候補（2026-10-18）
+
+`gradedHomTransport` は端点と次数の等式に沿う線形同型で、微分・合成を保つ。
+`fiberBoundarySource` を左の零番目の対象 X に取り、`q := fiberBoundaryDegree n = −n−1` と置く。
+先頭右辺 r₀ は `Cochain X P (q+2)`、r_B,r_C,r_D は次数 q+1、r_BD,r_CD は次数 q の
+標準の対象への cochain として `FiberBoundaryResiduals` に定義した。
+先頭と D 側の共通値は左側から一度だけ移送し、右の生のデータとは
+`fiberBoundaryRhs0_heq_right`・`fiberBoundaryRhsD_heq_right` の異種等号で同定する。
+`fiberBoundaryRhs0_closed` により型付きの δr₀=0 も証明した。
+
+`pullbackResidual_matrix` は四つの微分整合式を前提として、Hom-fiber の三座標の行列条件を与える。
+`PullbackBoundaryEquations` はその条件から先頭の明示解の微分方程式を証明し、射影・ホモトピー・
+対角射の式、d=r_CD の微分式と左三角形の式を証明する。これらの一般補題の整合式は明示的な前提。
+実際の境界の r_B,r_C,r_BD,r_CD が移送後もその整合式を満たす証明は次に行う。
+
+実際の境界から `fiberBoundaryUnknownA` を `−φ⁻¹(r_B,r_C,r_CD−r_BD)`、
+`fiberBoundaryUnknownD` を r_CD として定義し、その射影・ホモトピー・対角射・左三角形の式を確認した。
+ただし実際の候補の δa=r₀ と δd=t a+r_D は未証明。
+未知成分を入れた単体データ・全方程式・境界の一致・`IsPullbackSquare`、N7d・N7e は未完了。
+公開型・全前提は計画 §5 の N7c8 に記録する。
