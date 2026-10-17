@@ -4297,3 +4297,110 @@ A 上の φ_A 引戻し全体との同定、原典の R/ϖ 表記との最終照
 終了コード 0。生成宣言を含む 6229 宣言の推移的公理依存は標準 3 公理のみ。
 新規 24 公開宣言の正確な型を `#check` で確認した（終了コード 0）。
 原典とは異なる経路を docstring にも明記した。
+
+
+### E1.64 A 全体の実 Frobenius 引戻しと自然な入力環上の pd 普遍性（2026-10-17）
+
+前工程 E1.63 は検証済みコードをコミットした進捗。外部依存の破損はない。
+本工程は商環 R/ϖ → R/p に沿うテンソル比較から、A 全体の φ_A 引戻しへ進む。
+
+E1.63 と同じ完全 prism W : OrientedPrism p A、hW、f : Polynomial A と、
+実 Hodge–Tate 候補 T、自然な基底射 φ : R →+* T、R=A/W.ideal、
+Rv=R/ϖ、Rp=R/p、Mv=T/(Ideal.map φ (ϖ))、Np、zp、Dp を使う。
+φ_A は `DeltaStructure.frobeniusEquiv W.deltaStructure hW`。
+bv : A →+* Rv、bp : A →+* Rp は元の二段商射。
+左の A は同じ宇宙の環の写し Ac=`TensorBaseCopy A` で区別する。
+ι : A ≃+* Ac は値を包む同型で、左への A 作用は αc=ι∘φ_A による作用。
+qA : A →+* Mv は自然な Rv 作用と bv の合成である。
+At=Ac ⊗[A] Mv は qA.toAlgebra と αc.toRingHom.toAlgebra を使う。
+比較先 Dp の Ac 作用は Ac→A→Rp→Dp の元の係数作用とする。
+
+新規 `Andre/AutomorphismTensorPullback.lean` に 6 公開宣言を追加した。
+`TensorBaseCopy` は一つの値を包む型の写し、`tensorBaseCopyEquiv` は値の全単射、
+`tensorBaseCopyCommRing` と `tensorBaseCopyRingEquiv` は移送した可換環と値の環同型。
+全て宇宙を上げない。
+`automorphismTensorPullbackAlgEquiv` は任意宇宙の可換環 A、B、C、自己同型 α、
+q : A →+* B、r : A →+* C、F : B ≃+* C、
+hF : ∀ a, F (q a) = r (α a) に対し、
+
+```lean
+let := q.toAlgebra
+let := (r.comp (tensorBaseCopyRingEquiv A).toRingHom).toAlgebra
+let := (α.trans (tensorBaseCopyRingEquiv A).symm).toRingHom.toAlgebra
+TensorBaseCopy A ⊗[A] B ≃ₐ[TensorBaseCopy A] C
+```
+
+を構成する。同 `_tmul` は、値 a の写しと b の単純テンソルを r a * F b へ送る。
+正則性・平坦性・商に関する仮定はない。
+
+新規 `Andre/PowerRootPrismMonicFullFrobeniusPullback.lean` に 6 公開宣言を追加した。
+`powerRootPrismMonicVarpiBaseMap` は qA を定義し、同 `_coeff` は
+
+```lean
+qA a = powerRootPrismMonicVarpiInputMap W hW f (algebraMap A P a)
+```
+
+を証明する。元の実完備化単位・商射と無限根入力射の自然な A 作用そのもの。
+`powerRootPrismMonicVarpiFrobeniusResidueEquiv_base_coeff` は hf : f.Monic の下で、
+既存の実剰余比較 U について
+
+```lean
+U (qA a) = algebraMap Rp Dp (bp (φ_A a))
+```
+
+を証明する。
+`powerRootPrismMonicFullFrobeniusPullbackAlgEquiv` は同じ hf のみから
+上記の四つの環・代数構造を let で指定した後の `At ≃ₐ[Ac] Dp` を与える。
+同 `_tmul` と同 `_variable` の結論はそれぞれ
+
+```lean
+E ((⟨a⟩ : Ac) ⊗ₜ[A] m) = algebraMap Rp Dp (bp a) * U m
+E ((1 : Ac) ⊗ₜ[A] ψ (powerRootPolynomialVariable A p hp (n + 1))) =
+  algebraMap Np Dp (powerRootPolynomialVariable Rp p hp n)
+```
+
+である。ψ は元の自然な無限根入力射。p 正則性・正次数は仮定しない。
+
+新規 `Andre/PowerRootPrismMonicFullFrobeniusPD.lean` に 10 公開宣言を追加した。
+`powerRootPrismMonicFullFrobeniusInputAlgebra` は E⁻¹ に沿う Np 作用を At に与え、
+`powerRootPrismMonicFullFrobeniusInputAlgEquiv` は同じ環同型を `At ≃ₐ[Np] Dp` に強める。
+同 `_InputAlgebra_base_coeff` と同 `_InputAlgebra_variable` は
+
+```lean
+algebraMap Np At (algebraMap Rp Np (bp a)) = algebraMap Ac At (⟨a⟩ : Ac)
+algebraMap Np At (powerRootPolynomialVariable Rp p hp n) =
+  (1 : Ac) ⊗ₜ[A] ψ (powerRootPolynomialVariable A p hp (n + 1))
+```
+
+を証明する。従って入力環作用は元の係数と元の自然な根変数を保持する。
+これらの作用の自然性と入力像のイデアル所属は hf のみを前提とする。
+
+E_N : At ≃ₐ[Np] Dp とし、J は標準正次数イデアルを E_N⁻¹ で写した At のイデアル。
+`powerRootPrismMonicFullFrobeniusPDIdeal` は J を定義する。
+`powerRootPrismMonicFullFrobeniusDividedPowers` は hf に加えて
+`hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal)` の下で `DividedPowers J` を構成する。
+同 `_InputAlgEquiv_isDPMorphism` は E_N の実分冪射性、同 `_DividedPowers_input_apply` は
+全 n : ℕ に対して入力像の n 次分冪が E_N⁻¹ (principalDPGenerator zp n) であることを証明する。
+`existsUnique_powerRootPrismMonicFullFrobeniusPDMorphism` は W、hW、f、hf、hpR、
+任意宇宙の可換環 B、Algebra Np B、I : Ideal B、Ht : DividedPowers I、
+hzB : algebraMap Np B zp ∈ I の下で、実環構造・四つの代数作用を let で導入した後の
+
+```lean
+∃! F : At →ₐ[Np] B,
+  (powerRootPrismMonicFullFrobeniusDividedPowers W hW f hf hpR).IsDPMorphism
+    Ht F.toRingHom
+```
+
+を証明する。標的のねじれ・完備性・非零性は仮定しない。正次数も不要。
+BS Rem 7.15(1)（著者版 p.62）に対する原典とは異なる、型の写し・半線形環同型・
+通常テンソル・実分冪構造の移送による経路であることを docstring に明記した。
+
+これで元の自然な A 作用に沿う A 全体の φ_A 引戻しと、元の mod p 入力の実 pd 普遍性を
+接続した。原典の R/ϖ 表記と今回の R/p 係数作用の最終照合、prism 商の p 正則性仮定の解消、
+絶対 prismatic envelope との同定は引き続き未完了。係数環を暗黙に同一視せず、条件付きの
+実 pd 比較だけで全体の完成と数えない。承認済み hdeg を持つ任意族存在定理の型は変更していない。
+
+検証：新規 3 ファイルの対象ビルドと集約ビルドは終了コード 0
+（集約 4543 jobs）。新規 22 公開宣言の `assert_no_sorry` と専用監査は
+終了コード 0。生成宣言を含む 6485 宣言の推移的公理依存は標準 3 公理のみ。
+新規 22 公開宣言の正確な型を `#check` で確認した（終了コード 0）。
