@@ -3,7 +3,32 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.CurriedHomotopy
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyClasses
 
-/-! # Actual interval homotopies act contravariantly on internal Hom
+/-!
+# 指定した実区間ホモトピーを内部Homへの前合成に移す
+
+## 概要
+指定した実区間ホモトピーを内部Homへの前合成に移す。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+テンソルと内部Homの随伴で族を転置し、対応する境界の等式を比較する。
+転置の単射性と自然性により、元の全パラメータ族の等式へ戻す。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0514][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0514
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Actual interval homotopies act contravariantly on internal Hom
 
 The interval is retained through an explicit reassociation of the three
 factors. Postcomposition in the original homotopy becomes precomposition
@@ -58,6 +83,12 @@ def interval (H : SSet.Homotopy f g) (K : SSet.{v}) :
     (ihom B).obj K ⊗ SSet.stdSimplex.obj (SimplexCategory.mk 1) ⟶ (ihom A).obj K :=
   curry (shuffle A ((ihom B).obj K) ≫ H.h ▷ (ihom B).obj K ≫ (ihom.ev B).app K)
 
+/-- 指定した実区間ホモトピーを内部Homへの前合成に移す。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+テンソルと内部Homの随伴で族を転置し、対応する境界の等式を比較する。
+転置の単射性と自然性により、元の全パラメータ族の等式へ戻す。
+-/
 def homotopy (H : SSet.Homotopy f g) (K : SSet.{v}) :
     SSet.Homotopy ((MonoidalClosed.pre f).app K) ((MonoidalClosed.pre g).app K) where
   h := interval H K

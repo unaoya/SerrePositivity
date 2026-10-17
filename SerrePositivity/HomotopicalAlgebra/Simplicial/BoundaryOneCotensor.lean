@@ -4,7 +4,33 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceSpace
 public import Mathlib.CategoryTheory.Monoidal.Closed.Braided
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.BinaryProducts
 
-/-! # Gluing cotensor families on the actual two-vertex interval boundary -/
+/-!
+# 区間境界の二つの頂点に指定した余テンソル族を貼り合わせる
+
+## 概要
+区間境界の二つの頂点に指定した余テンソル族を貼り合わせる。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+テンソルと内部Homの随伴で族を転置し、対応する境界の等式を比較する。
+転置の単射性と自然性により、元の全パラメータ族の等式へ戻す。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0355][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0355
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Gluing cotensor families on the actual two-vertex interval boundary
+-/
 
 @[expose] public section
 universe v
@@ -27,6 +53,12 @@ def tensorIsColimit (T : SSet.{v}) : IsColimit (BinaryCofan.mk (zero ▷ T) (one
 
 variable {T P : SSet.{v}} (a b : T ⟶ (ihom vertex).obj P)
 
+/-- 区間境界の二つの頂点に指定した余テンソル族を貼り合わせる。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+テンソルと内部Homの随伴で族を転置し、対応する境界の等式を比較する。
+転置の単射性と自然性により、元の全パラメータ族の等式へ戻す。
+-/
 def glue : T ⟶ (ihom boundary).obj P :=
   curry ((tensorIsColimit T).desc (BinaryCofan.mk (uncurry a) (uncurry b)))
 

@@ -3,7 +3,33 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarConstruction
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLift
 
-/-! # Natural augmentation of the strict relative bar along an actual comparison diagram -/
+/-!
+# 実際の比較図式上の相対barに自然なaugmentationを構成する
+
+## 概要
+実際の比較図式上の相対barに自然なaugmentationを構成する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+各次数の要素の圏・comma圏とnerveを使って写像を構成する。
+単体方向と基底方向の自然性を確認し、収縮や局所化の普遍性へ接続する。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はWaldhausenのS-構成の二重単体図式や分解の比較・加法性の準備に利用できる。
+[棚卸し m0520][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0520
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Natural augmentation of the strict relative bar along an actual comparison diagram
+-/
 
 @[expose] public section
 universe v uD vD uB vB
@@ -65,7 +91,15 @@ def relativeAugmentationComponent (b : B) :
       (congrArg (fun z => (G.obj b).map θ z)
         (label_map p F a b n (c.map (homOfLE (Fin.zero_le (θ.unop.toOrderHom 0))))))
 
-/-- The augmentation is natural on all actual base morphisms. -/
+/- 旧宣言の技術注記：
+The augmentation is natural on all actual base morphisms.
+-/
+/-- 実際の比較図式上の相対barに自然なaugmentationを構成する。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+各次数の要素の圏・comma圏とnerveを使って写像を構成する。
+単体方向と基底方向の自然性を確認し、収縮や局所化の普遍性へ接続する。
+-/
 def relativeAugmentation : relative p F ⟶ G ⋙ SSet.uliftFunctor.{max uD vD vB, v} where
   app b := relativeAugmentationComponent p F a b
   naturality {b c} f := by

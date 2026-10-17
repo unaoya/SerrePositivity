@@ -3,7 +3,32 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalAdjunction
 public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal
 
-/-! # Restricted representables and the values of the diagonal right adjoint
+/-!
+# 対角の右随伴の各値を制限された表現可能関手からの写像として表す
+
+## 概要
+対角の右随伴の各値を制限された表現可能関手からの写像として表す。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+積添字の表現可能関手の対角制限を標準単体の積と同定する。
+Coyonedaと右Kan拡張の随伴で、右随伴の各単体を計算する。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はWaldhausenのS-構成の二重単体図式や分解の比較・加法性の準備に利用できる。
+[棚卸し m0389][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0389
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Restricted representables and the values of the diagonal right adjoint
 
 Restriction of a representable from the square of Delta-op is the actual
 product of two standard simplices. Coyoneda and the constructed right Kan
@@ -37,7 +62,15 @@ def restrictedRepresentableIso (n m : SimplexCategory) :
       ext x
       rfl)
 
-/-- Compute a simplex of the actual right adjoint by an ordinary Hom set. -/
+/- 旧宣言の技術注記：
+Compute a simplex of the actual right adjoint by an ordinary Hom set.
+-/
+/-- 対角の右随伴の各値を制限された表現可能関手からの写像として表す。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+積添字の表現可能関手の対角制限を標準単体の積と同定する。
+Coyonedaと右Kan拡張の随伴で、右随伴の各単体を計算する。
+-/
 def rightAdjointValueEquiv (Z : SSet.{v}) (n m : SimplexCategory) :
     ((rightAdjoint.obj Z).obj (Opposite.op n)).obj (Opposite.op m) ≃
       (SSet.stdSimplex.obj n ⊗ SSet.stdSimplex.obj m ⟶ Z) :=

@@ -2,7 +2,32 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanHomotopyExtension
 
-/-! # Kan valued homotopy classes invert every anodyne extension
+/-!
+# Kan値の区間ホモトピー類への前合成はanodyne射を全単射へ送る
+
+## 概要
+Kan値の区間ホモトピー類への前合成はanodyne射を全単射へ送る。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+実写像または区間ホモトピーの関係を商へ降ろす。
+代表元に依らないことを確認してから、誘導写像と比較を組み立てる。
+
+## 規約と注意
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+ここでのKan条件は外側も含む全hornの充填であり、内側hornだけの条件ではない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間のπ₀、局所化後の射、ホモトピー類の計算に利用できる。
+[棚卸し m0413][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0413
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Kan valued homotopy classes invert every anodyne extension
 
 An inverse is constructed by extension. Homotopy extension proves that this
 construction descends to classes and is independent of the selected extensions.
@@ -44,6 +69,12 @@ lemma inverse_left (x : obj B K) : inverse i hi hK (pre i x) = x := by
   exact SSet.RelativeMorphism.Homotopy.refl (SSet.RelativeMorphism.botEquiv.symm (i ≫ f))
 
 include hi hK in
+/-- Kan値の区間ホモトピー類への前合成はanodyne射を全単射へ送る。
+
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+実写像または区間ホモトピーの関係を商へ降ろす。
+代表元に依らないことを確認してから、誘導写像と比較を組み立てる。
+-/
 lemma pre_bijective : Function.Bijective (pre i (K := K)) :=
   ⟨Function.LeftInverse.injective (inverse_left i hi hK),
     Function.RightInverse.surjective (inverse_right i hi hK)⟩

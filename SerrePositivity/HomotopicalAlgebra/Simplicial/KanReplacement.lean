@@ -4,7 +4,32 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.ModelCompatibility
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroWeakEquivalence
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ChosenResolutionHom
 
-/-! # A functorial Kan replacement built on the value side
+/-!
+# 指定した値モデルで構成した関手的Kan置換は弱同値を保つ
+
+## 概要
+指定した値モデルで構成した関手的Kan置換は弱同値を保つ。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+
+## 規約と注意
+モデル構造と射クラスの一致を要求する入口では、その指定データを仮定する。
+このファイルがHT-KQの引用モデルを自動的に選ぶとは解釈しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0432][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0432
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# A functorial Kan replacement built on the value side
 
 The fixed boundary/horn generators supply functorial factorization in SSet.
 No functorial factorization is required of a model category whose mapping
@@ -58,6 +83,12 @@ lemma kanComplex (K : SSet.{v}) : SSet.KanComplex ((functor hcof hfib).obj K) :=
   rw [← hfib]
   exact mem_fibrations (terminal.from ((functor hcof hfib).obj K))
 
+/-- 指定した値モデルで構成した関手的Kan置換は弱同値を保つ。
+
+モデル構造と射クラスの一致を要求する入口では、その指定データを仮定する。
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+-/
 lemma map_weakEquivalence {K L : SSet.{v}} (f : K ⟶ L) (hf : weakEquivalences SSet.{v} f) :
     weakEquivalences SSet.{v} ((functor hcof hfib).map f) :=
   fibrantTarget_map_weakEquivalence _ f hf

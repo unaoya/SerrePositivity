@@ -4,7 +4,32 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexMatchingTermi
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveCoherentFamily
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexLatchingBoundary
 
-/-! # Reedy right conditions for small diagrams inverting simplex degeneracies
+/-!
+# 退化を可逆にする図式のmatching条件からReedy右クラスへの所属を導く
+
+## 概要
+退化を可逆にする図式のmatching条件からReedy右クラスへの所属を導く。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+圏の射列を各単体として評価し、自然変換や端点の射を明示する。
+単体ごとの合成と端点の式を照合して、全体の写像を得る。
+
+## 規約と注意
+モデル構造と射クラスの一致を要求する入口では、その指定データを仮定する。
+このファイルがHT-KQの引用モデルを自動的に選ぶとは解釈しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0558][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0558
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Reedy right conditions for small diagrams inverting simplex degeneracies
 
 Empty inverse boundaries are controlled by the actual object projection.
 Nonempty inverse boundaries have a terminal core and give isomorphisms.
@@ -95,6 +120,12 @@ lemma relativeMatching_trivialFibration :
     exact hp s
 
 include hA hp in
+/-- 退化を可逆にする図式のmatching条件からReedy右クラスへの所属を導く。
+
+モデル構造と射クラスの一致を要求する入口では、その指定データを仮定する。
+圏の射列を各単体として評価し、自然変換や端点の射を明示する。
+単体ごとの合成と端点の式を照合して、全体の写像を得る。
+-/
 lemma reedyRight : Reedy.reedyRight (SimplexIndexFinite.reedy X)
     (trivialFibrations SSet.{v}) p := fun s => relativeMatching_trivialFibration X s A p hA hp
 

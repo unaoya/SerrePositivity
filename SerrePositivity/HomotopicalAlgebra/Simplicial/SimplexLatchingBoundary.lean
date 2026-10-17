@@ -6,7 +6,32 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalMatching
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.CofibrantBoundary
 public import Mathlib.CategoryTheory.Limits.Final
 
-/-! # Actual latching boundaries of simplex parameters on a large simplex category
+/-!
+# 単体圏上のパラメータ図式のlatching射を実際の単体境界射と同型で結ぶ
+
+## 概要
+単体圏上のパラメータ図式のlatching射を実際の単体境界射と同型で結ぶ。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+
+## 規約と注意
+モデル構造と射クラスの一致を要求する入口では、その指定データを仮定する。
+このファイルがHT-KQの引用モデルを自動的に選ぶとは解釈しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0559][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0559
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Actual latching boundaries of simplex parameters on a large simplex category
 
 The projection identifies the whole direct boundary diagram with the
 ordinary simplex boundary diagram. Its actual colimit and comparison map
@@ -114,7 +139,15 @@ lemma boundaryIso_fac : (boundaryIso.{w, v} X s).hom ≫ (SSet.boundary.{v} (deg
   rw [colimit.ι_desc, colimit.ι_desc]
   rfl
 
-/-- The latching map and standard boundary inclusion are isomorphic as actual arrows. -/
+/- 旧宣言の技術注記：
+The latching map and standard boundary inclusion are isomorphic as actual arrows.
+-/
+/-- 単体圏上のパラメータ図式のlatching射を実際の単体境界射と同型で結ぶ。
+
+モデル構造と射クラスの一致を要求する入口では、その指定データを仮定する。
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+-/
 def boundaryArrowIso :
     Arrow.mk ((latchingComparison (SimplexIndexFinite.reedy X) s).app (parameters.{w, v} X)) ≅
       Arrow.mk (SSet.boundary.{v} (degree X s).len).ι :=

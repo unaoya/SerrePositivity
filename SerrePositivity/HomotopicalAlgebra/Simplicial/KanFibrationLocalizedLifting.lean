@@ -4,7 +4,32 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanActualHomotopy
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanRetractionRightLifting
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanTestDetection
 
-/-! # Localized equivalences which are Kan fibrations over a Kan base lift all monos
+/-!
+# Kan基底上の局所化で可逆なKan fibrationはすべての単射に対する右持ち上げ性を持つ
+
+## 概要
+Kan基底上の局所化で可逆なKan fibrationはすべての単射に対する右持ち上げ性を持つ。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+指定された境界と基底から可換正方形を作り、その持ち上げ性を使う。
+元の指定部分を保つ等式は、対角射の二つの分解等式から確認する。
+
+## 規約と注意
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+ここでのKan条件は外側も含む全hornの充填であり、内側hornだけの条件ではない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0412][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0412
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Localized equivalences which are Kan fibrations over a Kan base lift all monos
 
 Kan tests first give a homotopy inverse. Interval lifting makes its section
 identity strict. Actual Kan homotopies then supply the retraction contraction.
@@ -87,6 +112,12 @@ lemma of_post_tests (hB : SSet.modelCategoryQuillen.J.rlp (terminal.from B))
   exact KanRetractionRightLifting.of_homotopy p hp s hs H
 
 include hp in
+/-- Kan基底上の局所化で可逆なKan fibrationはすべての単射に対する右持ち上げ性を持つ。
+
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+指定された境界と基底から可換正方形を作り、その持ち上げ性を使う。
+元の指定部分を保つ等式は、対角射の二つの分解等式から確認する。
+-/
 lemma of_localized_isIso (hB : SSet.modelCategoryQuillen.J.rlp (terminal.from B))
     (hf : IsIso (AnodyneHomotopy.anodyneQ.map p)) :
     (MorphismProperty.monomorphisms SSet.{v}).rlp p :=

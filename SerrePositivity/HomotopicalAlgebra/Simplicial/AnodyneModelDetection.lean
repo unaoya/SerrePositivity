@@ -4,7 +4,32 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocal
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.ModelCompatibility
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Saturation
 
-/-! # Anodyne inversion agrees with the original weak equivalences in the small model
+/-!
+# 指定した小さい単体モデルの弱同値はanodyne局所化で可逆な射と一致する
+
+## 概要
+指定した小さい単体モデルの弱同値はanodyne局所化で可逆な射と一致する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+指定された境界と基底から可換正方形を作り、その持ち上げ性を使う。
+元の指定部分を保つ等式は、対角射の二つの分解等式から確認する。
+
+## 規約と注意
+モデル構造と射クラスの一致を要求する入口では、その指定データを仮定する。
+このファイルがHT-KQの引用モデルを自動的に選ぶとは解釈しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0344][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0344
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Anodyne inversion agrees with the original weak equivalences in the small model
 
 A trivial fibration has a section. Monomorphisms are cofibrations, so the
 section of a trivial fibration is anodyne. Thus anodyne inversion already
@@ -71,7 +96,15 @@ lemma model_weak_inversion_iff :
     exact inverts_model_weakEquivalences hcof hfib L h
 
 include hcof hfib in
-/-- In the supplied original-universe model, the criterion detects exactly its weak class. -/
+/- 旧宣言の技術注記：
+In the supplied original-universe model, the criterion detects exactly its weak class.
+-/
+/-- 指定した小さい単体モデルの弱同値はanodyne局所化で可逆な射と一致する。
+
+モデル構造と射クラスの一致を要求する入口では、その指定データを仮定する。
+指定された境界と基底から可換正方形を作り、その持ち上げ性を使う。
+元の指定部分を保つ等式は、対角射の二つの分解等式から確認する。
+-/
 lemma weakEquivalences_iff_anodyneQ_isIso {X Y : SSet.{v}} (f : X ⟶ Y) :
     weakEquivalences SSet.{v} f ↔ IsIso (anodyneQ.map f) := by
   constructor

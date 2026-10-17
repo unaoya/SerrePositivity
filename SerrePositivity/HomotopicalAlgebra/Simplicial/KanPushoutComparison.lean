@@ -4,7 +4,32 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.UnderMonoBrown
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanMonoPushoutEquivalence
 public import Mathlib.CategoryTheory.Comma.Over.Pullback
 
-/-! # Pushout comparison for localized equivalences between mono objects under A
+/-!
+# 共通の始域の下で単射を持つ図式の局所化比較が実pushoutでも保たれる
+
+## 概要
+共通の始域の下で単射を持つ図式の局所化比較が実pushoutでも保たれる。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+Kan値への実写像とホモトピー類のテストで比較射を調べる。
+貼り合わせ・持ち上げとanodyne局所化の検出を使って像の可逆性を導く。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論の加法性・局所化で現れる貼り合わせと余極限の比較に利用できる。
+[棚卸し m0429][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0429
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Pushout comparison for localized equivalences between mono objects under A
 
 The comparing map need not be mono. The base-change map is arbitrary.
 Brown's argument applies to the actual undercategory pushout functor.
@@ -44,6 +69,12 @@ lemma localized_isIso {X Y : Under A} [Mono X.hom] [Mono Y.hom] (f : X ⟶ Y)
   exact KanMonoPushoutEquivalence.localized_isIso h.right (pushout.inl X.hom a)
     (pushout.inl Y.hom a) (((Under.pushout a).map h).right) (map_isPushout a h) hw
 
+/-- 共通の始域の下で単射を持つ図式の局所化比較が実pushoutでも保たれる。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+Kan値への実写像とホモトピー類のテストで比較射を調べる。
+貼り合わせ・持ち上げとanodyne局所化の検出を使って像の可逆性を導く。
+-/
 lemma actual_localized_isIso {X Y P Q : SSet.{v}} (i : A ⟶ X) (j : A ⟶ Y)
     [Mono i] [Mono j] (f : X ⟶ Y) (hf : i ≫ f = j)
     (hw : IsIso (AnodyneHomotopy.anodyneQ.map f))

@@ -4,7 +4,33 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyClasses
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyEndpointComparison
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.PushoutProduct
 
-/-! # Homotopy extension into a Kan complex along an anodyne extension -/
+/-!
+# anodyne射への制限後のホモトピーから元の両射を結ぶKan値ホモトピーの存在を導く
+
+## 概要
+anodyne射への制限後のホモトピーから元の両射を結ぶKan値ホモトピーの存在を導く。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+指定された境界と基底から可換正方形を作り、その持ち上げ性を使う。
+元の指定部分を保つ等式は、対角射の二つの分解等式から確認する。
+
+## 規約と注意
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+ここでのKan条件は外側も含む全hornの充填であり、内側hornだけの条件ではない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0414][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0414
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Homotopy extension into a Kan complex along an anodyne extension
+-/
 
 @[expose] public section
 universe v
@@ -18,6 +44,12 @@ variable {A B K : SSet.{v}} (i : A ⟶ B) (hi : SSet.anodyneExtensions i)
   (hK : SSet.modelCategoryQuillen.J.rlp (terminal.from K))
 
 include hi hK in
+/-- anodyne射に沿って指定したKan値の写像を延長する。
+
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+指定された境界と基底から可換正方形を作り、その持ち上げ性を使う。
+元の指定部分を保つ等式は、対角射の二つの分解等式から確認する。
+-/
 lemma exists_extension (f : A ⟶ K) : ∃ g : B ⟶ K, i ≫ g = f := by
   have : HasLiftingProperty i (terminal.from K) := hi _ hK
   let sq : CommSq f i (terminal.from K) (terminal.from B) := ⟨by simp⟩
@@ -45,6 +77,12 @@ lemma boundary_compatibility (f g : B ⟶ K) (H : SSet.Homotopy (i ≫ f) (i ≫
     exact whiskerRight_fst_assoc i _ g
 
 include hi hK in
+/-- anodyne射への制限後のホモトピーから元の両射を結ぶKan値ホモトピーの存在を導く。
+
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+指定された境界と基底から可換正方形を作り、その持ち上げ性を使う。
+元の指定部分を保つ等式は、対角射の二つの分解等式から確認する。
+-/
 lemma exists_homotopy (f g : B ⟶ K) (H : SSet.Homotopy (i ≫ f) (i ≫ g)) :
     Nonempty (SSet.Homotopy f g) := by
   let pp := Functor.PushoutObjObj.ofHasPushout (curriedTensor SSet.{v}) i

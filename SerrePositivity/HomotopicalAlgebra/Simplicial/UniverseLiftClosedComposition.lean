@@ -3,7 +3,33 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftClosedCurry
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.ClosedParameterComposition
 
-/-! # The actual universe comparison preserves standard closed composition and identity -/
+/-!
+# 実際の宇宙比較が内部Homの標準合成を保つ
+
+## 概要
+実際の宇宙比較が内部Homの標準合成を保つ。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+各次数のULiftの上げ下げを明示し、単体作用素との交換を確認する。
+写像・充填またはホモトピーを同じ全パラメータのまま移送する。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0590][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0590
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# The actual universe comparison preserves standard closed composition and identity
+-/
 
 @[expose] public section
 universe w v
@@ -15,6 +41,12 @@ open CategoryTheory.MonoidalClosed
 
 namespace SerrePositivity.SimplicialModel.UniverseLiftClosedComposition
 
+/-- 実際の宇宙比較が内部Homの標準合成を保つ。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+各次数のULiftの上げ下げを明示し、単体作用素との交換を確認する。
+写像・充填またはホモトピーを同じ全パラメータのまま移送する。
+-/
 lemma composition (K P Q : SSet.{v}) :
     ((UniverseLiftParameterHom.closedIso K P).hom ⊗ₘ
       (UniverseLiftParameterHom.closedIso P Q).hom) ≫

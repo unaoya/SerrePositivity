@@ -2,7 +2,33 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftParameterHom
 
-/-! # The actual universe comparison commutes with currying whole small families -/
+/-!
+# 実際の宇宙比較が内部Homの評価と整合する
+
+## 概要
+実際の宇宙比較が内部Homの評価と整合する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+各次数のULiftの上げ下げを明示し、単体作用素との交換を確認する。
+写像・充填またはホモトピーを同じ全パラメータのまま移送する。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0591][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0591
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# The actual universe comparison commutes with currying whole small families
+-/
 
 @[expose] public section
 universe w v
@@ -45,6 +71,12 @@ lemma curry_lowerTensor {K P T : SSet.{v}}
         (UniverseLiftParameterHom.closedIso K P).hom = curry f := by
   rw [curry_tensorMap, UniverseLift.tensorMap_lowerTensor]
 
+/-- 実際の宇宙比較が内部Homの評価と整合する。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+各次数のULiftの上げ下げを明示し、単体作用素との交換を確認する。
+写像・充填またはホモトピーを同じ全パラメータのまま移送する。
+-/
 lemma evaluation (K P : SSet.{v}) :
     UniverseLift.obj.{w} K ◁ (UniverseLiftParameterHom.closedIso K P).hom ≫
       (ihom.ev (UniverseLift.obj K)).app (UniverseLift.obj P) =

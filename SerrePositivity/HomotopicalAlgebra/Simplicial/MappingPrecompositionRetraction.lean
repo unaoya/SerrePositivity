@@ -3,7 +3,32 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.PrecompositionHomotopy
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanPullbackDeformation
 
-/-! # A vertical retraction homotopy becomes a strong mapping-space deformation retract
+/-!
+# 基底上の強変形レトラクトを内部Homへ移しそのpullbackの局所化可逆性を導く
+
+## 概要
+基底上の強変形レトラクトを内部Homへ移しそのpullbackの局所化可逆性を導く。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+
+## 規約と注意
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+ここでのKan条件は外側も含む全hornの充填であり、内側hornだけの条件ではない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0450][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0450
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# A vertical retraction homotopy becomes a strong mapping-space deformation retract
 
 The actual precomposition inclusion is fixed on its entire interval.
 This supplies the exact hypothesis needed for Kan pullback deformation,
@@ -47,6 +72,12 @@ lemma fixed (K : SSet.{v}) :
   exact PrecompositionHomotopy.interval_constant (HomotopyClasses.postHomotopy p H) K p hH
 
 include hs hH in
+/-- 基底上の強変形レトラクトを内部Homへ移しそのpullbackの局所化可逆性を導く。
+
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+-/
 lemma pullback_localized_isIso (K : SSet.{v}) {Z P : SSet.{v}}
     (q : Z ⟶ (ihom E).obj K) (hq : SSet.modelCategoryQuillen.J.rlp q)
     (j : P ⟶ Z) (k : P ⟶ (ihom B).obj K)

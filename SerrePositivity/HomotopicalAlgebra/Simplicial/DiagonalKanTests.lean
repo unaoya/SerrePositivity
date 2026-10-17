@@ -4,7 +4,33 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalAnodyne
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedMonoLifting
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanTestLiftingClass
 
-/-! # The diagonal inverts Reedy localized mono equivalences by actual Kan tests -/
+/-!
+# Reedy局所化単射の対角がanodyne局所化で可逆となることをKan値テストから導く
+
+## 概要
+Reedy局所化単射の対角がanodyne局所化で可逆となることをKan値テストから導く。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+対角の右随伴と境界内部Homの比較を使い、相対matching射を計算する。
+必要な持ち上げ条件またはBrownの補題を、この実際の比較へ適用する。
+
+## 規約と注意
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+ここでのKan条件は外側も含む全hornの充填であり、内側hornだけの条件ではない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はWaldhausenのS-構成の二重単体図式や分解の比較・加法性の準備に利用できる。
+[棚卸し m0384][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0384
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# The diagonal inverts Reedy localized mono equivalences by actual Kan tests
+-/
 
 @[expose] public section
 universe v
@@ -73,6 +99,12 @@ lemma diagonal_lifting_of_reedy_localizedMonos {A T : SimplexCategoryᵒᵖ ⥤ 
   have h : HasLiftingProperty i (internalHomRight.map p) := Lifting.hasLiftingProperty simplexOp
   exact (Adjunction.hasLiftingProperty_iff diagonalInternalHomAdjunction i p).mpr h
 
+/-- Reedy局所化単射の対角がanodyne局所化で可逆となることをKan値テストから導く。
+
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+対角の右随伴と境界内部Homの比較を使い、相対matching射を計算する。
+必要な持ち上げ条件またはBrownの補題を、この実際の比較へ適用する。
+-/
 lemma localized_diagonal_map_of_reedy_localizedMonos {A T : SimplexCategoryᵒᵖ ⥤ SSet.{v}}
     (i : A ⟶ T) (hi : reedyLeft simplexOp KanTestLiftingClass.localizedMonos i) :
     IsIso (AnodyneHomotopy.anodyneQ.map (diagonal.map i)) := by

@@ -4,7 +4,32 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftHomotopy
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanHomotopyClasses
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Terminal
 
-/-! # Reflection of anodyne localization across simplicial universes
+/-!
+# 宇宙liftの前後でanodyne局所化の可逆性が同値となる
+
+## 概要
+宇宙liftの前後でanodyne局所化の可逆性が同値となる。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+各次数のULiftの上げ下げを明示し、単体作用素との交換を確認する。
+写像・充填またはホモトピーを同じ全パラメータのまま移送する。
+
+## 規約と注意
+モデル構造と射クラスの一致を要求する入口では、その指定データを仮定する。
+このファイルがHT-KQの引用モデルを自動的に選ぶとは解釈しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0589][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0589
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Reflection of anodyne localization across simplicial universes
 
 Kan valued homotopy classes detect the comparison. Replacements use only the
 horn small-object argument, with no model structure in either universe.
@@ -61,8 +86,16 @@ lemma anodyneQ_map_isIso_reflect_of_kan {X Y : SSet.{v}} (f : X ⟶ Y)
   HomotopyClasses.map_isIso_of_tests anodyneQ (Localization.inverts _ _)
     f (kan_test_bijective f hX hf).surjective (kan_test_bijective f hY hf).injective
 
-/-- Reflection for every small map. The auxiliary Kan replacements are obtained
-from the horn small-object argument, without assuming any model structure. -/
+/- 旧宣言の技術注記：
+Reflection for every small map. The auxiliary Kan replacements are obtained
+from the horn small-object argument, without assuming any model structure.
+-/
+/-- 宇宙lift後のanodyne局所化可逆性から元の局所化可逆性を反映する。
+
+モデル構造と射クラスの一致を要求する入口では、その指定データを仮定する。
+各次数のULiftの上げ下げを明示し、単体作用素との交換を確認する。
+写像・充填またはホモトピーを同じ全パラメータのまま移送する。
+-/
 lemma anodyneQ_map_isIso_reflect {X Y : SSet.{v}} (f : X ⟶ Y)
     (hf : IsIso (anodyneQ.map (map.{w} f))) : IsIso (anodyneQ.map f) := by
   let J := SSet.modelCategoryQuillen.J.{v}
@@ -95,6 +128,12 @@ lemma anodyneQ_map_isIso_reflect {X Y : SSet.{v}} (f : X ⟶ Y)
   rw [← isIso_comp_right_iff (anodyneQ.map f) (anodyneQ.map dy.i), ← hs']
   infer_instance
 
+/-- 宇宙liftの前後でanodyne局所化の可逆性が同値となる。
+
+モデル構造と射クラスの一致を要求する入口では、その指定データを仮定する。
+各次数のULiftの上げ下げを明示し、単体作用素との交換を確認する。
+写像・充填またはホモトピーを同じ全パラメータのまま移送する。
+-/
 lemma anodyneQ_map_isIso_iff {X Y : SSet.{v}} (f : X ⟶ Y) :
     IsIso (anodyneQ.map (map.{w} f)) ↔ IsIso (anodyneQ.map f) :=
   ⟨anodyneQ_map_isIso_reflect f, anodyneQ_map_isIso_of_small f⟩

@@ -4,7 +4,32 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanTwoHornLift
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.CurriedHomotopy
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyClasses
 
-/-! # Actual homotopies representing equality of Kan-valued homotopy classes
+/-!
+# Kan値の写像のホモトピー類が等しいことと実際の区間ホモトピーの存在が同値となる
+
+## 概要
+Kan値の写像のホモトピー類が等しいことと実際の区間ホモトピーの存在が同値となる。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+テンソルと内部Homの随伴で族を転置し、対応する境界の等式を比較する。
+転置の単射性と自然性により、元の全パラメータ族の等式へ戻す。
+
+## 規約と注意
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+ここでのKan条件は外側も含む全hornの充填であり、内側hornだけの条件ではない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0406][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0406
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Actual homotopies representing equality of Kan-valued homotopy classes
 
 An outer two-horn in the mapping space supplies right differences of
 homotopies. Hence actual homotopies are symmetric and transitive for Kan
@@ -93,6 +118,12 @@ lemma of_class_eq (heq : HomotopyClasses.mk f = HomotopyClasses.mk g) :
   (relation_equivalence hK).eqvGen_iff.mp (Quot.eqvGen_exact heq)
 
 include hK in
+/-- Kan値の写像のホモトピー類が等しいことと実際の区間ホモトピーの存在が同値となる。
+
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+テンソルと内部Homの随伴で族を転置し、対応する境界の等式を比較する。
+転置の単射性と自然性により、元の全パラメータ族の等式へ戻す。
+-/
 lemma class_eq_iff : HomotopyClasses.mk f = HomotopyClasses.mk g ↔
     Nonempty (SSet.Homotopy f g) :=
   ⟨of_class_eq hK, fun ⟨H⟩ => HomotopyClasses.sound H⟩

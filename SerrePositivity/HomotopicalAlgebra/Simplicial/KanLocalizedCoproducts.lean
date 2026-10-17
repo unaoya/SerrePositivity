@@ -4,7 +4,32 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanTestLiftingClass
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.MonoLocalizedFactorization
 public import Mathlib.CategoryTheory.Limits.Shapes.Products
 
-/-! # Coproducts of arbitrary localized equivalences, without a value model structure
+/-!
+# 局所化で可逆な射の実際の余積もモデル構造を仮定せず局所化で可逆となる
+
+## 概要
+局所化で可逆な射の実際の余積もモデル構造を仮定せず局所化で可逆となる。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+Kan値への実写像とホモトピー類のテストで比較射を調べる。
+貼り合わせ・持ち上げとanodyne局所化の検出を使って像の可逆性を導く。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論の加法性・局所化で現れる貼り合わせと余極限の比較に利用できる。
+[棚卸し m0417][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0417
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Coproducts of arbitrary localized equivalences, without a value model structure
 
 Fixed lifting tests handle coproducts of mono equivalences. The pointwise
 Brown factorization then removes the mono hypothesis on all comparisons.
@@ -102,6 +127,12 @@ instance stable (I : Type w) [Small.{v} I] :
   MorphismProperty.IsStableUnderCoproductsOfShape.mk _ _
     (fun _ _ _ _ f hf => localized_isIso I f hf)
 
+/-- 局所化で可逆な射の実際の余積もモデル構造を仮定せず局所化で可逆となる。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+Kan値への実写像とホモトピー類のテストで比較射を調べる。
+貼り合わせ・持ち上げとanodyne局所化の検出を使って像の可逆性を導く。
+-/
 lemma actual_localized_isIso (I : Type w) [Small.{v} I] {A B : I → SSet.{v}}
     (f : ∀ i, A i ⟶ B i) (hf : ∀ i, IsIso (AnodyneHomotopy.anodyneQ.map (f i)))
     (c : Cofan A) (c' : Cofan B) (hc : IsColimit c) (hc' : IsColimit c')

@@ -4,7 +4,32 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveMonos
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveInitialImage
 public import Mathlib.CategoryTheory.Elements
 
-/-! # The standard simplex augmentation is inverted without a simplicial model
+/-!
+# 標準単体に対する単体圏nerveのaugmentationは指定局所化で可逆となる
+
+## 概要
+標準単体に対する単体圏nerveのaugmentationは指定局所化で可逆となる。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+圏の射列を各単体として評価し、自然変換や端点の射を明示する。
+単体ごとの合成と端点の式を照合して、全体の写像を得る。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0567][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0567
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# The standard simplex augmentation is inverted without a simplicial model
 
 Both actual terminal maps are inverted using explicit initial-object
 contractions. This is the standard-simplex case, not the general theorem.
@@ -51,6 +76,12 @@ lemma standardTerminal_isIso (n : ℕ) :
   infer_instance
 
 include hL in
+/-- 標準単体に対する単体圏nerveのaugmentationは指定局所化で可逆となる。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+圏の射列を各単体として評価し、自然変換や端点の射を明示する。
+単体ごとの合成と端点の式を照合して、全体の写像を得る。
+-/
 lemma standardAugmentation_isIso (n : ℕ) :
     IsIso (L.map ((augmentation.{v}).app (SSet.stdSimplex.obj (SimplexCategory.mk n)))) := by
   let X := SSet.stdSimplex.{v}.obj (SimplexCategory.mk n)

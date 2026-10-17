@@ -4,7 +4,32 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyClassesClose
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanFibrationLocalizedLifting
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneLocalizedTensor
 
-/-! # All-monomorphism lifting for restriction along a localized mono equivalence
+/-!
+# 局所化可逆な単射に沿うKan値内部Homの制限はすべての単射に対する右持ち上げ性を持つ
+
+## 概要
+局所化可逆な単射に沿うKan値内部Homの制限はすべての単射に対する右持ち上げ性を持つ。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+テンソルと内部Homの随伴で族を転置し、対応する境界の等式を比較する。
+転置の単射性と自然性により、元の全パラメータ族の等式へ戻す。
+
+## 規約と注意
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+ここでのKan条件は外側も含む全hornの充填であり、内側hornだけの条件ではない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0434][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0434
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# All-monomorphism lifting for restriction along a localized mono equivalence
 
 The tensor comparison and the closed homotopy-class adjunction prove the
 covariant tests for the actual restriction fibration. Its strict section
@@ -49,6 +74,12 @@ lemma post_bijective (X : SSet.{v}) :
     exact hz
 
 include hi hK in
+/-- 局所化可逆な単射に沿うKan値内部Homの制限はすべての単射に対する右持ち上げ性を持つ。
+
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+テンソルと内部Homの随伴で族を転置し、対応する境界の等式を比較する。
+転置の単射性と自然性により、元の全パラメータ族の等式へ戻す。
+-/
 lemma all_mono_rlp [Mono i] :
     (MorphismProperty.monomorphisms SSet.{v}).rlp ((MonoidalClosed.pre i).app K) := by
   have : Fibration (terminal.from K) := (SSet.modelCategoryQuillen.fibration_iff _).mpr hK

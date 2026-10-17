@@ -5,7 +5,32 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.Generators
 public import SerrePositivity.HomotopicalAlgebra.Generated.FunctorClosure
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneModelDetection
 
-/-! # Universe lift preserves anodyne extensions without model structures
+/-!
+# 宇宙liftはモデル構造を仮定せずanodyne射を保つ
+
+## 概要
+宇宙liftはモデル構造を仮定せずanodyne射を保つ。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+各次数のULiftの上げ下げを明示し、単体作用素との交換を確認する。
+写像・充填またはホモトピーを同じ全パラメータのまま移送する。
+
+## 規約と注意
+モデル構造と射クラスの一致を要求する入口では、その指定データを仮定する。
+このファイルがHT-KQの引用モデルを自動的に選ぶとは解釈しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0588][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0588
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Universe lift preserves anodyne extensions without model structures
 
 Only the small horn small-object argument and colimit preservation are used.
 The categorical localization comparison is consequently model independent.
@@ -26,7 +51,15 @@ lemma hornGenerator_anodyne_map : SSet.modelCategoryQuillen.J.{v} ≤
   exact (SSet.anodyneExtensions.arrow_iso_iff (hornArrowIso.{w, v} (n + 1) i)).mpr
     (SSet.anodyneExtensions.horn_ι i)
 
-/-- The larger universe needs no model category structure. -/
+/- 旧宣言の技術注記：
+The larger universe needs no model category structure.
+-/
+/-- 宇宙liftはモデル構造を仮定せずanodyne射を保つ。
+
+モデル構造と射クラスの一致を要求する入口では、その指定データを仮定する。
+各次数のULiftの上げ下げを明示し、単体作用素との交換を確認する。
+写像・充填またはホモトピーを同じ全パラメータのまま移送する。
+-/
 lemma anodyne_map : SSet.anodyneExtensions.{v} ≤
     SSet.anodyneExtensions.{max v w}.inverseImage SSet.uliftFunctor.{w, v} := by
   rw [SSet.anodyneExtensions_eq_llp_rlp]

@@ -3,7 +3,31 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneKanReplacement
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanHomotopyClasses
 
-/-! # Model-free detection of anodyne localization by all Kan-valued homotopy tests
+/-!
+# anodyne局所化での可逆性は全Kan値ホモトピー類のテストで判定できる
+
+## 概要
+anodyne局所化での可逆性は全Kan値ホモトピー類のテストで判定できる。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+実写像または区間ホモトピーの関係を商へ降ろす。
+代表元に依らないことを確認してから、誘導写像と比較を組み立てる。
+
+## 規約と注意
+テスト対象は外側を含む全hornを充填するKan複体であり、値モデルは入力しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0437][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0437
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Model-free detection of anodyne localization by all Kan-valued homotopy tests
 
 The proof uses only the actual horn replacement and its anodyne unit.
 It applies in any value universe without installing a model structure.
@@ -50,6 +74,12 @@ variable {H : Type uH} [Category.{vH} H] (L : SSet.{v} ⥤ H)
   (hL : SSet.anodyneExtensions.IsInvertedBy L)
 
 include hL in
+/-- 全Kan値のホモトピー類テストからanodyne局所化像の可逆性を導く。
+
+テスト対象は外側を含む全hornを充填するKan複体であり、値モデルは入力しない。
+実写像または区間ホモトピーの関係を商へ降ろす。
+代表元に依らないことを確認してから、誘導写像と比較を組み立てる。
+-/
 lemma map_isIso_of_tests (hf : Tests f) : IsIso (L.map f) := by
   have hr := replacement_tests f hf
   have : IsIso (L.map (AnodyneKanReplacement.functor.map f)) :=
@@ -72,6 +102,12 @@ lemma tests_of_anodyneQ_isIso (hf : IsIso (AnodyneHomotopy.anodyneQ.map f)) : Te
   have : IsIso ((HomotopyClasses.functor K).map f.op) := (isIso_op_iff _).mp h
   exact (isIso_iff_bijective _).mp this
 
+/-- anodyne局所化での可逆性は全Kan値ホモトピー類のテストで判定できる。
+
+テスト対象は外側を含む全hornを充填するKan複体であり、値モデルは入力しない。
+実写像または区間ホモトピーの関係を商へ降ろす。
+代表元に依らないことを確認してから、誘導写像と比較を組み立てる。
+-/
 lemma anodyneQ_isIso_iff_tests : IsIso (AnodyneHomotopy.anodyneQ.map f) ↔ Tests f :=
   ⟨tests_of_anodyneQ_isIso f, map_isIso_of_tests f AnodyneHomotopy.anodyneQ
     (Localization.inverts AnodyneHomotopy.anodyneQ SSet.anodyneExtensions)⟩

@@ -4,7 +4,32 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneIntervalEndpo
 public import Mathlib.CategoryTheory.Localization.Predicate
 public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
 
-/-! # Full simplicial homotopies are inverted by anodyne-inverting functors
+/-!
+# anodyne射を反転する関手は単体的にホモトピックな二射を同じ射へ送る
+
+## 概要
+anodyne射を反転する関手は単体的にホモトピックな二射を同じ射へ送る。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0340][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0340
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Full simplicial homotopies are inverted by anodyne-inverting functors
 
 Only the canonical interval and ordinary categorical inverses are used.
 No full simplicial model structure is needed in the source universe.
@@ -48,6 +73,12 @@ lemma endpoint_images_eq (X : SSet.{v}) :
   rw [← L.map_comp, ← L.map_comp, endpoint_projection_zero, endpoint_projection_one]
 
 include hL in
+/-- anodyne射を反転する関手は単体的にホモトピックな二射を同じ射へ送る。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+-/
 lemma map_homotopy_eq {X Y : SSet.{v}} {f g : X ⟶ Y} (h : SSet.Homotopy f g) :
     L.map f = L.map g := by
   calc

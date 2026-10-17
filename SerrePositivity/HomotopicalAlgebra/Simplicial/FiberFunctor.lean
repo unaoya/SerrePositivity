@@ -3,7 +3,32 @@ module
 public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.IsPullback.Basic
 
-/-! # Actual pullback fibers in an arbitrary simplicial diagram
+/-!
+# 図式内の実際のpullbackファイバーへ整合する族を持ち上げる
+
+## 概要
+図式内の実際のpullbackファイバーへ整合する族を持ち上げる。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0398][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0398
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Actual pullback fibers in an arbitrary simplicial diagram
 
 Objectwise pullbacks and their actual maps form a strict functor. Natural
 families over the specified point lift to that functor. No model is used.
@@ -60,6 +85,12 @@ def projection : functor p b ⟶ (Functor.const D).obj
 variable {S : SSet.{v}} (a : (Functor.const D).obj S ⟶ F)
   (ha : ∀ X, a.app X ≫ p.app X = SSet.stdSimplex.isTerminalObj₀.from S ≫ b.app X)
 
+/-- 図式内の実際のpullbackファイバーへ整合する族を持ち上げる。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+-/
 def liftFamily : (Functor.const D).obj S ⟶ functor p b where
   app X := pullback.lift (a.app X) (SSet.stdSimplex.isTerminalObj₀.from S) (ha X)
   naturality {X Y} f := by

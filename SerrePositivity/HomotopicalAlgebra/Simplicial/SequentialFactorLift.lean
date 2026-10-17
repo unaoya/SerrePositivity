@@ -3,7 +3,32 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SequentialFactorLiftingClasses
 public import Mathlib.CategoryTheory.LiftingProperties.Adjunction
 
-/-! # Coherent lifts of the actual sequential left factor
+/-!
+# 既存の段階を保持する逐次持ち上げから全体の持ち上げ性を構成する
+
+## 概要
+既存の段階を保持する逐次持ち上げから全体の持ち上げ性を構成する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+指定された境界と基底から可換正方形を作り、その持ち上げ性を使う。
+元の指定部分を保つ等式は、対角射の二つの分解等式から確認する。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0555][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0555
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Coherent lifts of the actual sequential left factor
 
 At every successor, the chosen lift extends the previous actual lift by
 using its relative pushout. The final natural transformation therefore
@@ -111,6 +136,12 @@ lemma lift_right : lift α p a b sq h₀ hs ≫ (Functor.const ℕ).map p = b :=
   exact (stageLift α p a b sq h₀ hs n).right_fac
 
 include h₀ hs in
+/-- 既存の段階を保持する逐次持ち上げから全体の持ち上げ性を構成する。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+指定された境界と基底から可換正方形を作り、その持ち上げ性を使う。
+元の指定部分を保つ等式は、対角射の二つの分解等式から確認する。
+-/
 lemma hasLiftingProperty : HasLiftingProperty (leftMap α) ((Functor.const ℕ).map p) := by
   constructor
   intro a b sq

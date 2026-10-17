@@ -4,7 +4,32 @@ public import SerrePositivity.CategoryTheory.Limits.SequentialExtension
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryGluing
 public import Mathlib.AlgebraicTopology.SimplicialSet.Skeleton
 
-/-! # Assemble prescribed nondegenerate simplices into coherent skeletal maps
+/-!
+# 非退化単体ごとの指定値を保つ骨格上の写像を構成する
+
+## 概要
+非退化単体ごとの指定値を保つ骨格上の写像を構成する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0569][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0569
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Assemble prescribed nondegenerate simplices into coherent skeletal maps
 
 A map on the preceding skeleton and a specified map on each new simplex,
 with its boundary equation, determine the next skeletal map by the actual
@@ -185,7 +210,15 @@ lemma override_eq (prescribed : ∀ n, Cell j n →
   classical
   simp only [override, hs, dite_eq_left h]
 
-/-- A prescribed cell with boundary in A is retained by the global recursion. -/
+/- 旧宣言の技術注記：
+A prescribed cell with boundary in A is retained by the global recursion.
+-/
+/-- 非退化単体ごとの指定値を保つ骨格上の写像を構成する。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+-/
 lemma assemble_prescribed (prescribed : ∀ n, Cell j n →
     Option (SSet.stdSimplex.{v}.obj (SimplexCategory.mk n) ⟶ Q))
     {n : ℕ} (c : Cell j n)

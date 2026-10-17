@@ -3,7 +3,32 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarConstruction
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.TotalNerveBarAugmentation
 
-/-! # The same relative bar as the bar on its actual base comma category
+/-!
+# 相対barを実際の基底comma圏上のbarとして表示する
+
+## 概要
+相対barを実際の基底comma圏上のbarとして表示する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+各次数の要素の圏・comma圏とnerveを使って写像を構成する。
+単体方向と基底方向の自然性を確認し、収縮や局所化の普遍性へ接続する。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はWaldhausenのS-構成の二重単体図式や分解の比較・加法性の準備に利用できる。
+[棚卸し m0521][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0521
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# The same relative bar as the bar on its actual base comma category
 
 Only the order of recording a comma arrow and its element label changes.
 The two actual simplicial maps are inverse, retaining every chain and label.
@@ -47,6 +72,12 @@ def relativeToCommaBar : (relative p F).obj b ⟶ commaBar p F b where
   app n := ↾fun c => c ⋙ elementsComma p F b n
   naturality {_ _} _ := rfl
 
+/-- 相対barを実際の基底comma圏上のbarとして表示する。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+各次数の要素の圏・comma圏とnerveを使って写像を構成する。
+単体方向と基底方向の自然性を確認し、収縮や局所化の普遍性へ接続する。
+-/
 def commaPresentation : commaBar p F b ≅ (relative p F).obj b where
   hom := commaBarToRelative p F b
   inv := relativeToCommaBar p F b

@@ -3,7 +3,32 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanMonoRelativeHomotopy
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanMonoPushoutExtension
 
-/-! # Pushouts preserve localized mono equivalences without a value model structure
+/-!
+# 局所化で可逆な単射のpushoutがモデル構造なしで局所化可逆となる
+
+## 概要
+局所化で可逆な単射のpushoutがモデル構造なしで局所化可逆となる。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+Kan値への実写像とホモトピー類のテストで比較射を調べる。
+貼り合わせ・持ち上げとanodyne局所化の検出を使って像の可逆性を導く。
+
+## 規約と注意
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+ここでのKan条件は外側も含む全hornの充填であり、内側hornだけの条件ではない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論の加法性・局所化で現れる貼り合わせと余極限の比較に利用できる。
+[棚卸し m0423][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0423
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Pushouts preserve localized mono equivalences without a value model structure
 
 Both endpoints and the entire homotopy on the pushout leg are retained
 when gluing intervals. Kan class injectivity and surjectivity then detect
@@ -71,6 +96,12 @@ lemma tests : KanTestDetection.Tests g := by
     KanMonoPushoutExtension.pre_surjective i j u g sq hi hK⟩
 
 include sq hi in
+/-- 局所化で可逆な単射のpushoutがモデル構造なしで局所化可逆となる。
+
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+Kan値への実写像とホモトピー類のテストで比較射を調べる。
+貼り合わせ・持ち上げとanodyne局所化の検出を使って像の可逆性を導く。
+-/
 lemma localized_isIso : IsIso (AnodyneHomotopy.anodyneQ.map g) :=
   (KanTestDetection.anodyneQ_isIso_iff_tests g).mpr (tests i j u g sq hi)
 

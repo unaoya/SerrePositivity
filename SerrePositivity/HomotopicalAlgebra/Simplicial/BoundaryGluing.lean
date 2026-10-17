@@ -4,7 +4,32 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.Boundary
 public import Mathlib.AlgebraicTopology.SimplicialSet.SubcomplexColimits
 public import Mathlib.AlgebraicTopology.SimplicialSet.HornColimits
 
-/-! # Gluing prescribed simplicial faces from their actual intersections
+/-!
+# 互換な標準面の族を実際の単体境界上の一つの射に貼り合わせる
+
+## 概要
+互換な標準面の族を実際の単体境界上の一つの射に貼り合わせる。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0354][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0354
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Gluing prescribed simplicial faces from their actual intersections
 
 The boundary map is constructed from a compatible family of facet maps.
 Compatibility on actual subcomplex intersections is retained, so previously
@@ -108,12 +133,24 @@ def standardCofork {P : SSet.{v}} {n : ℕ}
       SSet.stdSimplex.homOfLE_faceSingletonComplIso_inv_eq_facePairComplIso_inv_δ_castPred_assoc
         _ _ hjk, hf j k hjk])
 
+/-- 互換な標準面の族を実際の単体境界上の一つの射に貼り合わせる。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+-/
 def standardDesc {P : SSet.{v}} {n : ℕ}
     (f : Fin (n + 3) → (SSet.stdSimplex.{v}.obj (SimplexCategory.mk (n + 1)) ⟶ P))
     (hf : StandardCompatible f) : (SSet.boundary.{v} (n + 2)).toSSet ⟶ P :=
   ((standardDiagram.{v} (n + 2)).isColimit').desc (standardCofork f hf)
 
 set_option backward.isDefEq.respectTransparency.types false in
+/-- 境界へ貼り合わせた射の各標準面への制限は指定した面そのものとなる。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+-/
 @[reassoc]
 lemma standardDesc_fac {P : SSet.{v}} {n : ℕ}
     (f : Fin (n + 3) → (SSet.stdSimplex.{v}.obj (SimplexCategory.mk (n + 1)) ⟶ P))

@@ -4,7 +4,32 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterExtens
 public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.BinaryProducts
 
-/-! # Homotopies of large-parameter maps into a lifted small injective space
+/-!
+# 大きいパラメータから小さい可縮な比較空間の宇宙liftへの区間ホモトピーを構成する
+
+## 概要
+大きいパラメータから小さい可縮な比較空間の宇宙liftへの区間ホモトピーを構成する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0442][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0442
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Homotopies of large-parameter maps into a lifted small injective space
 
 Small boundary fillers assemble an actual interval homotopy. No model
 structure is assumed in the larger universe.
@@ -90,6 +115,12 @@ lemma at_one : SSet.ι₁ ≫ hom hp e₀ e₁ = e₁ := by
   rw [← section_one K, Category.assoc, face_one]
   rfl
 
+/-- 大きいパラメータから小さい可縮な比較空間の宇宙liftへの区間ホモトピーを構成する。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+-/
 def homotopy : SSet.Homotopy e₀ e₁ where
   h := hom hp e₀ e₁
   h₀ := at_zero hp e₀ e₁

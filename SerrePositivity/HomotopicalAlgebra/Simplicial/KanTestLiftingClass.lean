@@ -5,7 +5,32 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanRelativeLifting
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanMonoStrictExtension
 public import Mathlib.CategoryTheory.SmallObject.TransfiniteCompositionLifting
 
-/-! # Localized mono equivalences as a fixed left lifting class intersected with monos
+/-!
+# 局所化可逆な単射を固定した左持ち上げクラスとの交わりとして特徴付ける
+
+## 概要
+局所化可逆な単射を固定した左持ち上げクラスとの交わりとして特徴付ける。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+指定された境界と基底から可換正方形を作り、その持ち上げ性を使う。
+元の指定部分を保つ等式は、対角射の二つの分解等式から確認する。
+
+## 規約と注意
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+ここでのKan条件は外側も含む全hornの充填であり、内側hornだけの条件ではない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0438][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0438
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Localized mono equivalences as a fixed left lifting class intersected with monos
 
 The fixed right tests are terminal maps of Kan objects and their actual
 path restrictions to the two endpoints. No model structure is assumed.
@@ -93,6 +118,12 @@ lemma localized_isIso_of_llp (hi : rightTests.llp i) :
     IsIso (AnodyneHomotopy.anodyneQ.map i) :=
   (KanTestDetection.anodyneQ_isIso_iff_tests i).mpr (tests_of_llp i hi)
 
+/-- 局所化可逆な単射を固定した左持ち上げクラスとの交わりとして特徴付ける。
+
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+指定された境界と基底から可換正方形を作り、その持ち上げ性を使う。
+元の指定部分を保つ等式は、対角射の二つの分解等式から確認する。
+-/
 lemma localizedMonos_eq : localizedMonos.{v} =
     MorphismProperty.monomorphisms SSet.{v} ⊓ rightTests.llp := by
   funext A B i

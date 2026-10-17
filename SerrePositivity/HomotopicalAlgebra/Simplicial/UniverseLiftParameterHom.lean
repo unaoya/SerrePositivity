@@ -3,7 +3,32 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexParameterHom
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftTensor
 
-/-! # Universe lift preserves the whole parameter mapping space
+/-!
+# 小さいパラメータ写像空間の宇宙liftを大きい内部Homと同型で結ぶ
+
+## 概要
+小さいパラメータ写像空間の宇宙liftを大きい内部Homと同型で結ぶ。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+各次数のULiftの上げ下げを明示し、単体作用素との交換を確認する。
+写像・充填またはホモトピーを同じ全パラメータのまま移送する。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0600][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0600
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Universe lift preserves the whole parameter mapping space
 
 The comparison is an actual simplicial isomorphism, natural in both
 variables and compatible with composition of parameter families. It does
@@ -81,6 +106,12 @@ def bifunctorIso : SimplexParameterHom.bifunctor.{v} ⋙ SSet.uliftFunctor.{w, v
     intro b c f
     exact naturality b.1.unop b.2 f.1.unop f.2)
 
+/-- 小さいパラメータ写像空間の宇宙liftを大きい内部Homと同型で結ぶ。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+各次数のULiftの上げ下げを明示し、単体作用素との交換を確認する。
+写像・充填またはホモトピーを同じ全パラメータのまま移送する。
+-/
 def closedIso : SSet.uliftFunctor.{w, v}.obj ((ihom K).obj P) ≅
     (ihom (UniverseLift.obj.{w} K)).obj (UniverseLift.obj.{w} P) :=
   SSet.uliftFunctor.mapIso (SimplexParameterHom.nativeIso K P).symm ≪≫

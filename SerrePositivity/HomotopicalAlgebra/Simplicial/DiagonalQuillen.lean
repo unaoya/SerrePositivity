@@ -4,7 +4,31 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalRelativeMatc
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalCofibrations
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.ModelCompatibility
 
-/-! # The diagonal Quillen adjunction and bisimplicial weak equivalences
+/-!
+# 各行が弱同値である二重単体写像の対角も弱同値となる
+
+## 概要
+各行が弱同値である二重単体写像の対角も弱同値となる。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+対角の右随伴と境界内部Homの比較を使い、相対matching射を計算する。
+必要な持ち上げ条件またはBrownの補題を、この実際の比較へ適用する。
+
+## 規約と注意
+単射がcofibration、hornの右クラスがfibrationである指定した値モデルを仮定する。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はWaldhausenのS-構成の二重単体図式や分解の比較・加法性の準備に利用できる。
+[棚卸し m0387][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0387
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# The diagonal Quillen adjunction and bisimplicial weak equivalences
 
 The right adjoint's relative matching maps are boundary pullback-Homs.
 The proved SM7 condition therefore supplies the right Quillen condition.
@@ -74,6 +98,12 @@ lemma internalHomRight_isRightQuillen :
           relativeMatching_weakEquivalence hcof hfib p n⟩
 
 include hcof hfib in
+/-- 指定した単体モデルとReedyモデルのもとで対角関手が左Quillen関手となる。
+
+単射がcofibration、hornの右クラスがfibrationである指定した値モデルを仮定する。
+対角の右随伴と境界内部Homの比較を使い、相対matching射を計算する。
+必要な持ち上げ条件またはBrownの補題を、この実際の比較へ適用する。
+-/
 lemma diagonal_isLeftQuillen :
     let := simplexOpModelCategory SSet.{v}; IsLeftQuillen diagonal.{v} := by
   let := simplexOpModelCategory SSet.{v}
@@ -81,7 +111,15 @@ lemma diagonal_isLeftQuillen :
   exact (isLeftQuillen_iff_isRightQuillen diagonalInternalHomAdjunction).mpr inferInstance
 
 include hcof hfib in
-/-- Every rowwise weak equivalence of bisimplicial sets is a diagonal weak equivalence. -/
+/- 旧宣言の技術注記：
+Every rowwise weak equivalence of bisimplicial sets is a diagonal weak equivalence.
+-/
+/-- 各行が弱同値である二重単体写像の対角も弱同値となる。
+
+単射がcofibration、hornの右クラスがfibrationである指定した値モデルを仮定する。
+対角の右随伴と境界内部Homの比較を使い、相対matching射を計算する。
+必要な持ち上げ条件またはBrownの補題を、この実際の比較へ適用する。
+-/
 lemma diagonal_map_weakEquivalence {B B' : SimplexCategoryᵒᵖ ⥤ SSet.{v}} (f : B ⟶ B')
     (hf : ∀ n, weakEquivalences SSet.{v} (f.app n)) :
     weakEquivalences SSet.{v} (diagonal.map f) :=

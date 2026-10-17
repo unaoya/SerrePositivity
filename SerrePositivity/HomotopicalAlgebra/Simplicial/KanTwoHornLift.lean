@@ -2,7 +2,32 @@ module
 
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.PushoutProduct
 
-/-! # Fill a specified outer two-horn over its specified base triangle
+/-!
+# 指定した基底三角形の上で外側二次hornを充填する
+
+## 概要
+指定した基底三角形の上で外側二次hornを充填する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+
+## 規約と注意
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+ここでのKan条件は外側も含む全hornの充填であり、内側hornだけの条件ではない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0440][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0440
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Fill a specified outer two-horn over its specified base triangle
 
 Both given whole edges and the given base triangle are retained. Only
 the original horn right lifting class is assumed, not a model structure.
@@ -19,6 +44,12 @@ namespace SerrePositivity.SimplicialModel.KanTwoHornLift
 variable {E B : SSet.{v}} (p : E ⟶ B) (hp : SSet.modelCategoryQuillen.J.rlp p)
 
 include hp in
+/-- 指定した基底三角形の上で外側二次hornを充填する。
+
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+-/
 lemma exists_triangle
     (e₀ e₁ : SSet.stdSimplex.{v}.obj (SimplexCategory.mk 1) ⟶ E)
     (b : SSet.stdSimplex.{v}.obj (SimplexCategory.mk 2) ⟶ B)

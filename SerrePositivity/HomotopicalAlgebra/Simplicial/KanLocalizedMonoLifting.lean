@@ -4,7 +4,32 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanMonoRelativeHomot
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanMonoStrictExtension
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanFibrationEndpointExtension
 
-/-! # Localized mono equivalences lift against Kan fibrations with Kan base
+/-!
+# 局所化で可逆な単射はKan基底上のKan fibrationに対して持ち上げ性を持つ
+
+## 概要
+局所化で可逆な単射はKan基底上のKan fibrationに対して持ち上げ性を持つ。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+
+## 規約と注意
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+ここでのKan条件は外側も含む全hornの充填であり、内側hornだけの条件ではない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0419][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0419
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Localized mono equivalences lift against Kan fibrations with Kan base
 
 The extension and both endpoint corrections retain the original square.
 No model structure or additional weak-equivalence class is assumed.
@@ -25,6 +50,12 @@ variable {A T E B : SSet.{v}} (i : A ⟶ T) [Mono i]
   (hB : SSet.modelCategoryQuillen.J.rlp (terminal.from B))
 
 include hi hp hB in
+/-- 局所化で可逆な単射はKan基底上のKan fibrationに対して持ち上げ性を持つ。
+
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+-/
 lemma hasLiftingProperty : HasLiftingProperty i p := by
   have : Fibration p := (SSet.modelCategoryQuillen.fibration_iff _).mpr hp
   have : Fibration (terminal.from B) := (SSet.modelCategoryQuillen.fibration_iff _).mpr hB

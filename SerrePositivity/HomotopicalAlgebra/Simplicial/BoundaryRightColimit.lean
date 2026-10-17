@@ -5,7 +5,32 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingCont
 public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleLiftingClosure
 public import Mathlib.CategoryTheory.Category.ULift
 
-/-! # Filtered and sequential colimits of actual boundary-right arrows
+/-!
+# 境界に対する右持ち上げ性がfilteredな余極限で保たれる
+
+## 概要
+境界に対する右持ち上げ性がfilteredな余極限で保たれる。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論の加法性・局所化で現れる貼り合わせと余極限の比較に利用できる。
+[棚卸し m0357][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0357
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Filtered and sequential colimits of actual boundary-right arrows
 
 Finite presentability of both endpoints of each boundary generator gives
 the lifting property on the original colimit. A lifted index category
@@ -21,6 +46,12 @@ attribute [local instance] Cardinal.fact_isRegular_aleph0
 
 namespace SerrePositivity.SimplicialModel.BoundaryRightColimit
 
+/-- 境界に対する右持ち上げ性がfilteredな余極限で保たれる。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+-/
 lemma filtered_rlp {J : Type v} [SmallCategory J] [IsFiltered J]
     {F : J ⥤ Arrow SSet.{v}} {c : Cocone F} (hc : IsColimit c)
     (hF : ∀ j, I.rlp (F.obj j).hom) : I.rlp c.pt.hom := by

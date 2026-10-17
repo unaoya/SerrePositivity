@@ -3,7 +3,32 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarIdentity
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftIteration
 
-/-! # The natural comparison span through an identity-projection bar
+/-!
+# 相対bar比較spanのsectionが元のaugmentationのレトラクションを与える
+
+## 概要
+相対bar比較spanのsectionが元のaugmentationのレトラクションを与える。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+各次数の要素の圏・comma圏とnerveを使って写像を構成する。
+単体方向と基底方向の自然性を確認し、収縮や局所化の普遍性へ接続する。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はWaldhausenのS-構成の二重単体図式や分解の比較・加法性の準備に利用できる。
+[棚卸し m0531][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0531
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# The natural comparison span through an identity-projection bar
 
 The left map has an explicit pointwise section. The section is not claimed
 to be natural in the base. Neither leg is assumed to be a weak equivalence.
@@ -34,6 +59,12 @@ def spanSection (d : D) : (SSet.uliftFunctor.{max uD vD vB, v}).obj (F.obj d) �
   (UniverseLift.iterationIso.{v, max uD vD, vB}.app (F.obj d)).inv ≫
     SSet.uliftFunctor.{vB, max uD vD v}.map (identitySection F d)
 
+/-- 相対bar比較spanのsectionが元のaugmentationのレトラクションを与える。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+各次数の要素の圏・comma圏とnerveを使って写像を構成する。
+単体方向と基底方向の自然性を確認し、収縮や局所化の普遍性へ接続する。
+-/
 lemma spanSection_retract (d : D) :
     spanSection p F d ≫ (spanLeft p F).app d = 𝟙 _ := by
   let U := SSet.uliftFunctor.{vB, max uD vD v}

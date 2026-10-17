@@ -3,7 +3,32 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroConstant
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanTestDetection
 
-/-! # Anodyne-localized equivalences induce bijections on actual components
+/-!
+# anodyne局所化で可逆な射は実際の連結成分の全単射を誘導する
+
+## 概要
+anodyne局所化で可逆な射は実際の連結成分の全単射を誘導する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+実写像または区間ホモトピーの関係を商へ降ろす。
+代表元に依らないことを確認してから、誘導写像と比較を組み立てる。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間のπ₀、局所化後の射、ホモトピー類の計算に利用できる。
+[棚卸し m0513][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0513
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Anodyne-localized equivalences induce bijections on actual components
 
 Discrete Kan tests identify precomposition on homotopy classes with
 precomposition on functions out of components. No model structure is used.
@@ -62,6 +87,12 @@ lemma bijective_of_precomposition {A B : Type v} (p : A → B)
     _ = l (p b) := congrArg l hab
     _ = b := congrFun hl b
 
+/-- anodyne局所化で可逆な射は実際の連結成分の全単射を誘導する。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+実写像または区間ホモトピーの関係を商へ降ろす。
+代表元に依らないことを確認してから、誘導写像と比較を組み立てる。
+-/
 lemma piZero_bijective (f : X ⟶ Y)
     (hf : IsIso (AnodyneHomotopy.anodyneQ.map f)) :
     Function.Bijective (SSet.mapπ₀ f) :=

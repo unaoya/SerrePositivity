@@ -3,7 +3,32 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarConstruction
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftFillers
 
-/-! # Actual sections into a relative bar and their comma-arrow intervals
+/-!
+# 相対barへのsectionの区間が全単体作用素と整合する
+
+## 概要
+相対barへのsectionの区間が全単体作用素と整合する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+各次数の要素の圏・comma圏とnerveを使って写像を構成する。
+単体方向と基底方向の自然性を確認し、収縮や局所化の普遍性へ接続する。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はWaldhausenのS-構成の二重単体図式や分解の比較・加法性の準備に利用できる。
+[棚卸し m0530][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0530
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Actual sections into a relative bar and their comma-arrow intervals
 
 All source, value, and base universes are independent. The interval uses
 one actual comma morphism, retaining its element labels in every degree.
@@ -61,7 +86,15 @@ lemma elementComma_hom_heq {n : SimplexCategoryᵒᵖ}
   apply Functor.Elements.hom_ext
   exact eq_of_heq h
 
-/-- The entire interval commutes with all operators, including its mixed 0→1 arrow. -/
+/- 旧宣言の技術注記：
+The entire interval commutes with all operators, including its mixed 0→1 arrow.
+-/
+/-- 相対barへのsectionの区間が全単体作用素と整合する。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+各次数の要素の圏・comma圏とnerveを使って写像を構成する。
+単体方向と基底方向の自然性を確認し、収縮や局所化の普遍性へ接続する。
+-/
 lemma sectionInterval_operator {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m)
     (x : (F.obj d).obj n) :
     sectionInterval p F α β k hk n x ⋙ sectionLevelMap p F θ =

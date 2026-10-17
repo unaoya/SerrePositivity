@@ -4,7 +4,32 @@ public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Resolut
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.PushoutProduct
 public import Mathlib.AlgebraicTopology.SimplicialSet.KanComplex
 
-/-! # Whole simplex-parameter families as an actual mapping simplicial set
+/-!
+# Kan値の全単体パラメータ写像空間はKan複体となる
+
+## 概要
+Kan値の全単体パラメータ写像空間はKan複体となる。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+テンソルと内部Homの随伴で族を転置し、対応する境界の等式を比較する。
+転置の単射性と自然性により、元の全パラメータ族の等式へ戻す。
+
+## 規約と注意
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+ここでのKan条件は外側も含む全hornの充填であり、内側hornだけの条件ではない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0568][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0568
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Whole simplex-parameter families as an actual mapping simplicial set
 
 The native closed Hom is isomorphic to this explicit model in every
 degree. No model structure or choice of resolutions is involved.
@@ -116,6 +141,12 @@ def composition (Q : SSet.{v}) : obj K P ⊗ obj P Q ⟶ obj K Q where
     intro y
     rfl
 
+/-- Kan値の全単体パラメータ写像空間はKan複体となる。
+
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+テンソルと内部Homの随伴で族を転置し、対応する境界の等式を比較する。
+転置の単射性と自然性により、元の全パラメータ族の等式へ戻す。
+-/
 lemma native_kan (hP : SSet.modelCategoryQuillen.J.rlp (terminal.from P)) :
     SSet.modelCategoryQuillen.J.rlp (terminal.from ((ihom K).obj P)) := by
   have : HomotopicalAlgebra.Fibration (terminal.from P) :=

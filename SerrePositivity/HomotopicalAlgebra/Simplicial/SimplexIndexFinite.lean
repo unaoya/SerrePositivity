@@ -6,7 +6,32 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.CategoryTheory.Functor.EpiMono
 public import Mathlib.CategoryTheory.ConcreteCategory.EpiMono
 
-/-! # Finite Reedy boundary indices for an arbitrarily large simplicial set
+/-!
+# 単体圏の逆射が誘導する単体的集合の写像は単射となる
+
+## 概要
+単体圏の逆射が誘導する単体的集合の写像は単射となる。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+圏の射列を各単体として評価し、自然変換や端点の射を明示する。
+単体ごとの合成と端点の式を照合して、全体の写像を得る。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0557][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0557
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Finite Reedy boundary indices for an arbitrarily large simplicial set
 
 A fixed simplex has only finitely many direct faces and inverse quotients.
 All labels are forced by their simplex operators. Neither the whole set
@@ -23,6 +48,12 @@ variable (X : SSet.{w})
 
 abbrev reedy := (Reedy.elementsReedy X Reedy.simplexOp).op
 
+/-- 単体圏の逆射が誘導する単体的集合の写像は単射となる。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+圏の射列を各単体として評価し、自然変換や端点の射を明示する。
+単体ごとの合成と端点の式を照合して、全体の写像を得る。
+-/
 lemma map_inverse_injective {i j : SimplexCategoryᵒᵖ} (f : i ⟶ j)
     (hf : Reedy.simplexInverse.op f) : Function.Injective (X.map f) := by
   have : Epi f.unop := hf

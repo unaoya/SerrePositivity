@@ -3,7 +3,32 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarReindex
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarAnodyneComparison
 
-/-! # Reindexing the actual middle of a relative bar span
+/-!
+# 相対barの中間対象の添字変更が局所化後に同型を与える
+
+## 概要
+相対barの中間対象の添字変更が局所化後に同型を与える。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+各次数の要素の圏・comma圏とnerveを使って写像を構成する。
+単体方向と基底方向の自然性を確認し、収縮や局所化の普遍性へ接続する。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はWaldhausenのS-構成の二重単体図式や分解の比較・加法性の準備に利用できる。
+[棚卸し m0526][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0526
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Reindexing the actual middle of a relative bar span
 
 The middle comparison commutes with both legs. Its image is invertible under
 every anodyne-inverting functor, independently of cofinality of the index map.
@@ -78,6 +103,12 @@ lemma middleReindex_image_isIso (e : E) : IsIso (L.map ((middleReindex q p F).ap
       L.map ((spanLeft p F).app (q.obj e))) := h ▸ inferInstance
   exact (isIso_comp_right_iff _ _).mp this
 
+/-- 相対barの中間対象の添字変更が局所化後に同型を与える。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+各次数の要素の圏・comma圏とnerveを使って写像を構成する。
+単体方向と基底方向の自然性を確認し、収縮や局所化の普遍性へ接続する。
+-/
 def middleReindexImageIso : spanMiddle (q ⋙ p) (q ⋙ F) ⋙ L ≅
     (q ⋙ spanMiddle p F) ⋙ L := by
   let a := Functor.whiskerRight (middleReindex q p F) L

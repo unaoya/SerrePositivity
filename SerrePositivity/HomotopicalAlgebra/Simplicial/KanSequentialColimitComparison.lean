@@ -4,7 +4,32 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.SequentialFactorLift
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryRightColimit
 public import SerrePositivity.HomotopicalAlgebra.Diagram.ColimitWeakEquivalence
 
-/-! # Sequential colimit comparison in the original anodyne localization
+/-!
+# 逐次図式の局所化可逆な比較は実際の余極限上でも局所化可逆となる
+
+## 概要
+逐次図式の局所化可逆な比較は実際の余極限上でも局所化可逆となる。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+Kan値への実写像とホモトピー類のテストで比較射を調べる。
+貼り合わせ・持ち上げとanodyne局所化の検出を使って像の可逆性を導く。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論の加法性・局所化で現れる貼り合わせと余極限の比較に利用できる。
+[棚卸し m0436][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0436
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Sequential colimit comparison in the original anodyne localization
 
 The source successor maps are mono and all original components are
 localized equivalences. Relative lifting handles the left colimit factor;
@@ -54,6 +79,12 @@ lemma localized_isIso : IsIso (AnodyneHomotopy.anodyneQ.map (colim.map α)) := b
       AnodyneHomotopy.anodyneQ.map (colim.map (rightMap α))))
 
 include hF hα in
+/-- 逐次図式の局所化可逆な比較は実際の余極限上でも局所化可逆となる。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+Kan値への実写像とホモトピー類のテストで比較射を調べる。
+貼り合わせ・持ち上げとanodyne局所化の検出を使って像の可逆性を導く。
+-/
 lemma actual_localized_isIso (c : Cocone F) (d : Cocone G) (hc : IsColimit c) (hd : IsColimit d)
     (m : c.pt ⟶ d.pt) (hm : ∀ n, c.ι.app n ≫ m = α.app n ≫ d.ι.app n) :
     IsIso (AnodyneHomotopy.anodyneQ.map m) := by

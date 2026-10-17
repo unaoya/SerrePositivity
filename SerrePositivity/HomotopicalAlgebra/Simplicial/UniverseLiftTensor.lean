@@ -3,7 +3,33 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftFillers
 public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal
 
-/-! # Actual universe comparison for whole tensor and standard-simplex families -/
+/-!
+# 単体的宇宙liftの直積と元の直積のliftとの実際の比較射を構成する
+
+## 概要
+単体的宇宙liftの直積と元の直積のliftとの実際の比較射を構成する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+各次数のULiftの上げ下げを明示し、単体作用素との交換を確認する。
+写像・充填またはホモトピーを同じ全パラメータのまま移送する。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0603][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0603
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Actual universe comparison for whole tensor and standard-simplex families
+-/
 
 @[expose] public section
 universe w v
@@ -24,6 +50,12 @@ def tensorIso (K T : SSet.{v}) : obj.{w} (K ⊗ T) ≅ obj.{w} K ⊗ obj.{w} T :
 
 variable {K T P : SSet.{v}}
 
+/-- 単体的宇宙liftの直積と元の直積のliftとの実際の比較射を構成する。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+各次数のULiftの上げ下げを明示し、単体作用素との交換を確認する。
+写像・充填またはホモトピーを同じ全パラメータのまま移送する。
+-/
 def tensorMap (h : K ⊗ T ⟶ P) : obj.{w} K ⊗ obj.{w} T ⟶ obj.{w} P :=
   (tensorIso K T).inv ≫ map h
 

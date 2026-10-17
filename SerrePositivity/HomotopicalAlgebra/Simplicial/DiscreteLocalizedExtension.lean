@@ -2,7 +2,32 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiscreteKanExtension
 
-/-! # Unique discrete-valued descent through every localized equivalence
+/-!
+# 離散値の自然変換を局所化で可逆な射に沿って一意に降下させる
+
+## 概要
+離散値の自然変換を局所化で可逆な射に沿って一意に降下させる。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+実写像または区間ホモトピーの関係を商へ降ろす。
+代表元に依らないことを確認してから、誘導写像と比較を組み立てる。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0395][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0395
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Unique discrete-valued descent through every localized equivalence
 
 This applies to quotient projections as well as anodyne units. No model
 structure or smallness of the base category is required.
@@ -48,6 +73,12 @@ variable {D : Type uD} [Category.{vD} D] {F G : D ⥤ SSet.{w}} {T : D ⥤ Type 
   (p : F ⟶ G) (hp : ∀ d, IsIso (AnodyneHomotopy.anodyneQ.map (p.app d)))
   (a : F ⟶ T ⋙ Functor.const SimplexCategoryᵒᵖ)
 
+/-- 離散値の自然変換を局所化で可逆な射に沿って一意に降下させる。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+実写像または区間ホモトピーの関係を商へ降ろす。
+代表元に依らないことを確認してから、誘導写像と比較を組み立てる。
+-/
 def descend : G ⟶ T ⋙ Functor.const SimplexCategoryᵒᵖ where
   app d := extension (p.app d) (hp d) (a.app d)
   naturality {d e} f := by

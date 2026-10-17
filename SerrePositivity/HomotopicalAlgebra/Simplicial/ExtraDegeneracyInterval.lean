@@ -5,7 +5,33 @@ public import SerrePositivity.CategoryTheory.Simplex.Naturality
 public import Mathlib.AlgebraicTopology.ExtraDegeneracy
 public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal
 
-/-! # An extra degeneracy gives an actual map from the standard interval cylinder -/
+/-!
+# 追加退化から実際の標準区間シリンダー上の写像を構成する
+
+## 概要
+追加退化から実際の標準区間シリンダー上の写像を構成する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0397][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0397
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# An extra degeneracy gives an actual map from the standard interval cylinder
+-/
 
 @[expose] public section
 universe v
@@ -35,6 +61,12 @@ def extra : A.left ⟶ shifted (A := A) :=
       rw [SimplexPrefix.map_σ]
       exact (ed.s_comp_σ n i).symm)
 
+/-- 追加退化から実際の標準区間シリンダー上の写像を構成する。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+-/
 def intervalMap : A.left ⊗ SimplexPrefix.interval ⟶ A.left where
   app n := ↾fun x => A.left.map (SimplexPrefix.cut n.unop x.2).op ((extra ed).app n x.1)
   naturality {n m} θ := by

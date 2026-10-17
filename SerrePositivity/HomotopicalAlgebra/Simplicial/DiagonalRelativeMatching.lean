@@ -4,7 +4,32 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalMatching
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.Iso
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.PullbackObjObj
 
-/-! # Relative matching maps are the actual boundary pullback-Hom maps
+/-!
+# 対角の右随伴の相対matching射を実際の境界pullback-Hom射と同型で結ぶ
+
+## 概要
+対角の右随伴の相対matching射を実際の境界pullback-Hom射と同型で結ぶ。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+境界matching同型とその値方向の自然性を使う。
+二つのpullback標的を同型で結び、それらへ入る相対matching射の一致を確認する。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はWaldhausenのS-構成の二重単体図式や分解の比較・加法性の準備に利用できる。
+[棚卸し m0388][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0388
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Relative matching maps are the actual boundary pullback-Hom maps
 
 The isomorphism compares both pullback targets and the arrows into them.
 It uses the proved boundary matching isomorphism and its target naturality.
@@ -96,7 +121,15 @@ lemma relativeTargetIso_fac :
     rw [relativeMatchingMap_fst, Functor.PullbackObjObj.π_snd]
     rfl
 
-/-- The desired comparison is an isomorphism of actual arrows. -/
+/- 旧宣言の技術注記：
+The desired comparison is an isomorphism of actual arrows.
+-/
+/-- 対角の右随伴の相対matching射を実際の境界pullback-Hom射と同型で結ぶ。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+境界matching同型とその値方向の自然性を使う。
+二つのpullback標的を同型で結び、それらへ入る相対matching射の一致を確認する。
+-/
 def relativeMatchingArrowIso :
     Arrow.mk (relativeMatchingMap simplexOp (Opposite.op (SimplexCategory.mk n))
       (internalHomRight.map p)) ≅ Arrow.mk (boundaryPullbackHom p n).π :=

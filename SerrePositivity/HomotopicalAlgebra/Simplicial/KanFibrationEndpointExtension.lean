@@ -2,7 +2,32 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanMonoEndpointExtension
 
-/-! # Extend a specified interval over its specified base along a Kan fibration
+/-!
+# Kan fibration上の指定区間を始点と基底の区間を保って延長する
+
+## 概要
+Kan fibration上の指定区間を始点と基底の区間を保って延長する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+指定された境界と基底から可換正方形を作り、その持ち上げ性を使う。
+元の指定部分を保つ等式は、対角射の二つの分解等式から確認する。
+
+## 規約と注意
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+ここでのKan条件は外側も含む全hornの充填であり、内側hornだけの条件ではない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0411][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0411
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Extend a specified interval over its specified base along a Kan fibration
 
 One whole endpoint, the original restricted interval, and the whole base
 interval are all retained. The base need not itself be a Kan complex.
@@ -75,6 +100,12 @@ lemma exists_from_one (b : T ⟶ E) (a : A ⟶ E) (H : SSet.Homotopy a (i ≫ b)
 
 
 include hp in
+/-- Kan fibration上の指定区間を始点と基底の区間を保って延長する。
+
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+指定された境界と基底から可換正方形を作り、その持ち上げ性を使う。
+元の指定部分を保つ等式は、対角射の二つの分解等式から確認する。
+-/
 lemma exists_from_zero (b : T ⟶ E) (a : A ⟶ E) (H : SSet.Homotopy (i ≫ b) a)
     (q : T ⊗ SSet.stdSimplex.{v}.obj (SimplexCategory.mk 1) ⟶ B)
     (hb : b ≫ p = SSet.ι₀ ≫ q)

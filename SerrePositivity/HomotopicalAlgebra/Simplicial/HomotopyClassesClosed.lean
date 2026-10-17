@@ -3,7 +3,32 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyClasses
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.PushoutProduct
 
-/-! # The closed adjunction descends to actual interval homotopy classes
+/-!
+# 閉構造の随伴を区間ホモトピー類の実際の全単射へ降下させる
+
+## 概要
+閉構造の随伴を区間ホモトピー類の実際の全単射へ降下させる。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+テンソルと内部Homの随伴で族を転置し、対応する境界の等式を比較する。
+転置の単射性と自然性により、元の全パラメータ族の等式へ戻す。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間のπ₀、局所化後の射、ホモトピー類の計算に利用できる。
+[棚卸し m0403][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0403
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# The closed adjunction descends to actual interval homotopy classes
 
 Reassociation retains the original interval parameter in currying and
 uncurrying. No Kan condition is needed for the quotient equivalence.
@@ -75,6 +100,12 @@ def curryClass : HomotopyClasses.obj (A ⊗ X) K → HomotopyClasses.obj X ((iho
 def uncurryClass : HomotopyClasses.obj X ((ihom A).obj K) → HomotopyClasses.obj (A ⊗ X) K :=
   Quot.map uncurry (fun _ _ ⟨H⟩ => ⟨uncurryHomotopy H⟩)
 
+/-- 閉構造の随伴を区間ホモトピー類の実際の全単射へ降下させる。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+テンソルと内部Homの随伴で族を転置し、対応する境界の等式を比較する。
+転置の単射性と自然性により、元の全パラメータ族の等式へ戻す。
+-/
 def equiv : HomotopyClasses.obj (A ⊗ X) K ≃ HomotopyClasses.obj X ((ihom A).obj K) where
   toFun := curryClass
   invFun := uncurryClass

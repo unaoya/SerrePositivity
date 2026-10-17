@@ -4,7 +4,32 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.NerveCodiscrete
 public import Mathlib.AlgebraicTopology.SimplicialSet.KanComplex
 public import Mathlib.AlgebraicTopology.SimplicialSet.Monomorphisms
 
-/-! # Vertex functions extend uniquely to maps into a codiscrete nerve
+/-!
+# 点を持つcodiscrete圏のnerveは全hornを充填できるKan複体である
+
+## 概要
+点を持つcodiscrete圏のnerveは全hornを充填できるKan複体である。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+圏の射列を各単体として評価し、自然変換や端点の射を明示する。
+単体ごとの合成と端点の式を照合して、全体の写像を得る。
+
+## 規約と注意
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+ここでのKan条件は外側も含む全hornの充填であり、内側hornだけの条件ではない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0363][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0363
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Vertex functions extend uniquely to maps into a codiscrete nerve
 
 For an inhabited label type this nerve is injective against all simplicial
 monomorphisms, and in particular Kan, in any value universe without a model.
@@ -91,6 +116,12 @@ lemma terminal_horn_rlp (i : I) :
   intro A B j hj
   exact terminal_mono_rlp i j (SSet.modelCategoryQuillen.J_le_monomorphisms j hj)
 
+/-- 点を持つcodiscrete圏のnerveは全hornを充填できるKan複体である。
+
+Kan条件・右持ち上げ性・単射性は各宣言で指定された範囲で用いる。
+圏の射列を各単体として評価し、自然変換や端点の射を明示する。
+単体ごとの合成と端点の式を照合して、全体の写像を得る。
+-/
 lemma kanComplex (i : I) : SSet.KanComplex (nerve (Codiscrete I)) :=
   (SSet.modelCategoryQuillen.fibration_iff _).mpr (terminal_horn_rlp i)
 

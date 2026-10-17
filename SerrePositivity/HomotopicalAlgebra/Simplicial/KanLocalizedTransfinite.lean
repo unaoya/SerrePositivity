@@ -3,7 +3,32 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanTestLiftingClass
 public import Mathlib.AlgebraicTopology.SimplicialSet.Monomorphisms
 
-/-! # Transfinite closure of localized mono equivalences in any value universe
+/-!
+# 局所化で可逆な単射の連続な超限合成も局所化で可逆となる
+
+## 概要
+局所化で可逆な単射の連続な超限合成も局所化で可逆となる。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+Kan値への実写像とホモトピー類のテストで比較射を調べる。
+貼り合わせ・持ち上げとanodyne局所化の検出を使って像の可逆性を導く。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論の加法性・局所化で現れる貼り合わせと余極限の比較に利用できる。
+[棚卸し m0421][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0421
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Transfinite closure of localized mono equivalences in any value universe
 
 The fixed lifting-class characterization handles limit stages, including
 those of small cofinality. No value model structure or colimit preservation
@@ -50,6 +75,12 @@ lemma image_isIso (J : Type w) [Small.{v} J] [LinearOrder J] [SuccOrder J] [Orde
     (hL : SSet.anodyneExtensions.IsInvertedBy L) : IsIso (L.map f) :=
   AnodyneHomotopy.map_isIso_of_anodyneQ_isIso L hL f (localized_isIso J f d)
 
+/-- 局所化で可逆な単射の連続な超限合成も局所化で可逆となる。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+Kan値への実写像とホモトピー類のテストで比較射を調べる。
+貼り合わせ・持ち上げとanodyne局所化の検出を使って像の可逆性を導く。
+-/
 lemma cocone_mem (J : Type w) [Small.{v} J] [LinearOrder J] [SuccOrder J] [OrderBot J]
     [WellFoundedLT J] (F : J ⥤ SSet.{v}) [F.IsWellOrderContinuous]
     (hF : ∀ j, ¬IsMax j → localizedMonos (F.map (homOfLE (Order.le_succ j))))

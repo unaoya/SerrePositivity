@@ -2,7 +2,31 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanRelativeLifting
 
-/-! # All-monomorphism right lifting gives a strict section and a vertical contraction
+/-!
+# すべての単射に対する右持ち上げ性を持つ射の切断に基底上で一定の収縮を構成する
+
+## 概要
+すべての単射に対する右持ち上げ性を持つ射の切断に基底上で一定の収縮を構成する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+指定された境界と基底から可換正方形を作り、その持ち上げ性を使う。
+元の指定部分を保つ等式は、対角射の二つの分解等式から確認する。
+
+## 規約と注意
+射pのすべての単射に対する右持ち上げ性を仮定し、始域・終域のKan性は要求しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0452][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0452
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# All-monomorphism right lifting gives a strict section and a vertical contraction
 
 The original map need not have Kan source or target. The contraction is
 filled over the original base, using only the interval boundary mono.
@@ -26,6 +50,12 @@ lemma exists_section : ∃ s : B ⟶ E, s ≫ p = 𝟙 B := by
   exact ⟨sq.lift, sq.fac_right⟩
 
 include hp in
+/-- すべての単射に対する右持ち上げ性を持つ射の切断に基底上で一定の収縮を構成する。
+
+射pのすべての単射に対する右持ち上げ性を仮定し、始域・終域のKan性は要求しない。
+指定された境界と基底から可換正方形を作り、その持ち上げ性を使う。
+元の指定部分を保つ等式は、対角射の二つの分解等式から確認する。
+-/
 lemma exists_vertical_contraction (s : B ⟶ E) (hs : s ≫ p = 𝟙 B) :
     ∃ H : SSet.Homotopy (𝟙 E) (p ≫ s),
       H.h ≫ p = fst E (SSet.stdSimplex.obj (SimplexCategory.mk 1)) ≫ p := by

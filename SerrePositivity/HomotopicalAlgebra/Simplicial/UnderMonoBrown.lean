@@ -3,7 +3,32 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.MonoLocalizedFactorization
 public import Mathlib.CategoryTheory.Comma.StructuredArrow.Basic
 
-/-! # Brown's coproduct argument for mono objects under a simplicial set
+/-!
+# 単体的集合の下の単射対象にBrownの余積論法を適用して像の可逆性を導く
+
+## 概要
+単体的集合の下の単射対象にBrownの余積論法を適用して像の可逆性を導く。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0587][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0587
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Brown's coproduct argument for mono objects under a simplicial set
 
 A functor on the undercategory which inverts the localized mono maps
 inverts all localized equivalences between objects with mono structure
@@ -23,6 +48,12 @@ variable {A : SSet.{v}} {D : Type uD} [Category.{vD} D] (F : Under A ⥤ D)
     IsIso (AnodyneHomotopy.anodyneQ.map f.right) → IsIso (F.map f))
 
 include hF in
+/-- 単体的集合の下の単射対象にBrownの余積論法を適用して像の可逆性を導く。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+-/
 lemma map_isIso {X Y : Under A} [Mono X.hom] [Mono Y.hom] (f : X ⟶ Y)
     (hf : IsIso (AnodyneHomotopy.anodyneQ.map f.right)) : IsIso (F.map f) := by
   let c := pushout.desc (f := X.hom) (g := Y.hom) f.right (𝟙 Y.right)

@@ -4,7 +4,32 @@ public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.S
 public import Mathlib.AlgebraicTopology.SimplicialSet.Degenerate
 public import Mathlib.CategoryTheory.Limits.Types.Colimits
 
-/-! # Common refinements of degeneracy presentations
+/-!
+# 二つの退化表示に共通の細分を構成する
+
+## 概要
+二つの退化表示に共通の細分を構成する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0446][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0446
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Common refinements of degeneracy presentations
 
 Eilenberg--Zilber uniqueness gives a common lower-dimensional simplex for
 any two degeneracy presentations with the same image. This is the concrete
@@ -58,7 +83,15 @@ def ofEpi {n m : SimplexCategory} (f : n ⟶ m)
     intro h
     exact (Nat.ne_of_lt hlt) (hid _ h)⟩
 
-/-- Equal images in a simplicial latching cocone have an actual common refinement. -/
+/- 旧宣言の技術注記：
+Equal images in a simplicial latching cocone have an actual common refinement.
+-/
+/-- 二つの退化表示に共通の細分を構成する。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+-/
 lemma common_refinement (X : SSet.{v}) {j : SimplexCategoryᵒᵖ}
     (a b : LatchingIndex simplexOp j) (x : X.obj a.obj.left) (y : X.obj b.obj.left)
     (h : X.map a.obj.hom x = X.map b.obj.hom y) :

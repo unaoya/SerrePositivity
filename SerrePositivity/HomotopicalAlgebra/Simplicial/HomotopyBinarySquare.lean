@@ -3,7 +3,32 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyClasses
 public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal
 
-/-! # A binary operation transports two chosen intervals to one specified square
+/-!
+# 二つの区間を二項演算で同時に合成した族はパラメータ変更に自然である
+
+## 概要
+二つの区間を二項演算で同時に合成した族はパラメータ変更に自然である。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0401][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0401
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# A binary operation transports two chosen intervals to one specified square
 
 The two interval coordinates remain independent. All four edges are the
 original chosen intervals with the other input fixed at its endpoint.
@@ -82,6 +107,12 @@ lemma diagonal_square : diagonal T ≫ square F G k = (simultaneous F G k).h := 
   rw [square, ← Category.assoc, comp_lift]
   rfl
 
+/-- 二つの区間を二項演算で同時に合成した族はパラメータ変更に自然である。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+-/
 lemma simultaneous_naturality {U : SSet.{v}} (j : U ⟶ T) :
     (simultaneous (HomotopyClasses.preHomotopy j F) (HomotopyClasses.preHomotopy j G) k).h =
       j ▷ interval ≫ (simultaneous F G k).h := by

@@ -3,7 +3,32 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterHomotopy
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryGluing
 
-/-! # Boundary fillers for whole large-parameter mapping spaces
+/-!
+# 大きいパラメータを持つ写像空間で互換な全面を充填する
+
+## 概要
+大きいパラメータを持つ写像空間で互換な全面を充填する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+テンソルと内部Homの随伴で族を転置し、対応する境界の等式を比較する。
+転置の単射性と自然性により、元の全パラメータ族の等式へ戻す。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0443][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0443
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Boundary fillers for whole large-parameter mapping spaces
 
 Every dimension is filled at once over the entire parameter object. The
 uncurried extension retains the prescribed boundary, including any
@@ -50,7 +75,15 @@ include hp in
 lemma fillers : UniverseLift.BoundaryFillers ((ihom K).obj (UniverseLift.obj.{w} P)) :=
   fun d b => ⟨fill hp K d b, fill_boundary hp K d b⟩
 
-/-- Fill a compatible collection of already specified global faces in any dimension ≥ 2. -/
+/- 旧宣言の技術注記：
+Fill a compatible collection of already specified global faces in any dimension ≥ 2.
+-/
+/-- 大きいパラメータを持つ写像空間で互換な全面を充填する。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+テンソルと内部Homの随伴で族を転置し、対応する境界の等式を比較する。
+転置の単射性と自然性により、元の全パラメータ族の等式へ戻す。
+-/
 def fillFaces {n : ℕ}
     (f : Fin (n + 3) → (SSet.stdSimplex.{max w v}.obj (SimplexCategory.mk (n + 1)) ⟶
       (ihom K).obj (UniverseLift.obj.{w} P))) (hf : BoundaryGluing.StandardCompatible f) :
