@@ -1075,6 +1075,15 @@
 - `ChecksScalarShiftCoherence` 対象ビルド成功（3070 jobs）。主要8宣言の公理は標準3公理のみ。
   既存APIの名前・型は変更していない。新しいsorry・axiom・引用は追加していない。
 
+## U14b.69：実際の係数拡大の加法shift整合性（2026-10-17）
+
+- `ScalarShiftAddition.lean`：Mathlibの複体shift加法比較の各成分が係数拡大と可換であることから、
+  実際の加群係数拡大と正規化shift比較の加法正方形を証明した。
+- 明示的加群shiftの自然同型に対する加法整合性を示し、登録済みshiftへ移した。
+  零・加法shiftと整合する `scalarModuleExtensionCommShift` データを公開した。
+- `ChecksScalarShiftAddition` 対象ビルド成功（3071 jobs）。主要5宣言の公理は標準3公理のみ。
+  既存APIの名前・型は変更していない。新しいsorry・axiom・引用は追加していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
