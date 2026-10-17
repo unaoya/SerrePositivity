@@ -3509,3 +3509,74 @@ E1.53 に残っていた実完備化の p 正則性と Hodge–Tate 候補商の
 実主剰余比較と係数公式、第一主完備化の正則対、実二座標完備化とその分母商の
 正則性、および無限根モニックへの適用の公開型 8 本を `#check` で確認した
 （終了コード 0）。
+
+
+### E1.55：自然な Hodge–Tate 候補の ϖ 完全忠実平坦性と p 完全平坦性（検証済み）
+
+新規 `Andre/PowerRootPrismMonicHodgeTateBase.lean` は、E1.54 の元の実完備化 H と
+標準分母商 T=H/(dH) に、prism 商 R=A/W.ideal から自然な基底射
+`powerRootPrismMonicHodgeTateBaseMap` を構成した。
+元の A 係数射を実完備化へ送り、分母商で W.generator が零となることで降ろす。
+全 A 代表元上の公式と、選んだ ϖ が xH の分母商への像となる公式を証明した。
+`powerRootPrismMonicHodgeTateVarpiEquiv` は T/(φ(ϖ)) と H/(dH,xH) の環同型であり、
+実 H の全代表元を保つ。ここで φ は上の基底射（Frobenius とは別）。
+この比較にモニック性も prism 商の p 正則性も不要。5 公開宣言を追加した。
+
+新規 `Andre/PowerRootPrismMonicHodgeTateVarpiFlat.lean` は自然な基底射による R 代数構造と、
+標準像イデアルによる商の R/ϖ 代数構造を固定する。
+像主イデアルを生成元の像の主イデアルへ移して、上の比較を
+T/((ϖ).map φ) と既存の H/(dH,xH) の比較へ接続した。
+`powerRootPrismMonicHodgeTateVarpiMapQuotAlgEquiv` は R/ϖ 代数同型であり、
+係数上の可換性は R/ϖ の元を A の代表元に戻し、既存の標準係数公式と照合して確認した。
+既存の逆 Frobenius 係数変更した pd 表示から得た自由性・忠実平坦性を、この自然な
+像イデアル商へ移す。公開した結論は
+
+```lean
+powerRootPrismMonicHodgeTateVarpi_free (hf : f.Monic) :
+  Module.Free (R ⧸ Ideal.span {ϖ}) (T ⧸ Ideal.map φ (Ideal.span {ϖ}))
+
+powerRootPrismMonicHodgeTateVarpi_faithfullyFlat (hf : f.Monic) (hdeg : 0 < f.natDegree) :
+  Module.FaithfullyFlat (R ⧸ Ideal.span {ϖ}) (T ⧸ Ideal.map φ (Ideal.span {ϖ}))
+```
+
+である（環・代数構造の let は省略した型表示）。prism 商の p 正則性は不要。
+比較先の標準係数構造を同じ明示的商型で固定する補助定義を含め 8 公開宣言を追加した。
+巨大な実完備化商の二つの係数構造の照合が必要な代数同型定義に限り、コメント付きで
+`maxHeartbeats 2000000` を局所指定した。原典の f の pd 包との同定を済ませたとは扱わない。
+
+新規 `Andre/PowerRootPrismMonicHodgeTateCompletelyFlat.lean` は、同じ正次数モニック入力に
+prism 商 R の p 正則性 hpR を明示して適用する。
+一般補題 `regular_of_span_power_eq` は正則元 c と bⁿ が同じ主イデアルを生成し n>0 なら
+b が正則となることを証明する。(ϖ^p)=(p) を基底 R と基底射の像での T に適用し、
+E1.54 の T の p 正則性から、基底および T 上の ϖ 正則性を得る。
+自然な ϖ 剰余の忠実平坦性を標準剰余テンソルへ移して正則主元の完全忠実平坦性判定を使う。
+
+公開定理 `powerRootPrismMonicHodgeTate_varpi_completelyFaithfullyFlat` は
+
+```lean
+(W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
+(hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal))
+(f : Polynomial A) (hf : f.Monic) (hdeg : 0 < f.natDegree) :
+let := pdCompletionCommRing L p dL
+let := powerRootPrismMonicHodgeTateAlgebra W hW f
+IsCompletelyFaithfullyFlat (Ideal.span {perfectPrismVarpi W hW}) T
+```
+
+を証明する。L,dL,H,T は E1.54 と同じ元の実 raw 包・分母・完備化・分母商。
+`powerRootPrismMonicHodgeTate_prime_completelyFlat` は同じ前提で
+`IsCompletelyFlat (Ideal.span {(p : R)}) T` を証明する。
+これは ϖ 完全平坦性を p 乗ねじれの Tor 消滅へ拡張し、(ϖ^p)=(p) を使ったもの。
+ϖ 正則性と一般正則性補題を含め 4 公開宣言を追加した。
+
+BS Rem 7.15（著者版 p.62）の通常 pd 剰余計算を、元の係数作用を保ったまま候補 T の
+ϖ 完全忠実平坦性へ接続した。原典とは異なる正則対と実反復完備化による経路を明記する。
+p 剰余の忠実性の接続、従ってこの具体的候補の p 完全忠実平坦性、
+原典の prismatic 源および元の f の Frobenius 引戻し pd 包との同定は引き続き未完了。
+条件付きの成果を一般の目標の完成とは数えず、hpR を既存の一般存在定理へ追加しない。
+
+3 対象および集約の `set -o pipefail; lake build` は終了コード 0
+（集約 4507 jobs）。新規 17 公開宣言の `assert_no_sorry` と専用監査は
+終了コード 0。生成宣言を含む 5085 宣言の推移的公理依存は標準 3 公理のみ。
+自然基底射・ϖ 商比較・係数代数同型・自然剰余の自由性と忠実平坦性・ϖ 正則性・
+ϖ 完全忠実平坦性・p 完全平坦性の公開型 8 本を `#check` で確認した
+（終了コード 0）。

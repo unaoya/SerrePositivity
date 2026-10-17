@@ -1004,6 +1004,24 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonic_pdComplet
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonic_pdCompletion_hodgeTate_prime_regular
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonic_pdCompletion_hodgeTate_isAdicComplete
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTateBaseMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTateBaseMap_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTateBaseMap_varpi
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTateVarpiEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTateVarpiEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTateAlgebra
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTateVarpiMapQuotEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTateVarpiMapQuotEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTateVarpiAlgebra
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTatePDResidueAlgebra
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTateVarpiMapQuotAlgEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTateVarpi_free
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTateVarpi_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.regular_of_span_power_eq
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTate_varpi_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTate_varpi_completelyFaithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTate_prime_completelyFlat
+
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
@@ -1171,7 +1189,10 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicRawPairRegular,
     `SerrePositivity.BhattScholze.Andre.PrincipalCompletionResidue,
     `SerrePositivity.BhattScholze.Andre.PrincipalPairCompletionFirstRegular,
-    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCompletionRegular]
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCompletionRegular,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicHodgeTateBase,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicHodgeTateVarpiFlat,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicHodgeTateCompletelyFlat]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
