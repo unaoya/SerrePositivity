@@ -167,6 +167,23 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawPCompletedPerfection_
 assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawPCompletedPerfection_p_smul_regular
 assert_no_sorry SerrePositivity.BhattScholze.Andre.monicRawPCompletedPerfection_isCompletelyFaithfullyFlat
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.MonicPrismaticCoefficientQuotient
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticCoefficientIdeal_eq
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticCoefficientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticCoefficientEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticCoefficientEquiv_C
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticCoefficientBaseMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticCoefficientBaseMap_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticCoefficientBaseAlgebra
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticCoefficientAlgEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticCoefficient_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticRawResidueBaseMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticRawResidueBaseMap_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticRawResidueBaseAlgebra
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticRawResidue_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticRawResidueAlgebraOfDistinguished
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticRawResidue_faithfullyFlat_of_distinguished
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -198,7 +215,9 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.MonicRawCompletelyFlat,
     `SerrePositivity.BhattScholze.Andre.MonicRawDerivedReduction,
     `SerrePositivity.BhattScholze.Andre.MonicRawPerfectionFlat,
-    `SerrePositivity.BhattScholze.Andre.MonicRawPCompletionFlat]
+    `SerrePositivity.BhattScholze.Andre.MonicRawPCompletionFlat,
+    `SerrePositivity.BhattScholze.Andre.MonicPrismaticCoefficient,
+    `SerrePositivity.BhattScholze.Andre.MonicPrismaticRawResidue]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

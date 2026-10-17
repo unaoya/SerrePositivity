@@ -643,3 +643,44 @@ p 完全忠実平坦性は未完成。無限 p 冪根変数の自由基底も未
 SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4182 jobs）。
 専用監査も終了コード 0。新規 11 公開宣言の `assert_no_sorry` を追加し、
 生成宣言を含む 525 宣言について標準 3 公理のみの推移的公理依存を確認した。
+
+### E1.11：一般 f/d 包の raw (p,d) 剰余の忠実平坦性
+
+新規 `Andre/MonicPrismaticCoefficient.lean` は、一般 f/d 包の初期係数イデアル
+`deltaDivisionFirstBaseIdeal (p := p) (MvPolynomial.C d) (fun s => monicRelation (f s) s)`
+を `(p,d)` の係数拡張と全族関係イデアルの和に同定する。
+実商を `PolynomialFamilyQuotient (fun s => (f s).map (Ideal.Quotient.mk (Ideal.span {p,d})))`
+に写す具体的環同型、元の係数像を保つ公式、標準 A/(p,d) 代数同型を構成した。
+`monicPrismaticCoefficient_faithfullyFlat` は hf・hdeg からその初期係数商の忠実平坦性を証明する。
+δ 構造、p 正則性、d 正則性、族の有限性はこの係数商には不要である。
+
+新規 `Andre/MonicPrismaticRawResidue.lean` は、一般 δ 除算包の既存の実剰余表示に接続する。
+初期係数商の標準射と raw 剰余の標準射を合成し、元の A の各係数の標準像を保つことを証明した。
+G4 から ghost 単射を内部で供給する最終公開型は以下。
+
+```lean
+theorem monicPrismaticRawResidue_faithfullyFlat_of_distinguished
+    {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
+    (D : DeltaStructure p A) (d : A) (f : σ → Polynomial A)
+    (hpA : Function.Injective (fun x : A => (p : A) * x))
+    (hdp : D.IsDistinguished d) (hf : ∀ s, (f s).Monic)
+    (hdeg : ∀ s, 0 < (f s).natDegree) :
+    letI := monicPrismaticRawResidueAlgebraOfDistinguished D d f hpA hdp
+    Module.FaithfullyFlat (A ⧸ Ideal.span {(p : A), d})
+      (DeltaAdjoinDivisionResidue (polynomialRankOneDeltaStructure σ D)
+        (MvPolynomial.C d) (fun s : σ => monicRelation (f s) s))
+```
+
+これにより補助 φ(f)/p 包に限らず、最終構成の一般 f/d 包の raw 実剰余まで進んだ。
+全族の初期係数商から raw 剰余への一般忠実平坦性と、初期係数商の通常モニック忠実平坦性を
+元の係数射で合成している。外部 ghost 仮定・有限性・未証明の他レーン仮定は残さない。
+
+BS Rem 7.15（著者版 p.62）の一般除算包の剰余計算に対応する。
+Prop 7.11 を使う原典と異なる明示係数商による経路であることを記録した。
+raw 剰余の通常忠実平坦性であり、raw single の実導来 (p,d) 還元との同定、
+完備化後の離散性・最終 perfectoid 商の p 完全忠実平坦性は未完成。
+無限 p 冪根変数の自由基底と目標存在定理も引き続き未証明・未宣言である。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4184 jobs）。
+専用監査も終了コード 0。新規 16 公開宣言の `assert_no_sorry` を追加し、
+生成宣言を含む 594 宣言の公理依存が標準 3 公理のみであることを確認した。
