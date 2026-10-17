@@ -5428,3 +5428,85 @@ p,d の逐次完備化単位の比較へ接続すること。その後、生成�
 `lake build SerrePositivity.BhattScholze.Andre.MonicRootedExtension` を含む
 全新規対象のビルドも4577ジョブで成功した。
 ここで保存するのは検証済みの途中成果であり、上記の未解消接続を完了したとはしない。
+
+
+## A1-c：係数表記の照合
+
+2026-10-17。BS Rem 7.15（著者版 p.62）と E1.25・E1.55・E1.56 の補足。
+成果は `BhattScholze/Andre/VarpiComparison/` の新規ファイルに分離した。
+既存の André ファイル、他担当の記録、主定理と引用入力は変更していない。
+未採用の `bs-clmst-citation-elimination.md` は根拠にしない。
+
+### 判定条件の修正と一般補題
+
+通常商 M/ϖ の平坦性だけでは p 完全平坦性を判定できない。
+非零の正則非単元 ϖ に対する M=R/(ϖ) では商は自由だが Tor₁ が残る。
+利用者の了承に従い、逆方向の判定には基底 R と M 上の ϖ 正則性を明示した。
+完全平坦性の定義は変更していない。
+
+以下の公開名の namespace は `SerrePositivity.BhattScholze.Andre.VarpiComparison`。
+`Flatness.lean` は、任意の可換環 R、v,c:R、n>0、hspan:(vⁿ)=(c) に対して次を証明する。
+perfectoid 性を不要とする一般形であり、原典には c=p、n=p として適用する。
+`span_power_eq_of_unit` が vⁿ=u·c（u:Rˣ）から hspan を供給する。
+
+```lean
+completelyFlat_iff : IsCompletelyFlat (Ideal.span {c}) M ↔
+  IsCompletelyFlat (Ideal.span {v}) M
+completelyFaithfullyFlat_iff : IsCompletelyFaithfullyFlat (Ideal.span {c}) M ↔
+  IsCompletelyFaithfullyFlat (Ideal.span {v}) M
+```
+
+基底と M 上の v 正則性の下で、通常商 `AdicReduction (Ideal.span {v}) M` について
+`completelyFlat_iff_flat_reduction` と
+`completelyFaithfullyFlat_iff_faithfullyFlat_reduction` がそれぞれ平坦・忠実平坦判定を与える。
+`algebraQuotient_faithfullyFlat` は c 完全忠実平坦な任意の R 代数 T に対して
+`Module.FaithfullyFlat (R ⧸ Ideal.span {v}) (T ⧸ (Ideal.span {v}).map (algebraMap R T))`
+を与える。この順方向には基底・T の正則性も完備性も不要。
+
+### pd 係数底変換と原典の Frobenius 表記
+
+R=A/(d)、x=φ_A⁻¹(d)、ϖ=x mod d とする。既存の実装の係数環は A/p であり、
+R/p とは異なる。原典本文は p ねじれなしの場合へ帰着した後、φ*_A(T/ϖ) を扱っている。
+この区別と Frobenius 変更を省略しない。
+D_B(f) を B 上の無限根環の f(Y₀) に対する `PrincipalDPPresentation` と書く。
+
+| 係数の比較 | 公開名・既存結果との対応 |
+| --- | --- |
+| 任意の S から S/(c) | `powerRootPDTensorQuotientEquiv`：S/(c)⊗_S D_S(f) ≃ D_{S/(c)}(f mod c)。全標準分冪生成元の一致も証明 |
+| R/p から R/ϖ | `PrimeReduction.lean` の `primePDTensorVarpiEquiv`：R/ϖ⊗_{R/p} D_{R/p}(f mod p) ≃ D_{R/ϖ}(f mod ϖ)。二重商の自然係数作用を使用 |
+| 既存の A/p 表示から R/ϖ | `perfectPrismPDTensorVarpiEquiv`：R/ϖ⊗_{A/p} PowerRootCoefficientPDEnvelope p f ≃ D_{R/ϖ}(f)。`perfectPrismVarpiPDEnvelopeEquiv` を全元でテンソル比較へ接続 |
+| 実分冪構造 | `perfectPrismPDTensorVarpiDividedPowers` と全次数の生成元公式。`perfectPrismPDTensorVarpi_isDPMorphism` は自然な includeRight が全元で分冪を保つことを証明。既存の正則係数商の分冪射を再利用 |
+| R/ϖ 上の基底計算 | 既存の `perfectPrismVarpiNativePDEnvelope_free_over_powerQuotient` と `powerRootMonicDPPresentation_faithfullyFlat` に接続 |
+
+通常の pd 表示環の底変換同型は正則性・モニック性を要求しない。
+既存の実分冪構造と分冪射には、元の構成と同じ hpR とモニック性を明記する。
+
+### 同じ候補 T の公開照合定理
+
+`Candidate.lean` は E1.55–56 の元の raw 包・実完備化・分母商 T と自然な基底射を保持する。
+f'=φ_A⁻¹(f)、Rv=R/ϖ、Tv=T/ϖ、Nv=Rv[Y^{1/p^∞}]、zv=f'(Y₀)、Qv=Nv/(zvᵖ) とする。
+`hodgeTateVarpiPDAlgEquiv` は Tv≃ₐ[Rv]D_{Rv}(f')。
+`hodgeTateVarpiPowerQuotientAlgebra` はこの同型を用いた Qv 作用を固定する。
+
+`hodgeTate_coefficient_comparison W hW f hpR hf hdeg` は、
+hpR:p の R 上の正則性、hf:f.Monic、hdeg:0<f.natDegree の下で、
+次の全結論を一つの定理で与える（環・作用の let は上記の既存構成で固定）。
+
+```lean
+(IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) T ↔ Module.FaithfullyFlat Rv Tv) ∧
+  Module.Free Qv Tv ∧ Module.FaithfullyFlat Rv Tv ∧
+  IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) T ∧
+  Nonempty (Rv ⊗[A ⧸ Ideal.span {(p : A)}] PowerRootCoefficientPDEnvelope p f' ≃+* Tv)
+```
+
+完全忠実平坦性の逆向きは、通常剰余の忠実平坦性と基底・候補の ϖ 正則性から導く。
+原典の φ_A 引戻しを消して f と f' を同一視せず、prismatic envelope の全体同定や
+ind-syntomic 性そのものの証明とは数えない。主定理・引用件数への影響はない。
+
+### 検証
+
+`lake build SerrePositivity.BhattScholze.Andre.VarpiComparison.Audit` が4147ジョブで成功。
+専用 `Audit.lean` は新規29公開宣言を `assert_no_sorry` で検査し、
+生成宣言を含む新規5モジュールの100宣言の推移的公理を検査した。
+全て標準三公理 `propext`、`Classical.choice`、`Quot.sound` の範囲にあり、sorry 非依存。
+一般判定・代数商・自然分冪射・R/p 底変換・候補集約の `#print axioms` も標準三公理のみ。
