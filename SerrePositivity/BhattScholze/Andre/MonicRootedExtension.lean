@@ -23,24 +23,26 @@ public import SerrePositivity.BhattScholze.Andre.FiniteMonicRootedExtension
 public import SerrePositivity.BhattScholze.Andre.MonicPrismaticArbitraryResidue
 public import SerrePositivity.BhattScholze.Andre.ArbitraryMonicPrismaticIteratedResidue
 public import SerrePositivity.BhattScholze.Andre.ArbitraryPerfectPrismMonicPerfectoidCompletelyFlat
+public import SerrePositivity.BhattScholze.Andre.MonicRootedPerfectoidExtension
 
 /-!
 # André E1・E2 の集約
 
 ## 概要
 
-BS Thm 7.14（著者版 p.61）、Rem 7.15（p.62）のモニック根付き拡大に向けた証明を集約する。
+BS Thm 7.14（著者版 p.61）、Rem 7.15（p.62）の正次数モニック族の根付き p 完全忠実平坦 perfectoid 拡大の証明を集約する。
 
 ## 方針
 
 通常のモニック商の自由性と独立変数の関係式の正則性から準備し、
 任意の関係族の δ 除算から perfectoid 根候補を構成する。
-原典の Prop 7.11 を使う経路とは異なる pd 計算による構成を目指す。
+原典の Prop 7.11 を使う経路とは異なる実 PD 計算と具体的係数比較による構成を使う。
 
 ## 規約
 
-目標には正次数を要求する。通常根添加の結果だけで perfectoid 拡大の存在を主張しない。
-目標 `exists_monicRootedPerfectoidExtension` は未証明であり宣言しない。
+`exists_monicRootedPerfectoidExtension` は承認済みの正次数仮定を明示する。
+添字型全体の有限性や基底の p 正則性・ねじれなしは仮定しない。
+無限 p 冪根変数の明示的自由基底など、原典の計算との補足的な比較は別工程である。
 
 ## 使われ方
 

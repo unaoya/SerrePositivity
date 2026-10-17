@@ -1488,3 +1488,48 @@ SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（
 新規 35 公開宣言の `assert_no_sorry` を追加した専用監査は終了コード 0。
 生成宣言を含む 2705 宣言の推移的公理依存は標準 3 公理のみ。
 候補標準基底射の完全忠実平坦性と実源純性の公開型を `#print` で確認した（終了コード 0）。
+
+### E1.23：指定された任意モニック族の根付き perfectoid 拡大の公開
+
+`ArbitraryPerfectPrismMonicRootedExtension.lean` は、完全 prism 商上の任意の正次数モニック族を
+同次数モニックに lift し、E1.22 の同じ標準候補の p 完全忠実平坦性を適用する。
+評価の自然性で元の商上の多項式族の根方程式を得る。
+`MonicRootedPerfectoidExtension.lean` は一般の整 perfectoid 基底を零枝と非零枝に分け、
+非零枝の完全 prism 商表示と基底環同型による移送を適用する。
+零枝は自己拡大を使う。全ての台環と根の添字型を Type u に保つ。
+
+公開型（namespace は `SerrePositivity.BhattScholze.Andre`）：
+
+```lean
+theorem exists_monicRootedPerfectoidExtension
+    (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p)
+    {σ : Type u} (f : σ → Polynomial R) (hf : ∀ s, (f s).Monic)
+    (hdeg : ∀ s, 0 < (f s).natDegree) :
+    ∃ (T : Type u) (_ : CommRing T) (φ : R →+* T) (ρ : σ → T),
+      IsIntegralPerfectoid T p ∧
+      (letI := φ.toAlgebra; IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) T) ∧
+      ∀ s, (f s).eval₂ φ (ρ s) = 0
+```
+
+正次数の仮定は元の型の f=1 の問題に対してユーザーが承認した訂正であり、
+それ以外の補助仮定、族全体の有限性、基底の表示・p 正則性・ねじれなしは要求しない。
+`exists_monicRootedPerfectoidExtension_of_perfectPrism` は同じ型で、
+基底 R を完全 prism P の商 A/(P.generator)、基底の perfectoid 仮定を
+`P.deltaStructure.IsPerfect` に置き換えた入口。
+集約ファイルから公開し、既存のルート import は一行のまま保つ。
+
+BS Thm 7.14（著者版 p.61）の第一段であり、Rem 7.15（p.62）に沿う別経路である。
+原典の Prop 7.11・Hodge–Tate 比較を使う証明とは異なり、具体的 δ 除算、
+有界深さ有限部分族の実余極限、実 p,d 完備化、PD 先行 δ 完全化の係数射を保つ比較を使う。
+新しい sorry・axiom・引用は導入せず、BS Cor 8.12 も宣言・使用しない。
+
+任意族の一段拡大という指定出力は得たが、依頼全体をまだ完成とは数えない。
+補足計算として要求された無限 p 冪根変数の明示的自由基底、およびその上のモニック冪商の
+自由性と原典の具体的 pd 表示との同定の範囲を、要求ごとの最終監査で確認する必要がある。
+既存の Inputs/AndreFlatness.lean と他レーンのファイルは編集しない。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4352 jobs）。
+新規 2 公開定理の `assert_no_sorry` を追加した専用監査は終了コード 0。
+生成宣言を含む 2709 宣言の推移的公理依存は標準 3 公理のみ。
+存在定理 2 本の公開型と `#print axioms` を確認（終了コード 0）。
+指定出力の任意族版そのものの公理依存も propext・Classical.choice・Quot.sound のみ。
