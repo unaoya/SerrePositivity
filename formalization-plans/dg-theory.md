@@ -8534,3 +8534,44 @@ BhattScholze互換宣言の未解決参照1件で失敗した。共有ルート�
 今回の準同型判定への接続、解像度選択の比較が未完。境界squareや判定だけで存在証明とはしない。
 公開APIの名前・型の変更と共有一般論への新しい要求はない。
 分担とU16への着手順、U15e/U17の合流条件は§0のまま保持し、履歴は新規コミットで記録する。
+
+
+### 17.187 U12e28：任意次数・別端点cellのpath項と指定境界置換作用素（2026-10-17）
+
+既存dg商の有限path、内部Hom、ε消去、全次数tensor Homを再確認した。
+収縮記号に限定せず、任意整数次数かつ異なる始点・終点を持つcell付加へ進めた。
+`Resolution/Cells/Paths.lean`の**DGCellAttachment.Family**はcell添字I:Type wごとの
+source/target:D、degree:ℤ、次数degree+1のboundary cycleを保持する。
+**generator/term/generatorTerm**はsphereによる生成元と、既存Homを間に挟む有限path項。
+空語は既存Homで、非空語の先頭はHom(x,source i)⊗(sphere(degree i)⊗tail(target i,y))。
+**internalHom/inclusion/originalHom/generatorInclusion/internalHom_ext**は全語の直和とその包含・外延性。
+添字IのSmall.{u}だけを使い、Dの対象集合のsmallnessは不要で、u/v/wは独立。
+**term_kFlat/internalHom_kFlat**は既存Homのlocal K-flat性から内部微分版のK-flat性を証明する。
+追加微分後のK-flat性とは区別する。**boundaryFamily**は§17.186の全境界cellをこの族へ変換する。
+
+`BoundaryCochain.lean`の**boundaryCochain**は次数degreeの生成元を指定境界へ送る次数+1 cochain。
+**boundaryCochain_closed/boundaryCochain_generator**で閉性と生成元の像を証明する。
+**replaceMiddle/replaceMiddle_closed/replaceMiddle_apply**は左右の任意非有界複体の間で境界を挿入し、
+左因子の次数pを通る符号(-1)^pを全次数tensor Homから得る。生成元を次数−1に制限しない。
+`PathComposition.lean`の**prependMap/appendMap**は隣接する既存Homのみを豊穣合成するchain map。
+`BoundaryFaces.lean`の**replaceFirst/replaceFace**は各生成元の境界置換を構成し、内部Hom微分での閉性を証明する。
+`BoundaryOperator.lean`の**replaceSummand/replaceRow**は短いpathへの包含後の有限和。
+**replacementToShift/replacement**は閉性付き有限和を全直和へ貼り合わせる。
+**replacement_closed/replacement_precomp/replacement_originalHom**を証明した。
+**replacement_square_precomp**は二重置換を最初のfaceと短いpathの置換和へ分解し、
+**replacement_square_originalHom/replacement_square_singleton**は長さ0/1上での二乗零を与える。
+
+Checks.DGCellBoundaryOperator・Checks.DGBoundarySequence・Checks.DGCategoryInitial・Checks.FreeDGUniversal・
+Checks.DGCategoryResolution・Checks.DerivedBimoduleFullPentagon・Checks.StageEight・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（3125 jobs、終了コード0、警告なし）。
+任意次数と別端点、独立宇宙、Dのsmallness不要の型、ZMod 2上の次数7の生成元を検査した。
+主要37宣言（Familyの型を含む）の直接公理監査は標準3公理のみ。監査累計3544宣言。
+今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は共有ルートが参照する担当外CommutativeAlgebra.LocalizationComparisonBoundsの
+olean不在で参照収集前に停止した。対象ビルドは成功しており、担当外のビルド・ファイルは変更していない。
+
+次は二つの生成元の境界置換の反交換、有限和の相殺によるreplacementの二乗零、
+追加微分d+replacement、合成のLeibnizと主dg圏instance、増大関手を構成する。
+内部微分版のK-flat性や長さ0/1の二乗零を全体の代用とせず、filtrationによる最終HomのK-flat性も証明する。
+実際のcell付加の完成、一般KFlatDGResolutionの存在・比較、U12e全受入・U16は引き続き未完。
+公開APIの名前・型の変更と共有一般論への新しい要求はない。分担と合流条件は§0のまま。
