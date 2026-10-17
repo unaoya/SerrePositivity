@@ -2393,3 +2393,81 @@ prismatic envelope の Frobenius 引戻しとの同定は未完了。
 生成宣言を含む 3442 宣言の推移的公理依存は標準 3 公理のみ。
 一般係数商同型・ϖ 入力環同型・入力元比較・モニック入力の正則性の公開型 4 本を
 `#print` で確認した（終了コード 0）。
+
+### E1.40：pd 表示環自体の係数商比較と原典の係数環上の実普遍性
+
+新規 `Andre/RankOneDPCoefficientQuotient.lean` は、自由一元分冪代数の係数変更射が
+標準分冪基底の各座標を係数環射で送ることを証明した。
+全射な係数環射に対する全射性を、標準基底展開と像部分環の有限和で証明する。
+係数主イデアル商射の核は各基底座標の可除性から係数元の主イデアルに一致する。
+第一同型定理により、Γ_A(A)/(c) と Γ_(A/(c))(A/(c)) の具体的な環同型を得た。
+標数・正則性・非零性を要求しない。
+
+新規 `Andre/PrincipalDPCoefficientQuotient.lean` は、自由分冪環内の係数主イデアルと
+一次関係 γ₁=y のイデアルによる二重商の順序を交換し、さらにその係数商同型の下で
+一次関係の像を計算する。これにより実表示環自体について
+
+```lean
+def principalDPCoefficientQuotientEquiv
+    {A : Type u} [CommRing A] (c y : A) :
+    ((PrincipalDPPresentation A y) ⧸
+      Ideal.span {algebraMap A (PrincipalDPPresentation A y) c}) ≃+*
+        PrincipalDPPresentation (A ⧸ Ideal.span {c})
+          (Ideal.Quotient.mk (Ideal.span {c}) y)
+```
+
+を構成した。自由分冪代表元、標準係数、全標準分冪生成元での公式を公開した。
+係数元の表示の違いと入力を保つ係数環同型をまとめる一般同型
+`principalDPReducedCoefficientEquiv` とその係数・生成元公式も公開する。
+具体的な無限根係数をすべて展開するとカーネル検査が時間上限に達したため、
+計算規則をこの一般補題で証明し、具体例では検証済みの式を適用する。
+心拍上限は増やさず、一般計算と具体的な係数環を分離して検証した。
+
+新規 `Andre/PerfectPrismVarpiPDComparison.lean` はこれを E1.39 の入力環同型に適用した。
+W=(A,(d)) を完全 oriented prism、x=φ⁻¹(d)、ϖ=x mod d、R₀=A/(p)、a=x mod p とする。
+N=`PowerRootPolynomial R₀ p hp`、z=`powerRootCoefficientPDInput p f`、
+D=`PowerRootCoefficientPDEnvelope p f`、Rv=R/ϖ、Nv=`PowerRootPolynomial Rv p hp`、
+barr:A→Rv を二重商射、zv=`powerRootPolynomialBaseMap Rv p hp (f.map barr)` と置く。
+
+```lean
+def perfectPrismVarpiPDEnvelopeEquiv
+    (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A) :
+    (D ⧸ Ideal.span {algebraMap R₀ D a}) ≃+* PrincipalDPPresentation Nv zv
+```
+
+この同型自体に f のモニック性・prism 商の p 正則性は不要。
+係数・全標準分冪生成元・入力元を保つこと、正次数イデアルの実像が
+原典の入力 zv の正次数イデアルに一致することも証明した。
+
+新規 `Andre/PerfectPrismVarpiNativePDEnvelope.lean` は、モニック f と
+hpR:`IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal)` の下で、
+E1.37 の実分冪構造をこの同型で移し、原典の Nv 上の標準表示そのものに
+`perfectPrismVarpiNativeDividedPowers` を構成する。
+同 `_base_apply` は入力元の n 次分冪が標準生成元に一致することを主張する。
+実構造の存在と標準値を一般の pd 普遍性に供給し、
+
+```lean
+theorem existsUnique_perfectPrismVarpiNativePDMorphism
+    (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (f : Polynomial A)
+    (hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal)) (hf : f.Monic)
+    {B : Type v} [CommRing B] [Algebra Nv B] {I : Ideal B}
+    (Ht : DividedPowers I) (hzB : algebraMap Nv B zv ∈ I) :
+    ∃! F : PrincipalDPPresentation Nv zv →ₐ[Nv] B,
+      (perfectPrismVarpiNativeDividedPowers W hW f hpR hf).IsDPMorphism Ht F.toRingHom
+```
+
+を証明した。A は可換環、p は素数とする。
+標的 B のねじれなし・完備性・δ 構造は仮定しない。
+この結論は表示環だけでなく、原典の係数環上の同じ台環の実分冪構造と普遍性を持つ。
+BS Rem 7.15(1)（著者版 p.62）の通常 pd 包の計算であり、Prop 7.11 は用いない。
+今回の構造・普遍性は hpR 付きの中間結果である。
+同じ台環の切断表示と忠実平坦性の原典係数での接続、
+prismatic envelope の Frobenius 引戻しとの同定、および一般基底への比較は未完了。
+公開済みの一般の存在定理の前提は変更していない。
+
+対象・集約の `set -o pipefail; lake build` は終了コード 0
+（集約 `SerrePositivity.BhattScholze.Andre.MonicRootedExtension`：4437 jobs）。
+新規 21 公開宣言を `assert_no_sorry` に加えた専用監査は終了コード 0。
+生成宣言を含む 3587 宣言の推移的公理依存は標準 3 公理のみ。
+自由分冪・一次関係表示の係数商同型、ϖ 還元表示の同型とイデアル対応、
+原典係数上の実分冪構造・pd 普遍性の公開型 6 本を `#print` で確認した（終了コード 0）。

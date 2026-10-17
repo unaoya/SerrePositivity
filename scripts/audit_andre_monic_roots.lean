@@ -694,6 +694,28 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiRootInputEqu
 assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiRootInputEquiv_input
 assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiRootInput_monic_regular
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.rankOneDPRingMap_repr
+assert_no_sorry SerrePositivity.BhattScholze.Andre.rankOneDPRingMap_surjective
+assert_no_sorry SerrePositivity.BhattScholze.Andre.rankOneDPCoefficientQuotient_ker
+assert_no_sorry SerrePositivity.BhattScholze.Andre.rankOneDPCoefficientQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.rankOneDPCoefficientQuotientEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPRelationIdeal_map_coefficientQuotient
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPCoefficientQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPCoefficientQuotientEquiv_mk_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPCoefficientQuotientEquiv_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPCoefficientQuotientEquiv_generator
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPReducedCoefficientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPReducedCoefficientEquiv_generator
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPReducedCoefficientEquiv_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPDEnvelopeEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPDEnvelopeEquiv_generator
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPDEnvelopeEquiv_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPDEnvelopeEquiv_input
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPDEnvelopeEquiv_positiveIdeal
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiNativeDividedPowers
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiNativeDividedPowers_base_apply
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_perfectPrismVarpiNativePDMorphism
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -812,7 +834,11 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PrincipalDPQuotientUniversal,
     `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiPDUniversal,
     `SerrePositivity.BhattScholze.Andre.PowerRootCoefficientQuotient,
-    `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiRootInput]
+    `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiRootInput,
+    `SerrePositivity.BhattScholze.Andre.RankOneDPCoefficientQuotient,
+    `SerrePositivity.BhattScholze.Andre.PrincipalDPCoefficientQuotient,
+    `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiPDComparison,
+    `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiNativePDEnvelope]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
