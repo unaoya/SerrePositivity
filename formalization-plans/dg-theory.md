@@ -11315,3 +11315,52 @@ changeEquivalenceの単位・結合保存と自己・推移比較、外側左右
 §15.2全体の受入監査は未完であり、U12e全体を完了扱いにしない。
 共有一般論への新しいAPI要求はない。共有ルート・共有監査スクリプト・既存の並行担当
 Tensor/Associator*・Perfect/・Endomorphism/・ScalarExtension*・他チャットの記録は編集していない。
+
+
+### 17.241 U12e80：全三因子の外側左制限と通常の外側右制限の結合子square（2026-10-17）
+
+**担当順の保持。** 最新のユーザー指定に従い、U12eの完成・受入→U16→U15e分解版の順を維持する。
+U15e局所K-flat版と続くU17b局所K-flatの場合はU17a/U13dを終えたチャットの担当である。
+分解版では、そのQuotient/DerivedComparison*.leanとVerdier/の定義・仮定・宇宙・比較APIを
+読んで再利用し、比較・Verdier一般論を重複実装しない。分担の詳細は§0・§17.236を参照する。
+
+**全導来三因子の外側左制限。** Derived/AssociatorLeftRestrictionFamilies.leanは、
+左右両経路を後二因子R・Qにも自然な関手族の自然変換として束ねる。
+leftRestrictionAssociatorLeftPath_app・RightPath_appはその成分を既存比較の合成へ計算する。
+Derived/AssociatorLeftRestrictionCoherence.leanのleftRestrictionAssociatorPaths_eqは、
+rightKFlatDerivedNatTrans_extを二回適用し、§17.240の固定モデルsquareから両経路の一致を証明する。
+derivedBimoduleAssociator_leftRestrictionは、任意の導来Q : C–E、R : E–Tと
+任意の導来前因子に対する、実際の全導来結合子と外側左制限比較の可換squareである。
+局所Hom K-flat性はE・T・Dに要求し、B・Cには要求しない。G : D → Tは任意のdg関手。
+六つの宇宙を独立に保持し、対象添字にSmall.{u}を要求する。一般API11宣言と標数2検査1宣言を追加した。
+
+**通常の外側右制限。** Tensor/AssociatorRightRestrictionElements.leanと
+AssociatorRightRestrictionPathElements.leanは、三つの斉次元からなる両経路の計算を証明する。
+Tensor/RightRestrictionValueHom.leanは既存chainMapOfComponentFunctionsを再利用し、
+右制限比較を固定成分関数で表示する。composeRightRestrictionValueHom_eqにより、
+元のcomposeRightRestrictionValueIsoのhomと同じ射である。新しい比較データや符号規約は導入しない。
+Tensor/AssociatorRightRestrictionComponents.lean・AssociatorRightRestrictionValues.leanは、
+成分計算と既存三重tensorの外延性を使って値のchain mapの一致へ運ぶ。
+Tensor/AssociatorRightRestriction.leanのassociatorIso_rightRestrictionは、その値の一致から
+通常bimodule圏で外側右制限が結合子を保つsquareを証明する。
+F : D → Bは任意、局所Hom K-flat性は不要、終端Tのsmallnessも要求しない。
+係数は任意の可換環、六つの宇宙を独立に保持する。一般API16宣言と標数2検査1宣言を追加した。
+標数2検査は次数−2・3・−1の三因子を扱う。
+
+**検証。** Checks.DGAssociatorLeftRestrictionCoherenceとDGAssociatorRightRestriction、
+§17.240までの制限比較・単位子・解像度・中間比較・導来随伴・五角形・StageEight・StageSeven・
+Spectra.StageTwoを含む統合ビルドに成功した（3564 jobs、警告なし）。
+今回の29公開宣言を直接公理監査し、重複・欠落なくpropext・Classical.choice・Quot.sound以内。
+新規監査累計4725宣言。今回の10 Leanファイルにsorry・admit・新規axiom・資源上限変更は0件。
+旧公開APIの名前・型は変更していない。採用済み引用0件。
+Lean v4.35.0-rc4とMathlib manifest/HEAD e6bbacd0e1b7307ff6e17da09cd2455f60804fa6を再確認した。
+文書検査は21 Markdown・326 exposition参照、失敗0件。
+
+**残条件。** 外側左制限の結合子squareは全導来三因子まで完了した。
+外側右制限は今回通常版までであり、次にそのsquareを固定K-flat導来比較、全導来比較へ運ぶ。
+中間制限の結合子square、左右単位経路と三圏同時制限の正規化、changeEquivalenceの
+単位・結合保存と自己・推移比較、外側左右・中間の恒等・合成則も残る。
+§15.2全体の受入監査は未完であり、U12e全体を完了扱いにしない。U16・U15e分解版は未着手。
+共有一般論への新しいAPI要求はない。共有ルート・共有監査スクリプト・並行担当Tensor/Associator*・
+Perfect/・Endomorphism/・ScalarExtension*・Quotient/DerivedComparison*・Verdier/・
+他チャットの記録は編集していない。
