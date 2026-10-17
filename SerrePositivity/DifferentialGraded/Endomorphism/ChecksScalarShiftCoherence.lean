@@ -1,0 +1,14 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarShiftCoherence
+
+/-! # 実際の係数拡大の正規化shiftと零shift整合性の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+#print axioms normalizedScalarModuleShift_naturality
+#print axioms normalizedScalarModuleExtensionShiftIso
+#print axioms normalizedScalarModuleExtensionShiftIso_hom_eval_f
+#print axioms normalizedScalarModuleExtensionShiftIso_naturality
+#print axioms normalizedScalarModuleExtensionShiftNatIso
+#print axioms normalizedScalarModuleExtensionCommShiftIso
+#print axioms normalizedScalarModuleExtensionShiftNatIso_zero
+#print axioms normalizedScalarModuleExtensionCommShiftIso_zero
