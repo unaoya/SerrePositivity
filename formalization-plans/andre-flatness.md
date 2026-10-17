@@ -7950,3 +7950,51 @@ A1-f 専用監査は `André unoriented audit passed: 135 declarations, standard
 ともに終了コード0。後者では assert の挿入でずれた局所 `open Lean in` と
 `maxHeartbeats` の適用位置を run_cmd の直前へ戻してから再実行した。
 新しい sorry・axiom・引用は追加していない。
+
+### E1.89／R1 元の raw p 正則性と通常 p 完備化の公開名を移行（2026-10-17）
+
+本節は A1-a／R1 の追記。A1-b の保存済み `cd7ca7ed`・`c21e67c4` を受領し、
+旧 hpR 付き2公開名を削除した。namespace は `SerrePositivity.BhattScholze.Andre`。
+
+- `powerRootPrismMonicRaw_p_mul_injective` → `powerRootPrismMonicRaw_p_mul_injective_of_unconditional`
+- `powerRootPrismMonicRaw_pAdic_regular_pair` → `powerRootPrismMonicRaw_pAdic_regular_pair_of_unconditional`
+
+prism 商の p 正則性を要求する元の分母商の定理
+`powerRootPrismMonic_pdCompletion_hodgeTate_prime_regular` の内部の raw p 正則性呼出しも
+無条件版に移した。この分母商の型から hpR を除いたものではない。
+元の Raw と標準係数射を保持し、正次数もねじれ除去商も追加しない。
+f=1 は raw 環の安定局所化への単射性と分母の単元性で処理する。
+BS Rem 7.15（著者版 p.62）とは異なる実源の純性・導来完備化比較による経路である。
+変更した docstring と本節でこの差を明記する。
+
+共通引数は {A:Type u} [CommRing A]、{p:ℕ} [Fact p.Prime]、
+W:OrientedPrism p A、hW:W.deltaStructure.IsPerfect、f:Polynomial A、hf:f.Monic。
+hp=Nat.Prime.pos (Fact.out:p.Prime)、P=PowerRootPolynomial A p hp、
+E=powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure、
+dP=algebraMap A P W.generator、a=powerRootPrismMonicUnaryFamily f、
+Raw=DeltaAdjoinDivision E dP a、jL=deltaAdjoinDivisionMap E dP a とする。
+正確な公開型は次のとおり。
+
+```lean
+powerRootPrismMonicRaw_p_mul_injective_of_unconditional W hW f hf :
+  Function.Injective (fun r : Raw => (p : Raw) * r)
+
+powerRootPrismMonicRaw_pAdic_regular_pair_of_unconditional W hW f hf :
+  let CP := AdicCompletion (Ideal.span {(p : Raw)}) Raw
+  IsSMulRegular CP (p : CP) ∧
+    IsSMulRegular CP (algebraMap Raw CP (jL dP))
+```
+
+全 Lean コードと監査を検索し、削除した2名の呼出しが残らないことを確認した。
+`RawRegular` は一元自由 δ 環の型と有限段の条件付き正則対を保持する。
+`RawPairRegular` は mod p 分母の条件付き正則性と実二座標完備化の無条件正則性を保持する。
+無条件版からこれらへの import 経路を調べ、循環を追加しないことを確認した。
+`Unconditional/`・`VarpiComparison/`・`Unoriented/` は編集していない。
+R1 の残りは A1-c が使う旧 native 分冪構造・係数還元構造の整理と、係数計算の最終合流。
+
+検証：ps で他レーンの lake build がないことを確認してから対象5モジュールと集約を
+`set -o pipefail` 付きでビルドし、4660 jobs、終了コード0。
+置換先2本と保持した分母商の条件付き公開名の #check は終了コード0。
+専用監査は終了コード0、`André monic root audit passed: 8653 declarations, standard axioms only.`。
+置換先2名の assert_no_sorry と、新規に import した2モジュールの全生成宣言も監査した。
+新しい sorry・axiom・引用を追加していない。

@@ -68,7 +68,7 @@ theorem powerRootPrismMonic_pdCompletion_hodgeTate_prime_regular :
     IsSMulRegular (H ⧸ Ideal.span {pdCompletionUnit Raw p dL dL})
       (p : H ⧸ Ideal.span {pdCompletionUnit Raw p dL dL}) := by
   have h := principalPair_pairCompletion_mod_second_first_regular (p : Raw) dL
-    (powerRootPrismMonicRaw_p_mul_injective W hW hpR f hf)
+    (powerRootPrismMonicRaw_p_mul_injective_of_unconditional W hW f hf)
     (powerRootPrismMonicRaw_mod_prime_generator_regular W hW hpR f hf)
   let := pdCompletionCommRing Raw p dL
   change IsSMulRegular (H ⧸ Ideal.span {pdCompletionUnit Raw p dL dL})

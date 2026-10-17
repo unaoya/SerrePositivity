@@ -978,7 +978,7 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionUnaryRaw_relatio
 assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionUnaryRaw_p_mul_injective
 assert_no_sorry SerrePositivity.BhattScholze.Andre.PowerRootUnaryFreeDeltaRing
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFinite_all_regular
-assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicRaw_p_mul_injective
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicRaw_p_mul_injective_of_unconditional
 
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionRawPrimeQuotientEquiv
@@ -991,7 +991,7 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.principalPair_adicCompletion_
 assert_no_sorry SerrePositivity.BhattScholze.Andre.principalPair_principalCompletion_second_regular
 assert_no_sorry SerrePositivity.BhattScholze.Andre.principalPair_pairCompletion_second_regular
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicRaw_mod_prime_generator_regular
-assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicRaw_pAdic_regular_pair
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicRaw_pAdic_regular_pair_of_unconditional
 -- E1.83: hpR を除いた旧公開名。標準分母像と正次数不要の型を保持する。
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicRaw_pdCompletion_generator_regular
 
@@ -1621,7 +1621,9 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiNativePDFormula,
     `SerrePositivity.BhattScholze.Andre.Unoriented.Category,
     `SerrePositivity.BhattScholze.Andre.Unoriented.Initial,
-    `SerrePositivity.BhattScholze.Andre.Unoriented.SourceInitiality]
+    `SerrePositivity.BhattScholze.Andre.Unoriented.SourceInitiality,
+    `SerrePositivity.BhattScholze.Andre.Unconditional.RawPrimeRegularAllMonic,
+    `SerrePositivity.BhattScholze.Andre.Unconditional.RawPAdicPairRegular]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

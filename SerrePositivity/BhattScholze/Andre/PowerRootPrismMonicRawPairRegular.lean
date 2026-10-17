@@ -4,6 +4,7 @@ public import SerrePositivity.BhattScholze.Andre.DeltaDivisionUnaryRawPairRegula
 public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicRawRegular
 public import SerrePositivity.BhattScholze.Andre.PrincipalPairCompletionRegular
 public import SerrePositivity.BhattScholze.Andre.Unconditional.PrimeReductionPurity
+public import SerrePositivity.BhattScholze.Andre.Unconditional.RawPAdicPairRegular
 
 /-!
 # André E1・E2：無限根モニック raw 包の正則対
@@ -20,7 +21,9 @@ BS Rem 7.15（著者版 p.62）の実完備化前の計算。
 ## 規約
 
 正次数は要求しない。raw と mod p の中間主張では prism 商の p 正則性を明示する。
-実二座標完備化の分母正則性にはこの仮定を要求しない。
+通常 p 完備化の正則対と実二座標完備化の分母正則性にはこの仮定を要求しない。
+通常 p 完備化の旧宣言は削除し、実源の純性と標準 H⁰ 比較による
+Unconditional.RawPAdicPairRegular の公開名を使う。原典とは異なる証明経路。
 
 ## 使われ方
 
@@ -63,24 +66,6 @@ theorem powerRootPrismMonicRaw_mod_prime_generator_regular :
   exact deltaDivisionUnaryRaw_mod_prime_d_regular E dP a hpP
     (powerRootPrismGenerator_modPrime_regular p W hW hpR)
     (powerRootPrismMonic_modPrime_generator_regular p W f hf) hgL v hv
-
-include hpR hf in
-/-- 概要：無限根モニック raw 包の古典的 p 完備化で p と分母はともに正則。
-方針：p の正則性保存と、全 mod pⁿ の分母正則性の座標計算を組み合わせる。
-規約：第一の主完備化のみを扱い、二座標の実導来完備化は別工程。
-使われ方：BS Rem 7.15（著者版 p.62）の実完備化への正則性保存の第一段。 -/
-theorem powerRootPrismMonicRaw_pAdic_regular_pair :
-    let C := AdicCompletion (Ideal.span {(p : Raw)}) Raw
-    IsSMulRegular C (p : C) ∧
-      IsSMulRegular C (algebraMap Raw C (deltaAdjoinDivisionMap E dP a dP)) := by
-  have hpRaw : IsSMulRegular Raw (p : Raw) :=
-    powerRootPrismMonicRaw_p_mul_injective W hW hpR f hf
-  constructor
-  · simpa only [map_natCast] using
-      isSMulRegular_adicCompletion_span_singleton Raw (p : Raw) hpRaw
-  · exact principalPair_adicCompletion_second_regular (p : Raw)
-      (deltaAdjoinDivisionMap E dP a dP) hpRaw
-      (powerRootPrismMonicRaw_mod_prime_generator_regular W hW hpR f hf)
 
 include hf in
 /-- 概要：無限根モニック raw 包の実二座標完備化 H⁰ で分母の像は正則。

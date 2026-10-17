@@ -97,6 +97,9 @@ public import SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiNativePDFormul
 
 public import SerrePositivity.BhattScholze.Andre.Unoriented
 
+public import SerrePositivity.BhattScholze.Andre.Unconditional.RawPrimeRegularAllMonic
+public import SerrePositivity.BhattScholze.Andre.Unconditional.RawPAdicPairRegular
+
 /-!
 # André E1・E2 の集約
 
