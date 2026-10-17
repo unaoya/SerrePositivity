@@ -505,6 +505,22 @@
   CriterionPerf*の実際のPerf判定との接続、明示したcompact生成下の全導来圏同値である。
   一般右随伴との一致・unit/counitは他担当に残す。
 
+## U16c.2：Hom比較の錐・shift閉性と全対象の充満忠実性
+
+- `CriterionDerivedHomTriangles.lean`：二つのHom完全列を追い、最初の二頂点とそのshiftの
+  Hom比較の全単射性から第三頂点での全単射性を証明した。同型不変性と零対象の場合も公開した。
+- `CriterionDerivedHomLocus.lean`：固定始域から全整数shiftへのHom比較が全単射となる
+  終域のクラスを定義し、同型・shift・三角形・u-small余積での閉性を証明した。
+  余積閉性に使うのは固定始域とその像のcompact性であり、生成族の直和のcompact性ではない。
+- `CriterionDerivedFullyFaithful.lean`：明示したcompact生成を用いて終域変数を拡張し、
+  次いで始域変数を拡張して全主導来対象間のHom比較の全単射性と充満忠実性を構成した。
+  入力は実際の三角関手・余積保存・Perf保存・Perf対象間のHom比較である。
+  始域帰納では既存の `brownHomComparison_all` を指定射が恒等射の場合に適用した。
+  同補題は指定射だけに関する一般の局所化帰納であり、右随伴・表現対象の存在は入力にも証明にも使わない。
+- 三監査入口と公開入口の合同ビルド成功（2842 jobs、終了コード0、警告・エラーなし）。
+  主要13宣言の公理は標準3公理のみ。新規sorry・admit・axiom・引用はない。
+  実際のPerf同値を入力とする形への接続と、本質的全射を合わせた全導来圏同値への統合を残す。
+
 ## 合同検証と公開入口（2026-10-17）
 
 - 新規10監査対象・公開入口・既存 `Checks.DGFunctorDerivedEquivalence` の12対象を

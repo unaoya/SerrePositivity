@@ -1,0 +1,13 @@
+module
+public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedHomLocus
+
+/-! # 全shiftのHom比較の局所化帰納の対象クラスの公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded.Morita
+#print axioms criterionDerivedHomTargetLocus
+#print axioms criterionDerivedHomTargetLocus_shift
+#print axioms criterionDerivedHomTargetLocusClosedIso
+#print axioms criterionDerivedHomTargetLocusShift
+#print axioms criterionDerivedHomTargetLocusClosedTriangle
+#print axioms criterionDerivedHomTargetLocusTriangulated
+#print axioms criterionDerivedHomTargetLocus_coproduct
