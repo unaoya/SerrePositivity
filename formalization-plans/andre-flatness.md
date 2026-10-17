@@ -5706,3 +5706,113 @@ A1-a 全体の完成とは数えず、既存 hpR 付き定理は成果到着ま�
 65 公開宣言をすべて `assert_no_sorry` で検査し、45,431 宣言の依存走査も
 終了コード0で成功した。標準三公理以外の公理・sorry 依存はない。
 本節に明示した最終接続は依然として未完了であり、目標は継続する。
+
+
+## A1-d：初期係数商の忠実平坦性
+
+2026-10-17。A1-b の「A1-d への受渡し」は着手時には未記載だったため、
+「無条件の弱い入力と残る接続」と「第二の区切り」から次の目標型を先に固定する。
+完全 prism W : OrientedPrism p A、hW、モニック f : Polynomial A、0<f.natDegree に対し、
+P=PowerRootPolynomial A p hp、E=powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure、
+dP=algebraMap A P W.generator、a=powerRootPrismMonicUnaryFamily f、
+R=A/(p,W.generator)、J=deltaDivisionFirstBaseIdeal dP a、Q=P/J、
+Res=DeltaAdjoinDivisionResidue E dP a とする。
+
+新規 namespace `SerrePositivity.BhattScholze.Andre.InitialCoefficient` に、
+R 上の自然な作用を保持する
+`initialCoefficientAlgEquiv : Q ≃ₐ[R] PowerRootPolynomialQuotient R p hp (f.map (Ideal.Quotient.mk _))`、
+`initialCoefficient_faithfullyFlat : Module.FaithfullyFlat R Q`、
+`rawResidue_faithfullyFlat : Module.FaithfullyFlat R Res` を公開する。
+最後の作用は A1-b の実係数射 κ と実 raw 残余射の合成との一致を照合する。
+一般の `deltaAdjoinDivisionResidue_moduleFaithfullyFlat` を初期商上の既存結果として用いる。
+hpR、係数商の非零性、追加の平坦性・Tor 消滅は仮定しない。
+既存の André ファイルと他担当の節は編集せず、成果と専用監査は
+`Andre/Unconditional/InitialCoefficient/` の新規ファイルだけに置く。
+
+### A1-d への受渡し
+
+2026-10-17 のユーザー指示による分担変更。鎖の最初の段を A1-d に渡す。
+A1-d の配置先は `SerrePositivity/BhattScholze/Andre/Unconditional/InitialCoefficient/` 以下。
+A1-b はこのディレクトリのファイルを編集しない。
+A1-d の専用監査は別ファイル `scripts/audit_andre_initial_coefficient.lean` を推奨する。
+A1-b は以下の H⁰ 忠実平坦性を明示仮定にして純性と H 側の接続を進め、成果受領後に解消する。
+主定理、BS Thm 1.17(1)、Cor 8.12、既存 Andre/ のファイルは担当外。
+
+**元の対象と自然な作用。** 以下の型は
+`SerrePositivity.BhattScholze.Andre` の既存名を使う。
+`P=PowerRootPolynomial A p hp`、`E=powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure`、
+`dP=algebraMap A P W.generator`、`a=powerRootPrismMonicUnaryFamily (p:=p) f`、
+`L₀=PowerRootUnaryFreeDeltaRing A p hp`、`Q=L₀/(p,C dP)` である。
+初期係数商は `Qinit=P ⧸ deltaDivisionFirstBaseIdeal (p:=p) dP a = P/(p,dP,a)`。
+Qinit と実自由 δ 源の商 Q を混同しない。
+`κ=powerRootSourceQuotientCoefficientMap_of_unconditional W` と
+`powerRootPrismMonicSourceQuotientResidueMap_of_unconditional W hW f` によって、
+既存の実 raw 残余商の自然な R=A/(p,d) 作用を固定する。
+
+**A1-d の証明対象（提案名は名前空間 `Andre.InitialCoefficient` 内）。**
+共通の暗黙引数は `{A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]`。
+`open CategoryTheory` と `attribute [local instance] HasDerivedCategory.standard` の下で述べる。
+以下は結論までの正確な Lean の型であり、型全体は `/tmp/a1d-interface.lean` で検査する。
+
+```lean
+theorem rawResidue_faithfullyFlat (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
+    (f : Polynomial A) (hf : f.Monic) (hdeg : 0 < f.natDegree) :
+  let hp := Nat.Prime.pos (Fact.out : p.Prime)
+  let P := PowerRootPolynomial A p hp
+  let E := powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+  let dP := algebraMap A P W.generator
+  let a := powerRootPrismMonicUnaryFamily (p := p) f
+  let L₀ := PowerRootUnaryFreeDeltaRing A p hp
+  let Q := L₀ ⧸ Ideal.span {(p : L₀), MvPolynomial.C dP}
+  let R := A ⧸ Ideal.span {(p : A), W.generator}
+  let Res := DeltaAdjoinDivisionResidue E dP a
+  let κ := powerRootSourceQuotientCoefficientMap_of_unconditional W
+  letI := (powerRootPrismMonicSourceQuotientResidueMap_of_unconditional W hW f).toAlgebra
+  letI : Module Q Res := Algebra.toModule
+  Module.FaithfullyFlat R ((ModuleCat.restrictScalars κ).obj (ModuleCat.of Q Res))
+
+```
+
+さらに既存の H⁰ 比較を使い、A1-b が直接受け取る次の型を供給する。
+
+```lean
+theorem sourceResidueH0_faithfullyFlat (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
+    (f : Polynomial A) (hf : f.Monic) (hdeg : 0 < f.natDegree) :
+  let R := A ⧸ Ideal.span {(p : A), W.generator}
+  Module.FaithfullyFlat R
+    ((DerivedCategory.homologyFunctor (ModuleCat R) 0).obj
+      ((boundedAboveDerivedBaseChange (Ideal.Quotient.mk
+        (Ideal.span {(p : A), W.generator}))).obj
+        (PowerRootPrismMonicSourceCoefficientObject_of_unconditional W hW f)).obj)
+
+```
+
+**通常商の比較と合成に使う既存 API。**
+
+- 通常のモニック無限根商は
+  `PowerRootPolynomialQuotient (A ⧸ Ideal.span {(p:A), W.generator}) p hp
+    (f.map (Ideal.Quotient.mk (Ideal.span {(p:A), W.generator})))`。
+  主イデアル表示との照合は `powerRootPolynomialQuotient_ideal`。
+- 係数商との交換は `powerRootCoefficientIdealQuotientEquiv`、同 `_mk`、
+  `powerRootCoefficientIdealQuotientMap_coeff` と同 `_baseMap`。
+  二重商は `DoubleQuot.quotQuotEquivQuotSup`。
+- 通常商の自由性・忠実平坦性は `powerRootPolynomialQuotient_free`、
+  `powerRootPolynomialQuotient_faithfullyFlat`。正次数 hdeg は後者にのみ必要。
+- 初期係数商上の raw 残余商の係数射・忠実平坦性は
+  `deltaAdjoinDivisionResidueBaseMap`、同 `_mk`、
+  `deltaAdjoinDivisionResidueBaseAlgebra`、`deltaAdjoinDivisionResidue_moduleFaithfullyFlat`。
+  hpP、hpL、ghost 単射性、δ(dP) の単元は完全 prism から内部供給する。
+  `powerRootPolynomial_primeRegular`、`powerRootPrismGenerator_isDistinguished`、
+  `witt_ghostMap_injective_of_mul_prime_injective` が既存 API。
+- 合成は `Module.FaithfullyFlat.trans`。新しく構成する R→Qinit→Res の係数射が、
+  上の κ と実源商の係数射の合成と全 A 代表元上で一致することを確認する。
+  環同型だけで自然な R 作用を取り替えてはならない。
+- raw 残余商から実還元 H⁰ への移送は
+  `powerRootPrismMonicSourceCoefficientPDResidueH0Iso_of_unconditional W hW f hf`。
+  これは既存の `Unconditional/PowerRootAResidue.lean` にあり、A1-b の検証済み成果。
+
+**既に途中で作った下書き。** 分担変更前の未検証の二つの草稿を
+`/tmp/andre-a1d-drafts/PowerRootInitialCoefficient.lean` と
+`/tmp/andre-a1d-drafts/PowerRootRawResidueFlat.lean` に退避した。
+これらはビルド済み成果ではなく、必要なら参考として使える。
+A1-b は以後この最初の段を実装せず、A1-d の成果で上記の明示仮定を解消する。
