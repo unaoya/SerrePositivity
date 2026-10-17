@@ -3277,3 +3277,86 @@ BS Rem 7.15（著者版 p.62）の p ねじれなしの場合の計算を、原�
 有限 mod p 分離同型・次関係公式・次関係の正則性、線形関係商での係数正則性、
 無限根モニックの二元商正則性・生成元の mod p 正則性・最初の関係とその係数の
 正則性の公開型 8 本を `#check` で確認した（終了コード 0）。
+
+
+### E1.52：全有限 δ 関係商の同時正則性と無限根モニック raw 包の p 正則性（検証済み）
+
+新規 `Andre/RegularTripleQuotientStep.lean` は、任意の可換環で a が正則、
+mod a の c,g が正則、さらに mod(a,c) の g が正則なら、g を追加した商でも
+a と mod a の c が正則となることを証明する。
+正則対の順序交換を二度使い、二重主イデアル商を交換する。
+環同型での正則性と自然数 p・mod p の係数正則性の移送を含め 5 公開宣言を追加した。
+
+新規 `Andre/DeltaDivisionFinitePrimeQuotients.lean` は、一元族 a:σ→A（Unique σ）の
+有限関係イデアル I_N と通常商 B_N=L₀/I_N について、
+B_N/p と L₀/((p)+I_N)、(B_N/p)/d と L₀/((p,d)+I_N) の実同型を構成する。
+後者は既存の Witt 正規化が使う一重商そのものである。
+深さ零・次段のイデアル式と、一つの次関係を追加する商の同型も構成した。
+全ての比較で元の自由環の代表元を保つ。10 公開宣言を追加した。
+
+新規 `Andre/DeltaDivisionFiniteRegularStep.lean` は、D:δ_p A、p 正則な A、
+自由 δ 環の ghost 射の単射性、単元 v=δ(d) を明示して、
+
+以下は次段の環とイデアルを Bnext、Inext と略記した型の概略である。
+
+```lean
+theorem deltaDivisionUnaryFinite_step_regular
+    (hpN : IsSMulRegular B_N (p : B_N))
+    (hdN : IsSMulRegular (B_N ⧸ Ideal.span {(p : B_N)})
+      (Ideal.Quotient.mk _ (Ideal.Quotient.mk I_N (MvPolynomial.C d)))) :
+    IsSMulRegular Bnext (p : Bnext) ∧
+      IsSMulRegular (Bnext ⧸ Ideal.span {(p : Bnext)})
+        (Ideal.Quotient.mk _ (Ideal.Quotient.mk Inext (MvPolynomial.C d)))
+```
+
+を証明する。mod p の次関係の正則性は E1.51 の最高係数計算から得る。
+mod(p,d) の正則性は、N=0 で既存の第一 jet、N>0 で既存の有限 Witt 計算から得る。
+通常二重商へ戻して三元の正則性保存を適用する。3 公開宣言を追加した。
+
+新規 `Andre/DeltaDivisionUnaryFiniteInitialRegular.lean` は、自由 δ 環の mod p を
+(A/p) 係数の同じ多項式環と比較し、最初の実関係 dX-a をその線形関係へ移す。
+p が A で正則、d が A/p で正則、a が (A/p)/d で正則なら、
+最初の関係商でも p と mod p の d が正則と証明する。
+この初期段では δ(d) の単元性は不要。比較と代表元公式を含め 7 公開宣言を追加した。
+
+新規 `Andre/DeltaDivisionUnaryRawRegular.lean` は初期段と次段保存を結んだ。
+`deltaDivisionUnaryFinite_all_regular` は全ての N に対し上の二つの正則性を同時に証明する。
+さらに有限関係イデアルの有向上限による δ 閉包表示を使い、
+`deltaDivisionUnaryRaw_relationIdeal_p_saturated` で実 δ 関係イデアルの p 飽和性を示す。
+`deltaDivisionUnaryRaw_p_mul_injective` は、その実商 A{a/d} 自体の p 乗算単射性を得る。
+前提は A の p 正則性、d mod p の正則性、a mod(p,d) の正則性、
+自由 δ 環の ghost 単射性、v=δ(d) の単元性である。
+ねじれ除去の新しい商や比較同型の存在を仮定しない。3 公開宣言を追加した。
+
+新規 `Andre/PowerRootPrismMonicRawRegular.lean` は完全 prism W の無限根入力 P に適用する。
+E は P の既存 δ 構造、dP は生成元の係数像、a は同じ宇宙の一元族 f(Y₀) とする。
+
+```lean
+theorem powerRootPrismMonicRaw_p_mul_injective
+    (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
+    (hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal))
+    (f : Polynomial A) (hf : f.Monic) :
+    Function.Injective (fun r : DeltaAdjoinDivision E dP a =>
+      (p : DeltaAdjoinDivision E dP a) * r)
+```
+
+を証明した。同 `powerRootPrismMonicFinite_all_regular` は全有限段の p 正則性と
+mod p の dP 正則性も公開する。ghost 単射性・δ(dP) の単元性・mod(p,dP) の入力正則性は
+完全 prism とモニック性から内部で供給する。添字宇宙を固定する自由環の略記を含め
+3 公開宣言を追加した。正次数は不要である。
+
+BS Rem 7.15（著者版 p.62）の p ねじれなしの場合を、原典とは異なる有限 δ 関係商の
+正則対の同時帰納法と有向上限で計算した段階である。
+E1.51 で未完了だった全有限段と raw 包そのものの p 正則性はこの工程で解消した。
+prism 商の p 正則性は原典のこの場合の明示仮定であり、一般の公開根付き存在定理へ
+追加していない。raw 包の mod p における dP 正則性の有向上限への移送、
+実 (p,dP) 完備化での正則性の保存、Hodge–Tate 商の p 正則性、
+原典の prismatic 源との同定は引き続き未完了。
+
+
+6 対象および集約の `set -o pipefail; lake build` は終了コード 0
+（集約 4487 jobs）。新規 31 公開宣言の `assert_no_sorry` と専用監査は
+終了コード 0。生成宣言を含む 4821 宣言の推移的公理依存は標準 3 公理のみ。
+三元商の正則性保存、有限二重商の比較、次段保存、初期段、全有限段、
+一般 raw 包および無限根モニック raw 包の p 正則性など、公開型 8 本を
+`#check` で確認した（終了コード 0）。

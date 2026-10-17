@@ -948,6 +948,38 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonic_modPrime_
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismFirstModPrimeRelation_regular
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFirstModPrime_generator_regular
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.ringEquiv_isSMulRegular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.ringEquiv_prime_pair_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDoubleQuotSwapEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDoubleQuotSwapEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.regularTripleQuotientStep
+assert_no_sorry SerrePositivity.BhattScholze.Andre.idealThenPrincipalQuotEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.idealThenPrincipalQuotEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStagePrimeQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStagePrimeQuotientEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStagePairQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteStagePairQuotientEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionUnaryFiniteIdeal_zero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionUnaryFiniteIdeal_succ
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionUnaryFiniteStepEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionUnaryFiniteStepEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionUnaryFinite_next_mod_pair_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionUnaryFinite_next_mod_prime_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionUnaryFinite_step_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.relativeFreeModPrimePolynomialEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.relativeFreeModPrimePolynomialEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.relativeFreeModPrimePolynomialEquiv_first
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionUnaryFirstPrimeEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionUnaryFirstPrimeEquiv_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionUnaryFirst_mod_prime_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionUnaryFirst_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionUnaryFinite_all_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionUnaryRaw_relationIdeal_p_saturated
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionUnaryRaw_p_mul_injective
+assert_no_sorry SerrePositivity.BhattScholze.Andre.PowerRootUnaryFreeDeltaRing
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFinite_all_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicRaw_p_mul_injective
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -1103,7 +1135,13 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicVarpiFlat,
     `SerrePositivity.BhattScholze.Andre.DeltaDivisionFiniteModPrimeTail,
     `SerrePositivity.BhattScholze.Andre.DeltaDivisionFiniteModPrimeRegularity,
-    `SerrePositivity.BhattScholze.Andre.PowerRootMonicModPairRegular]
+    `SerrePositivity.BhattScholze.Andre.PowerRootMonicModPairRegular,
+    `SerrePositivity.BhattScholze.Andre.RegularTripleQuotientStep,
+    `SerrePositivity.BhattScholze.Andre.DeltaDivisionFinitePrimeQuotients,
+    `SerrePositivity.BhattScholze.Andre.DeltaDivisionFiniteRegularStep,
+    `SerrePositivity.BhattScholze.Andre.DeltaDivisionUnaryFiniteInitialRegular,
+    `SerrePositivity.BhattScholze.Andre.DeltaDivisionUnaryRawRegular,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicRawRegular]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
