@@ -21464,3 +21464,72 @@ resolution・置換の自然な弱比較による選択独立性、単体的モ�
 Fの最終の小さい厳密なRMapと、両変数の弱同値不変性・Kan性・π₀とHo(C)の自然比較の統合、
 resolution・置換の自然な弱比較による選択独立性、単体的モデル圏のMap(QX,RY)との比較は残る。
 Fの完了目標を継続する。
+
+
+## 381. 指定二辺を固定する全合成三角形の小さい相対選択空間（2026-10-17）
+
+実装コミット`646b0cb9`。§380.5の次の受入単位である全fillerの空間と相対延長を構成した。
+Fの完了目標を継続し、amend・rebase・resetは使わない。
+
+### 381.1 元の指定二辺から実hornを構成
+
+`ComparisonTriangleHorn`は、共通終点を持つ指定ホモトピーF,Gのcurriedな二辺を
+outer horn Λ[2,2]上へ貼り合わせる。両辺への制限は厳密に元のcurried区間となる。
+任意の`KanComparisonTriangle.Data F G`について、hornへの制限がこの貼り合わせ写像に
+一致することも証明する。特定のfillerを使ってhornの定義を代用していない。
+
+### 381.2 すべてのfillerと、既存の三角形全体を保つ相対延長
+
+`ComparisonTriangleChoices`は、このhorn写像に対する実`RelativeChoiceSpace`を構成する。
+TとKがSSet.{v}なら、この全選択空間も**SSet.{v}**である。
+KのKan性と実hornのanodyne性から、選択空間のterminal射のすべての単射に対する持ち上げ性、
+boundary右持ち上げ性、Kan性を証明する。値宇宙のModelCategoryは要求しない。
+
+任意の既存の三角形データを、この空間の実頂点へ入れる。
+その頂点を評価すると、通常の点・単位同型を介して元の三角形がそのまま戻る。
+任意のL上の選択族を評価した三角形の二辺は、L全体を通じて元の指定二辺に固定される。
+任意の単射U→Vに沿って既存のU上の族を延長でき、その三角形族全体もU上で厳密に一致する。
+
+`fixedBoundaryComparison`は、同じ指定二辺を持つ任意の二つの三角形の間に、
+horn全体を固定する実ホモトピーを与える。第三辺は比較に伴って動く。
+三辺すべてを固定した任意の三角形比較や、任意の閉じた2球の充填を主張するものではない。
+
+### 381.3 元の実native合成比較への適用
+
+`OrdinaryBarCompositionChoices`は、XY・YZ・XZの実降下選択と元のsource族から
+全合成三角形の実選択空間`compositionChoices`を構成する。
+対象宇宙uとHom宇宙vは独立であり、この空間の値宇宙は元のvである。
+補助宇宙max(u,v)の小さい宇宙への未証明の縮小を行ってはいない。
+
+前回§380の実三角形は`selectedCompositionPoint`として入る。
+`compositionChoiceFamily_selected`は、評価後に前回の実三角形がそのまま戻ることを証明する。
+任意の小さいLに対する実族T⊗(Δ[2]⊗L)→Map(small(X),small(Z))を構成し、
+二つの全辺が元の合成射の比較と同時合成比較に厳密に一致すると証明する。
+`compositionChoices_relative_extension`は、小さい任意の単射境界を保持して三角形族を延長する。
+任意の二つの実三角形を指定二辺に相対的に比較する入口も供給する。
+
+### 381.4 受入検証
+
+すべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`（3232 jobs、警告なし）。
+- `check_composition_choices`：一般の全三角形選択空間のboundary右持ち上げ性、
+  任意の二つの三角形の指定hornに相対的な実比較、独立した対象u・Hom vでの
+  実合成三角形選択空間のSSet.{v}値、小さい境界を保つ実三角形族の延長、指定全辺の一致。
+  新規3モジュール全41宣言の標準公理監査。
+- `check_relative_composition`：91宣言・5モジュールの回帰検証。
+- `check_relative_hom_descent`：84宣言・7モジュールの回帰検証。
+- `audit_homotopical_foundations`：全13376宣言・962モジュール。
+  propext・Classical.choice・Quot.soundのみ。sorry・引用axiomなし。
+- ソースの行長・証明用マーカー、stage差分の空白検査。
+
+### 381.5 次の受入単位とFの残作業
+
+固定された元のパラメータT・指定二辺に対する全fillerと、任意の追加パラメータ境界の延長は完了した。
+次は元のTを変えた際の全fillerの移送を構成し、移送の恒等・合成則と実評価との交換を証明する。
+その上で、移送した前回の三角形と別途選んだ三角形を、指定二辺を保持して比較する。
+今回の追加パラメータの延長だけを、元のTに関する自然性や全高次の整合性とは扱わない。
+
+単位・合成の面の高次整合性、小さい厳密なRMapと自然な弱比較、
+両変数の弱同値不変性・Kan性・π₀とHo(C)の自然比較への統合、
+resolution・置換の選択独立性と単体的モデル圏のMap(QX,RY)との比較は引き続き残る。
