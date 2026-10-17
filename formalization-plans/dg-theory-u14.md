@@ -523,6 +523,17 @@
 - `ChecksPerfectShiftTriangles` の対象ビルド成功。新規8主要宣言の公理は標準3公理のみ。
 - U14bの主Perf比較の整合的shiftと三角性の中心部分は証明済み。導来係数変更図式は残る。
 
+## U14b.26：U13 enhancement比較のshift・三角形図式（2026-10-17）
+
+- `EnhancementShiftTriangles.lean`：U13の完全忠実な主Perf比較を通し、実際のdg比較の
+  H⁰へ主Perf比較と整合するCommShiftを入れた。構造は既存の比較自然同型を介して移送する。
+- 既存の `perfectEndomorphismDerivedComparison` のshift整合性を証明し、U13の三角性の反映から
+  dg比較のH⁰の三角性を証明。三角形の圏上でも既存比較正方形が自然に可換する同型を構成した。
+- `ChecksEnhancementShiftTriangles` と更新した `ChecksCompatibility` の対象ビルド成功。
+  新規4主要宣言の公理は標準3公理のみ。主Perfとenhancement両方のshift・三角性APIを公開済み。
+- 既存公開APIの名前・型は変更していない。新規CommShiftは定義として明示的に選択する。
+- 導来係数変更図式とU14c、およびU14aを含む最終受入照合は未完了である。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
@@ -532,9 +543,11 @@
 - U14b：明示したthick生成仮定からenhancement上の全Hom擬同型は証明済み。
   Hom像のPerf保存と主導来HomのPerfへの制限は構成済み。
   H⁰の本質的全射、主Perf同値、enhancement準同値も構成済み。
-  受入条件の整合的shift・三角性・導来係数変更の図式が残る。
+  主Perfとenhancementの整合的shift・三角性・包含正方形はU14b.25–26で証明済み。
+  導来係数変更の図式と最終受入照合が残る。
 - U14c：導来圏全体の比較にはcompact生成性が必要。
   無限生成集合の直和はcompactとは限らず、thick生成だけから全導来圏の比較は出さない。
   DG-GEN/DG-MORの採用が必要になったら採用せず停止・報告する。
 - U12dとの全導来射自然なtensor評価比較、評価成分のshift・cone同型と包含図式は構成済み。
-  Perf比較に対するshift・三角性・導来係数変更の図式が残る。
+  Perf比較に対する整合的shift・三角性の図式はU14b.25–26で証明済み。
+  導来係数変更の図式と最終受入照合が残る。
