@@ -37,6 +37,7 @@ AUDIT_KINDS = {
     "audit_bhatt_scholze.lean": "pure-suite",
     "audit_bhatt_scholze_b4.lean": "pure-suite",
     "audit_bhatt_scholze_refactoring.lean": "pure-suite",
+    "audit_bhatt_scholze_prop813.lean": "pure-suite",
     "audit_bhatt_scholze_andre_conditional.lean": "andre-conditional-suite",
 }
 # Read these shared files only for assertion-name coverage. They do not become

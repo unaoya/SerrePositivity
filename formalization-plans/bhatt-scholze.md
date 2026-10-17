@@ -44,7 +44,7 @@ p完全平坦なperfectoid底変換への適用は、この一般環版から標
 H0上の環の普遍性自体に不要な平坦性・p正則性・非零性・有限性は追加しない。
 一般の商の存在はB3、導来p完備な商での全射性が必要な場合はB4を使用し、pねじれなしの商だけへ限定しない。
 
-予定BS専用ファイルと工程：
+実装したBS専用ファイルと工程：
 
 1. `CompletedTensorPerfectoidUniversal.lean`：元のG2完備tensor H0からperfectoid試験環への唯一延長。
    既存principalCompletion_existsUnique_ringHomとcompletedTensorH0PrincipalRingEquivを使用する。
@@ -62,7 +62,7 @@ H0上の環の普遍性自体に不要な平坦性・p正則性・非零性・�
 PerfectDeltaTensor*・PerfectPrismResidueTensor*と既存の任意perfectoid図式の離散性・perfectoid性、
 共通完備tensor基盤は受領済みAPIとして使い、編集しない。
 CLMST-D所有のInputs/内のCor 8.12引用入力も編集しない。
-完成時は本節に公開名・正確な型・検証範囲を追記する。チャット間送信は別途ユーザー許可がある場合だけ行う。
+公開名・正確な型・検証範囲は本節に記録する。チャット間送信は別途ユーザー許可がある場合だけ行う。
 
 工程1の結果：CompletedTensorPerfectoidUniversalの5公開宣言を実装した。
 任意のR代数S,Tの元のG2完備tensor H0から任意perfectoid Dへの射は、
@@ -83,6 +83,114 @@ perfectoid化後の基底上のtensorの任意のperfectoid化が元のtensorの
 `prop813ComparisonEquiv_comp`・`symm_comp`が順逆の標準図式、`unique`が比較射の一意性を与える。
 純tensorの両因子の式を保持し、perfectoid化後の完備tensorの離散性は既証定理の適用で得た。
 対象を含む4,417ジョブのbuildと累計19件の依存監査が成功し、標準3公理のみ。元のtensorの離散性は結論していない。
+
+### Prop 8.13環版の公開APIと受渡し型（2026-10-17）
+
+一般図式の入口は`BhattScholze.prop813CompletedTensorMap_isPerfectoidization`、
+比較環同型は`prop813ComparisonEquiv`。次のLean断片は、必要な環・代数作用・図式・仮定を全て明示した型である。
+元の三つのperfectoid化から両基底射を得る場合は、既存`IsPerfectoidization.map`と`map_comp`を使える。
+この構成が追加の互換性仮定なしで適用できることも専用監査のcanonical_diagramで検証した。
+
+```lean
+import SerrePositivity.BhattScholze.Prop813PerfectoidBaseChange
+open CategoryTheory SerrePositivity SerrePositivity.BhattScholze
+open SerrePositivity.DerivedCompletion
+attribute [local instance] HasDerivedCategory.standard
+universe u
+noncomputable section
+set_option quotPrecheck false
+
+section GeneralDiagram
+variable (p : ℕ) [Fact p.Prime] {R S T P C D : Type u}
+  [CommRing R] [CommRing S] [CommRing T] [CommRing P] [CommRing C] [CommRing D]
+  [Algebra R S] [Algebra R T] [Algebra P C] [Algebra P D]
+  (r : R →+* P) (s : S →+* C) (t : T →+* D)
+  (hs : ∀ x, s (algebraMap R S x) = algebraMap P C (r x))
+  (ht : ∀ x, t (algebraMap R T x) = algebraMap P D (r x))
+  (hr : IsPerfectoidization p r) (hsp : IsPerfectoidization p s)
+  (htp : IsPerfectoidization p t)
+local notation "X" => boundedAboveCompletedTensorAlgebra R (p : R) S T
+local notation "Y" => boundedAboveCompletedTensorAlgebra P (p : P) C D
+local notation "HX" => (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj (X).X.obj
+local notation "HY" => (DerivedCategory.homologyFunctor (ModuleCat P) 0).obj (Y).X.obj
+
+example :
+    letI := derivedH0CommRing X
+    letI := derivedH0CommRing Y
+    IsPerfectoidization p (prop813CompletedTensorMap p r s t hs ht hr hsp htp) :=
+  prop813CompletedTensorMap_isPerfectoidization p r s t hs ht hr hsp htp
+
+example (E : Type u) [CommRing E] :
+    letI := derivedH0CommRing X
+    letI := derivedH0CommRing Y
+    ∀ (g : HX →+* E), IsPerfectoidization p g → HY ≃+* E :=
+  prop813ComparisonEquiv p r s t hs ht hr hsp htp E
+end GeneralDiagram
+```
+
+`prop813ComparisonEquiv_comp`は比較の順射と元の完備tensor写像の合成がgであること、
+`prop813ComparisonEquiv_symm_comp`は逆射とgの合成が同じ完備tensor写像であることを与える。
+`prop813CompletedTensorMap_unit_tmul`は、元の完備化単位に入れた`x ⊗ y`を、
+perfectoid化後の元の単位に入れた`s x ⊗ t y`へ送る公式である。
+
+CLMST-D向けのperfectoid底変換の入口は次の`prop813BaseChange_exists_algEquiv`。
+新基底B上の元の作用を保持する。p完全平坦な底変換にもそのまま適用できる。
+以下は上のimport/open/universeに続く独立のsectionとして型検査できる。
+
+```lean
+section PerfectoidBaseChange
+variable (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime] (B A C : Type u)
+  [CommRing B] [CommRing A] [CommRing C]
+  [Algebra R B] [Algebra R A] [Algebra R C]
+  (hR : IsIntegralPerfectoid R p) (hB : IsIntegralPerfectoid B p)
+  (f : A →ₐ[R] C) (hf : IsPerfectoidization p f.toRingHom)
+local notation "X" => boundedAboveCompletedTensorAlgebra R (p : R) B A
+local notation "Y" => boundedAboveCompletedTensorAlgebra R (p : R) B C
+local notation "HX" => (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj (X).X.obj
+local notation "HY" => (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj (Y).X.obj
+
+example (E : Type u) [CommRing E] [Algebra B E] :
+    letI := derivedH0CommRing X
+    letI := derivedH0Algebra X
+    letI := completedTensorH0LeftAlgebra R (p : R) B A
+    letI := derivedH0CommRing Y
+    letI := derivedH0Algebra Y
+    letI := completedTensorH0LeftAlgebra R (p : R) B C
+    ∀ (g : HX →ₐ[B] E), IsPerfectoidization p g.toRingHom →
+      ∃ e : HY ≃ₐ[B] E,
+        e.toRingHom.comp (prop813BaseChangeMap R p B A C hR hB f hf) = g.toRingHom :=
+  prop813BaseChange_exists_algEquiv R p B A C hR hB f hf E
+end PerfectoidBaseChange
+end
+```
+
+`prop813BaseChangeMap_comp_unit`・`prop813BaseChangeMap_unit_tmul`・`prop813BaseChangeMap_left`が、
+通常tensorの元の写像、完備化単位、全ての新基底係数の図式を供給する。
+`prop813BaseChange_exists_linearEquiv`は同じ結果を、新基底B上で実際にG2の
+`Λ_p^B (B ⊗_R^L C)`を取ったH0加群のB線形同型として公開する。
+`prop813BaseChange_exists_algEquiv_of_tensor`は、元の通常tensorの指定済みperfectoid化だけを入力とし、
+その標準射をH0へ延長したものと同じ可換図式を持つB代数同型を与える。
+呼出側が完備tensor H0のperfectoid化を別に選択する必要はない。
+`exists_prop813BaseChange_of_perfectoid_quotient`がB3による一般商への存在入口、
+`exists_prop813BaseChange_of_semiperfectoid_quotient`がさらに元の商の導来p完備性を仮定し、B4で元のfの全射性を付ける入口である。
+これらの存在定理にはB-I/B6やAndréの引用を使っていない。
+
+原典との境界：ここでの(−)perfdは、指定済みの環のIsPerfectoidizationを意味する。
+任意の環について導来perfectoid化が離散であると主張していない。
+CLMST-Dは、元のAの有界p冪ねじれ等を用いる古典的／導来完備tensorの比較を別途供給する。
+本成果はその比較の代わりに平坦性や離散性を仮定で隠すものではなく、比較先と標準射を具体的に与える。
+
+最終検証：Prop813PerfectoidBaseChangeの10公開宣言を含む対象4,417ジョブのbuildが終了0。
+新規4モジュールの全29公開宣言と3検証例のassert_no_sorry・32件の再帰公理監査が終了0で、
+全てpropext・Classical.choice・Quot.soundのみ。通常B4監査も2,560件が成功し、2,556公理出力は同じ標準3公理のみ。
+全29宣言の宇宙・暗黙引数を含む完全型を取得し、省略なしで確認した。上記2つの型断片も結合してLeanで検査し成功した。
+恒等perfectoid化が元のH0上の恒等射を誘導すること、既存函手性による基底作用の供給、零環への適用を検証した。
+BS専用構造監査に本専用監査をpure-suiteとして登録し、自己テスト11件と共通基盤6入口の禁止依存検査が成功した。
+新4モジュールの759プロジェクトimport閉包にInputsモジュールへの到達はなく、循環・未解決importもない。
+検証中の依存ソースhashと受領済み完備tensor系列のhashは不変だった。
+これは当該BS閉包の検証であり、共有ルート全体の新しいbuild成功は主張しない。
+共通基盤・受領済みtensorモジュール・CLMST-Dのコードと入力・共有監査・ルートimportは編集していない。
+原典の導来prismatic証明、Cor 8.12の引用入力、Prop 2.4.7本体の引用除去はこの成果の完了範囲に含めない。
 
 ## 2. 解消する引用
 
