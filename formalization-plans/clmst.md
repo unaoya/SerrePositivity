@@ -10403,6 +10403,17 @@ e を定数の両立 p 冪根族として既存の根族の完備商定理へ適
 担当外の BS・KL・AbsolutelyIntegrallyClosed 系ファイルは編集しない。
 原典 E∞ 版 Cor 8.12 は保留のままで、新しい sorry・axiom・引用は追加していない。
 
+**有限直積の独立準備・元の射影の核とその像による実直積分解（2026-10-17）。**
+共通層 `CommutativeAlgebra/ProductIdempotentQuotient.lean` は既存 API を検索した上で、
+元の各射影の核が補冪等元 1-single(i,1) の生成する主イデアルであることと、
+任意の元の写像 f:∏Ai→C によるその像の主イデアル表示を証明する。
+有限個の射影について、元の C→∏(C/(ker evali).map f) が全単射であることは
+mathlib の CompleteOrthogonalIdempotents.single・map・bijective_pi をそのまま再利用した。
+CRT や冪等元の分解の一般論を再実装せず、C の被約性・非零性を要求しない。空の直積も含む。
+共通層は BS・CLMST・Inputs・Paper に依存しない。
+対象1440ジョブと公開3宣言の専用監査が成功。全3宣言は assert_no_sorry 成功・標準3公理のみ。
+原典 E∞ 版 Cor 8.12 は保留のままで、新しい sorry・axiom・引用は追加していない。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。

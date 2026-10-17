@@ -1,0 +1,9 @@
+import SerrePositivity.CommutativeAlgebra.ProductIdempotentQuotient
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.ker_pi_eval_eq_span_one_sub_single
+assert_no_sorry SerrePositivity.map_ker_pi_eval_eq_span
+assert_no_sorry SerrePositivity.pi_mapped_projection_quotients_bijective
+#print axioms SerrePositivity.ker_pi_eval_eq_span_one_sub_single
+#print axioms SerrePositivity.map_ker_pi_eval_eq_span
+#print axioms SerrePositivity.pi_mapped_projection_quotients_bijective
