@@ -1033,6 +1033,16 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletion
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletionBaseMap_isDeltaHom
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletionBaseMap_generator
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_rawDeltaDivisionPDHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.rawDeltaDivisionPDTorsionEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.rawDeltaDivisionPDTorsionEquiv_unit
+assert_no_sorry SerrePositivity.BhattScholze.Andre.rawDeltaDivisionPDTorsionEquiv_isDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicCompletionHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletionTorsionEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletionTorsionEquiv_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletionTorsionEquiv_isDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletionHom_generator
+
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
@@ -1208,7 +1218,10 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.CompletelyFaithfullyFlatPrincipalPower,
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicHodgeTateCompletelyFaithfullyFlat,
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicHodgeTateRoot,
-    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCompletionPrism]
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCompletionPrism,
+    `SerrePositivity.BhattScholze.Andre.RawDeltaDivisionPDUniversal,
+    `SerrePositivity.BhattScholze.Andre.RawDeltaDivisionPDTorsionComparison,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCompletionUniversal]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

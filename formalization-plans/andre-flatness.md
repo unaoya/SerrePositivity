@@ -3662,3 +3662,75 @@ Frobenius 引戻し pd 包同定、および最終完全 δ 化・perfectoid 商
 冪零核四角形・正冪剰余の忠実平坦性・完全忠実平坦性の正冪保存、具体的候補の
 p 完全忠実平坦性・根の評価、実完備化 prism・標準係数射の δ 性・生成元公式の
 公開型 8 本を `#check` で確認した（終了コード 0）。
+
+
+### E1.57：元の実候補の相対普遍性と旧ねじれ除去一段構成への δ 比較（検証済み）
+
+BS 著者版 Prop 7.2（p.55）の証明を再確認した。同証明は raw δ 割り算包の旧分母ねじれの
+δ 閉包商を作り、実完備化後の新しい分母ねじれを除く工程を反復する。
+本レーンの無限根モニック入力では、元の raw 包の実完備化の分母正則性を E1.53 で
+証明しているため、この具体的候補について旧ねじれ除去前後の比較を直接行う。
+
+新規 `Andre/RawDeltaDivisionPDUniversal.lean` は一般の δ 基底 D:δ_p R、分母 d、
+分子族 a:σ→R に対して `existsUnique_rawDeltaDivisionPDHom` を証明する。
+δ 試験環 E:δ_p T、δ 基底射 f:R→T、f(d) の正則性、全ての f(a_s) の f(d) による
+可除性、T の p と f(d) に関する導来完備性を仮定する。
+元の raw 包 B=DeltaAdjoinDivision D d a、標準射 j:R→B、
+H=PDCompletionH0 B p (j d)、uB=pdCompletionUnit B p (j d) とすれば結論は
+
+```lean
+∃! h : H →+* T,
+  (deltaPDCompletionStructure (deltaAdjoinDivisionStructure D d a) (j d)).IsDeltaHom E h ∧
+    h.comp (uB.comp j) = f
+```
+
+である。raw 割り算と実完備化の二つの既存の一意延長を合成する。
+源をねじれ除去商に変更せず、試験環の p ねじれも制限しない。1 公開定理を追加した。
+
+新規 `Andre/RawDeltaDivisionPDTorsionComparison.lean` は、元の実 H 上で uB(j(d)) の
+乗算が単射であることだけを追加して、旧分母ねじれの δ 閉包商 U の実完備化 HU との
+標準環同型 `rawDeltaDivisionPDTorsionEquiv` を構成する。
+順射 H→HU は元の raw 包から U→HU への合成を実完備化に延長する。
+元の標準 δ 射 B→H は、H の分母正則性により旧ねじれの δ 閉包を殺すため、
+U→H へ降りる。この射を実完備化して逆射 HU→H を得る。
+両合成は raw 標準射上で一致し、U の商射の全射性と実完備化の環普遍性で恒等射となる。
+HU の分母正則性は一切追加仮定しない。
+`rawDeltaDivisionPDTorsionEquiv_unit` は全 raw 代表元の標準像を保つことを、
+`rawDeltaDivisionPDTorsionEquiv_isDeltaHom` は既存の δ 延長性により δ 構造を保つことを
+証明する。逆射の δ 性は順射の δ 性の既存 `IsDeltaHom.symm` から従う。
+3 公開宣言を追加した。
+
+新規 `Andre/PowerRootPrismMonicCompletionUniversal.lean` は E1.56 の具体的 prism H に適用する。
+入力環 P は元の無限根多項式環、E はその指定 δ 構造、dP は元の prism 生成元の係数像。
+完全 prism W、prism 商の p 正則性 hpR、入力モニック性 hf の下で、
+`existsUnique_powerRootPrismMonicCompletionHom` は、同じ宇宙の任意の試験 prism Q と
+指定した δ 射 g:P→Q について、
+
+```lean
+hd : g dP = Q.generator
+ha : Q.generator ∣ g (powerRootMonicPDInput p f)
+```
+
+なら一意な δ 射 F:H→Q が存在して F.comp(uL.comp jL)=g となることを証明する。
+試験 prism の正則性・導来完備性を一般普遍性に渡す。
+`powerRootPrismMonicCompletionHom_generator` はこの合成条件から指定生成元も保つことを示す。
+これは入力 δ 射を指定した相対的普遍性であり、元の S→Q/(generator) だけからその入力射を
+一意に持ち上げる主張をまだ含まない。従って絶対 prismatic envelope の同定とは数えない。
+
+`powerRootPrismMonicCompletionTorsionEquiv` は、この同じ元の実 H を既存の
+DerivedDeltaDivisionCompletion E dP a と環同型にする。
+係数公式 `powerRootPrismMonicCompletionTorsionEquiv_coeff` と
+δ 性 `powerRootPrismMonicCompletionTorsionEquiv_isDeltaHom` も公開した。
+自分自身の分母正則性を一般比較へ供給するため、比較同型の存在を仮定しない。
+このファイルに 5 公開宣言を追加した。正次数は不要であり、hpR を一般の公開存在定理へ追加しない。
+
+原典 Prop 7.2（p.55）、Rem 7.15（p.62）の raw・旧ねじれ除去・実完備化の比較を、
+本レーンの正則性により反復なしの具体的一段について補完した。原典と異なる経路を明記する。
+元の S の写像からの入力 δ 射の一意持上げと絶対 envelope の同定、元の f に関する
+Frobenius 引戻し pd 包の同定、およびこの経路での最終完全 δ 化・perfectoid 商との接続は未完了。
+
+3 対象および集約の `set -o pipefail; lake build` は終了コード 0
+（集約 4517 jobs）。新規 9 公開宣言の `assert_no_sorry` と専用監査は
+終了コード 0。生成宣言を含む 5333 宣言の推移的公理依存は標準 3 公理のみ。
+一般 raw 普遍性・旧ねじれ除去比較と代表元公式・δ 性、具体的相対普遍性・比較同型・
+δ 性・生成元保存の公開型 8 本を `#check` で確認した（終了コード 0）。
