@@ -11004,3 +11004,71 @@ Lean v4.35.0-rc4とMathlib manifest/HEAD e6bbacd0e1b7307ff6e17da09cd2455f60804fa
 U12e全体は未受入。現行目標をU12eの完成・受入に保ち、U16・U15eへは着手していない。
 共有一般論への新しいAPI要求はない。共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・
 ScalarExtension*・並行作業のTensor/Associator*と他チャットの記録を編集していない。
+
+### 17.235 U12e75：外側・中間の全導来比較の任意モデル計算と左単位経路（2026-10-17）
+
+**出力制限への表示移送。** Derived/BimoduleMiddleOutputRestriction.leanは、前回の
+実際のderivedMiddleRestrictionComparisonのモデル計算を、既存の出力側導来右制限へ送った。
+derivedMiddleRestrictionComparison_output_restrictionと_expandedは、source表示を通して比較してから
+出力を制限する経路と、通常のモデル計算射の右作用を制限してから局所化表示を通す経路の一致である。
+通常の解像度比較射に対するmiddleRightRestrictionDerivedIsoの自然性を使う。
+外側・中間の二つのdg関手には、Hom準同型性や本質的全射性を要求しない。
+
+**外側右比較の任意解像度による計算。** Derived/BimoduleRightRestrictionResolution.leanは、
+rightKFlatComposePresentationIsoのモデル成分が既存derivedBimoduleComposeKFlatIsoそのものになる
+計算式を証明した。関手のfac等式によるeqToIsoの成分を明示しており、輸送を暗黙に消していない。
+derivedBimoduleComposeRightRestrictionIso_resolution_squareは、任意の通常の後因子Qと
+指定右相対K-flat解像度R → Qについて、実際の全導来外側右比較を固定Rの比較で計算するsquareである。
+全導来比較の自然性と、増大射による解像度計算同型の既存fac式を使う。
+_resolution_app_calcは元の前因子P上で、この計算が通常のcomposeRightRestrictionIsoと
+既存の出力側局所化表示へ戻ることを証明した。QのK-flat性は不要。
+
+**全導来中間比較の任意モデル計算。** Derived/BimoduleMiddleFullCalculation.leanの
+middleDerivedSourceFamilyIdentification_hom_app_calcは、source表示を前因子・後因子の
+二つの既存制限表示に分ける成分式である。
+derivedMiddleRestrictionNatTrans_resolution_calculationは、全導来中間比較そのものを、
+制限後の任意の指定右相対K-flat解像度で計算する式を証明する。
+標準解像度での既存計算と§17.233の任意K-flat解像度の比較を接続した。
+_resolution_output_restrictionは、その計算を既存の出力側導来右制限へ送った可換squareである。
+semifreeモデルだけに限定せず、環や関手に追加条件を課していない。
+
+**外側と中間を続けたモデルsquare。** Derived/BimoduleRestrictionModelCalculation.leanの
+restrictedMiddleModelPrefixは、指定モデルから入力側の右制限表示と実際の全導来外側右比較を続ける射である。
+**derivedBimoduleRestriction_model_calculation**は、これに出力で制限した全導来中間比較と
+K-flat計算同型を続けると、通常の外側比較と実際のmiddleRestrictionResolvedMapを制限した経路に
+一致することを証明した。
+貼合せに必要な圏論的な打消しをprivate補題へ分離し、既存比較の可逆性やcoherenceを仮定していない。
+六つの係数・対象宇宙を独立に保持し、局所Hom K-flat性は終端Eだけに要求する。
+この結果は任意の両因子についての計算squareであり、対角への特殊化を済ませたという主張ではない。
+
+**全導来左単位経路の構成。** Derived/LeftUnitRestrictionFull.leanは、対角のHom比較を
+既存の外側右制限表示へ送るleftUnitRestrictionDerivedDiagonalMapを定義した。
+**leftUnitRestrictionDerivedComparison**は、その射、既存の全導来外側右制限比較、前因子の左制限表示、
+実際のderivedMiddleRestrictionNatTrans、既存の導来左単位子を順に続けた自然変換である。
+前因子を閉零モデルへ限定せず、任意の導来対象と任意の導来射について定義される。
+_appは各成分が実際の既存比較の成分の合成になる計算式。
+F : D → Bは任意、局所Hom条件は終端Cだけで、HomQuasiIso Fや局所Hom条件をB・Dに加えていない。
+既存の導来左単位子とこの自然変換との一致は、今回の構成・自然性とは区別して未完とする。
+既存公開APIの名前・型は変更せず、一般API 13宣言とChecksの標数2検査宣言1件を追加した。
+
+**検証。** Checks.DGRestrictionModelCalculationは、外側・中間の関手に準同値性を課さない
+任意の指定右K-flatモデルによる組合せの計算、独立した六宇宙、標数2で任意の導来射についての
+左単位経路の自然性を検査した。
+前回の左単位モデルsquare、全導来右単位square、対角の恒等・合成則、三圏同時制限、外側左右比較、
+中間比較の全導来合成則・恒等則、解像度比較・導来同値・導来随伴・五角形・StageEight・StageSeven・
+Spectra.StageTwoとの統合ビルド成功（3537 jobs、警告なし）。
+14公開宣言の直接公理監査は重複・欠落なく標準3公理以内。新規監査累計4665宣言。
+今回の6 Leanファイルにsorry・admit・新規axiom・資源上限変更は0件。採用済み引用0件。
+Lean v4.35.0-rc4とMathlib manifest/HEAD e6bbacd0e1b7307ff6e17da09cd2455f60804fa6を再確認した。
+文書検査は21 Markdown・326 exposition参照、失敗0件。
+
+**受入に残る作業。** 左単位経路の一致証明では、後因子の右制限表示を外側比較の自然性で移し、
+前因子の左制限表示と上のsource成分式を合わせるsource正規化を先に確認する。
+それを今回の組合せのモデルsquareへ接続し、対角射に関する解像度計算の自然性と
+§17.234の左単位モデルsquareを適用する。最後にsource表示・解像度計算の同型を打ち消し、
+K-flatモデル上の等式を全導来後因子へ持ち上げる。
+結合子保存、左右単位経路と三圏同時制限の正規化の一致、changeEquivalenceの単位・結合保存と
+自己・推移比較、外側左右・中間比較の恒等・合成則も仕上げて§15.2全体を監査する。
+U12e全体は未受入。現行目標はU12eの完成・受入のままで、U16・U15eへは着手していない。
+共有一般論への新しいAPI要求はない。共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・
+ScalarExtension*・並行作業のTensor/Associator*と他チャットの記録を編集していない。
