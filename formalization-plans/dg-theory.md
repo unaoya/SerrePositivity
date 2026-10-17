@@ -9766,3 +9766,50 @@ U12e受入→U16a〜d→U15e分解版の順を維持する。
 U15e局所K-flat版と続くU17b局所K-flatの場合はU17a/U13d側の担当であり、
 分解版の着手時に`Quotient/DerivedComparison*.lean`と`Verdier/`の成果を読み再利用する。
 新しい共有モデル圏API要求はない。共有ルート・Perfect/・Endomorphism/・局所K-flat版は編集していない。
+
+### 17.213 U12e53：制限tensorの比較chain mapと代表加群・反復制限の計算（2026-10-17）
+
+**実際の比較写像。** `Tensor/RestrictionComparison.lean`で、任意のdg関手F:D→Eと
+右E加群M・左E加群Nに対し、(F* M)⊗_D(F* N)→M⊗_E Nを構成した。
+`restrictionComparison`は既存の全次数balanced族の引き戻しを余等化子へ降ろしたchain mapである。
+生成元の包含との可換式、任意次数の純粋tensorを同じ元へ送る式、任意のbalanced族への後合成、
+作用と可換な両変数のchain map族に関する自然性を証明した。
+右作用の既存Koszul交換を再利用し、比較自体には追加の符号を入れない。
+`Tensor/RestrictionComparisonNaturality.lean`は実際の`moduleRestriction`と
+`rightTensorFunctor`を使う`restrictionTensorComparison`へ束ねる。
+元の加群圏の射は引き続き全Hom自然な閉零射であり、通常関手圏の射へ置き換えていない。
+
+**代表加群での準同型性。** `Tensor/RestrictionComparisonYoneda.lean`は既存の
+`representableRestrictionMap`を制限された左因子とtensorし、今回の比較とYoneda評価に続けると
+source側のYoneda評価そのものになることを証明する。
+`restrictionComparison_representable_quasiIso`は`HomQuasiIso F`と
+`leftModuleRelativeKFlat A D (F.comp N)`の下で、M=representable(Fd)における
+実際の比較chain mapが準同型であることを示す。本質的全射性はこの段階では使わない。
+制限後の左相対K-flat性は明示的な仮定であり、準同値だけから自動的に導出したとは主張しない。
+
+**反復制限の比較。** `Tensor/RestrictionComparisonCoherence.lean`ではF:D→E、G:E→Tに対し、
+反復制限と合成関手による制限のtensorを恒等成分で比べる`restrictionComparisonCompIso`を構成した。
+その順逆の生成元での計算と、二段階の比較chain mapが一段階の比較と可換になる
+`restrictionComparison_comp`を証明した。これはunderived balanced tensorでの整合性であり、
+U12eが求める導来bimodule合成・結合子のcoherence全体の受入とは区別する。
+既存公開APIの名前・型の変更はない。
+
+**検証。** Lean v4.35.0-rc4、Mathlib manifest/HEAD
+`e6bbacd0e1b7307ff6e17da09cd2455f60804fa6`を再確認した。
+新規`Checks.DGTensorRestrictionComparison`は独立対象宇宙、任意の正負整数次数、
+実際の関手上の自然性、代表加群での準同型性、反復制限との整合性、ZMod 2の場合を検査した。
+既存の解像度bimodule同値・導来随伴・単位・制限・合成五角形・StageEight・StageSeven・
+Spectra.StageTwoとの統合ビルド成功（3405 jobs、警告なし）。
+主要20宣言の直接公理監査は重複・欠落なく標準3公理以内。新規監査累計4175宣言。
+今回の5受入Leanファイルのsorry・admit・新規axiom・資源上限変更は0件。採用済み引用0件。
+全体文書検査は20 Markdown・320 exposition参照を検査し、担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+未解決参照1件で失敗した。担当外ソース・共有ルート・共有監査スクリプトは変更していない。
+
+**次の接続と残件。** 今回の比較を外側の両dg作用に自然なbimodule射へ束ね、
+既存の指定解像度による導来合成計算と接続する。制限された因子のK-flat性を無条件に仮定せず、
+必要な場合は制限後の解像度を使う。一般の導来bimodule合成の比較自然同型、対角単位・結合子との
+整合性と解像度変更coherenceは引き続き未完で、U12e全体は未受入である。
+その後U16a〜d、U15e分解版へ進む。局所K-flat版のQuotient/DerivedComparison*・Verdier/、
+Endomorphism/、ScalarExtension*は再利用対象であり編集していない。
+共有モデル圏一般論への新しいAPI要求はない。
