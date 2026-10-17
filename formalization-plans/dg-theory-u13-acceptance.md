@@ -36,6 +36,16 @@
   主要4宣言の公理は `propext`, `Classical.choice`, `Quot.sound` のみ。
   既存のPerfectファイル・PerfectComplex・Idempotent一般論を編集していない。
 
+## U13e.28：導来retractの最上ホモロジーの有限生成性
+
+- `Perfect/RingRetractTopHomology.lean`：複体Pの上端nでdが零なら、cyclesとP.X nの同型と
+  ホモロジーへの全射からHⁿ(P)の有限生成性を証明した。
+- 主dg導来ホモロジーと通常複体のホモロジーの比較を実際の一対象評価自然同型から構成し、
+  Pの主導来像の任意のretractの最上ホモロジーも有限生成であることを証明した。
+  Noetherian性は不要。任意の次数のホモロジーの有限生成性を主張していない。
+- `Perfect.ChecksRingRetractTopHomology` 対象ビルド成功（3163 jobs）。
+  主要5宣言の公理監査は標準3公理のみ。次数幅の帰納法の入力であり、有限射影代表の完成はまだ主張しない。
+
 ## 既存項目の再検証
 
 - finite cell・全Hom射影性・PerfとKaroubi・compact生成・compact⇒Perf・
