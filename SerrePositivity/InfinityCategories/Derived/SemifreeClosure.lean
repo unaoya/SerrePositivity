@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Semifree
+public import SerrePositivity.InfinityCategories.Derived.ConeBasis
 public import SerrePositivity.DifferentialGraded.Module.ShiftCoproduct
 public import Mathlib.CategoryTheory.Limits.Connected
 

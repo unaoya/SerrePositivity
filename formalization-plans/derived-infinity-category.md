@@ -818,3 +818,72 @@ complexSemifree_iff_nonempty_basis {S : Type u} [CommRing S] (P : Complex S) :
 20モジュール442宣言は標準3公理のみ。
 未完了：cone の実際の基底への高さの適用と任意の射の無条件 cone 閉性。
 D2h 全体の完了とは数えず、そのまま続行する。
+
+
+### D2h 完了・任意の射の cone 閉性（2026-10-18）
+
+完了。共通変数は `{S : Type u} [CommRing S] {P Q : Complex S} (f : P ⟶ Q)`、
+基底の名前空間 `ComplexSemifreeBasis` では
+`(B : ComplexSemifreeBasis S P) (C : ComplexSemifreeBasis S Q)` を補う。
+公開型（namespace `SerrePositivity.InfinityCategories`）：
+
+```lean
+coneDegreeEquiv (k : ℤ) : (mappingCone f).X k ≃ₗ[S] (P.X (k + 1) × Q.X k)
+coneDegreeEquiv_fst (k : ℤ) (x : (mappingCone f).X k) :
+    (coneDegreeEquiv f k x).1 = ((mappingCone.fst f).val.v k (k + 1) rfl).hom x
+coneDegreeEquiv_snd (k : ℤ) (x : (mappingCone f).X k) :
+    (coneDegreeEquiv f k x).2 = ((mappingCone.snd f).v k k (add_zero k)).hom x
+coneDegreeEquiv_d_fst (k : ℤ) (x : (mappingCone f).X k) :
+    (coneDegreeEquiv f (k + 1) (((mappingCone f).d k (k + 1)).hom x)).1 =
+      -((P.d (k + 1) (k + 1 + 1)).hom (coneDegreeEquiv f k x).1)
+coneDegreeEquiv_d_snd (k : ℤ) (x : (mappingCone f).X k) :
+    (coneDegreeEquiv f (k + 1) (((mappingCone f).d k (k + 1)).hom x)).2 =
+      (f.f (k + 1)).hom (coneDegreeEquiv f k x).1 +
+        (Q.d k (k + 1)).hom (coneDegreeEquiv f k x).2
+coneBasis (k : ℤ) : Module.Basis (B.Index (k + 1) ⊕ C.Index k) S ((mappingCone f).X k)
+coneBasis_repr_inl (k : ℤ) (x : (mappingCone f).X k) (i : B.Index (k + 1)) :
+    (B.coneBasis f C k).repr x (Sum.inl i) =
+      (B.basis (k + 1)).repr (coneDegreeEquiv f k x).1 i
+coneBasis_repr_inr (k : ℤ) (x : (mappingCone f).X k) (i : C.Index k) :
+    (B.coneBasis f C k).repr x (Sum.inr i) =
+      (C.basis k).repr (coneDegreeEquiv f k x).2 i
+coneBasis_coordinates (k : ℤ) (a : B.Index (k + 1) ⊕ C.Index k) :
+    coneDegreeEquiv f k (B.coneBasis f C k a) =
+      (B.basis (k + 1)).prod (C.basis k) a
+coneBasis_d_inl_inl (k : ℤ) (i : B.Index (k + 1))
+    (j : B.Index (k + 1 + 1)) :
+    (B.coneBasis f C (k + 1)).repr
+      (((mappingCone f).d k (k + 1)).hom (B.coneBasis f C k (Sum.inl i))) (Sum.inl j) =
+      -((B.basis (k + 1 + 1)).repr
+        ((P.d (k + 1) (k + 1 + 1)).hom (B.basis (k + 1) i)) j)
+coneBasis_d_inl_inr (k : ℤ) (i : B.Index (k + 1)) (j : C.Index (k + 1)) :
+    (B.coneBasis f C (k + 1)).repr
+      (((mappingCone f).d k (k + 1)).hom (B.coneBasis f C k (Sum.inl i))) (Sum.inr j) =
+      (C.basis (k + 1)).repr ((f.f (k + 1)).hom (B.basis (k + 1) i)) j
+coneBasis_d_inr_inl (k : ℤ) (i : C.Index k) (j : B.Index (k + 1 + 1)) :
+    (B.coneBasis f C (k + 1)).repr
+      (((mappingCone f).d k (k + 1)).hom (B.coneBasis f C k (Sum.inr i))) (Sum.inl j) = 0
+coneBasis_d_inr_inr (k : ℤ) (i : C.Index k) (j : C.Index (k + 1)) :
+    (B.coneBasis f C (k + 1)).repr
+      (((mappingCone f).d k (k + 1)).hom (B.coneBasis f C k (Sum.inr i))) (Sum.inr j) =
+      (C.basis (k + 1)).repr ((Q.d k (k + 1)).hom (C.basis k i)) j
+cone : ComplexSemifreeBasis S (mappingCone f)
+complexSemifree_mappingCone (hP : complexSemifree S P) (hQ : complexSemifree S Q) :
+    complexSemifree S (mappingCone f)
+```
+
+主定理の完全な型：
+```lean
+complexSemifree_mappingCone {S : Type u} [CommRing S] {P Q : Complex S}
+  (f : P ⟶ Q) (hP : complexSemifree S P) (hQ : complexSemifree S Q) :
+  complexSemifree S (CochainComplex.mappingCone f)
+```
+射が filtration を保存すること、有界性、有限生成性、環の追加性質を仮定しない。
+cone の基底は次数 k に始域次数 k+1 と終域次数 k の直積基底を使い、
+始域側には `coneSourceHeight`（`semifreeReheight` による整礎再帰）を実際に適用した。
+四つの微分座標公式から厳密下降を証明し、既存 filtration へ戻した。
+対象集約ビルドは終了コード0（3772 jobs）。公理監査は終了コード0、
+21モジュール469宣言すべて標準3公理のみ。
+D2h（零・sphere・シフト・任意余積・有限余積・任意の射の cone）は全て完了。
+続行範囲：追加指示 D2h′（fiber と有限直和）、D1 の quasicategory、D3 の比較とシフト両立。
+D2i はその後に任意工程として見積もりを報告する。

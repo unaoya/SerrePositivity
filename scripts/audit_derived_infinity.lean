@@ -202,12 +202,29 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.complexSemifree_nonempty_basis
 #print axioms SerrePositivity.InfinityCategories.complexSemifree_iff_nonempty_basis
 
+#print axioms SerrePositivity.InfinityCategories.coneDegreeEquiv
+#print axioms SerrePositivity.InfinityCategories.coneDegreeEquiv_fst
+#print axioms SerrePositivity.InfinityCategories.coneDegreeEquiv_snd
+#print axioms SerrePositivity.InfinityCategories.coneDegreeEquiv_d_fst
+#print axioms SerrePositivity.InfinityCategories.coneDegreeEquiv_d_snd
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.coneBasis
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.coneBasis_repr_inl
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.coneBasis_repr_inr
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.coneBasis_coordinates
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.coneBasis_d_inl_inl
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.coneBasis_d_inl_inr
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.coneBasis_d_inr_inl
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.coneBasis_d_inr_inr
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.cone
+#print axioms SerrePositivity.InfinityCategories.complexSemifree_mappingCone
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
     `SerrePositivity.InfinityCategories.Derived.FiltrationCoordinates,
     `SerrePositivity.InfinityCategories.Derived.SemifreeBasisEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.ConeBasis,
     `SerrePositivity.InfinityCategories.Derived.SplitSequence,
     `SerrePositivity.InfinityCategories.Derived.SphereBasis,
     `SerrePositivity.InfinityCategories.Derived.Semifree,
