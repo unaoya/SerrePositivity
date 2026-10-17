@@ -918,3 +918,69 @@ Prop 7.11 を使う原典とは異なる、具体的な係数商・G10・G9 を�
 SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4228 jobs）。
 専用監査も終了コード 0。新規 25 公開宣言の `assert_no_sorry` を追加し、
 生成宣言を含む 1177 宣言の推移的公理依存が標準 3 公理のみであることを確認した。
+
+### E1.15：同じ実 H⁰ から raw PD 環への比較と完全忠実平坦性
+
+新規 `Andre/MonicPrismaticRawSourceComparison.lean` は、評価射と除算源射の通常テンソルを
+raw f/d 包に同定し、元の二因子実導来源から raw single への標準 augmentation を構成する。
+H⁰ に同型を誘導することと、逐次完備化比較が二つの元の標準単位に両立することを証明する。
+`Andre/MonicPrismaticRawCoefficients.lean` は、元の二重係数制限の作用と raw 包の標準 A 作用を
+恒等関数の A 線形同型で照合する。
+`Andre/MonicPrismaticSourceNonpositive.lean` と `MonicPrismaticSourceCompletionH0.lean` は、
+元の実源と raw single の非正性を明示的射影モデルで証明し、標準 augmentation が
+同じ逐次完備化後にも H⁰ 同型を誘導することを、既存の一般 H⁰ 完備化比較から得る。
+
+新規 `Andre/MonicPrismaticRawCompletionRestriction.lean` は G8 を同じ実係数射に二度適用し、
+A 上で完備化した raw 対象を raw 環上の実逐次完備化の係数制限へ同定する。
+この比較にも両標準完備化単位を保つ公式を付けた。
+`Andre/MonicPrismaticRawPDComparison.lean` は既存の一般二座標反射比較
+`iteratedPDH0LinearEquiv` を直接再利用し、次の A 線形同型を構成する。
+
+```lean
+def monicPrismaticSourcePDH0Iso
+    {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
+    (D : DeltaStructure p A) (d : A) (f : σ → Polynomial A) :
+    let E := polynomialRankOneDeltaStructure σ D
+    let Raw := DeltaAdjoinDivision E (MvPolynomial.C d)
+      (fun t : σ => monicRelation (f t) t)
+    let c := algebraMap A Raw
+    (DerivedCategory.homologyFunctor (ModuleCat A) 0).obj
+      (MonicPrismaticSourceIteratedPDCompletion D d f).obj ≅
+    (ModuleCat.restrictScalars c).obj
+      (ModuleCat.of Raw (PDCompletionH0 Raw p (c d)))
+```
+
+これらの比較自体にはモニック性・正次数・有限性は不要。
+環同型の存在だけから元の係数作用を推論せず、raw の各標準係数像を保つ一般反射比較を使う。
+`monicPrismaticRawInternalPDLinearEquiv_unit` は、Raw 上の比較がすべての raw 元の標準像を保つ。
+
+新規 `Andre/PerfectPrismMonicRawPDCompletelyFlat.lean` は E1.14 の源の純性と上記 H⁰ 同型を
+合成して、同じ A 作用の raw PD 環の single 比較を構成する。
+実 (p,d) 還元の全非零次数ホモロジー消滅と H⁰ 忠実平坦性を移し、元の係数作用について
+完全忠実平坦性を導く。主要公開型を、制限加群の台集合も明示して記す。
+
+```lean
+theorem perfectPrismMonicRawPD_isCompletelyFaithfullyFlat
+    {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
+    (P : OrientedPrism p A) (hP : P.deltaStructure.IsPerfect)
+    (f : σ → Polynomial A) (hf : ∀ t, (f t).Monic)
+    (hdeg : ∀ t, 0 < (f t).natDegree) {m : ℕ} (s : Fin m ≃ σ) :
+    let E := polynomialRankOneDeltaStructure σ P.deltaStructure
+    let Raw := DeltaAdjoinDivision E (MvPolynomial.C P.generator)
+      (fun t : σ => monicRelation (f t) t)
+    let c := algebraMap A Raw
+    let B := PDCompletionH0 Raw p (c P.generator)
+    let M := (ModuleCat.restrictScalars c).obj (ModuleCat.of Raw B)
+    IsCompletelyFaithfullyFlat (Ideal.span {(p : A), P.generator}) (ModuleCat.carrier M)
+```
+
+有限全列挙と正次数モニック性以外の補助的な ghost・有界ねじれ・単元選択仮定は残さない。
+BS Rem 7.15（著者版 p.62）の実 prismatic 源から raw PD 環への平坦性の移送。
+Prop 7.11 を使う原典と異なる、実関係と標準係数作用を保つ比較による経路である。
+残るのはこの raw PD 環の δ 完全化と最終 f/d 候補との環・δ 比較、
+最終 perfectoid 商の p 完全忠実平坦性、無限 p 冪根変数の自由基底、任意族への最終接続。
+目標存在定理は引き続き未宣言である。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4279 jobs）。
+専用監査も終了コード 0。新規 38 公開宣言の `assert_no_sorry` を追加し、
+生成宣言を含む 1428 宣言の推移的公理依存が標準 3 公理のみであることを確認した。
