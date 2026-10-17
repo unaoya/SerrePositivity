@@ -817,3 +817,53 @@ import SerrePositivity.InfinityCategories.Core
 #print axioms SerrePositivity.InfinityCategories.LimitChecks.topPairNerveCone_isLimit_iff
 #check @SerrePositivity.InfinityCategories.LimitChecks.topPair_limit_agreement
 #print axioms SerrePositivity.InfinityCategories.LimitChecks.topPair_limit_agreement
+
+-- A3a: quasicategory の同値とホモトピー圏への移送
+#check @SerrePositivity.InfinityCategories.functorVertex
+#print axioms SerrePositivity.InfinityCategories.functorVertex
+#check @SerrePositivity.InfinityCategories.FunctorIso
+#print axioms SerrePositivity.InfinityCategories.FunctorIso
+#check @SerrePositivity.InfinityCategories.VertexIso
+#print axioms SerrePositivity.InfinityCategories.VertexIso
+#check @SerrePositivity.InfinityCategories.VertexIso.map
+#print axioms SerrePositivity.InfinityCategories.VertexIso.map
+#check @SerrePositivity.InfinityCategories.QCatEquivalence
+#print axioms SerrePositivity.InfinityCategories.QCatEquivalence
+#check @SerrePositivity.InfinityCategories.IsQCatEquivalence
+#print axioms SerrePositivity.InfinityCategories.IsQCatEquivalence
+#check @SerrePositivity.InfinityCategories.QCatEquivalence.isQCatEquivalence
+#print axioms SerrePositivity.InfinityCategories.QCatEquivalence.isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.IsQCatEquivalence.choose
+#print axioms SerrePositivity.InfinityCategories.IsQCatEquivalence.choose
+#check @SerrePositivity.InfinityCategories.FunctorIso.postcomp
+#print axioms SerrePositivity.InfinityCategories.FunctorIso.postcomp
+#check @SerrePositivity.InfinityCategories.FunctorIso.precomp
+#print axioms SerrePositivity.InfinityCategories.FunctorIso.precomp
+#check @SerrePositivity.InfinityCategories.QCatEquivalence.refl
+#print axioms SerrePositivity.InfinityCategories.QCatEquivalence.refl
+#check @SerrePositivity.InfinityCategories.QCatEquivalence.symm
+#print axioms SerrePositivity.InfinityCategories.QCatEquivalence.symm
+#check @SerrePositivity.InfinityCategories.QCatEquivalence.trans
+#print axioms SerrePositivity.InfinityCategories.QCatEquivalence.trans
+#check @SerrePositivity.InfinityCategories.functorHomotopyEvaluation
+#print axioms SerrePositivity.InfinityCategories.functorHomotopyEvaluation
+#check @SerrePositivity.InfinityCategories.functorHomotopyEvaluation_obj
+#print axioms SerrePositivity.InfinityCategories.functorHomotopyEvaluation_obj
+#check @SerrePositivity.InfinityCategories.FunctorIso.toNatIso
+#print axioms SerrePositivity.InfinityCategories.FunctorIso.toNatIso
+#check @SerrePositivity.InfinityCategories.QCatEquivalence.toHoEquivalence
+#print axioms SerrePositivity.InfinityCategories.QCatEquivalence.toHoEquivalence
+#check @SerrePositivity.InfinityCategories.QCatEquivalence.toHoEquivalence_functor
+#print axioms SerrePositivity.InfinityCategories.QCatEquivalence.toHoEquivalence_functor
+#check @SerrePositivity.InfinityCategories.QCatEquivalence.toHoEquivalence_inverse
+#print axioms SerrePositivity.InfinityCategories.QCatEquivalence.toHoEquivalence_inverse
+#check @SerrePositivity.InfinityCategories.QCatEquivalence.mk
+#print axioms SerrePositivity.InfinityCategories.QCatEquivalence.mk
+#check @SerrePositivity.InfinityCategories.QCatEquivalence.hom
+#print axioms SerrePositivity.InfinityCategories.QCatEquivalence.hom
+#check @SerrePositivity.InfinityCategories.QCatEquivalence.inv
+#print axioms SerrePositivity.InfinityCategories.QCatEquivalence.inv
+#check @SerrePositivity.InfinityCategories.QCatEquivalence.homInvIso
+#print axioms SerrePositivity.InfinityCategories.QCatEquivalence.homInvIso
+#check @SerrePositivity.InfinityCategories.QCatEquivalence.invHomIso
+#print axioms SerrePositivity.InfinityCategories.QCatEquivalence.invHomIso

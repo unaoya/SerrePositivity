@@ -257,3 +257,30 @@ Nonempty (Limits.IsLimit (LimitChecks.topPairOrdinaryCone v)) ↔
 A1a–d、A2a–i は全て完了。Core の対象ビルドと累計 390 件の公理監査は成功し、
 許した標準三公理以外はない。工程末の全体 `lake build` も終了コード 0（7507 jobs）。
 今回の範囲に未完了項目はなく、一般の全極限の比較定理は主張しない。A3 以降は別途指示。
+
+
+## A3a：同値の正確な文言（2026-10-18、実装前）
+
+[Kerodon Definition 4.5.1.10](https://kerodon.net/tag/01DY) と
+[Construction 4.5.1.23](https://kerodon.net/tag/02BZ) に合わせる。
+quasicategory X,Y の射 f:X→Y の逆データは g:Y→X と、
+`h Fun(X,X)` の f≫g と id_X の同型、`h Fun(Y,Y)` の g≫f と id_Y の同型。
+ここで Fun(X,Y) は Mathlib の `(ihom X).obj Y`、射を零単体へ送る写像は
+`SSet.unitHomEquiv` と閉構造の `curry'` で直接与える。
+これは `QCat.strictBicategory` の可逆 2 胞体による同値の条件であり、
+単なる hX≌hY を定義に置くものではない。
+逆は X,Y の交換、合成の逆は逆順の合成、単位・余単位は前後合成で写した同型の合成。
+評価と h の積保存から `h Fun(X,Y) → Fun(hX,hY)` を構成し、
+この逆データを通常の圏同値へ送る。三角恒等式は通常の圏同値の adjointify で整える。
+頂点 x,y の同型は定義通り `SSet.HomotopyCategory.mk x ≅ mk y`。
+HTT §1.2.10 はこの同値を充満忠実性・本質的全射性と結び付ける段階で使用する。
+
+
+### A3a 完了（2026-10-18）
+
+`QCatEquivalence`、`IsQCatEquivalence`、`FunctorIso`、`VertexIso` を公開。
+`refl`・`symm`・`trans` と `toHoEquivalence` を実装した。
+`functorHomotopyEvaluation` が h Fun(X,Y) を Fun(hX,hY) へ送り、
+`FunctorIso.toNatIso` が可逆な二胞体を自然同型へ送る。
+Core 対象ビルド・累計 414 件の公理監査は成功、追加公理なし。
+全公開宣言の正確な型・前提を計画 §6 に追記。A3b–e は未完了。

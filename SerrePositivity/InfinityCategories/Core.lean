@@ -15,3 +15,5 @@ public import SerrePositivity.InfinityCategories.Core.InitialUniqueness
 public import SerrePositivity.InfinityCategories.Core.Limit
 public import SerrePositivity.InfinityCategories.Core.Pullback
 public import SerrePositivity.InfinityCategories.Core.InitialCofinality
+
+public import SerrePositivity.InfinityCategories.Core.Equivalence

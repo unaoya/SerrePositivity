@@ -2770,3 +2770,145 @@ Core/*.lean の明示的な公開宣言名を抽出して監査スクリプト�
 A1a–A1d、A2a–A2i は全て完了。これらの要求の範囲に未完了項目はない。
 A2i は指定通り具体例による検算であり、任意の通常圏の全ての極限を比較する一般定理は
 今回の要求に含まず、主張もしない。§4 の設計変更はない。A3 以降は別途指示を待つ。
+
+
+### A3a 完了（2026-10-18）：関手単体集合の可逆二胞体による同値
+
+`Core/Equivalence.lean` を追加。namespace は `SerrePositivity.InfinityCategories`、
+任意の宇宙 u、`open CategoryTheory MonoidalCategory MonoidalClosed SSet`。
+`FunctorIso f g` は h((ihom X).obj Y) での f,g の零単体間の同型。
+`QCatEquivalence X Y` は hom、inv、homInvIso、invHomIso の四つのフィールドを持つ。
+前後合成で二胞体を写して `refl`・`symm`・`trans` を構成した。
+`functorHomotopyEvaluation` は積比較と評価から構成した関手であり、
+`FunctorIso.toNatIso` で可逆二胞体を通常の自然同型へ送る。
+`toHoEquivalence` は順方向と逆方向が正確に hoFunctor.map hom / inv である圏同値。
+頂点の同型 `VertexIso` は定義通り hX の同型。
+quasicategory の同値に必要な仮定は両側の Quasicategory のみで、追加の充填公理はない。
+閉構造・評価の補題は任意の単体集合で成立する。
+
+新規の明示的な公開宣言 19 件の正確な型は以下。
+構造 QCatEquivalence の型に加え、そのフィールドの型は上記四フィールドを持つソース定義の通り。
+監査には構造・構築子・全四フィールドを含む 24 件を追加した。
+
+```lean
+def functorVertex {X Y : SSet.{u}} (f : X ⟶ Y) : ((ihom X).obj Y) _⦋0⦌
+```
+
+```lean
+abbrev FunctorIso {X Y : SSet.{u}} (f g : X ⟶ Y)
+```
+
+```lean
+abbrev VertexIso {X : SSet.{u}} (x y : X _⦋0⦌)
+```
+
+```lean
+def VertexIso.map {X Y : SSet.{u}} {x y : X _⦋0⦌} (e : VertexIso x y) (f : X ⟶ Y) :
+    VertexIso (f.app (Opposite.op ⦋0⦌) x) (f.app (Opposite.op ⦋0⦌) y)
+```
+
+```lean
+structure QCatEquivalence (X Y : SSet.{u}) [Quasicategory X] [Quasicategory Y]
+```
+
+```lean
+def IsQCatEquivalence {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y) : Prop
+```
+
+```lean
+lemma QCatEquivalence.isQCatEquivalence {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    (e : QCatEquivalence X Y) : IsQCatEquivalence e.hom
+```
+
+```lean
+noncomputable def IsQCatEquivalence.choose {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    {f : X ⟶ Y} (h : IsQCatEquivalence f) : QCatEquivalence X Y
+```
+
+```lean
+def FunctorIso.postcomp {X Y Z : SSet.{u}} {f g : X ⟶ Y} (e : FunctorIso f g) (q : Y ⟶ Z) :
+    FunctorIso (f ≫ q) (g ≫ q)
+```
+
+```lean
+def FunctorIso.precomp {W X Y : SSet.{u}} {f g : X ⟶ Y} (e : FunctorIso f g) (q : W ⟶ X) :
+    FunctorIso (q ≫ f) (q ≫ g)
+```
+
+```lean
+def QCatEquivalence.refl (X : SSet.{u}) [Quasicategory X] : QCatEquivalence X X
+```
+
+```lean
+def QCatEquivalence.symm {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    (e : QCatEquivalence X Y) : QCatEquivalence Y X
+```
+
+```lean
+def QCatEquivalence.trans {X Y Z : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    [Quasicategory Z] (e : QCatEquivalence X Y) (d : QCatEquivalence Y Z) :
+    QCatEquivalence X Z
+```
+
+```lean
+def functorHomotopyEvaluation (X Y : SSet.{u}) :
+    hoFunctor.obj ((ihom X).obj Y) ⥤ (hoFunctor.obj X ⥤ hoFunctor.obj Y)
+```
+
+```lean
+lemma functorHomotopyEvaluation_obj {X Y : SSet.{u}} (f : X ⟶ Y) :
+    (functorHomotopyEvaluation X Y).obj (SSet.HomotopyCategory.mk (functorVertex f)) =
+      (hoFunctor.map f).toFunctor
+```
+
+```lean
+def FunctorIso.toNatIso {X Y : SSet.{u}} {f g : X ⟶ Y} (e : FunctorIso f g) :
+    (hoFunctor.map f).toFunctor ≅ (hoFunctor.map g).toFunctor
+```
+
+```lean
+def QCatEquivalence.toHoEquivalence {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    (e : QCatEquivalence X Y) : hoFunctor.obj X ≌ hoFunctor.obj Y
+```
+
+```lean
+lemma QCatEquivalence.toHoEquivalence_functor {X Y : SSet.{u}} [Quasicategory X]
+    [Quasicategory Y] (e : QCatEquivalence X Y) :
+    e.toHoEquivalence.functor = (hoFunctor.map e.hom).toFunctor
+```
+
+```lean
+lemma QCatEquivalence.toHoEquivalence_inverse {X Y : SSet.{u}} [Quasicategory X]
+    [Quasicategory Y] (e : QCatEquivalence X Y) :
+    e.toHoEquivalence.inverse = (hoFunctor.map e.inv).toFunctor
+```
+
+
+構造のフィールドの正確な型：
+```lean
+hom : X ⟶ Y
+inv : Y ⟶ X
+homInvIso : FunctorIso (hom ≫ inv) (𝟙 X)
+invHomIso : FunctorIso (inv ≫ hom) (𝟙 Y)
+```
+`QCatEquivalence.mk` はこれら四データを順に受け取る構築子。
+Core 対象ビルド・公理監査は終了コード 0、累計 414 件は標準三公理のみ。
+A3a 完了。A3b–e は未完了、A3f は任意、A3g は保留。
+設計 §4 は変更していない。次に A3b の文言を原典と照合・記録・報告して実装する。
+
+## 7. A3 の工程（2026-10-18 追加）
+
+A1・A2 の完了を受けて着手する。優先順は G1（infinity-categories.md §0）と D4・ε が使う順。
+Joyal モデル構造は使わず、Kerodon 第 4 章の組み合わせ論で進める。
+各工程の文言（特に A3b）は実装前に原典と照合して `Core/README.md` に記録する。
+
+| 工程 | ファイル | 内容 | 原典 |
+| --- | --- | --- | --- |
+| A3a | `Core/Equivalence.lean` | quasicategory の同値：f : X ⟶ Y、g : Y ⟶ X と、`hoFunctor.obj (ihom X X)` で可逆な 2 胞体 g ∘ f ≅ id、f ∘ g ≅ id（`QCat.strictBicategory` の同値）。合成・逆、`hoFunctor` が圏同値に送ること（A1c）。頂点の同型 := h X の同型 | HTT 1.2.10、Kerodon 1.5.? |
+| A3b | `Core/InvertibleEdge.lean` | Joyal の定理：quasicategory X の辺 e が h X で可逆 ⟺ e を含む外側ホーン Λ[n,0]（最初の辺が e）・Λ[n,n]（最後の辺が e）が充填できる。系：X が Kan 複体 ⟺ h X が亜群 | HTT 1.2.4.3、2.1.2.?、Kerodon 4.4.2（Theorem 4.4.2.6）、4.4.3 |
+| A3c | `Core/MappingSpaceKan.lean` | 右 pinched 写像空間 `pinchedHom x y`（`PinchedHom/Basic.lean`）が Kan 複体。left 版も。π₀ = h X の Hom | HTT 1.2.2.3、Kerodon 4.6.5.? |
+| A3d | `Core/TerminalMappingSpace.lean` | x が終対象 ⟺ 全ての z で pinchedHom z x が可縮（終対象の列は可縮な Kan 複体）。系：終対象は h X の同型で閉じる。`IsLimitCone` は錐の頂点の同型で閉じる（同じ図式上の錐が slice で同型なら一方が極限なら他方も） | HTT 1.2.12.4、1.2.12.9、Kerodon 4.6.7 |
+| A3e | `Core/FullyFaithful.lean` | 充満忠実（写像空間のホモトピー同値）＋本質的全射（h で）⇒ A3a の同値。同値は極限錐を保ち反映する | HTT 2.2.?、Kerodon 4.6.2.21、7.1.? |
+| A3f（任意） | `Core/MappingSpaceModels.lean` | pinched 模型と両端固定模型 `Fun(Δ[1], X) ×_{X×X} {(x,y)}` の比較 | Kerodon 4.6.5.10 |
+| A3g（保留） | `Core/LimitDetection.lean` | 極限は写像空間で検出される。N7 の直接証明がうまく行けば不要 | Kerodon 7.1.? |
+
