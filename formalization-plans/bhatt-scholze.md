@@ -52,7 +52,12 @@ H0上の環の普遍性自体に不要な平坦性・p正則性・非零性・�
    perfectoid化した基底上の完備tensorへの標準合成射のIsPerfectoidizationを証明する。
 3. `PerfectoidizationCompletedTensorCompatibility.lean`：元の完備tensor H0への延長、指定済みperfectoid化との
    環同型と標準単位・両因子の式、perfectoid底変換およびB3/B4の商への適用を公開する。
-4. BS専用`audit_bhatt_scholze_prop813.lean`で全新公開宣言・完全型・標準写像・零環を監査し、工程ごとに保存する。
+4. `Prop813PerfectoidBaseChange.lean`：perfectoid基底とperfectoid底変換環について、
+   元の完備tensor H0からの標準射と、新基底の作用を保つ代数同型を公開する。
+   これはp完全平坦な底変換を含む、H0の環の普遍性としてのより一般の入口。
+   CLMST-Dで必要な元の完備tensorと古典的完備化の離散性比較・有界ねじれ条件は呼出側の別工程であり、
+   本定理が高次ホモロジーを消去したとは扱わない。B3/B4の一般商への適用もこのファイルで束ねる。
+5. BS専用`audit_bhatt_scholze_prop813.lean`で全新公開宣言・完全型・標準写像・零環を監査し、工程ごとに保存する。
 
 PerfectDeltaTensor*・PerfectPrismResidueTensor*と既存の任意perfectoid図式の離散性・perfectoid性、
 共通完備tensor基盤は受領済みAPIとして使い、編集しない。
@@ -71,6 +76,13 @@ perfectoid化後の基底上のtensorの任意のperfectoid化が元のtensorの
 基底上の二つの延長射の一致は、基底のIsPerfectoidizationの一意性で検出する。
 標準純tensorの式を保ち、平坦性・完備性・全射性を元の図式に要求しない。
 対象3,656ジョブのbuildと累計8件のBS専用依存監査が成功し、標準3公理のみ。
+
+工程3の結果：PerfectoidizationCompletedTensorCompatibilityの11公開宣言を実装した。
+`prop813CompletedTensorMap_isPerfectoidization`が一般図式の実H0からの普遍性、
+`prop813ComparisonEquiv`が任意の指定済みperfectoid化への比較環同型、
+`prop813ComparisonEquiv_comp`・`symm_comp`が順逆の標準図式、`unique`が比較射の一意性を与える。
+純tensorの両因子の式を保持し、perfectoid化後の完備tensorの離散性は既証定理の適用で得た。
+対象を含む4,417ジョブのbuildと累計19件の依存監査が成功し、標準3公理のみ。元のtensorの離散性は結論していない。
 
 ## 2. 解消する引用
 
