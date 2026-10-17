@@ -1,0 +1,10 @@
+module
+public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelPerfectNaturality
+
+/-! # Perf係数変更正方形のkernel射自然性の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded.Morita
+#print axioms perfectKernelBimoduleMap
+#print axioms perfectKernelBimoduleMap_inclusion
+#print axioms scalarKernelPerfectDerivedSquare_kernel_naturality
+#print axioms scalarKernelPerfectDerivedSquare_ofKFlatModels_kernel_naturality
