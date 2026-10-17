@@ -8313,3 +8313,49 @@ H⁰本質的全射を証明する必要がある。指定データを受け取�
 この存在と比較はdg側の具体的構成であり、共有モデル一般論へ存在axiomを要求しない。
 U12e全受入・U16は未完。分担とU15e/U17の合流条件は§0のまま。
 ユーザーの追加指定によりamend・rebase・resetは禁止とし、この区切りも新規コミットで記録する。
+
+
+### 17.182 U12e23：自由dg圏の有限path tensor・Hom直和・連結chain map（2026-10-17）
+
+`Resolution/Free/Words.lean`は合成・単位を持たない複体値quiver
+**FreeDGCategory.ComplexQuiver A D = D → D → Complex A**と非空有限pathのtensor項
+**wordTensor**を定義する。内部頂点のリストで非空pathを表し、空リストは一辺pathである。
+**wordMap**は辺のchain mapを全次数tensorへ延長し、恒等・合成則を証明する。
+**wordTensor_kFlat**は各辺がA上K-flatなら有限path項もK-flatであることを証明する。
+**wordConcatenationIso**は接続頂点をリストへ挿入した連結項との括弧比較を、
+既存の複体tensorのassociatorから再帰的に構成する。
+
+`Resolution/Free/Hom.lean`の**PathIndex D x y = PLift (x=y) ⊕ List D**は恒等pathと非空pathを区別する。
+恒等pathの添字は端点の等式を持つので、異なる端点の間に形式的恒等射を加えない。
+**pathTensor**は恒等pathを単位複体へ、非空pathをwordTensorへ送る。
+Small.{u} Dから添字集合のSmall.{u}を得て、**homComplex**を全path項の直和として定義する。
+**unitInclusion/edgeInclusion/pathInclusion**はそれぞれの包含。
+**homComplex_kFlat**は各辺のK-flat性、単位・tensor閉性、ModuleCatのexactな余積から
+全path直和のK-flat性を証明する。Dの対象宇宙vをAの宇宙uと同一視しない。
+
+`Resolution/Free/Maps.lean`は恒等pathを固定する**pathMap**と直和への**homMap**を構成し、
+path包含との式、unit/edge包含の保存、恒等・合成則を証明する。
+`Resolution/Free/Composition.lean`は恒等pathをunitor、非空pathを上の連結同型で処理する
+**pathComposition**を構成する。**composition**は既存tensorCoproductDescで二つの直和へ延長したchain map。
+各path上の式、非空二pathの式、左単位pathの式と**composition_left_unit**を証明する。
+これらの微分は既存の非有界コチェインtensorの内部微分であり、次数制限・体・標数零を課していない。
+ε消去やcellの境界を付ける追加微分はまだ導入していない。
+
+Checks.FreeDGPaths・Checks.DGCategoryResolution・Checks.DerivedBimoduleFullPentagon・
+Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功
+（3098 jobs、終了コード0、警告なし）。一般複体値quiverのHom K-flat性と左単位、
+二辺pathへの連結、恒等pathと一辺pathの別添字、独立対象宇宙・ZMod 2を検査した。
+主要33宣言の直接公理監査は標準公理のみ。監査累計3427宣言。
+今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は15 Markdown・320 exposition参照まで進み、担当外BhattScholze互換宣言の
+未解決参照1件で失敗した。共有ルート・共有一般論・並行所有ファイルは編集していない。
+
+次は右単位・結合則を証明し、このHom直和を主EnrichedCategoryによる自由dg圏へ束ねる。
+辺のchain mapを任意のdg圏へ送った場合のpath評価と、その単位・合成保存を証明して、
+自由dg圏からのdg関手の普遍性を得る。
+その後、既存pathのcycleを新生成元の微分とするcell付加を扱う。
+この微分は辺複体の内部微分だけでは表せないので、今回のquiverの単なる直和では代用しない。
+cell段階のgraded-split/filtration、Hom K-flat性、増大射のHom準同型とH⁰本質的全射を証明するまで、
+KFlatDGResolutionの存在は未完。今回もまだdg圏instanceを宣言しておらず、U12e全受入とはしない。
+既存APIの名前・型の変更、共有一般論への新しいAPI要求はない。
+分担は§0のまま、U12e受入後にU16へ進む。amend・rebase・resetは使用せず、新規コミットで記録する。
