@@ -1113,3 +1113,37 @@ import SerrePositivity.InfinityCategories.Core
 #print axioms SerrePositivity.InfinityCategories.IsTerminalVertex.pinchedHom_isContractibleKan
 #check @SerrePositivity.InfinityCategories.IsTerminalVertex.isTerminalHo
 #print axioms SerrePositivity.InfinityCategories.IsTerminalVertex.isTerminalHo
+
+-- A3d：終対象の全部分複体と同型不変性。
+#check @SerrePositivity.InfinityCategories.fullSubcomplexOnVertices
+#print axioms SerrePositivity.InfinityCategories.fullSubcomplexOnVertices
+#check @SerrePositivity.InfinityCategories.fullSubcomplexOnVertices_vertex
+#print axioms SerrePositivity.InfinityCategories.fullSubcomplexOnVertices_vertex
+#check @SerrePositivity.InfinityCategories.fullSubcomplexLiftSimplex
+#print axioms SerrePositivity.InfinityCategories.fullSubcomplexLiftSimplex
+#check @SerrePositivity.InfinityCategories.terminalVertices
+#print axioms SerrePositivity.InfinityCategories.terminalVertices
+#check @SerrePositivity.InfinityCategories.fullSubcomplexLiftSimplex_ι
+#print axioms SerrePositivity.InfinityCategories.fullSubcomplexLiftSimplex_ι
+#check @SerrePositivity.InfinityCategories.terminalVertices_isContractibleKan
+#print axioms SerrePositivity.InfinityCategories.terminalVertices_isContractibleKan
+#check @SerrePositivity.InfinityCategories.finalHornPointJoin_preimage
+#print axioms SerrePositivity.InfinityCategories.finalHornPointJoin_preimage
+#check @SerrePositivity.InfinityCategories.finalHornPointJoinIso
+#print axioms SerrePositivity.InfinityCategories.finalHornPointJoinIso
+#check @SerrePositivity.InfinityCategories.finalHornPointJoinIso_hom_ι
+#print axioms SerrePositivity.InfinityCategories.finalHornPointJoinIso_hom_ι
+#check @SerrePositivity.InfinityCategories.finalHornPointJoinIso_edge
+#print axioms SerrePositivity.InfinityCategories.finalHornPointJoinIso_edge
+#check @SerrePositivity.InfinityCategories.IsTerminalVertex.exists_sliceLift
+#print axioms SerrePositivity.InfinityCategories.IsTerminalVertex.exists_sliceLift
+#check @SerrePositivity.InfinityCategories.isTerminalVertex_of_isTerminalHo
+#print axioms SerrePositivity.InfinityCategories.isTerminalVertex_of_isTerminalHo
+#check @SerrePositivity.InfinityCategories.IsTerminalVertex.of_vertexIso
+#print axioms SerrePositivity.InfinityCategories.IsTerminalVertex.of_vertexIso
+#check @SerrePositivity.InfinityCategories.isTerminalVertex_iff_of_vertexIso
+#print axioms SerrePositivity.InfinityCategories.isTerminalVertex_iff_of_vertexIso
+#check @SerrePositivity.InfinityCategories.IsLimitCone.of_vertexIso
+#print axioms SerrePositivity.InfinityCategories.IsLimitCone.of_vertexIso
+#check @SerrePositivity.InfinityCategories.isLimitCone_iff_of_vertexIso
+#print axioms SerrePositivity.InfinityCategories.isLimitCone_iff_of_vertexIso

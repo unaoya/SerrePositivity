@@ -20,3 +20,4 @@ public import SerrePositivity.InfinityCategories.Core.Equivalence
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdge
 public import SerrePositivity.InfinityCategories.Core.MappingSpaceKan
 public import SerrePositivity.InfinityCategories.Core.TerminalMappingSpace
+public import SerrePositivity.InfinityCategories.Core.TerminalTransport

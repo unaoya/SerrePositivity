@@ -3786,6 +3786,84 @@ noncomputable def IsTerminalVertex.isTerminalHo {X : SSet.{u}} [Quasicategory X]
 
 Core 対象ビルド：終了コード 0（1570 jobs）。監査：終了コード 0、累計 536 宣言、許可された標準三公理のみ。全体ビルドは A3 完了時に実行する。
 
+
+### A3d 続き：終対象の全部分複体・同型不変性（2026-10-18）
+
+終対象の頂点の全部分複体が非空なら可縮な Kan 複体になること、および終対象性と極限性の同型不変性を証明した。quasicategory の仮定を必要とする箇所は型に明記。`IsLimitCone.of_vertexIso` の同型は h(sliceOver p) であり h X の頂点の同型ではない。以下は共通の `universe u`、`open CategoryTheory Limits SSet`、`open scoped Simplicial` の下での全公開宣言の型。
+
+TerminalVertices：
+
+```lean
+def fullSubcomplexOnVertices (X : SSet.{u}) (P : X _⦋0⦌ → Prop) : X.Subcomplex
+
+lemma fullSubcomplexOnVertices_vertex {X : SSet.{u}} {P : X _⦋0⦌ → Prop}
+    (x : (fullSubcomplexOnVertices X P : SSet.{u}) _⦋0⦌) : P x.val
+
+def fullSubcomplexLiftSimplex {X : SSet.{u}} (P : X _⦋0⦌ → Prop) {n : ℕ}
+    (F : (Δ[n] : SSet.{u}) ⟶ X)
+    (hF : ∀ v : ⦋0⦌ ⟶ ⦋n⦌, P (SSet.yonedaEquiv (stdSimplex.map v ≫ F))) :
+    (Δ[n] : SSet.{u}) ⟶ (fullSubcomplexOnVertices X P : SSet.{u})
+
+def terminalVertices (X : SSet.{u}) : X.Subcomplex
+
+lemma fullSubcomplexLiftSimplex_ι {X : SSet.{u}} (P : X _⦋0⦌ → Prop) {n : ℕ}
+    (F : (Δ[n] : SSet.{u}) ⟶ X)
+    (hF : ∀ v : ⦋0⦌ ⟶ ⦋n⦌, P (SSet.yonedaEquiv (stdSimplex.map v ≫ F))) :
+    fullSubcomplexLiftSimplex P F hF ≫ (fullSubcomplexOnVertices X P).ι = F
+
+lemma terminalVertices_isContractibleKan {X : SSet.{u}}
+    (hne : ∃ x : X _⦋0⦌, IsTerminalVertex x) :
+    IsContractibleKan (terminalVertices X : SSet.{u})
+```
+
+HornPointJoin：
+
+```lean
+lemma finalHornPointJoin_preimage (n : ℕ) :
+    (horn (n + 1) (Fin.last (n + 1))).preimage (joinStdSimplexIso.{u} n 0).hom =
+      joinSubcomplexLeft (boundary n) Δ[0]
+
+noncomputable def finalHornPointJoinIso (n : ℕ) :
+    join (boundary n : SSet.{u}) Δ[0] ≅ horn (n + 1) (Fin.last (n + 1))
+
+lemma finalHornPointJoinIso_hom_ι (n : ℕ) :
+    (finalHornPointJoinIso.{u} n).hom ≫ (horn (n + 1) (Fin.last (n + 1))).ι =
+      joinMap (boundary n).ι (𝟙 Δ[0]) ≫ (joinStdSimplexIso n 0).hom
+
+lemma finalHornPointJoinIso_edge (n : ℕ) :
+    SSet.yonedaEquiv ((joinStdSimplexIso 0 0).inv ≫
+      joinMap (boundaryVertex n (Fin.last (n + 1))) (𝟙 Δ[0]) ≫
+        (finalHornPointJoinIso.{u} (n + 1)).hom) = finalHornEdge n
+```
+
+TerminalTransport：
+
+```lean
+lemma IsTerminalVertex.exists_sliceLift {A X : SSet.{u}} {x : X _⦋0⦌}
+    (hx : IsTerminalVertex x) (b : A ⟶ X) :
+    ∃ C : A ⟶ sliceOver (SSet.yonedaEquiv.symm x),
+      C ≫ sliceOverProjection (SSet.yonedaEquiv.symm x) = b
+
+lemma isTerminalVertex_of_isTerminalHo {X : SSet.{u}} [Quasicategory X]
+    {x y : X _⦋0⦌} (hx : IsTerminalVertex x)
+    (hy : IsTerminal (SSet.HomotopyCategory.mk y : hoFunctor.obj X)) : IsTerminalVertex y
+
+lemma IsTerminalVertex.of_vertexIso {X : SSet.{u}} [Quasicategory X]
+    {x y : X _⦋0⦌} (hx : IsTerminalVertex x) (e : VertexIso x y) : IsTerminalVertex y
+
+lemma isTerminalVertex_iff_of_vertexIso {X : SSet.{u}} [Quasicategory X]
+    {x y : X _⦋0⦌} (e : VertexIso x y) : IsTerminalVertex x ↔ IsTerminalVertex y
+
+lemma IsLimitCone.of_vertexIso {K X : SSet.{u}} [Quasicategory X] {p : K ⟶ X}
+    {c d : JoinCone p} (hc : IsLimitCone c) (e : VertexIso (X := sliceOver p) c d) :
+    IsLimitCone d
+
+lemma isLimitCone_iff_of_vertexIso {K X : SSet.{u}} [Quasicategory X] {p : K ⟶ X}
+    {c d : JoinCone p} (e : VertexIso (X := sliceOver p) c d) : IsLimitCone c ↔ IsLimitCone d
+```
+
+Core 対象ビルド：終了コード 0（1573 jobs）。監査：終了コード 0、累計 552 宣言、標準三公理のみ。A3d は写像空間の可縮性から終対象性を導く逆方向だけ未完了。A3e は未着手、A3f は任意、A3g は保留。§4 の設計変更はない。
+
 ## 7. A3 の工程（2026-10-18 追加）
 
 A1・A2 の完了を受けて着手する。優先順は G1（infinity-categories.md §0）と D4・ε が使う順。
