@@ -1344,6 +1344,8 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicSourceEnve
 assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_perfectPrismRingHomLift_to_bounded
 assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_perfectPrismHomLift_to_bounded
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicPrismHom_of_absolute_input
+
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
@@ -1591,7 +1593,8 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PerfectSourceDeltaHom,
     `SerrePositivity.BhattScholze.Andre.BoundedPrismTiltQuotient,
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicSourceInitiality,
-    `SerrePositivity.BhattScholze.Andre.PerfectPrismBoundedTargetLift]
+    `SerrePositivity.BhattScholze.Andre.PerfectPrismBoundedTargetLift,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicAbsoluteUniversal]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

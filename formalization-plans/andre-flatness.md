@@ -6805,3 +6805,40 @@ prism の扱い、A1-c の係数比較との合流、既存 hpR 付き公開名�
 並列担当のファイル・節は編集していない。
 
 検証：対象ビルド（3121 jobs）と集約ビルド（4611 jobs）は `set -o pipefail` 付きで終了コード0。公開2定理の `assert_no_sorry` と2本の `#check` は終了コード0。専用監査は `André monic root audit passed: 8050 declarations, standard axioms only.`。私有補題もモジュール全宣言の監査に含む。
+
+### E1.82／A1-a 基底射を指定しない絶対入力への源の普遍性（2026-10-17）
+
+本節は A1-a の追記。新規 `Andre/PowerRootPrismMonicAbsoluteUniversal.lean` で、
+原典の完備入力環 SI の作用だけから、元の源 H からの prism 射を一意に構成した。
+BS Rem 7.15（著者版 p.62）の絶対 envelope の普遍性を、現在の向き付き対象で証明した。
+原典の変形理論とは異なる E1.81 の tilt・Fontaine による基底持上げと実完備化を使う経路。
+新しい引用・sorry・axiom は追加していない。
+
+公開名は `SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicPrismHom_of_absolute_input`。
+E1.80 の H、T、SI、cS の定義を保持する。共通引数は {A B:Type u} [CommRing A] [CommRing B]、
+{p:ℕ} [Fact p.Prime]、W:OrientedPrism p A、hW:W.deltaStructure.IsPerfect、
+f:Polynomial A、hf:f.Monic、hdeg:0<f.natDegree。正確な残りの型は次のとおり。
+
+```lean
+(Q : OrientedPrism p B)
+(hB : ∃ N : ℕ, ∀ n : ℕ, ∀ x : B ⧸ Q.ideal,
+  (p : B ⧸ Q.ideal)^n*x=0 → (p : B ⧸ Q.ideal)^N*x=0)
+(η : SI →+* B ⧸ Q.ideal) :
+let X := powerRootPrismMonicSourceInputObjectOfMonicPositive W hW f hf hdeg
+∃! G : OrientedPrism.Hom X.prism Q, G.quotientMap.comp X.input = η
+```
+
+源 X の台環は元の H、prism 生成元は dH、入力は元の標準完備入力射である。
+η.comp cS を完全基底から Q への唯一の prism 射 k へ持ち上げる。
+固定基底での既存の源の普遍性から射を構成する。
+任意の入力保存射も完全基底からの商射の剛性により k を保つので、基底条件を仮定せず一意性が従う。
+源の hreg・hBound・hT、標的の k とその可換図式、標的の完全性・p 正則性・非零性は
+この公開定理の前提に一切残らない。
+
+型の範囲は同じ宇宙 u の向き付き prism である。E1.81 の基底持上げは独立宇宙 u,v で成り立つが、
+ここで再利用した源の普遍性は同じ宇宙で実装されているため、独立宇宙へ一般化済みとはしない。
+一般 Cartier イデアルを持つ向きなし prism の扱いと、原典の絶対 prismatic site 全体の同定、
+A1-c の係数照合との合流、既存 hpR 付き公開名の差替えは引き続き未完了。
+並列担当のファイル・記録節は変更していない。
+
+検証：対象ビルド（4409 jobs）と集約ビルド（4612 jobs）は `set -o pipefail` 付きで終了コード0。公開定理の `assert_no_sorry` と `#check` は終了コード0。専用監査は `André monic root audit passed: 8126 declarations, standard axioms only.`。
