@@ -1322,6 +1322,9 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput.prismHom_ov
 assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput.homOfInput
 assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput.homEquivInputPreserving
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.isAdicComplete_of_isModuleComplete_of_isHausdorff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.boundedPrism_isAdicComplete_prime
+
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
@@ -1564,7 +1567,8 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicEnvelopeInitial,
     `SerrePositivity.BhattScholze.Andre.PerfectSourceAdicRigidity,
     `SerrePositivity.BhattScholze.Andre.PerfectPrismBoundedTargetRigidity,
-    `SerrePositivity.BhattScholze.Andre.BoundedPrismInputRigidity]
+    `SerrePositivity.BhattScholze.Andre.BoundedPrismInputRigidity,
+    `SerrePositivity.BhattScholze.Andre.BoundedPrismPrimeComplete]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

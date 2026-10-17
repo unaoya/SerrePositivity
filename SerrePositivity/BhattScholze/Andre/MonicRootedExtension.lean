@@ -81,6 +81,7 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicOriginalInpu
 public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicSourcePrismUniversal
 public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicEnvelopeInitial
 public import SerrePositivity.BhattScholze.Andre.BoundedPrismInputRigidity
+public import SerrePositivity.BhattScholze.Andre.BoundedPrismPrimeComplete
 
 /-!
 # André E1・E2 の集約

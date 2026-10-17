@@ -6429,3 +6429,42 @@ Lemma 4.8 の一般有界標的での存在部分、向き付き対象と原典�
 絶対 prismatic envelope 全体の同定完了とは数えない。
 
 検証：新規3モジュールの対象ビルドと集約ビルド（4586 jobs）は、`set -o pipefail` 付きで終了コード0を確認した。専用監査の8公開宣言の `assert_no_sorry` が通り、対象モジュールの7947宣言について推移的に標準3公理のみと確認した（終了コード0）。別ファイルの8本の `#check` でも上記の引数・型を確認した。
+
+### E1.77／A1-a 一般有界 prism の台環の古典的 p 完備性（2026-10-17）
+
+本節は A1-a の追記。BS Lemma 4.8（著者版 pp.38–39）の基底射の存在への準備として、
+有界 prism の台環に古典的 p 完備性を供給した。新規ファイルは
+`Andre/BoundedPrismPrimeComplete.lean`。公開名はすべて
+`SerrePositivity.BhattScholze.Andre` 内。原典の変形理論による持上げとは異なり、
+既存の差分作用による導来比較と (p,d) 分離性を使う。新たな引用は追加していない。
+
+公開2定理の正確な型は以下。宇宙 u は任意。
+
+```lean
+isAdicComplete_of_isModuleComplete_of_isHausdorff
+    (R : Type u) [CommRing R] (a : R)
+    (h : DerivedCompletion.IsModuleComplete R a (ModuleCat.of R R))
+    [IsHausdorff (Ideal.span {a}) R] :
+    IsAdicComplete (Ideal.span {a}) R
+
+boundedPrism_isAdicComplete_prime
+    {B : Type u} [CommRing B] {p : ℕ} [Fact p.Prime]
+    (Q : OrientedPrism p B)
+    (hB : ∃ N : ℕ, ∀ n : ℕ, ∀ x : B ⧸ Q.ideal,
+      (p : B ⧸ Q.ideal)^n*x=0 → (p : B ⧸ Q.ideal)^N*x=0) :
+    IsAdicComplete (Ideal.span {(p : B)}) B
+```
+
+第一定理では導来完備性から差分作用の全単射性を得て、その全射性から前完備性を得る。
+分離性と合わせれば古典的完備性となる。第二定理では `Q.complete_p` と
+既存 `boundedPrism_isHausdorff_prime Q hB` を第一定理に渡す。
+台環の p 正則性・有界 p ねじれ、標的の完全性は要求しない。
+
+検証：対象ビルド（2737 jobs）と集約ビルド（4587 jobs）は `set -o pipefail` 付きで
+終了コード0を確認した。公開2定理の `assert_no_sorry` が通り、専用監査は7949宣言を
+推移的に標準3公理のみと確認して終了コード0。別ファイルの2本の `#check` で上記の型を確認した。
+
+未完了：一般有界標的への基底射の存在・δ 保存性、向き付き対象と絶対 site の比較、
+同じ源 H の生成元正則性と同じ商 T の有界性、A1-c の係数照合との合流。
+本節だけで Lemma 4.8 全体や絶対 prismatic envelope の同定を完了とはしない。
+A1-b・A1-c のファイル・記録節、既存 hpR 付き定理は変更していない。
