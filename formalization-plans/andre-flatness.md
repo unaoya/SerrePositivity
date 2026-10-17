@@ -1798,3 +1798,54 @@ SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（
 生成宣言を含む 2950 宣言の推移的公理依存は標準 3 公理のみ。
 有限段の評価単射性・表示同型・有限支持・可算評価単射性と代数同型・変数公式の
 公開型 7 本を `#print` で確認した（終了コード 0）。
+
+### E1.29：γ₁=y の一次関係商の明示的な係数商上の切断表示
+
+新規 `Andre/DividedPowerPrimeUniversal.lean` は、任意の p 乗零元族への
+可算切断商の普遍射を構成する。素数 p が A 内で零となる場合には、
+自由一元分冪代数およびその一次関係商からの係数代数射が、
+素数冪次数の分冪の値だけで一意に決まることも証明した。
+
+新規 `Andre/PrincipalDPTruncatedPresentation.lean` は、係数商 A/(yᵖ) 上の
+可算切断商を `PrincipalDPTruncatedPresentation p y` として定義する。
+自由分冪側の最初の切断変数を係数 y の像、後続変数を残りの切断変数へ送る。
+この写像が γ₁=y を満たすので一次関係商へ降りる。
+逆射は切断変数 i を次数 p^(i+1) の分冪の標準像に送る。
+係数商作用は既存の `principalDPQuotientAlgebra` とそのスカラー塔を明示して使い、
+元の A 作用へ制限する。両合成の恒等性を素数冪生成元と切断変数で確認した。
+
+主要公開型（namespace `SerrePositivity.BhattScholze.Andre`）：
+
+```lean
+def principalDPTruncatedEquiv
+    {A : Type u} [CommRing A] (p : ℕ) [Fact p.Prime] (hp : (p : A) = 0) (y : A) :
+    PrincipalDPPresentation A y ≃ₐ[A] PrincipalDPTruncatedPresentation p y
+
+def principalDPTruncatedQuotientAlgEquiv
+    {A : Type u} [CommRing A] (p : ℕ) [Fact p.Prime] (hp : (p : A) = 0) (y : A) :
+    letI := principalDPQuotientAlgebra (Fact.out : p.Prime).pos hp y
+    PrincipalDPPresentation A y ≃ₐ[A ⧸ Ideal.span {y ^ p}]
+      PrincipalDPTruncatedPresentation p y
+
+theorem principalDPPresentation_free_via_truncated
+    {A : Type u} [CommRing A] (p : ℕ) [Fact p.Prime] (hp : (p : A) = 0) (y : A) :
+    letI := principalDPQuotientAlgebra (Fact.out : p.Prime).pos hp y
+    Module.Free (A ⧸ Ideal.span {y ^ p}) (PrincipalDPPresentation A y)
+```
+
+右辺の表示環は実商
+`MvPolynomial ℕ (A ⧸ Ideal.span {y ^ p}) ⧸ Ideal.span (Set.range fun i => (MvPolynomial.X i)^p)`。
+`principalDPTruncatedEquiv_generator_succ` により γₚⁱ⁺¹ の像は変数 i。
+通常環の表示と自由性には y の非零因子性は不要であり、零係数商も含む。
+BS Rem 7.15(1)（著者版 p.62）の明示表示の通常環側の計算で、
+原典の Prop 7.11 を使わない有限テンソル分解・普遍射による経路である。
+この一般性で `PrincipalDPPresentation` を実 pd 包とは呼ばない。
+非零因子入力での実分冪構造と pd 包の普遍性、prismatic envelope の
+Frobenius 引戻しとの同定はなお未完了。指定出力の存在定理は E1.23 で証明済みだが、
+依頼全体は完成と数えない。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4372 jobs）。
+新規 22 公開宣言の `assert_no_sorry` を追加した専用監査は終了コード 0。
+生成宣言を含む 2998 宣言の推移的公理依存は標準 3 公理のみ。
+A 代数同型・既存係数商上の代数同型・後続生成元公式・明示表示経由の自由性の
+公開型 4 本を `#print` で確認した（終了コード 0）。

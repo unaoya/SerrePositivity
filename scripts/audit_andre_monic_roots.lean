@@ -504,6 +504,29 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTruncatedEva
 assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTruncatedEquiv
 assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTruncatedEquiv_X
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTruncatedLift
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTruncatedLift_X
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeHom_ext
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPPrimeHom_ext
+assert_no_sorry SerrePositivity.BhattScholze.Andre.PrincipalDPTruncatedPresentation
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPTruncatedRoot
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPTruncatedRoot_pow
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPToTruncatedRaw
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPToTruncatedRaw_dp
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPToTruncated
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPToTruncated_generator
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPPrimeGenerator_pow_zero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPTruncatedToPresentation
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPTruncatedToPresentation_X
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPTruncatedHom_ext
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPTruncatedToPresentation_comp_toTruncated
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPToTruncated_comp_truncatedToPresentation
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPTruncatedEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPTruncatedEquiv_generator_succ
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPTruncatedQuotientAlgEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPTruncatedPresentation_free
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPPresentation_free_via_truncated
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -598,7 +621,9 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.DividedPowerPrimeFiniteTensor,
     `SerrePositivity.BhattScholze.Andre.DividedPowerPrimeFiniteUniversal,
     `SerrePositivity.BhattScholze.Andre.DividedPowerPrimeFinitePresentation,
-    `SerrePositivity.BhattScholze.Andre.DividedPowerPrimePresentation]
+    `SerrePositivity.BhattScholze.Andre.DividedPowerPrimePresentation,
+    `SerrePositivity.BhattScholze.Andre.DividedPowerPrimeUniversal,
+    `SerrePositivity.BhattScholze.Andre.PrincipalDPTruncatedPresentation]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
