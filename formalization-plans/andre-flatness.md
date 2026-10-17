@@ -5871,6 +5871,32 @@ theorem sourceResidueH0_faithfullyFlat (W : OrientedPrism p A) (hW : W.deltaStru
 これらはビルド済み成果ではなく、必要なら参考として使える。
 A1-b は以後この最初の段を実装せず、A1-d の成果で上記の明示仮定を解消する。
 
+### A1-d／受渡し指定型の独立再監査（2026-10-17）
+
+受渡し後の確認中に、同じ InitialCoefficient の完成版が並行コミットされたことを確認した。
+初期係数商の比較は `8e0a2a6a`、指定作用の raw 残余商と H⁰ は `18de67e0`、
+専用 Lean 監査モジュールは `998e512d`。これらの保存済み証明は書き換えず再利用した。
+こちらで作成した未検証の二つの重複草稿は `/tmp/a1d-current-attempt/` に退避し、
+リポジトリには残していない。
+
+指定された実行入口 `scripts/audit_andre_initial_coefficient.lean` を独立に追加した。
+本スクリプトは上の二つの受渡し型を let と局所作用も含め全文で固定し、
+`rawResidue_faithfullyFlat` と `sourceResidueH0_faithfullyFlat` を追加仮定なしに適用する。
+公開20宣言の `assert_no_sorry` に加え、実装二モジュールの生成宣言を含む全宣言に
+`collectAxioms` を実行し、標準三公理以外をエラーとして拒否する。
+
+検証はすべて `set -o pipefail` の下で終了コードを確認した。
+`lake build SerrePositivity.BhattScholze.Andre.Unconditional.InitialCoefficient.Audit`
+は4110ジョブで終了コード0。
+`lake env lean scripts/audit_andre_initial_coefficient.lean` も終了コード0。
+独立スクリプトで列挙された141宣言の推移的公理は標準三公理のみで、
+指定二定理の実依存は `propext`・`Classical.choice`・`Quot.sound` のみ。
+元の係数射の一致は `rawResidueBaseMap_eq_source` で保持されている。
+
+この再監査の変更は独立スクリプトと本節だけ。元の Andre/・他レーンのファイル・
+ルート集約は変更しない。実逐次完備化後の純性・正則性・完全忠実平坦性、
+A1-b 側での仮定解消、A1-c2 の hpR 除去はこの第一段の完成と区別する。
+
 ### E1.73／A1-a 標準入力作用と可換図式による普遍性（2026-10-17）
 
 本節は A1-a の追記。通常の入力環から元の H/d への標準射を無条件に構成し、
