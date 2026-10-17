@@ -1,0 +1,13 @@
+module
+public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelBalanced
+
+/-! # kernel係数変更の値同型とcoend生成元公式の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded.Morita
+#print axioms scalarBalancedIso_element_one
+#print axioms scalarBalancedIso_map_element_one
+#print axioms scalarKernelLeftValueIso
+#print axioms scalarKernelBalancedValueIso
+#print axioms scalarKernelLeftValueIso_inv_eval
+#print axioms scalarKernelLeftValueIso_inv_eval_one
+#print axioms scalarKernelBalancedValueIso_element_one

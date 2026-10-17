@@ -345,6 +345,22 @@
 - 始域は出力評価の複体の導来係数変更である。出力dg加群の導来係数変更との交換、
   kernel変数の主局所化への係数変更の降下、合成比較との図式は未完であり、ここでは主張しない。
 
+## U16d.18：kernel作用のunderived係数変更をdg加群全体へ束ねる
+
+- `Morita/ScalarExtensionKernelBalanced.lean`：通常のcoend係数変更と全Hom付き左評価比較を合成し、
+  実際の係数変更後kernelの値への比較同型を定義した。純粋coend生成元上での値を計算した。
+- `Morita/ScalarExtensionKernelBalancedModule.lean`：係数制限側で比較射を構成し、
+  既存のKoszul符号付き右作用の生成元公式から、出力dg圏Eの全次数Hom作用との可換性を証明した。
+  既存の加群係数変更–制限随伴で戻し、各評価で同型であることから
+  実際のdg加群全体の同型 `scalarKernelBalancedIso` を構成した。
+- この同型は `moduleExtension φ E (kernelTensor P M)` から
+  `kernelTensor (scalarKernel φ P) (rightModule φ M)` へのunderived比較である。
+  環準同型のflat性、局所Hom条件、hPN・hP'を要求しない。導来化後の無条件比較は主張しない。
+- 二つの監査入口の合同ビルド成功（2644 jobs、警告なし）。主要16宣言の公理監査は標準3公理のみ。
+  定義を値成分に整理し、資源上限を変更せず最終ソースを検証した。
+- 次はこのunderived加群同型の入力射・kernel射に関する自然性と、導来計算との接続。
+  U12fのhPN・hP'を保持し、出力の導来係数変更を通常モデルで計算する条件も別に検証する。
+
 ## 合同検証と公開入口（2026-10-17）
 
 - 新規10監査対象・公開入口・既存 `Checks.DGFunctorDerivedEquivalence` の12対象を
@@ -393,6 +409,13 @@
 - 担当55 Leanファイルを走査し、新しいsorry・admit・axiomは0件。引用も追加していない。
   実際の主導来合成比較のPerf制限、kernel作用評価の二変数自然性、通常kernelの係数変更関手、
   許容kernelの全閉零射に自然なU12f作用評価比較を同時importで確認した。
+
+## 追加合同検証（2026-10-17、U16d.18）
+
+- 新旧29監査対象・公開入口・既存dg擬同値監査の31対象の合同ビルドに成功した
+  （3620 jobs、終了コード0、警告・エラー0件）。222宣言の公理監査はすべて標準3公理のみ。
+- 担当59 Leanファイルを走査し、新しいsorry・admit・axiomは0件。デバッグtraceも0件。
+  新規引用・既存APIの変更はない。他担当のファイルは編集していない。
 
 ## 公開入口と残る接続
 
