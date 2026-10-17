@@ -840,6 +840,39 @@ dg nerve と内部ホーン充填および quasicategory instance を監査す�
 #print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.left_card_two_iff
 #check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.left_card_two_iff
 
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.front_hom_heq_of_image
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.front_hom_heq_of_image
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.front_hom_zero_of_image
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.front_hom_zero_of_image
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.front_hom_unit_of_image
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.front_hom_unit_of_image
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.hom_heq_of_indices_degree
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.hom_heq_of_indices_degree
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.cutLeft
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.cutLeft
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.cutRight
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.cutRight
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.cutComposite
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.cutComposite
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.erasedComponent
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.erasedComponent
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.term_eq_sub_cutComposite
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.term_eq_sub_cutComposite
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.cutComposite_zero_of_ne_second
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.cutComposite_zero_of_ne_second
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.cutComposite_second
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.cutComposite_second
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.cutRight_second_heq_component
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.cutRight_second_heq_component
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.cutComposite_second_heq_component
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.cutComposite_second_heq_component
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.erasedComponent_heq_component
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.erasedComponent_heq_component
+#print axioms SerrePositivity.InfinityCategories.DGNerve.smul_sub_heq_of_obj_eq
+#check @SerrePositivity.InfinityCategories.DGNerve.smul_sub_heq_of_obj_eq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.term_heq_linear
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.term_heq_linear
+
 section
 universe u v
 variable (A : Type u) [CommRing A] (D : Type v)
