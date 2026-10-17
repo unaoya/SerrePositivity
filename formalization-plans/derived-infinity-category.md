@@ -138,3 +138,17 @@ complexSemifree_isKProjective (S : Type u) [CommRing S]
 対象ビルド `lake build SerrePositivity.InfinityCategories.Derived.SemifreeKProjective`、
 `lake env lean scripts/audit_derived_infinity.lean` は終了コード 0。
 全10公開宣言の公理は標準3公理のみ。D2b に残りなし。未完了は D2c〜D2e・D2g。
+
+### D2c（2026-10-17）
+
+完了。公開定理（namespace は同上）：
+```lean
+exists_complexSemifree_resolution (S : Type u) [CommRing S] (M : Complex S) :
+  ∃ (P : Complex S) (q : P ⟶ M),
+    complexSemifree S P ∧ (∀ n : ℤ, Function.Surjective (q.f n)) ∧
+      HomologicalComplex.QuasiIso q
+```
+前提は可換環のみ。有界性・有限生成性・射影性の仮定なし。一点加群の解像度を評価した。
+対象ビルド `lake build SerrePositivity.InfinityCategories.Derived.SemifreeResolution` と
+`lake env lean scripts/audit_derived_infinity.lean` は終了コード 0。
+全11公開宣言の公理は標準3公理のみ。D2c に残りなし。未完了は D2d・D2e・D2g。
