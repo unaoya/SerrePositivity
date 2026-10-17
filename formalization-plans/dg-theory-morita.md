@@ -103,6 +103,8 @@ unit/counitは上の実際の随伴の成分とする。随伴の存在・成分
 右随伴の一般kernelに対する構成は残る証明課題。localHomKFlatを列のhomotopically projective性と
 同一視しない。一対象Endでの既存随伴を任意kernelの証明の代わりにしない。
 この型の確定は右随伴の実装が完成したという意味ではない。
+通常Homのdg関手はAdjunctionHom.leanで実装・検証済み（U16a10）。
+一般導来右随伴の表現対象構成はAdjunctionBrownSeed.leanの初期被覆まで進んでいるが、存在証明は未完。
 
 ### 5. 恒等作用（実装・検証済み、U16a4）・合成比較（実装・検証済み、U16a6）
 
@@ -440,4 +442,50 @@ CoherenceCompositionCanonicalChecksは独立宇宙・任意可換環・標数2�
 ```sh
 lake build SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionCanonicalChecks
 lake env lean SerrePositivity/DifferentialGraded/Morita/CoherenceCompositionCanonicalChecks.lean
+```
+
+
+## U16a10：任意kernelの通常Homと表現対象の初期被覆（2026-10-17）
+
+AdjunctionHom.leanのkernelHomModuleはP : Bimodule A E Dに沿って、全右E加群dg圏上の
+代表加群Hom(−,N)をDへ制限する。kernelHomParamは既存のパラメータ付きYoneda作用の制限。
+kernelHomはこれを全Hom自然なdg関手へまとめる。値はmoduleHom A E (P.rightAt d) Nそのもの。
+kernelHom_map_πは全Hom写像を共変representableの写像で計算し、kernelHom_map_evalは
+閉零射での出力評価が元の全Hom endの後合成であることを示す。
+全右E加群型のSmall、kernelの射影性・局所Hom K-flat性は要求しない。
+既存EndomorphismのYoneda・後合成計算を読み取り専用で再利用した。
+
+AdjunctionBrownSeed.leanは任意の指定関手L : D(D) ⥤ D(E)と対象Yに対する初期生成元被覆。
+brownSeedRawIndexは全てのp : D × ℤとL(moduleCompactGenerators p) ⟶ Yの対。
+既存の主導来圏の局所小性とSmall.{u} Dにより、この添字がSmall.{u}であることを証明し、
+brownSeedIndexでShrink.{u}を取って実際のu-small余積brownSeedを構成する。
+指定したその余積の保存PreservesColimit (Discrete.functor (brownSeedFamily ...)) Lを明示し、
+brownSeedMapと各成分の計算brownSeedMap_ιを与える。
+brownSeedMap_generator_surjectiveは各shiftした代表加群のL像からYへの任意射が
+L(brownSeed)を経由することを証明する。随伴や表現可能性の存在は入力にしていない。
+恒等関手でこの保存仮定が実際に供給できることもChecksで検査する。
+
+これらは一般導来右随伴の構成の部分成果である。kernelDerivedHom・kernelDerivedAdjunction・
+unit/counitの公開契約は型のみ確定のまま。後続では次を証明する。
+
+1. 実際のkernelDerivedTensorに対するu-small余積保存：任意J : Type uについて
+   PreservesColimitsOfShape (Discrete J) (kernelDerivedTensor A D E K)。
+   exact性・shiftは別担当Verdier/KernelActionTrianglesの存在を確認しており、読み取り専用で再利用する。
+2. 生成元からのkernelに当たる全射をconeで殺す後続段階を作り、同じ初期射を延長する。
+3. 可算telescopeとcompact生成から表現対象と全入力に自然なHom同値を作る。
+4. そのHom同値から実際の右随伴・unit/counit・三角恒等式を構成する。
+
+局所K-flat性をhomotopically projective性に置き換えていない。
+一般右随伴を射影的な列だけへ縮小して受け入れるものではない。
+恒等・結合の作用coherence、U16a全受入とU16cも未完である。
+
+AdjunctionHomChecksの6宣言、AdjunctionBrownSeedChecksの9宣言（instance・abbrevを含む）を
+直接監査し、宣言名の欠落・重複なく標準3公理のみ。
+新旧合成自然性・別担当QuasiEquivalence入口・局所受入・一般入口・Spectra.StageTwoとの
+合同ビルド成功（4097 jobs、警告0件）。新規sorry・axiom・引用・資源上限変更なし。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Morita.AdjunctionHomChecks SerrePositivity.DifferentialGraded.Morita.AdjunctionBrownSeedChecks SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionCanonicalChecks SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.DifferentialGraded.Checks.U12eGeneralInventory SerrePositivity.Spectra.StageTwo
+lake env lean SerrePositivity/DifferentialGraded/Morita/AdjunctionHomChecks.lean
+lake env lean SerrePositivity/DifferentialGraded/Morita/AdjunctionBrownSeedChecks.lean
 ```

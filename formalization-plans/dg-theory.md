@@ -12341,3 +12341,42 @@ Spectra.StageTwoの合同ビルド成功（4096 jobs、警告0件）。
 lake build SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionCanonicalChecks SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionKFlatNaturalityChecks SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionNaturalityChecks SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionChecks SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.DifferentialGraded.Checks.U12eGeneralInventory SerrePositivity.Spectra.StageTwo
 lake env lean SerrePositivity/DifferentialGraded/Morita/CoherenceCompositionCanonicalChecks.lean
 ```
+
+
+### 17.261 U16a：任意kernelの通常Homと一般右随伴の初期生成元被覆（2026-10-17）
+
+Morita/AdjunctionHom.leanは任意の右E・左D kernel Pに対し、
+Hom_E(P(d),N)を値とする右D加群kernelHomModuleと全Hom自然なdg関手kernelHomを構成する。
+大きい全右E加群dg圏にSmallを仮定せず、既存のパラメータ付きYoneda作用をPに沿って制限する。
+kernelHom_value・kernelHom_map_π・kernelHom_map_evalは元の全Hom複体・全Hom作用・閉零射の後合成との一致。
+kernelの射影性、局所Hom K-flat性は要求しない。Endomorphismの既存計算を読み取り専用で再利用した。
+
+Morita/AdjunctionBrownSeed.leanは任意関手L : D(D) ⥤ D(E)と対象Yについて、
+全てのshiftした代表加群のL像からYへの射を添字とする初期被覆を構成する。
+brownSeedRawIndexSmallで局所小性から添字のSmall.{u}を証明し、実際の添字をShrink.{u}に取る。
+brownSeedはその生成元余積。指定余積の保存を明示してbrownSeedMapを作り、
+brownSeedMap_ιとbrownSeedMap_generator_surjectiveで各生成元からの全射の持ち上げを証明する。
+この段階はcompact性そのものを仮定せず、既存moduleCompactGeneratorsの対象族を使う。
+随伴や表現可能性を入力として受け取っていない。
+
+一般右随伴はまだ構成途中であり、型のみ確定の契約は維持する。
+残る入力は実際のkernel作用のu-small余積保存（任意J : Type uで
+PreservesColimitsOfShape (Discrete J) (kernelDerivedTensor A D E K)）。
+その後に生成元の関係をconeで殺す後続段階、可算telescope、compact生成による
+全入力のHom同値を構成し、右随伴・unit/counit・三角恒等式を得る。
+exact性・shiftは別担当Verdier/KernelActionTrianglesの既存APIを読み取り専用で再利用する計画。
+一般右随伴を射影的な列に限定して受け入れていない。恒等・結合の作用coherenceとU16cも未完。
+U12e-generalを再開せず、新しい引用も採用していない。
+
+AdjunctionHomChecksは任意可換環・独立宇宙・標数2と全Hom／閉零評価を検査する。
+AdjunctionBrownSeedChecksは独立宇宙と恒等関手を含む指定余積保存下の生成元持ち上げを検査する。
+追加15宣言（Hom6、初期被覆9。instance・abbrevを含む）の直接監査を名前集合と照合し、
+欠落・重複なく標準3公理以内。新規監査累計4959宣言。
+合成自然性・別担当QuasiEquivalence入口・局所受入・一般入口・Spectra.StageTwoとの
+合同ビルド成功（4097 jobs、警告0件）。新規sorry・axiom・引用・資源上限変更なし。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Morita.AdjunctionHomChecks SerrePositivity.DifferentialGraded.Morita.AdjunctionBrownSeedChecks SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionCanonicalChecks SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.DifferentialGraded.Checks.U12eGeneralInventory SerrePositivity.Spectra.StageTwo
+lake env lean SerrePositivity/DifferentialGraded/Morita/AdjunctionHomChecks.lean
+lake env lean SerrePositivity/DifferentialGraded/Morita/AdjunctionBrownSeedChecks.lean
+```
