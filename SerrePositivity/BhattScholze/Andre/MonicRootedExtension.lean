@@ -6,6 +6,7 @@ public import SerrePositivity.BhattScholze.Andre.PerfectPrismMonicCandidate
 public import SerrePositivity.BhattScholze.Andre.MonicPDFlat
 public import SerrePositivity.BhattScholze.Andre.MonicRawPDivision
 public import SerrePositivity.BhattScholze.Andre.MonicFamilyRawRegular
+public import SerrePositivity.BhattScholze.Andre.MonicFiniteFamilyFlat
 
 /-!
 # André E1・E2 の集約

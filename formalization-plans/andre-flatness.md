@@ -351,3 +351,42 @@ ghost 単射は各段の p 正則性と相対自由源の自由性から G4 に�
 SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4001 jobs）。
 専用監査も終了コード 0。全新規公開宣言の `assert_no_sorry` と、生成宣言・私有補助を含む
 132 宣言の標準 3 公理限定検査に成功した。新規 sorry・axiom・引用は追加していない。
+
+### E1.6：有限モニック族の通常商の自由性・忠実平坦性
+
+新規 `Andre/MonicFamilyQuotientUniversal.lean` は、実関係イデアルによる通常商
+`PolynomialFamilyQuotient f` の根方程式、任意の係数射と指定根への普遍射、係数・根による
+環射の外延性を構成する。モニック性はこの普遍性には不要。
+`MonicFamilyOptionQuotient.lean` の `polynomialFamilyOptionEquiv` は正確に
+`PolynomialFamilyQuotient f ≃ₐ[R]
+ AdjoinRoot ((f none).map (algebraMap R
+   (PolynomialFamilyQuotient (fun s : σ => f (some s)))))` を与える。
+これは元の R 係数作用を保つ代数同型で、両方向の普遍射を係数と根上で比較して証明した。
+`MonicFamilyQuotientReindex.lean` は添字同値による再添字付けの代数同型を構成する。
+
+`Andre/MonicFiniteFamilyFlat.lean` の主要公開型：
+
+```lean
+theorem monicFiniteFamilyQuotient_free_faithfullyFlat
+    {R : Type u} [CommRing R] {σ : Type v} [Finite σ]
+    (f : σ → Polynomial R) (hf : ∀ s, (f s).Monic)
+    (hdeg : ∀ s, 0 < (f s).natDegree) :
+    Module.Free R (PolynomialFamilyQuotient f) ∧
+      Module.FaithfullyFlat R (PolynomialFamilyQuotient f)
+```
+
+非零係数環の場合、空集合・Option 帰納で自由性と非零性を同時に証明する。
+正次数とモニック性は各段の係数変更後も非零の一元根添加となることに用いる。
+零係数環の場合も加群の自明性から処理する。
+同じ宇宙の有限 σ について `exists_finiteMonicRootedFaithfullyFlat` は
+`∃ (T : Type u) (_ : CommRing T) (φ : R →+* T) (ρ : σ → T),
+ (letI := φ.toAlgebra; Module.Free R T ∧ Module.FaithfullyFlat R T) ∧
+ ∀ s, (f s).eval₂ φ (ρ s) = 0` を与える。
+
+BS Thm 7.14（著者版 p.61）、Rem 7.15（p.62）の通常代数の準備。
+Prop 7.11 を使う原典の証明とは異なる、明示的なモニック剰余と普遍射による計算である。
+任意族の余極限、分冪包の実導来比較、最終 perfectoid 候補の p 完全忠実平坦性は未完成。
+通常の有限自由忠実平坦拡大を目標定理の完成と数えない。
+集約の対象ビルドは `set -o pipefail` 付きで終了コード 0（4005 jobs）。
+専用監査は全新規公開宣言の `assert_no_sorry` と、生成宣言を含む 176 宣言の
+標準 3 公理限定検査に成功（終了コード 0）。

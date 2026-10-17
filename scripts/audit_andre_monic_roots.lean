@@ -67,6 +67,19 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.monicFiniteRaw_p_mul_injectiv
 assert_no_sorry SerrePositivity.BhattScholze.Andre.monicFamilyRaw_p_mul_injective
 assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicFamilyRaw_p_mul_injective
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.PolynomialFamilyQuotient
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyQuotientRoot
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyQuotient_eval
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyQuotientLift
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyQuotientLift_root
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyQuotientLift_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyQuotientHom_ext
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyOptionEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialFamilyReindexEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicFiniteFamilyQuotient_free_nontrivial
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicFiniteFamilyQuotient_free_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.exists_finiteMonicRootedFaithfullyFlat
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -84,7 +97,11 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.MonicFamilyPartialQuotient,
     `SerrePositivity.BhattScholze.Andre.MonicFamilySubsetRegular,
     `SerrePositivity.BhattScholze.Andre.MonicFamilyPowerResidue,
-    `SerrePositivity.BhattScholze.Andre.MonicFamilyRawRegular]
+    `SerrePositivity.BhattScholze.Andre.MonicFamilyRawRegular,
+    `SerrePositivity.BhattScholze.Andre.MonicFamilyQuotientUniversal,
+    `SerrePositivity.BhattScholze.Andre.MonicFamilyOptionQuotient,
+    `SerrePositivity.BhattScholze.Andre.MonicFamilyQuotientReindex,
+    `SerrePositivity.BhattScholze.Andre.MonicFiniteFamilyFlat]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
