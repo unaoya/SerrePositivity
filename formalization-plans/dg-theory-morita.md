@@ -104,7 +104,7 @@ unit/counitは上の実際の随伴の成分とする。随伴の存在・成分
 同一視しない。一対象Endでの既存随伴を任意kernelの証明の代わりにしない。
 この型の確定は右随伴の実装が完成したという意味ではない。
 
-### 5. 恒等作用・合成比較（型のみ確定）
+### 5. 恒等作用（実装・検証済み、U16a4）・合成比較（型のみ確定）
 
 ```lean
 def kernelIdentityIso :
@@ -128,7 +128,8 @@ kernelComposeMapへの自然性、恒等と三因子の結合比較のcoherence�
 | kernelTensor・値・graph一致 | 実装・対象ビルド済み | 同上 |
 | 主導来作用・任意解像度計算 | 実装・検証済み（U16a3） | Morita/KernelDerivedFunctor.leanをimportして利用できる |
 | 一般右随伴・unit/counit | 型のみ確定 | 同上 |
-| 恒等・合成の作用比較 | 型のみ確定 | 同上 |
+| 恒等作用比較 | 実装・検証済み（U16a4） | Morita/CoherenceIdentity.leanのkernelIdentityIso |
+| 合成の作用比較 | 型のみ確定 | 冒頭の型を前提に設計可能。Lean宣言はまだ未実装 |
 
 U16b担当が構成するgraph作用と`dgDerivedExtension`の自然同型はQuasiEquivalence*に置く。
 このチャットは同ファイルを編集しない。導来作用が未実装の間も、通常graph一致はKernelTensorで提供する。
@@ -269,10 +270,45 @@ KernelDerivedFunctorChecksは任意可換環・独立宇宙、任意指定入力
 （3526 jobs、警告なし）。追加公開22宣言の直接公理監査は重複・欠落なく標準3公理以内。
 文書検査は24 Markdown・326 exposition参照、失敗0件。
 主導来作用入口の推移的project依存は434ファイル、Resolution/依存0件。
-一般右随伴・unit/counit、恒等と合成の作用比較はまだ型のみ確定であり、U16a全受入ではない。
+U16a3時点では一般右随伴・unit/counit、恒等と合成の作用比較が型のみ確定であり、U16a全受入ではなかった。
 次はこれらを証明し、その後U16cへ進む。DG-MOR等の引用は追加していない。
 
 ```sh
 lake build SerrePositivity.DifferentialGraded.Morita.KernelDerivedFunctorChecks
 lake env lean SerrePositivity/DifferentialGraded/Morita/KernelDerivedFunctorChecks.lean
+```
+
+
+## U16a4：対角kernelの恒等作用（2026-10-17）
+
+**冒頭§5のkernelIdentityIsoは、公開型を変えず実装・検証済みへ更新した。**
+
+```lean
+public import SerrePositivity.DifferentialGraded.Morita.CoherenceIdentity
+```
+
+kernelIdentityClosedIsoは、既存の通常左bimodule単位子を全右D加群に評価した自然同型。
+kernelIdentityHomotopyIsoは、その同型をMathlibの商の普遍性でH⁰へ降ろす。
+全右加群型へのSmall仮定は追加しない。
+
+kernelInputResolutionHomotopyAugmentationは任意の指定入力射影解像度族の増大を自然変換へ束ねる。
+kernelInputResolutionDerivedAugmentationIsoは出力局所化で増大を反転した同型、
+kernelInputResolutionDerivedCounitIsoはそれを全主導来入力へ延長した比較同型である。
+**このCounitIsoは入力解像度の増大比較であり、一般kernelのtensor–Hom随伴の余単位ではない。**
+
+kernelDerivedTensorOnBimoduleIdentityIsoはH⁰単位子と入力解像度比較を合成し、
+kernelIdentityIsoはさらに既存kernelDerivedTensorOnBimoduleIsoを前置したもの。
+従って主導来対角kernelそのものの作用から恒等関手への自然同型である。
+任意可換環・非有界、DのSmall.{u}だけを要求し、localHomKFlatは不要。
+
+CoherenceIdentityChecksは任意の導来入力、任意の指定入力射影解像度族、標数2で型を確認する。
+主導来kernel・局所受入・General入口・Spectra.StageTwoとの合同ビルド成功（3527 jobs、警告なし）。
+公開7宣言の直接公理監査は重複・欠落なく標準3公理以内。
+文書検査は24 Markdown・326 exposition参照、失敗0件。
+恒等作用入口の推移的project依存は435ファイル、Resolution/依存0件。
+一般右随伴・unit/counit、合成比較および恒等・合成の作用coherenceは未完。U16a全受入ではない。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Morita.CoherenceIdentityChecks
+lake env lean SerrePositivity/DifferentialGraded/Morita/CoherenceIdentityChecks.lean
 ```

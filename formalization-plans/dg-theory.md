@@ -12029,3 +12029,22 @@ kernelDerivedTensorOnBimoduleIsoは通常kernel上の作用との自然同型で
 KernelDerivedFunctorの推移的project依存は434ファイル、Resolution/依存0件。
 今回の3 Leanファイルにsorry・admit・新規axiom・資源上限変更は0件。
 U16aの一般右随伴・unit/counit・恒等／合成比較、U16cは未完として保持する。
+
+
+### 17.254 U16a：主導来対角kernelの恒等作用（2026-10-17）
+
+Morita/CoherenceIdentity.leanのkernelIdentityIsoを、固定済みの公開型のまま証明した。
+通常bimodule左単位子を全右D加群で評価するkernelIdentityClosedIsoをH⁰商へ降ろし、
+任意の入力解像度族の増大自然変換・主導来局所化での反転・局所化普遍性による延長と合成する。
+最後に既存kernelDerivedTensorOnBimoduleIsoを前置し、主導来対角kernelそのものの作用を
+恒等関手に自然同型で比較する。DのSmall.{u}のみを要求し、localHomKFlatは追加しない。
+
+kernelInputResolutionDerivedCounitIsoは入力解像度の増大比較であり、
+一般kernelのtensor–Hom随伴の余単位の証明を代用しない。
+任意導来入力・任意指定入力解像度族・標数2をCoherenceIdentityChecksで確認した。
+主導来kernel・局所受入・General入口・Spectra.StageTwoとの合同ビルド成功（3527 jobs、警告なし）。
+公開7宣言の直接公理監査は重複・欠落なく標準3公理以内。新規監査累計4882宣言。
+文書検査は24 Markdown・326 exposition参照、失敗0件。
+CoherenceIdentityの推移的project依存は435ファイル、Resolution/依存0件。
+今回の2 Leanファイルにsorry・admit・新規axiom・資源上限変更は0件。
+合成比較と作用coherence、一般右随伴・unit/counit、U16cは未完として保持する。
