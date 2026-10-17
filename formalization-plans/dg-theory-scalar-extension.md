@@ -262,3 +262,25 @@ objectwise 擬同型性として明示している。
 
 残り：非 flat な tensor の導来比較と K-flat 置換条件の具体化・自然性、U15d の固定 path
 比較と最終微分・単位・合成整合性。U12f/U15d 全体は未完として維持する。
+
+
+## 2026-10-17：K-flat 条件と非有界複体の導来係数変更
+
+非 flat な主導来加群関手は `b2bdaf4c` にコミット済み。
+`Derived/ScalarExtensionKFlat.lean` では、A 上 K-flat な両端を持つ擬同型が任意の
+複体との tensor、および任意の環準同型による係数拡大で擬同型に送られることを証明した。
+後者は restriction 後の明示的 single-module tensor 同型と擬同型の反映を使う。
+加群版では各評価の A-K-flat 性を両端に要求する。相対 K-flat 性だけとは同一視しない。
+
+`Derived/ScalarExtensionComplex.lean` は一対象 dg 圏の主導来圏と既存導来圏の同値を
+通して、非有界な `complexDerivedExtension` を構成する。有界性・係数環の flatness は不要。
+任意の射影加群解像度による計算と、A 上 K-flat な複体での underived 計算同型を与えた。
+後者では一対象環の local Hom が単位複体であることを用い、標準 semifree 解像度の
+評価ごとの K-flat 性を実際に証明して使う。
+
+検証：`lake build SerrePositivity.DifferentialGraded.Checks.ScalarExtensionKFlat` 成功
+（2895 jobs、警告なし）。主要9宣言の公理監査はすべて標準3公理のみ。
+新規 sorry・axiom・引用は0件。ルートは自分の import 行のみ部分 stage。
+
+続けて相対 tensor の導来比較を、この複体の導来係数変更と実際の主導来加群関手を
+使って構成する。必要な K-flat 計算モデル条件を明示し、その後 U15d に進む。

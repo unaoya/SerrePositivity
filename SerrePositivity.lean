@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Derived.ScalarExtensionExact
+public import SerrePositivity.DifferentialGraded.Derived.ScalarExtensionComplex
 
 public import SerrePositivity.DifferentialGraded.Endomorphism.Compatibility
 

@@ -1,0 +1,15 @@
+module
+public import SerrePositivity.DifferentialGraded.Derived.ScalarExtensionComplex
+
+@[expose] public section
+namespace SerrePositivity.DifferentialGraded.ScalarExtension
+#print axioms ringModule_relativeKFlat
+#print axioms tensor_quasiIso_of_kFlat_ends
+#print axioms extension_quasiIso_of_kFlat_ends
+#print axioms moduleExtension_quasiIso_of_objectwiseKFlat
+#print axioms derivedExtensionComparison_isIso_of_objectwiseKFlat
+#print axioms complexDerivedExtension
+#print axioms ringDerivedInverseComputation
+#print axioms complexDerivedExtensionComputation
+#print axioms complexDerivedExtensionKFlatComputation
+end SerrePositivity.DifferentialGraded.ScalarExtension
