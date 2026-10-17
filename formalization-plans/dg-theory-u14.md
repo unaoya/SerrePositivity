@@ -1084,6 +1084,15 @@
 - `ChecksScalarShiftAddition` 対象ビルド成功（3071 jobs）。主要5宣言の公理は標準3公理のみ。
   既存APIの名前・型は変更していない。新しいsorry・axiom・引用は追加していない。
 
+## U14b.70：実際の係数拡大の整合的shiftの主Kへの降下（2026-10-17）
+
+- `ScalarHomotopyShift.lean`：零・加法shiftと整合する実際の加群係数拡大を、
+  受入済みの主Kの境界商へ降ろし、`scalarModuleExtensionHomotopyCommShift` を構成した。
+- 閉零圏からの因子分解自然同型についてもshift整合性を証明した。
+  sourceとtargetの係数環の異なる実際の主K間の関手に適用する。
+- `ChecksScalarHomotopyShift` 対象ビルド成功（3072 jobs）。主要3宣言の公理は標準3公理のみ。
+  既存APIの名前・型は変更していない。新しいsorry・axiom・引用は追加していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
