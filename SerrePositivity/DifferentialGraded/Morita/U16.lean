@@ -15,7 +15,8 @@ public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence
 ## 規約と注意
 この入口の存在・ビルドはU16全体の受入を意味しない。
 U16dの局所化係数変更への正方形は通常代表とhα・hAug・hP'を指定した範囲で接続済み。
-U12f成分同定・kernel合成との係数変更図式、および局所化正方形の全主kernel射自然性は未受入。
+二つの変更kernelの合成への作用図式も接続済み。U12f成分同定・合成kernel自体の係数変更比較、
+およびその整合性と局所化正方形の全主kernel射自然性は未受入。
 中心作用も保留。各定理のモデル条件・局所Hom条件・生成性の入力はそのまま保持する。
 
 ## 使われ方

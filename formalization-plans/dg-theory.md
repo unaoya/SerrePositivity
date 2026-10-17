@@ -13287,3 +13287,38 @@ lake build SerrePositivity.DifferentialGraded.Morita.U16Checks SerrePositivity.D
 lake env lean SerrePositivity/DifferentialGraded/Morita/AdjunctionSquareChecks.lean
 lake env lean SerrePositivity/DifferentialGraded/Morita/U16Checks.lean
 ```
+
+
+### 17.280 U16d.29〜30の統合：モデル計算と実際のkernel合成を使う作用図式（2026-10-17）
+
+別担当の確定コミットe2e18713・91cb0e13と、専用記録U16d.29・30を照合した。
+ScalarExtensionKernelOutputModelsChecks・ScalarExtensionKernelLocalizedCompositionChecksを
+U16Checksへ同時importし、以下の12宣言を統合入口から直接再監査するようにした。
+production側は既存QuasiEquivalenceから到達する。
+
+| 接続 | 受け取った実際の証拠・範囲 |
+| --- | --- |
+| 元の導来正方形のモデル計算 | scalarOutputHomotopyDerivedIso_inv_app、scalarKernelOutputHomotopyComputation_hom、scalarKernelOutputLeft_closed・scalarKernelOutputRight_closed、scalarKernelOutputModelComputation、scalarKernelOutputLeft_model・scalarKernelOutputRight_model。既存の増大・balanced比較そのものを計算し、K-flat性・増大可逆性はこの計算等式に不要 |
+| 通常代表のモデル条件 | ScalarKernelLocalizedConditions。hα・hAug・hP'を独立した三フィールドに保持し、比較同型や所望の可換性を入力にしない |
+| 実際のkernel合成による作用の係数変更図式 | scalarKernelLocalizedCompositionSquare、_diagram。元と変更後のkernelCompositionIsoを両側に使い、始域のhD・hD'を独立に保持 |
+| Perfへの制限 | scalarKernelLocalizedCompositionPerfectSquare、_inclusion。元の二kernelの列のperfect性とモデル条件から、変更後と合成kernelの列のperfect性を供給 |
+
+モデル計算の名前のうち右経路はscalarKernelOutputRight_closed／scalarKernelOutputRight_model。
+元の全導来比較の定義を変えずに標準右解像度へ計算する等式である。
+
+**合成図式の終域を区別する。** 今回得た終域kernelは、各kernelをscalarKernelDerivedExtensionで
+変更した後に合成した対象である。元の合成kernelをscalarKernelDerivedExtensionで変更した対象との
+kernel同型や、その同型を通した場合の既存正方形との一致は今回の貼合せだけでは得ていない。
+この未完部分を、実際のkernelCompositionIsoを使ったことだけで完了とは数えない。
+U12f成分一致、局所化正方形の全主kernel射自然性、中心作用の保留も引き続き残る。
+
+更新後U16ChecksとSpectra.StageTwoの合同ビルド成功（4036 jobs、警告・エラー0）。
+統合入口の主要50宣言を直接再監査し、欠落・重複なく標準3公理以内。
+追加12件は別担当の既監査宣言の再出力であり、こちらの新規監査累計5114には加算しない。
+新しい数学的宣言・sorry・axiom・引用・資源上限変更なし。担当外ファイルは編集していない。
+U16入口のdocstringは上記の接続済み範囲へ更新し、U16全体は未受入を維持する。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Morita.U16Checks SerrePositivity.Spectra.StageTwo
+lake env lean SerrePositivity/DifferentialGraded/Morita/U16Checks.lean
+```
