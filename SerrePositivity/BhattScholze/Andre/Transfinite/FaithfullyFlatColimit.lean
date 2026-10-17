@@ -16,8 +16,19 @@ namespace SerrePositivity.BhattScholze.Andre.Transfinite
 variable {A ι : Type u} [CommRing A] [Preorder ι] [Nonempty ι] [IsDirectedOrder ι]
     (S : ι → Type u) [∀ i, CommRing (S i)] [∀ i, Algebra A (S i)]
     (f : ∀ i j, i ≤ j → S i →ₐ[A] S j) [DirectedSystem S (fun i j h ↦ f i j h)]
-/-- 線形写像は I 倍の部分加群を I 倍の部分加群へ送る。
-BS Thm 7.14（著者版 p.61）の極限段の補助計算。生成元と加法に関する帰納法による。 -/
+/-- ## 概要
+線形写像は I 倍の部分加群を I 倍の部分加群へ送る。
+BS Thm 7.14（著者版 p.61）の極限段の補助計算。
+
+## 方針
+生成元と加法に関する帰納法を使う。
+
+## 規約
+基底イデアルの有限生成性を要求しない。
+
+## 使われ方
+有限段での基底イデアル倍の表示を後の段へ移す。
+-/
 private lemma map_ideal_smul {P Q : Type u} [AddCommGroup P] [Module A P]
     [AddCommGroup Q] [Module A Q] (I : Ideal A) (g : P →ₗ[A] Q) {x : P}
     (hx : x ∈ I • (⊤ : Submodule A P)) : g x ∈ I • (⊤ : Submodule A Q) := by

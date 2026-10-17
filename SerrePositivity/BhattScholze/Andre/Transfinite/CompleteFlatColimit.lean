@@ -106,9 +106,19 @@ theorem isCompletelyFlat_directLimit {R ι : Type u} [CommRing R] [Preorder ι]
   exact isCompletelyFlat_of_linearEquiv I (Module.DirectLimit.linearEquiv M f)
     (isCompletelyFlat_moduleDirectLimit I M f hM)
 
-/-- 代数の非交和余極限と標準加群余極限の、元の係数作用を保つ比較。
-BS Thm 7.14（著者版 p.61）の極限段で用いる。双方の普遍写像から互いに逆な線形写像を構成し、
-遷移射の束の型が異なる場合にも、加群構造の定義的同一性を仮定せずに移送する。 -/
+/-- ## 概要
+代数の非交和余極限と標準加群余極限の、元の係数作用を保つ比較。
+BS Thm 7.14（著者版 p.61）の極限段の補助同型。
+
+## 方針
+双方の普遍写像から互いに逆な線形写像を構成する。
+
+## 規約
+遷移射の束の型が異なる場合にも、加群構造の定義的同一性を仮定しない。
+
+## 使われ方
+代数余極限へ完全平坦性を移送する。
+-/
 private def moduleDirectLimitEquivAlgebraDirectLimit {R ι : Type u} [CommRing R] [Preorder ι]
     [Nonempty ι] [IsDirectedOrder ι] [DecidableEq ι]
     (S : ι → Type u) [∀ i, CommRing (S i)] [∀ i, Algebra R (S i)]

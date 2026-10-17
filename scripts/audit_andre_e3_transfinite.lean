@@ -32,6 +32,11 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.algebraModuleCoco
 assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.algebraModuleIsColimit
 assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.residueDiagramIso
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFlat_comp
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.subsingleton_of_annihilated_of_residueTensor
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFaithfullyFlat_comp
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFaithfullyFlat_natCast_comp
+
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
@@ -44,7 +49,8 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.Transfinite.OmegaOne,
     `SerrePositivity.BhattScholze.Andre.Transfinite.CompleteFlatColimit,
     `SerrePositivity.BhattScholze.Andre.Transfinite.FaithfullyFlatColimit,
-    `SerrePositivity.BhattScholze.Andre.Transfinite.ResidueTensorColimit]
+    `SerrePositivity.BhattScholze.Andre.Transfinite.ResidueTensorColimit,
+    `SerrePositivity.BhattScholze.Andre.Transfinite.Composition]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
@@ -91,3 +97,8 @@ run_cmd do
 #print SerrePositivity.BhattScholze.Andre.Transfinite.algebraModuleCocone
 #print SerrePositivity.BhattScholze.Andre.Transfinite.algebraModuleIsColimit
 #print SerrePositivity.BhattScholze.Andre.Transfinite.residueDiagramIso
+
+#print SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFlat_comp
+#print SerrePositivity.BhattScholze.Andre.Transfinite.subsingleton_of_annihilated_of_residueTensor
+#print SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFaithfullyFlat_comp
+#print SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFaithfullyFlat_natCast_comp

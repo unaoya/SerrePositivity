@@ -12,8 +12,18 @@ BS Thm 7.14（著者版 p.61）の超限反復の極限段に必要な一般論�
 @[expose] public noncomputable section
 namespace SerrePositivity.BhattScholze.Andre.Transfinite
 
-/-- 主イデアル進合同は差の冪倍表示と同値。
-BS Thm 7.14（著者版 p.61）の極限段の補助計算として、合同を有限代数的な等式へ直す。 -/
+/-- ## 概要
+主イデアル進合同は差の冪倍表示と同値。BS Thm 7.14（著者版 p.61）の極限段の補助計算。
+
+## 方針
+主イデアルの冪と単項生成イデアルの所属条件を書き換える。
+
+## 規約
+a は任意の可換環の元。
+
+## 使われ方
+合同を可算個の有限代数的な等式へ直す。
+-/
 private lemma principal_smodEq_iff {S : Type*} [CommRing S] (a x y : S) (n : ℕ) :
     x ≡ y [SMOD ((Ideal.span {a}) ^ n • (⊤ : Submodule S S))] ↔
       ∃ z, x - y = a ^ n * z := by
