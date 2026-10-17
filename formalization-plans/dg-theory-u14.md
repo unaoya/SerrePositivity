@@ -438,6 +438,15 @@
   新規3主要宣言の公理は標準3公理のみ。
 - 零shift・加法shiftの整合性、主Perf比較への接続は引き続き受入条件に残る。
 
+## U14b.18：零shiftとの整合性（2026-10-17）
+
+- `ShiftZeroCoherence.lean`：正規化した零次数射影が加群の零shift同型の閉零要素と
+  一致することを証明し、全Hom写像の閉零射公式に接続した。
+- 正規化したshift自然同型が、零shiftではMathlibの `Functor.CommShift.isoZero` と
+  一致することを、次数の付け替え同型も含めて証明した。
+- `ChecksShiftZeroCoherence` の対象ビルド成功。新規2主要宣言の公理は標準3公理のみ。
+- 加法shiftの整合性と主Perfへの接続は未完了。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
