@@ -121,3 +121,29 @@ retract に閉じることを実際に冪等元を分裂して証明する。
 検証：`CriterionPerfConditionsChecks` の対象ビルド成功（2800 jobs、警告なし）。
 厚い帰納・全 Hom 比較・同値証拠を同時 import。今回の主要3宣言は標準3公理のみ。
 新規 sorry・axiom・引用なし。三条件から同値への最終定理と、その逆は引き続き未完。
+
+## 閉次数零の作用公式と、全次数の導来 Hom の表示
+
+主 kernel の条件の単位は `ef0d2d17`（直後の stat は自分の3ファイルのみ）。
+`CriterionPerfHomComparisonZero.lean` は前合成・dg 関手の全 Hom 射の閉次数零制限を
+証明し、`criterionPerfHomComparison_homology_zero` により、全 Hom 比較の H⁰ 写像が
+列の左作用を局所化した実際の射に一致することを示す。これはまだ全整数 shift の
+主 kernel 作用との同定ではない。
+
+`CriterionPerfHomComparisonDegrees.lean` の
+`criterionPerfColumnDerivedShiftedHomEquiv` は、源の列の s-shift からの主導来 Hom を
+`moduleHom(R_d,P_d')` の H^(-s) と同定する。源の射影解像度・その増強の局所化同型・
+Hom の源 shift の chain 同型・Mathlib の homology shift 同型を実際に合成する。
+`criterionPerfRepresentableDerivedShiftedHomEquiv` は対角 bimodule と dg Yoneda を使い、
+表現可能対象間の同じ表示を元の dg 圏の Hom 複体の H^(-s) として与える。
+列そのものの射影性や係数環の平坦性は不要。
+
+合同検証：TriangulatedChecks、HomComparisonChecks、GenerationChecks、EquivalenceChecks、
+HomComparisonDegreesChecks を同時に対象ビルドし成功（2810 jobs、警告なし）。
+最後のファイルは ConditionsChecks、HomInductionChecks、HomComparisonZeroChecks も
+import する。監査対象は累計41宣言、すべて標準3公理の範囲内。
+新規 sorry・axiom・引用なし。自分のパスだけを指定してコミットし、直後に stat を確認する。
+
+残課題：上記の全次数表示の下で、全 Hom 比較の homology map と実際の
+`kernelDerivedTensor` の射写像が一致することを証明し、擬同型性と全 shifted Hom の
+全単射性との同値を得る。その橋を十分性・必要性に接続する。最終 Morita 判定は未完。

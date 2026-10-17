@@ -1,0 +1,9 @@
+module
+public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfHomComparisonDegrees
+public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfHomComparisonZeroChecks
+
+@[expose] public section
+namespace SerrePositivity.DifferentialGraded.Morita
+#print axioms criterionPerfColumnDerivedShiftedHomEquiv
+#print axioms criterionPerfRepresentableDerivedShiftedHomEquiv
+end SerrePositivity.DifferentialGraded.Morita
