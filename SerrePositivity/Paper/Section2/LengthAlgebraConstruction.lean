@@ -5,7 +5,6 @@ public import SerrePositivity.Paper.Section2.TowerLengthOn
 public import SerrePositivity.Paper.Section2.PerfectQuotientLimit
 public import SerrePositivity.Paper.Section2.PerfectKoszulLimit
 public import SerrePositivity.Paper.Section2.MixedLengthAlgebra
-public import SerrePositivity.Inputs.RobertsFrobenius
 public import Mathlib.RingTheory.WittVector.Basic
 public import Mathlib.RingTheory.MvPowerSeries.Basic
 
@@ -147,7 +146,7 @@ theorem perfectClosure_length_properties_of_roberts
 本定理はその代わりに、パラメータ Koszul 複体に限った初等的な消滅
 `tendsto_length_koszulHomologySelf_frobenius_pow`（`CommutativeAlgebra/ParameterKoszulGrowth.lean`）を
 `perfectClosure_length_properties_of_higher_tendsto` に渡す。
-Roberts の一般定理 `Inputs.frobenius_homology_length_tendsto_zero` には依存しない。 -/
+Roberts の一般定理（旧引用 `Inputs.frobenius_homology_length_tendsto_zero`、削除済み）には依存しない。 -/
 theorem perfectClosure_length_properties (A D : Type u) [CommRing A] [IsRegularLocalRing A]
     [IsAdicComplete (maximalIdeal A) A]
     [CommRing D] [IsLocalRing D] [IsNoetherianRing D] [IsDomain D]

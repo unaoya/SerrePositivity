@@ -52,9 +52,9 @@ BS Cor 7.3／Thm 7.4 の全射性は、André の補題を使わない根添加�
 
 - 1：[ResidueFieldExtension](../SerrePositivity/Inputs/ResidueFieldExtension.lean)。
 - 2・3：[CohenNormalization](../SerrePositivity/Inputs/CohenNormalization.lean)。
-- 4：[SerrePositivity](../SerrePositivity/Inputs/SerrePositivity.lean)。
+- 4：旧 `Inputs/SerrePositivity.lean`（Serre の等標数正値性の一般形）は 2026-10-17 に削除。主定理が使う剰余標数零の場合は `IntersectionMultiplicity/EqualCharZeroPositivity.lean` で証明済み。
 - 5：[IntersectionTheory](../SerrePositivity/Inputs/IntersectionTheory.lean)。
-- 6：[RobertsFrobenius](../SerrePositivity/Inputs/RobertsFrobenius.lean)。
+- 6：旧 `Inputs/RobertsFrobenius.lean`（Roberts の Frobenius ホモロジー消滅の一般形）は 2026-10-17 に削除。必要なパラメータ Koszul 複体の場合は `CommutativeAlgebra/ParameterKoszulGrowth.lean` で証明済み。
 - 7：[PerfectoidTower](../SerrePositivity/Inputs/PerfectoidTower.lean)。
 - 8：[Perfectoidization](../SerrePositivity/Inputs/Perfectoidization.lean)。
 - 9〜11：[CLMST](../SerrePositivity/Inputs/CLMST.lean)。

@@ -779,7 +779,6 @@ public import SerrePositivity.IntersectionMultiplicity.DiagonalTor
 public import SerrePositivity.IntersectionMultiplicity.DiagonalDimension
 public import SerrePositivity.IntersectionMultiplicity.DiagonalPositivity
 public import SerrePositivity.IntersectionMultiplicity.EqualCharZeroPositivity
-public import SerrePositivity.Inputs.SerrePositivity
 
 public import SerrePositivity.CommutativeAlgebra.PerfectPolynomial
 

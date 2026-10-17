@@ -57,8 +57,8 @@ and a comparison of Tor over `R` and over `R[[Y]]`
   vanishing theorem (`Inputs.intersectionVanishing`) is proved in all residue characteristics
   using supported cyclic Adams operations (the square, and the cube after a cyclotomic local
   extension in residue characteristic two). The residue-characteristic-zero case (Lemma 5.1)
-  is proved by Serre's diagonal argument; the general quotation
-  `Inputs.serrePositivity_of_field` remains but is not used.
+  is proved by Serre's diagonal argument; the former general quotation
+  `Inputs.serrePositivity_of_field` has been removed.
 
 The cyclic length estimate used in CLMST Proposition 4.0.10 is proved from finite-stage
 Frobenius bounds and low-dimensional length growth, with the Bhatt–Scholze existence
@@ -165,9 +165,9 @@ free resolutions and the length-based Euler characteristics are built here (`Com
   evaluation, boundary lifting, Samuel degree of the support).
 - The 2 Bhatt–Scholze quotations remain quotations: Thm 1.17(1) (its proof needs derived
   prismatic cohomology and arc descent) and the ring-level consequence of Cor 8.12 (its proof needs
-  arc descent of perfectoidizations). The legacy quotations `Inputs.serrePositivity_of_field`,
-  `Inputs.frobenius_homology_length_tendsto_zero` and `Inputs.Homotopy.kanQuillen_model_exists`
-  are not on the main theorem's path.
+  arc descent of perfectoidizations). The legacy quotations of Serre's equal-characteristic
+  positivity and of Roberts' Frobenius vanishing have been deleted; the remaining off-path
+  quotation `Inputs.Homotopy.kanQuillen_model_exists` belongs to the K-theory development.
 
 ## Documents and generated files
 

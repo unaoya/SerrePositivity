@@ -30,7 +30,7 @@ public import Mathlib.RingTheory.KrullDimension.NonZeroDivisors
 ## 使われ方
 
 `Paper/Section5/CharacteristicZeroReduction` の `positivity_of_residueCharZero` を、
-引用 `Inputs.serrePositivity_of_field` なしで示すのに使う（計画 K11）。
+Serre の等標数正値性の一般形の引用（旧 `Inputs.serrePositivity_of_field`、削除済み）なしで示すのに使う（計画 K11）。
 -/
 
 @[expose] public noncomputable section

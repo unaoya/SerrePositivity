@@ -24,7 +24,7 @@ public import Mathlib.RingTheory.KrullDimension.Field
 `D` のパラメータ系 `z` と `i > 0` について、定数 `C` があって全ての `q ≥ 1` で
 `ℓ_D H_i(z^q; D) ≤ C q^{h-1}`。特に `ℓ_D H_i(z^{p^n}; D) / p^{nh} → 0`。
 
-Roberts の Frobenius ホモロジー消滅定理（`Inputs.frobenius_homology_length_tendsto_zero`）を、
+Roberts の Frobenius ホモロジー消滅定理（一般形の引用 `Inputs.frobenius_homology_length_tendsto_zero` は削除済み）を、
 パラメータ Koszul 複体という特殊な場合に限って、Frobenius の性質を使わずに証明する。
 
 ## 方針

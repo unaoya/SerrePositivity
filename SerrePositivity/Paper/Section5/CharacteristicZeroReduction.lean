@@ -8,7 +8,7 @@ public import SerrePositivity.IntersectionMultiplicity.EqualCharZeroPositivity
 （`IntersectionMultiplicity/EqualCharZeroPositivity.lean`）。
 完備化、標数零の係数体と Cohen 同型、素イデアル商へのデヴィサージュ、
 冪級数環での対角線の商の Koszul 重複度による。
-Serre の等標数正値性の引用（`Inputs.serrePositivity_of_field`）は使わない。
+Serre の等標数正値性の一般形の引用（旧 `Inputs.serrePositivity_of_field`、削除済み）は使わない。
 デヴィサージュは交点重複度の消滅定理の引用に依存する。
 -/
 
