@@ -372,3 +372,23 @@ HEAD からの差分全体が自分の変更だけであることも確認する
 - U15e9 のコミット：`83b0a72a`（自分の3ファイルのみと直後に確認）。
 - 残部：この Hom 計算を tria の対象および Verdier 分母の比較へ延長し、実際の
   `quotientVerdierComparison` の完全忠実性を証明すること。U17b の完備化比較も未完。
+
+### U15e11：長さ部分複体の全次数作用
+
+- `Quotient/DerivedComparisonFiltrationAction.lean`：固定した word 部分集合の直和への
+  先頭 Hom 作用を構成。その包含・射影と作用の可換性を、各 path の包含で検証した。
+  cutoff も作用と可換になるので、元の Hom の任意の斉次次数について、内部作用と
+  最終微分についての作用が長さ部分加群を保つことを証明した。
+- `Quotient/DerivedComparisonLengthAction.lean`：双次数の作用を部分加群へ制限し、
+  最終微分の Leibniz 則で非有界 tensor から `lengthComplex` への実際の chain map
+  `lengthPrepend` を構成。包含との整合式 `lengthPrepend_inclusion` と、
+  長さを増やす写像との整合式 `lengthPrepend_map` を証明した。
+- ここまでの構成は underived であり、K-flat 仮定は不要。右 dg 加群の構成に必要な
+  全次数の作用を供給するが、まだ豊穣関手の単位・合成法則を備えた加群構成ではない。
+  その加群構成と、正の層が S の代表加群から生成されることを介して、比較の完全忠実性へ進む。
+- 対象ビルド：`Checks.QuotientFiltrationAction`（1879 jobs）および
+  `Checks.QuotientLengthAction`（1880 jobs）を完全なモジュール名で指定して成功。
+  主要12宣言の公理監査は標準3公理のみ。project import 依存95・96ファイルに
+  禁止された dg 圏分解系への依存なし。新規 sorry・axiom・引用なし。
+- U15e10 のコミット：`680c2331`（自分の5ファイルのみと直後に確認）。
+  U15e の完全忠実性と U17b 全体は引き続き未完。
