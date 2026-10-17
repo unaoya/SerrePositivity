@@ -1182,18 +1182,12 @@ n=2 では Q は一点、既知部分は合成を表す {1} で、同じ議論�
 [Kerodon 2.4.5.9–2.4.5.10](https://kerodon.net/tag/00LT) の方法を用いる。
 Mathlib の `Quasicategory` が求める n+2 次元の全内部ホーンをこの方法で充填する。
 
-現在地：path の内部点座標の全単射・包含の比較・切断点での合成分解と、
-空洞柱の anodyne 性・Kan 複体への延長と、path の Hom 単体集合から内部点の冪集合の nerve への
-同型 `pathInteriorNerveIso` を証明済み。さらに一座標分離 `cubeSplitIso`、空洞立方体の所属判定、
-包含の anodyne 性、path の Hom 上の `pathHollow_extension` まで証明済み。
-さらにホーンの全単体から共通の対象族・Hom 写像を回収し、
-任意の単体的制限との整合性 `hornHomOnCell_naturality` を証明済み。
-既知面を退化で引き戻す `hornHomViaFace` と、その面への制限が元の Hom 写像に等しい
-`hornHomViaFace_on_face` も証明済み。
-Path の面写像は単射で、像は除外頂点を避ける列の部分単体集合 `pathAvoids` に等しい。
-その同型 `pathFaceIso` を用い、零座標面上の実際の写像 `hornZeroFaceHom` と
-候補の制限の一致 `hornHomViaFace_restrict` まで証明済み。
-明示的な公開 78 宣言を公理監査済み。
-残工程：ホーンの面から Hom データを回収して空洞部分上へ貼り、
-延長から豊穣関手を復元して `Quasicategory` を証明する。γ1 全体は未完了。
+現在地：Path の内部点座標の Hom 単体集合の同型、一座標分離、空洞部分の所属条件と
+anodyne 性、`pathHollow_extension` を証明済み。ホーンから共通の対象・Hom を回収し、
+全単体的制限との整合性を証明した。Path の零座標面は実際の面写像の像と同型で、
+`hornZeroFaceHom` と候補の制限の一致を証明済み。共通単体の回収は既知面の選択によらず、
+`hornRestriction_independent` と `hornCellHom_independent` で比較できる。
+明示的な公開 87 宣言を公理監査済み。
+残工程：この共通単体の比較を零座標面の全ての重なりへ適用し、合成面を構成して整合性を証明する。
+続いて空洞部分への貼合せ、延長から豊穣関手の復元、`Quasicategory` を証明する。γ1 全体は未完了。
 各段の実施記録はコミットメッセージへ置き、計画本文には現在地と残工程を短く残す。

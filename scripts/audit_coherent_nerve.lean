@@ -17,6 +17,7 @@ set_option pp.explicit true
 
 
 
+
 #print axioms SerrePositivity.InfinityCategories.Coherent.cube
 #check @SerrePositivity.InfinityCategories.Coherent.cube
 
@@ -127,6 +128,33 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.Coherent.hollowCylinder_extension
 #check @SerrePositivity.InfinityCategories.Coherent.hollowCylinder_extension
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornCell
+#check @SerrePositivity.InfinityCategories.Coherent.hornCell
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornCell_eq
+#check @SerrePositivity.InfinityCategories.Coherent.hornCell_eq
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornCell_map
+#check @SerrePositivity.InfinityCategories.Coherent.hornCell_map
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornCell_from_face
+#check @SerrePositivity.InfinityCategories.Coherent.hornCell_from_face
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornRestriction_from_face
+#check @SerrePositivity.InfinityCategories.Coherent.hornRestriction_from_face
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornRestriction_independent
+#check @SerrePositivity.InfinityCategories.Coherent.hornRestriction_independent
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornCellHom
+#check @SerrePositivity.InfinityCategories.Coherent.hornCellHom
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornCellHom_independent
+#check @SerrePositivity.InfinityCategories.Coherent.hornCellHom_independent
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornCellHom_from_face_heq
+#check @SerrePositivity.InfinityCategories.Coherent.hornCellHom_from_face_heq
 
 #print axioms SerrePositivity.InfinityCategories.Coherent.hornVertex
 #check @SerrePositivity.InfinityCategories.Coherent.hornVertex
