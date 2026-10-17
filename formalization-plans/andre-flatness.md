@@ -3580,3 +3580,85 @@ p 剰余の忠実性の接続、従ってこの具体的候補の p 完全忠実
 自然基底射・ϖ 商比較・係数代数同型・自然剰余の自由性と忠実平坦性・ϖ 正則性・
 ϖ 完全忠実平坦性・p 完全平坦性の公開型 8 本を `#check` で確認した
 （終了コード 0）。
+
+
+### E1.56：具体的候補の p 完全忠実平坦性・実根・実完備化 prism（検証済み）
+
+新規 `Andre/FaithfullyFlatNilpotentSquare.lean` は一般の可換環の可換四角形
+R→S、B→C、qR:R→B、qS:S→C について、R→S が平坦、B→C が忠実平坦、
+qR が全射で核の各元が冪零なら R→S は忠実平坦と証明する。
+全ての素イデアルが qR の核を含むので B の素スペクトルから持ち上がり、
+B→C のスペクトル全射性を可換性で R→S へ戻す。
+qS の全射性や核の一様な冪零指数、Noether 性は不要。1 公開定理を追加した。
+
+新規 `Andre/CompletelyFaithfullyFlatPrincipalPower.lean` は a 完全忠実平坦な可換代数 S に
+対し、全ての正冪 aⁿ に関する完全忠実平坦性を証明する。
+既存の完全平坦性の冪保存から S/(aⁿ) の R/(aⁿ) 上の平坦性を得る。
+R/(aⁿ)→R/(a)、S/(aⁿ)→S/(a) の可換四角形では、左射の核の元を r=a z と表示すると
+その n 乗は零となる。上の一般補題で各冪剰余の忠実性を戻す。
+標準環商・剰余テンソル比較で完全忠実平坦性の定義へ接続した。
+
+公開定理 `completelyFaithfullyFlat_principal_power_algebra` の型は
+
+```lean
+{R : Type u} [CommRing R] (a : R) (S : Type u) [CommRing S] [Algebra R S]
+(hS : IsCompletelyFaithfullyFlat (Ideal.span {a}) S) (n : ℕ) (hn : 0 < n) :
+IsCompletelyFaithfullyFlat (Ideal.span {a ^ n}) S
+```
+
+である。主元の正則性・完備性・Noether 性は不要。
+各冪の通常環商の忠実平坦性も公開し、2 公開定理を追加した。
+
+新規 `Andre/PowerRootPrismMonicHodgeTateCompletelyFaithfullyFlat.lean` は E1.55 の同じ元の
+候補 T に一般正冪保存を適用し、(ϖ^p)=(p) で書き換えた。
+公開定理 `powerRootPrismMonicHodgeTate_prime_completelyFaithfullyFlat` は
+
+```lean
+(W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
+(hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal))
+(f : Polynomial A) (hf : f.Monic) (hdeg : 0 < f.natDegree) :
+let := pdCompletionCommRing L p dL
+let := powerRootPrismMonicHodgeTateAlgebra W hW f
+IsCompletelyFaithfullyFlat (Ideal.span {(p : A ⧸ W.ideal)}) T
+```
+
+を証明する。L,dL,H,T は E1.54–55 の元の raw 包・分母・実完備化・標準分母商。
+自然な基底射と作用を保持したまま、E1.55 に残っていた p 剰余の忠実性を解消した。
+prism 商の p 正則性はこの場合の明示仮定であり、一般の公開存在定理へ追加しない。
+1 公開定理を追加した。
+
+新規 `Andre/PowerRootPrismMonicHodgeTateRoot.lean` は同じ候補 T 内で、無限根変数 Y₀ の
+raw 射・実完備化単位・分母商による標準像を `powerRootPrismMonicHodgeTateRoot` と定義した。
+`powerRootPrismMonicHodgeTateRoot_eval` は
+
+```lean
+(f.map (Ideal.Quotient.mk W.ideal)).eval₂
+  (powerRootPrismMonicHodgeTateBaseMap W hW f)
+  (powerRootPrismMonicHodgeTateRoot W hW f) = 0
+```
+
+を証明する。raw 関係 dX=f(Y₀) を分母商へ移し、係数射の一致と評価の自然性を使う。
+名前付き入力 `powerRootMonicPDInput` は明示的に一度展開する。
+この根の計算にモニック性・正次数・prism 商の p 正則性は不要。2 公開宣言を追加した。
+
+新規 `Andre/PowerRootPrismMonicCompletionPrism.lean` は、同じ実完備化 H の既存の δ 構造と
+標準分母像 dH により `powerRootPrismMonicCompletionPrism` を構成した。
+分母の distinguished 性は無限根入力から raw 標準 δ 射と実完備化単位 δ 射で移す。
+E1.53 の dH 正則性と実完備化の p,dH 導来完備性を `OrientedPrism.ofDistinguished` へ渡す。
+前提は完全 prism W、prism 商の p 正則性 hpR、入力のモニック性 hf。正次数は不要。
+元の係数環 A→H の標準射も公開し、δ 構造および指定生成元を保つことを証明した。
+4 公開宣言を追加した。完全 prism であることや prismatic envelope の普遍性は主張しない。
+
+BS Rem 7.15（著者版 p.62）の p ねじれなしの場合について、同じ具体的候補に
+prism 構造、自然な分母商の p 完全忠実平坦性、元の入力多項式の実根をそろえた。
+原典とは異なる正則対・実反復完備化・冪零核での忠実性の経路を明記する。
+この経路で原典の prismatic envelope の普遍性と同定すること、元の f に関する
+Frobenius 引戻し pd 包同定、および最終完全 δ 化・perfectoid 商との接続は未完了。
+条件付きのこの場合を一般の目標の完成とは数えない。
+
+5 対象および集約の `set -o pipefail; lake build` は終了コード 0
+（集約 4512 jobs）。新規 10 公開宣言の `assert_no_sorry` と専用監査は
+終了コード 0。生成宣言を含む 5227 宣言の推移的公理依存は標準 3 公理のみ。
+冪零核四角形・正冪剰余の忠実平坦性・完全忠実平坦性の正冪保存、具体的候補の
+p 完全忠実平坦性・根の評価、実完備化 prism・標準係数射の δ 性・生成元公式の
+公開型 8 本を `#check` で確認した（終了コード 0）。

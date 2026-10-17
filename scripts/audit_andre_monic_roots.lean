@@ -1022,6 +1022,17 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTate_
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTate_varpi_completelyFaithfullyFlat
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTate_prime_completelyFlat
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.faithfullyFlat_of_flat_of_nilpotent_square
+assert_no_sorry SerrePositivity.BhattScholze.Andre.faithfullyFlat_power_algebraQuotient_of_completelyFaithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.completelyFaithfullyFlat_principal_power_algebra
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTate_prime_completelyFaithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTateRoot
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTateRoot_eval
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletionPrism
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletionBaseMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletionBaseMap_isDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletionBaseMap_generator
+
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
@@ -1192,7 +1203,12 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCompletionRegular,
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicHodgeTateBase,
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicHodgeTateVarpiFlat,
-    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicHodgeTateCompletelyFlat]
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicHodgeTateCompletelyFlat,
+    `SerrePositivity.BhattScholze.Andre.FaithfullyFlatNilpotentSquare,
+    `SerrePositivity.BhattScholze.Andre.CompletelyFaithfullyFlatPrincipalPower,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicHodgeTateCompletelyFaithfullyFlat,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicHodgeTateRoot,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCompletionPrism]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
