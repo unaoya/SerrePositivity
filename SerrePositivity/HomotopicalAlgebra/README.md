@@ -3420,3 +3420,14 @@ SSet.{v}値の実図式、制限した既存の合成選択空間との対象ご
 元の四辺を保持する円板を作る。左右の全四面体と全評価の厳密なT自然性を証明する。
 Kの変更に関する操作間の比較、全次数の互換な境界構成、小さい厳密なRMapへの接続は残る。
 受入検証は`check_normalized_comparison_coherence`（73宣言・2モジュール）。
+
+
+### 標的写像に沿う正規化操作の比較と全退化の区間固定（§393）
+
+`MonoRightLiftingRelativeHomotopy`は、同じ基底への射を指定mono上で固定して比較する。
+`CompatibleInputUnion.hom_ext`は大きい添字でも、和からの射を入力族で判定する。
+`NormalizedHornTargetComparison`は任意のKan標的写像K→Lに沿う二つの正規化充填操作を比較する。
+一つの全入力空間上の比較により、horn全体と全退化入力族を区間全体で固定する。
+任意のTへの制限と実評価はパラメータ変更に厳密に自然である。モデル構造は要求しない。
+標的写像の恒等・合成との高次整合性と、小さい厳密なRMapへの接続は残る。
+受入検証は`check_normalized_horn_target_comparison`（43宣言・3モジュール）。

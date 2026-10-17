@@ -22137,3 +22137,58 @@ K→K'に沿う操作間の比較、元の単位・合成の面を全次数で�
 小さい厳密なRMapと自然な弱比較、両変数の弱同値不変性・Kan性・π₀とHo(C)の自然比較への統合、
 resolution・置換の選択独立性と単体的モデル圏のMap(QX,RY)との比較も未完了である。
 F全体の受入条件を維持し、amend・rebase・resetは使用していない。
+
+
+## 393. 標的写像に沿う正規化操作の比較と、全退化族の区間固定（2026-10-17）
+
+実装コミット`32c6add8`。A0・A1全体という回答を確認した。両者は§166で完了済みであり、
+今回も最終入口の受入検証が成功した。継続中のFについて、§392で残したK→Lに沿う
+正規化操作間の比較を構成した。選択した操作のKに関する厳密な自然性を仮定していない。
+
+### 393.1 同じ基底への射の相対比較
+
+`MonoRightLiftingRelativeHomotopy.exists_vertical_homotopy`は、全モノ射に対する右持ち上げ性を
+持つp:E→Bについて、同じBへの射を持つf・g:Y→Eを、B上で定数の実ホモトピーで比較する。
+`exists_relative_vertical_homotopy`は、さらに指定mono i:X→Y上でfとgが一致すれば、
+X上で区間全体を定数に保つ比較を与える。E・BのKan性もモデル構造も要求しない。
+
+`CompatibleInputUnion.hom_ext`は、入力像の和からの射を元の入力族上で判定する。
+添字宇宙と単体的集合の値宇宙は独立のままである。
+
+### 393.2 一つの比較で全入力・全退化・全パラメータを扱う
+
+`NormalizedHornTargetComparison`は任意次元のhorn、KanなK・L、任意のq:K→Lについて、
+次の二つの操作の実ホモトピー`comparison`を構成する。
+
+- Kで正規化充填してからqで写す操作`sourceThenMap`。
+- hornをqで写してからLで正規化充填する操作`mapThenTarget`。
+
+二つの操作は同じhornへ制限され、すべての退化入力上で一致する。
+全退化入力像の和に393.1を適用することで、hornへの射影が区間全体で一定であり、
+すべての退化入力像上で比較全体が定数となることを証明する。
+各入力に独立した比較を選ぶのではなく、horn入力空間全体の上で一つの比較を選ぶ。
+
+任意のb:T→Map(horn,K)による制限`family`は、実際の二操作を端点に持つ。
+`family_horn`は元のhorn全体の固定、`family_degenerate`は任意の退化族上の区間固定を与える。
+`family_reindex`と`evaluation_reindex`により、比較の全区間と実評価が
+任意のj:U→Tによる制限と厳密に交換する。一般論はSSetのモデル構造を使用しない。
+
+### 393.3 検証と次の接続
+
+すべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`：3267 jobs。
+- `check_normalized_horn_target_comparison`：一般のpの相対比較、任意次元の標的比較、
+  実際の二操作を端点に持つ比較、horn固定、パラメータ自然性、実評価の自然性、
+  全退化族の区間固定。対象3モジュール全43宣言の標準公理監査。
+- `check_normalized_comparison_coherence`：73宣言・2モジュールの回帰検証。
+- `check_weak_equivalences_accessible`：A0・A1の最終入口、21宣言・5モジュール。
+- `audit_homotopical_foundations`：全14125宣言・997モジュール、標準公理のみ。
+- 新規ソースの行長・証明用マーカー、stage差分の空白検査。
+
+qごとの比較を、qの恒等・合成および高次の境界に整合させる工程は残る。
+今回のホモトピーをKに関する厳密な自然性としては扱わない。
+元の単位・合成の面を全次数で互換に組み立てる帰納、小さい厳密なRMapへの接続、
+自然な弱比較と両変数の弱同値不変性・Kan性・π₀の自然比較の統合も引き続き必要である。
+resolution・置換の選択独立性、単体的モデル圏のMap(QX,RY)との比較まで含めた
+F全体の受入条件を維持する。sorry・引用axiomは追加せず、amend・rebase・resetは使用していない。
