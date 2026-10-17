@@ -147,3 +147,32 @@ import する。監査対象は累計41宣言、すべて標準3公理の範囲�
 残課題：上記の全次数表示の下で、全 Hom 比較の homology map と実際の
 `kernelDerivedTensor` の射写像が一致することを証明し、擬同型性と全 shifted Hom の
 全単射性との同値を得る。その橋を十分性・必要性に接続する。最終 Morita 判定は未完。
+
+## 実際の主作用への次数零比較の接続
+
+全次数の導来 Hom 計算の単位は `c31e3573`（直後の stat は自分の5ファイルのみ）。
+`CriterionPerfYonedaAction.lean` は dg Yoneda の後の通常 tensor が対角との合成と
+等しいことを全 Hom 射で証明し、その右単位を閉零関手間の自然同型へ組み立てる。
+表現可能加群の射影性から得る相対 K-flat 性だけで、既存の導来増強の自然性を使用。
+`criterionPerfYonedaMainDerivedIso` は、指定主局所化の実際の
+`kernelDerivedTensor` を列の局所化と同定する自然同型である。
+`criterionPerfYonedaMainActionMap` はこの同型による射の移送であり、別の作用関手は
+作っていない。閉零射上の計算公式と全 Hom 比較の H⁰ の可換式を証明した。
+
+`CriterionPerfYonedaHomology.lean` は、表現可能加群間の閉零射が全て元の dg 圏の
+Yoneda 像であること、表現可能対象間の導来射にもそのような閉零代表が存在することを
+証明する。これにより `criterionPerfYonedaMainActionMap_homology_zero_all` は、
+代表を指定しない任意の導来射についての主作用と H⁰ 比較の可換式となる。
+`criterionPerfHomComparison_quasiIsoAt_zero_iff` は全 Hom 比較の `QuasiIsoAt 0` と
+実際の主作用の表現可能対象間の射写像の全単射性との同値。
+
+検証：`lake build SerrePositivity.DifferentialGraded.Morita.CriterionPerfYonedaChecks`
+成功（2810 jobs、警告なし）。新たな主要12宣言は全て標準3公理のみ。
+新規 sorry・axiom・引用なし。局所 Hom の K-flat 性、列そのものの射影性、一般右随伴を
+追加していない。他担当のファイル、共有ルート、正本は編集していない。
+
+残課題を維持する：次数零だけを全 Hom の条件の代用にせず、この可換式を全整数次数へ
+延ばす。具体的には、通常 tensor dg 関手の全 Hom 射を源の列の射影増強で前合成した
+比較について、源の shift と射影解像度の shift を結ぶ可換図式を証明する。その結果を
+`criterionPerfFullyFaithfulOfRepresentables` と同値証拠の必要性へ接続する。
+最終的な三条件 ⇔ Perf 同値はまだ主張しない。
