@@ -12,7 +12,7 @@
 | U16b：実際の随伴shift・三角性・Perf・U13/U14比較 | U16b.1–10で実装・合同ビルド・公理監査済み。主導来graph比較を含め担当範囲を受入済み |
 | 積dg圏上の擬同値 | 既存 `derivedBimoduleRestrictionEquivalence` の `localHomKFlat A C`・`localHomKFlat A D` を保持する。無条件化しない |
 | U16aグラフ作用との計算比較 | U16b.10でkernel変数の主局所化上の実際の作用との自然同型、随伴・単位・余単位・shift・三角性・Perfを検証済み |
-| U16d：Perf・係数変更・合成自然性 | U16d.1–13で主導来kernelの全射に自然なPerf作用と実際の恒等比較を構成。合成比較・その自然性を入力とするPerf制限、およびU12fの評価ごとの係数変更と全左因子射の自然性を検証済み。全体の残項目は末尾参照 |
+| U16d：Perf・係数変更・合成自然性 | U16d.1–14で主導来kernelの全射に自然なPerf作用と実際の恒等・合成比較を構成。合成のkernel射自然性だけを入力とする制限、およびU12fの評価ごとの係数変更と全左因子射の自然性を検証済み。全体の残項目は末尾参照 |
 | 中心作用 | 保留。今回の実装対象にしない |
 
 新規Leanファイルは `Morita/QuasiEquivalence*`・`Perfect*`・`ScalarExtension*` のみ。
@@ -291,6 +291,19 @@
 - この左因子自然性をkernel全体の作用の自然性と同一視する主張は含めていない。
   kernel作用評価の比較同型のkernel射に関する自然性、および出力dg加群の係数変更との交換は残る。
 
+## U16d.14：実際の主導来kernel合成比較のPerf制限
+
+- U16a6の公開記録と `Morita/CoherenceComposition.lean` を確認し、
+  実装・検証済みの `kernelCompositionIso` をU16d.12の比較入力へ適用した。
+- `Morita/PerfectDerivedKernelComposition.lean`：各列がperfectな二つのkernelについて、
+  実際の主導来合成kernelの各列のperfect性と、実際のPerf作用の合成比較を構成した。
+  比較同型eCompを外部から受け取る仮定は不要になった。localHomKFlatは始域Dだけを保持する。
+- 包含後の比較射は公開済みの実際の `kernelCompositionIso` の射と一致する。
+  kernel射に対する自然性はU16a側でも未完のため、その自然性図式hNatだけを明示して受け取り、
+  実際のPerf合成比較の自然性へ移す。hNatや代表選択のcoherenceの無条件性は主張しない。
+- `Morita.PerfectDerivedKernelCompositionChecks` ビルド成功（2754 jobs、警告なし）。
+  主要4宣言の公理監査は標準3公理のみ。U16a担当ファイルは読み取り専用で利用した。
+
 ## 合同検証と公開入口（2026-10-17）
 
 - 新規10監査対象・公開入口・既存 `Checks.DGFunctorDerivedEquivalence` の12対象を
@@ -341,8 +354,9 @@
 U16bの担当範囲は受入済み。U16d全体は未受入で、次の接続を残す。
 
 1. 主導来kernelの列のperfect性とPerf保存の同値、全導来kernel射に自然な制限はU16d.11で完成した。
-   実際の恒等作用の制限もU16d.12で完成した。合成比較とその自然性は明示した入力の下で制限した。
-   U16aの実際の合成比較・自然性の公開後、その入力を埋め、恒等・合成のcoherenceを同じ制限で移す。
+   実際の恒等作用の制限はU16d.12、実際の合成比較の制限はU16d.14で完成した。
+   kernel射の自然性hNatは入力として保持する。U16aの自然性の公開後、その入力を埋め、
+   恒等・合成のcoherenceを同じ制限で移す。
    合成に必要な始域dg圏のlocalHomKFlat条件は保持する。
 2. 通常kernelの係数変更を全Hom作用込みで定義し、U12fの終域tensorを
    係数変更した実際のkernel作用の評価へ同定した（U16d.9–10）。
@@ -354,6 +368,7 @@ U16bの担当範囲は受入済み。U16d全体は未受入で、次の接続を
    これを出力dg加群の導来係数変更の評価と同一視する定理・仮定は別途必要であり、無条件には主張しない。
 3. 中心作用は保留。今回の残項目の完了条件には入れない。
 
-直近のU16a担当記録ではKernelDerivedFunctorとCoherenceIdentityまで実装・検証済み。
-主局所化上のkernel作用と恒等比較を再利用した。一般右随伴・合成比較と作用coherenceは未完である。
+直近のU16a担当記録ではCoherenceCompositionまで実装・検証済み。
+主局所化上のkernel作用・恒等比較・合成比較を再利用した。
+一般右随伴、kernel射の合成自然性、代表選択および恒等・結合coherenceは未完である。
 その未実装宣言をimport可能な定理として扱わず、不足する射・同型をsorry・axiomで置かない。
