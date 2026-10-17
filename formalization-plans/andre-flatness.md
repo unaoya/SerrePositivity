@@ -4180,3 +4180,120 @@ A 上の φ_A 引戻し全体との同定、Np の自然な作用の根変数上
 （集約 4536 jobs）。新規 17 公開宣言の `assert_no_sorry` と専用監査は
 終了コード 0。生成宣言を含む 5947 宣言の推移的公理依存は標準 3 公理のみ。
 新規 17 公開宣言の正確な型を `#check` で確認した（終了コード 0）。
+
+
+### E1.63 実 Frobenius テンソルの自然な根変数作用と実 pd 普遍性（2026-10-17）
+
+E1.62 と同じ完全 prism W : OrientedPrism p A、hW、f : Polynomial A を固定する。
+P、L、jL、H、uL、dP、ϖ 持上げ xP は既存の無限根モニック raw 候補のもの。
+R=A/W.ideal、Rv=R/ϖ、Rp=R/p、e : Rv ≃+* Rp は指定係数 Frobenius 同型、
+T=H/(uL(jL dP))、φ : R →+* T は自然な基底射、Mv=T/(Ideal.map φ (ϖ)) とする。
+Np=PowerRootPolynomial Rp p hp、zp=powerRootPolynomialBaseMap Rp p hp (f.map bp)、
+Dp=PrincipalDPPresentation Np zp とし、bp : A →+* Rp は標準二段商射。
+Ft=Rp ⊗[Rv] Mv には e.toRingHom.toAlgebra と元の自然な Mv 作用を使う。
+以下の実対象の公開型では H の `pdCompletionCommRing` と必要な代数作用を let で明示する。
+
+新規 `Andre/PowerRootPrismMonicFrobeniusRootAction.lean` に 4 公開宣言を追加した。
+`powerRootPrismMonicVarpiInputMap` は元の P から Mv への自然な射 ψ を
+raw 射・実完備化単位・生成元商・自然な ϖ 商の合成として定義する。
+`powerRootPrismMonicVarpiFrobeniusResidueEquiv_variable` は E1.62 の半線形比較 U に対し
+
+```lean
+U (ψ (powerRootPolynomialVariable A p hp n)) =
+  algebraMap Np Dp (powerRootPolynomialVariable Rp p hp n) ^ p
+```
+
+を証明した。同 `_variable_succ` は元の第 n+1 根変数の像を
+比較先の第 n 根変数の係数像へ送ることを示す。
+`powerRootPrismMonicVarpiFrobeniusBaseChangeAlgEquiv_variable` は実テンソル比較 E に対し
+
+```lean
+E ((1 : Rp) ⊗ₜ[Rv] ψ (powerRootPolynomialVariable A p hp (n + 1))) =
+  algebraMap Np Dp (powerRootPolynomialVariable Rp p hp n)
+```
+
+を証明する。実比較の全係数公式と変数 Frobenius・隣接根関係、単純テンソル公式を使う。
+いずれも W/hW/f に加えて hf : f.Monic のみを仮定し、p 正則性や正次数は不要。
+
+新規 `Andre/PrincipalPDSourceTransport.lean` に 8 公開宣言を追加した。
+任意の可換環 A、y : A、A 代数 B、eB : B ≃ₐ[A] PrincipalDPPresentation A y に対し、
+`principalPDSourceIdeal` は標準正次数イデアルを eB⁻¹ で写した B のイデアルを定義する。
+`principalPDSourceDividedPowers` は比較先の実分冪構造をこのイデアルへ戻す。
+入力元の所属、順逆両方の分冪射性、入力元の全分冪の値を証明し、
+`existsUnique_principalPDSourceMorphism` は比較先の標準値の公式を前提として
+B から任意宇宙の分冪標的への A 代数分冪射の一意存在を与える。
+`principalPDSourcePolynomialEvaluation` は係数環 K の作用の可換性と入力変数の像を
+明示引数にし、同型の源における通常多項式の評価を比較先で計算する。
+この一般層の係数可換性は具体的適用で全て証明しており、未証明の仮定には残さない。
+
+新規 `Andre/PowerRootPrismMonicFrobeniusTensorAlgebra.lean` に 6 公開宣言を追加した。
+`powerRootPrismMonicFrobeniusTensorInputAlgebra` は E⁻¹ と Np の標準係数射の合成から
+Ft の Np 代数構造を定める。この作用について次の自然な像を証明した。
+
+```lean
+algebraMap Np Ft (algebraMap Rp Np r) = algebraMap Rp Ft r
+algebraMap Np Ft (powerRootPolynomialVariable Rp p hp n) =
+  (1 : Rp) ⊗ₜ[Rv] ψ (powerRootPolynomialVariable A p hp (n + 1))
+```
+
+公開名はそれぞれ
+`powerRootPrismMonicFrobeniusTensorInputAlgebra_coeff` と同 `_variable`。
+`powerRootPrismMonicFrobeniusTensorInputAlgEquiv` は E と同じ環同型を Np 代数同型へ強める。
+`powerRootPrismMonicFrobeniusTensorInputScalarTower` は元の Rp 作用と Np 作用の塔を与える。
+同 `_InputAlgebra_polynomial` は任意の g : Polynomial Rp に対し
+
+```lean
+algebraMap Np Ft (powerRootPolynomialBaseMap Rp p hp g) =
+  g.eval₂ (algebraMap Rp Ft)
+    ((1 : Rp) ⊗ₜ[Rv] ψ (powerRootPolynomialVariable A p hp 1))
+```
+
+を証明した。従って元の f の mod p 入力の像も、元の第一根変数の像とのテンソルにおける
+通常評価そのものである。作用を移送しただけで自然性を未確認のままにはしていない。
+これらの自然な作用の結果は hf のみを前提とし、p 正則性・正次数を仮定しない。
+
+新規 `Andre/PowerRootPrismMonicFrobeniusTensorPD.lean` に 6 公開宣言を追加した。
+E_N : Ft ≃ₐ[Np] Dp を上記の自然な入力環上の比較とし、
+J=(principalDPPositiveIdeal zp).map E_N.symm.toRingHom とする。
+`powerRootPrismMonicFrobeniusTensorPDIdeal` は同じ Ft のこのイデアル J を固定する。
+入力像 algebraMap Np Ft zp の J への所属は hf のみの下で証明した。
+
+`powerRootPrismMonicFrobeniusTensorDividedPowers` は hf と
+`hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal)` の下で
+`DividedPowers J` を構成する。
+`powerRootPrismMonicFrobeniusTensorInputAlgEquiv_isDPMorphism` は E_N の実分冪射性を証明する。
+`powerRootPrismMonicFrobeniusTensorDividedPowers_input_apply` は全 n : ℕ について
+
+```lean
+(powerRootPrismMonicFrobeniusTensorDividedPowers W hW f hf hpR).dpow n
+  (algebraMap Np Ft zp) = E_N.symm (principalDPGenerator zp n)
+```
+
+を証明する。正次数や非零性の仮定は加えない。
+
+`existsUnique_powerRootPrismMonicFrobeniusTensorPDMorphism` の引数は
+W、hW、f、hf、hpR、任意宇宙の可換環 B と Algebra Np B、I : Ideal B、
+Ht : DividedPowers I、hzB : algebraMap Np B zp ∈ I。
+正確な結論は必要な既存の環構造・三つの代数作用を let で導入した後の
+
+```lean
+∃! F : Ft →ₐ[Np] B,
+  (powerRootPrismMonicFrobeniusTensorDividedPowers W hW f hf hpR).IsDPMorphism
+    Ht F.toRingHom
+```
+
+である。標的のねじれ・完備性・非零性には条件を課さない。
+これにより、自然な根変数作用を持つ実テンソルそのものが、元の mod p 入力の pd 包の
+普遍性を持つことまで進めた。BS Rem 7.15(1)（著者版 p.62）に対する原典とは異なる
+Witt 座標・半線形環同型・通常テンソル・実分冪構造の移送を用いる経路である。
+
+E1.62 で残していた自然な無限根作用と実テンソル上の pd 構造・普遍性の接続は本工程で解消した。
+A 上の φ_A 引戻し全体との同定、原典の R/ϖ 表記との最終照合、prism 商の p 正則性仮定の解消、
+絶対 prismatic envelope の同定は引き続き未完了。条件付きの実 pd 普遍性だけで全体の完成と数えない。
+承認済み hdeg を持つ任意族存在定理の型は変更していない。
+
+検証：新規 4 ファイルの対象ビルドと集約ビルドは終了コード 0
+（最終保存版 4540 jobs）。新規 24 公開宣言の `assert_no_sorry` と専用監査は
+終了コード 0。生成宣言を含む 6229 宣言の推移的公理依存は標準 3 公理のみ。
+新規 24 公開宣言の正確な型を `#check` で確認した（終了コード 0）。
+原典とは異なる経路を docstring にも明記した。
