@@ -1423,3 +1423,428 @@ instance sliceUnder_quasicategory {K X : SSet.{u}} [Quasicategory X] (p : K ⟶ 
 
 Core の対象ビルド・公理監査は終了コード 0。累計 216 件が標準三公理のみ
 （公理なしも含む）。A2d は完了。A2e〜A2i は未完了。引き続き終対象の充填条件へ進む。
+
+### A2e 完了（2026-10-18）：終対象・始対象と trivial Kan fibration
+
+`Terminal.lean` の `IsTerminalVertex` は、n≥1 の境界の最後の頂点が x であるとき
+境界全体が延長できる条件（HTT Definition 1.2.12.3）。`IsInitialVertex` は最初の頂点を固定する双対。
+`boundaryVertex` は実際の標準単体の指定頂点から境界への包含であり、
+`boundaryVertex_ι` がその意味を明示する。条件の差し替えや未証明の仮定束は使っていない。
+
+`trivialKanFibrations := (monomorphisms SSet).rlp` と型クラス `TrivialKanFibration` を定義した。
+全境界包含の rlp との同値は単射の境界セル分解を使う。モデル構造は使わない。
+`isTerminalVertex_iff_trivialKanFibration` と `isInitialVertex_iff_trivialKanFibration` は
+任意の単体集合 X に対し、それぞれ slice/coslice 射影の trivial Kan fibration 性との同値を与える。
+この同値には quasicategory の仮定は不要。
+
+`TerminalUniqueness.lean` と `InitialUniqueness.lean` では、射影の持ち上げ性から辺と片側逆射を作った。
+二回の片側逆射の二単体を用いて、`[Quasicategory X]` の下で `terminalVertexIso`・`initialVertexIso` が
+Mathlib のホモトピー圏 `hoFunctor.obj X` での同型を与える。
+`JoinBoundary.lean`・`SliceExtension.lean` は、境界の join の同型と持ち上げ問題の往復の補助。
+
+追加公開宣言 53 件と型クラスの構成子・射影 2 件、計 55 件の正確な型を以下に記録する。
+宇宙 `u` は任意。namespace は各コードブロックに示す。
+`open CategoryTheory Limits SSet MorphismProperty SSet.Truncated SimplicialObject.Truncated`、
+`open scoped Simplicial` の下の型であり、`Edge` は `SSet.Truncated.Edge` を指す。
+
+JoinBoundary.lean、namespace `SerrePositivity.InfinityCategories.Join`：
+
+```lean
+lemma missing_concat_boundary_iff {p q r : ℕ} (ℓ : ℕ) (hℓ : ℓ ≤ r)
+    (f : Fin ℓ →o Fin p) (g : Fin (r - ℓ) →o Fin q) :
+    (∃ v : Fin (p + q), v ∉ Set.range (concat ℓ hℓ f g)) ↔
+      (∃ v : Fin p, v ∉ Set.range f) ∨ (∃ v : Fin q, v ∉ Set.range g)
+```
+
+JoinBoundary.lean、namespace `SerrePositivity.InfinityCategories.Join`：
+
+```lean
+lemma missing_cast_boundary_iff {p q r : ℕ} (h : p = q) (f : Fin r → Fin p) :
+    (∃ v : Fin q, v ∉ Set.range (fun a ↦ Fin.cast h (f a))) ↔
+      ∃ v : Fin p, v ∉ Set.range f
+```
+
+JoinBoundary.lean、namespace `SerrePositivity.InfinityCategories.Join`：
+
+```lean
+lemma boundary_boundary_preimage (p q : ℕ) :
+    (boundary (p + q + 1)).preimage (joinStdSimplexIso.{u} p q).hom =
+      joinUnion (boundary p) (boundary q)
+```
+
+JoinBoundary.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+def boundaryJoinIso (p q : ℕ) :
+    (joinUnion (boundary p) (boundary q) : SSet.{u}) ≅ (boundary (p + q + 1) : SSet.{u})
+```
+
+JoinBoundary.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma boundaryJoinIso_hom_ι (p q : ℕ) :
+    (boundaryJoinIso p q).hom ≫ (boundary (p + q + 1)).ι =
+      (joinUnion (boundary p) (boundary q)).ι ≫ (joinStdSimplexIso.{u} p q).hom
+```
+
+JoinBoundary.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma joinStdSimplexIso_inr_vertex (n : ℕ) :
+    joinInr (Δ[n] : SSet.{u}) Δ[0] ≫ (joinStdSimplexIso n 0).hom =
+      SSet.yonedaEquiv.symm (stdSimplex.obj₀Equiv.symm (Fin.last (n + 1)))
+```
+
+JoinBoundary.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma vertex_mem_boundary (n : ℕ) (i : Fin (n + 2)) :
+    stdSimplex.obj₀Equiv.symm i ∈ (boundary.{u} (n + 1)).obj (Opposite.op ⦋0⦌)
+```
+
+JoinBoundary.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+def boundaryVertex (n : ℕ) (i : Fin (n + 2)) : (Δ[0] : SSet.{u}) ⟶ (boundary (n + 1) : SSet.{u})
+```
+
+JoinBoundary.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma boundaryVertex_ι (n : ℕ) (i : Fin (n + 2)) :
+    boundaryVertex n i ≫ (boundary (n + 1)).ι =
+      SSet.yonedaEquiv.symm (stdSimplex.obj₀Equiv.symm i)
+```
+
+JoinBoundary.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma boundaryJoinIso_inr_vertex (n : ℕ) :
+    joinInr (boundary n : SSet.{u}) Δ[0] ≫ joinUnionLeft (boundary n) (boundary 0) ≫
+      (boundaryJoinIso n 0).hom = boundaryVertex n (Fin.last (n + 1))
+```
+
+JoinBoundary.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma joinStdSimplexIso_inl_vertex (n : ℕ) :
+    joinInl (Δ[0] : SSet.{u}) Δ[n] ≫ (joinStdSimplexIso 0 n).hom =
+      SSet.yonedaEquiv.symm (stdSimplex.obj₀Equiv.symm (0 : Fin (0 + n + 1 + 1)))
+```
+
+JoinBoundary.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma boundaryJoinIso_inl_vertex (n : ℕ) :
+    joinInl (Δ[0] : SSet.{u}) (boundary n : SSet.{u}) ≫
+      joinUnionRight (boundary 0) (boundary n) ≫ (boundaryJoinIso 0 n).hom =
+        boundaryVertex (0 + n) 0
+```
+
+SliceExtension.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+def SliceOverExtensionProperty {A K X : SSet.{u}} (A₀ : A.Subcomplex) (p : K ⟶ X) : Prop
+```
+
+SliceExtension.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma sliceOverExtensionProperty_of_lifting {A K X : SSet.{u}}
+    (A₀ : A.Subcomplex) (p : K ⟶ X) (h : HasLiftingProperty A₀.ι (sliceOverProjection p)) :
+    SliceOverExtensionProperty A₀ p
+```
+
+SliceExtension.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma sliceOverProjection_lifting_of_extension {A K X : SSet.{u}}
+    (A₀ : A.Subcomplex) (p : K ⟶ X) (h : SliceOverExtensionProperty A₀ p) :
+    HasLiftingProperty A₀.ι (sliceOverProjection p)
+```
+
+SliceExtension.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+def SliceUnderExtensionProperty {A K X : SSet.{u}} (A₀ : A.Subcomplex) (p : K ⟶ X) : Prop
+```
+
+SliceExtension.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma sliceUnderExtensionProperty_of_lifting {A K X : SSet.{u}}
+    (A₀ : A.Subcomplex) (p : K ⟶ X) (h : HasLiftingProperty A₀.ι (sliceUnderProjection p)) :
+    SliceUnderExtensionProperty A₀ p
+```
+
+SliceExtension.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma sliceUnderProjection_lifting_of_extension {A K X : SSet.{u}}
+    (A₀ : A.Subcomplex) (p : K ⟶ X) (h : SliceUnderExtensionProperty A₀ p) :
+    HasLiftingProperty A₀.ι (sliceUnderProjection p)
+```
+
+Terminal.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+def trivialKanFibrations : MorphismProperty SSet.{u}
+```
+
+Terminal.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+class TrivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y) : Prop where
+  mem : trivialKanFibrations p
+```
+
+Terminal.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma trivialKanFibration_iff_boundary {X Y : SSet.{u}} (p : X ⟶ Y) :
+    TrivialKanFibration p ↔ ∀ n : ℕ, HasLiftingProperty (boundary n).ι p
+```
+
+Terminal.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+instance trivialKanFibration_rightFibration {X Y : SSet.{u}} (p : X ⟶ Y)
+    [TrivialKanFibration p] : RightFibration p
+```
+
+Terminal.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+instance trivialKanFibration_leftFibration {X Y : SSet.{u}} (p : X ⟶ Y)
+    [TrivialKanFibration p] : LeftFibration p
+```
+
+Terminal.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+def IsTerminalVertex {X : SSet.{u}} (x : X _⦋0⦌) : Prop
+```
+
+Terminal.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma isTerminalVertex_iff_sliceOverExtension {X : SSet.{u}} (x : X _⦋0⦌) :
+    IsTerminalVertex x ↔ ∀ n : ℕ,
+      SliceOverExtensionProperty (boundary n) (SSet.yonedaEquiv.symm x)
+```
+
+Terminal.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma isTerminalVertex_iff_trivialKanFibration {X : SSet.{u}} (x : X _⦋0⦌) :
+    IsTerminalVertex x ↔ TrivialKanFibration (sliceOverProjection (SSet.yonedaEquiv.symm x))
+```
+
+Terminal.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+def IsInitialVertex {X : SSet.{u}} (x : X _⦋0⦌) : Prop
+```
+
+Terminal.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma isInitialVertex_iff_sliceUnderExtension {X : SSet.{u}} (x : X _⦋0⦌) :
+    IsInitialVertex x ↔ ∀ n : ℕ,
+      SliceUnderExtensionProperty (boundary n) (SSet.yonedaEquiv.symm x)
+```
+
+Terminal.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma isInitialVertex_iff_trivialKanFibration {X : SSet.{u}} (x : X _⦋0⦌) :
+    IsInitialVertex x ↔ TrivialKanFibration (sliceUnderProjection (SSet.yonedaEquiv.symm x))
+```
+
+TerminalUniqueness.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma joinStdSimplexIso_zero_inl :
+    joinInl (Δ[0] : SSet.{u}) Δ[0] ≫ (joinStdSimplexIso 0 0).hom = stdSimplex.δ 1
+```
+
+TerminalUniqueness.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma joinStdSimplexIso_zero_inr :
+    joinInr (Δ[0] : SSet.{u}) Δ[0] ≫ (joinStdSimplexIso 0 0).hom = stdSimplex.δ 0
+```
+
+TerminalUniqueness.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma joinStdSimplexIso_one_inl :
+    joinInl (Δ[1] : SSet.{u}) Δ[0] ≫ (joinStdSimplexIso 1 0).hom = stdSimplex.δ 2
+```
+
+TerminalUniqueness.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma joinStdSimplexIso_one_vertex (i : Fin 2) :
+    joinMap (stdSimplex.δ i) (𝟙 (Δ[0] : SSet.{u})) ≫ (joinStdSimplexIso 1 0).hom =
+      (joinStdSimplexIso 0 0).hom ≫ stdSimplex.δ i.castSucc
+```
+
+TerminalUniqueness.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+def sliceOverVertexEdge {X : SSet.{u}} (x : X _⦋0⦌)
+    (σ : (sliceOver (SSet.yonedaEquiv.symm x)) _⦋0⦌) :
+    Edge (X
+```
+
+TerminalUniqueness.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma IsTerminalVertex.nonempty_edge {X : SSet.{u}} {x : X _⦋0⦌}
+    (hx : IsTerminalVertex x) (y : X _⦋0⦌) :
+    Nonempty (Edge (X
+```
+
+TerminalUniqueness.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma sliceOverCurry_yoneda {K X : SSet.{u}} {p : K ⟶ X} (n : ℕ)
+    (σ : (sliceOver p) _⦋n⦌) :
+    sliceOverCurry σ.val σ.property = SSet.yonedaEquiv.symm σ
+```
+
+TerminalUniqueness.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma sliceOverUncurry_yoneda {K X : SSet.{u}} {p : K ⟶ X} (n : ℕ)
+    (σ : (sliceOver p) _⦋n⦌) :
+    sliceOverUncurry (SSet.yonedaEquiv.symm σ) = σ.val
+```
+
+TerminalUniqueness.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+def sliceIdentityCone {X : SSet.{u}} (x : X _⦋0⦌) :
+    (sliceOver (SSet.yonedaEquiv.symm x)) _⦋0⦌
+```
+
+TerminalUniqueness.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma sliceIdentityCone_projection {X : SSet.{u}} (x : X _⦋0⦌) :
+    (sliceOverProjection (SSet.yonedaEquiv.symm x)).app (Opposite.op ⦋0⦌)
+      (sliceIdentityCone x) = x
+```
+
+TerminalUniqueness.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma IsTerminalVertex.nonempty_split {X : SSet.{u}} {x y : X _⦋0⦌}
+    (hx : IsTerminalVertex x) (f : Edge (X
+```
+
+TerminalUniqueness.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+noncomputable def terminalVertexIso₂ {X : SSet.{u}} [Quasicategory X] {x y : X _⦋0⦌}
+    (hx : IsTerminalVertex x) (hy : IsTerminalVertex y) :
+    HomotopyCategory₂.mk (A
+```
+
+TerminalUniqueness.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+noncomputable def terminalVertexIso {X : SSet.{u}} [Quasicategory X] {x y : X _⦋0⦌}
+    (hx : IsTerminalVertex x) (hy : IsTerminalVertex y) :
+    (SSet.HomotopyCategory.mk x : hoFunctor.obj X) ≅ SSet.HomotopyCategory.mk y
+```
+
+InitialUniqueness.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma joinStdSimplexIso_one_inr :
+    joinInr (Δ[0] : SSet.{u}) Δ[1] ≫ (joinStdSimplexIso 0 1).hom = stdSimplex.δ 0
+```
+
+InitialUniqueness.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma joinStdSimplexIso_vertex_one (i : Fin 2) :
+    joinMap (𝟙 (Δ[0] : SSet.{u})) (stdSimplex.δ i) ≫ (joinStdSimplexIso 0 1).hom =
+      (joinStdSimplexIso 0 0).hom ≫ stdSimplex.δ i.succ
+```
+
+InitialUniqueness.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+def sliceUnderVertexEdge {X : SSet.{u}} (x : X _⦋0⦌)
+    (σ : (sliceUnder (SSet.yonedaEquiv.symm x)) _⦋0⦌) :
+    Edge (X
+```
+
+InitialUniqueness.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma IsInitialVertex.nonempty_edge {X : SSet.{u}} {x : X _⦋0⦌}
+    (hx : IsInitialVertex x) (y : X _⦋0⦌) :
+    Nonempty (Edge (X
+```
+
+InitialUniqueness.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma sliceUnderCurry_yoneda {K X : SSet.{u}} {p : K ⟶ X} (n : ℕ)
+    (σ : (sliceUnder p) _⦋n⦌) :
+    sliceUnderCurry σ.val σ.property = SSet.yonedaEquiv.symm σ
+```
+
+InitialUniqueness.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma sliceUnderUncurry_yoneda {K X : SSet.{u}} {p : K ⟶ X} (n : ℕ)
+    (σ : (sliceUnder p) _⦋n⦌) :
+    sliceUnderUncurry (SSet.yonedaEquiv.symm σ) = σ.val
+```
+
+InitialUniqueness.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+def cosliceIdentityCone {X : SSet.{u}} (x : X _⦋0⦌) :
+    (sliceUnder (SSet.yonedaEquiv.symm x)) _⦋0⦌
+```
+
+InitialUniqueness.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma cosliceIdentityCone_projection {X : SSet.{u}} (x : X _⦋0⦌) :
+    (sliceUnderProjection (SSet.yonedaEquiv.symm x)).app (Opposite.op ⦋0⦌)
+      (cosliceIdentityCone x) = x
+```
+
+InitialUniqueness.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+lemma IsInitialVertex.nonempty_split {X : SSet.{u}} {x y : X _⦋0⦌}
+    (hy : IsInitialVertex y) (f : Edge (X
+```
+
+InitialUniqueness.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+noncomputable def initialVertexIso₂ {X : SSet.{u}} [Quasicategory X] {x y : X _⦋0⦌}
+    (hx : IsInitialVertex x) (hy : IsInitialVertex y) :
+    HomotopyCategory₂.mk (A
+```
+
+InitialUniqueness.lean、namespace `SerrePositivity.InfinityCategories`：
+
+```lean
+noncomputable def initialVertexIso {X : SSet.{u}} [Quasicategory X] {x y : X _⦋0⦌}
+    (hx : IsInitialVertex x) (hy : IsInitialVertex y) :
+    (SSet.HomotopyCategory.mk x : hoFunctor.obj X) ≅ SSet.HomotopyCategory.mk y
+```
+
+Core の対象ビルド・公理監査はともに終了コード 0。累計 271 件は標準三公理のみ
+（公理なしも含む）。A2e は双対と hX での同型まで完了。A2f〜A2i は未完了。
+引き続き極限を slice の終対象として定義する。

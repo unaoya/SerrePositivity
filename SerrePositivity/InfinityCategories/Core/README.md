@@ -157,3 +157,16 @@ A2c まで完了、A2d〜A2i は未完了。Core 対象ビルドと累計 192 �
 `sliceOver_quasicategory`・`sliceUnder_quasicategory` が Mathlib の標的からの引き戻し補題で
 quasicategory 性を与える。A2d 完了、A2e〜A2i は未完了。
 Core 対象ビルドと累計 216 件の公理監査は成功。型・仮定は計画 §6 に記録した。
+
+### A2e 完了（2026-10-18）
+
+`IsTerminalVertex` は最後の頂点を固定した全正次元の境界の充填、
+`IsInitialVertex` は最初の頂点を固定する双対である。
+`isTerminalVertex_iff_trivialKanFibration` と `isInitialVertex_iff_trivialKanFibration` が
+slice/coslice 射影の trivial Kan fibration 性との同値を、任意の単体集合について与える。
+`trivialKanFibrations` は単射の rlp として定義した。モデル構造は使わない。
+`[Quasicategory X]` に対する `terminalVertexIso`・`initialVertexIso` は、
+それぞれ二つの終対象・始対象の `hoFunctor.obj X` での同型を与える。
+片側逆射を二回作り、二単体が与える合成関係から両側逆射に直す証明である。
+A2e 完了、A2f〜A2i は未完了。Core ビルドと累計 271 件の公理監査は成功。
+新規 55 件の正確な型・前提は計画 §6 に記録した。
