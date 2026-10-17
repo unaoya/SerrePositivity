@@ -10844,3 +10844,48 @@ U12eは未受入であり、U16a〜d、続くU15e分解版は未着手。目標�
 Quotient/DerivedComparison*・Verdier/を読んで再利用し、重複実装しない。
 共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・ScalarExtension*・並行作業の
 Tensor/Associator*と他チャットの記録を編集していない。
+
+### 17.232 U12e72：両端制限と対角比較の恒等・合成則（2026-10-17）
+
+**直接の両端制限。** Bimodule/PairedRestrictionCoherence.leanは、既存の左右制限の
+恒等比較・合成比較と、左右交換比較を組み合わせてpairedRestrictionIdIsoと
+pairedRestrictionCompIsoを構成した。合成比較で左右交換を省略していない。
+どちらも任意の閉零bimodule射に自然であり、値の複体へのhomが恒等となる計算式を公開する。
+六つの対象宇宙は独立で、左作用側のsmallness・HomのK-flat性・準同値性は不要。
+
+**通常の対角比較の法則。** Bimodule/DiagonalRestrictionCoherence.leanは
+前回の実際のdiagonalRestrictionMapについて恒等則と合成則を証明した。
+恒等関手の比較に恒等制限比較を続けると恒等射になり、Fの比較、FによるGの比較の制限、
+二段階制限の合成比較を続けるとF.comp Gの対角比較そのものになる。
+値で元のdg関手のHom写像へ計算し、dg関手合成の既存定義を使う。
+
+**全導来制限と対角比較。** Derived/PairedRestrictionCoherence.leanは上の二つの自然同型を
+pairedRestrictionDerivedIsoと既存の局所化前合成APIで持ち上げた。
+pairedRestrictionIdDerivedIsoとpairedRestrictionCompDerivedIsoは既存の
+actual derivedBimoduleRestrictionの恒等・合成比較であり、任意の導来対象で定義される。
+元のbimodule上の成分を回復する計算式も公開した。local Hom K-flat性や準同値性は不要。
+Derived/DiagonalRestrictionCoherence.leanのderivedDiagonalRestrictionMap_id・_compは、
+これらの比較を使う実際の導来対角比較射の恒等・合成則である。
+局所化表示同型の自然性と、通常の対角比較の法則から証明した。
+既存公開APIの名前・型は変更せず、16公開宣言を追加した。
+
+**検証。** Checks.DGDiagonalRestrictionCoherenceは六宇宙の任意の導来対象での
+両端制限の合成・恒等比較と、ZMod 2で任意のF・Gに対する導来対角比較の合成則を検査した。
+前回の対角保存・同時制限・左右制限・中間比較・解像度比較・導来同値・導来随伴・五角形・
+StageEight・StageSeven・Spectra.StageTwoとの統合ビルド成功（3519 jobs、警告なし）。
+16公開宣言の直接公理監査は重複・欠落なく標準3公理以内。新規監査累計4629宣言。
+今回の5 Leanファイルにsorry・admit・新規axiom・資源上限変更は0件。採用済み引用0件。
+固定版は前節と同じLean v4.35.0-rc4、Mathlib manifest/HEAD
+e6bbacd0e1b7307ff6e17da09cd2455f60804fa6で作業した。
+文書検査の再実行は21 Markdown・328 exposition参照、失敗0件。
+前節の担当外未解決参照は今回の実行では再現しなかった。担当外文書は編集していない。
+
+**残件と順序。** 対角比較自体の恒等・合成則は今回証明したが、
+導来合成の左右単位子・結合子と三圏同時制限比較との可換図式はなお必要である。
+その後、既存changeEquivalenceの合成保存・対角保存を自己・推移比較と照合し、
+外側左右・中間比較を組み合わせた恒等・合成則を仕上げて§15.2を監査する。
+U12eは未受入、U16a〜dとU15e分解版は未着手。全体の目標と順序を保持する。
+共有一般論への新しいAPI要求はない。U15e分解版では別担当の局所K-flat版の
+Quotient/DerivedComparison*・Verdier/を読んで再利用し、重複実装しない。
+共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・ScalarExtension*・並行作業の
+Tensor/Associator*と他チャットの記録を編集していない。
