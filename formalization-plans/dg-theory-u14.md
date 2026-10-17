@@ -246,6 +246,17 @@
 - `ChecksEnhancementComparison` と更新した `ChecksCompatibility` の対象ビルド成功。
   新規11主要宣言の公理は標準3公理のみ。U14公開入口へimport済み。
 
+## U14a.21：評価成分のshift・cone比較図式（2026-10-17）
+
+- `ShiftConeComparison.lean`：Hom(E,−)と再構成tensorの評価成分を複体値dg関手として定義。
+  前者が既存の共変representableと、後者が既存のbalanced rightTensorDGと一致することを証明。
+- 全Hom・各tensor成分のshift同型を構成。tensor側の同型は既存のbalanced tensorのshift同型と
+  同一であることを、全次数写像と斉次shift単位による成分計算で証明した。
+- 両関手の標準coneに対する複体同型を構成し、次数0および−1の両包含との可換図式を証明。
+  これは評価後の図式であり、Perf比較の三角性・導来係数変更の完成とはしていない。
+- `ChecksShiftConeComparison` と更新した `ChecksCompatibility` の対象ビルド成功。
+  新規11主要宣言の公理は標準3公理のみ。U14公開入口へimport済み。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
@@ -256,5 +267,5 @@
 - U14c：導来圏全体の比較にはcompact生成性が必要。
   無限生成集合の直和はcompactとは限らず、thick生成だけから全導来圏の比較は出さない。
   DG-GEN/DG-MORの採用が必要になったら採用せず停止・報告する。
-- U12dとの全導来射自然なtensor評価比較は構成済み。
+- U12dとの全導来射自然なtensor評価比較、評価成分のshift・cone同型と包含図式は構成済み。
   Perf比較に対するshift・三角性・導来係数変更の図式が残る。
