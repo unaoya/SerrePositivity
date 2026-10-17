@@ -23,10 +23,10 @@ Mathlibへの相対パスはすべて `.lake/packages/mathlib/Mathlib/` から�
 
 | 範囲 | 担当チャット・所有範囲 | 実装記録 |
 | --- | --- | --- |
-| U12eの受入、その後U16（導来Morita） | このチャット。既存のdg加群・bimodule・導来合成の公開APIを管理 | この文書§17 |
+| U12eの完成・受入 → U16a〜d → U15e | このチャット。既存のdg加群・bimodule・導来合成の公開APIを管理 | この文書§17 |
 | U14（指定生成元・endomorphism表示） | 「dg-U14」。`DifferentialGraded/Endomorphism/` | `dg-theory-u14.md` |
-| U12fとU15d（係数変更） | 「dg-U12f/U15d」 | `dg-theory-scalar-extension.md` |
-| U15eとU17 | U12f・U14・U16がそろってからこのチャットで扱う | 合流時にこの文書§17へ記録 |
+| U12f・U15d（係数変更）、追加のU17a・U13d | 「dg-U12f/U15d」。このチャットの担当外 | `dg-theory-scalar-extension.md` |
+| D4m（dg加群モデル構造） | 当面未割当。U17までの主線には使わない | 未着手 |
 
 両並行チャットは既存の`Derived/KFlatBimodule*`や`Bimodule/`の合成系を読み、再利用するが、
 それらを編集しない。このチャットで公開APIの名前・型を変更する際は、変更名、旧型と新型、
@@ -35,6 +35,13 @@ Mathlibへの相対パスはすべて `.lake/packages/mathlib/Mathlib/` から�
 並行チャットの記録ファイルは各担当が管理し、この文書§17は引き続きこのチャットが管理する。
 共有モデル圏・Quillen・転送・monoidal model・SM7一般論の所有は元のK理論系列のままとする。
 ユーザー指定により履歴のamend・rebase・resetは禁止。検証済みの小単位を新規コミットで記録する。
+新規ファイル作成前には同名既存ファイルの有無を確認する。共有ルートSerrePositivity.leanと
+共有監査スクリプトを変更するときは自分のhunkだけをgit add -pでstageする。
+このチャットのU16bではEndomorphism/の再構成随伴・endomorphism比較と、受入済みの
+Tensor/ScalarExtension*・Derived/ScalarExtension*を読み取り専用で再利用する。
+U15eはU12e受入後に扱い、局所K-flat版とdg圏の分解を使う版を分ける。
+U16cでDG-MOR、U15eでDG-DRの引用採用が必要になったら、採用せず停止して報告する。
+新しいsorry・axiom・引用は追加しない。この規則は以下の従来の引用許容案に優先する。
 
 ## 1. 現状との差分と再利用入口
 
@@ -2795,7 +2802,9 @@ U15b `Quotient/Differential.lean`：各Homの微分とdε_b=idをLeibnizで延�
 U15c `Quotient/Universal.lean`：Bの像の指定収縮を持つdg関手との厳密普遍性。収縮の存在だけと、収縮を選んだデータを区別する。
 U15d `Quotient/ScalarExtension.lean`：path添字を固定した係数変更の同型・単位/合成整合性。underivedの構成法則として証明する。
 U12f・U15d の係数変更の実装・明示仮定・検証記録：[dg-theory-scalar-extension.md](dg-theory-scalar-extension.md)。
-U15e `Quotient/DerivedComparison.lean`：local K-flat仮定の版と解像度を使う版を分け、定義済みtriaのVerdier商との比較へDG-DRを適用する準備。
+U15e `Quotient/DerivedComparison.lean`：U12e受入後、local K-flat仮定の版と解像度を使う版を分け、
+定義済みtriaのVerdier商と比較する。現行§0の指定により、DG-DRの引用採用が必要になったら
+採用せず停止して報告する。
 元のHomが次数0の場合はpath長rの次数−rと正次数ホモロジー消滅を具体例として証明する。
 対象・普遍性まではU11/U12と独立に先行可能だが、導来/Verdier比較はflatnessの受入後とする。
 
@@ -2803,7 +2812,8 @@ U15e `Quotient/DerivedComparison.lean`：local K-flat仮定の版と解像度を
 
 U16a：U12の導来bimodule合成を使い、指定bimoduleが誘導する導来関手、unit/counit、identity/compを定義。
 U16b：dg quasiEquivalenceからのrestriction/extensionが同値であることを、representable・生成性・Hom比較で証明。
-U16c：一般bimoduleのMorita判定はperfect性・Hom quasiIso・compact生成の三条件を固定し、必要ならDG-MORを具体的に採用。
+U16c：一般bimoduleのMorita判定はperfect性・Hom quasiIso・compact生成の三条件を固定する。
+現行§0の指定により、DG-MORの引用採用が必要になったら採用せず停止して報告する。
 U16d：Perfへの制限と係数変更・中心作用の自然性、合成のcoherenceを検証する。
 三角圏としての抽象同値だけをdg Morita同値の証拠にはしない。
 
@@ -8917,4 +8927,67 @@ Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの統合ビルド
 最終chain map・増大dg関手を構成する。今回の有限path評価はまだ最終Homのchain mapではない。
 その後、filtrationによる最終Hom K-flat性、反復列、解像度の一般存在・比較を完成させる。
 U12e全受入・U16は未完。U15e/U17の合流条件と§0の分担を維持する。
+共有一般論への新しいAPI要求はない。
+
+
+### 17.197 U12e38：全Hom評価・増大dg関手と次段での全境界cell充填（2026-10-17）
+
+ユーザーの再割当を§0へ反映した。このチャットの現行順はU12e完成・受入→U16a〜d→U15e。
+U16bではEndomorphism/の再構成随伴・endomorphism比較と受入済みScalarExtension系を
+読み取り専用で再利用する。U14、U17a、U13dは担当外。D4mは当面未割当で主線に使わない。
+U16cでDG-MOR又はU15eでDG-DRの引用採用が必要になったら採用せず停止して報告する。
+この現行指定は、過去のU17までの一系列担当や引用許容案に優先する。
+新規ファイルは同名ファイルの有無を確認し、共有ルート・監査スクリプトの変更時は
+自分のhunkだけをgit add -pでstageする規約を維持する。
+
+`Resolution/Cells/PathCochainDesc.lean`の**Family.pathCochainDesc/precomp/unique**は、
+任意次数cochainをpath直和へ次数ごとの余積の普遍性で貼り合わせる。
+`InternalEvaluation.lean`の**PrimitiveData.internalEvaluation/precomp/original/generator**は、
+有限path評価から得る次数0 cochainと、元のHom・各生成cellでの評価の一致。
+`PathEvaluationPrepend.lean`で元のHomの先頭合成を保つことを証明した。
+
+`PrimitiveAction.lean`の**primitiveAction/boundaryOriginalAction/primitiveAction_differential/evaluate**は、
+指定原始元の後方Homへの作用、そのHom微分、任意の後方評価との整合性。
+`BoundaryActionEvaluation.lean`の**boundaryAction_pathEvaluation**はこの微分を先頭境界置換の評価と照合する。
+`EvaluationPrefix.lean`の**evaluationOriginalAction/evaluationPrefixAction/differential**と
+**pathEvaluation_cons_action**は、元のHomと生成元の固定前方作用による評価の表示。
+`PathEvaluationDifferential.lean`の**evaluationPrefix_boundary/pathEvaluationTail**と
+**pathEvaluation_cons_differential**は、評価の微分を先頭境界項と後方微分項に分ける。
+`InternalEvaluationPrefix.lean`でこれを前方Hom・生成元追加と全Hom評価へ接続した。
+`EvaluationReplacement.lean`の**pathEvaluationTail_internalEvaluation/pathEvaluation_differential**と
+**internalEvaluation_differential**により、全評価cochainのHom微分が
+全境界置換の後で評価する次数1 cochainと一致することを証明した。
+
+`Evaluation.lean`の**attachedEvaluation**は既存のperturbSourceMapによる最終Homの実際のchain map。
+**attachedEvaluation_f/original/generator/path/unit**で成分、元のHom、指定原始元、全path、単位を照合した。
+`PathEvaluationAppend.lean`は任意二有限pathの連結を評価が保つことを証明し、
+`TensorTwoPathCochainExt.lean`の判定補題と`InternalEvaluationComposition.lean`で全Hom上へ移した。
+`EvaluationComposition.lean`の**attachedEvaluation_composition**は追加微分後の合成保存。
+`Extension.lean`の**PrimitiveData.extension**はこれらを持つ主豊穣モデル上の実際のdg関手。
+**embedding_comp_extension**は元のdg関手への厳密な制限等式、
+**extension_generator**は各生成cellの像が指定原始元そのものであることを示す。
+
+`Augmentation.lean`の**DGCategoryBoundaryCells.attachedAugmentation**は全境界cell族への標準増大。
+**embedding_comp_attachedAugmentation**は元の増大への制限、
+**attachedAugmentation_fills**は、元の任意のcellの境界が次段の生成元で埋まり、
+かつ増大で指定されたtarget原始元へ厳密に送られることを証明する。
+一般の延長はA : Type u、D : Type v、I : Type w、E : Type zを独立に保ち、
+Small.{u} Iだけを要求する。全境界cell族の標準増大にはSmall.{u} Dを使い、Eのsmallnessは不要。
+Homのflatnessや有界性はどちらにも要求しない。既存公開APIの名前・型の変更はない。
+これらは次のcell付加の反復列、増大の列、全境界充填による準同値の証明で使う。
+
+Checks.DGCellEvaluation・Checks.DGCellGeneratorBoundary・Checks.DGCellCategory・
+Checks.DGCellCompositionDifferential・Checks.DGCellBoundaryRecursion・Checks.DGCellPrependDifferential・
+Checks.DGCellInternalComposition・Checks.DGCellDifferential・Checks.DGCategoryResolution・
+Checks.DerivedBimoduleFullPentagon・Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（3212 jobs、終了コード0、警告なし）。独立宇宙・元のHomのflatness仮定なし・
+任意次数/別端点の延長と標準増大・全境界充填・ZMod 2の延長を型検査した。
+主要40宣言の直接公理監査は標準3公理のみ。監査累計3729宣言。
+今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は16 Markdown・320 exposition参照を検査し、担当外BhattScholze互換宣言の
+未解決参照1件で失敗した。共有ルート・共有監査スクリプト・共有一般論・並行所有ファイルは編集していない。
+
+次はpath長filtrationで最終HomのK-flat性を証明し、cell付加の反復列と極限増大を構成する。
+解像度の一般存在・比較、既存の導来bimodule合成との接続を終えて§15.2のU12eを受け入れる。
+増大が一段で全Hom準同型になるとは主張しない。U12e全受入・U16・U15eは未完。
 共有一般論への新しいAPI要求はない。
