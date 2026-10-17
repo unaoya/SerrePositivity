@@ -575,6 +575,29 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialFrobenius_
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialDelta_coeff_isDeltaHom
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialDelta_variable
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialModPrimeMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialModPrimeMap_single
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialModPrimeMap_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialModPrimeMap_surjective
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialModPrimeMap_ker
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialModPrimeEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialModPrimeEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialModPrimeMap_variable
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialModPrimeMap_baseMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomial_monic_mod_prime_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootMonicPDInput
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootMonicPDInput_modPrime_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomial_primeLocal
+assert_no_sorry SerrePositivity.BhattScholze.Andre.PowerRootMonicModPrimePDEnvelope
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootMonicModPrimeDividedPowers
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootMonicModPrimeDividedPowers_base_apply
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootMonicModPrimePDMorphism
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismPowerRootMonicModPrimeDividedPowers
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_perfectPrismPowerRootMonicModPrimePDMorphism
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootModPrime_prime_eq_zero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootMonicModPrimePDEnvelope_truncatedEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootMonicModPrimePDEnvelope_quotient_free
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -679,7 +702,9 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.RegularPrincipalModPrimeUniversal,
     `SerrePositivity.BhattScholze.Andre.MonicModPrimePDEnvelope,
     `SerrePositivity.BhattScholze.Andre.PerfectPrismMonicModPrimePDEnvelope,
-    `SerrePositivity.BhattScholze.Andre.PowerRootPolynomialDelta]
+    `SerrePositivity.BhattScholze.Andre.PowerRootPolynomialDelta,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPolynomialModPrime,
+    `SerrePositivity.BhattScholze.Andre.PowerRootMonicModPrimePDEnvelope]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

@@ -2005,3 +2005,60 @@ SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（
 生成宣言を含む 3111 宣言の推移的公理依存は標準 3 公理のみ。
 Frobenius の実 mod p 一致・δ 構造の一意存在・実構造・係数射の δ 互換性・
 全根変数の δ 零性の公開型 5 本を `#print` で確認した（終了コード 0）。
+
+### E1.33：無限根環の実 mod p 係数比較とモニック入力の実 pd 包
+
+新規 `Andre/PowerRootPolynomialModPrime.lean` は、同じ実指数モノイドについて
+`PowerRootPolynomial A p hp /(p)` と `PowerRootPolynomial (A/(p)) p hp` の環同型
+`powerRootPolynomialModPrimeEquiv` を構成する。
+係数商射の全射性は係数の有限支持の持ち上げから得る。
+核の元は全係数が p で割れるため、各単項式を p の倍数に書いて足し戻し、
+核が環内の p 主イデアルそのものであることを証明する。
+係数・変数・通常多項式評価の互換性も証明した。
+この比較でモニック性を係数商へ移し、既存の無限根環上の正則性から
+`powerRootPolynomial_monic_mod_prime_regular` を得る。
+この実 mod p 正則性には係数環の p 正則性や p の素数性すら不要で、正値性のみを使う。
+
+新規 `Andre/PowerRootMonicModPrimePDEnvelope.lean` は、E1.32 の実 δ 構造と
+自由性による p 正則性、係数の p 局所性、上記の入力の mod p 正則性を供給し、
+無限根環上のモニック入力へ E1.30 の実分冪構造と普遍性を適用する。
+完全 prism の場合は全ての補助入力を内部で供給した構造・普遍性も公開した。
+入力元 `powerRootMonicPDInput p f` は既存の `powerRootPolynomialBaseMap` による f の評価そのもの。
+分冪構造の型照合で多項式評価の内部展開が繰り返されるのを防ぐため irreducible とし、
+定義を明示展開する mod p 正則性補題を介して使う。
+分冪値の公式は構造の定義を一段だけ展開し、`with_reducible` で既存定理を適用して証明する。
+計算量上限を増やす設定は残していない。
+
+主要公開定理の正確な形（namespace `SerrePositivity.BhattScholze.Andre`）。
+ここで `hp := (Fact.out : p.Prime).pos`、`P := PowerRootPolynomial A p hp`、
+`Q := P ⧸ Ideal.span {(p : P)}`、`bar := Ideal.Quotient.mk (Ideal.span {(p : P)})`、
+`y := powerRootMonicPDInput p f` とする。
+
+```lean
+theorem existsUnique_perfectPrismPowerRootMonicModPrimePDMorphism
+    {A : Type u} [CommRing A] (p : ℕ) [Fact p.Prime]
+    (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
+    (f : Polynomial A) (hf : f.Monic)
+    {T : Type v} [CommRing T] [Algebra Q T] {I : Ideal T} (Ht : DividedPowers I)
+    (hyT : algebraMap Q T (bar y) ∈ I) :
+    ∃! F : PowerRootMonicModPrimePDEnvelope p f →ₐ[Q] T,
+      (perfectPrismPowerRootMonicModPrimeDividedPowers p W hW f hf).IsDPMorphism Ht F.toRingHom
+```
+
+台環は `PrincipalDPPresentation Q (bar y)`、分冪イデアルは全正次数標準生成元の span。
+入力元の n 次分冪が n 次標準生成元になる公式も証明済み。
+同じ台環の `powerRootMonicModPrimePDEnvelope_truncatedEquiv` は、既存の
+`principalDPQuotientAlgebra` が指定する `Q/((bar y)^p)` 上の可算切断表示への代数同型。
+`powerRootMonicModPrimePDEnvelope_quotient_free` は同じ作用の自由性を与える。
+分冪包の構成にモニック性を使うが、台環の表示・この係数商上の自由性自体には不要。
+
+BS Rem 7.15(1)（著者版 p.62）の無限根変数を含む実 pd 計算であり、
+原典の Prop 7.11 は使わず、係数比較・階乗部分環の mod p 降下・明示切断表示を使う。
+R/ϖ 係数との比較、prismatic envelope の Frobenius 引戻しとの同定はなお未完了。
+今回の無限根環上の実分冪包だけで依頼全体の完成とは数えない。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4421 jobs）。
+新規 22 公開宣言の `assert_no_sorry` を追加した専用監査は終了コード 0。
+生成宣言を含む 3171 宣言の推移的公理依存は標準 3 公理のみ。
+実係数商同型・モニック入力の実 mod p 正則性・完全 prism の実構造と普遍性・
+切断表示同型・自由性の公開型 6 本を `#print` で確認した（終了コード 0）。
