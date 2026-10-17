@@ -12646,3 +12646,40 @@ U16a全体には恒等・結合の作用coherenceが残るため、全受入と�
 lake build SerrePositivity.DifferentialGraded.Morita.AdjunctionDerivedChecks SerrePositivity.DifferentialGraded.Morita.AdjunctionKernelTelescopeChecks SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionCanonicalChecks SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.DifferentialGraded.Checks.U12eGeneralInventory SerrePositivity.Spectra.StageTwo
 lake env lean SerrePositivity/DifferentialGraded/Morita/AdjunctionDerivedChecks.lean
 ```
+
+
+### 17.266 U16a：作用の恒等・合成比較と通常tensor増大の互換性（2026-10-17）
+
+既存のkernelIdentityIso・kernelCompositionIsoの定義を保ち、作用coherenceへ向けた計算経路を固定した。
+Morita/CoherenceCompositionAugmentation.leanは自然な解像度モデルの成分を
+kernelResolutionTensorModelIso_hom_appで指定解像度の計算同型へ同定する。
+kernelResolutionTensorModelIso_augmentationは、その同型と通常tensor増大の可換square。
+
+kernelDerivedTensorOnBimoduleCompositionIso_augmentationは任意の通常入力Mについて、
+導来作用の合成比較の後に合成kernelの増大を行う経路と、最初の作用の増大を後の導来作用で写し、
+後の作用の増大、通常の合成比較の局所化像へ進む経路が一致することを証明した。
+最初のkernelの右相対K-flat性だけを要求し、局所Hom K-flat性は不要。
+通常合成比較と増大の入力自然性を使い、同じ標準解像度の計算同型を消去した。
+kernelDerivedTensorOnBimoduleCompositionIso_relativeKFlatは相対K-flat入力でこの図式を同型の等式として与える。
+
+CoherenceIdentityAugmentation.leanはH⁰恒等比較・解像度の導来余単位の成分を明示し、
+kernelDerivedTensorOnBimoduleIdentityIso_modelで標準解像度上の通常単位子と増大を計算する。
+kernelDerivedTensorOnBimoduleIdentityIso_augmentationは任意入力Mで、
+既存導来恒等比較が通常tensor増大と元の対角単位子の主導来像の合成に一致することを証明した。
+局所Hom条件・入力の相対K-flat性は不要。公開された恒等比較を別の選択へ置き換えていない。
+
+保存済みCoherenceAugmentationChecksは独立対象宇宙・任意可換環・標数2と二つの実際の増大図式を検査する。
+一般右随伴・主導来合成自然性・QuasiEquivalence・局所受入・一般入口・Spectra.StageTwoとの
+合同ビルド成功（4131 jobs、警告0）。新規9宣言を直接公理監査し標準3公理以内。
+新規監査累計5047。新規sorry・axiom・引用・資源上限変更なし。
+
+U16aの一般右随伴・unit/counitは§17.265で完成済み。
+この単位は作用coherenceの帰着APIであり、単位・結合の全導来図式の完成やU16a全受入ではない。
+次は通常作用の単位・結合図式を既存bimoduleの三角・五角で評価し、
+この増大squareとK-flatモデル・主局所化の自然性により公開作用比較のcoherenceへ接続する。
+CriterionPerf*・CriterionDerived*や一般U12eは編集・再開していない。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Morita.CoherenceAugmentationChecks SerrePositivity.DifferentialGraded.Morita.AdjunctionDerivedChecks SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionCanonicalChecks SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.DifferentialGraded.Checks.U12eGeneralInventory SerrePositivity.Spectra.StageTwo
+lake env lean SerrePositivity/DifferentialGraded/Morita/CoherenceAugmentationChecks.lean
+```

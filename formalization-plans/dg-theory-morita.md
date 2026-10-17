@@ -579,3 +579,19 @@ CriterionDerived*を実際の右随伴と統合する。U16全体の受入はま
 lake build SerrePositivity.DifferentialGraded.Morita.AdjunctionDerivedChecks
 lake env lean SerrePositivity/DifferentialGraded/Morita/AdjunctionDerivedChecks.lean
 ```
+
+
+## U16a14：恒等・合成比較と通常tensor増大の同じ計算経路（2026-10-17）
+
+CoherenceCompositionAugmentationのkernelDerivedTensorOnBimoduleCompositionIso_augmentationは、
+任意通常入力で、導来合成比較と合成kernelの増大が、二つの増大と通常合成比較の経路に一致することを示す。
+最初のkernelの右相対K-flat性を明示し、局所Hom K-flat性は要求しない。
+_relativeKFlat版では相対K-flat入力で同じ図式を同型の等式にする。
+CoherenceIdentityAugmentationのkernelDerivedTensorOnBimoduleIdentityIso_augmentationは、
+既存の導来恒等比較が通常tensor増大と元の対角単位子の主導来像を計算することを示す。
+入力の相対K-flat性・局所Hom K-flat性は不要。
+
+この二つの計算は公開比較の定義を変えず、単位・結合の作用coherenceを通常bimodule図式へ帰着するもの。
+coherence全体とU16a全受入は未完。一般右随伴・unit/counitの実装済み状態は維持する。
+新規9宣言の直接公理監査は標準3公理以内、合同ビルド4131 jobs・警告0。
+再現入口はMorita/CoherenceAugmentationChecks、詳細はdg-theory.md §17.266。
