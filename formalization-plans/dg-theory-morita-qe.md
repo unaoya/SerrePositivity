@@ -194,6 +194,18 @@
 - `Morita.PerfectKernelEvaluationChecks` ビルド成功（2750 jobs、警告なし）。
   主要9宣言の公理監査は標準3公理のみ。
 
+## U16d.7：実際のkernel・Perf作用とU12f係数変更の評価正方形
+
+- `Morita/ScalarExtensionKernelTensor.lean`：U16d.6の関手自然同型に導来係数変更を後合成し、
+  実際のkernel作用とU12d計算の係数変更後の評価を、全入力射に自然に比較した。
+- 任意の入力射影解像度Rと出力評価eについて、hPNとhP'を明示して
+  `derivedTensorBaseChange` を接続した。実際のPerf作用からの版も公開した。
+  φのflatness・入力の有界性・Homの局所K-flat性は追加していない。
+- 係数変更後の終域はU12fの指定した右・左加群の導来tensorである。
+  係数変更したkernel全体の主導来作用への束ね上げとkernel合成との比較は残項目として区別する。
+- `Morita.ScalarExtensionKernelTensorChecks` ビルド成功（3230 jobs、警告なし）。
+  主要5宣言の公理監査は標準3公理のみ。
+
 ## 合同検証と公開入口（2026-10-17）
 
 - 新規10監査対象・公開入口・既存 `Checks.DGFunctorDerivedEquivalence` の12対象を
