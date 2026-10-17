@@ -4513,3 +4513,116 @@ prism 商の p 正則性仮定を解消した。raw 除算包・その実完備�
 （集約 4547 jobs）。新規 18 公開宣言の `assert_no_sorry` と専用監査は
 終了コード 0。生成宣言を含む 6732 宣言の推移的公理依存は標準 3 公理のみ。
 新規 18 公開宣言の正確な型を `#check` で確認した（終了コード 0）。
+
+
+### E1.66 互換な根データからの無限根入力 δ 射と実完備化の一意普遍射（2026-10-17）
+
+前工程 E1.65 は pd 構造と普遍性から p 正則性を除き、検証済みコードをコミットした進捗。
+本工程は絶対 prismatic envelope との比較で残る、指定無限根入力 δ 射の構成へ進む。
+既存の相対普遍性は g : P →+* B 自体を入力としていたので、互換根列からその g を
+実際に構成し、係数・全根変数を保つ普遍性まで証明する。
+
+新規 `Andre/PowerRootExponentEvaluation.lean` に 6 公開宣言を追加した。
+任意宇宙の可換モノイド B、p : ℕ、hp : 0 < p、ρ : ℕ → B、
+hρ : ∀ n, ρ (n+1)^p=ρ n を固定する。
+`compatiblePowerRoots_iterate` は `ρ (n+m)^(p^m)=ρ n`、
+`compatiblePowerRoots_repr_eq` は有理指数 k/p^n=l/p^m なら `ρ n^k=ρ m^l` を証明する。
+`powerRootExponentEval` は分母表示を選んで指数 q を根列の冪へ評価し、
+同 `_of_repr` は q*p^n=k の任意表示でその値が ρ n^k になることを示す。
+`powerRootExponentEvalHom` は
+
+```lean
+Multiplicative (powerRootExponentMonoid p hp) →* B
+```
+
+を構成する。零指数を単位へ送り、共通分母の段へ揃えて加法を乗法へ送る。
+同 `_variable` は第 n 根変数の指数の像が ρ n であることを証明する。
+素数性・標数・非零性・根の単射性を仮定しない。
+
+新規 `Andre/PowerRootPolynomialUniversal.lean` に 5 公開宣言を追加した。
+任意宇宙の可換環 R と B、p、hp、係数射 f : R →+* B と上記の根列を固定する。
+P=PowerRootPolynomial R p hp とする。
+`powerRootPolynomial_ringHom_ext` は二つの環射が係数と全根変数上で一致すれば等しいと示す。
+各単項式をある有限段の変数の冪に表して証明する。
+`powerRootPolynomialEval` は指数モノイド射と係数射を加法モノイド環の普遍射で延長した実環射。
+同 `_coeff`、同 `_variable` は係数と各根の指定値を証明する。
+`existsUnique_powerRootPolynomialHom` の正確な型は
+
+```lean
+∃! F : P →+* B,
+  F.comp (algebraMap R P) = f ∧
+    ∀ n, F (powerRootPolynomialVariable R p hp n) = ρ n
+```
+
+である。通常の任意の可換環を標的とし、完備性・prism・正則性を要求しない。
+
+新規 `Andre/PowerRootPolynomialDeltaUniversal.lean` に 5 公開宣言を追加した。
+p を素数、hp をその正値性とする。
+`isDeltaHom_powerRootPolynomial` は任意の源 δ 構造 D_P と終域 δ 構造 E、環射 g について、
+係数・全根変数上の δ 互換性から `D_P.IsDeltaHom E g` を証明する。
+二つの W₂ 切断の合成を外延性で比較するため、終域の p ねじれも許す。
+`compatiblePowerRoots_delta_eq_zero` は `[IsHausdorff (Ideal.span {(p:B)}) B]` の下で
+根列の全元の δ が零であることを、既存の全 p 冪根による rank 1 判定から導く。
+
+R には hpR : Function.Injective (fun a:R => (p:R)*a)、D : DeltaStructure p R を与える。
+E : DeltaStructure p B、係数射 f、hf : D.IsDeltaHom E f と、ρ、hρ、
+hδρ : ∀ n, E.delta (ρ n)=0 の下で `powerRootPolynomialEval_isDeltaHom` は
+実評価射が `powerRootPolynomialDelta p hpR D` から E への δ 射であることを証明する。
+`existsUnique_powerRootPolynomialDeltaHom` は
+
+```lean
+∃! g : P →+* B,
+  (powerRootPolynomialDelta p hpR D).IsDeltaHom E g ∧
+    g.comp (algebraMap R P) = f ∧
+      ∀ n, g (powerRootPolynomialVariable R p hp n) = ρ n
+```
+
+を証明する。終域の p 正則性・完全性・完備性は仮定しない。
+`existsUnique_powerRootPolynomialDeltaHom_of_isHausdorff` は終域の p 進分離性から
+hδρ を自動で供給し、同じ結論を hδρ を引数にせず証明する。
+
+新規 `Andre/PowerRootPrismMonicRootUniversal.lean` に 3 公開宣言を追加した。
+`powerRootPolynomialEval_baseMap` は任意の通常多項式 f について
+
+```lean
+powerRootPolynomialEval p hp k ρ hρ (powerRootPolynomialBaseMap R p hp f) = f.eval₂ k (ρ 0)
+```
+
+を証明する。モニック性は不要。
+
+完全 prism W : OrientedPrism p A、hW、f : Polynomial A を固定する。
+P、E、dP、a、L、jL、H、uL、DH は既存の同じ無限根 raw 実完備化のもの。
+`existsUnique_powerRootPrismMonicCompletionHom_of_roots` は同じ宇宙の可換環 B、
+Q : OrientedPrism p B、k : A →+* B、hk : W.deltaStructure.IsDeltaHom Q.deltaStructure k、
+hd : k W.generator=Q.generator、ρ : ℕ → B、hρ : ∀ n, ρ(n+1)^p=ρ n、
+hδρ : ∀ n, Q.deltaStructure.delta (ρ n)=0、hroot : Q.generator ∣ f.eval₂ k (ρ 0) の下で、
+実環構造を let で導入した後の
+
+```lean
+∃! F : H →+* B,
+  DH.IsDeltaHom Q.deltaStructure F ∧
+    F.comp (powerRootPrismMonicCompletionBaseMap W hW f) = k ∧
+      ∀ n, F (uL (jL (powerRootPolynomialVariable A p hp n))) = ρ n
+```
+
+を証明する。g 自体を前提に残さず、上記の具体的評価で構成する。
+この普遍射の構成には f のモニック性・正次数、源の prism 商の p 正則性は不要。
+源 H 自体が prism であることをここで追加主張するものではない。
+`existsUnique_powerRootPrismMonicCompletionHom_of_p_regular_roots` は
+hpB : Function.Injective (fun x:B => (p:B)*x) を持つ試験 prism Q に対し、
+Q の導来 p 完備性から分離性を得て hδρ を自動で供給し、同じ結論を証明する。
+p 正則性を課すのは試験 prism の台環 B であり、源の prism 商ではない。
+
+BS Rem 7.15（著者版 p.62）に対する原典とは異なる、有理指数の表示独立性・
+モノイド環の普遍射・W₂ 切断・実完備化による経路を docstring に明記した。
+絶対 envelope との比較に残るのは、剰余上の根列を試験 prism の台環内の互換根列へ
+一意に持ち上げることと、一般の基底 prism 射の生成元の単元係数を扱うこと。
+ここで与えている根列は B 内の実根列であり、B/Q.ideal 内の根列からの持上げを証明したとは数えない。
+raw・実完備化の正則性と完全忠実平坦性に残る hpR、原典の係数表記との照合も未完了。
+承認済み hdeg を持つ任意族存在定理の型は変更していない。
+原典の S=R⟨Y^{1/p^∞}⟩/(f) の完備化とこの未完備入力環との接続も、絶対比較の未完了範囲に含む。
+
+検証：新規 4 ファイルの対象ビルドと集約ビルドは終了コード 0
+（集約 4551 jobs）。新規 19 公開宣言の `assert_no_sorry` と専用監査は
+終了コード 0。生成宣言を含む 6811 宣言の推移的公理依存は標準 3 公理のみ。
+新規 19 公開宣言の正確な型を `#check` で確認した（終了コード 0）。

@@ -1172,6 +1172,26 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFullFroben
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFullFrobeniusDividedPowersOfMonic_input_apply
 assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicFullFrobeniusPDMorphismOfMonic
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.compatiblePowerRoots_iterate
+assert_no_sorry SerrePositivity.BhattScholze.Andre.compatiblePowerRoots_repr_eq
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootExponentEval
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootExponentEval_of_repr
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootExponentEvalHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootExponentEvalHom_variable
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomial_ringHom_ext
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialEval
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialEval_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialEval_variable
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPolynomialHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.isDeltaHom_powerRootPolynomial
+assert_no_sorry SerrePositivity.BhattScholze.Andre.compatiblePowerRoots_delta_eq_zero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialEval_isDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPolynomialDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPolynomialDeltaHom_of_isHausdorff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialEval_baseMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicCompletionHom_of_roots
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicCompletionHom_of_p_regular_roots
+
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
@@ -1376,7 +1396,11 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.DividedPowerProjectiveCoefficientQuotient,
     `SerrePositivity.BhattScholze.Andre.PowerRootCoefficientPDProjectiveReduction,
     `SerrePositivity.BhattScholze.Andre.MonicPerfectPrismPDEnvelope,
-    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicFullFrobeniusPDOfMonic]
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicFullFrobeniusPDOfMonic,
+    `SerrePositivity.BhattScholze.Andre.PowerRootExponentEvaluation,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPolynomialUniversal,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPolynomialDeltaUniversal,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicRootUniversal]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
