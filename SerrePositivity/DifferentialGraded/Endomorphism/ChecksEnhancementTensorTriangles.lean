@@ -1,0 +1,11 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.EnhancementTensorTriangles
+
+/-! # 実際のenhancement tensorのshift・三角性比較の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+
+#print axioms perfectEndomorphismTensorDGHomotopyCommShift
+#print axioms perfectEndomorphismEnhancementTensorComparison_commShift
+#print axioms perfectEndomorphismTensorDGHomotopyIsTriangulated
+#print axioms perfectEndomorphismEnhancementTensorTriangleSquareIso

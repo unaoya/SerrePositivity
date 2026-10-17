@@ -805,6 +805,15 @@
 - `ChecksEnhancementTensorComparison` 対象ビルド成功。新規5主要宣言の公理は標準3公理のみ。
   既存APIの名前・型は変更していない。
 
+## U14a/b.42：enhancement tensor比較の整合的shiftと三角性（2026-10-17）
+
+- `EnhancementTensorTriangles.lean`：実際のenhancement tensorのH⁰に、U13と主Perf tensorの
+  自然比較と整合するshift構造を入れた。その比較自然同型のshift整合性を証明した。
+- 実際のenhancement tensorのH⁰の三角性と、三角形の圏上での主Perfとの正方形を証明した。
+  zero/addの整合性を含むMathlib `CommShift` 構造を使い、個別shiftの選択で代用していない。
+- `ChecksEnhancementTensorTriangles` 対象ビルド成功。新規4主要宣言の公理は標準3公理のみ。
+  既存APIの名前・型は変更していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
