@@ -1037,3 +1037,26 @@ M9 の適用については、商を取る前の次数零の平坦 Hom を持つ
   残る構造照合は導来 graph 合成・二モデル比較・完備化全体の比較など。
   係数変更の元の tria からの直接局所化構成との一致、一般 kernel の自然性も継続する。
   中心作用・G 作用は引き続き保留。
+
+### U17d6：係数変更の完備化経路比較そのものの shift・三角形整合性
+
+- `Verdier/KaroubiMapShift.lean`：既存の Karoubi 関手延長の合成比較、自然同型の延長、
+  正方形の延長が整数 shift と整合することを証明した。
+  元の圏からの標準包含に前合成した明示的な比較を計算し、忠実性で反映する。
+- `Verdier/CompletionSquareShift.lean`：同値の逆経路へ移した既存の正方形も shift と整合する。
+  局所 perfect 比較の3関手合成では結合同型を明記し、整合的な表示が **既存の**
+  `scalarCompletedLocalPerfectSquare` に等しいことを自然同型の等式として証明した。
+  shift 構造や元の比較同型を変更して整合させたものではない。
+- これにより、`scalarCompletedTriaSquare`・`scalarCompletedPerfectSquare`・
+  `scalarCompletedLocalPerfectSquare`・`scalarCompletionComparisonIso`・
+  `scalarCompletionToKaroubiSquare` の比較自然同型そのものに `NatTrans.CommShift` を付けた。
+  係数変更の完備化経路比較と、未完備商からの標準 Karoubi 包含を含む正方形について、
+  三角形関手への自然同型も公開した。両側の局所 K-flat 条件は従来通り別々の入力。
+- 対象ビルド `Verdier.ChecksCompletionSquareShift` 成功（3408 jobs）、警告なし。
+  主要12宣言の公理監査は標準3公理のみ。新規 sorry・axiom・引用なし。
+  既存の比較ファイル・他担当ファイル・共有ルートは編集していない。
+- 前単位 `d61bfcd6` は直後の stat で自分の5ファイルのみと確認した。
+  完備化経路比較の構造照合はこの単位で完了したが、係数変更の元の tria からの直接局所化構成との
+  一致と、導来 graph 合成・二モデル比較の構造照合、一般 Morita kernel の自然性は未完。
+  U16 の最新記録では恒等 kernel 作用の自然同型も実装済みになった。一般随伴・合成 coherence は
+  引き続き未完と区別して読む。中心作用・G 作用は保留を維持する。
