@@ -693,3 +693,27 @@ HEAD からの差分全体が自分の変更だけであることも確認する
   有限 cell のホモトピー圏モデルから構成済みの `quotientVerdierComparison` と、
   上記の実際の導来延長の因子化との自然同型も確認する。U17b 全体は未完。
   U15e23 のコミットは `7a0b776c`（自分の3ファイルのみと直後に確認）。
+
+
+### U15e25：shift・三角生成による実際の導来因子化の全対象での充満忠実性
+
+- `Verdier/ShiftedHomComparison.lean`：関手の Hom 写像の全単射性を始点・終点の同型で移す。
+  整数 shift との比較同型を持つ関手について両端を shift しても保たれることを証明し、
+  任意の始域からの Hom が全単射になる終域の性質 `homComparisonTarget` の同型閉性・shift 閉性を得た。
+- `Verdier/TriangulatedHomComparison.lean`：三角関手について、この性質の三角閉性を直接証明。
+  単射性では逆回転三角形の像と Hom の完全性、全射性では元の三角形の像とその完全性を使う。
+  零対象もこの性質を持ち、全体で厳密充満な三角部分圏になる。
+- `Quotient/DerivedComparisonFullFaithful.lean`：実際の導来延長の因子化に shift・三角性を付与。
+  指定局所化の本質的全射性で、代表対象を終域とする結果の始域を任意の商対象へ広げた。
+  上記の性質を `triaQuotient` で引き戻し、代表生成性から全終域へ拡張した。
+- `derivedQuotientLift_map_bijective` は局所 K-flat 仮定の下で、指定 Verdier 商の任意の二対象の
+  間の実際の射写像が全単射であることを示す。
+  `derivedQuotientLiftFullyFaithful` はその充満忠実性データを明示的な仮定付きで公開する。
+- 合同対象ビルド `Checks.ShiftedHomComparison`・`Checks.TriangulatedHomComparison`・
+  `Checks.QuotientFullFaithful` 成功（2769 jobs）、警告なし。
+  主要14宣言の公理監査は標準3公理のみ。project import 依存1・2・552ファイルに
+  禁止された dg 圏分解系への依存なし。新規 sorry・axiom・引用なし。
+  ルート・他担当の既存ファイルは編集していない。
+- 残部：商側 tria に値域を制限した同値、既存のホモトピー有限 cell モデルによる
+  `quotientVerdierComparison` との自然同型、および U17b。
+  U15e24 のコミットは `2ef7745f`（自分の5ファイルのみと直後に確認）。
