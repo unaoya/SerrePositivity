@@ -8802,6 +8802,18 @@ Mathlib の三角関手の随伴に関する定理を適用し、元の完備化
 KL-T の実 almost 比較、有限被覆への適用、一般 rank の開閉分解と Cor 8.12 は引き続き残る。
 元の Prop 2.4.7 の引用は維持し、新しい sorry・axiom・入力は追加していない。
 
+**D-I・bounded torsion の分解と正則加群の実冪商（2026-10-17）。** 共通層
+`CommutativeAlgebra/BoundedPowerTorsionQuotient.lean` で、共通指数 N を持つ任意の加群 M に対し、
+T = ker(a^N : M → M) は a^N で消え、M/T 上の a は正則であることを証明した。
+`HomologicalAlgebra/ScalarConeModuleQuotient.lean` は、a が M 上で正則な場合に、
+元の single M 上の a^n スカラー錐と通常の M/a^n M の single 対象との実同型を構成する。
+元の冪商の短完全列を single 関手で写し、実 mapping cone から商への準同型を用いる。
+環 R 上の a 正則性、Noether 性、有限性、平坦性は要求しない。n=0 も含む。
+対象2370ジョブが成功。専用監査2本で公開4宣言と a=0 の任意加群の適用例1宣言は
+assert_no_sorry 成功・標準3公理のみ。共通層に BS・CLMST・Inputs・Paper 依存はない。
+これは原典 Lemma 2.3.5 の始域比較の準備であり、完備導来底変換の離散性・古典完備化との
+標準射を保つ同定はまだ完成していない。Cor 8.12 はユーザー指定により保留し、独立部分を進める。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
