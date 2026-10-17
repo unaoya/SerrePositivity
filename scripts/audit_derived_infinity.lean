@@ -242,6 +242,12 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.derivedInfinityHomotopyEquivalenceCommShift
 #print axioms SerrePositivity.InfinityCategories.derivedInfinityHomotopyEquivalenceShiftIso
 
+#print axioms SerrePositivity.InfinityCategories.complexBaseChange
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.baseChangeBasis
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.baseChangeBasis_d_repr
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.baseChange
+#print axioms SerrePositivity.InfinityCategories.complexSemifree_baseChange
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -250,6 +256,7 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.SemifreeBasisEquivalence,
     `SerrePositivity.InfinityCategories.Derived.ConeBasis,
     `SerrePositivity.InfinityCategories.Derived.HomotopyCategoryComparison,
+    `SerrePositivity.InfinityCategories.Derived.SemifreeBaseChange,
     `SerrePositivity.InfinityCategories.Derived.SplitSequence,
     `SerrePositivity.InfinityCategories.Derived.SphereBasis,
     `SerrePositivity.InfinityCategories.Derived.Semifree,

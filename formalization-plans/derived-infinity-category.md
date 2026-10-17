@@ -987,3 +987,31 @@ D2i は未実装の任意工程。見積もり：3〜5保存単位（目安400�
 高さを両因子の高さの和にする。底変更では各次数の基底の底変更と微分の高さ下降を接続する。
 既存の semifree 閉性定理は見つからず、今回の同値を利用した新しい構成が必要。
 着手するかはユーザー判断を仰ぐ。
+
+
+### D2i・任意の環準同型による底変更（2026-10-18）
+
+ユーザーが D3 後に D2i の続行を承認。底変更の保存を証明した。
+共通変数は `{S T : Type u} [CommRing S] [CommRing T]`、namespace
+`SerrePositivity.InfinityCategories`。基底の宣言は下位名前空間 `ComplexSemifreeBasis`、
+`{P : Complex S} (B : ComplexSemifreeBasis S P) (f : S →+* T)` を補う。
+公開型：
+```lean
+complexBaseChange (f : S →+* T) : Complex S ⥤ Complex T
+baseChangeBasis (k : ℤ) : Module.Basis (B.Index k) T
+    (((complexBaseChange f).obj P).X k)
+baseChangeBasis_d_repr (k : ℤ) (i : B.Index k) (j : B.Index (k + 1)) :
+    (B.baseChangeBasis f (k + 1)).repr
+      ((((complexBaseChange f).obj P).d k (k + 1)).hom (B.baseChangeBasis f k i)) j =
+      f ((B.basis (k + 1)).repr ((P.d k (k + 1)).hom (B.basis k i)) j)
+baseChange : ComplexSemifreeBasis T ((complexBaseChange f).obj P)
+complexSemifree_baseChange (f : S →+* T) {P : Complex S}
+    (hP : complexSemifree S P) : complexSemifree T ((complexBaseChange f).obj P)
+```
+`complexBaseChange` は Mathlib の `ModuleCat.extendScalars f` を
+`mapHomologicalComplex (.up ℤ)` で複体にした既存の関手である。
+基底と高さを保持し、微分座標が環準同型による元の座標の像となることから証明。
+平坦性・単射性などは不要。環と加群の宇宙は従来の規約通り同じ u。
+対象集約ビルドは終了コード0（3945 jobs）、公理監査も終了コード0。
+23モジュール497宣言すべて標準3公理のみ。
+D2i の残り：二つの semifree 複体のテンソル積の無条件の閉性。直ちに続行する。
