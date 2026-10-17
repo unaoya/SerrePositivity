@@ -8,3 +8,4 @@ open SerrePositivity.DifferentialGraded.Morita
 #print axioms perfectKernelCompositionIso
 #print axioms perfectKernelCompositionIso_inclusion
 #print axioms perfectKernelCompositionIso_naturality
+#print axioms perfectKernelCompositionIso_kernel_naturality

@@ -60,4 +60,20 @@ lemma perfectKernelCompositionIso_naturality
     (kernelCompositionIso A D E B hD P Q) P' Q' hP' hQ'
     (kernelCompositionIso A D E B hD P' Q') f g hNat
 
+/-- 実際の合成比較は、両kernelの任意の主導来射に対してPerf上でも自然。 -/
+lemma perfectKernelCompositionIso_kernel_naturality
+    (P' : Kernel A D E) (Q' : Kernel A E B)
+    (hP' : kernelColumnsPerfect A D E P') (hQ' : kernelColumnsPerfect A E B Q')
+    (f : P ⟶ P') (g : Q ⟶ Q') :
+    NatTrans.hcomp (perfectDerivedKernelMap A D E hP hP' f)
+        (perfectDerivedKernelMap A E B hQ hQ' g) ≫
+        (perfectKernelCompositionIso A D E B hD P' Q' hP' hQ').hom =
+      (perfectKernelCompositionIso A D E B hD P Q hP hQ).hom ≫
+        perfectDerivedKernelMap A D B
+          (kernelCompose_columnsPerfect_of_columns A D E B hD P Q hP hQ)
+          (kernelCompose_columnsPerfect_of_columns A D E B hD P' Q' hP' hQ')
+          (kernelComposeMap A D E B hD f g) :=
+  perfectKernelCompositionIso_naturality A D E B hD P Q hP hQ P' Q' hP' hQ' f g
+    (kernelCompositionIso_naturality A D E B hD f g)
+
 end SerrePositivity.DifferentialGraded.Morita
