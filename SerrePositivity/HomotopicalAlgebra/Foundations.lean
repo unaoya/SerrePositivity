@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.DegenerateHornInput
+
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanHornFamilyLifting
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterizedHornChoices
