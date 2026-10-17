@@ -973,3 +973,25 @@ M9 の適用については、商を取る前の次数零の平坦 Hom を持つ
 - 前単位 `ef74a640` は直後の stat で自分の4ファイルのみと確認済み。
   残部は係数変更の元の tria からの局所化構成との一致、比較自然同型の構造照合、
   主導来 kernel 全体と恒等・合成・自然変換の受入後の自然性。中心作用・G 作用は保留。
+
+### U17d4：tria の Karoubi 延長と perfect 比較による係数変更の経路一致
+
+- `Verdier/ScalarCompletionSquare.lean`：未完備の指定商上で既に構成した係数変更の
+  Karoubi 延長 `scalarCompletedTriaFunctor` を取り、前単位の tria–Perf 正方形の
+  Karoubi 延長と既存の完備化比較を貼り合わせた。
+- `scalarCompletedTriaSquare`・`scalarCompletedPerfectSquare`・
+  `scalarCompletedLocalPerfectSquare` は、tria の完備化、主 Perf、実際の局所 perfect
+  enhancement 比較を結ぶ個別の正方形である。
+- `scalarCompletionComparisonIso` は、この Karoubi 延長と、先に perfect 比較から
+  完備商へ運んだ **既存の** `completedScalarExtension` との関手自然同型。
+  比較同値による前合成の充満忠実性から構成し、全射について自然である。
+  `scalarCompletionToKaroubiSquare` は未完備商からの標準包含を含む実際の完備化正方形。
+- 係数環の平坦性は仮定せず、変更前後の `localKFlat` を別々に受け取る。
+  両辺の shift・三角性は既存構造を保つ。ただし経路比較自然同型そのものの shift 整合性は
+  新たな構造照合の課題として残す。この単位で係数変更の元の D からの別の局所化構成まで
+  同一視したという主張ではない。
+- 対象ビルド `Verdier.ChecksScalarCompletionSquare` 成功（3403 jobs）、警告なし。
+  主要6宣言の公理監査は標準3公理のみ。新規 sorry・axiom・引用なし。
+  前単位 `d93b6385` は直後の stat で自分の8ファイルのみと確認した。
+- 目標全体は進行中。U17c と支持・retract は検証済みだが、上記の係数変更の直接構成との
+  比較・構造照合、一般 Morita kernel の受入後の自然性を残す。中心作用・G 作用は保留。
