@@ -1,0 +1,12 @@
+module
+public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedHomCoproducts
+
+/-! # compact始域に対するHom比較の余積閉性の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded.Morita
+#print axioms criterionDerivedHom_coproduct_injective
+#print axioms criterionDerivedHom_coproduct_surjective
+#print axioms criterionDerivedHom_coproduct_bijective
+#print axioms criterionDerivedHom_sourceCoproduct_injective
+#print axioms criterionDerivedHom_sourceCoproduct_surjective
+#print axioms criterionDerivedHom_sourceCoproduct_bijective

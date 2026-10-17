@@ -480,6 +480,31 @@
   本質的像の余積閉性とcompact生成を組み合わせる段階を、右随伴・unit/counitと分離する。
   これは利用APIと証明方針の確認であり、U16cの実装完了を意味しない。
 
+## U16c.1：余積保存・Hom比較の余積閉性と条件付き本質的全射
+
+- 公開入口は `Morita/CriterionDerived.lean`。新規実装はすべて `CriterionDerived*` に置いた。
+  U16dの受入状態は変更していない。以下は新担当の条件付き拡張に使う部品であり、
+  U16c全体の受入・全主導来圏同値の完成を主張しない。
+- `CriterionDerivedCoproducts.lean`：U16aの既存の実際のkernel作用の余積保存を再利用した。
+  その証明は射影入力族・tensor・主局所化の余積計算によるもので、一般導来右随伴を使わない。
+  余積を保存する関手の本質的像の余積閉性も、離散族の対象選択と余積比較から証明した。
+- `CriterionDerivedGeneration.lean`：u-small生成族の各対象のcompact性と、
+  u-small余積で閉じる同型閉三角部分圏による全対象の生成を
+  `CriterionDerivedCompactGeneration` の別々の成分として明示した。
+  充満な三角関手の本質的像がこの生成族を含む場合の本質的全射を証明した。
+  U13dのcompact⇒Perfにより、Perf上の本質的全射から同じ結論を得る版と、実際のkernel作用の版を公開した。
+  三角性・充満性はこの段階では明示した入力であり、Perf判定から全対象の充満忠実性を導いたことにはしない。
+- `CriterionDerivedHomCoproducts.lean`：固定したcompact始域とそのcompactな像について、
+  Hom比較の単射性・全射性・全単射性が終域の余積で保たれることを証明した。
+  始域側の余積でも同じ三性質を証明した。こちらはcompact性・加法性も不要である。
+  生成族の無限直和をcompactと仮定する議論は一切使っていない。
+- 三つの監査入口と公開入口の合同ビルド成功（2795 jobs、終了コード0、警告・エラーなし）。
+  主要13宣言の公理はすべて標準3公理のみ。新しいsorry・admit・axiom・引用はない。
+  他担当のKernel*・Adjunction*・Coherence*・CriterionPerf*は読んだだけで編集していない。
+- 次の必須接続は、Hom比較のshift・錐に関する閉性、両変数の局所化帰納による全対象の充満忠実性、
+  CriterionPerf*の実際のPerf判定との接続、明示したcompact生成下の全導来圏同値である。
+  一般右随伴との一致・unit/counitは他担当に残す。
+
 ## 合同検証と公開入口（2026-10-17）
 
 - 新規10監査対象・公開入口・既存 `Checks.DGFunctorDerivedEquivalence` の12対象を
