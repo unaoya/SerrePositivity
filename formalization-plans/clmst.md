@@ -8369,6 +8369,47 @@ perfectoidIdeal R p hR g ≤
 局所入力自体を生む一般の整な包含 A → E ← Rʳ の almost 比較は引き続き未完成であり、
 Prop 2.4.9(a) や KL-Q を完成済みとはしない。
 
+#### KL-T：元の R 線形写像としての核・余核インターフェース（2026-10-17）
+
+`CommutativeAlgebra/PerfectoidizationAlgebraMap.lean` に
+`SerrePositivity.IsPerfectoidization.mapAlgHom` と
+`mapAlgHom_toRingHom`、`mapAlgHom_comp` を公開した。
+既存の R 代数構造を保った実 `C →ₐ[R] D` を構成し、環準同型として忘れると
+従来の `IsPerfectoidization.map` と定義的に等しい。新しい係数作用は作らない。
+
+CLMST-D と KL の Tor 移送には、独立ファイル
+`SerrePositivity/BhattScholze/PerfectoidizationSupportedQuotientLinear.lean`
+を import できる。公開名・正確な前提と型は以下の通り。
+
+```lean
+namespace SerrePositivity.BhattScholze
+variable {R A B C D : Type u}
+  [CommRing R] [CommRing A] [CommRing B] [CommRing C] [CommRing D]
+  [Algebra R A] [Algebra R B] [Algebra R C] [Algebra R D]
+  {p : ℕ} [Fact p.Prime] {f : A →ₐ[R] C} {g : B →ₐ[R] D}
+
+perfectoidization_mapAlgHom_ker_coker_annihilated_of_surjective_supported_kernel
+  (hR : IsIntegralPerfectoid R p)
+  (hf : IsPerfectoidization p f.toRingHom) (hg : IsPerfectoidization p g.toRingHom)
+  (q : A →ₐ[R] B) (hq : Function.Surjective q)
+  (ρ : ℕ → R) (hρ : ∀ n, ρ (n + 1) ^ p = ρ n)
+  (hk : ∀ a ∈ RingHom.ker q.toRingHom,
+    ∃ N : ℕ, (algebraMap R A (ρ 0)) ^ N * a = 0) :
+  (∀ s ∈ perfectoidIdeal R p hR (ρ 0),
+    ∀ x : (IsPerfectoidization.mapAlgHom hf hg q).toLinearMap.ker, s • x = 0) ∧
+  (∀ s ∈ perfectoidIdeal R p hR (ρ 0),
+    ∀ y : D ⧸ (IsPerfectoidization.mapAlgHom hf hg q).toLinearMap.range, s • y = 0)
+end SerrePositivity.BhattScholze
+```
+
+余核は実際には零であり、両結論を既存の almost 比較 API の形で返す。
+唯一の未証明依存は既存 BS 7.14。専用監査
+`scripts/audit_clmst_supported_quotient_linear.lean` は共通3宣言の `sorry` 非依存と、
+上の宣言および実 B3 annihilator 商の元の `Algebra.linearMap R D` への適用例の
+依存が BS 7.14 以外へ到達しないことを確認した。
+この共有 API も **全射 q の場合**であり、一般の整な包含の完成を主張しない。
+ルートビルド（6248 jobs）・KL 監査（1178 assert）も成功した。
+
 #### Prop 2.4.7 専任系列：原典から D-I/U/Q への型付き受渡し（2026-10-17）
 
 本節は統合表 D-I・D-U・D-Q の実入力を固定する。未採用の別計画は根拠にしない。
