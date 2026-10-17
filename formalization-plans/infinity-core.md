@@ -3864,6 +3864,123 @@ lemma isLimitCone_iff_of_vertexIso {K X : SSet.{u}} [Quasicategory X] {p : K ⟶
 
 Core 対象ビルド：終了コード 0（1573 jobs）。監査：終了コード 0、累計 552 宣言、標準三公理のみ。A3d は写像空間の可縮性から終対象性を導く逆方向だけ未完了。A3e は未着手、A3f は任意、A3g は保留。§4 の設計変更はない。
 
+
+### A3d 逆方向の準備：境界の prism と fiber での充填（2026-10-18）
+
+Kerodon Lemma 4.4.2.15 の右ファイブレーション版を進めた。正則 pairing の左右のホーンの判定、終端と任意の単射の pushout-product の right anodyne 性、標準単体の先頭への収縮、右ファイブレーションへの境界ホモトピーの持ち上げ、可縮な先頭 fiber での境界の充填を実装。prism 全体への延長はまだ未完了であり、右ファイブレーションの可縮 fiber 判定も A3d の逆方向も完成と数えない。共通の `universe u`、`open CategoryTheory Limits HomotopicalAlgebra MonoidalCategory CartesianMonoidalCategory SSet MorphismProperty`、`open scoped Simplicial` の下での公開宣言の型は以下。
+
+PairingHorns：
+
+```lean
+lemma pairing_leftAnodyneExtensions {X : SSet.{u}} {A : X.Subcomplex}
+    (P : A.Pairing) [P.IsRegular]
+    (hn : ∀ s : P.II, (P.isUniquelyCodimOneFace s).index rfl ≠ Fin.last (s.val.dim + 1)) :
+    leftAnodyneExtensions A.ι
+
+lemma pairing_rightAnodyneExtensions {X : SSet.{u}} {A : X.Subcomplex}
+    (P : A.Pairing) [P.IsRegular]
+    (h0 : ∀ s : P.II, (P.isUniquelyCodimOneFace s).index rfl ≠ 0) :
+    rightAnodyneExtensions A.ι
+
+lemma pairingCore_leftAnodyneExtensions {X : SSet.{u}} {A : X.Subcomplex}
+    (P : A.PairingCore) [P.pairing.IsRegular]
+    (hn : ∀ s : P.ι, P.index s ≠ Fin.last (P.dim s + 1)) :
+    leftAnodyneExtensions A.ι
+
+lemma leftAnodyneExtensions_unionProd {m : ℕ} (k : Fin (m + 1)) (n : ℕ) :
+    leftAnodyneExtensions (Subcomplex.unionProd.{u} (horn (m + 1) k.castSucc) (boundary n)).ι
+
+lemma uniquelyCodimOneFace_op_index {X : SSet.{u}} {x y : X.S}
+    (h : x.IsUniquelyCodimOneFace y) : h.op.index rfl = (h.index rfl).rev
+
+lemma pairing_op_index_ne_zero {X : SSet.{u}} {A : X.Subcomplex}
+    (P : A.Pairing) [P.IsProper]
+    (hn : ∀ s : P.II, (P.isUniquelyCodimOneFace s).index rfl ≠ Fin.last (s.val.dim + 1))
+    (s : P.op.II) : (P.op.isUniquelyCodimOneFace s).index rfl ≠ 0
+
+lemma pairing_ofIso_index_ne_zero {X Y : SSet.{u}} {A : X.Subcomplex} {B : Y.Subcomplex}
+    (P : A.Pairing) [P.IsProper] (e : Y ≅ X) (hA : A.preimage e.hom = B)
+    (h0 : ∀ s : P.II, (P.isUniquelyCodimOneFace s).index rfl ≠ 0)
+    (s : (P.ofIso e hA).II) : ((P.ofIso e hA).isUniquelyCodimOneFace s).index rfl ≠ 0
+
+lemma rightAnodyneExtensions_unionProd_point (n : ℕ) :
+    rightAnodyneExtensions (Subcomplex.unionProd.{u} (horn 1 1) (boundary n)).ι
+```
+
+RightPrism：
+
+```lean
+lemma rightAnodyneExtensions_pushoutObjObj_point {A B : SSet.{u}} (i : A ⟶ B) [Mono i]
+    (sq : (curriedTensor SSet.{u}).PushoutObjObj (horn 1 1).ι i) :
+    rightAnodyneExtensions sq.ι
+
+lemma rightAnodyneExtensions_point_whiskerRight (A : SSet.{u}) :
+    rightAnodyneExtensions ((horn 1 1).ι ▷ A)
+```
+
+PrismContraction：
+
+```lean
+def prismFirstOrderHom (n : ℕ) : Fin 2 × Fin (n + 1) →o Fin (n + 1)
+
+def prismFirstContraction (n : ℕ) : (Δ[1] : SSet.{u}) ⊗ Δ[n] ⟶ Δ[n]
+
+noncomputable def prismEndpoint (i : Fin 2) (A : SSet.{u}) : A ⟶ (Δ[1] : SSet.{u}) ⊗ A
+
+lemma prismEndpoint_naturality (i : Fin 2) {A B : SSet.{u}} (f : A ⟶ B) :
+    prismEndpoint i A ≫ (Δ[1] ◁ f) = f ≫ prismEndpoint i B
+
+lemma prismFirstContraction_one (n : ℕ) :
+    prismEndpoint 1 (Δ[n] : SSet.{u}) ≫ prismFirstContraction n = 𝟙 Δ[n]
+
+lemma prismFirstContraction_zero (n : ℕ) :
+    prismEndpoint 0 (Δ[n] : SSet.{u}) ≫ prismFirstContraction n =
+      SSet.const (stdSimplex.obj₀Equiv.symm 0)
+
+lemma prismFirstContraction_horn_one (n : ℕ) :
+    ((horn 1 1).ι ▷ (Δ[n] : SSet.{u})) ≫ prismFirstContraction n =
+      snd (horn 1 1 : SSet.{u}) Δ[n]
+
+def hornOneLastVertex : (horn 1 1 : SSet.{u}) _⦋0⦌
+
+noncomputable def hornOneLastSection (A : SSet.{u}) : A ⟶ (horn 1 1 : SSet.{u}) ⊗ A
+
+lemma hornOneLastSection_ι (A : SSet.{u}) :
+    hornOneLastSection A ≫ ((horn 1 1).ι ▷ A) = prismEndpoint 1 A
+
+lemma hornOneLastSection_snd (A : SSet.{u}) :
+    hornOneLastSection A ≫ snd (horn 1 1 : SSet.{u}) A = 𝟙 A
+```
+
+BoundaryPrism：
+
+```lean
+lemma rightFibration_liftBoundaryPrism {E : SSet.{u}} {n : ℕ}
+    (p : E ⟶ (Δ[n] : SSet.{u})) [RightFibration p]
+    (a : (boundary n : SSet.{u}) ⟶ E) (ha : a ≫ p = (boundary n).ι) :
+    ∃ H : (Δ[1] : SSet.{u}) ⊗ (boundary n : SSet.{u}) ⟶ E,
+      prismEndpoint 1 (boundary n : SSet.{u}) ≫ H = a ∧
+        H ≫ p = (Δ[1] ◁ (boundary n).ι) ≫ prismFirstContraction n
+
+lemma boundaryPrism_zero_comp {E : SSet.{u}} {n : ℕ}
+    (p : E ⟶ (Δ[n] : SSet.{u}))
+    (H : (Δ[1] : SSet.{u}) ⊗ (boundary n : SSet.{u}) ⟶ E)
+    (hH : H ≫ p = (Δ[1] ◁ (boundary n).ι) ≫ prismFirstContraction n) :
+    (prismEndpoint 0 (boundary n : SSet.{u}) ≫ H) ≫ p =
+      SSet.const (stdSimplex.obj₀Equiv.symm 0)
+
+lemma boundaryPrism_fillZero {E : SSet.{u}} {n : ℕ}
+    (p : E ⟶ (Δ[n] : SSet.{u}))
+    (H : (Δ[1] : SSet.{u}) ⊗ (boundary n : SSet.{u}) ⟶ E)
+    (hH : H ≫ p = (Δ[1] ◁ (boundary n).ι) ≫ prismFirstContraction n)
+    (hc : IsContractibleKan (vertexFiber p (stdSimplex.obj₀Equiv.symm 0))) :
+    ∃ F : (Δ[n] : SSet.{u}) ⟶ E,
+      (boundary n).ι ≫ F = prismEndpoint 0 (boundary n : SSet.{u}) ≫ H ∧
+        F ≫ p = SSet.const (stdSimplex.obj₀Equiv.symm 0)
+```
+
+Core 対象ビルド：終了コード 0（1586 jobs）。監査：終了コード 0、累計 576 宣言、標準三公理のみ。A3d の逆方向、A3e は引き続き未完了。§4 の設計変更はない。
+
 ## 7. A3 の工程（2026-10-18 追加）
 
 A1・A2 の完了を受けて着手する。優先順は G1（infinity-categories.md §0）と D4・ε が使う順。

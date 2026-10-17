@@ -395,3 +395,5 @@ A3b の可逆辺のホーン充填を用いる。モデル構造は使わない�
 A3d 前半：`pinchedHomSliceFiberIso` は任意の単体集合の右 pinched 写像空間を slice 射影の頂点上の fiber と厳密に同定する。`IsTerminalVertex.pinchedHom_isContractibleKan` は quasicategory 性を仮定せず、終対象性から全ての右 pinched 写像空間の可縮性を導く。逆方向と同型不変性は未完了。
 
 A3d 続き：`terminalVertices_isContractibleKan` は終対象が一つ存在すれば終対象の全部分複体の全境界を充填する。周囲の quasicategory 性は不要。`IsTerminalVertex.of_vertexIso` と `IsLimitCone.of_vertexIso` は quasicategory を仮定し、前者は h X、後者は h(sliceOver p) の同型に関する不変性。可縮な右写像空間から終対象性へ戻る方向は引き続き未完了。
+
+A3d 逆方向の準備：Kerodon 4.4.2.14–15（https://kerodon.net/tag/01NU 、https://kerodon.net/tag/01A7 ）の右ファイブレーション版に沿い、`rightFibration_liftBoundaryPrism` で境界を先頭の fiber へ移す。`boundaryPrism_fillZero` はその fiber が可縮なら先頭の境界を充填する。全 prism へのセルごとの延長が残っている。これらはモデル構造を使わない組合せ論の補題。
