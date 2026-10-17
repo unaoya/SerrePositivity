@@ -461,6 +461,16 @@
   新規8主要宣言の公理は標準3公理のみ。U14公開入口から利用できる。
 - 主K・主導来圏・主Perfへの接続と三角性は引き続き受入条件として残す。
 
+## U14b.20：主ホモトピー圏への整合的shift比較（2026-10-17）
+
+- `HomotopyShiftCoherence.lean`：閉零加群圏の正規化CommShiftを商の普遍性で主Kへ
+  降ろし、`dgModuleFunctorHomotopyCommShift` を構成した。
+- 実際の `DGFunctor.onHomotopy` と閉零関手の因子分解自然同型を構成し、
+  その自然同型がshiftと整合的であることをMathlibの商APIで証明した。
+- 既存の主K関手の名前・型は変更していない。CommShiftは明示して使う定義である。
+- `ChecksHomotopyShiftCoherence` の対象ビルド成功。新規3主要宣言の公理は標準3公理のみ。
+- coneの連結射との比較、三角性、主導来圏・主Perfへの接続は引き続き残る。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
