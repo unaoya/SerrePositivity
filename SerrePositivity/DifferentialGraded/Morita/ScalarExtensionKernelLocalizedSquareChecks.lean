@@ -1,0 +1,12 @@
+module
+public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelLocalizedSquare
+
+/-! # 局所化kernel係数変更への実作用・Perf正方形の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded.Morita
+#print axioms scalarKernelLocalizedActionIso
+#print axioms scalarKernelLocalizedDerivedSquare
+#print axioms scalarKernelLocalizedDerivedSquare_augmentation
+#print axioms scalarKernelLocalized_columnsPerfect
+#print axioms scalarKernelLocalizedPerfectSquare
+#print axioms scalarKernelLocalizedPerfectSquare_inclusion

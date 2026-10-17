@@ -804,3 +804,32 @@ U16dの受入範囲・残る接続、U16aのcoherenceの進捗とは独立した
 - 担当98 Leanファイルを走査しsorry・admit・axiomトークン0件。
   新規引用なし。今回の変更はCriterionDerivedの入口・条件・監査と本記録の4パスのみ。
   他担当のCriterionPerf*・Coherence*、共有ルート・Stage*・READMEは変更していない。
+
+
+## U16d.27：局所化kernel係数変更への実作用・Perf正方形（2026-10-17）
+
+主担当からの確定受渡し `bdc030cb`（U16a）、`fb7a99a6`（実際の右随伴との統合）、
+`a17b756e`（Perf作用coherence）を確認した。
+残接続(1)には `perfectKernelCompositionIso_rightUnit`・`_leftUnit`・`_associator` が供給済み。
+従来の「Perfへのcoherence移送が残る」はこの受渡しで解消し、対応する局所Hom条件を保持して受け入れる。
+
+- `ScalarExtensionKernelLocalizedSquare.lean` は、既存の
+  `scalarKernelDerivedExtensionAugmentation` の通常モデルPでの可逆性hαを明示する。
+  hαは `scalarKernelDerivedExtensionAugmentation_isIso` のhπから供給できる。
+  hπをhPN・hP'から推論する宣言は追加していない。
+- `scalarKernelLocalizedActionIso` は、局所化した係数変更kernelの実際の作用を
+  通常係数変更モデルの実際の作用へ比較する。
+- `scalarKernelLocalizedDerivedSquare` は、hα・従来のhAug・hP'を保持し、
+  元の主kernelの作用と `scalarKernelDerivedExtension` の像の作用の正方形を構成する。
+  `_augmentation` は通常モデルへ増大した図式が従来の比較そのものに一致する等式である。
+- 元の列のperfect性から `scalarKernelLocalized_columnsPerfect` を導き、
+  `scalarKernelLocalizedPerfectSquare` と `_inclusion` で実際の主Perf正方形へ制限した。
+  係数変更後の列のperfect性を追加仮定にしていない。
+- 監査入口と公開入口の合同ビルド成功（3443 jobs、警告・エラー0）。6宣言の公理は標準3公理のみ。
+  ログは `/tmp/serre-u16d-27-audit.log`。U12f成分同定の受入はまだ行わない。
+
+残接続(2)は、**通常代表を指定しhα・hAug・hP'を明示した正方形**の範囲で接続した。
+通常kernel射に関する旧正方形の自然性は保持するが、新しい局所化正方形について
+全主導来kernel射の自然性をこの単位だけで主張しない。
+残接続(3)のU12f成分同定、(4)の実際のkernel合成との係数変更図式は継続する。
+中心作用は保留。U16d全体・U16全体の受入はまだ行わない。
