@@ -11,10 +11,11 @@ variable (A : Type u) [CommRing A] (C : Type v) [DGCategory A C] [Small.{u} C]
   (E : Type w) [DGCategory A E] [Small.{u} E] (hE : localHomKFlat A E)
   {T : Type z} [Category.{z'} T]
 
-/-- 指定右K-flatモデル上の自然同型を、指定局所化と置換余単位で全導来圏へ移す。 -/
-def rightKFlatDerivedIsoOfPrecomp (G H : DerivedBimoduleCategory A C E ⥤ T)
+/-- 指定右K-flatモデル上の自然同型を、右K-flat部分圏の局所化上へ移す。 -/
+def rightKFlatLocalizedIsoOfPrecomp (G H : DerivedBimoduleCategory A C E ⥤ T)
     (e : rightKFlatInclusion A C E ⋙ bimoduleToDerived A C E ⋙ G ≅
-      rightKFlatInclusion A C E ⋙ bimoduleToDerived A C E ⋙ H) : G ≅ H := by
+      rightKFlatInclusion A C E ⋙ bimoduleToDerived A C E ⋙ H) :
+      rightKFlatDerivedInclusion A C E ⋙ G ≅ rightKFlatDerivedInclusion A C E ⋙ H := by
   letI sourceLifting : Localization.Lifting (rightKFlatToDerived A C E)
       (rightKFlatQuasiIso A C E)
       (rightKFlatInclusion A C E ⋙ bimoduleToDerived A C E ⋙ G)
@@ -25,8 +26,14 @@ def rightKFlatDerivedIsoOfPrecomp (G H : DerivedBimoduleCategory A C E ⥤ T)
       (rightKFlatInclusion A C E ⋙ bimoduleToDerived A C E ⋙ H)
       (rightKFlatDerivedInclusion A C E ⋙ H) :=
     ⟨Functor.isoWhiskerRight (eqToIso (rightKFlatDerivedInclusion_fac A C E)) H⟩
-  let e' := Localization.liftNatIso (rightKFlatToDerived A C E) (rightKFlatQuasiIso A C E)
+  exact Localization.liftNatIso (rightKFlatToDerived A C E) (rightKFlatQuasiIso A C E)
     _ _ (rightKFlatDerivedInclusion A C E ⋙ G) (rightKFlatDerivedInclusion A C E ⋙ H) e
+
+/-- 指定右K-flatモデル上の自然同型を、指定局所化と置換余単位で全導来圏へ移す。 -/
+def rightKFlatDerivedIsoOfPrecomp (G H : DerivedBimoduleCategory A C E ⥤ T)
+    (e : rightKFlatInclusion A C E ⋙ bimoduleToDerived A C E ⋙ G ≅
+      rightKFlatInclusion A C E ⋙ bimoduleToDerived A C E ⋙ H) : G ≅ H := by
+  let e' := rightKFlatLocalizedIsoOfPrecomp A C E G H e
   exact (Functor.isoWhiskerRight (rightKFlatReplacementCounitIso A C E hE) G ≪≫
       Functor.leftUnitor G).symm ≪≫
     Functor.associator _ _ _ ≪≫

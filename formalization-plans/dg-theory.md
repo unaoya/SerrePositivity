@@ -10597,3 +10597,60 @@ U12e全体は未受入、U16a〜d・U15e分解版は未着手。全体の目標�
 Quotient/DerivedComparison*・Verdier/を読んで再利用し、重複実装しない。
 共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・ScalarExtension*・並行作業の
 Tensor/Associator*と他チャットの記録を編集していない。
+
+
+### 17.228 U12e68：K-flatモデルからの移送の計算・合成保存と外側左比較の一意性（2026-10-17）
+
+**既存APIと内部整理。** Derived/RightKFlatIsoLift.leanでは、既存の
+rightKFlatDerivedIsoOfPrecompの名前・引数・型・宇宙・仮定を保ったまま、
+内部の右K-flat部分圏の局所化上の構成をrightKFlatLocalizedIsoOfPrecompへ切り出した。
+局所化上だけの構成には終端Eのlocal Hom K-flat性を要求しない。
+全導来圏への移送で使う置換余単位と構成の順序は保持し、利用側の移行は不要である。
+
+**移送前の成分の回復。** Derived/RightKFlatIsoLiftComputation.leanは、全導来移送のhomを
+指定置換余単位による局所化上の比較の共役として計算する。
+包含の完全忠実性と比較の自然性を使い、右K-flat局所化への前合成で元の比較を回復することを示した。
+元の置換単位がMathlibの随伴化後の単位と同じという三角恒等式は仮定しない。
+rightKFlatDerivedIsoOfPrecomp_hom_appは任意の指定右K-flat閉零モデル上の元の成分との等式、
+_precompは自然同型そのものを回復する等式である。
+rightKFlatDerivedNatTrans_extは全導来関手の自然変換を同じモデル上で判定する入口を与える。
+値域は任意の圏であり、その対象宇宙・Hom宇宙は環やdg圏の宇宙から独立に保持する。
+
+**移送の自己・推移整合性。** 同ファイルの_refl・_trans・_whiskerRightは、
+移送が恒等自然同型・自然同型の合成・任意の関手への後合成を保つことを証明した。
+移送後の成分計算と等式判定を使うため、追加の置換の単位・余単位の整合性を利用側に要求しない。
+これらはモデル上の比較の恒等・合成式を全導来比較へ移す際に使う。
+
+**外側左制限比較のモデル計算。** Derived/BimoduleLeftRestrictionComputation.leanの
+_precomp・_app_rightKFlatは、§17.227のderivedBimoduleComposeLeftRestrictionIsoを
+指定右K-flatモデルへ制限すると、既存のsource表示、固定K-flatモデル比較の逆、target表示の逆の
+合成を回復することを証明した。
+_model_squareは両側の表示同型を固定した可換squareであり、元の固定モデル比較を厳密に回復する。
+_model_square_appは前因子が任意の導来対象の場合の式である。
+derivedBimoduleComposeLeftRestriction_hom_uniqueは、同じモデルsquareを満たす任意の自然変換が
+既存の全導来比較のhomに一致することを示す。比較候補の可逆性を先に仮定する必要はない。
+Cの局所Hom K-flat性やFの準同値性は追加していない。
+
+**検証。** Checks.DGRightKFlatIsoLiftComputationは、独立した値域の対象・Hom宇宙での成分回復、
+自然同型の合成保存、前因子が任意の導来対象での外側左比較のモデルsquare、
+ZMod 2での恒等保存を検査した。
+既存外側左比較・中間比較の全導来合成則・恒等則・解像度比較・導来同値・導来随伴・五角形・
+StageEight・StageSeven・Spectra.StageTwoを含む統合ビルド成功（3493 jobs、警告なし）。
+既存2宣言と新規14宣言の計16公開宣言の直接公理監査は重複・欠落なく標準3公理以内。
+新規監査累計4530宣言。今回の4 Leanファイルにsorry・admit・新規axiom・資源上限変更は0件。
+採用済み引用0件。Lean v4.35.0-rc4とMathlib manifest/HEAD
+e6bbacd0e1b7307ff6e17da09cd2455f60804fa6を再確認した。
+
+文書検査は21 Markdown・320 exposition参照を検査し、担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+既存未解決参照1件で失敗した。
+
+**残件と次工程。** 外側左比較の移送後の指定モデル計算は今回証明した。
+この計算・一意性を使った外側左制限の恒等・合成や他の比較との整合性は引き続き必要である。
+外側右制限の全導来比較、対角単位・結合子の保存、両端の解像度を同時に変える
+changeEquivalenceとの整合性を接続して、共通dg圏解像度変更のcoherenceを仕上げる。
+U12e全体は未受入、U16a〜d・U15e分解版は未着手。目標全体と順序を保持する。
+共有一般論への新しいAPI要求はない。U15e分解版では局所K-flat版の
+Quotient/DerivedComparison*・Verdier/を読んで再利用し、重複実装しない。
+共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・ScalarExtension*・並行作業の
+Tensor/Associator*と他チャットの記録を編集していない。
