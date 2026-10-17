@@ -126,3 +126,15 @@ complexSemifreeQuotientIso (S : Type u) [CommRing S] {M : ModuleCategory S PUnit
 `lake env lean scripts/audit_derived_infinity.lean` 成功（終了コード 0）、全9宣言は
 `propext`, `Classical.choice`, `Quot.sound` のみ。D2a に残りはない。
 未完了：D2b〜D2e・D2g。D2f は任意、D1・D3・D4 は今回の範囲外。
+
+### D2b（2026-10-17）
+
+完了。公開定理（namespace は同上）：
+```lean
+complexSemifree_isKProjective (S : Type u) [CommRing S]
+  {P : Complex S} (hP : complexSemifree S P) : P.IsKProjective
+```
+前提は可換環と semifree 性のみ。既存の加群の射影性と一点環の橋を合成した。
+対象ビルド `lake build SerrePositivity.InfinityCategories.Derived.SemifreeKProjective`、
+`lake env lean scripts/audit_derived_infinity.lean` は終了コード 0。
+全10公開宣言の公理は標準3公理のみ。D2b に残りなし。未完了は D2c〜D2e・D2g。

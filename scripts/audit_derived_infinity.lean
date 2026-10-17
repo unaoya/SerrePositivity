@@ -1,4 +1,4 @@
-import SerrePositivity.InfinityCategories.Derived.Semifree
+import SerrePositivity.InfinityCategories.Derived.SemifreeKProjective
 
 #print axioms SerrePositivity.InfinityCategories.complexSemifree
 #print axioms SerrePositivity.InfinityCategories.complexSemifree_iff
@@ -9,3 +9,5 @@ import SerrePositivity.InfinityCategories.Derived.Semifree
 #print axioms SerrePositivity.InfinityCategories.spherePresentationEvaluationIso
 #print axioms SerrePositivity.InfinityCategories.complexSemifreeStageZeroIso
 #print axioms SerrePositivity.InfinityCategories.complexSemifreeQuotientIso
+
+#print axioms SerrePositivity.InfinityCategories.complexSemifree_isKProjective
