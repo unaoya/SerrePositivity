@@ -9197,6 +9197,45 @@ D 上の hsop、全段の元の φ と A 上の整合式 hφ、`htp : t j₀ = (
 条件付き成果を Thm 4.0.3(a) や KL-Q の無条件な完成とは数えない。
 Cor 8.12 の宣言・使用・形の前提、他レーンの担当ファイルの変更は行っていない。
 
+#### KL-T：レーン B の Prop 10.2 受領と拡大閉性引数の解消（2026-10-17）
+
+レーン B が `BhattScholze/PerfectoidAlmostExtension.lean` に公開した
+`BhattScholze.perfectoidIdeal_isAlmostZero_extension` を受領した。
+指定どおり、R、素数 p、hR、g、実加群短完全列 S と三項の導来 p 完備性、
+両端の `Almost.IsAlmostZero (perfectoidIdeal R p hR g)` を受け取り中央の同じ条件を返す。
+依存先 `lake build SerrePositivity.BhattScholze.PerfectoidAlmost` は4438 jobsで成功。
+担当ファイルを編集せず、この公開証明をそのまま使う。
+
+新規 `CLMST/AllModuleTorFromBS.lean` の公開定理は次の三つ。
+
+- `perfectoidIdeal_allModule_tor_annihilated_of_powerTorsion`：正則局所 A、
+  perfectoid R と C、A 代数 C、`ψ : R →+* C`、g:R について、指定の (a) のみから
+  `∀ (N : ModuleCat.{u} A) (j : ℕ), 0 < j → ∀ s ∈ perfectoidIdeal R p hR g,
+   torCoefficientScalarEndomorphism C N j (ψ s) = 0` を証明する。
+- `conditional_corollary_4_0_4_of_powerTorsion`：前節の一般条件付き接続と同じ
+  t・hsop・hres・φ・hφ・ψ・a・j₀・ha・hI を保ち、hExt 引数を削除した。
+  正確な結論は元の低次数局所コホモロジー消滅と全 n・任意 y・全 i>0 の Koszul 消滅。
+- `completedTower_cohomology_vanishing_of_powerTorsion`：前節の実塔の接続を保ち、
+  `R := CompletedTower A t p` と元の `algebraMap R C` 作用を使う。
+  hres は正則パラメータから、ha は `t j₀ = (p : A)` から証明して供給し、
+  hExt は受領した Prop 10.2 の証明から供給する。正確な型は公開宣言に保存した。
+
+(a) はどの入口でも指定どおり
+`∀ (N : ModuleCat.{u} A) (k : ℕ), (∀ x : N, (p : A)^k • x = 0) →
+ ∀ j : ℕ, 0 < j → ∀ s ∈ I, torCoefficientScalarEndomorphism C N j (ψ s) = 0`。
+I は同じ元の perfectoid ideal であり、k=0 や非有限生成 N を除外しない。
+
+証明は CLMST v4 Thm 4.0.3(a), pp.27–28 の既存 Milnor 証明に
+BS 著者版 Prop 10.2, p.78 の実証明を渡す。Cor 4.0.4, p.28 の両結論への合流も保持。
+集約 `KLAllModule` と専用監査を更新し、ルートへの追加は既存の一行だけを維持した。
+対象ビルド（4680 jobs）と公開8定理の assert_no_sorry・依存閉包の標準三公理限定監査が成功。
+ルートビルドも6766 jobsで成功した。各コマンドは pipefail 付きで終了コード0を確認した。
+
+指定された二入力からの全加群帰着、条件付き KL-Q 合流、および届いた (b) の解消を実装した。
+(a) の実供給は指示で今回範囲外とされた Cor 8.12 を使う工程であり着手しない。
+hI は指示どおり残す。従って Thm 4.0.3(a) の無条件な成立や KL 全体の完成、
+Cor 4.0.4 の引用置換は主張しない。Cor 8.12 の宣言・使用・形の前提は追加していない。
+
 #### Prop 2.4.7 専任系列：原典から D-I/U/Q への型付き受渡し（2026-10-17）
 
 本節は統合表 D-I・D-U・D-Q の実入力を固定する。未採用の別計画は根拠にしない。

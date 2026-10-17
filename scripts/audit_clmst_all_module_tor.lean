@@ -17,6 +17,16 @@ assert_no_sorry SerrePositivity.CLMST.completedTower_cohomology_vanishing_of_pow
 #print axioms SerrePositivity.CLMST.completedTower_cohomology_vanishing_of_powerTorsion_and_extension
 #check @SerrePositivity.CLMST.completedTower_cohomology_vanishing_of_powerTorsion_and_extension
 
+assert_no_sorry SerrePositivity.CLMST.perfectoidIdeal_allModule_tor_annihilated_of_powerTorsion
+#print axioms SerrePositivity.CLMST.perfectoidIdeal_allModule_tor_annihilated_of_powerTorsion
+#check @SerrePositivity.CLMST.perfectoidIdeal_allModule_tor_annihilated_of_powerTorsion
+assert_no_sorry SerrePositivity.CLMST.conditional_corollary_4_0_4_of_powerTorsion
+#print axioms SerrePositivity.CLMST.conditional_corollary_4_0_4_of_powerTorsion
+#check @SerrePositivity.CLMST.conditional_corollary_4_0_4_of_powerTorsion
+assert_no_sorry SerrePositivity.CLMST.completedTower_cohomology_vanishing_of_powerTorsion
+#print axioms SerrePositivity.CLMST.completedTower_cohomology_vanishing_of_powerTorsion
+#check @SerrePositivity.CLMST.completedTower_cohomology_vanishing_of_powerTorsion
+
 meta section
 open Lean Elab Command
 private partial def checkStandardOnly (todo : List Name) (seen : NameSet) : CoreM Unit := do
@@ -39,6 +49,9 @@ elab "assert_allModule_standard_only" : command => do
      ``SerrePositivity.CLMST.perfectoidIdeal_allModule_tor_annihilated,
      ``SerrePositivity.CLMST.conditional_corollary_4_0_4_of_powerTorsion_and_extension,
      ``SerrePositivity.CLMST.completedTower_allModule_tor_annihilated,
-     ``SerrePositivity.CLMST.completedTower_cohomology_vanishing_of_powerTorsion_and_extension] {}
+     ``SerrePositivity.CLMST.completedTower_cohomology_vanishing_of_powerTorsion_and_extension,
+     ``SerrePositivity.CLMST.perfectoidIdeal_allModule_tor_annihilated_of_powerTorsion,
+     ``SerrePositivity.CLMST.conditional_corollary_4_0_4_of_powerTorsion,
+     ``SerrePositivity.CLMST.completedTower_cohomology_vanishing_of_powerTorsion] {}
 end
 assert_allModule_standard_only
