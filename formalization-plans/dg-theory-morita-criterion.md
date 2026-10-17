@@ -176,3 +176,21 @@ Yoneda 像であること、表現可能対象間の導来射にもそのよう�
 比較について、源の shift と射影解像度の shift を結ぶ可換図式を証明する。その結果を
 `criterionPerfFullyFaithfulOfRepresentables` と同値証拠の必要性へ接続する。
 最終的な三条件 ⇔ Perf 同値はまだ主張しない。
+
+## 前合成と源 shift の全次数の可換図式
+
+主作用への H⁰ 接続は `c7b1e3bb`（直後の stat は自分の4ファイルのみ）。
+`CriterionPerfResolvedHomShift.lean` の `criterionPerfHomSourceShiftIso_apply` は、
+源 shift の chain 同型を shift の次数 -s の包含との豊穣合成として全次数で記述する。
+`criterionPerfModuleShiftIn_naturality` はその包含と閉零射の可換性を、全 Hom end の
+各評価上で証明する。Koszul 符号と次数の再添字付けは、既存の shift の定義に従う。
+
+`criterionPerfHomPrecompose_apply` は閉零射による Hom の前合成を全次数で記述し、
+`criterionPerfHomSourceShiftIso_precompose` は、任意の閉零射 f と任意の標的 T について
+`precomp(shift f) ≫ sourceShiftIso = sourceShiftIso ≫ shift(precomp f)` を chain map の
+等式として証明する。f の射影性や擬同型性の仮定は不要で、射影解像度の増強にも使える。
+
+検証：`CriterionPerfResolvedHomShiftChecks` の対象ビルド成功（2812 jobs、警告なし）。
+主要4宣言は標準3公理のみ。H⁰ の主作用比較と同時 import している。
+新規 sorry・axiom・引用なし。tensor dg 関手自身の shift 比較との接続と、最終必要十分
+条件は未完のまま保持する。
