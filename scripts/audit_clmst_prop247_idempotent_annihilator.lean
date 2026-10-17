@@ -1,0 +1,5 @@
+import SerrePositivity.CommutativeAlgebra.IdempotentAnnihilator
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.annihilator_span_one_sub_of_idempotent
+#print axioms SerrePositivity.annihilator_span_one_sub_of_idempotent
