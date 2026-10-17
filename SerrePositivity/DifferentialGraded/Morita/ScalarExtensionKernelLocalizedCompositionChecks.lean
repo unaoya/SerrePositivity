@@ -1,0 +1,11 @@
+module
+public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelLocalizedComposition
+
+/-! # 実際のkernel合成を使う係数変更作用図式の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded.Morita
+#print axioms ScalarKernelLocalizedConditions
+#print axioms scalarKernelLocalizedCompositionSquare
+#print axioms scalarKernelLocalizedCompositionSquare_diagram
+#print axioms scalarKernelLocalizedCompositionPerfectSquare
+#print axioms scalarKernelLocalizedCompositionPerfectSquare_inclusion

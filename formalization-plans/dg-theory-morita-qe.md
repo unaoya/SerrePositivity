@@ -873,3 +873,25 @@ U16dの受入範囲・残る接続、U16aのcoherenceの進捗とは独立した
 - 監査入口のビルド成功（3244 jobs）。7宣言の公理は標準3公理のみ。
   ログは `/tmp/serre-u16d-output-models-audit.log`。
   U12f成分同定はこれらの計算と評価比較を合わせる次の接続であり、この単位では未完とする。
+
+
+## U16d.30：実際のkernel合成比較を使う係数変更作用図式
+
+- `ScalarExtensionKernelLocalizedComposition.lean` は、hα・hAug・hP'を
+  `ScalarKernelLocalizedConditions` の独立した三フィールドとして保持する。
+  比較同型や可換図式そのものを仮定として格納していない。
+- `scalarKernelLocalizedCompositionSquare` は、U16d.27の実際の二つの正方形を、
+  元のkernelの公開 `kernelCompositionIso` と係数変更後のkernelの同じ公開比較で貼り合わせる。
+  `scalarKernelLocalizedCompositionSquare_diagram` はこの実際の作用図式の可換等式。
+  元の始域DのhDと、係数変更後の始域のhD'を明示し、非flat係数変更からhD'を推論しない。
+- `scalarKernelLocalizedCompositionPerfectSquare` と `_inclusion` で、元の二kernelの列のperfect性から
+  この実際の作用正方形をPerfへ制限した。係数変更後の列のperfect性はU16d.27から供給する。
+- 対象監査入口のビルド成功（3303 jobs、警告・エラー0）。5宣言の公理は標準3公理のみ。
+  ログは `/tmp/serre-u16d-composition-audit.log`。
+
+これは**実際のkernel合成と、各kernelを局所化係数変更した作用の図式**として受け入れる。
+ただし終域kernelは、二つの係数変更kernelの合成である。
+`scalarKernelDerivedExtension` を元の合成kernelに適用した対象とのkernel同型、
+およびその同型を通す場合の既存正方形との一致は、この貼合せだけからは主張しない。
+従来の残接続(4)のこの比較・整合性は引き続き未完である。
+中心作用は保留。U16d全体・U16全体の受入は宣言しない。
