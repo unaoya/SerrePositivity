@@ -10466,3 +10466,69 @@ U12e全体は未受入、U16a〜d・U15e分解版は未着手。全体の目標�
 Quotient/DerivedComparison*・Verdier/を読んで再利用し、重複実装しない。
 共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・ScalarExtension*・並行作業の
 Tensor/Associator*と他チャットの記録を編集していない。
+
+
+### 17.226 U12e66：中間圏比較の全導来合成則と共通解像度sourceへの適用（2026-10-17）
+
+**指定増大から全導来sourceへ。** Derived/BimoduleMiddleAugmentedSource.leanは、
+Gに沿う制限への指定増大qをさらにFで制限して、二段階の全導来sourceへ送る
+middleIteratedAugmentedSourceMapを構成した。元の増大には準同型性を課さない。
+qが準同型のとき、全導来sourceの正規化との合成が、§17.222の既存の
+実際のモデル上のderivedMiddleCompositeSourceIsoと一段階の表示同型の合成に一致する。
+Derived/BimoduleMiddleAugmentedTransport.leanは同じsource射を、前段比較のsourceを
+両因子の導来射で移送した射と一致させた。右制限表示の全Hom自然性と導来合成の自然性を使い、
+新しいsource同型を比較射から逆算していない。
+
+**二段階比較のモデル計算。** Derived/BimoduleMiddleIteratedComputation.leanの
+middleIteratedAugmentedComparison_facは、指定source射を二段階の実際の全導来比較へ前合成すると、
+Fの標準モデル比較、増大qによる既存導来合成関手の射、Gの標準モデル比較の順の合成になることを示す。
+後因子Qと制限後の指定モデルRには右相対K-flat性を要求するが、qの準同型性は不要。
+前因子PのK-flat性も要求しない。
+
+**全導来合成則。** Derived/BimoduleMiddleFullComposition.leanの
+**derivedMiddleRestrictionNatTrans_functor_comp**は、独立に構成した
+middleIteratedDerivedSourceIso.homと合成dg関手F.comp Gの既存比較の合成が、
+既存比較を二段階で適用したmiddleIteratedDerivedComparisonに一致することを証明した。
+G制限の標準semifree増大を使う場合、さらにFで制限した増大も対象ごと準同型であり、
+指定source射は可逆になる。それを前合成して上記のモデル計算・source正規化squareを適用し、
+§17.222の標準解像度上の合成則へ帰着した。
+最後に§17.224のmiddleDerivedFamily_extを用い、両変数の全導来圏上の自然変換の等式に降ろした。
+_appは両変数とも任意の導来対象に適用できる成分式である。
+この合成則にF・Gの準同値性や中間D・E・Tの局所Hom K-flat性は要求しない。
+局所Hom K-flat性は合成の終端Lだけで、任意の可換環と独立した五つの対象宇宙を保持する。
+
+準同値F・Gの場合はmiddleIteratedDerivedIsoを既存の比較自然同型の二段階合成として構成し、
+derivedMiddleRestrictionIso_functor_compで自然同型そのものの推移整合性を証明した。
+比較射の可逆性だけから合成則を仮定したものではない。
+
+**dg圏解像度の比較脚。** Resolution/MiddleCompositionComparison.leanは共通比較sourceの
+両脚comparisonLeft・comparisonRightに、この既存導来制限・導来合成の自然同型を適用する。
+middleComparisonLeftIsoは元のdg圏の対象型のsmallnessを要求しない。
+middleComparisonRightIsoは既存の標準解像度を作るために元の対象型のsmallnessを明示する。
+どちらも元のHomのK-flat性は不要であり、outer終端Lだけの局所Hom K-flat性を使う。
+_refineは共通sourceを任意の準同値Hでさらに細分したときの、一段階と二段階の比較の一致である。
+Hのsourceの局所Hom K-flat性を追加しない。既存公開APIの名前・型は変更せず、12公開宣言を追加した。
+
+**検証。** Checks.DGBimoduleMiddleFullCompositionは、両変数とも任意の導来対象での
+実際の合成則、準同値での自然同型の合成則、元の対象型のsmallnessなしの比較左脚、
+右脚のsmallnessの明示、独立した対象宇宙とZMod 2での全導来合成則を検査した。
+既存全導来恒等則・モデル合成則・source表示・導来同値・解像度独立性・導来随伴・五角形・
+StageEight・StageSeven・Spectra.StageTwoを含む統合ビルド成功（3483 jobs、警告なし）。
+12公開宣言の直接公理監査は重複・欠落なく標準3公理以内。新規監査累計4489宣言。
+今回の6 Leanファイルにsorry・admit・新規axiom・資源上限変更は0件。採用済み引用0件。
+Lean v4.35.0-rc4とMathlib manifest/HEAD e6bbacd0e1b7307ff6e17da09cd2455f60804fa6を再確認した。
+
+文書検査は21 Markdown・320 exposition参照を検査し、担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+既存未解決参照1件で失敗した。
+
+**残件と次工程。** 中間圏制限に沿う比較の自己・推移則は両変数の全導来圏上まで証明した。
+今回の比較脚への適用だけで、両端の解像度を同時に変更する既存changeEquivalenceが
+導来合成・対角単位・結合子を保存することまで証明したとはしない。
+次に外側の左右制限と合成の比較、対角単位・結合子との整合性を接続し、
+共通dg圏解像度による変更のcoherenceを仕上げて§15.2全体を監査する。
+U12e全体は未受入、U16a〜d・U15e分解版は未着手。全体の目標と順序を保持する。
+共有一般論への新しいAPI要求はない。U15e分解版では局所K-flat版の
+Quotient/DerivedComparison*・Verdier/を読んで再利用し、重複実装しない。
+共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・ScalarExtension*・並行作業の
+Tensor/Associator*と他チャットの記録を編集していない。
