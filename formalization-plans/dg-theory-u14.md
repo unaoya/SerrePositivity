@@ -935,6 +935,15 @@
 - `ChecksScalarHomShortExact` 対象ビルド成功（3034 jobs）。主要5宣言の公理は標準3公理のみ。
   既存APIの名前・型は変更していない。新しいsorry・axiom・引用は追加していない。
 
+## U14b.55：実際のHom係数変更比較の整数shift閉性（2026-10-17）
+
+- `ScalarHomShift.lean`：係数変更したambient dg圏内で、元のshift包含・射影を純粋tensorとして送り、
+  任意の反変複体値dg関手に対する符号反転shift表示を構成した。逆の合成と微分を明示的に照合した。
+- 実際の加群係数拡大dg関手の全次数合成保存から、Hom係数変更比較のshift可換正方形を証明。
+  この正方形と両辺の真のchain isoにより、Hom比較の擬同型条件の整数shift閉性を証明した。
+- `ChecksScalarHomShift` 対象ビルド成功（3049 jobs）。主要11宣言の公理は標準3公理のみ。
+  既存APIの名前・型は変更していない。新しいsorry・axiom・引用は追加していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。

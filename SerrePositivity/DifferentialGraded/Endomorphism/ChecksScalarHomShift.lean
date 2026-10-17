@@ -1,0 +1,17 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarHomShift
+
+/-! # 実際のHom係数変更比較の整数shift閉性の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+#print axioms scalarBaseChange_compose
+#print axioms scalarModuleShiftOppImageOut
+#print axioms scalarModuleShiftOppImageIn
+#print axioms scalarModuleShiftOppImageOut_d
+#print axioms scalarModuleShiftOppImageOutIn
+#print axioms scalarModuleShiftOppImageInOut
+#print axioms scalarModuleShiftOppImageIso
+#print axioms scalarContraShiftComparison_naturality
+#print axioms scalarModuleHom_shift_square
+#print axioms scalarModuleHom_shift
+#print axioms scalarModuleHomComparisonLocusStableUnderShift
