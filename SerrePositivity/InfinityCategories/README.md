@@ -1059,3 +1059,33 @@ A は任意の可換環、B,C,D は非有界の `Complex A`。閉性・整合式
 
 N7a、N7b、N7c は完了。未完了は N7d（充満 dg 部分圏への制限）と N7e（任意の引き戻しの頂点の比較）。
 N7f の双対は任意項目。新規公開 17 宣言の正確な型と前提は計画 §5 の N7c13 に記録する。
+
+
+## N7.16：充満部分圏への制限と Semifree の零・標準引き戻し（N7d 完了、2026-10-18）
+
+`fullInclusion_mono` により充満 dg 部分圏の包含の dg nerve は単射。
+`range_le_fullOnObjects_of_vertices` は写像の全頂点の対象が P を持てばその全像が
+`fullOnObjects A D P` に含まれることを示す。
+`fullInclusionLift` は N5 の `range_inclusion` と像への同型を使い、その写像を部分圏へ持ち上げる。
+全頂点を覆う写像に沿う延長を扱う `fullInclusion_extension` を、正次元境界の join に適用した。
+これにより `isLimitCone_of_fullInclusion` と `isPullbackSquare_of_fullInclusion` は、
+部分圏内の錐・四角形の周囲での極限性・引き戻し性を部分圏へ反映する。閉性の仮定はこの反映自体には不要。
+
+`fullFiberSquare P g h hB hC hD hP` は B,C,D と標準 fiber が P に属するときの部分圏内の四角形。
+`fullFiberSquare_inclusion` は包含像が周囲の標準四角形に等しいこと、
+`fullFiberSquare_isPullback` はその ∞ 引き戻し性を証明する。
+したがって錐・シフト・有限直和などの閉性により fiber の所属 hP を得る任意の充満部分圏へ適用できる。
+零複体の所属だけから、`isTerminalVertex_full_zero`・`isInitialVertex_full_zero` が零対象を与える。
+
+Semifree への適用前に、`formalization-plans/derived-infinity-category.md` の
+D2h 完了（§5、2026-10-18）と D2h′ 完了の記録を確認した。
+`Derived/SemifreeClosure.lean` の `complexSemifree_zero` と
+`complexSemifree_biprodFiber`（二項直和と fiber の無条件の閉性）を使用する。
+`semifreeFiberSquare` と `semifreeFiberSquare_isPullback` は任意の Semifree B,C,D の標準引き戻しを構成し、
+`semifreeFiberSquare_inclusion` は周囲の標準四角形との一致を与える。
+`isTerminalVertex_semifree_zero`・`isInitialVertex_semifree_zero` も証明済み。
+これらの標的 `dgNerve A (Semifree A)` は定義上 `derivedInfinityCategory A` と同じ単体集合。
+集約の循環 import を避けるため Derived/InfinityCategory 自体は import しない。
+
+N7a–N7d は完了。残る必須項目は N7e（任意の引き戻しの頂点と標準 fiber の比較・擬同型性）。
+N7f は任意項目。新規公開 28 宣言の正確な型と前提は計画 §5 の N7d に記録する。

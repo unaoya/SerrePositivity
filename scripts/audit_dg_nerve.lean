@@ -2085,6 +2085,65 @@ noncomputable section
 #print axioms SerrePositivity.InfinityCategories.DGNerve.standardFiberSquare_isPullback
 #check @SerrePositivity.InfinityCategories.DGNerve.standardFiberSquare_isPullback
 
+-- N7d: 充満部分圏への極限性の制限と Semifree の零・標準引き戻し。
+#print axioms SerrePositivity.InfinityCategories.DGNerve.map_inclusion_injective
+#check @SerrePositivity.InfinityCategories.DGNerve.map_inclusion_injective
+#print axioms SerrePositivity.InfinityCategories.DGNerve.range_le_fullOnObjects_of_vertices
+#check @SerrePositivity.InfinityCategories.DGNerve.range_le_fullOnObjects_of_vertices
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fullInclusionLift
+#check @SerrePositivity.InfinityCategories.DGNerve.fullInclusionLift
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fullInclusionLift_comp
+#check @SerrePositivity.InfinityCategories.DGNerve.fullInclusionLift_comp
+#print axioms SerrePositivity.InfinityCategories.DGNerve.joinMap_vertices_surjective
+#check @SerrePositivity.InfinityCategories.DGNerve.joinMap_vertices_surjective
+#print axioms SerrePositivity.InfinityCategories.DGNerve.boundary_vertices_surjective
+#check @SerrePositivity.InfinityCategories.DGNerve.boundary_vertices_surjective
+#print axioms SerrePositivity.InfinityCategories.DGNerve.boundaryJoin_vertices_surjective
+#check @SerrePositivity.InfinityCategories.DGNerve.boundaryJoin_vertices_surjective
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fullInclusion_extension
+#check @SerrePositivity.InfinityCategories.DGNerve.fullInclusion_extension
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fullInclusionCone
+#check @SerrePositivity.InfinityCategories.DGNerve.fullInclusionCone
+#print axioms SerrePositivity.InfinityCategories.DGNerve.isLimitCone_of_fullInclusion
+#check @SerrePositivity.InfinityCategories.DGNerve.isLimitCone_of_fullInclusion
+#print axioms SerrePositivity.InfinityCategories.DGNerve.isPullbackSquare_of_fullInclusion
+#check @SerrePositivity.InfinityCategories.DGNerve.isPullbackSquare_of_fullInclusion
+#print axioms SerrePositivity.InfinityCategories.DGNerve.liftToFull_yoneda_inclusion
+#check @SerrePositivity.InfinityCategories.DGNerve.liftToFull_yoneda_inclusion
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fullFiberUpperTriangle
+#check @SerrePositivity.InfinityCategories.DGNerve.fullFiberUpperTriangle
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fullFiberLowerTriangle
+#check @SerrePositivity.InfinityCategories.DGNerve.fullFiberLowerTriangle
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fullFiberTriangles_compatible
+#check @SerrePositivity.InfinityCategories.DGNerve.fullFiberTriangles_compatible
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fullFiberSquare
+#check @SerrePositivity.InfinityCategories.DGNerve.fullFiberSquare
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fullFiberSquare_inclusion
+#check @SerrePositivity.InfinityCategories.DGNerve.fullFiberSquare_inclusion
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fullFiberSquare_isPullback
+#check @SerrePositivity.InfinityCategories.DGNerve.fullFiberSquare_isPullback
+#print axioms SerrePositivity.InfinityCategories.DGNerve.isTerminalVertex_of_fullInclusion
+#check @SerrePositivity.InfinityCategories.DGNerve.isTerminalVertex_of_fullInclusion
+#print axioms SerrePositivity.InfinityCategories.DGNerve.isTerminalVertex_full_zero
+#check @SerrePositivity.InfinityCategories.DGNerve.isTerminalVertex_full_zero
+#print axioms SerrePositivity.InfinityCategories.DGNerve.isInitialVertex_of_fullInclusion
+#check @SerrePositivity.InfinityCategories.DGNerve.isInitialVertex_of_fullInclusion
+#print axioms SerrePositivity.InfinityCategories.DGNerve.isInitialVertex_full_zero
+#check @SerrePositivity.InfinityCategories.DGNerve.isInitialVertex_full_zero
+#print axioms SerrePositivity.InfinityCategories.DGNerve.isTerminalVertex_semifree_zero
+#check @SerrePositivity.InfinityCategories.DGNerve.isTerminalVertex_semifree_zero
+#print axioms SerrePositivity.InfinityCategories.DGNerve.isInitialVertex_semifree_zero
+#check @SerrePositivity.InfinityCategories.DGNerve.isInitialVertex_semifree_zero
+#print axioms SerrePositivity.InfinityCategories.DGNerve.semifreeFiberSquare
+#check @SerrePositivity.InfinityCategories.DGNerve.semifreeFiberSquare
+#print axioms SerrePositivity.InfinityCategories.DGNerve.semifreeFiberSquare_isPullback
+#check @SerrePositivity.InfinityCategories.DGNerve.semifreeFiberSquare_isPullback
+#print axioms SerrePositivity.InfinityCategories.DGNerve.semifreeFiberSquare_inclusion
+#check @SerrePositivity.InfinityCategories.DGNerve.semifreeFiberSquare_inclusion
+
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fullInclusion_mono
+#check @SerrePositivity.InfinityCategories.DGNerve.fullInclusion_mono
+
 section
 universe u v
 variable (A : Type u) [CommRing A] (D : Type v)

@@ -10807,6 +10807,266 @@ lemma standardFiberSquare_isPullback (g : B ⟶ D) (h : C ⟶ D) :
 N7c 完了。N7a・N7b も完了済み。未完了は N7d と N7e。N7f は任意項目。
 N7d の Semifree への適用は D2h の閉性の記録を読んでから進める。
 
+
+
+### N7d：充満部分圏への制限と Semifree の零・標準引き戻し（完了、2026-10-18）
+
+N5 の range_inclusion を使い、全頂点の対象が P を満たす周囲の写像を部分圏へ持ち上げた。
+正次元境界の join が全頂点を覆うことから、周囲での充填を部分圏へ持ち上げられる。
+これにより部分圏内の任意の錐・四角形について極限性・引き戻し性を周囲から反映した。
+標準 fiber が P に属するとき標準四角形を部分圏内に構成して、その引き戻し性も証明した。
+零複体を含むときの始対象性と終対象性も反映した。
+
+Semifree への適用前に正本 derived-infinity-category.md の D2h 完了・D2h′ 完了の記録を確認し、
+SemifreeClosure の零・有限直和・fiber の閉性を使用した。別チャットのファイルは編集していない。
+Semifree の標準四角形の引き戻し性には、B,C,D の semifree 性以外の追加仮定はない。
+DGNerve の集約と Derived/InfinityCategory の循環 import を避け、標的は dgNerve A (Semifree A) と表記する。
+
+以下は新規公開 28 宣言の正確な型。
+一般 dg 圏は `{A : Type u} [CommRing A] (D : Type v) [DGCategory A D] (P : D → Prop)`、
+複体では `P : Complex A → Prop` と `{B C D : Complex A}`、Semifree は任意の可換環 A が前提。
+closure は一般の fullFiberSquare では各対象の所属として明示し、Semifree では実際の閉性定理から導出する。
+
+`SerrePositivity.InfinityCategories.DGNerve.map_inclusion_injective`：
+
+```lean
+lemma map_inclusion_injective (n : ℕ) :
+    Function.Injective (fun s : Simplex A (DGFullSubcategory D P) n =>
+      s.map (dgFullSubcategoryInclusion A D P))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.range_le_fullOnObjects_of_vertices`：
+
+```lean
+lemma range_le_fullOnObjects_of_vertices {Z : SSet.{max u v}} (F : Z ⟶ dgNerve A D)
+    (hvertices : ∀ z : Z _⦋0⦌, P ((F.app _ z).obj 0)) :
+    SSet.Subcomplex.range F ≤ fullOnObjects A D P
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fullInclusionLift`：
+
+```lean
+def fullInclusionLift {Z : SSet.{max u v}} (F : Z ⟶ dgNerve A D)
+    (hvertices : ∀ z : Z _⦋0⦌, P ((F.app _ z).obj 0)) : Z ⟶ dgNerve A (DGFullSubcategory D P)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fullInclusionLift_comp`：
+
+```lean
+lemma fullInclusionLift_comp {Z : SSet.{max u v}} (F : Z ⟶ dgNerve A D)
+    (hvertices : ∀ z : Z _⦋0⦌, P ((F.app _ z).obj 0)) :
+    fullInclusionLift A D P F hvertices ≫ dgNerve.map (dgFullSubcategoryInclusion A D P) = F
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.joinMap_vertices_surjective`：
+
+```lean
+lemma joinMap_vertices_surjective {K K' L L' : SSet.{u}} (f : K ⟶ K') (g : L ⟶ L')
+    (hf : Function.Surjective (f.app (op ⦋0⦌)))
+    (hg : Function.Surjective (g.app (op ⦋0⦌))) :
+    Function.Surjective ((joinMap f g).app (op ⦋0⦌))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.boundary_vertices_surjective`：
+
+```lean
+lemma boundary_vertices_surjective (n : ℕ) :
+    Function.Surjective ((SSet.boundary (n + 1)).ι.app (op ⦋0⦌) :
+      (SSet.boundary (n + 1) : SSet.{u}) _⦋0⦌ → (Δ[n + 1] : SSet.{u}) _⦋0⦌)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.boundaryJoin_vertices_surjective`：
+
+```lean
+lemma boundaryJoin_vertices_surjective (n : ℕ) (K : SSet.{u}) :
+    Function.Surjective ((joinMap (SSet.boundary (n + 1)).ι (𝟙 K)).app (op ⦋0⦌))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fullInclusion_extension`：
+
+```lean
+lemma fullInclusion_extension {T Z : SSet.{max u v}} (j : T ⟶ Z)
+    (hj : Function.Surjective (j.app (op ⦋0⦌)))
+    (a : T ⟶ dgNerve A (DGFullSubcategory D P)) (F : Z ⟶ dgNerve A D)
+    (h : j ≫ F = a ≫ dgNerve.map (dgFullSubcategoryInclusion A D P)) :
+    ∃ L : Z ⟶ dgNerve A (DGFullSubcategory D P), j ≫ L = a ∧
+      L ≫ dgNerve.map (dgFullSubcategoryInclusion A D P) = F
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fullInclusionCone`：
+
+```lean
+def fullInclusionCone {K : SSet.{max u v}} {p : K ⟶ dgNerve A (DGFullSubcategory D P)}
+    (c : JoinCone p) : JoinCone (p ≫ dgNerve.map (dgFullSubcategoryInclusion A D P))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.isLimitCone_of_fullInclusion`：
+
+```lean
+lemma isLimitCone_of_fullInclusion {K : SSet.{max u v}}
+    {p : K ⟶ dgNerve A (DGFullSubcategory D P)} (c : JoinCone p)
+    (hc : IsLimitCone (fullInclusionCone A D P c)) : IsLimitCone c
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.isPullbackSquare_of_fullInclusion`：
+
+```lean
+lemma isPullbackSquare_of_fullInclusion
+    (F : (Δ[1] ⊗ Δ[1] : SSet.{max u v}) ⟶ dgNerve A (DGFullSubcategory D P))
+    (hF : IsPullbackSquare (F ≫ dgNerve.map (dgFullSubcategoryInclusion A D P))) :
+    IsPullbackSquare F
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.liftToFull_yoneda_inclusion`：
+
+```lean
+lemma liftToFull_yoneda_inclusion {n : ℕ} (s : Simplex A D n) (hs : ∀ i, P (s.obj i)) :
+    SSet.yonedaEquiv.symm (liftToFull A D P s hs) ≫
+        dgNerve.map (dgFullSubcategoryInclusion A D P) = SSet.yonedaEquiv.symm s
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fullFiberUpperTriangle`：
+
+```lean
+def fullFiberUpperTriangle (g : B ⟶ D) (h : C ⟶ D)
+    (hC : P C) (hD : P D) (hP : P (pullbackFiber g h)) :
+    Simplex A (DGFullSubcategory (Complex A) P) 2
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fullFiberLowerTriangle`：
+
+```lean
+def fullFiberLowerTriangle (g : B ⟶ D) (h : C ⟶ D)
+    (hB : P B) (hD : P D) (hP : P (pullbackFiber g h)) :
+    Simplex A (DGFullSubcategory (Complex A) P) 2
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fullFiberTriangles_compatible`：
+
+```lean
+lemma fullFiberTriangles_compatible (g : B ⟶ D) (h : C ⟶ D)
+    (hB : P B) (hC : P C) (hD : P D) (hP : P (pullbackFiber g h)) :
+    SSet.stdSimplex.δ (1 : Fin 3) ≫
+        (SSet.yonedaEquiv.symm (fullFiberUpperTriangle P g h hC hD hP) :
+          (Δ[2] : SSet.{u + 1}) ⟶ dgNerve A (DGFullSubcategory (Complex A) P)) =
+      SSet.stdSimplex.δ (1 : Fin 3) ≫
+        SSet.yonedaEquiv.symm (fullFiberLowerTriangle P g h hB hD hP)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fullFiberSquare`：
+
+```lean
+def fullFiberSquare (g : B ⟶ D) (h : C ⟶ D)
+    (hB : P B) (hC : P C) (hD : P D) (hP : P (pullbackFiber g h)) :
+    (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ dgNerve A (DGFullSubcategory (Complex A) P)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fullFiberSquare_inclusion`：
+
+```lean
+lemma fullFiberSquare_inclusion (g : B ⟶ D) (h : C ⟶ D)
+    (hB : P B) (hC : P C) (hD : P D) (hP : P (pullbackFiber g h)) :
+    fullFiberSquare P g h hB hC hD hP ≫
+        dgNerve.map (dgFullSubcategoryInclusion A (Complex A) P) = standardFiberSquare g h
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fullFiberSquare_isPullback`：
+
+```lean
+lemma fullFiberSquare_isPullback (g : B ⟶ D) (h : C ⟶ D)
+    (hB : P B) (hC : P C) (hD : P D) (hP : P (pullbackFiber g h)) :
+    IsPullbackSquare (fullFiberSquare P g h hB hC hD hP)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.isTerminalVertex_of_fullInclusion`：
+
+```lean
+lemma isTerminalVertex_of_fullInclusion (D : Type v) [DGCategory A D] (P : D → Prop)
+    (x : (dgNerve A (DGFullSubcategory D P)) _⦋0⦌)
+    (hx : IsTerminalVertex ((dgNerve.map (dgFullSubcategoryInclusion A D P)).app _ x)) :
+    IsTerminalVertex x
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.isTerminalVertex_full_zero`：
+
+```lean
+lemma isTerminalVertex_full_zero (P : Complex A → Prop) (hzero : P (0 : Complex A)) :
+    IsTerminalVertex (X := dgNerve A (DGFullSubcategory (Complex A) P))
+      (Simplex.vertex (⟨0, hzero⟩ : DGFullSubcategory (Complex A) P))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.isInitialVertex_of_fullInclusion`：
+
+```lean
+lemma isInitialVertex_of_fullInclusion (D : Type v) [DGCategory A D] (P : D → Prop)
+    (x : (dgNerve A (DGFullSubcategory D P)) _⦋0⦌)
+    (hx : IsInitialVertex ((dgNerve.map (dgFullSubcategoryInclusion A D P)).app _ x)) :
+    IsInitialVertex x
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.isInitialVertex_full_zero`：
+
+```lean
+lemma isInitialVertex_full_zero (P : Complex A → Prop) (hzero : P (0 : Complex A)) :
+    IsInitialVertex (X := dgNerve A (DGFullSubcategory (Complex A) P))
+      (Simplex.vertex (⟨0, hzero⟩ : DGFullSubcategory (Complex A) P))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.isTerminalVertex_semifree_zero`：
+
+```lean
+lemma isTerminalVertex_semifree_zero :
+    IsTerminalVertex (X := dgNerve A (Semifree A))
+      (Simplex.vertex (⟨0, complexSemifree_zero A⟩ : Semifree A))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.isInitialVertex_semifree_zero`：
+
+```lean
+lemma isInitialVertex_semifree_zero :
+    IsInitialVertex (X := dgNerve A (Semifree A))
+      (Simplex.vertex (⟨0, complexSemifree_zero A⟩ : Semifree A))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.semifreeFiberSquare`：
+
+```lean
+def semifreeFiberSquare (g : B ⟶ D) (h : C ⟶ D)
+    (hB : complexSemifree A B) (hC : complexSemifree A C) (hD : complexSemifree A D) :
+    (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ dgNerve A (Semifree A)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.semifreeFiberSquare_isPullback`：
+
+```lean
+lemma semifreeFiberSquare_isPullback (g : B ⟶ D) (h : C ⟶ D)
+    (hB : complexSemifree A B) (hC : complexSemifree A C) (hD : complexSemifree A D) :
+    IsPullbackSquare (semifreeFiberSquare g h hB hC hD)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.semifreeFiberSquare_inclusion`：
+
+```lean
+lemma semifreeFiberSquare_inclusion (g : B ⟶ D) (h : C ⟶ D)
+    (hB : complexSemifree A B) (hC : complexSemifree A C) (hD : complexSemifree A D) :
+    semifreeFiberSquare g h hB hC hD ≫
+        dgNerve.map (dgFullSubcategoryInclusion A (Complex A) (complexSemifree A)) =
+      standardFiberSquare g h
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fullInclusion_mono`：
+
+```lean
+instance fullInclusion_mono : Mono (dgNerve.map (dgFullSubcategoryInclusion A D P))
+```
+
+検証：上記九対象と自分の集約 `SerrePositivity.InfinityCategories.DGNerve` を
+`set -e; set -o pipefail` 下でビルドし終了コード 0。
+公開 1044 宣言の明示型と基礎 dg 五宣言を含む 1049 件の公理監査を確認。標準三公理のみ。
+
+N7d 完了。N7a–N7c も完了済み。未完了の必須項目は N7e。N7f は任意項目。
+今回の標準四角形の制限を、任意の引き戻しから標準 fiber への比較の完成とは数えない。
+
 ## 6. 次のマイルストーン D（本計画の範囲外）
 
 - Semifree(S) を `DGFullSubcategory`（`moduleSemifree` または一点 dg 圏上の複体版）として置き、
