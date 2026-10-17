@@ -15,6 +15,7 @@ set_option pp.explicit true
 
 
 
+
 #print axioms SerrePositivity.InfinityCategories.Coherent.cube
 #check @SerrePositivity.InfinityCategories.Coherent.cube
 
@@ -50,6 +51,42 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.Coherent.cubeSplitIso
 #check @SerrePositivity.InfinityCategories.Coherent.cubeSplitIso
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornHomViaFace
+#check @SerrePositivity.InfinityCategories.Coherent.hornHomViaFace
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_heq
+#check @SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_heq
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_on_face
+#check @SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_on_face
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.faceRetraction
+#check @SerrePositivity.InfinityCategories.Coherent.faceRetraction
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.faceRetraction_factor
+#check @SerrePositivity.InfinityCategories.Coherent.faceRetraction_factor
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.faceRetraction_point
+#check @SerrePositivity.InfinityCategories.Coherent.faceRetraction_point
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.faceRetraction_succAbove
+#check @SerrePositivity.InfinityCategories.Coherent.faceRetraction_succAbove
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.faceRetraction_section
+#check @SerrePositivity.InfinityCategories.Coherent.faceRetraction_section
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.faceRetraction_spec
+#check @SerrePositivity.InfinityCategories.Coherent.faceRetraction_spec
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.faceRetraction_image
+#check @SerrePositivity.InfinityCategories.Coherent.faceRetraction_image
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.faceRetraction_ulift_image
+#check @SerrePositivity.InfinityCategories.Coherent.faceRetraction_ulift_image
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.thickening_faceRetraction_section
+#check @SerrePositivity.InfinityCategories.Coherent.thickening_faceRetraction_section
 
 #print axioms SerrePositivity.InfinityCategories.Coherent.mem_upperEndpoint_iff
 #check @SerrePositivity.InfinityCategories.Coherent.mem_upperEndpoint_iff
