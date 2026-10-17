@@ -1,7 +1,6 @@
 module
 
-public import SerrePositivity.CLMST.Prop247StandardCone
-public import SerrePositivity.CLMST.Prop247CompletedDescent
+public import SerrePositivity.CLMST.Prop247UniformStandard
 
 /-! # Prop 2.4.7：実標準比較を構成した上での元の錐への降下
 
@@ -44,15 +43,10 @@ theorem prop247_isogeny_of_actual_common_comparison
       (∀ x : (perfectoidizationModuleMap R S p hR).ker, g ^ N • x = 0) ∧
       (∀ x : Perfectoidization R S p hR ⧸
         (perfectoidizationModuleMap R S p hR).range, g ^ N • x = 0) := by
-  obtain ⟨N, hN⟩ := hbounded
-  apply prop247_isogeny_of_completed_comparison R S B C E p hR hB hflat g r β hβ
-    u v w hsq hu hv hw hcw
   let f := IsScalarTower.toAlgHom R S (Perfectoidization R S p hR)
   have hf : IsPerfectoidization p f.toRingHom :=
     isPerfectoidization_toPerfectoidization R S p hR
-  have e := prop247_standardCompletedConeIso R S B (Perfectoidization R S p hR) C
-    p hR hB f hf β hβ hflat.1 N hN
-  rw [map_natCast] at e
-  exact e
+  exact prop247_isogeny_of_standard_comparison R S B (Perfectoidization R S p hR) C E
+    p hR hB f hf hbounded g r β hβ u v w hsq hu hv hw hcw hflat
 
 end SerrePositivity.CLMST

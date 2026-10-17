@@ -1,0 +1,7 @@
+import SerrePositivity.CLMST.Prop247UniformStandard
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.CLMST.prop247_uniform_of_standard_comparison
+assert_no_sorry SerrePositivity.CLMST.prop247_isogeny_of_standard_comparison
+#print axioms SerrePositivity.CLMST.prop247_uniform_of_standard_comparison
+#print axioms SerrePositivity.CLMST.prop247_isogeny_of_standard_comparison
