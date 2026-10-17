@@ -9224,6 +9224,19 @@ B⊗R S を終域とする実加群比較と、元の導来 tensor 代数を終�
 `completedBaseChangeTensorH0LinearEquiv` と BS の元の tensor 単位写像の対応を証明する。
 この単位対応と最終四角形は引き続き未完成。Cor 8.12 は保留のままとする。
 
+**D-I・実底変換と導来 tensor の H⁰ 正規化（2026-10-17）。** 共通層
+`HomologicalAlgebra/AlgebraBaseChangeTensorH0.lean` で、元の B 上の底変換の H⁰ を係数制限して
+元の R 上の導来 tensor の H⁰ へ比較する実同型を構成した。
+`algebraBaseChangeTensorH0Iso_augmentation` は、この同型と既存の環としての
+`derivedTensorH0AlgEquiv` の合成が、元の底変換 H⁰ 比較と通常 tensor への正規化に一致すると述べる。
+`algebraBaseChangeTensorH0Iso_apply` は全ての元で、始域比較に使う元の B 線形正規化と一致する。
+前工程の augmentation 可換式、既存 `derivedRestrictionSingleH0_normalization`、
+`realizedSingleH0Iso_hom_eq_standard` を再利用した。新しい single/H⁰ 正規化は選んでいない。
+環写像の平坦性、正則性、完備性、加群の有限性は不要。共通層に BS・CLMST・Inputs・Paper 依存はない。
+対象2401ジョブと専用監査の公開3宣言が成功。全3宣言は assert_no_sorry 成功・標準3公理のみ。
+次はこの元ごとの比較を、既存 G2 の完備底変換比較・係数正規化・完備化標準単位へ接続する。
+Cor 8.12 は保留を継続する。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
