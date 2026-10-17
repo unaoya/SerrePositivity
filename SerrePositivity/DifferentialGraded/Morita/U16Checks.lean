@@ -3,6 +3,7 @@ public import SerrePositivity.DifferentialGraded.Morita.U16
 public import SerrePositivity.DifferentialGraded.Morita.U16aChecks
 public import SerrePositivity.DifferentialGraded.Morita.CriterionChecks
 public import SerrePositivity.DifferentialGraded.Morita.CoherencePerfectChecks
+public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelLocalizedSquareChecks
 public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelLocalizationAugmentationChecks
 public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelPerfectNaturalityChecks
 public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedEquivalenceChecks
@@ -38,3 +39,10 @@ open SerrePositivity.DifferentialGraded.Morita
 #print axioms perfectKernelCompositionIso_associator
 #print axioms perfectKernelCompositionIso_leftUnit
 #print axioms perfectKernelCompositionIso_rightUnit
+
+#print axioms scalarKernelLocalizedActionIso
+#print axioms scalarKernelLocalizedDerivedSquare
+#print axioms scalarKernelLocalizedDerivedSquare_augmentation
+#print axioms scalarKernelLocalized_columnsPerfect
+#print axioms scalarKernelLocalizedPerfectSquare
+#print axioms scalarKernelLocalizedPerfectSquare_inclusion

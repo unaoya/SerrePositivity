@@ -13172,3 +13172,40 @@ subprocess.run(["lake", "env", "lean",
 U16全体の受入には、局所化係数変更への正方形接続・U12f評価比較との成分同定・
 実際のkernel合成との係数変更図式の実装／監査と、中心作用の保留を含む§15.6の範囲照合を要する。
 現行の限定受入をU16d全体の受入へ読み替えない。U16aとU16c統合の受入は維持する。
+
+
+### 17.277 U16d.27の統合：局所化kernel係数変更への条件付き正方形（2026-10-17）
+
+「dg U14」の確定コミットd156f34cと、専用記録U16d.27を照合した。
+既存公開入口QuasiEquivalenceがScalarExtensionKernelLocalizedSquareをimportしているため、
+こちらのU16入口からも新しい実際の主kernel係数変更の作用・Perf正方形を利用できる。
+U16Checksへ同担当のScalarExtensionKernelLocalizedSquareChecksを追加importし、
+6公開宣言を既存一般随伴・Morita統合・Perf作用coherenceと同じ入口から直接監査するようにした。
+
+| 接続 | 公開証拠・保持する範囲 |
+| --- | --- |
+| 局所化kernelの像と通常係数変更モデルの作用比較 | scalarKernelLocalizedActionIso。通常代表Pと増大成分のIsIsoであるhαを指定 |
+| 元の主kernel作用からの導来正方形 | scalarKernelLocalizedDerivedSquare。hα・既存hAug・hP'を明示 |
+| 元の比較との一致 | scalarKernelLocalizedDerivedSquare_augmentation。通常モデルへ増大した経路が既存の導来比較そのものと一致 |
+| 係数変更後の列のperfect性 | scalarKernelLocalized_columnsPerfect。元の列のperfect性と上記条件から導き、追加仮定にしない |
+| 実際の主Perf正方形と包含 | scalarKernelLocalizedPerfectSquare、_inclusion |
+
+hαは既存scalarKernelDerivedExtensionAugmentation_isIsoのhπから供給できる。
+hπをhPN・hP'から推論していない。通常代表を指定した条件付き正方形の接続であり、
+局所化正方形について任意の主導来kernel射への自然性を新たに結論してはいない。
+同担当は§17.275の既存Perf比較の両単位・結合coherenceも受領して受入記録に反映した。
+
+更新後のU16ChecksとSpectra.StageTwoの合同ビルド成功（4026 jobs、警告・エラー0）。
+同入口の主要19宣言の直接公理監査は標準3公理以内。追加6件は同担当の既監査宣言の再出力であり、
+こちらの新規監査累計5107には加算しない。新しい数学的宣言・sorry・axiom・引用・資源上限変更はない。
+担当外のScalarExtension*・QuasiEquivalence*・専用記録は編集していない。
+
+U16入口のdocstringも、この条件付き正方形が接続済みである範囲へ更新した。
+U12fとの成分同定、実際のkernel合成との係数変更図式、局所化正方形の全主kernel射自然性、
+中心作用の保留はまだ残る。一般U12e・U15e分解版は中断を維持し、U16全体は未受入。
+「dg U14」は作業中であり、未コミットの出力評価比較ファイルは今回の統合・受入根拠に含めない。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Morita.U16Checks SerrePositivity.Spectra.StageTwo
+lake env lean SerrePositivity/DifferentialGraded/Morita/U16Checks.lean
+```

@@ -804,3 +804,16 @@ U16Checksは同時importと主要13宣言の再監査入口。全現行Morita Ch
 ユーザーの明示許可により「dg U14」へ完成APIと担当係数変更3接続の継続を連絡し、
 同チャットのactiveな作業再開を確認した。詳細・再現手順・残ゲートはdg-theory.md §17.276。
 他担当のファイルと公開型は変更していない。
+
+
+## U16d.27の受取：主kernel係数変更の条件付き作用正方形（2026-10-17）
+
+d156f34cのScalarExtensionKernelLocalizedSquareは、既存QuasiEquivalence入口を通してU16入口へ到達する。
+scalarKernelLocalizedActionIso・scalarKernelLocalizedDerivedSquareと_augmentation、
+scalarKernelLocalized_columnsPerfect・scalarKernelLocalizedPerfectSquareと_inclusionを受け取った。
+通常代表とhα・hAug・hP'を指定する範囲を保持する。hαは既存hπ判定から供給できるが、
+hPN・hP'でhπを代用しない。局所化正方形の全主kernel射自然性はまだ受入済みとしない。
+U16Checksへ専用Checksを同時importし主要19宣言を直接再監査、標準3公理以内。
+合同ビルド4026 jobs・警告0。詳細はdg-theory.md §17.277。
+残るU12f成分同定・kernel合成との係数変更図式と中心作用の保留は引き続き別担当の記録に従い、
+U16全体の受入はまだ行わない。
