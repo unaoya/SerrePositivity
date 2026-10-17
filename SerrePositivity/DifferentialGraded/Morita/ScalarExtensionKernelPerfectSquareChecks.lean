@@ -1,0 +1,12 @@
+module
+public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelPerfectSquare
+
+/-! # 実際のkernel導来係数変更正方形のPerf制限の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded.Morita
+#print axioms scalarDerivedRepresentableIso
+#print axioms scalarKernelRawColumnIso
+#print axioms scalarKernelDerivedBaseChange_columnsPerfect
+#print axioms scalarKernelPerfectDerivedSquare
+#print axioms scalarKernelPerfectDerivedSquare_inclusion
+#print axioms scalarKernelPerfectDerivedSquare_ofKFlatModels
