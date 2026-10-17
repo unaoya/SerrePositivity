@@ -944,6 +944,15 @@
 - `ChecksScalarHomShift` 対象ビルド成功（3049 jobs）。主要11宣言の公理は標準3公理のみ。
   既存APIの名前・型は変更していない。新しいsorry・axiom・引用は追加していない。
 
+## U14b.56：Hom係数変更比較のcone・三角形閉性（2026-10-17）
+
+- `ScalarHomCone.lean`：U14b.54の短完全列の比較とU14b.55のshift閉性からcone閉性を証明した。
+  主Kの実際のdistinguished triangleのcone表示に沿って三角形閉性を得た。
+- 零加群を始域とする比較は両辺の零対象性により可逆である。空のdg圏でも扱え、
+  Hom係数変更比較の始域の性質が主Kの三角部分圏となることを証明した。
+- `ChecksScalarHomCone` 対象ビルド成功（3057 jobs）。主要8宣言の公理は標準3公理のみ。
+  既存APIの名前・型は変更していない。新しいsorry・axiom・引用は追加していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。

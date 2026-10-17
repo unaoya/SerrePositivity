@@ -1,0 +1,14 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarHomCone
+
+/-! # Hom係数変更比較のcone・三角形閉性の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+#print axioms scalarModuleHom_cone
+#print axioms scalarModuleHomComparisonLocus_triangle_obj₃
+#print axioms scalarModuleHomComparisonLocusTriangulatedClosed₃
+#print axioms scalarModuleHomComparisonLocusTriangulatedClosed₂
+#print axioms scalarModuleHomComparisonLocus_zero
+#print axioms scalarModuleHomComparisonLocusNonempty
+#print axioms scalarModuleHomComparisonLocusContainsZero
+#print axioms scalarModuleHomComparisonLocusIsTriangulated
