@@ -8500,6 +8500,51 @@ rank 0 の実像の終域が零環となる境界も確認した。
 残る実像の包含の almost 比較を通して初めて E 側と A 側にこの入力を渡せる。
 従って Prop 2.4.9(a) と KL-Q は引き続き未完成である。
 
+#### KL-T：実 excision 四角形からの核・余核零化と Tor 移送（2026-10-17）
+
+独立ファイル `CommutativeAlgebra/PullbackAnnihilator.lean` は、実 categorical pullback
+からスカラーによる核・余核の零化を供給する。公開名は
+`SerrePositivity.algHom_isPullback_pullback`（具体的 fiber product が実 pullback）、
+`linearMap_ker_coker_annihilated_of_type_isPullback`（任意加群の平方）、
+`algHom_ker_coker_annihilated_of_isPullback`（元の R 線形作用）である。
+辺の全射性、有限性、平坦性、完備性は要求しない。
+
+`CommutativeAlgebra/PerfectoidIdealPullback.lean` の共有 API は以下の通り。
+全環は同じ universe の可換環、各 A,B,C,D は既存の R 代数であり、
+p は素数、hR は元の R の perfectoid 性を表す。
+
+```lean
+perfectoidIdeal_ker_coker_annihilated_of_isPullback
+  (hR : IsIntegralPerfectoid R p)
+  (f : A →ₐ[R] B) (l : A →ₐ[R] C) (r : B →ₐ[R] D) (b : C →ₐ[R] D)
+  (hPB : CategoryTheory.IsPullback
+    (CommRingCat.ofHom f.toRingHom) (CommRingCat.ofHom l.toRingHom)
+    (CommRingCat.ofHom r.toRingHom) (CommRingCat.ofHom b.toRingHom))
+  (hC : IsIntegralPerfectoid C p) (g : R) (hg : algebraMap R C g = 0) :
+  (∀ s ∈ perfectoidIdeal R p hR g, ∀ x : f.toLinearMap.ker, s • x = 0) ∧
+  (∀ s ∈ perfectoidIdeal R p hR g, ∀ y : B ⧸ f.toLinearMap.range, s • y = 0)
+```
+
+名前空間は `SerrePositivity`。右下 D の perfectoid 性は不要である。
+`perfectoidIdeal_ker_coker_annihilated_pullbackFst` は、具体的な
+`AlgHom.pullbackFst r b` について同じ二結論を返し、pullback 性も自分で供給する。
+`CLMST/PerfectoidIdealExcisionTor.lean` の
+`SerrePositivity.CLMST.perfectoidIdeal_TorInput_iff_of_isPullback` は、同じ前提の下で
+任意の p^k torsion 試験加群 N、任意次数 i の全 s∈I の元の係数 Tor 作用の零性を
+A と B の間で同値にする。全正次数も含み、almost 比較自体や Tor 零化を仮定しない。
+
+対象ビルドと専用監査 `scripts/audit_clmst_excision_tor.lean` が成功。
+実商の pullback と、具体的 polynomial fiber product を検証した。
+後者の上辺の余核では X の類が実際に非零になり得ることも示し、辺の全射性を
+暗に使わないことを確認した。公開6宣言と適用例3宣言は `assert_no_sorry` が通り、
+標準三公理のみ。Cor 8.12 の新しい引用は本工程では宣言していない。
+**未供給なのは元の整な変更に対する実 hPB**。この hPB を明示入力とする共通定理を
+一般の包含比較の完成として扱わない。
+
+ユーザーの明示的な送信許可に基づき、担当チャット「形式化 Prop 2.4.7 の証明」へ、
+KL にも必要な Cor 8.12 入力の宣言を先行し、公開名・正確な型を本計画の担当節に
+記録するよう依頼した。KL 側はこの入力を重複新設せず、担当節や Prop247 系を編集しない。
+
 #### Prop 2.4.7 専任系列：原典から D-I/U/Q への型付き受渡し（2026-10-17）
 
 本節は統合表 D-I・D-U・D-Q の実入力を固定する。未採用の別計画は根拠にしない。
