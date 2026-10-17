@@ -9044,6 +9044,31 @@ f:A→B、l:A→C、r:B→D、b:C→D に対し、
 `KLFiniteComparisonExcision` の成立・Cor 4.0.4 の引用置換は引き続き未完了。
 D-I/U/Q・Cor 8.12 の担当実装は編集していない。
 
+#### KL-T：元の canonical excision 四角形への distinguished triangle 接続（2026-10-17）
+
+独立した `CLMST/KLCanonicalSingleTriangleBridge.lean` を追加した。
+公開定義 `canonicalExcisionIntegerModuleComplex hf hg q a` は
+`ShortComplex (ModuleCat ℤ)` であり、指定された universal units
+`f : A →ₐ[R] C`, `g : B →ₐ[R] D` とその証明 `hf`, `hg`、
+`q : A →ₐ[R] B`, `a : R` から作る元の canonical 四角形の
+積写像・差写像をそのまま使う。環と代数構造、素数 `p` と `[Fact p.Prime]`
+を前提とし、有限性・flatness・辺の全射性は追加しない。
+
+公開定理 `canonicalExcision_isPullback_of_distinguished_single_triangle` は、
+この複体を `S` として
+`δ : single₀ S.X₃ ⟶ (single₀ S.X₁)⟦1⟧` と
+`Triangle.mk (single₀.map S.f) (single₀.map S.g) δ ∈ distTriang _`
+を受け取り、正確に `KLCanonicalExcisionSquare hf hg q a` を返す。
+従来の almost 比較定理へ渡せる canonical 四角形が結論であり、
+導来圏における通常の categorical pullback を仮定しているわけではない。
+両公開宣言は `sorry` および追加の引用入力に依存しない。
+
+これは実際の distinguished triangle を構成する定理ではない。
+原典の E∞ excision、導来 perfectoidization と指定した離散環の同定、
+およびその同定が元の全写像を保つことは依然として未解決である。
+ユーザーの指示により CLMST-D への追加連絡を行わず、Cor 8.12 入力の
+保留を維持する。KL 完了・Cor 4.0.4 の置換完了とは扱わない。
+
 #### Prop 2.4.7 専任系列：原典から D-I/U/Q への型付き受渡し（2026-10-17）
 
 本節は統合表 D-I・D-U・D-Q の実入力を固定する。未採用の別計画は根拠にしない。
