@@ -527,6 +527,27 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPTruncatedQuotientA
 assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPTruncatedPresentation_free
 assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPPresentation_free_via_truncated
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPower_prime_dvd
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPower_span_prime_isSubDPIdeal
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerModPrime
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerModPrime_apply
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerModPrime_isDPMorphism
+assert_no_sorry SerrePositivity.BhattScholze.Andre.factorialSubring_primeLocal
+assert_no_sorry SerrePositivity.BhattScholze.Andre.factorialSubring_prime_mem
+assert_no_sorry SerrePositivity.BhattScholze.Andre.factorialModPrimeAmbientDividedPowers
+assert_no_sorry SerrePositivity.BhattScholze.Andre.factorialModPrimeIdeal_isSubDPIdeal
+assert_no_sorry SerrePositivity.BhattScholze.Andre.factorialModPrimeDividedPowers
+assert_no_sorry SerrePositivity.BhattScholze.Andre.factorialModPrimeDividedPowers_apply
+assert_no_sorry SerrePositivity.BhattScholze.Andre.factorialModPrimeDividedPowers_base_apply
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPPositiveIdeal
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPPositiveIdeal_base_mem
+assert_no_sorry SerrePositivity.BhattScholze.Andre.regularPrincipalModPrime_positiveIdeal_map
+assert_no_sorry SerrePositivity.BhattScholze.Andre.regularPrincipalModPrimeDividedPowers
+assert_no_sorry SerrePositivity.BhattScholze.Andre.regularPrincipalModPrimeDividedPowers_base_apply
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPEval_positive_isDPMorphism
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_principalDPPositiveMorphism
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_regularPrincipalModPrimeDPMorphism
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -623,7 +644,12 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.DividedPowerPrimeFinitePresentation,
     `SerrePositivity.BhattScholze.Andre.DividedPowerPrimePresentation,
     `SerrePositivity.BhattScholze.Andre.DividedPowerPrimeUniversal,
-    `SerrePositivity.BhattScholze.Andre.PrincipalDPTruncatedPresentation]
+    `SerrePositivity.BhattScholze.Andre.PrincipalDPTruncatedPresentation,
+    `SerrePositivity.BhattScholze.Andre.PrimeDividedPowerQuotient,
+    `SerrePositivity.BhattScholze.Andre.FactorialModPrimeDividedPowers,
+    `SerrePositivity.BhattScholze.Andre.RegularPrincipalModPrimeDividedPowers,
+    `SerrePositivity.BhattScholze.Andre.PrincipalDPPositiveUniversal,
+    `SerrePositivity.BhattScholze.Andre.RegularPrincipalModPrimeUniversal]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

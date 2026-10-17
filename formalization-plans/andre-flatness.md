@@ -1849,3 +1849,58 @@ SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（
 生成宣言を含む 2998 宣言の推移的公理依存は標準 3 公理のみ。
 A 代数同型・既存係数商上の代数同型・後続生成元公式・明示表示経由の自由性の
 公開型 4 本を `#print` で確認した（終了コード 0）。
+
+### E1.30：実 mod p 分冪構造と正則 δ 持ち上げの場合の pd 普遍性
+
+新規 `Andre/PrimeDividedPowerQuotient.lean` は、p 正則・p 局所な可換環の
+分冪イデアルが p を含めば (p) は分冪安定であり、構造が実 mod p 商へ降りることを証明する。
+n! の p 付値が正の n より小さいことと階乗恒等式を用いて γₙ(p) の p 可除性を示し、
+p 冪因子の消去には p 正則性、残りの階乗因子の消去には p 局所性を使う。
+商の分冪値の公式と、標準商射が分冪射であることも公開した。
+
+新規 `Andre/FactorialModPrimeDividedPowers.lean` は、既存の階乗部分環の大きい
+p 除算可能イデアルの分冪構造をこの方法で mod p に降ろす。
+元の正次数イデアルの像は分冪安定なので、そこへ制限して実分冪構造を得る。
+この段階では係数環の p 正則性も入力族の正則性も不要で、部分環自体の p 正則性を使う。
+正次数イデアルの p 飽和性は仮定しない。入力元の分冪値は全階乗生成元の剰余に一致する。
+
+新規 `Andre/RegularPrincipalModPrimeDividedPowers.lean` は、p 正則・p 局所な δ 環 A の
+元 y が mod p で非零因子である場合に、既存の `regularPrincipalDPFactorialModPEquiv` により
+実構造を `PrincipalDPPresentation (A/(p)) (y mod p)` へ移す。
+構造のイデアルは全正次数標準生成元の span `principalDPPositiveIdeal` と同定する。
+入力元の n 次分冪が n 次標準生成元に一致する公式も証明した。
+
+新規 `Andre/PrincipalDPPositiveUniversal.lean` は、正次数イデアルの分冪構造と
+上記の値の公式から、既存の `principalDPEval` の分冪保存と一意存在を証明する。
+新規 `Andre/RegularPrincipalModPrimeUniversal.lean` は、実際に構成した構造と公式を渡して
+任意の分冪標的への普遍性を得る。標的には p ねじれ・正則性・δ 構造・完備性の仮定を置かない。
+
+主要公開型（namespace `SerrePositivity.BhattScholze.Andre`）：
+
+```lean
+def regularPrincipalModPrimeDividedPowers
+    {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A]
+    (hlocal : ∀ m : ℕ, ¬p ∣ m → IsUnit (m : A))
+    (hpA : Function.Injective (fun a : A => (p : A) * a))
+    (D : DeltaStructure p A) (y : A)
+    (hy : IsSMulRegular (A ⧸ Ideal.span {(p : A)})
+      (Ideal.Quotient.mk (Ideal.span {(p : A)}) y)) :
+    DividedPowers (principalDPPositiveIdeal (Ideal.Quotient.mk (Ideal.span {(p : A)}) y))
+```
+
+`existsUnique_regularPrincipalModPrimeDPMorphism` はこの同じ持ち上げの前提の下で、
+任意の可換環 B と `Algebra (A/(p)) B`、任意の分冪イデアル `(I,Ht)`、
+y の係数像が I に属する仮定に対して、上記一次関係商から B への
+`A/(p)` 代数射 F で実分冪構造を保つものの一意存在を主張する。
+分冪構造やその標準値そのものを仮定として残してはいない。
+
+BS Rem 7.15(1)（著者版 p.62）の pd 包の計算を階乗部分環・mod p 降下で進める経路であり、
+原典の Prop 7.11 を使用しない。任意の正標数正則入力を既存の δ 持ち上げへ
+結び付ける適用と、prismatic envelope の Frobenius 引戻しとの同定はなお未完了。
+持ち上げを明示した今回の結果だけで依頼全体の完成とは数えない。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4416 jobs）。
+新規 20 公開宣言の `assert_no_sorry` を追加した専用監査は終了コード 0。
+生成宣言を含む 3054 宣言の推移的公理依存は標準 3 公理のみ。
+一般 mod p 分冪降下・階乗部分環の実構造・一次関係商の実構造・入力元の値・
+具体的な正則持ち上げの普遍性の公開型 5 本を `#print` で確認した（終了コード 0）。
