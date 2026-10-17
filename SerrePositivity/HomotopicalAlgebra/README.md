@@ -3431,3 +3431,21 @@ Kの変更に関する操作間の比較、全次数の互換な境界構成、�
 任意のTへの制限と実評価はパラメータ変更に厳密に自然である。モデル構造は要求しない。
 標的写像の恒等・合成との高次整合性と、小さい厳密なRMapへの接続は残る。
 受入検証は`check_normalized_horn_target_comparison`（43宣言・3モジュール）。
+
+
+### 任意形状の相対持ち上げと全面を保持する充填（§394）
+
+`RelativeProductLifting`は二つのmonoのpushout-productから以前の族・指定族・基底族を保持する。
+`RelativeBoundaryFilling`は任意次元の互換な全面を持つ実fillerを、基底と指定部分上で一定にする。
+`RelativeComparisonTriangle`は以前の三つの全区間をそのまま三辺に保持する。
+Kan性やモデル構造は不要である。受入検証は`check_relative_boundary_filling`（25宣言・3モジュール）。
+
+
+### 元の標的比較を保持する恒等・合成三角形（§395）
+
+`CompatibleInputMap`と`NormalizedHornInputMap`は全退化入力の和を標的写像に厳密に沿って移す。
+`NormalizedHornTargetComposition`は元のq・r・q≫rの比較を面に持つ実三角形を構成する。
+全hornと全退化入力を固定し、全三角形・実評価はTの制限に厳密に自然である。
+`NormalizedHornTargetIdentity`は以前の恒等比較と二つの厳密な定数辺を面に持つ三角形を構成する。
+受入検証は`check_normalized_horn_target_coherence`（66宣言・4モジュール）。
+三重合成以降の整合性の実構成と、小さい厳密なRMapへの接続は残る。
