@@ -745,6 +745,24 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialDivisionFr
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialDivisionFrobeniusEquiv_variable
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialDivisionFrobeniusEquiv_isDeltaHom
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionCoefficientAut_pairIdeal
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionCoefficientAutResidueEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionCoefficientAutResidueEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFrobenius_pairIdeal
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFrobeniusResidueEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFrobeniusResidueEquiv_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFrobeniusResidueEquiv_variable
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFrobeniusDoubleResidueEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFrobeniusDoubleResidueEquiv_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiFrobenius_pairIdeal
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiFrobeniusQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiFrobeniusQuotientEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiFrobeniusQuotientEquiv_mk_pow
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismVarpiLift_inverseFrobenius
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismGenerator_isDistinguished
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismFrobeniusDoubleResidueEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismFrobeniusDoubleResidueEquiv_coeff
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -870,7 +888,10 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiNativePDEnvelope,
     `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiNativePDFlat,
     `SerrePositivity.BhattScholze.Andre.DeltaDivisionCoefficientAut,
-    `SerrePositivity.BhattScholze.Andre.PowerRootPolynomialPerfectDelta]
+    `SerrePositivity.BhattScholze.Andre.PowerRootPolynomialPerfectDelta,
+    `SerrePositivity.BhattScholze.Andre.DeltaDivisionFrobeniusResidue,
+    `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiFrobeniusQuotient,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismFrobeniusResidue]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

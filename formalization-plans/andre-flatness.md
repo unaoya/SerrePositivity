@@ -2595,3 +2595,69 @@ Cor 2.39（p.25）や Prop 7.11 を引用として追加していない。
 生成宣言を含む 3685 宣言の推移的公理依存は標準 3 公理のみ。
 無限根 δ 完全性、一般 raw 同型と係数公式、無限根 raw Frobenius 同型と
 その δ 互換性の公開型 5 本を `#print` で確認した（終了コード 0）。
+
+### E1.43：raw 二重剰余の Frobenius 比較と R/ϖ → R/p の係数作用
+
+新規 `Andre/DeltaDivisionFrobeniusResidue.lean` は、E1.42 の raw δ 自己同型比較を
+任意の二元係数イデアルの商へ降ろす。
+完全 δ 環 D 上の distinguished 元 d に対し、x=φ⁻¹(d)、
+L=`DeltaAdjoinDivision D d a`、M=`DeltaAdjoinDivision D (φ d) (φ ∘ a)`、
+jL、jM をそれぞれの係数射とすると、
+(d,x) の像は (φ(d),d)=(p,d) である。
+二重主イデアル商の順序も明示して次の通常環同型を構成した。
+
+```lean
+def deltaDivisionFrobeniusDoubleResidueEquiv
+    (D : DeltaStructure p A) (d : A) (a : σ → A)
+    (hD : D.IsPerfect) (hd : D.IsDistinguished d) :
+    ((L ⧸ Ideal.span {jL d}) ⧸
+      Ideal.span {Ideal.Quotient.mk (Ideal.span {jL d}) (jL x)}) ≃+*
+        ((M ⧸ Ideal.span {jM d}) ⧸
+          Ideal.span {(p : M ⧸ Ideal.span {jM d})})
+```
+
+同 `_coeff` は二重商の係数 b を φ(b) に送ることを主張する。
+二元商の同型 `deltaDivisionFrobeniusResidueEquiv` と係数・初期変数の公式も公開した。
+δ 閉包商を d で割った後に δ 構造が残るとは主張せず、通常環同型として降ろしている。
+
+新規 `Andre/PerfectPrismVarpiFrobeniusQuotient.lean` は完全 prism W=(A,(d)) に対し
+
+```lean
+def perfectPrismVarpiFrobeniusQuotientEquiv
+    (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) :
+    ((A ⧸ W.ideal) ⧸ Ideal.span {perfectPrismVarpi W hW}) ≃+*
+      ((A ⧸ W.ideal) ⧸ Ideal.span {(p : A ⧸ W.ideal)})
+```
+
+を構成した。
+同 `_mk` は A 由来の代表元 b に係数 Frobenius を適用する公式、
+同 `_mk_pow` はこの像が R/p で b の p 乗を取ることと一致する公式。
+prism 商の p 正則性・非零性は仮定しない。
+Frobenius の向きは R/ϖ から R/p であり、単なる抽象環同型ではなく係数作用を記録する。
+二重商の計算では係数射の p の像と商環内の自然数 p を明示的な等しいイデアル間の
+商同型で結んでおり、標準係数射を取り替えない。
+
+新規 `Andre/PowerRootPrismFrobeniusResidue.lean` は上記の raw 比較を
+P=`PowerRootPolynomial A p hp`、
+E=`powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure` に適用する。
+prism 生成元の係数像 dP は E に関して distinguished であることを係数 δ 射から供給し、
+E の Frobenius による dP の逆像が、選択済みの
+xP=`algebraMap A P (perfectPrismVarpiLift W hW)` と一致することを証明する。
+任意の入力族 a:σ→P に対する `powerRootPrismFrobeniusDoubleResidueEquiv` は、
+左辺の二重商に xP を使い、右辺を Frobenius 側の dP,p 二重商にする実環同型。
+同 `_coeff` で P 全体の係数代表元 b に E の標準 Frobenius を適用することを述べる。
+モニック性や prism 商の p 正則性、補助的な distinguished 性は仮定しない。
+
+BS Rem 7.15（著者版 p.62）の二つの剰余操作を係数射とともに具体化した。
+ここでの同型は未完備 raw 包の比較であり、
+完備化後の Hodge–Tate 商 T=overline(Δ)_S の比較とは区別する。
+原典の φ_A による係数変更と、P 全体の Frobenius による指数 p 倍を含む作用の比較、
+完備化後の剰余との可換性、および pd 包との同定は引き続き未完了。
+原典の Cor 2.39・Prop 7.11 を新たな引用に追加しない。
+
+対象・集約の `set -o pipefail; lake build` は終了コード 0
+（集約 `SerrePositivity.BhattScholze.Andre.MonicRootedExtension`：4443 jobs）。
+新規 17 公開宣言を `assert_no_sorry` に加えた専用監査は終了コード 0。
+生成宣言を含む 3808 宣言の推移的公理依存は標準 3 公理のみ。
+一般 raw 二重剰余同型と係数公式、R/ϖ の Frobenius 同型と p 乗公式、
+実無限根入力の raw 同型と係数公式の公開型 6 本を `#print` で確認した（終了コード 0）。
