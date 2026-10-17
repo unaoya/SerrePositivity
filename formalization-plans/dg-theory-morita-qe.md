@@ -9,10 +9,10 @@
 | 項目 | 状態 |
 | --- | --- |
 | U16b：導来同値本体・延長/制限・unit/counit | 既存APIあり。`Checks.DGFunctorDerivedEquivalence` ビルド成功、2768 jobs、主要18宣言は標準3公理のみ |
-| U16b：実際の随伴shift・三角性・Perf・U13/U14比較 | 接続を実装・検証中 |
+| U16b：実際の随伴shift・三角性・Perf・U13/U14比較 | U16b.1–3・5–7で実装・対象ビルド・公理監査済み。主導来graph作用との比較を残し、U16b全体の最終受入はまだ行わない |
 | 積dg圏上の擬同値 | 既存 `derivedBimoduleRestrictionEquivalence` の `localHomKFlat A C`・`localHomKFlat A D` を保持する。無条件化しない |
 | U16aグラフ作用との計算比較 | 初回確認時はAPI節未作成。その後「U16a 公開 API」節を確認。kernelは右E・左D。通常作用を先に接続し、主導来作用の実装を待って関手自然同型へ進む |
-| U16d：Perf・係数変更・合成自然性 | U16a公開APIの「型のみ確定」を確認したため着手可能。`derivedTensorBaseChange` のhPN・hP'を保持する。主導来作用の未実装部分を証明済みとは扱わない |
+| U16d：Perf・係数変更・合成自然性 | 公開型確定後に着手。Perf制限の関手性、係数変更の二変数モデル、非flatな導来係数変更のPerf保存をU16d.1–3で証明。主導来kernel作用・合成比較への適用は未完 |
 | 中心作用 | 保留。今回の実装対象にしない |
 
 新規Leanファイルは `Morita/QuasiEquivalence*`・`Perfect*`・`ScalarExtension*` のみ。
@@ -129,3 +129,38 @@
   両主導来包含との自然同型を公開した。φのflatness・HomのlocalHomKFlatは追加しない。
 - `Morita.ScalarExtensionPerfectChecks` ビルド成功（3068 jobs、警告なし）。
   主要4宣言の公理監査は標準3公理のみ。
+
+## 合同検証と公開入口（2026-10-17）
+
+- 新規10監査対象・公開入口・既存 `Checks.DGFunctorDerivedEquivalence` の12対象を
+  合同ビルドし成功（3562 jobs、終了コード0、警告・エラー0件）。95宣言の公理は標準3公理のみ。
+- 最終ソースの担当11対象も合同ビルドし成功（3399 jobs、終了コード0、警告・エラー0件）。
+  担当監査77件は既存の積擬同値・bimodule制限の2宣言を含み、すべて標準3公理のみ。
+- 公開入口での同時import検査により、別ファイルの補助local instanceの自動生成名の衝突を検出した。
+  5つの自分のファイルの補助instanceに固有名を付け、再ビルドで解消を確認した。
+  公開した定理・関手の名前と型、既存Endomorphism/PerfectのAPIは変更していない。
+- 担当の新規21 Leanファイルを走査し、新規sorry・admit・axiomは0件。引用も0件。
+  各単位を自分のパスだけで個別コミットし、statを照合した。
+
+## 公開入口と残る接続
+
+公開入口は `SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence`。
+元のU16b本体 `dgFunctorDerivedEquivalence` とEndomorphism/PerfectのAPIは変更していない。
+共有ルート・Stage・README・他担当ファイルは編集していない。
+
+U16b・U16d全体はまだ未受入であり、次の接続を残す。
+
+1. U16aの `kernelDerivedTensorFunctor`・任意解像度計算の実装後、
+   `kernelGraph` の主導来作用と既存 `dgDerivedExtension` の**関手自然同型**を構成する。
+   U16b.4の対象ごとの通常graph計算だけで代用しない。
+2. 実際のkernel作用の代表加群計算からPerf保存条件を証明し、U16d.1の制限へ適用する。
+   kernelの恒等・合成自然同型とその自然性・coherenceを同じ制限で移す。
+   合成に必要な始域dg圏のlocalHomKFlat条件を消さない。
+3. 実際のkernel作用の各評価をU12fのtensor計算と同定し、U16d.2の二変数自然同型を接続する。
+   選択した右射影解像度とkernelの左評価ごとのhPN・hP'を明示したままにし、
+   U16d.3の実際の係数変更Perf制限との自然な正方形・合成比較を証明する。
+4. 中心作用は保留。今回の残項目の完了条件には入れない。
+
+直近のU16a担当記録ではKernelBasic・KernelTensor・KernelChecksのみ検証済み。
+主導来作用・一般右随伴・恒等/合成の作用比較は「型のみ確定」と明記されている。
+その未実装宣言をimport可能な定理として扱わず、不足する射・同型をsorry・axiomで置かない。

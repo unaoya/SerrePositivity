@@ -14,8 +14,10 @@ namespace SerrePositivity.DifferentialGraded
 open CategoryTheory
 variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
   (E : Type w) [DGCategory A E] [Small.{u} E] (F : DGFunctor A D E)
-local instance : (dgDerivedRestriction A D E F).CommShift ℤ := dgDerivedRestrictionCommShift A D E F
-local instance : (dgDerivedRestriction A D E F).IsTriangulated :=
+local instance moritaPerfectQuasiEquivalenceLocal1 :
+    (dgDerivedRestriction A D E F).CommShift ℤ := dgDerivedRestrictionCommShift A D E F
+local instance moritaPerfectQuasiEquivalenceLocal2 :
+    (dgDerivedRestriction A D E F).IsTriangulated :=
   dgDerivedRestrictionIsTriangulated A D E F
 
 lemma quasiEquivalenceRestriction_perfect (hF : QuasiEquivalence F)

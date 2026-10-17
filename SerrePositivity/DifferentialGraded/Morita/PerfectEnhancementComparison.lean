@@ -16,18 +16,19 @@ namespace SerrePositivity.DifferentialGraded
 open CategoryTheory
 variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
   (E : Type w) [DGCategory A E] [Small.{u} E] (F : DGFunctor A D E)
-local instance : (quasiEquivalencePerfectExtension A D E F).CommShift ℤ :=
+local instance moritaPerfectEnhancementComparisonLocal1 :
+    (quasiEquivalencePerfectExtension A D E F).CommShift ℤ :=
   quasiEquivalencePerfectExtensionCommShift A D E F
-local instance (hF : QuasiEquivalence F) :
+local instance moritaPerfectEnhancementComparisonLocal2 (hF : QuasiEquivalence F) :
     (quasiEquivalencePerfectEquivalence A D E F hF).functor.CommShift ℤ :=
   quasiEquivalencePerfectExtensionCommShift A D E F
-local instance (hF : QuasiEquivalence F) :
+local instance moritaPerfectEnhancementComparisonLocal3 (hF : QuasiEquivalence F) :
     (quasiEquivalencePerfectEquivalence A D E F hF).inverse.CommShift ℤ :=
   quasiEquivalencePerfectRestrictionCommShift A D E F hF
-local instance (hF : QuasiEquivalence F) :
+local instance moritaPerfectEnhancementComparisonLocal4 (hF : QuasiEquivalence F) :
     (quasiEquivalencePerfectEquivalence A D E F hF).CommShift ℤ :=
   quasiEquivalencePerfectCommShift A D E F hF
-local instance (hF : QuasiEquivalence F) :
+local instance moritaPerfectEnhancementComparisonLocal5 (hF : QuasiEquivalence F) :
     (quasiEquivalencePerfectEquivalence A D E F hF).IsTriangulated :=
   quasiEquivalencePerfectIsTriangulated A D E F hF
 

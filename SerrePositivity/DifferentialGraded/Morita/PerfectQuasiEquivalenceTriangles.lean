@@ -11,19 +11,27 @@ namespace SerrePositivity.DifferentialGraded
 open CategoryTheory
 variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
   (E : Type w) [DGCategory A E] [Small.{u} E] (F : DGFunctor A D E)
-local instance : (perfectModuleInclusion A D Set.univ).Full :=
+local instance moritaPerfectQuasiEquivalenceTrianglesLocal1 :
+    (perfectModuleInclusion A D Set.univ).Full :=
   inferInstanceAs ((modulePerfect A D).ι.Full)
-local instance : (perfectModuleInclusion A D Set.univ).Faithful :=
+local instance moritaPerfectQuasiEquivalenceTrianglesLocal2 :
+    (perfectModuleInclusion A D Set.univ).Faithful :=
   inferInstanceAs ((modulePerfect A D).ι.Faithful)
-local instance : (perfectModuleInclusion A E Set.univ).Full :=
+local instance moritaPerfectQuasiEquivalenceTrianglesLocal3 :
+    (perfectModuleInclusion A E Set.univ).Full :=
   inferInstanceAs ((modulePerfect A E).ι.Full)
-local instance : (perfectModuleInclusion A E Set.univ).Faithful :=
+local instance moritaPerfectQuasiEquivalenceTrianglesLocal4 :
+    (perfectModuleInclusion A E Set.univ).Faithful :=
   inferInstanceAs ((modulePerfect A E).ι.Faithful)
-local instance : (dgDerivedRestriction A D E F).CommShift ℤ := dgDerivedRestrictionCommShift A D E F
-local instance : (dgDerivedExtension A D E F).CommShift ℤ := dgDerivedExtensionCommShift A D E F
-local instance : (dgDerivedRestriction A D E F).IsTriangulated :=
+local instance moritaPerfectQuasiEquivalenceTrianglesLocal5 :
+    (dgDerivedRestriction A D E F).CommShift ℤ := dgDerivedRestrictionCommShift A D E F
+local instance moritaPerfectQuasiEquivalenceTrianglesLocal6 :
+    (dgDerivedExtension A D E F).CommShift ℤ := dgDerivedExtensionCommShift A D E F
+local instance moritaPerfectQuasiEquivalenceTrianglesLocal7 :
+    (dgDerivedRestriction A D E F).IsTriangulated :=
   dgDerivedRestrictionIsTriangulated A D E F
-local instance : (dgDerivedExtension A D E F).IsTriangulated :=
+local instance moritaPerfectQuasiEquivalenceTrianglesLocal8 :
+    (dgDerivedExtension A D E F).IsTriangulated :=
   dgDerivedExtensionIsTriangulated A D E F
 
 @[instance_reducible]
@@ -61,10 +69,10 @@ lemma quasiEquivalencePerfectRestrictionIsTriangulated (hF : QuasiEquivalence F)
   (Functor.isTriangulated_iff_comp_right
     (quasiEquivalencePerfectRestrictionInclusionIso A D E F hF)).2 inferInstance
 
-local instance (hF : QuasiEquivalence F) :
+local instance moritaPerfectQuasiEquivalenceTrianglesLocal9 (hF : QuasiEquivalence F) :
     (quasiEquivalencePerfectEquivalence A D E F hF).functor.CommShift ℤ :=
   quasiEquivalencePerfectExtensionCommShift A D E F
-local instance (hF : QuasiEquivalence F) :
+local instance moritaPerfectQuasiEquivalenceTrianglesLocal10 (hF : QuasiEquivalence F) :
     (quasiEquivalencePerfectEquivalence A D E F hF).inverse.CommShift ℤ :=
   quasiEquivalencePerfectRestrictionCommShift A D E F hF
 

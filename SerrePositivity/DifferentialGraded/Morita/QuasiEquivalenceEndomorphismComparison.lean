@@ -20,23 +20,33 @@ variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
   (hF : QuasiEquivalence F) (G : PerfectDGModule A E)
   (hgen : endomorphismThickGeneratesPerfect A E Set.univ G)
 
-local instance : (dgDerivedExtension A D E F).CommShift ℤ := dgDerivedExtensionCommShift A D E F
-local instance : (dgDerivedRestriction A D E F).CommShift ℤ := dgDerivedRestrictionCommShift A D E F
-local instance : (quasiEquivalencePerfectExtension A D E F).CommShift ℤ :=
+local instance moritaQuasiEquivalenceEndomorphismComparisonLocal1 :
+    (dgDerivedExtension A D E F).CommShift ℤ := dgDerivedExtensionCommShift A D E F
+local instance moritaQuasiEquivalenceEndomorphismComparisonLocal2 :
+    (dgDerivedRestriction A D E F).CommShift ℤ := dgDerivedRestrictionCommShift A D E F
+local instance moritaQuasiEquivalenceEndomorphismComparisonLocal3 :
+    (quasiEquivalencePerfectExtension A D E F).CommShift ℤ :=
   quasiEquivalencePerfectExtensionCommShift A D E F
-local instance : (quasiEquivalencePerfectRestriction A D E F hF).CommShift ℤ :=
+local instance moritaQuasiEquivalenceEndomorphismComparisonLocal4 :
+    (quasiEquivalencePerfectRestriction A D E F hF).CommShift ℤ :=
   quasiEquivalencePerfectRestrictionCommShift A D E F hF
-local instance : (quasiEquivalencePerfectEquivalence A D E F hF).functor.CommShift ℤ :=
+local instance moritaQuasiEquivalenceEndomorphismComparisonLocal5 :
+    (quasiEquivalencePerfectEquivalence A D E F hF).functor.CommShift ℤ :=
   quasiEquivalencePerfectExtensionCommShift A D E F
-local instance : (endomorphismDerivedHom A E G.val G.property.1).CommShift ℤ :=
+local instance moritaQuasiEquivalenceEndomorphismComparisonLocal6 :
+    (endomorphismDerivedHom A E G.val G.property.1).CommShift ℤ :=
   endomorphismDerivedHomCommShift A E G.val G.property.1
-local instance : (endomorphismDerivedTensor A E G.val).CommShift ℤ :=
+local instance moritaQuasiEquivalenceEndomorphismComparisonLocal7 :
+    (endomorphismDerivedTensor A E G.val).CommShift ℤ :=
   endomorphismDerivedTensorCommShift A E G.val G.property.1
-local instance : (perfectEndomorphismHomToPerfect A E Set.univ G hgen).CommShift ℤ :=
+local instance moritaQuasiEquivalenceEndomorphismComparisonLocal8 :
+    (perfectEndomorphismHomToPerfect A E Set.univ G hgen).CommShift ℤ :=
   perfectEndomorphismHomCommShift A E Set.univ G hgen
-local instance : (perfectEndomorphismEquivalence A E Set.univ G hgen).functor.CommShift ℤ :=
+local instance moritaQuasiEquivalenceEndomorphismComparisonLocal9 :
+    (perfectEndomorphismEquivalence A E Set.univ G hgen).functor.CommShift ℤ :=
   perfectEndomorphismHomCommShift A E Set.univ G hgen
-local instance : (perfectEndomorphismTensorToPerfect A E Set.univ G).CommShift ℤ :=
+local instance moritaQuasiEquivalenceEndomorphismComparisonLocal10 :
+    (perfectEndomorphismTensorToPerfect A E Set.univ G).CommShift ℤ :=
   perfectEndomorphismTensorCommShift A E Set.univ G
 
 def quasiEquivalenceEndomorphismPerfectEquivalence :

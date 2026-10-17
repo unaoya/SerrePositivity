@@ -15,8 +15,10 @@ open CategoryTheory
 variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
   (E : Type w) [DGCategory A E] [Small.{u} E] (F : DGFunctor A D E)
 
-local instance : (dgDerivedRestriction A D E F).CommShift ℤ := dgDerivedRestrictionCommShift A D E F
-local instance : (dgDerivedExtension A D E F).CommShift ℤ := dgDerivedExtensionCommShift A D E F
+local instance moritaQuasiEquivalenceTrianglesLocal1 :
+    (dgDerivedRestriction A D E F).CommShift ℤ := dgDerivedRestrictionCommShift A D E F
+local instance moritaQuasiEquivalenceTrianglesLocal2 :
+    (dgDerivedExtension A D E F).CommShift ℤ := dgDerivedExtensionCommShift A D E F
 
 @[instance_reducible]
 def quasiEquivalenceDerivedFunctorCommShift (hF : QuasiEquivalence F) :
