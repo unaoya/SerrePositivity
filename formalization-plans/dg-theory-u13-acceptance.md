@@ -99,6 +99,15 @@
 - ホモロジーと二項直和の比較には既存のhomological functorのbiproduct保存を用いた。
   `Perfect.ChecksRingRetractTriangle` 対象ビルド成功（3170 jobs）。主要4宣言の公理監査は標準3公理のみ。
 
+## U13e.34：導来retractの次数幅を下げる帰納ステップ
+
+- `Perfect/RingRetractRangeReduction.lean`：有限射影複体Pが[a,b]にありa<bのとき、
+  Q(P)のretract Xとその補対象の上端ホモロジーを有限自由singleで同時に覆った。
+  二つのdistinguished三角形の直和をU13e.33でP上の実際のconeへ比較し、U13e.31で上端を切り詰めた。
+- その結果、有限自由single→X→Yのdistinguished三角形と、Yが[a,b−1]の有限射影複体の
+  Q像のretractになる証拠を構成した。元のXを表す有限射影代表は、帰納結果と逆回転三角形から戻す。
+- `Perfect.ChecksRingRetractRangeReduction` 対象ビルド成功（3171 jobs）。主要宣言の公理監査は標準3公理のみ。
+
 ## 既存項目の再検証
 
 - finite cell・全Hom射影性・PerfとKaroubi・compact生成・compact⇒Perf・
