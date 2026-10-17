@@ -840,3 +840,55 @@ Prop 7.11 を使う原典と異なる明示関係・実作用の比較による�
 SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4192 jobs）。
 専用監査も終了コード 0。新規 22 公開宣言の `assert_no_sorry` を追加し、
 生成宣言を含む 964 宣言の推移的公理依存が標準 3 公理のみであることを確認した。
+
+### E1.14：逐次実完備化と生成元冪商、完全 prism 上の源の離散性
+
+新規 `Andre/MonicPrismaticIteratedResidue.lean` は、一般 f/d 源に実 p 完備化、実 d 完備化を
+この順に施した `MonicPrismaticSourceIteratedPDCompletion D d f` を定義する。
+p と d が係数環で個別に正則なら実 (p,d) 還元が元の実還元と同型であることを、一般の
+完備化単位の既存比較から証明した。比較は二つの標準単位の合成に関する公式を満たす。
+有限族について実剰余の全非零次数ホモロジー消滅と H⁰ の忠実平坦性を E1.13 から移した。
+d mod p の正則性を要求していない。
+
+新規 `Andre/MonicPrismaticSourceComplete.lean` は、同じ実対象の p,d 両方向の導来完備性と、
+正則な d の任意冪商への実還元の商環上での p 導来完備性を証明する。
+これらの完備性自体には hf・hdeg・有限性は不要。
+新規 `Andre/MonicPrismaticCanonicalPowerResidue.lean` は、A/(p,dⁿ) の標準冪零商による
+実還元を raw 剰余の single に、元の作用を保って同定した。
+新規 `Andre/MonicPrismaticSourcePowerInputs.lean` は、この入力に既存の冪零厚化の判定 G10 を
+適用し、正の n について A/(p,dⁿ) 還元の純性と H⁰ の平坦性を得た。
+さらに A/(dⁿ) 還元の p 導来完備性と、その標準 mod p 還元の純性・平坦性を、
+同じ実対象の G9 入力 `monicPrismaticSourceGeneratorPower_G9_inputs` に束ねた。
+
+新規 `Andre/PerfectPrismMonicSourceDiscrete.lean` は、完全 prism の既存定理から
+p 正則性、生成元 d の正則性、δ(d) の単元性、A/(dⁿ) の p 冪ねじれ上界 pⁿ を内部で供給する。
+G9 で正の生成元冪商の離散性を得て、生成元商の離散性と d 導来完備性で元の源の純性を導いた。
+主要公開型は次のとおり。
+
+```lean
+theorem perfectPrismMonicSource_pure
+    {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
+    (P : OrientedPrism p A) (hP : P.deltaStructure.IsPerfect)
+    (f : σ → Polynomial A) (hf : ∀ t, (f t).Monic)
+    (hdeg : ∀ t, 0 < (f t).natDegree) {m : ℕ} (s : Fin m ≃ σ) :
+    let X := MonicPrismaticSourceIteratedPDCompletion P.deltaStructure P.generator f
+    X.obj.IsGE 0 ∧ X.obj.IsLE 0
+```
+
+`perfectPrismMonicSource_homology_isZero` は同じ X の全 i ≠ 0 に対する実ホモロジー消滅。
+`perfectPrismMonicSourceSingleIso` は
+`X.obj ≅ (DerivedCategory.singleFunctor (ModuleCat A) 0).obj
+ ((DerivedCategory.homologyFunctor (ModuleCat A) 0).obj X.obj)`。
+外部 ghost 仮定・有界ねじれ仮定・単元選択の仮定は残さない。
+有限性、モニック性、正次数を公開の前提に明示する。
+
+BS Rem 7.15（著者版 p.62）の実 prismatic 源の離散性に対応する。
+Prop 7.11 を使う原典とは異なる、具体的な係数商・G10・G9 を経る証明である。
+これで「逐次実完備化源の離散性」は有限正次数モニック族で証明済みになった。
+残るのは同じ実 H⁰ と raw PD 完備化環および最終 f/d 候補との環・δ 比較、
+最終 perfectoid 商の p 完全忠実平坦性、無限 p 冪根変数の自由基底、任意族への最終接続。
+目標存在定理は引き続き未宣言である。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4228 jobs）。
+専用監査も終了コード 0。新規 25 公開宣言の `assert_no_sorry` を追加し、
+生成宣言を含む 1177 宣言の推移的公理依存が標準 3 公理のみであることを確認した。
