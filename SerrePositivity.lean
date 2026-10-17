@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionBalancedNaturality
+public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionRing
 
 public import SerrePositivity.DifferentialGraded.Endomorphism.Compatibility
 

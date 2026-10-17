@@ -186,3 +186,26 @@ U12f 全体・U15d 全体はまだ完了ではない。ゴールを縮小せず�
 一対象環での通常 tensor 比較、相対 tensor の単位・結合比較との整合性。
 これらを済ませてから、指示された順序で導来版、U15d に進む。
 全体のゴールは active のままとし、正本への完了参照はまだ追加しない。
+
+
+## 2026-10-17：左加群圏の関手と一対象の通常 tensor
+
+相対 tensor の表示と同型は `0852681b` にコミット済み。
+`Tensor/ScalarExtensionLeftMaps.lean` で左 dg 加群の全次数自然な射を係数拡大し、
+`leftModuleExtension` を実際の左加群圏の関手にした。
+`balancedIso_module_naturality` は既存 `BalancedTensor.map` と右・左の係数拡大関手を
+使う、実際の閉零加群圏の両変数自然性である。
+
+`ScalarExtensionRing.lean` の `ringBalancedIso` は係数変更後の一対象 tensor を
+値の通常 tensor に送る。唯一の対象の包含を恒等写像に送る式 `ι_ringBalancedIso` と、
+元の一対象 tensor 比較・非有界 `cochainTensorBaseChangeIso` の可換図式
+`ringComplexBaseChange_comparison` を証明した。
+
+`lake build SerrePositivity.DifferentialGraded.Checks.ScalarExtensionRing` 成功
+（2034 jobs、警告なし）。`ℤ → ZMod 2` の左加群関手を型検査し、主要6宣言の監査は
+標準3公理のみ。新規 sorry・axiom・引用は0件。
+ルートの自分の import 行のみ `ScalarExtensionRing` へ進める。
+
+次は scalar-changed representable の評価単位と、複体パラメータを相対 tensor の外へ
+出す associator の生成項公式を比較し、残る underived 整合性を検証する。
+導来版・U15d は引き続き未完。amend・rebase・reset は使わない。
