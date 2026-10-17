@@ -51,6 +51,19 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.ringDirectLimit_e
 assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isIntegralPerfectoid_adicCompletion_of_distinguished_kernel
 assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.deltaDirectLimit_isPerfect
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.presentationLimitMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.presentationLimitMap_of
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.presentationLimitMap_surjective
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.presentationLimitMap_ker
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isIntegralPerfectoid_adicCompletion_of_presentationDiagram
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.ainfMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.ainfMap_id
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.ainfMap_comp
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.ainfMap_delta
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.ainfSystem
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isIntegralPerfectoid_adicCompletion_ringDirectLimit
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isIntegralPerfectoid_ringDirectLimit_of_countable_upperBound
+
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
@@ -68,7 +81,9 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.Transfinite.TorsionBound,
     `SerrePositivity.BhattScholze.Andre.Transfinite.FrobeniusKernelColimit,
     `SerrePositivity.BhattScholze.Andre.Transfinite.PrismaticCompletion,
-    `SerrePositivity.BhattScholze.Andre.Transfinite.PerfectDeltaColimit]
+    `SerrePositivity.BhattScholze.Andre.Transfinite.PerfectDeltaColimit,
+    `SerrePositivity.BhattScholze.Andre.Transfinite.PresentationColimit,
+    `SerrePositivity.BhattScholze.Andre.Transfinite.PerfectoidCompletionColimit]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
@@ -134,3 +149,16 @@ run_cmd do
 
 #print SerrePositivity.BhattScholze.Andre.Transfinite.isIntegralPerfectoid_adicCompletion_of_distinguished_kernel
 #print SerrePositivity.BhattScholze.Andre.Transfinite.deltaDirectLimit_isPerfect
+
+#print SerrePositivity.BhattScholze.Andre.Transfinite.presentationLimitMap
+#print SerrePositivity.BhattScholze.Andre.Transfinite.presentationLimitMap_of
+#print SerrePositivity.BhattScholze.Andre.Transfinite.presentationLimitMap_surjective
+#print SerrePositivity.BhattScholze.Andre.Transfinite.presentationLimitMap_ker
+#print SerrePositivity.BhattScholze.Andre.Transfinite.isIntegralPerfectoid_adicCompletion_of_presentationDiagram
+#print SerrePositivity.BhattScholze.Andre.Transfinite.ainfMap
+#print SerrePositivity.BhattScholze.Andre.Transfinite.ainfMap_id
+#print SerrePositivity.BhattScholze.Andre.Transfinite.ainfMap_comp
+#print SerrePositivity.BhattScholze.Andre.Transfinite.ainfMap_delta
+#print SerrePositivity.BhattScholze.Andre.Transfinite.ainfSystem
+#print SerrePositivity.BhattScholze.Andre.Transfinite.isIntegralPerfectoid_adicCompletion_ringDirectLimit
+#print SerrePositivity.BhattScholze.Andre.Transfinite.isIntegralPerfectoid_ringDirectLimit_of_countable_upperBound

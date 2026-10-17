@@ -228,9 +228,35 @@ E3.7 の Frobenius 条件の保存は独立に証明済みの部品として保�
 raw 余極限での全射と単項核の同定を供給し、上記の一般定理を実際の塔に適用する段階。
 この表示の仮定を最終定理に追加して完成とすることはしない。
 
+### E3.9：perfectoid 有向系の完備化と非可算極限
+
+`PresentationColimit.lean` と `PerfectoidCompletionColimit.lean` を追加。
+
+- `isIntegralPerfectoid_adicCompletion_ringDirectLimit`：最小元を持つ有向添字 Type u 上の
+  perfectoid 環の有向系について、環余極限の通常 p 進完備化は perfectoid。
+  遷移射の単射性・完全平坦性・p 正則性を仮定せず、零環も含む。
+- `isIntegralPerfectoid_ringDirectLimit_of_countable_upperBound`：上記の系が p 完全忠実平坦で、
+  すべての可算添字部分集合が上界を持つなら、未完備余極限自体が perfectoid。
+- `ainfMap` とその恒等・合成・δ 構造の保存、`ainfSystem` を公開。
+- `presentationLimitMap` と標準段射上の公式、全射性・共通単項核の保存、および
+  `isIntegralPerfectoid_adicCompletion_of_presentationDiagram` を公開。
+
+**原典・経路の記録：** BS Lemma 3.9（著者版 pp.31–32）、Thm 3.10（p.32）、
+Thm 7.14（p.61）の極限操作を既存 Fontaine 表示と実 PD 完備化の普遍性で補足。
+各段の Fontaine 全射の自然性と、最小段の distinguished 生成元の像による核表示は既証定理を再利用。
+余極限の核の元を一段で代表し、零となる等式を後の段に移して共通生成元で割る。
+最終的な完備化が非零の場合には、各段からの標準環射により各段の非零性を取り出すので、
+零段を除外する追加仮定はない。非可算極限では E3.2 の完備性と標準完備化同型を使う。
+
+対象 build 終了コード 0（3503 jobs、新規モジュール警告なし）。
+専用監査終了コード 0、公開全 52 宣言の assert_no_sorry と全 127 宣言の再帰監査に成功。
+標準 3 公理のみ。全公開宣言の完全型を #print で確認。
+**未完了：** 完備化による p 完全忠実平坦性の保存と超限塔の構成。
+この工程は作業 1 を証明したもので、条件付き Thm 7.14 の完成とは数えない。
+
 ### 残る範囲
 
-1. perfectoid 塔の raw 余極限の完全 δ 表示を構成し、E3.8 を適用して p 進完備化の perfectoid 性を得る。
+1. 有向系の p 進完備化の perfectoid 性は E3.9 で証明済み。各極限段の実際の塔への適用は残る。
 2. p 完全忠実平坦性の完備化による保存。有向余極限と合成による保存は E3.5・E3.6 で証明済み。
 3. 可算共終性の極限での完備化。ω₁ の可算上界条件と終段の自動的 p 進完備性は E3.2・E3.3 で証明済み。
 4. Type u に留まる ω₁ までの超限塔の構成、訂正済み step による後続段の供給。

@@ -15,9 +15,13 @@ public import SerrePositivity.BhattScholze.Andre.Transfinite.FrobeniusKernelColi
 public import SerrePositivity.BhattScholze.Andre.Transfinite.PrismaticCompletion
 public import SerrePositivity.BhattScholze.Andre.Transfinite.PerfectDeltaColimit
 
+public import SerrePositivity.BhattScholze.Andre.Transfinite.PresentationColimit
+public import SerrePositivity.BhattScholze.Andre.Transfinite.PerfectoidCompletionColimit
+
 /-! # André E3：超限反復の部品
 
 BS Thm 7.14（著者版 p.61）。現時点では剰余 Frobenius の保存、
 可算データの降下、非可算共終性と単射性の下での完備性、根を持つ有向系の絶対整閉性を集約する。
-極限段の perfectoid 性・完備化による完全忠実平坦性の保存と超限塔の構成は未完了である。
+最小元を持つ有向系の p 進完備化の perfectoid 性も証明する。
+完備化による完全忠実平坦性の保存と超限塔の構成は未完了である。
 -/
