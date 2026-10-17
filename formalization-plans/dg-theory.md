@@ -10321,3 +10321,46 @@ U12e全体は未受入であり、受入後のU16a〜d、U15e分解版の順を�
 U15e分解版では局所K-flat版のQuotient/DerivedComparison*・Verdier/を読んで再利用する。
 共有一般論への新しいAPI要求はない。共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・
 ScalarExtension*・Quotient/DerivedComparison*・Verdier/と、並行作業のTensor/Associator*は編集していない。
+
+
+### 17.223 U12e63：恒等中間比較の全導来化と指定モデルでの計算（2026-10-17）
+
+**分担の再確認。** ユーザー指定に従い、このチャットはU12e受入→U16a〜d→U15e分解版を担当する。
+U15e局所K-flat版と続くU17b局所K-flatの場合はU17a/U13dを終えたチャットが担当し、
+Quotient/DerivedComparison*.lean・Verdier/に置かれる成果を分解版で読んで再利用する。
+局所K-flat版の比較・Verdier一般論を重複実装しない。§17の管理と公開API変更記録はこのチャットが保持する。
+
+**恒等則の全導来化。** Derived/BimoduleMiddleIdentityFamily.leanは左右の恒等制限の
+自然同型からmiddleClosedIdentityIsoを構成し、既存の指定モデル上の恒等則と一致させた。
+前因子の局所化を通じてmiddleIdentitySourceLiftIsoへ降ろし、
+Derived/BimoduleMiddleIdentityFull.leanで後因子の右K-flat局所化と置換を通して
+両変数の全導来圏上へ移した。derivedMiddleIdentityIsoは既存導来制限・導来合成で表したsourceの
+正規化同型であり、比較射をasIsoで包んで定義したものではない。
+derivedMiddleRestrictionNatTrans_functor_idは既存の実際の全導来比較がそのhomに一致することを証明する。
+任意の可換環・独立した対象宇宙を保持し、局所Hom K-flat性は合成の終端Lだけに要求する。
+中間Dの局所Hom K-flat性や、前因子のK-flat性は要求しない。
+
+**指定モデルでの計算。** Derived/BimoduleMiddleComparisonComputation.leanは
+全導来比較を置換余単位による共役として計算し、右K-flat局所化へ前合成すると
+元の局所化比較を回復することを証明した。完全忠実性と余単位を用い、
+指定置換の元の単位が随伴化後の単位と同じという仮定は使わない。
+derivedMiddleRestrictionNatTrans_app_rightKFlatと_app_baseは、既存の実際の全導来比較を
+任意の指定右K-flat後因子および閉零前因子上で計算する入口である。
+Derived/BimoduleLiftIso.leanは指定局所化への前合成で与えた自然同型を導来関手間へ降ろし、
+hom・invの元の対象上の計算式を公開した。次の合成則の全導来化に用いる。
+既存公開APIの名前・型は変更せず、新規APIだけを追加した。
+
+**検証。** Checks.DGBimoduleMiddleIdentityFullは両変数とも任意の導来対象での恒等則、
+独立した対象宇宙、ZMod 2での恒等則を検査する。統合ビルドは3470 jobsで成功し、警告なし。
+主要26公開宣言の直接公理監査は重複・欠落なく標準3公理以内。新規監査累計4452宣言。
+今回の5 Leanファイルにsorry・admit・新規axiom・資源上限変更は0件。採用済み引用0件。
+Lean v4.35.0-rc4とMathlib manifest/HEAD e6bbacd0e1b7307ff6e17da09cd2455f60804fa6を再確認した。
+文書検査は21 Markdown・320 exposition参照を検査し、担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+既存未解決参照1件で失敗した。
+
+**残件と引継ぎ。** 合成則の両変数の全導来関手族への降下、共通dg圏解像度による変更、
+対角単位・結合子との整合性とcoherenceを残す。U12e全体は未受入、U16・U15e分解版は未着手。
+共有モデル圏一般論への新しいAPI要求はない。
+共有ルート・Perfect/・Endomorphism/・ScalarExtension*・Quotient/DerivedComparison*・Verdier/・
+並行作業のTensor/Associator*と他チャットの記録は編集していない。
