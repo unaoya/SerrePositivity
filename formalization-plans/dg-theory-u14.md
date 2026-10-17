@@ -875,6 +875,18 @@
 - `ChecksScalarHomNaturality` 対象ビルド成功。新規2主要宣言の公理は標準3公理のみ。
   既存APIの名前・型は変更していない。Perfへの拡張に必要なretract閉性へ接続する。
 
+## U14b.49：実際のHom比較の通常の始域retract閉性（2026-10-17）
+
+- `ScalarHomRetracts.lean`：閉零加群圏の実際のretractとU14b.48の前合成自然性から、
+  Hom係数変更比較の射の圏でのretractを構成した。
+- このretractから、真のchain iso条件と擬同型条件がそれぞれ始域retractに安定であることを証明。
+  H⁰/導来圏内だけで分裂するretractを、通常の加群圏のretractへ無条件に置き換えていない。
+- `ChecksScalarHomRetracts` 対象ビルド成功。新規3主要宣言の公理は標準3公理のみ。
+- U14b.46–49を公開入口へ接続し、更新後の `ChecksCompatibility` 対象ビルド成功（3155 jobs）。
+  新しいsorry・axiom・引用は追加していない。既存APIの名前・型は変更していない。
+- 一般のPerfへの拡張には、shift・coneの閉性と、実際の係数拡大のホモトピー保存に基づく
+  H⁰内retractへの拡張を引き続き確認する。U14全体はまだ受入完了としない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
