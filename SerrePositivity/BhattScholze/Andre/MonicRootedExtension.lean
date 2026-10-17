@@ -20,6 +20,7 @@ public import SerrePositivity.BhattScholze.Andre.PerfectPrismMonicPrismCompletel
 public import SerrePositivity.BhattScholze.Andre.PerfectPrismMonicPerfectoidCompletelyFlat
 public import SerrePositivity.BhattScholze.Andre.PerfectPrismMonicRootedExtension
 public import SerrePositivity.BhattScholze.Andre.FiniteMonicRootedExtension
+public import SerrePositivity.BhattScholze.Andre.MonicPrismaticArbitraryResidue
 
 /-!
 # André E1・E2 の集約

@@ -339,6 +339,15 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.exists_finiteMonicRootedPerfe
 assert_no_sorry SerrePositivity.BhattScholze.Andre.exists_monicRootedPerfectoidExtension_of_finite
 assert_no_sorry SerrePositivity.BhattScholze.Andre.exists_monicRootPerfectoidExtension
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticFiniteSubfamilyEvaluation_isKoszulResolution
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticFiniteSubfamilySourceTorIso
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticFiniteSubfamilySource_tor_subsingleton
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticBoundedSupportStage_tor_subsingleton
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticEvaluation_tor_subsingleton_of_preservesBoundedSupportColimit
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticEvaluation_tor_subsingleton
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticBoundedSupportResidueEval_torVanishing
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticArbitraryResidueSourceDerivedIso
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -402,7 +411,10 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PerfectPrismMonicPerfectoidCompletelyFlat,
     `SerrePositivity.BhattScholze.Andre.PerfectPrismMonicRootedExtension,
     `SerrePositivity.BhattScholze.Andre.MonicRootedBaseEquiv,
-    `SerrePositivity.BhattScholze.Andre.FiniteMonicRootedExtension]
+    `SerrePositivity.BhattScholze.Andre.FiniteMonicRootedExtension,
+    `SerrePositivity.BhattScholze.Andre.MonicPrismaticFiniteSubfamilyTor,
+    `SerrePositivity.BhattScholze.Andre.MonicPrismaticBoundedSupportTor,
+    `SerrePositivity.BhattScholze.Andre.MonicPrismaticArbitraryResidue]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

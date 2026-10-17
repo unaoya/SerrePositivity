@@ -1305,3 +1305,55 @@ SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（
 新規 6 公開宣言の `assert_no_sorry` を追加した専用監査は終了コード 0。
 生成宣言を含む 1868 宣言の推移的公理依存は標準 3 公理のみ。
 存在定理 3 本の公開型も `#print` で確認した（終了コード 0）。
+
+### E1.20：任意モニック族の有界深さ有限部分族と実残余評価の Tor 消滅
+
+新規 `Andre/MonicPrismaticFiniteSubfamilyTor.lean` は、任意添字型 σ 内の有限部分族
+`T : Set σ` と全列挙 `s : Fin m ≃ T` を扱う。
+元の無限族の自由 δ 環を、補集合の自由 δ 変数を係数とする部分族の自由 δ 環に分離する
+既存の一般構成を再利用する。
+`monicPrismaticFirstRelation_mod_pd_fin_isWeaklyRegular` の任意有限部分族の初項入力を
+`deltaDivisionFiniteSubfamilyEvaluationList_isWeaklyRegular` へ渡し、全有界 δ 深さの
+Koszul 分解と対応する実源グラフ商の高次 Tor 消滅を得る。
+
+新規 `Andre/MonicPrismaticBoundedSupportTor.lean` は、元の評価図式
+`deltaDivisionBoundedSupportModuleDiagram`（添字 Finset (σ × ℕ)）の全段にその消滅を適用。
+同じ図式と実 TorAlg 関手に対する既存の `torAlg_preservesFinsetColimits` により、
+全評価環の消滅 `monicPrismaticEvaluation_tor_subsingleton` と、通常 Tor 比較・対称性による
+`monicPrismaticBoundedSupportResidueEval_torVanishing` を得る。
+中間補題 `monicPrismaticEvaluation_tor_subsingleton_of_preservesBoundedSupportColimit` の
+実図式の保存仮定は、これら二つの公開入口では残さない。
+
+新規 `Andre/MonicPrismaticArbitraryResidue.lean` の主要公開型は、以下の記法で示す。
+`P₁ := MvPolynomial σ A`、`E₁ := polynomialRankOneDeltaStructure σ D`、
+`L₁ := RelativeFreeDeltaRing (R := P₁) σ`、
+`c₁ := fun t : σ => monicRelation (f t) t`、
+`K₁ := Ideal.span {(p : L₁), MvPolynomial.C (MvPolynomial.C d)}`、
+`ψ₁ := (Ideal.Quotient.mk K₁).comp (deltaDivisionSourceMap (σ := σ) E₁ (MvPolynomial.C d))`、
+`β₁ := deltaDivisionSourceEval E₁ c₁`、`Mψ := baseChangeScalarModule ψ₁` とする。
+
+```lean
+def monicPrismaticArbitraryResidueSourceDerivedIso
+    {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
+    (D : DeltaStructure p A) (d : A) (f : σ → Polynomial A)
+    (hf : ∀ t, (f t).Monic)
+    (hpA : Function.Injective (fun z : A => (p : A) * z))
+    (v : Aˣ) (hv : (v : A) = D.delta d) :
+    (boundedAboveDerivedBaseChange β₁).obj (boundedAboveDerivedSingleFunctor.obj Mψ) ≅
+      boundedAboveDerivedSingleFunctor.obj
+        (ModuleCat.of P₁ (DeltaAdjoinDivisionResidue E₁ (MvPolynomial.C d) c₁))
+```
+
+同じ前提で `monicPrismaticBoundedSupportResidueEval_torVanishing` の結論は
+`scalarExtensionTorVanishing β₁ Mψ`。
+全添字型の有限性、多項式の正次数、余極限交換の追加仮定は不要。
+実係数射と標準導来 augmentation を保持し、通常残余テンソルの比較と合成する。
+BS Rem 7.15（著者版 p.62）の原典とは異なる具体的 PD 計算の経路。
+残るのは、この任意族の実残余比較を元の A/(p,d) 上の完備化・完全化の連鎖へ接続して
+最終存在定理を公開する工程、および無限 p 冪根変数の明示的自由基底。
+任意族の最終存在定理は未宣言であり、全体完成とは数えない。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4337 jobs）。
+新規 8 公開宣言の `assert_no_sorry` を追加した専用監査は終了コード 0。
+生成宣言を含む 1988 宣言の推移的公理依存は標準 3 公理のみ。
+主要な全評価 Tor 消滅と実導来評価同型の公開型を `#print` で確認した（終了コード 0）。
