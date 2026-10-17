@@ -156,6 +156,15 @@
 - `lake build SerrePositivity.DifferentialGraded.Endomorphism.ChecksDerivedTensor` 成功。
   14主要宣言の公理は標準3公理のみ。
 
+## U14a.12：U12d導来tensorとの全射自然な評価比較（2026-10-17）
+
+- `DerivedTensorEvaluation.lean`：underived tensorのD評価を既存balanced tensor関手と
+  自然同型で比較。主Kの境界商を通じ、任意射影解像度族の再構成導来tensorを
+  各D対象で評価するとU12dの既存導来tensorになるという自然同型を構成。
+  標準解像度の場合の正方形も公開した。全導来射に自然であり、対象ごとの同型だけではない。
+- `lake build SerrePositivity.DifferentialGraded.Endomorphism.ChecksDerivedTensorEvaluation` 成功。
+  6主要宣言の公理は標準3公理のみ。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
