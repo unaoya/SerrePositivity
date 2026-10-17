@@ -168,6 +168,20 @@
 - `Morita.ScalarExtensionPerfectSquaresChecks` ビルド成功（3071 jobs、警告なし）。
   主要6宣言の公理監査は標準3公理のみ。
 
+## U16d.5：通常kernelの各列のperfect性からの実際のPerf作用
+
+- `Morita/PerfectKernelImage.lean`：dg加群関手の代表加群像がperfectなら、
+  finite cellの像がperfectであることを有限操作の帰納法で証明した。
+  射影的perfect代表の導来retractを実際の射へ持ち上げ、H⁰で運ぶことでretractにも拡張した。
+- 通常kernel Pの各列 `P.rightAt d` の主局所化像がperfectであるという条件の下で、
+  公開済みの実際の `kernelDerivedTensorOnBimodule` がPerfを保存することを証明した。
+  主Perfへの実際の制限 `perfectKernelAction` と主導来包含との正方形を構成した。
+- Yoneda右単位と既存の任意入力射影解像度計算を使用した。
+  kernelの射影性、入力への追加flatness、localHomKFlatは仮定しない。
+  kernel変数の主局所化上の作用への移送は、その降下APIの実装後に行う。
+- `Morita.PerfectKernelImageChecks` ビルド成功（2741 jobs、警告なし）。
+  主要6宣言の公理監査は標準3公理のみ。
+
 ## 合同検証と公開入口（2026-10-17）
 
 - 新規10監査対象・公開入口・既存 `Checks.DGFunctorDerivedEquivalence` の12対象を
