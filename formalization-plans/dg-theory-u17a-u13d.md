@@ -278,3 +278,32 @@ HEAD からの差分全体が自分の変更だけであることも確認する
   別チャットの未 stage import が同居したため、パス指定コミットへの混入を避けるべく
   自分の cached patch だけを逆適用して部分 stage を解除。ルートは今回のコミットから除外し、
   import 一行は working tree に残す。他チャットの hunk と index には触れていない。
+
+### U15e7：最終微分の長さ filtration・零段・逐次余極限
+
+- `Quotient/DerivedComparisonFiltration.lean`：長さ n 以下の全 path の各次数の像の和を
+  `lengthSubmodule` と定義。ε 消去の成分を短い path への有限和と書き、
+  消去作用素が filtration を一段下げること、最終微分 d+ε が各段階を保つことを証明。
+  実際の部分複体 `lengthComplex`、単射な包含、段階間の chain map と合成則を構成。
+- 各次数で全段階の和が Hom 全体であることを `lengthSubmodule_exhaustive` で証明。
+  全 path 直和の余極限普遍性を用い、基礎環上の平坦性や複体の有界性は置かない。
+- `Quotient/DerivedComparisonFiltrationZero.lean`：空 path への内部射影により元の Hom の
+  次数ごとの包含が単射であると証明。零段の像を計算し、元の Hom 複体との実際の
+  `lengthZeroIso` を構成。零段から最終 Hom への合成が `originalHomInclusion` と一致する。
+- `Quotient/DerivedComparisonFiltrationColimit.lean`：長さ部分複体を ℕ 上の図式とし、
+  各次数の元が有限の段階に属することから underlying Type の filtered colimit を検証。
+  加群の忘却関手による反映と複体の評価による余極限判定で、
+  `colimit (lengthDiagram ...) ≅ quotientHom ...` を構成し、包含との式も証明。
+- 対象ビルド：`lake build` に `Checks.QuotientFiltration`・`Checks.QuotientFiltrationZero`・
+  `Checks.QuotientFiltrationColimit` の3対象（いずれも完全なモジュール名）を指定して成功（1876 jobs）。
+  主要23宣言の公理監査は標準3公理のみ。project import 依存は86・87・87ファイルで、
+  禁止された dg 圏分解系への依存なし。新規 sorry・axiom・引用なし。
+- カーネル検証で重かった制限写像の可換性は、一般の線形写像についての非公開補題に切り出し、
+  検証上限を増やさずに解消した。既存ファイルは読み取り専用で使用。
+- 原典 Drinfeld §8.2–8.4 を再確認。今回の厳密な ℕ 図式は path 長 filtration の図式であり、
+  Verdier 分母を添字とする K(A) 内の図式とは別である。後者に対する K-flat tensor の
+  ホモロジー余極限消滅（§8.4）を、厳密な複体図式の AB5 だけで代用しない。
+- 残部：正の随伴次数部分を固定長 path 直和と同定し、片側 K-flat 係数を使って Verdier 分母上の
+  Hom 比較を証明すること。これによる完全忠実性と U17b の完備化比較は引き続き未完。
+- U15e6 のコミット：`868beacb`（自分の3ファイルのみと直後に確認）。
+  ルートには他チャットの import が引き続き混在しているため、今回も編集・コミットしない。
