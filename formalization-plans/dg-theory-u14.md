@@ -953,6 +953,22 @@
 - `ChecksScalarHomCone` 対象ビルド成功（3057 jobs）。主要8宣言の公理は標準3公理のみ。
   既存APIの名前・型は変更していない。新しいsorry・axiom・引用は追加していない。
 
+## U14b.57：perfect始域の実際の全Hom係数変更比較（2026-10-17）
+
+- `ScalarPerfectHom.lean`：零・代表・shift・有限和・cone・同型の構成木に沿って、
+  全finite cellを始域とする実際のHom係数変更比較が擬同型であることを証明した。
+- 導来像がperfectである射影的加群からfinite cellへの導来圏内のretractを取り出し、
+  射影的始域のHom計算で閉零射代表とH⁰の分裂へ持ち上げた。U14b.51から一般のperfect始域の結論を得た。
+- U13 enhancementの係数変更した包含と、実際の加群係数拡大との合成が全Homで擬同型となること、
+  perfect指定対象の `actualScalarEnd` が全Homで擬同型となることも証明した。
+  終域加群にはperfect性を要求せず、係数環の平坦性も仮定しない。
+- `ChecksScalarPerfectHom` 対象ビルド成功（3059 jobs）。主要5宣言の公理は標準3公理のみ。
+  U14b.52–57を公開入口へ接続し、`ChecksCompatibility` 統合対象ビルド成功（3162 jobs）。
+  既存APIの名前・型は変更していない。
+  新しいsorry・axiom・引用は追加していない。
+- 次に実際の係数拡大のperfect射影的対象の保存と、主Perfに降ろした係数変更図式の最終照合へ進む。
+  Hom比較のshift・cone・H⁰内retract閉性はこの段階で証明済み。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
@@ -967,7 +983,8 @@
   主Perfとenhancementの整合的shift・三角性・包含正方形はU14b.25–26で証明済み。
   主Perf tensorからU12dと係数変更した作用bimoduleへの自然比較はU14b.43で構成済み。
   実際のD係数変更加群のEnd・Hom・評価はU14a/b.36–39、代表加群とYoneda評価はU14b.44–45で接続済み。
-  係数変更後の実際のPerf比較への拡張と最終受入照合が残る。
+  perfect始域の全Hom係数変更比較はU14b.57で証明済み。
+  実際の係数拡大のperfect射影的対象の保存、主Perfに降ろした係数変更図式と最終受入照合が残る。
 - U14c：明示した指定compact生成仮定の下で導来Homの保守性をU14c.1で証明済み。
   Perf上の単位・余単位の可逆性と、外部compact⇒Perf入力によるcompact上の結論はU14c.2で証明済み。
   必要な余積比較と、外部compact⇒Perf入力下での余積保存はU14c.3–5で証明済み。
@@ -979,4 +996,5 @@
   Perf比較に対する整合的shift・三角性の図式はU14b.25–26で証明済み。
   主Perf tensorからU12dと係数変更した作用bimoduleへの自然比較はU14b.43で構成済み。
   実際のD係数変更加群のEnd・Hom・評価はU14a/b.36–39、代表加群とYoneda評価はU14b.44–45で接続済み。
-  係数変更後の実際のPerf比較への拡張と最終受入照合が残る。
+  perfect始域の全Hom係数変更比較はU14b.57で証明済み。
+  実際の係数拡大のperfect射影的対象の保存、主Perfに降ろした係数変更図式と最終受入照合が残る。

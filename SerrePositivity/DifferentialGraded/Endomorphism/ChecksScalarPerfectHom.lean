@@ -1,0 +1,11 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarPerfectHom
+
+/-! # Perfect始域の実際のHom係数変更比較の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+#print axioms scalarModuleHomComparisonLocus_finiteCellCode
+#print axioms scalarModuleHom_quasiIso_of_finiteCell
+#print axioms scalarModuleHom_quasiIso_of_perfect
+#print axioms perfectScalarModuleHom_homQuasiIso
+#print axioms actualScalarEnd_homQuasiIso
