@@ -8661,6 +8661,49 @@ KL 専用監査も成功（1206 assert）。
 次は既存の有限表示加群の導来完備性をこの E に適用する。
 Cor 8.12 の実 excision・既存環版との同定、包含比較、KL-T/Q は引き続き未完了。
 
+#### KL-T：実共通モデルと閉側の導来 p 完備性（2026-10-17）
+
+`CommutativeAlgebra/DerivedCompletePrincipalIdeal.lean` は既存の
+`DerivedCompletion/FinitePresentationComplete.lean`、核・余核の閉性、係数制限の同値を再利用する。
+公開 `DerivedCompletion.isModuleComplete_principal_ideal` は、導来 f 完備な環 A と
+任意の d:A について、主イデアル (d) 自体の A 加群としての導来完備性を証明した。
+生成元が零因子でもよい。
+`DerivedCompletion.isModuleComplete_finitePresentation_algebra_principal` は、
+導来 f 完備な環 R 上の有限表示加群である R 代数 A と任意の d:A から、
+元の R 作用での A の完備性、A 自身の作用での完備性、主イデアル (d) の完備性、
+商 A/(d) 自身の環作用での完備性を一括して返す。
+Noether 性・古典的完備性・bounded torsion は不要。
+
+`CLMST/PerfectoidFinitePresentationCommonModel.lean` の公開入口は
+`SerrePositivity.CLMST.localizationSplitting_exists_derivedComplete_common_model`。
+有限かつ代数有限表示な R 代数 A、perfectoid な R（p 素数）、
+d:R、powers d の局所化 L、実分解 e:L⊗R A≃ₐ[L]Lʳ を前提とする。
+前節の E,u,v,w を選び、その同じ E について次の正確な完備性を返す。
+
+```lean
+IsModuleComplete R (p : R) (ModuleCat.of R E)
+IsModuleComplete E (p : E) (ModuleCat.of E E)
+IsModuleComplete E (p : E) (ModuleCat.of E (Ideal.span {algebraMap R E d}))
+IsModuleComplete (E ⧸ Ideal.span {algebraMap R E d})
+  (p : E ⧸ Ideal.span {algebraMap R E d})
+  (ModuleCat.of (E ⧸ Ideal.span {algebraMap R E d})
+    (E ⧸ Ideal.span {algebraMap R E d}))
+```
+
+E の有限性・代数有限表示性・加群有限表示性、および元の u:A→E、v:Rʳ→E、w:E→Lʳ の
+合成式・有限性・局所化構造・両核の支持・両余核の共通指数はすべて保持している。
+このファイルは独立に import でき、Prop247 系や新しい Cor 8.12 引用には依存しない。
+
+対象ビルド、専用監査 `scripts/audit_clmst_derived_complete_common_model.lean` が成功。
+公開3補題に加え、元の A と Rʳ の閉側の完備性、実 u,v で送った主イデアルが
+E 上の同じ主イデアルであることを確認した。すべて `assert_no_sorry` が通り標準三公理のみ。
+全体ビルド成功（6361 jobs）。KL 専用監査も成功（1209 assert）。
+これで有限性だけから導来完備性を推測する必要はなくなった。
+**Cor 8.12 の実 excision と環版 perfectoid 化との同定は未供給**であり、
+この完備性だけで canonical excision を証明したとはしない。
+次は実写像 u,v の局所化同型を明示し、担当入力の原典の付値環条件と照合する。
+KL-T の全 Tor 入力、KL-Q の引用置換は引き続き未完了。
+
 #### Prop 2.4.7 専任系列：原典から D-I/U/Q への型付き受渡し（2026-10-17）
 
 本節は統合表 D-I・D-U・D-Q の実入力を固定する。未採用の別計画は根拠にしない。

@@ -13,8 +13,8 @@ universe u
 open SerrePositivity
 open scoped TensorProduct
 
--- At rank zero the finitely presented model need not be an embedded zero ring.
--- The actual localization map instead supplies one exponent killing the whole model.
+-- Rank zero retains finite presentation without a nontriviality assumption.
+-- The actual localization map also supplies one exponent killing the whole model.
 theorem audit_zero_rank_fp_common_model
     (R A : Type u) [CommRing R] [CommRing A] [Algebra R A]
     [Module.Finite R A] [Algebra.FinitePresentation R A]
