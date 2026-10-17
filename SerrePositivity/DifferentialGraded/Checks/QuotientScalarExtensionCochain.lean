@@ -1,0 +1,24 @@
+module
+public import SerrePositivity.DifferentialGraded.Quotient.ScalarExtensionComposition
+public import SerrePositivity.DifferentialGraded.Quotient.ScalarExtensionEpsilon
+
+@[expose] public section
+namespace SerrePositivity.DifferentialGraded
+#print axioms ScalarExtension.CochainSquare
+#print axioms ScalarExtension.cochainSquare_ofHom
+#print axioms ScalarExtension.cochainSquare_comp
+#print axioms ScalarExtension.cochainSquare_tensorLeft
+#print axioms ScalarExtension.cochainSquare_tensorRight
+#print axioms ScalarExtension.cochainSquare_zero
+#print axioms ScalarExtension.cochainSquare_add
+#print axioms ScalarExtension.compareTensor
+#print axioms ScalarExtension.compareTensor_naturality
+#print axioms ScalarExtension.compareTensor_associator
+#print axioms ScalarExtension.compareTensor_associator_inv
+#print axioms ScalarExtension.compareTensor_leftUnitor
+#print axioms DGQuotient.eraseEpsilon_baseChange
+#print axioms DGQuotient.termBaseChangeIso_cons_compare
+#print axioms DGQuotient.composition_baseChange
+#print axioms DGQuotient.prependMap_baseChange
+#print axioms DGQuotient.appendMap_baseChange
+end SerrePositivity.DifferentialGraded

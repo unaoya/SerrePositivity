@@ -333,3 +333,25 @@ U15d へ進む。U12f の受入範囲は上記の計算モデル条件を含む�
 
 これは内部微分についての同型である。ε 消去を加えた最終微分、単位・合成との整合性は
 引き続き証明中。U15d 全受入および正本への完了参照はまだ行わない。
+
+
+## 2026-10-17：任意次数 cochain と有限 path の合成比較
+
+固定 path 直和の同型は `c6db8eb5` にコミット済み。
+`Tensor/ScalarExtensionCochain.lean` の `CochainSquare` は閉性を要求しない全整数次数の
+係数変更の可換四角形を保持し、合成・左右 tensor・零・加算について閉じる。
+左 tensor の Koszul 符号も純粋生成元上で照合した。
+`ScalarExtensionDiagrams.lean` は tensor 比較射の自然性、associator の両方向、左 unitor の
+比較を組み立てる一般補題を提供する。
+
+`Quotient/ScalarExtensionEpsilon.lean` は次数 +1 の生成 cochain ε↦1 の係数変更可換性を証明。
+`ScalarExtensionComposition.lean` は元の Hom 合成、先頭合成 `prependMap`、任意の
+二本の有限 path の連結 `appendMap` の比較を証明する。添字はそれぞれ元と同じ有限語と
+同じ連結 `w ++ v` のままで、平坦性は不要。
+
+検証：`lake build SerrePositivity.DifferentialGraded.Checks.QuotientScalarExtensionCochain` 成功
+（2058 jobs、警告なし）。主要17宣言の公理監査はすべて標準3公理のみ。
+新規 sorry・axiom・引用は0件。ルートは自分の import 行だけを部分 stage。
+
+残る U15d の受入：各位置の ε 消去、有限和と全直和の消去作用素、最終微分に対する
+Hom 同型、最終単位・合成の比較。既存 Quotient ファイルは編集していない。
