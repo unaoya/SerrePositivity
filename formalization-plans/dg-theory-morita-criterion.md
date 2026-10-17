@@ -85,6 +85,25 @@ retract に閉じることを実際に冪等元を分裂して証明する。
 警告なし。計11宣言の監査は標準3公理のみ。右随伴・平坦性・局所 K-flat 条件を使わず、
 新規 sorry・axiom・引用なし。
 
+## 全 Hom 条件と実作用の全整数 shift の比較の同値
+
+主作用との全次数接続は `bc671c6a`（直後の stat は自分の4ファイルのみ）。
+`CriterionPerfFullHomCriterion.lean` の
+`criterionPerfFullHomQuasiIso_iff_representableMaps` は、通常代表 P の列の全 Hom 複体の
+比較が全対で擬同型であることと、実際の主作用の全ての整数 shift の表現可能対象間の
+射写像が全単射であることの同値。源の shift の計算から始め、既存の主作用の
+`CommShift` を使った両変数の同時 shift により、任意の二整数 m,n を扱う。
+左辺はあくまで全 Hom 複体の実際の射の擬同型条件であり、射集合の条件を定義に採用していない。
+
+`criterionPerfKernelFullHomQuasiIso_iff_representableMaps` はこの結果を主 kernel に
+移し、kernel の同型を作用関手の自然同型として使う。
+`criterionPerfKernelFullHomQuasiIso_model_iff` は、任意の通常代表 Q と `Q(Q) ≅ K` に
+対して第二条件が同じであることを証明する。初期記録で未主張だった、通常代表の選択
+独立性もこれで完了した。射影解像度の選択独立性は先の全次数の補題を再利用する。
+
+検証：`CriterionPerfFullHomCriterionChecks` を最終入口の依存先として対象ビルド。
+今回の主要3宣言の公理監査は標準3公理のみ。追加の平坦性条件・引用・sorry・axiom なし。
+
 ## 表現可能対象からの二変数の厚い帰納
 
 生成性・同値証拠の単位は `c474f527`（直後の stat は自分の5ファイルのみ）。

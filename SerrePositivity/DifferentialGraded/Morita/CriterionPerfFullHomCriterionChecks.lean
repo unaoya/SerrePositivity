@@ -1,0 +1,10 @@
+module
+public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfFullHomCriterion
+public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfResolvedActionChecks
+
+@[expose] public section
+namespace SerrePositivity.DifferentialGraded.Morita
+#print axioms criterionPerfFullHomQuasiIso_iff_representableMaps
+#print axioms criterionPerfKernelFullHomQuasiIso_iff_representableMaps
+#print axioms criterionPerfKernelFullHomQuasiIso_model_iff
+end SerrePositivity.DifferentialGraded.Morita
