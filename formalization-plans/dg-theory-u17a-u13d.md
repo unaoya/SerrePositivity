@@ -1138,3 +1138,35 @@ M9 の適用については、商を取る前の次数零の平坦 Hom を持つ
   graph 合成比較の構造照合はこの単位で完了。二モデル比較の比較写像自体の構造照合、
   元の tria の係数変更から直接局所化する経路との一致、一般 kernel の射・合成の
   自然性・coherence はなお未完として区別する。中心作用・G 作用は保留。
+
+### U17d7：元の tria の係数変更を直接局所化する経路との一致
+
+- `Verdier/ScalarGraphRestriction.lean`：係数制限と dg 関手への制限の交換を、
+  全次数の加群作用を含む実際の加群同型として構成した。係数拡大の随伴の単位の自然性で
+  証明し、通常の graph 延長との交換同型は複合随伴の一意性から得る。環の平坦性は不要。
+- `Verdier/ScalarGraphDerivedComparison.lean`：射影的モデルの族での既存の導来計算を
+  自然同型に束ねた。射影的 perfect 代表では、graph 延長の射影性保存と係数変更後の
+  perfect 射影性を使える。この閉零比較を H⁰ の商へ降ろし、既存の perfect enhancement
+  同値に沿って元の Perf 包含上の **実際の** 導来係数変更と graph 延長の正方形を得た。
+  所望の正方形や係数変更後の任意の擬同型保存を入力にしていない。
+- `Verdier/ScalarSourceVerdier.lean`：元の dg 圏の主導来係数変更を tria に制限し、
+  指定 S の tria を同じ対象添字 S の tria に送ることを生成性から証明した。
+  `sourceScalarVerdierFunctor` は、この元の関手を **先に実際に局所化** する。
+  局所 K-flat 条件も係数環の平坦性も不要で、商因子化の shift 整合性・三角形版を公開した。
+- `Verdier/ScalarQuotientSourceSquare.lean`：上の導来正方形と U15d の固定 path の包含等式、
+  既存の導来 graph 合成比較を貼り合わせ、商側 tria に制限して Verdier 局所化へ降ろした。
+  `sourceScalarLocalQuotientSquare` と既存の指定比較に対する
+  `sourceScalarCanonicalQuotientSquare` は元の係数変更を先に局所化した関手の正方形である。
+  `sourceScalarLocalTransportIso` は、以前の局所同値による輸送との自然同型。
+  この最後の同定だけで両側の局所 K-flat 条件を別々に使う。
+- 旧 `GraphRestrictionShift.lean`・`GraphCompositionShift.lean` の無名 local instance は、
+  同時 import で他モジュールの生成名と衝突したため、自分の宣言だけ固有名へ変更した。
+  証明・shift 構造を変更せず、他担当ファイルは編集していない。
+- 対象ビルド `Verdier.ChecksScalarQuotientSourceSquare` 成功（3375 jobs）、警告なし。
+  主要18宣言と前単位8宣言の公理監査は標準3公理のみ。新規 sorry・axiom・引用なし。
+  共有ルート・Stage・README は編集していない。
+- 前単位 `9a79a9b8` は直後の stat で自分の5ファイルのみと確認した。
+  直接局所化との一致は自然同型として解決した。今回の新しい比較自然同型そのものの
+  shift 整合性、完備化経路への接続、従来の二モデル比較の構造照合は引き続き区別する。
+  一般 kernel の射・合成に関する自然性・coherence は U16 の進展を読んで接続する。
+  中心作用・G 作用は保留を維持する。

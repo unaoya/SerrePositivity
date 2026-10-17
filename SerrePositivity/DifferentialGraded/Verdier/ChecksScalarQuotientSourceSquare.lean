@@ -1,0 +1,26 @@
+module
+public import SerrePositivity.DifferentialGraded.Verdier.ScalarQuotientSourceSquare
+public import SerrePositivity.DifferentialGraded.Verdier.ChecksGraphCompositionShift
+
+/-! # 元の係数変更からの直接 Verdier 比較の公理監査 -/
+@[expose] public section
+open SerrePositivity.DifferentialGraded
+open SerrePositivity.DifferentialGraded.DGQuotient
+#print axioms scalarGraphRestrictionIso
+#print axioms scalarGraphExtensionIso
+#print axioms graphProjectiveFamilyComputation
+#print axioms scalarProjectiveFamilyComputation
+#print axioms scalarGraphPerfectClosedSquare
+#print axioms scalarGraphPerfectHomotopySquare
+#print axioms scalarGraphPerfectDerivedSquare
+#print axioms sourceScalarRepresentableIso
+#print axioms sourceScalarTriaFunctor_image
+#print axioms sourceScalarVerdierFunctor
+#print axioms sourceScalarVerdierFactorsCommShift
+#print axioms sourceScalarVerdierFunctorIsTriangulated
+#print axioms sourceScalarVerdierFactorsTriangle
+#print axioms sourceScalarQuotientDerivedSquare
+#print axioms sourceScalarQuotientTriaSquare
+#print axioms sourceScalarLocalQuotientSquare
+#print axioms sourceScalarLocalTransportIso
+#print axioms sourceScalarCanonicalQuotientSquare

@@ -58,9 +58,11 @@ def graphRestrictionEnrichedCompositionIso :
         𝟙 _ ≫ (moduleEvaluation A T (G.obj (F.obj d))).map f
       exact (Category.comp_id _).trans (Category.id_comp _).symm)
 
-local instance : (dgModuleRestriction A E T G.op).onClosed.CommShift ℤ :=
+local instance graphRestrictionECompositionShift :
+    (dgModuleRestriction A E T G.op).onClosed.CommShift ℤ :=
   dgModuleFunctorCommShift A T E (dgModuleRestriction A E T G.op)
-local instance : (dgModuleRestriction A D T (F.comp G).op).onClosed.CommShift ℤ :=
+local instance graphRestrictionCompositeShift :
+    (dgModuleRestriction A D T (F.comp G).op).onClosed.CommShift ℤ :=
   dgModuleFunctorCommShift A T D (dgModuleRestriction A D T (F.comp G).op)
 
 lemma graphRestrictionEnrichedCompositionIso_eval (M : ModuleCategory A T) (d : D) :

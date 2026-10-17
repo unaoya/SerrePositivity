@@ -15,15 +15,21 @@ variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
   (T : Type t) [DGCategory A T] [Small.{u} T]
   (F : DGFunctor A D E) (G : DGFunctor A E T)
 
-local instance : (dgModuleRestriction A D E F.op).onClosed.CommShift ℤ :=
+local instance graphCompositionDRestrictionShift :
+    (dgModuleRestriction A D E F.op).onClosed.CommShift ℤ :=
   dgModuleFunctorCommShift A E D (dgModuleRestriction A D E F.op)
-local instance : (dgModuleRestriction A E T G.op).onClosed.CommShift ℤ :=
+local instance graphCompositionERestrictionShift :
+    (dgModuleRestriction A E T G.op).onClosed.CommShift ℤ :=
   dgModuleFunctorCommShift A T E (dgModuleRestriction A E T G.op)
-local instance : (dgModuleRestriction A D T (F.comp G).op).onClosed.CommShift ℤ :=
+local instance graphCompositionCompositeRestrictionShift :
+    (dgModuleRestriction A D T (F.comp G).op).onClosed.CommShift ℤ :=
   dgModuleFunctorCommShift A T D (dgModuleRestriction A D T (F.comp G).op)
-local instance : (dgDerivedRestriction A D E F).CommShift ℤ := dgDerivedRestrictionCommShift A D E F
-local instance : (dgDerivedRestriction A E T G).CommShift ℤ := dgDerivedRestrictionCommShift A E T G
-local instance : (dgDerivedRestriction A D T (F.comp G)).CommShift ℤ :=
+local instance graphCompositionDerivedDRestrictionShift :
+    (dgDerivedRestriction A D E F).CommShift ℤ := dgDerivedRestrictionCommShift A D E F
+local instance graphCompositionDerivedERestrictionShift :
+    (dgDerivedRestriction A E T G).CommShift ℤ := dgDerivedRestrictionCommShift A E T G
+local instance graphCompositionDerivedCompositeRestrictionShift :
+    (dgDerivedRestriction A D T (F.comp G)).CommShift ℤ :=
   dgDerivedRestrictionCommShift A D T (F.comp G)
 
 /-- 全 Hom の制限表示を使う、局所化前の整合的な合成比較。 -/
@@ -78,9 +84,12 @@ instance derivedGraphRestrictionCompositionIsoCommShift :
   rw [← graphRestrictionCompositionPreIso_eq]
   infer_instance
 
-local instance : (dgDerivedExtension A D E F).CommShift ℤ := dgDerivedExtensionCommShift A D E F
-local instance : (dgDerivedExtension A E T G).CommShift ℤ := dgDerivedExtensionCommShift A E T G
-local instance : (dgDerivedExtension A D T (F.comp G)).CommShift ℤ :=
+local instance graphCompositionDerivedDExtensionShift :
+    (dgDerivedExtension A D E F).CommShift ℤ := dgDerivedExtensionCommShift A D E F
+local instance graphCompositionDerivedEExtensionShift :
+    (dgDerivedExtension A E T G).CommShift ℤ := dgDerivedExtensionCommShift A E T G
+local instance graphCompositionDerivedCompositeExtensionShift :
+    (dgDerivedExtension A D T (F.comp G)).CommShift ℤ :=
   dgDerivedExtensionCommShift A D T (F.comp G)
 
 /-- 元の導来延長合成同型を保ったまま、随伴により固定した shift との整合性を得る。 -/
