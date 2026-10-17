@@ -8876,6 +8876,45 @@ KL 専用監査は成功（1221 assert）。全体ビルドは今回未編集の
 被覆合流・忠実降下の実適用、KL-Q の両消滅と原典引用置換は引き続き残る。
 D-I/U/Q・Cor 8.12 の担当部分には着手していない。
 
+#### KL-T：元の悪い元を保つ任意基底拡大のエタール性（2026-10-17）
+
+`CommutativeAlgebra/EtaleAwayBaseChange.lean` の公開定理
+`etaleAway_tensor_baseChange` は、任意の R 代数 A,B と g:R について、
+元の A[1/g] の R[1/g] 上のエタール性から、
+(B⊗R A)[1/algebraMap R B g] の B[1/algebraMap R B g] 上のエタール性を返す。
+両側で `GenericEtale.awayAlgebra` の標準代数構造を使う。正確な対象は次のとおり。
+
+```lean
+letI := GenericEtale.awayAlgebra R A g
+Algebra.Etale (Localization.Away g) (Localization.Away (algebraMap R A g)) →
+  letI := GenericEtale.awayAlgebra B (B ⊗[R] A) (algebraMap R B g)
+  Algebra.Etale (Localization.Away (algebraMap R B g))
+    (Localization.Away (algebraMap B (B ⊗[R] A) (algebraMap R B g)))
+```
+
+テンソル積と一元局所化の実比較同型を用い、
+`1⊗algebraMap R A g = algebraMap B (B⊗R A) (algebraMap R B g)` を明示してから
+標準局所化上へ係数を制限する。B の通常の平坦性・完全平坦性・perfectoid 性を要求しない。
+従って BS 7.14 の拡大を通常平坦と取り違える必要はない。
+有限性や有限表示性もこのエタール性の補題自体には不要。
+
+対象ビルドと専用監査 `scripts/audit_clmst_etale_base_change.lean` は成功。
+監査では任意の AIC perfectoid な B に対して、元の有限かつ有限表示な A を
+実 B⊗R A に替え、このエタール性を前節の実被覆定理へ適用した。
+元の g の像を反転した有限被覆上で、B 有限表示・導来 p 完備な同じ実モデルと
+(B⊗R A)→M←Bʳ の実有限写像を得る。通常平坦性を instance として導入していない。
+公開定理とこの適用例は `assert_no_sorry` 成功・標準三公理のみ。新しい引用はない。
+KL 専用監査は成功（1222 assert）。全体ビルドは今回未編集の
+`CLMST/TensorIsogeny.lean:51` の
+`GenericEtale.etale_away_baseChange_of_mem_span_singleton` 未定義、および
+`DifferentialGraded/Quotient/ScalarExtension.lean` のタイムアウトと未定義定数で失敗した。
+今回の対象モジュール・専用監査は成功している。並行系列のファイルは修正していない。
+
+これで一つの André 拡大後にも、元の悪い元の像に対応する実被覆を使える。
+各モデルの canonical excision の実 pullback 性と perfectoid 化のモデル同定は未供給である。
+Cor 8.12 の担当部分は保留のまま変更せず、実 almost 比較・Prop 2.4.9(a)・KL-Q の引用置換を
+完成済みとはしない。
+
 #### Prop 2.4.7 専任系列：原典から D-I/U/Q への型付き受渡し（2026-10-17）
 
 本節は統合表 D-I・D-U・D-Q の実入力を固定する。未採用の別計画は根拠にしない。
