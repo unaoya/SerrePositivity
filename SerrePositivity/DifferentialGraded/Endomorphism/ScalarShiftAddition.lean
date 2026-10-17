@@ -87,8 +87,8 @@ lemma normalizedScalarModuleExtensionCommShiftIso_add (s t : ℤ) :
 /-- 零・加法shiftと整合する、実際の加群係数拡大の比較データ。 -/
 @[instance_reducible]
 def scalarModuleExtensionCommShift : (ScalarExtension.moduleExtension φ D).CommShift ℤ where
-  commShiftIso := normalizedScalarModuleExtensionCommShiftIso φ D
-  commShiftIso_zero := normalizedScalarModuleExtensionCommShiftIso_zero φ D
-  commShiftIso_add := normalizedScalarModuleExtensionCommShiftIso_add φ D
+  commShiftIso := normalizedScalarModuleExtensionShiftNatIso φ D
+  commShiftIso_zero := normalizedScalarModuleExtensionShiftNatIso_zero φ D
+  commShiftIso_add := normalizedScalarModuleExtensionShiftNatIso_add φ D
 
 end SerrePositivity.DifferentialGraded
