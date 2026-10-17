@@ -26,6 +26,12 @@ dg nerve は構成済み。ホーン充填の完成をこの監査から主張�
 #print axioms SerrePositivity.InfinityCategories.dgNerve.edgeEquiv
 #print axioms SerrePositivity.InfinityCategories.dgNerve.δ_obj
 #print axioms SerrePositivity.InfinityCategories.dgNerve.σ_obj
+#print axioms SerrePositivity.InfinityCategories.dgNerve.δ_data
+#print axioms SerrePositivity.InfinityCategories.dgNerve.σ_data
+#print axioms SerrePositivity.InfinityCategories.dgNerve.δ_hom
+#print axioms SerrePositivity.InfinityCategories.dgNerve.σ_hom_of_inj
+#print axioms SerrePositivity.InfinityCategories.dgNerve.σ_hom_eq_zero
+#print axioms SerrePositivity.InfinityCategories.dgNerve.σ_hom_of_collapsed_pair
 #print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.pullback_term_of_collision_away
 #print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.predAbove_terms_cancel
 #print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.predAbove_rhs_of_interior
@@ -109,6 +115,17 @@ dg nerve は構成済み。ホーン充填の完成をこの監査から主張�
 #print axioms SerrePositivity.InfinityCategories.DGNerve.Simplex.edgeHom
 #print axioms SerrePositivity.InfinityCategories.DGNerve.Simplex.differential_edgeHom
 #print axioms SerrePositivity.InfinityCategories.DGNerve.Simplex.edgeCycle
+#print axioms SerrePositivity.InfinityCategories.DGNerve.TriangleData
+#print axioms SerrePositivity.InfinityCategories.DGNerve.three_eq_univ
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.edgeHom
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_triangle
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.ofTriangle
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Simplex.ofTriangle
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Simplex.toTriangle
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Simplex.toTriangle_ofTriangle
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Simplex.ofTriangle_toTriangle
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Simplex.triangleEquiv
+#print axioms SerrePositivity.InfinityCategories.dgNerve.triangleEquiv
 
 -- 全ての明示的公開宣言の型も同じ実行で確認する。
 #check @SerrePositivity.InfinityCategories.DGNerve.compose_zero
@@ -121,6 +138,12 @@ dg nerve は構成済み。ホーン充填の完成をこの監査から主張�
 #check @SerrePositivity.InfinityCategories.dgNerve.edgeEquiv
 #check @SerrePositivity.InfinityCategories.dgNerve.δ_obj
 #check @SerrePositivity.InfinityCategories.dgNerve.σ_obj
+#check @SerrePositivity.InfinityCategories.dgNerve.δ_data
+#check @SerrePositivity.InfinityCategories.dgNerve.σ_data
+#check @SerrePositivity.InfinityCategories.dgNerve.δ_hom
+#check @SerrePositivity.InfinityCategories.dgNerve.σ_hom_of_inj
+#check @SerrePositivity.InfinityCategories.dgNerve.σ_hom_eq_zero
+#check @SerrePositivity.InfinityCategories.dgNerve.σ_hom_of_collapsed_pair
 #check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.pullback_term_of_collision_away
 #check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.predAbove_terms_cancel
 #check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.predAbove_rhs_of_interior
@@ -204,3 +227,14 @@ dg nerve は構成済み。ホーン充填の完成をこの監査から主張�
 #check @SerrePositivity.InfinityCategories.DGNerve.Simplex.edgeHom
 #check @SerrePositivity.InfinityCategories.DGNerve.Simplex.differential_edgeHom
 #check @SerrePositivity.InfinityCategories.DGNerve.Simplex.edgeCycle
+#check @SerrePositivity.InfinityCategories.DGNerve.TriangleData
+#check @SerrePositivity.InfinityCategories.DGNerve.three_eq_univ
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.edgeHom
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_triangle
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.ofTriangle
+#check @SerrePositivity.InfinityCategories.DGNerve.Simplex.ofTriangle
+#check @SerrePositivity.InfinityCategories.DGNerve.Simplex.toTriangle
+#check @SerrePositivity.InfinityCategories.DGNerve.Simplex.toTriangle_ofTriangle
+#check @SerrePositivity.InfinityCategories.DGNerve.Simplex.ofTriangle_toTriangle
+#check @SerrePositivity.InfinityCategories.DGNerve.Simplex.triangleEquiv
+#check @SerrePositivity.InfinityCategories.dgNerve.triangleEquiv

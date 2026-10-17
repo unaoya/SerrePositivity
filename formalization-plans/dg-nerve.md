@@ -680,6 +680,165 @@ SerrePositivity.InfinityCategories.dgNerve.σ_obj : ∀ (A : Type u_1) [inst : C
 
 </details>
 
+### N1d・N1 完了（2026-10-17）：二単体の同値と公開成分計算
+
+- `DGNerve/Triangle.lean` に `TriangleData A D` を定義した。
+  これは `obj : Fin 3 → D`、三つの閉零射 `f01`・`f12`・`f02`、次数 −1 の `homotopy` と
+  `differential A homotopy = compose A f12.val f01.val (by decide) - f02.val` を持つ。
+  `Simplex.ofTriangle` と `Simplex.toTriangle` の両方の逆写像の法則を証明し、
+  `Simplex.triangleEquiv` と次の公開同値を構成した。
+
+  ```lean
+  dgNerve.triangleEquiv A D : (dgNerve A D) _⦋2⦌ ≃ DGNerve.TriangleData A D
+  ```
+
+- `DGNerve/Computations.lean` は `δ_data`・`σ_data`、全域単射な面の `δ_hom`、
+  退化の `σ_hom_of_inj`・`σ_hom_eq_zero`・`σ_hom_of_collapsed_pair` を公開する。
+  最後の補題は端点・次数の等式で移送した単位との `HEq` を用い、cast の選択に依存しない。
+- 前提は `A : Type u`、`[CommRing A]`、`D : Type v`、`[DGCategory A D]` のみ。
+  宇宙は `dgNerve A D : SSet.{max u v}`。設計 §3 の変更はない。
+- 集約入口に三角形の同値と成分計算を追加した。共有ルートには
+  `public import SerrePositivity.InfinityCategories.DGNerve` を一行だけ追加した。
+  並行作業のルートの他のハンクをコミットに混ぜないよう分離して保存する。
+- 検証：`set -e`・`set -o pipefail` の下で
+  `lake build SerrePositivity.InfinityCategories.DGNerve` は終了コード 0（3312 jobs）、
+  `lake build SerrePositivity` も終了コード 0（7348 jobs）。
+  `lake env lean scripts/audit_dg_nerve.lean` も終了コード 0。
+  今回の新規 17 件、累計 110 件の明示的公開宣言と既存則 5 件は全て標準 3 公理のみ。
+- **N1 は完了**：単体の構造体、三分岐の単体的構造、恒等・合成則、0・1・2 単体の同値、
+  面・退化の成分計算、集約入口とルート import を揃えた。
+  **未完了は N2〜N6**。quasicategory 性、H⁰ 比較、右 pinched 写像空間、dg 関手性、
+  自然変換のホモトピー、一点 dg 圏・複体圏での受入検査はまだ主張しない。
+
+追加公開宣言の正確な型は次のとおり（証明引数の省略記号は N1a と同じ）。
+
+<details>
+<summary>N1d で追加した公開宣言の型（17 件）</summary>
+
+```text
+SerrePositivity.InfinityCategories.dgNerve.δ_data : ∀ (A : Type u_1) [inst : CommRing A] (D : Type u_2)
+  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {n : ℕ} (i : Fin (n + 2))
+  (s : (SerrePositivity.InfinityCategories.dgNerve A D).obj (Opposite.op { len := n + 1 })),
+  ((CategoryTheory.ConcreteCategory.hom
+          (CategoryTheory.SimplicialObject.δ (SerrePositivity.InfinityCategories.dgNerve A D) i))
+        s).toSimplexData =
+    s.pullback i.succAboveOrderEmb.toOrderHom
+SerrePositivity.InfinityCategories.dgNerve.σ_data : ∀ (A : Type u_1) [inst : CommRing A] (D : Type u_2)
+  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {n : ℕ} (i : Fin (n + 1))
+  (s : (SerrePositivity.InfinityCategories.dgNerve A D).obj (Opposite.op { len := n })),
+  ((CategoryTheory.ConcreteCategory.hom
+          (CategoryTheory.SimplicialObject.σ (SerrePositivity.InfinityCategories.dgNerve A D) i))
+        s).toSimplexData =
+    s.pullback i.predAboveOrderHom
+SerrePositivity.InfinityCategories.dgNerve.δ_hom : ∀ (A : Type u_1) [inst : CommRing A] (D : Type u_2)
+  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {n : ℕ} (i : Fin (n + 2))
+  (s : (SerrePositivity.InfinityCategories.dgNerve A D).obj (Opposite.op { len := n + 1 })) (J : Finset (Fin (n + 1)))
+  (a b : Fin (n + 1)) (k : ℤ) (hJ : 2 ≤ J.card) (ha : a = J.min' ⋯) (hb : b = J.max' ⋯) (hk : k = 2 - ↑J.card),
+  let α := i.succAboveOrderEmb.toOrderHom;
+  ((CategoryTheory.ConcreteCategory.hom
+            (CategoryTheory.SimplicialObject.δ (SerrePositivity.InfinityCategories.dgNerve A D) i))
+          s).hom
+      J a b k hJ ha hb hk =
+    s.hom (Finset.image (⇑α) J) (α a) (α b) k ⋯ ⋯ ⋯ ⋯
+SerrePositivity.InfinityCategories.dgNerve.σ_hom_of_inj : ∀ (A : Type u_1) [inst : CommRing A] (D : Type u_2)
+  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {n : ℕ} (i : Fin (n + 1))
+  (s : (SerrePositivity.InfinityCategories.dgNerve A D).obj (Opposite.op { len := n })) (J : Finset (Fin (n + 2)))
+  (a b : Fin (n + 2)) (k : ℤ) (hJ : 2 ≤ J.card) (ha : a = J.min' ⋯) (hb : b = J.max' ⋯) (hk : k = 2 - ↑J.card)
+  (hi : Set.InjOn ⇑i.predAboveOrderHom ↑J),
+  let α := i.predAboveOrderHom;
+  ((CategoryTheory.ConcreteCategory.hom
+            (CategoryTheory.SimplicialObject.σ (SerrePositivity.InfinityCategories.dgNerve A D) i))
+          s).hom
+      J a b k hJ ha hb hk =
+    s.hom (Finset.image (⇑α) J) (α a) (α b) k ⋯ ⋯ ⋯ ⋯
+SerrePositivity.InfinityCategories.dgNerve.σ_hom_eq_zero : ∀ (A : Type u_1) [inst : CommRing A] (D : Type u_2)
+  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {n : ℕ} (i : Fin (n + 1))
+  (s : (SerrePositivity.InfinityCategories.dgNerve A D).obj (Opposite.op { len := n })) (J : Finset (Fin (n + 2)))
+  (a b : Fin (n + 2)) (k : ℤ) (hJ : 2 ≤ J.card) (ha : a = J.min' ⋯) (hb : b = J.max' ⋯) (hk : k = 2 - ↑J.card),
+  i.castSucc ∈ J →
+    i.succ ∈ J →
+      J.card ≠ 2 →
+        ((CategoryTheory.ConcreteCategory.hom
+                  (CategoryTheory.SimplicialObject.σ (SerrePositivity.InfinityCategories.dgNerve A D) i))
+                s).hom
+            J a b k hJ ha hb hk =
+          0
+SerrePositivity.InfinityCategories.dgNerve.σ_hom_of_collapsed_pair : ∀ (A : Type u_1) [inst : CommRing A] (D : Type u_2)
+  [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {n : ℕ} (i : Fin (n + 1))
+  (s : (SerrePositivity.InfinityCategories.dgNerve A D).obj (Opposite.op { len := n })) (J : Finset (Fin (n + 2)))
+  (a b : Fin (n + 2)) (k : ℤ) (hJ : 2 ≤ J.card) (ha : a = J.min' ⋯) (hb : b = J.max' ⋯) (hk : k = 2 - ↑J.card),
+  i.castSucc ∈ J →
+    i.succ ∈ J →
+      J.card = 2 →
+        ((CategoryTheory.ConcreteCategory.hom
+                  (CategoryTheory.SimplicialObject.σ (SerrePositivity.InfinityCategories.dgNerve A D) i))
+                s).hom
+            J a b k hJ ha hb hk ≍
+          ↑(SerrePositivity.DifferentialGraded.unitElement A (s.obj (i.predAboveOrderHom b)))
+SerrePositivity.InfinityCategories.DGNerve.TriangleData : (A : Type u_1) →
+  [inst : CommRing A] → (D : Type u_2) → [SerrePositivity.DifferentialGraded.DGCategory A D] → Type (max u_1 u_2)
+SerrePositivity.InfinityCategories.DGNerve.three_eq_univ : ∀ (I : Finset (Fin 3)), I.card = 3 → I = Finset.univ
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.edgeHom : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        {n : ℕ} →
+          (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData A D n) →
+            (a b : Fin (n + 1)) → a < b → ↑(SerrePositivity.DifferentialGraded.GradedHom A (s.obj a) (s.obj b) 0)
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_triangle : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D]
+  (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData A D 2),
+  s.rhs Finset.univ 0 2 (-1) SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_triangle._proof_1
+      SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_triangle._proof_2
+      SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_triangle._proof_3
+      SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_triangle._proof_4 =
+    SerrePositivity.DifferentialGraded.compose A
+        (s.edgeHom 1 2 SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_triangle._proof_5)
+        (s.edgeHom 0 1 SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_triangle._proof_6)
+        SerrePositivity.InfinityCategories.DGNerve.TriangleData._proof_1 -
+      s.edgeHom 0 2 SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_triangle._proof_7
+@SerrePositivity.InfinityCategories.DGNerve.SimplexData.ofTriangle : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        SerrePositivity.InfinityCategories.DGNerve.TriangleData A D →
+          SerrePositivity.InfinityCategories.DGNerve.SimplexData A D 2
+@SerrePositivity.InfinityCategories.DGNerve.Simplex.ofTriangle : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        SerrePositivity.InfinityCategories.DGNerve.TriangleData A D →
+          SerrePositivity.InfinityCategories.DGNerve.Simplex A D 2
+@SerrePositivity.InfinityCategories.DGNerve.Simplex.toTriangle : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        SerrePositivity.InfinityCategories.DGNerve.Simplex A D 2 →
+          SerrePositivity.InfinityCategories.DGNerve.TriangleData A D
+@SerrePositivity.InfinityCategories.DGNerve.Simplex.toTriangle_ofTriangle : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D]
+  (t : SerrePositivity.InfinityCategories.DGNerve.TriangleData A D),
+  (SerrePositivity.InfinityCategories.DGNerve.Simplex.ofTriangle t).toTriangle = t
+@SerrePositivity.InfinityCategories.DGNerve.Simplex.ofTriangle_toTriangle : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D]
+  (s : SerrePositivity.InfinityCategories.DGNerve.Simplex A D 2),
+  SerrePositivity.InfinityCategories.DGNerve.Simplex.ofTriangle s.toTriangle = s
+@SerrePositivity.InfinityCategories.DGNerve.Simplex.triangleEquiv : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        SerrePositivity.InfinityCategories.DGNerve.Simplex A D 2 ≃
+          SerrePositivity.InfinityCategories.DGNerve.TriangleData A D
+SerrePositivity.InfinityCategories.dgNerve.triangleEquiv : (A : Type u_1) →
+  [inst : CommRing A] →
+    (D : Type u_2) →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        (SerrePositivity.InfinityCategories.dgNerve A D).obj (Opposite.op { len := 2 }) ≃
+          SerrePositivity.InfinityCategories.DGNerve.TriangleData A D
+```
+
+</details>
+
 ## 6. 次のマイルストーン D（本計画の範囲外）
 
 - Semifree(S) を `DGFullSubcategory`（`moduleSemifree` または一点 dg 圏上の複体版）として置き、

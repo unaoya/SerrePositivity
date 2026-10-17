@@ -1,5 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.DGNerve.Basic
+public import SerrePositivity.InfinityCategories.DGNerve.Triangle
+public import SerrePositivity.InfinityCategories.DGNerve.Computations
 
 /-! # dg nerve の集約入口
 
