@@ -8754,6 +8754,42 @@ d=0 で元の写像が非単射である境界例は、`assert_no_sorry` が通�
 付値環条件の担当実装や D-I/U/Q を重複実装していない。
 KL-T の全 Tor 入力と KL-Q の原典引用置換は引き続き未完了である。
 
+#### KL-T：二つの canonical excision から全局所 Tor 入力への接続（2026-10-17）
+
+`CLMST/CanonicalExcisionTorInput.lean` の公開定理
+`perfectoidIdeal_powerTorsionTorInput_of_two_canonical_excision` は、
+元の R 代数写像 u:A→E、v:Rʳ→E と指定済みの普遍写像
+f:A→C、g:E→D、h:Rʳ→F を固定してから、次の出力を返す。
+
+```lean
+∀ (N : ModuleCat.{u} R) (k : ℕ), (∀ x : N, (p : R) ^ k • x = 0) →
+  ∀ i : ℕ, 0 < i → ∀ s ∈ perfectoidIdeal R p hR a,
+    torCoefficientScalarEndomorphism C N i (algebraMap R C s) = 0
+```
+
+前提は R の perfectoid 性、p の素数性、hf,hg,hh と、u,v に対応する**二つの実 canonical
+excision 四角形が pullback であること**（hPBu,hPBv）。四辺は既存の
+`IsPerfectoidization.map`、`perfectoidizationClosedSideProjection`、
+`perfectoidizationClosedComparison` と元の主イデアル (algebraMap R A a)、
+(algebraMap R Rʳ a) から決まる。正確な全型はこの公開宣言に固定した。
+
+元の R 作用によるほぼ零化を二つの四角形から証明し、有限自由側 F の実 Tor 零化を
+D に送り、それを C へ戻す。ほぼ零化の結論や Tor 零化を呼出し側の仮定にしていない。
+C,D,F と実写像・普遍性・四角形は全試験 N,k,i,s に先行する。
+N の有限生成性、k>0、r>0 を追加しない。
+
+対象ビルドと専用監査 `scripts/audit_clmst_two_canonical_excision.lean` が成功。
+依存閉包を検査し、標準三公理と**既存 B-I の整代数の perfectoid 化存在入力だけ**を許した。
+B-I は既存の有限直積 perfectoid 化の同定経路に由来する。
+新引用、BS 7.14、Cor 8.12、Prop 2.4.9(a)、Cor 4.0.4 への隠れた依存はない。
+（B-I を通るのでこの定理全体を標準三公理のみとは数えない。）
+全体ビルド成功（6383 jobs）。KL 専用監査も成功（1218 assert と本定理の型検査）。
+
+**hPBu,hPBv は依然として未供給**。従って局所 almost 不変性、Prop 2.4.9(a)、KL-Q が
+完成したとはしない。有限表示共通モデルの完備性・実局所化同型を、担当 Cor 8.12 の
+原典の前提と perfectoid 化のモデル同定に接続してこの二つの証明を供給することが残る。
+その後、保存済みの被覆合流・一つの André 拡大での忠実検出・KL-Q の両消滅へ合成する。
+
 #### Prop 2.4.7 専任系列：原典から D-I/U/Q への型付き受渡し（2026-10-17）
 
 本節は統合表 D-I・D-U・D-Q の実入力を固定する。未採用の別計画は根拠にしない。

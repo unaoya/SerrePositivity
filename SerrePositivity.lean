@@ -895,6 +895,7 @@ public import SerrePositivity.CLMST.PerfectoidFiniteProductTor
 public import SerrePositivity.CLMST.PerfectoidIdealExcisionTor
 public import SerrePositivity.CLMST.PerfectoidizationExcisionComparison
 public import SerrePositivity.CLMST.PerfectoidFinitePresentationCommonModel
+public import SerrePositivity.CLMST.CanonicalExcisionTorInput
 
 /-!
 # Serre の交点重複度の正値性の形式化
