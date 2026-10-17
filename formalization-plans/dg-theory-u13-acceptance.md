@@ -145,6 +145,20 @@
 - 証明内の通常DerivedCategoryは標準宇宙u+1で選び、結論にはその選択を仮定として残さない。
   `Perfect.ChecksRingPerfectRepresentatives` 対象ビルド成功（3177 jobs）。主要3宣言の公理監査は標準3公理のみ。
 
+## U13e.39：元のPerfectHomotopyの同値・有限射影冪等分裂
+
+- `Perfect/RingPerfectEquivalence.lean`：U13e.38の有限射影代表を元の
+  `perfectHomotopyToDGPerfect` の本質像として表し、本質的全射性を証明した。
+  既存の完全忠実性と合わせ、Karoubi包絡を介さない `ringPerfectHomotopyEquivalence` を構成した。
+  その順関手は元の比較そのものであり、既存の線形性・整数shift・三角性を保持する。
+- 元の `PerfectHomotopy` 自体の冪等完備性を証明した。
+  `perfectHomotopy_idempotent_splits_complex` は任意のホモトピー冪等元を分裂し、
+  分裂対象の有界有限射影複体Kと元のホモトピー圏の分裂射・二つの等式を返す。
+- 実際のdg比較 `strictPerfectDGComplexToPerfectDG` について、全Homの擬同型と
+  H⁰の本質的全射を別に証明し、準同値を構成した。
+- `Perfect.ChecksRingPerfectEquivalence` 対象ビルド成功（3206 jobs）。
+  主要17宣言の公理監査は標準3公理のみ。追加の環の仮定・引用はない。
+
 ## 既存項目の再検証
 
 - finite cell・全Hom射影性・PerfとKaroubi・compact生成・compact⇒Perf・
