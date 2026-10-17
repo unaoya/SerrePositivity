@@ -304,6 +304,19 @@
 - `Morita.PerfectDerivedKernelCompositionChecks` ビルド成功（2754 jobs、警告なし）。
   主要4宣言の公理監査は標準3公理のみ。U16a担当ファイルは読み取り専用で利用した。
 
+## U16d.15：kernel作用評価比較のkernel射自然性
+
+- `Morita/PerfectKernelEvaluationNaturality.lean`：U16d.6の実際の評価比較を変更せず、
+  そのH⁰成分を計算し、通常kernelの全閉零射に関する自然性を証明した。
+- 任意の指定入力解像度族へ前置して全主導来入力へ移し、標準族の実際の作用について
+  `kernelDerivedEvaluationIso_naturality` を証明した。
+- `kernelDerivedEvaluationIso` は、通常kernelの圏から導来入力上の関手の圏への自然同型であり、
+  kernel射と全導来入力射の両方に自然である。追加の局所Hom条件はない。
+  U16d.13の左因子自然性を実際のkernel作用評価へ運ぶ際の不足していた比較を埋めた。
+- `Morita.PerfectKernelEvaluationNaturalityChecks` ビルド成功（2754 jobs、警告なし）。
+  主要6宣言の公理監査は標準3公理のみ。既存のU16d.6および他担当のソースは変更していない。
+- 出力dg加群の係数変更と評価を交換する定理は、この比較からは無条件には得られない。
+
 ## 合同検証と公開入口（2026-10-17）
 
 - 新規10監査対象・公開入口・既存 `Checks.DGFunctorDerivedEquivalence` の12対象を
