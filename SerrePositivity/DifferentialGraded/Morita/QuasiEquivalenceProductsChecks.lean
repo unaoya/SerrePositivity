@@ -1,0 +1,10 @@
+module
+public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceProducts
+
+/-! # 積擬同値・導来bimodule制限とPerf正方形の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+#print axioms bimoduleRestrictionDG_quasiEquivalence
+#print axioms derivedBimoduleRestrictionEquivalence
+#print axioms quasiEquivalenceProductPerfectRestrictionEquivalence
+#print axioms quasiEquivalenceProductPerfectRestrictionSquare

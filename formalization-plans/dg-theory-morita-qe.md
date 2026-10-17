@@ -70,3 +70,14 @@
   U16bのdg由来の証拠は、元の入力FのHomQuasiIso・H⁰本質的全射と、既存延長・制限の実際の計算である。
 - `Morita.PerfectEnhancementComparisonChecks` ビルド成功（2612 jobs、警告なし）。
   主要8宣言の公理監査は標準3公理のみ。
+
+## U16b.6：積dg圏のPerf制限と既存bimodule制限
+
+- `Morita/QuasiEquivalenceProducts.lean`：積dg圏のopposite上のPerfについて、
+  既存の実際の制限を順方向とする同値と、主導来包含・`bimoduleRestrictionModuleDerived` の正方形を構成した。
+- 擬同値F・Gに加えて、既存 `derivedBimoduleRestrictionEquivalence` と同じ
+  `localHomKFlat A C`・`localHomKFlat A D` を明示して受け取る。
+  一般のtensorが擬同型を保つことや、積の擬同値の無条件性は仮定しない。
+- `Morita.QuasiEquivalenceProductsChecks` ビルド成功（2706 jobs）。
+  既存2宣言・新規2宣言の公理監査は標準3公理のみ。
+  依存先のdocstring整理による行長警告が再生されたが、自分の新規ファイルに警告・エラーはない。
