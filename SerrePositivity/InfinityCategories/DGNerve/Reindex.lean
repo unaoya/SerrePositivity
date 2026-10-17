@@ -61,6 +61,32 @@ lemma pullback_hom_of_inj {m n : ℕ} (s : SimplexData A D n)
         (by rw [Finset.card_image_of_injOn hi]; exact hk) := by
   simp only [pullback, dite_eq_left hi]
 
+/-- 概要：非単射かつ二点集合でない成分の引き戻しは零。
+方針：定義の三分岐の第三分岐を評価する。
+規約：HA Construction 1.3.1.6。使われ方：退化単体の高次成分と合成項の消去。 -/
+lemma pullback_hom_of_not_inj {m n : ℕ} (s : SimplexData A D n)
+    (α : Fin (m + 1) →o Fin (n + 1)) (J : Finset (Fin (m + 1)))
+    (a b : Fin (m + 1)) (k : ℤ) (hJ : 2 ≤ J.card)
+    (ha : a = J.min' (Index.nonempty hJ)) (hb : b = J.max' (Index.nonempty hJ))
+    (hk : k = 2 - (J.card : ℤ)) (hi : ¬ Set.InjOn α (J : Set (Fin (m + 1))))
+    (hc : J.card ≠ 2) : (s.pullback α).hom J a b k hJ ha hb hk = 0 := by
+  simp only [pullback, dite_eq_right hi, dite_eq_right hc]
+
+/-- 概要：潰れた二点集合の成分は単位と異種等号で一致する。
+方針：濃度二から次数零へ移送し、単位分岐の cast は異種等号で消去する。
+規約：HA Construction 1.3.1.6。使われ方：退化の端点での単位則。 -/
+lemma pullback_hom_of_collapsed_pair {m n : ℕ} (s : SimplexData A D n)
+    (α : Fin (m + 1) →o Fin (n + 1)) (J : Finset (Fin (m + 1)))
+    (a b : Fin (m + 1)) (k : ℤ) (hJ : 2 ≤ J.card)
+    (ha : a = J.min' (Index.nonempty hJ)) (hb : b = J.max' (Index.nonempty hJ))
+    (hk : k = 2 - (J.card : ℤ)) (hi : ¬ Set.InjOn α (J : Set (Fin (m + 1))))
+    (hc : J.card = 2) :
+    HEq ((s.pullback α).hom J a b k hJ ha hb hk) (unitElement A (s.obj (α b))).val := by
+  have hk' : k = 0 := by omega
+  subst hk'
+  simp only [pullback, dite_eq_right hi, dite_eq_left hc]
+  exact cast_heq _ _
+
 /-- 概要：恒等写像に沿うデータの引き戻しは元のデータ。
 方針：全ての部分集合上で単射の分岐を取り、像が元の集合に戻ることを使う。
 規約：HA Construction 1.3.1.6。使われ方：単体的恒等写像の法則。 -/
