@@ -8404,3 +8404,54 @@ homEvaluationを実際のDGFunctorへ束ね、普遍性を証明する。
 自由dg圏instanceとKFlatDGResolutionの存在は引き続き未完で、U12e全受入とはしない。
 既存公開APIの名前・型の変更、共有一般論への新しいAPI要求はない。
 分担・U16への着手順・U15e/U17の合流条件は§0のまま。履歴は新規コミットで記録する。
+
+
+### 17.184 U12e25：自由dg圏の結合則・主豊穣instance・厳密普遍性（2026-10-17）
+
+`Resolution/Free/AppendRight.lean`は左pathを固定する**appendPath**、非空左pathに対する
+**appendWord**、一辺の先頭作用**edgePrefix**を既存tensorCoproductRightDescから構成する。
+各path包含との式、合成の左path制限、先頭作用の恒等/非空pathでの式を証明した。
+`Resolution/Free/AppendRecursion.lean`の**appendWord_cons**は、左pathの連結を先頭一辺と短いpathへ分解する。
+右pathが恒等pathの場合にはrightUnitor_tensor_homを使い、非空の場合にはwordConcatenationIsoの再帰式を使う。
+
+`Resolution/Free/PrefixAssociativity.lean`は**appendPath_edgePrefix**で有限左path上の先頭作用と
+合成の整合性を証明し、tensorと余積の普遍性により**composition_edgePrefix**へ拡張する。
+`Resolution/Free/Associativity.lean`はpathの長さに関する帰納法と既存tensorCarry_assocから
+**appendWord_assoc**を証明し、恒等pathの場合をunitor自然性で補って**appendPath_assoc**を得る。
+**composition_assoc**は左のpath直和に関する射の判定から全Hom連結の結合則を与える。
+評価先での等式から元のHomの結合則を仮定せず、元の連結chain map自身について証明した。
+
+`Resolution/Free/Category.lean`はquiver Kと結び付けた対象型**Objects A D K**を定義し、
+既存のHom直和・単位・合成・左右単位則・結合則を使って**dgCategory**を
+主Mathlib EnrichedCategory (Complex A)のinstanceとして構成する。
+元のDのinstanceは変更しない。**homKFlat**は辺のK-flat性から全HomのK-flat性を与える。
+**lift**は指定対象写像・辺のchain mapから実際のDGFunctorを作り、
+§17.183の評価の単位・合成保存をその法則に使用する。
+
+`Resolution/Free/Reconstruction.lean`は二つのpathの連結による生成を使って、任意のdg関手の
+path上の値を生成辺で再構成する。**functor_word/functor_path**、
+**homEvaluation_reconstruction**と**lift_reconstruction**を証明した。
+`Resolution/Free/Universal.lean`の**GeneratorMap**は対象写像と生成辺のchain mapだけを束ねる。
+**restrict/extend**と両方向の逆関係から
+**universalEquiv : DGFunctor A (Objects A D K) E ≃ GeneratorMap A D E K**を構成し、
+**extension_unique**で厳密な延長一意性を公開する。
+任意可換環・非有界・独立D/E対象宇宙・Small.{u} Dを維持し、標的Eのsmallnessは不要。
+生成辺のK-flat性はhomKFlatの結論にだけ要求し、自由dg圏・普遍性の構成自体には追加しない。
+
+Checks.FreeDGUniversal・Checks.FreeDGEvaluation・Checks.FreeDGPaths・Checks.DGCategoryResolution・
+Checks.DerivedBimoduleFullPentagon・Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（3115 jobs、終了コード0、警告なし）。主dg圏instance、Hom K-flat性、
+生成辺からの一意なdg関手延長、再構成、独立対象宇宙とZMod 2を検査した。
+主要32宣言（dg圏instance、ObjectsとGeneratorMapの型を含む）を完全修飾名で直接公理監査し、標準公理のみ。
+監査累計3472宣言。今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は15 Markdown・320 exposition参照まで進み、担当外BhattScholze互換宣言の
+未解決参照1件で失敗した。共有ルート・共有一般論・並行所有ファイルは編集していない。
+
+次はHomのcycleを持ち上げるK-flatな生成辺複体から自由dg圏への初期増大関手を作り、
+増大射のHomホモロジーの全射性を証明する。
+さらに、既存pathのcycleを新生成元の微分とするcell付加を行い、余分なホモロジーを消す。
+その導分の二乗零と全作用のLeibniz、cell段階のK-flat性、増大射のHom準同型、
+H⁰本質的全射を証明するまでKFlatDGResolutionの存在は未完。
+自由dg圏とその厳密普遍性の完成を、dg圏解像度の存在やU12e全受入の代用とはしない。
+公開APIの名前・型の変更、共有一般論への新しいAPI要求はない。
+分担・U16への着手順・U15e/U17の合流条件は§0のまま。履歴は新規コミットで記録する。
