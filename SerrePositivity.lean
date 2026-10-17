@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.InfinityCategories.Core
 public import SerrePositivity.BhattScholze.Andre.Transfinite.Basic
 public import SerrePositivity.CommutativeAlgebra.PerfectTorIndependence
 public import SerrePositivity.DifferentialGraded.Derived.ScalarExtensionTensorCoherence
