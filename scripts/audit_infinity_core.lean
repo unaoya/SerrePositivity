@@ -29,3 +29,12 @@ import SerrePositivity.InfinityCategories.Core
 #print axioms SerrePositivity.InfinityCategories.HomotopyCategoryMap.map_id
 #print axioms SerrePositivity.InfinityCategories.HomotopyCategoryMap.map_comp
 #print axioms SerrePositivity.InfinityCategories.HomotopyCategoryMap.bridge_naturality
+
+#check @SerrePositivity.InfinityCategories.homotopyIntervalEdge
+#check @SerrePositivity.InfinityCategories.homotopyNatTrans
+#check @SerrePositivity.InfinityCategories.homotopyNatTrans_app
+#check @SerrePositivity.InfinityCategories.homotopyNatTransOfEndpoints
+#print axioms SerrePositivity.InfinityCategories.homotopyIntervalEdge
+#print axioms SerrePositivity.InfinityCategories.homotopyNatTrans
+#print axioms SerrePositivity.InfinityCategories.homotopyNatTrans_app
+#print axioms SerrePositivity.InfinityCategories.homotopyNatTransOfEndpoints

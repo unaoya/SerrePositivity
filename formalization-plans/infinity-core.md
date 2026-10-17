@@ -141,3 +141,40 @@ bridge_naturality {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (f : X �
 `lake env lean scripts/audit_infinity_core.lean` は終了コード 0。
 累計全 10 公開宣言が標準三公理のみ。
 A1c〜A1d・A2a〜A2i は未完了。
+
+### A1c（2026-10-17）：ホモトピーから自然変換
+
+`Core/HomotopyNatTrans.lean` の公開宣言は次の 4 件。
+namespace は `SerrePositivity.InfinityCategories`。宇宙 `u` は任意。
+`open CategoryTheory MonoidalCategory SSet SimplicialObject.Truncated` と
+`open scoped Simplicial` の下で、正確な型は次の通り。
+
+```lean
+homotopyIntervalEdge : SSet.Truncated.Edge
+  (X := (truncation 2).obj (Δ[1] : SSet.{u}))
+  (stdSimplex.obj₀Equiv.symm 0) (stdSimplex.obj₀Equiv.symm 1)
+
+homotopyNatTrans {X Y : SSet.{u}} (H : X ⊗ Δ[1] ⟶ Y) :
+  (hoFunctor.map (SSet.ι₀ ≫ H)).toFunctor ⟶
+    (hoFunctor.map (SSet.ι₁ ≫ H)).toFunctor
+
+homotopyNatTrans_app {X Y : SSet.{u}} (H : X ⊗ Δ[1] ⟶ Y) (x : X _⦋0⦌) :
+  (homotopyNatTrans H).app (SSet.HomotopyCategory.mk x) =
+    SSet.Truncated.HomotopyCategory.homMk
+      (((SSet.Truncated.Edge.id (X := (truncation 2).obj X) x).tensor
+        homotopyIntervalEdge).map ((truncation 2).map H))
+
+homotopyNatTransOfEndpoints {X Y : SSet.{u}} {f g : X ⟶ Y}
+  (H : X ⊗ Δ[1] ⟶ Y) (h₀ : SSet.ι₀ ≫ H = f) (h₁ : SSet.ι₁ ≫ H = g) :
+  (hoFunctor.map f).toFunctor ⟶ (hoFunctor.map g).toFunctor
+```
+
+quasicategory の仮定は不要。成分は頂点での縦辺の像。
+自然性は `HomotopyCategory.BinaryProduct.square` を使う。この補題の証明は
+正方形の二つの三角形（`idComp` と `compId` のテンソル）の合成関係である。
+原典：HTT §1.2.3、Kerodon §1.4.5。
+A1d と A2a〜A2i は未完了。
+
+対象 `lake build SerrePositivity.InfinityCategories.Core` と
+`lake env lean scripts/audit_infinity_core.lean` は終了コード 0。
+累計 14 公開宣言を監査し、許された標準三公理以外への依存はない。
