@@ -35,3 +35,25 @@ dg 関手を用いた証明であり、グラフ kernel に限定されない。
 導来 Hom と同一視しない。全次数の導来 Hom と実際の kernel 作用との整合性、
 解像度の選択独立性、thick 帰納による充満忠実性、生成性からの本質的全射、
 および同値からの三条件の必要性は引き続き証明する。現時点で判定全体の完了は主張しない。
+
+## 全 Hom 比較と射影解像度の選択独立性
+
+三角性の公開単位は `663412f9`（自分の3ファイルのみであることを直後に確認）。
+`CriterionPerfHomComparison.lean` の `criterionPerfHomComparison` は通常 kernel
+`P : Bimodule A E D` の左作用
+`Hom_D(d,d') → moduleHom(P_d,P_d')` に、源の列の射影解像度の増強による
+前合成を続けた実際の chain map。終域は `moduleHom(R_d,P_d')`。
+`criterionPerfColumnDerivedHomEquiv` はその終域の H⁰ が主導来圏の列間の射を
+計算することを示す。標的の列の射影性も局所 Hom の K-flat 性も不要。
+
+`criterionPerfFullHomQuasiIso` はこの複体射が全対で擬同型になる条件。
+`criterionPerfHomComparison_resolution_homotopy` は二つの射影解像度の比較射による
+全 Hom 比較のホモトピー可換性を示す。比較射による前合成の擬同型性と合わせ、
+`criterionPerfHomComparison_resolution_iff` と `criterionPerfFullHomQuasiIso_iff` は
+解像度の選択独立性を全次数で証明する。`criterionPerfHomComparison_projective_iff` は
+源の列が既に射影的である場合に限って、通常の左作用の擬同型条件へ簡約する。
+
+検証：`lake build SerrePositivity.DifferentialGraded.Morita.CriterionPerfHomComparisonChecks`
+成功（2786 jobs、警告なし）。主要7宣言は標準3公理のみ。新規 sorry・axiom・引用なし。
+一般の主 kernel への条件の定式化、全 shift の実作用との可換性、充満忠実性の
+thick 帰納、十分性・必要性の最終定理は未完。
