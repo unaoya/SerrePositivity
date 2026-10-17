@@ -10654,3 +10654,75 @@ U12e全体は未受入、U16a〜d・U15e分解版は未着手。目標全体と�
 Quotient/DerivedComparison*・Verdier/を読んで再利用し、重複実装しない。
 共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・ScalarExtension*・並行作業の
 Tensor/Associator*と他チャットの記録を編集していない。
+
+
+### 17.229 U12e69：外側右制限と両変数の全導来合成の比較（2026-10-17）
+
+**右作用制限後の左加群。** Bimodule/RightRestrictionLeftEvaluation.leanの
+rightRestriction_leftAt_eqは、F : D → Bに沿って右作用を制限した前因子Pをdで左C加群として評価すると、
+元のPをF.obj dで評価した左C加群に一致することを証明した。
+全Homへの射を既存rightRestriction_leftAt_mapで照合しており、左作用の閉零部分だけで比較していない。
+この対象の等式にはCのsmallnessを要求しない。
+左加群圏上の実際の同型と、その各値でのhom・invが恒等となる計算式も公開した。
+
+**tensorの値と全次数作用。** Tensor/ComposeRightRestrictionValue.leanは、
+既存のbalanced tensorの左加群変数の関手に上の同型を送って値の同型を構成した。
+coend包含と純粋斉次元での計算式を証明し、対象の等式によるtransportを暗黙に消したことにしていない。
+Tensor/ComposeRightRestrictionActions.leanは、既存の右作用の生成元公式を通して、
+制限前後のKoszul符号が同じHom次数と先頭Q因子の次数の積になることを照合した。
+残る左作用との可換性も証明し、両側の作用の全Hom複体上の自然性へ持ち上げた。
+Tensor/ComposeRightRestriction.leanでこれらを右加群同型、続いて実際の閉零bimodule同型
+composeRightRestrictionIsoへ束ねた。
+Tensor/ComposeRightRestrictionNaturality.leanは、両因子の任意の全Hom自然な閉零射について
+この同型の自然性を、coend包含と既存tensor射の公式から証明した。
+このunderived比較にいずれのHomのK-flat性もFの準同値性も要求しない。
+
+**固定後因子の導来比較。** Derived/BimoduleRightRestrictionBase.leanは
+underived比較を既存の入出力双方のmiddleRightRestrictionDerivedIsoへ接続した。
+derivedComposeWithRightRestrictionIsoは、既存の入力側導来制限に続けてD–C–Eで合成する経路と、
+B–C–Eで合成してから既存の出力側導来制限を適用する経路を自然同型で比較する。
+後因子は任意の指定右相対K-flatモデルで、前因子は任意の導来対象を扱う。
+この固定モデル版にはB・D・C・Eの局所Hom K-flat性もFの準同値性も不要。
+必要な対象型のsmallnessは既存の導来制限・合成に合わせて明示する。
+Derived/BimoduleRightRestrictionFamily.leanは元の前因子上の成分計算式を公開し、
+入力表示同型の逆と、既存の固定因子自然変換の全導来前因子に関する自然性を使って、
+後因子の任意の閉零射への自然性も証明した。
+rightRestrictionKFlatComposeIsoとして右K-flat後因子の関手族上の自然同型へ束ねた。
+
+**両変数の全導来比較と計算。** Derived/BimoduleRightRestrictionFull.leanの
+**derivedBimoduleComposeRightRestrictionIso**は、両変数とも任意の導来対象について
+外側右制限と導来合成の自然同型を構成した。
+両側の関手族は既存のderivedBimoduleRestrictionとderivedBimoduleComposeFunctorだけで表す。
+後因子自体は右作用制限で変わらないため、終端Eの局所Hom K-flat性だけで全導来化できる。
+B・D・Cの同条件やFの準同値性は追加しない。
+前回のrightKFlatDerivedIsoOfPrecompを再利用し、新しい置換や局所化を作っていない。
+_app_rightKFlat・_model_squareは任意の指定K-flatモデル上の固定因子比較の回復を証明する。
+derivedBimoduleComposeRightRestriction_hom_uniqueは同じモデルsquareを満たす自然変換の一意性であり、
+比較候補の可逆性を先に要求しない。
+任意の可換環と独立した四つの対象宇宙を保持する。
+既存公開APIの名前・型は変更せず、35公開宣言を追加した。
+
+**検証。** Checks.DGBimoduleRightRestrictionは、左加群の等式のC-smallnessなしの型、
+全Hom複体での右作用自然性、固定モデル版のlocal Hom条件なしの型、
+両変数の任意の導来対象・終端Eだけの局所Hom K-flat性による比較、モデルsquare、
+独立した対象宇宙とZMod 2での全導来自然同型を検査した。
+既存外側左比較・K-flat移送計算・中間比較の全導来合成則・恒等則・解像度比較・導来同値・
+導来随伴・五角形・StageEight・StageSeven・Spectra.StageTwoとの統合ビルド成功（3502 jobs、警告なし）。
+35公開宣言の直接公理監査は重複・欠落なく標準3公理以内。新規監査累計4565宣言。
+今回の9 Leanファイルにsorry・admit・新規axiom・資源上限変更は0件。採用済み引用0件。
+Lean v4.35.0-rc4とMathlib manifest/HEAD e6bbacd0e1b7307ff6e17da09cd2455f60804fa6を再確認した。
+
+全体文書検査は共有ルートの環境export時に、担当外の
+SerrePositivity.CLMST.SelectedParameterEuler.oleanが未生成のため停止した。
+今回はexposition参照の全体検査結果を確定していない。
+同じリンク検査ロジックを独立に実行し、21 Markdownの相対リンクは失敗0件を確認した。
+
+**残件と次工程。** 外側左右・中間圏の比較は、それぞれ全導来圏上まで構成した。
+外側の恒等・合成則、左右・中間制限の比較を組み合わせた整合性は引き続き必要である。
+対角単位・結合子の保存と、両端を同時に変更するchangeEquivalenceの合成保存を接続し、
+共通dg圏解像度変更のcoherenceを仕上げて§15.2全体を監査する。
+U12e全体は未受入、U16a〜d・U15e分解版は未着手。目標全体と順序を保持する。
+共有一般論への新しいAPI要求はない。U15e分解版では局所K-flat版の
+Quotient/DerivedComparison*・Verdier/を読んで再利用し、重複実装しない。
+共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・ScalarExtension*・並行作業の
+Tensor/Associator*と他チャットの記録を編集していない。
