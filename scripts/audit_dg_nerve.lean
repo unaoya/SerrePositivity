@@ -1,5 +1,5 @@
 import SerrePositivity.InfinityCategories.DGNerve.LowDimensional
-import SerrePositivity.InfinityCategories.DGNerve.Reindex
+import SerrePositivity.InfinityCategories.DGNerve.PullbackEquation
 
 /-!
 # dg nerve の公開宣言の公理監査
@@ -36,9 +36,12 @@ import SerrePositivity.InfinityCategories.DGNerve.Reindex
 #print axioms SerrePositivity.InfinityCategories.DGNerve.Index.image_two
 #print axioms SerrePositivity.InfinityCategories.DGNerve.Index.image_erase
 #print axioms SerrePositivity.InfinityCategories.DGNerve.Index.image_le_iff
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Index.image_lt_iff
 #print axioms SerrePositivity.InfinityCategories.DGNerve.Index.collapse_two
 #print axioms SerrePositivity.InfinityCategories.DGNerve.Index.image_left
 #print axioms SerrePositivity.InfinityCategories.DGNerve.Index.image_right
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Index.image_strict_right
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Index.image_sign_card
 #print axioms SerrePositivity.InfinityCategories.DGNerve.HomFamily
 #print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData
 #print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.term
@@ -62,8 +65,15 @@ import SerrePositivity.InfinityCategories.DGNerve.Reindex
 #print axioms SerrePositivity.InfinityCategories.DGNerve.Simplex.triangleHom
 #print axioms SerrePositivity.InfinityCategories.DGNerve.Simplex.differential_triangleHom
 #print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.pullback
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.pullback_hom_of_inj
 #print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.pullback_id
 #print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.pullback_comp
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_of_card_two
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.pullback_term_of_inj
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.pullback_rhs_of_inj
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Simplex.pullback_equation_of_inj
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Simplex.pullbackOfInjective
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Simplex.pullback_equation_of_card_two
 
 -- 定義・主要定理の正確な型を同じ実行で確認する。
 #check @SerrePositivity.InfinityCategories.DGNerve.Index.nonempty
@@ -84,9 +94,12 @@ import SerrePositivity.InfinityCategories.DGNerve.Reindex
 #check @SerrePositivity.InfinityCategories.DGNerve.Index.image_two
 #check @SerrePositivity.InfinityCategories.DGNerve.Index.image_erase
 #check @SerrePositivity.InfinityCategories.DGNerve.Index.image_le_iff
+#check @SerrePositivity.InfinityCategories.DGNerve.Index.image_lt_iff
 #check @SerrePositivity.InfinityCategories.DGNerve.Index.collapse_two
 #check @SerrePositivity.InfinityCategories.DGNerve.Index.image_left
 #check @SerrePositivity.InfinityCategories.DGNerve.Index.image_right
+#check @SerrePositivity.InfinityCategories.DGNerve.Index.image_strict_right
+#check @SerrePositivity.InfinityCategories.DGNerve.Index.image_sign_card
 #check @SerrePositivity.InfinityCategories.DGNerve.HomFamily
 #check @SerrePositivity.InfinityCategories.DGNerve.SimplexData
 #check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.term
@@ -110,5 +123,12 @@ import SerrePositivity.InfinityCategories.DGNerve.Reindex
 #check @SerrePositivity.InfinityCategories.DGNerve.Simplex.triangleHom
 #check @SerrePositivity.InfinityCategories.DGNerve.Simplex.differential_triangleHom
 #check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.pullback
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.pullback_hom_of_inj
 #check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.pullback_id
 #check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.pullback_comp
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_of_card_two
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.pullback_term_of_inj
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.pullback_rhs_of_inj
+#check @SerrePositivity.InfinityCategories.DGNerve.Simplex.pullback_equation_of_inj
+#check @SerrePositivity.InfinityCategories.DGNerve.Simplex.pullbackOfInjective
+#check @SerrePositivity.InfinityCategories.DGNerve.Simplex.pullback_equation_of_card_two

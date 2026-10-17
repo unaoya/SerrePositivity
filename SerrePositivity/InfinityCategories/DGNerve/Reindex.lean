@@ -46,6 +46,21 @@ def pullback {m n : ℕ} (s : SimplexData A D n)
         exact (unitElement A (s.obj (α b))).val
       · exact 0
 
+/-- 概要：単射の分岐では引き戻した成分は像の成分である。
+方針：定義の三分岐の第一分岐を評価する。
+規約：HA Construction 1.3.1.6。使われ方：単体の方程式の保存の単射の場合。 -/
+lemma pullback_hom_of_inj {m n : ℕ} (s : SimplexData A D n)
+    (α : Fin (m + 1) →o Fin (n + 1)) (J : Finset (Fin (m + 1)))
+    (a b : Fin (m + 1)) (k : ℤ) (hJ : 2 ≤ J.card)
+    (ha : a = J.min' (Index.nonempty hJ)) (hb : b = J.max' (Index.nonempty hJ))
+    (hk : k = 2 - (J.card : ℤ)) (hi : Set.InjOn α (J : Set (Fin (m + 1)))) :
+    (s.pullback α).hom J a b k hJ ha hb hk =
+      s.hom (J.image α) (α a) (α b) k (Index.image_two hi hJ)
+        (Index.image_min α.monotone (by rw [ha]; exact J.isLeast_min' _) _)
+        (Index.image_max α.monotone (by rw [hb]; exact J.isGreatest_max' _) _)
+        (by rw [Finset.card_image_of_injOn hi]; exact hk) := by
+  simp only [pullback, dite_eq_left hi]
+
 /-- 概要：恒等写像に沿うデータの引き戻しは元のデータ。
 方針：全ての部分集合上で単射の分岐を取り、像が元の集合に戻ることを使う。
 規約：HA Construction 1.3.1.6。使われ方：単体的恒等写像の法則。 -/

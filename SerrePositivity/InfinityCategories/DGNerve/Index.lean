@@ -205,6 +205,13 @@ lemma image_le_iff (hf : Monotone f) (hi : Set.InjOn f (I : Set α))
       (((hf.monotoneOn (I : Set α)).strictMonoOn_of_injOn hi) hy hx (lt_of_not_ge hxy))
   · exact fun h => hf h
 
+/-- 概要：単調かつ I 上単射な写像は狭義の順序比較を反映する。
+方針：逆向きの非狭義比較の否定に帰着する。
+規約：HA Construction 1.3.1.6。使われ方：内部点と符号の添字の移送。 -/
+lemma image_lt_iff (hf : Monotone f) (hi : Set.InjOn f (I : Set α))
+    {x y : α} (hx : x ∈ I) (hy : y ∈ I) : f x < f y ↔ x < y := by
+  rw [lt_iff_not_ge, lt_iff_not_ge, image_le_iff hf hi hy hx]
+
 /-- 概要：二点集合上で単射でない写像は両端を同じ点に写す。
 方針：集合を両端の対で表示し、対上の単射性の判定を使う。
 規約：HA Construction 1.3.1.6。使われ方：退化辺の単位の終点の同定。 -/
@@ -240,6 +247,28 @@ lemma image_right (hf : Monotone f) (hi : Set.InjOn f (I : Set α)) (hj : j ∈ 
     exact ⟨⟨x, hx, rfl⟩, hf hjx⟩
   · rintro ⟨⟨x, hx, rfl⟩, hjx⟩
     exact ⟨x, ⟨hx, (image_le_iff hf hi hj hx).mp hjx⟩, rfl⟩
+
+/-- 概要：内部点より右にある部分集合の像は、像の内部点より右にある部分集合。
+方針：像の元の表示と狭義比較の反映を使う。
+規約：HA Construction 1.3.1.6。使われ方：引き戻しの方程式の符号の比較。 -/
+lemma image_strict_right (hf : Monotone f) (hi : Set.InjOn f (I : Set α)) (hj : j ∈ I) :
+    (I.filter (j < ·)).image f = (I.image f).filter (f j < ·) := by
+  ext y
+  simp only [Finset.mem_image, Finset.mem_filter]
+  constructor
+  · rintro ⟨x, ⟨hx, hjx⟩, rfl⟩
+    exact ⟨⟨x, hx, rfl⟩, (hf.monotoneOn (I : Set α)).strictMonoOn_of_injOn hi hj hx hjx⟩
+  · rintro ⟨⟨x, hx, rfl⟩, hjx⟩
+    exact ⟨x, ⟨hx, (image_lt_iff hf hi hj hx).mp hjx⟩, rfl⟩
+
+/-- 概要：内部点より右にある点の数は像を取っても変わらない。
+方針：右側部分集合の像の記述と、単射な像の濃度の等式を使う。
+規約：HA Construction 1.3.1.6。使われ方：`Int.negOnePow` の指数を同定する。 -/
+lemma image_sign_card (hf : Monotone f) (hi : Set.InjOn f (I : Set α)) (hj : j ∈ I) :
+    ((I.image f).filter (f j < ·)).card = (I.filter (j < ·)).card := by
+  rw [← image_strict_right hf hi hj]
+  apply Finset.card_image_of_injOn
+  exact hi.mono (by intro x hx; exact (Finset.mem_filter.mp hx).1)
 
 end Image
 
