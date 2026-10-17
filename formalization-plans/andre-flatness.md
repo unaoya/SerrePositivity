@@ -2930,3 +2930,83 @@ A{φ(a)/φ(d)}/(p,d) と A{φ(a)/p}/(p,d) を比較すること。
 終了コード 0。生成宣言を含む 4046 宣言の推移的公理依存は標準 3 公理のみ。
 通常環射・Witt 点公式・外延性・raw 方程式・一意存在・単元の分母公式・
 解の同値の公開型 7 本を `#check` で確認した（終了コード 0）。
+
+
+### E1.48：Frobenius 分母と p 分母の raw 剰余同型、および実完備化との合成（検証済み）
+
+新規 `Andre/DistinguishedWittDenominatorNaturality.lean` は、係数環 B に
+正確な標数 p や非零性を要求せず、(p:B)=0 のみで分母正規化単元を構成する。
+非零環では標数 p として前工程を適用し、零環では Witt 係数の一致を使う。
+`distinguishedWittResidueUnit` の値は既存の具体的係数ずらしであり、
+係数射を保つ通常環射で単元とその逆元の値が保たれる。
+p v=qW(φ(d)) の公式を含め 7 公開宣言を追加した。
+
+新規 `Andre/DeltaDivisionPairResidueWitt.lean` は通常二元剰余
+
+```lean
+abbrev DeltaDivisionPairResidue (D : DeltaStructure p A) (c : A) (b : σ → A) (d : A) :=
+  DeltaAdjoinDivision D c b ⧸
+    Ideal.span {(p : DeltaAdjoinDivision D c b), deltaAdjoinDivisionMap D c b d}
+```
+
+の標準係数射・全 Witt 点を明示する。
+係数射 q:A→B が p,d を殺し、指定した Witt 点が W(c)w_s=W(b_s) を満たせば、
+`deltaDivisionPairResidueLift` で実通常環射を作る。
+その係数公式・Witt 点公式と、係数と全 Witt 点による通常環射の外延性を証明した。
+剰余環の δ 構造・非零性・正則性は仮定しない。11 公開宣言を追加した。
+
+新規 `Andre/DeltaDivisionFrobeniusPResidueEquiv.lean` はこの普遍性を二度使う。
+源 A は p 正則、d は distinguished、A と自由 δ 環の ghost 射は単射とする。
+分子族 b:σ→A は任意で、完全性・モニック性・有限性は仮定しない。
+
+```lean
+def deltaDivisionFrobeniusPResidueEquiv
+    (D : DeltaStructure p A) (hpA : Function.Injective (fun x : A => (p : A) * x))
+    (hgA : Function.Injective (WittVector.ghostMap : WittVector p A → ℕ → A))
+    (hgL : Function.Injective (WittVector.ghostMap :
+      WittVector p (RelativeFreeDeltaRing (R := A) σ) → ℕ → RelativeFreeDeltaRing (R := A) σ))
+    (d : A) (hd : D.IsDistinguished d) (b : σ → A) :
+    DeltaDivisionPairResidue D (D.frobeniusLift d) b d ≃+*
+      DeltaDivisionPairResidue D (p : A) b d
+```
+
+順射は p 側の標準 Witt 点を正規化単元 v の逆元倍に、
+逆射は Frobenius 側の標準 Witt 点を v 倍にする。
+通常環射の普遍性で射を作り、単元の自然性と全 Witt 点の外延性で
+両逆合成が恒等射と証明した。元の全 A 係数を保つことも公開する。
+補助方程式・両射・係数と点公式・両逆合成を含め 16 公開宣言を追加した。
+
+新規 `Andre/DeltaDivisionCompletionPResidue.lean` は完全 δ 環 D の場合に
+E1.46 の実完備化から raw への比較を合成する。
+x=φ⁻¹(d)、L=A{a/d}、jL は標準係数射、H=`PDCompletionH0 L p (jL d)`、
+uL=`pdCompletionUnit L p (jL d)` とすると、公開型は
+
+```lean
+def deltaDivisionCompletionPResidueEquiv
+    (D : DeltaStructure p A) (hpA : Function.Injective (fun x : A => (p : A) * x))
+    (hgA : Function.Injective (WittVector.ghostMap : WittVector p A → ℕ → A))
+    (hgL : Function.Injective (WittVector.ghostMap :
+      WittVector p (RelativeFreeDeltaRing (R := A) σ) → ℕ → RelativeFreeDeltaRing (R := A) σ))
+    (hD : D.IsPerfect) (d : A) (hd : D.IsDistinguished d) (a : σ → A) :
+    letI := pdCompletionCommRing L p (jL d)
+    (H ⧸ Ideal.span {uL (jL d), uL (jL x)}) ≃+*
+      DeltaDivisionPairResidue D (p : A) (fun s => D.frobeniusLift (a s)) d
+```
+
+である。同 `_coeff` は uL(jL(r)) の剰余が右辺の φ(r) の係数像へ
+送られることを述べる。元の実 H⁰ と標準単位は取り替えない。2 公開宣言を追加した。
+
+BS Rem 7.15（著者版 p.62）の分母の問題を、原典とは異なる
+具体的 Witt 解による通常環射で解消した段階である。
+次は既存の raw p 除算包と主 pd 表示の実同型を二元商へ降ろし、
+無限根入力の具体的 pd 包へ合成する。原典の T=overline(Δ)_S との同定と、
+そこからの原典の経路による忠実平坦性・p 正則性の結論は引き続き未完了。
+公開存在定理の追加仮定・引用は増やしていない。
+
+
+4 対象および集約の `set -o pipefail; lake build` は終了コード 0
+（集約 4462 jobs）。新規 36 公開宣言の `assert_no_sorry` と専用監査は
+終了コード 0。生成宣言を含む 4155 宣言の推移的公理依存は標準 3 公理のみ。
+正規化単元の分母公式・逆元の自然性、二元剰余への射と外延性、
+分母変換同型と係数公式、実完備化剰余から raw p 剰余への同型と係数公式の
+公開型 8 本を `#check` で確認した（終了コード 0）。
