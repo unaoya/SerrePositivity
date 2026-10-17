@@ -2,7 +2,32 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreePathResolutionDegreeTwo
 
-/-! # The exact intersection of the two degree-two degeneracy generator images
+/-!
+# 自由な道の分解の次数二の二つの退化生成元像の交わりを計算する
+
+## 概要
+自由な道の分解の次数二の二つの退化生成元像の交わりを計算する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+余単位と余乗法、または自由な道の生成射を各次数で明示する。
+面・退化の関係式と生成射上の一致から、全体の自然性と比較を導く。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はWaldhausenのS-構成の二重単体図式や分解の比較・加法性の準備に利用できる。
+[棚卸し m0097][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0097
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# The exact intersection of the two degree-two degeneracy generator images
 
 A path duplicated from the original category can be a singleton only if
 both its preimage and its inner singleton are the same original generator.
@@ -66,7 +91,14 @@ lemma counit_duplicate {X Y : C} (p : Quiver.Path X Y) :
     (counit (Paths C)).map ((duplicate C).map p) = p :=
   congr($(left_counit (C := C)).map p)
 
-/-- Both types of degenerate generators have a common image exactly at double singletons. -/
+/- 旧宣言の技術注記：Both types of degenerate generators have a common image exactly at double singletons. -/
+/-- 自由な道の分解の次数二の二つの退化生成元像の交わりを計算する。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+余単位と余乗法、または自由な道の生成射を各次数で明示する。
+面・退化の関係式と生成射上の一致から、全体の自然性と比較を導く。
+-/
+
 lemma generator_image_intersection {X Y : C} (p q : Quiver.Path X Y) :
     Quiver.Hom.toPath (V := Paths C) q = (duplicate C).map p ↔
       ∃ f : X ⟶ Y, p = f.toPath ∧ q = f.toPath := by

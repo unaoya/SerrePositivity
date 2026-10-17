@@ -4,7 +4,32 @@ public import SerrePositivity.CategoryTheory.Quiver.PathIntersections
 public import Mathlib.Data.Fintype.Fin
 public import Mathlib.Tactic.FinCases
 
-/-! # All-degree degeneracies and their exact intersections for iterated free generators
+/-!
+# 自由生成元の二つの退化像の交わりは一意な共通の二重退化として表される
+
+## 概要
+自由生成元の二つの退化像の交わりは一意な共通の二重退化として表される。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+余単位と余乗法、または自由な道の生成射を各次数で明示する。
+面・退化の関係式と生成射上の一致から、全体の自然性と比較を導く。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はWaldhausenのS-構成の二重単体図式や分解の比較・加法性の準備に利用できる。
+[棚卸し m0093][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0093
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# All-degree degeneracies and their exact intersections for iterated free generators
 
 The objects stay fixed and the arrows are iterated paths, starting with a
 Hom-only universe lift. These are the generator-level insertion operations
@@ -130,6 +155,12 @@ lemma degeneracy_intersection_iff (n : ℕ) (i j : Fin (n + 1)) (h : i ≤ j)
   rintro ⟨r, rfl, rfl⟩
   exact degeneracy_degeneracy n i j h r
 
+/-- 自由生成元の二つの退化像の交わりは一意な共通の二重退化として表される。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+余単位と余乗法、または自由な道の生成射を各次数で明示する。
+面・退化の関係式と生成射上の一致から、全体の自然性と比較を導く。
+-/
 lemma degeneracy_intersection_unique (n : ℕ) (i j : Fin (n + 1)) (h : i ≤ j)
     {X Y : V} (p q : hom (n + 1) X Y)
     (hpq : degeneracy (n + 1) i.castSucc p = degeneracy (n + 1) j.succ q) :

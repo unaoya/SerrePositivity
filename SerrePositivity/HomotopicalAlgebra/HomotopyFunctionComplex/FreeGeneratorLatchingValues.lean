@@ -3,7 +3,32 @@ module
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreeGeneratorDegeneracies
 public import Lean.Elab.Tactic.Omega
 
-/-! # Compatible values on the union of all free-generator degeneracy images
+/-!
+# 全退化像の和への降下は各退化像上の指定値によって一意に決まる
+
+## 概要
+全退化像の和への降下は各退化像上の指定値によって一意に決まる。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+余単位と余乗法、または自由な道の生成射を各次数で明示する。
+面・退化の関係式と生成射上の一致から、全体の自然性と比較を導く。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はWaldhausenのS-構成の二重単体図式や分解の比較・加法性の準備に利用できる。
+[棚卸し m0095][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0095
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Compatible values on the union of all free-generator degeneracy images
 
 The pairwise double-degeneracy equations suffice to descend prescribed values
 onto the entire union. No disjointness of degeneracy images is assumed.
@@ -71,6 +96,12 @@ lemma desc_restriction {U : Sort w'} (ρ : T → U) (boundary : hom (n + 2) X Y 
     ρ (desc n value e he) = boundary e := by
   rw [desc, hρ, ← he.choose_spec.choose_spec]
 
+/-- 全退化像の和への降下は各退化像上の指定値によって一意に決まる。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+余単位と余乗法、または自由な道の生成射を各次数で明示する。
+面・退化の関係式と生成射上の一致から、全体の自然性と比較を導く。
+-/
 lemma desc_unique (h : Compatible n value)
     (f : (e : hom (n + 2) X Y) → Fixed n e → T)
     (hf : ∀ i p he, f (degeneracy (n + 1) i p) he = value i p)

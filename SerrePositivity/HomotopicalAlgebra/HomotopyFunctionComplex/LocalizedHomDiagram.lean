@@ -5,7 +5,32 @@ public import Mathlib.CategoryTheory.ShrinkYoneda
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.CategoryTheory.Functor.Currying
 
-/-! # The small ordinary localized Hom diagram on both original base variables
+/-!
+# 通常の局所化圏の射集合を両変数に自然な離散単体的集合の図式にする
+
+## 概要
+通常の局所化圏の射集合を両変数に自然な離散単体的集合の図式にする。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+
+## 規約と注意
+モデル構造と射クラスの一致を要求する入口では、その指定データを仮定する。
+このファイルがHT-KQの引用モデルを自動的に選ぶとは解釈しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間のπ₀、局所化後の射、ホモトピー類の計算に利用できる。
+[棚卸し m0108][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0108
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# The small ordinary localized Hom diagram on both original base variables
 
 Local smallness comes from the source model category, without any simplicial
 model structure. This discrete diagram records mapping classes, not RMap.
@@ -57,6 +82,12 @@ lemma types_map {a b : Cᵒᵖ × C} (f : a ⟶ b) (x : value Q a) :
     equiv Q b ((types Q).map f x) = Q.map f.1.unop ≫ equiv Q a x ≫ Q.map f.2 :=
   (equiv Q b).apply_symm_apply _
 
+/-- 通常の局所化圏の射集合を両変数に自然な離散単体的集合の図式にする。
+
+モデル構造と射クラスの一致を要求する入口では、その指定データを仮定する。
+構成に現れる射と比較写像を明示し、各成分の等式を照合する。
+既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
+-/
 abbrev spaces : Cᵒᵖ × C ⥤ SSet.{v} := types Q ⋙ Functor.const SimplexCategoryᵒᵖ
 
 end SerrePositivity.HomotopyFunctionComplex.LocalizedHomDiagram

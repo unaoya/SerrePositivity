@@ -5,7 +5,32 @@ public import Mathlib.Data.Fin.Basic
 public import Mathlib.Data.Fintype.Fin
 public import Mathlib.Tactic.FinCases
 
-/-! # All-degree face and degeneracy operators for an arbitrary comonad -/
+/-!
+# 任意の余モナドの反復冪に元の対象へのaugmentationを構成する
+
+## 概要
+任意の余モナドの反復冪に元の対象へのaugmentationを構成する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+余単位と余乗法、または自由な道の生成射を各次数で明示する。
+面・退化の関係式と生成射上の一致から、全体の自然性と比較を導く。
+
+## 規約と注意
+任意の圏と余モナドを入力し、モデル構造・局所可呈示性は要求しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はWaldhausenのS-構成の二重単体図式や分解の比較・加法性の準備に利用できる。
+[棚卸し m0075][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0075
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# All-degree face and degeneracy operators for an arbitrary comonad
+-/
 
 @[expose] public section
 universe v u
@@ -152,6 +177,12 @@ lemma degeneracy_face_gt (n : ℕ) (i : Fin (n + 2)) (j : Fin (n + 1))
           G.map (face G X (n + 1) i) ≫ G.map (degeneracy G X n j)
         rw [← G.map_comp, ← G.map_comp, ih i j hij]
 
+/-- 任意の余モナドの反復冪に元の対象へのaugmentationを構成する。
+
+任意の圏と余モナドを入力し、モデル構造・局所可呈示性は要求しない。
+余単位と余乗法、または自由な道の生成射を各次数で明示する。
+面・退化の関係式と生成射上の一致から、全体の自然性と比較を導く。
+-/
 def augmentation : (n : ℕ) → (power G X n ⟶ X)
   | 0 => 𝟙 X
   | n + 1 => G.ε.app (power G X n) ≫ augmentation n

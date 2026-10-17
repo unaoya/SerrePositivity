@@ -3,7 +3,31 @@ module
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ComonadResolutionOperators
 public import Mathlib.AlgebraicTopology.SimplexCategory.GeneratorsRelations.Basic
 
-/-! # The comonad resolution on the category presented by simplicial identities
+/-!
+# 余モナドの面と退化の関係式を用いて表示単体圏上のaugmentation自然変換を構成する
+
+## 概要
+余モナドの面と退化の関係式を用いて表示単体圏上のaugmentation自然変換を構成する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+余単位と余乗法、または自由な道の生成射を各次数で明示する。
+面・退化の関係式と生成射上の一致から、全体の自然性と比較を導く。
+
+## 規約と注意
+任意の圏と余モナドを入力し、モデル構造・局所可呈示性は要求しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はWaldhausenのS-構成の二重単体図式や分解の比較・加法性の準備に利用できる。
+[棚卸し m0076][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0076
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# The comonad resolution on the category presented by simplicial identities
 
 All six defining relations are proved and the functor actually descends
 to their quotient. No equivalence with the usual simplex category is
@@ -103,6 +127,12 @@ lemma augmentation_naturality {a b : SimplexCategoryGenRel} (f : a ⟶ b) :
     rw [CategoryTheory.Functor.map_comp, ← Category.assoc, ih, oppositeDiagram_degeneracy]
     exact congrArg Quiver.Hom.op (degeneracy_augmentation G X _ i)
 
+/-- 余モナドの面と退化の関係式を用いて表示単体圏上のaugmentation自然変換を構成する。
+
+任意の圏と余モナドを入力し、モデル構造・局所可呈示性は要求しない。
+余単位と余乗法、または自由な道の生成射を各次数で明示する。
+面・退化の関係式と生成射上の一致から、全体の自然性と比較を導く。
+-/
 def augmentationNatTrans : diagram G X ⟶ (Functor.const _).obj X where
   app n := augmentation G X (n.unop.len + 1)
   naturality {n m} θ := by

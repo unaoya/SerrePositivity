@@ -3,7 +3,32 @@ module
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreeGeneratorDegeneracies
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreePathResolutionPresentation
 
-/-! # The iterated generator presentation as the actual free-path categories
+/-!
+# 反復生成元から作る各次数の圏が自由な道の余モナドの反復冪に一致する
+
+## 概要
+反復生成元から作る各次数の圏が自由な道の余モナドの反復冪に一致する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+余単位と余乗法、または自由な道の生成射を各次数で明示する。
+面・退化の関係式と生成射上の一致から、全体の自然性と比較を導く。
+
+## 規約と注意
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+対象ごとの選択から自然性や厳密な合成則を暗黙には推論しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はWaldhausenのS-構成の二重単体図式や分解の比較・加法性の準備に利用できる。
+[棚卸し m0092][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0092
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# The iterated generator presentation as the actual free-path categories
 
 The object type stays the original C in all degrees, and the Hom universe
 is max u v after an initial Hom-only lift. The degree categories agree
@@ -61,6 +86,12 @@ lemma degree_zero : degree C 0 = FreePathResolutionPresentation.base C := rfl
 lemma degree_succ (n : ℕ) :
     degree C (n + 1) = FreePathResolution.comonad.obj (degree C n) := rfl
 
+/-- 反復生成元から作る各次数の圏が自由な道の余モナドの反復冪に一致する。
+
+宇宙・境界・比較射は各宣言に指定されたものを用いる。
+余単位と余乗法、または自由な道の生成射を各次数で明示する。
+面・退化の関係式と生成射上の一致から、全体の自然性と比較を導く。
+-/
 lemma degree_power (n : ℕ) : degree C n =
     ComonadResolutionOperators.power FreePathResolution.comonad
       (FreePathResolutionPresentation.base C) n := by
