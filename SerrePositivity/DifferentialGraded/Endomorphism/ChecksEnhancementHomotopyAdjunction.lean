@@ -1,0 +1,10 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.EnhancementHomotopyAdjunction
+
+/-! # 実際のenhancement H⁰随伴の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+
+#print axioms perfectEndomorphismTensorHomotopyInclusionIso
+#print axioms perfectEndomorphismHomHomotopyInclusionIso
+#print axioms perfectEndomorphismEnhancementHomotopyAdjunction

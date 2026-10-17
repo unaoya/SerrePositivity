@@ -787,6 +787,15 @@
 - 内容は監査済み差分と一致する。amend/rebase/resetは行わず、この記録を独立コミットで残す。
   他チャットのファイルや履歴は編集していない。
 
+## U14a.40：enhancementの実際のH⁰ tensor–Hom随伴（2026-10-17）
+
+- `EnhancementHomotopyAdjunction.lean`：全加群K上の実際の再構成随伴を、U13のHPかつperfectな
+  enhancementのH⁰へ、完全忠実な包含に沿って制限した。
+- tensor側・Hom側のdg包含正方形から、それぞれH⁰の包含自然同型を構成した。
+  実際のH⁰ tensor/Homを選択済みの同値の逆関手へ置き換えていない。
+- `ChecksEnhancementHomotopyAdjunction` 対象ビルド成功。新規3主要宣言の公理は標準3公理のみ。
+  既存APIの名前・型は変更していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
