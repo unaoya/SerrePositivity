@@ -10064,6 +10064,18 @@ Ri の有限表示性、Si の bounded torsion、rank 正値性や g 正則性�
 対象4489ジョブと専用監査の公開2宣言が成功。assert_no_sorry 成功・標準3公理のみ。
 原典 E∞ 版 Cor 8.12 の保留を継続し、新しい sorry・axiom・引用は追加していない。
 
+**KL との実受渡し・二つの指定 excision 四角形から元の局所錐へ（2026-10-17）。**
+`Prop247ExcisionLocal.lean` は既存 KLCanonicalExcisionSquare と
+perfectoidization_comparison_almost_of_canonical_excision を使い、
+A→E←R^r の二つの指定四角形から実 β の局所錐の冪零化へ接続した。
+almost 比較は KL の公開 API を再利用し、局所有限自由比較と可換式は本系列の
+既存構成を用いる。Cor 8.12 の引き戻し性自体は仮定であり、供給していない。
+R^r の perfectoid 性も指定データとして保持する。既存 finPi の存在に基づく証明は
+B-I に依存するため、それを中核へ暗黙に取り込まず、既存 B-I の解消とは扱わない。
+指定データの中核は対象4629ジョブと公開1宣言の専用監査が成功。
+assert_no_sorry 成功・標準3公理のみ。担当外の KL・BS ファイルは編集していない。
+原典 E∞ 版 Cor 8.12 の保留を継続し、新しい sorry・axiom・引用は追加していない。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
