@@ -11120,3 +11120,70 @@ sorries出力はこの公開引用一件だけであり、ソース中も新し�
 これは証明済み定理のpure監査ではなく、引用を使う監査として区別する。
 BS構造監査にarc-excision-relative入力と専用監査を登録し、構造監査・11件の自己テストも終了コード0。
 他チャットへのメッセージ送信は行っていない。B-I/Thm 1.17(1)の既存引用や既存の証明済みAPIは変更していない。
+
+
+## Cor 8.12の工程2：標準excision四角形の二つの系（2026-10-17）
+
+新規BS専用PerfectoidizationExcision.leanで、引用から導く指定の二定理を証明した。
+公開名はSerrePositivity.BhattScholzeの
+`klCanonicalExcisionSquare_of_excision`と`klCanonicalExcisionSquare_of_integral_away`。
+どちらも既存の元の普遍単位f,gとB3の閉側の実射を保持し、CLMSTの
+KLCanonicalExcisionSquareと定義上同じ四辺のIsPullbackを結論する。
+CLMSTを直接にも間接にもimportしないことを、BS構造監査のfoundation-rootと
+forbid-prefix SerrePositivity.CLMSTで検証した（終了コード0、violation_paths=[]）。
+
+(a) はR,p,hR,A,B,C,D,q,a,f,g,hf,hg,hA,hB,hI,harcの順に明示引数を持つ。
+閉側の既証`perfectoidizationClosedSideUnit_isPerfectoidization`を引用のhQ,hEとして使い、
+左右辺を普遍性の一意性、底辺を`perfectoidizationClosedComparison_eq_map`で同定した。
+新しい引き戻しの入力や抽象的な代替閉側を導入していない。
+
+(b) の正確な公開型は以下の通り。積分性のインスタンスはq.toRingHom.toAlgebraに固定する。
+したがって別のAlgebra A Bに関する整性を誤って仮定する余地を作らない。
+
+```lean
+theorem klCanonicalExcisionSquare_of_integral_away
+    (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p)
+    (A B C D : Type u) [CommRing A] [CommRing B] [CommRing C] [CommRing D]
+    [Algebra R A] [Algebra R B] [Algebra R C] [Algebra R D]
+    (q : A →ₐ[R] B) [hInt : @Algebra.IsIntegral A B _ _ q.toRingHom.toAlgebra]
+    (a : R) (f : A →ₐ[R] C) (g : B →ₐ[R] D)
+    (hf : IsPerfectoidization p f.toRingHom) (hg : IsPerfectoidization p g.toRingHom)
+    (hA : IsModuleComplete A (p : A) (ModuleCat.of A A))
+    (hB : IsModuleComplete B (p : B) (ModuleCat.of B B))
+    (hI : IsModuleComplete A (p : A) (ModuleCat.of A (Ideal.span {algebraMap R A a})))
+    (haway : Function.Bijective (Localization.awayMap q.toRingHom (algebraMap R A a))) :
+    IsPullback
+      (CommRingCat.ofHom (IsPerfectoidization.map hf hg q.toRingHom))
+      (CommRingCat.ofHom (perfectoidizationClosedSideProjection hf
+        (Ideal.span {algebraMap R A a})))
+      (CommRingCat.ofHom (perfectoidizationClosedSideProjection hg
+        ((Ideal.span {algebraMap R A a}).map q.toRingHom)))
+      (CommRingCat.ofHom (perfectoidizationClosedComparison hf hg q.toRingHom
+        (Ideal.span {algebraMap R A a})))
+```
+
+明示引数での呼出し順は
+`klCanonicalExcisionSquare_of_integral_away R p hR A B C D q a f g hf hg hA hB hI haway`。
+qの直後のhIntはtypeclass引数である。付値環Vとkについて
+¬(span{algebraMap R A a}≤ker k) ↔ k(algebraMap R A a)≠0を、
+主イデアルの生成元判定と核の定義から証明した。qとkの標準代数構造を設定し、
+共通`existsUnique_valuation_extension_of_integral_away_bijective`を適用する。
+有限性・単射性を追加せず、rank・p完備性を共通延長定理へ要求することもない。
+
+対象ビルド3314ジョブ、新規集約PerfectoidizationExcisionResultsのビルド3315ジョブは終了コード0。
+既存BS専用audit_bhatt_scholze_arc_excision.leanへ両定理の#print axioms・#print sorriesと
+(b)の完全な型・引数順の適用exampleを追加し、終了コード0で成功した。
+引用と二つの系の公理はそれぞれpropext・Classical.choice・Quot.sound・sorryAxのみ。
+到達するsorryの公開名はInputs.perfectoidization_excision_isPullback一件だけである。
+両系のソースには新しいsorry・axiomはない。これはArcExcisionに相対的な証明であり、
+Cor 8.12引用そのものを解消したとは数えない。
+
+ルートには集約import `public import SerrePositivity.BhattScholze.PerfectoidizationExcisionResults`を
+一行追加したが、全体の`set -o pipefail; lake build`は終了コード1となった。
+担当外のBhattScholze/Andre/PowerRootPrismFrobeniusResidue.lean:102:17の型不一致であり、
+このファイルを修正したり回避したりせず停止した。ルートの自分の一行は統合検証待ちのため未コミット。
+同ファイル内の他レーンのimport変更も保存対象に含めない。
+
+指定の`lake env lean scripts/audit_axioms.lean`も実行し、終了コード0だった。
+ただし全体ビルドが未成功なので、既存oleanに対する結果であり、現ソース全体の統合成功の証拠には数えない。
+残作業は並行側の型不一致解消後の全体ビルド・共有公理監査の再実行、およびルート一行の保存である。
