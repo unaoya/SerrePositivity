@@ -197,6 +197,23 @@ bimodule順で左単位、作用順では恒等kernelを後に作用させる図
 証明はD・EのlocalHomKFlatを明示して既存三角・右単位と全kernel結合coherenceを使う。
 PのK-flat性・列の射影性は不要。Morita/U16a.leanは公開API全体のproduction入口、U16aChecksは統合監査入口。
 
+### 9. 実際の右随伴の比較正方形（実装・検証済み）
+
+Morita/AdjunctionSquare.leanは、左作用L・L'がともにIsEquivalenceである場合に、
+任意の比較e : L ⋙ T ≅ S ⋙ L'からkernelDerivedHomであるR・R'の比較
+kernelRightAdjointSquareIso : R ⋙ S ≅ T ⋙ R'を構成する。
+A・A'の係数環宇宙と四つの対象宇宙は独立で、各Smallを保持する。
+_hom_appは実際のunit/counitによる成分計算、_unit／_counitは両構造との実際の整合図式、
+_identityは恒等比較での関手単位子との一致。
+
+Morita/AdjunctionScalarExtension.leanのkernelRightAdjointLocalizedBaseChangeIsoは、
+既存scalarKernelLocalizedDerivedSquareをこの定理へ適用する。
+通常代表P、hα・hAug・hP'と、変更前後両kernelの作用の同値性を保持する。
+_counitは元の実際の左作用の正方形へ戻す図式。
+既存の三条件と明示したcompact生成から同値性を供給する接続はAdjunctionSquareChecksで検査済み。
+この条件付き右随伴比較で、未完のU12f成分一致や左作用のkernel合成係数変更図式を代用しない。
+既存の公開型は変更せず、新規APIとして追加した。
+
 ### 実装状態と他担当の利用境界
 
 | API群 | 状態 | 他担当の利用 |
@@ -828,3 +845,12 @@ U16全体の受入はまだ行わない。
 U12f比較の成分一致そのものは証明中であり、この比較同型の存在で代用しない。
 合同ビルド4029 jobs・警告0、統合入口の主要31宣言の再監査は標準3公理以内。
 詳細と残ゲートはdg-theory.md §17.278。U16全体はまだ未受入。
+
+
+## 右随伴の係数変更正方形の接続（2026-10-17）
+
+AdjunctionSquareとAdjunctionScalarExtensionは、実際の右随伴・unit/counitを
+既存の左作用の係数変更正方形へ接続する。公開契約は冒頭§9、詳細はdg-theory.md §17.279。
+独立宇宙・標数2・三条件判定からの同値性供給を検査し、追加7宣言は標準3公理以内。
+U16Checks・局所／一般入口・Spectra.StageTwoの合同ビルド4217 jobs・警告0。
+他担当の残る左作用比較の証明は引き続き必要で、U16全体の受入とはしない。

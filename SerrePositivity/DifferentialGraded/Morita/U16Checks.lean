@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Morita.U16
+public import SerrePositivity.DifferentialGraded.Morita.AdjunctionSquareChecks
 public import SerrePositivity.DifferentialGraded.Morita.U16aChecks
 public import SerrePositivity.DifferentialGraded.Morita.CriterionChecks
 public import SerrePositivity.DifferentialGraded.Morita.CoherencePerfectChecks
@@ -60,3 +61,11 @@ open SerrePositivity.DifferentialGraded.Morita
 #print axioms scalarOutputEvaluationIso_model
 #print axioms scalarKernelOutputEvaluationIso
 #print axioms scalarKernelOutputEvaluationIso_ofKFlatModels
+
+#print axioms kernelRightAdjointSquareIso
+#print axioms kernelRightAdjointSquareIso_hom_app
+#print axioms kernelRightAdjointSquareIso_counit
+#print axioms kernelRightAdjointSquareIso_unit
+#print axioms kernelRightAdjointSquareIso_identity
+#print axioms kernelRightAdjointLocalizedBaseChangeIso
+#print axioms kernelRightAdjointLocalizedBaseChangeIso_counit

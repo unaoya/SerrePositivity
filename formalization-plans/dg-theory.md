@@ -13245,3 +13245,45 @@ U16a・U16c統合の受入は維持し、U16全体の受入は行わない。
 lake build SerrePositivity.DifferentialGraded.Morita.U16Checks SerrePositivity.Spectra.StageTwo
 lake env lean SerrePositivity/DifferentialGraded/Morita/U16Checks.lean
 ```
+
+
+### 17.279 U16c/d接続：実際のMorita右随伴の係数変更正方形（2026-10-17）
+
+別担当のU12f成分同定・kernel合成図式と重複しない、実際の右随伴側の接続を追加した。
+AdjunctionSquareは、二つの主kernelの作用L・L'が同値であり、S・Tに対する
+左作用の比較e : L ⋙ T ≅ S ⋙ L'が与えられた場合に、
+実際のkernelDerivedHomであるR・R'についてR ⋙ S ≅ T ⋙ R'を構成する。
+変更後の実際の単位、eの逆、元の実際の余単位を合成する。
+係数環A・A'の宇宙u・u'、四つのdg圏の対象宇宙と各Smallを独立に保つ。
+
+| 公開API | 検証した結論 |
+| --- | --- |
+| kernelRightAdjointSquareIso | 実際の一般右随伴の比較自然同型。L・L'のIsEquivalenceを保持 |
+| kernelRightAdjointSquareIso_hom_app | 変更後のkernelDerivedUnit・e.inv・元のkernelDerivedCounitによる成分計算 |
+| kernelRightAdjointSquareIso_counit | 変更後の実際の余単位で戻すと、e.invと元の実際の余単位の経路に一致 |
+| kernelRightAdjointSquareIso_unit | Sで送った元の実際の単位と、変更後の実際の単位・e.invの経路が一致 |
+| kernelRightAdjointSquareIso_identity | 恒等な左作用正方形の右随伴比較は、通常の関手単位子による恒等正方形に一致 |
+| kernelRightAdjointLocalizedBaseChangeIso | d156f34cのscalarKernelLocalizedDerivedSquareを、元／変更後の実際の一般右随伴へ適用 |
+| kernelRightAdjointLocalizedBaseChangeIso_counit | 係数変更後の実際の余単位で、既存左作用の正方形へ戻る具体的図式 |
+
+後二宣言はAdjunctionScalarExtensionに置いた。既存ScalarExtension*は編集しない。
+通常代表P、hα・hAug・hP'をそのまま保持し、元のkernelと局所化係数変更後のkernelの
+両方の作用の同値性を明示する。係数変更後のMorita性を無条件には結論しない。
+これはU12f成分同定や左作用のkernel合成係数変更図式の証明の代替ではない。
+
+AdjunctionSquareChecksは、両側のCriterionPerfConditionsと明示したcompact生成から
+既存のcriterionDerivedKernelIsEquivalenceOfMoritaConditionsで二つの同値性を供給し、
+右随伴正方形を使えることを独立宇宙で検査した。標数2でも恒等正方形の計算を検査する。
+U16のproduction入口とU16Checksへ同時importし、局所／一般入口・Spectra.StageTwoとの
+合同ビルド成功（4217 jobs、警告・エラー0）。追加7宣言の直接公理監査は標準3公理以内、
+新規監査累計5114。統合入口の主要38宣言も同じ公理範囲で直接再監査した。
+新規sorry・axiom・引用・資源上限変更なし。既存公開APIの名前・型は変更せず、追加のみ。
+
+U16aとU16c統合の受入は維持する。U16dの残るU12f成分一致・左作用のkernel合成図式・
+局所化正方形の全主kernel射自然性と中心作用の保留は解消済みと扱わず、U16全体は未受入。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Morita.U16Checks SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.DifferentialGraded.Checks.U12eGeneralInventory SerrePositivity.Spectra.StageTwo
+lake env lean SerrePositivity/DifferentialGraded/Morita/AdjunctionSquareChecks.lean
+lake env lean SerrePositivity/DifferentialGraded/Morita/U16Checks.lean
+```
