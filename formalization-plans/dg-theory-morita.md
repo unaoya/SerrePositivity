@@ -160,3 +160,11 @@ lake env lean SerrePositivity/DifferentialGraded/Morita/KernelChecks.lean
 ```
 
 次は指定の順に従い一般経路の棚卸し・docstring整理を行い、その後主導来作用の証明へ戻る。
+
+
+## 一般経路の棚卸し完了・U16a証明への復帰（2026-10-17）
+
+指定された順序の棚卸し・docstring整理を実施し、記録をdg-theory-u12e-general-inventory.mdへ保存した。
+U12e-generalは中断・未受入のまま。局所入口とKernelTensorのResolution/依存はともに0件。
+次は冒頭で型を固定した主導来作用、一般右随伴とunit/counit、恒等・合成の作用比較の証明を進める。
+U16a・U16cの全受入を宣言するものではない。既存公開型の変更はない。

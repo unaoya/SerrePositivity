@@ -3,8 +3,20 @@ public import SerrePositivity.DifferentialGraded.Tensor.SphereFreeKFlat
 
 /-! # 全cycleを生成元とするK-flat複体被覆
 
+## 概要
 増大射はcycle上全射であり、各次数のホモロジーでも全射となる。
 単射性は主張しない。dg圏の初期増大に使う。
+
+## 方針
+有限pathとcellの段階構成、明示的chain map、余極限を使って標準分解を積み上げる。
+
+## 規約と注意
+公開宣言の仮定・宇宙・射のクラスを維持する。個別の同型・squareの存在から、分解変更の完全なcoherenceを結論しない。
+
+## 使われ方
+局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
+tensorやM9で平坦性が崩れた場合の再開に使える。
+棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
 -/
 @[expose] public section
 noncomputable section

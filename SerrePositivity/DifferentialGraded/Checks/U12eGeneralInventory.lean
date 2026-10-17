@@ -1,0 +1,53 @@
+module
+public import SerrePositivity.DifferentialGraded.Resolution.General
+
+/-! # 一般経路の再利用入口の公開宣言監査
+
+## 概要
+General入口だけから分解存在・比較同値・分解上のcoherence・個別制限squareを参照できることを確認する。
+
+## 方針
+棚卸し(A)の代表17宣言の型と公理を直接出力する。
+
+## 規約と注意
+U12e-generalは部分実装済み・中断・未受入。残件R1〜R7の完成を結論する検査ではない。
+
+## 使われ方
+formalization-plans/dg-theory-u12e-general-inventory.mdの入口検証を再現する。
+-/
+open SerrePositivity.DifferentialGraded
+
+#check KFlatDGResolution.canonical
+#print axioms KFlatDGResolution.canonical
+#check KFlatDGResolution.nonempty
+#print axioms KFlatDGResolution.nonempty
+#check KFlatDGResolution.comparisonLeft_quasiEquivalence
+#print axioms KFlatDGResolution.comparisonLeft_quasiEquivalence
+#check KFlatDGResolution.comparisonRight_quasiEquivalence
+#print axioms KFlatDGResolution.comparisonRight_quasiEquivalence
+#check KFlatDGResolution.moduleDerivedEquivalence
+#print axioms KFlatDGResolution.moduleDerivedEquivalence
+#check KFlatDGResolution.changeModuleDerivedEquivalence
+#print axioms KFlatDGResolution.changeModuleDerivedEquivalence
+#check ResolutionBimodule.changeEquivalence
+#print axioms ResolutionBimodule.changeEquivalence
+#check ResolutionBimodule.composeFunctor
+#print axioms ResolutionBimodule.composeFunctor
+#check ResolutionBimodule.triangle
+#print axioms ResolutionBimodule.triangle
+#check ResolutionBimodule.pentagon
+#print axioms ResolutionBimodule.pentagon
+#check BimoduleTensor.derivedBimoduleAssociator_leftRestriction
+#print axioms BimoduleTensor.derivedBimoduleAssociator_leftRestriction
+#check BimoduleTensor.derivedBimoduleAssociator_rightRestriction
+#print axioms BimoduleTensor.derivedBimoduleAssociator_rightRestriction
+#check BimoduleTensor.derivedBimoduleAssociator_middleRestriction
+#print axioms BimoduleTensor.derivedBimoduleAssociator_middleRestriction
+#check BimoduleTensor.derivedBimoduleAssociator_secondMiddleRestriction
+#print axioms BimoduleTensor.derivedBimoduleAssociator_secondMiddleRestriction
+#check BimoduleTensor.derivedMiddleRestrictionIso
+#print axioms BimoduleTensor.derivedMiddleRestrictionIso
+#check BimoduleTensor.derivedMiddleRestrictionNatTrans_functor_id
+#print axioms BimoduleTensor.derivedMiddleRestrictionNatTrans_functor_id
+#check BimoduleTensor.derivedMiddleRestrictionNatTrans_functor_comp
+#print axioms BimoduleTensor.derivedMiddleRestrictionNatTrans_functor_comp

@@ -2803,6 +2803,7 @@ U15c `Quotient/Universal.lean`：Bの像の指定収縮を持つdg関手との�
 U15d `Quotient/ScalarExtension.lean`：path添字を固定した係数変更の同型・単位/合成整合性。underivedの構成法則として証明する。
 U12f・U15d の係数変更の実装・明示仮定・検証記録：[dg-theory-scalar-extension.md](dg-theory-scalar-extension.md)。
 U15e：局所K-flat仮定の版とdg圏の分解を使う版を分け、定義済みtriaのVerdier商と比較する。
+現行§0により、局所版は別担当で完成済み、分解版は範囲外（中断）。以下の一般版条件は再開用に保持する。
 局所K-flat版はU17a・U13dを終えたチャットが`Quotient/DerivedComparison*.lean`や
 `Verdier/`で担当し、続けてU17bの局所K-flatの場合も扱う。
 このチャットはU12e受入→U16の後に分解版を担当し、局所K-flat版の定義・比較定理を
@@ -2814,6 +2815,9 @@ U15e：局所K-flat仮定の版とdg圏の分解を使う版を分け、定義�
 対象・普遍性まではU11/U12と独立に先行可能だが、導来/Verdier比較はflatnessの受入後とする。
 
 ### 15.6 U16：導来Morita（D9）
+
+現行のU16a公開型とU16a/cの担当記録は[dg-theory-morita.md](dg-theory-morita.md)。
+U16b/dは別担当の[dg-theory-morita-qe.md](dg-theory-morita-qe.md)を参照する。
 
 U16a：U12の導来bimodule合成を使い、指定bimoduleが誘導する導来関手、unit/counit、identity/compを定義。
 U16b：dg quasiEquivalenceからのrestriction/extensionが同値であることを、representable・生成性・Hom比較で証明。
@@ -11952,3 +11956,32 @@ KernelChecksの対象ビルド成功（2607 jobs、警告なし）。8公開宣�
 直接公理監査は標準3公理以内。新規監査累計4843宣言。
 既存公開API・共有ルート・U16b/d担当ファイルは編集していない。
 次は一般経路の棚卸しとdocstringのみの整理へ進み、U16a・U16c全体は未受入として維持する。
+
+
+### 17.251 U12e-generalの再利用棚卸しとdocstring整理（2026-10-17）
+
+§17.160〜247の追加モジュールをコミット履歴から抽出し、
+dg-theory-u12e-general-inventory.mdへ全519モジュールの台帳を作った。
+(A)再利用可能なAPI・検査444件と、(B)R1〜R7への途中の比較・検査75件を区別する。
+主な公開名、一行の主張、一般Morita・tensor・Hochschild型構成・Hom非平坦のK理論・
+M9で平坦性が崩れた場合の再利用候補を記録した。応用定理の実装完了は意味しない。
+
+519ファイルのモジュールdocstringを概要／方針／規約と注意／使われ方の書式へ整えた。
+(A)には局所入口での実際の利用箇所と想定用途、(B)にはU12e-general（中断）の一部という注記と
+台帳参照を置いた。宣言の名前・型・証明・importは変更せず、先頭docstring外のbytesが整理前の
+42d2fef4と各ファイルで一致することをassertした。連結fingerprintは台帳に記録する。
+新規ファイル作成前に不在を確認し、既存パスは移動・削除・改名していない。
+
+新規Resolution/General.leanの21 importが(A)のproduction 424モジュールを覆うことを走査で確認した。
+局所入口Derived/BimoduleLocal.leanはこの入口を経由しない。推移的依存集合は整理前後で同一423ファイル、
+Resolution/依存0件。全モジュール台帳から対象ビルドとimport走査を再現するコードを台帳に保存した。
+この整理は一般経路の受入ではなく、U12e-general：部分実装済み・中断・未受入を維持する。
+
+全519対象とGeneral・局所受入・kernel契約・Spectra.StageTwoの合同ビルド成功（3644 jobs、警告なし）。
+保存済みChecksの1828公理監査出力はすべて標準3公理以内。既監査の再出力なので累計へ重複加算しない。
+新規Checks.U12eGeneralInventoryはGeneral入口だけから代表17宣言の型・公理を検査し、
+対象ビルド成功（3147 jobs、警告なし）。直接公理監査も同入口から再現する。
+文書検査は24 Markdown・326 exposition参照、失敗0件。
+今回新しい数学的宣言・sorry・axiom・引用は追加していない。新規監査累計4843を保持する。
+Morita/KernelTensorの推移的project依存も427ファイル、Resolution/依存0件である。
+次は固定済み公開型に沿ってU16aの主導来作用・随伴・作用coherenceを証明し、その後U16cへ進む。

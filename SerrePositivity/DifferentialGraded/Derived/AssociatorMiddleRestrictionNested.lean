@@ -1,7 +1,22 @@
 module
 public import SerrePositivity.DifferentialGraded.Derived.AssociatorMiddleRestrictionInnerModel
 
-/-! # 第一中間制限と全導来結合子の入れ子側のモデルsquare -/
+/-! # 第一中間制限と全導来結合子の入れ子側のモデルsquare
+
+## 概要
+第一中間制限と全導来結合子の入れ子側のモデルsquare。
+
+## 方針
+既存の制限表示と指定K-flatモデルの計算を局所化へ移し、実際の比較射の経路を照合する。
+
+## 規約と注意
+公開宣言の仮定・宇宙・射のクラスを維持する。個別の同型・squareの存在から、分解変更の完全なcoherenceを結論しない。
+
+## 使われ方
+局所入口Derived/BimoduleLocal.leanからは未使用。U16dで指定の制限squareを使う際の候補。一般Morita・tensor・
+Hochschild型構成のモデル比較にも利用できる。
+棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+-/
 @[expose] public section
 noncomputable section
 set_option backward.isDefEq.respectTransparency false

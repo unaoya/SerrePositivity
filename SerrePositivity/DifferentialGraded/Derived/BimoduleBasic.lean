@@ -4,8 +4,20 @@ public import Mathlib.CategoryTheory.Localization.HasLocalization
 
 /-! # 値ごとのquasiIsoの標準局所化による導来bimodule圏
 
+## 概要
 全Hom自然な閉零bimodule射を局所化する。局所化の標準の大きい射宇宙を保持し、
 小さいHomや射影モデル構造の存在はこの定義の前提にしない。
+
+## 方針
+semifree・K-flatモデルと指定準同型局所化の計算を組み合わせ、既存の主導来関手を保持する。
+
+## 規約と注意
+公開宣言の仮定・宇宙・射のクラスを維持する。個別の同型・squareの存在から、分解変更の完全なcoherenceを結論しない。
+
+## 使われ方
+局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Derived/BimoduleSemifreeComparison.lean、Derived/
+BimoduleTensor.lean。固定dg圏上の導来tensor・Morita作用の基盤。非平坦Homの分解source上でも同じ計算APIを再利用できる。
+棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
 -/
 @[expose] public section
 noncomputable section

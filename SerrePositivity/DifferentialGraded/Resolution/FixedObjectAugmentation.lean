@@ -4,8 +4,20 @@ public import SerrePositivity.DifferentialGraded.Resolution.Cells.LengthColimit
 
 /-! # 対象ラベルと増大の対象写像を固定した豊穣構造
 
+## 概要
 反復列でMathlibのEnrichedCategoryをデータとして保持する。
 対象Xの既存instanceを書き換えず、増大の対象写像oを全段階で固定する。
+
+## 方針
+有限pathとcellの段階構成、明示的chain map、余極限を使って標準分解を積み上げる。
+
+## 規約と注意
+公開宣言の仮定・宇宙・射のクラスを維持する。個別の同型・squareの存在から、分解変更の完全なcoherenceを結論しない。
+
+## 使われ方
+局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
+tensorやM9で平坦性が崩れた場合の再開に使える。
+棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
 -/
 @[expose] public section
 noncomputable section

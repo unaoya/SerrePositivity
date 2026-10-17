@@ -4,7 +4,21 @@ public import SerrePositivity.DifferentialGraded.Complexes.TensorCochainComposit
 public import SerrePositivity.DifferentialGraded.Complexes.TensorClosedZero
 public import SerrePositivity.DifferentialGraded.Complexes.TensorCochainInterchange
 
-/-! # 結合的な先頭作用の下での任意次数cochainの連結への輸送 -/
+/-! # 結合的な先頭作用の下での任意次数cochainの連結への輸送
+
+## 概要
+結合的な先頭作用の下での任意次数cochainの連結への輸送。
+
+## 方針
+既存の全dg自然なHom・作用・chain mapと局所化の計算を再利用する。
+
+## 規約と注意
+公開宣言の仮定・宇宙・射のクラスを維持する。個別の同型・squareの存在から、分解変更の完全なcoherenceを結論しない。
+
+## 使われ方
+局所入口Derived/BimoduleLocal.leanからは未使用。dg加群の導来作用・準同値比較の基盤。任意可換環上のMorita・K理論のモデル比較に再利用できる。
+棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+-/
 @[expose] public section
 noncomputable section
 set_option backward.isDefEq.respectTransparency false

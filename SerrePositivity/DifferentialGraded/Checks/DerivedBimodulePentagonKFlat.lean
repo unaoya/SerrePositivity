@@ -2,7 +2,21 @@ module
 public import SerrePositivity.DifferentialGraded.Derived.BimoduleCompositionPentagonKFlat
 public import Mathlib.Data.ZMod.Basic
 
-/-! # K-flat三因子上の全導来五角図式と両経路の比較の監査 -/
+/-! # K-flat三因子上の全導来五角図式と両経路の比較の監査
+
+## 概要
+K-flat三因子上の全導来五角図式と両経路の比較の監査。
+
+## 方針
+既存の例・型照合・公理監査集合を保持し、証明済みの個別契約を検査する。
+
+## 規約と注意
+公開宣言の仮定・宇宙・射のクラスを維持する。個別の同型・squareの存在から、分解変更の完全なcoherenceを結論しない。
+
+## 使われ方
+局所入口Derived/BimoduleLocal.leanからは未使用。対応する一般APIの再現可能な検査入口。中断した一般経路を再開する際にも同じ対象を再実行できる。
+棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+-/
 @[expose] public section
 noncomputable section
 universe u v w z t x

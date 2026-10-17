@@ -5,7 +5,19 @@ public import SerrePositivity.DifferentialGraded.Derived.BimoduleCompositionPent
 
 /-! # 指定dg圏解像度上の導来bimodule圏と合成
 
+## 概要
 元のunderived積dg圏上の導来bimodule圏との同値は仮定しない。
+
+## 方針
+有限pathとcellの段階構成、明示的chain map、余極限を使って標準分解を積み上げる。
+
+## 規約と注意
+公開宣言の仮定・宇宙・射のクラスを維持する。個別の同型・squareの存在から、分解変更の完全なcoherenceを結論しない。
+
+## 使われ方
+局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
+tensorやM9で平坦性が崩れた場合の再開に使える。
+棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
 -/
 @[expose] public section
 noncomputable section

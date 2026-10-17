@@ -4,7 +4,21 @@ public import SerrePositivity.DifferentialGraded.Bimodule.UncurryRestriction
 public import SerrePositivity.DifferentialGraded.Bimodule.Isomorphism
 public import SerrePositivity.DifferentialGraded.Module.Isomorphism
 
-/-! # 全Hom自然な閉零bimodule射の明示的なuncurry関手 -/
+/-! # 全Hom自然な閉零bimodule射の明示的なuncurry関手
+
+## 概要
+全Hom自然な閉零bimodule射の明示的なuncurry関手。
+
+## 方針
+balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い、条件を明示して比較する。
+
+## 規約と注意
+公開宣言の仮定・宇宙・射のクラスを維持する。個別の同型・squareの存在から、分解変更の完全なcoherenceを結論しない。
+
+## 使われ方
+局所入口Derived/BimoduleLocal.leanからは未使用。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
+棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+-/
 @[expose] public section
 noncomputable section
 set_option backward.isDefEq.respectTransparency false

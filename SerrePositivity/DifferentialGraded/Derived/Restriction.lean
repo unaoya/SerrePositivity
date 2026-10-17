@@ -5,7 +5,19 @@ public import SerrePositivity.DifferentialGraded.Functor.Opposite
 
 /-! # dg関手に沿う右dg加群の導来制限
 
+## 概要
 制限は対象ごとに評価するため任意の準同型を保ち、置換を要さず主局所化へ降りる。
+
+## 方針
+既存の制限表示と指定K-flatモデルの計算を局所化へ移し、実際の比較射の経路を照合する。
+
+## 規約と注意
+公開宣言の仮定・宇宙・射のクラスを維持する。個別の同型・squareの存在から、分解変更の完全なcoherenceを結論しない。
+
+## 使われ方
+局所入口Derived/BimoduleLocal.leanからは未使用。U16dで指定の制限squareを使う際の候補。一般Morita・tensor・
+Hochschild型構成のモデル比較にも利用できる。
+棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
 -/
 @[expose] public section
 noncomputable section

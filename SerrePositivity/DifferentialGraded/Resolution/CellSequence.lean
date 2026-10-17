@@ -5,8 +5,20 @@ public import Mathlib.CategoryTheory.Functor.OfSequence
 
 /-! # 同じ対象ラベル上で全境界cellを付加する反復列
 
+## 概要
 全段階の豊穣構造はMathlibのEnrichedCategoryであり、対象型Dの既存instanceは変更しない。
 ここでは各対象対のHom列とその増大を構成する。
+
+## 方針
+有限pathとcellの段階構成、明示的chain map、余極限を使って標準分解を積み上げる。
+
+## 規約と注意
+公開宣言の仮定・宇宙・射のクラスを維持する。個別の同型・squareの存在から、分解変更の完全なcoherenceを結論しない。
+
+## 使われ方
+局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
+tensorやM9で平坦性が崩れた場合の再開に使える。
+棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
 -/
 @[expose] public section
 noncomputable section

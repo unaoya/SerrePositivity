@@ -2,7 +2,22 @@ module
 public import SerrePositivity.DifferentialGraded.Resolution.CompositionChange
 public import SerrePositivity.DifferentialGraded.Derived.DiagonalRestriction
 
-/-! # 指定dg圏解像度の既存の変更同値による対角bimoduleの保存 -/
+/-! # 指定dg圏解像度の既存の変更同値による対角bimoduleの保存
+
+## 概要
+指定dg圏解像度の既存の変更同値による対角bimoduleの保存。
+
+## 方針
+指定の共通source・準同値・局所化の比較を使い、既存の比較関手を保持する。
+
+## 規約と注意
+U12e-general（中断）の一部。R1〜R7への足場として保持する。収録された個別宣言の証明済み範囲と、一般経路全体の未受入を区別する。
+公開宣言の仮定・宇宙・射のクラスを維持する。個別の同型・squareの存在から、分解変更の完全なcoherenceを結論しない。
+
+## 使われ方
+局所入口Derived/BimoduleLocal.leanからは未使用。Hom非平坦のdg圏のMorita・tensor・Hochschild型構成・K理論で、分解選択を比較する入口。
+棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+-/
 @[expose] public section
 noncomputable section
 universe u v w z

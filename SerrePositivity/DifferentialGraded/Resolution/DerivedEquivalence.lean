@@ -2,7 +2,21 @@ module
 public import SerrePositivity.DifferentialGraded.Resolution.CanonicalZigzag
 public import SerrePositivity.DifferentialGraded.Derived.FunctorDerivedEquivalence
 
-/-! # dg圏解像度の増大・比較に沿う主導来加群圏の同値 -/
+/-! # dg圏解像度の増大・比較に沿う主導来加群圏の同値
+
+## 概要
+dg圏解像度の増大・比較に沿う主導来加群圏の同値。
+
+## 方針
+指定の共通source・準同値・局所化の比較を使い、既存の比較関手を保持する。
+
+## 規約と注意
+公開宣言の仮定・宇宙・射のクラスを維持する。個別の同型・squareの存在から、分解変更の完全なcoherenceを結論しない。
+
+## 使われ方
+局所入口Derived/BimoduleLocal.leanからは未使用。Hom非平坦のdg圏のMorita・tensor・Hochschild型構成・K理論で、分解選択を比較する入口。
+棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+-/
 @[expose] public section
 noncomputable section
 universe u v w z

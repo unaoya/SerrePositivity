@@ -1,0 +1,39 @@
+module
+public import SerrePositivity.DifferentialGraded.Bimodule.PairedRestrictionPresentation
+public import SerrePositivity.DifferentialGraded.Derived.AssociatorLeftRestrictionCoherence
+public import SerrePositivity.DifferentialGraded.Derived.AssociatorMiddleRestrictionCoherence
+public import SerrePositivity.DifferentialGraded.Derived.AssociatorRightRestrictionCoherence
+public import SerrePositivity.DifferentialGraded.Derived.AssociatorSecondMiddleRestrictionCoherence
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddleIdentityFull
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleTensorComparison
+public import SerrePositivity.DifferentialGraded.Derived.DiagonalRestrictionCoherence
+public import SerrePositivity.DifferentialGraded.Derived.LeftUnitOuterRestriction
+public import SerrePositivity.DifferentialGraded.Derived.LeftUnitRestrictionCoherence
+public import SerrePositivity.DifferentialGraded.Derived.RestrictionCoherence
+public import SerrePositivity.DifferentialGraded.Derived.RightUnitRestrictionCoherence
+public import SerrePositivity.DifferentialGraded.Resolution.BimoduleDerivedEquivalence
+public import SerrePositivity.DifferentialGraded.Resolution.Cells.GeneratorDisk
+public import SerrePositivity.DifferentialGraded.Resolution.Cells.PrependDifferential
+public import SerrePositivity.DifferentialGraded.Resolution.Coherence
+public import SerrePositivity.DifferentialGraded.Resolution.DerivedEquivalence
+public import SerrePositivity.DifferentialGraded.Resolution.MiddleCompositionComparison
+public import SerrePositivity.DifferentialGraded.Tensor.ResolvedRestrictionIdentity
+public import SerrePositivity.DifferentialGraded.Tensor.RestrictionComparisonNaturality
+public import SerrePositivity.DifferentialGraded.Tensor.RestrictionComparisonYoneda
+
+/-! # U12e-generalの再利用可能な成果の独立入口
+
+## 概要
+棚卸し(A)の一般APIをまとめ、K-flat dg圏分解の存在・比較と個々の制限squareを公開する。
+
+## 方針
+既存パスを保持し、(A)のproductionモジュールを依存で覆う入口だけをimportする。
+
+## 規約と注意
+U12e-generalは部分実装済み・中断・未受入。R1〜R7の完全coherenceを主張しない。
+局所版Derived.BimoduleLocalはこの入口に依存しない。検査モジュールはここからimportしない。
+
+## 使われ方
+Hom非平坦dg圏のMorita・tensor・Hochschild型構成・K理論や、M9で平坦性が崩れた場合の再開に使う。
+公開名と仮定の参照先はformalization-plans/dg-theory-u12e-general-inventory.md。
+-/
