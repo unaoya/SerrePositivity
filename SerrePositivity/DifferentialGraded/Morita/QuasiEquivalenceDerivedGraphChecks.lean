@@ -1,0 +1,16 @@
+module
+public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceDerivedGraph
+
+/-! # 主導来graph作用と既存同値・随伴・Perf・shiftの公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded.Morita
+#print axioms quasiEquivalenceDerivedGraphIso
+#print axioms quasiEquivalenceDerivedGraphCommShift
+#print axioms quasiEquivalenceDerivedGraphIsoCommShift
+#print axioms quasiEquivalenceDerivedGraphIsTriangulated
+#print axioms quasiEquivalenceDerivedGraphIsEquivalence
+#print axioms quasiEquivalenceDerivedGraphAdjunction
+#print axioms quasiEquivalenceDerivedGraphUnit_app
+#print axioms quasiEquivalenceDerivedGraphCounit_app
+#print axioms quasiEquivalenceDerivedGraph_perfect
+#print axioms quasiEquivalenceDerivedGraphOnPerfectIso

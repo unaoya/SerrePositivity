@@ -239,6 +239,18 @@
 - `Morita.ScalarExtensionKernelActionChecks` ビルド成功（3235 jobs、警告なし）。
   主要2宣言の公理監査は標準3公理のみ。
 
+## U16b.10：主導来graph kernelの実作用・随伴・Perf・shift・三角比較
+
+- U16a3の `KernelDerivedFunctor` が公開・検証済みとなったため、
+  `Morita/QuasiEquivalenceDerivedGraph.lean` で通常kernel版の比較を実際の `kernelDerivedTensor` へ移した。
+  `kernelGraph` の主導来作用と既存 `dgDerivedExtension` の関手自然同型を公開した。
+- Fが擬同値ならこの主導来graph作用は同値であることを、既存の同値本体から証明した。
+  随伴も元の延長–制限随伴を自然同型に沿って運び、単位・余単位の成分式を計算した。
+- graph比較は整数shiftに整合し、実際のgraph作用の三角性・Perf保存・Perf上の比較も構成した。
+  追加のlocalHomKFlat条件はない。積dg圏の擬同値の条件はU16b.6のまま保持する。
+- `Morita.QuasiEquivalenceDerivedGraphChecks` ビルド成功（2808 jobs、警告なし）。
+  主要10宣言の公理監査は標準3公理のみ。
+
 ## 合同検証と公開入口（2026-10-17）
 
 - 新規10監査対象・公開入口・既存 `Checks.DGFunctorDerivedEquivalence` の12対象を
