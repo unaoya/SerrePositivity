@@ -548,6 +548,20 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPEval_positive_isDP
 assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_principalDPPositiveMorphism
 assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_regularPrincipalModPrimeDPMorphism
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.primeLocal_of_prime_mem_jacobson
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPolynomialRing_primeRegular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPolynomialRing_primeLocal
+assert_no_sorry SerrePositivity.BhattScholze.Andre.MonicModPrimePDEnvelope
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicModPrimePDDividedPowers
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicModPrimePDDividedPowers_base_apply
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_monicModPrimePDMorphism
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrism_primeLocal
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicModPrimeDividedPowers
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_perfectPrismMonicModPrimePDMorphism
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicModPrimeCoefficient_prime_eq_zero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicModPrimePDEnvelope_truncatedEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicModPrimePDEnvelope_quotient_free
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -649,7 +663,9 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.FactorialModPrimeDividedPowers,
     `SerrePositivity.BhattScholze.Andre.RegularPrincipalModPrimeDividedPowers,
     `SerrePositivity.BhattScholze.Andre.PrincipalDPPositiveUniversal,
-    `SerrePositivity.BhattScholze.Andre.RegularPrincipalModPrimeUniversal]
+    `SerrePositivity.BhattScholze.Andre.RegularPrincipalModPrimeUniversal,
+    `SerrePositivity.BhattScholze.Andre.MonicModPrimePDEnvelope,
+    `SerrePositivity.BhattScholze.Andre.PerfectPrismMonicModPrimePDEnvelope]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

@@ -1904,3 +1904,55 @@ SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（
 生成宣言を含む 3054 宣言の推移的公理依存は標準 3 公理のみ。
 一般 mod p 分冪降下・階乗部分環の実構造・一次関係商の実構造・入力元の値・
 具体的な正則持ち上げの普遍性の公開型 5 本を `#print` で確認した（終了コード 0）。
+
+### E1.31：モニック入力・完全 prism への実 mod p 分冪包の適用
+
+新規 `Andre/MonicModPrimePDEnvelope.lean` は、p 正則・p 局所 δ 係数環 A 上で
+モニック多項式 f を独立変数 s で評価した入力について、E1.30 の実構造と普遍性を適用する。
+`monicPolynomialRing_primeRegular` は多項式環の自由性から p 正則性を、
+`monicPolynomialRing_primeLocal` は係数射から p 局所性を供給する。
+関係式の mod p 正則性は既存の `monicRelation_modP_isSMulRegular` による。
+そのため入力の mod p 正則性は公開定理の追加仮定として残らない。
+`monicModPrimePDDividedPowers` と入力元上の標準分冪値の公式、
+`existsUnique_monicModPrimePDMorphism` を公開する。モニック f の正次数はここでは不要。
+
+新規 `Andre/PerfectPrismMonicModPrimePDEnvelope.lean` は、完全 prism の p 完備性から
+p の Jacobson 根基への所属を取り出し、Bezout 等式を用いる
+`primeLocal_of_prime_mem_jacobson` により p 局所性を供給する。
+p 正則性は完全 δ 構造の既存結果を使う。
+`perfectPrismMonicModPrimeDividedPowers` はこれらを内部で供給した実分冪構造である。
+`existsUnique_perfectPrismMonicModPrimePDMorphism` は同じ構造の普遍性を主張する。
+
+主要公開定理の正確な形は次の通り（namespace `SerrePositivity.BhattScholze.Andre`）。
+ここで `B := MvPolynomial σ A`、`Q := B ⧸ Ideal.span {(p : B)}`、
+`bar := Ideal.Quotient.mk (Ideal.span {(p : B)})` とする。
+
+```lean
+theorem existsUnique_perfectPrismMonicModPrimePDMorphism
+    {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
+    (P : OrientedPrism p A) (hP : P.deltaStructure.IsPerfect)
+    (f : Polynomial A) (hf : f.Monic) (s : σ)
+    {T : Type v} [CommRing T] [Algebra Q T] {I : Ideal T} (Ht : DividedPowers I)
+    (hyT : algebraMap Q T (bar (monicRelation f s)) ∈ I) :
+    ∃! F : MonicModPrimePDEnvelope (p := p) f s →ₐ[Q] T,
+      (perfectPrismMonicModPrimeDividedPowers P hP f hf s).IsDPMorphism Ht F.toRingHom
+```
+
+`MonicModPrimePDEnvelope f s` の実台環は `PrincipalDPPresentation Q (bar (monicRelation f s))`。
+その正次数イデアルは全正次数標準分冪生成元の span。
+同じ台環について `monicModPrimePDEnvelope_truncatedEquiv` は、既存の
+`principalDPQuotientAlgebra` が指定する係数商 `Q/(bar(f(s))^p)` 上の代数同型を与える。
+終域はこの係数商上の実可算切断多項式商で、`monicModPrimePDEnvelope_quotient_free` は
+同じ係数商作用の下での自由性を明示表示により証明する。
+
+BS Rem 7.15(1)（著者版 p.62）の実 pd 包の計算を通常多項式変数に適用した段階。
+原典の Prop 7.11 は使わず、階乗部分環の mod p 降下と明示切断表示を用いる。
+無限 p 冪根変数への移行、対象の R/ϖ 係数との比較、および prismatic envelope の
+Frobenius 引戻しとの同定はなお未完了。今回の通常多項式変数での適用だけで
+依頼全体の完成とは数えない。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4418 jobs）。
+新規 13 公開宣言の `assert_no_sorry` を追加した専用監査は終了コード 0。
+生成宣言を含む 3086 宣言の推移的公理依存は標準 3 公理のみ。
+モニック入力と完全 prism の実分冪構造・完全 prism の普遍性・係数商上の切断同型・
+自由性の公開型 5 本を `#print` で確認した（終了コード 0）。
