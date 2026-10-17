@@ -214,6 +214,15 @@
 - `lake build SerrePositivity.DifferentialGraded.Endomorphism.ChecksDerivedProjectiveHomNaturality`
   成功。5主要宣言の公理は標準3公理のみ。
 
+## U14a.18：解像度計算と導来Hom同値の加群射自然性（2026-10-17）
+
+- `DerivedTensorNaturality.lean`：任意の射影解像度族に対し、導来tensorの計算同型と
+  解像度間に持ち上げた加群射の可換図式を証明。標準解像度での逆同型の図式も得た。
+- `DerivedHomNaturality.lean`：解像度augmentationの導来可換図式と逆同型の図式を証明し、
+  任意の加群対象の導来tensor–Hom同値について、両変数の実際の加群射に対する自然性を証明。
+- `lake build SerrePositivity.DifferentialGraded.Endomorphism.ChecksDerivedHomNaturality`
+  成功。8主要宣言の公理は標準3公理のみ。局所化の逆射への拡張は次の段階。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
