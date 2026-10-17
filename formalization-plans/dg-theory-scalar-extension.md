@@ -160,3 +160,29 @@ dg 加群の係数変更・その随伴、相対 tensor の比較、導来比較
    正本 `dg-theory.md` へ一行の参照を足す。
 
 U12f 全体・U15d 全体はまだ完了ではない。ゴールを縮小せず、この順序で継続する。
+
+
+## 2026-10-17：相対 balanced tensor の係数変更
+
+加群随伴は `6e33fa78` にコミット済み。
+`Tensor/ScalarExtensionActions.lean` で左右作用の係数変更との可換性を全整数次数で証明した。
+右作用の Koszul 符号を保持し、係数環の flatness は使わない。
+`ScalarExtensionPresentation.lean` の `generatorIso`・`relationIso` は同じ対象添字 D と
+同じ対象対添字 D×D の直和を使う。`relationLeft_square`・`relationRight_square` は
+二つの関係射を比較し、後者では tensor の associator 整合性を使う。
+
+`ScalarExtensionBalanced.lean` の `balancedIso` は直和同型を含む parallelPair 図式の同型と
+先行実装の coequalizer 保存同型を合成した、相対 tensor の実際の chain 同型である。
+`balancedIso_ι` と `balancedIso_inv_ι` は各対象の包含上の順方向・逆方向の成分式。
+`ScalarExtensionBalancedNaturality.lean` の `balancedIso_naturality` は、両変数の作用に
+可換な chain map 族に対する自然性を同時に述べる。既存 `mapOfFamilies` の射を使う。
+
+`lake build SerrePositivity.DifferentialGraded.Checks.ScalarExtensionBalanced` 成功
+（2017 jobs、警告なし）。非 flat な `ℤ → ZMod 2` を型検査し、主要16宣言の公理監査は
+すべて標準3公理のみ。新規 sorry・axiom・引用は0件。
+ルートの自分の import 行のみ `ScalarExtensionBalancedNaturality` へ進める。
+
+残る underived 検証は、実際の左右加群圏の射に対する tensor 比較の明示的入口、
+一対象環での通常 tensor 比較、相対 tensor の単位・結合比較との整合性。
+これらを済ませてから、指示された順序で導来版、U15d に進む。
+全体のゴールは active のままとし、正本への完了参照はまだ追加しない。
