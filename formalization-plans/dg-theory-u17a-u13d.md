@@ -229,3 +229,27 @@ HEAD からの差分全体が自分の変更だけであることも確認する
   正本の参照一行は既存記録どおりとし、追加変更しない。
 - project import 依存422ファイルを走査し、`Resolution/`、`Derived/KFlatBimodule*`、
   `Derived/Bimodule*` への依存なし。標準加群解像度と dg 圏解像度は区別する。
+
+### U15e5：三角比較の構成と指定 Verdier 商への因子化
+
+- `Verdier/FiniteCellHomotopy.lean`：K(D) 内の finite cell 本質像を三角部分圏とし、
+  その主導来局所化から tria(D) への三角同値 `homotopyFiniteCellTriaEquivalence` を構成。
+  finite cell の射影性による局所化 Hom 全単射を用い、retract は加えていない。
+- `Quotient/DerivedComparisonTriangulated.lean`：この三角モデルで graph tensor を使い、
+  実際の三角関手 `quotientTriaFunctor : tria(D) ⥤ tria(D/S)` を構成。
+  整合的整数 shift、標準代表対象上の計算同型、tria(S) の零性を証明。
+- Verdier 分母の反転を証明し、U17a の指定局所化そのものからの
+  `quotientVerdierComparison : TriaQuotient A D S ⥤ TriaCategory A (QuotientObject D S)`
+  と因子化自然同型を構成。比較関手の三角性と因子化同型の shift 整合性も証明。
+- この関手が充満なら、本質像の三角閉性と代表生成性から本質的全射性が従うことを証明。
+  充満性は仮定付き補題の前提として明示しており、局所 K-flat から既に従ったとはしない。
+- U15e4 の `derivedComparisonTria` は主導来射影置換による補助関手として保持。
+  今後の Verdier 比較に使う関手は、三角構造を固定した `quotientVerdierComparison`。
+  これら二つの補助的な構成間の自然比較は、この単位では主張していない。
+- 対象ビルド：`lake build SerrePositivity.DifferentialGraded.Checks.QuotientDerivedTriangulated`
+  成功（2631 jobs）。主要16宣言の公理監査は標準3公理のみ。
+  project import 依存424ファイルに、禁止された dg 圏分解系への依存なし。
+  新規 sorry・axiom・引用なし。既存の Derived/・Quotient/・Endomorphism/ は編集していない。
+- U15e4 のコミット：`85c45d3a`（自分の5ファイルのみと直後に確認）。
+- 残部：片側局所 K-flat 仮定から上記の実際の比較の完全忠実性を示すこと。
+  path 長 filtration と Verdier 分母を通じる Hom 比較が必要。U17b の完備化比較も未完。
