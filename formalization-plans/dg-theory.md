@@ -9630,3 +9630,50 @@ BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_
 U12e全受入→U16a〜d→U15eの分解版の順と局所K-flat版の並行所有は維持する。
 共有一般論への新しいAPI要求はない。Quotient/DerivedComparisonRestriction.leanを参照したが、
 局所K-flat版・Verdier/・Endomorphism/・係数変更系列は編集していない。
+
+### 17.210 U12e50：導来制限の三角性・余積保存と全対象の単位の可逆性（2026-10-17）
+
+**shiftと三角性。** `Derived/RestrictionShift.lean`は、全Hom制限と既存の導来制限の
+因子分解を`Localization.Lifting`として固定し、U14の
+`dgModuleFunctorCommShift`を局所化して`dgDerivedRestrictionCommShift`を構成する。
+`Derived/RestrictionTriangles.lean`では、主K経由の制限と導来制限の自然同型および
+そのshift整合性を証明した。U14の`dgModuleFunctorHomotopyIsTriangulated`を再利用し、
+実際の導来制限の三角性と加法性を得た。
+`Derived/FunctorExtensionTriangles.lean`はMathlibの三角随伴APIを用いて、
+実際の導来随伴と整合する延長のshift・三角性、単位と余単位のshift整合性を公開する。
+dg関手のshiftやcone像の成分計算は新設せず、U14の既存一般APIを用いた。
+
+**compactと余積。** `Derived/FunctorExtensionPerfect.lean`は既存のPerfの生成普遍性と
+代表加群の延長計算から、導来延長がperfect対象を保つことを証明する。
+並行U13dの`moduleCompact_perfect`を読み取り専用で再利用し、compact保存も得た。
+外部のcompact⇒perfect仮定は追加していない。
+`Derived/CompactAdjunctionCoproducts.lean`では、独立の多対象dg圏D/Eの主導来圏間の
+加法的随伴について、左随伴がcompactを保てば右随伴がu-small余積を保つことを証明した。
+U14のcompactな始域からの射による同型判定と、既存の有限支持による射の判定を再利用する。
+この補題はgraph固有ではなく、指定した随伴とcompact保存の証拠を受け取る。
+
+**実際の単位の全対象での可逆性。** `Derived/FunctorExtensionUnitAll.lean`では、
+上記結果を適用して`dgDerivedRestriction_preservesCoproductsOfShape`を得た。
+U14の`derivedNatTransIsoLocus`に、Mathlibの`NatTrans.retractArrowApp`を使うretract閉性を追加し、
+今回の導来単位の同型性を代表加群からperfect対象へ拡張した。
+U14の`moduleLocalizing_all`と余積保存により、`dgDerivedExtensionUnit_isIso_all`を証明した。
+仮定は`HomQuasiIso F`だけで、本質的全射性、元のHomのflatness、有界性を要求しない。
+`dgDerivedExtensionFullyFaithful`はこの実際の単位から導来延長の完全忠実性を与える。
+既存公開APIの名前・型の変更はない。
+
+**検証。** 新規`Checks.DGDerivedUnitAll`は独立宇宙での制限の三角性、単位のshift整合性、
+余積保存、compact保存、任意の導来対象の単位の可逆性と完全忠実性、ZMod 2上の全対象の判定を検査した。
+同チェックと既存の代表単位・導来随伴・graph延長・制限・分解比較・導来bimodule五角形・
+StageEight・StageSeven・Spectra.StageTwoの統合ビルド成功（3389 jobs、警告なし）。
+主要28宣言の直接公理監査は重複・欠落なく標準3公理以内。新規監査累計4109宣言。
+今回の受入ソースのsorry・admit・新規axiom・資源上限変更は0件。採用済み引用は0件。
+全体文書検査は20 Markdown・320 exposition参照を検査し、担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+未解決参照1件で失敗した。担当外のソース・ビルド・共有監査スクリプトは変更していない。
+
+**次の接続。** 準同値の本質的全射性から、Fの像の代表加群が終域のすべての代表加群を
+主導来圏内の同型まで含むことを示す。これを既存の零性検出へ渡して導来制限の保守性を証明し、
+右三角恒等式から余単位の可逆性と実際の導来同値を得る。
+解像度変更と導来bimodule合成・対角単位・結合の自然性およびcoherenceは引き続き未完。
+U12e全受入→U16a〜d→U15eの分解版の順と局所K-flat版の並行所有を維持する。
+共有一般論への新しいAPI要求はない。Perfect/・Endomorphism/・局所K-flat版の所有範囲は編集していない。
