@@ -650,3 +650,91 @@ SerrePositivity.InfinityCategories.complexSemifree S P`。既存定義に変更�
 16モジュール339宣言の公理は標準3公理のみ。新規公開宣言は 24 件。
 未完了：既存 filtration から semibasis の構成と両向きの同値、cone の基底への高さの適用、無条件の cone 閉性。
 D2i は D2h 後の任意工程として未着手。D1 の quasicategory は N2 完了記録待ち。
+
+
+### D2h・分裂列の直和座標と自由 sphere の基底（2026-10-18）
+
+既存 filtration から semibasis を得るための線形代数を保存。共通前提は
+`{S : Type u} [CommRing S]`。`SplitModuleSequence S` は stage・quotient・包含・商射・
+戻し・切断と五つの分裂等式を保持する。以下は namespace
+`SerrePositivity.InfinityCategories`、列の宣言はその下の `SplitModuleSequence`。
+列の共通変数は `(F : SplitModuleSequence S)`、cocone を使う宣言では
+`(c : Cocone (Functor.ofSequence F.inclusion))`。sphere の宣言は `(S : Type u) [CommRing S]`。
+公開型（構造体のフィールドも列挙）：
+
+```lean
+SplitModuleSequence (S : Type u) [CommRing S]
+piece : ℕ → ModuleCat.{u} S
+  | 0 => F.stage 0
+  | n + 1 => F.quotient n
+
+/-- 概要：各有限段の直和座標。
+方針：前段への戻しの座標と新しい商の座標を加える。
+規約：値域は全成分の直和。使われ方：余極限への延長。 -/
+def coordinates : ∀ n, F.stage n →ₗ[S] ⨁ i, F.piece i
+  | 0 => DirectSum.lof S ℕ (fun i => F.piece i) 0
+  | n + 1 => coordinates n ∘ₗ (F.retraction n).hom +
+      DirectSum.lof S ℕ (fun i => F.piece i) (n + 1) ∘ₗ (F.projection n).hom
+
+/-- 概要：直和座標は包含と整合する。
+方針：包含の戻しは恒等、包含の商は零であることを使う。
+規約：隣接段についての等式。使われ方：座標の cocone。 -/
+theorem coordinates_inclusion (n : ℕ) :
+    F.coordinates (n + 1) ∘ₗ (F.inclusion n).hom = F.coordinates n
+coordinates_apply_eq_zero (n i : ℕ) (h : n < i) (x : F.stage n) :
+    F.coordinates n x i = 0
+coordinateCocone : Cocone (Functor.ofSequence F.inclusion)
+pieceMap : ∀ n, F.piece n →ₗ[S] c.pt
+  | 0 => (c.ι.app 0).hom
+  | n + 1 => (c.ι.app (n + 1)).hom ∘ₗ (F.section_ n).hom
+
+/-- 概要：直和から cocone 頂点への線形写像。
+方針：各成分の写像を直和の普遍性で延長する。
+規約：初期成分と商成分を同じ番号で扱う。使われ方：直和表示の逆向き。 -/
+def assemble : (⨁ i, F.piece i) →ₗ[S] c.pt
+assemble_coordinates (n : ℕ) :
+    F.assemble c ∘ₗ F.coordinates n = (c.ι.app n).hom
+desc_pieceMap (hc : IsColimit c) (n : ℕ) :
+    (hc.desc F.coordinateCocone).hom ∘ₗ F.pieceMap c n =
+      DirectSum.lof S ℕ (fun i => F.piece i) n
+linearEquiv (hc : IsColimit c) : c.pt ≃ₗ[S] ⨁ i, F.piece i
+linearEquiv_leg (hc : IsColimit c) (n : ℕ) (x : F.stage n) :
+    F.linearEquiv c hc ((c.ι.app n).hom x) = F.coordinates n x
+linearEquiv_symm_lof (hc : IsColimit c) (n : ℕ) (x : F.piece n) :
+    (F.linearEquiv c hc).symm (DirectSum.lof S ℕ (fun i => F.piece i) n x) =
+      F.pieceMap c n x
+  stage : ℕ → ModuleCat.{u} S
+  quotient : ℕ → ModuleCat.{u} S
+  inclusion : ∀ n, stage n ⟶ stage (n + 1)
+  projection : ∀ n, stage (n + 1) ⟶ quotient n
+  retraction : ∀ n, stage (n + 1) ⟶ stage n
+  section_ : ∀ n, quotient n ⟶ stage (n + 1)
+  inclusion_retraction : ∀ n, inclusion n ≫ retraction n = 𝟙 _
+  section_projection : ∀ n, section_ n ≫ projection n = 𝟙 _
+  section_retraction : ∀ n, section_ n ≫ retraction n = 0
+  inclusion_projection : ∀ n, inclusion n ≫ projection n = 0
+  decomposition : ∀ n,
+    retraction n ≫ inclusion n + projection n ≫ section_ n = 𝟙 _
+
+sphere_degree_free (n k : ℤ) : Module.Free S ((complexSphere S n).X k)
+sphereCoproduct_degree_free {I : Type u} (d : I → ℤ) (k : ℤ) :
+    Module.Free S ((∐ (fun i => complexSphere S (d i))).X k)
+sphereCoproduct_d {I : Type u} (d : I → ℤ) (k : ℤ) :
+    (∐ (fun i => complexSphere S (d i))).d k (k + 1) = 0
+spherePresentation_degree_free {M : ModuleCategory S PUnit.{1}}
+    (E : ModuleSphereFreePresentation S PUnit.{1} M) (k : ℤ) :
+    Module.Free S (((ringModuleEquivalence S).functor.obj M).X k)
+spherePresentation_d {M : ModuleCategory S PUnit.{1}}
+    (E : ModuleSphereFreePresentation S PUnit.{1} M) (k : ℤ) :
+    ((ringModuleEquivalence S).functor.obj M).d k (k + 1) = 0
+```
+
+`SplitModuleSequence.linearEquiv` は実際の線形同型であり、余極限や分裂を
+未証明の仮定として追加していない（任意の与えられた分裂列とその余極限に適用する）。
+`linearEquiv_leg`・`linearEquiv_symm_lof` が脚と基底成分の像を指定し、
+`coordinates_apply_eq_zero` が段番号を超える座標の消滅を与える。
+自由 sphere 表示について、各次数の `Module.Free` と微分零を証明。
+集約 `lake build SerrePositivity.InfinityCategories.Derived` は終了コード0（3709 jobs）。
+公理監査は終了コード0、18モジュール398宣言すべて標準3公理のみ。
+未完了：filtration の座標への接続、semibasis の必要性・同値、任意の射の cone 閉性。
+これらを完成扱いにせず、続行する。

@@ -151,10 +151,42 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.toModuleFiltration
 #print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.complexSemifree
 
+#print axioms SerrePositivity.InfinityCategories.SplitModuleSequence
+#print axioms SerrePositivity.InfinityCategories.SplitModuleSequence.piece
+#print axioms SerrePositivity.InfinityCategories.SplitModuleSequence.coordinates
+#print axioms SerrePositivity.InfinityCategories.SplitModuleSequence.coordinates_inclusion
+#print axioms SerrePositivity.InfinityCategories.SplitModuleSequence.coordinates_apply_eq_zero
+#print axioms SerrePositivity.InfinityCategories.SplitModuleSequence.coordinateCocone
+#print axioms SerrePositivity.InfinityCategories.SplitModuleSequence.pieceMap
+#print axioms SerrePositivity.InfinityCategories.SplitModuleSequence.assemble
+#print axioms SerrePositivity.InfinityCategories.SplitModuleSequence.assemble_coordinates
+#print axioms SerrePositivity.InfinityCategories.SplitModuleSequence.desc_pieceMap
+#print axioms SerrePositivity.InfinityCategories.SplitModuleSequence.linearEquiv
+#print axioms SerrePositivity.InfinityCategories.SplitModuleSequence.linearEquiv_leg
+#print axioms SerrePositivity.InfinityCategories.SplitModuleSequence.linearEquiv_symm_lof
+#print axioms SerrePositivity.InfinityCategories.SplitModuleSequence.stage
+#print axioms SerrePositivity.InfinityCategories.SplitModuleSequence.quotient
+#print axioms SerrePositivity.InfinityCategories.SplitModuleSequence.inclusion
+#print axioms SerrePositivity.InfinityCategories.SplitModuleSequence.projection
+#print axioms SerrePositivity.InfinityCategories.SplitModuleSequence.retraction
+#print axioms SerrePositivity.InfinityCategories.SplitModuleSequence.section_
+#print axioms SerrePositivity.InfinityCategories.SplitModuleSequence.inclusion_retraction
+#print axioms SerrePositivity.InfinityCategories.SplitModuleSequence.section_projection
+#print axioms SerrePositivity.InfinityCategories.SplitModuleSequence.section_retraction
+#print axioms SerrePositivity.InfinityCategories.SplitModuleSequence.inclusion_projection
+#print axioms SerrePositivity.InfinityCategories.SplitModuleSequence.decomposition
+#print axioms SerrePositivity.InfinityCategories.sphere_degree_free
+#print axioms SerrePositivity.InfinityCategories.sphereCoproduct_degree_free
+#print axioms SerrePositivity.InfinityCategories.sphereCoproduct_d
+#print axioms SerrePositivity.InfinityCategories.spherePresentation_degree_free
+#print axioms SerrePositivity.InfinityCategories.spherePresentation_d
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.SplitSequence,
+    `SerrePositivity.InfinityCategories.Derived.SphereBasis,
     `SerrePositivity.InfinityCategories.Derived.Semifree,
     `SerrePositivity.InfinityCategories.Derived.SemifreeKProjective,
     `SerrePositivity.InfinityCategories.Derived.SemifreeResolution,
