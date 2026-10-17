@@ -668,3 +668,216 @@ noncomputable def emptyJoinIso (A L : SSet.{u}) :
   exact (asIso (joinInr E L)).symm
 
 end SerrePositivity.InfinityCategories
+
+namespace SerrePositivity.InfinityCategories.Join
+
+/-- 概要：補った標準単体の順序写像表示は引き戻しと可換。
+方針：空区間を除き、表現可能単体の作用を計算する。
+規約：r と s は頂点数。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の標準単体の join の自然性。 -/
+lemma stdAugEquiv_augMap (n : ℕ) {r s : ℕ} (α : Fin r →o Fin s)
+    (x : augObj (Δ[n] : SSet.{u}) s) (i : Fin r) :
+    stdAugEquiv n r (augMap Δ[n] α x) i = stdAugEquiv n s x (α i) := by
+  cases r with
+  | zero => exact Fin.elim0 i
+  | succ r =>
+    cases s with
+    | zero => exact Fin.elim0 (α i)
+    | succ s => rfl
+
+/-- 概要：順序写像の連結の左区間での値。
+方針：切断の左側の分岐を計算する。
+規約：空区間を含め、頂点 i の左側への所属を明示する。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の標準単体の join の単射性。 -/
+lemma concat_of_lt {p q r : ℕ} (ℓ : ℕ) (hℓ : ℓ ≤ r)
+    (f : Fin ℓ →o Fin p) (g : Fin (r - ℓ) →o Fin q) (i : Fin r) (hi : i.val < ℓ) :
+    (concat ℓ hℓ f g i).val = (f ⟨i.val, hi⟩).val := by
+  simp only [concat, OrderHom.coe_mk, dite_eq_left hi]
+
+/-- 概要：順序写像の連結の右区間での値。
+方針：切断の右側の分岐を計算する。
+規約：右区間では左終域の頂点数を値に加える。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の標準単体の join の全射性。 -/
+lemma concat_of_ge {p q r : ℕ} (ℓ : ℕ) (hℓ : ℓ ≤ r)
+    (f : Fin ℓ →o Fin p) (g : Fin (r - ℓ) →o Fin q) (i : Fin r) (hi : ℓ ≤ i.val) :
+    (concat ℓ hℓ f g i).val = p + (g ⟨i.val - ℓ, by have := i.isLt; omega⟩).val := by
+  simp only [concat, OrderHom.coe_mk, dite_eq_right (not_lt.mpr hi)]
+
+/-- 概要：標準単体の join の単体を、両終域を連結した有限順序集合への写像にする。
+方針：左右の標準単体を順序写像として読み、切断位置で連結する。
+規約：終域の頂点数は `(i+1)+(j+1)` と書く。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の標準単体の join の同型。 -/
+def stdEncode (i j n : ℕ) (s : Simplex (Δ[i] : SSet.{u}) Δ[j] n) :
+    Fin (n + 1) →o Fin ((i + 1) + (j + 1)) :=
+  concat s.1.val (Nat.le_of_lt_succ s.1.isLt)
+    (stdAugEquiv i _ s.2.1) (stdAugEquiv j _ s.2.2)
+
+/-- 概要：標準単体の join の切断は連結した写像から復元できる。
+方針：`pullCut_concat` を適用する。
+規約：左終域の頂点数 i+1 で切断する。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の同型の単射性。 -/
+lemma pullCut_stdEncode (i j n : ℕ) (s : Simplex (Δ[i] : SSet.{u}) Δ[j] n) :
+    pullCut (stdEncode i j n s) (i + 1) = s.1.val :=
+  pullCut_concat _ _ _ _
+
+/-- 概要：標準単体の join の順序写像表示は単射。
+方針：切断を逆像で復元し、左右の各頂点で連結写像を評価して両因子を復元する。
+規約：切断の等式による移送を先に行う。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の標準単体の join の同型。 -/
+lemma stdEncode_injective (i j n : ℕ) : Function.Injective (stdEncode.{u} i j n) := by
+  intro s t h
+  have hc : s.1 = t.1 := Fin.ext (by
+    simpa only [pullCut_stdEncode] using congrArg (fun f ↦ pullCut f (i + 1)) h)
+  rcases s with ⟨ℓ, x, y⟩
+  rcases t with ⟨ℓ', x', y'⟩
+  dsimp only at hc
+  subst ℓ'
+  refine Simplex.ext _ _ ?_ ?_ ?_
+  · rfl
+  · change x = x'
+    apply (stdAugEquiv i ℓ.val).injective
+    ext a
+    have hval := congrArg (fun f : Fin (n + 1) →o Fin ((i + 1) + (j + 1)) ↦
+      (f ⟨a.val, lt_of_lt_of_le a.isLt (Nat.le_of_lt_succ ℓ.isLt)⟩).val) h
+    dsimp only [stdEncode] at hval
+    rw [concat_of_lt _ _ _ _ ⟨a.val, lt_of_lt_of_le a.isLt (Nat.le_of_lt_succ ℓ.isLt)⟩ a.isLt,
+      concat_of_lt _ _ _ _ ⟨a.val, lt_of_lt_of_le a.isLt (Nat.le_of_lt_succ ℓ.isLt)⟩ a.isLt] at hval
+    exact hval
+  · change y = y'
+    apply (stdAugEquiv j (n + 1 - ℓ.val)).injective
+    ext a
+    let b : Fin (n + 1) := ⟨ℓ.val + a.val, by have := a.isLt; omega⟩
+    have hb : ℓ.val ≤ b.val := by dsimp [b]; omega
+    have hval := congrArg (fun f : Fin (n + 1) →o Fin ((i + 1) + (j + 1)) ↦ (f b).val) h
+    dsimp only [stdEncode] at hval
+    rw [concat_of_ge _ _ _ _ _ hb, concat_of_ge _ _ _ _ _ hb] at hval
+    have ha : (⟨b.val - ℓ.val, by have := b.isLt; omega⟩ : Fin (n + 1 - ℓ.val)) = a :=
+      Fin.ext (by dsimp [b]; omega)
+    rw [ha] at hval
+    omega
+
+/-- 概要：連結した有限順序集合への写像から標準単体の join の単体を復元する。
+方針：左終域の逆像を切断とし、左右の制限を標準単体に戻す。
+規約：右側の値から左終域の頂点数を引く。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の標準単体の join の逆写像。 -/
+def stdDecode (i j n : ℕ) (α : Fin (n + 1) →o Fin ((i + 1) + (j + 1))) :
+    Simplex (Δ[i] : SSet.{u}) Δ[j] n :=
+  ⟨⟨pullCut α (i + 1), by have := pullCut_le α (i + 1); omega⟩,
+    (stdAugEquiv i _).symm (leftMap α (i + 1)),
+    (stdAugEquiv j _).symm
+      { toFun a := ⟨(rightMap α (i + 1) a).val, by
+          have := (rightMap α (i + 1) a).isLt
+          omega⟩
+        monotone' := fun _ _ h ↦ (rightMap α (i + 1)).monotone h }⟩
+
+/-- 概要：分解した標準単体の join の単体を連結すると元の順序写像に戻る。
+方針：切断の左右で計算し、右側では引いた頂点数を戻す。
+規約：空区間も含む。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の標準単体の join の全射性。 -/
+lemma stdEncode_stdDecode (i j n : ℕ)
+    (α : Fin (n + 1) →o Fin ((i + 1) + (j + 1))) :
+    stdEncode i j n (stdDecode.{u} i j n α) = α := by
+  ext a
+  dsimp only [stdEncode, stdDecode]
+  simp only [Equiv.apply_symm_apply]
+  by_cases ha : a.val < pullCut α (i + 1)
+  · rw [concat_of_lt _ _ _ _ _ ha]
+    rfl
+  · rw [concat_of_ge _ _ _ _ _ (not_lt.mp ha)]
+    change i + 1 + ((α ⟨pullCut α (i + 1) + (a.val - pullCut α (i + 1)), _⟩).val -
+      (i + 1)) = (α a).val
+    have he : (⟨pullCut α (i + 1) + (a.val - pullCut α (i + 1)),
+        by have := a.isLt; omega⟩ : Fin (n + 1)) = a := Fin.ext (by
+      change pullCut α (i + 1) + (a.val - pullCut α (i + 1)) = a.val
+      omega)
+    rw [he]
+    have hα : i + 1 ≤ (α a).val := by
+      apply Nat.le_of_not_lt
+      exact fun h ↦ ha ((lt_pullCut_iff α (i + 1) a).mpr h)
+    omega
+
+/-- 概要：標準単体の join の各次数の単体は、連結した有限順序集合への写像と同値。
+方針：切断による分解と連結を互いに逆として用いる。
+規約：この段階の終域は順序写像の型。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の標準単体同型の次数ごとの同値。 -/
+def stdSimplexEquiv (i j n : ℕ) : Simplex (Δ[i] : SSet.{u}) Δ[j] n ≃
+    (Fin (n + 1) →o Fin ((i + 1) + (j + 1))) where
+  toFun := stdEncode i j n
+  invFun := stdDecode i j n
+  left_inv s := stdEncode_injective i j n (stdEncode_stdDecode i j n (stdEncode i j n s))
+  right_inv := stdEncode_stdDecode i j n
+
+/-- 概要：標準単体の join の順序写像表示は単体作用と可換。
+方針：切断の逆像の左右で、補った標準単体の引き戻しを計算する。
+規約：順序写像の合成は右から左に作用する `comp`。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の標準単体の join の同型の自然性。 -/
+lemma stdEncode_naturality (i j : ℕ) {m n : ℕ}
+    (α : Fin (m + 1) →o Fin (n + 1)) (s : Simplex (Δ[i] : SSet.{u}) Δ[j] n) :
+    stdEncode i j m (simplexMap Δ[i] Δ[j] α s) = (stdEncode i j n s).comp α := by
+  rcases s with ⟨ℓ, x, y⟩
+  ext a
+  change (concat (pullCut α ℓ.val) (pullCut_le α ℓ.val)
+      (stdAugEquiv i _ (augMap Δ[i] (leftMap α ℓ.val) x))
+      (stdAugEquiv j _ (augMap Δ[j] (rightMap α ℓ.val) y)) a).val =
+    (concat ℓ.val (Nat.le_of_lt_succ ℓ.isLt) (stdAugEquiv i _ x) (stdAugEquiv j _ y) (α a)).val
+  by_cases ha : a.val < pullCut α ℓ.val
+  · rw [concat_of_lt _ _ _ _ a ha,
+      concat_of_lt _ _ _ _ (α a) ((lt_pullCut_iff α ℓ.val a).mp ha), stdAugEquiv_augMap]
+    rfl
+  · have hα : ℓ.val ≤ (α a).val := by
+      apply Nat.le_of_not_lt
+      exact fun h ↦ ha ((lt_pullCut_iff α ℓ.val a).mpr h)
+    rw [concat_of_ge _ _ _ _ a (not_lt.mp ha), concat_of_ge _ _ _ _ (α a) hα,
+      stdAugEquiv_augMap]
+    change i + 1 + (stdAugEquiv j _ y
+        ⟨(α ⟨pullCut α ℓ.val + (a.val - pullCut α ℓ.val), _⟩).val - ℓ.val, _⟩).val =
+      i + 1 + (stdAugEquiv j _ y ⟨(α a).val - ℓ.val, _⟩).val
+    have he : (⟨pullCut α ℓ.val + (a.val - pullCut α ℓ.val),
+        by have := a.isLt; omega⟩ : Fin (m + 1)) = a := Fin.ext (by
+      change pullCut α ℓ.val + (a.val - pullCut α ℓ.val) = a.val
+      omega)
+    apply congrArg (fun b : Fin (n + 1 - ℓ.val) ↦ i + 1 + (stdAugEquiv j _ y b).val)
+    apply Fin.ext
+    exact congrArg (fun b : Fin (m + 1) ↦ (α b).val - ℓ.val) he
+
+/-- 概要：連結した終域の頂点数を、標準単体の次数 `i+j+1` に読み替える同値。
+方針：有限順序写像を標準単体の単体として表し、頂点数の算術等式で移送する。
+規約：移送は頂点の自然数値を保つ。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の標準単体の join の同型。 -/
+def stdSimplexTargetEquiv (i j n : ℕ) :
+    (Fin (n + 1) →o Fin ((i + 1) + (j + 1))) ≃ (Δ[i + j + 1] : SSet.{u}) _⦋n⦌ where
+  toFun f := stdSimplex.objEquiv.symm (SimplexCategory.mkHom
+    { toFun a := Fin.cast (by omega) (f a)
+      monotone' := fun _ _ h ↦ f.monotone h })
+  invFun x :=
+    { toFun a := Fin.cast (by omega) (x a)
+      monotone' := fun _ _ h ↦ stdSimplex.monotone_apply x h }
+  left_inv f := by ext a; rfl
+  right_inv x := by apply stdSimplex.ext; intro a; apply Fin.ext; rfl
+
+end SerrePositivity.InfinityCategories.Join
+
+namespace SerrePositivity.InfinityCategories
+
+/-- 概要：二つの標準単体の join は次数の和に一を足した標準単体と同型。
+方針：各次数で左右の順序写像を連結し、逆像による分解を逆写像に取る。
+規約：任意の宇宙 u、任意の自然数 i と j に対して構成する。
+使われ方：HTT §1.2.8、Kerodon §4.3.5 の錐・slice の標準単体計算。 -/
+def joinStdSimplexIso (i j : ℕ) :
+    join (Δ[i] : SSet.{u}) Δ[j] ≅ Δ[i + j + 1] :=
+  NatIso.ofComponents (fun d ↦
+    ((Join.stdSimplexEquiv i j d.unop.len).trans
+      (Join.stdSimplexTargetEquiv i j d.unop.len)).toIso)
+    (fun α ↦ by
+      apply ConcreteCategory.hom_ext
+      intro s
+      change Join.stdSimplexTargetEquiv i j _
+          (Join.stdEncode i j _ (Join.simplexMap Δ[i] Δ[j] α.unop.toOrderHom s)) =
+        (Δ[i + j + 1] : SSet.{u}).map α
+          (Join.stdSimplexTargetEquiv i j _ (Join.stdEncode i j _ s))
+      rw [Join.stdEncode_naturality]
+      apply stdSimplex.ext
+      intro a
+      rfl)
+
+end SerrePositivity.InfinityCategories

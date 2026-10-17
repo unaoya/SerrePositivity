@@ -17,6 +17,10 @@ HTT §1.2.3、Kerodon [Construction 1.4.5.1](https://kerodon.net/tag/004A) と
   任意の二切断 quasicategory に対し定義する。比較同値は完全な単体集合に特殊化する。
 - 追加公理・引用・`sorry` は使わない。Joyal モデル構造や ∞ 局所化には依存しない。
 - join は直接構成する。Day 畳み込みは使わない。
+- 並行作業による停止基準は Core 自身の import 閉包内の破損のみ。
+  各保存単位は Core の対象ビルドと `scripts/audit_infinity_core.lean` で検証する。
+  全体ビルドは A2 全体の完了等の区切りで行い、他レーンの編集中ファイルでの失敗は
+  記録のみとし、α の作業の停止理由にはしない（2026-10-17 のユーザー指示）。
 
 ## A2a・A2b の設計（2026-10-17）
 
@@ -75,19 +79,20 @@ A2c・A2h は正確な文言を原典と照合してこの README に記録・�
 ## 検証と現在の範囲
 
 A1a の比較同値、A1b の関手性・自然性、A1c のホモトピーからの自然変換を実装。
-A1d の通常の圏の nerve での具体化も実装。A1a〜A1d は完了、A2 は未完了。
+A1d の通常の圏の nerve での具体化も実装。A1a〜A1d・A2a は完了、A2b 以降は未完了。
 対象ビルド後、`lake env lean scripts/audit_infinity_core.lean` で
 全ての明示的公開宣言の型と公理を確認する。
 
-A2a は実装途中。`Join.Simplex.ext` は切断の等式に伴う左右の cast を明示する。
+A2a は完了。`Join.Simplex.ext` は切断の等式に伴う左右の cast を明示する。
 `simplexMap` の恒等・合成則から `join : SSet → SSet → SSet` を構成済み。
 `joinInl`・`joinInr`、`joinMap` とその恒等・合成・単射性・包含との整合性を実装した。
 `joinSubcomplexLeft`・`joinSubcomplexRight` は、単射な joinMap の像による部分複体。
 `joinUnion` はその和で、各像と元の join との同型および包含との整合性も実装済み。
 `emptyJoinIso A L` は、任意の A の空部分複体と L の join が L と同型であることを与える。
 
-標準単体の join の同型に向けて `stdAugEquiv`、有限順序写像の `concat` と
-切断を復元する補題を実装したが、`Δ[i] ⋆ Δ[j] ≅ Δ[i+j+1]` 自体は未構成。
-この同型が残っているため A2a は完了と数えない。
+`joinStdSimplexIso i j : join Δ[i] Δ[j] ≅ Δ[i+j+1]` を構成した。
+`stdAugEquiv` と `concat` で次数ごとの単体を連結した順序写像に表示し、
+逆像の切断から復元して単射・全射・単体作用との可換性を証明している。
+A2a の直接構成・包含・射への作用・標準単体の同型・空 join の同型・部分複体の join は完了。
 A2b の slice・coslice・射影・普遍性、A2c 以降は未実装。
-累計 66 明示的公開宣言と生成された整合性補題 2 件、計 68 件を監査し、全て標準三公理のみ。
+累計 78 明示的公開宣言と生成された整合性補題 2 件、計 80 件を公理監査する。

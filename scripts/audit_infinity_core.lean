@@ -151,3 +151,29 @@ import SerrePositivity.InfinityCategories.Core
 #print axioms SerrePositivity.InfinityCategories.emptyJoinIso
 #print axioms SerrePositivity.InfinityCategories.joinInl_joinMap_assoc
 #print axioms SerrePositivity.InfinityCategories.joinInr_joinMap_assoc
+
+-- A2a 完了：標準単体の join の同型。
+#check @SerrePositivity.InfinityCategories.Join.stdAugEquiv_augMap
+#check @SerrePositivity.InfinityCategories.Join.concat_of_lt
+#check @SerrePositivity.InfinityCategories.Join.concat_of_ge
+#check @SerrePositivity.InfinityCategories.Join.stdEncode
+#check @SerrePositivity.InfinityCategories.Join.pullCut_stdEncode
+#check @SerrePositivity.InfinityCategories.Join.stdEncode_injective
+#check @SerrePositivity.InfinityCategories.Join.stdDecode
+#check @SerrePositivity.InfinityCategories.Join.stdEncode_stdDecode
+#check @SerrePositivity.InfinityCategories.Join.stdSimplexEquiv
+#check @SerrePositivity.InfinityCategories.Join.stdEncode_naturality
+#check @SerrePositivity.InfinityCategories.Join.stdSimplexTargetEquiv
+#check @SerrePositivity.InfinityCategories.joinStdSimplexIso
+#print axioms SerrePositivity.InfinityCategories.Join.stdAugEquiv_augMap
+#print axioms SerrePositivity.InfinityCategories.Join.concat_of_lt
+#print axioms SerrePositivity.InfinityCategories.Join.concat_of_ge
+#print axioms SerrePositivity.InfinityCategories.Join.stdEncode
+#print axioms SerrePositivity.InfinityCategories.Join.pullCut_stdEncode
+#print axioms SerrePositivity.InfinityCategories.Join.stdEncode_injective
+#print axioms SerrePositivity.InfinityCategories.Join.stdDecode
+#print axioms SerrePositivity.InfinityCategories.Join.stdEncode_stdDecode
+#print axioms SerrePositivity.InfinityCategories.Join.stdSimplexEquiv
+#print axioms SerrePositivity.InfinityCategories.Join.stdEncode_naturality
+#print axioms SerrePositivity.InfinityCategories.Join.stdSimplexTargetEquiv
+#print axioms SerrePositivity.InfinityCategories.joinStdSimplexIso

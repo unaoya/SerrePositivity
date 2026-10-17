@@ -447,3 +447,83 @@ Core の対象ビルドと公理監査は成功したが、編集禁止の並行
 255 行に `Unknown identifier coproductFiltrationIsColimit` が報告された。
 このファイルは変更せず、依存先破損時は止める指示に従い以降の実装を停止した。
 回避策・依存先の差し替えは作っていない。全体ビルドの成功は主張しない。
+
+
+### A2a 完了（2026-10-17）：標準単体の join の同型
+
+ユーザー指示で停止基準を明確化した。停止するのは Core 自身の import 閉包内の
+並行作業による破損のみ。各保存単位の検証は対象ビルドと公理監査で足り、
+他レーンの編集中ファイルによる全体ビルド失敗は記録だけにする。
+Derived は Core の import 閉包外なので前回の失敗を理由にした停止を解除した。
+§4 の設計は変更していない。
+
+標準単体の join の各次数を順序写像の連結と分解で同一視し、
+その対応の単体作用との可換性を証明して `joinStdSimplexIso` を構成した。
+追加の 12 公開宣言の正確な型を以下に記す。宇宙 `u` は任意、
+`open CategoryTheory SSet`、`open scoped Simplicial` の下での型。
+quasicategory 性・単射性などの追加前提はない。
+
+namespace：`SerrePositivity.InfinityCategories.Join`。
+
+```lean
+stdAugEquiv_augMap (n : ℕ) {r s : ℕ} (α : Fin r →o Fin s)
+    (x : augObj (Δ[n] : SSet.{u}) s) (i : Fin r) :
+    stdAugEquiv n r (augMap Δ[n] α x) i = stdAugEquiv n s x (α i)
+
+concat_of_lt {p q r : ℕ} (ℓ : ℕ) (hℓ : ℓ ≤ r)
+    (f : Fin ℓ →o Fin p) (g : Fin (r - ℓ) →o Fin q) (i : Fin r) (hi : i.val < ℓ) :
+    (concat ℓ hℓ f g i).val = (f ⟨i.val, hi⟩).val
+
+concat_of_ge {p q r : ℕ} (ℓ : ℕ) (hℓ : ℓ ≤ r)
+    (f : Fin ℓ →o Fin p) (g : Fin (r - ℓ) →o Fin q) (i : Fin r) (hi : ℓ ≤ i.val) :
+    (concat ℓ hℓ f g i).val = p + (g ⟨i.val - ℓ, by have
+
+stdEncode (i j n : ℕ) (s : Simplex (Δ[i] : SSet.{u}) Δ[j] n) :
+    Fin (n + 1) →o Fin ((i + 1) + (j + 1))
+
+pullCut_stdEncode (i j n : ℕ) (s : Simplex (Δ[i] : SSet.{u}) Δ[j] n) :
+    pullCut (stdEncode i j n s) (i + 1) = s.1.val
+
+stdEncode_injective (i j n : ℕ) : Function.Injective (stdEncode.{u} i j n)
+
+stdDecode (i j n : ℕ) (α : Fin (n + 1) →o Fin ((i + 1) + (j + 1))) :
+    Simplex (Δ[i] : SSet.{u}) Δ[j] n
+
+stdEncode_stdDecode (i j n : ℕ)
+    (α : Fin (n + 1) →o Fin ((i + 1) + (j + 1))) :
+    stdEncode i j n (stdDecode.{u} i j n α) = α
+
+stdSimplexEquiv (i j n : ℕ) : Simplex (Δ[i] : SSet.{u}) Δ[j] n ≃
+    (Fin (n + 1) →o Fin ((i + 1) + (j + 1)))
+
+stdEncode_naturality (i j : ℕ) {m n : ℕ}
+    (α : Fin (m + 1) →o Fin (n + 1)) (s : Simplex (Δ[i] : SSet.{u}) Δ[j] n) :
+    stdEncode i j m (simplexMap Δ[i] Δ[j] α s) = (stdEncode i j n s).comp α
+
+stdSimplexTargetEquiv (i j n : ℕ) :
+    (Fin (n + 1) →o Fin ((i + 1) + (j + 1))) ≃ (Δ[i + j + 1] : SSet.{u}) _⦋n⦌
+
+```
+
+namespace：`SerrePositivity.InfinityCategories`。
+
+```lean
+joinStdSimplexIso (i j : ℕ) :
+    join (Δ[i] : SSet.{u}) Δ[j] ≅ Δ[i + j + 1]
+
+```
+
+A2a の全要求を実装した：直接構成の `join`、`joinInl`・`joinInr`、
+`joinMap` とその恒等・合成則、`joinStdSimplexIso`、`emptyJoinIso`、
+部分複体の `joinSubcomplexLeft`・`joinSubcomplexRight` とその像との同型、
+および和 `joinUnion`。切断と両因子の cast を扱う `Join.Simplex.ext` を
+単体作用の合成則の証明に先立って用意した。
+原典：HTT §1.2.8、Kerodon §4.3.5。
+
+未完了：A2b の slice・coslice・射影・任意の単体集合に対する直接構成の普遍性、
+および A2c 以降。A2a の完成をそれらの完成とは数えない。
+
+`lake build SerrePositivity.InfinityCategories.Core` と
+`lake env lean scripts/audit_infinity_core.lean` は終了コード 0。
+累計 80 公開宣言（明示的 78、生成補題 2）の監査出力を照合し、標準三公理のみ。
+追加公理・引用・`sorry` はない。
