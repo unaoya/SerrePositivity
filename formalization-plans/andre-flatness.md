@@ -6334,3 +6334,98 @@ BS Rem 7.15（著者版 p.62）の envelope 比較への接続として、原典
 （集約 4583 jobs）。新規 15 公開宣言と主要射影 9 件の `assert_no_sorry`、専用監査は終了コード 0。
 生成宣言を含む 7934 宣言の推移的公理依存は標準 3 公理のみ。
 同じ 24 件の正確な型を `#check` で確認した（終了コード 0）。
+
+### E1.76／A1-a 一般有界標的での完全源の剛性と基底条件の回復（2026-10-17）
+
+本節は A1-a の追記。固定基底を持つ入力圏から原典の絶対 prismatic site への比較について、
+原典 BS Lemma 4.8（著者版 pp.38–39）が必要であることを本文で再確認した。
+原典 Remark 4.7（p.38）は絶対 site の対象を有界 prism としている。
+既存 `existsUnique_perfectPrismHomLift` は標的も完全な場合に限られ、一般標的への存在には使わない。
+今回は一般の有界標的に対する一意性を新しく証明し、射の基底条件の回復へ接続した。
+持上げの存在や Lemma 4.8 全体を証明済みとはしない。新しい引用は追加していない。
+
+公開名はすべて名前空間 `SerrePositivity.BhattScholze.Andre` 内。
+既存 hpR 付き定理と並列担当のファイル・記録節は変更していない。
+
+#### イデアル冪による環射の剛性（3 公開定理）
+
+新規 `Andre/PerfectSourceAdicRigidity.lean`。
+{B:Type v} [CommRing B] を固定する。p:ℕ はこのファイルでは任意の自然数。
+I:Ideal B、hp:(p:B)∈I とする。
+
+- `geomSum_mem_ideal_of_natCast_mem p I hp (x y:B) (hxy:x-y∈I)` の結論は
+  `(∑ i ∈ Finset.range p, x^i*y^(p-1-i))∈I`。
+- `pow_sub_pow_mem_ideal_succ p I hp x y hxy (n:ℕ) (hn:x-y∈I^n)` の結論は
+  `x^p-y^p∈I^(n+1)`。
+- `ringHom_ext_of_pow_add_natCast_mul` の正確な型は、
+
+```lean
+(p : ℕ) {A : Type u} [CommRing A]
+(hA : ∀ a : A, ∃ b c : A, a = b^p + (p:A)*c)
+(I : Ideal B) (hp : (p:B)∈I) [IsHausdorff I B]
+(F G : A →+* B)
+(hFG : (Ideal.Quotient.mk I).comp F = (Ideal.Quotient.mk I).comp G) : F = G
+```
+
+である。最初の幾何和は商で p*y^(p-1) となるため I に入る。
+冪差の因数分解により差の所属冪を一段深くし、源の p 冪近似 a=b^p+p*c で帰納する。
+分離性で全冪の差を消す。素数性・p 正則性・δ 構造はこの一般補題には不要。
+
+#### 完全源から有界 prism への一意性（2 公開定理）
+
+新規 `Andre/PerfectPrismBoundedTargetRigidity.lean`。
+{p:ℕ} [Fact p.Prime]、{A:Type u} {B:Type v} [CommRing A] [CommRing B]。
+宇宙 u,v は独立。Q:OrientedPrism p B と
+
+```lean
+hB : ∃ N : ℕ, ∀ n : ℕ, ∀ x : B ⧸ Q.ideal,
+  (p:B⧸Q.ideal)^n*x=0 → (p:B⧸Q.ideal)^N*x=0
+```
+
+を使う。
+`ringHom_ext_to_boundedPrism_of_perfect_source` は
+D:DeltaStructure p A、hD:D.IsPerfect、Q、hB、F G:A→+*B、
+hFG:(Ideal.Quotient.mk Q.ideal).comp F=(Ideal.Quotient.mk Q.ideal).comp G
+を受け取り **F=G** を証明する。
+射 F,G に δ 保存性を要求しない。完全な源では Frobenius 持上げの全射性により
+各 a を b^p+p*δ(b) と書ける。標的の (p,d) 古典的完備性による分離性と、
+Q.ideal⊂(p,d) を使って一般の環射の剛性を適用する。
+
+`perfectPrismHom_ext_to_bounded_target` は
+W:OrientedPrism p A、hW:W.deltaStructure.IsPerfect、Q、hB、
+F G:OrientedPrism.Hom W Q、hFG:F.quotientMap=G.quotientMap
+を受け取り **F=G** を証明する。
+標的 Q の完全性・p 正則性は不要。これは BS Lemma 4.8 の一意性部分を
+絶対 site の一般有界対象に対して証明したもので、存在部分は含まない。
+
+#### 入力作用からの基底保存性（3 公開宣言）
+
+新規 `Andre/BoundedPrismInputRigidity.lean`。
+このファイルの公開名の namespace は `SerrePositivity.BhattScholze.Andre.BoundedPrismInput`。
+{p:ℕ} [Fact p.Prime]、{A S:Type u} [CommRing A] [CommRing S]、
+{W:OrientedPrism p A}、{c:A⧸W.ideal→+*S}、hW:W.deltaStructure.IsPerfect、
+X Y:BoundedPrismInput W c を使う。
+
+- `prismHom_over_base_of_input hW X Y` は f:OrientedPrism.Hom X.prism Y.prism と
+  hf:f.quotientMap.comp X.input=Y.input の下で **f.comp X.base=Y.base** を証明する。
+- `homOfInput hW X Y f hf : X ⟶ Y` は、基底保存性を追加引数にせず入力圏の射を構成する。
+- `homEquivInputPreserving hW X Y` の正確な型は
+
+```lean
+(X ⟶ Y) ≃ { f : OrientedPrism.Hom X.prism Y.prism //
+  f.quotientMap.comp X.input = Y.input }
+```
+
+である。入力の可換性を c で制限すると二つの基底 prism 射の商射が一致するため、
+上の一般有界標的への完全源の剛性で基底保存性を回復する。
+既に基底を持つ対象間では、射の追加の基底保存条件を除けることを示した。
+基底を持たない任意の絶対入力対象に基底射が存在することまでは主張しない。
+
+原典 Lemma 4.8 の証明は変形理論で環射を持ち上げ、逆 Frobenius 極限で δ 保存性を確認する。
+今回はその一意性部分を、幾何和・イデアル冪・分離性による異なる直接証明で得た。
+この相違を docstring に明記し、Rem 7.15（著者版 p.62）の入力圏への用途も記録した。
+Lemma 4.8 の一般有界標的での存在部分、向き付き対象と原典の対象との比較、
+同じ H の hreg・同じ T の hBound の供給、A1-c の係数照合との合流は未完了。
+絶対 prismatic envelope 全体の同定完了とは数えない。
+
+検証：新規3モジュールの対象ビルドと集約ビルド（4586 jobs）は、`set -o pipefail` 付きで終了コード0を確認した。専用監査の8公開宣言の `assert_no_sorry` が通り、対象モジュールの7947宣言について推移的に標準3公理のみと確認した（終了コード0）。別ファイルの8本の `#check` でも上記の引数・型を確認した。

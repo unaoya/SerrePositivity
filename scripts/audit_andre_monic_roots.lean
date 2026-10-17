@@ -1313,6 +1313,15 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput.Hom.toHom
 assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput.Hom.over_base
 assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput.Hom.over_input
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.geomSum_mem_ideal_of_natCast_mem
+assert_no_sorry SerrePositivity.BhattScholze.Andre.pow_sub_pow_mem_ideal_succ
+assert_no_sorry SerrePositivity.BhattScholze.Andre.ringHom_ext_of_pow_add_natCast_mul
+assert_no_sorry SerrePositivity.BhattScholze.Andre.ringHom_ext_to_boundedPrism_of_perfect_source
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismHom_ext_to_bounded_target
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput.prismHom_over_base_of_input
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput.homOfInput
+assert_no_sorry SerrePositivity.BhattScholze.Andre.BoundedPrismInput.homEquivInputPreserving
+
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
@@ -1552,7 +1561,10 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicRegularSource,
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicSourcePrismUniversal,
     `SerrePositivity.BhattScholze.Andre.BoundedPrismInputCategory,
-    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicEnvelopeInitial]
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicEnvelopeInitial,
+    `SerrePositivity.BhattScholze.Andre.PerfectSourceAdicRigidity,
+    `SerrePositivity.BhattScholze.Andre.PerfectPrismBoundedTargetRigidity,
+    `SerrePositivity.BhattScholze.Andre.BoundedPrismInputRigidity]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
