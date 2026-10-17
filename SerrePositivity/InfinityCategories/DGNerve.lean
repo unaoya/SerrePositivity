@@ -4,6 +4,8 @@ public import SerrePositivity.InfinityCategories.DGNerve.Triangle
 public import SerrePositivity.InfinityCategories.DGNerve.Computations
 public import SerrePositivity.InfinityCategories.DGNerve.Quasicategory
 public import SerrePositivity.InfinityCategories.DGNerve.HomotopyCategory
+public import SerrePositivity.InfinityCategories.DGNerve.PinchedComponents
+public import SerrePositivity.InfinityCategories.DGNerve.PinchedLinearReindex
 public import SerrePositivity.InfinityCategories.DGNerve.PinchedHom
 public import SerrePositivity.InfinityCategories.DGNerve.NatTrans
 public import SerrePositivity.InfinityCategories.DGNerve.FullSubcategory

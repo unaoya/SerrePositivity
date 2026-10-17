@@ -742,10 +742,69 @@ dg nerve と内部ホーン充填および quasicategory instance を監査す�
 #print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.vertexCycleEquiv
 #check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.vertexCycleEquiv
 
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.component
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.component
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.erase_nonempty
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.erase_nonempty
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.rhs
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.rhs
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.rhs_zero
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.rhs_zero
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.rhs_add
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.rhs_add
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.rhs_smul
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.rhs_smul
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.linearSubmodule
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.linearSubmodule
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex.equation
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex.equation
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex.closed_singleton
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex.closed_singleton
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.pullback
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.pullback
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.pullback_component_of_inj
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.pullback_component_of_inj
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.pullback_component_of_not_inj
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.pullback_component_of_not_inj
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.pullback_id
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.pullback_id
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.pullback_comp
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.pullback_comp
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withLast
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withLast
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.last_not_mem_image
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.last_not_mem_image
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.card_withLast
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.card_withLast
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.two_withLast
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.two_withLast
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.min_withLast
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.min_withLast
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.max_withLast
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.max_withLast
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.source_obj
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.source_obj
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.target_obj
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.target_obj
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.toLinearData
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.toLinearData
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.toLinearData_component_heq
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.toLinearData_component_heq
+
 section
 universe u v
 variable (A : Type u) [CommRing A] (D : Type v)
   [SerrePositivity.DifferentialGraded.DGCategory A D]
+example (x y : D) (n : ℕ) :
+    Module A (SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex A x y n) :=
+  inferInstance
+example (x y : D) (n : ℕ) :
+    AddCommGroup (SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex A x y n) :=
+  inferInstance
 example : SSet.Quasicategory (SerrePositivity.InfinityCategories.dgNerve A D) := inferInstance
 example : SSet.Truncated.Quasicategory₂
     (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.twoTruncation A D) := inferInstance
