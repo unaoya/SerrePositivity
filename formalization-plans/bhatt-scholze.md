@@ -11031,3 +11031,41 @@ assert_no_sorry成功、依存公理はpropext・Classical.choice・Quot.sound�
 絶対tensorの既存結合則を使った。主張・仮定は指定通りであり、原典の商加群・完全三角形・H⁰の経路を保つ。
 完全標数p環のTor独立性の代数的証明経路の相違は既述の通りレーンTの計画に記録されている。
 残る統合作業は、ルートへの集約import一行のビルドと保存である。
+
+### B5指定範囲の最終完了監査（2026-10-17）
+
+今回指定された工程1–5は完了。ルートSerrePositivity.leanへ
+`public import SerrePositivity.BhattScholze.PerfectoidAlmost`を一行だけ追加し、
+`set -o pipefail; lake build SerrePositivity`は終了コード0、6747ジョブで成功した。
+前回停止要因の並行作業CompleteFlatColimitも現在のコードで単体ビルド成功済み。
+そのファイルや他レーンのソースは編集していない。
+
+要件と公開入口の照合は以下の通り。
+
+1. `lemma103_perfectoidTensor`：任意のperfectoid R代数S,Tについて、元の実完備導来tensorの
+   全非零次数のホモロジー消滅と、指定実H⁰環構造のperfectoid性を証明した。
+   完全prismの既証一般論を再利用し、Tor入力はレーンTの既証定理で解消済み。
+   指定されたhTorの正確な型は監査のexampleで検証した。追加Tor仮定は残っていない。
+2. K=perfectoidIdeal R p hR gについて、`perfectoidIdeal_lemma103`が核の実自己積の同型と混合積消滅を束ね、
+   `perfectoidIdeal_completedQuotientMul_isIso`が元の商を標的とする実自己積の同型を与える。
+   B3の選択とB4の全射性による核商表示を用い、対象や積を抽象的な存在に置き換えていない。
+3. conormalそのものの導来p完備化消滅・通常mod p商消滅、K=K²+p^nK、全N≥0での
+   `perfectoidIdealMod_idempotent`を証明した。BasicSetupと同じ署名も監査済み。
+   BasicSetupの証明置換は開始時点で別レーンが実施済みであり、本レーンでは変更しなかった。
+4. `perfectoidIdeal_isAlmostZero_extension`は上記の正確な指定署名で証明済み。
+   商加群作用、実完備tensorの消滅、短完全列の三角形、実H⁰の商作用の順で証明した。
+   完備性の条件と証明経路の実装上の相違は上に明記した。
+5. Torの仮定解消後に全工程を再監査した。
+
+最終検証コマンドは、集約対象の`lake build SerrePositivity.BhattScholze.PerfectoidAlmost`、
+`lake env lean scripts/audit_bhatt_scholze_b5.lean`、
+`python3 scripts/audit_bhatt_scholze_structure.py --json`、および上記ルートビルド。
+すべて終了コード0。新公開30宣言の全件にassert_no_sorryと#print axiomsがあり、
+Tor入口を加えた31宣言の公理出力を照合し、propext・Classical.choice・Quot.sound以外がないことを確認した。
+追加引用・sorry・axiomなし。Cor 8.12入力・未採用計画・André引用・B-I/B6引用を証明に使っていない。
+B4ExecutionPlan.md、共有監査、CLMST/Inputs/BasicSetup等の担当外ファイルは編集せず、
+ルートの自分の差分も集約import一行だけであることを最終確認した。
+
+残る範囲は今回の指定には含めない。すなわち、任意非有界複体についてのProp 10.4全体、
+Prop 10.2の圏同値全体、Remark 10.7のGalois比較と平坦性部分は未実装である。
+B-I/B6および既存André入力の引用は従来どおり保持する。

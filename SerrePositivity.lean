@@ -246,6 +246,7 @@ public import SerrePositivity.CommutativeAlgebra.AdicCompletionInjective
 public import SerrePositivity.CommutativeAlgebra.FlatTensorFiltration
 public import SerrePositivity.CommutativeAlgebra.AdicCompletionFlat
 public import SerrePositivity.BhattScholze.Perfectoidization
+public import SerrePositivity.BhattScholze.PerfectoidAlmost
 public import SerrePositivity.BhattScholze.Inputs.AndreFlatness
 public import SerrePositivity.HomologicalAlgebra.DerivedModuleCone
 public import SerrePositivity.CommutativeAlgebra.HilbertSamuelEquiv
