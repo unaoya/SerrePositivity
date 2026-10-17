@@ -165,6 +165,14 @@
 - `lake build SerrePositivity.DifferentialGraded.Endomorphism.ChecksDerivedTensorEvaluation` 成功。
   6主要宣言の公理は標準3公理のみ。
 
+## U14a.13：再構成随伴の主ホモトピー圏への降下（2026-10-17）
+
+- `HomotopyAdjunction.lean`：閉零加群圏上の単位・余単位を境界商に送り、
+  主K(End(E))と主K(D)の間の随伴を構成。商関手の充満性で任意の商射に自然性を拡張し、
+  両三角恒等式を元の加群圏上の恒等式から証明した。
+- `lake build SerrePositivity.DifferentialGraded.Endomorphism.ChecksHomotopyAdjunction` 成功。
+  5主要宣言の公理は標準3公理のみ。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
