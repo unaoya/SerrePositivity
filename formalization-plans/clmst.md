@@ -9617,6 +9617,25 @@ R の Noether 性・整域性、U の準コンパクト性・非空性を要求�
 次は実 rank 別開集合 Ui へ適用し、原典の切断への像の環 Ri と閉包の環の対応を構成する。
 Cor 8.12 の保留は継続し、新しい sorry・axiom・引用は追加していない。
 
+**一般 rank の独立準備・原典の像の環 Ri と閉包の同定（2026-10-17）。**
+`Prop247RankImages.lean` は原典の R→Γ(U,O) の像そのものを
+`prop247_openSectionImage R U` として固定し、元の写像の像への制限も公開する。
+像への写像は全射なので Ri は R 上有限であり、有限表示性は新たに要求・主張しない。
+被約基底では、その核は U の消滅イデアルである。
+既存の代数の第一同型定理から、閉包の消滅イデアルによる商と元の像との R 代数同型
+`prop247_openSectionImageQuotientEquiv` を構成し、元の R の各元を保つことを証明した。
+`prop247_openSectionImage_spectrum_range` は Spec Ri→Spec R の像が U の閉包であると述べる。
+
+元の rank ファイバーを Spec R の実開集合 `prop247_rankOpen` として固定した。
+その閉包を D(g) に戻すと元の rank ファイバーに一致し、従って
+`prop247_rankSectionImage_spectrum_on_away` で原典の Ri の Spec の像も g の外では
+元の rank 部分そのものに一致する。開集合・像・元の環写像を不特定の同型で置き換えていない。
+Noether 性・整域性・rank 正値性・Ui 非空性は不要。対象2773ジョブと専用監査の公開11宣言が成功。
+全11宣言は assert_no_sorry 成功・標準3公理のみ。
+次は Ri 上の任意の基底変更（特に指定した (Ri)_perfd）で、g の外の rank が一定になることと、
+有限直積の元の環写像を接続する。perfectoid 化後の almost 比較は依然として未供給であり、
+Cor 8.12 の保留は継続する。新しい sorry・axiom・引用は追加していない。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
