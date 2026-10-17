@@ -9179,3 +9179,68 @@ BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_
 今回の一段のHom比較だけでU12e全体の受入とはしない。
 その後U16a〜dへ進む。U14・係数変更系は読み取り専用で再利用し、
 U15e/U17の合流条件と引用禁止は§0のまま保持する。共有一般論への新しいAPI要求はない。
+
+
+### 17.201 U12e42：全段階・最終解像度の関手比較と任意解像度との準同値zigzag（2026-10-17）
+
+前回§17.200は実装進捗のあったターンとして継続し、付加後の増大との可換性から再開した。
+`Resolution/FixedObjectGenerators.lean`の**cellGenerator**は固定対象cell付加の生成元を、
+対象instanceの切替を利用側へ露出させず公開する。**attach_map_cellGenerator**は増大像が
+指定原始元になる式、**Map.attachedHom_cellGenerator**は比較による生成元の移送式である。
+
+`FixedObjectMapAugmentation.lean`では、比較後の増大と増大後の元のdg関手という二つの
+実際のdg関手を構成した。元のHomへの制限は比較の増大squareで一致し、生成cell上では
+指定原始元の移送式で一致する。§17.200の延長一意性から**attachedFunctor_augmentation**を得た。
+**attachedHom_augmentation**を使った**Map.attach**は、増大比較Map S T Fを
+Map S.attach T.attach Fへ延長する。D/EのSmall.{u}のみを要求し、局所Hom K-flat性は不要。
+
+`Resolution/CellComparison.lean`の**stageComparison**は任意dg関手Fに沿って全段階を比較する。
+**transition_comparison**により逐次列のsquareが可換し、**comparisonCocone/comparisonHom**で
+最終Homの逐次余極限へ降ろす。**stageInclusion_comparison**は各有限段階での計算式、
+**comparisonHom_augmentation/unit/comp**は増大・単位・合成保存である。
+合成保存はMathlibのfiltered対角tensor余極限の普遍性と各段階の合成保存から証明した。
+**comparison/comparisonFunctor**は標準解像度間の実際の増大比較/dg関手で、
+**comparisonFunctor_augmentation**は元のdg関手Fと増大の厳密な可換squareを与える。
+**comparisonHom_quasiIso/comparisonFunctor_homQuasiIso**はHom準同型を保存する。
+証明は両増大のHom準同型と2-out-of-3を用い、モデル構造や深い比較定理を使わない。
+
+`Functor/QuasiIsoHomology.lean`は解像度に依存しない一般APIである。
+**closedHomEquiv_map/homotopyHomologyEquiv_map_naturality**は、閉零射とH⁰の射を
+主Hom複体のcycle/Mathlib homologyへ送る比較のdg関手自然性を証明する。
+**onHomotopy_map_bijective_of_homQuasiIso**は、Homの次数零homology写像が同型であることから
+H⁰の各射写像の全単射性を導く。
+**onHomotopy_full_of_homQuasiIso/onHomotopy_faithful_of_homQuasiIso**により完全忠実性を公開した。
+この一般APIは対象型のsmallness・HomのK-flat性・有界性を要求しない。
+U12eの比較の本質的全射性に使用し、後続U16bの準同値に沿う比較でも再利用できる。
+
+`CellComparisonQuasiEquivalence.lean`の**comparisonFunctor_essSurj**は、標的増大の
+H⁰完全忠実性と増大squareから比較の本質的全射性を反映する。
+**comparisonFunctor_quasiEquivalence**は元のdg準同値が標準解像度間の準同値を誘導する定理。
+
+`Resolution/CanonicalZigzag.lean`では、任意の指定KFlatDGResolution Pについて
+P.source ← Source(P.source) → Source(D)という具体的なzigzagを構成した。
+**ComparisonSource/comparisonLeft/comparisonRight**が対象と両脚、
+**comparisonLeft_quasiEquivalence/comparisonRight_quasiEquivalence**が両脚の準同値性、
+**comparisonSource_homKFlat**が中間dg圏の局所Hom K-flat性を与える。
+**comparison_augmentation**は両経路のDへの増大が厳密に一致することを証明する。
+DとP.sourceの対象宇宙v/wは独立で、canonical側を作るDのSmall.{u}以外に
+元のdg圏のHom flatness仮定を加えない。任意の二つの指定解像度はこの標準解像度を介して
+準同値zigzagで比較できる。既存公開APIの名前・型の変更はなく、今回も追加のみである。
+
+**検証。** Checks.DGResolutionComparison・Checks.DGCellComparison・
+Checks.DGCellResolutionExistence・Checks.DerivedBimoduleFullPentagon・Checks.StageEight・
+Checks.StageSeven・Spectra.StageTwoの統合ビルド成功（3243 jobs、警告なし）。
+Hom flatness仮定なし、独立した解像度source宇宙、両脚の準同値と増大square、ZMod 2での
+比較を型検査した。H⁰完全忠実性は対象smallnessなしでも型検査した。
+主要34宣言の直接公理監査は宣言名の重複・欠落なく標準3公理以内。監査累計3948宣言。
+新しいsorry・axiom・引用は追加していない。採用済み引用は0件。
+全体文書検査は19 Markdown・320 exposition参照を検査し、担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+未解決参照1件で失敗した。共有ルート・監査スクリプト・並行担当ファイルは編集していない。
+
+**残る受入条件。** 解像度dg圏そのものの一般存在と準同値zigzagによる比較は証明できた。
+次はこの比較に沿う導来bimodule圏の比較と、解像度版合成・単位・結合の自然性、
+選択独立性・coherenceを構成し、§15.2のU12eを受け入れる。
+今回のdg圏zigzagだけから導来bimodule合成のcoherence完成を主張しない。
+U12e全受入後はU16a〜dへ進み、U15e/U17は§0の合流条件を維持する。
+共有一般論への新しいAPI要求はない。
