@@ -8,6 +8,7 @@ public import SerrePositivity.DifferentialGraded.Verdier.DerivedKernelGraphSquar
 public import SerrePositivity.DifferentialGraded.Verdier.GraphPairMorita
 public import SerrePositivity.DifferentialGraded.Verdier.KernelComparisonNaturality
 public import SerrePositivity.DifferentialGraded.Verdier.KernelCompositionComparison
+public import SerrePositivity.DifferentialGraded.Verdier.ConjugatedCompositionNaturality
 
 /-! # 局所 dg 商の U17 比較の公開入口
 
