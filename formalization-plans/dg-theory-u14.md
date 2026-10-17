@@ -513,6 +513,16 @@
 - `ChecksDerivedTriangleComparison` と更新した `ChecksCompatibility` の対象ビルド成功。
   新規5主要宣言の公理は標準3公理のみ。既存の比較自然同型の名前・型は変更していない。
 
+## U14b.25：主Perfの整合的shift・三角同値・包含図式（2026-10-17）
+
+- `PerfectShiftTriangles.lean`：既存の主導来HomのPerf制限へ整合的shiftと三角性を制限した。
+  導来圏への包含正方形を自然同型として保持し、shift整合性と三角形の圏上の自然な正方形を構成。
+- 既存の `perfectEndomorphismEquivalence` の逆関手に随伴から定まるshift構造を入れ、
+  同値の単位・余単位のshift整合性と、順・逆両関手の三角性を証明した。
+- 既存同値の名前・型を変更していない。追加構造は明示して利用する定義・補題である。
+- `ChecksPerfectShiftTriangles` の対象ビルド成功。新規8主要宣言の公理は標準3公理のみ。
+- U14bの主Perf比較の整合的shiftと三角性の中心部分は証明済み。導来係数変更図式は残る。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
