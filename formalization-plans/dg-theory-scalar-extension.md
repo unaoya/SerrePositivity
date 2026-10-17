@@ -209,3 +209,29 @@ U12f 全体・U15d 全体はまだ完了ではない。ゴールを縮小せず�
 次は scalar-changed representable の評価単位と、複体パラメータを相対 tensor の外へ
 出す associator の生成項公式を比較し、残る underived 整合性を検証する。
 導来版・U15d は引き続き未完。amend・rebase・reset は使わない。
+
+
+## 2026-10-17：評価単位とパラメータ結合比較
+
+左加群圏・一対象 tensor の比較は `680e1125` にコミット済み。
+`Tensor/ScalarExtensionCoendCoherence.lean` は、係数変更した左右 representable を
+相対 tensor に入れた評価同型 `yonedaBaseChangeIso`・`leftYonedaBaseChangeIso` を構成する。
+各対象の包含との合成が、係数変更後の加群の左作用・右作用そのものになる公式と、
+元の Yoneda 評価を係数変更した射との可換図式を証明した。
+ここで使う representable は明示的に scalar-changed representable である。
+
+同ファイルの `tensorModuleBaseChangeIso` は複体パラメータ K を相対 tensor の外へ
+出す比較を係数変更し、生成項上で三つの tensor 因子の associator と一致する公式
+`ι_tensorModuleBaseChangeIso` を証明する。
+`tensorModuleBaseChange_comparison` が元の `BalancedTensor.tensorModuleIso` との可換図式。
+元の三重 tensor の係数変更の associator 整合性を使い、符号規約は既存 API のまま保つ。
+
+`lake build SerrePositivity.DifferentialGraded.Checks.ScalarExtensionCoendCoherence` 成功
+（2044 jobs、警告なし）。`ℤ → ZMod 2` と次数 −1 の sphere のパラメータを型検査した。
+主要9宣言の監査はすべて標準3公理のみ。新規 sorry・axiom・引用は0件。
+ルートの自分の import 行のみ `ScalarExtensionCoendCoherence` へ進める。
+
+underived 側の dg 圏・左右加群・随伴・直和/coequalizer・相対 tensor・両変数自然性・
+一対象通常 tensor・評価単位・パラメータ結合比較が揃った。これは U12f 全体の完了ではない。
+次に導来版を実装し、擬同型保存条件と underived との一致条件を明示する。
+その後 U15d に進む。正本への完了参照は全担当の受入後のみとする。

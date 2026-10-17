@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionRing
+public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionCoendCoherence
 
 public import SerrePositivity.DifferentialGraded.Endomorphism.Compatibility
 
