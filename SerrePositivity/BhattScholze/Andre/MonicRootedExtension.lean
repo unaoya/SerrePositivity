@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.OrdinaryMonicRoot
 public import SerrePositivity.BhattScholze.Andre.MonicRelation
+public import SerrePositivity.BhattScholze.Andre.PerfectPrismMonicCandidate
 
 /-!
 # André E1・E2 の集約
@@ -12,7 +13,8 @@ BS Thm 7.14（著者版 p.61）、Rem 7.15（p.62）のモニック根付き拡�
 
 ## 方針
 
-通常のモニック商の自由性と独立変数の関係式の正則性から準備する。
+通常のモニック商の自由性と独立変数の関係式の正則性から準備し、
+任意の関係族の δ 除算から perfectoid 根候補を構成する。
 原典の Prop 7.11 を使う経路とは異なる pd 計算による構成を目指す。
 
 ## 規約

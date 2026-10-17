@@ -162,3 +162,25 @@ Rem 7.15 だけで必要な cover 性が証明済みとは扱わない。
 生成宣言を含む対象モジュール全宣言の標準 3 公理限定検査に成功（終了コード 0）。
 修正後の最終目標、pd 比較、perfectoid 拡大の忠実平坦性、有限族・任意族の合流は未完成。
 通常の自由忠実平坦拡大を E1・E2 完成と数えない。
+
+### E1.2：任意関係族の具体的な perfectoid 根候補
+
+`DivisionPerfectoidCandidate.lean` は一般の δ 環・distinguished d・任意元族 a に対し、
+δ 除算の p 進完備完全化と実 (p,d) 完備化から完全 prism を構成する。
+その商は perfectoid で、元の係数射は d と全 a を零に送る。
+`PolynomialPerfectoidCandidate.lean` は a を独立変数に評価した多項式族に特殊化し、
+同じ係数射に関する根方程式を証明する。
+`PerfectPrismMonicCandidate.lean` は完全 prism の商上のモニック族を同次数モニックに
+lift する。この選択は公開定義 `perfectPrismMonicLift` で固定した。
+
+公開定理 `exists_monicRootedPerfectoidCandidate_of_perfectPrism` の正確な出力は
+`∃ T, ∃ (_ : CommRing T), ∃ (φ : R →+* T), ∃ (ρ : σ → T),
+ IsIntegralPerfectoid T p ∧ ∀ s, (f s).eval₂ φ (ρ s) = 0`。
+前提は `P : OrientedPrism p A`、`P.deltaStructure.IsPerfect`、
+`R = A/(P.generator)`、同一宇宙の族 f とそのモニック性。正次数はこの候補構成では不要。
+この定理は零候補を排除せず、p 完全忠実平坦性の仮定も結論も持たない。
+したがって最終目標の代替・条件付き完成とは数えない。
+
+集約の対象ビルドは `set -o pipefail` 付きで終了コード 0（3266 jobs）。
+専用監査は新規公開宣言すべての `assert_no_sorry` と、生成宣言を含む 57 宣言の
+標準 3 公理限定検査に成功（終了コード 0）。
