@@ -9244,3 +9244,71 @@ BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_
 今回のdg圏zigzagだけから導来bimodule合成のcoherence完成を主張しない。
 U12e全受入後はU16a〜dへ進み、U15e/U17は§0の合流条件を維持する。
 共有一般論への新しいAPI要求はない。
+
+
+### 17.202 U12e43：一般dg関手に沿う導来制限と解像度bimodule比較の実際の関手（2026-10-17）
+
+解像度変更の導来比較のため、既存の加群制限・opposite・積dg圏表示・局所化を再確認した。
+`Functor/Opposite.lean`の既存**DGFunctor.op/op_id/op_comp**を再利用し、重複定義しなかった。
+このファイルは変更していない。
+
+`Derived/Restriction.lean`の**moduleDerivedRestriction**は、opposite上の指定dg関手に沿う
+主導来加群圏の制限である。既存moduleRestriction_quasiIsoと局所化の普遍性を用いる。
+**dgDerivedRestriction**は通常向きのdg関手から既存opを使う入口。
+両者の**_fac**は閉零加群圏からの厳密な計算式を与える。
+環は任意可換環、対象宇宙は独立、Small.{u}は両対象型に課す。
+元のHomのflatness・有界性・dg関手の準同値性を要求しない。
+
+`Module/RestrictionCoherence.lean`は**moduleRestrictionIdObjIso/IdIso**と
+**moduleRestrictionCompObjIso/CompIso**を追加する。
+全Hom自然な加群同型を既存moduleIsoMkで構成し、各評価成分は恒等chain mapである。
+**moduleRestrictionIdObjIso_hom_eval/moduleRestrictionCompObjIso_hom_eval**が計算式。
+`Derived/RestrictionCoherence.lean`はこれらを局所化のliftNatIsoで導来圏へ持ち上げる。
+**moduleDerivedRestrictionIdIso/CompIso**が比較同型、**moduleDerivedRestrictionComp_fac**と
+**moduleDerivedRestrictionCompIso_hom_app**が局所化前の対象における計算式。
+今回の恒等・合成比較同型の構成だけで、制限の全coherence図式を証明済みとはしない。
+
+`Functor/Tensor.lean`の**DGFunctor.tensor**は二つのdg関手のtensor積。
+Hom chain mapは二つのHom写像のtensor積であり、単位保存と合成保存は既存のtensor積dg圏の
+計算式とMathlib tensorμ_naturalから証明した。Koszul交換を通常圏の合成で置き換えない。
+四つの対象宇宙は独立で、対象smallnessやHom flatnessは要求しない。
+
+`Derived/BimoduleRestriction.lean`は、B→DとC→Eに沿う
+**bimoduleRestriction/derivedBimoduleRestriction**を追加する。
+既存rightModuleBimoduleEquivalenceで積dg圏のopposite上の右加群へ移し、
+(F.op.tensor G).op.opに沿って制限して主bimodule圏へ戻す。
+二重oppositeにより右加群制限の向きを固定する。
+**bimoduleRestriction_quasiIso**は準同型保存、**derivedBimoduleRestriction_fac**は
+主bimodule局所化からの厳密な計算式。両側とも全次数の作用と自然性を保持する。
+四つの対象型にSmall.{u}を要求し、HomのK-flat性は要求しない。
+
+`Derived/BimoduleRestrictionEvaluation.lean`の**bimoduleRightModuleEvaluationIso**は
+積表示の逆同値と元の値評価の自然比較。
+**bimoduleRestrictionEvaluationIso**は、制限後の(b,c)の値が
+元のbimoduleの(F(b),G(c))の値と自然同型であることを証明する。
+既存の評価比較・制限評価・同値の余単位を組み合わせ、抽象的な圏の輸送だけで済ませない。
+
+`Resolution/Restriction.lean`の**ResolutionBimodule.restriction**は任意の指定解像度source間の
+dg関手に沿う実際の導来bimodule制限。
+**comparisonLeft/comparisonRight**は§17.201の準同値zigzagの両脚から、
+指定解像度上/標準解像度上の導来bimodule圏を共通の中間圏へ送る関手を構成する。
+sourceの対象宇宙は元のdg圏の宇宙と独立。元のHomの局所K-flat性は不要。
+既存公開APIの名前・型は変更していない。追加APIはU12eの解像度変更に使用する。
+
+**検証。** Checks.DGDerivedRestriction・Checks.DGResolutionComparison・
+Checks.DGCellResolutionExistence・Checks.DerivedBimoduleFullPentagon・Checks.StageEight・
+Checks.StageSeven・Spectra.StageTwoの統合ビルド成功（3250 jobs、警告なし）。
+独立した四つの対象宇宙、Hom flatness仮定なしの両側制限/評価、独立した解像度source宇宙、
+制限の導来合成比較、ZMod 2の一般導来制限を型検査した。
+主要25宣言（局所化Liftingのinstanceを含む）の直接公理監査は重複・欠落なく標準3公理以内。
+監査累計3973宣言。新しいsorry・axiom・引用は追加していない。採用済み引用は0件。
+全体文書検査は19 Markdown・320 exposition参照を検査し、担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+未解決参照1件で失敗した。共有ルート・監査スクリプト・並行担当ファイルは編集していない。
+
+**残る受入条件。** 構成した比較関手が準同値に沿って同値になることは、今回まだ証明していない。
+次はdg関手に付随する加群/tensor延長と制限の比較を構成し、準同値の場合の導来同値性を示す。
+そのうえで解像度変更と導来bimodule合成・対角単位・結合同型の自然性、選択独立性・coherenceを
+接続してU12eを受け入れる。単なる制限関手の存在をU12e全受入の代用としない。
+その後のU16a〜d、U15eの順と§0の分担・合流条件・引用禁止を保持する。
+共有一般論への新しいAPI要求はない。
