@@ -122,7 +122,7 @@ def kernelCompositionIso (hD : localHomKFlat A D)
 恒等比較にlocalHomKFlatは不要。合成比較はU12e-localの結合子と同じく始域Dだけに条件を置く。
 合成比較は入力導来加群と両kernelの任意の主導来射に自然（U16a9）。
 kernelComposeMapへの自然性はkernelCompositionIso_naturalityで利用できる。
-恒等と三因子の結合比較のcoherenceは未完で、Coherence*で続ける。
+恒等を先に作用させる右単位coherenceはU16a15で検証済み。左単位と三因子の結合coherenceは未完で、Coherence*で続ける。
 
 ```lean
 lemma kernelCompositionIso_naturality (hD : localHomKFlat A D)
@@ -140,6 +140,21 @@ lemma kernelCompositionIso_kFlat (hD : localHomKFlat A D)
 三因子D→E→F→Gで必要なのは既存結合子に現れるD・EのlocalHomKFlat。
 同じkernel・固定dg圏の契約とし、中断した一般分解変更のcoherenceを待たない。
 
+### 6. 右単位coherence（実装・検証済み、U16a15）
+
+Morita/CoherenceUnitMain.leanをimportする。名前空間は同じMorita。
+
+```lean
+lemma kernelCompositionIso_rightUnit (hD : localHomKFlat A D) (P : Kernel A D E) :
+  (kernelCompositionIso A D D E hD (kernelIdentity A D) P).hom ≫
+    (kernelDerivedTensorFunctor A D E).map ((derivedBimoduleRightUnitIso A E D hD).hom.app P) =
+  Functor.whiskerRight (kernelIdentityIso A D).hom (kernelDerivedTensor A D E P) ≫
+    (Functor.leftUnitor (kernelDerivedTensor A D E P)).hom
+```
+
+bimoduleの順序では右単位、作用の順序では恒等kernelを先に作用させる図式である。
+終域Eの局所Hom条件やPのK-flat性は要求しない。左単位・結合coherenceの完成とは区別する。
+
 ### 実装状態と他担当の利用境界
 
 | API群 | 状態 | 他担当の利用 |
@@ -149,7 +164,7 @@ lemma kernelCompositionIso_kFlat (hD : localHomKFlat A D)
 | 主導来作用・任意解像度計算 | 実装・検証済み（U16a3） | Morita/KernelDerivedFunctor.leanをimportして利用できる |
 | 一般右随伴・unit/counit・左右三角恒等式 | 実装・検証済み（U16a13） | Morita/AdjunctionDerived.lean。公開型は変更なし |
 | 恒等作用比較 | 実装・検証済み（U16a4） | Morita/CoherenceIdentity.leanのkernelIdentityIso |
-| 合成の作用比較・全kernel射の自然性 | 実装・検証済み（U16a9）。恒等・結合coherenceは未完 | Morita/CoherenceComposition.leanのkernelCompositionIso・kernelCompositionIso_naturality・kernelCompositionIso_kFlat |
+| 合成の作用比較・全kernel射の自然性 | 実装・検証済み（U16a9）。右単位coherenceはU16a15、左単位・結合coherenceは未完 | Morita/CoherenceComposition.leanのkernelCompositionIso・kernelCompositionIso_naturality・kernelCompositionIso_kFlat |
 
 U16b担当が構成するgraph作用と`dgDerivedExtension`の自然同型はQuasiEquivalence*に置く。
 このチャットは同ファイルを編集しない。導来作用が未実装の間も、通常graph一致はKernelTensorで提供する。
@@ -595,3 +610,25 @@ CoherenceIdentityAugmentationのkernelDerivedTensorOnBimoduleIdentityIso_augment
 coherence全体とU16a全受入は未完。一般右随伴・unit/counitの実装済み状態は維持する。
 新規9宣言の直接公理監査は標準3公理以内、合同ビルド4131 jobs・警告0。
 再現入口はMorita/CoherenceAugmentationChecks、詳細はdg-theory.md §17.266。
+
+
+## U16a15：主導来kernel作用の右単位coherence（2026-10-17）
+
+CoherenceUnitClosedは既存bimoduleの三角図式を全右加群で評価し、
+通常作用の合成比較と元の右単位子がkernelIdentityClosedIsoに一致する図式を証明した。
+kernelTensorFamilyMapは入力族のbimodule射のtensorを作用の入力射へ計算する。
+CoherenceProjectiveExtのkernelActionNatTrans_ext_projectiveで、
+主導来自然変換の一致を射影通常入力だけで判定できるようにした。
+CoherenceUnitDerivedは増大squareを相対K-flat入力で反転して通常図式へ帰着し、
+標準射影解像度の自然性で全導来入力へ右単位図式を拡張した。
+
+CoherenceUnitMainのkernelCompositionIso_rightUnitは、公開kernelCompositionIsoと
+U12e-localの実際のderivedBimoduleRightUnitIso・公開kernelIdentityIsoの図式である。
+恒等kernelは右K-flatなので既存モデル計算を使い、任意の主局所化kernelへ適用できる。
+合成の始域DのlocalHomKFlatだけを保持し、Eの条件やPのK-flat性は追加していない。
+公開比較の定義・従来の型は変更していない。左単位・結合coherenceは残るためU16a全受入ではない。
+
+CoherenceUnitChecksを新旧増大・一般随伴・合成自然性・QuasiEquivalence・局所受入・
+一般入口・Spectra.StageTwoと合同ビルドし成功（4136 jobs、警告0）。
+新規7宣言の直接公理監査は標準3公理以内。新規sorry・axiom・引用・資源上限変更なし。
+詳細はdg-theory.md §17.267。

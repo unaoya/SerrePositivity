@@ -12683,3 +12683,41 @@ CriterionPerf*・CriterionDerived*や一般U12eは編集・再開していない
 lake build SerrePositivity.DifferentialGraded.Morita.CoherenceAugmentationChecks SerrePositivity.DifferentialGraded.Morita.AdjunctionDerivedChecks SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionCanonicalChecks SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.DifferentialGraded.Checks.U12eGeneralInventory SerrePositivity.Spectra.StageTwo
 lake env lean SerrePositivity/DifferentialGraded/Morita/CoherenceAugmentationChecks.lean
 ```
+
+
+### 17.267 U16a：主導来kernel作用の右単位coherence（2026-10-17）
+
+Morita/CoherenceUnitClosed.leanはkernelTensorFamilyMapで入力族のbimodule射と通常作用の射を同定し、
+既存bimoduleのtriangleを全右加群の恒等dg関手で評価した。
+kernelTensorCompositionClosedIso_rightUnitは、対角Dを先に作用させる通常合成比較と
+元のrightBimoduleUnitIsoがkernelIdentityClosedIsoに一致することを証明する。
+全右加群型にSmallを課していない。
+
+CoherenceProjectiveExt.leanのkernelActionNatTrans_ext_projectiveは、
+主導来自然変換の一致が射影通常入力だけで判定できることを、標準解像度増大の可逆性と自然性で証明した。
+CoherenceUnitDerived.leanは相対K-flat入力で§17.266の増大を反転して通常単位図式へ帰着し、
+この一致判定で全導来入力へ拡張した。
+kernelDerivedTensorOnBimoduleCompositionIso_rightUnitは指定kernelのK-flat性・局所Hom条件なしで使える。
+
+CoherenceUnitMain.leanのkernelCompositionTargetIso_rightUnitは、
+U12e-localの実際のderivedBimoduleRightUnitIsoと通常単位子の作用を同じ合成モデルで比較する。
+kernelCompositionIso_rightUnitは任意P : Kernel A D Eについて、
+公開kernelCompositionIso（恒等Dの後にPを作用）と右単位子の作用を通る経路が、
+公開kernelIdentityIsoをPの作用で写す経路に一致することを証明した。
+必要な局所Hom条件は合成と同じlocalHomKFlat A Dのみ。Eの条件やPのK-flat性は追加していない。
+旧公開名・型・比較の定義は変更せず、追加した正確な型をdg-theory-morita.mdの公開API第6節に記録した。
+
+保存済みCoherenceUnitChecksは独立対象宇宙・任意可換環・標数2と通常／主導来の実際の単位図式を検査する。
+新旧増大・一般随伴・合成自然性・QuasiEquivalence・局所受入・一般入口・Spectra.StageTwoとの
+合同ビルド成功（4136 jobs、警告0）。新規7宣言を直接公理監査し標準3公理以内。
+新規監査累計5054。新規sorry・axiom・引用・資源上限変更なし。
+
+一般右随伴・unit/counitは実装済み、右単位coherenceも今回完成した。
+左単位・三因子の結合coherenceは未完のため、U16a全受入とU16全体の受入はまだ行わない。
+CriterionPerf*・CriterionDerived*は読み取り専用、一般U12e・U15e分解版は中断を維持する。
+次は通常作用の三因子結合図式を既存bimodule五角から導き、同じK-flat計算モデルへ接続する。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Morita.CoherenceUnitChecks SerrePositivity.DifferentialGraded.Morita.CoherenceAugmentationChecks SerrePositivity.DifferentialGraded.Morita.AdjunctionDerivedChecks SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionCanonicalChecks SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.DifferentialGraded.Checks.U12eGeneralInventory SerrePositivity.Spectra.StageTwo
+lake env lean SerrePositivity/DifferentialGraded/Morita/CoherenceUnitChecks.lean
+```
