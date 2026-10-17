@@ -997,6 +997,15 @@
 - `ChecksScalarHomElementComponents` 対象ビルド成功（3027 jobs）。主要2宣言の公理は標準3公理のみ。
   既存APIの名前・型は変更していない。新しいsorry・axiom・引用は追加していない。
 
+## U14b.61：実際の加群係数拡大の標準cone同型（2026-10-17）
+
+- `ScalarModuleConeImage.lean`：coneの次数−1包含を実際のHom係数変更比較で送り、
+  その微分から全次数自然な閉零加群射 `scalarModuleExtensionConeComparison` を構成した。
+- 各評価をU14b.60のcochain係数拡大に同定し、coneの四つの包含・射影の行列恒等式を
+  加法的な係数拡大で運んで可逆性を証明した。右包含との可換図式も保持した。
+- `ChecksScalarModuleConeImage` 対象ビルド成功（3034 jobs）。主要6宣言の公理は標準3公理のみ。
+  既存APIの名前・型は変更していない。新しいsorry・axiom・引用は追加していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
