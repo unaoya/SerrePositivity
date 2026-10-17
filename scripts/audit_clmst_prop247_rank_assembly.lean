@@ -1,0 +1,13 @@
+import SerrePositivity.CLMST.Prop247RankAssembly
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.CLMST.prop247_rankTensorUnit
+assert_no_sorry SerrePositivity.CLMST.prop247_rankTensorUnit_ker_coker
+assert_no_sorry SerrePositivity.CLMST.prop247_rankPerfectoidComparison
+assert_no_sorry SerrePositivity.CLMST.prop247_rankPerfectoidComparison_square
+assert_no_sorry SerrePositivity.CLMST.prop247_isogeny_of_actual_rank_comparisons
+#print axioms SerrePositivity.CLMST.prop247_rankTensorUnit
+#print axioms SerrePositivity.CLMST.prop247_rankTensorUnit_ker_coker
+#print axioms SerrePositivity.CLMST.prop247_rankPerfectoidComparison
+#print axioms SerrePositivity.CLMST.prop247_rankPerfectoidComparison_square
+#print axioms SerrePositivity.CLMST.prop247_isogeny_of_actual_rank_comparisons
