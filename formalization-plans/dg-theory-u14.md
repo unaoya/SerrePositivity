@@ -322,6 +322,16 @@
 - `ChecksThickHomComparison` と更新した `ChecksCompatibility` の対象ビルド成功。
   新規4主要宣言の公理は標準3公理のみ。最新APIをU14公開入口へimport済み。
 
+## U14b.7：全Hom擬同型とH⁰完全忠実性の照合（2026-10-17）
+
+- `QuasiFullyFaithful.lean`：任意のdg関手の全Hom写像と、既存のH⁰射–Homology同値が
+  自然に可換になることを証明。全Hom擬同型からH⁰の射集合写像の全単射を導いた。
+- thick生成仮定の下でU13からの再構成Hom関手のH⁰完全忠実性を個別に構成。
+  余域は現段階では全右End加群のK圏であり、Perfへの像の制限や本質的全射を
+  既に証明したとはしていない。
+- `ChecksQuasiFullyFaithful` と更新した `ChecksCompatibility` の対象ビルド成功。
+  新規7主要宣言の公理は標準3公理のみ。U14公開入口へimport済み。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
