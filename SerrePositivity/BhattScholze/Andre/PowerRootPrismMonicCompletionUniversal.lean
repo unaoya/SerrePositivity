@@ -16,10 +16,12 @@ BS Prop 7.2（著者版 p.55）、Rem 7.15（p.62）の比較の代数的部分�
 
 試験 prism の正則性と完備性を raw 実完備化の一般普遍性に供給する。
 自分自身で証明した分母正則性から旧ねじれ除去の標準比較を適用する。
+その正則性は原典と異なる実源の純性による経路で供給する。
 
 ## 規約
 
 無限根入力環からの δ 射を指定する相対的普遍性である。
+prism 商の p 正則性や正次数は要求しない。
 原典の絶対 prismatic envelope の同定は、この入力射の一意持上げとの接続を要する。
 
 ## 使われ方
@@ -36,7 +38,6 @@ namespace SerrePositivity.BhattScholze.Andre
 open SerrePositivity.DerivedCompletion
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
-variable (hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal))
 variable (f : Polynomial A) (hf : f.Monic)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
 local notation "P" => PowerRootPolynomial A p hp
@@ -58,7 +59,7 @@ local notation "DL" => deltaAdjoinDivisionStructure E dP a
 local notation "DH" => deltaPDCompletionStructure DL (jL dP)
 
 
-include hpR hf in
+include hf in
 /-- 概要：指定入力 δ 射と可除性を持つ試験 prism への射は一意に存在する。
 方針：試験 prism の正則性・p 完備性・生成元完備性を一般の raw 普遍性へ渡す。
 規約：生成元の像の一致を明示し、入力射自体は指定する。
@@ -69,7 +70,7 @@ theorem existsUnique_powerRootPrismMonicCompletionHom
     (ha : Q.generator ∣ g (powerRootMonicPDInput p f)) :
     let := pdCompletionCommRing L p (jL dP)
     ∃! F : H →+* B,
-      (powerRootPrismMonicCompletionPrism W hW hpR f hf).deltaStructure.IsDeltaHom
+      (powerRootPrismMonicCompletionPrism W hW f hf).deltaStructure.IsDeltaHom
         Q.deltaStructure F ∧ F.comp ((uL).comp jL) = g := by
   let := pdCompletionCommRing L p (jL dP)
   have hr : Function.Injective (fun x : B => g dP * x) := by
@@ -89,7 +90,7 @@ theorem existsUnique_powerRootPrismMonicCompletionHom
     F.comp ((uL).comp jL) = g
   exact h
 
-include hpR hf in
+include hf in
 /-- 概要：元の無限根モニック実完備化は旧ねじれ除去後の既存一段実完備化と環同型。
 方針：自分自身の分母正則性を一般の標準比較に供給する。
 規約：元の実 H⁰ を源とし、比較先の正則性を追加仮定しない。
@@ -101,9 +102,9 @@ def powerRootPrismMonicCompletionTorsionEquiv :
   let := pdCompletionCommRing L p (jL dP)
   let := derivedDeltaDivisionCommRing E dP a
   exact rawDeltaDivisionPDTorsionEquiv E dP a
-    (powerRootPrismMonicRaw_pdCompletion_generator_regular W hW hpR f hf)
+    (powerRootPrismMonicRaw_pdCompletion_generator_regular W hW f hf)
 
-include hpR hf in
+include hf in
 /-- 概要：一段構成比較は無限根入力環の標準係数像を保つ。
 方針：一般比較の raw 代表元公式を標準入力射に適用する。
 規約：全ての入力環元を扱う。
@@ -111,14 +112,14 @@ include hpR hf in
 theorem powerRootPrismMonicCompletionTorsionEquiv_coeff (r : P) :
     let := pdCompletionCommRing L p (jL dP)
     let := derivedDeltaDivisionCommRing E dP a
-    powerRootPrismMonicCompletionTorsionEquiv W hW hpR f hf (uL (jL r)) =
+    powerRootPrismMonicCompletionTorsionEquiv W hW f hf (uL (jL r)) =
       derivedDeltaDivisionMap E dP a r := by
   let := pdCompletionCommRing L p (jL dP)
   let := derivedDeltaDivisionCommRing E dP a
   exact rawDeltaDivisionPDTorsionEquiv_unit E dP a
-    (powerRootPrismMonicRaw_pdCompletion_generator_regular W hW hpR f hf) (jL r)
+    (powerRootPrismMonicRaw_pdCompletion_generator_regular W hW f hf) (jL r)
 
-include hpR hf in
+include hf in
 /-- 概要：具体的な一段構成比較は実完備化 prism の δ 構造を保つ。
 方針：一般比較の δ 性へ分母正則性を供給する。
 規約：原典の絶対 envelope との比較は別工程。
@@ -126,15 +127,15 @@ include hpR hf in
 theorem powerRootPrismMonicCompletionTorsionEquiv_isDeltaHom :
     let := pdCompletionCommRing L p (jL dP)
     let := derivedDeltaDivisionCommRing E dP a
-    (powerRootPrismMonicCompletionPrism W hW hpR f hf).deltaStructure.IsDeltaHom
+    (powerRootPrismMonicCompletionPrism W hW f hf).deltaStructure.IsDeltaHom
       (derivedDeltaDivisionStructure E dP a)
-      (powerRootPrismMonicCompletionTorsionEquiv W hW hpR f hf).toRingHom := by
+      (powerRootPrismMonicCompletionTorsionEquiv W hW f hf).toRingHom := by
   let := pdCompletionCommRing L p (jL dP)
   let := derivedDeltaDivisionCommRing E dP a
   exact rawDeltaDivisionPDTorsionEquiv_isDeltaHom E dP a
-    (powerRootPrismMonicRaw_pdCompletion_generator_regular W hW hpR f hf)
+    (powerRootPrismMonicRaw_pdCompletion_generator_regular W hW f hf)
 
-include hpR hf in
+include hf in
 /-- 概要：入力射と両立する比較射は指定 prism 生成元を保つ。
 方針：入力環上の合成等式を分母で評価する。
 規約：射の δ 性に依存しない生成元の計算。
@@ -144,7 +145,7 @@ theorem powerRootPrismMonicCompletionHom_generator
     (hd : g dP = Q.generator) :
     let := pdCompletionCommRing L p (jL dP)
     ∀ F : H →+* B, F.comp ((uL).comp jL) = g →
-      F (powerRootPrismMonicCompletionPrism W hW hpR f hf).generator = Q.generator := by
+      F (powerRootPrismMonicCompletionPrism W hW f hf).generator = Q.generator := by
   let := pdCompletionCommRing L p (jL dP)
   dsimp only
   intro F hF

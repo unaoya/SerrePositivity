@@ -3,6 +3,7 @@ module
 public import SerrePositivity.BhattScholze.Andre.DeltaDivisionUnaryRawPairRegular
 public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicRawRegular
 public import SerrePositivity.BhattScholze.Andre.PrincipalPairCompletionRegular
+public import SerrePositivity.BhattScholze.Andre.Unconditional.PrimeReductionPurity
 
 /-!
 # André E1・E2：無限根モニック raw 包の正則対
@@ -18,7 +19,8 @@ BS Rem 7.15（著者版 p.62）の実完備化前の計算。
 
 ## 規約
 
-正次数は要求しない。prism 商の p 正則性は明示し、主存在定理の前提へ追加しない。
+正次数は要求しない。raw と mod p の中間主張では prism 商の p 正則性を明示する。
+実二座標完備化の分母正則性にはこの仮定を要求しない。
 
 ## 使われ方
 
@@ -80,19 +82,17 @@ theorem powerRootPrismMonicRaw_pAdic_regular_pair :
       (deltaAdjoinDivisionMap E dP a dP) hpRaw
       (powerRootPrismMonicRaw_mod_prime_generator_regular W hW hpR f hf)
 
-include hpR hf in
+include hf in
 /-- 概要：無限根モニック raw 包の実二座標完備化 H⁰ で分母の像は正則。
-方針：raw 包の正則対に実反復完備化での第二元正則性を適用する。
-規約：元の Koszul 完備化 H⁰ と標準射を保持する。
+方針：A1-b の実源の純性と次数零モニック入力の零環性から得た正則性を使う。
+原典の p ねじれなしへの帰着とは異なる純性による経路。
+規約：元の Koszul 完備化 H⁰ と標準射を保持し、hpR・正次数を仮定しない。
 使われ方：BS Rem 7.15（著者版 p.62）の実完備化の分母ねじれの排除。 -/
 theorem powerRootPrismMonicRaw_pdCompletion_generator_regular :
     let dL := deltaAdjoinDivisionMap E dP a dP
     letI := SerrePositivity.DerivedCompletion.pdCompletionCommRing Raw p dL
     IsSMulRegular (SerrePositivity.DerivedCompletion.PDCompletionH0 Raw p dL)
       (SerrePositivity.DerivedCompletion.pdCompletionUnit Raw p dL dL) := by
-  exact principalPair_pairCompletion_second_regular (p : Raw)
-    (deltaAdjoinDivisionMap E dP a dP)
-    (powerRootPrismMonicRaw_p_mul_injective W hW hpR f hf)
-    (powerRootPrismMonicRaw_mod_prime_generator_regular W hW hpR f hf)
+  exact powerRootPrismMonicRaw_pdCompletion_generator_regular_of_monic_unconditional W hW f hf
 
 end SerrePositivity.BhattScholze.Andre

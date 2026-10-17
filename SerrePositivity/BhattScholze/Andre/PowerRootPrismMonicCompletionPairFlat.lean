@@ -98,7 +98,7 @@ theorem powerRootPrismMonicCompletion_pair_completelyFlat :
   let := pdCompletionCommRing L p (jL dP)
   let := powerRootPrismMonicCompletionAlgebra W hW f
   have hreg : IsSMulRegular H (algebraMap A H W.generator) :=
-    powerRootPrismMonicRaw_pdCompletion_generator_regular W hW hpR f hf
+    powerRootPrismMonicRaw_pdCompletion_generator_regular W hW f hf
   have hred : let := principalAdicQuotientAlgebra W.generator H
       IsCompletelyFlat (Ideal.span {(p : A ⧸ Ideal.span {W.generator})})
         (H ⧸ Ideal.span {algebraMap A H W.generator}) := by

@@ -8,12 +8,13 @@ public import SerrePositivity.BhattScholze.DeltaPDCompletion
 
 ## 概要
 
-p 正則な prism 商を持つ完全 prism 上で、無限根モニック raw 包の実完備化は
+完全 prism 上で、無限根モニック raw 包の実完備化は
 標準分母像を生成元とする oriented prism となる。BS Rem 7.15（著者版 p.62）の源候補。
 
 ## 方針
 
 既存の実完備化の δ 構造、分母の distinguished 性、検証済みの正則性と導来完備性を結ぶ。
+分母正則性は A1-b の実源の純性から供給し、原典の p ねじれなしへの帰着とは異なる経路を使う。
 
 ## 規約
 
@@ -33,7 +34,6 @@ namespace SerrePositivity.BhattScholze.Andre
 open SerrePositivity.DerivedCompletion
 variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 variable (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
-variable (hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal))
 variable (f : Polynomial A) (hf : f.Monic)
 local notation "hp" => Nat.Prime.pos (Fact.out : p.Prime)
 local notation "P" => PowerRootPolynomial A p hp
@@ -54,10 +54,11 @@ local notation "φ" => powerRootPrismMonicHodgeTateBaseMap W hW f
 local notation "DL" => deltaAdjoinDivisionStructure E dP a
 local notation "DH" => deltaPDCompletionStructure DL (jL dP)
 
-include hpR hf in
+include hf in
 /-- 概要：元の無限根モニック実完備化に標準分母像を生成元とする prism 構造を与える。
 方針：distinguished 性を二つの標準 δ 射で移し、実完備化の正則性と完備性を使う。
-規約：prism 商の p 正則性を明示し、正次数は不要。
+正則性は原典の帰着とは異なる実源の純性による証明から供給する。
+規約：prism 商の p 正則性も正次数も要求しない。
 使われ方：BS Rem 7.15（著者版 p.62）の原典の prismatic 源との比較の入力。 -/
 def powerRootPrismMonicCompletionPrism :
     let := pdCompletionCommRing L p (jL dP)
@@ -72,7 +73,7 @@ def powerRootPrismMonicCompletionPrism :
     rw [pdCompletionUnit_isDeltaHom DL (jL dP) (jL dP)] at h
     exact h
   exact OrientedPrism.ofDistinguished DH (uL (jL dP)) hdH
-    (powerRootPrismMonicRaw_pdCompletion_generator_regular W hW hpR f hf)
+    (powerRootPrismMonicRaw_pdCompletion_generator_regular W hW f hf)
     (pdCompletionH0_self_complete_p L p (jL dP))
     (pdCompletionH0_self_complete_d L p (jL dP))
 
@@ -98,7 +99,7 @@ theorem powerRootPrismMonicCompletionBaseMap_isDeltaHom :
     ((deltaAdjoinDivisionMap_isDeltaHom E dP a).comp
       (powerRootPolynomialDelta_coeff_isDeltaHom p hW.p_mul_injective W.deltaStructure))
 
-include hpR hf in
+include hf in
 /-- 概要：標準係数射は指定 prism 生成元を実完備化 prism の指定生成元へ送る。
 方針：双方の標準射と生成元の定義を展開する。
 規約：生成元は変更しない。
@@ -106,6 +107,6 @@ include hpR hf in
 theorem powerRootPrismMonicCompletionBaseMap_generator :
     let := pdCompletionCommRing L p (jL dP)
     powerRootPrismMonicCompletionBaseMap W hW f W.generator =
-      (powerRootPrismMonicCompletionPrism W hW hpR f hf).generator := rfl
+      (powerRootPrismMonicCompletionPrism W hW f hf).generator := rfl
 
 end SerrePositivity.BhattScholze.Andre
