@@ -476,6 +476,34 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTensorMap_bi
 assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTensorEquiv
 assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTensorEquiv_tmul
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTensorMap_comp_injective
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTensorStage
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTensorStageEval
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTensorStageEval_injective
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTensorStageRoot
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTensorStageRoot_pow
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTensorStageEval_root
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTensorStageLift
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTensorStageLift_root
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTensorStageHom_ext
+assert_no_sorry SerrePositivity.BhattScholze.Andre.DividedPowerPrimeFiniteAlgebra
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeFiniteToTensor
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeFiniteToTensor_X
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTensorToFinite
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTensorToFinite_comp_toTensor
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeFiniteToTensor_comp_toFinite
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeFiniteTensorEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeFiniteEval
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeFiniteEval_X
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeFiniteEval_injective
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeFiniteToCountable
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeFiniteToCountable_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeCountable_exists_finite
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTruncatedEval_comp_finite
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTruncatedEval_injective
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTruncatedEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTruncatedEquiv_X
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -566,7 +594,11 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PowerRootMonicPDFlat,
     `SerrePositivity.BhattScholze.Andre.DividedPowerPrimeShift,
     `SerrePositivity.BhattScholze.Andre.DividedPowerPrimeGenerators,
-    `SerrePositivity.BhattScholze.Andre.DividedPowerPrimeTensor]
+    `SerrePositivity.BhattScholze.Andre.DividedPowerPrimeTensor,
+    `SerrePositivity.BhattScholze.Andre.DividedPowerPrimeFiniteTensor,
+    `SerrePositivity.BhattScholze.Andre.DividedPowerPrimeFiniteUniversal,
+    `SerrePositivity.BhattScholze.Andre.DividedPowerPrimeFinitePresentation,
+    `SerrePositivity.BhattScholze.Andre.DividedPowerPrimePresentation]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

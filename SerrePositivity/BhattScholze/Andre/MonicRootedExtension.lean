@@ -28,6 +28,7 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootPolynomial
 public import SerrePositivity.BhattScholze.Andre.PowerRootMonicPDFlat
 public import SerrePositivity.BhattScholze.Andre.DividedPowerPrimeGenerators
 public import SerrePositivity.BhattScholze.Andre.DividedPowerPrimeTensor
+public import SerrePositivity.BhattScholze.Andre.DividedPowerPrimePresentation
 
 /-!
 # André E1・E2 の集約

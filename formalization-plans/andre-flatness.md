@@ -1753,3 +1753,48 @@ SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（
 新規 5 公開宣言の `assert_no_sorry` を追加した専用監査は終了コード 0。
 生成宣言を含む 2871 宣言の推移的公理依存は標準 3 公理のみ。
 テンソル評価射・全単射性・代数同型の公開型 3 本を `#print` で確認した（終了コード 0）。
+
+### E1.28：有限テンソル段の独立性から可算切断表示の同型へ
+
+新規 `Andre/DividedPowerPrimeFiniteTensor.lean` は、切断多項式環
+C=A[X]/(Xᵖ) の有限反復テンソル段（零段 A、次段 C⊗前段）を構成する。
+C のモニック商としての自由性から、任意の単射 B→Γ_A(A) のテンソル化は単射。
+E1.27 のテンソル分解と合成して、全有限段の分冪評価の単射性を得た。
+各段の変数は p 乗が零で、その評価は同じ番号 i の γₚⁱ である。
+
+新規 `Andre/DividedPowerPrimeFiniteUniversal.lean` は、これらの有限段について
+p 乗が零となる任意の有限元族への普遍射、変数の評価公式、変数上の外延性を証明する。
+新規 `Andre/DividedPowerPrimeFinitePresentation.lean` は有限切断多項式商との
+具体的な互いに逆な射を構成し、係数代数同型および有限切断評価の単射性を得る。
+表示の普遍性と同型には、p の素数性も標数の仮定も不要。
+
+新規 `Andre/DividedPowerPrimePresentation.lean` は、可算切断商の任意の元が
+ある有限初期変数商から来ることを代表多項式の変数集合の上限により証明する。
+有限・可算評価の互換性と有限評価の単射性から可算評価の単射性を得る。
+E1.26 の全射性と合わせ、素数 p が A 内で零となる仮定の下で次の係数代数同型を構成した
+（namespace `SerrePositivity.BhattScholze.Andre`）。
+
+```lean
+theorem dividedPowerPrimeTruncatedEval_injective
+    {A : Type u} [CommRing A] (p : ℕ) [Fact p.Prime] (hp : (p : A) = 0) :
+    Function.Injective (dividedPowerPrimeTruncatedEval (A := A) p hp)
+
+def dividedPowerPrimeTruncatedEquiv
+    {A : Type u} [CommRing A] (p : ℕ) [Fact p.Prime] (hp : (p : A) = 0) :
+    DividedPowerPrimeTruncatedAlgebra (A := A) p ≃ₐ[A] DividedPowerAlgebra A A
+```
+
+左辺は実際の商 `MvPolynomial ℕ A ⧸ Ideal.span (Set.range fun i => (MvPolynomial.X i)^p)`。
+`dividedPowerPrimeTruncatedEquiv_X` により変数 i は γₚⁱ、特に最初の変数は γ₁ に対応する。
+係数環の非零性・追加の平坦性・CharP インスタンスは不要。
+BS Rem 7.15(1)（著者版 p.62）の切断表示の自由分冪代数側の計算であり、
+原典の Prop 7.11 を使わない有限テンソル分解・有限支持による経路である。
+残るのは γ₁=f を課した商の係数商との比較、実 pd 包の構造・普遍性、
+prismatic envelope の Frobenius 引戻しとの同定である。
+指定出力の存在定理は E1.23 で証明済みだが、本依頼全体は未完了。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4370 jobs）。
+新規 27 公開宣言の `assert_no_sorry` を追加した専用監査は終了コード 0。
+生成宣言を含む 2950 宣言の推移的公理依存は標準 3 公理のみ。
+有限段の評価単射性・表示同型・有限支持・可算評価単射性と代数同型・変数公式の
+公開型 7 本を `#print` で確認した（終了コード 0）。
