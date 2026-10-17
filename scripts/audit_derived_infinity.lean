@@ -278,6 +278,43 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.closedNerveInclusion_edge
 #print axioms SerrePositivity.InfinityCategories.closedNerveInclusion_higher
 
+#print axioms SerrePositivity.InfinityCategories.nonpositiveFreeBasis
+#print axioms SerrePositivity.InfinityCategories.complexSemifree_of_nonpositive_free
+#print axioms SerrePositivity.InfinityCategories.moduleFreeLeftResolution
+#print axioms SerrePositivity.InfinityCategories.moduleFreeLeftResolution_free
+#print axioms SerrePositivity.InfinityCategories.moduleFreeChainResolution
+#print axioms SerrePositivity.InfinityCategories.moduleFreeChainResolution_free
+#print axioms SerrePositivity.InfinityCategories.moduleFreeChainProjection
+#print axioms SerrePositivity.InfinityCategories.moduleFreeChainProjection_d
+#print axioms SerrePositivity.InfinityCategories.moduleFreeChainAugmentation
+#print axioms SerrePositivity.InfinityCategories.moduleFreeChainProjection_exact
+#print axioms SerrePositivity.InfinityCategories.moduleFreeChainProjection_epi
+#print axioms SerrePositivity.InfinityCategories.moduleFreeChainCokernel
+#print axioms SerrePositivity.InfinityCategories.moduleFreeChainOpcyclesIso
+#print axioms SerrePositivity.InfinityCategories.moduleFreeChainOpcyclesIso_fac
+#print axioms SerrePositivity.InfinityCategories.moduleFreeChainAugmentation_quasiIso
+#print axioms SerrePositivity.InfinityCategories.moduleFreeChainAugmentationNat
+#print axioms SerrePositivity.InfinityCategories.moduleFreeCochainResolution
+#print axioms SerrePositivity.InfinityCategories.moduleFreeCochainResolution_free
+#print axioms SerrePositivity.InfinityCategories.moduleFreeCochainResolution_isZero
+#print axioms SerrePositivity.InfinityCategories.moduleFreeCochainResolution_semifree
+#print axioms SerrePositivity.InfinityCategories.moduleSingleExtendIso
+#print axioms SerrePositivity.InfinityCategories.moduleFreeCochainAugmentationNat
+#print axioms SerrePositivity.InfinityCategories.moduleFreeCochainAugmentation
+#print axioms SerrePositivity.InfinityCategories.moduleFreeCochainAugmentation_quasiIso
+#print axioms SerrePositivity.InfinityCategories.moduleFreeCochainHomologyZeroIso
+
+#print axioms SerrePositivity.InfinityCategories.semifreeClosedToComplex
+#print axioms SerrePositivity.InfinityCategories.semifreeClosedToComplex_full
+#print axioms SerrePositivity.InfinityCategories.semifreeClosedToComplex_faithful
+#print axioms SerrePositivity.InfinityCategories.moduleSemifreeResolutionFunctor
+#print axioms SerrePositivity.InfinityCategories.moduleSemifreeResolutionComparison
+#print axioms SerrePositivity.InfinityCategories.moduleSemifreeResolutionAugmentation
+#print axioms SerrePositivity.InfinityCategories.moduleSemifreeResolutionAugmentation_quasiIso
+#print axioms SerrePositivity.InfinityCategories.discreteAlgebraModule
+#print axioms SerrePositivity.InfinityCategories.discreteEmbedding
+#print axioms SerrePositivity.InfinityCategories.discreteEmbeddingHomologyZeroIso
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -293,6 +330,9 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.SphereBasis,
     `SerrePositivity.InfinityCategories.Derived.NerveInclusionSimplex,
     `SerrePositivity.InfinityCategories.Derived.NerveInclusion,
+    `SerrePositivity.InfinityCategories.Derived.NonpositiveBasis,
+    `SerrePositivity.InfinityCategories.Derived.FreeResolution,
+    `SerrePositivity.InfinityCategories.Derived.DiscreteEmbedding,
     `SerrePositivity.InfinityCategories.Derived.Semifree,
     `SerrePositivity.InfinityCategories.Derived.SemifreeKProjective,
     `SerrePositivity.InfinityCategories.Derived.SemifreeResolution,

@@ -1142,3 +1142,100 @@ closedNerveInclusion_higher {n : ℕ}
     (((closedNerveInclusion A D).app _ F) : Simplex A D n).hom I a b k hI ha hb hk = 0
 end SerrePositivity.InfinityCategories
 ```
+
+
+### D5b
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u
+open CategoryTheory Limits DifferentialGraded
+variable {S : Type u} [CommRing S]
+nonpositiveFreeBasis (P : Complex S) (hfree : ∀ k, Module.Free S (P.X k))
+    (hzero : ∀ k : ℤ, 0 < k → IsZero (P.X k)) : ComplexSemifreeBasis S P
+complexSemifree_of_nonpositive_free (P : Complex S)
+    (hfree : ∀ k, Module.Free S (P.X k)) (hzero : ∀ k : ℤ, 0 < k → IsZero (P.X k)) :
+    complexSemifree S P
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u
+open CategoryTheory Limits Abelian DifferentialGraded HomologicalComplex
+variable (S : Type u) [CommRing S]
+moduleFreeLeftResolution : LeftResolution (𝟭 (ModuleCat.{u} S))
+moduleFreeLeftResolution_free (M : ModuleCat.{u} S) :
+    Module.Free S ((moduleFreeLeftResolution S).F.obj M)
+moduleFreeChainResolution : ModuleCat.{u} S ⥤ ChainComplex (ModuleCat.{u} S) ℕ
+moduleFreeChainResolution_free (M : ModuleCat.{u} S) (n : ℕ) :
+    Module.Free S (((moduleFreeChainResolution S).obj M).X n)
+moduleFreeChainProjection (M : ModuleCat.{u} S) :
+    ((moduleFreeChainResolution S).obj M).X 0 ⟶ M
+moduleFreeChainProjection_d (M : ModuleCat.{u} S) :
+    ((moduleFreeChainResolution S).obj M).d 1 0 ≫ moduleFreeChainProjection S M = 0
+moduleFreeChainAugmentation (M : ModuleCat.{u} S) :
+    (moduleFreeChainResolution S).obj M ⟶ (ChainComplex.single₀ (ModuleCat S)).obj M
+moduleFreeChainProjection_exact (M : ModuleCat.{u} S) :
+    (ShortComplex.mk _ _ (moduleFreeChainProjection_d S M)).Exact
+moduleFreeChainProjection_epi (M : ModuleCat.{u} S) :
+    Epi (moduleFreeChainProjection S M)
+moduleFreeChainCokernel (M : ModuleCat.{u} S) :
+    IsColimit (CokernelCofork.ofπ (moduleFreeChainProjection S M)
+      (moduleFreeChainProjection_d S M))
+moduleFreeChainOpcyclesIso (M : ModuleCat.{u} S) :
+    ((moduleFreeChainResolution S).obj M).opcycles 0 ≅ M
+moduleFreeChainOpcyclesIso_fac (M : ModuleCat.{u} S) :
+    ((moduleFreeChainResolution S).obj M).pOpcycles 0 ≫ (moduleFreeChainOpcyclesIso S M).hom =
+      moduleFreeChainProjection S M
+moduleFreeChainAugmentation_quasiIso (M : ModuleCat.{u} S) :
+    QuasiIso (moduleFreeChainAugmentation S M)
+moduleFreeChainAugmentationNat :
+    moduleFreeChainResolution S ⟶ ChainComplex.single₀ (ModuleCat S)
+moduleFreeCochainResolution : ModuleCat.{u} S ⥤ Complex S
+moduleFreeCochainResolution_free (M : ModuleCat.{u} S) (k : ℤ) :
+    Module.Free S (((moduleFreeCochainResolution S).obj M).X k)
+moduleFreeCochainResolution_isZero (M : ModuleCat.{u} S) (k : ℤ) (hk : 0 < k) :
+    IsZero (((moduleFreeCochainResolution S).obj M).X k)
+moduleFreeCochainResolution_semifree (M : ModuleCat.{u} S) :
+    complexSemifree S ((moduleFreeCochainResolution S).obj M)
+moduleSingleExtendIso :
+    ChainComplex.single₀ (ModuleCat S) ⋙ ComplexShape.embeddingDownNat.extendFunctor (ModuleCat S) ≅
+      HomologicalComplex.single (ModuleCat S) (.up ℤ) 0
+moduleFreeCochainAugmentationNat :
+    moduleFreeCochainResolution S ⟶ HomologicalComplex.single (ModuleCat S) (.up ℤ) 0
+moduleFreeCochainAugmentation (M : ModuleCat.{u} S) :
+    (moduleFreeCochainResolution S).obj M ⟶
+      (HomologicalComplex.single (ModuleCat S) (.up ℤ) 0).obj M
+moduleFreeCochainAugmentation_quasiIso (M : ModuleCat.{u} S) :
+    QuasiIso (moduleFreeCochainAugmentation S M)
+moduleFreeCochainHomologyZeroIso (M : ModuleCat.{u} S) :
+    ((moduleFreeCochainResolution S).obj M).homology 0 ≅ M
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u
+open CategoryTheory Limits DifferentialGraded
+open scoped Simplicial
+variable (S : Type u) [CommRing S]
+semifreeClosedToComplex : ClosedCategory S (Semifree S) ⥤ Complex S
+semifreeClosedToComplex_full : (semifreeClosedToComplex S).Full
+semifreeClosedToComplex_faithful : (semifreeClosedToComplex S).Faithful
+moduleSemifreeResolutionFunctor : ModuleCat.{u} S ⥤ ClosedCategory S (Semifree S)
+moduleSemifreeResolutionComparison :
+    moduleSemifreeResolutionFunctor S ⋙ semifreeClosedToComplex S ≅ moduleFreeCochainResolution S
+moduleSemifreeResolutionAugmentation :
+    moduleSemifreeResolutionFunctor S ⋙ semifreeClosedToComplex S ⟶
+      HomologicalComplex.single (ModuleCat S) (.up ℤ) 0
+moduleSemifreeResolutionAugmentation_quasiIso (M : ModuleCat.{u} S) :
+    QuasiIso ((moduleSemifreeResolutionAugmentation S).app M)
+discreteAlgebraModule : Under (CommRingCat.of S) ⥤ ModuleCat.{u} S
+discreteEmbedding : nerve (Under (CommRingCat.of S)) ⟶ derivedInfinityCategory S
+discreteEmbeddingHomologyZeroIso (B : Under (CommRingCat.of S)) :
+    ((dgNerve.vertexEquiv S (Semifree S)
+      ((discreteEmbedding S).app _ (ComposableArrows.mk₀ B))).val).homology 0 ≅
+        (discreteAlgebraModule S).obj B
+end SerrePositivity.InfinityCategories
+```
