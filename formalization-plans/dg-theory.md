@@ -12380,3 +12380,35 @@ lake build SerrePositivity.DifferentialGraded.Morita.AdjunctionHomChecks SerrePo
 lake env lean SerrePositivity/DifferentialGraded/Morita/AdjunctionHomChecks.lean
 lake env lean SerrePositivity/DifferentialGraded/Morita/AdjunctionBrownSeedChecks.lean
 ```
+
+
+### 17.262 U16a進行中単位の確定：余積保存・関係消去・可算近似列（2026-10-17）
+
+ユーザーの調査・停止指示に従い、既に進行中の小単位だけを対象ビルド・公理監査まで仕上げた。
+新しいtelescope・表現可能性・随伴の単位には入らない。
+
+Morita/AdjunctionKernelColimits・AdjunctionKernelCoproductsは、任意kernelの実際の作用の
+u-small余積保存kernelDerivedTensorPreservesCoproductsを証明した。
+任意のSmall.{u} Jを許し、localHomKFlat・kernel列の射影性は仮定しない。
+通常作用を各出力評価のtensor随伴で計算し、射影入力族の増大比較と主局所化の余積から降下した。
+
+AdjunctionBrownRelations・AdjunctionBrownSuccessorは全生成元関係のu-small余積をconeで殺す。
+AdjunctionKernelSuccessorは実際のkernel作用の余積保存・三角性を供給し、
+kernelBrownSeedMap_generator_surjective・kernelBrownSuccessor_fac・kernelBrownSuccessor_killsを公開する。
+AdjunctionKernelSequenceはこれを反復し、kernelBrownApproximation・kernelBrownTransition・
+kernelBrownDiagram・kernelBrownTargetCoconeを構成した。
+各段階の生成元射の全射性kernelBrownApproximation_generator_surjectiveと、
+直後の段階の関係消去kernelBrownTransition_kills、標的射の互換性kernelBrownTransition_facを検証した。
+
+一般右随伴の残件は可算telescope、全入力のHom表現、実際の随伴・unit/counit・三角恒等式。
+恒等・結合の作用coherenceとU16cも未完。U16aの全受入とはしない。
+一般U12e・U15e分解版は中断のまま。既存公開名・型は変更していない。
+
+新規3 Checksを新旧自然性・QuasiEquivalence・U12eLocal・U12eGeneralInventory・
+Spectra.StageTwoと合同ビルドし成功（4113 jobs、終了コード0、警告0）。
+3 Checksの直接実行で新規38宣言（7・21・10件）を監査し、標準3公理以内。
+新規監査累計4997。U12eLocalの21宣言も再監査し、累計へ重複加算しない。
+新規sorry・axiom・引用・資源上限変更なし。
+保存済みの再現入口はMorita/AdjunctionKernelCoproductsChecks・
+AdjunctionKernelSuccessorChecks・AdjunctionKernelSequenceChecks。
+この区切りの後は調査記録だけを追加し、ユーザーの次の指示まで実装しない。

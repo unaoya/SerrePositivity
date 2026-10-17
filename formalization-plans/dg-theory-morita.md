@@ -104,7 +104,7 @@ unit/counitは上の実際の随伴の成分とする。随伴の存在・成分
 同一視しない。一対象Endでの既存随伴を任意kernelの証明の代わりにしない。
 この型の確定は右随伴の実装が完成したという意味ではない。
 通常Homのdg関手はAdjunctionHom.leanで実装・検証済み（U16a10）。
-一般導来右随伴の表現対象構成はAdjunctionBrownSeed.leanの初期被覆まで進んでいるが、存在証明は未完。
+一般導来右随伴の表現対象構成は初期被覆・関係消去・可算近似列まで進んでいるが、存在証明は未完（U16a11）。
 
 ### 5. 恒等作用（実装・検証済み、U16a4）・合成比較（実装・検証済み、U16a6）
 
@@ -488,4 +488,34 @@ AdjunctionHomChecksの6宣言、AdjunctionBrownSeedChecksの9宣言（instance�
 lake build SerrePositivity.DifferentialGraded.Morita.AdjunctionHomChecks SerrePositivity.DifferentialGraded.Morita.AdjunctionBrownSeedChecks SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionCanonicalChecks SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.DifferentialGraded.Checks.U12eGeneralInventory SerrePositivity.Spectra.StageTwo
 lake env lean SerrePositivity/DifferentialGraded/Morita/AdjunctionHomChecks.lean
 lake env lean SerrePositivity/DifferentialGraded/Morita/AdjunctionBrownSeedChecks.lean
+```
+
+
+## U16a11：任意kernelの余積保存・関係除去・可算近似列（2026-10-17）
+
+進行中だった単位を調査前の停止点として確定する。詳細・検証はdg-theory.md §17.262。
+AdjunctionKernelCoproductsのkernelDerivedTensorPreservesCoproductsは、
+任意J : Type zとSmall.{u} Jについて実際の主導来作用の余積保存を与える。
+これはlemmaであり、利用箇所でletによりinstanceを供給する。
+局所Hom K-flat性・kernelの射影的列は不要。
+
+AdjunctionKernelSuccessorのkernelBrownSeedMapとkernelBrownSuccessorは、追加仮定なしで
+初期生成元被覆と全生成元関係の消去を実際のkernel作用に適用する。
+AdjunctionKernelSequenceのkernelBrownApproximation・kernelBrownTransitionを反復し、
+kernelBrownDiagramとkernelBrownTargetCoconeへまとめた。
+全段階の生成元全射性・後続関係消去・標的射の互換性も公開した。
+一般右随伴の存在を仮定する構成ではなく、存在証明の途中の数学的対象である。
+
+残るのはtelescopeの表現対象、全入力で自然なHom同値、実際の右随伴・unit/counit・三角恒等式。
+恒等・結合の作用coherenceも未完。U16a全受入とU16cには進んでいない。
+調査報告後はユーザー指示まで新しい証明単位に入らない。
+
+3つの新規Checksを含む合同ビルド成功（4113 jobs、警告0）。
+直接公理監査は38新規宣言で標準3公理以内。新規sorry・axiom・引用なし。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Morita.AdjunctionKernelCoproductsChecks SerrePositivity.DifferentialGraded.Morita.AdjunctionKernelSuccessorChecks SerrePositivity.DifferentialGraded.Morita.AdjunctionKernelSequenceChecks
+lake env lean SerrePositivity/DifferentialGraded/Morita/AdjunctionKernelCoproductsChecks.lean
+lake env lean SerrePositivity/DifferentialGraded/Morita/AdjunctionKernelSuccessorChecks.lean
+lake env lean SerrePositivity/DifferentialGraded/Morita/AdjunctionKernelSequenceChecks.lean
 ```
