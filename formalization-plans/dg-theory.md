@@ -9922,3 +9922,58 @@ BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_
 U12e全体は引き続き未受入で、受入後にU16a〜d、U15e分解版へ進む。
 共有モデル圏一般論への新しいAPI要求はない。共有ルート・共有監査スクリプト・Perfect/・
 Endomorphism/・ScalarExtension*・Quotient/DerivedComparison*・Verdier/は編集していない。
+
+### 17.216 U12e56：合成後のsourceホモトピー同一視と増大square（2026-10-17）
+
+**cylinder計算。** 任意の前因子との合成は任意の準同型を保存するとは限らないため、
+必要なホモトピー同一視をK-flat仮定なしで別に証明した。
+`Bimodule/RightRestrictionNaturality.lean`は既存の積dg圏表示の右制限比較を自然同型へ束ねる。
+`Tensor/TensorModuleNaturality.lean`は既存の`tensorModuleIso`の生成複体に関する自然性を証明し、
+標準interval射影を任意の左因子とbalanced tensorした射が準同型であることを示す。
+`Tensor/RestrictionCylinder.lean`は制限と標準cylinder射影の可換式を計算し、
+制限後の相対K-flat性なしで、制限された射影のtensor像が準同型になることを証明する。
+全体で微分次数やcontracting homotopyの規約は既存のintervalとtensor実装をそのまま使う。
+
+**任意の前因子。** `Tensor/BimoduleCylinder.lean`の`composeAfter`は既存の合成双関手で
+前因子Pを固定する通常関手である。
+`composeAfter_sourcePrecylinderProjection_quasiIso`は、積dg圏上の主加群の標準cylinderを
+既存の右加群–bimodule同値で送った射影が、任意のPとの合成後も値ごとの準同型になることを示す。
+P・source加群のK-flat性、射影性、Homのflatnessは要求しない。
+右加群制限の自然比較と各値でのtensor計算を用い、独立な対象ごとのホモトピーを
+全dg自然なホモトピーの代用にはしていない。
+
+**ホモトピー同一視。** `Derived/BimoduleComposeHomotopy.lean`は前項の射影の導来像を反転し、
+cylinderの二つの包含の像を同一視する。
+`composeAfter_equalizes_source_boundary`と`composeAfter_map_eq_of_source_homotopy`は
+積dg圏表示の全dg自然な境界・主K上の射の一致を、合成後の主導来圏での一致へ送る。
+`composeAfter_map_eq_of_inverse_source_homotopy`は同値の余単位の自然性で任意の実際の
+bimodule射へ戻した形であり、やはりflat条件は課さない。
+
+**増大squareへの適用。** `Derived/BimoduleMiddleHomotopy.lean`では、
+`middleRestrictionResolvedMap_eq_of_source_homotopy`が増大射を全dg自然なホモトピーで替えた際の
+比較の計算射の導来像の一致を与える。
+`middleRestrictionResolvedMap_comp_of_source_homotopy`は、解像度の射rと増大s・qについて、
+r≫sとqの積dg圏表示の主Kでの一致から、合成後の導来圏での増大squareの可換性を得る。
+前項の厳密な増大squareの式を、この主K上の仮定まで弱めた。
+これは計算射の整合性であり、全導来比較自然変換の解像度独立性の受入とはまだ区別する。
+既存公開APIの名前・型・定義は変更していない。
+
+**検証。** 新規`Checks.DGBimoduleComposeHomotopy`は独立対象宇宙で、flat条件のない
+cylinder射影の準同型性と実際のbimodule射のホモトピー同一視、ZMod 2の場合を検査した。
+既存の中間圏自然性・比較・tensor制限・解像度同値・導来随伴・単位・制限・導来bimodule五角形・
+StageEight・StageSeven・Spectra.StageTwoとの統合ビルド成功（3424 jobs、警告なし）。
+主要16宣言の直接公理監査は重複・欠落なく標準3公理以内。新規監査累計4243宣言。
+今回の7受入Leanファイルのsorry・admit・新規axiom・資源上限変更は0件。採用済み引用0件。
+Lean v4.35.0-rc4とMathlib manifest/HEAD
+`e6bbacd0e1b7307ff6e17da09cd2455f60804fa6`を再確認した。
+全体文書検査は20 Markdown・320 exposition参照を検査し、担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+未解決参照1件で失敗した。計画書のローカルリンクと担当差分の空白検査は成功。
+
+**次の接続。** 今回のホモトピー可換な計算squareを、既存の導来合成の指定解像度計算自然同型と
+組み合わせて、`derivedMiddleRestrictionComparison`および前因子の全導来圏上の比較の
+解像度独立性へ接続する。その後、後因子の導来化、既存の積dg圏表示の制限との同定、
+準同値の場合の可逆性を進める。対角単位・結合子との整合性とcoherenceも残り、U12e全体は未受入。
+U12e受入→U16a〜d→U15e分解版の順を維持する。共有一般論への新しいAPI要求はない。
+共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・ScalarExtension*・
+Quotient/DerivedComparison*・Verdier/は編集していない。
