@@ -81,3 +81,16 @@
 - `Morita.QuasiEquivalenceProductsChecks` ビルド成功（2706 jobs）。
   既存2宣言・新規2宣言の公理監査は標準3公理のみ。
   依存先のdocstring整理による行長警告が再生されたが、自分の新規ファイルに警告・エラーはない。
+
+## U16b.7：U14再構成Hom・tensorとの主Perf/主導来比較
+
+- `Morita/QuasiEquivalenceEndomorphismComparison.lean`：擬同値に沿う実際の導来延長の後に、
+  指定されたU14対象GのHomを適用する主Perf同値を構成した。
+  その主導来包含正方形は、元の延長と元の再構成Homの合成に自然同型となる。
+- 逆経路は元のU14再構成tensorの後の実際の制限であり、選んだ合成同値の逆への自然同型を与えた。
+  Hom・tensor両経路の包含正方形は整数shiftと整合し、三角形関手の正方形も構成した。
+- 主Perf側にはGのthick生成を明示し、全導来同値にはさらにGのcompact生成を明示した。
+  全導来同値の順逆は延長⋙Hom・tensor⋙制限であり、主Perfとの正方形を公開した。
+  制限したGのendomorphism代数を無条件に同一視する主張は含めない。
+- `Morita.QuasiEquivalenceEndomorphismComparisonChecks` ビルド成功（2655 jobs）。
+  主要14宣言の公理監査は標準3公理のみ。自分のファイルの警告・エラーは0件。
