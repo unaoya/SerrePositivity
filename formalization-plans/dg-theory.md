@@ -11934,3 +11934,21 @@ python3 scripts/check_documentation.py
 監査宣言集合はChecks/DGOuterUnitRestriction.leanの9宣言に保存されている。
 今回もChecks.U12eLocalの実行で21宣言の監査を再現した。
 次はU16aの公開契約を最優先で固定し、一般経路の新しい証明単位には入らない。
+
+
+### 17.250 U16a公開APIの型固定と通常kernel作用（2026-10-17）
+
+共有契約をdg-theory-morita.md冒頭「U16a 公開 API」へ記録した。
+D→Eのkernelは右E・左Dの既存主導来bimodule。KernelBasic.leanのKernel・kernelIdentity・
+kernelGraph・kernelCompose・kernelComposeMapと、KernelTensor.leanのkernelTensor・
+kernelTensor_value・kernelTensor_graphを実装した。
+合成には始域DのlocalHomKFlatのみ、通常作用には局所Hom条件を要求しない。
+Kernel型自体とgraphはEのSmallだけを使い、作用と合成では各対象型のSmallを明示する。
+
+主導来作用kernelDerivedTensorFunctor/kernelDerivedTensor、kernelDerivedHomと随伴・unit/counit、
+kernelIdentityIso/kernelCompositionIsoは名前・正確な型・仮定のみ確定し、同文書で明示した。
+未証明の宣言や仮のaxiomをLeanに置いていない。一般右随伴を一対象Endの随伴だけで代用しない。
+KernelChecksの対象ビルド成功（2607 jobs、警告なし）。8公開宣言の型を#checkで照合し、
+直接公理監査は標準3公理以内。新規監査累計4843宣言。
+既存公開API・共有ルート・U16b/d担当ファイルは編集していない。
+次は一般経路の棚卸しとdocstringのみの整理へ進み、U16a・U16c全体は未受入として維持する。
