@@ -330,6 +330,30 @@ Cauchy 列だけでなく、全差の冪割算の証人とそれらの等式も�
 **未完了：** 固定初段上の極限の代数構造と普遍性、訂正済み step による超限塔の構成。
 条件付き Thm 7.14 はまだ未証明。
 
+### E3.13：固定基底の環余極限と完備化の普遍写像
+
+`AlgebraColimit.lean` と `CompletionUniversal.lean` を追加。
+
+- `algebraRingDirectLimitEquiv` と標準段射上の公式：環余極限と非交和代数余極限を
+  明示的な二つの普遍環射で比較。束の型による環演算の定義的同一性を仮定しない。
+- `algebraRingDirectLimitBaseMap`・`algebraRingDirectLimitAlgebra`・`algebraRingDirectLimitOf`：
+  共通の任意基底からの係数写像と代数構造、各段の代数射を実現。
+- `isCompletelyFaithfullyFlat_algebraRingDirectLimit`：任意のイデアル I に関する
+  各段の完全忠実平坦性を、元の共通基底作用の環余極限へ移す。
+- `algebraRingDirectLimitLift` と標準段射上の公式：両立する代数射の普遍写像を供給。
+- `natAdicCompletionLift`・`natAdicCompletionLift_of`・`natAdicCompletion_ringHom_ext`：
+  任意の自然数 p について、p 進完備な環への環射の通常完備化からの延長、
+  元の係数像との両立性と一意性を証明。
+
+**原典・経路の記録：** BS Thm 7.14（著者版 p.61）の超限反復に必要な代数構造と普遍性の補足。
+既存の実際の余極限・通常完備化を用いる。係数作用を元の標準環射から定めて両立性を検証。
+
+対象 build 終了コード 0（3629 jobs、新規モジュール警告なし）。
+専用監査終了コード 0、公開全 83 宣言の assert_no_sorry と全 203 宣言の再帰監査に成功。
+標準 3 公理のみ。全公開宣言の完全型を #print で確認。
+**未完了：** perfectoid・p 完全忠実平坦な代数の圏における実余極限の普遍性、
+訂正済み step による後続操作と超限反復。条件付き Thm 7.14 はまだ未証明。
+
 ### 残る範囲
 
 1. 有向系の p 進完備化の perfectoid 性は E3.9 で証明済み。各極限段の実際の塔への適用は残る。

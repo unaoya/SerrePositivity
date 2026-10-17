@@ -87,6 +87,19 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isAdicComplete_di
 
 assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isIntegralPerfectoid_ringDirectLimit_of_countable_upperBound_without_flatness
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.algebraRingDirectLimitEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.algebraRingDirectLimitEquiv_of
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.algebraRingDirectLimitBaseMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.algebraRingDirectLimitBaseMap_eq
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.algebraRingDirectLimitAlgebra
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.algebraRingDirectLimitOf
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFaithfullyFlat_algebraRingDirectLimit
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.algebraRingDirectLimitLift
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.algebraRingDirectLimitLift_of
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.natAdicCompletionLift
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.natAdicCompletionLift_of
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.natAdicCompletion_ringHom_ext
+
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
@@ -110,7 +123,9 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.Transfinite.BoundedCompletion,
     `SerrePositivity.BhattScholze.Andre.Transfinite.CompletedMaps,
     `SerrePositivity.BhattScholze.Andre.Transfinite.Terminal,
-    `SerrePositivity.BhattScholze.Andre.Transfinite.CountableRelations]
+    `SerrePositivity.BhattScholze.Andre.Transfinite.CountableRelations,
+    `SerrePositivity.BhattScholze.Andre.Transfinite.AlgebraColimit,
+    `SerrePositivity.BhattScholze.Andre.Transfinite.CompletionUniversal]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
@@ -212,3 +227,16 @@ run_cmd do
 #print SerrePositivity.BhattScholze.Andre.Transfinite.isAdicComplete_directLimit_of_countable_upperBound_without_injective
 
 #print SerrePositivity.BhattScholze.Andre.Transfinite.isIntegralPerfectoid_ringDirectLimit_of_countable_upperBound_without_flatness
+
+#print SerrePositivity.BhattScholze.Andre.Transfinite.algebraRingDirectLimitEquiv
+#print SerrePositivity.BhattScholze.Andre.Transfinite.algebraRingDirectLimitEquiv_of
+#print SerrePositivity.BhattScholze.Andre.Transfinite.algebraRingDirectLimitBaseMap
+#print SerrePositivity.BhattScholze.Andre.Transfinite.algebraRingDirectLimitBaseMap_eq
+#print SerrePositivity.BhattScholze.Andre.Transfinite.algebraRingDirectLimitAlgebra
+#print SerrePositivity.BhattScholze.Andre.Transfinite.algebraRingDirectLimitOf
+#print SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFaithfullyFlat_algebraRingDirectLimit
+#print SerrePositivity.BhattScholze.Andre.Transfinite.algebraRingDirectLimitLift
+#print SerrePositivity.BhattScholze.Andre.Transfinite.algebraRingDirectLimitLift_of
+#print SerrePositivity.BhattScholze.Andre.Transfinite.natAdicCompletionLift
+#print SerrePositivity.BhattScholze.Andre.Transfinite.natAdicCompletionLift_of
+#print SerrePositivity.BhattScholze.Andre.Transfinite.natAdicCompletion_ringHom_ext
