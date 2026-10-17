@@ -580,6 +580,16 @@
 - 指定dg圏そのものの係数変更と、基礎dg圏を係数変更した後の加群enhancementとの比較は
   区別を維持している。主Perfの導来係数変更図式の最終照合は残る。
 
+## U14a.31：実際の導来tensor・単位・余単位のshift整合性と三角性（2026-10-17）
+
+- `DerivedTensorTriangles.lean`：既存の実際の導来tensor–Hom随伴に対し、
+  右関手の整合的shiftからMathlibの随伴APIで左関手のCommShiftを構成した。
+- 随伴のshift整合性と、既存の単位・余単位のshift整合性を証明し、
+  三角右関手の左随伴が三角的であることから実際の再構成導来tensorの三角性を得た。
+- `ChecksDerivedTensorTriangles` の対象ビルド成功。新規5主要宣言の公理は標準3公理のみ。
+- 左関手の構造は明示したEの射影性を使う定義として保持し、推論不能な大域instanceは追加していない。
+  既存の導来tensor・随伴・単位・余単位の名前や型は変更していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
