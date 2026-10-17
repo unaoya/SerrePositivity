@@ -465,3 +465,18 @@ HEAD からの差分全体が自分の変更だけであることも確認する
   project import 依存210・275ファイルに禁止された dg 圏分解系への依存なし。
   新規 sorry・axiom・引用なし。ルートおよび他担当の既存ファイルは編集していない。
 - U15e13 のコミット：`8be670fe`（自分の5ファイルのみと直後に確認）。
+
+### U15e15：零段階の代表加群同型と商への比較射
+
+- `Quotient/DerivedComparisonZeroModule.lean`：複体としての `lengthZeroMap` を、
+  全次数自然な実際の加群射 `lengthZeroModuleMap` へ持ち上げた。
+  作用の可換性は、商の制限代表加群への次数ごとの単射な包含を通じて検証している。
+  評価による同型反映から、元の代表加群と零段階の加群同型 `lengthZeroModuleIso` を構成。
+- 零段階の包含との合成が、実際の dg 商包含の Hom 写像による
+  `representableRestrictionMap` と等しいことを `lengthZeroModuleMap_inclusion` で証明した。
+  従って長さ filtration の始点・終点・比較射が加群圏内で接続された。
+- 対象ビルド `Checks.QuotientZeroModule` 成功（単独2570 jobs、最後の再検証は併合ビルド内）。
+  主要4宣言の公理監査は標準3公理のみ。project import 依存381ファイルに禁止分解系なし。
+  新規 sorry・axiom・引用なし。他担当およびルートのファイルは編集していない。
+  この同型には K-flat 仮定は不要。U15e の完全忠実性と U17b 全体は引き続き未完。
+- U15e14 のコミット：`0deb4cca`（自分の5ファイルのみと直後に確認）。
