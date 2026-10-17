@@ -268,6 +268,17 @@
 - `ChecksGeneratorHomIso` と更新した `ChecksCompatibility` の対象ビルド成功。
   新規6主要宣言の公理は標準3公理のみ。U14公開入口へimport済み。
 
+## U14b.2：全Hom比較のホモトピーretract安定性（2026-10-17）
+
+- `HomMapNaturality.lean`：任意のdg関手の全Hom写像について、閉零射による前合成・後合成との
+  可換式を、豊穣合成の保存から証明。
+- `HomComparisonRetracts.lean`：始域のK(D)内retractに沿って、再構成Hom写像の擬同型性が
+  保たれることを証明。各次数のHomology写像のretractArrowを実際に構成した。
+- 全終域に対する擬同型条件をK(D)上の対象の性質として定義し、生成対象Eを含むことと
+  retract安定性を証明。shift・cone閉性とthick生成からの比較はなお別義務である。
+- `lake build SerrePositivity.DifferentialGraded.Endomorphism.ChecksHomComparisonRetracts` 成功。
+  新規7主要宣言の公理は標準3公理のみ。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
