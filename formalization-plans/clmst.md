@@ -9870,6 +9870,18 @@ CLMST 監査 `scripts/audit_clmst.lean` が全て終了コード0で完了した
 原典の一般 rank 全体の組立てと Prop 2.4.7 の引用の置換はなお未完成である。
 原典 E∞ 版 Cor 8.12 は保留を継続し、新しい sorry・axiom・引用は追加していない。
 
+**一般 rank の独立準備・有限直積の元の係数を保つ通常底変換（2026-10-17）。**
+共通層 `CommutativeAlgebra/FiniteProductBaseChange.lean` は mathlib の右側有限直積の
+代数 tensor 比較を、原典の係数環を左に置く (∏Bi)⊗R S≃∏(Bi⊗R S) へ正規化する。
+`finiteProductBaseChangeEquiv` は元の ∏Bi 上の代数同型であり、R 上だけの線形同値に弱めていない。
+全ての純 tensor の各座標、元の S→(∏Bi)⊗R S の標準写像と各成分の標準写像の一致、
+任意の元の Bi→Ci に関する実可換式を公開した。有限添字集合は空でもよい。
+平坦性・完備性・Noether 性・perfectoid 性の仮定は不要で、既存の有限直積と tensor の一般論は再実装しない。
+共通層に BS・CLMST・Inputs・Paper の import 依存はない。
+対象1317ジョブと専用監査の公開4宣言が成功。全4宣言は assert_no_sorry 成功・標準3公理のみ。
+次は原典の Ri の指定した perfectoid 化への元の写像をこの実図式へ接続する。
+原典 E∞ 版 Cor 8.12 の保留は継続し、新しい sorry・axiom・引用は追加していない。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
