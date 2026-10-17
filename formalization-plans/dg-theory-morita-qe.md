@@ -12,13 +12,16 @@
 | U16b：実際の随伴shift・三角性・Perf・U13/U14比較 | U16b.1–10で実装・合同ビルド・公理監査済み。主導来graph比較を含め担当範囲を受入済み |
 | 積dg圏上の擬同値 | 既存 `derivedBimoduleRestrictionEquivalence` の `localHomKFlat A C`・`localHomKFlat A D` を保持する。無条件化しない |
 | U16aグラフ作用との計算比較 | U16b.10でkernel変数の主局所化上の実際の作用との自然同型、随伴・単位・余単位・shift・三角性・Perfを検証済み |
-| U16d：Perf・係数変更・合成自然性 | U16d.1–26の明示条件下の実装範囲を受入済み。全体の受入は未完。受入範囲・残る4接続・中心作用の保留は末尾の最終受入記録を参照 |
+| U16d：Perf・係数変更・合成自然性 | U16d.1–26の明示条件下の実装範囲を受入済み。この受入範囲でU16dを完了とする。保留事項・再開条件・公開入口は「U16d最終受入記録」を参照 |
 | 中心作用 | 保留。今回の実装対象にしない |
 
 新規Leanファイルは `Morita/QuasiEquivalence*`・`Perfect*`・`ScalarExtension*` のみ。
 他担当のKernel・Adjunction・Coherence・Criterion・Verdier・Quotient系列、
 既存Endomorphism/Perfectの公開APIの型は変更しない。
 引用は追加しない。DG-MOR等が必要になれば採用せず停止・報告する。
+
+以下の各実装節の「未完」「未受入」は、その単位の検証時点の履歴である。
+現在のスコープと完了判定は「U16d最終受入記録」を正とする。
 
 ## U16b.1：既存の導来同値のshift・三角性
 
@@ -721,11 +724,12 @@ U16aの一般右随伴・unit/counit・三角恒等式は既に実装済みで�
 U16aの作用coherenceの進捗と本担当のPerfへの移送は別であり、以下の受入記録を正とする。
 
 
-## U16d最終受入記録：明示条件下の担当範囲（2026-10-17）
+## U16d最終受入記録：明示条件下の担当範囲で完了（2026-10-17）
 
-U16d.1–26のソース・監査入口と上記残項目を照合した。
-**次表の実装範囲を受入済みとする。U16d全体・U16全体の完了は宣言しない。**
-中心作用は保留のまま受入範囲から除く。
+U16d.1–31の実装と監査を照合し、ユーザーのスコープ確定に従い、
+**U16d は、表の受入範囲で完了とする。**
+保留事項はこの完了の条件に含めない。U16全体の受入判断は統合担当に委ねる。
+中心作用は引き続き保留（M9 の手順 9 で形を決める）。
 
 | 受け入れる範囲 | 公開された証拠と適用条件 |
 | --- | --- |
@@ -739,22 +743,70 @@ U16d.1–26のソース・監査入口と上記残項目を照合した。
 | 主導来kernel変数の係数変更 | `scalarKernelDerivedExtension`、任意解像度計算・解像度変更同型の自己／推移則。局所Hom K-flat性や環準同型のflat性は不要 |
 | 通常モデルへの増大比較 | `scalarKernelDerivedExtensionAugmentation` と `_app`。比較射の存在を受入れ、可逆性は `_isIso` のhπ（係数変更後の積上解像度増大のkernel擬同型性）を明示。hPN・hP'でhπを代用しない |
 
-残る接続は次の4件である。
+| 局所化kernel係数変更へのモデル条件付き正方形 | `scalarKernelLocalizedDerivedSquare`、`_augmentation`、`scalarKernelLocalized_columnsPerfect`、`scalarKernelLocalizedPerfectSquare`、`_inclusion`（U16d.27）。通常代表Pを指定し、hα・hAug・hP'を保持。増大後に従来の通常モデル比較と一致する |
+| 出力加群と評価複体の導来係数変更の比較 | `scalarOutputEvaluationModelIso`、`_augmentation`、`_naturality`、`scalarOutputEvaluationIso`、`_model`、`scalarKernelOutputEvaluationIso`（U16d.28）。評価値のK-flat性と加群側増大の可逆性を分離。hEと全評価のhPNによる十分条件版も受入れ、U12fとの成分の一致は含めない |
+| 解像度モデル上の二経路の計算 | `scalarKernelOutputModelComputation`、`scalarKernelOutputLeft_model`、`scalarKernelOutputRight_model` と通常入力版（U16d.29）。元の全導来正方形を実際のbalanced比較・kernel増大に計算する等式。可逆性や局所Hom条件は不要 |
+| 実際の合成比較に沿う正方形の貼り合わせ | `scalarKernelLocalizedCompositionSquare`、`_diagram`、`scalarKernelLocalizedCompositionPerfectSquare`、`_inclusion`（U16d.30）。両側の公開kernelCompositionIsoを使用。hD・hD'と両モデルの条件を保持。終域は係数変更した二kernelの合成であり、係数変更関手の合成保存同型を結論しない |
+| kernel評価モデルとU12d計算・増大との比較 | `scalarKernelResolutionEvaluation_computation`、`scalarKernelEvaluationAugmentation_relativeKFlat` と閉零代表計算（U16d.31）。任意の右射影解像度族に対応し、増大の比較は入力の相対K-flat性を保持 |
 
-1. **作用coherenceのPerfへの移送。** 恒等・合成の比較と射自然性の受入から、
-   左右単位・結合の全図式の受入は導かない。
-   U16aには `CoherenceUnitMain.lean` の `kernelCompositionIso_rightUnit` があり、
-   `dg-theory-morita.md` のU16a19時点では任意kernelの結合・左単位の統合が継続中。
-   共有ツリー内の進行中の未追跡Coherenceファイルは今回の受入根拠に含めない。
-2. **局所化した係数変更関手への正方形の接続。**
-   通常kernelに関する `scalarKernelDerivedBaseChangeIso` と、主kernel上の
-   `scalarKernelDerivedExtension` は別に完成している。
-   増大比較の存在だけでは両者を同一視せず、可逆性と図式を接続する証拠が残る。
-3. **U12fとの成分同定。** U12f側の始域は `complexDerivedExtension` による出力評価の係数変更、
-   全dg加群比較側は `derivedExtension` による出力加群の係数変更後の評価である。
-   この交換の比較と、二つの比較射の一致を証明する接続が残る。
-4. **kernel合成との係数変更図式。** `scalarPerfectSquareComposition_eq` は与えた正方形を
-   合成して制限するアダプタであり、実際のkernel合成の係数変更比較の証明には読み替えない。
+### U16dの最終公開入口と仮定（統合担当向け）
+
+production入口は `SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence`。
+以下の公開名は名前空間 `SerrePositivity.DifferentialGraded.Morita` に属する。
+検証入口は `SerrePositivity.DifferentialGraded.Morita.ScalarExtensionAcceptanceChecks`。
+未コミットの出力成分ファイルはどちらにもimportしていない。
+
+共通の契約は任意可換環A、非有界cochain、次数+1のd、次数−1のホモトピー、
+Mathlib Enrichedの主モデルである。`A : Type u`、`D : Type v`、`E : Type w` に
+`[DGCategory A D]`、`[DGCategory A E]`、`[Small.{u} D]`、`[Small.{u} E]` を保持する。
+係数変更は同じ係数宇宙の `A' : Type u`、`[CommRing A']`、`φ : A →+* A'`。
+環準同型のflat性・有界性・局所Hom K-flat性を共通の暗黙の仮定にしない。
+複体導来圏を評価値に使うAPIでは、`HasDerivedCategory.{z}`・`.{z'}` とその射宇宙を保持する。
+
+| 用途・公開名 | 明示する仮定と実装ファイル（Morita/以下） |
+| --- | --- |
+| 主kernelの実際のPerf作用：`perfectDerivedKernelAction`、`perfectDerivedKernelActionFunctor` | `kernelColumnsPerfect A D E K`。`PerfectKernelColumns.lean`。全主導来kernel射に自然 |
+| 恒等・合成のPerf比較：`perfectDerivedKernelIdentityIso`、`perfectKernelCompositionIso`、`_kernel_naturality` | 恒等は局所Hom条件不要。合成は始域hD : `localHomKFlat A D` と両kernelの列のperfect性。`PerfectDerivedKernelCoherence.lean`・`PerfectDerivedKernelComposition.lean` |
+| 通常モデルの全導来係数変更正方形：`scalarKernelDerivedBaseChangeIso`、`_kernel_naturality` | 通常kernel P、hAug（全標準右解像度tensor出力での `derivedExtensionAugmentation` のIsIso）、hP'（全標準右解像度の係数変更後の右相対K-flat性）。`ScalarExtensionKernelDerivedComparison.lean`・`ScalarExtensionKernelDerivedNaturality.lean` |
+| 上記のPerf正方形：`scalarKernelPerfectDerivedSquare`、`_inclusion`、`_kernel_naturality` | 元の各列のperfect性とhAug・hP'。係数変更後の列のperfect性は証明から供給。`ScalarExtensionKernelPerfectSquare.lean`・`ScalarExtensionKernelPerfectNaturality.lean` |
+| K-flatモデル版：上記の `_ofKFlatModels` | 出力hE : `localHomKFlat A E`、全M,eのhPN（標準右解像度tensorのcomplexKFlat）、hP'。hAugはこの十分条件で供給する |
+| 主kernel係数変更：`scalarKernelDerivedExtension` と解像度変更・任意解像度計算 | 追加のflat性・局所Hom条件不要。`ScalarExtensionKernelLocalization.lean` |
+| 通常モデルへの増大：`scalarKernelDerivedExtensionAugmentation`、`_isIso` | 変換の存在は無条件。可逆性はhπ（係数変更後の積上解像度の増大がkernel擬同型）を保持。`ScalarExtensionKernelLocalizationAugmentation.lean` |
+| 主kernel係数変更への正方形：`scalarKernelLocalizedDerivedSquare`、`scalarKernelLocalizedPerfectSquare` | 通常代表Pとhα（上記増大のP成分のIsIso）、hAug・hP'。hπからhαを供給できる。Perf版は元の列のperfect性も保持。`ScalarExtensionKernelLocalizedSquare.lean` |
+| 出力評価との比較：`scalarOutputEvaluationModelIso`、`scalarOutputEvaluationIso`、`scalarKernelOutputEvaluationIso` | 評価値のcomplexKFlatとモデルの加群側増大のIsIso。任意出力Xの版は `X ≅ (moduleToDerived A E).obj N` を指定。kernel版は標準右解像度tensorをNに使う。`ScalarExtensionOutputEvaluation.lean`・`ScalarExtensionKernelOutputEvaluation.lean` |
+| 二経路の実際のモデル計算：`scalarKernelOutputLeft_model`・`scalarKernelOutputRight_model` | K-flat性や増大の可逆性は不要。`ScalarExtensionKernelOutputModels.lean` |
+| 合成に沿う実際の作用正方形：`scalarKernelLocalizedCompositionSquare`、Perf版 | hDに加え、独立にhD' : `localHomKFlat A' (DGBaseChange φ D)`。両通常モデルの `ScalarKernelLocalizedConditions`（hα・hAug・hP'）。Perf版は元の両kernelの列のperfect性。`ScalarExtensionKernelLocalizedComposition.lean` |
+| U12d評価・増大の計算：`scalarKernelResolutionEvaluation_computation`、`scalarKernelEvaluationAugmentation_relativeKFlat` | 前者は任意右射影解像度族、後者は入力の右相対K-flat性。`ScalarExtensionKernelEvaluationModels.lean` |
+
+hπとhPN・hP'は異なる条件であり、相互に無断で代用しない。
+`ScalarKernelLocalizedConditions` は比較同型を仮定に隠す構造ではなく、hα・hAug・hP'の三条件を保持する。
+導来Morita判定の公開入口・compact生成の仮定は次の「U16統合用」にまとめた通りで、U16dの係数変更条件とは区別する。
+
+### 保留事項と再開条件
+
+以下の接続は**保留**とする。
+再開の条件は、**M9 で、Morita 同値と T への係数変更の可換性が必要になった場合**である。
+ユーザーの指示があるまで着手しない。既に検証した個別の比較や等式を撤回するものではなく、
+受入表を越える統合・整合性の主張を本U16dの完了条件から外す。
+
+| 保留する接続 | 現在の証拠と再開点 |
+| --- | --- |
+| 作用の整合性のPerfへの移送に関する追加統合 | U16aから移送済みの `perfectKernelCompositionIso_rightUnit`・`_leftUnit`・`_associator`（`CoherencePerfectUnit.lean`・`CoherencePerfectAssociator.lean`、a17b756e）は供給済み。本担当でのM9用の追加図式の照合・統合は保留。元の `perfectKernelCompositionIso`・`perfectDerivedKernelIdentityIso` は上表の範囲で受入済み |
+| 局所化した係数変更関手への正方形の追加接続 | 通常代表＋hα・hAug・hP'の `scalarKernelLocalizedDerivedSquare`・Perf版までは受入済み。全主導来kernel射・条件族の自然性などの追加統合は保留。`ScalarExtensionKernelLocalizedSquare.lean`、`ScalarExtensionKernelDerivedNaturality.lean`、`ScalarExtensionKernelLocalizationAugmentation.lean` から再開 |
+| U12fとの成分の同定 | 出力評価比較とU12d増大計算は受入済み。既存U12f比較と全dg加群正方形の成分が一致する最終等式は保留。`scalarKernelTensorBaseChange`（`ScalarExtensionKernelTensor.lean`）、`scalarKernelOutputEvaluationIso`、`scalarKernelOutputLeft_model`・`scalarKernelOutputRight_model`、`scalarKernelEvaluationAugmentation_relativeKFlat` が再開点。未コミットファイルの状態は後述 |
+| kernelの合成と係数変更の図式の追加比較 | 実際の合成比較に沿う作用正方形の貼り合わせは受入済み。係数変更関手が元の合成kernelを二つの係数変更kernelの合成へ送るkernel同型と、それを通す既存正方形との一致は保留。`scalarKernelLocalizedCompositionSquare`（`ScalarExtensionKernelLocalizedComposition.lean`）、`scalarKernelDerivedExtension`（`ScalarExtensionKernelLocalization.lean`）、`scalarPerfectSquareComposition_eq`（`ScalarExtensionPerfectSquares.lean`）が再開点 |
+
+中心作用は引き続き保留し、**M9 の手順 9 で形を決める**。
+
+### 未コミットの進行中ファイル
+
+`SerrePositivity/DifferentialGraded/Morita/ScalarExtensionKernelOutputComponents.lean` を削除せず保持する。
+対象ビルドは失敗しており、コミット・公開入口へのimport・受入・公理監査の完了には含めない。
+出力モデルのbalanced成分における型の照合（`scalarKernelOutputEvaluationModelIso_balanced`）と、
+最終U12f成分式のtensor写像の簡約（`scalarKernelOutputEvaluationIso_u12f`）が未解決。
+ソースにsorry・admit・axiom・trace_stateは追加していない。
+失敗の再現は `lake build SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelOutputComponents`。
+現在は保留中であり、このコマンドが成功するとは主張しない。
 
 ## U16統合用：導来Morita判定の最終公開名と仮定
 
@@ -799,6 +851,8 @@ U16dの受入範囲・残る接続、U16aのcoherenceの進捗とは独立した
 - 対象一覧 `/tmp/serre-u16-final-acceptance-targets.txt`、
   ログ `/tmp/serre-u16-final-acceptance.log`。
   再現方法は同一覧の各行を `lake build` の対象に渡すこと。
+  /tmpの一覧がなくても、現行の同担当範囲はリポジトリ内の
+  `lake build SerrePositivity.DifferentialGraded.Morita.ScalarExtensionAcceptanceChecks` で再検査できる。
   一覧はMorita内のQuasiEquivalence*・Perfect*・ScalarExtension*・CriterionDerived*の
   全Checksと `Checks.DGFunctorDerivedEquivalence`、2公開入口から成る。
 - 担当98 Leanファイルを走査しsorry・admit・axiomトークン0件。
@@ -826,7 +880,8 @@ U16dの受入範囲・残る接続、U16aのcoherenceの進捗とは独立した
   `scalarKernelLocalizedPerfectSquare` と `_inclusion` で実際の主Perf正方形へ制限した。
   係数変更後の列のperfect性を追加仮定にしていない。
 - 監査入口と公開入口の合同ビルド成功（3443 jobs、警告・エラー0）。6宣言の公理は標準3公理のみ。
-  ログは `/tmp/serre-u16d-27-audit.log`。U12f成分同定の受入はまだ行わない。
+  ログは `/tmp/serre-u16d-27-audit.log`。再現は
+  `lake build SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelLocalizedSquareChecks SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence`。U12f成分同定の受入はまだ行わない。
 
 残接続(2)は、**通常代表を指定しhα・hAug・hP'を明示した正方形**の範囲で接続した。
 通常kernel射に関する旧正方形の自然性は保持するが、新しい局所化正方形について
@@ -851,8 +906,10 @@ U16dの受入範囲・残る接続、U16aのcoherenceの進捗とは独立した
   各M,eでのhPNと出力モデルの増大のIsIsoを保持し、`_ofKFlatModels` は出力hEと全評価でのhPNを保持する。
   複体導来圏の宇宙z・z'とそのHasDerivedCategoryを明示し、主加群導来圏の宇宙へ固定しない。
 - 公理監査入口のビルド成功（3250 jobs、警告・エラー0）。12宣言は標準3公理のみ。
-  ログは `/tmp/serre-u16d-output-eval-audit.log`。
+  ログは `/tmp/serre-u16d-output-eval-audit.log`。再現は
+  `lake build SerrePositivity.DifferentialGraded.Morita.ScalarExtensionOutputEvaluationChecks`。
   公開入口との合同ビルドも成功（3445 jobs、警告・エラー0、`/tmp/serre-u16d-28-audit.log`）。
+  同じChecksと `SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence` を `lake build` に渡す。
 
 残接続(3)の「出力加群の導来係数変更と複体評価を比較する射・同型」は条件を明示して構成した。
 **この比較を挿入した全dg加群正方形の成分が既存U12f比較と一致する等式は、引き続き証明中である。**
@@ -871,7 +928,8 @@ U16dの受入範囲・残る接続、U16aのcoherenceの進捗とは独立した
 - この7宣言はモデル計算の等式であり、K-flat性や増大の可逆性を必要としない。
   可逆性を使う正方形は従来のhAug・hP'を引き続き保持する。
 - 監査入口のビルド成功（3244 jobs）。7宣言の公理は標準3公理のみ。
-  ログは `/tmp/serre-u16d-output-models-audit.log`。
+  ログは `/tmp/serre-u16d-output-models-audit.log`。再現は
+  `lake build SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelOutputModelsChecks`。
   U12f成分同定はこれらの計算と評価比較を合わせる次の接続であり、この単位では未完とする。
 
 
@@ -887,7 +945,8 @@ U16dの受入範囲・残る接続、U16aのcoherenceの進捗とは独立した
 - `scalarKernelLocalizedCompositionPerfectSquare` と `_inclusion` で、元の二kernelの列のperfect性から
   この実際の作用正方形をPerfへ制限した。係数変更後の列のperfect性はU16d.27から供給する。
 - 対象監査入口のビルド成功（3303 jobs、警告・エラー0）。5宣言の公理は標準3公理のみ。
-  ログは `/tmp/serre-u16d-composition-audit.log`。
+  ログは `/tmp/serre-u16d-composition-audit.log`。再現は
+  `lake build SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelLocalizedCompositionChecks`。
 
 これは**実際のkernel合成と、各kernelを局所化係数変更した作用の図式**として受け入れる。
 ただし終域kernelは、二つの係数変更kernelの合成である。
@@ -909,5 +968,27 @@ U16dの受入範囲・残る接続、U16aのcoherenceの進捗とは独立した
 - 複体導来圏のHasDerivedCategoryとその射宇宙zは明示したまま保持する。
   元のdg圏の局所Hom K-flat性や環のflat性は追加していない。
 - 監査入口のビルド成功（3248 jobs、警告・エラー0）。5宣言は標準3公理のみ。
-  ログは `/tmp/serre-u16d-evaluation-models-audit.log`。
+  ログは `/tmp/serre-u16d-evaluation-models-audit.log`。再現は
+  `lake build SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelEvaluationModelsChecks`。
   U12f比較の成分同定へ使う実際の計算補題として受け入れるが、U16d全体の受入は引き続き未完。
+
+
+## U16dスコープ確定・終了時の再現手順（2026-10-17）
+
+ユーザーの指示により、U16dは「U16d最終受入記録」の表の範囲で完了とする。
+同節の保留事項にはユーザーの再開指示があるまで着手しない。
+各実装節に残した「未完」「全体未受入」は検証当時の履歴であり、現在のスコープ判定を変更しない。
+未コミットの `ScalarExtensionKernelOutputComponents.lean` は保持し、完了した成果に含めない。
+
+リポジトリ直下から次を実行する。/tmpのファイルを必要としない。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Morita.ScalarExtensionAcceptanceChecks SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence SerrePositivity.DifferentialGraded.Morita.CriterionDerived
+```
+
+`ScalarExtensionAcceptanceChecks.lean` は、担当のPerf・ScalarExtension・QuasiEquivalence・
+CriterionDerivedの54監査入口（既存 `Checks.DGFunctorDerivedEquivalence` を含む）をimportする。
+対象3入口の合同ビルドは成功（3713 jobs、終了コード0、警告・エラー0）。
+367宣言の公理監査はすべて `propext`、`Classical.choice`、`Quot.sound` の範囲内。
+新規sorry・admit・axiom・引用は追加していない。
+公開入口と再現監査は保留中の未コミットファイルをimportしていない。
