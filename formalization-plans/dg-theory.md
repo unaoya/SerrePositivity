@@ -10130,3 +10130,57 @@ U12eでは、左右の制限と積dg圏表示の制限の自然同型、その�
 U12e全体は未受入。共有モデル圏一般論への新しいAPI要求はない。
 共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・ScalarExtension*・
 Quotient/DerivedComparison*・Verdier/は編集していない。
+
+
+### 17.220 U12e60：左右制限の同定と全導来sourceの既存APIへの接続（2026-10-17）
+
+**閉零制限の同定。** `Bimodule/MiddleRestrictionPresentation.lean`は前項のuncurryHom比較を使い、
+直接構成した左右の制限と、積dg関手に沿う右加群制限との可換squareを自然同型として構成した。
+`middleLeftPresentationObjIso`・`middleRightPresentationObjIso`は各値で恒等となる加群同型であり、
+全次数のHom作用との自然性を満たす。
+`middleLeftPresentationIso`・`middleRightPresentationIso`は任意の閉零bimodule射に自然である。
+`Derived/MiddleRestrictionIdentification.lean`はこれを既存の選択された表示同値へ接続し、
+`middleLeftRestrictionIso`・`middleRightRestrictionIso`によって直接の左右制限を既存の
+`bimoduleRestriction`と同定した。
+`middleLeftRestrictionDerivedIso`・`middleRightRestrictionDerivedIso`は、局所化後の制限と既存の
+`derivedBimoduleRestriction`との自然な可換式である。
+これらの比較はSmall仮定だけを使い、局所Hom K-flat性を要求しない。
+
+**全導来sourceの同定。** `Derived/BimoduleMiddleSourceIdentification.lean`は、
+既存の`derivedBimoduleRestriction`と`derivedBimoduleComposeFunctor`だけで表す関手族
+`middleRestrictionDerivedSource`を定義した。
+Qに右制限、Pに左制限を施してDを中間圏として導来合成する、両変数の全導来圏上のsourceである。
+`middleClosedSourceIdentification`は閉零の両因子に自然な表示比較、
+`middleDerivedSourceLiftIdentification`は前因子の全導来圏上の自然同型である。
+その後因子の任意の閉零射についての自然性も証明した。
+`Derived/BimoduleMiddleSourceFull.lean`は後因子の右K-flat局所化へ降ろし、
+既存の右K-flat置換同値の余単位を使って`middleFullDerivedSourceIdentification`を構成した。
+これで§17.218の`middleFullDerivedSource`は、既存の導来制限と導来合成の合成へ
+両変数の全導来射に自然な自然同型で接続された。
+`derivedMiddleRestrictionNatTrans`はその同型で移した実際の中間圏比較であり、
+`derivedMiddleRestrictionNatTrans_transport`と`derivedMiddleRestrictionNatTrans_app`は移送の計算式である。
+局所Hom K-flat性の仮定は終端Eだけで、C・Dや制限後の因子には追加していない。
+今回の比較は自然変換であり、準同値Fの場合の可逆性をまだ主張しない。
+既存の公開APIの名前・型・定義は変更していない。
+
+**検証。** 新規`Checks.DGBimoduleMiddleSourceIdentification`は独立した四つの対象宇宙、
+C・Dの局所Hom K-flat性および制限後のK-flat性なしでのsource同定、
+既存の導来制限と導来合成をそのまま使った比較射の型、両因子の任意の導来射についての自然性、
+ZMod 2の場合を検査した。
+明示的uncurry表示・全導来中間比較・解像度独立性・ホモトピー・中間圏自然性・tensor制限・
+解像度同値・導来随伴・単位・制限・導来bimodule五角形・StageEight・StageSeven・Spectra.StageTwoとの
+統合ビルド成功（3447 jobs、警告なし）。主要26宣言の直接公理監査は重複・欠落なく標準3公理以内。
+新規監査累計4335宣言。今回の5受入Leanファイルのsorry・admit・新規axiom・資源上限変更は0件。
+採用済み引用0件。Lean v4.35.0-rc4とMathlib manifest/HEAD
+`e6bbacd0e1b7307ff6e17da09cd2455f60804fa6`を再確認した。
+全体文書検査は21 Markdown・320 exposition参照を検査し、担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+未解決参照1件で失敗した。
+
+**残件と引継ぎ。** 全導来sourceと既存の導来制限・導来合成の同定は今回仕上げた。
+次に準同値の場合の比較の可逆性を証明し、dg圏解像度変更に適用する。
+導来合成・対角単位・結合子の整合性とcoherenceを仕上げてU12e全体の受入条件を確認する。
+U12eは引き続き未受入であり、受入後のU16a〜d、U15e分解版の順を維持する。
+U15e分解版では局所K-flat版のQuotient/DerivedComparison*・Verdier/を読んで再利用する。
+共有モデル圏一般論への新しいAPI要求はない。共有ルート・共有監査スクリプト・Perfect/・
+Endomorphism/・ScalarExtension*・Quotient/DerivedComparison*・Verdier/は編集していない。
