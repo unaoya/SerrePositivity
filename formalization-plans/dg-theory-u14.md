@@ -681,6 +681,16 @@
 - `ChecksHomPreservesCoproducts` 対象ビルド成功。新規3主要宣言の公理は標準3公理のみ。
   既存の公開APIの名前・型は変更していない。全導来圏同値はまだ結論していない。
 
+## U14c.6：余積とconeによる全主導来対象の生成（2026-10-17）
+
+- `DerivedLocalizingGeneration.lean`：perfect対象を含みu-small余積で閉じた、同型閉な三角部分圏は
+  全主導来対象を含むことを証明。実際の標準解像度の各段、射影余積、既存のtelescope coneの
+  擬同型を使って対象ごとの所属を示した。
+- U13dのcompact⇒Perfは使用・再実装していない。標準解像度とtelescopeの既存APIを読んで使用した。
+- `ChecksDerivedLocalizingGeneration` 対象ビルド成功。新規5主要宣言の公理は標準3公理のみ。
+  既存の公開APIの名前・型は変更していない。DG-GEN/DG-MORは採用していない。
+- 次に実際の単位の同型性が上記閉性を満たすことを確認する必要がある。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
