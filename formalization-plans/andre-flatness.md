@@ -167,6 +167,34 @@ E3.4 の剰余比較の未接続点は本工程で解消した。
 既存の E3 私有補助 3 箇所の docstring も概要／方針／規約／使われ方の形式に統一した。
 これで完全忠実平坦性の**合成と有向余極限**の保存を供給したが、完備化による保存は未完了。
 
+### E3.7：未完備余極限の Frobenius 核と完備化のねじれ境界
+
+`TorsionBound.lean` と `FrobeniusKernelColimit.lean` を追加。
+
+- `isReduced_ringDirectLimit`、`isReduced_ringDirectLimit_of_perfectoid`：
+  被約環、特に perfectoid 環の有向余極限は被約。遷移写像の単射性は不要。
+- `mul_eq_zero_of_pow_mul_eq_zero_of_reduced`：被約環で a^n*x=0 なら a*x=0。
+- `ringDirectLimit_p_power_torsion_bound_of_perfectoid`：未完備余極限の p 冪ねじれは p で消える。
+- `adicCompletion_power_torsion_bound`：元環の a 冪ねじれが共通指数 N で消えれば、
+  (a) 進完備化の a 冪ねじれも同じ N で消える。第 k+m 座標で元の境界を使って実証明した。
+- `adicCompletion_ringDirectLimit_p_power_torsion_bound_of_perfectoid`：
+  perfectoid 塔の有向余極限を p 進完備化しても p 冪ねじれは p で消える。
+  完備化の被約性や perfectoid 性はこの結論に含めない。
+- `ringDirectLimit_frobenius_kernel_of_stage_root`、`ringDirectLimit_pow_mem_span_iff_of_stage_root`：
+  一段の p=u*π^p を満たす π の像について、未完備余極限でも x^p∈(π^p) ⇔ x∈(π)。
+  割り算の証人と等式を共通の後の段へ移し、その段の既存 perfectoid Frobenius 核定理を使用。
+- `ringDirectLimit_exists_frobenius_root_data`：未完備余極限に具体的な π と単元 u を選び、
+  p=u*π^p、mod p Frobenius 全射性、上記の核表示を同時に供給する。
+
+対象 build 終了コード 0（3497 jobs、新規モジュールの警告なし）。
+専用監査終了コード 0、全公開 38 宣言の assert_no_sorry と全 97 宣言の再帰監査に成功。
+標準 3 公理のみ、全公開宣言の完全型も #print で確認。
+
+これらは原典 p.61 の一文に対する極限操作の補足証明である。
+**未解消：** 完備化後の Frobenius 核表示への移送、p ねじれを許す Fontaine 核単項性の逆判定、
+完備化による完全忠実平坦性、可算極限段の構成はまだ必要。
+元環・完備化の有界ねじれの証明を、通常／導来完備化の比較の証明の代用にはしない。
+
 ### 残る範囲
 
 1. 有向余極限の p 進完備化の perfectoid 性（特に p ねじれを許す Fontaine 核の単項性）。
