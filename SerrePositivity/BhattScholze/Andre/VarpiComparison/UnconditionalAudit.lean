@@ -72,11 +72,11 @@ private partial def checkUnconditional (todo : List (Name × List Name))
       ``perfectPrismPDTensorVarpi_isDPMorphism,
       ``hodgeTate_completelyFaithfullyFlat_iff,
       ``hodgeTate_coefficient_comparison,
-      ``perfectPrismVarpiNativeDividedPowers,
-      ``perfectPrismVarpiNativeDividedPowers_base_apply,
-      ``perfectPrismVarpiPowerRootDividedPowers,
-      ``perfectPrismVarpiPowerRootDividedPowers_base_apply,
-      ``perfectPrismVarpiPowerRootDividedPowers_isDPMorphism,
+      `SerrePositivity.BhattScholze.Andre.perfectPrismVarpiNativeDividedPowers,
+      `SerrePositivity.BhattScholze.Andre.perfectPrismVarpiNativeDividedPowers_base_apply,
+      `SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPowerRootDividedPowers,
+      `SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPowerRootDividedPowers_base_apply,
+      `SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPowerRootDividedPowers_isDPMorphism,
       ``powerRootPrismMonicHodgeTate_varpi_regular]
     if forbidden.contains n then throwError "A1-c2：旧 hpR 宣言への依存 {n}"
     -- Lean 標準の collectAxioms と同じ kernel 環境で、非公開定義の仮の型を避ける。

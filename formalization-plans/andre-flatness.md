@@ -8156,3 +8156,128 @@ A1-c2 の専用 UnconditionalAudit は18生成宣言が標準三公理のみ、
 `André merged dependency audit passed: 49806 declarations, no legacy hpR dependencies.`。
 対象モジュールの全生成宣言と公開名の assert_no_sorry を検査した。
 新しい sorry・axiom・引用は追加していない。
+
+### E1.91／R1 承認された呼出し移行と旧分冪5宣言の削除（2026-10-17）
+
+本節は A1-a／R1 の追記。利用者から、A1-c2 の既存3ファイル
+`VarpiComparison/PDBaseChange.lean`・`PDCompatibility.lean`・`UnconditionalAudit.lean`
+に限って変更する明示承認を受けた。用意した差分の範囲で呼出しを移行した。
+それ以外の他レーンのファイル・節は編集していない。
+
+旧 native 分冪構造2宣言と係数還元構造3宣言を削除した。namespace は
+`SerrePositivity.BhattScholze.Andre`。いずれも右の同名 `_of_unconditional` 版を正本とする。
+
+- `perfectPrismVarpiNativeDividedPowers`
+- `perfectPrismVarpiNativeDividedPowers_base_apply`
+- `perfectPrismVarpiPowerRootDividedPowers`
+- `perfectPrismVarpiPowerRootDividedPowers_base_apply`
+- `perfectPrismVarpiPowerRootDividedPowers_isDPMorphism`
+
+`PerfectPrismVarpiNativePDEnvelope` は元の比較と一般普遍性の import を保つ入口とした。
+後続の無条件版をこの入口から import すると循環になるため、無条件版は集約から公開する。
+空になった同モジュールを全生成宣言の監査配列から外し、正本のモジュール監査は保持した。
+`PerfectPrismVarpiRegular` の二つの本質的な正則性補題と一般の順序交換補題は保持した。
+
+共通引数は {A:Type u} [CommRing A]、{p:ℕ} [Fact p.Prime]、
+W:OrientedPrism p A、hW:W.deltaStructure.IsPerfect、f:Polynomial A、hf:f.Monic。
+R₀=A/(p)、N=PowerRootPolynomial R₀ p hp、z=powerRootCoefficientPDInput p f、
+D=PowerRootCoefficientPDEnvelope p f、J=principalDPPositiveIdeal z、
+x は perfectPrismVarpiLift W hW の R₀ への像、K=Ideal.span {algebraMap R₀ D x}、
+q:D→+*D/K は標準商射。
+Rv=(A/W.ideal)/(ϖ)、Nv=PowerRootPolynomial Rv p hp、zv は f の自然な Rv 係数像の零段入力、
+Dv=PrincipalDPPresentation Nv zv とする。置換先5本の正確な型は次のとおり。
+
+```lean
+perfectPrismVarpiNativeDividedPowers_of_unconditional W hW f hf :
+  DividedPowers (principalDPPositiveIdeal zv)
+
+perfectPrismVarpiNativeDividedPowers_base_apply_of_unconditional W hW f hf (n : ℕ) :
+  (perfectPrismVarpiNativeDividedPowers_of_unconditional W hW f hf).dpow n
+    (algebraMap Nv Dv zv) = principalDPGenerator zv n
+
+perfectPrismVarpiPowerRootDividedPowers_of_unconditional W hW f hf :
+  DividedPowers (J.map q)
+
+perfectPrismVarpiPowerRootDividedPowers_base_apply_of_unconditional W hW f hf (n : ℕ) :
+  (perfectPrismVarpiPowerRootDividedPowers_of_unconditional W hW f hf).dpow n
+    (q (algebraMap N D z)) = q (principalDPGenerator z n)
+
+perfectPrismVarpiPowerRootDividedPowers_isDPMorphism_of_unconditional W hW f hf :
+  (powerRootCoefficientDividedPowers p W hW f hf).IsDPMorphism
+    (perfectPrismVarpiPowerRootDividedPowers_of_unconditional W hW f hf) q
+```
+
+いずれも hpR・hdeg を要求しない。零次数 f=1 と零係数環も元の範囲のまま扱う。
+BS Rem 7.15(1)（著者版 p.62）とは異なる射影的係数商・線形切断・構造移送の経路。
+変更した docstring と本節にこの差を記録する。
+
+承認された呼出し側の次の三公開名からも hpR を除いた。namespace は
+`SerrePositivity.BhattScholze.Andre.VarpiComparison`。
+`e=perfectPrismPDTensorVarpiEquiv W hW f`、
+`Ht=perfectPrismPDTensorVarpiDividedPowers W hW f hf` とする。
+全ての型の先頭に `let := varpiCoefficientAlgebra W hW` を置く。
+
+```lean
+perfectPrismPDTensorVarpiDividedPowers W hW f hf :
+  DividedPowers ((principalDPPositiveIdeal zv).map e.symm.toRingHom)
+
+perfectPrismPDTensorVarpiDividedPowers_generator W hW f hf (i : ℕ) :
+  Ht.dpow i (1 ⊗ₜ[R₀] algebraMap N D z) = 1 ⊗ₜ[R₀] principalDPGenerator z i
+
+perfectPrismPDTensorVarpi_isDPMorphism W hW f hf :
+  (powerRootCoefficientDividedPowers p W hW f hf).IsDPMorphism Ht
+    (Algebra.TensorProduct.includeRight : D →ₐ[R₀] Rv ⊗[R₀] D).toRingHom
+```
+
+環・作用・生成元・全元での自然射の照合は保持した。
+二つの監査で削除済み旧5名を実定数として参照せず、完全修飾した Name リテラルで禁止する。
+従って旧名がない現在も検査でき、将来の再導入に対しても拒否条件を弱めない。
+旧名を全リポジトリの Lean ファイルと監査で検索し、禁止 Name リテラル以外に
+参照がないことを確認した。
+
+検証：ps で他レーンの lake build がないことを確認して、変更対象・A1-c の両監査と集約を
+`set -o pipefail` 付きでビルドした。4672 jobs、終了コード0。
+置換先5名・hpR を除いた呼出し側3名・最終比較と根付き拡大・絶対入力普遍性の
+計12本の #check は終了コード0。
+A1-c の既存監査は100生成宣言が標準三公理のみ。
+A1-c2 の監査は18生成宣言が標準三公理のみ、6769 の型・値依存に旧 hpR 宣言なし。
+本レーン専用監査は終了コード0、
+`André monic root audit passed: 9029 declarations, standard axioms only.`、
+`André merged dependency audit passed: 49806 declarations, no legacy hpR dependencies.`。
+新しい sorry・axiom・引用は追加していない。
+
+最終完了監査：最新の利用者指示に従い、A1-e は起動・再開せず R1 を本担当が進めた。
+受渡し節は A1-f 向けの保存すべき公開名だけである。
+E1.82 の絶対入力普遍性、A1-f の固定完全基底上の圏同値・初期性、A1-c2 の無条件な
+係数比較を、同じ H・標準係数作用のまま集約し、公開型・証明・監査で照合した。
+E1.90 の新規最終比較の正確な型と hf・hdeg だけの前提はその節のとおり。
+
+R1 の累積整理は、旧分冪18名・raw2名・完全平坦性3名の合計23宣言が
+全 Lean コードからなくなったことを確認した。E1.83・84・87 の仮定除去も保持している。
+一方、A1-b が分類した八つの強い正則性主張と、それから得る候補の条件付き ϖ 正則性は
+数学的に別の主張なので保持する。prism 商が標数 p の場合まで無条件化しない。
+係数環自身の p 正則性・標数条件を表す別種の hpR も保持する。
+A1-c の旧 Candidate の二比較は、A1-c2 の型一致検査の基準として元の署名を保持する。
+新しい公開根がこれらを経由しないことは上記の型・opaque 値の禁止依存監査で検証済み。
+これらの条件付き比較を、一般の perfectoid 基底に対する完成定理として数えていない。
+
+一段の任意族の公開出力は、利用者が承認した hdeg を含む次の型を保つ。
+
+```lean
+exists_monicRootedPerfectoidExtension
+  (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
+  (hR : IsIntegralPerfectoid R p) {σ : Type u}
+  (f : σ → Polynomial R) (hf : ∀ s, (f s).Monic)
+  (hdeg : ∀ s, 0 < (f s).natDegree) :
+  ∃ (T : Type u) (_ : CommRing T) (φ : R →+* T) (ρ : σ → T),
+    IsIntegralPerfectoid T p ∧
+    (letI := φ.toAlgebra; IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) T) ∧
+    ∀ s, (f s).eval₂ φ (ρ s) = 0
+```
+
+root の本レーン集約 import は1行で、今回 root 自体は変更していない。
+単一入力・有限族・任意族と完備化の既存の構成、原典の順序の完備入力 SI、
+元の H の固定基底上の初期性、Frobenius 係数変更を保つ pd 比較は全て公開入口から参照できる。
+以上により、最新指示の R1 と A1-c2・A1-f の最終合流について必要な未完了作業はない。
+一般 Cartier イデアルの降下、基底を動かすサイトの一般化は今回の固定基底の担当範囲に含めない。
+全リポジトリの build や他レーンの引用入力の変更を実施したという主張ではない。

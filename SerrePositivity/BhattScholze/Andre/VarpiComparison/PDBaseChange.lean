@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiNativePDFlat
+public import SerrePositivity.BhattScholze.Andre.Unconditional.MonicPDEnvelope
 public import Mathlib.RingTheory.TensorProduct.Quotient
 
 /-!
@@ -16,7 +17,8 @@ public import Mathlib.RingTheory.TensorProduct.Quotient
 
 ## 規約
 R=A/(d) と A/p を区別する。一般の表示環同型に正則性は不要だが、
-原典側の実分冪構造には既存構成と同じ hpR を用いる。
+原典側の実分冪構造には射影的係数商による無条件版を用いる。
+原典の p ねじれなしへの帰着とは異なる証明経路。
 
 ## 使われ方
 R/p から R/ϖ への係数商、および実装の A/p 表示と原典の R/ϖ 表示の照合。
@@ -155,36 +157,36 @@ theorem perfectPrismPDTensorVarpiEquiv_generator (i : ℕ) :
 
 /-- 概要：底変換した実テンソル環に原典側と同じ分冪構造を与える。
 方針：全生成元を保つ同型で既存の実分冪構造を戻す。
-規約：正次数イデアルは同型の逆像で固定し、hpR とモニック性を明示する。
+規約：正次数イデアルは同型の逆像で固定し、モニック性のみを要求する。
 使われ方：BS Rem 7.15（著者版 p.62）の pd 包の係数底変換。 -/
 def perfectPrismPDTensorVarpiDividedPowers
-    (hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal)) (hf : f.Monic) :
+    (hf : f.Monic) :
     let := varpiCoefficientAlgebra W hW
     DividedPowers ((principalDPPositiveIdeal zv).map
       (perfectPrismPDTensorVarpiEquiv W hW f).symm.toRingHom) := by
   let := varpiCoefficientAlgebra W hW
   exact DividedPowers.ofRingEquiv rfl
-    (perfectPrismVarpiNativeDividedPowers W hW f hpR hf)
+    (perfectPrismVarpiNativeDividedPowers_of_unconditional W hW f hf)
 
 /-- 概要：底変換した実分冪構造で、入力の分冪は還元前の標準生成元の像になる。
 方針：環同型の移送公式と全標準生成元の一致を使う。
-規約：hpR とモニック性は既存の実分冪構造と同じ仮定。
+規約：モニック性のみを要求し、元の入力と生成元を保持する。
 使われ方：BS Rem 7.15（著者版 p.62）の pd 包としての底変換の具体的計算。 -/
 theorem perfectPrismPDTensorVarpiDividedPowers_generator
-    (hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal)) (hf : f.Monic) (i : ℕ) :
+    (hf : f.Monic) (i : ℕ) :
     let := varpiCoefficientAlgebra W hW
-    (perfectPrismPDTensorVarpiDividedPowers W hW f hpR hf).dpow i
+    (perfectPrismPDTensorVarpiDividedPowers W hW f hf).dpow i
       (1 ⊗ₜ[R₀] algebraMap (PowerRootPolynomial R₀ p hp) D (powerRootCoefficientPDInput p f)) =
         1 ⊗ₜ[R₀] principalDPGenerator (powerRootCoefficientPDInput p f) i := by
   let := varpiCoefficientAlgebra W hW
   let e := perfectPrismPDTensorVarpiEquiv W hW f
-  change e.symm ((perfectPrismVarpiNativeDividedPowers W hW f hpR hf).dpow i
+  change e.symm ((perfectPrismVarpiNativeDividedPowers_of_unconditional W hW f hf).dpow i
     (e (1 ⊗ₜ[R₀] algebraMap (PowerRootPolynomial R₀ p hp) D
       (powerRootCoefficientPDInput p f)))) = _
   have hInput : e (1 ⊗ₜ[R₀] algebraMap (PowerRootPolynomial R₀ p hp) D
       (powerRootCoefficientPDInput p f)) = algebraMap Nv Dv zv := by
     simpa only [principalDPGenerator_one] using perfectPrismPDTensorVarpiEquiv_generator W hW f 1
-  rw [hInput, perfectPrismVarpiNativeDividedPowers_base_apply]
+  rw [hInput, perfectPrismVarpiNativeDividedPowers_base_apply_of_unconditional]
   apply e.injective
   rw [e.apply_symm_apply]
   exact (perfectPrismPDTensorVarpiEquiv_generator W hW f i).symm

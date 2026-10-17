@@ -666,9 +666,9 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiQuotientEqui
 assert_no_sorry SerrePositivity.BhattScholze.Andre.principal_regular_swap
 assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrism_generator_modPrime_regular
 assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiLift_modPrime_regular
-assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPowerRootDividedPowers
-assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPowerRootDividedPowers_base_apply
-assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPowerRootDividedPowers_isDPMorphism
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPowerRootDividedPowers_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPowerRootDividedPowers_base_apply_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPowerRootDividedPowers_isDPMorphism_of_unconditional
 
 assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPQuotientEval
 assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPQuotientEval_mk
@@ -712,8 +712,8 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPDEnvelopeEq
 assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPDEnvelopeEquiv_coeff
 assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPDEnvelopeEquiv_input
 assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPDEnvelopeEquiv_positiveIdeal
-assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiNativeDividedPowers
-assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiNativeDividedPowers_base_apply
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiNativeDividedPowers_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiNativeDividedPowers_base_apply_of_unconditional
 assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_perfectPrismVarpiNativePDMorphism_of_unconditional
 
 assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiCoefficient_prime_eq_zero
@@ -1526,7 +1526,6 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.RankOneDPCoefficientQuotient,
     `SerrePositivity.BhattScholze.Andre.PrincipalDPCoefficientQuotient,
     `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiPDComparison,
-    `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiNativePDEnvelope,
     `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiNativePDFlat,
     `SerrePositivity.BhattScholze.Andre.DeltaDivisionCoefficientAut,
     `SerrePositivity.BhattScholze.Andre.PowerRootPolynomialPerfectDelta,
@@ -1711,11 +1710,11 @@ private partial def checkAndreUnconditionalDependencies (todo : List (Name × Li
       ``perfectPrismPDTensorVarpi_isDPMorphism,
       ``hodgeTate_completelyFaithfullyFlat_iff,
       ``hodgeTate_coefficient_comparison,
-      ``perfectPrismVarpiNativeDividedPowers,
-      ``perfectPrismVarpiNativeDividedPowers_base_apply,
-      ``perfectPrismVarpiPowerRootDividedPowers,
-      ``perfectPrismVarpiPowerRootDividedPowers_base_apply,
-      ``perfectPrismVarpiPowerRootDividedPowers_isDPMorphism,
+      `SerrePositivity.BhattScholze.Andre.perfectPrismVarpiNativeDividedPowers,
+      `SerrePositivity.BhattScholze.Andre.perfectPrismVarpiNativeDividedPowers_base_apply,
+      `SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPowerRootDividedPowers,
+      `SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPowerRootDividedPowers_base_apply,
+      `SerrePositivity.BhattScholze.Andre.perfectPrismVarpiPowerRootDividedPowers_isDPMorphism,
       ``powerRootPrismMonicHodgeTate_varpi_regular]
     if forbidden.contains n then throwError "André 合流：旧 hpR 宣言への依存 {n}"
     -- Lean 標準の collectAxioms と同じ kernel 環境で、非公開定義の仮の型を避ける。

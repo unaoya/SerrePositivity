@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.VarpiComparison.PDBaseChange
+public import SerrePositivity.BhattScholze.Andre.Unconditional.VarpiPDReduction
 
 /-!
 # BS Rem 7.15（著者版 p.62）：自然な係数テンソル射は分冪射
@@ -9,10 +10,11 @@ public import SerrePositivity.BhattScholze.Andre.VarpiComparison.PDBaseChange
 実装の A/p 上の実 pd 包から R/ϖ への通常テンソル底変換は分冪演算を保つ。
 
 ## 方針
-既存の正則係数商への分冪射と二つの構造移送を合成し、全ての元で自然な射と照合する。
+射影的係数商への分冪射と二つの構造移送を合成し、全ての元で自然な射と照合する。
+原典の p ねじれなしへの帰着とは異なる証明経路。
 
 ## 規約
-モニック入力と prism 商の p 正則性を明示する。標準生成元だけの照合で代用しない。
+モニック入力のみを仮定する。標準生成元だけの照合で代用しない。
 
 ## 使われ方
 原典側の pd 包の普遍性と通常のテンソル底変換の対応を保証する。
@@ -43,28 +45,28 @@ local notation "K" => Ideal.span {algebraMap R₀ D x}
 local notation "Rv" => (A ⧸ W.ideal) ⧸ Ideal.span {perfectPrismVarpi W hW}
 
 /-- 概要：元の実 pd 包から係数テンソル底変換への標準射は分冪を保つ。
-方針：正則係数商の分冪射を構造移送と合成し、全元で includeRight と同一視する。
-規約：hpR は既存の正則係数商構成の仮定であり、環同型自体の仮定ではない。
+方針：射影的係数商の分冪射を構造移送と合成し、全元で includeRight と同一視する。
+規約：元の環と係数作用を保持し、hpR と正次数を要求しない。
 使われ方：BS Rem 7.15（著者版 p.62）の pd 包の底変換を実分冪射として供給する。 -/
 theorem perfectPrismPDTensorVarpi_isDPMorphism
-    (hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal)) (hf : f.Monic) :
+    (hf : f.Monic) :
     let := varpiCoefficientAlgebra W hW
     (powerRootCoefficientDividedPowers p W hW f hf).IsDPMorphism
-      (perfectPrismPDTensorVarpiDividedPowers W hW f hpR hf)
+      (perfectPrismPDTensorVarpiDividedPowers W hW f hf)
       (Algebra.TensorProduct.includeRight : D →ₐ[R₀] Rv ⊗[R₀] D).toRingHom := by
   let := varpiCoefficientAlgebra W hW
   let e := perfectPrismPDTensorVarpiEquiv W hW f
   let e₀ := perfectPrismVarpiPDEnvelopeEquiv W hW f
-  have hq := perfectPrismVarpiPowerRootDividedPowers_isDPMorphism W hW hpR f hf
+  have hq := perfectPrismVarpiPowerRootDividedPowers_isDPMorphism_of_unconditional W hW f hf
   have h₀ := transport_isDPMorphism e₀
     (perfectPrismVarpiPDEnvelopeEquiv_positiveIdeal W hW f)
-    (perfectPrismVarpiPowerRootDividedPowers W hW hpR f hf)
+    (perfectPrismVarpiPowerRootDividedPowers_of_unconditional W hW f hf)
   have ht := transport_isDPMorphism e.symm rfl
-    (perfectPrismVarpiNativeDividedPowers W hW f hpR hf)
+    (perfectPrismVarpiNativeDividedPowers_of_unconditional W hW f hf)
   have hmid := DividedPowers.IsDPMorphism.comp
-    (perfectPrismVarpiNativeDividedPowers W hW f hpR hf) h₀ hq
+    (perfectPrismVarpiNativeDividedPowers_of_unconditional W hW f hf) h₀ hq
   have hc := DividedPowers.IsDPMorphism.comp
-    (perfectPrismPDTensorVarpiDividedPowers W hW f hpR hf) ht hmid
+    (perfectPrismPDTensorVarpiDividedPowers W hW f hf) ht hmid
   have he : (Algebra.TensorProduct.includeRight : D →ₐ[R₀] Rv ⊗[R₀] D).toRingHom =
       e.symm.toRingHom.comp (e₀.toRingHom.comp (Ideal.Quotient.mk K)) := by
     apply RingHom.ext
