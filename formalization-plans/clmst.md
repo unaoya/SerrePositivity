@@ -8545,6 +8545,60 @@ A と B の間で同値にする。全正次数も含み、almost 比較自体�
 KL にも必要な Cor 8.12 入力の宣言を先行し、公開名・正確な型を本計画の担当節に
 記録するよう依頼した。KL 側はこの入力を重複新設せず、担当節や Prop247 系を編集しない。
 
+#### KL-T：元の商の普遍性と canonical excision の正確な受渡し型（2026-10-17）
+
+`CommutativeAlgebra/PerfectoidizationQuotient.lean` の
+`SerrePositivity.IsPerfectoidization.quotient_map` は、指定普遍射 `f : A →+* C` と
+任意の `J : Ideal A` に対し、C/(J.map f) の指定 perfectoid 化を
+**元の A/J** の perfectoid 化としても証明する。原環の完備性・有限性は不要。
+単に新しい終域を perfectoid とみなすのではなく、元の quotientMap を通る一意因子分解を証明した。
+
+独立ファイル `BhattScholze/PerfectoidizationExcisionDiagram.lean` は、
+指定普遍射 hf:A→C、hg:B→D と q:A→B、J⊂A から実四角形を構成する。
+名前空間は `SerrePositivity.BhattScholze`。主な公開名は次の通り。
+
+- `perfectoidizationClosedSideUnit` と `..._isPerfectoidization`：
+  A/J → (C/(J.map f))_perfd の実 B3 単位と、元の商に対する普遍性。
+- `perfectoidizationClosedSideProjection`、`..._comp`、`..._eq_zero_of_mem`：
+  C から同じ対象への実縦射、元の f との単位図式、J の元の像の零化。
+- `perfectoidizationClosedSideProjection_originalIdeal`：任意の元の perfectoid 基底 R と
+  α:R→A、α(a)∈J に対し、全 s∈perfectoidIdeal R p hR a の像を実縦射が零化する。
+- `perfectoidizationClosedComparison`、`..._ideal_le`、`..._square`、`..._unit`、`..._eq_map`：
+  両閉側の実誘導射、ideal の適合性、四角形全体と元の quotient 単位の可換性、
+  元の A/J→B/(J.map q) の perfectoid 化誘導射との正確な一致。
+
+`CLMST/PerfectoidizationExcisionComparison.lean` の公開名
+`SerrePositivity.CLMST.perfectoidization_comparison_almost_of_canonical_excision` は、
+元の R 代数構造を持つ指定 f:A→ₐ[R]C、g:B→ₐ[R]D、q:A→ₐ[R]B、a:R について、
+次の **正確に指定した実四角形** の pullback 性を受け取る。
+
+```lean
+IsPullback
+  (CommRingCat.ofHom (IsPerfectoidization.map hf hg q.toRingHom))
+  (CommRingCat.ofHom (perfectoidizationClosedSideProjection hf (Ideal.span {algebraMap R A a})))
+  (CommRingCat.ofHom (perfectoidizationClosedSideProjection hg
+    ((Ideal.span {algebraMap R A a}).map q.toRingHom)))
+  (CommRingCat.ofHom (perfectoidizationClosedComparison hf hg q.toRingHom
+    (Ideal.span {algebraMap R A a})))
+```
+
+元の R の perfectoid 性、hf,hg、q,a とこの hPB だけから、
+`(IsPerfectoidization.mapAlgHom hf hg q).toLinearMap` の核・余核への
+`perfectoidIdeal R p hR a` の零作用を返す。閉側の R 作用は元の係数写像との合成で構成し、
+上辺 C,D の既存の R 作用は保持する。閉側の perfectoid 性と a の零化は本工程で供給する。
+
+対象ビルドと専用監査 `scripts/audit_clmst_canonical_excision.lean` が成功。
+公開13宣言・元の基底 ideal の実閉側への零化・単位 ideal の零環境界・
+可換性だけでは excision を得られない具体的反例の3例は、すべて
+`assert_no_sorry` が通り、標準三公理のみ。新しい引用を追加していない。
+**一般の整な包含に対するこの hPB は未証明**。
+担当 Cor 8.12 入力を受けた後、原典の導来 p 完備性・付値環条件と既存 B-I の
+離散対象との同定を照合して実適用する。可換四角形の構成や条件付き出力を
+包含比較そのものの完成として数えず、KL-T/Q は未完了のままとする。
+ルートビルド（6307 jobs）・KL 監査（1200 assert）も成功した。
+次は、実有限整共通モデルと Cor 8.12 の導来 p 完備性の前提を接続する。
+有限性だけから完備性を断言せず、必要なら有限表示の共通モデルへの近似を構成する。
+
 #### Prop 2.4.7 専任系列：原典から D-I/U/Q への型付き受渡し（2026-10-17）
 
 本節は統合表 D-I・D-U・D-Q の実入力を固定する。未採用の別計画は根拠にしない。
