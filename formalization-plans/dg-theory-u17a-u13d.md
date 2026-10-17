@@ -1219,3 +1219,31 @@ M9 の適用については、商を取る前の次数零の平坦 Hom を持つ
   同値性と零部分圏の反映に分離し、dg 擬同値の graph では前者を U16b から証明した。
   kernel 射・合成の自然性と全 coherence の接続は U16 の公開状態に応じて引き続き区別する。
 - 目標は進行中として維持する。中心作用・G 作用は指示通り保留。
+
+### U17b7：許容 kernel の全主導来射に自然な指定商・局所 perfect 比較
+
+- `Verdier/KernelQuotientNaturality.lean`：全列が perfect で、S の列が Perf_T に属す
+  kernel の充満部分圏を定義した。射に追加条件を課さず、U16 の実際の
+  `perfectDerivedKernelActionFunctor` を制限する。
+- `supportedKernelVerdierFunctor` は、元の Perf 作用を先に実際に局所化した
+  `perfectKernelVerdierFunctor` を関手部分とし、全 kernel 射を局所化の充満忠実性で降ろす。
+  元の商対象上の射の計算、恒等射・合成保存、因子化正方形の kernel 射に関する自然性を証明した。
+  これを元の Karoubi 関手延長と合成して、全 kernel 射を含む完備商作用を得る。
+- `Verdier/KernelComparisonNaturality.lean`：既存の完備 tria 商への作用と局所 perfect H⁰ 作用を、
+  同じ kernel 変数の関手に束ねた。`supportedKernelLocalPerfectSquare` はその関手間の自然同型。
+  その各成分が **既存の** `mainKernelLocalPerfectSquare` そのものである等式を公開し、
+  元の正方形と任意 kernel 射を貼り合わせる自然変換の等式も証明した。
+  同値の余単位の自然性による証明で、個別の比較や shift 構造は変更していない。
+- `Verdier/ChecksKernelComparisonNaturality.lean`：主要12宣言の公理監査は標準3公理のみ。
+  任意の dg 関手の graph kernel を許容圏へ入れた恒等射の例も検証した。
+  公開入口 U17 と合同監査へ接続し、全183宣言の監査を確認した。
+  合同ビルド成功（4044 jobs、警告・エラー0件）。新規 sorry・axiom・引用なし。
+- 前単位 `5fe1e01c` は直後の stat で自分の5ファイルのみと確認済み。
+  既存の他担当ファイル・共有ルート・Stage・README は編集していない。
+- U16a9 が `kernelCompositionNaturalIso` と実際の `kernelCompositionIso_naturality` を公開し、
+  合成比較の両 kernel 射への自然性まで検証済みとなったことを原記録で確認した。
+  以前の「全 kernel 射の自然性が未実装」という記録は当時の状態である。
+  今回は固定された D→E の kernel の射と、その恒等・垂直合成に関する自然性を解決した。
+  三つの dg 圏にまたがる kernel 合成比較の指定商への接続とは区別して継続する。
+  新しい係数変更の直接経路比較の shift 整合性・二モデル比較の構造照合も引き続き区別する。
+  中心作用・G 作用は保留。目標全体は進行中。

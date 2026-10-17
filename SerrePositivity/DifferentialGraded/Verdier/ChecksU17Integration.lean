@@ -13,6 +13,7 @@ public import SerrePositivity.DifferentialGraded.Verdier.ChecksScalarKaroubiShif
 public import SerrePositivity.DifferentialGraded.Verdier.ChecksScalarQuotientSourceSquare
 public import SerrePositivity.DifferentialGraded.Verdier.ChecksScalarDirectCompletion
 public import SerrePositivity.DifferentialGraded.Verdier.ChecksGraphPairMorita
+public import SerrePositivity.DifferentialGraded.Verdier.ChecksKernelComparisonNaturality
 
 /-! # U17 の公開図式と公理監査の同時 import 検証 -/
 @[expose] public section

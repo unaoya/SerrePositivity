@@ -6,6 +6,7 @@ public import SerrePositivity.DifferentialGraded.Verdier.ScalarDirectCompletion
 public import SerrePositivity.DifferentialGraded.Verdier.MoritaPairEquivalence
 public import SerrePositivity.DifferentialGraded.Verdier.DerivedKernelGraphSquare
 public import SerrePositivity.DifferentialGraded.Verdier.GraphPairMorita
+public import SerrePositivity.DifferentialGraded.Verdier.KernelComparisonNaturality
 
 /-! # 局所 dg 商の U17 比較の公開入口
 
