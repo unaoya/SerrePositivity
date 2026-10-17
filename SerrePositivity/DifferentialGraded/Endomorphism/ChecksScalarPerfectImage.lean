@@ -1,0 +1,10 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarPerfectImage
+
+/-! # 指定生成集合に対する実際の係数拡大のperfect性保存の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+#print axioms scalarPerfectGenerators
+#print axioms scalarModuleExtension_perfect_finiteCellCode
+#print axioms scalarModuleExtension_perfect_finiteCell
+#print axioms scalarModuleExtension_perfect_perfect

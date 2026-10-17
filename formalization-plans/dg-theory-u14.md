@@ -1006,6 +1006,16 @@
 - `ChecksScalarModuleConeImage` 対象ビルド成功（3034 jobs）。主要6宣言の公理は標準3公理のみ。
   既存APIの名前・型は変更していない。新しいsorry・axiom・引用は追加していない。
 
+## U14b.62：実際の加群係数拡大による指定perfect性の保存（2026-10-17）
+
+- `ScalarPerfectImage.lean`：係数変更後も元と同じ指定対象を生成集合に取り、
+  finite cellの構成木に沿って実際の係数拡大の導来像のperfect性を証明した。
+  shift・coneはU14b.59・61の実際の加群同型で比較する。
+- perfect射影的対象の導来retractをH⁰へ持ち上げ、実際の係数拡大で運び、
+  係数変更後の主導来圏のretractとして戻した。指定集合を全対象へ拡大せずにperfect性を保つ。
+- `ChecksScalarPerfectImage` 対象ビルド成功（3067 jobs）。主要4宣言の公理は標準3公理のみ。
+  既存APIの名前・型は変更していない。新しいsorry・axiom・引用は追加していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
