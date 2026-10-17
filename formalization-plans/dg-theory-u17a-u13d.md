@@ -1299,3 +1299,36 @@ M9 の適用については、商を取る前の次数零の平坦 Hom を持つ
   降下した合成比較の両 kernel 射への自然性は今回で解決した。
   局所 perfect 正方形と合成比較の貼合せ、追加の shift 構造照合は別に保持して継続する。
   中心作用・G 作用は保留。目標全体は進行中。
+
+### 今回依頼された U17 担当範囲の完了監査（2026-10-17）
+
+直前までの「進行中」記録とは別に、依頼文の3項目と§15.7の対応を現在のソースで再照合した。
+公開入口は `SerrePositivity.DifferentialGraded.Verdier.U17`、合同監査入口は
+`SerrePositivity.DifferentialGraded.Verdier.ChecksU17Integration`。
+
+| 依頼項目 | 現在の証拠 | 判定 |
+| --- | --- | --- |
+| U17c：既存の順序交換同値との可換正方形 | `OrderSquare` の `orderSquare`、`triaKaroubiComparison_eq_orderSquare`、`localPerfectOrderSquare`。既存の `localPerfectPaperSequenceComparison` と同じ同型である等式も証明 | 完了 |
+| U17c：paperRankEquivalence・paperSequenceComparison への接続 | `paperSequenceComparison_eq_orderSquare` と `paperSequenceComparisonTriangle`。M9の具体的環・列・小ランク条件を一般dg定理へ追加していない | 完了 |
+| U17c：線形性・shift・三角性 | `ComparisonLinear`、`OrderSquare` の実際の比較同型の CommShift、三角形版。合同入口の型検査例で局所同値と既存paper同値の3構造を確認 | 完了 |
+| U17d：係数変更と局所商・指定Verdier比較 | `ScalarQuotientSourceSquare` の直接局所化による `sourceScalarLocalQuotientSquare`・`sourceScalarCanonicalQuotientSquare`、旧輸送との `sourceScalarLocalTransportIso`。U12fの実際の導来関手とU15dの固定path包含等式を使用 | 完了 |
+| U17d：係数変更の完備化・perfect比較 | `ScalarDirectCompletion` の完備tria・Perf・局所perfect H⁰ の各正方形と完備経路の比較自然同型。係数環のflatnessを仮定せず、必要な両局所条件を明示 | 完了 |
+| U17d：支持の個別図式 | `SupportSquare` の支持の保存・反映、tria・完備商・局所perfect の忘却正方形。shift・三角形版も検証 | 完了 |
+| U17d：retractの個別図式 | `RetractSquare` の i・r の各比較等式、retractの保存・反映、Karoubiの実際の分裂図式 | 完了 |
+| U17b：U16a・U16bとの接続 | `PerfectKernelVerdier` の元のPerf作用の実際の局所化、`PerfectNullComparison`・`PerfectQuotientEquivalence` によるKaroubi-first商との同定、`KernelLocalPerfectSquare` の既存局所比較そのものとの正方形 | 完了 |
+| U17b：Moritaの場合とdg擬同値への具体的適用 | `MoritaPairEquivalence`、`GraphPairMorita`。元のPerf作用の同値性と零部分圏の反映を分離し、dg擬同値のgraphでは前者をU16bから証明。商上の同値性を仮定していない | 完了 |
+| U17b：kernel射に関する自然性 | `KernelQuotientNaturality`・`KernelComparisonNaturality` の全許容kernel射への関手性・既存正方形の自然性。合成比較も `KernelCompositionNaturality`・`ConjugatedCompositionNaturality` で四段階の全kernel射への自然性まで接続 | 完了 |
+| 中心作用・群Gの作用 | 依頼に従って着手せず、保留と記録 | 指定通り保留 |
+
+検証は現在の合同入口に対する `lake build` 成功（4068 jobs、警告・エラー0件）。
+ログの207宣言を個別に解析し、公理集合はすべて `propext`・`Classical.choice`・`Quot.sound`
+以内であることを確認した。Verdier/ と Quotient/DerivedComparison* のソース走査でも
+sorry・admit・axiom の宣言は0件。直前コミット `b61025af` のstatは自分の7ファイルのみ。
+他担当ファイル・共有ルート・Stage・READMEは今回編集していない。
+
+以上により、今回の依頼の3項目は完了とする。これはM5全体や、保留したU17d全体の受入判定ではない。
+過去の記録で継続候補に挙げた、局所perfect正方形とkernel合成比較のさらに高いcoherence、
+任意の旧比較モデル間・新しい直接係数変更経路間の自然同型すべてへのCommShift付与は、
+今回の個別可換図式という要件より強い追加課題として未主張のまま区別する。
+依頼で明示されたU17cの構造要求は上表の通りすべて検証済みである。
+U16側の一般随伴・unit/counit・恒等/結合の全作用coherenceを、この監査で完了扱いにはしない。
