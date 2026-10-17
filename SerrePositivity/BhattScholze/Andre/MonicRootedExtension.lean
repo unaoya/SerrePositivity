@@ -40,6 +40,7 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootCoefficientPDRegularRe
 public import SerrePositivity.BhattScholze.Andre.PerfectPrismVarpi
 public import SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiRegular
 public import SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiPDUniversal
+public import SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiRootInput
 
 /-!
 # André E1・E2 の集約

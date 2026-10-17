@@ -2337,3 +2337,59 @@ prismatic envelope の Frobenius 引戻しとの同定、一般基底への原�
 生成宣言を含む 3376 宣言の推移的公理依存は標準 3 公理のみ。
 商の標準評価・分冪保存・一般実普遍性・ϖ 還元の実普遍性の公開型 4 本を
 `#print` で確認した（終了コード 0）。
+
+### E1.39：ϖ 係数還元した無限根入力環と原典の R/ϖ 係数
+
+新規 `Andre/PowerRootCoefficientQuotient.lean` は任意の可換環 A、正の p、任意の c:A に
+対して、無限根環 P=`PowerRootPolynomial A p hp` の c の係数像による実商を
+`PowerRootPolynomial (A/(c)) p hp` と環同型にする。
+係数商射から誘導される環射の全射性と、その核が c の係数像の主イデアルであることを
+係数ごとに証明し、第一同型定理を使う。
+c の正則性・係数環の標数・非零性は仮定しない。
+単項式、係数、全根変数、通常多項式の評価に対する計算公式も公開した。
+既存の mod p 専用ファイルは変更せず、一般の係数主イデアルの計算を新規追加した。
+
+```lean
+def powerRootCoefficientQuotientEquiv
+    (A : Type u) [CommRing A] (p : ℕ) (hp : 0 < p) (c : A) :
+    (PowerRootPolynomial A p hp ⧸
+      Ideal.span {algebraMap A (PowerRootPolynomial A p hp) c}) ≃+*
+        PowerRootPolynomial (A ⧸ Ideal.span {c}) p hp
+```
+
+新規 `Andre/PerfectPrismVarpiRootInput.lean` は完全 oriented prism W=(A,(d)) に対して
+この同型を R₀=A/(p)、x=φ⁻¹(d)、a=x mod p に適用し、E1.36 の係数商同型の逆を
+モノイド環へ持ち上げた同型と合成する。
+ϖ=`perfectPrismVarpi W hW`、N=`PowerRootPolynomial R₀ p hp` とすると主要公開型は
+
+```lean
+def perfectPrismVarpiRootInputEquiv
+    (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) :
+    (N ⧸ Ideal.span {algebraMap R₀ N a}) ≃+*
+      PowerRootPolynomial ((A ⧸ W.ideal) ⧸ Ideal.span {ϖ}) p hp
+```
+
+ここで [Fact p.Prime] と [CommRing A] を仮定するが、R=A/(d) の p 正則性は不要。
+`perfectPrismVarpiRootInputEquiv_single` と同 `_coeff` は A から来る係数を保ち、
+同 `_variable` は全根変数を同じ番号の変数に送る。
+同 `_input` は任意の f:Polynomial A に対し、名前付き入力
+`powerRootCoefficientPDInput p f` の係数還元像が、
+R/ϖ 上へ係数を写した同じ多項式の根変数での評価であることを主張する。
+この等式にモニック性は不要。
+`perfectPrismVarpiRootInput_monic_regular` はモニック f なら、実入力商 N/(a) 内の
+その入力像が正則であることを原典の係数環上のモニック入力の正則性から移す。
+f の正次数や prism 商の p 正則性は不要である。
+
+BS Rem 7.15（著者版 p.62）の R/ϖ[Y^(1/p^∞)] の台環と入力を具体化した。
+原典の係数環との比較を通常の有限台モノイド環と実主イデアル商で計算する経路であり、
+Prop 7.11 は使わない。
+E1.38 の還元済み pd 包自体とこの入力上の標準表示との同型、切断表示の係数比較、
+prismatic envelope の Frobenius 引戻しとの同定は未完了。
+入力台環の比較だけを pd 包全体・prismatic envelope の同定とは数えない。
+
+対象・集約の `set -o pipefail; lake build` は終了コード 0
+（集約 `SerrePositivity.BhattScholze.Andre.MonicRootedExtension`：4433 jobs）。
+新規 16 公開宣言を `assert_no_sorry` に加えた専用監査は終了コード 0。
+生成宣言を含む 3442 宣言の推移的公理依存は標準 3 公理のみ。
+一般係数商同型・ϖ 入力環同型・入力元比較・モニック入力の正則性の公開型 4 本を
+`#print` で確認した（終了コード 0）。

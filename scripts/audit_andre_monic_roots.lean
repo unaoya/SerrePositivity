@@ -677,6 +677,23 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPQuotientEval_isDPM
 assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_principalDPQuotientMorphism
 assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_perfectPrismVarpiPDMorphism
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientQuotientMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientQuotientMap_single
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientQuotientMap_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientQuotientMap_surjective
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientQuotientMap_ker
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientQuotientEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientQuotientMap_variable
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientQuotientMap_baseMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiQuotientEquiv_symm_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiRootInputEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiRootInputEquiv_single
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiRootInputEquiv_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiRootInputEquiv_variable
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiRootInputEquiv_input
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismVarpiRootInput_monic_regular
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -793,7 +810,9 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpi,
     `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiRegular,
     `SerrePositivity.BhattScholze.Andre.PrincipalDPQuotientUniversal,
-    `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiPDUniversal]
+    `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiPDUniversal,
+    `SerrePositivity.BhattScholze.Andre.PowerRootCoefficientQuotient,
+    `SerrePositivity.BhattScholze.Andre.PerfectPrismVarpiRootInput]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
