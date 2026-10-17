@@ -15,6 +15,13 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.omegaOneIndex_noM
 assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.omegaOneIndex_countable_upperBound
 assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.omegaOne_directLimit_complete_and_absolutelyIntegrallyClosed
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFlat_colimit
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFlat_moduleDirectLimit
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFlat_directLimit
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFlat_algebraDirectLimit
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.directLimit_mem_ideal_smul
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.faithfullyFlat_algebraDirectLimit
+
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
@@ -24,7 +31,9 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.Transfinite.CountableDescent,
     `SerrePositivity.BhattScholze.Andre.Transfinite.CountableCompletion,
     `SerrePositivity.BhattScholze.Andre.Transfinite.PerfectoidLimitCompleteness,
-    `SerrePositivity.BhattScholze.Andre.Transfinite.OmegaOne]
+    `SerrePositivity.BhattScholze.Andre.Transfinite.OmegaOne,
+    `SerrePositivity.BhattScholze.Andre.Transfinite.CompleteFlatColimit,
+    `SerrePositivity.BhattScholze.Andre.Transfinite.FaithfullyFlatColimit]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
@@ -54,3 +63,10 @@ run_cmd do
 #print SerrePositivity.BhattScholze.Andre.Transfinite.omegaOneIndex_noMaxOrder
 #print SerrePositivity.BhattScholze.Andre.Transfinite.omegaOneIndex_countable_upperBound
 #print SerrePositivity.BhattScholze.Andre.Transfinite.omegaOne_directLimit_complete_and_absolutelyIntegrallyClosed
+
+#print SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFlat_colimit
+#print SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFlat_moduleDirectLimit
+#print SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFlat_directLimit
+#print SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFlat_algebraDirectLimit
+#print SerrePositivity.BhattScholze.Andre.Transfinite.directLimit_mem_ideal_smul
+#print SerrePositivity.BhattScholze.Andre.Transfinite.faithfullyFlat_algebraDirectLimit

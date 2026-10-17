@@ -95,6 +95,32 @@ step : ∀ (R : Type u) [CommRing R] (hR : IsIntegralPerfectoid R p)
 この定理は**与えられた塔についての二つの性質**であり、塔の存在、終段の perfectoid 性、
 基底から終段への p 完全忠実平坦性は結論していない。Thm 7.14 の条件付き完成とは数えない。
 
+### E3.4：完全平坦性と通常の忠実平坦性の余極限保存
+
+`CompleteFlatColimit.lean` と `FaithfullyFlatColimit.lean` を追加。
+
+- `isCompletelyFlat_colimit`：固定基底の I 完全平坦加群の、正確な余極限は I 完全平坦。
+  試験加群を固定した Tor の対称性と既存の正確な余極限保存を使う。
+- `isCompletelyFlat_moduleDirectLimit`、`isCompletelyFlat_directLimit`：
+  標準加群余極限と非交和モデルに適用。
+- `isCompletelyFlat_algebraDirectLimit`：固定基底の代数の有向系にも、元の作用で適用。
+  遷移射の束が AlgHom と LinearMap で異なるため、普遍写像から実際の線形同型を構成した。
+  作用の定義的同一性だけで移送しない。
+- `directLimit_mem_ideal_smul`：基底イデアル倍の表示を一段へ降ろす。
+- `faithfullyFlat_algebraDirectLimit`：固定基底上忠実平坦な代数の有向余極限は忠実平坦。
+  単位元が基底イデアルの拡張に入る関係を有限段へ降ろす。
+  遷移射が単位元を保つことが必要であり、任意の加群の有向系には一般化しない。
+
+いずれも単射性・p 正則性・Noether 性を追加していない。
+集約対象 build 終了コード 0（3217 jobs、新規モジュールの警告なし）。
+既存の LocalFlatnessCriterion・CompletelyFlatEquiv・DerivedTensorPentagon の警告のみ再掲。
+専用監査終了コード 0、全公開 17 宣言の assert_no_sorry と全 37 宣言の再帰監査に成功。
+標準 3 公理のみ。全公開宣言の完全型は同監査の #print 出力で検査した。
+
+**残る接続：** p 完全忠実平坦性の余極限保存全体には、剰余テンソル代数の有向余極限と
+元の余極限の剰余テンソルとの同型が必要。この接続と、完備化による完全忠実平坦性の保存は未実装。
+通常の忠実平坦性の保存を、この二つの証明の代わりにはしない。
+
 ### 残る範囲
 
 1. 有向余極限の p 進完備化の perfectoid 性（特に p ねじれを許す Fontaine 核の単項性）。

@@ -6,6 +6,8 @@ public import SerrePositivity.BhattScholze.Andre.Transfinite.CountableDescent
 public import SerrePositivity.BhattScholze.Andre.Transfinite.CountableCompletion
 public import SerrePositivity.BhattScholze.Andre.Transfinite.PerfectoidLimitCompleteness
 public import SerrePositivity.BhattScholze.Andre.Transfinite.OmegaOne
+public import SerrePositivity.BhattScholze.Andre.Transfinite.CompleteFlatColimit
+public import SerrePositivity.BhattScholze.Andre.Transfinite.FaithfullyFlatColimit
 
 /-! # André E3：超限反復の部品
 
