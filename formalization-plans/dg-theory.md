@@ -9057,3 +9057,70 @@ ZMod 2での最終局所K-flat性を型検査した。
 解像度の比較と既存の導来bimodule合成への接続も残る。
 今回の最終Hom K-flat性だけでU12e全体を受入済みとはしない。U12e全受入・U16・U15eは未完。
 §0の現行分担と引用禁止を維持し、共有一般論への新しいAPI要求はない。
+
+
+### 17.199 U12e40：cell付加反復列と小さいK-flat dg圏解像度の一般存在（2026-10-17）
+
+`Resolution/FixedObjectAugmentation.lean`の**FixedObjectAugmentation**はMathlibの
+EnrichedCategoryをデータとして保持し、対象ラベルXと増大の対象写像o : X → Eを固定する。
+独立したdg圏モデルを導入せず、元の対象型のglobal instanceも変更しない。
+**toDGFunctor/CellIndex/cells/cellPrimitives**は既存の増大・全境界cell族・指定原始元への入口。
+**attachedCategory/attach/transition**で同じX上の次段の豊穣構造と増大を構成し、
+**transition_id/comp/augmentation**で遷移の単位・合成保存と増大の厳密な可換式を示した。
+**attach_fills**は次段で全境界cellが埋まり、指定原始元へ送られる式、
+**HomKFlat/attach_homKFlat**は局所K-flat性の保存である。
+一般の固定対象増大はA : Type u、X : Type v、E : Type wを独立に保ち、
+cell付加にはSmall.{u} Xだけを要求する。target Eのsmallnessは不要。
+
+`CellSequence.lean`の**DGCategoryCellResolution.initial/stage**は既存の自由cycle coverを
+初期増大とし、全境界cellの付加を逐次反復する実際の列。
+**stage_homKFlat/stageHom/transition/stageAugmentation/transition_augmentation**で
+全段階のK-flat性、各対象対のHom複体と増大の可換式を与える。
+**homDiagram/augmentationCocone/stage_fills**で既存の逐次境界充填criterionへ接続した。
+**candidateHom/candidateAugmentation/stageInclusion**はHom列の余極限と増大。
+**stageInclusion_augmentation/transition_inclusion**はその計算式。
+**candidateAugmentation_quasiIso**は全有限段のcell充填から極限増大のHom準同型性を証明し、
+**candidateHom_kFlat**はexactな逐次余極限から得る。次数ごとの増大全射性はこの証明に使っていない。
+
+`CellComposition.lean`の**candidateTensorIsColimit**は固定版MathlibのIsColimit.tensorを使う。
+ℕのIsSiftedはIsFiltered.isSiftedから局所的に与え、共有一般論やglobal instanceを追加しない。
+**compositionCocone/candidateComposition/stage/apply_stage**は各段階の豊穣合成を極限Hom上の
+実際のchain mapへ貼り合わせる。**candidateUnit/stage**は全段階で一致する閉単位。
+**candidateUnit_augmentation/candidateComposition_augmentation**で増大の単位・合成保存を示す。
+`CellUnits.lean`の左右単位則、`CellAssociativity.lean`の**stageComposition_assoc**と
+**candidateTripleIsColimit/candidateComposition_assoc**で極限の三つの豊穣圏法則を証明した。
+合成・結合則は同じ有限段のtensorへの制限で照合し、複体をH⁰へ置き換えていない。
+
+`FixedObjectCategory.lean`の**FixedObjectAugmentation.Objects/objectEquiv/objectsSmall**と
+**objectsDGCategory/augmentation/objects_homKFlat**は、保持した豊穣構造を別対象型上へ登録する。
+`CellCategory.lean`の**DGCategoryCellResolution.candidate/Source/augmentation**が主dg圏と増大関手。
+**source_homKFlat/augmentation_homQuasiIso/augmentation_essSurj/augmentation_quasiEquivalence**は、
+局所K-flat性、全Hom準同型性、H⁰の本質的全射、増大準同値を個別に与える。
+対象写像は元のDの対象ラベルを保つので、H⁰の本質的全射に生成性の引用は不要。
+**resolution**を既存のKFlatDGResolutionデータへまとめた。
+
+新しい公開入口は**KFlatDGResolution.canonical**と**KFlatDGResolution.nonempty**。
+前者は[Small.{u} D]の下でKFlatDGResolution.{u, v, v} A Dを返し、後者はそのNonemptyを証明する。
+Aは任意可換環、Dは非有界Homを持つ任意の小さいA線形dg圏であり、
+元のHomの局所K-flat性・次数ごとのflatness・有界性を要求しない。
+構成したsourceの対象宇宙はv、Hom加群の宇宙はuのまま。
+既存ResolutionBimodule.composeFunctorへこれらの標準解像度をそのまま入力できる。
+既存公開APIの名前・型の変更はなく、新しいsorry・axiom・引用もない。
+
+Checks.DGCellResolutionExistence・Checks.DGCellLengthFiltration・Checks.DGCellEvaluation・
+Checks.DGCellGeneratorBoundary・Checks.DGCellCategory・Checks.DGCellCompositionDifferential・
+Checks.DGCellBoundaryRecursion・Checks.DGCellPrependDifferential・Checks.DGCellInternalComposition・
+Checks.DGCellDifferential・Checks.DGCategoryResolution・Checks.DerivedBimoduleFullPentagon・
+Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの統合ビルドは成功
+（3231 jobs、終了コード0、警告なし）。独立対象宇宙、元のHomのflatness仮定なしの
+標準解像度・準同値・K-flat性、ZMod 2での一般存在、一般固定対象増大の独立target宇宙、
+既存の導来bimodule合成への無条件の入力を型検査した。
+主要63宣言の直接公理監査は標準3公理の範囲内。監査累計3868宣言。採用済み引用は0件。
+全体文書検査は16 Markdown・320 exposition参照を検査し、担当外BhattScholze互換宣言の
+未解決参照1件で失敗した。共有ルート・共有監査スクリプト・共有一般論・並行所有ファイルは編集していない。
+
+次は解像度間の比較用dg関手・zigzagと、解像度上の導来bimodule合成の比較を構成する。
+この一般存在定理だけで比較の選択独立性や解像度変更のcoherenceを証明したことにはしない。
+これらを確認して§15.2のU12eを受け入れ、その後U16a〜d、U15eへ進む。
+U12e全受入・U16・U15eは未完。§0の現行分担と引用禁止を維持する。
+共有一般論への新しいAPI要求はない。
