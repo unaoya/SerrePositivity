@@ -168,3 +168,50 @@ lake env lean SerrePositivity/DifferentialGraded/Morita/KernelChecks.lean
 U12e-generalは中断・未受入のまま。局所入口とKernelTensorのResolution/依存はともに0件。
 次は冒頭で型を固定した主導来作用、一般右随伴とunit/counit、恒等・合成の作用比較の証明を進める。
 U16a・U16cの全受入を宣言するものではない。既存公開型の変更はない。
+
+
+## U16a2：任意の通常kernelの導来作用と入力解像度（2026-10-17）
+
+KernelResolution.leanは任意のP : Bimodule A E Dについて、入力右D加群だけを射影解像して
+主導来関手kernelDerivedTensorOnBimoduleを構成する。Homの局所K-flat性は要求しない。
+U10のmoduleDerivedResolutionFunctor・moduleDerivedResolutionIsoを再利用し、
+解像度選択の自己・推移則をそのままtensorのH⁰関手へ送る。
+
+共通変数は冒頭と同じで、以下の追加公開型を固定する。
+
+```lean
+variable (P : Bimodule A E D)
+def kernelHomotopyToDerived : ModuleHomotopyCategory A D ⥤ DerivedModuleCategory A E
+def kernelResolutionDerivedTensor
+  (R : ∀ M : ModuleCategory A D, ModuleProjectiveResolution A D M) :
+  DerivedModuleCategory A D ⥤ DerivedModuleCategory A E
+def kernelDerivedTensorOnBimodule : DerivedModuleCategory A D ⥤ DerivedModuleCategory A E
+def kernelResolutionDerivedTensorIso
+  (R S : ∀ M : ModuleCategory A D, ModuleProjectiveResolution A D M) :
+  kernelResolutionDerivedTensor A D E P R ≅ kernelResolutionDerivedTensor A D E P S
+def kernelDerivedTensorOnBimoduleComputation {M : ModuleCategory A D}
+  (R : ModuleProjectiveResolution A D M) :
+  (kernelDerivedTensorOnBimodule A D E P).obj ((moduleToDerived A D).obj M) ≅
+    (moduleToDerived A E).obj ((kernelTensor A D E P).onClosed.obj R.obj)
+lemma kernelDerivedTensorOnBimodule_graph (f : DGFunctor A D E) :
+  kernelDerivedTensorOnBimodule A D E (functorGraph A D E f) = dgDerivedExtension A D E f
+```
+
+kernelTensorHomotopyComputationとkernelResolutionDerivedTensorComputationはH⁰と指定解像度族での計算。
+kernelResolutionDerivedTensorIso_self・_transは二つ／三つの解像度族の比較の整合性。
+これらは既存公開型の変更ではなく追加APIである。graph一致は既存導来延長そのものとの等式で、
+U16b担当はこの通常kernel版を直接利用できる。
+
+主導来kernel P : Kernel A D E全体のkernelDerivedTensorFunctorは、まだ型のみ確定。
+今回の通常kernel作用をkernelの射に自然な族へまとめ、kernelの準同型を反転して降ろす必要がある。
+一般右随伴・恒等／合成の作用比較・U16cも残る。U16a全受入ではない。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Morita.KernelResolutionChecks
+lake env lean SerrePositivity/DifferentialGraded/Morita/KernelResolutionChecks.lean
+```
+
+
+検証：KernelResolutionChecks・既存kernel型検査・局所受入・General入口検査・Spectra.StageTwoの
+合同ビルド成功（3524 jobs、警告なし）。追加10宣言の直接公理監査は標準3公理のみ。
+文書検査は24 Markdown・326 exposition参照、失敗0件。新しいsorry・axiom・引用なし。

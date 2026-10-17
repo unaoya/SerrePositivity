@@ -11985,3 +11985,23 @@ Resolution/依存0件。全モジュール台帳から対象ビルドとimport�
 今回新しい数学的宣言・sorry・axiom・引用は追加していない。新規監査累計4843を保持する。
 Morita/KernelTensorの推移的project依存も427ファイル、Resolution/依存0件である。
 次は固定済み公開型に沿ってU16aの主導来作用・随伴・作用coherenceを証明し、その後U16cへ進む。
+
+
+### 17.252 U16a：通常kernelの主導来作用と任意入力解像度の計算（2026-10-17）
+
+一般経路の整理後、Morita/KernelResolution.leanで任意のP : Bimodule A E Dについて
+kernelDerivedTensorOnBimoduleを構成した。U10の射影解像度関手を既存kernel tensorのH⁰関手へ送り、
+指定した任意の入力解像度族のkernelResolutionDerivedTensorと自然な選択比較
+kernelResolutionDerivedTensorIso、その自己・推移則を得る。
+kernelDerivedTensorOnBimoduleComputationは単独の任意指定射影解像度での計算同型。
+kernelDerivedTensorOnBimodule_graphは既存dgDerivedExtensionとの等式であり、U16bへ渡す計算入口である。
+仮定は任意可換環・D/EのSmall.{u}だけで、localHomKFlatは要求しない。
+追加公開型はdg-theory-morita.mdのU16a2へ記録し、旧公開型は変えていない。
+
+主導来kernel全体のkernelDerivedTensorFunctorへの降下、一般右随伴とunit/counit、
+恒等／合成の作用比較は残る。U16a全受入・U16c着手を意味しない。
+KernelResolutionChecks・KernelChecks・U12e-local・General入口検査・Spectra.StageTwoの
+合同ビルド成功（3524 jobs、警告なし）。追加10公開宣言の直接公理監査は重複・欠落なく標準3公理以内。
+新規監査累計4853宣言。文書検査は24 Markdown・326 exposition参照、失敗0件。
+今回の2 Leanファイルにsorry・admit・新規axiom・資源上限変更は0件。
+次は通常kernelの射に対する自然性とkernelの準同型反転を証明し、主導来kernel全体へ作用を降ろす。
