@@ -84,3 +84,26 @@ retract に閉じることを実際に冪等元を分裂して証明する。
 検証：GenerationChecks（2785 jobs）と EquivalenceChecks（2786 jobs）の対象ビルド成功、
 警告なし。計11宣言の監査は標準3公理のみ。右随伴・平坦性・局所 K-flat 条件を使わず、
 新規 sorry・axiom・引用なし。
+
+## 表現可能対象からの二変数の厚い帰納
+
+生成性・同値証拠の単位は `c474f527`（直後の stat は自分の5ファイルのみ）。
+`CriterionPerfHomInduction.lean` は U17 の Hom 比較の完全列による議論を、指定した
+一つの始域に局所化する。`criterionPerfRelativeHomTargets` は指定族からの射比較の
+全単射性を表し、同型・shift・完全三角形・retract で閉じることを証明した。
+
+`CriterionPerfFullyFaithful.lean` の `criterionPerf_hom_bijective_of_representables` は、
+全整数 shift の表現可能対象間の実際の射比較から、Perf の両変数での全単射性を導く。
+まず shift 閉包した表現可能対象を始域に固定して終域の U13 最小性を適用し、その後
+反対圏で同じ議論を使って始域の最小性を適用する。無限余積は使用しない。
+`criterionPerfFullyFaithfulOfRepresentables` はこれを実際の主 kernel 作用の Perf 制限の
+充満忠実性へ運ぶ。局所 K-flat 条件や右随伴は不要。
+
+検証：`lake build SerrePositivity.DifferentialGraded.Morita.CriterionPerfHomInductionChecks`
+成功（2798 jobs、警告なし）。全 Hom 比較・同値証拠と同時 import し、主要8宣言は
+標準3公理の範囲内（retract 補題は公理なし、反対圏移送は propext のみ）。
+新規 sorry・axiom・引用なし。
+
+最終受入に残るのは、**全 Hom 複体の擬同型条件と、この帰納の入力である全 shift の
+実際の主作用の射比較との同定を両方向に証明すること**、およびその橋を使った三条件と
+同値証拠との最終必要十分条件。帰納の補助入力を最終第二条件に置き換えることはしない。
