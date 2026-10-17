@@ -5510,3 +5510,162 @@ ind-syntomic 性そのものの証明とは数えない。主定理・引用件�
 生成宣言を含む新規5モジュールの100宣言の推移的公理を検査した。
 全て標準三公理 `propext`、`Classical.choice`、`Quot.sound` の範囲にあり、sorry 非依存。
 一般判定・代数商・自然分冪射・R/p 底変換・候補集約の `#print axioms` も標準三公理のみ。
+
+### E1.72／A1-a 原典の順序の完備入力環と試験射（2026-10-17）
+
+本節は A1-a の追記。原典の R⟨Y^(1/p^∞)⟩/(f) を、通常の無限根多項式環を
+p 完備化してからモニック関係で割る環として接続した。
+A1-b の raw 包の正則性・完全忠実平坦性、A1-c の係数照合には立ち入らず、
+既存 hpR 付き定理、並列担当の新規ファイルと記録節は変更していない。
+
+以下はすべて名前空間 `SerrePositivity.BhattScholze.Andre` 内の新規公開宣言。
+記載の略記を展開すると正確な型となる。係数環の非零性は要求しない。
+
+#### 全冪商で正則な主入力による商の完備性（4 宣言）
+
+`Andre/PrimeAdicCompletionPrincipalQuotient.lean`。
+(R : Type u) [CommRing R]、p : ℕ、C=AdicCompletion (Ideal.span {(p : R)}) R、
+j=algebraMap R C とする。
+
+- `isAdicComplete_principal_quotient_of_regular_powers` は (a g : R)、
+  [IsAdicComplete (Ideal.span {a}) R] と
+  hg : ∀ n : ℕ, IsSMulRegular (R ⧸ Ideal.span {a^n})
+    (Ideal.Quotient.mk (Ideal.span {a^n}) g) の下で、
+  `IsAdicComplete (Ideal.span {Ideal.Quotient.mk (Ideal.span {g}) a}) (R ⧸ Ideal.span {g})`。
+  p はこの宣言の引数ではない。
+- `primeAdicCompletion_isAdicComplete R p` は
+  `IsAdicComplete (Ideal.span {(p : C)}) C`。
+- `primeAdicCompletion_regular_mod_power R p (g : R) (n : ℕ)` は、
+  hg : IsSMulRegular (R ⧸ Ideal.span {(p : R)^n})
+    (Ideal.Quotient.mk (Ideal.span {(p : R)^n}) g) の下で、
+  `IsSMulRegular (C ⧸ Ideal.span {(p : C)^n})
+    (Ideal.Quotient.mk (Ideal.span {(p : C)^n}) (j g))`。
+- `primeAdicCompletion_principal_quotient_isAdicComplete R p (g : R)` は、
+  hg : ∀ n : ℕ, IsSMulRegular (R ⧸ Ideal.span {(p : R)^n})
+    (Ideal.Quotient.mk (Ideal.span {(p : R)^n}) g) の下で、
+  `IsAdicComplete (Ideal.span {(p : C ⧸ Ideal.span {j g})}) (C ⧸ Ideal.span {j g})`。
+
+各冪商での g の正則性から a^n∣g*x ⇒ a^n∣x を直接得る。
+乗法写像の逆像のフィルトレーション比較の k=0 を供給し、
+既存 `isAdicComplete_quotient_range_of_uniform_filtration_bound` を使う。
+従来の正則対の経路と異なり、a 自体の正則性は不要。
+完備化への移送には既存 `adicCompletionPowQuotientEquiv` とその係数公式を再利用する。
+
+#### 任意の係数主商と全 p 冪商でのモニック正則性（7 宣言）
+
+`Andre/PowerRootPolynomialModScalar.lean`。
+(A : Type u) [CommRing A]、p : ℕ、hp : 0 < p、a : A、
+P=PowerRootPolynomial A p hp、R=A ⧸ Ideal.span {a}、Pbar=PowerRootPolynomial R p hp、
+bar=Ideal.Quotient.mk (Ideal.span {a}) とする。
+
+- `powerRootPolynomialModScalarMap A p hp a : P →+* Pbar`。
+- `powerRootPolynomialModScalarMap_surjective A p hp a` は
+  `Function.Surjective (powerRootPolynomialModScalarMap A p hp a)`。
+- `powerRootPolynomialModScalarMap_ker A p hp a` は
+  `RingHom.ker (powerRootPolynomialModScalarMap A p hp a) = Ideal.span {algebraMap A P a}`。
+- `powerRootPolynomialModScalarEquiv A p hp a :
+    (P ⧸ Ideal.span {algebraMap A P a}) ≃+* Pbar`。
+- `powerRootPolynomialModScalarEquiv_mk A p hp a (x : P)` は
+  `powerRootPolynomialModScalarEquiv A p hp a (Ideal.Quotient.mk _ x) =
+    powerRootPolynomialModScalarMap A p hp a x`。
+- `powerRootPolynomial_monic_mod_scalar_regular A p hp a (f : Polynomial A) (hf : f.Monic)` は
+  `IsSMulRegular (P ⧸ Ideal.span {algebraMap A P a})
+    (Ideal.Quotient.mk (Ideal.span {algebraMap A P a}) (powerRootPolynomialBaseMap A p hp f))`。
+- `powerRootPolynomial_monic_mod_prime_power_regular A p hp (f : Polynomial A)
+    (hf : f.Monic) (n : ℕ)` は
+  `IsSMulRegular (P ⧸ Ideal.span {(p : P)^n})
+    (Ideal.Quotient.mk (Ideal.span {(p : P)^n}) (powerRootPolynomialBaseMap A p hp f))`。
+  この最後の宣言に a は引数として残らない。
+
+指数を定める p と係数商の元 a を分離し、既存 mod p 比較の係数ごとの核計算を一般化した。
+同じ番号の根変数を保ち、係数主商上のモニック性・既存の平坦性による正則性を移す。
+
+#### 完備化と主商の交換同型（3 宣言）
+
+`Andre/PrimeAdicCompletionQuotientExchange.lean`。
+(R : Type u) [CommRing R]、p : ℕ、g : R、
+hg : ∀ n : ℕ, IsSMulRegular (R ⧸ Ideal.span {(p : R)^n})
+  (Ideal.Quotient.mk (Ideal.span {(p : R)^n}) g) を明示引数とする。
+C と j は最初の節と同じ、S=R ⧸ Ideal.span {g}、q=Ideal.Quotient.mk (Ideal.span {g})、
+CS=AdicCompletion (Ideal.span {(p : S)}) S、jS=algebraMap S CS、
+Z=C ⧸ Ideal.span {j g}、qC=Ideal.Quotient.mk (Ideal.span {j g}) とする。
+
+```lean
+-- exists_primeAdicCompletionQuotientEquiv R p g hg
+∃ e : Z ≃+* CS, e.toRingHom.comp (qC.comp j) = jS.comp q
+-- primeAdicCompletionQuotientEquiv R p g hg
+Z ≃+* CS
+-- primeAdicCompletionQuotientEquiv_coeff R p g hg (x : R)
+primeAdicCompletionQuotientEquiv R p g hg (qC (j x)) = jS (q x)
+```
+
+両側が p 完備であることから、通常の主商と完備化の普遍性で往復射を作る。
+一意性で両合成が恒等射であることを示す。p 自体の正則性・有界ねじれ・素数性は不要。
+
+#### 原典の順序のモニック完備入力環（4 宣言）
+
+`Andre/PowerRootMonicCompletedInput.lean`。
+{R : Type u} [CommRing R]、p : ℕ、hp : 0 < p、f : Polynomial R とする。
+P=PowerRootPolynomial R p hp、z=powerRootPolynomialBaseMap R p hp f、
+CP=AdicCompletion (Ideal.span {(p : P)}) P、jP=algebraMap P CP、
+S₀=PowerRootEquationQuotient p hp f、CS=AdicCompletion (Ideal.span {(p : S₀)}) S₀。
+
+```lean
+PowerRootMonicCompletedInput p hp f : Type u := CP ⧸ Ideal.span {jP z}
+-- powerRootMonicCompletedInputEquiv p hp f (hf : f.Monic)
+PowerRootMonicCompletedInput p hp f ≃+* CS
+-- powerRootMonicCompletedInputEquiv_coeff p hp f (hf : f.Monic) (x : P)
+powerRootMonicCompletedInputEquiv p hp f hf
+  (Ideal.Quotient.mk (Ideal.span {jP z}) (jP x)) =
+    algebraMap S₀ CS (Ideal.Quotient.mk (Ideal.span {z}) x)
+-- powerRootMonicCompletedInput_isAdicComplete p hp f (hf : f.Monic)
+IsAdicComplete (Ideal.span {(p : PowerRootMonicCompletedInput p hp f)})
+  (PowerRootMonicCompletedInput p hp f)
+```
+
+モニック性から全 p 冪商の正則性を内部で供給する。正次数・係数環の p 正則性・
+有界ねじれ・完備性は不要。全ての元を保つ係数公式には各根変数の像も含まれる。
+これにより E1.71 で未完了だった、通常の方程式商を先に完備化する環と
+原典の順序の R⟨Y^(1/p^∞)⟩/(f) の同定を、この入力環について解消した。
+
+#### 原典の順序の入力射から有界試験 prism への普遍性（1 宣言）
+
+`Andre/PowerRootPrismMonicOriginalCompletedInput.lean` の
+`existsUnique_powerRootPrismMonicCompletionHom_of_original_completed_input`。
+完全 prism W : OrientedPrism p A、hW : W.deltaStructure.IsPerfect、f : Polynomial A、
+hf : f.Monic を固定する。p は素数。P、E、dP、a、L、jL、H、uL、DH は E1.71 と同じ
+元の raw 実完備化のデータを使う。
+R=A ⧸ W.ideal、fR=f.map (Ideal.Quotient.mk W.ideal)、PR=PowerRootPolynomial R p hp、
+CR=AdicCompletion (Ideal.span {(p : PR)}) PR、zR=powerRootPolynomialBaseMap R p hp fR、
+SI=PowerRootMonicCompletedInput p hp fR とする。
+lS:PR→+*SI は CR の主商射と algebraMap PR CR の合成。
+引数は {B : Type u} [CommRing B]、Q : OrientedPrism p B、
+hB : ∃ N : ℕ, ∀ n : ℕ, ∀ x : B ⧸ Q.ideal,
+  (p : B ⧸ Q.ideal)^n*x=0 → (p : B ⧸ Q.ideal)^N*x=0、
+k : OrientedPrism.Hom W Q、η : SI →+* B ⧸ Q.ideal、
+hη : (η.comp lS).comp (algebraMap R PR)=k.quotientMap。
+H の環構造 `pdCompletionCommRing L p (jL dP)` を let で導入した後の結論は
+
+```lean
+∃! F : H →+* B,
+  DH.IsDeltaHom Q.deltaStructure F ∧
+    F.comp (powerRootPrismMonicCompletionBaseMap W hW f) = k.toRingHom ∧
+      ∀ n, Ideal.Quotient.mk Q.ideal
+        (F (uL (jL (powerRootPolynomialVariable A p hp n)))) =
+          η (lS (powerRootPolynomialVariable R p hp n))
+```
+
+である。入力環の交換同型の逆に沿って η を移し、全根の係数公式を使って
+既存の完備入力からの普遍性を適用する。追加の hpR・正次数は不要。
+
+BS Rem 7.15（著者版 p.62）の完備入力環の接続について、原典とは異なる
+全冪商の正則性・一様なフィルトレーション比較・通常の主商と完備化の普遍性を使ったことを
+docstring に明記した。これは入力環 S の接続と H からの試験射の一意性であり、
+H 自体の prism 性、S→H/d の標準射と完全な入力作用を含む絶対 envelope の初期性は未完了。
+A1-b の生成元正則性の成果、A1-c の係数表記の最終照合と合流する。
+A1-a 全体の完成とは数えず、既存 hpR 付き定理は成果到着まで差し替えていない。
+
+検証：新規 5 ファイルの対象ビルドと集約ビルドは終了コード 0
+（集約 4574 jobs）。新規 19 公開宣言の `assert_no_sorry` と専用監査は終了コード 0。
+生成宣言を含む 7307 宣言の推移的公理依存は標準 3 公理のみ。
+新規 19 公開宣言の正確な型を `#check` で確認した（終了コード 0）。

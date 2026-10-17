@@ -1235,6 +1235,26 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.primeAdicCompletion_ringHom_e
 assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootEquationCompletionHom
 assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicCompletionHom_of_completed_equation_input
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.isAdicComplete_principal_quotient_of_regular_powers
+assert_no_sorry SerrePositivity.BhattScholze.Andre.primeAdicCompletion_isAdicComplete
+assert_no_sorry SerrePositivity.BhattScholze.Andre.primeAdicCompletion_regular_mod_power
+assert_no_sorry SerrePositivity.BhattScholze.Andre.primeAdicCompletion_principal_quotient_isAdicComplete
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialModScalarMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialModScalarMap_surjective
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialModScalarMap_ker
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialModScalarEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialModScalarEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomial_monic_mod_scalar_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomial_monic_mod_prime_power_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.exists_primeAdicCompletionQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.primeAdicCompletionQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.primeAdicCompletionQuotientEquiv_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.PowerRootMonicCompletedInput
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootMonicCompletedInputEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootMonicCompletedInputEquiv_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootMonicCompletedInput_isAdicComplete
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootPrismMonicCompletionHom_of_original_completed_input
+
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
@@ -1460,7 +1480,12 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicEquationInput,
     `SerrePositivity.BhattScholze.Andre.PrimeAdicCompletionUniversal,
     `SerrePositivity.BhattScholze.Andre.PowerRootEquationCompletionUniversal,
-    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCompletedEquationInput]
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCompletedEquationInput,
+    `SerrePositivity.BhattScholze.Andre.PrimeAdicCompletionPrincipalQuotient,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPolynomialModScalar,
+    `SerrePositivity.BhattScholze.Andre.PrimeAdicCompletionQuotientExchange,
+    `SerrePositivity.BhattScholze.Andre.PowerRootMonicCompletedInput,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicOriginalCompletedInput]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
