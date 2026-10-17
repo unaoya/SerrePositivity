@@ -119,3 +119,13 @@
   主導来kernel作用への適用・kernel合成との比較はまだ未完である。
 - `Morita.ScalarExtensionTensorModelsChecks` ビルド成功（2903 jobs、警告なし）。
   主要7宣言の公理監査は標準3公理のみ。
+
+## U16d.3：非flatな導来係数変更の主Perf保存
+
+- `Morita/ScalarExtensionPerfect.lean`：任意の環準同型φに対し、既存の実際の
+  `ScalarExtension.derivedExtension φ D` が指定生成集合からの主Perfを保存することを証明した。
+  U14の射影的perfect代表の係数拡大と、U12fの任意射影解像度計算を再利用している。
+- 指定生成集合Sを `scalarPerfectGenerators φ D S` に移す実際の主Perf制限と、
+  両主導来包含との自然同型を公開した。φのflatness・HomのlocalHomKFlatは追加しない。
+- `Morita.ScalarExtensionPerfectChecks` ビルド成功（3068 jobs、警告なし）。
+  主要4宣言の公理監査は標準3公理のみ。
