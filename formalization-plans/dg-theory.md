@@ -12412,3 +12412,154 @@ Spectra.StageTwoと合同ビルドし成功（4113 jobs、終了コード0、警
 保存済みの再現入口はMorita/AdjunctionKernelCoproductsChecks・
 AdjunctionKernelSuccessorChecks・AdjunctionKernelSequenceChecks。
 この区切りの後は調査記録だけを追加し、ユーザーの次の指示まで実装しない。
+
+
+### 17.263 U12eの進路判断材料の更新（2026-10-17、調査記録・受入判定ではない）
+
+ユーザーの調査依頼による記録。進行中の小単位は§17.262まで検証し、7f7ce986に対象11パスを
+明示してコミットした。直後のgit show --stat HEADで一致を確認した。
+その後Leanコードは変更していない。この節は新しい受入・一般版再開・担当移管を決定しない。
+既存§17.249の局所版受入、一般版中断と§17.251の棚卸しを現状として報告する。
+§17.255以降のU16進展を反映した更新である。
+固定Lean・Mathlibはv4.35.0-rc4・e6bbacd0e1b7307ff6e17da09cd2455f60804fa6と再照合済み。
+
+#### 1. §15.2 U12eの受入条件：完了部分と残り
+
+完了は指定した型・仮定の範囲で証明済みの意味。一般U12e全体の受入とは区別する。
+特記しない合成APIの名前空間はBimoduleTensor。
+
+| 項目 | 判定 | 公開名・範囲 |
+| --- | --- | --- |
+| 積dg圏の加群と主bimodule導来圏の比較 | 完了 | rightModuleBimoduleDerivedEquivalence |
+| 積圏上semifreeから片側相対K-flat性を得る別証明 | 完了 | BimoduleSemifreeResolution.rightRelativeKFlat、exists_rightRelativeKFlat_bimodule_resolution。B–CならlocalHomKFlat A Cを保持 |
+| 任意bimoduleの指定解像度・K-flat部分圏との比較 | 完了 | bimoduleCanonicalSemifreeResolution、rightKFlatDerivedEquivalence |
+| 固定K-flat因子の合成・準同型保存 | 完了 | derivedComposeWith、derivedComposeWithFunctor、composeMap_second_kFlat_quasiIso |
+| 主導来両因子の合成と自然性 | 完了 | derivedBimoduleComposeFunctor、derivedBimoduleComposeKFlatIso_naturality、derivedBimoduleComposeKFlatValueIso_naturality。B–C–EならlocalHomKFlat A E |
+| 任意指定解像度の計算と選択比較 | 完了 | derivedBimoduleComposeResolutionComputation、_fac、_self、_naturality |
+| 左右単位・結合比較 | 完了 | derivedBimoduleLeftUnitIso、derivedBimoduleRightUnitIso、derivedBimoduleAssociatorIso、derivedBimoduleAssociatorIso_resolution_fac |
+| 三角・五角coherence | 完了 | derivedBimoduleTriangle、derivedBimodulePentagon。定理ごとの出力Hom条件を保持 |
+| Hom K-flatなdg圏分解の存在 | 完了 | KFlatDGResolution.canonical、nonempty。Small.{u} Dの下でsourceと準同値増大を構成 |
+| 指定分解上の合成・単位・結合・coherence | 完了 | ResolutionBimodule.composeFunctor、leftUnitIso、rightUnitIso、associator、triangle、pentagon |
+| 分解間の共通source・加群／bimodule比較同値 | 完了 | comparisonLeft_quasiEquivalence、comparisonRight_quasiEquivalence、moduleDerivedEquivalence、changeModuleDerivedEquivalence、ResolutionBimodule.changeEquivalence |
+| 分解変更の合成比較・対角比較の存在 | 完了 | ResolutionBimodule.changeComposeIso、changeDiagonalIso。指定単位子・結合子の保存とは区別 |
+| 個別の制限比較と証明済み単位経路 | 完了 | derivedMiddleRestrictionIso、derivedMiddleRestrictionNatTrans_functor_id／_functor_comp、derivedBimoduleComposeLeftRestrictionIso／RightRestrictionIso、simultaneousRestrictionDerivedComparison、derivedBimoduleAssociator_leftRestriction／_rightRestriction／_middleRestriction／_secondMiddleRestriction、leftUnitRestrictionDerivedComparison_eq、rightUnitRestrictionDerivedComparison_eq、leftUnitOuterLeftRestrictionComparison_eq |
+| R1：全導来外側右制限の右単位保存 | 残り | 通常squareを全導来右単位に接続 |
+| R2：同時制限の左右単位経路 | 残り | 制限順序と対角射を正規化して単位squareを貼る |
+| R3：同時制限の結合子経路 | 残り | 四位置の個別squareを実際の同時比較へ接続 |
+| R4：外側・同時制限の恒等・合成・交換 | 残り | 単独の中間制限の恒等・合成は完了済み。二重輸送の残る整合性 |
+| R5：changeEquivalenceの単位・結合保存 | 残り | changeComposeIso・changeDiagonalIsoを指定単位子・結合子と整合 |
+| R6：分解変更の自己・推移とcoherence | 残り | 逆同値のunit/counit込みで同じ比較系にそろえる |
+| R7：一般版の統合受入監査 | 残り | R1〜R6を覆う独立入口・宇宙・射のクラス・全主要監査 |
+
+局所版は§17.249の範囲で既に受入済み。一般版は部分実装済み・中断・未受入。
+入口Derived/BimoduleLocalの推移的project importは今回も423、Resolution/依存0。
+分解の存在自体や、指定分解上の五角を未証明と数える必要はない。
+
+#### 2. 局所K-flat版でU16a〜dを進められるか
+
+U12a/b/d/e-local/fは基盤として足りる。これはU16自身の新規証明まで完成しているという意味ではない。
+全Hom条件Tensor.localHomKFlatと、商が要求する片側条件DGQuotient.localKFlatを区別する。
+M9ではallHomKFlat_of_flat_zeroとlocalPerfectQuotientEquivalence_of_flat_zeroが既存入口。
+前者の入力は全x,yとi≠0でHom.X iがIsZero、全x,yでModule.Flat A (Hom.X 0)。
+元の自由列dg圏でこれらを証明する作業と、無限積・tensor比較は未供給である。
+商やEndのHomについて同じ条件が無条件に成立するとはしない。
+
+| 単位 | 局所版で書けるか・現在地 | 必要なU12e残件 | 独立に残る証明／適用限界 |
+| --- | --- | --- | --- |
+| U16a | 書ける。kernelDerivedTensorFunctor、kernelDerivedTensorComputation、kernelIdentityIso、kernelCompositionIsoと全導来kernel射のkernelCompositionIso_naturalityは実装済み。作用・恒等に局所Hom条件不要、合成は始域DのlocalHomKFlatのみ | R1〜R7は不要 | 一般右随伴、unit/counit、三角恒等式、恒等・結合の作用coherence。余積保存・初期被覆・関係消去・可算近似列までは§17.262で検証済みだが、telescopeと全入力Hom表現は未完。局所K-flat性はkernel列の射影性を与えない |
+| U16b | 書ける。別担当はdgFunctorDerivedEquivalence、延長／制限随伴、実際のgraph作用比較、shift・三角性・Perfを含め担当範囲を受入済み | 不要 | 本体の準同値⇒導来同値は局所Hom条件不要。積dg圏上の準同値・bimodule制限を使う個別定理では交差するHom条件を保持。一般kernel随伴と取り違えない |
+| U16c | 書ける。moduleCompact_iff_perfect、perfectEndomorphismDG_quasiEquivalence、endomorphismDerivedEquivalence_ofCompactGenerator、kernelColumnsPerfect_iff_preservesPerfectが基盤 | 不要 | 多対象kernelの全導来Hom比較と、perfect性・全Hom quasiIso・compact生成の三独立条件から同値を出す一般判定は未実装。現在の順序ではU16a完成後。局所K-flat性だけから三条件は得られず、H⁰比較だけへの弱化も不可 |
+| U16d | 明示条件下で書ける。別担当U16d.22までに全導来kernel射に自然なPerf作用、実際の恒等・合成比較と合成自然性を実装。モデル条件付きの全導来入力射自然な係数変更比較と実際のPerf正方形もあり | 固定圏の現行契約ならR1〜R7不要。任意の同時制限・分解変更全体のcoherenceまで追加する場合だけR1〜R6の該当部分が必要 | 恒等・合成coherenceのPerf制限、係数変更正方形のkernel射自然性・kernel主局所化への降下・合成図式、U12f評価比較との成分同定が残る。中心作用は保留。導来係数変更比較の一般形はhAug・hP'、十分条件版は出力hE・hPN・hP'を保持 |
+
+U12fのderivedTensorBaseChangeは環準同型φのflat性そのものは要求しないが、
+選んだ入力射影解像度Pと左加群Nに対するhPN : complexKFlat A (P⊗N)、
+係数変更後のhP' : moduleRelativeKFlat A' (DGBaseChange φ D) (rightModule φ D P)、
+両ModuleCatのHasDerivedCategoryの宇宙を明示する。この制約は一般U12eを完成させても自動では消えない。
+別担当U16d.21のscalarKernelDerivedBaseChangeIsoはdg加群全体の比較をhAug・hP'付きで与える。
+_ofKFlatModels版では出力圏hEとhPNから増大の可逆性hAugを証明している。局所Hom条件だけの無条件比較ではない。
+局所Hom条件なしの全dg圏で同じ合成を同じcoherenceまで得る主張は、今回の局所版U16の範囲外。
+
+#### 3. 一般U12eを最後まで仕上げる残工数
+
+一般版はd4e14c9f以降再開されておらず、R1〜R7の見積もりは変更する根拠がない。
+今回もその直近16計画更新コミットから15区間を再計算し、中央値10.6分、最短6.5分、最長29.4分。
+コミット間隔にはビルド待ち等も含むため、純粋な証明時間の測定ではない。
+§17.256以降のU16成果は別の作用比較・右随伴準備で、R1〜R6の完了には数えない。
+
+| 残件 | ビルド・公理監査込みの小単位 | 難所 |
+| --- | --- | --- |
+| R1 | 1〜2 | 固定対角の全導来右単位への接続 |
+| R2 | 3〜5 | 制限順序、対角、左右単位のsource正規化 |
+| R3 | 2〜4 | 四位置の結合squareの貼合せ |
+| R4 | 3〜5 | 二重輸送の恒等・合成・交換 |
+| R5 | 3〜6 | inverseCompositionComparisonと逆同値のunit/counit |
+| R6 | 3〜5 | 自己・三選択推移と合成比較の整合 |
+| R7 | 1〜2 | 独立入口と受入表・統合監査 |
+| 合計 | 16〜29 | U16・U15e分解版・M9具体化を含まない |
+
+中央値による単純外挿は約2.8〜5.1時間。R2/R5/R6は貼合せ方針自体が未検証であり、
+計画には5〜12実作業時間程度の幅を置く。精度の低い見積もりで上限保証ではない。
+再開する場合はR1とR2最初の検証区切りで再見積もりする。
+
+#### 4. 局所版で閉じ、一般成果を中断記録に残す案
+
+| 区分 | 提案する範囲 |
+| --- | --- |
+| 受け入れる | 固定した小dg圏と必要な出力Hom K-flat条件下の主導来合成、両因子自然性、任意指定解像度の計算・モデル変更、左右単位、結合子、三角・五角。§17.249の既存受入と同じ |
+| 範囲外 | Hom条件なしの一般主合成と分解変更の完全coherence、R1〜R7、一般U15e分解版。一般dg圏分解の存在や個別squareの既証明性を撤回しない |
+| 保持する成果 | パス・名前・型・証明を保持。分解存在、共通source、比較同値、指定分解上の合成、個別制限squareをそれぞれの型の範囲で再利用 |
+| 中断の正本 | dg-theory-u12e-general-inventory.md。固定点d4e14c9f、棚卸し09fcd575（519モジュール、再利用444・残coherence足場75）、R1〜R7、検査入口を保持 |
+| 再開の最小単位 | R1の通常右単位square→全導来右単位square。検証が済むまでR2に広げない。その後R2→R3/R4→R5→R6→R7 |
+
+R1の具体的接続はTensor/OuterUnitRestriction.rightBimoduleUnitIso_rightRestriction、
+Derived/AssociatorRightRestrictionPresentation.derivedBimoduleComposeRightRestrictionIso_model_calculation
+（固定対角）、Derived/BimoduleCompositionRightUnit.derivedBimoduleRightUnitIso。
+一般入口Resolution/GeneralとChecks.U12eGeneralInventoryを保存し、存在するだけで一般受入済みとしない。
+局所U15e/U17bは既存Quotient/DerivedComparison*・Verdier/を再利用し、分解版として複製しない。
+この案の運用は既に§17.249・251に記録されており、今回は新たな受入操作を行わない。
+
+#### 5. U16を別チャットへ渡す場合の境界と受渡API
+
+Morita/全体の一括譲渡は既存U16b/d担当と衝突する。下記は移管する場合の案であり、
+今回新チャットの作成・送信・所有権変更は行っていない。
+
+| 担当案 | 編集可能範囲 | 境界・契約 |
+| --- | --- | --- |
+| このチャットが一般U12eを続ける場合 | Derived/・Resolution/内のR1〜R6用新規ファイルと専用Checks、§17の一般版記録 | 既存公開APIは凍結。Morita/を編集しない。共有ファイルの変更が必要なら先に契約を調整 |
+| 新しいU16a/c担当 | Morita/Adjunction*・Coherence*・Criterion*と対応Checks、dg-theory-morita.md | このprefixの所有を一括で移す。Kernel*は原則読み取り専用。変更が必要なら所有移管を明示。7f7ce986の近似列を継続し、telescope／Hom表現から再開 |
+| 既存U16b/d担当 | Morita/QuasiEquivalence*・Perfect*・ScalarExtension*・Center*、dg-theory-morita-qe.md | 新U16a/c担当も読み取り専用。既存のgraph・Perf・係数変更を再利用 |
+| その他既存担当 | Quotient/DerivedComparison*、Verdier/、Endomorphism/、U12fのScalarExtension* | 従来所有を維持。共有ルートとモデル圏一般論も編集しない |
+| §17の運用 | 引き続きこのチャット | 新担当は専用記録だけを編集し、このチャットが§17へ統合。本文の同時編集を避ける |
+
+| 受渡API群 | 公開名・入口 |
+| --- | --- |
+| U12a/b | complexKFlat、moduleRelativeKFlat、moduleSemifree_relativeKFlat、moduleHomotopicallyProjective_relativeKFlat、localHomKFlat |
+| U12d | moduleDerivedTensorBifunctor、moduleResolutionDerivedTensorBifunctorIso_self／_trans |
+| U12e-local | Derived/BimoduleLocal。derivedBimoduleComposeFunctor、任意解像度計算、左右単位・結合・三角・五角、exists_rightKFlat_derived_iso |
+| U12f | derivedExtension、derivedTensorBaseChange、derivedBalancedComparison。hPN・hP'と宇宙を保持 |
+| 実際のkernel作用・比較 | Kernel、kernelCompose／Map、kernelDerivedTensorFunctor、kernelDerivedTensorComputation、kernelDerivedTensorOnBimoduleIso、kernelIdentityIso、kernelCompositionIso、kernelCompositionIso_naturality、_model、_kFlat |
+| 右随伴準備 | kernelHom、kernelDerivedTensorPreservesCoproducts、kernelBrownSeedMap、kernelBrownSuccessor、kernelBrownApproximation、kernelBrownTransition、kernelBrownDiagram、kernelBrownTargetCocone。随伴存在は未実装と明記 |
+| 三角性・生成性 | mainKernelActionCommShift、mainKernelActionIsTriangulated、moduleCompactGenerators、moduleCompact_iff_perfect、moduleLocalizing_all |
+| 係数変更の新しい加群値比較 | scalarKernelDerivedBaseChangeIso、scalarKernelDerivedBaseChangeIso_ofKFlatModels。Morita/ScalarExtensionKernelDerivedComparisonと実際のPerf正方形 |
+| graph・Perf | dgFunctorDerivedEquivalence、dgDerivedExtensionRestrictionAdjunction、Morita.QuasiEquivalence、kernelColumnsPerfect_iff_preservesPerfect、endomorphismDerivedEquivalence_ofCompactGenerator |
+| M9・局所商 | allHomKFlat_of_flat_zero、localPerfectQuotientEquivalence_of_flat_zero、quotientVerdierLocalEquivalence、localSmallPerfectQuotientEquivalence |
+
+Kernel A D Eは右E・左D、実体DerivedBimoduleCategory A E D。
+A : Type u、[CommRing A]、対象宇宙v/w/zは独立、Small.{u}を保持。
+公開型の正本はdg-theory-morita.md冒頭。公開名・型を変える必要があれば§17へ旧新型・仮定・宇宙・使用箇所・移行を先に記録する。
+
+#### 検証・推奨・停止点
+
+§17.262の合同ビルドは4113 jobs・警告0、対象3 Checksの直接公理監査は38新規宣言で標準3公理以内。
+既存U12eLocalの21宣言も直接再監査し標準3公理以内。
+今回のimport調査ではBimoduleLocal 423、KernelDerivedFunctor 434、
+CoherenceCompositionCanonicalChecks 572、DerivedComparisonPerfect 568のprojectモジュールをたどり、
+いずれもResolution/依存0を確認した。一般R1〜R7の統合受入監査を代替するものではない。
+共有モデル圏・Quillen・転送・SM7への追加要求は、この局所化経路にはない。
+必要な当面の共有入力は既存Verdierの三角性と余積比較、U12fの明示モデル条件であり、APIを読み取り専用で利用できる。
+
+**推奨は(ii)。** 局所版受入の既存範囲を維持し、一般版は再開可能な中断として残し、
+次の指示後にU16a/cへ集中する。R1〜R6を先行しても一般右随伴・Morita三条件判定は完成せず、
+M9の局所商入口も既にあるため、一般版の5〜12時間を並行投資する優先性は低い。
+既存U16b/dとの並行分担は維持できる。M9の具体的な平坦性・無限積比較の供給は別途必要。
+方針はユーザーが決める。報告後は指示があるまで新しい単位に着手しない。
