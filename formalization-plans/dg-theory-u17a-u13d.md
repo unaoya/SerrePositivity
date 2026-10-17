@@ -995,3 +995,24 @@ M9 の適用については、商を取る前の次数零の平坦 Hom を持つ
   前単位 `d93b6385` は直後の stat で自分の8ファイルのみと確認した。
 - 目標全体は進行中。U17c と支持・retract は検証済みだが、上記の係数変更の直接構成との
   比較・構造照合、一般 Morita kernel の受入後の自然性を残す。中心作用・G 作用は保留。
+
+### U17b2：主導来 kernel の局所化上の graph 作用への接続
+
+- U16a3 の最新記録と `Morita/KernelDerivedFunctor.lean` を読み、
+  `kernelDerivedTensorFunctor`・`kernelDerivedTensor` が主導来 kernel の射も含めて
+  実装・検証済みとなったことを確認した。以前の「未実装」という記録は当時の状態である。
+- `Verdier/DerivedKernelGraphSquare.lean` は、この実際の主導来作用の `kernelGraph` における
+  値を `kernelDerivedTensorOnBimoduleIso` と graph 一致で既存の導来 graph 延長へ比較する。
+  `derivedKernelGraphQuotientSquare` は、包含と誘導商関手の4辺を **主導来 kernel 上の作用** に
+  置き換えた、全導来対象・射に自然な正方形である。
+- `derivedKernelGraphPerfectFunctor` は主導来 kernel 作用そのものの Perf 制限。
+  元の graph 延長の Perf 制限への自然同型を構成した。
+  `derivedKernelLocalPerfectSquare` は、前単位で元の tria から本当に局所化した完備 Verdier
+  関手と、この主導来作用を用いた H⁰ 関手が既存の局所 perfect enhancement 比較と可換に
+  なることを示す。商を取る両側の局所 K-flat 条件を独立に明示する。
+- 対象ビルド `Verdier.ChecksDerivedKernelGraphSquare` 成功（3582 jobs）、警告なし。
+  主要7宣言の公理監査は標準3公理のみ。新規 sorry・axiom・引用なし。
+  U16a・U16b 側のファイルは読み取りのみ。
+- これは graph kernel の場合の実際の主導来接続であり、任意 kernel の商への降下や
+  恒等・合成・自然変換の全 coherence まで完了したという主張ではない。
+  構造照合と係数変更の直接構成との一致を継続する。中心作用・G 作用は保留。
