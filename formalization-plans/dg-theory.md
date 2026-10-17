@@ -8085,3 +8085,42 @@ Checks.DerivedBimoduleUnits・Checks.DerivedBimodulePentagon・Checks.StageEight
 local Hom条件のないdg圏自体の解像度経路もU12eに残り、U12e全受入後にU16へ進む。
 U12f/U14/U15dは並行担当の成果を受け取り、実装を重複しない。
 U13d/e残部、D4mおよび合流後のU15e/U17は未完。共有一般論への新しいAPI要求はない。
+
+
+### 17.177 U12e18：全導来因子上の三角恒等式（2026-10-17）
+
+`Derived/BimoduleCompositionTriangle.lean`の**derivedBimoduleTriangle_kFlat**は、
+右K-flatな後因子Qを全導来圏へ送った場合の三角恒等式を証明する。
+§17.176のderivedBimoduleAssociatorIso_kFlat_facと左単位の計算式を使い、
+Qへの元の左単位射についてK-flat計算同型の自然性を適用する。
+全導来Qの計算同型を後合成して既存derivedTriangleへ帰着し、最後は計算同型の
+右単位射に対する自然性と関手の合成保存で全導来右単位の経路へ戻す。
+前因子は最初から任意の導来対象であり、局所化前の対象への限定は不要。
+
+`Derived/BimoduleCompositionTriangleFamily.lean`は両経路の共通始域を
+**derivedBimoduleTriangleSource**として束ね、**derivedBimoduleTriangleLeft/Right**を
+後因子の全導来圏から関手圏への自然変換として構成する。
+左経路は結合自然変換を対角因子で評価した後に左単位を適用するもの、
+右経路はMathlibのwhiskering関手で右単位を適用するもの。
+**derivedBimoduleTriangleFamily_kFlat**は上のK-flat三角恒等式を族の成分の等式にする。
+**derivedBimoduleTriangle**はK-flat部分圏の局所化の普遍性で包含への前合成後の
+等式を証明し、比較関手の本質的全射性と自然性から全後因子上の自然変換の等式を得る。
+**derivedBimoduleTriangle_app**は任意の導来後因子での公開計算式。
+この定理は固定K-flat因子だけのcoherenceではなく、全導来合成・§17.173の左右単位・
+§17.175の全導来結合同型を使う三角恒等式である。
+任意可換環・非有界・独立B/C/E対象宇宙・Small.{u} B/C/E、localHomKFlat A C/Eを保持する。
+
+Checks.DerivedBimoduleTriangle・Checks.DerivedBimoduleAssociatorIndependence・
+Checks.DerivedBimoduleUnits・Checks.DerivedBimodulePentagon・Checks.StageEight・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（3080 jobs、終了コード0、警告なし）。
+全後因子上の自然変換の等式、前後両因子が任意導来対象である成分式、独立対象宇宙・ZMod 2を検査した。
+主要7宣言の直接公理監査は標準公理のみ。監査累計3346宣言。
+今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は13 Markdown・320 exposition参照まで進み、担当外BhattScholze互換宣言の
+未解決参照1件で失敗した。共有ルート・共有一般論・該当系列は編集していない。
+既存BimoduleCompositionLeftUnitComputationの変更は長行の折返しだけで、公開APIの名前・型に変更はない。
+
+次は全因子上の五角恒等式を、§17.176のK-flat結合比較図式と既存derivedPentagonから輸送する。
+三角恒等式だけでU12e全受入とはしない。local Hom条件のないdg圏自体の解像度経路も残る。
+U12e全受入後はこのチャットでU16を進める。U12f/U14/U15dは並行担当とし、
+U15e/U17はU12f・U14・U16がそろってから扱う。共有一般論への新しいAPI要求はない。

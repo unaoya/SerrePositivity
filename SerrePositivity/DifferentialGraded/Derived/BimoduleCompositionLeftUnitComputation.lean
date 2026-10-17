@@ -15,7 +15,8 @@ variable (A : Type u) [CommRing A] (B : Type v) (C : Type w)
 lemma derivedBimoduleLeftUnitIso_base_app (hC : localHomKFlat A C) (Q : BimoduleCategory A B C) :
     (derivedBimoduleLeftUnitIso A B C hC).hom.app ((bimoduleToDerived A B C).obj Q) =
       (derivedBimoduleLeftUnitBaseIso A B C hC Q).hom := by
-  have h := Localization.liftNatTrans_app (bimoduleToDerived A B C) (BimoduleCategory.quasiIso A B C)
+  have h := Localization.liftNatTrans_app (bimoduleToDerived A B C)
+    (BimoduleCategory.quasiIso A B C)
     (bimoduleToDerived A B C ⋙ derivedBimoduleLeftUnitFunctor A B C hC) (bimoduleToDerived A B C)
     (derivedBimoduleLeftUnitFunctor A B C hC) (𝟭 _)
     (derivedBimoduleLeftUnitLocalizedIso A B C hC).hom Q
