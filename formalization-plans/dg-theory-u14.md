@@ -600,6 +600,17 @@
 - `ChecksPerfectTensor` の対象ビルド成功。新規6主要宣言の公理は標準3公理のみ。
 - 既存の主Perf同値の順関手や実際の導来tensorの名前・型は変更していない。
 
+## U14a/b.33：主Perfへの実際の随伴制限とtensor逆関手（2026-10-17）
+
+- `PerfectAdjunction.lean`：主導来圏の実際のtensor–Hom随伴を、既存の完全忠実なPerf包含に沿って制限した。
+- 制限随伴の単位・余単位を包含で写すと、元の導来随伴の単位・余単位に一致することを証明。
+  thick生成仮定の下で両者が自然同型となることも証明した。
+- 実際のtensor制限が同値関手であることを証明し、既存の `perfectEndomorphismEquivalence` の
+  選択済み逆関手と、実際のtensor制限との自然同型を随伴の一意性から構成した。
+- `ChecksPerfectAdjunction` と更新した `ChecksCompatibility` の対象ビルド成功。
+  新規7主要宣言の公理は標準3公理のみ。U14a.31–33のAPIを公開入口へ接続済み。
+- 既存の主Perf同値・導来随伴の名前や型は変更していない。enhancement比較を含む最終照合は継続する。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
