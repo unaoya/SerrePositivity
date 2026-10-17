@@ -32,6 +32,7 @@ BS = "SerrePositivity.BhattScholze"
 CITATIONS = {
     "andre-relative": BS + ".Inputs.AndreFlatness",
     "b-i-relative": BS + ".Inputs.Perfectoidization",
+    "arc-excision-relative": BS + ".Inputs.ArcExcision",
 }
 AUDIT_KINDS = {
     "audit_bhatt_scholze.lean": "pure-suite",
@@ -39,6 +40,7 @@ AUDIT_KINDS = {
     "audit_bhatt_scholze_refactoring.lean": "pure-suite",
     "audit_bhatt_scholze_prop813.lean": "pure-suite",
     "audit_bhatt_scholze_b5.lean": "pure-suite",
+    "audit_bhatt_scholze_arc_excision.lean": "arc-excision-relative-suite",
     "audit_bhatt_scholze_andre_conditional.lean": "andre-conditional-suite",
 }
 # Read these shared files only for assertion-name coverage. They do not become
@@ -601,7 +603,10 @@ alias uncertain := External.uncertain
     def test_citation_categories(self):
         self.assertEqual(citation_class(set()), "no-named-bs-citation-import")
         self.assertEqual(citation_class({CITATIONS["b-i-relative"]}), "b-i-relative")
-        self.assertEqual(citation_class(set(CITATIONS.values())), "andre-relative+b-i-relative")
+        self.assertEqual(citation_class({CITATIONS["arc-excision-relative"]}),
+                         "arc-excision-relative")
+        self.assertEqual(citation_class(set(CITATIONS.values())),
+                         "andre-relative+b-i-relative+arc-excision-relative")
 
     def test_cli_exit_policies(self):
         with tempfile.TemporaryDirectory(prefix="bs-structure-test-") as directory:

@@ -11069,3 +11069,54 @@ B4ExecutionPlan.md、共有監査、CLMST/Inputs/BasicSetup等の担当外ファ
 残る範囲は今回の指定には含めない。すなわち、任意非有界複体についてのProp 10.4全体、
 Prop 10.2の圏同値全体、Remark 10.7のGalois比較と平坦性部分は未実装である。
 B-I/B6および既存André入力の引用は従来どおり保持する。
+
+
+## Cor 8.12：指定された環のexcision引用（2026-10-17）
+
+最新のユーザー指定により、従来の「Cor 8.12を宣言しない」という工程中の制限を、この一件について更新する。
+新規BS専用Inputs/ArcExcision.leanへ、著者版Corollary 8.12（印刷p.69）の環としての帰結を
+指定された公開名・完全な型のまま宣言した。型検査上の修正はなく、仮定の追加・結論の弱化もない。
+主定理への接続やCLMST/・Andre/の編集は行わない。未採用の引用除去計画は根拠にしていない。
+
+公開名は`SerrePositivity.BhattScholze.Inputs.perfectoidization_excision_isPullback`。
+正確な型は以下の通り（namespaceは上記Inputs、open CategoryTheory SerrePositivity.DerivedCompletion）。
+
+```lean
+theorem perfectoidization_excision_isPullback
+    (R S T : Type u) [CommRing R] [CommRing S] [CommRing T] [Algebra R S] [Algebra R T]
+    (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p)
+    (f : S →ₐ[R] T) (I : Ideal S)
+    (hS : IsModuleComplete S (p : S) (ModuleCat.of S S))
+    (hT : IsModuleComplete T (p : T) (ModuleCat.of T T))
+    (hI : IsModuleComplete S (p : S) (ModuleCat.of S I))
+    (harc : ∀ (V : Type u) [CommRing V] [IsDomain V] [ValuationRing V],
+      ringKrullDim V = 1 → IsAdicComplete (Ideal.span {(p : V)}) V →
+      ∀ k : S →+* V, ¬ (I ≤ RingHom.ker k) → ∃! l : T →+* V, l.comp f.toRingHom = k)
+    {C D Q E : Type u} [CommRing C] [CommRing D] [CommRing Q] [CommRing E]
+    {ηS : S →+* C} {ηT : T →+* D} {ηQ : S ⧸ I →+* Q} {ηE : T ⧸ I.map f.toRingHom →+* E}
+    (hC : IsPerfectoidization p ηS) (hD : IsPerfectoidization p ηT)
+    (hQ : IsPerfectoidization p ηQ) (hE : IsPerfectoidization p ηE) :
+    IsPullback
+      (CommRingCat.ofHom (IsPerfectoidization.map hC hD f.toRingHom))
+      (CommRingCat.ofHom (IsPerfectoidization.map hC hQ (Ideal.Quotient.mk I)))
+      (CommRingCat.ofHom (IsPerfectoidization.map hD hE (Ideal.Quotient.mk (I.map f.toRingHom))))
+      (CommRingCat.ofHom (IsPerfectoidization.map hQ hE
+        (Ideal.quotientMap (I.map f.toRingHom) f.toRingHom Ideal.le_comap_map)))
+```
+
+出典はhttps://people.mpim-bonn.mpg.de/scholze/prisms.pdf 、手元の著者版
+paper/refs/BS-prisms-author.pdf（SHA256:
+4cb49a42c80fc734fb7585da273538e09632431ba06709ae05a11ded6673c27a）。
+著者版Cor 8.12（p.69）、Lemma 8.4（pp.63–64）、Prop 8.5（pp.64–65）の該当箇所を照合した。
+原典のE∞-S代数の引き戻しから、ファイバー列の長完全列、coconnectivityによるH⁻¹消滅、
+perfectoid環への全写像にわたる導来極限のH⁰表示と普遍性により得る環の帰結を、まとめて引用範囲とする。
+この導出自体をLeanで証明したとは扱わない。導来対象・E∞構造・arc位相の新定義、
+普遍環を持たない入力、差写像の全射性は含めない。
+
+`set -o pipefail`付きの対象ビルドは2843ジョブ、終了コード0。
+新規BS専用audit_bhatt_scholze_arc_excision.leanでは、指定された全型を再掲したexampleの適用、
+#print axioms、#print sorriesが通過した。公理はpropext・Classical.choice・Quot.soundとsorryAxのみ。
+sorries出力はこの公開引用一件だけであり、ソース中も新しいsorry宣言はこの一件のみ、axiomの追加なし。
+これは証明済み定理のpure監査ではなく、引用を使う監査として区別する。
+BS構造監査にarc-excision-relative入力と専用監査を登録し、構造監査・11件の自己テストも終了コード0。
+他チャットへのメッセージ送信は行っていない。B-I/Thm 1.17(1)の既存引用や既存の証明済みAPIは変更していない。
