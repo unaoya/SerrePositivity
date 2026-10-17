@@ -556,3 +556,21 @@ N4 全体の完了とは数えない。N6 も未完了。
 実際の写像空間への A 加群構造と単体的な線形性、直接の線形ホーン充填・Kan 性、
 π₀ 比較、N6 は未完了。N4 全体の完了とは数えない。
 全公開宣言 491 件と既存 5 則は標準三公理の範囲で監査済み。
+
+## N4h：実際の写像空間の単体的 A 加群（2026-10-18、N4 は未完了）
+
+`PinchedReindexIndex.lean` と `PinchedNaturality.lean` は、最終点固定延長の像・単射性・零分岐を比較し、
+成分回収が任意の単体圏の射による引き戻しと可換であることを示す。
+`PinchedLinearPullback.lean` は線形成分族の引き戻しを解の部分加群へ制限した A 線形写像とし、
+恒等・合成の法則と全次数の同値の自然性を証明する。全ての退化も含む結果である。
+
+`PinchedModule.lean` は各次数の実際の右 pinched 単体に加法可換群と A 加群を移す。
+`moduleEquiv` は元の回収の同値を A 線形同値とし、`pullbackLinear` の値は元の引き戻しに一致する。
+`pullback_add` と `pullback_smul` が元の面・退化の加法・A スカラー倍の保存を示す。
+`PinchedModuleObject.lean` の `moduleObject x y` はこれを `SimplicialObject (ModuleCat.{max u v} A)` にまとめ、
+各写像が元の単体的集合の写像であることも `moduleObject_map_apply` で確認する。
+
+任意の可換環 A、dg 圏 D、二対象 x,y、全次数・全単体的射に対する構成で追加仮定はない。
+これで N4 の各次数の加群構造と単体的な線形性は証明済み。
+直接の線形ホーン充填・Kan 性、π₀ 比較、N6 は未完了。
+全公開宣言 513 件と既存 5 則は標準三公理の範囲で監査済み。

@@ -11,6 +11,8 @@ dg nerve と内部ホーン充填および quasicategory instance を監査す�
 ホモトピー圏の H⁰ との比較も監査する。N4 と N6 の完了はまだ主張しない。
 -/
 
+noncomputable section
+
 #print axioms SerrePositivity.DifferentialGraded.differential_compose
 #print axioms SerrePositivity.DifferentialGraded.compose_assoc
 #print axioms SerrePositivity.DifferentialGraded.differential_unit
@@ -1008,6 +1010,51 @@ dg nerve と内部ホーン充填および quasicategory instance を監査す�
 #print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.linearEquiv
 #check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.linearEquiv
 
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.image_withLast_extend
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.image_withLast_extend
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.injOn_extend_withLast_iff
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.injOn_extend_withLast_iff
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.two_of_not_injOn
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.two_of_not_injOn
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.toLinearData_pullback
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.toLinearData_pullback
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex.pullback_mem
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex.pullback_mem
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex.pullback
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex.pullback
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex.pullback_val
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex.pullback_val
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex.pullback_id
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex.pullback_id
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex.pullback_comp
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex.pullback_comp
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.toLinearSimplex_pullback
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.toLinearSimplex_pullback
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.instRawAddCommGroup
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.instRawAddCommGroup
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.instAddCommGroup
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.instAddCommGroup
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.instRawModule
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.instRawModule
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.instModule
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.instModule
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.moduleEquiv
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.moduleEquiv
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.moduleEquiv_apply
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.moduleEquiv_apply
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.pullbackLinear
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.pullbackLinear
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.pullbackLinear_apply
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.pullbackLinear_apply
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.pullback_add
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.pullback_add
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.pullback_smul
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.pullback_smul
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.moduleObject
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.moduleObject
+#print axioms SerrePositivity.InfinityCategories.DGNerve.PinchedHom.moduleObject_map_apply
+#check @SerrePositivity.InfinityCategories.DGNerve.PinchedHom.moduleObject_map_apply
+
 section
 universe u v
 variable (A : Type u) [CommRing A] (D : Type v)
@@ -1018,7 +1065,14 @@ example (x y : D) (n : ℕ) :
 example (x y : D) (n : ℕ) :
     AddCommGroup (SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex A x y n) :=
   inferInstance
+example (x y : D) (n : ℕ) :
+    Module A ((SerrePositivity.InfinityCategories.DGNerve.pinchedHom A D x y).obj
+      (Opposite.op (SimplexCategory.mk n))) := inferInstance
+example (x y : D) (n : ℕ) :
+    AddCommGroup ((SerrePositivity.InfinityCategories.DGNerve.pinchedHom A D x y).obj
+      (Opposite.op (SimplexCategory.mk n))) := inferInstance
 example : SSet.Quasicategory (SerrePositivity.InfinityCategories.dgNerve A D) := inferInstance
 example : SSet.Truncated.Quasicategory₂
     (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.twoTruncation A D) := inferInstance
+end
 end

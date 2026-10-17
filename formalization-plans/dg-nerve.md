@@ -4727,6 +4727,222 @@ SerrePositivity.InfinityCategories.DGNerve.PinchedHom.Data : (A : Type u_1) →
               SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex A x y n
 ```
 
+### N4h：実際の写像空間の単体的 A 加群構造（2026-10-18、N4 は未完了）
+
+`PinchedReindexIndex.lean` は、最終点固定延長による `withLast J` の像が
+`withLast (J.image α)` であること、その集合上の延長の単射性が J 上の α の単射性と同値であることを証明した。
+非単射な J は二点以上なので、延長後の集合は三点以上で、潰れた成分は単位分岐ではなく零分岐となる。
+
+`PinchedNaturality.lean` の `toLinearData_pullback` は、実際の単体の任意の引き戻しと
+成分族の線形引き戻しが可換であることを示す。
+単射分岐では像・端点・次数を比較し、非単射分岐では上の三点以上の零の計算を使った。
+したがって面だけでなく全退化写像を含む任意の単体圏の射で成立する。
+
+`PinchedLinearPullback.lean` は成分族の引き戻しを解の部分加群へ制限する。
+`LinearSimplex.pullback_mem` は解を実際の単体に戻して引き戻し、自然性と逆則で回収することにより
+引き戻した族が解であると証明する。新しい線形方程式の仮定は導入しない。
+`LinearSimplex.pullback` はその A 線形写像であり、台の成分族の計算、恒等・合成則を持つ。
+`toLinearSimplex_pullback` は全次数の同値とこれらの引き戻しの自然性を示す。
+
+`PinchedModule.lean` は全次数の同値 `linearEquiv` に沿って、実際の右 pinched 単体に
+加法可換群と A 加群構造を移す。内部の単体型と SSet の評価として表記した型の両方に、
+定義上一致する同じ移送構造を公開し、両表記での型クラス推論を可能にした。
+`moduleEquiv x y n` は元の回収の同値を A 線形同値として与え、その値は `toLinearSimplex` のまま。
+`pullbackLinear α` は線形模型の引き戻しを共役した A 線形写像。
+`pullbackLinear_apply` がこの写像の値を元の右 pinched 単体の引き戻しに同定する。
+`pullback_add` と `pullback_smul` は、したがって元の面・退化が実際の加法と A スカラー倍を保つことを示す。
+元の単体的集合の写像を別の写像に変更していない。
+
+`PinchedModuleObject.lean` の `moduleObject x y` は、これらを
+`SimplicialObject (ModuleCat.{max u v} A)` にまとめる。
+`moduleObject_map_apply` は各線形写像が元の単体的集合の写像と一致することを示す。
+各次数の加群と全ての単体的構造写像の線形性がそろい、N4 の単体的 A 加群の項目を満たした。
+
+前提：任意の可換環 A、任意の dg 圏 D、二対象 x,y、全次数、任意の単体圏の射。
+可逆性・有界性・平坦性・標数の追加仮定はない。加群構造は全次数の既証の同値による構造移送で、
+加群則は Mathlib の構造移送の定理、引き戻しは成分回収の自然性で検証した。
+元の写像空間と単体的加群の対象宇宙は `max u v`。§3 の設計は変更していない。
+
+検証：`set -e`、`set -o pipefail` の下で
+`lake build SerrePositivity.InfinityCategories.DGNerve` が 3492 jobs、終了コード 0。
+`lake env lean scripts/audit_dg_nerve.lean` も終了コード 0。
+監査の例に実際の各次数の `Module A` と `AddCommGroup` の推論も追加した。
+構造移送の計算データを含むため、監査の例を noncomputable section 内で型検査する。
+新規 22 宣言を含む全 513 個の担当する明示的公開宣言と既存 5 則、計 518 件の公理表示が
+標準三公理の部分集合。公理への依存なしの表示も含め全表示名と監査対象名が一致し、
+全ソース宣言の型検査も漏れなし。新しい sorry・axiom・引用はない。
+
+未完了：N4 の直接の線形ホーン充填による Kan 性、π₀ と H⁰ の射の比較。
+N6 の一点 dg 圏・複体 dg 圏での具体化と最終検査も未完了。
+一般の単体的群の Kan 性を用いて N4 を代替したり、今回の加群構造だけで N4 完了とは数えていない。
+
+今回の全新規公開宣言の正確な型（`#check @` の出力）：
+
+```lean
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.image_withLast_extend : ∀ {m n : ℕ}
+  (α : Fin (m + 1) →o Fin (n + 1)) (J : Finset (Fin (m + 1))),
+  Finset.image (⇑(SerrePositivity.InfinityCategories.PinchedHom.extendOrderHom α))
+      (SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withLast J) =
+    SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withLast (Finset.image (⇑α) J)
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.injOn_extend_withLast_iff : ∀ {m n : ℕ}
+  (α : Fin (m + 1) →o Fin (n + 1)) (J : Finset (Fin (m + 1))),
+  Set.InjOn ⇑(SerrePositivity.InfinityCategories.PinchedHom.extendOrderHom α)
+      ↑(SerrePositivity.InfinityCategories.DGNerve.PinchedHom.withLast J) ↔
+    Set.InjOn ⇑α ↑J
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.two_of_not_injOn : ∀ {m n : ℕ} (α : Fin (m + 1) →o Fin (n + 1))
+  (J : Finset (Fin (m + 1))), ¬Set.InjOn ⇑α ↑J → 2 ≤ J.card
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.toLinearData_pullback : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {x y : D} {m n : SimplexCategory}
+  (s : (SerrePositivity.InfinityCategories.DGNerve.pinchedHom A D x y).obj (Opposite.op { len := n.len })) (α : m ⟶ n),
+  SerrePositivity.InfinityCategories.DGNerve.PinchedHom.toLinearData
+      (SerrePositivity.InfinityCategories.PinchedHom.Simplex.pullback s α) =
+    (SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.pullback (SimplexCategory.Hom.toOrderHom α))
+      (SerrePositivity.InfinityCategories.DGNerve.PinchedHom.toLinearData s)
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex.pullback_mem : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {x y : D} {m n : ℕ}
+  (α : Fin (m + 1) →o Fin (n + 1)) (f : SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex A x y n),
+  (SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.pullback α) ↑f ∈
+    SerrePositivity.InfinityCategories.DGNerve.PinchedHom.linearSubmodule A x y m
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex.pullback : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        {x y : D} →
+          {m n : ℕ} →
+            (Fin (m + 1) →o Fin (n + 1)) →
+              SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex A x y n →ₗ[A]
+                SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex A x y m
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex.pullback_val : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {x y : D} {m n : ℕ}
+  (α : Fin (m + 1) →o Fin (n + 1)) (f : SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex A x y n),
+  ↑((SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex.pullback α) f) =
+    (SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearData.pullback α) ↑f
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex.pullback_id : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {x y : D} {n : ℕ}
+  (f : SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex A x y n),
+  (SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex.pullback OrderHom.id) f = f
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex.pullback_comp : ∀ {A : Type u_1}
+  [inst : CommRing A] {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {x y : D} {l m n : ℕ}
+  (α : Fin (l + 1) →o Fin (m + 1)) (β : Fin (m + 1) →o Fin (n + 1))
+  (f : SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex A x y n),
+  (SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex.pullback α)
+      ((SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex.pullback β) f) =
+    (SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex.pullback (β.comp α)) f
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.toLinearSimplex_pullback : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {x y : D} {m n : SimplexCategory}
+  (s : (SerrePositivity.InfinityCategories.DGNerve.pinchedHom A D x y).obj (Opposite.op { len := n.len })) (α : m ⟶ n),
+  SerrePositivity.InfinityCategories.DGNerve.PinchedHom.toLinearSimplex
+      (SerrePositivity.InfinityCategories.PinchedHom.Simplex.pullback s α) =
+    (SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex.pullback (SimplexCategory.Hom.toOrderHom α))
+      (SerrePositivity.InfinityCategories.DGNerve.PinchedHom.toLinearSimplex s)
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.instRawAddCommGroup : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        (x y : D) →
+          (n : ℕ) →
+            AddCommGroup
+              (SerrePositivity.InfinityCategories.PinchedHom.Simplex
+                (SerrePositivity.InfinityCategories.DGNerve.Simplex.vertex x)
+                (SerrePositivity.InfinityCategories.DGNerve.Simplex.vertex y) n)
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.instAddCommGroup : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        (x y : D) →
+          (n : ℕ) →
+            AddCommGroup
+              ((SerrePositivity.InfinityCategories.DGNerve.pinchedHom A D x y).obj (Opposite.op { len := n }))
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.instRawModule : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        (x y : D) →
+          (n : ℕ) →
+            Module A
+              (SerrePositivity.InfinityCategories.PinchedHom.Simplex
+                (SerrePositivity.InfinityCategories.DGNerve.Simplex.vertex x)
+                (SerrePositivity.InfinityCategories.DGNerve.Simplex.vertex y) n)
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.instModule : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        (x y : D) →
+          (n : ℕ) →
+            Module A ((SerrePositivity.InfinityCategories.DGNerve.pinchedHom A D x y).obj (Opposite.op { len := n }))
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.moduleEquiv : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        (x y : D) →
+          (n : ℕ) →
+            (SerrePositivity.InfinityCategories.DGNerve.pinchedHom A D x y).obj (Opposite.op { len := n }) ≃ₗ[A]
+              SerrePositivity.InfinityCategories.DGNerve.PinchedHom.LinearSimplex A x y n
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.moduleEquiv_apply : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] (x y : D) (n : ℕ)
+  (s : (SerrePositivity.InfinityCategories.DGNerve.pinchedHom A D x y).obj (Opposite.op { len := n })),
+  (SerrePositivity.InfinityCategories.DGNerve.PinchedHom.moduleEquiv x y n) s =
+    SerrePositivity.InfinityCategories.DGNerve.PinchedHom.toLinearSimplex s
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.pullbackLinear : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        {x y : D} →
+          {m n : SimplexCategory} →
+            (m ⟶ n) →
+              (SerrePositivity.InfinityCategories.DGNerve.pinchedHom A D x y).obj (Opposite.op { len := n.len }) →ₗ[A]
+                (SerrePositivity.InfinityCategories.DGNerve.pinchedHom A D x y).obj (Opposite.op { len := m.len })
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.pullbackLinear_apply : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {x y : D} {m n : SimplexCategory}
+  (α : m ⟶ n) (s : (SerrePositivity.InfinityCategories.DGNerve.pinchedHom A D x y).obj (Opposite.op { len := n.len })),
+  (SerrePositivity.InfinityCategories.DGNerve.PinchedHom.pullbackLinear α) s =
+    SerrePositivity.InfinityCategories.PinchedHom.Simplex.pullback s α
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.pullback_add : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {x y : D} {m n : SimplexCategory}
+  (α : m ⟶ n)
+  (s t : (SerrePositivity.InfinityCategories.DGNerve.pinchedHom A D x y).obj (Opposite.op { len := n.len })),
+  SerrePositivity.InfinityCategories.PinchedHom.Simplex.pullback (s + t) α =
+    SerrePositivity.InfinityCategories.PinchedHom.Simplex.pullback s α +
+      SerrePositivity.InfinityCategories.PinchedHom.Simplex.pullback t α
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.pullback_smul : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] {x y : D} {m n : SimplexCategory}
+  (α : m ⟶ n) (c : A)
+  (s : (SerrePositivity.InfinityCategories.DGNerve.pinchedHom A D x y).obj (Opposite.op { len := n.len })),
+  SerrePositivity.InfinityCategories.PinchedHom.Simplex.pullback (c • s) α =
+    c • SerrePositivity.InfinityCategories.PinchedHom.Simplex.pullback s α
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.moduleObject : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      [SerrePositivity.DifferentialGraded.DGCategory A D] → D → D → CategoryTheory.SimplicialObject (ModuleCat A)
+
+@SerrePositivity.InfinityCategories.DGNerve.PinchedHom.moduleObject_map_apply : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] (x y : D) {m n : SimplexCategoryᵒᵖ}
+  (f : m ⟶ n) (s : (SerrePositivity.InfinityCategories.DGNerve.pinchedHom A D x y).obj m),
+  (CategoryTheory.ConcreteCategory.hom ((SerrePositivity.InfinityCategories.DGNerve.PinchedHom.moduleObject x y).map f))
+      s =
+    (CategoryTheory.ConcreteCategory.hom ((SerrePositivity.InfinityCategories.DGNerve.pinchedHom A D x y).map f)) s
+```
+
 ## 6. 次のマイルストーン D（本計画の範囲外）
 
 - Semifree(S) を `DGFullSubcategory`（`moduleSemifree` または一点 dg 圏上の複体版）として置き、
