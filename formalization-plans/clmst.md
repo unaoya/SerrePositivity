@@ -8704,6 +8704,56 @@ E 上の同じ主イデアルであることを確認した。すべて `assert_
 次は実写像 u,v の局所化同型を明示し、担当入力の原典の付値環条件と照合する。
 KL-T の全 Tor 入力、KL-Q の引用置換は引き続き未完了。
 
+#### KL-T：実比較のテンソル局所化・主局所化同型（2026-10-17）
+
+`CommutativeAlgebra/LocalizationComparisonTensorEquiv.lean` は実際の写像の係数拡大を扱う。
+公開 API と前提は次のとおり。
+
+- `localizationComparisonTensorEquiv S L f`：S による局所化 L、L 代数 X、
+  f:A→ₐ[R]X が加群局所化を表すとき、L⊗R A≃ₐ[L]X を構成する。
+- `localizationComparisonTensorEquiv_tmul`：l⊗a の像は algebraMap L X l * f a。
+- `localizationComparisonTensorEquiv_comp_tensorMap`：w:B→X と w∘f がともに局所化を
+  表すとき、B 側の同型と実 tensorMap f の合成は A 側の同型に一致する。
+- `localizationComparison_tensorMap_bijective`：同じ前提から、実写像
+  `Algebra.TensorProduct.map (AlgHom.id L L) f` が全単射である。
+- `localizationSplitting_common_model_tensorMaps_bijective`：前節と同じ E,u,v,w、
+  w の局所化構造、元の分解 e と合成式 hu,hv から、tensorMap u と tensorMap v の
+  全単射性を同時に返す。有限性や perfectoid 性を追加しない一般補題。
+- `localizationSplitting_common_model_tensor_squares`：同じ前提で、一つの E 側の同型と
+  tensorMap u の合成が元の e に、tensorMap v との合成が標準の
+  `Algebra.TensorProduct.piScalarRight R L L (Fin r)` に一致する。
+
+通常の主局所化に渡す独立の入口も用意した。
+`localizationComparison_awayMap_bijective_of_power_bounds d f hker hcoker` の前提は
+R 代数写像 f:A→B と元の R 作用での次の評価だけである。
+
+```lean
+hker : ∀ a, f a = 0 → ∃ n : ℕ, d ^ n • a = 0
+hcoker : ∀ b : B, ∃ n : ℕ, d ^ n • b ∈ f.toLinearMap.range
+```
+
+結論は、元の d の A での像を反転する**標準写像そのもの**の全単射性である。
+
+```lean
+Function.Bijective (IsLocalization.Away.map
+  (Localization.Away (algebraMap R A d))
+  (Localization.Away (f (algebraMap R A d))) f.toRingHom (algebraMap R A d))
+```
+
+`localizationComparisonAwayEquiv` はこの写像を R 代数同型として包装し、
+`localizationComparisonAwayEquiv_algebraMap` は元の a:A の像が f a の局所化像に一致することを
+返す。終域で反転する元は f(algebraMap R A d) で、f.commutes により元の d の B での像と等しい。
+元の f の単射性・全射性、d の正則性は要求しない。
+
+対象ビルドと `scripts/audit_clmst_localized_comparison_equiv.lean` は成功。
+公開9宣言と、選択済みの同じ導来完備有限表示モデルについての四つの実局所化写像の全単射性、
+d=0 で元の写像が非単射である境界例は、`assert_no_sorry` が通り標準三公理のみ。
+新しい引用は追加していない。全体ビルド成功（6382 jobs）、KL 専用監査も成功（1218 assert）。
+これで元の有限整比較 u,v の局所化同型を明示的に利用できる。
+担当の Cor 8.12 入力および既存環版 perfectoid 化との同定を受けて実 excision へ適用する。
+付値環条件の担当実装や D-I/U/Q を重複実装していない。
+KL-T の全 Tor 入力と KL-Q の原典引用置換は引き続き未完了である。
+
 #### Prop 2.4.7 専任系列：原典から D-I/U/Q への型付き受渡し（2026-10-17）
 
 本節は統合表 D-I・D-U・D-Q の実入力を固定する。未採用の別計画は根拠にしない。
