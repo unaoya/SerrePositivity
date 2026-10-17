@@ -3010,3 +3010,97 @@ BS Rem 7.15（著者版 p.62）の分母の問題を、原典とは異なる
 正規化単元の分母公式・逆元の自然性、二元剰余への射と外延性、
 分母変換同型と係数公式、実完備化剰余から raw p 剰余への同型と係数公式の
 公開型 8 本を `#check` で確認した（終了コード 0）。
+
+
+### E1.49：raw p 剰余から主 pd 表示、および無限根モニック入力の実完備化への適用（検証済み）
+
+新規 `Andre/PrincipalDPIdealQuotient.lean` は、係数主イデアル商の既存比較を
+任意の係数イデアル K へ拡張した。自由分冪基底の各係数の K への所属を用いて
+係数変更射の核を K の像イデアルと計算し、一次関係との二重商を交換する。
+
+```lean
+def principalDPIdealQuotientEquiv (K : Ideal A) (y : A) :
+    (PrincipalDPPresentation A y ⧸ K.map (algebraMap A (PrincipalDPPresentation A y))) ≃+*
+      PrincipalDPPresentation (A ⧸ K) (Ideal.Quotient.mk K y)
+```
+
+係数と全標準分冪生成元の公式を含め 8 公開宣言を追加した。
+K の正則性・主性・係数環の標数は仮定しない。
+
+新規 `Andre/DeltaPDivisionIdealPDComparison.lean` は、正則 raw φ(y)/p 包と
+主 pd 表示の既存の実同型が係数を保つことを用いて、任意の係数イデアル商へ降ろす。
+一元添字型 σ は Unique、A は p 局所かつ p 正則、y mod p は非零因子とし、
+自由 δ 環の ghost 単射性と δ(p) を値に持つ単元 v を明示する。
+
+```lean
+def deltaPDivisionPairPDEquiv
+    (hA : ∀ m : ℕ, ¬p ∣ m → IsUnit (m : A))
+    (hpA : Function.Injective (fun r : A => (p : A) * r))
+    (D : DeltaStructure p A) (y : A)
+    (hgL : Function.Injective (WittVector.ghostMap :
+      WittVector p (RelativeFreeDeltaRing (R := A) σ) → ℕ → RelativeFreeDeltaRing (R := A) σ))
+    (v : Aˣ) (hv : (v : A) = D.delta (p : A))
+    (hy : IsSMulRegular (A ⧸ Ideal.span {(p : A)})
+      (Ideal.Quotient.mk (Ideal.span {(p : A)}) y)) (d : A) :
+    DeltaDivisionPairResidue D (p : A) (fun _ : σ => D.frobeniusLift y) d ≃+*
+      PrincipalDPPresentation (A ⧸ Ideal.span {(p : A), d})
+        (Ideal.Quotient.mk (Ideal.span {(p : A), d}) y)
+```
+
+一般係数イデアル版、階乗生成元の標準分冪への像、二元剰余版の係数公式を含め
+6 公開宣言を追加した。d の distinguished 性はこの段階には不要。
+
+新規 `Andre/DeltaDivisionCompletionPrincipalPD.lean` は、D が完全、d が distinguished の場合に
+E1.48 の実完備化から raw p 剰余への同型と上の実 pd 台環比較を合成する。
+x=φ⁻¹(d)、L=A{y/d}、H=`PDCompletionH0 L p (jL d)`、uL は標準完備化単位とする。
+
+```lean
+def deltaDivisionCompletionPrincipalPDEquiv :
+    letI := pdCompletionCommRing L p (jL d)
+    (H ⧸ Ideal.span {uL (jL d), uL (jL x)}) ≃+*
+      PrincipalDPPresentation (A ⧸ Ideal.span {(p : A), d})
+        (Ideal.Quotient.mk (Ideal.span {(p : A), d}) y)
+```
+
+前提は上記の hA,hpA,hgL,v,hv,hy に加え D の完全性、A の ghost 単射性、
+d の distinguished 性である。比較同型の存在を前提にしていない。
+同 `_coeff` は uL(jL(r)) の剰余を φ(r) の剰余係数へ送る。2 公開宣言を追加した。
+
+新規 `Andre/PowerRootPrismMonicCompletionPD.lean` は、完全 prism W 上の
+無限根環 P とモニック f へ適用し、これらの補助仮定を全て内部で解消した。
+E は P の既存 δ 構造、dP は W.generator の係数像、xP は選択済み
+`perfectPrismVarpiLift W hW` の係数像、y=`powerRootMonicPDInput p f` とする。
+一元族を固定した L=P{y/dP} の実 H⁰ と標準単位 uL について、
+
+```lean
+def powerRootPrismMonicCompletionPDEquiv
+    (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
+    (f : Polynomial A) (hf : f.Monic) :
+    letI := pdCompletionCommRing L p (jL dP)
+    (H ⧸ Ideal.span {uL (jL dP), uL (jL xP)}) ≃+*
+      PrincipalDPPresentation (P ⧸ Ideal.span {(p : P), dP})
+        (Ideal.Quotient.mk (Ideal.span {(p : P), dP}) y)
+```
+
+を構成した。原典のようにモニック性から mod p 正則性を供給する。
+完全 prism から p 局所性・p 正則性・δ(p) の単元性を供給し、
+自由性から ghost 射の単射性を供給する。
+同 `_coeff` は無限根環 P の全ての元 r について、その実完備化像が
+E.frobeniusLift(r) の剰余係数へ送られると述べる。
+p の distinguished 性と宇宙を固定する一元族の定義を含め 4 公開宣言を追加した。
+f の正次数、prism 商の p 正則性は仮定しない。
+
+BS Cor 2.39（著者版 p.25）、Rem 7.15（p.62）の台環比較を、
+原典とは異なる Witt 座標と階乗表示の経路で進めた段階である。
+今回の標準主 pd 表示の係数環は P/(p,dP) と明示している。
+既存の R/ϖ 上の実 pd 構造・普遍性との比較には、Frobenius 引戻しの係数作用の
+照合が引き続き必要である。原典の T=overline(Δ)_S との同定も未完了。
+従ってこれらの同定を完成したとは数えない。
+
+
+4 対象および集約の `set -o pipefail; lake build` は終了コード 0
+（集約 4469 jobs）。新規 20 公開宣言の `assert_no_sorry` と専用監査は
+終了コード 0。生成宣言を含む 4322 宣言の推移的公理依存は標準 3 公理のみ。
+主分冪係数商同型と生成元公式、raw p 除算の任意係数商と二元商の pd 同型、
+一般の実完備化比較と係数公式、無限根モニック入力の比較と係数公式の
+公開型 8 本を `#check` で確認した（終了コード 0）。

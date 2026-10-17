@@ -875,6 +875,27 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFrobeniusPResidu
 assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionCompletionPResidueEquiv
 assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionCompletionPResidueEquiv_coeff
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.rankOneDPIdealQuotient_ker
+assert_no_sorry SerrePositivity.BhattScholze.Andre.rankOneDPIdealQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.rankOneDPIdealQuotientEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPRelationIdeal_map_idealQuotient
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPIdealQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPIdealQuotientEquiv_mk_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPIdealQuotientEquiv_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPIdealQuotientEquiv_generator
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaPDivisionIdealPD_map
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaPDivisionIdealPDEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaPDivisionIdealPDEquiv_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaPDivisionIdealPDEquiv_factorial
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaPDivisionPairPDEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaPDivisionPairPDEquiv_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionCompletionPrincipalPDEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionCompletionPrincipalPDEquiv_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismPrime_isDistinguished
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicUnaryFamily
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletionPDEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletionPDEquiv_coeff
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -1018,7 +1039,11 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.DistinguishedWittDenominatorNaturality,
     `SerrePositivity.BhattScholze.Andre.DeltaDivisionPairResidueWitt,
     `SerrePositivity.BhattScholze.Andre.DeltaDivisionFrobeniusPResidueEquiv,
-    `SerrePositivity.BhattScholze.Andre.DeltaDivisionCompletionPResidue]
+    `SerrePositivity.BhattScholze.Andre.DeltaDivisionCompletionPResidue,
+    `SerrePositivity.BhattScholze.Andre.PrincipalDPIdealQuotient,
+    `SerrePositivity.BhattScholze.Andre.DeltaPDivisionIdealPDComparison,
+    `SerrePositivity.BhattScholze.Andre.DeltaDivisionCompletionPrincipalPD,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCompletionPD]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
