@@ -1,0 +1,17 @@
+module
+public import SerrePositivity.DifferentialGraded.Morita.PerfectKernelColumns
+
+/-! # 主導来kernelの列と全導来射に自然なPerf作用の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded.Morita
+#print axioms kernelDerivedColumn
+#print axioms kernelDerivedColumn_fac
+#print axioms kernelDerivedColumnComputation
+#print axioms kernelColumnsPerfect
+#print axioms kernelColumnsPerfect_ofBimodule_iff
+#print axioms kernelDerivedColumnActionIso
+#print axioms perfectDerivedKernelAction_preserves
+#print axioms perfectDerivedKernelAction
+#print axioms kernelColumnsPerfect_iff_preservesPerfect
+#print axioms perfectDerivedKernelActionInclusionIso
+#print axioms perfectDerivedKernelActionFunctor

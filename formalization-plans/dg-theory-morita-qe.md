@@ -251,6 +251,18 @@
 - `Morita.QuasiEquivalenceDerivedGraphChecks` ビルド成功（2808 jobs、警告なし）。
   主要10宣言の公理監査は標準3公理のみ。
 
+## U16d.11：主導来kernelの列と全導来射に自然なPerf作用
+
+- `Morita/PerfectKernelColumns.lean`：列の評価をbimoduleの指定主局所化へ降ろし、
+  代表に依存しない `kernelColumnsPerfect` を定義した。
+  代表加群への実際の主導来作用はこの列評価と同型になり、列のperfect性と作用のPerf保存の同値を証明した。
+- 実際の `kernelDerivedTensor` の主Perf制限と包含正方形を構成した。
+  perfectな列を持つ主導来kernelの充満部分圏からPerf作用関手の圏への関手を構成し、
+  kernelの任意の主導来射・恒等・合成に対する自然性を証明した。
+- 通常kernelの各列の条件はU16d.5の条件と一致する。局所Hom条件を追加していない。
+- `Morita.PerfectKernelColumnsChecks` ビルド成功（2746 jobs、警告なし）。
+  主要11宣言の公理監査は標準3公理のみ。
+
 ## 合同検証と公開入口（2026-10-17）
 
 - 新規10監査対象・公開入口・既存 `Checks.DGFunctorDerivedEquivalence` の12対象を
