@@ -979,6 +979,15 @@
 - `ChecksScalarProjectiveImage` 対象ビルド成功（3060 jobs）。主要5宣言の公理は標準3公理のみ。
   既存APIの名前・型は変更していない。新しいsorry・axiom・引用は追加していない。
 
+## U14b.59：実際の加群係数拡大の整数shift同型（2026-10-17）
+
+- `ScalarModuleShiftImage.lean`：係数変更したambient dg圏からの複体値dg関手に対し、
+  元のshift包含・射影を使った実際のchain isoを構成した。微分と両合成を照合した。
+- 実際の加群係数拡大dg関手の各評価に適用し、全次数作用に自然な加群同型
+  `scalarModuleExtensionShiftIso` として組み立てた。各評価だけの比較にはとどめない。
+- `ChecksScalarModuleShiftImage` 対象ビルド成功（3057 jobs）。主要8宣言の公理は標準3公理のみ。
+  既存APIの名前・型は変更していない。新しいsorry・axiom・引用は追加していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
