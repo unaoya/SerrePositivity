@@ -571,3 +571,21 @@ import SerrePositivity.InfinityCategories.Core
 #print axioms SerrePositivity.InfinityCategories.initialVertexIso₂
 #check @SerrePositivity.InfinityCategories.initialVertexIso
 #print axioms SerrePositivity.InfinityCategories.initialVertexIso
+
+-- A2f: join の錐、極限性、ホモトピー圏での一意性
+#check @SerrePositivity.InfinityCategories.JoinCone
+#print axioms SerrePositivity.InfinityCategories.JoinCone
+#check @SerrePositivity.InfinityCategories.JoinCone.vertex
+#print axioms SerrePositivity.InfinityCategories.JoinCone.vertex
+#check @SerrePositivity.InfinityCategories.JoinCone.vertex_eq
+#print axioms SerrePositivity.InfinityCategories.JoinCone.vertex_eq
+#check @SerrePositivity.InfinityCategories.IsLimitCone
+#print axioms SerrePositivity.InfinityCategories.IsLimitCone
+#check @SerrePositivity.InfinityCategories.HasLimit
+#print axioms SerrePositivity.InfinityCategories.HasLimit
+#check @SerrePositivity.InfinityCategories.isLimitCone_iff_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.isLimitCone_iff_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.limitConeIso
+#print axioms SerrePositivity.InfinityCategories.limitConeIso
+#check @SerrePositivity.InfinityCategories.limitVertexIso
+#print axioms SerrePositivity.InfinityCategories.limitVertexIso

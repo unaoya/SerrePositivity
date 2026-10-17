@@ -12,3 +12,4 @@ public import SerrePositivity.InfinityCategories.Core.RightFibration
 public import SerrePositivity.InfinityCategories.Core.Terminal
 public import SerrePositivity.InfinityCategories.Core.TerminalUniqueness
 public import SerrePositivity.InfinityCategories.Core.InitialUniqueness
+public import SerrePositivity.InfinityCategories.Core.Limit

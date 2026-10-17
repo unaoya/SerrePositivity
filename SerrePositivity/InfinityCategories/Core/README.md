@@ -170,3 +170,12 @@ slice/coslice 射影の trivial Kan fibration 性との同値を、任意の単�
 片側逆射を二回作り、二単体が与える合成関係から両側逆射に直す証明である。
 A2e 完了、A2f〜A2i は未完了。Core ビルドと累計 271 件の公理監査は成功。
 新規 55 件の正確な型・前提は計画 §6 に記録した。
+
+### A2f 完了（2026-10-18）
+
+`Limit.lean` の `JoinCone p` は固定条件付きの射 `Δ[0]⋆K ⟶ X` の型で、
+定義上 slice の零単体。`IsLimitCone c` は slice の終対象の充填条件、`HasLimit p` はその存在。
+`limitConeIso` は h(slice) での一意性、`limitVertexIso` は hX での頂点の同型を与える。
+同型の仮定は X が quasicategory であることと両錐の極限性。
+A2f 完了、A2g〜A2i は未完了。Core ビルドと累計 279 件の公理監査は成功。
+全公開宣言の型・前提は計画 §6 に記録した。

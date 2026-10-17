@@ -1848,3 +1848,56 @@ noncomputable def initialVertexIso {X : SSet.{u}} [Quasicategory X] {x y : X _�
 Core の対象ビルド・公理監査はともに終了コード 0。累計 271 件は標準三公理のみ
 （公理なしも含む）。A2e は双対と hX での同型まで完了。A2f〜A2i は未完了。
 引き続き極限を slice の終対象として定義する。
+
+### A2f 完了（2026-10-18）：join の錐と極限
+
+`Core/Limit.lean` に、join の錐を固定条件付きの射の部分型 `JoinCone p` として定義した。
+これは定義上 `sliceOver p` の零単体そのもの。`IsLimitCone c` は対応する slice の頂点の終対象性。
+`[Quasicategory X]` の下で `limitConeIso` は二つの極限錐の h(slice) での同型、
+`limitVertexIso` はその射影による hX での頂点の同型を与える。
+`HasLimit p` は極限錐の存在。追加公理やモデル構造の仮定はない。
+
+全 8 公開宣言の正確な型は次の通り。宇宙 `u` は任意、namespace は
+`SerrePositivity.InfinityCategories`、`open CategoryTheory SSet` と `open scoped Simplicial`。
+
+```lean
+abbrev JoinCone {K X : SSet.{u}} (p : K ⟶ X)
+```
+
+```lean
+def JoinCone.vertex {K X : SSet.{u}} {p : K ⟶ X} (c : JoinCone p) : X _⦋0⦌
+```
+
+```lean
+lemma JoinCone.vertex_eq {K X : SSet.{u}} {p : K ⟶ X} (c : JoinCone p) :
+    c.vertex = SSet.yonedaEquiv (joinInl Δ[0] K ≫ c.val)
+```
+
+```lean
+def IsLimitCone {K X : SSet.{u}} {p : K ⟶ X} (c : JoinCone p) : Prop
+```
+
+```lean
+def HasLimit {K X : SSet.{u}} (p : K ⟶ X) : Prop
+```
+
+```lean
+lemma isLimitCone_iff_trivialKanFibration {K X : SSet.{u}} {p : K ⟶ X} (c : JoinCone p) :
+    IsLimitCone c ↔ TrivialKanFibration
+      (sliceOverProjection (K
+```
+
+```lean
+noncomputable def limitConeIso {K X : SSet.{u}} [Quasicategory X] {p : K ⟶ X}
+    (c d : JoinCone p) (hc : IsLimitCone c) (hd : IsLimitCone d) :
+    (SSet.HomotopyCategory.mk c : hoFunctor.obj (sliceOver p)) ≅ SSet.HomotopyCategory.mk d
+```
+
+```lean
+noncomputable def limitVertexIso {K X : SSet.{u}} [Quasicategory X] {p : K ⟶ X}
+    (c d : JoinCone p) (hc : IsLimitCone c) (hd : IsLimitCone d) :
+    (SSet.HomotopyCategory.mk c.vertex : hoFunctor.obj X) ≅ SSet.HomotopyCategory.mk d.vertex
+```
+
+Core の対象ビルド・公理監査は終了コード 0。累計 279 件が標準三公理のみ
+（公理なしも含む）。A2f 完了。A2g〜A2i は未完了。引き続き cospan と正方形の比較へ進む。
