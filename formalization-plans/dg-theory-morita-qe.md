@@ -11,8 +11,8 @@
 | U16b：導来同値本体・延長/制限・unit/counit | 既存APIあり。`Checks.DGFunctorDerivedEquivalence` ビルド成功、2768 jobs、主要18宣言は標準3公理のみ |
 | U16b：実際の随伴shift・三角性・Perf・U13/U14比較 | 接続を実装・検証中 |
 | 積dg圏上の擬同値 | 既存 `derivedBimoduleRestrictionEquivalence` の `localHomKFlat A C`・`localHomKFlat A D` を保持する。無条件化しない |
-| U16aグラフ作用との計算比較 | 後回し。確認時点で `dg-theory-morita.md` は未作成。公開API節が提示されてから接続する |
-| U16d：Perf・係数変更・合成自然性 | U16a公開APIが「型のみ確定」以上になったら着手する。`derivedTensorBaseChange` のhPN・hP'を保持する |
+| U16aグラフ作用との計算比較 | 初回確認時はAPI節未作成。その後「U16a 公開 API」節を確認。kernelは右E・左D。通常作用を先に接続し、主導来作用の実装を待って関手自然同型へ進む |
+| U16d：Perf・係数変更・合成自然性 | U16a公開APIの「型のみ確定」を確認したため着手可能。`derivedTensorBaseChange` のhPN・hP'を保持する。主導来作用の未実装部分を証明済みとは扱わない |
 | 中心作用 | 保留。今回の実装対象にしない |
 
 新規Leanファイルは `Morita/QuasiEquivalence*`・`Perfect*`・`ScalarExtension*` のみ。
@@ -38,3 +38,15 @@
   `quasiEquivalencePerfectEquivalence` を構成した。単位・余単位の包含像は元の導来単位・余単位と一致する。
 - `Morita.PerfectQuasiEquivalenceChecks` とU16b.1の合同ビルド成功（2601 jobs、警告なし）。
   新規主要10宣言の公理監査は標準3公理のみ。
+
+## U16b.3：主Perf制限のshift・三角同値と包含正方形
+
+- `Morita/PerfectQuasiEquivalenceTriangles.lean`：実際の延長・制限の主Perf制限に
+  元の導来関手と整合するshiftを与えた。順逆の包含自然同型・単位・余単位のCommShiftと
+  主Perf同値の三角性、順逆それぞれの三角形関手の包含正方形を証明した。
+- 単位の整合性は、包含後の単位を元の導来単位・包含自然同型・associatorの合成として計算し、
+  忠実な包含で反映した。充満部分圏のshiftを定義展開で同一視していない。
+- `Morita.PerfectQuasiEquivalenceTrianglesChecks` ビルド成功（2601 jobs、警告なし）。
+  主要12宣言の公理監査は標準3公理のみ。
+- コミットは自分のパスだけを指定している。U16b.1直後は別チャットのcommitがHEADになったため、
+  自分のhash `33b14987` のstatも個別に照合した。他人のファイルの取り込みはない。
