@@ -206,6 +206,19 @@
 - `Morita.ScalarExtensionKernelTensorChecks` ビルド成功（3230 jobs、警告なし）。
   主要5宣言の公理監査は標準3公理のみ。
 
+## U16d.8：U16aのkernel合成比較を受け取る具体的Perfアダプタ
+
+- `Morita/PerfectKernelComposition.lean`：公開型どおりの主導来作用族Actionと、
+  実際の通常kernel作用の合成からAction(kernelCompose P Q)への自然同型eCompを明示して受け取る。
+- P・Qの各列のperfect性から、合成kernelの作用のPerf保存を証明した。
+  実際の二つのPerf作用の合成と、合成kernelの主Perf作用を比較する自然同型を構成し、
+  主導来包含後の射が元のeCompの射そのものであることを証明した。
+- kernelComposeは右E・左Dの順序を保ち、始域Dの `localHomKFlat A D` を明示する。
+  eCompはU16aの不足APIを明示した入力であり、その存在を証明したという主張ではない。
+  合成比較の自然性・coherence自体の入力はU16d.1・4と同じ制限で運ぶ。
+- `Morita.PerfectKernelCompositionChecks` ビルド成功（2742 jobs、警告なし）。
+  主要5宣言の公理監査は標準3公理のみ。
+
 ## 合同検証と公開入口（2026-10-17）
 
 - 新規10監査対象・公開入口・既存 `Checks.DGFunctorDerivedEquivalence` の12対象を

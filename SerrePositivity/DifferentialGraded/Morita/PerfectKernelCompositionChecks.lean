@@ -1,0 +1,11 @@
+module
+public import SerrePositivity.DifferentialGraded.Morita.PerfectKernelComposition
+
+/-! # 局所Hom条件を保持したkernel合成比較のPerf制限の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded.Morita
+#print axioms perfectKernelCompositeTarget
+#print axioms perfectKernelComposite_preserves
+#print axioms perfectKernelCompositeAction
+#print axioms perfectKernelCompositionComparisonIso
+#print axioms perfectKernelCompositionComparisonIso_inclusion
