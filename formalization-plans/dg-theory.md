@@ -8604,6 +8604,46 @@ Checks.DerivedBimoduleFullPentagon・Checks.StageEight・Checks.StageSeven・既
 公開APIの名前・型の変更と共有一般論への新しい要求はない。§0の分担を維持する。
 
 
+### 17.191 U12e32：任意次数cell pathの内部合成・左右単位・結合則（2026-10-17）
+
+`Resolution/Cells/InternalComposition.lean`の**Family.internalComposition**は、有限path連結を
+既存tensorCoproductDescで二つのHom直和へ延長する内部微分に関するchain map。
+**internalComposition_inclusion/internalComposition_original_left/internalComposition_original_original**は
+各二path・元のHomの計算式。**appendRight/appendRight_inclusion/internalComposition_left_inclusion**は
+左有限pathを固定する全右pathへの合成と、その全合成への包含を与える。
+**internalPrepend/internalPrepend_inclusion/internalIdentity/internalComposition_left_unit**で
+元のHomの先頭作用・恒等射・左単位則を構成した。
+
+`Prefix.lean`の**prefixCofanIsColimit/prefixPath/prefixPath_inclusion/prefixPathCochain_ext**は、
+先頭Homと任意次数生成元を保った全path包含と、任意次数cochainの判定を与える。
+`AppendRecursion.lean`の**appendRight_cons**は連結の再帰式。
+`InternalUnits.lean`の**appendRight_right_unit/internalComposition_right_unit**で右単位則を証明する。
+
+`AppendPrepend.lean`の**appendMap_prepend**、`AppendRightPrepend.lean`の**appendRight_prepend**、
+`CompositionPrepend.lean`の**internalComposition_prepend**は先頭Hom作用との結合整合性。
+`CompositionPrefix.lean`は各pathへの制限から**internalComposition_prefixPath**を証明する。
+`AppendRightAssociativity.lean`の**appendRight_assoc**は左pathに関する帰納法と既存tensorCarry_assocを使い、
+`InternalAssociativity.lean`の**internalComposition_assoc**が全Hom直和上の結合則を与える。
+既存dg商のpath証明を再確認し、各生成元のsourceとtargetを別々に、sphere次数を任意整数に保った。
+Small.{u} Iだけを直和に使い、Dのsmallness、元のHomのK-flat性・有界性は要求しない。
+公開APIの名前・型は変更せず、新規APIを追加した。
+
+Checks.DGCellInternalComposition・Checks.DGCellDifferential・Checks.DGCellBoundaryNaturality・
+Checks.DGCellBoundaryOperator・Checks.DGBoundarySequence・Checks.DGCategoryInitial・Checks.FreeDGUniversal・
+Checks.DGCategoryResolution・Checks.DerivedBimoduleFullPentagon・Checks.StageEight・Checks.StageSeven・
+既存Spectra.StageTwoの統合ビルドは成功（3154 jobs、終了コード0、警告なし）。
+任意次数・別端点、独立対象/添字宇宙、元のHomのflatness仮定なしの単位/結合則、
+ZMod 2上の次数7の生成元を型検査した。主要28宣言の直接公理監査は標準3公理のみ。
+監査累計3613宣言。今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は15 Markdown・320 exposition参照を検査し、§17.190と同じ担当外BhattScholze互換宣言の
+未解決参照1件で失敗した。共有ルート・共有一般論・並行所有ファイルは編集していない。
+
+これらは内部微分に関する合成である。追加微分後の合成にはreplacementのLeibnizを別途証明し、
+attachedHom間のchain mapへ移す必要がある。最終dg圏instance、cell生成元の充填式と増大、
+filtrationによる最終Hom K-flat性、列と解像度の存在・比較、U12e全受入・U16は未完。
+内部合成の結合則だけで最終dg圏の受入とせず、§0の分担とU15e/U17の合流条件を維持する。
+
+
 ### 17.189 U12e30：左端境界挿入への分解と全位置のHom作用自然性（2026-10-17）
 
 `Complexes/TensorJoinActionNaturality.lean`の**tensorJoin_action_cochain**は、
