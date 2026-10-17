@@ -500,3 +500,31 @@ HEAD からの差分全体が自分の変更だけであることも確認する
   標準3公理のみ。project import 依存297ファイルに禁止された dg 圏分解系への依存なし。
   新規 sorry・axiom・引用なし。ルートおよび他担当の既存ファイルは編集していない。
 - U15e15 のコミット：`4f129b47`（自分の3ファイルのみと直後に確認）。
+
+### U15e17：係数 K-flat 自由加群の導来計算と正の path 項の局所生成
+
+- `Quotient/DerivedComparisonFreeExtension.lean`：一対象環 A から b への dg 関手を構成。
+  普通の加群の延長–制限随伴と一対象加群・複体の同値を合成し、随伴の一意性によって
+  一対象環からの underived 延長と `freeAt b` の自然同型を作った。
+- 相対 K-flat 加群間の擬同型について、graph 延長は各評価でそれを保つ。
+  射影置換の相対 K-flat 性とこの保存を使い、`relativeKFlatExtensionComputation` で
+  相対 K-flat 加群の導来延長を underived 延長と比較した。
+  `derivedFreeAtKFlatIso` は、K-flat 係数 K の自由加群を一対象環からの導来延長で計算する実際の同型。
+- `Quotient/DerivedComparisonFreeGeneration.lean`：導来延長の三角性・左随伴としての余積保存と
+  前段の生成帰納法を接続した。S 内の b と K-flat 複体 K について、
+  `(freeAt b).obj K` の導来像が `moduleFiniteCellFactorTarget ... S` を満たすことを証明。
+  これは compact 対象からの全ての射が S 上の有限 cell 対象を経由するという具体的な性質である。
+- 一対象環上の普通の射影置換を評価し、任意の非有界複体の K-flat 置換も構成。
+  Hom(−,b) が K-flat なら `freeAt b` はその係数擬同型を保つため、入る側の仮定では
+  自由加群の係数 K を任意にできる。出る側の仮定では既存の後方係数の K-flat 性を使う。
+  `positivePath_finiteCellFactorTarget` は両向きをまとめ、全ての個々の正の path 項に適用する。
+- M9 接続：`positivePath_finiteCellFactorTarget_of_flat_zero` は、元の dg 圏の Hom が
+  次数零に集中し、その次数零加群が平坦という入力から直接同じ有限因子分解性を供給する。
+  商の Hom の非正次数性から K-flat 性を推論したものではない。
+- 対象ビルド `Checks.QuotientFreeExtension`（2533 jobs）、`Checks.QuotientFreeGeneration`
+  （2621 jobs）成功。主要14宣言の公理監査は標準3公理のみ。
+  project import 依存344・420ファイルに禁止された dg 圏分解系への依存なし。
+  新規 sorry・axiom・引用なし。ルートおよび他担当の既存ファイルは編集していない。
+- 残部：個々の path 項の性質を、固定長直和の導来像と長さ余極限に運ぶこと、
+  そこから商への代表加群比較の cone の有限因子分解性と実際の Verdier 比較の完全忠実性を示すこと。
+  U17b 全体も未完。U15e16 のコミットは `a4d21297`（自分の3ファイルのみと直後に確認）。
