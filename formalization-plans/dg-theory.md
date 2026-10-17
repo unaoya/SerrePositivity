@@ -1,7 +1,7 @@
 # dg 理論（M5）の独立実装計画
 
-作成・調査：2026-10-14。更新：2026-10-17。状態：U0〜U11 を実装・検証済み（U11統合受入§17.159）。U12〜U17は部分実装済み、明示的dg商U15a/bと厳密普遍性U15cを受入（§17.144）。U10後の比較・整理案と後続詳細計画は§14〜§16。
-U0〜U3の記録は§11、U4/U5の実績と後続契約は§12。D0〜D10全体の完了ではない。
+作成・調査：2026-10-14。更新：2026-10-17。状態：ユーザー決定の範囲でU16全体を受入済み（§17.282）。M5は中心作用と群作用を除いて完了。単位ごとの受入範囲・公開入口・保留事項は[dg-theory-m5-status.md](dg-theory-m5-status.md)を正本とする。
+U0〜U3の記録は§11、U4/U5の実績と後続契約は§12。以下の旧計画・中間記録は履歴として保持する。
 この計画だけを受け取る実装担当者向けの仕様である。
 ホモトピー論の共有契約は [k-theory.md §123](k-theory.md#123-次段階の設計i抽象モデル圏とその当てはめ2026-10-14)。
 以下のD0〜D10、ファイル配置、API案は、既存又は§11で実装済みと明記したもの以外は予定名。
@@ -9,26 +9,29 @@ U0〜U3の記録は§11、U4/U5の実績と後続契約は§12。D0〜D10全体�
 対象は任意の可換環 `A : Type u_A`、小さいA線形dg圏Dとその**非有界**右dg加群。
 環のnoetherian性・体・標数零・有限次元性は基本定義に課さない。
 M5はSpectraをimportせず進める。M9の自由列・ランク商は当てはめ、M6がスペクトル側との合流点。
-完了はdg商のperfect hullを既存Verdier商・Karoubi包絡へ、商への関手、中心作用、係数変更の
-自然同型を伴って比較できること。ホモトピー圏の同値だけをM6向けのdgデータの代用にしない。
+現行の完了範囲はdg商のperfect hullを既存Verdier商・Karoubi包絡へ、商への関手と係数変更の
+自然同型を伴って比較できること。中心作用と群作用の比較はM9で扱う。ホモトピー圏の同値だけをM6向けのdgデータの代用にしない。
 
 固定環境は Lean `v4.35.0-rc4`、Mathlib `e6bbacd0e1b7307ff6e17da09cd2455f60804fa6`。
 Mathlibへの相対パスはすべて `.lake/packages/mathlib/Mathlib/` からのパス。
 リポジトリへのパスは `SerrePositivity/` からのパス。
 本調査ではこの固定版のソースを読んだ。将来のMathlib masterにあるという推測は採用しない。
 
-## 0. 現行の分担と合流順（2026-10-17再指定）
+## 0. 現行の完了範囲と分担（2026-10-17最終指定）
 
-ユーザーは§17.248の提案(ii)を採用した。従来の一般経路を先に完成させる順序を変更する。
+ユーザー決定によりM5は中心作用と群作用を除いて完了。詳細は[dg-theory-m5-status.md](dg-theory-m5-status.md)。
+U16dは担当の最終受入範囲で完了し、残る接続は保留。中心作用・群Gの作用はM9の手順9・10で扱う。
+U12e-general（R1〜R7）・U15e分解版・D4m・U17の高次整合性は作らず、M6で必要になった場合のみ再開する。
+このチャットも記録・検証後は停止する。§17.248の提案(ii)と§17.249の局所版受入は維持する。
 元の§15.2の一般受入条件は残し、U12e-localとU12e-generalを区別する。
 
 | 範囲 | 担当・所有範囲 | 記録 |
 | --- | --- | --- |
-| U16a受入済み・U16c統合済み → U16全体受入（U16d残接続待ち） | このチャット。Morita/Kernel*・Adjunction*・Coherence*、統合用Criterion.lean／U16.lean | 本文§17、dg-theory-morita.md |
+| U16全体受入済み（最終指定の範囲） | このチャット。Morita/Kernel*・Adjunction*・Coherence*、統合用Criterion.lean／U16.lean | 本文§17、dg-theory-morita.md |
 | U16c：Perf Morita判定・逆 | 局所K-flat版チャット。Morita/CriterionPerf* | dg-theory-morita-criterion.md |
 | U16c：導来圏全体への拡張 | dg-U14チャット。Morita/CriterionDerived* | dg-theory-morita-qe.md |
-| U16b → U16d | dg-U14チャット。Morita/QuasiEquivalence*・Perfect*・ScalarExtension*・Center* | dg-theory-morita-qe.md |
-| U17c・U17dの一部 | 局所K-flat版担当。Verdier/・Quotient/DerivedComparison*の新規ファイル | dg-theory-u17a-u13d.md |
+| U16b・U16d受入済み（残接続保留） | dg-U14チャット。Morita/QuasiEquivalence*・Perfect*・ScalarExtension*・Center* | dg-theory-morita-qe.md |
+| U17b/c/d：担当の最終表の個別図式を受入済み | 局所K-flat版担当。Verdier/・Quotient/DerivedComparison*の新規ファイル | dg-theory-u17a-u13d.md |
 | U12e-general | 部分実装済み・中断・未受入。再開条件とR1〜R7は§17.249 | dg-theory-u12e-general-inventory.md |
 | U15e分解版 | 範囲外（中断）。U12e-generalに依存するため | §17.249 |
 | U12f/U15d・U14・局所K-flat版U15e/U17b | 各担当で受入済み。明示された仮定を保持して読み取り専用で再利用 | 各担当の記録 |
@@ -13358,3 +13361,38 @@ U16入口とU16Checksへ同時importし、Spectra.StageTwoとの合同ビルド�
 lake build SerrePositivity.DifferentialGraded.Morita.U16Checks SerrePositivity.Spectra.StageTwo
 lake env lean SerrePositivity/DifferentialGraded/Morita/U16Checks.lean
 ```
+
+
+### 17.282 U16全体受入とM5完了範囲の確定（2026-10-17）
+
+ユーザーがU16dを担当の最終受入表の範囲で完了と決定した。
+f12ea97aのdg-theory-morita-qe.md「U16d最終受入記録」「保留事項と再開条件」を照合し、
+U16d.1〜31の検証済み範囲を受け入れる。以前の全体未受入という記録は当時の履歴として残す。
+
+| U16条件 | 受入根拠 |
+| --- | --- |
+| U16a：実際の作用・一般右随伴・unit/counit・恒等/合成・作用coherence | §17.265・273。AdjunctionCoherenceの恒等・逆順合成の右随伴比較は§17.281 |
+| U16b：dg準同値からのMorita比較 | dg-theory-morita-qe.mdのU16b最終受入。QuasiEquivalence入口 |
+| U16c：三条件判定と実際の右随伴 | dg-theory-morita-criterion.md、dg-theory-morita-qe.mdの全導来拡張、§17.274。両側のcompact生成を明示し、実際のunit/counitの可逆性まで統合 |
+| U16d：Perf・係数変更・合成 | f12ea97aの最終受入表。Perfの左右単位・結合coherenceは§17.275。hα・hAug・hP'・hPN・hπ等の各入力を保持し、保留接続を証明済みと読み替えない |
+
+以上のユーザー指定範囲で**U16全体を受け入れる**。中心作用と群作用はM9へ移し、
+残る係数変更の接続・追加統合は担当表の再開条件を保持する。
+未コミットのScalarExtensionKernelOutputComponents.leanは受入・公開importに含めない。
+U12e-general・U15e分解版・D4m・U17の高次整合性は作らない。
+
+M5は**中心作用と群作用を除いて完了**。単位別の状態・M9への公開名対応・再開点は
+[dg-theory-m5-status.md](dg-theory-m5-status.md)に集約する。
+§17.255・263・271の調査は履歴として保存し、方針(ii)を変更しない。
+
+U16Checksには担当のScalarExtensionAcceptanceChecksとU16d.31の5宣言を統合した。
+主要65宣言の直接公理監査は標準3公理以内。今回の5宣言は既存成果の再監査であり、
+新規監査累計5124には加算しない。局所U12e・StageSeven/Eight・U17合同監査・Spectra.StageTwoと
+U16Checksの合同ビルドも成功（4780 jobs、警告・エラー0）。ログの重複を除いた815宣言も標準3公理以内。新規sorry・axiom・引用・資源上限変更なし。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Morita.U16Checks SerrePositivity.DifferentialGraded.Verdier.ChecksU17Integration SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.DifferentialGraded.Checks.StageSeven SerrePositivity.DifferentialGraded.Checks.StageEight SerrePositivity.Spectra.StageTwo
+lake env lean SerrePositivity/DifferentialGraded/Morita/U16Checks.lean
+```
+
+記録と検証を完了した後は、新しい実装単位に着手せず停止する。

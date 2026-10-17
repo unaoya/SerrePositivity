@@ -1,5 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Morita.U16
+public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionAcceptanceChecks
+public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelEvaluationModelsChecks
 public import SerrePositivity.DifferentialGraded.Morita.AdjunctionCoherenceChecks
 public import SerrePositivity.DifferentialGraded.Morita.AdjunctionSquareChecks
 public import SerrePositivity.DifferentialGraded.Morita.U16aChecks
@@ -96,3 +98,9 @@ open SerrePositivity.DifferentialGraded.Morita
 #print axioms kernelDerivedHomCompositionIso
 #print axioms kernelDerivedHomCompositionIso_unit
 #print axioms kernelDerivedHomCompositionIso_counit
+
+#print axioms scalarKernelEvaluationHomotopy_closed
+#print axioms scalarKernelEvaluationClosed_fac
+#print axioms scalarKernelU12dClosed_fac
+#print axioms scalarKernelResolutionEvaluation_computation
+#print axioms scalarKernelEvaluationAugmentation_relativeKFlat
