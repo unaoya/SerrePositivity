@@ -1,0 +1,9 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarReconstructionTriangles
+
+/-! # 再構成・係数変更の三角比較の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+#print axioms perfectEndomorphismEnhancementScalarTensorComparison
+#print axioms perfectEndomorphismEnhancementScalarTensorComparison_commShift
+#print axioms perfectEndomorphismEnhancementScalarTensorTriangleSquareIso

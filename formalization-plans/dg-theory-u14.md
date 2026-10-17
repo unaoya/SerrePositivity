@@ -1143,6 +1143,17 @@
   主要9宣言の公理は `propext`, `Classical.choice`, `Quot.sound` のみ。
   新しいsorry・axiom・引用は追加していない。
 
+## U14a/b.75：enhancement再構成tensorと係数変更の三角図式（2026-10-17）
+
+- `ScalarReconstructionTriangles.lean`：既存の実際のenhancement再構成tensor比較と
+  U14b.74の係数変更正方形を自然同型として合成した。実際のH⁰再構成後に係数変更する経路と、
+  主Perfの再構成後に受入済み導来係数変更を適用する経路を比較する。
+- この合成自然同型のshift整合性と、三角形の圏での自然な正方形も証明した。
+  U14b.43のU12dへの評価比較・条件付き導来tensor係数変更と同じ主Perf再構成関手に接続する。
+- `ChecksScalarReconstructionTriangles` 対象ビルド成功（3140 jobs）。
+  主要3宣言の公理は標準3公理のみ。新しいsorry・axiom・引用は追加していない。
+  既存APIの名前・型は変更していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
