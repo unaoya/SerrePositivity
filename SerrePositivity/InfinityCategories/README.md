@@ -370,3 +370,22 @@ SSet.Truncated.HomotopyCategory₂ ((SSet.truncation 2).obj (dgNerve A D))
 逆関手と自然同型は、充満・忠実・本質的全射な関手からの Mathlib の圏同値の構成を使う。
 任意の可換環 A と任意の dg 圏 D のみを前提とし、追加の方程式や有界性は仮定しない。
 これで N3a の未完了項目は解消した。N4〜N6 は未完了。
+
+## N5a：dg 関手の写像と充満部分圏（2026-10-18、N5 は未完了）
+
+`FunctorMapping.lean` は dg 関手で全対象と全斉次成分を写し、微分・通常順合成・単位と
+符号付き有限和の保存から単体の方程式を保つことを示す。
+`Functor.lean` は任意の単調写像による引き戻しとの可換性を、単射・潰れた辺の単位・
+それ以外の零の三分岐で証明する。
+
+`dgNerve.map (F : DGFunctor A D E) : dgNerve A D ⟶ dgNerve A E`、
+`dgNerve.map_id`、`dgNerve.map_comp` を公開した。
+単体データの写像は D,E の対象宇宙を別々に扱う。
+単体的写像は Mathlib の `nerve` の写像と同様に、D,E を共通の対象宇宙に置いている。
+
+`FullSubcategory.lean` は、全頂点の対象が P を満たす単体による部分複体 `fullOnObjects` を定義する。
+各 Hom 複体を変えずに単体を充満 dg 部分圏へ持ち上げる `liftToFull` と往復の計算を構成し、
+`range_inclusion` で包含の dg nerve の像が `fullOnObjects` に等しいことを証明した。
+
+厳密 dg 自然変換から単体的ホモトピーを作る部分は未構成。
+N5 全体の完了とは数えない。N4 と N6 も未完了。

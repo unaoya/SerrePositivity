@@ -2,7 +2,7 @@ import SerrePositivity.InfinityCategories.DGNerve
 /-!
 # dg nerve の公開宣言の公理監査
 
-概要：N0 の既存則と N1〜N3 の全ての明示的な公開宣言を監査する。
+概要：N0 の既存則と N1〜N3 と N5 途中の全ての明示的な公開宣言を監査する。
 方針：各工程で公開宣言の公理表示と型の検査を追加する。
 規約：許される公理は propext・Classical.choice・Quot.sound のみ。
 使われ方：対象ビルド後に `lake env lean scripts/audit_dg_nerve.lean` を実行する。
@@ -308,6 +308,23 @@ dg nerve と内部ホーン充填および quasicategory instance を監査す�
 #print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.fromH0
 #print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.counitIso
 #print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.unitIso
+#print axioms SerrePositivity.InfinityCategories.DGNerve.map_differential
+#print axioms SerrePositivity.InfinityCategories.DGNerve.map_compose
+#print axioms SerrePositivity.InfinityCategories.DGNerve.map_unit_of_heq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.map
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.map_term
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.map_rhs
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Simplex.map
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.map_id
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.map_comp
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.map_pullback
+#print axioms SerrePositivity.InfinityCategories.dgNerve.map
+#print axioms SerrePositivity.InfinityCategories.dgNerve.map_id
+#print axioms SerrePositivity.InfinityCategories.dgNerve.map_comp
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fullOnObjects
+#print axioms SerrePositivity.InfinityCategories.DGNerve.liftToFull
+#print axioms SerrePositivity.InfinityCategories.DGNerve.map_inclusion_lift
+#print axioms SerrePositivity.InfinityCategories.DGNerve.range_inclusion
 
 #check @SerrePositivity.InfinityCategories.DGNerve.compose_zero
 #check @SerrePositivity.InfinityCategories.DGNerve.zero_compose
@@ -601,6 +618,23 @@ dg nerve と内部ホーン充填および quasicategory instance を監査す�
 #check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.fromH0
 #check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.counitIso
 #check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.unitIso
+#check @SerrePositivity.InfinityCategories.DGNerve.map_differential
+#check @SerrePositivity.InfinityCategories.DGNerve.map_compose
+#check @SerrePositivity.InfinityCategories.DGNerve.map_unit_of_heq
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.map
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.map_term
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.map_rhs
+#check @SerrePositivity.InfinityCategories.DGNerve.Simplex.map
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.map_id
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.map_comp
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.map_pullback
+#check @SerrePositivity.InfinityCategories.dgNerve.map
+#check @SerrePositivity.InfinityCategories.dgNerve.map_id
+#check @SerrePositivity.InfinityCategories.dgNerve.map_comp
+#check @SerrePositivity.InfinityCategories.DGNerve.fullOnObjects
+#check @SerrePositivity.InfinityCategories.DGNerve.liftToFull
+#check @SerrePositivity.InfinityCategories.DGNerve.map_inclusion_lift
+#check @SerrePositivity.InfinityCategories.DGNerve.range_inclusion
 
 section
 universe u v
