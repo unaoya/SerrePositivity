@@ -10220,6 +10220,29 @@ E∞ 完備導来 perfectoid 化の同定や引き戻し性を証明したもの
 対象2000ジョブと公開1宣言の専用監査が成功。assert_no_sorry 成功・標準3公理のみ。
 原典 E∞ 版 Cor 8.12 の引き戻し性は未供給のままで、新しい sorry・axiom・引用は追加していない。
 
+**実 rank 図式の完備入力・付値環条件の全体公開と監査（2026-10-17）。**
+Prop247RankSourceValuation と Prop247RankClosedSides をルートへ公開した。
+依存する Prop247RankCompleteness を含む新規7宣言は専用 assert_no_sorry 成功・標準3公理のみ。
+元の全体 lake build は6911ジョブで成功し、scripts/audit_axioms.lean と
+scripts/audit_clmst.lean は全て終了コード0で完了した。監査範囲は変更しない。
+共有ルートは別 index の git add -p で自分の2 import hunk だけを選択した。
+
+現在の原典の入力対応は次のとおり。全て元の写像と元の作用を保持する。
+
+| 原典の実入力 | 供給済みの公開 API | 状態・境界 |
+|---|---|---|
+| R→∏Ti の核・余核の共通冪零化 | prop247_aic_rankCoefficient_annihilators | André 絶対整閉基底上で証明済み、Cor 8.12 不要 |
+| 同写像の付値環条件 | prop247_aic_rankTargetProduct_valuation_extension | 任意の付値環、g の像非零で一意延長。非 perfectoid V も含む |
+| 元の S→∏Si の付値環条件 | prop247_aic_rankSourceProduct_valuation_extension | 任意の付値環、元の g の像非零で一意延長 |
+| S、∏Si、I、I.map q、両商の導来完備性 | prop247_rankSource_closedSide_completeness | 元の離散な環の六入力を証明済み。E∞ perfectoid 化との同定は含まない |
+| 元の単位と誘導 perfectoid 比較の可換式 | prop247_rankPerfectoidComparison_square | 指定された各普遍単位について構成済み |
+| 終域比較の核の冪零化、成分 isogeny | prop247_aic_isogeny_of_rank_comparisons の二入力 | 未供給。excision・KL の実比較への接続が必要 |
+| 原典 E∞ Cor 8.12 と通常の指定四角形の対応 | KLCanonicalExcisionSquare | 保留・未供給。離散な準備を原典入力の宣言やその証明と扱わない |
+
+全段共通指数の D-U と元の錐への D-Q の既存合流は引き続き利用可能で、
+各 Si の bounded torsion を追加する必要はない。元の Prop 2.4.7 引用はまだ置換しない。
+原典 E∞ 版 Cor 8.12 の保留を継続し、新しい sorry・axiom・引用は追加していない。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
