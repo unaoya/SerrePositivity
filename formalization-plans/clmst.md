@@ -9245,6 +9245,20 @@ B⊗R S を終域とする実加群比較と、元の導来 tensor 代数を終�
 次はこの元ごとの比較を、既存 G2 の完備底変換比較・係数正規化・完備化標準単位へ接続する。
 Cor 8.12 は保留を継続する。
 
+**D-I・実完備底変換と元の tensor 完備化単位（2026-10-17）。** 共通層
+`DerivedCompletion/AlgebraBaseChangeTensorUnit.lean` で、係数制限後の実完備底変換から
+元の実完備 tensor への比較を構成し、既存 G2 の比較と係数正規化の合成そのものに等しいことを証明した。
+`completedAlgebraBaseChangeTensorIso_unit` は、元の B 上の完備化標準単位をこの比較で写すと、
+元の R 上の tensor 完備化標準単位となることを述べる。既存の完備化と係数制限の標準単位可換式と
+完備化単位の自然性を再利用した。
+`completedBaseChangeTensorH0Iso_unit`・`_unit_apply` は同じ可換式を既存 G2 の元の H⁰ 比較と
+その全ての元について公開する。新しい完備化対象や標準単位を選んでいない。
+平坦性・正則性・完備性・有限性の追加仮定はない。共通層に BS・CLMST・Inputs・Paper 依存はない。
+対象2579ジョブと専用監査の公開5宣言が成功。全5宣言は assert_no_sorry 成功・標準3公理のみ。
+次は前工程の通常 tensor の元の同定をこの単位可換式へ適用し、BS が公開する元の
+`completedTensorPerfectoidizationMap` と終域比較の標準写像の四角形へ接続する。
+Cor 8.12 の保留は継続する。
+
 ### 9.8. 各区切りの保存と検証
 
 各要求を小さい公開定理の単位で実装し、該当モジュールのビルドと依存監査を行う。
