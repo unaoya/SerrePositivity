@@ -117,6 +117,14 @@
   Q(P)の任意の導来retractにも[n,n]の有限射影代表を与えた。次数幅帰納法の基底ケースである。
 - `Perfect.ChecksRingRetractSingle` 対象ビルド成功（3174 jobs）。主要2宣言の公理監査は標準3公理のみ。
 
+## U13e.36：逆回転三角形からの有限射影代表の復元
+
+- `Perfect/RingTriangleFiniteModel.lean`：single→X→Kのdistinguished三角形で、
+  singleが次数b、Kが[a,b−1]の有限射影複体で表される場合、Xを[a,b]の有限射影複体で表した。
+- 逆回転三角形の第一射をK[−1]からsingleへの実際のchain mapへ持ち上げ、coneを取る。
+  既存Qのshift比較とdistinguished三角形の比較を使い、得たconeのQ像がXと同型であることを証明した。
+- `Perfect.ChecksRingTriangleFiniteModel` 対象ビルド成功（3175 jobs）。主要宣言の公理監査は標準3公理のみ。
+
 ## 既存項目の再検証
 
 - finite cell・全Hom射影性・PerfとKaroubi・compact生成・compact⇒Perf・
