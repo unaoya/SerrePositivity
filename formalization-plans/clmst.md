@@ -8834,6 +8834,48 @@ Cor 8.12 入力は現時点で未宣言、担当記録では保留のまま。
 KL-Q の低次局所コホモロジー・全段 Koszul 消滅および引用置換は引き続き未完了。
 D-I/U/Q や Cor 8.12 の担当ファイルは編集していない。
 
+#### KL-T：実有限エタール被覆上の導来完備有限表示モデル（2026-10-17）
+
+`CLMST/PerfectoidEtaleCommonCover.lean` の公開定理
+`aic_finiteEtaleAway_exists_derivedComplete_common_cover` は、
+perfectoid かつ絶対整閉な R、有限かつ代数として有限表示な R 代数 A、
+元の g:R、および A[1/g] の R[1/g] 上の有限エタール性から、
+実際の有限主開分解被覆 t⊆R[1/g] と、その各 f∈t 上の共通モデルを構成する。
+
+量化順は **∃ t, span(t)=⊤ ∧ (∃N,g^N∈span{g*num(f)}) ∧ ∀f∈t, ∃r,e,E,u,v,w,…**。
+被覆、分解、rank、モデルは perfectoid 化・Tor 試験より先に選ばれる。
+rank r は f ごとに変わってよく、rank 0 を除外しない。
+
+各 f で返すデータは、元の局所分解
+`e : R[1/g][1/f] ⊗[R[1/g]] A[1/g] ≃ₐ[R[1/g][1/f]] (Fin r → R[1/g][1/f])`、
+有限・代数有限表示・加群有限表示な元の R 代数 E、実有限写像 u:A→E、v:Rʳ→E、
+実 w:E→R[1/g][1/f]ʳ と次の証明である。
+
+- u と w の合成は、元の a:A の局所化像を e へ渡す写像そのもの。
+- v と w の合成は、元の座標ごとの R→R[1/g][1/f]。
+- d=g*(IsLocalization.Away.sec g f).1 に関する w の加群局所化構造。
+- E の元の R 作用での導来 p 完備性、E 自身の作用での完備性、
+  主イデアル (algebraMap R E d) とその実商自身の環作用での導来完備性。
+- 実 tensorMap u,v の全単射性、両核の点ごとの d 冪 torsion 性、
+  同じ E の両余核を消す一つの指数（f ごとの指数。塔全段の指数とは数えない）。
+
+以前の実有限被覆の像モデルだけでは保証しなかった有限表示性と導来完備性を、
+ここでは有限個の関係式の商によるモデルで供給する。
+E を perfectoid と仮定せず、Noether 性・d の正則性・大域的 rank 一定性を追加していない。
+
+対象ビルドと専用監査 `scripts/audit_clmst_etale_complete_cover.lean` は成功。
+公開定理と、同じ実被覆上で両元の主イデアルが同じ E の導来完備主イデアルに写る適用例は、
+`assert_no_sorry` 成功・標準三公理のみ。新しい引用はない。
+KL 専用監査は成功（1221 assert）。全体ビルドは今回未編集の
+`DifferentialGraded/Quotient/ScalarExtension.lean:123` の
+`quotientComposition_baseChange` 未定義で失敗した。対象モジュール・専用監査は成功している。
+
+この定理は AIC perfectoid 基底上の実被覆とモデルを構成した段階である。
+元の基底から一つの André 拡大へ移ったときのエタール性の正規化、
+各モデルの二つの canonical excision の実 pullback 性と perfectoid 化のモデル同定、
+被覆合流・忠実降下の実適用、KL-Q の両消滅と原典引用置換は引き続き残る。
+D-I/U/Q・Cor 8.12 の担当部分には着手していない。
+
 #### Prop 2.4.7 専任系列：原典から D-I/U/Q への型付き受渡し（2026-10-17）
 
 本節は統合表 D-I・D-U・D-Q の実入力を固定する。未採用の別計画は根拠にしない。
