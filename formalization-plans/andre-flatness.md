@@ -3897,3 +3897,90 @@ hpR を既存の任意族存在定理へ追加しておらず、これらの条�
 終了コード 0。生成宣言を含む 5520 宣言の推移的公理依存は標準 3 公理のみ。
 一般主剰余判定・代数版・具体的二元完全平坦性・実制限加群の Tor 消滅・
 導来剰余の非零次数消滅の公開型 5 本を `#check` で確認した（終了コード 0）。
+
+
+### E1.60 元の導来剰余 H⁰ の忠実平坦性と完全 δ 化後への保存（2026-10-17）
+
+新規 `Andre/CompletelyFaithfulPairReduction.lean` に 2 公開宣言を追加した。
+`scalarExtension_faithfullyFlat_of_completelyFaithfullyFlat` は任意の可換環 R、
+I : Ideal R、M : ModuleCat R について、IsCompletelyFaithfullyFlat I M から
+標準 I 剰余スカラー拡大の忠実平坦性を与える。
+`pairScalarExtension_faithfullyFlat_of_principal_reduction` の正確な型は
+q_d = Ideal.Quotient.mk (Ideal.span {d}) と書くと
+
+```lean
+(a d : R) (M : ModuleCat R)
+(hred : IsCompletelyFaithfullyFlat (Ideal.span {q_d a})
+  ((ModuleCat.extendScalars q_d).obj M)) :
+Module.FaithfullyFlat (R ⧸ Ideal.span {a, d})
+  ((ModuleCat.extendScalars (Ideal.Quotient.mk (Ideal.span {a, d}))).obj M)
+```
+
+である。通常二重主商の同型に沿う底変換で忠実平坦性を移し、
+スカラー拡大合成の自然同型で元の二元剰余に戻す。正則性や完備性は不要。
+
+新規 `Andre/PowerRootPrismMonicCompletionPairFaithful.lean` は E1.59 と同じ
+完全 prism W : OrientedPrism p A、hW、f : Polynomial A、L、jL、dP、
+H = PDCompletionH0 L p (jL dP)、c = powerRootPrismMonicCompletionBaseMap W hW f
+を使う。仮定は E1.59 と同じ
+
+```lean
+(hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal))
+(hf : f.Monic) (hdeg : 0 < f.natDegree)
+```
+
+である。Q = A ⧸ Ideal.span {(p : A), W.generator}、q : A →+* Q を標準射、
+M = baseChangeScalarModule c と書くと
+`powerRootPrismMonicCompletion_pair_scalarExtension_faithfullyFlat` は
+
+```lean
+let := pdCompletionCommRing L p (jL dP)
+Module.FaithfullyFlat Q ((ModuleCat.extendScalars q).obj M)
+```
+
+を証明する。自然な H/dH の完全忠実平坦性を標準主環商作用へ移し、
+実制限加群と通常 H の線形同型、主商の標準スカラー拡大比較を合成して一般判定に渡した。
+`powerRootPrismMonicCompletion_pair_reductionH0_faithfullyFlat` の結論は
+
+```lean
+let := pdCompletionCommRing L p (jL dP)
+Module.FaithfullyFlat Q
+  ((DerivedCategory.homologyFunctor (ModuleCat Q) 0).obj
+    ((boundedAboveDerivedBaseChange q).obj
+      (boundedAboveDerivedSingleFunctor.obj M)).obj)
+```
+
+である。標準 H⁰ 比較の線形同型を使い、係数作用を変えていない。
+E1.59 の非零次数消滅と合わせ、元の H の導来二元剰余入力がそろった。
+
+新規 `Andre/PowerRootPrismMonicPerfectionPairFaithful.lean` では
+DH = deltaPDCompletionStructure (deltaAdjoinDivisionStructure E dP a) (jL dP)、
+C = DeltaPerfection DH、κ = deltaAlgebraPerfectionCoefficient DH c、
+H′ = PDCompletionH0 C p (κ W.generator)、
+t = (pdCompletionUnit C p (κ W.generator)).comp κ、M′ = baseChangeScalarModule t、
+Y′ = (boundedAboveDerivedBaseChange q).obj (boundedAboveDerivedSingleFunctor.obj M′)
+と固定する。前提は同じ W/hW/hpR/f/hf/hdeg であり、次の 3 公開定理を追加した。
+各型の先頭には元の H と H′ の `pdCompletionCommRing` を let で明示する。
+
+- `powerRootPrismMonicCompletedPerfection_pair_homology_isZero`：任意 i : ℤ、hi : i ≠ 0 に対し
+  `IsZero ((DerivedCategory.homologyFunctor (ModuleCat Q) i).obj Y′.obj)`。
+- `powerRootPrismMonicCompletedPerfection_pairH0_faithfullyFlat`：
+  `Module.FaithfullyFlat Q ((DerivedCategory.homologyFunctor (ModuleCat Q) 0).obj Y′.obj)`。
+- `powerRootPrismMonicCompletedPerfection_pair_completelyFaithfullyFlat`：
+  `IsCompletelyFaithfullyFlat (Ideal.span {(p : A), W.generator}) (ModuleCat.carrier M′)`。
+
+元の標準係数射 c の δ 性と実剰余入力を既存の
+`perfectPrismDeltaAlgebraPD_*` の一般判定へ渡した。
+BS Rem 7.15（著者版 p.62）の完全化後の平坦性保存を、原典とは異なる
+正則主剰余・Tor 底変換と完全 δ 基底での Frobenius 段・余極限の経路で証明した。
+新しい引用・公理・sorry は追加していない。
+
+最終の生成元商への p 完全忠実平坦性の移送、hpR を仮定しない原典経路の補完、
+絶対 prismatic envelope の同定、元の f の Frobenius 引戻し pd 包の同定は未完了。
+E1.58 の具体的な完全化後商・自然基底射との比較も次工程で係数作用を検証する必要がある。
+本工程の条件付き結果を全体の完成とは数えず、承認済み hdeg を持つ任意族存在定理の型も変えない。
+
+3 対象を含む対象ビルドと集約の `set -o pipefail; lake build` は終了コード 0
+（集約 4529 jobs）。新規 7 公開宣言の `assert_no_sorry` と専用監査は
+終了コード 0。生成宣言を含む 5642 宣言の推移的公理依存は標準 3 公理のみ。
+新規 7 公開宣言の正確な型を `#check` で確認した（終了コード 0）。
