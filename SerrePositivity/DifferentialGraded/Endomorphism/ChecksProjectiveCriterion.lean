@@ -1,0 +1,10 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.ProjectiveCriterion
+
+/-! # 主Kのcoyonedaによる射影性判定の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+
+#print axioms moduleHomotopicallyProjective_of_homotopyRetract
+#print axioms moduleHomotopicallyProjective_of_coyoneda_inverts
+#print axioms moduleHomotopicallyProjective_iff_coyoneda_inverts

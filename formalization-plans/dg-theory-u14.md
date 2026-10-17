@@ -173,6 +173,16 @@
 - `lake build SerrePositivity.DifferentialGraded.Endomorphism.ChecksHomotopyAdjunction` 成功。
   5主要宣言の公理は標準3公理のみ。
 
+## U14a.14：主Kのcoyonedaによる射影性判定（2026-10-17）
+
+- `ProjectiveCriterion.lean`：K内の射影的加群のretractはホモトピー射影的であることを証明。
+  前合成のHom複体へのホモトピー保存を使い、各Homologyを零対象のretractとして計算した。
+- Kのcoyoneda Hom(P,−)が指定擬同型を反転するなら、標準射影解像度のaugmentationが
+  K内で分裂することを証明し、ホモトピー射影性との同値な判定を得た。
+  compact生成定理・引用・新たな仮定は導入していない。
+- `lake build SerrePositivity.DifferentialGraded.Endomorphism.ChecksProjectiveCriterion` 成功。
+  3主要宣言の公理は標準3公理のみ。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
