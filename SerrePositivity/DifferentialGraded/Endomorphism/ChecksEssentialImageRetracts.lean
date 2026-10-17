@@ -1,0 +1,14 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.EssentialImageRetracts
+
+/-! # 再構成本質的像のretract閉性と生成対象の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+
+#print axioms fullyFaithfulEssImage_of_retract
+#print axioms fullyFaithfulEssImageStableUnderRetracts
+#print axioms perfectEndomorphismHomToDerived
+#print axioms perfectEndomorphismHomToDerived_full
+#print axioms perfectEndomorphismHomToDerived_faithful
+#print axioms perfectEndomorphismEssentialImageStableUnderRetracts
+#print axioms perfectEndomorphismEssentialImage_regular

@@ -385,6 +385,18 @@
 - `ChecksDerivedHomHomotopyComparison` と更新した `ChecksCompatibility` の対象ビルド成功。
   新規7主要宣言の公理は標準3公理のみ。U14公開入口へimport済み。
 
+## U14b.13：本質的像の正則生成対象・retract・整数shift（2026-10-17）
+
+- `EssentialImageRetracts.lean`：冪等完備な始域を持つ完全忠実関手の本質的像の
+  retract閉性を、始域で冪等射を分裂して同型を構成することで証明。
+  これを主Perfの導来Hom比較に適用した。
+- 指定対象Eの導来Hom像が正則End加群である計算を用い、正則生成対象が本質的像に
+  入ることを証明。これは全対象に対する本質的全射とは分けている。
+- `EssentialImageShift.lean`：生の加群表示・加群shift同型・局所化のshift比較を接続して、
+  本質的像の任意整数shift閉性を証明した。
+- `ChecksEssentialImageRetracts` と `ChecksEssentialImageShift` の対象ビルド成功。
+  新規9主要宣言の公理は標準3公理のみ。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
