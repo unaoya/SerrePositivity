@@ -54,6 +54,7 @@ public import SerrePositivity.BhattScholze.Andre.DistinguishedWittDenominator
 public import SerrePositivity.BhattScholze.Andre.DeltaDivisionCompletionPResidue
 public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCompletionPD
 public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicVarpiFlat
+public import SerrePositivity.BhattScholze.Andre.PowerRootMonicModPairRegular
 
 /-!
 # André E1・E2 の集約

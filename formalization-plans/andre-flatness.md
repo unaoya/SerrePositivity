@@ -3197,3 +3197,83 @@ T=overline(Δ)_S との同定、T 自体の p 正則性とそこからの完全�
 逆係数写像の代表元公式、移送後の入力、ϖ 主 pd 同型と自然係数公式、
 係数代数構造の自然係数公式、実完備化剰余の自由性・忠実平坦性の公開型 7 本を
 `#check` で確認した（終了コード 0）。
+
+
+### E1.51：有限 δ 関係商の mod p での次関係の正則性と無限根入力の初期正則対（検証済み）
+
+E1.50 の通常商の自由性だけから、完備化全体の p 正則性を結論しない。
+源の正則性を供給するため、有限 raw 関係商で p の正則性と mod p の d 正則性を
+同時に保つ帰納法へ進む。次段の δ 関係の最高変数の係数は φ^(N+1)(d) であり、
+mod p では d^(p^(N+1)) となる。したがって d が前段 mod p で正則なら
+次関係もそこで正則。mod d での次関係の正則性は既存の Witt 正規化で供給できる。
+原典の T との同定は別に必要である。
+
+新規 `Andre/DeltaDivisionFiniteModPrimeTail.lean` は、元の自由 δ 環 L₀ の
+有限関係イデアル I_N=`deltaDivisionFiniteRelationIdeal D d a N` について、
+mod p 商 L₀/((p)+I_N) を初期有限変数の同じ商上の後続多項式環へ分離する。
+初期環 B_N=A[σ×Fin(N+1)] の関係イデアルを J_N とすると
+
+```lean
+def deltaDivisionFiniteModPrimeTailEquiv :
+    (L₀ ⧸ (Ideal.span {(p : L₀)} ⊔ I_N)) ≃+*
+      MvPolynomial (σ × ℕ) (B_N ⧸ (Ideal.span {(p : B_N)} ⊔ J_N))
+```
+
+である。代表元・係数・次の実 δ 関係の先頭項と下位項の公式を含め
+5 公開宣言を追加した。添字族の有限性や源の正則性を仮定しない。
+
+新規 `Andre/DeltaDivisionFiniteModPrimeRegularity.lean` はこの分離を使う。
+`deltaFrobeniusIterate_map_of_prime_zero` は p を殺す任意の通常環射 q の下で
+q(φ^n(d))=q(d)^(p^n) を計算する。
+正則な先頭係数を持つ一次多項式・多変数一次式の正則性と、係数商への正則性の降下から
+
+```lean
+theorem deltaDivisionFiniteModPrime_next_regular
+    (D : DeltaStructure p A) (d : A) (a : σ → A) (N : ℕ)
+    (hd : IsSMulRegular (L₀ ⧸ (Ideal.span {(p : L₀)} ⊔ I_N))
+      (Ideal.Quotient.mk _ (MvPolynomial.C d))) (s : σ) :
+    IsSMulRegular (L₀ ⧸ (Ideal.span {(p : L₀)} ⊔ I_N))
+      (Ideal.Quotient.mk _ (deltaDivisionIteratedRelation D d a s (N+1)))
+```
+
+を証明した。引用や未知の比較同型を仮定していないが、帰納法の入力 hd は明示している。
+さらに `linearMvPolynomial_coefficient_regular_quotient` は、係数環で c が正則、
+b が mod c で正則なら、cX-b を課した多項式商でも c が正則と証明する。
+この補題は正則対の順序交換を使い、完備性や局所性は要求しない。
+6 公開宣言を追加した。
+
+新規 `Andre/PowerRootMonicModPairRegular.lean` は無限根モニック入力へ初期値を供給する。
+モニック f の評価は任意の係数イデアル商後も正則であることを、
+係数商と無限根環の交換から示す。特に mod(p,d) でも正則となる。
+完全 prism W の商 R が p 正則なら、d の mod p 正則性を無限根環の自由性で移す。
+
+`powerRootPrismFirstModPrimeRelation_regular` は、無限根入力環 P に対して
+B=P/p、db=d mod p、yb=f(Y₀) mod p と書くと、
+B 上の自由変数環で db X_s-yb が正則であることを述べる。
+`powerRootPrismMonicFirstModPrime_generator_regular` は、f がモニックなら
+その線形関係商でも db の係数像が正則であることを述べる。
+これらの初期値のためだけに
+
+```lean
+hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal)
+```
+
+を明示仮定とする。一般の根付き存在定理にこの仮定を追加しない。
+係数イデアル商・二元商・二重商の正則性と最初の線形関係を含め
+6 公開宣言を追加した。
+
+BS Rem 7.15（著者版 p.62）の p ねじれなしの場合の計算を、原典とは異なる
+有限 δ 関係商の正則対による帰納法で補完する準備である。
+次の工程は、有限段の通常商の mod p を上の一重商へ移す標準同型を整備し、
+初期値・次関係の正則性・既存 mod(p,d) Witt 正則性を結んで全有限段へ帰納すること。
+その後、有限商の有向余極限による raw 包の p 正則性と、実完備化への保存を示す。
+今回、全有限段の正則性・raw 全体の p 正則性・実完備化全体の p 正則性は
+まだ証明していない。原典の prismatic 源との比較も引き続き未完了。
+
+
+3 対象および集約の `set -o pipefail; lake build` は終了コード 0
+（集約 4481 jobs）。新規 17 公開宣言の `assert_no_sorry` と専用監査は
+終了コード 0。生成宣言を含む 4624 宣言の推移的公理依存は標準 3 公理のみ。
+有限 mod p 分離同型・次関係公式・次関係の正則性、線形関係商での係数正則性、
+無限根モニックの二元商正則性・生成元の mod p 正則性・最初の関係とその係数の
+正則性の公開型 8 本を `#check` で確認した（終了コード 0）。

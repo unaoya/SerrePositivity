@@ -930,6 +930,24 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicVarpiResid
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicVarpiResidue_free
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicVarpiResidue_faithfullyFlat
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteModPrimeInitialIdeal_map
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteModPrimeTailEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteModPrimeTailEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteModPrimeTailEquiv_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteModPrimeTailEquiv_next
+assert_no_sorry SerrePositivity.BhattScholze.Andre.linearPolynomial_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.linearMvPolynomial_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.linearMvPolynomial_coefficient_regular_quotient
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaFrobeniusIterate_map_of_prime_zero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteModPrimeInitial_coefficient_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.deltaDivisionFiniteModPrime_next_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomial_monic_mod_ideal_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomial_monic_mod_pair_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismGenerator_modPrime_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonic_modPrime_generator_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismFirstModPrimeRelation_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFirstModPrime_generator_regular
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -1082,7 +1100,10 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PerfectPrismFrobeniusPairToVarpi,
     `SerrePositivity.BhattScholze.Andre.PowerRootFrobeniusPairVarpiInput,
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicVarpiPDComparison,
-    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicVarpiFlat]
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicVarpiFlat,
+    `SerrePositivity.BhattScholze.Andre.DeltaDivisionFiniteModPrimeTail,
+    `SerrePositivity.BhattScholze.Andre.DeltaDivisionFiniteModPrimeRegularity,
+    `SerrePositivity.BhattScholze.Andre.PowerRootMonicModPairRegular]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
