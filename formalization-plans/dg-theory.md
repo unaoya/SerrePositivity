@@ -9581,3 +9581,52 @@ Hom準同型性の下でその単位の同型性を得る。U14のiso locusと�
 導来随伴を得たことだけでU12e全体を受け入れない。
 U12e全受入→U16a〜d→U15eの分解版の順と局所K-flat版の並行所有を維持する。
 共有一般論への新しいAPI要求はない。Endomorphism/・係数変更系列は読み取り専用で保持した。
+
+### 17.209 U12e49：代表加群上の実際の単位と導来単位の可逆性（2026-10-17）
+
+**追加API。** `Module/FunctorExtensionRepresentableUnit.lean`で
+`functorExtensionUnit_representable`を証明した。代表加群の通常単位に、延長代表加群の
+Yoneda同型を制限した射を後合成すると、各成分がFのHom chain mapである既存の
+`representableRestrictionMap`に一致する。
+`functorExtensionUnit_representable_quasiIso`はHom準同型性だけから通常単位の準同型性を得る。
+本質的全射性、元のHomのflatness、有界性は要求しない。
+
+`Derived/FunctorExtensionUnitComputation.lean`では、閉零随伴の単位と構成済みの
+`functorExtensionUnit`の一致、および実際の導来随伴のHom同値と構成済み射集合同値の一致を
+証明した。後者はMathlibの`Adjunction.mkOfHomEquiv_homEquiv`を再利用し、
+随伴のHom同値が構成時の同値と定義的に等しいとは仮定しない。
+`dgDerivedExtensionUnit_computation`により、標準解像度Pの延長計算同型をeとすると、
+導来単位ηにR(e.hom)を後合成した射は、増大Q(π)の逆、Q上の通常単位η_P、
+導来制限計算同型の逆の合成になることを証明した。
+
+既存`dgModuleEnrichedRestrictionAdjunction`の構成を、右関手の等式による直接の書換えから
+同じ等式の自然同型に沿う`Adjunction.ofNatIsoRight`へ変更した。
+公開名・型・仮定・宇宙は変更していない。成分が恒等射である右関手の比較を明示し、
+今回の単位計算で巨大な関手等式の証明を展開しないための変更である。
+
+`Derived/FunctorExtensionRepresentableUnit.lean`の
+`functorExtensionUnit_resolution_quasiIso`は、射影的加群上の通常単位が準同型なら、
+その任意の射影解像度上でも通常単位が準同型になることを、単位の自然性と
+延長による射影的加群間の準同型保存から証明する。
+これを標準解像度と導来単位の計算式に適用し、
+`dgDerivedExtensionUnit_representable_isIso`を得た。
+先行して構成した往復同型の存在だけを根拠にせず、今回の実際の導来随伴の単位自体を判定した。
+
+**検証。** 新規`Checks.DGRepresentableExtensionUnit`は通常単位とHom比較の一致、
+二つの閉零随伴モデルの単位の一致、独立宇宙とZMod 2での導来単位の可逆性を検査した。
+同チェックと、Checks.DGDerivedExtensionAdjunction以降の既存graph延長・制限・分解比較・
+導来bimodule五角形・StageEight・StageSeven・Spectra.StageTwoの統合ビルド成功
+（3329 jobs、警告なし）。新規主要8宣言と既存随伴1宣言の計9宣言の直接公理監査は
+重複・欠落なく標準3公理以内。新規監査累計4081宣言（今回の再監査1件は重複加算しない）。
+今回の受入ソースにsorry・admit・新規axiom・資源上限変更は0件。採用済み引用は0件。
+全体文書検査は20 Markdown・320 exposition参照を検査し、担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+未解決参照1件で失敗した。担当外のソース・ビルド・共有監査スクリプトは変更していない。
+
+**残る受入条件。** 次は制限の導来関手についてshift・三角性・余積保存を接続し、
+導来随伴の整合的shiftをMathlibから得る。U14の既存iso locusと局所化・生成性APIを再利用して
+代表加群上の単位の同型性を全加群へ拡張し、準同値の本質的全射性と合わせて導来同値を得る。
+解像度変更と導来bimodule合成・対角単位・結合の自然性およびcoherenceへの接続は未完。
+U12e全受入→U16a〜d→U15eの分解版の順と局所K-flat版の並行所有は維持する。
+共有一般論への新しいAPI要求はない。Quotient/DerivedComparisonRestriction.leanを参照したが、
+局所K-flat版・Verdier/・Endomorphism/・係数変更系列は編集していない。

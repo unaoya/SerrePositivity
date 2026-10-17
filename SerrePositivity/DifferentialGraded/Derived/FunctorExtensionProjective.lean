@@ -17,9 +17,9 @@ variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
 
 /-- 制限の全Homモデルを使った、既存の閉零随伴。 -/
 def dgModuleEnrichedRestrictionAdjunction :
-    (dgModuleExtension A D E F).onClosed ⊣ (dgModuleRestriction A D E F.op).onClosed := by
-  rw [dgModuleRestriction_onClosed_eq]
-  exact dgModuleExtensionRestrictionAdjunction A D E F
+    (dgModuleExtension A D E F).onClosed ⊣ (dgModuleRestriction A D E F.op).onClosed :=
+  (dgModuleExtensionRestrictionAdjunction A D E F).ofNatIsoRight
+    (eqToIso (dgModuleRestriction_onClosed_eq A D E F.op)).symm
 
 /-- 主ホモトピー圏上でのgraph延長–制限随伴。 -/
 def dgModuleHomotopyAdjunction :
