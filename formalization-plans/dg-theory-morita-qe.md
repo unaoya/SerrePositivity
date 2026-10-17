@@ -371,6 +371,19 @@
 - `Morita.PerfectDerivedKernelCompositionChecks` ビルド成功（2764 jobs、警告なし）。
   追加1宣言と既存4宣言の公理監査は標準3公理のみ。恒等・結合coherenceの完成とは扱わない。
 
+## U16d.20：underived加群比較の入力自然性とH⁰降下
+
+- `Morita/ScalarExtensionKernelBalancedNaturality.lean`：U16d.18の実際の加群同型が
+  全閉零入力射に自然であることを証明し、`scalarKernelBalancedNatIso` に束ねた。
+  値の比較では既存coend係数変更の両変数自然性と左因子射のtensor自然性を用いる。
+- `Morita/ScalarExtensionKernelHomotopy.lean`：既存 `scalarModuleExtensionHomotopy` と
+  主H⁰商の普遍性を使い、比較を全H⁰入力射に自然な同型へ降ろした。
+  既存の係数変更ホモトピー関手から主導来値へ送る二つの経路も自然同型で比較した。
+- 通常入力とH⁰入力の比較は任意環準同型に定義され、局所Hom条件は要求しない。
+  これはH⁰上のunderived係数変更比較であり、導来係数変更関手との無条件同一視ではない。
+- 二つの監査入口の合同ビルド成功（2797 jobs、警告なし）。主要7宣言の公理監査は標準3公理のみ。
+  既存Endomorphism/・Derived/および他担当のソースは編集していない。
+
 ## 合同検証と公開入口（2026-10-17）
 
 - 新規10監査対象・公開入口・既存 `Checks.DGFunctorDerivedEquivalence` の12対象を
