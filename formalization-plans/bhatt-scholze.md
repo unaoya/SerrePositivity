@@ -10881,3 +10881,35 @@ IsZero(F.obj(T.obj S.X₃))→IsIso(F.map(T.map S.f))を与える。
 固定射影分解は次数ごとに平坦なので、元の短完全列を複体の短完全列へ移せる。
 その三角形を完備化し、既存の自然同型で元の実射と照合した。
 全公開宣言のassert_no_sorryと公理監査に成功し、標準3公理のみ。
+
+### 工程2：Lemma 10.3の三主張の結果（2026-10-17）
+
+新規BS専用Lemma103KernelTensor.leanは、任意のperfectoid Rとperfectoid商R/Iについて、
+`integralPerfectoid_completedQuotientTensorIdeal_isZero`、
+`integralPerfectoid_completedIdealTensorQuotient_isZero`を証明する。
+対象は正確にF.obj((boundedAboveDerivedTensorModuleFunctor (ModuleCat.of R I)).obj
+(ModuleCat.of R (R⧸I)))（または逆順）、F=derivedComplexCompletionFunctor R pである。
+短完全列の第二射と商の元の導来積との合成を標準右単位射と照合し、三角形判定を適用した。
+逆順は元の導来対称同型で移送する。
+
+`boundedAboveDerivedIdealMul I`は通常の双線形な積I⊗I→Iと既存導来増大射から定義した実射であり、
+`integralPerfectoid_completedIdealMul_isIso`はF.mapへの適用が同型であることを証明する。
+さらに`integralPerfectoid_quotientIdeal_isModuleComplete`でIの導来p完備性を証明し、
+`completedDerivedIdealMul (p:R) I hI`を、F.obj(I⊗ᴸI)から元のI[0]への標準単位の逆射との合成として定義した。
+`integralPerfectoid_completedDerivedIdealMul_isIso`がこの同じ射の同型性を与える。
+通常の積と「I→Rを右にtensorした射＋標準右単位射」が一致することを、増大射の自然性から証明した。
+
+新規PerfectoidIdealLemma103.leanでK=perfectoidIdeal R p hR gに特殊化した。
+B4の一般全射性、単項商の導来完備性、既存のquotientKerEquivOfSurjectiveにより、
+R/KをB3の選ばれたperfectoid化に同定する。既存CLMSTファイルは編集もimportもしていない。
+`perfectoidIdeal_isModuleComplete`と`perfectoidIdeal_lemma103`を公開する。
+後者の型は、任意R,p,hR,gについて、Kを上記の核とし、
+IsIso(completedDerivedIdealMul p K (perfectoidIdeal_isModuleComplete ...)) ∧
+IsIso(F.map (boundedAboveDerivedAlgebraMul (R⧸K)).hom) ∧
+IsZero(F.obj((boundedAboveDerivedTensorModuleFunctor K).obj (R⧸K)))。
+商側の標的F.obj((R/K)[0])も、そのperfectoid性による標準完備化単位で元の商へ同定される。
+p正則性・有限性・非零性の追加仮定なし。原典の短完全列・tensor三角形の経路を使った。
+
+対象ビルド4416ジョブ成功（終了コード0）。新公開9宣言と工程1・三角形入力をBS専用監査で再検査し、
+全assert_no_sorry成功、標準3公理のみ。新sorry・公理・引用なし。
+Remark 10.7、指定Prop 10.2の公開と原典経路、集約import・最終監査は未完了。
