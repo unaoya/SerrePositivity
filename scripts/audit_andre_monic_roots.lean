@@ -598,6 +598,37 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootModPrime_prime_eq_ze
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootMonicModPrimePDEnvelope_truncatedEquiv
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootMonicModPrimePDEnvelope_quotient_free
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.rankOneDPRingHom_ext
+assert_no_sorry SerrePositivity.BhattScholze.Andre.rankOneDPRingMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.rankOneDPRingMap_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.rankOneDPRingMap_dp
+assert_no_sorry SerrePositivity.BhattScholze.Andre.rankOneDPRingEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.rankOneDPRingEquiv_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.rankOneDPRingEquiv_dp
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPRelationIdeal_map_ringEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPRingEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPRingEquiv_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPRingEquiv_generator
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPRingEquivOfEq
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPRingEquivOfEq_coeff
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPRingEquivOfEq_generator
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPPositiveIdeal_map_equiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPTransportDividedPowers
+assert_no_sorry SerrePositivity.BhattScholze.Andre.principalDPTransportDividedPowers_base_apply
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_principalDPTransportMorphism
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientPDInput
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientPDInput_compare
+assert_no_sorry SerrePositivity.BhattScholze.Andre.PowerRootCoefficientPDEnvelope
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientPDEnvelopeEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientDividedPowers
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientDividedPowers_base_apply
+assert_no_sorry SerrePositivity.BhattScholze.Andre.existsUnique_powerRootCoefficientPDMorphism
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficient_prime_eq_zero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientPDEnvelope_free
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientPDEnvelope_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientRing_prime_eq_zero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootCoefficientPDEnvelope_truncatedEquiv
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -704,7 +735,10 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PerfectPrismMonicModPrimePDEnvelope,
     `SerrePositivity.BhattScholze.Andre.PowerRootPolynomialDelta,
     `SerrePositivity.BhattScholze.Andre.PowerRootPolynomialModPrime,
-    `SerrePositivity.BhattScholze.Andre.PowerRootMonicModPrimePDEnvelope]
+    `SerrePositivity.BhattScholze.Andre.PowerRootMonicModPrimePDEnvelope,
+    `SerrePositivity.BhattScholze.Andre.PrincipalDPRingEquiv,
+    `SerrePositivity.BhattScholze.Andre.PrincipalDPTransport,
+    `SerrePositivity.BhattScholze.Andre.PowerRootCoefficientPDEnvelope]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

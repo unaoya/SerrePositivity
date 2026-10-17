@@ -34,6 +34,7 @@ public import SerrePositivity.BhattScholze.Andre.RegularPrincipalModPrimeUnivers
 public import SerrePositivity.BhattScholze.Andre.PerfectPrismMonicModPrimePDEnvelope
 public import SerrePositivity.BhattScholze.Andre.PowerRootPolynomialDelta
 public import SerrePositivity.BhattScholze.Andre.PowerRootMonicModPrimePDEnvelope
+public import SerrePositivity.BhattScholze.Andre.PowerRootCoefficientPDEnvelope
 
 /-!
 # André E1・E2 の集約

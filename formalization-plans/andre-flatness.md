@@ -2062,3 +2062,61 @@ SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（
 生成宣言を含む 3171 宣言の推移的公理依存は標準 3 公理のみ。
 実係数商同型・モニック入力の実 mod p 正則性・完全 prism の実構造と普遍性・
 切断表示同型・自由性の公開型 6 本を `#print` で確認した（終了コード 0）。
+
+### E1.34：係数同型での実構造の移送と A/(p) 無限根環上の自由・忠実平坦性
+
+新規 `Andre/PrincipalDPRingEquiv.lean` は、任意の可換係数環同型 e:A≃B に対し、
+自由一元分冪代数の実環同型と一次関係商の実環同型を構成する。
+係数と全標準生成元の値を保つ。入力像の等式 e(y)=z を明示した版も公開する。
+係数環の標数・正則性・非零性は要求せず、逆合成は任意係数の標準分冪基底で検証する。
+
+新規 `Andre/PrincipalDPTransport.lean` は、その同型が正次数生成元イデアルを保つことを証明し、
+元の実分冪構造を移す。入力元の分冪が標準生成元に一致する公式と、
+任意の分冪標的への係数代数射の一意存在も移送する。
+この一般補題では元の構造と値を明示引数にするが、次の実適用では両方を構成済み結果から供給する。
+
+新規 `Andre/PowerRootCoefficientPDEnvelope.lean` は、E1.33 の実係数比較をこの移送に適用する。
+係数環 `R=A/(p)`、`N=PowerRootPolynomial R p hp` とし、
+`z=powerRootCoefficientPDInput p f` は係数を mod p に写した f の Y₀ 評価と定義する。
+`PowerRootCoefficientPDEnvelope p f = PrincipalDPPresentation N z` が共通の実台環である。
+名前付き入力は、型照合で評価の内部を展開し続けないため irreducible とする。
+完全 prism W 上のモニック f について、正次数イデアルの実分冪構造
+`powerRootCoefficientDividedPowers`、標準値の公式、
+`existsUnique_powerRootCoefficientPDMorphism` による実 pd 普遍性を得た。
+追加の構造・標準値・入力の正則性を前提として残さない。
+
+同じ台環について `powerRootCoefficientPDEnvelope_truncatedEquiv` は、既存の
+`principalDPQuotientAlgebra` が指定する `N/(z^p)` 上の可算切断表示への代数同型を与える。
+また既存の無限根モニック冪商の基底計算により、元の R 上の自由性と忠実平坦性を証明する。
+主要公開型（namespace `SerrePositivity.BhattScholze.Andre`）：
+
+```lean
+theorem powerRootCoefficientPDEnvelope_free
+    {A : Type u} [CommRing A] (p : ℕ) [Fact p.Prime]
+    (f : Polynomial A) (hf : f.Monic) :
+    Module.Free (A ⧸ Ideal.span {(p : A)}) (PowerRootCoefficientPDEnvelope p f)
+
+theorem powerRootCoefficientPDEnvelope_faithfullyFlat
+    {A : Type u} [CommRing A] (p : ℕ) [Fact p.Prime]
+    (f : Polynomial A) (hf : f.Monic) (hdeg : 0 < f.natDegree) :
+    Module.FaithfullyFlat (A ⧸ Ideal.span {(p : A)}) (PowerRootCoefficientPDEnvelope p f)
+```
+
+自由性・忠実平坦性自体は完全 prism や δ 構造を要求しない。
+忠実平坦性の正次数は元の f に対して述べ、係数商が零環の場合は自明性で扱う。
+非零係数商ではモニック多項式の次数保存により、既存の正次数条件を内部で供給する。
+実 pd 構造・普遍性には `(W : OrientedPrism p A)` と `W.deltaStructure.IsPerfect` を明示する。
+`existsUnique_powerRootCoefficientPDMorphism` は任意の N 代数 T と分冪イデアル `(I,Ht)`、
+z の像の I への所属に対し、上記の同じ台環から T への N 代数分冪射の一意存在を主張する。
+標的のねじれ・正則性・δ 構造・完備性には条件を置かない。
+
+BS Rem 7.15(1)（著者版 p.62）の通常自由性と実 pd 包の構造を同じ係数環・台環へそろえた。
+原典の Prop 7.11 は使わず、階乗部分環の mod p 降下・係数環同型での移送・明示基底を使う。
+原典の係数 R/ϖ への比較、prismatic envelope の Frobenius 引戻しとの同定はなお未完了。
+今回の A/(p) 係数での結果だけで依頼全体の完成とは数えない。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4424 jobs）。
+新規 30 公開宣言の `assert_no_sorry` を追加した専用監査は終了コード 0。
+生成宣言を含む 3243 宣言の推移的公理依存は標準 3 公理のみ。
+一般係数同型・構造移送・実係数商上の構造と普遍性・自由性・忠実平坦性・
+切断表示の公開型 7 本を `#print` で確認した（終了コード 0）。
