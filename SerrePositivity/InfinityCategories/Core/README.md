@@ -338,3 +338,35 @@ Core ビルドと累計 440 件の公理監査は成功、標準三公理のみ�
 `InvertibleEdgeLifting.lean` に前段階の API を分離したが、公開名・型は変えていない。
 新規 41 宣言の正確な型は計画 §6 に全件記録。
 Core ビルド・累計 481 件の公理監査は成功。A3a・A3b 完了、A3c–e は未完了。
+
+## A3c：pinched 写像空間の文言（2026-10-18、実装前の照合）
+
+[HTT Proposition 1.2.2.3](https://www.math.ias.edu/~lurie/papers/HTT.pdf)、
+[Kerodon Construction 4.6.5.1](https://kerodon.net/tag/01KX) と
+[Proposition 4.6.5.5](https://kerodon.net/tag/01L0) に合わせる。
+quasicategory X と任意の x,y:X₀ に対し、N レーンの `pinchedHom x y` は Kan 複体で、
+`π₀ (pinchedHom x y) ≃ (mk x ⟶ mk y)`（右辺は hoFunctor.obj X）。
+右模型の n 単体は、先頭 n 面が x に定値で最終頂点が y である X の n+1 単体。
+PinchedHom/Basic.lean と Index.lean は読み込みのみで編集しない。
+左模型は `((pinchedHom (X := X.op) (opObjEquiv.symm y) (opObjEquiv.symm x))).op` として
+Core 内に定義し、同様の Kan 性と π₀ の Hom との同値を示す。
+外側の op はパラメータの添字も反転し、最初の頂点 x と残りの定値面 y を持つ通常の左模型にする。
+
+証明方針：右模型を slice 射影 X_{/y}→X の x 上の fiber と直接同定し、
+右ファイブレーションの点上の fiber は A3b の Kan 判定により Kan であると示す。
+π₀ は零単体を辺と同定し、一次単体の三角形を左右ホモトピーの関係と比較して
+A1 の辺のホモトピー類による圏を介して通常の hoFunctor の Hom へ移す。
+両端固定模型とのホモトピー同値（A3f）は、この主張の仮定には置かない。
+
+
+### A3c 完了（2026-10-18）
+
+`MappingSpaceKan.lean` が左右両方の Kan 性と π₀ の比較の公開入口。
+`pinchedHom_kanComplex`・`pinchedHomLeft_kanComplex` は
+`[Quasicategory X]` と任意の x,y に対して各模型の Kan 性を与える。
+`pinchedHomPiZeroEquiv`・`pinchedHomLeftPiZeroEquiv` は各模型の π₀ と hX の x→y の Hom の同値。
+右側の Kan 性は先頭の定値面を加えた内ホーンの直接充填で証明した。
+左模型は右模型の X とパラメータの二重の反転で定義した。
+N レーンの Basic・Index の変更はない。
+全 28 新規宣言の正確な型と前提は計画 §6 に記録。
+Core ビルド・累計 509 件の公理監査は成功。A3a–c 完了、A3d–e は未完了。

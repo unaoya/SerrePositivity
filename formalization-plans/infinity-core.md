@@ -3444,6 +3444,239 @@ Core 対象ビルドは終了コード 0（1555 jobs）、公理監査は終了�
 A3b 完了。A3a も完了済み。A3c–e は未完了、A3f は任意、A3g は保留。
 次に N レーンの PinchedHom/Basic.lean を変更せず読み込んで A3c を実装する。
 
+
+### A3c 完了（2026-10-18）：左右の pinched 写像空間の Kan 性と π₀
+
+`Core/MappingSpaceKan.lean` を公開入口とし、右模型の直接証明を
+`MappingSpaceRightKan.lean`、零・一単体と π₀ の比較を `MappingSpacePiZero.lean`、
+左模型と反転の比較を `MappingSpaceLeft.lean` に分けた。
+N レーンの `PinchedHom/Basic.lean`・`Index.lean` は編集していない。
+
+`pinchedHom_kanComplex` と `pinchedHomLeft_kanComplex` は元の X の Quasicategory のみを前提にする。
+右ホーンの各面に先頭の定値面を加え、元の X の内ホーンを充填する直接証明とした。
+右ホーンの全充填から A3b の Kan 判定へ接続し、一次ホーンも含めた全次数を証明した。
+左模型は反転した X の右模型をパラメータでも反転して構成した。
+
+`pinchedHomPiZeroEquiv` と `pinchedHomLeftPiZeroEquiv` はそれぞれの π₀ と
+`(SSet.HomotopyCategory.mk x ⟶ SSet.HomotopyCategory.mk y)` の同値。
+零単体と辺を直接同定し、右模型の一次単体と右ホモトピーの三角形を往復して証明した。
+左側には辺・ホモトピー関係・連結成分の反転と A1 の比較同値を用いた。
+写像空間の Kan 性を π₀ の比較の追加仮定にしていない。
+
+以下が全 28 新規公開宣言の正確な型。namespace は
+`SerrePositivity.InfinityCategories`、任意の宇宙 u、
+`open CategoryTheory SSet SSet.Truncated`、`open scoped Simplicial`。
+Quasicategory 等の前提は各型中に明記したものだけ。
+
+MappingSpacePiZero.lean：
+
+```lean
+lemma pinchedConstant_zero {X : SSet.{u}} (x : X _⦋0⦌) : PinchedHom.constant x 0 = x
+```
+
+MappingSpacePiZero.lean：
+
+```lean
+lemma pinchedConstant_one {X : SSet.{u}} (x : X _⦋0⦌) :
+    PinchedHom.constant x 1 = (SSet.Truncated.Edge.id (X
+```
+
+MappingSpacePiZero.lean：
+
+```lean
+def pinchedHomVertexEquiv {X : SSet.{u}} (x y : X _⦋0⦌) :
+    (pinchedHom x y) _⦋0⦌ ≃ SSet.Truncated.Edge (X
+```
+
+MappingSpacePiZero.lean：
+
+```lean
+lemma pinchedExtend_face_one (i : Fin 2) :
+    PinchedHom.extend (SimplexCategory.δ i) = SimplexCategory.δ i.castSucc
+```
+
+MappingSpacePiZero.lean：
+
+```lean
+def pinchedHomEdge_compStruct {X : SSet.{u}} {x y : X _⦋0⦌}
+    {a b : (pinchedHom x y) _⦋0⦌} (p : SSet.Edge (X
+```
+
+MappingSpacePiZero.lean：
+
+```lean
+def pinchedHomPiZeroToHom {X : SSet.{u}} (x y : X _⦋0⦌) :
+    SSet.π₀ (pinchedHom x y) → (SSet.HomotopyCategory.mk x ⟶ SSet.HomotopyCategory.mk y)
+```
+
+MappingSpacePiZero.lean：
+
+```lean
+def pinchedSimplexOfRightHomotopy {X : SSet.{u}} {x y : X _⦋0⦌}
+    {f g : SSet.Truncated.Edge (X
+```
+
+MappingSpacePiZero.lean：
+
+```lean
+def pinchedHomEdgeOfRightHomotopy {X : SSet.{u}} {x y : X _⦋0⦌}
+    {f g : SSet.Truncated.Edge (X
+```
+
+MappingSpacePiZero.lean：
+
+```lean
+lemma pinchedHomPiZeroToHom_injective {X : SSet.{u}} [Quasicategory X]
+    (x y : X _⦋0⦌) : Function.Injective (pinchedHomPiZeroToHom x y)
+```
+
+MappingSpacePiZero.lean：
+
+```lean
+lemma pinchedHomPiZeroToHom_surjective {X : SSet.{u}} [Quasicategory X]
+    (x y : X _⦋0⦌) : Function.Surjective (pinchedHomPiZeroToHom x y)
+```
+
+MappingSpacePiZero.lean：
+
+```lean
+noncomputable def pinchedHomPiZeroEquiv {X : SSet.{u}} [Quasicategory X]
+    (x y : X _⦋0⦌) : SSet.π₀ (pinchedHom x y) ≃
+      (SSet.HomotopyCategory.mk x ⟶ SSet.HomotopyCategory.mk y)
+```
+
+MappingSpaceRightKan.lean：
+
+```lean
+lemma kanComplex_of_rightHornFillers (X : SSet.{u})
+    (hf : ∀ (n : ℕ) (i : Fin (n + 2)), 0 < i →
+      ∀ σ : (horn (n + 1) i : SSet.{u}) ⟶ X,
+        ∃ F : (Δ[n + 1] : SSet.{u}) ⟶ X, (horn (n + 1) i).ι ≫ F = σ) : KanComplex X
+```
+
+MappingSpaceRightKan.lean：
+
+```lean
+lemma pinchedExtend_δ {n : ℕ} (i : Fin (n + 2)) :
+    PinchedHom.extend (SimplexCategory.δ i) = SimplexCategory.δ i.castSucc
+```
+
+MappingSpaceRightKan.lean：
+
+```lean
+lemma pinchedHom_rightHornFilling {X : SSet.{u}} [Quasicategory X] (x y : X _⦋0⦌)
+    (n : ℕ) (i : Fin (n + 2)) (hi : 0 < i)
+    (f : ∀ (j : Fin (n + 2)) (_ : j ≠ i), (Δ[n] : SSet.{u}) ⟶ pinchedHom x y)
+    (hf : horn.IsCompatible f) :
+    ∃ F : (Δ[n + 1] : SSet.{u}) ⟶ pinchedHom x y,
+      ∀ (j : Fin (n + 2)) (hj : j ≠ i), stdSimplex.δ j ≫ F = f j hj
+```
+
+MappingSpaceRightKan.lean：
+
+```lean
+instance pinchedHom_kanComplex {X : SSet.{u}} [Quasicategory X] (x y : X _⦋0⦌) :
+    KanComplex (pinchedHom x y)
+```
+
+MappingSpaceLeft.lean：
+
+```lean
+def edgeUnop {X : SSet.{u}} {x y : X.op _⦋0⦌}
+    (e : SSet.Truncated.Edge (X
+```
+
+MappingSpaceLeft.lean：
+
+```lean
+def edgeOpEquiv {X : SSet.{u}} (x y : X _⦋0⦌) :
+    SSet.Truncated.Edge (X
+```
+
+MappingSpaceLeft.lean：
+
+```lean
+lemma edgeUnop_id {X : SSet.{u}} (x : X.op _⦋0⦌) :
+    edgeUnop (X
+```
+
+MappingSpaceLeft.lean：
+
+```lean
+def compStructUnop {X : SSet.{u}} {x y z : X.op _⦋0⦌}
+    {f : SSet.Truncated.Edge (X
+```
+
+MappingSpaceLeft.lean：
+
+```lean
+lemma homotopicL_edgeOp_iff {X : SSet.{u}} [Quasicategory X] {x y : X _⦋0⦌}
+    (f g : SSet.Truncated.Edge (X
+```
+
+MappingSpaceLeft.lean：
+
+```lean
+noncomputable def homotopyCategory₂OpHomEquiv {X : SSet.{u}} [Quasicategory X]
+    (x y : X _⦋0⦌) :
+    (HomotopyCategory₂.mk (A
+```
+
+MappingSpaceLeft.lean：
+
+```lean
+noncomputable def homotopyCategoryOpHomEquiv {X : SSet.{u}} [Quasicategory X]
+    (x y : X _⦋0⦌) :
+    (SSet.HomotopyCategory.mk x ⟶ SSet.HomotopyCategory.mk y) ≃
+      ((SSet.HomotopyCategory.mk (SSet.opObjEquiv.symm y) : hoFunctor.obj X.op) ⟶
+        SSet.HomotopyCategory.mk (SSet.opObjEquiv.symm x))
+```
+
+MappingSpaceLeft.lean：
+
+```lean
+def piZeroOpToPiZero (X : SSet.{u}) : SSet.π₀ X.op → SSet.π₀ X
+```
+
+MappingSpaceLeft.lean：
+
+```lean
+def piZeroToPiZeroOp (X : SSet.{u}) : SSet.π₀ X → SSet.π₀ X.op
+```
+
+MappingSpaceLeft.lean：
+
+```lean
+def piZeroOpEquiv (X : SSet.{u}) : SSet.π₀ X.op ≃ SSet.π₀ X
+```
+
+MappingSpaceLeft.lean：
+
+```lean
+def pinchedHomLeft {X : SSet.{u}} (x y : X _⦋0⦌) : SSet.{u}
+```
+
+MappingSpaceLeft.lean：
+
+```lean
+instance pinchedHomLeft_kanComplex {X : SSet.{u}} [Quasicategory X] (x y : X _⦋0⦌) :
+    KanComplex (pinchedHomLeft x y)
+```
+
+MappingSpaceLeft.lean：
+
+```lean
+noncomputable def pinchedHomLeftPiZeroEquiv {X : SSet.{u}} [Quasicategory X]
+    (x y : X _⦋0⦌) : SSet.π₀ (pinchedHomLeft x y) ≃
+      (SSet.HomotopyCategory.mk x ⟶ SSet.HomotopyCategory.mk y)
+```
+
+
+Core 対象ビルドは終了コード 0（1566 jobs）、公理監査は終了コード 0。
+累計 509 件は標準三公理のみ。明示的な全公開宣言名の監査登録も確認した。
+A3a–c 完了。A3d–e は未完了、A3f は任意、A3g は保留。
+§4 の設計変更はない。次に終対象と写像空間の可縮性の同値へ進む。
+
 ## 7. A3 の工程（2026-10-18 追加）
 
 A1・A2 の完了を受けて着手する。優先順は G1（infinity-categories.md §0）と D4・ε が使う順。

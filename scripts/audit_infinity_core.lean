@@ -1001,3 +1001,59 @@ import SerrePositivity.InfinityCategories.Core
 #print axioms SerrePositivity.InfinityCategories.kanComplex_of_isGroupoid
 #check @SerrePositivity.InfinityCategories.kanComplex_iff_isGroupoid
 #print axioms SerrePositivity.InfinityCategories.kanComplex_iff_isGroupoid
+#check @SerrePositivity.InfinityCategories.pinchedConstant_zero
+#print axioms SerrePositivity.InfinityCategories.pinchedConstant_zero
+#check @SerrePositivity.InfinityCategories.pinchedConstant_one
+#print axioms SerrePositivity.InfinityCategories.pinchedConstant_one
+#check @SerrePositivity.InfinityCategories.pinchedHomVertexEquiv
+#print axioms SerrePositivity.InfinityCategories.pinchedHomVertexEquiv
+#check @SerrePositivity.InfinityCategories.pinchedExtend_face_one
+#print axioms SerrePositivity.InfinityCategories.pinchedExtend_face_one
+#check @SerrePositivity.InfinityCategories.pinchedHomEdge_compStruct
+#print axioms SerrePositivity.InfinityCategories.pinchedHomEdge_compStruct
+#check @SerrePositivity.InfinityCategories.pinchedHomPiZeroToHom
+#print axioms SerrePositivity.InfinityCategories.pinchedHomPiZeroToHom
+#check @SerrePositivity.InfinityCategories.pinchedSimplexOfRightHomotopy
+#print axioms SerrePositivity.InfinityCategories.pinchedSimplexOfRightHomotopy
+#check @SerrePositivity.InfinityCategories.pinchedHomEdgeOfRightHomotopy
+#print axioms SerrePositivity.InfinityCategories.pinchedHomEdgeOfRightHomotopy
+#check @SerrePositivity.InfinityCategories.pinchedHomPiZeroToHom_injective
+#print axioms SerrePositivity.InfinityCategories.pinchedHomPiZeroToHom_injective
+#check @SerrePositivity.InfinityCategories.pinchedHomPiZeroToHom_surjective
+#print axioms SerrePositivity.InfinityCategories.pinchedHomPiZeroToHom_surjective
+#check @SerrePositivity.InfinityCategories.pinchedHomPiZeroEquiv
+#print axioms SerrePositivity.InfinityCategories.pinchedHomPiZeroEquiv
+#check @SerrePositivity.InfinityCategories.kanComplex_of_rightHornFillers
+#print axioms SerrePositivity.InfinityCategories.kanComplex_of_rightHornFillers
+#check @SerrePositivity.InfinityCategories.pinchedExtend_δ
+#print axioms SerrePositivity.InfinityCategories.pinchedExtend_δ
+#check @SerrePositivity.InfinityCategories.pinchedHom_rightHornFilling
+#print axioms SerrePositivity.InfinityCategories.pinchedHom_rightHornFilling
+#check @SerrePositivity.InfinityCategories.pinchedHom_kanComplex
+#print axioms SerrePositivity.InfinityCategories.pinchedHom_kanComplex
+#check @SerrePositivity.InfinityCategories.edgeUnop
+#print axioms SerrePositivity.InfinityCategories.edgeUnop
+#check @SerrePositivity.InfinityCategories.edgeOpEquiv
+#print axioms SerrePositivity.InfinityCategories.edgeOpEquiv
+#check @SerrePositivity.InfinityCategories.edgeUnop_id
+#print axioms SerrePositivity.InfinityCategories.edgeUnop_id
+#check @SerrePositivity.InfinityCategories.compStructUnop
+#print axioms SerrePositivity.InfinityCategories.compStructUnop
+#check @SerrePositivity.InfinityCategories.homotopicL_edgeOp_iff
+#print axioms SerrePositivity.InfinityCategories.homotopicL_edgeOp_iff
+#check @SerrePositivity.InfinityCategories.homotopyCategory₂OpHomEquiv
+#print axioms SerrePositivity.InfinityCategories.homotopyCategory₂OpHomEquiv
+#check @SerrePositivity.InfinityCategories.homotopyCategoryOpHomEquiv
+#print axioms SerrePositivity.InfinityCategories.homotopyCategoryOpHomEquiv
+#check @SerrePositivity.InfinityCategories.piZeroOpToPiZero
+#print axioms SerrePositivity.InfinityCategories.piZeroOpToPiZero
+#check @SerrePositivity.InfinityCategories.piZeroToPiZeroOp
+#print axioms SerrePositivity.InfinityCategories.piZeroToPiZeroOp
+#check @SerrePositivity.InfinityCategories.piZeroOpEquiv
+#print axioms SerrePositivity.InfinityCategories.piZeroOpEquiv
+#check @SerrePositivity.InfinityCategories.pinchedHomLeft
+#print axioms SerrePositivity.InfinityCategories.pinchedHomLeft
+#check @SerrePositivity.InfinityCategories.pinchedHomLeft_kanComplex
+#print axioms SerrePositivity.InfinityCategories.pinchedHomLeft_kanComplex
+#check @SerrePositivity.InfinityCategories.pinchedHomLeftPiZeroEquiv
+#print axioms SerrePositivity.InfinityCategories.pinchedHomLeftPiZeroEquiv
