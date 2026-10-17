@@ -8,6 +8,8 @@ import Mathlib.Util.PrintSorries
 #print axioms SerrePositivity.CLMST.corollary_4_0_4
 
 #print sorries SerrePositivity.CLMST.corollary_4_0_4
+#print axioms SerrePositivity.CLMST.Inputs.corollary_4_0_4
+#print sorries SerrePositivity.CLMST.Inputs.corollary_4_0_4
 
 meta section
 open Lean Elab Command
@@ -49,6 +51,7 @@ elab "assert_KL_cohomology_excision_dependencies" : command => do
   let allowed : NameSet := (({} : NameSet).insert integral).insert arc
   let seen ← liftCoreM <| checkKLCohomologyExcisionDependencies allowed
     [``SerrePositivity.CLMST.corollary_4_0_4,
+     ``SerrePositivity.CLMST.Inputs.corollary_4_0_4,
      ``SerrePositivity.CLMST.perfectoidIdeal_powerTorsionTorInput] {}
   unless seen.contains integral && seen.contains arc do
     throwError "Expected B-I and BS Cor 8.12 dependencies are missing"
