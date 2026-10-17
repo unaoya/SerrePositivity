@@ -815,3 +815,28 @@ U17c 全体の線形・shift 付き square や U17d の係数変更・作用と�
 M9 の適用については、商を取る前の次数零の平坦 Hom を持つ dg 圏から必要な K-flat 性が得られる。
 商の Hom が非正次数にあるというだけの主張では足りない。一般の係数環 T 側には T 上で同じ
 平坦 Hom の入力を供給する必要があり、T の A 上平坦性を無条件に仮定することでは代用しない。
+
+
+## 追加担当：U17c・U17d の独立部分と U17b の Morita 自然性（進行中）
+
+- U17c は既存の順序交換同値・論文の列比較との正方形に、線形性・shift・三角性を付ける。
+- U17d の今回の対象は係数変更、支持、retract の個別の図式。
+  **中心作用・群 G の作用の比較は保留**。U16d の中心作用と M9 の適用範囲が固定されるまで着手しない。
+- U17b の Morita 自然性は U16a の公開 API と U16b の受入を待つ。
+  着手時点で `formalization-plans/dg-theory-morita.md` は未作成であったため、先に独立部分を進める。
+- 既存の Morita/・Resolution/・Derived/・Endomorphism/・Perfect/ 等は編集しない。
+  実装・監査ファイルは新設の Verdier/ または Quotient/DerivedComparison* に置く。
+
+### U17c1：既存の局所 dg 商・perfect 比較の係数環上の線形性
+
+- `Verdier/ComparisonLinear.lean`：ホモトピー有限 cell–tria 比較、finite cell の Karoubi–Perf 比較、
+  既存の `quotientVerdierComparison`、局所 perfect 比較と小さい perfect 比較の線形性を公開した。
+- underlying の dg 延長・主導来局所化・Karoubi 関手延長の既存の線形性を合成し、
+  充満部分圏への制限と局所化の線形関手の判定を用いる。
+  局所版には既存の二つのモデルの自然同型で線形性を運ぶため、新しい Morita 入力は不要。
+- `localPerfectKaroubiFirstEquivalence` の順関手も線形になり、逆関手は既存の同値の
+  inverseLinear から従う。元の比較の既存ファイルは編集していない。
+- 対象ビルド `Verdier.ChecksComparisonLinear` 成功（2788 jobs）、警告なし。
+  主要6宣言の公理監査は標準3公理のみ。project import 依存を走査し、禁止された
+  dg 圏分解系への依存なし。新規 sorry・axiom・引用なし。
+- U17c 全体は未完。比較自然同型そのものの shift 整合性と、U17d の各図式を続ける。

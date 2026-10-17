@@ -1,0 +1,13 @@
+module
+public import SerrePositivity.DifferentialGraded.Verdier.ComparisonLinear
+
+/-! # U17 の比較の線形性の公理監査 -/
+@[expose] public section
+open SerrePositivity.DifferentialGraded
+open SerrePositivity.DifferentialGraded.DGQuotient
+#print axioms homotopyFiniteCellTriaEquivalenceFunctorLinear
+#print axioms finiteCellKaroubiPerfectEquivalenceFunctorLinear
+#print axioms quotientVerdierComparisonLinear
+#print axioms localPerfectQuotientEquivalenceFunctorLinear
+#print axioms localSmallPerfectQuotientEquivalenceFunctorLinear
+#print axioms localPerfectKaroubiFirstEquivalenceFunctorLinear
