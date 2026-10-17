@@ -8972,6 +8972,41 @@ AIC 上の合流の依存閉包は標準三公理と既存 B-I のみ、元の�
 KL-Q の両消滅と既存 Cor 4.0.4 引用の置換も引き続き未完了。
 D-I/U/Q と Cor 8.12 の担当ファイルには着手していない。
 
+#### KL-Q：明示した excision 入力から元の両消滅への接続（2026-10-17）
+
+`CLMST/KLCohomologyFromExcision.lean` の公開定理
+`rPerfd_cohomology_vanishing_of_finiteComparison_excision` は、
+前節の元の全 Tor 入力を、選択済み `RPerfd A D t p hperf` に実適用する。
+元の有限かつ有限表示な D の実 tensor (CompletedTower A t p)⊗A D を使い、
+既存 `toMixedPerfectoid` をそのまま tower 代数写像として包装する。
+別の RPerfd を選ばず、元の g の像の外でのエタール性を証明済みの任意基底変更で供給する。
+
+仮定は既存 KL-Q の正則局所 A、有限局所 D、指定した元のパラメータ系・dimension・p の位置、
+CompletedTower の指定 perfectoid 性と、D[1/g] の A[1/g] 上のエタール性。
+追加の未供給入力は、tower の各 AIC perfectoid 拡大 E に対する
+**`KLFiniteComparisonExcision E p`** である。呼出し側に Tor 零化やその同値な almost 結論を
+仮定として要求しない。
+
+返す結論は、既存の元の係数作用と有限段写像についての両方である。
+
+- 全 i<h と perfectoidIdeal(tower,p,hperf,image g) の全元について、
+  同じ RPerfd の maximalIdeal D に関する局所コホモロジーの係数作用が零。
+- 全有限段 n、その段の**任意の**パラメータ系 y、全正次数 i について、
+  同じ ideal が元の toRPerfd による Koszul ホモロジーを零化する。
+
+型検査で過剰展開を避けるため、既存 KL-Q と同じ標準の透明性設定を用いた。
+結論の短縮、型を弱める変更、無制限の heartbeat 設定は行っていない。
+対象ビルドと専用監査 `scripts/audit_clmst_kl_cohomology_excision.lean` が成功。
+依存閉包を検査し、標準三公理と既存 B-I・BS 7.14 のみを許した。
+元の Cor 4.0.4 や Prop 2.4.9(a)、未宣言の Cor 8.12 を隠れた引用として使っていない。
+全体ビルド成功（6498 jobs）、KL 専用監査も成功（1224 assert と本定理の型検査）。
+
+**これは条件付きの両消滅であり、Cor 4.0.4 の引用置換はまだ実施していない。**
+引用を消すには、原典の excision と導来 perfectoid 化の同定から
+`KLFiniteComparisonExcision` を実際に証明して渡す必要がある。
+入力命題の成立を仮定したまま KL 全体や KL-Q を完成済みとは数えない。
+D-I/U/Q・Cor 8.12 の担当実装は変更していない。
+
 #### Prop 2.4.7 専任系列：原典から D-I/U/Q への型付き受渡し（2026-10-17）
 
 本節は統合表 D-I・D-U・D-Q の実入力を固定する。未採用の別計画は根拠にしない。
