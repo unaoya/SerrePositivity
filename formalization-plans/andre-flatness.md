@@ -1009,3 +1009,54 @@ Prop 7.11 を使う原典と異なる、実関係と標準係数作用を保つ�
 SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4279 jobs）。
 専用監査も終了コード 0。新規 38 公開宣言の `assert_no_sorry` を追加し、
 生成宣言を含む 1428 宣言の推移的公理依存が標準 3 公理のみであることを確認した。
+
+### E1.16：PD 先行 δ 完全化から既存の多項式 prism 候補へ
+
+新規 `Andre/PerfectPrismMonicPDPerfectionInputs.lean` は、raw PD 環の係数制限加群を
+標準環射 `A → Raw → PDCompletionH0 Raw p (c d)` に沿う加群へ同定し、この係数射が δ 射であることを
+一般 δ 完備化の既存定理で証明する。有限正次数モニック族について、その同じ標準係数射の
+実 (p,d) 還元の離散性・H⁰ 忠実平坦性を E1.15 から移した。
+既存の一般 δ 代数の定理へ渡し、raw PD 環を δ 完全化して再び実 PD 完備化した環の
+元の (p,d) 係数作用に関する完全忠実平坦性
+`perfectPrismMonicPDPerfection_isCompletelyFaithfullyFlat` を得る。
+
+新規 `Andre/MonicPrismaticCandidateComparison.lean` は、候補台環への実 raw 射
+`polynomialPrismRawMap` と元の A からの標準射 `polynomialPrismCoefficientMap` を明示する。
+二つの一般比較 `deltaPDCompletionPerfectionEquiv` と `deltaPerfectionPDCompletionEquiv` を合成して、
+PD 先行構成と既存の `DivisionPrismCarrier` との環同型
+`monicPrismaticPDPerfectionCandidateEquiv` を構成する。
+任意の raw 元の標準像および元の A 係数射を保つ公式と、A 線形加群同型を付ける。
+比較自体は任意多項式族について成立し、モニック性・正次数・有限性を要求しない。
+
+新規 `Andre/PerfectPrismMonicPrismCompletelyFlat.lean` は、係数射を保つ上記加群同型で
+完全忠実平坦性を移し、標準係数射の toAlgebra の作用と恒等関数の線形同型で照合する。
+主要公開型：
+
+```lean
+theorem perfectPrismMonicPrism_isCompletelyFaithfullyFlat
+    {p : ℕ} [Fact p.Prime] {A σ : Type u} [CommRing A]
+    (P : OrientedPrism p A) (hP : P.deltaStructure.IsPerfect)
+    (f : σ → Polynomial A) (hf : ∀ t, (f t).Monic)
+    (hdeg : ∀ t, 0 < (f t).natDegree) {m : ℕ} (eσ : Fin m ≃ σ) :
+    let E := polynomialRankOneDeltaStructure σ P.deltaStructure
+    letI := polynomialPrismCommRing P.deltaStructure P.generator f
+    letI := (polynomialPrismCoefficientMap P.deltaStructure P.generator f).toAlgebra
+    IsCompletelyFaithfullyFlat (Ideal.span {(p : A), P.generator})
+      (DivisionPrismCarrier E (MvPolynomial.C P.generator)
+        (fun t : σ => monicRelation (f t) t))
+```
+
+有限全列挙・モニック性・正次数以外の補助的な単元・ghost・有界ねじれ仮定は残さない。
+BS Rem 7.15（著者版 p.62）の原典と異なる PD 先行構成と既存候補の具体的係数比較による経路。
+これにより既存多項式 prism 候補の標準係数射について完全忠実平坦性を証明する。
+残るのはその perfectoid 商の元の A/d 上の p 完全忠実平坦性、
+無限 p 冪根変数の自由基底、任意族への最終接続と元の perfectoid 基底への移送。
+目標存在定理は引き続き未宣言である。
+`monicPrismaticPDPerfectionCandidateEquiv_isDeltaHom` により、上記環同型の両方向が
+それぞれ実際の PD 完備化 δ 構造に関して δ 射となることも証明した。
+この δ 比較にも distinguished 性やモニック性・正次数・有限性は不要。
+対象環の具体的な局所環構造を明示して、一般比較の両方向の δ 射性を合成している。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4297 jobs）。
+専用監査も終了コード 0。新規 15 公開宣言の `assert_no_sorry` を追加し、
+生成宣言を含む 1652 宣言の推移的公理依存が標準 3 公理のみであることを確認した。

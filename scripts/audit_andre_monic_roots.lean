@@ -288,6 +288,22 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicRawPD_torVan
 assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicRawPD_scalarExtension_faithfullyFlat
 assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicRawPD_isCompletelyFaithfullyFlat
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticPDSourceModuleIso
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticPDSourceCoefficient_isDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicPDSource_reduction_homology_isZero
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicPDSource_reductionH0_faithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicPDPerfectionCompletion_pure
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicPDPerfectionPower_pure_bounded_torsion
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicPDPerfection_isCompletelyFaithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialPrismRawMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialPrismCoefficientMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticPDPerfectionCandidateEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticPDPerfectionCandidateEquiv_isDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticPDPerfectionCandidateEquiv_comp_raw
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticPDPerfectionCandidateEquiv_comp_coefficient
+assert_no_sorry SerrePositivity.BhattScholze.Andre.monicPrismaticPDPerfectionCandidateModuleIso
+assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicPrism_isCompletelyFaithfullyFlat
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -341,7 +357,10 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.MonicPrismaticSourceCompletionH0,
     `SerrePositivity.BhattScholze.Andre.MonicPrismaticRawCompletionRestriction,
     `SerrePositivity.BhattScholze.Andre.MonicPrismaticRawPDComparison,
-    `SerrePositivity.BhattScholze.Andre.PerfectPrismMonicRawPDCompletelyFlat]
+    `SerrePositivity.BhattScholze.Andre.PerfectPrismMonicRawPDCompletelyFlat,
+    `SerrePositivity.BhattScholze.Andre.PerfectPrismMonicPDPerfectionInputs,
+    `SerrePositivity.BhattScholze.Andre.MonicPrismaticCandidateComparison,
+    `SerrePositivity.BhattScholze.Andre.PerfectPrismMonicPrismCompletelyFlat]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
