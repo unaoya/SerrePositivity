@@ -1043,6 +1043,23 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletion
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletionTorsionEquiv_isDeltaHom
 assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletionHom_generator
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.rawDivisionPDPerfectionEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.rawDivisionPDPerfectionEquiv_comp_raw
+assert_no_sorry SerrePositivity.BhattScholze.Andre.rawDivisionPDPerfectionEquiv_isDeltaHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.rawDivisionPDPerfectionEquiv_generator
+assert_no_sorry SerrePositivity.BhattScholze.Andre.rawDivisionPDPerfectionQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.rawDivisionPDPerfectionQuotientEquiv_mk
+assert_no_sorry SerrePositivity.BhattScholze.Andre.rawDivisionPDPerfectionQuotientEquiv_comp_coefficient
+assert_no_sorry SerrePositivity.BhattScholze.Andre.rawDivisionPDPerfectionQuotient_isIntegralPerfectoid
+assert_no_sorry SerrePositivity.BhattScholze.Andre.polynomialRoot_mapRingHom
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletedPerfectionQuotientEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletedPerfection_isIntegralPerfectoid
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicHodgeTateToCompletedPerfection
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletedPerfectionBaseMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletedPerfectionRoot
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletedPerfectionRoot_eval
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicCompletedPerfectionQuotientEquiv_coeff
+
 open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
@@ -1221,7 +1238,9 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCompletionPrism,
     `SerrePositivity.BhattScholze.Andre.RawDeltaDivisionPDUniversal,
     `SerrePositivity.BhattScholze.Andre.RawDeltaDivisionPDTorsionComparison,
-    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCompletionUniversal]
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCompletionUniversal,
+    `SerrePositivity.BhattScholze.Andre.RawDivisionPDPerfectionComparison,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicCompletedPerfection]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

@@ -3734,3 +3734,84 @@ Frobenius 引戻し pd 包の同定、およびこの経路での最終完全 δ
 終了コード 0。生成宣言を含む 5333 宣言の推移的公理依存は標準 3 公理のみ。
 一般 raw 普遍性・旧ねじれ除去比較と代表元公式・δ 性、具体的相対普遍性・比較同型・
 δ 性・生成元保存の公開型 8 本を `#check` で確認した（終了コード 0）。
+
+
+### E1.58：元の実候補の完全 δ 化後の perfectoid 商と標準根（検証済み）
+
+新規 `Andre/RawDivisionPDPerfectionComparison.lean` は、B4-6 の
+DeltaRootPDCompletedPerfectionComparison のうち根方程式の形を使わない比較を、
+任意の δ 基底 D:δ_p A、分母 d、分子族 a:σ→A に一般化した。
+Raw=DeltaAdjoinDivision D d a、F=deltaAdjoinDivisionStructure D d a、
+ι=deltaAdjoinDivisionMap D d a、z=ι(d)、S=PDCompletionH0 Raw p z とする。
+S の指定 δ 構造 G を δ 完全化して C=DeltaPerfection G とし、
+x=deltaPerfectionOf G 0 (pdCompletionUnit Raw p z z) と置く。
+H=PDCompletionH0 C p x、s=pdCompletionUnit C p x とすれば、
+`rawDivisionPDPerfectionEquiv` は
+
+```lean
+H ≃+* DivisionPrismCarrier D d a
+```
+
+を構成する。既存の δ 完全化・実完備化順序交換の逆と、p 完備化先行比較を合成する。
+元の raw 包からの全標準係数射、指定分母像を保ち、順逆両方向とも δ 射であることを証明した。
+分子族の形・モニック性・分母正則性に依存しない。
+分母が distinguished なら主生成元商の比較
+`rawDivisionPDPerfectionQuotientEquiv` は
+
+```lean
+(H ⧸ Ideal.span {s x}) ≃+* DivisionPerfectoidCandidate D d a hd
+```
+
+を与え、元の A 係数射を保つ。
+`rawDivisionPDPerfectionQuotient_isIntegralPerfectoid` は同じ源商の整 perfectoid 性を
+既存の完全 prism 商から移す。全代表元上の商公式を含め 8 公開宣言を追加した。
+この環同型だけから源の実完備化の忠実平坦性が最終商へ移るとは主張しない。
+
+新規 `Andre/PowerRootPrismMonicCompletedPerfection.lean` は同じ構成を、E1.54–57 の
+元の無限根入力 P、δ 構造 E、分母 dP、一元分子族 a、raw 包 L、その実完備化 H に適用する。
+DH を H の指定 δ 構造、C=DeltaPerfection DH、x=deltaPerfectionOf DH 0 dH とし、
+H∞=PDCompletionH0 C p x、T∞=H∞/(pdCompletionUnit C p x x) とする。
+`powerRootPrismMonicCompletedPerfectionQuotientEquiv` は T∞ と既存の
+DivisionPerfectoidCandidate E dP a の標準環同型を与える。
+`powerRootPrismMonicCompletedPerfectionQuotientEquiv_coeff` は P の全ての元の標準像を保つ。
+`powerRootPrismMonicCompletedPerfection_isIntegralPerfectoid` の結論は
+
+```lean
+let := pdCompletionCommRing L p dL
+let := pdCompletionCommRing C p x
+IsIntegralPerfectoid T∞ p
+```
+
+である。完全 prism W を前提とするが、入力のモニック性・正次数・prism 商の p 正則性は不要。
+
+`powerRootPrismMonicHodgeTateToCompletedPerfection` は、元の T=H/(dH) から T∞ への自然射を
+構成する。δ 完全化・再完備化の標準射が dH を殺すので通常商へ降ろす。
+その合成で `powerRootPrismMonicCompletedPerfectionBaseMap` を定め、
+`powerRootPrismMonicCompletedPerfectionRoot` は元の T の指定根の標準像とする。
+`powerRootPrismMonicCompletedPerfectionRoot_eval` は
+
+```lean
+(f.map (Ideal.Quotient.mk W.ideal)).eval₂
+  (powerRootPrismMonicCompletedPerfectionBaseMap W hW f)
+  (powerRootPrismMonicCompletedPerfectionRoot W hW f) = 0
+```
+
+を証明した。環射に沿う根の移送は一般補題 `polynomialRoot_mapRingHom` に分離した。
+自然射の型検査では先に元の δ 構造と標準完全化射を固定し、二つの巨大な実 H⁰ の環構造の
+照合を減らした。同自然射の定義に限りコメント付きで `maxHeartbeats 2000000` を局所指定した。
+このファイルに 8 公開宣言を追加した。
+
+BS Cor 7.3（著者版 p.56）、Rem 7.15（p.62）の完全化・perfectoid 商への接続について、
+元の具体的実完備化と同じ係数射・根を使う経路をそろえた。原典とは異なる順序比較を明記する。
+元の T の p 完全忠実平坦性を、この完全化に沿う基底上の T∞ の p 完全忠実平坦性へ
+保存する証明は引き続き未完了。自然射 T→T∞ 自体の忠実平坦性を仮定も結論もしない。
+次の接続では、元の H の (p,d) 導来剰余を正則対と T の p 完全忠実平坦性から計算し、
+既存の完全 δ 基底に対する Frobenius 段・余極限の剰余忠実平坦性へ渡す必要がある。
+絶対 prismatic envelope の同定と、元の f の Frobenius 引戻し pd 包の同定も未完了であり、
+この perfectoid 性と根だけで一般存在目標の完成とは数えない。
+
+2 対象および集約の `set -o pipefail; lake build` は終了コード 0
+（集約 4519 jobs）。新規 16 公開宣言の `assert_no_sorry` と専用監査は
+終了コード 0。生成宣言を含む 5461 宣言の推移的公理依存は標準 3 公理のみ。
+一般比較・両方向の δ 性・商の係数保存・perfectoid 性、具体的な自然射・perfectoid 性・
+根の評価・全入力係数の保存の公開型 8 本を `#check` で確認した（終了コード 0）。
