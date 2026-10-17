@@ -152,3 +152,21 @@ exists_complexSemifree_resolution (S : Type u) [CommRing S] (M : Complex S) :
 対象ビルド `lake build SerrePositivity.InfinityCategories.Derived.SemifreeResolution` と
 `lake env lean scripts/audit_derived_infinity.lean` は終了コード 0。
 全11公開宣言の公理は標準3公理のみ。D2c に残りなし。未完了は D2d・D2e・D2g。
+
+### D2d（2026-10-17）
+
+完了。公開宣言（namespace は同上、共通前提 `(S : Type u) [CommRing S]`）：
+```lean
+Semifree (S : Type u) [CommRing S] := DGFullSubcategory (Complex S) (complexSemifree S)
+semifreeHomotopyComparison (S : Type u) [CommRing S] :
+  DifferentialGraded.HomotopyCategory S (Semifree S) ⥤
+    _root_.HomotopyCategory (ModuleCat.{u} S) (.up ℤ)
+semifreeHomotopyComparisonFull (S : Type u) [CommRing S] :
+  (semifreeHomotopyComparison S).Full
+semifreeHomotopyComparisonFaithful (S : Type u) [CommRing S] :
+  (semifreeHomotopyComparison S).Faithful
+```
+包含と `complexHomotopyEquivalence` の順関手を合成した。追加の前提なし。
+対象ビルド `lake build SerrePositivity.InfinityCategories.Derived.SemifreeSubcategory` と
+`lake env lean scripts/audit_derived_infinity.lean` は終了コード 0。
+全15公開宣言の公理は標準3公理のみ。D2d に残りなし。未完了は D2e・D2g。

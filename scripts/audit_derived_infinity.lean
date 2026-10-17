@@ -1,5 +1,6 @@
 import SerrePositivity.InfinityCategories.Derived.SemifreeKProjective
 import SerrePositivity.InfinityCategories.Derived.SemifreeResolution
+import SerrePositivity.InfinityCategories.Derived.SemifreeSubcategory
 
 #print axioms SerrePositivity.InfinityCategories.complexSemifree
 #print axioms SerrePositivity.InfinityCategories.complexSemifree_iff
@@ -14,3 +15,11 @@ import SerrePositivity.InfinityCategories.Derived.SemifreeResolution
 #print axioms SerrePositivity.InfinityCategories.complexSemifree_isKProjective
 
 #print axioms SerrePositivity.InfinityCategories.exists_complexSemifree_resolution
+
+#print axioms SerrePositivity.InfinityCategories.Semifree
+
+#print axioms SerrePositivity.InfinityCategories.semifreeHomotopyComparison
+
+#print axioms SerrePositivity.InfinityCategories.semifreeHomotopyComparisonFull
+
+#print axioms SerrePositivity.InfinityCategories.semifreeHomotopyComparisonFaithful
