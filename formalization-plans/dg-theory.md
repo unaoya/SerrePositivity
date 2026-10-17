@@ -12811,3 +12811,40 @@ CriterionPerf*・CriterionDerived*は読み取り専用、一般U12e・U15e分�
 lake build SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorModelsChecks SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorChecks SerrePositivity.DifferentialGraded.Morita.CoherenceUnitChecks SerrePositivity.DifferentialGraded.Morita.AdjunctionDerivedChecks SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionCanonicalChecks SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.DifferentialGraded.Checks.U12eGeneralInventory SerrePositivity.Spectra.StageTwo
 lake env lean SerrePositivity/DifferentialGraded/Morita/CoherenceAssociatorModelsChecks.lean
 ```
+
+
+### 17.270 U16a：公開作用の結合二経路のモデル上の一致（2026-10-17）
+
+Morita/CoherenceCompositionWhisker.leanは、既存kernelCompositionIso_naturalityを片側の恒等射に特殊化し、
+kernelCompositionIso_first_naturality・_second_naturalityとしてwhiskeringの形へ整理した。
+両kernelの全導来射に関する自然性そのものであり、比較の定義や仮定を変更していない。
+
+CoherenceAssociatorPaths.leanのkernelAssociatorLeftPath・kernelAssociatorRightPathは、
+任意P・Q・Rの主導来kernelについて公開作用の結合図式の二経路を定義する。
+左経路は前二作用の合成から、右経路は関手結合子・後二作用の合成・主導来kernel結合子の作用からなる。
+両者の始域・標的は同じで、右経路に必要な局所Hom条件はD・Eのみ。
+
+kernelAssociatorLeftPath_model_fac・kernelAssociatorPairPath_model_facは、
+同じK-flatモデル計算を各経路の末尾へ運び、§17.268の通常モデルの左右経路へ接続する。
+kernelAssociatorRightPath_model_facは、§17.269のkernel結合子の作用squareを加えた右経路全体の計算。
+kernelCompositionIso_associator_modelは、同じ標的モデル計算の作用が同型であることからこれを消去し、
+公開二経路の等式を証明した。最初の二代表を右相対K-flatに選び、最後のRは任意通常kernelのまま。
+旧公開比較の定義・名前・型を変更していない。
+
+保存済みCoherenceAssociatorPathsChecksは任意可換環と独立対象宇宙の実際の公開二経路の等式を検査し、
+標数2でも最後のkernelにK-flat性を追加していない。
+新旧モデル計算・右単位・一般随伴・主合成自然性・QuasiEquivalence・局所受入・一般入口・
+Spectra.StageTwoとの合同ビルド成功（4145 jobs、警告0）。
+新規公開8宣言の直接公理監査は標準3公理以内。新規監査累計5078。
+新規sorry・axiom・引用・資源上限変更なし。
+文書全体検査も27 Markdown・326 exposition参照で欠落0件。
+
+次はK-flat代表の増大による同型と、二経路の全kernel射自然性を使い、
+この公開二経路の等式を任意の主導来kernelへ移送する。
+左単位coherenceも残るためU16a全受入とはしない。
+CriterionPerf*・CriterionDerived*は読み取り専用、一般U12e・U15e分解版は中断を維持する。
+
+```sh
+lake build SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorPathsChecks SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorModelsChecks SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorChecks SerrePositivity.DifferentialGraded.Morita.CoherenceUnitChecks SerrePositivity.DifferentialGraded.Morita.AdjunctionDerivedChecks SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionCanonicalChecks SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.DifferentialGraded.Checks.U12eGeneralInventory SerrePositivity.Spectra.StageTwo
+lake env lean SerrePositivity/DifferentialGraded/Morita/CoherenceAssociatorPathsChecks.lean
+```

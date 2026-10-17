@@ -174,6 +174,9 @@ kernelAssociatorPairModelIso・kernelAssociatorNestedModelIsoは、最初の二k
 KernelComparisonComponentsのkernelDerivedTensorOnBimoduleIso_refl・kernelDerivedTensorFunctor_map_base、
 kernelCompositionIso_kFlat_facは同じ通常代表での作用比較を簡約する入口。
 既存公開型・比較の定義は変更していない。
+CoherenceAssociatorPathsのkernelAssociatorLeftPath・kernelAssociatorRightPathは全kernel上の公開二経路。
+kernelCompositionIso_associator_modelは指定右K-flat二因子・任意通常後因子での二経路の等式として検証済み。
+全主導来kernelへの移送と左単位coherenceは未完。
 
 ### 実装状態と他担当の利用境界
 
@@ -691,3 +694,19 @@ CoherenceAssociatorModelsChecksを新旧入口と合同ビルドし成功（4142
 
 文書全体検査は共有ルートの担当外PowerRootHodgeTateReduction.olean未生成で失敗した。
 Markdownリンクの独立検査は26文書・欠落0件。今回exposition全API照合の成功は主張しない。
+
+
+## U16a18：公開結合二経路のモデル上での貼合せ（2026-10-17）
+
+CoherenceCompositionWhiskerの片側自然性により、K-flatモデルの計算射を公開経路の末尾へ移す。
+CoherenceAssociatorPathsのkernelAssociatorLeftPath・kernelAssociatorRightPathは、
+任意kernelで定義した実際の結合図式の二経路である。
+左右のmodel_facとkernel結合子の作用squareから、kernelCompositionIso_associator_modelを証明した。
+これは指定右相対K-flat二因子の通常代表・任意の通常後因子における、公開二経路そのものの等式。
+従来のkernelCompositionIso・kernelAssociatorIsoの定義・型を変更していない。
+
+任意主導来kernelへの同型による移送と左単位coherenceが残るため、U16a全受入とはしない。
+CoherenceAssociatorPathsChecksを新旧入口と合同ビルドし成功（4145 jobs、警告0）。
+新規公開8宣言の直接公理監査は標準3公理以内。新規sorry・axiom・引用なし。
+文書全体検査も27 Markdown・326 exposition参照で欠落0件。
+詳細・再現手順・次の接続点はdg-theory.md §17.270。
