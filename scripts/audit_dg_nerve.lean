@@ -1427,6 +1427,73 @@ noncomputable section
 #print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.desc_face
 #check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.desc_face
 
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanPrefixFaces
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanPrefixFaces
+#print axioms SerrePositivity.InfinityCategories.DGNerve.mem_cospanPrefixFaces
+#check @SerrePositivity.InfinityCategories.DGNerve.mem_cospanPrefixFaces
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanPrefixFaceIndex
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanPrefixFaceIndex
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanPrefixFaceIndex_castAdd
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanPrefixFaceIndex_castAdd
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanPrefixFaces_covers
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanPrefixFaces_covers
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanPrefixFaces_known_iff
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanPrefixFaces_known_iff
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.compatible_of_lifts
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.compatible_of_lifts
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryInclusion
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryInclusion
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryInclusion_mono
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryInclusion_mono
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLeftLift
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLeftLift
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryRightLift
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryRightLift
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLeftLift_inclusion
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLeftLift_inclusion
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryRightLift_inclusion
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryRightLift_inclusion
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLeft
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLeft
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryRight
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryRight
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLeft_face
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLeft_face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryRight_face
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryRight_face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanFirstTail
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanFirstTail
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanLastTail
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanLastTail
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanVertex_cases
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanVertex_cases
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanUnknown_cases
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanUnknown_cases
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.assembleData
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.assembleData
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.image_known
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.image_known
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.assembleData_hom_heq_face
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.assembleData_hom_heq_face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.assembleData_pullback_face
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.assembleData_pullback_face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.equation_of_faces
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.equation_of_faces
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.assembleData_equation
+#check @SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.assembleData_equation
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLeftData
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLeftData
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryRightData
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryRightData
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLeftData_pullback_face
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLeftData_pullback_face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryRightData_pullback_face
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryRightData_pullback_face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLeftData_equation
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLeftData_equation
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryRightData_equation
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryRightData_equation
+
 section
 universe u v
 variable (A : Type u) [CommRing A] (D : Type v)

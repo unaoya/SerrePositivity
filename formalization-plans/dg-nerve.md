@@ -6768,6 +6768,322 @@ lemma desc_face {n : ℕ} {X : SSet.{u}} (S : Finset (Fin (n + 2)))
 残差恒等式、全方程式と境界の一致、slice の終対象性と `IsPullbackSquare`。
 N7c〜N7e は引き続き未完了。保存後は承認を待たず実際の境界への適用へ進む。
 
+### N7c3：実際の join 境界から二セルの既知方程式を回収（2026-10-18）
+
+境界包含の join への面の持ち上げから整合性を証明し、任意の
+`F : join (boundary (n+1)) Λ[2,2] ⟶ X` から左右の部分境界写像を構成した。
+実際の slice 境界には `F := sliceOverUncurry b` を渡す。整合性を追加前提とはしていない。
+先頭の面の集合の被覆性、既知集合の判定、未知集合の四分類を証明した。
+任意の未知射族を入れた左右のデータは全ての既知面に一致し、既知集合で方程式を満たす。
+
+前提・規約：単体集合の宇宙は `u`、dg 圏に依存するものは
+`{A : Type u} [CommRing A] {D : Type v} [DGCategory A D]` と宇宙 `max u v`。
+`unknown : HomFamily A D (SelectedFaces.vertexObj _ (cospanPrefixFaces_covers n) σ)` は
+未知成分の任意の候補値。既知方程式の定理はこの候補の方程式を仮定しない。
+`SelectedFaces.equation_of_faces` は既知の各面への一致を前提とする一般補助定理であり、
+実際の候補についてはその前提を `assembleData_pullback_face` で証明済み。
+未知方程式の証明をこの前提に置き換えたり、条件付きの成果を極限性の完成と数えたりしない。
+
+公開宣言の正確なソース型（節変数は上記の通り）：
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanPrefixFaces`
+
+```lean
+def cospanPrefixFaces (n : ℕ) : Finset (Fin (n + 4))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.mem_cospanPrefixFaces`
+
+```lean
+lemma mem_cospanPrefixFaces {n : ℕ} (j : Fin (n + 4)) :
+    j ∈ cospanPrefixFaces n ↔ j.val < n + 2
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanPrefixFaceIndex`
+
+```lean
+def cospanPrefixFaceIndex {n : ℕ} (j : Fin (n + 4)) (hj : j ∈ cospanPrefixFaces n) :
+    Fin (n + 2)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanPrefixFaceIndex_castAdd`
+
+```lean
+lemma cospanPrefixFaceIndex_castAdd {n : ℕ} (j : Fin (n + 4))
+    (hj : j ∈ cospanPrefixFaces n) :
+    (cospanPrefixFaceIndex j hj).castAdd 2 = j
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanPrefixFaces_covers`
+
+```lean
+lemma cospanPrefixFaces_covers (n : ℕ) :
+    SelectedFaces.CoversVertices (cospanPrefixFaces n)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanPrefixFaces_known_iff`
+
+```lean
+lemma cospanPrefixFaces_known_iff {n : ℕ} (I : Finset (Fin (n + 4))) :
+    (∃ j ∈ cospanPrefixFaces n, j ∉ I) ↔ ¬ cospanPrefixFaces n ⊆ I
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.compatible_of_lifts`
+
+```lean
+lemma compatible_of_lifts {n : ℕ} {X Y Z : SSet.{u}}
+    (S : Finset (Fin (n + 2))) (ι : Y ⟶ Z) [Mono ι] (f : Δ[n + 1] ⟶ Z)
+    (lifts : ∀ j ∈ S, Δ[n] ⟶ Y)
+    (hLift : ∀ j hj, lifts j hj ≫ ι = SSet.stdSimplex.δ j ≫ f) (σ : Y ⟶ X) :
+    Compatible S (fun j hj => SSet.yonedaEquiv (lifts j hj ≫ σ))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryInclusion`
+
+```lean
+def cospanBoundaryInclusion (n : ℕ) :
+    join (SSet.boundary (n + 1) : SSet.{u}) (SSet.horn 2 2) ⟶
+      join Δ[n + 1] (SSet.horn 2 2)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryInclusion_mono`
+
+```lean
+instance cospanBoundaryInclusion_mono (n : ℕ) : Mono (cospanBoundaryInclusion.{u} n)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLeftLift`
+
+```lean
+def cospanBoundaryLeftLift (n : ℕ) (j : Fin (n + 4)) (hj : j ∈ cospanPrefixFaces n) :
+    (Δ[n + 2] : SSet.{u}) ⟶ join (SSet.boundary (n + 1) : SSet) (SSet.horn 2 2)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryRightLift`
+
+```lean
+def cospanBoundaryRightLift (n : ℕ) (j : Fin (n + 4)) (hj : j ∈ cospanPrefixFaces n) :
+    (Δ[n + 2] : SSet.{u}) ⟶ join (SSet.boundary (n + 1) : SSet) (SSet.horn 2 2)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLeftLift_inclusion`
+
+```lean
+lemma cospanBoundaryLeftLift_inclusion (n : ℕ) (j : Fin (n + 4))
+    (hj : j ∈ cospanPrefixFaces n) :
+    cospanBoundaryLeftLift.{u} n j hj ≫ cospanBoundaryInclusion n =
+      SSet.stdSimplex.δ j ≫ cospanJoinLeft (n + 1)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryRightLift_inclusion`
+
+```lean
+lemma cospanBoundaryRightLift_inclusion (n : ℕ) (j : Fin (n + 4))
+    (hj : j ∈ cospanPrefixFaces n) :
+    cospanBoundaryRightLift.{u} n j hj ≫ cospanBoundaryInclusion n =
+      SSet.stdSimplex.δ j ≫ cospanJoinRight (n + 1)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLeft`
+
+```lean
+def cospanBoundaryLeft {n : ℕ} {X : SSet.{u}}
+    (F : join (SSet.boundary (n + 1) : SSet) (SSet.horn 2 2) ⟶ X) :
+    (SelectedFaces.region (cospanPrefixFaces n) : SSet) ⟶ X
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryRight`
+
+```lean
+def cospanBoundaryRight {n : ℕ} {X : SSet.{u}}
+    (F : join (SSet.boundary (n + 1) : SSet) (SSet.horn 2 2) ⟶ X) :
+    (SelectedFaces.region (cospanPrefixFaces n) : SSet) ⟶ X
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLeft_face`
+
+```lean
+lemma cospanBoundaryLeft_face {n : ℕ} {X : SSet.{u}}
+    (F : join (SSet.boundary (n + 1) : SSet) (SSet.horn 2 2) ⟶ X)
+    (j : Fin (n + 4)) (hj : j ∈ cospanPrefixFaces n) :
+    (cospanBoundaryLeft F).app _ (SelectedFaces.face _ j hj) =
+      SSet.yonedaEquiv (cospanBoundaryLeftLift n j hj ≫ F)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryRight_face`
+
+```lean
+lemma cospanBoundaryRight_face {n : ℕ} {X : SSet.{u}}
+    (F : join (SSet.boundary (n + 1) : SSet) (SSet.horn 2 2) ⟶ X)
+    (j : Fin (n + 4)) (hj : j ∈ cospanPrefixFaces n) :
+    (cospanBoundaryRight F).app _ (SelectedFaces.face _ j hj) =
+      SSet.yonedaEquiv (cospanBoundaryRightLift n j hj ≫ F)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanFirstTail`
+
+```lean
+def cospanFirstTail (n : ℕ) : Fin (n + 4)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanLastTail`
+
+```lean
+def cospanLastTail (n : ℕ) : Fin (n + 4)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanVertex_cases`
+
+```lean
+lemma cospanVertex_cases {n : ℕ} (i : Fin (n + 4)) :
+    i ∈ cospanPrefixFaces n ∨ i = cospanFirstTail n ∨ i = cospanLastTail n
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanUnknown_cases`
+
+```lean
+lemma cospanUnknown_cases {n : ℕ} (I : Finset (Fin (n + 4)))
+    (hI : cospanPrefixFaces n ⊆ I) :
+    I = cospanPrefixFaces n ∨
+      I = insert (cospanFirstTail n) (cospanPrefixFaces n) ∨
+      I = insert (cospanLastTail n) (cospanPrefixFaces n) ∨
+      I = insert (cospanFirstTail n) (insert (cospanLastTail n) (cospanPrefixFaces n))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.assembleData`
+
+```lean
+def assembleData {n : ℕ} (S : Finset (Fin (n + 3))) (hS : CoversVertices S)
+    (σ : (region S : SSet.{max u v}) ⟶ dgNerve A D)
+    (unknown : HomFamily A D (vertexObj S hS σ)) : SimplexData A D (n + 2)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.image_known`
+
+```lean
+lemma image_known {n : ℕ} (S : Finset (Fin (n + 3)))
+    (j : Fin (n + 3)) (hjS : j ∈ S) (J : Finset (Fin (n + 2))) :
+    ∃ l ∈ S, l ∉ J.image j.succAbove
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.assembleData_hom_heq_face`
+
+```lean
+lemma assembleData_hom_heq_face {n : ℕ} (S : Finset (Fin (n + 3))) (hS : CoversVertices S)
+    (σ : (region S : SSet.{max u v}) ⟶ dgNerve A D)
+    (unknown : HomFamily A D (vertexObj S hS σ))
+    (j : Fin (n + 3)) (hjS : j ∈ S) (J : Finset (Fin (n + 2)))
+    (a b : Fin (n + 2)) (k : ℤ) (hJ : 2 ≤ J.card)
+    (ha : a = J.min' (Index.nonempty hJ)) (hb : b = J.max' (Index.nonempty hJ))
+    (hk : k = 2 - (J.card : ℤ)) :
+    HEq (((assembleData S hS σ unknown).pullback j.succAboveOrderEmb.toOrderHom).hom
+      J a b k hJ ha hb hk)
+      ((σ.app _ (face S j hjS)).hom J a b k hJ ha hb hk)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.assembleData_pullback_face`
+
+```lean
+lemma assembleData_pullback_face {n : ℕ} (S : Finset (Fin (n + 3))) (hS : CoversVertices S)
+    (σ : (region S : SSet.{max u v}) ⟶ dgNerve A D)
+    (unknown : HomFamily A D (vertexObj S hS σ))
+    (j : Fin (n + 3)) (hjS : j ∈ S) :
+    (assembleData S hS σ unknown).pullback j.succAboveOrderEmb.toOrderHom =
+      (σ.app _ (face S j hjS)).toSimplexData
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.equation_of_faces`
+
+```lean
+lemma equation_of_faces {n : ℕ} (S : Finset (Fin (n + 3)))
+    (σ : (region S : SSet.{max u v}) ⟶ dgNerve A D) (s : SimplexData A D (n + 2))
+    (hfaces : ∀ j (hjS : j ∈ S), s.pullback j.succAboveOrderEmb.toOrderHom =
+      (σ.app _ (face S j hjS)).toSimplexData)
+    (I : Finset (Fin (n + 3))) (hknown : ∃ j ∈ S, j ∉ I) : s.Equation I
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SelectedFaces.assembleData_equation`
+
+```lean
+lemma assembleData_equation {n : ℕ} (S : Finset (Fin (n + 3))) (hS : CoversVertices S)
+    (σ : (region S : SSet.{max u v}) ⟶ dgNerve A D)
+    (unknown : HomFamily A D (vertexObj S hS σ))
+    (I : Finset (Fin (n + 3))) (hknown : ∃ j ∈ S, j ∉ I) :
+    (assembleData S hS σ unknown).Equation I
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLeftData`
+
+```lean
+def cospanBoundaryLeftData {n : ℕ}
+    (F : join (SSet.boundary (n + 1) : SSet.{max u v}) (SSet.horn 2 2) ⟶ dgNerve A D)
+    (unknown : HomFamily A D (SelectedFaces.vertexObj _ (cospanPrefixFaces_covers n)
+      (cospanBoundaryLeft F))) : SimplexData A D (n + 3)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryRightData`
+
+```lean
+def cospanBoundaryRightData {n : ℕ}
+    (F : join (SSet.boundary (n + 1) : SSet.{max u v}) (SSet.horn 2 2) ⟶ dgNerve A D)
+    (unknown : HomFamily A D (SelectedFaces.vertexObj _ (cospanPrefixFaces_covers n)
+      (cospanBoundaryRight F))) : SimplexData A D (n + 3)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLeftData_pullback_face`
+
+```lean
+lemma cospanBoundaryLeftData_pullback_face {n : ℕ}
+    (F : join (SSet.boundary (n + 1) : SSet.{max u v}) (SSet.horn 2 2) ⟶ dgNerve A D)
+    (unknown : HomFamily A D (SelectedFaces.vertexObj _ (cospanPrefixFaces_covers n)
+      (cospanBoundaryLeft F))) (j : Fin (n + 4)) (hj : j ∈ cospanPrefixFaces n) :
+    (cospanBoundaryLeftData F unknown).pullback j.succAboveOrderEmb.toOrderHom =
+      (SSet.yonedaEquiv (cospanBoundaryLeftLift n j hj ≫ F)).toSimplexData
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryRightData_pullback_face`
+
+```lean
+lemma cospanBoundaryRightData_pullback_face {n : ℕ}
+    (F : join (SSet.boundary (n + 1) : SSet.{max u v}) (SSet.horn 2 2) ⟶ dgNerve A D)
+    (unknown : HomFamily A D (SelectedFaces.vertexObj _ (cospanPrefixFaces_covers n)
+      (cospanBoundaryRight F))) (j : Fin (n + 4)) (hj : j ∈ cospanPrefixFaces n) :
+    (cospanBoundaryRightData F unknown).pullback j.succAboveOrderEmb.toOrderHom =
+      (SSet.yonedaEquiv (cospanBoundaryRightLift n j hj ≫ F)).toSimplexData
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLeftData_equation`
+
+```lean
+lemma cospanBoundaryLeftData_equation {n : ℕ}
+    (F : join (SSet.boundary (n + 1) : SSet.{max u v}) (SSet.horn 2 2) ⟶ dgNerve A D)
+    (unknown : HomFamily A D (SelectedFaces.vertexObj _ (cospanPrefixFaces_covers n)
+      (cospanBoundaryLeft F))) (I : Finset (Fin (n + 4)))
+    (hI : ¬ cospanPrefixFaces n ⊆ I) : (cospanBoundaryLeftData F unknown).Equation I
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryRightData_equation`
+
+```lean
+lemma cospanBoundaryRightData_equation {n : ℕ}
+    (F : join (SSet.boundary (n + 1) : SSet.{max u v}) (SSet.horn 2 2) ⟶ dgNerve A D)
+    (unknown : HomFamily A D (SelectedFaces.vertexObj _ (cospanPrefixFaces_covers n)
+      (cospanBoundaryRight F))) (I : Finset (Fin (n + 4)))
+    (hI : ¬ cospanPrefixFaces n ⊆ I) : (cospanBoundaryRightData F unknown).Equation I
+```
+
+検証：`set -e; set -o pipefail` で対象 `CospanBoundaryAssembly` と集約
+`SerrePositivity.InfinityCategories.DGNerve` のビルド終了コード 0 を確認。
+新規 33 宣言の `#print axioms`・`#check @` を監査スクリプトへ追加し、
+自分の全公開 728 宣言と既存則 5 宣言の公理監査計 733 件、公開 728 宣言の明示型検査を実施。
+公理は標準三公理 `propext`・`Classical.choice`・`Quot.sound` の範囲内。
+自分のパスだけの `git diff --check` を実施し、他チャットの変更とユーザー追記 §7 を保存単位に含めない。
+
+未完了：左右の共通成分の同定、錐の頂点・脚の対象と射の移送、未知六成分の残差恒等式、
+fiber の座標による解、未知方程式、二単体の貼り合わせと slice 境界の一致、
+終対象性と `IsPullbackSquare`。N7c〜N7e は未完了。
+保存後も承認を待たず、未知方程式の計算へ続ける。
+
 ## 6. 次のマイルストーン D（本計画の範囲外）
 
 - Semifree(S) を `DGFullSubcategory`（`moduleSemifree` または一点 dg 圏上の複体版）として置き、

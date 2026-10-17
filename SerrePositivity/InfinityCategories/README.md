@@ -810,3 +810,24 @@ N2 の順序付き列挙と面による分解の証明を、ホーン以外の�
 この保存単位は成分回収の準備まで。実際の slice 境界の面の族の整合性、
 未知六成分の残差恒等式、充填単体の方程式と境界一致、`IsPullbackSquare` は未証明。
 N7c〜N7e は未完了。公開型・前提・監査結果は計画 §5 の N7c2 に記録する。
+
+
+## N7.5：実際の join 境界から既知方程式へ（2026-10-18）
+
+`cospanPrefixFaces n` は `Fin (n+4)` の最初の `n+2` 点。全頂点を覆い、
+既知集合の条件は `¬ cospanPrefixFaces n ⊆ I` と同値。
+`cospanUnknown_cases` は残りの集合を、先頭だけ、先頭と B/C、先頭と D、全体の四種類に分類する。
+左右のセルを合わせたときの共通の先頭・D 成分の同定は次の工程で行う。
+
+任意の `F : join (boundary (n+1)) Λ[2,2] ⟶ X` から、追加の整合性仮定なしに
+`cospanBoundaryLeft F`・`cospanBoundaryRight F` を構成した。
+境界包含の join は単射なので、その持ち上げである各面の整合性が従い、貼り合わせられる。
+実際の slice 境界 `b : boundary (n+1) ⟶ sliceOver p` には `F := sliceOverUncurry b` を使う。
+
+dg nerve を標的とすると、`cospanBoundaryLeftData F unknown`・`cospanBoundaryRightData F unknown`
+は各々 `SimplexData A D (n+3)`。未知の射族 `unknown` をどの値にしても、
+全ての既知面で元の F の制限と一致し、先頭の一点でも欠く I の `Equation I` を満たす。
+未知成分の方程式はまだ証明していないので、これらのデータを `Simplex` とはしていない。
+
+次は共通成分の比較、標準 fiber への対象の移送、未知六成分の残差恒等式と解を実装する。
+`IsPullbackSquare` および N7d・N7e は未完了。正確な公開型と前提は計画 §5 の N7c3 に記録する。

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.DGNerve.CospanBoundaryAssembly
 public import SerrePositivity.InfinityCategories.DGNerve.CospanJoinCells
 public import SerrePositivity.InfinityCategories.DGNerve.SelectedFaceData
 public import SerrePositivity.InfinityCategories.DGNerve.SelectedFacesGluing
