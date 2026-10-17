@@ -1,0 +1,14 @@
+module
+public import SerrePositivity.DifferentialGraded.Morita.PerfectEnhancementComparison
+
+/-! # U13の小さいenhancementとの比較正方形の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+#print axioms quasiEquivalenceSmallPerfectHomotopyEquivalence
+#print axioms quasiEquivalenceSmallPerfectHomotopyFunctorCommShift
+#print axioms quasiEquivalenceSmallPerfectHomotopyInverseCommShift
+#print axioms quasiEquivalenceSmallPerfectHomotopyCommShift
+#print axioms quasiEquivalenceSmallPerfectHomotopyIsTriangulated
+#print axioms quasiEquivalenceSmallPerfectComparisonIso
+#print axioms quasiEquivalenceSmallPerfectComparisonCommShift
+#print axioms quasiEquivalenceSmallPerfectComparisonTriangleIso

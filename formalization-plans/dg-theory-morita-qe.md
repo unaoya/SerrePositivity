@@ -60,3 +60,13 @@
   これは主導来kernel作用との関手自然同型の完成を意味しない。後者は公開された主導来作用の実装後に行う。
 - `Morita.QuasiEquivalenceGraphChecks` 独立対象ビルド成功（2801 jobs、警告なし）。
   主要2宣言の公理監査は標準3公理のみ。
+
+## U16b.5：U13の小さいdg enhancementのH⁰比較
+
+- `Morita/PerfectEnhancementComparison.lean`：U13の小さい主enhancementのH⁰同値を用い、
+  実際の導来延長の主Perf制限を小さいH⁰間へ運んだ。両側のU13比較との自然な正方形、
+  そのshift整合性と三角形関手の正方形を証明した。
+- 順逆のshift、同値のCommShiftと三角性も監査した。このH⁰の運搬を新しいdg関手の構成とは呼ばない。
+  U16bのdg由来の証拠は、元の入力FのHomQuasiIso・H⁰本質的全射と、既存延長・制限の実際の計算である。
+- `Morita.PerfectEnhancementComparisonChecks` ビルド成功（2612 jobs、警告なし）。
+  主要8宣言の公理監査は標準3公理のみ。
