@@ -1,0 +1,10 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarEnhancementShift
+
+/-! # U13 enhancementの係数変更のshift・三角性の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+#print axioms scalarPerfectHomotopyInclusionIso
+#print axioms scalarPerfectHomotopyExtensionCommShift
+#print axioms scalarPerfectHomotopyInclusionIso_commShift
+#print axioms scalarPerfectHomotopyExtensionIsTriangulated

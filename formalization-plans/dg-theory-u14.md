@@ -1120,6 +1120,17 @@
   主要11宣言の公理は `propext`, `Classical.choice`, `Quot.sound` のみ。
   新しいsorry・axiom・引用は追加していない。
 
+## U14b.73：実際のenhancement係数変更の整合的shift・三角性（2026-10-17）
+
+- `ScalarEnhancementShift.lean`：実際のH⁰係数変更と主K包含の正方形を、閉零圏の
+  既存包含正方形から降ろした。包含の充満忠実性で零・加法shiftとの整合性を引き戻し、
+  その自然同型自体のshift整合性も証明した。
+- U14b.71–72の三角性から、U13 enhancementの係数変更の三角性を証明した。
+  係数変更後の全perfect対象への本質的全射性は仮定していない。
+- `ChecksScalarEnhancementShift` の主要4宣言の公理監査成功。
+  U14b.71・73・74の合同対象ビルド成功（3114 jobs）。公理は標準3公理のみ。
+  新しいsorry・axiom・引用は追加していない。既存APIの名前・型は変更していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
