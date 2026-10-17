@@ -22,7 +22,7 @@
 | U13e：Karoubi実現・元の比較へのfactorと導来・三角図式の整合性 | 既存証明あり。`RingKaroubi`, `RingKaroubiFactors`。§17.112–113 |
 | U13e：実際の射影的perfect dg enhancement内でのホモトピー冪等分裂 | 今回証明。以下U13e.27。分裂対象は実際の射影的perfect dg加群である |
 | U13e：既存PerfectHomotopy自身のホモトピー冪等分裂 | 未完・必須。分裂対象に有界有限射影複体の代表が必要。前行の一般dg加群での分裂だけでは足りない |
-| U13e：主Perfのretractの有界有限射影代表、Karoubiなしの本質的全射 | 未完・必須。`perfectHomotopyToDGPerfect` と実際のdg比較の本質的全射を証明する必要がある |
+| U13e：主Perfのretractの有界有限射影代表、Karoubiなしの本質的全射 | 通常DerivedCategoryのretractの有限射影代表はU13e.37で証明。主dg導来圏への移送、`perfectHomotopyToDGPerfect` と実際のdg比較の本質的全射は残る |
 
 ## U13e.27：実際のenhancementのホモトピー冪等分裂
 
@@ -124,6 +124,16 @@
 - 逆回転三角形の第一射をK[−1]からsingleへの実際のchain mapへ持ち上げ、coneを取る。
   既存Qのshift比較とdistinguished三角形の比較を使い、得たconeのQ像がXと同型であることを証明した。
 - `Perfect.ChecksRingTriangleFiniteModel` 対象ビルド成功（3175 jobs）。主要宣言の公理監査は標準3公理のみ。
+
+## U13e.37：有限射影複体の任意の導来retractの有限射影代表
+
+- `Perfect/RingRetractFiniteRepresentative.lean`：`ringDerivedRetract_finiteRange` を次数幅の
+  帰納法で証明した。[a,a+width]の有限射影複体PのQ像の任意のretract Xについて、
+  同じ次数範囲の有限射影複体KとQ(K)≅Xを構成する。
+- 基底はU13e.35、帰納ステップはU13e.34の短い範囲のretractとU13e.36の逆回転三角形である。
+  任意のstrictlyPerfectComplexに対する `ringDerivedRetract_finiteProjective` も証明した。
+- 任意可換環、任意の既存 `HasDerivedCategory.{w}` で成立し、Noetherian性・flat性・引用を使わない。
+  `Perfect.ChecksRingRetractFiniteRepresentative` 対象ビルド成功（3176 jobs）。主要2宣言の公理監査は標準3公理のみ。
 
 ## 既存項目の再検証
 
