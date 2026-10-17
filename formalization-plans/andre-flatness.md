@@ -4404,3 +4404,112 @@ BS Rem 7.15(1)（著者版 p.62）に対する原典とは異なる、型の写�
 （集約 4543 jobs）。新規 22 公開宣言の `assert_no_sorry` と専用監査は
 終了コード 0。生成宣言を含む 6485 宣言の推移的公理依存は標準 3 公理のみ。
 新規 22 公開宣言の正確な型を `#check` で確認した（終了コード 0）。
+
+
+### E1.65 射影的な正次数商によるモニック実 pd 比較の p 正則性仮定の解消（2026-10-17）
+
+前工程 E1.64 は検証済みコードをコミットした進捗。本工程は pd 構造・pd 普遍性に残っていた
+`hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal)` を解消する。
+この仮定は旧 `perfectPrismVarpiLift_modPrime_regular` と正則係数元による分冪降下で使われていた。
+モニック入力の正次数商は係数環上自由なので、商射の線形切断を使えば係数元の正則性は不要。
+以下では原典とは異なる射影性による切断の経路を採る。
+
+新規 `Andre/DividedPowerProjectiveCoefficientQuotient.lean` に 5 公開宣言を追加した。
+可換環 R、R 代数 D、J : Ideal D と `[Module.Projective R (D ⧸ J)]` を固定する。
+`exists_coefficient_mul_representative_of_projective_quotient` の正確な型は
+
+```lean
+(a : R) (b : D) (hb : algebraMap R D a * b ∈ J) :
+  ∃ c ∈ J, algebraMap R D a * c = algebraMap R D a * b
+```
+
+である。商射 q : D →ₗ[R] D/J の線形切断 s を取り c=b−s(q b) とする。
+q(a b)=0 と s の R 線形性から a c=a b、q c=0 から c∈J を示す。
+D 自身の R 上の平坦性も係数元 a の正則性も要求しない。
+`dividedPower_coefficient_span_inf_isSubDPIdeal_of_projective` は
+H : DividedPowers J、a : R の下で
+
+```lean
+H.IsSubDPIdeal (Ideal.span {algebraMap R D a} ⊓ J)
+```
+
+を証明する。上記の代表元で γ_n(a c)=a^n γ_n(c) を適用する。
+`dividedPowersQuotientOfProjectiveCoefficient` の結論は
+
+```lean
+DividedPowers (J.map (Ideal.Quotient.mk (Ideal.span {algebraMap R D a})))
+```
+
+であり、同 `_apply` は任意の n と x∈J に対し分冪値が H.dpow n x の商像と一致すること、
+同 `_isDPMorphism` は標準商射の分冪射性を証明する。
+
+新規 `Andre/PowerRootCoefficientPDProjectiveReduction.lean` に 3 公開宣言を追加した。
+完全 prism W、hW、f : Polynomial A、hf : f.Monic を固定し、
+R₀=A/(p)、N=PowerRootPolynomial R₀ p hp、z=powerRootCoefficientPDInput p f、
+D=PowerRootCoefficientPDEnvelope p f、J=principalDPPositiveIdeal z とする。
+`powerRootCoefficientPDReductionOfMonic` は任意の a : R₀ に対して
+
+```lean
+DividedPowers (J.map (Ideal.Quotient.mk (Ideal.span {algebraMap R₀ D a})))
+```
+
+を構成する。既存 `powerRootCoefficientPDPositiveQuotient_free p f hf` から射影性を供給する。
+同 `_base_apply` は入力係数像の n 次分冪が n 次標準分冪生成元の商像になること、
+同 `_isDPMorphism` は実係数商射の分冪射性を証明する。a の正則性は不要。
+
+新規 `Andre/MonicPerfectPrismPDEnvelope.lean` に 6 公開宣言を追加した。
+Rv=(A/W.ideal)/ϖ、Nv=PowerRootPolynomial Rv p hp、bv : A →+* Rv は二段商射、
+zv=powerRootPolynomialBaseMap Rv p hp (f.map bv)、Dv=PrincipalDPPresentation Nv zv とする。
+`perfectPrismVarpiNativeDividedPowersOfMonic W hW f hf` は
+`DividedPowers (principalDPPositiveIdeal zv)` を、上記の任意係数還元で
+ϖ の持上げの mod p 像を選び、既存の実台環比較で移送して構成する。
+同 `_base_apply` は入力像の全分冪値を標準生成元と同定する。
+`existsUnique_perfectPrismVarpiNativePDMorphismOfMonic` は任意宇宙の可換環 B、
+Algebra Nv B、I : Ideal B、Ht : DividedPowers I、hzB : algebraMap Nv B zv ∈ I に対し
+
+```lean
+∃! F : Dv →ₐ[Nv] B,
+  (perfectPrismVarpiNativeDividedPowersOfMonic W hW f hf).IsDPMorphism Ht F.toRingHom
+```
+
+を証明する。prism 商の p 正則性、入力の正次数、標的のねじれ・完備性は仮定しない。
+
+さらに Rp=(A/W.ideal)/p、Np=PowerRootPolynomial Rp p hp、bp : A →+* Rp は二段商射、
+zp=powerRootPolynomialBaseMap Rp p hp (f.map bp)、Dp=PrincipalDPPresentation Np zp とする。
+`powerRootPrimeFrobeniusDividedPowersOfMonic W hW f hf` は同じ仮定だけで
+`DividedPowers (principalDPPositiveIdeal zp)` を構成する。
+逆 Frobenius 係数入力を Rv 側に使い、指定係数 Frobenius 同型で元の f の mod p 入力へ戻す。
+同 `_base_apply` は標準分冪値の公式、`existsUnique_powerRootPrimeFrobeniusPDMorphismOfMonic` は
+任意の Np 代数分冪標的に対する `∃! F : Dp →ₐ[Np] B, Hs.IsDPMorphism Ht F.toRingHom` を証明する。
+ここでも hpR と正次数は不要。
+
+新規 `Andre/PowerRootPrismMonicFullFrobeniusPDOfMonic.lean` に 4 公開宣言を追加した。
+At=TensorBaseCopy A ⊗[A] Mv とその元の A 作用・左 Frobenius 作用・自然な Np 作用、
+E_N : At ≃ₐ[Np] Dp、実イデアル Jt は E1.64 と同一のものを使う。
+`powerRootPrismMonicFullFrobeniusDividedPowersOfMonic W hW f hf` は、
+実環構造・四つの代数作用を let で指定した後の `DividedPowers Jt` を構成する。
+`powerRootPrismMonicFullFrobeniusInputAlgEquiv_isDPMorphismOfMonic` は E_N の実分冪射性、
+`powerRootPrismMonicFullFrobeniusDividedPowersOfMonic_input_apply` は全標準分冪値を証明する。
+`existsUnique_powerRootPrismMonicFullFrobeniusPDMorphismOfMonic` の引数は
+W、hW、f、hf、任意宇宙の可換環 B、Algebra Np B、I : Ideal B、Ht : DividedPowers I、
+hzB : algebraMap Np B zp ∈ I で、正確な結論は必要な let の後の
+
+```lean
+∃! F : At →ₐ[Np] B,
+  (powerRootPrismMonicFullFrobeniusDividedPowersOfMonic W hW f hf).IsDPMorphism
+    Ht F.toRingHom
+```
+
+である。旧定理の hpR を残した条件付き普遍性とは異なり、この pd 比較に hpR は残らない。
+BS Rem 7.15(1)（著者版 p.62）に対する原典とは異なる、自由性からの線形切断・
+半線形比較・通常テンソル・実分冪構造の移送による証明である旨を docstring と本記録に明記した。
+
+これにより Rv 側、元の mod p 入力側、A 全体の実 Frobenius 引戻し側の pd 構造と普遍性から
+prism 商の p 正則性仮定を解消した。raw 除算包・その実完備化の正則性と完全忠実平坦性に
+残る hpR まで解消したとは主張しない。原典の R/ϖ 表記と今回の R/p 係数作用の最終照合、
+絶対 prismatic envelope との同定も引き続き未完了。承認済み hdeg を持つ任意族存在定理の型は変更していない。
+
+検証：新規 4 ファイルの対象ビルドと集約ビルドは終了コード 0
+（集約 4547 jobs）。新規 18 公開宣言の `assert_no_sorry` と専用監査は
+終了コード 0。生成宣言を含む 6732 宣言の推移的公理依存は標準 3 公理のみ。
+新規 18 公開宣言の正確な型を `#check` で確認した（終了コード 0）。
