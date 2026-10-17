@@ -1,4 +1,5 @@
 import SerrePositivity.BhattScholze.CompletedTensorPerfectoidUniversal
+import SerrePositivity.BhattScholze.PerfectoidizationTensorCompatibility
 import Mathlib.Util.AssertNoSorry
 
 /-! BS author-version Prop. 8.13: ring-valued universal properties and units.
@@ -16,3 +17,11 @@ assert_no_sorry SerrePositivity.BhattScholze.completedTensorPerfectoidLift_isPer
 #print axioms SerrePositivity.BhattScholze.completedTensorPerfectoidLift
 #print axioms SerrePositivity.BhattScholze.completedTensorPerfectoidLift_comp
 #print axioms SerrePositivity.BhattScholze.completedTensorPerfectoidLift_isPerfectoidization
+
+assert_no_sorry SerrePositivity.BhattScholze.perfectoidizationTensorDiagramMap
+assert_no_sorry SerrePositivity.BhattScholze.perfectoidizationTensorDiagramMap_tmul
+assert_no_sorry SerrePositivity.BhattScholze.perfectoidizationTensorDiagramMap_isPerfectoidization
+
+#print axioms SerrePositivity.BhattScholze.perfectoidizationTensorDiagramMap
+#print axioms SerrePositivity.BhattScholze.perfectoidizationTensorDiagramMap_tmul
+#print axioms SerrePositivity.BhattScholze.perfectoidizationTensorDiagramMap_isPerfectoidization

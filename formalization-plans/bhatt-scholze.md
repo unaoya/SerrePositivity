@@ -65,6 +65,13 @@ CLMST-D所有のInputs/内のCor 8.12引用入力も編集しない。
 対象3,654ジョブのbuildとBS専用の5件のassert_no_sorry・公理監査が成功し、標準3公理のみ。
 対象のp正則性・有界p冪ねじれ・離散性・古典的完備性は仮定せず、原典の∞圏の定義は新設していない。
 
+工程2の結果：PerfectoidizationTensorCompatibilityの3公開宣言を実装した。
+任意の互換図式について、基底を含む三つの指定済みIsPerfectoidizationから、
+perfectoid化後の基底上のtensorの任意のperfectoid化が元のtensorのperfectoid化でもあることを証明した。
+基底上の二つの延長射の一致は、基底のIsPerfectoidizationの一意性で検出する。
+標準純tensorの式を保ち、平坦性・完備性・全射性を元の図式に要求しない。
+対象3,656ジョブのbuildと累計8件のBS専用依存監査が成功し、標準3公理のみ。
+
 ## 2. 解消する引用
 
 | # | Lean の宣言 | 原典 | 利用先 |
