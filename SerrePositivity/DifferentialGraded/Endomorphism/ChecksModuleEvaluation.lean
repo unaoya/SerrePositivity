@@ -1,0 +1,16 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.ModuleEvaluation
+
+/-! # 実際のdg加群射としての再構成評価の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+
+#print axioms endomorphismModuleAction_transpose
+#print axioms endomorphismModuleTensor_action_element
+#print axioms endomorphismModuleEvaluationFamily
+#print axioms endomorphismModuleEvaluationComponent
+#print axioms endomorphismModuleEvaluation_element
+#print axioms endomorphismModuleEvaluation_action
+#print axioms endomorphismModuleEvaluation_naturality
+#print axioms endomorphismModuleEvaluation
+#print axioms endomorphismModuleEvaluation_eval

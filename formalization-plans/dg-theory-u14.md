@@ -85,6 +85,16 @@
 この混入を除き、既存の他系列ファイルの内容は変更していない。
 以後のコミットはU14専用ファイルだけに限定する。
 
+## U14a.6：再構成tensorから実際のdg加群への評価（2026-10-17）
+
+- `ModuleTensorElements.lean`：再構成tensorに残る右D作用の全次数成分を証明。
+  次数pのD作用は次数rのEnd加群成分を越えるので符号 `(-1)^(pr)` を持つ。
+- `ModuleEvaluation.lean`：Hom(E,M) ⊗_End(E) E(d) → M(d)をbalancedなchain mapとして構成し、
+  全次数のD作用との自然性を証明して実際の閉零D加群射へ組み立てた。
+  単に各成分の複体射を置いたものではなく、主Hom endの射である。
+- `lake build SerrePositivity.DifferentialGraded.Endomorphism.ChecksModuleEvaluation` 成功。
+  9主要宣言の公理は標準3公理のみ。
+
 ## 残る受入条件
 
 - U14a：enhancement／End(E)加群間の再構成随伴と、その単位・余単位。
