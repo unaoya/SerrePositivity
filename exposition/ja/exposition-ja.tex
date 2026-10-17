@@ -1461,13 +1461,13 @@ $|G_D|a_Da_E>0$ なので $\chi^R(D,E)>0$ である。
 結果 & 文献 & 使う場所 & Lean \\
 \midrule
 整代数の perfectoid 化の存在 & Bhatt--Scholze, Thm 1.17(1) & 混標数構成 & \ld{BhattScholze.Inputs.exists_perfectoidization_of_integral}（1件） \\
-perfectoid の almost 消滅と isogeny & CLMST, Cor 4.0.4、Prop 2.4.7 & 混標数構成 & \ld{CLMST.Inputs.corollary_4_0_4}、\ld{CLMST.Inputs.proposition_2_4_7}（2件） \\
+perfectoid 化の切除（環の引き戻し） & Bhatt--Scholze, Cor 8.12（Lemma 8.4、Prop 8.5 を経由した環の帰結。段落~\ref{par:bs-cor812}） & 混標数構成（CLMST Prop 2.4.7・Cor 4.0.4 の証明） & \ld{BhattScholze.Inputs.perfectoidization_excision_isPullback}（1件） \\
 \bottomrule
 \end{tabularx}
 \end{center}
 }
 
-外部引用は上の3件である。交点重複度の消滅定理（注意~\ref{rem:adams-vanishing}）と Bhatt--Scholze の Cor 7.3・Thm 7.4（下の段落）も証明済みで、この表に含めない。正則パラメータ・有限自由分解・非混合性・
+外部引用は上の2件で、どちらも Bhatt--Scholze の命題である。交点重複度の消滅定理（注意~\ref{rem:adams-vanishing}）、Bhatt--Scholze の Cor 7.3・Thm 7.4・Thm 7.14・Lemma 10.3・Prop 10.2・Remark 10.7、および CLMST の Prop 2.4.7・Cor 4.0.4（段落~\ref{par:bs-thm74}〜\ref{par:bs-cor812}）は証明済みで、この表に含めない。正則パラメータ・有限自由分解・非混合性・
 Hilbert--Samuel 理論と重複度公式は証明済みで、この表に含めない。
 剰余体拡大も、任意の指定剰余体を持つ平坦局所環の実図式と直極限、
 完備化のNoether判定と平坦性から証明済みである。
@@ -1518,8 +1518,22 @@ André の補題の原典の証明（Prop.~7.10、7.11）は、導来 prismatic 
 \end{enumerate}
 これで任意の元族に $p$ 冪根を添加する $p$ 完全忠実平坦な perfectoid 拡大が得られ、4 の降下と合わせて Thm.~7.4 が引用なしに従う。主張は原典と同じ一般性で、$R$ を任意の整 perfectoid 環、$S=R/J$ を導来 $p$ 完備な全射商として、任意の perfectoid 化 $S\to C$ が全射である。$p$ 正則性や古典的完備性は仮定しない。途中で使う導来完備化・導来テンソル・Tor と余極限の交換などの一般論は、CLMST と共有する基盤として証明した。
 
-Thm.~1.17(1)（整代数の perfectoid 化の存在）は、原典の証明（Thm.~10.11、$\Delta_{S/A,\mathrm{perf}}$ の離散性）が導来 prismatic コホモロジーなしには書けないので、引用のまま残している。ただし CLMST の巡回長さの評価（Prop.~4.0.10 の証明）は、Thm.~1.17(1) の代わりに上の Cor.~7.3 の構成を使うよう付け替えた。André の補題（Thm.~7.14）に相対的な Thm.~7.4 の証明も条件付きの成果として残しているが、主定理の経路では使わない。
-\lean{存在：\ld{BhattScholze.exists_perfectoidization_of_semiperfectoid_quotient}、\ld{exists_perfectoidization_of_perfectoid_surjective_quotient}。根付き拡大：\ld{exists_rootedPerfectoidExtension_of_perfectPrism}。全射性：\ld{BhattScholze.SemiperfectoidSurjectivity} の \ld{surjective_of_isPerfectoidization_of_semiperfectoid_quotient}。旧入口 \ld{BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotient} は同じ型のまま証明に置き換えた。いずれも引用なし。}
+Thm.~1.17(1)（整代数の perfectoid 化の存在）は、原典の証明（Thm.~10.11、$\Delta_{S/A,\mathrm{perf}}$ の離散性）が導来 prismatic コホモロジーなしには書けないので、引用のまま残している。ただし CLMST の巡回長さの評価（Prop.~4.0.10 の証明）は、Thm.~1.17(1) の代わりに上の Cor.~7.3 の構成を使うよう付け替えた。André の補題（Thm.~7.14）自体も、次の段落のとおり別経路で証明した。Thm.~7.14 に相対的な Thm.~7.4 の条件付きの証明も残しているが、主定理の経路では使わない。
+\lean{存在：\ld{BhattScholze.exists_perfectoidization_of_semiperfectoid_quotient}、\ld{exists_perfectoidization_of_perfectoid_surjective_quotient}。根付き拡大：\ld{exists_rootedPerfectoidExtension_of_perfectPrism}。全射性：\ld{BhattScholze.SemiperfectoidSurjectivity} の \ld{surjective_of_isPerfectoidization_of_semiperfectoid_quotient}。旧入口 \texttt{BhattScholze.Inputs.exists\_surjective\_perfectoidization\_of\_complete\_torsionFree\_quotient}（ルートからは import されない互換モジュール）は同じ型のまま証明に置き換え、\ld{BhattScholze.surjective_of_isPerfectoidization_of_adic_complete_quotient} が同じ主張の公開入口である。いずれも引用なし。}
+
+\paragraph{André の補題（Thm.~7.14）の証明}\label{par:bs-andre}
+主張は原典のまま（任意の perfectoid 環 $R$ に、絶対整閉な perfectoid 環への $p$ 完全忠実平坦な写像 $R\to S$ がある）で、証明は原典の Prop.~7.11・Hodge--Tate 比較を使わず、Remark 7.15 の pd 包の計算に沿う。第一段は、正次数のモニック多項式の任意の族 $(f_s)$ について、$R\langle Y_s^{1/p^\infty}\rangle/(f_s(Y_s))$ の perfectoid 化が $p$ 完全忠実平坦で各 $f_s$ の根をもつこと。mod $\varpi$ で割り算包が $R/\varpi[Y^{1/p^\infty}]/(f^p)$ 上の切断多項式環として自由になることから忠実平坦性を得る（段落~\ref{par:bs-thm74} の $X_s^{p^n}-f_s$ の場合の一般化）。第二段は、この操作を $\omega_1$ まで超限的に反復する。可算共終の極限段では $p$ 進完備化をとり、非可算共終の極限は自動的に $p$ 完備で、終段では任意のモニック多項式の係数がある段に入るので根をもつ。極限段の perfectoid 性と $p$ 完全忠実平坦性の保存も証明した。原典の「mod $p$ で ind-syntomic に取れる」という強化は主定理に不要なので含めない。
+\lean{根付き拡大：\ld{BhattScholze.Andre.exists_monicRootedPerfectoidExtension}。超限反復と Thm.~7.14：\ld{BhattScholze.Inputs.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed} を同じ型のまま証明に置き換えた。標準公理のみ。}
+
+\paragraph{Lemma 10.3・Prop.~10.2・Remark 10.7}\label{par:bs-lemma103}
+Lemma 10.3 の証明中の一般主張「perfectoid 環の図式 $S\leftarrow R\to T$ について $S\widehat\otimes^{\mathbf L}_R T$ は次数 $0$ に集中し perfectoid」を、原典どおり完全 prism の $(p,I)$ 完備テンソルが mod $p$ で離散であることに帰着して証明した。mod $p$ の離散性は完全 $\mathbb F_p$ 代数の Tor 独立性（原典が引く [BS17, Lemma 3.16]）で、ここでは既存の完全環の Tor 消滅から証明した。そこから Lemma 10.3 の三主張（$J_{\mathrm{perfd}}$ と $(R/J)_{\mathrm{perfd}}$ の完備テンソルの同型と消滅）、Prop.~10.2（$J$-almost 零な導来 $p$ 完備加群の拡大閉性）、Remark 10.7（$J_{\mathrm{perfd}}$ の mod $p^n$ の像の冪等性。$K=J_{\mathrm{perfd}}$ について $K/K^2$ の導来完備化が零になることから）を導いた。
+\lean{\ld{tor_vanishing_of_perfect}、\ld{BhattScholze.lemma103_perfectoidTensor}、\ld{BhattScholze.perfectoidIdeal_isAlmostZero_extension}。Remark 10.7 の旧入口 \ld{CLMST.Inputs.perfectoidIdealMod_idempotent} は同じ型のまま証明に置き換えた。標準公理のみ。}
+
+\paragraph{CLMST の Prop.~2.4.7・Cor.~4.0.4 と Cor.~8.12 の引用の形}\label{par:bs-cor812}
+CLMST の二つの命題は、CLMST の証明に沿って、Bhatt--Scholze の命題だけを引用して証明した。Prop.~2.4.7 は、André 拡大 $R\to\widetilde R$ で絶対整閉な基底へ底変換し（底変換と perfectoid 化の可換性は Prop.~8.13 の環版として、$p$ 完全平坦性と完備テンソルの $H^0$ の普遍性から証明）、$\widetilde R[1/g]$ 上の有限エタール代数が Zariski 局所的に分解することを使い（原典 Thm.~10.9 の証明 p.~81 の議論。CLMST Rem.~2.4.6 の $\Sigma_r$ Galois 閉包は使わない）、分解した各部分で $\widetilde S\to E\leftarrow\widetilde R^{\,r}$ に Cor.~8.12 を当てて核・余核が $(f)_{\mathrm{perfd}}$ で消えることを得て、Claim 2.4.8 と [Bha12, Lemma 3.2]、$p$ 完全忠実平坦な降下で元の錐の零射に戻す。一般の rank は原典どおり、$D(g)$ 上の rank 別の開閉分解と有限直積の perfectoid 化で定 rank に帰着する。Cor.~4.0.4 は、Prop.~2.4.9(a) の $p^n$ ねじれ版から Thm.~4.0.3(a) を全加群について（Milnor 列と Prop.~10.2 で）示し、局所コホモロジーの Tor による表示、Koszul ホモロジーとの比較、Remark 10.7 で結論する。
+
+Cor.~8.12 の原典の主張は、導来 perfectoid 化の四角形が $E_\infty$-$S$ 代数（特に $D(S)$）の引き戻しであるというもので、導来 perfectoid 化が環で表せない $S$ を含む。ここで引用するのはその $H^0$ の帰結である：$R$ を perfectoid、$S\to T$ を導来 $p$ 完備な $R$ 代数の射、$I\subset S$ を導来 $p$ 完備イデアルとし、$p$ 完備な階数 $1$ の付値環 $V$ への $S\to V$ が $I$ を消さないとき $T\to V$ へ一意に延びる、と仮定する。$S$、$T$、$S/I$、$T/IT$ の環としての普遍 perfectoid 化が与えられれば、誘導される環の四角形は引き戻しである。根拠は次の三点である。(1) 引き戻し四角形は差写像のファイバー列を与え、そのコホモロジーの長完全列をとる。(2) Lemma 8.4 により各 perfectoid 化は $D^{\ge 0}$ に入るので、$H^{-1}$ 項が消え、$H^0$ の四角形は加群の引き戻しになる。(3) Prop.~8.5 により導来 perfectoid 化は perfectoid 環への全写像にわたる導来極限で、その $H^0$ は通常の極限であり、普遍環が存在すればそれが始対象なので極限はその環に一致し、誘導射は普遍性による射に一致する。原典が同時に与える差写像の全射性は、使わないので引用しない。この読み替えは CLMST 自身の使い方（Rem.~2.4.6 で Cor.~8.12 の帰結を環準同型の核・余核の零化として述べる）と同じである。脚注 14（整写像で $V(I)$ の外で同型なら付値環条件を満たす）は証明した。
+\lean{引用：\ld{BhattScholze.Inputs.perfectoidization_excision_isPullback}。使う形への系：\ld{BhattScholze.klCanonicalExcisionSquare_of_integral_away}。旧入口 \ld{CLMST.Inputs.proposition_2_4_7}、\ld{CLMST.Inputs.corollary_4_0_4} は同じ型のまま証明に置き換えた。到達する未証明宣言は Thm.~1.17(1) と Cor.~8.12 の二件のみ。}
 
 \subsection{状況のまとめ}
 以下の「条件から証明済み」は、Koszul 有限性・消滅・分解・降下などを定理の引数として受け取る形を指す。$\lambda$-平坦性・有限ランクおよび $\lambda$-CM 性から、長さ代数側の入力を供給する接続も証明した。分解・支持・降下などの独立した入力は引き続き区別する。
@@ -1560,7 +1574,7 @@ Thm.~1.17(1)（整代数の perfectoid 化の存在）は、原典の証明（Th
 \multicolumn{3}{l}{\textbf{§\ref{sec:construction} 構成}} \\
 定義~\ref{def:tower}、補題~\ref{lem:24} & §2.2、Lemma 2.4 & 定義は具体的、補題は証明済み。 $\lambda_\infty$ の加法性も証明済み \\
 命題~\ref{prop:tower-compatible} & §2.2 & 塔の性質・有限段の公式・降下・上限の性質は証明済み。有限生成加群での一致と加法性も証明済み \\
-補題~\ref{lem:cohengabber}、定理~\ref{thm:existence} & Lemma 2.2、Thm 2.5 & Lemma 2.2は標準公理のみ、Thm 2.5は残る3件の外部引用からの接続が証明済み \\
+補題~\ref{lem:cohengabber}、定理~\ref{thm:existence} & Lemma 2.2、Thm 2.5 & Lemma 2.2は標準公理のみ、Thm 2.5は残る2件の外部引用からの接続が証明済み \\
 系~\ref{cor:pos} & Cor 2.6 (3) & 長さ代数の外部引用を除いて証明済み。重複度の正値性は証明済み \\
 \multicolumn{3}{l}{\textbf{§\ref{sec:core} 核の場合}} \\
 設定、補題~\ref{lem:core-trans} & §5.1 & 推移性と $D'$、$E'$、Galois 群の構成は引用から証明済み \\
@@ -1588,7 +1602,7 @@ Thm.~1.17(1)（整代数の perfectoid 化の存在）は、原典の証明（Th
 \begin{itemize}
   \item \textbf{今回の区切り：概念的な定義との接続}：座標によらない $\lambda$-平坦性・有限ランクと Koszul 条件の同値、$\lambda$-CM 性からの有限性・消滅、および有限基底への制限を証明した（注意~\ref{rem:leandiff}）。これらから二つの実現の比較・消滅・下界へ入力を供給する経路までを今回の完了範囲とする。共通評価の有限性と消滅の条件は分けて保った。
   \item \textbf{保留した降下}：有限版は \ld{theorem_3_1_K0}、ランク無視版は \ld{Section4.supportedRankK0_descent} を引用する。後者は補題~\ref{lem:dga} と一般係数の降下への接続を含む。正則パラメータが正則列となる結果は証明済みである。
-  \item \textbf{論文全体への適用}：正規化基底・ガロア閉包・長さ代数・有限近似を構成し、核心定理・主定理へ接続済みである。外部引用3件と保留K理論2件への依存は残る。
+  \item \textbf{論文全体への適用}：正規化基底・ガロア閉包・長さ代数・有限近似を構成し、核心定理・主定理へ接続済みである。外部引用2件と保留K理論2件への依存は残る。
   \item \textbf{検証の観点で残るもの}：元論文が新しく主張する一般定理のうち、定理~\ref{thm:descent}（特に台つき有理 K 理論の有限忠実平坦降下と有限全射への拡張、Lemma 3.2--3.3）と補題~\ref{lem:dga} の dg 商の扱いは、形式化でも保留している。§\ref{sec:asymp} の長さの well-definedness（Remark 4.1、Lemma 4.2、Prop 4.3、4.5）は形式化で確認した。CLMST・Kurano--Shimomoto・Ma（Roberts）の引用は原典と照合した（付録~\ref{sec:cited}）。
   \item \textbf{ランク無視の圏を避ける試みについて}：§\ref{sec:asymp} の複雑さは $E$ が特異であることから来る。$B=R/(x)$ が正則なら有限近似 $M_n$ は長さ $l$ の有限自由分解をもち、各段で命題~\ref{prop:35c} を使って $s_n$ で割り超極限をとれば式~\eqref{eq:second} が出て、§\ref{sec:asymp} は不要になる。しかし $B$ は $E$ に全射する同じ次元の環なので、$B$ が正則なら $E=B$ も正則で、その場合は Serre の古典的な公式 $\chi=e(x,D)>0$ で済む。正則な $R$ 上で扱うと、$x$ が $E'$ を消すために $\Tor^R(U,E')$ の Poincaré 多項式が $(1+t)^h$ 倍され Euler 特性は $0$ になる（$c_\sigma$ は $(1+t)^h$ で割ってから $t=-1$ を入れた値で、基底変更で保たれる量ではない）。$U$ を $B$ 上の閉点に台をもつ perfect 複体の実係数の結合で表せれば §\ref{sec:asymp} を避けられるが、完全交叉環上の $K_0$ と $G_0$ の関係に依存する問いで、ここでは扱わない。概念的には $\chi_C$ は Dutta 型の重複度（局所 Chern 指標の最高次成分）にあたり、$\chi_{\ord}$ との差は特異な $T$ の Todd 類の低次成分から来る。正則な基底では Todd 類が自明なので引き戻しで一致し、定理~\ref{thm:descent} はこの Riemann--Roch 的な議論を K 理論の降下で置き換えたものと見られる。
 \end{itemize}
