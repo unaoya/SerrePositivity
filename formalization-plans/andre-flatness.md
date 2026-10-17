@@ -1725,3 +1725,31 @@ SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（
 生成宣言を含む 2851 宣言の推移的公理依存は標準 3 公理のみ。
 次数シフト・p 乗消滅・シフト単射性・切断評価射とその全射性の公開型 5 本を
 `#print` で確認した（終了コード 0）。
+
+### E1.27：最初の切断変数と次数シフト側のテンソル分解
+
+新規 `Andre/DividedPowerPrimeTensor.lean` は、可換係数環 A、素数 p、
+係数環内の等式 `(p : A) = 0` の下で、次の A 代数同型を構成する。
+
+```lean
+def dividedPowerPrimeTensorEquiv
+    {A : Type u} [CommRing A] (p : ℕ) [Fact p.Prime] (hp : (p : A) = 0) :
+    AdjoinRoot ((Polynomial.X : Polynomial A) ^ p) ⊗[A]
+      DividedPowerAlgebra A A ≃ₐ[A] DividedPowerAlgebra A A
+```
+
+順射 `dividedPowerPrimeTensorMap` は、純テンソル c⊗d を
+`rankOneDPTruncatedMap` による c の像と `dividedPowerPrimeShift` による d の像の積に送る。
+`dividedPowerPrimeTensorMap_bijective` はこの射の全単射性を主張する。
+証明は、切断多項式環の標準冪基底と標準分冪基底のテンソル基底を、
+既存の次数ブロック基底へ送る線形同型と比較する。零係数環は別枝の自明性で処理するので、
+非零性・追加の平坦性・CharP インスタンスは前提に残らない。
+BS Rem 7.15(1)（著者版 p.62）の可算切断多項式表示に向けた一段の分解であり、
+通常の Frobenius のテンソル分解や prismatic Frobenius との同定は主張しない。
+可算切断評価全体の単射性、γ₁=f を課した商の比較、実 pd 包および
+prismatic envelope の Frobenius 引戻しとの同定は引き続き未完了。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4363 jobs）。
+新規 5 公開宣言の `assert_no_sorry` を追加した専用監査は終了コード 0。
+生成宣言を含む 2871 宣言の推移的公理依存は標準 3 公理のみ。
+テンソル評価射・全単射性・代数同型の公開型 3 本を `#print` で確認した（終了コード 0）。

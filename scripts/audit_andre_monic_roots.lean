@@ -470,6 +470,12 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTruncatedEva
 assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTruncated_relationIdeal
 assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTruncatedHom_ext
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTensorMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTensorMap_tmul
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTensorMap_bijective
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTensorEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.dividedPowerPrimeTensorEquiv_tmul
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -559,7 +565,8 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.PowerRootMonicQuotient,
     `SerrePositivity.BhattScholze.Andre.PowerRootMonicPDFlat,
     `SerrePositivity.BhattScholze.Andre.DividedPowerPrimeShift,
-    `SerrePositivity.BhattScholze.Andre.DividedPowerPrimeGenerators]
+    `SerrePositivity.BhattScholze.Andre.DividedPowerPrimeGenerators,
+    `SerrePositivity.BhattScholze.Andre.DividedPowerPrimeTensor]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
