@@ -2896,6 +2896,229 @@ Core 対象ビルド・公理監査は終了コード 0、累計 414 件は標�
 A3a 完了。A3b–e は未完了、A3f は任意、A3g は保留。
 設計 §4 は変更していない。次に A3b の文言を原典と照合・記録・報告して実装する。
 
+
+### A3b 前段階（2026-10-18）：最後の外側ホーンの充填の順方向
+
+A3b 全体は未完了。README の実装前の文言は変更していない。
+可逆辺から最後の外側ホーンの充填条件への方向
+`hasFinalHornFillers_of_isInvertibleEdge` を、全ての次数二以上で証明した。
+左右ファイブレーションのうち左側について、三角形の持ち上げ、可逆性の反映、
+終点を固定した可逆辺の厳密な持ち上げを整備した。
+`FibrationRestriction.lean` の coslice の部分図式への制限は左ファイブレーション。
+`OuterHornJoin.lean` は境界と一次ホーンの pushout-join を最後の外側ホーンと同定し、
+右因子が最後の辺に一致することも証明する。
+これらを用いた `joinUnion_extend_of_invertible_rightEdge` は任意の左因子・部分複体を扱う。
+
+以下が全 26 新規公開宣言の正確な型。namespace は
+`SerrePositivity.InfinityCategories`、任意の宇宙 u。
+`open CategoryTheory SSet SSet.Truncated`、`open scoped Simplicial`。
+Quasicategory / LeftFibration 等の前提は各型中に明記した。
+
+InvertibleEdge.lean：
+
+```lean
+abbrev IsInvertibleEdge {X : SSet.{u}} {x y : X _⦋0⦌}
+    (e : SSet.Truncated.Edge (X
+```
+
+InvertibleEdge.lean：
+
+```lean
+def edgeOfSimplex {X : SSet.{u}} (s : X _⦋1⦌) :
+    SSet.Truncated.Edge (X
+```
+
+InvertibleEdge.lean：
+
+```lean
+lemma isInvertibleEdge_congr {X : SSet.{u}} {x y x' y' : X _⦋0⦌}
+    {e : SSet.Truncated.Edge (X
+```
+
+InvertibleEdge.lean：
+
+```lean
+def initialHornEdge (n : ℕ) : (horn (n + 2) 0 : SSet.{u}) _⦋1⦌
+```
+
+InvertibleEdge.lean：
+
+```lean
+def finalHornEdge (n : ℕ) : (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) _⦋1⦌
+```
+
+InvertibleEdge.lean：
+
+```lean
+def HasInitialHornFillers {X : SSet.{u}} {x y : X _⦋0⦌}
+    (e : SSet.Truncated.Edge (X
+```
+
+InvertibleEdge.lean：
+
+```lean
+def HasFinalHornFillers {X : SSet.{u}} {x y : X _⦋0⦌}
+    (e : SSet.Truncated.Edge (X
+```
+
+InvertibleEdge.lean：
+
+```lean
+lemma hasInitialHornFillers_of_kanComplex {X : SSet.{u}} [KanComplex X]
+    {x y : X _⦋0⦌} (e : SSet.Truncated.Edge (X
+```
+
+InvertibleEdge.lean：
+
+```lean
+lemma hasFinalHornFillers_of_kanComplex {X : SSet.{u}} [KanComplex X]
+    {x y : X _⦋0⦌} (e : SSet.Truncated.Edge (X
+```
+
+InvertibleEdge.lean：
+
+```lean
+lemma IsInvertibleEdge.map {X Y : SSet.{u}} {x y : X _⦋0⦌}
+    {e : SSet.Truncated.Edge (X
+```
+
+InvertibleEdge.lean：
+
+```lean
+lemma homotopyCategory_homMk_surjective {X : SSet.{u}} [Quasicategory X]
+    (x y : X _⦋0⦌) : Function.Surjective
+      (SSet.Truncated.HomotopyCategory.homMk :
+        SSet.Truncated.Edge (X
+```
+
+InvertibleEdge.lean：
+
+```lean
+lemma compStruct_nonempty_of_homMk_fac {X : SSet.{u}} [Quasicategory X]
+    {x y z : X _⦋0⦌}
+    {f : SSet.Truncated.Edge (X
+```
+
+InvertibleEdge.lean：
+
+```lean
+lemma IsInvertibleEdge.nonempty_inverse {X : SSet.{u}} [Quasicategory X]
+    {x y : X _⦋0⦌} {e : SSet.Truncated.Edge (X
+```
+
+InvertibleEdge.lean：
+
+```lean
+lemma leftFibration_liftCompStruct {X Y : SSet.{u}} (q : X ⟶ Y) [LeftFibration q]
+    {x₀ x₁ x₂ : X _⦋0⦌}
+    (f : SSet.Truncated.Edge (X
+```
+
+InvertibleEdge.lean：
+
+```lean
+lemma leftFibration_reflects_invertibleEdge {X Y : SSet.{u}} [Quasicategory X]
+    [Quasicategory Y] (q : X ⟶ Y) [LeftFibration q] {x y : X _⦋0⦌}
+    (e : SSet.Truncated.Edge (X
+```
+
+InvertibleEdge.lean：
+
+```lean
+lemma leftFibration_liftEdge_source {X Y : SSet.{u}} (q : X ⟶ Y) [LeftFibration q]
+    (x : X _⦋0⦌) {y : Y _⦋0⦌}
+    (e : SSet.Truncated.Edge (X
+```
+
+InvertibleEdge.lean：
+
+```lean
+lemma leftFibration_liftInvertibleEdge_target {X Y : SSet.{u}} [Quasicategory Y]
+    (q : X ⟶ Y) [LeftFibration q] {a : Y _⦋0⦌} (b : X _⦋0⦌)
+    (e : SSet.Truncated.Edge (X
+```
+
+InvertibleEdge.lean：
+
+```lean
+lemma leftFibration_liftHorn_one_last {X Y : SSet.{u}} [Quasicategory Y]
+    (q : X ⟶ Y) [LeftFibration q] (a : (horn 1 1 : SSet.{u}) ⟶ X)
+    (b : (Δ[1] : SSet.{u}) ⟶ Y) (sq : CommSq a (horn 1 1).ι q b)
+    (hb : IsInvertibleEdge (edgeOfSimplex (SSet.yonedaEquiv b))) :
+    ∃ F : (Δ[1] : SSet.{u}) ⟶ X, (horn 1 1).ι ≫ F = a ∧ F ≫ q = b
+```
+
+InvertibleEdge.lean：
+
+```lean
+lemma joinUnion_extend_of_invertible_rightEdge {K X : SSet.{u}} [Quasicategory X]
+    (K₀ : K.Subcomplex) (T : (joinUnion K₀ (horn 1 1) : SSet.{u}) ⟶ X)
+    (he : IsInvertibleEdge (edgeOfSimplex
+      (SSet.yonedaEquiv (joinInr (K₀ : SSet.{u}) Δ[1] ≫
+        joinUnionLeft K₀ (horn 1 1) ≫ T)))) :
+    ∃ L : join K (Δ[1] : SSet.{u}) ⟶ X, (joinUnion K₀ (horn 1 1)).ι ≫ L = T
+```
+
+InvertibleEdge.lean：
+
+```lean
+lemma hasFinalHornFillers_of_isInvertibleEdge {X : SSet.{u}} [Quasicategory X]
+    {x y : X _⦋0⦌} (e : SSet.Truncated.Edge (X
+```
+
+FibrationRestriction.lean：
+
+```lean
+lemma sliceUnderRestrict_hasLiftingProperty {A K X : SSet.{u}} [Quasicategory X]
+    (p : K ⟶ X) (A₀ : A.Subcomplex) (K₀ : K.Subcomplex)
+    (hA : leftAnodyneExtensions A₀.ι) : HasLiftingProperty A₀.ι (sliceUnderRestrict p K₀.ι)
+```
+
+FibrationRestriction.lean：
+
+```lean
+instance sliceUnderRestrict_leftFibration {K X : SSet.{u}} [Quasicategory X]
+    (p : K ⟶ X) (K₀ : K.Subcomplex) : LeftFibration (sliceUnderRestrict p K₀.ι)
+```
+
+OuterHornJoin.lean：
+
+```lean
+lemma finalHornJoin_preimage (n : ℕ) :
+    (horn (n + 2) (Fin.last (n + 2))).preimage (joinStdSimplexIso.{u} n 1).hom =
+      joinUnion (boundary n) (horn 1 1)
+```
+
+OuterHornJoin.lean：
+
+```lean
+def finalHornJoinIso (n : ℕ) :
+    (joinUnion (boundary n) (horn 1 1) : SSet.{u}) ≅ horn (n + 2) (Fin.last (n + 2))
+```
+
+OuterHornJoin.lean：
+
+```lean
+lemma finalHornJoinIso_hom_ι (n : ℕ) :
+    (finalHornJoinIso.{u} n).hom ≫ (horn (n + 2) (Fin.last (n + 2))).ι =
+      (joinUnion (boundary n) (horn 1 1)).ι ≫ (joinStdSimplexIso n 1).hom
+```
+
+OuterHornJoin.lean：
+
+```lean
+lemma joinStdSimplexIso_inr_edge (n : ℕ) :
+    SSet.yonedaEquiv (joinInr (Δ[n] : SSet.{u}) Δ[1] ≫ (joinStdSimplexIso n 1).hom) =
+      stdSimplex.edge (n + 2) ⟨n + 1, by omega⟩ (Fin.last (n + 2)) (Fin.le_last _)
+```
+
+
+Core 対象ビルドは終了コード 0（1550 jobs）。公理監査も終了コード 0、
+累計 440 件は標準三公理のみ。
+未完了：A3b の充填条件から可逆性への方向、最初の外側ホーン側、Kan⇔hX の全射可逆。
+A3c–e も未完了。条件付き・片方向の成果を A3b の完成とは数えていない。
+次に二次・三次のホーンによる逆向きへ進む。
+
 ## 7. A3 の工程（2026-10-18 追加）
 
 A1・A2 の完了を受けて着手する。優先順は G1（infinity-categories.md §0）と D4・ε が使う順。

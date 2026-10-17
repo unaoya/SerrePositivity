@@ -17,3 +17,4 @@ public import SerrePositivity.InfinityCategories.Core.Pullback
 public import SerrePositivity.InfinityCategories.Core.InitialCofinality
 
 public import SerrePositivity.InfinityCategories.Core.Equivalence
+public import SerrePositivity.InfinityCategories.Core.InvertibleEdge
