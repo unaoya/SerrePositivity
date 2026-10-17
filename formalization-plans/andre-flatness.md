@@ -7151,3 +7151,117 @@ E1.80 の元の H と、完備してから f で割る `PowerRootMonicCompletedI
 同名の別実装 `InputCategory` と併用しない。ルート集約ファイルへの import 追加は担当側に残す。
 本節は既存の他担当節を変更せず末尾に追記した。保存対象は新規3ファイルと本節だけとし、
 `git commit --only` で他担当の差分を巻き込まず保存する。
+
+## A1-f：向きなし prism への一般化（集約と追加公開）
+
+2026-10-17。本チャットの重複実装 `Unoriented/InputCategory.lean`・`Comparison.lean` は
+取り下げ、採用済みコミット `6358b55c` の `Category.lean`・`Initial.lean`・`Audit.lean` を
+そのまま参照する。既存ファイル・他担当節・R1 の移行には変更を加えていない。
+新規 `Unoriented/SourceInitiality.lean`、集約 `Andre/Unoriented.lean`、
+専用監査 `scripts/audit_andre_unoriented.lean` とルートの import 1 行を追加した。
+
+### 固定基底と原典の範囲
+
+原典は BS Def 3.2（著者版 p.28）、Lemma 3.5（p.29）、Prop 3.13（pp.33–35）、
+Rem 7.15（p.62）を参照した（https://people.mpim-bonn.mpg.de/scholze/prisms.pdf）。
+固定基底 (A,I) からの prism 射では Lemma 3.5 により IB=J であるため、I=(d) なら
+J=(base(d)) となる。実装はこの固定基底上の表示を `ideal_eq` に持つ。
+向き付き対象の忘却で必要なイデアル等式・正則性・完備性は、引用を追加せず
+既存の `boundedPrismHom_generator_span`・`boundedPrismHom_generator_regular`・
+`boundedPrismHom_generator_complete` から供給する。
+
+採用済み圏同値の正確な型は、同じ宇宙 u、
+`{A S : Type u} [CommRing A] [CommRing S] {p : ℕ} [Fact p.Prime]` の下で
+
+```lean
+BoundedPrismInputUnoriented.equivalence
+    (W := W) (c := c) (hW : W.deltaStructure.IsPerfect) :
+  BoundedPrismInput W c ≌ BoundedPrismInputUnoriented W c
+```
+
+である。台環・δ・実イデアル・入力作用を保ち、比較同型は台環上で恒等。
+基底を動かす一般 Cartier イデアルの局所化降下や、絶対 site 全体の構築は範囲外。
+一般 Cartier イデアルだけを与えた型からこの表示への帰着を今回新たに形式化したとはしない。
+主定理・引用件数、BS Thm 1.17(1) と Cor 8.12 には触れていない。
+
+### 追加公開5宣言の正確な型
+
+名前空間はすべて `SerrePositivity.BhattScholze.Andre`。
+共通設定は `{A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]`、
+`W : OrientedPrism p A`、`hW : W.deltaStructure.IsPerfect`、
+`f : Polynomial A`、`hf : f.Monic`、`hdeg : 0 < f.natDegree`。
+以下の記号は既存の実環・標準入力そのものを指す。
+
+```lean
+hp := Nat.Prime.pos (Fact.out : p.Prime)
+P := PowerRootPolynomial A p hp
+E := powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+dP := algebraMap A P W.generator
+a := powerRootPrismMonicUnaryFamily (p := p) f
+L := DeltaAdjoinDivision E dP a
+jL := deltaAdjoinDivisionMap E dP a
+H := PDCompletionH0 L p (jL dP)
+R := A ⧸ W.ideal
+fR := f.map (Ideal.Quotient.mk W.ideal)
+PR := PowerRootPolynomial R p hp
+CR := AdicCompletion (Ideal.span {(p : PR)}) PR
+zR := powerRootPolynomialBaseMap R p hp fR
+SI := PowerRootMonicCompletedInput p hp fR
+lS := (Ideal.Quotient.mk (Ideal.span {algebraMap PR CR zR})).comp (algebraMap PR CR)
+cS := lS.comp (algebraMap R PR)
+X := powerRootPrismMonicSourceInputObjectOfMonicPositive W hW f hf hdeg
+```
+
+公開型は次のとおり。
+
+```lean
+powerRootPrismMonicSourceInputObjectOfMonicPositive_unoriented W hW f hf hdeg :
+  BoundedPrismInputUnoriented W cS
+
+powerRootPrismMonicSourceInput_isInitialOfMonicPositive_unoriented W hW f hf hdeg :
+  IsInitial (powerRootPrismMonicSourceInputObjectOfMonicPositive_unoriented W hW f hf hdeg)
+
+powerRootPrismMonicSourceEnvelopeRingEquivOfMonicPositive_unoriented W hW f hf hdeg
+    (Z : BoundedPrismInputUnoriented W cS) (hZ : IsInitial Z) :
+  let := pdCompletionCommRing L p (jL dP)
+  H ≃+* Z.ring
+
+powerRootPrismMonicSourceEnvelopeRingEquivOfMonicPositive_base_coeff_unoriented
+    W hW f hf hdeg (Z : BoundedPrismInputUnoriented W cS) (hZ : IsInitial Z) (a₀ : A) :
+  let := pdCompletionCommRing L p (jL dP)
+  powerRootPrismMonicSourceEnvelopeRingEquivOfMonicPositive_unoriented W hW f hf hdeg Z hZ
+    (powerRootPrismMonicCompletionBaseMap W hW f a₀) = Z.base a₀
+
+existsUnique_powerRootPrismMonicPrismHom_of_absolute_input_unoriented
+    W hW f hf hdeg (Q : BoundedPrismInputUnoriented W cS)
+    (η : SI →+* Q.ring ⧸ Q.ideal) :
+  ∃! G : OrientedPrism.Hom X.prism Q.orient.prism,
+    G.quotientMap.comp X.input = (Ideal.quotEquivOfEq Q.ideal_eq).toRingHom.comp η
+```
+
+最初の二つは採用済みの忘却対象・初期性への公開別名。
+環同型は向きなし圏の初期対象の一意な同型から得て、その基底保存性から係数公式を得る。
+最後の定理は E1.82 を標的の標準 orientation に適用する。
+射の型に現れる `Q.orient` は基底生成元像によるもので、独立した向きの選択は不要。
+η に既存の Q.base との可換性を仮定せず、基底保存条件も結論に追加しない。
+標的 Q 自体は固定基底上の向きなし入力圏の対象に限る。
+
+源の hreg・hBound・hpR は追加していない。hdeg は元の公開型を維持したもので、
+零次数まで一般化したとはしない。比較先の hZ は初期対象同士の比較のための条件であり、
+源の初期性の証明に残る条件ではない。
+
+### 本チャットの検証
+
+すべて `set -o pipefail` 付きで実行し、終了コード0を確認した。
+
+- 集約対象：`lake build SerrePositivity.BhattScholze.Andre.Unoriented`、4412 jobs。
+- 専用監査：`lake env lean scripts/audit_andre_unoriented.lean`。
+  公開18宣言の `assert_no_sorry`、追加5宣言の `#check`、採用済み2モジュールと
+  追加モジュールの生成宣言を含む135宣言の推移的公理検査に成功。
+  許可公理は `propext`・`Classical.choice`・`Quot.sound` のみ。
+- 全体：`lake build`、7216 jobs。新規実装モジュールの警告なし。
+- ログ：`/tmp/andre-unoriented-final-build.log`、
+  `/tmp/andre-unoriented-final-audit.log`、`/tmp/andre-unoriented-repository-build.log`。
+
+保存は新規3ファイル、本節、ルートの import 1 行だけを `git commit --only` で行う。
+ルートの他担当の import 差分はコミットに含めず、作業木に保持する。
