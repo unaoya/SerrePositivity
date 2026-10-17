@@ -1565,3 +1565,50 @@ SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（
 生成宣言を含む 2709 宣言の推移的公理依存は標準 3 公理のみ。
 存在定理 2 本の公開型と `#print axioms` を確認（終了コード 0）。
 指定出力の任意族版そのものの公理依存も propext・Classical.choice・Quot.sound のみ。
+
+### E1.24：無限 p 冪根多項式環の具体的指数と単項式基底
+
+`Andre/PowerRootExponents.lean` で
+`powerRootExponentMonoid p hp := {q : ℚ | ∃ n a : ℕ, q * p^n = a}` を
+実加法部分モノイドとして構成した（`hp : 0 < p`）。全指数の非負性と
+`q = a / p^n` の表示を証明する。
+`powerRootExponentSplit` は指数を自然数部分と 1 未満の指数に一意に分解し、
+`powerRootExponentSplit_nat_add` は自然数を足すと小数部分を保ち整数部分だけ増える公式を与える。
+
+`Andre/PowerRootPolynomial.lean` はその加法モノイド環
+`PowerRootPolynomial R p hp := AddMonoidAlgebra R (powerRootExponentMonoid p hp)` を用いる。
+変数 `powerRootPolynomialVariable R p hp n` は指数 1/pⁿ・係数 1 の単項式で、
+隣接する変数の p 冪関係を満たす。全単項式はある段の変数の冪と係数の積として表され、
+全変数の R 上の adjoin は環全体となる。
+既存加法モノイド環の基底から、具体的な単項式基底と係数環上の自由性を得る。
+BS Rem 7.15（著者版 p.62）の未完備の無限 p 冪根多項式環 P の自由性の具体的計算。
+
+主要公開型（namespace は `SerrePositivity.BhattScholze.Andre`）：
+
+```lean
+def powerRootPolynomialBasis
+    (R : Type u) [CommRing R] (p : ℕ) (hp : 0 < p) :
+    Module.Basis (powerRootExponentMonoid p hp) R (PowerRootPolynomial R p hp)
+
+theorem powerRootPolynomial_free
+    (R : Type u) [CommRing R] (p : ℕ) (hp : 0 < p) :
+    Module.Free R (PowerRootPolynomial R p hp)
+
+theorem powerRootPolynomialVariable_pow
+    (R : Type u) [CommRing R] (p : ℕ) (hp : 0 < p) (n : ℕ) :
+    powerRootPolynomialVariable R p hp (n + 1) ^ p = powerRootPolynomialVariable R p hp n
+```
+
+基底の値は `AddMonoidAlgebra.single q 1`。
+p の素数性、係数環の標数・非零性・被約性は要求しない。
+原典の P=R/ϖ[Y¹⸍ᵖ∞] には係数環 R を R/ϖ として適用する。
+この環は未完備の具体的単項式モデルであり、prismatic envelope やその Frobenius 引戻しとの
+同定を新たに主張するものではない。
+残る計算は、通常多項式環上の小数指数基底とモニック冪商の自由性、
+原典の具体的 pd 包との同定の補完。指定出力の存在定理は E1.23 で証明済みだが、
+これらの残りを終えるまで依頼全体の完成とは数えない。
+集約対象の `set -o pipefail; lake build
+SerrePositivity.BhattScholze.Andre.MonicRootedExtension` は終了コード 0（4355 jobs）。
+新規 20 公開宣言の `assert_no_sorry` を追加した専用監査は終了コード 0。
+生成宣言を含む 2742 宣言の推移的公理依存は標準 3 公理のみ。
+指数分解・具体的基底・自由性・生成の公開型を `#print` で確認した（終了コード 0）。

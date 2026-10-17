@@ -406,6 +406,27 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.perfectPrismMonicPerfectoidBa
 assert_no_sorry SerrePositivity.BhattScholze.Andre.exists_monicRootedPerfectoidExtension_of_perfectPrism
 assert_no_sorry SerrePositivity.BhattScholze.Andre.exists_monicRootedPerfectoidExtension
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootExponentMonoid
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootNatExponent
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootExponent_nonneg
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootExponent_exists_repr
+assert_no_sorry SerrePositivity.BhattScholze.Andre.PowerRootFraction
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootFractionalPart
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootFractionalPart_val
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootExponentSplit
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootVariableExponent
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootVariableExponent_nsmul
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootExponent_exists_nsmul
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootExponentSplit_nat_add
+assert_no_sorry SerrePositivity.BhattScholze.Andre.PowerRootPolynomial
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialVariable
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialVariable_pow
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomial_single_exists
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialBasis
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomialBasis_apply
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomial_free
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPolynomial_adjoin_variables
+
 -- 本レーンの各宣言（生成された宣言も含む）の推移的な公理依存を検査する。
 open Lean in
 set_option maxHeartbeats 0 in
@@ -487,7 +508,9 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.ArbitraryPerfectPrismMonicPrismResidue,
     `SerrePositivity.BhattScholze.Andre.ArbitraryPerfectPrismMonicPerfectoidCompletelyFlat,
     `SerrePositivity.BhattScholze.Andre.ArbitraryPerfectPrismMonicRootedExtension,
-    `SerrePositivity.BhattScholze.Andre.MonicRootedPerfectoidExtension]
+    `SerrePositivity.BhattScholze.Andre.MonicRootedPerfectoidExtension,
+    `SerrePositivity.BhattScholze.Andre.PowerRootExponents,
+    `SerrePositivity.BhattScholze.Andre.PowerRootPolynomial]
   let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
