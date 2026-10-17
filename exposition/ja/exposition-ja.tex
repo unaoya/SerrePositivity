@@ -1525,6 +1525,17 @@ Thm.~1.17(1)（整代数の perfectoid 化の存在）は、原典の証明（Th
 主張は原典のまま（任意の perfectoid 環 $R$ に、絶対整閉な perfectoid 環への $p$ 完全忠実平坦な写像 $R\to S$ がある）で、証明は原典の Prop.~7.11・Hodge--Tate 比較を使わず、Remark 7.15 の pd 包の計算に沿う。第一段は、正次数のモニック多項式の任意の族 $(f_s)$ について、$R\langle Y_s^{1/p^\infty}\rangle/(f_s(Y_s))$ の perfectoid 化が $p$ 完全忠実平坦で各 $f_s$ の根をもつこと。mod $\varpi$ で割り算包が $R/\varpi[Y^{1/p^\infty}]/(f^p)$ 上の切断多項式環として自由になることから忠実平坦性を得る（段落~\ref{par:bs-thm74} の $X_s^{p^n}-f_s$ の場合の一般化）。第二段は、この操作を $\omega_1$ まで超限的に反復する。可算共終の極限段では $p$ 進完備化をとり、非可算共終の極限は自動的に $p$ 完備で、終段では任意のモニック多項式の係数がある段に入るので根をもつ。極限段の perfectoid 性と $p$ 完全忠実平坦性の保存も証明した。原典の「mod $p$ で ind-syntomic に取れる」という強化は主定理に不要なので含めない。
 \lean{根付き拡大：\ld{BhattScholze.Andre.exists_monicRootedPerfectoidExtension}。超限反復と Thm.~7.14：\ld{BhattScholze.Inputs.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed} を同じ型のまま証明に置き換えた。標準公理のみ。}
 
+\paragraph{Remark 7.15 の計算との照合}\label{par:bs-andre-envelope}
+上の別証明が原典 Remark 7.15 の計算と整合することを、主定理には不要な補足として形式化した。
+対象は固定した完全 prism $W=(A,(d))$ 上の正次数モニック $f$ と、実装の根付き拡大の源 $H$（$f/d$ の割り算包の実逐次 $(p,d)$ 完備化）である。
+\begin{enumerate}
+  \item \textbf{pd 包の同定。}原典の「$\varphi_A^*(T/\varpi)$ は $R/\varpi[Y^{1/p^\infty}]$ における $f$ の pd 包」を、Frobenius 引き戻しの自然な分冪構造とその普遍性として証明した。pd 表示環は $R/\varpi[Y^{1/p^\infty}]/(f^p)$ 上の切断多項式環として自由で、ここから忠実平坦性が出る。
+  \item \textbf{prismatic envelope の普遍性。}$H$ は prism で、基底 $W$ と入力作用（商 $H/dH$ への原典の完備入力環 $S=(R\langle Y^{1/p^\infty}\rangle/(f))^\wedge$ からの射）を保つ prism 射について、入力作用を持つ有界 prism の圏の始対象である。生成元をデータに持つ向き付きの圏と、固定基底上では $J=(d)B$ が自動なので生成元を $d$ の像で決める向きなしの圏の両方で証明し、両者の同値も示した。原典の絶対 prismatic site のうち、基底 prism を動かす一般性は範囲外である。
+  \item \textbf{係数表記の照合。}原典の $R/\varpi$ 表記と実装の $R/p$ 係数作用について、$(\varpi^p)=(p)$ の下で $p$ 完全忠実平坦性と $R/\varpi$ 上の通常の忠実平坦性が同値であること、pd 表示環が係数の主イデアル商による底変換と可換であることを示し、原典の文と実装の結論を一つの定理で対応させた。
+  \item \textbf{仮定の整理。}途中で使っていた prism 商の $p$ 正則性の仮定を、有界ねじれ・局所化・完備化の純性で置き換え、最終結果からすべて外した。零次数（$f=1$、商が零環）の場合も扱う。結論が一般には成り立たない中間主張（raw 包の mod $p$ の分母正則性など 8 件）は、強い仮定付きのまま残し、どの経路にも使わない。
+\end{enumerate}
+\lean{最終比較：\ld{BhattScholze.Andre.powerRootPrismMonicSource_initial_and_coefficient_comparison}（向きなしの初期性と無条件の係数比較を同じ $H$・標準係数作用で合流）。向きなしの初期性：\ld{BhattScholze.Andre.powerRootPrismMonicSourceInput_isInitialOfMonicPositive_unoriented}。係数照合：\ld{BhattScholze.Andre.VarpiComparison.hodgeTate_coefficient_comparison_of_unconditional}、\ld{BhattScholze.Andre.VarpiComparison.hodgeTate_completelyFaithfullyFlat_iff_of_unconditional}。いずれも標準公理のみで、Thm.~7.14 の証明本体はこれらに依存しない。}
+
 \paragraph{Lemma 10.3・Prop.~10.2・Remark 10.7}\label{par:bs-lemma103}
 Lemma 10.3 の証明中の一般主張「perfectoid 環の図式 $S\leftarrow R\to T$ について $S\widehat\otimes^{\mathbf L}_R T$ は次数 $0$ に集中し perfectoid」を、原典どおり完全 prism の $(p,I)$ 完備テンソルが mod $p$ で離散であることに帰着して証明した。mod $p$ の離散性は完全 $\mathbb F_p$ 代数の Tor 独立性（原典が引く [BS17, Lemma 3.16]）で、ここでは既存の完全環の Tor 消滅から証明した。そこから Lemma 10.3 の三主張（$J_{\mathrm{perfd}}$ と $(R/J)_{\mathrm{perfd}}$ の完備テンソルの同型と消滅）、Prop.~10.2（$J$-almost 零な導来 $p$ 完備加群の拡大閉性）、Remark 10.7（$J_{\mathrm{perfd}}$ の mod $p^n$ の像の冪等性。$K=J_{\mathrm{perfd}}$ について $K/K^2$ の導来完備化が零になることから）を導いた。
 \lean{\ld{tor_vanishing_of_perfect}、\ld{BhattScholze.lemma103_perfectoidTensor}、\ld{BhattScholze.perfectoidIdeal_isAlmostZero_extension}。Remark 10.7 の旧入口 \ld{CLMST.Inputs.perfectoidIdealMod_idempotent} は同じ型のまま証明に置き換えた。標準公理のみ。}
