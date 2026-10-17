@@ -579,3 +579,27 @@ HEAD からの差分全体が自分の変更だけであることも確認する
   ルート・他担当の既存ファイルは編集していない。
 - 残部：この cone の有限因子分解性を実際の Verdier 比較の充満忠実性に結ぶこと。
   U17b 全体も引き続き未完。U15e18 のコミットは `6c54be24`。
+
+
+### U15e20：比較 cone からの有限 cell roof と指定局所化での核の消滅
+
+- `Quotient/DerivedComparisonFiniteRoof.lean`：指定有限 cell を経由する射に対し、
+  その中間有限 cell への射を三角形に完成し、cone が指定有限 cell である分母を構成した。
+  始域が tria(D) に属すれば、新しい分母の始域も tria(D) に属す。
+- `finiteCellRoof_of_cone_factorTarget`：比較三角形の cone が有限因子分解性を持つ場合、
+  tria(D) の対象からその第二対象への任意の射は、指定有限 cell の cone を持つ分母の後で
+  第一対象への射に持ち上がる。三角形の Hom 完全性を使う直接の証明。
+- 逆回転三角形を使い、比較後に零となる射は cone の逆 shift を経由し、指定有限 cell に
+  因子分解することも証明した。同じ分母構成から、既に分母の後で零となる。
+- 前段の実際の代表加群比較に適用した `quotientRepresentable_exists_finiteCellRoof` と、
+  U17a の部分圏にそのまま値を持つ `quotientRepresentable_exists_triaRoof` を公開。
+  後者の分母はまさに `(triaImage A D S).trW`。別の局所化を導入していない。
+- `triaQuotient_map_eq_zero_of_representableComparison`：元の代表加群を終域とする射が
+  制限代表加群への比較後に零なら、指定した `triaQuotient` で零になる。
+  実際に構成した分母を局所化で可逆にして証明した。
+- 対象ビルド `Checks.QuotientFiniteRoof` 成功（2748 jobs）。主要8宣言の公理監査は
+  標準3公理のみ。project import 依存536ファイルに禁止された dg 圏分解系への依存なし。
+  新規 sorry・axiom・引用なし。他担当・ルートの既存ファイルは編集していない。
+- 残部：これらの射の表示と核消滅を、商側導来 Hom と実際の `quotientVerdierComparison`
+  に接続し、充満忠実性を全 tria 対象へ運ぶこと。U17b 全体も未完。
+  U15e19 のコミットは `beaf1d1b`（自分の7ファイルのみと直後に確認）。
