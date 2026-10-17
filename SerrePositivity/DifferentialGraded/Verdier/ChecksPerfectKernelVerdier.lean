@@ -1,0 +1,25 @@
+module
+public import SerrePositivity.DifferentialGraded.Verdier.PerfectKernelVerdier
+
+/-! # 一般 kernel の実作用の三角性と Perf–Verdier 因子化の公理監査 -/
+@[expose] public section
+open SerrePositivity.DifferentialGraded
+#print axioms projectiveModuleHomotopyToDerivedEssSurj
+#print axioms projectiveModuleDerivedEquivalenceIsTriangulated
+#print axioms derivedResolutionToProjectivesInverseIso
+#print axioms derivedResolutionProjectiveComparison
+#print axioms kernelProjectiveActionComparison
+#print axioms kernelOnBimoduleActionIsTriangulated
+#print axioms mainKernelActionCommShift
+#print axioms mainKernelActionIsTriangulated
+#print axioms mainPerfectKernelActionIsTriangulated
+#print axioms mainKernelAction_perfectOver
+#print axioms perfectNullObjectsIsTriangulated
+#print axioms perfectKernelNullObjects_image
+#print axioms perfectKernelVerdier_kills
+#print axioms perfectKernelVerdierFunctor
+#print axioms perfectKernelVerdierSquare
+#print axioms perfectKernelVerdierSquareCommShift
+#print axioms perfectKernelVerdierFunctorIsTriangulated
+#print axioms perfectKernelCompletedVerdierFunctor
+#print axioms perfectKernelVerdierSquareTriangle

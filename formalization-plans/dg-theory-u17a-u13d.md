@@ -1060,3 +1060,34 @@ M9 の適用については、商を取る前の次数零の平坦 Hom を持つ
   一致と、導来 graph 合成・二モデル比較の構造照合、一般 Morita kernel の自然性は未完。
   U16 の最新記録では恒等 kernel 作用の自然同型も実装済みになった。一般随伴・合成 coherence は
   引き続き未完と区別して読む。中心作用・G 作用は保留を維持する。
+
+### U17b3：一般 kernel の実作用の三角性と指定 Perf 部分圏の Verdier 因子化
+
+- `Verdier/ProjectiveResolutionComparison.lean`：既存の射影的加群のホモトピー圏から主導来圏への
+  完全忠実な関手に、標準射影解像度から本質的全射性を与え、三角同値にした。
+  任意の指定解像度族の **実際の** `moduleDerivedResolutionFunctor` が、この同値の逆関手を
+  全ホモトピー圏へ包含したものと自然同型になることを証明した。
+- `Verdier/KernelActionTriangles.lean`：任意の通常 kernel の実際の入力解像度による作用を、
+  上の逆関手・包含・tensor dg 関手・主導来局所化の合成と自然同型で比較した。
+  これにより通常 kernel と主導来 kernel の作用そのものに整数 shift と三角性を与える。
+  dg 圏の分解、Hom の平坦性、一般 tensor–Hom 随伴は要求しない。
+  この担当の構造は名前付き `mainKernelActionCommShift` で供給し、他担当の一般・graph 構造を
+  global instance で上書きしない。他の構造との比較の全 coherence は別課題。
+- 実際の `perfectDerivedKernelAction` にも三角性を与えた。
+  `mainKernelAction_perfectOver` は S の各列が Perf_T(E) に属すという具体的条件から、
+  Perf_S(D) 全体が Perf_T(E) に送られることを証明する。作用の exactness と生成性・retract
+  安定性によるもので、所望の商比較自然同型の存在を仮定していない。
+- `Verdier/PerfectKernelVerdier.lean`：全 Perf の中の Perf_S を `perfectNullObjects` と定義し、
+  既存の指定 Verdier 局所化を用いた `PerfectVerdierQuotient` を取る。
+  全列の perfect 性と、S の列の Perf_T 条件を区別して入力する。
+  元の主 Perf 上の kernel 作用を **先に実際に局所化** した `perfectKernelVerdierFunctor` と、
+  標準商関手の因子化正方形を構成した。正方形そのものの shift 整合性・三角形版と、
+  関手の Karoubi 延長も公開している。
+- 対象ビルド `Verdier.ChecksPerfectKernelVerdier` 成功（2780 jobs）、警告なし。
+  主要19宣言の公理監査は標準3公理のみ。新規 sorry・axiom・引用なし。
+  U16・Derived/・Endomorphism/ 等の他担当ファイルは読み取りのみ。
+- 前単位 `5d705956` は直後の stat で自分の4ファイルのみと確認した。
+  一般 kernel での残る接続は、この Perf_S による指定商を既存の Karoubi-first 零部分圏と同定し、
+  局所 perfect dg 商比較の同値へつなぐこと。kernel の射・合成の自然性、graph 用の既存構造との
+  照合、係数変更の直接局所化構成との一致も未完として保持する。
+  中心作用・G 作用は保留を維持する。
