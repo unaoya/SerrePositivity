@@ -64,6 +64,9 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.semifreeDerivedComparisonCommShift
 #print axioms SerrePositivity.InfinityCategories.semifreeDerivedEquivalenceCommShift
 
+#print axioms SerrePositivity.InfinityCategories.complexSemifree_coproduct
+#print axioms SerrePositivity.InfinityCategories.complexSemifree_finiteCoproduct
+
 open Lean in
 run_cmd do
   let env ← getEnv

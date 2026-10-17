@@ -316,3 +316,52 @@ Checks に任意環および整数環での標準導来圏に対する `CommShif
 D2f は完了。D2h は同型・零・sphere・シフトのみ完了で、全体の完成とは数えない。
 未完了：D2h の余積・任意の射の cone。D2i は任意・未着手。
 D1 の quasicategory は N2 完了記録待ち、D3 は別途指示待ち。
+
+### D2h 余積の閉性（2026-10-17）
+
+任意の u-small な添字型と有限添字について完了。namespace は同上。
+公開宣言の正確な型・前提：
+```lean
+complexSemifree_coproduct (S : Type u) [CommRing S]
+  {I : Type v} [Small.{u} I] (P : I → Complex S)
+  (hP : ∀ i, complexSemifree S (P i)) : complexSemifree S (∐ P)
+complexSemifree_finiteCoproduct (S : Type u) [CommRing S]
+  (n : ℕ) (P : Fin n → Complex S)
+  (hP : ∀ i, complexSemifree S (P i)) : complexSemifree S (∐ P)
+```
+段・商・次数付き分裂を成分ごとに余積にし、自由 sphere 表示の添字を直和型にまとめた。
+余極限の存在・普遍性は各成分の filtration から実際に構成した。
+宇宙の異なる u-small な添字型は `Shrink` と余積の再添字付け同型で処理する。
+有限性・有界性・有限生成性の追加仮定はない（有限版だけ `Fin n` を使う）。
+Checks は整数環で添字の宇宙が独立な場合を具体化する。
+
+`set -o pipefail; lake build SerrePositivity.InfinityCategories.Derived` は終了コード 0（3611 jobs）。
+`set -o pipefail; lake env lean scripts/audit_derived_infinity.lean` は終了コード 0。
+公開42宣言と、生成補題を含む8モジュール146宣言で標準3公理のみ。
+D2h 全体は未完了：任意の semifree 間の射の mapping cone の閉性が残る。
+D2f は完了。D2i は任意・未着手。D1 の quasicategory は N2 完了記録待ち。
+
+### D2h cone の補助表現に関する設計提案（未承認・未実装）
+
+任意の射 `f : P ⟶ Q` は選んだ二つの filtration の段を保存するとは限らない。
+初期段が無限の自由 sphere 余積なら、その生成元の像が Q の任意に高い段に現れ得るため、
+段ごとの cone や、一律の有限個の段の繰り上げでは一般の場合を構成できない。
+
+§4 の「複体レベルの filtration 構造体はテンソル積や底変更で必要になったときに追加」
+という時期を前倒しし、補助的な semibasis 表現を追加することを提案する。
+`complexSemifree` の正本は既存の転送定義のままとし、新しい公理・仮定にはしない。
+配置候補は `Derived/SemifreeBasis.lean`、namespace は既存どおり。
+補助データは、各次数 k の基底 `basis k : Module.Basis (I k) S (P.X k)` と
+自然数値 `height k : I k → ℕ`、各基底元の微分の有限な基底展開の台にある元の height が
+元の height より真に小さいという法則。
+
+1. 既存の filtration の自由商と次数付き分裂からこのデータの存在を証明する。
+2. 逆に height ≤ n の基底元で張る部分複体を使って `ModuleSemifreeFiltration` を構成し、
+   その存在と `complexSemifree S P` の同値を証明する。
+3. cone の基底を Q と P[1] の基底の直和にする。P 側の新しい height を、f の像に出る
+   有限個の Q 基底元の height と、微分に出る P 基底元の新 height の最大値 + 1 として、
+   元の P の height による整礎再帰で定義する。これで cone の微分が height を下げる。
+4. 2 の逆向きで、要求された無条件の cone 閉性へ戻す。
+
+この補助表現の追加は初回指示の設計変更の承認条項に従い、承認前には実装しない。
+cone の閉性を、filtration を保存する射だけの条件付き成果へ置き換えない。

@@ -40,4 +40,8 @@ example (S : Type u) [CommRing S] :
 
 example : (semifreeDerivedEquivalence ℤ).functor.CommShift ℤ := inferInstance
 
+example {I : Type u} (P : I → Complex ℤ)
+    (hP : ∀ i, complexSemifree ℤ (P i)) [Small.{0} I] :
+    complexSemifree ℤ (Limits.sigmaObj P) := complexSemifree_coproduct ℤ P hP
+
 end SerrePositivity.InfinityCategories

@@ -14,7 +14,7 @@ public import Mathlib.CategoryTheory.Limits.Connected
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-universe u
+universe u v
 namespace SerrePositivity.InfinityCategories
 open CategoryTheory Limits DifferentialGraded
 open scoped ZeroObject
@@ -167,6 +167,111 @@ private def shiftedFiltration {M : ModuleCategory S PUnit.{1}}
     (isColimitOfPreserves (shiftFunctor _ s) F.isColimit)
   iso := (shiftFunctor _ s).mapIso F.iso
 
+private def coproductSpherePresentation {I : Type u}
+    {M : I → ModuleCategory S PUnit.{1}}
+    (E : ∀ i, ModuleSphereFreePresentation S PUnit.{1} (M i)) :
+    ModuleSphereFreePresentation S PUnit.{1} (∐ M) where
+  Index := Σ i, (E i).Index
+  smallIndex := by
+    let : ∀ i, Small.{u} (E i).Index := fun i => (E i).smallIndex
+    infer_instance
+  object t := (E t.1).object t.2
+  degree t := (E t.1).degree t.2
+  iso := Sigma.mapIso (fun i => (E i).iso) ≪≫
+    sigmaSigmaIso (fun i => (E i).Index)
+      (fun i t => freeSphere S PUnit.{1} ((E i).object t) ((E i).degree t))
+
+private abbrev coproductStages {I : Type u} {M : I → ModuleCategory S PUnit.{1}}
+    (F : ∀ i, ModuleSemifreeFiltration S PUnit.{1} (M i)) (n : ℕ) :=
+  ∐ (fun i => (F i).stage n)
+
+private abbrev coproductTransitions {I : Type u} {M : I → ModuleCategory S PUnit.{1}}
+    (F : ∀ i, ModuleSemifreeFiltration S PUnit.{1} (M i)) (n : ℕ) :
+    coproductStages S F n ⟶ coproductStages S F (n + 1) :=
+  Limits.Sigma.map (fun i => (F i).transition n)
+
+private def coproductFiltrationCocone {I : Type u} {M : I → ModuleCategory S PUnit.{1}}
+    (F : ∀ i, ModuleSemifreeFiltration S PUnit.{1} (M i)) :
+    Cocone (Functor.ofSequence (coproductTransitions S F)) where
+  pt := ∐ (fun i => (F i).cocone.pt)
+  ι := NatTrans.ofSequence
+    (fun n => Limits.Sigma.map (fun i => (F i).cocone.ι.app n)) (by
+      intro n
+      rw [Functor.ofSequence_map_homOfLE_succ]
+      change Limits.Sigma.map (fun i => (F i).transition n) ≫
+        Limits.Sigma.map (fun i => (F i).cocone.ι.app (n + 1)) =
+        Limits.Sigma.map (fun i => (F i).cocone.ι.app n) ≫ 𝟙 _
+      apply Eq.trans _ (Category.comp_id _).symm
+      rw [Sigma.map_comp_map]
+      congr 1
+      funext i
+      simpa only [Functor.ofSequence_map_homOfLE_succ] using
+        (F i).cocone.w (homOfLE (Nat.le_succ n)))
+
+private def coproductRestrictionCocone {I : Type u} {M : I → ModuleCategory S PUnit.{1}}
+    (F : ∀ i, ModuleSemifreeFiltration S PUnit.{1} (M i))
+    (c : Cocone (Functor.ofSequence (coproductTransitions S F))) (i : I) :
+    Cocone (Functor.ofSequence (F i).transition) where
+  pt := c.pt
+  ι := NatTrans.ofSequence
+    (fun n => Sigma.ι (fun j => (F j).stage n) i ≫ c.ι.app n) (by
+      intro n
+      rw [Functor.ofSequence_map_homOfLE_succ]
+      change (F i).transition n ≫
+        (Sigma.ι (fun j => (F j).stage (n + 1)) i ≫ c.ι.app (n + 1)) =
+        (Sigma.ι (fun j => (F j).stage n) i ≫ c.ι.app n) ≫ 𝟙 _
+      apply Eq.trans _ (Category.comp_id _).symm
+      refine (Sigma.ι_map_assoc (fun j => (F j).transition n) i
+        (c.ι.app (n + 1))).symm.trans ?_
+      apply congrArg (fun f => Sigma.ι (fun j => (F j).stage n) i ≫ f)
+      simpa only [Functor.ofSequence_map_homOfLE_succ] using
+        c.w (homOfLE (Nat.le_succ n)))
+
+set_option maxHeartbeats 800000 in
+-- 余積の包含と各段の余極限を同時に展開して照合する。
+private def coproductFiltrationIsColimit {I : Type u} {M : I → ModuleCategory S PUnit.{1}}
+    (F : ∀ i, ModuleSemifreeFiltration S PUnit.{1} (M i)) :
+    IsColimit (coproductFiltrationCocone S F) where
+  desc c := Sigma.desc (fun i => (F i).isColimit.desc (coproductRestrictionCocone S F c i))
+  fac c n := by
+    apply Sigma.hom_ext
+    intro i
+    let d (j : I) := (F j).isColimit.desc (coproductRestrictionCocone S F c j)
+    exact (Sigma.ι_map_assoc (fun j => (F j).cocone.ι.app n) i (Sigma.desc d)).trans
+      ((congrArg (fun f => (F i).cocone.ι.app n ≫ f) (Sigma.ι_comp_desc d i)).trans
+        ((F i).isColimit.fac (coproductRestrictionCocone S F c i) n))
+  uniq c m h := by
+    apply Sigma.hom_ext
+    intro i
+    apply (F i).isColimit.hom_ext
+    intro n
+    let d (j : I) := (F j).isColimit.desc (coproductRestrictionCocone S F c j)
+    have hn := congrArg (fun f => Sigma.ι (fun j => (F j).stage n) i ≫ f) (h n)
+    have hleft : (F i).cocone.ι.app n ≫
+        (Sigma.ι (fun j => (F j).cocone.pt) i ≫ m) =
+        Sigma.ι (fun j => (F j).stage n) i ≫ c.ι.app n :=
+      (Sigma.ι_map_assoc (fun j => (F j).cocone.ι.app n) i m).symm.trans hn
+    have hright : (F i).cocone.ι.app n ≫
+        (Sigma.ι (fun j => (F j).cocone.pt) i ≫ Sigma.desc d) =
+        Sigma.ι (fun j => (F j).stage n) i ≫ c.ι.app n :=
+      (congrArg (fun f => (F i).cocone.ι.app n ≫ f) (Sigma.ι_comp_desc d i)).trans
+        ((F i).isColimit.fac (coproductRestrictionCocone S F c i) n)
+    exact hleft.trans hright.symm
+
+private def coproductFiltration {I : Type u} {M : I → ModuleCategory S PUnit.{1}}
+    (F : ∀ i, ModuleSemifreeFiltration S PUnit.{1} (M i)) :
+    ModuleSemifreeFiltration S PUnit.{1} (∐ M) where
+  stage := coproductStages S F
+  transition := coproductTransitions S F
+  initial := coproductSpherePresentation S (fun i => (F i).initial)
+  quotient n := ∐ (fun i => (F i).quotient n)
+  quotientMap n := Limits.Sigma.map (fun i => (F i).quotientMap n)
+  split n := moduleCoproductGradedSplit S PUnit.{1} _ _ (fun i => (F i).split n)
+  quotientPresentation n := coproductSpherePresentation S (fun i => (F i).quotientPresentation n)
+  cocone := coproductFiltrationCocone S F
+  isColimit := coproductFiltrationIsColimit S F
+  iso := Sigma.mapIso (fun i => (F i).iso)
+
 /-- 概要：複体の同型は semifree 性を保存する。
 方針：一点加群へ同型を戻し、filtration の終端の同型と合成する。
 規約：同型の始域に semifree 性を仮定する。使われ方：各種閉性の転送。 -/
@@ -206,5 +311,32 @@ theorem complexSemifree_shift {P : Complex S} (hP : complexSemifree S P) (s : �
     complexSemifree S (P⟦s⟧) := by
   obtain ⟨F⟩ := hP
   exact (complexSemifree_evaluation S _).mpr ⟨shiftedFiltration S F s⟩
+
+/-- 概要：任意の同じ宇宙内の添字による余積は semifree 性を保存する。
+方針：各 filtration の段・商を余積にし、余極限の普遍性を成分ごとに示す。
+規約：添字に有限性は課さない。使われ方：自由生成と semifree 部分圏の余積。 -/
+private theorem complexSemifree_coproduct_sameUniverse {I : Type u} (P : I → Complex S)
+    (hP : ∀ i, complexSemifree S (P i)) : complexSemifree S (∐ P) := by
+  let M (i : I) : ModuleCategory S PUnit.{1} :=
+    ForgetEnrichment.of (Complex S) (ringModule S (P i))
+  let F (i : I) : ModuleSemifreeFiltration S PUnit.{1} (M i) := (hP i).some
+  exact complexSemifree_of_iso S (PreservesCoproduct.iso (ringModuleEquivalence S).functor M)
+    ((complexSemifree_evaluation S _).mpr ⟨coproductFiltration S F⟩)
+
+/-- 概要：任意の u-small な添字型による余積は semifree 性を保存する。
+方針：添字型を宇宙 u に縮小し、構成済みの余積 filtration を移送する。
+規約：加群宇宙内で小さいことだけを仮定する。使われ方：無限余積と自由生成。 -/
+theorem complexSemifree_coproduct {I : Type v} [Small.{u} I] (P : I → Complex S)
+    (hP : ∀ i, complexSemifree S (P i)) : complexSemifree S (∐ P) := by
+  let e : Shrink.{u} I ≃ I := (equivShrink I).symm
+  exact complexSemifree_of_iso S (Sigma.reindex e P)
+    (complexSemifree_coproduct_sameUniverse S (P ∘ e) (fun i => hP (e i)))
+
+/-- 概要：有限個の semifree 複体の余積は semifree である。
+方針：任意余積の閉性を有限添字へ具体化する。
+規約：有限個の添字は `Fin n`。使われ方：完全複体の有限直和。 -/
+theorem complexSemifree_finiteCoproduct (n : ℕ) (P : Fin n → Complex S)
+    (hP : ∀ i, complexSemifree S (P i)) : complexSemifree S (∐ P) :=
+  complexSemifree_coproduct S P hP
 
 end SerrePositivity.InfinityCategories
