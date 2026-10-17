@@ -840,3 +840,31 @@ M9 の適用については、商を取る前の次数零の平坦 Hom を持つ
   主要6宣言の公理監査は標準3公理のみ。project import 依存を走査し、禁止された
   dg 圏分解系への依存なし。新規 sorry・axiom・引用なし。
 - U17c 全体は未完。比較自然同型そのものの shift 整合性と、U17d の各図式を続ける。
+
+
+### U17c2：順序交換・論文の列比較・局所 perfect 比較の構造付き正方形
+
+- `Verdier/OrderSquare.lean`：既存の `karoubiVerdierOrderEquivalence` と元の圏からの標準関手が
+  作る `orderSquare` を、関手合成の結合同型を明記して構成した。
+  比較自然同型そのものが整数 shift と可換であることを証明。
+  三角性を持つ各辺に加え、`orderSquareTriangle` で実際の三角形関手間の自然同型も公開する。
+- dg 側の `triaKaroubiComparison` と、論文の `paperRankEquivalence`・`paperSequenceComparison` が
+  この同じ正方形の特殊化であることを、自然同型の等式として証明した。
+  元の比較の既存ファイルや関手の定義は変更していない。
+- `localPerfectOrderSquare` は局所 K-flat perfect 比較への後置を、結合同型付きで明記したもの。
+  既存の `localPerfectPaperSequenceComparison` と実際に等しいため、元の比較そのものにも
+  `NatTrans.CommShift` を与えた。`localPerfectOrderSquareTriangle` が三角形レベルの正方形。
+- `localPerfectKaroubiFirstEquivalence` に順逆の shift 整合性と三角同値の証明を追加。
+  前段の線形性と合わせ、正方形の辺は線形三角関手である。
+  `orderSquare_naturality_smul` はスカラー倍した射に対する線形な自然性の式を公開する。
+  `paperSequenceComparisonTriangle` は論文の列比較そのものの三角形関手への正方形。
+- 対象ビルド `Verdier.ChecksOrderSquare` 成功（3621 jobs）。新規ファイル自身の警告なし。
+  主要13宣言の公理監査は標準3公理のみ。project import 依存661ファイルを走査し、
+  dg 圏分解系への依存なし。新規 sorry・axiom・引用なし。既存・他担当のファイルは編集していない。
+- U16 の記録は作業中に新設された。`dg-theory-morita.md` の「U16a 公開 API」節を読み、
+  主導来作用・unit/counit・作用の合成比較はまだ型のみ確定であることを確認した。
+  `dg-theory-morita-qe.md` では U16b の Perf・小さい enhancement の部分が検証されているが、
+  kernel 主導来作用との関手自然同型は未実装の段階である。
+  予定型を証明済み宣言として import せず、U17b の自然性は受入済みの範囲を見て接続する。
+- 残部は U17d の係数変更・支持・retract の個別の図式と、U16 受入後の Morita 自然性。
+  中心作用・G 作用は引き続き保留。U17c1 のコミットは `29c75ef9`（自分の3ファイルのみと確認）。
