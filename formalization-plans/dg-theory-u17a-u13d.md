@@ -1116,3 +1116,25 @@ M9 の適用については、商を取る前の次数零の平坦 Hom を持つ
   元の tria で係数変更してから直接局所化する経路との一致、導来 graph 合成・二モデル比較の
   構造照合、kernel の射・合成に関する自然性・coherence は引き続き未完として区別する。
   中心作用・G 作用は保留を維持する。
+
+### U17b5：既存の導来 graph 合成比較そのものの shift 整合性
+
+- `Verdier/AdjunctionComparisonShift.lean`：整合的な二つの随伴の一意性から得る既存の
+  `Adjunction.leftAdjointUniq` が shift と可換することを、単位・余単位による表示から証明した。
+  右随伴の shift 整合的自然同型で随伴を輸送する場合の構造も公開した。
+- `Verdier/GraphRestrictionShift.lean`：制限の正規化 shift 比較が各評価次数で恒等射に
+  なることを全 Hom の射影で計算した。これにより、通常の制限合成比較を全 Hom の
+  dg 制限の閉零関手として表示した自然同型にも shift 整合性を与えた。
+- `Verdier/GraphCompositionShift.lean`：この表示による局所化前の比較を明記し、
+  **既存の** `derivedGraphRestrictionCompositionIso` に前合成したものと等しいことを証明した。
+  前合成の忠実性で shift 整合性を反映し、既存の随伴から得る
+  `derivedGraphExtensionCompositionIso` そのものも shift と整合することを示した。
+  `derivedGraphExtensionCompositionTriangleIso` はその三角形関手への自然同型。
+  元の比較自然同型や辺の shift 構造を変更して整合させたものではない。
+- 対象ビルド `Verdier.ChecksGraphCompositionShift` 成功（2558 jobs）、警告なし。
+  主要8宣言の公理監査は標準3公理のみ。新規 sorry・axiom・引用なし。
+  他担当の Derived/・Endomorphism/ は読み取りのみ。共有ルートは変更していない。
+- 前単位 `66e5f8d8` は直後の stat で自分の6ファイルのみと確認した。
+  graph 合成比較の構造照合はこの単位で完了。二モデル比較の比較写像自体の構造照合、
+  元の tria の係数変更から直接局所化する経路との一致、一般 kernel の射・合成の
+  自然性・coherence はなお未完として区別する。中心作用・G 作用は保留。
