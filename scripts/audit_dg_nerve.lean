@@ -212,6 +212,30 @@ dg nerve は構成済み。ホーン充填の完成をこの監査から主張�
 #print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.fillerOfMissingEquation
 #print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.fillerOfMissingEquation_face
 #print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.extensionOfMissingEquation
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Index.interior
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Index.interior_erase
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Index.sum_offDiag_eq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Index.nested_double_erase
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.homOrZero
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.homOrZero_eq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.linearBoundary
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.linearBoundary_squared
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.cutCompose
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.quadraticBoundary
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.term_eq_linear_sub_cut
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_eq_linear_sub_quadratic
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.differential_cutCompose
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.differential_rhs
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Index.sign_mixed_right
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Index.mixed_right_cancel
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Index.mixed_left_cancel
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Index.sum_mixed_cancel
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Index.sum_double_cut_cancel
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cubic_compose_cancel
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.residualContribution
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhsContribution
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.differential_term
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.differential_rhs_expansion
 
 #check @SerrePositivity.InfinityCategories.DGNerve.compose_zero
 #check @SerrePositivity.InfinityCategories.DGNerve.zero_compose
@@ -410,3 +434,27 @@ dg nerve は構成済み。ホーン充填の完成をこの監査から主張�
 #check @SerrePositivity.InfinityCategories.DGNerve.HornData.fillerOfMissingEquation
 #check @SerrePositivity.InfinityCategories.DGNerve.HornData.fillerOfMissingEquation_face
 #check @SerrePositivity.InfinityCategories.DGNerve.HornData.extensionOfMissingEquation
+#check @SerrePositivity.InfinityCategories.DGNerve.Index.interior
+#check @SerrePositivity.InfinityCategories.DGNerve.Index.interior_erase
+#check @SerrePositivity.InfinityCategories.DGNerve.Index.sum_offDiag_eq
+#check @SerrePositivity.InfinityCategories.DGNerve.Index.nested_double_erase
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.homOrZero
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.homOrZero_eq
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.linearBoundary
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.linearBoundary_squared
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.cutCompose
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.quadraticBoundary
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.term_eq_linear_sub_cut
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_eq_linear_sub_quadratic
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.differential_cutCompose
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.differential_rhs
+#check @SerrePositivity.InfinityCategories.DGNerve.Index.sign_mixed_right
+#check @SerrePositivity.InfinityCategories.DGNerve.Index.mixed_right_cancel
+#check @SerrePositivity.InfinityCategories.DGNerve.Index.mixed_left_cancel
+#check @SerrePositivity.InfinityCategories.DGNerve.Index.sum_mixed_cancel
+#check @SerrePositivity.InfinityCategories.DGNerve.Index.sum_double_cut_cancel
+#check @SerrePositivity.InfinityCategories.DGNerve.cubic_compose_cancel
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.residualContribution
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhsContribution
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.differential_term
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.differential_rhs_expansion

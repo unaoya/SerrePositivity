@@ -4,6 +4,7 @@ public import SerrePositivity.InfinityCategories.DGNerve.Triangle
 public import SerrePositivity.InfinityCategories.DGNerve.Computations
 public import SerrePositivity.InfinityCategories.DGNerve.HornFilling
 public import SerrePositivity.InfinityCategories.DGNerve.Residual
+public import SerrePositivity.InfinityCategories.DGNerve.ResidualExpansion
 public import SerrePositivity.InfinityCategories.DGNerve.HornEquation
 
 /-! # dg nerve の集約入口

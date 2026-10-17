@@ -272,3 +272,29 @@ F'_I - F_I = ε(I,i) (f'_M - f_M)
 明示的な前提として**単体とホーン写像の延長を構成する。貼合せの証明には `horn.hom_ext` を用いる。
 この前提を満たす証明と主残差恒等式は未構成であり、無条件の内部ホーン充填と
 `Quasicategory` instance は未完了。N2 の完成とは数えず、N3〜N6 も未完了。
+
+## N2d：残差展開と有限和の相殺（2026-10-17、N2 は未完了）
+
+`LinearBoundary.lean` は内部点集合 K と、適切な端点・次数・濃度の場合に元の `hom` を評価し、
+それ以外を零とする補助評価 `homOrZero` を定義する。単体の表現は変更していない。
+線形な削除部分 L_I=Σ_{j∈K} ε(I,j) f_{I\\{j}} について、
+`linearBoundary_squared` が実際の成分を使う二重削除和の零を証明する。
+
+`BoundaryDecomposition.lean` は、切断合成部分 Q_I と元の右辺について `F_I=L_I-Q_I` を示し、
+F_I の微分と切断合成の Leibniz 展開を証明する。
+`CompositionCancellation.lean` は、共通の値にそろえた削除・切断の混合二重和の相殺、
+二重切断の係数の二重和の相殺、通常順合成の結合律を用いた三重合成の二項の相殺を証明する。
+実際の入れ子の切断集合と次数を、この共通の値へそろえる接続はまだ完了していない。
+
+`ResidualExpansion.lean` は R_I=δf_I-F_I とし、各内部点 j で、削除を E、左右切断を L,R、
+右側成分の次数を q と書くと
+
+```
+residualContribution_j = ε(I,j) (R_E - R_R∘f_L - (-1)^q f_R∘R_L)
+rhsContribution_j      = ε(I,j) (F_E - F_R∘f_L - (-1)^q f_R∘F_L)
+δF_I = Σ_j residualContribution_j + Σ_j rhsContribution_j
+```
+
+を証明する。主残差恒等式には、実際の `Σ_j rhsContribution_j=0` の証明がまだ必要。
+その接続、欠けた面自身の方程式、無条件の内部ホーン充填と `Quasicategory` instance が残る。
+N2 および N3〜N6 は引き続き未完了。
