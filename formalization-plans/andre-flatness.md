@@ -55,11 +55,34 @@ step : ∀ (R : Type u) [CommRing R] (hR : IsIntegralPerfectoid R p)
 許可公理は propext・Classical.choice・Quot.sound のみ。
 全公開宣言の完全型も同スクリプトの `#print` で確認した。共有ルート全体のビルドは主張しない。
 
+### E3.2：非可算共終性の極限の自動的完備性
+
+`CountableCompletion.lean` と `PerfectoidLimitCompleteness.lean` を追加。
+
+- `isAdicComplete_directLimit_of_countable_upperBound`：任意の可算添字集合に上界があり、
+  遷移射が単射で各段が `(p)` 進完備なら、余極限も `(p)` 進完備。
+  p は素数でなくてもよい。Cauchy 列だけでなく、その差の p 冪倍表示の証人も
+  一つの段に降ろすため、単なる列の持ち上げに依存する不十分な議論を避ける。
+  分離性も全ての p 冪に対する割り算の証人を同時に降ろして実証明した。
+- `injective_of_perfectoid_completelyFaithfullyFlat`：perfectoid 環からの p 完全忠実平坦な
+  写像 φ は単射。作用は φ.toAlgebra。既存の各冪剰余の忠実平坦性と分離性の定理を使用。
+- `isAdicComplete_directLimit_of_perfectoid_completelyFaithfullyFlat`：
+  可算添字集合に上界がある p 完全忠実平坦な perfectoid 環の有向系の余極限は p 進完備。
+  追加の単射性仮定、p 正則性、非零性は不要。環と塔の添字は Type u。
+
+対象集約の `set -o pipefail; lake build` は終了コード 0（3022 jobs）。
+新規モジュールに警告なし。既存 `LocalFlatnessCriterion.lean:383` の長行警告のみ再掲。
+専用監査は終了コード 0、公開 7 宣言に assert_no_sorry、補助・生成宣言を含む
+14 宣言の再帰監査で標準 3 公理のみ。全公開宣言の完全型も #print で確認。
+これは非可算共終性の極限での**完備性だけ**の成果であり、perfectoid 性、
+極限への完全忠実平坦性、可算共終性の完備化、超限塔の存在は依然未完了。
+
 ### 残る範囲
 
 1. 有向余極限の p 進完備化の perfectoid 性（特に p ねじれを許す Fontaine 核の単項性）。
 2. p 完全忠実平坦性の有向余極限・完備化・合成による保存。
-3. 非可算共終性の極限での自動的 p 進完備性と、可算共終性の極限での完備化。
+3. 非可算共終性の可算上界条件を ω₁ 等の具体的順序に供給し、可算共終性の極限で完備化する。
+   可算上界条件の下での自動的 p 進完備性は E3.2 で証明済み。
 4. Type u に留まる ω₁ までの超限塔の構成、訂正済み step による後続段の供給。
 5. 元の Inputs と同じ結論の公開定理、A1 合流による step 解消と再監査。
 
