@@ -416,3 +416,27 @@ HEAD からの差分全体が自分の変更だけであることも確認する
 - ルートは他担当の CLMST import と同居しているため、今回のコミット対象から除外。
   自分の以前の `DerivedComparisonPathFlatness` import は引き続き作業ツリー内に残っている。
 - U15e11 のコミット：`637a2212`（自分の5ファイルのみと直後に確認）。
+
+### U15e13：固定長 path の自由右加群表示
+
+- `Quotient/DerivedComparisonPathModule.lean`：既存の全次数 `tensorRightHom` の単位・合成を
+  豊穣関手としてまとめ、各内部 path 項を右 dg 加群 `pathModule` にした。
+  値と従来の `term` の明示的な複体同型、および先頭 Hom 作用との整合式を証明。
+  正の word `b :: w` の加群は、符号付き交換によって
+  `(freeAt b.val).obj (pathSuffixWeight w b z)` と実際の加群圏で同型になる。
+  この交換は全次数の Hom 作用と可換であり、閉零射だけの比較ではない。
+- `Quotient/DerivedComparisonGradedModule.lean`：任意の word 部分集合について、path 加群の
+  直和 `selectedPathModule` を構成。評価と従来の `selectedHom` の同型を作り、
+  全ての path 包含との整合性、および全次数の先頭作用との可換性を証明した。
+  `fixedLengthModuleFreeIso` は、長さ n+1 の加群と
+  `∐ (b,w : S × LengthWord S n), (freeAt b.val).obj (pathSuffixWeight w b z)` の同型。
+- ここまでの表示は underived で K-flat 仮定不要。まだ `lengthModuleTransition` の
+  加群圏での cokernel とこの固定長加群を同定したものではない。
+  次段階は層射影を全次数自然な加群射にして cokernel と同定し、片側 K-flat 仮定を使って
+  この自由加群表示から導来圏での S による生成を示すこと。
+  U15e の完全忠実性と U17b 全体は引き続き未完。
+- 対象ビルド：`Checks.QuotientPathModule` と `Checks.QuotientGradedModule` の単独指定、
+  最終的には両方を指定した `lake build` 成功（2329 jobs）。主要12宣言の公理監査は標準3公理のみ。
+  project import 依存126・166ファイルに禁止された dg 圏分解系への依存なし。
+  新規 sorry・axiom・引用なし。ルートおよび他担当の既存ファイルは編集していない。
+- U15e12 のコミット：`3a215fcf`（自分の5ファイルのみと直後に確認）。
