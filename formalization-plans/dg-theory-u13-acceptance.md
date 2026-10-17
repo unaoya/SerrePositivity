@@ -56,6 +56,17 @@
 - `Perfect.ChecksRingFiniteHomologyCover` 対象ビルド成功（3164 jobs）。
   主要4宣言の公理監査は標準3公理のみ。
 
+## U13e.30：最上のacyclic射影項を切り詰める有限射影モデル
+
+- `Perfect/RingTopTruncation.lean`：隣接微分dが全射で標的項が射影的な場合、
+  そのsectionからcycles包含のretractionを構成した。始域項が有限射影ならcyclesも有限射影となる。
+- 良い切断 `P.truncLE n` のn未満の項は元の項、nの項はcycles、nより上は零という
+  Mathlibの同型を使い、切断の有限射影性と下端範囲の保存を証明した。
+- Pの項がn+1より上で零、Pがn+1でexactなら、nへの切断は有限射影であり、
+  元のPへの標準包含がquasiIsoである。`ringComplex_topTruncation` として公開した。
+- `Perfect.ChecksRingTopTruncation` 対象ビルド成功（3165 jobs）。
+  主要6宣言の公理監査は標準3公理のみ。既存の切断・PerfectComplexのファイルは編集していない。
+
 ## 既存項目の再検証
 
 - finite cell・全Hom射影性・PerfとKaroubi・compact生成・compact⇒Perf・
