@@ -874,3 +874,26 @@ dg nerve を標的とすると、`cospanBoundaryLeftData F unknown`・`cospanBou
 左右に共通の先頭・D 成分の同定と、標準 fiber の錐の p,q,t,u,v,g,h との比較はまだ未完了。
 従って、二セルをまとめた fiber の座標の適用、未知六成分の解、全方程式と貼り合わせ、
 `IsPullbackSquare` の完成とは数えない。公開型・前提・次数は計画 §5 の N7c5 に記録する。
+
+
+## N7.8：左右の共通面の一致（2026-10-18）
+
+`cospanCommonOrderHom n : Fin (n+3) →o Fin (n+4)` は最初の末尾頂点 B/C を飛ばす面。
+共通面の先頭 `n+2` 点の像は `cospanPrefixFaces n` に等しい。
+小さい二セルの pushout の可換性と面の合成恒等式から、
+左右の零未知データの共通面への制限が全ての既知面で一致することを示した。
+共通面の未知集合の像も元の未知集合なので、その成分は左右とも零。
+
+`SimplexData.ext_of_selected_faces_zero_unknown` は、頂点を覆う選んだ面で一致し、
+残りの成分がともに零である二データを同定する。単体の方程式は仮定しない。
+これを適用した `cospanBoundaryZeroData_common F` は追加仮定なしに
+`(cospanBoundaryLeftZeroData F).pullback (cospanCommonOrderHom n) =
+(cospanBoundaryRightZeroData F).pullback (cospanCommonOrderHom n)` を与える。
+
+`cospanBoundaryZeroData_common_obj` は共通面上の全対象の等式、
+`cospanBoundaryZeroData_common_rhs_heq` はその任意の部分集合の像での右辺の異種等号を与える。
+N2 の単射の像の比較を方程式前の `SimplexData` と `rhs` に拡張して使った。
+
+次は最後の頂点に指定された錐を境界から回収し、標準 fiber の対象・脚・三角形成分と比較する。
+その後の fiber 座標による六成分の解と最終充填、`IsPullbackSquare`、N7d・N7e は未完了。
+公開型・前提は計画 §5 の N7c6 に記録する。

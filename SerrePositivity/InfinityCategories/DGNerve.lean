@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.DGNerve.CospanCommonRhs
 public import SerrePositivity.InfinityCategories.DGNerve.CospanBoundaryTwoTailResidual
 public import SerrePositivity.InfinityCategories.DGNerve.CospanBoundaryZeroData
 public import SerrePositivity.InfinityCategories.DGNerve.CospanBoundaryAssembly

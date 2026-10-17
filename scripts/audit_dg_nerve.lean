@@ -1620,6 +1620,45 @@ noncomputable section
 #print axioms SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryRightZeroData_twoTail_differential
 #check @SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryRightZeroData_twoTail_differential
 
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.hom_heq_of_eq
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.hom_heq_of_eq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.hom_heq_of_pullback_eq
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.hom_heq_of_pullback_eq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.obj_eq_of_selected_faces
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.obj_eq_of_selected_faces
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.ext_of_selected_faces_zero_unknown
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.ext_of_selected_faces_zero_unknown
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanCommonFaces
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanCommonFaces
+#print axioms SerrePositivity.InfinityCategories.DGNerve.mem_cospanCommonFaces
+#check @SerrePositivity.InfinityCategories.DGNerve.mem_cospanCommonFaces
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanCommonFaces_covers
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanCommonFaces_covers
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanCommonOrderHom
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanCommonOrderHom
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanCommonFaces_image
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanCommonFaces_image
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanCommon_face_commute
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanCommon_face_commute
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanCommon_orderHom_comp
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanCommon_orderHom_comp
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLifts_common
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLifts_common
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryCommonData_face
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryCommonData_face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanCommon_image_contains_prefix
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanCommon_image_contains_prefix
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryZeroData_common
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryZeroData_common
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_heq_of_eq
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_heq_of_eq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_heq_of_pullback_eq
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_heq_of_pullback_eq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryZeroData_common_obj
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryZeroData_common_obj
+#print axioms SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryZeroData_common_rhs_heq
+#check @SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryZeroData_common_rhs_heq
+
 section
 universe u v
 variable (A : Type u) [CommRing A] (D : Type v)

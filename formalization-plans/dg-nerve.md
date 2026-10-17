@@ -7892,6 +7892,235 @@ fiber 座標による未知六成分の解、未知方程式、二単体の貼�
 終対象性と `IsPullbackSquare`。N7c〜N7e は未完了。
 保存後は承認を待たず、左右の共通の成分の比較へ続ける。
 
+### N7c6：左右の零未知境界データの共通面の一致（2026-10-18）
+
+先頭と D を残す共通面で、左右の零未知境界データが等しいことを証明した。
+既知面の一致は小さい二セルの pushout の可換性と面の合成恒等式から、
+未知成分の零は共通面の先頭集合の像の包含から従う。
+方程式を仮定しないデータの外延性を使い、充填単体が既に存在することを仮定していない。
+その等式を対象と右辺で評価して、共通面上の全対象の等式と任意の集合の像の右辺の異種等号を得た。
+
+前提・規約：`{A : Type u} [CommRing A] {D : Type v} [DGCategory A D]`。
+集合幾何の宣言は dg 圏に依存しない。単体集合の面の公式は `SSet.{u}`。
+`SelectedFaces.CoversVertices S` は選んだ面が全頂点を覆う条件。
+`ext_of_selected_faces_zero_unknown` は各選んだ面のデータの一致と S を含む全成分の零を仮定する。
+実際の共通面ではこれらの前提を全て証明済みで、`cospanBoundaryZeroData_common` は
+任意の join 境界写像 F のみを引数に持つ。
+`DataComponents`・`DataRhsComponents` の一般補題では、二つの単射の制限の等式と
+対象の部分集合上の単射性を明示的に仮定する。
+
+公開宣言の正確なソース型（節変数は上記の通り）：
+
+`SerrePositivity.InfinityCategories.DGNerve.SimplexData.hom_heq_of_eq`
+
+```lean
+lemma hom_heq_of_eq {n : ℕ} {s t : SimplexData A D n} (hst : s = t)
+    (J : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ)
+    (hJ : 2 ≤ J.card) (ha : a = J.min' (Index.nonempty hJ))
+    (hb : b = J.max' (Index.nonempty hJ)) (hk : k = 2 - (J.card : ℤ)) :
+    HEq (s.hom J a b k hJ ha hb hk) (t.hom J a b k hJ ha hb hk)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SimplexData.hom_heq_of_pullback_eq`
+
+```lean
+lemma hom_heq_of_pullback_eq {l m n : ℕ} (s : SimplexData A D m) (t : SimplexData A D n)
+    (α : Fin (l + 1) →o Fin (m + 1)) (β : Fin (l + 1) →o Fin (n + 1))
+    (h : s.pullback α = t.pullback β)
+    (J : Finset (Fin (l + 1))) (a b : Fin (l + 1)) (k : ℤ)
+    (hJ : 2 ≤ J.card) (ha : a = J.min' (Index.nonempty hJ))
+    (hb : b = J.max' (Index.nonempty hJ)) (hk : k = 2 - (J.card : ℤ))
+    (hα : Set.InjOn α (J : Set (Fin (l + 1))))
+    (hβ : Set.InjOn β (J : Set (Fin (l + 1)))) :
+    HEq (s.hom (J.image α) (α a) (α b) k (Index.image_two hα hJ)
+      (Index.image_min α.monotone (by rw [ha]; exact J.isLeast_min' _) _)
+      (Index.image_max α.monotone (by rw [hb]; exact J.isGreatest_max' _) _)
+      (by rw [Finset.card_image_of_injOn hα]; exact hk))
+      (t.hom (J.image β) (β a) (β b) k (Index.image_two hβ hJ)
+      (Index.image_min β.monotone (by rw [ha]; exact J.isLeast_min' _) _)
+      (Index.image_max β.monotone (by rw [hb]; exact J.isGreatest_max' _) _)
+      (by rw [Finset.card_image_of_injOn hβ]; exact hk))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SimplexData.obj_eq_of_selected_faces`
+
+```lean
+lemma obj_eq_of_selected_faces {n : ℕ} (S : Finset (Fin (n + 2)))
+    (hS : SelectedFaces.CoversVertices S) (s t : SimplexData A D (n + 1))
+    (hfaces : ∀ j ∈ S, s.pullback j.succAboveOrderEmb.toOrderHom =
+      t.pullback j.succAboveOrderEmb.toOrderHom) : s.obj = t.obj
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SimplexData.ext_of_selected_faces_zero_unknown`
+
+```lean
+lemma ext_of_selected_faces_zero_unknown {n : ℕ} (S : Finset (Fin (n + 2)))
+    (hS : SelectedFaces.CoversVertices S) (s t : SimplexData A D (n + 1))
+    (hfaces : ∀ j ∈ S, s.pullback j.succAboveOrderEmb.toOrderHom =
+      t.pullback j.succAboveOrderEmb.toOrderHom)
+    (hs0 : ∀ I, S ⊆ I → ∀ a b k hI ha hb hk, s.hom I a b k hI ha hb hk = 0)
+    (ht0 : ∀ I, S ⊆ I → ∀ a b k hI ha hb hk, t.hom I a b k hI ha hb hk = 0) : s = t
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanCommonFaces`
+
+```lean
+def cospanCommonFaces (n : ℕ) : Finset (Fin (n + 3))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.mem_cospanCommonFaces`
+
+```lean
+lemma mem_cospanCommonFaces {n : ℕ} (j : Fin (n + 3)) :
+    j ∈ cospanCommonFaces n ↔ j.val < n + 2
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanCommonFaces_covers`
+
+```lean
+lemma cospanCommonFaces_covers (n : ℕ) :
+    SelectedFaces.CoversVertices (cospanCommonFaces n)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanCommonOrderHom`
+
+```lean
+def cospanCommonOrderHom (n : ℕ) : Fin (n + 3) →o Fin (n + 4)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanCommonFaces_image`
+
+```lean
+lemma cospanCommonFaces_image (n : ℕ) :
+    (cospanCommonFaces n).image (cospanCommonOrderHom n) = cospanPrefixFaces n
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanCommon_face_commute`
+
+```lean
+lemma cospanCommon_face_commute (n : ℕ) (j : Fin (n + 2)) :
+    (SSet.stdSimplex.δ j.castSucc : (Δ[n + 1] : SSet.{u}) ⟶ Δ[n + 2]) ≫
+      SSet.stdSimplex.δ (cospanFirstTail n) =
+      SSet.stdSimplex.δ ((Fin.last (n + 1)).castSucc) ≫ SSet.stdSimplex.δ (j.castAdd 2)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanCommon_orderHom_comp`
+
+```lean
+lemma cospanCommon_orderHom_comp (n : ℕ) (j : Fin (n + 2)) :
+    (cospanCommonOrderHom n).comp j.castSucc.succAboveOrderEmb.toOrderHom =
+      (j.castAdd 2).succAboveOrderEmb.toOrderHom.comp
+        ((Fin.last (n + 1)).castSucc).succAboveOrderEmb.toOrderHom
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryLifts_common`
+
+```lean
+lemma cospanBoundaryLifts_common (n : ℕ) (j : Fin (n + 4)) (hj : j ∈ cospanPrefixFaces n) :
+    SSet.stdSimplex.δ ((Fin.last (n + 1)).castSucc) ≫ cospanBoundaryLeftLift.{u} n j hj =
+      SSet.stdSimplex.δ ((Fin.last (n + 1)).castSucc) ≫ cospanBoundaryRightLift n j hj
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryCommonData_face`
+
+```lean
+lemma cospanBoundaryCommonData_face {n : ℕ}
+    (F : join (SSet.boundary (n + 1) : SSet.{max u v}) (SSet.horn 2 2) ⟶ dgNerve A D)
+    (j : Fin (n + 2)) :
+    ((cospanBoundaryLeftZeroData F).pullback (cospanCommonOrderHom n)).pullback
+        j.castSucc.succAboveOrderEmb.toOrderHom =
+      ((cospanBoundaryRightZeroData F).pullback (cospanCommonOrderHom n)).pullback
+        j.castSucc.succAboveOrderEmb.toOrderHom
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanCommon_image_contains_prefix`
+
+```lean
+lemma cospanCommon_image_contains_prefix {n : ℕ} (I : Finset (Fin (n + 3)))
+    (hI : cospanCommonFaces n ⊆ I) :
+    cospanPrefixFaces n ⊆ I.image (cospanCommonOrderHom n)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryZeroData_common`
+
+```lean
+lemma cospanBoundaryZeroData_common {n : ℕ}
+    (F : join (SSet.boundary (n + 1) : SSet.{max u v}) (SSet.horn 2 2) ⟶ dgNerve A D) :
+    (cospanBoundaryLeftZeroData F).pullback (cospanCommonOrderHom n) =
+      (cospanBoundaryRightZeroData F).pullback (cospanCommonOrderHom n)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_heq_of_eq`
+
+```lean
+lemma rhs_heq_of_eq {n : ℕ} {s t : SimplexData A D n} (hst : s = t)
+    (J : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ)
+    (hJ : 2 ≤ J.card) (ha : a = J.min' (Index.nonempty hJ))
+    (hb : b = J.max' (Index.nonempty hJ)) (hk : k = 2 - (J.card : ℤ)) :
+    HEq (s.rhs J a b k hJ ha hb hk) (t.rhs J a b k hJ ha hb hk)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_heq_of_pullback_eq`
+
+```lean
+lemma rhs_heq_of_pullback_eq {l m n : ℕ} (s : SimplexData A D m) (t : SimplexData A D n)
+    (α : Fin (l + 1) →o Fin (m + 1)) (β : Fin (l + 1) →o Fin (n + 1))
+    (h : s.pullback α = t.pullback β)
+    (J : Finset (Fin (l + 1))) (a b : Fin (l + 1)) (k : ℤ)
+    (hJ : 2 ≤ J.card) (ha : a = J.min' (Index.nonempty hJ))
+    (hb : b = J.max' (Index.nonempty hJ)) (hk : k = 2 - (J.card : ℤ))
+    (hα : Set.InjOn α (J : Set (Fin (l + 1))))
+    (hβ : Set.InjOn β (J : Set (Fin (l + 1)))) :
+    HEq (s.rhs (J.image α) (α a) (α b) k (Index.image_two hα hJ)
+      (Index.image_min α.monotone (by rw [ha]; exact J.isLeast_min' _) _)
+      (Index.image_max α.monotone (by rw [hb]; exact J.isGreatest_max' _) _)
+      (by rw [Finset.card_image_of_injOn hα]; exact hk))
+      (t.rhs (J.image β) (β a) (β b) k (Index.image_two hβ hJ)
+      (Index.image_min β.monotone (by rw [ha]; exact J.isLeast_min' _) _)
+      (Index.image_max β.monotone (by rw [hb]; exact J.isGreatest_max' _) _)
+      (by rw [Finset.card_image_of_injOn hβ]; exact hk))
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryZeroData_common_obj`
+
+```lean
+lemma cospanBoundaryZeroData_common_obj {n : ℕ}
+    (F : join (SSet.boundary (n + 1) : SSet.{max u v}) (SSet.horn 2 2) ⟶ dgNerve A D)
+    (i : Fin (n + 3)) :
+    (cospanBoundaryLeftZeroData F).obj (cospanCommonOrderHom n i) =
+      (cospanBoundaryRightZeroData F).obj (cospanCommonOrderHom n i)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.cospanBoundaryZeroData_common_rhs_heq`
+
+```lean
+lemma cospanBoundaryZeroData_common_rhs_heq {n : ℕ}
+    (F : join (SSet.boundary (n + 1) : SSet.{max u v}) (SSet.horn 2 2) ⟶ dgNerve A D)
+    (J : Finset (Fin (n + 3))) (a b : Fin (n + 3)) (k : ℤ)
+    (hJ : 2 ≤ J.card) (ha : a = J.min' (Index.nonempty hJ))
+    (hb : b = J.max' (Index.nonempty hJ)) (hk : k = 2 - (J.card : ℤ)) :
+    HEq ((cospanBoundaryLeftZeroData F).rhs (J.image (cospanCommonOrderHom n))
+      ((cospanCommonOrderHom n) a) ((cospanCommonOrderHom n) b) k (Index.image_two
+      (cospanFirstTail n).succAboveOrderEmb.injective.injOn hJ)
+      (Index.image_min (cospanCommonOrderHom n).monotone (by rw [ha]; exact J.isLeast_min' _) _)
+      (Index.image_max (cospanCommonOrderHom n).monotone (by rw [hb]; exact J.isGreatest_max' _) _)
+      (by
+        rw [Finset.card_image_of_injOn (f
+```
+
+検証：対象 `CospanCommonRhs` と集約 `SerrePositivity.InfinityCategories.DGNerve` の
+`set -e; set -o pipefail` によるビルド終了コード 0 を確認。
+新規 19 宣言の `#print axioms`・`#check @` を追加。
+全公開 809 宣言と既存則 5 宣言の公理監査計 814 件、公開 809 宣言の明示型検査を通過。
+公理は標準三公理 `propext`・`Classical.choice`・`Quot.sound` の範囲内。
+自分のパスだけの `git diff --check` を実施し、自分のファイルだけを `git commit --only` で保存する。
+ユーザー追記 §7 は保存単位に含めない。
+
+未完了：最後の頂点に指定された錐の対象・脚・三角形成分と回収データの比較、
+標準 fiber の Hom 座標による未知六成分の解、未知方程式、二単体の貼り合わせと
+slice 境界の一致、終対象性と `IsPullbackSquare`。N7c〜N7e は未完了。
+保存後は承認を待たず、最後の頂点の錐のデータの回収へ続ける。
+
 ## 6. 次のマイルストーン D（本計画の範囲外）
 
 - Semifree(S) を `DGFullSubcategory`（`moduleSemifree` または一点 dg 圏上の複体版）として置き、
