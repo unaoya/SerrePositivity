@@ -526,3 +526,53 @@ zeroBasisModuleSpherePresentation : ModuleSphereFreePresentation S PUnit.{1}
 新規公開7宣言と12モジュール252宣言の公理は標準3公理のみ。
 未完了：semibasis の各商の次数付き分裂、既存 filtration との両向きの同値、cone 閉性。
 D2h 全体の完成とは数えない。
+
+### D2h 次数付き分裂の転送と座標射影（2026-10-17）
+
+`Derived/RingGradedSplit.lean` と `Derived/BasisCut.lean` を追加した。
+namespace `SerrePositivity.InfinityCategories`。`ringGradedNaturality` は
+`(S : Type u) [CommRing S] {P Q : Complex S} (a : ∀ k : ℤ, P.X k ⟶ Q.X k)
+(p i j : ℤ) (hij : i + p = j)
+(f : GradedHom S (Opposite.op (PUnit.unit : PUnit.{1}))
+  (Opposite.op (PUnit.unit : PUnit.{1})) p)` の下で
+```lean
+moduleActionComponent S PUnit.{1}
+  (ForgetEnrichment.of (Complex S) (ringModule S P)) PUnit.unit PUnit.unit p i j hij f ≫ a j =
+ a i ≫ moduleActionComponent S PUnit.{1}
+  (ForgetEnrichment.of (Complex S) (ringModule S Q)) PUnit.unit PUnit.unit p i j hij f
+```
+を示す。a に chain map 条件はない。ほかの公開型：
+```lean
+ringComplexMap (S : Type u) [CommRing S] {P Q : Complex S} (f : P ⟶ Q) :
+  ForgetEnrichment.of (Complex S) (ringModule S P) ⟶
+    ForgetEnrichment.of (Complex S) (ringModule S Q)
+ringComplexMap_evaluation (S : Type u) [CommRing S] {P Q : Complex S} (f : P ⟶ Q) :
+  (moduleEvaluation S PUnit.{1} PUnit.unit).map (ringComplexMap S f) = f
+ringComplexGradedSplit (S : Type u) [CommRing S] {P Q R : Complex S}
+  (f : P ⟶ Q) (g : Q ⟶ R)
+  (r : ∀ k : ℤ, Q.X k ⟶ P.X k) (s : ∀ k : ℤ, R.X k ⟶ Q.X k)
+  (hfr : ∀ k, f.f k ≫ r k = 𝟙 _) (hsg : ∀ k, s k ≫ g.f k = 𝟙 _)
+  (hsr : ∀ k, s k ≫ r k = 0) (hfg : f ≫ g = 0)
+  (hdecomp : ∀ k, r k ≫ f.f k + g.f k ≫ s k = 𝟙 _) :
+  ModuleGradedSplit S PUnit.{1} (ringComplexMap S f) (ringComplexMap S g)
+```
+座標射影の共通引数は `{S : Type u} [CommRing S] {V : Type v} [AddCommGroup V]
+[Module S V] {I : Type v} (E : Module.Basis I S V)`。所属の判定は局所的な古典論理を使う。
+```lean
+basisCoordinateCut (s : Set I) : V →ₗ[S] V
+basisCoordinateCut_repr (s : Set I) (x : V) (i : I) :
+  E.repr (basisCoordinateCut E s x) i = if i ∈ s then E.repr x i else 0
+basisCoordinateCut_mem (s : Set I) (x : V) :
+  basisCoordinateCut E s x ∈ Submodule.span S (E '' s)
+basisCoordinateCut_eq_self (s : Set I) {x : V}
+  (hx : x ∈ Submodule.span S (E '' s)) : basisCoordinateCut E s x = x
+basisCoordinateCut_disjoint (s t : Set I) (hst : Disjoint s t) (x : V) :
+  basisCoordinateCut E s (basisCoordinateCut E t x) = 0
+basisCoordinateCut_add (s t : Set I) (hst : Disjoint s t) {x : V}
+  (hx : x ∈ Submodule.span S (E '' (s ∪ t))) :
+  basisCoordinateCut E s x + basisCoordinateCut E t x = x
+```
+`set -o pipefail; lake build SerrePositivity.InfinityCategories.Derived` は終了コード 0（3627 jobs）。
+`set -o pipefail; lake env lean scripts/audit_derived_infinity.lean` は終了コード 0。
+新規公開10宣言と14モジュール284宣言の公理は標準3公理のみ。
+未完了は各高さの自由商・既存 filtration との同値・cone 閉性。補助補題をそれらの完成とは数えない。

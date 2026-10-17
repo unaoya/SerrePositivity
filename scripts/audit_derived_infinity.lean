@@ -115,6 +115,17 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.zeroBasisSphereIso
 #print axioms SerrePositivity.InfinityCategories.zeroBasisModuleSpherePresentation
 
+#print axioms SerrePositivity.InfinityCategories.ringGradedNaturality
+#print axioms SerrePositivity.InfinityCategories.ringComplexMap
+#print axioms SerrePositivity.InfinityCategories.ringComplexMap_evaluation
+#print axioms SerrePositivity.InfinityCategories.ringComplexGradedSplit
+#print axioms SerrePositivity.InfinityCategories.basisCoordinateCut
+#print axioms SerrePositivity.InfinityCategories.basisCoordinateCut_repr
+#print axioms SerrePositivity.InfinityCategories.basisCoordinateCut_mem
+#print axioms SerrePositivity.InfinityCategories.basisCoordinateCut_eq_self
+#print axioms SerrePositivity.InfinityCategories.basisCoordinateCut_disjoint
+#print axioms SerrePositivity.InfinityCategories.basisCoordinateCut_add
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -130,6 +141,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.SemifreeBasisColimit,
     `SerrePositivity.InfinityCategories.Derived.SemifreeBasisHeight,
     `SerrePositivity.InfinityCategories.Derived.ZeroBasisSpheres,
+    `SerrePositivity.InfinityCategories.Derived.BasisCut,
+    `SerrePositivity.InfinityCategories.Derived.RingGradedSplit,
     `SerrePositivity.InfinityCategories.Derived.DerivedComparisonShift]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
