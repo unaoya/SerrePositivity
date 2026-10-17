@@ -3,6 +3,7 @@ public import SerrePositivity.InfinityCategories.DGNerve.Basic
 public import SerrePositivity.InfinityCategories.DGNerve.Triangle
 public import SerrePositivity.InfinityCategories.DGNerve.Computations
 public import SerrePositivity.InfinityCategories.DGNerve.Quasicategory
+public import SerrePositivity.InfinityCategories.DGNerve.EdgeHomotopy
 public import SerrePositivity.InfinityCategories.DGNerve.Residual
 public import SerrePositivity.InfinityCategories.DGNerve.ResidualExpansion
 public import SerrePositivity.InfinityCategories.DGNerve.HornEquation

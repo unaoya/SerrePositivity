@@ -2,7 +2,7 @@ import SerrePositivity.InfinityCategories.DGNerve
 /-!
 # dg nerve の公開宣言の公理監査
 
-概要：N0 の既存則と N1 と N2 の全ての明示的な公開宣言を監査する。
+概要：N0 の既存則と N1・N2 と N3 途中の全ての明示的な公開宣言を監査する。
 方針：各工程で公開宣言の公理表示と型の検査を追加する。
 規約：許される公理は propext・Classical.choice・Quot.sound のみ。
 使われ方：対象ビルド後に `lake env lean scripts/audit_dg_nerve.lean` を実行する。
@@ -262,6 +262,34 @@ N3〜N6 の完了はまだ主張しない。
 #print axioms SerrePositivity.InfinityCategories.dgNerve.filler_face
 #print axioms SerrePositivity.InfinityCategories.dgNerve.hornFilling
 #print axioms SerrePositivity.InfinityCategories.dgNerve.instQuasicategory
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.twoTruncation
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.pairObj
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edge_source_obj
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edge_target_obj
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeCycle
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeOfCycle
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeCycle_edgeOfCycle
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeOfCycle_edgeCycle
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeCycleEquiv
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.tripleObj
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.triangle_face01
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.triangle_face12
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.triangle_face02
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.compStructOfHomotopy
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.homotopy_of_compStruct
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.compStruct_iff_homotopy
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.vertexClosed
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeClosed
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeClosed_cycle
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeClosedEquiv
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.castCycle_val_heq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeCycle_val_heq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeCycle_id
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.homotopicL_iff_exists
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.homotopicR_iff_exists
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.boundary_iff_exists
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.homotopicL_iff_boundary
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.homotopicR_iff_boundary
 
 #check @SerrePositivity.InfinityCategories.DGNerve.compose_zero
 #check @SerrePositivity.InfinityCategories.DGNerve.zero_compose
@@ -509,10 +537,40 @@ N3〜N6 の完了はまだ主張しない。
 #check @SerrePositivity.InfinityCategories.dgNerve.filler_face
 #check @SerrePositivity.InfinityCategories.dgNerve.hornFilling
 #check @SerrePositivity.InfinityCategories.dgNerve.instQuasicategory
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.twoTruncation
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.pairObj
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edge_source_obj
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edge_target_obj
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeCycle
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeOfCycle
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeCycle_edgeOfCycle
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeOfCycle_edgeCycle
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeCycleEquiv
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.tripleObj
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.triangle_face01
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.triangle_face12
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.triangle_face02
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.compStructOfHomotopy
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.homotopy_of_compStruct
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.compStruct_iff_homotopy
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.vertexClosed
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeClosed
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeClosed_cycle
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeClosedEquiv
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.castCycle_val_heq
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeCycle_val_heq
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.edgeCycle_id
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.homotopicL_iff_exists
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.homotopicR_iff_exists
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.boundary_iff_exists
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.homotopicL_iff_boundary
+#check @SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.homotopicR_iff_boundary
 
 section
 universe u v
 variable (A : Type u) [CommRing A] (D : Type v)
   [SerrePositivity.DifferentialGraded.DGCategory A D]
 example : SSet.Quasicategory (SerrePositivity.InfinityCategories.dgNerve A D) := inferInstance
+example : SSet.Truncated.Quasicategory₂
+    (SerrePositivity.InfinityCategories.DGNerve.HomotopyComparison.twoTruncation A D) := inferInstance
 end

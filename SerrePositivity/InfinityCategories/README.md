@@ -322,3 +322,26 @@ N2 および N3〜N6 は引き続き未完了。
 
 N2 の全体が完了し、N3（H⁰ との比較）・N5（関手性）・N4（右 pinched 写像空間）・N6 は未完了。
 公開宣言の正確な型・前提・ビルドと公理監査の記録は計画 §5 の N2e を参照。
+
+## N3a：端点付きの辺と境界関係（2026-10-18、N3 は未完了）
+
+`TruncatedEdges.lean` は `twoTruncation=(SSet.truncation 2).obj (dgNerve A D)` を使い、
+固定した零単体 x,y の間の辺と、その対象 x.obj 0,y.obj 0 間の閉零元の同値を構成する。
+端点の面の等式による対象の移送と、両向きの逆則も検証済み。
+Mathlib の `Quasicategory₂` instance がこの切断に自動推論されることを監査で確認する。
+
+`TruncatedTriangles.lean` は二単体の三つの面を計算し、端点付きの合成構造について
+
+```
+Nonempty (CompStruct f g h) ↔ ∃ t : Hom^{-1}(x,z), δt = g∘f-h
+```
+
+を証明する。ここで辺はその閉零成分として読んでいる。
+`EdgeHomotopy.lean` は退化した恒等辺を dg 単位に同定し、
+`HomotopicL f g` と `HomotopicR f g` を、いずれも `δt=f-g` の原始元の存在で特徴づける。
+さらに既存の閉零圏の射との同値 `edgeClosedEquiv` を構成し、
+両ホモトピーが `boundaryRelation A D (edgeClosed f) (edgeClosed g)` と同値であることを証明した。
+
+既存の H⁰ を変更せずに辺のホモトピー関係まで比較した段階であり、圏同値は未構成。
+合成の対応、明示的な零ホモトピーの合成構造、商上の両向きの関手と逆同型が残る。
+N3 全体および N4〜N6 は未完了。
