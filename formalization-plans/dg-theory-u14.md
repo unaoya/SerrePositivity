@@ -746,6 +746,16 @@
   単位・合成との整合性、Perf比較と導来係数変更図式への接続は続けて構成する。
 - 既存の公開APIの名前・型は変更していない。係数変更側の既存ファイルは編集していない。
 
+## U14a/b.37：実際の係数変更加群圏へのdg関手（2026-10-17）
+
+- `ScalarModuleDGFunctor.lean`：U14a/b.36のHom比較が単位と全次数合成を保つことを証明し、
+  ambient加群dg圏の係数変更から実際のD係数変更加群圏への `scalarModuleDGFunctor` を構成した。
+- 対象は受入済み `ScalarExtension.rightModule`、Homは実際のHom end比較である。
+  移送されたambient enrichmentと実際の係数変更加群圏は別のdg圏として扱う。
+- `ChecksScalarModuleDGFunctor` 対象ビルド成功。新規3主要宣言の公理は標準3公理のみ。
+  既存APIの名前・型は変更していない。係数変更側の既存ファイルは編集していない。
+- このdg関手のHom写像の可逆性は無条件に主張しない。End・評価・Perfへの接続を続ける。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
