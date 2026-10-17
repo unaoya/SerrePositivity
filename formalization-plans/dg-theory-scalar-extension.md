@@ -235,3 +235,30 @@ underived 側の dg 圏・左右加群・随伴・直和/coequalizer・相対 te
 一対象通常 tensor・評価単位・パラメータ結合比較が揃った。これは U12f 全体の完了ではない。
 次に導来版を実装し、擬同型保存条件と underived との一致条件を明示する。
 その後 U15d に進む。正本への完了参照は全担当の受入後のみとする。
+
+
+## 2026-10-17：非 flat な導来係数拡大と exactness の区別
+
+評価単位・パラメータ結合比較は `af9a2301` にコミット済み。
+`Derived/ScalarExtensionHomotopy.lean` は標準加群 cylinder の射影が係数変更後も
+objectwise 擬同型であることを、複体の明示的な収縮の保存から証明する。
+その射影だけを導来圏で反転し、全 dg 自然な境界を同一視する
+`moduleExtensionHomotopyToDerived` を構成した。任意の擬同型の underived 保存を
+ここで仮定していない。
+
+`Derived/ScalarExtension.lean` の `derivedExtension` は標準 semifree 射影解像度から
+構成した実際の主導来加群圏間の関手であり、A′ の A-flatness と local Hom-flatness は不要。
+任意の証明付き射影解像度による計算、解像度選択の自然同型と self/trans 整合性、
+underived への比較射を公開した。比較が同型となる条件は、増大射の係数変更後の
+objectwise 擬同型性として明示している。
+
+`Derived/ScalarExtensionExact.lean` は restriction の擬同型保存を無条件で証明し、
+`derivedRestriction` を構成する。extension についてはホモロジー保存を条件にした結果と、
+環準同型の flatness による十分条件を別に証明した。flat な場合の underived 比較同型も得る。
+
+検証：`lake build SerrePositivity.DifferentialGraded.Checks.DerivedScalarExtension` 成功
+（2739 jobs、警告なし）。非 flat な `ℤ → ZMod 2` の主導来関手を型検査し、主要19宣言は
+すべて標準3公理のみ。新規 sorry・axiom・引用は0件。ルートは自分の import hunk のみ部分 stage。
+
+残り：非 flat な tensor の導来比較と K-flat 置換条件の具体化・自然性、U15d の固定 path
+比較と最終微分・単位・合成整合性。U12f/U15d 全体は未完として維持する。
