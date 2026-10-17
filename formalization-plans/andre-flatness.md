@@ -2274,3 +2274,66 @@ Frobenius 引戻しとの同定、および一般基底に対する原典通り�
 生成宣言を含む 3347 宣言の推移的公理依存は標準 3 公理のみ。
 順序交換・持上げの正則性・実分冪構造・標準値・商射の分冪保存の公開型 5 本を
 `#print` で確認した（終了コード 0）。
+
+### E1.38：ϖ 持上げで還元した実 pd 包の存在・一意性の普遍性
+
+新規 `Andre/PrincipalDPQuotientUniversal.lean` は、一次関係商
+D=`PrincipalDPPresentation A y` の任意のイデアル K による商 Q を扱う。
+正次数イデアル J の商像に実分冪構造 Hq があり、
+入力元の n 次分冪が標準生成元の商像になるなら、K を標準評価で殺す任意の分冪標的へ
+A 代数射として一意な分冪射が存在する。
+標的の正則性・ねじれなし・標数・完備性は一切要求しない。
+標準評価の実商への降下、代表元・標準生成元での評価公式、分冪保存も公開した。
+分冪保存は正次数生成元で分冪合成則を比較して証明し、一意性は元の一次関係商の
+生成元による外延性へ帰着する。商の構造と標準値は明示引数とする一般補題である。
+
+```lean
+theorem existsUnique_principalDPQuotientMorphism
+    {A : Type u} [CommRing A] (y : A)
+    (K : Ideal (PrincipalDPPresentation A y))
+    {B : Type v} [CommRing B] [Algebra A B] {I : Ideal B}
+    (Ht : DividedPowers I) (hyB : algebraMap A B y ∈ I)
+    (hK : ∀ t ∈ K, principalDPEval Ht y hyB t = 0)
+    (Hq : DividedPowers ((principalDPPositiveIdeal y).map (Ideal.Quotient.mk K)))
+    (hγ : ∀ n, Hq.dpow n
+      (Ideal.Quotient.mk K (algebraMap A (PrincipalDPPresentation A y) y)) =
+        Ideal.Quotient.mk K (principalDPGenerator y n)) :
+    ∃! F : (PrincipalDPPresentation A y ⧸ K) →ₐ[A] B,
+      Hq.IsDPMorphism Ht F.toRingHom
+```
+
+新規 `Andre/PerfectPrismVarpiPDUniversal.lean` は E1.37 の実分冪構造と標準値を
+この一般補題に供給し、補助的な構造仮定なしに次の実普遍性を証明した。
+A は可換環、p は素数、W=(A,(d)) は完全 oriented prism、
+hpR は R=A/(d) の p 正則性、f は A 上モニックとする。
+R₀=A/(p)、N=`PowerRootPolynomial R₀ p hp`、z=`powerRootCoefficientPDInput p f`、
+D=`PowerRootCoefficientPDEnvelope p f`、x=`perfectPrismVarpiLift W hW`、
+a=`Ideal.Quotient.mk (Ideal.span {(p : A)}) x` と置く。
+
+```lean
+theorem existsUnique_perfectPrismVarpiPDMorphism
+    (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
+    (hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal))
+    (f : Polynomial A) (hf : f.Monic)
+    {B : Type v} [CommRing B] [Algebra N B] {I : Ideal B}
+    (Ht : DividedPowers I) (hzB : algebraMap N B z ∈ I)
+    (haB : algebraMap N B (algebraMap R₀ N a) = 0) :
+    ∃! F : (D ⧸ Ideal.span {algebraMap R₀ D a}) →ₐ[N] B,
+      (perfectPrismVarpiPowerRootDividedPowers W hW hpR f hf).IsDPMorphism Ht F.toRingHom
+```
+
+haB は係数変更後の標的を表す通常の零化条件である。
+この条件と代数射の係数保持から標準評価が係数主イデアル全体を殺すことを導いた。
+正次数仮定は不要。hpR はこの原典比較用の中間結果にだけ要求し、
+既存の任意基底の根付き perfectoid 拡大定理の型には加えない。
+BS Rem 7.15(1)（著者版 p.62）の係数還元後の pd 普遍性であり、
+Prop 7.11 による経路は用いない。
+原典の R/ϖ 上の無限根環への台環同型と切断表示の係数比較、
+prismatic envelope の Frobenius 引戻しとの同定、一般基底への原典通りの比較は未完了。
+
+対象・集約の `set -o pipefail; lake build` は終了コード 0
+（集約 `SerrePositivity.BhattScholze.Andre.MonicRootedExtension`：4431 jobs）。
+新規 6 公開宣言を `assert_no_sorry` に加えた専用監査は終了コード 0。
+生成宣言を含む 3376 宣言の推移的公理依存は標準 3 公理のみ。
+商の標準評価・分冪保存・一般実普遍性・ϖ 還元の実普遍性の公開型 4 本を
+`#print` で確認した（終了コード 0）。
