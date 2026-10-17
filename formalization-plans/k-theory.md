@@ -1,5 +1,9 @@
 # K理論・スペクトル・dg 理論の形式化計画
 
+2026-10-17更新：段階4は、F1・F2を「関手的な分解を持つモデル圏」に限定して完了（§397）。
+指定分解なしの任意モデル源への一般化は中断（§396）。既存HT-KQの引用依存は証明層と別に監査した。
+M4全体・M6以降・本文への接続は引き続き未完了。下の初期状況表は当時の記録として残す。
+
 作成日：2026-10-13。計画更新日：2026-10-15。
 M1・M2の構成、A1〜C2、共有ホモトピー論H0〜H6、および§129で指定した段階1〜3まで実装・検証済み。
 円スペクトルのレベルモデル・関手的置換・monoidal/SM7と既存豊穣APIの接続が完成した。
@@ -6243,7 +6247,7 @@ Mathlibの局所可呈示性から得られるLocallySmall.{w}やwサイズ余�
 combinatorialという独自のモデル圏型は作らず、既存モデルに局所可呈示性と生成表示を付加する。
 生成射の始域cofibrancy（tractability）は、通常の局所化存在の入力には加えない。
 
-局所性は、一般の導来写像空間RMap_Cを用いて定義する。
+局所性は、指定した両関手的分解から構成する導来写像空間RMap_Cを用いて定義する（§397）。指定分解なしの一般形は中断（§396）。
 S-localなZとは、全s:A⟶BについてRMap_C(B,Z)⟶RMap_C(A,Z)が弱同値となること。
 W_Sは全S-local fibrant対象へのRMapが弱同値を誘導する射のクラス。
 Sのcofibrantな射への置換・代表の取り替えで同じ局所性を得ることを証明する。
@@ -6297,9 +6301,9 @@ IDは計画上の単位であり、1行を1コミットや1日とみなさない
 | R3 | Smith/Recognition。Smith型の認識定理 | R2、Transfer/Recognition | Wの2-out-of-3/retract閉性、I.rlp⊆W、cof(I)∩Wのpushout/超限合成閉性からModelCategory Cを構成。cof=I.rlp.llp、fib=(cof∩W).rlp、生成性と両関手的分解 |
 | A0（完了、§166） | Smith/AccessibleModelFactorizations。生成分解・Q/Rのaccessibility | R1、既存Replacement | 分解のZ/左右因子とQ/Rが、十分大きい共通cardinalでaccessible。関手的という性質と混同しない |
 | A1（完了、§166） | Smith/WeakEquivalencesAccessible。元モデルWとArrow C | A0、可到達圏の必要な閉操作 | combinatorialモデルの元のWがaccessibly embedded accessibleであることを証明。任意のaccessible関手のfull imageがaccessibleとは仮定しない |
-| F0 | HomotopyFunctionComplex/Reedy。latching/matchingとReedy分解 | A0、Mathlib ReedyStructure | まずΔとΔopに必要な一般的次数帰納を実装。Reedy cof/fibとobjectwise Wのモデル公理、関手的resolutionを証明 |
-| F1 | HomotopyFunctionComplex/Basic。cosimplicial resolutionからRMap | F0、Q/R | 任意のモデル源CでRMap:Cᵒᵖ⥤C⥤SSetを構成。両変数の弱同値不変性とfibrancy、ordinary Ho(C)の射とのπ₀比較 |
-| F2 | HomotopyFunctionComplex/Comparison | F1 | resolution/置換の選択を自然な弱同値のzigzagで比較。単体的モデル圏の場合は実際のMap(QX,RY)と比較。厳密な同一視を要求しない |
+| F0（完了、§174・§397） | HomotopyFunctionComplex/Reedy。latching/matchingとReedy分解 | A0、Mathlib ReedyStructure | まずΔとΔopに必要な一般的次数帰納を実装。Reedy cof/fibとobjectwise Wのモデル公理、関手的resolutionを証明 |
+| F1（完了：関手的な分解を持つ場合、§397） | HomotopyFunctionComplex/ChosenResolutionHom、SourceInvariance、PiZero | F0、指定cof/fib | 指定した両関手的分解を持つCでRMap:Cᵒᵖ⥤C⥤SSetを構成。両変数のW不変性・Kan性・ordinary Ho(C)との自然なπ₀比較。指定分解なしの一般形は中断（§396） |
+| F2（完了：関手的な分解を持つ場合、§397） | HomotopyFunctionComplex/ChosenComparison、ChosenMapComparison、FrameComparison | F1 | 関手的resolution・指定置換の選択を双関手間の自然弱同値zigzagで比較。単体的モデル源では実Map(QX,RY)と比較。非関手的な一般形は中断（§396） |
 | F3（完了、§185） | HomotopyFunctionComplex/Accessible | A0,A1,F0,F1 | 必要なresolutionと、固定した小さいSに対するRMap評価が共通cardinalでaccessible。任意Xについて同じcardinalを無条件に要求しない |
 | F4（完了、§199） | HomotopyFunctionComplex/FilteredColimits | A0,F1 | 十分大きいfiltered colimitとhomotopy colimitの比較、必要範囲でRMapのhomotopy colimit→homotopy limit公式。M4全体を先に要求しないが、この証明を省かない |
 | L0（完了、§193） | HomotopicalAlgebra/Localization/Basic。局所性・W_S・条件付き局所化API | F1,F2 | Sの代表・cofibrant置換の独立性、元のW⊆W_S、2-out-of-3・retract閉性、空集合/元の弱同値だけのSで元モデルを回復 |
@@ -22279,3 +22283,224 @@ Tへの制限で元の恒等比較全体が面に残り、全三角形・実評�
 π₀とordinary Ho(C)の自然比較の統合、resolution・置換の選択独立性、単体的モデル圏での
 実際のMap(QX,RY)との比較は引き続き未完了である。F全体の受入条件を維持する。
 sorry・引用axiomは追加せず、amend・rebase・resetは使用していない。
+
+
+## 396. 任意モデル源への一般化（中断）（2026-10-17）
+
+利用者の方針変更により、「指定した関手的分解を仮定しない任意のモデル源で、小さい厳密な
+RMapを構成する」一般化をここで中断する。stage 4のF1・F2は、Mathlibのモデル圏と
+指定された両関手的分解を入力する契約に変更する。再監査と完了判定は§397。
+中断は一般形の成立・不成立の数学的判定ではない。以下の未完了事項を完了とは数えない。
+
+### 396.1 到達点と保存した成果
+
+§224〜§393の全モジュールを削除せず保存した。§394・§395の直近の成果も維持する。
+resolution/presentation圏から局所化値の双関手、実際のbarとaugmentation、値ごとの小さいKan参照、
+ordinary Ho(C)の射とのπ₀ラベル、選択空間の相対持ち上げとパラメータ自然性を構成済み。
+小さい参照の射・合成の比較、任意次元の全退化を保持する正規化horn操作も証明済みである。
+
+K→K′に沿う操作間の比較は§393で構成し、§395では恒等・合成の三角形まで接続した。
+ただし、これだけから全次数の整合系や元の基底上の厳密な関手は得ていない。
+今回の停止時に進行していた小単位のうち、次の二モジュールだけを対象build・公理監査まで完了し、
+コミット`5ab0918e`へ保存した。新たな一般化の作業は開始していない。
+
+- `Simplicial/NormalizedHornTargetFaces`：以前の合成三角形の全三辺を元の比較写像で記述。
+- `Simplicial/NormalizedHornTargetAssociativity`：K→L→M→Nの四つの以前の三角形から、
+  六つの共有辺の一致を証明して四面体を構成。全四面、horn、全退化入力を保持し、
+  T上の全族と実評価はTの変更に厳密に自然。
+
+対象ビルドは1719 jobsで成功。二モジュール全23宣言を
+`/tmp/stage4-interrupted-unit-audit.lean`で監査し、標準3公理のみで成功した。
+両モジュールはFoundationsへ新たにimportしていない。
+
+### 396.2 未コミットの作業中ファイル
+
+`SerrePositivity/HomotopicalAlgebra/Simplicial/RelativeFillerComparison.lean`だけが、
+このチャットによる未コミット・未追跡の実装ファイルとして残る。
+任意の二つの単射に対し、基底と両指定部分を固定して二つのfillerを比較する補題を試作中。
+最終の対象buildは失敗しており、pushoutの両脚での等式と結合順序の証明が未解消である。
+sorryで埋めず、import・stage・commitはしていない。stage 4の完了監査にも用いない。
+再開時にはこのファイルを読み、型検査・対象全宣言の監査まで済ませてから公開すること。
+
+§124（K-Aの実行計画）を含む古い未コミット変更は、今回および直近の継続作業では
+作成していない。元の作成者は未確認であり、本作業の変更として取り込まない。
+§124全体の本文のSHA-256を変更前後で比較し、一致を確認した。
+共有作業木のdg・CLMST・本文等の変更もこの監査のコミットへ取り込まない。
+
+### 396.3 残っていた項目
+
+- K→K′の比較を、恒等・合成・全高次境界に整合する一つの系へ統合すること。
+  個別の区間・三角形・四面体の存在を、全次数の互換な選択で代用しない。
+- 元の単位・合成の指定面と全退化面を保持する全次数の帰納。
+- 元のCᵒᵖ×C上で、値宇宙が元のHom宇宙vである小さい厳密なRMapを構成すること。
+- 同じ最終関手について、自然な弱比較、両変数の弱同値不変性、Kan性、
+  ordinary Ho(C)の射との自然なπ₀比較を統合すること。
+- 関手的分解を指定しない一般形のF2：resolution・置換の自然な弱同値zigzagによる選択独立性、
+  単体的モデル源の実際のMap(QX,RY)との比較。
+
+### 396.4 二つの障害と、反例が否定していないもの
+
+§286の`StrictValueObstruction`・`StrictValueDescentCounterexample`・
+`StrictValuePresentationCounterexample`は、弱同値なKan値を対象ごとの同型の範囲で固定し、
+基底上の厳密なSSet値関手へ降下させる一般手順の反例である。
+同じ例には値を変更する自然弱比較がある。従って最終RMapの存在の反例ではない。
+
+§327の`SmallSubdiagramObstruction`は、locally smallな大きい星形基底で、
+各値がKanかつホモトピー的に小さくても、全基底上の小さい部分図式から元の図式への
+単一の自然弱比較を一般には選べないことを示す。同じ例には逆向きの小さい自然商がある。
+従って自然な小値化や、向きを混ぜた自然弱同値zigzagを否定するものではない。
+値ごとの小さい閉包だけを根拠に、全基底に沿う閉性・小ささを推論してはならない。
+
+### 396.5 再開するときの入口
+
+1. まず§286・§327と上の未完了一覧を読み、値を弱同値なものへ変更することを許す。
+2. `HomotopyFunctionComplex/FramedMappingBifunctor`、`LocalizedMappingBifunctor`、
+   `ReplacementMappingBifunctor`、`OrdinaryBarReplacementComparison`で、既存の局所化値・
+   実bar・置換比較の出力と宇宙を確認する。§324以降の比較の向きも保持する。
+3. `OrdinaryMappingClassLabel`とordinary barのπ₀比較、§337以降の小さい内部Hom参照、
+   `OrdinaryBarHomSections`のHomごとのsectionを調べる。これを合成保存する圏のsectionと解釈しない。
+4. `NormalizedHornFilling`、`NormalizedHornTargetComparison`、
+   `NormalizedHornTargetComposition`、`NormalizedHornTargetIdentity`と上の停止時の二モジュールから、
+   全次数の境界・退化の互換性を実装する。`RelativeProductLifting`・`RelativeBoundaryFilling`は
+   互換な指定境界の延長を供給するが、境界自体の構成は入力として残る。
+5. 厳密な小さい双関手と自然弱比較を実際に構成してから、不変性・Kan性・π₀・F2を統合する。
+   大きい補助SSetのモデル構造を新しく仮定したり、源の対象宇宙とHom宇宙を等置しない。
+
+既存の受入例は`check_framed_mapping_bifunctor`、`check_resolution_hom_pi_zero`、
+`check_normalized_horn_target_comparison`、`check_normalized_horn_target_coherence`、
+共有入口は`HomotopicalAlgebra/Foundations`と`audit_homotopical_foundations`。
+これらの成功だけでは中断した一般形の最終契約を満たさない。
+
+
+## 397. Stage 4 の契約変更と完了監査（2026-10-17）
+
+### 397.1 判定と入力の固定
+
+**stage 4は、F1・F2を「関手的な分解を持つモデル圏」に限定して完了とする。**
+F1・F2の必要項目は既存定理で満たされ、L0〜L5・E0・S0〜S3はその版だけを使用する。
+不足して実装を要する使用中の項目は見つからなかった。新しい数学的証明・sorry・axiom・引用は追加しない。
+M4全体、M6以降のK理論・本文への接続、§396の一般化まで完了したとの判定ではない。
+
+共通の源入力は`C : Type u`、`Category.{v} C`、Mathlibの`ModelCategory C`と、次の指定データ。
+
+```lean
+cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C)
+fib : MorphismProperty.FunctorialFactorizationData (trivialCofibrations C) (fibrations C)
+```
+
+`HasFunctorialFactorization`を入力する場合には既存の
+`MorphismProperty.functorialFactorizationData`でこれらを選べる。
+combinatorialな源では`ModelGeneration.hasFunctorialFactorization_cofibration_trivialFibration`と
+`hasFunctorialFactorization_trivialCofibration_fibration`が既に生成表示から両者を供給する。
+従って一般の左固有combinatorialモデルへの局所化の存在に、別の生成性・tractabilityを加えない。
+F1・F2自体にはcombinatorial性は不要である。対象宇宙uとHom宇宙vは独立。
+
+以下、`HFC = SerrePositivity.HomotopyFunctionComplex`、`R = HFC.chosenResolutionHom cof fib`。
+値モデルを使う項目では`ModelCategory SSet.{v}`と`hcof : cofibrations SSet = monomorphisms`を明示する。
+幾何的弱同値への翻訳にはさらに`hw : weakEquivalences SSet = SimplicialHomotopy.weakEquivalences`。
+Kan性をその値モデルのfibrancyと読む場合は`hfib : fibrations SSet = J.rlp`も使う。
+π₀比較では`L : C ⥤ H`と`L.IsLocalization (weakEquivalences C)`を入力する。
+
+### 397.2 F1・F2の公開名・型・状態
+
+すべて下表の指定分解版では完了。表中の型は共通入力を省略した結論であり、
+完全な引数と型は`#check @...`を含む`scripts/audit_stage4_contract.lean`および各ソースで確認した。
+
+| 項目 | 公開名（HFC内） | 結論の型・内容 | 状態 |
+| --- | --- | --- | --- |
+| F1：厳密な小さい双関手 | `chosenResolutionHom`（ChosenResolutionHom.lean） | `Cᵒᵖ ⥤ C ⥤ SSet.{v}`。単体は実際の`Q(X)[n] ⟶ R(Y)` | 完了。源モデルとcof/fibのみ |
+| F1：源側W不変性 | `chosenResolutionHom_map_source_weakEquivalence`（SourceInvariance.lean） | `W_C(f.unop) → W_SSet ((R.map f).app Y)` | 完了。値モデルとhcofを使用 |
+| F1：標的側W不変性 | `chosenResolutionHom_map_target_weakEquivalence`（TargetInvariance.lean） | `W_C(g) → W_SSet ((R.obj X).map g)` | 完了。同上 |
+| F1：同時W不変性 | `chosenResolutionHom_map_both_weakEquivalence` | 両変数の比較の合成が`W_SSet`に属する | 完了。同上 |
+| F1：Kan性 | `chosenResolutionHom_kanComplex`（HornTensor.lean） | `SSet.KanComplex ((R.obj X).obj Y)` | 完了。SSetのモデル構造不要。hfibでfibrancyへ翻訳 |
+| F1：ordinary Ho(C)とπ₀ | `chosenResolutionHomPiZeroEquiv`（PiZero.lean） | `SSet.π₀ ((R.obj X).obj Y) ≃ (L.obj X.unop ⟶ L.obj Y)` | 完了。SSetのモデル構造不要 |
+| F1：π₀の両変数自然性 | `chosenResolutionHomPiZeroEquiv_naturality_source`、`_naturality_target` | `mapπ₀`がそれぞれ`L.map f.unop ≫ -`、`- ≫ L.map g`に対応 | 完了 |
+| F2：任意の関手的resolution族の比較 | `ResolutionComparison.common`、`homLeft`、`homRight`と両`_weakEquivalence` | `resolutionHom q RY ⟶ commonHom ⟵ resolutionHom q′ RY`の実自然比較。原変数が反変なので共通resolutionからの射とHomの比較の向きは逆 | 完了。指定した補助cofを使用 |
+| F2：両分解・置換の独立性 | `ChosenComparison.middle`、`left`、`right`、`left_weakEquivalence`、`right_weakEquivalence` | `R₁ ⟶ middle ⟵ R₂`の双関手間の自然弱同値。middleもKan | 完了。任意の二組の指定分解を比較 |
+| F2：幾何的Wのzigzag | `ChosenComparison.geometricWeakEquivalences` | 上の両成分が`SimplicialHomotopy.weakEquivalences`に属する | 完了。値モデル・hcof・hwを使用 |
+| F2：単体的モデル源の実Map | `ChosenMapComparison.fromResolution`、`fromMap`、`geometricWeakEquivalences` | `R ⟶ middle ⟵ enrichedReplacementHom (cofibrantSource cof) (fibrantTarget fib)` | 完了。実tensor/cotensor・Quillen作用、値モデル・hcof・hwを使用 |
+
+最後の右端は実際の`Map(QX,RY)`であり、Ho(SSet)内の対象だけの比較ではない。
+一般のframeとの比較も`FrameComparison.homLeft`・`homRight`と各弱同値定理を既に持つ。
+canonicalな置換以外の任意の非関手的な置換を全基底上で同時に比較する一般形は§396へ移した。
+
+### 397.3 L・E・Sの実使用と中断系列からの独立性
+
+全Localization 60モジュール、Spectra/Stable 17モジュール、および
+`Spectra/ModelCategory/Combinatorial`・`LeftProper`の2モジュール、計79を根として、
+直接importとRMap/F2の参照、再帰的なプロジェクト依存を調べた。
+[全79モジュールのimport・参照表](stage4-dependency-audit.md)に記録した。
+再現コマンドは`python3 scripts/audit_stage4_dependencies.py`（監査コミット`61acda31`）。
+
+到達する663ソースはすべてS3完了コミット
+`9969643992424d419484ab27069a24b8973b45d7`に存在し、**内容もその時点と一致**した。
+§224以後に追加された依存0、変更された到達ソース0。従って中断した一般化は使っていない。
+
+| 系列 | 実際に使う入口と比較 | 指定分解版で十分か |
+| --- | --- | --- |
+| L0 | `Localization.Basic`がRを定義に使用。`ChoiceIndependence.mappingTest_choices_eq`・`localObjects_choices_eq`・`localEquivalences_choices_eq`が`ChosenComparison.left/right`の成分弱同値を使用 | 十分 |
+| L1 | `SmallHomComparison.chosenHom`・`exists_accessible_mapping_tests`、`SmallHomAccessible`、固定した小さいテスト族 | 十分。局所可呈示性によるHom宇宙変更であり、任意モデル源の小値化ではない |
+| L2 | 上の小さいHomテストと`AccessibleLocalReplacement`、局所対象・元のWのaccessibility | 十分 |
+| L3 | frame比較、hocolim上のmappingテスト、`SmallHomComparison`の両変数不変性 | 十分 |
+| L4 | `ModelExistence`からL0〜L3・Smith存在を使用 | 十分 |
+| L5 | `Detection`・`CovariantDetection`・`ReplacementHomotopy`がπ₀比較と自然性を使用。`ModelComparison.changeChoices`は局所クラスの選択独立性を使用 | 十分 |
+| E0 | `EnrichedTestComparison`が`EnrichedTensorFrame.weakEquivalence_iff`と`mappingTest_eq_of_frame`を使用。`FrameTests`の実自然cospanが通常RMapへ接続 | 十分。非関手的な一般形のF2は不要 |
+| S0 | 一般スペクトルの局所可呈示性・レベルモデル・左固有性を使用 | 十分 |
+| S1 | `FrameLocality`→`FrameArrowTests`→実frame比較によりRMapテストをbonding mapへ移す | 十分 |
+| S2 | L4とE0、Ω_Kによる局所性、tensor適合性を使用 | 十分 |
+| S3 | 構成済み安定モデル、導来K-tensor逆関手、通常のhomotopy pushout懸垂との自然比較、既存ループの右導来 | 十分 |
+
+### 397.4 最終公開定理・対象ビルド・公理監査
+
+下表はすべて実在する入口。共通の仮定（宇宙付き局所可呈示性・生成表示・左固有性・
+SSet各必要宇宙の互換モデル）を各ソースで明示しており、ここでは結論の役割を示す。
+E0では生成始域のcofibrancyとtensor適合性、スペクトルではKのcofibrancy等を勝手に落とさない。
+一般Kの可逆化と、円K=S¹における通常の懸垂の可逆性を区別する。
+
+| 公開名 | 提供する最終出力 | 対応する再検証 |
+| --- | --- | --- |
+| `Bousfield.exists_modelPresentation`、`modelPresentation` | 同じC上の実`ModelCategory`、cof=Cof_C、W=W_S、fib=(Cof_C∩W_S).rlp、生成表示 | `check_localization_model_existence` |
+| `Bousfield.ModelPresentation.isLocalizationModel`、`leftProper` | fibrant↔元のfibrantかつS-local、局所モデルの左固有性 | 同上 |
+| `Bousfield.exists_accessible_localReplacementData`、`localReplacementData` | 実際のL_S・ηとaccessibility。検出・冪等性・比較は既存LocalReplacementData API | L5の対象モジュールと全宣言監査 |
+| `Bousfield.IsLocalizationModel.leftQuillen_iff_derived_inverts` | 局所モデルからの左Quillen性とLFによるSの可逆化の同値 | `check_localization_quillen_universal` |
+| `Bousfield.exists_iterated_localization` | 反復局所化の存在と元の局所化との証明書 | `check_iterated_localization` |
+| `Bousfield.exists_enriched_localization` | V値導来Homの局所性と一致する実局所モデル、SM7・tensor/cotensor・単位公理 | `check_enriched_localization_existence` |
+| `Bousfield.exists_monoidal_localization` | tensor適合条件下の実monoidal局所モデル | `check_monoidal_localization` |
+| `SpectrumLevelModel.symmetricSpectrum_isLocallyPresentable`、`exists_leftProper_combinatorial_levelModel` | 一般C,Kの局所可呈示性と左固有なレベルモデル | `check_spectra_presentability`、`check_spectra_level_left_proper` |
+| `SpectrumStabilization.exists_stableModelPresentation` | 実際のΩ_K局所モデル、三クラス・生成性 | `check_spectrum_stable_model`、`check_spectrum_omega_local_objects` |
+| `SpectrumStabilization.StableModelPresentation.enriched_model`、`monoidal_model`、`enriched_unit` | 同じ安定モデルの豊穣・monoidal構造と単位公理 | `check_spectrum_stable_enriched` |
+| `SpectrumStabilization.StableModelPresentation.derivedTensorCotensorEquivalence` | 導来K-tensorとcotensorの実同値 | 対象モジュールと全宣言監査 |
+| `SpectrumStabilization.StableModelPresentation.exists_ordinarySuspensionLoopEquivalence` | 円スペクトルで、通常の導来懸垂を順関手、既存ループの右導来を逆関手とする実同値 | `check_ordinary_suspension_stability` |
+
+上記とF1/F2の各モジュール、共有`HomotopicalAlgebra.Foundations`、既存HT-KQ入口を
+まとめた対象ビルドは3740 jobsで成功した。
+F1/F2の5件、L/Eの5件、Sの6件、計16件の利用例もすべて終了コード0で成功。
+
+- `scripts/audit_stage4_contract.lean`：証明層の全到達8392宣言・660モジュールを監査。
+  全てpropext・Classical.choice・Quot.soundのみ。sorry・引用axiom依存なし。
+  663ソースと660モジュールの差は宣言を持たない入口のためである。
+- `scripts/audit_homotopical_foundations.lean`：14216宣言・1004モジュール、同じ標準3公理のみ。
+  中断した成果をまとめる既存入口もbuild・監査を維持した。
+- `scripts/check_kan_quillen_resolution_hom.lean`：155宣言、直接引用は既存HT-KQのみ。
+
+**HT-KQの境界**：`Inputs/Homotopy/KanQuillen.kanQuillen_model_exists`には、採用済み引用としての
+既存`by sorry`があり、これを選ぶ上位入口には`Lean.sorryAx`依存が残る。
+これは標準3公理のみの証明層と区別する。SSetの互換モデルを明示的に入力した上記一般定理には
+HT-KQの公理依存はなく、実際のKan–Quillenモデルをこの入口から供給する具体的適用がHT-KQを使う。
+今回このsorryを新設・増設・除去したものではない。ビルド警告もこの既存宣言だけである。
+
+### 397.5 補ったもの・範囲外・次の系列の入口
+
+数学的な不足を補う実装は0件。新規は依存監査Python、公開型と全到達宣言のLean監査、
+全モジュールの依存表とこの記録だけである。停止時の検証済み小単位は§396.1の別コミットへ保存した。
+ルート`SerrePositivity.lean`、`HomotopicalAlgebra/Foundations.lean`、既存の共有監査スクリプトは
+今回変更していない。従ってこれらにstageする新規hunkもない。amend・rebase・resetは使用していない。
+
+範囲外は、§396の任意モデル源への一般化、非関手的選択の全基底上の同時比較、
+全次数の高次整合系からの厳密化である。一般形を「完了」と表示しない。
+M4の全図式・hG・有理化、M6の非連結K理論・dg/スペクトル比較、M7以降の降下は後続系列に残す。
+
+M6以降へ渡せる入口は、`chosenResolutionHom`とその自然弱比較、ordinary Ho(C)とのπ₀同値、
+`ModelPresentation`と`LocalReplacementData`、局所化のQuillen普遍性・反復比較、
+`StableModelPresentation`の安定・monoidal・豊穣構造、通常の導来Σ⊣Ωの実同値である。
+M5は独立系列としてそのまま継続でき、今回新しいdg・K理論の入力や引用仕様は変更していない。

@@ -3449,3 +3449,16 @@ Kan性やモデル構造は不要である。受入検証は`check_relative_boun
 `NormalizedHornTargetIdentity`は以前の恒等比較と二つの厳密な定数辺を面に持つ三角形を構成する。
 受入検証は`check_normalized_horn_target_coherence`（66宣言・4モジュール）。
 三重合成以降の整合性の実構成と、小さい厳密なRMapへの接続は残る。
+
+
+### Stage 4の完了と任意モデル源への一般化の中断（§396–397）
+
+F1・F2の契約は、MathlibのModelCategoryと指定した両関手的分解を持つ場合に限定した。
+`chosenResolutionHom`、両変数のW不変性・Kan性・ordinary Ho(C)との自然なπ₀比較、
+`ChosenComparison`の自然弱比較、`ChosenMapComparison`の実Map(QX,RY)比較は既存定理で完了。
+L0〜L5・E0・S0〜S3の79モジュールとその663ソースの依存閉包は§223時点から変更がなく、
+§224以後の一般化に依存しない。stage 4はこの契約で完了した。
+証明層8392宣言・660モジュール、共有監査14216宣言・1004モジュールは標準3公理のみ。
+HT-KQの上位入力には既存の引用sorryがあり、証明層とは分けて追跡する。
+再現入口は`scripts/audit_stage4_contract.lean`と`scripts/audit_stage4_dependencies.py`。
+指定分解なしの一般化はk-theory.md §396に到達点・障害・再開手順を記録して中断し、成果は削除しない。
