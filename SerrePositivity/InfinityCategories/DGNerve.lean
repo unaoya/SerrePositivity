@@ -40,6 +40,8 @@ public import SerrePositivity.InfinityCategories.DGNerve.FiberBoundarySolution
 
 public import SerrePositivity.InfinityCategories.DGNerve.FiberBoundaryPrefixEquation
 
+public import SerrePositivity.InfinityCategories.DGNerve.FiberBoundaryDEquations
+
 /-! # dg nerve の集約入口
 
 概要：任意の dg 圏の dg nerve、内部ホーン充填、ホモトピー圏と H⁰ の比較を公開する。
