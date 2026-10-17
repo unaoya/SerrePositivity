@@ -57,3 +57,30 @@ dg 関手を用いた証明であり、グラフ kernel に限定されない。
 成功（2786 jobs、警告なし）。主要7宣言は標準3公理のみ。新規 sorry・axiom・引用なし。
 一般の主 kernel への条件の定式化、全 shift の実作用との可換性、充満忠実性の
 thick 帰納、十分性・必要性の最終定理は未完。
+
+## 厚い生成性と同値の証拠
+
+全 Hom 比較の単位は `7e9e1689`（直後の stat は自分の3ファイルのみ）。
+`CriterionPerfGeneration.lean` の `criterionPerfColumnsThickGenerate` は、主 kernel
+の列を含む厚い性質が全 perfect 対象を含むという第三条件。列が perfect であることは
+この条件に含めず、第一条件として独立に受け取る。
+
+`criterionPerf_image_le_iff_columns` は U13 の `modulePerfect_le_iff_generators` を
+使って主作用の像を含む厚い性質を列上で検査する。
+`criterionPerfEssImage_retract_closed` は、冪等完備な始域からの充満忠実関手の像が
+retract に閉じることを実際に冪等元を分裂して証明する。
+`criterionPerf_essSurj_iff_columnsThickGenerate` は列が perfect で制限が充満忠実なら、
+第三条件と本質的全射が同値であることを示す。したがって Perf 判定には厚い生成性で
+十分であり、無限余積や compact 生成性の追加仮定は不要。
+
+`CriterionPerfEquivalence.lean` の `CriterionPerfEquivalenceWitness` は、Perf 圏の同値
+（逆関手・二つの自然同型を含む）と、その関手の包含との合成が主導来作用の制限に
+一致する自然同型を保持する。任意の圏同値を kernel 作用と取り違えない。
+この証拠から `columnsPerfect` と `columnsThickGenerate` を証明した。
+`criterionPerfEquivalenceWitnessOfFullyFaithful` は列の perfect 性・充満忠実性・
+厚い生成性からこの証拠を構成する補助定理。**全 Hom 条件から充満忠実性への橋は
+まだ受入済みではなく、この補助定理だけを最終 Morita 判定とはしない。**
+
+検証：GenerationChecks（2785 jobs）と EquivalenceChecks（2786 jobs）の対象ビルド成功、
+警告なし。計11宣言の監査は標準3公理のみ。右随伴・平坦性・局所 K-flat 条件を使わず、
+新規 sorry・axiom・引用なし。
