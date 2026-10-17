@@ -4951,3 +4951,263 @@ BS Rem 7.15（著者版 p.62）への応用であり、原典とは異なる有�
 （集約 4564 jobs）。新規 6 公開宣言の `assert_no_sorry` と専用監査は
 終了コード 0。生成宣言を含む 6987 宣言の推移的公理依存は標準 3 公理のみ。
 新規 6 公開宣言の正確な型を `#check` で確認した（終了コード 0）。
+
+### E1.70 通常の方程式商の普遍性と実完備化への入力（2026-10-17）
+
+本節は André E1・E2 の追記。E1.69 の剰余根列による試験データを、
+通常の方程式商からの実際の環射に置き換える工程。
+新規 `Andre/PowerRootEquationQuotient.lean` に 7 公開宣言を追加した。
+共通の引数は {R : Type u} [CommRing R]、p : ℕ、hp : 0 < p、f : Polynomial R。
+P=PowerRootPolynomial R p hp、I=Ideal.span {powerRootPolynomialBaseMap R p hp f} とする。
+以下は定義または定理の正確な型・結論（B の宇宙 v は u と独立）。
+
+```lean
+PowerRootEquationQuotient p hp f : Type u := P ⧸ I
+powerRootEquationQuotientCoeff p hp f : R →+* PowerRootEquationQuotient p hp f
+powerRootEquationQuotientRoot p hp f (n : ℕ) : PowerRootEquationQuotient p hp f
+-- powerRootEquationQuotientRoot_pow p hp f n
+powerRootEquationQuotientRoot p hp f (n+1)^p = powerRootEquationQuotientRoot p hp f n
+-- powerRootEquationQuotientRoot_equation p hp f
+f.eval₂ (powerRootEquationQuotientCoeff p hp f)
+  (powerRootEquationQuotientRoot p hp f 0) = 0
+```
+
+c=powerRootEquationQuotientCoeff p hp f、r=powerRootEquationQuotientRoot p hp f、
+S=PowerRootEquationQuotient p hp f と書くと、
+`powerRootEquationQuotient_ringHom_ext` は {B : Type v} [CommRing B]、
+F G : S →+* B、hc : F.comp c=G.comp c、hr : ∀ n, F (r n)=G (r n) の下で F=G を証明する。
+`existsUnique_powerRootEquationQuotientHom` は、同じ B、k : R →+* B、
+ρ : ℕ → B、hρ : ∀ n, ρ (n+1)^p=ρ n、hf : f.eval₂ k (ρ 0)=0 の下で
+
+```lean
+∃! F : S →+* B, F.comp c=k ∧ ∀ n, F (r n)=ρ n
+```
+
+を証明する。モニック性・正次数・素数性は前提ではなく、零環や定数多項式も含む。
+無限根多項式の具体的評価を主イデアルで降下し、係数と全根による外延性で一意性を示す。
+
+新規 `Andre/PowerRootPrismMonicEquationInput.lean` に 1 公開定理を追加した。
+完全な源 prism W : OrientedPrism p A、hW、f : Polynomial A、p の素数性を固定する。
+P、E、dP、a、L、jL、H、uL、DH は E1.69 と同じ raw 実完備化のデータ。
+R=A ⧸ W.ideal、fR=f.map (Ideal.Quotient.mk W.ideal)、
+S=PowerRootEquationQuotient p hp fR、cS と rS はこの商の係数射・標準根列とする。
+`existsUnique_powerRootPrismMonicCompletionHom_of_equation_input` の引数は
+{B : Type u} [CommRing B]、Q : OrientedPrism p B、
+hB : ∃ N : ℕ, ∀ n : ℕ, ∀ x : B ⧸ Q.ideal,
+  (p : B ⧸ Q.ideal)^n*x=0 → (p : B ⧸ Q.ideal)^N*x=0、
+k : OrientedPrism.Hom W Q、η : S →+* B ⧸ Q.ideal、hη : η.comp cS=k.quotientMap。
+元の H の環構造 `pdCompletionCommRing L p (jL dP)` を let で導入した後の結論は
+
+```lean
+∃! F : H →+* B,
+  DH.IsDeltaHom Q.deltaStructure F ∧
+    F.comp (powerRootPrismMonicCompletionBaseMap W hW f)=k.toRingHom ∧
+      ∀ n, Ideal.Quotient.mk Q.ideal
+        (F (uL (jL (powerRootPolynomialVariable A p hp n))))=η (rS n)
+```
+
+である。標準根列の互換性と fR の方程式を η で写し、係数射との可換性から
+元の f の剰余方程式を得て、E1.69 の普遍射を使う。
+試験 prism の完全性・p 正則性、生成元の厳密な保存、源の prism 商の p 正則性、
+f のモニック性・正次数はこの普遍射には不要。
+
+BS Rem 7.15（著者版 p.62）の完備入力環への接続を目的とする、原典とは異なる
+具体的な通常の商・根列抽出による経路を docstring に明記した。
+ここでの S は未完備の通常の商であり、原典の完備入力環との同一視をしていない。
+完備化とモニック商の交換、原典の完備 S との同定、源 H 自体の prism 性、
+raw と実完備化の正則性・完全忠実平坦性に残る hpR、原典の係数表記との最終照合は未完了。
+絶対 prismatic envelope 全体の同定とはまだ数えない。
+承認済み hdeg を持つ任意族存在定理の型は変更していない。
+
+検証：新規 2 ファイルの対象ビルドと集約ビルドは終了コード 0
+（集約 4566 jobs）。新規 8 公開宣言の `assert_no_sorry` と専用監査は
+終了コード 0。生成宣言を含む 7056 宣言の推移的公理依存は標準 3 公理のみ。
+新規 8 公開宣言の正確な型を `#check` で確認した（終了コード 0）。
+
+## 並列分割の受渡し（2026-10-17）
+
+本節は依頼に基づく A1-a からの一度限りの受渡し。参照時点は E1.70。
+A1-a は源 H 自体の prism 性・完備入力環 S との接続・絶対 envelope 同定の合流を担当する。
+A1-b は hpR 依存の解消、A1-c は原典の R/ϖ と実装の R/p の係数表記の最終照合を担当する。
+A1-b・A1-c は Andre/ の既存ファイルを変更せず、新規ファイル・別名で公開する。
+既存 hpR 付き定理の差替えは成果到着後に A1-a が行う。それまでは既存定理を変更しない。
+以下は A1-a の受渡し情報であり、他担当の記録節ではない。
+
+### (1) A1-b：hpR を持つ公開定理と使用箇所
+
+以下の名前はすべて名前空間 `SerrePositivity.BhattScholze.Andre` 内。
+ファイルはすべて `SerrePositivity/BhattScholze/Andre/` からの相対パスで示す。
+8 本の共通の暗黙引数と、順序付き明示引数は次の通り。
+最初の 5 本は W, hW, hpR, f, hf、後の 3 本はさらに hdeg を持つ。
+
+```lean
+{A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
+(W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect)
+(hpR : IsSMulRegular (A ⧸ W.ideal) (p : A ⧸ W.ideal))
+(f : Polynomial A) (hf : f.Monic)
+-- 6–8 のみ
+(hdeg : 0 < f.natDegree)
+```
+
+結論の略記は既存コードそのままの次の定義を使う。これらを展開すれば正確な型となる。
+`pdCompletionCommRing` は各結論の let で導入される構造を使う。
+
+```lean
+hp := Nat.Prime.pos (Fact.out : p.Prime)
+P := PowerRootPolynomial A p hp
+E := powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure
+dP := algebraMap A P W.generator
+a := powerRootPrismMonicUnaryFamily (p := p) f
+L := DeltaAdjoinDivision E dP a
+Raw := L
+jL := deltaAdjoinDivisionMap E dP a
+dL := jL dP
+H := PDCompletionH0 L p dL
+uL := pdCompletionUnit L p dL
+T := H ⧸ Ideal.span {uL dL}
+R := A ⧸ W.ideal
+```
+
+1. `powerRootPrismMonicRaw_p_mul_injective` — `PowerRootPrismMonicRawRegular.lean`。上記の明示引数を適用した結論：
+
+```lean
+theorem powerRootPrismMonicRaw_p_mul_injective :
+    Function.Injective (fun r : Raw => (p : Raw) * r)
+```
+
+hpR の使用：証明末尾の `deltaDivisionUnaryRaw_p_mul_injective` に `powerRootPrismGenerator_modPrime_regular p W hW hpR` を渡す。元の係数環で d mod p が正則という、有限段帰納の入力。
+
+2. `powerRootPrismMonicRaw_mod_prime_generator_regular` — `PowerRootPrismMonicRawPairRegular.lean`。上記の明示引数を適用した結論：
+
+```lean
+theorem powerRootPrismMonicRaw_mod_prime_generator_regular :
+    IsSMulRegular (Raw ⧸ Ideal.span {(p : Raw)})
+      (Ideal.Quotient.mk (Ideal.span {(p : Raw)}) (deltaAdjoinDivisionMap E dP a dP))
+```
+
+hpR の使用：証明末尾の `deltaDivisionUnaryRaw_mod_prime_d_regular` に同じ `powerRootPrismGenerator_modPrime_regular p W hW hpR` を渡す。
+
+3. `powerRootPrismMonicRaw_pdCompletion_generator_regular` — `PowerRootPrismMonicRawPairRegular.lean`。上記の明示引数を適用した結論：
+
+```lean
+theorem powerRootPrismMonicRaw_pdCompletion_generator_regular :
+    let dL := deltaAdjoinDivisionMap E dP a dP
+    letI := SerrePositivity.DerivedCompletion.pdCompletionCommRing Raw p dL
+    IsSMulRegular (SerrePositivity.DerivedCompletion.PDCompletionH0 Raw p dL)
+      (SerrePositivity.DerivedCompletion.pdCompletionUnit Raw p dL dL)
+```
+
+hpR の使用：`principalPair_pairCompletion_second_regular` の二つの入力に、上記 raw p 正則性と mod p 分母正則性（ともに hpR 付き）を使う。A1-a の H の prism 性に直接必要な正則性はこの結論。
+
+4. `powerRootPrismMonic_pdCompletion_prime_regular` — `PowerRootPrismMonicCompletionRegular.lean`。上記の明示引数を適用した結論：
+
+```lean
+theorem powerRootPrismMonic_pdCompletion_prime_regular :
+    let := pdCompletionCommRing Raw p dL
+    IsSMulRegular H (p : H)
+```
+
+hpR の使用：`principalPair_pairCompletion_first_regular` に同じ raw 正則対を渡す。
+
+5. `powerRootPrismMonic_pdCompletion_hodgeTate_prime_regular` — `PowerRootPrismMonicCompletionRegular.lean`。上記の明示引数を適用した結論：
+
+```lean
+theorem powerRootPrismMonic_pdCompletion_hodgeTate_prime_regular :
+    let := pdCompletionCommRing Raw p dL
+    IsSMulRegular (H ⧸ Ideal.span {pdCompletionUnit Raw p dL dL})
+      (p : H ⧸ Ideal.span {pdCompletionUnit Raw p dL dL})
+```
+
+hpR の使用：`principalPair_pairCompletion_mod_second_first_regular` に同じ raw 正則対を渡す。これは H/d 自体の p 正則性という強い中間結論。
+
+6. `powerRootPrismMonicHodgeTate_prime_completelyFaithfullyFlat` — `PowerRootPrismMonicHodgeTateCompletelyFaithfullyFlat.lean`。上記の明示引数を適用した結論：
+
+```lean
+theorem powerRootPrismMonicHodgeTate_prime_completelyFaithfullyFlat :
+    let := pdCompletionCommRing L p (jL dP)
+    let := powerRootPrismMonicHodgeTateAlgebra W hW f
+    IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) T
+```
+
+hpR の使用：`powerRootPrismMonicHodgeTate_varpi_completelyFaithfullyFlat W hW hpR f hf hdeg` を経由。後者（`PowerRootPrismMonicHodgeTateCompletelyFlat.lean`）では hpR から基底の ϖ 正則性を得る `regular_of_span_power_eq` と、H/d の p 正則性から得る `powerRootPrismMonicHodgeTate_varpi_regular` の二箇所で使う。
+
+7. `powerRootPrismMonicCompletion_pair_completelyFlat` — `PowerRootPrismMonicCompletionPairFlat.lean`。上記の明示引数を適用した結論：
+
+```lean
+theorem powerRootPrismMonicCompletion_pair_completelyFlat :
+    let := pdCompletionCommRing L p (jL dP)
+    let := powerRootPrismMonicCompletionAlgebra W hW f
+    IsCompletelyFlat (Ideal.span {(p : A), W.generator}) H
+```
+
+hpR の使用：`hreg` に 3 の H 上の d 正則性、`hred` に 6 の H/d の p 完全忠実平坦性を使い、`completelyFlat_pair_algebra_of_regular_reduction` に渡す。
+
+8. `powerRootPrismMonicCompletion_pair_scalarExtension_faithfullyFlat` — `PowerRootPrismMonicCompletionPairFaithful.lean`。上記の明示引数を適用した結論：
+
+```lean
+theorem powerRootPrismMonicCompletion_pair_scalarExtension_faithfullyFlat :
+    let := pdCompletionCommRing L p (jL dP)
+    Module.FaithfullyFlat (A ⧸ Ideal.span {(p : A), W.generator})
+      ((ModuleCat.extendScalars (Ideal.Quotient.mk (Ideal.span {(p : A), W.generator}))).obj
+        (baseChangeScalarModule (powerRootPrismMonicCompletionBaseMap W hW f)))
+```
+
+hpR の使用：`hred` の証明に 6 の H/d の p 完全忠実平坦性を使い、`pairScalarExtension_faithfullyFlat_of_principal_reduction` に渡す。
+
+8 の導来 H⁰ への移送先は同ファイルの
+`powerRootPrismMonicCompletion_pair_reductionH0_faithfullyFlat`。
+H の prism 構造を現在与える `powerRootPrismMonicCompletionPrism`
+（`PowerRootPrismMonicCompletionPrism.lean`）は、`OrientedPrism.ofDistinguished` へ
+3 を渡す箇所だけで hpR を使う。δ 構造、distinguished 性、p と d の導来完備性、
+標準係数射は hpR 不要。A1-a との最小の接続点は **元の H と元の dH=uL dL の正則性**。
+同じ H のまま 3 と 6–8 に相当する追加 hpR 不要の成果を別名で公開すると合流しやすい。
+
+注意：8 本すべてから文字通り hpR を削除することは目標ではない。
+たとえば d=p の場合、2 の mod p の d は 0 となり、非零商で正則ではない。
+5 の H/d の p 正則性も標数 p の非零 H/d に対して成り立たない。
+これらは既存の hpR 付き経路での中間主張であり、一般の場合には別の正則性・
+導来剰余の計算へ置き換える必要がある。候補を p ねじれ除去商へ取り替えたり、
+元の R の p 正則性を存在定理へ追加したりせず、主張が正しい最終接続点を優先する。
+現在の任意族存在定理の承認済み hdeg は維持する。
+
+### (2) A1-c：R/ϖ 側と R/p 側の対応・未照合命題
+
+ここでは d=W.generator、x=perfectPrismVarpiLift W hW=φ_A⁻¹(d)、
+R=A/(d)、ϖ=perfectPrismVarpi W hW、Rv=R/(ϖ)、Rp=R/(p)、
+bv:A→Rv と bp:A→Rp は標準二重商射、Nv=PowerRootPolynomial Rv p hp、
+Np=PowerRootPolynomial Rp p hp とする。
+`Mv := T ⧸ Ideal.map (powerRootPrismMonicHodgeTateBaseMap W hW f) (Ideal.span {ϖ})`
+は自然な係数作用を持つ**実際の T/ϖ**。
+fInv=perfectPrismInverseFrobeniusPolynomial W hW f は係数に φ_A⁻¹ を作用させた多項式。
+`PD` は `PrincipalDPPresentation`、その正次数イデアル上の実分冪構造を指す。
+
+| R/ϖ 側の既存結果・ファイル | R/p 側または接続先 |
+|---|---|
+| `perfectPrismVarpiLift`, `_frobenius`, `perfectPrismVarpi`, `_pow`, `_span_pow`, `perfectPrismVarpiLift_pair_span` — `PerfectPrismVarpi.lean` | (ϖ^p)=(p)、(p,x)=(d,x) の基底関係。`perfectPrismVarpiQuotientEquiv` も同ファイル。 |
+| `perfectPrismVarpiRootInputEquiv`, `_coeff`, `_variable`, `_input` — `PerfectPrismVarpiRootInput.lean` | mod p の無限根環を x で割った表示を Nv へ同定。`perfectPrismVarpiRootInput_monic_regular` がモニック入力の正則性。 |
+| `perfectPrismVarpiPDEnvelopeEquiv`, `_coeff`, `_generator`, `_input`, `_positiveIdeal` — `PerfectPrismVarpiPDComparison.lean` | `PowerRootCoefficientPDEnvelope` の x 還元を PD_Nv(f mod ϖ) に同定。 |
+| `perfectPrismVarpiNativePDEnvelope_truncatedEquiv`, `_free_over_powerQuotient`, `_free`, `_faithfullyFlat`, `perfectPrismVarpiRootInput_free`, `perfectPrismVarpiRootPowerQuotient_free`, `_truncated_dpow` — `PerfectPrismVarpiNativePDFlat.lean` | Rem 7.15(1)(2) の切断多項式表示、Nv/(f^p) 上の自由性、Rv 上の自由性・忠実平坦性。f はこの表の行では元の f mod ϖ。 |
+| `perfectPrismVarpiNativeDividedPowersOfMonic`, `_base_apply`, `existsUnique_perfectPrismVarpiNativePDMorphismOfMonic` — `MonicPerfectPrismPDEnvelope.lean` | `powerRootPrimeFrobeniusDividedPowersOfMonic`, `_base_apply`, `existsUnique_powerRootPrimeFrobeniusPDMorphismOfMonic` — 同ファイル。両側とも hpR 不要。比較に使う Rv 側の入力は **fInv mod ϖ**。 |
+| `perfectPrismVarpiFrobeniusQuotientEquiv`, `_mk`, `_mk_pow`, `perfectPrismVarpiFrobenius_pairIdeal` — `PerfectPrismVarpiFrobeniusQuotient.lean` | e:Rv≃+*Rp、e(bv(a))=bp(φ_A(a))。単なる自然商射ではない。 |
+| `powerRootPrismInverseVarpiPDEquiv`, `_coeff`, `_generator`, `powerRootPrismMonicVarpiCompletionPDEquiv`, `_coeff`, `_base_coeff` — `PowerRootPrismMonicVarpiPDComparison.lean` | 完備化の (d,x) 商を PD_Nv(fInv mod ϖ) へ同定。 |
+| `powerRootPrismMonicVarpiResidueAlgEquiv`, `powerRootPrismMonicVarpiResidueAlgebra_base_coeff`, `_free`, `_faithfullyFlat` — `PowerRootPrismMonicVarpiFlat.lean` | 実 Mv と Rv 上の逆係数入力の PD 表示。自然な Rv 作用の比較。 |
+| `powerRootVarpiPrimeFrobeniusEquiv`, `_coeff`, `_variable`, `_input`, `varpiPrimeFrobenius_inverse_coeff` — `PowerRootVarpiPrimeFrobeniusPD.lean` | e を係数ごとに延長し、fInv mod ϖ を f mod p へ送る。根変数の添字はこの係数比較そのものでは変わらない。 |
+| `powerRootVarpiPrimeFrobeniusPDEquiv`, `_coeff`, `_generator` — `PowerRootVarpiPrimeFrobeniusPD.lean` | PD_Nv(fInv mod ϖ) ≃+* PD_Np(f mod p)。 |
+| `powerRootPrismMonicVarpiFrobeniusResidueEquiv`, `_coeff`, `powerRootPrismMonicVarpiFrobeniusBaseChangeAlgEquiv`, `_tmul` — `PowerRootPrismMonicFrobeniusBaseChange.lean` | U:Mv≃+*Dp は e 半線形。Rp⊗[Rv,e]Mv≃ₐ[Rp]Dp。Dp=PD_Np(f mod p)。 |
+| `powerRootPrismMonicVarpiFrobeniusResidueEquiv_variable`, `_variable_succ`, `powerRootPrismMonicVarpiFrobeniusBaseChangeAlgEquiv_variable` — `PowerRootPrismMonicFrobeniusRootAction.lean` | 実入力の Y_n を U で送ると (Y_n)^p、Y_(n+1) なら Y_n。係数だけの比較とは異なり根の段が一つずれる。 |
+| `powerRootPrismMonicVarpiBaseMap`, `_coeff`, `powerRootPrismMonicVarpiFrobeniusResidueEquiv_base_coeff`, `powerRootPrismMonicFullFrobeniusPullbackAlgEquiv`, `_tmul`, `_variable` — `PowerRootPrismMonicFullFrobeniusPullback.lean` | A 全体の φ_A 引戻しを実装した型 At=TensorBaseCopy A⊗[A]Mv と Dp の左 A 線形同型。左 A 作用は φ_A、右は自然な qA:A→Mv。 |
+| `powerRootPrismMonicFullFrobeniusDividedPowersOfMonic`, `powerRootPrismMonicFullFrobeniusInputAlgEquiv_isDPMorphismOfMonic`, `powerRootPrismMonicFullFrobeniusDividedPowersOfMonic_input_apply`, `existsUnique_powerRootPrismMonicFullFrobeniusPDMorphismOfMonic` — `PowerRootPrismMonicFullFrobeniusPDOfMonic.lean` | 実 At 上の分冪構造と Np 上の pd 普遍性。hpR 不要。原典の係数表記の最終照合は未宣言。 |
+
+照合すべき命題は次の通り。
+
+1. 原典 Rem 7.15(1)（著者版 p.62）の φ_A^*(T/ϖ) の左 A 作用・右 A 作用・ϖ の選択を、実装の qA と φ_A に一つずつ対応させる。`TensorBaseCopy A` はスカラー作用の衝突を防ぐ型の写しにすぎない。
+2. その引戻しにおいて係数イデアルが (d,x) から φ_A(d,x)=(p,d) に移る計算と、原典が R/ϖ と書く係数環との対応を正確に述べる。現在の full pullback の自然な左係数商は Rp。単に Rp を Rv に置換してはならない。
+3. 元の f mod ϖ、逆係数の fInv mod ϖ、元の f mod p の三者を区別し、e を通した多項式の式を確定する。原典の f をどの係数作用で読むかが要点。
+4. 元の入力 Y_n の自然像と、pd 包の Y_n の像を照合する。実 U では Y_n↦Y_n^p、Y_(n+1)↦Y_n という式を保持する。
+5. 単なる環同型・係数環上の代数同型・入力無限根環 Np 上の pd 普遍性の三段階を区別し、原典と同じ入力環作用を持つ pd 包としての最終命題を新規ファイル・別名で公開する。既存の OfMonic 系の構造と普遍性を再利用できる。
+6. 原典側の表記を調整する必要があると判断した場合は、原典の主張を無断で書き換えず、対応する正確な式と理由を記録し A1-a へ渡す。BS Cor 8.12 は前提・宣言・使用のいずれにも入れない。
+
+A1-a での現在の接続点：E1.69 は任意の基底 prism 射 k と有界試験 prism Q に対する
+剰余根列を保つ H→B の一意な δ 射、E1.70 は未完備の通常の入力環
+(A/d)[Y^(1/p^∞)]/(f) から Q の商への射による同じ普遍性。
+原典の完備入力環の同定と H 自体の prism 化を担当し、A1-b・A1-c の新規成果で合流する。

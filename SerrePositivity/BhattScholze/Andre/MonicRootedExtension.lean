@@ -74,6 +74,7 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicRootUniversa
 public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicResidueRootUniversal
 public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicBoundedResidueRootUniversal
 public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicBasePrismUniversal
+public import SerrePositivity.BhattScholze.Andre.PowerRootPrismMonicEquationInput
 
 /-!
 # André E1・E2 の集約
