@@ -1,0 +1,7 @@
+import SerrePositivity.CLMST.Prop247RankAIC
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.CLMST.prop247_rankTarget_isAbsolutelyIntegrallyClosed
+assert_no_sorry SerrePositivity.CLMST.prop247_rankImage_exists_aic_perfectoid_target
+#print axioms SerrePositivity.CLMST.prop247_rankTarget_isAbsolutelyIntegrallyClosed
+#print axioms SerrePositivity.CLMST.prop247_rankImage_exists_aic_perfectoid_target
