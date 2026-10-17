@@ -77,12 +77,29 @@ step : ∀ (R : Type u) [CommRing R] (hR : IsIntegralPerfectoid R p)
 これは非可算共終性の極限での**完備性だけ**の成果であり、perfectoid 性、
 極限への完全忠実平坦性、可算共終性の完備化、超限塔の存在は依然未完了。
 
+### E3.3：Type u 内の ω₁ と終段
+
+`OmegaOne.lean` を追加。添字は `Ordinal.ToType (ω₁ : Ordinal.{u}) : Type u`。
+
+- `omegaOneIndex_nonempty`、`omegaOneIndex_noMaxOrder`：非空性と真の後続段の存在。
+- `omegaOneIndex_countable_upperBound`：任意の可算添字集合に同じ型の上界がある。
+  可算個の可算順序数の上限が ω₁ 未満という Mathlib の定理を使う。
+- `omegaOne_directLimit_complete_and_absolutelyIntegrallyClosed`：実際の ω₁ 添字の塔に対し、
+  全段が perfectoid、全遷移が p 完全忠実平坦、各段の正次数モニック多項式がその後続段に
+  根を持つことから、余極限の p 進完備性と絶対整閉性を結論する。
+  可算上界条件を追加仮定として残していない。環も添字も Type u。
+
+対象 build 終了コード 0（3023 jobs、新規モジュールの警告なし）。
+専用監査終了コード 0、全公開 11 宣言の assert_no_sorry と全 18 宣言の再帰公理監査に成功。
+標準 3 公理のみ。全公開宣言の完全型を #print で確認。
+この定理は**与えられた塔についての二つの性質**であり、塔の存在、終段の perfectoid 性、
+基底から終段への p 完全忠実平坦性は結論していない。Thm 7.14 の条件付き完成とは数えない。
+
 ### 残る範囲
 
 1. 有向余極限の p 進完備化の perfectoid 性（特に p ねじれを許す Fontaine 核の単項性）。
 2. p 完全忠実平坦性の有向余極限・完備化・合成による保存。
-3. 非可算共終性の可算上界条件を ω₁ 等の具体的順序に供給し、可算共終性の極限で完備化する。
-   可算上界条件の下での自動的 p 進完備性は E3.2 で証明済み。
+3. 可算共終性の極限での完備化。ω₁ の可算上界条件と終段の自動的 p 進完備性は E3.2・E3.3 で証明済み。
 4. Type u に留まる ω₁ までの超限塔の構成、訂正済み step による後続段の供給。
 5. 元の Inputs と同じ結論の公開定理、A1 合流による step 解消と再監査。
 

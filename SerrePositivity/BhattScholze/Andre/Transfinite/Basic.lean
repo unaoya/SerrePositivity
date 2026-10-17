@@ -5,6 +5,7 @@ public import SerrePositivity.BhattScholze.Andre.Transfinite.ResidueFrobenius
 public import SerrePositivity.BhattScholze.Andre.Transfinite.CountableDescent
 public import SerrePositivity.BhattScholze.Andre.Transfinite.CountableCompletion
 public import SerrePositivity.BhattScholze.Andre.Transfinite.PerfectoidLimitCompleteness
+public import SerrePositivity.BhattScholze.Andre.Transfinite.OmegaOne
 
 /-! # André E3：超限反復の部品
 

@@ -10,6 +10,11 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isAdicComplete_di
 assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.injective_of_perfectoid_completelyFaithfullyFlat
 assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isAdicComplete_directLimit_of_perfectoid_completelyFaithfullyFlat
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.omegaOneIndex_nonempty
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.omegaOneIndex_noMaxOrder
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.omegaOneIndex_countable_upperBound
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.omegaOne_directLimit_complete_and_absolutelyIntegrallyClosed
+
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
@@ -18,7 +23,8 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.Transfinite.ResidueFrobenius,
     `SerrePositivity.BhattScholze.Andre.Transfinite.CountableDescent,
     `SerrePositivity.BhattScholze.Andre.Transfinite.CountableCompletion,
-    `SerrePositivity.BhattScholze.Andre.Transfinite.PerfectoidLimitCompleteness]
+    `SerrePositivity.BhattScholze.Andre.Transfinite.PerfectoidLimitCompleteness,
+    `SerrePositivity.BhattScholze.Andre.Transfinite.OmegaOne]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
@@ -43,3 +49,8 @@ run_cmd do
 
 #print SerrePositivity.BhattScholze.Andre.Transfinite.injective_of_perfectoid_completelyFaithfullyFlat
 #print SerrePositivity.BhattScholze.Andre.Transfinite.isAdicComplete_directLimit_of_perfectoid_completelyFaithfullyFlat
+
+#print SerrePositivity.BhattScholze.Andre.Transfinite.omegaOneIndex_nonempty
+#print SerrePositivity.BhattScholze.Andre.Transfinite.omegaOneIndex_noMaxOrder
+#print SerrePositivity.BhattScholze.Andre.Transfinite.omegaOneIndex_countable_upperBound
+#print SerrePositivity.BhattScholze.Andre.Transfinite.omegaOne_directLimit_complete_and_absolutelyIntegrallyClosed
