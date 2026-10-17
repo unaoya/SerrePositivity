@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.PerfectoidAlmost
 import SerrePositivity.BhattScholze.Lemma103PerfectoidTensor
 import SerrePositivity.BhattScholze.PerfectoidIdealLemma103
 import SerrePositivity.BhattScholze.PerfectoidIdealIdempotent
@@ -124,3 +125,12 @@ example (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
 
 assert_no_sorry SerrePositivity.BhattScholze.perfectoidIdeal_quotient_isIntegralPerfectoid
 #print axioms SerrePositivity.BhattScholze.perfectoidIdeal_quotient_isIntegralPerfectoid
+
+assert_no_sorry SerrePositivity.BhattScholze.perfectoidIdeal_conormal_smul_bijective
+#print axioms SerrePositivity.BhattScholze.perfectoidIdeal_conormal_smul_bijective
+
+assert_no_sorry SerrePositivity.BhattScholze.perfectoidIdeal_conormal_completion_isZero
+#print axioms SerrePositivity.BhattScholze.perfectoidIdeal_conormal_completion_isZero
+
+assert_no_sorry SerrePositivity.BhattScholze.perfectoidIdeal_conormal_mod_p_isZero
+#print axioms SerrePositivity.BhattScholze.perfectoidIdeal_conormal_mod_p_isZero

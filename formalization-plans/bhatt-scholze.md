@@ -10991,3 +10991,43 @@ theorem perfectoidIdeal_isAlmostZero_extension
 assert_no_sorry・公理監査に成功し、標準3公理のみ。指定署名二件も独立したexampleで検査した。
 BS構造監査も終了コード0。残作業は集約importと最終受渡し監査である。
 Prop 10.4の任意の非有界複体についての全体や、Prop 10.2の圏同値全体は今回の指定署名の範囲外である。
+
+### 最終要件照合での補足（2026-10-17）
+
+並行作業のCompleteFlatColimitは再検証2396ジョブで成功したため、統合検証を再開する。
+工程3で指定された「conormal加群そのものの導来p完備化が零」を明示するため、
+新規BS専用PerfectoidIdealConormalCompletion.leanを追加する。
+商自己積の完備化同型をmod p Koszul錐へ移すと、標的の錐のH⁻²が零なので、
+元の自己Tor₁上のp作用は単射でもある。既証の全射性と既存conormal同型でp作用の全単射性を得る。
+その導来完備化上でもpが可逆となり、導来完備な各ホモロジーは零となる。
+この中間結果を監査に追加し、工程3の入力をこちらのconormal判定へ接続する。
+
+### conormal完備化消滅と集約入口の検証結果（2026-10-17）
+
+PerfectoidIdealConormalCompletion.leanの公開3定理を証明した。
+以下はR,p,hR,gを従来通り仮定し、K=perfectoidIdeal R p hR gとした正確な結論である。
+
+- `perfectoidIdeal_conormal_smul_bijective`：
+  `Function.Bijective (fun x : K.Cotangent => (p : R) • x)`。
+- `perfectoidIdeal_conormal_completion_isZero`：
+  `IsZero ((derivedComplexCompletionFunctor R (p : R)).obj
+    ((DerivedCategory.singleFunctor (ModuleCat R) 0).obj (ModuleCat.of R K.Cotangent)))`。
+- `perfectoidIdeal_conormal_mod_p_isZero`：
+  `IsZero (modulePowerReduction (p : R) (ModuleCat.of R K.Cotangent) 1)`。
+
+元の商自己積の完備化同型をKoszul錐へ移し、その標的のH⁻²が零であることを
+単一加群複体の錐の長完全列で証明した。源のH⁻¹上のp単射性を既存の実Tor₁・conormal同型で移し、
+既証の全射性と組み合わせた。p可逆性を完備化に移し、導来完備な各ホモロジーのp可除性から
+全ホモロジーを消した。通常のmod p商の消滅も代表元上で証明した。
+工程3のp冪可除性と像冪等性の既存公開署名を保ち、このconormal判定へ接続した。
+
+集約モジュール`BhattScholze.PerfectoidAlmost`を追加し、同じ集約入口からBS専用監査を実行した。
+対象ビルド4438ジョブ成功（終了コード0）。新公開3宣言、先行全公開宣言、Tor入口の計31宣言で
+assert_no_sorry成功、依存公理はpropext・Classical.choice・Quot.soundのみ。
+指定hTor型と二つの受渡し署名のexampleも通過した。新sorry・公理・引用は追加していない。
+
+証明の実装上の相違を明記する。Prop 10.4の商加群からの消滅について、原典の
+相対tensorの結合等式を新たに構築する代わりに、同じ商加群作用から得るretractと
+絶対tensorの既存結合則を使った。主張・仮定は指定通りであり、原典の商加群・完全三角形・H⁰の経路を保つ。
+完全標数p環のTor独立性の代数的証明経路の相違は既述の通りレーンTの計画に記録されている。
+残る統合作業は、ルートへの集約import一行のビルドと保存である。

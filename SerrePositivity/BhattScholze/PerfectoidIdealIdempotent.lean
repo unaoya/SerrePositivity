@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.BhattScholze.PerfectoidIdealLemma103
+public import SerrePositivity.BhattScholze.PerfectoidIdealConormalCompletion
 public import SerrePositivity.CLMST.Almost
 
 /-!
@@ -39,10 +39,7 @@ BS 著者版 Remark 10.7（印刷 p.80）の冪等性の計算に使う。
 theorem perfectoidIdeal_conormal_pow_smul_surjective (n : ℕ) :
     Function.Surjective
       (fun x : (perfectoidIdeal R p hR g).Cotangent => (p : R) ^ n • x) := by
-  have h := (quotientTorOne_smul_surjective_iff_conormal R
-    (perfectoidIdeal R p hR g) (p : R)).mp
-    (quotientTorOne_smul_surjective_of_completed_mul_isIso (p : R)
-      (perfectoidIdeal R p hR g) (perfectoidIdeal_lemma103 R p hR g).2.1)
+  have h := (perfectoidIdeal_conormal_smul_bijective R p hR g).surjective
   induction n with
   | zero =>
     intro x
@@ -102,7 +99,7 @@ CLMST.Inputs.perfectoidIdealMod_idempotent と同じ署名を保持し、N=0 も
 theorem perfectoidIdealMod_idempotent (N : ℕ) :
     CLMST.perfectoidIdealMod R p hR g N * CLMST.perfectoidIdealMod R p hR g N =
       CLMST.perfectoidIdealMod R p hR g N :=
-  ideal_mod_power_idempotent_of_completed_quotient_mul_isIso (p : R)
-    (perfectoidIdeal R p hR g) (perfectoidIdeal_lemma103 R p hR g).2.1 N
+  ideal_mod_power_idempotent_of_conormal_surjective (p : R) (perfectoidIdeal R p hR g)
+    (perfectoidIdeal_conormal_smul_bijective R p hR g).surjective N
 
 end SerrePositivity.BhattScholze
