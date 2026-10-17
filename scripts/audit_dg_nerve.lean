@@ -2,13 +2,13 @@ import SerrePositivity.InfinityCategories.DGNerve
 /-!
 # dg nerve の公開宣言の公理監査
 
-概要：N0 の既存則と N1〜N3 と N5 途中の全ての明示的な公開宣言を監査する。
+概要：N0 の既存則と N1〜N3 と N5の全ての明示的な公開宣言を監査する。
 方針：各工程で公開宣言の公理表示と型の検査を追加する。
 規約：許される公理は propext・Classical.choice・Quot.sound のみ。
 使われ方：対象ビルド後に `lake env lean scripts/audit_dg_nerve.lean` を実行する。
 原典：HA Construction 1.3.1.6、Proposition 1.3.1.10。
 dg nerve と内部ホーン充填および quasicategory instance を監査する。
-ホモトピー圏の H⁰ との比較も監査する。N4〜N6 の完了はまだ主張しない。
+ホモトピー圏の H⁰ との比較も監査する。N4 と N6 の完了はまだ主張しない。
 -/
 
 #print axioms SerrePositivity.DifferentialGraded.differential_compose
@@ -635,6 +635,59 @@ dg nerve と内部ホーン充填および quasicategory instance を監査す�
 #check @SerrePositivity.InfinityCategories.DGNerve.liftToFull
 #check @SerrePositivity.InfinityCategories.DGNerve.map_inclusion_lift
 #check @SerrePositivity.InfinityCategories.DGNerve.range_inclusion
+
+#print axioms SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans
+#check @SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans
+#print axioms SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.phaseObj
+#check @SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.phaseObj
+#print axioms SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition
+#check @SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition
+#print axioms SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_00
+#check @SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_00
+#print axioms SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_01
+#check @SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_01
+#print axioms SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_11
+#check @SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_11
+#print axioms SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_zero
+#check @SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_zero
+#print axioms SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_sub
+#check @SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_sub
+#print axioms SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_smul
+#check @SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_smul
+#print axioms SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_differential
+#check @SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_differential
+#print axioms SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_compose
+#check @SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_compose
+#print axioms SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_unit
+#check @SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_unit
+#print axioms SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_sum
+#check @SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_sum
+#print axioms SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_unit_of_heq
+#check @SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_unit_of_heq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.simplexData
+#check @SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.simplexData
+#print axioms SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.simplexData_term
+#check @SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.simplexData_term
+#print axioms SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.simplexData_rhs
+#check @SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.simplexData_rhs
+#print axioms SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.simplex
+#check @SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.simplex
+#print axioms SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.simplexData_pullback
+#check @SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.simplexData_pullback
+#print axioms SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.simplex_pullback
+#check @SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.simplex_pullback
+#print axioms SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.simplex_zero
+#check @SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.simplex_zero
+#print axioms SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.simplex_one
+#check @SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.simplex_one
+#print axioms SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.homotopyMap
+#check @SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.homotopyMap
+#print axioms SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.homotopyMap_zero
+#check @SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.homotopyMap_zero
+#print axioms SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.homotopyMap_one
+#check @SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.homotopyMap_one
+#print axioms SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.homotopy
+#check @SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.homotopy
 
 section
 universe u v

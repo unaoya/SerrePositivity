@@ -3058,6 +3058,292 @@ SerrePositivity.InfinityCategories.DGNerve.range_inclusion : ∀ (A : Type u_1) 
     SerrePositivity.InfinityCategories.DGNerve.fullOnObjects A D P
 ```
 
+### N5b：厳密 dg 自然変換の単体的ホモトピー、N5 完了（2026-10-18）
+
+`StrictNatTrans.lean` は閉次数零成分と全斉次射に対する厳密自然性を持つ専用構造体を定義した。
+`phaseObj` は零相で F、一相で G の対象を取り、`transition` は同じ相なら各 dg 関手の写像、
+零相から一相へは η の終端成分と F の像の合成を取る。三つの相の組の評価、零・差・
+整数単位スカラー・有限和・微分・合成・単位の保存を証明した。
+混合相の合成保存では厳密自然性と dg 合成の結合律を使い、微分保存では成分の閉性と
+Leibniz 則を使う。自然変換の成分を可逆とは仮定しない。
+
+`NatTransSimplex.lean` は任意の単体 s と単調な二相の選択 β から単体を作る。
+切れ目をまたぐ任意濃度の成分に `transition` を適用し、符号付き削除項と切断合成の保存から
+全単体方程式を証明する。引き戻しとの自然性は単射・潰れた辺の単位・その他の零の
+全三分岐で証明した。したがって面だけでなく全ての退化とも可換である。
+
+`NatTrans.lean` は標準一単体の単体を β と読み、
+`homotopyMap : dgNerve A D ⊗ Δ[1] ⟶ dgNerve A E` を構成した。
+`homotopyMap_zero` と `homotopyMap_one` は端点が F と G の像であることを示し、
+`homotopy` は Mathlib の `SSet.Homotopy (dgNerve.map F) (dgNerve.map G)` を与える。
+これで N5a に残っていた厳密 dg 自然変換の項目が解消し、N5 を完了した。
+
+前提：任意の可換環 A、任意の dg 圏 D,E、dg 関手 F,G と厳密 dg 自然変換 η のみ。
+二相と単体の構成では対象宇宙 v,w を独立に扱い、SSet の射とホモトピーでは N5a と同じく
+D,E の対象宇宙を共通の v に置く。可逆性・有界性・平坦性・標数の追加仮定はない。
+§3 の設計上の決定は変更していない。
+
+検証：`set -e`、`set -o pipefail` の下で集約対象
+`lake build SerrePositivity.InfinityCategories.DGNerve` が 3460 jobs、終了コード 0。
+`lake env lean scripts/audit_dg_nerve.lean` も終了コード 0。
+新規 26 宣言を含め、担当ディレクトリの全 335 個の明示的公開宣言と再利用する既存 5 則、
+合計 340 件の公理表示を検査した。全件の依存公理は標準三公理
+`propext`・`Classical.choice`・`Quot.sound` の部分集合である。
+全明示的宣言のソース名と監査対象を照合し漏れなし。新しい sorry・axiom・引用はない。
+
+未完了：N4 の一般の右 pinched Hom、dg nerve での線形表示、各次数の A 加群構造、
+Kan 性、π₀ と H⁰ の射の同定。N6 の一点 dg 圏・複体 dg 圏による具体化と全体検査。
+N0〜N3 と N5 は完了しているが、目標 N0〜N6 全体の完了とは数えない。
+
+今回の全新規公開宣言の正確な型（`#check @` の出力）：
+
+```lean
+@SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      {E : Type u_3} →
+        [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+          [inst_2 : SerrePositivity.DifferentialGraded.DGCategory A E] →
+            SerrePositivity.DifferentialGraded.DGFunctor A D E →
+              SerrePositivity.DifferentialGraded.DGFunctor A D E → Type (max u_1 u_2)
+
+@SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.phaseObj : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      {E : Type u_3} →
+        [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+          [inst_2 : SerrePositivity.DifferentialGraded.DGCategory A E] →
+            SerrePositivity.DifferentialGraded.DGFunctor A D E →
+              SerrePositivity.DifferentialGraded.DGFunctor A D E → Fin 2 → D → E
+
+@SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      {E : Type u_3} →
+        [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+          [inst_2 : SerrePositivity.DifferentialGraded.DGCategory A E] →
+            {F G : SerrePositivity.DifferentialGraded.DGFunctor A D E} →
+              SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans F G →
+                {x y : D} →
+                  {k : ℤ} →
+                    (p q : Fin 2) →
+                      p ≤ q →
+                        ↑(SerrePositivity.DifferentialGraded.GradedHom A x y k) →
+                          ↑(SerrePositivity.DifferentialGraded.GradedHom A
+                              (SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.phaseObj F G p x)
+                              (SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.phaseObj F G q y) k)
+
+@SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_00 : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} {E : Type u_3} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D]
+  [inst_2 : SerrePositivity.DifferentialGraded.DGCategory A E]
+  {F G : SerrePositivity.DifferentialGraded.DGFunctor A D E}
+  (η : SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans F G) {x y : D} {k : ℤ} (h : 0 ≤ 0)
+  (f : ↑(SerrePositivity.DifferentialGraded.GradedHom A x y k)),
+  η.transition 0 0 h f = (CategoryTheory.ConcreteCategory.hom ((F.map x y).f k)) f
+
+@SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_01 : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} {E : Type u_3} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D]
+  [inst_2 : SerrePositivity.DifferentialGraded.DGCategory A E]
+  {F G : SerrePositivity.DifferentialGraded.DGFunctor A D E}
+  (η : SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans F G) {x y : D} {k : ℤ} (h : 0 ≤ 1)
+  (f : ↑(SerrePositivity.DifferentialGraded.GradedHom A x y k)),
+  η.transition 0 1 h f =
+    SerrePositivity.DifferentialGraded.compose A (↑(η.app y))
+      ((CategoryTheory.ConcreteCategory.hom ((F.map x y).f k)) f) ⋯
+
+@SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_11 : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} {E : Type u_3} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D]
+  [inst_2 : SerrePositivity.DifferentialGraded.DGCategory A E]
+  {F G : SerrePositivity.DifferentialGraded.DGFunctor A D E}
+  (η : SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans F G) {x y : D} {k : ℤ} (h : 1 ≤ 1)
+  (f : ↑(SerrePositivity.DifferentialGraded.GradedHom A x y k)),
+  η.transition 1 1 h f = (CategoryTheory.ConcreteCategory.hom ((G.map x y).f k)) f
+
+@SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_zero : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} {E : Type u_3} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D]
+  [inst_2 : SerrePositivity.DifferentialGraded.DGCategory A E]
+  {F G : SerrePositivity.DifferentialGraded.DGFunctor A D E}
+  (η : SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans F G) {x y : D} {k : ℤ} (p q : Fin 2) (hpq : p ≤ q),
+  η.transition p q hpq 0 = 0
+
+@SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_sub : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} {E : Type u_3} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D]
+  [inst_2 : SerrePositivity.DifferentialGraded.DGCategory A E]
+  {F G : SerrePositivity.DifferentialGraded.DGFunctor A D E}
+  (η : SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans F G) {x y : D} {k : ℤ} (p q : Fin 2) (hpq : p ≤ q)
+  (f g : ↑(SerrePositivity.DifferentialGraded.GradedHom A x y k)),
+  η.transition p q hpq (f - g) = η.transition p q hpq f - η.transition p q hpq g
+
+@SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_smul : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} {E : Type u_3} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D]
+  [inst_2 : SerrePositivity.DifferentialGraded.DGCategory A E]
+  {F G : SerrePositivity.DifferentialGraded.DGFunctor A D E}
+  (η : SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans F G) {x y : D} {k : ℤ} (p q : Fin 2) (hpq : p ≤ q)
+  (c : ℤˣ) (f : ↑(SerrePositivity.DifferentialGraded.GradedHom A x y k)),
+  η.transition p q hpq (c • f) = c • η.transition p q hpq f
+
+@SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_differential : ∀ {A : Type u_1}
+  [inst : CommRing A] {D : Type u_2} {E : Type u_3} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D]
+  [inst_2 : SerrePositivity.DifferentialGraded.DGCategory A E]
+  {F G : SerrePositivity.DifferentialGraded.DGFunctor A D E}
+  (η : SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans F G) {x y : D} {k : ℤ} (p q : Fin 2) (hpq : p ≤ q)
+  (f : ↑(SerrePositivity.DifferentialGraded.GradedHom A x y k)),
+  η.transition p q hpq (SerrePositivity.DifferentialGraded.differential A f) =
+    SerrePositivity.DifferentialGraded.differential A (η.transition p q hpq f)
+
+@SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_compose : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} {E : Type u_3} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D]
+  [inst_2 : SerrePositivity.DifferentialGraded.DGCategory A E]
+  {F G : SerrePositivity.DifferentialGraded.DGFunctor A D E}
+  (η : SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans F G) {x y z : D} {i j k : ℤ} (p q r : Fin 2)
+  (hpq : p ≤ q) (hqr : q ≤ r) (g : ↑(SerrePositivity.DifferentialGraded.GradedHom A y z j))
+  (f : ↑(SerrePositivity.DifferentialGraded.GradedHom A x y i)) (hk : i + j = k),
+  η.transition p r ⋯ (SerrePositivity.DifferentialGraded.compose A g f hk) =
+    SerrePositivity.DifferentialGraded.compose A (η.transition q r hqr g) (η.transition p q hpq f) hk
+
+@SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_unit : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} {E : Type u_3} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D]
+  [inst_2 : SerrePositivity.DifferentialGraded.DGCategory A E]
+  {F G : SerrePositivity.DifferentialGraded.DGFunctor A D E}
+  (η : SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans F G) (p : Fin 2) (x : D),
+  η.transition p p ⋯ ↑(SerrePositivity.DifferentialGraded.unitElement A x) =
+    ↑(SerrePositivity.DifferentialGraded.unitElement A
+        (SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.phaseObj F G p x))
+
+@SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_sum : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} {E : Type u_3} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D]
+  [inst_2 : SerrePositivity.DifferentialGraded.DGCategory A E]
+  {F G : SerrePositivity.DifferentialGraded.DGFunctor A D E}
+  (η : SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans F G) {ι : Type u_4} {x y : D} {k : ℤ} (p q : Fin 2)
+  (hpq : p ≤ q) (S : Finset ι) (f : ι → ↑(SerrePositivity.DifferentialGraded.GradedHom A x y k)),
+  η.transition p q hpq (∑ t ∈ S, f t) = ∑ t ∈ S, η.transition p q hpq (f t)
+
+@SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.transition_unit_of_heq : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} {E : Type u_3} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D]
+  [inst_2 : SerrePositivity.DifferentialGraded.DGCategory A E]
+  {F G : SerrePositivity.DifferentialGraded.DGFunctor A D E}
+  (η : SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans F G) {x y : D} (p q : Fin 2) (hpq : p ≤ q)
+  (f : ↑(SerrePositivity.DifferentialGraded.GradedHom A x y 0)),
+  x = y →
+    p = q →
+      f ≍ ↑(SerrePositivity.DifferentialGraded.unitElement A y) →
+        η.transition p q hpq f ≍
+          ↑(SerrePositivity.DifferentialGraded.unitElement A
+              (SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.phaseObj F G q y))
+
+@SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.simplexData : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      {E : Type u_3} →
+        [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+          [inst_2 : SerrePositivity.DifferentialGraded.DGCategory A E] →
+            {F G : SerrePositivity.DifferentialGraded.DGFunctor A D E} →
+              SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans F G →
+                {n : ℕ} →
+                  SerrePositivity.InfinityCategories.DGNerve.SimplexData A D n →
+                    (Fin (n + 1) →o Fin 2) → SerrePositivity.InfinityCategories.DGNerve.SimplexData A E n
+
+@SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.simplexData_term : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} {E : Type u_3} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D]
+  [inst_2 : SerrePositivity.DifferentialGraded.DGCategory A E]
+  {F G : SerrePositivity.DifferentialGraded.DGFunctor A D E}
+  (η : SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans F G) {n : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData A D n) (β : Fin (n + 1) →o Fin 2)
+  (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card) (ha : a = I.min' ⋯) (hb : b = I.max' ⋯)
+  (hk : k = 2 - ↑I.card) (j : Fin (n + 1)) (hj : j ∈ I) (haj : a < j) (hjb : j < b),
+  η.transition (β a) (β b) ⋯ (s.term I a b k hI ha hb hk j hj haj hjb) =
+    (η.simplexData s β).term I a b k hI ha hb hk j hj haj hjb
+
+@SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.simplexData_rhs : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} {E : Type u_3} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D]
+  [inst_2 : SerrePositivity.DifferentialGraded.DGCategory A E]
+  {F G : SerrePositivity.DifferentialGraded.DGFunctor A D E}
+  (η : SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans F G) {n : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData A D n) (β : Fin (n + 1) →o Fin 2)
+  (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card) (ha : a = I.min' ⋯) (hb : b = I.max' ⋯)
+  (hk : k = 2 - ↑I.card) (hab : a ≤ b),
+  η.transition (β a) (β b) ⋯ (s.rhs I a b k hI ha hb hk) = (η.simplexData s β).rhs I a b k hI ha hb hk
+
+@SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.simplex : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D : Type u_2} →
+      {E : Type u_3} →
+        [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+          [inst_2 : SerrePositivity.DifferentialGraded.DGCategory A E] →
+            {F G : SerrePositivity.DifferentialGraded.DGFunctor A D E} →
+              SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans F G →
+                {n : ℕ} →
+                  SerrePositivity.InfinityCategories.DGNerve.Simplex A D n →
+                    (Fin (n + 1) →o Fin 2) → SerrePositivity.InfinityCategories.DGNerve.Simplex A E n
+
+@SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.simplexData_pullback : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} {E : Type u_3} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D]
+  [inst_2 : SerrePositivity.DifferentialGraded.DGCategory A E]
+  {F G : SerrePositivity.DifferentialGraded.DGFunctor A D E}
+  (η : SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans F G) {m n : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.SimplexData A D n) (β : Fin (n + 1) →o Fin 2)
+  (α : Fin (m + 1) →o Fin (n + 1)), η.simplexData (s.pullback α) (β.comp α) = (η.simplexData s β).pullback α
+
+@SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.simplex_pullback : ∀ {A : Type u_1} [inst : CommRing A]
+  {D : Type u_2} {E : Type u_3} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D]
+  [inst_2 : SerrePositivity.DifferentialGraded.DGCategory A E]
+  {F G : SerrePositivity.DifferentialGraded.DGFunctor A D E}
+  (η : SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans F G) {m n : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.Simplex A D n) (β : Fin (n + 1) →o Fin 2)
+  (α : Fin (m + 1) →o Fin (n + 1)), η.simplex (s.pullback α) (β.comp α) = (η.simplex s β).pullback α
+
+@SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.simplex_zero : ∀ {A : Type u_1} [inst : CommRing A]
+  {D E : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D]
+  [inst_2 : SerrePositivity.DifferentialGraded.DGCategory A E]
+  {F G : SerrePositivity.DifferentialGraded.DGFunctor A D E}
+  (η : SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans F G) {n : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.Simplex A D n),
+  η.simplex s ((OrderHom.const (Fin (n + 1))) 0) = s.map F
+
+@SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.simplex_one : ∀ {A : Type u_1} [inst : CommRing A]
+  {D E : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D]
+  [inst_2 : SerrePositivity.DifferentialGraded.DGCategory A E]
+  {F G : SerrePositivity.DifferentialGraded.DGFunctor A D E}
+  (η : SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans F G) {n : ℕ}
+  (s : SerrePositivity.InfinityCategories.DGNerve.Simplex A D n),
+  η.simplex s ((OrderHom.const (Fin (n + 1))) 1) = s.map G
+
+@SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.homotopyMap : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D E : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        [inst_2 : SerrePositivity.DifferentialGraded.DGCategory A E] →
+          {F G : SerrePositivity.DifferentialGraded.DGFunctor A D E} →
+            SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans F G →
+              (CategoryTheory.MonoidalCategoryStruct.tensorObj (SerrePositivity.InfinityCategories.dgNerve A D)
+                  (SSet.stdSimplex.obj { len := 1 }) ⟶
+                SerrePositivity.InfinityCategories.dgNerve A E)
+
+@SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.homotopyMap_zero : ∀ {A : Type u_1} [inst : CommRing A]
+  {D E : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D]
+  [inst_2 : SerrePositivity.DifferentialGraded.DGCategory A E]
+  {F G : SerrePositivity.DifferentialGraded.DGFunctor A D E}
+  (η : SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans F G),
+  CategoryTheory.CategoryStruct.comp SSet.ι₀ η.homotopyMap = SerrePositivity.InfinityCategories.dgNerve.map F
+
+@SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.homotopyMap_one : ∀ {A : Type u_1} [inst : CommRing A]
+  {D E : Type u_2} [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D]
+  [inst_2 : SerrePositivity.DifferentialGraded.DGCategory A E]
+  {F G : SerrePositivity.DifferentialGraded.DGFunctor A D E}
+  (η : SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans F G),
+  CategoryTheory.CategoryStruct.comp SSet.ι₁ η.homotopyMap = SerrePositivity.InfinityCategories.dgNerve.map G
+
+@SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans.homotopy : {A : Type u_1} →
+  [inst : CommRing A] →
+    {D E : Type u_2} →
+      [inst_1 : SerrePositivity.DifferentialGraded.DGCategory A D] →
+        [inst_2 : SerrePositivity.DifferentialGraded.DGCategory A E] →
+          {F G : SerrePositivity.DifferentialGraded.DGFunctor A D E} →
+            SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans F G →
+              SSet.Homotopy (SerrePositivity.InfinityCategories.dgNerve.map F)
+                (SerrePositivity.InfinityCategories.dgNerve.map G)
+```
+
 ## 6. 次のマイルストーン D（本計画の範囲外）
 
 - Semifree(S) を `DGFullSubcategory`（`moduleSemifree` または一点 dg 圏上の複体版）として置き、

@@ -389,3 +389,27 @@ SSet.Truncated.HomotopyCategory₂ ((SSet.truncation 2).obj (dgNerve A D))
 
 厳密 dg 自然変換から単体的ホモトピーを作る部分は未構成。
 N5 全体の完了とは数えない。N4 と N6 も未完了。
+
+## N5 完了：厳密 dg 自然変換のホモトピー（2026-10-18）
+
+`DGNerve.StrictNatTrans F G` は各対象での閉次数零成分 η と、全斉次射に対する
+`η_y ∘ F(f) = G(f) ∘ η_x` の厳密自然性を持つ。成分の可逆性は要求しない。
+`StrictNatTrans.lean` の二相間の写像は F 内・G 内ではその関手の斉次写像、
+F から G をまたぐ場合は `η_y ∘ F(f)` を取り、微分・合成・単位・符号付き有限和を保つ。
+
+`NatTransSimplex.lean` は任意の単体と単調写像 β : Fin(n+1) →o Fin 2 を使い、
+各頂点を相に従って F/G へ送り、全有限部分集合の成分を二相間の写像で送る。
+全単体方程式と、任意の引き戻しとの可換性を証明した。
+`NatTrans.lean` の `StrictNatTrans.homotopyMap` はこれを
+
+```
+dgNerve A D ⊗ Δ[1] ⟶ dgNerve A E
+```
+
+にまとめ、`homotopyMap_zero` と `homotopyMap_one` が端点をそれぞれ
+`dgNerve.map F` と `dgNerve.map G` に同定する。
+`StrictNatTrans.homotopy` はこの二写像の Mathlib の `SSet.Homotopy`。
+
+任意の可換環 A と dg 圏 D,E に対する構成であり、方程式の追加仮定はない。
+これで N5a の未完了項目が解消し N5 は完了。N4 と N6 は未完了。
+公開宣言 335 件と既存 5 則の公理監査は標準三公理の範囲内である。
