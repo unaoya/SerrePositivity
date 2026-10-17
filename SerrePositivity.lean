@@ -488,6 +488,7 @@ public import SerrePositivity.CLMST.Prop247StandardSquare
 public import SerrePositivity.CLMST.Prop247ActualDescent
 public import SerrePositivity.CLMST.Prop247FiniteFreeCover
 public import SerrePositivity.CLMST.Prop247LocalComparison
+public import SerrePositivity.CLMST.Prop247CoveredDescent
 public import SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedModule
 public import SerrePositivity.HomologicalAlgebra.DerivedRestriction
 public import SerrePositivity.HomologicalAlgebra.DerivedBaseChangeTensor
