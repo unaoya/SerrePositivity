@@ -872,6 +872,7 @@ public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedEtale
 public import SerrePositivity.CommutativeAlgebra.FiniteCommonLocalizationBounds
 public import SerrePositivity.CLMST.PerfectoidIdealTorRoots
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedPerfectoidQuotient
+public import SerrePositivity.BhattScholze.PerfectoidizationSupportedQuotientKernel
 
 /-!
 # Serre の交点重複度の正値性の形式化

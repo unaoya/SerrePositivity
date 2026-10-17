@@ -8216,6 +8216,118 @@ g=0・g=1・零環の境界を確認した。Andréの存在引用はこの共�
 perfectoid化比較の核を各両立根で零化する。一般の整な変更の余核・被覆合流、
 KL-T/Q、D-I/U/Qの実入力と引用置換は引き続き未完了。
 
+#### KL-T：分担変更と全射の場合の核の almost 零化（2026-10-17）
+
+最新の分担では、本系列は **KL-T → KL-Q（Cor 4.0.4 の置換）** に集中する。
+D-I・D-U・D-Q と一般 rank への帰着は **CLMST-D**、BS Prop 8.13 の環版は
+**BS チャット**が担当する。CLMST-D が使う BS Cor 8.12 の新引用はユーザー承認済み。
+本系列ではこれらを重複実装しない。上の過去の実行順より本分担を優先し、
+未採用の `bs-clmst-citation-elimination.md` は根拠にしない。
+
+**共有可能な検証済み部分。** 独立した
+`SerrePositivity/BhattScholze/PerfectoidizationSupportedQuotientKernel.lean`
+を import すれば、以下の公開定理を利用できる。名前空間は
+`SerrePositivity.BhattScholze`。全環は同一 universe の可換環で、
+`p` は素数。次の共通変数のもとで、各宣言の引数・結論は以下の通り。
+
+```lean
+variable {A B C D : Type u}
+  [CommRing A] [CommRing B] [CommRing C] [CommRing D]
+  {p : ℕ} [Fact p.Prime] {f : A →+* C} {g : B →+* D}
+
+perfectoidization_map_kernel_roots_of_surjective_supported_kernel
+  (hf : IsPerfectoidization p f) (hg : IsPerfectoidization p g)
+  (q : A →+* B) (hq : Function.Surjective q)
+  (ρ : ℕ → A) (hρ : ∀ n, ρ (n + 1) ^ p = ρ n)
+  (hk : ∀ a ∈ RingHom.ker q, ∃ N : ℕ, ρ 0 ^ N * a = 0) :
+  ∀ n, ∀ x : C, IsPerfectoidization.map hf hg q x = 0 → f (ρ n) * x = 0
+
+perfectoidization_map_kernel_ideal_of_surjective_supported_kernel
+  (hf : IsPerfectoidization p f) (hg : IsPerfectoidization p g)
+  (q : A →+* B) (hq : Function.Surjective q)
+  (ρ : ℕ → A) (hρ : ∀ n, ρ (n + 1) ^ p = ρ n)
+  (hk : ∀ a ∈ RingHom.ker q, ∃ N : ℕ, ρ 0 ^ N * a = 0) :
+  ∀ s ∈ perfectoidIdeal C p hf.1 (f (ρ 0)), ∀ x : C,
+    IsPerfectoidization.map hf hg q x = 0 → s * x = 0
+
+perfectoidization_map_kernel_originalIdeal_of_surjective_supported_kernel
+  (R : Type u) [CommRing R] (hR : IsIntegralPerfectoid R p)
+  (α : R →+* A) (hf : IsPerfectoidization p f) (hg : IsPerfectoidization p g)
+  (q : A →+* B) (hq : Function.Surjective q)
+  (ρ : ℕ → R) (hρ : ∀ n, ρ (n + 1) ^ p = ρ n)
+  (hk : ∀ a ∈ RingHom.ker q, ∃ N : ℕ, α (ρ 0) ^ N * a = 0) :
+  ∀ s ∈ perfectoidIdeal R p hR (ρ 0), ∀ x : C,
+    IsPerfectoidization.map hf hg q x = 0 → f (α s) * x = 0
+```
+
+指数 N は元 a ごとに異なってよく、一様指数・bounded torsion・Noether 性・
+非零因子性は仮定しない。ただし **q の全射性は必須**。第三の定理は元の
+perfectoid 基底 R の ideal と元の係数作用を保持する。
+これらの唯一の未証明入力への到達は、既存の BS Theorem 7.14 の André 拡大である。
+Cor 8.12 や Prop 8.13 の新入力には依存しない。
+
+引用を含まない共通部分は独立した
+`CommutativeAlgebra/PerfectoidizationSupportedQuotient.lean` にあり、
+`SerrePositivity.IsPerfectoidization.map_kernel_roots_of_surjective_supported_kernel_of_injective_aic`
+は上の hf, hg, q, hq の後に、
+`(j : C →+* E) (hj : Function.Injective j)`、
+`(hE : IsIntegralPerfectoid E p) (hAIC : IsAbsolutelyIntegrallyClosed E)`、
+上と同じ ρ, hρ, hk を受け取り、第一定理と同じ結論を返す。
+`E : Type u`、`[CommRing E]` は暗黙引数。
+`...map_kernel_roots_of_surjective_supported_kernel_of_aic` は E と j を不要とし、
+hq の後に `(hC : IsAbsolutelyIntegrallyClosed C)` を受け取る版である。
+
+**検証と未完成の範囲。** 専用監査
+`scripts/audit_clmst_supported_quotient_kernel.lean` で、実 B3 annihilator 商への適用と
+元の基底 ideal の作用を確認し、共通補題の `sorry` 非依存と、引用版が既存 BS 7.14
+以外の `sorryAx` に到達しないことを確認した。対象ビルド・ルートビルド
+（5938 jobs）・KL 監査（1166 assert）も成功。
+現時点では **全射の場合の核のみ**であり、余核の零化と一般の整な包含は未完成。
+したがって A → E ← Rʳ 全体の almost 比較を完成済みとはしない。
+次は全射の場合の余核、一般の整な比較、被覆の合流を順に扱い、
+元の基底 ideal による Tor 零化を KL-T へ渡し、KL-Q の Cor 4.0.4 を置換する。
+完成した almost 比較の公開名・正確な型・前提も、この KL-T 記録に追記する。
+
+#### KL-T：全射の perfectoid 化と全射の場合の almost 比較（2026-10-17）
+
+独立ファイル `BhattScholze/PerfectoidizationSurjectiveMap.lean` に、
+`sorry` に依存しない公開定理を追加した。名前空間は `SerrePositivity.BhattScholze`。
+
+```lean
+perfectoidization_map_surjective_of_surjective
+  {A B C D : Type u} [CommRing A] [CommRing B] [CommRing C] [CommRing D]
+  {p : ℕ} [Fact p.Prime] {f : A →+* C} {g : B →+* D}
+  (hf : IsPerfectoidization p f) (hg : IsPerfectoidization p g)
+  (q : A →+* B) (hq : Function.Surjective q) :
+  Function.Surjective (IsPerfectoidization.map hf hg q)
+```
+
+元の A, B の完備性、核の有限生成性、bounded torsion は不要。
+`CommutativeAlgebra/AdicRingHomRange.lean` の
+`SerrePositivity.isAdicComplete_ringHom_range` は、p 進完備環から p 進分離環への
+環準同型の像が p 進完備であることを示す。この像の包含も普遍 perfectoid 化であり、
+既存 B4 によって全射となる。BS Prop 8.13 の環版は使用・再実装しない。
+
+既存の独立 import
+`BhattScholze/PerfectoidizationSupportedQuotientKernel.lean` には、公開定理
+`perfectoidization_map_almost_of_surjective_supported_kernel` を追加した。
+前の `perfectoidization_map_kernel_originalIdeal_of_surjective_supported_kernel` と
+暗黙引数・明示引数・前提はすべて同一で、結論は正確に次の連言である。
+
+```lean
+Function.Surjective (IsPerfectoidization.map hf hg q) ∧
+  ∀ s ∈ perfectoidIdeal R p hR (ρ 0), ∀ x : C,
+    IsPerfectoidization.map hf hg q x = 0 → f (α s) * x = 0
+```
+
+全射性から余核は零であり、核は元の基底 R の ideal で零化される。
+この段階で **全射の場合**の almost 比較は完成した。引用版の依存は引き続き既存
+BS 7.14 のみである。一般の整な包含と A → E ← Rʳ 全体の almost 比較は未完成。
+専用監査 `scripts/audit_clmst_perfectoidization_surjective_map.lean` は、
+任意の実 B3 商の合成 R → R/J → (R/J)_perfd と商からの単位の全射性を確認した。
+商 R/J の分離性・完備性は仮定せず、零環・単位 ideal も含む。
+対象ビルドと両専用監査は成功し、全射性補題の公理は標準三公理のみである。
+
 #### Prop 2.4.7 専任系列：原典から D-I/U/Q への型付き受渡し（2026-10-17）
 
 本節は統合表 D-I・D-U・D-Q の実入力を固定する。未採用の別計画は根拠にしない。

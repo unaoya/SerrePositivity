@@ -12,6 +12,7 @@ assert_no_sorry SerrePositivity.IsPerfectoidization.map_kernel_roots_of_surjecti
 #print axioms SerrePositivity.BhattScholze.perfectoidization_map_kernel_roots_of_surjective_supported_kernel
 #print axioms SerrePositivity.BhattScholze.perfectoidization_map_kernel_ideal_of_surjective_supported_kernel
 #print axioms SerrePositivity.BhattScholze.perfectoidization_map_kernel_originalIdeal_of_surjective_supported_kernel
+#print axioms SerrePositivity.BhattScholze.perfectoidization_map_almost_of_surjective_supported_kernel
 
 noncomputable section
 universe u
@@ -105,6 +106,7 @@ elab "assert_supported_kernel_dependencies" : command => do
     [``SerrePositivity.BhattScholze.perfectoidization_map_kernel_roots_of_surjective_supported_kernel,
      ``SerrePositivity.BhattScholze.perfectoidization_map_kernel_ideal_of_surjective_supported_kernel,
      ``SerrePositivity.BhattScholze.perfectoidization_map_kernel_originalIdeal_of_surjective_supported_kernel,
+     ``SerrePositivity.BhattScholze.perfectoidization_map_almost_of_surjective_supported_kernel,
      ``audit_original_base_b3_annihilator_kernel]
   let seen ← liftCoreM <| checkSupportedKernelDependencies roots {}
   unless seen.contains
