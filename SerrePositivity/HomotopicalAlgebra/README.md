@@ -3401,3 +3401,22 @@ SSet.{v}値の実図式、制限した既存の合成選択空間との対象ご
 `OrdinaryBarNormalizedCompositionTriangle`は実native入力の再評価に対する厳密な全三角形・全区間の式と、
 以前の独立した三角形との相対比較を与える。Kの変更や元の基底上のRMapの関手性は残る。
 受入検証は`check_normalized_native_triangles`（64宣言・5モジュール）。
+
+
+### 任意次元の全退化を同時保持する正規化horn操作（§391）
+
+`CosimplicialDegenerateHorn`は任意の圏の余単体対象で、同じhornを与える退化写像の一致を証明する。
+`DegenerateHornOverlap`は任意の外部パラメータへ適用し、退化した全filler族の重なりを証明する。
+`NormalizedHornFilling`は任意次元・任意の欠ける面で、全退化を同時に保持する一つの切断を構成する。
+元のKに操作を固定したT自然性・全評価・以前のfillerとの相対比較を持ち、三角形では以前の操作に一致する。
+受入検証は`check_normalized_horn_filling`（25宣言・3モジュール）。
+
+
+### Tに厳密に自然な四面体と比較円板の選択（§392）
+
+`NormalizedComparisonTetrahedron`は指定三角形を全三面に保持し、退化入力をそのまま返す。
+入力全体を制限してから選んだ全四面体・残る面の全評価が、以前の選択の実制限に厳密に一致する。
+`NormalizedComparisonSquare`は自然な共通対角線と二つの自然な四面体を選び、
+元の四辺を保持する円板を作る。左右の全四面体と全評価の厳密なT自然性を証明する。
+Kの変更に関する操作間の比較、全次数の互換な境界構成、小さい厳密なRMapへの接続は残る。
+受入検証は`check_normalized_comparison_coherence`（73宣言・2モジュール）。
