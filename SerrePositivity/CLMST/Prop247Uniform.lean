@@ -21,13 +21,13 @@ variable {B L P E : Type u} [CommRing B] [IsReduced B]
     [AddCommGroup L] [Module B L] [Module.Finite B L]
     [AddCommGroup P] [Module B P] [AddCommGroup E] [Module B E]
 
-/-- 固定した有限自由比較を、中間対象を通る実比較へ移す。
+/-- 分母の冪を伴う有限自由比較を、中間対象を通る実比較へ移す。
 必要な almost 条件は、二つの核と有限自由側の余核の g による零化。
-原典の有限自由比較が与えられた段階の条件付き定理である。 -/
-theorem prop247_fixed_cone_of_common_comparison
+分母を払う冪 k は錐を零化する指数の一様性を損なわない。 -/
+theorem prop247_fixed_cone_of_scaled_common_comparison
     (g : B) (r : ℕ) (β : L →ₗ[B] P) (u : L →ₗ[B] (Fin r → B))
     (v : P →ₗ[B] E) (w : (Fin r → B) →ₗ[B] E)
-    (hsq : v.comp β = w.comp u)
+    (k : ℕ) (hsq : (g ^ k • v).comp β = w.comp u)
     (hu : Function.Bijective (awayModuleMap g u))
     (hv : ∀ y : P, v y = 0 → g • y = 0)
     (hw : ∀ z : (Fin r → B), w z = 0 → g • z = 0)
@@ -36,7 +36,7 @@ theorem prop247_fixed_cone_of_common_comparison
   obtain ⟨q, _, hk, hc⟩ := finiteFreeConeIsogeny_with_annihilators B g r u hu
   have hk' (x : L) (hx : u x = 0) : g ^ q • x = 0 :=
     congrArg Subtype.val (hk ⟨x, hx⟩)
-  have hs (x : L) : v (β x) = w (u x) := LinearMap.congr_fun hsq x
+  have hs (x : L) : g ^ k • v (β x) = w (u x) := LinearMap.congr_fun hsq x
   refine ⟨(q + 1) + (q + 2), ?_⟩
   rw [pow_add]
   apply moduleMapConeScalar_eq_zero_of_ker_coker_annihilated B β
@@ -44,7 +44,7 @@ theorem prop247_fixed_cone_of_common_comparison
     have hz : u (g • x) = 0 := by
       rw [map_smul]
       apply hw
-      rw [← hs, hx, map_zero]
+      rw [← hs, hx, map_zero, smul_zero]
     simpa only [pow_succ, mul_smul] using hk' (g • x) hz
   · intro y
     obtain ⟨y, rfl⟩ := β.range.mkQ_surjective y
@@ -56,15 +56,30 @@ theorem prop247_fixed_cone_of_common_comparison
       apply (Submodule.Quotient.mk_eq_zero u.range).mp
       exact (map_smul u.range.mkQ (g ^ q) z).trans (hc _)
     obtain ⟨x, hx⟩ := hm'
-    have he : v (g ^ (q + 1) • y - β x) = 0 := by
-      rw [map_sub, map_smul, hs, hx, map_smul, hz, ← mul_smul, ← pow_succ, sub_self]
-    have he' : g ^ (q + 2) • y = β (g • x) := by
+    have he : v (g ^ (q + 1) • y - β (g ^ k • x)) = 0 := by
+      rw [map_sub, map_smul, map_smul, map_smul, hs, hx, map_smul, hz,
+        ← mul_smul, ← pow_succ, sub_self]
+    have he' : g ^ (q + 2) • y = β (g • (g ^ k • x)) := by
       have hh := hv _ he
       rw [smul_sub, ← mul_smul, ← pow_succ', ← map_smul] at hh
       exact sub_eq_zero.mp hh
     rw [← map_smul]
     apply (Submodule.Quotient.mk_eq_zero β.range).mpr
-    exact ⟨g • x, he'.symm⟩
+    exact ⟨g • (g ^ k • x), he'.symm⟩
+
+/-- 固定した有限自由比較を、中間対象を通る実比較へ移す。
+元の可換図式の場合は分母の冪を 0 として前の定理を使う。 -/
+theorem prop247_fixed_cone_of_common_comparison
+    (g : B) (r : ℕ) (β : L →ₗ[B] P) (u : L →ₗ[B] (Fin r → B))
+    (v : P →ₗ[B] E) (w : (Fin r → B) →ₗ[B] E)
+    (hsq : v.comp β = w.comp u)
+    (hu : Function.Bijective (awayModuleMap g u))
+    (hv : ∀ y : P, v y = 0 → g • y = 0)
+    (hw : ∀ z : (Fin r → B), w z = 0 → g • z = 0)
+    (hcw : ∀ y : E ⧸ w.range, g • y = 0) :
+    ∃ q : ℕ, moduleMapConeScalar B β (g ^ q) = 0 := by
+  exact prop247_fixed_cone_of_scaled_common_comparison g r β u v w 0
+    (by simpa only [pow_zero, one_smul] using hsq) hu hv hw hcw
 
 omit [IsReduced B] [Module.Finite B L] in
 /-- 一つの実錐の零射は、全ての p 冪剰余・全次数に同じ指数を与える。
