@@ -5430,6 +5430,42 @@ p,d の逐次完備化単位の比較へ接続すること。その後、生成�
 ここで保存するのは検証済みの途中成果であり、上記の未解消接続を完了したとはしない。
 
 
+
+### A1-d 受領後の実逐次完備化の純性（2026-10-17）
+
+A1-d の `InitialCoefficient.rawResidue_faithfullyFlat` と
+`InitialCoefficient.sourceResidueH0_faithfullyFlat` を受領した。
+証明本体は `8e0a2a6a`・`18de67e0`、独立監査は `5c623cf9`。
+`Unconditional/InitialCoefficient/` のファイルは本系列では編集していない。
+
+新規 `Unconditional/PowerRootSourceComplete.lean` と
+`Unconditional/PowerRootSourcePurity.lean` に 17 公開宣言を追加した。
+`X := PowerRootPrismMonicSourceIteratedPDCompletion_of_unconditional W hW f`
+は元の A 上の二因子源を p,d の順に実導来完備化した対象そのもの。
+
+- `powerRootPrismMonicSourceIteratedPDCompletion_isComplete_p_of_unconditional` と
+  `powerRootPrismMonicSourceIteratedPDCompletion_isComplete_d_of_unconditional`：X の両方向の導来完備性。
+- `powerRootPrismMonicSourceIteratedPDReductionIso_of_unconditional`：X の実 (p,d) 還元と元の源の還元との同型。
+- `powerRootPrismMonicSourceCanonicalPowerResidueH0_faithfullyFlat_of_unconditional`：
+  A1-d の H⁰ 忠実平坦性を実完備化後・標準冪零剰余へ移す。入力仮定は解消済み。
+- `powerRootPrismMonicSourcePowerResidue_pure_flat_of_unconditional`：
+  任意 n>0 で実 A/(p,dⁿ) 還元の純性と H⁰ の平坦性。
+- `powerRootPrismMonicSourceGeneratorPowerReduction_pure_bounded_of_unconditional`：
+  任意 n>0 で実 A/(dⁿ) 還元の純性と H⁰ の有界 p ねじれ。
+- `powerRootPrismMonicSourceIteratedPDCompletion_pure_regular_of_unconditional`：
+  f.Monic と 0<f.natDegree の下で、正確に
+  `X.obj.IsGE 0 ∧ X.obj.IsLE 0 ∧ Function.Injective (fun x :
+  (DerivedCategory.homologyFunctor (ModuleCat A) 0).obj X.obj => W.generator • x)`。
+- `powerRootPrismMonicSourceSingleIso_of_unconditional`：X と同じ H⁰ の single の正規化同型。
+
+hpR・raw p 正則性・新引用は使わない。元の H の分母正則性への移送と
+H/dH の p 完全忠実平坦性、H の (p,d) 完全平坦性は次の接続に残す。
+
+検証：`MonicRootedExtension` を含む対象ビルドは終了コード 0（4594 jobs）。
+専用監査は既存分と合わせた 82 公開宣言の `assert_no_sorry` と型・値の推移的依存検査に成功。
+47,737 宣言を走査し、公理依存は `propext`、`Classical.choice`、`Quot.sound` のみ。
+
+
 ## A1-c：係数表記の照合
 
 2026-10-17。BS Rem 7.15（著者版 p.62）と E1.25・E1.55・E1.56 の補足。
