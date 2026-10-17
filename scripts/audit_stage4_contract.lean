@@ -1,0 +1,125 @@
+-- Stage 4 proof-only closure; the HT-KQ input is audited separately.
+import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ChosenComparison
+import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ChosenMapComparison
+import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PiZero
+import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SourceInvariance
+import SerrePositivity.HomotopicalAlgebra.Localization.AccessibleHomotopyGenerators
+import SerrePositivity.HomotopicalAlgebra.Localization.AccessibleLocalEquivalences
+import SerrePositivity.HomotopicalAlgebra.Localization.AccessibleLocalObjects
+import SerrePositivity.HomotopicalAlgebra.Localization.AccessibleLocalReplacement
+import SerrePositivity.HomotopicalAlgebra.Localization.AccessibleSmallLocalObjects
+import SerrePositivity.HomotopicalAlgebra.Localization.ArrowFrameFibrations
+import SerrePositivity.HomotopicalAlgebra.Localization.ArrowFrameTests
+import SerrePositivity.HomotopicalAlgebra.Localization.ArrowFrames
+import SerrePositivity.HomotopicalAlgebra.Localization.Basic
+import SerrePositivity.HomotopicalAlgebra.Localization.Bifunctor
+import SerrePositivity.HomotopicalAlgebra.Localization.ChoiceIndependence
+import SerrePositivity.HomotopicalAlgebra.Localization.Conditional
+import SerrePositivity.HomotopicalAlgebra.Localization.ContinuousLocalEquivalences
+import SerrePositivity.HomotopicalAlgebra.Localization.CovariantDetection
+import SerrePositivity.HomotopicalAlgebra.Localization.Detection
+import SerrePositivity.HomotopicalAlgebra.Localization.Endofunctor
+import SerrePositivity.HomotopicalAlgebra.Localization.Enriched
+import SerrePositivity.HomotopicalAlgebra.Localization.EnrichedDetection
+import SerrePositivity.HomotopicalAlgebra.Localization.EnrichedExistence
+import SerrePositivity.HomotopicalAlgebra.Localization.EnrichedLocalObjects
+import SerrePositivity.HomotopicalAlgebra.Localization.EnrichedTestComparison
+import SerrePositivity.HomotopicalAlgebra.Localization.FibrantMappingTests
+import SerrePositivity.HomotopicalAlgebra.Localization.Fibrations
+import SerrePositivity.HomotopicalAlgebra.Localization.FilteredLocalEquivalences
+import SerrePositivity.HomotopicalAlgebra.Localization.FilteredMappingGenerators
+import SerrePositivity.HomotopicalAlgebra.Localization.FrameArrowTests
+import SerrePositivity.HomotopicalAlgebra.Localization.FrameTargetTests
+import SerrePositivity.HomotopicalAlgebra.Localization.FrameTests
+import SerrePositivity.HomotopicalAlgebra.Localization.HocolimLocalEquivalences
+import SerrePositivity.HomotopicalAlgebra.Localization.HocolimMappingTests
+import SerrePositivity.HomotopicalAlgebra.Localization.HomotopyGenerators
+import SerrePositivity.HomotopicalAlgebra.Localization.IteratedExistence
+import SerrePositivity.HomotopicalAlgebra.Localization.Iteration
+import SerrePositivity.HomotopicalAlgebra.Localization.LeftProperPushout
+import SerrePositivity.HomotopicalAlgebra.Localization.LeftProperTransfinite
+import SerrePositivity.HomotopicalAlgebra.Localization.LocalBoundaryCharacterization
+import SerrePositivity.HomotopicalAlgebra.Localization.LocalBoundaryEquivalences
+import SerrePositivity.HomotopicalAlgebra.Localization.LocalBoundaryGenerators
+import SerrePositivity.HomotopicalAlgebra.Localization.LocalFibrantApproximation
+import SerrePositivity.HomotopicalAlgebra.Localization.LocalLeftProper
+import SerrePositivity.HomotopicalAlgebra.Localization.LocalReplacementDetection
+import SerrePositivity.HomotopicalAlgebra.Localization.MappingTestDiagram
+import SerrePositivity.HomotopicalAlgebra.Localization.MappingTests
+import SerrePositivity.HomotopicalAlgebra.Localization.Minimality
+import SerrePositivity.HomotopicalAlgebra.Localization.ModelComparison
+import SerrePositivity.HomotopicalAlgebra.Localization.ModelExistence
+import SerrePositivity.HomotopicalAlgebra.Localization.Monoidal
+import SerrePositivity.HomotopicalAlgebra.Localization.MonoidalExistence
+import SerrePositivity.HomotopicalAlgebra.Localization.MonoidalUnit
+import SerrePositivity.HomotopicalAlgebra.Localization.QuillenCriterion
+import SerrePositivity.HomotopicalAlgebra.Localization.QuillenLocalObjects
+import SerrePositivity.HomotopicalAlgebra.Localization.Replacement
+import SerrePositivity.HomotopicalAlgebra.Localization.ReplacementComparison
+import SerrePositivity.HomotopicalAlgebra.Localization.ReplacementData
+import SerrePositivity.HomotopicalAlgebra.Localization.ReplacementHomotopy
+import SerrePositivity.HomotopicalAlgebra.Localization.Representatives
+import SerrePositivity.HomotopicalAlgebra.Localization.ResolutionHomGenerators
+import SerrePositivity.HomotopicalAlgebra.Localization.SmallHomTests
+import SerrePositivity.HomotopicalAlgebra.Localization.SpanLocalEquivalences
+import SerrePositivity.HomotopicalAlgebra.Localization.UniversalProperty
+import SerrePositivity.Spectra.ModelCategory.Combinatorial
+import SerrePositivity.Spectra.ModelCategory.LeftProper
+import SerrePositivity.Spectra.Stable.CofibrantLocalizingMaps
+import SerrePositivity.Spectra.Stable.DerivedTensorInverse
+import SerrePositivity.Spectra.Stable.EnrichedModel
+import SerrePositivity.Spectra.Stable.FrameLocality
+import SerrePositivity.Spectra.Stable.InternalHomOmega
+import SerrePositivity.Spectra.Stable.LocalizingHom
+import SerrePositivity.Spectra.Stable.LocalizingMaps
+import SerrePositivity.Spectra.Stable.ModelCategory
+import SerrePositivity.Spectra.Stable.Omega
+import SerrePositivity.Spectra.Stable.OmegaDetection
+import SerrePositivity.Spectra.Stable.OmegaLocalObjects
+import SerrePositivity.Spectra.Stable.OrdinarySuspension
+import SerrePositivity.Spectra.Stable.Replacement
+import SerrePositivity.Spectra.Stable.SimplicialStability
+import SerrePositivity.Spectra.Stable.TensorCompatibility
+import SerrePositivity.Spectra.Stable.TensorInverseMap
+import SerrePositivity.Spectra.Stable.UniversalLocalizingMaps
+import Lean.Util.CollectAxioms
+
+#check @SerrePositivity.HomotopyFunctionComplex.chosenResolutionHom
+#check @SerrePositivity.HomotopyFunctionComplex.chosenResolutionHom_map_source_weakEquivalence
+#check @SerrePositivity.HomotopyFunctionComplex.chosenResolutionHom_map_target_weakEquivalence
+#check @SerrePositivity.HomotopyFunctionComplex.chosenResolutionHom_kanComplex
+#check @SerrePositivity.HomotopyFunctionComplex.chosenResolutionHomPiZeroEquiv
+#check @SerrePositivity.HomotopyFunctionComplex.chosenResolutionHomPiZeroEquiv_naturality_source
+#check @SerrePositivity.HomotopyFunctionComplex.chosenResolutionHomPiZeroEquiv_naturality_target
+#check @SerrePositivity.HomotopyFunctionComplex.ChosenComparison.left
+#check @SerrePositivity.HomotopyFunctionComplex.ChosenComparison.right
+#check @SerrePositivity.HomotopyFunctionComplex.ChosenComparison.geometricWeakEquivalences
+#check @SerrePositivity.HomotopyFunctionComplex.ChosenMapComparison.fromResolution
+#check @SerrePositivity.HomotopyFunctionComplex.ChosenMapComparison.fromMap
+#check @SerrePositivity.HomotopyFunctionComplex.ChosenMapComparison.geometricWeakEquivalences
+#check @SerrePositivity.Bousfield.exists_modelPresentation
+#check @SerrePositivity.Bousfield.exists_enriched_localization
+#check @SerrePositivity.Bousfield.exists_monoidal_localization
+#check @SerrePositivity.SpectrumStabilization.exists_stableModelPresentation
+#check @SerrePositivity.SpectrumStabilization.StableModelPresentation.enriched_model
+#check @SerrePositivity.SpectrumStabilization.StableModelPresentation.monoidal_model
+#check @SerrePositivity.SpectrumStabilization.StableModelPresentation.exists_ordinarySuspensionLoopEquivalence
+
+open Lean in
+set_option maxHeartbeats 0 in
+run_cmd do
+  let env ← getEnv
+  let mut declarations : Nat := 0
+  let mut modules : Array Name := #[]
+  for (name, _) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    let mod := env.header.modules[idx.toNat]!.module
+    unless (`SerrePositivity).isPrefixOf mod do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "Unexpected axioms in {name}: {axioms}"
+    declarations := declarations + 1
+    unless modules.contains mod do modules := modules.push mod
+  unless declarations > 0 do throwError "Empty stage 4 audit"
+  logInfo m!"Stage 4 contract audit: {declarations} declarations, {modules.size} modules."
+  logInfo "Standard axioms only; no sorry or citation dependencies in the proof-only closure."
