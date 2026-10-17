@@ -11141,3 +11141,60 @@ K-flat対象上の等式を全導来後因子へ持ち上げる。
 自己・推移比較、外側左右・中間比較の恒等・合成則も残り、§15.2全体の受入監査は未完である。
 U12e全体は未受入。共有一般論への新しいAPI要求はない。
 共有ルート・共有監査スクリプト・並行担当ファイル・他チャットの記録は編集していない。
+
+### 17.238 U12e77：全導来左単位経路と既存左単位子の一致（2026-10-17）
+
+**対角射の輸送。** Derived/LeftUnitRestrictionTransport.leanの
+leftUnitRestrictionModelSourceIso_diagonalは、対角の通常Hom比較を局所化した射について、
+指定解像度計算同型と後因子の右制限表示を続けた自然変換の自然性を適用する式である。
+これにより、source表示の後で全導来関手に対角射を作用させる経路を、
+固定Rの導来合成に対角射を作用させてからsource表示へ進む経路へ移す。
+補助の自然性は通常の関手圏のprivate補題で証明し、dg比較のcoherenceを仮定していない。
+
+**全導来経路のモデル計算。** leftUnitRestrictionDerivedPrefixは、既存の全導来経路の
+対角射・外側右比較・前因子の左制限表示までの部分である。
+leftUnitRestrictionDerivedPrefix_modelは、この部分を上の対角輸送と§17.237の
+restrictedMiddleSourcePrefix_modelで計算したsquareである。
+leftUnitRestrictionDerivedComparison_modelは、さらに実際の全導来中間比較と
+既存全導来左単位子を続けると、§17.237のleftUnitRestrictionModelPathそのものに
+一致することを証明する。モデル経路の存在だけで全導来比較との一致を代用していない。
+対角部分と残りの中間比較・左単位部分を分けて検証し、資源上限は変更していない。
+
+**任意の導来対象上の左単位coherence。** Derived/LeftUnitRestrictionCoherence.leanの
+leftUnitRestrictionDerivedComparison_kFlatは、任意の指定右相対K-flat解像度Rと準同型qについて、
+既存source同型を打ち消し、右K-flat後因子Q上で実際の全導来比較と既存左単位子を同一視する。
+leftUnitRestrictionDerivedComparison_eqは、制限後の標準右K-flat解像度と
+rightKFlatDerivedNatTrans_extを使い、任意の全導来後因子へこの一致を持ち上げる。
+公開結論は次の自然変換の等式である。
+
+```lean
+leftUnitRestrictionDerivedComparison A B D C F hC =
+  whiskerLeft (derivedBimoduleRestriction A D C B C F (DGFunctor.id C))
+    (derivedBimoduleLeftUnitIso A D C hC).hom
+```
+
+係数Aは任意の可換環、B・D・Cの対象宇宙は独立、各対象添字にSmall.{u}を要求する。
+F : D → Bは任意で、HomQuasiIso・本質的全射性・準同値性を要求しない。
+局所Hom K-flat性は終端Cだけで、B・Dには追加しない。
+旧公開APIの名前・型は変更せず、新規一般APIを6宣言追加した。
+
+**検証。** Checks.DGLeftUnitRestrictionCoherenceは、指定解像度を使うモデル計算の型、
+指定モデルの打消し、全導来自然変換の一致を検査した。
+ZMod 2でも任意の導来対象Q上の成分の一致を、Fの準同値性なしで検査している。
+前回のsource正規化・モデル計算、左右単位、対角恒等/合成則、三圏同時制限、
+中間比較の恒等/合成則、解像度比較・導来同値・随伴・五角形・StageEight・StageSeven・
+Spectra.StageTwoとの統合ビルド成功（3544 jobs、警告なし）。
+直接公理監査は6公開宣言を重複・欠落なく網羅し、標準3公理以内。新規監査累計4680宣言。
+今回の3 Leanファイルにsorry・admit・新規axiom・資源上限変更は0件。採用済み引用0件。
+Lean v4.35.0-rc4とMathlib manifest/HEAD e6bbacd0e1b7307ff6e17da09cd2455f60804fa6を再確認した。
+文書検査は21 Markdown・326 exposition参照、失敗0件。
+
+**次の受入作業。** 全導来左単位経路の一致は今回証明した。
+次は結合子保存の通常/指定解像度squareを構成し、既存の
+derivedBimoduleAssociatorResolutionIso_base_facと解像度変更の独立性を使って
+全三因子に自然な結合比較へ運ぶ。局所Hom K-flat条件や後二因子の指定モデルを省略しない。
+左右単位経路と既存三圏同時制限の正規化の一致、changeEquivalenceの単位・結合保存と
+自己・推移比較、外側左右・中間比較の恒等・合成則も仕上げ、§15.2全体を監査する。
+U12e全体はなお未受入であり、今回の左単位coherenceだけで目標を完了扱いにしない。
+共有一般論への新しいAPI要求はない。共有ルート・共有監査スクリプト・並行担当の
+Tensor/Associator*・Perfect/・Endomorphism/・ScalarExtension*・他チャットの記録は編集していない。
