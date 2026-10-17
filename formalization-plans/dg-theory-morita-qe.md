@@ -511,6 +511,15 @@
   環準同型のflat性を追加せず、モデルのhAugまたは出力hE・hPNとhP'を公開型に明示した。
   他担当・既存Endomorphism/・Perfect/のAPIの型は変更していない。
 
+## 追加合同検証（2026-10-17、U16d.23–24）
+
+- 新旧37監査対象・公開入口・既存dg擬同値監査の39対象の合同ビルドに成功した
+  （3638 jobs、終了コード0、警告・エラー0件）。269宣言の公理監査はすべて標準3公理のみ。
+- 担当75 Leanファイルを確認し、実装ソースの新規sorry・admit・axiom、デバッグtraceは0件。
+  U16d.23–24はそれぞれ3f2586ef・2ccd8fceに担当6パスだけを明示してコミットし、
+  各コミット直後のgit show --stat HEADで担当ファイルのみであることを確認した。
+  共有ルート・他担当ファイル・既存Endomorphism/・Perfect/の公開APIは変更していない。
+
 ## 公開入口と残る接続
 
 公開入口は `SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence`。
