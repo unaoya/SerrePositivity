@@ -11198,3 +11198,48 @@ derivedBimoduleAssociatorResolutionIso_base_facと解像度変更の独立性を
 U12e全体はなお未受入であり、今回の左単位coherenceだけで目標を完了扱いにしない。
 共有一般論への新しいAPI要求はない。共有ルート・共有監査スクリプト・並行担当の
 Tensor/Associator*・Perfect/・Endomorphism/・ScalarExtension*・他チャットの記録は編集していない。
+
+### 17.239 U12e78：外側左作用の制限と通常結合子の可換square（2026-10-17）
+
+**通常の三因子の比較。** 新規Tensor/AssociatorLeftRestriction.leanは、
+既存composeLeftRestrictionIsoとassociatorIsoをそのまま使う。
+composeMap_leftRestrictionIso_valueは、内側合成Q⊗Rの外側左制限比較を
+後因子の射としてPとの合成へ作用させると、各値で恒等射になることを証明した。
+既存ι_composeValueMapとcomposeLeftRestrictionIso_hom_valueを明示的に適用し、
+coendの包含による射の判定を使う。
+associatorValue_leftRestrictionは、結合子の各値がRを左制限してから評価しても、
+元のRをGの対象写像で評価しても同じになる式である。
+結合子の値に隠された等式輸送の定義を必要な箇所だけ明示して確認した。
+
+**associatorIso_leftRestriction**は、P : B–C、Q : C–E、R : E–T、G : D → Tに対し、
+次の二つの経路の一致を全Hom自然な閉零bimodule射の圏で証明する。
+
+- (P⊗Q)⊗G*Rから結合子でP⊗(Q⊗G*R)へ進み、内側Q⊗Rの左制限比較、
+  外側P⊗(Q⊗R)の左制限比較を続ける経路。
+- (P⊗Q)⊗G*Rから外側左制限比較でG*((P⊗Q)⊗R)へ進み、
+  元の結合子をG*で制限する経路。
+
+係数Aは任意の可換環で、六つの宇宙を独立に保持する。
+smallnessはB・C・Eだけに要求し、終端T・Dには要求しない。
+局所Hom K-flat性、GのHom準同型性・本質的全射性は仮定しない。
+通常の射の一致であり、固定K-flat導来結合子や全導来三因子の比較を完了したとはしない。
+旧公開APIの名前・型は変更せず、一般APIを3宣言追加した。
+
+**検証。** Checks.DGAssociatorLeftRestrictionは上のsquareの全仮定・宇宙を確認し、
+ZMod 2でT・Dのsmallnessやflatnessなしの値の比較を検査した。
+§17.238までの全導来左単位・source正規化・右単位・三圏同時制限・解像度比較・
+中間比較の恒等/合成則・導来随伴・同値・五角形・StageEight・StageSeven・
+Spectra.StageTwoとの統合ビルド成功（3546 jobs、警告なし）。
+3公開宣言の直接公理監査は重複・欠落なく標準3公理以内。新規監査累計4683宣言。
+今回の2 Leanファイルにsorry・admit・新規axiom・資源上限変更は0件。採用済み引用0件。
+固定環境は§17.238と同じ。文書検査は21 Markdown・326 exposition参照、失敗0件。
+
+**次工程。** この通常squareを、既存derivedComposeWithLeftRestrictionIsoと
+rightKFlatDerivedAssociatorの局所化前の計算式へ適用し、固定した後二つの右相対K-flat因子と
+任意の導来前因子で外側左制限が結合子を保つ図式へ運ぶ。
+次いで指定解像度の計算squareと独立性を使って全三因子へ移す。
+外側右・中間制限との結合子square、三圏同時制限との正規化、changeEquivalenceの
+単位・結合保存と自己・推移比較、恒等・合成則も残り、U12e全体は未受入である。
+共有一般論への新しいAPI要求はない。既存の並行担当Tensor/AssociatorLeftCompatibility・
+AssociatorLeftTransport・AssociatorRightCompatibilityとそのChecks、共有ルート・共有監査スクリプト・
+他チャットの記録は編集していない。
