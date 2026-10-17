@@ -5620,6 +5620,203 @@ H の p 正則性から H/dH の p 正則性を結論したとはせず、その
 純性検出を引き続き調べる。raw の二つの未解消候補の分類は変更しない。
 
 
+
+### raw 源の局所化と完備化による負次数検出（2026-10-17）
+
+新規 `Unconditional/SourceUnitDenominator.lean` の 9 公開宣言と
+`Unconditional/CompletionTorsionDetection.lean` の 6 公開宣言を追加した。
+いずれも BS Rem 7.15（著者版 p.62）の元の raw 源の比較のための補助結果。
+既存 André ファイル・A1-d のファイル・他担当節は変更していない。
+
+共通名前空間は `SerrePositivity.BhattScholze.Andre`。
+前半では任意の δ 環 `D : DeltaStructure p A` と添字型 σ について、
+元の `deltaDivisionSourceMap (σ := σ) D d` を用いる。
+係数と初期変数上の計算および自由 δ 射の一意性から、以下を証明した。
+
+- `unconditionalDeltaDivisionSourceMap_comp D d e`：
+  `scale_d.comp scale_e = scale_(e*d)`。
+- `unconditionalDeltaDivisionSourceUnitEquiv D u`（u:Aˣ）：
+  `RelativeFreeDeltaRing (R := A) σ ≃+* RelativeFreeDeltaRing (R := A) σ`。
+  順射は元の scale_u、逆射は scale_(u⁻¹)。
+- `unconditionalDeltaDivisionSourceMap_bijective_of_isUnit D d hd`：
+  `Function.Bijective (deltaDivisionSourceMap D d)`。
+- `unconditionalRelativeFreeMap_isDeltaHom D E q hq` と
+  `unconditionalDeltaDivisionSourceMap_natural D E q hq d`：
+  元の多項式係数射が δ 構造を保ち、元の scale 射と可換。
+- `unconditionalDeltaDivisionSourceMap_bijective_localization D d B`：
+  `S := D.frobeniusDenominators (Submonoid.powers d)` に関する実局所化 B と
+  既存の `D.localization S B ...` 上の scale_(algebraMap A B d) の全単射性。
+- `unconditionalFrobeniusDenominators_isUnit_mod_prime D d q hp hd`：
+  q(p)=0、q(d) が単元なら、S の全元も q で単元へ移る。
+  終域の δ 構造は不要。
+- `unconditionalFrobeniusDenominators_map_mod_prime D d q hp`：
+  `S.map q.toMonoidHom = Submonoid.powers (q d)`。
+- `unconditionalSaturatedLocalization_mod_prime_isLocalizationAway D d B`：
+  `IsLocalization.Away (Ideal.Quotient.mk (Ideal.span {(p:A)}) d)
+    (B ⧸ (Ideal.span {(p:A)}).map (algebraMap A B))`。
+  対象は実局所化 B の実商であり、別のねじれ除去商は使わない。
+
+後半では任意の可換環 R、a:R、実対象 `X : ConcreteDerivedCategory R` を扱う。
+`unconditionalScalarCone_homology_isZero` が隣接二次数の消滅を実スカラー錐へ移す。
+完備化単位の Koszul 同値性から
+`unconditionalNegativeHomology_smul_injective_of_completion_isGE` は
+`(C_a X).IsGE 0 → i<0 → Function.Injective (fun x : H^i(X) => a • x)` を与える。
+これを反復する
+`unconditional_isGE_of_completion_isGE_of_negative_power_torsion` は、
+`∀ i<0, ∀x:H^i(X), ∃n, a^n • x=0` から `X.IsGE 0` を得る。
+対象自体の完備性・環の a 正則性・有界ねじれは不要であり、指数は各元で異なってよい。
+
+通常局所化の核判定を使う
+`unconditionalModule_power_torsion_of_localization_isZero` と、
+実平坦導来係数拡大のホモロジー比較を使う
+`unconditionalNegativeHomology_power_torsion_of_localization_isGE` を合成し、
+最終的に `unconditional_isGE_of_completion_isGE_of_localization_isGE` を公開した。
+正確な結論は、任意の `[IsLocalization.Away a B]` に対して
+`(C_a X).IsGE 0 → (flatDerivedBaseChange (algebraMap R B) hflat |>.obj X).IsGE 0 → X.IsGE 0`。
+hflat は局所化の平坦性から内部で供給する。新引用・sorry・axiom はない。
+
+検証：監査が読む全担当モジュールと `MonicRootedExtension` の対象ビルドは
+終了コード 0（4624 jobs）。専用監査は合計 171 公開宣言の `assert_no_sorry`、
+`#print axioms`、追加 15 宣言の `#check`、48,763 依存宣言の型・値の推移的公理走査に成功。
+公理依存は `propext`、`Classical.choice`、`Quot.sound` のみ。
+
+未接続なのは、元の二因子導来源を上記の係数局所化上の二因子源へ運ぶ比較と、
+同じ源の先行 p 還元の d 完備化を既証明の純粋な逐次完備化の p 還元へ比較する部分。
+これらはまだ raw 全体の p 正則性の証明ではない。
+`powerRootPrismMonicRaw_p_mul_injective` と `powerRootPrismMonicRaw_pAdic_regular_pair` の
+無条件版を証明済みとも、本質的な (c) とも分類しない。担当 goal は継続中。
+
+
+
+### 局所化先の純性と、元の右因子の標準係数拡大（2026-10-17）
+
+`SourceUnitPurity.lean` の 5 公開宣言と `LocalizedScalarModule.lean` の 3 公開宣言、
+`LocalizedDeltaSourceTarget.lean` の 1 公開宣言を追加した。
+前節の 15 宣言は `6ea14f94` に保存済み。本単位も既存 André ファイルを変更しない。
+
+`unconditionalSourceUnit_scalarModule_flat D d hd` は
+`Module.Flat L (baseChangeScalarModule (deltaDivisionSourceMap D d))` を与える。
+右因子の元の自己射作用は、逆環射を使う線形同型で通常の自由一階加群に移る。
+`unconditionalSourceUnit_tor_isZero` はこの平坦性を Tor の対称性へ渡し、
+任意の分子 a について元の β,α の二因子の全正次数 Tor を消す。
+`unconditionalSourceUnit_augmentation_isIso` は元の標準 augmentation の同型性、
+`unconditionalSourceUnit_homology_isZero` は同じ実二因子導来テンソルの全非零次数消滅。
+`unconditionalSourceSaturatedLocalization_homology_isZero D d a B i hi` は、
+係数・分母・分子をすべて標準局所化射の像として指定した実二因子源に適用する。
+モニック性・完備性・p 正則性はこの局所化先の結果には不要。
+
+`unconditionalScalarModuleCoefficientMap α β hcomm` の台写像は元の係数射。
+分母集合 M を α が固定する場合、その射の `IsLocalizedModule M` を
+`unconditionalScalarModuleCoefficientMap_isLocalizedModule` で証明した。
+単元性・分数表示・核判定を元の作用へ移している。
+その通常テンソル普遍性を使う `unconditionalScalarModuleLocalizationEquiv` の型は、
+`[IsLocalization M S]`、α:R→+*R、β:S→+*S、
+`hcomm : β.comp (algebraMap R S) = (algebraMap R S).comp α`、
+`hfix : ∀s:M, α s=s` に対して
+`(ModuleCat.extendScalars (algebraMap R S)).obj (baseChangeScalarModule α)
+  ≃ₗ[S] baseChangeScalarModule β`。
+自己射の平坦性や可逆性は仮定しない。
+
+実 δ 源への適用 `unconditionalDeltaSourceTargetLocalizationEquiv D d B` は、
+`T := D.frobeniusDenominators (Submonoid.powers d)`、
+`E := D.localization T B ...`、`LA := RelativeFreeDeltaRing (R := A) σ`、
+`LB := RelativeFreeDeltaRing (R := B) σ` として、正確に
+
+```lean
+(ModuleCat.extendScalars (MvPolynomial.map (algebraMap A B))).obj
+    (baseChangeScalarModule (deltaDivisionSourceMap (σ := σ) D d)) ≃ₗ[LB]
+  baseChangeScalarModule (deltaDivisionSourceMap (σ := σ) E (algebraMap A B d))
+```
+
+を与える。源射は係数 C(T) を固定するので一般比較の仮定を内部で供給できる。
+元の右因子を局所化先へ運ぶ部分はここで接続済み。
+残るのは左の評価因子の同様の比較と、二因子導来テンソルへの合成、
+先行 p 還元の d 完備化と既証明の逐次完備化の p 還元の比較である。
+raw 全体と通常 p 完備化の正則性はまだ未証明であり、担当 goal は継続中。
+
+検証：監査が読む全担当モジュールと `MonicRootedExtension` の対象ビルドは
+終了コード 0（4630 jobs）。専用監査は 180 公開宣言の `assert_no_sorry`・
+`#print axioms`、追加 9 宣言の `#check`、48,895 依存宣言の型・値の推移的公理走査に成功。
+公理依存は標準三公理 `propext`、`Classical.choice`、`Quot.sound` のみ。
+
+
+
+### 元の raw 全体の p 正則性：正次数モニック入力（2026-10-17）
+
+新規 10 ファイルの 26 公開宣言を追加した。
+`LocalizedEvaluationModule`、`LocalizedDeltaSourceEvaluation`、`LocalizedDeltaSourceTensor`、
+`SourceUnitSingle`、`LocalizedDeltaSourcePrimeCone`、`SaturatedLocalizationTorsion`、
+`SourcePrimeConeTorsion`、`ScalarConeRestriction`、`PowerRootRawPrimeConeCompletion`、
+`PowerRootRawPrimeRegular`（すべて `Andre/Unconditional/`）が今回の成果である。
+既存 André ファイルと A1-d のファイルは変更していない。
+
+共通名前空間 `SerrePositivity.BhattScholze.Andre` の主要な公開名・型を記す。
+完全 prism W、hW、f から作る元の対象を
+`P := PowerRootPolynomial A p hp`、`E := powerRootPolynomialDelta p hW.p_mul_injective W.deltaStructure`、
+`dP := algebraMap A P W.generator`、`a := powerRootPrismMonicUnaryFamily (p := p) f`、
+`L := PowerRootUnaryFreeDeltaRing A p hp`、`Raw := DeltaAdjoinDivision E dP a`、
+`X := PowerRootPrismMonicSourceCoefficientObject_of_unconditional W hW f` とする。
+X は元の二因子導来テンソルを元の標準 A 作用へ係数制限した対象であり、
+Raw は元の δ 閉包による実商そのものである。
+
+```lean
+powerRootPrismMonicSourcePrimeCone_power_torsion_of_unconditional W hW f
+    (i : ℤ) (hi : i ≠ 0)
+    (x : (DerivedCategory.homologyFunctor (ModuleCat A) i).obj
+      ((derivedScalarConeFunctor A (p : A)).obj X.obj)) :
+  ∃ n : ℕ, W.generator ^ n • x = 0
+
+powerRootPrismMonicSourcePrimeConeCompletion_isGE_of_unconditional W hW f
+    (hf : f.Monic) (hdeg : 0 < f.natDegree) :
+  ((derivedComplexCompletionFunctor A W.generator).obj
+    ((derivedScalarConeFunctor A (p : A)).obj X.obj)).IsGE 0
+
+powerRootPrismMonicSourcePrimeCone_isGE_of_unconditional W hW f
+    (hf : f.Monic) (hdeg : 0 < f.natDegree) :
+  ((derivedScalarConeFunctor A (p : A)).obj X.obj).IsGE 0
+
+powerRootPrismMonicRaw_p_mul_injective_of_positive_unconditional W hW f
+    (hf : f.Monic) (hdeg : 0 < f.natDegree) :
+  Function.Injective (fun r : Raw => (p : Raw) * r)
+```
+
+最初の冪ねじれ性にはモニック性・正次数は不要。
+局所化側では `unconditionalEvaluationLocalizationEquiv` が一般の評価射の実係数拡大を比較し、
+`unconditionalDeltaSourceEvaluationLocalizationEquiv` が元の左評価因子へ適用する。
+既存の右因子比較と平坦導来テンソルの係数拡大比較を合成した
+`unconditionalDeltaSourceTensorLocalizationIso` により、元の実導来局所化と実二因子源が一致する。
+単元分母の源は `unconditionalSourceUnitSingleIso` で元の評価加群の single と同型。
+局所化した係数環の p 正則性を使う
+`unconditionalDeltaSourcePrimeCone_localization_homology_isZero` が、元の p 錐の局所化後の消滅を与える。
+
+`unconditionalSaturatedScalarCone_homology_power_torsion` は、元の実局所化の核判定と
+実 p 錐のホモロジー上で p が零になることを合成する。
+Frobenius 安定分母の mod p 像が元の分母の冪集合に等しいので、
+一つの安定分母による零化を元の分母のある冪による零化へ戻せる。
+これを実源へ適用した `unconditionalSourcePrimeCone_homology_power_torsion` と
+`unconditionalBoundedRestrictionScalarCone_homology_power_torsion` で、元の標準 A 作用を保つ。
+ねじれ指数の一様な上界・有限生成性・d mod p 正則性は仮定していない。
+
+完備化側では `unconditionalIteratedCompletion_scalarConeIso` が、任意の a,b について
+`C_a(Cone_b X) ≅ Cone_b(C_a(C_b X))` を元の完備化単位から構成する。
+既証明の逐次完備化の先行 p 還元の純性を、この同型と実正則商 Koszul 比較で移す。
+従って元の p 錐の d 完備化には負次数がない。
+完備化単位の Koszul 同値性が負次数ホモロジー上の d 単射性を与えるので、
+局所化側の d 冪ねじれと合流して元の p 錐の負次数が消える。
+その H⁰ 上の p 単射性を `powerRootPrismMonicSourceRawStandardH0Iso_of_unconditional` で
+元の標準 A 作用付き Raw へ移す。原典 BS Rem 7.15（著者版 p.62）を補う別経路であり、新引用はない。
+
+今回の結論は正次数モニック入力に限る。元の旧定理は f=1 も含むため、
+`powerRootPrismMonicRaw_p_mul_injective` の hpR を完全に解消したとはまだ数えない。
+次数零入力の処理と `powerRootPrismMonicRaw_pAdic_regular_pair` の通常 p 完備化の正則対は残る。
+どちらも本質的な (c) と断定せず、担当 goal は継続中。
+
+検証：監査が読む全担当モジュールと `MonicRootedExtension` の対象ビルドは
+終了コード 0（4654 jobs）。専用監査は 206 公開宣言の `assert_no_sorry`・
+`#print axioms`、今回追加 26 宣言の `#check`、49,228 依存宣言の型・値の推移的公理走査に成功。
+公理依存は標準三公理 `propext`、`Classical.choice`、`Quot.sound` のみで、sorryAx はない。
+
+
 ## A1-c：係数表記の照合
 
 2026-10-17。BS Rem 7.15（著者版 p.62）と E1.25・E1.55・E1.56 の補足。
