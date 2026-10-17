@@ -14,6 +14,7 @@ set_option pp.explicit true
 
 
 
+
 #print axioms SerrePositivity.InfinityCategories.Coherent.cube
 #check @SerrePositivity.InfinityCategories.Coherent.cube
 
@@ -82,6 +83,39 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.Coherent.hollowCylinder_extension
 #check @SerrePositivity.InfinityCategories.Coherent.hollowCylinder_extension
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornVertex
+#check @SerrePositivity.InfinityCategories.Coherent.hornVertex
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornObj
+#check @SerrePositivity.InfinityCategories.Coherent.hornObj
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.horn_map_const
+#check @SerrePositivity.InfinityCategories.Coherent.horn_map_const
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.simplex_map_obj
+#check @SerrePositivity.InfinityCategories.Coherent.simplex_map_obj
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.horn_simplex_obj
+#check @SerrePositivity.InfinityCategories.Coherent.horn_simplex_obj
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.horn_face_obj
+#check @SerrePositivity.InfinityCategories.Coherent.horn_face_obj
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.simplex_map_hom
+#check @SerrePositivity.InfinityCategories.Coherent.simplex_map_hom
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornHomOnCell
+#check @SerrePositivity.InfinityCategories.Coherent.hornHomOnCell
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornHomOnCell_transport_back
+#check @SerrePositivity.InfinityCategories.Coherent.hornHomOnCell_transport_back
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornHomOnCell_heq
+#check @SerrePositivity.InfinityCategories.Coherent.hornHomOnCell_heq
+
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornHomOnCell_naturality
+#check @SerrePositivity.InfinityCategories.Coherent.hornHomOnCell_naturality
 
 #print axioms SerrePositivity.InfinityCategories.Coherent.path_hom_iff
 #check @SerrePositivity.InfinityCategories.Coherent.path_hom_iff

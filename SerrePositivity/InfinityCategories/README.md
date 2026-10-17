@@ -1186,7 +1186,9 @@ Mathlib の `Quasicategory` が求める n+2 次元の全内部ホーンをこ�
 空洞柱の anodyne 性・Kan 複体への延長と、path の Hom 単体集合から内部点の冪集合の nerve への
 同型 `pathInteriorNerveIso` を証明済み。さらに一座標分離 `cubeSplitIso`、空洞立方体の所属判定、
 包含の anodyne 性、path の Hom 上の `pathHollow_extension` まで証明済み。
-明示的な公開 45 宣言を公理監査済み。
+さらにホーンの全単体から共通の対象族・Hom 写像を回収し、
+任意の単体的制限との整合性 `hornHomOnCell_naturality` を証明済み。
+明示的な公開 56 宣言を公理監査済み。
 残工程：ホーンの面から Hom データを回収して空洞部分上へ貼り、
 延長から豊穣関手を復元して `Quasicategory` を証明する。γ1 全体は未完了。
 各段の実施記録はコミットメッセージへ置き、計画本文には現在地と残工程を短く残す。
