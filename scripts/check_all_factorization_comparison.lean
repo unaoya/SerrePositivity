@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.Foundations
+import SerrePositivity.HomotopicalAlgebra.Rectification.Foundations
 import Lean.Util.CollectAxioms
 
 universe w v u
@@ -88,7 +88,7 @@ run_cmd do
     `SerrePositivity.CategoryTheory.NerveVertices,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftFillers,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterExtension,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AllFactorizationComparison]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.AllFactorizationComparison]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

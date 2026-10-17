@@ -4,6 +4,12 @@
 `e6bbacd0e1b7307ff6e17da09cd2455f60804fa6`。
 設計は `formalization-plans/k-theory.md` §123・§124。
 
+## 一般入口と中断した厳密化の分離（2026-10-17）
+
+`GeneralTools`は棚卸しA全190本と切り出した一般層14本を公開する。共有`Foundations`はこの一般入口を含み、B・Rectificationには推移的に依存しない。中断した任意モデル源への厳密化を調べる場合は、`Rectification.Foundations`を明示的にimportする。
+
+Bの413本は専用ディレクトリに置き、旧パスの個別importは互換ファイルで維持する。公開名前空間・宣言名・型・証明は保つ。詳細は[専用層README](Rectification/README.md)と[棚卸しの実施記録](../../formalization-plans/k-theory-generalization-inventory.md#layout-execution)を参照。
+
 ## 基底の型と宇宙
 
 - 圏は `C : Type u`、`Category.{v} C`。異なる圏の対象・射の宇宙は独立に保つ。

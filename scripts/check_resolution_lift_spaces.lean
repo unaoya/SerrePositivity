@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.Foundations
+import SerrePositivity.HomotopicalAlgebra.Rectification.Foundations
 import Lean.Util.CollectAxioms
 
 universe v u vH uH
@@ -62,9 +62,9 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.LiftSpace,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.LiftSpaceFunctor,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionLiftSpace]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.LiftSpace,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.LiftSpaceFunctor,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ResolutionLiftSpace]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.Foundations
+import SerrePositivity.HomotopicalAlgebra.Rectification.Foundations
 import Lean.Util.CollectAxioms
 
 universe w uD vD uE vE v u
@@ -58,13 +58,13 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
-  `SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBiparameterComposition,
-  `SerrePositivity.HomotopicalAlgebra.Simplicial.NerveArrowComparisonComposition,
-  `SerrePositivity.HomotopicalAlgebra.Simplicial.NerveProductEndpointTransport,
-  `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SelectedIntervalEndpoints,
-  `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionMixedReassociationEquality,
-  `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionMixedRawEndpoints,
-  `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionMixedEndpointCompatibility]
+  `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveBiparameterComposition,
+  `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveArrowComparisonComposition,
+  `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveProductEndpointTransport,
+  `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.SelectedIntervalEndpoints,
+  `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ResolutionMixedReassociationEquality,
+  `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ResolutionMixedRawEndpoints,
+  `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ResolutionMixedEndpointCompatibility]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

@@ -1,92 +1,24 @@
 module
 
-public import SerrePositivity.CategoryTheory.AnchoredChainTransport
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AllFactorizationComparison
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterHomotopy
+public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.AllFactorizationPost
 
 /-!
-# 中断した任意モデル源への一般化：AllFactorizationPost
+# 中断した厳密化モジュールの互換入口
 
 ## 概要
-任意モデル源への一般化（中断、計画書§396）の一部である（分類B）。
-対象：One postcomposition homotopy on all factorization chains。
+旧importを維持するため、移動した専用モジュールを再公開する。
+公開宣言の名前空間・型・証明は移動先に保持する。
 
 ## 方針（定義・証明）
-frameによる導来写像空間と整合図式の厳密化に対応する足場。
-下の技術注記に、元の具体的な構成と比較の範囲を保存する。
+Rectification配下の対応するモジュールをpublic importする。
+このファイルに定義や証明を重複させない。
 
 ## 規約と注意
-全hornを用いるKan複体の議論と、内側hornによる∞圏の議論を区別する。
-既知の厳密化定理や単体的局所化との同定を証明したとは主張しない。
+任意モデル源への一般化は引き続き中断中である。
+一般道具はGeneralToolsまたは共有Foundationsから利用する。
 
 ## 使われ方
-stage 4の完成部分L・E・Sからの利用はない。
-再開時は[計画書 §396][plan]と[棚卸し m0053][inventory]を参照する。
-
-[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0053
-[plan]: ../../../formalization-plans/k-theory.md
+既存の個別importはそのまま利用できる。
+新しい専用コードではRectification配下の正規パスを利用する。
+対応表はscripts/homotopical_generalization_manifest.jsonを参照。
 -/
-
-/- 旧モジュールの技術注記（構成と注意を保存）
-# One postcomposition homotopy on all factorization chains
-
-Both maps are the actual existing families: the new global family along
-the transported chain, and the old global family followed by strict
-postcomposition. A single large-parameter homotopy compares them.
--/
-
-@[expose] public section
-universe v u
-noncomputable section
-set_option backward.isDefEq.respectTransparency false
-set_option backward.isDefEq.respectTransparency.types false
-open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory HomotopicalAlgebra
-open SerrePositivity.SimplicialModel
-open SerrePositivity.HomotopyFunctionComplex.CoherentLiftRelative
-
-namespace SerrePositivity.HomotopyFunctionComplex.AllFactorizationPost
-variable {C : Type u} [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}]
-  (hcof : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
-  (hfib : fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
-  {X Y V W : ResolutionObject C} (f : X.base ⟶ Y.base) (g : Y ⟶ V) (b : V ⟶ W)
-
-abbrev choiceSpace : SSet.{v} := postChoiceSpace X Y W f (g ≫ b)
-
-abbrev direct : AnchoredChain.simplicial g ⟶ UniverseLift.obj.{u} (choiceSpace f g b) :=
-  AnchoredChain.mapFunctor (ArrowFactorization.postTo g b (g ≫ b) rfl) ≫
-    AllFactorizationComparison.chainComparison hcof hfib f (g ≫ b)
-
-abbrev transported : AnchoredChain.simplicial g ⟶ UniverseLift.obj.{u} (choiceSpace f g b) :=
-  AllFactorizationComparison.chainComparison hcof hfib f g ≫
-    UniverseLift.map (CoherentLiftPostComposition.firstMap hcof X Y V W f g b)
-
-include hcof hfib in
-lemma fillers : UniverseLift.BoundaryFillers (choiceSpace f g b) :=
-  LargeParameterExtension.relativeFillers hcof hfib (vertexInclusion X Y f)
-    (postBoundary X Y W f (g ≫ b))
-    (ResolutionLiftSpace.projection X W (f ≫ (g ≫ b).base))
-    (ResolutionLiftSpace.projection_trivialFibration hcof X W (f ≫ (g ≫ b).base))
-
-def homotopy : SSet.Homotopy (direct hcof hfib f g b) (transported hcof hfib f g b) :=
-  LargeParameterHomotopy.homotopy (fillers hcof hfib f g b)
-    (direct hcof hfib f g b) (transported hcof hfib f g b)
-
-/-- Finite values of the global homotopy remain in the original Hom universe. -/
-def simplex {n : ℕ} (c : AnchoredChain g n)
-    (t : (SSet.stdSimplex.{max u v}.obj (SimplexCategory.mk 1)).obj
-      (Opposite.op (SimplexCategory.mk n))) :
-    SSet.stdSimplex.{v}.obj (SimplexCategory.mk n) ⟶ choiceSpace f g b :=
-  SSet.yonedaEquiv.symm
-    ((((homotopy hcof hfib f g b).h).app (Opposite.op (SimplexCategory.mk n)) (c, t)).down)
-
-lemma simplex_fixed_boundary {n : ℕ} (c : AnchoredChain g n)
-    (t : (SSet.stdSimplex.{max u v}.obj (SimplexCategory.mk 1)).obj
-      (Opposite.op (SimplexCategory.mk n))) :
-    vertexInclusion X Y f ▷ SSet.stdSimplex.{v}.obj (SimplexCategory.mk n) ≫
-      RelativeChoiceSpace.family (vertexInclusion X Y f) (postBoundary X Y W f (g ≫ b))
-        (simplex hcof hfib f g b c t) =
-      vertices X Y f ◁ (SSet.stdSimplex.isTerminalObj₀.from _ ≫
-        RelativeChoiceSpace.pointUnitIso.hom) ≫ (ρ_ _).hom ≫ postBoundary X Y W f (g ≫ b) :=
-  RelativeChoiceSpace.family_fixed_boundary _ _ _
-
-end SerrePositivity.HomotopyFunctionComplex.AllFactorizationPost

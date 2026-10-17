@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.Foundations
+import SerrePositivity.HomotopicalAlgebra.Rectification.Foundations
 import Lean.Util.CollectAxioms
 
 universe v u vH uH
@@ -71,12 +71,12 @@ example {C : Type u} [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}]
 open Lean in
 run_cmd do
   let env ← getEnv
-  let expected := #[`SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.LocalizedMappingBifunctor,
+  let expected := #[`SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.LocalizedMappingBifunctor,
 
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionCategory,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionCategoryHom,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionLiftIndependence,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.LocalizedResolutionHom]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ResolutionCategory,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ResolutionCategoryHom,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ResolutionLiftIndependence,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.LocalizedResolutionHom]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

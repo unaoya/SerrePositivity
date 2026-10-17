@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.Foundations
+import SerrePositivity.HomotopicalAlgebra.Rectification.Foundations
 import Lean.Util.CollectAxioms
 
 universe v u vS uS vH uH vD uD
@@ -100,9 +100,9 @@ run_cmd do
   let expected := #[
     `SerrePositivity.HomotopicalAlgebra.Replacement.FibrantCategory,
     `SerrePositivity.HomotopicalAlgebra.Replacement.FibrantLocalization,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ReplacementMappingBifunctor,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ReplacementMappingLocalization,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ReplacementMappingDescent]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ReplacementMappingBifunctor,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ReplacementMappingLocalization,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ReplacementMappingDescent]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

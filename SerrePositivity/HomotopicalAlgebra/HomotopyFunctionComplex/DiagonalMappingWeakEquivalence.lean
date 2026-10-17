@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalQuillen
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.DiagonalMappingComparison
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionLiftAction
+public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.DiagonalMappingComparison
+public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ResolutionLiftAction
 
 /-!
 # 中断した任意モデル源への一般化：DiagonalMappingWeakEquivalence

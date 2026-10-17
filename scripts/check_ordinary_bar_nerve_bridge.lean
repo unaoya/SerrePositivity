@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.Foundations
+import SerrePositivity.HomotopicalAlgebra.Rectification.Foundations
 import Lean.Util.CollectAxioms
 
 universe v u uD vD uB vB uH vH
@@ -55,12 +55,12 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
-    `SerrePositivity.CategoryTheory.SimplexChainParameter,
-    `SerrePositivity.CategoryTheory.LabelledChain,
+    `SerrePositivity.CategoryTheory.SimplexChainVertices,
+    `SerrePositivity.CategoryTheory.ElementsChainLifting,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveAugmentation,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.TotalNerveBarAugmentation,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarCommaPresentation,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarNerveBridge]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarNerveBridge]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

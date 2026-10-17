@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.DegenerateHornInput
+public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.DegenerateHornInput
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
 
 /-!

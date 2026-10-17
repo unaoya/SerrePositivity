@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.Foundations
+import SerrePositivity.HomotopicalAlgebra.Rectification.Foundations
 import Lean.Util.CollectAxioms
 
 universe v w uD vD uH vH
@@ -53,8 +53,8 @@ run_cmd do
   let env ← getEnv
   let expected := #[
     `SerrePositivity.HomotopicalAlgebra.Simplicial.DiagramQuotient,
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.SmallDiagramQuotient,
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.StarDiagramSmallQuotient]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.SmallDiagramQuotient,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.StarDiagramSmallQuotient]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

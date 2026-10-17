@@ -46,7 +46,7 @@ run_cmd do
   let expected := #[
     `SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveFunctor,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveMonos,
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.NerveInitialImage,
+    `SerrePositivity.HomotopicalAlgebra.Simplicial.NerveInitialContraction,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveStandard]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]

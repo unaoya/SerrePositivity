@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.Foundations
+import SerrePositivity.HomotopicalAlgebra.Rectification.Foundations
 import Lean.Util.CollectAxioms
 
 universe w uD vD v u
@@ -80,12 +80,12 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMovingBoundary,
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.NerveNaturalBoundaryTransport,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SelectedIntervalVertices,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionMixedVertexRestrictions,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionMixedTriangleBoundary,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionMixedCoherentTriangles]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveMovingBoundary,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveNaturalBoundaryTransport,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.SelectedIntervalVertices,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ResolutionMixedVertexRestrictions,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ResolutionMixedTriangleBoundary,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ResolutionMixedCoherentTriangles]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

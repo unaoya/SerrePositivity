@@ -1,65 +1,24 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarTotalEvaluation
-public import SerrePositivity.CategoryTheory.NerveHomotopyUniverse
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
+public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarTotalHomotopy
 
 /-!
-# 中断した任意モデル源への一般化：OrdinaryBarTotalHomotopy
+# 中断した厳密化モジュールの互換入口
 
 ## 概要
-任意モデル源への一般化（中断、計画書§396）の一部である（分類B）。
-対象：Actual nerve homotopy of the whole labelled total comparison。
+旧importを維持するため、移動した専用モジュールを再公開する。
+公開宣言の名前空間・型・証明は移動先に保持する。
 
 ## 方針（定義・証明）
-frameによる導来写像空間と整合図式の厳密化に対応する足場。
-下の技術注記に、元の具体的な構成と比較の範囲を保存する。
+Rectification配下の対応するモジュールをpublic importする。
+このファイルに定義や証明を重複させない。
 
 ## 規約と注意
-全hornを用いるKan複体の議論と、内側hornによる∞圏の議論を区別する。
-既知の厳密化定理や単体的局所化との同定を証明したとは主張しない。
+任意モデル源への一般化は引き続き中断中である。
+一般道具はGeneralToolsまたは共有Foundationsから利用する。
 
 ## 使われ方
-stage 4の完成部分L・E・Sからの利用はない。
-再開時は[計画書 §396][plan]と[棚卸し m0233][inventory]を参照する。
-
-[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0233
-[plan]: ../../../formalization-plans/k-theory.md
+既存の個別importはそのまま利用できる。
+新しい専用コードではRectification配下の正規パスを利用する。
+対応表はscripts/homotopical_generalization_manifest.jsonを参照。
 -/
-
-/- 旧モジュールの技術注記（構成と注意を保存）
-# Actual nerve homotopy of the whole labelled total comparison
-
-The source is the nerve of the original bar simplex category. The target
-retains comma objects, degrees, and Hom labels. This is an auxiliary
-homotopy; no comparison between this nerve and the original bar is assumed.
--/
-
-@[expose] public section
-universe v u uH vH
-noncomputable section
-open CategoryTheory HomotopicalAlgebra
-open SerrePositivity.SimplicialModel
-
-namespace SerrePositivity.HomotopyFunctionComplex.OrdinaryBarTotalHomotopy
-variable {C : Type u} [Category.{v} C] [ModelCategory C]
-  (R : RightResolutionMapping.Index C)
-  (a : NerveFirstChoice.System (OrdinaryBarCenters.leftChoices R))
-  (b : NerveFirstChoice.System (OrdinaryBarCenters.rightChoices R))
-
-abbrev firstMap := NerveHomotopyUniverse.map (OrdinaryBarTotalCone.first R)
-abbrev evaluatedMap := NerveHomotopyUniverse.map
-  (OrdinaryBarTotalEvaluation.evaluationElements R a b ⋙
-    OrdinaryBarTotalEvaluation.rowElements R)
-
-def homotopy : SSet.Homotopy (firstMap R) (evaluatedMap R a b) :=
-  NerveHomotopyUniverse.homotopy (OrdinaryBarTotalEvaluation.comparison R a b)
-
-variable {H : Type uH} [Category.{vH} H] (L : SSet.{max u v} ⥤ H)
-  (hL : SSet.anodyneExtensions.IsInvertedBy L)
-
-include hL in
-lemma image_eq : L.map (firstMap R) = L.map (evaluatedMap R a b) :=
-  AnodyneHomotopy.map_homotopy_eq L hL (homotopy R a b)
-
-end SerrePositivity.HomotopyFunctionComplex.OrdinaryBarTotalHomotopy

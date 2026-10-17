@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.SegmentWords
+public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.SegmentWords
 
 /-!
 # 中断した任意モデル源への一般化：RetractEndomorphisms

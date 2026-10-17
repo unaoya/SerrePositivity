@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.Foundations
+import SerrePositivity.HomotopicalAlgebra.Rectification.Foundations
 import Lean.Util.CollectAxioms
 
 universe v u w vJ uJ
@@ -71,7 +71,7 @@ run_cmd do
   let expected := #[
     `SerrePositivity.CategoryTheory.NerveSimplexEndpoint,
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Elements,
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.NerveCoherentFamily]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveCoherentFamily]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

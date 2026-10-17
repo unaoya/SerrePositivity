@@ -1,68 +1,24 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFixedAugmentation
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarDiagonalHomAugmentation
+public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarSourceHom
 
 /-!
-# 中断した任意モデル源への一般化：OrdinaryBarSourceHom
+# 中断した厳密化モジュールの互換入口
 
 ## 概要
-任意モデル源への一般化（中断、計画書§396）の一部である（分類B）。
-対象：The actual outer source Hom simplicial set and its base augmentation。
+旧importを維持するため、移動した専用モジュールを再公開する。
+公開宣言の名前空間・型・証明は移動先に保持する。
 
 ## 方針（定義・証明）
-frameによる導来写像空間と整合図式の厳密化に対応する足場。
-下の技術注記に、元の具体的な構成と比較の範囲を保存する。
+Rectification配下の対応するモジュールをpublic importする。
+このファイルに定義や証明を重複させない。
 
 ## 規約と注意
-全hornを用いるKan複体の議論と、内側hornによる∞圏の議論を区別する。
-既知の厳密化定理や単体的局所化との同定を証明したとは主張しない。
+任意モデル源への一般化は引き続き中断中である。
+一般道具はGeneralToolsまたは共有Foundationsから利用する。
 
 ## 使われ方
-stage 4の完成部分L・E・Sからの利用はない。
-再開時は[計画書 §396][plan]と[棚卸し m0227][inventory]を参照する。
-
-[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0227
-[plan]: ../../../formalization-plans/k-theory.md
+既存の個別importはそのまま利用できる。
+新しい専用コードではRectification配下の正規パスを利用する。
+対応表はscripts/homotopical_generalization_manifest.jsonを参照。
 -/
-
-/- 旧モジュールの技術注記（構成と注意を保存）
-# The actual outer source Hom simplicial set and its base augmentation
--/
-
-@[expose] public section
-universe v u
-noncomputable section
-set_option backward.isDefEq.respectTransparency false
-set_option backward.isDefEq.respectTransparency.types false
-open CategoryTheory
-open SerrePositivity.SimplicialModel
-
-namespace SerrePositivity.HomotopyFunctionComplex.OrdinaryBarSourceHom
-open FreeGeneratorCategories OrdinaryBarFreeResolutionSeed OrdinaryBarFixedSource
-variable (C : Type u) [Category.{v} C] (X Y : D C)
-
-def hom : SSet.{max u v} where
-  obj n := @Quiver.Hom ((diagram C).obj n) ((diagram C).obj n).str.toQuiver X Y
-  map θ := ↾fun f => (literalMap C θ).map f
-  map_id n := by
-    apply ConcreteCategory.hom_ext
-    intro f
-    have h := congrArg Cat.Hom.toFunctor ((literal C).map_id n)
-    exact congr($(h).map f)
-  map_comp θ φ := by
-    apply ConcreteCategory.hom_ext
-    intro f
-    have h := congrArg Cat.Hom.toFunctor ((literal C).map_comp θ φ)
-    exact congr($(h).map f)
-
-def augmentation : UniverseLift.obj.{max u v} (hom C X Y) ⟶
-    OrdinaryBarDiagonalHomAugmentation.baseHom C X Y where
-  app n := ↾fun f => ULift.up ((OrdinaryBarFixedAugmentation.sourceProjection C n).map f.down)
-  naturality {_ _} θ := by
-    apply ConcreteCategory.hom_ext
-    intro f
-    have h := congr($(OrdinaryBarFixedAugmentation.sourceProjection_naturality C θ).map f.down)
-    exact congrArg ULift.up h
-
-end SerrePositivity.HomotopyFunctionComplex.OrdinaryBarSourceHom

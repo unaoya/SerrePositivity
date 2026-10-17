@@ -1,103 +1,24 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.ModelCompatibility
-public import Mathlib.AlgebraicTopology.ModelCategory.Basic
+public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.StrictValueObstruction
 
 /-!
-# 中断した任意モデル源への一般化：StrictValueObstruction
+# 中断した厳密化モジュールの互換入口
 
 ## 概要
-任意モデル源への一般化（中断、計画書§396）の一部である（分類B）。
-対象：Weakly equivalent Kan values can obstruct a strict functor on those fixed values。
+旧importを維持するため、移動した専用モジュールを再公開する。
+公開宣言の名前空間・型・証明は移動先に保持する。
 
 ## 方針（定義・証明）
-整合図式の値変更による厳密化と宇宙縮小の問題に対応する足場。
-下の技術注記に、元の具体的な構成と比較の範囲を保存する。
+Rectification配下の対応するモジュールをpublic importする。
+このファイルに定義や証明を重複させない。
 
 ## 規約と注意
-全hornを用いるKan複体の議論と、内側hornによる∞圏の議論を区別する。
-既知の厳密化定理や単体的局所化との同定を証明したとは主張しない。
+任意モデル源への一般化は引き続き中断中である。
+一般道具はGeneralToolsまたは共有Foundationsから利用する。
 
 ## 使われ方
-stage 4の完成部分L・E・Sからの利用はない。
-再開時は[計画書 §396][plan]と[棚卸し m0581][inventory]を参照する。
-
-[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0581
-[plan]: ../../../formalization-plans/k-theory.md
+既存の個別importはそのまま利用できる。
+新しい専用コードではRectification配下の正規パスを利用する。
+対応表はscripts/homotopical_generalization_manifest.jsonを参照。
 -/
-
-/- 旧モジュールの技術注記（構成と注意を保存）
-# Weakly equivalent Kan values can obstruct a strict functor on those fixed values
-
-A cofibration/trivial-fibration factorization supplies a contractible Kan
-complex with two distinct vertices. Thus it is not isomorphic to a point.
-This obstructs preserving independently selected values when strictifying
-a diagram over an isomorphism. It does not obstruct replacing its values.
--/
-
-@[expose] public section
-universe v
-noncomputable section
-open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
-
-namespace SerrePositivity.SimplicialModel.StrictValueObstruction
-variable [ModelCategory SSet.{v}]
-  (hcof : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
-  (hfib : fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
-
-abbrev point : SSet.{v} := SSet.stdSimplex.obj (SimplexCategory.mk 0)
-abbrev interval : SSet.{v} := SSet.stdSimplex.obj (SimplexCategory.mk 1)
-abbrev factorization := MorphismProperty.factorizationData
-  (cofibrations SSet.{v}) (trivialFibrations SSet.{v})
-  (SSet.stdSimplex.isTerminalObj₀.from interval)
-abbrev complex : SSet.{v} := factorization.Z
-abbrev toPoint : complex ⟶ point := factorization.p
-abbrev fromInterval : interval ⟶ complex := factorization.i
-
-include hcof in
-lemma fromInterval_mono : Mono (fromInterval.{v}) := by
-  exact (congrArg (fun W : MorphismProperty SSet.{v} => W fromInterval) hcof).mp
-    factorization.hi
-
-lemma toPoint_trivialFibration : trivialFibrations SSet.{v} toPoint := factorization.hp
-
-omit [ModelCategory SSet.{v}] in
-lemma point_kanComplex : SSet.KanComplex (point.{v}) := by
-  have : IsIso (terminal.from (point.{v})) :=
-    isIso_of_isTerminal SSet.stdSimplex.isTerminalObj₀ terminalIsTerminal _
-  infer_instance
-
-include hfib in
-lemma complex_kanComplex : SSet.KanComplex (complex.{v}) := by
-  have : Fibration toPoint.{v} := ⟨toPoint_trivialFibration.1⟩
-  have : IsFibrant complex.{v} :=
-    (isFibrant_iff_of_isTerminal toPoint SSet.stdSimplex.isTerminalObj₀).mpr inferInstance
-  apply (SSet.modelCategoryQuillen.fibration_iff _).mpr
-  rw [← hfib]
-  exact mem_fibrations (terminal.from complex.{v})
-
-include hcof in
-lemma complex_not_subsingleton_vertices :
-    ¬ Subsingleton ((complex.{v}).obj (Opposite.op (SimplexCategory.mk 0))) := by
-  intro h
-  have : Mono (fromInterval.{v}) := fromInterval_mono hcof
-  have hinj := (CategoryTheory.mono_iff_injective
-    ((fromInterval.{v}).app (Opposite.op (SimplexCategory.mk 0)))).mp inferInstance
-  have he := hinj (h.elim
-    ((fromInterval.{v}).app _ (SSet.stdSimplex.obj₀Equiv.symm 0))
-    ((fromInterval.{v}).app _ (SSet.stdSimplex.obj₀Equiv.symm 1)))
-  have : (0 : Fin 2) = 1 := congrArg SSet.stdSimplex.obj₀Equiv he
-  exact Fin.zero_ne_one this
-
-include hcof in
-lemma not_iso_point : ¬ Nonempty (complex.{v} ≅ point) := by
-  rintro ⟨e⟩
-  apply complex_not_subsingleton_vertices hcof
-  constructor
-  intro x y
-  apply (CategoryTheory.mono_iff_injective (e.hom.app _)).mp inferInstance
-  apply SSet.stdSimplex.obj₀Equiv.injective
-  apply Fin.ext
-  omega
-
-end SerrePositivity.SimplicialModel.StrictValueObstruction

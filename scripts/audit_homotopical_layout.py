@@ -43,6 +43,9 @@ if manifest.get("phase", 1) >= 2:
     for old, new in manifest["relocations"].items():
         assert old in imports and new in imports, (old, new)
         assert imports[old] == [new], f"Invalid compatibility import: {old}"
+        wrapper = Path(old.replace(".", "/") + ".lean").read_text()
+        wrapper_tokens = re.sub(r"/-.*?-/", "", wrapper, flags=re.S).split()
+        assert wrapper_tokens == ["module", "public", "import", new], old
         assert not set(imports[new]) & b, f"Canonical module imports legacy B: {new}"
     optional_closure = closure(dedicated + ".Foundations")
     assert set(manifest["relocations"].values()) <= optional_closure

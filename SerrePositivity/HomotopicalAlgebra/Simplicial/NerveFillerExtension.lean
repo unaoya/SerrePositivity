@@ -1,85 +1,24 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMonomorphismLifting
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryFillerLifting
+public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveFillerExtension
 
 /-!
-# 中断した任意モデル源への一般化：NerveFillerExtension
+# 中断した厳密化モジュールの互換入口
 
 ## 概要
-任意モデル源への一般化（中断、計画書§396）の一部である（分類B）。
-対象：Whole coherent systems from objectwise boundary fillers, with no model structure。
+旧importを維持するため、移動した専用モジュールを再公開する。
+公開宣言の名前空間・型・証明は移動先に保持する。
 
 ## 方針（定義・証明）
-全hornを用いたKan空間の高次ホモトピーの整合化に対応する足場。
-下の技術注記に、元の具体的な構成と比較の範囲を保存する。
+Rectification配下の対応するモジュールをpublic importする。
+このファイルに定義や証明を重複させない。
 
 ## 規約と注意
-全hornを用いるKan複体の議論と、内側hornによる∞圏の議論を区別する。
-既知の厳密化定理や単体的局所化との同定を証明したとは主張しない。
+任意モデル源への一般化は引き続き中断中である。
+一般道具はGeneralToolsまたは共有Foundationsから利用する。
 
 ## 使われ方
-stage 4の完成部分L・E・Sからの利用はない。
-再開時は[計画書 §396][plan]と[棚卸し m0472][inventory]を参照する。
-
-[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0472
-[plan]: ../../../formalization-plans/k-theory.md
+既存の個別importはそのまま利用できる。
+新しい専用コードではRectification配下の正規パスを利用する。
+対応表はscripts/homotopical_generalization_manifest.jsonを参照。
 -/
-
-/- 旧モジュールの技術注記（構成と注意を保存）
-# Whole coherent systems from objectwise boundary fillers, with no model structure
--/
-
-@[expose] public section
-universe v uD vD
-noncomputable section
-set_option backward.isDefEq.respectTransparency false
-set_option backward.isDefEq.respectTransparency.types false
-open CategoryTheory CategoryTheory.Limits
-open SerrePositivity.NerveSimplexEndpoint SerrePositivity.Reedy
-
-namespace SerrePositivity.SimplicialModel.NerveFillerExtension
-variable {D : Type uD} [Category.{vD} D] (F : D ⥤ SSet.{v})
-  (hp : ∀ d, UniverseLift.BoundaryFillers (F.obj d))
-  (n : ℕ) (old : NerveLowerExtension.LowerSystem F n)
-
-abbrev point : D ⥤ SSet.{v} := (Functor.const D).obj
-  (SSet.stdSimplex.obj (SimplexCategory.mk 0))
-
-lemma boundary : old ≫ Functor.whiskerLeft (lowerInclusion (NerveCoherentFamily.reedy D) n)
-    (NerveMonomorphismLifting.valueMap F (point (D := D))
-      (NerveCoherentExtension.projection F)) =
-    Functor.whiskerLeft (lowerInclusion (NerveCoherentFamily.reedy D) n)
-      (NerveCoherentFamily.collapse (D := D)) := by
-  apply NatTrans.ext
-  funext s
-  exact SSet.stdSimplex.isTerminalObj₀.hom_ext _ _
-
-include hp in
-lemma rightLifting : ∀ d, (MorphismProperty.monomorphisms SSet.{v}).rlp
-    ((NerveCoherentExtension.projection F).app d) :=
-  fun d => BoundaryFillerLifting.terminal_rightLifting (hp d)
-
-def extend : NerveCoherentFamily.System F :=
-  NerveMonomorphismLifting.extend F (point (D := D)) (NerveCoherentExtension.projection F)
-    (NerveCoherentFamily.collapse (D := D)) n old (boundary F n old) (rightLifting F hp)
-
-lemma extend_restrict : Functor.whiskerLeft (lowerInclusion (NerveCoherentFamily.reedy D) n)
-    (extend F hp n old) = old :=
-  NerveMonomorphismLifting.extend_restrict _ _ _ _ _ _ _ _
-
-lemma extend_component (s : Lower (NerveCoherentFamily.reedy D) n) :
-    (extend F hp n old).app s.obj = old.app s := congr_app (extend_restrict F hp n old) s
-
-/-- Retain arbitrary independent points in values with boundary fillers. -/
-def extendVertices (points : ∀ d, SSet.stdSimplex.{v}.obj (SimplexCategory.mk 0) ⟶ F.obj d) :
-    NerveCoherentFamily.System F := extend F hp 1 (NerveLowerExtension.vertices F points)
-
-lemma extendVertices_point
-    (points : ∀ d, SSet.stdSimplex.{v}.obj (SimplexCategory.mk 0) ⟶ F.obj d) (d : D) :
-    (extendVertices F hp points).app (ofChain (ComposableArrows.mk₀ d)) = points d :=
-  (extend_component F hp 1 (NerveLowerExtension.vertices F points)
-    ⟨ofChain (ComposableArrows.mk₀ d), Nat.zero_lt_one⟩).trans
-      (NerveLowerExtension.vertices_component F points d)
-
-end SerrePositivity.SimplicialModel.NerveFillerExtension

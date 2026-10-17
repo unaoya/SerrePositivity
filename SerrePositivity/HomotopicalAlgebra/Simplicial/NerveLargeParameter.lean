@@ -1,126 +1,24 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveFillerExtension
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveParameterExtension
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterMapping
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterRelativeChoice
-
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagramUniverseLift
+public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveLargeParameter
 
 /-!
-# 中断した任意モデル源への一般化：NerveLargeParameter
+# 中断した厳密化モジュールの互換入口
 
 ## 概要
-任意モデル源への一般化（中断、計画書§396）の一部である（分類B）。
-対象：Coherent whole large-parameter families with small original value spaces。
+旧importを維持するため、移動した専用モジュールを再公開する。
+公開宣言の名前空間・型・証明は移動先に保持する。
 
 ## 方針（定義・証明）
-bar型の鎖パラメータと整合図式の厳密化に対応する足場。
-下の技術注記に、元の具体的な構成と比較の範囲を保存する。
+Rectification配下の対応するモジュールをpublic importする。
+このファイルに定義や証明を重複させない。
 
 ## 規約と注意
-全hornを用いるKan複体の議論と、内側hornによる∞圏の議論を区別する。
-既知の厳密化定理や単体的局所化との同定を証明したとは主張しない。
+任意モデル源への一般化は引き続き中断中である。
+一般道具はGeneralToolsまたは共有Foundationsから利用する。
 
 ## 使われ方
-stage 4の完成部分L・E・Sからの利用はない。
-再開時は[計画書 §396][plan]と[棚卸し m0476][inventory]を参照する。
-
-[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0476
-[plan]: ../../../formalization-plans/k-theory.md
+既存の個別importはそのまま利用できる。
+新しい専用コードではRectification配下の正規パスを利用する。
+対応表はscripts/homotopical_generalization_manifest.jsonを参照。
 -/
-
-/- 旧モジュールの技術注記（構成と注意を保存）
-# Coherent whole large-parameter families with small original value spaces
-
-Auxiliary mapping spaces can be large. Only boundary fillers of the
-original small values are inputs; no large model structure is assumed.
--/
-
-@[expose] public section
-universe w v uD vD
-noncomputable section
-set_option backward.isDefEq.respectTransparency false
-set_option backward.isDefEq.respectTransparency.types false
-open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalClosed
-open SerrePositivity.NerveSimplexEndpoint SerrePositivity.Reedy
-
-namespace SerrePositivity.SimplicialModel.NerveLargeParameter
-variable {D : Type uD} [Category.{vD} D] (F : D ⥤ SSet.{v})
-  (hp : ∀ d, UniverseLift.BoundaryFillers (F.obj d))
-
-abbrev mapping (K : SSet.{max w v}) := NerveParameterExtension.cotensor (lifted.{w} F) K
-abbrev System (K : SSet.{max w v}) := NerveParameterExtension.System (lifted.{w} F) K
-
-/-- Restrict a whole coherent family along any actual parameter map. -/
-def restrict {A K : SSet.{max w v}} (a : System F K) (i : A ⟶ K) : System F A :=
-  a ≫ NerveMonomorphismLifting.valueMap (mapping F K) (mapping F A)
-    (NerveParameterExtension.restriction (lifted F) i)
-
-lemma restrict_evaluate {A K : SSet.{max w v}} (a : System F K) (i : A ⟶ K) (d : D) :
-    NerveParameterExtension.evaluate (lifted F) (restrict F a i) d =
-      i ≫ NerveParameterExtension.evaluate (lifted F) a d := by
-  apply NerveParameterExtension.name_injective
-  rw [← RelativeChoiceSpace.name_precomp, NerveParameterExtension.name_evaluate,
-    NerveParameterExtension.name_evaluate]
-  rfl
-
-lemma restrict_comp {A B K : SSet.{max w v}} (a : System F K) (i : A ⟶ B) (j : B ⟶ K) :
-    restrict F (restrict F a j) i = restrict F a (i ≫ j) := by
-  unfold restrict
-  rw [Category.assoc]
-  congr 1
-
-variable (K : SSet.{max w v})
-
-include hp in
-lemma mappingFillers : ∀ d, UniverseLift.BoundaryFillers ((mapping F K).obj d) :=
-  fun d => LargeParameterMapping.fillers (hp d) K
-
-/-- Retain each original whole K-family while making all external chains coherent. -/
-def extendFamilies (families : ∀ d, K ⟶ UniverseLift.obj.{w} (F.obj d)) : System F K :=
-  NerveFillerExtension.extendVertices (mapping F K) (mappingFillers F hp K)
-    (fun d => RelativeChoiceSpace.name (families d))
-
-lemma extendFamilies_evaluate (families : ∀ d, K ⟶ UniverseLift.obj.{w} (F.obj d)) (d : D) :
-    NerveParameterExtension.evaluate (lifted F) (extendFamilies F hp K families) d =
-      families d := by
-  change uncurry' (RelativeChoiceSpace.pointUnitIso.inv ≫
-    (extendFamilies F hp K families).app (ofChain (ComposableArrows.mk₀ d))) = families d
-  rw [show (extendFamilies F hp K families).app (ofChain (ComposableArrows.mk₀ d)) =
-      RelativeChoiceSpace.name (families d) from
-    NerveFillerExtension.extendVertices_point _ _ _ d]
-  simp only [RelativeChoiceSpace.name, Iso.inv_hom_id_assoc, uncurry'_curry']
-
-variable {A : SSet.{max w v}} (i : A ⟶ K) [Mono i]
-
-include hp in
-lemma restriction_rightLifting : ∀ d, (MorphismProperty.monomorphisms SSet.{max w v}).rlp
-    ((NerveParameterExtension.restriction (lifted F) i).app d) := by
-  intro d U V l hl
-  have : Mono l := hl
-  exact LargeParameterRelativeChoice.restriction_lifting (hp d) i l
-
-variable (boundary : System F A) (n : ℕ)
-  (old : NerveLowerExtension.LowerSystem (mapping F K) n)
-  (hboundary : old ≫ Functor.whiskerLeft (lowerInclusion (NerveCoherentFamily.reedy D) n)
-    (NerveMonomorphismLifting.valueMap (mapping F K) (mapping F A)
-      (NerveParameterExtension.restriction (lifted F) i)) =
-        Functor.whiskerLeft (lowerInclusion (NerveCoherentFamily.reedy D) n) boundary)
-
-/-- Relative extension retaining the whole coherent large boundary in every external degree. -/
-def relative : System F K :=
-  NerveMonomorphismLifting.extend (mapping F K) (mapping F A)
-    (NerveParameterExtension.restriction (lifted F) i) boundary n old hboundary
-    (restriction_rightLifting F hp K i)
-
-lemma relative_boundary : relative F hp K i boundary n old hboundary ≫
-    NerveMonomorphismLifting.valueMap (mapping F K) (mapping F A)
-      (NerveParameterExtension.restriction (lifted F) i) = boundary :=
-  NerveMonomorphismLifting.extend_boundary _ _ _ _ _ _ _ _
-
-lemma relative_restrict : Functor.whiskerLeft (lowerInclusion (NerveCoherentFamily.reedy D) n)
-    (relative F hp K i boundary n old hboundary) = old :=
-  NerveMonomorphismLifting.extend_restrict _ _ _ _ _ _ _ _
-
-end SerrePositivity.SimplicialModel.NerveLargeParameter

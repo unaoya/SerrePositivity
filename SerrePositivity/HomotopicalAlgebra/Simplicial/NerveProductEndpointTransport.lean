@@ -1,68 +1,24 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBiparameterComposition
+public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveProductEndpointTransport
 
 /-!
-# 中断した任意モデル源への一般化：NerveProductEndpointTransport
+# 中断した厳密化モジュールの互換入口
 
 ## 概要
-任意モデル源への一般化（中断、計画書§396）の一部である（分類B）。
-対象：Whole endpoint equations survive the actual parameter and value transports。
+旧importを維持するため、移動した専用モジュールを再公開する。
+公開宣言の名前空間・型・証明は移動先に保持する。
 
 ## 方針（定義・証明）
-bar型の鎖パラメータと整合図式の厳密化に対応する足場。
-下の技術注記に、元の具体的な構成と比較の範囲を保存する。
+Rectification配下の対応するモジュールをpublic importする。
+このファイルに定義や証明を重複させない。
 
 ## 規約と注意
-全hornを用いるKan複体の議論と、内側hornによる∞圏の議論を区別する。
-既知の厳密化定理や単体的局所化との同定を証明したとは主張しない。
+任意モデル源への一般化は引き続き中断中である。
+一般道具はGeneralToolsまたは共有Foundationsから利用する。
 
 ## 使われ方
-stage 4の完成部分L・E・Sからの利用はない。
-再開時は[計画書 §396][plan]と[棚卸し m0489][inventory]を参照する。
-
-[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0489
-[plan]: ../../../formalization-plans/k-theory.md
+既存の個別importはそのまま利用できる。
+新しい専用コードではRectification配下の正規パスを利用する。
+対応表はscripts/homotopical_generalization_manifest.jsonを参照。
 -/
-
-/- 旧モジュールの技術注記（構成と注意を保存）
-# Whole endpoint equations survive the actual parameter and value transports
--/
-
-@[expose] public section
-universe w uD vD
-noncomputable section
-set_option backward.isDefEq.respectTransparency false
-set_option backward.isDefEq.respectTransparency.types false
-open CategoryTheory
-
-namespace SerrePositivity.SimplicialModel.NerveProductEndpointTransport
-open NerveBiparameterMaps NerveCylinderBoundary NerveProductParameter
-variable {D : Type uD} [Category.{vD} D] (V K F G : D ⥤ SSet.{w})
-  (i : V ⟶ K) (p : F ⟶ G)
-
-lemma mapTarget_restrict (a : NerveBiparameter.System K F) :
-    mapTarget K F G p a ≫ restriction V K G i = mapTarget V F G p (a ≫ restriction V K F i) := by
-  change (a ≫ targetMap _ _ _ _) ≫ _ = (a ≫ _) ≫ _
-  rw [Category.assoc, target_restriction, ← Category.assoc]
-
-variable {A T : SSet.{w}} (j : A ⟶ T) (a : NerveBiparameter.System (product K T) F)
-  (b : NerveBiparameter.System K F)
-  (he : a ≫ restriction (product K A) (product K T) F (vertical j K) = expand K F A b)
-
-include he in
-lemma mapTarget_endpoint : mapTarget (product K T) F G p a ≫
-    restriction (product K A) (product K T) G (vertical j K) =
-      expand K G A (mapTarget K F G p b) := by
-  rw [mapTarget_restrict, he, ← expand_mapTarget]
-
-include he in
-lemma restrict_endpoint : restrict (product V T) (product K T) F (horizontal V K i T) a ≫
-    restriction (product V A) (product V T) F (vertical j V) =
-      expand V F A (restrict V K F i b) := by
-  change (a ≫ restriction _ _ _ _) ≫ _ = _
-  rw [Category.assoc, restriction_comp, ← commute V K i j, ← restriction_comp,
-    ← Category.assoc, he]
-  exact expand_horizontal K F A V i b
-
-end SerrePositivity.SimplicialModel.NerveProductEndpointTransport

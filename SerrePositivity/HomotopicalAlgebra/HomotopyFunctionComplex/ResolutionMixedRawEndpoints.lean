@@ -1,180 +1,24 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionMixedIntervalRestrictions
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SelectedIntervalEndpoints
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionMixedReassociationEquality
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveProductEndpointTransport
+public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ResolutionMixedRawEndpoints
 
 /-!
-# 中断した任意モデル源への一般化：ResolutionMixedRawEndpoints
+# 中断した厳密化モジュールの互換入口
 
 ## 概要
-任意モデル源への一般化（中断、計画書§396）の一部である（分類B）。
-対象：Exact whole endpoints before the final mixed parameter and value transports。
+旧importを維持するため、移動した専用モジュールを再公開する。
+公開宣言の名前空間・型・証明は移動先に保持する。
 
 ## 方針（定義・証明）
-frameによる導来写像空間と整合図式の厳密化に対応する足場。
-下の技術注記に、元の具体的な構成と比較の範囲を保存する。
+Rectification配下の対応するモジュールをpublic importする。
+このファイルに定義や証明を重複させない。
 
 ## 規約と注意
-全hornを用いるKan複体の議論と、内側hornによる∞圏の議論を区別する。
-既知の厳密化定理や単体的局所化との同定を証明したとは主張しない。
+任意モデル源への一般化は引き続き中断中である。
+一般道具はGeneralToolsまたは共有Foundationsから利用する。
 
 ## 使われ方
-stage 4の完成部分L・E・Sからの利用はない。
-再開時は[計画書 §396][plan]と[棚卸し m0322][inventory]を参照する。
-
-[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0322
-[plan]: ../../../formalization-plans/k-theory.md
+既存の個別importはそのまま利用できる。
+新しい専用コードではRectification配下の正規パスを利用する。
+対応表はscripts/homotopical_generalization_manifest.jsonを参照。
 -/
-
-/- 旧モジュールの技術注記（構成と注意を保存）
-# Exact whole endpoints before the final mixed parameter and value transports
--/
-
-@[expose] public section
-universe v u
-noncomputable section
-set_option backward.isDefEq.respectTransparency false
-set_option backward.isDefEq.respectTransparency.types false
-open CategoryTheory HomotopicalAlgebra
-open SerrePositivity.SimplicialModel SerrePositivity.HomotopyFunctionComplex
-open ResolutionMixedDiagram ResolutionMixedReassociation ResolutionMixedIntervalRestrictions
-open NerveBiparameterMaps NerveArrowComparisonComposition
-
-namespace SerrePositivity.HomotopyFunctionComplex.ResolutionMixedRawEndpoints
-variable (C : Type u) [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}]
-  (hcof : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
-  (hfib : fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
-
-abbrev K := ResolutionArrowTupleCoherence.bigTuples C
-abbrev F := NerveMovingParameter.lifted.{u} (ResolutionArrowDiagram.fibers C)
-abbrev chosen := ResolutionArrowTupleCoherence.system C hcof
-
-abbrev leftAB := leftAlong (K C) (F C) (chosen C hcof) (cornerA C) (cornerB C) (edgeAB C)
-
-abbrev rightAB := rightAlong (K C) (F C) (chosen C hcof) (cornerA C) (cornerB C) (edgeAB C)
-
-lemma AB_zero : preABSystem C hcof hfib ≫ restriction
-    (NerveCylinderBoundary.product (parameters C)
-      (SSet.stdSimplex.{max u v}.obj (SimplexCategory.mk 0))) (intervalParameters C)
-    (NerveMovingParameter.lifted (bValues C))
-      (NerveCylinderBoundary.vertical (SSet.stdSimplex.δ (1 : Fin 2)) (parameters C)) =
-    NerveProductParameter.expand (parameters C) (NerveMovingParameter.lifted (bValues C))
-      (SSet.stdSimplex.obj (SimplexCategory.mk 0)) (leftAB C hcof) := by
-  apply (SelectedIntervalEndpoints.reindexed_zero C hcof hfib (preAB C)).trans
-  exact congrArg (fun a => NerveProductParameter.expand (parameters C)
-    (NerveMovingParameter.lifted (bValues C)) (SSet.stdSimplex.obj (SimplexCategory.mk 0)) a)
-      (SelectedIntervalEndpoints.reindex_left C hcof (preAB C))
-
-lemma AB_one : preABSystem C hcof hfib ≫ restriction
-    (NerveCylinderBoundary.product (parameters C)
-      (SSet.stdSimplex.{max u v}.obj (SimplexCategory.mk 0))) (intervalParameters C)
-    (NerveMovingParameter.lifted (bValues C))
-      (NerveCylinderBoundary.vertical (SSet.stdSimplex.δ (0 : Fin 2)) (parameters C)) =
-    NerveProductParameter.expand (parameters C) (NerveMovingParameter.lifted (bValues C))
-      (SSet.stdSimplex.obj (SimplexCategory.mk 0)) (rightAB C hcof) := by
-  apply (SelectedIntervalEndpoints.reindexed_one C hcof hfib (preAB C)).trans
-  exact congrArg (fun a => NerveProductParameter.expand (parameters C)
-    (NerveMovingParameter.lifted (bValues C)) (SSet.stdSimplex.obj (SimplexCategory.mk 0)) a)
-      (SelectedIntervalEndpoints.reindex_right C hcof (preAB C))
-
-abbrev leftAC := leftAlong (K C) (F C) (chosen C hcof) (cornerA C) (cornerC C) (edgeAC C)
-
-abbrev rightAC := rightAlong (K C) (F C) (chosen C hcof) (cornerA C) (cornerC C) (edgeAC C)
-
-lemma AC_zero : postACSystem C hcof hfib ≫ restriction
-    (NerveCylinderBoundary.product (parameters C)
-      (SSet.stdSimplex.{max u v}.obj (SimplexCategory.mk 0))) (intervalParameters C)
-    (NerveMovingParameter.lifted (cValues C))
-      (NerveCylinderBoundary.vertical (SSet.stdSimplex.δ (1 : Fin 2)) (parameters C)) =
-    NerveProductParameter.expand (parameters C) (NerveMovingParameter.lifted (cValues C))
-      (SSet.stdSimplex.obj (SimplexCategory.mk 0)) (leftAC C hcof) := by
-  apply (SelectedIntervalEndpoints.reindexed_zero C hcof hfib (postAC C)).trans
-  exact congrArg (fun a => NerveProductParameter.expand (parameters C)
-    (NerveMovingParameter.lifted (cValues C)) (SSet.stdSimplex.obj (SimplexCategory.mk 0)) a)
-      (SelectedIntervalEndpoints.reindex_left C hcof (postAC C))
-
-lemma AC_one : postACSystem C hcof hfib ≫ restriction
-    (NerveCylinderBoundary.product (parameters C)
-      (SSet.stdSimplex.{max u v}.obj (SimplexCategory.mk 0))) (intervalParameters C)
-    (NerveMovingParameter.lifted (cValues C))
-      (NerveCylinderBoundary.vertical (SSet.stdSimplex.δ (0 : Fin 2)) (parameters C)) =
-    NerveProductParameter.expand (parameters C) (NerveMovingParameter.lifted (cValues C))
-      (SSet.stdSimplex.obj (SimplexCategory.mk 0)) (rightAC C hcof) := by
-  apply (SelectedIntervalEndpoints.reindexed_one C hcof hfib (postAC C)).trans
-  exact congrArg (fun a => NerveProductParameter.expand (parameters C)
-    (NerveMovingParameter.lifted (cValues C)) (SSet.stdSimplex.obj (SimplexCategory.mk 0)) a)
-      (SelectedIntervalEndpoints.reindex_right C hcof (postAC C))
-
-abbrev leftCD := leftAlong (K C) (F C) (chosen C hcof) (cornerC C) (cornerD C) (edgeCD C)
-
-abbrev rightCD := rightAlong (K C) (F C) (chosen C hcof) (cornerC C) (cornerD C) (edgeCD C)
-
-lemma CD_zero : preCDSystem C hcof hfib ≫ restriction
-    (NerveCylinderBoundary.product (cParameters C)
-      (SSet.stdSimplex.{max u v}.obj (SimplexCategory.mk 0))) (cIntervalParameters C)
-    (NerveMovingParameter.lifted (smallValues C))
-      (NerveCylinderBoundary.vertical (SSet.stdSimplex.δ (1 : Fin 2)) (cParameters C)) =
-    NerveProductParameter.expand (cParameters C) (NerveMovingParameter.lifted (smallValues C))
-      (SSet.stdSimplex.obj (SimplexCategory.mk 0)) (leftCD C hcof) := by
-  apply (SelectedIntervalEndpoints.reindexed_zero C hcof hfib (preCD C)).trans
-  exact congrArg (fun a => NerveProductParameter.expand (cParameters C)
-    (NerveMovingParameter.lifted (smallValues C)) (SSet.stdSimplex.obj (SimplexCategory.mk 0)) a)
-      (SelectedIntervalEndpoints.reindex_left C hcof (preCD C))
-
-lemma CD_one : preCDSystem C hcof hfib ≫ restriction
-    (NerveCylinderBoundary.product (cParameters C)
-      (SSet.stdSimplex.{max u v}.obj (SimplexCategory.mk 0))) (cIntervalParameters C)
-    (NerveMovingParameter.lifted (smallValues C))
-      (NerveCylinderBoundary.vertical (SSet.stdSimplex.δ (0 : Fin 2)) (cParameters C)) =
-    NerveProductParameter.expand (cParameters C) (NerveMovingParameter.lifted (smallValues C))
-      (SSet.stdSimplex.obj (SimplexCategory.mk 0)) (rightCD C hcof) := by
-  apply (SelectedIntervalEndpoints.reindexed_one C hcof hfib (preCD C)).trans
-  exact congrArg (fun a => NerveProductParameter.expand (cParameters C)
-    (NerveMovingParameter.lifted (smallValues C)) (SSet.stdSimplex.obj (SimplexCategory.mk 0)) a)
-      (SelectedIntervalEndpoints.reindex_right C hcof (preCD C))
-
-abbrev leftBD := leftAlong (K C) (F C) (chosen C hcof) (cornerB C) (finalLeft C) (edgeBDLeft C)
-
-abbrev rightBD := rightAlong (K C) (F C) (chosen C hcof) (cornerB C) (finalLeft C) (edgeBDLeft C)
-
-lemma BD_zero : postBDSystem C hcof hfib ≫ restriction
-    (NerveCylinderBoundary.product (bParameters C)
-      (SSet.stdSimplex.{max u v}.obj (SimplexCategory.mk 0))) (bIntervalParameters C)
-    (NerveMovingParameter.lifted (leftFinalValues C))
-      (NerveCylinderBoundary.vertical (SSet.stdSimplex.δ (1 : Fin 2)) (bParameters C)) =
-    NerveProductParameter.expand (bParameters C) (NerveMovingParameter.lifted (leftFinalValues C))
-      (SSet.stdSimplex.obj (SimplexCategory.mk 0)) (leftBD C hcof) := by
-  apply (SelectedIntervalEndpoints.reindexed_zero C hcof hfib (postBD C)).trans
-  have hτ : Functor.whiskerLeft (postBD C ⋙ SelectedIntervalDiagram.forget C)
-      Arrow.leftToRight = edgeBDLeft C := by
-    apply NatTrans.ext
-    funext p
-    exact (edgeBDLeft_app C p).symm
-  have he := SelectedIntervalEndpoints.reindex_left C hcof (postBD C)
-  rw [hτ] at he
-  exact congrArg (fun a => NerveProductParameter.expand (bParameters C)
-    (NerveMovingParameter.lifted (leftFinalValues C)) (SSet.stdSimplex.obj (SimplexCategory.mk
-      0)) a) he
-
-lemma BD_one : postBDSystem C hcof hfib ≫ restriction
-    (NerveCylinderBoundary.product (bParameters C)
-      (SSet.stdSimplex.{max u v}.obj (SimplexCategory.mk 0))) (bIntervalParameters C)
-    (NerveMovingParameter.lifted (leftFinalValues C))
-      (NerveCylinderBoundary.vertical (SSet.stdSimplex.δ (0 : Fin 2)) (bParameters C)) =
-    NerveProductParameter.expand (bParameters C) (NerveMovingParameter.lifted (leftFinalValues C))
-      (SSet.stdSimplex.obj (SimplexCategory.mk 0)) (rightBD C hcof) := by
-  apply (SelectedIntervalEndpoints.reindexed_one C hcof hfib (postBD C)).trans
-  have hτ : Functor.whiskerLeft (postBD C ⋙ SelectedIntervalDiagram.forget C)
-      Arrow.leftToRight = edgeBDLeft C := by
-    apply NatTrans.ext
-    funext p
-    exact (edgeBDLeft_app C p).symm
-  have he := SelectedIntervalEndpoints.reindex_right C hcof (postBD C)
-  rw [hτ] at he
-  exact congrArg (fun a => NerveProductParameter.expand (bParameters C)
-    (NerveMovingParameter.lifted (leftFinalValues C)) (SSet.stdSimplex.obj (SimplexCategory.mk
-      0)) a) he
-
-end SerrePositivity.HomotopyFunctionComplex.ResolutionMixedRawEndpoints

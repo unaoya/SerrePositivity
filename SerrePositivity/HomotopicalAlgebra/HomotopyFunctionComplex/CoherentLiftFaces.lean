@@ -1,76 +1,24 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.CoherentLiftRelative
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceBoundary
+public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.CoherentLiftFaces
 
 /-!
-# 中断した任意モデル源への一般化：CoherentLiftFaces
+# 中断した厳密化モジュールの互換入口
 
 ## 概要
-任意モデル源への一般化（中断、計画書§396）の一部である（分類B）。
-対象：Higher comparison fillers from prescribed compatible composition faces。
+旧importを維持するため、移動した専用モジュールを再公開する。
+公開宣言の名前空間・型・証明は移動先に保持する。
 
 ## 方針（定義・証明）
-全hornを用いたKan空間の高次ホモトピーの整合化に対応する足場。
-下の技術注記に、元の具体的な構成と比較の範囲を保存する。
+Rectification配下の対応するモジュールをpublic importする。
+このファイルに定義や証明を重複させない。
 
 ## 規約と注意
-全hornを用いるKan複体の議論と、内側hornによる∞圏の議論を区別する。
-既知の厳密化定理や単体的局所化との同定を証明したとは主張しない。
+任意モデル源への一般化は引き続き中断中である。
+一般道具はGeneralToolsまたは共有Foundationsから利用する。
 
 ## 使われ方
-stage 4の完成部分L・E・Sからの利用はない。
-再開時は[計画書 §396][plan]と[棚卸し m0066][inventory]を参照する。
-
-[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0066
-[plan]: ../../../formalization-plans/k-theory.md
+既存の個別importはそのまま利用できる。
+新しい専用コードではRectification配下の正規パスを利用する。
+対応表はscripts/homotopical_generalization_manifest.jsonを参照。
 -/
-
-/- 旧モジュールの技術注記（構成と注意を保存）
-# Higher comparison fillers from prescribed compatible composition faces
-
-Individual face comparisons, agreeing on their actual intersections, are
-glued and filled. The filler retains every prescribed face and fixes all
-strict lift vertices throughout its higher parameter. No unprovided whole
-boundary map is required as an input.
--/
-
-@[expose] public section
-universe v u
-noncomputable section
-set_option backward.isDefEq.respectTransparency false
-open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory HomotopicalAlgebra
-open SerrePositivity.SimplicialModel
-
-namespace SerrePositivity.HomotopyFunctionComplex.CoherentLiftRelative
-variable {C : Type u} [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}]
-  (hcof : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
-  (hfib : fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
-
-include hcof hfib in
-lemma post_fill_faces (X Y W : ResolutionObject C) (f : X.base ⟶ Y.base) (g : Y ⟶ W) (n : ℕ)
-    (a : ∀ k, (BoundaryGluing.facet n k).toSSet ⟶ postChoiceSpace X Y W f g)
-    (ha : BoundaryGluing.Compatible a) :
-    ∃ e : SSet.stdSimplex.{v}.obj (SimplexCategory.mk n) ⟶ postChoiceSpace X Y W f g,
-      (∀ k, (BoundaryGluing.facet n k).ι ≫ e = a k) ∧
-      vertexInclusion X Y f ▷ SSet.stdSimplex.{v}.obj (SimplexCategory.mk n) ≫
-          RelativeChoiceSpace.family (vertexInclusion X Y f) (postBoundary X Y W f g) e =
-        vertices X Y f ◁ (SSet.stdSimplex.isTerminalObj₀.from _ ≫
-          RelativeChoiceSpace.pointUnitIso.hom) ≫ (ρ_ _).hom ≫ postBoundary X Y W f g :=
-  RelativeChoiceSpace.fill_faces hcof hfib _ _ (ResolutionLiftSpace.projection X W (f ≫ g.base))
-    (ResolutionLiftSpace.projection_trivialFibration hcof X W (f ≫ g.base)) n a ha
-
-include hcof hfib in
-lemma pre_fill_faces (X Y W : ResolutionObject C) (f : X ⟶ Y) (g : Y.base ⟶ W.base) (n : ℕ)
-    (a : ∀ k, (BoundaryGluing.facet n k).toSSet ⟶ preChoiceSpace X Y W f g)
-    (ha : BoundaryGluing.Compatible a) :
-    ∃ e : SSet.stdSimplex.{v}.obj (SimplexCategory.mk n) ⟶ preChoiceSpace X Y W f g,
-      (∀ k, (BoundaryGluing.facet n k).ι ≫ e = a k) ∧
-      vertexInclusion Y W g ▷ SSet.stdSimplex.{v}.obj (SimplexCategory.mk n) ≫
-          RelativeChoiceSpace.family (vertexInclusion Y W g) (preBoundary X Y W f g) e =
-        vertices Y W g ◁ (SSet.stdSimplex.isTerminalObj₀.from _ ≫
-          RelativeChoiceSpace.pointUnitIso.hom) ≫ (ρ_ _).hom ≫ preBoundary X Y W f g :=
-  RelativeChoiceSpace.fill_faces hcof hfib _ _ (ResolutionLiftSpace.projection X W (f.base ≫ g))
-    (ResolutionLiftSpace.projection_trivialFibration hcof X W (f.base ≫ g)) n a ha
-
-end SerrePositivity.HomotopyFunctionComplex.CoherentLiftRelative

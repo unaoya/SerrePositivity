@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.Foundations
+import SerrePositivity.HomotopicalAlgebra.Rectification.Foundations
 import Lean.Util.CollectAxioms
 
 universe v u
@@ -79,10 +79,10 @@ run_cmd do
   let env ← getEnv
   let expected := #[
     `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.CosimplicialMapFamily,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.MixedDiagonalHom,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.MixedResolutionLiftAction,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.MixedBiresolutionComparison,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.MixedDiagonalHomRecovery]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.MixedDiagonalHom,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.MixedResolutionLiftAction,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.MixedBiresolutionComparison,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.MixedDiagonalHomRecovery]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

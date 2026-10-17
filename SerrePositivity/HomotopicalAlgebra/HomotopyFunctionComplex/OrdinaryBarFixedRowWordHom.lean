@@ -1,71 +1,24 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.FreeWordHom
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreeGeneratorCategories
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarFreeResolutionSeed
+public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFixedRowWordHom
 
 /-!
-# 中断した任意モデル源への一般化：OrdinaryBarFixedRowWordHom
+# 中断した厳密化モジュールの互換入口
 
 ## 概要
-任意モデル源への一般化（中断、計画書§396）の一部である（分類B）。
-対象：The actual fixed-outer-degree word Hom augmentation is inverted。
+旧importを維持するため、移動した専用モジュールを再公開する。
+公開宣言の名前空間・型・証明は移動先に保持する。
 
 ## 方針（定義・証明）
-自由単体的分解・Dwyer–Kan型の生成射による整合化に対応する技法。
-下の技術注記に、元の具体的な構成と比較の範囲を保存する。
+Rectification配下の対応するモジュールをpublic importする。
+このファイルに定義や証明を重複させない。
 
 ## 規約と注意
-全hornを用いるKan複体の議論と、内側hornによる∞圏の議論を区別する。
-既知の厳密化定理や単体的局所化との同定を証明したとは主張しない。
+任意モデル源への一般化は引き続き中断中である。
+一般道具はGeneralToolsまたは共有Foundationsから利用する。
 
 ## 使われ方
-stage 4の完成部分L・E・Sからの利用はない。
-再開時は[計画書 §396][plan]と[棚卸し m0167][inventory]を参照する。
-
-[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0167
-[plan]: ../../../formalization-plans/k-theory.md
+既存の個別importはそのまま利用できる。
+新しい専用コードではRectification配下の正規パスを利用する。
+対応表はscripts/homotopical_generalization_manifest.jsonを参照。
 -/
-
-/- 旧モジュールの技術注記（構成と注意を保存）
-# The actual fixed-outer-degree word Hom augmentation is inverted
--/
-
-@[expose] public section
-universe v u
-noncomputable section
-set_option backward.isDefEq.respectTransparency false
-set_option backward.isDefEq.respectTransparency.types false
-open CategoryTheory
-open SerrePositivity.SimplicialModel
-
-namespace SerrePositivity.HomotopyFunctionComplex.OrdinaryBarFixedRowWordHom
-open FreeGeneratorCategories OrdinaryBarFreeResolutionSeed
-variable (C : Type u) [Category.{v} C] (N : ℕ) (X Y : D C)
-
-abbrev hom : SSet.{max u v} := FreeWordHom.hom (degree (D C) N) X Y
-
-lemma hom_obj (n : SimplexCategoryᵒᵖ) : (hom C N X Y).obj n =
-    ((AmbientWords.sourceFunctor (degree (D C) (N + 1)) (WordSegment.degree.{max u v} n)).obj X ⟶
-      (AmbientWords.sourceFunctor (degree (D C) (N + 1)) (WordSegment.degree.{max u v} n)).obj Y) :=
-  rfl
-
-def augmentation : hom C N X Y ⟶ (Functor.const SimplexCategoryᵒᵖ).obj
-    (ULift.{max u v} (FreeGeneratorDegeneracies.hom (N + 1) X Y)) :=
-  FreeWordHom.augmentation (degree (D C) N) X Y
-
-lemma augmentation_app (n : SimplexCategoryᵒᵖ) (f : (hom C N X Y).obj n) :
-    (augmentation C N X Y).app n f = ULift.up
-      ((AmbientWords.augmentation (degree (D C) (N + 1)) (WordSegment.degree.{max u v} n)).map f) :=
-  FreeWordHom.augmentation_app (degree (D C) N) X Y n f
-
-lemma map_eq {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) (f : (hom C N X Y).obj n) :
-    (hom C N X Y).map θ f =
-      (AmbientWords.map (𝟭 (degree (D C) (N + 1))) (WordSegment.degreeMap θ)).map f :=
-  FreeWordHom.map_eq (degree (D C) N) X Y θ f
-
-lemma localized_augmentation_isIso :
-    IsIso (AnodyneHomotopy.anodyneQ.map (augmentation C N X Y)) :=
-  FreeWordHom.localized_augmentation_isIso (degree (D C) N) X Y
-
-end SerrePositivity.HomotopyFunctionComplex.OrdinaryBarFixedRowWordHom

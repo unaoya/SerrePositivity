@@ -1,81 +1,24 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryGluing
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceSpace
+public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RelativeChoiceBoundary
 
 /-!
-# 中断した任意モデル源への一般化：RelativeChoiceBoundary
+# 中断した厳密化モジュールの互換入口
 
 ## 概要
-任意モデル源への一般化（中断、計画書§396）の一部である（分類B）。
-対象：Filling prescribed compatible faces while retaining a fixed boundary。
+旧importを維持するため、移動した専用モジュールを再公開する。
+公開宣言の名前空間・型・証明は移動先に保持する。
 
 ## 方針（定義・証明）
-自明fibrationのファイバーと相対延長による選択の比較に対応する足場。
-下の技術注記に、元の具体的な構成と比較の範囲を保存する。
+Rectification配下の対応するモジュールをpublic importする。
+このファイルに定義や証明を重複させない。
 
 ## 規約と注意
-全hornを用いるKan複体の議論と、内側hornによる∞圏の議論を区別する。
-既知の厳密化定理や単体的局所化との同定を証明したとは主張しない。
+任意モデル源への一般化は引き続き中断中である。
+一般道具はGeneralToolsまたは共有Foundationsから利用する。
 
 ## 使われ方
-stage 4の完成部分L・E・Sからの利用はない。
-再開時は[計画書 §396][plan]と[棚卸し m0535][inventory]を参照する。
-
-[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0535
-[plan]: ../../../formalization-plans/k-theory.md
+既存の個別importはそのまま利用できる。
+新しい専用コードではRectification配下の正規パスを利用する。
+対応表はscripts/homotopical_generalization_manifest.jsonを参照。
 -/
-
-/- 旧モジュールの技術注記（構成と注意を保存）
-# Filling prescribed compatible faces while retaining a fixed boundary
-
-Face maps into the actual relative choice space are glued, then filled.
-Every prescribed face is retained, and evaluating the filler keeps the
-original V-boundary fixed throughout the entire higher simplex.
--/
-
-@[expose] public section
-universe v
-noncomputable section
-set_option backward.isDefEq.respectTransparency false
-open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory HomotopicalAlgebra
-
-namespace SerrePositivity.SimplicialModel.RelativeChoiceSpace
-variable [ModelCategory SSet.{v}]
-  (hcof : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
-  (hfib : fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
-
-include hcof hfib in
-lemma fill_faces {V T P : SSet.{v}} (i : V ⟶ T) [Mono i] (b : V ⟶ P)
-    (p : P ⟶ SSet.stdSimplex.{v}.obj (SimplexCategory.mk 0))
-    (hp : trivialFibrations SSet.{v} p) (n : ℕ)
-    (f : ∀ k, (BoundaryGluing.facet n k).toSSet ⟶ obj i b) (hf : BoundaryGluing.Compatible f) :
-    ∃ e : SSet.stdSimplex.{v}.obj (SimplexCategory.mk n) ⟶ obj i b,
-      (∀ k, (BoundaryGluing.facet n k).ι ≫ e = f k) ∧
-      i ▷ SSet.stdSimplex.{v}.obj (SimplexCategory.mk n) ≫ family i b e =
-        V ◁ (SSet.stdSimplex.isTerminalObj₀.from _ ≫ pointUnitIso.hom) ≫ (ρ_ V).hom ≫ b := by
-  obtain ⟨e, he⟩ := extension hcof hfib i b p hp (SSet.boundary.{v} n).ι
-    (BoundaryGluing.desc f hf)
-  refine ⟨e, fun k => ?_, family_fixed_boundary i b e⟩
-  have hk : SSet.boundary.faceι k ≫ (SSet.boundary.{v} n).ι = (BoundaryGluing.facet n k).ι := rfl
-  rw [← hk, Category.assoc, he]
-  exact BoundaryGluing.desc_fac f hf k
-
-include hcof hfib in
-/-- Fill given standard faces satisfying the ordinary simplicial face identities. -/
-lemma fill_standard_faces {V T P : SSet.{v}} (i : V ⟶ T) [Mono i] (b : V ⟶ P)
-    (p : P ⟶ SSet.stdSimplex.{v}.obj (SimplexCategory.mk 0))
-    (hp : trivialFibrations SSet.{v} p) (n : ℕ)
-    (f : Fin (n + 3) → (SSet.stdSimplex.{v}.obj (SimplexCategory.mk (n + 1)) ⟶ obj i b))
-    (hf : BoundaryGluing.StandardCompatible f) :
-    ∃ e : SSet.stdSimplex.{v}.obj (SimplexCategory.mk (n + 2)) ⟶ obj i b,
-      (∀ k, SSet.stdSimplex.δ k ≫ e = f k) ∧
-      i ▷ SSet.stdSimplex.{v}.obj (SimplexCategory.mk (n + 2)) ≫ family i b e =
-        V ◁ (SSet.stdSimplex.isTerminalObj₀.from _ ≫ pointUnitIso.hom) ≫ (ρ_ V).hom ≫ b := by
-  obtain ⟨e, he⟩ := extension hcof hfib i b p hp (SSet.boundary.{v} (n + 2)).ι
-    (BoundaryGluing.standardDesc f hf)
-  refine ⟨e, fun k => ?_, family_fixed_boundary i b e⟩
-  rw [← SSet.boundary.ι_ι k, Category.assoc, he]
-  exact BoundaryGluing.standardDesc_fac f hf k
-
-end SerrePositivity.SimplicialModel.RelativeChoiceSpace

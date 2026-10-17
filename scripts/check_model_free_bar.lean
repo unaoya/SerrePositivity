@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.Foundations
+import SerrePositivity.HomotopicalAlgebra.Rectification.Foundations
 import Lean.Util.CollectAxioms
 
 universe v uD vD uB vB u
@@ -62,8 +62,8 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Simplicial.BarAugmentation,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarConstruction,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarAugmentation,
-    `SerrePositivity.HomotopicalAlgebra.Simplicial.BarSize,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ReplacementBarCandidate]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.BarSize,
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ReplacementBarCandidate]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

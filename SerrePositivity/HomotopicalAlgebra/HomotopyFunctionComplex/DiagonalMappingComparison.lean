@@ -1,72 +1,24 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.DiagonalMappingRows
+public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.DiagonalMappingComparison
 
 /-!
-# 中断した任意モデル源への一般化：DiagonalMappingComparison
+# 中断した厳密化モジュールの互換入口
 
 ## 概要
-任意モデル源への一般化（中断、計画書§396）の一部である（分類B）。
-対象：Identifying diagonal row comparisons with actual Hom precomposition。
+旧importを維持するため、移動した専用モジュールを再公開する。
+公開宣言の名前空間・型・証明は移動先に保持する。
 
 ## 方針（定義・証明）
-frameによる導来写像空間と整合図式の厳密化に対応する足場。
-下の技術注記に、元の具体的な構成と比較の範囲を保存する。
+Rectification配下の対応するモジュールをpublic importする。
+このファイルに定義や証明を重複させない。
 
 ## 規約と注意
-全hornを用いるKan複体の議論と、内側hornによる∞圏の議論を区別する。
-既知の厳密化定理や単体的局所化との同定を証明したとは主張しない。
+任意モデル源への一般化は引き続き中断中である。
+一般道具はGeneralToolsまたは共有Foundationsから利用する。
 
 ## 使われ方
-stage 4の完成部分L・E・Sからの利用はない。
-再開時は[計画書 §396][plan]と[棚卸し m0081][inventory]を参照する。
-
-[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0081
-[plan]: ../../../formalization-plans/k-theory.md
+既存の個別importはそのまま利用できる。
+新しい専用コードではRectification配下の正規パスを利用する。
+対応表はscripts/homotopical_generalization_manifest.jsonを参照。
 -/
-
-/- 旧モジュールの技術注記（構成と注意を保存）
-# Identifying diagonal row comparisons with actual Hom precomposition
-
-The diagonal of the bisimplicial mapping object is naturally isomorphic to
-the Hom of the diagonal cosimplicial object. The isomorphism is the identity
-on simplices; its naturality uses the double diagram's commuting squares.
-This identifies the concrete comparison map without assuming its weak
-equivalence or any diagonal cofibrancy.
--/
-
-@[expose] public section
-universe v u
-noncomputable section
-set_option backward.isDefEq.respectTransparency false
-open CategoryTheory
-
-namespace SerrePositivity.HomotopyFunctionComplex.DiagonalMappingComparison
-variable {C : Type u} [Category.{v} C]
-
-/-- Both sides have n-simplices A[n][n] to Z. -/
-def iso (A : SimplexCategory ⥤ SimplexCategory ⥤ C) (Z : C) :
-    DiagonalFrame.obj (DiagonalMappingRows.obj A Z) ≅
-      (cosimplicialHom (DiagonalFrame.obj A)).obj Z :=
-  NatIso.ofComponents (fun _ => Iso.refl _) (by
-    intro n m f
-    ext h
-    change (A.obj m.unop).map f.unop ≫ ((A.map f.unop).app n.unop ≫ h) =
-      ((A.map f.unop).app m.unop ≫ (A.obj n.unop).map f.unop) ≫ h
-    rw [← CategoryTheory.Category.assoc, (A.map f.unop).naturality])
-
-/-- Diagonalize the actual augmented row map. -/
-def comparison {A : SimplexCategory ⥤ SimplexCategory ⥤ C} {B : SimplexCategory ⥤ C}
-    (a : A ⟶ (Functor.const SimplexCategory).obj B) (Z : C) :
-    (cosimplicialHom B).obj Z ⟶ (cosimplicialHom (DiagonalFrame.obj A)).obj Z :=
-  (DiagonalFrame.constantIso ((cosimplicialHom B).obj Z)).inv ≫
-    DiagonalFrame.map (DiagonalMappingRows.comparison a Z) ≫ (iso A Z).hom
-
-@[simp]
-lemma comparison_eq {A : SimplexCategory ⥤ SimplexCategory ⥤ C} {B : SimplexCategory ⥤ C}
-    (a : A ⟶ (Functor.const SimplexCategory).obj B) (Z : C) :
-    comparison a Z = (cosimplicialHomMap (DiagonalFrame.augmentation a)).app Z := by
-  ext n h
-  rfl
-
-end SerrePositivity.HomotopyFunctionComplex.DiagonalMappingComparison

@@ -1,66 +1,24 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarChoiceCategory
-public import Mathlib.CategoryTheory.Category.Cat
+public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarChoiceSimplicialCategory
 
 /-!
-# 中断した任意モデル源への一般化：OrdinaryBarChoiceSimplicialCategory
+# 中断した厳密化モジュールの互換入口
 
 ## 概要
-任意モデル源への一般化（中断、計画書§396）の一部である（分類B）。
-対象：A strict simplicial diagram of categories of relative bar-action lifts。
+旧importを維持するため、移動した専用モジュールを再公開する。
+公開宣言の名前空間・型・証明は移動先に保持する。
 
 ## 方針（定義・証明）
-自明fibrationのファイバーと相対延長による選択の比較に対応する足場。
-下の技術注記に、元の具体的な構成と比較の範囲を保存する。
+Rectification配下の対応するモジュールをpublic importする。
+このファイルに定義や証明を重複させない。
 
 ## 規約と注意
-全hornを用いるKan複体の議論と、内側hornによる∞圏の議論を区別する。
-既知の厳密化定理や単体的局所化との同定を証明したとは主張しない。
+任意モデル源への一般化は引き続き中断中である。
+一般道具はGeneralToolsまたは共有Foundationsから利用する。
 
 ## 使われ方
-stage 4の完成部分L・E・Sからの利用はない。
-再開時は[計画書 §396][plan]と[棚卸し m0144][inventory]を参照する。
-
-[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0144
-[plan]: ../../../formalization-plans/k-theory.md
+既存の個別importはそのまま利用できる。
+新しい専用コードではRectification配下の正規パスを利用する。
+対応表はscripts/homotopical_generalization_manifest.jsonを参照。
 -/
-
-/- 旧モジュールの技術注記（構成と注意を保存）
-# A strict simplicial diagram of categories of relative bar-action lifts
-
-Objects retain the original base objects. Every simplex of morphisms retains
-its base arrow and the entire extension family. The diagram is auxiliary
-and is not a small SSet-valued strictification on the original base.
--/
-
-@[expose] public section
-universe v u
-noncomputable section
-set_option backward.isDefEq.respectTransparency false
-set_option backward.isDefEq.respectTransparency.types false
-open CategoryTheory
-
-namespace SerrePositivity.HomotopyFunctionComplex.OrdinaryBarChoiceSimplicialCategory
-variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
-  [HomotopicalAlgebra.ModelCategory SSet.{v}]
-  (hcof : HomotopicalAlgebra.cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
-  (hfib : HomotopicalAlgebra.fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
-
-def functor : SimplexCategoryᵒᵖ ⥤ Cat.{max u v, u} where
-  obj n := Cat.of (OrdinaryBarChoiceCategory.Object (C := C) hcof hfib
-    (SSet.stdSimplex.{max u v}.obj n.unop))
-  map θ := (OrdinaryBarChoiceCategory.reindex hcof hfib (SSet.stdSimplex.map θ.unop)).toCatHom
-  map_id n := by
-    apply Cat.ext
-    change OrdinaryBarChoiceCategory.reindex hcof hfib (SSet.stdSimplex.map (𝟙 n.unop)) = _
-    rw [CategoryTheory.Functor.map_id SSet.stdSimplex, OrdinaryBarChoiceCategory.reindex_id]
-    rfl
-  map_comp f g := by
-    apply Cat.ext
-    change OrdinaryBarChoiceCategory.reindex hcof hfib
-      (SSet.stdSimplex.map (g.unop ≫ f.unop)) = _
-    rw [SSet.stdSimplex.map_comp, OrdinaryBarChoiceCategory.reindex_comp]
-    rfl
-
-end SerrePositivity.HomotopyFunctionComplex.OrdinaryBarChoiceSimplicialCategory

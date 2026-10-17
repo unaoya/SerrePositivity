@@ -1,4 +1,4 @@
-import SerrePositivity.HomotopicalAlgebra.Foundations
+import SerrePositivity.HomotopicalAlgebra.Rectification.Foundations
 import Lean.Util.CollectAxioms
 
 universe v uD vD uB vB vH uH u
@@ -71,7 +71,7 @@ run_cmd do
     `SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneModelDetection,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarAnodyneComparison,
-    `SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ReplacementBarAnodyneComparison]
+    `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ReplacementBarAnodyneComparison]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

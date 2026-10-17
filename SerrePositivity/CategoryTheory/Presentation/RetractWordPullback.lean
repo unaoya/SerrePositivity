@@ -1,81 +1,24 @@
 module
 
-public import SerrePositivity.CategoryTheory.Presentation.RetractWordMap
+public import SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.RetractWordPullback
 
 /-!
-# 中断した任意モデル源への一般化：RetractWordPullback
+# 中断した厳密化モジュールの互換入口
 
 ## 概要
-任意モデル源への一般化（中断、計画書§396）の一部である（分類B）。
-対象：Pull back actual realizations along source functors and word homomorphisms。
+旧importを維持するため、移動した専用モジュールを再公開する。
+公開宣言の名前空間・型・証明は移動先に保持する。
 
 ## 方針（定義・証明）
-自由単体的分解・Dwyer–Kan型の生成射による整合化に対応する技法。
-下の技術注記に、元の具体的な構成と比較の範囲を保存する。
+Rectification配下の対応するモジュールをpublic importする。
+このファイルに定義や証明を重複させない。
 
 ## 規約と注意
-全hornを用いるKan複体の議論と、内側hornによる∞圏の議論を区別する。
-既知の厳密化定理や単体的局所化との同定を証明したとは主張しない。
+任意モデル源への一般化は引き続き中断中である。
+一般道具はGeneralToolsまたは共有Foundationsから利用する。
 
 ## 使われ方
-stage 4の完成部分L・E・Sからの利用はない。
-再開時は[計画書 §396][plan]と[棚卸し m0028][inventory]を参照する。
-
-[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0028
-[plan]: ../../../formalization-plans/k-theory.md
+既存の個別importはそのまま利用できる。
+新しい専用コードではRectification配下の正規パスを利用する。
+対応表はscripts/homotopical_generalization_manifest.jsonを参照。
 -/
-
-/- 旧モジュールの技術注記（構成と注意を保存）
-# Pull back actual realizations along source functors and word homomorphisms
--/
-
-@[expose] public section
-universe u v w u' v' w' uD vD
-set_option backward.isDefEq.respectTransparency false
-set_option backward.isDefEq.respectTransparency.types false
-open CategoryTheory
-
-namespace SerrePositivity.RetractWords.Realization
-variable {C : Type u} [Category.{v} C] {M : Type w} [MonoidWithZero M]
-  {C' : Type u'} [Category.{v'} C'] {N : Type w'} [MonoidWithZero N]
-  {D : Type uD} [Category.{vD} D] (R : Realization C M D) (G : C' ⥤ C) (h : N →*₀ M)
-
-def pullback : Realization C' N D where
-  ambient := G ⋙ R.ambient
-  small X := R.small (G.obj X)
-  section_ X := R.section_ (G.obj X)
-  projection X := R.projection (G.obj X)
-  action X t := R.action (G.obj X) (h t)
-  action_one X := by simpa only [map_one, Functor.comp_obj] using R.action_one (G.obj X)
-  action_mul X t z := by simpa only [map_mul] using R.action_mul (G.obj X) (h t) (h z)
-  split X := R.split (G.obj X)
-  action_zero X := by simpa only [map_zero] using R.action_zero (G.obj X)
-  section_action X t := R.section_action (G.obj X) (h t)
-  action_projection X t := R.action_projection (G.obj X) (h t)
-
-lemma pullback_functor : RetractWords.map G h ⋙ R.functor = (R.pullback G h).functor := by
-  apply CategoryTheory.Quotient.lift_unique' (Rel C' N)
-  apply Paths.lift_unique (R.pullback G h).edges
-  fapply Prefunctor.ext
-  · intro X
-    cases X <;> rfl
-  · intro X Y e
-    cases e with
-    | source f =>
-      change R.functor.map ((RetractWords.map G h).map
-        ((quotient C' N).map (source C' N f))) = R.ambient.map (G.map f)
-      rw [map_source, R.functor_source]
-    | word X t =>
-      change R.functor.map ((RetractWords.map G h).map
-        ((quotient C' N).map (word C' N X t))) = R.action (G.obj X) (h t)
-      rw [map_word, R.functor_word]
-    | section_ X =>
-      change R.functor.map ((RetractWords.map G h).map
-        ((quotient C' N).map (RetractWords.section_ C' N X))) = R.section_ (G.obj X)
-      rw [map_section, R.functor_section]
-    | projection X =>
-      change R.functor.map ((RetractWords.map G h).map
-        ((quotient C' N).map (RetractWords.projection C' N X))) = R.projection (G.obj X)
-      rw [map_projection, R.functor_projection]
-
-end SerrePositivity.RetractWords.Realization
