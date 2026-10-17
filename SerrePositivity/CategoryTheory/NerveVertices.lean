@@ -3,7 +3,33 @@ module
 public import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.VertexTuples
 
-/-! # The actual vertex subcomplex of a category nerve -/
+/-!
+# 圏のnerveにその頂点部分単体集合を含める射を構成する
+
+## 概要
+圏のnerveにその頂点部分単体集合を含める射を構成する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+離散な対象の族からnerveへの写像を各次数で明示する。
+像の部分単体集合と包含を使い、各頂点の評価を確認する。
+
+## 規約と注意
+圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
+表示された圏や比較射を、局所化後の同型だけで置き換えない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はS-構成に現れる圏のnerve、射列、図式間の自然なホモトピーに利用できる。
+[棚卸し m0017][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../formalization-plans/k-theory-generalization-inventory.md#m0017
+[plan]: ../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# The actual vertex subcomplex of a category nerve
+-/
 
 @[expose] public section
 universe v u
@@ -16,6 +42,12 @@ variable (C : Type u) [Category.{v} C]
 
 abbrev vertices : SSet.{max u v} := SimplicialModel.VertexTuples.vertices (ULift.{v} C)
 
+/-- 圏のnerveにその頂点部分単体集合を含める射を構成する。
+
+圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
+離散な対象の族からnerveへの写像を各次数で明示する。
+像の部分単体集合と包含を使い、各頂点の評価を確認する。
+-/
 def inclusion : vertices C ⟶ nerve C where
   app _ := ↾fun x => (Functor.const _).obj x.down
   naturality {_ _} _ := rfl

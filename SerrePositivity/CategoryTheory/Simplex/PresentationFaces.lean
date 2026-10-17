@@ -2,7 +2,33 @@ module
 
 public import SerrePositivity.CategoryTheory.Simplex.PresentationDegeneracies
 
-/-! # Face normal forms in the presented simplex category -/
+/-!
+# 表示された単体圏から通常の単体圏への写像は面の標準形を区別する
+
+## 概要
+表示された単体圏から通常の単体圏への写像は面の標準形を区別する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+順序写像または面・退化の標準形を明示して単体作用素を計算する。
+生成作用素上の一致を、単体恒等式によって全作用素上の一致へ拡張する。
+
+## 規約と注意
+圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
+表示された圏や比較射を、局所化後の同型だけで置き換えない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はS-構成に現れる圏のnerve、射列、図式間の自然なホモトピーに利用できる。
+[棚卸し m0044][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0044
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Face normal forms in the presented simplex category
+-/
 
 @[expose] public section
 set_option backward.isDefEq.respectTransparency false
@@ -165,6 +191,12 @@ lemma standardδ_injective {m n : ℕ} {L K : List ℕ}
       omega
     simp only [hnL, hnK]
 
+/-- 表示された単体圏から通常の単体圏への写像は面の標準形を区別する。
+
+圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
+順序写像または面・退化の標準形を明示して単体作用素を計算する。
+生成作用素上の一致を、単体恒等式によって全作用素上の一致へ拡張する。
+-/
 lemma map_injective_on_faces {x y : SimplexCategoryGenRel} {f g : x ⟶ y}
     (hf : P_δ f) (hg : P_δ g) (h : toSimplexCategory.map f = toSimplexCategory.map g) :
     f = g := by

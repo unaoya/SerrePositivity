@@ -4,7 +4,31 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
 public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
 public import Mathlib.CategoryTheory.Functor.Currying
 
-/-! # Nerve homotopies with independent object and Hom universes
+/-!
+# 対象と射の宇宙を分けたまま自然変換からnerveのホモトピーを構成する
+
+## 概要
+対象と射の宇宙を分けたまま自然変換からnerveのホモトピーを構成する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+自然変換を区間圏と元の圏の直積からの関手として表し、nerveに適用する。
+全射列を保ったまま、二つの端点と単体作用素との交換を確認する。
+
+## 規約と注意
+対象とHomの宇宙は独立に保ち、両nerveを明示した共通宇宙へULiftする。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はS-構成に現れる圏のnerve、射列、図式間の自然なホモトピーに利用できる。
+[棚卸し m0013][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../formalization-plans/k-theory-generalization-inventory.md#m0013
+[plan]: ../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Nerve homotopies with independent object and Hom universes
 
 Both nerves are explicitly lifted to a common value universe. The maps
 and interval retain their actual chains, including their original arrows.
@@ -36,6 +60,12 @@ def hom : SSet.uliftFunctor.{max uD vD, max uC vC}.obj (nerve C) ⊗
     (((SSet.stdSimplex.objEquiv p.2).toOrderHom.monotone.functor.prod' p.1.down) ⋙ interval α)
   naturality {_ _} _ := rfl
 
+/-- 独立した宇宙で構成したnerveのホモトピーの始点が指定した関手に一致する。
+
+対象とHomの宇宙は独立に保ち、両nerveを明示した共通宇宙へULiftする。
+自然変換を区間圏と元の圏の直積からの関手として表し、nerveに適用する。
+全射列を保ったまま、二つの端点と単体作用素との交換を確認する。
+-/
 lemma at_zero : SSet.ι₀ ≫ hom α = map F := by
   apply NatTrans.ext
   funext n
@@ -60,6 +90,12 @@ lemma at_one : SSet.ι₁ ≫ hom α = map G := by
     eqToHom rfl ≫ G.map (c.down.map h) ≫ eqToHom rfl
   simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
 
+/-- 対象と射の宇宙を分けたまま自然変換からnerveのホモトピーを構成する。
+
+対象とHomの宇宙は独立に保ち、両nerveを明示した共通宇宙へULiftする。
+自然変換を区間圏と元の圏の直積からの関手として表し、nerveに適用する。
+全射列を保ったまま、二つの端点と単体作用素との交換を確認する。
+-/
 def homotopy : SSet.Homotopy (map F) (map G) where
   h := hom α
   h₀ := at_zero α

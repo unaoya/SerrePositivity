@@ -2,7 +2,32 @@ module
 
 public import SerrePositivity.CategoryTheory.ArrowFactorizationCategory
 
-/-! # Actual external transport of factorization categories
+/-!
+# 因子分解圏の外側の射に沿う移送が合成と整合する
+
+## 概要
+因子分解圏の外側の射に沿う移送が合成と整合する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+中間対象と二つの因子を明示し、射には左右の三角形の可換性を要求する。
+恒等・合成・移送をこのデータ上で定義し、成分の一意性から法則を導く。
+
+## 規約と注意
+圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
+表示された圏や比較射を、局所化後の同型だけで置き換えない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はS-構成に現れる圏のnerve、射列、図式間の自然なホモトピーに利用できる。
+[棚卸し m0008][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../formalization-plans/k-theory-generalization-inventory.md#m0008
+[plan]: ../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Actual external transport of factorization categories
 
 External arrows change only the two legs. The middle objects and maps are
 retained. A fixed target composite keeps the laws as equalities of actual
@@ -64,6 +89,12 @@ lemma context_comp {Y'' V'' : D} (a : Y' ⟶ Y) (b : V ⟶ V') (h : Y' ⟶ V')
     _ = (a' ≫ h) ≫ b' := congrArg (fun q => (a' ≫ q) ≫ b') e
     _ = k := e'
 
+/-- 因子分解圏の外側の射に沿う移送が合成と整合する。
+
+圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
+中間対象と二つの因子を明示し、射には左右の三角形の可換性を要求する。
+恒等・合成・移送をこのデータ上で定義し、成分の一意性から法則を導く。
+-/
 lemma transport_comp {Y'' V'' : D} (a : Y' ⟶ Y) (b : V ⟶ V') (h : Y' ⟶ V')
     (e : (a ≫ g) ≫ b = h) (a' : Y'' ⟶ Y') (b' : V' ⟶ V'') (k : Y'' ⟶ V'')
     (e' : (a' ≫ h) ≫ b' = k) :

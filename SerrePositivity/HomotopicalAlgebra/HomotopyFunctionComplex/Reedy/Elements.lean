@@ -3,7 +3,32 @@ module
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Index
 public import Mathlib.CategoryTheory.Elements
 
-/-! # Reedy structures on actual categories of elements
+/-!
+# Reedy圏上の図式の要素の圏にReedy構造を構成する
+
+## 概要
+Reedy圏上の図式の要素の圏にReedy構造を構成する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+Reedy境界の添字と比較写像を明示し、境界の普遍性を照合する。
+次数ごとの構成を既存の低次数の系と整合させる。
+
+## 規約と注意
+圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
+表示された圏や比較射を、局所化後の同型だけで置き換えない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0263][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../../formalization-plans/k-theory-generalization-inventory.md#m0263
+[plan]: ../../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Reedy structures on actual categories of elements
 
 The projection need not be full or injective on objects. A factorization
 lifts uniquely because its middle element is forced by its left arrow.
@@ -71,7 +96,14 @@ def elementsFactorization {x y : F.Elements} (f : x ⟶ y) :
     exact f.map_val
   · exact Functor.Elements.hom_ext q.fac
 
-/-- Unique base factorizations lift to actual unique element factorizations. -/
+/- 旧宣言の技術注記：Unique base factorizations lift to actual unique element factorizations. -/
+/-- Reedy圏上の図式の要素の圏にReedy構造を構成する。
+
+圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
+Reedy境界の添字と比較写像を明示し、境界の普遍性を照合する。
+次数ごとの構成を既存の低次数の系と整合させる。
+-/
+
 def elementsReedy : ReedyStructure
     (elementsInverse (inverse := inverse) F) (elementsDirect (direct := direct) F) α where
   deg x := r.deg x.obj

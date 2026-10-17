@@ -3,7 +3,33 @@ module
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
 
-/-! # Add one initial vertex to a simplex, with explicit maps -/
+/-!
+# 単体に先頭頂点を一つ追加する関手を構成する
+
+## 概要
+単体に先頭頂点を一つ追加する関手を構成する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+順序写像または面・退化の標準形を明示して単体作用素を計算する。
+生成作用素上の一致を、単体恒等式によって全作用素上の一致へ拡張する。
+
+## 規約と注意
+圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
+表示された圏や比較射を、局所化後の同型だけで置き換えない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はS-構成に現れる圏のnerve、射列、図式間の自然なホモトピーに利用できる。
+[棚卸し m0040][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0040
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Add one initial vertex to a simplex, with explicit maps
+-/
 
 @[expose] public section
 open CategoryTheory
@@ -23,6 +49,12 @@ def map {n m : SimplexCategory} (f : n ⟶ m) :
         exact Fin.succ_le_succ_iff.mpr
           (f.toOrderHom.monotone (Fin.succ_le_succ_iff.mp hij))⟩
 
+/-- 単体に先頭頂点を一つ追加する関手を構成する。
+
+圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
+順序写像または面・退化の標準形を明示して単体作用素を計算する。
+生成作用素上の一致を、単体恒等式によって全作用素上の一致へ拡張する。
+-/
 def functor : SimplexCategory ⥤ SimplexCategory where
   obj n := SimplexCategory.mk (n.len + 1)
   map := map

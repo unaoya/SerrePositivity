@@ -3,7 +3,32 @@ module
 public import SerrePositivity.CategoryTheory.AnchoredChain
 public import Mathlib.CategoryTheory.Limits.Shapes.IsTerminal
 
-/-! # The category of actual factorizations of a fixed arrow
+/-!
+# 固定した射の因子分解圏で終域側の自明な因子分解が終対象となる
+
+## 概要
+固定した射の因子分解圏で終域側の自明な因子分解が終対象となる。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+中間対象と二つの因子を明示し、射には左右の三角形の可換性を要求する。
+恒等・合成・移送をこのデータ上で定義し、成分の一意性から法則を導く。
+
+## 規約と注意
+圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
+表示された圏や比較射を、局所化後の同型だけで置き換えない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はS-構成に現れる圏のnerve、射列、図式間の自然なホモトピーに利用できる。
+[棚卸し m0007][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../formalization-plans/k-theory-generalization-inventory.md#m0007
+[plan]: ../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# The category of actual factorizations of a fixed arrow
 
 Morphisms commute with both external legs. The identity factorizations
 at the source and target are initial and terminal, respectively.
@@ -80,6 +105,12 @@ def source_isInitial : IsInitial (source g) :=
     change f.hom = a.left
     simpa only [source, Category.id_comp] using f.left_comm))
 
+/-- 固定した射の因子分解圏で終域側の自明な因子分解が終対象となる。
+
+圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
+中間対象と二つの因子を明示し、射には左右の三角形の可換性を要求する。
+恒等・合成・移送をこのデータ上で定義し、成分の一意性から法則を導く。
+-/
 def target_isTerminal : IsTerminal (target g) :=
   IsTerminal.ofUniqueHom (toTarget g) (fun a f => Hom.ext (by
     change f.hom = a.right

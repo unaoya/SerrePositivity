@@ -2,7 +2,33 @@ module
 
 public import SerrePositivity.CategoryTheory.NerveSimplexEndpoint
 
-/-! # Contravariant first endpoint on the actual nerve simplex category -/
+/-!
+# nerveの単体圏から先頭頂点を反変に評価する関手を構成する
+
+## 概要
+nerveの単体圏から先頭頂点を反変に評価する関手を構成する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+単体を表す合成可能射列の先頭または終端を評価する。
+単体圏の射と射列の制限を照合し、関手の法則とaugmentationの式を確認する。
+
+## 規約と注意
+圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
+表示された圏や比較射を、局所化後の同型だけで置き換えない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はS-構成に現れる圏のnerve、射列、図式間の自然なホモトピーに利用できる。
+[棚卸し m0016][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../formalization-plans/k-theory-generalization-inventory.md#m0016
+[plan]: ../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Contravariant first endpoint on the actual nerve simplex category
+-/
 
 @[expose] public section
 universe v u
@@ -47,6 +73,12 @@ lemma startMap_comp {s t r : Index D} (f : s ⟶ t) (g : t ⟶ r) :
   prefix_comp (chain s) (chain t) (chain r) (operator f) (operator g)
     (chain_eq f) (chain_eq g) (chain_eq (f ≫ g))
 
+/-- nerveの単体圏から先頭頂点を反変に評価する関手を構成する。
+
+圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
+単体を表す合成可能射列の先頭または終端を評価する。
+単体圏の射と射列の制限を照合し、関手の法則とaugmentationの式を確認する。
+-/
 def functor (D : Type u) [Category.{v} D] : Index D ⥤ Dᵒᵖ where
   obj s := Opposite.op (start s)
   map f := (startMap f).op

@@ -3,7 +3,32 @@ module
 public import Mathlib.AlgebraicTopology.ModelCategory.Bifibrant
 public import Mathlib.AlgebraicTopology.ModelCategory.Basic
 
-/-! # Actual fibrant replacements and all commuting comparison maps
+/-!
+# fibrant置換の圏で基底の弱同値を持ち上げた比較射も弱同値となる
+
+## 概要
+fibrant置換の圏で基底の弱同値を持ち上げた比較射も弱同値となる。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+指定された境界と基底から可換正方形を作り、その持ち上げ性を使う。
+元の指定部分を保つ等式は、対角射の二つの分解等式から確認する。
+
+## 規約と注意
+モデル構造と射クラスの一致を要求する入口では、その指定データを仮定する。
+このファイルがHT-KQの引用モデルを自動的に選ぶとは解釈しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0337][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0337
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Actual fibrant replacements and all commuting comparison maps
 
 Objects and lifts use ordinary model factorization. The full projection to
 base objects is not asserted to have a strict functorial section.
@@ -109,6 +134,12 @@ lemma map_weakEquivalence_iff {X Y : FibrantReplacementObject C} (f : X ⟶ Y) :
     exact (weakEquivalences C).of_precomp _ _ X.trivial.2
       (f.under.symm ▸ (weakEquivalences C).comp_mem _ _ h Y.trivial.2)
 
+/-- fibrant置換の圏で基底の弱同値を持ち上げた比較射も弱同値となる。
+
+モデル構造と射クラスの一致を要求する入口では、その指定データを仮定する。
+指定された境界と基底から可換正方形を作り、その持ち上げ性を使う。
+元の指定部分を保つ等式は、対角射の二つの分解等式から確認する。
+-/
 lemma liftBase_weakEquivalence {X Y : FibrantReplacementObject C}
     (f : X.base ⟶ Y.base) (hf : weakEquivalences C f) :
     weakEquivalences C (liftBase (X := X) (Y := Y) f).map :=

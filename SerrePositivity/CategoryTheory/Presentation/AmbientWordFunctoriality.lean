@@ -4,7 +4,32 @@ public import SerrePositivity.CategoryTheory.Presentation.RetractWordAugmentatio
 public import SerrePositivity.CategoryTheory.Presentation.AmbientWordMap
 public import SerrePositivity.CategoryTheory.Presentation.AmbientWordAugmentation
 
-/-! # Strict functoriality and naturality of the actual ambient-word augmentation -/
+/-!
+# 中断した任意モデル源への一般化：AmbientWordFunctoriality
+
+## 概要
+任意モデル源への一般化（中断、計画書§396）の一部である（分類B）。
+対象：Strict functoriality and naturality of the actual ambient-word augmentation。
+
+## 方針（定義・証明）
+自由単体的分解・Dwyer–Kan型の生成射による整合化に対応する技法。
+下の技術注記に、元の具体的な構成と比較の範囲を保存する。
+
+## 規約と注意
+全hornを用いるKan複体の議論と、内側hornによる∞圏の議論を区別する。
+既知の厳密化定理や単体的局所化との同定を証明したとは主張しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない。
+再開時は[計画書 §396][plan]と[棚卸し m0020][inventory]を参照する。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0020
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Strict functoriality and naturality of the actual ambient-word augmentation
+-/
 
 @[expose] public section
 universe u v w u' v' w' u'' v'' w''

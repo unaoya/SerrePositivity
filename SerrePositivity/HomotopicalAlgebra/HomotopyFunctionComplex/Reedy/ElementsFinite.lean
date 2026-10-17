@@ -3,7 +3,32 @@ module
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Elements
 public import Mathlib.CategoryTheory.Limits.Shapes.FiniteLimits
 
-/-! # Finite boundary indices in categories of elements
+/-!
+# 要素の圏のlatching添字の有限性を元の境界の有限性から導く
+
+## 概要
+要素の圏のlatching添字の有限性を元の境界の有限性から導く。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+Reedy境界の添字と比較写像を明示し、境界の普遍性を照合する。
+次数ごとの構成を既存の低次数の系と整合させる。
+
+## 規約と注意
+圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
+表示された圏や比較射を、局所化後の同型だけで置き換えない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0264][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../../formalization-plans/k-theory-generalization-inventory.md#m0264
+[plan]: ../../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Finite boundary indices in categories of elements
 
 Outgoing element arrows are determined by their underlying arrows.
 Incoming arrows are also determined when the relevant structure maps are
@@ -79,6 +104,12 @@ instance elementsMatchingIndex_finite (x : F.Elements) [Finite (MatchingIndex r 
     Finite (MatchingIndex (elementsReedy F r) x) :=
   Finite.of_injective _ (elementsMatchingCode_injective F r x)
 
+/-- 要素の圏のlatching添字の有限性を元の境界の有限性から導く。
+
+圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
+Reedy境界の添字と比較写像を明示し、境界の普遍性を照合する。
+次数ごとの構成を既存の低次数の系と整合させる。
+-/
 lemma elementsLatchingIndex_finite
     (hinj : ∀ {i j : J} (f : i ⟶ j), direct f → Function.Injective (F.map f))
     (x : F.Elements) [Finite (LatchingIndex r x.obj)] :

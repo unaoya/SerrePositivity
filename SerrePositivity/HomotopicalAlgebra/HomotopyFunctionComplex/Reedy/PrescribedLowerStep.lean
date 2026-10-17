@@ -3,7 +3,32 @@ module
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LowerNaturality
 public import Mathlib.Order.SuccPred.Nat
 
-/-! # Assemble independently prescribed new-degree cells into a natural lower system
+/-!
+# 新しい次数の指定セルと既存の低次数の図式を自然な一つの低次数系に貼り合わせる
+
+## 概要
+新しい次数の指定セルと既存の低次数の図式を自然な一つの低次数系に貼り合わせる。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+Reedy境界の添字と比較写像を明示し、境界の普遍性を照合する。
+次数ごとの構成を既存の低次数の系と整合させる。
+
+## 規約と注意
+圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
+表示された圏や比較射を、局所化後の同型だけで置き換えない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0267][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../../formalization-plans/k-theory-generalization-inventory.md#m0267
+[plan]: ../../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Assemble independently prescribed new-degree cells into a natural lower system
 
 Only incoming direct and outgoing inverse compatibility with the old
 system is required. Unique Reedy factorization supplies naturality on all
@@ -60,7 +85,14 @@ lemma naturality_inverse {x y : Lower r (n + 1)} (f : x ⟶ y) (hf : inverse f.h
       rw [app, dite_eq_left hy, app, dite_eq_right hx]
       exact d.outgoing x.obj _ (x := ⟨y.obj, hy⟩) f.hom hf
 
-/-- The actual natural transformation containing all old and newly specified cells. -/
+/- 旧宣言の技術注記：The actual natural transformation containing all old and newly specified cells. -/
+/-- 新しい次数の指定セルと既存の低次数の図式を自然な一つの低次数系に貼り合わせる。
+
+圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
+Reedy境界の添字と比較写像を明示し、境界の普遍性を照合する。
+次数ごとの構成を既存の低次数の系と整合させる。
+-/
+
 def assemble : lowerInclusion r (n + 1) ⋙ F ⟶ lowerInclusion r (n + 1) ⋙ G :=
   natTransOnLowerOfReedy r (n + 1) d.app d.naturality_inverse d.naturality_direct
 

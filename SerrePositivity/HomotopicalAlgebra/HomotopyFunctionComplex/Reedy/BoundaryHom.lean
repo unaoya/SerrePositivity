@@ -5,7 +5,32 @@ public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.O
 public import Mathlib.CategoryTheory.Limits.Opposites
 public import Mathlib.CategoryTheory.Limits.Preserves.Limits
 
-/-! # Contravariant boundary Hom sends latching colimits to matching limits
+/-!
+# latching側の余極限を反変Homでmatching側の極限へ移す同型を構成する
+
+## 概要
+latching側の余極限を反変Homでmatching側の極限へ移す同型を構成する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+Reedy境界の添字と比較写像を明示し、境界の普遍性を照合する。
+次数ごとの構成を既存の低次数の系と整合させる。
+
+## 規約と注意
+圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
+表示された圏や比較射を、局所化後の同型だけで置き換えない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0262][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../../formalization-plans/k-theory-generalization-inventory.md#m0262
+[plan]: ../../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Contravariant boundary Hom sends latching colimits to matching limits
 
 The result is for any contravariant functor preserving the particular
 opposite latching limit. Its comparison formula identifies the actual
@@ -40,7 +65,14 @@ def isLimit : IsLimit (cone r j A H) :=
 
 variable [HasLimitsOfShape (MatchingIndex r.op (op j)) W]
 
-/-- The concrete boundary-Hom object is the actual matching object. -/
+/- 旧宣言の技術注記：The concrete boundary-Hom object is the actual matching object. -/
+/-- latching側の余極限を反変Homでmatching側の極限へ移す同型を構成する。
+
+圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
+Reedy境界の添字と比較写像を明示し、境界の普遍性を照合する。
+次数ごとの構成を既存の低次数の系と整合させる。
+-/
+
 def iso : H.obj (op ((latchingEvaluation r j).obj A)) ≅
     (matchingEvaluation r.op (op j)).obj (A.op ⋙ H) :=
   (isLimit r j A H).conePointUniqueUpToIso (limit.isLimit _)

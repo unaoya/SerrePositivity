@@ -2,7 +2,32 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftSuccessor
 
-/-! # Reedy lifting retaining an entire prescribed lower-degree lift
+/-!
+# 指定済みの低次数の持ち上げを保持するReedy持ち上げを構成する
+
+## 概要
+指定済みの低次数の持ち上げを保持するReedy持ち上げを構成する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+Reedy境界の添字と比較写像を明示し、境界の普遍性を照合する。
+次数ごとの構成を既存の低次数の系と整合させる。
+
+## 規約と注意
+圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
+表示された圏や比較射を、局所化後の同型だけで置き換えない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
+[棚卸し m0268][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../../formalization-plans/k-theory-generalization-inventory.md#m0268
+[plan]: ../../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Reedy lifting retaining an entire prescribed lower-degree lift
 
 The existing successor construction can start at any degree and retain
 all old components. The resulting single natural lift agrees exactly
@@ -86,6 +111,12 @@ lemma restrict : Functor.whiskerLeft (lowerInclusion r n) (lift r sq n initial) 
   funext j
   exact app_eq_tower r sq n initial 0 j.obj j.property
 
+/-- 指定済みの低次数の持ち上げを保持するReedy持ち上げを構成する。
+
+圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
+Reedy境界の添字と比較写像を明示し、境界の普遍性を照合する。
+次数ごとの構成を既存の低次数の系と整合させる。
+-/
 def liftStruct : sq.LiftStruct where
   l := lift r sq n initial
   fac_left := fac_left r sq n initial

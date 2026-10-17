@@ -4,7 +4,31 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
 public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
 public import Mathlib.CategoryTheory.Functor.Currying
 
-/-! # Actual simplicial homotopies induced by natural transformations
+/-!
+# 自然変換から圏のnerveの間の実単体的ホモトピーを構成する
+
+## 概要
+自然変換から圏のnerveの間の実単体的ホモトピーを構成する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+自然変換を区間圏と元の圏の直積からの関手として表し、nerveに適用する。
+全射列を保ったまま、二つの端点と単体作用素との交換を確認する。
+
+## 規約と注意
+通常の圏と自然変換を入力し、圏が群oidであることは仮定しない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はS-構成に現れる圏のnerve、射列、図式間の自然なホモトピーに利用できる。
+[棚卸し m0012][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../formalization-plans/k-theory-generalization-inventory.md#m0012
+[plan]: ../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Actual simplicial homotopies induced by natural transformations
 
 The interval diagram of functors is uncurried and evaluated on each
 simplex and its monotone interval parameter. All dimensions use one formula.
@@ -48,6 +72,12 @@ lemma at_one : SSet.ι₁ ≫ hom α = nerveMap G := by
   change 𝟙 _ ≫ G.map (E.map h) = eqToHom rfl ≫ G.map (E.map h) ≫ eqToHom rfl
   simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
 
+/-- 自然変換から圏のnerveの間の実単体的ホモトピーを構成する。
+
+通常の圏と自然変換を入力し、圏が群oidであることは仮定しない。
+自然変換を区間圏と元の圏の直積からの関手として表し、nerveに適用する。
+全射列を保ったまま、二つの端点と単体作用素との交換を確認する。
+-/
 def homotopy : SSet.Homotopy (nerveMap F) (nerveMap G) where
   h := hom α
   h₀ := at_zero α

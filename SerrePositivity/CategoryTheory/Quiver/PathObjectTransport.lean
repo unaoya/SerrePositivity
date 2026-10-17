@@ -3,7 +3,33 @@ module
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreePathResolution
 public import Mathlib.CategoryTheory.NatIso
 
-/-! # Singleton paths commute with exact object transports -/
+/-!
+# 対象の移送後の単一辺の道を余単位で評価すると元の辺の移送に一致する
+
+## 概要
+対象の移送後の単一辺の道を余単位で評価すると元の辺の移送に一致する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+生成辺と空の道を指定し、道の長さに関する帰納で射を比較する。
+連結との交換から関手または自然変換の法則を確認する。
+
+## 規約と注意
+圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
+表示された圏や比較射を、局所化後の同型だけで置き換えない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はS-構成に現れる圏のnerve、射列、図式間の自然なホモトピーに利用できる。
+[棚卸し m0036][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0036
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Singleton paths commute with exact object transports
+-/
 
 @[expose] public section
 universe u v u' v'
@@ -36,6 +62,12 @@ lemma map_copyObj_generator (F : C ⥤ D) (g : C → D) (h : ∀ X, F.obj X = g 
         (@eqToHom (Paths D) (Paths.categoryPaths D).toCategoryStruct (F.obj Y) (g Y) (h Y))) = _
   exact singleton_transport (h X).symm (h Y) (F.map f)
 
+/-- 対象の移送後の単一辺の道を余単位で評価すると元の辺の移送に一致する。
+
+圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
+生成辺と空の道を指定し、道の長さに関する帰納で射を比較する。
+連結との交換から関手または自然変換の法則を確認する。
+-/
 lemma counit_copy_singleton {X Y : D} (f : X ⟶ Y) :
     ((HomotopyFunctionComplex.FreePathResolution.counit D).copyObj (fun X => (X : D))
       (fun X => @Iso.refl.{v', u'} D inferInstance X)).map f.toPath = f := by

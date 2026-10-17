@@ -2,7 +2,32 @@ module
 
 public import Mathlib.Combinatorics.Quiver.Path
 
-/-! # Path maps preserve intersections of identity-on-object edge maps
+/-!
+# 対象を固定する辺の写像の交わりが道への写像でも保たれる
+
+## 概要
+対象を固定する辺の写像の交わりが道への写像でも保たれる。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+生成辺と空の道を指定し、道の長さに関する帰納で射を比較する。
+連結との交換から関手または自然変換の法則を確認する。
+
+## 規約と注意
+圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
+表示された圏や比較射を、局所化後の同型だけで置き換えない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はS-構成に現れる圏のnerve、射列、図式間の自然なホモトピーに利用できる。
+[棚卸し m0034][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0034
+[plan]: ../../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Path maps preserve intersections of identity-on-object edge maps
 
 The hypotheses concern actual edge maps. A common preimage path is built
 edge by edge, retaining all intermediate vertices. No freeness or lifting
@@ -115,6 +140,12 @@ lemma mapPath_congr {A : Quiver.{vA} V} {B : Quiver.{vB} V} (f g : EdgeMap A B)
   | nil => rfl
   | cons p e ih => rw [mapPath_cons, mapPath_cons, ih, h e]
 
+/-- 対象を固定する辺の写像の交わりが道への写像でも保たれる。
+
+圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
+生成辺と空の道を指定し、道の長さに関する帰納で射を比較する。
+連結との交換から関手または自然変換の法則を確認する。
+-/
 lemma mapPath_intersection {A : Quiver.{vA} V} {B : Quiver.{vB} V}
     {D : Quiver.{vD} V} {K : Quiver.{vK} V}
     (f : EdgeMap A D) (g : EdgeMap B D) (a : EdgeMap K A) (b : EdgeMap K B)

@@ -3,7 +3,32 @@ module
 public import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
 public import Mathlib.CategoryTheory.Elements
 
-/-! # Endpoint evaluation on the actual category of nerve simplices
+/-!
+# nerveの単体圏から終端頂点を評価する関手を構成する
+
+## 概要
+nerveの単体圏から終端頂点を評価する関手を構成する。
+一般に再利用できる道具として分類Aに整理する。
+
+## 方針（定義・証明）
+単体を表す合成可能射列の先頭または終端を評価する。
+単体圏の射と射列の制限を照合し、関手の法則とaugmentationの式を確認する。
+
+## 規約と注意
+圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
+表示された圏や比較射を、局所化後の同型だけで置き換えない。
+
+## 使われ方
+stage 4の完成部分L・E・Sからの利用はない（依存監査で確認済み）。
+今後はS-構成に現れる圏のnerve、射列、図式間の自然なホモトピーに利用できる。
+[棚卸し m0014][inventory]と[計画書 §396][plan]を参照。
+
+[inventory]: ../../formalization-plans/k-theory-generalization-inventory.md#m0014
+[plan]: ../../formalization-plans/k-theory.md
+-/
+
+/- 旧モジュールの技術注記（構成と注意を保存）
+# Endpoint evaluation on the actual category of nerve simplices
 
 The last vertex changes along a simplex operator by the actual tail of
 the chain. This includes the face deleting the old last vertex. It is
@@ -80,7 +105,14 @@ lemma reindexArrow_endpoint {n m : ℕ} (c : ComposableArrows D n)
       c.map (homOfLE (Fin.le_last (θ.toOrderHom (Fin.last m)))) := by
   simp only [endpointMap, tail, eqToHom_refl, Category.id_comp]
 
-/-- Evaluate each actual nerve simplex at its last object and each operator at its tail. -/
+/- 旧宣言の技術注記：Evaluate each actual nerve simplex at its last object and each operator at its tail. -/
+/-- nerveの単体圏から終端頂点を評価する関手を構成する。
+
+圏・対象・射の宇宙と必要な極限の仮定は各宣言に従う。
+単体を表す合成可能射列の先頭または終端を評価する。
+単体圏の射と射列の制限を照合し、関手の法則とaugmentationの式を確認する。
+-/
+
 def functor (D : Type u) [Category.{v} D] : Index D ⥤ D where
   obj s := endpoint s
   map f := endpointMap f
