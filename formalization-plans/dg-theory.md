@@ -9722,3 +9722,47 @@ tensor積のHom準同型保存に必要な複体のK-flat性を明示し、元�
 その後、解像度変更と導来bimodule合成・対角単位・結合の自然性およびcoherenceを接続する。
 今回のdg準同値不変性だけでU12e全体を受け入れず、受入後のU16a〜d、U15eの分解版の順を保持する。
 共有一般論への新しいAPI要求はない。共有ルート・Perfect/・Endomorphism/・局所K-flat版は編集していない。
+
+### 17.212 U12e52：指定解像度の導来bimodule圏の比較同値（2026-10-17）
+
+**oppositeと積の準同値。** `Category/OppositeHomotopy.lean`はMathlibの豊穣opposite比較を
+境界関係の商へ送り、smallnessなしで`homotopyOppositeFunctor`を構成する。
+`Functor/QuasiEquivalenceOpposite.lean`はoppositeによる準同値保存を証明する。
+`Functor/QuasiEquivalenceTensor.lean`はF:B→D、G:C→Eに対し、
+CとDの局所K-flat性を明示して`quasiEquivalence_tensor`を証明する。
+Hom写像をF⊗id、id⊗Gの順に分解した際の相手のK-flat性をそれぞれ使う。
+積関手の主K上の本質的全射性自体にはflatnessもsmallnessも不要である。
+
+**実際の導来制限。** `Derived/BimoduleModuleEquivalence.lean`は、既存の閉零での
+右加群–bimodule同値と値ごとの準同型の一致から、同じ射のクラスの局所化として
+`rightModuleBimoduleDerivedEquivalence`を構成する。Homのflatnessは要求しない。
+`Derived/BimoduleRestrictionEquivalence.lean`は既存の導来bimodule制限と積dg圏上の
+右加群の導来制限との自然な比較正方形を局所化の普遍性で構成する。
+F、Gの準同値性および前述の交差する局所K-flat仮定から、既存の実際の
+`derivedBimoduleRestriction`そのものを順方向とする同値を得る。
+既存公開APIの名前・型の変更はない。
+
+**指定解像度。** `Resolution/BimoduleDerivedEquivalence.lean`は標準zigzagの両脚の
+既存の制限関手`comparisonLeft`、`comparisonRight`を順方向とする同値を構成する。
+比較sourceと解像度sourceの既証の局所K-flat性を使い、元のdg圏のHomには仮定しない。
+`canonicalComparisonEquivalence`と`changeEquivalence`は、独立のsource宇宙を持つ
+両側の指定解像度の導来bimodule圏を同時に比較する。左脚は元の対象型のsmallnessも要求しない。
+
+**検証。** 新規`Checks.DGBimoduleResolutionEquivalence`はopposite・積の必要仮定、
+実際の制限関手との一致、独立した四つの解像度source宇宙、ZMod 2の場合を検査した。
+既存の導来同値・単位・随伴・graph延長・制限・分解比較・導来bimodule五角形・
+StageEight・StageSeven・Spectra.StageTwoとの統合ビルド成功（3400 jobs、警告なし）。
+主要28宣言の直接公理監査は重複・欠落なく標準3公理以内。新規監査累計4155宣言。
+今回の7受入Leanファイルのsorry・admit・新規axiom・資源上限変更は0件。
+採用済み引用は0件。全体文書検査は20 Markdown・320 exposition参照を検査し、
+担当外のBhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+未解決参照1件で失敗した。担当外のソース・共有監査スクリプトは変更していない。
+
+**残る受入条件と分担。** 圏同値の構成だけでU12e全体を受け入れない。
+解像度変更と既存の導来bimodule合成・対角単位・結合子の比較自然同型、
+および解像度変更のcoherenceが残る。準同値に沿う制限と導来tensor合成の比較を構成し、
+既存の局所K-flat合成系の三角形・五角形を移すことが次の作業である。
+U12e受入→U16a〜d→U15e分解版の順を維持する。
+U15e局所K-flat版と続くU17b局所K-flatの場合はU17a/U13d側の担当であり、
+分解版の着手時に`Quotient/DerivedComparison*.lean`と`Verdier/`の成果を読み再利用する。
+新しい共有モデル圏API要求はない。共有ルート・Perfect/・Endomorphism/・局所K-flat版は編集していない。
