@@ -2049,6 +2049,42 @@ noncomputable section
 #print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightSimplex_toData
 #check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightSimplex_toData
 
+-- N7c13: 二単体の貼合せと標準 fiber の引き戻し性。
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryLeftCandidate_prefix_heq
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryLeftCandidate_prefix_heq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryLeftCandidate_last_heq
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryLeftCandidate_last_heq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightCandidate_prefix_heq
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightCandidate_prefix_heq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightCandidate_last_heq
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightCandidate_last_heq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryCandidate_common
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryCandidate_common
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundarySimplex_common
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundarySimplex_common
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryCells_compatible
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryCells_compatible
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryJoinFiller
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryJoinFiller
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryJoinFiller_left
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryJoinFiller_left
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryJoinFiller_right
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryJoinFiller_right
+#print axioms SerrePositivity.InfinityCategories.DGNerve.joinBoundaryFaces_fixed
+#check @SerrePositivity.InfinityCategories.DGNerve.joinBoundaryFaces_fixed
+#print axioms SerrePositivity.InfinityCategories.DGNerve.sliceOverCurry_boundary_of_joinFaces
+#check @SerrePositivity.InfinityCategories.DGNerve.sliceOverCurry_boundary_of_joinFaces
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryLeftSimplex_face_map
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryLeftSimplex_face_map
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightSimplex_face_map
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightSimplex_face_map
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryJoinFiller_faces
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryJoinFiller_faces
+#print axioms SerrePositivity.InfinityCategories.DGNerve.standardFiberCone_isLimit
+#check @SerrePositivity.InfinityCategories.DGNerve.standardFiberCone_isLimit
+#print axioms SerrePositivity.InfinityCategories.DGNerve.standardFiberSquare_isPullback
+#check @SerrePositivity.InfinityCategories.DGNerve.standardFiberSquare_isPullback
+
 section
 universe u v
 variable (A : Type u) [CommRing A] (D : Type v)

@@ -1038,3 +1038,24 @@ r−u a−d=0 から置換後の全体右辺が零になることを証明する
 標準四角形の `IsPullbackSquare`、N7d・N7e。
 全方程式を満たす二単体の構成は完了したが、slice の充填と終対象性はまだ完了していない。
 新規公開 15 宣言の正確な型と前提は計画 §5 の N7c12 に記録する。
+
+
+## N7.15：標準 fiber の ∞ 引き戻し性（N7c 完了、2026-10-18）
+
+`standardFiberCone_isLimit (g : B ⟶ D) (h : C ⟶ D) : IsLimitCone (standardFiberCone g h)` と
+`standardFiberSquare_isPullback (g : B ⟶ D) (h : C ⟶ D) :
+IsPullbackSquare (standardFiberSquare g h)` を証明した。
+A は任意の可換環、B,C,D は非有界の `Complex A`。閉性・整合式・擬同型性などの追加仮定はない。
+標準 fiber は既存の `pullbackFiber g h`、すなわち B⊕C→D の mapping cone の −1 シフト。
+
+左右の候補の挿入成分を共通の型付き a,d と比較し、それ以外は零未知基底の共通面へ戻して
+`fiberBoundaryCandidate_common`・`fiberBoundarySimplex_common` を証明した。
+`fiberBoundaryJoinFiller` は二セルの押し出しで実際の二単体を貼る。
+`fiberBoundaryJoinFiller_faces` は元の境界の全ての自由因子の面との一致。
+`joinBoundaryFaces_fixed` が右因子の固定条件を一つの面から回収し、
+`sliceOverCurry_boundary_of_joinFaces` が curry した写像の全境界との一致を示す。
+これにより標準錐を最後の頂点とする任意の正次元 slice 境界を直接充填した。
+モデル構造・Joyal の定理・coherent nerve は使用していない。
+
+N7a、N7b、N7c は完了。未完了は N7d（充満 dg 部分圏への制限）と N7e（任意の引き戻しの頂点の比較）。
+N7f の双対は任意項目。新規公開 17 宣言の正確な型と前提は計画 §5 の N7c13 に記録する。

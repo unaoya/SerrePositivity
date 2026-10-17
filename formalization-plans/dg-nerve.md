@@ -10567,6 +10567,246 @@ lemma fiberBoundaryRightSimplex_toData {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
 `IsPullbackSquare (standardFiberSquare g h)`、N7d・N7e。
 全方程式付きの二単体を作ったことだけでは、最終的な slice の充填・終対象性とは数えない。
 
+
+
+### N7c13：二単体の貼合せと標準 fiber の引き戻し性（N7c 完了、2026-10-18）
+
+主要定理は任意の可換環 A と非有界複体 B,C,D に対する次の二つ。
+
+```lean
+standardFiberCone_isLimit (g : B ⟶ D) (h : C ⟶ D) : IsLimitCone (standardFiberCone g h)
+standardFiberSquare_isPullback (g : B ⟶ D) (h : C ⟶ D) :
+  IsPullbackSquare (standardFiberSquare g h)
+```
+
+追加の整合性・閉性・極限性・擬同型性の仮定はない。
+二つの充填単体の共通面を非零の挿入成分と基底の共通面から同定し、二セルの押し出しで貼り合わせた。
+全ての既知面の保存から元の境界の各面に一致し、右因子の固定条件と curry により slice 境界を延長する。
+IsTerminalVertex の定義の任意の正次元境界を直接充填したので、標準錐の極限性が成り立つ。
+モデル構造・Joyal の定理・coherent nerve の仮定は使用しない。
+
+以下は今回の新規公開 17 宣言の正確な型。
+複体に関する補題は `{A : Type u} [CommRing A] {B C D : Complex A}` を前提とする。
+`SliceBoundaryFromJoinFaces` の二補題は任意の単体集合 K,X に対する普遍性の計算。
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryLeftCandidate_prefix_heq`：
+
+```lean
+lemma fiberBoundaryLeftCandidate_prefix_heq {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h))
+    (I : Finset (Fin (n + 4))) (hEq : I = cospanPrefixFaces n)
+    (a c : Fin (n + 4)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hc : c = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) :
+    HEq ((fiberBoundaryLeftCandidate g h b hb).hom I a c k hI ha hc hk)
+      (fiberBoundaryUnknownA g h b hb)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryLeftCandidate_last_heq`：
+
+```lean
+lemma fiberBoundaryLeftCandidate_last_heq {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h))
+    (I : Finset (Fin (n + 4))) (hEq : I = insert (cospanLastTail n) (cospanPrefixFaces n))
+    (a c : Fin (n + 4)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hc : c = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) :
+    HEq ((fiberBoundaryLeftCandidate g h b hb).hom I a c k hI ha hc hk)
+      (fiberBoundaryUnknownD g h b hb)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightCandidate_prefix_heq`：
+
+```lean
+lemma fiberBoundaryRightCandidate_prefix_heq {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h))
+    (I : Finset (Fin (n + 4))) (hEq : I = cospanPrefixFaces n)
+    (a c : Fin (n + 4)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hc : c = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) :
+    HEq ((fiberBoundaryRightCandidate g h b hb).hom I a c k hI ha hc hk)
+      (fiberBoundaryUnknownA g h b hb)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightCandidate_last_heq`：
+
+```lean
+lemma fiberBoundaryRightCandidate_last_heq {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h))
+    (I : Finset (Fin (n + 4))) (hEq : I = insert (cospanLastTail n) (cospanPrefixFaces n))
+    (a c : Fin (n + 4)) (k : ℤ) (hI : 2 ≤ I.card)
+    (ha : a = I.min' (Index.nonempty hI)) (hc : c = I.max' (Index.nonempty hI))
+    (hk : k = 2 - (I.card : ℤ)) :
+    HEq ((fiberBoundaryRightCandidate g h b hb).hom I a c k hI ha hc hk)
+      (fiberBoundaryUnknownD g h b hb)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryCandidate_common`：
+
+```lean
+lemma fiberBoundaryCandidate_common {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h)) :
+    (fiberBoundaryLeftCandidate g h b hb).pullback (cospanCommonOrderHom n) =
+      (fiberBoundaryRightCandidate g h b hb).pullback (cospanCommonOrderHom n)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundarySimplex_common`：
+
+```lean
+lemma fiberBoundarySimplex_common {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h)) :
+    (fiberBoundaryLeftSimplex g h b hb).pullback (cospanCommonOrderHom n) =
+      (fiberBoundaryRightSimplex g h b hb).pullback (cospanCommonOrderHom n)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryCells_compatible`：
+
+```lean
+lemma fiberBoundaryCells_compatible {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h)) :
+    SSet.stdSimplex.δ ((Fin.last (n + 2)).castSucc) ≫
+        (SSet.yonedaEquiv.symm (fiberBoundaryLeftSimplex g h b hb) :
+          (Δ[n + 3] : SSet.{u + 1}) ⟶ dgNerve A (Complex A)) =
+      SSet.stdSimplex.δ ((Fin.last (n + 2)).castSucc) ≫
+        SSet.yonedaEquiv.symm (fiberBoundaryRightSimplex g h b hb)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryJoinFiller`：
+
+```lean
+def fiberBoundaryJoinFiller {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h)) :
+    join (Δ[n + 1] : SSet.{u + 1}) (SSet.horn 2 2) ⟶ dgNerve A (Complex A)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryJoinFiller_left`：
+
+```lean
+lemma fiberBoundaryJoinFiller_left {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h)) :
+    cospanJoinLeft (n + 1) ≫ fiberBoundaryJoinFiller g h b hb =
+      SSet.yonedaEquiv.symm (fiberBoundaryLeftSimplex g h b hb)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryJoinFiller_right`：
+
+```lean
+lemma fiberBoundaryJoinFiller_right {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h)) :
+    cospanJoinRight (n + 1) ≫ fiberBoundaryJoinFiller g h b hb =
+      SSet.yonedaEquiv.symm (fiberBoundaryRightSimplex g h b hb)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.joinBoundaryFaces_fixed`：
+
+```lean
+lemma joinBoundaryFaces_fixed {n : ℕ} {K X : SSet.{u}} (p : K ⟶ X)
+    (b : (SSet.boundary (n + 1) : SSet) ⟶ sliceOver p) (F : join Δ[n + 1] K ⟶ X)
+    (hfaces : ∀ j : Fin (n + 2), joinMap (SSet.stdSimplex.δ j) (𝟙 K) ≫ F =
+      joinMap (SSet.boundary.ι j) (𝟙 K) ≫ sliceOverUncurry b) :
+    joinInr Δ[n + 1] K ≫ F = p
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.sliceOverCurry_boundary_of_joinFaces`：
+
+```lean
+lemma sliceOverCurry_boundary_of_joinFaces {n : ℕ} {K X : SSet.{u}} (p : K ⟶ X)
+    (b : (SSet.boundary (n + 1) : SSet) ⟶ sliceOver p) (F : join Δ[n + 1] K ⟶ X)
+    (hfaces : ∀ j : Fin (n + 2), joinMap (SSet.stdSimplex.δ j) (𝟙 K) ≫ F =
+      joinMap (SSet.boundary.ι j) (𝟙 K) ≫ sliceOverUncurry b) :
+    (SSet.boundary (n + 1)).ι ≫ sliceOverCurry F (joinBoundaryFaces_fixed p b F hfaces) = b
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryLeftSimplex_face_map`：
+
+```lean
+lemma fiberBoundaryLeftSimplex_face_map {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h))
+    (j : Fin (n + 4)) (hj : j ∈ cospanPrefixFaces n) :
+    SSet.stdSimplex.δ j ≫ SSet.yonedaEquiv.symm (fiberBoundaryLeftSimplex g h b hb) =
+      cospanBoundaryLeftLift n j hj ≫ sliceOverUncurry b
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightSimplex_face_map`：
+
+```lean
+lemma fiberBoundaryRightSimplex_face_map {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h))
+    (j : Fin (n + 4)) (hj : j ∈ cospanPrefixFaces n) :
+    SSet.stdSimplex.δ j ≫ SSet.yonedaEquiv.symm (fiberBoundaryRightSimplex g h b hb) =
+      cospanBoundaryRightLift n j hj ≫ sliceOverUncurry b
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryJoinFiller_faces`：
+
+```lean
+lemma fiberBoundaryJoinFiller_faces {n : ℕ} (g : B ⟶ D) (h : C ⟶ D)
+    (b : (SSet.boundary (n + 1) : SSet.{u + 1}) ⟶
+      sliceOver (pullbackCospan (standardFiberSquare g h)))
+    (hb : boundaryVertex n (Fin.last (n + 1)) ≫ b =
+      SSet.yonedaEquiv.symm (standardFiberCone g h)) (j : Fin (n + 2)) :
+    joinMap (SSet.stdSimplex.δ j) (𝟙 (SSet.horn 2 2 : SSet.{u + 1})) ≫
+        fiberBoundaryJoinFiller g h b hb =
+      joinMap (SSet.boundary.ι j) (𝟙 (SSet.horn 2 2 : SSet.{u + 1})) ≫ sliceOverUncurry b
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.standardFiberCone_isLimit`：
+
+```lean
+lemma standardFiberCone_isLimit (g : B ⟶ D) (h : C ⟶ D) :
+    IsLimitCone (standardFiberCone g h)
+```
+
+`SerrePositivity.InfinityCategories.DGNerve.standardFiberSquare_isPullback`：
+
+```lean
+lemma standardFiberSquare_isPullback (g : B ⟶ D) (h : C ⟶ D) :
+    IsPullbackSquare (standardFiberSquare g h)
+```
+
+検証：上記六対象と自分の集約 `SerrePositivity.InfinityCategories.DGNerve` を
+`set -e; set -o pipefail` 下でビルドし終了コード 0。
+公開 1016 宣言の明示型と基礎 dg 五宣言を含む 1021 件の公理監査を確認。標準三公理のみ。
+
+N7c 完了。N7a・N7b も完了済み。未完了は N7d と N7e。N7f は任意項目。
+N7d の Semifree への適用は D2h の閉性の記録を読んでから進める。
+
 ## 6. 次のマイルストーン D（本計画の範囲外）
 
 - Semifree(S) を `DGFullSubcategory`（`moduleSemifree` または一点 dg 圏上の複体版）として置き、
