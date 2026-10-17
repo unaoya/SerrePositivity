@@ -6759,3 +6759,49 @@ A1-b の `powerRootPrismMonicRaw_pdCompletion_generator_regular_of_unconditional
 無条件化しない。これらを旧名の差替えまで完了したとは数えない。
 
 検証：対象ビルド（4390 jobs）と集約ビルド（4610 jobs）は `set -o pipefail` 付きで終了コード0。公開6宣言の `assert_no_sorry` と6本の `#check` は終了コード0。専用監査は `André monic root audit passed: 8046 declarations, standard axioms only.`。A1-b の受領結果への推移的公理依存もこの検査に含む。
+
+### E1.81／A1-a 完全源から一般有界 prism への商射の一意持上げ（2026-10-17）
+
+本節は A1-a の追記。新規 `Andre/PerfectPrismBoundedTargetLift.lean` で、
+BS Lemma 4.8（著者版 pp.38–39）の向き付き有界標的での存在・一意性を証明した。
+原典の変形理論と逆 Frobenius 極限は使わず、完全源の Witt 復元、tilt 比較、Fontaine 写像、
+Witt 持上げの一意性、E1.78 の自動 δ 保存性を使う異なる経路。新しい引用は追加していない。
+
+公開名は `SerrePositivity.BhattScholze.Andre` 内。共通設定は、独立な宇宙 u,v、
+{p:ℕ} [Fact p.Prime]、{A:Type u} {B:Type v} [CommRing A] [CommRing B]。
+公開2定理の正確な型は次のとおり。
+
+```lean
+existsUnique_perfectPrismRingHomLift_to_bounded
+    (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (Q : OrientedPrism p B)
+    (hB : ∃ N : ℕ, ∀ n : ℕ, ∀ x : B ⧸ Q.ideal,
+      (p : B ⧸ Q.ideal)^n*x=0 → (p : B ⧸ Q.ideal)^N*x=0)
+    (g : A ⧸ W.ideal →+* B ⧸ Q.ideal) :
+    ∃! F : A →+* B, (Ideal.Quotient.mk Q.ideal).comp F =
+      g.comp (Ideal.Quotient.mk W.ideal)
+
+existsUnique_perfectPrismHomLift_to_bounded
+    (W : OrientedPrism p A) (hW : W.deltaStructure.IsPerfect) (Q : OrientedPrism p B)
+    (hB : ∃ N : ℕ, ∀ n : ℕ, ∀ x : B ⧸ Q.ideal,
+      (p : B ⧸ Q.ideal)^n*x=0 → (p : B ⧸ Q.ideal)^N*x=0)
+    (g : A ⧸ W.ideal →+* B ⧸ Q.ideal) :
+    ∃! F : OrientedPrism.Hom W Q, F.quotientMap = g
+```
+
+非零な標的商では、その p 完備性から p 非可逆性を証明する。台環 B と源 A での p 非可逆性は
+商射と g へ写して供給するため、これらは公開定理の引数に残らない。
+k=A/(p)、s:k→(B/Q.ideal)/(p) を g の標準 mod p 射とし、完全性で s を商の tilt へ持ち上げる。
+E1.79 の tilt 比較の逆で台環の tilt へ戻し、Witt.map と Fontaine θ を合成する。
+Witt 復元による A への同型を介して A→B を得る。商図式は mod p の座標計算と
+`wittLift_unique` で確認する。零商なら Q.ideal=⊤ と生成元完備性から B も零となる。
+従って標的の完全性・p 正則性・非零性・p 非可逆性は一切前提に残らない。
+最後に自動 δ 保存性と商図式からのイデアル保存性により prism 射へまとめる。
+
+解消した範囲：一般有界な向き付き標的での基底射の存在・一意性・δ 保存性。
+これにより完備入力作用だけを持つ対象へ完全基底からの射を自動供給できる。
+未完了は、その入力圏全体での源の初期性への接続、一般 Cartier イデアルを持つ向きなし
+prism の扱い、A1-c の係数比較との合流、既存 hpR 付き公開名の差替え。
+原典の絶対 prismatic envelope 全体の同定をこの2定理だけで完成とはしない。
+並列担当のファイル・節は編集していない。
+
+検証：対象ビルド（3121 jobs）と集約ビルド（4611 jobs）は `set -o pipefail` 付きで終了コード0。公開2定理の `assert_no_sorry` と2本の `#check` は終了コード0。専用監査は `André monic root audit passed: 8050 declarations, standard axioms only.`。私有補題もモジュール全宣言の監査に含む。
