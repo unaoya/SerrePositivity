@@ -1,0 +1,5 @@
+import SerrePositivity.CLMST.Prop247FiniteFreeCover
+import Mathlib.Util.AssertNoSorry
+
+assert_no_sorry SerrePositivity.CLMST.prop247_exists_finiteFree_comparison_cover
+#print axioms SerrePositivity.CLMST.prop247_exists_finiteFree_comparison_cover
