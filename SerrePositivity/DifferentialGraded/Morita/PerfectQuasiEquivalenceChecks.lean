@@ -1,0 +1,16 @@
+module
+public import SerrePositivity.DifferentialGraded.Morita.PerfectQuasiEquivalence
+
+/-! # 主Perfに制限した実際の導来同値の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+#print axioms quasiEquivalenceRestriction_perfect
+#print axioms quasiEquivalenceExtension_perfect_iff
+#print axioms quasiEquivalenceRestriction_perfect_iff
+#print axioms quasiEquivalencePerfectExtension
+#print axioms quasiEquivalencePerfectRestriction
+#print axioms quasiEquivalencePerfectExtensionInclusionIso
+#print axioms quasiEquivalencePerfectRestrictionInclusionIso
+#print axioms quasiEquivalencePerfectEquivalence
+#print axioms quasiEquivalencePerfectUnit_inclusion
+#print axioms quasiEquivalencePerfectCounit_inclusion

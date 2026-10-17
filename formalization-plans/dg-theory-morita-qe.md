@@ -28,3 +28,13 @@
 - 単位・余単位も元の導来随伴の自然変換であり、それぞれのshift整合性を監査した。
 - `Morita.QuasiEquivalenceTrianglesChecks` ビルド成功（2599 jobs、警告なし）。
   主要6宣言の公理は `propext`, `Classical.choice`, `Quot.sound` のみ。
+
+## U16b.2：既存の延長・制限の主Perfへの制限
+
+- `Morita/PerfectQuasiEquivalence.lean`：U13のPerfの最小性と、既存の
+  `dgDerivedExtension_representable_essImage`・導来単位を使い、擬同値に沿う制限のPerf保存を証明した。
+  任意dg関手の延長のPerf保存は既存 `dgDerivedExtension_perfect` を再利用した。
+- 順逆それぞれのPerf保存・反映、実際の制限関手二つと主導来包含の正方形、
+  `quasiEquivalencePerfectEquivalence` を構成した。単位・余単位の包含像は元の導来単位・余単位と一致する。
+- `Morita.PerfectQuasiEquivalenceChecks` とU16b.1の合同ビルド成功（2601 jobs、警告なし）。
+  新規主要10宣言の公理監査は標準3公理のみ。
