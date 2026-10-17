@@ -96,6 +96,17 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.stageColimitDesc_fac
 #print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.stageCoconeIsColimit
 
+#print axioms SerrePositivity.InfinityCategories.semifreeReheight
+#print axioms SerrePositivity.InfinityCategories.semifreeReheight_eq
+#print axioms SerrePositivity.InfinityCategories.bound_lt_semifreeReheight
+#print axioms SerrePositivity.InfinityCategories.semifreeReheight_dependency_lt
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.differentialDependencies
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.differentialDependencies_lowering
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.imageHeightBound
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.coneSourceHeight
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.image_lt_coneSourceHeight
+#print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.differential_lt_coneSourceHeight
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -109,6 +120,7 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.SemifreeClosure,
     `SerrePositivity.InfinityCategories.Derived.SemifreeBasis,
     `SerrePositivity.InfinityCategories.Derived.SemifreeBasisColimit,
+    `SerrePositivity.InfinityCategories.Derived.SemifreeBasisHeight,
     `SerrePositivity.InfinityCategories.Derived.DerivedComparisonShift]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]

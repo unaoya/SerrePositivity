@@ -452,3 +452,45 @@ stageCoconeIsColimit : CategoryTheory.Limits.IsColimit B.stageCocone
 新規公開6宣言と、10モジュール206宣言の公理は標準3公理のみ。
 未完了：自由商の表示、既存 filtration との同値、cone の高さ再構成と閉性。
 D2h 全体を完成とは数えない。D2i は未着手、D1 の quasicategory は N2 完了記録待ち。
+
+### D2h cone の高さの再構成（2026-10-17）
+
+`Derived/SemifreeBasisHeight.lean` を追加した。
+namespace `SerrePositivity.InfinityCategories`、共通引数
+`{I : Type u} (rank : I → ℕ) (dependencies : I → Finset I)
+(lowering : ∀ i j, j ∈ dependencies i → rank j < rank i) (bound : I → ℕ)`。
+`R := semifreeReheight rank dependencies lowering bound` と略記して公開型を示す。
+```lean
+semifreeReheight : I → ℕ
+semifreeReheight_eq (i : I) :
+  R i = max (bound i) ((dependencies i).attach.sup (fun j => R j.val)) + 1
+bound_lt_semifreeReheight (i : I) : bound i < R i
+semifreeReheight_dependency_lt (i j : I) (h : j ∈ dependencies i) : R j < R i
+```
+namespace `SerrePositivity.InfinityCategories.ComplexSemifreeBasis`、共通引数
+`{S : Type u} [CommRing S] {P Q : Complex S} (B : ComplexSemifreeBasis S P)`：
+```lean
+differentialDependencies (a : Σ k, B.Index k) : Finset (Σ k, B.Index k)
+differentialDependencies_lowering (a b : Σ k, B.Index k)
+  (h : b ∈ B.differentialDependencies a) : B.height b.1 b.2 < B.height a.1 a.2
+```
+さらに `(C : ComplexSemifreeBasis S Q) (f : P ⟶ Q)` を引数に取る公開宣言：
+```lean
+imageHeightBound (a : Σ k, B.Index k) : ℕ
+coneSourceHeight (k : ℤ) (i : B.Index k) : ℕ
+image_lt_coneSourceHeight (k : ℤ) (i : B.Index k) (j : C.Index k)
+  (h : j ∈ ((C.basis k).repr ((f.f k) (B.basis k i))).support) :
+  C.height k j < B.coneSourceHeight C f k i
+differential_lt_coneSourceHeight (k : ℤ) (i : B.Index k) (j : B.Index (k + 1))
+  (h : j ∈ ((B.basis (k + 1)).repr ((P.d k (k + 1)) (B.basis k i))).support) :
+  B.coneSourceHeight C f (k + 1) j < B.coneSourceHeight C f k i
+```
+`measure rank` による整礎再帰で、依存先と指定下限の最大値 + 1 を定めた。
+微分の台を次数付き添字へ埋め込み、像に出る終域の高さを下限として具体化した。
+f が既存 filtration を保存する仮定や、一律の段のずれの仮定はない。
+
+`set -o pipefail; lake build SerrePositivity.InfinityCategories.Derived` は終了コード 0（3616 jobs）。
+`set -o pipefail; lake env lean scripts/audit_derived_infinity.lean` は終了コード 0。
+新規公開10宣言と、11モジュール220宣言の公理は標準3公理のみ。
+未完了：自由商の表示と既存 filtration との同値、cone の基底への高さの適用、無条件の cone 閉性。
+D2h 全体は未完了。D2i は未着手、D1 の quasicategory は N2 完了記録待ち。

@@ -2,6 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.Semifree
 public import SerrePositivity.InfinityCategories.Derived.SemifreeBasis
 public import SerrePositivity.InfinityCategories.Derived.SemifreeBasisColimit
+public import SerrePositivity.InfinityCategories.Derived.SemifreeBasisHeight
 public import SerrePositivity.InfinityCategories.Derived.SemifreeKProjective
 public import SerrePositivity.InfinityCategories.Derived.SemifreeResolution
 public import SerrePositivity.InfinityCategories.Derived.SemifreeSubcategory
