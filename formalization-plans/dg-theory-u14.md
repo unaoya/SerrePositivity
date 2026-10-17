@@ -35,6 +35,18 @@
   非有界複体に対する一対象構造を検証。
   対象ビルド成功。8主要宣言の公理は標準3公理のみ。
 
+## U14a.3：U12dの導来tensorとの評価比較（2026-10-17）
+
+- `Endomorphism/DerivedEvaluation.lean`：Hom(E,Y)の右End(E)射影解像度のaugmentationを
+  tensorしてbalanced評価と合成する。既存 `moduleDerivedTensorRight` の計算同型を使い、
+  導来tensorからQ(Hom(X,Y))への射を構成。
+- 比較射のaugmentationとの因子化はKでのみ成立する。
+  chain-levelで厳密可換とはせず、tensorのホモトピー保存を通じてD(A)での可換性を証明。
+  `endomorphismDerivedEvaluation_resolution` により、任意の右射影解像度で計算できる。
+  評価の同型性や再構成随伴の存在は、この比較からは主張しない。
+- `lake build SerrePositivity.DifferentialGraded.Endomorphism.ChecksDerived` 成功。
+  4主要宣言の公理監査は標準3公理のみ。
+
 ## 残る受入条件
 
 - U14a：enhancement／End(E)加群間の再構成随伴と、その単位・余単位。
