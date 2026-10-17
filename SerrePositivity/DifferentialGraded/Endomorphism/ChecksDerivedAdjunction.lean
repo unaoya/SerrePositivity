@@ -1,0 +1,16 @@
+module
+public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedAdjunction
+
+/-! # 主導来再構成随伴の公理監査 -/
+public section
+open SerrePositivity.DifferentialGraded
+
+#print axioms localizationHom_naturality_left
+#print axioms localizationHom_naturality_right
+#print axioms endomorphismDerivedTensorHomEquiv_naturality_left
+#print axioms endomorphismDerivedTensorHomEquiv_naturality_right
+#print axioms endomorphismDerivedAdjunction
+#print axioms endomorphismDerivedUnit
+#print axioms endomorphismDerivedCounit
+#print axioms endomorphismDerived_left_triangle
+#print axioms endomorphismDerived_right_triangle

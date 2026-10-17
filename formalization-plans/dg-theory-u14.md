@@ -223,11 +223,21 @@
 - `lake build SerrePositivity.DifferentialGraded.Endomorphism.ChecksDerivedHomNaturality`
   成功。8主要宣言の公理は標準3公理のみ。局所化の逆射への拡張は次の段階。
 
+## U14a.19：主導来再構成随伴の完成（2026-10-17）
+
+- `LocalizationHomNaturality.lean`：局所化で生成される合成・逆射について自然性を証明し、
+  局所化前の射で検証したHom比較の自然性を全局所化射へ拡張する一般補題を構成。
+- `DerivedAdjunction.lean`：任意対象のtensor–Hom射集合同値の両変数自然性を全導来射で証明。
+  `endomorphismDerivedAdjunction` とその単位・余単位、両三角恒等式を構成した。
+  仮定はEのホモトピー射影性であり、compact生成性やMorita同値は主張していない。
+- `ChecksDerivedAdjunction` と更新した `ChecksCompatibility` の対象ビルド成功。
+  新規9主要宣言の公理は標準3公理のみ。既存のU14公開入口からimportし、ルートは未編集。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
   導来Hom・導来tensor・主Kの随伴・導来射集合同値も構成済み。
-  導来射集合同値の両変数自然性による導来随伴の組立て、
+  導来射集合同値の全導来射自然性と導来随伴も構成済み。
   U13のenhancementへの制限・受入図式の最終照合が残る。
 - U14b：thick生成からPerf比較。全Homの擬同型とH⁰の本質的全射を別々に証明する。
 - U14c：導来圏全体の比較にはcompact生成性が必要。
