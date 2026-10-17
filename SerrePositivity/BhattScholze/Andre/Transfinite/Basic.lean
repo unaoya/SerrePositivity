@@ -18,6 +18,8 @@ public import SerrePositivity.BhattScholze.Andre.Transfinite.PerfectDeltaColimit
 public import SerrePositivity.BhattScholze.Andre.Transfinite.PresentationColimit
 public import SerrePositivity.BhattScholze.Andre.Transfinite.PerfectoidCompletionColimit
 
+public import SerrePositivity.BhattScholze.Andre.Transfinite.BoundedCompletion
+
 /-! # André E3：超限反復の部品
 
 BS Thm 7.14（著者版 p.61）。現時点では剰余 Frobenius の保存、

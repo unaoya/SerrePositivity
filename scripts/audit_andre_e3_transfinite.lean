@@ -64,6 +64,18 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.ainfSystem
 assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isIntegralPerfectoid_adicCompletion_ringDirectLimit
 assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isIntegralPerfectoid_ringDirectLimit_of_countable_upperBound
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.derivedCompletion_quotient_unit_isIso_of_power_mem
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.completedUnitReductionIso
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.completedUnit_pure_bounded_torsion
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.principalCompletionH0_isAdicComplete_of_bounded_torsion
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.completedUnitPrincipalH0Iso
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.principalCompletionH0DerivedReductionIso
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.principalCompletionH0ReductionEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.principalCompletionH0_scalarExtensionTorVanishing
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.principalCompletionH0_isCompletelyFaithfullyFlat
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.boundedPrincipalCompletionAdicAlgEquiv
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFaithfullyFlat_adicCompletion_of_bounded_torsion
+
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
@@ -83,7 +95,8 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.Transfinite.PrismaticCompletion,
     `SerrePositivity.BhattScholze.Andre.Transfinite.PerfectDeltaColimit,
     `SerrePositivity.BhattScholze.Andre.Transfinite.PresentationColimit,
-    `SerrePositivity.BhattScholze.Andre.Transfinite.PerfectoidCompletionColimit]
+    `SerrePositivity.BhattScholze.Andre.Transfinite.PerfectoidCompletionColimit,
+    `SerrePositivity.BhattScholze.Andre.Transfinite.BoundedCompletion]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
@@ -162,3 +175,15 @@ run_cmd do
 #print SerrePositivity.BhattScholze.Andre.Transfinite.ainfSystem
 #print SerrePositivity.BhattScholze.Andre.Transfinite.isIntegralPerfectoid_adicCompletion_ringDirectLimit
 #print SerrePositivity.BhattScholze.Andre.Transfinite.isIntegralPerfectoid_ringDirectLimit_of_countable_upperBound
+
+#print SerrePositivity.BhattScholze.Andre.Transfinite.derivedCompletion_quotient_unit_isIso_of_power_mem
+#print SerrePositivity.BhattScholze.Andre.Transfinite.completedUnitReductionIso
+#print SerrePositivity.BhattScholze.Andre.Transfinite.completedUnit_pure_bounded_torsion
+#print SerrePositivity.BhattScholze.Andre.Transfinite.principalCompletionH0_isAdicComplete_of_bounded_torsion
+#print SerrePositivity.BhattScholze.Andre.Transfinite.completedUnitPrincipalH0Iso
+#print SerrePositivity.BhattScholze.Andre.Transfinite.principalCompletionH0DerivedReductionIso
+#print SerrePositivity.BhattScholze.Andre.Transfinite.principalCompletionH0ReductionEquiv
+#print SerrePositivity.BhattScholze.Andre.Transfinite.principalCompletionH0_scalarExtensionTorVanishing
+#print SerrePositivity.BhattScholze.Andre.Transfinite.principalCompletionH0_isCompletelyFaithfullyFlat
+#print SerrePositivity.BhattScholze.Andre.Transfinite.boundedPrincipalCompletionAdicAlgEquiv
+#print SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFaithfullyFlat_adicCompletion_of_bounded_torsion
