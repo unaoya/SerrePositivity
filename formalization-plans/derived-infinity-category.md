@@ -494,3 +494,35 @@ f が既存 filtration を保存する仮定や、一律の段のずれの仮定
 新規公開10宣言と、11モジュール220宣言の公理は標準3公理のみ。
 未完了：自由商の表示と既存 filtration との同値、cone の基底への高さの適用、無条件の cone 閉性。
 D2h 全体は未完了。D2i は未着手、D1 の quasicategory は N2 完了記録待ち。
+
+### D2h 微分零の自由複体の sphere 表示（2026-10-17）
+
+`Derived/ZeroBasisSpheres.lean` を追加した。namespace は `SerrePositivity.InfinityCategories`。
+公開宣言の正確な型（共通引数 `(S : Type u) [CommRing S]`）：
+```lean
+sphereCycle_comp {P Q : Complex S} (k : ℤ) (f : complexSphere S k ⟶ P) (g : P ⟶ Q) :
+  (complexSphereHomEquiv S Q k (f ≫ g)).val =
+    (g.f k) (complexSphereHomEquiv S P k f).val
+```
+以下はさらに `{P : Complex S} {I : ℤ → Type u}
+(E : ∀ k, Module.Basis (I k) S (P.X k)) (hz : ∀ k : ℤ, P.d k (k + 1) = 0)` を共通引数とする。
+`F := fun a : Σ k, I k => complexSphere S a.1` と略記：
+```lean
+zeroBasisSphereCofan : CategoryTheory.Limits.Cofan F
+zeroBasisSphereDesc (c : CategoryTheory.Limits.Cofan F) : P ⟶ c.pt
+zeroBasisSphereDesc_fac (c : CategoryTheory.Limits.Cofan F) (a : Σ k, I k) :
+  (zeroBasisSphereCofan S E hz).inj a ≫ zeroBasisSphereDesc S E hz c = c.inj a
+zeroBasisSphereIsColimit : CategoryTheory.Limits.IsColimit (zeroBasisSphereCofan S E hz)
+zeroBasisSphereIso : P ≅ ∐ F
+zeroBasisModuleSpherePresentation : ModuleSphereFreePresentation S PUnit.{1}
+  (ForgetEnrichment.of (Complex S) (ringModule S P))
+```
+各基底元を cycle とする sphere 射を取り、基底からの線形延長で余積の普遍性を証明した。
+一点加群への表示は評価の余積保存と `freeSphereEvaluationIso` を経由して戻した。
+基底の有限性・環の整域性などは仮定しない。
+
+`set -o pipefail; lake build SerrePositivity.InfinityCategories.Derived` は終了コード 0（3625 jobs）。
+`set -o pipefail; lake env lean scripts/audit_derived_infinity.lean` は終了コード 0。
+新規公開7宣言と12モジュール252宣言の公理は標準3公理のみ。
+未完了：semibasis の各商の次数付き分裂、既存 filtration との両向きの同値、cone 閉性。
+D2h 全体の完成とは数えない。

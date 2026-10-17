@@ -107,6 +107,14 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.image_lt_coneSourceHeight
 #print axioms SerrePositivity.InfinityCategories.ComplexSemifreeBasis.differential_lt_coneSourceHeight
 
+#print axioms SerrePositivity.InfinityCategories.sphereCycle_comp
+#print axioms SerrePositivity.InfinityCategories.zeroBasisSphereCofan
+#print axioms SerrePositivity.InfinityCategories.zeroBasisSphereDesc
+#print axioms SerrePositivity.InfinityCategories.zeroBasisSphereDesc_fac
+#print axioms SerrePositivity.InfinityCategories.zeroBasisSphereIsColimit
+#print axioms SerrePositivity.InfinityCategories.zeroBasisSphereIso
+#print axioms SerrePositivity.InfinityCategories.zeroBasisModuleSpherePresentation
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -121,6 +129,7 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.SemifreeBasis,
     `SerrePositivity.InfinityCategories.Derived.SemifreeBasisColimit,
     `SerrePositivity.InfinityCategories.Derived.SemifreeBasisHeight,
+    `SerrePositivity.InfinityCategories.Derived.ZeroBasisSpheres,
     `SerrePositivity.InfinityCategories.Derived.DerivedComparisonShift]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
