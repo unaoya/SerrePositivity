@@ -5577,6 +5577,49 @@ H の p 正則性から H/dH の p 正則性を結論したとはせず、その
 それらを本質的な (c) と断定せず、raw の有限段・局所化・完備化の証明調査を続ける。
 
 
+
+### raw の深さ零の p 正則性とモニック初期線形関係（2026-10-17）
+
+新規 `Unconditional/RawInitialRegular.lean` に 6 公開宣言を追加した。
+旧有限段帰納法は、初期関係 dX-a の一次係数 d の mod p 正則性を hpR から得ていた。
+この最初の非零因子判定には、定数係数 -a の正則性を使う別経路がある。
+モニック入力 a=f(Y₀) は既存定理で mod p において正則なので、hpR は不要となる。
+
+共通名前空間 `SerrePositivity.BhattScholze.Andre` の公開名は次のとおり。
+
+- `unconditionalLinearPolynomial_regular_of_constant`：正則な定数係数を持つ一次多項式の正則性。
+- `unconditionalLinearMvPolynomial_regular_of_constant`：任意の変数族に対する同じ判定。
+- `unconditionalDeltaDivisionUnaryFirst_mod_prime_regular`：
+  任意の一元 δ 除算源の初期関係は、分子の mod p 正則性だけで mod p 正則。
+- `unconditionalDeltaDivisionUnaryFirst_prime_regular`：
+  係数環の p 正則性と分子の mod p 正則性から、元の最初の関係商の p 正則性。
+- `powerRootPrismMonicFinite_prime_regular_zero_of_unconditional W hW f hf`：
+  正確に、`L₀ := PowerRootUnaryFreeDeltaRing A p hp`、
+  `I := deltaDivisionFiniteRelationIdeal E dP a` として
+  `IsSMulRegular (L₀ ⧸ I 0) (p : L₀ ⧸ I 0)`。
+- `powerRootPrismFirstModPrimeRelation_regular_of_monic_unconditional W f hf s`：
+  任意の変数族 τ と s:τ について、元の
+  `C(dP mod p) * X s - C(powerRootMonicPDInput p f mod p)` の正則性。
+  この定理には hW も hpR も不要。
+
+いずれも正次数を仮定しない。多項式の非零因子判定は Mathlib の証明済みの係数判定による。
+原典 Rem 7.15（著者版 p.62）のモニック入力に対する補足であり、新引用はない。
+元の `powerRootPrismFirstModPrimeRelation_regular` は任意の非モニック f まで量化するため、
+その署名から hpR を単純に外した定理と混同しない。hf は原典の入力で既に満たされる。
+また、`powerRootPrismMonicFinite_all_regular` の mod p の d 正則性という第二成分を
+無条件化したとはしない。今回証明したのは深さ零の p 正則性という第一成分である。
+
+検証：監査が読む全担当モジュールと `MonicRootedExtension` の対象ビルドは
+終了コード 0（4620 jobs）。専用監査は 156 公開宣言の `assert_no_sorry`・`#print axioms`、
+追加宣言の `#check` と 48,403 依存宣言の型・値の推移的公理走査に成功した。
+公理依存は `propext`、`Classical.choice`、`Quot.sound` のみ。
+
+後続有限段の旧保存補題は mod p の d 正則性を明示入力にするため、初期値だけで
+`powerRootPrismMonicRaw_p_mul_injective` を証明済みとはしない。
+深さ 1 以降の関係の p 飽和性、および元の mod p 導来源の局所化・完備化による
+純性検出を引き続き調べる。raw の二つの未解消候補の分類は変更しない。
+
+
 ## A1-c：係数表記の照合
 
 2026-10-17。BS Rem 7.15（著者版 p.62）と E1.25・E1.55・E1.56 の補足。
@@ -6842,3 +6885,34 @@ A1-c の係数照合との合流、既存 hpR 付き公開名の差替えは引�
 並列担当のファイル・記録節は変更していない。
 
 検証：対象ビルド（4409 jobs）と集約ビルド（4612 jobs）は `set -o pipefail` 付きで終了コード0。公開定理の `assert_no_sorry` と `#check` は終了コード0。専用監査は `André monic root audit passed: 8126 declarations, standard axioms only.`。
+
+### E1.83／A1-a 旧公開名の hpR 差替え・集約検証で中断（2026-10-17）
+
+本節は A1-a の未保存単位の記録。A1-b の `aa1d72fd` を受領した。
+`Unconditional/PrimeReductionPurity.lean` のモニック入力全体に対する元の H の p 正則性と
+標準分母像の正則性を使い、自分の既存公開名を差し替える変更を作業木に置いた。
+既存の hf を維持し、正次数を追加せず hpR を除く変更である。
+対象の公開名は `SerrePositivity.BhattScholze.Andre` 内の次の9宣言。
+
+- `powerRootPrismMonicRaw_pdCompletion_generator_regular`
+- `powerRootPrismMonic_pdCompletion_prime_regular`
+- `powerRootPrismMonicCompletionPrism`
+- `powerRootPrismMonicCompletionBaseMap_generator`
+- `existsUnique_powerRootPrismMonicCompletionHom`
+- `powerRootPrismMonicCompletionTorsionEquiv`
+- `powerRootPrismMonicCompletionTorsionEquiv_coeff`
+- `powerRootPrismMonicCompletionTorsionEquiv_isDeltaHom`
+- `powerRootPrismMonicCompletionHom_generator`
+
+raw の mod p 分母正則性、分母商の p 正則性など本質的な hpR を必要とする中間主張は変更していない。
+標準分母像を使う後続の自分の呼出しも更新した。並列担当のファイルは編集していない。
+BS Rem 7.15（著者版 p.62）と異なる実源の純性の経路を該当 docstring に記載した。
+
+対象ビルドの終了コード0を確認したが、最後の対象・集約ビルドは終了コード1。
+`PowerRootPrismMonicEquationInput.olean` の `no such file or directory (error code: 2)` による失敗であり、
+確認時には同じ生成物が存在していた。並行ビルドの共有生成物の競合が疑われる。
+依存先が並行作業で壊れた場合は回避せず止める指示に従い、ここで検証を停止した。
+失敗した実行は `/tmp/andre-e183-aggregate.log`、終了済みセッション12874。
+監査と9本の `#check` はまだ実行していない。型確認用ファイルは `/tmp/andre-e183-check.lean`。
+本節・変更6ファイルはいずれも未コミットであり、旧名の差替え完了とは数えない。
+次回は共有生成物の現在状態を再確認してから検証を再開する。

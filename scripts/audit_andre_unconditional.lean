@@ -1,3 +1,4 @@
+import SerrePositivity.BhattScholze.Andre.Unconditional.RawInitialRegular
 import SerrePositivity.BhattScholze.Andre.Unconditional.PrimeReductionPurity
 import SerrePositivity.BhattScholze.Andre.Unconditional.PowerRootCompletionPairFlat
 import SerrePositivity.BhattScholze.Andre.Unconditional.PowerRootHodgeTateReduction
@@ -398,6 +399,25 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicRaw_pdComp
 #print axioms SerrePositivity.BhattScholze.Andre.powerRootPrismMonicRaw_pdCompletion_generator_regular_of_monic_unconditional
 #check SerrePositivity.BhattScholze.Andre.powerRootPrismMonicRaw_pdCompletion_generator_regular_of_monic_unconditional
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.unconditionalLinearPolynomial_regular_of_constant
+#print axioms SerrePositivity.BhattScholze.Andre.unconditionalLinearPolynomial_regular_of_constant
+#check SerrePositivity.BhattScholze.Andre.unconditionalLinearPolynomial_regular_of_constant
+assert_no_sorry SerrePositivity.BhattScholze.Andre.unconditionalLinearMvPolynomial_regular_of_constant
+#print axioms SerrePositivity.BhattScholze.Andre.unconditionalLinearMvPolynomial_regular_of_constant
+#check SerrePositivity.BhattScholze.Andre.unconditionalLinearMvPolynomial_regular_of_constant
+assert_no_sorry SerrePositivity.BhattScholze.Andre.unconditionalDeltaDivisionUnaryFirst_mod_prime_regular
+#print axioms SerrePositivity.BhattScholze.Andre.unconditionalDeltaDivisionUnaryFirst_mod_prime_regular
+#check SerrePositivity.BhattScholze.Andre.unconditionalDeltaDivisionUnaryFirst_mod_prime_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.unconditionalDeltaDivisionUnaryFirst_prime_regular
+#print axioms SerrePositivity.BhattScholze.Andre.unconditionalDeltaDivisionUnaryFirst_prime_regular
+#check SerrePositivity.BhattScholze.Andre.unconditionalDeltaDivisionUnaryFirst_prime_regular
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFinite_prime_regular_zero_of_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFinite_prime_regular_zero_of_unconditional
+#check SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFinite_prime_regular_zero_of_unconditional
+assert_no_sorry SerrePositivity.BhattScholze.Andre.powerRootPrismFirstModPrimeRelation_regular_of_monic_unconditional
+#print axioms SerrePositivity.BhattScholze.Andre.powerRootPrismFirstModPrimeRelation_regular_of_monic_unconditional
+#check SerrePositivity.BhattScholze.Andre.powerRootPrismFirstModPrimeRelation_regular_of_monic_unconditional
+
 meta section
 open Lean Elab Command
 private partial def checkA1bAxioms (todo : List Name) (seen : NameSet) : CoreM NameSet := do
@@ -420,6 +440,13 @@ private partial def checkA1bAxioms (todo : List Name) (seen : NameSet) : CoreM N
 
 elab "audit_A1b_unconditional" : command => do
   let roots : List Name := [
+    ``SerrePositivity.BhattScholze.Andre.unconditionalLinearPolynomial_regular_of_constant,
+    ``SerrePositivity.BhattScholze.Andre.unconditionalLinearMvPolynomial_regular_of_constant,
+    ``SerrePositivity.BhattScholze.Andre.unconditionalDeltaDivisionUnaryFirst_mod_prime_regular,
+    ``SerrePositivity.BhattScholze.Andre.unconditionalDeltaDivisionUnaryFirst_prime_regular,
+    ``SerrePositivity.BhattScholze.Andre.powerRootPrismMonicFinite_prime_regular_zero_of_unconditional,
+    ``SerrePositivity.BhattScholze.Andre.powerRootPrismFirstModPrimeRelation_regular_of_monic_unconditional,
+
     ``SerrePositivity.BhattScholze.Andre.powerRootPrismMonic_pdCompletion_prime_regular_of_positive_unconditional,
     ``SerrePositivity.BhattScholze.Andre.powerRootPrismMonic_pdCompletion_subsingleton_of_natDegree_zero,
     ``SerrePositivity.BhattScholze.Andre.powerRootPrismMonicRaw_pdCompletion_generator_regular_of_monic_unconditional,
