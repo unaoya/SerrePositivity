@@ -496,6 +496,10 @@ public import SerrePositivity.CLMST.Prop247CoveredDescent
 public import SerrePositivity.CLMST.Prop247RankBaseChange
 public import SerrePositivity.CLMST.Prop247RankProductAway
 public import SerrePositivity.CLMST.Prop247RankValuation
+public import SerrePositivity.CLMST.Prop247RankCone
+public import SerrePositivity.CLMST.Prop247RankBaseChangeDiagram
+public import SerrePositivity.CLMST.Prop247ProductPerfectoid
+public import SerrePositivity.CommutativeAlgebra.ScalarIsogenyTensor
 public import SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedModule
 public import SerrePositivity.HomologicalAlgebra.DerivedRestriction
 public import SerrePositivity.HomologicalAlgebra.DerivedBaseChangeTensor
