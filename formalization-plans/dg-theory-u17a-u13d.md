@@ -79,3 +79,15 @@ compact ⇒ Perf はまだ未完。引用は採用していない。引用なし
   自由 sphere 余積と実際の cone により扱えるため、一般 semifree の各有限部分 cell を
   明示列挙する経路は必要でない見込み。U13d 全体の完了はまだ主張しない。
 - U13d2 のコミット：`ce02b5b9`。
+
+### U13d4：標準解像度の各段への接続
+
+- `Perfect/CompactConverseResolutionStages.lean`：自由 sphere を代表加群の shift と単位同型で
+  有限 cell と同定。small な添字の再添字付けと、既存の射影加群の導来余積 cofan を再利用し、
+  無限自由 sphere 余積が有限因子分解性を持つことを証明した。
+- `moduleFiniteCellFactorTarget_resolutionStage`：既存の標準解像度の全ての段階がこの性質を持つ。
+  初段の自由 disk 余積は objectwise acyclic で、ModuleCat の AB4 と既存の exact colimit 補題を使用。
+  後続段は既存の具体的 cone を使う帰納法。既存の解像度ファイルは編集していない。
+- 対象ビルド：`lake build SerrePositivity.DifferentialGraded.Checks.CompactConverseResolutionStages` 成功。
+  主要5宣言の公理監査は標準3公理のみ。引用なし。
+- U13d3 のコミット：`e9d9eea3`。残る中心は余極限と telescope の比較である。
