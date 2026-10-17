@@ -1013,3 +1013,28 @@ D 側成分の置換は最初の脚側右辺を変えず、自分の集合の右
 未完了：全体集合の三角形方程式（二つのセルそれぞれ）、左右の共通面での一致・貼合せ、
 全境界での一致と標準四角形の `IsPullbackSquare`、N7d・N7e。
 新規公開宣言 22 個の正確な型・全前提は計画 §5 の N7c11 に記録する。
+
+
+## N7.14：三角形方程式と左右の実際の単体（2026-10-18）
+
+`cospanTwoTailRhs_replace_prefix` は先頭成分の変化 Δa が三角形側右辺を −u Δa だけ変えることを証明する。
+`rhs_replace_of_erase_eq` は内部削除集合と別表示の集合を同定した置換公式。
+`cospanTwoTailRhs_replace_D` は D 側成分の変化が右辺をその負だけ変えることを与える。
+`cospanTwoTailRhs_replace_zero_of_heq` は二置換の変化を型付き Hom へ移し、
+r−u a−d=0 から置換後の全体右辺が零になることを証明する。
+
+`fiberBoundaryLeftCandidate_full_rhs_zero`・右版と `...full_equation` により、
+左右の候補の最後の未知方程式を証明した。
+左側は明示解の −d−u a+r_BD=0、右側は u=0 と d=r_CD を使う。
+全体成分は零のままなので、右辺の零性がそのまま微分方程式になる。
+
+`fiberBoundary{Left,Right}Candidate_all_equations` は任意の部分集合 I の Equation を与える。
+既知集合と四種類の未知集合を分類し、これまでの全検証を合わせた。
+`fiberBoundaryLeftSimplex`・`fiberBoundaryRightSimplex` はこれらの方程式を付けた
+`Simplex A (Complex A) (n+3)` であり、実際の dg nerve の単体である。
+環 A は任意の可換環、複体は非有界。実際の境界と最後の頂点の条件 hb 以外の前提はない。
+
+未完了：左右の共通面の一致、貼合せ、全境界と cospan 上の一致、slice への curry、
+標準四角形の `IsPullbackSquare`、N7d・N7e。
+全方程式を満たす二単体の構成は完了したが、slice の充填と終対象性はまだ完了していない。
+新規公開 15 宣言の正確な型と前提は計画 §5 の N7c12 に記録する。

@@ -2017,6 +2017,38 @@ noncomputable section
 #print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightCandidate_last_equation
 #check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightCandidate_last_equation
 
+-- N7c12: 三角形方程式と左右の実際の単体。
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospanTwoTailRhs_replace_prefix
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospanTwoTailRhs_replace_prefix
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_replace_of_erase_eq
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.rhs_replace_of_erase_eq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospanTriangleD_Hom
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospanTriangleD_Hom
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospanTwoTailRhs_replace_D
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospanTwoTailRhs_replace_D
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospanTwoTailRhs_replace_zero_of_heq
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.cospanTwoTailRhs_replace_zero_of_heq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryLeftCandidate_full_rhs_zero
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryLeftCandidate_full_rhs_zero
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryLeftCandidate_full_equation
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryLeftCandidate_full_equation
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightCandidate_full_rhs_zero
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightCandidate_full_rhs_zero
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightCandidate_full_equation
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightCandidate_full_equation
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryLeftCandidate_all_equations
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryLeftCandidate_all_equations
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryLeftSimplex
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryLeftSimplex
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryLeftSimplex_toData
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryLeftSimplex_toData
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightCandidate_all_equations
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightCandidate_all_equations
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightSimplex
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightSimplex
+#print axioms SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightSimplex_toData
+#check @SerrePositivity.InfinityCategories.DGNerve.fiberBoundaryRightSimplex_toData
+
 section
 universe u v
 variable (A : Type u) [CommRing A] (D : Type v)
