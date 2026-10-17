@@ -6532,3 +6532,53 @@ boundedPrism_isAdicComplete_prime
 同じ源 H の生成元正則性と同じ商 T の有界性、A1-c の係数照合との合流。
 本節だけで Lemma 4.8 全体や絶対 prismatic envelope の同定を完了とはしない。
 A1-b・A1-c のファイル・記録節、既存 hpR 付き定理は変更していない。
+
+### E1.78／A1-a 完全な源からの環射の δ 保存性（2026-10-17）
+
+本節は A1-a の追記。新規 `Andre/PerfectSourceDeltaHom.lean` で、BS Lemma 4.8
+（著者版 pp.38–39）の持上げた環射の δ 判定を証明した。原典の逆 Frobenius 極限とは異なり、
+環射の剛性と W₂ の第1座標の差の導分を使う。環射の存在はまだ結論しない。
+新しい引用・sorry・axiom は追加していない。公開名はすべて
+`SerrePositivity.BhattScholze.Andre` 内。以下、宇宙 u,v は独立、
+{p:ℕ} [Fact p.Prime]、{A:Type u} {B:Type v} [CommRing A] [CommRing B] を固定する。
+
+公開4定理の正確な型は以下。
+
+```lean
+perfectSource_ringHom_map_frobenius
+    (D : DeltaStructure p A) (hD : D.IsPerfect) (E : DeltaStructure p B)
+    [IsHausdorff (Ideal.span {(p : B)}) B] (f : A →+* B) :
+    E.frobeniusLift.comp f = f.comp D.frobeniusLift
+
+wittTwoHom_ext_of_perfectSource_approximation
+    (hA : ∀ a : A, ∃ b c : A, a = b^p + (p:A)*c)
+    (f : A →+* B) (s t : A →+* WittTwo p B)
+    (hs : (wittTwoProjection p B).comp s = f)
+    (ht : (wittTwoProjection p B).comp t = f)
+    (hghost : (wittTwoFrobenius p B).comp s = (wittTwoFrobenius p B).comp t) :
+    s = t
+
+perfectSource_ringHom_isDeltaHom
+    (D : DeltaStructure p A) (hD : D.IsPerfect) (E : DeltaStructure p B)
+    [IsHausdorff (Ideal.span {(p : B)}) B] (f : A →+* B) : D.IsDeltaHom E f
+
+perfectSource_ringHom_isDeltaHom_to_boundedPrism
+    (D : DeltaStructure p A) (hD : D.IsPerfect) (Q : OrientedPrism p B)
+    (hB : ∃ N : ℕ, ∀ n : ℕ, ∀ x : B ⧸ Q.ideal,
+      (p : B ⧸ Q.ideal)^n*x=0 → (p : B ⧸ Q.ideal)^N*x=0)
+    (f : A →+* B) : D.IsDeltaHom Q.deltaStructure f
+```
+
+Frobenius との二つの合成は mod p で一致するため、E1.76 の p 冪近似の剛性で一致する。
+二つの W₂ 射の第1座標の差 ε は加法的で p*ε(a)=0。
+ghost が同じなので、ε はその共通 ghost 射に沿う導分となる。
+ε(b^n)=n*g(b)^(n-1)*ε(b) と ε(p)=0 を使い、a=b^p+p*c から ε(a)=0 を得る。
+これを `(wittTwoMap f).comp D.sectionHom` と `E.sectionHom.comp f` に適用する。
+標的の p 正則性は不要で、有界 prism では E1.68 の p 分離性だけで適用できる。
+
+未完了：商写像を持ち上げる環射の存在、向き付き対象と原典の絶対 site の比較、
+同じ H の生成元正則性と同じ T の有界性、A1-c の係数照合との合流。
+δ 保存性は本節で解消したが、Lemma 4.8 全体・絶対 prismatic envelope の同定完了とは数えない。
+並列担当のファイル・記録節と既存 hpR 付き定理は変更していない。
+
+検証：対象ビルド（2749 jobs）と集約ビルド（4588 jobs）は `set -o pipefail` 付きで終了コード0。公開4定理の `assert_no_sorry` と4本の `#check` は終了コード0。専用監査の結果は `André monic root audit passed: 7955 declarations, standard axioms only.`。私有補題もモジュール全宣言監査に含む。
