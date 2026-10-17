@@ -253,3 +253,28 @@ HEAD からの差分全体が自分の変更だけであることも確認する
 - U15e4 のコミット：`85c45d3a`（自分の5ファイルのみと直後に確認）。
 - 残部：片側局所 K-flat 仮定から上記の実際の比較の完全忠実性を示すこと。
   path 長 filtration と Verdier 分母を通じる Hom 比較が必要。U17b の完備化比較も未完。
+
+### U15e6：片側局所 K-flat 性からの path 係数の擬同型保存
+
+- `Quotient/DerivedComparisonPathFlatness.lean`：入る側の Hom が K-flat なら S を終点とする
+  全内部 path 項が K-flat、出る側なら S を始点とする全内部 path 項が K-flat と証明。
+- path を前方係数 `pathPrefixWeight w x b` と末尾 Hom(b,y) に分ける
+  `termSnocWeightIso` を tensor 結合子だけで構成。word の添字は変更しない。
+  後方係数 `pathSuffixWeight w b y` は先頭 Hom(x,b) を除いた残りとして定義。
+- Drinfeld の各片側仮定から対応する係数の K-flat 性を証明し、係数との tensor が
+  任意の非有界な擬同型を保つことを示した。残した先頭・末尾因子の平坦性は要求しない。
+  前方係数と非有界 acyclic 複体の tensor の acyclic 性も直接公開。
+- これらは内部微分の path 項についての宣言。ε 消去を含む最終微分の長さ filtration、
+  随伴次数部分と Verdier 分母の Hom 比較はまだ構成していない。
+- M9 の商を取る前の次数零・平坦 Hom からは、既存の `allHomKFlat_of_flat_zero` と
+  `allHomKFlat_into` / `allHomKFlat_outOf` で両方向の必要条件を供給できる。
+  商を取った後の非正次数性だけを K-flat 性の根拠にはしない。
+- 対象ビルド：`lake build SerrePositivity.DifferentialGraded.Checks.QuotientPathFlatness`
+  成功（2273 jobs）。主要8宣言の公理監査は標準3公理のみ。
+  project import 依存113ファイルに、禁止された dg 圏分解系への依存なし。
+  新規 sorry・axiom・引用なし。U15e・U17b 全体は未完であり、DG-DR は採用していない。
+- U15e5 のコミット：`c311d153`（自分の5ファイルのみと直後に確認）。
+- ルートの path 係数 import は `git add -p` で自分の一行だけを選択したが、
+  別チャットの未 stage import が同居したため、パス指定コミットへの混入を避けるべく
+  自分の cached patch だけを逆適用して部分 stage を解除。ルートは今回のコミットから除外し、
+  import 一行は working tree に残す。他チャットの hunk と index には触れていない。
