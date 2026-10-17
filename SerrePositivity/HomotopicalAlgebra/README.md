@@ -3237,3 +3237,18 @@ Reedy単射で各行が局所化同値となる写像の対角保存を証明す
 source augmentationへの帰着を与える。
 source augmentationの可逆性、小さいstrictificationと小さい厳密なRMapは残る。
 受入検証は`check_diagonal_localized_equivalence`（39宣言・6モジュール）。
+
+
+### 追加退化と実source・全対角augmentationの収縮（§377）
+
+`Simplex/Prefix`と`PrefixInterval`は始点を加える関手と標準区間のcut写像を構成する。
+`ExtraDegeneracyInterval`と`ExtraDegeneracyContraction`は任意のMathlib追加退化から
+実区間ホモトピーを構成し、augmentationとsectionが任意のanodyne反転関手のもとで互いに逆と証明する。
+`OppositeHomotopy`は単体方向の逆転による実ホモトピーの端点交換を与える。
+`PathObjectTransport`、`OrdinaryBarSourceOperators`、`OrdinaryBarSourceExtraOperators`は
+元のsourceの全作用を自由道作用へ同定し、singletonとの全交換法則を証明する。
+`OrdinaryBarSourceExtraDegeneracy`は元の増大Homに実追加退化を構成する。
+`OrdinaryBarSourceContraction`は元のsource・word・全対角small頂点augmentationの
+anodyne局所化後の可逆性を証明する。任意の圏Cで使え、モデル構造は不要である。
+Hom値は補助宇宙max(u,v)にあり、小さいstrictificationと小さい厳密なRMapは残る。
+受入検証は`check_source_contraction`（85宣言・10モジュール）。

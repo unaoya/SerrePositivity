@@ -21135,3 +21135,84 @@ fと恒等のcoproductからの写像をこのReedy WFSで分解する。
 
 元のCᵒᵖ×Cへの小ささを保つstrictificationと降下、小さい厳密なRMap、
 F2の不変性・Kan・π₀とHo(C)の同定等は残る。L/E/Sの完了記録を維持し、全体目標は継続する。
+
+
+## 377. 追加退化写像による実source・全対角augmentationの収縮（2026-10-17）
+
+実装コミット`b445024c`。§376.5に残していた元の自由道source augmentationの
+anodyne局所化後の可逆性を証明し、既存の実対角比較へ接続した。
+A0・A1は§166で完了済みであり、今回も最終入口の受入検証を再実行して成功した。
+
+### 377.1 一般の追加退化写像から標準区間による収縮を構成
+
+`CategoryTheory/Simplex/Prefix`は新たな始点を加えるΔの関手を定義し、
+全顔・退化写像との交換式を証明する。`PrefixInterval`は標準区間Δ[1]の単体tから
+cut写像を構成し、任意の単体写像との自然性、両端点での公式を証明する。
+
+`Simplicial/ExtraDegeneracyInterval`はMathlibの任意の追加退化写像edについて、
+全単体写像に自然な実写像X⊗Δ[1]→Xを構成する。
+`ExtraDegeneracyContraction`はその両端点を計算し、
+augmentationの後のsectionから恒等への実`SSet.Homotopy`を得る。
+任意のanodyneを反転する関手Lに対し、augmentationと実sectionの像を互いに逆とする
+同型を構成する。単体的集合のModelCategoryや、組合せ的ホモトピーからの未証明の逆変換は使わない。
+
+`OppositeHomotopy`はMathlibの標準単体のop同型を使って、単体方向を逆転した実区間ホモトピーを
+構成する。端点の交換、追加退化を持つaugmentationの逆転後の局所化可逆性も証明する。
+revがanodyneを保つという別の未証明の一般定理は仮定しない。
+
+### 377.2 元の自由道sourceのsingletonと全作用を接続
+
+`OrdinaryBarSourceOperators`は既存sourceの顔・退化作用を実自由道作用へ同定する。
+さらにrevで単体方向を戻すと、通常の全顔・退化作用になると証明する。
+`CategoryTheory/Quiver/PathObjectTransport`はsingleton道と厳密な対象移送の交換を証明する。
+`OrdinaryBarSourceExtraOperators`は対象が文字通り恒等であるforward faceを構成し、
+最初の顔によるsingletonの解除、後続の顔とsingletonの交換、退化との交換を証明する。
+次数0で元のaugmentationが最初の顔の後のULift除去に一致することも証明する。
+
+`OrdinaryBarSourceExtraDegeneracy`は元のaugmentationのULiftをそのまま使う増大単体対象を定義し、
+射全体を一つの生成射として包むsingletonを追加退化写像にする。
+augmentationの分裂、最初の顔、後続の全顔、全退化の五種類の法則を証明し、377.1を適用する。
+モデル圏・cofibrant生成・関手的因子分解の仮定はなく、Cは任意の圏でよい。
+
+### 377.3 実sourceから実全対角への結論
+
+`OrdinaryBarSourceContraction`は二度のrevの同型と定数基底の同型を使い、
+元のsource augmentationの実分解等式を証明する。その結果、以下の元の実射の像が、
+補助宇宙におけるanodyne局所化Qで可逆となる。
+
+- `source_augmentation_isIso`：既存source HomのULiftから元の基底Homへのaugmentation。
+- `word_augmentation_isIso`：元の全対角AmbientWords Homのaugmentation。
+- `small_augmentation_isIso`：元の全対角small頂点Homのaugmentation。
+
+後二者は§376の証明済みの同値を通じて得ており、別のaugmentationへ置き換えていない。
+smallは頂点の種類を指す。Hom値は引き続きSSet.{max(u,v)}であり、SSet.{v}への縮小ではない。
+対象宇宙uとHom宇宙vは独立で、補助宇宙のModelCategoryを仮定・導入していない。
+
+### 377.4 受入検証
+
+すべて成功した。
+
+- `lake build SerrePositivity.HomotopicalAlgebra.Foundations`（3211 jobs、警告なし）。
+- `check_source_contraction`：任意の追加退化の実区間収縮、任意のanodyne反転関手への同型、
+  revによるホモトピーの端点交換、独立した対象・Hom宇宙での実追加退化、
+  元のsource・word・small augmentationの局所化可逆性。新規10モジュール全85宣言の標準公理監査。
+- `check_diagonal_localized_equivalence`：39宣言・6モジュールの回帰検証。
+- `check_weak_equivalences_accessible`：A0・A1の最終入口、21宣言・5モジュール。
+- `audit_homotopical_foundations`：全13125宣言・941モジュール、
+  propext・Classical.choice・Quot.soundのみ。sorry・引用axiomなし。
+- ソースの行長・証明用マーカー、stage差分の空白検査。
+
+全体監査の初回実行では、新規PathObjectTransportが対象モジュールの走査フィルタに含まれず失敗した。
+フィルタを追加して再実行し、上記の全体監査が成功した。受入検証側では当初から同モジュールも監査した。
+
+### 377.5 次の受入単位と残作業
+
+§376.5のsource追加退化・実収縮・全対角augmentationの局所化可逆性は完了した。
+次は、この実augmentationと全パラメータ作用を入力に、元のCᵒᵖ×Cへの降下・strictificationを構成する。
+まず受入条件は、値をSSet.{v}に保った元の基底上の厳密な図式と、既存のresolution上の実図式への
+自然な弱比較、その恒等・合成則である。未証明の小ささ、choice射影の忠実性・cofinal性、
+strict section、大きいSSetのモデル構造は仮定しない。
+
+今回の局所化可逆性だけからnative Hom値のsmallnessやstrictな降下を推論してはならない。
+小さい厳密なRMapと、F2の弱同値不変性・Kan性・π₀とHo(C)の同定・選択独立性・
+単体的モデル圏との比較は残る。L/E/Sの完了記録を維持し、全体目標は継続する。
