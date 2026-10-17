@@ -1,3 +1,4 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.HomotopyCategoryBridge
+public import SerrePositivity.InfinityCategories.Core.HomotopyCategoryMap

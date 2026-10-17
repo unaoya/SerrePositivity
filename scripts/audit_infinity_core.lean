@@ -20,3 +20,12 @@ import SerrePositivity.InfinityCategories.Core
 #print axioms SerrePositivity.InfinityCategories.edge_path_inverse
 #print axioms SerrePositivity.InfinityCategories.path_edge_inverse
 #print axioms SerrePositivity.InfinityCategories.homotopyCategoryBridge
+
+#check @SerrePositivity.InfinityCategories.HomotopyCategoryMap.map
+#check @SerrePositivity.InfinityCategories.HomotopyCategoryMap.map_id
+#check @SerrePositivity.InfinityCategories.HomotopyCategoryMap.map_comp
+#check @SerrePositivity.InfinityCategories.HomotopyCategoryMap.bridge_naturality
+#print axioms SerrePositivity.InfinityCategories.HomotopyCategoryMap.map
+#print axioms SerrePositivity.InfinityCategories.HomotopyCategoryMap.map_id
+#print axioms SerrePositivity.InfinityCategories.HomotopyCategoryMap.map_comp
+#print axioms SerrePositivity.InfinityCategories.HomotopyCategoryMap.bridge_naturality

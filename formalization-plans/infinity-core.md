@@ -112,3 +112,32 @@ homotopyCategoryBridge (X : SSet.{u}) [Quasicategory X] :
 `propext`・`Classical.choice`・`Quot.sound` のみ。追加公理・引用・`sorry` はない。
 `Core.lean` を集約とし、ルートにはその import を 1 行追加した。
 A1b〜A1d・A2a〜A2i は未完了であり、自然性や極限の理論の完成は主張しない。
+
+### A1b（2026-10-17）：関手性と比較の自然性
+
+`Core/HomotopyCategoryMap.lean` の公開宣言は次の 4 件。
+namespace は `SerrePositivity.InfinityCategories.HomotopyCategoryMap`。
+任意の宇宙 `u`、`{X Y Z : SSet.{u}}` を用い、各宣言が使う単体集合のみ
+`[Quasicategory X]`・`[Quasicategory Y]`・`[Quasicategory Z]` を仮定する。
+`open CategoryTheory SSet SSet.Truncated` の下での型は次の通り。
+
+```lean
+map {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y) :
+  HomotopyCategory₂ ((truncation 2).obj X) ⥤ HomotopyCategory₂ ((truncation 2).obj Y)
+
+map_id {X : SSet.{u}} [Quasicategory X] : map (𝟙 X) = 𝟭 _
+
+map_comp {X Y Z : SSet.{u}} [Quasicategory X] [Quasicategory Y] [Quasicategory Z]
+  (f : X ⟶ Y) (g : Y ⟶ Z) : map (f ≫ g) = map f ⋙ map g
+
+bridge_naturality {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y) :
+  map f ⋙ (homotopyCategoryBridge Y).functor =
+    (homotopyCategoryBridge X).functor ⋙ (hoFunctor.map f).toFunctor
+```
+
+辺と合成二単体の像から関手を構成し、代表元上で恒等・合成・自然性を示した。
+原典：HTT §1.2.3、Kerodon §1.4.5（特に Proposition 1.4.5.7）。
+`lake build SerrePositivity.InfinityCategories.Core` と
+`lake env lean scripts/audit_infinity_core.lean` は終了コード 0。
+累計全 10 公開宣言が標準三公理のみ。
+A1c〜A1d・A2a〜A2i は未完了。
