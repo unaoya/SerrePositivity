@@ -33,6 +33,8 @@ public import SerrePositivity.BhattScholze.Andre.Transfinite.Existence
 
 public import SerrePositivity.BhattScholze.Andre.Transfinite.SingleRoot
 
+public import SerrePositivity.BhattScholze.Andre.Transfinite.Theorem714
+
 /-! # André E3：超限反復の部品
 
 BS Thm 7.14（著者版 p.61）。現時点では剰余 Frobenius の保存、
@@ -40,5 +42,7 @@ BS Thm 7.14（著者版 p.61）。現時点では剰余 Frobenius の保存、
 最小元を持つ有向系の p 進完備化の perfectoid 性も証明する。
 有界ねじれによる完備化の完全忠実平坦性と ω₁ 塔の終段の三性質を証明する。
 訂正済み一段拡大 step を明示仮定として、ω₁ までの超限塔と Thm 7.14 の存在結論を証明する。
-step の A1 による解消と Inputs の置換はまだ行っていない。
+A1 の一元拡大から任意族の step も証明し、追加仮定のない Thm 7.14 を
+SerrePositivity.BhattScholze.Andre.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed
+として供給する。Inputs の置換は公開成果の報告後に別保存単位で行う。
 -/

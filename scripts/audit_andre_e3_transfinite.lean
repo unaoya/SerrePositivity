@@ -141,6 +141,17 @@ assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.exists_completely
 assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFaithfullyFlat_ringEquiv
 assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.exists_monicRootPerfectoidExtension
 
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.HasBasePolynomialRoot
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.hasBasePolynomialRoot_map
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.exists_rootAdvancement
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.rootAdvancement
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.rootAdvancementMap
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.rootAdvancement_spec
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.exists_allBasePolynomialRoots
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.exists_familyRoot_successor
+assert_no_sorry SerrePositivity.BhattScholze.Andre.Transfinite.exists_monicFamilyRootedPerfectoidExtension
+assert_no_sorry SerrePositivity.BhattScholze.Andre.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed
+
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
@@ -169,7 +180,10 @@ run_cmd do
     `SerrePositivity.BhattScholze.Andre.Transfinite.CompletionUniversal,
     `SerrePositivity.BhattScholze.Andre.Transfinite.AlgebraCategory,
     `SerrePositivity.BhattScholze.Andre.Transfinite.Existence,
-    `SerrePositivity.BhattScholze.Andre.Transfinite.SingleRoot]
+    `SerrePositivity.BhattScholze.Andre.Transfinite.SingleRoot,
+    `SerrePositivity.BhattScholze.Andre.Transfinite.FamilySaturation,
+    `SerrePositivity.BhattScholze.Andre.Transfinite.FamilyExtension,
+    `SerrePositivity.BhattScholze.Andre.Transfinite.Theorem714]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
@@ -325,3 +339,23 @@ run_cmd do
 
 #print SerrePositivity.BhattScholze.Andre.Transfinite.isCompletelyFaithfullyFlat_ringEquiv
 #print SerrePositivity.BhattScholze.Andre.Transfinite.exists_monicRootPerfectoidExtension
+
+#print SerrePositivity.BhattScholze.Andre.Transfinite.HasBasePolynomialRoot
+#print SerrePositivity.BhattScholze.Andre.Transfinite.hasBasePolynomialRoot_map
+#print SerrePositivity.BhattScholze.Andre.Transfinite.exists_rootAdvancement
+#print SerrePositivity.BhattScholze.Andre.Transfinite.rootAdvancement
+#print SerrePositivity.BhattScholze.Andre.Transfinite.rootAdvancementMap
+#print SerrePositivity.BhattScholze.Andre.Transfinite.rootAdvancement_spec
+#print SerrePositivity.BhattScholze.Andre.Transfinite.exists_allBasePolynomialRoots
+#print SerrePositivity.BhattScholze.Andre.Transfinite.exists_familyRoot_successor
+#print SerrePositivity.BhattScholze.Andre.Transfinite.exists_monicFamilyRootedPerfectoidExtension
+#print SerrePositivity.BhattScholze.Andre.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed
+
+universe u
+example (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
+    (hR : SerrePositivity.IsIntegralPerfectoid R p) :
+    ∃ (S : Type u) (_ : CommRing S) (_ : Algebra R S),
+      SerrePositivity.IsIntegralPerfectoid S p ∧
+      SerrePositivity.IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) S ∧
+      SerrePositivity.IsAbsolutelyIntegrallyClosed S :=
+  SerrePositivity.BhattScholze.Andre.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed R p hR

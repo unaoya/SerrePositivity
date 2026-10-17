@@ -455,16 +455,56 @@ A1 の一元拡大の対象 build を実行し、終了コード 0（4242 jobs�
 A1 の一元拡大への推移的依存も標準 3 公理のみ。
 **未完了：** 一元の根添加を任意の添字族に広げ、E3.15 の指定 step を解消する工程。
 
+### E3.17：任意族 step の解消と、元の署名の無条件 Thm 7.14
+
+`FamilySaturation.lean`・`FamilyExtension.lean`・`Theorem714.lean` を追加。
+
+- `exists_allBasePolynomialRoots`：固定基底 R の族 f:σ→Polynomial R に対し、各対象で各一項の
+  根を持つ拡大が可能なら、全族の根を持つ一つの塔の代数が存在する。
+- `exists_familyRoot_successor`：E3.16 の一元存在定理を現在の対象に適用し、
+  元の R 係数の族の任意の一項の根を後続対象に得る。非零枝でモニック性から次数が保存され、
+  零環枝では恒等射で既に根を持つ。
+- `exists_monicFamilyRootedPerfectoidExtension`：指定された正次数条件付き step そのものを、
+  有限性・追加のねじれ・比較・存在仮定なしで証明。入力は R の perfectoid 性と
+  `(∀ s, (f s).Monic ∧ 0 < (f s).natDegree)` のみ。全ての環と σ は Type u。
+
+無条件の公開主定理（namespace は `SerrePositivity.BhattScholze.Andre`）：
+
+```lean
+theorem exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed
+    (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
+    (hR : IsIntegralPerfectoid R p) :
+    ∃ (S : Type u) (_ : CommRing S) (_ : Algebra R S),
+      IsIntegralPerfectoid S p ∧
+      IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) S ∧
+      IsAbsolutelyIntegrallyClosed S
+```
+
+**原典・証明経路の記録：** BS Thm 7.14（著者版 p.61）の第一文の元の署名を証明した。
+一段拡大の根の部分には、A1 の完全 prism 商上の一元拡大と E3.16 の基底移送を使う。
+任意族の step を得るため、原典の一括根添加に対し、ここでは固定係数族の一元飽和を補足する。
+`c = Order.succ (Cardinal.mk σ ⊔ Cardinal.aleph0)` の始順序数の小さい表現に沿って反復。
+各後続段では、全族が解決済みなら恒等射を使い、そうでなければ未解決の一項を解決する。
+終段で未解決なら、各段で新たに解決した添字は異なり、濃度 c の添字型から σ への単射ができ、
+`c ≤ Cardinal.mk σ ≤ Cardinal.mk σ ⊔ Cardinal.aleph0` となって後続基数の性質に矛盾する。
+根の存在は全ての係数両立環射で保存され、極限の通常完備化を経ても元の R 係数の根は保たれる。
+この補助反復では係数を固定しているため、完備化後の新係数を降下させる議論は行わない。
+得られた任意族 step を E3.15 の ω₁ 反復に入力して、新係数も含む全正次数モニックに根を得る。
+従って主定理は ω 回反復後の完備化から絶対整閉性を推論していない。
+
+集約対象 build 終了コード 0（4347 jobs、新規モジュール警告なし）。
+専用監査終了コード 0、公開全 131 宣言の assert_no_sorry と全 352 宣言の再帰監査に成功。
+推移的公理依存は標準 3 公理のみ。主定理の #print と元の存在型への明示的な適用例により、
+step・塔・単射性・平坦性・有界ねじれなどの追加仮定が残らないことを確認した。
+
+**保存時点の残り：** 無条件主定理を公開報告し、その後の別コミットで Inputs の既存 sorry を置換する。
+A1 のファイル・ハンクは本レーンのコミットに含めない。
+
 ### 残る範囲
 
-1. A1 の成果から、正次数条件付きの指定 step を仮定なしで供給する。
-   E1・E2 のモニック性と正次数が別引数なら、それぞれを組の第 1・第 2 成分により接続する。
-2. 供給された step を E3.15 に入力し、余分な仮定のない元の署名で再監査する。
-3. 完了報告後に別コミットで `BhattScholze/Inputs/AndreFlatness.lean` の既存 sorry を置換する。
-
-超限反復・極限の perfectoid 性・完全忠実平坦性・終段の根の存在は E3.15 の条件付き主定理に統合済み。
-**未完了なのは step の解消と、その後の Inputs の置換である。条件付き成果を無条件の完成と数えない。**
-`BhattScholze/Inputs/AndreFlatness.lean` は編集していない。
+指定 step は E3.17 で解消し、元の署名の主定理に追加仮定はない。
+残るのは、公開成果の報告後に別コミットで `BhattScholze/Inputs/AndreFlatness.lean` の既存 sorry を
+置換し、公開入口の型と公理依存を再監査する工程のみ。
 
 ## E1・E2：モニック根付き拡大（2026-10-17）
 
