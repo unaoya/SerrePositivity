@@ -654,6 +654,14 @@
 - この構成は実際のtensor dg関手とHom dg関手の制限であり、H⁰の同値の逆を
   dg関手に自動的に持ち上げたものではない。既存の公開APIの名前・型は変更していない。
 
+## U14c.3：compact Homによる同型判定（2026-10-17）
+
+- `CompactHomDetectsIso.lean`：compact対象からのHomの全単射が導来射の同型を検出することを証明。
+  shift随伴、distinguished三角形の完全性、既存の代表加群shiftによる零性検出を使用した。
+- compact⇒Perfは使用していない。新規2主要宣言を `ChecksCompactHomDetectsIso` で監査し、
+  対象ビルド成功、公理は標準3公理のみ。
+- 既存の公開APIの名前・型は変更していない。DG-GEN/DG-MORは採用していない。
+
 ## 残る受入条件
 
 - U14a：underived加群圏の再構成随伴・単位・余単位は構成済み。
