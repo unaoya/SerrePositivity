@@ -50,3 +50,13 @@
   主要12宣言の公理監査は標準3公理のみ。
 - コミットは自分のパスだけを指定している。U16b.1直後は別チャットのcommitがHEADになったため、
   自分のhash `33b14987` のstatも個別に照合した。他人のファイルの取り込みはない。
+
+## U16b.4：U16aの通常graph作用と任意射影解像度の計算
+
+- 公開API節で向きと型が固定された `Morita.kernelTensor`・`kernelTensor_graph` を読み取り専用で使う。
+  `Morita/QuasiEquivalenceGraph.lean` は任意射影解像度Rに対し、既存導来延長と
+  通常graph作用をRで計算した主局所化像の同型を与える。
+- この計算にはFの擬同値性・localHomKFlatは不要。元の導来対象がPerfなら計算像もPerfとなる。
+  これは主導来kernel作用との関手自然同型の完成を意味しない。後者は公開された主導来作用の実装後に行う。
+- `Morita.QuasiEquivalenceGraphChecks` 独立対象ビルド成功（2801 jobs、警告なし）。
+  主要2宣言の公理監査は標準3公理のみ。
