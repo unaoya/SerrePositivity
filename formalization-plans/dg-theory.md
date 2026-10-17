@@ -10086,3 +10086,47 @@ BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_
 U12e全体は未受入であり、受入後にU16a〜d、U15e分解版へ進む。
 共有モデル圏一般論への新しいAPI要求はない。共有ルート・共有監査スクリプト・Perfect/・
 Endomorphism/・ScalarExtension*・Quotient/DerivedComparison*・Verdier/は編集していない。
+
+
+### 17.219 U12e59：明示的uncurry表示と左右制限のHom比較（2026-10-17）
+
+**表示の比較。** `Bimodule/UncurryClosedFunctor.lean`は既存の全Hom自然性を使い、
+閉零bimodule射を積dg圏上の左加群射へ送る`uncurryMap`と`uncurryFunctor`を構成した。
+`uncurryCounitIso`は既存の戻り関手との合成を恒等関手へ比較する自然同型である。
+各値で恒等となる右加群同型族を`moduleIsoMk`と`isoOfFamily`で束ね、
+全次数の左作用との自然性も証明した。
+`Bimodule/ExplicitRightModuleFunctor.lean`の`rightModuleFunctor`はこれを既存の
+左加群・反対圏上の右加群比較へ接続する。
+`rightModuleFunctor_map_value`は閉零射の値を保持する計算式、
+`rightModuleCounitIso`は既存の戻り関手との比較、`rightModuleInverseIso`は既存の
+`rightModuleBimoduleEquivalence`が選択した逆関手との自然同型である。
+独立した対象宇宙とSmall仮定だけを使い、局所Hom K-flat性は要求しない。
+
+**左右の制限。** `Bimodule/MiddleRestrictionUncurry.lean`は、
+`leftRestriction_uncurryHom`と`rightRestriction_uncurryHom`を証明した。
+直接構成した左右の制限の全Hom写像が、元のuncurryHomに積dg関手のHom写像を前合成したものと
+一致する。次数ごとのtensorの純元で証明し、豊穣合成の順序を保持している。
+既存の公開APIの名前・型・定義は変更していない。
+これらは§17.218のsourceを既存の積dg圏表示へ接続するための補助APIであり、
+この段階では左右の制限関手自体の自然同型や、その全導来化を完成したとは主張しない。
+
+**検証。** 新規`Checks.DGBimoduleUncurryPresentation`は独立した対象宇宙、
+局所K-flat仮定なしでの表示比較と射の値の保持、ZMod 2の場合を検査した。
+全導来中間比較・解像度同値・導来bimodule五角形・StageEight・StageSeven・Spectra.StageTwoとの
+統合ビルド成功（3421 jobs、警告なし）。主要15宣言の直接公理監査は重複・欠落なく標準3公理以内。
+新規監査累計4309宣言。今回の4受入Leanファイルのsorry・admit・新規axiom・資源上限変更は0件。
+採用済み引用0件。Lean toolchain v4.35.0-rc4とMathlib manifest/HEAD
+`e6bbacd0e1b7307ff6e17da09cd2455f60804fa6`を再確認した。
+全体文書検査は21 Markdown・320 exposition参照を検査し、担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+未解決参照1件で失敗した。
+
+**分担と次工程。** §0・§15・§17.204のU15e分割を確認し、
+U12e全受入→U16a〜d→U15e分解版の順を維持する。
+U15e局所K-flat版と続くU17b局所K-flatの場合はU17a/U13d側の担当である。
+分解版の着手時に`Quotient/DerivedComparison*.lean`と`Verdier/`を読み再利用し、重複実装しない。
+U12eでは、左右の制限と積dg圏表示の制限の自然同型、その全導来化、準同値の場合の可逆性、
+解像度変更と導来合成・対角単位・結合子の整合性とcoherenceを引き続き仕上げる。
+U12e全体は未受入。共有モデル圏一般論への新しいAPI要求はない。
+共有ルート・共有監査スクリプト・Perfect/・Endomorphism/・ScalarExtension*・
+Quotient/DerivedComparison*・Verdier/は編集していない。
