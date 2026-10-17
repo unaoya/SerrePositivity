@@ -8627,3 +8627,47 @@ Checks.DGCellBoundaryNaturalityの対象ビルドと主要12宣言の直接公�
 今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
 全位置の自然性を得ただけでcell付加を受入済みとはしない。
 次に二重置換の反交換・相殺と最終Hom微分へ接続する。分担と合流順は§0のまま保持する。
+
+
+### 17.190 U12e31：全pathの境界置換二乗零と追加微分後の非有界Hom複体（2026-10-17）
+
+`Resolution/Cells/BoundaryHeadInterchange.lean`の**Family.replaceHead_face_anticommute**は、
+左端の境界挿入と任意後方位置の置換の反交換を全位置のHom作用自然性から証明する。
+**replaceFirst_face_anticommute**は先頭Homを戻した反交換で、隣接生成元の場合も含む。
+生成元を次数−1に限定せず、各端点を独立に保持している。
+
+`DoubleFaces.lean`の**replaceFace_succ_comp**は先頭を保持する二重置換の再帰式。
+**DoubleFace/doubleFace/negateDoubleFace/prefixDoubleFace**は終域の語付き次数2 cochainを保持する。
+**prefixDoubleFace_negate/doubleFace_cons_succ/doubleFace_cons_zero/doubleFace_swap_of_le**により、
+異なる二位置の置換順を交換すると、終域のpathも含めて負になることを証明した。
+`DoubleFaceSum.lean`の**includeDoubleFace/includeDoubleFace_negate/replacementPair**は全Hom直和への包含、
+**replacementPair_swap_of_le/replacementPair_swap/replacementPair_double_sum_zero**は有限二重和の相殺。
+既存dg商の純粋な有限和対合補題を再利用し、2の可逆性を要求していない。
+
+`BoundarySquare.lean`の**pathCochain_ext**は任意次数cochainの各path上での判定。
+**replacement_square_precomp_double_sum**で二重置換を有限二重和へ移し、
+**replacement_square_zero**で全Hom直和上の作用素の二乗零を証明した。
+長さ0/1に限定した結果や終域の等式を仮定した結果ではない。
+`Differential.lean`の**attachedHom**は既存perturbComplexへ実際に証明した閉性と二乗零を渡し、
+内部微分+replacementを微分とする非有界複体を構成する。
+**attachedHom_X/attachedHom_d**が次数成分と微分式を与え、
+**originalHomInclusion/originalHomInclusion_f**は追加微分後もchain mapとなる元のHom包含を与える。
+Small.{u} Iだけを直和に要求し、Dの対象集合のsmallness、元のHomのK-flat性や有界性は不要。
+
+Checks.DGCellDifferential・Checks.DGCellBoundaryNaturality・Checks.DGCellBoundaryOperator・
+Checks.DGBoundarySequence・Checks.DGCategoryInitial・Checks.FreeDGUniversal・Checks.DGCategoryResolution・
+Checks.DerivedBimoduleFullPentagon・Checks.StageEight・Checks.StageSeven・既存Spectra.StageTwoの
+統合ビルドは成功（3141 jobs、終了コード0、警告なし）。独立宇宙、任意可換環・非有界、
+ZMod 2とflatness仮定なしの最終複体・元のHomのchain map包含を型検査した。
+新規25宣言と§17.189の12宣言を含む37宣言の直接公理監査はすべて標準3公理のみ。
+監査累計3585宣言。今回の実装にsorry/admit/新規axiomはなく、採用済み引用は0件。
+全体文書検査は15 Markdown・320 exposition参照を検査し、担当外の
+BhattScholze.Inputs.exists_surjective_perfectoidization_of_complete_torsionFree_quotientの
+未解決参照1件で失敗した。共有ルート・共有一般論・並行所有ファイルは編集していない。
+
+次は有限pathの合成・単位・結合則とreplacementのLeibnizを全直和へ拡張し、
+attachedHomを主EnrichedCategoryのHomとして束ねる。指定原始元への増大関手とcellの充填式を証明し、
+長さfiltrationから追加微分後のHom K-flat性、列の余極限と§17.186の準同型判定へ接続する。
+今回のattachedHomだけでdg圏cell付加や解像度の一般存在を受入済みとはしない。
+解像度比較、U12e全受入、受入後のU16と合流後のU15e/U17は未完。
+公開APIの名前・型の変更と共有一般論への新しい要求はない。§0の分担を維持する。
