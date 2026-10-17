@@ -1247,3 +1247,30 @@ M9 の適用については、商を取る前の次数零の平坦 Hom を持つ
   三つの dg 圏にまたがる kernel 合成比較の指定商への接続とは区別して継続する。
   新しい係数変更の直接経路比較の shift 整合性・二モデル比較の構造照合も引き続き区別する。
   中心作用・G 作用は保留。目標全体は進行中。
+
+### U17b8：実際の kernel 合成比較の指定商・完備化への降下
+
+- U16a9 の公開合成自然同型と U16d の `PerfectDerivedKernelComposition` を読み取りで使用した。
+  `Verdier/KernelCompositionDescent.lean` は、許容 kernel P・Q の実際の `kernelCompose` の
+  全列の perfect 性と S の列の Perf_U 性を証明する。後者は P の指定列条件、Q の指定
+  perfect 部分圏保存、実際の `kernelCompositionIso` によるもので、合成後の列条件を仮定しない。
+- `supportedKernelComposeFunctor` は許容 kernel の積圏上の実際の主導来合成。
+  その射は元の `kernelComposeMap` である。元の Perf 合成比較は U16 の実際の
+  `perfectKernelCompositionIso` を使用し、両許容 kernel の全主導来射に関する自然性も
+  `perfectKernelCompositionIso_kernel_naturality` で証明した。所望の自然性を入力にしていない。
+- 二つの実際の誘導 Verdier 関手の合成の因子化同型を作り、元の Perf 合成同型を
+  `Localization.liftNatIso` で降ろした。元の商対象上の成分計算も公開した。
+  これを既存の Karoubi 延長の合成比較と接続し、実際の完備商作用の合成同型を得た。
+- `Verdier/KernelCompositionComparison.lean` は固定した比較同値による輸送の合成同型を
+  明示的な余単位と結合同型で構成し、完備 tria 商と局所 perfect enhancement の H⁰ 上へ
+  同じ kernel 合成比較を接続する。kernel 合成に必要なのは始域 D の localHomKFlat のみ。
+  H⁰ の局所比較に使う三つの商の localKFlat は、それぞれ独立の入力として保持した。
+- 新規監査対象 `ChecksKernelCompositionDescent` で13主要宣言を直接監査した。
+  二つの dg 関手の graph kernel を用いた完備作用の合成例も検証した。
+  U17 公開入口と合同監査へ接続し、合同ビルド成功（4064 jobs、警告・エラー0件）。
+  全196宣言の公理監査は標準3公理のみ。新しい sorry・axiom・引用なし。
+- 前単位 `4111366d` は直後の stat で自分の6ファイルのみと確認した。
+  他担当の Morita/・Derived/・Perfect/ 等、共有ルート・Stage・README は編集していない。
+- 元の Perf 合成比較の全 kernel 射への自然性は接続済み。降下した合成比較自身の
+  両 kernel 射への自然性、局所 perfect 正方形と合成比較の貼合せ、追加の shift 構造照合は
+  別に保持して継続する。中心作用・G 作用は保留。目標全体は進行中。

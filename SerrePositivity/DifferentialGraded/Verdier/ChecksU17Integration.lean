@@ -14,6 +14,7 @@ public import SerrePositivity.DifferentialGraded.Verdier.ChecksScalarQuotientSou
 public import SerrePositivity.DifferentialGraded.Verdier.ChecksScalarDirectCompletion
 public import SerrePositivity.DifferentialGraded.Verdier.ChecksGraphPairMorita
 public import SerrePositivity.DifferentialGraded.Verdier.ChecksKernelComparisonNaturality
+public import SerrePositivity.DifferentialGraded.Verdier.ChecksKernelCompositionDescent
 
 /-! # U17 の公開図式と公理監査の同時 import 検証 -/
 @[expose] public section
