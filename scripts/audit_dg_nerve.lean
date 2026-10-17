@@ -172,6 +172,18 @@ dg nerve は構成済み。ホーン充填の完成をこの監査から主張�
 #print axioms SerrePositivity.InfinityCategories.DGNerve.HornEquation.missingComponent
 #print axioms SerrePositivity.InfinityCategories.DGNerve.HornEquation.sum_missingComponent
 #print axioms SerrePositivity.InfinityCategories.DGNerve.HornEquation.missingComponent_eq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HomFamily.heq_of_pointwise
+#print axioms SerrePositivity.InfinityCategories.DGNerve.SimplexData.hom_heq_of_indices
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Simplex.hom_heq_of_eq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.Simplex.hom_heq_of_pullback_eq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.face_hom_heq
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.recoverHom_heq_face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.knownData
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.image_known
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.knownData_hom_heq_face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.knownData_pullback_face
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.knownData_equation_image
+#print axioms SerrePositivity.InfinityCategories.DGNerve.HornData.knownData_equation
 
 #check @SerrePositivity.InfinityCategories.DGNerve.compose_zero
 #check @SerrePositivity.InfinityCategories.DGNerve.zero_compose
@@ -330,3 +342,15 @@ dg nerve は構成済み。ホーン充填の完成をこの監査から主張�
 #check @SerrePositivity.InfinityCategories.DGNerve.HornEquation.missingComponent
 #check @SerrePositivity.InfinityCategories.DGNerve.HornEquation.sum_missingComponent
 #check @SerrePositivity.InfinityCategories.DGNerve.HornEquation.missingComponent_eq
+#check @SerrePositivity.InfinityCategories.DGNerve.HomFamily.heq_of_pointwise
+#check @SerrePositivity.InfinityCategories.DGNerve.SimplexData.hom_heq_of_indices
+#check @SerrePositivity.InfinityCategories.DGNerve.Simplex.hom_heq_of_eq
+#check @SerrePositivity.InfinityCategories.DGNerve.Simplex.hom_heq_of_pullback_eq
+#check @SerrePositivity.InfinityCategories.DGNerve.HornData.face_hom_heq
+#check @SerrePositivity.InfinityCategories.DGNerve.HornData.recoverHom_heq_face
+#check @SerrePositivity.InfinityCategories.DGNerve.HornData.knownData
+#check @SerrePositivity.InfinityCategories.DGNerve.HornData.image_known
+#check @SerrePositivity.InfinityCategories.DGNerve.HornData.knownData_hom_heq_face
+#check @SerrePositivity.InfinityCategories.DGNerve.HornData.knownData_pullback_face
+#check @SerrePositivity.InfinityCategories.DGNerve.HornData.knownData_equation_image
+#check @SerrePositivity.InfinityCategories.DGNerve.HornData.knownData_equation
