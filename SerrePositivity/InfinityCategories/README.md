@@ -855,3 +855,22 @@ dg nerve を標的とすると、`cospanBoundaryLeftData F unknown`・`cospanBou
 
 残る三角形成分の微分恒等式、左右の共通成分と錐の対象・射の同定、fiber 座標による未知成分の解、
 全方程式と境界の一致、`IsPullbackSquare` は未完了。公開型と前提は計画 §5 の N7c4 に記録する。
+
+
+## N7.7：三角形側の残差整合条件（2026-10-18）
+
+全体集合の錐頂点と最初の末尾頂点での削除・切断を計算し、Bianchi の寄与がこの二点に限られることを
+`differential_rhs_cospan_twoTail_pair` で証明した。前者の符号は正一、後者は負一。
+`SimplexData.tripleHom` は任意の増加する三頂点の次数 −1 の成分。
+二つの寄与は、それぞれ `u e₀` と `−e_D + g e_B` になる（e は各未知集合の残差）。
+
+`differential_rhs_cospan_twoTail_of_unknown_zero` は未知成分が全て零である場合に
+`δr_BD = −(u r₀ + (−r_D + g r_B))`、すなわち `r_D − g r_B − u r₀` を与える。
+`cospanBoundaryLeftZeroData_unknownHom`・右版で実際の境界データの全未知成分の零を確認し、
+左右の `...ZeroData_twoTail_differential` により、この整合式を追加仮定なしに証明した。
+右のセルでは同じ式の g,u,r_B,r_BD を h,v,r_C,r_CD と読む。
+
+この時点の射・三角形は、各セルから回収した `edgeHom`・`tripleHom`。
+左右に共通の先頭・D 成分の同定と、標準 fiber の錐の p,q,t,u,v,g,h との比較はまだ未完了。
+従って、二セルをまとめた fiber の座標の適用、未知六成分の解、全方程式と貼り合わせ、
+`IsPullbackSquare` の完成とは数えない。公開型・前提・次数は計画 §5 の N7c5 に記録する。
