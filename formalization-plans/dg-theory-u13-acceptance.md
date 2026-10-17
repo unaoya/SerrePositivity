@@ -1,9 +1,10 @@
-# U13 全体の受入照合と残項目
+# U13 全体の受入記録
 
 正本は `dg-theory.md` §15.3 と §17.86–17.113。
 任意可換環、非有界cochain複体、dの次数+1、ホモトピー次数−1、Mathlib Enrichedを維持する。
-**U13全体の最終受入は進行中。** 一対象環の既存PerfectHomotopyでの有限射影代表は未完である。
-既存のKaroubi包絡を付けた比較だけで、元の比較の本質的全射を結論しない。
+**U13a〜eを受け入れる（2026-10-17）。** 一対象環の導来retractの有界有限射影代表、
+元のPerfectHomotopyのホモトピー冪等分裂と、Karoubi包絡を介さない元の比較の同値を証明した。
+以下のU13e.27–40は各単位の実装記録であり、途中段階の保留は最終照合で解消した。
 
 ## 要件の棚卸し（2026-10-17）
 
@@ -21,8 +22,9 @@
 | U13e：finite cellの有限射影評価、主Perfの比較像へのretract表示 | 既存証明あり。`RingFiniteCell`, `RingRetract`。§17.108・111 |
 | U13e：Karoubi実現・元の比較へのfactorと導来・三角図式の整合性 | 既存証明あり。`RingKaroubi`, `RingKaroubiFactors`。§17.112–113 |
 | U13e：実際の射影的perfect dg enhancement内でのホモトピー冪等分裂 | 今回証明。以下U13e.27。分裂対象は実際の射影的perfect dg加群である |
-| U13e：既存PerfectHomotopy自身のホモトピー冪等分裂 | 未完・必須。分裂対象に有界有限射影複体の代表が必要。前行の一般dg加群での分裂だけでは足りない |
-| U13e：主Perfのretractの有界有限射影代表、Karoubiなしの本質的全射 | 通常DerivedCategoryのretractの有限射影代表はU13e.37で証明。主dg導来圏への移送、`perfectHomotopyToDGPerfect` と実際のdg比較の本質的全射は残る |
+| U13e：既存PerfectHomotopy自身のホモトピー冪等分裂 | 今回証明。U13e.39–40。分裂対象は有界有限射影複体であり、実際の閉零射と境界関係の版も構成 |
+| U13e：主Perfのretractの有界有限射影代表、Karoubiなしの本質的全射 | 今回証明。U13e.37–39。通常DerivedCategoryと主dg導来圏の両方で有限射影代表を構成し、元の比較の同値・実際のdg比較の準同値を証明 |
+| U13e：新同値と元のretract・線形・shift・三角比較の接続 | 今回証明。U13e.39–40。順関手は元の比較そのもの。導来包含・三角形関手の自然同型、unit/counitのshift整合性、retractの二式を監査。既存Karoubi factor図式も合同再検証 |
 
 ## U13e.27：実際のenhancementのホモトピー冪等分裂
 
@@ -178,7 +180,24 @@
   小さいenhancement・標準cone比較・既存PerfectHomotopy比較・retract表示・Karoubi factorの
   17既存監査対象を合同ビルドし、3240 jobsで成功した。
 - 274件の公理監査出力はすべて標準3公理のみ。
-  この再検証は既存項目の証拠であり、未完の有限射影代表・元の比較の本質的全射を証明したことにはしない。
+  この初回再検証は既存項目の証拠であり、有限射影代表・元の比較の本質的全射の証明はU13e.37–40による。
+
+## 最終合同検証（2026-10-17）
+
+- 上記17既存対象、新規14単位の各公理監査対象、U14cの入力除去版と既存Compatibilityの
+  計33対象を合同ビルドした。3512 jobs、終了コード0、警告・エラー0件。
+- 357宣言の公理監査はすべて `propext`, `Classical.choice`, `Quot.sound` のみ。
+  新規U13単位の監査宣言は計66件。既存宣言の名前・型は変更していない。
+- 新規実装は `DifferentialGraded/Perfect/` 内に置いた。
+  既存Perfectファイルの変更は `RingKaroubiFactors.lean` のpublic import一行だけ。
+  既存PerfectComplex・Idempotent一般論、共有ルート・Stage・README、他担当系列は編集していない。
+- 新規sorry・axiom・引用は0件。有限射影代表の証明は次数幅帰納法であり、
+  DG-PER・Brown表現性・Noetherian性を仮定しない。
+- U14cの `compactToPerfect` 入力除去は `DerivedEquivalenceCompactGenerator.lean` と
+  `dg-theory-u14.md` のU14c.11に記録した。元の入力付きAPIは保持し、thick生成・compact生成の仮定を残す。
+- 各実装単位を自分のパスだけで個別コミットし、各commit後のstatを確認した。
+  U13e.33の直後は別チャットのcommitがHEADになったため、自分のhash `e56a1d30` も個別照合した。
+  他人のファイルの取り込みはない。
 
 ## 範囲の区別
 
@@ -193,16 +212,8 @@
   他担当のQuotient・Verdier・Bimodule・Tensor・Resolution・指定Derived系列は編集しない。
 - DG-PER等の引用は採用していない。必要となれば、採用せず停止・報告する。
 
-## 残る作業
+## 最終判定
 
-1. 一対象Aのホモトピー冪等元の分裂対象に有界有限射影代表を与える。
-2. その証拠で既存PerfectHomotopyの冪等完備性と、元の比較の本質的全射・同値を証明する。
-3. retract・線形・shift・三角図式を既存比較に接続して最終照合する。
-4. 項目ごとの対象ビルド・主要宣言の公理監査を揃え、この記録を最終受入へ更新し、
-   `dg-theory.md`へ参照を一行だけ追加する。
-
-有限射影代表の証明は次数幅に関する帰納法で進める。最上次数の有限自由被覆を
-retract対象とその補対象に同時に取り、直和のconeを元の有限射影複体上のconeで表す。
-最上ホモロジーが零のconeの上端を射影性で切り詰め、短い次数幅のretractへ帰着する。
-帰納後は元の三角形を逆回転し、有限射影複体間の射を実際のchain mapへ持ち上げてconeを取る。
-これは今後証明する構成方針であり、U13e.28–29だけで帰納ステップが成立したとは記録しない。
+U13a〜dの既存証拠とU13eの全要件を照合した。§17.112–113で残っていた
+元のPerfectHomotopyのホモトピー冪等分裂・retractの有限射影代表・元の比較の本質的全射は解消した。
+U13の受入範囲内の未完項目はない。正本 `dg-theory.md` §15.3への変更は本記録の参照一行のみ。

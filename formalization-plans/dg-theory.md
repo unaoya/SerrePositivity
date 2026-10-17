@@ -2790,6 +2790,7 @@ U12の局所化による構成はD4mを待たず進める。Quillen bifunctorと
 
 小さいenhancementは対象のコード化と代表の選択を別に検証し、局所小性だけから対象集合のsmall性を結論しない。
 既存PerfectComplex/Idempotent*・Karoubi三角構造を再利用し、そのファイル群は変更しない。
+U13a–eの最終受入・有限射影retract代表・元の比較同値の記録（2026-10-17）：[`dg-theory-u13-acceptance.md`](dg-theory-u13-acceptance.md)。
 
 ### 15.4 U14：指定dg生成元とendomorphism表示（D7）
 
