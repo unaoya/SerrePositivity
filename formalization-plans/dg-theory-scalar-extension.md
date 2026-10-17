@@ -131,3 +131,32 @@ dg 加群の係数変更・その随伴、相対 tensor の比較、導来比較
 係数拡大・係数制限の両関手まで実装済み。両者の加群圏上の随伴の証明を進める。
 相対 tensor 比較、導来版、U15d は未完のまま維持する。
 ユーザーの追加指示により amend・rebase・reset は禁止。通常の追加コミットのみを使う。
+
+
+## 2026-10-17：加群圏上の随伴
+
+係数制限関手は `0d6266d4` にコミット済み。
+`Tensor/ScalarExtensionAdjunction.lean` の `moduleAdjunction` は
+`moduleExtension φ D ⊣ moduleRestriction φ D` を構成する。
+`moduleUnitApp`・`moduleCounitApp` は複体随伴の単位・余単位を各対象に置いた
+実際の全次数自然な dg 加群射であり、`moduleUnit`・`moduleCounit` の自然性と
+左右の三角恒等式を証明した。元の dg 圏の Hom に flatness を課さず、
+係数環 A' の A-flatness も仮定しない。`Small.{u} D` は Hom end のために要求する。
+
+`lake build SerrePositivity.DifferentialGraded.Checks.ScalarExtensionAdjunction` 成功
+（1992 jobs、警告なし）。`ℤ → ZMod 2` の加群随伴を型検査し、主要9宣言の
+公理監査はすべて標準3公理のみ。新規 sorry・axiom・引用は0件。
+ルートの自分の import 行のみ `ScalarExtensionAdjunction` へ進める。
+
+### 次の作業と全体の未完条件
+
+1. 相対 balanced tensor の係数変更：直和の添字を同じ対象・対象対に固定し、
+   二つの関係射を tensor 比較で運ぶ。coequalizer 比較の同型と包含成分の公式、
+   両変数自然性、単位・結合比較を証明する。左右加群を opposite で交換する API も照合する。
+2. `Derived/ScalarExtension.lean`：projective/semifree 置換による非 flat な導来版と、
+   underived との一致に必要な K-flat 条件。`Derived/KFlatBimodule*` は読んで使い、編集しない。
+3. `Quotient/ScalarExtension.lean`：固定 path 添字の比較、最終微分、単位・合成整合性。
+4. 各部分のビルド・主要宣言監査・記録・追加コミットを続け、全受入の確認後にのみ
+   正本 `dg-theory.md` へ一行の参照を足す。
+
+U12f 全体・U15d 全体はまだ完了ではない。ゴールを縮小せず、この順序で継続する。
