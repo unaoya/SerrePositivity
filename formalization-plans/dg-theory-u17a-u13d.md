@@ -91,3 +91,17 @@ compact ⇒ Perf はまだ未完。引用は採用していない。引用なし
 - 対象ビルド：`lake build SerrePositivity.DifferentialGraded.Checks.CompactConverseResolutionStages` 成功。
   主要5宣言の公理監査は標準3公理のみ。引用なし。
 - U13d3 のコミット：`e9d9eea3`。残る中心は余極限と telescope の比較である。
+
+### U13d5：余極限の cone 表示（完了）
+
+- `Perfect/CompactConverseSequential.lean`：任意の加法圏の列について、
+  実際の余極限が余積上の `1-shift` の cokernel となることを、cocone の普遍性で証明。
+  ModuleCat では成分射影と元の有限 support 表示から `1-shift` の単射性を証明。
+  遷移射が単射であることは仮定しない。
+- 加法関手の標準余積比較と `1-shift` の可換性を証明し、評価後の次数ごとの単射性に使用。
+- `Perfect/CompactConverseSequentialCone.lean`：評価後の短完全列から既存 Mathlib の
+  `mappingCone.quasiIso_descShortComplex` を再利用。
+  `moduleSequentialConeDesc_quasiIso` は任意の可算 dg 加群余極限への具体的 cone 射が擬同型であることを示す。
+- 対象ビルド：`lake build SerrePositivity.DifferentialGraded.Checks.CompactConverseSequential` 成功。
+  主要11宣言の公理監査は標準3公理のみ。引用・新規 sorry・axiom なし。
+- U13d4 のコミット：`ba3c7265`。

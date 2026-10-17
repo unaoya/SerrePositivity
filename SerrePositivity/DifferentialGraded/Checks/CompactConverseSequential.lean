@@ -1,0 +1,18 @@
+module
+public import SerrePositivity.DifferentialGraded.Perfect.CompactConverseSequentialCone
+
+/-! # 可算余極限の cone 表示の公理監査 -/
+@[expose] public section
+open SerrePositivity.DifferentialGraded
+
+#print axioms sequentialCoproductMap_desc
+#print axioms sequentialCoproductCoconeOfZero
+#print axioms sequentialCoproductCokernel
+#print axioms sequentialCoproductShift_projection_zero
+#print axioms sequentialCoproductShift_projection_succ
+#print axioms sequentialCoproductMap_sigmaComparison
+#print axioms sequentialCoproductMap_moduleCat_injective
+#print axioms sequentialCoproductMap_moduleCat_mono
+#print axioms sequentialCoproductMap_mono_of_moduleCat_functor
+#print axioms moduleSequentialShortComplex_evaluation_shortExact
+#print axioms moduleSequentialConeDesc_quasiIso
