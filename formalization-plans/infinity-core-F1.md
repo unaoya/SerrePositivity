@@ -12405,5 +12405,88 @@ lemma exists_smallLeftUnstraightening_representation
       Nonempty (VertexIso (leftFibrationInfinityVertex p)
         (leftFibrationInfinityVertex (smallLeftUnstraighteningProjection F)))
 
+lemma kanDiagramRealization_vertex {C : Type u} [Category.{u} C] (F : KanDiagramObject C) :
+    (kanDiagramRealization C).app (Opposite.op ⦋0⦌) (coherentNerveVertex F) =
+      functorVertex (kanDiagramCoherentNerve F.val)
+
+def kanDiagramHom {C : Type u} [Category.{u} C] {F G : KanDiagramObject C}
+    (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget) : F ⟶ G
+
+noncomputable def kanDiagramNaturalTransformationEdge {C : Type u} [Category.{u} C]
+    {F G : KanDiagramObject C}
+    (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget) :
+    Edge (functorVertex (kanDiagramCoherentNerve F.val))
+      (functorVertex (kanDiagramCoherentNerve G.val))
+
+lemma kanDiagramNaturalTransformationEdge_at {C : Type u} [Category.{u} C]
+    {F G : KanDiagramObject C}
+    (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget) (c : C) :
+    (functorEdgeAt (kanDiagramNaturalTransformationEdge η) (ULift.up (nerveVertex c))).edge =
+      (coherentNerveEdge (show F.val.obj c ⟶ G.val.obj c from η.app c)).edge
+
+lemma kanDiagramNaturalTransformationEdge_isInvertible {C : Type u} [Category.{u} C]
+    {F G : KanDiagramObject C}
+    (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget)
+    (hη : ∀ c, IsQCatEquivalence (X := (F.val.obj c).obj)
+      (Y := (G.val.obj c).obj) (η.app c)) :
+    IsInvertibleEdge (kanDiagramNaturalTransformationEdge η)
+
+noncomputable def kanDiagramFunctorIsoOfPointwise {C : Type u} [Category.{u} C]
+    {F G : KanDiagramObject C}
+    (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget)
+    (hη : ∀ c, IsQCatEquivalence (X := (F.val.obj c).obj)
+      (Y := (G.val.obj c).obj) (η.app c)) :
+    FunctorIso (kanDiagramCoherentNerve F.val) (kanDiagramCoherentNerve G.val)
+
+noncomputable def kanDiagramEdgewiseRightIso {C : Type u} [Category.{u} C]
+    (F : C ⥤ KanObject.{u}) :
+    FunctorIso (kanDiagramCoherentNerve (F ⋙ kanEdgewiseFunctor))
+      (kanDiagramCoherentNerve F)
+
+noncomputable def kanDiagramEdgewiseLeftIso {C : Type u} [Category.{u} C]
+    (F : C ⥤ KanObject.{u}) :
+    FunctorIso (kanDiagramCoherentNerve (F ⋙ kanEdgewiseFunctor))
+      (kanDiagramCoherentNerve (F ⋙ kanObjectOpFunctor))
+
+noncomputable def kanDiagramOppositeComparisonIso {C : Type u} [Category.{u} C]
+    (F : C ⥤ KanObject.{u}) :
+    FunctorIso (kanDiagramCoherentNerve F)
+      (kanDiagramCoherentNerve (F ⋙ kanObjectOpFunctor))
+
+noncomputable def leftStraighteningCandidateCoherentTransportIso
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    FunctorIso (leftStraighteningCandidate p) (leftCoherentTransport p)
+
+noncomputable def smallStraighteningReconstruction
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    E ⟶ smallLeftUnstraightening (leftStraighteningCandidate p)
+
+lemma smallStraighteningReconstruction_projection
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    smallStraighteningReconstruction p ≫
+      smallLeftUnstraighteningProjection (leftStraighteningCandidate p) = p
+
+lemma smallStraighteningReconstruction_isPrecompositionEquivalence
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    IsPrecompositionEquivalence (smallStraighteningReconstruction p)
+
+noncomputable def smallStraighteningReconstructionVertexIso
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    VertexIso (leftFibrationInfinityVertex p)
+      (leftFibrationInfinityVertex
+        (smallLeftUnstraighteningProjection (leftStraighteningCandidate p)))
+
+noncomputable def smallStraighteningReconstructionCandidateIso
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    FunctorIso (leftStraighteningCandidate p)
+      (leftStraighteningCandidate
+        (smallLeftUnstraighteningProjection (leftStraighteningCandidate p)))
+
 end SerrePositivity.InfinityCategories
 ```
