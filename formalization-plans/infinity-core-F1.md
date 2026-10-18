@@ -1170,5 +1170,30 @@ noncomputable def coherentNerveCompStruct {C : Type v} [Category.{u} C]
     SSet.Edge.CompStruct (coherentNerveEdge f) (coherentNerveEdge g)
       (coherentNerveEdge (f ≫ g))
 
+lemma joinPoints_inl_face :
+    joinInl (Δ[0] : SSet.{u}) Δ[0] ≫ (joinStdSimplexIso 0 0).hom =
+      stdSimplex.δ 1
+
+lemma joinPoints_inr_face :
+    joinInr (Δ[0] : SSet.{u}) Δ[0] ≫ (joinStdSimplexIso 0 0).hom =
+      stdSimplex.δ 0
+
+lemma joinPoints_face_inl :
+    stdSimplex.δ 1 ≫ (joinStdSimplexIso.{u} 0 0).inv = joinInl Δ[0] Δ[0]
+
+lemma joinPoints_face_inr :
+    stdSimplex.δ 0 ≫ (joinStdSimplexIso.{u} 0 0).inv = joinInr Δ[0] Δ[0]
+
+def cosliceFiberVertexToEdge {X : SSet.{u}} {x y : X _⦋0⦌}
+    (s : (vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y) _⦋0⦌) :
+    X.Edge x y
+
+def edgeToCosliceFiberVertex {X : SSet.{u}} {x y : X _⦋0⦌} (e : X.Edge x y) :
+    (vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y) _⦋0⦌
+
+def cosliceFiberVertexEquiv {X : SSet.{u}} (x y : X _⦋0⦌) :
+    (vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y) _⦋0⦌ ≃
+      X.Edge x y
+
 end SerrePositivity.InfinityCategories
 ```

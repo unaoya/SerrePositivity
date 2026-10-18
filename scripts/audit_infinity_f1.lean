@@ -286,3 +286,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.coherentNerveEdge_edge
 #check @SerrePositivity.InfinityCategories.coherentNerveEdge_id
 #check @SerrePositivity.InfinityCategories.coherentNerveCompStruct
+#check @SerrePositivity.InfinityCategories.joinPoints_inl_face
+#check @SerrePositivity.InfinityCategories.joinPoints_inr_face
+#check @SerrePositivity.InfinityCategories.joinPoints_face_inl
+#check @SerrePositivity.InfinityCategories.joinPoints_face_inr
+#check @SerrePositivity.InfinityCategories.cosliceFiberVertexToEdge
+#check @SerrePositivity.InfinityCategories.edgeToCosliceFiberVertex
+#check @SerrePositivity.InfinityCategories.cosliceFiberVertexEquiv
