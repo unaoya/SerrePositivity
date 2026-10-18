@@ -186,4 +186,44 @@ theorem reesGradedMap_irrelevant_le :
   have hqp : q = p := Subtype.ext (heq.trans ((mem_reesGrade_iff _ _ _).mp hp).symm)
   exact hqp ▸ hq
 
+/--
+概要：恒等係数写像の Rees 次数付き写像は恒等射。
+方針：基になる 環準同型の恒等性を次数付き写像へ移す。
+規約：KST §5、次数付けは既存の Rees 次数付け。
+使われ方：アフィン開集合での比較の恒等射条件。
+-/
+@[simp] theorem reesGradedMap_id :
+    reesGradedMap I I (RingHom.id R) (by simp) = GradedRingHom.id (reesGrade I) := by
+  apply GradedRingHom.ext
+  intro p
+  exact DFunLike.congr_fun (reesMap_id I) p
+
+/--
+概要：Rees の次数付き係数写像は合成を保つ。
+方針：基になる 環準同型の合成則を次数付き写像へ移す。
+規約：KST §5、三つの中心と二つの中心を保つ準同型を明示する。
+使われ方：blowup のチャート比較の三重交叉条件。
+-/
+theorem reesGradedMap_comp (K : Ideal T) (g : S →+* T) (hg : J.map g ≤ K) :
+    (reesGradedMap J K g hg).comp (reesGradedMap I J f hf) =
+      reesGradedMap I K (g.comp f) (by
+        rw [← Ideal.map_map]
+        exact (Ideal.map_mono hf).trans hg) := by
+  apply GradedRingHom.ext
+  intro p
+  exact DFunLike.congr_fun (reesMap_comp I J f hf K g hg) p
+
+/--
+概要：像中心を同定した表示でも irrelevant ideal の包含が成立する。
+方針：中心の等式に沿って像中心の場合の証明を移送する。
+規約：KST §5、中心の等式だけを仮定する。
+使われ方：アフィン開集合のイデアル切断の中心を保つ比較。
+-/
+theorem reesGradedMap_irrelevant_le_of_eq (hJ : I.map f = J) :
+    HomogeneousIdeal.irrelevant (reesGrade J) ≤
+      (HomogeneousIdeal.irrelevant (reesGrade I)).map
+        (reesGradedMap I J f hJ.le) := by
+  subst J
+  exact reesGradedMap_irrelevant_le I f
+
 end SerrePositivity.KST.SchemeLemmas

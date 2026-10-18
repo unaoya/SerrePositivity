@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 344 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 363 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -35,7 +35,9 @@
 - 元の中心元の像に対応するチャートだけで像中心の blowup を覆うことを証明済み。
 - blowup 比較射とチャートの射の交換式、標準チャートの逆像の計算を証明済み。
 - 一元係数局所化の blowup 比較射の開埋め込み性と像を証明し、`affineBlowupLocalizationIso` により D(r) の逆像との実際のスキーム同型を構成済み。
-- 次は比較の合成則と一般スキームへの貼り合わせ。
+- 中心を別表示のイデアルとして保持する比較射の恒等性・反変合成則・基底両立性を証明済み。
+- 中心を保つ基礎環同型による blowup の実際のスキーム同型を構成済み。
+- 次はイデアル層のアフィン局所モデルの図式と一般スキームへの貼り合わせ。
 - §14 の担当境界を採用済み（正本 §13-13、2026-10-18）。
 - L7a・L7b と L7c の環論・古典的スキーム射を本レーンで完成させる。
 - L7a は未完了。L7b・L7c の本体は未着手。
@@ -396,6 +398,10 @@ f の有限型性は固有性から導く。
 | `affineBlowupBaseMap_chart` / `affineBlowupBaseMap_preimage_chart` | BaseChangeCharts | 検証済み | チャート射の交換式と逆像の同定 |
 | `affineBlowupBaseMap_isOpenImmersion` / `affineBlowupBaseMap_range` | BlowupLocalization | 検証済み | 一元係数局所化の比較射の開埋め込み性と像 |
 | `affineBlowupLocalizationIso` / `affineBlowupLocalizationIso_hom_ι` | BlowupLocalization | 検証済み | D(r) の逆像との基底上のスキーム同型 |
+| `reesGradedMap_id` / `reesGradedMap_comp` | ReesMap | 検証済み | 次数付き係数写像の恒等性と合成則 |
+| `affineBlowupCenterMap` | BlowupFunctor | 検証済み | 中心の像を同定した基底上の比較射 |
+| `affineBlowupCenterMap_id` / `affineBlowupCenterMap_comp` | BlowupFunctor | 検証済み | 中心比較射の恒等性と反変合成則 |
+| `affineBlowupRingEquivIso` / `affineBlowupRingEquivIso_hom_base` | BlowupRingEquiv | 検証済み | 基礎環同型による blowup の移送と基底両立性 |
 | `blowupPowerIso` | Blowup | 予定 | 正の冪の比較 |
 | `blowup` | Blowup | 予定 | 一般スキームへの貼り合わせ |
 | `exceptionalDivisor` | Blowup | 予定 | 例外因子 |
