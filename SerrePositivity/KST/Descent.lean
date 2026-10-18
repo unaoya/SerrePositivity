@@ -108,6 +108,9 @@ public import SerrePositivity.KST.Descent.CechPullback
 public import SerrePositivity.KST.Descent.CechBaseChange
 public import SerrePositivity.KST.Descent.DoubleCechGeometry
 public import SerrePositivity.KST.Descent.DoubleCechNaturality
+public import SerrePositivity.KST.Descent.CechHomotopyIndex
+public import SerrePositivity.KST.Descent.CechRefinementHomotopy
+public import SerrePositivity.KST.Descent.CechRefinementEquivalence
 
 /-!
 # K-L8：論文 §3 の降下
@@ -176,6 +179,8 @@ Cartesian モデルと指定引き戻しの標準同型の同変性を証明し�
 実降下の帰結を明示した条件のもとで各段の全次数降下を証明する。
 増強 Čech の右随伴性から底変換比較を証明し、恒等射の Čech の定数図式との自然同型を構成する。
 実際の二重 Čech の各対象のファイバー積表示と、全単体射を保つ軸交換の自然同型を公開する。
+同じ基底上の平行な細分比較の実際の Čech ホモトピーを構成し、
+相互細分の指定比較の両合成と恒等射の間のホモトピー、および同じ前層の像を公開する。
 
 ## 規約
 最小公理 (1)–(8)、Čech 降下、主定理の証明、E の実現は未完成。

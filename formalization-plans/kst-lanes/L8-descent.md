@@ -85,10 +85,12 @@ Cartesian モデルと指定引き戻しの標準同型の同変性を証明し�
 増強 Čech nerve の右随伴性から実際の底変換比較を証明した。
 恒等射の Čech の定数図式との自然同型、および実際の二重 Čech 全体の
 軸交換の自然同型を構成した。値域の Tot の Fubini は引き続き未完である。
+同じ基底上の平行な Čech 細分比較の間の実際の単体ホモトピーを構成した。
+相互細分の指定比較は両側のホモトピー逆を持ち、元の前層の像にもホモトピーを移した。
 `Theorem31.lean` では (3.8) と中心上の帰納仮定による代数的な軌道貼り合わせを証明。
 正本 D7 に従う導来値域への実現の型を §19 に明示する。
 検証状態：`lake build SerrePositivity.KST.Descent` が成功。
-監査状態：`scripts/audit_kst_descent.lean` は 108 モジュール・1208 宣言を検査し成功。
+監査状態：`scripts/audit_kst_descent.lean` は 111 モジュール・1350 宣言を検査し成功。
 許容公理は標準三公理のみ。主定理や八つの公理の完成を意味しない。
 切断を持つ射の帰納の区切りとして、全体ビルド `lake build` も成功（9418 ジョブ）。
 終了コードは `set -eo pipefail` で確認。ログは `/tmp/l8-sectioned-full-build.log`。
@@ -580,6 +582,11 @@ Z 上の帰納仮定で残りの辺を同型とする。
 | `doubleCechSwapIso_involutive` | 二重 Čech の軸交換の二回の合成が恒等 | 対象ビルド済み |
 | `doubleCechSwapIso_inner_naturality`、`doubleCechSwapIso_outer_naturality` | 全ての単体射と軸交換の整合性 | 対象ビルド済み |
 | `doubleCechSwapNatIso` | 実際の二重 Čech 全体の軸交換の自然同型 | 対象ビルド済み、Tot の交換とは区別 |
+| `cechMixIndex` と七つの添字恒等式 | 細分ホモトピーの重複座標と比較タグ | 対象ビルド済み、有限順序集合の算術 |
+| `refinementCechHomotopy` | 同じ基底上の平行な細分 Čech 比較の単体ホモトピー | 対象ビルド済み、全ての面射・退化射を検査 |
+| `refinementCechMap_id`、`refinementCechMap_comp` | 指定細分比較の恒等射・合成の保存 | 対象ビルド済み |
+| `refinementCechHomotopyLeftInverse`、`refinementCechHomotopyRightInverse` | 相互細分の両側のホモトピー逆 | 対象ビルド済み、持ち上げの合成が恒等である仮定は不要 |
+| `refinementCechImageHomotopyLeftInverse`、`refinementCechImageHomotopyRightInverse` | 元の前層の像における両側のホモトピー | 対象ビルド済み、Tot の実降下とは区別 |
 | `finiteCoproductDesc_isFinite` | 共通の終域への有限個の有限射を非交和にまとめる | 対象ビルド済み |
 | `sectionOrbitMap_isFinite`、`sectionOrbitMap_isProper` | 分離射の有限個の切断からの軌道射の有限性・固有性 | 対象ビルド済み |
 | `reducedSectionOrbitMap_isFinite` | 被約化への切断の軌道射の有限性 | 対象ビルド済み |
@@ -1355,3 +1362,34 @@ Comma の二射影による極限の共同反映でこれを証明した。
 値域の実際の Tot の Fubini、分裂降下、有限平坦 transfer の図式との接続、
 元の切断を持たない射への還元は残る。
 実降下からの自然な blowup 列と有限積保存、最小公理全体・(3.6)・K0・T2・E も未完である。
+
+## 43. 平行な細分比較のホモトピーと相互細分のホモトピー逆
+
+同じ基底 Y への二つの射 f : X → Y、g : W → Y と、
+基底上の二つの持ち上げ a,b : X → W を取る。
+`refinementCechMap` は指定された持ち上げからの実際の Čech 比較である。
+持ち上げの一致は要求せず、この二つの比較の間に実際の単体ホモトピーを構成した。
+
+ホモトピーの射は、出力座標を一つ重複させ、切替位置の左側では a、右側では b を使う。
+`cechMixIndex` は元の座標と、どちらの比較射を使うかのタグを保持する。
+最初・最後の面、切替位置の前・中央・後の面、前後の退化射の七つの関係を
+有限順序集合の算術に還元して証明した。
+実際のスキームの射の証明では、この有限添字の等式を使って各射影を検査する。
+共通の基底へも lift の合成公式で一致し、wide pullback の普遍性で射の等式となる。
+
+`refinementCechHomotopy` は Mathlib の `SimplicialObject.Homotopy` の全ての条件を満たす。
+各次数の写像の存在だけをホモトピーと呼んではいない。
+全ての面射・退化射の整合性と、二つの指定比較への端点の恒等式を検査済みである。
+
+さらに基底上の持ち上げ a : X → W と b : W → X が両方向に存在するとする。
+これらの合成が恒等射であることは仮定しない。
+`refinementCechMap_id` と `refinementCechMap_comp` で比較の恒等射・合成の保存を確認し、
+合成持ち上げと恒等持ち上げの間のホモトピーを適用する。
+これにより Čech 比較の二つの合成はそれぞれ恒等写像にホモトピックとなる。
+
+任意の同じ反変前層を、その反対圏への共変関手として適用できる。
+実際の単体ホモトピーを写すことで、前層の像でも両側のホモトピー逆を得る。
+これらは実際の Tot のホモトピー不変性に供給する細分比較の入力である。
+Tot の実降下や任意の細分の降下保存を、この結果だけで結論してはいない。
+L9 の実際の Tot・hG とその性質、Fubini、transfer の自然な図式、
+実降下からの自然な列・有限積保存、最小公理全体・(3.6)・K0・T2・E の接続は残る。
