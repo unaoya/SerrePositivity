@@ -2048,8 +2048,8 @@ A3e に実際の比較射の充満忠実性と既存の本質的全射性を渡�
 現在は γ3a と、γ3b の検出・比較ファイバー・重み付き end・表現可能な標準比較射、
 strict な図式・錐の coherent nerve での表示、fibration の塔の重み付き end の Kan 性、
 塔と一脚が fibration の cospan の実際の標準比較 κ・q_x のホモトピー同値性まで実装。
-離散図式の比較と 𝒮 の空積は実装済み。一般の coherent な錐との比較、end の一般の Kan 性・
-同値不変性、𝒮 の残りの極限と Sp への適用は未実装。
+離散図式の比較、𝒮 の空積、Kan 値図式の end の一般の Kan 性も実装済み。
+一般の coherent な錐との比較、end の同値不変性、𝒮 の残りの極限と Sp への適用は未実装。
 当面は通常の小圏で添字付けた strict な図式の極限側を扱い、余極限と一般の図式の比較は後続に保持する。
 
 ### γ3a：原典と今回の限定形
@@ -2192,7 +2192,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開345宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開367宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2820,15 +2820,15 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開345宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開367宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
 ### 重み付き end と weighted nerve の切断の族（全単射を実装）
 
 γ3b の主比較へ向け、Bousfield–Kan 重み付き end と weighted nerve の切断空間の対応を作る。
 切断の族から自然変換へ戻す構成と両逆関係まで以下で証明した。
-単体集合の切断模型との同型と、coherent な錐の pinched Hom と導来ファイバーの比較は未完了。
-この族の全単射だけで γ3b を完成とは数えない。
+単体集合の切断模型との同型と一般の Kan 値図式での Kan 性も以下で証明した。
+coherent な錐の pinched Hom と導来ファイバーの比較は未完了なので、γ3b の完成とは数えない。
 
 `PrefixOverWeight.lean` は各射列 σ の初区間を、その終点の over 圏へ持ち上げる。
 I : Type u、[SmallCategory I] の下で、次を構成した。
@@ -2899,8 +2899,58 @@ bousfieldKanSectionHomEquiv (H : I ⥤ SSet.{u}) (A : SSet.{u}) :
 
 後者は重み付き end の普遍性との合成であり、I : Type u、[SmallCategory I] だけを仮定する。
 パラメータ A と係数図式 H の Kan 性は不要。
-この全単射のパラメータに関する自然性、単体集合としての切断模型との同型、
-coherent な錐の pinched Hom と導来ファイバーの主比較は未完了。𝒮・Sp の残りの ∞ 極限も継続中。
+この全単射のパラメータ自然性と単体集合としての切断模型との同型は以下で証明した。
+coherent な錐の pinched Hom と導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は継続中。
+
+### 切断模型との同型と一般の Kan 性（実装済み）
+
+`WeightedSectionParameter.lean` は係数と切断のパラメータの前合成に関する自然性を証明する。
+`bousfieldKanSectionHomEquiv_apply H f` は全単射の順方向を
+`(nerve I ◁ f) ≫ bousfieldKanWeightedNerveEvaluation H` と同定する。
+`bousfieldKanSectionHomEquiv_parameter f g` は任意のパラメータの射に対する自然性である。
+
+`SimplicialSections.lean` は任意の p : E ⟶ K に対し、切断の単体集合を
+内部 Hom の後合成の射の恒等写像の点上の引き戻しとして構成する。
+
+```lean
+simplicialSections (p : E ⟶ K) : SSet.{u} :=
+  pullback ((ihom K).map p) (curry (fst K (𝟙_ SSet.{u})))
+simplicialSectionsEvaluation (p : E ⟶ K) : K ⊗ simplicialSections p ⟶ E
+simplicialSectionsHomEquiv (p : E ⟶ K) (A : SSet.{u}) :
+    (A ⟶ simplicialSections p) ≃ {s : K ⊗ A ⟶ E // s ≫ p = fst K A}
+```
+
+評価は底への合成が第一射影に一致する。`simplicialSectionsLift` は任意の切断の族を持ち上げ、
+`simplicialSectionsLift_evaluation` と `simplicialSections_hom_ext` が存在と一意性を与える。
+`BousfieldKanSectionsIso.lean` は二つの模型の普遍的な族から両向きの射を作り、評価の一意性を使う。
+
+```lean
+bousfieldKanSectionsMap (H : I ⥤ SSet.{u}) :
+    bousfieldKanHolim H ⟶ simplicialSections (weightedNerveProjection H)
+sectionsBousfieldKanMap (H : I ⥤ SSet.{u}) :
+    simplicialSections (weightedNerveProjection H) ⟶ bousfieldKanHolim H
+bousfieldKanSectionsIso (H : I ⥤ SSet.{u}) :
+    bousfieldKanHolim H ≅ simplicialSections (weightedNerveProjection H)
+```
+
+両射の評価の等式と両向きの厳密な逆関係を公開した。
+ここまでの同型には Kan 性、fibration 性、添字圏の有限性は不要である。
+
+`SectionsKan.lean` は F1 の既存の `relativeFunctorSpace` とも同定する。
+
+```lean
+simplicialSectionsRelativeIso {K E : SSet.{u}} (p : E ⟶ K) :
+    simplicialSections p ≅ relativeFunctorSpace p (𝟙 K)
+simplicialSections_kanComplex {K E : SSet.{u}} (p : E ⟶ K) [LeftFibration p] :
+    KanComplex (simplicialSections p)
+bousfieldKanHolim_kanComplex {I : Type u} [SmallCategory I] (H : I ⥤ SSet.{u})
+    [∀ i, KanComplex (H.obj i)] : KanComplex (bousfieldKanHolim H)
+```
+
+F1 の `weightedNerveProjection_leftFibration` と相対関手空間の Kan 性を使い、同型で移す。
+底や全空間の quasicategory 性は要求しない。
+これは比較先の一般の Kan 性であり、strict 極限の比較が任意の Kan 図式で同値になるとは主張しない。
+coherent な錐の pinched Hom と導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了。
 
 ### 𝒮 の空積（実装済み）
 

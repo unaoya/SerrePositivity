@@ -695,3 +695,47 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms weightedNerveSectionEquiv
 #check @bousfieldKanSectionHomEquiv
 #print axioms bousfieldKanSectionHomEquiv
+#check @weightedNerveCoefficients_parameter
+#print axioms weightedNerveCoefficients_parameter
+#check @weightedNerveSectionFromTransform_parameter
+#print axioms weightedNerveSectionFromTransform_parameter
+#check @bousfieldKanSectionHomEquiv_apply
+#print axioms bousfieldKanSectionHomEquiv_apply
+#check @bousfieldKanSectionHomEquiv_parameter
+#print axioms bousfieldKanSectionHomEquiv_parameter
+#check @simplicialSections
+#print axioms simplicialSections
+#check @simplicialSectionsEvaluation
+#print axioms simplicialSectionsEvaluation
+#check @simplicialSectionsEvaluation_projection
+#print axioms simplicialSectionsEvaluation_projection
+#check @simplicialSectionsLift
+#print axioms simplicialSectionsLift
+#check @simplicialSectionsLift_evaluation
+#print axioms simplicialSectionsLift_evaluation
+#check @simplicialSections_hom_ext
+#print axioms simplicialSections_hom_ext
+#check @simplicialSectionsHomEquiv
+#print axioms simplicialSectionsHomEquiv
+#check @bousfieldKanSectionsMap
+#print axioms bousfieldKanSectionsMap
+#check @bousfieldKanSectionsMap_evaluation
+#print axioms bousfieldKanSectionsMap_evaluation
+#check @sectionsBousfieldKanMap
+#print axioms sectionsBousfieldKanMap
+#check @sectionsBousfieldKanMap_evaluation
+#print axioms sectionsBousfieldKanMap_evaluation
+#check @bousfieldKanSectionsMap_reverse
+#print axioms bousfieldKanSectionsMap_reverse
+#check @sectionsBousfieldKanMap_reverse
+#print axioms sectionsBousfieldKanMap_reverse
+#check @bousfieldKanSectionsIso
+#print axioms bousfieldKanSectionsIso
+#check @relativeSectionsUncurry_comp
+#print axioms relativeSectionsUncurry_comp
+#check @simplicialSectionsRelativeIso
+#print axioms simplicialSectionsRelativeIso
+#check @simplicialSections_kanComplex
+#print axioms simplicialSections_kanComplex
+#check @bousfieldKanHolim_kanComplex
+#print axioms bousfieldKanHolim_kanComplex
