@@ -1510,3 +1510,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.relativeJoinInr_prism_isPullback
 #check @SerrePositivity.InfinityCategories.relativeJoinInl_endpoint_isPullback
 #check @SerrePositivity.InfinityCategories.relativeJoinInr_endpoint_isPullback
+#check @SerrePositivity.InfinityCategories.relativeJoinZeroFiberIso
+#check @SerrePositivity.InfinityCategories.relativeJoinZeroFiberIso_hom_ι
+#check @SerrePositivity.InfinityCategories.relativeJoinOneFiberIso
+#check @SerrePositivity.InfinityCategories.relativeJoinOneFiberIso_hom_ι
+#check @SerrePositivity.InfinityCategories.relativeJoinZeroFiberIso_vertexFiberMap_ι
+#check @SerrePositivity.InfinityCategories.relativeJoinOneFiberIso_vertexFiberMap_ι

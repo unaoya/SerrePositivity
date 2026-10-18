@@ -6855,5 +6855,35 @@ lemma relativeJoinInr_endpoint_isPullback {X Y S : SSet.{u}} (f : X ⟶ S) (g : 
     IsPullback (relativeJoinInr f g) (stdSimplex.isTerminalObj₀.from Y)
       (relativeJoinProjection f g) (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
 
+noncomputable def relativeJoinZeroFiberIso {X Y S : SSet.{u}} (f : X ⟶ S) (g : Y ⟶ S) :
+    X ≅ vertexFiber (relativeJoinProjection f g) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))
+
+lemma relativeJoinZeroFiberIso_hom_ι {X Y S : SSet.{u}} (f : X ⟶ S) (g : Y ⟶ S) :
+    (relativeJoinZeroFiberIso f g).hom ≫
+      vertexFiberι (relativeJoinProjection f g) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+        relativeJoinInl f g
+
+noncomputable def relativeJoinOneFiberIso {X Y S : SSet.{u}} (f : X ⟶ S) (g : Y ⟶ S) :
+    Y ≅ vertexFiber (relativeJoinProjection f g) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
+
+lemma relativeJoinOneFiberIso_hom_ι {X Y S : SSet.{u}} (f : X ⟶ S) (g : Y ⟶ S) :
+    (relativeJoinOneFiberIso f g).hom ≫
+      vertexFiberι (relativeJoinProjection f g) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
+        relativeJoinInr f g
+
+lemma relativeJoinZeroFiberIso_vertexFiberMap_ι {X Y S E : SSet.{u}}
+    (f : X ⟶ S) (g : Y ⟶ S) (p : E ⟶ (Δ[1] : SSet.{u}))
+    (G : relativeJoin f g ⟶ E) (hG : G ≫ p = relativeJoinProjection f g) :
+    (relativeJoinZeroFiberIso f g).hom ≫
+      vertexFiberMap (relativeJoinProjection f g) p G hG (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) ≫
+        vertexFiberι p (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = relativeJoinInl f g ≫ G
+
+lemma relativeJoinOneFiberIso_vertexFiberMap_ι {X Y S E : SSet.{u}}
+    (f : X ⟶ S) (g : Y ⟶ S) (p : E ⟶ (Δ[1] : SSet.{u}))
+    (G : relativeJoin f g ⟶ E) (hG : G ≫ p = relativeJoinProjection f g) :
+    (relativeJoinOneFiberIso f g).hom ≫
+      vertexFiberMap (relativeJoinProjection f g) p G hG (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) ≫
+        vertexFiberι p (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = relativeJoinInr f g ≫ G
+
 end SerrePositivity.InfinityCategories
 ```
