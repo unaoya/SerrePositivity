@@ -1973,5 +1973,42 @@ lemma CoherentResolutionFlag.prefixFlag_comp_pullback {n d e : ℕ}
         ⟨ULift.up (F.maxAt (α 0)).castSucc⟩ ⟨ULift.up (Fin.last (n + 1))⟩ =
       α.toFunctor ⋙ F.pathFlag
 
+lemma coherentPinched_sourceObj {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {X Y : C} {n : ℕ}
+    (τ : PinchedHom.Simplex (coherentNerveVertex X) (coherentNerveVertex Y) n)
+    (i : Fin (n + 1)) :
+    τ.val.obj (⟨ULift.up i.castSucc⟩ : SimplicialThickening (ULift.{u} (Fin (n + 2)))) = X
+
+lemma coherentPinched_targetObj {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {X Y : C} {n : ℕ}
+    (τ : PinchedHom.Simplex (coherentNerveVertex X) (coherentNerveVertex Y) n) :
+    τ.val.obj (⟨ULift.up (Fin.last (n + 1))⟩ :
+      SimplicialThickening (ULift.{u} (Fin (n + 2)))) = Y
+
+noncomputable def coherentPinchedHom {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {X Y : C} {n : ℕ}
+    (τ : PinchedHom.Simplex (coherentNerveVertex X) (coherentNerveVertex Y) n)
+    (i : Fin (n + 1)) :
+    nerve (Path (ULift.up i.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (Fin.last (n + 1)))) ⟶ SimplicialCategory.sHom X Y
+
+noncomputable def coherentPinchedEvaluate {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} {n d : ℕ}
+    (τ : PinchedHom.Simplex (coherentNerveVertex X) (coherentNerveVertex Y) n)
+    (F : CoherentResolutionFlag n d) : (SimplicialCategory.sHom X Y) _⦋d⦌
+
+lemma coherentPinchedHom_comparison {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {X Y : C} {n : ℕ} (σ : (SimplicialCategory.sHom X Y) _⦋n⦌)
+    (i : Fin (n + 1)) :
+    coherentPinchedHom (coherentHomComparisonPinchedSimplex σ) i =
+      pathLastMaximumMap i ≫ SSet.yonedaEquiv.symm σ
+
+lemma coherentPinchedEvaluate_comparison {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} {n d : ℕ}
+    (σ : (SimplicialCategory.sHom X Y) _⦋n⦌) (F : CoherentResolutionFlag n d) :
+    coherentPinchedEvaluate (coherentHomComparisonPinchedSimplex σ) F =
+      (SimplicialCategory.sHom X Y).map
+        (SimplexCategory.mkHom ⟨F.maxAt, F.maxAt_monotone⟩).op σ
+
 end SerrePositivity.InfinityCategories
 ```

@@ -81,3 +81,4 @@ public import SerrePositivity.InfinityCategories.F1.CoherentResolutionEquivalenc
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionPushforward
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionExtension
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionPaths
+public import SerrePositivity.InfinityCategories.F1.CoherentPinchedEvaluation

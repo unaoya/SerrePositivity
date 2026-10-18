@@ -471,3 +471,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.prefixFlag
 #check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.prefixPath_comp_pullback
 #check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.prefixFlag_comp_pullback
+#check @SerrePositivity.InfinityCategories.coherentPinched_sourceObj
+#check @SerrePositivity.InfinityCategories.coherentPinched_targetObj
+#check @SerrePositivity.InfinityCategories.coherentPinchedHom
+#check @SerrePositivity.InfinityCategories.coherentPinchedEvaluate
+#check @SerrePositivity.InfinityCategories.coherentPinchedHom_comparison
+#check @SerrePositivity.InfinityCategories.coherentPinchedEvaluate_comparison
