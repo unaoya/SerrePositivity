@@ -1370,7 +1370,7 @@ H^(−(n+1)) との同型で、追加の閉性・充填の仮定はない。
 `doldKanHomSpaceKan` は N4 の線形充填をこの同型で移した Kan instance。
 `doldKanHomPinchedIso` は宇宙を持ち上げた DK Hom と dg nerve の右 pinched Hom の同型である。
 この同型はまだ coherent nerve の写像空間との比較ではない。
-対象・集約ビルドは3900件で成功し、公開496宣言の型と公理監査は標準三公理のみ。
+対象・集約ビルドは3904件で成功し、公開503宣言の型と公理監査は標準三公理のみ。
 正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean` に記録する。
 
 `awData` は後の射の接頭部分と前の射の接尾部分を合成して全切断点で足す成分族の演算。
@@ -1688,12 +1688,27 @@ cubeEvaluation e (pathCubeMap ≫ pathLastMaximumMap a ≫ yonedaEquiv.symm σ)
 昇順でない全ての旗が零となり、唯一の昇順の旗だけが残る。
 `revPerm_sign m` は反転の整数の置換符号が `degreeSign m = (−1)^(m choose 2)` に等しいことを
 二要素の組の個数から証明する。零次元も同じ式に含み、二の可逆性は使わない。
-この一般式を実際の比較射との合成に移すため、端点の型の移送と、昇順の旗の像が
-選んだ頂点集合に等しいことをまだ示す必要がある。
+`maximumFlagOrder_image` と `withLast_interior_source_image` により、昇順の旗の像は
+選んだ元の頂点集合 J に等しい。`cubeEvaluation_withLast_maximum` はその像の同定を使い、
+立方体評価を `degreeSign (J.card−1)` と元の標準単体の J 成分の積に同定する。
+`cubeEvaluation_object_transport` と `coherentHomComparison_cubeEvaluation_heq` は
+F1 の豊穣関手の端点の型の移送を通じて、この一般式を実際の比較単体の評価に移す。
 
-残りはこの合成の同定、余単体的立方体模型 Q^• との比較と反対側の合成の単体的ホモトピー、
+`standardCoherentPinchedSimplex_linear_component` は、実際の逆向きの射と比較射を合成した
+N4 回収成分が元の標準成分の次数符号倍であることを示す。標準座標へ戻すときに
+同じ次数符号をもう一度掛けるため、二重作用が相殺する。
+前提は `[CommRing R] [DGCategory R D]` のみで、全ての非空有限集合と零次元を含む。
+
+```lean
+standardHomToCoherentPinched_comp (x y : ClosedCategory R D) :
+  standardHomToCoherentPinched (R := R) x y ≫
+    coherentPinchedStandardComparison (R := R) (D := D) x y = 𝟙 _
+```
+
+これは全次数・全成分の等式から得た単体集合の射の厳密な等式であり、π₀ の計算に限らない。
+片側の逆の性質は完了したが、これだけで二射をホモトピー同値とは数えない。
+残りは余単体的立方体模型 Q^• との比較と反対側の合成の単体的ホモトピー、
 Core の `pinchedHomMap coherentComparison` への移送と全頂点での充満忠実性、A3e の適用。
-逆向きの射と旗の評価の構成を、写像空間のホモトピー同値の証明としては数えない。
 
 
 ## γ3：homotopy 極限・余極限と ∞ 極限・余極限（γ1.5 の後）

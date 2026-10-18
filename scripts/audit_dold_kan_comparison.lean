@@ -395,6 +395,18 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData_hom_heq_set
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData_hom_heq_set
 
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_object_transport
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_object_transport
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentHomComparison_cubeEvaluation_heq
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentHomComparison_cubeEvaluation_heq
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardCoherentPinchedSimplex_linear_component
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardCoherentPinchedSimplex_linear_component
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardHomToCoherentPinched_comp
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardHomToCoherentPinched_comp
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentNerveVertex_eq_vertex
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentNerveVertex_eq_vertex
 
@@ -1010,6 +1022,9 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.homSpaceKan
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.homSpaceKan
 
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_withLast_maximum
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_withLast_maximum
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlagEvaluation_maximum_zero_of_not_strictMono
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlagEvaluation_maximum_zero_of_not_strictMono
 
@@ -1051,6 +1066,12 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlagEvaluation_maximum_zero_of_inversion
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlagEvaluation_maximum_zero_of_inversion
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.maximumFlagOrder_image
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.maximumFlagOrder_image
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.withLast_interior_source_image
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.withLast_interior_source_image
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.normalizedModuleSubmodule
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.normalizedModuleSubmodule
