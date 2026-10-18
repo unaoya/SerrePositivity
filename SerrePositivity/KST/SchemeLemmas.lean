@@ -229,3 +229,6 @@ public import SerrePositivity.KST.SchemeLemmas.GenericBoundaryFreeLocus
 public import SerrePositivity.KST.SchemeLemmas.BoundaryIdempotentNumerators
 public import SerrePositivity.KST.SchemeLemmas.OrthogonalCenter
 public import SerrePositivity.KST.SchemeLemmas.BoundaryClopenSeparation
+public import SerrePositivity.KST.SchemeLemmas.FreeStalkRankBaseChange
+public import SerrePositivity.KST.SchemeLemmas.GenericPrimeBaseChange
+public import SerrePositivity.KST.SchemeLemmas.GenericRankBaseChange
