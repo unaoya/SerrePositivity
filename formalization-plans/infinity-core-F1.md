@@ -2645,5 +2645,32 @@ lemma coherentResolution_map_face_ι_mono {n m : ℕ}
     (T : Finset (Fin (n + 1))) (e : Fin (m + 1) ≃o T) :
     Mono (coherentResolution.{u}.map (stdSimplex.face T).ι)
 
+lemma exists_coherentResolutionFaceExtensionIso {n : ℕ} (T : Finset (Fin (n + 1))) :
+    ∃ e : coherentResolution.{u}.obj (stdSimplex.face T).toSSet ≅
+      (coherentResolutionFace T).toSSet,
+      e.hom ≫ (coherentResolutionFace T).ι =
+        coherentResolution.map (stdSimplex.face T).ι ≫ coherentResolutionStdIso.hom.app ⦋n⦌
+
+noncomputable def coherentResolutionFaceExtensionIsoAll {n : ℕ} (T : Finset (Fin (n + 1))) :
+    coherentResolution.{u}.obj (stdSimplex.face T).toSSet ≅ (coherentResolutionFace T).toSSet
+
+lemma coherentResolutionFaceExtensionIsoAll_hom_ι {n : ℕ} (T : Finset (Fin (n + 1))) :
+    (coherentResolutionFaceExtensionIsoAll.{u} T).hom ≫ (coherentResolutionFace T).ι =
+      coherentResolution.map (stdSimplex.face T).ι ≫ coherentResolutionStdIso.hom.app ⦋n⦌
+
+lemma coherentResolutionFaceExtensionIsoAll_naturality {n : ℕ}
+    {T U : Finset (Fin (n + 1))} (h : T ⊆ U) :
+    coherentResolution.{u}.map (Subcomplex.homOfLE ((stdSimplex.face_le_face_iff T U).mpr h)) ≫
+      (coherentResolutionFaceExtensionIsoAll U).hom =
+      (coherentResolutionFaceExtensionIsoAll T).hom ≫
+        Subcomplex.homOfLE (coherentResolutionFace_mono h)
+
+lemma coherentResolutionFaceExtensionIsoAll_projection {n : ℕ} (T : Finset (Fin (n + 1))) :
+    (coherentResolutionFaceExtensionIsoAll.{u} T).hom ≫ coherentResolutionFaceProjection T =
+      coherentResolutionProjectionAll.app (stdSimplex.face T).toSSet
+
+lemma coherentResolution_map_face_ι_mono_all {n : ℕ} (T : Finset (Fin (n + 1))) :
+    Mono (coherentResolution.{u}.map (stdSimplex.face T).ι)
+
 end SerrePositivity.InfinityCategories
 ```
