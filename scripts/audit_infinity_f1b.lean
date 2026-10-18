@@ -424,3 +424,21 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.unitCommaInitialCondition_iff_intervalMappingSpaces
 
 #check @SerrePositivity.InfinityCategories.homMk_comp_eq_of_square
+
+#check @SerrePositivity.InfinityCategories.functorHom_comp_eq_of_square
+
+#check @SerrePositivity.InfinityCategories.UnitCommaFiberSquare.hom_comp
+
+#check @SerrePositivity.InfinityCategories.unitCommaSectionVertexHomotopy_hom
+
+#check @SerrePositivity.InfinityCategories.unitCommaArrowFamily_eq_const
+
+#check @SerrePositivity.InfinityCategories.unitCommaSquareTargetFamily_unit_homotopy
+
+#check @SerrePositivity.InfinityCategories.homotopyPathReplacementLift
+
+#check @SerrePositivity.InfinityCategories.homotopyPathReplacementLift_map
+
+#check @SerrePositivity.InfinityCategories.unitCommaMappingToComparisonFiber
+
+#check @SerrePositivity.InfinityCategories.unitCommaMappingToComparisonFiber_projection

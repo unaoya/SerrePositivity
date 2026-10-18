@@ -179,8 +179,16 @@ comma fiber の**区間**写像空間の族と正方形との厳密な全単射�
 comma の始対象判定と正方形表示は、これで同じ区間模型上にそろった。
 `homMk_comp_eq_of_square` は任意の四辺の正方形の二つの合成を h で同定し、
 単位比較の導来 fiber への射に必要な合成関係を与える一般補題である。
-残る模型比較は、正方形から単位比較の導来 fiber への射・逆射とそのホモトピーの構成である。
-この比較は未証明であり、二つの可縮性を同じ命題と見なして始対象性を結論してはならない。
+comma の正方形を Fun(A,X) へ curry し、四辺の厳密な計算から、左辺と G の標的辺の合成が
+右辺になることを証明した。左辺が指定単位の成分の定値族であることも、選んだ代表の射と
+h Fun の類の両方で照合済み。右辺の族は `unitCommaArrowVertex` への定値射である。
+`unitCommaSquareTargetFamily_unit_homotopy` は、標的族の標準単位比較の像から右辺の族への
+実際のホモトピーを与える（パラメータ A の quasicategory 性や単位比較の同値性を仮定しない）。
+これを普遍正方形へ適用し、可逆 path への curry と fiber の持ち上げを使って
+`unitCommaMappingToComparisonFiber` を構成した。元の始域の写像空間への射影は、正方形の
+標的族に厳密に一致する。
+**比較射の逆射・両合成のホモトピーと同値性は未証明。** 順方向の射と終域の可縮性だけでは
+始域の可縮性は従わず、始対象性を結論してはならない。
 
 B1 の逆方向全体は未完了。残るのは、自然な各点の pinched 写像空間対応から単位を取り出す
 接続と、`UnitMappingSpaceCondition η` から
@@ -189,8 +197,8 @@ comma の経路では、各点の比較の同値性から `UnitCommaInitialCondi
 射影の充填・輸送を使って自然な余単位と三角恒等式へ接続する必要がある。
 既存の全パラメータ版の経路も利用できるが、その十分条件で原典の各点の条件を置き換えて
 B1 完了とはしない。B2〜B5 も未完了。
-対象ビルド（2008 jobs）・公理監査（646 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 340 モジュールに straightening 依存がないことも確認した。
+対象ビルド（2015 jobs）・公理監査（708 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 347 モジュールに straightening 依存がないことも確認した。
 
 ## 4. 主要宣言
 
@@ -333,3 +341,9 @@ B1 完了とはしない。B2〜B5 も未完了。
 | `isInitialVertex_iff_intervalMappingSpace_isContractibleKan` | 出る区間写像空間の可縮性による始対象判定 | 実装済み |
 | `unitCommaInitialCondition_iff_intervalMappingSpaces` | 正方形表示と同じ区間模型での単位の始対象条件 | 実装済み |
 | `homMk_comp_eq_of_square` | 任意の四辺の正方形の二つの合成の h での等式 | 実装済み |
+| `functorHom_comp_eq_of_square`・`UnitCommaFiberSquare.functorSquare` と四辺の公式・`hom_comp` | comma の coherence による h Fun の合成関係 | 実装済み |
+| `unitCommaSectionVertex_homotopy_const`・`unitCommaSectionVertexHomotopy_hom` | comma の左辺と指定単位の代表・類の照合 | 実装済み |
+| `unitCommaVertexHomotopy`・`unitCommaArrowFamily`・`unitCommaArrowVertex`・`unitCommaArrowFamily_eq_const` | 右辺の矢印の区間表示と定値性 | 実装済み |
+| `unitCommaSquareTargetFamily`・`unitCommaSquareTargetFamily_unit_homotopy` | 正規化した標的族と標準単位比較の像から右辺への実際のホモトピー | 実装済み |
+| `homotopyEquivalencePath`・`homotopyPathReplacementLift` と射影・終点の公式 | Kan 複体内のホモトピーによる可逆 path 置換への持ち上げ | 実装済み |
+| `unitCommaMappingToComparisonFiber`・`unitCommaMappingToComparisonFiber_projection` | comma の区間写像空間から単位比較の導来 fiber への順方向の射、底との整合性 | 実装済み（同値性は未証明） |

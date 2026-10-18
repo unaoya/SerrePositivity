@@ -57,3 +57,10 @@ public import SerrePositivity.InfinityCategories.F1B.UnitCommaLocalCriterion
 public import SerrePositivity.InfinityCategories.F1B.IntervalMappingOpposite
 public import SerrePositivity.InfinityCategories.F1B.IntervalMappingContractible
 public import SerrePositivity.InfinityCategories.F1B.SquareComposition
+public import SerrePositivity.InfinityCategories.F1B.FunctorHomSquare
+public import SerrePositivity.InfinityCategories.F1B.UnitCommaFunctorSquare
+public import SerrePositivity.InfinityCategories.F1B.UnitCommaUnitComponent
+public import SerrePositivity.InfinityCategories.F1B.UnitCommaArrowFamilies
+public import SerrePositivity.InfinityCategories.F1B.UnitCommaComparisonHomotopy
+public import SerrePositivity.InfinityCategories.F1B.HomotopyPathReplacement
+public import SerrePositivity.InfinityCategories.F1B.UnitCommaFiberComparison
