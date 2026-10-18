@@ -104,6 +104,18 @@ def tensorFiltrationInterval {I : Type v} [Preorder I]
   intervalTensorCutShortComplex P K (-index.obj i) (-index.obj j)
     (neg_le_neg (index.map f).le)
 
+/-- 概要：再添字テンソル項濾過の区間の明示的なシフトつき境界。
+方針：実際の区間短複体の次数ごとの分裂から境界を作る。
+規約：複体の分裂は仮定しない。使われ方：KST Lemma 4.10 の初頁微分を簡潔に記述する。 -/
+def tensorFiltrationBoundary {I : Type v} [Preorder I]
+    (P K : CochainComplex (ModuleCat.{u} R) ℤ) (index : I ⥤ ℤ)
+    {i j : I} (f : i ⟶ j) :
+    (tensorFiltrationInterval P K index f).X₃ ⟶
+      (tensorFiltrationInterval P K index f).X₁⟦(1 : ℤ)⟧ :=
+  CochainComplex.homOfDegreewiseSplit (tensorFiltrationInterval P K index f)
+    (intervalTensorCutSplitting P K (-index.obj i) (-index.obj j)
+      (neg_le_neg (index.map f).le))
+
 /-- 概要：実際の再添字項濾過の δ を区間の分裂境界と左の商射で表す。
 方針：各区間の実際の第一射を用いて、一般の濾過連結写像公式を適用する。
 規約：任意の単調再添字、任意の係数複体。使われ方：KST Lemma 4.10 の有限濾過の初頁微分。 -/
@@ -119,9 +131,7 @@ theorem tensorFiltration_delta_split {I : Type v} [Preorder I]
       (filtrationIntervalHomologyIso F g n).hom ≫
         homologyMap (CochainComplex.mappingCone.descShortComplex T) n ≫
           (homologyFunctor (ModuleCat.{u} R) (.up ℤ) 0).shiftMap
-            (CochainComplex.homOfDegreewiseSplit T
-              (intervalTensorCutSplitting P K (-index.obj j) (-index.obj k)
-                (neg_le_neg (index.map g).le))) n (n + 1) (by omega) ≫
+            (tensorFiltrationBoundary P K index g) n (n + 1) (by omega) ≫
             homologyMap S.g (n + 1) := by
   let F := index ⋙ truncationFiltration P ⋙ tensorRight K
   let S := tensorFiltrationInterval P K index f
@@ -161,14 +171,11 @@ theorem tensorFiltration_delta_quotientIso {I : Type v} [Preorder I]
     {i j k : I} (f : i ⟶ j) (g : j ⟶ k) (n n' : ℤ) (hn : n + 1 = n') :
     let F := index ⋙ truncationFiltration P ⋙ tensorRight K
     let S := tensorFiltrationInterval P K index f
-    let T := tensorFiltrationInterval P K index g
     (filteredHomologySpectralObject F).δ f g n n' hn ≫
       (tensorFiltrationIntervalHomologyIso P K index f n').hom =
       (tensorFiltrationIntervalHomologyIso P K index g n).hom ≫
         (homologyFunctor (ModuleCat.{u} R) (.up ℤ) 0).shiftMap
-          (CochainComplex.homOfDegreewiseSplit T
-            (intervalTensorCutSplitting P K (-index.obj j) (-index.obj k)
-              (neg_le_neg (index.map g).le))) n n' (by omega) ≫
+          (tensorFiltrationBoundary P K index g) n n' (by omega) ≫
           homologyMap S.g n' := by
   obtain rfl := hn
   exact tensorFiltration_delta_split P K index f g n

@@ -69,7 +69,8 @@
 - 一般区間の短完全列を構成し、任意の単調再添字による濾過の実際の射に適用済み。
 - 有限 Koszul 濾過を含む区間ホモロジーから商ホモロジーへの同型を構成済み。
 - この同型で δ を移すと分裂境界と左の商射になることを証明済み。
-- 次は初頁微分の δ 表示をこの公式と合成する。
+- 実際の有限 Koszul 濾過の補助初頁微分を、商ホモロジー上の分裂境界と左の商射の合成として計算済み。
+- 次は一項複体の標準同型へ移し、係数微分全体との一致を示す。
 - 初頁の二つのモデルの完全な自然性・Koszul 冪遷移との整合は残件。
 - スペクトル対象から頁への関手性を既存 API で確認中。未供給の自然性を仮定に置かない。
 - π_n の具体的な複体ホモロジーとの同定は K-L9 の界面から受け取る。
@@ -141,6 +142,9 @@
 | intervalCutShortComplex | IntervalCut.lean | 検証済み | 一般区間の実際の商短完全列 |
 | tensorFiltrationIntervalHomologyIso | IntervalCut.lean | 検証済み | 再添字濾過の区間と商のホモロジー比較 |
 | tensorFiltration_delta_quotientIso | IntervalCut.lean | 検証済み | 実際の濾過の δ の商比較 |
+| tensorFiltrationBoundary | IntervalCut.lean | 検証済み | 実際の区間のシフトつき境界 |
+| koszulFirstPageQuotientIso | KoszulDifferential.lean | 検証済み | 補助初頁の商ホモロジーモデル |
+| koszulFirstPage_d_quotient | KoszulDifferential.lean | 検証済み | 初頁微分の商モデルでの計算 |
 | koszul_comparison | KoszulPro.lean | 予定 | KST Lemma 4.10 |
 | prop414 | Prop414.lean | 予定 | 中心的係数による非可換版 |
 | pro_whitehead | Whitehead.lean | 予定 | simple 空間版 |

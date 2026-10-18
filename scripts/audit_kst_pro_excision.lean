@@ -443,3 +443,12 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.tensorFiltration_delta_quotientIso
 #print axioms SerrePositivity.KST.ProExcision.tensorFiltration_delta_quotientIso
+
+#check @SerrePositivity.KST.ProExcision.tensorFiltrationBoundary
+#print axioms SerrePositivity.KST.ProExcision.tensorFiltrationBoundary
+
+#check @SerrePositivity.KST.ProExcision.koszulFirstPageQuotientIso
+#print axioms SerrePositivity.KST.ProExcision.koszulFirstPageQuotientIso
+
+#check @SerrePositivity.KST.ProExcision.koszulFirstPage_d_quotient
+#print axioms SerrePositivity.KST.ProExcision.koszulFirstPage_d_quotient
