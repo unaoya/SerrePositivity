@@ -241,3 +241,17 @@ public import SerrePositivity.InfinityCategories.Core.JoinLeftColimits
 public import SerrePositivity.InfinityCategories.Core.JoinRightColimits
 
 public import SerrePositivity.InfinityCategories.Core.FatJoinRightColimits
+
+public import SerrePositivity.InfinityCategories.Core.NaturalEquivalenceCylinder
+
+public import SerrePositivity.InfinityCategories.Core.SequentialRelativeLifting
+
+public import SerrePositivity.InfinityCategories.Core.JoinComparisonFunctors
+
+public import SerrePositivity.InfinityCategories.Core.PrecompositionSequentialGluing
+
+public import SerrePositivity.InfinityCategories.Core.WideRelativeLifting
+
+public import SerrePositivity.InfinityCategories.Core.PrecompositionWideGluing
+
+public import SerrePositivity.InfinityCategories.Core.PrecompositionCoproductGluing

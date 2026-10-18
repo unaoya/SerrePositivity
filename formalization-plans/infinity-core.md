@@ -19,7 +19,7 @@ Mathlib の `Quasicategory` をそのまま ∞ 圏の定義とし、Joyal モ�
 
 担当順は A6 → A4 → A5。基盤全体の正本は [foundations.md](foundations.md)。F1 は α2 が担当し、Core の既存の公開名・型の変更は事前に報告する。
 
-現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較と二点の fat join 比較の同型性と任意の標準単体の正規化の自己射への可逆な変形と標準単体の fat join 比較の同値条件、関手単体集合の制限の相対可逆 path の持ち上げと基底も変わる一般の pushout の貼り合わせ、両方の join の pushout 保存、左右両因子の比較の貼り合わせと単射の同値条件のセルによる閉包と自然な写像円柱の相対比較・余極限保存と両方の join の両因子の連結な余極限保存も整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
+現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較と二点の fat join 比較の同型性と任意の標準単体の正規化の自己射への可逆な変形と標準単体の fat join 比較の同値条件、関手単体集合の制限の相対可逆 path の持ち上げと基底も変わる一般の pushout の貼り合わせ、両方の join の pushout 保存、左右両因子の比較の貼り合わせと単射の同値条件のセルによる閉包と自然な写像円柱の相対比較・余極限保存と両方の join の両因子の連結な余極限保存と可算列・任意のセルの族の比較の貼り合わせも整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
 
 ## 1. Mathlib（固定版）の現状
 
@@ -7669,6 +7669,115 @@ noncomputable def fatJoinRightInrNat (K : SSet.{u}) :
 instance fatJoinRightFunctor_preservesConnectedColimits (K : SSet.{u})
     (J : Type*) [Category* J] [IsConnected J] [HasColimitsOfShape J SSet.{u}] :
     PreservesColimitsOfShape J (fatJoinRightFunctor K)
+```
+
+### A6 続き（2026-10-18）：可算列と任意のセルの族の比較の貼り合わせ
+
+新規20宣言。`naturalEquivalenceCylinder` は自然変換の各成分の写像円柱の関手で、二つの元の関手が保つ形の余極限を保つ。`hasLiftingProperty_of_sequential_relative_corners` は初期の比較と各相対段階の持ち上げから二つの可算列の余極限の比較の持ち上げを構成する。`isPrecompositionEquivalence_of_sequential_colimit` は単射の列について、単射と可算余極限を保つ二つの関手の自然な比較の同値条件を余極限へ移す。比較射自身の単射性は不要。
+
+`hasLiftingProperty_of_widePushout_relative_corners` と `isPrecompositionEquivalence_of_widePushout_colimit` は共通部分の持ち上げを先に固定し任意の枝へ延長する版。`isPrecompositionEquivalence_of_coproduct_colimit` は初期対象と各対象での比較の同値条件から coproduct 上の条件を得る。関手に通常の coproduct の保存は要求せず、初期対象を共通部分とする wide pushout の保存を使う。join の四つの関手の単射保存と左右の比較の自然変換も整備した。
+
+検証：Core ビルド成功（1855 jobs）、続けて監査成功（累計1296宣言、標準3公理のみ）。既存の公開名・型は維持。標準単体での証明を初期対象・境界・各骨格へ接続するセルの次数による帰納が残る。任意の因子の fat join 比較・slice 比較・A6 主定理・A4・A5 は未完了。
+
+以下は namespace `SerrePositivity.InfinityCategories`、`universe u v`、`open CategoryTheory Limits SSet` の下での正確な型。
+
+```lean
+def naturalTransformationArrowFunctor {C : Type v} [Category C]
+    {F G : C ⥤ SSet.{u}} (t : F ⟶ G) : C ⥤ Arrow SSet.{u}
+
+noncomputable def naturalEquivalenceCylinder {C : Type v} [Category C]
+    {F G : C ⥤ SSet.{u}} (t : F ⟶ G) : C ⥤ SSet.{u}
+
+noncomputable def naturalEquivalenceCylinderIn {C : Type v} [Category C]
+    {F G : C ⥤ SSet.{u}} (t : F ⟶ G) : F ⟶ naturalEquivalenceCylinder t
+
+instance naturalEquivalenceCylinder_preservesColimitsOfShape
+    {C : Type v} [Category C] {F G : C ⥤ SSet.{u}} (t : F ⟶ G)
+    (J : Type*) [Category* J] [PreservesColimitsOfShape J F] [PreservesColimitsOfShape J G] :
+    PreservesColimitsOfShape J (naturalEquivalenceCylinder t)
+
+lemma exists_lift_of_sequential_relative_extensions {F H : ℕ ⥤ SSet.{u}} (s : F ⟶ H)
+    (cF : Cocone F) (cH : Cocone H) (hcF : IsColimit cF) (hcH : IsColimit cH)
+    (i : cF.pt ⟶ cH.pt) (hi : ∀ n, cF.ι.app n ≫ i = s.app n ≫ cH.ι.app n)
+    {E Y : SSet.{u}} (p : E ⟶ Y) (a : cF.pt ⟶ E) (b : cH.pt ⟶ Y)
+    (hinit : ∃ f : H.obj 0 ⟶ E,
+      s.app 0 ≫ f = cF.ι.app 0 ≫ a ∧ f ≫ p = cH.ι.app 0 ≫ b)
+    (hstep : ∀ n (f : H.obj n ⟶ E), s.app n ≫ f = cF.ι.app n ≫ a →
+      f ≫ p = cH.ι.app n ≫ b → ∃ g : H.obj (n + 1) ⟶ E,
+        H.map (homOfLE (Nat.le_succ n)) ≫ g = f ∧
+          s.app (n + 1) ≫ g = cF.ι.app (n + 1) ≫ a ∧ g ≫ p = cH.ι.app (n + 1) ≫ b) :
+    ∃ f : cH.pt ⟶ E, i ≫ f = a ∧ f ≫ p = b
+
+noncomputable def sequentialNatTransCornerMap {F H : ℕ ⥤ SSet.{u}} (s : F ⟶ H) (n : ℕ) :
+    pushout (s.app n) (F.map (homOfLE (Nat.le_succ n))) ⟶ H.obj (n + 1)
+
+lemma hasLiftingProperty_of_sequential_relative_corners {F H : ℕ ⥤ SSet.{u}} (s : F ⟶ H)
+    (cF : Cocone F) (cH : Cocone H) (hcF : IsColimit cF) (hcH : IsColimit cH)
+    (i : cF.pt ⟶ cH.pt) (hi : ∀ n, cF.ι.app n ≫ i = s.app n ≫ cH.ι.app n)
+    {E Y : SSet.{u}} (p : E ⟶ Y) [HasLiftingProperty (s.app 0) p]
+    [∀ n, HasLiftingProperty (sequentialNatTransCornerMap s n) p] : HasLiftingProperty i p
+
+instance joinLeftFunctor_preservesMonomorphisms (K : SSet.{u}) :
+    (joinLeftFunctor K).PreservesMonomorphisms
+
+instance joinRightFunctor_preservesMonomorphisms (K : SSet.{u}) :
+    (joinRightFunctor K).PreservesMonomorphisms
+
+instance fatJoinLeftFunctor_preservesMonomorphisms (K : SSet.{u}) :
+    (fatJoinLeftFunctor K).PreservesMonomorphisms
+
+instance fatJoinRightFunctor_preservesMonomorphisms (K : SSet.{u}) :
+    (fatJoinRightFunctor K).PreservesMonomorphisms
+
+noncomputable def fatJoinComparisonLeftNat (K : SSet.{u}) :
+    fatJoinLeftFunctor K ⟶ joinLeftFunctor K
+
+noncomputable def fatJoinComparisonRightNat (K : SSet.{u}) :
+    fatJoinRightFunctor K ⟶ joinRightFunctor K
+
+lemma isPrecompositionEquivalence_of_sequential_colimit
+    {F G : SSet.{u} ⥤ SSet.{u}} (t : F ⟶ G)
+    [F.PreservesMonomorphisms] [G.PreservesMonomorphisms]
+    [PreservesColimitsOfShape ℕ F] [PreservesColimitsOfShape ℕ G]
+    (D : ℕ ⥤ SSet.{u}) [∀ n, Mono (D.map (homOfLE (Nat.le_succ n)))]
+    (c : Cocone D) (hc : IsColimit c)
+    (ht : ∀ n, IsPrecompositionEquivalence (t.app (D.obj n))) :
+    IsPrecompositionEquivalence (t.app c.pt)
+
+noncomputable def wideNatTransCornerMap {J : Type v}
+    {F H : WidePushoutShape J ⥤ SSet.{u}} (s : F ⟶ H) (j : J) :
+    pushout (s.app none) (F.map (.init j)) ⟶ H.obj (some j)
+
+lemma hasLiftingProperty_of_widePushout_relative_corners {J : Type v}
+    {F H : WidePushoutShape J ⥤ SSet.{u}} (s : F ⟶ H)
+    (cF : Cocone F) (cH : Cocone H) (hcF : IsColimit cF) (hcH : IsColimit cH)
+    (i : cF.pt ⟶ cH.pt) (hi : ∀ n, cF.ι.app n ≫ i = s.app n ≫ cH.ι.app n)
+    {E Y : SSet.{u}} (p : E ⟶ Y) [HasLiftingProperty (s.app none) p]
+    [∀ j, HasLiftingProperty (wideNatTransCornerMap s j) p] : HasLiftingProperty i p
+
+lemma isPrecompositionEquivalence_of_widePushout_colimit
+    (J : Type u) {F G : SSet.{u} ⥤ SSet.{u}} (t : F ⟶ G)
+    [F.PreservesMonomorphisms] [G.PreservesMonomorphisms]
+    [PreservesColimitsOfShape (WidePushoutShape J) F] [PreservesColimitsOfShape (WidePushoutShape J) G]
+    (D : WidePushoutShape J ⥤ SSet.{u}) [∀ j, Mono (D.map (.init j))]
+    (c : Cocone D) (hc : IsColimit c)
+    (ht : ∀ n, IsPrecompositionEquivalence (t.app (D.obj n))) :
+    IsPrecompositionEquivalence (t.app c.pt)
+
+noncomputable def coproductWideCocone {J : Type u} (A : SSet.{u}) (hA : IsInitial A)
+    (objs : J → SSet.{u}) : Cocone (WidePushoutShape.wideSpan A objs (fun j ↦ hA.to (objs j)))
+
+noncomputable def coproductWideCocone_isColimit {J : Type u}
+    (A : SSet.{u}) (hA : IsInitial A) (objs : J → SSet.{u}) :
+    IsColimit (coproductWideCocone A hA objs)
+
+lemma isPrecompositionEquivalence_of_coproduct_colimit
+    (J : Type u) {F G : SSet.{u} ⥤ SSet.{u}} (t : F ⟶ G)
+    [F.PreservesMonomorphisms] [G.PreservesMonomorphisms]
+    [PreservesColimitsOfShape (WidePushoutShape J) F] [PreservesColimitsOfShape (WidePushoutShape J) G]
+    (objs : J → SSet.{u}) (h0 : IsPrecompositionEquivalence (t.app (⊥_ SSet.{u})))
+    (h : ∀ j, IsPrecompositionEquivalence (t.app (objs j))) :
+    IsPrecompositionEquivalence (t.app (∐ objs))
 ```
 
 ## 7. A3 の工程（2026-10-18 追加）
