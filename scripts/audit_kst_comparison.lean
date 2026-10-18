@@ -96,6 +96,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -1239,6 +1240,27 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.fatDegreeNormalize_inclusion
 
 
+-- FatDiagonalComparison.lean
+
+#check @SerrePositivity.KST.Comparison.fatRealizationToDiagonal_realize
+#print axioms SerrePositivity.KST.Comparison.fatRealizationToDiagonal_realize
+
+#check @SerrePositivity.KST.Comparison.fatFreeColumnsIso_augmentation
+#print axioms SerrePositivity.KST.Comparison.fatFreeColumnsIso_augmentation
+
+#check @SerrePositivity.KST.Comparison.fatRealizationToDiagonal_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.fatRealizationToDiagonal_localized_isIso
+
+
+-- FatFreeColumnsIso.lean
+
+#check @SerrePositivity.KST.Comparison.fatFreeColumnsDegreeIso_naturality
+#print axioms SerrePositivity.KST.Comparison.fatFreeColumnsDegreeIso_naturality
+
+#check @SerrePositivity.KST.Comparison.fatFreeColumnsIso
+#print axioms SerrePositivity.KST.Comparison.fatFreeColumnsIso
+
+
 -- FatNormalForm.lean
 
 #check @SerrePositivity.KST.Comparison.FatNormalForm
@@ -1716,6 +1738,24 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.coproductMap_rlp
 
 
+-- FreeColumns.lean
+
+#check @SerrePositivity.KST.Comparison.freeColumns
+#print axioms SerrePositivity.KST.Comparison.freeColumns
+
+#check @SerrePositivity.KST.Comparison.freeColumnsAugmentation
+#print axioms SerrePositivity.KST.Comparison.freeColumnsAugmentation
+
+#check @SerrePositivity.KST.Comparison.diagonalFlipIso
+#print axioms SerrePositivity.KST.Comparison.diagonalFlipIso
+
+#check @SerrePositivity.KST.Comparison.fatColumnNormalFormEquiv
+#print axioms SerrePositivity.KST.Comparison.fatColumnNormalFormEquiv
+
+#check @SerrePositivity.KST.Comparison.fatFreeColumnsDegreeIso
+#print axioms SerrePositivity.KST.Comparison.fatFreeColumnsDegreeIso
+
+
 -- FreeDegeneracies.lean
 
 #check @SerrePositivity.KST.Comparison.discreteRowsFunctor
@@ -1744,6 +1784,45 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.freeDegeneracies_preservesMonomorphisms
 #print axioms SerrePositivity.KST.Comparison.freeDegeneracies_preservesMonomorphisms
+
+
+-- FreeDegeneraciesColimits.lean
+
+#check @SerrePositivity.KST.Comparison.freeDegeneracyShapeDiagram_preservesColimits
+#print axioms SerrePositivity.KST.Comparison.freeDegeneracyShapeDiagram_preservesColimits
+
+#check @SerrePositivity.KST.Comparison.freeDegeneracies_preservesColimits
+#print axioms SerrePositivity.KST.Comparison.freeDegeneracies_preservesColimits
+
+
+-- FreeDegeneraciesEquivalence.lean
+
+#check @SerrePositivity.KST.Comparison.freeDegeneraciesAugmentation_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.freeDegeneraciesAugmentation_localized_isIso
+
+
+-- FreeDegeneracyShapeNaturality.lean
+
+#check @SerrePositivity.KST.Comparison.freeDegeneracyShapeColimitIso_naturality
+#print axioms SerrePositivity.KST.Comparison.freeDegeneracyShapeColimitIso_naturality
+
+#check @SerrePositivity.KST.Comparison.freeDegeneracyShapeColimitNatIso
+#print axioms SerrePositivity.KST.Comparison.freeDegeneracyShapeColimitNatIso
+
+
+-- FreeDegeneracyShapes.lean
+
+#check @SerrePositivity.KST.Comparison.FreeDegeneracyShape
+#print axioms SerrePositivity.KST.Comparison.FreeDegeneracyShape
+
+#check @SerrePositivity.KST.Comparison.freeDegeneracyShapeEquiv
+#print axioms SerrePositivity.KST.Comparison.freeDegeneracyShapeEquiv
+
+#check @SerrePositivity.KST.Comparison.freeDegeneracyShapeDiagram
+#print axioms SerrePositivity.KST.Comparison.freeDegeneracyShapeDiagram
+
+#check @SerrePositivity.KST.Comparison.freeDegeneracyShapeColimitIso
+#print axioms SerrePositivity.KST.Comparison.freeDegeneracyShapeColimitIso
 
 
 -- FreeStandardContraction.lean
@@ -3007,6 +3086,12 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.replacementComparison_pullback_isIso
 #print axioms SerrePositivity.KST.Comparison.replacementComparison_pullback_isIso
+
+
+-- SegalRealizationComparison.lean
+
+#check @SerrePositivity.KST.Comparison.segalRealization_homotopyPullback
+#print axioms SerrePositivity.KST.Comparison.segalRealization_homotopyPullback
 
 
 -- SequenceHomotopyPullbacks.lean

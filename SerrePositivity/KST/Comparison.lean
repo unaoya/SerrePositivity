@@ -109,6 +109,8 @@ public import SerrePositivity.KST.Comparison.FatRealizationInvariance
 
 public import SerrePositivity.KST.Comparison.FreeStandardContraction
 
+public import SerrePositivity.KST.Comparison.SegalRealizationComparison
+
 /-!
 # K-L2：比較定理の入口
 
