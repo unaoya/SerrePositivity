@@ -12488,5 +12488,54 @@ noncomputable def smallStraighteningReconstructionCandidateIso
       (leftStraighteningCandidate
         (smallLeftUnstraighteningProjection (leftStraighteningCandidate p)))
 
+def relativeFunctorOverPostFunctor {A B : SSet.{u}} (a : A ⟶ B) : Over B ⥤ SSet.{u}
+
+noncomputable def relativeFunctorOverIso {B : SSet.{u}}
+    {a a' p p' : Over B} (ea : a ≅ a') (ep : p ≅ p') :
+    relativeFunctorSpace p.hom a.hom ≅ relativeFunctorSpace p'.hom a'.hom
+
+lemma relativeFunctorOverIso_hom {B : SSet.{u}}
+    {a a' p p' : Over B} (ea : a ≅ a') (ep : p ≅ p') :
+    (relativeFunctorOverIso ea ep).hom =
+      relativeFunctorOverPre p.hom ea.inv ≫
+        HomotopyLimits.relativeFunctorPost p.hom p'.hom ep.hom.left ep.hom.w a'.hom
+
+lemma relativeFunctorOverIso_vertex {B : SSet.{u}}
+    {a a' p p' : Over B} (ea : a ≅ a') (ep : p ≅ p')
+    (f : a.left ⟶ p.left) (hf : f ≫ p.hom = a.hom) :
+    (relativeFunctorOverIso ea ep).hom.app _ (relativeFunctorVertex p.hom a.hom f hf) =
+      relativeFunctorVertex p'.hom a'.hom ((ea.inv.left ≫ f) ≫ ep.hom.left)
+        (by rw [Category.assoc, ep.hom.w, Category.assoc, hf, ea.inv.w])
+
+noncomputable def smallLeftUnstraighteningOverIso {B : SSet.{u}}
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) :
+    Over.mk ((SSet.uliftFunctor.{u + 1, u}).map (smallLeftUnstraighteningProjection F)) ≅
+      Over.mk (leftUnstraighteningProjection F)
+
+noncomputable def smallLeftUnstraighteningRelativeFunctorIso {B : SSet.{u}}
+    (F G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) :
+    (SSet.uliftFunctor.{u + 1, u}).obj
+        (relativeFunctorSpace (smallLeftUnstraighteningProjection G)
+          (smallLeftUnstraighteningProjection F)) ≅
+      relativeFunctorSpace (leftUnstraighteningProjection G) (leftUnstraighteningProjection F)
+
+noncomputable def liftedSmallLeftUnstraighteningMappingSpaceMap {B : SSet.{u}}
+    (F G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) :
+    leftUnstraighteningTransformationSpace F G ⟶
+      (SSet.uliftFunctor.{u + 1, u}).obj
+        (relativeFunctorSpace (smallLeftUnstraighteningProjection G)
+          (smallLeftUnstraighteningProjection F))
+
+lemma liftedSmallLeftUnstraighteningMappingSpaceMap_comparison {B : SSet.{u}}
+    (F G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) :
+    liftedSmallLeftUnstraighteningMappingSpaceMap F G ≫
+      (smallLeftUnstraighteningRelativeFunctorIso F G).hom =
+      leftUnstraighteningMappingSpaceMap F G
+
+lemma liftedSmallLeftUnstraighteningMappingSpaceMap_isQCatEquivalence_iff {B : SSet.{u}}
+    (F G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) :
+    IsQCatEquivalence (liftedSmallLeftUnstraighteningMappingSpaceMap F G) ↔
+      IsQCatEquivalence (leftUnstraighteningMappingSpaceMap F G)
+
 end SerrePositivity.InfinityCategories
 ```

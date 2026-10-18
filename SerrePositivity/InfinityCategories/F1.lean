@@ -621,3 +621,5 @@ public import SerrePositivity.InfinityCategories.F1.SmallLeftCoherentTransportRe
 public import SerrePositivity.InfinityCategories.F1.KanDiagramNaturalTransformation
 public import SerrePositivity.InfinityCategories.F1.KanDiagramOppositeComparison
 public import SerrePositivity.InfinityCategories.F1.SmallStraighteningReconstruction
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorOverIsomorphism
+public import SerrePositivity.InfinityCategories.F1.SmallLeftUnstraighteningMappingSpace
