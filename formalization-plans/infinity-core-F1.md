@@ -2999,5 +2999,43 @@ lemma leftMappingSpacePrism_naturality {A B : SSet.{u}} (f : A ⟶ B) :
     (Δ[1] ◁ f) ≫ leftMappingSpacePrism B =
       leftMappingSpacePrism A ≫ joinMap (𝟙 Δ[0]) f
 
+lemma intervalMappingBoundary_diagram {A X : SSet.{u}} (x y : X _⦋0⦌) :
+    intervalBoundaryDiagram (SSet.const x : A ⟶ X) (SSet.const y) =
+      fst (boundary 1 : SSet.{u}) A ≫ intervalMappingBoundary x y
+
+noncomputable def intervalMappingCurryOfEndpoints {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ X)
+    (h₀ : prismEndpoint 0 A ≫ H = SSet.const x)
+    (h₁ : prismEndpoint 1 A ≫ H = SSet.const y) : A ⟶ intervalMappingSpace x y
+
+lemma intervalMappingUncurry_curryOfEndpoints {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ X)
+    (h₀ : prismEndpoint 0 A ≫ H = SSet.const x)
+    (h₁ : prismEndpoint 1 A ≫ H = SSet.const y) :
+    intervalMappingUncurry (intervalMappingCurryOfEndpoints H h₀ h₁) = H
+
+lemma const_point_comp_yoneda {A X : SSet.{u}} (x : X _⦋0⦌) :
+    (SSet.const (stdSimplex.obj₀Equiv.symm 0) : A ⟶ Δ[0]) ≫ SSet.yonedaEquiv.symm x =
+      SSet.const x
+
+noncomputable def pinchedHomToIntervalMappingSpace {X : SSet.{u}} (x y : X _⦋0⦌) :
+    pinchedHom x y ⟶ intervalMappingSpace x y
+
+noncomputable def cosliceFiberToIntervalMappingSpace {X : SSet.{u}} (x y : X _⦋0⦌) :
+    vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y ⟶ intervalMappingSpace x y
+
+noncomputable def pinchedHomLeftToIntervalMappingSpace {X : SSet.{u}} (x y : X _⦋0⦌) :
+    pinchedHomLeft x y ⟶ intervalMappingSpace x y
+
+lemma pinchedHomToIntervalMappingSpace_uncurry {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (f : A ⟶ pinchedHom x y) :
+    intervalMappingUncurry (f ≫ pinchedHomToIntervalMappingSpace x y) =
+      rightMappingSpacePrism A ≫ pinchedHomUncurry f
+
+lemma cosliceFiberToIntervalMappingSpace_uncurry {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (f : A ⟶ vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y) :
+    intervalMappingUncurry (f ≫ cosliceFiberToIntervalMappingSpace x y) =
+      leftMappingSpacePrism A ≫ cosliceFiberUncurry f
+
 end SerrePositivity.InfinityCategories
 ```

@@ -116,3 +116,4 @@ public import SerrePositivity.InfinityCategories.F1.PointedSpaceMappingSpaces
 public import SerrePositivity.InfinityCategories.F1.CosliceFiberUniversal
 public import SerrePositivity.InfinityCategories.F1.IntervalMappingSpace
 public import SerrePositivity.InfinityCategories.F1.MappingSpacePrisms
+public import SerrePositivity.InfinityCategories.F1.MappingSpaceIntervalComparison

@@ -691,3 +691,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.leftMappingSpacePrism_one
 #check @SerrePositivity.InfinityCategories.rightMappingSpacePrism_naturality
 #check @SerrePositivity.InfinityCategories.leftMappingSpacePrism_naturality
+#check @SerrePositivity.InfinityCategories.intervalMappingBoundary_diagram
+#check @SerrePositivity.InfinityCategories.intervalMappingCurryOfEndpoints
+#check @SerrePositivity.InfinityCategories.intervalMappingUncurry_curryOfEndpoints
+#check @SerrePositivity.InfinityCategories.const_point_comp_yoneda
+#check @SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace
+#check @SerrePositivity.InfinityCategories.cosliceFiberToIntervalMappingSpace
+#check @SerrePositivity.InfinityCategories.pinchedHomLeftToIntervalMappingSpace
+#check @SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_uncurry
+#check @SerrePositivity.InfinityCategories.cosliceFiberToIntervalMappingSpace_uncurry
