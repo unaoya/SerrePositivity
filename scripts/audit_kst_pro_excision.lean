@@ -2604,3 +2604,27 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.normalizedMapReconstruct_comp
 #print axioms SerrePositivity.KST.ProExcision.normalizedMapReconstruct_comp
+
+#check @SerrePositivity.KST.ProExcision.intervalSimplexVertex
+#print axioms SerrePositivity.KST.ProExcision.intervalSimplexVertex
+
+#check @SerrePositivity.KST.ProExcision.intervalSimplexVertex_map
+#print axioms SerrePositivity.KST.ProExcision.intervalSimplexVertex_map
+
+#check @SerrePositivity.KST.ProExcision.integerIntervalComparisonApp
+#print axioms SerrePositivity.KST.ProExcision.integerIntervalComparisonApp
+
+#check @SerrePositivity.KST.ProExcision.integerIntervalComparisonApp_zero_generator
+#print axioms SerrePositivity.KST.ProExcision.integerIntervalComparisonApp_zero_generator
+
+#check @SerrePositivity.KST.ProExcision.integerIntervalComparisonApp_one_generator
+#print axioms SerrePositivity.KST.ProExcision.integerIntervalComparisonApp_one_generator
+
+#check @SerrePositivity.KST.ProExcision.integerIntervalComparison_comm_zero
+#print axioms SerrePositivity.KST.ProExcision.integerIntervalComparison_comm_zero
+
+#check @SerrePositivity.KST.ProExcision.integerIntervalComparison_comm_one
+#print axioms SerrePositivity.KST.ProExcision.integerIntervalComparison_comm_one
+
+#check @SerrePositivity.KST.ProExcision.integerIntervalComparison
+#print axioms SerrePositivity.KST.ProExcision.integerIntervalComparison
