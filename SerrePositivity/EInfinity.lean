@@ -70,3 +70,8 @@ public import SerrePositivity.EInfinity.Operad.FirstBlockFamilyAssembly
 public import SerrePositivity.EInfinity.Operad.FirstBlockPowerAssembly
 public import SerrePositivity.EInfinity.Operad.FirstBlockTensorAssembly
 public import SerrePositivity.EInfinity.Operad.SchurOperationTensor
+public import SerrePositivity.EInfinity.Operad.TensorCoefficientSeparation
+public import SerrePositivity.EInfinity.Operad.FirstBlockSubstitution
+public import SerrePositivity.EInfinity.Operad.TensorNestedCoefficient
+public import SerrePositivity.EInfinity.Operad.SchurFirstBlockTensor
+public import SerrePositivity.EInfinity.Operad.SchurFirstBlockComposition
