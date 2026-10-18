@@ -395,3 +395,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.enrichedFunctor_map_heq
 #check @SerrePositivity.InfinityCategories.coherentHomComparisonSimplex_injective
 #check @SerrePositivity.InfinityCategories.coherentHomComparison_mono
+#check @SerrePositivity.InfinityCategories.uliftSimplexHomDown
+#check @SerrePositivity.InfinityCategories.uliftSimplexHomDown_face
+#check @SerrePositivity.InfinityCategories.kanComplex_uliftFunctor_obj

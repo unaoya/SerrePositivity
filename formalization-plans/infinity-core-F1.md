@@ -1696,5 +1696,18 @@ lemma coherentHomComparisonSimplex_injective {C : Type v} [Category.{u} C]
 instance coherentHomComparison_mono {C : Type v} [Category.{u} C] [SimplicialCategory C]
     (X Y : C) : Mono (coherentHomComparison X Y)
 
+def uliftSimplexHomDown {X : SSet.{u}} {n : ℕ}
+    (f : (Δ[n] : SSet.{max u v}) ⟶ SSet.uliftFunctor.{v, u}.obj X) :
+    (Δ[n] : SSet.{u}) ⟶ X
+
+lemma uliftSimplexHomDown_face {X : SSet.{u}} {n : ℕ}
+    (f : (Δ[n + 1] : SSet.{max u v}) ⟶ SSet.uliftFunctor.{v, u}.obj X)
+    (j : Fin (n + 2)) :
+    stdSimplex.δ j ≫ uliftSimplexHomDown f =
+      uliftSimplexHomDown (stdSimplex.δ j ≫ f)
+
+instance kanComplex_uliftFunctor_obj (X : SSet.{u}) [KanComplex X] :
+    KanComplex (SSet.uliftFunctor.{v, u}.obj X)
+
 end SerrePositivity.InfinityCategories
 ```
