@@ -283,3 +283,19 @@ public import SerrePositivity.InfinityCategories.Core.VertexFiberHomotopy
 public import SerrePositivity.InfinityCategories.Core.PrecompositionFiberEquivalence
 
 public import SerrePositivity.InfinityCategories.Core.FatJoinFixedDiagramComparison
+
+public import SerrePositivity.InfinityCategories.Core.EquivalenceIntervalEdge
+
+public import SerrePositivity.InfinityCategories.Core.EquivalenceIntervalVertexIso
+
+public import SerrePositivity.InfinityCategories.Core.EquivalenceCylinderFunctorIso
+
+public import SerrePositivity.InfinityCategories.Core.PushoutHomotopy
+
+public import SerrePositivity.InfinityCategories.Core.RelativeCylinderExtension
+
+public import SerrePositivity.InfinityCategories.Core.EquivalenceCylinderJointEndpoint
+
+public import SerrePositivity.InfinityCategories.Core.JoinCoproductPushout
+
+public import SerrePositivity.InfinityCategories.Core.JoinCylinderExtension
