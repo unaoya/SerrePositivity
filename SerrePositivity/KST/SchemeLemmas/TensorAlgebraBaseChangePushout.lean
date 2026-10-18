@@ -16,6 +16,30 @@ open scoped TensorProduct
 
 set_option backward.isDefEq.respectTransparency false in
 /--
+概要：取消代数同型は中間テンソル代数からの右構造写像を実際の係数変更写像へ送る。
+方針：中間テンソル代数の純テンソルに還元し、取消同型と係数変更写像の公式を照合する。
+規約：KST §5、Stacks 0810・0811、構造写像の環準同型としての等式。
+使われ方：取消同型による移送後に中間代数上の加群のテンソルを取り消す。
+-/
+theorem tensorAlgebraBaseChange_cancel_includeRight
+    (A B C E : Type*) [CommRing A] [CommRing B] [CommRing C] [CommRing E]
+    [Algebra A B] [Algebra A C] [Algebra A E] [Algebra C E] [IsScalarTower A C E] :
+    (Algebra.TensorProduct.cancelBaseChange A C E E B).toRingHom.comp
+        (Algebra.TensorProduct.includeRight :
+          (C ⊗[A] B) →ₐ[C] E ⊗[C] (C ⊗[A] B)).toRingHom =
+      (tensorAlgebraBaseChangeMap A B C E).toRingHom := by
+  apply RingHom.ext
+  intro x
+  change (Algebra.TensorProduct.cancelBaseChange A C E E B) ((1 : E) ⊗ₜ[C] x) =
+    tensorAlgebraBaseChangeMap A B C E x
+  induction x using TensorProduct.inductionOn with
+  | tmul c b =>
+    rw [Algebra.TensorProduct.cancelBaseChange_tmul]
+    simp [tensorAlgebraBaseChangeMap, Algebra.smul_def]
+  | add x y hx hy => simp only [TensorProduct.tmul_add, map_add, hx, hy]
+
+set_option backward.isDefEq.respectTransparency false in
+/--
 概要：係数環の塔に沿う一段表示のテンソル代数は、中間テンソル代数の実際の押し出しである。
 方針：二段テンソルの取消代数同型を構成し、元の代数からの構造写像と可換であることを純テンソルで確認する。
 規約：KST §5、Stacks 0810・0811、有限性や平坦性は不要。
@@ -49,15 +73,6 @@ theorem tensorAlgebraBaseChange_isPushout
   let : Algebra D T := Algebra.TensorProduct.rightAlgebra
   let K : T ≃ₐ[E] F := Algebra.TensorProduct.cancelBaseChange A C E E B
   apply Algebra.IsPushout.of_equiv (R := C) (R' := E) (S := D) (S' := T) K
-  apply RingHom.ext
-  intro x
-  change K ((1 : E) ⊗ₜ[C] x) = tensorAlgebraBaseChangeMap A B C E x
-  induction x using TensorProduct.inductionOn with
-  | tmul c b =>
-    change (Algebra.TensorProduct.cancelBaseChange A C E E B)
-      ((1 : E) ⊗ₜ[C] (c ⊗ₜ[A] b)) = _
-    rw [Algebra.TensorProduct.cancelBaseChange_tmul]
-    simp [tensorAlgebraBaseChangeMap, Algebra.smul_def]
-  | add x y hx hy => simp only [TensorProduct.tmul_add, map_add, hx, hy]
+  exact tensorAlgebraBaseChange_cancel_includeRight A B C E
 
 end SerrePositivity.KST.SchemeLemmas
