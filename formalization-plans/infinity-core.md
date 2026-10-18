@@ -4550,6 +4550,124 @@ lemma curry_evaluateFunctorAt_interval {A Y : SSet.{u}}
 
 ```
 
+
+### A3e 続き：可逆 path の持ち上げと関手の置換（2026-10-18）
+
+可逆 path の始点評価は trivial Kan fibration。任意の単射上のホモトピーを始点を固定して延長し、全垂直辺の可逆性を保てる。点ごとに可逆なホモトピーの両端から関手単体集合での同型を構成した。関手 f の path による置換は始域への trivial Kan fibration と終点評価を持ち、元の関手の同値性を終点評価の同値性へ還元できる。Core 対象ビルド成功（1616 jobs）、累計710宣言の公理監査は標準3公理のみ。未完了：置換された終点評価の inner fibration 性、充満忠実＋本質的全射から A3a の同値を構成する主定理、一般の同値による極限の保存・反映。§4 の設計変更なし。
+
+新規23公開宣言の名前・正確な型・全前提を以下に記録する。共通の namespace は `SerrePositivity.InfinityCategories`、`universe u`、`open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet`、`open scoped Simplicial`。
+
+PrismBoundaryExtension：
+
+```lean
+def hornOneFirstVertex : (horn 1 0 : SSet.{u}) _⦋0⦌
+
+noncomputable def hornOneFirstSection (A : SSet.{u}) : A ⟶ (horn 1 0 : SSet.{u}) ⊗ A
+
+lemma hornOneFirstSection_ι (A : SSet.{u}) :
+    hornOneFirstSection A ≫ ((horn 1 0).ι ▷ A) = prismEndpoint 0 A
+
+lemma hornOneFirstSection_snd (A : SSet.{u}) :
+    hornOneFirstSection A ≫ snd (horn 1 0 : SSet.{u}) A = 𝟙 A
+
+def prismBoundaryFirstVerticalEdge (n : ℕ) :
+    ((Δ[1] : SSet.{u}) ⊗ (boundary (n + 1) : SSet.{u})) _⦋1⦌
+
+lemma prismBoundaryFirstVerticalEdge_ι₁ (n : ℕ) :
+    (Subcomplex.unionProd.ι₁ (horn 1 0) (boundary (n + 1))).app (Opposite.op ⦋1⦌)
+      (prismBoundaryFirstVerticalEdge n) =
+        ⟨prismFirstVerticalEdge (n + 1), prismFirstVerticalEdge_mem n⟩
+
+lemma prism_extend_boundary_with_endpoint {Y : SSet.{u}} [Quasicategory Y] (n : ℕ)
+    (H : (Δ[1] : SSet.{u}) ⊗ (boundary (n + 1) : SSet.{u}) ⟶ Y)
+    (F₀ : (Δ[n + 1] : SSet.{u}) ⟶ Y)
+    (hF₀ : (boundary (n + 1)).ι ≫ F₀ = prismEndpoint 0 (boundary (n + 1) : SSet.{u}) ≫ H)
+    (hH : IsInvertibleEdge (edgeOfSimplex (H.app (Opposite.op ⦋1⦌)
+      (prismBoundaryFirstVerticalEdge n)))) :
+    ∃ F : (Δ[1] : SSet.{u}) ⊗ Δ[n + 1] ⟶ Y,
+      (Δ[1] ◁ (boundary (n + 1)).ι) ≫ F = H ∧ prismEndpoint 0 Δ[n + 1] ≫ F = F₀
+
+```
+
+EquivalencePathLifting：
+
+```lean
+instance trivialKanFibration_equivalencePathEndpoint_zero (Y : SSet.{u}) [Quasicategory Y] :
+    TrivialKanFibration (equivalencePathEndpoint Y 0)
+
+instance equivalencePath_quasicategory (Y : SSet.{u}) [Quasicategory Y] :
+    Quasicategory (equivalencePath Y)
+
+lemma equivalenceHomotopy_extend {A B Y : SSet.{u}} [Quasicategory Y]
+    (i : A ⟶ B) [Mono i] (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ Y) (f : B ⟶ Y)
+    (h₀ : prismEndpoint 0 A ≫ H = i ≫ f)
+    (hH : ∀ x : A _⦋0⦌, IsInvertibleEdge (edgeOfSimplex
+      (H.app (Opposite.op ⦋1⦌)
+        (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant x 1)))) :
+    ∃ F : (Δ[1] : SSet.{u}) ⊗ B ⟶ Y,
+      (Δ[1] ◁ i) ≫ F = H ∧ prismEndpoint 0 B ≫ F = f ∧
+      ∀ x : B _⦋0⦌, IsInvertibleEdge (edgeOfSimplex
+        (F.app (Opposite.op ⦋1⦌)
+          (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant x 1)))
+
+```
+
+EquivalencePathIso：
+
+```lean
+noncomputable def functorIsoOfTrivialKanFibration {A E B : SSet.{u}}
+    (p : E ⟶ B) [TrivialKanFibration p] (f g : A ⟶ E) (h : f ≫ p = g ≫ p) :
+    FunctorIso f g
+
+noncomputable def functorIsoOfEquivalenceHomotopy {A Y : SSet.{u}} [Quasicategory Y]
+    (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ Y)
+    (hH : ∀ x : A _⦋0⦌, IsInvertibleEdge (edgeOfSimplex
+      (H.app (Opposite.op ⦋1⦌)
+        (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant x 1)))) :
+    FunctorIso (prismEndpoint 0 A ≫ H) (prismEndpoint 1 A ≫ H)
+
+```
+
+EquivalencePathReplacement：
+
+```lean
+instance trivialKanFibration_pullback_snd {E B A : SSet.{u}} (p : E ⟶ B) (f : A ⟶ B)
+    [TrivialKanFibration p] : TrivialKanFibration (pullback.snd p f)
+
+noncomputable def equivalencePathReplacement {X Y : SSet.{u}} (f : X ⟶ Y) : SSet.{u}
+
+noncomputable def equivalencePathReplacementProjection {X Y : SSet.{u}} (f : X ⟶ Y) :
+    equivalencePathReplacement f ⟶ X
+
+instance equivalencePathReplacementProjection_trivialKanFibration {X Y : SSet.{u}}
+    [Quasicategory Y] (f : X ⟶ Y) : TrivialKanFibration (equivalencePathReplacementProjection f)
+
+instance equivalencePathReplacement_quasicategory {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y) :
+    Quasicategory (equivalencePathReplacement f)
+
+noncomputable def equivalencePathReplacementMap {X Y : SSet.{u}} (f : X ⟶ Y) :
+    equivalencePathReplacement f ⟶ Y
+
+noncomputable def equivalencePathReplacementFunctorIso {X Y : SSet.{u}}
+    [Quasicategory Y] (f : X ⟶ Y) :
+    FunctorIso (equivalencePathReplacementProjection f ≫ f) (equivalencePathReplacementMap f)
+
+noncomputable def equivalencePathReplacementSection {X Y : SSet.{u}} (f : X ⟶ Y) :
+    X ⟶ equivalencePathReplacement f
+
+lemma equivalencePathReplacementSection_projection {X Y : SSet.{u}} (f : X ⟶ Y) :
+    equivalencePathReplacementSection f ≫ equivalencePathReplacementProjection f = 𝟙 X
+
+lemma equivalencePathReplacementSection_map {X Y : SSet.{u}} (f : X ⟶ Y) :
+    equivalencePathReplacementSection f ≫ equivalencePathReplacementMap f = f
+
+lemma isQCatEquivalence_iff_equivalencePathReplacementMap {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y) :
+    IsQCatEquivalence f ↔ IsQCatEquivalence (equivalencePathReplacementMap f)
+
+```
+
 ## 7. A3 の工程（2026-10-18 追加）
 
 A1・A2 の完了を受けて着手する。優先順は G1（infinity-categories.md §0）と D4・ε が使う順。

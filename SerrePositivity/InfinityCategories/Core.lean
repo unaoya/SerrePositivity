@@ -29,3 +29,11 @@ public import SerrePositivity.InfinityCategories.Core.InnerAnodyneEquivalence
 public import SerrePositivity.InfinityCategories.Core.EquivalenceCalculus
 public import SerrePositivity.InfinityCategories.Core.EquivalenceLimits
 public import SerrePositivity.InfinityCategories.Core.EquivalencePath
+
+public import SerrePositivity.InfinityCategories.Core.PrismBoundaryExtension
+
+public import SerrePositivity.InfinityCategories.Core.EquivalencePathLifting
+
+public import SerrePositivity.InfinityCategories.Core.EquivalencePathIso
+
+public import SerrePositivity.InfinityCategories.Core.EquivalencePathReplacement

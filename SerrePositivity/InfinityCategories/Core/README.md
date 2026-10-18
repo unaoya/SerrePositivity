@@ -420,3 +420,5 @@ A3e 前半保存：写像空間の射と π₀ の自然性、実際の単体的
 A3e 続き：`QCatEquivalence.isTerminalVertex_iff` は同値による終対象性の保存・反映を与える。`FunctorIso.exists_boundaryFilling` は関手単体集合で同型な境界図式間で充填を移す。`IsFullyFaithful.reflects_isTerminalVertex` は本質的全射性を仮定せずに終対象性を反映する。quasicategory の逆射の構成と、任意の極限錐の保存・反映は引き続き未完了。
 
 A3e 続き：trivial Kan fibration と inner anodyne 射から明示的な同値を構成し、同値の二対三則を実装。trivial Kan fibration による任意の極限錐の保存・反映も成立する。可逆な辺の path と端点評価を定義した。新規34宣言の正確な型・前提は計画 §6、監査累計687件。一般の充満忠実＋本質的全射の判定と、一般の同値による極限の保存・反映は未完了。
+
+A3e 続き：可逆 path の始点評価の trivial Kan fibration 性と、任意の単射に沿う可逆なホモトピーの延長を証明。点ごとに可逆なホモトピーの両端は関手単体集合で同型となる。path による関手の置換と同値性の還元も実装。公開23宣言の正確な型・前提を計画 §6 に記録、Core ビルド・累計710宣言の標準3公理監査成功。置換の終点評価の inner fibration 性、一般の同値判定と極限不変性は未完了。
