@@ -6243,3 +6243,74 @@ McCarthy の具体的な単体ホモトピー、単体積 Quillen A、加法性�
 L1d–f 未完了、L1g は別途指示待ち。Core および他レーンの公開 API に変更なし。
 
 検証：対象ビルド成功（3188 jobs）、公理監査成功（1477 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+### 6.52 D(m,w) の評価の自明ファイブレーションと object S の行の弱同値
+
+標準単体の零頂点からの収縮を、全同値図式に制限した前合成の自然同値へ移した。
+充満包含の充満忠実性で元の全同値図式の圏に持ち上げ、評価と定数図式が逆同値となることを証明した。
+既存の inner fibration 性と頂点の全射性を合わせ、任意の m において元の評価が trivial Kan fibration となる。
+この評価で安定性を反映し、定数図式の完全性と object S の後の局所化同型を証明した。
+Core・F1B・Stable・他レーンのファイルと公開 API に変更なし。
+
+主要公開宣言（namespace `SerrePositivity.KST.SConstruction`、宇宙 `u`）：
+
+```lean
+def restrictedPrecompositionIso {A B C E : SSet.{u}} [Quasicategory C]
+    {f g : A ⟶ B} (H : SSet.Homotopy f g) (i : E ⟶ (ihom B).obj C)
+    (hH : ∀ (v : E _⦋0⦌) (a : A _⦋0⦌), IsInvertibleEdge (edgeOfSimplex
+      (((functorVertexEquiv B C).symm (i.app (Opposite.op ⦋0⦌) v)).app (Opposite.op ⦋1⦌)
+        (simplicialHomotopyVertexEdge H a).edge))) :
+    FunctorIso (i ≫ (pre f).app C) (i ≫ (pre g).app C)
+
+lemma pre_constant_evaluation {K C : SSet.{u}} (k : K _⦋0⦌) :
+    (pre (SSet.const k : K ⟶ K)).app C = evaluateFunctorAt k ≫ curry (snd K C)
+
+def simplexInitialHomotopy (n : ℕ) :
+    SSet.Homotopy (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1))))
+      (𝟙 (Δ[n] : SSet.{u}))
+
+def equivalenceDiagramEvaluation_comparison (n : ℕ) (C : SSet.{u}) [Quasicategory C] :
+    FunctorIso
+      (equivalenceDiagramEvaluation (Δ[n] : SSet.{u}) C (stdSimplex.obj₀Equiv.symm 0) ≫
+        equivalenceDiagramConstant Δ[n] C) (𝟙 (equivalenceDiagrams Δ[n] C))
+
+def equivalenceDiagramEvaluationEquivalence (n : ℕ) (C : SSet.{u}) [Quasicategory C] :
+    QCatEquivalence (equivalenceDiagrams (Δ[n] : SSet.{u}) C) C
+
+instance equivalenceDiagramEvaluation_trivialKanFibration (n : ℕ) (C : SSet.{u})
+    [Quasicategory C] : TrivialKanFibration
+      (equivalenceDiagramEvaluation (Δ[n] : SSet.{u}) C (stdSimplex.obj₀Equiv.symm 0))
+
+instance equivalenceDiagrams_isStable (n : ℕ) (C : SSet.{u})
+    [Quasicategory C] [IsStable C] : IsStable (equivalenceDiagrams (Δ[n] : SSet.{u}) C)
+
+def equivalenceDiagramStableModel (n : ℕ) (X : StableModel.{u}) : StableModel.{u}
+
+def equivalenceDiagramStableEvaluation (n : ℕ) (X : StableModel.{u}) :
+    equivalenceDiagramStableModel n X ⟶ X
+
+def equivalenceDiagramStableConstant (n : ℕ) (X : StableModel.{u}) :
+    X ⟶ equivalenceDiagramStableModel n X
+
+lemma equivalenceDiagramStableConstant_evaluation (n : ℕ) (X : StableModel.{u}) :
+    equivalenceDiagramStableConstant n X ≫ equivalenceDiagramStableEvaluation n X = 𝟙 X
+
+lemma equivalenceDiagramStableEvaluation_objectS_localized_isIso (n : ℕ)
+    (X : StableModel.{u}) : IsIso (AnodyneHomotopy.anodyneQ.map
+      (objectSConstructionFunctor.map (equivalenceDiagramStableEvaluation n X)))
+
+lemma equivalenceDiagramStableConstant_objectS_localized_isIso (n : ℕ)
+    (X : StableModel.{u}) : IsIso (AnodyneHomotopy.anodyneQ.map
+      (objectSConstructionFunctor.map (equivalenceDiagramStableConstant n X)))
+```
+
+前提：一般の前合成の補題は標的 C の quasicategory 性とホモトピー成分の可逆性を要求する。
+評価の自明ファイブレーションは C の quasicategory 性のみ、安定模型と object S の弱同値は X : StableModel を要求する。
+
+現在地：L1a・L1b 完了、L1c 継続中。一般の m での D(m,w) の評価と object S の定数包含の弱同値は証明済み。
+core S の各行との同型、元の `objectToCoreSRealization` の弱同値、McCarthy の単体ホモトピー、
+単体積 Quillen A、加法性、面のホモトピー引き戻し条件は未完了。
+反復 S 実現と §6.43 の homotopy fiber の比較、構造射との照合、正の段の Ω 条件・delooping、
+負次数消滅を含む BF 連結スペクトルとスペクトル関手も未完了。L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（3193 jobs）、公理監査成功（1490 宣言、propext・Classical.choice・Quot.sound のみ）。追加公理・sorry なし。

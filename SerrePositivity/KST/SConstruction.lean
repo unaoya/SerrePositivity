@@ -168,4 +168,8 @@ public import SerrePositivity.KST.SConstruction.EquivalenceDiagramVertices
 public import SerrePositivity.KST.SConstruction.FunctorVertexEvaluation
 public import SerrePositivity.KST.SConstruction.SimplexInitialContraction
 
+public import SerrePositivity.KST.SConstruction.RestrictedPrecompositionIso
+public import SerrePositivity.KST.SConstruction.EquivalenceDiagramEvaluation
+public import SerrePositivity.KST.SConstruction.EquivalenceDiagramStableModel
+
 /-! # ∞-S• 構成と連結 K 理論 -/
