@@ -2078,7 +2078,9 @@ Sp の極限対象の段は置換せず、Kan 性・構造射の単射性・全�
 
 余極限側は着手済み。通常の余錐を元の標準図式上の native な余錐として構成し、頂点と
 反対の極限性による双対判定を検証した。離散添字では全反変 Hom の極限性から余極限性を導き、
-Kan 複体の余錐では台の余極限性からこの Hom 条件を検証する。実際の余積等の構成は後続工程。
+Kan 複体の余錐では台の余極限性からこの Hom 条件を検証する。
+𝒮 の実際の小さい余積を、空余積を含めて Kan 性・台の普遍性とともに公開した。
+余錐の各脚の照合、homotopy 押し出し・逐次余極限は後続工程。
 任意の小圏上の反転係数の end と切断の比較、およびその極限・余極限判定も公開した。
 一般形状の非反転 q_x との直接比較と E2a 完了後の E2b 適用は残る。
 指定三形状の可縮性判定を、これらの未完了工程を含む γ3 全体の完成とは数えない。
@@ -9629,3 +9631,164 @@ lemma strictNativeCocone_isColimit_of_kanDiscrete_forget
 公理監査成功（標準3公理のみ）。新規3ファイルに警告・sorry・追加公理はない。
 他担当の依存1114ソースは全て追跡済み・コミット済み・変更なし。
 ログ：`/tmp/gamma3-discrete-colimit-aggregate.log`、`/tmp/gamma3-discrete-colimit-audit.log`。
+
+### γ3：𝒮 の実際の小さい余積と空余積
+
+単体集合の族 F : J → SSet の余積を、次数 n で `Σ j, (F j).obj n` となる直和として
+構成した。面・退化は成分添字 j を保持し、標準包含と成分ごとの降下射が余積の普遍性を満たす。
+全成分が Kan ならこの実際の直和も Kan。ホーンの指定された面を Yoneda で単体に戻し、
+二次元以上では面の交わりから全ての成分添字が等しいと示す。一次元のホーンには唯一の面を使う。
+同じ成分への因子分解の後、包含の単射性で整合性を検証し、その成分の Kan 充填を直和へ戻す。
+有限性・添字の非空性・モデル構造の新たな仮定は不要。
+
+F : Discrete J → KanObject に対して、台がこの直和である `kanCoproductObject F` と
+その標準包含の通常の余錐 `kanCoproductCocone F` を構成した。
+台の単体集合の圏と通常の Kan 複体の圏でそれぞれ余積の普遍性を証明している。
+前節の反変 Hom の極限性の検証から、F1 の既存の図式 `kanDiagramCoherentNerve F` 上の
+`spaceCoproductCocone F` が native な `IsColimitCone` を満たすと証明した。
+頂点は実際の直和の標準頂点で、Kan 置換や同値類による対象の置き換えを行わない。
+J は任意の小さい型であり、空余積と有限余積もこの同じ構成に含まれる。
+
+これで 𝒮 の小さい余積の対象・余錐・余極限性は公開済み。
+余錐の native な各脚と包含射の照合、homotopy 押し出し・逐次余極限、
+一般形状の非反転 q_x への移送、E2a 完了後の E2b は継続する。
+原典：HTT 4.2.4.1、Kerodon 7.5.4.1・7.5.4.6。
+
+公開する十八宣言の正確な型は以下。共通前提は `J : Type u`。
+対象・Hom の宇宙は既存の `KanObject.{u}` に従い、空間の coherent nerve の宇宙は u+1。
+
+`SimplicialCoproducts.lean`：
+
+```lean
+def simplicialCoproduct (F : J → SSet.{u}) : SSet.{u}
+```
+
+`SimplicialCoproducts.lean`：
+
+```lean
+def simplicialCoproductι (F : J → SSet.{u}) (j : J) : F j ⟶ simplicialCoproduct F
+```
+
+`SimplicialCoproducts.lean`：
+
+```lean
+def simplicialCoproductDesc (F : J → SSet.{u}) {X : SSet.{u}}
+    (f : ∀ j, F j ⟶ X) : simplicialCoproduct F ⟶ X
+```
+
+`SimplicialCoproducts.lean`：
+
+```lean
+lemma simplicialCoproductι_desc (F : J → SSet.{u}) {X : SSet.{u}}
+    (f : ∀ j, F j ⟶ X) (j : J) :
+    simplicialCoproductι F j ≫ simplicialCoproductDesc F f = f j
+```
+
+`SimplicialCoproducts.lean`：
+
+```lean
+lemma simplicialCoproduct_hom_ext (F : J → SSet.{u}) {X : SSet.{u}}
+    {f g : simplicialCoproduct F ⟶ X}
+    (h : ∀ j, simplicialCoproductι F j ≫ f = simplicialCoproductι F j ≫ g) : f = g
+```
+
+`SimplicialCoproducts.lean`：
+
+```lean
+lemma simplicialCoproductι_cancel (F : J → SSet.{u}) (j : J) {X : SSet.{u}}
+    {f g : X ⟶ F j} (h : f ≫ simplicialCoproductι F j = g ≫ simplicialCoproductι F j) :
+    f = g
+```
+
+`SimplicialCoproducts.lean`：
+
+```lean
+def simplicialCoproduct_isColimit (F : J → SSet.{u}) :
+    IsColimit (Cofan.mk (simplicialCoproduct F) (simplicialCoproductι F))
+```
+
+`SimplicialCoproducts.lean`：
+
+```lean
+lemma simplicialCoproduct_simplexLabel_face (F : J → SSet.{u}) {n : ℕ}
+    (f : (Δ[n + 1] : SSet.{u}) ⟶ simplicialCoproduct F) (j : Fin (n + 2)) :
+    (SSet.yonedaEquiv (stdSimplex.δ j ≫ f)).1 = (SSet.yonedaEquiv f).1
+```
+
+`SimplicialCoproducts.lean`：
+
+```lean
+lemma simplicialCoproduct_simplex_factorization (F : J → SSet.{u}) {n : ℕ}
+    (f : (Δ[n] : SSet.{u}) ⟶ simplicialCoproduct F) (j : J)
+    (h : (SSet.yonedaEquiv f).1 = j) :
+    ∃ g : (Δ[n] : SSet.{u}) ⟶ F j, g ≫ simplicialCoproductι F j = f
+```
+
+`KanCoproducts.lean`：
+
+```lean
+lemma simplicialCoproduct_horn_simplexLabel_eq (F : J → SSet.{u}) {n : ℕ}
+    {i : Fin (n + 2)}
+    (f : ∀ (j : Fin (n + 2)) (_ : j ≠ i), (Δ[n] : SSet.{u}) ⟶ simplicialCoproduct F)
+    (hf : horn.IsCompatible f) (j k : Fin (n + 2)) (hj : j ≠ i) (hk : k ≠ i) :
+    (SSet.yonedaEquiv (f j hj)).1 = (SSet.yonedaEquiv (f k hk)).1
+```
+
+`KanCoproducts.lean`：
+
+```lean
+instance simplicialCoproduct_kanComplex (F : J → SSet.{u}) [∀ j, KanComplex (F j)] :
+    KanComplex (simplicialCoproduct F)
+```
+
+`SpaceCoproducts.lean`：
+
+```lean
+def kanCoproductObject (F : Discrete J ⥤ KanObject.{u}) : KanObject.{u}
+```
+
+`SpaceCoproducts.lean`：
+
+```lean
+def kanCoproductCocone (F : Discrete J ⥤ KanObject.{u}) : Cocone F
+```
+
+`SpaceCoproducts.lean`：
+
+```lean
+def kanCoproductCocone_forget_isColimit (F : Discrete J ⥤ KanObject.{u}) :
+    IsColimit (kanObjectForget.mapCocone (kanCoproductCocone F))
+```
+
+`SpaceCoproducts.lean`：
+
+```lean
+noncomputable def kanCoproductCocone_isColimit (F : Discrete J ⥤ KanObject.{u}) :
+    IsColimit (kanCoproductCocone F)
+```
+
+`SpaceCoproducts.lean`：
+
+```lean
+noncomputable def spaceCoproductCocone (F : Discrete J ⥤ KanObject.{u}) :
+    JoinCocone (kanDiagramCoherentNerve F)
+```
+
+`SpaceCoproducts.lean`：
+
+```lean
+lemma spaceCoproductCocone_vertex (F : Discrete J ⥤ KanObject.{u}) :
+    (spaceCoproductCocone F).vertex = spaceInfinityVertex (kanCoproductObject F)
+```
+
+`SpaceCoproducts.lean`：
+
+```lean
+lemma spaceCoproductCocone_isColimitCone (F : Discrete J ⥤ KanObject.{u}) :
+    IsColimitCone (spaceCoproductCocone F)
+```
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4990 jobs）、公開1550宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規3ファイルに警告・sorry・追加公理はない。
+他担当の依存1114ソースは全て追跡済み・コミット済み・変更なし。
+ログ：`/tmp/gamma3-space-coproduct-aggregate.log`、`/tmp/gamma3-space-coproduct-audit.log`。

@@ -217,7 +217,7 @@ HTT 4.2.4.1 の双対と Kerodon Corollary 7.5.4.6 を基準とする。
 | --- | --- |
 | γ3a | 限定した主張、原典、仮定、pinched Hom による検出、適用条件と宇宙を記録済み |
 | γ3b | 指定三形状で元の非反転 q_x の同値性・全導来 fiber の可縮性と native な極限性の両向き判定、pinched Hom との反転なしの直接比較を公開。任意の小圏では反転係数の end の切断比較と極限・余極限の判定を公開。一般形状の非反転 q_x への移送は未完了 |
-| γ3c | 𝒮 の任意の小さい積と Sp の有限積（双方空積を含む）、一脚 fibration の引き戻し、fibration の可算塔の実際の対象と native な極限錐を公開。Sp の Kan・Ω 条件と全 Hom 条件も検証済み。余極限の具体的適用は未完了 |
+| γ3c | 𝒮 の任意の小さい積と Sp の有限積（双方空積を含む）、一脚 fibration の引き戻し、fibration の可算塔の実際の対象と native な極限錐を公開。Sp の Kan・Ω 条件と全 Hom 条件も検証済み。𝒮 の空余積を含む小さい余積も公開。homotopy 押し出し・逐次余極限等は未完了 |
 
 Sp では raw sHom の局所 Kan 性と極限の cofibrancy を省略せず、必要なら cofibrant-fibrant
 置換後の錐を公開する。実装は `InfinityCategories/HomotopyLimits/` と専用監査に置く。
@@ -2223,3 +2223,22 @@ native な極限・余極限性を導く。余錐の条件は全 x : Cᵒᵖ で
 公理監査成功（標準3公理のみ）。新規3ファイルに警告・sorry・追加公理はない。
 他担当の依存1114ソースは全て追跡済み・コミット済み・変更なし。
 ログ：`/tmp/gamma3-discrete-colimit-aggregate.log`、`/tmp/gamma3-discrete-colimit-audit.log`。
+
+### γ3：𝒮 の実際の小さい余積（空余積を含む）
+
+`SimplicialCoproducts.lean` の九宣言で次数ごとの直和、標準包含、降下射、射の一致の検出、
+台の余積の普遍性、標準単体の成分への因子分解を構成。
+`KanCoproducts.lean` の二宣言でホーンの指定された面の成分添字の一致と直和の Kan 性を直接証明。
+`SpaceCoproducts.lean` の七宣言で Kan な直和対象、通常の余錐、台と Kan 複体の圏での普遍性、
+F1 の元の図式上の余積余錐と標準頂点の等式を公開した。主要な結論は
+`spaceCoproductCocone_isColimitCone (F : Discrete J ⥤ KanObject.{u}) :
+IsColimitCone (spaceCoproductCocone F)`。J : Type u に有限性・非空性は不要。
+追加の Hom 極限条件や比較同値の仮定はなく、実際の直和の Kan 性から全てを検証する。
+十八宣言の正確な型・全前提は README の同名節と専用監査に記録する。
+𝒮 の実際の小さい余積は公開済み。native な各脚の同定、homotopy 押し出し・逐次余極限、
+一般形状の非反転 q_x、E2a 後の E2b は未完了。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4990 jobs）、公開1550宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規3ファイルに警告・sorry・追加公理はない。
+他担当の依存1114ソースは全て追跡済み・コミット済み・変更なし。
+ログ：`/tmp/gamma3-space-coproduct-aggregate.log`、`/tmp/gamma3-space-coproduct-audit.log`。
