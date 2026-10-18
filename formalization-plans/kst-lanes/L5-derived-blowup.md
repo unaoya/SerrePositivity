@@ -43,7 +43,8 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 全 diagram-module の係数 dg 圏に向け、包含に対応する Hom、単位、合成の候補と
 二つの包含があるときの合成公式を構成済み。
 一般のモノイド対象の射に沿う乗法の単位・結合則、および係数圏の左右の単位律を証明済み。
-係数圏の結合律と dg 圏への組立ては未完了。
+係数圏の結合律も証明し、全 diagram-module を表す実際の係数 dg 圏を構成済み。
+その opposite 上の右 dg 加群として全 diagram-module の加群圏と通常の導来圏を定義済み。
 その係数図式上の coherent な dg 加群の降下模型と層レベル比較は未完了。
 L5b 全体は未完了。L5c〜L5f は未実装。
 既存の L11 の検証記録を、Lean の証明済み宣言とは扱わない。
@@ -259,6 +260,8 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `diagramModuleHom`・包含による同定・`diagramModuleId`・`diagramModuleComp`・`diagramModuleComp_on_le` | DiagramModuleHom | 全 diagram-module の係数 dg 圏の Hom・単位・合成の候補と包含上の公式。圏法則は別モジュールで検証 |
 | `diagramAlgebraMul`・左単位・恒等遷移・結合則 | DiagramAlgebraMultiplication | モノイド対象の射で係数を送ってから掛ける合成の一般則 |
 | `diagramModuleHom_isZero`・`diagramModule_left_unit`・`diagramModule_right_unit` | DiagramModuleUnit | 包含のない Hom の零性と diagram-module 係数圏の左右の単位律 |
+| `diagramModule_assoc_of_le`・tensor の零性・`diagramModule_assoc` | DiagramModuleAssociativity | 全ての対象での diagram-module 係数圏の結合律 |
+| `DiagramModuleCoefficientObject`・`diagramModuleCoefficientDGCategory`・`AllDiagramModules`・`DerivedAllDiagramModules`・`BlowupDiagramCoefficientObject` | DiagramModuleCoefficientCategory | 既存 DGCategory へ接続した全 diagram-module の係数圏・全加群圏・通常の導来局所化 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -326,10 +329,10 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 その上の coherent な dg 加群の降下模型と、層レベルの Dqc・Perf 比較は未完了。
 係数 dg 代数図式と局所の導来底変更比較は構成済みだが、
 coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全体の完成とは扱わない。
-所有モジュールの全1500定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全1538定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
-次の実装単位は全 diagram-module の係数 dg 圏の結合律と dg 圏への組立て。
-その加群圏を objectwise acyclic で導来化し、cartesian・局所 perfect 条件へ接続する。
+次の実装単位は全 diagram-module の射影的／半自由置換と mapping 複体の導来化。
+objectwise acyclic による dg 導来化を確認し、cartesian・局所 perfect 条件へ接続する。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
 
