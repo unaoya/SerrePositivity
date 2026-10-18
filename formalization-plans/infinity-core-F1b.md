@@ -235,7 +235,24 @@ right anodyne な射の引き戻しの安定性は、これだけからは従わ
 これに `cofinalRightHornRaise/Finish` の両端・接続・定値族の固定の式を渡し、
 `leftFibration_rightHorn_pullback_isRightCofinal/rightAnodyne` を証明した。
 この定理は単射ごとの cofinality 判定を使い、Quillen A を前提としない。
-次は全右ホーンの結果を弱飽和閉包に移して一般の right anodyne な射に拡張する。
+一般の right anodyne な射への拡張では、通常の slice 圏の随伴を使う経路を採る。
+`cofinalRightFibration_of_over_lifting` は通常の slice 内の右ホーンで検査した持ち上げ性を
+元の right fibration 性へ戻す。`cofinalRightAnodyne_of_over_lifting` は、検査する右辺を
+下辺へ引き戻すことで、slice 内の right fibration に対する持ち上げ性を元の right anodyne 性へ戻す。
+`cofinalRightAnodyne_leftAdjoint_of_horns` は、通常の slice 間の左随伴が右ホーンを
+right anodyne に送れば任意の right anodyne な射も保つことを証明する。
+証明では右随伴が right fibration を保つことを生成元と持ち上げの随伴対応から先に得る。
+`cofinalOverPullback_map_isPullback` で slice の引き戻し関手の射が引き戻し正方形をなすことを示し、
+`leftFibration_overPullback_rightHorn_rightAnodyne` で元の全右ホーンの結果を適用した。
+
+`leftFibration_overPullback_rightAnodyne_of_isLeftAdjoint` と
+`leftFibration_pullback_rightAnodyne_of_isLeftAdjoint` は、一般の right anodyne な射について
+引き戻し保存を **`(Over.pullback p).IsLeftAdjoint` を仮定して**与える中間定理である。
+無条件の保存・一般の cofinality の保存・Quillen A を証明済みとは扱わない。
+次は単体集合の通常の前層圏の slice の同値と制限関手の右随伴からこの仮定を解消する。
+Mathlib の `overEquivPresheafCostructuredArrow` は Hom と値の宇宙が一致する形なので、
+`SSet.{u}` にそのまま適用できないことを確認済み。小さい添字圏の Hom の持ち上げと
+圏同値による移送（または宇宙を分けた fiber 表示）で対処し、宇宙を零に固定しない。
 
 Quillen A 本体、cocartesian fibration に沿う cofinality の pullback 安定性、
 Kan な底への弱同値 ⇒ cofinal の逆方向（Prop 7.2.1.5(2)）、
@@ -247,8 +264,8 @@ B3 の cofinality の pullback 安定性を証明し、弱可縮な coslice の�
 B4 の各点の Kan 拡張、B5 の古典 nerve に戻る検査も未完了。
 全体の α2b 目標は継続中。
 
-対象ビルド2223 jobs、公理監査2022宣言（標準三公理のみ）が成功。
-推移的 import のリポジトリ内554モジュールに straightening 依存なし。
+対象ビルド2227 jobs、公理監査2032宣言（標準三公理のみ）が成功。
+推移的 import のリポジトリ内557モジュールに straightening 依存なし。
 
 ## 4. 主要宣言
 
@@ -332,21 +349,23 @@ B4 の各点の Kan 拡張、B5 の古典 nerve に戻る検査も未完了。
 | `trivialKanFibration_iff_leftFibration_and_isLeftCofinal`・right 版 | Cor 7.2.1.14 の三条件の同値 | 済 |
 | `isLeftCofinal_iff_exists_anodyne_trivialKan_factorization`・right 版 | Cor 7.2.1.15 の anodyne・trivial Kan 因子分解による特徴づけ | 済 |
 | B3 の Quillen A・B4〜B5 | §1 の残る工程 | 未完了 |
-
 | `leftFibration_lift_fixed_prism` | 単射部分を固定した底の prism の持ち上げ | 済 |
 | `cofinalLastHorn_prism_factorization`・`rightAnodyneExtensions_of_fixed_terminal_homotopy` | 固定した終端収縮を持つ単射の right anodyne 性 | 済 |
 | `cofinalVertexFiberι_mono`・`cofinalPrismLastContraction_const` | fiber の単射性と終点収縮による任意の定値族の固定 | 済 |
 | `leftFibration_terminalFiber_rightAnodyne_of_fixed_contraction`・`leftFibration_terminalFiber_rightAnodyne/isRightCofinal` | 固定した頂点への収縮から fiber 包含の判定、標準単体の場合 | 済 |
 | `cofinalVertexFiberPullbackIso`・`cofinalVertexFiberPullbackIso_hom_fst` | 頂点 fiber と標準 pullback の同型・包含との整合 | 済 |
 | `leftFibration_terminalPoint_pullback_rightAnodyne/isRightCofinal` | 終点包含の left fibration に沿う引き戻し | 済 |
-
 | `cofinalLastHornVertex`・`cofinalLastHornContraction`・`..._zero/_one/_const` | 外側右ホーンに制限した固定終点収縮 | 済 |
 | `cofinalVertexFiberBaseChangeIso`・`..._hom_ι` | 引き戻し前後の頂点 fiber の同型・包含との可換性 | 済 |
 | `isRightCofinal_pullback_fst_of_vertexFibers` | 二つの fiber 包含の cofinality から第一射影への消去 | 済 |
 | `leftFibration_lastHorn_pullback_isRightCofinal/rightAnodyne` | left fibration に沿う外側右ホーンの引き戻し | 済 |
-
 | `rightFibration_lift_fixed_prism` | 任意の単射上を固定した終端からの相対 prism の持ち上げ | 済 |
 | `rightAnodyneExtensions_of_fixed_terminal_homotopies` | 二段の固定した終端収縮から単射の right anodyne 性 | 済 |
 | `leftFibration_terminalFiber_rightAnodyne_of_two_fixed_contractions` | 二段の底の収縮から終点 fiber 包含の right anodyne 性 | 済 |
 | `cofinalHornRaiseOrderHom/FinishOrderHom`・`cofinalRightHornVertex/Raise/Finish`・両端と定値族の固定の式 | 全右ホーンの二段の固定終点収縮 | 済 |
 | `leftFibration_rightHorn_pullback_isRightCofinal/rightAnodyne` | left fibration に沿う全右ホーンの引き戻し、k ≠ 0 | 済 |
+| `cofinalRightFibration_of_over_lifting`・`cofinalRightAnodyne_of_over_lifting` | 通常の slice 内の持ち上げ性と元の単体集合の性質の接続 | 済 |
+| `cofinalRightFibration_rightAdjoint_of_horns`・`cofinalRightAnodyne_leftAdjoint_of_horns` | 生成元の像の条件から随伴による一般の right anodyne な射への移送 | 済 |
+| `leftFibration_rightHorn_isPullback_rightAnodyne`・`cofinalRightHorn_isPullback_rightAnodyne` | 全右ホーンの定理の任意の引き戻し正方形への移送 | 済 |
+| `cofinalOverPullback_map_isPullback`・`leftFibration_overPullback_rightHorn_rightAnodyne` | slice の引き戻し関手の射の正方形と生成元での検査 | 済 |
+| `leftFibration_overPullback_rightAnodyne_of_isLeftAdjoint`・`leftFibration_pullback_rightAnodyne_of_isLeftAdjoint` | 通常の引き戻し関手の右随伴の存在を仮定した一般の引き戻し保存 | 条件付き中間定理・一般圏論の仮定の解消は未完 |
