@@ -1,6 +1,27 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.symmetricCoconeFirst
+#print axioms SerrePositivity.InfinityCategories.symmetricCoconeSecond
+#print axioms SerrePositivity.InfinityCategories.symmetricCoconeFirst_uncurry
+#print axioms SerrePositivity.InfinityCategories.symmetricCoconeSecond_uncurry
+#print axioms SerrePositivity.InfinityCategories.symmetricCoconeBranches_comm
+#print axioms SerrePositivity.InfinityCategories.symmetricCoconeSwap_first
+#print axioms SerrePositivity.InfinityCategories.symmetricCoconeSwap_second
+#print axioms SerrePositivity.InfinityCategories.symmetricCoconeBranches_hom_ext
+#print axioms SerrePositivity.InfinityCategories.exists_symmetricCoconeBranches_glue
+#print axioms SerrePositivity.InfinityCategories.symmetricCoconeBranches_isPullback
+#print axioms SerrePositivity.InfinityCategories.symmetricCoconeKernelPairIso
+#print axioms SerrePositivity.InfinityCategories.stableEdgeSimplex_target_initial
+#print axioms SerrePositivity.InfinityCategories.symmetricCoconeLoopComparison
+#print axioms SerrePositivity.InfinityCategories.symmetricCoconeLoopComparison_homotopyEquivalence
+#print axioms SerrePositivity.InfinityCategories.symmetricCoconePiZeroLoopEquiv
+#print axioms SerrePositivity.InfinityCategories.symmetricCoconePiZeroLoopEquiv_eq_comparison
+#print axioms SerrePositivity.InfinityCategories.symmetricCoconeKernelPairIso_hom_fst
+#print axioms SerrePositivity.InfinityCategories.symmetricCoconeKernelPairIso_hom_snd
+#print axioms SerrePositivity.InfinityCategories.symmetricCoconeKernelPairIso_swap
+#print axioms SerrePositivity.InfinityCategories.symmetricCoconeKernelPairIso_swap_piZero
+
 #print axioms SerrePositivity.InfinityCategories.vertexFiberι_isQCatEquivalence_of_contractible_base
 #print axioms SerrePositivity.InfinityCategories.vertexFiberι_homotopyEquivalence_of_contractible_base
 #print axioms SerrePositivity.InfinityCategories.vertexFiberPiZeroEquivOfContractibleBase
@@ -1320,7 +1341,11 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.SymmetricCoconeSwap,
     `SerrePositivity.InfinityCategories.Stable.KanContractibleBaseFiber,
     `SerrePositivity.InfinityCategories.Stable.KanKernelPairLoops,
-    `SerrePositivity.InfinityCategories.Stable.CoconeBranchKernelPairLoops]
+    `SerrePositivity.InfinityCategories.Stable.CoconeBranchKernelPairLoops,
+    `SerrePositivity.InfinityCategories.Stable.SymmetricCoconeBranches,
+    `SerrePositivity.InfinityCategories.Stable.SymmetricCoconeKernelPair,
+    `SerrePositivity.InfinityCategories.Stable.SymmetricCoconeLoopComparison,
+    `SerrePositivity.InfinityCategories.Stable.SymmetricCoconeKernelPairSwap]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

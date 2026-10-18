@@ -13812,3 +13812,395 @@ f の終点が始対象なら枝の余錐空間は可縮なので、上の自己
 表示の輸送、二枝交換がループの逆射になる計算、ループの群構造と双積の加法の一致は未証明。
 負号、回転第三射、TR2、八面体・TR4、Pretriangulated instance、S5〜S7 は未完了。
 空間のホモトピー同値や π₀ の型の同値だけを交換・群構造・負号との両立とは数えない。
+
+
+## 2026-10-19：対称 span 全体の自己引き戻し表示とループ比較
+
+S4 の二枝交換をループ反転へ移す工程で、前回の枝の自己引き戻しからの比較を
+対称 span 全体の余錐空間まで接続した。
+symmetricCoconeFirst・Second は edgeSpan f f の両枝を同じ指定辺
+SSet.yonedaEquiv.symm f.edge の余錐空間に制限する射。
+図式の等号による表示変更を含む uncurry の計算則を用い、
+共通始点への制限が一致することと、symmetricCoconeSwap が First と Second を交換することを示した。
+
+symmetricCoconeBranches_hom_ext と exists_symmetricCoconeBranches_glue は、
+両枝を同じ表示に揃えた余錐族の貼り合わせの一意性と存在。
+これらから symmetricCoconeBranches_isPullback と標準同型 symmetricCoconeKernelPairIso を得た。
+全体の余錐空間 D(edgeSpan f f) が、同じ coconeBranchSource の自己引き戻しと同型になる。
+この部分には値域の Quasicategory 性や辺の終点の零対象性を仮定しない。
+
+symmetricCoconeKernelPairIso_hom_fst・snd は比較同型の両射影、
+symmetricCoconeKernelPairIso_swap はこの同型が二枝交換を pullbackSymmetry による
+二成分交換へ厳密に移す等号。_swap_piZero はその連結成分への作用の計算則。
+
+X が Quasicategory、f : x → z の z が始対象なら、
+symmetricCoconeLoopComparison は上の同型と枝のループ比較を合成した実際の射。
+枝の余錐 e を基点とし、D(edgeSpan f f) から共通始点の余錐空間の基点付き左写像空間へ向かう。
+_homotopyEquivalence はこの射が実際の単体的ホモトピー同値であることを証明する。
+symmetricCoconePiZeroLoopEquiv と _eq_comparison は π₀ の Hom 同値と実際の比較射の一致。
+この適用に安定性全体は不要。比較は基点と前段のホモトピー逆の選択を含む。
+
+追加モジュールは SymmetricCoconeBranches、SymmetricCoconeKernelPair、
+SymmetricCoconeLoopComparison、SymmetricCoconeKernelPairSwap の四つ。
+公開名付き 20 宣言の正確な型（Lean の #check @ による出力）：
+
+```lean
+@SerrePositivity.InfinityCategories.symmetricCoconeFirst.{u_1} : {X : SSet.{u_1}} →
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })} →
+    (f : SSet.Truncated.Edge.{u_1} x z) →
+      (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })) →
+        Quiver.Hom.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+            (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f) y)
+          (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+            ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)
+@SerrePositivity.InfinityCategories.symmetricCoconeSecond.{u_1} : {X : SSet.{u_1}} →
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })} →
+    (f : SSet.Truncated.Edge.{u_1} x z) →
+      (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })) →
+        Quiver.Hom.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+            (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f) y)
+          (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+            ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)
+@SerrePositivity.InfinityCategories.symmetricCoconeFirst_uncurry.{u_1} : ∀ {X T : SSet.{u_1}}
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }))
+  (a :
+    Quiver.Hom.{u_1, u_1 + 1} T
+      (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+        (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f) y)),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.sliceUnderUncurry.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} a
+          (SerrePositivity.InfinityCategories.symmetricCoconeFirst.{u_1} f y))
+        (SerrePositivity.InfinityCategories.vertexFiberι.{u_1}
+          (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}
+            ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)))
+          y)))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.joinMap.{u_1} SSet.horn₂₀.ι₀₁.{u_1}
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} T))
+      (SerrePositivity.InfinityCategories.sliceUnderUncurry.{u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} a
+          (SerrePositivity.InfinityCategories.vertexFiberι.{u_1}
+            (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}
+              (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f))
+            y))))
+@SerrePositivity.InfinityCategories.symmetricCoconeSecond_uncurry.{u_1} : ∀ {X T : SSet.{u_1}}
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }))
+  (a :
+    Quiver.Hom.{u_1, u_1 + 1} T
+      (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+        (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f) y)),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.sliceUnderUncurry.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} a
+          (SerrePositivity.InfinityCategories.symmetricCoconeSecond.{u_1} f y))
+        (SerrePositivity.InfinityCategories.vertexFiberι.{u_1}
+          (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}
+            ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)))
+          y)))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.joinMap.{u_1} SSet.horn₂₀.ι₀₂.{u_1}
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} T))
+      (SerrePositivity.InfinityCategories.sliceUnderUncurry.{u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} a
+          (SerrePositivity.InfinityCategories.vertexFiberι.{u_1}
+            (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}
+              (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f))
+            y))))
+@SerrePositivity.InfinityCategories.symmetricCoconeBranches_comm.{u_1} : ∀ {X : SSet.{u_1}}
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.symmetricCoconeFirst.{u_1} f y)
+      (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+        ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.symmetricCoconeSecond.{u_1} f y)
+      (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+        ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y))
+@SerrePositivity.InfinityCategories.symmetricCoconeSwap_first.{u_1} : ∀ {X : SSet.{u_1}}
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.symmetricCoconeSwap.{u_1} f y)
+      (SerrePositivity.InfinityCategories.symmetricCoconeFirst.{u_1} f y))
+    (SerrePositivity.InfinityCategories.symmetricCoconeSecond.{u_1} f y)
+@SerrePositivity.InfinityCategories.symmetricCoconeSwap_second.{u_1} : ∀ {X : SSet.{u_1}}
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.symmetricCoconeSwap.{u_1} f y)
+      (SerrePositivity.InfinityCategories.symmetricCoconeSecond.{u_1} f y))
+    (SerrePositivity.InfinityCategories.symmetricCoconeFirst.{u_1} f y)
+@SerrePositivity.InfinityCategories.symmetricCoconeBranches_hom_ext.{u_1} : ∀ {X T : SSet.{u_1}}
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }))
+  {a b :
+    Quiver.Hom.{u_1, u_1 + 1} T
+      (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+        (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f) y)},
+  Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} a
+        (SerrePositivity.InfinityCategories.symmetricCoconeFirst.{u_1} f y))
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} b
+        (SerrePositivity.InfinityCategories.symmetricCoconeFirst.{u_1} f y)) →
+    Eq.{u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} a
+          (SerrePositivity.InfinityCategories.symmetricCoconeSecond.{u_1} f y))
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} b
+          (SerrePositivity.InfinityCategories.symmetricCoconeSecond.{u_1} f y)) →
+      Eq.{u_1 + 1} a b
+@SerrePositivity.InfinityCategories.exists_symmetricCoconeBranches_glue.{u_1} : ∀ {X T : SSet.{u_1}}
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }))
+  (b c :
+    Quiver.Hom.{u_1, u_1 + 1} T
+      (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+        ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)),
+  Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} b
+        (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y))
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} c
+        (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)) →
+    ∃ a,
+      Eq.{u_1 + 1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} a
+            (SerrePositivity.InfinityCategories.symmetricCoconeFirst.{u_1} f y))
+          b ∧
+        Eq.{u_1 + 1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} a
+            (SerrePositivity.InfinityCategories.symmetricCoconeSecond.{u_1} f y))
+          c
+@SerrePositivity.InfinityCategories.symmetricCoconeBranches_isPullback.{u_1} : ∀ {X : SSet.{u_1}}
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),
+  CategoryTheory.IsPullback.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.symmetricCoconeFirst.{u_1} f y)
+    (SerrePositivity.InfinityCategories.symmetricCoconeSecond.{u_1} f y)
+    (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+      ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)
+    (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+      ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)
+@SerrePositivity.InfinityCategories.symmetricCoconeKernelPairIso.{u_1} : {X : SSet.{u_1}} →
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })} →
+    (f : SSet.Truncated.Edge.{u_1} x z) →
+      (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })) →
+        CategoryTheory.Iso.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+            (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f) y)
+          (CategoryTheory.Limits.pullback.{u_1, u_1 + 1}
+            (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+              ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)
+            (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+              ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y))
+@SerrePositivity.InfinityCategories.stableEdgeSimplex_target_initial.{u_1} : ∀ {X : SSet.{u_1}}
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z),
+  SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} z →
+    SerrePositivity.InfinityCategories.IsInitialVertex.{u_1}
+      (SSet.yonedaEquiv.{u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 0)
+          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f))))
+@SerrePositivity.InfinityCategories.symmetricCoconeLoopComparison.{u_1} : {X : SSet.{u_1}} →
+  [SSet.Quasicategory.{u_1} X] →
+    {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })} →
+      (f : SSet.Truncated.Edge.{u_1} x z) →
+        SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} z →
+          (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })) →
+            (e :
+                CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+                  (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+                    ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)
+                  (Opposite.op.{1} { len := 0 })) →
+              Quiver.Hom.{u_1, u_1 + 1}
+                (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+                  (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f) y)
+                (SerrePositivity.InfinityCategories.pinchedHomLeft.{u_1}
+                  ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+                      (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+                        (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+                          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)
+                        (Opposite.op.{1} { len := 0 })))
+                    e)
+                  ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+                      (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+                        (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+                          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)
+                        (Opposite.op.{1} { len := 0 })))
+                    e))
+@SerrePositivity.InfinityCategories.symmetricCoconeLoopComparison_homotopyEquivalence.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X]
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z) (hz : SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} z)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }))
+  (e :
+    CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+      (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+        ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)
+      (Opposite.op.{1} { len := 0 })),
+  SerrePositivity.InfinityCategories.IsSimplicialHomotopyEquivalence.{u_1}
+    (SerrePositivity.InfinityCategories.symmetricCoconeLoopComparison.{u_1} f hz y e)
+@SerrePositivity.InfinityCategories.symmetricCoconePiZeroLoopEquiv.{u_1} : {X : SSet.{u_1}} →
+  [SSet.Quasicategory.{u_1} X] →
+    {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })} →
+      (f : SSet.Truncated.Edge.{u_1} x z) →
+        SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} z →
+          (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })) →
+            (e :
+                CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+                  (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+                    ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)
+                  (Opposite.op.{1} { len := 0 })) →
+              Equiv.{u_1 + 1, u_1 + 1}
+                (SSet.π₀.{u_1}
+                  (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+                    (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f) y))
+                (Quiver.Hom.{u_1, u_1}
+                  (SSet.HomotopyCategory.mk.{u_1}
+                    ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+                        (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+                          (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+                            ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f))
+                            y)
+                          (Opposite.op.{1} { len := 0 })))
+                      e))
+                  (SSet.HomotopyCategory.mk.{u_1}
+                    ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+                        (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+                          (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+                            ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f))
+                            y)
+                          (Opposite.op.{1} { len := 0 })))
+                      e)))
+@SerrePositivity.InfinityCategories.symmetricCoconePiZeroLoopEquiv_eq_comparison.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X]
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z) (hz : SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} z)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }))
+  (e :
+    CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+      (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+        ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)
+      (Opposite.op.{1} { len := 0 }))
+  (a :
+    SSet.π₀.{u_1}
+      (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+        (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f) y)),
+  Eq.{u_1 + 1} ((SerrePositivity.InfinityCategories.symmetricCoconePiZeroLoopEquiv.{u_1} f hz y e) a)
+    ((SerrePositivity.InfinityCategories.pinchedHomLeftPiZeroEquiv.{u_1}
+        ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+            (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+              (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+                ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)
+              (Opposite.op.{1} { len := 0 })))
+          e)
+        ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+            (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+              (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+                ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)
+              (Opposite.op.{1} { len := 0 })))
+          e))
+      (SSet.mapπ₀.{u_1} (SerrePositivity.InfinityCategories.symmetricCoconeLoopComparison.{u_1} f hz y e) a))
+@SerrePositivity.InfinityCategories.symmetricCoconeKernelPairIso_hom_fst.{u_1} : ∀ {X : SSet.{u_1}}
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.symmetricCoconeKernelPairIso.{u_1} f y))
+      (CategoryTheory.Limits.pullback.fst.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)
+        (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)))
+    (SerrePositivity.InfinityCategories.symmetricCoconeFirst.{u_1} f y)
+@SerrePositivity.InfinityCategories.symmetricCoconeKernelPairIso_hom_snd.{u_1} : ∀ {X : SSet.{u_1}}
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.symmetricCoconeKernelPairIso.{u_1} f y))
+      (CategoryTheory.Limits.pullback.snd.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)
+        (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)))
+    (SerrePositivity.InfinityCategories.symmetricCoconeSecond.{u_1} f y)
+@SerrePositivity.InfinityCategories.symmetricCoconeKernelPairIso_swap.{u_1} : ∀ {X : SSet.{u_1}}
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.symmetricCoconeSwap.{u_1} f y)
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.symmetricCoconeKernelPairIso.{u_1} f y)))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.symmetricCoconeKernelPairIso.{u_1} f y))
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1}
+        (CategoryTheory.Limits.pullbackSymmetry.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+            ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)
+          (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+            ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y))))
+@SerrePositivity.InfinityCategories.symmetricCoconeKernelPairIso_swap_piZero.{u_1} : ∀ {X : SSet.{u_1}}
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }))
+  (a :
+    SSet.π₀.{u_1}
+      (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+        (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f) y)),
+  Eq.{u_1 + 1}
+    (SSet.mapπ₀.{u_1}
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.symmetricCoconeKernelPairIso.{u_1} f y))
+      (SSet.mapπ₀.{u_1} (SerrePositivity.InfinityCategories.symmetricCoconeSwap.{u_1} f y) a))
+    (SSet.mapπ₀.{u_1}
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1}
+        (CategoryTheory.Limits.pullbackSymmetry.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+            ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)
+          (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+            ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)))
+      (SSet.mapπ₀.{u_1}
+        (CategoryTheory.Iso.hom.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.symmetricCoconeKernelPairIso.{u_1} f y))
+        a))
+```
+
+対象ビルドは LoopComparison・KernelPairSwap とも 2583 jobs、対象・Stable 集約ビルドは
+2619 jobs で終了コード 0。型抽出・公理監査も終了コード 0。
+監査は 281 モジュール・2110 宣言（生成・非公開宣言を含む）で、
+標準三公理 propext・Classical.choice・Quot.sound のみ。
+新規四モジュールの警告なし。担当ファイルを指定した git diff --check 成功。
+引用・追加公理・sorry は導入していない。他レーンのファイルは変更していない。
+
+対称 span 全体の余錐空間からループ模型への実際のホモトピー同値と、
+自己引き戻しへの交換作用の転送まで完成。
+成分交換がループの逆射になる計算、ループの群構造と双積の加法の一致は未証明。
+負号、回転第三射、TR2、八面体・TR4、Pretriangulated instance、S5〜S7 は未完了。
+空間の比較や自己引き戻しでの成分交換だけを、ループ反転・加法の負号との一致とは数えない。

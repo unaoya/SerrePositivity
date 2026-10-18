@@ -596,9 +596,20 @@ E ×_B E → pinchedHomLeft (r e) (r e) の実際の射を与える。
 `coconeBranchSource f y` は辺の余錐空間から始点の余錐空間への Kan fibration（X Quasicategory）。
 辺の終点が始対象なら、`coconeBranchKernelPairLoopComparison` とそのホモトピー同値性、
 `coconeBranchKernelPairPiZeroLoopEquiv` を構成した。安定性全体は不要。
-**交換作用との両立・群構造との両立はまだ主張しない**。比較射はホモトピー逆の選択を含む。
-**負号との一致は未証明**。残る義務は対称 span 全体の余錐空間からこの自己引き戻しへの表示の輸送、
-交換がループの逆射に対応する計算、およびループの群構造と構成済みの双積の加法の一致。
+比較射はホモトピー逆の選択を含む。
+`symmetricCoconeFirst`・`Second` は edgeSpan f f の両枝を同じ指定辺の余錐空間へ制限する射。
+それぞれの uncurry の式、共通始点での一致、二枝交換が First と Second を交換する等号を証明した。
+`symmetricCoconeBranches_isPullback` は貼り合わせの存在・一意性による自己引き戻しの普遍性、
+`symmetricCoconeKernelPairIso` は D(edgeSpan f f) と同じ coconeBranchSource の自己引き戻しの標準同型。
+両射影の計算と `symmetricCoconeKernelPairIso_swap` は、この同型が symmetricCoconeSwap を
+引き戻しの二成分交換 pullbackSymmetry へ厳密に移すことを示す（値域の充填性不要）。
+`symmetricCoconeLoopComparison f hz y e` はこの同型を枝のループ比較へ合成した実際の射で、
+`_homotopyEquivalence` は X Quasicategory・z 始対象の下での同値性。安定性全体は不要。
+`symmetricCoconePiZeroLoopEquiv` と `_eq_comparison` は π₀ の Hom 同値と実際の射の一致。
+これで対称 span 全体の余錐空間からループ模型への表示の輸送まで完成した。
+**ループ比較が成分交換を逆射へ送ること・群構造との両立はまだ主張しない**。
+**負号との一致は未証明**。残る義務は交換がループの逆射に対応する計算と、
+ループの群構造と構成済みの双積の加法の一致。
 表現可能な比較の完成を符号・TR2 全体の完成とは数えない。
 八面体、Pretriangulated instance も未完了。
 安定性から全有限極限・余極限を導く逆向き、S5〜S7 の長完全列・完全関手・D7 は未完了。
@@ -756,6 +767,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | coslice の余錐比較と suspension 標準比較 | `cosliceSquareDiagramMap` と制限・評価の計算（値域の仮定なし）、`colimitSquareComparisonIso_target_arrow`、`SuspensionSquare.comparisonIso_eq_colimitVertexIso_arrow`（Quasicategory、同じ span の余極限余錐での表示）、`swapIso_eq_colimitVertexIso_arrow_of_sameSpan`（さらに転置前後の span の等号） | 同じ span の表示の下で標準比較の一致まで完成。対称な模型と転置前後の span の等号を構成済み。負号の主張を任意の選択へ転送する補題も完成。対称模型での負号そのものは未証明 |
 | 対称 span の余錐空間の自己作用 | `fixedCosliceReindex`・`fixedCoconeMappingReindex`・`symmetricCoconeSwap` と対合・枝の交換（値域の仮定なし）、`coconeMappingSpacePiZeroEquiv_reindexFixed`・`symmetricCoconeSwap_piZero`（Quasicategory、余極限余錐）、`chosenSymmetricSuspensionSquare_reindex_swap_arrow`（Quasicategory、IsStable） | 実際の交換自己同型、二枝への作用、Hom 表示での前合成、対称模型の swapIso との同定まで完成。ループ模型と加法の負号との一致は未証明 |
 | 可縮な枝の自己引き戻しとループ模型 | `vertexFiberι_homotopyEquivalence_of_contractible_base`（Kan fibration、Kan な全空間・可縮な底）、`kanKernelPairLoopComparison_homotopyEquivalence`（Kan fibration、E・B Kan、E 可縮、基点 e）、`kanKernelPairPiZeroLoopEquiv_fiber`、`coconeBranchKernelPairLoopComparison_homotopyEquivalence`（Quasicategory、枝の終点の始対象性、枝の余錐の基点） | 実際のホモトピー同値・π₀ の Hom 同値と固定 fiber 上の計算まで完成。交換と逆射の両立、群構造と加法との一致は未証明 |
+| 対称 span 全体からのループ比較 | `symmetricCoconeBranches_isPullback`・`symmetricCoconeKernelPairIso`・`symmetricCoconeKernelPairIso_swap`（値域の仮定なし）、`symmetricCoconeLoopComparison_homotopyEquivalence`・`symmetricCoconePiZeroLoopEquiv_eq_comparison`（Quasicategory、辺の終点の始対象性、枝の余錐の基点） | 全体の余錐空間のループ模型への実際のホモトピー同値と、自己引き戻しへの交換作用の転送まで完成。ループの逆射と加法の負号との一致は未証明 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。
