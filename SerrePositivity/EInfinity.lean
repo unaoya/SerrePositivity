@@ -6,3 +6,7 @@ public import SerrePositivity.EInfinity.Operad.AlgebraEvaluation
 public import SerrePositivity.EInfinity.Operad.Morphism
 public import SerrePositivity.EInfinity.Operad.SchurGeneratorExt
 public import SerrePositivity.EInfinity.Operad.SchurTensorGenerators
+public import SerrePositivity.EInfinity.Operad.TensorFamilyPermutations
+public import SerrePositivity.EInfinity.Operad.SchurPartialComposition
+public import SerrePositivity.EInfinity.Operad.SchurCompositionNaturality
+public import SerrePositivity.EInfinity.Operad.CompositionEquivariance
