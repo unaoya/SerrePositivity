@@ -73,3 +73,9 @@ public import SerrePositivity.InfinityCategories.Core.FullyFaithfulBaseChange
 public import SerrePositivity.InfinityCategories.Core.StdSimplexTerminal
 
 public import SerrePositivity.InfinityCategories.Core.FullyFaithfulBoundary
+
+public import SerrePositivity.InfinityCategories.Core.PinchedUniversal
+
+public import SerrePositivity.InfinityCategories.Core.MappingSpaceTrivialFibration
+
+public import SerrePositivity.InfinityCategories.Core.FullyFaithfulCalculus

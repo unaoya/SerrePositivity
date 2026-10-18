@@ -1736,3 +1736,57 @@ end InitialCofinalityUniverses
 
 #check SerrePositivity.InfinityCategories.IsFullyFaithful.isQCatEquivalence_of_surjective
 #print axioms SerrePositivity.InfinityCategories.IsFullyFaithful.isQCatEquivalence_of_surjective
+
+#check SerrePositivity.InfinityCategories.pinchedHomUncurry
+#print axioms SerrePositivity.InfinityCategories.pinchedHomUncurry
+
+#check SerrePositivity.InfinityCategories.pinchedHomUncurry_inl
+#print axioms SerrePositivity.InfinityCategories.pinchedHomUncurry_inl
+
+#check SerrePositivity.InfinityCategories.pinchedHomUncurry_inr
+#print axioms SerrePositivity.InfinityCategories.pinchedHomUncurry_inr
+
+#check SerrePositivity.InfinityCategories.pinchedHomCurry
+#print axioms SerrePositivity.InfinityCategories.pinchedHomCurry
+
+#check SerrePositivity.InfinityCategories.pinchedHomUncurry_curry
+#print axioms SerrePositivity.InfinityCategories.pinchedHomUncurry_curry
+
+#check SerrePositivity.InfinityCategories.pinchedHomUncurry_injective
+#print axioms SerrePositivity.InfinityCategories.pinchedHomUncurry_injective
+
+#check SerrePositivity.InfinityCategories.pinchedHomCurry_uncurry
+#print axioms SerrePositivity.InfinityCategories.pinchedHomCurry_uncurry
+
+#check SerrePositivity.InfinityCategories.pinchedHomUncurry_precomp
+#print axioms SerrePositivity.InfinityCategories.pinchedHomUncurry_precomp
+
+#check SerrePositivity.InfinityCategories.pinchedHomSliceFiberIso_inv_app
+#print axioms SerrePositivity.InfinityCategories.pinchedHomSliceFiberIso_inv_app
+
+#check SerrePositivity.InfinityCategories.pinchedHomCurry_postcomp
+#print axioms SerrePositivity.InfinityCategories.pinchedHomCurry_postcomp
+
+#check SerrePositivity.InfinityCategories.pinchedHomUncurry_postcomp
+#print axioms SerrePositivity.InfinityCategories.pinchedHomUncurry_postcomp
+
+#check SerrePositivity.InfinityCategories.pinchedHomMap_hasLiftingProperty_of_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.pinchedHomMap_hasLiftingProperty_of_trivialKanFibration
+
+#check SerrePositivity.InfinityCategories.pinchedHomMap_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.pinchedHomMap_trivialKanFibration
+
+#check SerrePositivity.InfinityCategories.isFullyFaithful_of_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.isFullyFaithful_of_trivialKanFibration
+
+#check SerrePositivity.InfinityCategories.IsSimplicialHomotopyEquivalence.cancel_right
+#print axioms SerrePositivity.InfinityCategories.IsSimplicialHomotopyEquivalence.cancel_right
+
+#check SerrePositivity.InfinityCategories.IsSimplicialHomotopyEquivalence.cancel_left
+#print axioms SerrePositivity.InfinityCategories.IsSimplicialHomotopyEquivalence.cancel_left
+
+#check SerrePositivity.InfinityCategories.IsFullyFaithful.cancel_right
+#print axioms SerrePositivity.InfinityCategories.IsFullyFaithful.cancel_right
+
+#check SerrePositivity.InfinityCategories.isFullyFaithful_comp_iff
+#print axioms SerrePositivity.InfinityCategories.isFullyFaithful_comp_iff

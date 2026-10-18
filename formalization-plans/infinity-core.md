@@ -5241,6 +5241,117 @@ lemma IsFullyFaithful.isQCatEquivalence_of_surjective {X Y : SSet.{u}}
 
 ```
 
+
+### A3e 続き：pinched 普遍性・trivial fibration の充満忠実性・消去則（2026-10-18）
+
+任意のパラメーターに対する右 pinched 写像空間の普遍性と後合成の自然性を実装。trivial Kan fibration が誘導する写像空間の射は trivial Kan fibration となり、quasicategory 間では充満忠実。Kan 複体のホモトピー同値の左右消去則と充満忠実な後合成による検出も成立する。公開18宣言の正確な型と全前提は以下。Core ビルド1637 jobs、公開宣言799件の監査成功、標準3公理のみ。一般の関手の path 置換への充満忠実性の移行、主同値判定、一般の同値による極限不変性は未完了。
+
+PinchedUniversal：
+
+```lean
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+noncomputable def pinchedHomUncurry {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (f : A ⟶ pinchedHom x y) : join A (Δ[0] : SSet.{u}) ⟶ X
+
+lemma pinchedHomUncurry_inl {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (f : A ⟶ pinchedHom x y) : joinInl A Δ[0] ≫ pinchedHomUncurry f = SSet.const x
+
+lemma pinchedHomUncurry_inr {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (f : A ⟶ pinchedHom x y) :
+    joinInr A Δ[0] ≫ pinchedHomUncurry f = SSet.yonedaEquiv.symm y
+
+noncomputable def pinchedHomCurry {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (F : join A (Δ[0] : SSet.{u}) ⟶ X)
+    (hx : joinInl A Δ[0] ≫ F = SSet.const x)
+    (hy : joinInr A Δ[0] ≫ F = SSet.yonedaEquiv.symm y) : A ⟶ pinchedHom x y
+
+lemma pinchedHomUncurry_curry {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (F : join A (Δ[0] : SSet.{u}) ⟶ X)
+    (hx : joinInl A Δ[0] ≫ F = SSet.const x)
+    (hy : joinInr A Δ[0] ≫ F = SSet.yonedaEquiv.symm y) :
+    pinchedHomUncurry (pinchedHomCurry F hx hy) = F
+
+lemma pinchedHomUncurry_injective {A X : SSet.{u}} (x y : X _⦋0⦌) :
+    Function.Injective (pinchedHomUncurry (A := A) (x := x) (y := y))
+
+lemma pinchedHomCurry_uncurry {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (f : A ⟶ pinchedHom x y) :
+    pinchedHomCurry (pinchedHomUncurry f) (pinchedHomUncurry_inl f) (pinchedHomUncurry_inr f) = f
+
+lemma pinchedHomUncurry_precomp {A C X : SSet.{u}} {x y : X _⦋0⦌}
+    (i : A ⟶ C) (f : C ⟶ pinchedHom x y) :
+    pinchedHomUncurry (i ≫ f) = joinMap i (𝟙 Δ[0]) ≫ pinchedHomUncurry f
+
+lemma pinchedHomSliceFiberIso_inv_app {X : SSet.{u}} (x y : X _⦋0⦌) {n : ℕ}
+    (s : (vertexFiber (sliceOverProjection (SSet.yonedaEquiv.symm y)) x) _⦋n⦌) :
+    (pinchedHomSliceFiberIso x y).inv.app (Opposite.op ⦋n⦌) s = fiberSimplexToPinched s
+
+lemma pinchedHomCurry_postcomp {A X Y : SSet.{u}} {x y : X _⦋0⦌}
+    (F : join A (Δ[0] : SSet.{u}) ⟶ X)
+    (hx : joinInl A Δ[0] ≫ F = SSet.const x)
+    (hy : joinInr A Δ[0] ≫ F = SSet.yonedaEquiv.symm y) (p : X ⟶ Y)
+    (hx' : joinInl A Δ[0] ≫ (F ≫ p) = SSet.const (p.app (Opposite.op ⦋0⦌) x))
+    (hy' : joinInr A Δ[0] ≫ (F ≫ p) = SSet.yonedaEquiv.symm (p.app (Opposite.op ⦋0⦌) y)) :
+    pinchedHomCurry F hx hy ≫ pinchedHomMap p x y = pinchedHomCurry (F ≫ p) hx' hy'
+
+lemma pinchedHomUncurry_postcomp {A X Y : SSet.{u}} {x y : X _⦋0⦌}
+    (f : A ⟶ pinchedHom x y) (p : X ⟶ Y) :
+    pinchedHomUncurry (f ≫ pinchedHomMap p x y) = pinchedHomUncurry f ≫ p
+
+end SerrePositivity.InfinityCategories
+```
+
+MappingSpaceTrivialFibration：
+
+```lean
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+lemma pinchedHomMap_hasLiftingProperty_of_trivialKanFibration {A X Y : SSet.{u}}
+    (p : X ⟶ Y) [TrivialKanFibration p] (x y : X _⦋0⦌) (A₀ : A.Subcomplex) :
+    HasLiftingProperty A₀.ι (pinchedHomMap p x y)
+
+instance pinchedHomMap_trivialKanFibration {X Y : SSet.{u}} (p : X ⟶ Y)
+    [TrivialKanFibration p] (x y : X _⦋0⦌) : TrivialKanFibration (pinchedHomMap p x y)
+
+lemma isFullyFaithful_of_trivialKanFibration {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    (p : X ⟶ Y) [TrivialKanFibration p] : IsFullyFaithful p
+
+end SerrePositivity.InfinityCategories
+```
+
+FullyFaithfulCalculus：
+
+```lean
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+lemma IsSimplicialHomotopyEquivalence.cancel_right {X Y Z : SSet.{u}}
+    [KanComplex X] [KanComplex Y] [KanComplex Z] {f : X ⟶ Y} {g : Y ⟶ Z}
+    (hg : IsSimplicialHomotopyEquivalence g) (hfg : IsSimplicialHomotopyEquivalence (f ≫ g)) :
+    IsSimplicialHomotopyEquivalence f
+
+lemma IsSimplicialHomotopyEquivalence.cancel_left {X Y Z : SSet.{u}}
+    [KanComplex X] [KanComplex Y] [KanComplex Z] {f : X ⟶ Y} {g : Y ⟶ Z}
+    (hf : IsSimplicialHomotopyEquivalence f) (hfg : IsSimplicialHomotopyEquivalence (f ≫ g)) :
+    IsSimplicialHomotopyEquivalence g
+
+lemma IsFullyFaithful.cancel_right {X Y Z : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] [Quasicategory Z] {f : X ⟶ Y} {g : Y ⟶ Z}
+    (hg : IsFullyFaithful g) (hfg : IsFullyFaithful (f ≫ g)) : IsFullyFaithful f
+
+lemma isFullyFaithful_comp_iff {X Y Z : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] [Quasicategory Z] (f : X ⟶ Y) (g : Y ⟶ Z)
+    (hg : IsFullyFaithful g) : IsFullyFaithful (f ≫ g) ↔ IsFullyFaithful f
+
+end SerrePositivity.InfinityCategories
+```
+
 ## 7. A3 の工程（2026-10-18 追加）
 
 A1・A2 の完了を受けて着手する。優先順は G1（infinity-categories.md §0）と D4・ε が使う順。
