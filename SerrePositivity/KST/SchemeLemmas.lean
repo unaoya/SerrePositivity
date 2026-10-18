@@ -28,3 +28,7 @@ public import SerrePositivity.KST.SchemeLemmas.BlowupRingEquiv
 public import SerrePositivity.KST.SchemeLemmas.AffineModels
 public import SerrePositivity.KST.SchemeLemmas.AffineModelLocalization
 public import SerrePositivity.KST.SchemeLemmas.AffineModelOpenImmersion
+public import SerrePositivity.KST.SchemeLemmas.AffineModelRange
+public import SerrePositivity.KST.SchemeLemmas.SchemeBlowup
+public import SerrePositivity.KST.SchemeLemmas.SchemeBlowupAffine
+public import SerrePositivity.KST.SchemeLemmas.SchemeBlowupProper

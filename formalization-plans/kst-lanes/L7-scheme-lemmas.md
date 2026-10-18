@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 393 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 422 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -40,7 +40,11 @@
 - イデアル層の全アフィン開集合上の局所モデルを関手として構成し、構造射の自然性を証明済み。
 - 基本開集合へのモデル比較の開埋め込み性と像の公式を証明済み。
 - 共通基本開近傍での比較により、任意のアフィン開包含の局所モデル比較の単射性と開埋め込み性を証明済み。
-- 次は図式の局所的有向性と一般スキーム上の blowup の構成。
+- 任意のアフィン開包含のモデル比較の像を基礎開集合の逆像として同定済み。
+- アフィン局所モデルの図式の局所的有向性を証明し、一般スキーム上の通常の `blowup` と `blowupπ` を構成済み。
+- 各アフィン開集合上の実際の Rees Proj との同型と構造射の交換式を構成済み。
+- 一般の blowup の分離性、アフィン局所有限生成中心での固有性、局所 Noether 基底での固有性を証明済み。
+- 次は中心外同型・例外因子・冪不変性の一般スキームへの大域化。
 - §14 の担当境界を採用済み（正本 §13-13、2026-10-18）。
 - L7a・L7b と L7c の環論・古典的スキーム射を本レーンで完成させる。
 - L7a は未完了。L7b・L7c の本体は未着手。
@@ -411,6 +415,13 @@ f の有限型性は固有性から導く。
 | `affineBlowupModelMap_basicOpen_range` | AffineModelLocalization | 検証済み | 基本開集合への局所比較の像 |
 | `affineBlowupModelMap_common_basic` | AffineModelOpenImmersion | 検証済み | 二つのアフィン開で基本開となる共通モデル |
 | `affineBlowupModelMap_injective` / `affineBlowupModelMap_isOpenImmersion` | AffineModelOpenImmersion | 検証済み | 任意のアフィン開包含の比較の単射性と開埋め込み性 |
+| `affineBlowupModelMap_range` / `affineBlowupModelMap_opensRange` | AffineModelRange | 検証済み | 任意のアフィン開包含に沿う比較の像 |
+| `affineBlowupDiagram_isLocallyDirected` | SchemeBlowup | 検証済み | 局所モデルの図式の局所的有向性 |
+| `blowup` / `blowupπ` | SchemeBlowup | 検証済み | 全アフィン局所モデルの開貼り合わせによる通常の blowup と構造射 |
+| `blowupAffineι` / `blowupOpenCover` | SchemeBlowup | 検証済み | アフィン局所モデルからの標準開包含と被覆 |
+| `blowupAffineIso` / `blowupAffineIso_hom_restrict` | SchemeBlowupAffine | 検証済み | アフィン上の Rees Proj との同型と構造射の両立 |
+| `blowupπ_isSeparated` / `blowupπ_isProper` | SchemeBlowupProper | 検証済み | 一般の分離性と局所有限生成中心での固有性 |
+| `blowupπ_isProper_of_isLocallyNoetherian` | SchemeBlowupProper | 検証済み | 局所 Noether 基底での固有性 |
 | `blowupPowerIso` | Blowup | 予定 | 正の冪の比較 |
 | `blowup` | Blowup | 予定 | 一般スキームへの貼り合わせ |
 | `exceptionalDivisor` | Blowup | 予定 | 例外因子 |
