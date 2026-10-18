@@ -170,9 +170,17 @@ comma fiber の**区間**写像空間の族と正方形との厳密な全単射�
 `unitCommaInitialCondition_iff_mappingSpaces` は単位の comma 始対象条件を各 fiber の
 **左 pinched** 写像空間の可縮性に書き換える。一方 `unitIntervalComparisonFiber` は標準単位比較の
 可逆 path 置換の fiber であり、`UnitMappingSpaceCondition` から全ての指定点での可縮性を証明した。
-**元の比較射の strict fiber が可縮だとは主張しない。** 残る模型比較では、comma の左 pinched
-写像空間から区間の正方形へ移り、その正方形を単位比較の導来 fiber に同定またはホモトピー同値にする
-構成が必要である。これら二つの可縮性の命題を同じ模型と見なして始対象性を結論してはならない。
+**元の比較射の strict fiber が可縮だとは主張しない。** 区間の族の反転と逆反転の
+厳密な両逆・パラメータ自然性を構成し、境界と標準単体の反転同型によって区間模型の可縮性の
+反転不変性を証明した。これと反転標的での右 pinched 比較により、
+`isInitialVertex_iff_intervalMappingSpace_isContractibleKan` と、単位に特殊化した
+`unitCommaInitialCondition_iff_intervalMappingSpaces` が得られる。既存 F1 の左模型比較には
+`LeftUnstraightening` が推移的に含まれるため、それを import せず、この経路を用いる。
+comma の始対象判定と正方形表示は、これで同じ区間模型上にそろった。
+`homMk_comp_eq_of_square` は任意の四辺の正方形の二つの合成を h で同定し、
+単位比較の導来 fiber への射に必要な合成関係を与える一般補題である。
+残る模型比較は、正方形から単位比較の導来 fiber への射・逆射とそのホモトピーの構成である。
+この比較は未証明であり、二つの可縮性を同じ命題と見なして始対象性を結論してはならない。
 
 B1 の逆方向全体は未完了。残るのは、自然な各点の pinched 写像空間対応から単位を取り出す
 接続と、`UnitMappingSpaceCondition η` から
@@ -181,8 +189,8 @@ comma の経路では、各点の比較の同値性から `UnitCommaInitialCondi
 射影の充填・輸送を使って自然な余単位と三角恒等式へ接続する必要がある。
 既存の全パラメータ版の経路も利用できるが、その十分条件で原典の各点の条件を置き換えて
 B1 完了とはしない。B2〜B5 も未完了。
-対象ビルド（2005 jobs）・公理監査（625 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 337 モジュールに straightening 依存がないことも確認した。
+対象ビルド（2008 jobs）・公理監査（646 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 340 モジュールに straightening 依存がないことも確認した。
 
 ## 4. 主要宣言
 
@@ -320,3 +328,8 @@ B1 完了とはしない。B2〜B5 も未完了。
 | `unitCommaFiberMappingSquare_target` | 正方形の標的と標的射影の写像空間上の作用の整合性 | 実装済み |
 | `unitCommaInitialCondition_iff_mappingSpaces` | 単位の始対象条件の左写像空間での表示 | 実装済み |
 | `unitIntervalComparisonFiber`・`UnitMappingSpaceCondition.unitIntervalComparisonFiber_isContractibleKan` | 標準単位比較の導来 fiber と各点条件による可縮性 | 実装済み |
+| `intervalReverseFamily`・`intervalUnreverseFamily` と両逆・前合成の公式 | 反転パラメータ付き区間族の厳密な対応 | 実装済み |
+| `intervalMappingSpace_op_isContractibleKan_iff` | 境界充填による区間写像空間の可縮性の反転不変性 | 実装済み |
+| `isInitialVertex_iff_intervalMappingSpace_isContractibleKan` | 出る区間写像空間の可縮性による始対象判定 | 実装済み |
+| `unitCommaInitialCondition_iff_intervalMappingSpaces` | 正方形表示と同じ区間模型での単位の始対象条件 | 実装済み |
+| `homMk_comp_eq_of_square` | 任意の四辺の正方形の二つの合成の h での等式 | 実装済み |

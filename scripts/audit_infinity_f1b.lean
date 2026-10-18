@@ -408,3 +408,19 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.unitIntervalComparisonFiber
 
 #check @SerrePositivity.InfinityCategories.UnitMappingSpaceCondition.unitIntervalComparisonFiber_isContractibleKan
+
+#check @SerrePositivity.InfinityCategories.intervalReverseFamily
+
+#check @SerrePositivity.InfinityCategories.intervalUnreverseFamily
+
+#check @SerrePositivity.InfinityCategories.intervalUnreverseFamily_reverse
+
+#check @SerrePositivity.InfinityCategories.intervalReverseFamily_unreverse
+
+#check @SerrePositivity.InfinityCategories.intervalMappingSpace_op_isContractibleKan_iff
+
+#check @SerrePositivity.InfinityCategories.isInitialVertex_iff_intervalMappingSpace_isContractibleKan
+
+#check @SerrePositivity.InfinityCategories.unitCommaInitialCondition_iff_intervalMappingSpaces
+
+#check @SerrePositivity.InfinityCategories.homMk_comp_eq_of_square

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.InitialMappingSpace
+public import SerrePositivity.InfinityCategories.F1B.IntervalMappingContractible
 public import SerrePositivity.InfinityCategories.F1B.UniversalUnitComma
 public import SerrePositivity.InfinityCategories.F1B.PointwiseUnitComparison
 public import SerrePositivity.InfinityCategories.Core.EquivalenceAllLimits
@@ -59,5 +59,22 @@ lemma UnitMappingSpaceCondition.unitIntervalComparisonFiber_isContractibleKan
   have he := ((unitMappingSpaceCondition_iff_interval η).mp hη x y).isQCatEquivalence
   have := he.equivalencePathReplacementMap_trivialKanFibration
   exact vertexFiber_isContractibleKan (equivalencePathReplacementMap (unitIntervalMap η x y)) b
+
+/-- 概要：単位の comma 始対象条件を区間写像空間で判定する。
+方針：指定単位の頂点の始対象性と反転を用いた区間模型の判定を合わせる。
+規約：区間模型は正方形の族の厳密な表示を持つ同じ模型。
+使われ方：正方形の可縮性から普遍矢印性を結論する。 -/
+lemma unitCommaInitialCondition_iff_intervalMappingSpaces {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X}
+    (η : FunctorHom (𝟙 X) (F ≫ G)) :
+    UnitCommaInitialCondition η ↔ ∀ (x : X _⦋0⦌)
+      (w : (unitCommaFiber G x) _⦋0⦌),
+        IsContractibleKan (intervalMappingSpace (unitCommaSectionVertex η x) w) := by
+  rw [unitCommaInitialCondition_iff]
+  constructor
+  · intro h x
+    exact (isInitialVertex_iff_intervalMappingSpace_isContractibleKan _).mp (h x)
+  · intro h x
+    exact (isInitialVertex_iff_intervalMappingSpace_isContractibleKan _).mpr (h x)
 
 end SerrePositivity.InfinityCategories

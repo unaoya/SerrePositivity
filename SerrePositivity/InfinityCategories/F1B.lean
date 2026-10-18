@@ -54,3 +54,6 @@ public import SerrePositivity.InfinityCategories.F1B.UnitCommaFiberExtension
 public import SerrePositivity.InfinityCategories.F1B.InitialMappingSpace
 public import SerrePositivity.InfinityCategories.F1B.UnitCommaSquares
 public import SerrePositivity.InfinityCategories.F1B.UnitCommaLocalCriterion
+public import SerrePositivity.InfinityCategories.F1B.IntervalMappingOpposite
+public import SerrePositivity.InfinityCategories.F1B.IntervalMappingContractible
+public import SerrePositivity.InfinityCategories.F1B.SquareComposition
