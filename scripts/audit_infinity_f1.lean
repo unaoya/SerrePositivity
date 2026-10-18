@@ -53,3 +53,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.chooseCocartesianEdgeLift
 #check @SerrePositivity.InfinityCategories.cocartesianTransportObject
 #check @SerrePositivity.InfinityCategories.leftFibration_lift_boundary_prism
+#check @SerrePositivity.InfinityCategories.relativeEdgeSourceTarget
+#check @SerrePositivity.InfinityCategories.relativeEdgeSource
+#check @SerrePositivity.InfinityCategories.relativeEdgeSource_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.leftFibration_lift_prism
+#check @SerrePositivity.InfinityCategories.prismEdgeFamily_zero
+#check @SerrePositivity.InfinityCategories.prismEdgeFamily_one
+#check @SerrePositivity.InfinityCategories.leftFibration_exists_transport
+#check @SerrePositivity.InfinityCategories.relativeEdgeLiftSpace
+#check @SerrePositivity.InfinityCategories.relativeEdgeLiftSpace_isContractibleKan
+#check @SerrePositivity.InfinityCategories.relativeEdgeLiftSpaceVertexEquiv

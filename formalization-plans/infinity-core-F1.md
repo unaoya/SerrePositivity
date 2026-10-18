@@ -157,5 +157,51 @@ lemma leftFibration_lift_boundary_prism {X B : SSet.{u}} (p : X ⟶ B)
       (Δ[1] ◁ (boundary n).ι) ≫ F = H ∧
         prismEndpoint 0 Δ[n] ≫ F = F₀ ∧ F ≫ p = b
 
+
+noncomputable def relativeEdgeSourceTarget {X B : SSet.{u}} (p : X ⟶ B) : SSet.{u}
+
+noncomputable def relativeEdgeSource {X B : SSet.{u}} (p : X ⟶ B) :
+    (ihom (Δ[1] : SSet.{u})).obj X ⟶ relativeEdgeSourceTarget p
+
+instance relativeEdgeSource_trivialKanFibration {X B : SSet.{u}} (p : X ⟶ B)
+    [LeftFibration p] : TrivialKanFibration (relativeEdgeSource p)
+
+lemma leftFibration_lift_prism {A X B : SSet.{u}} (p : X ⟶ B) [LeftFibration p]
+    (F₀ : A ⟶ X) (b : (Δ[1] : SSet.{u}) ⊗ A ⟶ B)
+    (hb : F₀ ≫ p = prismEndpoint 0 A ≫ b) :
+    ∃ F : (Δ[1] : SSet.{u}) ⊗ A ⟶ X,
+      prismEndpoint 0 A ≫ F = F₀ ∧ F ≫ p = b
+
+lemma prismEdgeFamily_zero {A B : SSet.{u}} (e : B _⦋1⦌) :
+    prismEndpoint 0 A ≫ (fst (Δ[1] : SSet.{u}) A ≫ SSet.yonedaEquiv.symm e) =
+      SSet.const (B.δ 1 e)
+
+lemma prismEdgeFamily_one {A B : SSet.{u}} (e : B _⦋1⦌) :
+    prismEndpoint 1 A ≫ (fst (Δ[1] : SSet.{u}) A ≫ SSet.yonedaEquiv.symm e) =
+      SSet.const (B.δ 0 e)
+
+lemma leftFibration_exists_transport {X B : SSet.{u}} (p : X ⟶ B) [LeftFibration p]
+    (e : B _⦋1⦌) :
+    ∃ (F : vertexFiber p (B.δ 1 e) ⟶ vertexFiber p (B.δ 0 e))
+      (H : (Δ[1] : SSet.{u}) ⊗ vertexFiber p (B.δ 1 e) ⟶ X),
+      prismEndpoint 0 _ ≫ H = vertexFiberι p (B.δ 1 e) ∧
+      prismEndpoint 1 _ ≫ H = F ≫ vertexFiberι p (B.δ 0 e) ∧
+      H ≫ p = fst (Δ[1] : SSet.{u}) _ ≫ SSet.yonedaEquiv.symm e ∧
+      ∀ x : (vertexFiber p (B.δ 1 e)) _⦋0⦌,
+        IsCocartesianEdge p (H.app (Opposite.op ⦋1⦌)
+          (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant x 1))
+
+noncomputable def relativeEdgeLiftSpace {A X B : SSet.{u}} (p : X ⟶ B)
+    (c : A ⟶ relativeEdgeSourceTarget p) : SSet.{u}
+
+lemma relativeEdgeLiftSpace_isContractibleKan {A X B : SSet.{u}} (p : X ⟶ B)
+    [LeftFibration p] (c : A ⟶ relativeEdgeSourceTarget p) :
+    IsContractibleKan (relativeEdgeLiftSpace p c)
+
+noncomputable def relativeEdgeLiftSpaceVertexEquiv {A X B : SSet.{u}} (p : X ⟶ B)
+    (c : A ⟶ relativeEdgeSourceTarget p) :
+    {F : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X // F ≫ relativeEdgeSource p = c} ≃
+      (relativeEdgeLiftSpace p c) _⦋0⦌
+
 end SerrePositivity.InfinityCategories
 ```

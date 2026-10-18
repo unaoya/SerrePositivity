@@ -6,3 +6,6 @@ public import SerrePositivity.InfinityCategories.F1.BaseChange
 public import SerrePositivity.InfinityCategories.F1.AllEdges
 public import SerrePositivity.InfinityCategories.F1.TransportObjects
 public import SerrePositivity.InfinityCategories.F1.LeftPrism
+public import SerrePositivity.InfinityCategories.F1.LeftPath
+public import SerrePositivity.InfinityCategories.F1.LeftTransport
+public import SerrePositivity.InfinityCategories.F1.LeftLiftSpace
