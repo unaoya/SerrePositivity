@@ -11141,5 +11141,76 @@ lemma leftUnstraighteningMappingVertexMap_isQCatEquivalence_iff
     IsQCatEquivalence (leftUnstraighteningMappingVertexMap F G x).val ↔
       IsInvertibleEdge (intervalMappingEdgeOfVertex x)
 
+lemma coherentHomComparisonSimplex_postcomp
+    {C D : Type v} [Category.{u} C] [Category.{u} D]
+    [SimplicialCategory C] [SimplicialCategory D]
+    (F : EnrichedFunctor SSet.{u} C D) {X Y : C} {n : ℕ}
+    (σ : (SimplicialCategory.sHom X Y) _⦋n⦌) :
+    (coherentHomComparisonSimplex σ).comp SSet F =
+      coherentHomComparisonSimplex ((F.map X Y).app (Opposite.op ⦋n⦌) σ)
+
+lemma pinchedHom_eqToHom_app_val {Z : SSet.{u}} {x y x' y' : Z _⦋0⦌}
+    (hx : x = x') (hy : y = y') {n : ℕ} (s : (pinchedHom x y) _⦋n⦌) :
+    (((eqToHom (congrArg₂ (fun a b ↦ pinchedHom a b) hx hy)).app (Opposite.op ⦋n⦌)) s).val =
+      s.val
+
+noncomputable def coherentPinchedHomMap {C D : Type v} [Category.{u} C] [Category.{u} D]
+    [SimplicialCategory C] [SimplicialCategory D]
+    (F : EnrichedFunctor SSet.{u} C D) (X Y : C) :
+    pinchedHom (coherentNerveVertex X) (coherentNerveVertex Y) ⟶
+      pinchedHom (coherentNerveVertex (F.obj X)) (coherentNerveVertex (F.obj Y))
+
+lemma coherentHomComparison_enriched_naturality
+    {C D : Type v} [Category.{u} C] [Category.{u} D]
+    [SimplicialCategory C] [SimplicialCategory D]
+    (F : EnrichedFunctor SSet.{u} C D) (X Y : C) :
+    coherentHomComparison X Y ≫ coherentPinchedHomMap F X Y =
+      (SSet.uliftFunctor.{v, u}).map (F.map X Y) ≫ coherentHomComparison (F.obj X) (F.obj Y)
+
+lemma coherentPinchedHomMap_isQCatEquivalence_iff
+    {C D : Type v} [Category.{u} C] [Category.{u} D]
+    [SimplicialCategory C] [SimplicialCategory D]
+    [∀ X Y : C, KanComplex (SimplicialCategory.sHom X Y)]
+    [∀ X Y : D, KanComplex (SimplicialCategory.sHom X Y)]
+    (F : EnrichedFunctor SSet.{u} C D) (X Y : C) :
+    IsQCatEquivalence (coherentPinchedHomMap F X Y) ↔ IsQCatEquivalence (F.map X Y)
+
+lemma coherentNerveMap_pinchedHomMap_isQCatEquivalence_iff
+    {C D : Type v} [Category.{u} C] [Category.{u} D]
+    [SimplicialCategory C] [SimplicialCategory D]
+    [∀ X Y : C, KanComplex (SimplicialCategory.sHom X Y)]
+    [∀ X Y : D, KanComplex (SimplicialCategory.sHom X Y)]
+    (F : EnrichedFunctor SSet.{u} C D) (X Y : C) :
+    IsQCatEquivalence (pinchedHomMap (coherentNerveMap F)
+      (coherentNerveVertex X) (coherentNerveVertex Y)) ↔ IsQCatEquivalence (F.map X Y)
+
+lemma coherentNerveMap_isFullyFaithful_iff
+    {C D : Type v} [Category.{u} C] [Category.{u} D]
+    [SimplicialCategory C] [SimplicialCategory D]
+    [∀ X Y : C, KanComplex (SimplicialCategory.sHom X Y)]
+    [∀ X Y : D, KanComplex (SimplicialCategory.sHom X Y)]
+    (F : EnrichedFunctor SSet.{u} C D) :
+    IsFullyFaithful (coherentNerveMap F) ↔ ∀ X Y : C, IsQCatEquivalence (F.map X Y)
+
+def leftFibrationFiberObject {B : SSet.{u}} (b : B _⦋0⦌) (p : LeftFibrationObject B) :
+    KanObject.{u}
+
+noncomputable def leftFibrationFiberEvaluationEnriched {B : SSet.{u}} (b : B _⦋0⦌) :
+    EnrichedFunctor SSet.{u} (LeftFibrationObject B) KanObject.{u}
+
+noncomputable def leftFibrationInfinityFiberEvaluation {B : SSet.{u}} (b : B _⦋0⦌) :
+    LeftFibrationInfinity B ⟶ SpaceInfinity.{u}
+
+lemma leftFibrationInfinityFiberEvaluation_vertex {B : SSet.{u}} (b : B _⦋0⦌)
+    (p : LeftFibrationObject B) :
+    (leftFibrationInfinityFiberEvaluation b).app (Opposite.op ⦋0⦌) (coherentNerveVertex p) =
+      coherentNerveVertex (leftFibrationFiberObject b p)
+
+lemma leftFibrationFiberEvaluation_mapping_naturality {B : SSet.{u}} (b : B _⦋0⦌)
+    (p q : LeftFibrationObject B) :
+    coherentHomComparison p q ≫ coherentPinchedHomMap (leftFibrationFiberEvaluationEnriched b) p q =
+      (SSet.uliftFunctor.{u + 1, u}).map (relativeFunctorFiberHom p.val.hom q.val.hom b) ≫
+        coherentHomComparison (leftFibrationFiberObject b p) (leftFibrationFiberObject b q)
+
 end SerrePositivity.InfinityCategories
 ```

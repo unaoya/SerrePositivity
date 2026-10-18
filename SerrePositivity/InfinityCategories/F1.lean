@@ -553,3 +553,6 @@ public import SerrePositivity.InfinityCategories.F1.KanDiagramEdges
 public import SerrePositivity.InfinityCategories.F1.UniversalTransportReflection
 public import SerrePositivity.InfinityCategories.F1.CoherentKanInvertible
 public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningReflectsEquivalences
+public import SerrePositivity.InfinityCategories.F1.CoherentHomEnrichedNaturality
+public import SerrePositivity.InfinityCategories.F1.CoherentNerveFullyFaithful
+public import SerrePositivity.InfinityCategories.F1.LeftFibrationFiberEvaluation
