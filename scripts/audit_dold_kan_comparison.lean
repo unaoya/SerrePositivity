@@ -317,6 +317,30 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardUnitMap
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardUnitMap
 
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_collapsed_path
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_collapsed_path
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentCubeComponent_image_empty_heq_unit
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentCubeComponent_image_empty_heq_unit
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData_pullback_hom_of_collapsed_pair
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData_pullback_hom_of_collapsed_pair
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData_pullback
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData_pullback
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplex_pullback
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplex_pullback
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison_app
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison_app
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison_obj
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison_obj
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.descendingEnumeration_heq_of_card
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.descendingEnumeration_heq_of_card
 
@@ -436,6 +460,36 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentInteriorVertex_sum
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentInteriorVertex_sum
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison_edgeHom
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison_edgeHom
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.triangleCoordinate
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.triangleCoordinate
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexInterior_triangle
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexInterior_triangle
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison_triangleHom
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison_triangleHom
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.singletonEnumeration
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.singletonEnumeration
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.singletonPathFlag
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.singletonPathFlag
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.singletonPathFlag_obj_zero
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.singletonPathFlag_obj_zero
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.singletonPathFlag_obj_one
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.singletonPathFlag_obj_one
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentCubeComponent_empty
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentCubeComponent_empty
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentCubeComponentAt_singleton
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentCubeComponentAt_singleton
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentInterior_collision_of_not_inj
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentInterior_collision_of_not_inj

@@ -151,8 +151,8 @@ simplicialNerve_quasicategory (C : Type u)
 ### γ1.5：Dold–Kan 豊穣化と dg nerve の比較（進行中）
 
 前提は `[CommRing R] [DGCategory R D]`。namespace は `DoldKanComparison`。
-γ1.5a の設計と符号は `InfinityCategories/README.md` に記録済み。比較の向きは
-`N^hc(C_Δ) → N_dg(C)`。γ1.5b の単体的圏と局所 Kan 性は完了。
+γ1.5a の設計と符号は `InfinityCategories/README.md` に記録済み。
+γ1.5b の単体的圏と局所 Kan 性、γ1.5c の比較写像と低次の一致は完了。
 
 ```lean
 standardDoldKanModuleIso (x y : D) : standardModule x y ≅ doldKanHomModule x y
@@ -162,27 +162,20 @@ doldKanSimplicialCategory_locallyKan (x y : ClosedCategory R D) :
   SSet.KanComplex (SimplicialCategory.sHom x y)
 doldKanCoherentNerve : SSet.{max u v}
 coherentSimplex {n : ℕ} (s : doldKanCoherentNerve _⦋n⦌) : DGNerve.Simplex R D n
+coherentComparison : doldKanCoherentNerve (R := R) (D := D) ⟶ dgNerve R D
 ```
 
-Hom の標準座標模型を実際の Mathlib Γ と自然同型で同定し、AW の双線形性・単位・結合律・
-全単調写像での自然性と方程式の保存を証明済み。
-`coherentSimplexData_equation` は任意の `I,a,b,k,hI,ha,hb,hk` で
-`differential R ((coherentSimplexData s).hom I a b k hI ha hb hk) =
-(coherentSimplexData s).rhs I a b k hI ha hb hk` を与える。
-立方体の内部面の相殺・削除面・合成面、全旗の AW 評価と dg 合成の対応、降順の向きと次数を
-そろえた内部点の微分公式を使い、各次数の実際の dg 単体を構成した。
+Hom を実際の Mathlib Γ と自然同型で同定し、AW の全豊穣則と方程式の保存を証明済み。
+`coherentSimplexData_equation` が立方体評価による全ての既存 dg 方程式を証明する。
+`coherentSimplex_pullback` は全単調写像で引き戻しと可換で、退化も含む。
+`coherentComparison_obj`・`coherentComparison_edgeHom`・`coherentComparison_triangleHom` は
+対象、二端点だけの Path の零成分、`{0,2} → {0,1,2}` の旗の次数 −1 の成分との一致。
+三角形に追加の負号はない。追加の単射性・整合性・充填の仮定はない。
 
-`coherentSimplexData_pullback_hom_of_inj` は `hi : Set.InjOn α (I : Set _)` の下で、
-引き戻した coherent 単体の比較成分と既存の dg 引き戻しの hom の等式を証明する。
-α 全体の単射性は不要で、内部点のない場合も含む。正確な型は監査と README に置く。
-`coherentSimplexData_pullback_hom_of_not_inj` は同じ hom の等式を
-`hi : ¬ Set.InjOn α (I : Set _)`・`hc : I.card ≠ 2` の下で証明する。
-三点以上では全ての旗の像の退化から両側が零となる。追加の模型の仮定はない。
-γ1.5c の残りは潰れた二点集合の単位、全自然性をまとめた比較写像、頂点・辺・2単体での一致。
-γ1.5d の残りは各 pinched Hom の実際の単体的ホモトピー同値と ∞ 圏の同値。
+残りは γ1.5d の各 pinched Hom の実際の単体的ホモトピー同値と ∞ 圏の同値。
 A3e の `qCatEquivalenceOfFullyFaithfulEssentiallySurjective` は実装済みで、写像空間の比較後に適用する。
 
-公開441宣言の正確な型・全前提・依存公理は `scripts/audit_dold_kan_comparison.lean` の
+公開459宣言の正確な型・全前提・依存公理は `scripts/audit_dold_kan_comparison.lean` の
 `#check @`・`#print axioms` が正本。依存公理は標準三公理のみ。
 詳しい API と数学は `InfinityCategories/README.md`、整理前の索引は
 [archive/e-infinity-algebras-gamma1.5-api.md](archive/e-infinity-algebras-gamma1.5-api.md) を参照する。

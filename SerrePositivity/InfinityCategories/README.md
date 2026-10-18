@@ -1370,7 +1370,7 @@ H^(−(n+1)) との同型で、追加の閉性・充填の仮定はない。
 `doldKanHomSpaceKan` は N4 の線形充填をこの同型で移した Kan instance。
 `doldKanHomPinchedIso` は宇宙を持ち上げた DK Hom と dg nerve の右 pinched Hom の同型である。
 この同型はまだ coherent nerve の写像空間との比較ではない。
-対象・集約ビルドは3747件で成功し、公開441宣言の型と公理監査は標準三公理のみ。
+対象・集約ビルドは3751件で成功し、公開459宣言の型と公理監査は標準三公理のみ。
 正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean` に記録する。
 
 `awData` は後の射の接頭部分と前の射の接尾部分を合成して全切断点で足す成分族の演算。
@@ -1404,9 +1404,9 @@ Leibniz 則から得る左右の削除和を `AWIndex.boundaryPairEquiv` で、�
 `doldKanCoherentNerve : SSet.{max u v}` はこの C_Δ の coherent nerve であり、
 `doldKanCoherentNerve_quasicategory` は γ1 の一般定理から従う。
 前提は `[CommRing R] [DGCategory R D]` のみで、任意の通常の Category D は要求しない。
-残りは γ1.5c の dg nerve への比較写像と低次の一致、γ1.5d の写像空間の比較および同値の証明。
+γ1.5c の比較写像と低次の一致も完了。残りは γ1.5d の写像空間の比較および同値の証明。
 
-γ1.5c は進行中。`cubeFlag e` は任意の番号付け `e : Fin m ≃ T` に対して、
+γ1.5c は完了。`cubeFlag e` は任意の番号付け `e : Fin m ≃ T` に対して、
 空集合から先頭 t 座標へ進む立方体の m 単体を作る。
 `standardTopEval x y m` は標準 m 単体の全体集合の次数 −m の成分を取る線形写像。
 `cubeEvaluation e φ` は全ての置換 σ の旗を φ で送り、最上位評価を置換符号で足した値である。
@@ -1552,9 +1552,8 @@ dg nerve の符号付きの削除−合成を上の符号付きの合成−削�
 coherentSimplex {n : ℕ} (s : doldKanCoherentNerve _⦋n⦌) : DGNerve.Simplex R D n
 ```
 
-これにより各 coherent 単体から同次元の実際の dg 単体を得た。
-まだ面・退化での自然性を証明していないため、比較写像 `N^hc(C_Δ) ⟶ N_dg(C)` は未構成。
-単体的自然性、および比較写像の頂点・辺・三角形での一致が残る。
+各 coherent 単体から同次元の実際の dg 単体を得て、以下の自然性により
+比較写像 `N^hc(C_Δ) ⟶ N_dg(C)` を構成した。頂点・辺・三角形での一致も証明済み。
 
 有限頂点集合上で単射な場合の自然性は証明済み。
 `pathCubeImageSet` と `pathCubeImageIso` は、選んだ有限内部点上で厳密単調な順序写像の
@@ -1591,8 +1590,35 @@ coherentSimplex {n : ℕ} (s : doldKanCoherentNerve _⦋n⦌) : DGNerve.Simplex 
 `s,α,I,a,b,k,hI,ha,hb,hk` に対して、前提を
 `hi : ¬ Set.InjOn α (I : Set _)`、`hc : I.card ≠ 2` とした同じ hom の等式である。
 `2 ≤ I.card` と hc から三点以上が従い、両側が零になる。任意の dg 圏に適用でき、
-像の両端が一致する場合も含む。自然性に残るのは潰れた二点集合の単位であり、
-この分岐を証明してから全ての面・退化の可換性を単体集合の射にまとめる。
+像の両端が一致する場合も含む。
+
+`standardTopEval_collapsed_path` は端点が一致する Path の零単体を豊穣単位に同定し、
+豊穣関手の単位保存と `standardZeroEval_unit` から dg 単位を得る。
+`coherentSimplexData_pullback_hom_of_collapsed_pair` は非単射な二点集合についても
+上と同じ hom の等式を証明する。これで既存の dg 引き戻しの三分岐が全てそろった。
+`coherentSimplexData_pullback` と `coherentSimplex_pullback` は全単調写像での等式である。
+前提は `[CommRing R] [DGCategory R D]` のみ。
+
+```lean
+coherentComparison : doldKanCoherentNerve (R := R) (D := D) ⟶ dgNerve R D
+
+coherentSimplex_pullback {m n : ℕ} (s : doldKanCoherentNerve _⦋n⦌)
+    (α : Fin (m + 1) →o Fin (n + 1)) :
+  coherentSimplex ((SimplicialThickening.functor α.uliftMap).comp SSet s) =
+    (coherentSimplex s).pullback α
+```
+
+`coherentComparison_obj` は全次元で頂点 a の対象を `s.obj (.mk (ULift.up a))` に同定する。
+`coherentComparison_edgeHom` は全次元の異なる二頂点 a < b で、比較した辺の次数零成分が
+`s.map` による二端点だけの定数 Path の零成分に等しいことを示す。
+`singletonPathFlag hab t` は唯一の内部点 t を加える一次の旗で、その両端は
+`singletonPathFlag_obj_zero`・`singletonPathFlag_obj_one` によって
+`pathOfInterior hab ∅` と `pathOfInterior hab {t}` に等しい。
+`coherentComparison_triangleHom` は実際の二単体の `triangleHom` がこの旗の像の
+次数 −1 の最上位成分に等しいことを示す。三角形では t は一番の頂点であり、
+旗は `{0,2} → {0,1,2}`、追加の負号はない。既存の `differential_triangleHom` により
+`δh = f₁₂ ∘ f₀₁ − f₀₂` となる。これで γ1.5c の頂点・辺・二単体の検査を満たす。
+γ1.5d の pinched Hom の実際の単体的ホモトピー同値と ∞ 圏の同値は未証明。
 
 
 ## γ3：homotopy 極限・余極限と ∞ 極限・余極限（γ1.5 の後）

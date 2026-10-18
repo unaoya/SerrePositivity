@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.DoldKanComparison.CoherentLowComparison
+
 public import SerrePositivity.InfinityCategories.DoldKanComparison.CoherentNoninjectiveNaturality
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.CoherentInjectiveNaturality
@@ -39,6 +41,6 @@ public import SerrePositivity.InfinityCategories.DoldKanComparison.Vertices
 
 概要：DK Hom と AW 合成の単体的圏とその coherent nerve を公開する。
 方針：標準成分模型を実際の Mathlib Γ と同定し、N4 の線形充填で局所 Kan 性を得る。
-規約：coherent nerve から dg nerve への比較写像と ∞ 圏の同値は残る。
+規約：比較写像は全ての面・退化と可換であり、∞ 圏の同値の証明は残る。
 使われ方：HA 1.3.1.13・1.3.1.17、Kerodon 2.5.7–2.5.9 の γ1.5 の入口。
 -/
