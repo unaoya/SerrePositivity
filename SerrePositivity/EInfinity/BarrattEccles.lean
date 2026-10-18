@@ -61,3 +61,6 @@ public import SerrePositivity.EInfinity.BarrattEccles.ShuffleLeibnizPositive
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleZeroDirections
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleLeibnizZero
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleLeibnizChains
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleCochainDegrees
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleCochainComponent
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleNegativeComponent
