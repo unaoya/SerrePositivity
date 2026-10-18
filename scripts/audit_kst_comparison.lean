@@ -102,6 +102,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -237,6 +238,42 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.stableHatGLBarFundamentalEquiv
 
 
+-- BarFundamentalMultiplication.lean
+
+#check @SerrePositivity.KST.Comparison.monoidBarFundamentalClass
+#print axioms SerrePositivity.KST.Comparison.monoidBarFundamentalClass
+
+#check @SerrePositivity.KST.Comparison.monoidBarFundamentalClass_mk
+#print axioms SerrePositivity.KST.Comparison.monoidBarFundamentalClass_mk
+
+#check @SerrePositivity.KST.Comparison.monoidBarFundamentalClass_bijective
+#print axioms SerrePositivity.KST.Comparison.monoidBarFundamentalClass_bijective
+
+#check @SerrePositivity.KST.Comparison.monoidBarFundamentalClass_mul
+#print axioms SerrePositivity.KST.Comparison.monoidBarFundamentalClass_mul
+
+#check @SerrePositivity.KST.Comparison.monoidBarFundamentalMulEquiv
+#print axioms SerrePositivity.KST.Comparison.monoidBarFundamentalMulEquiv
+
+#check @SerrePositivity.KST.Comparison.stableHatGLBarFundamentalMulEquiv
+#print axioms SerrePositivity.KST.Comparison.stableHatGLBarFundamentalMulEquiv
+
+
+-- BarFundamentalRepresentatives.lean
+
+#check @SerrePositivity.KST.Comparison.monoidVertexNerveKanMap
+#print axioms SerrePositivity.KST.Comparison.monoidVertexNerveKanMap
+
+#check @SerrePositivity.KST.Comparison.monoidVertexNerveKanMap_point
+#print axioms SerrePositivity.KST.Comparison.monoidVertexNerveKanMap_point
+
+#check @SerrePositivity.KST.Comparison.monoidBarVertexLoop
+#print axioms SerrePositivity.KST.Comparison.monoidBarVertexLoop
+
+#check @SerrePositivity.KST.Comparison.groupCompletionVertex_eq_barLoop
+#print axioms SerrePositivity.KST.Comparison.groupCompletionVertex_eq_barLoop
+
+
 -- BarLocalizedEquivalence.lean
 
 #check @SerrePositivity.KST.Comparison.monoidBarRowsMap
@@ -316,6 +353,24 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.monoidTupleMap_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.monoidTupleMap_localized_isIso
+
+
+-- BarVertexInclusion.lean
+
+#check @SerrePositivity.KST.Comparison.monoidVertexInclusion
+#print axioms SerrePositivity.KST.Comparison.monoidVertexInclusion
+
+#check @SerrePositivity.KST.Comparison.constantMonoidBarIso
+#print axioms SerrePositivity.KST.Comparison.constantMonoidBarIso
+
+#check @SerrePositivity.KST.Comparison.monoidVertexNerveMap
+#print axioms SerrePositivity.KST.Comparison.monoidVertexNerveMap
+
+#check @SerrePositivity.KST.Comparison.monoidVertexNerveMap_point
+#print axioms SerrePositivity.KST.Comparison.monoidVertexNerveMap_point
+
+#check @SerrePositivity.KST.Comparison.monoidVertexNerveMap_edge
+#print axioms SerrePositivity.KST.Comparison.monoidVertexNerveMap_edge
 
 
 -- BarZeroEvaluation.lean
@@ -2175,6 +2230,15 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.monoidGroupCompletionMap_evaluation
 
 
+-- GroupCompletionVertexEvaluation.lean
+
+#check @SerrePositivity.KST.Comparison.loopVertex_pullback
+#print axioms SerrePositivity.KST.Comparison.loopVertex_pullback
+
+#check @SerrePositivity.KST.Comparison.groupCompletionVertex_simplex_map
+#print axioms SerrePositivity.KST.Comparison.groupCompletionVertex_simplex_map
+
+
 -- GrouplikeColimit.lean
 
 #check @SerrePositivity.KST.Comparison.isGrouplike_of_sequential_isColimit
@@ -2941,6 +3005,39 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.subdivisionNerveChains_lastVertex
 #print axioms SerrePositivity.KST.Comparison.subdivisionNerveChains_lastVertex
+
+
+-- NerveLoopMultiplication.lean
+
+#check @SerrePositivity.KST.Comparison.monoidNervePoint
+#print axioms SerrePositivity.KST.Comparison.monoidNervePoint
+
+#check @SerrePositivity.KST.Comparison.monoidNerveEdge_face
+#print axioms SerrePositivity.KST.Comparison.monoidNerveEdge_face
+
+#check @SerrePositivity.KST.Comparison.monoidNerveLoop
+#print axioms SerrePositivity.KST.Comparison.monoidNerveLoop
+
+#check @SerrePositivity.KST.Comparison.monoidNerveLoopMulStruct
+#print axioms SerrePositivity.KST.Comparison.monoidNerveLoopMulStruct
+
+#check @SerrePositivity.KST.Comparison.monoidNerveFundamentalClass
+#print axioms SerrePositivity.KST.Comparison.monoidNerveFundamentalClass
+
+#check @SerrePositivity.KST.Comparison.monoidNerveFundamentalClass_mul
+#print axioms SerrePositivity.KST.Comparison.monoidNerveFundamentalClass_mul
+
+#check @SerrePositivity.KST.Comparison.monoidNerveLoop_one
+#print axioms SerrePositivity.KST.Comparison.monoidNerveLoop_one
+
+#check @SerrePositivity.KST.Comparison.monoidNerveFundamentalClass_one
+#print axioms SerrePositivity.KST.Comparison.monoidNerveFundamentalClass_one
+
+#check @SerrePositivity.KST.Comparison.monoidNerveFundamentalOppositeHom
+#print axioms SerrePositivity.KST.Comparison.monoidNerveFundamentalOppositeHom
+
+#check @SerrePositivity.KST.Comparison.groupNerveFundamentalHom
+#print axioms SerrePositivity.KST.Comparison.groupNerveFundamentalHom
 
 
 -- OrderNerveContraction.lean

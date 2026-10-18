@@ -121,6 +121,8 @@ public import SerrePositivity.KST.Comparison.StableGLComponents
 
 public import SerrePositivity.KST.Comparison.BarFundamentalComparison
 
+public import SerrePositivity.KST.Comparison.BarFundamentalMultiplication
+
 /-!
 # K-L2：比較定理の入口
 

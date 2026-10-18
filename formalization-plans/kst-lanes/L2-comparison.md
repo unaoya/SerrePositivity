@@ -711,6 +711,28 @@ K-L9 の二つの既証明のホモトピー不変性へ渡す。π_n 自体を�
 非 Kan の入力では Kan 置換を通し、置換単位の比較と標準写像の比較を合成する。
 行列の正次数の積の公式は、未供給の K-L9 の性質を明示する界面として区別する。
 
+### 基本群の積の向きと行列群の同型
+
+確認する文言：Mathlib の SingleObj は f≫g=g*f の規約である。
+K-L9 の π₁ の積の MulStruct は二単体の δ₂ を第一因子、δ₀ を第二因子とする。
+したがって正向きの nerve の辺から π₁ への写像は反乗法的であり、
+群からの比較では逆元を前合成して乗法的な同型を得る。
+証明方針：一対象圏の nerve の辺を境界定数一次単体へ移す。
+二つの辺の composable arrows の二単体を K-L9 の MulStruct と照合する。
+標準群完備化写像の区間評価と、円の写像空間の成分の比較で代表の一致を示す。
+成分上へ降ろして反乗法性を証明し、群状性による成分の群の逆元を前合成する。
+標準写像の向きや既存の π₁ の定義を変更せず、群同型の方向の規約を明示する。
+
+### 成分全体の部分単体集合と正次数のホモトピー類
+
+確認する文言：Kan 複体 X の連結成分の一部を成分全体として選んだ部分単体集合は Kan である。
+その包含は、選ばれた基点における全ての正次数のホモトピー群を保つ。
+証明方針：ホーンを X で充填すると、その既に選ばれた一つの面と充填単体の成分が等しいので、
+充填単体は部分単体集合に属する。正次数の境界定数単体の全頂点は基点の成分に属する。
+関係を与える充填の一つの面も同じ成分にあるため、代表と関係の双方を一意に持ち上げる。
+π_n の商と群演算には K-L9 の実際の定義を使い、成分選択の幾何だけを本レーンで証明する。
+行列の可逆成分の包含へ適用し、高次の行列公式の有限 rank の段階へ接続する。
+
 ## 12. 現在地と主要宣言
 
 現在地：L2a の有限 rank の構成を完了し、L2b の群状モノイドの bar 構成へ進む。
@@ -906,14 +928,16 @@ Segal Proposition 1.5 の群状モノイドの比較部分は完了。
 標準群完備化写像が単位を定数ループへ送ることを全次数で証明した。
 Kan 置換への厳密な延長と局所化可逆性から、K-L9 の全自然数次数のホモトピー類の delooping 同値を構成した。
 安定 GL(π₀A) と BĜL の基本群の台集合の全単射を構成した。
-KST Lemma 2.13 の基本群の群演算との整合、および高次の行列公式の接続は残る。
+nerve の辺の反乗法性を二単体の MulStruct で証明し、標準群完備化写像の頂点との代表の一致を証明した。
+逆元を前合成して誘導成分群と基本群の乗法同値を構成し、安定 GL(π₀A) との群としての同定を証明した。
+KST Lemma 2.13 の i=1 の具体的な群の同定は完了。高次の行列公式の接続は残る。
 L2b、L2c、L2d、L2e は未完了である。
 §10-5 は検証する文言と証明方針を記した段階である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 1128 宣言の型と公理を確認した。
-さらに名前空間全体の 2044 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 1155 宣言の型と公理を確認した。
+さらに名前空間全体の 2090 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -1175,3 +1199,10 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `groupCompletionKanMap`、`groupCompletionKanMap_fac` | 実装済み | 元の標準写像に厳密に一致する Kan 延長 |
 | `monoidBarHomotopyEquiv` | 実装済み | 群状モノイドの Kan 模型の π_n と BM の π_(n+1) |
 | `monoidBarFundamentalEquiv`、`stableHatGLBarFundamentalEquiv` | 実装済み | 実際の成分、安定 GL と基本群の台集合の全単射 |
+
+| `monoidNerveLoopMulStruct`、`monoidNerveFundamentalClass_mul` | 実装済み | nerve の二単体による基本群の反乗法性 |
+| `monoidVertexNerveMap` | 実装済み | 零次モノイドの nerve の対角 bar への包含 |
+| `groupCompletionVertex_simplex_map`、`groupCompletionVertex_eq_barLoop` | 実装済み | 標準群完備化写像の頂点と nerve の辺の代表の一致 |
+| `monoidBarFundamentalClass_bijective`、`monoidBarFundamentalClass_mul` | 実装済み | 標準の成分比較の全単射性と反乗法性 |
+| `monoidBarFundamentalMulEquiv` | 実装済み | 群状モノイドの成分群と BM の基本群の乗法同値 |
+| `stableHatGLBarFundamentalMulEquiv` | 実装済み | KST Lemma 2.13 の i=1 の安定 GL との群同型 |
