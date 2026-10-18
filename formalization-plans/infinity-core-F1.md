@@ -10189,5 +10189,47 @@ lemma leftUnstraighteningMappingVertexMap_isPrecompositionEquivalence_of_recover
     (hx : IsInvertibleEdge (intervalMappingEdgeOfVertex x)) :
     IsPrecompositionEquivalence (leftUnstraighteningMappingVertexMap F G x).val
 
+noncomputable def relativeFunctorPullback {E F B D : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) (k : D ⟶ B) :
+    relativeFunctorSpace q p ⟶
+      relativeFunctorSpace (pullback.snd q k) (pullback.snd p k)
+
+lemma relativeFunctorPullback_uncurry_fst {E F B D T : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) (k : D ⟶ B)
+    (f : T ⟶ relativeFunctorSpace q p) :
+    relativeFunctorUncurry (f ≫ relativeFunctorPullback p q k) ≫ pullback.fst q k =
+      (pullback.fst p k ▷ T) ≫ relativeFunctorUncurry f
+
+lemma relativeFunctorPullback_uncurry_snd {E F B D T : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) (k : D ⟶ B)
+    (f : T ⟶ relativeFunctorSpace q p) :
+    relativeFunctorUncurry (f ≫ relativeFunctorPullback p q k) ≫ pullback.snd q k =
+      fst (pullback p k) T ≫ pullback.snd p k
+
+lemma relativeFunctorPullback_identity {B D : SSet.{u}} (a : Over B) (k : D ⟶ B) :
+    relativeFunctorIdentity a ≫ relativeFunctorPullback a.hom a.hom k =
+      relativeFunctorIdentity (Over.mk (pullback.snd a.hom k))
+
+lemma relativeFunctorPullback_composition {B D : SSet.{u}}
+    (a b c : Over B) (k : D ⟶ B) :
+    relativeFunctorComposition a b c ≫ relativeFunctorPullback a.hom c.hom k =
+      (relativeFunctorPullback a.hom b.hom k ⊗ₘ relativeFunctorPullback b.hom c.hom k) ≫
+        relativeFunctorComposition (Over.mk (pullback.snd a.hom k))
+          (Over.mk (pullback.snd b.hom k)) (Over.mk (pullback.snd c.hom k))
+
+noncomputable def leftFibrationBaseChangeObject {B D : SSet.{u}}
+    (k : D ⟶ B) (p : LeftFibrationObject B) : LeftFibrationObject D
+
+noncomputable def leftFibrationBaseChangeEnriched {B D : SSet.{u}} (k : D ⟶ B) :
+    EnrichedFunctor SSet.{u} (LeftFibrationObject B) (LeftFibrationObject D)
+
+noncomputable def leftFibrationInfinityBaseChange {B D : SSet.{u}} (k : D ⟶ B) :
+    LeftFibrationInfinity B ⟶ LeftFibrationInfinity D
+
+lemma leftFibrationInfinityBaseChange_vertex {B D : SSet.{u}}
+    (k : D ⟶ B) (p : LeftFibrationObject B) :
+    (leftFibrationInfinityBaseChange k).app (Opposite.op ⦋0⦌) (coherentNerveVertex p) =
+      coherentNerveVertex (leftFibrationBaseChangeObject k p)
+
 end SerrePositivity.InfinityCategories
 ```
