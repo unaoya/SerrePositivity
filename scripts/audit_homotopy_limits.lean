@@ -1529,3 +1529,31 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms weightedCoherentConeComparison
 #check @weightedCoherentConeComparison_over
 #print axioms weightedCoherentConeComparison_over
+#check @reflectedFirstPath
+#print axioms reflectedFirstPath
+#check @reflectedFirstPath_mem
+#print axioms reflectedFirstPath_mem
+#check @reflectedFirstPath_maximum
+#print axioms reflectedFirstPath_maximum
+#check @reflectedFirstPathFunctor
+#print axioms reflectedFirstPathFunctor
+#check @reflectedFirstPathMaximumMap_apply
+#print axioms reflectedFirstPathMaximumMap_apply
+#check @reflectedFirstPathMaximumMap
+#print axioms reflectedFirstPathMaximumMap
+#check @reflectedYonedaMap
+#print axioms reflectedYonedaMap
+#check @reflectedConstantCoefficient
+#print axioms reflectedConstantCoefficient
+#check @weightedConstantCosliceMap
+#print axioms weightedConstantCosliceMap
+#check @weightedConstantCosliceMap_projection
+#print axioms weightedConstantCosliceMap_projection
+#check @weightedConstantCosliceFiberMap
+#print axioms weightedConstantCosliceFiberMap
+#check @weightedConstantCosliceFiberMap_simplex
+#print axioms weightedConstantCosliceFiberMap_simplex
+#check @weightedConstantConeHom_zero_succ
+#print axioms weightedConstantConeHom_zero_succ
+#check @coherentLeftHomComparison_simplex
+#print axioms coherentLeftHomComparison_simplex

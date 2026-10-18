@@ -2204,7 +2204,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開762宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開776宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2832,7 +2832,7 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開762宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開776宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
 ### 重み付き end と weighted nerve の切断の族（全単射を実装）
@@ -3986,6 +3986,68 @@ Kan 性・図式の極限性・Hom のホモトピー逆の選択は一切要求
 この射の各 fiber の同値性はまだ未証明であり、点ごとの既存の Hom の同値だけで
 射全体の同値性を結論しない。始域には係数の反転があるので、その切断空間の移送と
 元の q_x との一致も証明対象である。𝒮・Sp の残りの適用を含む γ3b・γ3c は未完了。
+
+### 一定の底での fiber 比較と左右の座標の照合（実装済み）
+
+`ReflectedPathCoordinates` は `j : Fin (n+1)` と初点零から j.succ への path P を扱う。
+`reflectedFirstPath P` は頂点を全て Fin.rev で反転した path であり、
+始点は j.rev.castSucc、終点は最後の頂点となる。
+`reflectedFirstPath_mem` と `reflectedFirstPath_maximum` は
+
+```lean
+ULift.up k.castSucc ∈ (reflectedFirstPath P).I ↔ ULift.up k.rev.succ ∈ P.I
+pathLastMaximum (reflectedFirstPath P) = (pathFirstMinimum P).rev
+```
+
+を与える。包含圏の関手 `reflectedFirstPathFunctor` と、その最大点の射の評価も公開した。
+`reflectedFirstPathMaximumMap` は最小点の射に反転した初区間の包含と
+標準単体の反転を合成すると、反転 path の最大点の射になることを示す。
+`reflectedYonedaMap` は反転した空間の simplex の Yoneda 射を反転して戻す式。
+これらから任意の `X : SSet.{u}` と `s : X.op _⦋n⦌` に対し
+
+```lean
+reflectedConstantCoefficient s j :
+  pathFirstMinimumMap j ≫ reflectedSimplexMap
+    (stdSimplex.map (simplexPrefixInclusion j.val n (Nat.le_of_lt_succ j.isLt)) ≫
+      SSet.yonedaEquiv.symm s) =
+  nerveMap (reflectedFirstPathFunctor j) ≫ pathLastMaximumMap j.rev ≫
+    SSet.yonedaEquiv.symm (SSet.opObjEquiv s)
+```
+
+を証明した。全ての次数での厳密な式で、Kan 性を要求しない。
+
+`WeightedConstantFiber` は `F : I ⥤ C`、`x : C`、`i : I` に対して
+一定の底の包含と構成済みの比較射を合成し、
+`weightedConstantCosliceMap_projection` で終点が F(i) に定値であることを証明する。
+
+```lean
+weightedConstantCosliceFiberMap F x i :
+  (SSet.uliftFunctor.{v, u}).obj (SimplicialCategory.sHom x (F.obj i)).op ⟶
+  vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm (coherentNerveVertex x)))
+    (coherentNerveVertex (F.obj i))
+```
+
+はその実際の fiber への持ち上げである。
+`weightedConstantCosliceFiberMap_simplex F x i s` は元の simplex が
+`weightedConeSimplex F x (weightedNerveConstantDiagram (simplicialHomDiagram F x ⋙
+SSet.opFunctor) i s)` に一致することを示す。
+`weightedConstantConeHom_zero_succ F x i s j` はその非定値 Hom の作用を
+反転した path の右最大点による評価として計算する。
+
+一方、`coherentLeftHomComparison_simplex x y s` は既存の左 Hom 比較の元の simplex が
+
+```lean
+coherentOppositeInverseSimplex
+  (coherentHomComparisonSimplex (X := Opposite.op y) (Y := Opposite.op x)
+    (SSet.opObjEquiv s))
+```
+
+であることを示す。pinched Hom の端点の等号による移送は元の simplex を変えない。
+原典は Kerodon §4.6.7、HTT 4.2.4.1。
+
+これで二つの射の座標を比較できる形になったが、coherent simplex 全体の一致と
+実際の fiber 射の同値性はまだ未証明である。元の q_x と切断空間への接続、
+𝒮・Sp の残りの適用も未完了であり、この座標の照合だけで γ3b の完成とはしない。
 
 ### 𝒮 の空積（実装済み）
 
