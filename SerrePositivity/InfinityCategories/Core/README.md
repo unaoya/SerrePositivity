@@ -472,3 +472,5 @@ A6 続き：`isInvertibleEdge_iff_evaluateFunctorAt` は任意のパラメータ
 A6 続き：`IsPrecompositionEquivalence f` は任意の quasicategory への前合成が同値となる補助条件。元の単体集合は quasicategory でなくてもよい。合成・二対三則・inner anodyne 射・点ごとに可逆なホモトピー逆を扱い、quasicategory 間では既存の同値条件との同値を証明した。既存の公開名・型は維持。新規15宣言の全型・前提は計画 §6。Core ビルド1661 jobs・累計941宣言の標準3公理監査成功。fat join と slice の比較射の同値性、A6 の主定理は未完了。A4・A5 は未着手。
 
 A6 続き：`IsPrecompositionEquivalence.whiskerLeft`・`whiskerRight` は任意の単体集合との直積による保存。`exists_extension_of_functorIso` は単射に沿う制限の同型の厳密化、`IsPrecompositionEquivalence.trivialKanFibration_pre` は単射である前合成の同値からの全境界持ち上げ、`IsPrecompositionEquivalence.of_isPushout` はその単射の pushout による保存。既存の公開名・型は維持。公開10宣言の全型・前提は計画 §6。Core ビルド1664 jobs・累計951宣言の標準3公理監査成功。fat join と slice の比較射の同値性、A6 の主定理は未完了。A4・A5 は未着手。
+
+A6 続き：fat join の関手性を追加。codiscrete 圏の nerve への射を頂点の割当てから作り、その非空の場合の全境界充填を直接証明した。`equivalenceInterval` は二対象の可逆な区間。その端点は単射であり前合成の同値条件を満たす。`equivalenceMappingCylinderIn` は任意の射に対して単射、`equivalenceMappingCylinderOut` は前合成の同値条件を満たし、両者の合成は元の射。新規32宣言の全型・前提は計画 §6。Core ビルド1669 jobs・累計983宣言の標準3公理監査成功。既存の公開名・型は維持。一般の fat join 比較・slice 比較の同値性と A6 の主定理は未完了。A4・A5 は未着手。

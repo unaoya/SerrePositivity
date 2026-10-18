@@ -19,7 +19,7 @@ Mathlib の `Quasicategory` をそのまま ∞ 圏の定義とし、Joyal モ�
 
 担当順は A6 → A4 → A5。基盤全体の正本は [foundations.md](foundations.md)。F1 は α2 が担当し、Core の既存の公開名・型の変更は事前に報告する。
 
-現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存も整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
+現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解も整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
 
 ## 1. Mathlib（固定版）の現状
 
@@ -6257,6 +6257,125 @@ lemma IsPrecompositionEquivalence.of_isPushout {A B C D : SSet.{u}}
     {i : A ⟶ B} [Mono i] {g : A ⟶ C} {k : B ⟶ D} {j : C ⟶ D}
     (hi : IsPrecompositionEquivalence i) (h : IsPushout i g k j) :
     IsPrecompositionEquivalence j
+
+end SerrePositivity.InfinityCategories
+```
+
+### A6 続き：fat join の関手性と可逆な写像円柱（2026-10-18）
+
+fat join の円柱・左右包含上の射の計算、恒等射・合成の保存を証明した。可逆な区間を二対象の codiscrete 圏の nerve として構成し、その全境界充填を頂点の割当ての延長から直接証明した。この区間の両端の単射性と前合成の同値条件から、任意の射を単射と前合成の同値条件を満たす収縮に厳密に因子分解した。写像円柱の残った端点の単射性は、型の pushout の分離関数によって各次数で証明した。既存の公開名・型は変更せず、モデル構造は使用していない。
+
+Core ビルド1669 jobs、累計983宣言の標準3公理監査成功。一般の fat join 比較と slice 比較の同値性、A6 の主定理は未完了。A4・A5 は未着手。新規32宣言の全型・前提：
+
+```lean
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+def fatJoinCylinderMap {A A' B B' : SSet.{u}} (f : A ⟶ A') (g : B ⟶ B') :
+    (A ⊗ (Δ[1] : SSet.{u})) ⊗ B ⟶ (A' ⊗ (Δ[1] : SSet.{u})) ⊗ B'
+
+lemma fatJoinCylinderMap_zero {A A' B B' : SSet.{u}} (f : A ⟶ A') (g : B ⟶ B') :
+    (SSet.ι₀ (X := A) ▷ B) ≫ fatJoinCylinderMap f g =
+      (f ⊗ₘ g) ≫ (SSet.ι₀ (X := A') ▷ B')
+
+lemma fatJoinCylinderMap_one {A A' B B' : SSet.{u}} (f : A ⟶ A') (g : B ⟶ B') :
+    (SSet.ι₁ (X := A) ▷ B) ≫ fatJoinCylinderMap f g =
+      (f ⊗ₘ g) ≫ (SSet.ι₁ (X := A') ▷ B')
+
+noncomputable def fatJoinMap {A A' B B' : SSet.{u}} (f : A ⟶ A') (g : B ⟶ B') :
+    fatJoin A B ⟶ fatJoin A' B'
+
+lemma fatJoinCylinder_map {A A' B B' : SSet.{u}} (f : A ⟶ A') (g : B ⟶ B') :
+    fatJoinCylinder A B ≫ fatJoinMap f g =
+      fatJoinCylinderMap f g ≫ fatJoinCylinder A' B'
+
+lemma fatJoinInl_map {A A' B B' : SSet.{u}} (f : A ⟶ A') (g : B ⟶ B') :
+    fatJoinInl A B ≫ fatJoinMap f g = f ≫ fatJoinInl A' B'
+
+lemma fatJoinInr_map {A A' B B' : SSet.{u}} (f : A ⟶ A') (g : B ⟶ B') :
+    fatJoinInr A B ≫ fatJoinMap f g = g ≫ fatJoinInr A' B'
+
+lemma fatJoinMap_id (A B : SSet.{u}) : fatJoinMap (𝟙 A) (𝟙 B) = 𝟙 (fatJoin A B)
+
+lemma fatJoinMap_comp {A A' A'' B B' B'' : SSet.{u}}
+    (f : A ⟶ A') (f' : A' ⟶ A'') (g : B ⟶ B') (g' : B' ⟶ B'') :
+    fatJoinMap f g ≫ fatJoinMap f' g' = fatJoinMap (f ≫ f') (g ≫ g')
+
+def codiscreteNerveMap {A : SSet.{u}} {T : Type u} (a : A _⦋0⦌ → T) :
+    A ⟶ nerve (Codiscrete T)
+
+lemma codiscreteNerveMap_vertex {A : SSet.{u}} {T : Type u} (a : A _⦋0⦌ → T)
+    (x : A _⦋0⦌) :
+    (nerveEquiv ((codiscreteNerveMap a).app (Opposite.op ⦋0⦌) x)).as = a x
+
+lemma codiscreteNerve_hom_ext {A : SSet.{u}} {T : Type u}
+    {f g : A ⟶ nerve (Codiscrete T)}
+    (h : ∀ x : A _⦋0⦌, (nerveEquiv (f.app (Opposite.op ⦋0⦌) x)).as =
+      (nerveEquiv (g.app (Opposite.op ⦋0⦌) x)).as) : f = g
+
+lemma codiscreteNerve_exists_extension {A B : SSet.{u}} {T : Type u} [Nonempty T]
+    (i : A ⟶ B) [Mono i] (f : A ⟶ nerve (Codiscrete T)) :
+    ∃ g : B ⟶ nerve (Codiscrete T), i ≫ g = f
+
+lemma isContractibleKan_codiscreteNerve (T : Type u) [Nonempty T] :
+    IsContractibleKan (nerve (Codiscrete T))
+
+lemma IsContractibleKan.isPrecompositionEquivalence_point {E : SSet.{u}}
+    (hE : IsContractibleKan E) (e : (Δ[0] : SSet.{u}) ⟶ E) :
+    IsPrecompositionEquivalence e
+
+lemma pushout_inl_comp_injective_of_disjoint {S X Y P T : Type u}
+    {i : S ⟶ X} {f : S ⟶ Y} {k : X ⟶ P} {l : Y ⟶ P}
+    (h : IsPushout i f k l) (j : T → X) (hj : Function.Injective j)
+    (hd : ∀ s t, i s ≠ j t) : Function.Injective (fun t ↦ k (j t))
+
+lemma mono_pushout_inl_comp_of_disjoint {A B C D T : SSet.{u}}
+    {i : A ⟶ B} {f : A ⟶ C} {k : B ⟶ D} {l : C ⟶ D}
+    (h : IsPushout i f k l) (j : T ⟶ B) [Mono j]
+    (hd : ∀ n (a : A.obj n) (t : T.obj n), i.app n a ≠ j.app n t) : Mono (j ≫ k)
+
+def equivalenceInterval : SSet.{u}
+
+def equivalenceIntervalPoint (b : Bool) : 𝟙_ SSet.{u} ⟶ equivalenceInterval
+
+instance equivalenceIntervalPoint_mono (b : Bool) : Mono (equivalenceIntervalPoint.{u} b)
+
+lemma isPrecompositionEquivalence_equivalenceIntervalPoint (b : Bool) :
+    IsPrecompositionEquivalence (equivalenceIntervalPoint.{u} b)
+
+def equivalenceCylinderEndpoint (A : SSet.{u}) (b : Bool) :
+    A ⟶ A ⊗ equivalenceInterval
+
+instance equivalenceCylinderEndpoint_mono (A : SSet.{u}) (b : Bool) :
+    Mono (equivalenceCylinderEndpoint A b)
+
+lemma isPrecompositionEquivalence_equivalenceCylinderEndpoint (A : SSet.{u}) (b : Bool) :
+    IsPrecompositionEquivalence (equivalenceCylinderEndpoint A b)
+
+lemma equivalenceCylinderEndpoint_fst (A : SSet.{u}) (b : Bool) :
+    equivalenceCylinderEndpoint A b ≫ fst A equivalenceInterval = 𝟙 A
+
+noncomputable def equivalenceMappingCylinder {A B : SSet.{u}} (f : A ⟶ B) : SSet.{u}
+
+noncomputable def equivalenceMappingCylinderIn {A B : SSet.{u}} (f : A ⟶ B) :
+    A ⟶ equivalenceMappingCylinder f
+
+instance equivalenceMappingCylinderIn_mono {A B : SSet.{u}} (f : A ⟶ B) :
+    Mono (equivalenceMappingCylinderIn f)
+
+noncomputable def equivalenceMappingCylinderOut {A B : SSet.{u}} (f : A ⟶ B) :
+    equivalenceMappingCylinder f ⟶ B
+
+lemma equivalenceMappingCylinderIn_out {A B : SSet.{u}} (f : A ⟶ B) :
+    equivalenceMappingCylinderIn f ≫ equivalenceMappingCylinderOut f = f
+
+lemma isPrecompositionEquivalence_equivalenceMappingCylinderOut {A B : SSet.{u}}
+    (f : A ⟶ B) : IsPrecompositionEquivalence (equivalenceMappingCylinderOut f)
+
+lemma isPrecompositionEquivalence_iff_equivalenceMappingCylinderIn {A B : SSet.{u}}
+    (f : A ⟶ B) : IsPrecompositionEquivalence f ↔
+      IsPrecompositionEquivalence (equivalenceMappingCylinderIn f)
 
 end SerrePositivity.InfinityCategories
 ```

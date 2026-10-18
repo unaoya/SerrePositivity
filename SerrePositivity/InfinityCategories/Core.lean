@@ -117,3 +117,11 @@ public import SerrePositivity.InfinityCategories.Core.PrecompositionEquivalence
 public import SerrePositivity.InfinityCategories.Core.PrecompositionTensor
 
 public import SerrePositivity.InfinityCategories.Core.PrecompositionLifting
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinFunctor
+
+public import SerrePositivity.InfinityCategories.Core.CodiscreteNerve
+
+public import SerrePositivity.InfinityCategories.Core.PushoutDisjoint
+
+public import SerrePositivity.InfinityCategories.Core.EquivalenceCylinder
