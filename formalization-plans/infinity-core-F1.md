@@ -2595,5 +2595,28 @@ lemma coherentResolutionFaceUnionProjection_isPrecompositionEquivalence {n : ℕ
     (S : Finset (Finset (Fin (n + 1)))) :
     IsPrecompositionEquivalence (coherentResolutionFaceUnionProjection.{u} S)
 
+def coherentResolutionBoundaryFaces (n : ℕ) : Finset (Finset (Fin (n + 1)))
+
+lemma coherentResolutionFaceUnion_boundaryFaces (n : ℕ) :
+    coherentResolutionFaceUnion.{u} (coherentResolutionBoundaryFaces n) =
+      coherentResolutionBoundary n
+
+lemma stdSimplexFaceUnion_boundaryFaces (n : ℕ) :
+    stdSimplexFaceUnion.{u} (coherentResolutionBoundaryFaces n) = SSet.boundary n
+
+lemma coherentResolutionBoundary_mapsTo (n : ℕ) :
+    coherentResolutionBoundary.{u} n ≤ (SSet.boundary n).preimage
+      (coherentResolutionProjection n)
+
+def coherentResolutionBoundaryProjection (n : ℕ) :
+    (coherentResolutionBoundary.{u} n).toSSet ⟶ (SSet.boundary n).toSSet
+
+lemma coherentResolutionBoundaryProjection_ι (n : ℕ) :
+    coherentResolutionBoundaryProjection.{u} n ≫ (SSet.boundary n).ι =
+      (coherentResolutionBoundary n).ι ≫ coherentResolutionProjection n
+
+lemma coherentResolutionBoundaryProjection_isPrecompositionEquivalence (n : ℕ) :
+    IsPrecompositionEquivalence (coherentResolutionBoundaryProjection.{u} n)
+
 end SerrePositivity.InfinityCategories
 ```
