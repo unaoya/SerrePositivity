@@ -5845,5 +5845,43 @@ lemma joinLeftBoundaryMap_innerAnodyne_of_rightAnodyne {A B : SSet.{u}}
     (i : A ⟶ B) [Mono i] (K : SSet.{u}) (hi : rightAnodyneExtensions i) :
     innerAnodyneExtensions (joinLeftBoundaryMap i K)
 
+noncomputable def hornOneLastSectionIso (A : SSet.{u}) :
+    A ≅ (horn 1 1 : SSet.{u}) ⊗ A
+
+lemma prismEndpoint_one_rightAnodyne (A : SSet.{u}) :
+    rightAnodyneExtensions (prismEndpoint 1 A)
+
+noncomputable def relativeJoinCylinderLastFaceMap {m n : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    pushout (prismEndpoint 1 Δ[m]) f ⟶
+      pushout (prismEndpoint 1 Δ[m]) (f ≫ stdSimplex.δ (Fin.last (n + 1)))
+
+lemma relativeJoinCylinderLastFaceMap_cone {m n : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    relativeJoinCylinderLastFaceMap f ≫ relativeJoinCylinderConeMap f =
+      joinInl (pushout (prismEndpoint 1 Δ[m]) f) Δ[0]
+
+lemma relativeJoinCylinderCone_isPushout {m n : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    IsPushout (joinInl (Δ[n] : SSet.{u}) Δ[0]) (pushout.inr (prismEndpoint 1 Δ[m]) f)
+      ((joinStdSimplexIso n 0).hom ≫
+        pushout.inr (prismEndpoint 1 Δ[m]) (f ≫ stdSimplex.δ (Fin.last (n + 1))))
+      (relativeJoinCylinderLastFaceMap f)
+
+lemma relativeJoinCylinderCone_boundary_factor {m n : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    joinLeftBoundaryMap (pushout.inr (prismEndpoint 1 Δ[m]) f) Δ[0] =
+      (relativeJoinCylinderCone_isPushout f).isoPushout.inv ≫ relativeJoinCylinderConeMap f
+
+lemma relativeJoinCylinderConeMap_innerAnodyne {m n : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    innerAnodyneExtensions (relativeJoinCylinderConeMap f)
+
+lemma isPrecompositionEquivalence_relativeJoinCylinderComparison_lastFace {m n : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Δ[n])
+    (hf : IsPrecompositionEquivalence (relativeJoinCylinderComparison f)) :
+    IsPrecompositionEquivalence
+      (relativeJoinCylinderComparison (f ≫ stdSimplex.δ (Fin.last (n + 1))))
+
 end SerrePositivity.InfinityCategories
 ```
