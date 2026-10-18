@@ -6885,5 +6885,45 @@ lemma relativeJoinOneFiberIso_vertexFiberMap_ι {X Y S E : SSet.{u}}
       vertexFiberMap (relativeJoinProjection f g) p G hG (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) ≫
         vertexFiberι p (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = relativeJoinInr f g ≫ G
 
+lemma relativeJoin_extension_zeroFiber_eq {X Y E : SSet.{u}} (f : X ⟶ Y)
+    (p : E ⟶ (Δ[1] : SSet.{u})) (G : relativeJoin f (𝟙 Y) ⟶ E)
+    (hG : G ≫ p = relativeJoinProjection f (𝟙 Y))
+    (H : (Δ[1] : SSet.{u}) ⊗ X ⟶ E) (hH : relativeJoinPrism f ≫ G = H)
+    (z : X ⟶ vertexFiber p (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
+    (hz : z ≫ vertexFiberι p (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = prismEndpoint 0 X ≫ H) :
+    (relativeJoinZeroFiberIso f (𝟙 Y)).hom ≫
+      vertexFiberMap (relativeJoinProjection f (𝟙 Y)) p G hG (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+        z
+
+lemma relativeJoin_extension_oneFiber_eq {X Y E : SSet.{u}} (f : X ⟶ Y)
+    (p : E ⟶ (Δ[1] : SSet.{u})) (G : relativeJoin f (𝟙 Y) ⟶ E)
+    (hG : G ≫ p = relativeJoinProjection f (𝟙 Y))
+    (g : Y ⟶ E) (hg : relativeJoinInr f (𝟙 Y) ≫ G = g)
+    (z : Y ⟶ vertexFiber p (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
+    (hz : z ≫ vertexFiberι p (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = g) :
+    (relativeJoinOneFiberIso f (𝟙 Y)).hom ≫
+      vertexFiberMap (relativeJoinProjection f (𝟙 Y)) p G hG (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
+        z
+
+lemma relativeJoin_extension_zeroFiber_isPrecompositionEquivalence_iff
+    {X Y E : SSet.{u}} (f : X ⟶ Y) (p : E ⟶ (Δ[1] : SSet.{u}))
+    (G : relativeJoin f (𝟙 Y) ⟶ E) (hG : G ≫ p = relativeJoinProjection f (𝟙 Y))
+    (H : (Δ[1] : SSet.{u}) ⊗ X ⟶ E) (hH : relativeJoinPrism f ≫ G = H)
+    (z : X ⟶ vertexFiber p (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
+    (hz : z ≫ vertexFiberι p (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = prismEndpoint 0 X ≫ H) :
+    IsPrecompositionEquivalence
+      (vertexFiberMap (relativeJoinProjection f (𝟙 Y)) p G hG (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) ↔
+        IsPrecompositionEquivalence z
+
+lemma relativeJoin_extension_oneFiber_isPrecompositionEquivalence_iff
+    {X Y E : SSet.{u}} (f : X ⟶ Y) (p : E ⟶ (Δ[1] : SSet.{u}))
+    (G : relativeJoin f (𝟙 Y) ⟶ E) (hG : G ≫ p = relativeJoinProjection f (𝟙 Y))
+    (g : Y ⟶ E) (hg : relativeJoinInr f (𝟙 Y) ≫ G = g)
+    (z : Y ⟶ vertexFiber p (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
+    (hz : z ≫ vertexFiberι p (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = g) :
+    IsPrecompositionEquivalence
+      (vertexFiberMap (relativeJoinProjection f (𝟙 Y)) p G hG (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) ↔
+        IsPrecompositionEquivalence z
+
 end SerrePositivity.InfinityCategories
 ```
