@@ -1286,3 +1286,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.relativeJoinConeMap_inr
 #check @SerrePositivity.InfinityCategories.relativeJoinBaseMap_inr
 #check @SerrePositivity.InfinityCategories.relativeJoinConeMap_right
+#check @SerrePositivity.InfinityCategories.relativeJoinBaseMap_prism
+#check @SerrePositivity.InfinityCategories.relativeJoinCylinderCone_face_inv
+#check @SerrePositivity.InfinityCategories.relativeJoinCylinderConeMap
+#check @SerrePositivity.InfinityCategories.relativeJoinCylinderConeMap_inl
+#check @SerrePositivity.InfinityCategories.relativeJoinCylinderConeMap_inr
+#check @SerrePositivity.InfinityCategories.relativeJoinCylinderConeMap_comparison

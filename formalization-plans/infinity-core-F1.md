@@ -5805,5 +5805,36 @@ lemma relativeJoinConeMap_right {m n : ℕ} (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
       (joinStdSimplexIso n 0).hom ≫
         relativeJoinInr (f ≫ stdSimplex.δ (Fin.last (n + 1))) (𝟙 Δ[n + 1])
 
+lemma relativeJoinBaseMap_prism {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Y ⟶ Z) :
+    relativeJoinPrism f ≫ relativeJoinBaseMap f h = relativeJoinPrism (f ≫ h)
+
+lemma relativeJoinCylinderCone_face_inv (n : ℕ) :
+    stdSimplex.δ (Fin.last (n + 1)) ≫ (joinStdSimplexIso.{u} n 0).inv =
+      joinInl (Δ[n] : SSet.{u}) Δ[0]
+
+noncomputable def relativeJoinCylinderConeMap {m n : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    pushout (prismEndpoint 1 Δ[m]) (f ≫ stdSimplex.δ (Fin.last (n + 1))) ⟶
+      join (pushout (prismEndpoint 1 Δ[m]) f) Δ[0]
+
+lemma relativeJoinCylinderConeMap_inl {m n : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    pushout.inl (prismEndpoint 1 Δ[m]) (f ≫ stdSimplex.δ (Fin.last (n + 1))) ≫
+      relativeJoinCylinderConeMap f =
+        pushout.inl (prismEndpoint 1 Δ[m]) f ≫ joinInl _ Δ[0]
+
+lemma relativeJoinCylinderConeMap_inr {m n : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    pushout.inr (prismEndpoint 1 Δ[m]) (f ≫ stdSimplex.δ (Fin.last (n + 1))) ≫
+      relativeJoinCylinderConeMap f =
+        (joinStdSimplexIso n 0).inv ≫
+          joinMap (pushout.inr (prismEndpoint 1 Δ[m]) f) (𝟙 Δ[0])
+
+lemma relativeJoinCylinderConeMap_comparison {m n : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    relativeJoinCylinderConeMap f ≫
+      joinMap (relativeJoinCylinderComparison f) (𝟙 Δ[0]) ≫ relativeJoinConeMap f =
+        relativeJoinCylinderComparison (f ≫ stdSimplex.δ (Fin.last (n + 1)))
+
 end SerrePositivity.InfinityCategories
 ```
