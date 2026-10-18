@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.KST.Descent.DoubleCechDescentReflection
+public import SerrePositivity.KST.Descent.MixedCechSpaces
 public import SerrePositivity.KST.Descent.CechBaseChangeSpaces
 public import SerrePositivity.KST.Descent.TransferCechDescent
 public import SerrePositivity.KST.Descent.CechReindexWeights
