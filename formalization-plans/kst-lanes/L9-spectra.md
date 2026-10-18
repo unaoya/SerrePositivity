@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c 完了。L9d 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・248 モジュール 2960 宣言の公理監査成功。
+対象ビルド・253 モジュール 3013 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -2199,3 +2199,31 @@ L9d は進行中。次は通常の一段先の cotensor 模型との実際の比
 保存単位の対象ビルド 2449 jobs 成功。
 私有宣言を含む 248 モジュール 2960 宣言で標準三公理のみ。
 L9d は進行中。次は置換前の Kan 列の関手的な telescope の比較と単位の自然性を扱う。
+
+## 76. L9d の Kan 列の図式と自然変換の実際の BF 比較
+
+厳密な Kan 列とその射を圏に束ねた。
+filtered 余極限の Ω 条件の証明は、図式の値の単射性を使わない形に分離した。
+各対象の Ω 条件だけを明示的に仮定し、Kan 列の余極限を単射置換する。
+自然変換は余極限の Kan 列の厳密な射を誘導する。
+それを cofibrant な始域から標的の全単射 RLP 比較射へ持ち上げ、実際の BF 射を得た。
+成分ごとの全基点 π_* 同型は各段と全整数次数で保存される。
+
+BF 図式を Kan 列へ忘れた場合、この構成は既存の filtered BF 対象と定義的に一致する。
+既存の有理化対象を取り替えることなく、置換前の厳密な図式との比較に利用できる。
+この一般化だけでは有理化の単位の自然性はまだ示していない。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `KanSequence.levelEvaluation` | Kan 列の圏とその段評価関手 |
+| `KanSequence.filteredOmegaSpectrum` | 各対象の Ω 条件を仮定した Kan 図式の BF 余極限対象 |
+| `OmegaSpectrum.forgetToKan` | BF 対象から Kan 列への忘却関手 |
+| `OmegaSpectrum.filteredOmegaSpectrum_forget` | 忘却後の構成と既存の対象との等式 |
+| `KanSequence.filteredKanMap` | 自然変換が誘導する Kan 余極限列の厳密な射 |
+| `KanSequence.filteredSpectrumMap` / `filteredSpectrumMap_comparison` | BF 置換への持ち上げと段ごとの厳密な比較式 |
+| `KanSequence.filteredSpectrumMap_levelwise` / `filteredSpectrumMap_piIsomorphism` | 成分の π_* 同型性の保存 |
+
+参照：Goerss–Jardine I §7、BF 1978 §2、HTT A.3.3、HA §1.4.2。
+保存単位の対象ビルド 2454 jobs 成功。
+私有宣言を含む 253 モジュール 3013 宣言で標準三公理のみ。
+L9d は進行中。次は円の前合成とスペクトルの後合成から厳密な有理化図式を作る。

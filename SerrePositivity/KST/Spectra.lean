@@ -46,3 +46,8 @@ public import SerrePositivity.KST.Spectra.FreeIntervalBoundary
 public import SerrePositivity.KST.Spectra.MappingKanSequence
 public import SerrePositivity.KST.Spectra.SpectrumHomotopyFiber
 public import SerrePositivity.KST.Spectra.Rationalization
+public import SerrePositivity.KST.Spectra.KanSequenceCategory
+public import SerrePositivity.KST.Spectra.FilteredKanSequence
+public import SerrePositivity.KST.Spectra.KanSequenceForgetful
+public import SerrePositivity.KST.Spectra.FilteredKanSequenceForgetful
+public import SerrePositivity.KST.Spectra.FilteredKanSequenceMap
