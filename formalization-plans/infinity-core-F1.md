@@ -7647,5 +7647,33 @@ lemma IsLeftScaffold.finiteComparison (n : ℕ) {E : SSet.{u}}
     (l : simplicialReplacement F ⟶ E) (hs : IsLeftScaffold p F l) :
     IsPrecompositionEquivalence l
 
+lemma isPrecompositionEquivalence_of_pullback_finiteNerve
+    {C : Type u} [Category.{u} C] {a b : Over (nerve C)} (f : a ⟶ b)
+    (hfin : ∀ (n : ℕ) (H : ULift.{u} (Fin (n + 1)) ⥤ C),
+      IsPrecompositionEquivalence (overPullbackMap f (Over.mk (nerveMap H)))) :
+    IsPrecompositionEquivalence f.left
+
+lemma leftScaffoldBaseChange_overPullbackMap
+    {C D : Type u} [Category.{u} C] [Category.{u} D] {E : SSet.{u}}
+    (p : E ⟶ nerve C) (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E)
+    (h : l ≫ p = simplicialReplacementProjection F) (H : D ⥤ C) :
+    (simplicialReplacementBaseMap_isPullback H F).flip.isoPullback.hom ≫
+        overPullbackMap
+          (Over.homMk (U := Over.mk (simplicialReplacementProjection F)) (V := Over.mk p) l h)
+          (Over.mk (nerveMap H)) ≫
+          (pullbackSymmetry (nerveMap H) p).hom = leftScaffoldBaseChange p F l h H
+
+lemma IsLeftScaffold.overPullback_finiteComparison
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p]
+    (F : C ⥤ SSet.{u}) [∀ c, KanComplex (F.obj c)]
+    (l : simplicialReplacement F ⟶ E) (hs : IsLeftScaffold p F l)
+    (h : l ≫ p = simplicialReplacementProjection F)
+    (n : ℕ) (H : ULift.{u} (Fin (n + 1)) ⥤ C) :
+    IsPrecompositionEquivalence
+      (overPullbackMap
+          (Over.homMk (U := Over.mk (simplicialReplacementProjection F)) (V := Over.mk p) l h)
+          (Over.mk (nerveMap H)))
+
 end SerrePositivity.InfinityCategories
 ```

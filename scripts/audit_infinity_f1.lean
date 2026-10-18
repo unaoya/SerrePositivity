@@ -1650,3 +1650,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.mappingCylinder_isPrecompositionEquivalence
 #check @SerrePositivity.InfinityCategories.IsLeftScaffold.finiteComparison_step
 #check @SerrePositivity.InfinityCategories.IsLeftScaffold.finiteComparison
+#check @SerrePositivity.InfinityCategories.isPrecompositionEquivalence_of_pullback_finiteNerve
+#check @SerrePositivity.InfinityCategories.leftScaffoldBaseChange_overPullbackMap
+#check @SerrePositivity.InfinityCategories.IsLeftScaffold.overPullback_finiteComparison
