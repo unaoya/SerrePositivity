@@ -95,10 +95,12 @@ Cartesian モデルと指定引き戻しの標準同型の同変性を証明し�
 全次数ごとに transfer を正規化する経路を構成した（§46）。
 有限全射の実際の strict transform の有限性・全射性を証明し、局所 Noether 基底で
 実際の構造射が平坦なら有限忠実平坦な細分を取り出した（§47）。
+この図式を同じ有限型の圏へ持ち上げ、底変換した元の被覆への Čech 細分比較と、
+実際の blowup の抽象 blowup 正方形を構成した（§48）。
 `Theorem31.lean` では (3.8) と中心上の帰納仮定による代数的な軌道貼り合わせを証明。
 正本 D7 に従う導来値域への実現の型を §19 に明示する。
 検証状態：`lake build SerrePositivity.KST.Descent` が成功。
-監査状態：`scripts/audit_kst_descent.lean` は 117 モジュール・1440 宣言を検査し成功。
+監査状態：`scripts/audit_kst_descent.lean` は 118 モジュール・1467 宣言を検査し成功。
 許容公理は標準三公理のみ。主定理や八つの公理の完成を意味しない。
 切断を持つ射の帰納の区切りとして、全体ビルド `lake build` も成功（9418 ジョブ）。
 終了コードは `set -eo pipefail` で確認。ログは `/tmp/l8-sectioned-full-build.log`。
@@ -113,6 +115,8 @@ L8 の対象ビルドと監査は成功しており、import 閉包の破損で�
 所有範囲外の衝突で、L8 の対象ビルドと監査は成功したままである。
 §45 の transfer 幾何接続の区切りでは全体ビルドが成功（10024 ジョブ）。
 `set -eo pipefail` で終了コード 0 を確認。ログは `/tmp/l8-cech-transfer-geometry-full-build.log`。
+§48 の strict transform の有限平坦細分の幾何接続でも全体ビルドが成功（10100 ジョブ）。
+`set -eo pipefail` で終了コード 0 を確認。ログは `/tmp/l8-strict-transform-refinement-full-build.log`。
 終了コード 1 を確認し、ログは `/tmp/l8-affine-cech-descent-full-build.log`。
 §42 の全体ビルドも同じ所有範囲外の宣言重複でルート集約に失敗（終了コード 1）。
 ログは `/tmp/l8-double-cech-comparison-full-build.log`。L8 の対象ビルド・監査は成功。
@@ -614,6 +618,11 @@ Z 上の帰納仮定で残りの辺を同型とする。
 | `strictTransformπ_centerComplement_surjective` | 有限全射の中心外からの strict transform の全射性 | 対象ビルド済み、実際の blowup の中心外の稠密性を使用 |
 | `strictTransformπ_locallyOfFinitePresentation` | 局所 Noether 基底上の有限射の strict transform の有限表示性 | 対象ビルド済み、基底の局所 Noether 性を明示 |
 | `exists_finiteFlat_refinement_of_flat_strictTransform` | 平坦化した実際の strict transform から有限忠実平坦な細分を取り出す | 対象ビルド済み、平坦化中心の存在は別工程 |
+| `finiteTypeBlowup`、`finiteTypeBlowupProjection` | 元の有限型の圏内の実際の blowup と構造射 | 対象ビルド済み、Noether 基底上 |
+| `finiteTypeStrictTransform`、`finiteTypeStrictTransformProjection`、`finiteTypeStrictTransformToOriginal` | 元の有限型の圏内の実際の strict transform と二つの指定射 | 対象ビルド済み、有限射を要求 |
+| `finiteTypeStrictTransformToPullback`、`finiteTypeStrictTransformCechRefinement` | 実際の底変換被覆への細分射と Čech 比較 | 対象ビルド済み、全単体射と指定増強を保持 |
+| `finiteTypeStrictTransform_flatCover` | 平坦化後の指定射の有限性・平坦性・全射性・局所有限表示性 | 対象ビルド済み、平坦性は実際の構造射の入力 |
+| `finiteTypeBlowupSquare` | 実際の blowup の抽象 blowup 正方形 | 対象ビルド済み、被約閉中心と実際の引き戻しを使用 |
 | `finiteCoproductDesc_isFinite` | 共通の終域への有限個の有限射を非交和にまとめる | 対象ビルド済み |
 | `sectionOrbitMap_isFinite`、`sectionOrbitMap_isProper` | 分離射の有限個の切断からの軌道射の有限性・固有性 | 対象ビルド済み |
 | `reducedSectionOrbitMap_isFinite` | 被約化への切断の軌道射の有限性 | 対象ビルド済み |
@@ -1550,3 +1559,42 @@ SchemeLemmas の有限加群のチャート平坦化を直ちに strict transfor
 最小公理全体、実際の Tot・hG、自然な blowup 列と有限積保存の導出、(3.6)・K0・T2・E も未完である。
 
 §47 の保存検証：集約対象ビルドと公理監査が成功。117 モジュール・1440 宣言、標準三公理のみ。
+
+
+## 48. 同じ有限型の圏の平坦細分と実際の blowup 正方形
+
+§47 の幾何はスキームの圏で記述していた。
+元の前層は固定した S 上の有限型対象を定義域とするので、その圏内へ持ち上げる必要がある。
+Noether な S 上の有限型対象 Y は Noether スキームであり、
+Y の実際の blowup は固有であることから、同じ S 上有限型の対象となる。
+`finiteTypeBlowup` とその指定構造射を構成した。
+有限射の実際の strict transform の構造射も有限なので、
+これを同じ有限型の圏の対象とし、blowup と元の X への二つの射を構成した。
+実際の二射影の可換式から、S 上の可換性と有限型の圏内の可換正方形を証明した。
+
+元の f と blowup 構造射の実際の引き戻しは、既に有限型の圏内で構成されている。
+その普遍性に strict transform の二つの射を入れ、
+元の f の底変換被覆への細分射を構成した。
+この細分射は blowup 基底への構造射を保ち、実際の Čech nerve 関手で写すと
+`finiteTypeStrictTransformCechRefinement` という全単体射を保持する比較となる。
+この比較が指定増強も保つことを増強 Čech の同じ Arrow の射から証明した。
+同じ前層の定義域を全スキームの圏へ変更してはいない。
+
+中心外を用いた有限全射の strict transform については、
+同じ指定射の有限性・全射性を確認し、平坦化後の実際の平坦性が与えられれば
+有限忠実平坦で局所有限表示な被覆となることを元の有限型の圏内で公開した。
+この Čech 比較そのものが降下を保つことは、Tot の細分計算で別途示す必要がある。
+
+さらに、中心の台を被約閉中心として、その実際の引き戻し・blowup の固有性・
+中心外の同型性を組み合わせ、`finiteTypeBlowupSquare` を構成した。
+これは既存の `AbstractBlowupSquare` の全ての幾何条件を満たす。
+中心の冪零構造を保存した正方形であるとは主張せず、
+明示した被約中心を使う抽象 blowup 降下と中心上の帰納の入力である。
+
+平坦化中心の存在、整な基底を支配する被約既約成分の選択、
+Čech 細分の実降下と中心上の帰納による元の有限全射の降下への還元は残る。
+実際の Tot・hG、最小公理全体、自然な blowup 列と有限積保存の導出、(3.6)・K0・T2・E も未完である。
+
+§48 の保存検証：集約対象ビルドと公理監査が成功。118 モジュール・1467 宣言、標準三公理のみ。
+§48 の幾何接続の区切りの全体ビルドも成功（10100 ジョブ）。
+`set -eo pipefail` で終了コード 0、ログは `/tmp/l8-strict-transform-refinement-full-build.log`。

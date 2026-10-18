@@ -96,6 +96,7 @@ public import SerrePositivity.KST.Descent.AffineBaseChangeDescent
 public import SerrePositivity.KST.Descent.AffineTensorSquare
 public import SerrePositivity.KST.Descent.FiniteTypeAffineTensorSquare
 public import SerrePositivity.KST.Descent.FiniteTypeLimits
+public import SerrePositivity.KST.Descent.FiniteTypeStrictTransform
 public import SerrePositivity.KST.Descent.FiniteTypeCech
 public import SerrePositivity.KST.Descent.EquivariantPullbackComparison
 public import SerrePositivity.KST.Descent.AffinePullbackDescent
@@ -195,6 +196,8 @@ Cartesian モデルと指定引き戻しの標準同型の同変性を証明し�
 増強先を含む矢の圏の同型を経て、この実際の被覆からの transfer 還元を公開する。
 有限全射の実際の strict transform の有限性・中心外での全射性・全体の全射性を証明し、
 局所 Noether 基底で平坦なら有限忠実平坦な細分を取り出す。
+これらの空間と射を同じ有限型の圏へ持ち上げ、実際の底変換被覆への Čech 細分比較と
+中心の台を用いる抽象 blowup 正方形も構成する。
 元の値域の線形性を使わず、実際の図式関手の像における観測後の rank 公式で
 全次数ごとに正規化する代替経路も公開する。
 

@@ -124,6 +124,7 @@ run_cmd do
       `SerrePositivity.KST.Descent.AffineTensorSquare,
       `SerrePositivity.KST.Descent.FiniteTypeAffineTensorSquare,
       `SerrePositivity.KST.Descent.FiniteTypeLimits,
+      `SerrePositivity.KST.Descent.FiniteTypeStrictTransform,
       `SerrePositivity.KST.Descent.FiniteTypeCech,
       `SerrePositivity.KST.Descent.EquivariantPullbackComparison,
       `SerrePositivity.KST.Descent.AffinePullbackDescent,
