@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.KST.Descent.FiniteProductTensor
+public import SerrePositivity.KST.Descent.CechFiniteProducts
 public import SerrePositivity.KST.Descent.TerminalCechDescent
 public import SerrePositivity.KST.Descent.EmptyZariskiDescent
 public import SerrePositivity.KST.Descent.ConstantCechDescent
