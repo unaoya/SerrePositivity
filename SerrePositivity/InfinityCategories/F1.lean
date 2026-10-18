@@ -342,3 +342,4 @@ public import SerrePositivity.InfinityCategories.F1.RelativeJoinExtensionEssenti
 public import SerrePositivity.InfinityCategories.F1.StdSimplexFiberFullyFaithful
 public import SerrePositivity.InfinityCategories.F1.FiberwiseMappingSpaceComparison
 public import SerrePositivity.InfinityCategories.F1.IntervalFullyFaithfulCriterion
+public import SerrePositivity.InfinityCategories.F1.CosliceTriangleFiber

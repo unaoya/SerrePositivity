@@ -7302,5 +7302,24 @@ lemma isFullyFaithful_over_interval_of_endpoint_fibers_of_crossing
       p.app (Opposite.op ⦋0⦌) y = stdSimplex.obj₀Equiv.symm (1 : Fin 2) →
         IsSimplicialHomotopyEquivalence (pinchedHomMap f x y)) : IsFullyFaithful f
 
+lemma sliceUnderRestrict_projection {K L X : SSet.{u}} (e : K ⟶ X) (i : L ⟶ K) :
+    sliceUnderRestrict e i ≫ sliceUnderProjection (i ≫ e) = sliceUnderProjection e
+
+def cosliceRestrictionFiberMap {K L X : SSet.{u}} (e : K ⟶ X) (i : L ⟶ K)
+    (y : X _⦋0⦌) : vertexFiber (sliceUnderProjection e) y ⟶
+      vertexFiber (sliceUnderProjection (i ≫ e)) y
+
+lemma cosliceRestrictionFiberMap_trivialKanFibration {K L X : SSet.{u}}
+    (e : K ⟶ X) (i : L ⟶ K) [TrivialKanFibration (sliceUnderRestrict e i)]
+    (y : X _⦋0⦌) : TrivialKanFibration (cosliceRestrictionFiberMap e i y)
+
+lemma sliceUnderRestrict_target_trivialKanFibration {X : SSet.{u}} [Quasicategory X]
+    (e : (Δ[1] : SSet.{u}) ⟶ X) :
+    TrivialKanFibration (sliceUnderRestrict e (stdSimplex.δ (0 : Fin 2)))
+
+lemma cosliceTriangleTarget_trivialKanFibration {X : SSet.{u}} [Quasicategory X]
+    (e : (Δ[1] : SSet.{u}) ⟶ X) (y : X _⦋0⦌) :
+    TrivialKanFibration (cosliceRestrictionFiberMap e (stdSimplex.δ (0 : Fin 2)) y)
+
 end SerrePositivity.InfinityCategories
 ```
