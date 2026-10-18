@@ -92,7 +92,10 @@
 - 固定係数次数の初頁の一行を係数付き Koszul 複体の有限制限へ同型にし、補助頁 3 の有限模型を構成済み。
 - 項の台への制限と零延長の一般比較を証明し、有限模型から係数付き全 Koszul ホモロジーへの同型を構成済み。
 - koszulSecondPageIso により Mathlib 頁 3＝KST E₂ の項を計算済み。
-- 次はこの同型の Koszul 冪遷移と係数射についての自然性、塔への持ち上げ、有限収束と edge 比較を進める。
+- 右係数と左係数の点ごとの交換を複体・ホモロジーの自然同型として構成済み。
+- 固定有限生成係数の右 Koszul ホモロジーの塔の pro-零性を Lemma 4.9 から移送済み。
+- KST E₂ の項は既存の左係数 Koszul 模型でも表示可能。
+- 次はスペクトル対象の射による頁の関手性を実装し、E₂ 同型の Koszul 冪遷移・係数射についての自然性、塔への持ち上げ、有限収束と edge 比較を進める。
 - 初頁の二つのモデルの完全な自然性・Koszul 冪遷移との整合は残件。
 - スペクトル対象から頁への関手性を既存 API で確認中。未供給の自然性を仮定に置かない。
 - π_n の具体的な複体ホモロジーとの同定は K-L9 の界面から受け取る。
@@ -194,6 +197,10 @@
 | supportedRestrictionHomologyIso | SupportedRestriction.lean | 検証済み | 端を含む台上の制限のホモロジー比較 |
 | koszulFirstPageFiniteRowIso | KoszulCoefficientRow.lean | 検証済み | 初頁の有限行と係数付き Koszul 有限複体の同型 |
 | koszulSecondPageIso | KoszulCoefficientRow.lean | 検証済み | 実際の KST E₂ の項の全 Koszul ホモロジー表示 |
+| IsProZero.of_natIso | KoszulCoefficientSwap.lean | 検証済み | 自然同型による像の塔の pro-零性移送 |
+| pointwiseTensorSwapHomologyIso | KoszulCoefficientSwap.lean | 検証済み | 係数の左右交換のホモロジー自然同型 |
+| koszulRightTensorHomologyTower_isProZero | KoszulCoefficientSwap.lean | 検証済み | 固定有限生成右係数の Koszul pro-消滅 |
+| koszulSecondPageLeftIso | KoszulCoefficientSwap.lean | 検証済み | E₂ を既存左係数模型で表示 |
 | koszul_comparison | KoszulPro.lean | 予定 | KST Lemma 4.10 |
 | prop414 | Prop414.lean | 予定 | 中心的係数による非可換版 |
 | pro_whitehead | Whitehead.lean | 予定 | simple 空間版 |

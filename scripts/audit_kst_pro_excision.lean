@@ -635,3 +635,21 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.koszulSecondPageIso
 #print axioms SerrePositivity.KST.ProExcision.koszulSecondPageIso
+
+#check @SerrePositivity.KST.ProExcision.IsProZero.of_natIso
+#print axioms SerrePositivity.KST.ProExcision.IsProZero.of_natIso
+
+#check @SerrePositivity.KST.ProExcision.pointwiseTensorSwapIso
+#print axioms SerrePositivity.KST.ProExcision.pointwiseTensorSwapIso
+
+#check @SerrePositivity.KST.ProExcision.pointwiseTensorSwapHomologyIso
+#print axioms SerrePositivity.KST.ProExcision.pointwiseTensorSwapHomologyIso
+
+#check @SerrePositivity.KST.ProExcision.koszulRightTensorHomologyTower
+#print axioms SerrePositivity.KST.ProExcision.koszulRightTensorHomologyTower
+
+#check @SerrePositivity.KST.ProExcision.koszulRightTensorHomologyTower_isProZero
+#print axioms SerrePositivity.KST.ProExcision.koszulRightTensorHomologyTower_isProZero
+
+#check @SerrePositivity.KST.ProExcision.koszulSecondPageLeftIso
+#print axioms SerrePositivity.KST.ProExcision.koszulSecondPageLeftIso
