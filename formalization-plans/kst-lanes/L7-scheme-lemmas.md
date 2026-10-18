@@ -11,14 +11,16 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 73 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 86 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
 - チャート上で a が非零因子であることを基礎環の仮定なしで証明済み。
+- チャートの a による分母消去・係数の等式判定・a を可逆化した環と R[1/a] の同型を証明済み。
 - 次は環論的局所計算と実際のイデアル層の制限を同定する。
 - Mathlib に Cartier 因子の API はなく、通常の局所正則生成条件を別途定義する必要がある。
 - 原典照合により §14 の担当境界の設計変更を提案中。
+- 担当変更の判断に依存しない L7a の古典的構成は継続する。
 - L7a は未完了。L7b・L7c の本体は未着手。
 - 固定版 Mathlib に blowup の構成はない。
 - 固定版 Mathlib には絶対 Proj とその構造射の固有性がある。
@@ -314,6 +316,11 @@ f の有限型性は固有性から導く。
 | `chartBaseMap_mul_ratio` | ChartAlgebra | 検証済み | a · (b/a) = b |
 | `chart_map_ideal_eq_span` | ChartAlgebra | 検証済み | 中心の拡大イデアルの単項生成 |
 | `chartBaseMap_mem_nonZeroDivisors` | ChartAlgebra | 検証済み | チャートでの生成元の非零因子性 |
+| `chart_clear_denominator` | ChartLocalization | 検証済み | a の冪による分母消去 |
+| `chartBaseMap_eq_iff` | ChartLocalization | 検証済み | a の冪による係数の等式判定 |
+| `chart_localization_isLocalizationMap` | ChartLocalization | 検証済み | チャート局所化の普遍条件 |
+| `chartAwayEquiv` | ChartLocalization | 検証済み | R[1/a] とチャートの a 局所化の同型 |
+| `chartAwayEquiv_apply_base` | ChartLocalization | 検証済み | 基礎環の係数保存 |
 | `blowupPowerIso` | Blowup | 予定 | 正の冪の比較 |
 | `blowup` | Blowup | 予定 | 一般スキームへの貼り合わせ |
 | `exceptionalDivisor` | Blowup | 予定 | 例外因子 |
