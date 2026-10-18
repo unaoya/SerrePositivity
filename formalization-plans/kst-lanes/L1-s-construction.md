@@ -2487,3 +2487,110 @@ def coreSOneComparisonNat :
 任意の押し出し保存と cofiber 保存条件との同値は未証明。L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（2955 jobs）、公理監査成功（830 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+## 6.20 S₁ 比較の完全性と反復の一次方向の自然な比較
+
+既存の trivial Kan fibration の普遍性の保存を S₁ の比較へ適用し、
+零対象と全押し出しの保存、および `PreservesCofiberData` を無条件で導いた。
+`stableSOneComparisonNat : sEndofunctor 1 → 𝟭 StableModel` は安定圏での自然変換。
+`StableModel` の射について自然で、零対象の選択を厳密に保存する仮定は不要。
+
+r+1 重反復の外側の次数を 1 に固定する `oneDirectionIndex r` を構成した。
+外側の S₁ の比較を残りの r 重反復へ適用して多単体的自然変換を得た。
+各多次数の底の射と core 上の射は trivial Kan fibration。
+残りの r 方向と core の次数の対角を取った比較
+`oneDirectionRealizationComparison r X` は anodyne 局所化で可逆である。
+証明は各段の trivial Kan fibration と HA の対角定理を用い、対角の Kan 性は仮定しない。
+入力についての厳密な自然変換にもまとめた。
+
+今回の比較は未点化の実現について。全零境界商・区間商への接続と、円の smash を源とする
+反復間の構造写像はまだ構成していない。逆射の自然な選択も含めない。
+Core・Stable・F1・HA・Spectra の所有ファイルと公開 API は変更していない。
+
+以下は namespace `SerrePositivity.KST.SConstruction` 内の正確な型。`universe u`、
+`open CategoryTheory MonoidalCategory SSet`、
+`open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel`、
+`open scoped Simplicial` の下で記す（SOneExact ではさらに `MonoidalClosed` を開く）。
+
+**SOneExact.lean**
+
+```lean
+lemma sOneComparison_preservesSConstructionData (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+    PreservesSConstructionData (sOneComparison C)
+
+lemma sOneComparison_preservesCofiberData (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+    PreservesCofiberData (sOneComparison C)
+
+def stableSOneComparison (X : StableModel.{u}) : (sEndofunctor 1).obj X ⟶ X
+
+def stableSOneComparisonNat : sEndofunctor 1 ⟶ 𝟭 StableModel.{u}
+```
+
+**MultiSOneComparison.lean**
+
+```lean
+def oneDirectionIndex (r : ℕ) :
+    (Fin r → SimplexCategoryᵒᵖ) ⥤ (Fin (r + 1) → SimplexCategoryᵒᵖ)
+
+def multiSOneEndofunctorComparison (r : ℕ) :
+    oneDirectionIndex r ⋙ multiSEndofunctor (r + 1) ⟶ multiSEndofunctor r
+
+def multiSOneComparison (r : ℕ) (X : StableModel.{u}) :
+    oneDirectionIndex r ⋙ multiSConstruction (r + 1) X ⟶ multiSConstruction r X
+
+lemma multiSOneComparison_app (r : ℕ) (X : StableModel.{u})
+    (d : Fin r → SimplexCategoryᵒᵖ) :
+    (multiSOneComparison r X).app d = sOneComparison ((multiSConstruction r X).obj d)
+
+instance multiSOneComparison_trivialKanFibration (r : ℕ) (X : StableModel.{u})
+    (d : Fin r → SimplexCategoryᵒᵖ) :
+    TrivialKanFibration ((multiSOneComparison r X).app d)
+
+def multiCoreSOneComparison (r : ℕ) (X : StableModel.{u}) :
+    oneDirectionIndex r ⋙ multiCoreSConstruction (r + 1) X ⟶ multiCoreSConstruction r X
+
+instance multiCoreSOneComparison_trivialKanFibration (r : ℕ) (X : StableModel.{u})
+    (d : Fin r → SimplexCategoryᵒᵖ) :
+    TrivialKanFibration ((multiCoreSOneComparison r X).app d)
+
+def oneDirectionDiagonalComparison (r : ℕ) (X : StableModel.{u}) :
+    multiIndexDiagonal r ⋙ oneDirectionIndex r ⋙ multiCoreSConstruction (r + 1) X ⟶
+      multiIndexDiagonal r ⋙ multiCoreSConstruction r X
+
+def oneDirectionRealizationComparison (r : ℕ) (X : StableModel.{u}) :
+    simplicialDiagonalFunctor.obj
+      (multiIndexDiagonal r ⋙ oneDirectionIndex r ⋙ multiCoreSConstruction (r + 1) X) ⟶
+        multiDiagonalCoreSConstruction r X
+
+lemma oneDirectionRealizationComparison_localized_isIso (r : ℕ) (X : StableModel.{u}) :
+    IsIso (AnodyneHomotopy.anodyneQ.map (oneDirectionRealizationComparison r X))
+
+lemma multiSOneComparison_naturality (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    Functor.whiskerLeft (oneDirectionIndex r) ((multiSConstructionFunctor (r + 1)).map f) ≫
+        multiSOneComparison r Y =
+      multiSOneComparison r X ≫ (multiSConstructionFunctor r).map f
+
+lemma multiCoreSOneComparison_naturality (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    Functor.whiskerLeft (oneDirectionIndex r) ((multiCoreSConstructionFunctor (r + 1)).map f) ≫
+        multiCoreSOneComparison r Y =
+      multiCoreSOneComparison r X ≫ (multiCoreSConstructionFunctor r).map f
+
+def multiCoreSOneComparisonNat (r : ℕ) :
+    multiCoreSConstructionFunctor (r + 1) ⋙
+      (Functor.whiskeringLeft _ _ _).obj (oneDirectionIndex r) ⟶
+        multiCoreSConstructionFunctor r
+
+def oneDirectionRealizationFunctor (r : ℕ) : StableModel.{u} ⥤ SSet.{u}
+
+def oneDirectionRealizationComparisonNat (r : ℕ) :
+    oneDirectionRealizationFunctor r ⟶ multiRealizationFunctor r
+
+lemma oneDirectionRealizationComparisonNat_app (r : ℕ) (X : StableModel.{u}) :
+    (oneDirectionRealizationComparisonNat r).app X = oneDirectionRealizationComparison r X
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。S₁ 比較の cofiber 保存と任意の反復の外側一次方向の自然な比較は証明済み。
+全境界商への降下、反復間の構造写像、delooping・Ω 条件・BF 連結スペクトルは未完了。
+任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（2957 jobs）、公理監査成功（850 宣言、標準三公理のみ）。追加公理・sorry なし。

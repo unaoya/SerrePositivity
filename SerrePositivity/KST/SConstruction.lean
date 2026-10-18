@@ -52,4 +52,6 @@ public import SerrePositivity.KST.SConstruction.DiagonalAssembly
 
 public import SerrePositivity.KST.SConstruction.SOneComparison
 
+public import SerrePositivity.KST.SConstruction.MultiSOneComparison
+
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -2316,3 +2316,63 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.coreSOneComparisonNat
 #print axioms SerrePositivity.KST.SConstruction.coreSOneComparisonNat
+
+#check @SerrePositivity.KST.SConstruction.sOneComparison_preservesSConstructionData
+#print axioms SerrePositivity.KST.SConstruction.sOneComparison_preservesSConstructionData
+
+#check @SerrePositivity.KST.SConstruction.sOneComparison_preservesCofiberData
+#print axioms SerrePositivity.KST.SConstruction.sOneComparison_preservesCofiberData
+
+#check @SerrePositivity.KST.SConstruction.stableSOneComparison
+#print axioms SerrePositivity.KST.SConstruction.stableSOneComparison
+
+#check @SerrePositivity.KST.SConstruction.stableSOneComparisonNat
+#print axioms SerrePositivity.KST.SConstruction.stableSOneComparisonNat
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionIndex
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionIndex
+
+#check @SerrePositivity.KST.SConstruction.multiSOneEndofunctorComparison
+#print axioms SerrePositivity.KST.SConstruction.multiSOneEndofunctorComparison
+
+#check @SerrePositivity.KST.SConstruction.multiSOneComparison
+#print axioms SerrePositivity.KST.SConstruction.multiSOneComparison
+
+#check @SerrePositivity.KST.SConstruction.multiSOneComparison_app
+#print axioms SerrePositivity.KST.SConstruction.multiSOneComparison_app
+
+#check @SerrePositivity.KST.SConstruction.multiSOneComparison_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.multiSOneComparison_trivialKanFibration
+
+#check @SerrePositivity.KST.SConstruction.multiCoreSOneComparison
+#print axioms SerrePositivity.KST.SConstruction.multiCoreSOneComparison
+
+#check @SerrePositivity.KST.SConstruction.multiCoreSOneComparison_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.multiCoreSOneComparison_trivialKanFibration
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionDiagonalComparison
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionDiagonalComparison
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionRealizationComparison
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionRealizationComparison
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionRealizationComparison_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionRealizationComparison_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.multiSOneComparison_naturality
+#print axioms SerrePositivity.KST.SConstruction.multiSOneComparison_naturality
+
+#check @SerrePositivity.KST.SConstruction.multiCoreSOneComparison_naturality
+#print axioms SerrePositivity.KST.SConstruction.multiCoreSOneComparison_naturality
+
+#check @SerrePositivity.KST.SConstruction.multiCoreSOneComparisonNat
+#print axioms SerrePositivity.KST.SConstruction.multiCoreSOneComparisonNat
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionRealizationFunctor
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionRealizationFunctor
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionRealizationComparisonNat
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionRealizationComparisonNat
+
+#check @SerrePositivity.KST.SConstruction.oneDirectionRealizationComparisonNat_app
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionRealizationComparisonNat_app
