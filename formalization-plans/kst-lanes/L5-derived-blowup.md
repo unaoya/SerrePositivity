@@ -109,15 +109,19 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `exteriorKoszulChainIso`・`exteriorKoszulCochainIso` | ExteriorComplexIso | 対象ビルド済み |
 | `chartExteriorCochainIso`・`exceptionalExteriorCochainIso` | ChartCochainMaps | 対象ビルド済み |
 | `exteriorContraction_mul` | ExteriorLeibniz | 対象ビルド済み |
+| `exteriorCochainInclusion`・単射性・次数・微分との適合性 | ExteriorIntegerInclusion / ExteriorIntegerDifferential | 対象ビルド済み |
+| `exteriorCochainBilinear`・`exteriorCochainBilinear_d` | ExteriorCochainProduct / ExteriorCochainLeibniz | 対象ビルド済み |
+| `exteriorKoszulMultiplication`・`exteriorKoszulMultiplication_component` | ExteriorMultiplication | 対象ビルド済み |
+| `exteriorUnitCycle`・`exteriorKoszulUnit`・`exteriorKoszulUnit_inclusion` | ExteriorUnit | 対象ビルド済み |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
-積を `cochainTensor` からの chain map として装備する工程は未完了。
+積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
+モノイダル圏での左右単位則・結合則は未完了。
 `derivedChartComplex` は既存の反復 cone 複体であり、両模型の比較同型はまだない。
 この二つを合わせて「導来チャート cdga の実装済み」とは扱わない。
-所有モジュールの全168定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全250定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
-次の実装単位は各項から総外積への単射とその微分への適合性を構成し、
-同次積と Leibniz 則から `cochainTensor` 上の積を装備する。
+次の実装単位は乗法・単位の左右単位則・結合則を証明し、一対象 dg 圏へまとめる。
 その後に既存反復 cone 模型との比較を行う。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
 

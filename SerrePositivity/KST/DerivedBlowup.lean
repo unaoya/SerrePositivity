@@ -15,3 +15,11 @@ public import SerrePositivity.KST.DerivedBlowup.ExteriorComplexMap
 public import SerrePositivity.KST.DerivedBlowup.ExteriorComplexIso
 public import SerrePositivity.KST.DerivedBlowup.ChartCochainMaps
 public import SerrePositivity.KST.DerivedBlowup.ExteriorLeibniz
+public import SerrePositivity.KST.DerivedBlowup.ExteriorCochainInclusion
+public import SerrePositivity.KST.DerivedBlowup.ExteriorIntegerInclusion
+public import SerrePositivity.KST.DerivedBlowup.ExteriorDegreeProduct
+public import SerrePositivity.KST.DerivedBlowup.ExteriorIntegerDifferential
+public import SerrePositivity.KST.DerivedBlowup.ExteriorCochainProduct
+public import SerrePositivity.KST.DerivedBlowup.ExteriorCochainLeibniz
+public import SerrePositivity.KST.DerivedBlowup.ExteriorMultiplication
+public import SerrePositivity.KST.DerivedBlowup.ExteriorUnit
