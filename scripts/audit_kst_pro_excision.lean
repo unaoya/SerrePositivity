@@ -4101,3 +4101,84 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.SimplicialHomologyModel.reversalNatIso
 #print axioms SerrePositivity.KST.ProExcision.SimplicialHomologyModel.reversalNatIso
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverse
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverse
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOpposite
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.reverseOpposite
+
+#check @SerrePositivity.KST.ProExcision.oppositeNerveSimplex
+#print axioms SerrePositivity.KST.ProExcision.oppositeNerveSimplex
+
+#check @SerrePositivity.KST.ProExcision.nerveOppositeSimplex
+#print axioms SerrePositivity.KST.ProExcision.nerveOppositeSimplex
+
+#check @SerrePositivity.KST.ProExcision.oppositeNerveSimplex_nerveOppositeSimplex
+#print axioms SerrePositivity.KST.ProExcision.oppositeNerveSimplex_nerveOppositeSimplex
+
+#check @SerrePositivity.KST.ProExcision.nerveOppositeSimplex_oppositeNerveSimplex
+#print axioms SerrePositivity.KST.ProExcision.nerveOppositeSimplex_oppositeNerveSimplex
+
+#check @SerrePositivity.KST.ProExcision.oppositeFunctorMap_heq
+#print axioms SerrePositivity.KST.ProExcision.oppositeFunctorMap_heq
+
+#check @SerrePositivity.KST.ProExcision.nerveOppositeMap
+#print axioms SerrePositivity.KST.ProExcision.nerveOppositeMap
+
+#check @SerrePositivity.KST.ProExcision.oppositeNerveSimplexEquiv
+#print axioms SerrePositivity.KST.ProExcision.oppositeNerveSimplexEquiv
+
+#check @SerrePositivity.KST.ProExcision.nerveOppositeIso
+#print axioms SerrePositivity.KST.ProExcision.nerveOppositeIso
+
+#check @SerrePositivity.KST.ProExcision.nerveOppositeIso_natural
+#print axioms SerrePositivity.KST.ProExcision.nerveOppositeIso_natural
+
+#check @SerrePositivity.KST.ProExcision.reversalEdge
+#print axioms SerrePositivity.KST.ProExcision.reversalEdge
+
+#check @SerrePositivity.KST.ProExcision.edgeToReversal
+#print axioms SerrePositivity.KST.ProExcision.edgeToReversal
+
+#check @SerrePositivity.KST.ProExcision.reversalComponentsMap
+#print axioms SerrePositivity.KST.ProExcision.reversalComponentsMap
+
+#check @SerrePositivity.KST.ProExcision.reversalComponentsEquiv
+#print axioms SerrePositivity.KST.ProExcision.reversalComponentsEquiv
+
+#check @SerrePositivity.KST.ProExcision.componentRingMap
+#print axioms SerrePositivity.KST.ProExcision.componentRingMap
+
+#check @SerrePositivity.KST.ProExcision.componentRingMap_mk
+#print axioms SerrePositivity.KST.ProExcision.componentRingMap_mk
+
+#check @SerrePositivity.KST.ProExcision.componentRingMap_id
+#print axioms SerrePositivity.KST.ProExcision.componentRingMap_id
+
+#check @SerrePositivity.KST.ProExcision.componentRingMap_comp
+#print axioms SerrePositivity.KST.ProExcision.componentRingMap_comp
+
+#check @SerrePositivity.KST.ProExcision.componentRingEquiv
+#print axioms SerrePositivity.KST.ProExcision.componentRingEquiv
+
+#check @SerrePositivity.KST.ProExcision.ringReversalComponentsEquiv
+#print axioms SerrePositivity.KST.ProExcision.ringReversalComponentsEquiv
+
+#check @SerrePositivity.KST.ProExcision.ringReversalComponentsEquiv_mk
+#print axioms SerrePositivity.KST.ProExcision.ringReversalComponentsEquiv_mk
+
+#check @SerrePositivity.KST.ProExcision.ringReversalComponentsEquiv_simplex
+#print axioms SerrePositivity.KST.ProExcision.ringReversalComponentsEquiv_simplex
+
+#check @SerrePositivity.KST.ProExcision.ringOppositeObject
+#print axioms SerrePositivity.KST.ProExcision.ringOppositeObject
+
+#check @SerrePositivity.KST.ProExcision.ringOppositeSpaceIso
+#print axioms SerrePositivity.KST.ProExcision.ringOppositeSpaceIso
+
+#check @SerrePositivity.KST.ProExcision.ringOppositeComponentsEquiv
+#print axioms SerrePositivity.KST.ProExcision.ringOppositeComponentsEquiv
+
+#check @SerrePositivity.KST.ProExcision.ringOppositeComponentsEquiv_simplex
+#print axioms SerrePositivity.KST.ProExcision.ringOppositeComponentsEquiv_simplex

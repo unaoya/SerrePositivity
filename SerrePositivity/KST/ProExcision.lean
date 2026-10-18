@@ -411,3 +411,19 @@ public import SerrePositivity.KST.ProExcision.AlternatingReversalIso
 public import SerrePositivity.KST.ProExcision.LinearizedReversal
 
 public import SerrePositivity.KST.ProExcision.HomologyReversal
+
+public import SerrePositivity.KST.ProExcision.NonUnitalSimplicialReverse
+
+public import SerrePositivity.KST.ProExcision.NerveOppositeSimplex
+
+public import SerrePositivity.KST.ProExcision.NerveOppositeMap
+
+public import SerrePositivity.KST.ProExcision.NerveOppositeIso
+
+public import SerrePositivity.KST.ProExcision.SimplicialReversalComponents
+
+public import SerrePositivity.KST.ProExcision.ComponentRingMaps
+
+public import SerrePositivity.KST.ProExcision.RingReversalComponents
+
+public import SerrePositivity.KST.ProExcision.RingOppositeComponents

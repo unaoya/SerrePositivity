@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：借用する π・H_* の明示的な模型界面に対して工程完了。一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと1418宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと1445宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -1103,3 +1103,14 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - 係数方向の rev と nerve 方向の反転を合わせると、対角は行側の対角 bar 全体の SSet.op になる。証明済みの自然な符号付き鎖同型を適用できる。一般の二重複体の新しい EZ 比較を仮定しない。
 - 零次の指定元の高次像は唯一の [n]→[0] により定まるので rev に保たれる。中心性・次数ごとの単射性は同じ次数の環でそのまま保たれる。
 - この補足は既存の反対環・転置・bar 鎖反転の実装上の正確化であり、Prop 4.14 の仮定・結論・借用する H_* の界面は変更しない。π₀ の成分環・転置・対角の各実比較は別途証明する。
+
+
+### L6d の反対 nerve と係数の成分環の実比較（2026-10-19）
+
+- `NonUnitalSimplicialRing.reverse` と `reverseOpposite` は係数方向の rev と反対環を合成した実非単位単体環。元の I との同型を仮定しない。
+- `oppositeNerveSimplex`・`nerveOppositeSimplex` は可合成射の列の実反転。二回の反転が恒等であることを実射の輸送まで証明する。
+- `nerveOppositeMap` と `nerveOppositeIso` は反対圏の nerve と元の nerve の SSet.op の実単体的比較・実同型。全ての面・退化、および圏の実関手に自然。
+- `reversalComponentsEquiv` は Mathlib の既存の π₀ における順序反転の実全単射。辺の向きを入れ替え、同じ零次の代表で互いの逆を証明した。
+- `componentRingMap` と `componentRingEquiv` は既存の K-L2 の成分環を単体的環の実射・実同型に沿って移す。π₀ や成分環の定義を置き換えない。
+- `ringReversalComponentsEquiv` と `ringOppositeComponentsEquiv` は係数の rev と反対環の実成分環比較。任意の次数の成分写像との可換性も証明する。
+- 対象ビルド・1445宣言の公理監査は標準三公理のみで成功。非単位環の単位化図式と転置の実比較をこれらへ接続し、行側半直積と整数作用の移送を続行する。
