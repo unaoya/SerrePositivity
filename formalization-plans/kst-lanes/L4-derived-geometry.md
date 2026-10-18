@@ -1,6 +1,6 @@
 # K-L4：導来圏と幾何の基盤
 
-作成日：2026-10-18。状態：L4a 途中・降下模型の設計変更提案。
+作成日：2026-10-18。状態：L4a 途中。降下模型の明確化提案と両模型に共通する係数忘却の基盤を整備中。
 
 ## 0. 目的と所有範囲
 
@@ -49,9 +49,9 @@
 
 ## 3. 現在地と受入条件
 
-- 現在地：L4a の係数環層・D_qc・有限アフィン被覆・忘却の忠実性と同型反映性を実装。降下模型の設計変更を提案中。L4a は未完了。
-- L4b、L4c、L4d、L4e は未着手。
-- 最新の対象ビルドは成功。所有 namespace の58宣言の監査は標準3公理のみ、KTheory import なし。
+- 現在地：L4a の実際の加群層と D_qc の型、有限アフィン被覆に加え、係数忘却の完全性・層レベルの余極限保存・自由忘却随伴、導来忘却とそのコホモロジー比較・同型反映性を実装。L4a の降下比較は未完了。
+- L4b の入力である層の随伴と導来忘却は実装済み。L4b の導来随伴・生成・T1′、L4c、L4d、L4e は未実装。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の100宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -68,7 +68,7 @@
 - 第一層は実際の環層と加群層を使う。抽象圏の名前だけを D_qc としない。
 - 係数構造は O_X → H_X の環層射で表す。
 - 加群層の圏は Mathlib の SheafOfModules を使う。
-- 係数忘却は SheafOfModules.restrictScalars との接続を調べる。
+- 係数忘却は SheafOfModules.restrictScalars を使い、完全性・小さい余極限の保存を証明済み。
 - O_X 加群層は AlgebraicGeometry.Scheme.Modules を使う。
 - 非有界複体は CochainComplex C ℤ を使う。
 - 導来局所化は Mathlib の DerivedCategory と Q を接続点とする。
@@ -277,10 +277,33 @@
 - 交わり W の被覆枚数に対する帰納はせず、アフィン側から W への compact の持ち上げを使う。
 - 持ち上げには Neeman Thm 2.1 と BvdB Cor 3.2.3 の E ⊕ E[1] を使う。
 - そのため、有限被覆の枚数が単調に減らないという初期の注意にも整合する。
-- 次の実装は、この模型の明確化を受けて層の比較と dg の写像複体のどちらから始めるかを固定する。
-- 停止理由はユーザー指定の「設計変更の提案」。import 閉包の破損による停止ではない。
-- L4a は未完了、T1・T1′・T2・T3・RHom 比較も未完了とする。
+- 次の降下実装では、この模型の明確化を受けて層の比較と dg の写像複体のどちらから始めるかを固定する。自由忘却随伴・導来忘却のような両模型に共通する基盤は進められる。
+- この提案は厳密なアフィン環加群複体の模型に関するもの。任意の加群層の複体に基づく現在の Dqc の定義・係数忘却の実装を止める理由にはしない。
+- L4a は未完了、T1・T1′・T2・T3・RHom 比較も未完了とする。T1 の層の随伴と導来忘却の実装だけで T1 完了とはしない。
 - 今回の補助補題の検証を上記主定理の証明と数えない。
+
+## 16. 係数忘却の接続と残りの証明
+
+- 任意の係数環層 B について、層の忘却は加法的・完全・保存的である。
+- 層の忘却は、加群の宇宙以下の添字の余極限を保つ。
+- 証明は基礎アーベル群の層への忘却を介して行う。
+- 基礎アーベル群の層への忘却の余極限保存は、前層の余極限を層化することで証明する。
+- 反射的局所化の余単位が自然同型であることを使い、層化前の保存性を層へ移す。
+- 切断関手が任意の余極限を保つという誤った主張は使わない。
+- 層の係数忘却の左随伴は、恒等な基礎空間上の加群層の引き戻しから構成する。
+- この左随伴の存在を未証明フィールドとして入力しない。
+- 層の自由関手の完全性は主張しない。
+- 非平坦な係数では、層の自由関手を複体へ項別に適用しただけでは左導来関手にならない。
+- 導来忘却は完全な関手の導来化として構成する。
+- 複体のコホモロジー比較を局所化による前合成の全忠実性で導来圏へ降ろす。
+- 導来忘却の保存性はコホモロジーによる同型判定と層の忘却の保存性から証明する。
+- 導来忘却が忠実であるという強すぎる主張はしない。
+- 係数つき Dqc の対象条件は、導来忘却の像が通常の DqcO に属する条件と同値である。
+- この同値により Dqc 間の忘却関手を構成し、同型反映性も移す。
+- 導来忘却の余積保存には、導来圏の余積の構成との比較をさらに証明する必要がある。
+- T1 の残りは H_X の具体的構成、導来自由関手と随伴、余積保存、通常の Dqc の生成である。
+- T1′ の局所有限射影複体との一致と、L4a のアフィン dg 模型への比較も別に残る。
+- これらを既存の dg 加群圏の定理を名前だけ変更することで代替しない。
 
 ## 主要宣言の表
 
@@ -292,6 +315,14 @@
 | `FiniteAffineCoverOf`・`finiteAffineCover` | DerivedGeometry/FiniteAffineCover | 実装・対象ビルド済み |
 | `affineIntersectionCover` | DerivedGeometry/FiniteAffineCover | 実装・対象ビルド済み |
 | `forget_faithful`・`forget_reflectsIsomorphisms` | DerivedGeometry/CoefficientForget | 実装・対象ビルド済み |
+| `preservesColimitsOfShape_of_reflective` | DerivedGeometry/ReflectiveColimits | 実装・対象ビルド済み |
+| `toSheaf_preservesColimits`・`forget_preservesFiniteLimits`・`forget_preservesColimits` | DerivedGeometry/CoefficientExact | 実装・対象ビルド済み |
+| `forget_preservesFiniteColimits` | DerivedGeometry/CoefficientExact | 実装・対象ビルド済み |
+| `free`・`freeForgetAdjunction` | DerivedGeometry/CoefficientAdjunction | 実装・対象ビルド済み |
+| `derivedForget`・`derivedForgetHomologyIso` | DerivedGeometry/DerivedForget | 実装・対象ビルド済み |
+| `derivedForget_reflectsIsomorphisms` | DerivedGeometry/DerivedForget | 実装・対象ビルド済み |
+| `DqcO`・`hasQuasicoherentCohomology_iff`・`dqcForget` | DerivedGeometry/DqcForget | 実装・対象ビルド済み |
+| `dqcForget_reflectsIsomorphisms` | DerivedGeometry/DqcForget | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装・模型の設計変更提案中 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |

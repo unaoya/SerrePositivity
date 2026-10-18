@@ -21,7 +21,15 @@ run_cmd do
     `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcInclusion,
     `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.forget_reflectsIsomorphisms,
     `SerrePositivity.KST.DerivedGeometry.FiniteAffineCoverOf,
-    `SerrePositivity.KST.DerivedGeometry.affineIntersectionCover]
+    `SerrePositivity.KST.DerivedGeometry.affineIntersectionCover,
+    `SerrePositivity.KST.DerivedGeometry.toSheaf_preservesColimits,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.forget_preservesFiniteLimits,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.forget_preservesColimits,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.forget_preservesFiniteColimits,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.derivedForgetHomologyIso,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.derivedForget_reflectsIsomorphisms,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.dqcForget_reflectsIsomorphisms,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.freeForgetAdjunction]
   for name in required do
     unless env.contains name do throwError "Missing K-L4 declaration: {name}"
   for mod in env.header.modules do
