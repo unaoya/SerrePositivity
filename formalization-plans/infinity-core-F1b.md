@@ -48,15 +48,20 @@ h Fun での一意性、パラメータ付き adjunct 対応とその二変数�
 A1c の `homotopyNatTrans` と `qcatCellOfHomotopy` の評価の一致も証明した。
 区間模型への族 A→Map(x,y) と Fun(A,X) の定値関手間の辺は厳密に全単射で、
 この族から h Fun の定値関手間の Hom への写像は全射である。
-さらに、`intervalFamilyHom f = intervalFamilyHom g` なら族 f,g の間に実際の
-単体的ホモトピーが存在することを証明した。構成は、h Fun の射の等式を右ホモトピーの
-三角形へ戻し、四辺を計算した正方形へ引き戻して、区間族を転置するもの。
-族の表示のパラメータ前合成に関する自然性と、双圏の adjunct の一胞体による前合成との
-整合もそれぞれ証明した。両者を結ぶ「QCat の whisker と内部 Hom の前合成の一致」は未完了。
-これは B1 全体の完了ではない。次はこの一致、表示のホモトピー不変性を確認し、
-全射性とホモトピーまでの単射性から実際の写像空間の同値を構成する。
-特徴づけは順向き Prop 6.2.1.17、逆向き Cor 6.2.6.5 に分けて証明する。
-B2〜B5 は未完了。対象ビルド（1645 jobs）・公理監査（106 宣言、標準三公理のみ）は成功。
+`intervalFamilyHom f = intervalFamilyHom g` なら族 f,g の間に実際の単体的ホモトピーが
+存在することを証明した。構成は、h Fun の射の等式を右ホモトピーの三角形へ戻し、
+四辺を計算した正方形へ引き戻して区間族を転置するもの。
+QCat の whisker と内部 Hom の前合成の一致も証明し、adjunct のパラメータ自然性に接続した。
+定値関手の後合成の同一視を補った `constantHomEquiv` はパラメータ自然な全単射である。
+この全単射から区間模型の比較射・逆候補を作り、両合成が恒等射に実際にホモトピックである
+ことを証明した（`intervalMap_isSimplicialHomotopyEquivalence`）。比較射が任意の
+quasicategory パラメータ族の adjunct を表す公式と、その仕様によるホモトピー一意性も公開した。
+
+これは B1 全体の完了ではない。残るのは区間模型から **pinchedHom への比較**、
+対象 x,y の射に関する自然性、および **特徴づけの逆方向（Cor 6.2.6.5）**。
+区間模型版の順方向には族の全射性・射の等式からホモトピーを得る向き・パラメータ自然性を
+用いた。表示をホモトピー類での全単射と呼ぶには、別途ホモトピー不変性の確認が要る。
+B2〜B5 は未完了。対象ビルド（1682 jobs）・公理監査（136 宣言、標準三公理のみ）は成功。
 
 ## 4. 主要宣言
 
@@ -98,5 +103,15 @@ B2〜B5 は未完了。対象ビルド（1645 jobs）・公理監査（106 宣�
 | `intervalFamilyHom_eq_imp_homotopy` | h Fun の射が等しい族はホモトピック（X が quasicategory） | 実装済み |
 | `intervalFamilyHomPrecomp`・`intervalFamilyHom_precomp` | h Fun の Hom のパラメータ前合成と族の表示の自然性 | 実装済み |
 | `bicategoryAdjunct_whiskerLeft` | 任意の双圏の adjunct 対応は一胞体による前合成と整合 | 実装済み |
+| `qcatSSetPrecomposition`・`qcatCatHomEquiv`・`qcatCatPrecomposition` | 豊穣前合成と内部 Hom の pre、hoFunctor の単位・合成移送との比較 | 実装済み |
+| `qcatCell_whiskerLeft` | QCat の二胞体の左 whisker = h(pre) による作用 | 実装済み |
+| `QCatAdjunction.homEquiv_precomp` | 一般の U,V の adjunct 対応の内部 Hom 前合成に関する自然性 | 実装済み |
+| `ConstantFunctorHom`・`constantFunctorCompIso` | 定値関手間の Hom、後合成での定値関手の保存の同一視 | 実装済み |
+| `QCatAdjunction.constantHomEquiv` と順・逆の前合成自然性 | h Fun(A,Y)(const F(x),const y) ≃ h Fun(A,X)(const x,const G(y)) | 実装済み |
+| `QCatAdjunction.intervalMap`・`intervalInverse` と `_hom` | 区間模型の比較射・逆候補と表す adjunct の仕様 | 実装済み |
+| `QCatAdjunction.intervalMap_family`・`intervalInverse_family` | 任意の quasicategory パラメータ族で順・逆 adjunct を表す | 実装済み |
+| `QCatAdjunction.intervalMap_unique_homotopy` | 指定された普遍族の adjunct を表す射はホモトピーまで一意 | 実装済み |
+| `QCatAdjunction.intervalMap_inverse_homotopy`・`intervalInverse_map_homotopy` | 両合成から恒等射への実際の単体的ホモトピー | 実装済み |
+| `QCatAdjunction.intervalMap_isSimplicialHomotopyEquivalence` | 随伴から区間模型の写像空間のホモトピー同値 | 実装済み（pinched への移行は未完了） |
 | 写像空間による特徴づけ | 自然な pinchedHom のホモトピー同値との同値 | 未完了 |
 | B2〜B5 | §1 の全項目 | 未着手（監査スクリプトは作成済み） |

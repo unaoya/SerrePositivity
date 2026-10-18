@@ -64,3 +64,21 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.intervalFamilyHom_precomp
 
 #check @SerrePositivity.InfinityCategories.bicategoryAdjunct_whiskerLeft
+
+#check @SerrePositivity.InfinityCategories.qcatSSetPrecomposition
+
+#check @SerrePositivity.InfinityCategories.qcatCatPrecomposition
+
+#check @SerrePositivity.InfinityCategories.qcatCell_whiskerLeft
+
+#check @SerrePositivity.InfinityCategories.QCatAdjunction.homEquiv_precomp
+
+#check @SerrePositivity.InfinityCategories.QCatAdjunction.constantHomEquiv_precomp
+
+#check @SerrePositivity.InfinityCategories.QCatAdjunction.intervalMap_family
+
+#check @SerrePositivity.InfinityCategories.QCatAdjunction.intervalInverse_family
+
+#check @SerrePositivity.InfinityCategories.QCatAdjunction.intervalMap_unique_homotopy
+
+#check @SerrePositivity.InfinityCategories.QCatAdjunction.intervalMap_isSimplicialHomotopyEquivalence

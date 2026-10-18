@@ -6,3 +6,7 @@ public import SerrePositivity.InfinityCategories.F1B.MappingParameters
 public import SerrePositivity.InfinityCategories.F1B.MappingTranspose
 public import SerrePositivity.InfinityCategories.F1B.RightHomotopySquare
 public import SerrePositivity.InfinityCategories.F1B.MappingParameterNaturality
+public import SerrePositivity.InfinityCategories.F1B.EnrichedPrecomposition
+public import SerrePositivity.InfinityCategories.F1B.AdjunctParameterNaturality
+public import SerrePositivity.InfinityCategories.F1B.ConstantAdjunct
+public import SerrePositivity.InfinityCategories.F1B.AdjunctionMappingSpaces
