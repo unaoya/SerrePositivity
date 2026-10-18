@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c 完了。L9d 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・206 モジュール 2769 宣言の公理監査成功。
+対象ビルド・208 モジュール 2777 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -1921,3 +1921,24 @@ L9d は進行中。次は正方形から相対三角形へ制限する逆構成�
 保存単位の対象ビルド 2406 jobs 成功。
 私有宣言を含む 206 モジュール 2769 宣言で標準三公理のみ。
 L9d は進行中。次は写像空間の pullback 表示と、両三角形の交換の成分での逆元の比較を行う。
+
+## 66. L9d の二重円の写像空間と三角形の交換
+
+相対三角形の pushout に反変内部 Hom 関手を適用した。
+二つの円の smash 積の写像空間は、相対三角形の写像空間二つを対角辺の写像空間上で引いた厳密な pullback となる。
+Kan 値では対角辺への制限が fibration なので、上側への制限も Kan fibration となる。
+正方形の座標交換を円の smash の交換へ降ろす等式を証明した。
+smash の交換は上側・下側の包含を厳密に交換する。
+相対三角形の写像空間の収縮と、この交換が成分の逆元に対応する計算の合成は継続する。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `circleSmashMapping_isPullback` | 二重円の写像空間の相対三角形による pullback 表示 |
+| `circleSmashUpper_restriction_fibration` | 上側の相対三角形への制限の Kan fibration |
+| `circleSmashSquareQuotient_swap` | 正方形の商射と smash の交換の可換性 |
+| `circleSmashUpper_swap` / `circleSmashLower_swap` | 両相対三角形の包含の交換 |
+
+参照：Goerss–Jardine I §7、Kerodon §§3.1.3・3.2.3、BF 1978 §2。
+保存単位の対象ビルド 2408 jobs 成功。
+私有宣言を含む 208 モジュール 2777 宣言で標準三公理のみ。
+L9d は進行中。次は連結写像の逆元の三角形を fibration に沿って持ち上げる。
