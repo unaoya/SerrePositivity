@@ -452,3 +452,11 @@ A3e 主同値判定完了：`isQCatEquivalence_of_isFullyFaithful_of_isEssential
 `IsQCatEquivalence.isLimitCone_iff` と `QCatEquivalence.isLimitCone_iff` は、任意の単体集合 K、図式 p : K ⟶ X、錐 c : JoinCone p について、同値 f による `IsLimitCone c ↔ IsLimitCone (mapJoinCone f c)` を証明する。path 置換の二つの射影を trivial Kan fibration とし、元の関手を厳密な切断と終点射へ分解して、既存の trivial Kan fibration による極限不変性へ還元した。図式や錐の形を制限しない。
 
 公開10宣言の全ての型・前提を計画 §6 に記録。Core ビルド1644 jobs、累計827宣言の標準3公理監査、全体ビルド7911 jobs が成功した。これで A3a–e の必須項目は完了。A3f は任意のまま未完了、A3g は保留。次の担当順は A6 → A4・A5。既存の公開名・型は変更していない。
+
+### A6 の文言と現在地（2026-10-18）
+
+原典は現行 [Kerodon §7.1.8](https://kerodon.net/tag/02X8)、特に [Proposition 7.1.8.3](https://kerodon.net/tag/02X9) の双対。計画の §7.1.6 は現在は相対極限の節である。HTT の対応は Proposition 5.1.2.2。任意の単体集合 J,K と quasicategory X、図式 p : J ⟶ Fun(K,X) について、各頂点 k で評価図式の極限が存在すれば、自然な点ごとの極限錐を構成し、その錐が Fun(K,X) での極限錐であることを示す。既存の自然な錐 c が与えられた場合は、極限性と全ての評価の極限性の同値を目標とする。逆方向でも評価図式の極限の存在仮定を保持する。
+
+評価図式・評価錐、`HasPointwiseLimits`、`IsPointwiseLimitCone` と同じ slice 内の同型による不変性を実装した。`SkeletalExtension` は各次数の境界充填を coproduct と pushout で貼り、互換な射の余極限から全体への延長を作る。`exists_extension_of_terminal_last_vertices` は全頂点を含む指定部分の外で、単体の最後の頂点が終対象へ写れば延長できることを証明する。`isTerminalVertex_functorVertex_of_pointwise` は各点で終対象となる関手が関手単体集合でも終対象になることを証明し、この向きには標的の quasicategory 性を仮定しない。
+
+新規19公開宣言の全型・前提は infinity-core.md §6。Core ビルド1648 jobs、累計846宣言の標準3公理監査が成功。任意図式の自然な極限錐の構成と主同値・評価の保存の一般形は未完了。A4・A5 は未着手。既存の公開名・型は変更していない。

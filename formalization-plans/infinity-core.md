@@ -1,6 +1,6 @@
 # quasicategory の一般論（レーン α）
 
-作成日：2026-10-17。状態：A1・A2 から着手。
+作成日：2026-10-17。現在地（2026-10-18）：A1・A2・A3a–e 完了、A2h 二宇宙版完了。A6 進行中。次は A4・A5。A3f は任意、A3g は保留。
 全体の目標と依存関係の正本は [infinity-categories.md](infinity-categories.md) §0・§2。
 
 ## 0. 目標と範囲
@@ -13,10 +13,13 @@ Mathlib の `Quasicategory` をそのまま ∞ 圏の定義とし、Joyal モ�
 | A1 | ホモトピー圏の橋：quasicategory で `HomotopyCategory₂ ((truncation 2).obj X) ≌ hoFunctor.obj X`。ホモトピー X ⊗ Δ[1] ⟶ Y ↦ `hoFunctor.map f ⟶ hoFunctor.map g` の自然変換 | HTT 1.2.3、Kerodon 1.4 |
 | A2 | join・slice・極限：単体集合の join、slice X_{/p}・coslice、X_{/p} → X が right fibration（X が quasicategory のとき）、終対象・始対象、極限 := slice の終対象、引き戻し四角形、始対象を持つ 1 圏上の極限は F(c) | HTT 1.2.8、1.2.12、2.1.2.1–2.1.2.3、4.1.1.8、Kerodon 4.3.5–4.3.6、4.6.7、7.1、7.2 |
 | A3 | 写像空間と同値：pinched 模型と両端固定模型の比較、写像空間は Kan 複体、可逆辺の特徴づけ、充満忠実＋本質的全射 ⇒ 圏同値、成分が可逆な自然変換は可逆、極限は写像空間で検出される | HTT 1.2.5.1、2.2、4.4.2、Kerodon 4.4、4.6.2、4.6.5、7.1 |
+| A6 | 関手 ∞ 圏 Fun(K,X) の極限：評価図式の極限の存在から自然な極限錐を構成し、極限錐と点ごとの極限錐を比較 | HTT 5.1.2.2、現行 Kerodon 7.1.8（旧参照 7.1.6） |
 | A4 | 安定 ∞ 圏：零対象、fiber・cofiber、安定性、Σ・Ω、h C の三角構造、fiber 列の長完全列 | HA 1.1.1–1.1.3 |
 | A5 | 完全関手と自然変換、h での三角関手 | HA 1.1.4 |
 
-A3 以降の指示は A2 の設計を見てから出す。
+担当順は A6 → A4 → A5。基盤全体の正本は [foundations.md](foundations.md)。F1 は α2 が担当し、Core の既存の公開名・型の変更は事前に報告する。
+
+現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 の主定理は未完了。
 
 ## 1. Mathlib（固定版）の現状
 
@@ -5558,6 +5561,127 @@ lemma IsQCatEquivalence.isLimitCone_iff {K X Y : SSet.{u}}
 lemma QCatEquivalence.isLimitCone_iff {K X Y : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y)
     {p : K ⟶ X} (c : JoinCone p) : IsLimitCone c ↔ IsLimitCone (mapJoinCone e.hom c)
+
+end SerrePositivity.InfinityCategories
+```
+
+
+### A6 前段：評価錐・相対骨格による延長・点ごとの終対象（2026-10-18）
+
+現行 Kerodon の該当節は §7.1.8（https://kerodon.net/tag/02X8）、特に Proposition 7.1.8.3 の双対。計画の §7.1.6 は相対極限の節。A6 の主目標は各評価図式が極限を持つときの自然な極限錐の存在と、同じ自然な錐について極限性と点ごとの極限性の同値。点ごとの極限錐から全体の極限錐への方向は、与えられた錐そのものから評価図式の極限の存在が従う。逆方向では評価図式の極限の存在仮定を保持する。
+
+評価図式・評価錐・HasPointwiseLimits・IsPointwiseLimitCone を定義し、同じ slice 内の同型による点ごとの極限性の不変性を証明した。相対骨格での境界充填の貼り合わせと自然数上の互換な延長の余極限を実装。全頂点を含む部分複体上の射について、その外の各正次元単体の終点が終対象へ写れば全体へ延長することを証明した。これを直積に適用し、点ごとに終対象である関手の頂点が関手単体集合でも終対象になることを得た（この向きは標的の quasicategory 性不要）。A6 の任意図式の主定理・自然な極限錐の存在・評価による保存の一般形は未完了。A4・A5 は未着手。
+
+検証：Core ビルド1648 jobs、累計846公開宣言の標準3公理監査成功。既存の公開名・型は変更していない。新規19宣言の全ての型・前提：
+
+FunctorLimits：
+
+```lean
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet SSet.relativeCellComplexOfMono
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+def evaluateFunctorDiagram {J K X : SSet.{u}} (p : J ⟶ (ihom K).obj X)
+    (k : K _⦋0⦌) : J ⟶ X
+
+def evaluateFunctorCone {J K X : SSet.{u}} {p : J ⟶ (ihom K).obj X}
+    (c : JoinCone p) (k : K _⦋0⦌) : JoinCone (evaluateFunctorDiagram p k)
+
+lemma evaluateFunctorCone_vertex {J K X : SSet.{u}} {p : J ⟶ (ihom K).obj X}
+    (c : JoinCone p) (k : K _⦋0⦌) :
+    (evaluateFunctorCone c k).vertex = (evaluateFunctorAt k).app (Opposite.op ⦋0⦌) c.vertex
+
+def HasPointwiseLimits {J K X : SSet.{u}} (p : J ⟶ (ihom K).obj X) : Prop
+
+def IsPointwiseLimitCone {J K X : SSet.{u}} {p : J ⟶ (ihom K).obj X}
+    (c : JoinCone p) : Prop
+
+lemma IsPointwiseLimitCone.hasPointwiseLimits {J K X : SSet.{u}}
+    {p : J ⟶ (ihom K).obj X} {c : JoinCone p} (hc : IsPointwiseLimitCone c) :
+    HasPointwiseLimits p
+
+lemma IsPointwiseLimitCone.of_vertexIso {J K X : SSet.{u}} [Quasicategory X]
+    {p : J ⟶ (ihom K).obj X} {c d : JoinCone p}
+    (hc : IsPointwiseLimitCone c) (e : VertexIso (X := sliceOver p) c d) :
+    IsPointwiseLimitCone d
+
+lemma isPointwiseLimitCone_iff_of_vertexIso {J K X : SSet.{u}} [Quasicategory X]
+    {p : J ⟶ (ihom K).obj X} {c d : JoinCone p}
+    (e : VertexIso (X := sliceOver p) c d) : IsPointwiseLimitCone c ↔ IsPointwiseLimitCone d
+
+end SerrePositivity.InfinityCategories
+```
+
+SkeletalExtension：
+
+```lean
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet SSet.relativeCellComplexOfMono
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+lemma exists_extension_skeletonOfMono_succ {A B X : SSet.{u}} (i : A ⟶ B) [Mono i]
+    (d : ℕ) (f : (skeletonOfMono i d : SSet.{u}) ⟶ X)
+    (hf : ∀ c : Cell i d, ∃ F : (Δ[d] : SSet.{u}) ⟶ X,
+      (boundary d).ι ≫ F = c.ιSigmaBoundary ≫ t i d ≫ f) :
+    ∃ F : (skeletonOfMono i (d + 1) : SSet.{u}) ⟶ X, r i d ≫ F = f
+
+def skeletonBase {A B : SSet.{u}} (i : A ⟶ B) (d : ℕ) :
+    A ⟶ (skeletonOfMono i d : SSet.{u})
+
+lemma skeletonBase_succ {A B : SSet.{u}} (i : A ⟶ B) (d : ℕ) :
+    skeletonBase i d ≫ r i d = skeletonBase i (d + 1)
+
+noncomputable def skeletonBaseZeroIso {A B : SSet.{u}} (i : A ⟶ B) [Mono i] :
+    (skeletonOfMono i 0 : SSet.{u}) ≅ A
+
+lemma skeletonBaseZeroIso_inv {A B : SSet.{u}} (i : A ⟶ B) [Mono i] :
+    (skeletonBaseZeroIso i).inv = skeletonBase i 0
+
+lemma exists_extension_of_skeletal_extensions {A B X : SSet.{u}} (i : A ⟶ B) [Mono i]
+    (a : A ⟶ X)
+    (hstep : ∀ d (f : (skeletonOfMono i d : SSet.{u}) ⟶ X),
+      skeletonBase i d ≫ f = a →
+        ∃ F : (skeletonOfMono i (d + 1) : SSet.{u}) ⟶ X, r i d ≫ F = f) :
+    ∃ F : B ⟶ X, i ≫ F = a
+
+end SerrePositivity.InfinityCategories
+```
+
+TerminalExtension：
+
+```lean
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet SSet.relativeCellComplexOfMono
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+def simplexLastVertex {B : SSet.{u}} {n : ℕ} (s : B _⦋n⦌) : B _⦋0⦌
+
+lemma exists_extension_of_terminal_last_vertices {B X : SSet.{u}} (A : B.Subcomplex)
+    (hA : ∀ v : B _⦋0⦌, v ∈ A.obj (Opposite.op ⦋0⦌)) (a : (A : SSet.{u}) ⟶ X)
+    (ht : ∀ (n : ℕ) (s : B _⦋n + 1⦌), s ∉ A.obj (Opposite.op ⦋n + 1⦌) →
+      IsTerminalVertex (a.app (Opposite.op ⦋0⦌) ⟨simplexLastVertex s, hA _⟩)) :
+    ∃ F : B ⟶ X, A.ι ≫ F = a
+
+end SerrePositivity.InfinityCategories
+```
+
+FunctorTerminal：
+
+```lean
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet SSet.relativeCellComplexOfMono
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+lemma simplexLastVertex_stdSimplex_of_notMem_boundary {n m : ℕ}
+    (s : (Δ[n] : SSet.{u}) _⦋m⦌) (hs : s ∉ (boundary n).obj (Opposite.op ⦋m⦌)) :
+    simplexLastVertex s = stdSimplex.obj₀Equiv.symm (Fin.last n)
+
+lemma simplexLastVertex_prod {A B : SSet.{u}} {n : ℕ} (s : (A ⊗ B) _⦋n⦌) :
+    simplexLastVertex s = (simplexLastVertex s.1, simplexLastVertex s.2)
+
+lemma isTerminalVertex_functorVertex_of_pointwise {K X : SSet.{u}} (f : K ⟶ X)
+    (hf : ∀ k : K _⦋0⦌, IsTerminalVertex (f.app (Opposite.op ⦋0⦌) k)) :
+    IsTerminalVertex (functorVertex f)
 
 end SerrePositivity.InfinityCategories
 ```

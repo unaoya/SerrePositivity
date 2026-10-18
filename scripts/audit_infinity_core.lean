@@ -1822,3 +1822,26 @@ end InitialCofinalityUniverses
 #print axioms SerrePositivity.InfinityCategories.isLimitCone_iff_mapJoinCone_of_section
 #print axioms SerrePositivity.InfinityCategories.IsQCatEquivalence.isLimitCone_iff
 #print axioms SerrePositivity.InfinityCategories.QCatEquivalence.isLimitCone_iff
+
+-- A6: 評価した錐・相対骨格と終点の終対象性による延長
+#print axioms SerrePositivity.InfinityCategories.evaluateFunctorDiagram
+#print axioms SerrePositivity.InfinityCategories.evaluateFunctorCone
+#print axioms SerrePositivity.InfinityCategories.evaluateFunctorCone_vertex
+#print axioms SerrePositivity.InfinityCategories.HasPointwiseLimits
+#print axioms SerrePositivity.InfinityCategories.IsPointwiseLimitCone
+#print axioms SerrePositivity.InfinityCategories.IsPointwiseLimitCone.hasPointwiseLimits
+#print axioms SerrePositivity.InfinityCategories.IsPointwiseLimitCone.of_vertexIso
+#print axioms SerrePositivity.InfinityCategories.isPointwiseLimitCone_iff_of_vertexIso
+#print axioms SerrePositivity.InfinityCategories.exists_extension_skeletonOfMono_succ
+#print axioms SerrePositivity.InfinityCategories.skeletonBase
+#print axioms SerrePositivity.InfinityCategories.skeletonBase_succ
+#print axioms SerrePositivity.InfinityCategories.skeletonBaseZeroIso
+#print axioms SerrePositivity.InfinityCategories.skeletonBaseZeroIso_inv
+#print axioms SerrePositivity.InfinityCategories.exists_extension_of_skeletal_extensions
+#print axioms SerrePositivity.InfinityCategories.simplexLastVertex
+#print axioms SerrePositivity.InfinityCategories.exists_extension_of_terminal_last_vertices
+
+-- A6: 点ごとの終対象は関手単体集合で終対象
+#print axioms SerrePositivity.InfinityCategories.simplexLastVertex_stdSimplex_of_notMem_boundary
+#print axioms SerrePositivity.InfinityCategories.simplexLastVertex_prod
+#print axioms SerrePositivity.InfinityCategories.isTerminalVertex_functorVertex_of_pointwise

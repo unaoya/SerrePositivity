@@ -88,3 +88,9 @@ public import SerrePositivity.InfinityCategories.Core.FullyFaithfulEquivalence
 public import SerrePositivity.InfinityCategories.Core.EquivalenceTwoOfSix
 public import SerrePositivity.InfinityCategories.Core.EquivalenceFullyFaithful
 public import SerrePositivity.InfinityCategories.Core.EquivalenceAllLimits
+
+public import SerrePositivity.InfinityCategories.Core.FunctorLimits
+public import SerrePositivity.InfinityCategories.Core.SkeletalExtension
+public import SerrePositivity.InfinityCategories.Core.TerminalExtension
+
+public import SerrePositivity.InfinityCategories.Core.FunctorTerminal
