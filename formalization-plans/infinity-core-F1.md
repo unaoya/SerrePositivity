@@ -2327,5 +2327,29 @@ lemma coherentPinchedFlagMap_reindex {C : Type v} [Category.{u} C]
     coherentPinchedFlagMap (τ.pullback α) =
       coherentResolutionMap α.toOrderHom ≫ coherentPinchedFlagMap τ
 
+noncomputable def coherentPinchedFlagIso {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] (X Y : C) :
+    pinchedHom (coherentNerveVertex X) (coherentNerveVertex Y) ≅
+      (SSet.uliftFunctor.{v, u}).obj
+        (coherentResolutionRightAdjoint.obj (SimplicialCategory.sHom X Y))
+
+noncomputable def coherentResolutionComparison (X : SSet.{u}) :
+    X ⟶ coherentResolutionRightAdjoint.obj X
+
+lemma coherentResolutionComparison_app {X : SSet.{u}} {n : ℕ} (σ : X _⦋n⦌) :
+    (coherentResolutionComparison X).app (Opposite.op ⦋n⦌) σ =
+      ULift.up (coherentResolutionProjection n ≫ SSet.yonedaEquiv.symm σ)
+
+lemma coherentHomComparison_flagIso {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    (X Y : C) :
+    coherentHomComparison X Y ≫ (coherentPinchedFlagIso X Y).hom =
+      (SSet.uliftFunctor.{v, u}).map
+        (coherentResolutionComparison (SimplicialCategory.sHom X Y))
+
+noncomputable def coherentResolutionComparisonNat : 𝟭 SSet.{u} ⟶ coherentResolutionRightAdjoint
+
+instance coherentResolutionComparison_mono (X : SSet.{u}) :
+    Mono (coherentResolutionComparison X)
+
 end SerrePositivity.InfinityCategories
 ```

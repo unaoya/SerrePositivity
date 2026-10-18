@@ -528,3 +528,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.pathFlag_reindex
 #check @SerrePositivity.InfinityCategories.coherentPinchedEvaluate_reindex
 #check @SerrePositivity.InfinityCategories.coherentPinchedFlagMap_reindex
+#check @SerrePositivity.InfinityCategories.coherentPinchedFlagIso
+#check @SerrePositivity.InfinityCategories.coherentResolutionComparison
+#check @SerrePositivity.InfinityCategories.coherentResolutionComparison_app
+#check @SerrePositivity.InfinityCategories.coherentHomComparison_flagIso
+#check @SerrePositivity.InfinityCategories.coherentResolutionComparisonNat
+#check @SerrePositivity.InfinityCategories.coherentResolutionComparison_mono
