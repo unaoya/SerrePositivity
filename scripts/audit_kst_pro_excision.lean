@@ -2481,3 +2481,30 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.ezHomotopyApp_naturality
 #print axioms SerrePositivity.KST.ProExcision.ezHomotopyApp_naturality
+
+#check @SerrePositivity.KST.ProExcision.chainIntegerTensorMap_id
+#print axioms SerrePositivity.KST.ProExcision.chainIntegerTensorMap_id
+
+#check @SerrePositivity.KST.ProExcision.chainIntegerTensorHomotopy
+#print axioms SerrePositivity.KST.ProExcision.chainIntegerTensorHomotopy
+
+#check @SerrePositivity.KST.ProExcision.chainIntegerTensorMooreRetraction
+#print axioms SerrePositivity.KST.ProExcision.chainIntegerTensorMooreRetraction
+
+#check @SerrePositivity.KST.ProExcision.normalizedEZRawHomotopy
+#print axioms SerrePositivity.KST.ProExcision.normalizedEZRawHomotopy
+
+#check @SerrePositivity.KST.ProExcision.normalizedEZInsertMooreHomotopy
+#print axioms SerrePositivity.KST.ProExcision.normalizedEZInsertMooreHomotopy
+
+#check @SerrePositivity.KST.ProExcision.normalizedEZHomotopy
+#print axioms SerrePositivity.KST.ProExcision.normalizedEZHomotopy
+
+#check @SerrePositivity.KST.ProExcision.mooreHsigmaHomotopy_naturality
+#print axioms SerrePositivity.KST.ProExcision.mooreHsigmaHomotopy_naturality
+
+#check @SerrePositivity.KST.ProExcision.mooreFiniteHomotopy_naturality
+#print axioms SerrePositivity.KST.ProExcision.mooreFiniteHomotopy_naturality
+
+#check @SerrePositivity.KST.ProExcision.moorePInftyHomotopy_naturality
+#print axioms SerrePositivity.KST.ProExcision.moorePInftyHomotopy_naturality

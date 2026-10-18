@@ -137,3 +137,6 @@ public import SerrePositivity.KST.ProExcision.SimplexPairFaceSum
 public import SerrePositivity.KST.ProExcision.EZUniversalBoundary
 public import SerrePositivity.KST.ProExcision.EZUniversalHomotopyChain
 public import SerrePositivity.KST.ProExcision.EZHomotopy
+public import SerrePositivity.KST.ProExcision.ChainTensorHomotopy
+public import SerrePositivity.KST.ProExcision.NormalizedEZHomotopy
+public import SerrePositivity.KST.ProExcision.MooreHomotopyNaturality

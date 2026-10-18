@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと878宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと887宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -85,7 +85,7 @@
 - shuffle の境界添字：`removeHorizontal`・`removeVertical` と挿入の両逆を検証し、位置つき挿入の実同値を構成。`rank_eq_left` は水平ステップの順位と第一座標を同定。`horizontalFacePosition`・`horizontalFaceVertex` は各第一因子の面を実挿入に送り、`horizontalFace_left`・`horizontalFace_right` が面の実写像を同定。補集合による二因子交換で `verticalFace_left`・`verticalFace_right` も検証。境界添字全体の分類と全和への統合は `shuffleBoundaryPartitionEquiv` と `shuffle_comm` で完了。
 - shuffle の全混合境界和：`MixedShuffleIndex.swap` は固定点のない対合で、`shuffleMixedWeight_cancel` は面の符号を含む各対の相殺。`shuffleMixed_sum_zero` は全有限和の消滅を実写像について証明。係数群の二倍の単射性を使わず、一般の加法群で成立する有限和の対合による。
 - shuffle の純粋境界添字の同値：`horizontalShuffleBoundaryEquiv` は小さい shuffle と第一因子の面から全純粋水平境界への実同値で、`horizontalShuffleBoundary_sum` が有限和を移す。`verticalShuffleBoundaryEquiv`・`verticalShuffleBoundary_sum` は補集合の同値と合成して第二因子の場合を実装。面番号・挿入位置・削除頂点の左右の復元を証明済み。実写像と符号も同定し、全境界の分類と鎖写像性へ接続済み。
-- L6c の残作業：採用済み μ 版 A.5 の標準ホモトピーの正規化した比較への移送、鎖ホモトピーの単体的区間への復元、μ と対角への移送。A.1・A.4・A.6 の H_* の具体模型への特殊化は所有レーンの界面。
+- L6c の残作業：採用済み μ 版 A.5 の正規化した比較ホモトピーの外部作用への自然性、鎖ホモトピーの単体的区間への復元、μ と対角への移送。A.1・A.4・A.6 の H_* の具体模型への特殊化は所有レーンの界面。
 - L6d〜g：未着手。
 
 ## 主要宣言の表
@@ -184,6 +184,9 @@
 | ezUniversalDifference_boundary / ezUniversalDifference_zero | EZUniversalBoundary.lean | 検証済み | 比較の普遍な差の境界と非被約零次の零性 |
 | ezUniversalHomotopyChain / ezUniversalHomotopyChain_boundary_succ | EZUniversalHomotopyChain.lean | 検証済み | 全次数の普遍充填鎖と境界公式 |
 | ezHomotopy / ezHomotopyApp_naturality | EZHomotopy.lean | 検証済み | 恒等と実 AW→shuffle の標準鎖ホモトピーと両入力に関する自然性 |
+| chainIntegerTensorHomotopy / chainIntegerTensorMooreRetraction | ChainTensorHomotopy.lean | 検証済み | 二つの鎖ホモトピーの全テンソルへの移送と Moore 収縮 |
+| normalizedEZHomotopy | NormalizedEZHomotopy.lean | 検証済み | Moore 複体上の恒等と正規化 AW→shuffle の実鎖ホモトピー |
+| moorePInftyHomotopy_naturality | MooreHomotopyNaturality.lean | 検証済み | Moore の実収縮ホモトピーの一段上の成分の自然性 |
 | extraDegeneracy_positive_boundary / extraDegeneracy_fill_cycle | ExtraDegeneracyContraction.lean | 検証済み | 正次数の鎖収縮等式とサイクルの明示的な充填 |
 | shuffleBoundary_horizontal_succ / shuffleBoundary_vertical_succ | ShuffleBoundaryDecomposition.lean | 検証済み | 両因子の通常微分への一致と零次の端 |
 | obstructionTorusCycle_not_boundary | CommutingImageObstruction.lean | 検証済み | 可換な対 (r²,s) の二次 bar サイクルの非境界性 |
@@ -690,3 +693,6 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - 普遍模型による再帰的構成は実装済み。`ezUniversalHomotopyChain_boundary_succ` が全次数で充填の境界公式を証明し、`ezHomotopy` が恒等と実 AW→shuffle の標準鎖ホモトピーを与える。
 - `ezHomotopyApp_naturality` により全次数の成分は両入力に自然。標準比較の存在・同変性を仮定として受け取っていない。
 - 残る正規化への移送には、両因子の Moore 射影・包含の合成と恒等の標準鎖ホモトピーのテンソルを合成する。単体的区間への復元と最終 μ 適用は未完。
+
+- `normalizedEZHomotopy` により恒等と正規化 AW→shuffle の間の実鎖ホモトピーまで実装済み。両因子の Moore 収縮を `chainIntegerTensorHomotopy` で実際にテンソルへ移して合成する。
+- `moorePInftyHomotopy_naturality` は Mathlib の収縮の各成分の自然性を有限段階の帰納法で証明する。テンソルへ移した収縮と正規化 EZ ホモトピー全体の自然性の接続は残作業。
