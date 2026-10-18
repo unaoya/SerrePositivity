@@ -1556,3 +1556,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.intervalSimplex_eq_of_pullCut_eq
 #check @SerrePositivity.InfinityCategories.intervalHom_eq_const_one_of_cut_zero
 #check @SerrePositivity.InfinityCategories.intervalHom_eq_const_zero_of_cut_all
+#check @SerrePositivity.InfinityCategories.join_hom_ext_extreme_faces_of_interval
+#check @SerrePositivity.InfinityCategories.join_horn_hom_ext_extreme_faces
+#check @SerrePositivity.InfinityCategories.join_mixed_innerHorn_filling

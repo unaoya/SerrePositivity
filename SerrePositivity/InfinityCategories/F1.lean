@@ -326,3 +326,5 @@ public import SerrePositivity.InfinityCategories.F1.JoinExtremeFaceCongruence
 public import SerrePositivity.InfinityCategories.F1.JoinExtremeFaceGluing
 public import SerrePositivity.InfinityCategories.F1.JoinHornFaceGeometry
 public import SerrePositivity.InfinityCategories.F1.IntervalCutDetection
+public import SerrePositivity.InfinityCategories.F1.JoinMixedHornUniqueness
+public import SerrePositivity.InfinityCategories.F1.JoinMixedHornFilling

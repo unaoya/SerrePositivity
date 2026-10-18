@@ -7089,5 +7089,33 @@ lemma intervalHom_eq_const_zero_of_cut_all {n : ℕ} (t : (Δ[n] : SSet.{u}) ⟶
     (hc : Join.pullCut (stdSimplex.objEquiv (SSet.yonedaEquiv t)).toOrderHom 1 = n + 1) :
     t = SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2))
 
+lemma join_hom_ext_extreme_faces_of_interval {X Y : SSet.{u}} (n : ℕ)
+    {f g : (Δ[n + 1] : SSet.{u}) ⟶ join X Y}
+    (ht : f ≫ joinIntervalProjection X Y = g ≫ joinIntervalProjection X Y)
+    (hs0 : 0 < (SSet.yonedaEquiv f).1.val) (hs1 : (SSet.yonedaEquiv f).1.val ≤ n + 1)
+    (h0 : stdSimplex.δ (0 : Fin (n + 2)) ≫ f = stdSimplex.δ (0 : Fin (n + 2)) ≫ g)
+    (h1 : stdSimplex.δ (Fin.last (n + 1)) ≫ f = stdSimplex.δ (Fin.last (n + 1)) ≫ g) : f = g
+
+lemma join_horn_hom_ext_extreme_faces {X Y : SSet.{u}} (n : ℕ) (i : Fin (n + 3))
+    (hi0 : 0 < i) (hi1 : i < Fin.last (n + 2))
+    (f g : (horn (n + 2) i : SSet.{u}) ⟶ join X Y)
+    (t : (Δ[n + 2] : SSet.{u}) ⟶ Δ[1])
+    (hft : (horn (n + 2) i).ι ≫ t = f ≫ joinIntervalProjection X Y)
+    (hgt : (horn (n + 2) i).ι ≫ t = g ≫ joinIntervalProjection X Y)
+    (ht0 : 0 < Join.pullCut (stdSimplex.objEquiv (SSet.yonedaEquiv t)).toOrderHom 1)
+    (ht1 : Join.pullCut (stdSimplex.objEquiv (SSet.yonedaEquiv t)).toOrderHom 1 ≤ n + 2)
+    (h0 : horn.ι i 0 (ne_of_gt hi0).symm ≫ f = horn.ι i 0 (ne_of_gt hi0).symm ≫ g)
+    (h1 : horn.ι i (Fin.last (n + 2)) (ne_of_gt hi1) ≫ f =
+      horn.ι i (Fin.last (n + 2)) (ne_of_gt hi1) ≫ g) : f = g
+
+lemma join_mixed_innerHorn_filling {X Y : SSet.{u}} (n : ℕ) (i : Fin (n + 3))
+    (hi0 : 0 < i) (hi1 : i < Fin.last (n + 2))
+    (a : (horn (n + 2) i : SSet.{u}) ⟶ join X Y) (t : (Δ[n + 2] : SSet.{u}) ⟶ Δ[1])
+    (ht : (horn (n + 2) i).ι ≫ t = a ≫ joinIntervalProjection X Y)
+    (ht0 : 0 < Join.pullCut (stdSimplex.objEquiv (SSet.yonedaEquiv t)).toOrderHom 1)
+    (ht1 : Join.pullCut (stdSimplex.objEquiv (SSet.yonedaEquiv t)).toOrderHom 1 ≤ n + 2) :
+    ∃ l : (Δ[n + 2] : SSet.{u}) ⟶ join X Y,
+      (horn (n + 2) i).ι ≫ l = a ∧ l ≫ joinIntervalProjection X Y = t
+
 end SerrePositivity.InfinityCategories
 ```
