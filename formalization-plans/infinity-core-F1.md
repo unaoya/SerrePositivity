@@ -6746,5 +6746,18 @@ lemma scaffoldFiniteScaffoldPrism_vertical_isCocartesian (n : ℕ) {E : SSet.{u}
     IsCocartesianEdge (p ≫ scaffoldFiniteCollapse n)
       (prismVerticalSimplex (scaffoldFiniteScaffoldPrism n F l) x)
 
+noncomputable def mappingCylinderPrismMap {X Y : SSet.{u}} (f : X ⟶ Y) :
+    pushout (prismEndpoint 1 X) f ⟶ (Δ[1] : SSet.{u}) ⊗ Y
+
+instance mappingCylinderPrismMap_mono {X Y : SSet.{u}} (f : X ⟶ Y) [Mono f] :
+    Mono (mappingCylinderPrismMap f)
+
+lemma relativeJoinCylinderComparison_prismMap {X Y : SSet.{u}} (f : X ⟶ Y) :
+    relativeJoinCylinderComparison f ≫ pullback.snd (joinMap f (𝟙 Y)) (joinDiagonal Y) =
+      mappingCylinderPrismMap f
+
+instance relativeJoinCylinderComparison_mono {X Y : SSet.{u}} (f : X ⟶ Y) [Mono f] :
+    Mono (relativeJoinCylinderComparison f)
+
 end SerrePositivity.InfinityCategories
 ```

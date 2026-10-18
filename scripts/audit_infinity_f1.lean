@@ -1484,3 +1484,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.scaffoldFiniteScaffoldPrism_interval_projection
 #check @SerrePositivity.InfinityCategories.prismVerticalSimplex
 #check @SerrePositivity.InfinityCategories.scaffoldFiniteScaffoldPrism_vertical_isCocartesian
+#check @SerrePositivity.InfinityCategories.mappingCylinderPrismMap
+#check @SerrePositivity.InfinityCategories.mappingCylinderPrismMap_mono
+#check @SerrePositivity.InfinityCategories.relativeJoinCylinderComparison_prismMap
+#check @SerrePositivity.InfinityCategories.relativeJoinCylinderComparison_mono
