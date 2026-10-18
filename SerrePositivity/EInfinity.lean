@@ -36,3 +36,4 @@ public import SerrePositivity.EInfinity.Operad.CompositionAdjacentEquivariance
 public import SerrePositivity.EInfinity.Operad.CompositionAdjacentBlockEquivariance
 public import SerrePositivity.EInfinity.Operad.TensorFamilyTensorFirstSwap
 public import SerrePositivity.EInfinity.Operad.DiagonalEquivariance
+public import SerrePositivity.EInfinity.Operad.SchurActionEquivariance
