@@ -654,3 +654,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.coherentHomComparison_isQCatEquivalence
 #check @SerrePositivity.InfinityCategories.coherentHomComparison_isSimplicialHomotopyEquivalence
 #check @SerrePositivity.InfinityCategories.coherentHomEquivalence
+#check @SerrePositivity.InfinityCategories.rev_lastVertex
+#check @SerrePositivity.InfinityCategories.rev_front
+#check @SerrePositivity.InfinityCategories.constant_opObjEquiv
+#check @SerrePositivity.InfinityCategories.rev_extend_rev
+#check @SerrePositivity.InfinityCategories.leftPinchedSimplexEquiv
+#check @SerrePositivity.InfinityCategories.cosliceFiberPinchedLeftIso

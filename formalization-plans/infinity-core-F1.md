@@ -2852,5 +2852,28 @@ noncomputable def coherentHomEquivalence {C : Type v} [Category.{u} C]
     QCatEquivalence ((SSet.uliftFunctor.{v, u}).obj (SimplicialCategory.sHom X Y))
       (pinchedHom (coherentNerveVertex X) (coherentNerveVertex Y))
 
+lemma rev_lastVertex (n : ℕ) :
+    SimplexCategory.rev.map (PinchedHom.lastVertex n) =
+      SimplexCategory.const ⦋0⦌ ⦋n + 1⦌ 0
+
+lemma rev_front (n : ℕ) :
+    SimplexCategory.rev.map (PinchedHom.front n) = SimplexCategory.δ 0
+
+lemma constant_opObjEquiv {X : SSet.{u}} (x : X _⦋0⦌) (n : ℕ) :
+    SSet.opObjEquiv (PinchedHom.constant (X := X.op) (SSet.opObjEquiv.symm x) n) =
+      PinchedHom.constant x n
+
+lemma rev_extend_rev {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌) :
+    SimplexCategory.rev.map (PinchedHom.extend (SimplexCategory.rev.map α)) =
+      SimplexCategory.mkHom (prependOrderHom α.toOrderHom)
+
+def leftPinchedSimplexEquiv {X : SSet.{u}} (x y : X _⦋0⦌) (n : ℕ) :
+    (pinchedHomLeft x y) _⦋n⦌ ≃
+      {s : X _⦋n + 1⦌ // X.map (SimplexCategory.const ⦋0⦌ ⦋n + 1⦌ 0).op s = x ∧
+        X.δ 0 s = PinchedHom.constant y n}
+
+noncomputable def cosliceFiberPinchedLeftIso {X : SSet.{u}} (x y : X _⦋0⦌) :
+    vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y ≅ pinchedHomLeft x y
+
 end SerrePositivity.InfinityCategories
 ```

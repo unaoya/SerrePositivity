@@ -111,3 +111,4 @@ public import SerrePositivity.InfinityCategories.F1.CoherentResolutionCylinder
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionRetraction
 public import SerrePositivity.InfinityCategories.F1.UniverseHomotopy
 public import SerrePositivity.InfinityCategories.F1.CoherentHomEquivalence
+public import SerrePositivity.InfinityCategories.F1.CoslicePinchedIso
