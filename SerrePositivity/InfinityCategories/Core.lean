@@ -84,3 +84,7 @@ public import SerrePositivity.InfinityCategories.Core.PrismOpposite
 public import SerrePositivity.InfinityCategories.Core.EquivalencePathFinalLifting
 public import SerrePositivity.InfinityCategories.Core.FullyFaithfulIso
 public import SerrePositivity.InfinityCategories.Core.FullyFaithfulEquivalence
+
+public import SerrePositivity.InfinityCategories.Core.EquivalenceTwoOfSix
+public import SerrePositivity.InfinityCategories.Core.EquivalenceFullyFaithful
+public import SerrePositivity.InfinityCategories.Core.EquivalenceAllLimits

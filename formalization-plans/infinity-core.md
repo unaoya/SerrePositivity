@@ -5480,6 +5480,88 @@ noncomputable def qCatEquivalenceOfFullyFaithfulEssentiallySurjective {X Y : SSe
 end SerrePositivity.InfinityCategories
 ```
 
+
+### A3e 完了：同値判定の両方向と任意の極限錐の保存・反映（2026-10-18）
+
+`IsQCatEquivalence f ↔ IsFullyFaithful f ∧ IsEssentiallySurjective f` を、全ての右 pinched 写像空間の実際のホモトピー同値の意味で証明した。任意の単体集合 K、図式 p : K ⟶ X、錐 c : JoinCone p について、同値 f は `IsLimitCone c ↔ IsLimitCone (mapJoinCone f c)` を満たす。path 置換の二つの射影が trivial Kan fibration となり、元の関手はその厳密な切断と終点射に分解されることを用いた。追加公理・sorry・モデル構造は使わない。公開10宣言の正確な型・全前提は以下。
+
+検証：`lake build SerrePositivity.InfinityCategories.Core` 成功（1644 jobs）、`lake env lean scripts/audit_infinity_core.lean` 成功（累計827宣言、標準3公理のみ）、工程区切りの全体 `lake build` も成功（7911 jobs）。A3a–e の必須項目は完了。A3f は任意項目として未完了、A3g は指示どおり保留。A6 と A4・A5 はこの保存単位では未着手。既存の公開名・型は変更していない。
+
+EquivalenceTwoOfSix：
+
+```lean
+universe u
+open CategoryTheory SSet
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+lemma isQCatEquivalence_of_composites {A B C D : SSet.{u}}
+    [Quasicategory A] [Quasicategory B] [Quasicategory C] [Quasicategory D]
+    {f : A ⟶ B} {g : B ⟶ C} {h : C ⟶ D}
+    (hfg : IsQCatEquivalence (f ≫ g)) (hgh : IsQCatEquivalence (g ≫ h)) :
+    IsQCatEquivalence g
+
+lemma isSimplicialHomotopyEquivalence_of_composites {A B C D : SSet.{u}}
+    [KanComplex A] [KanComplex B] [KanComplex C] [KanComplex D]
+    {f : A ⟶ B} {g : B ⟶ C} {h : C ⟶ D}
+    (hfg : IsSimplicialHomotopyEquivalence (f ≫ g))
+    (hgh : IsSimplicialHomotopyEquivalence (g ≫ h)) :
+    IsSimplicialHomotopyEquivalence g
+
+end SerrePositivity.InfinityCategories
+```
+
+EquivalenceFullyFaithful：
+
+```lean
+universe u
+open CategoryTheory SSet
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+lemma IsQCatEquivalence.isFullyFaithful {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (he : IsQCatEquivalence f) :
+    IsFullyFaithful f
+
+lemma QCatEquivalence.isFullyFaithful {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y) : IsFullyFaithful e.hom
+
+lemma isQCatEquivalence_iff_fullyFaithful_essentiallySurjective {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y) :
+    IsQCatEquivalence f ↔ IsFullyFaithful f ∧ IsEssentiallySurjective f
+
+end SerrePositivity.InfinityCategories
+```
+
+EquivalenceAllLimits：
+
+```lean
+universe u
+open CategoryTheory SSet
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+lemma IsQCatEquivalence.equivalencePathReplacementMap_trivialKanFibration {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (he : IsQCatEquivalence f) :
+    TrivialKanFibration (equivalencePathReplacementMap f)
+
+lemma isLimitCone_iff_of_diagram_eq {K X : SSet.{u}} {p q : K ⟶ X}
+    {c : JoinCone p} {d : JoinCone q} (hp : p = q) (hc : c.val = d.val) :
+    IsLimitCone c ↔ IsLimitCone d
+
+lemma isLimitCone_iff_mapJoinCone_of_section {K X E : SSet.{u}}
+    [Quasicategory X] [Quasicategory E] (q : E ⟶ X) [TrivialKanFibration q]
+    (s : X ⟶ E) (hs : s ≫ q = 𝟙 X) {p : K ⟶ X} (c : JoinCone p) :
+    IsLimitCone c ↔ IsLimitCone (mapJoinCone s c)
+
+lemma IsQCatEquivalence.isLimitCone_iff {K X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] {f : X ⟶ Y} (he : IsQCatEquivalence f)
+    {p : K ⟶ X} (c : JoinCone p) : IsLimitCone c ↔ IsLimitCone (mapJoinCone f c)
+
+lemma QCatEquivalence.isLimitCone_iff {K X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] (e : QCatEquivalence X Y)
+    {p : K ⟶ X} (c : JoinCone p) : IsLimitCone c ↔ IsLimitCone (mapJoinCone e.hom c)
+
+end SerrePositivity.InfinityCategories
+```
+
 ## 7. A3 の工程（2026-10-18 追加）
 
 A1・A2 の完了を受けて着手する。優先順は G1（infinity-categories.md §0）と D4・ε が使う順。

@@ -444,3 +444,11 @@ A3e 続き：右 pinched 写像空間の任意パラメーターに対する普�
 A3e 主同値判定完了：`isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective` は quasicategory 間の任意の関手について、右 pinched 写像空間のホモトピー同値性と本質的全射性から A3a の実際の逆射・関手単体集合の可逆二胞体を構成する。`qCatEquivalenceOfFullyFaithfulEssentiallySurjective` は逆データの選択。可逆 path の終点評価の trivial Kan fibration 性と、関手同型による充満忠実性の不変性を経由した。新規18公開宣言の正確な型・全前提は計画 §6。Core ビルド・累計817宣言の標準3公理監査成功。一般の同値による任意の極限錐の保存・反映は未完了であり、A3e 全体は未完了。
 
 担当順は統合計画 foundations.md に従い A3e → A6（関手 ∞ 圏の極限、HTT 5.1.2.2）→ A4・A5。F1 は α2 の担当。Core の既存の公開名・型を変更する場合は事前に報告する。
+
+### A3e 完了（2026-10-18）
+
+`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective` は同値判定の両方向を与える。`IsQCatEquivalence.isFullyFaithful` と `QCatEquivalence.isFullyFaithful` の充満忠実性は、全ての右 pinched 写像空間の実際の単体的ホモトピー逆の存在を意味する。
+
+`IsQCatEquivalence.isLimitCone_iff` と `QCatEquivalence.isLimitCone_iff` は、任意の単体集合 K、図式 p : K ⟶ X、錐 c : JoinCone p について、同値 f による `IsLimitCone c ↔ IsLimitCone (mapJoinCone f c)` を証明する。path 置換の二つの射影を trivial Kan fibration とし、元の関手を厳密な切断と終点射へ分解して、既存の trivial Kan fibration による極限不変性へ還元した。図式や錐の形を制限しない。
+
+公開10宣言の全ての型・前提を計画 §6 に記録。Core ビルド1644 jobs、累計827宣言の標準3公理監査、全体ビルド7911 jobs が成功した。これで A3a–e の必須項目は完了。A3f は任意のまま未完了、A3g は保留。次の担当順は A6 → A4・A5。既存の公開名・型は変更していない。
