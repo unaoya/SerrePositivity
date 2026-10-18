@@ -32,6 +32,8 @@ public import SerrePositivity.KST.Descent.DescentNaturality
 public import SerrePositivity.KST.Descent.ReductionDescent
 public import SerrePositivity.KST.Descent.FiniteCoproduct
 public import SerrePositivity.KST.Descent.SectionOrbit
+public import SerrePositivity.KST.Descent.ClosedCoproduct
+public import SerrePositivity.KST.Descent.SectionCoincidence
 
 /-!
 # K-L8：論文 §3 の降下
@@ -51,6 +53,7 @@ public import SerrePositivity.KST.Descent.SectionOrbit
 一般の被約化の普遍性と関手性・群作用の移行を公開する。
 Noether 基底上の「一般 → 被約」の全次数降下比較の還元も公開する。
 切断の有限非交和の有限性・固有性と、被約化への軌道射の G 同変性も公開する。
+一致中心の外の切断の像の互いに素と、被約な終域の有限閉被覆の非交和同型も公開する。
 
 ## 規約
 最小公理 (1)–(8)、Čech 降下、主定理の証明、E の実現は未完成。
