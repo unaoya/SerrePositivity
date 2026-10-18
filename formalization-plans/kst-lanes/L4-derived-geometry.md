@@ -51,7 +51,7 @@
 
 - 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。任意 dg 圏の半自由な段階分解、フィルトレーションからの Hom の K-flat 性、増大関手の各次数全射性・準同値性・H⁰ 同値、前三角化の三角同値を証明済み。分解後の層の acyclic dg 商自体の H⁰ と Mathlib の元の層導来圏の同値、対象ごとの導来像の計算、準連接コホモロジーによる Dqc への H⁰ 同値を証明済み。半自由分解から導来比較までの工程は完了。アフィン準連接係数加群層と左 H 加群の通常の圏同値、その準連接複体の導来圏の三角同値、実際の Dqc の開制限、台つき核と Verdier 商への降下も証明済み。Perf、アフィン導来比較、導来降下、T1–T3、平坦係数の RHom 比較は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の随伴移送の一般定理は証明済み。実際の導来随伴・生成・T1′、L4c の局所化同値、L4d、L4e は未完了。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の1,366宣言の公理監査に成功。工程区切りの全体ビルドは導来比較までの状態で10,097 jobsに成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の1,425宣言の公理監査に成功。工程区切りの全体ビルドは導来比較までの状態で10,097 jobsに成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -880,6 +880,23 @@
 - 集約ビルド（3,790 jobs）と1,366宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
 - 継続する項目：有限積・Čech 微分との比較、一般の有限基本開被覆の Čech 完全性、層コホモロジー消滅、実際の Dqc のアフィン非有界導来比較。
 
+## 42. 有限積と局所化後の Čech 複体（実装前記録）
+
+- 文言：加法的な有限積保存関手 F と有限な開集合族 U に対し、F(Cech(U,P)) と Cech(U,P∘F) は全次数・微分と両立する自然な複体同型を持つ。
+- 証明：形式的余積の評価における標準の積比較を全ての射について自然に束ね、Čech 余単体対象へ前合成する。交代余面微分との両立は有限和・整数倍の保存から得る。
+- 収縮の一般化：全ての U_i が V に含まれ、ある U_j が V に等しければ、任意の前層の Čech 複体は正次数で完全である。増大の点を V とし、各交叉から U_{i(0)} を経て V へ送る。先頭に j を挿入する追加退化の恒等式は先に証明した全体の場合と同じ添字計算になる。
+- 基本開に適用する比較：D(a) との交叉は非空な有限交叉と可換なので、制限後の族 U_i∩D(a) の Čech 複体と比較する。この族は U_j=D(a) のとき最大要素 D(a) を含む。§41 の各項の局所化同型と合わせて局所化後の正次数の完全性を得る。
+- 原典との位置：TT §3、BvdB Thm 3.1.1、Toën §3.2 のアフィン計算。有限被覆性を積比較に使う箇所と、複体の非有界性を切り詰めない箇所を明示する。
+
+### 現在地
+
+- `formalCoproductEvalComparison`、`finiteCechFunctorIso` により有限積保存関手と実際の Čech 複体の比較を構成済み。
+- `maximalOpenCech_exactAt` は最大開集合を含む族の Čech 正次数の完全性を、明示的な追加退化から証明済み。
+- `basicOpenCechLocalizationIso` は R 加群値の局所化後の複体と交叉後の族の複体の同型。基本開切断上の自然比較そのものを使用。
+- `affineCech_exactAt` は任意の加群の tilde に対する有限基本開被覆の全正次数の完全性。各被覆元で局所化し、上記の収縮で証明した。加群の有限生成性・平坦性は不要。
+- 集約ビルド（3,798 jobs）と1,425宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
+- 層コホモロジーとの比較および非有界 Dqc のアフィン導来同値は未完了。Čech 完全性だけで導来同値が得られたとは扱わない。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -1035,6 +1052,12 @@
 | `moduleLocalizationR`・`moduleLocalizationR_lift_naturality` | DerivedGeometry/ModuleLocalizationR | 実装・対象ビルド済み |
 | `sectionLocalizationComparison` | DerivedGeometry/SectionLocalizationComparison | 実装・対象ビルド済み |
 | `sectionLocalizationComparisonAt_basicOpen_isIso` | DerivedGeometry/BasicOpenSectionComparisonIso | 実装・対象ビルド済み |
+| `formalCoproductEvalComparison`・`finiteCechFunctorIso` | DerivedGeometry/FormalCoproductEvalComparison・CechFunctorComparison | 実装・対象ビルド済み |
+| `maximalOpenCechExtraDegeneracy`・`maximalOpenCech_exactAt` | DerivedGeometry/MaximalOpenCech | 実装・対象ビルド済み |
+| `basicOpenIntersectionCechComplexIso` | DerivedGeometry/OpenCechIntersection | 実装・対象ビルド済み |
+| `basicOpenCechLocalizationIso` | DerivedGeometry/BasicOpenCechLocalization | 実装・対象ビルド済み |
+| `basicOpenLocalizationR_exactAt_iff` | DerivedGeometry/BasicOpenLocalizationR | 実装・対象ビルド済み |
+| `affineCech_exactAt` | DerivedGeometry/AffineCechExact | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |

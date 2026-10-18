@@ -14,6 +14,24 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let required : Array Name := #[
+    `SerrePositivity.KST.DerivedGeometry.formalCoproductEvalComparison,
+    `SerrePositivity.KST.DerivedGeometry.cechCosimplicialComparison,
+    `SerrePositivity.KST.DerivedGeometry.alternatingCofaceCompMapIso,
+    `SerrePositivity.KST.DerivedGeometry.finiteCechFunctorIso,
+    `SerrePositivity.KST.DerivedGeometry.boundedOpenCechAugmented,
+    `SerrePositivity.KST.DerivedGeometry.maximalOpenCechExtraDegeneracy,
+    `SerrePositivity.KST.DerivedGeometry.maximalOpenCech_exactAt,
+    `SerrePositivity.KST.DerivedGeometry.basicOpenIntersection_preservesProduct,
+    `SerrePositivity.KST.DerivedGeometry.formalCoproductMapFunctor,
+    `SerrePositivity.KST.DerivedGeometry.basicOpenIntersectionCechIso,
+    `SerrePositivity.KST.DerivedGeometry.basicOpenIntersectionCechComplexIso,
+    `SerrePositivity.KST.DerivedGeometry.basicOpen_finiteProduct,
+    `SerrePositivity.KST.DerivedGeometry.basicOpenCech_sectionComparison_isIso,
+    `SerrePositivity.KST.DerivedGeometry.basicOpenCechLocalizationIso,
+    `SerrePositivity.KST.DerivedGeometry.basicOpenLocalizationR_exact_iff,
+    `SerrePositivity.KST.DerivedGeometry.basicOpenLocalizationR_exactAt_iff,
+    `SerrePositivity.KST.DerivedGeometry.affineCech_exactAt,
+
     `SerrePositivity.KST.DerivedGeometry.awayLocalization_of_composite,
     `SerrePositivity.KST.DerivedGeometry.tilde_basicOpenRestriction_isLocalized,
     `SerrePositivity.KST.DerivedGeometry.moduleLocalizationR,

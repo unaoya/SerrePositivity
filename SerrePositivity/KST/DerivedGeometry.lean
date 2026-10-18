@@ -49,3 +49,5 @@ public import SerrePositivity.KST.DerivedGeometry.BasicOpenLocalization
 public import SerrePositivity.KST.DerivedGeometry.OpenCechContraction
 
 public import SerrePositivity.KST.DerivedGeometry.BasicOpenSectionComparisonIso
+
+public import SerrePositivity.KST.DerivedGeometry.AffineCechExact
