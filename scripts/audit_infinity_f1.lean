@@ -124,3 +124,16 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.IsEdgeTransport.functorIso
 #check @SerrePositivity.InfinityCategories.isEdgeTransport_identity
 #check @SerrePositivity.InfinityCategories.edgeTransport_identity_iso
+#check @SerrePositivity.InfinityCategories.initialEdgeJoinIso
+#check @SerrePositivity.InfinityCategories.initialHorn_preimage_eqToIso
+#check @SerrePositivity.InfinityCategories.initialHornJoin_preimage
+#check @SerrePositivity.InfinityCategories.initialHornJoinIso
+#check @SerrePositivity.InfinityCategories.initialHornJoinIso_hom_ι
+#check @SerrePositivity.InfinityCategories.initialEdge_eqToIso
+#check @SerrePositivity.InfinityCategories.initialEdgeJoinIso_inl_edge
+#check @SerrePositivity.InfinityCategories.initialHornJoinIso_edge
+#check @SerrePositivity.InfinityCategories.initialHornJoinIso_inv_ι
+#check @SerrePositivity.InfinityCategories.relativeCosliceMap_boundary_of_isCocartesianEdge
+#check @SerrePositivity.InfinityCategories.relativeCosliceMap_trivialKanFibration_of_isCocartesianEdge
+#check @SerrePositivity.InfinityCategories.isCocartesianEdge_of_relativeCosliceMap_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.isCocartesianEdge_iff_relativeCosliceMap_trivialKanFibration

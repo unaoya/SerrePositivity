@@ -503,5 +503,62 @@ lemma edgeTransport_identity_iso {X B : SSet.{u}} [Quasicategory B] (p : X ⟶ B
     Nonempty (FunctorIso
       (edgeTransport p (SSet.Truncated.Edge.id (X
 
+
+def initialEdgeJoinIso (n : ℕ) : join (Δ[1] : SSet.{u}) Δ[n] ≅ Δ[n + 2]
+
+lemma initialHorn_preimage_eqToIso {A : SSet.{u}} {m n : ℕ} (h : m = n)
+    (e : A ≅ (Δ[m] : SSet.{u})) :
+    (horn n 0).preimage
+      (e ≪≫ eqToIso (congrArg (fun d : ℕ ↦ (Δ[d] : SSet.{u})) h)).hom =
+        (horn m 0).preimage e.hom
+
+lemma initialHornJoin_preimage (n : ℕ) :
+    (horn (n + 2) 0).preimage (initialEdgeJoinIso.{u} n).hom =
+      joinUnion (horn 1 0) (boundary n)
+
+def initialHornJoinIso (n : ℕ) :
+    (joinUnion (horn 1 0) (boundary n) : SSet.{u}) ≅ horn (n + 2) 0
+
+lemma initialHornJoinIso_hom_ι (n : ℕ) :
+    (initialHornJoinIso.{u} n).hom ≫ (horn (n + 2) 0).ι =
+      (joinUnion (horn 1 0) (boundary n)).ι ≫ (initialEdgeJoinIso n).hom
+
+lemma initialEdge_eqToIso {m n : ℕ} (h : m = n) :
+    (eqToIso (congrArg (fun d : ℕ ↦ (Δ[d] : SSet.{u})) h)).hom.app (Opposite.op ⦋1⦌)
+      (stdSimplex.edge m 0 1 (Fin.zero_le _)) = stdSimplex.edge n 0 1 (Fin.zero_le _)
+
+lemma initialEdgeJoinIso_inl_edge (n : ℕ) :
+    SSet.yonedaEquiv (joinInl (Δ[1] : SSet.{u}) Δ[n] ≫ (initialEdgeJoinIso n).hom) =
+      stdSimplex.edge (n + 2) 0 1 (Fin.zero_le _)
+
+lemma initialHornJoinIso_edge (n : ℕ) :
+    SSet.yonedaEquiv (joinInl (Δ[1] : SSet.{u}) (boundary n : SSet.{u}) ≫
+      joinUnionRight (horn 1 0) (boundary n) ≫ (initialHornJoinIso n).hom) =
+        initialHornEdge n
+
+lemma initialHornJoinIso_inv_ι (n : ℕ) :
+    (initialHornJoinIso.{u} n).inv ≫ (joinUnion (horn 1 0) (boundary n)).ι =
+      (horn (n + 2) 0).ι ≫ (initialEdgeJoinIso n).inv
+
+lemma relativeCosliceMap_boundary_of_isCocartesianEdge {X Y : SSet.{u}}
+    (e : (Δ[1] : SSet.{u}) ⟶ X) (q : X ⟶ Y)
+    (he : IsCocartesianEdge q (SSet.yonedaEquiv e)) (n : ℕ) :
+    HasLiftingProperty (boundary n).ι (relativeCosliceMap e q (horn 1 0))
+
+lemma relativeCosliceMap_trivialKanFibration_of_isCocartesianEdge {X Y : SSet.{u}}
+    (e : (Δ[1] : SSet.{u}) ⟶ X) (q : X ⟶ Y)
+    (he : IsCocartesianEdge q (SSet.yonedaEquiv e)) :
+    TrivialKanFibration (relativeCosliceMap e q (horn 1 0))
+
+lemma isCocartesianEdge_of_relativeCosliceMap_trivialKanFibration {X Y : SSet.{u}}
+    (e : (Δ[1] : SSet.{u}) ⟶ X) (q : X ⟶ Y)
+    (hq : TrivialKanFibration (relativeCosliceMap e q (horn 1 0))) :
+    IsCocartesianEdge q (SSet.yonedaEquiv e)
+
+lemma isCocartesianEdge_iff_relativeCosliceMap_trivialKanFibration {X Y : SSet.{u}}
+    (e : (Δ[1] : SSet.{u}) ⟶ X) (q : X ⟶ Y) :
+    IsCocartesianEdge q (SSet.yonedaEquiv e) ↔
+      TrivialKanFibration (relativeCosliceMap e q (horn 1 0))
+
 end SerrePositivity.InfinityCategories
 ```

@@ -24,3 +24,6 @@ public import SerrePositivity.InfinityCategories.F1.TransportHo
 public import SerrePositivity.InfinityCategories.F1.InvertibleCartesian
 public import SerrePositivity.InfinityCategories.F1.EdgeTransport
 public import SerrePositivity.InfinityCategories.F1.TransportIdentity
+public import SerrePositivity.InfinityCategories.F1.InitialHornJoin
+public import SerrePositivity.InfinityCategories.F1.CocartesianCoslice
+public import SerrePositivity.InfinityCategories.F1.CocartesianCosliceConverse
