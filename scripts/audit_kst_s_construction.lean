@@ -7,6 +7,40 @@ import SerrePositivity.KST.SConstruction
 使われ方：BGT §7 に対応する保存単位の検証。
 -/
 
+#check @SerrePositivity.KST.SConstruction.IsCofiberDiagramVertex
+#print axioms SerrePositivity.KST.SConstruction.IsCofiberDiagramVertex
+#check @SerrePositivity.KST.SConstruction.cofiberDiagrams
+#print axioms SerrePositivity.KST.SConstruction.cofiberDiagrams
+#check @SerrePositivity.KST.SConstruction.cofiberProjection
+#print axioms SerrePositivity.KST.SConstruction.cofiberProjection
+#check @SerrePositivity.KST.SConstruction.cofiberForgetZero
+#print axioms SerrePositivity.KST.SConstruction.cofiberForgetZero
+#check @SerrePositivity.KST.SConstruction.cofiberForgetZero_ι
+#print axioms SerrePositivity.KST.SConstruction.cofiberForgetZero_ι
+#check @SerrePositivity.KST.SConstruction.cofiberZeroArrow
+#print axioms SerrePositivity.KST.SConstruction.cofiberZeroArrow
+#check @SerrePositivity.KST.SConstruction.cofiberZeroArrow_ι
+#print axioms SerrePositivity.KST.SConstruction.cofiberZeroArrow_ι
+#check @SerrePositivity.KST.SConstruction.cofiberZeroArrow_source
+#print axioms SerrePositivity.KST.SConstruction.cofiberZeroArrow_source
+#check @SerrePositivity.KST.SConstruction.pushoutProjection_bottom
+#print axioms SerrePositivity.KST.SConstruction.pushoutProjection_bottom
+#check @SerrePositivity.KST.SConstruction.cofiberProjection_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.cofiberProjection_trivialKanFibration
+#check @SerrePositivity.KST.SConstruction.exists_relative_cofiberFamily
+#print axioms SerrePositivity.KST.SConstruction.exists_relative_cofiberFamily
+#check @SerrePositivity.KST.SConstruction.cofiberFamilySpace
+#print axioms SerrePositivity.KST.SConstruction.cofiberFamilySpace
+#check @SerrePositivity.KST.SConstruction.cofiberFamilySpace_isContractibleKan
+#print axioms SerrePositivity.KST.SConstruction.cofiberFamilySpace_isContractibleKan
+#check @SerrePositivity.KST.SConstruction.cofiberFamiliesIso
+#print axioms SerrePositivity.KST.SConstruction.cofiberFamiliesIso
+#check @SerrePositivity.KST.SConstruction.cofiberSection
+#print axioms SerrePositivity.KST.SConstruction.cofiberSection
+#check @SerrePositivity.KST.SConstruction.cofiberSection_projection
+#print axioms SerrePositivity.KST.SConstruction.cofiberSection_projection
+#check @SerrePositivity.KST.SConstruction.cofiberFunctor
+#print axioms SerrePositivity.KST.SConstruction.cofiberFunctor
 #check @SerrePositivity.KST.SConstruction.arSquare_cofiber_zero_corner
 #print axioms SerrePositivity.KST.SConstruction.arSquare_cofiber_zero_corner
 #check @SerrePositivity.KST.SConstruction.gappedCofiberTriangle
@@ -115,6 +149,28 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.frameRowDiagramIso
 #check @SerrePositivity.KST.SConstruction.frameRowRestriction_trivialKanFibration
 #print axioms SerrePositivity.KST.SConstruction.frameRowRestriction_trivialKanFibration
+#check @SerrePositivity.KST.SConstruction.IsPushoutDiagramVertex
+#print axioms SerrePositivity.KST.SConstruction.IsPushoutDiagramVertex
+#check @SerrePositivity.KST.SConstruction.pushoutDiagrams
+#print axioms SerrePositivity.KST.SConstruction.pushoutDiagrams
+#check @SerrePositivity.KST.SConstruction.squareCoconeDiagramIso
+#print axioms SerrePositivity.KST.SConstruction.squareCoconeDiagramIso
+#check @SerrePositivity.KST.SConstruction.pushoutDiagramsCoconesIso
+#print axioms SerrePositivity.KST.SConstruction.pushoutDiagramsCoconesIso
+#check @SerrePositivity.KST.SConstruction.pushoutProjection
+#print axioms SerrePositivity.KST.SConstruction.pushoutProjection
+#check @SerrePositivity.KST.SConstruction.pushoutDiagramsCoconesIso_projection
+#print axioms SerrePositivity.KST.SConstruction.pushoutDiagramsCoconesIso_projection
+#check @SerrePositivity.KST.SConstruction.pushoutDiagramsCoconesIso_inv_projection
+#print axioms SerrePositivity.KST.SConstruction.pushoutDiagramsCoconesIso_inv_projection
+#check @SerrePositivity.KST.SConstruction.exists_relative_pushoutFamily
+#print axioms SerrePositivity.KST.SConstruction.exists_relative_pushoutFamily
+#check @SerrePositivity.KST.SConstruction.pushoutProjection_hasLiftingProperty_boundary
+#print axioms SerrePositivity.KST.SConstruction.pushoutProjection_hasLiftingProperty_boundary
+#check @SerrePositivity.KST.SConstruction.exists_relative_colimitCoconeFamily
+#print axioms SerrePositivity.KST.SConstruction.exists_relative_colimitCoconeFamily
+#check @SerrePositivity.KST.SConstruction.colimitCoconeFamily_relative_lifting
+#print axioms SerrePositivity.KST.SConstruction.colimitCoconeFamily_relative_lifting
 #check @SerrePositivity.KST.SConstruction.exists_extension_with_vertices
 #print axioms SerrePositivity.KST.SConstruction.exists_extension_with_vertices
 #check @SerrePositivity.KST.SConstruction.exists_extension_of_initial_or_terminal_endpoints

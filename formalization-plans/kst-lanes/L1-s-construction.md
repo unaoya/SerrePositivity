@@ -111,7 +111,7 @@ L1a 完了。対象ビルド 1932 jobs、公理監査 26 宣言（標準3公理�
 `arSquareOrder`、`arSquare`、`arSquare_naturality`、`sMap_ι`。全26宣言の展開された型を監査スクリプトで検査する。
 上記は定義・関手法則であり安定性を仮定しない。quasicategory instance だけは明記した前提を持つ。
 
-L1b 進行中。第一行制限と零対角の補完段階を実装済み。対象ビルド1998 jobs、累計78宣言の監査（標準3公理のみ）。
+L1b 進行中。第一行制限と零対角の補完段階を実装済み。対象ビルド2009 jobs、累計106宣言の監査（標準3公理のみ）。
 
 | 公開宣言 | 正確な型・前提 |
 | --- | --- |
@@ -152,6 +152,29 @@ L1b 進行中。第一行制限と零対角の補完段階を実装済み。対�
 逆向きの全四つ組への押し出し貼り合わせは、cofiber 補完段階の未完了範囲に含む。
 
 零対角の射影の trivial Kan fibration は無条件の相対境界証明であり、quasicategory 性・安定性を仮定しない。
-ただし **gapped 条件の cofiber 補完段階は未証明**。したがって
+cofiber 一段の補完について次を実装した。
+
+| 公開宣言 | 正確な型・前提 |
+| --- | --- |
+| `pushoutDiagrams` | `(C : SSet.{u}) → SSet.{u}`、押し出し四角形の全部分複体 |
+| `pushoutDiagramsCoconesIso` | `(C : SSet.{u}) → [Quasicategory C] → (pushoutDiagrams C ≅ colimitCocones (horn 2 0) C)` |
+| `pushoutProjection` | `(C : SSet.{u}) → (pushoutDiagrams C ⟶ (ihom (horn 2 0)).obj C)` |
+| `pushoutProjection_hasLiftingProperty_boundary` | `(C : SSet.{u}) → [Quasicategory C] → (n : ℕ) → HasLiftingProperty (boundary (n+1)).ι (pushoutProjection C)` |
+| `cofiberDiagrams` | `(C : SSet.{u}) → SSet.{u}`、零角 (0,1) を持つ押し出し四角形の全部分複体 |
+| `cofiberProjection` | `(C : SSet.{u}) → (cofiberDiagrams C ⟶ (ihom (Δ[1] : SSet.{u})).obj C)` |
+| `cofiberProjection_trivialKanFibration` | `(C : SSet.{u}) → [Quasicategory C] → [IsStable C] → TrivialKanFibration (cofiberProjection C)` |
+| `exists_relative_cofiberFamily` | `[Quasicategory C] → [IsStable C] → (i : A ⟶ B) → [Mono i] → (d : B ⟶ (ihom Δ[1]).obj C) → (a : A ⟶ cofiberDiagrams C) → (a ≫ cofiberProjection C = i ≫ d) → ∃ F, i ≫ F = a ∧ F ≫ cofiberProjection C = d` |
+| `cofiberFamilySpace` | `(d : A ⟶ (ihom (Δ[1] : SSet.{u})).obj C) → SSet.{u}`、後合成の fiber |
+| `cofiberFamilySpace_isContractibleKan` | `[Quasicategory C] → [IsStable C] → (d : A ⟶ (ihom Δ[1]).obj C) → IsContractibleKan (cofiberFamilySpace d)` |
+| `cofiberFamiliesIso` | `[Quasicategory C] → [IsStable C] → (d : A ⟶ (ihom Δ[1]).obj C) → (F G : A ⟶ cofiberDiagrams C) → (F ≫ cofiberProjection C = d) → (G ≫ cofiberProjection C = d) → FunctorIso F G` |
+| `cofiberSection` | `(C : SSet.{u}) → [Quasicategory C] → [IsStable C] → ((ihom Δ[1]).obj C ⟶ cofiberDiagrams C)` |
+| `cofiberSection_projection` | `cofiberSection C ≫ cofiberProjection C = 𝟙 _` |
+| `cofiberFunctor` | `(C : SSet.{u}) → [Quasicategory C] → [IsStable C] → ((ihom Δ[1]).obj C ⟶ C)`、選んだ四角形の (1,1) での評価 |
+
+`exists_relative_colimitCoconeFamily`・`exists_relative_pushoutFamily` は、各入力図式の余極限が存在する場合に、任意の単射に沿う相対補完を与える。
+cofiber の射影の零次元には `IsStable.cofiber_exists`、正次元には零対象へ向かう辺の射影と
+普遍押し出しの射影の正次元境界 RLP を用いた。追加の cofiber 存在公理は使っていない。
+
+ただし **Ar[n] 全体の gapped 条件を同時に満たす cofiber 補完は未証明**。したがって
 `firstRowRestriction` の trivial Kan fibration と L1b 全体はまだ完了していない。
 L1c–f は未着手。L1g は別途指示待ち。
