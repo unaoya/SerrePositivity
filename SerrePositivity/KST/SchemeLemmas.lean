@@ -93,3 +93,8 @@ public import SerrePositivity.KST.SchemeLemmas.BlowupOpenComparison
 public import SerrePositivity.KST.SchemeLemmas.DenseOpenGluing
 public import SerrePositivity.KST.SchemeLemmas.LocalDominationRestriction
 public import SerrePositivity.KST.SchemeLemmas.AffineLocalDominationGluing
+public import SerrePositivity.KST.SchemeLemmas.BlowupOverSchemeExt
+public import SerrePositivity.KST.SchemeLemmas.OpenComparisonBase
+public import SerrePositivity.KST.SchemeLemmas.BlowupOpenMap
+public import SerrePositivity.KST.SchemeLemmas.FiniteAffineCover
+public import SerrePositivity.KST.SchemeLemmas.SchemeCompositionDomination
