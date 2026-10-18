@@ -24,7 +24,7 @@
 
 作成日：2026-10-18。
 状態：L9a・L9b 完了。L9c に着手。
-対象ビルド・29 モジュール 876 宣言の公理監査成功。
+対象ビルド・31 モジュール 895 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9b、8370 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -632,7 +632,7 @@ L9c 全体は未完了。次は切断スペクトルの Hom の塔を実装す�
 | `sp_quasicategory` | γ1 による quasicategory 性 |
 
 参照：BF 1978 §2、HTT A.3.3、HTT 1.1.5.10、Kerodon 2.4.5.1、HA §1.4.2。
-保存単位の対象ビルド 1613 jobs 成功。
+保存単位の対象ビルド 1618 jobs 成功。
 私有宣言を含む 29 モジュール 876 宣言で標準三公理のみ。
 Sp の構成の区切りで全体ビルドも実行したが終了コード 1。
 L9 の import 閉包外の `InfinityCategories/F1.lean:1` で
@@ -643,3 +643,28 @@ L9 の import 閉包外の `InfinityCategories/F1.lean:1` で
 未完了：cofibrant・Kan 置換、スペクトルの fiber 列と長完全列。
 L9d の telescope 有理化、L9e の hG・Tot・有理 Shapiro も未完了。
 次は path space の fiber 列と収縮から loop の次数移動を証明する。
+
+## 26. L9c の path fibration の構成
+
+始点を基点とする区間と、零次球面からの終点包含を構成した。
+終点包含の単射性は、各次数の自由基点の二成分の像を頂点値で比較して証明した。
+区間からの点つき Hom を path space とし、終点の制限と閉構造の単位同型を合成した。
+標的が Kan のとき終点評価は Kan fibration である。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `pointedInterval` | 始点を基点とする Δ[1] |
+| `intervalEndpoint` | 点つき零次球面からの終点包含 |
+| `coprod_simplex_cases` | 余積の単体の二成分への分解 |
+| `intervalEndpoint_mono` | 終点包含の単射性 |
+| `basedPathSpace` | 基点に始まる path の単体集合 |
+| `basedPathSpace_kanComplex` | Kan 標的の path space の Kan 性 |
+| `pathEndpoint` | 終点評価 |
+| `pathEndpoint_fibration` | 終点評価の Kan fibration 性 |
+
+参照：Goerss–Jardine I §7、Kerodon §§3.1.3、3.2.5。
+保存単位の対象ビルド 1620 jobs 成功。
+私有宣言を含む 31 モジュール 895 宣言で標準三公理のみ。
+未完了：path space の収縮、終点 fiber と loopSpace の同定、次数移動の同型。
+次は既存 Core の標準単体の先頭頂点への収縮を借りて path space を収縮する。
+§25 の対象ビルドの jobs 数はログの実数 1618 に訂正した。

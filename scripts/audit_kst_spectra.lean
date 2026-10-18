@@ -41,7 +41,9 @@ run_cmd do
     `SerrePositivity.KST.Spectra.SpectrumMappingComposition,
     `SerrePositivity.KST.Spectra.SpectrumMappingLaws,
     `SerrePositivity.KST.Spectra.SpectrumSimplicialCategory,
-    `SerrePositivity.KST.Spectra.CoherentNerve]
+    `SerrePositivity.KST.Spectra.CoherentNerve,
+    `SerrePositivity.KST.Spectra.PointedInterval,
+    `SerrePositivity.KST.Spectra.PathSpace]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

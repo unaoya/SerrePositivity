@@ -18,3 +18,4 @@ public import SerrePositivity.KST.Spectra.SpectrumMappingVertices
 public import SerrePositivity.KST.Spectra.SuspensionComposition
 public import SerrePositivity.KST.Spectra.EnrichedMappingLaws
 public import SerrePositivity.KST.Spectra.CoherentNerve
+public import SerrePositivity.KST.Spectra.PathSpace
