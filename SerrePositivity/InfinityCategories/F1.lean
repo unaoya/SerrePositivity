@@ -583,3 +583,10 @@ public import SerrePositivity.InfinityCategories.F1.StrictDiagramPostcomposition
 public import SerrePositivity.InfinityCategories.F1.StrictTransportWhitehead
 public import SerrePositivity.InfinityCategories.F1.CoherentEnrichedHomotopy
 public import SerrePositivity.InfinityCategories.F1.StrictTransportCoherentWhitehead
+public import SerrePositivity.InfinityCategories.F1.EnrichedFunctorSmallness
+public import SerrePositivity.InfinityCategories.F1.CoherentMapSmallness
+public import SerrePositivity.InfinityCategories.F1.CoherentRestrictionsSmallness
+public import SerrePositivity.InfinityCategories.F1.JoinSmallness
+public import SerrePositivity.InfinityCategories.F1.PointedSpaceSmallness
+public import SerrePositivity.InfinityCategories.F1.LeftUnstraighteningSmallness
+public import SerrePositivity.InfinityCategories.F1.SmallSimplicialSet

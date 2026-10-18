@@ -11752,5 +11752,88 @@ lemma strictTransportImageHom_isInvertible_of_pointwise
       (Y := (G.val.obj c).obj) (η.app c)) :
     IsInvertibleEdge (coherentNerveEdge (strictTransportImageHom η))
 
+def enrichedFunctorFixedObjectCode {A : Type v} {D : Type w}
+    [EnrichedCategory SSet.{u} A] [EnrichedCategory SSet.{u} D] (obj : A → D)
+    (F : {F : EnrichedFunctor SSet.{u} A D // F.obj = obj}) :
+    ∀ i j : A, (i ⟶[SSet.{u}] j) ⟶ (obj i ⟶[SSet.{u}] obj j)
+
+lemma enrichedFunctorFixedObjectCode_injective {A : Type v} {D : Type w}
+    [EnrichedCategory SSet.{u} A] [EnrichedCategory SSet.{u} D] (obj : A → D) :
+    Function.Injective (enrichedFunctorFixedObjectCode obj)
+
+instance enrichedFunctor_fixedObjects_small {A : Type v} {D : Type w}
+    [Small.{u} A] [EnrichedCategory SSet.{u} A] [EnrichedCategory SSet.{u} D]
+    (obj : A → D) : Small.{u} {F : EnrichedFunctor SSet.{u} A D // F.obj = obj}
+
+lemma coherentMap_simplex_obj {D : Type v} [Category.{u} D] [SimplicialCategory D]
+    {X : SSet.{max u v}} (f : X ⟶ SimplicialNerve D)
+    {n : SimplexCategoryᵒᵖ} (s : X.obj n)
+    (i : SimplicialThickening (ULift.{u} (Fin (n.unop.len + 1)))) :
+    (f.app n s).obj i = coherentNerveObject
+      (f.app (Opposite.op ⦋0⦌)
+        (X.map (SimplexCategory.const ⦋0⦌ n.unop i.as.down).op s))
+
+def coherentMapFixedVertexCode {D : Type v} [Category.{u} D] [SimplicialCategory D]
+    {X : SSet.{max u v}} (obj : X _⦋0⦌ → D)
+    (f : {f : X ⟶ SimplicialNerve D //
+      ∀ x, coherentNerveObject (f.app (Opposite.op ⦋0⦌) x) = obj x}) :
+    ∀ (n : SimplexCategoryᵒᵖ) (s : X.obj n),
+      {F : EnrichedFunctor SSet.{u}
+        (SimplicialThickening (ULift.{u} (Fin (n.unop.len + 1)))) D //
+        F.obj = fun i ↦ obj (X.map
+          (SimplexCategory.const ⦋0⦌ n.unop i.as.down).op s)}
+
+lemma coherentMapFixedVertexCode_injective
+    {D : Type v} [Category.{u} D] [SimplicialCategory D]
+    {X : SSet.{max u v}} (obj : X _⦋0⦌ → D) :
+    Function.Injective (coherentMapFixedVertexCode obj)
+
+instance coherentMap_fixedVertices_small
+    {D : Type v} [Category.{u} D] [SimplicialCategory D]
+    {X : SSet.{max u v}} [∀ n, Small.{u} (X.obj n)] (obj : X _⦋0⦌ → D) :
+    Small.{u} {f : X ⟶ SimplicialNerve D //
+      ∀ x, coherentNerveObject (f.app (Opposite.op ⦋0⦌) x) = obj x}
+
+lemma coherentMap_fixedRestrictions_small
+    {D : Type v} [Category.{u} D] [SimplicialCategory D]
+    {A B X : SSet.{max u v}} [∀ n, Small.{u} (X.obj n)]
+    (j : A ⟶ X) (k : B ⟶ X) (a : A ⟶ SimplicialNerve D) (b : B ⟶ SimplicialNerve D)
+    (hcover : ∀ x : X _⦋0⦌,
+      (∃ y, j.app (Opposite.op ⦋0⦌) y = x) ∨
+        (∃ z, k.app (Opposite.op ⦋0⦌) z = x)) :
+    Small.{u} {f : X ⟶ SimplicialNerve D // j ≫ f = a ∧ k ≫ f = b}
+
+instance join_augObj_small (K : SSet.{v}) [∀ n, Small.{u} (K.obj n)] (r : ℕ) :
+    Small.{u} (Join.augObj K r)
+
+instance join_obj_small (K L : SSet.{v})
+    [∀ n, Small.{u} (K.obj n)] [∀ n, Small.{u} (L.obj n)] (n : SimplexCategoryᵒᵖ) :
+    Small.{u} ((join K L).obj n)
+
+lemma join_vertices_covered (K L : SSet.{v}) (x : (join K L) _⦋0⦌) :
+    (∃ y, (joinInl K L).app (Opposite.op ⦋0⦌) y = x) ∨
+      (∃ z, (joinInr K L).app (Opposite.op ⦋0⦌) z = x)
+
+lemma pointedSpaceProjection_simplexFiber_small (n : SimplexCategoryᵒᵖ)
+    (s : SpaceInfinity.{u}.obj n) :
+    Small.{u} {t : PointedSpaceInfinity.{u}.obj n // pointedSpaceProjection.app n t = s}
+
+lemma pullback_simplex_small_of_fibers {X Y B : SSet.{v}}
+    (p : X ⟶ B) (q : Y ⟶ B) (n : ℕ) [Small.{u} (Y _⦋n⦌)]
+    (hf : ∀ y : Y _⦋n⦌,
+      Small.{u} {x : X _⦋n⦌ // p.app _ x = q.app _ y}) :
+    Small.{u} ((pullback p q) _⦋n⦌)
+
+instance leftUnstraightening_obj_small {B : SSet.{u + 1}}
+    [∀ n, Small.{u} (B.obj n)] (F : B ⟶ SpaceInfinity.{u}) (n : SimplexCategoryᵒᵖ) :
+    Small.{u} ((leftUnstraightening F).obj n)
+
+noncomputable def smallSimplicialSet (X : SSet.{max u v})
+    [∀ n, Small.{u} (X.obj n)] : SSet.{u}
+
+noncomputable def smallSimplicialSetIso (X : SSet.{max u v})
+    [∀ n, Small.{u} (X.obj n)] :
+    (SSet.uliftFunctor.{v, u}).obj (smallSimplicialSet X) ≅ X
+
 end SerrePositivity.InfinityCategories
 ```
