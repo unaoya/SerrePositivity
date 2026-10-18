@@ -283,3 +283,4 @@ public import SerrePositivity.KST.SchemeLemmas.ChosenBlowupChartCover
 public import SerrePositivity.KST.SchemeLemmas.TwoStageFreeOpenPullbacks
 public import SerrePositivity.KST.SchemeLemmas.SplitAlgebraFreeOpenBlowup
 public import SerrePositivity.KST.SchemeLemmas.ModuleMittagLeffler
+public import SerrePositivity.KST.SchemeLemmas.FiniteTypeCountableGeneration
