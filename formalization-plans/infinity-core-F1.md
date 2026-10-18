@@ -3095,5 +3095,49 @@ instance cosliceFiberToIntervalMappingSpace_mono {X : SSet.{u}} (x y : X _⦋0�
 instance pinchedHomLeftToIntervalMappingSpace_mono {X : SSet.{u}} (x y : X _⦋0⦌) :
     Mono (pinchedHomLeftToIntervalMappingSpace x y)
 
+lemma intervalMappingUncurry_zero {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (f : A ⟶ intervalMappingSpace x y) :
+    prismEndpoint 0 A ≫ intervalMappingUncurry f = SSet.const x
+
+lemma intervalMappingUncurry_one {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (f : A ⟶ intervalMappingSpace x y) :
+    prismEndpoint 1 A ≫ intervalMappingUncurry f = SSet.const y
+
+def rightIntervalCylinderProjection (A : SSet.{u}) :
+    (A ⊗ Δ[1]) ⊗ (Δ[0] : SSet.{u}) ⟶ Δ[1] ⊗ A
+
+def rightIntervalCylinderSection (A : SSet.{u}) :
+    Δ[1] ⊗ A ⟶ (A ⊗ Δ[1]) ⊗ (Δ[0] : SSet.{u})
+
+lemma rightIntervalCylinderSection_projection (A : SSet.{u}) :
+    rightIntervalCylinderSection A ≫ rightIntervalCylinderProjection A = 𝟙 _
+
+lemma rightIntervalCylinderProjection_section (A : SSet.{u}) :
+    rightIntervalCylinderProjection A ≫ rightIntervalCylinderSection A = 𝟙 _
+
+lemma rightIntervalCylinderProjection_zero (A : SSet.{u}) :
+    (SSet.ι₀ (X := A) ▷ (Δ[0] : SSet.{u})) ≫ rightIntervalCylinderProjection A =
+      fst A Δ[0] ≫ prismEndpoint 0 A
+
+lemma rightIntervalCylinderProjection_one (A : SSet.{u}) :
+    (SSet.ι₁ (X := A) ▷ (Δ[0] : SSet.{u})) ≫ rightIntervalCylinderProjection A =
+      fst A Δ[0] ≫ prismEndpoint 1 A
+
+noncomputable def rightIntervalFatDiagram {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (f : A ⟶ intervalMappingSpace x y) : fatJoin A (Δ[0] : SSet.{u}) ⟶ X
+
+lemma rightIntervalFatDiagram_inl {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (f : A ⟶ intervalMappingSpace x y) :
+    fatJoinInl A Δ[0] ≫ rightIntervalFatDiagram f = SSet.const x
+
+lemma rightIntervalFatDiagram_inr {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (f : A ⟶ intervalMappingSpace x y) :
+    fatJoinInr A Δ[0] ≫ rightIntervalFatDiagram f = SSet.yonedaEquiv.symm y
+
+lemma rightIntervalFatDiagram_recover {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (f : A ⟶ intervalMappingSpace x y) :
+    rightIntervalCylinderSection A ≫ fatJoinCylinder A Δ[0] ≫ rightIntervalFatDiagram f =
+      intervalMappingUncurry f
+
 end SerrePositivity.InfinityCategories
 ```
