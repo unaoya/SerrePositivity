@@ -16,10 +16,11 @@ public import SerrePositivity.KST.Spectra.RelStructHomotopy
 public import SerrePositivity.KST.Spectra.CircleMappingComponents
 public import SerrePositivity.KST.Spectra.InternalHomExchangeNaturality
 public import SerrePositivity.KST.Spectra.LoopPositivePower
+public import SerrePositivity.KST.Spectra.RationalSpectrum
 
 /-!
 概要：スペクトルの telescope 有理化に使う余極限とホモトピー群の比較。
 方針：有限な代表・関係を後続段へ移し、Kan 性と群の余極限を実証する。
-規約：有理化対象と ℚ テンソルの比較は L9d の後続部分で加える。
+規約：有理化の対象と全次数のテンソル比較を含む。元の対象からの標準射と自然性は継続する。
 使われ方：Goerss–Jardine I §7、BF 1978 §2、HA §1.4.2。L9d の集約入口。
 -/

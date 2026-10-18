@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c 完了。L9d 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・160 モジュール 2406 宣言の公理監査成功。
+対象ビルド・165 モジュール 2441 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -1638,3 +1638,44 @@ L9d は進行中。次は loop を値とする写像の群演算と高次ホモ�
 保存単位の対象ビルド 2360 jobs 成功。
 私有宣言を含む 160 モジュール 2406 宣言で標準三公理のみ。
 L9d は進行中。次は BF cotensor へこの作用を移して整数次数の telescope を構成する。
+
+
+## 56. L9d の実際の BF telescope の対象と全整数次数のテンソル比較
+
+円の Kan 置換の次数射の前合成を BF cotensor へ持ち上げた。
+比較射との厳密な可換式を任意段表示へ送り、全整数次数の群で m 乗になることを証明した。
+この実際の厳密な自己射を次数 2,3,4,… の順に並べ、自然数の圏の関手を構成した。
+長い遷移射は厳密な合成であり、群では区間係数の冪となる。
+AsSmall ℕ に添字を拡大して universe を合わせ、filtered Kan 余極限と cofibrant 置換を適用した。
+
+群の図式の cocone を整数乗法の加法直極限へ構成した。
+代表の存在と等式の後続段での検出から、集合および群の圏で余極限であることを実証した。
+filtered スペクトルの群の比較と整数乗法直極限の局所化を合成し、loop telescope の群を計算した。
+円の anodyne な置換単位、loop の次数移動、tail の次数補正により、
+実際に構成した対象の全整数次数群と元の群の ℚ テンソルとの群同型・ℤ 線形同型を得た。
+loop telescope の零段の実際の注入射が a↦a⊗1 を誘導することも証明した。
+
+現時点で `rationalization` はこの実際の BF 対象の名称である。
+この名称から ∞ 圏の局所化の普遍性を主張しない。
+元の X からの標準射は、元と同じ群を持つ loop 模型の群同型からは得られない。
+L9d の完了条件である元の X からの有理化写像と自然性は、引き続き実構成が必要である。
+工程は未完了のままとし、L9e にはまだ進まない。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `OmegaSpectrum.cotensorStageEquiv_pre` | BF cotensor の任意段表示と源の制限の整合 |
+| `OmegaSpectrum.cotensorPre_power_homotopyMap` | 円の次数射の全整数次数の冪作用 |
+| `OmegaSpectrum.rationalSequence` / `.rationalDiagram` | 実際の厳密な自己射の有理化図式 |
+| `OmegaSpectrum.rationalDiagram_homotopyMap` | 長い遷移射の区間係数の冪の式 |
+| `OmegaSpectrum.rationalLoopTelescope` | 段ごとの Kan 余極限の BF 置換 |
+| `OmegaSpectrum.rationalGroupCoconeUnderlyingIsColimit` | 群の図式の underlying での余極限性 |
+| `OmegaSpectrum.rationalGroupCoconeIsColimit` | 群の圏の余極限性 |
+| `OmegaSpectrum.rationalLoopTensorEquiv` | loop telescope の整数次数群の有理テンソル比較 |
+| `OmegaSpectrum.rationalLoopTensorEquiv_injection_zero` | 零段の実際の射の a⊗1 の式 |
+| `OmegaSpectrum.rationalization` | 次数を補正した実際の BF telescope 対象 |
+| `OmegaSpectrum.rationalizationHomotopyEquiv` / `.rationalizationTensorEquiv` | 全整数次数の群同型・ℤ 線形同型 |
+
+参照：BF 1978 §2、HTT A.3.3、HA §1.4.2。
+保存単位の対象ビルド 2365 jobs 成功。
+私有宣言を含む 165 モジュール 2441 宣言で標準三公理のみ。
+L9d は進行中。次は次数補正した模型からの実際の射と、元の X からの標準射を扱う。

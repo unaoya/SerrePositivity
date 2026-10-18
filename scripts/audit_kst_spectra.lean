@@ -172,7 +172,12 @@ run_cmd do
     `SerrePositivity.KST.Spectra.HomotopyProduct,
     `SerrePositivity.KST.Spectra.LoopMultiplication,
     `SerrePositivity.KST.Spectra.PointedGroupProduct,
-    `SerrePositivity.KST.Spectra.LoopPositivePower]
+    `SerrePositivity.KST.Spectra.LoopPositivePower,
+    `SerrePositivity.KST.Spectra.CotensorPower,
+    `SerrePositivity.KST.Spectra.RationalSpectrumDiagram,
+    `SerrePositivity.KST.Spectra.RationalSpectrumCocone,
+    `SerrePositivity.KST.Spectra.RationalLoopTensor,
+    `SerrePositivity.KST.Spectra.RationalSpectrum]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
