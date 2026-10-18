@@ -243,8 +243,16 @@ h Fun の等式から任意の path を取り直す操作とは区別する。
 `FunctorCompositionSquare.normalizationHomotopy` は上側を補完した正方形から元の正方形へ戻す
 具体的な変形で、同じ三辺を固定し、右辺は元の下側の二単体の `rightHomotopySquare` への制限。
 `unitCommaUpperSquareDeformation/LowerSquareDeformation` により、基準正方形から元の comma 正方形へ
-進む二段階の変形を得た。中間図式は厳密に一致する。**三辺を固定した両段階の合成、既存の
-下側の相対比較から選んだ path と今回の具体的な下側 path の照合、復元側の輸送との比較は未完了。**
+進む二段階の変形を得た。中間図式は厳密に一致する。
+`relativeFunctorEdge` は部分図式を固定したホモトピーを制限の fiber 内の実際の辺にする。
+`relativeFunctorHomotopyComposite` はこの fiber 内で合成し、指定部分図式の固定と、元の
+二経路を二辺とする合成三角形を同時に保持する。二単体自体の制限も定値であることを
+`relativeFunctorHomotopyCompositeTriangle_restriction` に保持し、選択で失わない。
+`squareThreeEdges` は下辺・左辺・上辺の像の和。
+`ThreeEdgeSquareComparison` と `threeEdgeSquareComparison` はこれら三辺の制限の fiber で
+二段階の変形を合成し、`unitCommaSquareComparison` は基準単位正方形と元の comma 正方形への適用。
+**三辺を固定する合成は実装済みだが、その右辺の path と既存の順方向比較の path の照合、
+復元側の輸送との比較と両合成のホモトピーは未完了。**
 二つの下側 path は同じ端点を持つだけでは同一視できず、この照合を省いて逆関係を主張しない。
 
 B1 の逆方向全体は未完了。残るのは、自然な各点の pinched 写像空間対応から単位を取り出す
@@ -254,8 +262,8 @@ comma の経路では、各点の比較の同値性から `UnitCommaInitialCondi
 射影の充填・輸送を使って自然な余単位と三角恒等式へ接続する必要がある。
 既存の全パラメータ版の経路も利用できるが、その十分条件で原典の各点の条件を置き換えて
 B1 完了とはしない。B2〜B5 も未完了。
-対象ビルド（2042 jobs）・公理監査（1044 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 374 モジュールに straightening 依存がないことも確認した。
+対象ビルド（2045 jobs）・公理監査（1096 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 377 モジュールに straightening 依存がないことも確認した。
 監査スクリプトも Lean 環境の実際の読み込みモジュールを検査し、straightening 系を拒否する。
 
 ## 4. 主要宣言
@@ -438,4 +446,9 @@ B1 完了とはしない。B2〜B5 も未完了。
 | `functorSquareOfCompositionTriangle_eq_fold` | 正方形への補完を畳み込みによる前合成と厳密に同一視 | 実装済み |
 | `FunctorCompositionSquare.normalizationHomotopy` と四辺の公式 | 補完した上側から元の正方形へ戻す変形、三辺固定・右辺は元の下側二単体由来 | 実装済み |
 | `FunctorCompositionTriangle.squareRelativeHomotopy` と四辺の公式 | 相対三角形比較を正方形全体へ移す、三辺固定・右辺は元の対角比較 | 実装済み |
-| `unitCommaUpperSquareDeformation/LowerSquareDeformation` と右辺の公式 | 基準正方形から元の comma 正方形へ進む、中間図式が厳密に一致する二段階の変形 | 実装済み（合成・既存 path との照合は未証明） |
+| `unitCommaUpperSquareDeformation/LowerSquareDeformation` と右辺の公式 | 基準正方形から元の comma 正方形へ進む、中間図式が厳密に一致する二段階の変形 | 実装済み（三辺固定の合成も実装済み） |
+| `relativeFunctorVertex/Edge` | 固定部分図式を持つ関手・相対ホモトピーを制限の fiber の頂点・辺へ移す | 実装済み |
+| `exists_relativeFunctorHomotopyComposite`・`relativeFunctorHomotopyComposite` と固定条件・合成三角形・二単体の固定条件 | 指定部分図式を全時間で固定する合成、元の二経路の実際の二単体、二単体自体も部分図式上で定値 | 実装済み |
+| `squareThreeEdges`・三つの包含・`restriction_eq`・`homotopy_restriction` | 三辺の和の部分図式、三辺の固定を一つの相対条件へまとめる | 実装済み |
+| `ThreeEdgeSquareComparison`・`threeEdgeSquareComparison`・`restriction_precomp` | 三辺固定の正方形の合成ホモトピー、元の二段階の合成三角形 | 実装済み |
+| `unitCommaSquareComparison` | 単位の基準正方形から元の comma 正方形への三辺固定の合成 | 実装済み（既存 path・復元側との照合は未証明） |

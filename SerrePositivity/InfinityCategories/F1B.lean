@@ -91,3 +91,6 @@ public import SerrePositivity.InfinityCategories.F1B.CompositionSquareCollapse
 public import SerrePositivity.InfinityCategories.F1B.SquareNormalizationHomotopy
 public import SerrePositivity.InfinityCategories.F1B.CompositionSquareComparison
 public import SerrePositivity.InfinityCategories.F1B.UnitCommaSquareDeformation
+public import SerrePositivity.InfinityCategories.F1B.RelativeFunctorHomotopyComposition
+public import SerrePositivity.InfinityCategories.F1B.SquareThreeEdges
+public import SerrePositivity.InfinityCategories.F1B.ThreeEdgeSquareComparison

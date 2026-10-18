@@ -3,11 +3,12 @@ module
 public import SerrePositivity.InfinityCategories.F1B.UnitCommaCompositionPaths
 public import SerrePositivity.InfinityCategories.F1B.CompositionSquareComparison
 public import SerrePositivity.InfinityCategories.F1B.SquareNormalizationHomotopy
+public import SerrePositivity.InfinityCategories.F1B.ThreeEdgeSquareComparison
 
 /-!
 概要：単位の基準正方形から元の comma 正方形へ進む二段階の変形。
 方針：上側の相対三角形比較を正方形全体へ移し、具体的な正規化を戻す。
-規約：二つの変形の中間図式は厳密に同じ。合成のホモトピーはまだ選ばない。
+規約：二つの変形の中間図式は厳密に同じ。合成は三辺を固定する fiber の中で選ぶ。
 使われ方：B1 の比較の逆関係を、正方形全体と右辺の経路を同時に保って検証する。
 -/
 
@@ -75,5 +76,19 @@ lemma unitCommaLowerSquareDeformation_right {A X Y : SSet.{u}}
       (unitCommaLowerSquareDeformation η x w s).h =
         rightHomotopySquare ≫ squareTriangle 1 ≫ s.functorSquare :=
   FunctorCompositionSquare.normalizationHomotopy_right _
+
+/-- 概要：基準の単位正方形から元の comma 正方形へ進む三辺固定の比較。
+方針：元の二段階の変形を三辺への制限の fiber 内で合成する。
+規約：合成のホモトピー・固定条件・元の二段階との合成三角形を同時に持つ。
+使われ方：復元側の境界 path の輸送と元の comma 正方形の比較。 -/
+noncomputable def unitCommaSquareComparison {A X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X}
+    (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌)
+    (w : (unitCommaFiber G x) _⦋0⦌)
+    (s : UnitCommaFiberSquare G x (unitCommaSectionVertex η x) w A) :
+    ThreeEdgeSquareComparison (unitIntervalCompositionTriangle_family η x
+      (unitCommaFiberTargetVertex G x w) (unitCommaSquareTargetFamily η x w s))
+      (unitCommaCompositionSquare η x w s) :=
+  threeEdgeSquareComparison _ _
 
 end SerrePositivity.InfinityCategories
