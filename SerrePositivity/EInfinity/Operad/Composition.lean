@@ -39,9 +39,9 @@ variable {A : Type u} [CommRing A]
 def composeFirstInputs (P : Operad A) : ∀ (n k : ℕ) (s : Fin n → ℕ),
     P.arity (n + k) ⊗ tensorFamily n (fun i => P.arity (s i)) ⟶
       P.arity ((∑ i, s i) + k)
-  | 0, k, s => by
-    simpa only [Nat.zero_add, Finset.univ_eq_empty, Finset.sum_empty, tensorFamily] using
-      (ρ_ (P.arity k)).hom
+  | 0, k, s =>
+    (ρ_ (P.arity (0 + k))).hom ≫
+      eqToHom (congrArg P.arity (by rw [Fin.sum_univ_zero]))
   | n + 1, k, s =>
     let l := s (Fin.last n)
     let V := tensorFamily n (fun i => P.arity (s i.castSucc))

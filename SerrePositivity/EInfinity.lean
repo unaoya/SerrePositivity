@@ -10,3 +10,5 @@ public import SerrePositivity.EInfinity.Operad.TensorFamilyPermutations
 public import SerrePositivity.EInfinity.Operad.SchurPartialComposition
 public import SerrePositivity.EInfinity.Operad.SchurCompositionNaturality
 public import SerrePositivity.EInfinity.Operad.CompositionEquivariance
+public import SerrePositivity.EInfinity.Operad.SchurCompositionEquivariance
+public import SerrePositivity.EInfinity.Operad.TensorColimitMorphisms
