@@ -13,6 +13,9 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.Spectra.AdjacentFacePrism,
+    `SerrePositivity.KST.Spectra.AdjacentFacePrismFaces,
+    `SerrePositivity.KST.Spectra.RelStructHomotopy,
     `SerrePositivity.KST.Spectra.SphereSimplex,
     `SerrePositivity.KST.Spectra.CirclePower,
     `SerrePositivity.KST.Spectra.InternalHomExchange,
