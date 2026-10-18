@@ -114,3 +114,4 @@ public import SerrePositivity.InfinityCategories.F1.CoherentHomEquivalence
 public import SerrePositivity.InfinityCategories.F1.CoslicePinchedIso
 public import SerrePositivity.InfinityCategories.F1.PointedSpaceMappingSpaces
 public import SerrePositivity.InfinityCategories.F1.CosliceFiberUniversal
+public import SerrePositivity.InfinityCategories.F1.IntervalMappingSpace

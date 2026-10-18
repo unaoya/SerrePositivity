@@ -2937,5 +2937,41 @@ def cosliceFiberHomEquiv (A X : SSet.{u}) (x y : X _⦋0⦌) :
         joinInl Δ[0] A ≫ F = SSet.yonedaEquiv.symm x ∧
         joinInr Δ[0] A ≫ F = SSet.const y}
 
+def intervalMappingBoundary {X : SSet.{u}} (x y : X _⦋0⦌) :
+    (boundary 1 : SSet.{u}) ⟶ X
+
+def intervalMappingSpace {X : SSet.{u}} (x y : X _⦋0⦌) : SSet.{u}
+
+def intervalMappingUncurry {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (f : A ⟶ intervalMappingSpace x y) : (Δ[1] : SSet.{u}) ⊗ A ⟶ X
+
+lemma intervalMappingUncurry_boundary {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (f : A ⟶ intervalMappingSpace x y) :
+    ((boundary 1).ι ▷ A) ≫ intervalMappingUncurry f =
+      fst (boundary 1 : SSet.{u}) A ≫ intervalMappingBoundary x y
+
+def intervalMappingCurry {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ X)
+    (h : ((boundary 1).ι ▷ A) ≫ H =
+      fst (boundary 1 : SSet.{u}) A ≫ intervalMappingBoundary x y) :
+    A ⟶ intervalMappingSpace x y
+
+lemma intervalMappingUncurry_curry {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (H : (Δ[1] : SSet.{u}) ⊗ A ⟶ X)
+    (h : ((boundary 1).ι ▷ A) ≫ H =
+      fst (boundary 1 : SSet.{u}) A ≫ intervalMappingBoundary x y) :
+    intervalMappingUncurry (intervalMappingCurry H h) = H
+
+lemma intervalMappingUncurry_injective {A X : SSet.{u}} (x y : X _⦋0⦌) :
+    Function.Injective (intervalMappingUncurry (A := A) (x := x) (y := y))
+
+lemma intervalMappingCurry_uncurry {A X : SSet.{u}} {x y : X _⦋0⦌}
+    (f : A ⟶ intervalMappingSpace x y) :
+    intervalMappingCurry (intervalMappingUncurry f) (intervalMappingUncurry_boundary f) = f
+
+lemma intervalMappingUncurry_precomp {A B X : SSet.{u}} {x y : X _⦋0⦌}
+    (i : A ⟶ B) (f : B ⟶ intervalMappingSpace x y) :
+    intervalMappingUncurry (i ≫ f) = (Δ[1] ◁ i) ≫ intervalMappingUncurry f
+
 end SerrePositivity.InfinityCategories
 ```

@@ -674,3 +674,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.cosliceFiberCurry_uncurry
 #check @SerrePositivity.InfinityCategories.cosliceFiberUncurry_precomp
 #check @SerrePositivity.InfinityCategories.cosliceFiberHomEquiv
+#check @SerrePositivity.InfinityCategories.intervalMappingBoundary
+#check @SerrePositivity.InfinityCategories.intervalMappingSpace
+#check @SerrePositivity.InfinityCategories.intervalMappingUncurry
+#check @SerrePositivity.InfinityCategories.intervalMappingUncurry_boundary
+#check @SerrePositivity.InfinityCategories.intervalMappingCurry
+#check @SerrePositivity.InfinityCategories.intervalMappingUncurry_curry
+#check @SerrePositivity.InfinityCategories.intervalMappingUncurry_injective
+#check @SerrePositivity.InfinityCategories.intervalMappingCurry_uncurry
+#check @SerrePositivity.InfinityCategories.intervalMappingUncurry_precomp
