@@ -3,9 +3,9 @@ module
 public import SerrePositivity.KST.Comparison.FibrantPullbackMap
 
 /-!
-# Kan 基底を固定したホモトピー引き戻しの不変性
+# 任意の基底を固定したホモトピー引き戻しの不変性
 
-概要：基底が Kan のとき、二つの入力の局所化同型はホモトピー引き戻し模型の同型を誘導する。
+概要：任意の基底で、二つの入力の局所化同型はホモトピー引き戻し模型の同型を誘導する。
 方針：右入力の Kan 分解の比較と、左入力を動かす積の比較に分ける。
 規約：Segal 1974 Proposition 1.6 の貼り合わせの補助。固定模型の実際の比較射を使う。
 使われ方：骨格の各部で行う置換の整合。
@@ -54,13 +54,13 @@ open SerrePositivity.SimplicialModel
   pullback.lift_snd ..
 
 /--
-概要：Kan 基底を固定した二つの入力の局所化同型はホモトピー引き戻し模型の同型を誘導する。
+概要：任意の基底を固定した二つの入力の局所化同型はホモトピー引き戻し模型の同型を誘導する。
 方針：右入力の分解の比較を引き戻し、次に左入力の比較を積で送る。
-規約：Segal 1974 Proposition 1.6 の補助。基底の Kan 性を明示する。
+規約：Segal 1974 Proposition 1.6 の補助。基底の Kan 性は要求しない。
 使われ方：置換した骨格の各部分のホモトピー引き戻し比較。
 -/
-theorem homotopyPullbackMap_localized_isIso_fixed_kan_base {X Y X' Y' B : SSet.{u}}
-    [SSet.KanComplex B] {f : X ⟶ B} {g : Y ⟶ B} {f' : X' ⟶ B} {g' : Y' ⟶ B}
+theorem homotopyPullbackMap_localized_isIso_fixed_base {X Y X' Y' B : SSet.{u}}
+    {f : X ⟶ B} {g : Y ⟶ B} {f' : X' ⟶ B} {g' : Y' ⟶ B}
     (a : X ⟶ X') (b : Y ⟶ Y') (hf : f ≫ 𝟙 B = a ≫ f') (hg : g ≫ 𝟙 B = b ≫ g')
     (ha : IsIso (AnodyneHomotopy.anodyneQ.map a))
     (hb : IsIso (AnodyneHomotopy.anodyneQ.map b)) :
@@ -90,9 +90,9 @@ theorem homotopyPullbackMap_localized_isIso_fixed_kan_base {X Y X' Y' B : SSet.{
     exact hf.symm.trans (Category.comp_id _))
   let s : pullback f d₁.p ⟶ pullback f' d₁.p := (sliceFiberFunctor d₁.p).map av
   have hr : IsIso (AnodyneHomotopy.anodyneQ.map r) :=
-    pullbackMapBase_localized_isIso_of_kan_base d₀.p d₀.hp d₁.p d₁.hp f z hz hzi
+    pullbackMapBase_localized_isIso d₀.p d₀.hp d₁.p d₁.hp f z hz hzi
   have hs : IsIso (AnodyneHomotopy.anodyneQ.map s) :=
-    sliceFiberFunctor_localized_isIso d₁.p d₁.hp av ha
+    sliceFiberFunctor_localized_isIso_anyBase d₁.p d₁.hp av ha
   have hsf : s ≫ pullback.fst f' d₁.p = pullback.fst f d₁.p ≫ a :=
     sliceFiberFunctor_map_fst d₁.p av
   have hss : s ≫ pullback.snd f' d₁.p = pullback.snd f d₁.p :=
@@ -109,5 +109,19 @@ theorem homotopyPullbackMap_localized_isIso_fixed_kan_base {X Y X' Y' B : SSet.{
   change IsIso (AnodyneHomotopy.anodyneQ.map m)
   rw [hfac, Functor.map_comp]
   infer_instance
+
+/--
+概要：Kan 基底を固定したホモトピー引き戻し比較の従来の界面。
+方針：任意の基底について証明した固定基底の不変性を適用する。
+規約：Segal 1974 Proposition 1.6 の補助。追加の Kan 性を証明に使わない。
+使われ方：既存の呼び出しとの互換性。
+-/
+theorem homotopyPullbackMap_localized_isIso_fixed_kan_base {X Y X' Y' B : SSet.{u}}
+    [SSet.KanComplex B] {f : X ⟶ B} {g : Y ⟶ B} {f' : X' ⟶ B} {g' : Y' ⟶ B}
+    (a : X ⟶ X') (b : Y ⟶ Y') (hf : f ≫ 𝟙 B = a ≫ f') (hg : g ≫ 𝟙 B = b ≫ g')
+    (ha : IsIso (AnodyneHomotopy.anodyneQ.map a))
+    (hb : IsIso (AnodyneHomotopy.anodyneQ.map b)) :
+    IsIso (AnodyneHomotopy.anodyneQ.map (homotopyPullbackMap a b (𝟙 B) hf hg)) :=
+  homotopyPullbackMap_localized_isIso_fixed_base a b hf hg ha hb
 
 end SerrePositivity.KST.Comparison

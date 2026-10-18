@@ -1,14 +1,14 @@
 module
 
-public import SerrePositivity.KST.Comparison.KanBasePullback
+public import SerrePositivity.KST.Comparison.ArbitraryBasePullback
 public import SerrePositivity.KST.Comparison.ReplacementComparison
 
 /-!
-# Kan 基底上の二つのファイバー方向の比較
+# 任意の基底上の二つのファイバー方向の比較
 
 概要：Kan fibration の間の局所化同型は任意の射に沿って引き戻しても可逆となる。
 方針：先に引き戻す射が fibration の場合を積の対称性で示し、一般の場合はその射も置換する。
-規約：Segal 1974 Proposition 1.6 のホモトピー引き戻し模型の比較。基底の Kan 性を使う。
+規約：Segal 1974 Proposition 1.6 のホモトピー引き戻し模型の比較。基底の Kan 性は要求しない。
 使われ方：基底を固定して二つの入力を動かす比較の準備。
 -/
 
@@ -48,32 +48,32 @@ theorem pullbackMapBase_swap {T₀ T₁ X B : SSet.{u}}
       pullbackSymmetry_hom_comp_snd, hm₀, ← Category.assoc, pullbackSymmetry_hom_comp_fst]
 
 /--
-概要：Kan 基底上の局所化同型は、Kan fibration で引き戻すと可逆となる。
+概要：任意の基底上の局所化同型は、Kan fibration で引き戻すと可逆となる。
 方針：積の対称性でスライスの積の既証の不変性を適用する。
 規約：比較される二つの対象の構造射の Kan 性は不要。
 使われ方：任意の左変数を Kan 分解した後の比較。
 -/
 theorem pullbackMapBase_localized_isIso_of_fibration {T₀ T₁ X B : SSet.{u}}
-    [SSet.KanComplex B] (p₀ : T₀ ⟶ B) (p₁ : T₁ ⟶ B)
+    (p₀ : T₀ ⟶ B) (p₁ : T₁ ⟶ B)
     (f : X ⟶ B) (hf : SSet.modelCategoryQuillen.J.rlp f)
     (k : T₀ ⟶ T₁) (hk : k ≫ p₁ = p₀)
     (hki : IsIso (AnodyneHomotopy.anodyneQ.map k)) :
     IsIso (AnodyneHomotopy.anodyneQ.map (pullbackMapBase p₀ p₁ f k hk)) := by
   let v : Over.mk p₀ ⟶ Over.mk p₁ := Over.homMk k hk
   have h : IsIso (AnodyneHomotopy.anodyneQ.map ((sliceFiberFunctor f).map v)) :=
-    sliceFiberFunctor_localized_isIso f hf v hki
+    sliceFiberFunctor_localized_isIso_anyBase f hf v hki
   rw [pullbackMapBase_swap]
   rw [Functor.map_comp, Functor.map_comp]
   infer_instance
 
 /--
-概要：Kan 基底上の Kan fibration の間の局所化同型は任意の射で引き戻しても可逆となる。
+概要：任意の基底上の Kan fibration の間の局所化同型は任意の射で引き戻しても可逆となる。
 方針：左射を anodyne–Kan 分解し、二つの積の縦方向の比較と可換な四角形を作る。
-規約：Segal 1974 Proposition 1.6 の補助。基底の Kan 性と両方の右射の Kan 性を使う。
+規約：Segal 1974 Proposition 1.6 の補助。両方の右射の Kan 性を使う。基底は任意。
 使われ方：ホモトピー引き戻し模型の右入力に関する不変性。
 -/
-theorem pullbackMapBase_localized_isIso_of_kan_base {T₀ T₁ X B : SSet.{u}}
-    [SSet.KanComplex B] (p₀ : T₀ ⟶ B) (hp₀ : SSet.modelCategoryQuillen.J.rlp p₀)
+theorem pullbackMapBase_localized_isIso {T₀ T₁ X B : SSet.{u}}
+    (p₀ : T₀ ⟶ B) (hp₀ : SSet.modelCategoryQuillen.J.rlp p₀)
     (p₁ : T₁ ⟶ B) (hp₁ : SSet.modelCategoryQuillen.J.rlp p₁)
     (f : X ⟶ B) (k : T₀ ⟶ T₁) (hk : k ≫ p₁ = p₀)
     (hki : IsIso (AnodyneHomotopy.anodyneQ.map k)) :
@@ -110,5 +110,19 @@ theorem pullbackMapBase_localized_isIso_of_kan_base {T₀ T₁ X B : SSet.{u}}
     h ▸ inferInstanceAs (IsIso (AnodyneHomotopy.anodyneQ.map a₀ ≫
       AnodyneHomotopy.anodyneQ.map b₁))
   exact (isIso_comp_right_iff _ _).mp hc
+
+/--
+概要：Kan 基底上のファイバー方向の比較の従来の界面。
+方針：任意の基底で証明した引き戻しの不変性を適用する。
+規約：Segal 1974 Proposition 1.6 の補助。Kan 基底の従来の呼び出しにも使える。
+使われ方：既存のホモトピー引き戻し比較との互換性。
+-/
+theorem pullbackMapBase_localized_isIso_of_kan_base {T₀ T₁ X B : SSet.{u}}
+    [SSet.KanComplex B] (p₀ : T₀ ⟶ B) (hp₀ : SSet.modelCategoryQuillen.J.rlp p₀)
+    (p₁ : T₁ ⟶ B) (hp₁ : SSet.modelCategoryQuillen.J.rlp p₁)
+    (f : X ⟶ B) (k : T₀ ⟶ T₁) (hk : k ≫ p₁ = p₀)
+    (hki : IsIso (AnodyneHomotopy.anodyneQ.map k)) :
+    IsIso (AnodyneHomotopy.anodyneQ.map (pullbackMapBase p₀ p₁ f k hk)) :=
+  pullbackMapBase_localized_isIso p₀ hp₀ p₁ hp₁ f k hk hki
 
 end SerrePositivity.KST.Comparison

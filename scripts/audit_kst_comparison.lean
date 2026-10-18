@@ -74,6 +74,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -668,6 +669,12 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.exInfinitySimplicialMonoid_isGrouplike
 
 
+-- ExInfinityHomotopyPullback.lean
+
+#check @SerrePositivity.KST.Comparison.isHomotopyPullback_exInfinity_iff
+#print axioms SerrePositivity.KST.Comparison.isHomotopyPullback_exInfinity_iff
+
+
 -- ExInfinityKan.lean
 
 #check @SerrePositivity.KST.Comparison.exInfinity_hornFilling
@@ -941,6 +948,12 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.pullbackHomotopyOver
 
 
+-- FibrantCospanInvariance.lean
+
+#check @SerrePositivity.KST.Comparison.fibrantCospanMap_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.fibrantCospanMap_localized_isIso
+
+
 -- FibrantPullbackComparison.lean
 
 #check @SerrePositivity.KST.Comparison.fibrantPullbackComparison_isIso
@@ -957,6 +970,9 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.pullbackMapBase_localized_isIso_of_fibration
 #print axioms SerrePositivity.KST.Comparison.pullbackMapBase_localized_isIso_of_fibration
+
+#check @SerrePositivity.KST.Comparison.pullbackMapBase_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.pullbackMapBase_localized_isIso
 
 #check @SerrePositivity.KST.Comparison.pullbackMapBase_localized_isIso_of_kan_base
 #print axioms SerrePositivity.KST.Comparison.pullbackMapBase_localized_isIso_of_kan_base
@@ -1240,8 +1256,23 @@ run_cmd do
 #check @SerrePositivity.KST.Comparison.homotopyPullbackMap_snd
 #print axioms SerrePositivity.KST.Comparison.homotopyPullbackMap_snd
 
+#check @SerrePositivity.KST.Comparison.homotopyPullbackMap_localized_isIso_fixed_base
+#print axioms SerrePositivity.KST.Comparison.homotopyPullbackMap_localized_isIso_fixed_base
+
 #check @SerrePositivity.KST.Comparison.homotopyPullbackMap_localized_isIso_fixed_kan_base
 #print axioms SerrePositivity.KST.Comparison.homotopyPullbackMap_localized_isIso_fixed_kan_base
+
+
+-- HomotopyPullbackThreeInputs.lean
+
+#check @SerrePositivity.KST.Comparison.homotopyPullbackMap_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.homotopyPullbackMap_localized_isIso
+
+#check @SerrePositivity.KST.Comparison.homotopyPullbackComparison_naturality
+#print axioms SerrePositivity.KST.Comparison.homotopyPullbackComparison_naturality
+
+#check @SerrePositivity.KST.Comparison.isHomotopyPullback_iff_of_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.isHomotopyPullback_iff_of_localized_isIso
 
 
 -- HornChainBoundary.lean

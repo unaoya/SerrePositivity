@@ -541,6 +541,10 @@ horn の安全な面へ頂点 k を加える収縮から、面の部分順序集
 この同型で細分された horn の anodyne 性を移し、sd の anodyne 保存と Ex の Kan fibration 保存を証明した。
 horn と標準単体の有限表示可能性による arrow の順序余極限で、Ex∞ の Kan fibration 保存を証明した。
 有限極限保存と局所化後の単位の同型を合わせ、任意の基底での Kan fibration に沿う局所化同型の引き戻しを証明した。
+固定した任意の基底でのホモトピー引き戻し模型の左右の入力の不変性を証明した。
+基底も動く Kan fibration の cospan の比較と、ホモトピー引き戻し模型の三入力の不変性を証明した。
+標準比較射の自然性、四つの頂点の局所化同型によるホモトピー引き戻し性の保存・反映を証明した。
+Ex∞ が四角形のホモトピー引き戻し性を保存・反映することを証明した。
 Segal Lemma 1.7 の homotopy-cartesian 性の貼り合わせの本体は未証明。
 対角化後の bar 束の homotopy-cartesian 性と、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
@@ -548,8 +552,8 @@ L2b、L2c、L2d、L2e は未完了である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 659 宣言の型と公理を確認した。
-さらに名前空間全体の 1256 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 666 宣言の型と公理を確認した。
+さらに名前空間全体の 1263 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -673,6 +677,10 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `subdivisionHorn_anodyne`、`subdivision_map_anodyne`、`ex_map_rlp` | 実装済み | 実際の sd の anodyne 保存と Ex の Kan fibration 保存 |
 | `hornRight_sequentialColimit`、`exInfinity_map_rlp` | 実装済み | horn の有限表示可能性による Ex∞ の Kan fibration 保存 |
 | `pullback_localized_isIso`、`sliceFiberFunctor_localized_isIso_anyBase` | 実装済み | 任意の基底での Kan fibration に沿う局所化同型の引き戻し |
+| `pullbackMapBase_localized_isIso`、`homotopyPullbackMap_localized_isIso_fixed_base` | 実装済み | 任意の固定基底での左右の入力の比較 |
+| `fibrantCospanMap_localized_isIso`、`homotopyPullbackMap_localized_isIso` | 実装済み | 基底も動かす三入力の比較 |
+| `homotopyPullbackComparison_naturality`、`isHomotopyPullback_iff_of_localized_isIso` | 実装済み | 標準比較射の自然性と四つの頂点の置換 |
+| `isHomotopyPullback_exInfinity_iff` | 実装済み | Ex∞ によるホモトピー引き戻しの保存・反映 |
 | Segal Lemma 1.7 の homotopy-cartesian 性の貼り合わせ | 未証明 | 実際の二重写像円筒の比較について証明する |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |

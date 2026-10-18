@@ -60,6 +60,7 @@ public import SerrePositivity.KST.Comparison.StrictCylinderPullbacks
 public import SerrePositivity.KST.Comparison.HornFaceInclusionAnodyne
 public import SerrePositivity.KST.Comparison.HornSimplexFaceFactorization
 public import SerrePositivity.KST.Comparison.ArbitraryBasePullback
+public import SerrePositivity.KST.Comparison.ExInfinityHomotopyPullback
 
 /-!
 # K-L2：比較定理の入口
