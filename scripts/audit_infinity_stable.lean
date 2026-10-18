@@ -130,6 +130,21 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.suspensionDiagramEvaluation_source_essentiallySurjective
 #print axioms SerrePositivity.InfinityCategories.loopDiagramEvaluation_target_essentiallySurjective
 
+#print axioms SerrePositivity.InfinityCategories.coconeRestriction
+#print axioms SerrePositivity.InfinityCategories.coconeFamily
+#print axioms SerrePositivity.InfinityCategories.coconeRestriction_innerFibration
+#print axioms SerrePositivity.InfinityCategories.coconeFamily_quasicategory
+#print axioms SerrePositivity.InfinityCategories.coconeFamilyVertexEquiv
+#print axioms SerrePositivity.InfinityCategories.cosliceCoconeFamilyUncurry
+#print axioms SerrePositivity.InfinityCategories.cosliceCoconeFamilyUncurry_fixed
+#print axioms SerrePositivity.InfinityCategories.cosliceCoconeFamilyUncurry_curry_fixed
+#print axioms SerrePositivity.InfinityCategories.cosliceCoconeFamilyMap
+#print axioms SerrePositivity.InfinityCategories.stable_joinTensorRight_naturality
+#print axioms SerrePositivity.InfinityCategories.cosliceCoconeFamilyUncurry_vertex
+#print axioms SerrePositivity.InfinityCategories.cosliceCoconeFamilyMap_app_zero
+#print axioms SerrePositivity.InfinityCategories.stable_fatJoinInl_mono
+#print axioms SerrePositivity.InfinityCategories.isQCatEquivalence_fatJoinComparison_fixedLeftDiagram
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -142,7 +157,9 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.ZeroHomotopy,
     `SerrePositivity.InfinityCategories.Stable.InitialTransport,
     `SerrePositivity.InfinityCategories.Stable.SuspensionSquare,
-    `SerrePositivity.InfinityCategories.Stable.SuspensionDiagrams]
+    `SerrePositivity.InfinityCategories.Stable.SuspensionDiagrams,
+    `SerrePositivity.InfinityCategories.Stable.CoconeFamily,
+    `SerrePositivity.InfinityCategories.Stable.CoconeFixedComparison]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

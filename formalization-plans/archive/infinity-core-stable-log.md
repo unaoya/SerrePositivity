@@ -808,3 +808,104 @@ SerrePositivity.InfinityCategories.loopDiagramEvaluation_target_essentiallySurje
               ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) x)))
           b
 ```
+
+## S3 の準備：余錐の族と左図式を固定した比較
+
+S3 全体は未完了。coslice 比較射自体の同値性、相対充填、ΣΩ の関手性・
+選択間の自然同型・自己同値はまだ含めない。対象・集約ビルド（1870 jobs）、
+全 312 宣言／11 モジュールの標準三公理監査に成功。公開型：
+
+```lean
+SerrePositivity.InfinityCategories.coconeRestriction.{u_1} : (J X : SSet.{u_1}) →
+  Quiver.Hom.{u_1, u_1 + 1}
+    (SerrePositivity.InfinityCategories.join.{u_1} J
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }) ⟹
+      X)
+    (J ⟹ X)
+@SerrePositivity.InfinityCategories.coconeFamily.{u_1} : {J X : SSet.{u_1}} → Quiver.Hom.{u_1, u_1 + 1} J X → SSet.{u_1}
+SerrePositivity.InfinityCategories.coconeRestriction_innerFibration.{u_1} : ∀ (J X : SSet.{u_1})
+  [SSet.Quasicategory.{u_1} X],
+  SSet.InnerFibration.{u_1} (SerrePositivity.InfinityCategories.coconeRestriction.{u_1} J X)
+@SerrePositivity.InfinityCategories.coconeFamily_quasicategory.{u_1} : ∀ {J X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  (p : Quiver.Hom.{u_1, u_1 + 1} J X),
+  SSet.Quasicategory.{u_1} (SerrePositivity.InfinityCategories.coconeFamily.{u_1} p)
+@SerrePositivity.InfinityCategories.coconeFamilyVertexEquiv.{u_1} : {J X : SSet.{u_1}} →
+  (p : Quiver.Hom.{u_1, u_1 + 1} J X) →
+    Equiv.{u_1 + 1, u_1 + 1} (SerrePositivity.InfinityCategories.JoinCocone.{u_1} p)
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (SerrePositivity.InfinityCategories.coconeFamily.{u_1} p)
+        (Opposite.op.{1} { len := 0 }))
+@SerrePositivity.InfinityCategories.cosliceCoconeFamilyUncurry.{u_1} : {J X : SSet.{u_1}} →
+  (p : Quiver.Hom.{u_1, u_1 + 1} J X) →
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.join.{u_1} J
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+        (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p))
+      X
+@SerrePositivity.InfinityCategories.cosliceCoconeFamilyUncurry_fixed.{u_1} : ∀ {J X : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} J X),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.joinInl.{u_1} J
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+        (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p))
+      (SerrePositivity.InfinityCategories.cosliceCoconeFamilyUncurry.{u_1} p))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.SemiCartesianMonoidalCategory.fst.{u_1, u_1 + 1} J
+        (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p))
+      p)
+@SerrePositivity.InfinityCategories.cosliceCoconeFamilyUncurry_curry_fixed.{u_1} : ∀ {J X : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} J X),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalClosed.curry.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.cosliceCoconeFamilyUncurry.{u_1} p))
+      (SerrePositivity.InfinityCategories.coconeRestriction.{u_1} J X))
+    (SSet.const.{u_1} (SerrePositivity.InfinityCategories.functorVertex.{u_1} p))
+@SerrePositivity.InfinityCategories.cosliceCoconeFamilyMap.{u_1} : {J X : SSet.{u_1}} →
+  (p : Quiver.Hom.{u_1, u_1 + 1} J X) →
+    Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p)
+      (SerrePositivity.InfinityCategories.coconeFamily.{u_1} p)
+@SerrePositivity.InfinityCategories.stable_joinTensorRight_naturality.{u_1} : ∀ {C D : SSet.{u_1}}
+  (f : Quiver.Hom.{u_1, u_1 + 1} C D) (A B : SSet.{u_1}),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.whiskerLeft.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.join.{u_1} A B) f)
+      (SerrePositivity.InfinityCategories.joinTensorRight.{u_1} A B D))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.joinTensorRight.{u_1} A B C)
+      (SerrePositivity.InfinityCategories.joinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} A)
+        (CategoryTheory.MonoidalCategoryStruct.whiskerLeft.{u_1, u_1 + 1} B f)))
+@SerrePositivity.InfinityCategories.cosliceCoconeFamilyUncurry_vertex.{u_1} : ∀ {J X : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} J X) (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.whiskerLeft.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.join.{u_1} J
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+        ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) c))
+      (SerrePositivity.InfinityCategories.cosliceCoconeFamilyUncurry.{u_1} p))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.SemiCartesianMonoidalCategory.fst.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.join.{u_1} J
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+      ↑c)
+@SerrePositivity.InfinityCategories.cosliceCoconeFamilyMap_app_zero.{u_1} : ∀ {J X : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} J X) (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p),
+  Eq.{u_1 + 1}
+    ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+        (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+          (SerrePositivity.InfinityCategories.cosliceCoconeFamilyMap.{u_1} p) (Opposite.op.{1} { len := 0 })))
+      c)
+    ((SerrePositivity.InfinityCategories.coconeFamilyVertexEquiv.{u_1} p) c)
+SerrePositivity.InfinityCategories.stable_fatJoinInl_mono.{u_1} : ∀ (A B : SSet.{u_1}),
+  CategoryTheory.Mono.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} A B)
+SerrePositivity.InfinityCategories.isQCatEquivalence_fatJoinComparison_fixedLeftDiagram.{u_1} : ∀ (K A X : SSet.{u_1})
+  [inst : SSet.Quasicategory.{u_1} X] (p : Quiver.Hom.{u_1, u_1 + 1} K X),
+  SerrePositivity.InfinityCategories.IsQCatEquivalence.{u_1}
+    (SerrePositivity.InfinityCategories.fixedDiagramPre.{u_1} (SerrePositivity.InfinityCategories.joinInl.{u_1} K A)
+      (SerrePositivity.InfinityCategories.fatJoinInl.{u_1} K A)
+      (SerrePositivity.InfinityCategories.fatJoinComparison.{u_1} K A) ⋯ p)
+```

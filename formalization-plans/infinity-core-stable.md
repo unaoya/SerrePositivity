@@ -20,6 +20,10 @@ S3 の準備として、始頂点が h C の始対象となること、零頂点
 同型とその評価との可換性、始点／終点評価の本質的全射性も証明した。
 残る中心は始点／終点評価の充満忠実性（図式の族における普遍余錐／錐の相対充填）。
 その証明後に逆関手を取り h C の ΣΩ と選択間の自然同型を構成する。
+余錐側では制限射 `coconeRestriction` の fiber `coconeFamily`、その零単体と
+`JoinCocone` の同値、coslice からの比較射と零次成分の式を構成した。
+左図式を固定した fat join 比較の同値性も証明済み。coslice の比較射自体の同値性と、
+余極限性から図式の族における相対充填への接続は未完了。
 現段階は関手性・選択の自然な比較・自己同値の完成ではない。
 安定性から全有限極限・余極限を導く逆向き、S3 の関手性と自己同値、三角構造・D7 は未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
@@ -83,6 +87,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 余極限の同型不変性 | `IsInitialVertex.of_vertexIso`、`IsColimitCone.of_vertexIso`（Quasicategory、同じ図式の coslice 内の同型） | 完了 |
 | ΣΩ の四角形 | `chosenSuspensionSquare x`、`chosenLoopSquare x`（Quasicategory、IsStable）、`SuspensionSquare.toLoopSquare` と双対 | 完了（対象と四角形のみ） |
 | ΣΩ の図式の族 | `suspensionDiagrams`、`loopDiagrams`（Quasicategory）、`suspensionLoopDiagramsIso`（IsStable）、評価の可換性と本質的全射性 | 完了（評価の充満忠実性は未完了） |
+| 余錐の族の比較 | `coconeFamilyVertexEquiv`、`cosliceCoconeFamilyMap_app_zero`、`isQCatEquivalence_fatJoinComparison_fixedLeftDiagram`（最後のみ Quasicategory） | 完了（coslice 比較の同値性・相対充填は未完了） |
 | S3〜S7 | ΣΩ の関手性・自然な選択比較・自己同値、三角構造・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

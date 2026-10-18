@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.SuspensionDiagrams
+public import SerrePositivity.InfinityCategories.Stable.CoconeFixedComparison
 
 /-! # 安定 ∞ 圏の基盤
 
