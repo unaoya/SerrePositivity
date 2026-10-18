@@ -281,20 +281,28 @@ h Fun の等式から任意の path を取り直す操作とは区別する。
 comma 正方形にし、標的を共有するとき `familyHomotopy` で区間写像空間の族のホモトピーへ戻す。
 `unitCommaSquare_reconstruction_family_homotopy` と `unitCommaMappingFamily_reconstruction_homotopy`
 は元の族と、同じパラメータ上でその正方形から復元した族を実際に結ぶ。
-**同じパラメータ上での復元比較を写像空間の族のホモトピーへ移す接続は実装済み。
-普遍族から定義した比較射の合成のホモトピーは未証明。** 次は、導来 fiber の普遍族で選んだ
-復元を前合成した場合の同じ始点・境界 path を照合して、戻る合成のホモトピーと始対象性へ接続する。
-同じパラメータで選び直した輸送と、普遍族から前合成した輸送を定義的に同じとは扱わない。
+`intervalFamilyPath_precomp` と `unitCompositionBoundaryPath_precomp` は指定ホモトピーの
+raw な射を保ったパラメータ自然性を与える。`unitCompositionPathExtension_precomp` は普遍族で
+選んだ輸送をそのまま制限し、輸送の選び直しとの定義的な一致を仮定しない。
+`unitCommaSquare_reconstruction_precomp_homotopy` は、この制限した復元と元の comma の族を結ぶ。
+順方向比較による普遍標的・普遍ホモトピーの引き戻しは、元の族のデータと厳密に一致する。
+これにより `unitCommaMappingToComparisonFiber_comp_return_homotopy` は恒等射から実際の
+戻る合成へのホモトピーを与える。
+`isContractibleKan_of_homotopy_retract` で導来 fiber の可縮性を comma 写像空間に移し、
+`UnitMappingSpaceCondition.unitCommaInitialCondition` によって指定単位の始対象性を得た。
+**各点の標準単位比較の同値性から comma の指定始対象性への接続は実装済み。**
+ここでは可縮性の移送に必要な一方の合成を証明した。任意の比較 fiber 上のもう一方の合成の
+ホモトピーや、二方向比較が常にホモトピー逆になるという強い主張は含めない。
 
 B1 の逆方向全体は未完了。残るのは、自然な各点の pinched 写像空間対応から単位を取り出す
 接続と、`UnitMappingSpaceCondition η` から
 `∃ a : QCatAdjunction F G, a.unitHom = η` を構成する逆方向である。
-comma の経路では、各点の比較の同値性から `UnitCommaInitialCondition η` を導き、普遍矢印の
-射影の充填・輸送を使って自然な余単位と三角恒等式へ接続する必要がある。
+comma の経路では、証明済みの `UnitCommaInitialCondition η` から普遍矢印の射影の
+充填・輸送を使って自然な余単位と三角恒等式へ接続する必要がある。
 既存の全パラメータ版の経路も利用できるが、その十分条件で原典の各点の条件を置き換えて
 B1 完了とはしない。B2〜B5 も未完了。
-対象ビルド（2061 jobs）・公理監査（1221 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 393 モジュールに straightening 依存がないことも確認した。
+対象ビルド（2068 jobs）・公理監査（1240 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 400 モジュールに straightening 依存がないことも確認した。
 監査スクリプトも Lean 環境の実際の読み込みモジュールを検査し、straightening 系を拒否する。
 
 ## 4. 主要宣言
@@ -496,9 +504,16 @@ B1 完了とはしない。B2〜B5 も未完了。
 | `exists_functorDiagramPath_endpointHomotopy`・`FunctorDiagramPathExtension.exists_endpointHomotopy` | 同じ始点・制限 path の拡張の終点を指定部分図式固定で結ぶ | 実装済み（同じパラメータの正方形の復元比較にも接続済み） |
 | `squareBoundary`・`squareBoundary_restriction_eq` | 三辺の固定と右辺の path の一致を全境界の等式へまとめる | 実装済み |
 | `ThreeEdgeSquareComparison.exists_homotopy_to_triangleTransport` | 三角形の輸送の畳み込みと元の正方形を、始点・全境界 path の照合により境界固定で結ぶ | 実装済み |
-| `unitCommaSquare_reconstruction_homotopy` | 同じパラメータ上で元の comma 正方形とその標的・経路からの復元を全境界固定で比較 | 実装済み（写像空間の族への移送も実装済み、普遍族の前合成の照合は未完了） |
+| `unitCommaSquare_reconstruction_homotopy` | 同じパラメータ上で元の comma 正方形とその標的・経路からの復元を全境界固定で比較 | 実装済み（族への移送・普遍族の前合成の照合も実装済み） |
 | `diagramHomotopyTranspose` と固定部分図式・時間両端の公式 | 時間をパラメータへ移した関手図式と元の図式の厳密な回収 | 実装済み |
 | `UnitCommaFiberSquare.family/precomp` と標的・coherence・関手表示の公式、`ext_functorSquare` | 族の逆表示・パラメータ制限と外延性 | 実装済み |
 | `UnitCommaFiberSquare.compositionSquare/withFunctorSquare` と回収公式 | 標的・四辺を保った coherence の置き換え | 実装済み |
 | `UnitCommaSquareHomotopyLift`・`unitCommaSquareHomotopyLift` と `zero/one/familyHomotopy` | 全境界固定の図式の変形を時間付き comma 正方形・族のホモトピーに移す | 実装済み |
-| `unitCommaSquare_reconstruction_family_homotopy`・`unitCommaMappingFamily_reconstruction_homotopy` | 元の族と同じパラメータ上での復元を実際のホモトピーで結ぶ | 実装済み（普遍族で選んだ逆射の前合成との照合は未完了） |
+| `unitCommaSquare_reconstruction_family_homotopy`・`unitCommaMappingFamily_reconstruction_homotopy` | 元の族と同じパラメータ上での復元を実際のホモトピーで結ぶ | 実装済み（普遍族で選んだ逆射の前合成との照合も実装済み） |
+| `intervalFamilySquare_precomp`・`intervalFamilyPath_precomp`・`equivalencePathRefl_map` | 族の正方形・可逆 path・定値 path のパラメータ自然性 | 実装済み |
+| `unitIntervalCompositionTriangle_family_precomp`・`unitCompositionBoundaryPath_precomp`・`unitCompositionPathExtension_precomp` | 普遍単位三角形の輸送を始点と境界 path を保持して制限 | 実装済み |
+| `unitCommaSquare_reconstruction_precomp_homotopy` | 普遍パラメータ上で選んだ復元の前合成と元の族の実際のホモトピー | 実装済み |
+| `homotopyEquivalencePath_homotopy`・`unitCommaMappingToComparisonFiber_source`・`unitCommaMappingToComparisonFiber_path`・`unitCommaMappingToComparisonFiber_homotopy` | 順方向比較による普遍標的・path・raw なホモトピーの回収 | 実装済み |
+| `unitCommaMappingToComparisonFiber_comp_return_homotopy` | 恒等射から実際の戻る合成へのホモトピー | 実装済み |
+| `isContractibleKan_of_homotopy_retract` | 可縮 Kan 複体のホモトピー retract へ可縮性を移す | 実装済み |
+| `UnitMappingSpaceCondition.unitCommaMappingSpace_isContractibleKan`・`UnitMappingSpaceCondition.unitCommaInitialCondition` | 各点の標準単位比較の同値性から指定単位の comma 始対象性 | 実装済み（余単位・三角恒等式の構成は後続） |
