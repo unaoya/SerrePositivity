@@ -276,3 +276,51 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.qcatAdjunctionOfUnitMappingEquivalences
 
 #check @SerrePositivity.InfinityCategories.qcatAdjunctionOfUnitMappingEquivalences_unitHom
+
+#check @SerrePositivity.InfinityCategories.qcatUnitHomMap_formula
+
+#check @SerrePositivity.InfinityCategories.qcatUnitHomMap_naturality_right
+
+#check @SerrePositivity.InfinityCategories.qcatUnitHomMap_precomp
+
+#check @SerrePositivity.InfinityCategories.evaluateFunctorAt_constantFunctorMap
+
+#check @SerrePositivity.InfinityCategories.functorHomEvaluate
+
+#check @SerrePositivity.InfinityCategories.functorHomEvaluate_comp
+
+#check @SerrePositivity.InfinityCategories.functorHomEvaluate_constantFunctorHomMap
+
+#check @SerrePositivity.InfinityCategories.homMk_transport
+
+#check @SerrePositivity.InfinityCategories.intervalFunctorMap_familyHom
+
+#check @SerrePositivity.InfinityCategories.qcatUnitComponent
+
+#check @SerrePositivity.InfinityCategories.constantUnitHomMap
+
+#check @SerrePositivity.InfinityCategories.constantUnitHomMap_formula
+
+#check @SerrePositivity.InfinityCategories.constantUnitHomMap_of_adjunction
+
+#check @SerrePositivity.InfinityCategories.unitIntervalMap
+
+#check @SerrePositivity.InfinityCategories.unitIntervalMap_family
+
+#check @SerrePositivity.InfinityCategories.QCatAdjunction.unitIntervalMap_homotopy
+
+#check @SerrePositivity.InfinityCategories.QCatAdjunction.unitIntervalMap_isSimplicialHomotopyEquivalence
+
+#check @SerrePositivity.InfinityCategories.unitPinchedMap
+
+#check @SerrePositivity.InfinityCategories.unitPinchedMap_formula
+
+#check @SerrePositivity.InfinityCategories.QCatAdjunction.unitPinchedMapIso
+
+#check @SerrePositivity.InfinityCategories.UnitMappingSpaceCondition
+
+#check @SerrePositivity.InfinityCategories.PinchedInterval.liftMap_isQCatEquivalence_iff
+
+#check @SerrePositivity.InfinityCategories.unitMappingSpaceCondition_iff_interval
+
+#check @SerrePositivity.InfinityCategories.QCatAdjunction.unitMappingSpaceCondition

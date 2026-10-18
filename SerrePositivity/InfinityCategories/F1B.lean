@@ -39,3 +39,8 @@ public import SerrePositivity.InfinityCategories.F1B.TransformationFamilies
 public import SerrePositivity.InfinityCategories.F1B.TransformationFamilyNaturality
 public import SerrePositivity.InfinityCategories.F1B.MappingSpaceHom
 public import SerrePositivity.InfinityCategories.F1B.FunctorMappingUnitCriterion
+public import SerrePositivity.InfinityCategories.F1B.UnitHomFormula
+public import SerrePositivity.InfinityCategories.F1B.FunctorHomEvaluation
+public import SerrePositivity.InfinityCategories.F1B.IntervalFunctorHom
+public import SerrePositivity.InfinityCategories.F1B.ConstantUnitFormula
+public import SerrePositivity.InfinityCategories.F1B.PointwiseUnitComparison

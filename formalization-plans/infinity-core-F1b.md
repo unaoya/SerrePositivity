@@ -122,12 +122,29 @@ pinched 写像空間のホモトピー同値が与えられた場合に、指定
 単位の公式との整合は全ての代表辺（pinched の零単体）で照合し、Hom 全単射性は
 写像空間の同値から導く。余単位・三角恒等式・随伴の存在は入力しない。
 
-B1 の逆方向全体は未完了。残るのは、自然な **各点の** pinched 写像空間対応から単位を取り出す
-接続と、Cor 6.2.6.5 の指定単位による各点の比較の同値性を **全ての A と非定値 U,V** の
-比較へ拡張する局所存在・関手の族の構成である。上の全パラメータ版の十分条件で、
-原典の各点の条件を置き換えて B1 完了とはしない。
-B2〜B5 も未完了。対象ビルド（1961 jobs）・公理監査（454 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 293 モジュールに straightening 依存がないことも確認した。
+指定単位による各点の比較の公式も実装した。`qcatUnitHomMap_formula` は任意の η について
+単位比較を h(pre U)(η) と G による後合成の合成で表示する。単位の普遍性は仮定せず、
+終域側の合成とパラメータ前合成との自然性を得た。`functorHomEvaluate` は h Fun の二胞体を
+各頂点で評価し、その定値族が定値射による前合成に一致することを端点の輸送込みで示した。
+これにより `constantUnitHomMap_formula` は定値関手間の単位比較を、各点の単位成分の
+定値族と G の作用によって表示する。
+`unitIntervalMap η x y` は G の作用の後に `qcatUnitComponent η x` で前合成する実際の射で、
+任意の quasicategory パラメータの族の Hom 表示が上の単位比較に一致する。
+pinched 模型へ移した `unitPinchedMap` は、**pinchedHomMap G の後に単位成分で前合成する**
+射と厳密に等しい（`unitPinchedMap_formula`）。随伴の単位に対しては、これらの標準比較と
+既存の adjunct 比較との実際のホモトピー・h Fun の同型を構成し、同値性を得た。
+`UnitMappingSpaceCondition η` は **各点 x,y だけ** の標準 pinched 比較のホモトピー同値性を
+述べる型であり、全パラメータ A の条件を定義に追加しない。区間模型の標準比較による
+条件との同値も証明した。随伴からこの条件への順方向（Cor 6.2.6.5 の (1)⇒(2)）は実装済み。
+
+B1 の逆方向全体は未完了。残るのは、自然な各点の pinched 写像空間対応から単位を取り出す
+接続と、`UnitMappingSpaceCondition η` から
+`∃ a : QCatAdjunction F G, a.unitHom = η` を構成する逆方向である。
+既存の全パラメータ版を使う経路では、各点の同値性を全ての A と非定値 U,V の比較へ
+拡張する局所存在・関手の族の構成が必要。全パラメータ版の十分条件で原典の各点の条件を
+置き換えて B1 完了とはしない。B2〜B5 も未完了。
+対象ビルド（1966 jobs）・公理監査（494 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 298 モジュールに straightening 依存がないことも確認した。
 
 ## 4. 主要宣言
 
@@ -231,5 +248,14 @@ B2〜B5 も未完了。対象ビルド（1961 jobs）・公理監査（454 宣�
 | `functorMappingSpaceHomEquiv`・`functorMappingSpaceHomEquiv_precomp` | 非定値関手間の写像空間比較から Hom 全単射とパラメータ自然性を導く | 実装済み |
 | `qcatUnitHomMap_bijective_of_mappingSpace` | 代表辺で単位を表す写像空間比較の同値性から Hom 全単射を導く | 実装済み |
 | `qcatAdjunctionOfUnitMappingEquivalences`・`qcatAdjunctionOfUnitMappingEquivalences_unitHom` | 全 A,U,V の比較から指定単位を持つ随伴を構成（各点の条件への還元は未完了） | 実装済み |
+| `qcatUnitHomMap_formula`・`qcatUnitHomMap_naturality_right/precomp` | 任意の単位候補による比較の内部 Hom での公式と自然性 | 実装済み |
+| `evaluateFunctorAt_constantFunctorMap`・`functorHomEvaluate` と恒等・合成・定値族の公式 | 点での評価と定値射による前合成の同一視 | 実装済み |
+| `homMk_transport`・`intervalFunctorMap_familyHom` | 辺の端点の輸送と、族の後合成の h Fun の表示 | 実装済み |
+| `qcatUnitComponent`・`constantUnitHomMap` と `_formula`・`_of_adjunction` | 単位の各点成分と定値関手間の比較、既存の adjunct との一致 | 実装済み |
+| `unitIntervalMap`・`unitIntervalMap_family` | G の作用の後に単位成分で前合成する標準比較と任意の族での公式 | 実装済み |
+| `QCatAdjunction.unitIntervalMap_homotopy`・`unitIntervalMap_isSimplicialHomotopyEquivalence` | 随伴の単位による標準比較と既存の adjunct 比較の実際のホモトピー、同値性 | 実装済み |
+| `unitPinchedMap`・`unitPinchedMap_formula`・`QCatAdjunction.unitPinchedMapIso` | pinched 模型の標準単位比較、原典の合成の公式、既存の adjunct との同型 | 実装済み |
+| `UnitMappingSpaceCondition`・`unitMappingSpaceCondition_iff_interval` | 全 x,y のみの標準比較の同値条件、模型独立性 | 実装済み |
+| `QCatAdjunction.unitMappingSpaceCondition` | 随伴の単位は各点の標準比較の同値条件を満たす（Cor 6.2.6.5 (1)⇒(2)） | 実装済み |
 | 写像空間による特徴づけ | 自然な pinchedHom のホモトピー同値との同値 | 未完了 |
 | B2〜B5 | §1 の全項目 | 未着手（監査スクリプトは作成済み） |
