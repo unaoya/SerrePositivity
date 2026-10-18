@@ -651,3 +651,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.uliftSimplicialHomotopy
 #check @SerrePositivity.InfinityCategories.IsSimplicialHomotopyEquivalence.ulift
 #check @SerrePositivity.InfinityCategories.IsQCatEquivalence.ulift_of_kan
+#check @SerrePositivity.InfinityCategories.coherentHomComparison_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.coherentHomComparison_isSimplicialHomotopyEquivalence
+#check @SerrePositivity.InfinityCategories.coherentHomEquivalence

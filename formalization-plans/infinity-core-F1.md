@@ -2839,5 +2839,18 @@ lemma IsQCatEquivalence.ulift_of_kan {X Y : SSet.{u}} [KanComplex X] [KanComplex
     {f : X ⟶ Y} (hf : IsQCatEquivalence f) :
     IsQCatEquivalence ((SSet.uliftFunctor.{v, u}).map f)
 
+lemma coherentHomComparison_isQCatEquivalence {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] [∀ X Y : C, KanComplex (SimplicialCategory.sHom X Y)] (X Y : C) :
+    IsQCatEquivalence (coherentHomComparison X Y)
+
+lemma coherentHomComparison_isSimplicialHomotopyEquivalence {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] [∀ X Y : C, KanComplex (SimplicialCategory.sHom X Y)] (X Y : C) :
+    IsSimplicialHomotopyEquivalence (coherentHomComparison X Y)
+
+noncomputable def coherentHomEquivalence {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] [∀ X Y : C, KanComplex (SimplicialCategory.sHom X Y)] (X Y : C) :
+    QCatEquivalence ((SSet.uliftFunctor.{v, u}).obj (SimplicialCategory.sHom X Y))
+      (pinchedHom (coherentNerveVertex X) (coherentNerveVertex Y))
+
 end SerrePositivity.InfinityCategories
 ```
