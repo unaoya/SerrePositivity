@@ -6,3 +6,5 @@ public import SerrePositivity.EInfinity.BarrattEccles.Orbits
 public import SerrePositivity.EInfinity.BarrattEccles.Normalized
 public import SerrePositivity.EInfinity.BarrattEccles.Degrees
 public import SerrePositivity.EInfinity.BarrattEccles.Basis
+public import SerrePositivity.EInfinity.BarrattEccles.ExtraDegeneracy
+public import SerrePositivity.EInfinity.BarrattEccles.Contraction
