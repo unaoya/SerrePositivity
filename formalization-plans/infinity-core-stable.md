@@ -519,8 +519,19 @@ fiber → 左写像空間の実際の射を構成する。この射は上の条�
 `leftFibrationInitialFiberPiZeroEquiv_evaluation` は中間空間の二射影による計算則、
 `leftFibrationInitialFiberPiZeroEquiv_eq_comparison`・`coconeMappingSpacePiZeroEquiv_eq_comparison` は
 π₀ の同値と実際の比較射の π₀ への作用が一致することを示す。
-比較射は切断の選択を含む。図式・余極限余錐の変更や二枝交換との自然性はまだ主張しない。
-**負号との一致は未証明**。残る義務はこの比較と二枝交換の両立、
+比較射は切断の選択を含む。比較 span から π₀ 上の自然性を証明した。
+`stableCoslicePostcomp` は表示変更を含む後合成で、射影・uncurry・二段階の合成と可換。
+`leftFibrationInitialTotalMap` は底を保つ関手 f と始点の像の等号から中間空間の射を構成し、
+`leftFibrationInitialTotalMap_evaluation`・`projection` は二射影との可換性を示す（充填性不要）。
+`leftFibrationInitialFiberCoslicePiZeroEquiv` は左模型へ移す前の coslice fiber の π₀ の同値で、
+同名の `_naturality` は始点とその像が始対象のとき底上の関手との両立を与える。
+`leftFibrationInitialFiberPiZeroEquiv_naturality` はこれを Hom 表示へ移した等号で、
+底の始点の像の等号を Hom の前合成として明示する（底 Quasicategory、両射は LeftFibration）。
+`coconeMappingSpacePiZeroEquiv_restrict` は制限前後が余極限余錐なら形状の制限との両立、
+`_reindex` は同型な形状、`_spanSwap` は二枝交換への適用（Quasicategory、元の余極限性のみ）。
+二枝交換の場合は c.restrict spanSwap の Hom 表示と比較している。
+実際の選択付き比較射の厳密な自然性や、異なる余極限余錐の間の標準比較はまだ主張しない。
+**負号との一致は未証明**。残る義務は選択済みの suspension の swapIso とこの形状制限の作用の同定、
 二枝の引き戻しとループ模型、およびループの群構造と構成済みの双積の加法の一致。
 表現可能な比較の完成を符号・TR2 全体の完成とは数えない。
 八面体、Pretriangulated instance も未完了。
@@ -675,7 +686,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | cofiber 列の回転の幾何学的構成と二射列 | `pastingLeftToOuterHomotopy`（値域の仮定なし）、`CofiberRotationRectangle` とその存在・選択（Quasicategory、IsStable）、`rotated_isCofiber`（データを入力すれば仮定なし）、`rotated_f_arrow`・`rotated_g_arrow_connecting`（Quasicategory、零射、後者は元の cofiber 性）、`tailShortComplexIso`・`exists_cofiberTailShortComplex`（Quasicategory、IsStable） | B → C → ΣA の cofiber 短複体表示まで完成。第三の接続射の負号・Triangle の回転所属・逆方向は未証明。TR2 全体は未完了 |
 | suspension の二枝交換 | `SuspensionSquare.transpose`・`transpose_transpose`・`transpose_vertex`（値域に仮定なし）、`swapIso`、`comparisonIso_hom_transpose`、`swapIso_hom_comp_self`、`diagramComparisonIso_transpose_naturality`・`swapIso_naturality`（Quasicategory） | 標準比較との両立・自然性・二乗が恒等まで完成。加法の負号との一致は未証明。TR2 は未完了 |
 | 終点固定余錐空間と二枝の引き戻し | `coconeMappingSpace`、`coconeMappingSpace_kanComplex`（Quasicategory）、`coconeMappingSpace_restrict_fibration`（Quasicategory、Mono）、`coconeMappingSpace_edge_isContractibleKan`（Quasicategory、枝の終点の始対象性）、`exists_coconeMappingSpace_glue`・`coconeMappingSpace_hom_ext_of_pushout`・`spanCoconeMapping_isPullback`・`coconeMappingSpace_spanSwap_left`・`right`（値域の仮定なし） | 空間・充填性・可縮な枝・引き戻し・交換の二成分まで完成。π₀ と Hom の比較は下記で完成。ループ模型、群構造と加法の一致は未証明 |
-| 余錐空間と余極限頂点の Hom | `leftFibrationInitialFiberPiZeroEquiv`（底 Quasicategory、LeftFibration、始点の始対象性）、`coconeMappingSpacePiZeroEquiv`・`pushoutCoconeMappingSpacePiZeroEquiv`、`coconeMappingSpaceHomComparison_homotopyEquivalence`・`coconeMappingSpacePiZeroEquiv_eq_comparison`（Quasicategory、余極限性または押し出し性） | π₀ と Hom の同値・実際の比較射のホモトピー同値・二つの比較の一致まで完成。二枝交換との両立とループ模型・加法との照合は未証明 |
+| 余錐空間と余極限頂点の Hom | `leftFibrationInitialFiberPiZeroEquiv`（底 Quasicategory、LeftFibration、始点の始対象性）、`coconeMappingSpacePiZeroEquiv`・`pushoutCoconeMappingSpacePiZeroEquiv`、`coconeMappingSpaceHomComparison_homotopyEquivalence`・`coconeMappingSpacePiZeroEquiv_eq_comparison`（Quasicategory、余極限性または押し出し性） | π₀ と Hom の同値・実際の比較射のホモトピー同値・二つの比較の一致まで完成。形状制限・再添字付け・二枝交換による制限余錐での Hom 表示との両立まで完成。選択済みの swapIso への接続とループ模型・加法との照合は未証明 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

@@ -1,6 +1,27 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.stableCoslicePostcomp
+#print axioms SerrePositivity.InfinityCategories.stableCoslicePostcomp_projection
+#print axioms SerrePositivity.InfinityCategories.stableCoslicePostcomp_uncurry
+#print axioms SerrePositivity.InfinityCategories.stableCoslicePostcomp_comp
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialBaseDiagram_eq
+#print axioms SerrePositivity.InfinityCategories.stableCosliceFiberChange_ι
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialTotalMap
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialTotalMap_evaluation
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialTotalMap_projection
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialFiberCoslicePiZeroEquiv
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialFiberCoslicePiZeroEquiv_evaluation
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialFiberPiZeroEquiv_eq_coslice
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialFiberCoslicePiZeroEquiv_naturality
+#print axioms SerrePositivity.InfinityCategories.stablePinchedLeftBaseIso_transport
+#print axioms SerrePositivity.InfinityCategories.stablePinchedHomLeftPiZeroEquiv_transport
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialImage_eq
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialFiberPiZeroEquiv_naturality
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpacePiZeroEquiv_restrict
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpacePiZeroEquiv_reindex
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpacePiZeroEquiv_spanSwap
+
 #print axioms SerrePositivity.InfinityCategories.leftFibrationInitialTotal
 #print axioms SerrePositivity.InfinityCategories.leftFibrationInitialEvaluation
 #print axioms SerrePositivity.InfinityCategories.leftFibrationInitialProjection
@@ -1168,7 +1189,12 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialPiZero,
     `SerrePositivity.InfinityCategories.Stable.CoconeMappingPiZero,
     `SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialHomComparison,
-    `SerrePositivity.InfinityCategories.Stable.CoconeMappingHomComparison]
+    `SerrePositivity.InfinityCategories.Stable.CoconeMappingHomComparison,
+    `SerrePositivity.InfinityCategories.Stable.CoslicePostcompTransport,
+    `SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialNaturality,
+    `SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialPiZeroNaturality,
+    `SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialHomNaturality,
+    `SerrePositivity.InfinityCategories.Stable.CoconeMappingPiZeroNaturality]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
