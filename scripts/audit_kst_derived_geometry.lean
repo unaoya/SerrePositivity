@@ -105,7 +105,19 @@ run_cmd do
     `SerrePositivity.KST.DerivedGeometry.moduleOver_isQuasicoherent_of_restrict,
     `SerrePositivity.KST.DerivedGeometry.module_isQuasicoherent_of_openCover,
     `SerrePositivity.KST.DerivedGeometry.tensorCoefficientRegular_isQuasicoherent,
-    `SerrePositivity.KST.DerivedGeometry.coefficientSheafOfMorphism_regular_isQuasicoherent]
+    `SerrePositivity.KST.DerivedGeometry.coefficientSheafOfMorphism_regular_isQuasicoherent,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.hasQuasicoherentUnderlying,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.qcohForget,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.qcohForget_reflectsIsomorphisms,
+    `SerrePositivity.KST.DerivedGeometry.affineCoefficientGlobalIso,
+    `SerrePositivity.KST.DerivedGeometry.affineCoefficientΓ,
+    `SerrePositivity.KST.DerivedGeometry.affineQcohΓForgetIso,
+    `SerrePositivity.KST.DerivedGeometry.affineQcohΓ_faithful,
+    `SerrePositivity.KST.DerivedGeometry.affineQcohΓ_reflectsIsomorphisms,
+    `SerrePositivity.KST.DerivedGeometry.affineUnderlyingHom_ext,
+    `SerrePositivity.KST.DerivedGeometry.coefficientConstantActionRingHom,
+    `SerrePositivity.KST.DerivedGeometry.coefficientConstantActionNat,
+    `SerrePositivity.KST.DerivedGeometry.affineUnderlyingHom_commutesConstant]
   for name in required do
     unless env.contains name do throwError "Missing K-L4 declaration: {name}"
   for mod in env.header.modules do

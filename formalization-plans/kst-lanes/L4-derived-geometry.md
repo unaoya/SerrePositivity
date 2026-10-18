@@ -49,9 +49,9 @@
 
 ## 3. 現在地と受入条件
 
-- 現在地：L4a の具体的係数環層 H_X を構成し、一般の A → R に対する Spec R 上の切断比較・正則 O 加群の tilde 模型を証明済み。任意の開埋め込みに沿う環層・正則 O 加群の比較も証明済み。アフィン同型に沿う輸送と開被覆による局所判定により、任意の X 上の H_X の正則 O 加群の準連接性まで証明済み。アフィン係数加群圏・dg 模型・導来降下との比較は未完了。
+- 現在地：L4a の具体的係数環層 H_X の構成・アフィン切断比較・開埋め込みに沿う比較・任意の X 上の正則 O 加群の準連接性は証明済み。準連接係数加群層の圏 QCoh(B) と、アフィン上の H 加群への大域切断関手を構成し、忠実性・同型の反映まで証明済み。アフィン係数加群圏の同値・dg 模型・導来降下との比較は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の導来随伴・生成・T1′、L4c、L4d、L4e は未実装。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の324宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の366宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -243,7 +243,7 @@
 - 設計変更が必要な場合は根拠を明示して提案する。
 - 完了・設計変更提案・import 閉包の破損以外で自主的に作業を打ち切らない。
 
-## 設計変更提案：§10-7 の厳密降下と導来降下の区別
+## §13 決定11：§10-7 の厳密降下と層の dg 増強の区別
 
 - 根拠：[Bondal–van den Bergh 原典](https://arxiv.org/pdf/math/0204218)、pp.8–9（論文頁）。
 - Thm 3.1.1 は D_qc(X) について compact = perfect と生成を述べる。
@@ -261,15 +261,16 @@
 - CoefficientSheaf は一般の環層と構造層射を扱う基礎型。H_X の具体的構成は coefficientSheafOfMorphism が与え、構造層の中心性も別定理で証明済み。
 - 一般の CoefficientSheaf について無条件の compact 生成を主張していない。
 - D4 の「有限アフィン被覆上の加群の降下」を厳密降下と読んだ実装には進まない。
-- 推奨する明確化：降下模型をアフィン導来 dg 加群圏のホモトピー降下とする。
+- 正本 §13 決定11：dg 増強は H_X 加群層の複体の dg 圏を acyclic で dg 商したものに取る。
+- Perf と D_qc はこの dg 商の充満部分圏として扱う。
+- アフィン導来 dg 加群圏の Čech ホモトピー極限との比較は定義にせず、必要な段階の定理とする。
 - 対象の遷移は導来同値、射の計算には写像複体とその高次の両立性を保持する。
 - 通常の三角圏の同型と cocycle だけを持つ pullback は使わない。
-- dg 模型で Čech のホモトピー極限を構成し、実際の D_qc への比較を証明する。
-- 局所 perfect な対象をこの比較の両側で対応させ、Perf(X;H) の dg 増強を得る。
-- この変更は K 理論への依存・引用・公理・sorry を追加しない。
-- この変更は分離性を追加しないので KST の非分離 qcqs の範囲を維持する。
-- 代替：任意の係数加群層の複体を厳密に降下し、局所化してコホモロジー条件へ制限する。
-- 代替でも、アフィン環の dg 加群との比較を導来化後に証明する必要がある。
+- Čech のホモトピー極限との比較が必要なときは、層の dg 商からの比較定理を独立に証明する。
+- 局所 perfect な対象の対応も、定義による同一視で済ませない。
+- この決定は K 理論への依存・引用・公理・sorry を追加しない。
+- 分離性を追加しないので KST の非分離 qcqs の範囲を維持する。
+- 層の複体から定義する場合にも、アフィン環の dg 加群との比較は導来化後の定理として必要になる。
 - [Toën 原典](https://www.math.univ-toulouse.fr/~btoen/dgazumaya.pdf) §3.2、pp.32–35 に対応を確認した。
 - Toën Prop 3.9 は compact local generator の Zariski 貼り合わせを述べる。
 - 同 p.34 の局所計算はアフィン開にわたる dg 圏の Holim を明示している。
@@ -277,8 +278,8 @@
 - 交わり W の被覆枚数に対する帰納はせず、アフィン側から W への compact の持ち上げを使う。
 - 持ち上げには Neeman Thm 2.1 と BvdB Cor 3.2.3 の E ⊕ E[1] を使う。
 - そのため、有限被覆の枚数が単調に減らないという初期の注意にも整合する。
-- 次の降下実装では、この模型の明確化を受けて層の比較と dg の写像複体のどちらから始めるかを固定する。自由忘却随伴・導来忘却のような両模型に共通する基盤は進められる。
-- この提案は厳密なアフィン環加群複体の模型に関するもの。任意の加群層の複体に基づく現在の Dqc の定義・係数忘却の実装を止める理由にはしない。
+- dg 増強の実装は層の複体の dg 圏と acyclic の dg 商を起点とする。アフィン加群の関手比較は別の入力補題として整備する。
+- 厳密なアフィン環加群複体の模型は採らない。任意の加群層の複体に基づく現在の Dqc の定義・係数忘却は正本の決定と一致する。
 - L4a は未完了、T1・T1′・T2・T3・RHom 比較も未完了とする。T1 の層の随伴と導来忘却の実装だけで T1 完了とはしない。
 - 今回の補助補題の検証を上記主定理の証明と数えない。
 
@@ -461,6 +462,29 @@
 - 実際の構造射から作る coefficientSheafOfMorphism についても同じ準連接性を証明済み。
 - 係数環層の準連接性だけで、自由関手が全 D_qc を生成することや T1′ を主張しない。
 
+## 24. アフィン係数加群圏と大域切断
+
+- 係数環層 B の加群層で、O_X 加群へ忘れたものが準連接な対象の充満部分圏 QCoh(B) を定義する。
+- D_qc のコホモロジー条件とこの層レベルの対象条件を区別する。
+- Spec R と R 代数 H について、大域定数切断 H → Γ(H_X,⊤) が環の同型であることを示す。
+- 正則 O 加群の tilde H との同型と tilde の大域切断の同型を使い、指定された定数切断の全単射性を得る。
+- 係数加群層の大域切断を取り、この H の作用へスカラー制限して ModuleCat H への関手を構成する。
+- R へ忘れた大域切断と、係数を O_X へ忘れてから大域切断を取るものを自然同型で比較する。
+- Mathlib の tildeEquiv を用いて、QCoh(B) 上での大域切断の忠実性・同型の反映へ接続する。
+- 完全充満性と本質的全射性には H_X の作用の再構成が必要であり、忘却関手の保存性だけからは結論しない。
+- その作用の再構成、アフィン dg 加群圏との導来比較、有限被覆の導来降下は後続の証明として残す。
+- 原典は KST D4・T1′、Bondal–van den Bergh Thm 3.1.1、Toën Derived Azumaya §3.2。
+- QCoh(B) とその包含・通常の準連接 O 加群への忘却を実装済み。係数忘却の忠実性・同型の反映も移送済み。
+- 指定された H の定数切断から大域切断環への環同型を証明済み。
+- 全係数加群層と準連接係数加群層の両方で H 加群としての大域切断関手を構成済み。
+- R へ忘却した関手と通常の O 加群の大域切断の自然同型を証明済み。
+- tildeEquiv の逆との比較から、QCoh(B) 上の大域切断が忠実かつ同型を反映することを証明済み。
+- 準連接な始域からの O 加群層の射が大域切断で決まる補題を、tilde 随伴の余単位から証明済み。
+- H の定数作用を基礎 O 加群層の自己準同型とし、H からその自己準同型環への環準同型を構成済み。
+- この作用の係数加群層の射についての自然性を証明済み。
+- 大域切断上で H 線形な O 加群層の射が定数 H 作用と層全体で可換になることを証明済み。
+- 全 H_X 切断の作用への線形性を局所的なテンソル持ち上げで示す段階、充満性、本質的全射性は残る。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -524,7 +548,15 @@
 | `pullbackBaseMap_toSpecΓ`・`affineSchemeCoefficientRegular_isQuasicoherent` | DerivedGeometry/AffineSchemeCoefficient | 実装・対象ビルド済み |
 | `moduleOver_isQuasicoherent_of_restrict`・`module_isQuasicoherent_of_openCover` | DerivedGeometry/QuasicoherentOpenCriterion | 実装・対象ビルド済み |
 | `tensorCoefficientRegular_isQuasicoherent`・`coefficientSheafOfMorphism_regular_isQuasicoherent` | DerivedGeometry/CoefficientQuasicoherent | 実装・対象ビルド済み |
-| 層の降下 | DerivedGeometry/ | 未実装・模型の設計変更提案中 |
+| `hasQuasicoherentUnderlying`・`QCoh`・`qcohInclusion`・`qcohForget` | DerivedGeometry/QuasicoherentCoefficient | 実装・対象ビルド済み |
+| `qcohForget_faithful`・`qcohForget_reflectsIsomorphisms` | DerivedGeometry/QuasicoherentCoefficient | 実装・対象ビルド済み |
+| `affineCoefficientConstant_top_isIso`・`affineCoefficientGlobalIso` | DerivedGeometry/AffineCoefficientGlobalRing | 実装・対象ビルド済み |
+| `affineCoefficientΓ`・`affineCoefficientΓForgetIso`・`affineQcohΓ`・`affineQcohΓForgetIso` | DerivedGeometry/AffineCoefficientSectionsFunctor | 実装・対象ビルド済み |
+| `affineUnderlyingHom_ext`・`affineQcohΓ_faithful`・`affineQcohΓ_reflectsIsomorphisms` | DerivedGeometry/AffineQuasicoherentSections | 実装・対象ビルド済み |
+| `coefficientConstantAction`・`coefficientConstantActionRingHom`・`coefficientConstantActionNat` | DerivedGeometry/CoefficientConstantAction | 実装・対象ビルド済み |
+| `affineUnderlyingHom_commutesConstant` | DerivedGeometry/AffineQuasicoherentActions | 実装・対象ビルド済み |
+| 層の複体の dg 圏・acyclic による dg 商 | DerivedGeometry/ | 未実装・正本 §13 決定11 の模型 |
+| 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |
 | T2 | DerivedGeometry/ | 未実装 |
