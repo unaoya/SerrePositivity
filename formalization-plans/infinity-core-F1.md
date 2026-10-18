@@ -4207,5 +4207,98 @@ lemma exists_weightedNerveHorn_candidate {C : Type u} [Category.{u} C]
       (horn (n + 1) k).ι ≫ ψ.app (Fin.last (n + 1)) =
         weightedNerveHornLastCoefficient F σ k a ha
 
+lemma weightedNerveSimplexMap_comp {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u})
+    {l m n : ℕ} (α : ⦋l⦌ ⟶ ⦋m⦌) (β : ⦋m⦌ ⟶ ⦋n⦌) (s : weightedNerveSimplex F n) :
+    weightedNerveSimplexMap F α (weightedNerveSimplexMap F β s) =
+      weightedNerveSimplexMap F (α ≫ β) s
+
+def simplexPrefixThroughLast {n : ℕ} (α : ⦋n⦌ ⟶ ⦋n + 1⦌) (i : Fin (n + 1))
+    (hi : (α.toOrderHom i).val ≤ n) : ⦋i.val⦌ ⟶ ⦋n⦌
+
+lemma simplexPrefixThroughLast_factor {n : ℕ} (α : ⦋n⦌ ⟶ ⦋n + 1⦌) (i : Fin (n + 1))
+    (hi : (α.toOrderHom i).val ≤ n) :
+    simplexPrefixThroughLast α i hi ≫ simplexPrefixInclusion n (n + 1) (Nat.le_succ n) =
+      simplexPrefixInclusion i.val n (Nat.le_of_lt_succ i.isLt) ≫ α
+
+lemma simplexPrefixThroughLast_restriction {n : ℕ} (α : ⦋n⦌ ⟶ ⦋n + 1⦌) (i : Fin (n + 1))
+    (hi : (α.toOrderHom i).val ≤ n) :
+    simplexPrefixRestriction (simplexPrefixThroughLast α i hi) (Fin.last i.val) =
+      simplexPrefixRestriction α i
+
+lemma simplexFace_last_of_ne_last {n : ℕ} (j : Fin (n + 2)) (hj : j ≠ Fin.last (n + 1)) :
+    (SimplexCategory.δ j).toOrderHom (Fin.last n) = Fin.last (n + 1)
+
+lemma simplexFace_eq_last_of_image_last {n : ℕ} (j : Fin (n + 2)) (i : Fin (n + 1))
+    (h : (SimplexCategory.δ j).toOrderHom i = Fin.last (n + 1)) : i = Fin.last n
+
+lemma horn_face_prefix_through_last {n : ℕ} (k : Fin (n + 2))
+    (hk : k ≠ Fin.last (n + 1)) (j : Fin (n + 2)) (hj : j ≠ k)
+    (i : Fin (n + 1)) (hi : ((SimplexCategory.δ j).toOrderHom i).val ≤ n) :
+    (stdSimplex.map (simplexPrefixInclusion i.val n (Nat.le_of_lt_succ i.isLt)) :
+        (Δ[i.val] : SSet.{u}) ⟶ Δ[n]) ≫ horn.ι k j hj =
+      stdSimplex.map (simplexPrefixThroughLast (SimplexCategory.δ j) i hi) ≫
+        horn.ι k (Fin.last (n + 1)) hk.symm
+
+lemma weightedNerveHorn_candidate_prefix_agreement {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {n : ℕ} (σ : ComposableArrows C (n + 1))
+    (k : Fin (n + 2)) (hk : k ≠ Fin.last (n + 1))
+    (a : (horn (n + 1) k : SSet.{u}) ⟶ weightedNerve F)
+    (ha : a ≫ weightedNerveProjection F = (horn (n + 1) k).ι ≫ SSet.yonedaEquiv.symm σ)
+    (ψ : simplexPrefixWeight (n + 1) ⟶ σ ⋙ F)
+    (hψ : weightedNerveSimplexMap F (simplexPrefixInclusion n (n + 1) (Nat.le_succ n)) ⟨σ, ψ⟩ =
+      SSet.yonedaEquiv (horn.ι k (Fin.last (n + 1)) hk.symm ≫ a))
+    (j : Fin (n + 2)) (hj : j ≠ k) (i : Fin (n + 1))
+    (hi : ((SimplexCategory.δ j).toOrderHom i).val ≤ n) :
+    (weightedNerveSimplexMap F (SimplexCategory.δ j) ⟨σ, ψ⟩).2.app i =
+      (weightedNerveHornFaceDiagram F σ k a ha j hj).app i
+
+lemma weightedNerveHorn_candidate_terminal_agreement {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {n : ℕ} (σ : ComposableArrows C (n + 1)) (k : Fin (n + 2))
+    (a : (horn (n + 1) k : SSet.{u}) ⟶ weightedNerve F)
+    (ha : a ≫ weightedNerveProjection F = (horn (n + 1) k).ι ≫ SSet.yonedaEquiv.symm σ)
+    (ψ : simplexPrefixWeight (n + 1) ⟶ σ ⋙ F)
+    (hψ : (horn (n + 1) k).ι ≫ ψ.app (Fin.last (n + 1)) =
+      weightedNerveHornLastCoefficient F σ k a ha)
+    (j : Fin (n + 2)) (hj : j ≠ k) (hjl : j ≠ Fin.last (n + 1)) :
+    (weightedNerveSimplexMap F (SimplexCategory.δ j) ⟨σ, ψ⟩).2.app (Fin.last n) =
+      (weightedNerveHornFaceDiagram F σ k a ha j hj).app (Fin.last n)
+
+lemma weightedNerveHorn_candidate_face_agreement {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {n : ℕ} (σ : ComposableArrows C (n + 1))
+    (k : Fin (n + 2)) (hk : k ≠ Fin.last (n + 1))
+    (a : (horn (n + 1) k : SSet.{u}) ⟶ weightedNerve F)
+    (ha : a ≫ weightedNerveProjection F = (horn (n + 1) k).ι ≫ SSet.yonedaEquiv.symm σ)
+    (ψ : simplexPrefixWeight (n + 1) ⟶ σ ⋙ F)
+    (hp : weightedNerveSimplexMap F (simplexPrefixInclusion n (n + 1) (Nat.le_succ n)) ⟨σ, ψ⟩ =
+      SSet.yonedaEquiv (horn.ι k (Fin.last (n + 1)) hk.symm ≫ a))
+    (ht : (horn (n + 1) k).ι ≫ ψ.app (Fin.last (n + 1)) =
+      weightedNerveHornLastCoefficient F σ k a ha)
+    (j : Fin (n + 2)) (hj : j ≠ k) :
+    weightedNerveSimplexMap F (SimplexCategory.δ j) ⟨σ, ψ⟩ =
+      SSet.yonedaEquiv (horn.ι k j hj ≫ a)
+
+lemma exists_weightedNerve_leftHorn_lift {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {n : ℕ} (σ : ComposableArrows C (n + 1))
+    [KanComplex (F.obj (σ.obj (Fin.last (n + 1))))] (k : Fin (n + 2))
+    (hk : k ≠ Fin.last (n + 1))
+    (a : (horn (n + 1) k : SSet.{u}) ⟶ weightedNerve F)
+    (ha : a ≫ weightedNerveProjection F = (horn (n + 1) k).ι ≫ SSet.yonedaEquiv.symm σ) :
+    ∃ H : (Δ[n + 1] : SSet.{u}) ⟶ weightedNerve F,
+      (horn (n + 1) k).ι ≫ H = a ∧ H ≫ weightedNerveProjection F = SSet.yonedaEquiv.symm σ
+
+instance weightedNerveProjection_leftFibration {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) [∀ c, KanComplex (F.obj c)] : LeftFibration (weightedNerveProjection F)
+
+instance leftStrictTransportWeightedProjection_leftFibration
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] : LeftFibration (leftStrictTransportWeightedProjection p)
+
+instance weightedNerve_quasicategory {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) [∀ c, KanComplex (F.obj c)] : Quasicategory (weightedNerve F)
+
+instance leftStrictTransportWeightedNerve_quasicategory
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] : Quasicategory (leftStrictTransportWeightedNerve p)
+
 end SerrePositivity.InfinityCategories
 ```
