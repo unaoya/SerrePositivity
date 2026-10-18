@@ -371,6 +371,18 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData_hom_heq_set
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData_hom_heq_set
 
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentCubeHom_image
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentCubeHom_image
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentCubeComponent_image_heq
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentCubeComponent_image_heq
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentCubeComponentAt_image
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentCubeComponentAt_image
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData_pullback_hom_of_inj
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData_pullback_hom_of_inj
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentInteriorSet
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentInteriorSet
 
@@ -397,6 +409,15 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentInterior_term_sign
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentInterior_term_sign
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentInterior_image_bounds
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentInterior_image_bounds
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentInterior_image_strictMono
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentInterior_image_strictMono
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentInteriorSet_image
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentInteriorSet_image
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentInteriorVertexPoint
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentInteriorVertexPoint
@@ -466,6 +487,12 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexSet_sign_card
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexSet_sign_card
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexSet_image
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexSet_image
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexSet_injOn
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentVertexSet_injOn
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.connectiveHomComplex
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.connectiveHomComplex
@@ -1003,6 +1030,21 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_pathFace_zero
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_pathFace_zero
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.pathCubeImageSet
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.pathCubeImageSet
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.pathCubeImageIso
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.pathCubeImageIso
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.pathCubeImageIso_val
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.pathCubeImageIso_val
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.pathCubeImageSet_card
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.pathCubeImageSet_card
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.pathCubeMap_image
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.pathCubeMap_image
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.descendingEnumeration
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.descendingEnumeration

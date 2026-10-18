@@ -172,11 +172,15 @@ Hom の標準座標模型を実際の Mathlib Γ と自然同型で同定し、A
 立方体の内部面の相殺・削除面・合成面、全旗の AW 評価と dg 合成の対応、降順の向きと次数を
 そろえた内部点の微分公式を使い、各次数の実際の dg 単体を構成した。
 
-γ1.5c の残りは面・退化に対する自然性と比較写像、頂点・辺・2単体での一致。
+`coherentSimplexData_pullback_hom_of_inj` は `hi : Set.InjOn α (I : Set _)` の下で、
+引き戻した coherent 単体の比較成分と既存の dg 引き戻しの hom の等式を証明する。
+α 全体の単射性は不要で、内部点のない場合も含む。正確な型は監査と README に置く。
+γ1.5c の残りは非単射の自然性（潰れた二点集合の単位、高次成分の零）、
+比較写像、頂点・辺・2単体での一致。
 γ1.5d の残りは各 pinched Hom の実際の単体的ホモトピー同値と ∞ 圏の同値。
 A3e の `qCatEquivalenceOfFullyFaithfulEssentiallySurjective` は実装済みで、写像空間の比較後に適用する。
 
-公開417宣言の正確な型・全前提・依存公理は `scripts/audit_dold_kan_comparison.lean` の
+公開431宣言の正確な型・全前提・依存公理は `scripts/audit_dold_kan_comparison.lean` の
 `#check @`・`#print axioms` が正本。依存公理は標準三公理のみ。
 詳しい API と数学は `InfinityCategories/README.md`、整理前の索引は
 [archive/e-infinity-algebras-gamma1.5-api.md](archive/e-infinity-algebras-gamma1.5-api.md) を参照する。

@@ -1370,7 +1370,7 @@ H^(−(n+1)) との同型で、追加の閉性・充填の仮定はない。
 `doldKanHomSpaceKan` は N4 の線形充填をこの同型で移した Kan instance。
 `doldKanHomPinchedIso` は宇宙を持ち上げた DK Hom と dg nerve の右 pinched Hom の同型である。
 この同型はまだ coherent nerve の写像空間との比較ではない。
-対象・集約ビルドは3736件で成功し、公開417宣言の型と公理監査は標準三公理のみ。
+対象・集約ビルドは3742件で成功し、公開431宣言の型と公理監査は標準三公理のみ。
 正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean` に記録する。
 
 `awData` は後の射の接頭部分と前の射の接尾部分を合成して全切断点で足す成分族の演算。
@@ -1555,6 +1555,29 @@ coherentSimplex {n : ℕ} (s : doldKanCoherentNerve _⦋n⦌) : DGNerve.Simplex 
 これにより各 coherent 単体から同次元の実際の dg 単体を得た。
 まだ面・退化での自然性を証明していないため、比較写像 `N^hc(C_Δ) ⟶ N_dg(C)` は未構成。
 単体的自然性、および比較写像の頂点・辺・三角形での一致が残る。
+
+有限頂点集合上で単射な場合の自然性は証明済み。
+`pathCubeImageSet` と `pathCubeImageIso` は、選んだ有限内部点上で厳密単調な順序写像の
+有限像と順序同型を作る。`pathCubeMap_image` は実際の native Path の像がこの座標同型を
+通ることを示す。`coherentCubeHom_image` と `coherentCubeComponent_image_heq` は、
+豊穣関手の引き戻しと降順の立方体評価にこの分解を移す。
+`coherentInteriorSet_image` は、元の有限頂点集合上で単射な順序写像について、
+内部点の像が像の頂点集合の内部点集合に等しいことを示す。
+
+`coherentSimplexData_pullback_hom_of_inj` の前提は `[CommRing R] [DGCategory R D]`、
+`s : doldKanCoherentNerve _⦋n⦌`、`α : Fin (m+1) →o Fin (n+1)`、有限頂点集合 I と
+既存の hom の端点・次数の証明 `hI,ha,hb,hk`、および `hi : Set.InjOn α (I : Set _)`。
+結論は次の等式である。
+
+```lean
+(coherentSimplexData ((SimplicialThickening.functor α.uliftMap).comp SSet s)).hom
+  I a b k hI ha hb hk =
+    ((coherentSimplexData s).pullback α).hom I a b k hI ha hb hk
+```
+
+単射性は I 上だけでよく、α が他の頂点を潰していても適用できる。
+次数零・内部点のない場合も含む。残る自然性の分岐は I 上で非単射の場合であり、
+潰れた二点集合での単位、高次成分の零を証明してから全ての面・退化の可換性をまとめる。
 
 
 ## γ3：homotopy 極限・余極限と ∞ 極限・余極限（γ1.5 の後）
