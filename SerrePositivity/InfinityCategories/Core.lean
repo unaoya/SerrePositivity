@@ -219,3 +219,7 @@ public import SerrePositivity.InfinityCategories.Core.PushoutDisjointPullback
 public import SerrePositivity.InfinityCategories.Core.TensorExchangePullback
 
 public import SerrePositivity.InfinityCategories.Core.FatJoinRightMono
+
+public import SerrePositivity.InfinityCategories.Core.InternalHomFlipAdjunction
+
+public import SerrePositivity.InfinityCategories.Core.PrecompositionCellClosure

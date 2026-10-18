@@ -19,7 +19,7 @@ Mathlib の `Quasicategory` をそのまま ∞ 圏の定義とし、Joyal モ�
 
 担当順は A6 → A4 → A5。基盤全体の正本は [foundations.md](foundations.md)。F1 は α2 が担当し、Core の既存の公開名・型の変更は事前に報告する。
 
-現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較と二点の fat join 比較の同型性と任意の標準単体の正規化の自己射への可逆な変形と標準単体の fat join 比較の同値条件、関手単体集合の制限の相対可逆 path の持ち上げと基底も変わる一般の pushout の貼り合わせ、両方の join の pushout 保存、左右両因子の比較の貼り合わせも整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
+現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較と二点の fat join 比較の同型性と任意の標準単体の正規化の自己射への可逆な変形と標準単体の fat join 比較の同値条件、関手単体集合の制限の相対可逆 path の持ち上げと基底も変わる一般の pushout の貼り合わせ、両方の join の pushout 保存、左右両因子の比較の貼り合わせと単射の同値条件のセルによる閉包も整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
 
 ## 1. Mathlib（固定版）の現状
 
@@ -7385,6 +7385,69 @@ lemma isPrecompositionEquivalence_fatJoinComparison_of_pushout_right
     (hB : IsPrecompositionEquivalence (fatJoinComparison K B))
     (hC : IsPrecompositionEquivalence (fatJoinComparison K C)) :
     IsPrecompositionEquivalence (fatJoinComparison K D)
+```
+
+### A6 続き（2026-10-18）：単射の同値条件のセルによる閉包
+
+新規15宣言。`internalHomFlipAdjunction X` は標的を固定した反変内部 Hom の自己随伴。`hasLiftingProperty_pre_iff_swapped` により二つの始域の持ち上げ問題を交換し、`isPrecompositionEquivalence_iff_llp_boundaryTests` は単射の前合成の同値条件を境界の前合成の射の族に対する左持ち上げ性と同値にする。始域と終域には quasicategory 性を要求しない。この判定から `monoPrecompositionEquivalences` の同型・retract・合成・小さい coproduct・整列合成列・自然数の合成列による閉包を証明した。余極限に関する主張は、全て各射が単射かつ同値条件を満たす合成列についてのもので、任意の同値な図式の余極限の保存ではない。モデル構造と small object factorization は使用しない。
+
+検証：Core ビルド成功（1835 jobs）、続けて監査成功（累計1215宣言、標準3公理のみ）。既存の公開名・型は維持。元の fat join 比較は単射でないため、自然な相対写像円柱での置換と各関手の余極限の保存を接続する作業が残る。任意の因子の fat join 比較・slice 比較・A6 主定理・A4・A5 は未完了。
+
+以下は namespace `SerrePositivity.InfinityCategories`、`universe u`、`open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet`、`open scoped Simplicial` の下での正確な型。
+
+```lean
+noncomputable def internalHomFlipHomEquiv (A B X : SSet.{u}) :
+    (A ⟶ (ihom B).obj X) ≃ (B ⟶ (ihom A).obj X)
+
+lemma internalHomFlipHomEquiv_pre {A A' B X : SSet.{u}}
+    (i : A' ⟶ A) (f : A ⟶ (ihom B).obj X) :
+    internalHomFlipHomEquiv A' B X (i ≫ f) =
+      internalHomFlipHomEquiv A B X f ≫ (pre i).app X
+
+lemma internalHomFlipHomEquiv_pre_app {A B B' X : SSet.{u}}
+    (i : B' ⟶ B) (f : A ⟶ (ihom B).obj X) :
+    internalHomFlipHomEquiv A B' X (f ≫ (pre i).app X) =
+      i ≫ internalHomFlipHomEquiv A B X f
+
+noncomputable def internalHomFlipAdjunction (X : SSet.{u}) :
+    (internalHom.flip.obj X).rightOp ⊣ internalHom.flip.obj X
+
+lemma hasLiftingProperty_pre_iff_swapped {A B C D : SSet.{u}}
+    (i : A ⟶ B) (j : C ⟶ D) (X : SSet.{u}) :
+    HasLiftingProperty i ((pre j).app X) ↔ HasLiftingProperty j ((pre i).app X)
+
+def precompositionBoundaryTests : MorphismProperty SSet.{u}
+
+lemma isPrecompositionEquivalence_iff_llp_boundaryTests {A B : SSet.{u}}
+    (i : A ⟶ B) [Mono i] :
+    IsPrecompositionEquivalence i ↔ precompositionBoundaryTests.llp i
+
+lemma monoPrecompositionEquivalences_eq_inf_llp :
+    monoPrecompositionEquivalences.{u} =
+      MorphismProperty.monomorphisms SSet.{u} ⊓ precompositionBoundaryTests.llp
+
+instance monoPrecompositionEquivalences_respectsIso :
+    monoPrecompositionEquivalences.{u}.RespectsIso
+
+instance monoPrecompositionEquivalences_isStableUnderRetracts :
+    monoPrecompositionEquivalences.{u}.IsStableUnderRetracts
+
+instance monoPrecompositionEquivalences_isMultiplicative :
+    monoPrecompositionEquivalences.{u}.IsMultiplicative
+
+instance monoPrecompositionEquivalences_isStableUnderCoproductsOfShape (J : Type u) :
+    monoPrecompositionEquivalences.{u}.IsStableUnderCoproductsOfShape J
+
+instance monoPrecompositionEquivalences_isStableUnderTransfiniteCompositionOfShape
+    (J : Type u) [LinearOrder J] [SuccOrder J] [OrderBot J] [WellFoundedLT J] :
+    monoPrecompositionEquivalences.{u}.IsStableUnderTransfiniteCompositionOfShape J
+
+instance monoPrecompositionEquivalences_isStableUnderTransfiniteComposition :
+    MorphismProperty.IsStableUnderTransfiniteComposition.{u}
+      monoPrecompositionEquivalences.{u}
+
+instance monoPrecompositionEquivalences_isStableUnderSequentialComposition :
+    monoPrecompositionEquivalences.{u}.IsStableUnderTransfiniteCompositionOfShape ℕ
 ```
 
 ## 7. A3 の工程（2026-10-18 追加）
