@@ -315,3 +315,9 @@ public import SerrePositivity.KST.ProExcision.SimplicialMatrixActions
 public import SerrePositivity.KST.ProExcision.ActionRestriction
 
 public import SerrePositivity.KST.ProExcision.Lemma416Relative
+
+public import SerrePositivity.KST.ProExcision.IntegerUnitizationMap
+
+public import SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing
+
+public import SerrePositivity.KST.ProExcision.IntegerUnitizationIdealIso

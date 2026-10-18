@@ -3603,3 +3603,54 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.lemma416_relative_zero
 #print axioms SerrePositivity.KST.ProExcision.lemma416_relative_zero
+
+#check @SerrePositivity.KST.ProExcision.integerNonUnitalAlgHom
+#print axioms SerrePositivity.KST.ProExcision.integerNonUnitalAlgHom
+
+#check @SerrePositivity.KST.ProExcision.integerUnitizationMap
+#print axioms SerrePositivity.KST.ProExcision.integerUnitizationMap
+
+#check @SerrePositivity.KST.ProExcision.integerUnitizationMap_fst
+#print axioms SerrePositivity.KST.ProExcision.integerUnitizationMap_fst
+
+#check @SerrePositivity.KST.ProExcision.integerUnitizationMap_snd
+#print axioms SerrePositivity.KST.ProExcision.integerUnitizationMap_snd
+
+#check @SerrePositivity.KST.ProExcision.integerUnitizationMap_inr
+#print axioms SerrePositivity.KST.ProExcision.integerUnitizationMap_inr
+
+#check @SerrePositivity.KST.ProExcision.integerUnitizationMap_id
+#print axioms SerrePositivity.KST.ProExcision.integerUnitizationMap_id
+
+#check @SerrePositivity.KST.ProExcision.integerUnitizationMap_comp
+#print axioms SerrePositivity.KST.ProExcision.integerUnitizationMap_comp
+
+#check @SerrePositivity.KST.ProExcision.integerUnitizationMap_ideal
+#print axioms SerrePositivity.KST.ProExcision.integerUnitizationMap_ideal
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalRingObject
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalRingObject
+
+#check @SerrePositivity.KST.ProExcision.nonUnitalRingObjectCoeSort
+#print axioms SerrePositivity.KST.ProExcision.nonUnitalRingObjectCoeSort
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.standardIdeal
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.standardIdeal
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.standardElement
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.standardElement
+
+#check @SerrePositivity.KST.ProExcision.nonUnitalLemma416
+#print axioms SerrePositivity.KST.ProExcision.nonUnitalLemma416
+
+#check @SerrePositivity.KST.ProExcision.integerUnitizationIdealAddEquiv
+#print axioms SerrePositivity.KST.ProExcision.integerUnitizationIdealAddEquiv
+
+#check @SerrePositivity.KST.ProExcision.integerUnitizationIdealAddEquiv_natural
+#print axioms SerrePositivity.KST.ProExcision.integerUnitizationIdealAddEquiv_natural
+
+#check @SerrePositivity.KST.ProExcision.integerUnitizationIdealVectorAddEquiv
+#print axioms SerrePositivity.KST.ProExcision.integerUnitizationIdealVectorAddEquiv
