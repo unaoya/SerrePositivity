@@ -14,7 +14,10 @@
 - 対象ビルド成功。公理監査は保存単位ごとに再実行する。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
-- 次は斉次局所化の計算と例外イデアルの可逆性。
+- チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
+- チャート上で a が非零因子であることを基礎環の仮定なしで証明済み。
+- 次は環論的局所計算と実際のイデアル層の制限を同定する。
+- Mathlib に Cartier 因子の API はなく、通常の局所正則生成条件を別途定義する必要がある。
 - 固定版 Mathlib に blowup の構成はない。
 - 固定版 Mathlib には絶対 Proj とその構造射の固有性がある。
 - Rees 代数は多項式環の部分代数として既にある。
@@ -304,6 +307,10 @@ f の有限型性は固有性から導く。
 | `affineBlowupChartIso` | Blowup | 検証済み | 標準チャートの Spec 同型 |
 | `rees_adjoin_zero_degreeOne` | Blowup | 検証済み | 零次成分上の次数一生成性 |
 | `iSup_affineBlowupChart` | Blowup | 検証済み | 標準チャートの被覆性 |
+| `chartBaseMap` / `chartRatio` | ChartAlgebra | 検証済み | チャートの係数写像と生成元の比 |
+| `chartBaseMap_mul_ratio` | ChartAlgebra | 検証済み | a · (b/a) = b |
+| `chart_map_ideal_eq_span` | ChartAlgebra | 検証済み | 中心の拡大イデアルの単項生成 |
+| `chartBaseMap_mem_nonZeroDivisors` | ChartAlgebra | 検証済み | チャートでの生成元の非零因子性 |
 | `blowupPowerIso` | Blowup | 予定 | 正の冪の比較 |
 | `blowup` | Blowup | 予定 | 一般スキームへの貼り合わせ |
 | `exceptionalDivisor` | Blowup | 予定 | 例外因子 |
