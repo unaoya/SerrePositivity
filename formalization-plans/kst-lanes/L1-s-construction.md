@@ -120,7 +120,7 @@ L1a 完了。対象ビルド 1932 jobs、公理監査 26 宣言（標準3公理�
 `arSquareOrder`、`arSquare`、`arSquare_naturality`、`sMap_ι`。全26宣言の展開された型を監査スクリプトで検査する。
 上記は定義・関手法則であり安定性を仮定しない。quasicategory instance だけは明記した前提を持つ。
 
-L1b 進行中。第一行制限と零対角の補完段階を実装済み。対象ビルド2077 jobs、累計309宣言の監査（標準3公理のみ）。
+L1b 進行中。第一行制限と零対角の補完段階を実装済み。対象ビルド2081 jobs、累計319宣言の監査（標準3公理のみ）。
 
 | 公開宣言 | 正確な型・前提 |
 | --- | --- |
@@ -437,6 +437,34 @@ Ar[2] の中央の四頂点 `(0,1),(0,2),(1,1),(1,2)` に一つの実際の cofi
 比較写像の境界充填は、点と境界を貼った標準境界に `InitialBoundaryLifting` を適用して構成した。
 端点比較は空図式上の coslice の射の一意性でこの比較へ移し、全単射の RLP から相対延長を得た。
 Core と Stable のファイルには変更を加えていない。
+
+相対始対象の可逆辺による輸送と、同型な図式の余極限の存在の輸送を証明した。
+以下で `E,B,K,X : SSet.{u}`。
+
+| 公開宣言 | 正確な型・前提 |
+| --- | --- |
+| `stdSimplex_firstVertex_leftAnodyne` | `(n : ℕ) → leftAnodyneExtensions (SSet.yonedaEquiv.symm (stdSimplex.obj₀Equiv.symm (0 : Fin (n+1))) : (Δ[0] : SSet.{u}) ⟶ Δ[n])` |
+| `pointCosliceVertexOfEdge_projection` | `(a : Δ[0] ⟶ E) → {y : E _⦋0⦌} → (e : SSet.Truncated.Edge (X := (truncation 2).obj E) (SSet.yonedaEquiv a) y) → (sliceUnderProjection a).app (Opposite.op ⦋0⦌) (pointCosliceVertexOfEdge a e) = y` |
+| `InitialBoundaryLifting.of_invertibleEdge` | `[Quasicategory E] → [Quasicategory B] → (p : E ⟶ B) → [InnerFibration p] → (a : Δ[0] ⟶ E) → InitialBoundaryLifting p (SSet.yonedaEquiv a) → {y : E _⦋0⦌} → (e : SSet.Truncated.Edge (X := (truncation 2).obj E) (SSet.yonedaEquiv a) y) → IsInvertibleEdge e → InitialBoundaryLifting p y` |
+| `InitialBoundaryLifting.of_vertexIso` | `[Quasicategory E] → [Quasicategory B] → (p : E ⟶ B) → [InnerFibration p] → {x y : E _⦋0⦌} → InitialBoundaryLifting p x → VertexIso x y → InitialBoundaryLifting p y` |
+| `IsColimitCone.of_functorIso` | `[Quasicategory X] → {p q : K ⟶ X} → {c : JoinCocone p} → {d : JoinCocone q} → IsColimitCone c → FunctorIso c.val d.val → IsColimitCone d` |
+| `isColimitCone_iff_of_functorIso` | `[Quasicategory X] → {p q : K ⟶ X} → (c : JoinCocone p) → (d : JoinCocone q) → FunctorIso c.val d.val → (IsColimitCone c ↔ IsColimitCone d)` |
+| `IsPushoutSquare.of_functorIso` | `[Quasicategory X] → {F G : Square ⟶ X} → IsPushoutSquare F → FunctorIso F G → IsPushoutSquare G` |
+| `exists_initialCoconeVertex_over_invertible_edge` | `(K X : SSet.{u}) → [Quasicategory X] → (v : ((ihom (join K (Δ[0] : SSet.{u}))).obj X) _⦋0⦌) → InitialBoundaryLifting (coconeRestriction K X) v → (b : ((ihom K).obj X) _⦋0⦌) → (e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom K).obj X)) b ((coconeRestriction K X).app (Opposite.op ⦋0⦌) v)) → IsInvertibleEdge e → ∃ w, (coconeRestriction K X).app (Opposite.op ⦋0⦌) w = b ∧ InitialBoundaryLifting (coconeRestriction K X) w` |
+| `HasColimit.of_functorIso` | `[Quasicategory X] → {p q : K ⟶ X} → HasColimit q → FunctorIso p q → HasColimit p` |
+| `hasColimit_iff_of_functorIso` | `[Quasicategory X] → {p q : K ⟶ X} → FunctorIso p q → (HasColimit p ↔ HasColimit q)` |
+
+相対始点境界充填の輸送では、基底の coslice の left fibration で最初の辺を全単体へ延ばし、
+`exists_relativeInitialCosliceLift` で境界上の余錐を選び、可逆な最初の辺の相対外側ホーン充填を使った。
+余極限の存在の輸送では、α-S の `exists_cartesian_cocone_lift` と F1 の
+`isInvertibleEdge_of_isCartesianEdge` を読み取り専用で使用した。
+新しい余錐は指定した図式に厳密に制限される。単なる頂点ごとの同型の族は使っていない。
+
+次の接続：零角を持つ span のデータを、`zeroTargetArrowSource C` を第一辺の始点評価で
+引き戻した対象として表す。同じ第一辺を持つ二つのデータはこの trivial Kan fibration の
+可縮 fiber で同型となり、`stable_spanFamilyOfArrows` で全 span の関手同型に送れる。
+上記の `HasColimit.of_functorIso` を選んだ cofiber の span に適用することで、指定した任意の零射を
+保つ span の余極限の存在へ接続する。この接続はまだ未実装であり、完成した定理に数えない。
 
 **未完了**：次数 n≥3 で零次元から作った実際の図式 F について、全三つ組の正方形
 `arSquare i j j k hij le_rfl hjk ≫ F` が押し出しとなること。

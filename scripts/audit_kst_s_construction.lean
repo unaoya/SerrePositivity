@@ -753,3 +753,33 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.exists_relativeInitialCosliceLift
 #print axioms SerrePositivity.KST.SConstruction.exists_relativeInitialCosliceLift
+
+#check @SerrePositivity.KST.SConstruction.stdSimplex_firstVertex_leftAnodyne
+#print axioms SerrePositivity.KST.SConstruction.stdSimplex_firstVertex_leftAnodyne
+
+#check @SerrePositivity.KST.SConstruction.pointCosliceVertexOfEdge_projection
+#print axioms SerrePositivity.KST.SConstruction.pointCosliceVertexOfEdge_projection
+
+#check @SerrePositivity.KST.SConstruction.InitialBoundaryLifting.of_invertibleEdge
+#print axioms SerrePositivity.KST.SConstruction.InitialBoundaryLifting.of_invertibleEdge
+
+#check @SerrePositivity.KST.SConstruction.InitialBoundaryLifting.of_vertexIso
+#print axioms SerrePositivity.KST.SConstruction.InitialBoundaryLifting.of_vertexIso
+
+#check @SerrePositivity.KST.SConstruction.IsColimitCone.of_functorIso
+#print axioms SerrePositivity.KST.SConstruction.IsColimitCone.of_functorIso
+
+#check @SerrePositivity.KST.SConstruction.isColimitCone_iff_of_functorIso
+#print axioms SerrePositivity.KST.SConstruction.isColimitCone_iff_of_functorIso
+
+#check @SerrePositivity.KST.SConstruction.IsPushoutSquare.of_functorIso
+#print axioms SerrePositivity.KST.SConstruction.IsPushoutSquare.of_functorIso
+
+#check @SerrePositivity.KST.SConstruction.exists_initialCoconeVertex_over_invertible_edge
+#print axioms SerrePositivity.KST.SConstruction.exists_initialCoconeVertex_over_invertible_edge
+
+#check @SerrePositivity.KST.SConstruction.HasColimit.of_functorIso
+#print axioms SerrePositivity.KST.SConstruction.HasColimit.of_functorIso
+
+#check @SerrePositivity.KST.SConstruction.hasColimit_iff_of_functorIso
+#print axioms SerrePositivity.KST.SConstruction.hasColimit_iff_of_functorIso
