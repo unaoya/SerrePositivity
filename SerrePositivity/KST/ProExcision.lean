@@ -15,3 +15,5 @@ public import SerrePositivity.KST.ProExcision.TotalKoszul
 public import SerrePositivity.KST.ProExcision.TensorBoundary
 public import SerrePositivity.KST.ProExcision.CutoffBoundary
 public import SerrePositivity.KST.ProExcision.SplitConnecting
+public import SerrePositivity.KST.ProExcision.ConeConnecting
+public import SerrePositivity.KST.ProExcision.FiltrationConnecting

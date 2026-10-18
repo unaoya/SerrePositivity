@@ -356,3 +356,21 @@ set_option pp.explicit true
 #check @SerrePositivity.KST.ProExcision.splitBoundary_connecting_eq_shiftMap
 #print axioms SerrePositivity.KST.ProExcision.splitBoundary_connecting_eq_shiftMap
 
+#check @SerrePositivity.KST.ProExcision.coneConnecting_eq_shortExact
+#print axioms SerrePositivity.KST.ProExcision.coneConnecting_eq_shortExact
+
+#check @SerrePositivity.KST.ProExcision.coneCompositeConnecting_quotient
+#print axioms SerrePositivity.KST.ProExcision.coneCompositeConnecting_quotient
+
+#check @SerrePositivity.KST.ProExcision.filtrationTriangulated_delta
+#print axioms SerrePositivity.KST.ProExcision.filtrationTriangulated_delta
+
+#check @SerrePositivity.KST.ProExcision.filtrationInterval_delta
+#print axioms SerrePositivity.KST.ProExcision.filtrationInterval_delta
+
+#check @SerrePositivity.KST.ProExcision.filtrationInterval_delta_quotient
+#print axioms SerrePositivity.KST.ProExcision.filtrationInterval_delta_quotient
+
+#check @SerrePositivity.KST.ProExcision.filtrationInterval_delta_split
+#print axioms SerrePositivity.KST.ProExcision.filtrationInterval_delta_split
+

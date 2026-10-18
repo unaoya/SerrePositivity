@@ -59,7 +59,11 @@
 - 短完全列のホモロジー連結写像を分裂境界のサイクル代表元で計算する公式を証明済み。
 - 分裂境界が誘導するシフトつきホモロジー写像も同じ代表元公式を持つことを証明済み。
 - 両者をホモロジーへの全射で比較し、短完全列の連結写像とシフトつき境界写像の一致を証明済み。
-- 次は補助スペクトル対象の δ を短完全列の δ へ移し、この比較を初頁微分全体へ接続する。
+- cone 三角形の境界を短完全列の δ へ移す一般公式を証明済み。
+- 合成 cone 三角形の δ を、右の短完全列の δ と左の商射の合成で表す公式を証明済み。
+- 濾過スペクトル対象の δ を実際の合成 cone 三角形へ移す比較を証明済み。
+- その δ を cone–商比較で移し、次数ごとの分裂境界のホモロジー写像で表す公式を証明済み。
+- 次は Koszul 濾過の隣接する三段にこの一般公式を適用し、初頁微分全体へ接続する。
 - 初頁の二つのモデルの完全な自然性・Koszul 冪遷移との整合は残件。
 - スペクトル対象から頁への関手性を既存 API で確認中。未供給の自然性を仮定に置かない。
 - π_n の具体的な複体ホモロジーとの同定は K-L9 の界面から受け取る。
@@ -120,6 +124,9 @@
 | splitBoundary_lift_condition | SplitConnecting.lean | 検証済み | サイクルの持ち上げと分裂境界 |
 | splitBoundary_connecting | SplitConnecting.lean | 検証済み | 連結写像の代表元公式 |
 | splitBoundary_connecting_eq_shiftMap | SplitConnecting.lean | 検証済み | 連結写像とシフトつき境界の一致 |
+| coneCompositeConnecting_quotient | ConeConnecting.lean | 検証済み | 合成 cone の δ と商の連結写像 |
+| filtrationInterval_delta | FiltrationConnecting.lean | 検証済み | 濾過の δ と実際の cone 三角形 |
+| filtrationInterval_delta_split | FiltrationConnecting.lean | 検証済み | 濾過の δ を分裂境界へ移す |
 | koszul_comparison | KoszulPro.lean | 予定 | KST Lemma 4.10 |
 | prop414 | Prop414.lean | 予定 | 中心的係数による非可換版 |
 | pro_whitehead | Whitehead.lean | 予定 | simple 空間版 |
