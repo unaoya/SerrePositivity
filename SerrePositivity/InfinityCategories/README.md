@@ -2192,7 +2192,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開382宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開405宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2820,7 +2820,7 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開382宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開405宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
 ### 重み付き end と weighted nerve の切断の族（全単射を実装）
@@ -2996,6 +2996,63 @@ simplicialSectionsMap_trivialKanFibration {p : E ⟶ K} {q : E' ⟶ K}
 前提は全空間間の写像 f の性質であり、p と q が left fibration であることだけでは代用しない。
 coherent な錐の切断模型との比較射の構成とその同値性、pinched Hom と導来ファイバーの主比較、
 𝒮・Sp の残りの ∞ 極限への適用は引き続き未完了である。
+
+### coherent な錐の具体的な切断データ（実装済み）
+
+`CoherentConeSections.lean` は任意の JoinCone p をその頂点の coslice へ curry する。
+strict な通常の錐に制限せず、左端の固定条件は `coherentCone_inl_vertex c` で証明する。
+
+```lean
+coherentConeCosliceSection {p : K ⟶ X} (c : JoinCone p) :
+    K ⟶ sliceUnder (SSet.yonedaEquiv.symm c.vertex)
+coherentConeCosliceSection_projection c :
+    coherentConeCosliceSection c ≫ sliceUnderProjection (SSet.yonedaEquiv.symm c.vertex) = p
+```
+
+`cosliceSectionCone` は逆構成であり、頂点の保存と錐側の厳密な逆関係を公開した。
+`fixedVertexConeSectionEquiv p x` は左端を x に固定した全ての錐と、coslice への持ち上げの全単射。
+`CoherentConeSectionSpace.lean` はこの持ち上げを F1 の相対関手空間の具体的な点にする。
+
+```lean
+coherentConeSectionSpace (p : K ⟶ X) (x : X _⦋0⦌) : SSet.{u} :=
+  relativeFunctorSpace (sliceUnderProjection (SSet.yonedaEquiv.symm x)) p
+coherentConeSectionPoint {p : K ⟶ X} (c : JoinCone p) :
+    (coherentConeSectionSpace p c.vertex) _⦋0⦌
+```
+
+`fixedVertexConeSpaceEquiv p x` は頂点を固定した錐とこの模型の零単体の全単射である。
+X が quasicategory ならこの模型は Kan。K の quasicategory 性は不要。
+
+`PullbackSections.lean` は任意の p : E ⟶ B と a : K ⟶ B について、
+`pullbackSectionsRelativeIso p a : simplicialSections (pullback.snd p a) ≅ relativeFunctorSpace p a`
+を証明した。ここには充填性の仮定はない。
+`CoherentConeLeftFibration.lean` は coslice 射影を実際に図式に沿って引き戻す。
+
+```lean
+coherentConeProjection (p : K ⟶ X) (x : X _⦋0⦌) : coherentConeTotal p x ⟶ K
+coherentConeSectionsIso (p : K ⟶ X) (x : X _⦋0⦌) :
+    simplicialSections (coherentConeProjection p x) ≅ coherentConeSectionSpace p x
+coherentConeSectionVertex {p : K ⟶ X} (c : JoinCone p) :
+    (simplicialSections (coherentConeProjection p c.vertex)) _⦋0⦌
+```
+
+X が quasicategory なら射影は left fibration。
+`coherentConeProjectionFiberIso` は各 fiber を x の coslice の対応する fiber と同定し、
+`coherentConeProjectionMappingEquivalence` は右 pinched Hom への F1 の同値を合成する。
+局所 Kan な単体的圏 C : Type v、[Category.{u} C]、[SimplicialCategory C] に対し、
+`strictCoherentConeFiberHomEquivalence F x i` は実際の strict な図式 F : J ⥤ C に適用した次の同値。
+
+```lean
+QCatEquivalence (vertexFiber
+  (coherentConeProjection (strictCoherentDiagram F) (coherentNerveVertex x))
+    (ULift.up (ComposableArrows.mk₀ i)))
+  ((SSet.uliftFunctor.{v, u}).obj (SimplicialCategory.sHom x (F.obj i)))
+```
+
+J : Type u、[SmallCategory J] と全ての sHom の Kan 性を要求する。持ち上げの宇宙を省略しない。
+ここまでで任意の coherent な錐に具体的な切断の点と、fiber ごとの実際の Hom の比較を与えた。
+fiber の比較を図式全体の比較へ束ねること、その切断空間と Bousfield–Kan end の同値性、
+錐の pinched Hom と q_x の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限への適用は未完了。
 
 ### 𝒮 の空積（実装済み）
 

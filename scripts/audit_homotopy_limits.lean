@@ -769,3 +769,49 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms simplicialSectionsMap_fibration
 #check @simplicialSectionsMap_trivialKanFibration
 #print axioms simplicialSectionsMap_trivialKanFibration
+#check @coherentCone_inl_vertex
+#print axioms coherentCone_inl_vertex
+#check @coherentConeCosliceSection
+#print axioms coherentConeCosliceSection
+#check @coherentConeCosliceSection_projection
+#print axioms coherentConeCosliceSection_projection
+#check @cosliceSectionCone
+#print axioms cosliceSectionCone
+#check @cosliceSectionCone_vertex
+#print axioms cosliceSectionCone_vertex
+#check @cosliceSectionCone_coherentCone
+#print axioms cosliceSectionCone_coherentCone
+#check @fixedVertexConeSectionEquiv
+#print axioms fixedVertexConeSectionEquiv
+#check @relativeFunctorVertexEquiv
+#print axioms relativeFunctorVertexEquiv
+#check @coherentConeSectionSpace
+#print axioms coherentConeSectionSpace
+#check @coherentConeSectionSpace_kanComplex
+#print axioms coherentConeSectionSpace_kanComplex
+#check @fixedVertexConeSpaceEquiv
+#print axioms fixedVertexConeSpaceEquiv
+#check @coherentConeSectionPoint
+#print axioms coherentConeSectionPoint
+#check @relativeFunctorUncurry_parameter
+#print axioms relativeFunctorUncurry_parameter
+#check @pullbackSectionsRelativeIso
+#print axioms pullbackSectionsRelativeIso
+#check @coherentConeTotal
+#print axioms coherentConeTotal
+#check @coherentConeProjection
+#print axioms coherentConeProjection
+#check @coherentConeProjection_leftFibration
+#print axioms coherentConeProjection_leftFibration
+#check @coherentConeSectionsIso
+#print axioms coherentConeSectionsIso
+#check @coherentConeProjectionFiberIso
+#print axioms coherentConeProjectionFiberIso
+#check @coherentConeProjectionMappingEquivalence
+#print axioms coherentConeProjectionMappingEquivalence
+#check @coherentConeSectionVertex
+#print axioms coherentConeSectionVertex
+#check @coherentConeProjectionHomEquivalence
+#print axioms coherentConeProjectionHomEquivalence
+#check @strictCoherentConeFiberHomEquivalence
+#print axioms strictCoherentConeFiberHomEquivalence
