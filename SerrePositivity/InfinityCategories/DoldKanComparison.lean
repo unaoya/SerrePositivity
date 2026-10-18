@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.DoldKanComparison.CoherentNoninjectiveNaturality
+
 public import SerrePositivity.InfinityCategories.DoldKanComparison.CoherentInjectiveNaturality
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.CoherentSimplexEquation

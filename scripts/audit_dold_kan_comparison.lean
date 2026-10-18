@@ -371,6 +371,15 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData_hom_heq_set
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData_hom_heq_set
 
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlagEvaluation_coherentImage_zero
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlagEvaluation_coherentImage_zero
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_coherentImage_zero_of_endpoint
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_coherentImage_zero_of_endpoint
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_coherentImage_zero_of_collision
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_coherentImage_zero_of_collision
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentCubeHom_image
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentCubeHom_image
 
@@ -427,6 +436,15 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentInteriorVertex_sum
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentInteriorVertex_sum
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentInterior_collision_of_not_inj
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentInterior_collision_of_not_inj
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentCubeComponent_image_zero_of_not_inj
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentCubeComponent_image_zero_of_not_inj
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData_pullback_hom_of_not_inj
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData_pullback_hom_of_not_inj
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentSimplexData
@@ -1061,6 +1079,15 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentCubeComponent
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentCubeComponent
 
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.pathImageFlag
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.pathImageFlag
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.mem_pathImageFlag_obj
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.mem_pathImageFlag_obj
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.pathImageFlag_repeat
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.pathImageFlag_repeat
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.pathIntervalSet
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.pathIntervalSet
 
@@ -1285,6 +1312,9 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.closedStandardVertexEquiv_comp
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.closedStandardVertexEquiv_comp
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_thin_nerve_repeat_zero
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_thin_nerve_repeat_zero
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.uliftSimplexHom
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.uliftSimplexHom

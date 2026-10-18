@@ -1370,7 +1370,7 @@ H^(−(n+1)) との同型で、追加の閉性・充填の仮定はない。
 `doldKanHomSpaceKan` は N4 の線形充填をこの同型で移した Kan instance。
 `doldKanHomPinchedIso` は宇宙を持ち上げた DK Hom と dg nerve の右 pinched Hom の同型である。
 この同型はまだ coherent nerve の写像空間との比較ではない。
-対象・集約ビルドは3742件で成功し、公開431宣言の型と公理監査は標準三公理のみ。
+対象・集約ビルドは3747件で成功し、公開441宣言の型と公理監査は標準三公理のみ。
 正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean` に記録する。
 
 `awData` は後の射の接頭部分と前の射の接尾部分を合成して全切断点で足す成分族の演算。
@@ -1576,8 +1576,23 @@ coherentSimplex {n : ℕ} (s : doldKanCoherentNerve _⦋n⦌) : DGNerve.Simplex 
 ```
 
 単射性は I 上だけでよく、α が他の頂点を潰していても適用できる。
-次数零・内部点のない場合も含む。残る自然性の分岐は I 上で非単射の場合であり、
-潰れた二点集合での単位、高次成分の零を証明してから全ての面・退化の可換性をまとめる。
+次数零・内部点のない場合も含む。
+
+非単射な高次成分の自然性も証明済み。
+`coherentInterior_collision_of_not_inj` は、最小・最大の端点を持つ三点以上の有限頂点集合で
+順序写像が非単射なら、内部点の像が端点または別の内部点の像と重なることを示す。
+`pathImageFlag_repeat` は、各旗で重複する点のうち後から加わるものの前後の頂点が
+等しいことを示す。`standardTopEval_thin_nerve_repeat_zero` は薄い圏の nerve でこの反復を
+退化と判定する。Path の既存の圏構造を使い、部分順序の instance を追加しない。
+`cubeEvaluation_coherentImage_zero_of_endpoint`・
+`cubeEvaluation_coherentImage_zero_of_collision` が全ての置換の旗の評価を零にする。
+
+`coherentSimplexData_pullback_hom_of_not_inj` は上の `of_inj` と同じ
+`s,α,I,a,b,k,hI,ha,hb,hk` に対して、前提を
+`hi : ¬ Set.InjOn α (I : Set _)`、`hc : I.card ≠ 2` とした同じ hom の等式である。
+`2 ≤ I.card` と hc から三点以上が従い、両側が零になる。任意の dg 圏に適用でき、
+像の両端が一致する場合も含む。自然性に残るのは潰れた二点集合の単位であり、
+この分岐を証明してから全ての面・退化の可換性を単体集合の射にまとめる。
 
 
 ## γ3：homotopy 極限・余極限と ∞ 極限・余極限（γ1.5 の後）
