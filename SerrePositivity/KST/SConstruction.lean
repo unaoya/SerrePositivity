@@ -15,4 +15,8 @@ public import SerrePositivity.KST.SConstruction.GappedOriginSquares
 
 public import SerrePositivity.KST.SConstruction.CofiberUnitComparison
 
+public import SerrePositivity.KST.SConstruction.FixedSpanCofiberGapped
+
+public import SerrePositivity.KST.SConstruction.FirstRowFibration
+
 /-! # ∞-S• 構成と連結 K 理論 -/
