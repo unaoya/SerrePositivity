@@ -201,7 +201,12 @@ run_cmd do
     `SerrePositivity.KST.Spectra.SquareTriangles,
     `SerrePositivity.KST.Spectra.TriangleDiskBoundary,
     `SerrePositivity.KST.Spectra.TriangleDiskCell,
-    `SerrePositivity.KST.Spectra.TriangleDiskCellIso]
+    `SerrePositivity.KST.Spectra.TriangleDiskCellIso,
+    `SerrePositivity.KST.Spectra.SquareTriangleEmbedding,
+    `SerrePositivity.KST.Spectra.SquareTriangleCover,
+    `SerrePositivity.KST.Spectra.SquareTriangleIntersection,
+    `SerrePositivity.KST.Spectra.SquareTrianglePushout,
+    `SerrePositivity.KST.Spectra.SquareTriangleOuterFaces]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
