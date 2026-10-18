@@ -310,3 +310,4 @@ public import SerrePositivity.InfinityCategories.F1.PreorderNerveHornExtension
 public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteCocartesianEdge
 public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteVerticalEdges
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinderMono
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinderExtension

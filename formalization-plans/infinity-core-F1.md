@@ -6759,5 +6759,29 @@ lemma relativeJoinCylinderComparison_prismMap {X Y : SSet.{u}} (f : X ⟶ Y) :
 instance relativeJoinCylinderComparison_mono {X Y : SSet.{u}} (f : X ⟶ Y) [Mono f] :
     Mono (relativeJoinCylinderComparison f)
 
+instance relativeJoinCylinderComparison_pre_trivialKanFibration
+    {X Y E : SSet.{u}} (f : X ⟶ Y) [Mono f] [Quasicategory E] :
+    TrivialKanFibration ((pre (relativeJoinCylinderComparison f)).app E)
+
+noncomputable def relativeJoinCylinderExtensionSpace {X Y E : SSet.{u}} (f : X ⟶ Y)
+    (u : pushout (prismEndpoint 1 X) f ⟶ E) : SSet.{u}
+
+lemma relativeJoinCylinderExtensionSpace_isContractibleKan
+    {X Y E : SSet.{u}} (f : X ⟶ Y) [Mono f] [Quasicategory E]
+    (u : pushout (prismEndpoint 1 X) f ⟶ E) :
+    IsContractibleKan (relativeJoinCylinderExtensionSpace f u)
+
+lemma relativeJoinCylinder_extension_exists {X Y E : SSet.{u}}
+    (f : X ⟶ Y) [Mono f] [Quasicategory E]
+    (u : pushout (prismEndpoint 1 X) f ⟶ E) :
+    ∃ G : relativeJoin f (𝟙 Y) ⟶ E, relativeJoinCylinderComparison f ≫ G = u
+
+lemma relativeJoin_extension_of_prism {X Y E : SSet.{u}}
+    (f : X ⟶ Y) [Mono f] [Quasicategory E]
+    (H : (Δ[1] : SSet.{u}) ⊗ X ⟶ E) (g : Y ⟶ E)
+    (w : prismEndpoint 1 X ≫ H = f ≫ g) :
+    ∃ G : relativeJoin f (𝟙 Y) ⟶ E,
+      relativeJoinPrism f ≫ G = H ∧ relativeJoinInr f (𝟙 Y) ≫ G = g
+
 end SerrePositivity.InfinityCategories
 ```
