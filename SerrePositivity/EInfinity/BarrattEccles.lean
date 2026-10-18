@@ -78,3 +78,6 @@ public import SerrePositivity.EInfinity.BarrattEccles.ShuffleZeroPaths
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleRightUnit
 public import SerrePositivity.EInfinity.BarrattEccles.Unitors
 public import SerrePositivity.EInfinity.BarrattEccles.PartialCompositionRightUnit
+public import SerrePositivity.EInfinity.BarrattEccles.ArityDegreeTransport
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleLeftUnit
+public import SerrePositivity.EInfinity.BarrattEccles.PartialCompositionLeftUnit

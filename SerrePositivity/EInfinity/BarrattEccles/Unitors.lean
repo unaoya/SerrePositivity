@@ -43,4 +43,20 @@ lemma cochain_rightUnitor_inv_apply (P : Complex A) (r : ℤ) (x : P.X r) :
   rw [ModuleCat.MonoidalCategory.rightUnitor_inv_apply,
     ModuleCat.MonoidalCategory.whiskerLeft_apply]
 
+/-- 概要：左単位子の逆は斉次元に単位の元1を左からテンソルする（Berger–Fresse §1.1.3）。
+方針：全テンソルの単位子の成分公式と加群の左単位子の値を使う。
+規約：全ての整数次数 r で成立する。
+使われ方：部分合成の左単位則を一入力の元で検証する。 -/
+lemma cochain_leftUnitor_inv_apply (P : Complex A) (r : ℤ) (x : P.X r) :
+    (λ_ P).inv.f r x =
+      ιTensorObj (𝟙_ (Complex A)) P 0 r r (zero_add r)
+        ((singleObjXSelf (.up ℤ) 0 (𝟙_ (ModuleCat A))).inv (1 : A) ⊗ₜ[A] x) := by
+  change (HomologicalComplex.leftUnitor' P).inv r x = _
+  rw [HomologicalComplex.leftUnitor'_inv]
+  change ιTensorObj (𝟙_ (Complex A)) P 0 r r (zero_add r)
+    (((singleObjXSelf (.up ℤ) 0 (𝟙_ (ModuleCat A))).inv ▷ (P.X r))
+      ((λ_ (P.X r)).inv x)) = _
+  rw [ModuleCat.MonoidalCategory.leftUnitor_inv_apply,
+    ModuleCat.MonoidalCategory.whiskerRight_apply]
+
 end SerrePositivity.EInfinity.BarrattEccles
