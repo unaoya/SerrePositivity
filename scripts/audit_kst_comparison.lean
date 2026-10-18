@@ -87,6 +87,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -283,6 +284,48 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.cartesianTensorSquare_isPullback
 #print axioms SerrePositivity.KST.Comparison.cartesianTensorSquare_isPullback
+
+
+-- CoconeBaseComparison.lean
+
+#check @SerrePositivity.KST.Comparison.coconeBaseSquare
+#print axioms SerrePositivity.KST.Comparison.coconeBaseSquare
+
+#check @SerrePositivity.KST.Comparison.coconeBaseFiberComparison
+#print axioms SerrePositivity.KST.Comparison.coconeBaseFiberComparison
+
+#check @SerrePositivity.KST.Comparison.coconeBaseFiberComparison_cocone
+#print axioms SerrePositivity.KST.Comparison.coconeBaseFiberComparison_cocone
+
+
+-- CoconeBaseGluing.lean
+
+#check @SerrePositivity.KST.Comparison.coconeBase_homotopyPullback_of_span
+#print axioms SerrePositivity.KST.Comparison.coconeBase_homotopyPullback_of_span
+
+
+-- CoconeOverBase.lean
+
+#check @SerrePositivity.KST.Comparison.coconeOverDiagram
+#print axioms SerrePositivity.KST.Comparison.coconeOverDiagram
+
+#check @SerrePositivity.KST.Comparison.coconeOverCocone
+#print axioms SerrePositivity.KST.Comparison.coconeOverCocone
+
+#check @SerrePositivity.KST.Comparison.coconeOverCoconeIsColimit
+#print axioms SerrePositivity.KST.Comparison.coconeOverCoconeIsColimit
+
+#check @SerrePositivity.KST.Comparison.fiberCocone
+#print axioms SerrePositivity.KST.Comparison.fiberCocone
+
+#check @SerrePositivity.KST.Comparison.fiberCoconeIsColimit
+#print axioms SerrePositivity.KST.Comparison.fiberCoconeIsColimit
+
+#check @SerrePositivity.KST.Comparison.fiberCocone_ι_fst
+#print axioms SerrePositivity.KST.Comparison.fiberCocone_ι_fst
+
+#check @SerrePositivity.KST.Comparison.fiberCocone_ι_snd
+#print axioms SerrePositivity.KST.Comparison.fiberCocone_ι_snd
 
 
 -- CommonTrivialRefinement.lean
@@ -1465,6 +1508,12 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.finiteChainMap_preservesUnion
 #print axioms SerrePositivity.KST.Comparison.finiteChainMap_preservesUnion
+
+
+-- FiniteCoverInduction.lean
+
+#check @SerrePositivity.KST.Comparison.finiteSup_of_nonempty_intersections
+#print axioms SerrePositivity.KST.Comparison.finiteSup_of_nonempty_intersections
 
 
 -- FiniteOperationsFibrations.lean
@@ -2862,6 +2911,36 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.sliceFiberRightAdjoint_allMono_rlp
 
 
+-- SpanCylinderColimit.lean
+
+#check @SerrePositivity.KST.Comparison.spanCylinderToColimit
+#print axioms SerrePositivity.KST.Comparison.spanCylinderToColimit
+
+#check @SerrePositivity.KST.Comparison.spanCylinderLeft_toColimit
+#print axioms SerrePositivity.KST.Comparison.spanCylinderLeft_toColimit
+
+#check @SerrePositivity.KST.Comparison.spanCylinderRight_toColimit
+#print axioms SerrePositivity.KST.Comparison.spanCylinderRight_toColimit
+
+#check @SerrePositivity.KST.Comparison.spanCylinder_middle_toColimit
+#print axioms SerrePositivity.KST.Comparison.spanCylinder_middle_toColimit
+
+#check @SerrePositivity.KST.Comparison.spanCylinderVertex_toColimit
+#print axioms SerrePositivity.KST.Comparison.spanCylinderVertex_toColimit
+
+#check @SerrePositivity.KST.Comparison.spanCylinderToColimit_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.spanCylinderToColimit_localized_isIso
+
+
+-- SpanCylinderColimitNaturality.lean
+
+#check @SerrePositivity.KST.Comparison.spanCylinderToColimit_naturality
+#print axioms SerrePositivity.KST.Comparison.spanCylinderToColimit_naturality
+
+#check @SerrePositivity.KST.Comparison.spanColimit_map_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.spanColimit_map_localized_isIso
+
+
 -- SpanCylinderFunctor.lean
 
 #check @SerrePositivity.KST.Comparison.spanCylinderFunctor
@@ -2920,6 +2999,12 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.spanMonoBaseProjection_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.spanMonoBaseProjection_localized_isIso
+
+
+-- SpanPushoutGluing.lean
+
+#check @SerrePositivity.KST.Comparison.spanPushout_vertex_homotopyPullback
+#print axioms SerrePositivity.KST.Comparison.spanPushout_vertex_homotopyPullback
 
 
 -- SpanStrictification.lean

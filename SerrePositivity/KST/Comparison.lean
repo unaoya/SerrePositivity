@@ -87,6 +87,10 @@ public import SerrePositivity.KST.Comparison.FatSkeletonColimit
 
 public import SerrePositivity.KST.Comparison.DoubleMappingCylinderCollapse
 
+public import SerrePositivity.KST.Comparison.SpanPushoutGluing
+public import SerrePositivity.KST.Comparison.CoconeBaseGluing
+public import SerrePositivity.KST.Comparison.FiniteCoverInduction
+
 /-!
 # K-L2：比較定理の入口
 

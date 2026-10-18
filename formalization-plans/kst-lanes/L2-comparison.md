@@ -546,6 +546,25 @@ A からの包含は端点の anodyne 性の pushout なので局所化同型で
 有限骨格の付着では境界の積の包含がこの単射な脚になる。
 これは通常の pushout がホモトピー pushout であることを新たに仮定するものではない。
 
+### 境界の有限被覆でのホモトピー引き戻しの比較
+
+確認する文言：右の脚が単射の二つの span とそれぞれの余極限に対し、
+各頂点で同じ固定射 X→B への四角形がホモトピー引き戻しなら、余極限の四角形もそうなる。
+証明方針：X→B を anodyne–Kan 分解し、各頂点から厳密ファイバーへの標準比較を作る。
+基底 B のスライスに余錐を持ち上げ、左随伴である sliceFiberFunctor の余極限保存から
+厳密ファイバーの余錐も余極限になることを示す。各頂点の比較の可逆性を、
+単射な脚の span の余極限の比較へ適用して全体の比較を可逆にする。
+有限個の面とその交叉への適用では、各片・交叉の四角形を別途確認する。
+局所的な結論や境界全体の結論を入力の構造体へ隠さない。
+
+### 有限個の面の和に関する帰納
+
+確認する文言：分配束の性質 P が空対象を満たし、二対象とその交叉で P が成り立つときに
+和でも成り立つなら、有限族の全ての非空な部分族の交叉で P が成り立つことから、全体の和で P が成り立つ。
+証明方針：有限族の要素数で帰納する。新しい要素との交叉を、残りの族との交叉の有限和へ
+分配し、その新しい族へ同じ帰納を適用する。交叉族の局所条件は元の族へ新しい要素を足した交叉から得る。
+標準単体の境界の被覆への適用では、有限交叉が適切な頂点集合の面であることを別途計算する。
+
 ## 12. 現在地と主要宣言
 
 現在地：L2a の有限 rank の構成を完了し、L2b の群状モノイドの bar 構成へ進む。
@@ -703,6 +722,11 @@ fat realization の各次数と全射な標準形の型との同値を構成し�
 mapping cylinder の実対象、底の anodyne な包含、底への収縮の局所化可逆性を証明した。
 二重写像円筒の三部分の desc の普遍性から、一端ずつ貼る二段階の pushout 表示を証明した。
 右の脚が単射なら、二重写像円筒を通常の pushout へ潰す比較が局所化同型であると証明した。
+円筒から任意の具体的な span の余極限への比較と、各頂点・余錐の比較に関する自然性を証明した。
+単射な右脚の通常の pushout の各頂点へ、Lemma 1.7 のホモトピー引き戻し性を移した。
+任意の余錐の基底上への持ち上げと、固定した射の厳密ファイバーの余極限保存を証明した。
+各頂点で同じ固定射へのホモトピー引き戻し性を、単射な脚の span の余極限へ貼り合わせる定理を証明した。
+全ての非空な部分族の交叉から有限和へ進む分配束の帰納補題を証明した。
 対角への比較の局所化可逆性と有限骨格のホモトピー引き戻しの帰納は未証明。
 Proposition 1.6 の対角化の貼り合わせは未証明。
 対角化後の bar 束の homotopy-cartesian 性と、Segal 比較は未証明。
@@ -711,8 +735,8 @@ L2b、L2c、L2d、L2e は未完了である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 894 宣言の型と公理を確認した。
-さらに名前空間全体の 1652 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 915 宣言の型と公理を確認した。
+さらに名前空間全体の 1694 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -890,6 +914,12 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `doubleMappingCylinderDesc`、`doubleMappingCylinder_hom_ext` | 実装済み | 三部分の射による二重写像円筒の普遍性 |
 | `mappingCylinderToDouble_isPushout` | 実装済み | 一端ずつ貼る二段階の pushout 表示 |
 | `doubleMappingCylinderCollapse_localized_isIso` | 実装済み | 右の脚が単射の場合の通常の pushout への比較の可逆性 |
+| `spanCylinderToColimit`、`spanCylinderToColimit_naturality` | 実装済み | 任意の具体的な余極限への円筒の自然な比較 |
+| `spanPushout_vertex_homotopyPullback` | 実装済み | 単射な脚の通常の pushout の各頂点への貼り合わせ |
+| `spanColimit_map_localized_isIso` | 実装済み | 具体的な span の余極限への成分ごとの可逆性の移送 |
+| `coconeOverCoconeIsColimit`、`fiberCoconeIsColimit` | 実装済み | スライスへの持ち上げと厳密ファイバーの余極限保存 |
+| `coconeBaseFiberComparison`、`coconeBase_homotopyPullback_of_span` | 実装済み | 同じ固定射への四角形の各頂点から余極限への貼り合わせ |
+| `finiteSup_of_nonempty_intersections` | 実装済み | 有限交叉の条件を有限和へ移す束の帰納 |
 | Segal Proposition 1.6 | 未証明 | 対角化の貼り合わせ |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
