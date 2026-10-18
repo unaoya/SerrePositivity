@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.KST.Descent.CechDescentRetract
+public import SerrePositivity.KST.Descent.PresheafCechSpaces
 public import SerrePositivity.KST.Descent.Axioms
 public import SerrePositivity.KST.Descent.Transfer
 public import SerrePositivity.KST.Descent.RationalFixedPoints
