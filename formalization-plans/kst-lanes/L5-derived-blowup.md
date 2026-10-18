@@ -20,7 +20,13 @@ pivot の三重 cocycle、制限との自然性を証明済み。微分等式の
 全有限重なりへの dg 底変更比較と局所準同値性を証明済み。
 普遍多項式チャートと L7 の Rees–Proj 標準チャートとの明示環同型を構成済み。
 基底係数と斉次比の像、両側逆まで確認済み。
-普遍係数の任意環への特殊化と導来底変更の全図式比較、coherent な降下模型の組立ては未完了。
+普遍係数の任意環への特殊化、多項式環の tensor 底変更、任意宇宙への ULift 接続を構成済み。
+ULift 後も弱正則性と解消性を証明し、標準チャートへの dg 底変更準同値を構成済み。
+基底へ制限した Koszul 複体の K-flat 性、多項式 pushout の加群・非有界複体の自然同型、
+実導来係数拡大との比較を証明済み。
+通常の普遍チャート商は元の自由チャートと基底係数を保つ環同型を持ち、
+その実導来底変更が指定係数の Koszul チャートを与える局所同型を構成済み。
+係数環が変わる dg 図式全体の合成比較と、coherent な降下模型の組立ては未完了。
 L5b 全体は未完了。L5c〜L5f は未実装。
 既存の L11 の検証記録を、Lean の証明済み宣言とは扱わない。
 
@@ -194,6 +200,15 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `chartTransitionComparisonDGFunctor`・`finiteOverlapChartDGFunctor` と準同値性 | TransitionDGComparison | 任意共通係数環と全有限重なりの局所 dg 比較 |
 | `universalCenter_image`・`universalClassicalToChart` | UniversalClassicalCenter | 普遍中心像の正則単項性と L7 の正則持ち上げ |
 | `universalClassicalChartEquiv`・係数/比座標の保存 | UniversalClassicalChartEquiv | L7 の Rees–Proj 標準チャートとの明示環同型 |
+| `universalSpecialization`・`universalPresentationBaseChangeEquiv` と関係式公式 | UniversalSpecialization | 任意係数への代入と通常の多項式 tensor 比較 |
+| `liftedUniversalChartBaseChangeDGFunctor`・準同値性 | LiftedUniversalSpecialization | ULift で任意宇宙へ接続した普遍チャートの dg 底変更 |
+| `liftedUniversalChartSequence_isWeaklyRegular/isKoszulResolution` | LiftedUniversalResolution | 宇宙移送後の普遍関係式列の解消性 |
+| `polynomialKoszulRestriction_kFlat`・`chartRestrictedExterior_kFlat` | PolynomialKoszulKFlat | 表示環から元の基底へ制限した複体の K-flat 性 |
+| `scalarExtensionTensorView`・`scalarRestrictionTensorView` | ScalarTensorView | 束ねた係数拡大・制限と通常の tensor 表示の比較 |
+| `polynomialPushoutModuleNatIso`・`polynomialPushoutComplexNatIso` | PolynomialPushoutBaseChange | 普遍基底と表示多項式環を経由する二つの tensor 経路の自然同型 |
+| `polynomialDerivedBaseChangeIso` | PolynomialDerivedBaseChange | K-flat 複体の実導来底変更と表示環の項別底変更の比較 |
+| `liftedUniversalDerivedChartIso` | UniversalDerivedChartComparison | 普遍チャート解消の実導来底変更と任意係数チャートの局所同型 |
+| `liftedUniversalOrdinaryChartEquiv`・係数保存・`liftedUniversalDerivedOrdinaryChartIso` | LiftedUniversalOrdinaryChart | 通常の普遍チャート商そのものの実導来底変更の Koszul 表示 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -234,13 +249,19 @@ O(m) の単元整数冪による推移射と cocycle、および可逆性は coc
 微分移送を明示した三重 dg cocycle も証明済み。全有限重なりへの dg 底変更比較と局所準同値性を証明済み。
 普遍多項式チャートは L7 の Rees–Proj 標準チャートと明示環同型で結び、
 基底構造射と斉次比の像も確認済み。
-普遍係数の任意環への特殊化と導来底変更の全図式比較、coherent な降下模型の組立ては未完了。
+普遍係数の任意環への特殊化、多項式環の tensor 底変更、任意宇宙への ULift 接続を構成済み。
+ULift 後も弱正則性と解消性を証明し、標準チャートへの dg 底変更準同値を構成済み。
+基底へ制限した Koszul 複体の K-flat 性、多項式 pushout の加群・非有界複体の自然同型、
+実導来係数拡大との比較を証明済み。
+通常の普遍チャート商は元の自由チャートと基底係数を保つ環同型を持ち、
+その実導来底変更が指定係数の Koszul チャートを与える局所同型を構成済み。
+係数環が変わる dg 図式全体の合成比較と、coherent な降下模型の組立ては未完了。
 導来チャートの外積 dg 代数と underlying Koszul 複体は構成済みだが、
 局所化と底変更の比較を含むチャート図式全体の完成とは扱わない。
-所有モジュールの全1003定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全1169定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
-次の実装単位は普遍係数の任意環への特殊化と、その Koszul dg 底変更比較。
-重なり環への導来底変更・dg 関手のチャート cocycle の具体化も残る。
+次の実装単位は係数環変更の合成比較とチャート遷移を結ぶ dg 図式の整合性。
+L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
 
 ## 保存単位の検査
