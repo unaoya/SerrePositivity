@@ -13,3 +13,4 @@ public import SerrePositivity.EInfinity.BarrattEccles.EquivariantBasis
 public import SerrePositivity.EInfinity.BarrattEccles.Sequence
 public import SerrePositivity.EInfinity.BarrattEccles.ShufflePaths
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleSign
+public import SerrePositivity.EInfinity.BarrattEccles.Generators
