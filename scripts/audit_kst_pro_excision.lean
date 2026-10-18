@@ -994,3 +994,12 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.no_homotopy_identity_doubleIdentity
 #print axioms SerrePositivity.KST.ProExcision.no_homotopy_identity_doubleIdentity
+
+#check @SerrePositivity.KST.ProExcision.tensorMap_eq_zero_above
+#print axioms SerrePositivity.KST.ProExcision.tensorMap_eq_zero_above
+#check @SerrePositivity.KST.ProExcision.tensorMap_augmentation_expansion
+#print axioms SerrePositivity.KST.ProExcision.tensorMap_augmentation_expansion
+#check @SerrePositivity.KST.ProExcision.tensorMap_augmentation_eq_above
+#print axioms SerrePositivity.KST.ProExcision.tensorMap_augmentation_eq_above
+#check @SerrePositivity.KST.ProExcision.tensorMap_augmentation_eq_low
+#print axioms SerrePositivity.KST.ProExcision.tensorMap_augmentation_eq_low

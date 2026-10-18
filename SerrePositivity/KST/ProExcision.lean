@@ -51,3 +51,4 @@ public import SerrePositivity.KST.ProExcision.ActionCategory
 public import SerrePositivity.KST.ProExcision.ActionBar
 public import SerrePositivity.KST.ProExcision.Conjugation
 public import SerrePositivity.KST.ProExcision.AugmentationObstruction
+public import SerrePositivity.KST.ProExcision.AugmentationTensor
