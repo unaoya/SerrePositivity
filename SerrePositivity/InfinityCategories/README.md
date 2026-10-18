@@ -2191,7 +2191,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開125宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開134宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2330,6 +2330,45 @@ weightedSectionsPre_tower_homotopyEquivalence
 
 この結果は任意の二つの重みの成分ごとに anodyne な比較を扱う。
 標準比較 κ_x に適用する重みの比較と、coherent な錐の写像空間の導来 fiber 比較は未完了。
+
+### 塔の標準比較の補助重み（部分実装）
+
+`ConeWeight.lean` は W(i) = N(I/i)、U(i) = Δ[0] に対して
+V(i) = N(WithInitial(I/i)) を厳密な関手 `bousfieldKanConeWeight I` として構成する。
+`initialExtensionFunctor` の恒等・合成則も等式として証明し、擬関手の同型で代用しない。
+`bousfieldKanConeWeightInclusion : W → V` は元の over 圏の包含、
+`bousfieldKanConeWeightPoint : U → V` は新しい始対象の頂点の包含である。
+後者の全成分は `nervePoint_leftAnodyne` により anodyne。
+
+```lean
+bousfieldKanConeWeightPoint_tower_trivialKanFibration
+    (H : AsSmall.{u} ℕᵒᵖ ⥤ SSet.{u})
+    [KanComplex (H.obj (AsSmall.up.obj (Opposite.op 0)))]
+    [∀ n : ℕ, Fibration (H.map (AsSmall.up.map (homOfLE (Nat.le_succ n)).op))] :
+    TrivialKanFibration (weightedSectionsPre bousfieldKanConeWeightPoint H)
+```
+
+`ConeWeightComparison.lean` は任意の strict な錐 c について二つの厳密な合成式を証明する。
+V の比較射の後で W に制限すると `bousfieldKanConeComparison c`、
+U に制限すると `weightedConeComparison U c` に一致する。
+前者は `bousfieldKanConeComparison_factorization`、
+後者は `bousfieldKanConeWeightComparison_point` である。
+
+```lean
+bousfieldKanConeWeightComparison_tower_homotopyEquivalence
+    {H : AsSmall.{u} ℕᵒᵖ ⥤ SSet.{u}} (c : Cone H) (hc : IsLimit c)
+    [KanComplex (H.obj (AsSmall.up.obj (Opposite.op 0)))]
+    [∀ n : ℕ, Fibration (H.map (AsSmall.up.map (homOfLE (Nat.le_succ n)).op))] :
+    IsSimplicialHomotopyEquivalence
+      (weightedConeComparison (bousfieldKanConeWeight (AsSmall.{u} ℕᵒᵖ)) c)
+```
+
+U は図式の圏の終対象であるため、その比較射は同型である。
+V → U の end の制限のホモトピー同値性と二対三則で上の定理を得る。
+c.pt の Kan 性は U の end との同型から導き、前提に追加しない。
+したがって κ は、証明済みのホモトピー同値と V → W の end の制限に分解された。
+W → V の成分の anodyne 性と、その制限の同値性は未証明。
+一般の coherent な錐の写像空間との比較も引き続き未完了。
 
 ### 𝒮 の空積（実装済み）
 

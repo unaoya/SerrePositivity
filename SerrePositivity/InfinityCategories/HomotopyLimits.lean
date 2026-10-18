@@ -23,3 +23,5 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedRestrict
 public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedTowerRestriction
 public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedCorner
 public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedTowerTrivialFibration
+public import SerrePositivity.InfinityCategories.HomotopyLimits.ConeWeight
+public import SerrePositivity.InfinityCategories.HomotopyLimits.ConeWeightComparison

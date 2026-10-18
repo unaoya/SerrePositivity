@@ -223,7 +223,7 @@ Sp では raw sHom の局所 Kan 性と極限の cofibrancy を省略せず、�
 置換後の錐を公開する。実装は `InfinityCategories/HomotopyLimits/` と専用監査に置く。
 
 γ3b の部分 API は `HomotopyLimits` 集約と `scripts/audit_homotopy_limits.lean` に置く。
-公開125宣言。`representableHomotopyLimitComparison c x` は実際の sHom から end への射、
+公開134宣言。`representableHomotopyLimitComparison c x` は実際の sHom から end への射、
 `representableHomotopyLimitComparison_factorization c x h` は θκ への厳密な分解、
 `representableHomotopyLimitComparison_naturality c f` は始対象に関する厳密な自然性。
 重み付き end の普遍性・通常の随伴と極限保存も公開。正確な型と数学は README に置く。
@@ -248,3 +248,13 @@ Sp の接続先は `KST/Spectra/CoherentNerve.lean` の L9 の Ω スペクト�
 trivial Kan fibration 性と単体的ホモトピー同値性を証明する。
 重みと境界の pushout-product に沿う相対的延長を用いる。正確な型は README と監査に記録。
 κ_x に適用する重みの比較と coherent な錐の写像空間の比較は未完了。
+
+補助重み V(i) = N(WithInitial(I/i)) と W → V、U = 定値 Δ[0] → V を構成した。
+`bousfieldKanConeWeightPoint_tower_trivialKanFibration` は零段 Kan・隣接遷移 Fibration の
+塔で一点側の制限が trivial Kan fibration であることを証明する。
+`bousfieldKanConeWeightComparison_tower_homotopyEquivalence c hc` は同じ前提と `IsLimit c` から、
+strict な錐の頂点から V の end への比較射のホモトピー同値性を証明する。
+c.pt の Kan 性は結論に必要な証明の中で導出する。
+`bousfieldKanConeComparison_factorization c` はその射の後で W に制限すると元の κ になる式。
+正確な型・前提は README と公開134宣言の監査に記録。W → V の anodyne 性と制限の同値性、
+一般の coherent な錐の写像空間との比較は未完了なので、κ と γ3b の完成とは数えない。

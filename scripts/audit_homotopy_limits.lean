@@ -255,3 +255,21 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms weightedSectionsPre_tower_trivialKanFibration
 #check @weightedSectionsPre_tower_homotopyEquivalence
 #print axioms weightedSectionsPre_tower_homotopyEquivalence
+#check @initialExtensionFunctor
+#print axioms initialExtensionFunctor
+#check @bousfieldKanConeWeight
+#print axioms bousfieldKanConeWeight
+#check @bousfieldKanConeWeightInclusion
+#print axioms bousfieldKanConeWeightInclusion
+#check @bousfieldKanConeWeightPoint
+#print axioms bousfieldKanConeWeightPoint
+#check @bousfieldKanConeWeightPoint_anodyne
+#print axioms bousfieldKanConeWeightPoint_anodyne
+#check @bousfieldKanConeWeightPoint_tower_trivialKanFibration
+#print axioms bousfieldKanConeWeightPoint_tower_trivialKanFibration
+#check @bousfieldKanConeComparison_factorization
+#print axioms bousfieldKanConeComparison_factorization
+#check @bousfieldKanConeWeightComparison_point
+#print axioms bousfieldKanConeWeightComparison_point
+#check @bousfieldKanConeWeightComparison_tower_homotopyEquivalence
+#print axioms bousfieldKanConeWeightComparison_tower_homotopyEquivalence
