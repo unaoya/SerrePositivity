@@ -9534,5 +9534,112 @@ lemma exists_leftUnstraighteningComparison_of_functorIso
       f ≫ leftUnstraighteningProjection G = leftUnstraighteningProjection F ∧
       IsPrecompositionEquivalence f
 
+def relativeFunctorExtensionSpace {A D E B : SSet.{u}}
+    (p : E ⟶ B) (b : A ⟶ B) (i : D ⟶ A)
+    (v : D ⟶ E) (hv : v ≫ p = i ≫ b) : SSet.{u}
+
+def relativeFunctorExtensionSpaceι {A D E B : SSet.{u}}
+    (p : E ⟶ B) (b : A ⟶ B) (i : D ⟶ A)
+    (v : D ⟶ E) (hv : v ≫ p = i ≫ b) :
+    relativeFunctorExtensionSpace p b i v hv ⟶ relativeFunctorSpace p b
+
+lemma relativeFunctorExtensionSpaceι_pre {A D E B : SSet.{u}}
+    (p : E ⟶ B) (b : A ⟶ B) (i : D ⟶ A)
+    (v : D ⟶ E) (hv : v ≫ p = i ≫ b) :
+    relativeFunctorExtensionSpaceι p b i v hv ≫ relativeFunctorPre p b i =
+      SSet.const (relativeFunctorVertex p (i ≫ b) v hv)
+
+lemma relativeFunctorExtensionSpace_isContractibleKan {A D E B : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (b : A ⟶ B) (i : D ⟶ A)
+    (hi : leftAnodyneExtensions i) (v : D ⟶ E) (hv : v ≫ p = i ≫ b) :
+    IsContractibleKan (relativeFunctorExtensionSpace p b i v hv)
+
+noncomputable def relativeFunctorExtensionSpaceVertexEquiv {A D E B : SSet.{u}}
+    (p : E ⟶ B) (b : A ⟶ B) (i : D ⟶ A)
+    (v : D ⟶ E) (hv : v ≫ p = i ≫ b) :
+    {W : A ⟶ E // W ≫ p = b ∧ i ≫ W = v} ≃
+      (relativeFunctorExtensionSpace p b i v hv) _⦋0⦌
+
+lemma exists_relativeFunctorExtension_of_leftAnodyne {A D E B : SSet.{u}}
+    (p : E ⟶ B) [LeftFibration p] (b : A ⟶ B) (i : D ⟶ A)
+    (hi : leftAnodyneExtensions i) (v : D ⟶ E) (hv : v ≫ p = i ≫ b) :
+    ∃ W : A ⟶ E, W ≫ p = b ∧ i ≫ W = v
+
+lemma leftAnodyneExtensions_whiskerRight {K L : SSet.{u}}
+    (i : K ⟶ L) (hi : leftAnodyneExtensions i) (A : SSet.{u}) :
+    leftAnodyneExtensions (i ▷ A)
+
+lemma simplexPrismFirstVertex_leftAnodyne (n : ℕ) (A : SSet.{u}) :
+    leftAnodyneExtensions (scaffoldFirstVertex.{u} n ▷ A)
+
+def simplexPrismVertex (n : ℕ) (i : Fin (n + 1)) (A : SSet.{u}) :
+    A ⟶ (Δ[n] : SSet.{u}) ⊗ A
+
+lemma simplexPrismVertex_snd (n : ℕ) (i : Fin (n + 1)) (A : SSet.{u}) :
+    simplexPrismVertex n i A ≫ snd (Δ[n] : SSet.{u}) A = 𝟙 A
+
+lemma simplexPrismVertex_naturality (n : ℕ) (i : Fin (n + 1))
+    {A B : SSet.{u}} (f : A ⟶ B) :
+    simplexPrismVertex n i A ≫ (Δ[n] ◁ f) = f ≫ simplexPrismVertex n i B
+
+lemma scaffoldFirstVertex_whiskerRight (n : ℕ) (A : SSet.{u}) :
+    (scaffoldFirstVertex.{u} n ▷ A) =
+      snd (Δ[0] : SSet.{u}) A ≫ simplexPrismVertex n 0 A
+
+noncomputable def leftUnstraighteningSimplexStart {B : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) :
+    (Δ[0] : SSet.{u + 1}) ⊗ leftUnstraightening F ⟶ PointedSpaceInfinity.{u}
+
+lemma leftUnstraighteningSimplexStart_projection {B : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) (n : ℕ)
+    (T : (Δ[n] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+    (h₀ : simplexPrismVertex n 0 B ≫ T = F) :
+    leftUnstraighteningSimplexStart F ≫ pointedSpaceProjection =
+      (scaffoldFirstVertex n ▷ leftUnstraightening F) ≫
+        ((Δ[n] ◁ leftUnstraighteningProjection F) ≫ T)
+
+noncomputable def leftUnstraighteningSimplexChoiceSpace {B : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) (n : ℕ)
+    (T : (Δ[n] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+    (h₀ : simplexPrismVertex n 0 B ≫ T = F) : SSet.{u + 1}
+
+lemma leftUnstraighteningSimplexChoiceSpace_isContractibleKan {B : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) (n : ℕ)
+    (T : (Δ[n] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+    (h₀ : simplexPrismVertex n 0 B ≫ T = F) :
+    IsContractibleKan (leftUnstraighteningSimplexChoiceSpace F n T h₀)
+
+lemma exists_leftUnstraighteningSimplexLift {B : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) (n : ℕ)
+    (T : (Δ[n] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+    (h₀ : simplexPrismVertex n 0 B ≫ T = F) :
+    ∃ W : (Δ[n] : SSet.{u + 1}) ⊗ leftUnstraightening F ⟶ PointedSpaceInfinity.{u},
+      W ≫ pointedSpaceProjection = (Δ[n] ◁ leftUnstraighteningProjection F) ≫ T ∧
+      simplexPrismVertex n 0 (leftUnstraightening F) ≫ W = pullback.fst pointedSpaceProjection F
+
+lemma leftUnstraighteningSimplexEndpoint_projection {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (n : ℕ)
+    (T : (Δ[n] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u}) (i : Fin (n + 1))
+    (hi : simplexPrismVertex n i B ≫ T = G) :
+    simplexPrismVertex n i (leftUnstraightening F) ≫
+      ((Δ[n] ◁ leftUnstraighteningProjection F) ≫ T) = leftUnstraighteningProjection F ≫ G
+
+noncomputable def leftUnstraighteningSimplexEndpoint {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (n : ℕ)
+    (T : (Δ[n] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+    (h₀ : simplexPrismVertex n 0 B ≫ T = F) (i : Fin (n + 1))
+    (hi : simplexPrismVertex n i B ≫ T = G) :
+    leftUnstraighteningSimplexChoiceSpace F n T h₀ ⟶
+      relativeFunctorSpace (leftUnstraighteningProjection G) (leftUnstraighteningProjection F)
+
+noncomputable def leftUnstraighteningSimplexEndpointIso {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (n : ℕ)
+    (T : (Δ[n] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+    (h₀ : simplexPrismVertex n 0 B ≫ T = F) (i : Fin (n + 1))
+    (hi : simplexPrismVertex n i B ≫ T = G)
+    (x y : (leftUnstraighteningSimplexChoiceSpace F n T h₀) _⦋0⦌) :
+    VertexIso ((leftUnstraighteningSimplexEndpoint F G n T h₀ i hi).app _ x)
+      ((leftUnstraighteningSimplexEndpoint F G n T h₀ i hi).app _ y)
+
 end SerrePositivity.InfinityCategories
 ```
