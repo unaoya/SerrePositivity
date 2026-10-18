@@ -13334,5 +13334,50 @@ lemma coherentPointedFiberTransport_isQCatEquivalence_iff
         (coherentNerveVertex pointKanObject))) (coherentNerveEdge (kanObjectOpFunctor.map f))) ↔
       IsQCatEquivalence (X := K.obj) (Y := L.obj) f
 
+def cosliceFiberVerticesIso {X : SSet.{u}} {x y x' y' : X _⦋0⦌}
+    (hx : x = x') (hy : y = y') :
+    vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y ≅
+      vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x')) y'
+
+lemma pinchedLeftCosliceFiberIso_vertices {X : SSet.{u}} {x y x' y' : X _⦋0⦌}
+    (hx : x = x') (hy : y = y') :
+    (pinchedLeftCosliceFiberIso x y).hom ≫ (cosliceFiberVerticesIso hx hy).hom =
+      eqToHom (congrArg₂ (fun a b ↦ pinchedHomLeft a b) hx hy) ≫
+        (pinchedLeftCosliceFiberIso x' y').hom
+
+lemma cosliceFiberVerticesIso_transport {X : SSet.{u}} [Quasicategory X]
+    {x x' a a' b b' : X _⦋0⦌} (hx : x = x') (ha : a = a') (hb : b = b')
+    (e : SSet.Edge a b) :
+    (cosliceFiberVerticesIso hx ha).hom ≫
+        edgeTransport (sliceUnderProjection (SSet.yonedaEquiv.symm x')) (e.ofEq ha hb) =
+      edgeTransport (sliceUnderProjection (SSet.yonedaEquiv.symm x)) e ≫
+        (cosliceFiberVerticesIso hx hb).hom
+
+noncomputable def pointedSpaceCoherentFiberIso (K : KanObject.{u}) :
+    vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm
+      (coherentNerveVertex pointKanObject))) (coherentNerveVertex (kanObjectOpFunctor.obj K)) ≅
+      vertexFiber pointedSpaceProjection (spaceInfinityVertex (kanObjectOpFunctor.obj K))
+
+lemma coherentPointedFiberComparison_coordinates (K : KanObject.{u}) :
+    coherentPointedFiberComparison K ≫ (pointedSpaceCoherentFiberIso K).hom =
+      pointedSpaceLeftCoherentComparison K
+
+noncomputable def pointedSpaceLeftResolutionComparison_transportIso
+    {K L : KanObject.{u}} (f : K ⟶ L) :
+    FunctorIso
+      ((SSet.uliftFunctor.{u + 1, u}).map f ≫ pointedSpaceLeftResolutionComparison L)
+      (pointedSpaceLeftResolutionComparison K ≫ edgeTransport pointedSpaceProjection
+        ((coherentNerveEdge (kanObjectOpFunctor.map f)).ofEq
+          (spaceInfinityVertex_eq_coherent (kanObjectOpFunctor.obj K)).symm
+          (spaceInfinityVertex_eq_coherent (kanObjectOpFunctor.obj L)).symm))
+
+lemma pointedSpaceTransport_isQCatEquivalence_iff {K L : KanObject.{u}} (f : K ⟶ L) :
+    IsQCatEquivalence
+      (edgeTransport pointedSpaceProjection
+        ((coherentNerveEdge (kanObjectOpFunctor.map f)).ofEq
+          (spaceInfinityVertex_eq_coherent (kanObjectOpFunctor.obj K)).symm
+          (spaceInfinityVertex_eq_coherent (kanObjectOpFunctor.obj L)).symm)) ↔
+      IsQCatEquivalence (X := K.obj) (Y := L.obj) f
+
 end SerrePositivity.InfinityCategories
 ```
