@@ -2325,3 +2325,9 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.shuffle_naturality
 #print axioms SerrePositivity.KST.ProExcision.shuffle_naturality
+
+#check @SerrePositivity.KST.ProExcision.normalizedShuffle
+#print axioms SerrePositivity.KST.ProExcision.normalizedShuffle
+
+#check @SerrePositivity.KST.ProExcision.normalizedShuffle_naturality
+#print axioms SerrePositivity.KST.ProExcision.normalizedShuffle_naturality
