@@ -6239,5 +6239,25 @@ lemma relativeJoinCylinderComparison_pullbackLift {X Y Z : SSet.{u}} (f : X ⟶ 
       mappingCylinderPullbackLift f h ≫
         overPullbackMap (relativeJoinCylinderComparisonOver f) (Over.mk h)
 
+lemma sset_isPullback_of_colimits {J : Type v} [Category.{w} J] [Small.{u} J]
+    {D E : J ⥤ SSet.{u}} (c : Cocone D) (hc : IsColimit c)
+    (d : Cocone E) (hd : IsColimit d) (α : E ⟶ D) (a : d.pt ⟶ c.pt)
+    {S T : SSet.{u}} (p : c.pt ⟶ S) (q : d.pt ⟶ T) (h : T ⟶ S)
+    (hw : a ≫ p = q ≫ h) (ha : ∀ j, d.ι.app j ≫ a = α.app j ≫ c.ι.app j)
+    (hp : ∀ j, IsPullback (α.app j) (d.ι.app j ≫ q) (c.ι.app j ≫ p) h) :
+    IsPullback a q p h
+
+lemma mappingCylinder_prism_isPullback {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) :
+    IsPullback ((Δ[1] : SSet.{u}) ◁ pullback.fst f h)
+      (snd (Δ[1] : SSet.{u}) (pullback f h) ≫ pullback.snd f h)
+      (snd (Δ[1] : SSet.{u}) X ≫ f) h
+
+lemma mappingCylinderPullbackMap_isPullback {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) :
+    IsPullback (mappingCylinderPullbackMap f h) (mappingCylinderBaseProjection (pullback.snd f h))
+      (mappingCylinderBaseProjection f) h
+
+instance mappingCylinderPullbackLift_isIso {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) :
+    IsIso (mappingCylinderPullbackLift f h)
+
 end SerrePositivity.InfinityCategories
 ```

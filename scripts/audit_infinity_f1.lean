@@ -1377,3 +1377,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.relativeJoinPullbackLift_fst
 #check @SerrePositivity.InfinityCategories.relativeJoinPullbackLift_snd
 #check @SerrePositivity.InfinityCategories.relativeJoinCylinderComparison_pullbackLift
+#check @SerrePositivity.InfinityCategories.sset_isPullback_of_colimits
+#check @SerrePositivity.InfinityCategories.mappingCylinder_prism_isPullback
+#check @SerrePositivity.InfinityCategories.mappingCylinderPullbackMap_isPullback
+#check @SerrePositivity.InfinityCategories.mappingCylinderPullbackLift_isIso
