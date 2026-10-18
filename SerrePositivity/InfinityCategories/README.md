@@ -4803,13 +4803,214 @@ lemma joinAssociator_naturality {A A' B B' C C' : SSet.{u}}
       (joinAssociator A B C).hom ≫ joinMap f (joinMap g h)
 ```
 
-join の単体集合としての結合同型と三因子の射に関する自然性は今回の範囲で完成。
-固定面の包含の式とこの同型を使う反復 slice の同定、native な錐の Hom 比較と切断の
-制限の比較は後続の工程。元の q_x と係数の反転の整合性、𝒮・Sp の残りの適用も未完了であり、
-join の同型だけで γ3b・γ3c の完成とはしない。
+join の単体集合としての結合同型と三因子の射に関する自然性は完成。
+固定面の包含の式、反復 slice の同定、native な比較 span の評価と slice の制限の対応も
+下節で実装済み。coslice の切断の制限への移送、元の q_x と係数の反転の整合性、
+𝒮・Sp の残りの適用は未完了であり、γ3b・γ3c の完成とはしない。
 
 検証：対象集約 `HomotopyLimits` のビルド成功（4443 jobs）、公開907宣言の `#check @` と
 公理監査成功（標準3公理のみ）。新規ファイルの警告・sorry・追加公理はない。
 集約の他担当の依存700ソースはすべて追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-join-associator-aggregate.log` と
 `/tmp/gamma3-join-associator-audit.log`。
+
+
+### 反復 slice の同型と native な極限判定の slice の制限への移送
+
+`JoinAssociatorInclusions` に前二因子・後二因子・外側二因子の固定面、最初・最後の因子の
+包含と結合同型の可換式、および逆方向の自然性を証明した。
+`IteratedSliceOverFamilies` は `p : K ⟶ X`、`q : L ⟶ sliceOver p` と任意の
+パラメータ A について、二度の uncurry と join の再結合、二度の curry による両方向の族を
+構成し、全パラメータでの厳密な往復則と前合成の自然性を証明する。
+`IteratedSliceOverIso` により
+
+```lean
+iteratedSliceOverIso q : sliceOver q ≅ sliceOver (sliceOverUncurry q)
+```
+
+を得た。元の X への二重の射影を保つだけでなく、`IteratedSliceOverRestriction` により
+元の図式 p への slice の制限を `sliceOverProjection q` に対応させる。
+K・L・X・p・q に充填性は一切要求しない。
+原典上の位置は HTT 4.2.4.1 の双対、Kerodon §4.3.5、7.4.1.6。
+
+`ConeIteratedSliceIso` は任意の coherent な錐 `c : JoinCone p` の Yoneda 表示に特殊化する。
+固定図式の等式による移送を明示し、底 X の上の同型と実際の制限の対応を得る。
+同じ底上の同型による頂点 fiber の同型も構成し、任意の x について
+
+```lean
+coneMappingTotalIso c x :
+  rightFibrationMappingTotal (sliceOverProjection p) c x ≅
+    vertexFiber (sliceOverProjection c.val) x
+```
+
+を得た。この同型の順方向の後に、錐の図式から元の図式への slice の制限の fiber 射を
+合成すると、既存の `rightFibrationMappingEvaluation (sliceOverProjection p) c x` に
+厳密に一致する。中間空間の同値の存在だけを述べるものではない。
+この段階の同型・可換式には Kan 性や極限性を要求しない。
+
+`ConeSliceRestrictionCriterion` は、この可換図式で A3d に基づく既存の native な判定を移す。
+任意の `[Quasicategory X]`、任意の単体集合 K、任意の `p : K ⟶ X` と coherent な錐 c に対し
+
+```lean
+isLimitCone_iff_coneSliceRestrictionFiberMap_homotopyEquivalence (c : JoinCone p) :
+  IsLimitCone c ↔ ∀ x : X _⦋0⦌,
+    IsSimplicialHomotopyEquivalence (coneSliceRestrictionFiberMap c x)
+```
+
+を証明した。strict な錐、有限の添字、追加の fibration 性、選択した Hom の逆の自然性は
+仮定しない。極限の条件を変えず、実際の slice の制限で検出する一般の判定である。
+
+新規53宣言の正確な型・全前提は以下と公開宣言の監査に記録する。
+共通の宇宙は `universe u`。各族の宣言の共通変数は
+`{K L X A A' : SSet.{u}} {p : K ⟶ X} (q : L ⟶ sliceOver p)`。
+
+```lean
+lemma augmentedJoinSumEquiv_inr (A B : SSet.{u}) (n : ℕ) (b : Join.augObj B n) :
+    augmentedJoinSumEquiv A B n (Join.augHom (joinInr A B) n b) =
+      (⟨⟨0, n, PUnit.unit, b⟩, by simp⟩ : joinSumSimplex A B n)
+lemma augmentedJoinSumEquiv_inl (A B : SSet.{u}) (n : ℕ) (a : Join.augObj A n) :
+    augmentedJoinSumEquiv A B n (Join.augHom (joinInl A B) n a) =
+      (⟨⟨n, 0, a, PUnit.unit⟩, by simp⟩ : joinSumSimplex A B n)
+lemma joinAssociator_hom_encoding (A B C : SSet.{u}) (n : ℕ)
+    (s : (join (join A B) C) _⦋n⦌) :
+    rightJoinTripleEncoding A B C (n + 1) ((joinAssociator A B C).hom.app _ s) =
+      leftJoinTripleEncoding A B C (n + 1) s
+lemma joinAssociator_rightPair (A B C : SSet.{u}) :
+    joinMap (joinInr A B) (𝟙 C) ≫ (joinAssociator A B C).hom =
+      joinInr A (join B C)
+lemma joinAssociator_leftPair (A B C : SSet.{u}) :
+    joinInl (join A B) C ≫ (joinAssociator A B C).hom =
+      joinMap (𝟙 A) (joinInl B C)
+lemma joinAssociator_inv_rightPair (A B C : SSet.{u}) :
+    joinInr A (join B C) ≫ (joinAssociator A B C).inv = joinMap (joinInr A B) (𝟙 C)
+lemma joinAssociator_inv_leftPair (A B C : SSet.{u}) :
+    joinMap (𝟙 A) (joinInl B C) ≫ (joinAssociator A B C).inv = joinInl (join A B) C
+lemma joinAssociator_last (A B C : SSet.{u}) :
+    joinInr (join A B) C ≫ (joinAssociator A B C).hom =
+      joinInr B C ≫ joinInr A (join B C)
+lemma joinAssociator_inv_first (A B C : SSet.{u}) :
+    joinInl A (join B C) ≫ (joinAssociator A B C).inv =
+      joinInl A B ≫ joinInl (join A B) C
+lemma joinAssociator_inv_naturality {A A' B B' C C' : SSet.{u}}
+    (f : A ⟶ A') (g : B ⟶ B') (h : C ⟶ C') :
+    joinMap f (joinMap g h) ≫ (joinAssociator A' B' C').inv =
+      (joinAssociator A B C).inv ≫ joinMap (joinMap f g) h
+lemma joinAssociator_outerPair (A B C : SSet.{u}) :
+    joinMap (joinInl A B) (𝟙 C) ≫ (joinAssociator A B C).hom =
+      joinMap (𝟙 A) (joinInr B C)
+lemma joinAssociator_inv_outerPair (A B C : SSet.{u}) :
+    joinMap (𝟙 A) (joinInr B C) ≫ (joinAssociator A B C).inv =
+      joinMap (joinInl A B) (𝟙 C)
+def iteratedSliceOverForwardFamily (s : A ⟶ sliceOver q) :
+    A ⟶ sliceOver (sliceOverUncurry q)
+lemma iteratedSliceOverForwardFamily_uncurry (s : A ⟶ sliceOver q) :
+    sliceOverUncurry (iteratedSliceOverForwardFamily q s) =
+      (joinAssociator A L K).inv ≫ sliceOverUncurry (sliceOverUncurry s)
+def iteratedSliceOverInnerFamily (s : A ⟶ sliceOver (sliceOverUncurry q)) :
+    join A L ⟶ sliceOver p
+lemma iteratedSliceOverInnerFamily_uncurry (s : A ⟶ sliceOver (sliceOverUncurry q)) :
+    sliceOverUncurry (iteratedSliceOverInnerFamily q s) =
+      (joinAssociator A L K).hom ≫ sliceOverUncurry s
+lemma iteratedSliceOverInnerFamily_fixed (s : A ⟶ sliceOver (sliceOverUncurry q)) :
+    joinInr A L ≫ iteratedSliceOverInnerFamily q s = q
+def iteratedSliceOverBackwardFamily (s : A ⟶ sliceOver (sliceOverUncurry q)) :
+    A ⟶ sliceOver q
+lemma iteratedSliceOverBackwardFamily_uncurry (s : A ⟶ sliceOver (sliceOverUncurry q)) :
+    sliceOverUncurry (iteratedSliceOverBackwardFamily q s) = iteratedSliceOverInnerFamily q s
+lemma iteratedSliceOverFamily_backward_forward (s : A ⟶ sliceOver q) :
+    iteratedSliceOverBackwardFamily q (iteratedSliceOverForwardFamily q s) = s
+lemma iteratedSliceOverFamily_forward_backward (s : A ⟶ sliceOver (sliceOverUncurry q)) :
+    iteratedSliceOverForwardFamily q (iteratedSliceOverBackwardFamily q s) = s
+lemma iteratedSliceOverForwardFamily_naturality (f : A' ⟶ A) (s : A ⟶ sliceOver q) :
+    iteratedSliceOverForwardFamily q (f ≫ s) = f ≫ iteratedSliceOverForwardFamily q s
+lemma iteratedSliceOverBackwardFamily_naturality (f : A' ⟶ A)
+    (s : A ⟶ sliceOver (sliceOverUncurry q)) :
+    iteratedSliceOverBackwardFamily q (f ≫ s) = f ≫ iteratedSliceOverBackwardFamily q s
+def iteratedSliceOverHomEquiv (A : SSet.{u}) :
+    (A ⟶ sliceOver q) ≃ (A ⟶ sliceOver (sliceOverUncurry q))
+def iteratedSliceOverMap : sliceOver q ⟶ sliceOver (sliceOverUncurry q)
+lemma iteratedSliceOverForwardFamily_eq (s : A ⟶ sliceOver q) :
+    iteratedSliceOverForwardFamily q s = s ≫ iteratedSliceOverMap q
+def iteratedSliceOverInv : sliceOver (sliceOverUncurry q) ⟶ sliceOver q
+lemma iteratedSliceOverBackwardFamily_eq (s : A ⟶ sliceOver (sliceOverUncurry q)) :
+    iteratedSliceOverBackwardFamily q s = s ≫ iteratedSliceOverInv q
+def iteratedSliceOverIso : sliceOver q ≅ sliceOver (sliceOverUncurry q)
+lemma iteratedSliceOverForwardFamily_projection (s : A ⟶ sliceOver q) :
+    iteratedSliceOverForwardFamily q s ≫ sliceOverProjection (sliceOverUncurry q) =
+      s ≫ sliceOverProjection q ≫ sliceOverProjection p
+lemma iteratedSliceOverIso_projection :
+    (iteratedSliceOverIso q).hom ≫ sliceOverProjection (sliceOverUncurry q) =
+      sliceOverProjection q ≫ sliceOverProjection p
+lemma sliceOverUncurry_eqToHom {K X A : SSet.{u}} {p r : K ⟶ X}
+    (h : p = r) (s : A ⟶ sliceOver p) :
+    sliceOverUncurry (s ≫ eqToHom (congrArg (fun f : K ⟶ X ↦ sliceOver f) h)) =
+      sliceOverUncurry s
+def uncurriedSliceOverRestriction : sliceOver (sliceOverUncurry q) ⟶ sliceOver p
+lemma uncurriedSliceOverRestriction_uncurry (s : A ⟶ sliceOver (sliceOverUncurry q)) :
+    sliceOverUncurry (s ≫ uncurriedSliceOverRestriction q) =
+      joinMap (𝟙 A) (joinInr L K) ≫ sliceOverUncurry s
+lemma iteratedSliceOverForwardFamily_restriction (s : A ⟶ sliceOver q) :
+    iteratedSliceOverForwardFamily q s ≫ uncurriedSliceOverRestriction q =
+      s ≫ sliceOverProjection q
+lemma iteratedSliceOverIso_restriction :
+    (iteratedSliceOverIso q).hom ≫ uncurriedSliceOverRestriction q = sliceOverProjection q
+lemma uncurriedSliceOverRestriction_projection :
+    uncurriedSliceOverRestriction q ≫ sliceOverProjection p =
+      sliceOverProjection (sliceOverUncurry q)
+def vertexFiberIsoOfOverIso {E F B : SSet.{u}} (p : E ⟶ B) (q : F ⟶ B)
+    (e : E ≅ F) (he : e.hom ≫ q = p) (b : B _⦋0⦌) : vertexFiber p b ≅ vertexFiber q b
+lemma vertexFiberIsoOfOverIso_hom_ι {E F B : SSet.{u}} (p : E ⟶ B) (q : F ⟶ B)
+    (e : E ≅ F) (he : e.hom ≫ q = p) (b : B _⦋0⦌) :
+    (vertexFiberIsoOfOverIso p q e he b).hom ≫ vertexFiberι q b = vertexFiberι p b ≫ e.hom
+lemma sliceOver_eqToHom_projection {K X : SSet.{u}} {p q : K ⟶ X} (h : p = q) :
+    eqToHom (congrArg (fun f : K ⟶ X ↦ sliceOver f) h) ≫ sliceOverProjection q =
+      sliceOverProjection p
+abbrev coneYonedaPoint (c : JoinCone p) : (Δ[0] : SSet.{u}) ⟶ sliceOver p
+def coneSliceOverDiagramIso (c : JoinCone p) :
+    sliceOver (sliceOverUncurry (coneYonedaPoint c)) ≅ sliceOver c.val
+lemma coneSliceOverDiagramIso_projection (c : JoinCone p) :
+    (coneSliceOverDiagramIso c).hom ≫ sliceOverProjection c.val =
+      sliceOverProjection (sliceOverUncurry (coneYonedaPoint c))
+def coneIteratedSliceIso (c : JoinCone p) :
+    sliceOver (coneYonedaPoint c) ≅ sliceOver c.val
+lemma coneIteratedSliceIso_projection (c : JoinCone p) :
+    (coneIteratedSliceIso c).hom ≫ sliceOverProjection c.val =
+      sliceOverProjection (coneYonedaPoint c) ≫ sliceOverProjection p
+def coneSliceOverRestriction (c : JoinCone p) : sliceOver c.val ⟶ sliceOver p
+lemma coneIteratedSliceIso_restriction (c : JoinCone p) :
+    (coneIteratedSliceIso c).hom ≫ coneSliceOverRestriction c =
+      sliceOverProjection (coneYonedaPoint c)
+lemma coneSliceOverRestriction_projection (c : JoinCone p) :
+    coneSliceOverRestriction c ≫ sliceOverProjection p = sliceOverProjection c.val
+def coneMappingTotalIso (c : JoinCone p) (x : X _⦋0⦌) :
+    rightFibrationMappingTotal (sliceOverProjection p) c x ≅
+      vertexFiber (sliceOverProjection c.val) x
+lemma coneMappingTotalIso_evaluation (c : JoinCone p) (x : X _⦋0⦌) :
+    (coneMappingTotalIso c x).hom ≫
+        vertexFiberMap (sliceOverProjection c.val) (sliceOverProjection p)
+          (coneSliceOverRestriction c) (coneSliceOverRestriction_projection c) x =
+      rightFibrationMappingEvaluation (sliceOverProjection p) c x
+def coneSliceRestrictionFiberMap {K X : SSet.{u}} {p : K ⟶ X}
+    (c : JoinCone p) (x : X _⦋0⦌) :
+    vertexFiber (sliceOverProjection c.val) x ⟶ vertexFiber (sliceOverProjection p) x
+lemma coneSliceRestrictionFiberMap_homotopyEquivalence_iff {K X : SSet.{u}}
+    [Quasicategory X] {p : K ⟶ X} (c : JoinCone p) (x : X _⦋0⦌) :
+    IsSimplicialHomotopyEquivalence
+        (rightFibrationMappingEvaluation (sliceOverProjection p) c x) ↔
+      IsSimplicialHomotopyEquivalence (coneSliceRestrictionFiberMap c x)
+lemma isLimitCone_iff_coneSliceRestrictionFiberMap_homotopyEquivalence
+    {K X : SSet.{u}} [Quasicategory X] {p : K ⟶ X} (c : JoinCone p) :
+    IsLimitCone c ↔ ∀ x : X _⦋0⦌,
+      IsSimplicialHomotopyEquivalence (coneSliceRestrictionFiberMap c x)
+```
+
+slice の制限の頂点 fiber の判定を coslice の切断空間の制限へ移す比較、
+strict な豊穣錐についてその制限と構成済みの q′ の可換式、元の q_x と反転した係数の
+整合性、𝒮・Sp の残りの適用は未完了。今回は native な任意の錐の判定の制限側への移送までであり、
+γ3b・γ3c の完成とはしない。余極限の比較も後続に保持する。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4449 jobs）、公開960宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規ファイルの警告・sorry・追加公理はない。
+集約の他担当の依存700ソースはすべて追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-cone-slice-restriction-aggregate.log` と
+`/tmp/gamma3-cone-slice-restriction-audit.log`。

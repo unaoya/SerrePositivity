@@ -1882,3 +1882,162 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @joinAssociator_naturality
 #print axioms joinAssociator_naturality
+
+#check @augmentedJoinSumEquiv_inr
+#print axioms augmentedJoinSumEquiv_inr
+
+#check @augmentedJoinSumEquiv_inl
+#print axioms augmentedJoinSumEquiv_inl
+
+#check @joinAssociator_hom_encoding
+#print axioms joinAssociator_hom_encoding
+
+#check @joinAssociator_rightPair
+#print axioms joinAssociator_rightPair
+
+#check @joinAssociator_leftPair
+#print axioms joinAssociator_leftPair
+
+#check @joinAssociator_inv_rightPair
+#print axioms joinAssociator_inv_rightPair
+
+#check @joinAssociator_inv_leftPair
+#print axioms joinAssociator_inv_leftPair
+
+#check @joinAssociator_last
+#print axioms joinAssociator_last
+
+#check @joinAssociator_inv_first
+#print axioms joinAssociator_inv_first
+
+#check @joinAssociator_inv_naturality
+#print axioms joinAssociator_inv_naturality
+
+#check @joinAssociator_outerPair
+#print axioms joinAssociator_outerPair
+
+#check @joinAssociator_inv_outerPair
+#print axioms joinAssociator_inv_outerPair
+
+#check @iteratedSliceOverForwardFamily
+#print axioms iteratedSliceOverForwardFamily
+
+#check @iteratedSliceOverForwardFamily_uncurry
+#print axioms iteratedSliceOverForwardFamily_uncurry
+
+#check @iteratedSliceOverInnerFamily
+#print axioms iteratedSliceOverInnerFamily
+
+#check @iteratedSliceOverInnerFamily_uncurry
+#print axioms iteratedSliceOverInnerFamily_uncurry
+
+#check @iteratedSliceOverInnerFamily_fixed
+#print axioms iteratedSliceOverInnerFamily_fixed
+
+#check @iteratedSliceOverBackwardFamily
+#print axioms iteratedSliceOverBackwardFamily
+
+#check @iteratedSliceOverBackwardFamily_uncurry
+#print axioms iteratedSliceOverBackwardFamily_uncurry
+
+#check @iteratedSliceOverFamily_backward_forward
+#print axioms iteratedSliceOverFamily_backward_forward
+
+#check @iteratedSliceOverFamily_forward_backward
+#print axioms iteratedSliceOverFamily_forward_backward
+
+#check @iteratedSliceOverForwardFamily_naturality
+#print axioms iteratedSliceOverForwardFamily_naturality
+
+#check @iteratedSliceOverBackwardFamily_naturality
+#print axioms iteratedSliceOverBackwardFamily_naturality
+
+#check @iteratedSliceOverHomEquiv
+#print axioms iteratedSliceOverHomEquiv
+
+#check @iteratedSliceOverMap
+#print axioms iteratedSliceOverMap
+
+#check @iteratedSliceOverForwardFamily_eq
+#print axioms iteratedSliceOverForwardFamily_eq
+
+#check @iteratedSliceOverInv
+#print axioms iteratedSliceOverInv
+
+#check @iteratedSliceOverBackwardFamily_eq
+#print axioms iteratedSliceOverBackwardFamily_eq
+
+#check @iteratedSliceOverIso
+#print axioms iteratedSliceOverIso
+
+#check @iteratedSliceOverForwardFamily_projection
+#print axioms iteratedSliceOverForwardFamily_projection
+
+#check @iteratedSliceOverIso_projection
+#print axioms iteratedSliceOverIso_projection
+
+#check @sliceOverUncurry_eqToHom
+#print axioms sliceOverUncurry_eqToHom
+
+#check @uncurriedSliceOverRestriction
+#print axioms uncurriedSliceOverRestriction
+
+#check @uncurriedSliceOverRestriction_uncurry
+#print axioms uncurriedSliceOverRestriction_uncurry
+
+#check @iteratedSliceOverForwardFamily_restriction
+#print axioms iteratedSliceOverForwardFamily_restriction
+
+#check @iteratedSliceOverIso_restriction
+#print axioms iteratedSliceOverIso_restriction
+
+#check @uncurriedSliceOverRestriction_projection
+#print axioms uncurriedSliceOverRestriction_projection
+
+#check @vertexFiberIsoOfOverIso
+#print axioms vertexFiberIsoOfOverIso
+
+#check @vertexFiberIsoOfOverIso_hom_ι
+#print axioms vertexFiberIsoOfOverIso_hom_ι
+
+#check @sliceOver_eqToHom_projection
+#print axioms sliceOver_eqToHom_projection
+
+#check @coneYonedaPoint
+#print axioms coneYonedaPoint
+
+#check @coneSliceOverDiagramIso
+#print axioms coneSliceOverDiagramIso
+
+#check @coneSliceOverDiagramIso_projection
+#print axioms coneSliceOverDiagramIso_projection
+
+#check @coneIteratedSliceIso
+#print axioms coneIteratedSliceIso
+
+#check @coneIteratedSliceIso_projection
+#print axioms coneIteratedSliceIso_projection
+
+#check @coneSliceOverRestriction
+#print axioms coneSliceOverRestriction
+
+#check @coneIteratedSliceIso_restriction
+#print axioms coneIteratedSliceIso_restriction
+
+#check @coneSliceOverRestriction_projection
+#print axioms coneSliceOverRestriction_projection
+
+#check @coneMappingTotalIso
+#print axioms coneMappingTotalIso
+
+#check @coneMappingTotalIso_evaluation
+#print axioms coneMappingTotalIso_evaluation
+
+#check @coneSliceRestrictionFiberMap
+#print axioms coneSliceRestrictionFiberMap
+
+#check @coneSliceRestrictionFiberMap_homotopyEquivalence_iff
+#print axioms coneSliceRestrictionFiberMap_homotopyEquivalence_iff
+
+#check @isLimitCone_iff_coneSliceRestrictionFiberMap_homotopyEquivalence
+#print axioms isLimitCone_iff_coneSliceRestrictionFiberMap_homotopyEquivalence

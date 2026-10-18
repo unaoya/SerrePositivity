@@ -934,3 +934,26 @@ native な錐の比較と切断の制限の比較、元の q_x と反転係数�
 集約の他担当の依存700ソースはすべて追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-join-associator-aggregate.log` と
 `/tmp/gamma3-join-associator-audit.log`。
+
+
+### γ3b：反復 slice の同型と native な判定の slice の制限への移送
+
+`JoinAssociatorInclusions` に固定面と結合同型の可換式を追加し、
+`IteratedSliceOverFamilies`・`IteratedSliceOverIso` に任意の p・q とパラメータについての
+二方向の族、往復則・自然性、`sliceOver q ≅ sliceOver (sliceOverUncurry q)` を構成した。
+X への二重の射影と、元の図式の slice への制限と射影の対応も厳密に証明。
+`ConeIteratedSliceIso` は任意の coherent な錐 c に特殊化し、native な比較 span の
+中間空間を錐の図式上の slice の頂点 fiber と同型で結び、実際の評価射を制限の fiber 射に同定する。
+これらに Kan 性・極限性は不要。
+`ConeSliceRestrictionCriterion` は任意の quasicategory X と任意の錐 c について
+`IsLimitCone c ↔ ∀ x, IsSimplicialHomotopyEquivalence (coneSliceRestrictionFiberMap c x)`
+を証明する。strict な錐や有限の添字に制限せず、追加の fibration 性は不要。
+新規53宣言の正確な型・全前提は README と公開960宣言の監査に記録。
+slice の頂点 fiber の判定から coslice の切断の制限への移送、豊穣 q′ との可換式、
+元の q_x と反転係数の整合性、𝒮・Sp の残りの適用は未完了であり、γ3b・γ3c は継続中。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4449 jobs）、公開960宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規ファイルの警告・sorry・追加公理はない。
+集約の他担当の依存700ソースはすべて追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-cone-slice-restriction-aggregate.log` と
+`/tmp/gamma3-cone-slice-restriction-audit.log`。

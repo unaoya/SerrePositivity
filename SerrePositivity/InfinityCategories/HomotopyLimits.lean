@@ -165,3 +165,4 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.ReflectedReprese
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ReflectedStrictConeEvaluation
 public import SerrePositivity.InfinityCategories.HomotopyLimits.JoinSumNaturality
 public import SerrePositivity.InfinityCategories.HomotopyLimits.JoinAssociatorMaps
+public import SerrePositivity.InfinityCategories.HomotopyLimits.ConeSliceRestrictionCriterion
