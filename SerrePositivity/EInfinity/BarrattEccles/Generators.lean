@@ -178,6 +178,25 @@ lemma complexXIso_basis (n q : ℕ) (x : (simplicial n).nonDegenerate q) :
   rw [LinearEquiv.apply_symm_apply]
   exact (normalizedGenerator_nondegenerate A n q x).symm
 
+/-- 概要：自然数次数の正規化鎖の非退化生成元による基底（Berger–Fresse §1.1.2）。
+方針：自由加群の標準基底を Moore 比較同型で移送する。
+規約：基底の添字の宇宙は A に合わせて持ち上げる。
+使われ方：shuffle の次数ごとの双線形写像を生成元から延長する。 -/
+def normalizedBasis (n q : ℕ) :
+    Module.Basis (ULift.{u} ((simplicial n).nonDegenerate q)) A ((normalizedChains A n).X q) :=
+  (Finsupp.basisSingleOne : Module.Basis _ A
+    (ULift.{u} ((simplicial n).nonDegenerate q) →₀ A)).map
+      ((HomologicalComplex.eval _ _ q).mapIso (nondegenerateChainIso A n)).toLinearEquiv
+
+/-- 概要：自然数次数の基底ベクトルは対応する非退化生成元である（Berger–Fresse §1.1.2）。
+方針：移送した基底を評価して非退化生成元の比較公式を使う。
+規約：部分型の非退化性の証明には依存しない。
+使われ方：基底上の定義を置換列の公式で表す。 -/
+lemma normalizedBasis_apply (n q : ℕ) (x : (simplicial n).nonDegenerate q) :
+    normalizedBasis A n q (ULift.up x) = normalizedGenerator A n q x.val := by
+  change (nondegenerateChainIso A n).hom.f q (ModuleCat.freeMk (ULift.up x)) = _
+  exact (normalizedGenerator_nondegenerate A n q x).symm
+
 /-- 概要：正規化鎖からの線形射は単体生成元上で決まる（Berger–Fresse §1.1.2）。
 方針：非退化鎖の自由加群からの同型を前合成し、標準生成元で検査する。
 規約：退化単体の像に別の条件を課さず、生成元上の一致のみ要求する。

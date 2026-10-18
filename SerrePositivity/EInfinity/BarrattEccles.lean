@@ -14,3 +14,7 @@ public import SerrePositivity.EInfinity.BarrattEccles.Sequence
 public import SerrePositivity.EInfinity.BarrattEccles.ShufflePaths
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleSign
 public import SerrePositivity.EInfinity.BarrattEccles.Generators
+public import SerrePositivity.EInfinity.BarrattEccles.PermutationComposition
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleComponent
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleEdges
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleDegenerate
