@@ -1836,3 +1836,42 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.ShuffleIndex.right_surjective
 #print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.right_surjective
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.swapSteps
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.swapSteps
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.swapSteps_left_prefix
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.swapSteps_left_prefix
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.swapSteps_right_prefix
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.swapSteps_right_prefix
+
+#check @SerrePositivity.KST.ProExcision.shuffleMixedFaceVertex_ne
+#print axioms SerrePositivity.KST.ProExcision.shuffleMixedFaceVertex_ne
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.swapSteps_left_face
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.swapSteps_left_face
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.swapSteps_right_face
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.swapSteps_right_face
+
+#check @SerrePositivity.KST.ProExcision.shuffleSwapMixedFace_map
+#print axioms SerrePositivity.KST.ProExcision.shuffleSwapMixedFace_map
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.mem_swapSteps
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.mem_swapSteps
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.swapSteps_swapSteps
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.swapSteps_swapSteps
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.inversions_eq_right
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.inversions_eq_right
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.swapSteps_inversions
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.swapSteps_inversions
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.swapSteps_sign
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.swapSteps_sign
+
+#check @SerrePositivity.KST.ProExcision.shuffleSwapMixedFace_cancel
+#print axioms SerrePositivity.KST.ProExcision.shuffleSwapMixedFace_cancel
