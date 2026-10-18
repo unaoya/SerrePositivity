@@ -503,10 +503,25 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.derivedSquareInfinityHomology₂_f_zero
 #print axioms SerrePositivity.InfinityCategories.derivedSquareInfinityHomology₂_g_zero
 
+#print axioms SerrePositivity.InfinityCategories.moduleHeartVertex
+#print axioms SerrePositivity.InfinityCategories.moduleHeartFunctor
+#print axioms SerrePositivity.InfinityCategories.moduleHeartLocalizationIso
+#print axioms SerrePositivity.InfinityCategories.moduleHeartDerivedIso
+#print axioms SerrePositivity.InfinityCategories.moduleHeartFunctor_full
+#print axioms SerrePositivity.InfinityCategories.moduleHeartFunctor_faithful
+#print axioms SerrePositivity.InfinityCategories.moduleHeartHomEquiv
+#print axioms SerrePositivity.InfinityCategories.moduleFreeCochainHomologyZeroIso_naturality
+#print axioms SerrePositivity.InfinityCategories.moduleHeartHZeroIso
+#print axioms SerrePositivity.InfinityCategories.moduleHeartFunctor_map_edge
+#print axioms SerrePositivity.InfinityCategories.moduleHeartHZeroIso_naturality
+#print axioms SerrePositivity.InfinityCategories.moduleHeartHZeroNatIso
+#print axioms SerrePositivity.InfinityCategories.moduleHeartHomEquiv_hZero
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.HeartFullyFaithful,
     `SerrePositivity.InfinityCategories.Derived.ComplexEdgeCalculus,
     `SerrePositivity.InfinityCategories.Derived.ConeEdgeFunctoriality,
     `SerrePositivity.InfinityCategories.Derived.FiberSquareMaps,

@@ -1931,3 +1931,48 @@ derivedSquareInfinityHomology₂_g_zero (hF : IsPullbackSquare F) :
     (derivedSquareInfinityHomology₂ F hF 0).g = derivedSquareHZeroDifference F
 end SerrePositivity.InfinityCategories
 ```
+
+
+### D6b：加群の離散埋め込みの充満忠実性（2026-10-18）
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u w
+open CategoryTheory DifferentialGraded DGNerve
+open scoped Simplicial
+variable (S : Type u) [CommRing S]
+moduleHeartVertex (M : ModuleCat.{u} S) : (derivedInfinityCategory S) _⦋0⦌
+moduleHeartFunctor : ModuleCat.{u} S ⥤ derivedInfinityHomotopyCategory S
+variable [HasDerivedCategory.{w} (ModuleCat.{u} S)]
+moduleHeartLocalizationIso :
+    moduleHeartFunctor S ⋙ (derivedInfinityHomotopyEquivalence S).functor ≅
+      moduleFreeCochainResolution S ⋙ DerivedCategory.Q
+moduleHeartDerivedIso :
+    moduleHeartFunctor S ⋙ (derivedInfinityHomotopyEquivalence S).functor ≅
+      DerivedCategory.singleFunctor (ModuleCat S) 0
+moduleHeartFunctor_full : (moduleHeartFunctor S).Full
+moduleHeartFunctor_faithful : (moduleHeartFunctor S).Faithful
+moduleHeartHomEquiv (M N : ModuleCat.{u} S) :
+    (M ⟶ N) ≃ ((moduleHeartFunctor S).obj M ⟶ (moduleHeartFunctor S).obj N)
+omit [HasDerivedCategory (ModuleCat S)] in
+moduleFreeCochainHomologyZeroIso_naturality {M N : ModuleCat.{u} S} (f : M ⟶ N) :
+    HomologicalComplex.homologyMap ((moduleFreeCochainResolution S).map f) 0 ≫
+      (moduleFreeCochainHomologyZeroIso S N).hom =
+        (moduleFreeCochainHomologyZeroIso S M).hom ≫ f
+moduleHeartHZeroIso (M : ModuleCat.{u} S) :
+    derivedInfinityHZero S (moduleHeartVertex S M) ≅ M
+omit [HasDerivedCategory (ModuleCat S)] in
+moduleHeartFunctor_map_edge {M N : ModuleCat.{u} S} (f : M ⟶ N) :
+    (moduleHeartFunctor S).map f = SSet.Truncated.HomotopyCategory₂.homMk
+      (derivedChainMapEdge (x := moduleHeartVertex S M) (y := moduleHeartVertex S N)
+        ((moduleFreeCochainResolution S).map f))
+moduleHeartHZeroIso_naturality {M N : ModuleCat.{u} S} (f : M ⟶ N) :
+    (derivedInfinityHZeroFunctor S).map ((moduleHeartFunctor S).map f) ≫
+      (moduleHeartHZeroIso S N).hom = (moduleHeartHZeroIso S M).hom ≫ f
+moduleHeartHZeroNatIso :
+    moduleHeartFunctor S ⋙ derivedInfinityHZeroFunctor S ≅ 𝟭 (ModuleCat.{u} S)
+moduleHeartHomEquiv_hZero {M N : ModuleCat.{u} S} (f : M ⟶ N) :
+    (derivedInfinityHZeroFunctor S).map (moduleHeartHomEquiv S M N f) ≫
+      (moduleHeartHZeroIso S N).hom = (moduleHeartHZeroIso S M).hom ≫ f
+end SerrePositivity.InfinityCategories
+```
