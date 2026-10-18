@@ -230,3 +230,15 @@ set_option pp.explicit true
 #check @SerrePositivity.KST.ProExcision.koszulTensorFiltration_initial_isZero
 #print axioms SerrePositivity.KST.ProExcision.koszulTensorFiltration_initial_isZero
 
+#check @SerrePositivity.KST.ProExcision.truncationMap_comp_inclusion
+#print axioms SerrePositivity.KST.ProExcision.truncationMap_comp_inclusion
+
+#check @SerrePositivity.KST.ProExcision.truncationInclusion_naturality
+#print axioms SerrePositivity.KST.ProExcision.truncationInclusion_naturality
+
+#check @SerrePositivity.KST.ProExcision.truncationFiltrationMap
+#print axioms SerrePositivity.KST.ProExcision.truncationFiltrationMap
+
+#check @SerrePositivity.KST.ProExcision.truncationFiltrationFunctor
+#print axioms SerrePositivity.KST.ProExcision.truncationFiltrationFunctor
+

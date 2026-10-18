@@ -8,3 +8,4 @@ public import SerrePositivity.KST.ProExcision.KoszulPro
 public import SerrePositivity.KST.ProExcision.FlatBaseChange
 public import SerrePositivity.KST.ProExcision.SpectralPro
 public import SerrePositivity.KST.ProExcision.KoszulFiltration
+public import SerrePositivity.KST.ProExcision.TruncationNaturality
