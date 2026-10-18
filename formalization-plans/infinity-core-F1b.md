@@ -20,7 +20,7 @@ sorry・追加公理・文献入力を使わず、監査で許す公理は
 | B1 / F1e | 単位・余単位と h Fun の三角恒等式、自然な写像空間対応との特徴づけ、合成、随伴関手の一意性 | Kerodon [Def 6.1.1.1](https://kerodon.net/tag/02CG)、[§6.1.3](https://kerodon.net/tag/02D5)、[§6.1.5](https://kerodon.net/tag/02DM)、[Def 6.2.1.1・Prop 6.2.1.17](https://kerodon.net/tag/02EJ)、[Prop 6.2.6.1](https://kerodon.net/tag/02FV)・[Cor 6.2.6.5](https://kerodon.net/tag/02FX) / HTT §5.2 | 完了（全パラメータの族の前層による自然性の模型） |
 | B2 / F1f | 充満部分 ∞ 圏への反射、局所対象、冪等性、局所化の普遍性の型と反射的な場合の構成 | Kerodon [§6.2.2](https://kerodon.net/tag/02F5)、[Cor 6.2.2.26](https://kerodon.net/tag/02FF)、[Def 6.3.1.9・Prop 6.3.1.13](https://kerodon.net/tag/01ME)、[Prop 6.3.3.7](https://kerodon.net/tag/02FY) / HTT §5.2.7 | 完了（同じ宇宙の標的に対する普遍性） |
 | B3 / F1g 前半 | right cofinal、Quillen A、A2h の始対象による limit 計算の双対的回収 | Kerodon [Def 7.2.1.1](https://kerodon.net/tag/02N1)、[Thm 7.2.3.1](https://kerodon.net/tag/02NX) / HTT Thm 4.1.3.1 | 完了（左右の Quillen A と二宇宙版 A2h の同じ制限写像の回収） |
-| B4 / F1g 後半 | slice の極限による左右 Kan 拡張、h での一意性、各点の存在、関手全体への組み立て | Kerodon [Notation 7.3.1.1・Def 7.3.1.2](https://kerodon.net/tag/02Y7)、Variant 7.3.1.5、§7.3.5 / HTT §4.3 | 進行中（指定自然変換の比較錐、各点の値・一意性、左右比較錐の選択不変性、左右の h 不変性、普遍写像性を仮定した大域的一意性、相対 join 表示、指定変換の類の保存、部分パラメータを固定した相対充填） |
+| B4 / F1g 後半 | slice の極限による左右 Kan 拡張、h での一意性、各点の存在、関手全体への組み立て | Kerodon [Notation 7.3.1.1・Def 7.3.1.2](https://kerodon.net/tag/02Y7)、Variant 7.3.1.5、§7.3.5 / HTT §4.3 | 進行中（指定自然変換の比較錐、各点の値・一意性、左右比較錐の選択不変性、左右の h 不変性、普遍写像性を仮定した大域的一意性、相対 join 表示、指定変換の類の保存、部分パラメータを固定した相対充填、slice の相対 join への局所比較） |
 | B5 | nerve による古典随伴・Kan 拡張の回収と監査 | 上記と通常の圏の随伴・Kan 拡張 | 未着手（監査スクリプトは稼働中） |
 
 ## 2. 設計上の決定
@@ -437,6 +437,20 @@ p の fibration 性や周囲の quasicategory 性は要求しない。
 これは [Prop 7.3.6.7・Cor 7.3.6.9](https://kerodon.net/tag/0308) の準備であり、
 変化する slice の形を組み立てた制限定理そのものはまだ導いていない。
 
+`KanJoinDiagonalSplit` は join の単体を切断の先頭・末尾へ制限すると元の左右の単体の包含に
+戻ることを証明する。これから任意の図式 H:join A B→C について、区間射影と H の組を
+joinDiagonal C に入れた射が、H の左右の制限の join と一致することを導いた。
+`KanRelativeJoinLocalCone` の `kanRelativeJoinLift` はこの等式を pullback の条件に使う。
+両端・両射影・底への射の計算と、左右のパラメータの制限との自然性を証明済み。
+`kanRelativeJoinSliceOver/Under` は任意の固定図式 p:L→C の slice/coslice の
+普遍図式を相対 join へ持ち上げる。L=Δ⁰ への特殊化が `kanRelativeJoinLocalCocone/Cone`。
+相対 join 上の図式 G を後合成した `kanRelativeJoinDiagramCocone/Cone` は、
+既存の左右 Kan の slice の形を添字とし、頂点は G の右端・左端の c での値である。
+構成には δ の単射性や quasicategory 性を要求しない。
+この局所錐・余錐を、指定変換の輸送で定義した比較錐・余錐と同定するホモトピーは未完了。
+原典との対応は [Kerodon §7.3.5](https://kerodon.net/tag/02ZZ) の slice の普遍図式と
+relative join への比較であり、Prop 7.3.5.1 の存在や Prop 7.3.6.7 の制限定理自体の証明ではない。
+
 **B4 は未完了。** 点ごとの Kan 条件からの h Fun(C,D) での大域的一意性、
 極限からの点ごとの存在と大域的組み立てが残る。
 各点の `valueIso` を大域的な同型の証明とは扱わない。
@@ -455,8 +469,8 @@ A6 の `exists_pointwiseLimitCone`・`hasLimit_of_hasPointwiseLimits`・
 B5 の古典 nerve に戻る検査も未完了。
 全体の α2b 目標は継続中。
 
-対象ビルド2388 jobs、公理監査2462宣言（標準三公理のみ）が成功。
-推移的 import のリポジトリ内717モジュールに straightening 依存なし。
+対象ビルド2394 jobs、公理監査2506宣言（標準三公理のみ）が成功。
+推移的 import のリポジトリ内723モジュールに straightening 依存なし。
 
 ## 4. 主要宣言
 
@@ -643,3 +657,9 @@ B5 の古典 nerve に戻る検査も未完了。
 | `initialBoundaryLifting_relativeFunctor_of_pointwise/terminalBoundaryLifting_relativeFunctor_of_pointwise` | 部分図式を固定した相対内部 Hom の π の相対境界充填 | 済 |
 | `kanCoconeFamilyAt/kanConeFamilyAt`・両者の `_vertex` | 関手として与えた余錐・錐の族の頂点での評価 | 済 |
 | `initialBoundaryLifting_relativeCoconeFamily_of_pointwise_colimit/terminalBoundaryLifting_relativeConeFamily_of_pointwise_limit` | 固定した形 J の点ごとの余極限・極限から、部分パラメータを固定した相対充填への接続 | 済・Kan 拡張の slice の組み立ては未完了 |
+
+| `kanJoin_prefix/suffix`・`kanJoinDiagonal_split/split_map` | join の切断の左右の復元と任意の図式の区間付き対角の計算 | 済 |
+| `kanRelativeJoinLift/fst/snd/base/inl/inr/precomp` | 両端の制限を指定した join 図式の relative join への持ち上げと自然性 | 済 |
+| `kanRelativeJoinSliceOver/Under`・両者の `_base` | 任意の固定図式の slice/coslice の普遍図式の relative join への比較 | 済 |
+| `kanRelativeJoinLocalCocone/Cone`・両者の `_inl/_inr` | Kan の点ごとの slice の形に対する局所余錐・錐の射と両端 | 済 |
+| `kanRelativeJoinDiagramCocone/Cone`・両者の `_vertex` | relative join 上の図式から得る局所比較余錐・錐とその頂点 | 構成済・指定変換の輸送の比較との同定は未完了 |

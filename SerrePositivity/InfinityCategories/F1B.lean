@@ -220,3 +220,4 @@ public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinStrictificat
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinCorrectionSquares
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinTransformationClass
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeConeFamilies
+public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinLocalCone
