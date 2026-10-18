@@ -2203,7 +2203,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開714宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開720宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2831,7 +2831,7 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開714宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開720宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
 ### 重み付き end と weighted nerve の切断の族（全単射を実装）
@@ -3790,6 +3790,44 @@ F1 の標準比較の同値性とこれを合成し、Kan ホモトピー同値�
 始域の反転は明示的で、元の sHom と同じ図式とは扱わない。
 添字圏の射・高次整合性を含む係数図式全体への自然比較と、元の q_x との接続は未完了。
 したがって γ3b と 𝒮・Sp の残りの適用は引き続き未完了である。
+
+### 標準 Hom 比較の豊穣関手による後合成への自然性（実装済み）
+
+`CoherentHomPost` は共通の対象宇宙 `C D : Type v`、`[Category.{u} C]`、
+`[Category.{u} D]`、`[SimplicialCategory C]`、`[SimplicialCategory D]` と
+`F : EnrichedFunctor SSet C D` に対し、Kan 性を仮定せず次を証明する。
+
+```lean
+coherentHomComparisonObj_post F (x y : C) {n : ℕ} (i : Fin (n + 2)) :
+  F.obj (coherentHomComparisonObj x y i) =
+    coherentHomComparisonObj (F.obj x) (F.obj y) i
+coherentHomComparisonSimplex_post F {x y : C} {n : ℕ}
+    (σ : (SimplicialCategory.sHom x y) _⦋n⦌) :
+  (coherentHomComparisonSimplex σ).comp SSet F =
+    coherentHomComparisonSimplex ((F.map x y).app (Opposite.op ⦋n⦌) σ)
+coherentNervePost_vertex F (x : C) :
+  (coherentNervePost F).app (Opposite.op ⦋0⦌) (coherentNerveVertex x) =
+    coherentNerveVertex (F.obj x)
+```
+
+Hom の比較の各分岐で、両端点を標準対象へ移して豊穣関手の単位則と
+`yonedaEquiv_symm_comp` を用いる。最後の頂点から前の頂点への Hom は空である。
+`pinchedHom_endpointTransport_val` は端点を等号で移しても元の simplex の値が変わらない式。
+`coherentHomPostEndpointIso F x y` は後合成で写した端点から標準頂点への厳密な同型である。
+これらから単体集合の射として
+
+```lean
+coherentHomComparison_post F (x y : C) :
+  (SSet.uliftFunctor.{v, u}).map (F.map x y) ≫ coherentHomComparison (F.obj x) (F.obj y) =
+    coherentHomComparison x y ≫
+      pinchedHomMap (coherentNervePost F) (coherentNerveVertex x) (coherentNerveVertex y) ≫
+      (coherentHomPostEndpointIso F x y).hom
+```
+
+を証明した。これは任意の次数での厳密な後合成の自然性であり、点ごとの同値の選択ではない。
+原典上の位置は Kerodon §4.6.7、HTT 4.2.4.1 の係数比較の自然性である。
+添字圏の射が誘導する Hom の合成作用と高次整合性への接続、および左 coslice 側への移送、
+元の q_x との一致は未完了。𝒮・Sp の残りの適用も引き続き未完了である。
 
 ### 𝒮 の空積（実装済み）
 

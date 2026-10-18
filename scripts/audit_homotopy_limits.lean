@@ -1433,3 +1433,15 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms coherentCosliceFiberComparison
 #check @coherentCosliceFiberComparison_homotopyEquivalence
 #print axioms coherentCosliceFiberComparison_homotopyEquivalence
+#check @coherentHomComparisonObj_post
+#print axioms coherentHomComparisonObj_post
+#check @coherentHomComparisonSimplex_post
+#print axioms coherentHomComparisonSimplex_post
+#check @coherentNervePost_vertex
+#print axioms coherentNervePost_vertex
+#check @pinchedHom_endpointTransport_val
+#print axioms pinchedHom_endpointTransport_val
+#check @coherentHomPostEndpointIso
+#print axioms coherentHomPostEndpointIso
+#check @coherentHomComparison_post
+#print axioms coherentHomComparison_post
