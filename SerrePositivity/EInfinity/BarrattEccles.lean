@@ -18,3 +18,8 @@ public import SerrePositivity.EInfinity.BarrattEccles.PermutationComposition
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleComponent
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleEdges
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleDegenerate
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleSwapOrder
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleSwap
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleSwapCoordinates
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleSwapFaces
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleMixedBoundary
