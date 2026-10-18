@@ -61,6 +61,8 @@ plus 構成の存在とその性質を区別して証明する。
 | 対象 | 原典 | 本レーンでの用途 |
 | --- | --- | --- |
 | `integralHomologyFunctor`、`normalizationHomologyNatIso` | 監査済み | 実際の正規化整数ホモロジーと非正規化との自然同型 |
+| `coefficientFiberIsColimit`、`coefficientSimplicialObjIsoSigma` | 監査済み | 各次数の係数群の直和の普遍性と実際の比較同型 |
+| `integerCoefficientSimplicialIso`、`integerLocalCoefficientChainsIso`、`integerLocalCoefficientHomologyIso` | 監査済み | 定数整数局所係数と自由整数鎖複体の実際の同型 |
 | `LocalCoefficientSystem`、`localCoefficientChains`、`localCoefficientHomologyMap` | 監査済み | 局所係数の実際の複体と誘導写像 |
 | `LocalHomologyIsomorphism` | 監査済み | 全標的局所係数でのホモロジー同型条件。plus の存在は未証明 |
 | `relativeIntegralChainsFunctor`、`normalizedIntegralChains_map_mono` | 監査済み | 相対鎖複体の関手と包含の単射性 |
@@ -854,7 +856,9 @@ L2c：正規化整数ホモロジー、非正規化との自然同型、ホモ�
 退化射影 Q∞ の像の分裂と鎖収縮、全次数のホモロジー消滅、退化の消滅による普遍的特徴付けも証明した。
 相対整数ホモロジーの余核模型と包含に対する長完全列は完成。
 局所係数系・左 Kan 拡張による実際の正規化鎖複体・引き戻し係数と誘導鎖写像は構成した。
-各次数の直和表示と定数整数係数との自然な比較、セル添付の計算は未完了。
+各次数の直和表示と Kan 拡張の単位の包含との一致を証明した。
+定数整数係数の単体的群と自由単体的アーベル群の実際の同型、正規化複体とホモロジーの同型を構成した。
+単体写像に対する比較の自然性とセル添付の計算は未完了。
 その後、局所係数を含む acyclic map、ホモロジー同型、基本群の完全正規部分群による商として plus を証明する。
 L2d：確定した K0 界面、冪等元の持ち上げ、安定 elementary 部分群と K₁ の比較を証明する。
 L2e：K-L1 の K1a の供給状況を確認し、§10-5 の Hurewicz の紙上確認と ∞-S• の比較へ進む。
@@ -863,10 +867,10 @@ L2e：K-L1 の K1a の供給状況を確認し、§10-5 の Hurewicz の紙上�
 
 ### 検証
 
-`lake build SerrePositivity.KST.Comparison`：成功、4452 jobs。
+`lake build SerrePositivity.KST.Comparison`：成功、4455 jobs。
 `lake env lean scripts/audit_kst_comparison.lean`：終了コード 0。
-主要 1313 宣言の型と推移的依存公理を確認した。
-名前空間全体の 2396 宣言（自動生成された公開補題・射影を含む）も許可リストで検査した。
+主要 1335 宣言の型と推移的依存公理を確認した。
+名前空間全体の 2441 宣言（自動生成された公開補題・射影を含む）も許可リストで検査した。
 許可した公理は propext、Classical.choice、Quot.sound の標準三公理のみ。
 L2b の工程の区切りの全体ビルドはルート集約 `SerrePositivity.lean:1` で失敗した（12355 jobs の最終集約）。
 `F1B.RelativeFunctorHomotopyComposition` の import が `F1.RelativeFunctorVertices` の

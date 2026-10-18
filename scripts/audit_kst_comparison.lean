@@ -110,6 +110,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -2900,6 +2901,48 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.hornSubdivisionComparison_epi
 
 
+-- IntegerCoefficientComparison.lean
+
+#check @SerrePositivity.KST.Comparison.integerCoefficientUnit
+#print axioms SerrePositivity.KST.Comparison.integerCoefficientUnit
+
+#check @SerrePositivity.KST.Comparison.integerCoefficientComparison
+#print axioms SerrePositivity.KST.Comparison.integerCoefficientComparison
+
+#check @SerrePositivity.KST.Comparison.integerCoefficientComparison_unit
+#print axioms SerrePositivity.KST.Comparison.integerCoefficientComparison_unit
+
+#check @SerrePositivity.KST.Comparison.integerCoefficientObjIso
+#print axioms SerrePositivity.KST.Comparison.integerCoefficientObjIso
+
+#check @SerrePositivity.KST.Comparison.integerCoefficientComparison_app
+#print axioms SerrePositivity.KST.Comparison.integerCoefficientComparison_app
+
+#check @SerrePositivity.KST.Comparison.integerCoefficientSimplicialIso
+#print axioms SerrePositivity.KST.Comparison.integerCoefficientSimplicialIso
+
+#check @SerrePositivity.KST.Comparison.integerLocalCoefficientChainsIso
+#print axioms SerrePositivity.KST.Comparison.integerLocalCoefficientChainsIso
+
+#check @SerrePositivity.KST.Comparison.integerLocalCoefficientHomologyIso
+#print axioms SerrePositivity.KST.Comparison.integerLocalCoefficientHomologyIso
+
+
+-- IntegerCoefficientGroup.lean
+
+#check @SerrePositivity.KST.Comparison.integerCoefficientGroup
+#print axioms SerrePositivity.KST.Comparison.integerCoefficientGroup
+
+#check @SerrePositivity.KST.Comparison.integerCoefficientGroupEquiv
+#print axioms SerrePositivity.KST.Comparison.integerCoefficientGroupEquiv
+
+#check @SerrePositivity.KST.Comparison.integerGeneratorMap
+#print axioms SerrePositivity.KST.Comparison.integerGeneratorMap
+
+#check @SerrePositivity.KST.Comparison.integerCoefficientCoproductIso
+#print axioms SerrePositivity.KST.Comparison.integerCoefficientCoproductIso
+
+
 -- IntervalBoundaryFamily.lean
 
 #check @SerrePositivity.KST.Comparison.intervalBoundaryTensorIsColimit
@@ -3018,6 +3061,39 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.kanReplacementSquare_homotopyPullback_iff
 #print axioms SerrePositivity.KST.Comparison.kanReplacementSquare_homotopyPullback_iff
+
+
+-- LocalCoefficientFibers.lean
+
+#check @SerrePositivity.KST.Comparison.coefficientFiberFamily
+#print axioms SerrePositivity.KST.Comparison.coefficientFiberFamily
+
+#check @SerrePositivity.KST.Comparison.coefficientFiberEndpoint
+#print axioms SerrePositivity.KST.Comparison.coefficientFiberEndpoint
+
+#check @SerrePositivity.KST.Comparison.coefficientFiberTransport
+#print axioms SerrePositivity.KST.Comparison.coefficientFiberTransport
+
+#check @SerrePositivity.KST.Comparison.coefficientFiberEndpoint_eq
+#print axioms SerrePositivity.KST.Comparison.coefficientFiberEndpoint_eq
+
+#check @SerrePositivity.KST.Comparison.coefficientFiberCocone
+#print axioms SerrePositivity.KST.Comparison.coefficientFiberCocone
+
+#check @SerrePositivity.KST.Comparison.coefficientFiberIdentity
+#print axioms SerrePositivity.KST.Comparison.coefficientFiberIdentity
+
+#check @SerrePositivity.KST.Comparison.coefficientFiberCocone_identity
+#print axioms SerrePositivity.KST.Comparison.coefficientFiberCocone_identity
+
+#check @SerrePositivity.KST.Comparison.coefficientFiberIsColimit
+#print axioms SerrePositivity.KST.Comparison.coefficientFiberIsColimit
+
+#check @SerrePositivity.KST.Comparison.coefficientSimplicialObjIsoSigma
+#print axioms SerrePositivity.KST.Comparison.coefficientSimplicialObjIsoSigma
+
+#check @SerrePositivity.KST.Comparison.coefficientSimplicialObjIsoSigma_unit
+#print axioms SerrePositivity.KST.Comparison.coefficientSimplicialObjIsoSigma_unit
 
 
 -- LocalCoefficients.lean
