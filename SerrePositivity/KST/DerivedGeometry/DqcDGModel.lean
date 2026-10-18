@@ -8,7 +8,7 @@ public import SerrePositivity.DifferentialGraded.Category.FullSubcategory
 
 概要：層複体の acyclic dg 商で、忘却後のコホモロジーが準連接な対象を取る。
 方針：元の層複体のコホモロジーで対象条件を指定し、既存の充満 dg 部分圏を使う。
-規約：平坦分解後の path 商を使う。H⁰ と既存 D_qc の圏同値は未証明。
+規約：平坦分解後の path 商を使う。H⁰ と既存 Dqc の同値は DqcDerivedComparison で証明する。
 使われ方：KST D4・§13 決定11、Bondal–van den Bergh Thm 3.1.1、Toën §3.2。
 -/
 
@@ -49,7 +49,7 @@ def dqcDGObjects : Set B.DerivedDG := fun K =>
 /--
 概要：準連接コホモロジーを持つ対象による充満 dg 部分模型。
 方針：層複体の実際の dg 商の充満部分圏を取る。
-規約：既存の三角圏 Dqc との比較は未証明。採用された平坦分解はレーン計画 §26–28。
+規約：実際の Dqc との H⁰ 比較は DqcDerivedComparison で証明済み。平坦分解はレーン計画 §26–28。
 使われ方：KST D4・§13 決定11、Toën §3.2 の導来幾何の dg 模型。
 -/
 abbrev DqcDGModel := DGFullSubcategory B.DerivedDG B.dqcDGObjects
@@ -77,7 +77,7 @@ variable [HasDerivedCategory.{w} B.Modules]
 /--
 概要：dg 対象条件は元の層複体の導来像が既存 Dqc の対象条件を満たすことと同値。
 方針：Mathlib の導来コホモロジーと複体コホモロジーの比較同型で準連接性を移す。
-規約：対象条件の比較であり、商からの関手や圏同値はまだ構成しない。
+規約：この対象条件の比較を後続の DqcDerivedComparison の関手と圏同値へ渡す。
 使われ方：KST D4・§13 決定11、Bondal–van den Bergh Thm 3.1.1、Toën §3.2。
 -/
 lemma mem_dqcDGObjects_iff (K : B.DerivedDG) :

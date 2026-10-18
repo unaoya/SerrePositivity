@@ -49,9 +49,9 @@
 
 ## 3. 現在地と受入条件
 
-- 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。任意 dg 圏の段階分解、Hom の K-flat 性、増大関手の各次数全射性・準同値性・H⁰ 同値、前三角化の三角同値、分解後の path 商と元の指定 Verdier 商の比較を実装済み。層の DerivedDG・DqcDGModel も平坦分解後の商へ移行済み。有限 cell の代表可能性を証明し、商自体の H⁰ と tria・元の指定 Verdier 商との圏同値を構成済み。三角構造と Mathlib 導来圏の最終同定、Perf、アフィン係数加群圏の同値、導来降下は未完了。
+- 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。任意 dg 圏の半自由な段階分解、フィルトレーションからの Hom の K-flat 性、増大関手の各次数全射性・準同値性・H⁰ 同値、前三角化の三角同値を証明済み。分解後の層の acyclic dg 商自体の H⁰ と Mathlib の元の層導来圏の同値、対象ごとの導来像の計算、準連接コホモロジーによる Dqc への H⁰ 同値を証明済み。半自由分解から導来比較までの工程は完了。Perf、アフィン係数加群圏の同値、導来降下、T1–T3、平坦係数の RHom 比較は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の導来随伴・生成・T1′、L4c、L4d、L4e は未実装。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の876宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルド、全体ビルド（10,097 jobs）、所有 namespace の1,078宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -706,7 +706,30 @@
 - `nativeHomotopyYoneda_square`・`nativeDerivedYoneda_square`：元の H⁰ と Mathlib ホモトピー圏の比較を通して、実際の dg Yoneda と同じ関手になることを証明済み。
 - `nativeDerivedYoneda_full`・`nativeDerivedYoneda_faithful`：元の Mathlib ホモトピー圏から実際の導来 dg 加群圏への完全忠実性を証明済み。
 - 対象ビルドと876宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
-- 標準 moduleCone 三角形の同型の組立て、distinguished triangle の保存、元のホモトピー圏と tria の三角同値は検証中。未検証のファイルはこの保存単位に含めない。
+- `triangleIsoOfComparison` で標準三角形の同型を抽象的に束ね、`complexYonedaConeTriangleIso` を証明済み。
+- `nativeHomotopyYoneda_isTriangulated`・`nativeTriaEquivalence_isTriangulated`：元の Mathlib の distinguished triangle の保存と tria との三角同値を証明済み。
+
+## 33. §10-7：Mathlib の acyclic 局所化との同定（実装前記録）
+
+- 確認する文言：元の係数加群層の全複体の dg 圏を acyclic で導来 dg 商した H⁰ は、Mathlib の同じ層の導来圏と圏同値になる。
+- 証明方針は、まず `nativeTriaEquivalence` を標準 cone の保存から三角同値として証明し、その逆と `ULiftHom.down.mapHomotopyCategory` を合成して元の層の Mathlib ホモトピー圏へ戻すこと。
+- tria の各代表対象の像を、元の層複体のホモトピー商の像と明示的な同型で比較する。
+- `triaImage acyclicComplexes` と、Mathlib の `HomotopyCategory.subcategoryAcyclic` のこの関手による逆像との一致を証明する。片方向は三角閉包の最小性、逆方向は全対象の複体表示と代表対象の計算を使う。
+- 両辺の `trW` の一致を三角同値から得て、既存の `LocalizerMorphism` によって局所化する。
+- Mathlib の `DerivedCategory.Qh.IsLocalization (subcategoryAcyclic _).trW` を使い、同じ acyclic 局所化との同値と比較正方形を得る。
+- これを既に証明済みの `derivedDGHomotopyVerdierEquivalence` と合成する。Dqc への制限では、同じ元の層コホモロジーを読むことを別途確認する。
+- 未証明の導来比較を構造体の入力にせず、H⁰ と tria を定義で同一視しない。三角構造の比較は既存のものに対する保存の証明から得る。
+
+### 現在地
+
+- `triaHomotopyEquivalence_isTriangulated`：層複体 dg 圏の tria と元の層の Mathlib ホモトピー圏との三角同値を証明済み。
+- `acyclicTriaImage_eq`・`acyclicTrW_eq`：同じ acyclic 部分圏と局所化する射の正確な対応を証明済み。
+- `triaDerivedEquivalence`・`triaDerivedSquare`：Mathlib の実際の `DerivedCategory.Qh` による局所化との同値と比較正方形を構成済み。
+- `derivedDGHomotopyEquivalence`：半自由分解後の層の acyclic dg 商自体の H⁰ と Mathlib 導来圏の同値を証明済み。
+- `DGResolution.quotientHomotopyOriginalRepresentableIso`・`derivedDGHomotopyEquivalence_objIso`：同じ元の複体の導来像へ送られることを対象ごとの同型で証明済み。一般の dg 商の代表対象の計算は K-L1b・L3 でも利用可能。
+- `dqcDGObject_image_iff`・`dqcDGHomotopyEquivalence`：同じ層コホモロジーの条件で制限し、準連接部分 dg 模型の H⁰ と実際の Dqc の同値を証明済み。
+- 対象ビルド、全体ビルド（10,097 jobs）、1,078宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
+- 半自由分解から導来比較までの工程は完了。次はアフィン係数加群圏の比較を完成し、Perf と有限アフィン被覆の導来降下へ接続する。
 
 ## 主要宣言の表
 
@@ -815,11 +838,20 @@
 | `LinearComplex.mappingConeComparison_inr`・`mappingConeComparison_connecting` | DerivedGeometry/LinearConeTriangles | 実装・対象ビルド済み |
 | `LinearComplex.representableStandardConeIso_hom_eval` | DerivedGeometry/LinearRepresentableConeEvaluation | 実装・対象ビルド済み |
 | `LinearComplex.nativeDerivedYoneda_full`・`nativeDerivedYoneda_faithful` | DerivedGeometry/LinearNativeComparison | 実装・対象ビルド済み |
+| `triangleIsoOfComparison`・`LinearComplex.complexYonedaConeTriangleIso` | DerivedGeometry/TriangleComparison・LinearRepresentableTriangles | 実装・対象ビルド済み |
+| `LinearComplex.nativeHomotopyYoneda_isTriangulated`・`nativeTriaEquivalence_isTriangulated` | DerivedGeometry/LinearYonedaTriangulated・LinearNativeTria | 実装・対象ビルド済み |
+| `triaHomotopyEquivalence_isTriangulated`・`triaHomotopyRepresentableIso` | DerivedGeometry/SheafTriaHomotopy | 実装・対象ビルド済み |
+| `acyclicTriaImage_eq`・`acyclicTrW_eq` | DerivedGeometry/SheafAcyclicTria・SheafDerivedComparison | 実装・対象ビルド済み |
+| `triaDerivedEquivalence`・`triaDerivedSquare`・`derivedDGHomotopyEquivalence` | DerivedGeometry/SheafDerivedComparison | 実装・対象ビルド済み |
+| `DGResolution.quotientHomotopyOriginalRepresentableIso` | DGResolution/QuotientComparisonObjects | 実装・対象ビルド済み |
+| `derivedDGHomotopyEquivalence_objIso` | DerivedGeometry/SheafDerivedComparisonObjects | 実装・対象ビルド済み |
+| `dqcDGObject_image_iff`・`dqcDGHomotopyEquivalence` | DerivedGeometry/DqcDerivedComparison | 実装・対象ビルド済み |
 | `DGResolution.augmentation_triaImage_iff`・`augmentation_trW_eq` | DGResolution/SupportTransport・VerdierTransport | 実装・対象ビルド済み |
 | `DGResolution.verdierSquare`・`quotientToOriginalVerdierIsTriangulated` | DGResolution/VerdierTransport | 実装・対象ビルド済み |
 | `ResolvedComplexes`・`resolvedAcyclicComplexes`・`resolvedAugmentation_quasiEquivalence` | DerivedGeometry/SheafDerivedDG | 実装・対象ビルド済み |
 | `resolvedHomotopyComplexEquivalence`・`derivedDGTriaEquivalenceIsTriangulated` | DerivedGeometry/ResolvedSheafComparison | 実装・対象ビルド済み |
-| dg 商自体の H⁰ と Mathlib の導来圏との同値 | DerivedGeometry/ | H⁰ と tria・指定 Verdier 商との同値は実装済み。三角構造と Mathlib 導来局所化の同定は未実装 |
+| dg 商自体の H⁰ と Mathlib の導来圏との同値 | DerivedGeometry/SheafDerivedComparison | 実装・対象ビルド済み |
+| Dqc の dg 増強の H⁰ と実際の Dqc の同値 | DerivedGeometry/DqcDerivedComparison | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |

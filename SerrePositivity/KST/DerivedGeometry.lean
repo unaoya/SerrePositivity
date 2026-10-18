@@ -29,3 +29,5 @@ public import SerrePositivity.KST.DerivedGeometry.LinearYonedaComparison
 public import SerrePositivity.KST.DerivedGeometry.SheafPretriangulation
 public import SerrePositivity.KST.DerivedGeometry.LinearNativeComparison
 public import SerrePositivity.KST.DerivedGeometry.LinearRepresentableConeEvaluation
+public import SerrePositivity.KST.DerivedGeometry.SheafDerivedComparisonObjects
+public import SerrePositivity.KST.DerivedGeometry.DqcDerivedComparison
