@@ -162,6 +162,8 @@ simplicialNerve_quasicategory (C : Type u)
 `awDataBilinear x y z n` は AW 成分族の R 双線形演算。
 `awData_unit_left`・`awData_unit_right` は dg 単位の定数単体による両側単位則、
 `standardUnitMap x : 𝟙_ SSet.{u} ⟶ standardHomSpace x x` は単体的単位写像。
-前提は `[CommRing R] [DGCategory R D]`。公開138宣言の正確な型・前提・公理監査は
-`scripts/audit_dold_kan_comparison.lean`。残りは AW の標準方程式の保存・結合律・自然性、
+`awData_assoc h g f : awData h (awData g f) = awData (awData h g) f` は成分族上の結合律。
+`awData_pullback α g f` は任意の単調写像 α による引き戻しとの可換性で、退化も含む。
+前提は `[CommRing R] [DGCategory R D]`。公開156宣言の正確な型・前提・公理監査は
+`scripts/audit_dold_kan_comparison.lean`。残りは AW の標準方程式の保存、
 比較写像、低次の一致、写像空間の比較。同値の最終判定は A3e が届いた後に行う。

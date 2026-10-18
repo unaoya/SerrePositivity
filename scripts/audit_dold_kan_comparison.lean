@@ -11,6 +11,33 @@ import SerrePositivity.InfinityCategories.DoldKanComparison
 set_option pp.universes true
 set_option pp.explicit true
 
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.compose_eq_of_heq
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.compose_eq_of_heq
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.compose_assoc_of_sum
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.compose_assoc_of_sum
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.compose_assoc_of_heq
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.compose_assoc_of_heq
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awNestedRight
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awNestedRight
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awNestedLeft
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awNestedLeft
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awNestedRight_eq_left
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awNestedRight_eq_left
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_right_expand
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_right_expand
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_left_expand
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_left_expand
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awData_assoc
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awData_assoc
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.compose_smul_left
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.compose_smul_left
 
@@ -50,6 +77,12 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awData_add_right
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.awData_add_right
 
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.cutPairEquiv
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.cutPairEquiv
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.sum_rightCuts_eq_leftCuts
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.sum_rightCuts_eq_leftCuts
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.left_nonempty
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.left_nonempty
 
@@ -67,6 +100,27 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.middle
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.middle
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.image_left
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.image_left
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.image_right
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.image_right
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.injOn_of_cuts
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.injOn_of_cuts
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_pullback_of_inj
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_pullback_of_inj
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_pullback_of_not_inj
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_pullback_of_not_inj
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awImageEquiv
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awImageEquiv
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awData_pullback
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awData_pullback
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.component_heq_of_eq
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.component_heq_of_eq
