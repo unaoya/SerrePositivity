@@ -21,6 +21,11 @@ public import SerrePositivity.KST.Descent.PermutationRepresentation
 public import SerrePositivity.KST.Descent.InvariantProducts
 public import SerrePositivity.KST.Descent.SplitMayerVietoris
 public import SerrePositivity.KST.Descent.Theorem31
+public import SerrePositivity.KST.Descent.ReducedClosedSubscheme
+public import SerrePositivity.KST.Descent.CoincidenceCenter
+public import SerrePositivity.KST.Descent.ClosedCenterSquare
+public import SerrePositivity.KST.Descent.AffineReduction
+public import SerrePositivity.KST.Descent.ReductionFunctor
 
 /-!
 # K-L8：論文 §3 の降下
@@ -36,6 +41,8 @@ public import SerrePositivity.KST.Descent.Theorem31
 境界を持つ全次数の正方形の長完全列と比較、有限次元での真閉部分の次元低下を公開する。
 一致場所の有限和の真閉性、不変部分の全次数完全列、(3.8) の指定対角比較、
 軌道正方形の全次数の代数的な貼り合わせを公開する。
+被約閉中心と実際の Cartesian 正方形、アフィン Noether の被約化の冪零性、
+一般の被約化の普遍性と関手性・群作用の移行を公開する。
 
 ## 規約
 最小公理 (1)–(8)、Čech 降下、主定理の証明、E の実現は未完成。
