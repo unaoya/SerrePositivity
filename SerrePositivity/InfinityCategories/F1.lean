@@ -444,3 +444,8 @@ public import SerrePositivity.InfinityCategories.F1.PairingKanExtension
 public import SerrePositivity.InfinityCategories.F1.EdgewiseKanExtension
 public import SerrePositivity.InfinityCategories.F1.JoinMapRange
 public import SerrePositivity.InfinityCategories.F1.EdgewiseFaceImages
+public import SerrePositivity.InfinityCategories.F1.EdgewiseFacePullbacks
+public import SerrePositivity.InfinityCategories.F1.EdgewiseBoundaryCompatibility
+public import SerrePositivity.InfinityCategories.F1.RangeCoverGluing
+public import SerrePositivity.InfinityCategories.F1.EdgewiseRightBoundaryCompatibility
+public import SerrePositivity.InfinityCategories.F1.EdgewiseBoundaryGluing

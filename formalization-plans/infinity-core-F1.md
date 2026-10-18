@@ -8751,5 +8751,108 @@ lemma edgewiseWeight_face_range_inf (n : ℕ) (i j : Fin (n + 2)) :
       joinSubcomplexRight (Δ[n + 1] : SSet.{u}).op
         (stdSimplex.face ({i}ᶜ) ⊓ stdSimplex.face ({j}ᶜ))
 
+lemma stdSimplex_faces_isPullback {n : ℕ} (i j : Fin (n + 2)) (hij : i ≤ j) :
+    IsPullback (stdSimplex.{u}.δ j) (stdSimplex.δ i)
+      (stdSimplex.δ i.castSucc) (stdSimplex.δ j.succ)
+
+lemma edgewiseWeight_faces_isPullback {n : ℕ} (i j : Fin (n + 2)) (hij : i ≤ j) :
+    IsPullback (edgewiseWeight.{u}.map (SimplexCategory.δ j))
+      (edgewiseWeight.map (SimplexCategory.δ i))
+      (edgewiseWeight.map (SimplexCategory.δ i.castSucc))
+      (edgewiseWeight.map (SimplexCategory.δ j.succ))
+
+lemma boundary_faces_overlap {n : ℕ} (i j : Fin (n + 2)) (hij : i ≤ j) :
+    (stdSimplex.{u}.δ j) ≫ boundary.ι i.castSucc =
+      stdSimplex.δ i ≫ boundary.ι j.succ
+
+lemma edgewiseBoundaryFace_overlap {K : SSet.{u}} {n : ℕ}
+    (a : (boundary (n + 2) : SSet.{u}) ⟶ edgewiseSubdivision K)
+    (i j : Fin (n + 2)) (hij : i ≤ j) :
+    edgewiseWeight.map (SimplexCategory.δ j) ≫ SSet.yonedaEquiv (boundary.ι i.castSucc ≫ a) =
+      edgewiseWeight.map (SimplexCategory.δ i) ≫ SSet.yonedaEquiv (boundary.ι j.succ ≫ a)
+
+lemma edgewiseBoundaryFace_eq_of_same_image {K : SSet.{u}} {n : ℕ}
+    (a : (boundary (n + 2) : SSet.{u}) ⟶ edgewiseSubdivision K)
+    (i j : Fin (n + 2)) (hij : i ≤ j) (d : SimplexCategoryᵒᵖ)
+    (x y : (edgewiseWeight.obj ⦋n + 1⦌).obj d)
+    (hxy : (edgewiseWeight.map (SimplexCategory.δ i.castSucc)).app d x =
+      (edgewiseWeight.map (SimplexCategory.δ j.succ)).app d y) :
+    (SSet.yonedaEquiv (boundary.ι i.castSucc ≫ a)).app d x =
+      (SSet.yonedaEquiv (boundary.ι j.succ ≫ a)).app d y
+
+lemma edgewiseBoundaryFace_eq_of_lt {K : SSet.{u}} {n : ℕ}
+    (a : (boundary (n + 2) : SSet.{u}) ⟶ edgewiseSubdivision K)
+    (i j : Fin (n + 3)) (hij : i < j) (d : SimplexCategoryᵒᵖ)
+    (x y : (edgewiseWeight.obj ⦋n + 1⦌).obj d)
+    (hxy : (edgewiseWeight.map (SimplexCategory.δ i)).app d x =
+      (edgewiseWeight.map (SimplexCategory.δ j)).app d y) :
+    (SSet.yonedaEquiv (boundary.ι i ≫ a)).app d x =
+      (SSet.yonedaEquiv (boundary.ι j ≫ a)).app d y
+
+lemma edgewiseBoundaryFaces_compatible {K : SSet.{u}} {n : ℕ}
+    (a : (boundary (n + 2) : SSet.{u}) ⟶ edgewiseSubdivision K)
+    (i j : Fin (n + 3)) (d : SimplexCategoryᵒᵖ)
+    (x y : (edgewiseWeight.obj ⦋n + 1⦌).obj d)
+    (hxy : (edgewiseWeight.map (SimplexCategory.δ i)).app d x =
+      (edgewiseWeight.map (SimplexCategory.δ j)).app d y) :
+    (SSet.yonedaEquiv (boundary.ι i ≫ a)).app d x =
+      (SSet.yonedaEquiv (boundary.ι j ≫ a)).app d y
+
+lemma exists_map_of_compatible_range_cover {I : Type v} {Y K : SSet.{u}}
+    (X : I → SSet.{u}) (ι : ∀ i, X i ⟶ Y) (f : ∀ i, X i ⟶ K)
+    (hc : ∀ (i j : I) (d : SimplexCategoryᵒᵖ) (x : (X i).obj d) (y : (X j).obj d),
+      (ι i).app d x = (ι j).app d y → (f i).app d x = (f j).app d y) :
+    ∃ F : ((⨆ i, Subcomplex.range (ι i) : Y.Subcomplex) : SSet.{u}) ⟶ K,
+      ∀ i, Subcomplex.lift (ι i) (le_iSup (fun j ↦ Subcomplex.range (ι j)) i) ≫ F = f i
+
+lemma edgewiseRight_yoneda {K : SSet.{u}} {n : ℕ}
+    (f : (Δ[n] : SSet.{u}) ⟶ edgewiseSubdivision K) :
+    joinInr (Δ[n] : SSet.{u}).op Δ[n] ≫ SSet.yonedaEquiv f = f ≫ edgewiseRight K
+
+lemma edgewiseBoundaryFace_right_restriction {K : SSet.{u}} {n : ℕ}
+    (a : (boundary (n + 1) : SSet.{u}) ⟶ edgewiseSubdivision K)
+    (b : (Δ[n + 1] : SSet.{u}) ⟶ K)
+    (sq : CommSq a (boundary (n + 1)).ι (edgewiseRight K) b) (i : Fin (n + 2)) :
+    joinInr (Δ[n] : SSet.{u}).op Δ[n] ≫ SSet.yonedaEquiv (boundary.ι i ≫ a) =
+      stdSimplex.δ i ≫ b
+
+lemma edgewiseBoundaryFace_right_compatible {K : SSet.{u}} {n : ℕ}
+    (a : (boundary (n + 1) : SSet.{u}) ⟶ edgewiseSubdivision K)
+    (b : (Δ[n + 1] : SSet.{u}) ⟶ K)
+    (sq : CommSq a (boundary (n + 1)).ι (edgewiseRight K) b)
+    (i : Fin (n + 2)) (d : SimplexCategoryᵒᵖ)
+    (x : (edgewiseWeight.obj ⦋n⦌).obj d) (y : (Δ[n + 1] : SSet.{u}).obj d)
+    (hxy : (edgewiseWeight.map (SimplexCategory.δ i)).app d x =
+      (joinInr (Δ[n + 1] : SSet.{u}).op Δ[n + 1]).app d y) :
+    (SSet.yonedaEquiv (boundary.ι i ≫ a)).app d x = b.app d y
+
+def edgewiseBoundaryCoverSource (n : ℕ) : Option (Fin (n + 3)) → SSet.{u}
+
+def edgewiseBoundaryCoverMap (n : ℕ) : ∀ i, edgewiseBoundaryCoverSource.{u} n i ⟶
+    edgewiseWeight.obj ⦋n + 2⦌
+
+def edgewiseBoundaryCoverDiagram {K : SSet.{u}} {n : ℕ}
+    (a : (boundary (n + 2) : SSet.{u}) ⟶ edgewiseSubdivision K)
+    (b : (Δ[n + 2] : SSet.{u}) ⟶ K) : ∀ i, edgewiseBoundaryCoverSource n i ⟶ K
+
+lemma edgewiseBoundaryCover_compatible {K : SSet.{u}} {n : ℕ}
+    (a : (boundary (n + 2) : SSet.{u}) ⟶ edgewiseSubdivision K)
+    (b : (Δ[n + 2] : SSet.{u}) ⟶ K)
+    (sq : CommSq a (boundary (n + 2)).ι (edgewiseRight K) b)
+    (i j : Option (Fin (n + 3))) (d : SimplexCategoryᵒᵖ)
+    (x : (edgewiseBoundaryCoverSource n i).obj d) (y : (edgewiseBoundaryCoverSource n j).obj d)
+    (hxy : (edgewiseBoundaryCoverMap n i).app d x = (edgewiseBoundaryCoverMap n j).app d y) :
+    (edgewiseBoundaryCoverDiagram a b i).app d x = (edgewiseBoundaryCoverDiagram a b j).app d y
+
+lemma exists_edgewiseBoundaryCover_gluing {K : SSet.{u}} {n : ℕ}
+    (a : (boundary (n + 2) : SSet.{u}) ⟶ edgewiseSubdivision K)
+    (b : (Δ[n + 2] : SSet.{u}) ⟶ K)
+    (sq : CommSq a (boundary (n + 2)).ι (edgewiseRight K) b) :
+    ∃ F : ((⨆ i, Subcomplex.range (edgewiseBoundaryCoverMap n i) :
+      (edgewiseWeight.obj ⦋n + 2⦌).Subcomplex) : SSet.{u}) ⟶ K,
+      ∀ i, Subcomplex.lift (edgewiseBoundaryCoverMap n i)
+        (le_iSup (fun j ↦ Subcomplex.range (edgewiseBoundaryCoverMap n j)) i) ≫ F =
+          edgewiseBoundaryCoverDiagram a b i
+
 end SerrePositivity.InfinityCategories
 ```
