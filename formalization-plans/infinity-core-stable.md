@@ -78,7 +78,15 @@ coslice の比較であり、まだ証明していない。標準 span の形状
 三因子の組み替えは空次数を含む全ての順序写像に関して自然であることを証明し、
 単体集合の結合同型 `stableJoinAssociator K L M : (K⋆L)⋆M ≅ K⋆(L⋆M)` を構成した。
 三因子それぞれの射に関する自然性と、左の二因子・右端の因子の包含との厳密な
-可換性も証明した。二重 coslice への適用と、左押し出しによる比較は未完了。
+可換性も証明した。さらに中間因子の空区間に関する包含の式も証明し、
+`nestedCosliceIso c` により `sliceUnder c.val` と `sliceUnder (yonedaEquiv.symm c)`
+（後者は `sliceUnder p` 内での coslice）を単体集合として同定した。
+`colimitCosliceRestriction c : sliceUnder c.val → sliceUnder p` は、uncurry すると
+基底の包含 `K → K⋆Δ[0]` に沿う制限となり、X への頂点射影と厳密に可換である。
+`IsColimitCone c ↔ TrivialKanFibration (colimitCosliceRestriction c)` を
+値域の quasicategory 性を仮定せず証明した。左押し出しによる五頂点／四頂点の
+比較は未完了。次は図式の pushout に沿う上記制限の引き戻しの充填を証明し、
+左四角形と四頂点図式の和として五頂点図式に適用する。
 引き戻しへの双対化と三角構造も未完了。Mathlib の三角構造の構成には h C の
 前加法構造・整数シフトとその加法性も証明する必要があり、S4 の義務として保持する。
 安定性から全有限極限・余極限を導く逆向き、S4〜S7 の三角構造・長完全列・完全関手・D7 は未完了。
@@ -169,7 +177,9 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 空次数を含む join | `StableAugJoin`、`stableAugJoinEquiv`、`stableAugJoinEquiv_naturality`（任意の二因子、有限順序写像） | 完了 |
 | join の結合の各次数の同値 | `stableJoinCutEquiv`、`stableAugReassociationEquiv`、`stableAugJoinAssociatorEquiv`（任意の三因子、頂点数 r） | 各次数と組み替えの自然性まで完了 |
 | 二段の切断の引き戻し | `stablePullCut_leftMap`（a≤b）、`stablePullCut_rightMap`、`stablePullCut_middle`（a≤b） | 完了 |
-| join の結合同型 | `stableJoinAssociator`、`stableJoinAssociator_naturality`、`stableJoinAssociator_inl`、`stableJoinAssociator_inr`（任意の三因子とその射、追加の仮定なし） | 完了。二重 coslice への適用は未完了 |
+| join の結合同型 | `stableJoinAssociator`、`stableJoinAssociator_naturality`、`stableJoinAssociator_inl`、`stableJoinAssociator_inr`（任意の三因子とその射、追加の仮定なし） | 完了。二重 coslice への適用も完了 |
+| 二重 coslice | `nestedCosliceDiagramEquiv`、`nestedCosliceHomEquiv`、`nestedCosliceIso`（任意の余錐 c、値域の追加仮定なし） | 完了 |
+| 余極限余錐の coslice 制限 | `colimitCosliceRestriction`、`colimitCosliceRestriction_uncurry`、`colimitCosliceRestriction_projection`、`isColimitCone_iff_colimitCosliceRestriction`（任意の余錐、値域の追加仮定なし） | 完了。pushout に沿う適用と貼り合わせ本体は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

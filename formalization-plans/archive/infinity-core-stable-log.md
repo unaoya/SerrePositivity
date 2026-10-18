@@ -3953,3 +3953,206 @@ SerrePositivity.InfinityCategories.stableJoinAssociator_inr.{u_1} : ∀ (K L M :
     (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.joinInr.{u_1} L M)
       (SerrePositivity.InfinityCategories.joinInr.{u_1} K (SerrePositivity.InfinityCategories.join.{u_1} L M)))
 ```
+
+
+## S4：二重 coslice の同型と余極限余錐の coslice 制限
+
+対象 `ColimitCosliceRestriction` と集約 `Stable` のビルドは成功（2027 jobs）。
+全宣言監査は 83 モジュール・906 宣言で標準三公理のみ。
+join の中間因子の包含との可換性、任意パラメーターの二重 coslice の Hom の同値、
+その自然性と実際の単体集合の同型を構成した。余錐全体から基底への coslice 制限は
+uncurry により基底包含による制限と厳密に一致し、頂点射影とも可換。
+余極限性とこの制限の trivial Kan fibration 性の同値は、値域の quasicategory 性を仮定しない。
+次の義務は図式の pushout に沿う制限の充填と、左四角形・四頂点図式から五頂点図式への適用。
+従って貼り合わせ本体、三角構造・S5〜S7 は未完了。
+
+```lean
+SerrePositivity.InfinityCategories.stableAugEmpty_heq.{u_1} : ∀ (K : SSet.{u_1}) {r : ℕ},
+  Eq.{1} r 0 →
+    ∀ (x : SerrePositivity.InfinityCategories.Join.augObj.{u_1} K r),
+      HEq.{u_1 + 1} x
+        (have this := PUnit.unit.{u_1 + 1};
+        this)
+SerrePositivity.InfinityCategories.stableAugReassociation_middle.{u_1} : ∀ (K L M : SSet.{u_1}) (r : ℕ)
+  (s : SerrePositivity.InfinityCategories.StableAugJoin.{u_1} K M r),
+  Eq.{u_1 + 1}
+    ((SerrePositivity.InfinityCategories.stableAugReassociationEquiv.{u_1} K L M r)
+      (SerrePositivity.InfinityCategories.stableAugJoinHom.{u_1} (SerrePositivity.InfinityCategories.joinInl.{u_1} K L)
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} M) r s))
+    (SerrePositivity.InfinityCategories.stableAugJoinHom.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K)
+      (SerrePositivity.InfinityCategories.joinInr.{u_1} L M) r s)
+SerrePositivity.InfinityCategories.stableJoinAssociator_middle.{u_1} : ∀ (K L M : SSet.{u_1}),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.joinMap.{u_1} (SerrePositivity.InfinityCategories.joinInl.{u_1} K L)
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} M))
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.stableJoinAssociator.{u_1} K L M)))
+    (SerrePositivity.InfinityCategories.joinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K)
+      (SerrePositivity.InfinityCategories.joinInr.{u_1} L M))
+SerrePositivity.InfinityCategories.stableJoinAssociator_middle_inv.{u_1} : ∀ (K L M : SSet.{u_1}),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.joinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K)
+        (SerrePositivity.InfinityCategories.joinInr.{u_1} L M))
+      (CategoryTheory.Iso.inv.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.stableJoinAssociator.{u_1} K L M)))
+    (SerrePositivity.InfinityCategories.joinMap.{u_1} (SerrePositivity.InfinityCategories.joinInl.{u_1} K L)
+      (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} M))
+SerrePositivity.InfinityCategories.stableJoinAssociator_inl_inv.{u_1} : ∀ (K L M : SSet.{u_1}),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.joinMap.{u_1} (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} K)
+        (SerrePositivity.InfinityCategories.joinInl.{u_1} L M))
+      (CategoryTheory.Iso.inv.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.stableJoinAssociator.{u_1} K L M)))
+    (SerrePositivity.InfinityCategories.joinInl.{u_1} (SerrePositivity.InfinityCategories.join.{u_1} K L) M)
+SerrePositivity.InfinityCategories.stableJoinAssociator_leftLeft_inv.{u_1} : ∀ (K L M : SSet.{u_1}),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.joinInl.{u_1} K (SerrePositivity.InfinityCategories.join.{u_1} L M))
+      (CategoryTheory.Iso.inv.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.stableJoinAssociator.{u_1} K L M)))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.joinInl.{u_1} K L)
+      (SerrePositivity.InfinityCategories.joinInl.{u_1} (SerrePositivity.InfinityCategories.join.{u_1} K L) M))
+@SerrePositivity.InfinityCategories.stableJoinAssociator_inv_naturality.{u_1} : ∀ {K K' L L' M M' : SSet.{u_1}}
+  (f : Quiver.Hom.{u_1, u_1 + 1} K K') (g : Quiver.Hom.{u_1, u_1 + 1} L L') (h : Quiver.Hom.{u_1, u_1 + 1} M M'),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.joinMap.{u_1} f (SerrePositivity.InfinityCategories.joinMap.{u_1} g h))
+      (CategoryTheory.Iso.inv.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.stableJoinAssociator.{u_1} K' L' M')))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.Iso.inv.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.stableJoinAssociator.{u_1} K L M))
+      (SerrePositivity.InfinityCategories.joinMap.{u_1} (SerrePositivity.InfinityCategories.joinMap.{u_1} f g) h))
+@SerrePositivity.InfinityCategories.nestedCosliceDiagramCurry.{u_1} : {K X : SSet.{u_1}} →
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} →
+    (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p) →
+      (A : SSet.{u_1}) →
+        (Subtype.{u_1 + 1} fun F =>
+            Eq.{u_1 + 1}
+              (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+                (SerrePositivity.InfinityCategories.joinInl.{u_1}
+                  (SerrePositivity.InfinityCategories.join.{u_1} K
+                    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+                  A)
+                F)
+              ↑c) →
+          Subtype.{u_1 + 1} fun G =>
+            Eq.{u_1 + 1}
+              (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+                (SerrePositivity.InfinityCategories.joinInl.{u_1}
+                  (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }) A)
+                G)
+              ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) c)
+@SerrePositivity.InfinityCategories.nestedCosliceDiagramUncurry.{u_1} : {K X : SSet.{u_1}} →
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} →
+    (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p) →
+      (A : SSet.{u_1}) →
+        (Subtype.{u_1 + 1} fun G =>
+            Eq.{u_1 + 1}
+              (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+                (SerrePositivity.InfinityCategories.joinInl.{u_1}
+                  (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }) A)
+                G)
+              ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) c)) →
+          Subtype.{u_1 + 1} fun F =>
+            Eq.{u_1 + 1}
+              (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+                (SerrePositivity.InfinityCategories.joinInl.{u_1}
+                  (SerrePositivity.InfinityCategories.join.{u_1} K
+                    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+                  A)
+                F)
+              ↑c
+@SerrePositivity.InfinityCategories.nestedCosliceDiagramEquiv.{u_1} : {K X : SSet.{u_1}} →
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} →
+    (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p) →
+      (A : SSet.{u_1}) →
+        Equiv.{u_1 + 1, u_1 + 1}
+          (Subtype.{u_1 + 1} fun F =>
+            Eq.{u_1 + 1}
+              (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+                (SerrePositivity.InfinityCategories.joinInl.{u_1}
+                  (SerrePositivity.InfinityCategories.join.{u_1} K
+                    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+                  A)
+                F)
+              ↑c)
+          (Subtype.{u_1 + 1} fun G =>
+            Eq.{u_1 + 1}
+              (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+                (SerrePositivity.InfinityCategories.joinInl.{u_1}
+                  (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }) A)
+                G)
+              ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) c))
+@SerrePositivity.InfinityCategories.nestedCosliceHomEquiv.{u_1} : {K X : SSet.{u_1}} →
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} →
+    (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p) →
+      (A : SSet.{u_1}) →
+        Equiv.{u_1 + 1, u_1 + 1} (Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.sliceUnder.{u_1} ↑c))
+          (Quiver.Hom.{u_1, u_1 + 1} A
+            (SerrePositivity.InfinityCategories.sliceUnder.{u_1}
+              ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1})
+                (have this := c;
+                this))))
+@SerrePositivity.InfinityCategories.nestedCosliceHomEquiv_doubleUncurry.{u_1} : ∀ {K X A : SSet.{u_1}}
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p)
+  (f : Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.sliceUnder.{u_1} ↑c)),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.sliceUnderUncurry.{u_1}
+      (SerrePositivity.InfinityCategories.sliceUnderUncurry.{u_1}
+        ((SerrePositivity.InfinityCategories.nestedCosliceHomEquiv.{u_1} c A) f)))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.Iso.inv.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.stableJoinAssociator.{u_1} K
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }) A))
+      (SerrePositivity.InfinityCategories.sliceUnderUncurry.{u_1} f))
+@SerrePositivity.InfinityCategories.nestedCosliceHomEquiv_naturality.{u_1} : ∀ {K X A B : SSet.{u_1}}
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p)
+  (f : Quiver.Hom.{u_1, u_1 + 1} A B)
+  (g : Quiver.Hom.{u_1, u_1 + 1} B (SerrePositivity.InfinityCategories.sliceUnder.{u_1} ↑c)),
+  Eq.{u_1 + 1}
+    ((SerrePositivity.InfinityCategories.nestedCosliceHomEquiv.{u_1} c A)
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f g))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f
+      ((SerrePositivity.InfinityCategories.nestedCosliceHomEquiv.{u_1} c B) g))
+@SerrePositivity.InfinityCategories.nestedCosliceIso.{u_1} : {K X : SSet.{u_1}} →
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} →
+    (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p) →
+      CategoryTheory.Iso.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.sliceUnder.{u_1} ↑c)
+        (SerrePositivity.InfinityCategories.sliceUnder.{u_1}
+          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1})
+            (have this := c;
+            this)))
+@SerrePositivity.InfinityCategories.colimitCosliceRestriction.{u_1} : {K X : SSet.{u_1}} →
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} →
+    (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p) →
+      Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.sliceUnder.{u_1} ↑c)
+        (SerrePositivity.InfinityCategories.sliceUnder.{u_1} p)
+@SerrePositivity.InfinityCategories.colimitCosliceRestriction_trivialKanFibration.{u_1} : ∀ {K X : SSet.{u_1}}
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p),
+  SerrePositivity.InfinityCategories.IsColimitCone.{u_1} c →
+    SerrePositivity.InfinityCategories.TrivialKanFibration.{u_1}
+      (SerrePositivity.InfinityCategories.colimitCosliceRestriction.{u_1} c)
+@SerrePositivity.InfinityCategories.colimitCosliceRestriction_uncurry.{u_1} : ∀ {K X A : SSet.{u_1}}
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p)
+  (f : Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.sliceUnder.{u_1} ↑c)),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.sliceUnderUncurry.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f
+        (SerrePositivity.InfinityCategories.colimitCosliceRestriction.{u_1} c)))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.joinMap.{u_1}
+        (SerrePositivity.InfinityCategories.joinInl.{u_1} K
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+        (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} A))
+      (SerrePositivity.InfinityCategories.sliceUnderUncurry.{u_1} f))
+@SerrePositivity.InfinityCategories.colimitCosliceRestriction_projection.{u_1} : ∀ {K X : SSet.{u_1}}
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.colimitCosliceRestriction.{u_1} c)
+      (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1} p))
+    (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1} ↑c)
+@SerrePositivity.InfinityCategories.isColimitCone_iff_colimitCosliceRestriction.{u_1} : ∀ {K X : SSet.{u_1}}
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p),
+  SerrePositivity.InfinityCategories.IsColimitCone.{u_1} c ↔
+    SerrePositivity.InfinityCategories.TrivialKanFibration.{u_1}
+      (SerrePositivity.InfinityCategories.colimitCosliceRestriction.{u_1} c)
+```

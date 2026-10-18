@@ -486,6 +486,26 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.stableJoinAssociator_inl
 #print axioms SerrePositivity.InfinityCategories.stableJoinAssociator_inr
 
+#print axioms SerrePositivity.InfinityCategories.stableAugEmpty_heq
+#print axioms SerrePositivity.InfinityCategories.stableAugReassociation_middle
+#print axioms SerrePositivity.InfinityCategories.stableJoinAssociator_middle
+#print axioms SerrePositivity.InfinityCategories.stableJoinAssociator_middle_inv
+#print axioms SerrePositivity.InfinityCategories.stableJoinAssociator_inl_inv
+#print axioms SerrePositivity.InfinityCategories.stableJoinAssociator_leftLeft_inv
+#print axioms SerrePositivity.InfinityCategories.stableJoinAssociator_inv_naturality
+#print axioms SerrePositivity.InfinityCategories.nestedCosliceDiagramCurry
+#print axioms SerrePositivity.InfinityCategories.nestedCosliceDiagramUncurry
+#print axioms SerrePositivity.InfinityCategories.nestedCosliceDiagramEquiv
+#print axioms SerrePositivity.InfinityCategories.nestedCosliceHomEquiv
+#print axioms SerrePositivity.InfinityCategories.nestedCosliceHomEquiv_doubleUncurry
+#print axioms SerrePositivity.InfinityCategories.nestedCosliceHomEquiv_naturality
+#print axioms SerrePositivity.InfinityCategories.nestedCosliceIso
+#print axioms SerrePositivity.InfinityCategories.colimitCosliceRestriction
+#print axioms SerrePositivity.InfinityCategories.colimitCosliceRestriction_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.colimitCosliceRestriction_uncurry
+#print axioms SerrePositivity.InfinityCategories.colimitCosliceRestriction_projection
+#print axioms SerrePositivity.InfinityCategories.isColimitCone_iff_colimitCosliceRestriction
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -568,7 +588,11 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.JoinReassociationNaturality,
     `SerrePositivity.InfinityCategories.Stable.JoinAssociator,
     `SerrePositivity.InfinityCategories.Stable.JoinAssociatorFactors,
-    `SerrePositivity.InfinityCategories.Stable.JoinAssociatorBoundary]
+    `SerrePositivity.InfinityCategories.Stable.JoinAssociatorBoundary,
+    `SerrePositivity.InfinityCategories.Stable.JoinAssociatorMiddle,
+    `SerrePositivity.InfinityCategories.Stable.NestedCoslice,
+    `SerrePositivity.InfinityCategories.Stable.NestedCosliceIso,
+    `SerrePositivity.InfinityCategories.Stable.ColimitCosliceRestriction]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
