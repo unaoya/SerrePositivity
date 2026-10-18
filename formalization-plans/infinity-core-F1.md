@@ -4935,5 +4935,42 @@ instance relativeJoinPrism_id_isIso (S : SSet.{u}) : IsIso (relativeJoinPrism (�
 instance relativeJoinCylinderComparison_id_isIso (S : SSet.{u}) :
     IsIso (relativeJoinCylinderComparison (𝟙 S))
 
+lemma fatJoinPoint_isPushout (X : SSet.{u}) :
+    IsPushout (SSet.ι₁ (X := X) ▷ (Δ[0] : SSet.{u}))
+      (snd X (Δ[0] : SSet.{u})) (fatJoinCylinder X Δ[0]) (fatJoinInr X Δ[0])
+
+noncomputable def fatJoinPointCylinderIso (X : SSet.{u}) :
+    (X ⊗ (Δ[1] : SSet.{u})) ⊗ (Δ[0] : SSet.{u}) ≅ (Δ[1] : SSet.{u}) ⊗ X
+
+noncomputable def fatJoinPointPrism (X : SSet.{u}) :
+    (Δ[1] : SSet.{u}) ⊗ X ⟶ fatJoin X (Δ[0] : SSet.{u})
+
+lemma fatJoinPointPrism_isPushout {X : SSet.{u}} (f : X ⟶ (Δ[0] : SSet.{u})) :
+    IsPushout (prismEndpoint 1 X) f (fatJoinPointPrism X) (fatJoinInr X Δ[0])
+
+noncomputable def mappingCylinderFatJoinPointIso {X : SSet.{u}} (f : X ⟶ (Δ[0] : SSet.{u})) :
+    pushout (prismEndpoint 1 X) f ≅ fatJoin X (Δ[0] : SSet.{u})
+
+instance joinDiagonalCylinder_point_isIso : IsIso (joinDiagonalCylinder (Δ[0] : SSet.{u}))
+
+instance joinDiagonal_point_isIso : IsIso (joinDiagonal (Δ[0] : SSet.{u}))
+
+instance relativeJoin_point_fst_isIso {X Y : SSet.{u}}
+    (f : X ⟶ (Δ[0] : SSet.{u})) (g : Y ⟶ (Δ[0] : SSet.{u})) :
+    IsIso (pullback.fst (joinMap f g) (joinDiagonal (Δ[0] : SSet.{u})))
+
+lemma fatJoinPointPrism_comparison {X : SSet.{u}} (f : X ⟶ (Δ[0] : SSet.{u})) :
+    fatJoinPointPrism X ≫ fatJoinComparison X (Δ[0] : SSet.{u}) =
+      joinDiagonal X ≫ joinMap (𝟙 X) f
+
+lemma relativeJoinCylinderComparison_point_fst {X : SSet.{u}} (f : X ⟶ (Δ[0] : SSet.{u})) :
+    relativeJoinCylinderComparison f ≫ pullback.fst (joinMap f (𝟙 (Δ[0] : SSet.{u})))
+        (joinDiagonal (Δ[0] : SSet.{u})) =
+      (mappingCylinderFatJoinPointIso f).hom ≫ fatJoinComparison X (Δ[0] : SSet.{u})
+
+lemma isPrecompositionEquivalence_relativeJoinCylinderComparison_point
+    {X : SSet.{u}} (f : X ⟶ (Δ[0] : SSet.{u})) :
+    IsPrecompositionEquivalence (relativeJoinCylinderComparison f)
+
 end SerrePositivity.InfinityCategories
 ```

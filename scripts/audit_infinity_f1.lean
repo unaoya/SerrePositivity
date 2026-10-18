@@ -1094,3 +1094,14 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.relativeJoinSelfIso
 #check @SerrePositivity.InfinityCategories.relativeJoinPrism_id_isIso
 #check @SerrePositivity.InfinityCategories.relativeJoinCylinderComparison_id_isIso
+#check @SerrePositivity.InfinityCategories.fatJoinPoint_isPushout
+#check @SerrePositivity.InfinityCategories.fatJoinPointCylinderIso
+#check @SerrePositivity.InfinityCategories.fatJoinPointPrism
+#check @SerrePositivity.InfinityCategories.fatJoinPointPrism_isPushout
+#check @SerrePositivity.InfinityCategories.mappingCylinderFatJoinPointIso
+#check @SerrePositivity.InfinityCategories.joinDiagonalCylinder_point_isIso
+#check @SerrePositivity.InfinityCategories.joinDiagonal_point_isIso
+#check @SerrePositivity.InfinityCategories.relativeJoin_point_fst_isIso
+#check @SerrePositivity.InfinityCategories.fatJoinPointPrism_comparison
+#check @SerrePositivity.InfinityCategories.relativeJoinCylinderComparison_point_fst
+#check @SerrePositivity.InfinityCategories.isPrecompositionEquivalence_relativeJoinCylinderComparison_point
