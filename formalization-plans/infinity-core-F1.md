@@ -12574,5 +12574,89 @@ lemma smallLeftUnstraighteningMappingSpaceMap_isQCatEquivalence_iff {B : SSet.{u
     IsQCatEquivalence (smallLeftUnstraighteningMappingSpaceMap F G) ↔
       IsQCatEquivalence (leftUnstraighteningMappingSpaceMap F G)
 
+def coherentPathDeformation {J K : Type u} [LinearOrder J] [LinearOrder K]
+    (A : J →o K) (t : J →o Fin 2) {i j : J} (P : Path i j) : Path (A i) (A j)
+
+lemma coherentPathDeformation_mono {J K : Type u} [LinearOrder J] [LinearOrder K]
+    (A : J →o K) (t : J →o Fin 2) {i j : J} {P Q : Path i j} (h : P.I ⊆ Q.I) :
+    (coherentPathDeformation A t P).I ⊆ (coherentPathDeformation A t Q).I
+
+lemma coherentPathDeformation_id {J K : Type u} [LinearOrder J] [LinearOrder K]
+    (A : J →o K) (t : J →o Fin 2) (i : J) :
+    coherentPathDeformation A t (𝟙 (⟨i⟩ : SimplicialThickening J)) =
+      𝟙 (⟨A i⟩ : SimplicialThickening K)
+
+lemma coherentPathDeformation_comp {J K : Type u} [LinearOrder J] [LinearOrder K]
+    (A : J →o K) (t : J →o Fin 2) {i j k : J} (P : Path i j) (Q : Path j k) :
+    coherentPathDeformation A t
+        (show (⟨i⟩ : SimplicialThickening J) ⟶ ⟨k⟩ from P ≫ Q) =
+      (show (⟨A i⟩ : SimplicialThickening K) ⟶ ⟨A k⟩ from
+        coherentPathDeformation A t P ≫ coherentPathDeformation A t Q)
+
+lemma coherentPathDeformation_reindex {I J K : Type u}
+    [LinearOrder I] [LinearOrder J] [LinearOrder K]
+    (g : I →o J) (A : J →o K) (t : J →o Fin 2) {i j : I} (P : Path i j) :
+    coherentPathDeformation (A.comp g) (t.comp g) P =
+      coherentPathDeformation A t ((SimplicialThickening.functorMap g ⟨i⟩ ⟨j⟩).obj P)
+
+lemma coherentPathDeformation_zero {J K : Type u} [LinearOrder J] [LinearOrder K]
+    (A : J →o K) {i j : J} (P : Path i j) :
+    coherentPathDeformation A (OrderHom.const J 0) P =
+      (SimplicialThickening.functorMap A ⟨i⟩ ⟨j⟩).obj P
+
+lemma coherentPathDeformation_one {J K : Type u} [LinearOrder J] [LinearOrder K]
+    (A : J →o K) {i j : J} (P : Path i j) :
+    (coherentPathDeformation A (OrderHom.const J 1) P).I = Set.Icc (A i) (A j)
+
+lemma coherentPathDeformation_constant {J K : Type u} [LinearOrder J] [LinearOrder K]
+    (a : K) (t : J →o Fin 2) {i j : J} (P : Path i j) :
+    coherentPathDeformation (OrderHom.const J a) t P =
+      𝟙 (⟨a⟩ : SimplicialThickening K)
+
+def coherentPathDeformationFunctor {J K : Type u} [LinearOrder J] [LinearOrder K]
+    (A : J →o K) (t : J →o Fin 2) (i j : J) : Path i j ⥤ Path (A i) (A j)
+
+def coherentPathDeformationEnriched {J K : Type u} [LinearOrder J] [LinearOrder K]
+    (A : J →o K) (t : J →o Fin 2) :
+    EnrichedFunctor SSet.{u} (SimplicialThickening J) (SimplicialThickening K)
+
+lemma coherentPathDeformationEnriched_reindex {I J K : Type u}
+    [LinearOrder I] [LinearOrder J] [LinearOrder K]
+    (g : I →o J) (A : J →o K) (t : J →o Fin 2) :
+    (SimplicialThickening.functor g).comp SSet (coherentPathDeformationEnriched A t) =
+      coherentPathDeformationEnriched (A.comp g) (t.comp g)
+
+lemma coherentPathDeformationEnriched_zero {J K : Type u} [LinearOrder J] [LinearOrder K]
+    (A : J →o K) :
+    coherentPathDeformationEnriched A (OrderHom.const J 0) = SimplicialThickening.functor A
+
+def coherentSimplexMaximalization {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {n : ℕ} (σ : (SimplicialNerve C) _⦋n⦌) : (SimplicialNerve C) _⦋n⦌
+
+def coherentSimplexDeformationMap {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {n : ℕ} (σ : (SimplicialNerve C) _⦋n⦌) :
+    (Δ[n] : SSet.{max u v}) ⊗ Δ[1] ⟶ SimplicialNerve C
+
+def coherentSimplexDeformation {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {n : ℕ} (σ : (SimplicialNerve C) _⦋n⦌) :
+    SSet.Homotopy (SSet.yonedaEquiv.symm σ)
+      (SSet.yonedaEquiv.symm (coherentSimplexMaximalization σ))
+
+lemma coherentSimplexDeformation_vertex {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {n : ℕ} (σ : (SimplicialNerve C) _⦋n⦌) (x : (Δ[n] : SSet.{max u v}) _⦋0⦌) :
+    (simplicialHomotopyVertexEdge (coherentSimplexDeformation σ) x).edge =
+      PinchedHom.constant (coherentNerveVertex (σ.obj ⟨ULift.up (x.down.toOrderHom 0)⟩)) 1
+
+lemma coherentSimplexDeformation_vertex_isInvertible
+    {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {n : ℕ} (σ : (SimplicialNerve C) _⦋n⦌) (x : (Δ[n] : SSet.{max u v}) _⦋0⦌) :
+    IsInvertibleEdge (simplicialHomotopyVertexEdge (coherentSimplexDeformation σ) x).toTruncated
+
+noncomputable def coherentSimplexMaximalizationIso
+    {C : Type v} [Category.{u} C] [SimplicialCategory C] [Quasicategory (SimplicialNerve C)]
+    {n : ℕ} (σ : (SimplicialNerve C) _⦋n⦌) :
+    FunctorIso (SSet.yonedaEquiv.symm σ)
+      (SSet.yonedaEquiv.symm (coherentSimplexMaximalization σ))
+
 end SerrePositivity.InfinityCategories
 ```
