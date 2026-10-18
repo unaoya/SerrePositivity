@@ -19,7 +19,7 @@ Mathlib の `Quasicategory` をそのまま ∞ 圏の定義とし、Joyal モ�
 
 担当順は A6 → A4 → A5。基盤全体の正本は [foundations.md](foundations.md)。F1 は α2 が担当し、Core の既存の公開名・型の変更は事前に報告する。
 
-現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較と二点の fat join 比較の同型性と任意の標準単体の正規化の自己射への可逆な変形と標準単体の fat join 比較の同値条件、関手単体集合の制限の相対可逆 path の持ち上げと基底も変わる一般の pushout の貼り合わせ、両方の join の pushout 保存、左右両因子の比較の貼り合わせと単射の同値条件のセルによる閉包と自然な写像円柱の相対比較・余極限保存も整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
+現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較と二点の fat join 比較の同型性と任意の標準単体の正規化の自己射への可逆な変形と標準単体の fat join 比較の同値条件、関手単体集合の制限の相対可逆 path の持ち上げと基底も変わる一般の pushout の貼り合わせ、両方の join の pushout 保存、左右両因子の比較の貼り合わせと単射の同値条件のセルによる閉包と自然な写像円柱の相対比較・余極限保存と両方の join の両因子の連結な余極限保存も整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
 
 ## 1. Mathlib（固定版）の現状
 
@@ -7551,6 +7551,124 @@ noncomputable def equivalenceMappingCylinderInrNat :
 instance equivalenceMappingCylinderFunctor_preservesColimitsOfShape
     (J : Type*) [Category* J] [HasColimitsOfShape J SSet.{u}] :
     PreservesColimitsOfShape J equivalenceMappingCylinderFunctor.{u}
+```
+
+### A6 続き（2026-10-18）：両因子の join の連結な余極限保存
+
+新規40宣言。`joinLeftUnderAdjunction K` と `joinRightUnderAdjunction K` は通常の join と slice／coslice の under 圏を通じた随伴。したがって `joinLeftFunctor K` と既存の `joinRightFunctor K` は連結な形の余極限を保つ。既存の `joinRightFunctor` の名前・型は変えていない。`fatJoinLeftFunctor K`・`fatJoinRightFunctor K` についても二段の点ごとの pushout と定数関手の連結な余極限保存から同じ保存性を得た。fat join では指定形の余極限が単体集合に存在することを仮定する。最初の pushout の左変数の関手は全ての形の余極限を保つが、右変数の関手には連結性を仮定する。
+
+検証：Core ビルド成功（1847 jobs）、続けて監査成功（累計1276宣言、標準3公理のみ）。既存の公開名・型は維持。これは関手の通常の余極限の保存であり、同値条件を満たす比較射の無限の貼り合わせの完成ではない。自然な写像円柱とセルの族・無限の骨格の相対比較への接続が残る。任意の因子の fat join 比較・slice 比較・A6 主定理・A4・A5 は未完了。
+
+以下は namespace `SerrePositivity.InfinityCategories`、`universe u`、`open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet`、`open scoped Simplicial` の下での正確な型。
+
+```lean
+lemma fatJoinStageMapLeft_id (A K : SSet.{u}) :
+    fatJoinStageMapLeft (𝟙 A) K = 𝟙 (fatJoinStage A K)
+
+lemma fatJoinStageMapLeft_comp {A B C : SSet.{u}} (f : A ⟶ B) (g : B ⟶ C) (K : SSet.{u}) :
+    fatJoinStageMapLeft f K ≫ fatJoinStageMapLeft g K = fatJoinStageMapLeft (f ≫ g) K
+
+noncomputable def fatJoinStageLeftFunctor (K : SSet.{u}) : SSet.{u} ⥤ SSet.{u}
+
+noncomputable def fatJoinStageLeftZeroNat (K : SSet.{u}) :
+    tensorRight K ⟶ tensorRight (Δ[1] : SSet.{u}) ⋙ tensorRight K
+
+noncomputable def fatJoinStageLeftFstNat (K : SSet.{u}) : tensorRight K ⟶ 𝟭 SSet.{u}
+
+noncomputable def fatJoinStageLeftInlNat (K : SSet.{u}) :
+    tensorRight (Δ[1] : SSet.{u}) ⋙ tensorRight K ⟶ fatJoinStageLeftFunctor K
+
+noncomputable def fatJoinStageLeftInrNat (K : SSet.{u}) : 𝟭 SSet.{u} ⟶ fatJoinStageLeftFunctor K
+
+instance fatJoinStageLeftFunctor_preservesColimitsOfShape (K : SSet.{u})
+    (J : Type*) [Category* J] [HasColimitsOfShape J SSet.{u}] :
+    PreservesColimitsOfShape J (fatJoinStageLeftFunctor K)
+
+noncomputable def fatJoinLeftFunctor (K : SSet.{u}) : SSet.{u} ⥤ SSet.{u}
+
+noncomputable def fatJoinLeftEndNat (K : SSet.{u}) : tensorRight K ⟶ fatJoinStageLeftFunctor K
+
+noncomputable def fatJoinLeftSndNat (K : SSet.{u}) : tensorRight K ⟶ (Functor.const SSet.{u}).obj K
+
+noncomputable def fatJoinLeftInlNat (K : SSet.{u}) : fatJoinStageLeftFunctor K ⟶ fatJoinLeftFunctor K
+
+noncomputable def fatJoinLeftInrNat (K : SSet.{u}) :
+    (Functor.const SSet.{u}).obj K ⟶ fatJoinLeftFunctor K
+
+instance constantSSetFunctor_preservesConnectedColimits (K : SSet.{u})
+    (J : Type*) [Category* J] [IsConnected J] :
+    PreservesColimitsOfShape J ((Functor.const SSet.{u}).obj K)
+
+instance fatJoinLeftFunctor_preservesConnectedColimits (K : SSet.{u})
+    (J : Type*) [Category* J] [IsConnected J] [HasColimitsOfShape J SSet.{u}] :
+    PreservesColimitsOfShape J (fatJoinLeftFunctor K)
+
+def joinLeftUnderFunctor (K : SSet.{u}) : SSet.{u} ⥤ Under K
+
+def sliceOverUnderFunctor (K : SSet.{u}) : Under K ⥤ SSet.{u}
+
+def joinLeftUnderAdjunction (K : SSet.{u}) : joinLeftUnderFunctor K ⊣ sliceOverUnderFunctor K
+
+instance joinLeftUnderFunctor_isLeftAdjoint (K : SSet.{u}) :
+    (joinLeftUnderFunctor K).IsLeftAdjoint
+
+def joinLeftFunctor (K : SSet.{u}) : SSet.{u} ⥤ SSet.{u}
+
+instance joinLeftFunctor_preservesConnectedColimits (K : SSet.{u})
+    (J : Type*) [Category* J] [IsConnected J] :
+    PreservesColimitsOfShape J (joinLeftFunctor K)
+
+def joinRightUnderFunctor (K : SSet.{u}) : SSet.{u} ⥤ Under K
+
+def sliceUnderUnderFunctor (K : SSet.{u}) : Under K ⥤ SSet.{u}
+
+def joinRightUnderAdjunction (K : SSet.{u}) : joinRightUnderFunctor K ⊣ sliceUnderUnderFunctor K
+
+instance joinRightUnderFunctor_isLeftAdjoint (K : SSet.{u}) :
+    (joinRightUnderFunctor K).IsLeftAdjoint
+
+instance joinRightFunctor_preservesConnectedColimits (K : SSet.{u})
+    (J : Type*) [Category* J] [IsConnected J] :
+    PreservesColimitsOfShape J (joinRightFunctor K)
+
+lemma fatJoinStageMapRight_id (A K : SSet.{u}) :
+    fatJoinStageMapRight K (𝟙 A) = 𝟙 (fatJoinStage K A)
+
+lemma fatJoinStageMapRight_comp {A B C : SSet.{u}} (f : A ⟶ B) (g : B ⟶ C) (K : SSet.{u}) :
+    fatJoinStageMapRight K f ≫ fatJoinStageMapRight K g = fatJoinStageMapRight K (f ≫ g)
+
+noncomputable def fatJoinStageRightFunctor (K : SSet.{u}) : SSet.{u} ⥤ SSet.{u}
+
+noncomputable def fatJoinStageRightZeroNat (K : SSet.{u}) :
+    tensorLeft K ⟶ tensorLeft (K ⊗ (Δ[1] : SSet.{u}))
+
+noncomputable def fatJoinStageRightFstNat (K : SSet.{u}) :
+    tensorLeft K ⟶ (Functor.const SSet.{u}).obj K
+
+noncomputable def fatJoinStageRightInlNat (K : SSet.{u}) :
+    tensorLeft (K ⊗ (Δ[1] : SSet.{u})) ⟶ fatJoinStageRightFunctor K
+
+noncomputable def fatJoinStageRightInrNat (K : SSet.{u}) :
+    (Functor.const SSet.{u}).obj K ⟶ fatJoinStageRightFunctor K
+
+instance fatJoinStageRightFunctor_preservesConnectedColimits (K : SSet.{u})
+    (J : Type*) [Category* J] [IsConnected J] [HasColimitsOfShape J SSet.{u}] :
+    PreservesColimitsOfShape J (fatJoinStageRightFunctor K)
+
+noncomputable def fatJoinRightFunctor (K : SSet.{u}) : SSet.{u} ⥤ SSet.{u}
+
+noncomputable def fatJoinRightEndNat (K : SSet.{u}) : tensorLeft K ⟶ fatJoinStageRightFunctor K
+
+noncomputable def fatJoinRightSndNat (K : SSet.{u}) : tensorLeft K ⟶ 𝟭 SSet.{u}
+
+noncomputable def fatJoinRightInlNat (K : SSet.{u}) : fatJoinStageRightFunctor K ⟶ fatJoinRightFunctor K
+
+noncomputable def fatJoinRightInrNat (K : SSet.{u}) :
+    𝟭 SSet.{u} ⟶ fatJoinRightFunctor K
+
+instance fatJoinRightFunctor_preservesConnectedColimits (K : SSet.{u})
+    (J : Type*) [Category* J] [IsConnected J] [HasColimitsOfShape J SSet.{u}] :
+    PreservesColimitsOfShape J (fatJoinRightFunctor K)
 ```
 
 ## 7. A3 の工程（2026-10-18 追加）

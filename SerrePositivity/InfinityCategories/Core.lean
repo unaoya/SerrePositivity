@@ -233,3 +233,11 @@ public import SerrePositivity.InfinityCategories.Core.EquivalenceMappingCylinder
 public import SerrePositivity.InfinityCategories.Core.PushoutFunctorColimits
 
 public import SerrePositivity.InfinityCategories.Core.EquivalenceMappingCylinderFunctor
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinLeftColimits
+
+public import SerrePositivity.InfinityCategories.Core.JoinLeftColimits
+
+public import SerrePositivity.InfinityCategories.Core.JoinRightColimits
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinRightColimits

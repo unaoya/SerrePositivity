@@ -494,3 +494,5 @@ A6 続き：`fatJoinMap_right_mono` と `isPrecompositionEquivalence_fatJoinComp
 A6 続き：反変内部 Hom の自己随伴と持ち上げ問題の交換により、単射の前合成の同値条件を境界の前合成への左持ち上げ性として特徴づけた。`monoPrecompositionEquivalences` の同型・retract・合成・小さい coproduct・整列合成列・自然数の合成列による閉包を得た。モデル構造や small object factorization は使わない。任意の同値な図式の余極限の保存を証明したわけではない。元の比較を自然な相対写像円柱で単射に置換し、関手の余極限保存と接続する作業が残る。新規15宣言の全型・前提は計画 §6。Core ビルド1835 jobs・累計1215宣言の標準3公理監査成功。既存の公開名・型は維持。一般の fat join 比較・slice 比較・A6 主定理・A4・A5 は未完了。
 
 A6 続き：可換正方形の写像円柱の射 `equivalenceMappingCylinderMap` と、元の端点に新しい始域を先に貼った `equivalenceMappingCylinderCornerMap` を追加。相対比較は始域・終域の比較が単射なら単射で、元の二つの射が同値条件を満たせば同値条件を満たす。後者には比較射の単射性は不要。`equivalenceMappingCylinderFunctor` は存在する全ての余極限を保つ。新規21宣言の全型・前提は計画 §6。Core ビルド1840 jobs・累計1236宣言の標準3公理監査成功。既存の公開名・型は維持。join と fat join の関手の連結な余極限保存とセル分解への接続、一般の fat join 比較・slice 比較・A6 主定理・A4・A5 は未完了。
+
+A6 続き：通常の join の under 圏への関手と slice／coslice の随伴を作り、左右両因子の連結な余極限保存を得た。fat join の両因子の関手にも二段の pushout から連結な余極限保存を証明。第一の pushout の左変数の関手は任意の余極限を保つが、右変数には連結性を仮定する。比較射の無限の貼り合わせの完成ではない。新規40宣言の全型・前提は計画 §6。Core ビルド1847 jobs・累計1276宣言の標準3公理監査成功。既存の公開名・型は維持。自然な写像円柱とセルの族・無限の骨格の相対比較への接続、一般の fat join 比較・slice 比較・A6 主定理・A4・A5 は未完了。
