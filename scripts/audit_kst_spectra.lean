@@ -43,7 +43,14 @@ run_cmd do
     `SerrePositivity.KST.Spectra.SpectrumSimplicialCategory,
     `SerrePositivity.KST.Spectra.CoherentNerve,
     `SerrePositivity.KST.Spectra.PointedInterval,
-    `SerrePositivity.KST.Spectra.PathSpace]
+    `SerrePositivity.KST.Spectra.PathSpace,
+    `SerrePositivity.KST.Spectra.PointedMappingParameters,
+    `SerrePositivity.KST.Spectra.IntervalContraction,
+    `SerrePositivity.KST.Spectra.PathReparametrization,
+    `SerrePositivity.KST.Spectra.PathContractionBody,
+    `SerrePositivity.KST.Spectra.PathContraction,
+    `SerrePositivity.KST.Spectra.HomotopyConstant,
+    `SerrePositivity.KST.Spectra.PathContractibility]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

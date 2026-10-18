@@ -24,7 +24,7 @@
 
 作成日：2026-10-18。
 状態：L9a・L9b 完了。L9c に着手。
-対象ビルド・31 モジュール 895 宣言の公理監査成功。
+対象ビルド・38 モジュール 943 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9b、8370 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -668,3 +668,36 @@ L9d の telescope 有理化、L9e の hG・Tot・有理 Shapiro も未完了。
 未完了：path space の収縮、終点 fiber と loopSpace の同定、次数移動の同型。
 次は既存 Core の標準単体の先頭頂点への収縮を借りて path space を収縮する。
 §25 の対象ビルドの jobs 数はログの実数 1618 に訂正した。
+
+## 27. L9c の path space の基点固定収縮
+
+任意の単体集合パラメータから点つき Hom への curry を等化子で構成した。
+Core の区間の先頭頂点への収縮を借り、全時刻で基点を固定することを検査した。
+path の区間変数を収縮する再パラメータ付けと評価を合成した。
+これを curry して path space の収縮を作った。
+時刻零が定数 path、時刻一が恒等射、全時刻で定数 path の基点を固定する。
+基点生成部分複体に相対的なホモトピーに移し、全自然数次数のホモトピー類を消去した。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `PointedMapping.paramCurry` | 基点を保つパラメータ付き写像族の curry |
+| `PointedMapping.uncurry_basepoint` | 評価の源の基点での定数性 |
+| `PointedMapping.uncurry_parameter_basepoint` | 定数写像のパラメータ上の評価 |
+| `intervalContractionMap` / `intervalContraction` | 区間の基点固定収縮 |
+| `intervalContraction_zero` / `.intervalContraction_one` | 区間の収縮の端点 |
+| `pathReparametrization` | path の区間変数の収縮 |
+| `pathEvaluation` | curry 前の path の評価 |
+| `pathContractionBody` | 再パラメータ付けした評価族 |
+| `pathContraction` | path space の収縮写像 |
+| `pathContraction_zero` / `.pathContraction_one` | path space の収縮の端点 |
+| `pathContraction_constant` | 定数 path の基点の固定 |
+| `KanHomotopy.map_const` | 定数射の全次数の誘導写像 |
+| `pathContraction_basedHomotopy` | 基点生成部分複体に相対的な収縮 |
+| `basedPathSpace_homotopy_eq_point` | 全自然数次数のホモトピー類の自明性 |
+| `basedPathSpace_homotopy_subsingleton` | 零次数を含む一元性 |
+
+参照：Goerss–Jardine I §7、Kerodon §3.2.5、HTT A.3.3。
+保存単位の対象ビルド 1643 jobs 成功。
+私有宣言を含む 38 モジュール 943 宣言で標準三公理のみ。
+未完了：終点 fiber と loopSpace の同定、次数移動の同型、整数次数群と段の独立性。
+次は終点 fiber を円からの点つき Hom に同定する。

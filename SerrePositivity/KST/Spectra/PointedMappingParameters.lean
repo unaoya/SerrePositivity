@@ -1,0 +1,107 @@
+module
+
+public import SerrePositivity.KST.Spectra.PointedMappingNaturality
+
+/-!
+概要：任意の単体集合をパラメータとする点つき写像族の curry。
+方針：源の基点上の定数性を内部 Hom の等化子条件へ移す。
+規約：パラメータ自体に基点は要求しない。
+使われ方：Goerss–Jardine I §7、HTT A.3.3。path space の収縮の構成。
+-/
+
+@[expose] public section
+
+universe u
+
+open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory
+
+namespace SerrePositivity.KST.Spectra.PointedMapping
+
+noncomputable section
+
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+
+variable (X Y : PointedSimplicialSet.{u}) {A : SSet.{u}}
+
+/-- 概要：源の基点で定数の写像族を点つき Hom への射へ移す。
+方針：通常の指数の curry を等化子へ持ち上げる。
+規約：パラメータ A は任意の単体集合。
+使われ方：HTT A.3.3、Goerss–Jardine I §7。path のパラメータ付き収縮。 -/
+def paramCurry (f : X.right ⊗ A ⟶ Y.right)
+    (hf : X.hom ▷ A ≫ f = toUnit (𝟙_ SSet.{u} ⊗ A) ≫ Y.hom) :
+    A ⟶ (PointedObject.basedHom X Y).right :=
+  equalizer.lift (f := PointedObject.homRestriction X Y)
+    (g := PointedObject.homConstant X Y) (MonoidalClosed.curry f) (by
+      rw [PointedObject.homRestriction, MonoidalClosed.curry_pre_app, hf,
+        PointedObject.curry_constant]
+      dsimp only [PointedObject.homConstant, PointedObject.homBasepoint, PointedObject.point]
+      simp only [comp_toUnit_assoc]
+      rfl)
+
+/-- 概要：パラメータ付き curry の包含後の射は通常の curry。
+方針：等化子への持ち上げの計算則を使う。
+規約：基点条件の証明の選択に依存しない。
+使われ方：HTT A.3.3。評価と端点の検査。 -/
+@[reassoc (attr := simp)]
+theorem paramCurry_ι (f : X.right ⊗ A ⟶ Y.right)
+    (hf : X.hom ▷ A ≫ f = toUnit (𝟙_ SSet.{u} ⊗ A) ≫ Y.hom) :
+    paramCurry X Y f hf ≫ PointedObject.basedHomι X Y = MonoidalClosed.curry f :=
+  equalizer.lift_ι ..
+
+/-- 概要：点つき Hom への任意のパラメータ付き射の uncurry は源の基点で定数。
+方針：等化子条件を指数の随伴で移す。
+規約：A に基点や Kan 性は要求しない。
+使われ方：Goerss–Jardine I §7、HTT A.3.3。path space の評価。 -/
+theorem uncurry_basepoint (f : A ⟶ (PointedObject.basedHom X Y).right) :
+    X.hom ▷ A ≫ MonoidalClosed.uncurry (f ≫ PointedObject.basedHomι X Y) =
+      toUnit (𝟙_ SSet.{u} ⊗ A) ≫ Y.hom := by
+  apply MonoidalClosed.curry_injective
+  rw [← MonoidalClosed.curry_pre_app, MonoidalClosed.curry_uncurry]
+  change f ≫ PointedObject.basedHomι X Y ≫ PointedObject.homRestriction X Y = _
+  rw [PointedObject.basedHomι_condition]
+  dsimp only [PointedObject.homConstant, PointedObject.homBasepoint, PointedObject.point]
+  conv_rhs => rw [PointedObject.curry_constant]
+  simp only [comp_toUnit_assoc]
+  rfl
+
+/-- 概要：パラメータ付き curry はパラメータの前合成と両立する。
+方針：等化子への包含後に通常の curry の自然性を使う。
+規約：両方の基点条件の証明を明示する。
+使われ方：Goerss–Jardine I §7。収縮の端点の評価。 -/
+theorem paramCurry_natural {B : SSet.{u}} (g : B ⟶ A)
+    (f : X.right ⊗ A ⟶ Y.right)
+    (hf : X.hom ▷ A ≫ f = toUnit (𝟙_ SSet.{u} ⊗ A) ≫ Y.hom)
+    (hg : X.hom ▷ B ≫ (X.right ◁ g ≫ f) = toUnit (𝟙_ SSet.{u} ⊗ B) ≫ Y.hom) :
+    g ≫ paramCurry X Y f hf = paramCurry X Y (X.right ◁ g ≫ f) hg := by
+  apply (cancel_mono (PointedObject.basedHomι X Y)).mp
+  rw [Category.assoc, paramCurry_ι, paramCurry_ι, MonoidalClosed.curry_natural_left]
+
+/-- 概要：点つき内部 Hom の評価はパラメータが定数写像なら基点で定数。
+方針：内部 Hom の基点を包含して通常の curry を uncurry する。
+規約：ここでのパラメータの基点は定数写像。
+使われ方：Goerss–Jardine I §7。定数 path が収縮中に固定されること。 -/
+theorem uncurry_parameter_basepoint :
+    X.right ◁ (PointedObject.basedHom X Y).hom ≫
+      MonoidalClosed.uncurry (PointedObject.basedHomι X Y) =
+        toUnit (X.right ⊗ 𝟙_ SSet.{u}) ≫ Y.hom := by
+  rw [← MonoidalClosed.uncurry_natural_left, PointedObject.basedHom_basepoint_ι,
+    PointedObject.homBasepoint, MonoidalClosed.uncurry_curry]
+
+/-- 概要：常に基点を値とする写像族の curry は定数写像のパラメータ族。
+方針：等化子への包含後に定数写像の curry を計算する。
+規約：基点条件の証明は任意。
+使われ方：Goerss–Jardine I §7。path space の収縮の初端。 -/
+theorem paramCurry_constant
+    (hf : X.hom ▷ A ≫ (toUnit (X.right ⊗ A) ≫ Y.hom) =
+      toUnit (𝟙_ SSet.{u} ⊗ A) ≫ Y.hom) :
+    paramCurry X Y (toUnit (X.right ⊗ A) ≫ Y.hom) hf =
+      toUnit A ≫ (PointedObject.basedHom X Y).hom := by
+  apply (cancel_mono (PointedObject.basedHomι X Y)).mp
+  rw [paramCurry_ι, Category.assoc, PointedObject.basedHom_basepoint_ι,
+    PointedObject.curry_constant]
+  rfl
+
+end
+
+end SerrePositivity.KST.Spectra.PointedMapping
