@@ -23,3 +23,8 @@ public import SerrePositivity.EInfinity.BarrattEccles.ShuffleSwap
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleSwapCoordinates
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleSwapFaces
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleMixedBoundary
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleDeletePosition
+public import SerrePositivity.EInfinity.BarrattEccles.PermutationInsertion
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleHorizontalDeletion
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleVerticalDeletion
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleDeletionCoordinates
