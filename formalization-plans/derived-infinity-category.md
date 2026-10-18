@@ -35,7 +35,13 @@ scalarSupported 版の圏とも同値。標準単体包含のホモトピー関�
 Perf_{V(a)} の類の局所化による零化を示した。K₀Supported の有限自由版との比較は
 任意環では写像、局所環では同型。既存 K₀ 局所化列の核・像と全射性の比較には
 両環の Noether 性と有限射影解像度の仮定を保持する。
-一般の dg 商の nerve 比較は N β3 待ちで主張に含めない。D10 は実装中。
+一般の dg 商の nerve 比較は N β3 待ちで主張に含めない。
+D10 の Moore 複体の同定は完了。実際の pinched Hom の各単体の集合に線形構造を転送し、
+忘却後の比較が各単体を変えないことを証明した。Moore 正規化と ULift の交換を示し、
+任意 dg 圏で N(pinchedHomModule x y) ≅ ULift(τ≤0 Hom(x,y)) を複体として構成した。
+全非負 chain 次数 n のホモロジーは ULift(H^{-n} Hom(x,y)) に同型で、零次数も含む。
+D(S) への適用は derivedInfinityMooreIso。K-L9a の正次数 π の API は公開済みなので、
+π と Moore ホモロジーの比較、および Ext の系は引き続き実装中。
 
 ## 主要宣言
 
@@ -63,6 +69,8 @@ namespace は `SerrePositivity.InfinityCategories`。正確な型・前提は Le
 | 台と局所化 | `derivedSupport_iff_baseChange_isZero`、`perfectSupport_localization_scalar`、`perfectSupportCategory_baseChange_zero` |
 | 台つき h 比較 | `perfectSupportClosedEquivalence`、`perfectSupportScalarEquivalence`、`perfectSupportBaseChangeIso` |
 | 台つき K₀ | `perfectSupportK0Class_localize_zero`、`supportedFreeK0Equivalence`、`supportedK0_localization_kernel`、`supportedK0_localization_surjective` |
+| 写像空間の Moore 複体 | `pinchedHomModule`、`pinchedHomModuleForgetIso_apply`、`pinchedHomMooreIso`、`derivedInfinityMooreIso` |
+| Moore ホモロジー | `connectiveHomHomologyIso`、`pinchedHomMooreHomologyIso` |
 | H⁰ | `derivedInfinityHZeroFunctor`、`derivedInfinityHZeroIso`、`derivedInfinityHZeroMap` |
 | 引き戻しの判定 | `derivedSquareFiberComparison`、`derived_isPullbackSquare_iff_quasiIso` |
 

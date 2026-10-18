@@ -2683,3 +2683,125 @@ supportedInfinityCoproduct (a : S) {I : Type v} [Small.{u} I]
     (derivedSupportCategory S (supportZeroLocus (Ideal.span ({a} : Set S)))) _⦋0⦌
 end SerrePositivity.InfinityCategories
 ```
+
+
+### D10a：実際の右 pinched Hom の線形構造・Moore 複体・ホモロジーの同型
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u v w
+open CategoryTheory CategoryTheory.Limits AlgebraicTopology
+open scoped Simplicial
+variable {R : Type u} [CommRing R]
+mooreKernelModule (W : SimplicialObject (ModuleCat.{v} R)) :
+    ∀ n : ℕ, Submodule R (W.obj (Opposite.op ⦋n⦌))
+  | 0 => ⊤
+  | n + 1 => ⨅ j : Fin (n + 1), LinearMap.ker (W.δ j.succ).hom
+
+/-- 概要：Moore 正規化の包含と任意の正の面の合成は零である。
+方針：核の共通部分の包含を対応する核へ因子分解する。
+規約：零番目の面は含めない。
+使われ方：HA 1.3.1.12 の抽象的正規化から具体的部分加群への写像。 -/
+lemma mooreKernel_positiveFace_zero (W : SimplicialObject (ModuleCat.{v} R))
+    (n : ℕ) (j : Fin (n + 1)) :
+    (AlgebraicTopology.NormalizedMooreComplex.objX W (n + 1)).arrow ≫ W.δ j.succ = 0
+mooreKernel_positiveFace_zero (W : SimplicialObject (ModuleCat.{v} R))
+    (n : ℕ) (j : Fin (n + 1)) :
+    (AlgebraicTopology.NormalizedMooreComplex.objX W (n + 1)).arrow ≫ W.δ j.succ = 0
+mooreKernelMap (W : SimplicialObject (ModuleCat.{v} R)) (n : ℕ) :
+    (AlgebraicTopology.NormalizedMooreComplex.objX W n : ModuleCat.{v} R) ⟶
+      ModuleCat.of R (mooreKernelModule W n)
+mooreKernel_subtype_factors (W : SimplicialObject (ModuleCat.{v} R)) (n : ℕ) :
+    (AlgebraicTopology.NormalizedMooreComplex.objX W n).Factors
+      (ModuleCat.ofHom (mooreKernelModule W n).subtype)
+mooreKernelIso (W : SimplicialObject (ModuleCat.{v} R)) (n : ℕ) :
+    (AlgebraicTopology.NormalizedMooreComplex.objX W n : ModuleCat.{v} R) ≅
+      ModuleCat.of R (mooreKernelModule W n)
+mooreKernel_d_arrow (W : SimplicialObject (ModuleCat.{v} R)) (n : ℕ) :
+    ((normalizedMooreComplex (ModuleCat.{v} R)).obj W).d (n + 1) n ≫
+      (NormalizedMooreComplex.objX W n).arrow =
+        (NormalizedMooreComplex.objX W (n + 1)).arrow ≫ W.δ 0
+mooreKernelUliftEquiv (W : SimplicialObject (ModuleCat.{v} R)) (n : ℕ) :
+    mooreKernelModule (W ⋙ ModuleCat.uliftFunctor.{w} R) n ≃ₗ[R]
+      ULift.{w} (mooreKernelModule W n)
+mooreUliftTermIso (W : SimplicialObject (ModuleCat.{v} R)) (n : ℕ) :
+    ((normalizedMooreComplex (ModuleCat.{max v w} R)).obj
+      (W ⋙ ModuleCat.uliftFunctor.{w} R)).X n ≅
+      (ModuleCat.uliftFunctor.{w} R).obj (((normalizedMooreComplex (ModuleCat.{v} R)).obj W).X n)
+mooreUliftTermIso_arrow (W : SimplicialObject (ModuleCat.{v} R)) (n : ℕ) :
+    (mooreUliftTermIso.{u, v, w} W n).hom ≫
+      (ModuleCat.uliftFunctor.{w} R).map (NormalizedMooreComplex.objX W n).arrow =
+        (NormalizedMooreComplex.objX (W ⋙ ModuleCat.uliftFunctor.{w} R) n).arrow
+mooreUliftIso (W : SimplicialObject (ModuleCat.{v} R)) :
+    (normalizedMooreComplex (ModuleCat.{max v w} R)).obj (W ⋙ ModuleCat.uliftFunctor.{w} R) ≅
+      ((ModuleCat.uliftFunctor.{w} R).mapHomologicalComplex (.down ℕ)).obj
+        ((normalizedMooreComplex (ModuleCat.{v} R)).obj W)
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u v
+open CategoryTheory DifferentialGraded DoldKanComparison
+open scoped Simplicial
+variable {S : Type u} [CommRing S] {D : Type v} [DGCategory S D] (x y : D)
+pinchedHomCoordinateEquiv (n : SimplexCategoryᵒᵖ) :
+    (DGNerve.pinchedHom S D x y).obj n ≃
+      ULift.{v} ((homModule (R := S) x y).obj n)
+pinchedHomAddCommGroup (n : SimplexCategoryᵒᵖ) :
+    AddCommGroup ((DGNerve.pinchedHom S D x y).obj n)
+pinchedHomModuleStructure (n : SimplexCategoryᵒᵖ) :
+    Module S ((DGNerve.pinchedHom S D x y).obj n)
+pinchedHomCoordinateLinearEquiv (n : SimplexCategoryᵒᵖ) :
+    (DGNerve.pinchedHom S D x y).obj n ≃ₗ[S]
+      ULift.{v} ((homModule (R := S) x y).obj n)
+pinchedHomCoordinateModuleIso (n : SimplexCategoryᵒᵖ) :
+    ModuleCat.of S ((DGNerve.pinchedHom S D x y).obj n) ≅
+      (ModuleCat.uliftFunctor.{v} S).obj ((homModule (R := S) x y).obj n)
+pinchedHomModule : SimplicialObject (ModuleCat.{max u v} S)
+pinchedHomModuleCoordinateIso : pinchedHomModule x y ≅
+    homModule (R := S) x y ⋙ ModuleCat.uliftFunctor.{v} S
+pinchedHomModuleForgetIso : pinchedHomModule x y ⋙ forget (ModuleCat.{max u v} S) ≅
+    DGNerve.pinchedHom S D x y
+pinchedHomModuleForgetIso_apply (n : SimplexCategoryᵒᵖ)
+    (s : (pinchedHomModule (S := S) x y).obj n) :
+    (pinchedHomModuleForgetIso x y).hom.app n s = s
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u v
+open CategoryTheory DifferentialGraded DoldKanComparison AlgebraicTopology
+open scoped Simplicial
+variable {S : Type u} [CommRing S] {D : Type v} [DGCategory S D]
+homModuleMooreIso (x y : D) :
+    (normalizedMooreComplex (ModuleCat.{u} S)).obj (homModule (R := S) x y) ≅
+      connectiveHomComplex (R := S) x y
+pinchedHomMooreIso (x y : D) :
+    (normalizedMooreComplex (ModuleCat.{max u v} S)).obj (pinchedHomModule x y) ≅
+      ((ModuleCat.uliftFunctor.{v} S).mapHomologicalComplex (.down ℕ)).obj
+        (connectiveHomComplex (R := S) x y)
+derivedInfinityMooreComplex (x y : (derivedInfinityCategory S) _⦋0⦌) :
+    ChainComplex (ModuleCat.{u + 1} S) ℕ
+derivedInfinityMooreIso (x y : (derivedInfinityCategory S) _⦋0⦌) :
+    derivedInfinityMooreComplex x y ≅
+      ((ModuleCat.uliftFunctor.{u + 1} S).mapHomologicalComplex (.down ℕ)).obj
+        (connectiveHomComplex (R := S) (x.obj 0) (y.obj 0))
+end SerrePositivity.InfinityCategories
+```
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u v
+open CategoryTheory DifferentialGraded DoldKanComparison AlgebraicTopology
+variable {S : Type u} [CommRing S] {D : Type v} [DGCategory S D]
+connectiveHomHomologyIso (x y : D) (n : ℕ) :
+    (connectiveHomComplex (R := S) x y).homology n ≅
+      (homObject S D x y).homology (-(n : ℤ))
+pinchedHomMooreHomologyIso (x y : D) (n : ℕ) :
+    (((normalizedMooreComplex (ModuleCat.{max u v} S)).obj
+      (pinchedHomModule x y)).homology n) ≅
+      (ModuleCat.uliftFunctor.{v} S).obj ((homObject S D x y).homology (-(n : ℤ)))
+end SerrePositivity.InfinityCategories
+```

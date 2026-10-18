@@ -722,10 +722,42 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.supportedInfinityCoproduct
 #print axioms SerrePositivity.InfinityCategories.supportedK0_localization_surjective
 
+#print axioms SerrePositivity.InfinityCategories.mooreKernelModule
+#print axioms SerrePositivity.InfinityCategories.mooreKernel_positiveFace_zero
+#print axioms SerrePositivity.InfinityCategories.mooreKernelMap
+#print axioms SerrePositivity.InfinityCategories.mooreKernel_subtype_factors
+#print axioms SerrePositivity.InfinityCategories.mooreKernelIso
+#print axioms SerrePositivity.InfinityCategories.mooreKernel_d_arrow
+#print axioms SerrePositivity.InfinityCategories.mooreKernelUliftEquiv
+#print axioms SerrePositivity.InfinityCategories.mooreUliftTermIso
+#print axioms SerrePositivity.InfinityCategories.mooreUliftTermIso_arrow
+#print axioms SerrePositivity.InfinityCategories.mooreUliftIso
+#print axioms SerrePositivity.InfinityCategories.pinchedHomCoordinateEquiv
+#print axioms SerrePositivity.InfinityCategories.pinchedHomAddCommGroup
+#print axioms SerrePositivity.InfinityCategories.pinchedHomModuleStructure
+#print axioms SerrePositivity.InfinityCategories.pinchedHomCoordinateLinearEquiv
+#print axioms SerrePositivity.InfinityCategories.pinchedHomCoordinateModuleIso
+#print axioms SerrePositivity.InfinityCategories.pinchedHomModule
+#print axioms SerrePositivity.InfinityCategories.pinchedHomModuleCoordinateIso
+#print axioms SerrePositivity.InfinityCategories.pinchedHomModuleForgetIso
+#print axioms SerrePositivity.InfinityCategories.pinchedHomModuleForgetIso_apply
+#print axioms SerrePositivity.InfinityCategories.homModuleMooreIso
+#print axioms SerrePositivity.InfinityCategories.pinchedHomMooreIso
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityMooreComplex
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityMooreIso
+
+#print axioms SerrePositivity.InfinityCategories.connectiveHomHomologyIso
+#print axioms SerrePositivity.InfinityCategories.pinchedHomMooreHomologyIso
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.MooreHomology,
+    `SerrePositivity.InfinityCategories.Derived.MooreUniverse,
+    `SerrePositivity.InfinityCategories.Derived.PinchedHomModule,
+    `SerrePositivity.InfinityCategories.Derived.MooreComplex,
+
     `SerrePositivity.InfinityCategories.Derived.SupportCoproduct,
     `SerrePositivity.InfinityCategories.Derived.FullSemifreeHomotopy,
     `SerrePositivity.InfinityCategories.Derived.FullSemifreeCanonical,
