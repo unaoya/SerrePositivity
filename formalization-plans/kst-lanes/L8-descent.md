@@ -89,10 +89,12 @@ Cartesian モデルと指定引き戻しの標準同型の同変性を証明し�
 相互細分の指定比較は両側のホモトピー逆を持ち、元の前層の像にもホモトピーを移した。
 元の前層の実際の底変換から自然な pullback を構成し、自然な transfer と局所 rank 公式から
 基底の値を含む指定 Čech 増強比較の retract を構成した（§44）。
+底変換された係数図式を実際の底変換被覆の Čech 図式と自然同型で結び、
+増強先を含む矢の圏の同型から、実際の底変換被覆を使う transfer 還元を得た（§45）。
 `Theorem31.lean` では (3.8) と中心上の帰納仮定による代数的な軌道貼り合わせを証明。
 正本 D7 に従う導来値域への実現の型を §19 に明示する。
 検証状態：`lake build SerrePositivity.KST.Descent` が成功。
-監査状態：`scripts/audit_kst_descent.lean` は 114 モジュール・1401 宣言を検査し成功。
+監査状態：`scripts/audit_kst_descent.lean` は 115 モジュール・1420 宣言を検査し成功。
 許容公理は標準三公理のみ。主定理や八つの公理の完成を意味しない。
 切断を持つ射の帰納の区切りとして、全体ビルド `lake build` も成功（9418 ジョブ）。
 終了コードは `set -eo pipefail` で確認。ログは `/tmp/l8-sectioned-full-build.log`。
@@ -105,6 +107,8 @@ L8 の対象ビルドと監査は成功しており、import 閉包の破損で�
 §41 の全体ビルドはルート集約で失敗。`InfinityCategories/F1/CocartesianPath` の import が
 `InfinityCategories/Core/CocartesianPathVertices` と `cocartesianPathVertex._proof_1` を重複登録する。
 所有範囲外の衝突で、L8 の対象ビルドと監査は成功したままである。
+§45 の transfer 幾何接続の区切りでは全体ビルドが成功（10024 ジョブ）。
+`set -eo pipefail` で終了コード 0 を確認。ログは `/tmp/l8-cech-transfer-geometry-full-build.log`。
 終了コード 1 を確認し、ログは `/tmp/l8-affine-cech-descent-full-build.log`。
 §42 の全体ビルドも同じ所有範囲外の宣言重複でルート集約に失敗（終了コード 1）。
 ログは `/tmp/l8-double-cech-comparison-full-build.log`。L8 の対象ビルド・監査は成功。
@@ -594,6 +598,10 @@ Z 上の帰納仮定で残りの辺を同型とする。
 | `presheafAugmentationComparison`、`BaseChangeTransfer.augmentationRetract` | 基底の値を含む指定増強の自然性と retract | 対象ビルド済み、全ての図式射を保持 |
 | `BaseChangeTransfer.cechAugmentationRetract` | 実際の Čech 増強比較の矢の圏の retract | 対象ビルド済み、Tot はまだ接続しない |
 | `BaseChangeTransfer.piCechComparison_of_transfer` | 図式関手での像の全次数比較の移行 | 対象ビルド済み、実際の観測関手は明示入力 |
+| `cechBaseChangeGeometryIso` | 実際の底変換被覆の Čech と Over 底変換図式の自然同型 | 対象ビルド済み、二射影と全単体射を保持 |
+| `cechBaseChangeStageIso_augmentation`、`cechBaseChangeAugmentationIso` | 幾何的増強の可換性と前層の増強比較の矢の圏の同型 | 対象ビルド済み、増強先も含む |
+| `BaseChangeTransfer.cechBaseChangedCoverRetract` | 実際の底変換被覆の Čech 比較への retract | 対象ビルド済み、transfer と局所 rank 公式は明示入力 |
+| `BaseChangeTransfer.piCechComparison_of_baseChangedCover` | 実際の底変換被覆の全次数比較から元への還元 | 対象ビルド済み、Tot の実構成と分裂降下は別工程 |
 | `finiteCoproductDesc_isFinite` | 共通の終域への有限個の有限射を非交和にまとめる | 対象ビルド済み |
 | `sectionOrbitMap_isFinite`、`sectionOrbitMap_isProper` | 分離射の有限個の切断からの軌道射の有限性・固有性 | 対象ビルド済み |
 | `reducedSectionOrbitMap_isFinite` | 被約化への切断の軌道射の有限性 | 対象ビルド済み |
@@ -1429,3 +1437,34 @@ L9 の実際の Tot・π_*・hG とホモトピー不変性、Fubini・分裂降
 値域を有理線形圏として扱える実際の実現も別途必要で、L9 のスペクトル圏の線形性を仮定しない。
 有限平坦 transfer 自体、射影公式、自然な blowup 列と有限積保存の実降下からの導出、
 最小公理全体・(3.6)・K0・T2・E の接続は残る。
+
+
+## 45. transfer 図式と実際の底変換被覆の増強 Čech の接続
+
+§44 に残していた底変換係数図式と実際の底変換被覆の Čech 図式の同型を構成した。
+`baseChangeCech_isPullback` を各単体次数で評価し、実際の底変換被覆の段と
+元の増強段の引き戻しとの標準同型を得る。
+この同型は元の Čech への指定比較と、底変換基底 X への指定増強を保つ。
+Over の底変換関手の射は実際の二射影による lift なので、
+その二射影で検査することで、全ての面射・退化射を含む自然性を証明した。
+`cechBaseChangeGeometryIso` は二つの幾何図式全体の自然同型となる。
+
+さらに底変換された増強は、基底自身の引き戻しから X への標準同型のもとで
+実際の底変換被覆の増強と可換することを証明した。
+元の同じ反変前層でこれを写し、増強先の値の同型と図式全体の自然同型を組み合わせる。
+`cechBaseChangeAugmentationIso` は指定増強比較の矢の圏の同型である。
+したがって各段の値の同型だけから増強や全図式の同型性を主張してはいない。
+
+transfer の比較射 retract とこの矢の圏の同型を合成し、
+元の被覆の指定 Čech 比較が、実際の底変換被覆の指定比較の retract となることを証明した。
+実際の図式関手の像で底変換被覆の比較が全次数同型であれば、元の比較も全次数同型となる。
+ここでは底変換被覆そのものの降下は入力であり、実際の Tot の分裂降下は未接続である。
+通常の極限を Tot と呼ぶ置換も π_* と Tot の無証明の交換も行っていない。
+
+L9 の実際の Tot・π_*・hG、ホモトピー不変性、Fubini・分裂降下、
+有理線形値域での実際の transfer と局所 rank 公式の供給、
+実降下から自然な blowup 列と有限積保存を導出する部分、
+最小公理全体・(3.6)・K0・T2・E の接続は引き続き残る。
+
+§45 の保存検証：集約対象ビルド成功。公理監査は 115 モジュール・1420 宣言で標準三公理のみ。
+全体ビルドも 10024 ジョブで成功し、全て `set -eo pipefail` で終了コード 0 を確認した。

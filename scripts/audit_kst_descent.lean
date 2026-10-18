@@ -137,6 +137,7 @@ run_cmd do
       `SerrePositivity.KST.Descent.AffineCechDescent,
       `SerrePositivity.KST.Descent.CechPullback,
       `SerrePositivity.KST.Descent.CechBaseChange,
+      `SerrePositivity.KST.Descent.CechBaseChangeOver,
       `SerrePositivity.KST.Descent.DoubleCechGeometry,
       `SerrePositivity.KST.Descent.DoubleCechNaturality,
       `SerrePositivity.KST.Descent.CechHomotopyIndex,
