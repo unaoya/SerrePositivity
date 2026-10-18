@@ -1976,3 +1976,39 @@ moduleHeartHomEquiv_hZero {M N : ModuleCat.{u} S} (f : M ⟶ N) :
       (moduleHeartHZeroIso S N).hom = (moduleHeartHZeroIso S M).hom ≫ f
 end SerrePositivity.InfinityCategories
 ```
+
+
+### D6c：離散対象の特徴づけと可逆辺（2026-10-18）
+
+```lean
+namespace SerrePositivity.InfinityCategories
+universe u w
+open CategoryTheory Limits DifferentialGraded
+open scoped Simplicial
+variable {S : Type u} [CommRing S] [HasDerivedCategory.{w} (ModuleCat.{u} S)]
+derivedInfinityDisc (x : (derivedInfinityCategory S) _⦋0⦌) : Prop
+moduleHeartVertex_disc (M : ModuleCat.{u} S) :
+    derivedInfinityDisc (moduleHeartVertex S M)
+derivedInfinityDisc_single (x : (derivedInfinityCategory S) _⦋0⦌)
+    (hx : derivedInfinityDisc x) :
+    Nonempty ((derivedInfinityHomotopyEquivalence S).functor.obj ⟨x⟩ ≅
+      (DerivedCategory.singleFunctor (ModuleCat S) 0).obj (derivedInfinityHZero S x))
+derivedInfinityDiscIso (x : (derivedInfinityCategory S) _⦋0⦌)
+    (hx : derivedInfinityDisc x) :
+    (⟨x⟩ : derivedInfinityHomotopyCategory S) ≅
+      (moduleHeartFunctor S).obj (derivedInfinityHZero S x)
+derivedInfinityDiscEdge (x : (derivedInfinityCategory S) _⦋0⦌)
+    (hx : derivedInfinityDisc x) :
+    SSet.Truncated.Edge (X := (SSet.truncation 2).obj (derivedInfinityCategory S))
+      x (moduleHeartVertex S (derivedInfinityHZero S x))
+derivedInfinityDiscEdge_homMk (x : (derivedInfinityCategory S) _⦋0⦌)
+    (hx : derivedInfinityDisc x) :
+    SSet.Truncated.HomotopyCategory₂.homMk (derivedInfinityDiscEdge x hx) =
+      (derivedInfinityDiscIso x hx).hom
+derivedInfinityDiscEdge_invertible (x : (derivedInfinityCategory S) _⦋0⦌)
+    (hx : derivedInfinityDisc x) : IsInvertibleEdge (derivedInfinityDiscEdge x hx)
+derivedInfinityDisc_iff (x : (derivedInfinityCategory S) _⦋0⦌) :
+    derivedInfinityDisc x ↔ Nonempty ((⟨x⟩ : derivedInfinityHomotopyCategory S) ≅
+      (moduleHeartFunctor S).obj (derivedInfinityHZero S x))
+end SerrePositivity.InfinityCategories
+```

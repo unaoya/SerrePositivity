@@ -517,10 +517,20 @@ example : SSet.Quasicategory
 #print axioms SerrePositivity.InfinityCategories.moduleHeartHZeroNatIso
 #print axioms SerrePositivity.InfinityCategories.moduleHeartHomEquiv_hZero
 
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityDisc
+#print axioms SerrePositivity.InfinityCategories.moduleHeartVertex_disc
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityDisc_single
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityDiscIso
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityDiscEdge
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityDiscEdge_homMk
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityDiscEdge_invertible
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityDisc_iff
+
 open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DiscreteCharacterization,
     `SerrePositivity.InfinityCategories.Derived.HeartFullyFaithful,
     `SerrePositivity.InfinityCategories.Derived.ComplexEdgeCalculus,
     `SerrePositivity.InfinityCategories.Derived.ConeEdgeFunctoriality,

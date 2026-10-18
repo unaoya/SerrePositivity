@@ -1,6 +1,6 @@
 # D(S)：semifree 複体の dg nerve としての導来 ∞ 圏（レーン D）
 
-作成日：2026-10-17。更新：2026-10-18。状態：D1〜D5 完了、D6 に着手。
+作成日：2026-10-17。更新：2026-10-18。状態：D1〜D6 完了。D7 は別指示待ち。
 全体の目標と依存関係の正本は [infinity-categories.md](infinity-categories.md) §0・§3。
 dg nerve（レーン N）は [dg-nerve.md](dg-nerve.md)。
 
@@ -11,7 +11,8 @@ D4 は任意の四角形について標準 fiber への比較射の擬同型性�
 D6a は完了。指定四辺による distinguished triangle と全整数次数の Hⁱ の長完全列を持ち、
 零次の射は D5d の H⁰ に一致する。接続射は D3 のシフト比較を通じて持ち上がる。
 D6b は完了。加群の離散埋め込み J は充満忠実で、H⁰ の自然同型は D5b の増大射を使う。
-D6c は実装中。D7（D(S) の安定性）は α の A4 の後の別指示を待つ。
+D6c は完了。Hⁱ(x)=0（i≠0）と h D(S) での x≅J(H⁰x) の同値を持ち、
+比較同型を表す可逆な辺も公開する。D7（D(S) の安定性）は α の A4 の後の別指示を待つ。
 
 ## 主要宣言
 
@@ -31,6 +32,7 @@ namespace は `SerrePositivity.InfinityCategories`。正確な型・前提は Le
 | 指定四辺の長完全列 | `derivedSquareFiberTriangle_distinguished`、`derivedSquareInfinityHomologyLongExact`、`derivedSquareInfinityHomology₂_f_zero`、`derivedSquareInfinityHomology₂_g_zero` |
 | 接続射とシフト | `derivedSquareConnectingHomotopy_shift` |
 | heart の充満忠実性 | `moduleHeartFunctor`、`moduleHeartHomEquiv`、`moduleHeartHZeroNatIso`、`moduleHeartHomEquiv_hZero` |
+| 離散対象の特徴づけ | `derivedInfinityDisc`、`derivedInfinityDiscIso`、`derivedInfinityDisc_iff`、`derivedInfinityDiscEdge_invertible` |
 | H⁰ | `derivedInfinityHZeroFunctor`、`derivedInfinityHZeroIso`、`derivedInfinityHZeroMap` |
 | 引き戻しの判定 | `derivedSquareFiberComparison`、`derived_isPullbackSquare_iff_quasiIso` |
 
