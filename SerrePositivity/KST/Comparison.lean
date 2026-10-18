@@ -58,6 +58,7 @@ public import SerrePositivity.KST.Comparison.DoubleMappingCylinderEquivalence
 public import SerrePositivity.KST.Comparison.StrictPushoutCube
 public import SerrePositivity.KST.Comparison.StrictCylinderPullbacks
 public import SerrePositivity.KST.Comparison.HornFaceInclusionAnodyne
+public import SerrePositivity.KST.Comparison.HornSimplexFaceFactorization
 
 /-!
 # K-L2：比較定理の入口

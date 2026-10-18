@@ -529,7 +529,10 @@ Kan fibration に沿う horn の逆像と、任意の anodyne 射の引き戻し
 二段階の収縮を任意の端点の向きへ一般化し、順序集合の nerve の部分対象にも適用した。
 部分型の nerve と全頂点を指定した部分単体集合との同型を構成した。
 horn の安全な面へ頂点 k を加える収縮から、面の部分順序集合の nerve の包含の anodyne 性を証明した。
-実際の細分された horn との比較が同型であることは未証明であり、細分の anodyne 保存はまだ主張しない。
+余面の分裂による頂点集合の復元と、面の nerve の余面による被覆を証明した。
+実際の正次元 horn の細分比較の各次数の全射性と epi 性を証明した。
+細分の元の標準単体による表示を密度の余極限から証明し、horn の細分の元も余面で覆われることを証明した。
+実際の細分された horn との比較の単射性・同型性は未証明であり、細分の anodyne 保存はまだ主張しない。
 Segal Lemma 1.7 の homotopy-cartesian 性の貼り合わせの本体は未証明。
 Ex∞ の fibration 保存は未証明。
 非 Kan 基底への一般化、対角化後の bar 束の homotopy-cartesian 性、Segal 比較は未証明。
@@ -538,8 +541,8 @@ L2b、L2c、L2d、L2e は未完了である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 626 宣言の型と公理を確認した。
-さらに名前空間全体の 1220 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 639 宣言の型と公理を確認した。
+さらに名前空間全体の 1234 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -656,7 +659,10 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `subcomplex_pairContraction_anodyne`、`orderNerveSubcomplex_anodyne` | 実装済み | 任意の向きの収縮と順序集合の nerve への適用 |
 | `orderNerveSubcomplexIso`、`orderSubtypeNerve_anodyne` | 実装済み | 部分型の nerve と部分単体集合の比較 |
 | `hornFaceInclusion_anodyne` | 実装済み | horn の安全な面の nerve の包含の anodyne 性 |
-| `hornSubdivisionComparison` の同型性 | 未証明 | 細分の anodyne 保存への移送に必要 |
+| `simplexFaceRetraction_chain`、`hornFaceNerve_faceCover` | 実装済み | 余面の分裂と面の nerve の余面による被覆 |
+| `hornSubdivisionComparison_app_surjective`、`hornSubdivisionComparison_epi` | 実装済み | 実際の細分比較の全射性 |
+| `subdivisionSimplexCover`、`hornSimplexFaceFactorization`、`hornSubdivisionFaceCover` | 実装済み | 密度による細分の表示と horn の余面表示 |
+| `hornSubdivisionComparison` の単射性・同型性 | 未証明 | 細分の anodyne 保存への移送に必要 |
 | Segal Lemma 1.7 の homotopy-cartesian 性の貼り合わせ | 未証明 | 実際の二重写像円筒の比較について証明する |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
