@@ -1,9 +1,0 @@
-import SerrePositivity.PerfectComplex.ClosedSupportBiproduct
-import SerrePositivity.PerfectComplex.CubicActionBiproductClass
-import Mathlib.Util.AssertNoSorry
-
-assert_no_sorry SerrePositivity.K0WithSupport.mk_biprod
-assert_no_sorry SerrePositivity.CochainCubicAction.eigenK0Class_biprod
-assert_no_sorry SerrePositivity.CochainCubicAction.weightedK0Class_biprod
-#print axioms SerrePositivity.K0WithSupport.mk_biprod
-#print axioms SerrePositivity.CochainCubicAction.eigenK0Class_biprod

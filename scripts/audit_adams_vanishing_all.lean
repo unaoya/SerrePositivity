@@ -1,5 +1,0 @@
-import SerrePositivity.IntersectionMultiplicity.AdamsVanishingAll
-import Mathlib.Util.AssertNoSorry
-
-assert_no_sorry SerrePositivity.intersectionVanishing_of_adams
-#print axioms SerrePositivity.intersectionVanishing_of_adams

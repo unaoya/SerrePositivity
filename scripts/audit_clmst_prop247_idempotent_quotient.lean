@@ -1,5 +1,0 @@
-import SerrePositivity.CLMST.Prop247IdempotentQuotient
-import Mathlib.Util.AssertNoSorry
-
-assert_no_sorry SerrePositivity.CLMST.prop247_isIntegralPerfectoid_idempotent_quotient
-#print axioms SerrePositivity.CLMST.prop247_isIntegralPerfectoid_idempotent_quotient

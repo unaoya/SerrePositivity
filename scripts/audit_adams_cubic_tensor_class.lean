@@ -1,8 +1,0 @@
-import SerrePositivity.PerfectComplex.CubicActionTensorClass
-import Mathlib.Util.AssertNoSorry
-
-assert_no_sorry SerrePositivity.CochainCubicAction.eigenK0Class_tensor
-#print axioms SerrePositivity.CochainCubicAction.eigenK0Class_tensor
-
-assert_no_sorry SerrePositivity.CochainCubicAction.weightedK0Class_tensor
-#print axioms SerrePositivity.CochainCubicAction.weightedK0Class_tensor

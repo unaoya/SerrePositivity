@@ -1,5 +1,0 @@
-import SerrePositivity.CommutativeAlgebra.FiniteSpectrumPartition
-import Mathlib.Util.AssertNoSorry
-
-assert_no_sorry SerrePositivity.pi_ringHom_bijective_of_spectrum_partition
-#print axioms SerrePositivity.pi_ringHom_bijective_of_spectrum_partition

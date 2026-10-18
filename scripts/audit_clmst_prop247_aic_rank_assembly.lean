@@ -1,5 +1,0 @@
-import SerrePositivity.CLMST.Prop247AicRankAssembly
-import Mathlib.Util.AssertNoSorry
-
-assert_no_sorry SerrePositivity.CLMST.prop247_aic_isogeny_of_rank_comparisons
-#print axioms SerrePositivity.CLMST.prop247_aic_isogeny_of_rank_comparisons

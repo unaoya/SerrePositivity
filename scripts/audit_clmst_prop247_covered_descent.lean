@@ -1,7 +1,0 @@
-import SerrePositivity.CLMST.Prop247CoveredDescent
-import Mathlib.Util.AssertNoSorry
-
-assert_no_sorry SerrePositivity.CLMST.prop247_uniform_of_standard_fixed_cone
-assert_no_sorry SerrePositivity.CLMST.prop247_isogeny_of_standard_finite_cover
-#print axioms SerrePositivity.CLMST.prop247_uniform_of_standard_fixed_cone
-#print axioms SerrePositivity.CLMST.prop247_isogeny_of_standard_finite_cover

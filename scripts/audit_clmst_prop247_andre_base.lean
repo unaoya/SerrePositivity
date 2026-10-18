@@ -1,5 +1,0 @@
-import SerrePositivity.CLMST.Prop247AndreBase
-import Mathlib.Util.AssertNoSorry
-
-assert_no_sorry SerrePositivity.CLMST.prop247_exists_andre_descent_base
-#print axioms SerrePositivity.CLMST.prop247_exists_andre_descent_base

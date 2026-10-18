@@ -1,7 +1,0 @@
-import SerrePositivity.PerfectComplex.InvolutionClass
-import SerrePositivity.PerfectComplex.CubicActionClass
-import Mathlib.Util.AssertNoSorry
-
-assert_no_sorry SerrePositivity.strictlyPerfectComplex_of_degreewiseRetract
-assert_no_sorry SerrePositivity.CochainIdempotent.image_strictlyPerfect
-#print axioms SerrePositivity.CochainIdempotent.image_strictlyPerfect

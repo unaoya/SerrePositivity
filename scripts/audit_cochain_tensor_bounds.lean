@@ -1,8 +1,0 @@
-import SerrePositivity.HomologicalAlgebra.CochainTensorBounds
-import Mathlib.Util.AssertNoSorry
-
-assert_no_sorry SerrePositivity.cochainTensor_isZero_X_of_summands
-assert_no_sorry SerrePositivity.cochainTensor_isStrictlyLE
-assert_no_sorry SerrePositivity.cochainTensor_isStrictlyGE
-#print axioms SerrePositivity.cochainTensor_isStrictlyLE
-#print axioms SerrePositivity.cochainTensor_isStrictlyGE

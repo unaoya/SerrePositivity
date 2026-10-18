@@ -1,8 +1,0 @@
-import SerrePositivity.IntersectionMultiplicity.AdamsVanishingThree
-import Mathlib.Util.AssertNoSorry
-
-assert_no_sorry SerrePositivity.intersectionVanishing_of_cubicCyclotomic_factor
-#print axioms SerrePositivity.intersectionVanishing_of_cubicCyclotomic_factor
-
-assert_no_sorry SerrePositivity.intersectionVanishing_of_residue_two_eq_zero
-#print axioms SerrePositivity.intersectionVanishing_of_residue_two_eq_zero

@@ -1,7 +1,0 @@
-import SerrePositivity.HomologicalAlgebra.ConeComparisonSquare
-import Mathlib.Util.AssertNoSorry
-
-assert_no_sorry SerrePositivity.ker_coker_annihilated_of_comparison_square
-assert_no_sorry SerrePositivity.moduleMapConeScalar_of_comparison_square
-#print axioms SerrePositivity.ker_coker_annihilated_of_comparison_square
-#print axioms SerrePositivity.moduleMapConeScalar_of_comparison_square

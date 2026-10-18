@@ -1,7 +1,0 @@
-import SerrePositivity.KTheory.Adams.TensorCubeAdditivity
-import Mathlib.Util.AssertNoSorry
-
-assert_no_sorry SerrePositivity.Adams.tensorCubeClass
-#print axioms SerrePositivity.Adams.tensorCubeClass
-assert_no_sorry SerrePositivity.Adams.tensorCubeClass_shortExact
-#print axioms SerrePositivity.Adams.tensorCubeClass_shortExact

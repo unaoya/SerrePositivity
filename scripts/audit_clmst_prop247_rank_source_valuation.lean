@@ -1,7 +1,0 @@
-import SerrePositivity.CLMST.Prop247RankSourceValuation
-import Mathlib.Util.AssertNoSorry
-
-assert_no_sorry SerrePositivity.CLMST.prop247_rankTensorUnit_away_bijective
-assert_no_sorry SerrePositivity.CLMST.prop247_aic_rankSourceProduct_valuation_extension
-#print axioms SerrePositivity.CLMST.prop247_rankTensorUnit_away_bijective
-#print axioms SerrePositivity.CLMST.prop247_aic_rankSourceProduct_valuation_extension

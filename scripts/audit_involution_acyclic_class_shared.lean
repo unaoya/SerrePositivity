@@ -1,7 +1,0 @@
-import SerrePositivity.KTheory.Adams.TensorSquareAcyclicClass
-import Mathlib.Util.AssertNoSorry
-
-assert_no_sorry SerrePositivity.CochainInvolution.k0Class_eq_zero_of_acyclic
-assert_no_sorry SerrePositivity.Adams.tensorSquareClass_eq_zero_of_acyclic
-#print axioms SerrePositivity.CochainInvolution.k0Class_eq_zero_of_acyclic
-#print axioms SerrePositivity.Adams.tensorSquareClass_eq_zero_of_acyclic

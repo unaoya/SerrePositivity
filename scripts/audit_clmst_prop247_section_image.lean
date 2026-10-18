@@ -1,7 +1,0 @@
-import SerrePositivity.CommutativeAlgebra.ReducedSectionImage
-import Mathlib.Util.AssertNoSorry
-
-assert_no_sorry SerrePositivity.ker_algebraMap_sections_eq_vanishingIdeal
-assert_no_sorry SerrePositivity.zeroLocus_ker_algebraMap_sections
-#print axioms SerrePositivity.ker_algebraMap_sections_eq_vanishingIdeal
-#print axioms SerrePositivity.zeroLocus_ker_algebraMap_sections

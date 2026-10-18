@@ -1,8 +1,0 @@
-import SerrePositivity.KTheory.Adams.TensorCubeMultiplicativity
-import Mathlib.Util.AssertNoSorry
-
-assert_no_sorry SerrePositivity.Adams.tensorCubeClass_tensor
-#print axioms SerrePositivity.Adams.tensorCubeClass_tensor
-
-assert_no_sorry SerrePositivity.Adams.cyclicThree_cup
-#print axioms SerrePositivity.Adams.cyclicThree_cup

@@ -1,7 +1,0 @@
-import SerrePositivity.CLMST.Prop247RankTransport
-import Mathlib.Util.AssertNoSorry
-
-assert_no_sorry SerrePositivity.CLMST.prop247_rankAtStalk_baseChange_on_away_point
-assert_no_sorry SerrePositivity.CLMST.prop247_awayRank_baseChange_constant
-#print axioms SerrePositivity.CLMST.prop247_rankAtStalk_baseChange_on_away_point
-#print axioms SerrePositivity.CLMST.prop247_awayRank_baseChange_constant

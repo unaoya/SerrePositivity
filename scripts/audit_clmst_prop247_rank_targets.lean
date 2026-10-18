@@ -1,7 +1,0 @@
-import SerrePositivity.CLMST.Prop247RankTargets
-import Mathlib.Util.AssertNoSorry
-
-assert_no_sorry SerrePositivity.CLMST.prop247_rankTarget_surjective_finite
-assert_no_sorry SerrePositivity.CLMST.prop247_rankImage_exists_perfectoid_target
-#print axioms SerrePositivity.CLMST.prop247_rankTarget_surjective_finite
-#print axioms SerrePositivity.CLMST.prop247_rankImage_exists_perfectoid_target

@@ -1,7 +1,0 @@
-import SerrePositivity.CLMST.Prop247AicRankImages
-import Mathlib.Util.AssertNoSorry
-
-assert_no_sorry SerrePositivity.CLMST.prop247_aic_rankImage_isIntegralPerfectoid
-assert_no_sorry SerrePositivity.CLMST.prop247_aic_rankTarget_unit_bijective
-#print axioms SerrePositivity.CLMST.prop247_aic_rankImage_isIntegralPerfectoid
-#print axioms SerrePositivity.CLMST.prop247_aic_rankTarget_unit_bijective

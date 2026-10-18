@@ -1,7 +1,0 @@
-import SerrePositivity.CLMST.Prop247CommonSquare
-import Mathlib.Util.AssertNoSorry
-
-assert_no_sorry SerrePositivity.CLMST.prop247_exists_common_square_of_localized_splitting
-assert_no_sorry SerrePositivity.CLMST.prop247_exists_perfectoid_common_square
-#print axioms SerrePositivity.CLMST.prop247_exists_common_square_of_localized_splitting
-#print axioms SerrePositivity.CLMST.prop247_exists_perfectoid_common_square

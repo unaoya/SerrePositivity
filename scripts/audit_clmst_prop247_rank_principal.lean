@@ -1,5 +1,0 @@
-import SerrePositivity.CLMST.Prop247RankPrincipal
-import Mathlib.Util.AssertNoSorry
-
-assert_no_sorry SerrePositivity.CLMST.prop247_rankOpen_exists_basicOpen
-#print axioms SerrePositivity.CLMST.prop247_rankOpen_exists_basicOpen

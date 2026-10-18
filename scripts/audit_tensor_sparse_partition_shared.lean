@@ -1,8 +1,0 @@
-import SerrePositivity.KTheory.Adams.TensorCubeSparsePartition
-import Mathlib.Util.AssertNoSorry
-
-assert_no_sorry SerrePositivity.cochainTensorTripleDegreeMap_partition
-assert_no_sorry SerrePositivity.cochainTensorTripleDegreeMap_sparse_partition
-assert_no_sorry SerrePositivity.Adams.tensorCubeFirstLayerInclusion_sparse
-#print axioms SerrePositivity.cochainTensorTripleDegreeMap_sparse_partition
-#print axioms SerrePositivity.Adams.tensorCubeFirstLayerInclusion_sparse

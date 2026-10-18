@@ -1,7 +1,0 @@
-import SerrePositivity.CLMST.Prop247ProductPerfectoid
-import Mathlib.Util.AssertNoSorry
-
-assert_no_sorry SerrePositivity.CLMST.prop247_product_unit_exists_algEquiv
-assert_no_sorry SerrePositivity.CLMST.prop247_product_perfectoid_of_specified_unit
-#print axioms SerrePositivity.CLMST.prop247_product_unit_exists_algEquiv
-#print axioms SerrePositivity.CLMST.prop247_product_perfectoid_of_specified_unit

@@ -1,9 +1,0 @@
-import SerrePositivity.HomologicalAlgebra.AlgebraBaseChangeTensorH0
-import Mathlib.Util.AssertNoSorry
-
-assert_no_sorry SerrePositivity.algebraBaseChangeTensorH0Iso
-assert_no_sorry SerrePositivity.algebraBaseChangeTensorH0Iso_augmentation
-assert_no_sorry SerrePositivity.algebraBaseChangeTensorH0Iso_apply
-#print axioms SerrePositivity.algebraBaseChangeTensorH0Iso
-#print axioms SerrePositivity.algebraBaseChangeTensorH0Iso_augmentation
-#print axioms SerrePositivity.algebraBaseChangeTensorH0Iso_apply

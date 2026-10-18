@@ -1,5 +1,0 @@
-import SerrePositivity.KTheory.Adams.KoszulShiftTwoClass
-import Mathlib.Util.AssertNoSorry
-
-assert_no_sorry SerrePositivity.Adams.oneKoszulShiftTwo_class
-#print axioms SerrePositivity.Adams.oneKoszulShiftTwo_class

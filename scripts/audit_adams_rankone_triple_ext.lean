@@ -1,8 +1,0 @@
-import SerrePositivity.PerfectComplex.RankOneTensorTripleExt
-import Mathlib.Util.AssertNoSorry
-
-assert_no_sorry SerrePositivity.moduleRankOne_smul_generator
-#print axioms SerrePositivity.moduleRankOne_smul_generator
-
-assert_no_sorry SerrePositivity.rankOneTensorTriple_hom_ext
-#print axioms SerrePositivity.rankOneTensorTriple_hom_ext

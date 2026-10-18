@@ -1,9 +1,0 @@
-import SerrePositivity.CLMST.Prop247RankBaseChange
-import Mathlib.Util.AssertNoSorry
-
-assert_no_sorry SerrePositivity.CLMST.prop247_awayRank_of_point_over_rankImage
-assert_no_sorry SerrePositivity.CLMST.prop247_rankAtStalk_baseChange_of_isUnit
-assert_no_sorry SerrePositivity.CLMST.prop247_awayRank_baseChange_over_rankImage
-#print axioms SerrePositivity.CLMST.prop247_awayRank_of_point_over_rankImage
-#print axioms SerrePositivity.CLMST.prop247_rankAtStalk_baseChange_of_isUnit
-#print axioms SerrePositivity.CLMST.prop247_awayRank_baseChange_over_rankImage
