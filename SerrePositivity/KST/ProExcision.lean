@@ -20,3 +20,4 @@ public import SerrePositivity.KST.ProExcision.FiltrationConnecting
 public import SerrePositivity.KST.ProExcision.AdjacentCut
 public import SerrePositivity.KST.ProExcision.IntervalCut
 public import SerrePositivity.KST.ProExcision.KoszulDifferential
+public import SerrePositivity.KST.ProExcision.AdjacentGradeBoundary

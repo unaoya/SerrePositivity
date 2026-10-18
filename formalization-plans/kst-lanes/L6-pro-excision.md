@@ -70,7 +70,9 @@
 - 有限 Koszul 濾過を含む区間ホモロジーから商ホモロジーへの同型を構成済み。
 - この同型で δ を移すと分裂境界と左の商射になることを証明済み。
 - 実際の有限 Koszul 濾過の補助初頁微分を、商ホモロジー上の分裂境界と左の商射の合成として計算済み。
-- 次は一項複体の標準同型へ移し、係数微分全体との一致を示す。
+- テンソル前の隣接次数別商の境界は、標準項同型で移すと元の複体の微分になることを証明済み。
+- その比較を複体射の等式へ引き上げ、一項複体のシフト同型を含めた微分との一致を証明済み。
+- 次はテンソル後の商境界をこの複体射の等式へ移す。
 - 初頁の二つのモデルの完全な自然性・Koszul 冪遷移との整合は残件。
 - スペクトル対象から頁への関手性を既存 API で確認中。未供給の自然性を仮定に置かない。
 - π_n の具体的な複体ホモロジーとの同定は K-L9 の界面から受け取る。
@@ -145,6 +147,10 @@
 | tensorFiltrationBoundary | IntervalCut.lean | 検証済み | 実際の区間のシフトつき境界 |
 | koszulFirstPageQuotientIso | KoszulDifferential.lean | 検証済み | 補助初頁の商ホモロジーモデル |
 | koszulFirstPage_d_quotient | KoszulDifferential.lean | 検証済み | 初頁微分の商モデルでの計算 |
+| adjacentGradeBoundary_differential | AdjacentGradeBoundary.lean | 検証済み | 商境界の下端成分は元の微分 |
+| adjacentGradeIso | AdjacentGradeBoundary.lean | 検証済み | 標準項同型に合う一項複体模型 |
+| singleDegreeBoundary | AdjacentGradeBoundary.lean | 検証済み | 係数射から作るシフトつき一項境界 |
+| adjacentGradeBoundary_single | AdjacentGradeBoundary.lean | 検証済み | 商境界と元の微分の複体射としての一致 |
 | koszul_comparison | KoszulPro.lean | 予定 | KST Lemma 4.10 |
 | prop414 | Prop414.lean | 予定 | 中心的係数による非可換版 |
 | pro_whitehead | Whitehead.lean | 予定 | simple 空間版 |

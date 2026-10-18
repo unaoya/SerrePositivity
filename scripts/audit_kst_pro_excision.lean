@@ -452,3 +452,30 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.koszulFirstPage_d_quotient
 #print axioms SerrePositivity.KST.ProExcision.koszulFirstPage_d_quotient
+
+#check @SerrePositivity.KST.ProExcision.adjacentGradeBoundary
+#print axioms SerrePositivity.KST.ProExcision.adjacentGradeBoundary
+
+#check @SerrePositivity.KST.ProExcision.adjacentGradeTermIso
+#print axioms SerrePositivity.KST.ProExcision.adjacentGradeTermIso
+
+#check @SerrePositivity.KST.ProExcision.adjacentGradeBoundary_differential
+#print axioms SerrePositivity.KST.ProExcision.adjacentGradeBoundary_differential
+
+#check @SerrePositivity.KST.ProExcision.adjacentGrade_isZero_X
+#print axioms SerrePositivity.KST.ProExcision.adjacentGrade_isZero_X
+
+#check @SerrePositivity.KST.ProExcision.adjacentGradeIso
+#print axioms SerrePositivity.KST.ProExcision.adjacentGradeIso
+
+#check @SerrePositivity.KST.ProExcision.adjacentGradeIso_hom_f
+#print axioms SerrePositivity.KST.ProExcision.adjacentGradeIso_hom_f
+
+#check @SerrePositivity.KST.ProExcision.singleDegreeBoundary
+#print axioms SerrePositivity.KST.ProExcision.singleDegreeBoundary
+
+#check @SerrePositivity.KST.ProExcision.singleDegreeBoundary_f
+#print axioms SerrePositivity.KST.ProExcision.singleDegreeBoundary_f
+
+#check @SerrePositivity.KST.ProExcision.adjacentGradeBoundary_single
+#print axioms SerrePositivity.KST.ProExcision.adjacentGradeBoundary_single
