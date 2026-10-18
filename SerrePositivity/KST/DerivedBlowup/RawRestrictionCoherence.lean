@@ -44,6 +44,14 @@ def rawModuleRestrictionCompIso (F : DGFunctor R Cᵒᵖ Dᵒᵖ) (G : DGFunctor
         M.map (G.obj (F.obj x)) (G.obj (F.obj y))).f p f
     rw [Category.assoc])
 
+/-- 概要：raw 反復制限同型の順成分は各局所対象で恒等。
+方針：全次数同型族からの構成を評価する。
+規約：KST §3.1。使われ方：構造加群の指定局所比較の成分計算。 -/
+theorem rawModuleRestrictionCompIso_hom_eval
+    (F : DGFunctor R Cᵒᵖ Dᵒᵖ) (G : DGFunctor R Dᵒᵖ Eᵒᵖ) (M : RightModule R E) (x : C) :
+    (moduleEvaluation R C x).map (rawModuleRestrictionCompIso R F G M).hom = 𝟙 _ :=
+  moduleIsoMk_hom_eval R C _ _ x
+
 /-- 概要：指定の合成 dg 遷移に沿う raw 右加群の局所制限合成同型。
 方針：指定合成等式に沿って移し、二重 opposite と raw 制限合成同型を使う。
 規約：KST §3.1。使われ方：元の係数圏を保持した構造加群の局所比較。 -/
@@ -54,5 +62,15 @@ def rawTransitionRestrictionCompIso (F : DGFunctor R C D) (G : DGFunctor R D E)
       ForgetEnrichment.of (Complex R) (restrictModule R Cᵒᵖ Eᵒᵖ H.op.op M) := by
   subst H
   simpa only [DGFunctor.op_comp] using rawModuleRestrictionCompIso R F.op.op G.op.op M
+
+/-- 概要：指定 raw 制限合成同型の順成分は対象等式に沿う複体の移送。
+方針：指定合成等式を消去して恒等成分の公式を使う。
+規約：KST §3.1。使われ方：補助係数圏からの局所評価比較の計算。 -/
+theorem rawTransitionRestrictionCompIso_hom_eval (F : DGFunctor R C D) (G : DGFunctor R D E)
+    (H : DGFunctor R C E) (h : F.comp G = H) (M : RightModule R Eᵒᵖ) (x : C) :
+    (moduleEvaluation R Cᵒᵖ (op x)).map (rawTransitionRestrictionCompIso R F G H h M).hom =
+      eqToHom (congrArg (fun K : DGFunctor R C E => M.obj (op (op (K.obj x)))) h) := by
+  subst H
+  exact rawModuleRestrictionCompIso_hom_eval R F.op.op G.op.op M (op x)
 
 end SerrePositivity.KST.DerivedBlowup

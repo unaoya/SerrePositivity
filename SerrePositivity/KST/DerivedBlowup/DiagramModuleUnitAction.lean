@@ -56,4 +56,21 @@ theorem diagramModuleTransitionUnit_forward {i j : J} (h : i ≤ j) (q : ℤ)
   rw [complexLeftUnitor_inv_apply, tensorMap_apply] at he
   exact he
 
+/-- 概要：二つの指定包含単位の cycle の合成は直接包含の単位の cycle。
+方針：閉零単位矢の三重整合性を単位複体の標準生成元で評価する。
+規約：KST §3.1。使われ方：構造加群の単位生成元と指定遷移の整合性。 -/
+theorem diagramModuleTransitionUnit_forward_comp {i j k : J} (h : i ≤ j) (g : j ≤ k) :
+    forward R (D := DiagramModuleCoefficientObject F) (x := ⟨i⟩) (y := ⟨j⟩) (z := ⟨k⟩)
+      (cycleFromUnit (diagramModuleHom F i j) (diagramModuleTransitionUnit F h)).val
+      (cycleFromUnit (diagramModuleHom F j k) (diagramModuleTransitionUnit F g)).val rfl =
+      (cycleFromUnit (diagramModuleHom F i k) (diagramModuleTransitionUnit F (h.trans g))).val := by
+  have he := congrArg (fun f : 𝟙_ (Complex R) ⟶ diagramModuleHom F i k => (cycleFromUnit _ f).val)
+    (diagramModuleTransitionUnit_comp F h g)
+  rw [cycleFromUnit_postcomp] at he
+  change (diagramModuleComp F i j k).f 0
+    ((((λ_ (𝟙_ (Complex R))).inv ≫
+      (diagramModuleTransitionUnit F h ⊗ₘ diagramModuleTransitionUnit F g)).f 0) (1 : R)) = _ at he
+  rw [unit_tensor_apply] at he
+  exact he
+
 end SerrePositivity.KST.DerivedBlowup
