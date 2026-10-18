@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b 完了。L9c 進行中。
 Sp、整数次数群と自然な任意段表示、Kan Ω 列の単射置換まで検証済み。
-対象ビルド・94 モジュール 1597 宣言の公理監査成功。
+対象ビルド・97 モジュール 1652 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9b、8370 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -1120,3 +1120,33 @@ k+r=l を使って前進比較を指定した反復回数で表示した。
 私有宣言を含む 94 モジュール 1597 宣言で標準三公理のみ。
 L9c の残りとして、任意の射を段ごとの Kan fibration へ置換する。
 自由な区間の mapping path と、単射置換の比較射に対する cofibrant な源からの持ち上げを使う方針。
+
+
+## 41. L9c の自由な path と cofibrant な源からの持ち上げ
+
+自由な基点を加えた区間と二つの端点包含を構成した。
+両端点の基礎射は anodyne であり、基点追加と余積の持ち上げで証明した。
+単射と恒等射との余積の単射性も、境界生成の左クラスの押し出し閉性から証明した。
+自由区間からの点つき内部 Hom を自由な path space とした。
+端点評価は全ての単射に対する RLP を持ち、特に Kan fibration である。
+定数 path の両端点の評価は厳密に恒等射である。
+別に、構造射が単射な Kan 列から、各段で全単射への RLP を持つ射へ厳密に持ち上げる構成を証明した。
+零段は基点包含、後続段は構造射を左辺として充填する。
+これに Ω 条件は必要ない。
+任意の射の mapping path を単射置換した後にも、元の射の厳密な因子分解を得るために使う。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `freeIntervalEndpoint_anodyne` | 自由な区間の両端点の anodyne 性 |
+| `mono_coprod_map_id` | 基点追加による単射の保存 |
+| `PointedMapping.anodyne_prePointed_rlp` | anodyne 制限の全単射への RLP |
+| `freePathSpace` / `freePathEndpoint` | 自由な path と端点評価 |
+| `freePathEndpoint_rlp` | 端点評価の全単射への RLP |
+| `freeConstantPath_endpoint` | 定数 path の両端点の計算 |
+| `pointedSquareLift` / `pointedMapLift` | 点つきの相対持ち上げ |
+| `KanSequence.liftHom` / `.liftHom_fac` | 単射な構造射を持つ列からの厳密な持ち上げ |
+
+参照：Goerss–Jardine I §7、BF 1978 §2、HTT A.3.3。
+保存単位の対象ビルド 1873 jobs 成功。
+私有宣言を含む 97 モジュール 1652 宣言で標準三公理のみ。
+L9c は未完了。両端点同時評価の fibration 性と、path 列の構造射を続けて構成する。

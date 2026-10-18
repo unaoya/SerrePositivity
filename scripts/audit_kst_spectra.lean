@@ -106,6 +106,9 @@ run_cmd do
     `SerrePositivity.KST.Spectra.SpectrumBoundary,
     `SerrePositivity.KST.Spectra.GroupExactTransfer,
     `SerrePositivity.KST.Spectra.SpectrumFibrationSequence,
+    `SerrePositivity.KST.Spectra.FreeInterval,
+    `SerrePositivity.KST.Spectra.FreePathSpace,
+    `SerrePositivity.KST.Spectra.CofibrantSequenceLifting,
     `SerrePositivity.KST.Spectra.StageTransitionCoherence]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]

@@ -40,3 +40,5 @@ public import SerrePositivity.KST.Spectra.FibrationComparison
 public import SerrePositivity.KST.Spectra.FiberOmegaSpectrum
 public import SerrePositivity.KST.Spectra.SpectrumFibrationSequence
 public import SerrePositivity.KST.Spectra.StageTransitionCoherence
+public import SerrePositivity.KST.Spectra.FreePathSpace
+public import SerrePositivity.KST.Spectra.CofibrantSequenceLifting
