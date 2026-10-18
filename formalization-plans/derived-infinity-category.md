@@ -8,8 +8,8 @@ dg nerve（レーン N）は [dg-nerve.md](dg-nerve.md)。
 
 D1・D2（シフト、cone・fiber・余積・テンソル積・底変更の閉性を含む）・D3・D4・D5 は完了。
 D4 は任意の四角形について標準 fiber への比較射の擬同型性との双方向の判定を持つ。
-D6a は実装中。全整数次数の Hⁱ 比較、標準 fiber の distinguished triangle、
-錐の比較と指定脚の整合は実装済み。指定四辺による長完全列の公開は未完了。
+D6a は完了。指定四辺による distinguished triangle と全整数次数の Hⁱ の長完全列を持ち、
+零次の射は D5d の H⁰ に一致する。接続射は D3 のシフト比較を通じて持ち上がる。
 D6b・D6c は未着手。D7（D(S) の安定性）は α の A4 の後の別指示を待つ。
 
 ## 主要宣言
@@ -27,6 +27,8 @@ namespace は `SerrePositivity.InfinityCategories`。正確な型・前提は Le
 | Hⁱ の基礎比較 | `derivedInfinityHomologyFunctor`、`derivedInfinityHomologyIso_naturality` |
 | fiber の三角形 | `fiberProjection_eq_mappingCocone_fst`、`fiberComparisonDerivedTriangle_distinguished` |
 | 指定脚の比較 | `derivedConeLegCompStruct`、`derivedConeLeg_pullback_bottom`、`derivedConeLeg_pullback_left` |
+| 指定四辺の長完全列 | `derivedSquareFiberTriangle_distinguished`、`derivedSquareInfinityHomologyLongExact`、`derivedSquareInfinityHomology₂_f_zero`、`derivedSquareInfinityHomology₂_g_zero` |
+| 接続射とシフト | `derivedSquareConnectingHomotopy_shift` |
 | H⁰ | `derivedInfinityHZeroFunctor`、`derivedInfinityHZeroIso`、`derivedInfinityHZeroMap` |
 | 引き戻しの判定 | `derivedSquareFiberComparison`、`derived_isPullbackSquare_iff_quasiIso` |
 
