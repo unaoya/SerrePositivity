@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1B.InitialQuillenRecovery
+
 public import SerrePositivity.InfinityCategories.F1B.QuillenA
 
 public import SerrePositivity.InfinityCategories.F1B.QuillenANecessary

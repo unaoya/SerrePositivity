@@ -19,7 +19,7 @@ sorry・追加公理・文献入力を使わず、監査で許す公理は
 | --- | --- | --- | --- |
 | B1 / F1e | 単位・余単位と h Fun の三角恒等式、自然な写像空間対応との特徴づけ、合成、随伴関手の一意性 | Kerodon [Def 6.1.1.1](https://kerodon.net/tag/02CG)、[§6.1.3](https://kerodon.net/tag/02D5)、[§6.1.5](https://kerodon.net/tag/02DM)、[Def 6.2.1.1・Prop 6.2.1.17](https://kerodon.net/tag/02EJ)、[Prop 6.2.6.1](https://kerodon.net/tag/02FV)・[Cor 6.2.6.5](https://kerodon.net/tag/02FX) / HTT §5.2 | 完了（全パラメータの族の前層による自然性の模型） |
 | B2 / F1f | 充満部分 ∞ 圏への反射、局所対象、冪等性、局所化の普遍性の型と反射的な場合の構成 | Kerodon [§6.2.2](https://kerodon.net/tag/02F5)、[Cor 6.2.2.26](https://kerodon.net/tag/02FF)、[Def 6.3.1.9・Prop 6.3.1.13](https://kerodon.net/tag/01ME)、[Prop 6.3.3.7](https://kerodon.net/tag/02FY) / HTT §5.2.7 | 完了（同じ宇宙の標的に対する普遍性） |
-| B3 / F1g 前半 | right cofinal、Quillen A、A2h の始対象による limit 計算の双対的回収 | Kerodon [Def 7.2.1.1](https://kerodon.net/tag/02N1)、[Thm 7.2.3.1](https://kerodon.net/tag/02NX) / HTT Thm 4.1.3.1 | 進行中（Quillen A の right 側は両方向とも済、left 側と A2h の統一的な回収は未完） |
+| B3 / F1g 前半 | right cofinal、Quillen A、A2h の始対象による limit 計算の双対的回収 | Kerodon [Def 7.2.1.1](https://kerodon.net/tag/02N1)、[Thm 7.2.3.1](https://kerodon.net/tag/02NX) / HTT Thm 4.1.3.1 | 完了（左右の Quillen A と二宇宙版 A2h の同じ制限写像の回収） |
 | B4 / F1g 後半 | slice の極限による左右 Kan 拡張、h での一意性、各点の存在、関手全体への組み立て | Kerodon [Notation 7.3.1.1・Def 7.3.1.2](https://kerodon.net/tag/02Y7)、§7.3.5 / HTT §4.3 | 未着手 |
 | B5 | nerve による古典随伴・Kan 拡張の回収と監査 | 上記と通常の圏の随伴・Kan 拡張 | 未着手（監査スクリプトは稼働中） |
 
@@ -121,7 +121,7 @@ min(t,s) による始域固定の伸長の像の正方形により、任意の�
 その選んだ順射を X 内での単位による前合成の具体的な射と照合する補助 API は未追加。
 B2 の局所対象・冪等性・局所化の普遍性の定理はこの補助 API を仮定せず成立する。
 
-### B3：進行中
+### B3：完了
 
 `cofinalFunctorSpace/pre` は内部 Hom の頂点 fiber と前合成による相対関手空間。
 F1 の同じ構成は `LeftFiberKan` 経由で `LeftUnstraightening` を import するため、
@@ -301,18 +301,44 @@ Kerodon Thm 7.2.3.1 の原文の証明は inner fibration と cartesian fibratio
 ここでは既に証明した left fibration に沿う right anodyne 性の保存を使って
 right fibration への因子分解で閉じた。追加の存在仮定や straightening 依存はない。
 
-Quillen A の left 側と A2h の統一的な回収、一般の cocartesian fibration に沿う cofinality の pullback 安定性、
-Kan な底への弱同値 ⇒ cofinal の逆方向（Prop 7.2.1.5(2)）、
-left/right cofinality の opposite による比較は未完了。
+`cofinalLeftFibration_op_rightFibration` と既存の逆側の反転により、左右の fibration を交換する。
+反転関手の自己随伴の持ち上げ対応で anodyne 性を交換し、trivial Kan 性も保つことを示した。
+anodyne・trivial Kan 因子分解を反転して cofinality を交換し、二重反転の矢の同型で
+`isLeftCofinal_iff_isRightCofinal_op`・`isRightCofinal_iff_isLeftCofinal_op` を得た。
+
+`IsWeaklyContractible.op` は、点への right anodyne・right fibration 因子分解で Kan 置換し、
+Kan 複体内の全境界充填を反転して弱可縮性を移す。元の対象の Kan 性は不要。
+`cofinalPointSliceOverOpIso` は Stable の slice 反転同型を固定図式の同型制限で正規化し、
+射影との可換性を通常の Over 圏の同型として保持する。
+`Δ[0].op` を `Δ[0]` と定義的に同一視せず、標準反転同型を明示する。
+反転の pullback 保存で `cofinalSlicePullbackOpIso` を作り、一般の弱可縮性の反転判定と組み合わせた。
+これにより `isLeftCofinal_iff_weaklyContractible_slices` が **Quillen A の left 側の両方向**を与える。
+両側とも標的だけを quasicategory とし、元の始域や引き戻しの Kan 性を仮定しない。
+
+`sliceOverRestrict_trivialKanFibration_of_isLeftCofinal` は任意の left cofinal な単射を
+left anodyne と認識し、実際の slice 制限を trivial Kan fibration とする。
+`sliceOverRestrict_trivialKanFibration_of_weaklyContractible_slices` は left 側の Quillen A を経由する版。
+通常の圏の始対象の包含について、既存の `nervePoint_isLeftCofinal` からこの弱可縮条件を得て、
+一般の制限定理へ渡す `initialCofinality_via_quillenA` を証明した。
+A2h の `initialCofinality` と**同じ写像・同じ二宇宙の型**を回収する。
+始対象の包含自体の cofinality の証拠は既存の nervePoint の定理を使い、その独立な再証明は主張しない。
+
+これで B3 の指定範囲（左右の定義、Quillen A、A2h の回収）は完了。
+補助的な一般化として、一般の cocartesian fibration に沿う cofinality の pullback 安定性、
+Kan な底への弱同値 ⇒ cofinal の逆方向（Prop 7.2.1.5(2)）は未形式化。
+これらを用いずに B3 の指定した結論を証明しており、B4・B5 の完了は別途必要。
 
 ### 次の工程
 
-B3 の opposite による left 側の Quillen A と A2h の統一的な回収へ進む。
-B4 の各点の Kan 拡張、B5 の古典 nerve に戻る検査も未完了。
+B4 の各点の左右 Kan 拡張の定義・一意性・存在へ進む。
+A6 の `exists_pointwiseLimitCone`・`hasLimit_of_hasPointwiseLimits`・
+`isLimitCone_iff_pointwise_of_hasPointwiseLimits` は到着済みで型を確認した。
+点ごとの極限の存在条件から自然な錐を作る API であり、単に成分の錐を選んだだけの自然性は仮定しない。
+B5 の古典 nerve に戻る検査も未完了。
 全体の α2b 目標は継続中。
 
-対象ビルド2242 jobs、公理監査2075宣言（標準三公理のみ）が成功。
-推移的 import のリポジトリ内571モジュールに straightening 依存なし。
+対象ビルド2266 jobs、公理監査2114宣言（標準三公理のみ）が成功。
+推移的 import のリポジトリ内595モジュールに straightening 依存なし。
 
 ## 4. 主要宣言
 
@@ -430,3 +456,11 @@ B4 の各点の Kan 拡張、B5 の古典 nerve に戻る検査も未完了。
 | `rightFibration_initialFiber_isSimplicialHomotopyEquivalence/isWeakHomotopyEquivalence` | right fibration の始対象上の fiber と全空間の実際のホモトピー同値 | 済 |
 | `rightFibration_vertexFiber_isWeaklyContractible_of_coslices`・`rightFibration_trivialKanFibration_of_weaklyContractible_coslices` | coslice 引き戻しの弱可縮性から fiber の弱可縮性・trivial 性への還元 | 済 |
 | `isRightCofinal_of_weaklyContractible_coslices`・`isRightCofinal_iff_weaklyContractible_coslices` | Quillen A の right 側の十分性と両方向の判定、標的だけが quasicategory | 済 |
+| `cofinalLeftFibration_op_rightFibration`・`cofinalRightAnodyne_op_of_leftAnodyne/cofinalLeftAnodyne_op_of_rightAnodyne`・`cofinalTrivialKanFibration_op` | 反転による左右の fibration・anodyne 性と trivial Kan 性の移送 | 済 |
+| `isLeftCofinal_of_isIso/isRightCofinal_of_isIso`・`IsLeftCofinal.of_arrow_iso/IsRightCofinal.of_arrow_iso` | 同型の cofinality と矢の同型による移送 | 済 |
+| `IsLeftCofinal.op/IsRightCofinal.op`・`isLeftCofinal_iff_isRightCofinal_op/isRightCofinal_iff_isLeftCofinal_op` | 左右の cofinality の反転による両方向の判定 | 済 |
+| `IsWeaklyContractible.op`・`isWeaklyContractible_of_op/isWeaklyContractible_op_iff` | 一般の単体集合の弱可縮性の反転による保存・検出 | 済 |
+| `cofinalPointSliceOverOpIso/cofinalSlicePullbackOpIso`・`cofinalWeaklyContractible_slice_iff_op_coslice` | 射影と可換な slice の反転と pullback の弱可縮条件の移送 | 済 |
+| `isLeftCofinal_iff_weaklyContractible_slices/isLeftCofinal_of_weaklyContractible_slices`・`IsLeftCofinal.slice_isWeaklyContractible` | left 側の Quillen A、標的だけが quasicategory | 済 |
+| `sliceOverRestrict_trivialKanFibration_of_isLeftCofinal/of_weaklyContractible_slices` | left cofinal な任意の単射・Quillen A 条件による図式の slice 制限の判定 | 済 |
+| `nervePoint_initial_quillen_slice_condition`・`initialCofinality_via_quillenA` | 始対象の包含の Quillen A 条件と A2h の同じ写像・二宇宙の型の回収 | 済 |
