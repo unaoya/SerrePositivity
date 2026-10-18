@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c 完了。L9d 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・105 モジュール 1819 宣言の公理監査成功。
+対象ビルド・109 モジュール 1864 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -216,7 +216,7 @@ Kan fibration の引き戻しと塔の極限についての閉性を RLP から�
 Sp はこの単体的圏の coherent nerve とし、γ1 を適用する。
 この nerve が導来写像空間を持つ正しい Sp であることの比較は γ3 後に扱う。
 第 1 段の π_* の証明にその比較を使わない。
-非単射の構造射は境界生成の cell 分解によって直接 cofibrant 置換する（§33）。
+非単射の構造射は境界生成の cell 分解によって直接 cofibrant 置換する（§32）。
 各段の Kan 置換には既存 AnodyneKanReplacement の実構成を使う。
 両置換の存在と π_* の保存を本レーンで証明し、入力にしない。
 fiber 列の各段の fiber は構造射の単射性を保つとは限らないので置換を挟む。
@@ -1228,3 +1228,41 @@ L9c の本工程は完了とし、L9d の telescope 有理化へ進む。
 私有宣言を含む 105 モジュール 1819 宣言で標準三公理のみ。
 工程区切りの全体ビルド 9543 jobs 成功。
 L9d・L9e は未完了であり、全体目標の完了は主張しない。
+
+
+## 44. L9d の filtered colimit と Kan 性・ホモトピー群
+
+有限な相対写像データを一つの後続段へ移す補題を証明した。
+有限個の制限の等式は、定義域の有限余積を使って同時に移せる。
+有限ホーンからの射を段へ下ろして充填することで、Kan 複体の filtered colimit の Kan 性を示した。
+遷移射の単射性は仮定していない。
+境界定数単体は基点を含む相対因子分解で後続段に実現できる。
+RelStruct は隣接二面と残りの定数面を同時に指定して後続段へ移せる。
+従って零次数を含む全自然数次数で、全ての類が段から来て、類の等式が後続段で成立する。
+
+点つき diagram の π_n の図式と cocone を実際に構成した。
+基点忘却が filtered colimit を保存することから、点つき余極限の Kan 性を証明した。
+代表と関係の有限性から、ホモトピー類の cocone が型の圏の余極限であることを証明した。
+正次数については群準同型の図式を作り、群の filtered colimit の普遍性と比較群同型を構成した。
+比較同型を各段に制限した準同型は、元の cocone 射の誘導準同型に一致する。
+π_1 の非可換性を許す群の圏で主張しており、零次数は集合として扱う。
+`Rationalization.lean` を L9d の集約入口とした。
+有理化対象、telescope との比較、ℚ テンソルの計算は引き続き未完了。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `finite_relative_factorization` / `.finite_equations_factorization` | 有限な境界条件・面条件を保つ後続段への因子分解 |
+| `kanComplex_of_filtered_isColimit` | Kan 複体の filtered colimit の Kan 性 |
+| `ptSimplex_filtered_factorization` | 基点を保つ代表単体の有限段での実現 |
+| `relStruct_filtered_factorization` | ホモトピー関係の有限段での実現 |
+| `homotopy_filtered_surjective` / `.homotopy_filtered_eq_eventually` | 全自然数次数の代表と等式の後続段での実現 |
+| `pointedFilteredColimit_kanComplex` | 点つき filtered colimit の Kan 性 |
+| `pointedHomotopyIsColimit` | 全自然数次数のホモトピー類と filtered colimit の可換性 |
+| `pointedHomotopyGroupIsColimit` | 正次数群の余極限の普遍性 |
+| `pointedHomotopyGroupColimitIso` / `.pointedHomotopyGroupColimitIso_ι` | 比較群同型と各段での計算 |
+| `filteredPointedHomotopyGroupIso` | 選ばれた点つき余極限の正次数群の比較同型 |
+
+参照：Goerss–Jardine I §7、BF 1978 §2、HA §1.4.2。
+保存単位の対象ビルド 1888 jobs 成功。
+私有宣言を含む 109 モジュール 1864 宣言で標準三公理のみ。
+次は有限な源からの点つき内部 Hom と filtered colimit の比較を進め、loop と colimit を整合させる。

@@ -45,3 +45,4 @@ public import SerrePositivity.KST.Spectra.CofibrantSequenceLifting
 public import SerrePositivity.KST.Spectra.FreeIntervalBoundary
 public import SerrePositivity.KST.Spectra.MappingKanSequence
 public import SerrePositivity.KST.Spectra.SpectrumHomotopyFiber
+public import SerrePositivity.KST.Spectra.Rationalization
