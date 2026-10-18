@@ -129,4 +129,13 @@ noncomputable def reducedClosedAsFiniteTypeInclusion {S : Scheme.{u}} (X : Finit
     (Z : Closeds X.obj.left) : reducedClosedAsFiniteType X Z ⟶ X :=
   ObjectProperty.homMk (Over.homMk (reducedClosedInclusion Z))
 
+/-- 概要：有限型の圏内の被約閉中心の包含は閉埋め込み（論文 §3）。
+方針：忘却後の射を消滅イデアル層の包含として判定する。
+規約：基底 S 上有限型という包みを保ったまま instance を供給する。
+使われ方：中心の引き戻しと群作用の構成。 -/
+instance reducedClosedAsFiniteTypeInclusion_isClosedImmersion {S : Scheme.{u}}
+    (X : FiniteTypeSchemes S) (Z : Closeds X.obj.left) :
+    IsClosedImmersion (reducedClosedAsFiniteTypeInclusion X Z).hom.left :=
+  reducedClosedInclusion_isClosedImmersion Z
+
 end SerrePositivity.KST.Descent
