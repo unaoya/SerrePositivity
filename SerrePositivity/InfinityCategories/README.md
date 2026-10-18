@@ -2203,7 +2203,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開737宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開747宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2831,7 +2831,7 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開737宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開747宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
 ### 重み付き end と weighted nerve の切断の族（全単射を実装）
@@ -3876,6 +3876,58 @@ pathFirstMinimumMap_reindex {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌) (j : Fin (m +
 原典上の位置は Kerodon §4.6.7 と HTT 4.2.4.1 の係数評価である。
 これらの座標則を重み付き nerve の実際の左 coslice 射へ組み立てる工程、
 元の q_x との一致、および 𝒮・Sp の残りの適用は未完了。
+
+### weighted nerve の係数の実際の評価と合成・添字変換（実装済み）
+
+`WeightedCoherentCoefficients` は `I : Type u`、`[SmallCategory I]`、
+`H : I ⥤ SSet.{u}`、`σ : ComposableArrows I n` と反転した係数
+`τ : simplexPrefixWeight n ⟶ σ ⋙ H ⋙ SSet.opFunctor` を扱う。
+`reflectedSimplexMap τ_j` は Δ[j] → H(σj).op を反転し、二重反転の標準同型を合成して
+Δ[j].op → H(σj) にする。前合成と後合成との厳密な可換性も証明している。
+
+```lean
+weightedCoherentCoefficient τ (j : Fin (n + 1)) :
+  nerve (Path (ULift.up 0 : ULift.{u} (Fin (n + 2))) (ULift.up j.succ)) ⟶ H.obj (σ.obj j)
+```
+
+は最小点の座標射にこの係数を合成した実際の射である。
+`pathFirstMinimumMap_comp i j h` は座標射の合成則を、反転した初区間の包含を明示して与える。
+`reflectedWeightedCoefficient_naturality τ i j h` は τ の自然性を反転を戻して計算する。
+この二式から、`i j : Fin (n+1)` と `h : i ≤ j` に対して
+
+```lean
+weightedCoherentCoefficient_comp τ i j h :
+  eComp SSet
+    (⟨ULift.up 0⟩ : SimplicialThickening (ULift.{u} (Fin (n + 2))))
+    ⟨ULift.up i.succ⟩ ⟨ULift.up j.succ⟩ ≫ weightedCoherentCoefficient τ j =
+  fst _ _ ≫ weightedCoherentCoefficient τ i ≫ H.map (σ.map (homOfLE h))
+```
+
+を証明した。後半の path を無視した係数の評価に、図式の射の作用を合成する式である。
+さらに任意の `α : ⦋m⦌ ⟶ ⦋n⦌` に対し、
+`weightedCoherentCoefficient_reindex α τ j` は係数を初区間へ制限する操作が
+path の `prependOrderHom` による添字変換と厳密に可換となることを示す。
+退化を含む全ての単体圏の射を扱い、Kan 性は要求しない。
+
+`WeightedRepresentableCoefficients` は `H := simplicialHomDiagram F x` へ適用する。
+`[Category.{u} C] [SimplicialCategory C]`、`x : C`、`f : y ⟶ z` に対し
+
+```lean
+simplicialHomWhiskerLeft_app x f d a :
+  (((SimplicialCategory.sHomFunctor C).obj (Opposite.op x)).map f).app d a =
+    (eComp SSet x y z).app d
+      (a, PinchedHom.constant (SimplicialCategory.homEquiv' y z f) d.unop.len)
+```
+
+を証明し、表現可能な係数の図式作用を通常の射の定値 simplex との豊穣合成と同定した。
+`weightedRepresentableCoefficient_comp F x τ i j h d P Q` は係数の合成則を
+この豊穣合成の式で表す。前提は strict な図式、反転した係数の自然変換、順序 i≤j のみ。
+P・Q はそれぞれ初点→i.succ、i.succ→j.succ の path nerve の d 単体である。
+C の対象の宇宙 v は Hom・I の宇宙 u と異なってよい。
+
+これは HTT 4.2.4.1、Kerodon §7.5.4 の cone の豊穣関手を作る非定値 Hom の合成則である。
+cone の全ての頂点と Hom を一つの豊穣関手に組み立て、実際の左 coslice への射とする工程、
+元の q_x との一致、および 𝒮・Sp の残りの適用は引き続き未完了。
 
 ### 𝒮 の空積（実装済み）
 

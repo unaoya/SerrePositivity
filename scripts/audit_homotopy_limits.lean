@@ -1479,3 +1479,23 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms pathFirstMinimumIndex_reindex
 #check @pathFirstMinimumMap_reindex
 #print axioms pathFirstMinimumMap_reindex
+#check @reflectedSimplexMap
+#print axioms reflectedSimplexMap
+#check @reflectedSimplexMap_pre
+#print axioms reflectedSimplexMap_pre
+#check @reflectedSimplexMap_post
+#print axioms reflectedSimplexMap_post
+#check @pathFirstMinimumMap_comp
+#print axioms pathFirstMinimumMap_comp
+#check @reflectedWeightedCoefficient_naturality
+#print axioms reflectedWeightedCoefficient_naturality
+#check @weightedCoherentCoefficient
+#print axioms weightedCoherentCoefficient
+#check @weightedCoherentCoefficient_comp
+#print axioms weightedCoherentCoefficient_comp
+#check @weightedCoherentCoefficient_reindex
+#print axioms weightedCoherentCoefficient_reindex
+#check @simplicialHomWhiskerLeft_app
+#print axioms simplicialHomWhiskerLeft_app
+#check @weightedRepresentableCoefficient_comp
+#print axioms weightedRepresentableCoefficient_comp
