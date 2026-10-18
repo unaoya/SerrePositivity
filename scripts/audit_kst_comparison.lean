@@ -16,6 +16,7 @@ set_option pp.explicit true
 
 
 
+
 -- BarEdge.lean
 
 #check @SerrePositivity.KST.Comparison.monoidEdgeSimplex
@@ -497,6 +498,39 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.Comparison.regularBarContraction
 #print axioms SerrePositivity.KST.Comparison.regularBarContraction
+
+
+-- RegularBarFiber.lean
+
+#check @SerrePositivity.KST.Comparison.regularBarStrictFiber
+#print axioms SerrePositivity.KST.Comparison.regularBarStrictFiber
+
+#check @SerrePositivity.KST.Comparison.regularBarFiberLift
+#print axioms SerrePositivity.KST.Comparison.regularBarFiberLift
+
+#check @SerrePositivity.KST.Comparison.regularBarStrictFiber_label
+#print axioms SerrePositivity.KST.Comparison.regularBarStrictFiber_label
+
+#check @SerrePositivity.KST.Comparison.regularBarStrictFiber_obj
+#print axioms SerrePositivity.KST.Comparison.regularBarStrictFiber_obj
+
+#check @SerrePositivity.KST.Comparison.regularBarFiberLift_bijective
+#print axioms SerrePositivity.KST.Comparison.regularBarFiberLift_bijective
+
+#check @SerrePositivity.KST.Comparison.regularBarFiberIso
+#print axioms SerrePositivity.KST.Comparison.regularBarFiberIso
+
+#check @SerrePositivity.KST.Comparison.regularBarFiber_isPullback
+#print axioms SerrePositivity.KST.Comparison.regularBarFiber_isPullback
+
+
+-- RegularBarLoop.lean
+
+#check @SerrePositivity.KST.Comparison.regularActionInterval_projection
+#print axioms SerrePositivity.KST.Comparison.regularActionInterval_projection
+
+#check @SerrePositivity.KST.Comparison.regularBarContraction_projection
+#print axioms SerrePositivity.KST.Comparison.regularBarContraction_projection
 
 
 -- RegularBarProjection.lean

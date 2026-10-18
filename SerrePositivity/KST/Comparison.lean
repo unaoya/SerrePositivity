@@ -11,6 +11,8 @@ public import SerrePositivity.KST.Comparison.BarEdge
 public import SerrePositivity.KST.Comparison.RegularBarContraction
 public import SerrePositivity.KST.Comparison.GrouplikeTranslations
 public import SerrePositivity.KST.Comparison.BarSegal
+public import SerrePositivity.KST.Comparison.RegularBarFiber
+public import SerrePositivity.KST.Comparison.RegularBarLoop
 
 /-!
 # K-L2：比較定理の入口

@@ -309,13 +309,15 @@ L2b：一般のモノイドの二重単体的 bar、対角による分類空間�
 頂点による左平行移動、その辺に沿う実ホモトピーと π₀ への降下を構成した。
 群状性から逆成分の平行移動で局所化後の左右逆を作り、anodyne 局所化での同型を証明した。
 bar の各行と M の有限積の自然な厳密同型を構成し、Segal 条件を供給した。
+正則 bar の基点上の厳密ファイバーと M の単体的同型、および標準四角形の引き戻し性を証明した。
+ファイバーへ制限した全空間の収縮を射影すると標準ループ族に一致することを証明した。
 bar 束の homotopy-cartesian 性、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
 §10-5 は検証する文言と証明方針を記した段階である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-全ての公開 150 宣言を公理監査ファイルで検査し、標準三公理のみを確認した。
+全ての公開 159 宣言を公理監査ファイルで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -347,6 +349,8 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `monoidLeftTranslationHomotopy`、`grouplikeTranslationIso` | 実装済み | 実ホモトピーと逆成分による平行移動の可逆性 |
 | `grouplikeTranslation_localized_isIso` | 実装済み | anodyne 局所化での具体的な適用 |
 | `monoidWordEquiv`、`monoidBarRowIso` | 実装済み | 射列の隣接ラベルによる Segal 同型 |
+| `regularBarFiberIso`、`regularBarFiber_isPullback` | 実装済み | 厳密ファイバーと標準引き戻し四角形 |
+| `regularBarContraction_projection` | 実装済み | 収縮が与える標準ループ族との一致 |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
 | plus 構成 | 未実装 | acyclic map と π₁ の商 |
