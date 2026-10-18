@@ -13555,5 +13555,31 @@ noncomputable def strictKanStraighteningUnitIso
       (leftStraighteningCandidate
         (smallLeftUnstraighteningProjection (kanDiagramCoherentNerve F)))
 
+lemma exists_finiteKanDiagramStrictification {n : ℕ}
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (ULift.{u} (Fin (n + 1)))) ⟶
+      SpaceInfinity.{u}) :
+    ∃ A : ULift.{u} (Fin (n + 1)) ⥤ KanObject.{u},
+      Nonempty (FunctorIso F (kanDiagramCoherentNerve A))
+
+noncomputable def finiteStraighteningUnitIso {n : ℕ}
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (ULift.{u} (Fin (n + 1)))) ⟶
+      SpaceInfinity.{u}) :
+    FunctorIso F (leftStraighteningCandidate (smallLeftUnstraighteningProjection F))
+
+noncomputable def finiteFunctorIsoOfUnstraighteningEquivalence {n : ℕ}
+    {F G : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (ULift.{u} (Fin (n + 1)))) ⟶
+      SpaceInfinity.{u}}
+    (f : smallLeftUnstraightening F ⟶ smallLeftUnstraightening G)
+    (hf : f ≫ smallLeftUnstraighteningProjection G = smallLeftUnstraighteningProjection F)
+    (ef : IsPrecompositionEquivalence f) : FunctorIso F G
+
+lemma finiteUnstraightening_equivalence_iff {n : ℕ}
+    (F G : (SSet.uliftFunctor.{u + 1, u}).obj (nerve (ULift.{u} (Fin (n + 1)))) ⟶
+      SpaceInfinity.{u}) :
+    Nonempty (FunctorIso F G) ↔
+      ∃ f : smallLeftUnstraightening F ⟶ smallLeftUnstraightening G,
+        f ≫ smallLeftUnstraighteningProjection G = smallLeftUnstraighteningProjection F ∧
+          IsPrecompositionEquivalence f
+
 end SerrePositivity.InfinityCategories
 ```

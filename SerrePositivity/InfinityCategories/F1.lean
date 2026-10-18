@@ -665,3 +665,4 @@ public import SerrePositivity.InfinityCategories.F1.StrictDiagramExtensionSpace
 public import SerrePositivity.InfinityCategories.F1.LeftResolutionStrictExtension
 public import SerrePositivity.InfinityCategories.F1.StrictDiagramScaffoldAdjunction
 public import SerrePositivity.InfinityCategories.F1.SmallOppositeKanTransportUnit
+public import SerrePositivity.InfinityCategories.F1.LocalStraighteningUnit

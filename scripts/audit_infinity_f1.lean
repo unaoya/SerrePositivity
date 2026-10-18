@@ -2772,3 +2772,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.smallOppositeKanTransportUnit_isQCatEquivalence
 #check @SerrePositivity.InfinityCategories.smallOppositeKanStraighteningUnitIso
 #check @SerrePositivity.InfinityCategories.strictKanStraighteningUnitIso
+#check @SerrePositivity.InfinityCategories.exists_finiteKanDiagramStrictification
+#check @SerrePositivity.InfinityCategories.finiteStraighteningUnitIso
+#check @SerrePositivity.InfinityCategories.finiteFunctorIsoOfUnstraighteningEquivalence
+#check @SerrePositivity.InfinityCategories.finiteUnstraightening_equivalence_iff
