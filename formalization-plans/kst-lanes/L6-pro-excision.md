@@ -49,15 +49,15 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと500宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと515宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
 - Construction A.6：成分 u⁻¹ の自然変換、nerve の実ホモトピー、係数付き自由鎖複体への実鎖ホモトピーに加え、`conjugationLinearizedHomotopy` で非被約 C(H)⊗ℤΔ¹ の実区間ホモトピーを構成。両端条件は全次数で成立。区間関手・nerve の区間写像・自由化したテンソル区間写像について、群準同型との自然性も証明。
 - Construction A.5：ユーザーが augmentation 補正を採用し、L6c を再開。非被約 C(H)=ℤBH を保持する。下記の設計確認欄を参照。
 - A.5 の代数部分：`tensorMap_augmentation_expansion` と `tensorMap_augmentation_eq_low` を検証。二つの差の消滅から m+m′+1 以下の補正式を得る。AW・shuffle のホモトピー構成と移送は未完。
-- `LinearizedMHomotopy.cancel_augmentation`：C(ψ)≃C(ψ)+C(φ)−C(e) から C(φ)≃C(e) を区間写像の差で構成。作用の同変性は別条件として未接続。
-- `LinearizedMHomotopy.homologyMap_eq`：m 次ホモトピーから次数 ≤m の交代面写像複体のホモロジー写像の一致を証明。零次を含み、同変 bar への移送は未完。
+- `LinearizedMHomotopy.cancel_augmentation`：C(ψ)≃C(ψ)+C(φ)−C(e) から C(φ)≃C(e) を区間写像の差で構成。作用の同変性は `cancel_augmentation_equivariant` で接続済み。
+- `LinearizedMHomotopy.homologyMap_eq`：m 次ホモトピーから次数 ≤m の交代面写像複体のホモロジー写像の一致を証明。零次を含む。同変 bar への移送は `linearizedActionBarMHomotopy` と Lemma A.4 で検証済み。
 - `actionBarComparison`：実際の E_BH G から B(G⋉H) への単体的比較を構成。transport 関手の合成則と全ての単体射への自然性を検証。
 - `coefficientBisimplicialBarComparison`：bar 次数と係数次数を分けた二重単体的比較を構成。対角は元の比較と一致する。各行の始域は H^r×G^r と同型。
 - Prop A.1 の幾何的模型は完了：`coefficientBarRowComparison_eq_sweep` で行の比較と有限合成を同定し、各行・対角・実際の `actionBarComparison` の anodyne 局所化可逆性を証明。
@@ -65,8 +65,9 @@
 - Lemma A.4 は借用する H_* の界面に対して完了：`HomologicallyMConstant` は Definition A.3 の入力データだけを保持し、線形な区間写像の bar への持ち上げ、その m 次両端条件、複体の低次数比較、A.1 の自然性、相対余核の零化を実際に証明。
 - `SimplicialHomologyModel` は任意の対象の複体模型同型と全ての射の自然性を入力する明示的な H_* の界面であり、A.4 の結論や bar の持ち上げは仮定しない。
 - A.5 の厳密化：`strictificationHomotopy` は入力射と全次数ホモトピックで、終点と次数 ≤m で厳密に一致する `strictifiedMap` を構成。
-- **設計変更の提案で停止：A.5 の非可換な標的について、像の可換性だけでは二次の障害が残る。** 有限な bar 鎖の検証と、μ:P×Q→H および因子内のホモトピーを使う修正文言を下記に記録。augmentation 補正の採用は維持する。
-- L6c の残作業：採用後の A.5 の AW・shuffle 比較。A.1・A.4・A.6 の H_* の具体模型への特殊化は所有レーンの界面。
+- A.5 の非可換な標的：ユーザーが正本 §13-14 の μ:P×Q→H と因子内の入力ホモトピーを使う形を採用（2026-10-18）。設計停止を解除して実装を再開。augmentation 補正も維持する。
+- 外部 G の同変性：両端・射影、射と区間写像の加減法を経由し、`strictifiedMap_equivariant`、`strictificationHomotopy_equivariant`、`cancel_augmentation_equivariant` を検証。因子内の入力ホモトピーの同変性を保つ。
+- L6c の残作業：採用済み μ 版 A.5 の同変性、正規化、AW・shuffle 比較。A.1・A.4・A.6 の H_* の具体模型への特殊化は所有レーンの界面。
 - L6d〜g：未着手。
 
 ## 主要宣言の表
@@ -83,7 +84,7 @@
 | LinearizedMHomotopy.homologyMap_eq | MHomotopyHomology.lean | 検証済み | A.4 の非同変複体側、次数 ≤m の一致 |
 | coefficientActionBar | BarAction.lean | 検証済み | BH の作用による E_BH G |
 | barSetAction | BarAction.lean | 検証済み | 非可換な BH への集合の作用 |
-| actionBarComparison | BarTransport.lean | 検証済み | Prop A.1 の単体的比較射（同値性は未完） |
+| actionBarComparison | BarTransport.lean | 検証済み | Prop A.1 の単体的比較射（局所化同値性も検証済み） |
 | coefficientBisimplicialBarComparison | CoefficientBisimplicialBar.lean | 検証済み | Prop A.1 の二重単体的比較 |
 | coefficientBisimplicialBarComparison_diagonal | CoefficientBisimplicialBar.lean | 検証済み | 対角の比較射との一致 |
 | coefficientBisimplicialBarRowIso | CoefficientBisimplicialBar.lean | 検証済み | 第 r 行の H^r×G^r への同型 |
@@ -99,6 +100,9 @@
 | linearizedActionBarCylinderMap | LinearizedBarCylinder.lean | 検証済み | 任意の単体射に自然な線形区間写像 |
 | SimplicialHomologyModel | HomologyModel.lean | 界面 | 所有レーンの H_* と複体ホモロジーとの自然同型 |
 | LinearizedMHomotopy.strictificationHomotopy | HomotopyStrictification.lean | 検証済み | 入力射と低次厳密化した射の全次数ホモトピー |
+| LinearizedMHomotopy.strictifiedMap_equivariant | EquivariantStrictification.lean | 検証済み | 低次厳密化した射の外部 G 同変性 |
+| LinearizedMHomotopy.strictificationHomotopy_equivariant | EquivariantStrictification.lean | 検証済み | 厳密化の全次数ホモトピーの同変性 |
+| LinearizedMHomotopy.cancel_augmentation_equivariant | EquivariantStrictification.lean | 検証済み | Lemma 4.16 で使う相殺の同変性 |
 | obstructionTorusCycle_not_boundary | CommutingImageObstruction.lean | 検証済み | 可換な対 (r²,s) の二次 bar サイクルの非境界性 |
 | obstructionHalfTurnBoundingChain_boundary | CommutingImageObstruction.lean | 検証済み | [r²]−[1] の明示的な一次の境界 |
 | Tower | Pro.lean | 検証済み | ℕ 上の逆系 |
@@ -565,7 +569,7 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - 独立 probe は `/tmp/kst-l6-dihedral-cocycle-probe.lean`。
 - 対応する二次群ホモロジーの非零類は、Domínguez–Segovia, *Extending free actions of finite groups on surfaces*, Topology Appl. 305 (2022), 107898, Corollary 17 の「180度回転と反射のトーラス」にも一致する：[原論文](https://doi.org/10.1016/j.topol.2021.107898)。本文の反例の推論は上記の独立した bar 計算による。
 
-### 提案する A.5 の正確な形（未採用）
+### 採用済み A.5 の正確な形（正本 §13-14）
 
 - 群 P,Q,H、群準同型 μ:P×Q→H、α:T→P、β:T→Q を明示的なデータにする。
 - m 次入力は C(α) と C(e_P) の間、m′ 次入力は C(β) と C(e_Q) の間のホモトピーとして与える。H に移した後だけのホモトピーは入力にしない。
@@ -573,7 +577,7 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - 結論は (m+m′+1) 次の C(φ·φ′)≃C(φ)+C(φ′)−C(e_H)。
 - 証明は採用済みのとおり、厳密化・正規化・差のテンソルの消滅・AW/shuffle の標準比較を使い、最後に実際の群準同型 μ を適用する。
 - 外部 G の同変性は P,Q,H,μ,α,β と入力ホモトピーに持たせる。原典の一般文言との差として docstring と計画に明記する。
-- これは A.5 の仮定の変更なので、ユーザーの常設規則の「設計変更の提案」の停止条件に当たる。採用前に一般形の実装はしない。
+- 原典の一般文言からの仮定の変更であり、ユーザーがこの形を採用済み。追加の承認待ちは置かず、実装する。
 
 ### Lemma 4.16 での候補と §10-1 の紙の確認
 
@@ -584,6 +588,6 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - 両積の非自明な交差項は、P が first n 列上で恒等であることと、追加した最後の補助座標の列・行の零性により一致する。この計算は可換な I を要求しない。
 - したがって P の全体と ψ(Q) は可換であり、μ は群準同型になる候補。
 - α は原典が用いる φ の小さい帰納段階への因子化、β は Q 上の恒等写像。α の (m−1) 次ホモトピーは帰納法で C(P) 内にあり、β は0次の定数区間写像を持つ。
-- 提案形の A.5 はこの m−1 と0から必要な m 次比較を与える。
+- 採用済み μ 版 A.5 はこの m−1 と0から必要な m 次比較を与える。
 - M_{n,n}(I) の作用についても、first n 行の線形作用がこのブロック分解と μ に可換であることを別途実装前に確認する。右乗法 a と aI の両側性は従来の §10-1 の確認を維持する。
 - この候補は紙の設計確認段階であり、L6d の非可換群・ブロック行列の実装はまだ行っていない。正本 §12 は本レーンから編集しない。

@@ -85,3 +85,4 @@ public import SerrePositivity.KST.ProExcision.HomologyModel
 public import SerrePositivity.KST.ProExcision.LemmaA4
 public import SerrePositivity.KST.ProExcision.HomotopyStrictification
 public import SerrePositivity.KST.ProExcision.CommutingImageObstruction
+public import SerrePositivity.KST.ProExcision.EquivariantStrictification

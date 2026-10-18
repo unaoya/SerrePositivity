@@ -1347,3 +1347,48 @@ set_option pp.explicit true
 #print axioms SerrePositivity.KST.ProExcision.obstructionHalfTurnBoundingChain
 #check @SerrePositivity.KST.ProExcision.obstructionHalfTurnBoundingChain_boundary
 #print axioms SerrePositivity.KST.ProExcision.obstructionHalfTurnBoundingChain_boundary
+
+#check @SerrePositivity.KST.ProExcision.LinearizedEquivariant
+#print axioms SerrePositivity.KST.ProExcision.LinearizedEquivariant
+
+#check @SerrePositivity.KST.ProExcision.LinearizedCylinderEquivariant
+#print axioms SerrePositivity.KST.ProExcision.LinearizedCylinderEquivariant
+
+#check @SerrePositivity.KST.ProExcision.linearizedEndpoint₀_equivariant
+#print axioms SerrePositivity.KST.ProExcision.linearizedEndpoint₀_equivariant
+
+#check @SerrePositivity.KST.ProExcision.linearizedEndpoint₁_equivariant
+#print axioms SerrePositivity.KST.ProExcision.linearizedEndpoint₁_equivariant
+
+#check @SerrePositivity.KST.ProExcision.linearizedCylinderProjection_equivariant
+#print axioms SerrePositivity.KST.ProExcision.linearizedCylinderProjection_equivariant
+
+#check @SerrePositivity.KST.ProExcision.LinearizedEquivariant.add
+#print axioms SerrePositivity.KST.ProExcision.LinearizedEquivariant.add
+
+#check @SerrePositivity.KST.ProExcision.LinearizedEquivariant.sub
+#print axioms SerrePositivity.KST.ProExcision.LinearizedEquivariant.sub
+
+#check @SerrePositivity.KST.ProExcision.LinearizedCylinderEquivariant.endpoint₀
+#print axioms SerrePositivity.KST.ProExcision.LinearizedCylinderEquivariant.endpoint₀
+
+#check @SerrePositivity.KST.ProExcision.LinearizedCylinderEquivariant.endpoint₁
+#print axioms SerrePositivity.KST.ProExcision.LinearizedCylinderEquivariant.endpoint₁
+
+#check @SerrePositivity.KST.ProExcision.LinearizedEquivariant.constant
+#print axioms SerrePositivity.KST.ProExcision.LinearizedEquivariant.constant
+
+#check @SerrePositivity.KST.ProExcision.LinearizedCylinderEquivariant.add
+#print axioms SerrePositivity.KST.ProExcision.LinearizedCylinderEquivariant.add
+
+#check @SerrePositivity.KST.ProExcision.LinearizedCylinderEquivariant.sub
+#print axioms SerrePositivity.KST.ProExcision.LinearizedCylinderEquivariant.sub
+
+#check @SerrePositivity.KST.ProExcision.LinearizedMHomotopy.strictifiedMap_equivariant
+#print axioms SerrePositivity.KST.ProExcision.LinearizedMHomotopy.strictifiedMap_equivariant
+
+#check @SerrePositivity.KST.ProExcision.LinearizedMHomotopy.strictificationHomotopy_equivariant
+#print axioms SerrePositivity.KST.ProExcision.LinearizedMHomotopy.strictificationHomotopy_equivariant
+
+#check @SerrePositivity.KST.ProExcision.LinearizedMHomotopy.cancel_augmentation_equivariant
+#print axioms SerrePositivity.KST.ProExcision.LinearizedMHomotopy.cancel_augmentation_equivariant
