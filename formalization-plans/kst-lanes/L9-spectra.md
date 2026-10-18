@@ -34,7 +34,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・427 モジュール 4223 宣言の公理監査成功。
+対象ビルド・437 モジュール 4294 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -3187,4 +3187,40 @@ BG は宇宙をそろえた AsSmall の一対象群圏の nerve を使う。
 
 参照：Goerss–Jardine I §7、VIII §§1–2、BF 1978 §2、Kerodon §§3.1.3・5.3.3。
 対象ビルド 3876 jobs 成功。私有宣言を含む 427 モジュール 4223 宣言で標準三公理のみ。
+L9e は進行中。有理 Shapiro、Tot の π_* の計算、一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。
+
+
+## 105. L9e の塔の fiber と骨格のセルの相対 cofiber
+
+点つき cofiber からの Hom と制限射の基点 fiber の引き戻しの同型を一般の点つき射に対して証明した。
+全空間の基点の像を底とする pointedFiber の模型に移し、包含の単射性で基点保存を検査した。
+点つき可換正方形が fiber の射を誘導する構成と、全空間・底の同型による fiber の同型も構成した。
+自由基点からの Hom と定数基点の通常の写像空間の同型が前合成に自然であることを束ねた。
+これらにより通常の源の射の制限の点つき fiber を、自由基点を加えた相対 cofiber からの Hom と同定した。
+
+骨格の隣接包含に適用し、実際の塔の stageFiber が相対骨格の Hom となる点つき同型を与えた。
+正次数の群の同型も、この実際の点つき同型から与えた。
+付け加える d セルの添字が d 次元の非退化単体と同値であることを骨格の非所属から証明した。
+Mathlib の相対セル分解の二つの段を通常の骨格と同定し、境界包含の余積を貼り付ける pushout を移した。
+点つき pushout の対向する cofiber が同型になることを pushout の貼り合わせで証明した。
+自由基点追加が保存する骨格の pushout に適用し、相対骨格の cofiber を境界包含の余積の cofiber に移した。
+従って塔の各 fiber を、このセルの cofiber からの Hom として表示できる。
+
+個々のセルの cofiber の Hom への積の分解、球面による次数移動、境界準同型の微分との一致と収束は後続の工程である。
+正次数の群を相対骨格へ移しただけで、π_r の値を π_(r+d) の係数とまだ同定していない。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `cofiberMappingFiberIso` / `pointedCofiberMappingFiberIso` | 一般の点つき制限の fiber と cofiber の Hom の比較 |
+| `PointedFiberComparison.map` / `iso` | 可換正方形の間の fiber の射と同型 |
+| `UnbasedPointedMapping.freeHomIso` / `freeHomIso_pre` | 定数基点の写像空間と自由基点の Hom の自然同型 |
+| `UnbasedPointedMapping.restrictionFiberIso` | 通常の制限の fiber の相対 cofiber 表示 |
+| `UnbasedPointedMapping.stageFiberIso` / `stageFiberHomotopyEquiv` | 骨格の塔の fiber の点つき比較と正次数群の同型 |
+| `SkeletalCellAttachment.cellEquiv` | 付け加えるセルと非退化単体の添字の同値 |
+| `SkeletalCellAttachment.isPushout` | 実際の骨格のセルの pushout |
+| `pointedCofiberPushoutIso` | pushout の対向辺の cofiber の同型 |
+| `SkeletalCellAttachment.relativeCofiberIso` / `stageFiberCellIso` | 相対骨格の cofiber とセルの cofiber の比較、fiber への適用 |
+
+参照：Goerss–Jardine I §7、VIII §1。
+対象ビルド 3886 jobs 成功。私有宣言を含む 437 モジュール 4294 宣言で標準三公理のみ。
 L9e は進行中。有理 Shapiro、Tot の π_* の計算、一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。
