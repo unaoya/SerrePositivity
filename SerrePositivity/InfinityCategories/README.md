@@ -1323,8 +1323,10 @@ N0 の `(−1)^{#{k∈I:k>j}} (f_{I\{j}} − compose …)` と厳密に一致す
 Core の現行 `IsFullyFaithful` は各 pinched Hom の射に実際の単体的ホモトピー逆を要求する。
 弱同値や π₀ の全単射だけでこれを満たしたとは数えず、ホモトピー逆まで作って接続する。
 Θ は頂点上で恒等なので本質的全射性が得られる。
-A3e の主定理が届いた後、充満忠実性と本質的全射性から `QCatEquivalence` を構成する。
-それまでは写像空間の比較を成果の区切りとし、∞ 圏の同値を条件なしに主張しない。
+A3e の `qCatEquivalenceOfFullyFaithfulEssentiallySurjective` は Core に実装済みである。
+比較写像と各 pinched Hom の実際のホモトピー同値を完成させた後、
+この判定に充満忠実性と頂点上恒等による本質的全射性を渡して `QCatEquivalence` を構成する。
+比較写像・写像空間の比較・同値判定への接続が全て済むまでは、∞ 圏の同値の完成とは数えない。
 
 現在地：γ1.5a の設計記録と γ1.5b の単体的圏 C_Δ の構成・局所 Kan 性が完了。
 namespace `DoldKanComparison` の `homModule x y : SimplicialObject (ModuleCat.{u} R)` と
@@ -1368,7 +1370,7 @@ H^(−(n+1)) との同型で、追加の閉性・充填の仮定はない。
 `doldKanHomSpaceKan` は N4 の線形充填をこの同型で移した Kan instance。
 `doldKanHomPinchedIso` は宇宙を持ち上げた DK Hom と dg nerve の右 pinched Hom の同型である。
 この同型はまだ coherent nerve の写像空間との比較ではない。
-対象・集約ビルドは3688件で成功し、公開212宣言の型と公理監査は標準三公理のみ。
+対象・集約ビルドは3694件で成功し、公開232宣言の型と公理監査は標準三公理のみ。
 正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean` に記録する。
 
 `awData` は後の射の接頭部分と前の射の接尾部分を合成して全切断点で足す成分族の演算。
@@ -1403,6 +1405,22 @@ Leibniz 則から得る左右の削除和を `AWIndex.boundaryPairEquiv` で、�
 `doldKanCoherentNerve_quasicategory` は γ1 の一般定理から従う。
 前提は `[CommRing R] [DGCategory R D]` のみで、任意の通常の Category D は要求しない。
 残りは γ1.5c の dg nerve への比較写像と低次の一致、γ1.5d の写像空間の比較および同値の証明。
+
+γ1.5c は進行中。`cubeFlag e` は任意の番号付け `e : Fin m ≃ T` に対して、
+空集合から先頭 t 座標へ進む立方体の m 単体を作る。
+`standardTopEval x y m` は標準 m 単体の全体集合の次数 −m の成分を取る線形写像。
+`cubeEvaluation e φ` は全ての置換 σ の旗を φ で送り、最上位評価を置換符号で足した値である。
+`descendingEnumeration` と `pathCubeMap` は有限内部点の降順の向きと native Path への包含を与え、
+`coherentCubeComponent` は enriched functor の Hom 写像を通じて次数 −|S| の値を得る。
+ここでは標準 DK 座標を使うため、N4 からの次数符号の変換は Hom の模型に含まれている。
+
+`cubeFlag_face_swap` は隣接二座標の交換で同じ内部面が得られることを示す。
+`cubeFlag_internal_sum_eq_zero` はその交換を固定点のない対合として、任意の可換加法群への
+評価で内部面の符号付き和が零となることを証明する。二倍の消去や 2 の可逆性は使わない。
+`cubeEvaluation_zero`・`cubeEvaluation_one` は零次・一次の旗の一意性による評価の計算。
+まだ dg nerve への単体集合の射は得ていない。外側の座標面の式、AW・shuffle と合成面の対応、
+dg 単体の方程式、退化も含む自然性、および比較写像の頂点・辺・三角形での一致が残る。
+
 
 ## γ3：homotopy 極限・余極限と ∞ 極限・余極限（γ1.5 の後）
 

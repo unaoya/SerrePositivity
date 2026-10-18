@@ -320,6 +320,51 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_deletion
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_deletion
 
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlagEvaluation
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlagEvaluation
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlag_face_swap
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlag_face_swap
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlagOrder
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlagOrder
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlag
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlag
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.mem_cubeFlag_obj
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.mem_cubeFlag_obj
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlag_obj_zero
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlag_obj_zero
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlag_obj_last
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlag_obj_last
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlag_congr
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlag_congr
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeSign_swap_trans
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeSign_swap_trans
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlag_internal_sum_eq_zero
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlag_internal_sum_eq_zero
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_zero
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_zero
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_one
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_one
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_zero_closed
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_zero_closed
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardDoldKanModuleIso
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardDoldKanModuleIso
 
@@ -487,6 +532,21 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardMooreZeroIso
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardMooreZeroIso
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.descendingEnumeration
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.descendingEnumeration
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.pathCubeFunctor
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.pathCubeFunctor
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.pathCubeMap
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.pathCubeMap
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentCubeHom
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentCubeHom
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentCubeComponent
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentCubeComponent
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign

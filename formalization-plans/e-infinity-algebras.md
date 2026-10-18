@@ -172,5 +172,9 @@ StandardSimplex R x z n` が追加仮定なしの合成。
 `doldKanCoherentNerve : SSet.{max u v}` とその quasicategory instance を構成した。
 `doldKanSimplicialHomIso` は豊穣 Hom と実際の Mathlib Γ の Hom の自然同型。
 通常の圏の恒等射と合成との整合性も証明済み。前提は `[CommRing R] [DGCategory R D]`。
-公開212宣言の正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean`。残りは
-比較写像、低次の一致、写像空間の比較。同値の最終判定は A3e が届いた後に行う。
+γ1.5c では `cubeEvaluation e φ : GradedHom R x y (-(m : ℤ))` と native Path の
+`coherentCubeComponent` を構成し、`cubeFlag_internal_sum_eq_zero` で内部面の相殺を証明した。
+零次・一次の旗の評価も計算済み。比較写像の定義には外側の面・合成面の境界式が残る。
+公開232宣言の正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean`。残りは
+比較写像、低次の一致、写像空間の比較。A3e の `qCatEquivalenceOfFullyFaithfulEssentiallySurjective` は実装済み。
+比較写像と各 pinched Hom の実際のホモトピー同値を完成させた後に適用する。
