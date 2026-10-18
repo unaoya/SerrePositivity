@@ -88,6 +88,18 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.cofiberSuspensionShortComplexMap_τ₁_eqToHom
 #print axioms SerrePositivity.InfinityCategories.cofiberSuspensionShortComplexMap_τ₁_isIso
 #print axioms SerrePositivity.InfinityCategories.cofiberSuspensionShortComplexMap_τ₂_eq_zero
+#print axioms SerrePositivity.InfinityCategories.pinchedHomMap_boundary_of_boundary_succ
+#print axioms SerrePositivity.InfinityCategories.pinchedHomMap_trivialKanFibration_of_boundary_succ
+#print axioms SerrePositivity.InfinityCategories.isFullyFaithful_of_boundary_succ
+#print axioms SerrePositivity.InfinityCategories.relativeInitialProjection_isFullyFaithful
+#print axioms SerrePositivity.InfinityCategories.colimitCoconeProjection_isFullyFaithful
+#print axioms SerrePositivity.InfinityCategories.colimitCoconeProjectionHoFullyFaithful
+#print axioms SerrePositivity.InfinityCategories.colimitCoconeProjection_ho_map_injective
+#print axioms SerrePositivity.InfinityCategories.colimitCoconeLiftHom
+#print axioms SerrePositivity.InfinityCategories.colimitCoconeProjection_map_liftHom
+#print axioms SerrePositivity.InfinityCategories.colimitCoconeLiftHom_unique
+#print axioms SerrePositivity.InfinityCategories.colimitCoconeLiftHom_id
+#print axioms SerrePositivity.InfinityCategories.colimitCoconeLiftHom_comp
 #print axioms SerrePositivity.InfinityCategories.JoinCocone
 #print axioms SerrePositivity.InfinityCategories.JoinCocone.vertex
 #print axioms SerrePositivity.InfinityCategories.JoinCocone.vertex_eq
@@ -791,7 +803,10 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.CofiberSuspensionComparison,
     `SerrePositivity.InfinityCategories.Stable.CofiberConnecting,
     `SerrePositivity.InfinityCategories.Stable.FixedHomotopyComponent,
-    `SerrePositivity.InfinityCategories.Stable.CofiberComparisonComponents]
+    `SerrePositivity.InfinityCategories.Stable.CofiberComparisonComponents,
+    `SerrePositivity.InfinityCategories.Stable.MappingSpacePositiveBoundary,
+    `SerrePositivity.InfinityCategories.Stable.ColimitFullyFaithful,
+    `SerrePositivity.InfinityCategories.Stable.ColimitHomLift]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

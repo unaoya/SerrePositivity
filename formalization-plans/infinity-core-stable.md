@@ -154,6 +154,17 @@ distinguished triangle と TR1〜TR4 は未証明。
 `cofiberSuspensionShortComplexMap_τ₁_eqToHom` はその第一成分を
 suspension の source_eq の逆向きによる eqToHom として厳密に記述する。
 第一成分の同型性と第二成分の零射性も公開した。
+`pinchedHomMap_boundary_of_boundary_succ` は元の射の n+1 次元境界の持ち上げから
+右写像空間の n 次元境界の持ち上げを導く。境界と点の join の標準同型を使うため、
+頂点上の全射性は不要。正次元の全境界を持ち上げる射は写像空間で充満忠実となる。
+`relativeInitialProjection_isFullyFaithful` と `colimitCoconeProjection_isFullyFaithful` により、
+普遍余錐の図式への射影も充満忠実。全図式の余極限の存在は要求しない。
+`colimitCoconeProjectionHoFullyFaithful` は h 上の充満忠実関手を構成し、
+`colimitCoconeProjection_ho_map_injective` は射影した射の等号を反映する。
+`colimitCoconeLiftHom` は指定された二つの普遍余錐間に図式側の h の射を一意に
+持ち上げる。射影との逆関係、一意性、恒等射・合成との両立も公開済み。
+これは基底の h の射を固定した持ち上げの選択独立性までであり、接続射全体の
+選択独立性には span の比較自体の h の射が一意であることをさらに証明する必要がある。
 `cofiberConnecting` の前提は Quasicategory と IsStable のみで、列は零角の四角形と
 IsCofiberSequence の証明で与える。選択独立性、接続射の自然性、Σf の後との零合成、
 回転・八面体を含む三角圏の公理は未完了。
@@ -268,6 +279,8 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 始点固定の suspension との比較 | `exists_terminalArrowComparison`、`exists_terminalSpanComparison`、`exists_suspensionSpanComparison`（Quasicategory、指定終点が終対象）、`exists_cofiberSuspensionComparison`（さらに元の四角形は押し出し） | 完了 |
 | cofiber 列の接続射 | `cofiberConnectingToSuspension`（Quasicategory、HasZeroMorphisms、指定 suspension）、`cofiberConnecting`、`cofiberConnecting_comp_eq_zero`（Quasicategory、IsStable、IsCofiberSequence） | 構成と第二射の後の零合成まで完了。選択独立性・自然性・三角構造は未完了 |
 | suspension 比較の最初の二成分 | `homotopyNatTrans_fixedVertex_arrow`（追加仮定なし）、`cofiberSuspensionShortComplexMap_τ₁_arrow`、`cofiberSuspensionShortComplexMap_τ₁_eqToHom`、`cofiberSuspensionShortComplexMap_τ₁_isIso`、`cofiberSuspensionShortComplexMap_τ₂_eq_zero`（Quasicategory、HasZeroMorphisms、cofiber 列と指定 suspension） | 完了。接続射全体の選択独立性・自然性は未完了 |
+| 正次元境界による充満忠実性 | `pinchedHomMap_boundary_of_boundary_succ`、`pinchedHomMap_trivialKanFibration_of_boundary_succ`（元・値域の仮定なし）、`isFullyFaithful_of_boundary_succ`（元・値域 Quasicategory） | 完了 |
+| 普遍余錐の射影と射の一意な持ち上げ | `relativeInitialProjection_isFullyFaithful`（元・基底 Quasicategory）、`colimitCoconeProjection_isFullyFaithful`、`colimitCoconeProjectionHoFullyFaithful`、`colimitCoconeLiftHom` と射影・一意性・恒等・合成則（X が Quasicategory） | 基底の h の射を固定した一意性まで完了。span 比較自体の選択独立性は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

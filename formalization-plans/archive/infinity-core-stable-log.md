@@ -5518,3 +5518,162 @@ SerrePositivity.InfinityCategories.cofiberSuspensionShortComplexMap_τ₂_eq_zer
 （生成・非公開宣言を含む）について標準三公理のみ。`git diff --check` 成功。
 接続射全体の選択独立性・自然性、Σf との零合成、前加法構造、整数シフト、
 TR1〜TR4、Pretriangulated および S5〜S7 は未完了。
+
+## S4：正次元境界からの充満忠実性と普遍余錐間の射の一意な持ち上げ
+
+写像空間の境界持ち上げ・trivial Kan fibration 判定には元・値域の追加仮定なし。
+IsFullyFaithful の一般判定と相対始対象の射影には元・値域の Quasicategory を仮定する。
+普遍余錐への適用には X の Quasicategory のみ。全図式の余極限の存在は要求しない。
+正確な公開型（Lean の出力）：
+
+```lean
+SerrePositivity.InfinityCategories.pinchedHomMap_boundary_of_boundary_succ.{u} {X Y : SSet.{u}}
+  (p : Quiver.Hom.{u, u + 1} X Y) (x y : X _⦋0⦌) (n : ℕ)
+  [HasLiftingProperty.{u, u + 1} (Subcomplex.ι.{u} ∂Δ[HAdd.hAdd.{0, 0, 0} n 1]) p] :
+  HasLiftingProperty.{u, u + 1} (Subcomplex.ι.{u} ∂Δ[n]) (SerrePositivity.InfinityCategories.pinchedHomMap.{u} p x y)
+SerrePositivity.InfinityCategories.pinchedHomMap_trivialKanFibration_of_boundary_succ.{u} {X Y : SSet.{u}}
+  (p : Quiver.Hom.{u, u + 1} X Y)
+  (hp : ∀ (n : ℕ), HasLiftingProperty.{u, u + 1} (Subcomplex.ι.{u} ∂Δ[HAdd.hAdd.{0, 0, 0} n 1]) p) (x y : X _⦋0⦌) :
+  SerrePositivity.InfinityCategories.TrivialKanFibration.{u}
+    (SerrePositivity.InfinityCategories.pinchedHomMap.{u} p x y)
+SerrePositivity.InfinityCategories.isFullyFaithful_of_boundary_succ.{u} {X Y : SSet.{u}} [Quasicategory.{u} X]
+  [Quasicategory.{u} Y] (p : Quiver.Hom.{u, u + 1} X Y)
+  (hp : ∀ (n : ℕ), HasLiftingProperty.{u, u + 1} (Subcomplex.ι.{u} ∂Δ[HAdd.hAdd.{0, 0, 0} n 1]) p) :
+  SerrePositivity.InfinityCategories.IsFullyFaithful.{u} p
+SerrePositivity.InfinityCategories.relativeInitialProjection_isFullyFaithful.{u} {E B : SSet.{u}} [Quasicategory.{u} E]
+  [Quasicategory.{u} B] (p : Quiver.Hom.{u, u + 1} E B) :
+  SerrePositivity.InfinityCategories.IsFullyFaithful.{u}
+    (SerrePositivity.InfinityCategories.relativeInitialProjection.{u} p)
+SerrePositivity.InfinityCategories.colimitCoconeProjection_isFullyFaithful.{u} (K X : SSet.{u}) [Quasicategory.{u} X] :
+  SerrePositivity.InfinityCategories.IsFullyFaithful.{u}
+    (SerrePositivity.InfinityCategories.colimitCoconeProjection.{u} K X)
+SerrePositivity.InfinityCategories.colimitCoconeProjectionHoFullyFaithful.{u} (K X : SSet.{u}) [Quasicategory.{u} X] :
+  Functor.FullyFaithful.{u, u, u, u}
+    (Cat.Hom.toFunctor.{u, u}
+      (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+        (SerrePositivity.InfinityCategories.colimitCoconeProjection.{u} K X)))
+SerrePositivity.InfinityCategories.colimitCoconeProjection_ho_map_injective.{u} {K X : SSet.{u}} [Quasicategory.{u} X]
+  {a b : ↑(Functor.obj.{u, u, u + 1, u + 1} hoFunctor.{u} (SerrePositivity.InfinityCategories.colimitCocones.{u} K X))}
+  {f g : Quiver.Hom.{u, u} a b}
+  (h :
+    Eq.{u + 1}
+      (CategoryTheory.Functor.map.{u, u, u, u}
+        (Cat.Hom.toFunctor.{u, u}
+          (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+            (SerrePositivity.InfinityCategories.colimitCoconeProjection.{u} K X)))
+        f)
+      (CategoryTheory.Functor.map.{u, u, u, u}
+        (Cat.Hom.toFunctor.{u, u}
+          (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+            (SerrePositivity.InfinityCategories.colimitCoconeProjection.{u} K X)))
+        g)) :
+  Eq.{u + 1} f g
+SerrePositivity.InfinityCategories.colimitCoconeLiftHom.{u} {K X : SSet.{u}} [Quasicategory.{u} X]
+  {a b : ↑(Functor.obj.{u, u, u + 1, u + 1} hoFunctor.{u} (SerrePositivity.InfinityCategories.colimitCocones.{u} K X))}
+  (f :
+    Quiver.Hom.{u, u}
+      (Functor.obj.{u, u, u, u}
+        (Cat.Hom.toFunctor.{u, u}
+          (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+            (SerrePositivity.InfinityCategories.colimitCoconeProjection.{u} K X)))
+        a)
+      (Functor.obj.{u, u, u, u}
+        (Cat.Hom.toFunctor.{u, u}
+          (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+            (SerrePositivity.InfinityCategories.colimitCoconeProjection.{u} K X)))
+        b)) :
+  Quiver.Hom.{u, u} a b
+SerrePositivity.InfinityCategories.colimitCoconeProjection_map_liftHom.{u} {K X : SSet.{u}} [Quasicategory.{u} X]
+  {a b : ↑(Functor.obj.{u, u, u + 1, u + 1} hoFunctor.{u} (SerrePositivity.InfinityCategories.colimitCocones.{u} K X))}
+  (f :
+    Quiver.Hom.{u, u}
+      (Functor.obj.{u, u, u, u}
+        (Cat.Hom.toFunctor.{u, u}
+          (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+            (SerrePositivity.InfinityCategories.colimitCoconeProjection.{u} K X)))
+        a)
+      (Functor.obj.{u, u, u, u}
+        (Cat.Hom.toFunctor.{u, u}
+          (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+            (SerrePositivity.InfinityCategories.colimitCoconeProjection.{u} K X)))
+        b)) :
+  Eq.{u + 1}
+    (CategoryTheory.Functor.map.{u, u, u, u}
+      (Cat.Hom.toFunctor.{u, u}
+        (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+          (SerrePositivity.InfinityCategories.colimitCoconeProjection.{u} K X)))
+      (SerrePositivity.InfinityCategories.colimitCoconeLiftHom.{u} f))
+    f
+SerrePositivity.InfinityCategories.colimitCoconeLiftHom_unique.{u} {K X : SSet.{u}} [Quasicategory.{u} X]
+  {a b : ↑(Functor.obj.{u, u, u + 1, u + 1} hoFunctor.{u} (SerrePositivity.InfinityCategories.colimitCocones.{u} K X))}
+  (f :
+    Quiver.Hom.{u, u}
+      (Functor.obj.{u, u, u, u}
+        (Cat.Hom.toFunctor.{u, u}
+          (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+            (SerrePositivity.InfinityCategories.colimitCoconeProjection.{u} K X)))
+        a)
+      (Functor.obj.{u, u, u, u}
+        (Cat.Hom.toFunctor.{u, u}
+          (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+            (SerrePositivity.InfinityCategories.colimitCoconeProjection.{u} K X)))
+        b))
+  (g : Quiver.Hom.{u, u} a b)
+  (hg :
+    Eq.{u + 1}
+      (CategoryTheory.Functor.map.{u, u, u, u}
+        (Cat.Hom.toFunctor.{u, u}
+          (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+            (SerrePositivity.InfinityCategories.colimitCoconeProjection.{u} K X)))
+        g)
+      f) :
+  Eq.{u + 1} g (SerrePositivity.InfinityCategories.colimitCoconeLiftHom.{u} f)
+SerrePositivity.InfinityCategories.colimitCoconeLiftHom_id.{u} {K X : SSet.{u}} [Quasicategory.{u} X]
+  (a : ↑(Functor.obj.{u, u, u + 1, u + 1} hoFunctor.{u} (SerrePositivity.InfinityCategories.colimitCocones.{u} K X))) :
+  Eq.{u + 1}
+    (SerrePositivity.InfinityCategories.colimitCoconeLiftHom.{u}
+      (CategoryStruct.id.{u, u}
+        (Functor.obj.{u, u, u, u}
+          (Cat.Hom.toFunctor.{u, u}
+            (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+              (SerrePositivity.InfinityCategories.colimitCoconeProjection.{u} K X)))
+          a)))
+    (CategoryStruct.id.{u, u} a)
+SerrePositivity.InfinityCategories.colimitCoconeLiftHom_comp.{u} {K X : SSet.{u}} [Quasicategory.{u} X]
+  {a b c :
+    ↑(Functor.obj.{u, u, u + 1, u + 1} hoFunctor.{u} (SerrePositivity.InfinityCategories.colimitCocones.{u} K X))}
+  (f :
+    Quiver.Hom.{u, u}
+      (Functor.obj.{u, u, u, u}
+        (Cat.Hom.toFunctor.{u, u}
+          (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+            (SerrePositivity.InfinityCategories.colimitCoconeProjection.{u} K X)))
+        a)
+      (Functor.obj.{u, u, u, u}
+        (Cat.Hom.toFunctor.{u, u}
+          (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+            (SerrePositivity.InfinityCategories.colimitCoconeProjection.{u} K X)))
+        b))
+  (g :
+    Quiver.Hom.{u, u}
+      (Functor.obj.{u, u, u, u}
+        (Cat.Hom.toFunctor.{u, u}
+          (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+            (SerrePositivity.InfinityCategories.colimitCoconeProjection.{u} K X)))
+        b)
+      (Functor.obj.{u, u, u, u}
+        (Cat.Hom.toFunctor.{u, u}
+          (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} hoFunctor.{u}
+            (SerrePositivity.InfinityCategories.colimitCoconeProjection.{u} K X)))
+        c)) :
+  Eq.{u + 1} (SerrePositivity.InfinityCategories.colimitCoconeLiftHom.{u} (CategoryStruct.comp.{u, u} f g))
+    (CategoryStruct.comp.{u, u} (SerrePositivity.InfinityCategories.colimitCoconeLiftHom.{u} f)
+      (SerrePositivity.InfinityCategories.colimitCoconeLiftHom.{u} g))
+```
+
+対象 ColimitHomLift ビルド 1973 jobs、Stable 集約ビルド 2068 jobs、
+公開型抽出、公理監査はすべて終了コード 0。監査は 123 モジュール・1162 宣言
+（生成・非公開宣言を含む）について標準三公理のみ。`git diff --check` 成功。
+基底の h の射を固定した普遍余錐間の射の一意性・関手性まで完了。
+接続射全体の選択独立性には span 比較自体の一意性が未完了。自然性、Σf との零合成、
+前加法構造、整数シフト、TR1〜TR4、Pretriangulated および S5〜S7 も未完了。
