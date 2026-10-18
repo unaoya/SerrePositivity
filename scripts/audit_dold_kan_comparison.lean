@@ -143,6 +143,24 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardConstant_component_zero
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardConstant_component_zero
 
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_cubeRestriction_zero_left
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_cubeRestriction_zero_left
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_cubeRestriction_zero_right
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_cubeRestriction_zero_right
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_cubeRestriction_zero_of_inversion
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_cubeRestriction_zero_of_inversion
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_AW_restriction_zero_of_inversion
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_AW_restriction_zero_of_inversion
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_cubeRestriction_zero_of_bad_cut
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_cubeRestriction_zero_of_bad_cut
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_AW_restriction_eq_term
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_AW_restriction_eq_term
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awTerm
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.awTerm
 
@@ -157,6 +175,12 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awData_add_right
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.awData_add_right
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_nerve_zero_left
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_nerve_zero_left
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_nerve_zero_right
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_nerve_zero_right
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awGapTerm
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.awGapTerm
@@ -469,6 +493,39 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlag_face_last
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlag_face_last
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeRestrictionMap
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeRestrictionMap
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeRestrictionMap_flag_repeat
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeRestrictionMap_flag_repeat
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlagEvaluation_restriction_zero
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlagEvaluation_restriction_zero
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_restriction_zero
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_restriction_zero
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_pullback_zero
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_pullback_zero
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_sigma_zero
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_sigma_zero
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_map_degenerate_zero
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_map_degenerate_zero
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_nerve_zero
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_nerve_zero
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_pullback_injective
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_pullback_injective
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardComponent_nerve_zero
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardComponent_nerve_zero
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardComponent_nerve_zero_of_not_injOn
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardComponent_nerve_zero_of_not_injOn
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.strictAnti_enumeration_unique
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.strictAnti_enumeration_unique

@@ -184,7 +184,12 @@ StandardSimplex R x z n` が追加仮定なしの合成。
 `erasedEnumeration_eq_descending` は降順の向きの保存、`strictAnti_enumeration_card_filter` は係数の点数を与える。
 `pathCubeMap_face_one` は座標1面の Path の左右分解、`coherentCube_face_one_apply` は
 その豊穣 Hom での像が `standardAW 後半 前半` に等しいことを示す。
-前提には `[LinearOrder J]` と実際の豊穣関手 s を用いる。合成面の旗の和と dg 合成を結ぶ shuffle の計算は残る。
-公開284宣言の正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean`。残りは
+前提には `[LinearOrder J]` と実際の豊穣関手 s を用いる。
+`standardComponent_nerve_zero_of_not_injOn` は選んだ頂点集合で頂点が重複する成分の消滅、
+`cubeEvaluation_restriction_zero` は座標を忘れた正次元の立方体評価の消滅。
+`standardTopEval_AW_restriction_zero_of_inversion` は `r<s`、`¬P(e r)`、`P(e s)` の旗を消去し、
+`standardTopEval_AW_restriction_eq_term` は `P(e r) ↔ r.val<c.val` の旗の AW を切断点 c の一項にする。
+前提は同じ dg 圏と座標立方体からの実際の標準 Hom 写像。残る一項の評価と符号付き和の積への分解は残る。
+公開303宣言の正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean`。残りは
 比較写像、低次の一致、写像空間の比較。A3e の `qCatEquivalenceOfFullyFaithfulEssentiallySurjective` は実装済み。
 比較写像と各 pinched Hom の実際のホモトピー同値を完成させた後に適用する。
