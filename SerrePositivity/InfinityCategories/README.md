@@ -2047,7 +2047,7 @@ A3e に実際の比較射の充満忠実性と既存の本質的全射性を渡�
 𝒮（F2）・Sp（L9）・E2b の三者が共有する比較を作る。
 現在は γ3a と、γ3b の検出・比較ファイバー・重み付き end・表現可能な標準比較射、
 strict な図式・錐の coherent nerve での表示、fibration の塔の重み付き end の Kan 性、
-塔の実際の標準比較 κ と表現可能な q_x のホモトピー同値性まで実装。
+塔と両脚が fibration の cospan の実際の標準比較 κ・q_x のホモトピー同値性まで実装。
 離散図式の比較と 𝒮 の空積は実装済み。一般の coherent な錐との比較、end の一般の Kan 性・
 同値不変性、𝒮 の残りの極限と Sp への適用は未実装。
 当面は通常の小圏で添字付けた strict な図式の極限側を扱い、余極限と一般の図式の比較は後続に保持する。
@@ -2192,7 +2192,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開159宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開175宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2408,6 +2408,76 @@ representableHomotopyLimitComparison_tower_homotopyEquivalence
 C 全体の局所 Kan 性で省略しない。通常の圏の極限性だけでは Hom 図式の極限性を代用できない。
 一般の coherent な錐の写像空間との比較は引き続き未完了であり、
 これらの κ と q_x の同値性だけでは `IsLimitCone (strictCoherentCone c)` の証明にはならない。
+
+### cospan の標準比較と一脚の fibration 性への準備
+
+`CospanDiagramExtension.lean` の `exists_cospan_diagram_extension` は中央の延長を固定し、
+左右の持ち上げ問題を解いて自然変換を作る。`exists_resized_cospan_diagram_extension` は
+添字を AsSmall.{u} WalkingCospan に持ち上げた版である。
+`exists_resized_cospan_extension_of_anodyne` は中央の Kan 性と両脚の Fibration 性から、
+成分ごとに anodyne な全ての自然変換に沿う延長を構成する。
+
+`WeightedExtensions.lean` は次の延長性 hH を入力に、任意の重みの end の Kan 性、
+成分ごとの anodyne な重みの制限の trivial Kan fibration 性とホモトピー同値性を証明する。
+
+```lean
+∀ {A B : I ⥤ SSet.{u}} (j : A ⟶ B),
+  (∀ i, anodyneExtensions (j.app i)) → ∀ a : A ⟶ H, ∃ b : B ⟶ H, j ≫ b = a
+```
+
+`BousfieldKanComparison.lean` はこの明示的な延長性の下で、任意の極限錐の比較と
+選択された極限の実際の κ のホモトピー同値性を証明する。
+この hH は定理の入力であり、任意の Kan 図式について証明済みとはしない。
+`CospanComparison.lean` は hH を上の相対的な持ち上げから実際に構成して次を公開する。
+
+```lean
+bousfieldKanLimitComparison_cospan_homotopyEquivalence
+    (H : AsSmall.{u} WalkingCospan ⥤ SSet.{u})
+    [KanComplex (H.obj (AsSmall.up.obj .one))]
+    [Fibration (H.map (AsSmall.up.map WalkingCospan.Hom.inl))]
+    [Fibration (H.map (AsSmall.up.map WalkingCospan.Hom.inr))] :
+    IsSimplicialHomotopyEquivalence (bousfieldKanLimitComparison H)
+representableHomotopyLimitComparison_cospan_homotopyEquivalence
+    {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {F : AsSmall.{u} WalkingCospan ⥤ C} (c : Cone F) (x : C)
+    (hc : IsLimit (simplicialHomCone c x))
+    [KanComplex ((simplicialHomDiagram F x).obj (AsSmall.up.obj .one))]
+    [Fibration ((simplicialHomDiagram F x).map (AsSmall.up.map WalkingCospan.Hom.inl))]
+    [Fibration ((simplicialHomDiagram F x).map (AsSmall.up.map WalkingCospan.Hom.inr))] :
+    IsSimplicialHomotopyEquivalence (representableHomotopyLimitComparison c x)
+```
+
+`weightedSections_cospan_kanComplex` と `weightedSectionsPre_cospan_trivialKanFibration` も
+同じ H の前提で任意の重みを扱う。`bousfieldKanConeComparison_cospan_homotopyEquivalence`
+は選択された極限に限らず任意の極限錐 c を扱い、c.pt の Kan 性は前提に追加しない。
+
+一脚だけの fibration 性には、成分ごとの anodyne 性だけを同じ証明へ渡すことはできない。
+`CospanRightCorner.lean` は j : A → B の右成分を先に延長するための中央の境界射
+
+```
+cospanRightCornerMap j : A(one) ⨿_{A(right)} B(right) → B(one)
+```
+
+を構成する。`exists_cospan_extension_of_rightCorner` は、この境界射と右成分の
+終対象射に対する持ち上げ性、および左成分の左脚に対する持ち上げ性から延長する。
+係数の宇宙へ持ち上げた具体的な版は次である。
+
+```lean
+exists_resized_cospan_extension_of_rightCorner
+    {A B H : AsSmall.{u} WalkingCospan ⥤ SSet.{u}} (j : A ⟶ B)
+    (hl : anodyneExtensions (j.app (AsSmall.up.obj .left)))
+    (hr : anodyneExtensions (j.app (AsSmall.up.obj .right)))
+    (h₀ : anodyneExtensions (cospanRightCornerMap (Functor.whiskerLeft AsSmall.up j)))
+    [KanComplex (H.obj (AsSmall.up.obj .one))]
+    [KanComplex (H.obj (AsSmall.up.obj .right))]
+    [Fibration (H.map (AsSmall.up.map WalkingCospan.Hom.inl))]
+    (a : A ⟶ H) : ∃ b : B ⟶ H, j ≫ b = a
+```
+
+右脚の fibration 性は不要だが、中央の相対境界の anodyne 性 h₀ を入力に要求する。
+具体的な重みの相対境界での h₀ の検証、一脚だけの fibration 性での κ の同値性、
+coherent な錐の pinched Hom との比較と 𝒮・Sp の ∞ 引き戻しへの適用は未完了。
+両脚が fibration の比較だけで、要求された引き戻しの ∞ 普遍性を完成とは数えない。
 
 ### 𝒮 の空積（実装済み）
 

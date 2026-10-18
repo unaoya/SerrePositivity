@@ -216,14 +216,14 @@ HTT 4.2.4.1 の双対と Kerodon Corollary 7.5.4.6 を基準とする。
 | 工程 | 現在地 |
 | --- | --- |
 | γ3a | 限定した主張、原典、仮定、pinched Hom による検出、適用条件と宇宙を記録済み |
-| γ3b | 検出・導来 fiber・q_x の分解・離散比較・coherent 表示・塔の end の Kan 性を実装。塔の κ・q_x の同値性まで実装。一般の錐の写像空間の比較は未完了 |
+| γ3b | 検出・導来 fiber・q_x の分解・離散比較・coherent 表示・塔の end の Kan 性を実装。塔と両脚 fibration の cospan の κ・q_x の同値性まで実装。一般の錐の写像空間の比較は未完了 |
 | γ3c | 𝒮 の空積は IsLimitCone として実装。SSet の積・fibration 引き戻し・塔の Kan 性を実装。𝒮 の残りと Sp は未完了 |
 
 Sp では raw sHom の局所 Kan 性と極限の cofibrancy を省略せず、必要なら cofibrant-fibrant
 置換後の錐を公開する。実装は `InfinityCategories/HomotopyLimits/` と専用監査に置く。
 
 γ3b の部分 API は `HomotopyLimits` 集約と `scripts/audit_homotopy_limits.lean` に置く。
-公開159宣言。`representableHomotopyLimitComparison c x` は実際の sHom から end への射、
+公開175宣言。`representableHomotopyLimitComparison c x` は実際の sHom から end への射、
 `representableHomotopyLimitComparison_factorization c x h` は θκ への厳密な分解、
 `representableHomotopyLimitComparison_naturality c f` は始対象に関する厳密な自然性。
 重み付き end の普遍性・通常の随伴と極限保存も公開。正確な型と数学は README に置く。
@@ -262,5 +262,20 @@ right anodyne 性から証明した。その end の制限は trivial Kan fibrat
 塔について実際の κ の単体的ホモトピー同値性を証明する。
 `representableHomotopyLimitComparison_tower_homotopyEquivalence c x hc` は同じ Hom 図式の
 条件と `IsLimit (simplicialHomCone c x)` の下で実際の q_x の同値性を証明する。
-正確な型・全前提は README と公開159宣言の監査に記録。
+正確な型・全前提は README と公開175宣言の監査に記録。
 一般の coherent な錐の写像空間との比較は未完了なので、γ3b の完成とは数えない。
+
+両脚が fibration の cospan では、中央の Kan 性から成分ごとの anodyne な自然変換を延長する。
+その具体的な延長により、重み付き end の Kan 性と anodyne な制限の trivial Kan fibration 性、
+`bousfieldKanLimitComparison_cospan_homotopyEquivalence` および
+`representableHomotopyLimitComparison_cospan_homotopyEquivalence` を証明する。
+後者には Hom 図式の極限性も必要。正確な型・全前提は README と公開175宣言の監査が正本。
+一般の延長性を入力とする `WeightedExtensions` と `BousfieldKanComparison` を使うが、
+cospan の結論ではその入力を実際の三成分の持ち上げから構成している。
+
+一脚の fibration 性への準備は `cospanRightCornerMap j` と
+`exists_resized_cospan_extension_of_rightCorner`。
+右成分と中央が Kan、左脚が fibration の下で、左右の成分と中央の相対境界が anodyne なら延長できる。
+中央の境界は A(one) ⨿_{A(right)} B(right) → B(one)。右脚の fibration 性は要求しない。
+具体的な重みの相対境界での anodyne 性、一脚だけの fibration 性での κ の同値性、
+coherent な錐の写像空間の比較と 𝒮・Sp の ∞ 引き戻しへの適用は未完了。
