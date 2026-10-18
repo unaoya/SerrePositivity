@@ -3380,3 +3380,142 @@ lemma oneDirectionAssemblyAdjoint_uncurry (r : ℕ) (X : StableModel.{u}) :
 L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（2977 jobs）、公理監査成功（975 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+## 6.27 比較と suspension の関手的な単射 Kan 模型
+
+L9 の点つき射の因子分解を任意の添字圏 T 上の自然変換へ適用する一般形を構成した。
+対象の宇宙 v と射の宇宙 w は独立。底の射の Arrow 図式と中間対象の関手を使い、
+左因子による基点を保つ写像を取り、中間対象・左因子・右因子を自然にまとめた。
+左因子は単射、右因子は trivial Kan fibration。標的が Kan なら中間対象も Kan で、右因子は全基点 π_* 同型。
+元の射が Kan 複体間の π_* 同型なら左因子も π_* 同型になる。
+
+`oneDirectionKanComparisonNat` にこの分解を適用し、自然な Kan 中間模型
+`refinedOneDirectionKanFunctor` と両側の比較を得た。
+左は単射で π_* 同型、右は trivial Kan fibration で π_* 同型。
+元の比較の同値性は §6.24 で証明済みのものを使用し、新しい前提にしていない。
+
+suspension の比較射には標的の点つき Kan 置換の単位を自然に合成してから分解を適用した。
+その結果 `monicSuspensionAssemblyNat` は一次方向の境界商の suspension から
+Kan 中間対象への自然な単射となり、その中間対象から元の次の Kan 段への比較は
+trivial Kan fibration かつ全基点 π_* 同型である。合成は元の Kan 標的への比較と厳密に一致する。
+
+この分解で suspension の源はまだ未置換の一次方向の境界商である。
+Kan な前段の suspension と同じ列の次段を結ぶ構造射としてはまだ束ねていない。
+その接続、delooping と Ω 条件は未完了であり、BF 連結スペクトルの完成とは数えない。
+Core・Stable・F1・HA・Spectra の所有ファイルや公開 API は変更していない。
+
+以下は namespace `SerrePositivity.KST.SConstruction` 内の正確な型。`universe u v w`、
+`open CategoryTheory SSet`、`open SerrePositivity.InfinityCategories` の下で記す。
+MonicSuspensionAssembly ではさらに `MonoidalCategory` を開く。
+一般の分解には記載の条件以外の前提を置かず、S₁ 比較と suspension への適用は `StableModel` の構造のみを使う。
+
+**NaturalPointedFactorization.lean**
+
+```lean
+def pointedTransformationArrows {T : Type v} [Category.{w} T]
+    {F G : T ⥤ PointedSimplicialSet.{u}} (α : F ⟶ G) : T ⥤ Arrow SSet.{u}
+
+def pointedTransformationMiddle {T : Type v} [Category.{w} T]
+    {F G : T ⥤ PointedSimplicialSet.{u}} (α : F ⟶ G) : T ⥤ PointedSimplicialSet.{u}
+
+def pointedTransformationLeft {T : Type v} [Category.{w} T]
+    {F G : T ⥤ PointedSimplicialSet.{u}} (α : F ⟶ G) : F ⟶ pointedTransformationMiddle α
+
+def pointedTransformationRight {T : Type v} [Category.{w} T]
+    {F G : T ⥤ PointedSimplicialSet.{u}} (α : F ⟶ G) : pointedTransformationMiddle α ⟶ G
+
+lemma pointedTransformation_fac {T : Type v} [Category.{w} T]
+    {F G : T ⥤ PointedSimplicialSet.{u}} (α : F ⟶ G) :
+    pointedTransformationLeft α ≫ pointedTransformationRight α = α
+
+instance pointedTransformationLeft_mono {T : Type v} [Category.{w} T]
+    {F G : T ⥤ PointedSimplicialSet.{u}} (α : F ⟶ G) (X : T) :
+    Mono ((pointedTransformationLeft α).app X).right
+
+instance pointedTransformationRight_trivialKanFibration {T : Type v} [Category.{w} T]
+    {F G : T ⥤ PointedSimplicialSet.{u}} (α : F ⟶ G) (X : T) :
+    TrivialKanFibration ((pointedTransformationRight α).app X).right
+
+instance pointedTransformationMiddle_kanComplex {T : Type v} [Category.{w} T]
+    {F G : T ⥤ PointedSimplicialSet.{u}} (α : F ⟶ G) (X : T) [KanComplex (G.obj X).right] :
+    KanComplex ((pointedTransformationMiddle α).obj X).right
+
+lemma pointedTransformationRight_piIsomorphism {T : Type v} [Category.{w} T]
+    {F G : T ⥤ PointedSimplicialSet.{u}} (α : F ⟶ G) (X : T) [KanComplex (G.obj X).right] :
+    Spectra.KanPiIsomorphism ((pointedTransformationRight α).app X).right
+
+lemma pointedTransformationLeft_piIsomorphism {T : Type v} [Category.{w} T]
+    {F G : T ⥤ PointedSimplicialSet.{u}} (α : F ⟶ G) (X : T)
+    [KanComplex (F.obj X).right] [KanComplex (G.obj X).right]
+    (hα : Spectra.KanPiIsomorphism (α.app X).right) :
+    Spectra.KanPiIsomorphism ((pointedTransformationLeft α).app X).right
+```
+
+**RefinedOneDirectionComparison.lean**
+
+```lean
+def refinedOneDirectionKanFunctor (r : ℕ) : StableModel.{u} ⥤ PointedSimplicialSet.{u}
+
+def refinedOneDirectionLeftNat (r : ℕ) :
+    oneDirectionKanRealizationFunctor r ⟶ refinedOneDirectionKanFunctor r
+
+def refinedOneDirectionRightNat (r : ℕ) :
+    refinedOneDirectionKanFunctor r ⟶ boundaryKanRealizationFunctor r
+
+lemma refinedOneDirection_fac (r : ℕ) :
+    refinedOneDirectionLeftNat r ≫ refinedOneDirectionRightNat r = oneDirectionKanComparisonNat r
+
+instance refinedOneDirectionKan_kanComplex (r : ℕ) (X : StableModel.{u}) :
+    KanComplex (((refinedOneDirectionKanFunctor r).obj X).right)
+
+instance refinedOneDirectionLeft_mono (r : ℕ) (X : StableModel.{u}) :
+    Mono ((refinedOneDirectionLeftNat r).app X).right
+
+instance refinedOneDirectionRight_trivialKanFibration (r : ℕ) (X : StableModel.{u}) :
+    TrivialKanFibration ((refinedOneDirectionRightNat r).app X).right
+
+lemma refinedOneDirectionRight_piIsomorphism (r : ℕ) (X : StableModel.{u}) :
+    Spectra.KanPiIsomorphism ((refinedOneDirectionRightNat r).app X).right
+
+lemma refinedOneDirectionLeft_piIsomorphism (r : ℕ) (X : StableModel.{u}) :
+    Spectra.KanPiIsomorphism ((refinedOneDirectionLeftNat r).app X).right
+```
+
+**MonicSuspensionAssembly.lean**
+
+```lean
+def kanTargetSuspensionAssemblyNat (r : ℕ) :
+    oneDirectionReducedRealizationFunctor r ⋙ tensorLeft PointedSimplicialSet.circle.{u} ⟶
+      boundaryKanRealizationFunctor (r + 1)
+
+def monicSuspensionKanFunctor (r : ℕ) : StableModel.{u} ⥤ PointedSimplicialSet.{u}
+
+def monicSuspensionAssemblyNat (r : ℕ) :
+    oneDirectionReducedRealizationFunctor r ⋙ tensorLeft PointedSimplicialSet.circle.{u} ⟶
+      monicSuspensionKanFunctor r
+
+def monicSuspensionComparisonNat (r : ℕ) :
+    monicSuspensionKanFunctor r ⟶ boundaryKanRealizationFunctor (r + 1)
+
+lemma monicSuspensionAssembly_fac (r : ℕ) :
+    monicSuspensionAssemblyNat r ≫ monicSuspensionComparisonNat r = kanTargetSuspensionAssemblyNat r
+
+instance monicSuspensionKan_kanComplex (r : ℕ) (X : StableModel.{u}) :
+    KanComplex (((monicSuspensionKanFunctor r).obj X).right)
+
+instance monicSuspensionAssembly_mono (r : ℕ) (X : StableModel.{u}) :
+    Mono ((monicSuspensionAssemblyNat r).app X).right
+
+instance monicSuspensionComparison_trivialKanFibration (r : ℕ) (X : StableModel.{u}) :
+    TrivialKanFibration ((monicSuspensionComparisonNat r).app X).right
+
+lemma monicSuspensionComparison_piIsomorphism (r : ℕ) (X : StableModel.{u}) :
+    Spectra.KanPiIsomorphism ((monicSuspensionComparisonNat r).app X).right
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。S₁ の Kan 比較の単射模型と、Kan 標的への suspension の自然な単射分解は証明済み。
+前段と次段を同じ Kan 列として接続する工程、delooping・Ω 条件・BF 連結スペクトルは未完了。
+同時商と円の smash の明示的同型、任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。
+L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（2980 jobs）、公理監査成功（1003 宣言、標準三公理のみ）。追加公理・sorry なし。

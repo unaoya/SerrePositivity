@@ -2751,3 +2751,87 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.oneDirectionAssemblyAdjoint_uncurry
 #print axioms SerrePositivity.KST.SConstruction.oneDirectionAssemblyAdjoint_uncurry
+
+#check @SerrePositivity.KST.SConstruction.pointedTransformationArrows
+#print axioms SerrePositivity.KST.SConstruction.pointedTransformationArrows
+
+#check @SerrePositivity.KST.SConstruction.pointedTransformationMiddle
+#print axioms SerrePositivity.KST.SConstruction.pointedTransformationMiddle
+
+#check @SerrePositivity.KST.SConstruction.pointedTransformationLeft
+#print axioms SerrePositivity.KST.SConstruction.pointedTransformationLeft
+
+#check @SerrePositivity.KST.SConstruction.pointedTransformationRight
+#print axioms SerrePositivity.KST.SConstruction.pointedTransformationRight
+
+#check @SerrePositivity.KST.SConstruction.pointedTransformation_fac
+#print axioms SerrePositivity.KST.SConstruction.pointedTransformation_fac
+
+#check @SerrePositivity.KST.SConstruction.pointedTransformationLeft_mono
+#print axioms SerrePositivity.KST.SConstruction.pointedTransformationLeft_mono
+
+#check @SerrePositivity.KST.SConstruction.pointedTransformationRight_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.pointedTransformationRight_trivialKanFibration
+
+#check @SerrePositivity.KST.SConstruction.pointedTransformationMiddle_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.pointedTransformationMiddle_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.pointedTransformationRight_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.pointedTransformationRight_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.pointedTransformationLeft_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.pointedTransformationLeft_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.refinedOneDirectionKanFunctor
+#print axioms SerrePositivity.KST.SConstruction.refinedOneDirectionKanFunctor
+
+#check @SerrePositivity.KST.SConstruction.refinedOneDirectionLeftNat
+#print axioms SerrePositivity.KST.SConstruction.refinedOneDirectionLeftNat
+
+#check @SerrePositivity.KST.SConstruction.refinedOneDirectionRightNat
+#print axioms SerrePositivity.KST.SConstruction.refinedOneDirectionRightNat
+
+#check @SerrePositivity.KST.SConstruction.refinedOneDirection_fac
+#print axioms SerrePositivity.KST.SConstruction.refinedOneDirection_fac
+
+#check @SerrePositivity.KST.SConstruction.refinedOneDirectionKan_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.refinedOneDirectionKan_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.refinedOneDirectionLeft_mono
+#print axioms SerrePositivity.KST.SConstruction.refinedOneDirectionLeft_mono
+
+#check @SerrePositivity.KST.SConstruction.refinedOneDirectionRight_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.refinedOneDirectionRight_trivialKanFibration
+
+#check @SerrePositivity.KST.SConstruction.refinedOneDirectionRight_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.refinedOneDirectionRight_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.refinedOneDirectionLeft_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.refinedOneDirectionLeft_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.kanTargetSuspensionAssemblyNat
+#print axioms SerrePositivity.KST.SConstruction.kanTargetSuspensionAssemblyNat
+
+#check @SerrePositivity.KST.SConstruction.monicSuspensionKanFunctor
+#print axioms SerrePositivity.KST.SConstruction.monicSuspensionKanFunctor
+
+#check @SerrePositivity.KST.SConstruction.monicSuspensionAssemblyNat
+#print axioms SerrePositivity.KST.SConstruction.monicSuspensionAssemblyNat
+
+#check @SerrePositivity.KST.SConstruction.monicSuspensionComparisonNat
+#print axioms SerrePositivity.KST.SConstruction.monicSuspensionComparisonNat
+
+#check @SerrePositivity.KST.SConstruction.monicSuspensionAssembly_fac
+#print axioms SerrePositivity.KST.SConstruction.monicSuspensionAssembly_fac
+
+#check @SerrePositivity.KST.SConstruction.monicSuspensionKan_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.monicSuspensionKan_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.monicSuspensionAssembly_mono
+#print axioms SerrePositivity.KST.SConstruction.monicSuspensionAssembly_mono
+
+#check @SerrePositivity.KST.SConstruction.monicSuspensionComparison_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.monicSuspensionComparison_trivialKanFibration
+
+#check @SerrePositivity.KST.SConstruction.monicSuspensionComparison_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.monicSuspensionComparison_piIsomorphism
