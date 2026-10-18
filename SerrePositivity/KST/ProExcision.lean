@@ -95,3 +95,8 @@ public import SerrePositivity.KST.ProExcision.LinearizedHomotopyOperations
 public import SerrePositivity.KST.ProExcision.AlexanderWhitney
 public import SerrePositivity.KST.ProExcision.AWFaces
 public import SerrePositivity.KST.ProExcision.AWBoundaryIndex
+public import SerrePositivity.KST.ProExcision.IntegerTensorAdditivity
+public import SerrePositivity.KST.ProExcision.AWTensorDifferential
+public import SerrePositivity.KST.ProExcision.AWBoundaryExpansion
+public import SerrePositivity.KST.ProExcision.AWBoundaryCoordinates
+public import SerrePositivity.KST.ProExcision.AWBoundaryTerms

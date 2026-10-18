@@ -1617,3 +1617,87 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.awBoundaryIndex_sum
 #print axioms SerrePositivity.KST.ProExcision.awBoundaryIndex_sum
+
+#check @SerrePositivity.KST.ProExcision.integerTensorMap_zero_left
+#print axioms SerrePositivity.KST.ProExcision.integerTensorMap_zero_left
+
+#check @SerrePositivity.KST.ProExcision.integerTensorMap_zero_right
+#print axioms SerrePositivity.KST.ProExcision.integerTensorMap_zero_right
+
+#check @SerrePositivity.KST.ProExcision.integerTensorMapLeftAddHom
+#print axioms SerrePositivity.KST.ProExcision.integerTensorMapLeftAddHom
+
+#check @SerrePositivity.KST.ProExcision.integerTensorMapRightAddHom
+#print axioms SerrePositivity.KST.ProExcision.integerTensorMapRightAddHom
+
+#check @SerrePositivity.KST.ProExcision.integerTensorMap_sum_left
+#print axioms SerrePositivity.KST.ProExcision.integerTensorMap_sum_left
+
+#check @SerrePositivity.KST.ProExcision.integerTensorMap_sum_right
+#print axioms SerrePositivity.KST.ProExcision.integerTensorMap_sum_right
+
+#check @SerrePositivity.KST.ProExcision.integerTensorMap_zsmul_left
+#print axioms SerrePositivity.KST.ProExcision.integerTensorMap_zsmul_left
+
+#check @SerrePositivity.KST.ProExcision.integerTensorMap_zsmul_right
+#print axioms SerrePositivity.KST.ProExcision.integerTensorMap_zsmul_right
+
+#check @SerrePositivity.KST.ProExcision.awTensorTerm
+#print axioms SerrePositivity.KST.ProExcision.awTensorTerm
+
+#check @SerrePositivity.KST.ProExcision.awTensorTerm_D₁
+#print axioms SerrePositivity.KST.ProExcision.awTensorTerm_D₁
+
+#check @SerrePositivity.KST.ProExcision.awTensorTerm_D₂
+#print axioms SerrePositivity.KST.ProExcision.awTensorTerm_D₂
+
+#check @SerrePositivity.KST.ProExcision.awTensorTerm_zero_D₁
+#print axioms SerrePositivity.KST.ProExcision.awTensorTerm_zero_D₁
+
+#check @SerrePositivity.KST.ProExcision.awTensorTerm_zero_D₂
+#print axioms SerrePositivity.KST.ProExcision.awTensorTerm_zero_D₂
+
+#check @SerrePositivity.KST.ProExcision.awTensorTerm_source_face
+#print axioms SerrePositivity.KST.ProExcision.awTensorTerm_source_face
+
+#check @SerrePositivity.KST.ProExcision.awInterval_face_last
+#print axioms SerrePositivity.KST.ProExcision.awInterval_face_last
+
+#check @SerrePositivity.KST.ProExcision.awInterval_face_zero
+#print axioms SerrePositivity.KST.ProExcision.awInterval_face_zero
+
+#check @SerrePositivity.KST.ProExcision.awDiagonal_sign_cancel
+#print axioms SerrePositivity.KST.ProExcision.awDiagonal_sign_cancel
+
+#check @SerrePositivity.KST.ProExcision.alexanderWhitney_source_boundary
+#print axioms SerrePositivity.KST.ProExcision.alexanderWhitney_source_boundary
+
+#check @SerrePositivity.KST.ProExcision.awTensorTerm_interval_congr
+#print axioms SerrePositivity.KST.ProExcision.awTensorTerm_interval_congr
+
+#check @SerrePositivity.KST.ProExcision.alexanderWhitneySummand_succ_D₁
+#print axioms SerrePositivity.KST.ProExcision.alexanderWhitneySummand_succ_D₁
+
+#check @SerrePositivity.KST.ProExcision.alexanderWhitney_horizontal_boundary
+#print axioms SerrePositivity.KST.ProExcision.alexanderWhitney_horizontal_boundary
+
+#check @SerrePositivity.KST.ProExcision.alexanderWhitneySummand_castSucc_D₂
+#print axioms SerrePositivity.KST.ProExcision.alexanderWhitneySummand_castSucc_D₂
+
+#check @SerrePositivity.KST.ProExcision.alexanderWhitney_vertical_boundary
+#print axioms SerrePositivity.KST.ProExcision.alexanderWhitney_vertical_boundary
+
+#check @SerrePositivity.KST.ProExcision.awLeftBoundaryCoordinates
+#print axioms SerrePositivity.KST.ProExcision.awLeftBoundaryCoordinates
+
+#check @SerrePositivity.KST.ProExcision.awRightBoundaryCoordinates
+#print axioms SerrePositivity.KST.ProExcision.awRightBoundaryCoordinates
+
+#check @SerrePositivity.KST.ProExcision.awLeftBoundaryTerm
+#print axioms SerrePositivity.KST.ProExcision.awLeftBoundaryTerm
+
+#check @SerrePositivity.KST.ProExcision.awRightBoundaryTerm
+#print axioms SerrePositivity.KST.ProExcision.awRightBoundaryTerm
+
+#check @SerrePositivity.KST.ProExcision.awDiagonalBoundaryTerm
+#print axioms SerrePositivity.KST.ProExcision.awDiagonalBoundaryTerm
