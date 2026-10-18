@@ -107,6 +107,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -2454,6 +2455,87 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.hatGLStabilization
 #print axioms SerrePositivity.KST.Comparison.hatGLStabilization
+
+
+-- Homology.lean
+
+#check @SerrePositivity.KST.Comparison.freeAbelianSimplicialFunctor
+#print axioms SerrePositivity.KST.Comparison.freeAbelianSimplicialFunctor
+
+#check @SerrePositivity.KST.Comparison.unnormalizedIntegralChains
+#print axioms SerrePositivity.KST.Comparison.unnormalizedIntegralChains
+
+#check @SerrePositivity.KST.Comparison.normalizedIntegralChains
+#print axioms SerrePositivity.KST.Comparison.normalizedIntegralChains
+
+#check @SerrePositivity.KST.Comparison.normalizationInclusion
+#print axioms SerrePositivity.KST.Comparison.normalizationInclusion
+
+#check @SerrePositivity.KST.Comparison.normalizationHomotopyEquiv
+#print axioms SerrePositivity.KST.Comparison.normalizationHomotopyEquiv
+
+#check @SerrePositivity.KST.Comparison.integralHomologyFunctor
+#print axioms SerrePositivity.KST.Comparison.integralHomologyFunctor
+
+#check @SerrePositivity.KST.Comparison.integralHomology
+#print axioms SerrePositivity.KST.Comparison.integralHomology
+
+#check @SerrePositivity.KST.Comparison.integralHomologyMap
+#print axioms SerrePositivity.KST.Comparison.integralHomologyMap
+
+#check @SerrePositivity.KST.Comparison.unnormalizedIntegralHomologyFunctor
+#print axioms SerrePositivity.KST.Comparison.unnormalizedIntegralHomologyFunctor
+
+#check @SerrePositivity.KST.Comparison.normalizationHomologyIso
+#print axioms SerrePositivity.KST.Comparison.normalizationHomologyIso
+
+#check @SerrePositivity.KST.Comparison.normalizationHomologyNatIso
+#print axioms SerrePositivity.KST.Comparison.normalizationHomologyNatIso
+
+
+-- HomologyDegenerate.lean
+
+#check @SerrePositivity.KST.Comparison.integralDegenerateProjection
+#print axioms SerrePositivity.KST.Comparison.integralDegenerateProjection
+
+#check @SerrePositivity.KST.Comparison.degenerateIntegralChains
+#print axioms SerrePositivity.KST.Comparison.degenerateIntegralChains
+
+#check @SerrePositivity.KST.Comparison.degenerateIntegralChains_split
+#print axioms SerrePositivity.KST.Comparison.degenerateIntegralChains_split
+
+#check @SerrePositivity.KST.Comparison.integralDegenerateProjectionNullHomotopy
+#print axioms SerrePositivity.KST.Comparison.integralDegenerateProjectionNullHomotopy
+
+#check @SerrePositivity.KST.Comparison.degenerateIntegralChainsContraction
+#print axioms SerrePositivity.KST.Comparison.degenerateIntegralChainsContraction
+
+#check @SerrePositivity.KST.Comparison.degenerateIntegralChains_homology_isZero
+#print axioms SerrePositivity.KST.Comparison.degenerateIntegralChains_homology_isZero
+
+#check @SerrePositivity.KST.Comparison.integralDegenerateProjection_annihilates_iff
+#print axioms SerrePositivity.KST.Comparison.integralDegenerateProjection_annihilates_iff
+
+
+-- HomologyHomotopy.lean
+
+#check @SerrePositivity.KST.Comparison.integralHomologyMap_id
+#print axioms SerrePositivity.KST.Comparison.integralHomologyMap_id
+
+#check @SerrePositivity.KST.Comparison.integralHomologyMap_comp
+#print axioms SerrePositivity.KST.Comparison.integralHomologyMap_comp
+
+#check @SerrePositivity.KST.Comparison.unnormalizedIntegralChainsHomotopy
+#print axioms SerrePositivity.KST.Comparison.unnormalizedIntegralChainsHomotopy
+
+#check @SerrePositivity.KST.Comparison.integralHomologyMap_eq_of_homotopy
+#print axioms SerrePositivity.KST.Comparison.integralHomologyMap_eq_of_homotopy
+
+#check @SerrePositivity.KST.Comparison.IntegralHomologyIsomorphism
+#print axioms SerrePositivity.KST.Comparison.IntegralHomologyIsomorphism
+
+#check @SerrePositivity.KST.Comparison.integralHomologyIsoOfHomotopyInverse
+#print axioms SerrePositivity.KST.Comparison.integralHomologyIsoOfHomotopyInverse
 
 
 -- HomotopyPullback.lean

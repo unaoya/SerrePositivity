@@ -60,6 +60,10 @@ plus 構成の存在とその性質を区別して証明する。
 
 | 対象 | 原典 | 本レーンでの用途 |
 | --- | --- | --- |
+| `integralHomologyFunctor`、`normalizationHomologyNatIso` | 監査済み | 実際の正規化整数ホモロジーと非正規化との自然同型 |
+| `integralHomologyMap_eq_of_homotopy` | 監査済み | 単体的ホモトピー不変性 |
+| `degenerateIntegralChainsContraction`、`degenerateIntegralChains_homology_isZero` | 監査済み | 退化部分の実際の鎖収縮と消滅 |
+| `integralDegenerateProjection_annihilates_iff` | 監査済み | 退化射影の像の普遍的特徴付け |
 | Γ の環構造 | Schwede–Shipley 2003 §2.3、式 (2.8)–(2.9) | Alexander–Whitney 積 |
 | Γ の忠実充満性 | 同 Proposition 2.13 | 正規化との整合 |
 | ĜL_n | KST §2.2、式 (2.2) | π₀ の単元成分の逆像 |
@@ -756,10 +760,26 @@ K-L9 の π₁ の積の MulStruct は二単体の δ₂ を第一因子、δ₀
 本実装では horn の補正写像として直接証明する経路を取る。
 次数ごとの行列の乗法逆元を使う経路へ戻さない。
 
+### 整数ホモロジーの正規化と退化部分
+
+確認する文言：自由単体的アーベル群 ℤ[X] の正規化 Moore 複体 Nℤ[X] を整数鎖複体とする。
+Mathlib の alternating face map complex Kℤ[X] への自然な包含は実際の鎖ホモトピー同値である。
+退化部分は Q∞=id-P∞ の像であり、その恒等射は零と鎖ホモトピックなので acyclic である。
+証明方針：AddCommGrpCat.free を各単体次数へ施し、二つの既存の鎖複体関手を合成する。
+正規化の比較には Mathlib の homotopyEquivNormalizedMooreComplexAlternatingFaceMapComplex を用いる。
+H_n(X;ℤ) を Nℤ[X] の実際の homology として定義し、誘導写像と自然性を公開する。
+単体的ホモトピーは自由関手を通して alternating face map complex の鎖ホモトピーへ渡し、
+自然な正規化比較によって整数ホモロジーの写像の一致を得る。
+退化部分の像の分解は Q∞ の冪等性から構成し、Mathlib の Q∞ の零ホモトピーを制限する。
+退化像の生成する部分との一致は、Decomposition と Degeneracies の補題で別途確認する。
+この経路は非正規化複体を正規化と呼び換える経路ではない。
+原典は Weibel K-book III の plus のホモロジー、Waldhausen LNM 1126 §1.7・§1.8・§2.3。
+
 ## 12. 現在地と主要宣言
 
 現在地：L2a と L2b の要求された群状モノイドの比較・KST Lemma 2.13 を完了し、L2c に進む。
-L2c の整数ホモロジーと plus、L2d の K₀・K₁、L2e の ∞-S• の比較は未完了である。
+L2c の正規化整数ホモロジー・自然な正規化比較・ホモトピー不変性・退化部分の収縮を証明した。
+L2c の相対・局所係数ホモロジーと plus、L2d の K₀・K₁、L2e の ∞-S• の比較は未完了である。
 正本 §13-10 のとおり、ĜL は群状単体的モノイドであり、次数ごとの単体的群とはしない。
 π_n とその既存の群演算・loop の次数移動・filtered colimit の定理は K-L9 の実装を借りた。
 π_n の計算を追加仮定として導入せず、実際の Kan 模型に対する群同型を構成した。
@@ -807,7 +827,9 @@ KST Lemma 2.13 は次の三つの実際の宣言で供給される。
 
 ### 残工程
 
-L2c：Mathlib の alternating face map complex と正規化 Moore complex を使う整数ホモロジーを構成する。
+L2c：正規化整数ホモロジー、非正規化との自然同型、ホモトピー不変性は完成。
+退化射影 Q∞ の像の分裂と鎖収縮、全次数のホモロジー消滅、退化の消滅による普遍的特徴付けも証明した。
+相対整数ホモロジーの余核模型と長完全列、局所係数の実装へ進む。
 その後、局所係数を含む acyclic map、ホモロジー同型、基本群の完全正規部分群による商として plus を証明する。
 L2d：確定した K0 界面、冪等元の持ち上げ、安定 elementary 部分群と K₁ の比較を証明する。
 L2e：K-L1 の K1a の供給状況を確認し、§10-5 の Hurewicz の紙上確認と ∞-S• の比較へ進む。
@@ -816,10 +838,10 @@ L2e：K-L1 の K1a の供給状況を確認し、§10-5 の Hurewicz の紙上�
 
 ### 検証
 
-`lake build SerrePositivity.KST.Comparison`：成功、4445 jobs。
+`lake build SerrePositivity.KST.Comparison`：成功、4450 jobs。
 `lake env lean scripts/audit_kst_comparison.lean`：終了コード 0。
-主要 1264 宣言の型と推移的依存公理を確認した。
-名前空間全体の 2294 宣言（自動生成された公開補題・射影を含む）も許可リストで検査した。
+主要 1288 宣言の型と推移的依存公理を確認した。
+名前空間全体の 2334 宣言（自動生成された公開補題・射影を含む）も許可リストで検査した。
 許可した公理は propext、Classical.choice、Quot.sound の標準三公理のみ。
 L2b の工程の区切りの全体ビルドはルート集約 `SerrePositivity.lean:1` で失敗した（12355 jobs の最終集約）。
 `F1B.RelativeFunctorHomotopyComposition` の import が `F1.RelativeFunctorVertices` の
