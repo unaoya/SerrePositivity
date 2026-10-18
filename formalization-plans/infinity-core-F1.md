@@ -8428,5 +8428,40 @@ lemma relativeFunctorPostHom_ordinary {B : SSet.{u}} (a b c : Over B) (f : b ⟶
     relativeFunctorHomEquiv b c f ≫ relativeFunctorPostHom a b c =
       curry' (HomotopyLimits.relativeFunctorPost b.hom c.hom f.left f.w a.hom)
 
+def edgewiseWeight : SimplexCategory ⥤ SSet.{u}
+
+def edgewiseSubdivision (X : SSet.{u}) : SSet.{u}
+
+def edgewiseSubdivisionMap {X Y : SSet.{u}} (f : X ⟶ Y) :
+    edgewiseSubdivision X ⟶ edgewiseSubdivision Y
+
+def edgewiseSubdivisionFunctor : SSet.{u} ⥤ SSet.{u}
+
+lemma edgewiseStdSimplex_opIso_inv_naturality {a b : SimplexCategory} (α : a ⟶ b) :
+    (stdSimplex.opIso.{u} a).inv ≫
+        SSet.opFunctor.map (stdSimplex.map (SimplexCategory.rev.map α)) =
+      stdSimplex.map α ≫ (stdSimplex.opIso b).inv
+
+def edgewiseRight (X : SSet.{u}) : edgewiseSubdivision X ⟶ X
+
+def edgewiseLeft (X : SSet.{u}) : edgewiseSubdivision X ⟶ X.op
+
+lemma edgewiseRight_naturality {X Y : SSet.{u}} (f : X ⟶ Y) :
+    edgewiseSubdivisionMap f ≫ edgewiseRight Y = edgewiseRight X ≫ f
+
+lemma edgewiseLeft_naturality {X Y : SSet.{u}} (f : X ⟶ Y) :
+    edgewiseSubdivisionMap f ≫ edgewiseLeft Y = edgewiseLeft X ≫ SSet.opFunctor.map f
+
+def edgewiseWeightIso (n : ℕ) :
+    edgewiseWeight.{u}.obj ⦋n⦌ ≅ (Δ[n + n + 1] : SSet.{u})
+
+def edgewiseSimplexEquiv (X : SSet.{u}) (n : ℕ) :
+    (edgewiseSubdivision X) _⦋n⦌ ≃ X _⦋n + n + 1⦌
+
+lemma edgewiseSimplexEquiv_naturality {X Y : SSet.{u}} (f : X ⟶ Y) (n : ℕ)
+    (s : (edgewiseSubdivision X) _⦋n⦌) :
+    edgewiseSimplexEquiv Y n ((edgewiseSubdivisionMap f).app (Opposite.op ⦋n⦌) s) =
+      f.app (Opposite.op ⦋n + n + 1⦌) (edgewiseSimplexEquiv X n s)
+
 end SerrePositivity.InfinityCategories
 ```

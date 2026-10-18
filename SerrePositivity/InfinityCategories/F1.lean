@@ -426,3 +426,6 @@ public import SerrePositivity.InfinityCategories.F1.LeftStraighteningVertices
 public import SerrePositivity.InfinityCategories.F1.DiagonalRelativeConstantBase
 public import SerrePositivity.InfinityCategories.F1.LeftStraighteningEvaluation
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorPostHomOrdinary
+public import SerrePositivity.InfinityCategories.F1.EdgewiseSubdivision
+public import SerrePositivity.InfinityCategories.F1.EdgewiseEndpoints
+public import SerrePositivity.InfinityCategories.F1.EdgewiseStandardSimplex

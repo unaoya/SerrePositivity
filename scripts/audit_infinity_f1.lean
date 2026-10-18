@@ -1804,3 +1804,15 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.strictTransportDiagonalSimplex_constant_base
 #check @SerrePositivity.InfinityCategories.leftStraighteningCoherentMap_evaluate
 #check @SerrePositivity.InfinityCategories.relativeFunctorPostHom_ordinary
+#check @SerrePositivity.InfinityCategories.edgewiseWeight
+#check @SerrePositivity.InfinityCategories.edgewiseSubdivision
+#check @SerrePositivity.InfinityCategories.edgewiseSubdivisionMap
+#check @SerrePositivity.InfinityCategories.edgewiseSubdivisionFunctor
+#check @SerrePositivity.InfinityCategories.edgewiseStdSimplex_opIso_inv_naturality
+#check @SerrePositivity.InfinityCategories.edgewiseRight
+#check @SerrePositivity.InfinityCategories.edgewiseLeft
+#check @SerrePositivity.InfinityCategories.edgewiseRight_naturality
+#check @SerrePositivity.InfinityCategories.edgewiseLeft_naturality
+#check @SerrePositivity.InfinityCategories.edgewiseWeightIso
+#check @SerrePositivity.InfinityCategories.edgewiseSimplexEquiv
+#check @SerrePositivity.InfinityCategories.edgewiseSimplexEquiv_naturality
