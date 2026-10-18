@@ -1801,3 +1801,84 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @joinSumSimplexMap_comp
 #print axioms joinSumSimplexMap_comp
+
+#check @joinMiddleMap
+#print axioms joinMiddleMap
+
+#check @joinAugMap_heq
+#print axioms joinAugMap_heq
+
+#check @joinTripleSimplex_ext
+#print axioms joinTripleSimplex_ext
+
+#check @joinAugMap_left_left
+#print axioms joinAugMap_left_left
+
+#check @joinAugMap_right_left
+#print axioms joinAugMap_right_left
+
+#check @joinAugMap_left_right
+#print axioms joinAugMap_left_right
+
+#check @joinAugMap_right_right
+#print axioms joinAugMap_right_right
+
+#check @joinSumSimplex_left_heq
+#print axioms joinSumSimplex_left_heq
+
+#check @joinSumSimplex_right_heq
+#print axioms joinSumSimplex_right_heq
+
+#check @augmentedJoinSumEquiv_cast_val
+#print axioms augmentedJoinSumEquiv_cast_val
+
+#check @joinTripleSimplexMap
+#print axioms joinTripleSimplexMap
+
+#check @joinTripleSimplexMap_left
+#print axioms joinTripleSimplexMap_left
+
+#check @joinTripleSimplexMap_right
+#print axioms joinTripleSimplexMap_right
+
+#check @leftJoinTripleEncoding
+#print axioms leftJoinTripleEncoding
+
+#check @rightJoinTripleEncoding
+#print axioms rightJoinTripleEncoding
+
+#check @leftJoinTripleEncoding_map
+#print axioms leftJoinTripleEncoding_map
+
+#check @rightJoinTripleEncoding_map
+#print axioms rightJoinTripleEncoding_map
+
+#check @joinAssociatorSimplexEquiv_naturality
+#print axioms joinAssociatorSimplexEquiv_naturality
+
+#check @joinAssociator
+#print axioms joinAssociator
+
+#check @joinSumSimplexHom
+#print axioms joinSumSimplexHom
+
+#check @augmentedJoinSumEquiv_hom
+#print axioms augmentedJoinSumEquiv_hom
+
+#check @joinTripleSimplexHom
+#print axioms joinTripleSimplexHom
+
+#check @leftJoinSumTripleEquiv_hom
+#print axioms leftJoinSumTripleEquiv_hom
+
+#check @rightJoinSumTripleEquiv_hom
+#print axioms rightJoinSumTripleEquiv_hom
+
+#check @leftJoinTripleEncoding_hom
+#print axioms leftJoinTripleEncoding_hom
+
+#check @rightJoinTripleEncoding_hom
+#print axioms rightJoinTripleEncoding_hom
+
+#check @joinAssociator_naturality
+#print axioms joinAssociator_naturality

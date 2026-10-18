@@ -913,3 +913,24 @@ Core の定義・他担当のファイルは変更していない。
 集約の他担当の依存700ソースはすべて追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-join-assoc-preparation-aggregate.log` と
 `/tmp/gamma3-join-assoc-preparation-audit.log`。
+
+
+### γ3b：join の結合同型と三因子の射についての自然性
+
+`JoinTripleCoordinates` に中区間の直接の制限と、左右の二重の区間制限の単体作用の HEq、
+三因子の和表示の外延性を証明した。
+`JoinTripleMaps` に共通表示の単体作用を構成し、両括弧付けからの作用との一致を証明。
+`JoinAssociator` は任意の A・B・C について全ての面・退化との可換性を示し、
+`joinAssociator A B C : (A⋆B)⋆C ≅ A⋆(B⋆C)` を単体集合の厳密な同型として公開する。
+`JoinAssociatorMaps` の `joinAssociator_naturality` は三つの因子の任意の射への自然性。
+Kan 性・quasicategory 性・非空性や因子の射への追加の仮定は不要。
+新規27宣言の正確な型・全前提は README と公開907宣言の監査に記録。
+join の結合同型と自然性は今回で完成。固定面の包含との整合式、反復 slice の同定、
+native な錐の比較と切断の制限の比較、元の q_x と反転係数の整合性、𝒮・Sp の残りの適用は
+未完了であり、γ3b・γ3c は継続中。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4443 jobs）、公開907宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規ファイルの警告・sorry・追加公理はない。
+集約の他担当の依存700ソースはすべて追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-join-associator-aggregate.log` と
+`/tmp/gamma3-join-associator-audit.log`。

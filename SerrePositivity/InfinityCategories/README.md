@@ -4640,13 +4640,176 @@ lemma joinSumSimplexMap_comp (A B : SSet.{u}) {l m n : ℕ}
       joinSumSimplexMap A B β (joinSumSimplexMap A B α s)
 ```
 
-三因子の再結合 `joinAssociatorSimplexEquiv` 自体の面・退化との可換性、単体集合の結合同型、
-その同型を使う反復 slice の比較は未完了。二因子の和表示の自然性だけで、三因子の
-再結合の自然性が証明済みとはしない。native な錐の全体の比較、元の q_x と反転した係数の
-整合性、𝒮・Sp の残りの適用も引き続き未完了。
+三因子の再結合 `joinAssociatorSimplexEquiv` の面・退化との可換性、単体集合の結合同型、
+三因子の射についての自然性は下節で実装済み。その同型を使う反復 slice の比較、
+native な錐の全体の比較、元の q_x と反転した係数の整合性、𝒮・Sp の残りの適用は
+引き続き未完了。
 
 検証：対象集約 `HomotopyLimits` のビルド成功（4439 jobs）、公開880宣言の `#check @` と
 公理監査成功（標準3公理のみ）。新規ファイルの警告・sorry・追加公理はない。
 集約の他担当の依存700ソースはすべて追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-join-assoc-preparation-aggregate.log` と
 `/tmp/gamma3-join-assoc-preparation-audit.log`。
+
+
+### join の結合同型と三因子の射についての自然性
+
+`JoinTripleCoordinates` は二つの切断の間の `joinMiddleMap α a b` を直接定義し、
+左区間の左右の制限、右区間の左右の制限を、直接の三つの区間の制限と HEq で同定する。
+空区間も含み、頂点数の等式による移送を省略しない。
+`JoinTripleMaps` は三つの区間の共通表示への単体作用を構成し、左括弧・右括弧の両方から
+移した作用が同じ実際の作用になることを証明する。
+
+`JoinAssociator` はこれを用いて既存の各次数の `joinAssociatorSimplexEquiv` の
+全ての面・退化への自然性を証明し、任意の `A B C : SSet.{u}` に対して
+
+```lean
+joinAssociator A B C : join (join A B) C ≅ join A (join B C)
+```
+
+を構成した。Kan 性・quasicategory 性・非空性の仮定はない。
+順方向は構成済みの次数ごとの全単射であり、同値な別の射へ置き換えない。
+
+`JoinAssociatorMaps` は両括弧付けの共通表示が各因子の射に自然であることを証明し、
+任意の `f : A ⟶ A'`、`g : B ⟶ B'`、`h : C ⟶ C'` に対し
+
+```lean
+joinMap (joinMap f g) h ≫ (joinAssociator A' B' C').hom =
+  (joinAssociator A B C).hom ≫ joinMap f (joinMap g h)
+```
+
+を得た。因子の射に単射性や同値性は不要。この可換式を反復 slice のパラメータ変更に使う。
+原典上の位置は HTT §1.2.8、4.2.4.1 の双対、Kerodon §4.3.5、7.4.1.6。
+
+新規27宣言の正確な型・全前提は以下と公開宣言の監査に記録する。
+共通の宇宙は `universe u`。`joinSumSimplex` と `joinTripleSimplex` は前節の和表示を用いる。
+
+```lean
+def joinMiddleMap {m n : ℕ} (α : Fin m →o Fin n) (a b : ℕ) :
+    Fin (Join.pullCut α (a + b) - Join.pullCut α a) →o Fin b
+lemma joinAugMap_heq (X : SSet.{u}) {m m' n n' : ℕ} (hm : m = m') (hn : n = n')
+    (α : Fin m →o Fin n) (β : Fin m' →o Fin n')
+    (hα : ∀ (i : Fin m) (j : Fin m'), i.val = j.val → (α i).val = (β j).val)
+    (x : Join.augObj X n) (y : Join.augObj X n') (hxy : HEq x y) :
+    HEq (Join.augMap X α x) (Join.augMap X β y)
+lemma joinTripleSimplex_ext {A B C : SSet.{u}} {n : ℕ}
+    (s t : joinTripleSimplex A B C n)
+    (ha : s.val.1 = t.val.1) (hb : s.val.2.1 = t.val.2.1)
+    (hc : s.val.2.2.1 = t.val.2.2.1)
+    (hx : HEq s.val.2.2.2.1 t.val.2.2.2.1)
+    (hy : HEq s.val.2.2.2.2.1 t.val.2.2.2.2.1)
+    (hz : HEq s.val.2.2.2.2.2 t.val.2.2.2.2.2) : s = t
+lemma joinAugMap_left_left (X : SSet.{u}) {m n : ℕ}
+    (α : Fin m →o Fin n) (a b : ℕ) (x : Join.augObj X a) :
+    HEq (Join.augMap X (Join.leftMap (Join.leftMap α (a + b)) a) x)
+      (Join.augMap X (Join.leftMap α a) x)
+lemma joinAugMap_right_left (X : SSet.{u}) {m n : ℕ}
+    (α : Fin m →o Fin n) (a b : ℕ) (x : Join.augObj X b) :
+    HEq (Join.augMap X (Join.rightMap (Join.leftMap α (a + b)) a)
+      (cast (congrArg (Join.augObj X) (by omega : b = a + b - a)) x))
+      (Join.augMap X (joinMiddleMap α a b) x)
+lemma joinAugMap_left_right (X : SSet.{u}) {m n : ℕ}
+    (α : Fin m →o Fin n) (a b : ℕ) (x : Join.augObj X b) :
+    HEq (Join.augMap X (Join.leftMap (Join.rightMap α a) b) x)
+      (Join.augMap X (joinMiddleMap α a b) x)
+lemma joinAugMap_right_right (X : SSet.{u}) {m n : ℕ}
+    (α : Fin m →o Fin n) (a b : ℕ) (x : Join.augObj X (n - (a + b))) :
+    HEq (Join.augMap X (Join.rightMap (Join.rightMap α a) b)
+      (cast (congrArg (Join.augObj X) (by omega : n - (a + b) = n - a - b)) x))
+      (Join.augMap X (Join.rightMap α (a + b)) x)
+lemma joinSumSimplex_left_heq {A B : SSet.{u}} {n : ℕ}
+    {s t : joinSumSimplex A B n} (h : s = t) : HEq s.val.2.2.1 t.val.2.2.1
+lemma joinSumSimplex_right_heq {A B : SSet.{u}} {n : ℕ}
+    {s t : joinSumSimplex A B n} (h : s = t) : HEq s.val.2.2.2 t.val.2.2.2
+lemma augmentedJoinSumEquiv_cast_val (A B : SSet.{u}) {n n' : ℕ} (h : n = n')
+    (s : Join.augObj (join A B) n) :
+    (augmentedJoinSumEquiv A B n'
+      (cast (congrArg (Join.augObj (join A B)) h) s)).val =
+    (augmentedJoinSumEquiv A B n s).val
+def joinTripleSimplexMap (A B C : SSet.{u}) {m n : ℕ} (α : Fin m →o Fin n) :
+    joinTripleSimplex A B C n → joinTripleSimplex A B C m
+lemma joinTripleSimplexMap_left (A B C : SSet.{u}) {m n : ℕ}
+    (α : Fin m →o Fin n) (t : joinTripleSimplex A B C n) :
+    leftJoinSumTripleEquiv A B C m
+        (joinSumSimplexMap (join A B) C α ((leftJoinSumTripleEquiv A B C n).symm t)) =
+      joinTripleSimplexMap A B C α t
+lemma joinTripleSimplexMap_right (A B C : SSet.{u}) {m n : ℕ}
+    (α : Fin m →o Fin n) (t : joinTripleSimplex A B C n) :
+    rightJoinSumTripleEquiv A B C m
+        (joinSumSimplexMap A (join B C) α ((rightJoinSumTripleEquiv A B C n).symm t)) =
+      joinTripleSimplexMap A B C α t
+def leftJoinTripleEncoding (A B C : SSet.{u}) (n : ℕ) :
+    Join.augObj (join (join A B) C) n ≃ joinTripleSimplex A B C n
+def rightJoinTripleEncoding (A B C : SSet.{u}) (n : ℕ) :
+    Join.augObj (join A (join B C)) n ≃ joinTripleSimplex A B C n
+lemma leftJoinTripleEncoding_map (A B C : SSet.{u}) {m n : ℕ}
+    (α : Fin m →o Fin n) (s : Join.augObj (join (join A B) C) n) :
+    leftJoinTripleEncoding A B C m (Join.augMap (join (join A B) C) α s) =
+      joinTripleSimplexMap A B C α (leftJoinTripleEncoding A B C n s)
+lemma rightJoinTripleEncoding_map (A B C : SSet.{u}) {m n : ℕ}
+    (α : Fin m →o Fin n) (s : Join.augObj (join A (join B C)) n) :
+    rightJoinTripleEncoding A B C m (Join.augMap (join A (join B C)) α s) =
+      joinTripleSimplexMap A B C α (rightJoinTripleEncoding A B C n s)
+lemma joinAssociatorSimplexEquiv_naturality (A B C : SSet.{u}) {m n : ℕ}
+    (α : ⦋m⦌ ⟶ ⦋n⦌) (s : (join (join A B) C) _⦋n⦌) :
+    joinAssociatorSimplexEquiv A B C m ((join (join A B) C).map α.op s) =
+      (join A (join B C)).map α.op (joinAssociatorSimplexEquiv A B C n s)
+def joinAssociator (A B C : SSet.{u}) : join (join A B) C ≅ join A (join B C)
+def joinSumSimplexHom {A A' B B' : SSet.{u}} (f : A ⟶ A') (g : B ⟶ B') (n : ℕ) :
+    joinSumSimplex A B n → joinSumSimplex A' B' n
+  | ⟨⟨a, b, x, y⟩, h⟩ => ⟨⟨a, b, Join.augHom f a x, Join.augHom g b y⟩, h⟩
+
+/-- 概要：join の和表示への全単射は両因子の射の作用と可換。
+方針：空の場合を分け、非空では joinMap の各次数の定義を読む。
+規約：因子の射に追加の仮定は不要。
+使われ方：HTT §1.2.8 の結合同型の自然性の準備。 -/
+lemma augmentedJoinSumEquiv_hom {A A' B B' : SSet.{u}}
+    (f : A ⟶ A') (g : B ⟶ B') (n : ℕ) (s : Join.augObj (join A B) n) :
+    augmentedJoinSumEquiv A' B' n (Join.augHom (joinMap f g) n s) =
+      joinSumSimplexHom f g n (augmentedJoinSumEquiv A B n s)
+def joinTripleSimplexHom {A A' B B' C C' : SSet.{u}}
+    (f : A ⟶ A') (g : B ⟶ B') (h : C ⟶ C') (n : ℕ) :
+    joinTripleSimplex A B C n → joinTripleSimplex A' B' C' n
+  | ⟨⟨a, b, c, x, y, z⟩, hn⟩ =>
+    ⟨⟨a, b, c, Join.augHom f a x, Join.augHom g b y, Join.augHom h c z⟩, hn⟩
+
+/-- 概要：左括弧の和表示の展開は各因子の射と可換。
+方針：内側の二因子の自然性を、三つの区間への値の写像へ渡す。
+規約：部分型の和の証明は外延性で分離する。
+使われ方：HTT §1.2.8 の左括弧の自然性。 -/
+lemma leftJoinSumTripleEquiv_hom {A A' B B' C C' : SSet.{u}}
+    (f : A ⟶ A') (g : B ⟶ B') (h : C ⟶ C') (n : ℕ)
+    (s : joinSumSimplex (join A B) C n) :
+    leftJoinSumTripleEquiv A' B' C' n (joinSumSimplexHom (joinMap f g) h n s) =
+      joinTripleSimplexHom f g h n (leftJoinSumTripleEquiv A B C n s)
+lemma rightJoinSumTripleEquiv_hom {A A' B B' C C' : SSet.{u}}
+    (f : A ⟶ A') (g : B ⟶ B') (h : C ⟶ C') (n : ℕ)
+    (s : joinSumSimplex A (join B C) n) :
+    rightJoinSumTripleEquiv A' B' C' n (joinSumSimplexHom f (joinMap g h) n s) =
+      joinTripleSimplexHom f g h n (rightJoinSumTripleEquiv A B C n s)
+lemma leftJoinTripleEncoding_hom {A A' B B' C C' : SSet.{u}}
+    (f : A ⟶ A') (g : B ⟶ B') (h : C ⟶ C') (n : ℕ)
+    (s : Join.augObj (join (join A B) C) n) :
+    leftJoinTripleEncoding A' B' C' n (Join.augHom (joinMap (joinMap f g) h) n s) =
+      joinTripleSimplexHom f g h n (leftJoinTripleEncoding A B C n s)
+lemma rightJoinTripleEncoding_hom {A A' B B' C C' : SSet.{u}}
+    (f : A ⟶ A') (g : B ⟶ B') (h : C ⟶ C') (n : ℕ)
+    (s : Join.augObj (join A (join B C)) n) :
+    rightJoinTripleEncoding A' B' C' n (Join.augHom (joinMap f (joinMap g h)) n s) =
+      joinTripleSimplexHom f g h n (rightJoinTripleEncoding A B C n s)
+lemma joinAssociator_naturality {A A' B B' C C' : SSet.{u}}
+    (f : A ⟶ A') (g : B ⟶ B') (h : C ⟶ C') :
+    joinMap (joinMap f g) h ≫ (joinAssociator A' B' C').hom =
+      (joinAssociator A B C).hom ≫ joinMap f (joinMap g h)
+```
+
+join の単体集合としての結合同型と三因子の射に関する自然性は今回の範囲で完成。
+固定面の包含の式とこの同型を使う反復 slice の同定、native な錐の Hom 比較と切断の
+制限の比較は後続の工程。元の q_x と係数の反転の整合性、𝒮・Sp の残りの適用も未完了であり、
+join の同型だけで γ3b・γ3c の完成とはしない。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4443 jobs）、公開907宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規ファイルの警告・sorry・追加公理はない。
+集約の他担当の依存700ソースはすべて追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-join-associator-aggregate.log` と
+`/tmp/gamma3-join-associator-audit.log`。
