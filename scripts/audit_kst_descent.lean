@@ -116,6 +116,8 @@ run_cmd do
       `SerrePositivity.KST.Descent.AffinePureTransform,
       `SerrePositivity.KST.Descent.AffineOpenPureTransform,
       `SerrePositivity.KST.Descent.GenericAffineFlattening,
+      `SerrePositivity.KST.Descent.ImageOpenBaseChange,
+      `SerrePositivity.KST.Descent.StrictTransformOpenCharts,
       `SerrePositivity.KST.Descent.ComponentSplit,
       `SerrePositivity.KST.Descent.ComponentRemainderCover,
       `SerrePositivity.KST.Descent.FiberTransitivityNaturality,

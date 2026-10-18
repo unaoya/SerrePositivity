@@ -88,6 +88,8 @@ public import SerrePositivity.KST.Descent.AlgebraPureTransform
 public import SerrePositivity.KST.Descent.AffinePureTransform
 public import SerrePositivity.KST.Descent.AffineOpenPureTransform
 public import SerrePositivity.KST.Descent.GenericAffineFlattening
+public import SerrePositivity.KST.Descent.ImageOpenBaseChange
+public import SerrePositivity.KST.Descent.StrictTransformOpenCharts
 public import SerrePositivity.KST.Descent.ComponentSplit
 public import SerrePositivity.KST.Descent.ComponentRemainderCover
 public import SerrePositivity.KST.Descent.FiberTransitivityNaturality
@@ -209,7 +211,9 @@ Noether 整域上の有限加群を非零元の局所化で自由にし、実際
 平坦にする中心の存在へ接続する。
 加群純変換を実際の商代数と同定し、その Spec を局所化と基本開のスキーム論的像に
 閉包含と構造射を保つ同型で結ぶ。全 blowup チャートでこの実際の像を有限平坦にする。
-global な strict transform のチャートとの同定と貼り合わせは残す。
+像と開底変換の両立から global な strict transform の開チャートを周辺チャートの像で
+表示し、その構造射を保持して開被覆上の平坦性を貼り合わせる。
+テンソル積のアフィン像とこの周辺チャートの像の一致は残す。
 これらの空間と射を同じ有限型の圏へ持ち上げ、実際の底変換被覆への Čech 細分比較と
 中心の台を用いる抽象 blowup 正方形も構成する。
 元の値域の線形性を使わず、実際の図式関手の像における観測後の rank 公式で

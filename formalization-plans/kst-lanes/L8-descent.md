@@ -103,10 +103,12 @@ Noether 整域上の有限加群の非零元による自由化を証明し、実
 平坦にする中心の存在に必要だった境界外の平坦性を供給した（§50）。
 加群純変換を実際の商代数と同定し、その Spec を基本開のスキーム論的像に
 閉包含と構造射を保つ同型で結び、全チャートのその像の有限平坦性を証明した（§51）。
+像と開底変換の両立から global strict transform の開チャートを周辺チャートの像で表示し、
+その構造射を保つ同型と Zariski 局所性で平坦性を貼り合わせた（§52）。
 `Theorem31.lean` では (3.8) と中心上の帰納仮定による代数的な軌道貼り合わせを証明。
 正本 D7 に従う導来値域への実現の型を §19 に明示する。
 検証状態：`lake build SerrePositivity.KST.Descent` が成功。
-監査状態：`scripts/audit_kst_descent.lean` は 125 モジュール・1517 宣言を検査し成功。
+監査状態：`scripts/audit_kst_descent.lean` は 127 モジュール・1549 宣言を検査し成功。
 許容公理は標準三公理のみ。主定理や八つの公理の完成を意味しない。
 切断を持つ射の帰納の区切りとして、全体ビルド `lake build` も成功（9418 ジョブ）。
 終了コードは `set -eo pipefail` で確認。ログは `/tmp/l8-sectioned-full-build.log`。
@@ -645,6 +647,12 @@ Z 上の帰納仮定で残りの辺を同型とする。
 | `algebraPureTransformBasicOpenImageIso_hom_structure` | 基本開の像との同型の基礎環上の可換性 | 対象ビルド済み、構造射を保持 |
 | `algebraBoundaryOpen_image_flat`、`algebraBoundaryOpen_image_isFinite` | 基本開の実際のスキーム論的像の構造射の平坦性・有限性 | 対象ビルド済み、構造層を保持 |
 | `exists_nonzero_finiteFlat_image_charts` | 実際の全 blowup チャート上のアフィン像を有限平坦にする中心 | 対象ビルド済み、global strict transform とのチャート比較・貼り合わせは別工程 |
+| `ker_of_openBaseChange`、`ker_pullback_open` | 準コンパクトな射の核と開底変換の両立 | 対象ビルド済み、イデアル層としての等式 |
+| `imageOpenBaseChangeIsoOfIsPullback`、`imageOpenBaseChangeIso` | 実際の像と開底変換の標準同型 | 対象ビルド済み、具体的な Cartesian モデルにも適用可 |
+| `strictTransformOpen_quasiCompact` | 局所 Noether 基底上の有限型射の strict transform の定義開包含の準コンパクト性 | 対象ビルド済み、像の底変換の入力を供給 |
+| `strictTransformOpenChartIso`、`strictTransformOpenChartIso_hom_snd` | 周辺チャートの像と global strict transform の実際のチャートの同型 | 対象ビルド済み、チャート基底への構造射を保持 |
+| `strictTransform_chart_flat_of_image_flat` | 周辺チャートの像の平坦性から strict transform のチャートの平坦性 | 対象ビルド済み、実際のスキームの射に適用 |
+| `strictTransform_flat_of_openChart_images` | 周辺チャートの全ての像の平坦性から global strict transform の平坦性 | 対象ビルド済み、実際の開被覆を使う |
 | `finiteCoproductDesc_isFinite` | 共通の終域への有限個の有限射を非交和にまとめる | 対象ビルド済み |
 | `sectionOrbitMap_isFinite`、`sectionOrbitMap_isProper` | 分離射の有限個の切断からの軌道射の有限性・固有性 | 対象ビルド済み |
 | `reducedSectionOrbitMap_isFinite` | 被約化への切断の軌道射の有限性 | 対象ビルド済み |
@@ -1733,3 +1741,53 @@ Spec のイデアル対応を使い、商写像の Spec と局所化の Spec の
 §51 の保存検証：集約対象ビルドと公理監査が成功。125 モジュール・1517 宣言、標準三公理のみ。
 §51 の区切りの全体ビルドも成功（10179 ジョブ）。`set -eo pipefail` で終了コード 0。
 ログは `/tmp/l8-affine-pure-transform-full-build.log`。
+
+
+## 52. 像の開底変換と global strict transform のチャートでの平坦性の貼り合わせ
+
+準コンパクトな射 f と開埋め込み g の実際の Cartesian 正方形について、
+底変換後の核イデアル層が元の核の引き戻しと一致することを証明した。
+各アフィン開集合で Mathlib の核の公式とイデアル層の引き戻しの公式が一致することを使う。
+選択された引き戻しだけでなく、具体的な Cartesian モデルにも適用できる。
+これと閉包含の引き戻しの核の公式を合わせ、
+局所のスキーム論的像と元の像の実際の引き戻しの間に、閉包含を保つ標準同型を構成した。
+像を点集合の閉包で代用せず、構造層を持つ閉スキームとして比較している。
+
+strict transform を定義する開包含の準コンパクト性も供給した。
+局所 Noether 基底上の有限型射では、blowup と周辺空間が局所 Noether なので、
+その実際の開包含は準コンパクトである。
+したがってこの像の開底変換の定理を実際の strict transform に適用できる。
+
+blowup の開チャート j に対し、周辺空間の実際の底変換と、
+strict transform を定義する開部分のその逆像を構成した。
+この開部分の像は、元の strict transform の閉包含を周辺チャートへ引き戻したものと同型になる。
+二射影の交換と二段の Cartesian 正方形の貼り合わせを通して、
+`strictTransformOpenChartIso` はこれを元の構造射 `strictTransformπ` の実際の底変換に結ぶ。
+この同型がチャート基底への指定構造射を保つことも全ての射影公式から証明した。
+別の引き戻しの型クラスを選んで対象を変更してはいない。
+
+この同型の逆を使い、周辺チャートの像の平坦性から
+元の strict transform の構造射のそのチャート上での平坦性を得た。
+平坦性の標的上の Zariski 局所性により、実際の開被覆の全ての像が平坦なら
+元の global な `strictTransformπ` が平坦となる。
+型クラス探索が Mathlib の一般の局所性を自動取得できない箇所では、
+`HasRingHomProperty.instIsZariskiLocalAtTarget` の既存の証明を明示して適用した。
+新しい平坦性の局所性の仮定や公理は導入していない。
+
+§51 のテンソル積のアフィン像を、この周辺チャートの像と同定する工程は残る。
+実際のテンソル積 Spec のファイバー積表示と、境界基本開の一致を使って
+二つの具体的なチャートを対応させる必要がある。
+その後、既に証明したこの貼り合わせと §47–49 の全射性・有限平坦細分へ接続する。
+Čech 細分の実降下・中心上の帰納、実際の Tot・hG、最小公理全体、
+自然な blowup 列と有限積保存の導出、(3.6)・K0・T2・E も未完である。
+
+§52 の保存検証：集約対象ビルドと公理監査が成功。127 モジュール・1549 宣言、標準三公理のみ。
+§52 の区切りの全体ビルドも成功（10226 ジョブ）。`set -eo pipefail` で終了コード 0。
+ログは `/tmp/l8-strict-transform-open-charts-full-build.log`。
+
+後続の接続で区別する開部分：§50–51 が返す中心 J は D(r) を避けるので、
+D(r) ≤ centerComplement J であるが、両者の等号は主張していない。
+加群の r-ねじれを除く計算は U = D(r) の像に対応する。
+§47 の中心外を使う全射性をそのまま無証明で適用してはならない。
+blowup 上の D(r) の逆像の稠密性を証明して一般の稠密開版へ渡すか、
+支配する整成分で開部分の拡大に対する strict transform の不変性を証明する必要がある。
