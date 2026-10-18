@@ -22,6 +22,7 @@ public import SerrePositivity.KST.Spectra.SpectrumHomotopyRectification
 public import SerrePositivity.KST.Spectra.TriangleDiskCellIso
 public import SerrePositivity.KST.Spectra.RelativeTriangleContraction
 public import SerrePositivity.KST.Spectra.SquareTriangleOuterFaces
+public import SerrePositivity.KST.Spectra.SquareReducedDesc
 
 /-!
 概要：スペクトルの telescope 有理化に使う余極限とホモトピー群の比較。

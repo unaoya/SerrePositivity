@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c 完了。L9d 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・194 モジュール 2660 宣言の公理監査成功。
+対象ビルド・196 モジュール 2685 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -1829,3 +1829,26 @@ L9d は進行中。次は正方形の二つの三角形の貼り合わせと交�
 保存単位の対象ビルド 2394 jobs 成功。
 私有宣言を含む 194 モジュール 2660 宣言で標準三公理のみ。
 L9d は進行中。次は外側の境界を潰した点つきの貼り合わせを構成する。
+
+## 62. L9d の正方形の境界の二方向の商
+
+境界で定数な単体のパラメータ族を球面との積へ降ろす一般構成を作った。
+商射上での復元と球面の基点での定数性を厳密に計算した。
+パラメータの指定部分での定数性も降下後に保たれ、この指定部分の射には単射性を要しない。
+この構成を二度適用して正方形の四辺を潰し、二つの円の積からの reduced map を得た。
+両軸の定数性から smash 積からの実際の点つき射へ降ろした。
+二つの商射と smash の商射を前合成すると元の正方形の写像へ戻る。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `SphereSimplex.productDesc` | 境界定数な単体の族の球面への降下 |
+| `SphereSimplex.quotient_productDesc` / `.base_productDesc` | 商射上の復元と基点条件 |
+| `SphereSimplex.productDesc_parameter_constant` | パラメータの指定部分の定数性の保存 |
+| `SphereSimplex.squareDesc` / `.squareDesc_quotient` | 正方形から円の積への降下と復元 |
+| `SphereSimplex.squareDesc_base_left` / `.squareDesc_base_right` | 両軸での定数性 |
+| `SphereSimplex.squareSmashDesc` / `.squareSmashDesc_quotient` | smash 積への点つき降下と復元 |
+
+参照：Goerss–Jardine I §7、Kerodon §3.2.3、BF 1978 §2。
+保存単位の対象ビルド 2396 jobs 成功。
+私有宣言を含む 196 モジュール 2685 宣言で標準三公理のみ。
+L9d は進行中。次は相対三角形の貼り合わせとの比較の存在と一意性を示す。
