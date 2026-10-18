@@ -3620,3 +3620,101 @@ lemma kanAssemblyAdjointChoices_relative_lifting (r : ℕ) (X : StableModel.{u})
 L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（2988 jobs）、公理監査成功（1020 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+
+## 6.29 Kan 延長の点つきホモトピー比較と全次数の自然性
+
+指定した点つき射 h:A→Z と anodyne な i:A→B、Kan な標的 Z に対して、
+任意の二つの延長 k,l:B→Z を結ぶ実際の基点固定ホモトピーを構成した。
+各延長を選択空間の頂点へ戻し、その可縮性から得た辺を点つき写像空間へ写す。
+源 A・B の Kan 性はこの一般定理の前提ではない。
+
+これを反復 S の Kan な随伴射へ適用し、任意の選択 v,w の間の基点固定ホモトピーと、
+入力の射 f:X→Y に関する二つの合成の間の基点固定ホモトピーを証明した。
+自然性の証明では Kan 置換の単位と未延長の随伴射の厳密な自然性を使い、
+両経路が同じ射を延長することを確認している。源と標的の選択を整合させる仮定は不要。
+ここで結論として記録するホモトピーの固定条件は基点についてである。
+
+全自然数次数（零次数を含む）の誘導写像は選択によらず、入力の射について自然になる。
+その実際の誘導写像を集合への関手と自然変換 kanAssemblyHomotopyNat に束ねた。
+その成分は選択空間の任意の頂点で計算できる。全基点 π_* 同型性はまだ結論していない。
+Core・Stable・F1・HA・Spectra の所有ファイルと公開 API は変更していない。
+
+以下は namespace `SerrePositivity.KST.SConstruction`、`universe u`、
+`open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet`、
+`open SerrePositivity.InfinityCategories`、`open scoped Simplicial` の下の正確な型。
+
+```lean
+def pointedExtensionVertex {A B Z : PointedSimplicialSet.{u}} (i : A ⟶ B) (h : A ⟶ Z)
+    (k : B ⟶ Z) (hk : i ≫ k = h) : (pointedExtensionSpace i h) _⦋0⦌
+
+lemma pointedExtensionVertex_projection {A B Z : PointedSimplicialSet.{u}} (i : A ⟶ B) (h : A ⟶ Z)
+    (k : B ⟶ Z) (hk : i ≫ k = h) :
+    (pullback.fst (Spectra.PointedMapping.prePointed i Z).right
+      (SSet.yonedaEquiv.symm (Spectra.PointedMapping.familyVertex h))).app (Opposite.op ⦋0⦌)
+        (pointedExtensionVertex i h k hk) = Spectra.PointedMapping.familyVertex k
+
+lemma pointedExtensions_nonempty_mappingEdge {A B Z : PointedSimplicialSet.{u}}
+    (i : A ⟶ B) (hi : anodyneExtensions i.right) (h : A ⟶ Z) [KanComplex Z.right]
+    (k l : B ⟶ Z) (hk : i ≫ k = h) (hl : i ≫ l = h) :
+    Nonempty ((PointedObject.basedHom B Z).right.Edge
+      (Spectra.PointedMapping.familyVertex k) (Spectra.PointedMapping.familyVertex l))
+
+lemma pointedExtensions_homotopy {A B Z : PointedSimplicialSet.{u}}
+    (i : A ⟶ B) (hi : anodyneExtensions i.right) (h : A ⟶ Z) [KanComplex Z.right]
+    (k l : B ⟶ Z) (hk : i ≫ k = h) (hl : i ≫ l = h) :
+    ∃ H : SSet.Homotopy k.right l.right,
+      B.hom ▷ (Δ[1] : SSet.{u}) ≫ H.h = toUnit (𝟙_ SSet.{u} ⊗ (Δ[1] : SSet.{u})) ≫ Z.hom
+
+lemma kanAssemblyAdjointAt_homotopy (r : ℕ) (X : StableModel.{u})
+    (v w : (kanAssemblyAdjointChoices r X) _⦋0⦌) :
+    ∃ H : SSet.Homotopy (kanAssemblyAdjointAt r X v).right (kanAssemblyAdjointAt r X w).right,
+      ((oneDirectionKanRealizationFunctor r).obj X).hom ▷ (Δ[1] : SSet.{u}) ≫ H.h =
+        toUnit (𝟙_ SSet.{u} ⊗ (Δ[1] : SSet.{u})) ≫
+          ((loopBoundaryKanFunctor (r + 1)).obj X).hom
+
+lemma kanAssemblyAdjointAt_naturality_homotopy (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y)
+    (v : (kanAssemblyAdjointChoices r X) _⦋0⦌)
+    (w : (kanAssemblyAdjointChoices r Y) _⦋0⦌) :
+    ∃ H : SSet.Homotopy
+      ((oneDirectionKanRealizationFunctor r).map f ≫ kanAssemblyAdjointAt r Y w).right
+      (kanAssemblyAdjointAt r X v ≫ (loopBoundaryKanFunctor (r + 1)).map f).right,
+      ((oneDirectionKanRealizationFunctor r).obj X).hom ▷ (Δ[1] : SSet.{u}) ≫ H.h =
+        toUnit (𝟙_ SSet.{u} ⊗ (Δ[1] : SSet.{u})) ≫
+          ((loopBoundaryKanFunctor (r + 1)).obj Y).hom
+
+lemma kanAssemblyAdjointAt_piMap_eq (r n : ℕ) (X : StableModel.{u})
+    (v w : (kanAssemblyAdjointChoices r X) _⦋0⦌) :
+    Spectra.pointedHomotopyMap n (kanAssemblyAdjointAt r X v) =
+      Spectra.pointedHomotopyMap n (kanAssemblyAdjointAt r X w)
+
+lemma kanAssemblyAdjointAt_piMap_naturality (r n : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y)
+    (v : (kanAssemblyAdjointChoices r X) _⦋0⦌)
+    (w : (kanAssemblyAdjointChoices r Y) _⦋0⦌)
+    (a : Spectra.KanHomotopy ((oneDirectionKanRealizationFunctor r).obj X).right n
+      ((oneDirectionKanRealizationFunctor r).obj X).basepoint) :
+    Spectra.pointedHomotopyMap n (kanAssemblyAdjointAt r Y w)
+        (Spectra.pointedHomotopyMap n ((oneDirectionKanRealizationFunctor r).map f) a) =
+      Spectra.pointedHomotopyMap n ((loopBoundaryKanFunctor (r + 1)).map f)
+        (Spectra.pointedHomotopyMap n (kanAssemblyAdjointAt r X v) a)
+
+def oneDirectionHomotopyFunctor (r n : ℕ) : StableModel.{u} ⥤ Type u
+
+def loopBoundaryHomotopyFunctor (r n : ℕ) : StableModel.{u} ⥤ Type u
+
+def kanAssemblyHomotopyNat (r n : ℕ) :
+    oneDirectionHomotopyFunctor r n ⟶ loopBoundaryHomotopyFunctor (r + 1) n
+
+lemma kanAssemblyHomotopyNat_app (r n : ℕ) (X : StableModel.{u})
+    (v : (kanAssemblyAdjointChoices r X) _⦋0⦌) :
+    (kanAssemblyHomotopyNat r n).app X =
+      ↾(Spectra.pointedHomotopyMap n (kanAssemblyAdjointAt r X v))
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。Kan 延長の可縮な選択空間に加え、
+任意の延長の基点固定ホモトピーによる選択独立性・自然性と、全自然数次数の自然な誘導写像まで証明済み。
+Kan な同一の列の段の接続、delooping・Ω 条件・BF 連結スペクトルは未完了。
+同時商と円の smash の明示的同型、任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。
+L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（2992 jobs）、公理監査成功（1032 宣言、標準三公理のみ）。追加公理・sorry なし。

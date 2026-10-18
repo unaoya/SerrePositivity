@@ -2886,3 +2886,29 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.kanAssemblyAdjointChoices_relative_lifting
 #print axioms SerrePositivity.KST.SConstruction.kanAssemblyAdjointChoices_relative_lifting
+
+-- Kan 延長のホモトピー比較と全自然数次数の自然性
+#check @SerrePositivity.KST.SConstruction.pointedExtensionVertex
+#print axioms SerrePositivity.KST.SConstruction.pointedExtensionVertex
+#check @SerrePositivity.KST.SConstruction.pointedExtensionVertex_projection
+#print axioms SerrePositivity.KST.SConstruction.pointedExtensionVertex_projection
+#check @SerrePositivity.KST.SConstruction.pointedExtensions_nonempty_mappingEdge
+#print axioms SerrePositivity.KST.SConstruction.pointedExtensions_nonempty_mappingEdge
+#check @SerrePositivity.KST.SConstruction.pointedExtensions_homotopy
+#print axioms SerrePositivity.KST.SConstruction.pointedExtensions_homotopy
+#check @SerrePositivity.KST.SConstruction.kanAssemblyAdjointAt_homotopy
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyAdjointAt_homotopy
+#check @SerrePositivity.KST.SConstruction.kanAssemblyAdjointAt_naturality_homotopy
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyAdjointAt_naturality_homotopy
+#check @SerrePositivity.KST.SConstruction.kanAssemblyAdjointAt_piMap_eq
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyAdjointAt_piMap_eq
+#check @SerrePositivity.KST.SConstruction.kanAssemblyAdjointAt_piMap_naturality
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyAdjointAt_piMap_naturality
+#check @SerrePositivity.KST.SConstruction.oneDirectionHomotopyFunctor
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionHomotopyFunctor
+#check @SerrePositivity.KST.SConstruction.loopBoundaryHomotopyFunctor
+#print axioms SerrePositivity.KST.SConstruction.loopBoundaryHomotopyFunctor
+#check @SerrePositivity.KST.SConstruction.kanAssemblyHomotopyNat
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyHomotopyNat
+#check @SerrePositivity.KST.SConstruction.kanAssemblyHomotopyNat_app
+#print axioms SerrePositivity.KST.SConstruction.kanAssemblyHomotopyNat_app

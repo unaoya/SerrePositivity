@@ -71,4 +71,8 @@ public import SerrePositivity.KST.SConstruction.MonicSuspensionAssembly
 
 public import SerrePositivity.KST.SConstruction.KanAssemblyAdjoint
 
+public import SerrePositivity.KST.SConstruction.PointedExtensionHomotopy
+public import SerrePositivity.KST.SConstruction.KanAssemblyNaturality
+public import SerrePositivity.KST.SConstruction.KanAssemblyHomotopyMaps
+
 /-! # ∞-S• 構成と連結 K 理論 -/
