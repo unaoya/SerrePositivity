@@ -213,3 +213,5 @@ public import SerrePositivity.KST.SchemeLemmas.LocalGenericComparison
 public import SerrePositivity.KST.SchemeLemmas.GenericHigherMinorVanishing
 public import SerrePositivity.KST.SchemeLemmas.PureTransformPivotEquiv
 public import SerrePositivity.KST.SchemeLemmas.RegularMinorAnnihilation
+public import SerrePositivity.KST.SchemeLemmas.RegularMinorGraphKernel
+public import SerrePositivity.KST.SchemeLemmas.RegularMinorPureTransformEquiv
