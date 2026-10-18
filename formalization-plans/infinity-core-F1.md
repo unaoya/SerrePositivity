@@ -5558,5 +5558,109 @@ lemma isPrecompositionEquivalence_relativeJoinCylinderComparison_lastVertex_of_b
       (relativeJoinCylinderComparison ((boundary m).ι ≫ f))) :
     IsPrecompositionEquivalence (relativeJoinCylinderComparison f)
 
+noncomputable def stdSimplexLastFaceOrderHom {m n : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Δ[n + 1])
+    (hf : (SSet.yonedaEquiv f) (Fin.last m) < Fin.last (n + 1)) :
+    Fin (m + 1) →o Fin (n + 1)
+
+noncomputable def stdSimplexLastFaceFactor {m n : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Δ[n + 1])
+    (hf : (SSet.yonedaEquiv f) (Fin.last m) < Fin.last (n + 1)) :
+    (Δ[m] : SSet.{u}) ⟶ Δ[n]
+
+lemma stdSimplexLastFaceFactor_comp {m n : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Δ[n + 1])
+    (hf : (SSet.yonedaEquiv f) (Fin.last m) < Fin.last (n + 1)) :
+    stdSimplexLastFaceFactor f hf ≫ stdSimplex.δ (Fin.last (n + 1)) = f
+
+noncomputable def relativeJoinBaseMap {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Y ⟶ Z) :
+    relativeJoin f (𝟙 Y) ⟶ relativeJoin (f ≫ h) (𝟙 Z)
+
+lemma relativeJoinBaseMap_fst {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Y ⟶ Z) :
+    relativeJoinBaseMap f h ≫ pullback.fst (joinMap (f ≫ h) (𝟙 Z)) (joinDiagonal Z) =
+      pullback.fst (joinMap f (𝟙 Y)) (joinDiagonal Y) ≫ joinMap (𝟙 X) h
+
+lemma relativeJoinBaseMap_snd {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Y ⟶ Z) :
+    relativeJoinBaseMap f h ≫ pullback.snd (joinMap (f ≫ h) (𝟙 Z)) (joinDiagonal Z) =
+      pullback.snd (joinMap f (𝟙 Y)) (joinDiagonal Y) ≫ ((Δ[1] : SSet.{u}) ◁ h)
+
+instance relativeJoinBaseMap_stdSimplex_mono {X Z : SSet.{u}} {n : ℕ}
+    (f : X ⟶ (Δ[n] : SSet.{u})) (h : (Δ[n] : SSet.{u}) ⟶ Z) [Mono h] :
+    Mono (relativeJoinBaseMap f h)
+
+lemma relativeJoinCone_hom_ext_stdSimplex {A B : SSet.{u}} {n : ℕ}
+    {f g : join A B ⟶ (Δ[n] : SSet.{u})}
+    (hA : joinInl A B ≫ f = joinInl A B ≫ g)
+    (hB : joinInr A B ≫ f = joinInr A B ≫ g) : f = g
+
+lemma relativeJoinCone_stdSimplex_inl (n : ℕ) :
+    joinInl (Δ[n] : SSet.{u}) Δ[0] ≫ (joinStdSimplexIso n 0).hom =
+      stdSimplex.δ (Fin.last (n + 1))
+
+lemma relativeJoinCone_stdSimplex_inr (n : ℕ) :
+    joinInr (Δ[n] : SSet.{u}) Δ[0] ≫ (joinStdSimplexIso n 0).hom =
+      SSet.const (stdSimplex.obj₀Equiv.symm (Fin.last (n + 1)))
+
+noncomputable def relativeJoinConeTime : join (Δ[1] : SSet.{u}) Δ[0] ⟶ Δ[1]
+
+lemma relativeJoinConeTime_inl :
+    joinInl (Δ[1] : SSet.{u}) Δ[0] ≫ relativeJoinConeTime = 𝟙 Δ[1]
+
+lemma relativeJoinConeTime_inr :
+    joinInr (Δ[1] : SSet.{u}) Δ[0] ≫ relativeJoinConeTime =
+      SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
+
+noncomputable def relativeJoinConeFirst {m n : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    join (relativeJoin f (𝟙 Δ[n])) Δ[0] ⟶ join (Δ[m] : SSet.{u}) Δ[n + 1]
+
+lemma relativeJoinConeFirst_inl {m n : ℕ} (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    joinInl (relativeJoin f (𝟙 Δ[n])) Δ[0] ≫ relativeJoinConeFirst f =
+      pullback.fst (joinMap f (𝟙 Δ[n])) (joinDiagonal Δ[n]) ≫
+        joinMap (𝟙 Δ[m]) (stdSimplex.δ (Fin.last (n + 1)))
+
+lemma relativeJoinConeFirst_inr {m n : ℕ} (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    joinInr (relativeJoin f (𝟙 Δ[n])) Δ[0] ≫ relativeJoinConeFirst f =
+      SSet.const (stdSimplex.obj₀Equiv.symm (Fin.last (n + 1))) ≫
+        joinInr (Δ[m] : SSet.{u}) Δ[n + 1]
+
+instance relativeJoinConeFirst_mono {m n : ℕ} (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    Mono (relativeJoinConeFirst f)
+
+noncomputable def relativeJoinConeSecond {m n : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    join (relativeJoin f (𝟙 Δ[n])) Δ[0] ⟶ (Δ[1] : SSet.{u}) ⊗ Δ[n + 1]
+
+lemma relativeJoinConeSecond_inl {m n : ℕ} (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    joinInl (relativeJoin f (𝟙 Δ[n])) Δ[0] ≫ relativeJoinConeSecond f =
+      pullback.snd (joinMap f (𝟙 Δ[n])) (joinDiagonal Δ[n]) ≫
+        ((Δ[1] : SSet.{u}) ◁ stdSimplex.δ (Fin.last (n + 1)))
+
+lemma relativeJoinConeSecond_inr {m n : ℕ} (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    joinInr (relativeJoin f (𝟙 Δ[n])) Δ[0] ≫ relativeJoinConeSecond f =
+      SSet.const (stdSimplex.obj₀Equiv.symm (Fin.last (n + 1))) ≫
+        prismEndpoint 1 (Δ[n + 1] : SSet.{u})
+
+lemma relativeJoinCone_condition {m n : ℕ} (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    relativeJoinConeFirst f ≫ joinMap (f ≫ stdSimplex.δ (Fin.last (n + 1))) (𝟙 Δ[n + 1]) =
+      relativeJoinConeSecond f ≫ joinDiagonal Δ[n + 1]
+
+noncomputable def relativeJoinConeMap {m n : ℕ} (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    join (relativeJoin f (𝟙 Δ[n])) Δ[0] ⟶
+      relativeJoin (f ≫ stdSimplex.δ (Fin.last (n + 1))) (𝟙 Δ[n + 1])
+
+lemma relativeJoinConeMap_fst {m n : ℕ} (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    relativeJoinConeMap f ≫
+        pullback.fst (joinMap (f ≫ stdSimplex.δ (Fin.last (n + 1))) (𝟙 Δ[n + 1]))
+          (joinDiagonal Δ[n + 1]) = relativeJoinConeFirst f
+
+lemma relativeJoinConeMap_snd {m n : ℕ} (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    relativeJoinConeMap f ≫
+        pullback.snd (joinMap (f ≫ stdSimplex.δ (Fin.last (n + 1))) (𝟙 Δ[n + 1]))
+          (joinDiagonal Δ[n + 1]) = relativeJoinConeSecond f
+
+instance relativeJoinConeMap_mono {m n : ℕ} (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    Mono (relativeJoinConeMap f)
+
 end SerrePositivity.InfinityCategories
 ```
