@@ -1337,8 +1337,14 @@ namespace `DoldKanComparison` の `homModule x y : SimplicialObject (ModuleCat.{
 `degreeSign_cut` が AW 合成での交差符号を与える。符号による作用は二度で恒等になる。
 `homSpaceVertexCycleEquiv` は零単体と閉次数零元の同値、`closedHomVertexEquiv` は
 `ClosedCategory R D` の射と零単体の同値である。まだ合成の保存を主張していない。
-対象・集約ビルドは3475件で成功し、公開18宣言の型と公理監査は標準三公理のみ。
+`standardSubmodule` は標準境界の独立な方程式を課した部分加群である。
+`standardSimplexEquiv` は N4 の解とこの標準方程式の解との全次数の R 線形同値。
+`standardPullback_val` は標準座標の引き戻しが有限集合の像による通常の作用と一致することを示す。
+`standardModuleIso` は小さい N4 の単体的加群から `standardModule` への自然同型であり、
+台単体集合の `homSpaceStandardIso` と `standardHomSpaceKan` も得られる。
+標準方程式との符号変換と全ての退化との可換性は Lean で証明済み。
+対象・集約ビルドは3479件で成功し、公開42宣言の型と公理監査は標準三公理のみ。
 
-γ1.5b 全体は未完了。残りは標準 chain map 模型・Mathlib Γ との自然同型、AW 豊穣合成と
+γ1.5b 全体は未完了。残りは標準成分模型と実際の chain map・Mathlib Γ との同定、AW 豊穣合成と
 通常の閉零射の圏との整合性、γ1.5c の比較写像、γ1.5d の写像空間の比較。
 この Hom の模型だけで C_Δ の構成や coherent nerve との同値を完成とは数えない。
