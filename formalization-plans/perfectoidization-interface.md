@@ -466,3 +466,82 @@ targetDiagram (p : ℕ) [Fact p.Prime] (S : A_R R) :
     perfectoidTargetNerve p S.right ⟶ derivedInfinityCategory R
 end SerrePositivity.BhattScholze.PerfectoidizationInterface
 ```
+
+### Π2-2
+
+```lean
+namespace SerrePositivity.BhattScholze.PerfectoidizationInterface
+universe u
+open CategoryTheory SerrePositivity.DerivedCompletion SerrePositivity.InfinityCategories
+open scoped Simplicial
+variable (p : ℕ)
+def completionRing (S : CommRingCat.{u}) : CommRingCat.{u}
+def completionUnit (S : CommRingCat.{u}) : S ⟶ completionRing p S
+theorem completionRing_complete (S : CommRingCat.{u}) :
+    IsModuleComplete (completionRing p S) (p : completionRing p S)
+      (ModuleCat.of (completionRing p S) (completionRing p S))
+theorem complete_along_map {S T : CommRingCat.{u}} (f : S ⟶ T)
+    (hT : IsModuleComplete T (p : T) (ModuleCat.of T T)) :
+    letI
+theorem completion_existsUnique {S T : CommRingCat.{u}} (f : S ⟶ T)
+    (hT : IsModuleComplete T (p : T) (ModuleCat.of T T)) :
+    ∃! g : completionRing p S ⟶ T, completionUnit p S ≫ g = f
+def completionLift {S T : CommRingCat.{u}} (f : S ⟶ T)
+    (hT : IsModuleComplete T (p : T) (ModuleCat.of T T)) : completionRing p S ⟶ T
+@[simp] theorem completionLift_comp {S T : CommRingCat.{u}} (f : S ⟶ T)
+    (hT : IsModuleComplete T (p : T) (ModuleCat.of T T)) :
+    completionUnit p S ≫ completionLift p f hT = f
+theorem completion_hom_ext {S T : CommRingCat.{u}}
+    (hT : IsModuleComplete T (p : T) (ModuleCat.of T T))
+    {f g : completionRing p S ⟶ T}
+    (h : completionUnit p S ≫ f = completionUnit p S ≫ g) : f = g
+def completionMap {S T : CommRingCat.{u}} (f : S ⟶ T) :
+    completionRing p S ⟶ completionRing p T
+@[simp] theorem completionMap_comp {S T : CommRingCat.{u}} (f : S ⟶ T) :
+    completionUnit p S ≫ completionMap p f = f ≫ completionUnit p T
+@[simp] theorem completionMap_id (S : CommRingCat.{u}) : completionMap p (𝟙 S) = 𝟙 _
+@[simp] theorem completionMap_comp_map {S T U : CommRingCat.{u}} (f : S ⟶ T) (g : T ⟶ U) :
+    completionMap p (f ≫ g) = completionMap p f ≫ completionMap p g
+def ringCompletionFunctor : CommRingCat.{u} ⥤ CommRingCat.{u}
+def completionUnitIso (S : CommRingCat.{u})
+    (hS : IsModuleComplete S (p : S) (ModuleCat.of S S)) : S ≅ completionRing p S
+def completionFunctor (R : Type u) [CommRing R] : A_R R ⥤ A_R R
+def completionAlgebraUnit (R : Type u) [CommRing R] : 𝟭 (A_R R) ⟶ completionFunctor p R
+def completionAlgebraUnitIso (R : Type u) [CommRing R] (S : C_R R p) :
+    S.obj ≅ (completionFunctor p R).obj S.obj
+variable [Fact p.Prime]
+def targetRestriction (S : CommRingCat.{u}) :
+    PerfUnder_u p (completionRing p S) ⥤ PerfUnder_u p S
+def targetExtension (S : CommRingCat.{u}) :
+    PerfUnder_u p S ⥤ PerfUnder_u p (completionRing p S)
+def completionTargetEquivalence (S : CommRingCat.{u}) :
+    PerfUnder_u p (completionRing p S) ≌ PerfUnder_u p S
+def restrictCone {K L X : SSet.{u + 1}} {F : K ⟶ X}
+    (c : JoinCone F) (f : L ⟶ K) : JoinCone (f ≫ F)
+theorem restrictCone_vertex {K L X : SSet.{u + 1}} {F : K ⟶ X}
+    (c : JoinCone F) (f : L ⟶ K) : (restrictCone c f).vertex = c.vertex
+theorem targetRestriction_algebra (R : Type u) [CommRing R] (S : A_R R) :
+    targetRestriction p S.right ⋙ targetAlgebra R p S =
+      targetAlgebra R p ((completionFunctor p R).obj S)
+theorem targetExtension_algebra (R : Type u) [CommRing R] (S : A_R R) :
+    targetExtension p S.right ⋙ targetAlgebra R p ((completionFunctor p R).obj S) =
+      targetAlgebra R p S
+theorem targetDiagram_restriction (R : Type u) [CommRing R] (S : A_R R) :
+    nerveMap (targetRestriction p S.right) ≫ targetDiagram R p S =
+      targetDiagram R p ((completionFunctor p R).obj S)
+theorem targetDiagram_extension (R : Type u) [CommRing R] (S : A_R R) :
+    nerveMap (targetExtension p S.right) ≫
+        targetDiagram R p ((completionFunctor p R).obj S) = targetDiagram R p S
+def completionRestrictCone (R : Type u) [CommRing R] (S : A_R R)
+    (c : JoinCone (targetDiagram R p S)) :
+    JoinCone (targetDiagram R p ((completionFunctor p R).obj S))
+def completionExtendCone (R : Type u) [CommRing R] (S : A_R R)
+    (c : JoinCone (targetDiagram R p ((completionFunctor p R).obj S))) :
+    JoinCone (targetDiagram R p S)
+theorem completionRestrictCone_vertex (R : Type u) [CommRing R] (S : A_R R)
+    (c : JoinCone (targetDiagram R p S)) : (completionRestrictCone p R S c).vertex = c.vertex
+theorem completionExtendCone_vertex (R : Type u) [CommRing R] (S : A_R R)
+    (c : JoinCone (targetDiagram R p ((completionFunctor p R).obj S))) :
+    (completionExtendCone p R S c).vertex = c.vertex
+end SerrePositivity.BhattScholze.PerfectoidizationInterface
+```
