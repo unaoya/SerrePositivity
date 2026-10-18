@@ -20,7 +20,7 @@ sorry・追加公理・文献入力を使わず、監査で許す公理は
 | B1 / F1e | 単位・余単位と h Fun の三角恒等式、自然な写像空間対応との特徴づけ、合成、随伴関手の一意性 | Kerodon [Def 6.1.1.1](https://kerodon.net/tag/02CG)、[§6.1.3](https://kerodon.net/tag/02D5)、[§6.1.5](https://kerodon.net/tag/02DM)、[Def 6.2.1.1・Prop 6.2.1.17](https://kerodon.net/tag/02EJ)、[Prop 6.2.6.1](https://kerodon.net/tag/02FV)・[Cor 6.2.6.5](https://kerodon.net/tag/02FX) / HTT §5.2 | 完了（全パラメータの族の前層による自然性の模型） |
 | B2 / F1f | 充満部分 ∞ 圏への反射、局所対象、冪等性、局所化の普遍性の型と反射的な場合の構成 | Kerodon [§6.2.2](https://kerodon.net/tag/02F5)、[Cor 6.2.2.26](https://kerodon.net/tag/02FF)、[Def 6.3.1.9・Prop 6.3.1.13](https://kerodon.net/tag/01ME)、[Prop 6.3.3.7](https://kerodon.net/tag/02FY) / HTT §5.2.7 | 完了（同じ宇宙の標的に対する普遍性） |
 | B3 / F1g 前半 | right cofinal、Quillen A、A2h の始対象による limit 計算の双対的回収 | Kerodon [Def 7.2.1.1](https://kerodon.net/tag/02N1)、[Thm 7.2.3.1](https://kerodon.net/tag/02NX) / HTT Thm 4.1.3.1 | 完了（左右の Quillen A と二宇宙版 A2h の同じ制限写像の回収） |
-| B4 / F1g 後半 | slice の極限による左右 Kan 拡張、h での一意性、各点の存在、関手全体への組み立て | Kerodon [Notation 7.3.1.1・Def 7.3.1.2](https://kerodon.net/tag/02Y7)、§7.3.5 / HTT §4.3 | 未着手 |
+| B4 / F1g 後半 | slice の極限による左右 Kan 拡張、h での一意性、各点の存在、関手全体への組み立て | Kerodon [Notation 7.3.1.1・Def 7.3.1.2](https://kerodon.net/tag/02Y7)、Variant 7.3.1.5、§7.3.5 / HTT §4.3 | 進行中（指定自然変換の比較錐と各点の値・一意性） |
 | B5 | nerve による古典随伴・Kan 拡張の回収と監査 | 上記と通常の圏の随伴・Kan 拡張 | 未着手（監査スクリプトは稼働中） |
 
 ## 2. 設計上の決定
@@ -328,17 +328,35 @@ A2h の `initialCofinality` と**同じ写像・同じ二宇宙の型**を回収
 Kan な底への弱同値 ⇒ cofinal の逆方向（Prop 7.2.1.5(2)）は未形式化。
 これらを用いずに B3 の指定した結論を証明しており、B4・B5 の完了は別途必要。
 
+### B4：進行中
+
+`KanExtensionShapes` は右の添字を C_{c/} ×_C K、左を K ×_C C_{/c} とし、
+slice の普遍錐の uncurry から F(c) を頂点とする標準錐・余錐を構成する。
+`KanExtension` は指定した自然変換 α : Fδ → F₀、β : F₀ → Fδ に沿い、
+標準錐・余錐を頂点を固定して輸送する族を保持する。
+`rightKanConeTransport_nonempty`・`leftKanCoconeTransport_nonempty` は、
+D の quasicategory 性だけからこの輸送の存在を証明する。
+
+`IsRightKanExtension`・`IsLeftKanExtension` は、各点でこの輸送の終端・始端が
+極限錐・余極限錐になるという条件。独立に選んだ値だけを条件にはしない。
+`limitValue`・`colimitValue` は F(c) がその極限・余極限の頂点であることを示し、
+両者の `valueIso` は同じ F₀ の拡張の値の hD における同型を与える。
+
+**B4 は未完了。** 輸送の選択不変性、自然変換の h での同値による不変性、
+h Fun(C,D) での大域的一意性、極限からの点ごとの存在と大域的組み立てが残る。
+各点の `valueIso` を大域的な同型の証明とは扱わない。
+
 ### 次の工程
 
-B4 の各点の左右 Kan 拡張の定義・一意性・存在へ進む。
+輸送の選択不変性と比較錐の自然性を証明し、大域的一意性・存在へ接続する。
 A6 の `exists_pointwiseLimitCone`・`hasLimit_of_hasPointwiseLimits`・
 `isLimitCone_iff_pointwise_of_hasPointwiseLimits` は到着済みで型を確認した。
 点ごとの極限の存在条件から自然な錐を作る API であり、単に成分の錐を選んだだけの自然性は仮定しない。
 B5 の古典 nerve に戻る検査も未完了。
 全体の α2b 目標は継続中。
 
-対象ビルド2266 jobs、公理監査2114宣言（標準三公理のみ）が成功。
-推移的 import のリポジトリ内595モジュールに straightening 依存なし。
+対象ビルド2273 jobs、公理監査2187宣言（標準三公理のみ）が成功。
+推移的 import のリポジトリ内602モジュールに straightening 依存なし。
 
 ## 4. 主要宣言
 
@@ -464,3 +482,10 @@ B5 の古典 nerve に戻る検査も未完了。
 | `isLeftCofinal_iff_weaklyContractible_slices/isLeftCofinal_of_weaklyContractible_slices`・`IsLeftCofinal.slice_isWeaklyContractible` | left 側の Quillen A、標的だけが quasicategory | 済 |
 | `sliceOverRestrict_trivialKanFibration_of_isLeftCofinal/of_weaklyContractible_slices` | left cofinal な任意の単射・Quillen A 条件による図式の slice 制限の判定 | 済 |
 | `nervePoint_initial_quillen_slice_condition`・`initialCofinality_via_quillenA` | 始対象の包含の Quillen A 条件と A2h の同じ写像・二宇宙の型の回収 | 済 |
+
+| `rightKanShape/leftKanShape`・`rightKanProjection/leftKanProjection`・`rightKanDiagram/leftKanDiagram` | 実際の slice 引き戻しと制限図式 | 済 |
+| `rightKanCanonicalCone/leftKanCanonicalCocone`・`..._vertex` | 標準比較錐・余錐と F(c) という頂点 | 済 |
+| `RightKanConeTransport/LeftKanCoconeTransport`・`cone/cocone`・`cone_vertex/cocone_vertex` | 指定自然変換と両立する頂点固定の輸送とその端点 | 済 |
+| `rightKanConeTransport_nonempty/leftKanCoconeTransport_nonempty` | 標的の quasicategory 性による輸送の存在 | 済 |
+| `IsRightKanExtension/IsLeftKanExtension` | 指定自然変換の比較錐の極限性・余極限性 | 定義済・選択不変性は未完了 |
+| `IsRightKanExtension.limitValue/IsLeftKanExtension.colimitValue`・両者の `valueIso` | 各点の値の公式と hD の同型 | 済・大域的一意性は未完了 |

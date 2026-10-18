@@ -209,3 +209,4 @@ public import SerrePositivity.InfinityCategories.F1B.ReflectiveLocalObjects
 public import SerrePositivity.InfinityCategories.F1B.Localization
 public import SerrePositivity.InfinityCategories.F1B.RestrictedPrecomposition
 public import SerrePositivity.InfinityCategories.F1B.ReflectiveLocalization
+public import SerrePositivity.InfinityCategories.F1B.KanExtension

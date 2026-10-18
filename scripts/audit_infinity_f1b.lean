@@ -1113,3 +1113,18 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.sliceOverRestrict_trivialKanFibration_of_weaklyContractible_slices
 #check @SerrePositivity.InfinityCategories.nervePoint_initial_quillen_slice_condition
 #check @SerrePositivity.InfinityCategories.initialCofinality_via_quillenA
+
+#check @SerrePositivity.InfinityCategories.rightKanShape
+#check @SerrePositivity.InfinityCategories.leftKanShape
+#check @SerrePositivity.InfinityCategories.rightKanCanonicalCone
+#check @SerrePositivity.InfinityCategories.leftKanCanonicalCocone
+#check @SerrePositivity.InfinityCategories.RightKanConeTransport
+#check @SerrePositivity.InfinityCategories.LeftKanCoconeTransport
+#check @SerrePositivity.InfinityCategories.rightKanConeTransport_nonempty
+#check @SerrePositivity.InfinityCategories.leftKanCoconeTransport_nonempty
+#check @SerrePositivity.InfinityCategories.IsRightKanExtension
+#check @SerrePositivity.InfinityCategories.IsLeftKanExtension
+#check @SerrePositivity.InfinityCategories.IsRightKanExtension.limitValue
+#check @SerrePositivity.InfinityCategories.IsLeftKanExtension.colimitValue
+#check @SerrePositivity.InfinityCategories.IsRightKanExtension.valueIso
+#check @SerrePositivity.InfinityCategories.IsLeftKanExtension.valueIso
