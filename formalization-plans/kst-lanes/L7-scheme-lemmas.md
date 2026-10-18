@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 290 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 306 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -30,7 +30,8 @@
 - 任意の環準同型に対する実際の blowup 比較射と、基底の Spec の射との交換式を構成済み。
 - Rees 代数の係数局所化について共通分母の消去・局所化の普遍条件・実際の環同型と係数保存を証明済み。
 - 斉次元の分母を同じ次数で払う補題も証明済み。
-- 次は標準チャートの局所化との両立と一般スキームへの貼り合わせ。
+- 標準チャートの係数写像、係数保存、斉次分数の計算式、係数局所化後のチャートの共通分母消去を証明済み。
+- 次はチャート局所化の等式検出条件と一般スキームへの貼り合わせ。
 - §14 の担当境界を採用済み（正本 §13-13、2026-10-18）。
 - L7a・L7b と L7c の環論・古典的スキーム射を本レーンで完成させる。
 - L7a は未完了。L7b・L7c の本体は未着手。
@@ -379,6 +380,9 @@ f の有限型性は固有性から導く。
 | `reesMap_isLocalizationMap` | ReesLocalization | 検証済み | Rees 係数写像の局所化の普遍条件 |
 | `reesLocalizationEquiv` / `reesLocalizationEquiv_base` | ReesLocalization | 検証済み | 定数分母による Rees 局所化の環同型と係数保存 |
 | `rees_localization_clear_homogeneous` | ReesLocalization | 検証済み | 同次数の斉次元での分母消去 |
+| `chartBaseChangeMap` / `chartBaseChangeMap_base` | ChartBaseChange | 検証済み | 標準チャートの係数写像と係数保存 |
+| `chartBaseChangeMap_mk` | ChartBaseChange | 検証済み | 斉次分数に対する比較写像の計算 |
+| `chart_localization_clear_denominator` | ChartBaseChange | 検証済み | 局所化後のチャートの共通分母消去 |
 | `blowupPowerIso` | Blowup | 予定 | 正の冪の比較 |
 | `blowup` | Blowup | 予定 | 一般スキームへの貼り合わせ |
 | `exceptionalDivisor` | Blowup | 予定 | 例外因子 |

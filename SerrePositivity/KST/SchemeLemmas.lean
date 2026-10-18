@@ -18,3 +18,4 @@ public import SerrePositivity.KST.SchemeLemmas.ReesMap
 public import SerrePositivity.KST.SchemeLemmas.ProjMap
 public import SerrePositivity.KST.SchemeLemmas.BaseChangeMap
 public import SerrePositivity.KST.SchemeLemmas.ReesLocalization
+public import SerrePositivity.KST.SchemeLemmas.ChartBaseChange
