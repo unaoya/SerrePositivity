@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 1785 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 1788 宣言、標準三公理のみ。
 - 一般点で自由な境界純変換の開自由 locus が基礎環を覆うことを、実際の局所化同型から証明済み。
 - 境界外の任意の開閉部分を、互いに交わらず全体を覆う二つの実チャートで分離する有限生成中心を構成済み。
 - 実分裂の下で拡大素点の任意の基底変更との両立性、および相対平坦有限表示加群の一般階数の基底変更保存を証明済み。
@@ -43,6 +43,7 @@
 - 可算生成平坦加群の構成済みの有限自由近似列と元の加群の直極限評価を実際の線形同型として構成済み。一般の加群列で核消去・評価像被覆からの直極限比較も証明済み。
 - 評価先でテンソルが零であることと有限後続段階で零になることの同値を、試験加群の平坦性なしで証明済み。
 - Mittag–Leffler 加群を表す有限自由列の双対遷移像の安定化を証明済み。任意の値域への実際の因子化に移し、Hom 逆系の前合成像が値域によらない同じ段階から安定することまで接続済み。
+- 非空な自然数 Mittag–Leffler 逆系の整合的元の存在と、双対像の包含による持ち上げの核値補正を証明済み。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -1317,6 +1318,30 @@ range(f*)⊆range(g*) なら任意の N と φ:V→N に対し ψ:W→N を取�
 `MittagLefflerDualStabilization.lean` で双対遷移像の単調減少と安定化を証明済み。
 `FiniteDualFactorization.lean` で双対像の包含から任意の加群値の因子化を実際に構成済み。
 `MittagLefflerHomStabilization.lean` で任意の値域に対する Hom 前合成像の同じ段階からの安定化を証明済み。
+整合的な持ち上げの次の準備は Stacks 0597, Lemma 10.86.3 の ℕᵒᵖ の特殊形。
+文言：F:ℕᵒᵖ→Type が各段階非空かつ Mittag–Leffler なら整合的な元の族が存在する。
+Mathlib `CategoryTheory.CofilteredSystem` の eventualRange、そこへの制限、制限後の全射性を使う。
+全射な後続写像の場合は一元を再帰的に持ち上げ、`NatTrans.ofOpSequence` で全射の自然性を得て section にする。
+一般の Mittag–Leffler 系は eventual ranges に制限し、その非空性と全射性から前段を適用して元の section へ戻す。
+有限な各段階を仮定せず、可算性は添字 ℕ の再帰で扱う。一般の可算有向集合への変更は不要。
+持ち上げの差の補正の文言：f:U→V、g:U→W、t:V→W、tf=g、range(f*)⊆range(g*) とする。
+π:E→M、Φ:V→E、Ψ:W→E が πΦ=πΨt を満たすなら、Ψ を ker(π) 値の写像で補正し、
+πΨ'=πΨ かつ Ψ'g=Φf を満たす Ψ':W→E を実際に構成する。
+V の有限基底を仮定し、δ=Φ-Ψt を ker(π) へ係数制限する。
+双対像の包含から δf=δ' g となる δ':W→ker(π) を取り、Ψ'=Ψ+ιδ' と置く。
+この補正で、安定した Hom 像から各段階の持ち上げの集合の像が安定することへ進む。
+`NatInverseSections.lean` で非空な自然数 Mittag–Leffler 逆系の section の存在を証明済み。
+`FiniteLiftCorrection.lean` で核値の写像による実際の補正を構成済み。
+持ち上げの逆系の文言：有限自由列の評価 q_n:F_n→M と全射 π:E→M に対し、
+各段階を {ℓ:F_n→E | πℓ=q_n} とし、遷移での前合成を射として ℕᵒᵖ 上の実際の関手を作る。
+各段階は自由加群の射影性で非空。双対像が安定すれば、既証の核値補正によりこの集合の射の像も安定する。
+従って section を取り出し、全段階で πℓ_n=q_n、ℓ_(n+1)a_n=ℓ_n となる実際の整合的な持ち上げを得る。
+その直極限上の写像を元の M との同型で移すと π の線形右逆を得る。
+π に M を添字とする自由全射を選べば、元の M の射影性が従う。
+この工程では有限自由列の評価条件と M の Mittag–Leffler 性を入力し、未証明の射影性を仮定しない。
+
+
+
 
 
 
@@ -1481,6 +1506,8 @@ Fin(N-k) 上の自由加群からの全射を構成する。
 | --- | --- | --- |
 | `BoundaryFreeNeighborhoodsAtCenterOver` | 中間環上の中心の自由化を元の基礎環・加群で述べる条件 | 定義済み |
 | `boundaryFreeNeighborhoodsAtCenterOver_of_baseChanged_center` | 固定中心の全チャートの自由化の元のデータへの統一 | 証明済み |
+| `nonempty_sections_of_mittagLeffler_nat_inverse_system` | 非空な自然数 Mittag–Leffler 逆系の整合的元 | 証明済み |
+| `exists_compatible_lift_of_dual_range_le` | 双対像の包含による二つの持ち上げの実際の補正 | 証明済み |
 | `basisMappedCoevaluationTensor_rTensor_eq_zero_iff` | 有限基底の余評価テンソルの零と双対像の核への包含の同値 | 証明済み |
 | `mittagLeffler_basisMappedCoevaluationTensor_pi_eq_zero` | 各試験成分の余評価の消滅から積の消滅 | 証明済み |
 | `exists_stage_dual_range_le_iInf_of_mittagLeffler` | 双対商の試験族全体について一つの後続段階を得る | 証明済み |

@@ -297,3 +297,5 @@ public import SerrePositivity.KST.SchemeLemmas.MittagLefflerUniformStage
 public import SerrePositivity.KST.SchemeLemmas.MittagLefflerDualStabilization
 public import SerrePositivity.KST.SchemeLemmas.FiniteDualFactorization
 public import SerrePositivity.KST.SchemeLemmas.MittagLefflerHomStabilization
+public import SerrePositivity.KST.SchemeLemmas.NatInverseSections
+public import SerrePositivity.KST.SchemeLemmas.FiniteLiftCorrection
