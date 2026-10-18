@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと660宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと663宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -78,6 +78,7 @@
 - 標準 AW の鎖写像は完了：`alexanderWhitney` は証明済みの微分可換性を持つ実鎖写像。`alexanderWhitney_naturality` により二つの入力の写像について自然。引用・追加公理・結論を隠す構造体入力は用いていない。
 - 正規化 AW：`normalizedAlexanderWhitney` は Moore 複体の包含・標準 AW・両因子の PInfty 射影の合成による実鎖写像。`normalizedAlexanderWhitney_naturality` も証明。
 - shuffle：`shuffleBidegree`、`shuffleApp` を逆転数の符号付き格子路の有限和として構成し、両因子の射に関する自然性を証明。`ShuffleIndex` の二つの順序写像は、座標和が頂点番号に一致し、両端を保ち、一歩ごとの水平・垂直の変化を持つ。shuffle の鎖写像性と標準ホモトピーは未完。
+- shuffle の全射性：`discretePath_intermediate` により、一歩の増加が高々1の整数値の路の中間値を最小頂点で証明。`ShuffleIndex.left_surjective` と `right_surjective` は、二つの実順序写像が単体圏の全射であることを検証。
 - L6c の残作業：採用済み μ 版 A.5 の shuffle の鎖写像性と AW/shuffle の標準ホモトピー、正規化した鎖ホモトピーの単体的区間への復元、μ と対角への移送。A.1・A.4・A.6 の H_* の具体模型への特殊化は所有レーンの界面。
 - L6d〜g：未着手。
 
@@ -143,6 +144,7 @@
 | shuffleApp | Shuffle.lean | 成分検証済み | 格子路の符号付き和の実成分、鎖写像性は未完 |
 | shuffleApp_naturality | Shuffle.lean | 検証済み | 実成分の二つの入力の写像に関する自然性 |
 | ShuffleIndex.coordinates_add / left_step / right_step | ShufflePath.lean | 検証済み | 実格子路の座標と一歩ごとの変化 |
+| ShuffleIndex.left_surjective / right_surjective | ShuffleSurjective.lean | 検証済み | 格子路の二つの順序写像が全射であること |
 | obstructionTorusCycle_not_boundary | CommutingImageObstruction.lean | 検証済み | 可換な対 (r²,s) の二次 bar サイクルの非境界性 |
 | obstructionHalfTurnBoundingChain_boundary | CommutingImageObstruction.lean | 検証済み | [r²]−[1] の明示的な一次の境界 |
 | Tower | Pro.lean | 検証済み | ℕ 上の逆系 |

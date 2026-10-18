@@ -106,3 +106,4 @@ public import SerrePositivity.KST.ProExcision.NormalizedAlexanderWhitney
 public import SerrePositivity.KST.ProExcision.ShuffleIndex
 public import SerrePositivity.KST.ProExcision.Shuffle
 public import SerrePositivity.KST.ProExcision.ShufflePath
+public import SerrePositivity.KST.ProExcision.ShuffleSurjective

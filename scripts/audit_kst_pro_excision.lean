@@ -1827,3 +1827,12 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.ShuffleIndex.right_step
 #print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.right_step
+
+#check @SerrePositivity.KST.ProExcision.discretePath_intermediate
+#print axioms SerrePositivity.KST.ProExcision.discretePath_intermediate
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.left_surjective
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.left_surjective
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.right_surjective
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.right_surjective
