@@ -583,3 +583,41 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms initialNerveJoinMap
 #check @initialJoinNerveIso
 #print axioms initialJoinNerveIso
+#check @initialJoinChain_inl
+#print axioms initialJoinChain_inl
+#check @initialJoinChain_inr
+#print axioms initialJoinChain_inr
+#check @joinInl_initialJoinNerveMap
+#print axioms joinInl_initialJoinNerveMap
+#check @joinInr_initialJoinNerveMap
+#print axioms joinInr_initialJoinNerveMap
+#check @augNerveObj_augHom
+#print axioms augNerveObj_augHom
+#check @initialJoinObj_joinMap
+#print axioms initialJoinObj_joinMap
+#check @initialJoinMap_joinMap
+#print axioms initialJoinMap_joinMap
+#check @initialJoinChain_joinMap
+#print axioms initialJoinChain_joinMap
+#check @initialJoinNerveMap_naturality
+#print axioms initialJoinNerveMap_naturality
+#check @pointJoinCorner
+#print axioms pointJoinCorner
+#check @pointJoinCorner_anodyne
+#print axioms pointJoinCorner_anodyne
+#check @initialNerveCorner
+#print axioms initialNerveCorner
+#check @initialNerveCorner_anodyne
+#print axioms initialNerveCorner_anodyne
+#check @bousfieldKanConeWeightInclusion_cospan_corner_anodyne
+#print axioms bousfieldKanConeWeightInclusion_cospan_corner_anodyne
+#check @bousfieldKanConeWeightInclusion_cospan_leftFibration_trivialKanFibration
+#print axioms bousfieldKanConeWeightInclusion_cospan_leftFibration_trivialKanFibration
+#check @bousfieldKanConeWeightInclusion_cospan_leftFibration_homotopyEquivalence
+#print axioms bousfieldKanConeWeightInclusion_cospan_leftFibration_homotopyEquivalence
+#check @bousfieldKanConeComparison_cospan_leftFibration_homotopyEquivalence
+#print axioms bousfieldKanConeComparison_cospan_leftFibration_homotopyEquivalence
+#check @bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence
+#print axioms bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence
+#check @representableHomotopyLimitComparison_cospan_leftFibration_homotopyEquivalence
+#print axioms representableHomotopyLimitComparison_cospan_leftFibration_homotopyEquivalence

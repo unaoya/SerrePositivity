@@ -2192,7 +2192,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開289宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開308宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2477,7 +2477,7 @@ exists_resized_cospan_extension_of_rightCorner
 右脚の fibration 性は不要だが、中央の相対境界の anodyne 性 h₀ を入力に要求する。
 ホーンの直積に対する h₀ は次の定理で検証する。重みの制限と境界を同時に固定する
 pushout-product の h₀ は後述の交換同型で元の重みの相対境界へ帰着する。
-元の重みから補助重みへの包含の相対境界の anodyne 性、一脚だけの fibration 性での κ の同値性、
+元の重みの相対境界と一脚での κ の同値性は後述の実際の比較で証明した。
 coherent な錐の pinched Hom との比較と 𝒮・Sp の ∞ 引き戻しへの適用は未完了。
 両脚が fibration の比較だけで、要求された引き戻しの ∞ 普遍性を完成とは数えない。
 
@@ -2511,8 +2511,8 @@ bousfieldKanHolim_cospan_leftFibration_kanComplex
 証明は W とホーン包含の直積に沿ってパラメーター付き自然変換を延長する。
 Bousfield–Kan 重みでは添字の右脚が単射なので、必要な重みの右脚の単射性も実際に証明済み。
 右脚の fibration 性や追加の比較仮定は不要。
-これは比較先の Kan 性であり、一脚の fibration 性の下での標準比較 κ の同値性ではない。
-κ には元の重みから補助重みへの包含の中央の相対境界の anodyne 性の検証が残る。
+これは比較先の Kan 性の定理である。標準比較 κ の同値性は後述の
+`CospanSingleFibrationComparison.lean` で証明した。
 coherent な錐の写像空間との比較と 𝒮・Sp の ∞ 引き戻しへの適用も未完了。
 
 ### 相対境界と pushout-product の交換（実装済み）
@@ -2562,8 +2562,8 @@ weightedSectionsPre_cospan_leftFibration_trivialKanFibration
 W と W' の右脚の Mono 性を要求して両 end の Kan 性を証明し、実際のホモトピー同値性を得る。
 入力 hk は具体的な標準重みで検証すべき元の相対境界の anodyne 性であり、
 境界付きの pushout-product に対する条件を別途仮定する必要はなくなった。
-元の重みから補助重みへの包含の hk の検証、一脚だけの fibration 性での κ の同値性、
-coherent な錐の写像空間との比較と 𝒮・Sp の ∞ 引き戻しへの適用は引き続き未完了。
+元の重みでの hk と一脚での κ の同値性は後述の実際の比較で証明した。
+coherent な錐の写像空間との比較と 𝒮・Sp の ∞ 引き戻しへの適用は未完了。
 
 ### 一脚の fibration 性での一点側の比較（実装済み）
 
@@ -2602,8 +2602,8 @@ bousfieldKanConeWeightComparison_cospan_leftFibration_homotopyEquivalence
 一点側の制限の後で比較射を合成すると終対象重み U の比較同型になるので、二対三則で同値性を得る。
 c.pt の Kan 性は一点重みの end との同型から導く。
 図式の右脚の fibration 性と、未証明の重みの比較仮定は要求しない。
-元の重み W から V への包含の相対境界の anodyne 性と、その end の制限の同値性は未完了。
-従って一脚の場合の κ 全体、coherent な錐の写像空間との比較、𝒮・Sp の適用は継続中。
+元の重み W → V の相対境界とその制限、一脚の場合の κ 全体も後述の実際の比較で証明した。
+coherent な錐の写像空間との比較、𝒮・Sp の適用は継続中。
 
 ### 元の重みの右脚と相対錐の anodyne 性（接続は未完了）
 
@@ -2642,8 +2642,8 @@ bousfieldKanWeight_cospan_inr_relativeCone_anodyne :
 
 後者は実際の重みの遷移を像の包含と始域の同型で同定した結果である。
 この相対錐の単体集合と `cospanRightCornerMap` で作った元の重み W → V の相対境界との
-始域・終域・境界射の同型による同定は未完了。
-したがって一脚の場合の κ 全体、coherent な錐の写像空間との比較、𝒮・Sp の残りの ∞ 極限は未完了。
+同型による同定は後述の `PointJoinCorner`・`InitialNerveCorner` で実装した。
+coherent な錐の写像空間との比較、𝒮・Sp の残りの ∞ 極限は未完了。
 
 ### WithInitial の nerve の切断と元の圏の部分（次数ごとの構成）
 
@@ -2692,8 +2692,8 @@ initialNerveJoinSimplex {n : ℕ} (F : ComposableArrows (WithInitial C) n) :
 `initialNerveTail_obj`・`initialNerveTail_map` は復元した後半の対象と射を元の射列と同定し、
 `initialNerveJoinSimplex_cut` は構成したデータの切断を元の切断と同定する。
 これらの次数ごとの構成の単体的自然性と逆関係は、後述の `InitialJoinIso.lean` で証明した。
-既存の始対象の錐の射との一致、相対錐と WithInitial の標準境界の同型による同定は未完了。
-一脚の場合の κ 全体、coherent な錐の写像空間との比較、𝒮・Sp の適用も継続中。
+相対錐と WithInitial の標準境界の同定と一脚での κ は、以下の実際の比較で証明した。
+既存の始対象の錐の射との一致、coherent な錐の写像空間との比較、𝒮・Sp の適用は継続中。
 
 `AugmentedNerve.lean` は補った空単体を含む nerve の評価を提供する。
 C : Type u、[SmallCategory C] の下で、
@@ -2725,7 +2725,8 @@ initialNerveCut_initialJoinChain {n : ℕ}
 `augNerveMap_comp` から関手法則を証明する。`initialJoinObj_star`・`initialJoinObj_of` で
 端点の移送を明示する。切断が元に戻ることまで検証済みである。
 この次数ごとの構成から単体集合の同型への拡張は、以下の三ファイルで証明した。
-相対錐と標準境界の同定、一脚の場合の κ 全体、γ3b の主比較、𝒮・Sp の適用も継続中。
+相対錐と標準境界の同定、一脚の場合の κ 全体は以下で実装した。
+γ3b の主比較、𝒮・Sp の適用は継続中。
 
 `InitialJoinNaturality.lean` は任意の順序写像に対する後半の添字の可換性を証明し、
 対象の等式と射の HEq を介して射列の厳密な自然性を得る。
@@ -2757,8 +2758,70 @@ initialJoinNerveIso (C : Type u) [SmallCategory C] :
 
 前提は小さい圏であることだけであり、C の非空性・Kan 性や関手の忠実性は要求しない。
 同型の順方向は `initialJoinNerveMap`、逆方向は `initialNerveJoinMap`。
-この同型と両端の包含・元の圏の関手との可換性、既存の始対象の錐の射との一致は未完了。
-相対錐と標準境界の同定、一脚の場合の κ 全体、γ3b の主比較、𝒮・Sp の適用も継続中。
+この同型と両端の包含・元の圏の関手との可換性は以下で証明した。
+既存の始対象の錐の射との一致はこの定理群では使わず、未完了として残す。
+相対錐と標準境界の同定、一脚の場合の κ 全体は以下で実装した。
+γ3b の主比較、𝒮・Sp の適用は継続中。
+
+### 一脚だけが fibration の cospan の実際の比較（実装済み）
+
+`InitialJoinFaces.lean` と `InitialJoinFunctor.lean` は自然な同型の順方向について、
+点側の包含を `nervePoint .star`、底面の包含を `nerveMap WithInitial.incl` と同定する。
+任意の G : C ⥤ D に対して次の厳密な自然性を証明した。
+
+```lean
+initialJoinNerveMap_naturality (G : C ⥤ D) :
+    joinMap (𝟙 (Δ[0] : SSet.{u})) (nerveMap G) ≫ initialJoinNerveMap D =
+      initialJoinNerveMap C ≫ nerveMap (WithInitial.map G)
+```
+
+`PointJoinCorner.lean` は f : A ⟶ B に対して
+`pointJoinCorner f : pushout f (joinInr Δ[0] A) ⟶ join Δ[0] B` を定義する。
+単射の像への同型と空 join の同型で `joinUnion_isPushout` を移送し、
+`pointJoinCorner_anodyne f [Mono f] hf` を証明した。hf は f の anodyne 性である。
+`InitialNerveCorner.lean` はこの結果を始対象の付加の正方形へ移す。
+
+```lean
+initialNerveCorner (G : C ⥤ D) :
+    pushout (nerveMap G) (nerveMap (WithInitial.incl : C ⥤ WithInitial C)) ⟶
+      nerve (WithInitial D)
+initialNerveCorner_anodyne (G : C ⥤ D) [Mono (nerveMap G)]
+    (hG : anodyneExtensions (nerveMap G)) : anodyneExtensions (initialNerveCorner G)
+```
+
+C と D は Type u の小さい圏。対象の非空性、Kan 性や追加の境界の持ち上げ性は不要。
+`CospanSingleFibrationComparison.lean` の
+`bousfieldKanConeWeightInclusion_cospan_corner_anodyne` は、実際の W → V の相対境界を
+この形で表示し、既に証明した右遷移の anodyne 性を適用する。追加の境界仮定は残らない。
+
+以下の H の条件は中央・右端の Kan 性と左脚の Fibration 性。
+右脚の Fibration 性も、極限頂点の Kan 性の別の仮定も要求しない。
+
+```lean
+H : AsSmall.{u} WalkingCospan ⥤ SSet.{u}
+[KanComplex (H.obj (AsSmall.up.obj .one))]
+[KanComplex (H.obj (AsSmall.up.obj .right))]
+[Fibration (H.map (AsSmall.up.map WalkingCospan.Hom.inl))]
+
+bousfieldKanConeWeightInclusion_cospan_leftFibration_trivialKanFibration H :
+    TrivialKanFibration (weightedSectionsPre bousfieldKanConeWeightInclusion H)
+bousfieldKanConeWeightInclusion_cospan_leftFibration_homotopyEquivalence H :
+    IsSimplicialHomotopyEquivalence (weightedSectionsPre bousfieldKanConeWeightInclusion H)
+bousfieldKanConeComparison_cospan_leftFibration_homotopyEquivalence H
+    (c : Cone H) (hc : IsLimit c) :
+    IsSimplicialHomotopyEquivalence (bousfieldKanConeComparison c)
+bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
+    IsSimplicialHomotopyEquivalence (bousfieldKanLimitComparison H)
+```
+
+一点側で既に証明した同値と、元の重みへの実際の制限の同値を合成して κ を得る。
+豊穣圏 C : Type v、[Category.{u} C]、[SimplicialCategory C] について、
+`representableHomotopyLimitComparison_cospan_leftFibration_homotopyEquivalence c x hc` は
+実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
+ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
+hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開308宣言の監査に記録。
+錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
 ### 𝒮 の空積（実装済み）
 
