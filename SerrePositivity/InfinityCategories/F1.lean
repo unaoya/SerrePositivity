@@ -183,3 +183,6 @@ public import SerrePositivity.InfinityCategories.F1.WeightedNerveFaceGeometry
 public import SerrePositivity.InfinityCategories.F1.WeightedNerveHornPrefixAgreement
 public import SerrePositivity.InfinityCategories.F1.WeightedNerveHornFaceAgreement
 public import SerrePositivity.InfinityCategories.F1.WeightedNerveLeftFibration
+public import SerrePositivity.InfinityCategories.F1.SimplicialReplacement
+public import SerrePositivity.InfinityCategories.F1.TautScaffold
+public import SerrePositivity.InfinityCategories.F1.SimplicialReplacementFiber

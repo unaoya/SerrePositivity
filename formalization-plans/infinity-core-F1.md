@@ -4300,5 +4300,58 @@ instance leftStrictTransportWeightedNerve_quasicategory
     {C : Type u} [Category.{u} C] {E : SSet.{u}}
     (p : E ⟶ nerve C) [LeftFibration p] : Quasicategory (leftStrictTransportWeightedNerve p)
 
+def simplicialReplacementSimplex {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (n : ℕ) : Type u
+
+def simplicialReplacementSimplexMap {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {m n : SimplexCategory} (α : m ⟶ n)
+    (s : simplicialReplacementSimplex F n.len) : simplicialReplacementSimplex F m.len
+
+def simplicialReplacement {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) : SSet.{u}
+
+def simplicialReplacementProjection {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) : simplicialReplacement F ⟶ nerve C
+
+def tautScaffoldDiagram {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {n : ℕ} (s : simplicialReplacementSimplex F n) :
+    simplexPrefixWeight n ⟶ s.1 ⋙ F
+
+def tautScaffold {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) :
+    simplicialReplacement F ⟶ weightedNerve F
+
+lemma tautScaffold_projection {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) :
+    tautScaffold F ≫ weightedNerveProjection F = simplicialReplacementProjection F
+
+def simplicialReplacementConstantLift {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (c : C) : F.obj c ⟶ simplicialReplacement F
+
+lemma simplicialReplacementConstantLift_projection {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (c : C) :
+    simplicialReplacementConstantLift F c ≫ simplicialReplacementProjection F =
+      SSet.const (nerveVertex c)
+
+def simplicialReplacementFiberMap {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (c : C) :
+    F.obj c ⟶ vertexFiber (simplicialReplacementProjection F) (nerveVertex c)
+
+instance simplicialReplacementFiberMap_isIso {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (c : C) : IsIso (simplicialReplacementFiberMap F c)
+
+lemma simplicialReplacementConstantLift_tautScaffold {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (c : C) :
+    simplicialReplacementConstantLift F c ≫ tautScaffold F = weightedNerveConstantLift F c
+
+def tautScaffoldFiberMap {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) (c : C) :
+    vertexFiber (simplicialReplacementProjection F) (nerveVertex c) ⟶
+      vertexFiber (weightedNerveProjection F) (nerveVertex c)
+
+lemma simplicialReplacementFiberMap_tautScaffoldFiberMap
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) (c : C) :
+    simplicialReplacementFiberMap F c ≫ tautScaffoldFiberMap F c = weightedNerveFiberMap F c
+
+instance tautScaffoldFiberMap_isIso {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (c : C) : IsIso (tautScaffoldFiberMap F c)
+
 end SerrePositivity.InfinityCategories
 ```
