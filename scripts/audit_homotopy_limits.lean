@@ -2713,3 +2713,39 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @pullbackSequence_omega_iff
 #print axioms pullbackSequence_omega_iff
+
+#check @group_pointed_five_lemma
+#print axioms group_pointed_five_lemma
+
+#check @fibrationTotal_positive_bijective
+#print axioms fibrationTotal_positive_bijective
+
+#check @fibration_vertex_in_component
+#print axioms fibration_vertex_in_component
+
+#check @fibration_componentFiber_exists
+#print axioms fibration_componentFiber_exists
+
+#check @fibration_componentFiber_exact
+#print axioms fibration_componentFiber_exact
+
+#check @fibrationFiberMapBase
+#print axioms fibrationFiberMapBase
+
+#check @fibrationFiberMapBase_ι
+#print axioms fibrationFiberMapBase_ι
+
+#check @fibrationTotal_piZero_injective
+#print axioms fibrationTotal_piZero_injective
+
+#check @fibrationTotal_piZero_surjective
+#print axioms fibrationTotal_piZero_surjective
+
+#check @fibrationTotal_piIsomorphism
+#print axioms fibrationTotal_piIsomorphism
+
+#check @fibrationFiberMapBase_piIsomorphism_of_vertex
+#print axioms fibrationFiberMapBase_piIsomorphism_of_vertex
+
+#check @fibrationFiberMapBase_piZero_surjective
+#print axioms fibrationFiberMapBase_piZero_surjective

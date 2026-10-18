@@ -1338,3 +1338,37 @@ freeAlgebraAdjunction_counit_app (P : Operad A) (X : P.Algebra) :
 end Operad
 end SerrePositivity.EInfinity
 ```
+
+
+### γ3c：fibration の fiber・底から全空間の全次数を比較する補題
+
+`GroupPointedFiveLemma` の最後の項が任意の基点付き集合でよい五項補題を、
+`FibrationTotalPositive` で長完全列に適用した。底と指定 fiber の π_* 同型から
+全空間の全正次数の全単射性を得る。π₁ の次の fiber の π₀ は群とせず、基本群も含めて検証した。
+
+`FibrationComponentTransport` は、指定 fiber に頂点があることを仮定せず、
+任意の底の頂点 b に写る全空間の成分をその fiber へ移す補題と完全性を証明した。
+`FibrationTotalComponents` は任意の b 上の `fibrationFiberMapBase` を構成し、
+全空間の π₀ の単射性と全射性を別々に検証して `fibrationTotal_piIsomorphism` を得た。
+前提は底の π_* 同型、各全空間頂点の像の上の fiber の π_* 同型、
+および全ての b 上の fiber の成分の全射性。
+空の fiber の全基点条件から成分の全射性を推論していない。
+
+`FibrationAllFibers` の `fibrationFiberMapBase_piIsomorphism_of_vertex` は
+fiber に頂点がある場合の全次数比較を既存の fiber 比較へ渡す。
+`fibrationFiberMapBase_piZero_surjective` は、元の全空間の頂点 e₀ と全空間・底の
+π_* 同型から任意の b 上の fiber の成分の全射性を得る。
+標的 fiber の成分を全空間で戻してから底の成分の単射性で源の fiber へ移すため、
+源の fiber が空の可能性も検査する。L9 の各段では元の基点を e₀ として使える。
+新規12宣言の正確な型・全前提は InfinityCategories/README.md の同名節へ記録し、監査へ追加した。
+原典は Goerss–Jardine I §§7–8、Kerodon 3.2.6、BF 1978 §2、HTT 4.2.4.1。
+
+引き戻し射影の fiber の標準同型と実際の pullbackAdjointMap への適用は次工程。
+Sp の引き戻しの Ω 条件そのもの、実際の錐、豊穣 Hom の fibration 条件と ∞ 極限性は未完了。
+Sp の塔、非反転の比較、余極限側、E2a 完了後の E2b 適用も未完了で、γ3 は継続中。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4627 jobs）、公開1196宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規5ファイルの警告・sorry・追加公理はない。
+他担当の依存838ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-fibration-total-comparison-aggregate.log` と
+`/tmp/gamma3-fibration-total-comparison-audit.log`。

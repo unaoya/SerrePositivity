@@ -6435,3 +6435,173 @@ Sp の塔、元の非反転の end・q_x と反転係数の直接比較、余極
 他担当の依存821ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-spectrum-pullback-structure-aggregate.log` と
 `/tmp/gamma3-spectrum-pullback-structure-audit.log`。
+
+
+### γ3c：fibration の fiber・底から全空間の全次数を比較する補題
+
+Sp の引き戻しの Ω 条件で必要な比較に向け、全空間の π_* 同型の判定を整えた。
+`GroupPointedFiveLemma` の `group_pointed_five_lemma` は、最初の四項だけが群で、
+最後の項が任意の基点付き集合でよい五項補題。最後の写像に準同型性は要求せず、
+最後の縦写像は基点保存と単射性だけを使う。
+`FibrationTotalPositive` はこれを Kan fibration の自然な長完全列の
+底・fiber・全空間・底・fiber の五項へ適用した。
+`fibrationTotal_positive_bijective` は底と指定 fiber の全基点 π_* 同型性から、
+全空間の指定基点の全ての正次数の全単射性を与える。
+基本群 π₁ の次の fiber の π₀ を群として扱わず、n=0 も同じ証明で含める。
+
+零次数の比較では、空の fiber に対する `KanPiIsomorphism` の全基点条件は自動的に成立し、
+それだけから成分の全射性を導けないことに注意して前提を分けた。
+`FibrationComponentTransport` の `fibration_vertex_in_component` は、底の連結成分の
+等号を一本の辺へ戻し、指定始点から Kan fibration に沿って持ち上げる。
+`fibration_componentFiber_exists` と `fibration_componentFiber_exact` は、
+**任意の底の頂点 b** について、その頂点に写る全空間の成分が fiber の成分から来ることを与える。
+既存の参照頂点 e の像 p(e) 上だけの完全性を使う界面とは別に、
+fiber の参照頂点や非空性を先に仮定しない界面を公開した。
+
+`FibrationTotalComponents` は任意の b 上の射 `fibrationFiberMapBase` を定義した。
+全空間の π₀ の単射性は、底の π_* 同型性と各全空間頂点の像の上の fiber の成分の単射性から得る。
+全射性は、底の成分の全射性と **全ての b 上の fiber の成分の全射性** から得る。
+`fibrationTotal_piIsomorphism` は、底の π_* 同型、各全空間頂点の像の上の fiber の
+全基点 π_* 同型、およびこの全 b の成分の全射性を入力に、全空間の全基点・全自然数次数の
+π_* 同型を証明する。零次数と正次数をそれぞれの正確な条件で検証した。
+
+`FibrationAllFibers` の `fibrationFiberMapBase_piIsomorphism_of_vertex` は、
+指定 fiber に頂点がある場合、元の全空間と底の π_* 同型からその fiber の π_* 同型を得る。
+`fibrationFiberMapBase_piZero_surjective` は、元の全空間の参照頂点 e₀ と
+全空間・底の π_* 同型性から、**任意の b 上の成分の全射性** を証明した。
+標的 fiber の成分を全空間で戻し、底の成分の単射性から源の fiber へ移して頂点を得て、
+その頂点で既存の fiber 比較を使う。源の fiber が空の可能性もこの手順で検査する。
+参照頂点 e₀ は、全基点の条件から全空間の π₀ の全射性を得るために明示している。
+L9 の点つき各段を使うときには、その基点を e₀ として渡せる。
+原典上の位置は Goerss–Jardine I §§7–8、Kerodon 3.2.6、BF 1978 §2、HTT 4.2.4.1。
+
+新規12宣言の正確な型・全前提は以下。namespace は
+`SerrePositivity.InfinityCategories.HomotopyLimits`、宇宙は u。
+公理依存の正本は `scripts/audit_homotopy_limits.lean`。
+
+`GroupPointedFiveLemma`：
+
+```lean
+lemma group_pointed_five_lemma
+    {A B C D E A' B' C' D' E' : Type u}
+    [Group A] [Group B] [Group C] [Group D]
+    [Group A'] [Group B'] [Group C'] [Group D']
+    (e : E) (e' : E')
+    (d₁ : A →* B) (d₂ : B →* C) (d₃ : C →* D) (d₄ : D → E)
+    (d₁' : A' →* B') (d₂' : B' →* C') (d₃' : C' →* D') (d₄' : D' → E')
+    (f₁ : A →* A') (f₂ : B →* B') (f₃ : C →* C') (f₄ : D →* D') (f₅ : E → E')
+    (h₁ : ∀ a, f₂ (d₁ a) = d₁' (f₁ a))
+    (h₂ : ∀ b, f₃ (d₂ b) = d₂' (f₂ b))
+    (h₃ : ∀ c, f₄ (d₃ c) = d₃' (f₃ c))
+    (h₄ : ∀ d, f₅ (d₄ d) = d₄' (f₄ d)) (h₅ : f₅ e = e')
+    (ex₁ : ∀ b, d₂ b = 1 ↔ ∃ a, d₁ a = b)
+    (ex₂ : ∀ c, d₃ c = 1 ↔ ∃ b, d₂ b = c)
+    (ex₃ : ∀ d, d₄ d = e ↔ ∃ c, d₃ c = d)
+    (ex₁' : ∀ b, d₂' b = 1 ↔ ∃ a, d₁' a = b)
+    (ex₂' : ∀ c, d₃' c = 1 ↔ ∃ b, d₂' b = c)
+    (ex₃' : ∀ d, d₄' d = e' ↔ ∃ c, d₃' c = d)
+    (hf₁ : Function.Surjective f₁) (hf₂ : Function.Bijective f₂)
+    (hf₄ : Function.Bijective f₄) (hf₅ : Function.Injective f₅) :
+    Function.Bijective f₃
+```
+
+`FibrationTotalPositive`：
+
+```lean
+lemma fibrationTotal_positive_bijective {E B E' B' : SSet.{u}}
+    [KanComplex E] [KanComplex B] [KanComplex E'] [KanComplex B']
+    (p : E ⟶ B) (p' : E' ⟶ B') [Fibration p] [Fibration p']
+    (f : E ⟶ E') (g : B ⟶ B') (comm : p ≫ g = f ≫ p')
+    (hg : KanPiIsomorphism g) (e : E _⦋0⦌)
+    (hF : KanPiIsomorphism (fiberMap p p' f g comm e)) (n : ℕ) :
+    Function.Bijective (KanHomotopyGroup.map (n
+```
+
+`FibrationComponentTransport`：
+
+```lean
+lemma fibration_vertex_in_component {E B : SSet.{u}} [KanComplex E] [KanComplex B]
+    (p : E ⟶ B) [Fibration p] (e : E _⦋0⦌) (b : B _⦋0⦌)
+    (hb : π₀.mk (p.app _ e) = π₀.mk b) :
+    ∃ e' : E _⦋0⦌, p.app _ e' = b ∧ π₀.mk e' = π₀.mk e
+
+lemma fibration_componentFiber_exists {E B : SSet.{u}} [KanComplex E] [KanComplex B]
+    (p : E ⟶ B) [Fibration p] (b : B _⦋0⦌) (a : π₀ E)
+    (ha : mapπ₀ p a = π₀.mk b) :
+    ∃ c : π₀ (KanFiber p b), mapπ₀ (fiberι p b) c = a
+
+lemma fibration_componentFiber_exact {E B : SSet.{u}} [KanComplex E] [KanComplex B]
+    (p : E ⟶ B) [Fibration p] (b : B _⦋0⦌) (a : π₀ E) :
+    mapπ₀ p a = π₀.mk b ↔
+      ∃ c : π₀ (KanFiber p b), mapπ₀ (fiberι p b) c = a
+```
+
+`FibrationTotalComponents`：
+
+```lean
+def fibrationFiberMapBase {E B E' B' : SSet.{u}}
+    (p : E ⟶ B) (p' : E' ⟶ B') (f : E ⟶ E') (g : B ⟶ B')
+    (comm : p ≫ g = f ≫ p') (b : B _⦋0⦌) : KanFiber p b ⟶ KanFiber p' (g.app _ b)
+
+lemma fibrationFiberMapBase_ι {E B E' B' : SSet.{u}}
+    (p : E ⟶ B) (p' : E' ⟶ B') (f : E ⟶ E') (g : B ⟶ B')
+    (comm : p ≫ g = f ≫ p') (b : B _⦋0⦌) :
+    fibrationFiberMapBase p p' f g comm b ≫ fiberι p' (g.app _ b) = fiberι p b ≫ f
+
+lemma fibrationTotal_piZero_injective {E B E' B' : SSet.{u}}
+    [KanComplex E] [KanComplex B] [KanComplex E'] [KanComplex B']
+    (p : E ⟶ B) (p' : E' ⟶ B') [Fibration p] [Fibration p']
+    (f : E ⟶ E') (g : B ⟶ B') (comm : p ≫ g = f ≫ p')
+    (hg : KanPiIsomorphism g)
+    (hF : ∀ e : E _⦋0⦌, Function.Injective (mapπ₀ (fiberMap p p' f g comm e))) :
+    Function.Injective (mapπ₀ f)
+
+lemma fibrationTotal_piZero_surjective {E B E' B' : SSet.{u}}
+    [KanComplex E] [KanComplex B] [KanComplex E'] [KanComplex B']
+    (p : E ⟶ B) (p' : E' ⟶ B') [Fibration p] [Fibration p']
+    (f : E ⟶ E') (g : B ⟶ B') (comm : p ≫ g = f ≫ p')
+    (hg : Function.Surjective (mapπ₀ g))
+    (hF : ∀ b : B _⦋0⦌, Function.Surjective (mapπ₀ (fibrationFiberMapBase p p' f g comm b))) :
+    Function.Surjective (mapπ₀ f)
+
+lemma fibrationTotal_piIsomorphism {E B E' B' : SSet.{u}}
+    [KanComplex E] [KanComplex B] [KanComplex E'] [KanComplex B']
+    (p : E ⟶ B) (p' : E' ⟶ B') [Fibration p] [Fibration p']
+    (f : E ⟶ E') (g : B ⟶ B') (comm : p ≫ g = f ≫ p')
+    (hg : KanPiIsomorphism g)
+    (hF : ∀ e : E _⦋0⦌, KanPiIsomorphism (fiberMap p p' f g comm e))
+    (hF₀ : ∀ b : B _⦋0⦌,
+      Function.Surjective (mapπ₀ (fibrationFiberMapBase p p' f g comm b))) :
+    KanPiIsomorphism f
+```
+
+`FibrationAllFibers`：
+
+```lean
+lemma fibrationFiberMapBase_piIsomorphism_of_vertex {E B E' B' : SSet.{u}}
+    [KanComplex E] [KanComplex B] [KanComplex E'] [KanComplex B']
+    (p : E ⟶ B) (p' : E' ⟶ B') [Fibration p] [Fibration p']
+    (f : E ⟶ E') (g : B ⟶ B') (comm : p ≫ g = f ≫ p')
+    (hf : KanPiIsomorphism f) (hg : KanPiIsomorphism g)
+    (b : B _⦋0⦌) (v : (KanFiber p b) _⦋0⦌) :
+    KanPiIsomorphism (fibrationFiberMapBase p p' f g comm b)
+
+lemma fibrationFiberMapBase_piZero_surjective {E B E' B' : SSet.{u}}
+    [KanComplex E] [KanComplex B] [KanComplex E'] [KanComplex B']
+    (p : E ⟶ B) (p' : E' ⟶ B') [Fibration p] [Fibration p']
+    (f : E ⟶ E') (g : B ⟶ B') (comm : p ≫ g = f ≫ p')
+    (hf : KanPiIsomorphism f) (hg : KanPiIsomorphism g) (e₀ : E _⦋0⦌) (b : B _⦋0⦌) :
+    Function.Surjective (mapπ₀ (fibrationFiberMapBase p p' f g comm b))
+```
+
+これらは全空間の比較に必要な補題であり、Sp の引き戻しの Ω 条件そのものの証明ではない。
+次に、引き戻し射影の fiber と元の fibration の fiber の標準同型を構成し、
+実際の `pullbackAdjointMap` へこれらの比較を適用する。
+引き戻しの Ω スペクトルと錐の束ね直し、豊穣 Hom の fibration 条件と ∞ 極限性、Sp の塔、
+非反転の比較、余極限側、E2a 完了後の E2b 適用も未完了で、γ3 は継続中。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4627 jobs）、公開1196宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規5ファイルの警告・sorry・追加公理はない。
+他担当の依存838ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-fibration-total-comparison-aggregate.log` と
+`/tmp/gamma3-fibration-total-comparison-audit.log`。
