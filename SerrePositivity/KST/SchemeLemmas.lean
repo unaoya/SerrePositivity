@@ -166,3 +166,6 @@ public import SerrePositivity.KST.SchemeLemmas.SplitAlgebraCoefficientMembership
 public import SerrePositivity.KST.SchemeLemmas.MatrixMinorIdeal
 public import SerrePositivity.KST.SchemeLemmas.MatrixMinorIdealOperations
 public import SerrePositivity.KST.SchemeLemmas.MatrixMinorIdealColumnSpan
+public import SerrePositivity.KST.SchemeLemmas.RelationPivotElimination
+public import SerrePositivity.KST.SchemeLemmas.PureTransformPivotElimination
+public import SerrePositivity.KST.SchemeLemmas.AdjugateRelationElimination
