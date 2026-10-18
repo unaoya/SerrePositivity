@@ -119,6 +119,12 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `exteriorCochainInclusion_map`・`exteriorKoszulCochainMap_unit/mul` | ExteriorMapInclusion / ExteriorMapLaws | 対象ビルド済み |
 | `exteriorKoszulDGFunctor`・`exteriorKoszulDGFunctor_id/comp` | ExteriorDGFunctor / ExteriorCochainFunctoriality | 対象ビルド済み |
 | `chartExteriorDGFunctor`・`exceptionalExteriorDGFunctor` と Hom の可逆性 | ChartDGFunctors | 対象ビルド済み |
+| `exteriorHomogeneous_anticomm`・`exteriorCochainBilinear_comm`・`exteriorKoszul_comm` | ExteriorCommutativity | 対象ビルド済み |
+| `exteriorKoszulCochain_finite/free/isZero_X_lt` | ExteriorFiniteness | 対象ビルド済み |
+| `exteriorCochainZeroIso`・`exteriorKoszulUnit_f_zero_isIso` | ExteriorDegreeZero | 対象ビルド済み |
+| `sequenceExteriorCochain` と各項の有限自由性・下限 | ExteriorSequence | 対象ビルド済み |
+| `sequenceExteriorCochain_empty_iso` | ExteriorSequence | 空列で反復 cone と比較済み |
+| `chartSequenceGeneratorEquiv_differential`・`chartSequenceExteriorIso` | ChartSequenceComparison | 対象ビルド済み |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -126,11 +132,13 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 生成元変換は単位・積・恒等・合成を保つ dg 関手へ持ち上げ済み。
 チャートと例外因子の基底変換は Hom の射が可逆な dg 関手として構成済み。
 異なる微分の構造を同時に扱う公開対象型は `ExteriorKoszulObject d` とする。
-`derivedChartComplex` は既存の反復 cone 複体であり、両模型の比較同型はまだない。
+符号付き braiding に関する可換性も証明済み。有限列では各項の有限自由性と振幅 [-n,0] を証明済み。
+`derivedChartComplex` は既存の反復 cone 複体であり、一般の列で両模型の比較同型はまだない。
+空列の比較同型、およびチャート列の Fin r と ChartIndex の添字比較同型は構成済み。
 この二つを合わせて「導来チャート cdga の実装済み」とは扱わない。
-所有モジュールの全299定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全329定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
-次の実装単位は Koszul 外積模型の符号付き可換性と、既存反復 cone 模型との比較。
+次の実装単位は生成元を一つ追加した外積の分解と、反復 cone 比較の帰納段階。
 重なり環への導来底変更・dg 関手のチャート cocycle の具体化も残る。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
 

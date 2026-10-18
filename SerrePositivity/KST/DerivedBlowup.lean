@@ -31,3 +31,8 @@ public import SerrePositivity.KST.DerivedBlowup.ExteriorMapLaws
 public import SerrePositivity.KST.DerivedBlowup.ExteriorDGFunctor
 public import SerrePositivity.KST.DerivedBlowup.ExteriorCochainFunctoriality
 public import SerrePositivity.KST.DerivedBlowup.ChartDGFunctors
+public import SerrePositivity.KST.DerivedBlowup.ExteriorCommutativity
+public import SerrePositivity.KST.DerivedBlowup.ExteriorFiniteness
+public import SerrePositivity.KST.DerivedBlowup.ExteriorDegreeZero
+public import SerrePositivity.KST.DerivedBlowup.ExteriorSequence
+public import SerrePositivity.KST.DerivedBlowup.ChartSequenceComparison
