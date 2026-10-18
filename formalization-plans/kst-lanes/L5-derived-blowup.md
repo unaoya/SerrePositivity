@@ -149,6 +149,10 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `exteriorDegreeBaseChangeEquiv` | ExteriorBaseChangeDegree | 各同次外積の底変更同型 |
 | `exteriorDegreeToBaseChange_d` | ExteriorBaseChangeDegreeDifferential | 同次次数別の微分比較 |
 | `exteriorChainBaseChangeIso` | ExteriorChainBaseChange | 自然数次数 chain 複体の底変更同型 |
+| `exteriorCochainBaseChangeIso` | ExteriorCochainBaseChange | 整数 cochain 複体の底変更同型 |
+| `exteriorBaseChangeCochainInclusion_iso/iso_inv/injective` | ExteriorCochainBaseChangeInclusion | 総外積との比較と単射性 |
+| `exteriorCochainBaseChange_unit`・`exteriorCochainBaseChange_mul` | ExteriorBaseChangeUnit / ExteriorBaseChangeMultiplication | 強モノイダル係数変更との単位・積比較 |
+| `exteriorKoszulBaseChangeDGFunctor`・`exteriorKoszulBaseChangeDGFunctor_quasiEquivalence` | ExteriorBaseChangeDGFunctor | 既存 DGBaseChange からの dg 準同値 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -170,12 +174,15 @@ underlying 複体の同型を構成済み。共通係数環上の cochain 遷移
 総外積代数の底変更同型は任意可換環上で構成済みで、収縮微分と可換なことも証明済み。
 同次次数への制限は、graded projection を tensor した左逆を使い、平坦性を仮定せず構成済み。
 自然数次数の Koszul chain 複体の底変更同型を構成済み。
-整数 cochain への零延長とスカラー拡大の比較、および dg 圏のスカラー拡大比較への装備は未完了。
+整数 cochain への零延長とスカラー拡大の比較を構成済み。
+その逆同型は強モノイダル係数変更の単位・乗法を保存し、
+既存 `DGBaseChange` から Koszul 生成加群の底変更による一対象 dg 圏への dg 準同値を構成済み。
+チャートの自由生成加群のスカラー拡大を、係数変更後の標準自由生成加群と比較する適用は未完了。
 導来チャートの外積 dg 代数と underlying Koszul 複体は構成済みだが、
 局所化と底変更の比較を含むチャート図式全体の完成とは扱わない。
-所有モジュールの全567定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全605定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
-次の実装単位は整数 cochain の底変更同型と dg 圏の底変更比較。
+次の実装単位は自由生成加群のスカラー拡大の同型と、その dg チャートへの適用。
 重なり環への導来底変更・dg 関手のチャート cocycle の具体化も残る。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
 

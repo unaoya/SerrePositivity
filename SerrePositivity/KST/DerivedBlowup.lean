@@ -64,3 +64,9 @@ public import SerrePositivity.KST.DerivedBlowup.ExteriorTensorDegree
 public import SerrePositivity.KST.DerivedBlowup.ExteriorBaseChangeDegree
 public import SerrePositivity.KST.DerivedBlowup.ExteriorBaseChangeDegreeDifferential
 public import SerrePositivity.KST.DerivedBlowup.ExteriorChainBaseChange
+public import SerrePositivity.KST.DerivedBlowup.ExteriorCochainBaseChangeComponents
+public import SerrePositivity.KST.DerivedBlowup.ExteriorCochainBaseChange
+public import SerrePositivity.KST.DerivedBlowup.ExteriorCochainBaseChangeInclusion
+public import SerrePositivity.KST.DerivedBlowup.ExteriorBaseChangeUnit
+public import SerrePositivity.KST.DerivedBlowup.ExteriorBaseChangeMultiplication
+public import SerrePositivity.KST.DerivedBlowup.ExteriorBaseChangeDGFunctor
