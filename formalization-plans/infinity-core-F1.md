@@ -4652,5 +4652,62 @@ lemma universalScaffold_isLeftScaffold
     (p : E ⟶ nerve C) [LeftFibration p] :
     IsLeftScaffold p (leftStrictTransportDiagram p) (universalScaffold p)
 
+lemma vertexFiberTransport_ι {E B : SSet.{u}} (p : E ⟶ B)
+    {b b' : B _⦋0⦌} (h : b = b') :
+    eqToHom (congrArg (vertexFiber p) h) ≫ vertexFiberι p b' = vertexFiberι p b
+
+noncomputable def vertexFiberNervePullbackIso
+    {C D : Type u} [Category.{u} C] [Category.{u} D] {E : SSet.{u}}
+    (p : E ⟶ nerve C) (H : D ⥤ C) (d : D) :
+    vertexFiber (pullback.snd p (nerveMap H)) (nerveVertex d) ≅
+      vertexFiber p (nerveVertex (H.obj d))
+
+lemma vertexFiberNervePullbackIso_hom_ι
+    {C D : Type u} [Category.{u} C] [Category.{u} D] {E : SSet.{u}}
+    (p : E ⟶ nerve C) (H : D ⥤ C) (d : D) :
+    (vertexFiberNervePullbackIso p H d).hom ≫ vertexFiberι p (nerveVertex (H.obj d)) =
+      vertexFiberι (pullback.snd p (nerveMap H)) (nerveVertex d) ≫ pullback.fst p (nerveMap H)
+
+instance leftFibration_nervePullback
+    {C D : Type u} [Category.{u} C] [Category.{u} D] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] (H : D ⥤ C) :
+    LeftFibration (pullback.snd p (nerveMap H))
+
+lemma simplicialReplacementConstantLift_baseMap
+    {C D : Type u} [Category.{u} C] [Category.{u} D]
+    (H : D ⥤ C) (F : C ⥤ SSet.{u}) (d : D) :
+    simplicialReplacementConstantLift (H ⋙ F) d ≫ simplicialReplacementBaseMap H F =
+      simplicialReplacementConstantLift F (H.obj d)
+
+noncomputable def leftScaffoldBaseChange
+    {C D : Type u} [Category.{u} C] [Category.{u} D] {E : SSet.{u}}
+    (p : E ⟶ nerve C) (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E)
+    (h : l ≫ p = simplicialReplacementProjection F) (H : D ⥤ C) :
+    simplicialReplacement (H ⋙ F) ⟶ pullback p (nerveMap H)
+
+lemma leftScaffoldBaseChange_projection
+    {C D : Type u} [Category.{u} C] [Category.{u} D] {E : SSet.{u}}
+    (p : E ⟶ nerve C) (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E)
+    (h : l ≫ p = simplicialReplacementProjection F) (H : D ⥤ C) :
+    leftScaffoldBaseChange p F l h H ≫ pullback.snd p (nerveMap H) =
+      simplicialReplacementProjection (H ⋙ F)
+
+lemma leftScaffoldBaseChange_fiber
+    {C D : Type u} [Category.{u} C] [Category.{u} D] {E : SSet.{u}}
+    (p : E ⟶ nerve C) (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E)
+    (h : l ≫ p = simplicialReplacementProjection F) (H : D ⥤ C) (d : D) :
+    leftScaffoldFiberMap (pullback.snd p (nerveMap H)) (H ⋙ F) (leftScaffoldBaseChange p F l h H)
+        (leftScaffoldBaseChange_projection p F l h H) d ≫ (vertexFiberNervePullbackIso p H d).hom =
+      leftScaffoldFiberMap p F l h (H.obj d)
+
+lemma IsLeftScaffold.baseChange
+    {C D : Type u} [Category.{u} C] [Category.{u} D] {E : SSet.{u}}
+    {p : E ⟶ nerve C} [LeftFibration p] {F : C ⥤ SSet.{u}} [∀ c, KanComplex (F.obj c)]
+    {l : simplicialReplacement F ⟶ E} (hs : IsLeftScaffold p F l) (H : D ⥤ C) :
+    ∃ h : l ≫ p = simplicialReplacementProjection F,
+      @IsLeftScaffold D _ _ (pullback.snd p (nerveMap H)) inferInstance (H ⋙ F)
+        (fun d ↦ inferInstanceAs (KanComplex (F.obj (H.obj d))))
+        (leftScaffoldBaseChange p F l h H)
+
 end SerrePositivity.InfinityCategories
 ```

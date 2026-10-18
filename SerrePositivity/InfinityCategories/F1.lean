@@ -202,3 +202,5 @@ public import SerrePositivity.InfinityCategories.F1.SimplicialReplacementPoint
 public import SerrePositivity.InfinityCategories.F1.ScaffoldIntervalDiagram
 public import SerrePositivity.InfinityCategories.F1.ScaffoldIntervalPushout
 public import SerrePositivity.InfinityCategories.F1.LeftScaffold
+public import SerrePositivity.InfinityCategories.F1.PullbackNerveFiber
+public import SerrePositivity.InfinityCategories.F1.LeftScaffoldBaseChange

@@ -1036,3 +1036,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.tautScaffold_isLeftScaffold
 #check @SerrePositivity.InfinityCategories.leftStrictTransportDiagram_kanComplex
 #check @SerrePositivity.InfinityCategories.universalScaffold_isLeftScaffold
+#check @SerrePositivity.InfinityCategories.vertexFiberTransport_ι
+#check @SerrePositivity.InfinityCategories.vertexFiberNervePullbackIso
+#check @SerrePositivity.InfinityCategories.vertexFiberNervePullbackIso_hom_ι
+#check @SerrePositivity.InfinityCategories.leftFibration_nervePullback
+#check @SerrePositivity.InfinityCategories.simplicialReplacementConstantLift_baseMap
+#check @SerrePositivity.InfinityCategories.leftScaffoldBaseChange
+#check @SerrePositivity.InfinityCategories.leftScaffoldBaseChange_projection
+#check @SerrePositivity.InfinityCategories.leftScaffoldBaseChange_fiber
+#check @SerrePositivity.InfinityCategories.IsLeftScaffold.baseChange
