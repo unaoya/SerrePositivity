@@ -2192,7 +2192,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開516宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開543宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2820,7 +2820,7 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開516宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開543宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
 ### 重み付き end と weighted nerve の切断の族（全単射を実装）
@@ -3287,8 +3287,57 @@ conePinchedHom_mappingEvaluationFiberIso (d c : JoinCone p) :
 を得る。X が quasicategory なら、この表示に使う始点評価は上記の実際の Kan fibration である。
 これは主比較の pinched Hom 側を strict fiber として回収した結果であり、
 選択を含む `rightFibrationHomComparison` と既存の sHom からの `q_x` をまだ同定していない。
-strict fiber と path 置換による導来ファイバーの比較、錐の頂点 fiber と end の切断模型の比較、
-𝒮・Sp の残りの ∞ 極限への適用も継続中。
+始点評価の strict fiber と導来ファイバーの比較は次節で証明した。
+錐の頂点 fiber と end の切断模型の比較、𝒮・Sp の残りの ∞ 極限への適用は継続中。
+
+### 錐の pinched Hom と始点評価の導来ファイバー（実装済み）
+
+`KanEquivalencePaths` は Kan 複体の全ての path が可逆で、
+`equivalencePathι X` が通常の区間関手空間への厳密な同型になることを示す。
+`PointEndpointEvaluation` と `KanRelativePathLifting` は一点の関手空間の同型と二変数随伴を使い、
+Kan 複体間の Kan fibration p について任意の端点 j の
+`relativeEquivalencePathMapAt p j` が自明 Kan fibration になることを証明した。
+区間の端点の anodyne 性は、追跡済みの既存の `AnodyneIntervalEndpoints.delta_anodyne` を使う。
+
+`FibrationDerivedFiberSpan` は始域の可逆 path の終点の像を b に固定し、
+strict fiber と path 置換の fiber への二つの自明 Kan fibration を構成する。
+`[KanComplex E]`・`[KanComplex B]`・`p : E ⟶ B`・`[Fibration p]` の下で
+
+```lean
+fibrationStrictDerivedFiberEquivalence p (b : B _⦋0⦌) :
+    QCatEquivalence (vertexFiber p b) (comparisonFiber p b)
+```
+
+を得た。置換前の射 p に fibration 性がない場合へは拡張していない。
+`ConeDerivedFiberComparison` はこの同値に前節の strict fiber の同型を接続する。
+任意の `p : K ⟶ X`、`[Quasicategory X]` と全ての coherent な錐 d・c に対して、
+
+```lean
+conePinchedHom_mappingEvaluationDerivedFiberEquivalence (d c : JoinCone p) :
+    QCatEquivalence (pinchedHom (X := sliceOver p) d c)
+      (comparisonFiber (rightFibrationMappingEvaluation (sliceOverProjection p) c d.vertex)
+        (coneVertexFiberPoint d))
+```
+
+を証明した。添字 K の quasicategory 性や、図式 p の strict な通常の圏からの表示は不要。
+`ConeSpanLimitCriterion` は極限錐なら始点評価が全ての x で自明 Kan fibration となること、
+逆に始点評価が全ての x で同値なら、実際の導来ファイバーの可縮性と A3d から極限錐となることを示す。
+
+さらに `ConeRepresentableCriterion` は span の射影の切断の同値性を二対三で使い、
+前節で構成した実際の表現可能な比較射による次の判定を証明した。
+
+```lean
+isLimitCone_iff_rightFibrationHomComparison_homotopyEquivalence (c : JoinCone p) :
+    IsLimitCone c ↔ ∀ x : X _⦋0⦌,
+      IsSimplicialHomotopyEquivalence
+        (rightFibrationHomComparison (sliceOverProjection p) c x)
+```
+
+比較射の始域は `pinchedHom x c.vertex`、終域は `vertexFiber (sliceOverProjection p) x`。
+両者は Kan で、全ての x を量化する。この射は span の自明 Kan fibration の切断の選択を含む。
+この ∞ 圏内の極限判定を、豊穣 Hom からの既存の `representableHomotopyLimitComparison c x`
+とまだ同定していない。錐の頂点 fiber と end の切断模型の比較、および元の q_x との接続、
+𝒮・Sp の残りの ∞ 極限への適用は未完了であり、γ3b・γ3c の完成とは数えない。
 
 ### 𝒮 の空積（実装済み）
 
