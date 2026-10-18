@@ -299,12 +299,17 @@ amend、rebase、reset は使用しない。
 一対象 dg 圏を入力とする ΓA と ĜL_r(A) の入口を構成した。
 H⁰ の自己射環との環同型と、connective な入力の good truncation の擬同型を証明した。
 L2a の有限 rank の要求は完了。安定 rank の余極限とその自然性は L2b の BĜL への接続で扱う。
+L2b：一般のモノイドの二重単体的 bar、対角による分類空間、連結性と関手性を構成した。
+一般の π₀ 誘導モノイドによる群状性を定義し、ĜL_r がそれを満たすことを証明した。
+正則作用の分類圏、射影、準同型に関する関手と nerve の実際の収縮を構成した。
+正則作用の二重単体的 nerve と対角の全空間も構成した。
+対角の収縮、bar 束の homotopy-cartesian 性、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
 §10-5 は検証する文言と証明方針を記した段階である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-全ての公開 84 宣言を公理監査ファイルで検査し、標準三公理のみを確認した。
+全ての公開 111 宣言を公理監査ファイルで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -326,7 +331,12 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `gammaEndH0RingEquiv`、`dgAlgebraComponentsH0RingEquiv` | 実装済み | π₀Γ と既存 H⁰ 環の同型 |
 | `gammaEndPiZeroHomologyEquiv` | 実装済み | 実際の Mathlib homology との全単射 |
 | `quasiIso_connective_truncation` | 実装済み | H^i=0 (i>0) から good truncation の擬同型 |
-| 群完備化 | 実装中 | Segal Proposition 1.5 |
+| `monoidBar`、`monoidBarMap`、`monoidBarConnected` | 実装済み | bar 分類空間の対角模型と連結性 |
+| `SimplicialMonoid.componentsMonoid`、`IsGrouplike` | 実装済み | 一般の群状性の界面 |
+| `hatGL_isGrouplike` | 実装済み | ĜL の実際の群状性の供給 |
+| `regularActionNerveContraction` | 実装済み | 正則作用の nerve の実ホモトピー |
+| `regularBar` | 実装済み | 正則作用の二重単体的全空間の対角 |
+| 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
 | plus 構成 | 未実装 | acyclic map と π₁ の商 |
 | K₀・K₁ の比較 | 未実装 | KST Theorem 2.16、次数 0、1 |

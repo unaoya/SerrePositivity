@@ -5,6 +5,8 @@ public import SerrePositivity.KST.Comparison.ComponentSubcomplex
 public import SerrePositivity.KST.Comparison.DGAlgebra
 public import SerrePositivity.KST.Comparison.GammaH0Ring
 public import SerrePositivity.KST.Comparison.ConnectiveTruncation
+public import SerrePositivity.KST.Comparison.GrouplikeGL
+public import SerrePositivity.KST.Comparison.RegularBar
 
 /-!
 # K-L2：比較定理の入口

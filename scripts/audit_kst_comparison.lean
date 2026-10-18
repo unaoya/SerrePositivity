@@ -204,6 +204,60 @@ set_option pp.explicit true
 #check @SerrePositivity.KST.Comparison.gammaZeroClosedRingEquiv
 #print axioms SerrePositivity.KST.Comparison.gammaZeroClosedRingEquiv
 
+-- GroupCompletion.lean
+
+#check @SerrePositivity.KST.Comparison.bisimplicialBar
+#print axioms SerrePositivity.KST.Comparison.bisimplicialBar
+
+#check @SerrePositivity.KST.Comparison.monoidBar
+#print axioms SerrePositivity.KST.Comparison.monoidBar
+
+#check @SerrePositivity.KST.Comparison.monoidBarMap
+#print axioms SerrePositivity.KST.Comparison.monoidBarMap
+
+#check @SerrePositivity.KST.Comparison.monoidBarMap_id
+#print axioms SerrePositivity.KST.Comparison.monoidBarMap_id
+
+#check @SerrePositivity.KST.Comparison.monoidBarMap_comp
+#print axioms SerrePositivity.KST.Comparison.monoidBarMap_comp
+
+#check @SerrePositivity.KST.Comparison.monoidBarBasepoint
+#print axioms SerrePositivity.KST.Comparison.monoidBarBasepoint
+
+#check @SerrePositivity.KST.Comparison.monoidBarVertexSubsingleton
+#print axioms SerrePositivity.KST.Comparison.monoidBarVertexSubsingleton
+
+#check @SerrePositivity.KST.Comparison.monoidBarConnected
+#print axioms SerrePositivity.KST.Comparison.monoidBarConnected
+
+#check @SerrePositivity.KST.Comparison.hatGLBar
+#print axioms SerrePositivity.KST.Comparison.hatGLBar
+
+-- GrouplikeGL.lean
+
+#check @SerrePositivity.KST.Comparison.hatGL_isGrouplike
+#print axioms SerrePositivity.KST.Comparison.hatGL_isGrouplike
+
+-- MonoidComponents.lean
+
+#check @SerrePositivity.KST.Comparison.monoidSpace
+#print axioms SerrePositivity.KST.Comparison.monoidSpace
+
+#check @SerrePositivity.KST.Comparison.SimplicialMonoid.edgeMul
+#print axioms SerrePositivity.KST.Comparison.SimplicialMonoid.edgeMul
+
+#check @SerrePositivity.KST.Comparison.SimplicialMonoid.componentsMul
+#print axioms SerrePositivity.KST.Comparison.SimplicialMonoid.componentsMul
+
+#check @SerrePositivity.KST.Comparison.SimplicialMonoid.componentsMonoid
+#print axioms SerrePositivity.KST.Comparison.SimplicialMonoid.componentsMonoid
+
+#check @SerrePositivity.KST.Comparison.SimplicialMonoid.IsGrouplike
+#print axioms SerrePositivity.KST.Comparison.SimplicialMonoid.IsGrouplike
+
+#check @SerrePositivity.KST.Comparison.SimplicialMonoid.componentsGroup
+#print axioms SerrePositivity.KST.Comparison.SimplicialMonoid.componentsGroup
+
 -- PiZeroRing.lean
 
 #check @SerrePositivity.KST.Comparison.ringSpace
@@ -269,6 +323,35 @@ set_option pp.explicit true
 #check @SerrePositivity.KST.Comparison.SimplicialRing.simplexToComponents_natural
 #print axioms SerrePositivity.KST.Comparison.SimplicialRing.simplexToComponents_natural
 
+-- RegularBar.lean
+
+#check @SerrePositivity.KST.Comparison.RegularAction
+#print axioms SerrePositivity.KST.Comparison.RegularAction
+
+#check @SerrePositivity.KST.Comparison.regularActionCategory
+#print axioms SerrePositivity.KST.Comparison.regularActionCategory
+
+#check @SerrePositivity.KST.Comparison.regularActionProjection
+#print axioms SerrePositivity.KST.Comparison.regularActionProjection
+
+#check @SerrePositivity.KST.Comparison.regularActionMap
+#print axioms SerrePositivity.KST.Comparison.regularActionMap
+
+#check @SerrePositivity.KST.Comparison.regularActionContraction
+#print axioms SerrePositivity.KST.Comparison.regularActionContraction
+
+#check @SerrePositivity.KST.Comparison.regularActionNerveContraction
+#print axioms SerrePositivity.KST.Comparison.regularActionNerveContraction
+
+#check @SerrePositivity.KST.Comparison.regularActionFunctor
+#print axioms SerrePositivity.KST.Comparison.regularActionFunctor
+
+#check @SerrePositivity.KST.Comparison.bisimplicialRegularBar
+#print axioms SerrePositivity.KST.Comparison.bisimplicialRegularBar
+
+#check @SerrePositivity.KST.Comparison.regularBar
+#print axioms SerrePositivity.KST.Comparison.regularBar
+
 -- SimplexComponents.lean
 
 #check @SerrePositivity.KST.Comparison.simplexVertex
@@ -285,3 +368,9 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.Comparison.simplexClass_zero
 #print axioms SerrePositivity.KST.Comparison.simplexClass_zero
+
+#check @SerrePositivity.KST.Comparison.RegularAction.mk
+#print axioms SerrePositivity.KST.Comparison.RegularAction.mk
+
+#check @SerrePositivity.KST.Comparison.RegularAction.val
+#print axioms SerrePositivity.KST.Comparison.RegularAction.val
