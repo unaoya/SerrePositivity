@@ -140,3 +140,5 @@ public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapBaseDGFunctoriality
 public import SerrePositivity.KST.DerivedBlowup.DGEndMonoid
 public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapDGAlgebraDiagram
 public import SerrePositivity.KST.DerivedBlowup.DiagramModuleHom
+public import SerrePositivity.KST.DerivedBlowup.DiagramAlgebraMultiplication
+public import SerrePositivity.KST.DerivedBlowup.DiagramModuleUnit
