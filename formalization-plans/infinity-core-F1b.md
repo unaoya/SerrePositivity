@@ -187,6 +187,16 @@ h Fun の類の両方で照合済み。右辺の族は `unitCommaArrowVertex` �
 これを普遍正方形へ適用し、可逆 path への curry と fiber の持ち上げを使って
 `unitCommaMappingToComparisonFiber` を構成した。元の始域の写像空間への射影は、正方形の
 標的族に厳密に一致する。
+逆向きの基準図式として `unitIntervalCompositionTriangle` を構成した。パラメータは
+Map(F(x),y) 全体で、元の単位の代表、G による普遍標的辺、標準単位比較の普遍族を
+指定三辺に持つ実際の三角形である。`FunctorCompositionTriangle.precomp` と
+`unitIntervalCompositionTriangle_family` は、この一つの基準三角形を任意の族へ制限する。
+族ごとに独立に三角形を選び直さず、図式は基準図式への前合成そのものとなる。
+`exists_functorDiagramPath_lift_relative` は単射に沿う図式制限の可逆 path を、既定の部分族と
+始点の図式を保って持ち上げる。制限後の path 自体を厳密に保持する。
+残る接続は、導来 fiber の path を三角形の境界全体の path へ組み込み、この相対持ち上げから
+逆向きの比較と両合成のホモトピーを構成する部分である。合成の Hom の等式から三角形を
+族ごとに選ぶだけでは、与えられた path の情報を保つ保証はない。
 **比較射の逆射・両合成のホモトピーと同値性は未証明。** 順方向の射と終域の可縮性だけでは
 始域の可縮性は従わず、始対象性を結論してはならない。
 
@@ -197,8 +207,8 @@ comma の経路では、各点の比較の同値性から `UnitCommaInitialCondi
 射影の充填・輸送を使って自然な余単位と三角恒等式へ接続する必要がある。
 既存の全パラメータ版の経路も利用できるが、その十分条件で原典の各点の条件を置き換えて
 B1 完了とはしない。B2〜B5 も未完了。
-対象ビルド（2015 jobs）・公理監査（708 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 347 モジュールに straightening 依存がないことも確認した。
+対象ビルド（2018 jobs）・公理監査（742 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 350 モジュールに straightening 依存がないことも確認した。
 
 ## 4. 主要宣言
 
@@ -347,3 +357,7 @@ B1 完了とはしない。B2〜B5 も未完了。
 | `unitCommaSquareTargetFamily`・`unitCommaSquareTargetFamily_unit_homotopy` | 正規化した標的族と標準単位比較の像から右辺への実際のホモトピー | 実装済み |
 | `homotopyEquivalencePath`・`homotopyPathReplacementLift` と射影・終点の公式 | Kan 複体内のホモトピーによる可逆 path 置換への持ち上げ | 実装済み |
 | `unitCommaMappingToComparisonFiber`・`unitCommaMappingToComparisonFiber_projection` | comma の区間写像空間から単位比較の導来 fiber への順方向の射、底との整合性 | 実装済み（同値性は未証明） |
+| `FunctorCompositionTriangle`・`nonempty_functorCompositionTriangle_of_homEq` | 指定三辺の代表を持つ実際の合成三角形 | 実装済み |
+| `FunctorCompositionTriangle.precomp` | 基準三角形のパラメータ制限、三辺の raw な前合成を保持 | 実装済み |
+| `unitIntervalCompositionTriangle`・`unitIntervalCompositionTriangle_family` と図式の公式 | 標準単位比較の基準合成三角形と任意の族への制限 | 実装済み |
+| `exists_functorDiagramPath_lift_relative` | 単射に沿う図式の可逆 path の相対持ち上げ、部分族・始点・制限後の path を保持 | 実装済み |

@@ -442,3 +442,17 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.unitCommaMappingToComparisonFiber
 
 #check @SerrePositivity.InfinityCategories.unitCommaMappingToComparisonFiber_projection
+
+#check @SerrePositivity.InfinityCategories.FunctorCompositionTriangle
+
+#check @SerrePositivity.InfinityCategories.nonempty_functorCompositionTriangle_of_homEq
+
+#check @SerrePositivity.InfinityCategories.FunctorCompositionTriangle.precomp
+
+#check @SerrePositivity.InfinityCategories.unitIntervalCompositionTriangle
+
+#check @SerrePositivity.InfinityCategories.unitIntervalCompositionTriangle_family
+
+#check @SerrePositivity.InfinityCategories.unitIntervalCompositionTriangle_family_diagram
+
+#check @SerrePositivity.InfinityCategories.exists_functorDiagramPath_lift_relative

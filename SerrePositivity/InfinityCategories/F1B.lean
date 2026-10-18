@@ -64,3 +64,6 @@ public import SerrePositivity.InfinityCategories.F1B.UnitCommaArrowFamilies
 public import SerrePositivity.InfinityCategories.F1B.UnitCommaComparisonHomotopy
 public import SerrePositivity.InfinityCategories.F1B.HomotopyPathReplacement
 public import SerrePositivity.InfinityCategories.F1B.UnitCommaFiberComparison
+public import SerrePositivity.InfinityCategories.F1B.FunctorCompositionTriangle
+public import SerrePositivity.InfinityCategories.F1B.UnitCompositionTriangle
+public import SerrePositivity.InfinityCategories.F1B.FunctorDiagramPathLifting
