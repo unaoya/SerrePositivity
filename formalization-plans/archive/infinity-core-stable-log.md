@@ -7872,3 +7872,92 @@ Lean で抽出した公開宣言の正確な型：
 について標準三公理のみ。`git diff --check` 成功。
 恒等射の cofiber を零対象で実現する退化四角形の押し出し性、恒等射の三角形の所属、
 前加法構造・シフトの加法性、回転・八面体、Pretriangulated instance、S5〜S7 は未完了。
+
+
+## 恒等射の cofiber と可縮三角形の所属（TR1）
+
+`ColumnPushout.lean` は span を一点の恒等余錐を区間の始点に付加した pushout として表す。
+余極限付加の一般補題により制限し、前回の終点余錐の余極限性を適用した。
+`squareColumnDiagram_isPushout` は値域 Quasicategory のみを要求する。
+`IdentityCofiber.lean` は零終点の辺から `columnZeroTriangle` を作り、第一射が恒等射であること、
+第三対象が零であることを使って `columnCofiberTriangleIso` を構成する。
+任意の頂点から零頂点へ辺を選び、任意の h C の対象へ輸送することで
+`contractibleTriangle_mem_cofiberDistinguishedTriangles` を証明した。
+同型不変性・任意の射を含む三角形の存在と合わせて、定義済み distinguished 集合の TR1 は完成。
+
+Lean で抽出した公開宣言の型（省略表示の証明項は `columnZeroTriangle_isCofiber g hz`）：
+
+```lean
+@isColimitCone_of_val_eq.{u_1} : ∀ {K X : SSet.{u_1}} {p q : Quiver.Hom.{u_1, u_1 + 1} K X} (c : JoinCocone.{u_1} p)
+  (d : JoinCocone.{u_1} q), Eq.{u_1 + 1} ↑c ↑d → IsColimitCone.{u_1} d → IsColimitCone.{u_1} c
+columnSpan_attachment_isPushout.{u_1} : CategoryTheory.IsPushout.{u_1, u_1 + 1}
+  (joinInl.{u_1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })
+    (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }))
+  (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 1)
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (CategoryTheory.Iso.hom.{u_1, u_1 + 1} (joinStdSimplexIso.{u_1} 0 0)) SSet.horn₂₀.ι₀₁.{u_1})
+  SSet.horn₂₀.ι₀₂.{u_1}
+@squareColumnDiagram_isPushout.{u_1} : ∀ {X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  (g :
+    Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) X),
+  IsPushoutSquare.{u_1} (squareColumnDiagram.{u_1} g)
+@columnZeroTriangle.{u_1} : {X : SSet.{u_1}} →
+  (g :
+      Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        X) →
+    IsZeroVertex.{u_1}
+        ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+            (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} g (Opposite.op.{1} { len := 0 })))
+          ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 1)) →
+      ZeroTriangle.{u_1} X
+@columnZeroTriangle_isCofiber.{u_1} : ∀ {X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  (g : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) X)
+  (hz :
+    IsZeroVertex.{u_1}
+      ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+          (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} g (Opposite.op.{1} { len := 0 })))
+        ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 1))),
+  IsCofiberSequence.{u_1} (columnZeroTriangle.{u_1} g hz)
+@columnZeroTriangle_f_eq_id.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 : HasZeroVertex.{u_1} X]
+  (g : Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) X)
+  (hz :
+    IsZeroVertex.{u_1}
+      ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+          (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} g (Opposite.op.{1} { len := 0 })))
+        ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 1))),
+  Eq.{u_1 + 1}
+    (CategoryTheory.ShortComplex.f.{u_1, u_1} (ZeroTriangle.hoShortComplex.{u_1} (columnZeroTriangle.{u_1} g hz)))
+    (CategoryTheory.CategoryStruct.id.{u_1, u_1}
+      (SSet.HomotopyCategory.mk.{u_1}
+        ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+            (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} g (Opposite.op.{1} { len := 0 })))
+          ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 0))))
+@columnCofiberTriangleIso.{u_1} : {X : SSet.{u_1}} →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [inst_1 : IsStable.{u_1} X] →
+      (g :
+          Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+            X) →
+        (hz :
+            IsZeroVertex.{u_1}
+              ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+                  (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} g (Opposite.op.{1} { len := 0 })))
+                ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 1))) →
+          CategoryTheory.Iso.{u_1, u_1} (cofiberTriangle.{u_1} (columnZeroTriangle.{u_1} g hz) ⋯)
+            (CategoryTheory.Pretriangulated.contractibleTriangle.{u_1, u_1}
+              (SSet.HomotopyCategory.mk.{u_1}
+                ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+                    (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} g (Opposite.op.{1} { len := 0 })))
+                  ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) 0))))
+@contractibleTriangle_mem_cofiberDistinguishedTriangles.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 : IsStable.{u_1} X] (a : ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)),
+  Membership.mem.{u_1, u_1} (cofiberDistinguishedTriangles.{u_1} X)
+    (CategoryTheory.Pretriangulated.contractibleTriangle.{u_1, u_1} a)
+```
+
+対象 IdentityCofiber ビルド 2113 jobs、対象・Stable 集約ビルド 2161 jobs、公開型抽出、
+公理監査はいずれも終了コード 0。監査は 168 モジュール・1394 宣言（生成・非公開宣言を含む）
+について標準三公理のみ。自分の新規ファイルの警告は解消。`git diff --check` 成功。
+TR1 と TR3 は完成。前加法構造・シフトの加法性、回転、八面体、Pretriangulated instance、
+安定性から全有限極限・余極限を導く逆向き、S5〜S7 は未完了。
