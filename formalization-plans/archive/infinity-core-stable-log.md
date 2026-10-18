@@ -3385,3 +3385,67 @@ SerrePositivity.InfinityCategories.pastingCornerJoinIso.{u_1} : CategoryTheory.I
     (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
     (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
 ```
+
+
+## S4：長方形の余錐と右四角形の比較
+
+対象 `PastingRightCocone` と集約 `Stable` のビルドは成功（2013 jobs）。
+全宣言監査は 69 モジュール・727 宣言で標準三公理のみ。
+左四角形の押し出し性を使う外側比較、貼り合わせ全体・三角構造・S5〜S7 は未完了。
+
+```lean
+@SerrePositivity.InfinityCategories.stableJoin_prodStdSimplex_hom_ext.{u_1} : ∀ {K L : SSet.{u_1}} {m n : ℕ}
+  {f g :
+    Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.join.{u_1} K L)
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := m })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := n }))},
+  Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.joinInl.{u_1} K L) f)
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.joinInl.{u_1} K L) g) →
+    Eq.{u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.joinInr.{u_1} K L) f)
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.joinInr.{u_1} K L) g) →
+      Eq.{u_1 + 1} f g
+SerrePositivity.InfinityCategories.pastingCornerCocone_rightSpan.{u_1} : Eq.{u_1 + 1}
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (SerrePositivity.InfinityCategories.joinMap.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (CategoryTheory.Iso.hom.{u_1, u_1 + 1} SerrePositivity.InfinityCategories.pastingRightSpanIso.{u_1})
+        (SSet.Subcomplex.ι.{u_1} SerrePositivity.InfinityCategories.pastingRightSpan.{u_1}))
+      (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })))
+    SerrePositivity.InfinityCategories.pastingCornerCocone.{u_1})
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (CategoryTheory.Iso.hom.{u_1, u_1 + 1} SerrePositivity.InfinityCategories.spanCoconeSquareIso.{u_1})
+    (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1}
+      (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 0)
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })))
+@SerrePositivity.InfinityCategories.isColimitCone_iff_of_val_eq.{u_1} : ∀ {K X : SSet.{u_1}}
+  {p q : Quiver.Hom.{u_1, u_1 + 1} K X} (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p)
+  (d : SerrePositivity.InfinityCategories.JoinCocone.{u_1} q),
+  Eq.{u_1 + 1} ↑c ↑d →
+    (SerrePositivity.InfinityCategories.IsColimitCone.{u_1} c ↔
+      SerrePositivity.InfinityCategories.IsColimitCone.{u_1} d)
+@SerrePositivity.InfinityCategories.pastingCocone.{u_1} : {X : SSet.{u_1}} →
+  (F :
+      Quiver.Hom.{u_1, u_1 + 1}
+        (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+        X) →
+    SerrePositivity.InfinityCategories.JoinCocone.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (SSet.Subcomplex.ι.{u_1} SerrePositivity.InfinityCategories.pastingCorner.{u_1}) F)
+@SerrePositivity.InfinityCategories.pastingCocone_isColimitCone_iff_right.{u_1} : ∀ {X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X]
+  (F :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  SerrePositivity.InfinityCategories.IsColimitCone.{u_1} (SerrePositivity.InfinityCategories.pastingCocone.{u_1} F) ↔
+    SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1}
+      (SerrePositivity.InfinityCategories.pastingSquare.{u_1} F 0)
+```

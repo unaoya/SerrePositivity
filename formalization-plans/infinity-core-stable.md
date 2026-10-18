@@ -58,8 +58,10 @@ loop 側の双対的な適用も完了した。S4 に着手し、`Δ[2] × Δ[1]
 全長方形の join 表示 `pastingCornerJoinIso` を構成した。二座標の最後の頂点への
 評価で余錐を作り、終端角になる最初の頂点から切断を復元して各次数の全単射性を証明した。
 この同型には値域や安定性の仮定はない。貼り合わせの普遍性全体は未完了。
-右四角形の余錐との厳密な一致、および左四角形の押し出し性を使う外側図式への
-coslice の比較が残る。
+右 span への制限は右四角形の余錐と厳密に一致することまで証明した。
+`pastingCocone_isColimitCone_iff_right` により、値域の quasicategory 性のみの下で、
+五頂点図式上の余極限性と右四角形の押し出し性が同値である。
+左四角形の押し出し性を使う外側図式への coslice の比較が残る。
 引き戻しへの双対化と三角構造も未完了。Mathlib の三角構造の構成には h C の
 前加法構造・整数シフトとその加法性も証明する必要があり、S4 の義務として保持する。
 安定性から全有限極限・余極限を導く逆向き、S4〜S7 の三角構造・長完全列・完全関手・D7 は未完了。
@@ -142,8 +144,9 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | right anodyne な制限 | `sliceUnderRestrict_trivialKanFibration`、`isColimitCone_iff_restrict_of_rightAnodyne`（値域 Quasicategory、right anodyne な単射） | 完了 |
 | 部分長方形の右への制限 | `pastingRightSpan_rightAnodyne`、`pastingCornerRestrict_trivialKanFibration`、`pastingCorner_isColimitCone_iff_rightSpan`（後二者は値域 Quasicategory） | 完了（貼り合わせ全体の主張は未完了） |
 | 右 span の標準形 | `pastingRightSpanIso : (horn 2 0 : SSet) ≅ pastingRightSpan`、`pastingRightSpanIso_hom_ι`（値域の図式を選ぶ前の単体集合の同型と辺の一致） | 完了 |
-| 標準 span 上の余極限判定 | `pastingCornerRestrict_standardSpan_trivialKanFibration`、`pastingCorner_isColimitCone_iff_standardSpan`（値域 Quasicategory、五頂点図式の任意の余錐） | 完了（右四角形の余錐との一致と外側比較は未完了） |
-| 全長方形の join 表示 | `pastingCornerCocone`、`pastingCornerCocone_inl`、`pastingCornerCocone_app_injective`、`pastingCornerCocone_app_surjective`、`pastingCornerJoinIso`（任意の宇宙、追加仮定なし） | 完了（右四角形の余錐との一致と外側比較は未完了） |
+| 標準 span 上の余極限判定 | `pastingCornerRestrict_standardSpan_trivialKanFibration`、`pastingCorner_isColimitCone_iff_standardSpan`（値域 Quasicategory、五頂点図式の任意の余錐） | 完了（外側比較は未完了） |
+| 全長方形の join 表示 | `pastingCornerCocone`、`pastingCornerCocone_inl`、`pastingCornerCocone_app_injective`、`pastingCornerCocone_app_surjective`、`pastingCornerJoinIso`（任意の宇宙、追加仮定なし） | 完了（外側比較は未完了） |
+| 右四角形の余錐の比較 | `pastingCornerCocone_rightSpan`、`pastingCocone`、`pastingCocone_isColimitCone_iff_right`（後者は値域 Quasicategory、左四角形への仮定なし） | 完了（外側比較は未完了） |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

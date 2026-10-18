@@ -406,6 +406,12 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.pastingCornerCocone_isIso
 #print axioms SerrePositivity.InfinityCategories.pastingCornerJoinIso
 
+#print axioms SerrePositivity.InfinityCategories.stableJoin_prodStdSimplex_hom_ext
+#print axioms SerrePositivity.InfinityCategories.pastingCornerCocone_rightSpan
+#print axioms SerrePositivity.InfinityCategories.isColimitCone_iff_of_val_eq
+#print axioms SerrePositivity.InfinityCategories.pastingCocone
+#print axioms SerrePositivity.InfinityCategories.pastingCocone_isColimitCone_iff_right
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -477,7 +483,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.PastingRightSpanComparison,
     `SerrePositivity.InfinityCategories.Stable.LastJoinEvaluation,
     `SerrePositivity.InfinityCategories.Stable.PastingCornerCocone,
-    `SerrePositivity.InfinityCategories.Stable.PastingCornerJoinIso]
+    `SerrePositivity.InfinityCategories.Stable.PastingCornerJoinIso,
+    `SerrePositivity.InfinityCategories.Stable.PastingRightCocone]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
