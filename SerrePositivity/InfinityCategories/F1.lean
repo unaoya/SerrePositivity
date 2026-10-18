@@ -198,3 +198,7 @@ public import SerrePositivity.InfinityCategories.F1.SimplicialReplacementAssembl
 public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteTail
 public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteCover
 public import SerrePositivity.InfinityCategories.F1.ScaffoldFinitePushout
+public import SerrePositivity.InfinityCategories.F1.SimplicialReplacementPoint
+public import SerrePositivity.InfinityCategories.F1.ScaffoldIntervalDiagram
+public import SerrePositivity.InfinityCategories.F1.ScaffoldIntervalPushout
+public import SerrePositivity.InfinityCategories.F1.LeftScaffold

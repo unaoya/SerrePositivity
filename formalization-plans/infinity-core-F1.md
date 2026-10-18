@@ -4582,5 +4582,75 @@ lemma scaffoldFiniteReplacement_isPushout (n : ℕ)
       (simplicialReplacementBaseMap (scaffoldFiniteTail n) F)
       (simplicialReplacementInitialAssembly F (scaffoldFiniteInitial (n + 1)))
 
+lemma simplexChain_eq_constant {C : Type u} [Category.{u} C] [Subsingleton C]
+    [Quiver.IsThin C] (c : C) {n : ℕ} (σ : ComposableArrows C n) :
+    σ = (CategoryTheory.Functor.const (Fin (n + 1))).obj c
+
+instance simplicialReplacementConstantLift_isIso
+    {C : Type u} [Category.{u} C] [Subsingleton C] [Quiver.IsThin C]
+    (F : C ⥤ SSet.{u}) (c : C) : IsIso (simplicialReplacementConstantLift F c)
+
+lemma nervePoint_snd_isIso {C : Type u} [Category.{u} C] [Subsingleton C]
+    [Quiver.IsThin C] (c : C) (K : SSet.{u}) : IsIso (snd (nerve C) K)
+
+lemma simplicialReplacementAssembly_point
+    {C : Type u} [Category.{u} C] [Subsingleton C] [Quiver.IsThin C]
+    (c : C) {K : SSet.{u}} {F : C ⥤ SSet.{u}}
+    (η : (CategoryTheory.Functor.const C).obj K ⟶ F) :
+    simplicialReplacementAssembly η = snd (nerve C) K ≫ η.app c ≫
+      simplicialReplacementConstantLift F c
+
+def scaffoldIntervalMap (F : ULift.{u} (Fin 2) ⥤ SSet.{u}) :
+    F.obj (ULift.up 0) ⟶ F.obj (ULift.up 1)
+
+noncomputable def scaffoldIntervalPrism (F : ULift.{u} (Fin 2) ⥤ SSet.{u}) :
+    (Δ[1] : SSet.{u}) ⊗ F.obj (ULift.up 0) ⟶ simplicialReplacement F
+
+lemma scaffoldIntervalTail_constantLift (F : ULift.{u} (Fin 2) ⥤ SSet.{u}) :
+    simplicialReplacementConstantLift (scaffoldFiniteTail 0 ⋙ F) (ULift.up 0) ≫
+      simplicialReplacementBaseMap (scaffoldFiniteTail 0) F =
+        simplicialReplacementConstantLift F (ULift.up 1)
+
+lemma scaffoldIntervalTail_assembly (F : ULift.{u} (Fin 2) ⥤ SSet.{u}) :
+    simplicialReplacementAssembly (CategoryTheory.Functor.whiskerLeft (scaffoldFiniteTail 0)
+      (simplicialReplacementInitialCoefficient F (scaffoldFiniteInitial 1))) =
+    snd (nerve (ULift.{u} (Fin 1))) (F.obj (ULift.up 0)) ≫ scaffoldIntervalMap F ≫
+      simplicialReplacementConstantLift (scaffoldFiniteTail 0 ⋙ F) (ULift.up 0)
+
+lemma scaffoldIntervalTail_endpoint (K : SSet.{u}) :
+    (nerveMap (scaffoldFiniteTail 0) ▷ K) ≫ (stdSimplex.isoNerve.{u} 1).inv ▷ K =
+      snd (nerve (ULift.{u} (Fin 1))) K ≫ prismEndpoint 1 K
+
+lemma scaffoldInterval_isPushout (F : ULift.{u} (Fin 2) ⥤ SSet.{u}) :
+    IsPushout (prismEndpoint 1 (F.obj (ULift.up 0))) (scaffoldIntervalMap F)
+      (scaffoldIntervalPrism F) (simplicialReplacementConstantLift F (ULift.up 1))
+
+noncomputable def simplicialReplacementIntervalIso (F : ULift.{u} (Fin 2) ⥤ SSet.{u}) :
+    simplicialReplacement F ≅
+      pushout (prismEndpoint 1 (F.obj (ULift.up 0))) (scaffoldIntervalMap F)
+
+def leftScaffoldFiberMap {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) (F : C ⥤ SSet.{u}) (l : simplicialReplacement F ⟶ E)
+    (h : l ≫ p = simplicialReplacementProjection F) (c : C) :
+    F.obj c ⟶ vertexFiber p (nerveVertex c)
+
+def IsLeftScaffold {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] (F : C ⥤ SSet.{u}) [∀ c, KanComplex (F.obj c)]
+    (l : simplicialReplacement F ⟶ E) : Prop
+
+lemma tautScaffold_isLeftScaffold {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) [∀ c, KanComplex (F.obj c)] :
+    IsLeftScaffold (weightedNerveProjection F) F (tautScaffold F)
+
+instance leftStrictTransportDiagram_kanComplex
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] (c : C) :
+    KanComplex ((leftStrictTransportDiagram p).obj c)
+
+lemma universalScaffold_isLeftScaffold
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    IsLeftScaffold p (leftStrictTransportDiagram p) (universalScaffold p)
+
 end SerrePositivity.InfinityCategories
 ```
