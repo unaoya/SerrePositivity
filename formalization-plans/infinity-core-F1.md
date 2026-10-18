@@ -8643,5 +8643,88 @@ noncomputable def stdSimplexNondegenerateSupportEquiv (n : ℕ) :
 lemma stdSimplexNondegenerateSupport_subset_iff {n : ℕ} (s t : (Δ[n] : SSet.{u}).N) :
     stdSimplexNondegenerateSupport s ⊆ stdSimplexNondegenerateSupport t ↔ s ≤ t
 
+lemma stdSimplexNondegenerateSupport_eq_image {n : ℕ} (s : (Δ[n] : SSet.{u}).N) :
+    stdSimplexNondegenerateSupport s = Finset.univ.image s.simplex
+
+lemma edgewiseNondegenerate_mem_iff_support {n : ℕ}
+    (s : (Δ[n + n + 1] : SSet.{u}).N) :
+    s.simplex ∈ (edgewiseRightExtensionDomain n).obj (Opposite.op ⦋s.dim⦌) ↔
+      EdgewiseSupportInDomain n (stdSimplexNondegenerateSupport s)
+
+noncomputable def edgewiseOutsideSimplexSupport {n : ℕ}
+    (s : (edgewiseRightExtensionDomain.{u} n).N) : EdgewiseOutsideSupport n
+
+lemma edgewiseOutsideSimplexSupport_bijective (n : ℕ) :
+    Function.Bijective (edgewiseOutsideSimplexSupport.{u} (n := n))
+
+noncomputable def edgewiseOutsideSimplexEquiv (n : ℕ) :
+    (edgewiseRightExtensionDomain.{u} n).N ≃ EdgewiseOutsideSupport n
+
+lemma edgewiseOutsideSimplexEquiv_symm_support (n : ℕ) (S : EdgewiseOutsideSupport n) :
+    stdSimplexNondegenerateSupport ((edgewiseOutsideSimplexEquiv.{u} n).symm S).toN = S.val
+
+noncomputable def edgewiseUpperSimplices (n : ℕ) : Set (edgewiseRightExtensionDomain.{u} n).N
+
+noncomputable def edgewiseLowerSimplices (n : ℕ) : Set (edgewiseRightExtensionDomain.{u} n).N
+
+noncomputable def edgewiseUpperSimplexEquiv (n : ℕ) :
+    {s // s ∈ edgewiseUpperSimplices.{u} n} ≃ EdgewiseUpperSupport n
+
+noncomputable def edgewiseLowerSimplexEquiv (n : ℕ) :
+    {s // s ∈ edgewiseLowerSimplices.{u} n} ≃ EdgewiseLowerSupport n
+
+noncomputable def edgewiseExtensionPairing (n : ℕ) : (edgewiseRightExtensionDomain.{u} n).Pairing
+
+lemma edgewiseExtensionPairing_support (n : ℕ) (s : (edgewiseExtensionPairing.{u} n).II) :
+    stdSimplexNondegenerateSupport ((edgewiseExtensionPairing n).p s).val.toN =
+      insert (edgewiseRightVertex n (edgewiseSupportPivot
+        (stdSimplexNondegenerateSupport s.val.toN)
+        (edgewiseOutsideSimplexEquiv n s.val).property))
+        (stdSimplexNondegenerateSupport s.val.toN)
+
+lemma uniquelyCodimOneFace_of_nonsingular_le {X : SSet.{u}} [X.Nonsingular]
+    (x y : X.N) (hxy : x ≤ y) (hd : y.dim = x.dim + 1) :
+    x.toS.IsUniquelyCodimOneFace y.toS
+
+lemma edgewiseExtensionPairing_le (n : ℕ) (s : (edgewiseExtensionPairing.{u} n).II) :
+    s.val ≤ ((edgewiseExtensionPairing n).p s).val
+
+lemma edgewiseExtensionPairing_dim (n : ℕ) (s : (edgewiseExtensionPairing.{u} n).II) :
+    ((edgewiseExtensionPairing n).p s).val.dim = s.val.dim + 1
+
+instance edgewiseExtensionPairing_isProper (n : ℕ) : (edgewiseExtensionPairing.{u} n).IsProper
+
+lemma edgewiseExtensionPairing_ancestral_rank_lt (n : ℕ)
+    (s t : (edgewiseExtensionPairing.{u} n).II)
+    (hst : (edgewiseExtensionPairing n).AncestralRel s t) :
+    Prod.Lex (· < ·) (· < ·)
+      (n - (edgewiseSupportPivot (stdSimplexNondegenerateSupport s.val.toN)
+        (edgewiseOutsideSimplexEquiv n s.val).property).val,
+        (stdSimplexNondegenerateSupport s.val.toN).card)
+      (n - (edgewiseSupportPivot (stdSimplexNondegenerateSupport t.val.toN)
+        (edgewiseOutsideSimplexEquiv n t.val).property).val,
+        (stdSimplexNondegenerateSupport t.val.toN).card)
+
+instance edgewiseExtensionPairing_isRegular (n : ℕ) : (edgewiseExtensionPairing.{u} n).IsRegular
+
+lemma regularPairing_hasLiftingProperty {X E B : SSet.{u}} {A : X.Subcomplex}
+    (P : A.Pairing) [P.IsRegular] (p : E ⟶ B)
+    (h : ∀ (n : ℕ) (i : Fin (n + 2)), HasLiftingProperty (horn (n + 1) i).ι p) :
+    HasLiftingProperty A.ι p
+
+lemma exists_extension_of_regularPairing {X K : SSet.{u}} {A : X.Subcomplex}
+    (P : A.Pairing) [P.IsRegular] [KanComplex K] (f : (A : SSet.{u}) ⟶ K) :
+    ∃ F : X ⟶ K, A.ι ≫ F = f
+
+lemma exists_edgewiseRightExtensionDomain_extension {K : SSet.{u}} [KanComplex K] (n : ℕ)
+    (f : (edgewiseRightExtensionDomain n : SSet.{u}) ⟶ K) :
+    ∃ F : (Δ[n + n + 1] : SSet.{u}) ⟶ K, (edgewiseRightExtensionDomain n).ι ≫ F = f
+
+def edgewiseRightWeightDomain (n : ℕ) : (edgewiseWeight.{u}.obj ⦋n⦌).Subcomplex
+
+lemma exists_edgewiseRightWeightDomain_extension {K : SSet.{u}} [KanComplex K] (n : ℕ)
+    (f : (edgewiseRightWeightDomain n : SSet.{u}) ⟶ K) :
+    ∃ F : edgewiseWeight.obj ⦋n⦌ ⟶ K, (edgewiseRightWeightDomain n).ι ≫ F = f
+
 end SerrePositivity.InfinityCategories
 ```
