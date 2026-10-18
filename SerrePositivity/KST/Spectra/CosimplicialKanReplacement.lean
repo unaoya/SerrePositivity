@@ -7,7 +7,7 @@ public import SerrePositivity.KST.Spectra.AnodyneHomotopyEquivalence
 概要：余単体単体集合の関手的 Reedy fibrant 置換と各段の Kan 性。
 方針：終対象への射を相対 latching anodyne と相対 matching horn RLP に因子分解する。
 規約：全基点 π_* 同型は元の各段が Kan の場合に主張する。
-使われ方：Goerss–Jardine I §7、HTT A.3.3。Tot の段ごとの具体的な置換。
+使われ方：Goerss–Jardine VII §4、HTT A.3.3。Tot の段ごとの具体的な置換。
 -/
 
 @[expose] public section
@@ -39,7 +39,7 @@ abbrev terminalArrows : CosimplicialObject SSet.{u} ⥤ Arrow (CosimplicialObjec
 /-- 概要：余単体単体集合の実際の関手的 Reedy 置換。
 方針：終図式への射の horn 因子分解の中間図式を取る。
 規約：対象も射も通常の余単体図式。
-使われ方：Goerss–Jardine I §7。Tot の Reedy fibrant な係数。 -/
+使われ方：Goerss–Jardine VII §4。Tot の Reedy fibrant な係数。 -/
 abbrev functor : CosimplicialObject SSet.{u} ⥤ CosimplicialObject SSet.{u} :=
   terminalArrows.{u} ⋙ CosimplicialHornFactorization.factorization.{u}.Z
 
@@ -55,7 +55,7 @@ def unit : 𝟭 (CosimplicialObject SSet.{u}) ⟶ functor where
 /-- 概要：Reedy 置換の単位は相対 latching anodyne。
 方針：実際の因子分解の左類の証明を取り出す。
 規約：通常の対象ごとの anodyne より強い相対条件。
-使われ方：Goerss–Jardine I §7。Reedy 置換の左類。 -/
+使われ方：Goerss–Jardine VII §4。Reedy 置換の左類。 -/
 lemma unit_reedy_anodyne (X : CosimplicialObject SSet.{u}) :
     reedyLeft simplex anodyneExtensions (unit.app X) := by
   change reedyLeft simplex anodyneExtensions
@@ -65,7 +65,7 @@ lemma unit_reedy_anodyne (X : CosimplicialObject SSet.{u}) :
 /-- 概要：Reedy 置換の単位は各段でも anodyne。
 方針：相対 latching 条件を各成分へ移す。
 規約：元の図式の Kan 性は不要。
-使われ方：Goerss–Jardine I §7。各段のホモトピー群の比較。 -/
+使われ方：Goerss–Jardine VII §4。各段のホモトピー群の比較。 -/
 lemma unit_anodyne (X : CosimplicialObject SSet.{u}) (j : SimplexCategory) :
     anodyneExtensions ((unit.app X).app j) :=
   CosimplicialHornFactorization.left_app _ (unit_reedy_anodyne X) j
@@ -82,7 +82,7 @@ lemma reedy_terminal_rlp (X : CosimplicialObject SSet.{u}) :
 /-- 概要：Reedy 置換の各値は Kan 複体。
 方針：相対 matching の右類を各段へ移し、終対象への fibration を得る。
 規約：元の図式の Kan 性は不要。
-使われ方：Goerss–Jardine I §7。Tot の Kan な係数列。 -/
+使われ方：Goerss–Jardine VII §4。Tot の Kan な係数列。 -/
 instance kanComplex (X : CosimplicialObject SSet.{u}) (j : SimplexCategory) :
     KanComplex (functor.obj X |>.obj j) := by
   let p := (CosimplicialHornFactorization.factorization.{u}.p.app (terminalArrows.{u}.obj X)).app j
@@ -95,7 +95,7 @@ instance kanComplex (X : CosimplicialObject SSet.{u}) (j : SimplexCategory) :
 /-- 概要：Kan な余単体図式の単位は各段の全基点 π_* 同型。
 方針：両側が Kan な anodyne のホモトピー不変性を適用する。
 規約：零次数の成分集合も含む。
-使われ方：Goerss–Jardine I §7。Tot の置換不変性の係数比較。 -/
+使われ方：Goerss–Jardine VII §4。Tot の置換不変性の係数比較。 -/
 lemma unit_piIsomorphism (X : CosimplicialObject SSet.{u})
     [∀ j, KanComplex (X.obj j)] (j : SimplexCategory) :
     KanPiIsomorphism (X := X.obj j) (Y := (functor.obj X).obj j)

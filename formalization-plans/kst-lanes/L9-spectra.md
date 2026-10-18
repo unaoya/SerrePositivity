@@ -33,7 +33,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・298 モジュール 3362 宣言の公理監査成功。
+対象ビルド・305 モジュール 3444 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -2515,7 +2515,54 @@ Reedy 置換だけから通常の Tot の Kan 性や BF 対象との比較を結
 | `PointedCosimplicialKanReplacement.obj` / `unitApp` | 点つき余単体図式の実際の置換 |
 | `PointedCosimplicialKanReplacement.functor` / `unit` | 点つき置換の関手性と自然な単位 |
 
-参照：Goerss–Jardine I §7、HTT A.3.3。
+参照：Goerss–Jardine VII §4、HTT A.3.3。
 保存単位の対象ビルド 3717 jobs 成功。
 私有宣言を含む 298 モジュール 3362 宣言で標準三公理のみ。
 L9e は進行中。有理 Shapiro と通常の Tot との比較は引き続き未完了。
+
+## 86. L9e の通常の Tot と Reedy horn 充填
+
+標準単体の余単体図式の latching 射を、境界包含と arrow 圏の同型で同定した。
+このため標準単体の全ての latching 射は単射である。
+有限単体表示を右 tensor 関手で送ることで、パラメーター付きの境界も実際の境界の tensor と同定した。
+この同型のパラメーターの射に関する自然性を各余極限射で証明した。
+
+相対境界の押し出しを比較して、標準単体と任意のパラメーターの射の相対 latching 射を
+境界包含との pushout-product と同定した。
+従って anodyne なパラメーターの射は Reedy anodyne な余単体射を誘導する。
+この計算にモデル圏構造は不要である。
+
+通常の Tot を標準単体から係数への内部 Hom の end として実際に定義した。
+射とパラメーター付き自然変換との curry・uncurry の往復公式を証明した。
+Reedy fibrant な係数では、パラメーターの horn を Reedy 次数帰納で持ち上げ、
+その持ち上げを curry して Tot の horn filler を得た。
+従って通常の Tot は Kan であり、Reedy horn RLP な係数の射は Tot 上の Kan fibration を与える。
+
+点つき図式では基点の一定な族を Tot の基点に選ぶ。
+係数の自然変換はこの基点を保つので、通常の点つき Tot の実際の関手も得た。
+任意の図式を Reedy 置換した後の通常の点つき Tot は Kan 複体である。
+既存の Bousfield–Kan end による BF スペクトルとの π_* 比較はまだ結論していない。
+
+原典の番号を実物で確認し、今回の Reedy 構成は Goerss–Jardine VII §4、
+通常の Tot は VIII §1（式 (1.1)）に対応させた。
+§85 とその実装の参照も同じ番号へ修正した。
+原典：<https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/Goerss-Jardine2.pdf>。
+これは実証済みの Lean の構成の出典を記すもので、引用を証明の入力に追加するものではない。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `StandardSimplexLatching.boundaryArrowIso` / `mono` | 標準単体の latching 射と境界包含の同定・単射性 |
+| `SimplexTensorBoundary.iso` / `iso_natural` | パラメーター付きの境界表示と自然性 |
+| `SimplexTensorBoundary.relativeLatchingProductArrowIso` | 相対 latching 射の pushout-product 表示 |
+| `SimplexTensorBoundary.map_reedy_anodyne` | anodyne なパラメーターの Reedy anodyne 性 |
+| `CosimplicialTotalization.obj` / `lift` / `uncurry` | 通常の Tot の実際の単体集合とパラメーター表示 |
+| `CosimplicialTotalization.kanComplex` | Reedy 条件からの Tot の実際の horn 充填 |
+| `CosimplicialTotalization.map_fibration` | 相対 matching horn RLP の Kan fibration への移送 |
+| `CosimplicialTotalization.functor` | 通常の Tot の係数に関する関手 |
+| `PointedTotalization.obj` / `functor` | 点つき Tot の対象と射 |
+| `PointedTotalization.replacementObj` / `replacementObj_kanComplex` | Reedy 置換後の通常の Tot の点つき Kan 模型 |
+
+参照：Goerss–Jardine VII §4、VIII §1、HTT A.3.3。
+保存単位の対象ビルド 3746 jobs 成功。
+私有宣言を含む 305 モジュール 3444 宣言で標準三公理のみ。
+L9e は進行中。有理 Shapiro と通常の Tot から BF 模型への比較は引き続き未完了。

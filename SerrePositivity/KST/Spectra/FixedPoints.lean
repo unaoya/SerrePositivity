@@ -1,5 +1,15 @@
 module
 
+public import SerrePositivity.KST.Spectra.TotalizationFibration
+
+public import SerrePositivity.KST.Spectra.TotalizationFunctor
+
+public import SerrePositivity.KST.Spectra.StandardSimplexLatching
+public import SerrePositivity.KST.Spectra.SimplexTensorBoundary
+public import SerrePositivity.KST.Spectra.SimplexTensorRelativeLatching
+public import SerrePositivity.KST.Spectra.CosimplicialTotalization
+public import SerrePositivity.KST.Spectra.PointedTotalization
+
 public import SerrePositivity.KST.Spectra.CosimplicialHornFactorization
 public import SerrePositivity.KST.Spectra.CosimplicialKanReplacement
 public import SerrePositivity.KST.Spectra.PointedCosimplicialKanReplacement
