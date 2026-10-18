@@ -4578,3 +4578,75 @@ lemma reflectedStrictConeSectionsComparison_evaluate {F : I ⥤ C}
 集約の他担当の依存700ソースはすべて追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-strict-cone-evaluation-aggregate.log` と
 `/tmp/gamma3-strict-cone-evaluation-audit.log`。
+
+
+### native な比較に向けた反復 slice と join の再結合の準備
+
+残る比較の一つは、錐 `c.val : Δ[0]⋆K → X` の図式上の coslice の切断から
+元の K 上の切断への制限を、既存の `rightFibrationMappingEvaluation` と比較すること。
+反復 slice の図式では `(Δ[n]⋆Δ[0])⋆K` と `Δ[n]⋆(Δ[0]⋆K)` が現れるため、
+まず join の再結合を担当ディレクトリ内で構成する。Core の定義は変更しない。
+原典上の位置は HTT §1.2.8、4.2.4.1 の双対、Kerodon §4.3.5、7.4.1.6。
+
+`AssociativeJoinSimplex` は補った空単体を含め、join の単体を左右の頂点数と各単体、
+頂点数の和の条件で表示する。三つの区間への展開と両方の逆関係を示し、
+`joinAssociatorSimplexEquiv A B C n` を構成した。これは次数ごとの全単射であり、
+単体集合の結合同型としてはまだ公開しない。
+
+長さの和の等式は、各区間の単体を持つ依存和に対する部分型の条件に置く。
+証明の移送を単体のデータから分けるため、逆関係は部分型の値の外延性と
+全単射の往復則に対する型を明示した `congrArg` で証明する。
+元の join の Fin による切断の定義は維持する。
+
+`JoinAssociativityCuts` では切断の引き戻しの単調性、左区間に制限した切断の一致、
+右区間で原点を移した切断が二つの引き戻した切断の差になる式を証明した。
+`JoinSumNaturality` は長さの和表示へ単体作用を明示的に移し、二因子の
+`augmentedJoinSumEquiv` と元の補った join の単体作用が全順序写像について可換であること、
+移した作用の恒等則・合成則を証明する。頂点数零のケースも含む。
+
+新規14宣言の正確な型は以下。共通の宇宙は `universe u`、`A B C : SSet.{u}`。
+全暗黙引数と宇宙は監査スクリプトの `#check @` にも記録する。
+
+```lean
+abbrev joinSumSimplex (A B : SSet.{u}) (n : ℕ) : Type u
+instance joinSumSimplex_zero_subsingleton (A B : SSet.{u}) :
+    Subsingleton (joinSumSimplex A B 0)
+def augmentedJoinSumEquiv (A B : SSet.{u}) (n : ℕ) :
+    Join.augObj (join A B) n ≃ joinSumSimplex A B n
+abbrev joinTripleSimplex (A B C : SSet.{u}) (n : ℕ) : Type u
+def leftJoinSumTripleEquiv (A B C : SSet.{u}) (n : ℕ) :
+    joinSumSimplex (join A B) C n ≃ joinTripleSimplex A B C n
+def rightJoinSumTripleEquiv (A B C : SSet.{u}) (n : ℕ) :
+    joinSumSimplex A (join B C) n ≃ joinTripleSimplex A B C n
+def joinAssociatorSimplexEquiv (A B C : SSet.{u}) (n : ℕ) :
+    (join (join A B) C) _⦋n⦌ ≃ (join A (join B C)) _⦋n⦌
+lemma joinPullCut_mono {m n : ℕ} (α : Fin m →o Fin n) {a b : ℕ} (h : a ≤ b) :
+    Join.pullCut α a ≤ Join.pullCut α b
+lemma joinPullCut_leftMap {m n : ℕ} (α : Fin m →o Fin n) {a b : ℕ} (h : a ≤ b) :
+    Join.pullCut (Join.leftMap α b) a = Join.pullCut α a
+lemma joinPullCut_rightMap {m n : ℕ} (α : Fin m →o Fin n) {a b : ℕ} (h : a ≤ b) :
+    Join.pullCut (Join.rightMap α a) (b - a) = Join.pullCut α b - Join.pullCut α a
+def joinSumSimplexMap (A B : SSet.{u}) {m n : ℕ} (α : Fin m →o Fin n) :
+    joinSumSimplex A B n → joinSumSimplex A B m
+lemma augmentedJoinSumEquiv_map (A B : SSet.{u}) {m n : ℕ} (α : Fin m →o Fin n)
+    (s : Join.augObj (join A B) n) :
+    augmentedJoinSumEquiv A B m (Join.augMap (join A B) α s) =
+      joinSumSimplexMap A B α (augmentedJoinSumEquiv A B n s)
+lemma joinSumSimplexMap_id (A B : SSet.{u}) (n : ℕ) (s : joinSumSimplex A B n) :
+    joinSumSimplexMap A B (OrderHom.id : Fin n →o Fin n) s = s
+lemma joinSumSimplexMap_comp (A B : SSet.{u}) {l m n : ℕ}
+    (α : Fin m →o Fin n) (β : Fin l →o Fin m) (s : joinSumSimplex A B n) :
+    joinSumSimplexMap A B (α.comp β) s =
+      joinSumSimplexMap A B β (joinSumSimplexMap A B α s)
+```
+
+三因子の再結合 `joinAssociatorSimplexEquiv` 自体の面・退化との可換性、単体集合の結合同型、
+その同型を使う反復 slice の比較は未完了。二因子の和表示の自然性だけで、三因子の
+再結合の自然性が証明済みとはしない。native な錐の全体の比較、元の q_x と反転した係数の
+整合性、𝒮・Sp の残りの適用も引き続き未完了。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4439 jobs）、公開880宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規ファイルの警告・sorry・追加公理はない。
+集約の他担当の依存700ソースはすべて追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-join-assoc-preparation-aggregate.log` と
+`/tmp/gamma3-join-assoc-preparation-audit.log`。

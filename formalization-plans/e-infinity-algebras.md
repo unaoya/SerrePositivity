@@ -892,3 +892,24 @@ weighted nerve と切断空間で評価する式、初区間の全係数の式�
 集約の他担当の依存700ソースはすべて追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-strict-cone-evaluation-aggregate.log` と
 `/tmp/gamma3-strict-cone-evaluation-audit.log`。
+
+
+### γ3b：反復 slice の比較に向けた join の再結合の準備
+
+native な比較 span と錐の図式 `Δ[0]⋆K → X` 上の切断の制限を比較する経路を進める。
+反復 slice に現れる `(Δ[n]⋆Δ[0])⋆K` と `Δ[n]⋆(Δ[0]⋆K)` の再結合のため、
+`AssociativeJoinSimplex` で空区間を含む単体の長さの和表示、三つの区間への展開、
+両逆則、各次数の `joinAssociatorSimplexEquiv` を構成した。
+`JoinAssociativityCuts` に二つの切断の引き戻しと左右の区間への制限の計算を証明。
+`JoinSumNaturality` は二因子の長さの和表示の全順序写像への自然性と恒等・合成則を証明する。
+Core の定義・他担当のファイルは変更していない。
+新規14宣言の正確な型・全前提は README と公開880宣言の監査に記録。
+三因子の再結合そのものの自然性、単体集合の結合同型、反復 slice への移送は未完了。
+したがって native な極限判定との全体の比較、元の q_x の整合性、𝒮・Sp の残りの適用は
+引き続き未完了であり、次数ごとの全単射で γ3b の完成とはしない。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4439 jobs）、公開880宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規ファイルの警告・sorry・追加公理はない。
+集約の他担当の依存700ソースはすべて追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-join-assoc-preparation-aggregate.log` と
+`/tmp/gamma3-join-assoc-preparation-audit.log`。

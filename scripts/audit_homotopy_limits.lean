@@ -1759,3 +1759,45 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @reflectedStrictConeSectionsComparison_evaluate
 #print axioms reflectedStrictConeSectionsComparison_evaluate
+
+#check @joinSumSimplex
+#print axioms joinSumSimplex
+
+#check @joinSumSimplex_zero_subsingleton
+#print axioms joinSumSimplex_zero_subsingleton
+
+#check @augmentedJoinSumEquiv
+#print axioms augmentedJoinSumEquiv
+
+#check @joinTripleSimplex
+#print axioms joinTripleSimplex
+
+#check @leftJoinSumTripleEquiv
+#print axioms leftJoinSumTripleEquiv
+
+#check @rightJoinSumTripleEquiv
+#print axioms rightJoinSumTripleEquiv
+
+#check @joinAssociatorSimplexEquiv
+#print axioms joinAssociatorSimplexEquiv
+
+#check @joinPullCut_mono
+#print axioms joinPullCut_mono
+
+#check @joinPullCut_leftMap
+#print axioms joinPullCut_leftMap
+
+#check @joinPullCut_rightMap
+#print axioms joinPullCut_rightMap
+
+#check @joinSumSimplexMap
+#print axioms joinSumSimplexMap
+
+#check @augmentedJoinSumEquiv_map
+#print axioms augmentedJoinSumEquiv_map
+
+#check @joinSumSimplexMap_id
+#print axioms joinSumSimplexMap_id
+
+#check @joinSumSimplexMap_comp
+#print axioms joinSumSimplexMap_comp
