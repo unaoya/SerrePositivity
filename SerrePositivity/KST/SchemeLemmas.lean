@@ -241,3 +241,8 @@ public import SerrePositivity.KST.SchemeLemmas.FiniteClopenIdempotents
 public import SerrePositivity.KST.SchemeLemmas.BoundaryFiniteClopenSeparation
 public import SerrePositivity.KST.SchemeLemmas.BoundaryLocallyConstantCharts
 public import SerrePositivity.KST.SchemeLemmas.BoundaryGenericRankCharts
+public import SerrePositivity.KST.SchemeLemmas.FreeLocusLocalizationBaseChange
+public import SerrePositivity.KST.SchemeLemmas.BoundaryGenericRankLocalization
+public import SerrePositivity.KST.SchemeLemmas.BoundaryFlatBaseChange
+public import SerrePositivity.KST.SchemeLemmas.BoundaryGenericRankBaseChange
+public import SerrePositivity.KST.SchemeLemmas.BoundaryGenericRankReduction

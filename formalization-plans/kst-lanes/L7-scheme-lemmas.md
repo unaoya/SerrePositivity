@@ -11,12 +11,15 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 1571 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 1579 宣言、標準三公理のみ。
 - 一般点で自由な境界純変換の開自由 locus が基礎環を覆うことを、実際の局所化同型から証明済み。
 - 境界外の任意の開閉部分を、互いに交わらず全体を覆う二つの実チャートで分離する有限生成中心を構成済み。
 - 実分裂の下で拡大素点の任意の基底変更との両立性、および相対平坦有限表示加群の一般階数の基底変更保存を証明済み。
 - 実分裂・境界外の平坦性・一定一般階数から、全チャートで各基礎素点上に共通階数の自由な基本開近傍を持つ有限生成中心を構成済み。
 - 境界外一般階数の開閉部分を有限個の互いに交わらない実チャートに分離する有限生成中心を構成済み。各チャートの境界外で元の一般階数の引き戻しが一定。
+- 任意の局所化での自由 locus の完全な比較、および境界外一般階数と元の代数の対応する局所階数の一致を証明済み。
+- 境界外の相対平坦性が任意の基底変更後も保たれることを、元の加群とテンソル代数上の対象の両方について証明済み。
+- 境界外一般階数の任意の Noether 基底変更との両立性を証明し、各実チャート上の加群そのものの境界外一般階数を一定にする中心の存在まで接続済み。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -959,7 +962,9 @@ N と F⊗_R M の取消同型で F 上の平坦性を運び、D の Noether 性
 `FiniteClopenIdempotents.lean` と `BoundaryFiniteClopenSeparation.lean` で任意の有限開閉分割へ適用済み。
 `BoundaryLocallyConstantCharts.lean` で任意の局所定数関数に適用し、
 `BoundaryGenericRankCharts.lean` で境界外一般階数の局所定数性と、その引き戻しを一定にする中心の存在を証明済み。
-チャートの境界外で計算した加群の階数との同定と、一定階数の中心の定理への接続は未完。
+チャートの境界外で計算した加群の階数との同定は `BoundaryGenericRankBaseChange.lean`、
+その実際の一定化中心は `BoundaryGenericRankReduction.lean` で証明済み。
+一定階数の中心の定理への接続は引き続き必要。
 
 #### 一般点と自由な局所階数の基底変更
 
@@ -974,6 +979,31 @@ M が全体で平坦という不要な仮定は加えない。
 これにより基底変更先の一般点で計算する階数を、元の一般点の局所階数と照合する。
 `GenericPrimeBaseChange.lean`、`FreeStalkRankBaseChange.lean`、
 `GenericRankBaseChange.lean` で証明済み。
+任意の局所化 R→S についても、S⊗_R M の自由 locus は元の自由 locus の逆像と一致する。
+Q∈Spec(S) の局所環 S_Q は、二段局所化により R_(Q∩R) でもある。
+同じ局所環 S_Q を用いて両側の自由性を判定し、テンソル取消同型で同値を得る。
+環と加群の有限性や平坦性はこの同値には不要。
+これを境界外の自由性から元の代数の対応する素点での自由性を得るために使う。
+具体的には、F=R[1/f]、D=F⊗B の一般点における D⊗_B M の自由性を、
+B→D が一元局所化であることにより元の B の縮約素点へ戻す。
+拡大素点の基底変更比較と、自由な素点での局所階数の保存により、
+境界外一般階数が元の B 加群 M の対応する一般点での局所階数と等しいことを示す。
+`FreeLocusLocalizationBaseChange.lean` と `BoundaryGenericRankLocalization.lean` で証明済み。
+境界外の平坦性の基底変更も明示する。
+R→C、F=R[1/f]、L=C[1/f] とし、自然な F→L を使う。
+F⊗_R M が F 上平坦なら、L⊗_F(F⊗_R M) が L 上平坦。
+取消同型 L⊗_F(F⊗_R M)≃L⊗_R M により後者の平坦性を得る。
+代数上の加群 M に対しては、既証のテンソル代数の取消同型も合成して、
+チャート上に基底変更した加群の境界外の相対平坦性へ運ぶ。
+`BoundaryFlatBaseChange.lean` で両方の形を証明済み。
+これらを合成して、任意の Noether 係数環 C への基底変更で
+`boundaryGenericRank C (C⊗B) ((C⊗B)⊗_B M) f_C` が
+元の `boundaryGenericRank R B M f` の境界局所化写像による引き戻しと一致することを示す。
+両辺を元の代数の局所階数へ書き換え、拡大素点の縮約と
+自由な素点での階数の基底変更により同じ素点での同じ階数と同定する。
+`BoundaryGenericRankBaseChange.lean` で引き戻し等式を証明済み。
+`BoundaryGenericRankReduction.lean` により、元の境界外一般階数が一定という仮定を要求せず、
+各実チャート上の加群の境界外一般階数を一定にする有限生成中心を得る。
 
 #### 選んだ有限表示の任意の基底変更
 
@@ -1123,6 +1153,14 @@ Fin(N-k) 上の自由加群からの全射を構成する。
 
 | 宣言 | 内容 | 状態 |
 | --- | --- | --- |
+| `boundaryGenericRank_baseChange` | 境界外だけで平坦な加群の一般階数の任意の Noether 基底変更 | 証明済み |
+| `exists_fg_center_constant_actual_boundaryGenericRank` | 実チャート上の加群の境界外一般階数を一定にする中心 | 証明済み |
+| `flat_tensor_away_of_boundary_flat` | 任意の基底変更後の境界外の平坦性 | 証明済み |
+| `flat_tensorAlgebra_away_of_boundary_flat` | 基底変更多元環上の対象の境界外の相対平坦性 | 証明済み |
+| `mem_freeLocus_baseChange_iff_of_isLocalization` | 任意の局所化前後の自由 locus 所属の同値 | 証明済み |
+| `freeLocus_baseChange_of_isLocalization` | 局所化先の自由 locus は元の自由 locus の逆像 | 証明済み |
+| `genericPrime_mem_freeLocus_of_boundary_flat` | 境界外の相対平坦性による元の一般点での自由性 | 証明済み |
+| `boundaryGenericRank_eq_original_rankAtStalk` | 境界外一般階数と元の代数の局所階数の一致 | 証明済み |
 | `exists_finite_orthogonal_boundary_numerators` | 完全直交冪等元の有限族の共通分母と直交分子 | 証明済み |
 | `finite_center_complement` | 総和が境界冪である有限生成族の中心補開集合 | 証明済み |
 | `exists_fg_center_separating_boundary_idempotents` | 有限直交族を一段の blowup チャートで分離する中心 | 証明済み |
