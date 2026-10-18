@@ -49,7 +49,7 @@
 
 ## 3. 現在地と受入条件
 
-- 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。任意 dg 圏の半自由な段階分解、フィルトレーションからの Hom の K-flat 性、増大関手の各次数全射性・準同値性・H⁰ 同値、前三角化の三角同値を証明済み。分解後の層の acyclic dg 商自体の H⁰ と Mathlib の元の層導来圏の同値、対象ごとの導来像の計算、準連接コホモロジーによる Dqc への H⁰ 同値を証明済み。半自由分解から導来比較までの工程は完了。Perf、アフィン係数加群圏の同値、導来降下、T1–T3、平坦係数の RHom 比較は未完了。
+- 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。任意 dg 圏の半自由な段階分解、フィルトレーションからの Hom の K-flat 性、増大関手の各次数全射性・準同値性・H⁰ 同値、前三角化の三角同値を証明済み。分解後の層の acyclic dg 商自体の H⁰ と Mathlib の元の層導来圏の同値、対象ごとの導来像の計算、準連接コホモロジーによる Dqc への H⁰ 同値を証明済み。半自由分解から導来比較までの工程は完了。アフィン準連接係数加群層と左 H 加群の通常の圏同値も証明済み。Perf、アフィン導来比較、導来降下、T1–T3、平坦係数の RHom 比較は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の導来随伴・生成・T1′、L4c、L4d、L4e は未実装。
 - 最新の検証済み保存単位は対象ビルドと所有 namespace の1,092宣言の公理監査に成功。工程区切りの全体ビルドは導来比較までの状態で10,097 jobsに成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
@@ -749,6 +749,24 @@
 - 対象ビルドと1,092宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
 - 本質的全射性、アフィン導来比較、Perf の局所条件、有限被覆の導来降下は未完了。
 
+## 35. アフィン係数加群圏の本質的全射性（実装前記録）
+
+- 任意の左 H 加群 M に対し、基礎 R 加群の通常の tilde 層を保持した係数加群層を構成する。
+- まず左 H 作用を R 線形自己準同型環への実際の環準同型として構成し、tilde の加法的関手で O 加群層の自己準同型環へ移す。R 線形性では H の可換性ではなく代数構造の中心性を使う。
+- 構造層の局所スカラー作用との可換性・基礎環の作用の一致から、各開でテンソル環 `H ⊗ O(U)` の作用を作る。
+- テンソル前層から係数環層への比較は層化の単位なので局所全単射である。Mathlib の `PresheafOfModules.sheafify` を使い、基礎加法群の層を通常の tilde 層のまま係数加群層へする。
+- 元の H 加群と大域切断の同型は、通常の tilde の単位同型の自然性を H の各作用射へ適用して H 線形性を確認する。
+- 以上を本質的全射性の証明に渡す。分解や同値の存在を未証明のフィールドとして追加しない。
+
+### 現在地
+
+- `affineTildeActionRingHom`・`affineTildeAction_base`：通常の tilde 層上の H 作用と基礎環の作用の一致を証明済み。
+- `coefficientTensorSectionEnd`・`coefficientActionPresheaf`：テンソル作用と制限写像の半線形性を証明済み。
+- `coefficientModuleOfAction`・`coefficientModuleOfActionForgetIso`：基礎加法群の層を保持した係数加群層と、元の O 加群層への同型を構成済み。
+- `affineCoefficientTildeUnit`・`affineQcohΓ_essSurj`・`affineCoefficientEquivalence`：通常の tilde 単位の H 線形性、本質的全射性、通常の圏同値を証明済み。H の平坦性・可換性は不要。
+- 集約ビルド（3,717 jobs）と1,160宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
+- 通常の準連接加群層の同値から非有界 Dqc の同値を直ちに結論しない。実際の層導来圏とのアフィン導来比較、Perf、T1–T3、有限被覆の導来降下は継続する。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -872,6 +890,11 @@
 | `resolvedHomotopyComplexEquivalence`・`derivedDGTriaEquivalenceIsTriangulated` | DerivedGeometry/ResolvedSheafComparison | 実装・対象ビルド済み |
 | dg 商自体の H⁰ と Mathlib の導来圏との同値 | DerivedGeometry/SheafDerivedComparison | 実装・対象ビルド済み |
 | Dqc の dg 増強の H⁰ と実際の Dqc の同値 | DerivedGeometry/DqcDerivedComparison | 実装・対象ビルド済み |
+| `affineTildeActionRingHom`・`affineTildeAction_base` | DerivedGeometry/AffineTildeCoefficientAction | 実装・対象ビルド済み |
+| `structureScalarAction`・`coefficientSectionAction` | DerivedGeometry/StructureScalarAction・CoefficientActionSections | 実装・対象ビルド済み |
+| `coefficientTensorSectionEnd`・`coefficientActionPresheaf` | DerivedGeometry/CoefficientTensorSectionAction・CoefficientActionPresheaf | 実装・対象ビルド済み |
+| `coefficientModuleOfAction`・`coefficientModuleOfActionForgetIso` | DerivedGeometry/CoefficientActionSheaf | 実装・対象ビルド済み |
+| `affineCoefficientTildeUnit`・`affineCoefficientEquivalence` | DerivedGeometry/AffineCoefficientEquivalence | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |

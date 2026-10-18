@@ -32,3 +32,4 @@ public import SerrePositivity.KST.DerivedGeometry.LinearRepresentableConeEvaluat
 public import SerrePositivity.KST.DerivedGeometry.SheafDerivedComparisonObjects
 public import SerrePositivity.KST.DerivedGeometry.DqcDerivedComparison
 public import SerrePositivity.KST.DerivedGeometry.AffineCoefficientFull
+public import SerrePositivity.KST.DerivedGeometry.AffineCoefficientEquivalence

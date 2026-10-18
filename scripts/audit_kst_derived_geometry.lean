@@ -14,6 +14,19 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let required : Array Name := #[
+    `SerrePositivity.KST.DerivedGeometry.affineScalarEndRingHom,
+    `SerrePositivity.KST.DerivedGeometry.affineTildeActionRingHom,
+    `SerrePositivity.KST.DerivedGeometry.affineTildeAction_base,
+    `SerrePositivity.KST.DerivedGeometry.structureScalarAction,
+    `SerrePositivity.KST.DerivedGeometry.coefficientSectionAction,
+    `SerrePositivity.KST.DerivedGeometry.coefficientTensorSectionEnd,
+    `SerrePositivity.KST.DerivedGeometry.coefficientActionPresheaf,
+    `SerrePositivity.KST.DerivedGeometry.coefficientModuleOfAction,
+    `SerrePositivity.KST.DerivedGeometry.coefficientModuleOfActionForgetIso,
+    `SerrePositivity.KST.DerivedGeometry.affineCoefficientTilde,
+    `SerrePositivity.KST.DerivedGeometry.affineCoefficientTildeUnit,
+    `SerrePositivity.KST.DerivedGeometry.affineQcohΓ_essSurj,
+    `SerrePositivity.KST.DerivedGeometry.affineCoefficientEquivalence,
     `SerrePositivity.KST.DerivedGeometry.tensorCoefficientComparison_tmul,
     `SerrePositivity.KST.DerivedGeometry.coefficientUnderlyingHom_tensor_smul,
     `SerrePositivity.KST.DerivedGeometry.coefficientHomOfCommutes,
