@@ -2454,3 +2454,30 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.ezUniversalDifference_zero
 #print axioms SerrePositivity.KST.ProExcision.ezUniversalDifference_zero
+
+#check @SerrePositivity.KST.ProExcision.simplexPair_fill_cycle
+#print axioms SerrePositivity.KST.ProExcision.simplexPair_fill_cycle
+
+#check @SerrePositivity.KST.ProExcision.ezUniversalHomotopyChain
+#print axioms SerrePositivity.KST.ProExcision.ezUniversalHomotopyChain
+
+#check @SerrePositivity.KST.ProExcision.ezUniversalHomotopyChain_boundary_zero
+#print axioms SerrePositivity.KST.ProExcision.ezUniversalHomotopyChain_boundary_zero
+
+#check @SerrePositivity.KST.ProExcision.ezUniversalHomotopyChain_boundary_succ
+#print axioms SerrePositivity.KST.ProExcision.ezUniversalHomotopyChain_boundary_succ
+
+#check @SerrePositivity.KST.ProExcision.ezHomotopyApp
+#print axioms SerrePositivity.KST.ProExcision.ezHomotopyApp
+
+#check @SerrePositivity.KST.ProExcision.ezHomotopyApp_boundary_zero
+#print axioms SerrePositivity.KST.ProExcision.ezHomotopyApp_boundary_zero
+
+#check @SerrePositivity.KST.ProExcision.ezHomotopyApp_boundary_succ
+#print axioms SerrePositivity.KST.ProExcision.ezHomotopyApp_boundary_succ
+
+#check @SerrePositivity.KST.ProExcision.ezHomotopy
+#print axioms SerrePositivity.KST.ProExcision.ezHomotopy
+
+#check @SerrePositivity.KST.ProExcision.ezHomotopyApp_naturality
+#print axioms SerrePositivity.KST.ProExcision.ezHomotopyApp_naturality

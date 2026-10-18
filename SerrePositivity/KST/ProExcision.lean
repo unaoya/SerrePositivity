@@ -135,3 +135,5 @@ public import SerrePositivity.KST.ProExcision.SimplexPairFaithfulEvaluation
 public import SerrePositivity.KST.ProExcision.EZUniversalDifference
 public import SerrePositivity.KST.ProExcision.SimplexPairFaceSum
 public import SerrePositivity.KST.ProExcision.EZUniversalBoundary
+public import SerrePositivity.KST.ProExcision.EZUniversalHomotopyChain
+public import SerrePositivity.KST.ProExcision.EZHomotopy

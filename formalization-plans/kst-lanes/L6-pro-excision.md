@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと869宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと878宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -71,13 +71,13 @@
 - μ 版の入力：`GroupProductData`、`EquivariantGroupProductData`、`ConstructionA5Input` は採用済みの因子内入力と全データの外部作用を明示。φ、φ′、φ·φ′ を実群準同型として構成し、両因子の像の可換性と G 同変性を証明。入力の厳密化との接続も検証。A.5 の結論のホモトピーは入力に含めない。
 - Construction A.6 の外部作用：`conjugationLinearizedHomotopy_equivariant` は u を固定する作用について実区間写像の同変性を証明。`conjugationEquivariantCylinderMap` は作用 bar の持ち上げへ直接渡せる界面。
 - 正規化の全テンソル：`integerTensorBifunctor` を任意の加群宇宙で構成。`chainIntegerTensorMap_eq_zero_low` と `normalizedStrictifiedTensor_eq_low` により、実際の ℕ 次数の正規化全テンソルで m+m′+1 以下の差の消滅と補正和の一致を検証。既存の整数次数 cochain での評価だけに依存しない。
-- AW の実成分：`alexanderWhitneyApp` を共有切断点の有限和で構成し、`alexanderWhitneyApp_naturality` を証明。鎖写像性も `alexanderWhitney_comm` で検証済み。shuffle の実鎖写像も構成済みだが、標準ホモトピーは未完であり、AW の構成だけで A.5 完了とはしない。
+- AW の実成分：`alexanderWhitneyApp` を共有切断点の有限和で構成し、`alexanderWhitneyApp_naturality` を証明。鎖写像性も `alexanderWhitney_comm` で検証済み。shuffle の実鎖写像も構成済みだが、標準鎖ホモトピーも `ezHomotopy` で構成済みであり、AW の構成だけで A.5 完了とはしない。
 - 区間ホモトピーの操作：`LinearizedMHomotopy.trans` は線形な加減法で連結し、`precomp` と `postcomp` は端点の自然性から実写像に沿って移送する。最後の対角・μ の適用に使う。
 - AW の境界計算：`awInterval_face_before`、`awInterval_face_after`、`awInterval_face_inside` により全ての面の制限公式を検証。`awBoundaryIndexEquiv` と `awBoundaryIndex_sum` は左右の非対角境界項を削除点と削除後の切断点の二重和へ移す。実 AW の微分との接続と対角項の相殺も `alexanderWhitney_comm` で完了。
 - AW の実微分：`awTensorTerm_D₁`、`awTensorTerm_D₂` は全複体の実微分を交代境界和へ展開。`alexanderWhitney_source_boundary`、`alexanderWhitney_horizontal_boundary`、`alexanderWhitney_vertical_boundary` まで接続。`awLeftBoundaryTerm`、`awRightBoundaryTerm`、`awDiagonalBoundaryTerm` は具体的な非対角項と対角項を同定。添字の座標の同値も構成済みであり、`awBoundaryCoordinates_sum` で全有限和にまとめ、`alexanderWhitney_comm` を証明済み。
 - 標準 AW の鎖写像は完了：`alexanderWhitney` は証明済みの微分可換性を持つ実鎖写像。`alexanderWhitney_naturality` により二つの入力の写像について自然。引用・追加公理・結論を隠す構造体入力は用いていない。
 - 正規化 AW：`normalizedAlexanderWhitney` は Moore 複体の包含・標準 AW・両因子の PInfty 射影の合成による実鎖写像。`normalizedAlexanderWhitney_naturality` も証明。
-- shuffle：`shuffleBidegree`、`shuffleApp` を逆転数の符号付き格子路の有限和として構成し、両因子の射に関する自然性を証明。`ShuffleIndex` の二つの順序写像は、座標和が頂点番号に一致し、両端を保ち、一歩ごとの水平・垂直の変化を持つ。shuffle の鎖写像性と自然性は `ShuffleChainMap.lean` で検証済み。標準ホモトピーは未完。
+- shuffle：`shuffleBidegree`、`shuffleApp` を逆転数の符号付き格子路の有限和として構成し、両因子の射に関する自然性を証明。`ShuffleIndex` の二つの順序写像は、座標和が頂点番号に一致し、両端を保ち、一歩ごとの水平・垂直の変化を持つ。shuffle の鎖写像性と自然性は `ShuffleChainMap.lean` で検証済み。恒等と AW→shuffle の標準鎖ホモトピーと自然性も `ezHomotopy` で検証済み。
 - shuffle の全射性：`discretePath_intermediate` により、一歩の増加が高々1の整数値の路の中間値を最小頂点で証明。`ShuffleIndex.left_surjective` と `right_surjective` は、二つの実順序写像が単体圏の全射であることを検証。
 - shuffle の混合面：`swapSteps` の二重適用は恒等。間の頂点を削除した第一・第二写像は交換前後で一致し、`shuffleSwapMixedFace_map` が実テンソル写像の一致を与える。水平・垂直から垂直・水平への交換で逆転数が1増えることを前半ステップ数の和で証明し、`shuffleSwapMixedFace_cancel` で二つの実混合境界項の相殺まで検証。同種ステップの面と端点は下記で検証済み。全有限和への統合は `shuffleBidegree_boundary_pure` と `shuffle_comm` で完了。
 - shuffle の一ステップ挿入：`insertHorizontal` と `insertVertical` は実際の水平集合の濃度を保つ構成。挿入を飛ばす頂点包含に沿う第一・第二座標の増分を検証。各因子の通常境界への対応を続行する。
@@ -85,7 +85,7 @@
 - shuffle の境界添字：`removeHorizontal`・`removeVertical` と挿入の両逆を検証し、位置つき挿入の実同値を構成。`rank_eq_left` は水平ステップの順位と第一座標を同定。`horizontalFacePosition`・`horizontalFaceVertex` は各第一因子の面を実挿入に送り、`horizontalFace_left`・`horizontalFace_right` が面の実写像を同定。補集合による二因子交換で `verticalFace_left`・`verticalFace_right` も検証。境界添字全体の分類と全和への統合は `shuffleBoundaryPartitionEquiv` と `shuffle_comm` で完了。
 - shuffle の全混合境界和：`MixedShuffleIndex.swap` は固定点のない対合で、`shuffleMixedWeight_cancel` は面の符号を含む各対の相殺。`shuffleMixed_sum_zero` は全有限和の消滅を実写像について証明。係数群の二倍の単射性を使わず、一般の加法群で成立する有限和の対合による。
 - shuffle の純粋境界添字の同値：`horizontalShuffleBoundaryEquiv` は小さい shuffle と第一因子の面から全純粋水平境界への実同値で、`horizontalShuffleBoundary_sum` が有限和を移す。`verticalShuffleBoundaryEquiv`・`verticalShuffleBoundary_sum` は補集合の同値と合成して第二因子の場合を実装。面番号・挿入位置・削除頂点の左右の復元を証明済み。実写像と符号も同定し、全境界の分類と鎖写像性へ接続済み。
-- L6c の残作業：採用済み μ 版 A.5 の AW/shuffle の標準ホモトピー、正規化した鎖ホモトピーの単体的区間への復元、μ と対角への移送。A.1・A.4・A.6 の H_* の具体模型への特殊化は所有レーンの界面。
+- L6c の残作業：採用済み μ 版 A.5 の標準ホモトピーの正規化した比較への移送、鎖ホモトピーの単体的区間への復元、μ と対角への移送。A.1・A.4・A.6 の H_* の具体模型への特殊化は所有レーンの界面。
 - L6d〜g：未着手。
 
 ## 主要宣言の表
@@ -182,6 +182,8 @@
 | ezUniversalComposite / ezUniversalDifference | EZUniversalDifference.lean | 検証済み | 実 AW→shuffle 合成と恒等との差の普遍鎖表示 |
 | simplexPairFaceSum_faceSum / simplexPairFaceSum_boundary | SimplexPairFaceSum.lean | 検証済み | 二重交代面移送の零性と模型の微分との可換性 |
 | ezUniversalDifference_boundary / ezUniversalDifference_zero | EZUniversalBoundary.lean | 検証済み | 比較の普遍な差の境界と非被約零次の零性 |
+| ezUniversalHomotopyChain / ezUniversalHomotopyChain_boundary_succ | EZUniversalHomotopyChain.lean | 検証済み | 全次数の普遍充填鎖と境界公式 |
+| ezHomotopy / ezHomotopyApp_naturality | EZHomotopy.lean | 検証済み | 恒等と実 AW→shuffle の標準鎖ホモトピーと両入力に関する自然性 |
 | extraDegeneracy_positive_boundary / extraDegeneracy_fill_cycle | ExtraDegeneracyContraction.lean | 検証済み | 正次数の鎖収縮等式とサイクルの明示的な充填 |
 | shuffleBoundary_horizontal_succ / shuffleBoundary_vertical_succ | ShuffleBoundaryDecomposition.lean | 検証済み | 両因子の通常微分への一致と零次の端 |
 | obstructionTorusCycle_not_boundary | CommutingImageObstruction.lean | 検証済み | 可換な対 (r²,s) の二次 bar サイクルの非境界性 |
@@ -684,3 +686,7 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - 任意の二つの単体的整数加群の元に、この有限な普遍鎖を評価する。評価は二変数で整数双線形なのでテンソル写像になり、入力の射に自然となる。
 - この構成は AW/shuffle の標準鎖ホモトピーを引用せずに実現する方針であり、比較の存在や結論を追加の構造体仮定にはしない。
 - Moore 正規化の射影・包含に関する標準の鎖ホモトピーも合成し、最後に単体的区間ホモトピーへ復元する工程は未完。
+
+- 普遍模型による再帰的構成は実装済み。`ezUniversalHomotopyChain_boundary_succ` が全次数で充填の境界公式を証明し、`ezHomotopy` が恒等と実 AW→shuffle の標準鎖ホモトピーを与える。
+- `ezHomotopyApp_naturality` により全次数の成分は両入力に自然。標準比較の存在・同変性を仮定として受け取っていない。
+- 残る正規化への移送には、両因子の Moore 射影・包含の合成と恒等の標準鎖ホモトピーのテンソルを合成する。単体的区間への復元と最終 μ 適用は未完。
