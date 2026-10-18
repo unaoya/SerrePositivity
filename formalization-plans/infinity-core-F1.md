@@ -11533,5 +11533,89 @@ lemma leftStrictTransportInfinityMap_evaluate_straightening
     leftStrictTransportInfinityMap C ≫ strictTransportDiagramInfinityEvaluation c =
       leftStraighteningCoherentMap C ≫ evaluateFunctorAt (ULift.up (nerveVertex c))
 
+def strictDiagramMixedHom {C : Type u} [Category.{u} C] {c d : C}
+    (f : c ⟶ d) (F G : C ⥤ SSet.{u}) :
+    strictDiagramMappingSpace F G ⟶ (ihom (F.obj c)).obj (G.obj d)
+
+lemma strictDiagramMixedHom_id {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (c : C) :
+    strictDiagramMappingIdentity F ≫ strictDiagramMixedHom (𝟙 c) F F =
+      MonoidalClosed.id (F.obj c)
+
+lemma strictDiagramMixedHom_comp {C : Type u} [Category.{u} C] {c d e : C}
+    (f : c ⟶ d) (g : d ⟶ e) (F G H : C ⥤ SSet.{u}) :
+    strictDiagramMappingComposition F G H ≫ strictDiagramMixedHom (f ≫ g) F H =
+      (strictDiagramMixedHom f F G ⊗ₘ strictDiagramMixedHom g G H) ≫
+        MonoidalClosed.comp (F.obj c) (G.obj d) (H.obj e)
+
+def diagonalStrictDiagramObject {C : Type u} [Category.{u} C] {J : Type u} [LinearOrder J]
+    (A : J ⥤ C)
+    (F : EnrichedFunctor SSet.{u} (SimplicialThickening J) (StrictTransportDiagramObject C))
+    (i : SimplicialThickening J) : KanObject.{u}
+
+noncomputable def diagonalStrictDiagramHom {C : Type u} [Category.{u} C] {J : Type u} [LinearOrder J]
+    (A : J ⥤ C)
+    (F : EnrichedFunctor SSet.{u} (SimplicialThickening J) (StrictTransportDiagramObject C))
+    (i j : SimplicialThickening J) :
+    SimplicialCategory.sHom i j ⟶
+      SimplicialCategory.sHom (diagonalStrictDiagramObject A F i) (diagonalStrictDiagramObject A F j)
+
+lemma diagonalStrictDiagramHom_of_le {C : Type u} [Category.{u} C] {J : Type u} [LinearOrder J]
+    (A : J ⥤ C)
+    (F : EnrichedFunctor SSet.{u} (SimplicialThickening J) (StrictTransportDiagramObject C))
+    (i j : SimplicialThickening J) (h : i.as ≤ j.as) :
+    diagonalStrictDiagramHom A F i j =
+      F.map i j ≫ strictDiagramMixedHom (A.map (homOfLE h))
+      ((F.obj i).val ⋙ kanObjectForget) ((F.obj j).val ⋙ kanObjectForget)
+
+noncomputable def diagonalStrictDiagramEvaluation {C : Type u} [Category.{u} C] {J : Type u} [LinearOrder J]
+    (A : J ⥤ C)
+    (F : EnrichedFunctor SSet.{u} (SimplicialThickening J) (StrictTransportDiagramObject C)) :
+    EnrichedFunctor SSet.{u} (SimplicialThickening J) KanObject.{u}
+
+lemma diagonalStrictDiagramEvaluation_reindex {C : Type u} [Category.{u} C] {J K : Type u}
+    [LinearOrder J] [LinearOrder K] (α : J →o K) (A : K ⥤ C)
+    (F : EnrichedFunctor SSet.{u} (SimplicialThickening K) (StrictTransportDiagramObject C)) :
+    (SimplicialThickening.functor α).comp SSet (diagonalStrictDiagramEvaluation A F) =
+      diagonalStrictDiagramEvaluation (α.toFunctor ⋙ A)
+        ((SimplicialThickening.functor α).comp SSet F)
+
+def strictDiagramSimplexBase {C : Type u} [Category.{u} C] {n : ℕ}
+    (σ : (nerve C) _⦋n⦌) : ULift.{u} (Fin (n + 1)) ⥤ C
+
+noncomputable def strictDiagramDiagonalSimplex
+    {C : Type u} [Category.{u} C] {n : ℕ} (σ : (nerve C) _⦋n⦌)
+    (F : (StrictTransportDiagramInfinity C) _⦋n⦌) : SpaceInfinity.{u} _⦋n⦌
+
+lemma strictDiagramDiagonalSimplex_naturality
+    {C : Type u} [Category.{u} C] {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌)
+    (σ : (nerve C) _⦋n⦌) (F : (StrictTransportDiagramInfinity C) _⦋n⦌) :
+    SpaceInfinity.map α.op (strictDiagramDiagonalSimplex σ F) =
+      strictDiagramDiagonalSimplex ((nerve C).map α.op σ)
+        ((StrictTransportDiagramInfinity C).map α.op F)
+
+noncomputable def strictDiagramJointEvaluation (C : Type u) [Category.{u} C] :
+    (SSet.uliftFunctor.{u + 1, u}).obj (nerve C) ⊗ StrictTransportDiagramInfinity C ⟶
+      SpaceInfinity.{u}
+
+noncomputable def strictTransportDiagramRealization (C : Type u) [Category.{u} C] :
+    StrictTransportDiagramInfinity C ⟶
+      SpaceInfinityFunctor ((SSet.uliftFunctor.{u + 1, u}).obj (nerve C))
+
+lemma diagonalStrictDiagramEvaluation_transport
+    {C J : Type u} [Category.{u} C] [LinearOrder J] (A : J ⥤ C)
+    (F : EnrichedFunctor SSet.{u} (SimplicialThickening J)
+      (LeftFibrationObject (nerve C))) :
+    diagonalStrictDiagramEvaluation A (F.comp SSet leftStrictTransportEnriched) =
+      diagonalRelativeEvaluation (A.op ⋙ underNerveDiagram C) F
+
+lemma strictDiagramJointEvaluation_transport (C : Type u) [Category.{u} C] :
+    (𝟙 _ ⊗ₘ leftStrictTransportInfinityMap C) ≫ strictDiagramJointEvaluation C =
+      strictTransportJointEvaluation C
+
+lemma leftStrictTransportInfinityMap_realization (C : Type u) [Category.{u} C] :
+    leftStrictTransportInfinityMap C ≫ strictTransportDiagramRealization C =
+      leftStraighteningCoherentMap C
+
 end SerrePositivity.InfinityCategories
 ```
