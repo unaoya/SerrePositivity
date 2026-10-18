@@ -51,7 +51,7 @@
 
 - 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。任意 dg 圏の半自由な段階分解、フィルトレーションからの Hom の K-flat 性、増大関手の各次数全射性・準同値性・H⁰ 同値、前三角化の三角同値を証明済み。分解後の層の acyclic dg 商自体の H⁰ と Mathlib の元の層導来圏の同値、対象ごとの導来像の計算、準連接コホモロジーによる Dqc への H⁰ 同値を証明済み。半自由分解から導来比較までの工程は完了。アフィン準連接係数加群層と左 H 加群の通常の圏同値、その準連接複体の導来圏の三角同値、実際の Dqc の開制限、台つき核と Verdier 商への降下も証明済み。Perf、アフィン導来比較、導来降下、T1–T3、平坦係数の RHom 比較は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の随伴移送の一般定理は証明済み。実際の導来随伴・生成・T1′、L4c の局所化同値、L4d、L4e は未完了。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の1,427宣言の公理監査に成功。工程区切りの全体ビルドは導来比較までの状態で10,097 jobsに成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の1,470宣言の公理監査に成功。工程区切りの全体ビルドは有限 Čech 完全性までの状態で11,343 jobsに成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -899,6 +899,23 @@
 
 - 準連接 O 加群層と準連接 H 係数加群層の基礎切断へも、実際の tilde 余単位の同型で完全性を移送済み。追加後の集約ビルド（3,799 jobs）と1,427宣言の監査に成功。
 
+## 43. 増大の零次数と非有界比較の接続（実装前記録）
+
+- 文言：任意の加法的層 F と開被覆 U に対し、F(⋃ U_i) → ∏ F(U_i) → ∏ F(U_i∩U_j)（後半は二つの制限の差）は、最初の射が mono であり中央で完全。
+- 証明：Mathlib の層条件の等化子表示を差の核へ変換し、核から短複体の完全性を得る。これは準連接性や被覆の有限性に依存しない。
+- 次に実際の Čech 第0・第1項への有限関数添字の比較と両立させ、§42 の正次数の完全性と合わせる。
+- 非有界性の確認：通常の Čech の各次数の添字は有限被覆でも全次数で存在し、勝手な有限切断は許されない。導来比較では有限 MV 帰納または比較済みの有界な交代模型による制御を別途証明する。Čech の正次数完全性だけから非有界 totalization の完全性を主張しない。
+- 原典：TT §3・§8、BvdB Thm 3.1.1、Toën §3.2、正本 §10-7。
+
+### 現在地
+
+- `sheafCoverKernel` と `sheafCoverShortComplex_exact` により、層条件から実際の被覆切断の差の核を構成済み。
+- `openCechZeroIso`・`openCechOneIso`・`openCech_firstDifferential` は、実際の Čech 第0・第1項の同型と符号付き微分の比較。対角成分を消去せず、元の複体を保持する。
+- `sheafCechAugmentation_exact`・`sheafCechH0Iso` は任意の層・任意の被覆の増大の完全性と H⁰ の切断との同型。
+- `affineQuasicoherentCechAugmentation_quasiIso`・`affineCoefficientCechAugmentation_quasiIso` は有限基本開被覆の Čech 増大の全次数での準同型性。零次数は層条件、正次数は局所化と収縮を使用。
+- 集約ビルド（3,804 jobs）と1,470宣言の監査に成功。標準3公理のみ、KTheory import なし。直前の工程区切りの全体ビルドも11,343 jobsに成功。
+- 未完了：層コホモロジーへの比較、非有界 Dqc のアフィン導来同値。上の準同型は切断の Čech 複体についての主張であり、導来切断を計算するという未証明の仮定は含めていない。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -1061,6 +1078,10 @@
 | `basicOpenLocalizationR_exactAt_iff` | DerivedGeometry/BasicOpenLocalizationR | 実装・対象ビルド済み |
 | `affineCech_exactAt` | DerivedGeometry/AffineCechExact | 実装・対象ビルド済み |
 | `affineQuasicoherentCech_exactAt`・`affineCoefficientCech_exactAt` | DerivedGeometry/AffineQuasicoherentCech | 実装・対象ビルド済み |
+| `sheafCoverKernel`・`sheafCoverShortComplex_exact` | DerivedGeometry/SheafCoverExact | 実装・対象ビルド済み |
+| `openCechZeroIso`・`openCechOneIso`・`openCech_firstDifferential` | DerivedGeometry/OpenCechLowDegree | 実装・対象ビルド済み |
+| `sheafCechAugmentation_exact`・`sheafCechH0Iso` | DerivedGeometry/SheafCechAugmentation | 実装・対象ビルド済み |
+| `affineCoefficientCechAugmentation_quasiIso` | DerivedGeometry/AffineCechResolution | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |

@@ -14,6 +14,21 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let required : Array Name := #[
+    `SerrePositivity.KST.DerivedGeometry.sheafCoverShortComplex,
+    `SerrePositivity.KST.DerivedGeometry.sheafCoverKernel,
+    `SerrePositivity.KST.DerivedGeometry.sheafCoverShortComplex_exact,
+    `SerrePositivity.KST.DerivedGeometry.sheafCoverShortComplex_mono,
+    `SerrePositivity.KST.DerivedGeometry.openCechZeroIso,
+    `SerrePositivity.KST.DerivedGeometry.openCechOneIso,
+    `SerrePositivity.KST.DerivedGeometry.openCech_firstDifferential,
+    `SerrePositivity.KST.DerivedGeometry.sheafCechAugmentationShortComplexIso,
+    `SerrePositivity.KST.DerivedGeometry.sheafCechAugmentation_exact,
+    `SerrePositivity.KST.DerivedGeometry.sheafCechH0Iso,
+    `SerrePositivity.KST.DerivedGeometry.sheafCechAugmentation,
+    `SerrePositivity.KST.DerivedGeometry.sheafCechAugmentation_quasiIsoAt_zero,
+    `SerrePositivity.KST.DerivedGeometry.affineQuasicoherentCechAugmentation_quasiIso,
+    `SerrePositivity.KST.DerivedGeometry.affineCoefficientCechAugmentation_quasiIso,
+
     `SerrePositivity.KST.DerivedGeometry.affineQuasicoherentCech_exactAt,
     `SerrePositivity.KST.DerivedGeometry.affineCoefficientCech_exactAt,
     `SerrePositivity.KST.DerivedGeometry.formalCoproductEvalComparison,
