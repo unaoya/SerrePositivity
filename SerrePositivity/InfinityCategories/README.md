@@ -1857,6 +1857,33 @@ standardCoherentPinchedEquivOfLeOne (x y : ClosedCategory R D) {n : ℕ} (hn : n
 `standardCoherentPinchedSimplex_comparison` で公開する。
 この低次の厳密な回収を高次のホモトピー逆の代用とはせず、上記の未証明範囲を保持する。
 
+高次の解像の相対的な変形のため、`normalizeResolutionFlag S hS h0` を構成した。
+増大する非空な有限集合族 S の最初の集合の最大元 c を始点とし、各段を c 以上に制限する。
+`normalizeResolutionFlag_maxAt` は各段の最大元が変わらないこと、
+`normalizeResolutionFlag_pullback` は正規化が全ての添字の引き戻しと可換であることを示す。
+既存の旗の集合族を正規化すると元の旗に戻る。
+
+選んだ頂点 i と単位区間の単体 t に対し、`resolutionInsertVertex F i t` は
+`S r := if t r = 0 then F.sets r else insert i (F.sets r)` を正規化した旗である。
+始点は `if t 0 = 0 then F.start else max i F.start`、各段の最大元は
+`if t r = 0 then F.maxAt r else max i (F.maxAt r)`。
+`resolutionInsertVertex_pullback` は F と t の同時の引き戻しに対する自然性を証明する。
+新しい切断点が、元の変形の始点と元の旗の引き戻しの始点の両方以上であることが要点となる。
+これにより、面で切り落とされた点を変形が後から戻すことを防ぐ。
+
+```lean
+resolutionInsertHomotopy {n : ℕ} (i : Fin (n + 1)) :
+  SSet.Homotopy (𝟙 (coherentResolutionSimplex.{u} n))
+    (coherentResolutionMap (resolutionUpperVertexMap i))
+```
+
+ここで `resolutionUpperVertexMap i` は `k ↦ max i k`。
+零端点は既存の旗の正規化の回収、一端点は追加・切断後の集合とこの頂点写像の直接像の一致から得る。
+`resolutionInsertVertex_no_new_vertices` は変形後の各集合の元が元の元か i に限られることを示す。
+従って i 以外の欠落頂点を補わず、区間全体を追加する変形とは異なる相対的な構成に使える。
+この段階ではホーンの部分複体への制限、縮約の完成、一般の解像の比較の同値性は未証明。
+これは補助解像上のホモトピーであり、比較射の反対側の合成のホモトピーそのものではない。
+
 
 ## γ3：homotopy 極限・余極限と ∞ 極限・余極限（γ1.5 の後）
 

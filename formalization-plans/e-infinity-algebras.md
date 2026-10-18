@@ -215,10 +215,14 @@ F1 の補助解像の旗を native Path に送り、最大元と末尾への正�
 低次の基底では `resolutionProjectionIsoOfLeOne` が `n ≤ 1` の解像の射影を厳密な同型にする。
 `standardCoherentPinchedEquivOfLeOne` は同じ次数での標準 Hom と coherent pinched 単体の同値。
 逆方向は実際の標準比較射で、反対側の合成も単体上で厳密に恒等となる。高次の同値性は未証明。
+`normalizeResolutionFlag` は一般の増大集合族を最初の最大元で正規化し、全引き戻しと可換。
+`resolutionInsertHomotopy i` は解像の恒等射から `k ↦ max i k` の押し出しへの実際のホモトピー。
+選んだ i 以外の頂点を追加しないことも証明済み。ホーンへの制限と縮約は未完了で、
+比較射の反対側の合成のホモトピーを構成したとは数えない。
 判定への移送や片側の逆の性質だけでは、充満忠実性やホモトピー同値を証明したとは数えない。
 A3e の `qCatEquivalenceOfFullyFaithfulEssentiallySurjective` は実装済みで、写像空間の比較後に適用する。
 
-公開559宣言の正確な型・全前提・依存公理は `scripts/audit_dold_kan_comparison.lean` の
+公開574宣言の正確な型・全前提・依存公理は `scripts/audit_dold_kan_comparison.lean` の
 `#check @`・`#print axioms` が正本。依存公理は標準三公理のみ。
 詳しい API と数学は `InfinityCategories/README.md`、整理前の索引は
 [archive/e-infinity-algebras-gamma1.5-api.md](archive/e-infinity-algebras-gamma1.5-api.md) を参照する。
