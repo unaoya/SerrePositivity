@@ -13379,5 +13379,49 @@ lemma pointedSpaceTransport_isQCatEquivalence_iff {K L : KanObject.{u}} (f : K �
           (spaceInfinityVertex_eq_coherent (kanObjectOpFunctor.obj L)).symm)) ↔
       IsQCatEquivalence (X := K.obj) (Y := L.obj) f
 
+instance simplicialReplacementMap_mono {C : Type u} [Category.{u} C]
+    {F G : C ⥤ SSet.{u}} (η : F ⟶ G) [∀ c, Mono (η.app c)] :
+    Mono (simplicialReplacementMap η)
+
+lemma strictDiagramMappingPre_scaffold_factorization {C : Type u} [Category.{u} C]
+    {F G : C ⥤ SSet.{u}} (η : F ⟶ G) {E : SSet.{u}} (q : E ⟶ nerve C) :
+    strictDiagramMappingPre η (leftStrictTransportDiagram q) =
+      (strictDiagramMappingScaffoldIso G q).hom ≫
+        relativeFunctorPre q (simplicialReplacementProjection G) (simplicialReplacementMap η) ≫
+          (strictDiagramMappingScaffoldIso F q).inv
+
+instance strictDiagramMappingPre_leftFibration {C : Type u} [Category.{u} C]
+    {F G : C ⥤ SSet.{u}} (η : F ⟶ G) [∀ c, Mono (η.app c)]
+    {E : SSet.{u}} (q : E ⟶ nerve C) [LeftFibration q] :
+    LeftFibration (strictDiagramMappingPre η (leftStrictTransportDiagram q))
+
+lemma strictDiagramMappingPre_trivialKanFibration {C : Type u} [Category.{u} C]
+    {F G : C ⥤ SSet.{u}} [∀ c, KanComplex (F.obj c)] [∀ c, KanComplex (G.obj c)]
+    (η : F ⟶ G) [∀ c, Mono (η.app c)] (hη : ∀ c, IsQCatEquivalence (η.app c))
+    {E : SSet.{u}} (q : E ⟶ nerve C) [LeftFibration q] :
+    TrivialKanFibration (strictDiagramMappingPre η (leftStrictTransportDiagram q))
+
+lemma strictDiagramMappingVertex_injective {C : Type u} [Category.{u} C]
+    (F G : C ⥤ SSet.{u}) :
+    Function.Injective (strictDiagramMappingVertex (F := F) (G := G))
+
+def strictDiagramExtensionSpace {C : Type u} [Category.{u} C]
+    {F G : C ⥤ SSet.{u}} (η : F ⟶ G) {E : SSet.{u}} (q : E ⟶ nerve C)
+    (θ : F ⟶ leftStrictTransportDiagram q) : SSet.{u}
+
+lemma strictDiagramExtensionSpace_isContractibleKan {C : Type u} [Category.{u} C]
+    {F G : C ⥤ SSet.{u}} [∀ c, KanComplex (F.obj c)] [∀ c, KanComplex (G.obj c)]
+    (η : F ⟶ G) [∀ c, Mono (η.app c)] (hη : ∀ c, IsQCatEquivalence (η.app c))
+    {E : SSet.{u}} (q : E ⟶ nerve C) [LeftFibration q]
+    (θ : F ⟶ leftStrictTransportDiagram q) :
+    IsContractibleKan (strictDiagramExtensionSpace η q θ)
+
+lemma exists_strictDiagramExtension {C : Type u} [Category.{u} C]
+    {F G : C ⥤ SSet.{u}} [∀ c, KanComplex (F.obj c)] [∀ c, KanComplex (G.obj c)]
+    (η : F ⟶ G) [∀ c, Mono (η.app c)] (hη : ∀ c, IsQCatEquivalence (η.app c))
+    {E : SSet.{u}} (q : E ⟶ nerve C) [LeftFibration q]
+    (θ : F ⟶ leftStrictTransportDiagram q) :
+    ∃ Θ : G ⟶ leftStrictTransportDiagram q, η ≫ Θ = θ
+
 end SerrePositivity.InfinityCategories
 ```

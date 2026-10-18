@@ -660,3 +660,5 @@ public import SerrePositivity.InfinityCategories.F1.LeftFibrationPrismTransport
 public import SerrePositivity.InfinityCategories.F1.WeightedCosliceTransport
 public import SerrePositivity.InfinityCategories.F1.CoherentPointedFiberTransport
 public import SerrePositivity.InfinityCategories.F1.PointedFiberTransportCoordinates
+public import SerrePositivity.InfinityCategories.F1.StrictDiagramRestrictionFibration
+public import SerrePositivity.InfinityCategories.F1.StrictDiagramExtensionSpace
