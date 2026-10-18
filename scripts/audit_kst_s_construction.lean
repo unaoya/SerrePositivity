@@ -2912,3 +2912,49 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.kanAssemblyHomotopyNat
 #check @SerrePositivity.KST.SConstruction.kanAssemblyHomotopyNat_app
 #print axioms SerrePositivity.KST.SConstruction.kanAssemblyHomotopyNat_app
+
+-- 同一の反復 S の Kan 列と K 空間を零段とする列
+#check @SerrePositivity.KST.SConstruction.oneDirectionKanComparisonInverse
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionKanComparisonInverse
+#check @SerrePositivity.KST.SConstruction.oneDirectionKanComparison_inverse_homotopy
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionKanComparison_inverse_homotopy
+#check @SerrePositivity.KST.SConstruction.oneDirectionKanComparisonInverse_homotopy
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionKanComparisonInverse_homotopy
+#check @SerrePositivity.KST.SConstruction.oneDirectionKanComparisonInverse_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.oneDirectionKanComparisonInverse_piIsomorphism
+#check @SerrePositivity.KST.SConstruction.boundaryKanAssemblyAdjoint
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanAssemblyAdjoint
+#check @SerrePositivity.KST.SConstruction.boundaryKanAssemblySigma
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanAssemblySigma
+#check @SerrePositivity.KST.SConstruction.boundaryKanAssemblySigma_adjoint
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanAssemblySigma_adjoint
+#check @SerrePositivity.KST.SConstruction.boundaryKanSequence
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanSequence
+#check @SerrePositivity.KST.SConstruction.monicBoundaryKanSequence
+#print axioms SerrePositivity.KST.SConstruction.monicBoundaryKanSequence
+#check @SerrePositivity.KST.SConstruction.monicBoundaryKanSequence_sigma_mono
+#print axioms SerrePositivity.KST.SConstruction.monicBoundaryKanSequence_sigma_mono
+#check @SerrePositivity.KST.SConstruction.monicBoundaryKanSequenceProjection
+#print axioms SerrePositivity.KST.SConstruction.monicBoundaryKanSequenceProjection
+#check @SerrePositivity.KST.SConstruction.monicBoundaryKanSequenceProjection_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.monicBoundaryKanSequenceProjection_piIsomorphism
+#check @SerrePositivity.KST.SConstruction.kKanSequenceLevel
+#print axioms SerrePositivity.KST.SConstruction.kKanSequenceLevel
+#check @SerrePositivity.KST.SConstruction.kKanSequenceSigma
+#print axioms SerrePositivity.KST.SConstruction.kKanSequenceSigma
+#check @SerrePositivity.KST.SConstruction.kKanSequence
+#print axioms SerrePositivity.KST.SConstruction.kKanSequence
+#check @SerrePositivity.KST.SConstruction.kKanSequence_zero_adjoint
+#print axioms SerrePositivity.KST.SConstruction.kKanSequence_zero_adjoint
+#check @SerrePositivity.KST.SConstruction.kKanSequence_zero_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.kKanSequence_zero_piIsomorphism
+#check @SerrePositivity.KST.SConstruction.monicKKanSequence
+#print axioms SerrePositivity.KST.SConstruction.monicKKanSequence
+#check @SerrePositivity.KST.SConstruction.monicKKanSequence_sigma_mono
+#print axioms SerrePositivity.KST.SConstruction.monicKKanSequence_sigma_mono
+#check @SerrePositivity.KST.SConstruction.monicKKanSequenceProjection
+#print axioms SerrePositivity.KST.SConstruction.monicKKanSequenceProjection
+#check @SerrePositivity.KST.SConstruction.monicKKanSequenceProjection_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.monicKKanSequenceProjection_piIsomorphism
+#check @SerrePositivity.KST.SConstruction.monicKKanSequence_zero
+#print axioms SerrePositivity.KST.SConstruction.monicKKanSequence_zero

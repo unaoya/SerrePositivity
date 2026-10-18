@@ -3718,3 +3718,115 @@ Kan な同一の列の段の接続、delooping・Ω 条件・BF 連結スペク�
 L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（2992 jobs）、公理監査成功（1032 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+
+## 6.30 同一の反復段を接続する Kan 列と K 空間の零段
+
+一次方向の Kan 比較の全基点 π_* 同型性（§6.24）に L9 の Whitehead を適用して、
+実際の点つき逆射と、両向きの合成を恒等射と比較する基点固定ホモトピーを構成した。
+逆射自身も全基点・全自然数次数で π_* 同型である。
+この逆射を構成済みの Kan な随伴射へ前合成し、元の全零境界商の Kan 模型から
+次の全零境界商の Kan 模型の loop への実際の射 boundaryKanAssemblyAdjoint を得た。
+uncurry した構造射で同一の列の段を接続する boundaryKanSequence を構成した。
+その第 r 段は r+1 重 S の全零境界商の Kan 置換である。
+
+さらに零段を既定の K 空間、後続段をこの反復 S の列とする kKanSequence を構成した。
+座標は K(C), |S C|, |S² C|, … の Kan 模型である。
+零段の構造射は smash/loop 随伴の余単位で、その随伴射は厳密に恒等射となる。
+したがって零段の随伴構造射の全基点 π_* 同型性は証明済み。
+正の段の Ω 条件はこの構成の仮定にせず、引き続き本レーンの未証明の主張として残す。
+
+L9 の Kan 列の逐次置換を両列に適用した。得られる列の全構造射は単射で、
+元の列への厳密な比較射は各段で全基点 π_* 同型である。
+monicKKanSequence の零段は定義済みの boundaryKSpaceFunctor の値と厳密に一致する。
+Kan な前段の suspension と同じ列の次段との接続は今回完了したが、
+列の厳密な関手性、正の段の Ω 条件、連結性の検証を済ませた BF スペクトルは未完成。
+Core・Stable・F1・HA・Spectra の所有ファイルと公開 API は変更していない。
+
+以下は namespace `SerrePositivity.KST.SConstruction`、`universe u`、
+`open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet`、
+`open scoped Simplicial` の下の正確な型。
+
+```lean
+def oneDirectionKanComparisonInverse (r : ℕ) (X : StableModel.{u}) :
+    (boundaryKanRealizationFunctor r).obj X ⟶ (oneDirectionKanRealizationFunctor r).obj X
+
+lemma oneDirectionKanComparison_inverse_homotopy (r : ℕ) (X : StableModel.{u}) :
+    ∃ H : SSet.Homotopy (𝟙 (((oneDirectionKanRealizationFunctor r).obj X).right))
+      (((oneDirectionKanComparisonNat r).app X ≫ oneDirectionKanComparisonInverse r X).right),
+      ((oneDirectionKanRealizationFunctor r).obj X).hom ▷ (Δ[1] : SSet.{u}) ≫ H.h =
+        toUnit (𝟙_ SSet.{u} ⊗ (Δ[1] : SSet.{u})) ≫
+          ((oneDirectionKanRealizationFunctor r).obj X).hom
+
+lemma oneDirectionKanComparisonInverse_homotopy (r : ℕ) (X : StableModel.{u}) :
+    ∃ H : SSet.Homotopy (𝟙 (((boundaryKanRealizationFunctor r).obj X).right))
+      ((oneDirectionKanComparisonInverse r X ≫ (oneDirectionKanComparisonNat r).app X).right),
+      ((boundaryKanRealizationFunctor r).obj X).hom ▷ (Δ[1] : SSet.{u}) ≫ H.h =
+        toUnit (𝟙_ SSet.{u} ⊗ (Δ[1] : SSet.{u})) ≫
+          ((boundaryKanRealizationFunctor r).obj X).hom
+
+lemma oneDirectionKanComparisonInverse_piIsomorphism (r : ℕ) (X : StableModel.{u}) :
+    Spectra.KanPiIsomorphism (oneDirectionKanComparisonInverse r X).right
+
+def boundaryKanAssemblyAdjoint (r : ℕ) (X : StableModel.{u}) :
+    (boundaryKanRealizationFunctor r).obj X ⟶ (loopBoundaryKanFunctor (r + 1)).obj X
+
+def boundaryKanAssemblySigma (r : ℕ) (X : StableModel.{u}) :
+    Spectra.suspension ((boundaryKanRealizationFunctor r).obj X) ⟶
+      (boundaryKanRealizationFunctor (r + 1)).obj X
+
+lemma boundaryKanAssemblySigma_adjoint (r : ℕ) (X : StableModel.{u}) :
+    (Spectra.suspensionLoopEquiv _ _) (boundaryKanAssemblySigma r X) =
+      boundaryKanAssemblyAdjoint r X
+
+def boundaryKanSequence (X : StableModel.{u}) : Spectra.KanSequence.{u}
+
+def monicBoundaryKanSequence (X : StableModel.{u}) : Spectra.KanSequence.{u}
+
+instance monicBoundaryKanSequence_sigma_mono (X : StableModel.{u}) (r : ℕ) :
+    Mono ((monicBoundaryKanSequence X).sigma r).right
+
+def monicBoundaryKanSequenceProjection (X : StableModel.{u}) :
+    Spectra.KanSequence.Hom (monicBoundaryKanSequence X) (boundaryKanSequence X)
+
+lemma monicBoundaryKanSequenceProjection_piIsomorphism (X : StableModel.{u}) (r : ℕ) :
+    Spectra.KanPiIsomorphism ((monicBoundaryKanSequenceProjection X).app r).right
+
+def kKanSequenceLevel (X : StableModel.{u}) : ℕ → Spectra.PointedKanComplex.{u}
+
+def kKanSequenceSigma (X : StableModel.{u}) :
+    ∀ r, Spectra.suspension (kKanSequenceLevel X r).space ⟶
+      (kKanSequenceLevel X (r + 1)).space
+
+def kKanSequence (X : StableModel.{u}) : Spectra.KanSequence.{u}
+
+lemma kKanSequence_zero_adjoint (X : StableModel.{u}) :
+    (Spectra.suspensionLoopEquiv _ _) ((kKanSequence X).sigma 0) =
+      𝟙 (boundaryKSpaceFunctor.obj X)
+
+lemma kKanSequence_zero_piIsomorphism (X : StableModel.{u}) :
+    Spectra.KanPiIsomorphism
+      ((Spectra.suspensionLoopEquiv _ _) ((kKanSequence X).sigma 0)).right
+
+def monicKKanSequence (X : StableModel.{u}) : Spectra.KanSequence.{u}
+
+instance monicKKanSequence_sigma_mono (X : StableModel.{u}) (r : ℕ) :
+    Mono ((monicKKanSequence X).sigma r).right
+
+def monicKKanSequenceProjection (X : StableModel.{u}) :
+    Spectra.KanSequence.Hom (monicKKanSequence X) (kKanSequence X)
+
+lemma monicKKanSequenceProjection_piIsomorphism (X : StableModel.{u}) (r : ℕ) :
+    Spectra.KanPiIsomorphism ((monicKKanSequenceProjection X).app r).right
+
+lemma monicKKanSequence_zero (X : StableModel.{u}) :
+    ((monicKKanSequence X).level 0).space = boundaryKSpaceFunctor.obj X
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。同一の段を接続する実際の Kan 列、
+K 空間を零段とする列、その単射構造射への置換と各段の π_* 比較まで証明済み。
+正の段の Ω 条件・delooping と連結性を含む BF 連結スペクトル、列の厳密な関手性は未完了。
+同時商と円の smash の明示的同型、任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。
+L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（2996 jobs）、公理監査成功（1054 宣言、標準三公理のみ）。追加公理・sorry なし。

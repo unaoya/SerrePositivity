@@ -75,4 +75,7 @@ public import SerrePositivity.KST.SConstruction.PointedExtensionHomotopy
 public import SerrePositivity.KST.SConstruction.KanAssemblyNaturality
 public import SerrePositivity.KST.SConstruction.KanAssemblyHomotopyMaps
 
+public import SerrePositivity.KST.SConstruction.KanAssemblySequence
+public import SerrePositivity.KST.SConstruction.KSpaceSequence
+
 /-! # ∞-S• 構成と連結 K 理論 -/
