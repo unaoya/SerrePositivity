@@ -49,6 +49,12 @@ S_n はこの頂点条件による充満部分単体集合。順序写像によ�
 零対象と余極限錐の相対境界持ち上げ性から全境界に対する RLP を証明する。
 n=0 は零対象の空間として別処理する。全 gapped 図式を保ち、第一行の選択模型に置換しない。
 不足する相対拡張補題は本レーン内で証明する。設計変更が必要なら実装前に提案する。
+Ar[n] と正方形の積から (0,i),(0,j),(i,i),(i,j) への自然な添字写像を用い、
+gapped 図式の全 cofiber 四角形を一つの族として取り出す。
+その族は右上角の評価で元の図式を厳密に回収するため、境界上の既存データを保持できる。
+相対 cofiber 補完をこの Ar[n] パラメーターに適用する際は、第一行と対角での条件を同時に固定する。
+得られる右上角の図式の全四角形が押し出しとなることは、余極限の普遍性と押し出しの貼り合わせから
+別に証明する。単に各区間に cofiber を持つことだけで gapped 条件を結論しない。
 
 ### §10-11：加法性
 
@@ -111,7 +117,7 @@ L1a 完了。対象ビルド 1932 jobs、公理監査 26 宣言（標準3公理�
 `arSquareOrder`、`arSquare`、`arSquare_naturality`、`sMap_ι`。全26宣言の展開された型を監査スクリプトで検査する。
 上記は定義・関手法則であり安定性を仮定しない。quasicategory instance だけは明記した前提を持つ。
 
-L1b 進行中。第一行制限と零対角の補完段階を実装済み。対象ビルド2009 jobs、累計106宣言の監査（標準3公理のみ）。
+L1b 進行中。第一行制限と零対角の補完段階を実装済み。対象ビルド2011 jobs、累計127宣言の監査（標準3公理のみ）。
 
 | 公開宣言 | 正確な型・前提 |
 | --- | --- |
@@ -174,6 +180,23 @@ cofiber 一段の補完について次を実装した。
 `exists_relative_colimitCoconeFamily`・`exists_relative_pushoutFamily` は、各入力図式の余極限が存在する場合に、任意の単射に沿う相対補完を与える。
 cofiber の射影の零次元には `IsStable.cofiber_exists`、正次元には零対象へ向かう辺の射影と
 普遍押し出しの射影の正次元境界 RLP を用いた。追加の cofiber 存在公理は使っていない。
+
+Ar[n] 全体への適用をつなぐ自然な cofiber 抽出を実装した。
+
+| 公開宣言 | 正確な型・前提 |
+| --- | --- |
+| `arCofiberSquareMap` | `(n : ℕ) → (arNerve.{u} n ⊗ (Δ[1] ⊗ Δ[1]) ⟶ arNerve n)` |
+| `arCofiberFamily` | `(F : arNerve n ⟶ C) → (arNerve n ⟶ (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj C)` |
+| `gappedCofiberFamily` | `(hF : IsGapped F) → (arNerve n ⟶ cofiberDiagrams C)` |
+| `cofiberApex` | `(C : SSet.{u}) → (cofiberDiagrams C ⟶ C)` |
+| `gappedCofiberFamily_apex` | `(hF : IsGapped F) → gappedCofiberFamily hF ≫ cofiberApex C = F` |
+| `arCofiberFamilyOperator` | `(n : ℕ) → (C : SSet.{u}) → ((ihom (arNerve n)).obj C ⟶ (ihom (arNerve n)).obj ((ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj C))` |
+| `gappedCofiberFamiliesMap` | `(n : ℕ) → (C : SSet.{u}) → (sConstruction n C ⟶ (ihom (arNerve n)).obj (cofiberDiagrams C))` |
+| `gappedCofiberFamiliesMap_apex` | `gappedCofiberFamiliesMap n C ≫ (ihom (arNerve n)).map (cofiberApex C) = (gappedSubcomplex n C).ι` |
+
+これらの抽出・右上角の回収の宣言には quasicategory 性も安定性も要求しない。
+内部 currying と全部分複体を標的とする内部 Hom の同型により、頂点ごとの抽出を
+全てのパラメーターに自然な単体集合の射にした。
 
 ただし **Ar[n] 全体の gapped 条件を同時に満たす cofiber 補完は未証明**。したがって
 `firstRowRestriction` の trivial Kan fibration と L1b 全体はまだ完了していない。

@@ -7,6 +7,48 @@ import SerrePositivity.KST.SConstruction
 使われ方：BGT §7 に対応する保存単位の検証。
 -/
 
+#check @SerrePositivity.KST.SConstruction.arCofiberFamilyOperator
+#print axioms SerrePositivity.KST.SConstruction.arCofiberFamilyOperator
+#check @SerrePositivity.KST.SConstruction.arCofiberFamilyOperator_vertex
+#print axioms SerrePositivity.KST.SConstruction.arCofiberFamilyOperator_vertex
+#check @SerrePositivity.KST.SConstruction.IsGapped.arCofiberFamily_vertex
+#print axioms SerrePositivity.KST.SConstruction.IsGapped.arCofiberFamily_vertex
+#check @SerrePositivity.KST.SConstruction.gappedCofiberFamiliesMap
+#print axioms SerrePositivity.KST.SConstruction.gappedCofiberFamiliesMap
+#check @SerrePositivity.KST.SConstruction.gappedCofiberFamiliesMap_ι
+#print axioms SerrePositivity.KST.SConstruction.gappedCofiberFamiliesMap_ι
+#check @SerrePositivity.KST.SConstruction.arCofiberFamilyOperator_apex
+#print axioms SerrePositivity.KST.SConstruction.arCofiberFamilyOperator_apex
+#check @SerrePositivity.KST.SConstruction.gappedCofiberFamiliesMap_apex
+#print axioms SerrePositivity.KST.SConstruction.gappedCofiberFamiliesMap_apex
+#check @SerrePositivity.KST.SConstruction.intervalStep_mono_endpoints
+#print axioms SerrePositivity.KST.SConstruction.intervalStep_mono_endpoints
+#check @SerrePositivity.KST.SConstruction.arCofiberSquareOrder
+#print axioms SerrePositivity.KST.SConstruction.arCofiberSquareOrder
+#check @SerrePositivity.KST.SConstruction.arCofiberSquareChain
+#print axioms SerrePositivity.KST.SConstruction.arCofiberSquareChain
+#check @SerrePositivity.KST.SConstruction.arCofiberSquareMap
+#print axioms SerrePositivity.KST.SConstruction.arCofiberSquareMap
+#check @SerrePositivity.KST.SConstruction.arCofiberSquareMap_at
+#print axioms SerrePositivity.KST.SConstruction.arCofiberSquareMap_at
+#check @SerrePositivity.KST.SConstruction.curry_vertex_value
+#print axioms SerrePositivity.KST.SConstruction.curry_vertex_value
+#check @SerrePositivity.KST.SConstruction.arCofiberFamily
+#print axioms SerrePositivity.KST.SConstruction.arCofiberFamily
+#check @SerrePositivity.KST.SConstruction.arCofiberFamily_vertex
+#print axioms SerrePositivity.KST.SConstruction.arCofiberFamily_vertex
+#check @SerrePositivity.KST.SConstruction.gappedCofiberFamily
+#print axioms SerrePositivity.KST.SConstruction.gappedCofiberFamily
+#check @SerrePositivity.KST.SConstruction.curry_evaluate_vertex
+#print axioms SerrePositivity.KST.SConstruction.curry_evaluate_vertex
+#check @SerrePositivity.KST.SConstruction.arCofiberSquareMap_apex
+#print axioms SerrePositivity.KST.SConstruction.arCofiberSquareMap_apex
+#check @SerrePositivity.KST.SConstruction.arCofiberFamily_apex
+#print axioms SerrePositivity.KST.SConstruction.arCofiberFamily_apex
+#check @SerrePositivity.KST.SConstruction.cofiberApex
+#print axioms SerrePositivity.KST.SConstruction.cofiberApex
+#check @SerrePositivity.KST.SConstruction.gappedCofiberFamily_apex
+#print axioms SerrePositivity.KST.SConstruction.gappedCofiberFamily_apex
 #check @SerrePositivity.KST.SConstruction.IsCofiberDiagramVertex
 #print axioms SerrePositivity.KST.SConstruction.IsCofiberDiagramVertex
 #check @SerrePositivity.KST.SConstruction.cofiberDiagrams
