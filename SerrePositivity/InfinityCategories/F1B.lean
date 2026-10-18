@@ -219,3 +219,4 @@ public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinRealization
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinStrictification
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinCorrectionSquares
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinTransformationClass
+public import SerrePositivity.InfinityCategories.F1B.KanRelativeConeFamilies

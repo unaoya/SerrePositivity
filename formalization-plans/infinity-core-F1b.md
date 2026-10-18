@@ -20,7 +20,7 @@ sorry・追加公理・文献入力を使わず、監査で許す公理は
 | B1 / F1e | 単位・余単位と h Fun の三角恒等式、自然な写像空間対応との特徴づけ、合成、随伴関手の一意性 | Kerodon [Def 6.1.1.1](https://kerodon.net/tag/02CG)、[§6.1.3](https://kerodon.net/tag/02D5)、[§6.1.5](https://kerodon.net/tag/02DM)、[Def 6.2.1.1・Prop 6.2.1.17](https://kerodon.net/tag/02EJ)、[Prop 6.2.6.1](https://kerodon.net/tag/02FV)・[Cor 6.2.6.5](https://kerodon.net/tag/02FX) / HTT §5.2 | 完了（全パラメータの族の前層による自然性の模型） |
 | B2 / F1f | 充満部分 ∞ 圏への反射、局所対象、冪等性、局所化の普遍性の型と反射的な場合の構成 | Kerodon [§6.2.2](https://kerodon.net/tag/02F5)、[Cor 6.2.2.26](https://kerodon.net/tag/02FF)、[Def 6.3.1.9・Prop 6.3.1.13](https://kerodon.net/tag/01ME)、[Prop 6.3.3.7](https://kerodon.net/tag/02FY) / HTT §5.2.7 | 完了（同じ宇宙の標的に対する普遍性） |
 | B3 / F1g 前半 | right cofinal、Quillen A、A2h の始対象による limit 計算の双対的回収 | Kerodon [Def 7.2.1.1](https://kerodon.net/tag/02N1)、[Thm 7.2.3.1](https://kerodon.net/tag/02NX) / HTT Thm 4.1.3.1 | 完了（左右の Quillen A と二宇宙版 A2h の同じ制限写像の回収） |
-| B4 / F1g 後半 | slice の極限による左右 Kan 拡張、h での一意性、各点の存在、関手全体への組み立て | Kerodon [Notation 7.3.1.1・Def 7.3.1.2](https://kerodon.net/tag/02Y7)、Variant 7.3.1.5、§7.3.5 / HTT §4.3 | 進行中（指定自然変換の比較錐、各点の値・一意性、左右比較錐の選択不変性、左右の h 不変性、普遍写像性を仮定した大域的一意性、相対 join 表示、両端の厳密化と指定変換の類の保存） |
+| B4 / F1g 後半 | slice の極限による左右 Kan 拡張、h での一意性、各点の存在、関手全体への組み立て | Kerodon [Notation 7.3.1.1・Def 7.3.1.2](https://kerodon.net/tag/02Y7)、Variant 7.3.1.5、§7.3.5 / HTT §4.3 | 進行中（指定自然変換の比較錐、各点の値・一意性、左右比較錐の選択不変性、左右の h 不変性、普遍写像性を仮定した大域的一意性、相対 join 表示、指定変換の類の保存、部分パラメータを固定した相対充填） |
 | B5 | nerve による古典随伴・Kan 拡張の回収と監査 | 上記と通常の圏の随伴・Kan 拡張 | 未着手（監査スクリプトは稼働中） |
 
 ## 2. 設計上の決定
@@ -424,6 +424,19 @@ h Fun(C,D) の同型を作り、両方向の指定自然変換との両立と比
 `leftKanRelativeJoin_realization_preserving_class` により、任意の δ と指定変換を
 厳密な両端と同じ h Fun の類を持つ相対 join 表示へ移せる。
 
+`KanRelativeBoundaryFamily` は K×境界と A×単体の和へ二つの指定図式を貼り、
+全頂点を含む部分から相対骨格で充填する。点ごとの相対始対象・終対象条件により、
+標的の図式と任意の部分パラメータ A 上の指定充填を同時に保存する。
+`KanRelativeFunctorBoundary` はこれを二変数随伴で相対内部 Hom の
+`PullbackObjObj A.ι p` の射 π の `InitialBoundaryLifting`・`TerminalBoundaryLifting` に移す。
+p の fibration 性や周囲の quasicategory 性は要求しない。
+`KanRelativeConeFamilies` は既存の `IsColimitCone.initialBoundaryLifting` と
+`terminalBoundaryLifting_coneRestriction_of_isLimitCone` へ接続する。
+固定した形 J の点ごとに普遍な余錐・錐の族について、部分パラメータ上の図式を固定して
+相対境界充填を得る（[Kerodon §7.1.8](https://kerodon.net/tag/02X8) の相対充填の部分）。
+これは [Prop 7.3.6.7・Cor 7.3.6.9](https://kerodon.net/tag/0308) の準備であり、
+変化する slice の形を組み立てた制限定理そのものはまだ導いていない。
+
 **B4 は未完了。** 点ごとの Kan 条件からの h Fun(C,D) での大域的一意性、
 極限からの点ごとの存在と大域的組み立てが残る。
 各点の `valueIso` を大域的な同型の証明とは扱わない。
@@ -442,8 +455,8 @@ A6 の `exists_pointwiseLimitCone`・`hasLimit_of_hasPointwiseLimits`・
 B5 の古典 nerve に戻る検査も未完了。
 全体の α2b 目標は継続中。
 
-対象ビルド2381 jobs、公理監査2450宣言（標準三公理のみ）が成功。
-推移的 import のリポジトリ内710モジュールに straightening 依存なし。
+対象ビルド2388 jobs、公理監査2462宣言（標準三公理のみ）が成功。
+推移的 import のリポジトリ内717モジュールに straightening 依存なし。
 
 ## 4. 主要宣言
 
@@ -625,3 +638,8 @@ B5 の古典 nerve に戻る検査も未完了。
 | `Strictification.leftBoundary_hom_eq/rightBoundary_hom_eq/leftBoundary_invertible` | 両補正正方形の側辺の類の一致と可逆性 | 済 |
 | `Strictification.transformation_hom_eq/isLeftKanExtension_iff` | 厳密化による指定変換の類と左 Kan 条件の保存 | 済 |
 | `leftKanRelativeJoin_realization_preserving_class` | 任意の δ と指定変換の、厳密な両端と同じ類を持つ相対 join 表示の存在 | 済 |
+
+| `kanInitialBoundaryFamily_lift_relative/kanTerminalBoundaryFamily_lift_relative` | 点ごとの相対始対象・終対象による部分パラメータ上の指定図式を保つ境界の族の充填 | 済 |
+| `initialBoundaryLifting_relativeFunctor_of_pointwise/terminalBoundaryLifting_relativeFunctor_of_pointwise` | 部分図式を固定した相対内部 Hom の π の相対境界充填 | 済 |
+| `kanCoconeFamilyAt/kanConeFamilyAt`・両者の `_vertex` | 関手として与えた余錐・錐の族の頂点での評価 | 済 |
+| `initialBoundaryLifting_relativeCoconeFamily_of_pointwise_colimit/terminalBoundaryLifting_relativeConeFamily_of_pointwise_limit` | 固定した形 J の点ごとの余極限・極限から、部分パラメータを固定した相対充填への接続 | 済・Kan 拡張の slice の組み立ては未完了 |
