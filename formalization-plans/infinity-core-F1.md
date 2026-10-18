@@ -9849,5 +9849,126 @@ noncomputable def leftStraighteningCandidateMappingEquivalence
       (relativeFunctorSpace (leftUnstraighteningProjection (leftStraighteningCandidate q))
         (leftUnstraighteningProjection (leftStraighteningCandidate p)))
 
+def functorParameterizedPrism {K B L X : SSet.{u}}
+    (H : K ⊗ L ⟶ (ihom B).obj X) : (K ⊗ B) ⊗ L ⟶ X
+
+lemma simplexPrismVertex_exchange (n : ℕ) (i : Fin (n + 1)) (B L : SSet.{u}) :
+    ((simplexPrismVertex n i B ▷ L) ≫ ((β_ (Δ[n] : SSet.{u}) B).hom ▷ L)) ≫
+      (α_ B (Δ[n] : SSet.{u}) L).hom = B ◁ simplexPrismVertex n i L
+
+lemma functorParameterizedPrism_vertex {B L X : SSet.{u}} (n : ℕ)
+    (H : (Δ[n] : SSet.{u}) ⊗ L ⟶ (ihom B).obj X) (i : Fin (n + 1)) :
+    (simplexPrismVertex n i B ▷ L) ≫ functorParameterizedPrism H =
+      uncurry (simplexPrismVertex n i L ≫ H)
+
+lemma functorParameterizedPrism_vertex_of_const {B L X : SSet.{u}} (n : ℕ)
+    (H : (Δ[n] : SSet.{u}) ⊗ L ⟶ (ihom B).obj X) (i : Fin (n + 1))
+    (F : B ⟶ X) (hi : simplexPrismVertex n i L ≫ H = SSet.const (functorVertex F)) :
+    (simplexPrismVertex n i B ▷ L) ≫ functorParameterizedPrism H = fst B L ≫ F
+
+lemma simplexPrismVertex_parameterizedBaseChange {A B L X : SSet.{u}}
+    (n : ℕ) (i : Fin (n + 1)) (p : A ⟶ B) (T : ((Δ[n] : SSet.{u}) ⊗ B) ⊗ L ⟶ X) :
+    ((simplexPrismVertex n i A ▷ L) ≫ ((Δ[n] ◁ p) ▷ L)) ≫ T =
+      (p ▷ L) ≫ ((simplexPrismVertex n i B ▷ L) ≫ T)
+
+lemma simplexPrism_initialRestriction {A L X : SSet.{u}} (n : ℕ)
+    (W : ((Δ[n] : SSet.{u}) ⊗ A) ⊗ L ⟶ X) (f : A ⟶ X)
+    (h : ((scaffoldFirstVertex n ▷ A) ▷ L) ≫ W =
+      fst (Δ[0] ⊗ A) L ≫ snd (Δ[0] : SSet.{u}) A ≫ f) :
+    (simplexPrismVertex n 0 A ▷ L) ≫ W = fst A L ≫ f
+
+def leftUnstraighteningTransformationSpace {B : SSet.{u + 1}} (F G : B ⟶ SpaceInfinity.{u}) :
+    SSet.{u + 1}
+
+instance leftUnstraighteningTransformationSpace_kanComplex {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) : KanComplex (leftUnstraighteningTransformationSpace F G)
+
+def leftUnstraighteningTransformationFamily {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) :
+    ((Δ[1] : SSet.{u + 1}) ⊗ B) ⊗ leftUnstraighteningTransformationSpace F G ⟶ SpaceInfinity.{u}
+
+lemma leftUnstraighteningTransformationFamily_zero {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) :
+    (simplexPrismVertex 1 0 B ▷ leftUnstraighteningTransformationSpace F G) ≫
+      leftUnstraighteningTransformationFamily F G =
+        fst B (leftUnstraighteningTransformationSpace F G) ≫ F
+
+lemma leftUnstraighteningTransformationFamily_one {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) :
+    (simplexPrismVertex 1 1 B ▷ leftUnstraighteningTransformationSpace F G) ≫
+      leftUnstraighteningTransformationFamily F G =
+        fst B (leftUnstraighteningTransformationSpace F G) ≫ G
+
+lemma exists_leftUnstraighteningParameterizedSimplexLift {B L : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) (n : ℕ)
+    (T : ((Δ[n] : SSet.{u + 1}) ⊗ B) ⊗ L ⟶ SpaceInfinity.{u})
+    (h₀ : (simplexPrismVertex n 0 B ▷ L) ≫ T = fst B L ≫ F) :
+    ∃ W : ((Δ[n] : SSet.{u + 1}) ⊗ leftUnstraightening F) ⊗ L ⟶ PointedSpaceInfinity.{u},
+      W ≫ pointedSpaceProjection = ((Δ[n] ◁ leftUnstraighteningProjection F) ▷ L) ≫ T ∧
+      ((scaffoldFirstVertex n ▷ leftUnstraightening F) ▷ L) ≫ W =
+        leftUnstraighteningParameterizedSimplexStart F L
+
+noncomputable def leftUnstraighteningTransformationFamilyLift {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) :
+    ((Δ[1] : SSet.{u + 1}) ⊗ leftUnstraightening F) ⊗
+      leftUnstraighteningTransformationSpace F G ⟶ PointedSpaceInfinity.{u}
+
+lemma leftUnstraighteningTransformationFamilyLift_projection {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) :
+    leftUnstraighteningTransformationFamilyLift F G ≫ pointedSpaceProjection =
+      ((Δ[1] ◁ leftUnstraighteningProjection F) ▷ leftUnstraighteningTransformationSpace F G) ≫
+        leftUnstraighteningTransformationFamily F G
+
+lemma leftUnstraighteningTransformationFamilyLift_zero {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) :
+    ((scaffoldFirstVertex 1 ▷ leftUnstraightening F) ▷ leftUnstraighteningTransformationSpace F G) ≫
+      leftUnstraighteningTransformationFamilyLift F G =
+        leftUnstraighteningParameterizedSimplexStart F (leftUnstraighteningTransformationSpace F G)
+
+lemma leftUnstraighteningTransformationFamilyLift_start {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) :
+    (simplexPrismVertex 1 0 (leftUnstraightening F) ▷ leftUnstraighteningTransformationSpace F G) ≫
+      leftUnstraighteningTransformationFamilyLift F G =
+        fst (leftUnstraightening F) (leftUnstraighteningTransformationSpace F G) ≫
+          pullback.fst pointedSpaceProjection F
+
+lemma leftUnstraighteningTransformationFamilyLift_one_projection {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) :
+    ((simplexPrismVertex 1 1 (leftUnstraightening F) ▷ leftUnstraighteningTransformationSpace F G) ≫
+      leftUnstraighteningTransformationFamilyLift F G) ≫ pointedSpaceProjection =
+      (fst (leftUnstraightening F) (leftUnstraighteningTransformationSpace F G) ≫
+        leftUnstraighteningProjection F) ≫ G
+
+noncomputable def leftUnstraighteningMappingFamily {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) :
+    leftUnstraightening F ⊗ leftUnstraighteningTransformationSpace F G ⟶ leftUnstraightening G
+
+noncomputable def leftUnstraighteningMappingSpaceMap {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) :
+    leftUnstraighteningTransformationSpace F G ⟶
+      relativeFunctorSpace (leftUnstraighteningProjection G) (leftUnstraighteningProjection F)
+
+lemma leftUnstraighteningMappingSpaceMap_uncurry {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) :
+    relativeFunctorUncurry (leftUnstraighteningMappingSpaceMap F G) =
+      leftUnstraighteningMappingFamily F G
+
+lemma leftUnstraighteningMappingSpaceMap_pointed {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) :
+    relativeFunctorUncurry (leftUnstraighteningMappingSpaceMap F G) ≫
+      pullback.fst pointedSpaceProjection G =
+      (simplexPrismVertex 1 1 (leftUnstraightening F) ▷ leftUnstraighteningTransformationSpace F G) ≫
+        leftUnstraighteningTransformationFamilyLift F G
+
+noncomputable def leftUnstraighteningPinchedMappingSpaceMap {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) :
+    pinchedHom (functorVertex F) (functorVertex G) ⟶
+      relativeFunctorSpace (leftUnstraighteningProjection G) (leftUnstraighteningProjection F)
+
+lemma leftUnstraighteningPinchedMappingSpaceMap_isQCatEquivalence_iff {B : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) :
+    IsQCatEquivalence (leftUnstraighteningPinchedMappingSpaceMap F G) ↔
+      IsQCatEquivalence (leftUnstraighteningMappingSpaceMap F G)
+
 end SerrePositivity.InfinityCategories
 ```
