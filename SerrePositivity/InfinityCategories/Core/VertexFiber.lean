@@ -125,4 +125,20 @@ lemma vertexFiber_kanComplex {E B : SSet.{u}} (p : E ⟶ B) [RightFibration p]
   rw [Category.assoc, vertexFiberLift_ι]
   exact sq.fac_left
 
+/-- 概要：右ファイブレーションの一つの fiber に属する辺は可逆。
+方針：fiber の Kan 性から辺の可逆性を得て、包含で元の単体集合へ写す。
+規約：base の quasicategory 性は不要。
+使われ方：Kerodon Lemma 4.4.2.15 の prism の特別な外側ホーン。 -/
+lemma rightFibration_isInvertibleEdge_of_constant_image {E B : SSet.{u}}
+    (p : E ⟶ B) [RightFibration p] (b : B _⦋0⦌) (s : E _⦋1⦌)
+    (hs : p.app (Opposite.op ⦋1⦌) s = PinchedHom.constant b 1) :
+    IsInvertibleEdge (edgeOfSimplex s) := by
+  have := vertexFiber_kanComplex p b
+  let e := edgeOfSimplex (X := vertexFiber p b) ⟨s, hs⟩
+  have he : IsInvertibleEdge e :=
+    IsGroupoid.all_isIso (C := hoFunctor.obj (vertexFiber p b))
+      (SSet.Truncated.HomotopyCategory.homMk e)
+  have hm := he.map (vertexFiberι p b)
+  exact (isInvertibleEdge_congr rfl).mp hm
+
 end SerrePositivity.InfinityCategories

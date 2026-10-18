@@ -3981,6 +3981,182 @@ lemma boundaryPrism_fillZero {E : SSet.{u}} {n : ℕ}
 
 Core 対象ビルド：終了コード 0（1586 jobs）。監査：終了コード 0、累計 576 宣言、標準三公理のみ。A3d の逆方向、A3e は引き続き未完了。§4 の設計変更はない。
 
+
+### A3d 完了：終対象と写像空間の可縮性（2026-10-18）
+
+全写像空間の可縮性から終対象性を導く逆方向を完成。Kerodon Proposition 4.4.2.14 の右ファイブレーション・可縮 fiber 判定を、Lemma 4.4.2.15 の prism 分解と A3b の Joyal の定理で証明した。先頭と境界の和の正則 pairing で、内ホーンと可逆な最初の辺を持つ零番目の外側ホーンを充填する。モデル構造は用いていない。
+
+A3d 全体として、(i) `[Quasicategory X]` の下で終対象性と全右 pinched 写像空間の可縮性の同値、(ii) h X の同型による終対象性の不変性、(iii) h(sliceOver p) の錐の同型による極限性の不変性、(iv) 終対象が存在するとき終対象の全部分複体の可縮 Kan 性を全て達成した。(iv) と同値の順方向には周囲の quasicategory 性は不要。可縮性は全境界の充填であり、π₀ が一点という弱い条件ではない。
+
+今回追加した公開宣言28件の正確な型は以下。共通の `universe w t v u`、`open CategoryTheory Limits HomotopicalAlgebra MonoidalCategory CartesianMonoidalCategory SSet MorphismProperty`、`open scoped Simplicial` の下で読む。既存の同型不変性と全部分複体の宣言の型は直前の A3d 保存記録に記載。
+
+VertexFiber：
+
+```lean
+lemma rightFibration_isInvertibleEdge_of_constant_image {E B : SSet.{u}}
+    (p : E ⟶ B) [RightFibration p] (b : B _⦋0⦌) (s : E _⦋1⦌)
+    (hs : p.app (Opposite.op ⦋1⦌) s = PinchedHom.constant b 1) :
+    IsInvertibleEdge (edgeOfSimplex s)
+```
+
+CellExtension：
+
+```lean
+lemma attachCells_exists_extension {C : Type u} [Category.{v} C]
+    {I : Type w} {A B : I → C} {g : ∀ i, A i ⟶ B i}
+    {X Y E : C} {j : X ⟶ Y} (c : AttachCells.{t} g j) (f : X ⟶ E)
+    (h : ∀ i : c.ι, ∃ F : B (c.π i) ⟶ E,
+      g (c.π i) ≫ F = c.cofan₁.inj i ≫ c.g₁ ≫ f) :
+    ∃ F : Y ⟶ E, j ≫ F = f
+
+lemma pairing_filtration_exists_extension {X E : SSet.{u}} {A : X.Subcomplex}
+    {P : A.Pairing} [P.IsProper] (r : P.RankFunction ℕ) (a : (A : SSet.{u}) ⟶ E)
+    (n : ℕ) (g : (r.filtration n : SSet.{u}) ⟶ E)
+    (hg : Subcomplex.homOfLE (r.le_filtration n) ≫ g = a)
+    (h : ∀ c : r.Cell n, ∃ F : (Δ[c.dim + 1] : SSet.{u}) ⟶ E,
+      c.horn.ι ≫ F = c.mapHorn ≫ g) :
+    ∃ g' : (r.filtration (n + 1) : SSet.{u}) ⟶ E,
+      Subcomplex.homOfLE (r.filtration_monotone (Nat.le_succ n)) ≫ g' = g ∧
+        Subcomplex.homOfLE (r.le_filtration (n + 1)) ≫ g' = a
+
+lemma pairing_exists_extension {X E : SSet.{u}} {A : X.Subcomplex}
+    (P : A.Pairing) [P.IsRegular] (a : (A : SSet.{u}) ⟶ E)
+    (h : ∀ (n : ℕ) (g : (P.rankFunction.filtration n : SSet.{u}) ⟶ E),
+      Subcomplex.homOfLE (P.rankFunction.le_filtration n) ≫ g = a →
+      ∀ c : P.rankFunction.Cell n, ∃ F : (Δ[c.dim + 1] : SSet.{u}) ⟶ E,
+        c.horn.ι ≫ F = c.mapHorn ≫ g) :
+    ∃ F : X ⟶ E, A.ι ≫ F = a
+
+lemma pairingCore_cell_index {X : SSet.{u}} {A : X.Subcomplex}
+    (Q : A.PairingCore) [Q.IsProper] (r : Q.pairing.RankFunction ℕ) {n : ℕ}
+    (s : Q.ι) (hs : r.rank (Q.equivII s) = n) :
+    (show r.Cell n from ⟨Q.equivII s, hs⟩).index = Q.index s
+
+lemma pairingCore_cell_map {X : SSet.{u}} {A : X.Subcomplex}
+    (Q : A.PairingCore) [Q.IsProper] (r : Q.pairing.RankFunction ℕ) {n : ℕ}
+    (s : Q.ι) (hs : r.rank (Q.equivII s) = n) :
+    (show r.Cell n from ⟨Q.equivII s, hs⟩).map = SSet.yonedaEquiv.symm (Q.simplex s)
+```
+
+PrismPairing：
+
+```lean
+lemma prismPairing_first_right_zero (n : ℕ)
+    (s : prodStdSimplex.pairingCore.Type₁.{u} (0 : Fin 1) n) :
+    (s.x.cast s.hd).simplex.2 (0 : Fin (s.d + 2)) = 0
+
+lemma prismPairing_second_right_zero (n : ℕ)
+    (s : prodStdSimplex.pairingCore.Type₁.{u} (0 : Fin 1) n) (hi : s.index = 0) :
+    (s.x.cast s.hd).simplex.2 (1 : Fin (s.d + 2)) = 0
+
+def prismFirstVerticalEdge (n : ℕ) : ((Δ[1] : SSet.{u}) ⊗ Δ[n]) _⦋1⦌
+
+lemma prismPairing_firstEdge_eq (n : ℕ)
+    (s : prodStdSimplex.pairingCore.Type₁.{u} (0 : Fin 1) n) (hi : s.index = 0) :
+    ((Δ[1] : SSet.{u}) ⊗ Δ[n]).map
+      (stdSimplex.objEquiv (stdSimplex.edge.{u} (s.d + 1) 0 1 (Fin.zero_le _))).op
+        (s.x.cast s.hd).simplex = prismFirstVerticalEdge n
+
+lemma prismFirstVerticalEdge_mem (n : ℕ) :
+    prismFirstVerticalEdge.{u} (n + 1) ∈
+      (Subcomplex.unionProd (horn 1 0) (boundary (n + 1))).obj (Opposite.op ⦋1⦌)
+
+lemma prismFirstVerticalEdge_contraction (n : ℕ) :
+    (prismFirstContraction.{u} n).app (Opposite.op ⦋1⦌) (prismFirstVerticalEdge n) =
+      PinchedHom.constant (stdSimplex.obj₀Equiv.symm 0) 1
+
+lemma prismPairing_dim_ge (n : ℕ)
+    (s : prodStdSimplex.pairingCore.Type₁.{u} (0 : Fin 1) n) : n ≤ s.d
+
+lemma prismPairing_dim_eq (n : ℕ)
+    (s : prodStdSimplex.pairingCore.Type₁.{u} (0 : Fin 1) n) : s.d = n
+```
+
+PrismExtension：
+
+```lean
+lemma prism_exists_extension_of_invertible_firstEdge {E : SSet.{u}} [Quasicategory E]
+    (n : ℕ) (a : (Subcomplex.unionProd (horn 1 0) (boundary (n + 1)) : SSet.{u}) ⟶ E)
+    (ha : IsInvertibleEdge (edgeOfSimplex (a.app (Opposite.op ⦋1⦌)
+      ⟨prismFirstVerticalEdge (n + 1), prismFirstVerticalEdge_mem n⟩))) :
+    ∃ F : (Δ[1] : SSet.{u}) ⊗ Δ[n + 1] ⟶ E,
+      (Subcomplex.unionProd (horn 1 0) (boundary (n + 1))).ι ≫ F = a
+```
+
+SimplexVertexDetection：
+
+```lean
+instance stdSimplex_quasicategory (n : ℕ) : Quasicategory (Δ[n] : SSet.{u})
+
+lemma stdSimplex_hom_ext_vertices {A : SSet.{u}} {n : ℕ} {f g : A ⟶ (Δ[n] : SSet.{u})}
+    (h : f.app (Opposite.op ⦋0⦌) = g.app (Opposite.op ⦋0⦌)) : f = g
+
+lemma stdSimplex_hom_ext_of_subcomplex_vertices {A : SSet.{u}} {n : ℕ}
+    (A₀ : A.Subcomplex) (hA : ∀ v : A _⦋0⦌, v ∈ A₀.obj (Opposite.op ⦋0⦌))
+    {f g : A ⟶ (Δ[n] : SSet.{u})} (h : A₀.ι ≫ f = A₀.ι ≫ g) : f = g
+```
+
+PrismFilling：
+
+```lean
+lemma hornOneFirst_prism_factorization (A : SSet.{u}) :
+    ((horn 1 0).ι ▷ A) = snd (horn 1 0 : SSet.{u}) A ≫ prismEndpoint 0 A
+
+lemma prismDomain_contains_vertices (n : ℕ)
+    (v : ((Δ[1] : SSet.{u}) ⊗ Δ[n + 1]) _⦋0⦌) :
+    v ∈ (Subcomplex.unionProd (horn 1 0) (boundary (n + 1))).obj (Opposite.op ⦋0⦌)
+
+lemma prism_extension_comp {E : SSet.{u}} (n : ℕ) (p : E ⟶ (Δ[n + 1] : SSet.{u}))
+    (a : (Subcomplex.unionProd (horn 1 0) (boundary (n + 1)) : SSet.{u}) ⟶ E)
+    (ha : a ≫ p = (Subcomplex.unionProd (horn 1 0) (boundary (n + 1))).ι ≫
+      prismFirstContraction (n + 1))
+    (F : (Δ[1] : SSet.{u}) ⊗ Δ[n + 1] ⟶ E)
+    (hF : (Subcomplex.unionProd (horn 1 0) (boundary (n + 1))).ι ≫ F = a) :
+    F ≫ p = prismFirstContraction (n + 1)
+
+lemma rightFibration_fillBoundary_over_stdSimplex_succ {E : SSet.{u}} (n : ℕ)
+    (p : E ⟶ (Δ[n + 1] : SSet.{u})) [RightFibration p]
+    (hc : IsContractibleKan (vertexFiber p (stdSimplex.obj₀Equiv.symm 0)))
+    (b : (boundary (n + 1) : SSet.{u}) ⟶ E) (hb : b ≫ p = (boundary (n + 1)).ι) :
+    ∃ f : (Δ[n + 1] : SSet.{u}) ⟶ E, (boundary (n + 1)).ι ≫ f = b ∧ f ≫ p = 𝟙 _
+```
+
+RightFibrationContractible：
+
+```lean
+instance rightFibration_pullback_snd {E B A : SSet.{u}} (p : E ⟶ B) (f : A ⟶ B)
+    [RightFibration p] : RightFibration (pullback.snd p f)
+
+lemma vertexFiber_pullback_isContractibleKan {E B A : SSet.{u}}
+    (p : E ⟶ B) (f : A ⟶ B) (b : A _⦋0⦌)
+    (hc : IsContractibleKan (vertexFiber p (f.app (Opposite.op ⦋0⦌) b))) :
+    IsContractibleKan (vertexFiber (pullback.snd p f) b)
+
+lemma rightFibration_fillBoundary_over_stdSimplex {E : SSet.{u}} (n : ℕ)
+    (p : E ⟶ (Δ[n] : SSet.{u})) [RightFibration p]
+    (hc : IsContractibleKan (vertexFiber p (stdSimplex.obj₀Equiv.symm 0)))
+    (a : (boundary n : SSet.{u}) ⟶ E) (ha : a ≫ p = (boundary n).ι) :
+    ∃ F : (Δ[n] : SSet.{u}) ⟶ E, (boundary n).ι ≫ F = a ∧ F ≫ p = 𝟙 _
+
+lemma rightFibration_trivialKanFibration_of_contractible_fibers {E B : SSet.{u}}
+    (p : E ⟶ B) [RightFibration p] (hc : ∀ b : B _⦋0⦌, IsContractibleKan (vertexFiber p b)) :
+    TrivialKanFibration p
+```
+
+TerminalMappingSpace：
+
+```lean
+lemma isTerminalVertex_of_pinchedHom_isContractibleKan {X : SSet.{u}} [Quasicategory X]
+    (x : X _⦋0⦌) (h : ∀ z : X _⦋0⦌, IsContractibleKan (pinchedHom z x)) :
+    IsTerminalVertex x
+
+lemma isTerminalVertex_iff_pinchedHom_isContractibleKan {X : SSet.{u}} [Quasicategory X]
+    (x : X _⦋0⦌) : IsTerminalVertex x ↔
+      ∀ z : X _⦋0⦌, IsContractibleKan (pinchedHom z x)
+```
+
+Core 対象ビルド：終了コード 0（1593 jobs）。監査：終了コード 0、累計 604 宣言、標準三公理のみ。A3a–d 完了。A3e は未完了、A3f は任意、A3g は保留。A3 全体の完了時に全体ビルドを行う。§4 の設計変更はない。承認を待たず A3e に進む。
+
 ## 7. A3 の工程（2026-10-18 追加）
 
 A1・A2 の完了を受けて着手する。優先順は G1（infinity-categories.md §0）と D4・ε が使う順。
