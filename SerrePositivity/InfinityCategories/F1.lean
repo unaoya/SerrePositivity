@@ -352,3 +352,4 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianCrossingCompariso
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinExtensionEquivalence
 public import SerrePositivity.InfinityCategories.F1.MappingCylinderIntervalEquivalence
 public import SerrePositivity.InfinityCategories.F1.BoundaryFactorization
+public import SerrePositivity.InfinityCategories.F1.MappingCylinderTargetComparison

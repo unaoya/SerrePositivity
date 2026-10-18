@@ -1632,3 +1632,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.boundaryInclusions_rlp_eq
 #check @SerrePositivity.InfinityCategories.boundaryInclusions_llp_rlp_le_monomorphisms
 #check @SerrePositivity.InfinityCategories.exists_mono_trivialKan_factorization
+#check @SerrePositivity.InfinityCategories.mappingCylinderTargetMap
+#check @SerrePositivity.InfinityCategories.mappingCylinderTargetMap_isPrecompositionEquivalence
+#check @SerrePositivity.InfinityCategories.mappingCylinderTargetMap_desc

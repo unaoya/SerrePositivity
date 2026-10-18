@@ -7531,5 +7531,21 @@ lemma boundaryInclusions_llp_rlp_le_monomorphisms :
 lemma exists_mono_trivialKan_factorization {X Y : SSet.{u}} (f : X ⟶ Y) :
     ∃ (Z : SSet.{u}) (i : X ⟶ Z) (p : Z ⟶ Y), Mono i ∧ TrivialKanFibration p ∧ i ≫ p = f
 
+noncomputable def mappingCylinderTargetMap {X Y Z : SSet.{u}}
+    (f : X ⟶ Y) (g : X ⟶ Z) (q : Z ⟶ Y) (h : g ≫ q = f) :
+    pushout (prismEndpoint 1 X) g ⟶ pushout (prismEndpoint 1 X) f
+
+lemma mappingCylinderTargetMap_isPrecompositionEquivalence {X Y Z : SSet.{u}}
+    (f : X ⟶ Y) (g : X ⟶ Z) (q : Z ⟶ Y) (h : g ≫ q = f)
+    (hq : IsPrecompositionEquivalence q) :
+    IsPrecompositionEquivalence (mappingCylinderTargetMap f g q h)
+
+lemma mappingCylinderTargetMap_desc {X Y Z E : SSet.{u}}
+    (f : X ⟶ Y) (g : X ⟶ Z) (q : Z ⟶ Y) (h : g ≫ q = f)
+    (H : (Δ[1] : SSet.{u}) ⊗ X ⟶ E) (k : Y ⟶ E)
+    (w : prismEndpoint 1 X ≫ H = f ≫ k)
+    (v : prismEndpoint 1 X ≫ H = g ≫ (q ≫ k)) :
+    mappingCylinderTargetMap f g q h ≫ pushout.desc H k w = pushout.desc H (q ≫ k) v
+
 end SerrePositivity.InfinityCategories
 ```
