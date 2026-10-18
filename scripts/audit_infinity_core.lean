@@ -1636,3 +1636,28 @@ import SerrePositivity.InfinityCategories.Core
 
 #check SerrePositivity.InfinityCategories.IsFullyFaithful.pinchedHomMap_vertexFiber_isContractibleKan
 #print axioms SerrePositivity.InfinityCategories.IsFullyFaithful.pinchedHomMap_vertexFiber_isContractibleKan
+
+/-!
+概要：始対象 cofinality の二宇宙の使用例を検証する。
+方針：一般の対象・射の宇宙、Π2 の対象 Type (u+1)・Hom Type u、従来の同一宇宙を型検査する。
+規約：nerve・図式・slice の宇宙は max に合わせる。
+使われ方：HTT §4.1.1、Kerodon §7.2.2 の宇宙の互換性。
+-/
+section InitialCofinalityUniverses
+universe u v w
+open CategoryTheory Limits SSet SerrePositivity.InfinityCategories
+open scoped Simplicial
+
+example {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
+    {X : SSet.{max v w}} [Quasicategory X] (F : nerve I ⟶ X) :
+    TrivialKanFibration (initialRestriction F c) := initialCofinality hc F
+
+example {I : Type (u + 1)} [Category.{u} I] {c : I} (hc : IsInitial c)
+    {X : SSet.{u + 1}} [Quasicategory X] (F : nerve I ⟶ X) :
+    TrivialKanFibration (initialRestriction F c) := initialCofinality hc F
+
+example {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c)
+    {X : SSet.{u}} [Quasicategory X] (F : nerve I ⟶ X) :
+    TrivialKanFibration (initialRestriction F c) := initialCofinality hc F
+
+end InitialCofinalityUniverses

@@ -4997,6 +4997,86 @@ lemma IsFullyFaithful.pinchedHomMap_vertexFiber_isContractibleKan {X Y : SSet.{u
 
 ```
 
+
+### Π2 対応：始対象 cofinality の二宇宙化（2026-10-18）
+
+A3e を一時中断し、`initialCofinality`・`initialRestriction` と nerve の頂点・始対象の錐・retract の補題を、既存名のまま `{I : Type v} [Category.{w} I]` へ一般化した。nerve と全ての join・slice は `SSet.{max v w}` に置く。旧来の同一宇宙は v=w の特殊化となる。対象 Type (u+1)・Hom Type u の場合は `nerve I : SSet.{u+1}`、図式の標的も `X : SSet.{u+1}` として使用できる。`PerfUnder_u p S` の内部や他レーンのファイルは変更していない。
+
+検証：`lake build SerrePositivity.InfinityCategories.Core` 成功（1629 jobs）。その完了後に `lake env lean scripts/audit_infinity_core.lean` 成功、累計756宣言は標準3公理のみ。監査スクリプトには一般二宇宙・Type (u+1)/Hom Type u・従来の同一宇宙の三つの型検査例を追加した。新名・公理・sorry は追加していない。今回の要請に未完了箇所はなく、A3e の作業に戻る。A3e の主同値判定と一般の極限不変性は引き続き未完了。§4 の設計変更なし。
+
+一般化した公開19宣言の正確な型と全前提は以下。namespace は `SerrePositivity.InfinityCategories`、`universe u v w`、`open CategoryTheory Limits SSet`、`open scoped Simplicial`。
+
+NerveCone：
+
+```lean
+def nerveVertex {I : Type v} [Category.{w} I] (c : I) : (nerve I) _⦋0⦌
+
+def nervePoint {I : Type v} [Category.{w} I] (c : I) : (Δ[0] : SSet.{max v w}) ⟶ nerve I
+
+noncomputable def initialChain {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
+    {n : ℕ} (F : ComposableArrows I n) : ComposableArrows I (n + 1)
+
+lemma initialChain_naturality {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
+    {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌) (F : (nerve I) _⦋n⦌) :
+    (nerve I).map (SimplexCategory.mkHom (prependOrderHom α.toOrderHom)).op (initialChain hc F) =
+      initialChain hc ((nerve I).map α.op F)
+
+lemma initialChain_tail {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
+    {n : ℕ} (F : (nerve I) _⦋n⦌) : (nerve I).δ 0 (initialChain hc F) = F
+
+lemma initialChain_vertex {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
+    {n : ℕ} (F : (nerve I) _⦋n⦌) :
+    (nerve I).map (SimplexCategory.const ⦋0⦌ ⦋n + 1⦌ 0).op (initialChain hc F) = nerveVertex c
+
+noncomputable def nerveInitialConeSimplex {I : Type v} [Category.{w} I] {c : I}
+    (hc : IsInitial c) {n : ℕ} (F : (nerve I) _⦋n⦌) : (sliceUnder (nervePoint c)) _⦋n⦌
+
+noncomputable def nerveInitialSection {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c) :
+    nerve I ⟶ sliceUnder (nervePoint c)
+
+lemma nerveInitialSection_projection {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c) :
+    nerveInitialSection hc ≫ sliceUnderProjection (nervePoint c) = 𝟙 (nerve I)
+
+noncomputable def nerveInitialCone {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c) :
+    join (Δ[0] : SSet.{max v w}) (nerve I) ⟶ nerve I
+
+lemma nerveInitialCone_inr {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c) :
+    joinInr (Δ[0] : SSet.{max v w}) (nerve I) ≫ nerveInitialCone hc = 𝟙 (nerve I)
+
+lemma initialChain_self {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c) :
+    initialChain hc (nerveVertex c) = (nerve I).σ 0 (nerveVertex c)
+
+lemma nerveInitialSection_at_point {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c) :
+    nervePoint c ≫ nerveInitialSection hc =
+      (SSet.yonedaEquiv (X := sliceUnder (nervePoint c))).symm
+        (cosliceIdentityCone (nerveVertex c))
+
+lemma nerveInitialCone_at_point {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c) :
+    joinMap (𝟙 (Δ[0] : SSet.{max v w})) (nervePoint c) ≫ nerveInitialCone hc =
+      SSet.const (nerveVertex c)
+
+instance nervePoint_mono {I : Type v} [Category.{w} I] (c : I) : Mono (nervePoint c)
+
+noncomputable def nervePointRetract {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c) :
+    RetractArrow (nervePoint c) (joinMap (𝟙 (Δ[0] : SSet.{max v w})) (nervePoint c))
+
+lemma nervePoint_leftAnodyne {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c) :
+    leftAnodyneExtensions (nervePoint c)
+
+```
+
+InitialCofinality：
+
+```lean
+def initialRestriction {I : Type v} [Category.{w} I] {X : SSet.{max v w}}
+    (F : nerve I ⟶ X) (c : I) : sliceOver F ⟶ sliceOver (nervePoint c ≫ F)
+
+lemma initialCofinality {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
+    {X : SSet.{max v w}} [Quasicategory X] (F : nerve I ⟶ X) :
+    TrivialKanFibration (initialRestriction F c)
+
+```
+
 ## 7. A3 の工程（2026-10-18 追加）
 
 A1・A2 の完了を受けて着手する。優先順は G1（infinity-categories.md §0）と D4・ε が使う順。

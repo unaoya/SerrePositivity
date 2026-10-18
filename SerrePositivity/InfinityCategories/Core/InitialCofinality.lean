@@ -11,7 +11,7 @@ public import SerrePositivity.InfinityCategories.Core.NerveCone
 
 @[expose] public section
 
-universe u
+universe v w
 
 open CategoryTheory Limits SSet
 open scoped Simplicial
@@ -20,18 +20,18 @@ namespace SerrePositivity.InfinityCategories
 
 /-- 概要：通常の圏上の図式の slice を指定対象での値上の slice へ制限する。
 方針：その対象の nerve への頂点包含で図式を前合成する。
-規約：向きは全図式上の slice から値上の slice。
+規約：対象の宇宙 v と射の宇宙 w は独立。nerve と slice は SSet.{max v w}。
 使われ方：HTT §4.1.1、Kerodon §7.2.2 の始対象による制限。 -/
-def initialRestriction {I : Type u} [Category.{u} I] {X : SSet.{u}}
+def initialRestriction {I : Type v} [Category.{w} I] {X : SSet.{max v w}}
     (F : nerve I ⟶ X) (c : I) : sliceOver F ⟶ sliceOver (nervePoint c ≫ F) :=
   sliceOverRestrict F (nervePoint c)
 
-/-- 概要：始対象を持つ小圏上の図式の slice の始対象への制限は trivial Kan fibration。
+/-- 概要：始対象を持つ圏上の図式の slice の始対象への制限は trivial Kan fibration。
 方針：始対象の頂点包含が left anodyne であることと、slice の制限の一般補題を使う。
-規約：F は任意の単体集合の射であり、圏の関手の nerve であることを要求しない。
+規約：対象の宇宙 v と射の宇宙 w は独立。F は SSet.{max v w} の任意の射。
 使われ方：HTT §4.1.1 の必要な場合、Kerodon §7.2.2・Corollary 4.3.6.14。 -/
-lemma initialCofinality {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c)
-    {X : SSet.{u}} [Quasicategory X] (F : nerve I ⟶ X) :
+lemma initialCofinality {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
+    {X : SSet.{max v w}} [Quasicategory X] (F : nerve I ⟶ X) :
     TrivialKanFibration (initialRestriction F c) :=
   sliceOverRestrict_trivialKanFibration F (nervePoint c) (nervePoint_leftAnodyne hc)
 

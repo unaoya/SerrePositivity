@@ -430,3 +430,9 @@ A3e 続き：inner fibration が右 pinched 写像空間上に誘導する射の
 A3e 続き：可逆辺を持つ両側の外側ホーンの相対充填、Kan 複体間の右ファイブレーションの全ホーン充填、inner fibration の写像空間の射の全ホーン充填を証明。Mathlib の Fibration はホーンの rlp という定義としてのみ使用し、モデル構造・弱同値は使わない。同値である Fibration の厳密な切断も構成。公開14宣言の正確な型・前提は計画 §6。Core ビルド・累計748件の標準3公理監査成功。写像空間の fiber の可縮性への移行、主同値判定と一般の極限不変性は未完了。
 
 A3e 続き：同値である Fibration は trivial Kan fibration となることを、切断・退化三角形・相対 prism の直接充填で証明。充満忠実な inner fibration の右 pinched 写像空間の射は trivial Kan fibration であり、その各 fiber は可縮な Kan 複体。公開8宣言の正確な型・全前提は計画 §6。Core ビルド・累計756件の標準3公理監査成功。写像空間の基底変換、主同値判定、一般の極限不変性は未完了。
+
+### Π2 対応：始対象 cofinality の二宇宙（2026-10-18）
+
+`initialCofinality` と `initialRestriction` は既存名のまま `{I : Type v} [Category.{w} I]` に一般化した。`nerveVertex`・`nervePoint` から始対象の錐と retract の補題も二宇宙を扱う。`nerve I`、図式の標的 `X`、join・slice は `SSet.{max v w}` に置く。対象 Type (u+1)・Hom Type u の `PerfUnder_u p S` の形では `X : SSet.{u+1}` を取れる。従来の同一宇宙の型は v=w の特殊化でそのまま使用できる。
+
+一般化した19公開宣言の全ての型と前提を計画 §6 に記録。Core ビルドと、一般二宇宙・Π2 の宇宙・従来の宇宙の三つの使用例を含む監査が成功し、累計756宣言は標準3公理のみ。今回の要請は完了し A3e に戻る。

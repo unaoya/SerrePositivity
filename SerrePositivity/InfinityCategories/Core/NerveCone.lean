@@ -14,7 +14,7 @@ public import SerrePositivity.InfinityCategories.Core.InitialUniqueness
 
 set_option backward.isDefEq.respectTransparency false
 
-universe u
+universe u v w
 
 open CategoryTheory Limits SSet
 open scoped Simplicial
@@ -160,23 +160,23 @@ lemma joinStdSimplexIso_point_naturality {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌) 
 
 /-- 概要：圏の対象を nerve の零単体として表す。
 方針：長さ零の合成可能射列を使う。
-規約：対象・射とも同じ宇宙 u の小圏。
+規約：対象の宇宙 v と射の宇宙 w は独立で、nerve は SSet.{max v w}。
 使われ方：HTT §4.1.1 の始対象の頂点包含。 -/
-def nerveVertex {I : Type u} [Category.{u} I] (c : I) : (nerve I) _⦋0⦌ :=
+def nerveVertex {I : Type v} [Category.{w} I] (c : I) : (nerve I) _⦋0⦌ :=
   ComposableArrows.mk₀ c
 
 /-- 概要：圏の対象に対応する nerve への頂点包含。
 方針：零単体の Yoneda 表示を使う。
 規約：始域は Δ[0]。
 使われ方：HTT §4.1.1、Kerodon §7.2.2 の始対象への制限。 -/
-def nervePoint {I : Type u} [Category.{u} I] (c : I) : (Δ[0] : SSet.{u}) ⟶ nerve I :=
+def nervePoint {I : Type v} [Category.{w} I] (c : I) : (Δ[0] : SSet.{max v w}) ⟶ nerve I :=
   SSet.yonedaEquiv.symm (nerveVertex c)
 
 /-- 概要：始対象からの一意な射を合成可能射列に前置する。
 方針：Mathlib の ComposableArrows.precomp を使う。
 規約：新しい最初の対象は c、残りは元の射列。
 使われ方：HTT §4.1.1、Kerodon Corollary 4.7.3.22 の双対の錐。 -/
-noncomputable def initialChain {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c)
+noncomputable def initialChain {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
     {n : ℕ} (F : ComposableArrows I n) : ComposableArrows I (n + 1) :=
   F.precomp (hc.to F.left)
 
@@ -184,7 +184,7 @@ noncomputable def initialChain {I : Type u} [Category.{u} I] {c : I} (hc : IsIni
 方針：先頭の対象と残りの射列を比較し、先頭からの射は始対象性で一意にする。
 規約：新しい始点を固定する prependOrderHom を使う。
 使われ方：HTT §4.1.1、Kerodon §4.7.3 の始対象の錐の自然性。 -/
-lemma initialChain_naturality {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c)
+lemma initialChain_naturality {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
     {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌) (F : (nerve I) _⦋n⦌) :
     (nerve I).map (SimplexCategory.mkHom (prependOrderHom α.toOrderHom)).op (initialChain hc F) =
       initialChain hc ((nerve I).map α.op F) := by
@@ -197,14 +197,14 @@ lemma initialChain_naturality {I : Type u} [Category.{u} I] {c : I} (hc : IsInit
 方針：ComposableArrows.precomp の定義を使う。
 規約：先頭を落とす面は δ₀。
 使われ方：HTT §4.1.1 の錐の元の図式への制限。 -/
-lemma initialChain_tail {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c)
+lemma initialChain_tail {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
     {n : ℕ} (F : (nerve I) _⦋n⦌) : (nerve I).δ 0 (initialChain hc F) = F := rfl
 
 /-- 概要：始対象を前置した射列の最初の頂点は c。
 方針：長さ零の射列を先頭の対象で比較する。
 規約：標準単体の零番目の頂点への制限。
 使われ方：HTT §4.1.1 の錐の先端の固定。 -/
-lemma initialChain_vertex {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c)
+lemma initialChain_vertex {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
     {n : ℕ} (F : (nerve I) _⦋n⦌) :
     (nerve I).map (SimplexCategory.const ⦋0⦌ ⦋n + 1⦌ 0).op (initialChain hc F) = nerveVertex c :=
   ComposableArrows.ext₀ rfl
@@ -253,7 +253,7 @@ lemma pointJoinStdSimplexIso_inr (n : ℕ) :
 方針：点と標準単体の join の同型で前置した射列を錐に直す。
 規約：先端は nervePoint c に固定する。
 使われ方：HTT §4.1.1、Kerodon §4.7.3 の始対象からの錐。 -/
-noncomputable def nerveInitialConeSimplex {I : Type u} [Category.{u} I] {c : I}
+noncomputable def nerveInitialConeSimplex {I : Type v} [Category.{w} I] {c : I}
     (hc : IsInitial c) {n : ℕ} (F : (nerve I) _⦋n⦌) : (sliceUnder (nervePoint c)) _⦋n⦌ :=
   ⟨(pointJoinStdSimplexIso n).hom ≫ (SSet.yonedaEquiv (X := nerve I)).symm (initialChain hc F), by
     rw [← Category.assoc, pointJoinStdSimplexIso_inl_vertex]
@@ -266,7 +266,7 @@ noncomputable def nerveInitialConeSimplex {I : Type u} [Category.{u} I] {c : I}
 方針：前置した射列の自然性と点との join の同型の自然性を組み合わせる。
 規約：標的は c 下の coslice。
 使われ方：HTT §4.1.1、Kerodon Corollary 4.7.3.22 の双対の錐の束ね。 -/
-noncomputable def nerveInitialSection {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c) :
+noncomputable def nerveInitialSection {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c) :
     nerve I ⟶ sliceUnder (nervePoint c) where
   app _ := ↾fun F ↦ nerveInitialConeSimplex hc F
   naturality {m n} α := by
@@ -286,13 +286,13 @@ noncomputable def nerveInitialSection {I : Type u} [Category.{u} I] {c : I} (hc 
 方針：点との join の右包含は δ₀、前置した射列の δ₀ は元の射列である。
 規約：射影との合成は恒等射。
 使われ方：HTT §4.1.1 の始対象の錐の retract。 -/
-lemma nerveInitialSection_projection {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c) :
+lemma nerveInitialSection_projection {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c) :
     nerveInitialSection hc ≫ sliceUnderProjection (nervePoint c) = 𝟙 (nerve I) := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
   intro F
-  change SSet.yonedaEquiv (joinInr (Δ[0] : SSet.{u}) Δ[n] ≫
+  change SSet.yonedaEquiv (joinInr (Δ[0] : SSet.{max v w}) Δ[n] ≫
     ((pointJoinStdSimplexIso n).hom ≫
       (SSet.yonedaEquiv (X := nerve I)).symm (initialChain hc F))) = F
   rw [← Category.assoc, pointJoinStdSimplexIso_inr,
@@ -302,23 +302,23 @@ lemma nerveInitialSection_projection {I : Type u} [Category.{u} I] {c : I} (hc :
 方針：直接構成した coslice の普遍性で自然な錐を uncurry する。
 規約：左因子が点、右因子が nerve。
 使われ方：HTT §4.1.1、Kerodon Corollary 4.7.3.22 の双対の retract。 -/
-noncomputable def nerveInitialCone {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c) :
-    join (Δ[0] : SSet.{u}) (nerve I) ⟶ nerve I :=
+noncomputable def nerveInitialCone {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c) :
+    join (Δ[0] : SSet.{max v w}) (nerve I) ⟶ nerve I :=
   sliceUnderUncurry (nerveInitialSection hc)
 
 /-- 概要：始対象からの錐は nerve 上で恒等。
 方針：uncurry の射影の式と section の射影の恒等式を使う。
 規約：右包含による制限。
 使われ方：HTT §4.1.1 の頂点包含への retract の標的の逆関係。 -/
-lemma nerveInitialCone_inr {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c) :
-    joinInr (Δ[0] : SSet.{u}) (nerve I) ≫ nerveInitialCone hc = 𝟙 (nerve I) := by
+lemma nerveInitialCone_inr {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c) :
+    joinInr (Δ[0] : SSet.{max v w}) (nerve I) ≫ nerveInitialCone hc = 𝟙 (nerve I) := by
   rw [nerveInitialCone, sliceUnderUncurry_projection, nerveInitialSection_projection]
 
 /-- 概要：始対象 c の零射列に c を前置すると恒等辺になる。
 方針：唯一の c→c の射が恒等射であることを使う。
 規約：辺は零単体の σ₀ の退化。
 使われ方：HTT §4.1.1 の始対象の錐の c 上の固定。 -/
-lemma initialChain_self {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c) :
+lemma initialChain_self {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c) :
     initialChain hc (nerveVertex c) = (nerve I).σ 0 (nerveVertex c) := by
   refine ComposableArrows.ext₁ ?_ ?_ ?_
   · rfl
@@ -329,7 +329,7 @@ lemma initialChain_self {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c)
 方針：前置された c→c が恒等辺であることと定数射の式を使う。
 規約：coslice の恒等錐を Yoneda で零単体からの射にする。
 使われ方：HTT §4.1.1、Kerodon Corollary 4.7.3.22 の retract の先端。 -/
-lemma nerveInitialSection_at_point {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c) :
+lemma nerveInitialSection_at_point {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c) :
     nervePoint c ≫ nerveInitialSection hc =
       (SSet.yonedaEquiv (X := sliceUnder (nervePoint c))).symm
         (cosliceIdentityCone (nerveVertex c)) := by
@@ -346,8 +346,8 @@ lemma nerveInitialSection_at_point {I : Type u} [Category.{u} I] {c : I} (hc : I
 方針：section の c 上の値を uncurry する。
 規約：join の両因子とも点になる制限。
 使われ方：HTT §4.1.1、Kerodon Corollary 4.7.3.22 の矢の retract。 -/
-lemma nerveInitialCone_at_point {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c) :
-    joinMap (𝟙 (Δ[0] : SSet.{u})) (nervePoint c) ≫ nerveInitialCone hc =
+lemma nerveInitialCone_at_point {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c) :
+    joinMap (𝟙 (Δ[0] : SSet.{max v w})) (nervePoint c) ≫ nerveInitialCone hc =
       SSet.const (nerveVertex c) := by
   rw [nerveInitialCone, ← sliceUnderUncurry_precomp, nerveInitialSection_at_point,
     sliceUnderUncurry_yoneda]
@@ -357,7 +357,7 @@ lemma nerveInitialCone_at_point {I : Type u} [Category.{u} I] {c : I} (hc : IsIn
 方針：標準零単体は各次数で一点なので、各成分が単射である。
 規約：対象 c に始対象性は要求しない。
 使われ方：HTT §4.1.1 の頂点包含への join の left anodyne 性の適用。 -/
-instance nervePoint_mono {I : Type u} [Category.{u} I] (c : I) : Mono (nervePoint c) := by
+instance nervePoint_mono {I : Type v} [Category.{w} I] (c : I) : Mono (nervePoint c) := by
   rw [NatTrans.mono_iff_mono_app]
   rintro ⟨⟨n⟩⟩
   rw [mono_iff_injective]
@@ -373,10 +373,10 @@ instance nervePoint_mono {I : Type u} [Category.{u} I] (c : I) : Mono (nervePoin
 方針：元の nerve への右包含と始対象からの錐を使い、点側は元の点の端点を選ぶ。
 規約：c に入る非恒等射の不存在は仮定しない。
 使われ方：HTT §4.1.1、Kerodon Corollary 4.7.3.22 の双対。 -/
-noncomputable def nervePointRetract {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c) :
-    RetractArrow (nervePoint c) (joinMap (𝟙 (Δ[0] : SSet.{u})) (nervePoint c)) where
-  i := Arrow.homMk' (joinInr (Δ[0] : SSet.{u}) Δ[0])
-    (joinInr (Δ[0] : SSet.{u}) (nerve I)) (by rw [joinInr_joinMap])
+noncomputable def nervePointRetract {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c) :
+    RetractArrow (nervePoint c) (joinMap (𝟙 (Δ[0] : SSet.{max v w})) (nervePoint c)) where
+  i := Arrow.homMk' (joinInr (Δ[0] : SSet.{max v w}) Δ[0])
+    (joinInr (Δ[0] : SSet.{max v w}) (nerve I)) (by rw [joinInr_joinMap])
   r := Arrow.homMk' (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 1)))
     (nerveInitialCone hc) (by
       rw [nerveInitialCone_at_point, nervePoint, SSet.yonedaEquiv_symm_zero, SSet.comp_const])
@@ -389,7 +389,7 @@ noncomputable def nervePointRetract {I : Type u} [Category.{u} I] {c : I} (hc : 
 方針：単射を左から点と join した射の left anodyne 性を矢の retract で移す。
 規約：任意の小圏と通常の始対象を扱い、有限性等は要求しない。
 使われ方：HTT §4.1.1、Kerodon Corollary 4.7.3.22 の双対、§7.2.2。 -/
-lemma nervePoint_leftAnodyne {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c) :
+lemma nervePoint_leftAnodyne {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c) :
     leftAnodyneExtensions (nervePoint c) :=
   MorphismProperty.of_retract (nervePointRetract hc) (joinPoint_mono_leftAnodyne (nervePoint c))
 
