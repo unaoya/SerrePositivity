@@ -3681,3 +3681,36 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.triangularHatGLHom_injective
 #print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.triangularHatGLHom_injective
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.fst_edge
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.fst_edge
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.componentsFst
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.componentsFst
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.componentsFst_matrix
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.componentsFst_matrix
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGLAmbientMap
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGLAmbientMap
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGLEdgeOfCoefficients
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGLEdgeOfCoefficients
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGLClassMap
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGLClassMap
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGLClassMap_mk
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGLClassMap_mk
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGLClassMap_injective
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGLClassMap_injective
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGL_inverse_vertex
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGL_inverse_vertex
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGL_isGrouplike
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGL_isGrouplike
+
+#check @SerrePositivity.KST.ProExcision.nonUnitalLemma416_relative_zero
+#print axioms SerrePositivity.KST.ProExcision.nonUnitalLemma416_relative_zero

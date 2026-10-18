@@ -325,3 +325,11 @@ public import SerrePositivity.KST.ProExcision.IntegerUnitizationIdealIso
 public import SerrePositivity.KST.ProExcision.NonUnitalHatGL
 
 public import SerrePositivity.KST.ProExcision.TriangularHatGL
+
+public import SerrePositivity.KST.ProExcision.IntegerUnitizationComponents
+
+public import SerrePositivity.KST.ProExcision.NonUnitalHatGLComponents
+
+public import SerrePositivity.KST.ProExcision.NonUnitalHatGLGrouplike
+
+public import SerrePositivity.KST.ProExcision.NonUnitalLemma416Relative
