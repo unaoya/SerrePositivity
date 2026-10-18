@@ -118,3 +118,4 @@ public import SerrePositivity.InfinityCategories.F1.IntervalMappingSpace
 public import SerrePositivity.InfinityCategories.F1.MappingSpacePrisms
 public import SerrePositivity.InfinityCategories.F1.MappingSpaceIntervalComparison
 public import SerrePositivity.InfinityCategories.F1.JoinEndpointComparison
+public import SerrePositivity.InfinityCategories.F1.PreFiberKan

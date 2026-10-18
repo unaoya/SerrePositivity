@@ -3059,5 +3059,24 @@ lemma isQCatEquivalence_fatJoinComparison_fixedEndpoints
       (by rw [← NatTrans.comp_app, ← pre_map, fatJoinEndpointInclusion_comparison])
       (functorVertex p))
 
+lemma evaluateFunctorAt_pre {A B X : SSet.{u}} (j : A ⟶ B) (a : A _⦋0⦌) :
+    (pre j).app X ≫ evaluateFunctorAt (Y := X) a =
+      evaluateFunctorAt (Y := X) (j.app (Opposite.op ⦋0⦌) a)
+
+lemma isInvertibleEdge_preFiber_of_vertexSurjective {A B X : SSet.{u}}
+    [Quasicategory X] (j : A ⟶ B) [Mono j]
+    (hj : Function.Surjective (j.app (Opposite.op ⦋0⦌)))
+    (p : ((ihom A).obj X) _⦋0⦌)
+    {s t : (vertexFiber ((pre j).app X) p) _⦋0⦌}
+    (e : SSet.Truncated.Edge (X := (truncation 2).obj (vertexFiber ((pre j).app X) p)) s t) :
+    IsInvertibleEdge e
+
+lemma kanComplex_preFiber_of_vertexSurjective {A B X : SSet.{u}} [Quasicategory X]
+    (j : A ⟶ B) [Mono j] (hj : Function.Surjective (j.app (Opposite.op ⦋0⦌)))
+    (p : ((ihom A).obj X) _⦋0⦌) : KanComplex (vertexFiber ((pre j).app X) p)
+
+instance intervalMappingSpace_kanComplex {X : SSet.{u}} [Quasicategory X] (x y : X _⦋0⦌) :
+    KanComplex (intervalMappingSpace x y)
+
 end SerrePositivity.InfinityCategories
 ```

@@ -706,3 +706,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.fatJoinEndpointInclusion_comparison
 #check @SerrePositivity.InfinityCategories.fatJoinEndpointInclusion_mono
 #check @SerrePositivity.InfinityCategories.isQCatEquivalence_fatJoinComparison_fixedEndpoints
+#check @SerrePositivity.InfinityCategories.evaluateFunctorAt_pre
+#check @SerrePositivity.InfinityCategories.isInvertibleEdge_preFiber_of_vertexSurjective
+#check @SerrePositivity.InfinityCategories.kanComplex_preFiber_of_vertexSurjective
+#check @SerrePositivity.InfinityCategories.intervalMappingSpace_kanComplex
