@@ -234,3 +234,7 @@ public import SerrePositivity.InfinityCategories.F1.RelativeJoinPrismShuffleVert
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinPrismStage
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinPrismHornPreimage
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinPrismBoundaryFaces
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinPrismHornEquality
+public import SerrePositivity.InfinityCategories.F1.PrismCellPushout
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinPrismCell
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinPrismAnodyne

@@ -5285,5 +5285,61 @@ lemma relativeJoinPrismShuffle_shared_face (m : ℕ) (j : Fin m) :
       ((Δ[1] : SSet.{u}) ⊗ Δ[m]).δ j.castSucc.succ
         (relativeJoinPrismShuffle m j.castSucc)
 
+lemma relativeJoinPrismShuffle_zero_face_mem_initial (m : ℕ) :
+    ((Δ[1] : SSet.{u}) ⊗ Δ[m]).δ 0 (relativeJoinPrismShuffle m 0) ∈
+      (relativeJoinPrismInitial m).obj (Opposite.op ⦋m⦌)
+
+lemma relativeJoinPrismShuffle_switch_face_mem_stage (m : ℕ) (k : Fin (m + 1)) :
+    ((Δ[1] : SSet.{u}) ⊗ Δ[m]).δ k.castSucc (relativeJoinPrismShuffle m k) ∈
+      (relativeJoinPrismStage m k.val).obj (Opposite.op ⦋m⦌)
+
+lemma relativeJoinPrismShuffle_face_mem_stage (m : ℕ) (k : Fin (m + 1))
+    (i : Fin (m + 2)) (hi : i ≠ k.succ) :
+    ((Δ[1] : SSet.{u}) ⊗ Δ[m]).δ i (relativeJoinPrismShuffle m k) ∈
+      (relativeJoinPrismStage m k.val).obj (Opposite.op ⦋m⦌)
+
+lemma relativeJoinPrismStage_preimage_shuffle_eq_horn (m : ℕ) (k : Fin (m + 1)) :
+    (relativeJoinPrismStage m k.val).preimage
+        (SSet.yonedaEquiv.symm (relativeJoinPrismShuffle.{u} m k)) = horn (m + 1) k.succ
+
+lemma isPushout_prism_mono_cell {X V : SSet.{u}} (A B : X.Subcomplex)
+    (P : V.Subcomplex) (σ : V ⟶ X) [Mono σ]
+    (hB : A ⊔ Subcomplex.range σ = B) (hP : P = A.preimage σ)
+    (a : (P : SSet.{u}) ⟶ A) (b : V ⟶ B)
+    (ha : a ≫ A.ι = P.ι ≫ σ) (hb : b ≫ B.ι = σ) :
+    IsPushout P.ι a b (Subcomplex.homOfLE (hB ▸ le_sup_left))
+
+lemma relativeJoinPrismShuffle_range (m : ℕ) (k : Fin (m + 1)) :
+    Subcomplex.range (SSet.yonedaEquiv.symm (relativeJoinPrismShuffle.{u} m k)) =
+      Subcomplex.ofSimplex (relativeJoinPrismShuffle m k)
+
+noncomputable def relativeJoinPrismCellHorn (m : ℕ) (k : Fin (m + 1)) :
+    (horn (m + 1) k.succ : SSet.{u}) ⟶ relativeJoinPrismStage m k.val
+
+noncomputable def relativeJoinPrismCellSimplex (m : ℕ) (k : Fin (m + 1)) :
+    (Δ[m + 1] : SSet.{u}) ⟶ relativeJoinPrismStage m (k.val + 1)
+
+lemma relativeJoinPrismCell_isPushout (m : ℕ) (k : Fin (m + 1)) :
+    IsPushout (horn (m + 1) k.succ).ι (relativeJoinPrismCellHorn m k)
+      (relativeJoinPrismCellSimplex m k)
+      (Subcomplex.homOfLE (relativeJoinPrismStage_monotone m (Nat.le_succ k.val)))
+
+lemma innerAnodyneExtensions_relativeJoinPrismStage_step (m : ℕ) (k : Fin (m + 1))
+    (hk : k < Fin.last m) :
+    innerAnodyneExtensions (Subcomplex.homOfLE
+      (relativeJoinPrismStage_monotone.{u} m (Nat.le_succ k.val)))
+
+lemma innerAnodyneExtensions_relativeJoinPrismStage (m r : ℕ) (hr : r ≤ m) :
+    innerAnodyneExtensions (Subcomplex.homOfLE
+      (relativeJoinPrismStage_monotone.{u} m (Nat.zero_le r)))
+
+lemma innerAnodyneExtensions_relativeJoinPrismInitial_penultimate (m : ℕ) :
+    innerAnodyneExtensions (Subcomplex.homOfLE
+      (relativeJoinPrismInitial_le_penultimate.{u} m))
+
+lemma isPrecompositionEquivalence_relativeJoinPrismInitial_penultimate (m : ℕ) :
+    IsPrecompositionEquivalence (Subcomplex.homOfLE
+      (relativeJoinPrismInitial_le_penultimate.{u} m))
+
 end SerrePositivity.InfinityCategories
 ```
