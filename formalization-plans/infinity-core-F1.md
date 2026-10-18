@@ -12213,5 +12213,128 @@ noncomputable def coherentResolutionInfinityEquivalence :
 noncomputable def coherentResolutionDiagramComparisonIso {B : SSet.{u + 1}}
     (F : B ⟶ SpaceInfinity.{u}) : FunctorIso F (F ≫ coherentResolutionInfinityMap)
 
+noncomputable def smallLeftUnstraighteningOverMap {B : SSet.{u}}
+    (F G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u})
+    (f : leftUnstraightening F ⟶ leftUnstraightening G) :
+    smallLeftUnstraightening F ⟶ smallLeftUnstraightening G
+
+lemma smallLeftUnstraighteningOverMap_naturality {B : SSet.{u}}
+    (F G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u})
+    (f : leftUnstraightening F ⟶ leftUnstraightening G) :
+    (SSet.uliftFunctor.{u + 1, u}).map (smallLeftUnstraighteningOverMap F G f) ≫
+      (smallLeftUnstraighteningIso G).hom = (smallLeftUnstraighteningIso F).hom ≫ f
+
+lemma smallLeftUnstraighteningOverMap_projection {B : SSet.{u}}
+    (F G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u})
+    (f : leftUnstraightening F ⟶ leftUnstraightening G)
+    (h : f ≫ leftUnstraighteningProjection G = leftUnstraighteningProjection F) :
+    smallLeftUnstraighteningOverMap F G f ≫ smallLeftUnstraighteningProjection G =
+      smallLeftUnstraighteningProjection F
+
+lemma smallLeftUnstraighteningFiberIso_hom_ι {B : SSet.{u}}
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) (c : B _⦋0⦌) :
+    (smallLeftUnstraighteningFiberIso F c).hom ≫
+        vertexFiberι (leftUnstraighteningProjection F) (ULift.up c) =
+      (SSet.uliftFunctor.{u + 1, u}).map
+        (vertexFiberι (smallLeftUnstraighteningProjection F) c) ≫
+          (smallLeftUnstraighteningIso F).hom
+
+lemma smallLeftUnstraighteningOverMap_fiber_naturality {B : SSet.{u}}
+    (F G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u})
+    (f : leftUnstraightening F ⟶ leftUnstraightening G)
+    (h : f ≫ leftUnstraighteningProjection G = leftUnstraighteningProjection F) (c : B _⦋0⦌) :
+    (SSet.uliftFunctor.{u + 1, u}).map
+      (vertexFiberMap (smallLeftUnstraighteningProjection F) (smallLeftUnstraighteningProjection G)
+        (smallLeftUnstraighteningOverMap F G f) (smallLeftUnstraighteningOverMap_projection F G f h) c) ≫
+        (smallLeftUnstraighteningFiberIso G c).hom =
+      (smallLeftUnstraighteningFiberIso F c).hom ≫
+        vertexFiberMap (leftUnstraighteningProjection F) (leftUnstraighteningProjection G)
+          f h (ULift.up c)
+
+lemma smallLeftUnstraighteningOverMap_isPrecompositionEquivalence
+    {B : SSet.{u}} [Quasicategory B]
+    (F G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u})
+    (f : leftUnstraightening F ⟶ leftUnstraightening G)
+    (h : f ≫ leftUnstraighteningProjection G = leftUnstraighteningProjection F)
+    (ef : IsPrecompositionEquivalence f) :
+    IsPrecompositionEquivalence (smallLeftUnstraighteningOverMap F G f)
+
+instance smallLeftUnstraightening_quasicategory {B : SSet.{u}} [Quasicategory B]
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) :
+    Quasicategory (smallLeftUnstraightening F)
+
+lemma exists_smallLeftUnstraighteningComparison_of_functorIso
+    {B : SSet.{u}} [Quasicategory B]
+    {F G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}}
+    (η : FunctorIso F G) :
+    ∃ f : smallLeftUnstraightening F ⟶ smallLeftUnstraightening G,
+      f ≫ smallLeftUnstraighteningProjection G = smallLeftUnstraighteningProjection F ∧
+        IsPrecompositionEquivalence f
+
+noncomputable def smallLeftUnstraighteningComparisonOfFunctorIso
+    {B : SSet.{u}} [Quasicategory B]
+    {F G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}}
+    (η : FunctorIso F G) : smallLeftUnstraightening F ⟶ smallLeftUnstraightening G
+
+lemma smallLeftUnstraighteningComparisonOfFunctorIso_projection
+    {B : SSet.{u}} [Quasicategory B]
+    {F G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}}
+    (η : FunctorIso F G) :
+    smallLeftUnstraighteningComparisonOfFunctorIso η ≫ smallLeftUnstraighteningProjection G =
+      smallLeftUnstraighteningProjection F
+
+lemma smallLeftUnstraighteningComparisonOfFunctorIso_isPrecompositionEquivalence
+    {B : SSet.{u}} [Quasicategory B]
+    {F G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}}
+    (η : FunctorIso F G) :
+    IsPrecompositionEquivalence (smallLeftUnstraighteningComparisonOfFunctorIso η)
+
+noncomputable def smallLeftUnstraighteningEquivalenceOfFunctorIso
+    {B : SSet.{u}} [Quasicategory B]
+    {F G : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}}
+    (η : FunctorIso F G) : QCatEquivalence (smallLeftUnstraightening F) (smallLeftUnstraightening G)
+
+noncomputable def smallLeftUnstraighteningResolutionEquivalence
+    {B : SSet.{u}} [Quasicategory B]
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) :
+    QCatEquivalence (smallLeftUnstraightening F)
+      (smallLeftUnstraightening (F ≫ coherentResolutionInfinityMap))
+
+lemma leftFibrationHom_vertex {B : SSet.{u}} (p q : LeftFibrationObject B) (f : p ⟶ q) :
+    SimplicialCategory.homEquiv' p q f =
+      relativeFunctorVertex q.val.hom p.val.hom f.left f.w
+
+lemma leftFibrationInfinityEdge_isInvertible_of_precompositionEquivalence
+    {E F B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (ef : IsPrecompositionEquivalence f) :
+    IsInvertibleEdge (leftFibrationInfinityEdge p q f hf)
+
+noncomputable def leftFibrationInfinityVertexIsoOfPrecompositionEquivalence
+    {E F B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : F ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ F) (hf : f ≫ q = p) (ef : IsPrecompositionEquivalence f) :
+    VertexIso (leftFibrationInfinityVertex p) (leftFibrationInfinityVertex q)
+
+noncomputable def leftStraighteningCandidateIsoOfPrecompositionEquivalence
+    {C : Type u} [Category.{u} C] {E E' : SSet.{u}}
+    (p : E ⟶ nerve C) (q : E' ⟶ nerve C) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ E') (hf : f ≫ q = p) (ef : IsPrecompositionEquivalence f) :
+    FunctorIso (leftStraighteningCandidate p) (leftStraighteningCandidate q)
+
+noncomputable def smallStraighteningCandidateIsoOfFunctorIso
+    {C : Type u} [Category.{u} C]
+    {F G : (SSet.uliftFunctor.{u + 1, u}).obj (nerve C) ⟶ SpaceInfinity.{u}}
+    (η : FunctorIso F G) :
+    FunctorIso (leftStraighteningCandidate (smallLeftUnstraighteningProjection F))
+      (leftStraighteningCandidate (smallLeftUnstraighteningProjection G))
+
+noncomputable def smallStraighteningCandidateResolutionIso
+    {C : Type u} [Category.{u} C]
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj (nerve C) ⟶ SpaceInfinity.{u}) :
+    FunctorIso (leftStraighteningCandidate (smallLeftUnstraighteningProjection F))
+      (leftStraighteningCandidate
+        (smallLeftUnstraighteningProjection (F ≫ coherentResolutionInfinityMap)))
+
 end SerrePositivity.InfinityCategories
 ```
