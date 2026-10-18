@@ -10391,5 +10391,104 @@ noncomputable def leftUnstraighteningMappingRestrictionIso {B D : SSet.{u + 1}}
       (relativeFunctorCurry (leftUnstraighteningMappingTargetRestriction F G k).val
         (leftUnstraighteningMappingTargetRestriction F G k).property)
 
+def relativeFunctorSquarePost {A E F B D : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ D) (k : B ⟶ D)
+    (f : E ⟶ F) (hf : f ≫ q = p ≫ k) (a : A ⟶ B) :
+    relativeFunctorSpace p a ⟶ relativeFunctorSpace q (a ≫ k)
+
+lemma relativeFunctorSquarePost_uncurry {A E F B D T : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ D) (k : B ⟶ D)
+    (f : E ⟶ F) (hf : f ≫ q = p ≫ k) (a : A ⟶ B)
+    (g : T ⟶ relativeFunctorSpace p a) :
+    relativeFunctorUncurry (g ≫ relativeFunctorSquarePost p q k f hf a) =
+      relativeFunctorUncurry g ≫ f
+
+lemma relativeFunctorSquarePost_vertex {A E F B D : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ D) (k : B ⟶ D)
+    (f : E ⟶ F) (hf : f ≫ q = p ≫ k) (a : A ⟶ B)
+    (g : A ⟶ E) (hg : g ≫ p = a) :
+    (relativeFunctorSquarePost p q k f hf a).app _ (relativeFunctorVertex p a g hg) =
+      relativeFunctorVertex q (a ≫ k) (g ≫ f)
+        (by rw [Category.assoc, hf, ← Category.assoc, hg])
+
+lemma relativeFunctorOverPre_uncurry {E B T : SSet.{u}} (p : E ⟶ B)
+    {a b : Over B} (f : a ⟶ b) (g : T ⟶ relativeFunctorSpace p b.hom) :
+    relativeFunctorUncurry (g ≫ relativeFunctorOverPre p f) =
+      (f.left ▷ T) ≫ relativeFunctorUncurry g
+
+noncomputable def leftUnstraighteningOverBaseMap {B D : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) (k : D ⟶ B) :
+    Over.mk (leftUnstraighteningProjection (k ≫ F) ≫ k) ⟶
+      Over.mk (leftUnstraighteningProjection F)
+
+lemma leftUnstraighteningMappingSourceRestriction_curry {B D : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (k : D ⟶ B) :
+    leftUnstraighteningMappingSpaceMap F G ≫
+      relativeFunctorOverPre (leftUnstraighteningProjection G)
+        (leftUnstraighteningOverBaseMap F k) =
+    relativeFunctorCurry (leftUnstraighteningMappingSourceRestriction F G k).val
+      (leftUnstraighteningMappingSourceRestriction F G k).property
+
+lemma leftUnstraighteningMappingTargetRestriction_curry {B D : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (k : D ⟶ B) :
+    (leftUnstraighteningTransformationRestriction F G k ≫
+      leftUnstraighteningMappingSpaceMap (k ≫ F) (k ≫ G)) ≫
+        relativeFunctorSquarePost (leftUnstraighteningProjection (k ≫ G))
+          (leftUnstraighteningProjection G) k (leftUnstraighteningMap (k ≫ G) G k rfl)
+          (leftUnstraighteningMap_projection (k ≫ G) G k rfl)
+          (leftUnstraighteningProjection (k ≫ F)) =
+    relativeFunctorCurry (leftUnstraighteningMappingTargetRestriction F G k).val
+      (leftUnstraighteningMappingTargetRestriction F G k).property
+
+noncomputable def leftUnstraighteningMappingSpaceMap_baseChangeIso
+    {B D : SSet.{u + 1}} (F G : B ⟶ SpaceInfinity.{u}) (k : D ⟶ B) :
+    FunctorIso
+      (leftUnstraighteningMappingSpaceMap F G ≫
+        relativeFunctorOverPre (leftUnstraighteningProjection G)
+          (leftUnstraighteningOverBaseMap F k))
+      ((leftUnstraighteningTransformationRestriction F G k ≫
+        leftUnstraighteningMappingSpaceMap (k ≫ F) (k ≫ G)) ≫
+          relativeFunctorSquarePost (leftUnstraighteningProjection (k ≫ G))
+            (leftUnstraighteningProjection G) k (leftUnstraighteningMap (k ≫ G) G k rfl)
+            (leftUnstraighteningMap_projection (k ≫ G) G k rfl)
+            (leftUnstraighteningProjection (k ≫ F)))
+
+noncomputable def relativeFunctorSquareLift {A E F B D : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ D) (k : B ⟶ D) (f : E ⟶ F)
+    (h : IsPullback f p q k) (a : A ⟶ B) :
+    relativeFunctorSpace q (a ≫ k) ⟶ relativeFunctorSpace p a
+
+lemma relativeFunctorSquareLift_uncurry_fst {A E F B D T : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ D) (k : B ⟶ D) (f : E ⟶ F)
+    (h : IsPullback f p q k) (a : A ⟶ B)
+    (g : T ⟶ relativeFunctorSpace q (a ≫ k)) :
+    relativeFunctorUncurry (g ≫ relativeFunctorSquareLift p q k f h a) ≫ f =
+      relativeFunctorUncurry g
+
+noncomputable def relativeFunctorPullbackSquareIso {A E F B D : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ D) (k : B ⟶ D) (f : E ⟶ F)
+    (h : IsPullback f p q k) (a : A ⟶ B) :
+    relativeFunctorSpace p a ≅ relativeFunctorSpace q (a ≫ k)
+
+noncomputable def leftUnstraighteningMappingPullbackIso {B D : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (k : D ⟶ B) :
+    relativeFunctorSpace (leftUnstraighteningProjection (k ≫ G))
+      (leftUnstraighteningProjection (k ≫ F)) ≅
+    relativeFunctorSpace (leftUnstraighteningProjection G)
+      (leftUnstraighteningProjection (k ≫ F) ≫ k)
+
+noncomputable def leftUnstraighteningRelativeRestriction {B D : SSet.{u + 1}}
+    (F G : B ⟶ SpaceInfinity.{u}) (k : D ⟶ B) :
+    relativeFunctorSpace (leftUnstraighteningProjection G) (leftUnstraighteningProjection F) ⟶
+      relativeFunctorSpace (leftUnstraighteningProjection (k ≫ G))
+        (leftUnstraighteningProjection (k ≫ F))
+
+noncomputable def leftUnstraighteningMappingSpaceMap_restrictionIso
+    {B D : SSet.{u + 1}} (F G : B ⟶ SpaceInfinity.{u}) (k : D ⟶ B) :
+    FunctorIso
+      (leftUnstraighteningMappingSpaceMap F G ≫ leftUnstraighteningRelativeRestriction F G k)
+      (leftUnstraighteningTransformationRestriction F G k ≫
+        leftUnstraighteningMappingSpaceMap (k ≫ F) (k ≫ G))
+
 end SerrePositivity.InfinityCategories
 ```
