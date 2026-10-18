@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorSpanComparison
+
 public import SerrePositivity.InfinityCategories.F1.LeftFibrationTrivialComparison
 public import SerrePositivity.InfinityCategories.F1.RelativeHomEquivalenceRestriction
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorOverPrecomposition

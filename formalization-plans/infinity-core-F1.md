@@ -8039,5 +8039,19 @@ lemma relativeFunctorPre_isQCatEquivalence_of_precompositionEquivalence
     (a : A ⟶ B) (i : D ⟶ A) (hi : IsPrecompositionEquivalence i) :
     IsQCatEquivalence (relativeFunctorPre p a i)
 
+noncomputable def relativeFunctorEquivalenceOfSpan
+    {E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p]
+    {a b c : Over B} (f : c ⟶ a) (g : c ⟶ b)
+    (hf : IsPrecompositionEquivalence f.left) (hg : IsPrecompositionEquivalence g.left) :
+    QCatEquivalence (relativeFunctorSpace p a.hom) (relativeFunctorSpace p b.hom)
+
+lemma nonempty_leftCoherentTransportRelativeEquivalence
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] {Y : SSet.{u + 1}}
+    (q : Y ⟶ (SSet.uliftFunctor.{u + 1, u}).obj (nerve C)) [LeftFibration q] :
+    Nonempty (QCatEquivalence
+      (relativeFunctorSpace q ((SSet.uliftFunctor.{u + 1, u}).map p))
+      (relativeFunctorSpace q (leftUnstraighteningProjection (leftCoherentTransport p))))
+
 end SerrePositivity.InfinityCategories
 ```
