@@ -31,6 +31,9 @@
 
 ## 現在地
 
+- **依存側の公開 API の kernel エラーで停止（2026-10-18）。** 下記の依存エラー欄を参照。
+- Mathlib の作業ツリーに変更はなく、並行作業による破損かどうかは未確認。
+- 修復・代替実装は行わない。L6b は未完了、L6c〜g は未着手のまま。
 - L6a：最小形式の実装完了。塔・レベル射・pro 同型判定・関手保存・再添字・pro-零性・対角共終性を検証済み。
 - L1：具体的な自然なレベル完全列から塔への持ち上げを証明。fiber 長完全列自体は K-L9 の入力。
 - L2：加群の塔における pro 五項補題を証明。外側はレベル同型でなく pro 同型。
@@ -110,7 +113,11 @@
 - Koszul 冪遷移が微分と可換な各頁複体の塔を構成済み。
 - その項の塔は既存の E 模型の項の塔と遷移まで一致すると証明済み。
 - 頁の指定位置の pro-零性がその頁のホモロジーの塔へ移ることを証明済み。
-- 次は頁ホモロジーと次頁の同型の自然性、E₂ 比較の冪遷移自然性、有限収束と edge 比較を進める。
+- 頁を定める区間の変更がスペクトル対象の射と可換であることを短複体・ホモロジーで証明済み。
+- 左端・右端の標準変更射の自然性を証明済み。
+- 左ホモロジー模型の包含と射影の可換性から、標準ホモロジー写像との比較を得る補題を証明済み。
+- 頁ホモロジーの核模型の関手と、その包含・射影の自然変換まで構成済み。
+- 次の公開 homologyData との接続で依存側の kernel エラーを再現。修復後は次頁同型の自然性、E₂ 比較の冪遷移自然性、有限収束と edge 比較から再開する。
 - 初頁の二つのモデルの完全な自然性・Koszul 冪遷移との整合は残件。
 - スペクトル対象から頁への関手性を既存 API で確認中。未供給の自然性を仮定に置かない。
 - π_n の具体的な複体ホモロジーとの同定は K-L9 の界面から受け取る。
@@ -238,6 +245,13 @@
 | koszulPageComplexTower | KoszulPageTowers.lean | 検証済み | 実際の冪遷移と微分が可換な頁複体の塔 |
 | koszulPageComplexTower_eval_eq | KoszulPageTowers.lean | 検証済み | 項の塔と E 模型の遷移までの一致 |
 | koszulPageHomologyTower_isProZero_of_terms | KoszulPageTowers.lean | 検証済み | 項の pro-零性から頁ホモロジーの pro-零性 |
+| spectralPageMap_interval | SpectralPageIntervalNaturality.lean | 検証済み | 区間図式の変更と頁の射の可換性 |
+| spectralPageMap_fourδ₁Toδ₀ | SpectralPageIntervalNaturality.lean | 検証済み | 左端変更の自然性 |
+| spectralPageMap_fourδ₄Toδ₃ | SpectralPageIntervalNaturality.lean | 検証済み | 右端変更の自然性 |
+| leftHomologyModelMap_comm | SpectralPageIntervalNaturality.lean | 検証済み | 明示的左ホモロジー模型の写像比較 |
+| spectralSequencePageKernelFunctor | SpectralSequenceHomologyNaturality.lean | 検証済み | 頁ホモロジーの核の E 模型の関手 |
+| spectralSequencePageKernelInclusion | SpectralSequenceHomologyNaturality.lean | 検証済み | 核模型の包含の自然変換 |
+| spectralSequencePageKernelProjection | SpectralSequenceHomologyNaturality.lean | 検証済み | 核模型から次頁への射影の自然変換 |
 | koszul_comparison | KoszulPro.lean | 予定 | KST Lemma 4.10 |
 | prop414 | Prop414.lean | 予定 | 中心的係数による非可換版 |
 | pro_whitehead | Whitehead.lean | 予定 | simple 空間版 |
@@ -440,3 +454,19 @@
 - 未証明の仮定を供給済みと表示しない。
 - 本レーンの完成とリポジトリ全体の完成を区別する。
 
+
+## 依存側の公開 API の kernel エラー（2026-10-18）
+
+- 必要な処理：Mathlib の公開 `spectralSequenceHomologyData` の左ホモロジー模型を使い、既存の頁間同型の自然性を証明する。
+- 公開 `SpectralSequence.homologyData` と公開ラッパー `X.spectralSequenceHomologyData` の両方で同じ kernel エラーを再現した。
+- エラー：`(kernel) unknown constant '_private.Mathlib.Algebra.Homology.SpectralObject.SpectralSequence.0._proof_27'`。
+- 自分の新しい構造体宣言だけでなく、公開 API を使う `Nonempty` の最小例でも再現した。
+- 最小再現例：`/tmp/kst-l6-public-data-probe.lean`。
+- 最小例の出力：`/tmp/kst-l6-public-data-probe.log`。
+- 失敗した左ホモロジー模型の宣言：`/tmp/kst-l6-failed-left-data-declaration.txt`。
+- `.lake/packages/mathlib` の `git status --short` は空だった。
+- 依存ソースと olean の更新日はともに 2026-10-07。並行作業が原因かどうかは未確認。
+- 検証済みの L6 対象の import・ビルドは成功しており、失敗する宣言は集約へ入れていない。
+- 依存側の修復、私有定数へのアクセス、代替ホモロジー模型の再構成は実施していない。
+- 保存するのは、すでに証明済みの区間自然性と核模型の三つの関手・自然変換まで。
+- L6b の Lemma 4.10 の完成、L6c〜g の完成は主張しない。

@@ -779,3 +779,27 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.koszulPageHomologyTower_isProZero_of_terms
 #print axioms SerrePositivity.KST.ProExcision.koszulPageHomologyTower_isProZero_of_terms
+
+#check @SerrePositivity.KST.ProExcision.spectralShortComplexMap_interval
+#print axioms SerrePositivity.KST.ProExcision.spectralShortComplexMap_interval
+
+#check @SerrePositivity.KST.ProExcision.spectralPageMap_interval
+#print axioms SerrePositivity.KST.ProExcision.spectralPageMap_interval
+
+#check @SerrePositivity.KST.ProExcision.leftHomologyModelMap_comm
+#print axioms SerrePositivity.KST.ProExcision.leftHomologyModelMap_comm
+
+#check @SerrePositivity.KST.ProExcision.spectralPageMap_fourδ₁Toδ₀
+#print axioms SerrePositivity.KST.ProExcision.spectralPageMap_fourδ₁Toδ₀
+
+#check @SerrePositivity.KST.ProExcision.spectralPageMap_fourδ₄Toδ₃
+#print axioms SerrePositivity.KST.ProExcision.spectralPageMap_fourδ₄Toδ₃
+
+#check @SerrePositivity.KST.ProExcision.spectralSequencePageKernelFunctor
+#print axioms SerrePositivity.KST.ProExcision.spectralSequencePageKernelFunctor
+
+#check @SerrePositivity.KST.ProExcision.spectralSequencePageKernelInclusion
+#print axioms SerrePositivity.KST.ProExcision.spectralSequencePageKernelInclusion
+
+#check @SerrePositivity.KST.ProExcision.spectralSequencePageKernelProjection
+#print axioms SerrePositivity.KST.ProExcision.spectralSequencePageKernelProjection

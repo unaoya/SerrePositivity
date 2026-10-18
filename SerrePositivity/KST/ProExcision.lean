@@ -39,3 +39,5 @@ public import SerrePositivity.KST.ProExcision.FilteredTowers
 public import SerrePositivity.KST.ProExcision.SpectralObjectCyclesMaps
 public import SerrePositivity.KST.ProExcision.SpectralSequencePageFunctor
 public import SerrePositivity.KST.ProExcision.KoszulPageTowers
+public import SerrePositivity.KST.ProExcision.SpectralPageIntervalNaturality
+public import SerrePositivity.KST.ProExcision.SpectralSequenceHomologyNaturality
