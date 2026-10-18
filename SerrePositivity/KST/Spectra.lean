@@ -32,3 +32,4 @@ public import SerrePositivity.KST.Spectra.CofibrantOmegaSequence
 public import SerrePositivity.KST.Spectra.PointedFiber
 public import SerrePositivity.KST.Spectra.FiberKanSequence
 public import SerrePositivity.KST.Spectra.FibrationComparisonPositive
+public import SerrePositivity.KST.Spectra.StageComparisonCoherence

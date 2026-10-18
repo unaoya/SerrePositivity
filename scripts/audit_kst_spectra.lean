@@ -83,7 +83,8 @@ run_cmd do
     `SerrePositivity.KST.Spectra.FiberKanSequence,
     `SerrePositivity.KST.Spectra.GroupFiveLemma,
     `SerrePositivity.KST.Spectra.HomotopySquares,
-    `SerrePositivity.KST.Spectra.FibrationComparisonPositive]
+    `SerrePositivity.KST.Spectra.FibrationComparisonPositive,
+    `SerrePositivity.KST.Spectra.StageComparisonCoherence]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

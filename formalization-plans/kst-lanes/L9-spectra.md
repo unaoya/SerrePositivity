@@ -27,7 +27,7 @@
 
 作成日：2026-10-18。
 状態：L9a・L9b 完了。L9c に着手。
-対象ビルド・71 モジュール 1341 宣言の公理監査成功。
+対象ビルド・72 モジュール 1359 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9b、8370 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -905,3 +905,28 @@ fiber の Ω 条件と整数次数長完全列もまだ完了扱いにしない�
 参照：Goerss–Jardine I §§7–8、Kerodon §3.2.6、BF 1978 §2、HA §1.4.2。
 保存単位の対象ビルド 1844 jobs 成功。
 私有宣言を含む 71 モジュール 1341 宣言で標準三公理のみ。
+
+## 34. L9c の段の比較の合成整合性
+
+整数次数 j の許される最小段を (−j).toNat とした。
+その段から各段への隣接比較の反復を共通の源とし、各段同士の比較を定義した。
+標準の計算段 |j|+1 と整数次数群の定義は変わらない。
+比較の恒等法則、逆法則、三段の合成法則を証明した。
+整数次数群から任意段への表示も、この合成法則を満たす。
+射に関する自然性と隣接構造射との計算式は引き続き扱う。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `OmegaSpectrum.initialLevel` | 最小の許される計算段 |
+| `OmegaSpectrum.initialLevel_admissible` / `.initialLevel_le` | 非負次数と最小性 |
+| `OmegaSpectrum.compareLevels_refl` | 同じ段の比較は恒等 |
+| `OmegaSpectrum.compareLevels_symm` | 逆向きの比較は逆同型 |
+| `OmegaSpectrum.compareLevels_trans` | 三段の比較の合成整合性 |
+| `OmegaSpectrum.homotopyGroupEquivAt_canonical` | 標準段の表示は恒等 |
+| `OmegaSpectrum.homotopyGroupEquivAt_trans` | 任意段での表示と段の比較の整合性 |
+
+参照：BF 1978 §2、HA §1.4.2。
+保存単位の対象ビルド 1845 jobs 成功。
+私有宣言を含む 72 モジュール 1359 宣言で標準三公理のみ。
+L9c は未完了。loop と段の比較の自然性、零次数の fiber 比較、fiber の Ω 条件、
+Kan でない列の置換の構造射への接続、整数次数長完全列が残る。

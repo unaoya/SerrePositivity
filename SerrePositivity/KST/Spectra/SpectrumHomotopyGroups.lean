@@ -4,7 +4,7 @@ public import SerrePositivity.KST.Spectra.OmegaSpectrumZeroGroups
 
 /-!
 概要：Ω スペクトルの整数次数の可換ホモトピー群と段の選択の比較。
-方針：隣接段の同型を反復し、共通の高い段を介して任意の許される段を比較する。
+方針：隣接段の同型を反復し、最小の許される段からの同型で各段を比較する。
 規約：定義の標準段は |j|+1、任意の k≥−j で π_(j+k)(X_k) と群同型。
 使われ方：BF 1978 §2、HA §1.4.2。KST の全次数 π_* 同型。
 -/
@@ -94,15 +94,37 @@ def advanceTo (X : OmegaSpectrum.{u}) (j : ℤ) (k l : ℕ)
   have hd : degree j k + (l - k) = degree j l := by rw [← degree_add j k (l - k) hk, hl]
   exact (iterateTransition X k (degree j k) (l - k)).trans (levelHomotopyCongr X hl hd)
 
+/-- 概要：整数次数の最小の許される計算段。
+方針：−j の非負部分を取る。
+規約：標準の計算段 |j|+1 とは区別する。
+使われ方：BF 1978 §2。全ての段の比較の合成整合性。 -/
+def initialLevel (j : ℤ) : ℕ := (-j).toNat
+
+/-- 概要：最小段での計算次数は非負。
+方針：整数の自然数変換の算術を使う。
+規約：j が非負なら零段を使う。
+使われ方：BF 1978 §2。最小段からの前進同型。 -/
+theorem initialLevel_admissible (j : ℤ) : 0 ≤ j + (initialLevel j : ℤ) := by
+  unfold initialLevel
+  omega
+
+/-- 概要：許される段は最小段以上である。
+方針：非負な計算次数から整数の不等式を得る。
+規約：全て自然数の段を比較する。
+使われ方：BF 1978 §2。共通の源を持つ比較同型。 -/
+theorem initialLevel_le (j : ℤ) (k : ℕ) (hk : 0 ≤ j + (k : ℤ)) : initialLevel j ≤ k := by
+  unfold initialLevel
+  omega
+
 /-- 概要：整数次数を任意の二つの許される段で計算した群の比較。
-方針：二つの段の最大へ進めて比較する。
+方針：最小の許される段から各段への前進同型を通じて比較する。
 規約：零次数の計算段も含む。
 使われ方：BF 1978 §2、HA §1.4.2。段によらない安定ホモトピー群。 -/
 def compareLevels (X : OmegaSpectrum.{u}) (j : ℤ) (k l : ℕ)
     (hk : 0 ≤ j + (k : ℤ)) (hl : 0 ≤ j + (l : ℤ)) :
     levelHomotopy X k (degree j k) ≃* levelHomotopy X l (degree j l) :=
-  (advanceTo X j k (max k l) hk (Nat.le_max_left _ _)).trans
-    (advanceTo X j l (max k l) hl (Nat.le_max_right _ _)).symm
+  (advanceTo X j (initialLevel j) k (initialLevel_admissible j) (initialLevel_le j k hk)).symm.trans
+    (advanceTo X j (initialLevel j) l (initialLevel_admissible j) (initialLevel_le j l hl))
 
 /-- 概要：Ω スペクトルの整数次数のホモトピー群。
 方針：標準段 |j|+1 の π_(j+|j|+1) を取る。
@@ -119,7 +141,7 @@ instance homotopyGroupCommGroup (X : OmegaSpectrum.{u}) (j : ℤ) : CommGroup (h
   inferInstanceAs (CommGroup (levelHomotopy X (canonicalLevel j) (degree j (canonicalLevel j))))
 
 /-- 概要：整数次数の群を任意の許される段の群で計算する同型。
-方針：標準段と指定段を共通の高い段で比較する。
+方針：標準段と指定段を最小段からの前進同型を通じて比較する。
 規約：k≥−j の条件を整数の不等式で明示する。
 使われ方：BF 1978 §2、HA §1.4.2。π_j(X)=π_(j+k)(X_k) の段の独立性。 -/
 def homotopyGroupEquivAt (X : OmegaSpectrum.{u}) (j : ℤ) (k : ℕ) (hk : -j ≤ (k : ℤ)) :
