@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 1489 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 1497 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -839,6 +839,18 @@ B/A が平坦有限表示・幾何学的整なら、チャートの全基礎素�
 一般の係数環上で `genericBoundaryPureFree_of_coefficient_minor` により証明してから、
 チャートの Rees 代数の型を繰り返し展開せずに適用する。
 
+#### 境界で局所化した表示と元の表示の照合
+
+原典：Stacks 0810, Lemma 38.30.2 の M[1/f] の平坦性の利用。
+A → B、A → C に対し、D = C ⊗_A B とする。
+実際のテンソル代数の押し出しの普遍条件から
+D ⊗_B M ≃_C C ⊗_A M を得る。
+Mathlib の `Algebra.IsPushout.cancelBaseChange` を、右因子 B からの D の作用を明示して使う。
+これにより C ⊗_A M の C 上の平坦性を、元の B 自由表示を D へ基底変更した対象へ移す。
+C = A[1/f] として境界外の平坦性へ適用する準備とする。
+この実同型・元の加群からの写像の保存・平坦性の移送を
+`TensorAlgebraBaseChangeFlat.lean` で証明済み。
+
 #### 選んだ有限表示の任意の基底変更
 
 原典：Stacks 0810, Lemma 38.30.2 の小行列式の基底変更の利用。
@@ -1053,6 +1065,9 @@ Fin(N-k) 上の自由加群からの全射を構成する。
 | `GenericBoundaryPureFree` | 全拡大素点での実際の境界純変換の自由性と階数という結論 | 定義済み |
 | `genericBoundaryPureFree_of_coefficient_minor` | 正則単項化した係数イデアルによる全拡大素点での自由性 | 証明済み |
 | `coefficientBlowup_chart_boundary_free_and_finrank` | 実係数中心の全標準チャートの全拡大素点での純変換の自由性と階数 | 証明済み |
+| `tensorAlgebraBaseChangeEquiv` | D ⊗_B M と C ⊗_A M の実際の C 線形同型 | 定義済み |
+| `tensorAlgebraBaseChangeEquiv_one_tmul` | 元の加群からの写像の両立性 | 証明済み |
+| `tensorAlgebraBaseChange_flat` | 二つの基底変更表示の間での平坦性の移送 | 証明済み |
 
 以下は予定名であり、実装済みでないものを `#check` 済みとは扱わない。
 

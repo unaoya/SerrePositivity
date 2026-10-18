@@ -219,3 +219,4 @@ public import SerrePositivity.KST.SchemeLemmas.LocalRegularMinorPureFree
 public import SerrePositivity.KST.SchemeLemmas.CoefficientPrimeBoundaryFree
 public import SerrePositivity.KST.SchemeLemmas.GenericBoundaryPureFree
 public import SerrePositivity.KST.SchemeLemmas.CoefficientBlowupGenericFree
+public import SerrePositivity.KST.SchemeLemmas.TensorAlgebraBaseChangeFlat
