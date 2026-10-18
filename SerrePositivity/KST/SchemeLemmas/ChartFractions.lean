@@ -125,4 +125,43 @@ theorem chartFraction_center_pow (b : I) (n : ℕ) :
   dsimp only
   rw [← mul_pow, mul_comm (chartRatio I a b), chartBaseMap_mul_ratio, map_pow]
 
+/--
+概要：中心元自身の n 乗を分子とする分数は一。
+方針：正則な aⁿ を払い、係数写像の冪保存を使う。
+規約：KST §5、Stacks 080Y、零環も含む。
+使われ方：分子と分母の次数を同時に増やす。
+-/
+@[simp] theorem chartFraction_self_pow (n : ℕ) :
+    chartFraction I a n ⟨a.1 ^ n, Ideal.pow_mem_pow a.2 n⟩ = 1 := by
+  apply chart_mul_base_pow_injective I a n
+  dsimp only
+  rw [chartFraction_clear, one_mul]
+  exact map_pow _ _ _
+
+/--
+概要：分子へ aᵐ を補い次数を m 増やしても、a チャート上の分数は変わらない。
+方針：分数の積公式と aᵐ/aᵐ = 1 を使う。
+規約：KST §5、Stacks 080Y、分子の中心冪への所属を保持する。
+使われ方：降下イデアルの次数の共通化。
+-/
+theorem chartFraction_shift_self (n m : ℕ) (r : ↥(I ^ n)) :
+    chartFraction I a (n + m)
+      ⟨r.1 * a.1 ^ m, by rw [pow_add]; exact Ideal.mul_mem_mul r.2 (Ideal.pow_mem_pow a.2 m)⟩ =
+        chartFraction I a n r := by
+  rw [chartFraction_mul I a n m r ⟨a.1 ^ m, Ideal.pow_mem_pow a.2 m⟩,
+    chartFraction_self_pow, mul_one]
+
+/--
+概要：標準チャートの任意の元は指定次数の分数として表示できる。
+方針：斉次分母消去の分子を取り、正則な分母で分数と元を比較する。
+規約：KST §5、Stacks 080Y、分子は Iⁿ に属する。
+使われ方：有限生成イデアルの生成元を斉次な分子で表す。
+-/
+theorem exists_chartFraction (z : BlowupChartRing I a) :
+    ∃ (n : ℕ) (r : ↥(I ^ n)), chartFraction I a n r = z := by
+  obtain ⟨n, r, hr, hz⟩ := chart_clear_denominator_mem I a z
+  refine ⟨n, ⟨r, hr⟩, chart_mul_base_pow_injective I a n ?_⟩
+  dsimp only
+  rw [chartFraction_clear, hz]
+
 end SerrePositivity.KST.SchemeLemmas

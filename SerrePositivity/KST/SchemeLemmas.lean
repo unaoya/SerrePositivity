@@ -75,3 +75,8 @@ public import SerrePositivity.KST.SchemeLemmas.CompatibleChartIdeals
 public import SerrePositivity.KST.SchemeLemmas.SpecIdeal
 public import SerrePositivity.KST.SchemeLemmas.BlowupChartIdeals
 public import SerrePositivity.KST.SchemeLemmas.FiniteChartNumerators
+public import SerrePositivity.KST.SchemeLemmas.IndexedNumeratorIdeal
+public import SerrePositivity.KST.SchemeLemmas.GeneratorChartCover
+public import SerrePositivity.KST.SchemeLemmas.AffineCenterDescent
+public import SerrePositivity.KST.SchemeLemmas.IdealSheafLocality
+public import SerrePositivity.KST.SchemeLemmas.AffineCenterDescentSheaf

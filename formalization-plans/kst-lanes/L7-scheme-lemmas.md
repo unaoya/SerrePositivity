@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 754 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 791 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -76,6 +76,11 @@
 - Spec 上のイデアル層と環イデアルの順序同型を構成し、任意の環準同型の map・comap と両立することを証明済み。
 - 実際の blowup 上のイデアル層から構成したチャートイデアル族の整合性を証明済み。Noether 基礎環ではチャート環も Noether で、各チャートイデアルは有限生成。
 - 次は指定した有限チャート族に対する分子候補中心を用い、十分大きい次数で像イデアルが必要なイデアルに等しいことを証明する。全体の平坦化中心の存在はなお未証明。
+- 指定した有限族に対する `indexedNumeratorIdeal` を構成し、十分大きい各次数で各像イデアルが aᴰ 倍の指定イデアルと等しいことを証明済み。
+- 中心の任意の生成族による標準チャート被覆を構成済み。Noether 基礎環では有限生成族の有限被覆を選べる。
+- アフィン開被覆への逆像でのイデアル層の等式検出と、開制限・Spec のイデアル対応での積と冪の保存を証明済み。
+- Noether アフィン基底上で、任意の blowup 上の中心 K に対し、十分大きい各 D で実際の有限生成 J ⊆ Iᴰ とイデアル層等式 π⁻¹J = (π⁻¹I)ᴰ K を構成・証明済み。
+- これはアフィン基底の中心の降下であり、一般基底への大域化・admissible 性の移送・合成支配射の構成は次の段階。実際の平坦化中心の存在はなお未証明。
 - Noether でも実際に平坦な strict transform を達成する中心の存在と、admissible blowup の合成を一つで支配する段階は未証明。L7b 完了とはしない。
 - 固定版 Mathlib に blowup の構成はない。
 - 固定版 Mathlib には絶対 Proj とその構造射の固有性がある。
@@ -529,6 +534,11 @@ strict transform とその平坦化の有限型特殊形は未実装であり、
 | `specIdealEquiv` / `specIdealEquiv_map` / `specIdealEquiv_comap` | SpecIdeal | 検証済み | アフィンのイデアル層と環イデアルの対応・関手性 |
 | `blowupChartIdeal` / `blowupChartIdeals_compatible` / `blowupChartIdeal_fg` | BlowupChartIdeals | 検証済み | 実際のイデアル層からの整合族と Noether 時の有限生成性 |
 | `chart_fraction_mem_on_finite_charts` | FiniteChartNumerators | 検証済み | 指定した有限チャート族での分子補正の一様化 |
+| `indexedNumeratorIdeal` / `indexedNumeratorIdeal_map_eventually` | IndexedNumeratorIdeal | 検証済み | 有限整合チャート族で十分大きい各次数の像イデアルの等式 |
+| `affineBlowupGeneratorChartCover` | GeneratorChartCover | 検証済み | 任意の中心生成族による実際のチャート被覆 |
+| `exists_finite_chart_ideal_descent` | AffineCenterDescent | 検証済み | Noether アフィン基底上の実中心の有限チャート降下 |
+| `idealSheaf_ext_of_affineOpenCover` / `idealSheaf_comap_mul_of_openImmersion` | IdealSheafLocality | 検証済み | チャートでの等式検出と積・冪の保存 |
+| `affineExceptionalIdealSheaf` / `exists_affine_center_descent` | AffineCenterDescentSheaf | 検証済み | 実際の例外イデアルと π⁻¹J = (π⁻¹I)ᴰ K の降下等式 |
 | `exists_admissibleBlowup_dominating` | Flattening | 予定 | 081T の特殊形 |
 | Prop 5.2 の環論 | Section5 | 予定 | 冪・像・核 |
 | Claim 5.3 の左逆元 | K-L6 | 担当外 | K/pro の結論 |
