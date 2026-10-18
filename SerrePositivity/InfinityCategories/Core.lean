@@ -113,3 +113,7 @@ public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
 public import SerrePositivity.InfinityCategories.Core.FunctorCompositionEvaluation
 
 public import SerrePositivity.InfinityCategories.Core.PrecompositionEquivalence
+
+public import SerrePositivity.InfinityCategories.Core.PrecompositionTensor
+
+public import SerrePositivity.InfinityCategories.Core.PrecompositionLifting

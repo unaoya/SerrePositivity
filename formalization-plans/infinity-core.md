@@ -19,7 +19,7 @@ Mathlib の `Quasicategory` をそのまま ∞ 圏の定義とし、Joyal モ�
 
 担当順は A6 → A4 → A5。基盤全体の正本は [foundations.md](foundations.md)。F1 は α2 が担当し、Core の既存の公開名・型の変更は事前に報告する。
 
-現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性も整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
+現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存も整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
 
 ## 1. Mathlib（固定版）の現状
 
@@ -6203,6 +6203,60 @@ lemma IsPrecompositionEquivalence.isQCatEquivalence {A B : SSet.{u}}
 lemma isPrecompositionEquivalence_iff_isQCatEquivalence {A B : SSet.{u}}
     [Quasicategory A] [Quasicategory B] (f : A ⟶ B) :
     IsPrecompositionEquivalence f ↔ IsQCatEquivalence f
+
+end SerrePositivity.InfinityCategories
+```
+
+### A6 続き：前合成の同値条件の直積と pushout（2026-10-18）
+
+内部 currying の自然性から、前合成の同値条件の左右の直積による保存を証明した。単射上で同型な制限を持つ関手の制限を可逆ホモトピーの延長で厳密化し、単射 i の前合成が同値なら任意の quasicategory X に対する前合成が trivial Kan fibration となることを証明した。これと反変内部 Hom の pushout から pullback への移送により、単射である前合成の同値条件の pushout による保存を得た。モデル構造は使用していない。
+
+Core ビルド1664 jobs、累計951宣言の標準3公理監査成功。既存の公開名・型は変更していない。一般の fat join 比較と slice 比較の同値性、A6 の主定理は未完了。A4・A5 は未着手。新規10宣言の全型・前提：
+
+```lean
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+noncomputable def qCatEquivalenceOfIso {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] (e : X ≅ Y) : QCatEquivalence X Y
+
+lemma ihomCurry_pre_whiskerRight {A B : SSet.{u}} (f : A ⟶ B) (K X : SSet.{u}) :
+    (pre (f ▷ K)).app X ≫ (ihomCurryIso A K X).hom =
+      (ihomCurryIso B K X).hom ≫ (ihom K).map ((pre f).app X)
+
+lemma IsPrecompositionEquivalence.whiskerRight {A B : SSet.{u}} {f : A ⟶ B}
+    (hf : IsPrecompositionEquivalence f) (K : SSet.{u}) :
+    IsPrecompositionEquivalence (f ▷ K)
+
+lemma isPrecompositionEquivalence_of_iso {A B : SSet.{u}} (e : A ≅ B) :
+    IsPrecompositionEquivalence e.hom
+
+lemma IsPrecompositionEquivalence.whiskerLeft {A B : SSet.{u}} {f : A ⟶ B}
+    (hf : IsPrecompositionEquivalence f) (K : SSet.{u}) :
+    IsPrecompositionEquivalence (K ◁ f)
+
+lemma exists_extension_of_functorIso {A B X : SSet.{u}} [Quasicategory X]
+    (i : A ⟶ B) [Mono i] (u : B ⟶ X) (v : A ⟶ X)
+    (e : FunctorIso (i ≫ u) v) : ∃ w : B ⟶ X, i ≫ w = v
+
+lemma pre_surjective_of_essentiallySurjective {A B X : SSet.{u}} [Quasicategory X]
+    (i : A ⟶ B) [Mono i] (hi : IsEssentiallySurjective ((pre i).app X)) :
+    Function.Surjective (((pre i).app X).app (Opposite.op ⦋0⦌))
+
+lemma IsPrecompositionEquivalence.trivialKanFibration_pre {A B : SSet.{u}}
+    {i : A ⟶ B} [Mono i] (hi : IsPrecompositionEquivalence i)
+    (X : SSet.{u}) [Quasicategory X] : TrivialKanFibration ((pre i).app X)
+
+lemma isPullback_pre_of_isPushout {A B C D : SSet.{u}}
+    {i : A ⟶ B} {g : A ⟶ C} {k : B ⟶ D} {j : C ⟶ D}
+    (h : IsPushout i g k j) (X : SSet.{u}) :
+    IsPullback ((pre j).app X) ((pre k).app X) ((pre g).app X) ((pre i).app X)
+
+lemma IsPrecompositionEquivalence.of_isPushout {A B C D : SSet.{u}}
+    {i : A ⟶ B} [Mono i] {g : A ⟶ C} {k : B ⟶ D} {j : C ⟶ D}
+    (hi : IsPrecompositionEquivalence i) (h : IsPushout i g k j) :
+    IsPrecompositionEquivalence j
 
 end SerrePositivity.InfinityCategories
 ```
