@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと759宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと783宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -84,6 +84,7 @@
 - shuffle の同種ステップと端点の面：`insertHorizontal_left_face`・`insertVertical_right_face` は内部の同種ステップの面を各因子の面へ同定。先頭・末尾も第一・第二因子ごとの実単体写像の等式を検証。`insertHorizontal_inversions`・`insertVertical_inversions` は前半垂直数・後半水平数による増分を計算し、`insertHorizontal_face_sign`・`insertVertical_face_sign` は通常境界の符号を同定。残る鎖写像性の作業は境界添字の分類と全有限和の組み立て。
 - shuffle の境界添字：`removeHorizontal`・`removeVertical` と挿入の両逆を検証し、位置つき挿入の実同値を構成。`rank_eq_left` は水平ステップの順位と第一座標を同定。`horizontalFacePosition`・`horizontalFaceVertex` は各第一因子の面を実挿入に送り、`horizontalFace_left`・`horizontalFace_right` が面の実写像を同定。補集合による二因子交換で `verticalFace_left`・`verticalFace_right` も検証。境界添字全体の分類と全和への統合は未完。
 - shuffle の全混合境界和：`MixedShuffleIndex.swap` は固定点のない対合で、`shuffleMixedWeight_cancel` は面の符号を含む各対の相殺。`shuffleMixed_sum_zero` は全有限和の消滅を実写像について証明。係数群の二倍の単射性を使わず、一般の加法群で成立する有限和の対合による。
+- shuffle の純粋境界添字の同値：`horizontalShuffleBoundaryEquiv` は小さい shuffle と第一因子の面から全純粋水平境界への実同値で、`horizontalShuffleBoundary_sum` が有限和を移す。`verticalShuffleBoundaryEquiv`・`verticalShuffleBoundary_sum` は補集合の同値と合成して第二因子の場合を実装。面番号・挿入位置・削除頂点の左右の復元を証明済み。実写像と符号をこの同値へ適用し、全境界の分類へ進む。
 - L6c の残作業：採用済み μ 版 A.5 の shuffle の鎖写像性と AW/shuffle の標準ホモトピー、正規化した鎖ホモトピーの単体的区間への復元、μ と対角への移送。A.1・A.4・A.6 の H_* の具体模型への特殊化は所有レーンの界面。
 - L6d〜g：未着手。
 
@@ -165,6 +166,8 @@
 | ShuffleIndex.verticalFace_left / verticalFace_right | ShuffleTranspose.lean | 検証済み | 第二因子の面番号から挿入への実対応と二つの面写像の一致 |
 | MixedShuffleIndex.swap / swap_swap / swap_ne_self | ShuffleMixedSum.lean | 検証済み | 全混合境界添字の固定点のない交換対合 |
 | shuffleMixed_sum_zero | ShuffleMixedSum.lean | 検証済み | 面と shuffle の符号を含む全混合境界和の零化 |
+| horizontalShuffleBoundaryEquiv / horizontalShuffleBoundary_sum | ShuffleHorizontalBoundary.lean | 検証済み | 全純粋水平境界と小さい shuffle×第一因子の面の実同値と有限和 |
+| verticalShuffleBoundaryEquiv / verticalShuffleBoundary_sum | ShuffleVerticalBoundary.lean | 検証済み | 全純粋垂直境界と小さい shuffle×第二因子の面の実同値と有限和 |
 | obstructionTorusCycle_not_boundary | CommutingImageObstruction.lean | 検証済み | 可換な対 (r²,s) の二次 bar サイクルの非境界性 |
 | obstructionHalfTurnBoundingChain_boundary | CommutingImageObstruction.lean | 検証済み | [r²]−[1] の明示的な一次の境界 |
 | Tower | Pro.lean | 検証済み | ℕ 上の逆系 |

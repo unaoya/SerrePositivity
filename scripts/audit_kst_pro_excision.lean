@@ -2124,3 +2124,75 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.shuffleMixed_sum_zero
 #print axioms SerrePositivity.KST.ProExcision.shuffleMixed_sum_zero
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.horizontalStep_eq_iff
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.horizontalStep_eq_iff
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.left_lt_of_mem
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.left_lt_of_mem
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.horizontalFace_internal_coordinates
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.horizontalFace_internal_coordinates
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.horizontalFace_coface
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.horizontalFace_coface
+
+#check @SerrePositivity.KST.ProExcision.IsHorizontalShuffleFace
+#print axioms SerrePositivity.KST.ProExcision.IsHorizontalShuffleFace
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.horizontalFace_isHorizontal
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.horizontalFace_isHorizontal
+
+#check @SerrePositivity.KST.ProExcision.shuffleBoundaryRemovalPosition
+#print axioms SerrePositivity.KST.ProExcision.shuffleBoundaryRemovalPosition
+
+#check @SerrePositivity.KST.ProExcision.shuffleBoundaryRemovalPosition_zero
+#print axioms SerrePositivity.KST.ProExcision.shuffleBoundaryRemovalPosition_zero
+
+#check @SerrePositivity.KST.ProExcision.shuffleBoundaryRemovalPosition_last
+#print axioms SerrePositivity.KST.ProExcision.shuffleBoundaryRemovalPosition_last
+
+#check @SerrePositivity.KST.ProExcision.shuffleBoundaryRemovalPosition_succ
+#print axioms SerrePositivity.KST.ProExcision.shuffleBoundaryRemovalPosition_succ
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.horizontalFace_removalPosition
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.horizontalFace_removalPosition
+
+#check @SerrePositivity.KST.ProExcision.horizontalShuffleFace_prev_mem
+#print axioms SerrePositivity.KST.ProExcision.horizontalShuffleFace_prev_mem
+
+#check @SerrePositivity.KST.ProExcision.ShuffleIndex.horizontalFace_last_coordinates
+#print axioms SerrePositivity.KST.ProExcision.ShuffleIndex.horizontalFace_last_coordinates
+
+#check @SerrePositivity.KST.ProExcision.horizontalShuffleBoundary_recover
+#print axioms SerrePositivity.KST.ProExcision.horizontalShuffleBoundary_recover
+
+#check @SerrePositivity.KST.ProExcision.HorizontalShuffleBoundaryIndex
+#print axioms SerrePositivity.KST.ProExcision.HorizontalShuffleBoundaryIndex
+
+#check @SerrePositivity.KST.ProExcision.horizontalShuffleBoundaryEquiv
+#print axioms SerrePositivity.KST.ProExcision.horizontalShuffleBoundaryEquiv
+
+#check @SerrePositivity.KST.ProExcision.horizontalShuffleFace_decidable
+#print axioms SerrePositivity.KST.ProExcision.horizontalShuffleFace_decidable
+
+#check @SerrePositivity.KST.ProExcision.horizontalShuffleBoundary_sum
+#print axioms SerrePositivity.KST.ProExcision.horizontalShuffleBoundary_sum
+
+#check @SerrePositivity.KST.ProExcision.shuffleTransposeEquiv
+#print axioms SerrePositivity.KST.ProExcision.shuffleTransposeEquiv
+
+#check @SerrePositivity.KST.ProExcision.VerticalShuffleBoundaryIndex
+#print axioms SerrePositivity.KST.ProExcision.VerticalShuffleBoundaryIndex
+
+#check @SerrePositivity.KST.ProExcision.verticalBoundaryTransposeEquiv
+#print axioms SerrePositivity.KST.ProExcision.verticalBoundaryTransposeEquiv
+
+#check @SerrePositivity.KST.ProExcision.verticalShuffleBoundaryEquiv
+#print axioms SerrePositivity.KST.ProExcision.verticalShuffleBoundaryEquiv
+
+#check @SerrePositivity.KST.ProExcision.verticalShuffleBoundaryEquiv_apply
+#print axioms SerrePositivity.KST.ProExcision.verticalShuffleBoundaryEquiv_apply
+
+#check @SerrePositivity.KST.ProExcision.verticalShuffleBoundary_sum
+#print axioms SerrePositivity.KST.ProExcision.verticalShuffleBoundary_sum
