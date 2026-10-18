@@ -68,6 +68,7 @@ underlying 複体が当該添字での値に一致することを証明済み。
 入力加群の射を自然変換へ送る underlying 複体図式関手と、各頂点による擬同型判定を証明済み。
 一般 dg 遷移の等式に沿う導来制限の標準単位・合成自然同型を構成し、
 局所化前の順逆成分との一致を証明済み。
+有限重なりの局所導来制限にもこれを適用し、標準単位・合成同型と実加群上の計算経路を構成済み。
 三重加群比較の全体と、その随伴導来係数拡大への移送はカーネル検証を含め未完了。
 その係数図式上の coherent な dg 加群の降下模型と層レベル比較は未完了。
 L5b 全体は未完了。L5c〜L5f は未実装。
@@ -312,6 +313,7 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `diagramModuleUnderlyingMap`・`diagramModuleUnderlyingFunctor`・擬同型判定 | DiagramModuleUnderlyingFunctor | 加群射を複体図式の自然変換へ送り、全図式の弱同値を各頂点で検出 |
 | 合成同型の対象移送付き評価・恒等成分・制限した指定比較の評価 | FiniteOverlapModuleRestrictionCompositionEvaluation | 三重比較に現れる個別の成分計算。一般補題の型の継承で係数構造の再展開を避ける |
 | `moduleDerivedIsoExtension`・順逆成分、`transitionDerivedRestrictionIdIso`・`transitionDerivedRestrictionCompIso` | TransitionDerivedRestrictionCoherence | 主局所化上への指定単位・合成自然同型の延長 |
+| `finiteOverlapDerivedTransitionRestrictionIdIso`・`finiteOverlapDerivedTransitionRestrictionCompIso`・実加群上の順成分 | FiniteOverlapDerivedRestrictionCoherence | 有限重なりの局所導来制限に沿う標準単位・合成同型と指定計算経路 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -379,7 +381,7 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 その上の coherent な dg 加群の降下模型と、層レベルの Dqc・Perf 比較は未完了。
 係数 dg 代数図式と局所の導来底変更比較は構成済みだが、
 coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全体の完成とは扱わない。
-所有モジュールの全1947定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全1963定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
 指定の加群比較、主局所化上の制限比較、随伴で移した導来係数拡大比較を構成済み。
 全射について自然であり、指定比較の可逆性による cartesian・局所 perfect 条件は同型で保たれる。
