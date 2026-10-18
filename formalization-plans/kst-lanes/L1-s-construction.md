@@ -120,7 +120,7 @@ L1a 完了。対象ビルド 1932 jobs、公理監査 26 宣言（標準3公理�
 `arSquareOrder`、`arSquare`、`arSquare_naturality`、`sMap_ι`。全26宣言の展開された型を監査スクリプトで検査する。
 上記は定義・関手法則であり安定性を仮定しない。quasicategory instance だけは明記した前提を持つ。
 
-L1b 進行中。第一行制限と零対角の補完段階を実装済み。対象ビルド2070 jobs、累計281宣言の監査（標準3公理のみ）。
+L1b 進行中。第一行制限と零対角の補完段階を実装済み。対象ビルド2074 jobs、累計305宣言の監査（標準3公理のみ）。
 
 | 公開宣言 | 正確な型・前提 |
 | --- | --- |
@@ -384,10 +384,48 @@ S_0 の全頂点は零対象であるため、その境界を終対象性で充�
 一般次数の頂点全射性からの補題は条件付きであり、次数2以上の存在の代用にはしない。
 S• の単体作用と零図式の両立は同型でなく頂点の厳密な等号である。
 
-**未完了**：次数 n≥2 で零次元から作った実際の図式 F について、全三つ組の正方形
+次数2の第一行制限を完成した。
+Ar[2] の中央の四頂点 `(0,1),(0,2),(1,1),(1,2)` に一つの実際の cofiber 正方形を配置し、
+外側の二つの対角を始対象・終対象による相対延長で補った。
+構成は第一行と中央正方形を厳密に保つ。
+
+| 公開宣言 | 正確な型・前提 |
+| --- | --- |
+| `arTwoMiddleSquare` | `(Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ arNerve 2`、値は `arSquare 0 1 1 2 (by decide) le_rfl (by decide)` |
+| `arTwoMiddleRetractionOrder` | `Ar.{u} 2 →o ULift.{u} (Fin 2 × Fin 2)` |
+| `arTwoMiddleRetraction_order_comp` | `(arSquareOrder (0 : Fin 3) 1 1 2 (by decide) le_rfl (by decide)).toFunctor ⋙ arTwoMiddleRetractionOrder.toFunctor = 𝟭 _` |
+| `arTwoMiddleRetraction` | `arNerve.{u} 2 ⟶ (Δ[1] ⊗ Δ[1] : SSet.{u})` |
+| `arTwoMiddleSquare_retraction` | `arTwoMiddleSquare.{u} ≫ arTwoMiddleRetraction = 𝟙 _` |
+| `arTwoMiddleSquare_mono` | `Mono arTwoMiddleSquare.{u}` |
+| `arTwoMiddle` | `(arNerve.{u} 2).Subcomplex`、中央正方形の包含の像 |
+| `arTwoMiddleIso` | `(Δ[1] ⊗ Δ[1] : SSet.{u}) ≅ (arTwoMiddle : SSet.{u})` |
+| `arTwoMiddleIso_ι` | `arTwoMiddleIso.{u}.hom ≫ arTwoMiddle.ι = arTwoMiddleSquare` |
+| `arTwo_obj_middle_or_endpoint` | `(a : Ar.{u} 2) → a = arObj 0 0 le_rfl ∨ a = arObj 2 2 le_rfl ∨ (a.down.val.1 ≤ 1 ∧ 1 ≤ a.down.val.2)` |
+| `arTwoMiddleRetraction_obj_back` | `(a : Ar.{u} 2) → (a.down.val.1 ≤ 1) → (1 ≤ a.down.val.2) → (arSquareOrder (0 : Fin 3) 1 1 2 (by decide) le_rfl (by decide)).toFunctor.obj (arTwoMiddleRetractionOrder.toFunctor.obj a) = a` |
+| `arTwoMiddleRetraction_square` | `arTwoMiddleRetraction.{u} ≫ arTwoMiddleSquare = nerveMap (arTwoMiddleRetractionOrder.toFunctor ⋙ (arSquareOrder (0 : Fin 3) 1 1 2 (by decide) le_rfl (by decide)).toFunctor)` |
+| `arTwoMiddle_mem_of_vertices` | `(s : (arNerve.{u} 2) _⦋d⦌) → (∀ r, (s.obj r).down.val.1 ≤ 1 ∧ 1 ≤ (s.obj r).down.val.2) → s ∈ arTwoMiddle.obj (Opposite.op ⦋d⦌)` |
+| `arTwoMiddle_vertices_of_mem` | `(s : (arNerve.{u} 2) _⦋d⦌) → s ∈ arTwoMiddle.obj (Opposite.op ⦋d⦌) → (r : Fin (d+1)) → (s.obj r).down.val.1 ≤ 1 ∧ 1 ≤ (s.obj r).down.val.2` |
+| `arTwoMiddle_notMem_first` | `ComposableArrows.mk₀ (arObj (0 : Fin 3) 0 le_rfl) ∉ arTwoMiddle.{u}.obj (Opposite.op ⦋0⦌)` |
+| `arTwoMiddle_notMem_last` | `ComposableArrows.mk₀ (arObj (2 : Fin 3) 2 le_rfl) ∉ arTwoMiddle.{u}.obj (Opposite.op ⦋0⦌)` |
+| `arTwoMiddle_missing_endpoint` | `(s : (arNerve.{u} 2) _⦋d⦌) → s ∉ arTwoMiddle.obj (Opposite.op ⦋d⦌) → s.obj 0 = arObj 0 0 le_rfl ∨ s.obj (Fin.last d) = arObj 2 2 le_rfl` |
+| `exists_arTwo_extension_with_zero_endpoints` | `(T : Square ⟶ C) → (z : C _⦋0⦌) → IsZeroVertex z → ∃ F : arNerve 2 ⟶ C, arTwoMiddleSquare ≫ F = T ∧ F.app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ (arObj 0 0 le_rfl)) = z ∧ F.app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ (arObj 2 2 le_rfl)) = z` |
+| `isGapped_two_of_cofiber_middle` | `[Quasicategory C] → (F : arNerve 2 ⟶ C) → (T : ZeroTriangle C) → IsCofiberSequence T → arTwoMiddleSquare ≫ F = T.square → IsZeroVertex (F.app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ (arObj 0 0 le_rfl))) → IsZeroVertex (F.app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ (arObj 2 2 le_rfl))) → IsGapped F` |
+| `exists_gapped_arTwo_of_cofiber` | `[Quasicategory C] → (T : ZeroTriangle C) → IsCofiberSequence T → ∃ F : arNerve 2 ⟶ C, IsGapped F ∧ arTwoMiddleSquare ≫ F = T.square` |
+| `firstRow_two_middle_bottom` | `(firstRowSimplexIso 1).hom ≫ firstRowInclusion.{u} 2 = squareBottomEdge ≫ arTwoMiddleSquare` |
+| `exists_gapped_arTwo_with_firstRow` | `(C : SSet.{u}) → [Quasicategory C] → [IsStable C] → (p : firstRowNerve 2 ⟶ C) → ∃ F : arNerve 2 ⟶ C, IsGapped F ∧ firstRowInclusion 2 ≫ F = p` |
+| `firstRowRestriction_two_vertex_surjective` | `(C : SSet.{u}) → [Quasicategory C] → [IsStable C] → Function.Surjective ((firstRowRestriction 2 C).app (Opposite.op ⦋0⦌))` |
+| `firstRowRestriction_two_trivialKanFibration` | `(C : SSet.{u}) → [Quasicategory C] → [IsStable C] → TrivialKanFibration (firstRowRestriction 2 C)` |
+
+中央の部分複体には新しいセルを付け足さず、残るセルの普遍的な端点で充填した。
+次数2の唯一の非退化三つ組は `(0,1,2)` であり、中央の指定正方形そのものである。
+他の三つ組には退化正方形の押し出し性を適用し、`isGapped_iff_triples` で全四つ組へ移した。
+`exists_gapped_arTwo_of_cofiber` は実際の cofiber を入力すれば安定性を要求しない。
+一般次数の存在はこの低次数の計算から自動的には従わない。
+
+**未完了**：次数 n≥3 で零次元から作った実際の図式 F について、全三つ組の正方形
 `arSquare i j j k hij le_rfl hjk ≫ F` が押し出しとなること。
 零対角と第一行の厳密な回収、および三つ組から全四つ組への含意は証明済み。
 cofiber 族の各区間の正方形が押し出しであることだけを、この F の三つ組の条件の代用にしない。
-正次元の境界 RLP は全 n で証明済み、n=0・1 は全次元で証明済みだが、n≥2 の `boundary 0` が残るため、
+正次元の境界 RLP は全 n で証明済み、n=0・1・2 は全次元で証明済みだが、n≥3 の `boundary 0` が残るため、
 `firstRowRestriction` の trivial Kan fibration と L1b 全体はまだ完了していない。
 L1c–f は未着手。L1g は別途指示待ち。

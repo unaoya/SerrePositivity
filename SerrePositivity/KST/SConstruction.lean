@@ -5,5 +5,6 @@ public import SerrePositivity.KST.SConstruction.GappedTriples
 public import SerrePositivity.KST.SConstruction.FunctorColimitReindex
 public import SerrePositivity.KST.SConstruction.Pointed
 public import SerrePositivity.KST.SConstruction.FirstRowLowDegrees
+public import SerrePositivity.KST.SConstruction.FirstRowDegreeTwo
 
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -669,3 +669,75 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.firstRowRestriction_one_trivialKanFibration
 #print axioms SerrePositivity.KST.SConstruction.firstRowRestriction_one_trivialKanFibration
+
+#check @SerrePositivity.KST.SConstruction.arTwoMiddleSquare
+#print axioms SerrePositivity.KST.SConstruction.arTwoMiddleSquare
+
+#check @SerrePositivity.KST.SConstruction.arTwoMiddleRetractionOrder
+#print axioms SerrePositivity.KST.SConstruction.arTwoMiddleRetractionOrder
+
+#check @SerrePositivity.KST.SConstruction.arTwoMiddleRetraction_order_comp
+#print axioms SerrePositivity.KST.SConstruction.arTwoMiddleRetraction_order_comp
+
+#check @SerrePositivity.KST.SConstruction.arTwoMiddleRetraction
+#print axioms SerrePositivity.KST.SConstruction.arTwoMiddleRetraction
+
+#check @SerrePositivity.KST.SConstruction.arTwoMiddleSquare_retraction
+#print axioms SerrePositivity.KST.SConstruction.arTwoMiddleSquare_retraction
+
+#check @SerrePositivity.KST.SConstruction.arTwoMiddleSquare_mono
+#print axioms SerrePositivity.KST.SConstruction.arTwoMiddleSquare_mono
+
+#check @SerrePositivity.KST.SConstruction.arTwoMiddle
+#print axioms SerrePositivity.KST.SConstruction.arTwoMiddle
+
+#check @SerrePositivity.KST.SConstruction.arTwoMiddleIso
+#print axioms SerrePositivity.KST.SConstruction.arTwoMiddleIso
+
+#check @SerrePositivity.KST.SConstruction.arTwoMiddleIso_ι
+#print axioms SerrePositivity.KST.SConstruction.arTwoMiddleIso_ι
+
+#check @SerrePositivity.KST.SConstruction.arTwo_obj_middle_or_endpoint
+#print axioms SerrePositivity.KST.SConstruction.arTwo_obj_middle_or_endpoint
+
+#check @SerrePositivity.KST.SConstruction.arTwoMiddleRetraction_obj_back
+#print axioms SerrePositivity.KST.SConstruction.arTwoMiddleRetraction_obj_back
+
+#check @SerrePositivity.KST.SConstruction.arTwoMiddleRetraction_square
+#print axioms SerrePositivity.KST.SConstruction.arTwoMiddleRetraction_square
+
+#check @SerrePositivity.KST.SConstruction.arTwoMiddle_mem_of_vertices
+#print axioms SerrePositivity.KST.SConstruction.arTwoMiddle_mem_of_vertices
+
+#check @SerrePositivity.KST.SConstruction.arTwoMiddle_vertices_of_mem
+#print axioms SerrePositivity.KST.SConstruction.arTwoMiddle_vertices_of_mem
+
+#check @SerrePositivity.KST.SConstruction.arTwoMiddle_notMem_first
+#print axioms SerrePositivity.KST.SConstruction.arTwoMiddle_notMem_first
+
+#check @SerrePositivity.KST.SConstruction.arTwoMiddle_notMem_last
+#print axioms SerrePositivity.KST.SConstruction.arTwoMiddle_notMem_last
+
+#check @SerrePositivity.KST.SConstruction.arTwoMiddle_missing_endpoint
+#print axioms SerrePositivity.KST.SConstruction.arTwoMiddle_missing_endpoint
+
+#check @SerrePositivity.KST.SConstruction.exists_arTwo_extension_with_zero_endpoints
+#print axioms SerrePositivity.KST.SConstruction.exists_arTwo_extension_with_zero_endpoints
+
+#check @SerrePositivity.KST.SConstruction.isGapped_two_of_cofiber_middle
+#print axioms SerrePositivity.KST.SConstruction.isGapped_two_of_cofiber_middle
+
+#check @SerrePositivity.KST.SConstruction.exists_gapped_arTwo_of_cofiber
+#print axioms SerrePositivity.KST.SConstruction.exists_gapped_arTwo_of_cofiber
+
+#check @SerrePositivity.KST.SConstruction.firstRow_two_middle_bottom
+#print axioms SerrePositivity.KST.SConstruction.firstRow_two_middle_bottom
+
+#check @SerrePositivity.KST.SConstruction.exists_gapped_arTwo_with_firstRow
+#print axioms SerrePositivity.KST.SConstruction.exists_gapped_arTwo_with_firstRow
+
+#check @SerrePositivity.KST.SConstruction.firstRowRestriction_two_vertex_surjective
+#print axioms SerrePositivity.KST.SConstruction.firstRowRestriction_two_vertex_surjective
+
+#check @SerrePositivity.KST.SConstruction.firstRowRestriction_two_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.firstRowRestriction_two_trivialKanFibration
