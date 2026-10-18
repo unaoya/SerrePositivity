@@ -2045,7 +2045,8 @@ A3e に実際の比較射の充満忠実性と既存の本質的全射性を渡�
 担当は N。正本は `formalization-plans/e-infinity-algebras.md` §3 と
 `formalization-plans/foundations.md` §1。γ1.5 の完了後に続けて担当し、
 𝒮（F2）・Sp（L9）・E2b の三者が共有する比較を作る。
-現在は γ3a の紙の主張と実装方針の記録が完了。γ3b・γ3c の Lean 証明は未実装。
+現在は γ3a の記録と γ3b の検出・比較ファイバーの補題が完了。
+具体的な sHom 図式との比較および γ3c は未実装。
 当面は通常の小圏で添字付けた strict な図式の極限側を扱い、余極限と一般の図式の比較は後続に保持する。
 
 ### γ3a：原典と今回の限定形
@@ -2128,6 +2129,23 @@ Bousfield–Kan 型なら `∫_i Fun(N(I/i), H_x(i))` という重み付き end 
 `N(I/i)` の i に関する作用も含めて定義する。
 strict limit をこの重み付き end に写す比較 κ_x と、coherent な錐の点 b_c の対応が証明対象である。
 既存の F1 の空間・写像空間の API を再利用するが、原典の定理を Lean の仮定に追加しない。
+
+### γ3b の実装済み界面（本体の比較は未完了）
+
+`HomotopyLimits/Detection.lean` と `ComparisonFiber.lean` に検出と最後の推論を置く。
+namespace は `SerrePositivity.InfinityCategories.HomotopyLimits`。
+
+| 公開 API | 型と役割 |
+| --- | --- |
+| `isLimitCone_iff_conePinchedHom_isContractibleKan c` | `[Quasicategory X]` の下で `IsLimitCone c ↔ ∀ d : JoinCone p, IsContractibleKan (pinchedHom (X := sliceOver p) d c)` |
+| `comparisonFiber q b` | `vertexFiber (equivalencePathReplacementMap q) b`。置換前の strict fiber とは区別する |
+| `comparisonFiber_isContractibleKan_of_homotopyEquivalence q hq b` | A・B が Kan、q : A → B が実際のホモトピー同値なら `IsContractibleKan (comparisonFiber q b)` |
+| `isLimitCone_of_comparisonFiber_homotopyEquivalence` | 全ての coherent な錐 d で、同値な比較射 q_d の fiber と錐の pinched Hom の実際のホモトピー同値を与えれば `IsLimitCone c` |
+
+最後の API は比較射とその同値の**構成を入力として要求する**。
+これを `sHom(x,L) → holim sHom(x,F−)` に具体化する構成は未完了であり、
+この界面だけを HTT 4.2.4.1 の双対の証明完成とは数えない。
+公開9宣言の正確な型・全前提・公理は `scripts/audit_homotopy_limits.lean` で検査する。
 
 ### γ3c：最初に検証する三つの極限
 

@@ -216,8 +216,12 @@ HTT 4.2.4.1 の双対と Kerodon Corollary 7.5.4.6 を基準とする。
 | 工程 | 現在地 |
 | --- | --- |
 | γ3a | 限定した主張、原典、仮定、pinched Hom による検出、適用条件と宇宙を記録済み |
-| γ3b | 錐の pinched 写像空間と導来ファイバーの比較、極限性の Lean 証明は未実装 |
+| γ3b | pinched Hom による検出と同値な比較射の導来 fiber の可縮性は実装。具体的な sHom 図式との比較は未実装 |
 | γ3c | 𝒮・Sp の引き戻し、fibration の塔、有限積への適用は未実装。Alg_E は E2a 後 |
 
 Sp では raw sHom の局所 Kan 性と極限の cofibrancy を省略せず、必要なら cofibrant-fibrant
 置換後の錐を公開する。実装は `InfinityCategories/HomotopyLimits/` と専用監査に置く。
+
+γ3b の部分 API は `HomotopyLimits` 集約と `scripts/audit_homotopy_limits.lean` に置く。
+公開9宣言は検出・path 置換の fiber の可縮性・比較を入力とする極限性の推論。
+比較の構成を入力とする界面だけでは γ3b の完成とは数えない。

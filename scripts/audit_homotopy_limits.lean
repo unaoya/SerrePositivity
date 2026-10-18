@@ -1,0 +1,25 @@
+import SerrePositivity.InfinityCategories.HomotopyLimits
+
+set_option pp.universes true
+set_option pp.explicit true
+
+open SerrePositivity.InfinityCategories.HomotopyLimits
+
+#check @isContractibleKan_conePinchedHom_of_isLimitCone
+#print axioms isContractibleKan_conePinchedHom_of_isLimitCone
+#check @isLimitCone_iff_conePinchedHom_isContractibleKan
+#print axioms isLimitCone_iff_conePinchedHom_isContractibleKan
+#check @isLimitCone_of_conePinchedHom_iso
+#print axioms isLimitCone_of_conePinchedHom_iso
+#check @isLimitCone_of_conePinchedHom_homotopyEquivalence
+#print axioms isLimitCone_of_conePinchedHom_homotopyEquivalence
+#check @comparisonFiber
+#print axioms comparisonFiber
+#check @comparisonFiber_isContractibleKan_of_isQCatEquivalence
+#print axioms comparisonFiber_isContractibleKan_of_isQCatEquivalence
+#check @comparisonFiber_isContractibleKan_of_homotopyEquivalence
+#print axioms comparisonFiber_isContractibleKan_of_homotopyEquivalence
+#check @isLimitCone_of_comparisonFiber_iso
+#print axioms isLimitCone_of_comparisonFiber_iso
+#check @isLimitCone_of_comparisonFiber_homotopyEquivalence
+#print axioms isLimitCone_of_comparisonFiber_homotopyEquivalence
