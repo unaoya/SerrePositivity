@@ -24,7 +24,7 @@
 
 作成日：2026-10-18。
 状態：L9a・L9b 完了。L9c に着手。
-対象ビルド・25 モジュール 844 宣言の公理監査成功。
+対象ビルド・29 モジュール 876 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9b、8370 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -605,3 +605,41 @@ L9c 全体は未完了。次は切断スペクトルの Hom の塔を実装す�
 私有宣言を含む 25 モジュール 844 宣言で標準三公理のみ。
 次はこの合成の整合性をスペクトルの評価族へ適用し、極限へ合成を持ち上げる。
 スペクトルの単体的圏と coherent nerve の構成は引き続き未完了。
+
+## 25. L9c の局所 Kan な単体的圏と coherent nerve
+
+各段の単体的合成を切断写像空間の極限へ持ち上げた。
+構造整合性は豊穣関手としての suspension と中間の射の移動から証明した。
+全段評価による外延性で単位律と結合律を証明した。
+通常の厳密な射の恒等・合成との比較を行い、単体的圏に束ねた。
+構成済みの Kan 写像空間に N レーンの γ1 を適用した。
+`Sp := SimplicialNerve OmegaSpectrum` の quasicategory 性を証明済み。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `OmegaSpectrum.compositionFamily` | 各段評価後の単体的合成 |
+| `OmegaSpectrum.compositionFamily_condition` | 合成の構造射との整合性 |
+| `OmegaSpectrum.mappingComposition` | 極限へ持ち上げた合成 |
+| `OmegaSpectrum.mappingComposition_evaluation` | 合成の各段評価 |
+| `OmegaSpectrum.mappingIdentity` | 恒等射の終対象パラメータによる単位 |
+| `OmegaSpectrum.mappingIdentity_evaluation` | 単位の各段評価 |
+| `OmegaSpectrum.mappingIdentity_comp` / `.mappingComposition_identity` | 左右の単位律 |
+| `OmegaSpectrum.mappingComposition_assoc` | 結合律 |
+| `OmegaSpectrum.vertexOfHomMap_comp` | 通常の合成と単体的合成の一致 |
+| `OmegaSpectrum.mappingEnrichedCategory` | 単体集合に豊穣化した圏 |
+| `OmegaSpectrum.simplicialCategory` | 通常の射と接続した単体的圏 |
+| `Sp` | BF 方式の Ω スペクトルの coherent nerve |
+| `sp_quasicategory` | γ1 による quasicategory 性 |
+
+参照：BF 1978 §2、HTT A.3.3、HTT 1.1.5.10、Kerodon 2.4.5.1、HA §1.4.2。
+保存単位の対象ビルド 1613 jobs 成功。
+私有宣言を含む 29 モジュール 876 宣言で標準三公理のみ。
+Sp の構成の区切りで全体ビルドも実行したが終了コード 1。
+L9 の import 閉包外の `InfinityCategories/F1.lean:1` で
+`F1/CoherentOrderDiagrams.olean` が見つからないというエラーだった。
+他レーンを編集せず、L9 自身の対象ビルド成功と区別して記録する。
+導来写像空間を持つ正しい Sp との比較は主張しない。これは γ3 後の工程。
+未完了：loop のホモトピー群の次数移動、整数次数 π_* と段の選択独立性。
+未完了：cofibrant・Kan 置換、スペクトルの fiber 列と長完全列。
+L9d の telescope 有理化、L9e の hG・Tot・有理 Shapiro も未完了。
+次は path space の fiber 列と収縮から loop の次数移動を証明する。
