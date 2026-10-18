@@ -11,8 +11,9 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 1520 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 1534 宣言、標準三公理のみ。
 - 一般点で自由な境界純変換の開自由 locus が基礎環を覆うことを、実際の局所化同型から証明済み。
+- 境界外の任意の開閉部分を、互いに交わらず全体を覆う二つの実チャートで分離する有限生成中心を構成済み。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -908,6 +909,24 @@ Noether D 上有限な G は有限表示なので自由 locus は開。
 拡大素点の縮約は元の C の素点だから、この開自由 locus の Spec(C) への像は全体となる。
 `PureTransformStalkEquiv.lean` と `GenericBoundaryFreeLocus.lean` で証明済み。
 
+#### 境界外の開閉部分の分離
+
+原典：Stacks Lemma 31.35.5 を用いる 0810・0811 の階数一定化。
+まず二つの部分への分割を扱う。R の正則元 f と R[1/f] の冪等元 e に対し、
+ある正整数 N と a,b ∈ (f) を選び、a+b=f^N、ab=0、
+a の局所化像が e f^N となることを証明する。
+証明は e の分母を払い、さらに f を一回掛ける。
+b=f^N-a と置き、積が零であることは正則元 f の局所化の単射性で判定する。
+中心 I=(a,b) は有限生成で中心補開集合は D(f) と一致する。
+a チャートでは a の像が非零因子なので b の像は零、したがって f^N の像は a の像。
+境界を可逆化した a チャートでは e の像は 1 であり、b チャートでは 0 となる。
+これにより境界外の開閉分割がチャート上に延長する。
+この補題は開閉部分の数に関する反復に使い、一般階数が一定の既証の中心へ接続する。
+`BoundaryIdempotentNumerators.lean`、`OrthogonalCenter.lean`、
+`BoundaryClopenSeparation.lean` で二分割の中心と実チャートの分離を証明済み。
+任意の開閉部分について、一方の境界外チャートへの逆像は全体、他方への逆像は空とする形まで構成済み。
+有限個の階数部分に関する反復と、階数の基底変更に対する照合は引き続き必要。
+
 #### 選んだ有限表示の任意の基底変更
 
 原典：Stacks 0810, Lemma 38.30.2 の小行列式の基底変更の利用。
@@ -1056,6 +1075,15 @@ Fin(N-k) 上の自由加群からの全射を構成する。
 
 | 宣言 | 内容 | 状態 |
 | --- | --- | --- |
+| `exists_orthogonal_boundary_numerators` | 境界外の冪等元の直交する境界内分子 | 証明済み |
+| `chartBaseMap_eq_zero_of_mul_eq_zero` | 中心元と積が零の元は対応チャートで零 | 証明済み |
+| `pair_center_complement` | 二元中心の補開集合と境界外の一致 | 証明済み |
+| `disjoint_affineBlowupChart_of_mul_eq_zero` | 直交中心元のチャートの非交差性 | 証明済み |
+| `pair_center_chart_sup_eq_top` | 二元中心の二チャートによる被覆 | 証明済み |
+| `awayMap_eq_one_of_numerator` | 分子の像から局所化元の像 1 を判定 | 証明済み |
+| `awayMap_eq_zero_of_numerator` | 分子の像から局所化元の像 0 を判定 | 証明済み |
+| `exists_fg_center_separating_boundary_idempotent` | 境界外の冪等元を分離する実際の有限生成中心 | 証明済み |
+| `exists_fg_center_separating_boundary_clopen` | 任意の境界外開閉部分を分離する中心と二チャート | 証明済み |
 | `pureTransformAtPrimeTensorEquiv` | 純変換の素点局所化とテンソル局所化後の純変換の同型 | 構成済み |
 | `mem_freeLocus_pureTransform_of_tensorPureFree` | テンソル局所化による純変換の自由 locus の判定 | 証明済み |
 | `genericPrime_mem_freeLocus_of_genericBoundaryPureFree` | 境界純変換の全拡大素点での自由性 | 証明済み |

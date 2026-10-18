@@ -226,3 +226,6 @@ public import SerrePositivity.KST.SchemeLemmas.BoundaryMinorCoefficientPower
 public import SerrePositivity.KST.SchemeLemmas.ConstantGenericRankCenter
 public import SerrePositivity.KST.SchemeLemmas.PureTransformStalkEquiv
 public import SerrePositivity.KST.SchemeLemmas.GenericBoundaryFreeLocus
+public import SerrePositivity.KST.SchemeLemmas.BoundaryIdempotentNumerators
+public import SerrePositivity.KST.SchemeLemmas.OrthogonalCenter
+public import SerrePositivity.KST.SchemeLemmas.BoundaryClopenSeparation
