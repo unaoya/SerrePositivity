@@ -354,3 +354,5 @@ public import SerrePositivity.InfinityCategories.F1.MappingCylinderIntervalEquiv
 public import SerrePositivity.InfinityCategories.F1.BoundaryFactorization
 public import SerrePositivity.InfinityCategories.F1.MappingCylinderTargetComparison
 public import SerrePositivity.InfinityCategories.F1.MappingCylinderQuasicategoryComparison
+public import SerrePositivity.InfinityCategories.F1.InnerAnodyneReplacement
+public import SerrePositivity.InfinityCategories.F1.InnerAnodyneVertices

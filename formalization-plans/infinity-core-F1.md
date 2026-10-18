@@ -7561,5 +7561,19 @@ lemma mappingCylinder_isPrecompositionEquivalence_of_quasicategory_factors
     (hc : ∀ x : X _⦋0⦌, IsCocartesianEdge p (prismVerticalSimplex H x)) :
     IsPrecompositionEquivalence (pushout.desc H g w)
 
+lemma mono_of_innerAnodyne {X Y : SSet.{u}} (i : X ⟶ Y)
+    (hi : innerAnodyneExtensions i) : Mono i
+
+lemma exists_innerAnodyne_innerFibration_factorization {X Y : SSet.{u}} (f : X ⟶ Y) :
+    ∃ (Z : SSet.{u}) (i : X ⟶ Z) (p : Z ⟶ Y),
+      innerAnodyneExtensions i ∧ InnerFibration p ∧ i ≫ p = f
+
+lemma exists_quasicategory_resolution_over {X Y : SSet.{u}} [Quasicategory Y] (f : X ⟶ Y) :
+    ∃ (Z : SSet.{u}) (i : X ⟶ Z) (p : Z ⟶ Y),
+      innerAnodyneExtensions i ∧ Quasicategory Z ∧ InnerFibration p ∧ i ≫ p = f
+
+lemma innerAnodyne_vertex_bijective {A B : SSet.{u}} (i : A ⟶ B)
+    (hi : innerAnodyneExtensions i) : Function.Bijective (i.app (Opposite.op ⦋0⦌))
+
 end SerrePositivity.InfinityCategories
 ```
