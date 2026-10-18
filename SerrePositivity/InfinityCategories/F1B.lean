@@ -35,3 +35,7 @@ public import SerrePositivity.InfinityCategories.F1B.HomCorrespondence
 public import SerrePositivity.InfinityCategories.F1B.FunctorHomCorrespondence
 public import SerrePositivity.InfinityCategories.F1B.UnitHomCriterion
 public import SerrePositivity.InfinityCategories.F1B.QCatUnitHomCriterion
+public import SerrePositivity.InfinityCategories.F1B.TransformationFamilies
+public import SerrePositivity.InfinityCategories.F1B.TransformationFamilyNaturality
+public import SerrePositivity.InfinityCategories.F1B.MappingSpaceHom
+public import SerrePositivity.InfinityCategories.F1B.FunctorMappingUnitCriterion

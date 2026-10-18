@@ -232,3 +232,47 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.qcatAdjunctionOfUnitHomBijective_unitHom
 
 #check @SerrePositivity.InfinityCategories.qcat_exists_adjunction_unitHom_iff
+
+#check @SerrePositivity.InfinityCategories.transformationFamilyUncurry
+
+#check @SerrePositivity.InfinityCategories.transformationFamilyHomotopy
+
+#check @SerrePositivity.InfinityCategories.transformationFamilyCurry
+
+#check @SerrePositivity.InfinityCategories.transformationFamilyEquiv
+
+#check @SerrePositivity.InfinityCategories.transformationFamilyUncurry_precomp
+
+#check @SerrePositivity.InfinityCategories.transformationFamilyUncurry_restrict
+
+#check @SerrePositivity.InfinityCategories.transformationFamilyUncurry_postcomp
+
+#check @SerrePositivity.InfinityCategories.transformationFamilyHomotopy_precomp
+
+#check @SerrePositivity.InfinityCategories.transformationFamilyHomotopy_restrict
+
+#check @SerrePositivity.InfinityCategories.transformationFamilyHomotopy_postcomp
+
+#check @SerrePositivity.InfinityCategories.mappingSpaceHomMap
+
+#check @SerrePositivity.InfinityCategories.mappingSpaceHomMap_bijective
+
+#check @SerrePositivity.InfinityCategories.mappingSpaceHomMap_eq_of_homMk
+
+#check @SerrePositivity.InfinityCategories.mappingSpaceHomMap_eq_of_homotopy
+
+#check @SerrePositivity.InfinityCategories.mappingSpaceHomMap_functor
+
+#check @SerrePositivity.InfinityCategories.mappingSpaceHomMap_comp
+
+#check @SerrePositivity.InfinityCategories.mappingSpaceHomMap_square
+
+#check @SerrePositivity.InfinityCategories.functorMappingSpaceHomEquiv
+
+#check @SerrePositivity.InfinityCategories.functorMappingSpaceHomEquiv_precomp
+
+#check @SerrePositivity.InfinityCategories.qcatUnitHomMap_bijective_of_mappingSpace
+
+#check @SerrePositivity.InfinityCategories.qcatAdjunctionOfUnitMappingEquivalences
+
+#check @SerrePositivity.InfinityCategories.qcatAdjunctionOfUnitMappingEquivalences_unitHom

@@ -108,12 +108,26 @@ Hom 全単射、二変数自然性、パラメータの左 whisker との整合�
 **この判定の全単射条件は全ての quasicategory パラメータ A と任意の U,V に課す。**
 点ごとの hX の Hom 全単射に弱めていない。
 
-B1 の逆方向全体は未完了。残るのは、自然な pinched 写像空間対応（または
-Cor 6.2.6.5 の指定単位による各点の比較の同値性）から、**非定値 U,V を含む**
-上の自然な h Fun の対応または全パラメータの単位条件へ移す橋である。
-固定端点の定値関手についての既存の橋だけではこの工程を埋めない。
-B2〜B5 も未完了。対象ビルド（1957 jobs）・公理監査（409 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 289 モジュールに straightening 依存がないことも確認した。
+非定値の関手 U,V の区間写像空間の族を、A×B 上の端点 fst≫U,fst≫V の
+ホモトピーへ展開する `transformationFamilyEquiv` を実装した。curry と uncurry は
+ホモトピー類を取る前に厳密に両逆で、関手の変数 A の制限、族の変数 B の前合成、
+標的の後合成との自然性を証明した。以前の定値端点 x,y の転置とは別に、U,V 自体を保つ。
+さらに Fun(A,X) を周囲の quasicategory として、pinched 写像空間の比較を π₀ 経由で
+直接 h Fun の Hom に移す `functorMappingSpaceHomEquiv` を構成した。
+比較の合成・恒等・ホモトピー可換正方形は Hom の等式に移り、特に内部 Hom の前合成との
+自然性ホモトピーから `QCatFunctorHomCorrespondence.precomp` の形の等式を導いた。
+この橋は U,V を定値関手に置き換えない。
+`qcatAdjunctionOfUnitMappingEquivalences` は **全ての A と任意の U,V** で単位を表す
+pinched 写像空間のホモトピー同値が与えられた場合に、指定単位を持つ随伴を構成する。
+単位の公式との整合は全ての代表辺（pinched の零単体）で照合し、Hom 全単射性は
+写像空間の同値から導く。余単位・三角恒等式・随伴の存在は入力しない。
+
+B1 の逆方向全体は未完了。残るのは、自然な **各点の** pinched 写像空間対応から単位を取り出す
+接続と、Cor 6.2.6.5 の指定単位による各点の比較の同値性を **全ての A と非定値 U,V** の
+比較へ拡張する局所存在・関手の族の構成である。上の全パラメータ版の十分条件で、
+原典の各点の条件を置き換えて B1 完了とはしない。
+B2〜B5 も未完了。対象ビルド（1961 jobs）・公理監査（454 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 293 モジュールに straightening 依存がないことも確認した。
 
 ## 4. 主要宣言
 
@@ -208,5 +222,14 @@ B2〜B5 も未完了。対象ビルド（1957 jobs）・公理監査（409 宣�
 | `BicategoryHomCorrespondence.ofUnit`・`bicategoryAdjunctionOfUnitHomBijective` | 全パラメータの単位 Hom 写像の全単射性から随伴を構成 | 実装済み |
 | `bicategory_exists_adjunction_unit_iff` | 指定単位を持つ双圏随伴と全パラメータ Hom 全単射条件の同値 | 実装済み |
 | `qcatUnitHomMap`・`qcatAdjunctionOfUnitHomBijective`・`qcat_exists_adjunction_unitHom_iff` | h Fun の指定単位と全パラメータ Hom 全単射による同じ判定 | 実装済み |
+| `transformationFamilyUncurry`・`transformationFamilyHomotopy` と端点公式 | 非定値 U,V の写像空間の B 族を A×B 上のホモトピーへ展開 | 実装済み |
+| `transformationFamilyCurry`・`transformationFamilyEquiv` | 展開の厳密な逆とホモトピー類を取る前の全単射 | 実装済み |
+| `transformationFamilyUncurry_precomp/restrict/postcomp`・`transformationFamilyHomotopy_precomp/restrict/postcomp` | B の前合成・A の制限・標的後合成との自然性 | 実装済み |
+| `mappingSpaceHomMap`・`mappingSpaceHomMap_bijective`・`mappingSpaceHomEquiv` | pinched 比較から直接周囲の h 圏の Hom に移す射・全単射 | 実装済み |
+| `mappingSpaceHomMap_homMk`・`mappingSpaceHomMap_eq_of_homMk`・`mappingSpaceHomMap_eq_of_homotopy` | 代表辺での計算と認識、ホモトピー不変性 | 実装済み |
+| `mappingSpaceHomMap_functor/comp/id/square` | 関手の作用・合成・恒等・ホモトピー可換正方形の移送 | 実装済み |
+| `functorMappingSpaceHomEquiv`・`functorMappingSpaceHomEquiv_precomp` | 非定値関手間の写像空間比較から Hom 全単射とパラメータ自然性を導く | 実装済み |
+| `qcatUnitHomMap_bijective_of_mappingSpace` | 代表辺で単位を表す写像空間比較の同値性から Hom 全単射を導く | 実装済み |
+| `qcatAdjunctionOfUnitMappingEquivalences`・`qcatAdjunctionOfUnitMappingEquivalences_unitHom` | 全 A,U,V の比較から指定単位を持つ随伴を構成（各点の条件への還元は未完了） | 実装済み |
 | 写像空間による特徴づけ | 自然な pinchedHom のホモトピー同値との同値 | 未完了 |
 | B2〜B5 | §1 の全項目 | 未着手（監査スクリプトは作成済み） |
