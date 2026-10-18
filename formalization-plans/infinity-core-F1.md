@@ -8610,5 +8610,38 @@ lemma edgewiseSupportLower_pivot {n : ℕ} (S : EdgewiseUpperSupport n) :
 
 def edgewiseSupportPairEquiv (n : ℕ) : EdgewiseLowerSupport n ≃ EdgewiseUpperSupport n
 
+lemma edgewiseWeightIso_inl (n : ℕ) :
+    joinInl (Δ[n] : SSet.{u}).op Δ[n] ≫ (edgewiseWeightIso n).hom =
+      (stdSimplex.opIso ⦋n⦌).hom ≫ stdSimplex.map
+        (SimplexCategory.mkHom (DGNerve.joinLeftOrderHom n n))
+
+lemma edgewiseWeightIso_inr (n : ℕ) :
+    joinInr (Δ[n] : SSet.{u}).op Δ[n] ≫ (edgewiseWeightIso n).hom =
+      stdSimplex.map (SimplexCategory.mkHom (DGNerve.joinRightOrderHom n n))
+
+def edgewiseRightVerticesOrderIso (n : ℕ) : Fin (n + 1) ≃o edgewiseRightVertices n
+
+lemma edgewiseWeightIso_inr_range (n : ℕ) :
+    Subcomplex.range (joinInr (Δ[n] : SSet.{u}).op Δ[n] ≫ (edgewiseWeightIso n).hom) =
+      stdSimplex.face (edgewiseRightVertices n)
+
+noncomputable def stdSimplexNondegenerateSupport {n : ℕ} (s : (Δ[n] : SSet.{u}).N) :
+    Finset (Fin (n + 1))
+
+lemma stdSimplexNondegenerateSupport_card {n : ℕ} (s : (Δ[n] : SSet.{u}).N) :
+    (stdSimplexNondegenerateSupport s).card = s.dim + 1
+
+lemma stdSimplexNondegenerateSupport_nonempty {n : ℕ} (s : (Δ[n] : SSet.{u}).N) :
+    (stdSimplexNondegenerateSupport s).Nonempty
+
+lemma stdSimplexNondegenerateSupport_injective (n : ℕ) :
+    Function.Injective (stdSimplexNondegenerateSupport.{u} (n := n))
+
+noncomputable def stdSimplexNondegenerateSupportEquiv (n : ℕ) :
+    (Δ[n] : SSet.{u}).N ≃ {S : Finset (Fin (n + 1)) // S.Nonempty}
+
+lemma stdSimplexNondegenerateSupport_subset_iff {n : ℕ} (s t : (Δ[n] : SSet.{u}).N) :
+    stdSimplexNondegenerateSupport s ⊆ stdSimplexNondegenerateSupport t ↔ s ≤ t
+
 end SerrePositivity.InfinityCategories
 ```

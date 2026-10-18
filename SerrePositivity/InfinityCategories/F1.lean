@@ -434,3 +434,5 @@ public import SerrePositivity.InfinityCategories.F1.EdgewiseExtensionDomain
 public import SerrePositivity.InfinityCategories.F1.EdgewiseSupportPairing
 public import SerrePositivity.InfinityCategories.F1.EdgewiseSupportRank
 public import SerrePositivity.InfinityCategories.F1.EdgewiseSupportEquivalence
+public import SerrePositivity.InfinityCategories.F1.EdgewiseWeightCoordinates
+public import SerrePositivity.InfinityCategories.F1.StandardSimplexSupports

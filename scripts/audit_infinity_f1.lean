@@ -1851,3 +1851,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.edgewiseSupportRaise_pivot
 #check @SerrePositivity.InfinityCategories.edgewiseSupportLower_pivot
 #check @SerrePositivity.InfinityCategories.edgewiseSupportPairEquiv
+#check @SerrePositivity.InfinityCategories.edgewiseWeightIso_inl
+#check @SerrePositivity.InfinityCategories.edgewiseWeightIso_inr
+#check @SerrePositivity.InfinityCategories.edgewiseRightVerticesOrderIso
+#check @SerrePositivity.InfinityCategories.edgewiseWeightIso_inr_range
+#check @SerrePositivity.InfinityCategories.stdSimplexNondegenerateSupport
+#check @SerrePositivity.InfinityCategories.stdSimplexNondegenerateSupport_card
+#check @SerrePositivity.InfinityCategories.stdSimplexNondegenerateSupport_nonempty
+#check @SerrePositivity.InfinityCategories.stdSimplexNondegenerateSupport_injective
+#check @SerrePositivity.InfinityCategories.stdSimplexNondegenerateSupportEquiv
+#check @SerrePositivity.InfinityCategories.stdSimplexNondegenerateSupport_subset_iff
