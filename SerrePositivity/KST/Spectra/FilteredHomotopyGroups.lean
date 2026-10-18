@@ -123,6 +123,20 @@ def filteredPointedHomotopyGroupIso (D : J ⥤ PointedSimplicialSet.{u})
     exact pointedHomotopyGroupColimitIso (colimit.cocone D)
       (isColimitOfPreserves PointedSimplicialSet.forget (colimit.isColimit D)) n
 
+/-- 概要：選ばれた点つき余極限の群比較を各段に制限すると余極限射の誘導準同型。
+方針：一般の cocone に対する成分計算を選ばれた余極限へ適用する。
+規約：n は実際の次数 n+1。
+使われ方：BF 1978 §2、HA §1.4.2。整数次数の余極限比較の成分計算。 -/
+@[reassoc (attr := simp)]
+theorem filteredPointedHomotopyGroupIso_ι (D : J ⥤ PointedSimplicialSet.{u})
+    [∀ j, KanComplex (D.obj j).right] (n : ℕ) (j : J) :
+    colimit.ι (pointedHomotopyGroupDiagram D n) j ≫ (filteredPointedHomotopyGroupIso D n).hom =
+      GrpCat.ofHom (KanHomotopyGroup.map (n := n) (colimit.ι D j).right
+        (OmegaSpectrum.pointedMap_basepoint _)) := by
+  let : KanComplex (colimit.cocone D).pt.right := inferInstanceAs (KanComplex (colimit D).right)
+  exact pointedHomotopyGroupColimitIso_ι (colimit.cocone D)
+    (isColimitOfPreserves PointedSimplicialSet.forget (colimit.isColimit D)) n j
+
 end
 
 end SerrePositivity.KST.Spectra

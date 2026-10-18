@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c 完了。L9d 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・112 モジュール 1880 宣言の公理監査成功。
+対象ビルド・117 モジュール 1955 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -1297,3 +1297,47 @@ loop 対象の余極限と余極限の loop 対象との標準同型、および
 私有宣言を含む 112 モジュール 1880 宣言で標準三公理のみ。
 次は段ごとの全基点 π_* 同型の filtered colimit 保存を示し、Ω 条件を移す。
 有理化の対象、telescope の比較、ℚ テンソルの計算は引き続き未完了。
+
+
+## 46. L9d の全基点 π_* 同型と filtered Ω 列の整数次数群
+
+まず点つき Kan 図式の指定基点のホモトピー類の自然変換を構成した。
+段ごとの全単射は自然同型となり、余極限の射も全単射になることを実証した。
+任意の余極限の頂点を一段から取った後、その段の under 圏で後続段に基点を付けた。
+under 圏からの forget の final 性により元の余極限を保つ。
+これにより、段ごとの全基点 π_* 同型が filtered colimit で保存されることを証明した。
+零次数を含む。空な段があっても追加の非空仮定を置かない。
+
+Ω スペクトルの図式を各段の点つき Kan 図式へ評価した。
+suspension が余極限を保存することから、段ごとの Kan 余極限に構造射を入れた。
+各元のスペクトルからこの Kan 列への射は厳密である。
+随伴構造射は、元の随伴構造射の余極限と loop の比較同型の合成に厳密に一致する。
+全基点 π_* 同型の保存をこの式へ適用し、余極限列の Ω 条件を証明した。
+構造射には境界 cell 分解の単射置換を施し、BF 対象を得た。
+
+各整数次数の群の図式と、任意の許容正次数の段の群の図式との自然同型を構成した。
+段の群と filtered colimit の可換性、単射置換の各段の比較同型を合成した。
+結果として、構成した BF 対象の全整数次数の群は、元の整数次数群の図式の余極限と同型である。
+この比較を各段から計算する式も証明した。
+これらは通常の段ごとの構成と π_* の計算であり、Sp の ∞ 余極限としての普遍性は含まない。
+有理化用の乗法射の列、homotopy telescope と通常の余極限の比較、ℚ テンソルの計算はまだ未完了。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `pointedHomotopyMap_bijective_of_filtered` | 指定基点の段ごとの π_n 同型の保存 |
+| `pointFromStage` / `.pointFromStageCocone` / `.pointFromStageIsColimit` | under 圏での任意基点の後続段への移送 |
+| `kanPiIsomorphism_of_filtered` | 全基点・全次数の π_* 同型の filtered colimit 保存 |
+| `pointedColimMap_kanPiIsomorphism` | 点つき余極限射への適用 |
+| `OmegaSpectrum.filteredKanSequence` / `.filteredKanInjection` | 段ごとの Kan 余極限列と厳密な射 |
+| `OmegaSpectrum.filteredAdjoint_formula` | 余極限の随伴構造射の計算 |
+| `OmegaSpectrum.filteredKanSequence_omegaCondition` | 全基点での Ω 条件 |
+| `OmegaSpectrum.filteredOmegaSpectrum` | 単射置換した BF 対象 |
+| `OmegaSpectrum.spectrumHomotopyDiagramStageIso` | 整数次数群の図式と段表示の自然同型 |
+| `OmegaSpectrum.filteredLevelComparison_piIsomorphism` | 単射置換の各段の π_* 比較 |
+| `OmegaSpectrum.filteredSpectrumHomotopyIso` | 全整数次数の群と群の filtered colimit の比較同型 |
+| `OmegaSpectrum.filteredSpectrumHomotopyIso_ι_stage` | 比較同型の各段での計算 |
+
+参照：Goerss–Jardine I §7、BF 1978 §2、HA §1.4.2。
+保存単位の対象ビルド 1896 jobs 成功。
+私有宣言を含む 117 モジュール 1955 宣言で標準三公理のみ。
+L9d は進行中。次は有理化の telescope に対応する群の局所化の計算を進める。
