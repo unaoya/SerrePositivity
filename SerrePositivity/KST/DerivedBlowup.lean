@@ -133,3 +133,9 @@ public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapDGIdentity
 public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapRestrictionComparison
 public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapDGAssociativity
 public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapDGUnitCoherence
+public import SerrePositivity.KST.DerivedBlowup.BaseRestrictionDGFunctor
+public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapTransitionComponents
+public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapBaseDGTransition
+public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapBaseDGFunctoriality
+public import SerrePositivity.KST.DerivedBlowup.DGEndMonoid
+public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapDGAlgebraDiagram

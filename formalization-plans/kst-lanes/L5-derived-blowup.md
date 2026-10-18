@@ -37,7 +37,10 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 環射の等式移送・係数制限の標準比較を含む恒等律と合成律を証明済み。
 任意 dg 圏で使える有限重なりの制限合成比較を構成し、
 チャート模型上で三段階の結合整合性と左右の単位整合性を証明済み。
-共通基底環上の dg 代数関手への組立てと、coherent な降下模型の組立ては未完了。
+共通基底環への制限後の dg 遷移も恒等・合成を保つことを証明済み。
+自己 Hom を Mathlib のモノイド対象へ束ね、全非空有限重なりから `Mon (Complex R)` への
+実際の関手 `finiteOverlapDGAlgebraDiagram` を構成済み。
+その係数図式上の coherent な dg 加群の降下模型と層レベル比較は未完了。
 L5b 全体は未完了。L5c〜L5f は未実装。
 既存の L11 の検証記録を、Lean の証明済み宣言とは扱わない。
 
@@ -243,6 +246,12 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `finiteOverlapRestrictionCompositionComparison`・対象・制限外積上の成分公式・既存チャート比較との一致 | FiniteOverlapRestrictionComparison | 任意 dg 圏で使える有限重なりの標準制限合成比較 |
 | `finiteOverlapDGCompositionComparison_assoc` | FiniteOverlapDGAssociativity | 三段階の有限重なり制限比較の二経路の一致 |
 | `finiteOverlapDGLeftIdentityComparison`・成分公式・`finiteOverlapDGCompositionComparison_left_unit`・`finiteOverlapDGCompositionComparison_right_unit` | FiniteOverlapDGUnitCoherence | 有限重なりの制限合成比較の左右の単位整合性 |
+| `baseRestrictionDGFunctor`・対象・外積 Hom の成分公式 | BaseRestrictionDGFunctor | 代数射に沿う半線形 dg 関手の共通基底環への係数制限 |
+| `finiteOverlapDGTransition_comp_apply`・`finiteOverlapDGTransition_id_apply` | FiniteOverlapTransitionComponents | 元の半線形遷移の各次数の関数としての恒等・合成公式 |
+| `FiniteOverlapBaseKoszulObject`・`finiteOverlapBaseDGTransition`・対象・成分公式 | FiniteOverlapBaseDGTransition | 共通基底環上の有限重なり dg 模型と遷移 |
+| `finiteOverlapBaseDGTransition_comp`・`finiteOverlapBaseDGTransition_id` | FiniteOverlapBaseDGFunctoriality | 共通基底環上の dg 遷移の恒等・合成則 |
+| `dgEndMonoid`・`dgEndMonoidMap` | DGEndMonoid | dg 自己 Hom の Mathlib の複体モノイド対象への接続 |
+| `finiteOverlapDGAlgebra`・`finiteOverlapDGAlgebraMap`・恒等・合成則・`finiteOverlapDGAlgebraDiagram` | FiniteOverlapDGAlgebraDiagram | 全非空有限重なりから共通基底環上の dg 代数への実際の関手 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -303,12 +312,16 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 環射の合成等式による行先の移送を含む標準制限比較後の合成律と、恒等制限比較後の恒等律を証明済み。
 任意 dg 圏に使える有限重なりの標準制限合成比較を構成済み。
 チャート外積模型上での三段階の制限比較の結合整合性と、左右の恒等制限との整合性を証明済み。
-共通基底環上の dg 代数関手への組立てと、coherent な降下模型の組立ては未完了。
-導来チャートの外積 dg 代数と underlying Koszul 複体は構成済みだが、
-局所化と底変更の比較を含むチャート図式全体の完成とは扱わない。
-所有モジュールの全1398定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+共通基底環への dg 係数制限後も対象・Hom の元の像を保ち、恒等・合成則を満たす。
+一対象 dg 圏の自己 Hom を Mathlib の `Mon (Complex R)` へ接続し、
+全非空有限重なりの包含順序圏から dg 代数への実際の関手を構成済み。
+この係数図式は加群の厳密な貼り合わせを要求しない。
+その上の coherent な dg 加群の降下模型と、層レベルの Dqc・Perf 比較は未完了。
+係数 dg 代数図式と局所の導来底変更比較は構成済みだが、
+coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全体の完成とは扱わない。
+所有モジュールの全1468定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
-次の実装単位は共通基底環への係数制限を通した全有限重なりの dg 代数関手の組立て。
+次の実装単位は係数 dg 代数図式上の coherent な dg 加群模型と局所 perfect 条件。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
 
