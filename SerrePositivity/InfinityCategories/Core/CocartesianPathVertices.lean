@@ -20,7 +20,7 @@ namespace SerrePositivity.InfinityCategories
 方針：Yoneda 表示を関手の頂点とし、全部分複体へ含める。
 規約：p のファイブレーション性は不要。
 使われ方：Kerodon §5.1.4 の辺の持ち上げの path 表示。 -/
-def cocartesianPathVertex {E B : SSet.{u}} (p : E ⟶ B) {x y : E _⦋0⦌}
+def cocartesianHornPathVertex {E B : SSet.{u}} (p : E ⟶ B) {x y : E _⦋0⦌}
     (e : SSet.Truncated.Edge (X := (truncation 2).obj E) x y)
     (he : HasCocartesianHornLifting p e) : (cocartesianPathSpace p) _⦋0⦌ :=
   ⟨functorVertex (SSet.yonedaEquiv.symm e.edge), by
@@ -28,7 +28,7 @@ def cocartesianPathVertex {E B : SSet.{u}} (p : E ⟶ B) {x y : E _⦋0⦌}
     have hα : α = 𝟙 ⦋0⦌ := Subsingleton.elim _ _
     subst α
     rw [op_id, CategoryTheory.Functor.map_id_apply]
-    unfold IsCocartesianPathVertex
+    unfold IsCocartesianHornPathVertex
     apply (hasCocartesianHornLifting_congr p (show
       (intervalFunctorVertexTypedEdge (functorVertex (SSet.yonedaEquiv.symm e.edge))).edge =
         e.edge from by
@@ -40,11 +40,11 @@ def cocartesianPathVertex {E B : SSet.{u}} (p : E ⟶ B) {x y : E _⦋0⦌}
 方針：評価の Yoneda 表示と辺の始点条件を使う。
 規約：p のファイブレーション性は不要。
 使われ方：Kerodon §5.1.4 の始点を指定した輸送。 -/
-lemma cocartesianPathVertex_zero {E B : SSet.{u}} (p : E ⟶ B) {x y : E _⦋0⦌}
+lemma cocartesianHornPathVertex_zero {E B : SSet.{u}} (p : E ⟶ B) {x y : E _⦋0⦌}
     (e : SSet.Truncated.Edge (X := (truncation 2).obj E) x y)
     (he : HasCocartesianHornLifting p e) :
     (cocartesianPathSpaceι p ≫ evaluateFunctorAt (Y := E) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app
-      (Opposite.op ⦋0⦌) (cocartesianPathVertex p e he) = x := by
+      (Opposite.op ⦋0⦌) (cocartesianHornPathVertex p e he) = x := by
   change (evaluateFunctorAt (Y := E) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app
     (Opposite.op ⦋0⦌) (functorVertex (SSet.yonedaEquiv.symm e.edge)) = x
   rw [evaluateFunctorAt_functorVertex, SSet.yonedaEquiv_symm_app]
@@ -86,13 +86,13 @@ lemma cocartesianPathSpaceSource_surjective {E B : SSet.{u}} (p : E ⟶ B)
       src_eq := d.src_eq.trans hs.symm
       tgt_eq := d.tgt_eq }
   obtain ⟨y, e, hp, he⟩ := CocartesianHornFibration.exists_lift (p := p) x _ d'
-  refine ⟨cocartesianPathVertex p e he, ?_⟩
+  refine ⟨cocartesianHornPathVertex p e he, ?_⟩
   apply pullback_vertex_ext p evB
   · have hh := ConcreteCategory.congr_hom (NatTrans.congr_app
-        (cocartesianPathSpaceSource_fst p) (Opposite.op ⦋0⦌)) (cocartesianPathVertex p e he)
-    exact hh.trans (cocartesianPathVertex_zero p e he)
+        (cocartesianPathSpaceSource_fst p) (Opposite.op ⦋0⦌)) (cocartesianHornPathVertex p e he)
+    exact hh.trans (cocartesianHornPathVertex_zero p e he)
   · have hh := ConcreteCategory.congr_hom (NatTrans.congr_app
-        (cocartesianPathSpaceSource_snd p) (Opposite.op ⦋0⦌)) (cocartesianPathVertex p e he)
+        (cocartesianPathSpaceSource_snd p) (Opposite.op ⦋0⦌)) (cocartesianHornPathVertex p e he)
     apply hh.trans
     change ((ihom (Δ[1] : SSet.{u})).map p).app (Opposite.op ⦋0⦌)
       (functorVertex (SSet.yonedaEquiv.symm e.edge)) = v

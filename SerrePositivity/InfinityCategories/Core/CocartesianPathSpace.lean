@@ -43,7 +43,7 @@ def intervalFunctorVertexTypedEdge {E : SSet.{u}} (v : ((ihom (Δ[1] : SSet.{u})
 方針：頂点が表す一次単体の相対ホーン充填条件を取る。
 規約：端点の表示は辺から定める。
 使われ方：Kerodon §5.1.4 の輸送の選択。 -/
-def IsCocartesianPathVertex {E B : SSet.{u}} (p : E ⟶ B)
+def IsCocartesianHornPathVertex {E B : SSet.{u}} (p : E ⟶ B)
     (v : ((ihom (Δ[1] : SSet.{u})).obj E) _⦋0⦌) : Prop :=
   HasCocartesianHornLifting p (intervalFunctorVertexTypedEdge v)
 
@@ -52,7 +52,7 @@ def IsCocartesianPathVertex {E B : SSet.{u}} (p : E ⟶ B)
 規約：高次単体には全頂点の条件を要求する。
 使われ方：Kerodon §5.1.4 の coherent な輸送の空間。 -/
 def cocartesianPathSpace {E B : SSet.{u}} (p : E ⟶ B) : SSet.{u} :=
-  (fullSubcomplexOnVertices ((ihom (Δ[1] : SSet.{u})).obj E) (IsCocartesianPathVertex p) : SSet.{u})
+  (fullSubcomplexOnVertices ((ihom (Δ[1] : SSet.{u})).obj E) (IsCocartesianHornPathVertex p) : SSet.{u})
 
 /-- 概要：cocartesian な path を区間からの関手へ含める。
 方針：全部分複体の包含を使う。
@@ -60,7 +60,7 @@ def cocartesianPathSpace {E B : SSet.{u}} (p : E ⟶ B) : SSet.{u} :=
 使われ方：Kerodon §5.1.4 の輸送の評価。 -/
 def cocartesianPathSpaceι {E B : SSet.{u}} (p : E ⟶ B) :
     cocartesianPathSpace p ⟶ (ihom (Δ[1] : SSet.{u})).obj E :=
-  (fullSubcomplexOnVertices _ (IsCocartesianPathVertex p)).ι
+  (fullSubcomplexOnVertices _ (IsCocartesianHornPathVertex p)).ι
 
 /-- 概要：cocartesian な path から始点と基底の path への射。
 方針：始点評価と p による後合成を引き戻しへ合わせる。

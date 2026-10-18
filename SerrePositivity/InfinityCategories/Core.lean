@@ -423,3 +423,11 @@ public import SerrePositivity.InfinityCategories.Core.ConeHomotopyTransport
 public import SerrePositivity.InfinityCategories.Core.ConeRestrictionCocartesianFibration
 
 public import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitCriterion
+
+public import SerrePositivity.InfinityCategories.Core.VertexDiscrete
+
+public import SerrePositivity.InfinityCategories.Core.TerminalVertexLifting
+
+public import SerrePositivity.InfinityCategories.Core.InternalHomFlipVertices
+
+public import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitExistence

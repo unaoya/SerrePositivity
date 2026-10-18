@@ -34,13 +34,13 @@ lemma cocartesianHomotopy_extend {A D E B : SSet.{u}} (p : E ⟶ B) [Cocartesian
       ∀ x : D _⦋0⦌, HasCocartesianHornLifting p (edgeOfSimplex
         (F.app (Opposite.op ⦋1⦌)
           (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant x 1))) := by
-  have hv : ∀ x, IsCocartesianPathVertex p ((curry H).app (Opposite.op ⦋0⦌) x) := by
+  have hv : ∀ x, IsCocartesianHornPathVertex p ((curry H).app (Opposite.op ⦋0⦌) x) := by
     intro x
-    unfold IsCocartesianPathVertex
+    unfold IsCocartesianHornPathVertex
     change HasCocartesianHornLifting p (edgeOfSimplex (intervalFunctorVertexEdge _))
     rw [intervalFunctorVertexEdge_curry]
     exact hH x
-  let a := fullSubcomplexLift (IsCocartesianPathVertex p) (curry H) hv
+  let a := fullSubcomplexLift (IsCocartesianHornPathVertex p) (curry H) hv
   have ha : a ≫ cocartesianPathSpaceι p = curry H := fullSubcomplexLift_ι _ _ _
   let evB := evaluateFunctorAt (Y := B) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))
   have hbase : f ≫ p = curry β ≫ evB := by
@@ -75,10 +75,10 @@ lemma cocartesianHomotopy_extend {A D E B : SSet.{u}} (p : E ⟶ B) [Cocartesian
     simpa only [Category.assoc, cocartesianPathSpaceSource_snd, pullback.lift_snd] using hh
   · intro x
     have hx := fullSubcomplexOnVertices_vertex (sq.lift.app (Opposite.op ⦋0⦌) x)
-    change IsCocartesianPathVertex p
+    change IsCocartesianHornPathVertex p
       ((sq.lift ≫ cocartesianPathSpaceι p).app (Opposite.op ⦋0⦌) x) at hx
     rw [← hC] at hx
-    unfold IsCocartesianPathVertex at hx
+    unfold IsCocartesianHornPathVertex at hx
     change HasCocartesianHornLifting p (edgeOfSimplex (intervalFunctorVertexEdge _)) at hx
     rw [intervalFunctorVertexEdge_curry] at hx
     exact hx

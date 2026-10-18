@@ -1868,7 +1868,7 @@ end InitialCofinalityUniverses
 #print axioms SerrePositivity.InfinityCategories.joinTensorLeft_inl
 #print axioms SerrePositivity.InfinityCategories.joinTensorLeft_inr
 #print axioms SerrePositivity.InfinityCategories.joinTensorLeft_unit
-#print axioms SerrePositivity.InfinityCategories.vertexFiber_quasicategory_of_innerFibration
+#print axioms SerrePositivity.InfinityCategories.innerFibration_vertexFiber_quasicategory
 #print axioms SerrePositivity.InfinityCategories.uncurry_yoneda_functorVertex
 #print axioms SerrePositivity.InfinityCategories.coneRestriction
 #print axioms SerrePositivity.InfinityCategories.coneFamily
@@ -3268,8 +3268,8 @@ end InitialCofinalityUniverses
 #check @SerrePositivity.InfinityCategories.intervalFunctorVertexTypedEdge
 #print axioms SerrePositivity.InfinityCategories.intervalFunctorVertexTypedEdge
 
-#check @SerrePositivity.InfinityCategories.IsCocartesianPathVertex
-#print axioms SerrePositivity.InfinityCategories.IsCocartesianPathVertex
+#check @SerrePositivity.InfinityCategories.IsCocartesianHornPathVertex
+#print axioms SerrePositivity.InfinityCategories.IsCocartesianHornPathVertex
 
 #check @SerrePositivity.InfinityCategories.cocartesianPathSpace
 #print axioms SerrePositivity.InfinityCategories.cocartesianPathSpace
@@ -3286,11 +3286,11 @@ end InitialCofinalityUniverses
 #check @SerrePositivity.InfinityCategories.cocartesianPathSpaceSource_snd
 #print axioms SerrePositivity.InfinityCategories.cocartesianPathSpaceSource_snd
 
-#check @SerrePositivity.InfinityCategories.cocartesianPathVertex
-#print axioms SerrePositivity.InfinityCategories.cocartesianPathVertex
+#check @SerrePositivity.InfinityCategories.cocartesianHornPathVertex
+#print axioms SerrePositivity.InfinityCategories.cocartesianHornPathVertex
 
-#check @SerrePositivity.InfinityCategories.cocartesianPathVertex_zero
-#print axioms SerrePositivity.InfinityCategories.cocartesianPathVertex_zero
+#check @SerrePositivity.InfinityCategories.cocartesianHornPathVertex_zero
+#print axioms SerrePositivity.InfinityCategories.cocartesianHornPathVertex_zero
 
 #check @SerrePositivity.InfinityCategories.cocartesianPathSpaceSource_surjective
 #print axioms SerrePositivity.InfinityCategories.cocartesianPathSpaceSource_surjective
@@ -3441,3 +3441,36 @@ end InitialCofinalityUniverses
 
 #check @SerrePositivity.InfinityCategories.isLimitCone_of_pointwise
 #print axioms SerrePositivity.InfinityCategories.isLimitCone_of_pointwise
+
+#check @SerrePositivity.InfinityCategories.vertexDiscrete
+#print axioms SerrePositivity.InfinityCategories.vertexDiscrete
+
+#check @SerrePositivity.InfinityCategories.vertexDiscreteι
+#print axioms SerrePositivity.InfinityCategories.vertexDiscreteι
+
+#check @SerrePositivity.InfinityCategories.vertexDiscreteι_mono
+#print axioms SerrePositivity.InfinityCategories.vertexDiscreteι_mono
+
+#check @SerrePositivity.InfinityCategories.vertexDiscreteMap
+#print axioms SerrePositivity.InfinityCategories.vertexDiscreteMap
+
+#check @SerrePositivity.InfinityCategories.vertexDiscreteMap_comp
+#print axioms SerrePositivity.InfinityCategories.vertexDiscreteMap_comp
+
+#check @SerrePositivity.InfinityCategories.exists_lift_of_terminal_vertex_lifts
+#print axioms SerrePositivity.InfinityCategories.exists_lift_of_terminal_vertex_lifts
+
+#check @SerrePositivity.InfinityCategories.internalHomFlipHomEquiv_app_zero
+#print axioms SerrePositivity.InfinityCategories.internalHomFlipHomEquiv_app_zero
+
+#check @SerrePositivity.InfinityCategories.exists_pointwiseLimitCone
+#print axioms SerrePositivity.InfinityCategories.exists_pointwiseLimitCone
+
+#check @SerrePositivity.InfinityCategories.hasLimit_of_hasPointwiseLimits
+#print axioms SerrePositivity.InfinityCategories.hasLimit_of_hasPointwiseLimits
+
+#check @SerrePositivity.InfinityCategories.isPointwiseLimitCone_of_isLimitCone_of_hasPointwiseLimits
+#print axioms SerrePositivity.InfinityCategories.isPointwiseLimitCone_of_isLimitCone_of_hasPointwiseLimits
+
+#check @SerrePositivity.InfinityCategories.isLimitCone_iff_pointwise_of_hasPointwiseLimits
+#print axioms SerrePositivity.InfinityCategories.isLimitCone_iff_pointwise_of_hasPointwiseLimits

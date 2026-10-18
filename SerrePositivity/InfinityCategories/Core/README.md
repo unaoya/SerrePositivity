@@ -554,3 +554,9 @@ A6 続き：cocartesian fibration p:E→B、quasicategory E・B に対し、fibe
 A6 続き：錐の制限 coneRestriction K X の CocartesianHornFibration 性、錐の頂点で可逆な辺の cocartesian 性、IsLimitCone と相対境界充填の同値を証明し、通常の IsPointwiseLimitCone から IsLimitCone への方向を得た。X の quasicategory 性のみ、添字 J・K は任意。新規23宣言の全型・前提は §6。HasPointwiseLimits からの自然な錐の存在と、存在仮定の下での逆方向は未完了。
 
 上記保存単位の検証：Core 対象ビルド1940 jobs成功、累計1545宣言の公理監査は標準3公理のみ。
+
+A6 完了：HTT 5.1.2.2 の極限側。`exists_pointwiseLimitCone` により各頂点の通常の極限の存在から自然な点ごとの極限錐を構成し、`hasLimit_of_hasPointwiseLimits` により関手 ∞ 圏での極限の存在を得た。`isLimitCone_iff_pointwise_of_hasPointwiseLimits` は同じ存在仮定の下で任意の錐の極限性と点ごとの極限性の同値。X の quasicategory 性のみ、J・K は任意、点ごとの錐の自然性は仮定しない。今回の新規11宣言と前段階の23宣言を含む全型・前提は §6。A6 の残件はなし。A4・A5 は D（α-S）の担当で、本チャットは A6 後の指示を待つ。
+
+最終統合検証で F1 と重複した Core の4宣言は事前報告の上で改名：IsCocartesianPathVertex → IsCocartesianHornPathVertex、cocartesianPathVertex → cocartesianHornPathVertex、cocartesianPathVertex_zero → cocartesianHornPathVertex_zero、vertexFiber_quasicategory_of_innerFibration → innerFibration_vertexFiber_quasicategory。型と instance 属性は維持し、F1 側の既存名・型は変更していない。正確な型は §6。
+
+最終検証：Core 対象ビルド1944 jobs成功（exit 0）、lake env lean scripts/audit_infinity_core.lean 成功（累計1556宣言、propext・Classical.choice・Quot.sound の標準3公理のみ）、Core 全体と F1 全体の同時 import 成功、全体 lake build 9993 jobs成功（exit 0）。最初の全体ビルドで検出した Core/F1 の宣言名の重複は上記の事前報告済み改名で解消した。再ビルド中の一時的な .olean の読み取り競合はソース変更なしで再生成し復旧。A6 に未完了事項なし。

@@ -21,7 +21,7 @@ namespace SerrePositivity.InfinityCategories
 方針：内ホーンの射を元の始域へ含め、定値の標的の上で充填する。
 規約：元の二つの単体集合には quasicategory 性を仮定しない。
 使われ方：Kerodon §4.1.4、§4.6.6 の fiber の圏構造。 -/
-instance vertexFiber_quasicategory_of_innerFibration {E B : SSet.{u}} (p : E ⟶ B)
+instance innerFibration_vertexFiber_quasicategory {E B : SSet.{u}} (p : E ⟶ B)
     [InnerFibration p] (b : B _⦋0⦌) : Quasicategory (vertexFiber p b) where
   hornFilling' {n i} a h₀ hlast := by
     have := InnerFibration.mem (q := p) _ (innerHornInclusions.intro i h₀ hlast)

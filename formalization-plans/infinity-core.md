@@ -1,6 +1,6 @@
 # quasicategory の一般論（レーン α）
 
-作成日：2026-10-17。現在地（2026-10-18）：A1・A2・A3a–e 完了、A2h 二宇宙版完了。A6 進行中。α は A6 完了・報告まで。A4・A5 は D（α-S、InfinityCategories/Stable/）へ移管。A3f は任意、A3g は保留。
+作成日：2026-10-17。現在地（2026-10-18）：A1・A2・A3a–e 完了、A2h 二宇宙版完了。A6 完了。α は今回の担当を完了、A6 後は指示待ち。A4・A5 は D（α-S、InfinityCategories/Stable/）へ移管。A3f は任意、A3g は保留。
 全体の目標と依存関係の正本は [infinity-categories.md](infinity-categories.md) §0・§2。
 
 ## 0. 目標と範囲
@@ -19,9 +19,9 @@ Mathlib の `Quasicategory` をそのまま ∞ 圏の定義とし、Joyal モ�
 
 α の現担当は A6 の完了・報告まで。A4・A5 は D（α-S）が `InfinityCategories/Stable/` で担当し、α は実装しない。A6 後の工程は別途指示を待つ。基盤全体の正本は [foundations.md](foundations.md)。F1 は α2 が担当し、Core の既存の公開名・型の変更は事前に報告する。
 
-現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較と二点の fat join 比較の同型性と任意の標準単体の正規化の自己射への可逆な変形と標準単体の fat join 比較の同値条件、関手単体集合の制限の相対可逆 path の持ち上げと基底も変わる一般の pushout の貼り合わせ、両方の join の pushout 保存、左右両因子の比較の貼り合わせと単射の同値条件のセルによる閉包と自然な写像円柱の相対比較・余極限保存と両方の join の両因子の連結な余極限保存と可算列・任意のセルの族の比較の貼り合わせを整備し、任意の二つの単体集合の fat join 比較の普遍的な前合成の同値性も完成したが、右因子の図式を固定した fat join 比較の同値性と、固定図式上の可逆ホモトピーの join の円柱への延長と、任意のパラメーターにおける slice と固定図式上の関手の同型判定も証明した。太い slice の任意のパラメーターに対する普遍性も証明した。slice 比較射 `isQCatEquivalence_sliceConeFamilyMap` の同値性も完成。錐の fiber の終対象による極限判定と、相対境界充填を仮定した点ごとの条件からの極限性も証明した。cocartesian な輸送のホーンによる基礎と inner fibration の相対 coslice の left fibration 性も追加。点ごとの極限性から相対充填への方向と自然な錐の構成、任意図式の主定理は未完了。
+現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（A3 の同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）。
 
-直近の A6：cocartesian な輸送の相対延長、fiber の終対象と相対境界充填の同値、錐の制限の cocartesian 性、通常の `IsPointwiseLimitCone` から `IsLimitCone` への方向まで完了。`HasPointwiseLimits` から自然な錐を構成する存在定理と、その存在仮定の下での任意の極限錐との同値は未完了。
+A6 は完了。`exists_pointwiseLimitCone` が各頂点の通常の極限の存在から自然な点ごとの極限錐を構成し、`hasLimit_of_hasPointwiseLimits` が関手 ∞ 圏での極限の存在を与える。`isLimitCone_of_pointwise` が点ごとの極限性からの方向を、`isLimitCone_iff_pointwise_of_hasPointwiseLimits` が同じ存在仮定の下で任意の錐の判定の同値を与える。前提は X の quasicategory 性と明示した点ごとの存在のみ。添字 J・K は任意。証明は join・slice の比較、cocartesian な輸送、相対境界充填、相対骨格を用いる。全公開宣言の正確な型・前提・検証は §6 に記録。
 
 ## 1. Mathlib（固定版）の現状
 
@@ -5847,7 +5847,7 @@ universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
-instance vertexFiber_quasicategory_of_innerFibration {E B : SSet.{u}} (p : E ⟶ B)
+instance innerFibration_vertexFiber_quasicategory {E B : SSet.{u}} (p : E ⟶ B)
     [InnerFibration p] (b : B _⦋0⦌) : Quasicategory (vertexFiber p b)
 
 end SerrePositivity.InfinityCategories
@@ -9010,7 +9010,7 @@ def intervalFunctorVertexTypedEdge {E : SSet.{u}} (v : ((ihom (Δ[1] : SSet.{u})
       ((evaluateFunctorAt (Y := E) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app (Opposite.op ⦋0⦌) v)
       ((evaluateFunctorAt (Y := E) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))).app (Opposite.op ⦋0⦌) v)
 
-def IsCocartesianPathVertex {E B : SSet.{u}} (p : E ⟶ B)
+def IsCocartesianHornPathVertex {E B : SSet.{u}} (p : E ⟶ B)
     (v : ((ihom (Δ[1] : SSet.{u})).obj E) _⦋0⦌) : Prop
 
 def cocartesianPathSpace {E B : SSet.{u}} (p : E ⟶ B) : SSet.{u}
@@ -9037,15 +9037,15 @@ lemma cocartesianPathSpaceSource_snd {E B : SSet.{u}} (p : E ⟶ B) :
 `Core/CocartesianPathVertices.lean`：
 
 ```lean
-def cocartesianPathVertex {E B : SSet.{u}} (p : E ⟶ B) {x y : E _⦋0⦌}
+def cocartesianHornPathVertex {E B : SSet.{u}} (p : E ⟶ B) {x y : E _⦋0⦌}
     (e : SSet.Truncated.Edge (X := (truncation 2).obj E) x y)
     (he : HasCocartesianHornLifting p e) : (cocartesianPathSpace p) _⦋0⦌
 
-lemma cocartesianPathVertex_zero {E B : SSet.{u}} (p : E ⟶ B) {x y : E _⦋0⦌}
+lemma cocartesianHornPathVertex_zero {E B : SSet.{u}} (p : E ⟶ B) {x y : E _⦋0⦌}
     (e : SSet.Truncated.Edge (X := (truncation 2).obj E) x y)
     (he : HasCocartesianHornLifting p e) :
     (cocartesianPathSpaceι p ≫ evaluateFunctorAt (Y := E) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app
-      (Opposite.op ⦋0⦌) (cocartesianPathVertex p e he) = x
+      (Opposite.op ⦋0⦌) (cocartesianHornPathVertex p e he) = x
 
 lemma cocartesianPathSpaceSource_surjective {E B : SSet.{u}} (p : E ⟶ B)
     [CocartesianHornFibration p] :
@@ -9395,6 +9395,112 @@ lemma isLimitCone_of_pointwise {J K X : SSet.{u}} [Quasicategory X]
 未完了：HasPointwiseLimits から自然な点ごとの極限錐を構成する存在定理、その存在仮定の下で任意の極限錐との同値を得る逆方向。通常の点ごとの極限性から関手圏の極限性への方向と、錐の制限の cocartesian 性は今回で完了。A4・A5 は D チャット α-S の担当。本チャットは A6 完了・報告まで。
 
 検証：Core 対象ビルド1940 jobs成功、累計1545宣言の公理監査は標準3公理のみ。
+
+### A6 完了（2026-10-18）：自然な点ごとの極限錐の存在と任意の錐の判定
+
+HTT Proposition 5.1.2.2、Kerodon Propositions 7.1.8.3・7.1.8.7 の極限側を完成した。任意の単体集合 J・K、quasicategory X、図式 p:J→Fun(K,X) に対し、HasPointwiseLimits p（各頂点で通常の極限が存在すること）から自然な点ごとの極限錐を構成した。各頂点で極限錐を選び、その相対終点境界充填を用いて離散的な全頂点の包含から相対骨格に沿って自然な持ち上げを延長し、内部 Hom の二変数を交換して錐へ戻した。選んだ各点の錐の間の自然性は仮定していない。
+
+既に証明した isLimitCone_of_pointwise により関手圏での極限の存在も得る。同じ存在仮定の下で、任意の関手圏の極限錐と構成した錐を一意性で同型にし、点ごとの極限性を移して任意の錐の判定の同値を得た。追加の相対充填の仮定、有限性、添字の quasicategory 性は不要。モデル構造、straightening、∞ 局所化、追加公理、sorry は使わない。
+
+既存の公開名・型と §4 の設計は維持。以下 universe u、CategoryTheory・Limits・MonoidalCategory・MonoidalClosed・CartesianMonoidalCategory・SSet と scoped Simplicial を開く。型に列挙したもの以外の前提はない。
+
+`Core/VertexDiscrete.lean`：
+
+```lean
+def vertexDiscrete (A : SSet.{u}) : SSet.{u}
+
+def vertexDiscreteι (A : SSet.{u}) : vertexDiscrete A ⟶ A
+
+instance vertexDiscreteι_mono (A : SSet.{u}) : Mono (vertexDiscreteι A)
+
+def vertexDiscreteMap {A E : SSet.{u}} (x : A _⦋0⦌ → E _⦋0⦌) : vertexDiscrete A ⟶ E
+
+lemma vertexDiscreteMap_comp {A E B : SSet.{u}} (p : E ⟶ B) (g : A ⟶ B)
+    (x : A _⦋0⦌ → E _⦋0⦌)
+    (hx : ∀ v, p.app (Opposite.op ⦋0⦌) (x v) = g.app (Opposite.op ⦋0⦌) v) :
+    vertexDiscreteMap x ≫ p = vertexDiscreteι A ≫ g
+```
+
+`Core/TerminalVertexLifting.lean`：
+
+```lean
+lemma exists_lift_of_terminal_vertex_lifts {A E B : SSet.{u}} (p : E ⟶ B) (g : A ⟶ B)
+    (x : A _⦋0⦌ → E _⦋0⦌)
+    (hx : ∀ v, p.app (Opposite.op ⦋0⦌) (x v) = g.app (Opposite.op ⦋0⦌) v)
+    (ht : ∀ v, TerminalBoundaryLifting p (x v)) :
+    ∃ F : A ⟶ E, F ≫ p = g ∧ ∀ v, F.app (Opposite.op ⦋0⦌) v = x v
+```
+
+`Core/InternalHomFlipVertices.lean`：
+
+```lean
+lemma internalHomFlipHomEquiv_app_zero {A B X : SSet.{u}}
+    (f : A ⟶ (ihom B).obj X) (b : B _⦋0⦌) :
+    (internalHomFlipHomEquiv A B X f).app (Opposite.op ⦋0⦌) b =
+      functorVertex (f ≫ evaluateFunctorAt b)
+```
+
+`Core/FunctorPointwiseLimitExistence.lean`：
+
+```lean
+lemma exists_pointwiseLimitCone {J K X : SSet.{u}} [Quasicategory X]
+    (p : J ⟶ (ihom K).obj X) (hp : HasPointwiseLimits p) :
+    ∃ c : JoinCone p, IsPointwiseLimitCone c
+
+lemma hasLimit_of_hasPointwiseLimits {J K X : SSet.{u}} [Quasicategory X]
+    (p : J ⟶ (ihom K).obj X) (hp : HasPointwiseLimits p) : HasLimit p
+
+lemma isPointwiseLimitCone_of_isLimitCone_of_hasPointwiseLimits {J K X : SSet.{u}}
+    [Quasicategory X] {p : J ⟶ (ihom K).obj X} (hp : HasPointwiseLimits p)
+    (c : JoinCone p) (hc : IsLimitCone c) : IsPointwiseLimitCone c
+
+lemma isLimitCone_iff_pointwise_of_hasPointwiseLimits {J K X : SSet.{u}} [Quasicategory X]
+    {p : J ⟶ (ihom K).obj X} (hp : HasPointwiseLimits p) (c : JoinCone p) :
+    IsLimitCone c ↔ IsPointwiseLimitCone c
+```
+
+A6 の未完了範囲：なし。点ごとの通常の極限から自然な錐を構成する存在定理、関手 ∞ 圏での極限の存在、存在仮定の下での任意の錐の極限性と点ごとの極限性の同値をすべて証明した。A4・A5 は D チャット α-S の担当。本チャットは A6 の完了・報告をもって今回の担当を終え、A6 後の工程はユーザーの指示を待つ。
+
+A6 の最終統合検証で F1 との同名宣言の衝突を検出し、公開名変更を事前にチャットで報告した上で Core 側の4宣言名を変更した。F1 側の既存名・型・ファイルは変更しない。型と instance 属性は維持。
+
+| 旧 Core 名 | 新 Core 名 |
+| --- | --- |
+| IsCocartesianPathVertex | IsCocartesianHornPathVertex |
+| cocartesianPathVertex | cocartesianHornPathVertex |
+| cocartesianPathVertex_zero | cocartesianHornPathVertex_zero |
+| vertexFiber_quasicategory_of_innerFibration | innerFibration_vertexFiber_quasicategory |
+
+改名後の正確な型：
+
+`Core/InnerFiber.lean`：
+
+```lean
+instance innerFibration_vertexFiber_quasicategory {E B : SSet.{u}} (p : E ⟶ B)
+    [InnerFibration p] (b : B _⦋0⦌) : Quasicategory (vertexFiber p b)
+```
+
+`Core/CocartesianPathSpace.lean`：
+
+```lean
+def IsCocartesianHornPathVertex {E B : SSet.{u}} (p : E ⟶ B)
+    (v : ((ihom (Δ[1] : SSet.{u})).obj E) _⦋0⦌) : Prop
+```
+
+`Core/CocartesianPathVertices.lean`：
+
+```lean
+def cocartesianHornPathVertex {E B : SSet.{u}} (p : E ⟶ B) {x y : E _⦋0⦌}
+    (e : SSet.Truncated.Edge (X := (truncation 2).obj E) x y)
+    (he : HasCocartesianHornLifting p e) : (cocartesianPathSpace p) _⦋0⦌
+
+lemma cocartesianHornPathVertex_zero {E B : SSet.{u}} (p : E ⟶ B) {x y : E _⦋0⦌}
+    (e : SSet.Truncated.Edge (X := (truncation 2).obj E) x y)
+    (he : HasCocartesianHornLifting p e) :
+    (cocartesianPathSpaceι p ≫ evaluateFunctorAt (Y := E) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app
+      (Opposite.op ⦋0⦌) (cocartesianHornPathVertex p e he) = x
+```
+
+最終検証：Core 対象ビルド1944 jobs成功（exit 0）、lake env lean scripts/audit_infinity_core.lean 成功（累計1556宣言、propext・Classical.choice・Quot.sound の標準3公理のみ）、Core 全体と F1 全体の同時 import 成功、全体 lake build 9993 jobs成功（exit 0）。最初の全体ビルドで検出した Core/F1 の宣言名の重複は上記の事前報告済み改名で解消した。再ビルド中の一時的な .olean の読み取り競合はソース変更なしで再生成し復旧。A6 に未完了事項なし。
 
 ## 7. A3 の工程（2026-10-18 追加）
 

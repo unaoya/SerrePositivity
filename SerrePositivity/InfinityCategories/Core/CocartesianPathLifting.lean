@@ -66,9 +66,9 @@ instance cocartesianPathSpaceSource_trivialKanFibration {E B : SSet.{u}}
       let x : (boundary (n + 1) : SSet.{u}) _⦋0⦌ :=
         ⟨stdSimplex.obj₀Equiv.symm 0, vertex_mem_boundary n 0⟩
       have hx := fullSubcomplexOnVertices_vertex (a.app (Opposite.op ⦋0⦌) x)
-      change IsCocartesianPathVertex p ((a ≫ cocartesianPathSpaceι p).app (Opposite.op ⦋0⦌) x) at hx
+      change IsCocartesianHornPathVertex p ((a ≫ cocartesianPathSpaceι p).app (Opposite.op ⦋0⦌) x) at hx
       rw [← hC] at hx
-      unfold IsCocartesianPathVertex at hx
+      unfold IsCocartesianHornPathVertex at hx
       change HasCocartesianHornLifting p (edgeOfSimplex (intervalFunctorVertexEdge
         ((curry H).app (Opposite.op ⦋0⦌) x))) at hx
       rw [intervalFunctorVertexEdge_curry] at hx
@@ -77,7 +77,7 @@ instance cocartesianPathSpaceSource_trivialKanFibration {E B : SSet.{u}}
     have hc : (boundary (n + 1)).ι ≫ curry F = a ≫ cocartesianPathSpaceι p := by
       rw [← curry_natural_left, hF, hC]
     have hv : ∀ v : (Δ[n + 1] : SSet.{u}) _⦋0⦌,
-        IsCocartesianPathVertex p ((curry F).app (Opposite.op ⦋0⦌) v) := by
+        IsCocartesianHornPathVertex p ((curry F).app (Opposite.op ⦋0⦌) v) := by
       intro v
       let x : (boundary (n + 1) : SSet.{u}) _⦋0⦌ :=
         ⟨v, by
@@ -88,7 +88,7 @@ instance cocartesianPathSpaceSource_trivialKanFibration {E B : SSet.{u}}
       have he := ConcreteCategory.congr_hom (NatTrans.congr_app hc (Opposite.op ⦋0⦌)) x
       change (curry F).app (Opposite.op ⦋0⦌) v = (a.app (Opposite.op ⦋0⦌) x).val at he
       exact he.symm ▸ hx
-    let g := fullSubcomplexLift (IsCocartesianPathVertex p) (curry F) hv
+    let g := fullSubcomplexLift (IsCocartesianHornPathVertex p) (curry F) hv
     have hg : g ≫ cocartesianPathSpaceι p = curry F := fullSubcomplexLift_ι _ _ _
     refine CommSq.HasLift.mk' { l := g, fac_left := ?_, fac_right := ?_ }
     · haveI : Mono (cocartesianPathSpaceι p) := by unfold cocartesianPathSpaceι; infer_instance
