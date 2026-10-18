@@ -1,6 +1,6 @@
 # K-L4：導来圏と幾何の基盤
 
-作成日：2026-10-18。状態：L4a 途中。§26 の設計変更は採用済み。一般 dg 圏の半自由分解と K-flat 性の供給を DGResolution/ で実装する（§27）。
+作成日：2026-10-18。状態：L4a 途中。§26 の設計変更に基づく一般 dg 圏の半自由分解・K-flat 性・準同値の移送・層導来圏との比較は実装済み（§27–33）。
 
 ## 0. 目的と所有範囲
 
@@ -49,9 +49,9 @@
 
 ## 3. 現在地と受入条件
 
-- 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。任意 dg 圏の半自由な段階分解、フィルトレーションからの Hom の K-flat 性、増大関手の各次数全射性・準同値性・H⁰ 同値、前三角化の三角同値を証明済み。分解後の層の acyclic dg 商自体の H⁰ と Mathlib の元の層導来圏の同値、対象ごとの導来像の計算、準連接コホモロジーによる Dqc への H⁰ 同値を証明済み。半自由分解から導来比較までの工程は完了。アフィン準連接係数加群層と左 H 加群の通常の圏同値も証明済み。Perf、アフィン導来比較、導来降下、T1–T3、平坦係数の RHom 比較は未完了。
-- L4b の入力である層の随伴と導来忘却は実装済み。L4b の導来随伴・生成・T1′、L4c、L4d、L4e は未実装。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の1,245宣言の公理監査に成功。工程区切りの全体ビルドは導来比較までの状態で10,097 jobsに成功。許容公理は標準3公理のみ、KTheory import なし。
+- 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。任意 dg 圏の半自由な段階分解、フィルトレーションからの Hom の K-flat 性、増大関手の各次数全射性・準同値性・H⁰ 同値、前三角化の三角同値を証明済み。分解後の層の acyclic dg 商自体の H⁰ と Mathlib の元の層導来圏の同値、対象ごとの導来像の計算、準連接コホモロジーによる Dqc への H⁰ 同値を証明済み。半自由分解から導来比較までの工程は完了。アフィン準連接係数加群層と左 H 加群の通常の圏同値、その準連接複体の導来圏の三角同値、実際の Dqc の開制限、台つき核と Verdier 商への降下も証明済み。Perf、アフィン導来比較、導来降下、T1–T3、平坦係数の RHom 比較は未完了。
+- L4b の入力である層の随伴と導来忘却は実装済み。L4b の随伴移送の一般定理は証明済み。実際の導来随伴・生成・T1′、L4c の局所化同値、L4d、L4e は未完了。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の1,262宣言の公理監査に成功。工程区切りの全体ビルドは導来比較までの状態で10,097 jobsに成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -410,7 +410,7 @@
 - 正則 O 加群と tilde (H ⊗_A R) の同型を構成し、準連接性を証明済み。
 - affineBaseMap は実際の Spec R → Spec A の構造射から得る globalBaseMap と一致する。
 - coefficientSheafOfMorphism による実際の構成にもアフィン準連接性を適用済み。
-- 一般の X の開部分への制限との比較は §22、アフィン開と Spec Γ(U) の同型に沿う輸送は §23 で証明済み。導来・dg 圏の比較は未証明。
+- 一般の X の開部分への制限との比較は §22、アフィン開と Spec Γ(U) の同型に沿う輸送は §23 で証明済み。導来・dg 圏の基礎比較は §33 で証明済み。アフィン上の Dqc と D(H) の非有界比較は未完了。
 
 ## 22. 開部分への制限と係数環層の構成
 
@@ -483,7 +483,7 @@
 - H の定数作用を基礎 O 加群層の自己準同型とし、H からその自己準同型環への環準同型を構成済み。
 - この作用の係数加群層の射についての自然性を証明済み。
 - 大域切断上で H 線形な O 加群層の射が定数 H 作用と層全体で可換になることを証明済み。
-- 全 H_X 切断の作用への線形性を局所的なテンソル持ち上げで示す段階、充満性、本質的全射性は残る。
+- 全 H_X 切断の作用への線形性、充満性、本質的全射性は §34–35 で証明済み。
 
 ## 25. 層の複体の dg 圏と acyclic の商
 
@@ -525,7 +525,7 @@
 - 既存 `DGQuotient.localKFlat` もこの二つの片側条件の選言であり、対象ごとの選言ではない。
 - `localPerfectQuotientEquivalence` はこの条件を引数に取り、条件自体を証明する定理ではない。
 - 現在の基礎環は宇宙を持ち上げた整数環。宇宙の調整から Hom の K-flat 性は導けない。
-- 全係数加群層の Hom 複体に対する片側 K-flat 性は現状では未証明。
+- 元の全係数加群層の Hom 複体には片側 K-flat 性を要求しない。半自由分解後の Hom の K-flat 性をフィルトレーションから証明済み（§27）。
 - acyclic 対象を商で収縮させたことだけでは Verdier 局所化との同値は証明できていない。
 - 未分解の層複体の path 商を最終模型としては使わない。現 `DerivedDG` は §27–28 の平坦分解後の商。
 - `mem_dqcDGObjects_iff` は対象条件の一致。関手の完全充満性を含まない。
@@ -599,7 +599,7 @@
 - `Pretriangulation`：任意の dg 準同値について有限 cell の三角閉包 tria の同値を構成した。
 - `PretriangulationTriangles`：包含正方形、shift、区別三角形、随伴の単位と shift の両立を証明した。
 - `Quotient`：分解後の逆像部分圏の path 商を構成し、既存の完備化前・後の商比較へ証明済み localKFlat を渡した。
-- 元の圏の Verdier 商へ戻す正方形は §28 で実装済み。層の acyclic 商自体の H⁰ の導来圏比較は未実装。
+- 元の圏の Verdier 商へ戻す正方形は §28 で実装済み。層の acyclic 商自体の H⁰ の導来圏比較は §33 で証明済み。
 - 最新の対象ビルドと公理監査の結果は §3・§28 を参照。
 
 ## 28. 分解前後の指定部分圏と Verdier 商の移送（実装前記録）
@@ -620,7 +620,7 @@
 - `SheafDerivedDG`：ResolvedComplexes → Complexes と、ResolvedComplexes → DerivedDG の屋根へ変更済み。
 - `DqcDGModel`：商の元の対象を増大関手で戻し、実際の層コホモロジーの準連接性を判定する。
 - `ResolvedSheafComparison`：分解の H⁰ と実際の層複体のホモトピー圏の同値、商の tria の三角比較を実装済み。
-- 残る比較は、複体 dg 圏とその商の前三角化の代表可能性、および Mathlib の導来局所化との同定。
+- 複体 dg 圏とその商の前三角化の代表可能性、および Mathlib の導来局所化との同定は §31–33 で証明済み。
 - tria の同値を商自体の H⁰ の同値と同一視しない。L4a 全体の完了は主張しない。
 - 対象ビルドと644宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
 
@@ -647,7 +647,7 @@
 - `InitialPresentation`：初期の自由 dg 圏からの関手が、対象写像と球生成元の閉じた像で分類されることを証明済み。
 - 任意の対象集合に対する商の供給は §27–28 の実装をそのまま維持する。K-flat 性を次数別分裂だけから再定義しない。
 - 対象ビルドと698宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
-- 設計上の判断待ち・所有 import 閉包の破損はない。商自体の H⁰ と Mathlib 導来圏の比較は未完了。
+- 設計上の判断待ち・所有 import 閉包の破損はない。商自体の H⁰ と Mathlib 導来圏の比較は §33 で証明済み。
 
 ## 30. §10-7：前三角化の代表可能性から商の H⁰ へ（実装前記録）
 
@@ -674,7 +674,7 @@
 - `representableHom_lift`：代表加群間の任意の射を元の複体の chain map として表示済み。
 - 対象ビルドと776宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
 - `finiteCell_representable`：零・shift・有限和・任意の射の cone・同型の各操作で実際の代表加群の同型を構成する帰納証明を実装済み。
-- `homotopyTriaEquivalence`：元の複体 dg 圏の H⁰ と tria の圏同値を証明済み。三角構造と Mathlib 導来局所化の最終比較は未完了。
+- `homotopyTriaEquivalence`：元の複体 dg 圏の H⁰ と tria の圏同値を証明済み。三角構造と Mathlib 導来局所化の最終比較も §32–33 で証明済み。
 
 ## 31. §10-7：分解後の商自体の H⁰ の本質的全射性（実装前記録）
 
@@ -692,7 +692,7 @@
 - `quotientHomotopyTriaEquivalence`：半自由分解後の商自体の H⁰ と tria の同値を構成済み。元の Hom の平坦性を仮定しない。
 - `derivedDGHomotopyTriaEquivalence`・`derivedDGHomotopyVerdierEquivalence`：係数加群層へ適用済み。後者は商の H⁰ と元の tria の指定 Verdier 商との圏同値。
 - 対象ビルドと836宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
-- 残るのは元の複体での shift・標準 cone triangle の比較、それを用いた acyclic 局所化と Mathlib 導来圏の同定。商の H⁰ の代表可能性の未実装は解消した。
+- 元の複体での shift・標準 cone triangle の比較、それを用いた acyclic 局所化と Mathlib 導来圏の同定は §32–33 で証明済み。
 
 ## 32. 三角構造の具体的な比較の現在地
 
@@ -729,7 +729,7 @@
 - `DGResolution.quotientHomotopyOriginalRepresentableIso`・`derivedDGHomotopyEquivalence_objIso`：同じ元の複体の導来像へ送られることを対象ごとの同型で証明済み。一般の dg 商の代表対象の計算は K-L1b・L3 でも利用可能。
 - `dqcDGObject_image_iff`・`dqcDGHomotopyEquivalence`：同じ層コホモロジーの条件で制限し、準連接部分 dg 模型の H⁰ と実際の Dqc の同値を証明済み。
 - 対象ビルド、全体ビルド（10,097 jobs）、1,078宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
-- 半自由分解から導来比較までの工程は完了。次はアフィン係数加群圏の比較を完成し、Perf と有限アフィン被覆の導来降下へ接続する。
+- 半自由分解から導来比較までの工程は完了。アフィン係数加群圏の比較も §34–35 で完成した。Perf と有限アフィン被覆の導来降下への接続は継続する。
 
 ## 34. アフィン係数加群圏の比較：係数線形性の再構成（着手前記録）
 
@@ -747,7 +747,7 @@
 - `coefficientHomEquiv`：任意のスキーム上で、係数加群層の Hom と定数 H 作用に可換な O 加群層の Hom の同値を証明済み。H の平坦性・可換性、加群の準連接性は不要。
 - `affineUnderlyingHom_lift`・`affineQcohΓ_full`：通常の tilde 同値と係数作用の再構成を合成して、アフィン準連接係数加群層の大域切断の充満性を証明済み。既存の忠実性と合わせて完全忠実性が得られた。
 - 対象ビルドと1,092宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
-- 本質的全射性、アフィン導来比較、Perf の局所条件、有限被覆の導来降下は未完了。
+- 本質的全射性は §35 で証明済み。実際の Dqc のアフィン導来比較、Perf の局所条件、有限被覆の導来降下は未完了。
 
 ## 35. アフィン係数加群圏の本質的全射性（実装前記録）
 
@@ -817,6 +817,22 @@
 - `supportedOnComplement`・`DqcSupported`・`supportedOnComplement_eq_kernel`：全コホモロジーの開制限が零という台の条件と、実際の導来制限の核との一致を証明済み。
 - 集約ビルド（3,729 jobs）と1,245宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
 - T2 の本質的全射性・局所化同値、台つき compact 生成、T3 の切除・MV・導来降下は引き続き未完了。
+
+## 39. 台つき核の三角構造と Verdier 商への降下（実装前記録）
+
+- 文言：三角関手 F の核、すなわち F の像が零対象になる対象条件は三角部分圏である。
+- 証明：零対象性は同型と整数シフトで不変であり、区別三角形の両端が零なら中項も零。これを三角関手の逆像へ移す。
+- 前節の台つき条件と導来開制限の核の一致に適用し、層の導来圏の台つき Verdier 商を構成する。既存の `SerrePositivity.verdierLift` に零化の証明を渡し、開部分の導来圏への比較関手・因子分解正方形・シフト可換性・三角性を得る。
+- 原典：Neeman 1992 Thm 2.1、TT 3.19・8.1、Toën §3.2。商関手の構成と三角性は形式的な段階であり、Dqc の局所化同値・冪等完備化を除く完全性・本質的全射性はまだ結論しない。
+
+### 現在地
+
+- `zeroObjects_isTriangulated`・`triangulatedKernel_isTriangulated`：一般の三角関手の核の三角構造を証明済み。
+- `supportedOnComplement_isTriangulated`：コホモロジーで定義した台つき対象条件へ適用済み。
+- `SupportedDerivedQuotient`・`supportedDerivedProjection`：全係数加群層の導来圏の実際の台つき Verdier 商と射影を構成済み。
+- `supportedDerivedToOpen`・`supportedDerivedSquare`：実際の導来制限を因子分解する比較関手と自然同型を構成済み。整数シフト可換性・三角性も証明済み。
+- 集約ビルド（3,731 jobs）と1,262宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
+- 半自由分解の残りとして要求された Hom の K-flat 性・準同値移送・商の H⁰ と Mathlib 導来圏の比較は完了。全 L4 工程は未完了であり、実際の Dqc のアフィン導来比較、T1・T1′・T2 の局所化同値、T3・Perf・RHom 比較を引き続き区別して管理する。
 
 ## 主要宣言の表
 
@@ -958,6 +974,8 @@
 | `derivedRestriction`・`derivedRestrictionHomologyIso` | DerivedGeometry/DerivedRestriction | 実装・対象ビルド済み |
 | `derivedRestrictionUnderlyingHomologyIso`・`dqcRestriction` | DerivedGeometry/DqcRestriction | 実装・対象ビルド済み |
 | `supportedOnComplement`・`DqcSupported`・`supportedOnComplement_eq_kernel` | DerivedGeometry/DerivedSupport | 実装・対象ビルド済み |
+| `triangulatedKernel_isTriangulated` | DerivedGeometry/TriangulatedKernel | 実装・対象ビルド済み |
+| `supportedOnComplement_isTriangulated`・`supportedDerivedToOpen`・`supportedDerivedSquare` | DerivedGeometry/SupportedVerdier | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |

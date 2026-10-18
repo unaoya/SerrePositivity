@@ -40,3 +40,5 @@ public import SerrePositivity.KST.DerivedGeometry.DGCompactComparison
 public import SerrePositivity.KST.DerivedGeometry.AffineQcohDerived
 
 public import SerrePositivity.KST.DerivedGeometry.DerivedSupport
+
+public import SerrePositivity.KST.DerivedGeometry.SupportedVerdier
