@@ -1758,5 +1758,42 @@ def coherentResolutionSimplex (n : ℕ) : SSet.{u}
 
 def coherentResolutionProjection (n : ℕ) : coherentResolutionSimplex.{u} n ⟶ Δ[n]
 
+def CoherentResolutionFlag.interval {n d : ℕ}
+    (f : Fin (d + 1) →o Fin (n + 1)) : CoherentResolutionFlag n d
+
+lemma CoherentResolutionFlag.maxAt_interval {n d : ℕ}
+    (f : Fin (d + 1) →o Fin (n + 1)) (i : Fin (d + 1)) :
+    (CoherentResolutionFlag.interval f).maxAt i = f i
+
+lemma CoherentResolutionFlag.interval_pullback {n d e : ℕ}
+    (f : Fin (d + 1) →o Fin (n + 1)) (α : Fin (e + 1) →o Fin (d + 1)) :
+    (CoherentResolutionFlag.interval f).pullback α =
+      CoherentResolutionFlag.interval (f.comp α)
+
+def coherentResolutionSection (n : ℕ) : (Δ[n] : SSet.{u}) ⟶ coherentResolutionSimplex n
+
+lemma coherentResolutionSection_projection (n : ℕ) :
+    coherentResolutionSection.{u} n ≫ coherentResolutionProjection n = 𝟙 Δ[n]
+
+def CoherentResolutionFlag.intervalHull {n d : ℕ} (F : CoherentResolutionFlag n d) :
+    CoherentResolutionFlag n d
+
+lemma CoherentResolutionFlag.intervalHull_start {n d : ℕ} (F : CoherentResolutionFlag n d) :
+    F.intervalHull.start = F.start
+
+lemma CoherentResolutionFlag.sets_subset_intervalHull {n d : ℕ}
+    (F : CoherentResolutionFlag n d) (i : Fin (d + 1)) :
+    F.sets i ⊆ F.intervalHull.sets i
+
+lemma CoherentResolutionFlag.maxAt_intervalHull {n d : ℕ} (F : CoherentResolutionFlag n d)
+    (i : Fin (d + 1)) : F.intervalHull.maxAt i = F.maxAt i
+
+lemma CoherentResolutionFlag.intervalHull_pullback {n d e : ℕ}
+    (F : CoherentResolutionFlag n d) (α : Fin (e + 1) →o Fin (d + 1)) :
+    F.intervalHull.pullback α = (F.pullback α).intervalHull
+
+lemma CoherentResolutionFlag.intervalHull_idempotent {n d : ℕ}
+    (F : CoherentResolutionFlag n d) : F.intervalHull.intervalHull = F.intervalHull
+
 end SerrePositivity.InfinityCategories
 ```

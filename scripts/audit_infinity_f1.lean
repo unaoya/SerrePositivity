@@ -413,3 +413,14 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.pullback_comp
 #check @SerrePositivity.InfinityCategories.coherentResolutionSimplex
 #check @SerrePositivity.InfinityCategories.coherentResolutionProjection
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.interval
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.maxAt_interval
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.interval_pullback
+#check @SerrePositivity.InfinityCategories.coherentResolutionSection
+#check @SerrePositivity.InfinityCategories.coherentResolutionSection_projection
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.intervalHull
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.intervalHull_start
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.sets_subset_intervalHull
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.maxAt_intervalHull
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.intervalHull_pullback
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.intervalHull_idempotent
