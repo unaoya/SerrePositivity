@@ -24,6 +24,7 @@ public import SerrePositivity.KST.Comparison.AlternativePullback
 public import SerrePositivity.KST.Comparison.ActionBarSquares
 public import SerrePositivity.KST.Comparison.HornPreimage
 public import SerrePositivity.KST.Comparison.KanAnodyneBaseChange
+public import SerrePositivity.KST.Comparison.KanBasePullback
 
 /-!
 # K-L2：比較定理の入口

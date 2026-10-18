@@ -42,6 +42,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -301,6 +302,12 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.isHomotopyPullback_of_fibration
 #print axioms SerrePositivity.KST.Comparison.isHomotopyPullback_of_fibration
+
+
+-- FibrantTargetLifting.lean
+
+#check @SerrePositivity.KST.Comparison.localizedMono_lifting_fibrantTarget
+#print axioms SerrePositivity.KST.Comparison.localizedMono_lifting_fibrantTarget
 
 
 -- GLComponents.lean
@@ -581,11 +588,29 @@ run_cmd do
 #check @SerrePositivity.KST.Comparison.sliceFiberFunctor_horn_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.sliceFiberFunctor_horn_localized_isIso
 
+#check @SerrePositivity.KST.Comparison.sliceFiberRightAdjoint_test_rlp
+#print axioms SerrePositivity.KST.Comparison.sliceFiberRightAdjoint_test_rlp
+
 #check @SerrePositivity.KST.Comparison.sliceFiberFunctor_anodyne_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.sliceFiberFunctor_anodyne_localized_isIso
 
 #check @SerrePositivity.KST.Comparison.pullback_anodyne_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.pullback_anodyne_localized_isIso
+
+
+-- KanBasePullback.lean
+
+#check @SerrePositivity.KST.Comparison.sliceFiberRightAdjoint_kan
+#print axioms SerrePositivity.KST.Comparison.sliceFiberRightAdjoint_kan
+
+#check @SerrePositivity.KST.Comparison.sliceFiberFunctor_localizedMono_isIso
+#print axioms SerrePositivity.KST.Comparison.sliceFiberFunctor_localizedMono_isIso
+
+#check @SerrePositivity.KST.Comparison.sliceFiberFunctor_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.sliceFiberFunctor_localized_isIso
+
+#check @SerrePositivity.KST.Comparison.pullback_localized_isIso_of_kan_base
+#print axioms SerrePositivity.KST.Comparison.pullback_localized_isIso_of_kan_base
 
 
 -- LoopFamily.lean

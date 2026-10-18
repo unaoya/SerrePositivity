@@ -237,6 +237,11 @@ u≤id と u≤const(k) による二つの単体的ホモトピーは、horn を
 右随伴がその右テスト射をスライス内の Kan fibration に送ることを horn ごとに確認する。
 その確認に上記の horn の逆像の局所化同型を使い、随伴で左持ち上げ性を移す。
 これにより局所化関手の余極限保存を仮定せずに anodyne 射の比較へ進む。
+Kan 基底に限れば、右随伴は Kan 複体を Kan な全空間に送る。
+局所化可逆な単射は Kan 基底上の Kan fibration に左持ち上げ性を持つ。
+全空間へ延長した後、基底への合成を相対ホモトピーで直して示す。
+さらに単射・全単射的右持ち上げ性の分解を使い、Kan 基底上の任意の局所化同型の
+Kan 引き戻しの可逆性を証明する。非 Kan 基底への拡張は別の未完了の項目である。
 これは Segal Proposition 1.6 の対角模型の補助であり、原典の fat realization の経路とは異なる。
 Moss 2020 §5 Theorem 42 は strong anodyne 性を regular pairing で証明するが、
 ここでは同命題を引用して済ませず、必要な局所化同型を上記の持ち上げで証明する。
@@ -364,14 +369,15 @@ anodyne 包含と基底を固定する実ホモトピーを pushout-product の�
 正則 bar の各構造写像が定める四角形のホモトピー引き戻し性を、群状性だけから証明した。
 正次元 horn の包含の Kan fibration に沿う逆像が anodyne 局所化で同型となることを、実際の二段階の収縮で証明した。
 スライスの閉構造と積・忘却の右随伴を実際に構成し、horn ごとの持ち上げ性を移すことで、一般の anodyne 射の Kan fibration に沿う引き戻しの局所化可逆性を証明した。
-対角化後の bar 束の homotopy-cartesian 性、Segal 比較は未証明。
+Kan 基底上では局所化可逆な単射の Kan fibration に対する左持ち上げ性、および任意の局所化同型の Kan 引き戻しの可逆性を証明した。
+非 Kan 基底への一般化、対角化後の bar 束の homotopy-cartesian 性、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
 §10-5 は検証する文言と証明方針を記した段階である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 280 宣言の型と公理を確認した。
-さらに名前空間全体の 668 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 286 宣言の型と公理を確認した。
+さらに名前空間全体の 674 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -429,6 +435,9 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `simplicialSliceClosed`、`sliceFiberFunctor_isLeftAdjoint` | 実装済み | 宇宙を揃えたスライスの閉構造と基底変換の右随伴 |
 | `underlying_rlp_of_over_horns` | 実装済み | 基底付き horn の持ち上げ性による Kan 条件の判定 |
 | `pullback_anodyne_localized_isIso` | 実装済み | 一般の anodyne 射の Kan 引き戻しの局所化可逆性 |
+| `localizedMono_lifting_fibrantTarget` | 実装済み | Kan 基底上の fibration への局所化可逆な単射の持ち上げ |
+| `sliceFiberRightAdjoint_kan` | 実装済み | Kan 基底上の右随伴の Kan 性 |
+| `pullback_localized_isIso_of_kan_base` | 実装済み | Kan 基底上の任意の局所化同型の Kan 引き戻し |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
 | plus 構成 | 未実装 | acyclic map と π₁ の商 |

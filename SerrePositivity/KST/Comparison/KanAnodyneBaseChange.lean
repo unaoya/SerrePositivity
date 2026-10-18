@@ -41,6 +41,28 @@ theorem sliceFiberFunctor_horn_localized_isIso {E B : SSet.{u}} (p : E ⟶ B)
     (sliceFiberFunctor_map_isPullback p (hornOverMap k b))
 
 /--
+概要：基底変換の右随伴は検出用の右テスト射をスライス内の Kan fibration に送る。
+方針：horn の逆像の局所化可逆性に随伴の持ち上げ性の対応を適用する。
+規約：Segal 1974 Proposition 1.6 の基底付き比較の補助。
+使われ方：anodyne 射と Kan 基底上の局所化可逆な単射の移送。
+-/
+theorem sliceFiberRightAdjoint_test_rlp {E B K L : SSet.{u}} (p : E ⟶ B)
+    (hp : SSet.modelCategoryQuillen.J.rlp p) (q : K ⟶ L)
+    (hq : KanTestLiftingClass.rightTests q) :
+    SSet.modelCategoryQuillen.J.rlp (((sliceFiberFunctor p).rightAdjoint.map q).left) := by
+  let F := sliceFiberFunctor p
+  let G := F.rightAdjoint
+  let adj : F ⊣ G := Adjunction.ofIsLeftAdjoint F
+  apply underlying_rlp_of_over_horns
+  intro n k b
+  apply (adj.hasLiftingProperty_iff (hornOverMap k b) q).mp
+  have : Mono (hornOverMap k b).left := inferInstanceAs (Mono (Λ[n + 1, k]).ι)
+  have hs := sliceFiberFunctor_map_isPullback p (hornOverMap k b)
+  have : Mono (F.map (hornOverMap k b)) := hs.mono_fst_of_mono
+  exact KanTestLiftingClass.localizedMono_le_llp _
+    ⟨inferInstance, sliceFiberFunctor_horn_localized_isIso p hp k b⟩ q hq
+
+/--
 概要：スライス内の anodyne 射の Kan fibration との積は局所化同型となる。
 方針：右随伴が検出用の右テスト射を Kan fibration に送ることを horn ごとに示す。
 規約：局所化の余極限保存やモデル構造の公理を仮定しない。
@@ -55,15 +77,7 @@ theorem sliceFiberFunctor_anodyne_localized_isIso {E B : SSet.{u}} (p : E ⟶ B)
   let adj : F ⊣ G := Adjunction.ofIsLeftAdjoint F
   apply KanTestLiftingClass.localized_isIso_of_llp
   intro K L q hq
-  have hGq : SSet.modelCategoryQuillen.J.rlp (G.map q).left := by
-    apply underlying_rlp_of_over_horns
-    intro n k b
-    apply (adj.hasLiftingProperty_iff (hornOverMap k b) q).mp
-    have : Mono (hornOverMap k b).left := inferInstanceAs (Mono (Λ[n + 1, k]).ι)
-    have hs := sliceFiberFunctor_map_isPullback p (hornOverMap k b)
-    have : Mono (F.map (hornOverMap k b)) := hs.mono_fst_of_mono
-    exact KanTestLiftingClass.localizedMono_le_llp _
-      ⟨inferInstance, sliceFiberFunctor_horn_localized_isIso p hp k b⟩ q hq
+  have hGq := sliceFiberRightAdjoint_test_rlp p hp q hq
   exact (adj.hasLiftingProperty_iff i q).mpr
     (over_lifting_of_underlying i (G.map q) (hi _ hGq))
 
