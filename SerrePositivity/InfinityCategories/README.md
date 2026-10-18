@@ -1343,7 +1343,14 @@ namespace `DoldKanComparison` の `homModule x y : SimplicialObject (ModuleCat.{
 `standardModuleIso` は小さい N4 の単体的加群から `standardModule` への自然同型であり、
 台単体集合の `homSpaceStandardIso` と `standardHomSpaceKan` も得られる。
 標準方程式との符号変換と全ての退化との可換性は Lean で証明済み。
-対象・集約ビルドは3479件で成功し、公開42宣言の型と公理監査は標準三公理のみ。
+`connectiveHomComplex` は Mathlib の n↦−n の埋め込みに沿う smart truncation であり、
+零次数と `zeroCycles` の同型、正次数と H^(−n) の同型を持つ。
+`connectiveHomComplex_d_positive`・`connectiveHomComplex_d_zero` は、微分が符号を変えず
+元の δ および閉元への因子分解に一致することを示す。
+`doldKanHomModule` はこの複体に Mathlib の `Abelian.DoldKan.Γ` を適用した対象そのもの。
+`doldKanHomNormalizationIso` はその正規化 Moore 複体と切断 Hom 複体の同型である。
+標準成分模型側の正規化を計算して、この Mathlib Γ 側へ接続する部分はまだ残る。
+対象・集約ビルドは3537件で成功し、公開51宣言の型と公理監査は標準三公理のみ。
 
 γ1.5b 全体は未完了。残りは標準成分模型と実際の chain map・Mathlib Γ との同定、AW 豊穣合成と
 通常の閉零射の圏との整合性、γ1.5c の比較写像、γ1.5d の写像空間の比較。
