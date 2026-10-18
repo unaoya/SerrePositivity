@@ -2046,7 +2046,8 @@ A3e に実際の比較射の充満忠実性と既存の本質的全射性を渡�
 `formalization-plans/foundations.md` §1。γ1.5 の完了後に続けて担当し、
 𝒮（F2）・Sp（L9）・E2b の三者が共有する比較を作る。
 現在は γ3a と、γ3b の検出・比較ファイバー・重み付き end・表現可能な標準比較射、
-strict な図式・錐の coherent nerve での表示、fibration の塔の重み付き end の Kan 性まで実装。
+strict な図式・錐の coherent nerve での表示、fibration の塔の重み付き end の Kan 性、
+塔の実際の標準比較 κ と表現可能な q_x のホモトピー同値性まで実装。
 離散図式の比較と 𝒮 の空積は実装済み。一般の coherent な錐との比較、end の一般の Kan 性・
 同値不変性、𝒮 の残りの極限と Sp への適用は未実装。
 当面は通常の小圏で添字付けた strict な図式の極限側を扱い、余極限と一般の図式の比較は後続に保持する。
@@ -2191,7 +2192,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開134宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開159宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2289,7 +2290,8 @@ Fibration は Mathlib の単体集合の全ホーンの持ち上げ性による�
 
 証明は end のホーンをパラメーター付き自然変換として表示し、
 重みとホーン包含の直積の anodyne 性を各段の相対的な持ち上げに渡す。
-これは塔の標準比較 κ_x の同値性や、一般の図式の end の Kan 性の証明ではない。
+塔の標準比較 κ_x の同値性は後述の重みの比較で別に証明する。
+一般の図式の end の Kan 性は未完了。
 
 `WeightedRestriction.lean` は重みの射 j : W → W' に対して実際の前合成
 `weightedSectionsPre j H : weightedSections W' H → weightedSections W H` を定義する。
@@ -2329,9 +2331,10 @@ weightedSectionsPre_tower_homotopyEquivalence
 ```
 
 この結果は任意の二つの重みの成分ごとに anodyne な比較を扱う。
-標準比較 κ_x に適用する重みの比較と、coherent な錐の写像空間の導来 fiber 比較は未完了。
+塔の標準比較 κ_x に適用する具体的な重みの比較は次節に記す。
+coherent な錐の写像空間の導来 fiber 比較は未完了。
 
-### 塔の標準比較の補助重み（部分実装）
+### 塔の標準比較（κ と q_x は実装済み）
 
 `ConeWeight.lean` は W(i) = N(I/i)、U(i) = Δ[0] に対して
 V(i) = N(WithInitial(I/i)) を厳密な関手 `bousfieldKanConeWeight I` として構成する。
@@ -2366,9 +2369,45 @@ bousfieldKanConeWeightComparison_tower_homotopyEquivalence
 U は図式の圏の終対象であるため、その比較射は同型である。
 V → U の end の制限のホモトピー同値性と二対三則で上の定理を得る。
 c.pt の Kan 性は U の end との同型から導き、前提に追加しない。
-したがって κ は、証明済みのホモトピー同値と V → W の end の制限に分解された。
-W → V の成分の anodyne 性と、その制限の同値性は未証明。
-一般の coherent な錐の写像空間との比較も引き続き未完了。
+`NerveOpposite.lean` は `(nerve C).op ≅ nerve Cᵒᵖ` を射列の反転と逆反転から構成し、
+頂点包含と通常の関手に関する自然性を証明する。
+終対象の頂点包含の right anodyne 性も、反対圏の始対象の定理から導く。
+`NerveInitialComparison.lean` は始対象を保つ関手の nerve が単射なら left anodyne であることを、
+始対象からの錐による矢の retract として証明する。反転同型で終対象側の right anodyne 性を得る。
+
+`ConeWeightAnodyne.lean` では W → V の単射性と共通の終対象を確認する。
+I/i の恒等射の対象は始対象の付加後も終対象であるため、この包含は各成分で right anodyne、
+従って anodyne となる。I 自体の始対象・終対象は要求しない。
+`bousfieldKanConeWeightInclusion_tower_trivialKanFibration` はこの包含による end の制限の
+trivial Kan fibration 性を証明する。二つの同値を合成して実際の κ の同値性が得られる。
+
+```lean
+bousfieldKanLimitComparison_tower_homotopyEquivalence
+    (H : AsSmall.{u} ℕᵒᵖ ⥤ SSet.{u})
+    [KanComplex (H.obj (AsSmall.up.obj (Opposite.op 0)))]
+    [∀ n : ℕ, Fibration (H.map (AsSmall.up.map (homOfLE (Nat.le_succ n)).op))] :
+    IsSimplicialHomotopyEquivalence (bousfieldKanLimitComparison H)
+```
+
+`bousfieldKanConeComparison_tower_homotopyEquivalence c hc` は同じ仮定で任意の極限錐 c を扱う。
+c.pt の Kan 性は一点重みの end との同型から導出する。
+豊穣極限の Hom 図式へ適用した実際の q_x についても、次を公開する。
+
+```lean
+representableHomotopyLimitComparison_tower_homotopyEquivalence
+    {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {F : AsSmall.{u} ℕᵒᵖ ⥤ C} (c : Cone F) (x : C)
+    (hc : IsLimit (simplicialHomCone c x))
+    [KanComplex ((simplicialHomDiagram F x).obj (AsSmall.up.obj (Opposite.op 0)))]
+    [∀ n : ℕ, Fibration
+      ((simplicialHomDiagram F x).map (AsSmall.up.map (homOfLE (Nat.le_succ n)).op))] :
+    IsSimplicialHomotopyEquivalence (representableHomotopyLimitComparison c x)
+```
+
+この型では x の Hom 図式に必要な Kan 性と fibration 性を直接要求し、
+C 全体の局所 Kan 性で省略しない。通常の圏の極限性だけでは Hom 図式の極限性を代用できない。
+一般の coherent な錐の写像空間との比較は引き続き未完了であり、
+これらの κ と q_x の同値性だけでは `IsLimitCone (strictCoherentCone c)` の証明にはならない。
 
 ### 𝒮 の空積（実装済み）
 

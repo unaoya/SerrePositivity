@@ -216,14 +216,14 @@ HTT 4.2.4.1 の双対と Kerodon Corollary 7.5.4.6 を基準とする。
 | 工程 | 現在地 |
 | --- | --- |
 | γ3a | 限定した主張、原典、仮定、pinched Hom による検出、適用条件と宇宙を記録済み |
-| γ3b | 検出・導来 fiber・q_x の分解・離散比較・coherent 表示・塔の end の Kan 性を実装。一般の錐の写像空間の比較は未完了 |
+| γ3b | 検出・導来 fiber・q_x の分解・離散比較・coherent 表示・塔の end の Kan 性を実装。塔の κ・q_x の同値性まで実装。一般の錐の写像空間の比較は未完了 |
 | γ3c | 𝒮 の空積は IsLimitCone として実装。SSet の積・fibration 引き戻し・塔の Kan 性を実装。𝒮 の残りと Sp は未完了 |
 
 Sp では raw sHom の局所 Kan 性と極限の cofibrancy を省略せず、必要なら cofibrant-fibrant
 置換後の錐を公開する。実装は `InfinityCategories/HomotopyLimits/` と専用監査に置く。
 
 γ3b の部分 API は `HomotopyLimits` 集約と `scripts/audit_homotopy_limits.lean` に置く。
-公開134宣言。`representableHomotopyLimitComparison c x` は実際の sHom から end への射、
+公開159宣言。`representableHomotopyLimitComparison c x` は実際の sHom から end への射、
 `representableHomotopyLimitComparison_factorization c x h` は θκ への厳密な分解、
 `representableHomotopyLimitComparison_naturality c f` は始対象に関する厳密な自然性。
 重み付き end の普遍性・通常の随伴と極限保存も公開。正確な型と数学は README に置く。
@@ -247,7 +247,7 @@ Sp の接続先は `KST/Spectra/CoherentNerve.lean` の L9 の Ω スペクト�
 `weightedSectionsPre_tower_homotopyEquivalence` は同じ前提で、制限そのものの
 trivial Kan fibration 性と単体的ホモトピー同値性を証明する。
 重みと境界の pushout-product に沿う相対的延長を用いる。正確な型は README と監査に記録。
-κ_x に適用する重みの比較と coherent な錐の写像空間の比較は未完了。
+塔で κ_x に適用する重みの比較は実装済み。coherent な錐の写像空間の比較は未完了。
 
 補助重み V(i) = N(WithInitial(I/i)) と W → V、U = 定値 Δ[0] → V を構成した。
 `bousfieldKanConeWeightPoint_tower_trivialKanFibration` は零段 Kan・隣接遷移 Fibration の
@@ -256,5 +256,11 @@ trivial Kan fibration 性と単体的ホモトピー同値性を証明する。
 strict な錐の頂点から V の end への比較射のホモトピー同値性を証明する。
 c.pt の Kan 性は結論に必要な証明の中で導出する。
 `bousfieldKanConeComparison_factorization c` はその射の後で W に制限すると元の κ になる式。
-正確な型・前提は README と公開134宣言の監査に記録。W → V の anodyne 性と制限の同値性、
-一般の coherent な錐の写像空間との比較は未完了なので、κ と γ3b の完成とは数えない。
+W → V の成分ごとの anodyne 性は、nerve の反転同型と共通の終対象を保つ単射の
+right anodyne 性から証明した。その end の制限は trivial Kan fibration。
+`bousfieldKanLimitComparison_tower_homotopyEquivalence H` は零段 Kan・隣接遷移 Fibration の
+塔について実際の κ の単体的ホモトピー同値性を証明する。
+`representableHomotopyLimitComparison_tower_homotopyEquivalence c x hc` は同じ Hom 図式の
+条件と `IsLimit (simplicialHomCone c x)` の下で実際の q_x の同値性を証明する。
+正確な型・全前提は README と公開159宣言の監査に記録。
+一般の coherent な錐の写像空間との比較は未完了なので、γ3b の完成とは数えない。

@@ -273,3 +273,53 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms bousfieldKanConeWeightComparison_point
 #check @bousfieldKanConeWeightComparison_tower_homotopyEquivalence
 #print axioms bousfieldKanConeWeightComparison_tower_homotopyEquivalence
+#check @nerveReverseChain
+#print axioms nerveReverseChain
+#check @nerveUnreverseChain
+#print axioms nerveUnreverseChain
+#check @nerveUnreverse_reverse
+#print axioms nerveUnreverse_reverse
+#check @nerveReverse_unreverse
+#print axioms nerveReverse_unreverse
+#check @nerveOppositeMap
+#print axioms nerveOppositeMap
+#check @nerveOppositeIso
+#print axioms nerveOppositeIso
+#check @nerveOppositeMap_point
+#print axioms nerveOppositeMap_point
+#check @rightAnodyne_of_op_left
+#print axioms rightAnodyne_of_op_left
+#check @nervePoint_terminal_rightAnodyne
+#print axioms nervePoint_terminal_rightAnodyne
+#check @nerveOppositeMap_naturality
+#print axioms nerveOppositeMap_naturality
+#check @initialChain_map
+#print axioms initialChain_map
+#check @nerveInitialCone_simplex
+#print axioms nerveInitialCone_simplex
+#check @nerveInitialCone_naturality
+#print axioms nerveInitialCone_naturality
+#check @nerveInitialMapRetract
+#print axioms nerveInitialMapRetract
+#check @nerveMap_preservingInitial_leftAnodyne
+#print axioms nerveMap_preservingInitial_leftAnodyne
+#check @nerveMap_preservingTerminal_rightAnodyne
+#print axioms nerveMap_preservingTerminal_rightAnodyne
+#check @withInitialNerveInclusion_mono
+#print axioms withInitialNerveInclusion_mono
+#check @withInitial_terminal
+#print axioms withInitial_terminal
+#check @anodyne_of_rightAnodyne
+#print axioms anodyne_of_rightAnodyne
+#check @withInitialNerveInclusion_anodyne
+#print axioms withInitialNerveInclusion_anodyne
+#check @bousfieldKanConeWeightInclusion_anodyne
+#print axioms bousfieldKanConeWeightInclusion_anodyne
+#check @bousfieldKanConeWeightInclusion_tower_trivialKanFibration
+#print axioms bousfieldKanConeWeightInclusion_tower_trivialKanFibration
+#check @bousfieldKanConeComparison_tower_homotopyEquivalence
+#print axioms bousfieldKanConeComparison_tower_homotopyEquivalence
+#check @bousfieldKanLimitComparison_tower_homotopyEquivalence
+#print axioms bousfieldKanLimitComparison_tower_homotopyEquivalence
+#check @representableHomotopyLimitComparison_tower_homotopyEquivalence
+#print axioms representableHomotopyLimitComparison_tower_homotopyEquivalence
