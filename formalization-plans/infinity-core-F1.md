@@ -8398,5 +8398,31 @@ lemma leftStraighteningCoherentMap_vertex
     (leftStraighteningCoherentMap C).app (Opposite.op ⦋0⦌) (leftFibrationInfinityVertex p) =
       functorVertex (leftStraighteningCandidate p)
 
+lemma relativeFunctorMixedHom_domain_id {B : SSet.{u}} (a p q : Over B) :
+    relativeFunctorMixedHom (𝟙 a) p q = relativeFunctorPostHom a p q
+
+lemma diagonalRelativeEvaluation_constant_base
+    {B : SSet.{u}} {J : Type u} [LinearOrder J] (a : Over B)
+    (F : EnrichedFunctor SSet.{u} (SimplicialThickening J) (LeftFibrationObject B)) :
+    diagonalRelativeEvaluation ((Functor.const Jᵒᵖ).obj a) F =
+      F.comp SSet (relativeFunctorEnrichedEvaluation a)
+
+lemma strictTransportSimplexUnderDiagram_constant
+    {C : Type u} [Category.{u} C] (c : C) (n : ℕ) :
+    strictTransportSimplexUnderDiagram (PinchedHom.constant (nerveVertex c) n) =
+      (Functor.const (ULift.{u} (Fin (n + 1)))ᵒᵖ).obj
+        (Over.mk (nerveMap (Under.forget c)))
+
+lemma strictTransportDiagonalSimplex_constant_base
+    {C : Type u} [Category.{u} C] (c : C) {n : ℕ}
+    (F : (LeftFibrationInfinity (nerve C)) _⦋n⦌) :
+    strictTransportDiagonalSimplex (PinchedHom.constant (nerveVertex c) n) F =
+      (leftStrictTransportCoherentEvaluation c).app (Opposite.op ⦋n⦌) F
+
+lemma leftStraighteningCoherentMap_evaluate
+    {C : Type u} [Category.{u} C] (c : C) :
+    leftStraighteningCoherentMap C ≫ evaluateFunctorAt (ULift.up (nerveVertex c)) =
+      leftStrictTransportCoherentEvaluation c
+
 end SerrePositivity.InfinityCategories
 ```
