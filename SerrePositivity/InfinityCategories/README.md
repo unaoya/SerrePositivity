@@ -1370,7 +1370,7 @@ H^(−(n+1)) との同型で、追加の閉性・充填の仮定はない。
 `doldKanHomSpaceKan` は N4 の線形充填をこの同型で移した Kan instance。
 `doldKanHomPinchedIso` は宇宙を持ち上げた DK Hom と dg nerve の右 pinched Hom の同型である。
 この同型はまだ coherent nerve の写像空間との比較ではない。
-対象・集約ビルドは3702件で成功し、公開264宣言の型と公理監査は標準三公理のみ。
+対象・集約ビルドは3708件で成功し、公開284宣言の型と公理監査は標準三公理のみ。
 正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean` に記録する。
 
 `awData` は後の射の接頭部分と前の射の接尾部分を合成して全切断点で足す成分族の演算。
@@ -1439,9 +1439,26 @@ Leibniz 則から得る左右の削除和を `AWIndex.boundaryPairEquiv` で、�
 
 型は Hom の微分 `d (−↑(n+1)) (−↑n)` の等式であり、全ての正次元を含む。
 `cubeEvaluation_zero_closed e φ : differential R (cubeEvaluation e φ) = 0`
-が零次元の閉性を与える。これは座標境界の公式であり、まだ dg nerve への
-単体集合の射は得ていない。座標0面と Path の削除、座標1面と AW・shuffle による合成の対応、
-dg 単体の方程式、退化も含む自然性、および比較写像の頂点・辺・三角形での一致が残る。
+が零次元の閉性を与える。
+
+`cubeImageMap f` は座標の像による立方体の写像で、座標同値の移送と評価の可換性も証明した。
+`erasedEnumeration e i : Fin m ≃ S.erase (e i).val` は一座標を飛ばした番号付け。
+`pathCubeMap_face_zero` は座標0面の Path への写像が、この番号付けを通じて
+一点削除した内部点集合の `pathCubeMap` を通ることを示す。
+`cubeEvaluation_pathFace_zero` は同じ因子分解を立方体評価へ移す。
+`erasedEnumeration_eq_descending` は元が降順なら削除後も標準の降順番号付けに等しいと示す。
+`strictAnti_enumeration_card_filter` は降順の番号 i がその点より大きい点数に等しいことを示し、
+座標境界の係数と dg nerve の係数の照合に使う。
+
+`pathCubeMap_face_one` は座標1面の Path が、その点の左右の区間に制限した Path の
+合成を通ることを示す。`coherentCube_face_one_apply` は任意の単体で、その像が
+後半の像を第一引数、前半の像を第二引数とする `standardAW` に等しいことを示す。
+前提は `[LinearOrder J] [CommRing R] [DGCategory R D]` と実際の豊穣関手
+`s : EnrichedFunctor SSet (SimplicialThickening J) (ClosedCategory R D)`。
+
+まだ dg nerve への単体集合の射は得ていない。合成面の AW の旗の和を左右の
+立方体評価の dg 合成へまとめる shuffle の計算、dg 単体の方程式、退化も含む自然性、
+および比較写像の頂点・辺・三角形での一致が残る。
 
 
 ## γ3：homotopy 極限・余極限と ∞ 極限・余極限（γ1.5 の後）

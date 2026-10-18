@@ -179,7 +179,12 @@ StandardSimplex R x z n` が追加仮定なしの合成。
 `φ : Coherent.cube T ⟶ standardHomSpace x y` に対し、
 `d (−↑(n+1)) (−↑n) (cubeEvaluation e φ)` が各座標面の評価の差の交代和に等しいと示す。
 `cubeEvaluation_zero_closed e φ : differential R (cubeEvaluation e φ) = 0`。
-前提は同じく `[CommRing R] [DGCategory R D]`。座標面と Path の削除・合成の対応は残る。
-公開264宣言の正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean`。残りは
+前提は同じく `[CommRing R] [DGCategory R D]`。
+`cubeEvaluation_pathFace_zero` は座標0面を一点削除した内部点集合の評価へ移す。
+`erasedEnumeration_eq_descending` は降順の向きの保存、`strictAnti_enumeration_card_filter` は係数の点数を与える。
+`pathCubeMap_face_one` は座標1面の Path の左右分解、`coherentCube_face_one_apply` は
+その豊穣 Hom での像が `standardAW 後半 前半` に等しいことを示す。
+前提には `[LinearOrder J]` と実際の豊穣関手 s を用いる。合成面の旗の和と dg 合成を結ぶ shuffle の計算は残る。
+公開284宣言の正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean`。残りは
 比較写像、低次の一致、写像空間の比較。A3e の `qCatEquivalenceOfFullyFaithfulEssentiallySurjective` は実装済み。
 比較写像と各 pinched Hom の実際のホモトピー同値を完成させた後に適用する。

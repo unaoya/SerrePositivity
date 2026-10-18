@@ -1,5 +1,8 @@
 module
 
+public import SerrePositivity.InfinityCategories.DoldKanComparison.CoherentComposition
+public import SerrePositivity.InfinityCategories.DoldKanComparison.DescendingDeletion
+
 public import SerrePositivity.InfinityCategories.DoldKanComparison.CubeOneBoundary
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.PathEvaluation

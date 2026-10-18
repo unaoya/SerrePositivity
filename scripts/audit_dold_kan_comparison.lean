@@ -284,6 +284,12 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardUnitMap
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardUnitMap
 
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentHom_comp_apply
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentHom_comp_apply
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentCube_face_one_apply
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentCube_face_one_apply
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.connectiveHomComplex
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.connectiveHomComplex
 
@@ -380,6 +386,18 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlag_congr
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlag_congr
 
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeImageMap
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeImageMap
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeImageMap_flag
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeImageMap_flag
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlagEvaluation_imageMap
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlagEvaluation_imageMap
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_imageMap
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_imageMap
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeSign_swap_trans
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeSign_swap_trans
 
@@ -452,6 +470,21 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlag_face_last
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlag_face_last
 
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.strictAnti_enumeration_unique
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.strictAnti_enumeration_unique
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.descendingEnumeration_strictAnti
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.descendingEnumeration_strictAnti
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.erasedEnumeration_strictAnti
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.erasedEnumeration_strictAnti
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.erasedEnumeration_eq_descending
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.erasedEnumeration_eq_descending
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.strictAnti_enumeration_card_filter
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.strictAnti_enumeration_card_filter
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardDoldKanModuleIso
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardDoldKanModuleIso
 
@@ -469,6 +502,12 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardEnrichedCategory
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardEnrichedCategory
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.erasedEnumeration
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.erasedEnumeration
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.erasedEnumeration_val
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.erasedEnumeration_val
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.homModule
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.homModule
@@ -619,6 +658,27 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardMooreZeroIso
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardMooreZeroIso
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.pathCubeIntervalFunctor
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.pathCubeIntervalFunctor
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.pathCubeInsertFunctor
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.pathCubeInsertFunctor
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.pathCubeInsertFunctor_comp
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.pathCubeInsertFunctor_comp
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.pathCubeMap_face_one
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.pathCubeMap_face_one
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.pathCubeMap_mono
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.pathCubeMap_mono
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.pathCubeMap_face_zero
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.pathCubeMap_face_zero
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_pathFace_zero
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_pathFace_zero
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.descendingEnumeration
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.descendingEnumeration
