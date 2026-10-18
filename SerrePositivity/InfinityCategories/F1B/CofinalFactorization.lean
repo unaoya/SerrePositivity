@@ -8,7 +8,7 @@ public import SerrePositivity.InfinityCategories.F1B.CofinalComposition
 概要：cofinal な射の因子分解の fibration 側も cofinal となる。
 方針：anodyne な左因子の cofinality と最初の因子の消去則を使う。
 規約：右因子の trivial Kan fibration 性はここではまだ主張しない。
-使われ方：Kerodon Proposition 7.2.1.15 に向けた、cofinal fibration への還元。
+使われ方：Kerodon Corollary 7.2.1.15 に向けた、cofinal fibration への還元。
 -/
 
 @[expose] public section

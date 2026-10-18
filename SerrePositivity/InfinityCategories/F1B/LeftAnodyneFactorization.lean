@@ -9,7 +9,7 @@ public import Mathlib.CategoryTheory.SmallObject.Basic
 概要：任意の射の left anodyne な単射と left fibration への因子分解。
 方針：有限表示可能な left ホーンに可算小対象論法を適用する。
 規約：モデル構造の弱同値や straightening は使わない。
-使われ方：Kerodon Proposition 7.2.1.15、Quillen A の因子分解による還元。
+使われ方：Kerodon Corollary 7.2.1.15、Quillen A の因子分解による還元。
 -/
 
 @[expose] public section
@@ -85,7 +85,7 @@ lemma cofinalLeftHornFamily_llp_rlp_le_monomorphisms :
 /-- 概要：任意の射を left anodyne な単射と left fibration の合成に分解できる。
 方針：小対象論法で得た因子を既存のホーンの性質に同定する。
 規約：合成の一致は厳密な等式。
-使われ方：Kerodon Proposition 7.2.1.15、Quillen A の還元。 -/
+使われ方：Kerodon Corollary 7.2.1.15、Quillen A の還元。 -/
 lemma exists_leftAnodyne_leftFibration_factorization {X Y : SSet.{u}} (f : X ⟶ Y) :
     ∃ (Z : SSet.{u}) (i : X ⟶ Z) (p : Z ⟶ Y),
       Mono i ∧ leftAnodyneExtensions i ∧ LeftFibration p ∧ i ≫ p = f := by
