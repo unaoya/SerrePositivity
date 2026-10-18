@@ -368,3 +368,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.simplicialHom_id_transport
 #check @SerrePositivity.InfinityCategories.simplicialHom_comp_transport
 #check @SerrePositivity.InfinityCategories.coherentHomComparisonSimplex
+#check @SerrePositivity.InfinityCategories.coherentHomComparisonHom_cast_cast
+#check @SerrePositivity.InfinityCategories.coherentNerveConstant_obj
+#check @SerrePositivity.InfinityCategories.coherentNerveConstant_map
+#check @SerrePositivity.InfinityCategories.coherentHomComparisonSimplex_source
+#check @SerrePositivity.InfinityCategories.coherentHomComparisonSimplex_target
+#check @SerrePositivity.InfinityCategories.coherentHomComparisonPinchedSimplex

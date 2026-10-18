@@ -1524,5 +1524,38 @@ noncomputable def coherentHomComparisonSimplex {C : Type v} [Category.{u} C]
     [SimplicialCategory C] {X Y : C} {n : ℕ}
     (σ : (SimplicialCategory.sHom X Y) _⦋n⦌) : (SimplicialNerve C) _⦋n + 1⦌
 
+lemma coherentHomComparisonHom_cast_cast {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} {n : ℕ}
+    (σ : (SimplicialCategory.sHom X Y) _⦋n⦌) (i j : Fin (n + 1)) :
+    coherentHomComparisonHom σ i.castSucc j.castSucc ≫
+      eqToHom (congrArg₂ SimplicialCategory.sHom
+        (coherentHomComparisonObj_cast X Y i) (coherentHomComparisonObj_cast X Y j)) =
+      toUnit _ ≫ eId SSet X
+
+lemma coherentNerveConstant_obj {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    (X : C) (n : ℕ) (i : SimplicialThickening (ULift.{u} (Fin (n + 1)))) :
+    (PinchedHom.constant (coherentNerveVertex X) n).obj i = X
+
+lemma coherentNerveConstant_map {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    (X : C) (n : ℕ) (i j : SimplicialThickening (ULift.{u} (Fin (n + 1)))) :
+    (PinchedHom.constant (coherentNerveVertex X) n).map i j = toUnit _ ≫ eId SSet X
+
+lemma coherentHomComparisonSimplex_source {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} {n : ℕ}
+    (σ : (SimplicialCategory.sHom X Y) _⦋n⦌) :
+    (SimplicialNerve C).map (PinchedHom.front n).op (coherentHomComparisonSimplex σ) =
+      PinchedHom.constant (coherentNerveVertex X) n
+
+lemma coherentHomComparisonSimplex_target {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} {n : ℕ}
+    (σ : (SimplicialCategory.sHom X Y) _⦋n⦌) :
+    (SimplicialNerve C).map (PinchedHom.lastVertex n).op (coherentHomComparisonSimplex σ) =
+      coherentNerveVertex Y
+
+noncomputable def coherentHomComparisonPinchedSimplex {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} {n : ℕ}
+    (σ : (SimplicialCategory.sHom X Y) _⦋n⦌) :
+    PinchedHom.Simplex (coherentNerveVertex X) (coherentNerveVertex Y) n
+
 end SerrePositivity.InfinityCategories
 ```

@@ -67,3 +67,4 @@ public import SerrePositivity.InfinityCategories.F1.PinchedLeftCoordinates
 public import SerrePositivity.InfinityCategories.F1.CoslicePinchedLeft
 public import SerrePositivity.InfinityCategories.F1.CoherentPathMaximum
 public import SerrePositivity.InfinityCategories.F1.CoherentHomComparison
+public import SerrePositivity.InfinityCategories.F1.CoherentHomFaces
