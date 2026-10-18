@@ -210,12 +210,19 @@ Map(F(x),y) 全体で、元の単位の代表、G による普遍標的辺、標
 元の単位の代表、G の標的辺、指定族 g の表示に厳密に一致する。
 `functorSquareOfCompositionTriangle` は、この三角形に対角辺を共有する恒等合成の退化三角形を貼り、
 下辺が恒等で三辺の代表を保持した関手正方形を構成する。
-残る接続は、この関手正方形を comma の族へ戻し、逆向きの比較と両合成のホモトピーを構成する
-部分である。合成の Hom の等式から三角形を族ごとに選ぶだけでは、与えられた path の情報を
-保つ保証はない。順方向の比較の path は h Fun の等式から選んでいるため、今回運んだ三角形との
-両合成の整合性も別に検証する必要がある。
-**比較射の逆射・両合成のホモトピーと同値性は未証明。** 順方向の射と終域の可縮性だけでは
-始域の可縮性は従わず、始対象性を結論してはならない。
+`commaSquareUnreorder` はパラメータと区間の並べ替えの逆で、両方の往復が恒等である。
+`functorSquareCoherence` は関手正方形を coherence へ戻し、左右のホモトピーの raw な射を
+厳密に回収する。再び curry すると元の関手正方形そのものとなる。
+`unitCommaSquareOfComparisonHomotopy` は、標的族の単位比較の像から指定終辺へのホモトピーを
+comma の正方形へ戻す。標的族と三角形の輸送から得た関手正方形は厳密に回収される。
+`unitComparisonFiberHomotopy` は元の導来 fiber の path 成分から普遍ホモトピーを取り出し、
+`homotopyEquivalencePath` で戻すと元の path 成分そのものとなる。
+これを復元に代入した `unitComparisonFiberToCommaMapping` は、導来 fiber から comma の区間写像空間へ
+戻る実際の射である。正方形表示と元の始域座標への射影を厳密に保持する。
+**両合成のホモトピーと比較射の同値性は未証明。** 合成の Hom の等式から三角形を族ごとに
+選ぶだけでは、与えられた path の情報を保つ保証はない。順方向の比較の path は h Fun の等式から
+選んでいるため、今回保持した導来 fiber の path との両合成の整合性も別に検証する必要がある。
+二方向の射の存在と終域の可縮性だけでは始域の可縮性は従わず、始対象性を結論してはならない。
 
 B1 の逆方向全体は未完了。残るのは、自然な各点の pinched 写像空間対応から単位を取り出す
 接続と、`UnitMappingSpaceCondition η` から
@@ -224,8 +231,9 @@ comma の経路では、各点の比較の同値性から `UnitCommaInitialCondi
 射影の充填・輸送を使って自然な余単位と三角恒等式へ接続する必要がある。
 既存の全パラメータ版の経路も利用できるが、その十分条件で原典の各点の条件を置き換えて
 B1 完了とはしない。B2〜B5 も未完了。
-対象ビルド（2027 jobs）・公理監査（882 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 359 モジュールに straightening 依存がないことも確認した。
+対象ビルド（2031 jobs）・公理監査（927 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 363 モジュールに straightening 依存がないことも確認した。
+監査スクリプトも Lean 環境の実際の読み込みモジュールを検査し、straightening 系を拒否する。
 
 ## 4. 主要宣言
 
@@ -388,3 +396,8 @@ B1 完了とはしない。B2〜B5 も未完了。
 | `unitCompositionPathExtension`・`unitCompositionPathExtension_diagonal` | 基準合成三角形の輸送、対角辺の path 自体を保持 | 実装済み |
 | `transportedUnitCompositionTriangle` | 単位・G の標的辺・指定族を三辺に持つ輸送後の三角形 | 実装済み |
 | `FunctorCompositionSquare`・`functorSquareOfCompositionTriangle` | 三辺の代表を保った、下辺が恒等の関手正方形への補完 | 実装済み |
+| `commaSquareUnreorder` と両逆・四辺の公式 | パラメータと区間の並べ替えを逆に戻す | 実装済み |
+| `functorSquareCoherence` と左右辺・`recover` の公式 | 関手正方形から coherence への復元、図式全体の厳密な回収 | 実装済み |
+| `unitCommaSquareOfComparisonHomotopy`・`unitCommaMappingFamilyOfComparisonHomotopy` | 単位比較の像から終辺へのホモトピーから comma の正方形・族を復元 | 実装済み |
+| `unitComparisonFiberSource/Path/Homotopy`・`unitComparisonFiberHomotopy_path` | 元の導来 fiber の普遍族・path・ホモトピー、path 自体の厳密な回収 | 実装済み |
+| `unitComparisonFiberToCommaMapping` と正方形・射影の公式 | 導来 fiber から comma の写像空間へ戻る実際の射 | 実装済み（逆関係は未証明） |

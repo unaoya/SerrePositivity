@@ -5,12 +5,20 @@ import Lean.Util.CollectAxioms
 概要：α2b の全宣言を監査する。
 方針：宣言元モジュールで抽出し、生成宣言を含め依存公理を再帰的に調べる。
 規約：許す公理は propext・Classical.choice・Quot.sound のみ。
+読み込んだリポジトリ内モジュールに straightening 系があれば拒否する。
 使われ方：B1〜B5 の保存単位で対象ビルド後に実行する。
 -/
 
 open Lean in
 run_cmd do
   let env ← getEnv
+  let mut importedRepo : Nat := 0
+  for mod in env.header.modules do
+    unless `SerrePositivity |>.isPrefixOf mod.module do continue
+    importedRepo := importedRepo + 1
+    if (mod.module.toString.toLower.splitOn "straightening").length != 1 then
+      throwError "F1B: forbidden straightening dependency: {mod.module}"
+  logInfo m!"F1B import audit passed: {importedRepo} repository modules, no straightening."
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
     let some idx := env.getModuleIdxFor? name | continue
@@ -502,3 +510,23 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.FunctorCompositionSquare
 
 #check @SerrePositivity.InfinityCategories.functorSquareOfCompositionTriangle
+
+#check @SerrePositivity.InfinityCategories.commaSquareUnreorder
+
+#check @SerrePositivity.InfinityCategories.functorSquareCoherence
+
+#check @SerrePositivity.InfinityCategories.functorSquareCoherence_recover
+
+#check @SerrePositivity.InfinityCategories.unitCommaSquareOfComparisonHomotopy
+
+#check @SerrePositivity.InfinityCategories.unitCommaSquareOfComparisonHomotopy_functorSquare
+
+#check @SerrePositivity.InfinityCategories.unitCommaMappingFamilyOfComparisonHomotopy
+
+#check @SerrePositivity.InfinityCategories.unitComparisonFiberHomotopy
+
+#check @SerrePositivity.InfinityCategories.unitComparisonFiberToCommaMapping
+
+#check @SerrePositivity.InfinityCategories.unitComparisonFiberToCommaMapping_projection
+
+#check @SerrePositivity.InfinityCategories.unitComparisonFiberHomotopy_path
