@@ -51,6 +51,15 @@ def BiTower.diagonal (X : BiTower C) : Tower C where
   transition_self n := X.transition_self n n
   transition_comp hm hn := X.transition_comp hm hn hm hn
 
+/-- 概要：関手による二重塔の像。
+方針：対象と全ての長方形遷移を関手で写す。
+規約：添字は変えない。使われ方：KST Lemma 4.10 のホモロジーと通常商。 -/
+def BiTower.map {D : Type*} [Category* D] (X : BiTower C) (F : C ⥤ D) : BiTower D where
+  obj n k := F.obj (X.obj n k)
+  transition h h' := F.map (X.transition h h')
+  transition_self n k := by rw [X.transition_self, F.map_id]
+  transition_comp h₁ h₂ h₃ h₄ := by rw [← F.map_comp, X.transition_comp]
+
 /-- 概要：二重塔のレベル射。
 方針：各長方形の遷移との自然性を指定する。
 規約：両塔で同じ添字を使う。使われ方：KST Lemma 4.10 の二重冪比較。 -/

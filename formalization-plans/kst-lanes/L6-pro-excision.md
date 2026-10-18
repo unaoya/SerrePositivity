@@ -31,26 +31,24 @@
 
 ## 現在地
 
-- **L6b を再開（2026-10-18、ユーザー指定の反復 cone 経路）。**
-- 固定 Mathlib の公開 API 不具合は並行作業の破損ではないとユーザーが確認。依存側は修復しない。
-- SpectralSequence API の使用を終了し、短完全列・cone 長完全列で再利用可能な補題を残す。
-- L6b は未完了、L6c〜g は未着手。旧頁計算の検証済み記録は完成の根拠に数えない。
-- L6a：最小形式の実装完了。塔・レベル射・pro 同型判定・関手保存・再添字・pro-零性・対角共終性を検証済み。
-- L1：具体的な自然なレベル完全列から塔への持ち上げを証明。fiber 長完全列自体は K-L9 の入力。
-- L2：加群の塔における pro 五項補題を証明。外側はレベル同型でなく pro 同型。
-- L3：任意の関手での保存を証明したので、加法関手にも適用可能。具体的な有理化関手は K-L9 から借用。
-- L6b：進行中。Lemma 4.9 の有限生成加群係数版を検証済み。
-- 平坦底変換の自然なホモロジー比較・イデアル倍の像・pro-零性保存まで検証済み。
-- 旧スペクトル系列経路を使用停止。通常の複体・短完全列・cone 境界で使える補題を保存。
-- `powerKernelTower_isProZero`：Noether 加群の冪核の塔の pro-消滅を証明済み。
-- `scalarConeHomologyComparison`：通常商から cone ホモロジーへの比較射を構成。
-- `scalarConeHomologyComparison_injective` と `_exact`：長完全列で単射性・次の核との一致を証明。
-- `cone_connecting_naturality`：可換正方形に対する長完全列の自然性を証明。
-- `powerScalarConeComparison_isProIso`：一変数比較を冪核の pro-零性から証明。
-- 二重塔の行ごとの pro 同型・pro-零性を対角へ移す一般補題を検証済み。
-- 残件：二重塔を反復 Koszul 冪系へ適用する列長帰納法、元の冪遷移との比較。
-- 対象ビルドと203宣言の公理監査が成功。公理は標準三公理の範囲内。
-- L6b 完了とはまだ主張しない。
+- L6a：最小形式を検証済み。塔・レベル射・Artin–Mazur 判定・pro 五項補題・対角共終性を所有する。
+- L1 の具体的 fiber 長完全列と π_n の模型同定は K-L9 の入力であり、本レーンで供給済みと表示しない。
+- L6b：複体模型・平坦底変換の工程完了。対象ビルドと254宣言の公理監査が成功し、標準三公理のみ。
+- Mathlib の SpectralSequence API は本レーンの Lean ソースに残していない。
+- Lemma 4.9：既存の Artin–Rees による有限生成係数版に加え、反復 cone 模型での pro-消滅も証明。
+- Lemma 4.10：通常の生成イデアル冪商から Koszul cone ホモロジーへの自然なレベル射 `koszul_comparison` を構成。
+- `koszul_comparison_isProIso` は Noether 環上の複体に対し、次数ごとのホモロジー有限性だけで成立する。
+- 列長帰納法の各段は実際の cone 長完全列と Artin–Rees による冪核の消滅を使う。
+- 係数の塔と末尾変数の冪を独立に扱い、二重塔の各行から対角へ pro 同型を移す。
+- 反復する通常商と一度の生成イデアル商の同定は、標準全射の核の計算と第一同型定理による。
+- 標準全射・核・通常商の同定・cone 比較はいずれも冪遷移に自然。
+- `koszulConeTower_obj` により、各段は既存 `koszulComplexOn (a₁ⁿ,…,aᵣⁿ) K`。
+- その塔の遷移も既存の mapping cone の可換正方形から作る。右成分は係数遷移、左成分は冪倍した係数遷移。
+- 単体環の π とこの複体模型との同定は K-L9 が供給する界面。π 自体の定理の完成は主張しない。
+- 平坦ホモロジー底変換、a(n)M の像のテンソル比較、pro-零性・pro 同型の保存は検証済み。
+- 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
+- L6c：原典と K-L2 の群状単体モノイド・分類空間の界面を確認中。
+- L6d〜g：未着手。
 
 ## 主要宣言の表
 
@@ -129,7 +127,15 @@
 | powerScalarConeComparison_isProIso | ScalarConePro.lean | 検証済み | 一変数版 Lemma 4.10 |
 | BiLevelHom.diagonal_isProIso | BiTower.lean | 検証済み | 行ごとの pro 同型を対角へ移す |
 | BiTower.diagonal_isProZero | BiTower.lean | 検証済み | 行ごとの pro-零性を対角へ移す |
-| koszul_comparison | KoszulPro.lean | 予定 | KST Lemma 4.10 |
+| powerKernelTower_isProZero_artinRees | PowerKernelArtinRees.lean | 検証済み | 各標的核を Artin–Rees で零化 |
+| scalarCone_homology_finite | ConeFiniteness.lean | 検証済み | 項の有限性を使わない cone ホモロジーの有限性 |
+| IsProIso.powerQuotient | PowerQuotient.lean | 検証済み | 動く冪商による pro 同型保存 |
+| koszulConeComparison_isProIso | KoszulConeComparison.lean | 検証済み | 列長帰納法による反復商の pro 比較 |
+| koszulConeModuleHomologyTower_isProZero | KoszulConeVanishing.lean | 検証済み | KST Lemma 4.9 の cone 模型 |
+| iteratedPowerQuotientProjection_ker_ideal | ParameterQuotient.lean | 検証済み | 標準全射の核は生成イデアル倍 |
+| parameterQuotientComparison_isProIso | ParameterQuotient.lean | 検証済み | 通常の生成イデアル商と反復商の自然同型 |
+| koszul_comparison | KoszulComparison.lean | 検証済み | 通常の生成イデアル冪商から実 Koszul ホモロジーへのレベル射 |
+| koszul_comparison_isProIso | KoszulComparison.lean | 検証済み | KST Lemma 4.10 の複体模型 |
 | prop414 | Prop414.lean | 予定 | 中心的係数による非可換版 |
 | pro_whitehead | Whitehead.lean | 予定 | simple 空間版 |
 | claim418 | Serre.lean | 予定 | 相対 Serre SS の帰結 |
@@ -171,7 +177,7 @@
 ## L6b：Koszul と平坦底変換
 
 - 原典は [KST v4](https://arxiv.org/pdf/1611.08466v4) p.23、Lemma 4.9・Lemma 4.10。
-- Lemma 4.9 の証明経路の差分：列長帰納法を用いず、標的項の有限性・Koszul 座標の零作用・Artin–Rees・冪遷移のイデアル深度を使う。
+- Lemma 4.9 の既存の独立な証明は標的項の有限性・Koszul 座標の零作用・Artin–Rees・冪遷移のイデアル深度を使う。新しい cone 経路は列長帰納法と各段の Artin–Rees による冪核消滅を使う。
 - 係数付き複体は既存 koszulComplex に tensor を施したものであり、既存の反復錐モデルとの自然同型を用いて零化イデアルを移す。
 - 既存の koszulComplex の次数規約を先に確認する。
 - ホモロジーの次数変換を docstring に明記する。
@@ -339,7 +345,8 @@
 - 長完全列は既存 `ConeLES` の `Cone.exact₁`・`exact₂`・`exact₃` を用いる。
 - Lemma 4.9：列長で帰納し、正次数の両側を帰納仮定で消す。
 - 境界次数では固定された短い列の零次ホモロジーの有限性を使い、末尾変数の冪核を消す。
-- 冪核の遷移は aᵐ⁻ⁿ 倍であり、有限生成性と Noether 性（Artin–Rees／核の安定化）が必要。
+- 冪核の遷移は aᵐ⁻ⁿ 倍。反復 cone の本証明では既存 `exists_pow_deep_image_killed` による Artin–Rees を各段へ適用する。
+- 一般の Noether 加群の核安定化による一変数比較も、独立な補助補題として保存する。
 - 各変数の冪指数は独立に扱い、最後に対角の共終性を使う。
 - Lemma 4.10：長完全列から Hⁱ(K)/aⁿ → Hⁱ(Cone(aⁿ,K)) を作る。
 - この射は単射であり、その余核は Hⁱ⁺¹(K) 上の aⁿ 倍の核へ入る。

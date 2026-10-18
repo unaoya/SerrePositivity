@@ -616,3 +616,156 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.BiTower.diagonal_isProZero
 #print axioms SerrePositivity.KST.ProExcision.BiTower.diagonal_isProZero
+
+#check @SerrePositivity.KST.ProExcision.BiTower.map
+#print axioms SerrePositivity.KST.ProExcision.BiTower.map
+
+#check @SerrePositivity.KST.ProExcision.IsProZero.of_proIso
+#print axioms SerrePositivity.KST.ProExcision.IsProZero.of_proIso
+
+#check @SerrePositivity.KST.ProExcision.scalarCone_homology_finite
+#print axioms SerrePositivity.KST.ProExcision.scalarCone_homology_finite
+
+#check @SerrePositivity.KST.ProExcision.koszulComplexOn_homology_finite
+#print axioms SerrePositivity.KST.ProExcision.koszulComplexOn_homology_finite
+
+#check @SerrePositivity.KST.ProExcision.scalarQuotientFunctor
+#print axioms SerrePositivity.KST.ProExcision.scalarQuotientFunctor
+
+#check @SerrePositivity.KST.ProExcision.scalarConeHomologyComparisonNatTrans
+#print axioms SerrePositivity.KST.ProExcision.scalarConeHomologyComparisonNatTrans
+
+#check @SerrePositivity.KST.ProExcision.powerScalarSquare_map
+#print axioms SerrePositivity.KST.ProExcision.powerScalarSquare_map
+
+#check @SerrePositivity.KST.ProExcision.powerScalarConeBiTower
+#print axioms SerrePositivity.KST.ProExcision.powerScalarConeBiTower
+
+#check @SerrePositivity.KST.ProExcision.powerScalarConeBiTower_row_transition
+#print axioms SerrePositivity.KST.ProExcision.powerScalarConeBiTower_row_transition
+
+#check @SerrePositivity.KST.ProExcision.powerScalarRange_map
+#print axioms SerrePositivity.KST.ProExcision.powerScalarRange_map
+
+#check @SerrePositivity.KST.ProExcision.powerHomologyQuotientBiTower
+#print axioms SerrePositivity.KST.ProExcision.powerHomologyQuotientBiTower
+
+#check @SerrePositivity.KST.ProExcision.powerHomologyQuotientBiTower_row_transition
+#print axioms SerrePositivity.KST.ProExcision.powerHomologyQuotientBiTower_row_transition
+
+#check @SerrePositivity.KST.ProExcision.powerScalarConeBiComparison
+#print axioms SerrePositivity.KST.ProExcision.powerScalarConeBiComparison
+
+#check @SerrePositivity.KST.ProExcision.powerScalarConeBiComparison_diagonal_isProIso
+#print axioms SerrePositivity.KST.ProExcision.powerScalarConeBiComparison_diagonal_isProIso
+
+#check @SerrePositivity.KST.ProExcision.powerQuotientMap
+#print axioms SerrePositivity.KST.ProExcision.powerQuotientMap
+
+#check @SerrePositivity.KST.ProExcision.powerQuotientMap_comp
+#print axioms SerrePositivity.KST.ProExcision.powerQuotientMap_comp
+
+#check @SerrePositivity.KST.ProExcision.Tower.powerQuotient
+#print axioms SerrePositivity.KST.ProExcision.Tower.powerQuotient
+
+#check @SerrePositivity.KST.ProExcision.LevelHom.powerQuotient
+#print axioms SerrePositivity.KST.ProExcision.LevelHom.powerQuotient
+
+#check @SerrePositivity.KST.ProExcision.IsProIso.powerQuotient
+#print axioms SerrePositivity.KST.ProExcision.IsProIso.powerQuotient
+
+#check @SerrePositivity.KST.ProExcision.diagonalPowerConeComparison
+#print axioms SerrePositivity.KST.ProExcision.diagonalPowerConeComparison
+
+#check @SerrePositivity.KST.ProExcision.koszulConeTower
+#print axioms SerrePositivity.KST.ProExcision.koszulConeTower
+
+#check @SerrePositivity.KST.ProExcision.koszulConeTower_obj
+#print axioms SerrePositivity.KST.ProExcision.koszulConeTower_obj
+
+#check @SerrePositivity.KST.ProExcision.iteratedPowerQuotientTower
+#print axioms SerrePositivity.KST.ProExcision.iteratedPowerQuotientTower
+
+#check @SerrePositivity.KST.ProExcision.koszulConeComparison
+#print axioms SerrePositivity.KST.ProExcision.koszulConeComparison
+
+#check @SerrePositivity.KST.ProExcision.koszulConeComparison_isProIso
+#print axioms SerrePositivity.KST.ProExcision.koszulConeComparison_isProIso
+
+#check @SerrePositivity.KST.ProExcision.scalarQuotientπ
+#print axioms SerrePositivity.KST.ProExcision.scalarQuotientπ
+
+#check @SerrePositivity.KST.ProExcision.Tower.powerQuotientProjection
+#print axioms SerrePositivity.KST.ProExcision.Tower.powerQuotientProjection
+
+#check @SerrePositivity.KST.ProExcision.iteratedPowerQuotientProjection
+#print axioms SerrePositivity.KST.ProExcision.iteratedPowerQuotientProjection
+
+#check @SerrePositivity.KST.ProExcision.iteratedPowerQuotientProjection_surjective
+#print axioms SerrePositivity.KST.ProExcision.iteratedPowerQuotientProjection_surjective
+
+#check @SerrePositivity.KST.ProExcision.ker_comp_scalarQuotientπ
+#print axioms SerrePositivity.KST.ProExcision.ker_comp_scalarQuotientπ
+
+#check @SerrePositivity.KST.ProExcision.parameterSubmodule
+#print axioms SerrePositivity.KST.ProExcision.parameterSubmodule
+
+#check @SerrePositivity.KST.ProExcision.iteratedPowerQuotientProjection_ker
+#print axioms SerrePositivity.KST.ProExcision.iteratedPowerQuotientProjection_ker
+
+#check @SerrePositivity.KST.ProExcision.iteratedPowerQuotientTower_isZero_obj
+#print axioms SerrePositivity.KST.ProExcision.iteratedPowerQuotientTower_isZero_obj
+
+#check @SerrePositivity.KST.ProExcision.single_homology_finite
+#print axioms SerrePositivity.KST.ProExcision.single_homology_finite
+
+#check @SerrePositivity.KST.ProExcision.koszulConeModuleHomologyTower_isProZero
+#print axioms SerrePositivity.KST.ProExcision.koszulConeModuleHomologyTower_isProZero
+
+#check @SerrePositivity.KST.ProExcision.parameterSubmodule_le_iff
+#print axioms SerrePositivity.KST.ProExcision.parameterSubmodule_le_iff
+
+#check @SerrePositivity.KST.ProExcision.parameterSubmodule_eq_ideal_smul
+#print axioms SerrePositivity.KST.ProExcision.parameterSubmodule_eq_ideal_smul
+
+#check @SerrePositivity.KST.ProExcision.iteratedPowerQuotientProjection_ker_ideal
+#print axioms SerrePositivity.KST.ProExcision.iteratedPowerQuotientProjection_ker_ideal
+
+#check @SerrePositivity.KST.ProExcision.parameterSubmodule_powers_le
+#print axioms SerrePositivity.KST.ProExcision.parameterSubmodule_powers_le
+
+#check @SerrePositivity.KST.ProExcision.parameterIdeal_powers_le
+#print axioms SerrePositivity.KST.ProExcision.parameterIdeal_powers_le
+
+#check @SerrePositivity.KST.ProExcision.submoduleQuotientTower
+#print axioms SerrePositivity.KST.ProExcision.submoduleQuotientTower
+
+#check @SerrePositivity.KST.ProExcision.parameterQuotientTower
+#print axioms SerrePositivity.KST.ProExcision.parameterQuotientTower
+
+#check @SerrePositivity.KST.ProExcision.parameterQuotientIso
+#print axioms SerrePositivity.KST.ProExcision.parameterQuotientIso
+
+#check @SerrePositivity.KST.ProExcision.parameterQuotientIso_mk
+#print axioms SerrePositivity.KST.ProExcision.parameterQuotientIso_mk
+
+#check @SerrePositivity.KST.ProExcision.parameterQuotientComparison
+#print axioms SerrePositivity.KST.ProExcision.parameterQuotientComparison
+
+#check @SerrePositivity.KST.ProExcision.parameterQuotientComparison_isProIso
+#print axioms SerrePositivity.KST.ProExcision.parameterQuotientComparison_isProIso
+
+#check @SerrePositivity.KST.ProExcision.koszul_comparison
+#print axioms SerrePositivity.KST.ProExcision.koszul_comparison
+
+#check @SerrePositivity.KST.ProExcision.koszul_comparison_isProIso
+#print axioms SerrePositivity.KST.ProExcision.koszul_comparison_isProIso
+
+#check @SerrePositivity.KST.ProExcision.powerKernelTower_isProZero_artinRees
+#print axioms SerrePositivity.KST.ProExcision.powerKernelTower_isProZero_artinRees
+
+#check @SerrePositivity.KST.ProExcision.powerScalarConeComparison_isProIso_artinRees
+#print axioms SerrePositivity.KST.ProExcision.powerScalarConeComparison_isProIso_artinRees
+
+#check @SerrePositivity.KST.ProExcision.powerScalarConeBiComparison_diagonal_isProIso_artinRees
+#print axioms SerrePositivity.KST.ProExcision.powerScalarConeBiComparison_diagonal_isProIso_artinRees

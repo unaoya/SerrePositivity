@@ -29,6 +29,18 @@ def Tower.mapNatTrans {C : Type u} [Category.{v} C] {D : Type w} [Category.{w'} 
   app n := τ.app (X.obj n)
   naturality h := τ.naturality (X.transition h)
 
+/-- 概要：pro 同型の始域が pro-零なら終域も pro-零。
+方針：始域を零化した段の後で eventual 逆射を選び、終域の遷移を零射経由にする。
+規約：零射を持つ任意の圏。使われ方：KST Lemma 4.9 の cone 長完全列経路。 -/
+theorem IsProZero.of_proIso {C : Type u} [Category.{v} C] [HasZeroMorphisms C]
+    {X Y : Tower C} {f : LevelHom X Y} (hX : IsProZero X) (hf : IsProIso f) : IsProZero Y := by
+  intro n
+  obtain ⟨s, hns, hs⟩ := hX n
+  obtain ⟨t, hst, g, _, hg⟩ := hf s
+  refine ⟨t, hns.trans hst, ?_⟩
+  rw [← Y.transition_comp hst hns, ← hg, Category.assoc,
+    ← f.naturality hns, ← Category.assoc, hs, comp_zero, zero_comp]
+
 variable {R : Type u} [CommRing R]
 
 /-- 概要：当該項で零となる複体射はその次数のホモロジー上でも零。
