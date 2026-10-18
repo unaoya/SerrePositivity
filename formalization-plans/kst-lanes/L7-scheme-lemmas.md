@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 1482 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 1483 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -814,6 +814,15 @@ f が正則で d が f の冪を割るとき、純変換は生成元数から k 
 ピボット、正規化行列、核の包含を追加の未証明仮定として束ねない。
 `LocalRegularMinorPureFree.lean` で実際の同型の存在、純変換の自由性、階数の等式を証明済み。
 
+係数中心への適用では、既存の `coefficient_prime_boundary_generator_bound` と同じ
+基底変更された完全な表示を使う。
+共通因子 c と境界 f が係数環 C 上で正則、c が f の冪を割り、
+元の H の次次数の小行列式イデアルが零なら、係数イデアルの正則単項化により
+特別な局所環でも k 次小行列式は正則単項、次次数は零となる。
+f の像の正則性は分裂表示で C → C ⊗_A B へ移し、局所化で保持する。
+新しい自由性判定を適用し、特別な局所環での純変換の自由性と階数 N-k を得る。
+この接続を `CoefficientPrimeBoundaryFree.lean` で証明済み。
+
 #### 選んだ有限表示の任意の基底変更
 
 原典：Stacks 0810, Lemma 38.30.2 の小行列式の基底変更の利用。
@@ -1024,6 +1033,7 @@ Fin(N-k) 上の自由加群からの全射を構成する。
 | `regularMinorBoundaryPresentationComplementEquiv` | 正則ピボットと次次数の消滅による純変換と補成分の実線形同型 | 定義済み |
 | `exists_boundaryPureTransform_complement_equiv_of_regular_minorIdeal` | 局所環で正則単項小行列式から補成分との実同型を選ぶ | 証明済み |
 | `boundaryPureTransform_free_and_finrank_of_regular_minorIdeal` | 元の境界に沿う純変換の自由性と階数 | 証明済み |
+| `coefficient_prime_boundary_free_and_finrank` | 係数中心の拡大素点での境界純変換の自由性と階数 | 証明済み |
 
 以下は予定名であり、実装済みでないものを `#check` 済みとは扱わない。
 

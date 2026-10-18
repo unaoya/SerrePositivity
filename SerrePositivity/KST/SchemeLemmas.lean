@@ -216,3 +216,4 @@ public import SerrePositivity.KST.SchemeLemmas.RegularMinorAnnihilation
 public import SerrePositivity.KST.SchemeLemmas.RegularMinorGraphKernel
 public import SerrePositivity.KST.SchemeLemmas.RegularMinorPureTransformEquiv
 public import SerrePositivity.KST.SchemeLemmas.LocalRegularMinorPureFree
+public import SerrePositivity.KST.SchemeLemmas.CoefficientPrimeBoundaryFree
