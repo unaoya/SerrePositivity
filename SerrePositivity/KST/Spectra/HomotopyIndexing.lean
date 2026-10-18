@@ -32,6 +32,28 @@ namespace KanHomotopy
 variable {X Y Z : SSet.{u}} [KanComplex X] [KanComplex Y] [KanComplex Z]
   {x : X _⦋0⦌} {y : Y _⦋0⦌} {z : Z _⦋0⦌}
 
+/-- 概要：任意の自然数次数の境界定数単体のホモトピー類。
+方針：零次数と正次数の商への標準射をまとめる。
+規約：n は代表単体の実際の次数。
+使われ方：Kerodon Construction 3.2.2.4。連結射の全次数の定義。 -/
+def mk (n : ℕ) (s : X.PtSimplex n x) : KanHomotopy X n x :=
+  match n with
+  | 0 => KanHomotopyZero.mk s
+  | _ + 1 => KanHomotopyGroup.mk s
+
+/-- 概要：任意の面添字の RelStruct は全自然数次数の類の等式を与える。
+方針：零次数では辺の商、正次数では面添字独立性を使う。
+規約：零次数の面添字は唯一の零。
+使われ方：Kerodon §3.2.2。連結写像の選択独立性。 -/
+theorem sound {n : ℕ} {s t : X.PtSimplex n x} {i : Fin (n + 1)}
+    (r : PtSimplex.RelStruct s t i) : mk n s = mk n t := by
+  cases n with
+  | zero =>
+    have hi : i = 0 := by apply Fin.ext; omega
+    subst i
+    exact Quot.sound ⟨r⟩
+  | succ n => exact KanHomotopyGroup.sound r
+
 /-- 概要：正の自然数次数のホモトピー類には群構造がある。
 方針：充填で構成済みの正次数の群構造を使う。
 規約：実際の次数 n + 1。
@@ -55,6 +77,20 @@ def point (n : ℕ) : KanHomotopy X n x :=
   | 0 => KanHomotopyZero.mk ((PtSimplex.equiv₀ x).symm x)
   | _ + 1 => KanHomotopyGroup.mk .const
 
+/-- 概要：定数単体の類は全次数で基点となる。
+方針：零次数では Yoneda による頂点の表示、正次数では単位元の定義を使う。
+規約：n は実際の次数。
+使われ方：Kerodon §3.2.2。連結写像の基点保存。 -/
+@[simp]
+theorem mk_const (n : ℕ) : mk n (RelativeMorphism.const : X.PtSimplex n x) = point n := by
+  cases n with
+  | zero =>
+    change KanHomotopyZero.mk .const = KanHomotopyZero.mk ((PtSimplex.equiv₀ x).symm x)
+    congr 1
+    ext : 1
+    exact (yonedaEquiv_symm_zero x).symm
+  | succ n => rfl
+
 /-- 概要：全自然数次数のホモトピー類の誘導写像。
 方針：零次数と正次数の構成済みの誘導写像をまとめる。
 規約：基点の像を hφ で指定する。
@@ -64,6 +100,15 @@ noncomputable def map (n : ℕ) (φ : X ⟶ Y) (hφ : φ.app _ x = y) :
   match n with
   | 0 => KanHomotopyZero.map φ hφ
   | _ + 1 => KanHomotopyGroup.map φ hφ
+
+/-- 概要：全次数の誘導写像を代表単体上で計算する。
+方針：次数による場合分けで商への写像の定義を読む。
+規約：像の基点は hφ により指定する。
+使われ方：Kerodon §3.2.2。連結写像と fiber 列の計算。 -/
+@[simp]
+theorem map_mk (n : ℕ) (φ : X ⟶ Y) (hφ : φ.app _ x = y) (s : X.PtSimplex n x) :
+    map n φ hφ (mk n s) = mk n (mapSimplex φ hφ s) := by
+  cases n <;> rfl
 
 /-- 概要：全次数の誘導写像は恒等射を保つ。
 方針：零次数と正次数それぞれの恒等法則を使う。

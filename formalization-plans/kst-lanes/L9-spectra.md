@@ -271,7 +271,7 @@ amend・rebase・reset を使わない。
 | --- | --- | --- |
 | 計画 | 作成 | 実装と同期する |
 | L9a | 完了・対象ビルドと公理監査成功 | 全体ビルドの別レーン失敗は下記 |
-| L9b | 着手 | fiber の連結射と完全性 |
+| L9b | 連結写像の商への降下・基点保存・二つの複体条件を実装済み | 準同型性、自然性、kernel = image、零次数の完全性 |
 | L9c | 改訂仕様を承認済み・未着手 | 単射による Hom の塔と Kan 性、置換、整数次数 |
 | L9d | 未着手 | telescope と π_* の計算 |
 | L9e | 未着手 | Tot、hG、有理自明作用の比較 |
@@ -330,6 +330,28 @@ amend・rebase・reset を使わない。
 | 同上 | `KanHomotopy.map_point` | 全次数の基点保存 |
 | 同上 | `KanHomotopy.map_eq_of_basedHomotopy` | 全次数のホモトピー不変性 |
 
+L9b の実装済みの宣言は `FibrationSequence.lean` に置く。
+
+| 宣言 | 内容 |
+| --- | --- |
+| `fibration_pullback_snd` | ホーンの RLP による fibration の引き戻し閉性 |
+| `KanFiber`、`fiberι`、`fiberPoint` | 点からの実際の引き戻しとその基点 |
+| `fiberLift`、`fiber_hom_ext` | fiber の普遍性 |
+| `BoundaryLift`、`boundaryLift_nonempty` | 定数ホーンの相対持ち上げの存在 |
+| `BoundaryLift.boundary` | 最後の面を fiber の代表へ送る |
+| `BoundaryLiftComparison.rel` | 二つの持ち上げの境界を fiber 内の RelStruct で結ぶ |
+| `BoundaryLift.boundary_class_eq` | 持ち上げの選択独立性 |
+| `BoundaryLift.transport` | 底の RelStruct に沿う境界保存の持ち上げ |
+| `connecting` | π_(n+1)(B) → π_n(fiber) の商上の写像 |
+| `connecting_eq` | 任意の持ち上げによる連結写像の計算 |
+| `connecting_one` | 連結写像の基点保存 |
+| `fiber_map_connecting` | 包含の誘導写像と連結射の合成は基点に定数 |
+| `connecting_map` | 射影の誘導写像と連結射の合成は基点に定数 |
+
+L9b の `connecting` は集合上の写像として証明済みである。
+正次数での群準同型性、自然性、各箇所の kernel = image はまだ未証明。
+L9b の完了や長完全列の完成とは報告しない。
+
 `KanHomotopy X (n + 1) x` は群、`KanHomotopy X (n + 2) x` は可換群。
 正次数の群準同型としての界面は `KanHomotopyGroup.map`。
 零次数には群を付けない。
@@ -344,7 +366,8 @@ lake build SerrePositivity.KST.Spectra
 lake env lean scripts/audit_kst_spectra.lean
 ```
 
-結果：対象ビルド成功。監査は私有宣言を含め 367 宣言、5 モジュールで標準三公理のみ。
+L9a 保存時の結果：対象ビルド成功。監査は私有宣言を含め 367 宣言、5 モジュールで標準三公理のみ。
+L9b の連結写像の保存時：対象ビルド成功。476 宣言、6 モジュールで標準三公理のみ。
 L9a の区切りで `set -o pipefail; lake build` を実行した。
 終了コード 1：`SerrePositivity/KST/SchemeLemmas/ChartAlgebra.lean:62` の
 `isDefEq` の heartbeat 超過（8150/8153）。
