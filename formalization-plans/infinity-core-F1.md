@@ -9041,5 +9041,91 @@ lemma weightedKanEdgewiseLeft_isPrecompositionEquivalence
     {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
     IsPrecompositionEquivalence (weightedKanEdgewiseLeft F)
 
+noncomputable def directPointHomDiagramIso
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    (HomotopyLimits.simplicialHomDiagram F pointKanObject ⋙ SSet.opFunctor) ≅
+      F ⋙ kanObjectOpFunctor ⋙ kanObjectForget
+
+noncomputable def directPointHomWeightedIso
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    weightedNerve (HomotopyLimits.simplicialHomDiagram
+      F pointKanObject ⋙ SSet.opFunctor) ≅
+      weightedNerve (F ⋙ kanObjectOpFunctor ⋙ kanObjectForget)
+
+lemma directPointHomWeightedIso_inv_projection
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    (directPointHomWeightedIso F).inv ≫
+      weightedNerveProjection (HomotopyLimits.simplicialHomDiagram
+        F pointKanObject ⋙ SSet.opFunctor) =
+      weightedNerveProjection (F ⋙ kanObjectOpFunctor ⋙ kanObjectForget)
+
+noncomputable def reversedWeightedKanUnstraighteningComparison
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    (SSet.uliftFunctor.{u + 1, u}).obj (weightedNerve (F ⋙ kanObjectOpFunctor ⋙ kanObjectForget)) ⟶
+      leftUnstraightening (kanDiagramCoherentNerve F)
+
+lemma reversedWeightedKanUnstraighteningComparison_projection
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    reversedWeightedKanUnstraighteningComparison F ≫
+      leftUnstraighteningProjection (kanDiagramCoherentNerve F) =
+      (SSet.uliftFunctor.{u + 1, u}).map (weightedNerveProjection (F ⋙ kanObjectOpFunctor ⋙ kanObjectForget))
+
+lemma reversedWeightedKanUnstraighteningComparison_isPrecompositionEquivalence
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    IsPrecompositionEquivalence (reversedWeightedKanUnstraighteningComparison F)
+
+lemma exists_directKanUnstraighteningComparison
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    ∃ f : (SSet.uliftFunctor.{u + 1, u}).obj (weightedNerve (F ⋙ kanObjectForget)) ⟶
+        leftUnstraightening (kanDiagramCoherentNerve F),
+      f ≫ leftUnstraighteningProjection (kanDiagramCoherentNerve F) =
+        (SSet.uliftFunctor.{u + 1, u}).map (weightedNerveProjection (F ⋙ kanObjectForget)) ∧
+      IsPrecompositionEquivalence f
+
+noncomputable def directKanUnstraighteningComparison
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    (SSet.uliftFunctor.{u + 1, u}).obj (weightedNerve (F ⋙ kanObjectForget)) ⟶
+      leftUnstraightening (kanDiagramCoherentNerve F)
+
+lemma directKanUnstraighteningComparison_projection
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    directKanUnstraighteningComparison F ≫
+      leftUnstraighteningProjection (kanDiagramCoherentNerve F) =
+      (SSet.uliftFunctor.{u + 1, u}).map (weightedNerveProjection (F ⋙ kanObjectForget))
+
+lemma directKanUnstraighteningComparison_isPrecompositionEquivalence
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    IsPrecompositionEquivalence (directKanUnstraighteningComparison F)
+
+lemma exists_leftStraighteningCandidateComparison
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    ∃ f : (SSet.uliftFunctor.{u + 1, u}).obj E ⟶
+        leftUnstraightening (leftStraighteningCandidate p),
+      f ≫ leftUnstraighteningProjection (leftStraighteningCandidate p) =
+        (SSet.uliftFunctor.{u + 1, u}).map p ∧ IsPrecompositionEquivalence f
+
+noncomputable def leftStraighteningCandidateComparison
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    (SSet.uliftFunctor.{u + 1, u}).obj E ⟶ leftUnstraightening (leftStraighteningCandidate p)
+
+lemma leftStraighteningCandidateComparison_projection
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    leftStraighteningCandidateComparison p ≫
+      leftUnstraighteningProjection (leftStraighteningCandidate p) =
+      (SSet.uliftFunctor.{u + 1, u}).map p
+
+lemma leftStraighteningCandidateComparison_isPrecompositionEquivalence
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    IsPrecompositionEquivalence (leftStraighteningCandidateComparison p)
+
+lemma leftStraighteningCandidateComparison_isQCatEquivalence
+    {C : Type u} [Category.{u} C] {E : SSet.{u}} [Quasicategory E]
+    (p : E ⟶ nerve C) [LeftFibration p] :
+    IsQCatEquivalence (leftStraighteningCandidateComparison p)
+
 end SerrePositivity.InfinityCategories
 ```

@@ -462,3 +462,6 @@ public import SerrePositivity.InfinityCategories.F1.EdgewiseLeftFilling
 public import SerrePositivity.InfinityCategories.F1.KanEdgewiseFunctor
 public import SerrePositivity.InfinityCategories.F1.WeightedNerveMapComparison
 public import SerrePositivity.InfinityCategories.F1.WeightedKanEdgewiseComparison
+public import SerrePositivity.InfinityCategories.F1.DirectKanCoefficients
+public import SerrePositivity.InfinityCategories.F1.DirectKanUnstraightening
+public import SerrePositivity.InfinityCategories.F1.LeftStraighteningReconstruction
