@@ -1,6 +1,20 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.homotopyVertex_isInvertible_of_functorEdge
+#print axioms SerrePositivity.InfinityCategories.homotopyEvaluation_isIso_of_vertexPath
+#print axioms SerrePositivity.InfinityCategories.arrowHomotopy_isInvertible_of_evaluations
+#print axioms SerrePositivity.InfinityCategories.arrowHomotopy_isInvertible_of_endpointPaths
+#print axioms SerrePositivity.InfinityCategories.arrowHomotopy_isInvertible_of_sourcePath_terminal_targets
+#print axioms SerrePositivity.InfinityCategories.spanHomotopy_isInvertible_of_branches
+#print axioms SerrePositivity.InfinityCategories.cofiberSquareHomotopy_isInvertible_of_vertexPaths
+#print axioms SerrePositivity.InfinityCategories.exists_invertibleCofiberSquareHomotopy_of_comm
+#print axioms SerrePositivity.InfinityCategories.ZeroTriangle.zero_cofiber_of_isIso_bottom
+#print axioms SerrePositivity.InfinityCategories.CofiberSquare.zero_of_homMk_isIso
+#print axioms SerrePositivity.InfinityCategories.CofiberSquare.homMk_isIso_iff_zero
+#print axioms SerrePositivity.InfinityCategories.FiberSquare.opCofiber
+#print axioms SerrePositivity.InfinityCategories.FiberSquare.zero_of_homMk_isIso
+#print axioms SerrePositivity.InfinityCategories.FiberSquare.homMk_isIso_iff_zero
 #print axioms SerrePositivity.InfinityCategories.homotopyOppositeEquivalence_map_homMk
 #print axioms SerrePositivity.InfinityCategories.terminalTargetPullback_isBinaryProduct
 #print axioms SerrePositivity.InfinityCategories.ZeroTriangle.isIso_f_of_zero_cofiber
@@ -1013,7 +1027,12 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.ZeroTriangleVanishing,
     `SerrePositivity.InfinityCategories.Stable.ColimitHomotopyInvertible,
     `SerrePositivity.InfinityCategories.Stable.PushoutComparisonInvertible,
-    `SerrePositivity.InfinityCategories.Stable.CofiberSquareComparisonIso]
+    `SerrePositivity.InfinityCategories.Stable.CofiberSquareComparisonIso,
+    `SerrePositivity.InfinityCategories.Stable.HomotopyInvertibility,
+    `SerrePositivity.InfinityCategories.Stable.SpanHomotopyInvertible,
+    `SerrePositivity.InfinityCategories.Stable.CofiberComparisonInvertible,
+    `SerrePositivity.InfinityCategories.Stable.IsomorphismCofiberZero,
+    `SerrePositivity.InfinityCategories.Stable.IsomorphismFiberZero]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

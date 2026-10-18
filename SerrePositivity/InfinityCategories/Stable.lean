@@ -100,6 +100,12 @@ public import SerrePositivity.InfinityCategories.Stable.ColimitHomotopyInvertibl
 public import SerrePositivity.InfinityCategories.Stable.PushoutComparisonInvertible
 public import SerrePositivity.InfinityCategories.Stable.CofiberSquareComparisonIso
 
+public import SerrePositivity.InfinityCategories.Stable.HomotopyInvertibility
+public import SerrePositivity.InfinityCategories.Stable.SpanHomotopyInvertible
+public import SerrePositivity.InfinityCategories.Stable.CofiberComparisonInvertible
+public import SerrePositivity.InfinityCategories.Stable.IsomorphismCofiberZero
+public import SerrePositivity.InfinityCategories.Stable.IsomorphismFiberZero
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。
