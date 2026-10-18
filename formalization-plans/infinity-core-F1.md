@@ -10649,5 +10649,104 @@ lemma leftUnstraighteningFiberFamilyLift_end {B : SSet.{u + 1}}
     (simplexPrismVertex 1 1 (vertexFiber pointedSpaceProjection (F.app _ b)) ▷
       leftUnstraighteningTransformationSpace F G) ≫ leftUnstraighteningFiberFamilyLift F G b
 
+def weightedNerveConstantProduct (C : Type u) [Category.{u} C] (K : SSet.{u}) :
+    nerve C ⊗ K ⟶ weightedNerve ((CategoryTheory.Functor.const C).obj K)
+
+lemma weightedNerveConstantProduct_projection (C : Type u) [Category.{u} C] (K : SSet.{u}) :
+    weightedNerveConstantProduct C K ≫
+      weightedNerveProjection ((CategoryTheory.Functor.const C).obj K) = fst (nerve C) K
+
+lemma weightedNerveConstantProduct_at {C : Type u} [Category.{u} C] (K : SSet.{u}) (c : C) :
+    lift (SSet.const (nerveVertex c)) (𝟙 K) ≫ weightedNerveConstantProduct C K =
+      weightedNerveConstantLift ((CategoryTheory.Functor.const C).obj K) c
+
+lemma weightedNerveConstantLift_map {C : Type u} [Category.{u} C]
+    {F G : C ⥤ SSet.{u}} (η : F ⟶ G) (c : C) :
+    weightedNerveConstantLift F c ≫ weightedNerveMap η =
+      η.app c ≫ weightedNerveConstantLift G c
+
+lemma weightedNerveConstantLift_baseMap
+    {C D : Type u} [Category.{u} C] [Category.{u} D]
+    (H : D ⥤ C) (F : C ⥤ SSet.{u}) (d : D) :
+    weightedNerveConstantLift (H ⋙ F) d ≫ weightedNerveBaseMap H F =
+      weightedNerveConstantLift F (H.obj d)
+
+def weightedNerveUnderCoefficient {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (c : C) :
+    (CategoryTheory.Functor.const (Under c)).obj (F.obj c) ⟶ Under.forget c ⋙ F
+
+def weightedNerveUnderEvaluation {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (c : C) : nerve (Under c) ⊗ F.obj c ⟶ weightedNerve F
+
+lemma weightedNerveUnderEvaluation_projection {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (c : C) :
+    weightedNerveUnderEvaluation F c ≫ weightedNerveProjection F =
+      fst (nerve (Under c)) (F.obj c) ≫ nerveMap (Under.forget c)
+
+lemma weightedNerveUnderEvaluation_at {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (c : C) (d : Under c) :
+    lift (SSet.const (nerveVertex d)) (𝟙 (F.obj c)) ≫ weightedNerveUnderEvaluation F c =
+      F.map d.hom ≫ weightedNerveConstantLift F d.right
+
+lemma prismEndpoint_edge_source {X A : SSet.{u}} {a b : X _⦋0⦌} (e : SSet.Edge a b) :
+    prismEndpoint 0 A ≫ (SSet.yonedaEquiv.symm e.edge ▷ A) =
+      lift (SSet.const a) (𝟙 A)
+
+lemma prismEndpoint_edge_target {X A : SSet.{u}} {a b : X _⦋0⦌} (e : SSet.Edge a b) :
+    prismEndpoint 1 A ≫ (SSet.yonedaEquiv.symm e.edge ▷ A) =
+      lift (SSet.const b) (𝟙 A)
+
+noncomputable def weightedNerveTransportPrism {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {c d : C} (f : c ⟶ d) :
+    (Δ[1] : SSet.{u}) ⊗ F.obj c ⟶ weightedNerve F
+
+lemma weightedNerveTransportPrism_zero {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {c d : C} (f : c ⟶ d) :
+    prismEndpoint 0 _ ≫ weightedNerveTransportPrism F f = weightedNerveConstantLift F c
+
+lemma weightedNerveTransportPrism_one {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {c d : C} (f : c ⟶ d) :
+    prismEndpoint 1 _ ≫ weightedNerveTransportPrism F f =
+      F.map f ≫ weightedNerveConstantLift F d
+
+lemma weightedNerveTransportPrism_projection {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {c d : C} (f : c ⟶ d) :
+    weightedNerveTransportPrism F f ≫ weightedNerveProjection F =
+      fst (Δ[1] : SSet.{u}) (F.obj c) ≫ SSet.yonedaEquiv.symm (nerve.edgeMk f).edge
+
+lemma weightedNerveFiberIso_hom_ι {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (c : C) :
+    (weightedNerveFiberIso F c).hom ≫
+      vertexFiberι (weightedNerveProjection F) (nerveVertex c) =
+        weightedNerveConstantLift F c
+
+lemma weightedNerveFiberIso_inv_constantLift {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (c : C) :
+    (weightedNerveFiberIso F c).inv ≫ weightedNerveConstantLift F c =
+      vertexFiberι (weightedNerveProjection F) (nerveVertex c)
+
+noncomputable def weightedNerveCoefficientTransport {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {c d : C} (f : c ⟶ d) :
+    vertexFiber (weightedNerveProjection F) (nerveVertex c) ⟶
+      vertexFiber (weightedNerveProjection F) (nerveVertex d)
+
+lemma weightedNerveCoefficientTransport_isTransport {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) [∀ c, KanComplex (F.obj c)] {c d : C} (f : c ⟶ d) :
+    IsEdgeTransport (weightedNerveProjection F) (nerve.edgeMk f)
+      (weightedNerveCoefficientTransport F f)
+
+noncomputable def weightedNerveTransport_coefficientIso {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) [∀ c, KanComplex (F.obj c)] {c d : C} (f : c ⟶ d) :
+    FunctorIso
+      ((weightedNerveFiberIso F c).hom ≫
+        edgeTransport (weightedNerveProjection F) (nerve.edgeMk f) ≫
+          (weightedNerveFiberIso F d).inv)
+      (F.map f)
+
+lemma weightedNerveTransport_isQCatEquivalence_iff {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) [∀ c, KanComplex (F.obj c)] {c d : C} (f : c ⟶ d) :
+    IsQCatEquivalence (edgeTransport (weightedNerveProjection F) (nerve.edgeMk f)) ↔
+      IsQCatEquivalence (F.map f)
+
 end SerrePositivity.InfinityCategories
 ```
