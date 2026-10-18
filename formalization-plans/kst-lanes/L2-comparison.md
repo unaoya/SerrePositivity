@@ -431,7 +431,11 @@ exPairingStep の二重適用の通常の退化による表示と退化性を証
 対応先が非退化なら元は前段の exPairingStep の像ではないこと（Lemma 28 の部分）を証明した。
 Lemma 26 (2) の前側の面の吸収則、(3) の後ろの面との交換則を証明した。
 Lemma 26 (8)・(9) の切断した拡張退化と前後の通常の退化との交換則を証明した。
-Lemma 26 の九つの式を全て証明した。pairing の全単射・非退化性・正則性は未証明。
+Lemma 26 の九つの式を全て証明した。
+前側の面の複雑度の減少と、後ろの面が元の面の拡張になる式を Ex 上で証明した。
+退化単体の複雑度に合った拡張は退化することを証明した。
+対応先が非退化なら元も非退化であること（Lemma 28 の残りの部分）を証明した。
+pairing の全単射・対応先の非退化性・指定面の一意性（Lemma 29）・正則性は未証明。
 Ex∞ の Kan 性・単位の anodyne 性・fibration 保存は未証明であり、現時点で Kan 置換と呼ばない。
 非 Kan 基底への一般化、対角化後の bar 束の homotopy-cartesian 性、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
@@ -439,8 +443,8 @@ L2b、L2c、L2d、L2e は未完了である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 411 宣言の型と公理を確認した。
-さらに名前空間全体の 854 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 421 宣言の型と公理を確認した。
+さらに名前空間全体の 865 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -522,6 +526,8 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `exPairingStep_double_degenerate`、`exPairingStep_notMem_range_of_nonDegenerate` | 実装済み | 二重適用の退化性と Lemma 28 の像に関する部分 |
 | `subdivisionDegeneracyAt_front_absorb`、`subdivisionDegeneracyAt_face_right` | 実装済み | Moss Lemma 26 (2)・(3) の前後の面との関係 |
 | `finiteChainCutDegeneracy_singleton`、`subdivisionDegeneracyAt_front`、`subdivisionDegeneracyAt_rear` | 実装済み | Moss Lemma 26 (8)・(9) の通常の退化との交換則 |
+| `exExpansion_front_complexity`、`exExpansion_rear_face` | 実装済み | Moss Lemma 29 の前後の面の計算 |
+| `exExpansion_mem_degenerate`、`exPairingStep_nonDegenerate_source` | 実装済み | Moss Lemma 28 の退化性と非退化性を元へ戻す部分 |
 | Ex∞ の Kan 性と単位の anodyne 性 | 未証明 | Moss 2020 Proposition 21、Theorem 22、Corollary 30 |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |

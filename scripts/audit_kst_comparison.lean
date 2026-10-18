@@ -52,6 +52,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -328,6 +329,18 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.exComplexityLevel_zero_iff
 
 
+-- ExDegeneracyExpansion.lean
+
+#check @SerrePositivity.KST.Comparison.exComplexity_front_face
+#print axioms SerrePositivity.KST.Comparison.exComplexity_front_face
+
+#check @SerrePositivity.KST.Comparison.exExpansion_front_degeneracy
+#print axioms SerrePositivity.KST.Comparison.exExpansion_front_degeneracy
+
+#check @SerrePositivity.KST.Comparison.exExpansion_rear_degeneracy
+#print axioms SerrePositivity.KST.Comparison.exExpansion_rear_degeneracy
+
+
 -- ExDoublePairing.lean
 
 #check @SerrePositivity.KST.Comparison.exPairingStep_double
@@ -338,6 +351,15 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.exPairingStep_notMem_range_of_nonDegenerate
 #print axioms SerrePositivity.KST.Comparison.exPairingStep_notMem_range_of_nonDegenerate
+
+
+-- ExExpansionFaces.lean
+
+#check @SerrePositivity.KST.Comparison.exExpansion_front_complexity
+#print axioms SerrePositivity.KST.Comparison.exExpansion_front_complexity
+
+#check @SerrePositivity.KST.Comparison.exExpansion_rear_face
+#print axioms SerrePositivity.KST.Comparison.exExpansion_rear_face
 
 
 -- ExInfinity.lean
@@ -365,6 +387,18 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.exInfinityUnit
 #print axioms SerrePositivity.KST.Comparison.exInfinityUnit
+
+
+-- ExPairingNondegenerate.lean
+
+#check @SerrePositivity.KST.Comparison.exExpansion_mem_degenerate
+#print axioms SerrePositivity.KST.Comparison.exExpansion_mem_degenerate
+
+#check @SerrePositivity.KST.Comparison.exPairingStep_mem_degenerate
+#print axioms SerrePositivity.KST.Comparison.exPairingStep_mem_degenerate
+
+#check @SerrePositivity.KST.Comparison.exPairingStep_nonDegenerate_source
+#print axioms SerrePositivity.KST.Comparison.exPairingStep_nonDegenerate_source
 
 
 -- ExPairingStep.lean
@@ -1361,6 +1395,15 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_face_right
 #print axioms SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_face_right
+
+
+-- SubdivisionFrontCut.lean
+
+#check @SerrePositivity.KST.Comparison.liftedFace_front_above
+#print axioms SerrePositivity.KST.Comparison.liftedFace_front_above
+
+#check @SerrePositivity.KST.Comparison.subdivisionCutAt_front_face_absorb
+#print axioms SerrePositivity.KST.Comparison.subdivisionCutAt_front_face_absorb
 
 
 -- SubdivisionFrontDegeneracy.lean

@@ -82,7 +82,8 @@ theorem finiteChainDegeneracy_face_right (n : ℕ) (k : Fin (n + 1)) (j : Fin (n
 -/
 @[reassoc] theorem subdivisionDegeneracyAt_face_right (n : ℕ) (k : Fin (n + 1))
     (j : Fin (n + 2)) (hkj : k.castSucc < j) :
-    SimplexCategory.sd.map (SimplexCategory.δ j.succ) ≫ subdivisionDegeneracyAt.{u} (n + 1) k.castSucc =
+    SimplexCategory.sd.map (SimplexCategory.δ j.succ) ≫
+      subdivisionDegeneracyAt.{u} (n + 1) k.castSucc =
       subdivisionDegeneracyAt n k ≫ SimplexCategory.sd.map (SimplexCategory.δ j) := by
   apply NatTrans.ext
   funext d
