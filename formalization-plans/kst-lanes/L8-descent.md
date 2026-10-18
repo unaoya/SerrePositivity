@@ -131,10 +131,12 @@ blowup 後の有限忠実平坦細分を構成した。アフィンの場合の�
 実際のアフィン平坦化の低次元中心・正の定 rank の有限平坦細分にも同じ分裂を接続した。
 抽象 blowup 正方形の任意の底変換と比較立方体を構成し、全側面の Cartesian 性と
 例外部分の指定底変換との同型・二射影の保存を証明した（§63）。
+指定底変換と抽象 blowup の正方形の族を関手にし、元の正方形への比較立方体を自然変換にした。
+圏の選択された pullback との自然同型を増強先を保って混合 Čech と元の前層の像へ移した（§64）。
 `Theorem31.lean` では (3.8) と中心上の帰納仮定による代数的な軌道貼り合わせを証明。
 正本 D7 に従う導来値域への実現の型を §19 に明示する。
 検証状態：`lake build SerrePositivity.KST.Descent` が成功。
-監査状態：`scripts/audit_kst_descent.lean` は 156 モジュール・1850 宣言を検査し成功。
+監査状態：`scripts/audit_kst_descent.lean` は 160 モジュール・1900 宣言を検査し成功。
 許容公理は標準三公理のみ。主定理や八つの公理の完成を意味しない。
 切断を持つ射の帰納の区切りとして、全体ビルド `lake build` も成功（9418 ジョブ）。
 終了コードは `set -eo pipefail` で確認。ログは `/tmp/l8-sectioned-full-build.log`。
@@ -435,6 +437,16 @@ Z 上の帰納仮定で残りの辺を同型とする。
 (3.6) により全次数の支持つき K の主張にする。
 
 ## 17. 主要宣言の表
+
+| 宣言（§64） | 内容 | 状態 |
+| --- | --- | --- |
+| `finiteTypeBaseChangeMap`、`finiteTypeOverBaseChangeArrow`、`finiteTypeOverBaseChangeToOriginal` | 実際の指定モデルの底変換関手と元の射への自然比較 | 対象ビルド済み、二射影で関手性を検査 |
+| `finiteTypeBaseChangeArrowNatIso` | 指定モデルと圏の選択された底変換 Arrow 関手の自然同型 | 対象ビルド済み、対象の型クラスを変更しない |
+| `AbstractBlowupSquare.baseChangeFunctor`、`baseChangeToOriginal` | 抽象 blowup 底変換の関手と自然な比較立方体 | 対象ビルド済み |
+| `AbstractBlowupSquare.cechBaseChangeSquares`、`cechBaseChangeToOriginal` | 全 Čech 段と全単体射に対する実際の正方形と自然な比較 | 対象ビルド済み |
+| `finiteTypeMixedAugmentedCechIso`、`finiteTypeMixedAugmentedCechIso_augmentation` | 指定モデルと混合増強 Čech の図式全体の自然同型と増強の保存 | 対象ビルド済み |
+| `finiteTypeMixedCechImageIso` | 元の同じ前層の像での増強二重図式の自然同型 | 対象ビルド済み、Tot の交換は使わない |
+
 
 | 宣言（§63） | 内容 | 状態 |
 | --- | --- | --- |
@@ -2284,3 +2296,38 @@ Noether 基底 S 上の元の有限型の圏内で、抽象 blowup の右辺と�
 
 §63 の保存検証：集約対象ビルドと公理監査が成功。156 モジュール・1850 宣言、標準三公理のみ。
 全体ビルドは §62 の区切りで成功済み。この保存単位では対象ビルドと監査を実行した。
+
+
+## 64. 指定底変換の関手性、自然な抽象 blowup 族と混合 Čech の比較
+
+論文 補題 3.3 の §63 の段ごとの底変換正方形を全単体射へ接続した。
+まず、元の有限型の圏の実際の `finiteTypePullback` の map を指定 Cartesian 正方形の
+普遍性から構成し、第一・第二射影の公式で恒等射と合成の保存を証明した。
+基底上の全対象と射に対する Arrow の関手と、元の射への自然な比較を構成した。
+
+圏の選択された pullback と実際の `finiteTypePullback` は別の指定モデルなので、
+型クラスを変更せずに二射影を保つ標準同型で比較した。
+この同型が基底上の全射に自然であることを二射影で検査し、Arrow 関手の自然同型を得た。
+任意の別の被覆の Čech 図式へ制限し、増強 Čech nerve 関手で写すと、
+指定モデルの混合図式と §62 の圏論的な混合図式を全単体射を保って同定できる。
+増強先が同じであることと、指定増強の可換式も確認した。
+元の同じ反変前層を適用した後の増強二重図式の自然同型も構成した。
+
+抽象 blowup では、右上と左下に同じ指定 map を使い、左上への射は
+終域の Cartesian 正方形の普遍性で構成した。
+終域が Cartesian な正方形の射は三頂点で決まるという一般補題を使い、
+左上の射を選び直すことなく恒等射・合成の保存と元の正方形への比較の自然性を証明した。
+全基底射に関する正方形の関手と自然な比較立方体を元の Čech 図式へ制限し、
+全ての面射・退化射に自然な抽象 blowup の底変換族を得た。
+中心・例外部分の被約化や、指定引き戻しの交換はしていない。
+
+残る接続：この正方形の各頂点の Čech 列を、底変換した元の被覆の実際の Čech nerve と
+指定射・増強を保って比較し、実際の抽象 blowup 降下から自然な列を供給する。
+Tot の Fubini・分裂降下・細分の結論、最小公理全体、(3.6)・K0・T2・E も未完である。
+原典の τ 位相の層論を Čech 計算へ置換する方針に従う。
+
+§64 の保存検証：集約対象ビルドと公理監査が成功。160 モジュール・1900 宣言、標準三公理のみ。
+区切りの全体ビルドは所有範囲外の `KST/DerivedBlowup/ExteriorCochainFunctoriality.lean`
+67 行の rfl と 68 行の introN のエラーで失敗。`set -eo pipefail` で終了コード 1 を確認。
+ログは `/tmp/l8-blowup-basechange-functor-full-build.log`。L8 の import 閉包は対象ビルドと監査を通過している。
+所有範囲外を編集・回避せず、指定底変換の Čech 列の比較を続ける。
