@@ -1572,3 +1572,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.join_initialHorn_hom_ext_of_initial_vertex_joinMap
 #check @SerrePositivity.InfinityCategories.joinMap_right_id_initialHorn_hasLift_of_cut_one
 #check @SerrePositivity.InfinityCategories.relativeJoin_initialHorn_hasLift_of_coefficient
+#check @SerrePositivity.InfinityCategories.intervalHom_cut_one_of_initial_edge
+#check @SerrePositivity.InfinityCategories.relativeJoin_crossing_isCocartesian
+#check @SerrePositivity.InfinityCategories.relativeJoinPrism_vertical_isCocartesian

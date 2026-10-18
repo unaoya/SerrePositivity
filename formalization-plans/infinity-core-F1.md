@@ -7196,5 +7196,24 @@ lemma relativeJoin_initialHorn_hasLift_of_coefficient {X Y : SSet.{u}} (n : ℕ)
     (hc : (horn (n + 2) 0).ι ≫ c = a ≫ relativeJoinBaseProjection f (𝟙 Y)) :
     sq.HasLift
 
+lemma intervalHom_cut_one_of_initial_edge (n : ℕ)
+    (b : (Δ[n + 2] : SSet.{u}) ⟶ Δ[1])
+    (hb : b.app (Opposite.op ⦋1⦌) (initialHornEdge n).val =
+      stdSimplex.objEquiv.symm (𝟙 ⦋1⦌)) :
+    Join.pullCut (stdSimplex.objEquiv (SSet.yonedaEquiv b)).toOrderHom 1 = 1
+
+lemma relativeJoin_crossing_isCocartesian {X Y : SSet.{u}} [Quasicategory Y]
+    (f : X ⟶ Y) (e : (relativeJoin f (𝟙 Y)) _⦋1⦌)
+    (ht : (relativeJoinProjection f (𝟙 Y)).app (Opposite.op ⦋1⦌) e =
+      stdSimplex.objEquiv.symm (𝟙 ⦋1⦌))
+    (he : IsInvertibleEdge (edgeOfSimplex
+      ((relativeJoinBaseProjection f (𝟙 Y)).app (Opposite.op ⦋1⦌) e))) :
+    IsCocartesianEdge (relativeJoinProjection f (𝟙 Y)) e
+
+lemma relativeJoinPrism_vertical_isCocartesian {X Y : SSet.{u}} [Quasicategory Y]
+    (f : X ⟶ Y) (x : X _⦋0⦌) :
+    IsCocartesianEdge (relativeJoinProjection f (𝟙 Y))
+      (prismVerticalSimplex (relativeJoinPrism f) x)
+
 end SerrePositivity.InfinityCategories
 ```

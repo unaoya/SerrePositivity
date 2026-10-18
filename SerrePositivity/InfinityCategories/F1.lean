@@ -333,3 +333,5 @@ public import SerrePositivity.InfinityCategories.F1.JoinInitialVertexDetection
 public import SerrePositivity.InfinityCategories.F1.JoinInitialHornDetection
 public import SerrePositivity.InfinityCategories.F1.JoinInitialHornLifting
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinInitialHornLifting
+public import SerrePositivity.InfinityCategories.F1.IntervalInitialEdgeCut
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinCrossingCocartesian
