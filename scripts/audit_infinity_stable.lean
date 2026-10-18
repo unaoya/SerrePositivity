@@ -242,6 +242,15 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.exists_cocone_fixedVertex_prism
 #print axioms SerrePositivity.InfinityCategories.coconeRestriction_hasLiftingProperty_finalVertex
 
+#print axioms SerrePositivity.InfinityCategories.finalHornProduct_fill_boundary
+#print axioms SerrePositivity.InfinityCategories.finalHornRestriction_lift_of_last_vertices
+#print axioms SerrePositivity.InfinityCategories.coconeApexEvaluation
+#print axioms SerrePositivity.InfinityCategories.isCartesianEdge_coconeRestriction_of_apex
+#print axioms SerrePositivity.InfinityCategories.exists_cartesian_cocone_lift
+#print axioms SerrePositivity.InfinityCategories.cocartesianHornFibration_coconeRestriction_op
+#print axioms SerrePositivity.InfinityCategories.IsColimitCone.initialBoundaryLifting
+#print axioms SerrePositivity.InfinityCategories.isColimitCone_iff_initialBoundaryLifting
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -278,7 +287,13 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.CoconeLastVertex,
     `SerrePositivity.InfinityCategories.Stable.CoconeTransport,
     `SerrePositivity.InfinityCategories.Stable.CoconeTransportPrism,
-    `SerrePositivity.InfinityCategories.Stable.CoconeRestrictionEdges]
+    `SerrePositivity.InfinityCategories.Stable.CoconeRestrictionEdges,
+    `SerrePositivity.InfinityCategories.Stable.FinalHornProductBoundary,
+    `SerrePositivity.InfinityCategories.Stable.FinalHornRestrictionLifting,
+    `SerrePositivity.InfinityCategories.Stable.CoconeRestrictionCartesianEdge,
+    `SerrePositivity.InfinityCategories.Stable.CoconeCartesianTransport,
+    `SerrePositivity.InfinityCategories.Stable.CoconeRestrictionOppositeFibration,
+    `SerrePositivity.InfinityCategories.Stable.ColimitRelativeBoundary]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

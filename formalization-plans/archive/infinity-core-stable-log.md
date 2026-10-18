@@ -1896,3 +1896,166 @@ SerrePositivity.InfinityCategories.coconeRestriction_hasLiftingProperty_finalVer
     (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 0)
     (SerrePositivity.InfinityCategories.coconeRestriction.{u_1} K X)
 ```
+
+## S3 補助：余錐の cartesian 輸送と相対余極限性
+
+値域の quasicategory 性のみで、余錐制限の反転の cocartesian 輸送と、余極限性 iff 相対始点境界充填を証明した。
+ΣΩ の関手性・選択の自然比較・自己同値と S4〜S7 は未完了。
+検証：Stable 集約ビルド 1972 jobs 成功、全 471 宣言／39 モジュールの公理監査成功（標準三公理のみ）。
+
+```lean
+@SerrePositivity.InfinityCategories.finalHornProduct_fill_boundary.{u_1} : ∀ {X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X] (m n : ℕ)
+  (G :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := HAdd.hAdd.{0, 0, 0} m 2 })
+        (SSet.Subcomplex.toSSet.{u_1} (SSet.boundary.{u_1} n)))
+      X)
+  (H :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} (HAdd.hAdd.{0, 0, 0} m 2) (Fin.last (HAdd.hAdd.{0, 0, 0} m 2))))
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := n }))
+      X),
+  Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1}
+          (SSet.Subcomplex.ι.{u_1} (SSet.horn.{u_1} (HAdd.hAdd.{0, 0, 0} m 2) (Fin.last (HAdd.hAdd.{0, 0, 0} m 2))))
+          (SSet.Subcomplex.toSSet.{u_1} (SSet.boundary.{u_1} n)))
+        G)
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (CategoryTheory.MonoidalCategoryStruct.whiskerLeft.{u_1, u_1 + 1}
+          (SSet.Subcomplex.toSSet.{u_1}
+            (SSet.horn.{u_1} (HAdd.hAdd.{0, 0, 0} m 2) (Fin.last (HAdd.hAdd.{0, 0, 0} m 2))))
+          (SSet.Subcomplex.ι.{u_1} (SSet.boundary.{u_1} n)))
+        H) →
+    SerrePositivity.InfinityCategories.IsInvertibleEdge.{u_1}
+        (SerrePositivity.InfinityCategories.edgeOfSimplex.{u_1}
+          ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+              (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} H (Opposite.op.{1} { len := 1 })))
+            (Prod.mk.{u_1, u_1} (SerrePositivity.InfinityCategories.finalHornEdge.{u_1} m)
+              (SerrePositivity.InfinityCategories.PinchedHom.constant.{u_1}
+                ((Equiv.symm.{u_1 + 1, 1} SSet.stdSimplex.obj₀Equiv.{u_1}) (Fin.last n)) 1)))) →
+      ∃ F,
+        Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+              (CategoryTheory.MonoidalCategoryStruct.whiskerLeft.{u_1, u_1 + 1}
+                (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1}
+                  { len := HAdd.hAdd.{0, 0, 0} m 2 })
+                (SSet.Subcomplex.ι.{u_1} (SSet.boundary.{u_1} n)))
+              F)
+            G ∧
+          Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+              (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1}
+                (SSet.Subcomplex.ι.{u_1}
+                  (SSet.horn.{u_1} (HAdd.hAdd.{0, 0, 0} m 2) (Fin.last (HAdd.hAdd.{0, 0, 0} m 2))))
+                (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := n }))
+              F)
+            H
+@SerrePositivity.InfinityCategories.finalHornRestriction_lift_of_last_vertices.{u_1} : ∀ {A D X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X] (i : Quiver.Hom.{u_1, u_1 + 1} A D) [CategoryTheory.Mono.{u_1, u_1 + 1} i] (m : ℕ)
+  (a :
+    Quiver.Hom.{u_1, u_1 + 1} A
+      (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := HAdd.hAdd.{0, 0, 0} m 2 } ⟹ X))
+  (b :
+    Quiver.Hom.{u_1, u_1 + 1} D
+      (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} (HAdd.hAdd.{0, 0, 0} m 2) (Fin.last (HAdd.hAdd.{0, 0, 0} m 2))) ⟹
+        X)),
+  Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} a
+        (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1}
+          (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1}
+            (SSet.Subcomplex.ι.{u_1} (SSet.horn.{u_1} (HAdd.hAdd.{0, 0, 0} m 2) (Fin.last (HAdd.hAdd.{0, 0, 0} m 2)))))
+          X))
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i b) →
+    (∀ (n : ℕ),
+        ∀
+          s ∉
+            Set.range.{u_1, u_1 + 1}
+              ⇑(CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+                  (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} i (Opposite.op.{1} { len := n }))),
+          SerrePositivity.InfinityCategories.IsInvertibleEdge.{u_1}
+            (SerrePositivity.InfinityCategories.edgeOfSimplex.{u_1}
+              ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+                  (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+                    (CategoryTheory.MonoidalClosed.uncurry.{u_1, u_1 + 1} b) (Opposite.op.{1} { len := 1 })))
+                (Prod.mk.{u_1, u_1} (SerrePositivity.InfinityCategories.finalHornEdge.{u_1} m)
+                  (SerrePositivity.InfinityCategories.PinchedHom.constant.{u_1}
+                    (SerrePositivity.InfinityCategories.simplexLastVertex.{u_1} s) 1))))) →
+      ∃ F,
+        Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i F) a ∧
+          Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} F
+              (CategoryTheory.NatTrans.app.{u_1, u_1, u_1 + 1, u_1 + 1}
+                (CategoryTheory.MonoidalClosed.pre.{u_1, u_1 + 1}
+                  (SSet.Subcomplex.ι.{u_1}
+                    (SSet.horn.{u_1} (HAdd.hAdd.{0, 0, 0} m 2) (Fin.last (HAdd.hAdd.{0, 0, 0} m 2)))))
+                X))
+            b
+SerrePositivity.InfinityCategories.coconeApexEvaluation.{u_1} : (K X : SSet.{u_1}) →
+  Quiver.Hom.{u_1, u_1 + 1}
+    (SerrePositivity.InfinityCategories.join.{u_1} K
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }) ⟹
+      X)
+    X
+@SerrePositivity.InfinityCategories.isCartesianEdge_coconeRestriction_of_apex.{u_1} : ∀ {K X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X]
+  {f g :
+    CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+      (SerrePositivity.InfinityCategories.join.{u_1} K
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }) ⟹
+        X)
+      (Opposite.op.{1} { len := 0 })}
+  (e : SSet.Truncated.Edge.{u_1} f g),
+  SerrePositivity.InfinityCategories.IsInvertibleEdge.{u_1}
+      (SSet.Truncated.Edge.map.{u_1} e
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} (SSet.truncation.{u_1} 2)
+          (SerrePositivity.InfinityCategories.coconeApexEvaluation.{u_1} K X))) →
+    SerrePositivity.InfinityCategories.IsCartesianEdge.{u_1}
+      (SerrePositivity.InfinityCategories.coconeRestriction.{u_1} K X) (SSet.Truncated.Edge.edge.{u_1} e)
+SerrePositivity.InfinityCategories.exists_cartesian_cocone_lift.{u_1} : ∀ (K X : SSet.{u_1})
+  [SSet.Quasicategory.{u_1} X]
+  (v :
+    CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+      (SerrePositivity.InfinityCategories.join.{u_1} K
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 }) ⟹
+        X)
+      (Opposite.op.{1} { len := 0 }))
+  (b : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (K ⟹ X) (Opposite.op.{1} { len := 0 }))
+  (a :
+    SSet.Truncated.Edge.{u_1} b
+      ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+          (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+            (SerrePositivity.InfinityCategories.coconeRestriction.{u_1} K X) (Opposite.op.{1} { len := 0 })))
+        v)),
+  ∃ w e,
+    Eq.{u_1 + 1}
+        ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+            (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+              (SerrePositivity.InfinityCategories.coconeRestriction.{u_1} K X) (Opposite.op.{1} { len := 1 })))
+          (SSet.Truncated.Edge.edge.{u_1} e))
+        (SSet.Truncated.Edge.edge.{u_1} a) ∧
+      SerrePositivity.InfinityCategories.IsCartesianEdge.{u_1}
+        (SerrePositivity.InfinityCategories.coconeRestriction.{u_1} K X) (SSet.Truncated.Edge.edge.{u_1} e)
+SerrePositivity.InfinityCategories.cocartesianHornFibration_coconeRestriction_op.{u_1} : ∀ (K X : SSet.{u_1})
+  [SSet.Quasicategory.{u_1} X],
+  SerrePositivity.InfinityCategories.CocartesianHornFibration.{u_1}
+    (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.opFunctor.{u_1}
+      (SerrePositivity.InfinityCategories.coconeRestriction.{u_1} K X))
+@SerrePositivity.InfinityCategories.IsColimitCone.initialBoundaryLifting.{u_1} : ∀ {K X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X] {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  {c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p},
+  SerrePositivity.InfinityCategories.IsColimitCone.{u_1} c →
+    SerrePositivity.InfinityCategories.InitialBoundaryLifting.{u_1}
+      (SerrePositivity.InfinityCategories.coconeRestriction.{u_1} K X)
+      (SerrePositivity.InfinityCategories.functorVertex.{u_1} ↑c)
+@SerrePositivity.InfinityCategories.isColimitCone_iff_initialBoundaryLifting.{u_1} : ∀ {K X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X] {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p),
+  SerrePositivity.InfinityCategories.IsColimitCone.{u_1} c ↔
+    SerrePositivity.InfinityCategories.InitialBoundaryLifting.{u_1}
+      (SerrePositivity.InfinityCategories.coconeRestriction.{u_1} K X)
+      (SerrePositivity.InfinityCategories.functorVertex.{u_1} ↑c)
+```

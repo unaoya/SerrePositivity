@@ -2,6 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Stable.SuspensionDiagrams
 public import SerrePositivity.InfinityCategories.Stable.CartesianInitialBoundary
 public import SerrePositivity.InfinityCategories.Stable.CoconeRestrictionEdges
+public import SerrePositivity.InfinityCategories.Stable.ColimitRelativeBoundary
 
 /-! # 安定 ∞ 圏の基盤
 

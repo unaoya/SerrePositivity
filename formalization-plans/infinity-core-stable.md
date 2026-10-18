@@ -27,10 +27,13 @@ S3 の準備として、始頂点が h C の始対象となること、零頂点
 この結果、`cosliceCoconeFamilyMap` 自体の同値性と、余極限性が `coconeFamily` の始対象性と
 同値であることまで完成した。境界・始終対象・頂点上の fiber の反転も整備した。
 `InitialBoundaryLifting` を定義し、反転した射に `CocartesianHornFibration` がある場合は
-fiber の始対象から相対始点境界充填を得た。この輸送条件を余錐の制限射自身について
-証明する部分は未完了。終点の余錐を固定した図式の prism を持ち上げる構成と、
-`coconeRestriction` の終点固定の辺の持ち上げ性までは証明した。
-持ち上げた辺の cartesian 性を証明して、上の相対充填の定理に接続する必要がある。
+fiber の始対象から相対始点境界充填を得た。さらに最後の外側ホーンと境界の積の充填、
+任意の単射に沿う骨格延長を反転により証明し、余錐の頂点で可逆な辺の cartesian 性を得た。
+終点の余錐を固定した prism の輸送は cartesian な辺を与え、反転した
+`coconeRestriction` 自身の `CocartesianHornFibration` を認証した。
+これを使い、`IsColimitCone` と余錐制限射に対する `InitialBoundaryLifting` の同値を、
+輸送の追加仮定なしに証明した。残るのはこの相対充填を普遍四角形の族の評価の
+充満忠実性へ移す部分である。
 現段階は関手性・選択の自然な比較・自己同値の完成ではない。
 安定性から全有限極限・余極限を導く逆向き、S3 の関手性と自己同値、三角構造・D7 は未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
@@ -96,9 +99,11 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | ΣΩ の図式の族 | `suspensionDiagrams`、`loopDiagrams`（Quasicategory）、`suspensionLoopDiagramsIso`（IsStable）、評価の可換性と本質的全射性 | 完了（評価の充満忠実性は未完了） |
 | 太い coslice | `laxCosliceHomEquiv`（任意の形状・値域・パラメーター）、`isQCatEquivalence_cosliceLaxMap`（値域 Quasicategory） | 完了 |
 | 余錐の族の比較 | `isQCatEquivalence_cosliceCoconeFamilyMap`（値域 Quasicategory、任意図式） | 完了 |
-| 余極限性の判定 | `isColimitCone_iff_isInitialVertex_coconeFamily`（値域 Quasicategory、任意図式の JoinCocone） | 完了（相対境界充填への接続は未完了） |
-| 相対始対象 | `InitialBoundaryLifting`、`initialBoundaryLifting_of_isInitialVertex_fiber_op`（元・標的 Quasicategory、反転した射の CocartesianHornFibration、fiber の始対象） | 一般の判定は完了。余錐制限射の輸送条件は未証明 |
-| 余錐の辺の輸送 | `exists_cocone_fixedVertex_prism`、`coconeRestriction_hasLiftingProperty_finalVertex`（値域 Quasicategory、任意の形状） | 存在部分は完了。cartesian 性は未完了 |
+| 余極限性の判定 | `isColimitCone_iff_isInitialVertex_coconeFamily`（値域 Quasicategory、任意図式の JoinCocone） | 完了（相対境界充填との同値も証明済み） |
+| 相対始対象 | `InitialBoundaryLifting`、`initialBoundaryLifting_of_isInitialVertex_fiber_op`（元・標的 Quasicategory、反転した射の CocartesianHornFibration、fiber の始対象） | 完了。余錐制限射にも適用済み |
+| 余錐の辺の輸送 | `exists_cocone_fixedVertex_prism`、`coconeRestriction_hasLiftingProperty_finalVertex`（値域 Quasicategory、任意の形状） | 完了。`exists_cartesian_cocone_lift` により cartesian 性も認証済み |
+| 余錐制限の輸送 | `isCartesianEdge_coconeRestriction_of_apex`、`cocartesianHornFibration_coconeRestriction_op`（値域 Quasicategory、形状は任意） | 完了 |
+| 相対余極限性 | `IsColimitCone.initialBoundaryLifting`、`isColimitCone_iff_initialBoundaryLifting`（値域 Quasicategory、任意図式の JoinCocone） | 完了 |
 | S3〜S7 | ΣΩ の関手性・自然な選択比較・自己同値、三角構造・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。
