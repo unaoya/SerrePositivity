@@ -11638,5 +11638,73 @@ lemma strictTransportDiagramRealization_vertex
     (strictTransportDiagramRealization C).app (Opposite.op ⦋0⦌) (coherentNerveVertex F) =
       functorVertex (kanDiagramCoherentNerve F.val)
 
+lemma simplicialReplacementMap_isPrecompositionEquivalence
+    {C : Type u} [Category.{u} C] {F G : C ⥤ SSet.{u}}
+    [∀ c, KanComplex (F.obj c)] [∀ c, KanComplex (G.obj c)]
+    (η : F ⟶ G) (hη : ∀ c, IsQCatEquivalence (η.app c)) :
+    IsPrecompositionEquivalence (simplicialReplacementMap η)
+
+def strictDiagramMappingPre {C : Type u} [Category.{u} C]
+    {F G : C ⥤ SSet.{u}} (η : F ⟶ G) (H : C ⥤ SSet.{u}) :
+    strictDiagramMappingSpace G H ⟶ strictDiagramMappingSpace F H
+
+lemma strictDiagramMappingPre_scaffold {C : Type u} [Category.{u} C]
+    {F G : C ⥤ SSet.{u}} (η : F ⟶ G) {E : SSet.{u}} (q : E ⟶ nerve C) :
+    strictDiagramMappingPre η (leftStrictTransportDiagram q) ≫
+      strictDiagramMappingScaffoldMap F q =
+    strictDiagramMappingScaffoldMap G q ≫ relativeFunctorOverPre q
+      (Over.homMk (U := Over.mk (simplicialReplacementProjection F))
+        (V := Over.mk (simplicialReplacementProjection G))
+        (simplicialReplacementMap η) (simplicialReplacementMap_projection η))
+
+lemma strictDiagramMappingPre_isQCatEquivalence {C : Type u} [Category.{u} C]
+    {F G : C ⥤ SSet.{u}} [∀ c, KanComplex (F.obj c)] [∀ c, KanComplex (G.obj c)]
+    (η : F ⟶ G) (hη : ∀ c, IsQCatEquivalence (η.app c))
+    {E : SSet.{u}} (q : E ⟶ nerve C) [LeftFibration q] :
+    IsQCatEquivalence (strictDiagramMappingPre η (leftStrictTransportDiagram q))
+
+def strictDiagramMappingVertex {C : Type u} [Category.{u} C]
+    {F G : C ⥤ SSet.{u}} (η : F ⟶ G) : (strictDiagramMappingSpace F G) _⦋0⦌
+
+lemma exists_strictDiagramMappingVertex {C : Type u} [Category.{u} C]
+    (F G : C ⥤ SSet.{u}) (v : (strictDiagramMappingSpace F G) _⦋0⦌) :
+    ∃ η : F ⟶ G, strictDiagramMappingVertex η = v
+
+lemma strictDiagramMappingPre_vertex {C : Type u} [Category.{u} C]
+    {F G H : C ⥤ SSet.{u}} (η : F ⟶ G) (θ : G ⟶ H) :
+    (strictDiagramMappingPre η H).app _ (strictDiagramMappingVertex θ) =
+      strictDiagramMappingVertex (η ≫ θ)
+
+def strictDiagramMappingPost {C : Type u} [Category.{u} C]
+    {G H : C ⥤ SSet.{u}} (η : G ⟶ H) (F : C ⥤ SSet.{u}) :
+    strictDiagramMappingSpace F G ⟶ strictDiagramMappingSpace F H
+
+lemma strictDiagramMappingPost_vertex {C : Type u} [Category.{u} C]
+    {F G H : C ⥤ SSet.{u}} (η : G ⟶ H) (θ : F ⟶ G) :
+    (strictDiagramMappingPost η F).app _ (strictDiagramMappingVertex θ) =
+      strictDiagramMappingVertex (θ ≫ η)
+
+lemma exists_strictTransportInverse {C : Type u} [Category.{u} C]
+    {E E' : SSet.{u}} (p : E ⟶ nerve C) (q : E' ⟶ nerve C)
+    [LeftFibration p] [LeftFibration q]
+    (η : leftStrictTransportDiagram p ⟶ leftStrictTransportDiagram q)
+    (hη : ∀ c, IsQCatEquivalence (η.app c)) :
+    ∃ θ : leftStrictTransportDiagram q ⟶ leftStrictTransportDiagram p,
+      Nonempty (VertexIso (strictDiagramMappingVertex (η ≫ θ))
+        (strictDiagramMappingVertex (𝟙 (leftStrictTransportDiagram p)))) ∧
+      Nonempty (VertexIso (strictDiagramMappingVertex (θ ≫ η))
+        (strictDiagramMappingVertex (𝟙 (leftStrictTransportDiagram q))))
+
+lemma exists_strictTransportImageInverse {C : Type u} [Category.{u} C]
+    (F G : StrictTransportDiagramObject C)
+    (η : F.val ⋙ kanObjectForget ⟶ G.val ⋙ kanObjectForget)
+    (hη : ∀ c, IsQCatEquivalence (X := (F.val.obj c).obj)
+      (Y := (G.val.obj c).obj) (η.app c)) :
+    ∃ θ : G.val ⋙ kanObjectForget ⟶ F.val ⋙ kanObjectForget,
+      Nonempty (VertexIso (strictDiagramMappingVertex (η ≫ θ))
+        (strictDiagramMappingVertex (𝟙 (F.val ⋙ kanObjectForget)))) ∧
+      Nonempty (VertexIso (strictDiagramMappingVertex (θ ≫ η))
+        (strictDiagramMappingVertex (𝟙 (G.val ⋙ kanObjectForget))))
+
 end SerrePositivity.InfinityCategories
 ```
