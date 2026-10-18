@@ -66,10 +66,25 @@ quasicategory パラメータ族の adjunct を表す公式と、その仕様に
 実際の単体的ホモトピー逆を持つ。区間模型の adjunct 比較との h Fun の同型による整合も公開した。
 模型比較そのものは、任意の単体集合の射の作用と厳密に可換である。
 
-これは B1 全体の完了ではない。残るのは **随伴比較の対象 x,y の射に関する自然性** と
-**特徴づけの逆方向（Cor 6.2.6.5）**。各点での同値を構成しただけで自然な Hom 随伴との同値を
-完了したとは扱わない。表示をホモトピー類での全単射と呼ぶには、別途ホモトピー不変性の確認が要る。
-B2〜B5 は未完了。対象ビルド（1940 jobs）・公理監査（204 宣言、標準三公理のみ）は成功。
+定値関手への単体的な射 `constantFunctorMap` と h の射への作用を構成した。
+恒等・合成・パラメータ前合成・標的の関手による後合成との整合を証明し、
+右 whisker と内部 Hom の後合成を比較した。これにより `constantHomEquiv` の
+対象変数の hX・hY の任意の射に関する二変数自然性を証明した。
+区間写像空間への前後合成作用を、普遍族の h Fun での合成を代表する実際の射として構成し、
+任意の単体集合パラメータでの公式と、恒等・合成・前後合成の交換の実際のホモトピーを得た。
+`intervalMap_naturality_left/right` は随伴比較がこれらの作用とホモトピーまで可換であることを述べる。
+pinched 模型では、比較による移送 `PinchedInterval.liftMap` の合成整合を使い、
+同じ前後合成作用とその恒等・合成・交換の同型を構成した。既存の `pinchedMap` がこの移送と
+等しいことを確認し、`pinchedMap_naturality_left/right` を実際のホモトピーとして公開した。
+
+これは B1 全体の完了ではない。**特徴づけの逆方向（Cor 6.2.6.5）** が残る。
+上の自然性は hX・hY の射と任意のパラメータの h Fun での対応として検証した段階であり、
+逆向きに入力する自然な写像空間対応の型と、そこから単位・余単位を構成する接続は未実装。
+Cor 6.2.6.5 は指定された自然変換 η が誘導する比較の同値性を使う。各点で任意に選んだ
+同値だけから逆向きを主張しない。表示をホモトピー類での全単射と呼ぶには、
+別途ホモトピー不変性の確認が要る。B2〜B5 は未完了。
+対象ビルド（1947 jobs）・公理監査（271 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 279 モジュールに straightening 依存がないことも確認した。
 
 ## 4. 主要宣言
 
@@ -131,5 +146,17 @@ B2〜B5 は未完了。対象ビルド（1940 jobs）・公理監査（204 宣�
 | `QCatAdjunction.pinchedMap_comparisonIso` | pinched の順射と区間模型の adjunct 比較の h Fun での整合 | 実装済み |
 | `intervalFunctorMap`・`intervalFunctorMap_uncurry` | 関手の区間模型への作用と任意族での後合成公式 | 実装済み |
 | `pinchedIntervalComparison_naturality` | 模型比較は任意の単体集合の射の作用と厳密に可換 | 実装済み |
+| `qcatSSetPostcomposition`・`qcatCatPostcomposition`・`qcatCell_whiskerRight` | 豊穣後合成と内部 Hom の作用、二胞体の右 whisker の一致 | 実装済み |
+| `constantFunctorMap` と頂点・前後合成の公式 | X→Fun(A,X) の定値関手への射 | 実装済み |
+| `constantFunctorHomMap` と恒等・合成・前後合成の公式 | hX の射を定値関手間の h Fun の射へ移す | 実装済み |
+| `QCatAdjunction.homEquiv_comp_left/right` | 任意の h Fun の射について adjunct の二変数自然性を表示 | 実装済み |
+| `QCatAdjunction.constantHomEquiv_naturality_left/right` | 定値関手の adjunct の hX・hY の射に関する自然性 | 実装済み |
+| `intervalPrecompose`・`intervalPostcompose` と `_hom`・`_family` | hX の射による写像空間の実際の前後合成射と任意パラメータ族の公式 | 実装済み |
+| `intervalPrecompose_id/comp`・`intervalPostcompose_id/comp`・`intervalPrecompose_postcompose` | 恒等・合成・前後合成交換の実際のホモトピー | 実装済み |
+| `QCatAdjunction.intervalMap_naturality_left/right` | 区間模型の比較と前後合成の正方形の実際のホモトピー | 実装済み |
+| `PinchedInterval.liftMap`・`liftMapCompIso`・`liftMapIso`・`liftMapIdIso`・`liftMapComparisonIso` | 模型比較による射の移送、合成・同型・恒等・比較との整合 | 実装済み |
+| `PinchedInterval.precompose/postcompose` と恒等・合成・交換の同型 | pinched 模型の前後合成作用 | 実装済み |
+| `QCatAdjunction.pinchedMap_eq_liftMap` | 既存の比較射と区間模型からの移送の一致 | 実装済み |
+| `QCatAdjunction.pinchedMapNaturalityLeftIso/RightIso`・`pinchedMap_naturality_left/right` | pinched 比較の対象自然性の h Fun の同型と実際のホモトピー | 実装済み |
 | 写像空間による特徴づけ | 自然な pinchedHom のホモトピー同値との同値 | 未完了 |
 | B2〜B5 | §1 の全項目 | 未着手（監査スクリプトは作成済み） |

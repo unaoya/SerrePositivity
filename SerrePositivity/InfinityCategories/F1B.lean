@@ -18,3 +18,10 @@ public import SerrePositivity.InfinityCategories.F1B.PinchedIntervalSection
 public import SerrePositivity.InfinityCategories.F1B.PinchedIntervalEquivalence
 public import SerrePositivity.InfinityCategories.F1B.AdjunctionPinchedSpaces
 public import SerrePositivity.InfinityCategories.F1B.IntervalFunctorMap
+public import SerrePositivity.InfinityCategories.F1B.EnrichedPostcomposition
+public import SerrePositivity.InfinityCategories.F1B.ConstantFunctor
+public import SerrePositivity.InfinityCategories.F1B.ConstantObjectNaturality
+public import SerrePositivity.InfinityCategories.F1B.IntervalComposition
+public import SerrePositivity.InfinityCategories.F1B.AdjunctionObjectNaturality
+public import SerrePositivity.InfinityCategories.F1B.PinchedComposition
+public import SerrePositivity.InfinityCategories.F1B.PinchedObjectNaturality

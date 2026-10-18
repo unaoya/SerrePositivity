@@ -104,3 +104,45 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.intervalFunctorMap_uncurry
 
 #check @SerrePositivity.InfinityCategories.pinchedIntervalComparison_naturality
+
+#check @SerrePositivity.InfinityCategories.qcatCell_whiskerRight
+
+#check @SerrePositivity.InfinityCategories.constantFunctorMap
+
+#check @SerrePositivity.InfinityCategories.constantFunctorHomMap
+
+#check @SerrePositivity.InfinityCategories.constantFunctorHomMap_precomp
+
+#check @SerrePositivity.InfinityCategories.constantFunctorHomMap_postcomp
+
+#check @SerrePositivity.InfinityCategories.intervalPrecompose_family
+
+#check @SerrePositivity.InfinityCategories.intervalPostcompose_family
+
+#check @SerrePositivity.InfinityCategories.intervalPrecompose_comp
+
+#check @SerrePositivity.InfinityCategories.intervalPostcompose_comp
+
+#check @SerrePositivity.InfinityCategories.intervalPrecompose_postcompose
+
+#check @SerrePositivity.InfinityCategories.QCatAdjunction.constantHomEquiv_naturality_left
+
+#check @SerrePositivity.InfinityCategories.QCatAdjunction.constantHomEquiv_naturality_right
+
+#check @SerrePositivity.InfinityCategories.QCatAdjunction.intervalMap_naturality_left
+
+#check @SerrePositivity.InfinityCategories.QCatAdjunction.intervalMap_naturality_right
+
+#check @SerrePositivity.InfinityCategories.PinchedInterval.liftMapCompIso
+
+#check @SerrePositivity.InfinityCategories.QCatAdjunction.pinchedMap_naturality_left
+
+#check @SerrePositivity.InfinityCategories.QCatAdjunction.pinchedMap_naturality_right
+
+#check @SerrePositivity.InfinityCategories.PinchedInterval.liftMapComparisonIso
+
+#check @SerrePositivity.InfinityCategories.PinchedInterval.precomposeCompIso
+
+#check @SerrePositivity.InfinityCategories.PinchedInterval.postcomposeCompIso
+
+#check @SerrePositivity.InfinityCategories.PinchedInterval.precomposePostcomposeIso
