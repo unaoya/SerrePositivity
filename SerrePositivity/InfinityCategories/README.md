@@ -2192,7 +2192,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開442宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開476宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2820,7 +2820,7 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開442宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開476宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
 ### 重み付き end と weighted nerve の切断の族（全単射を実装）
@@ -3133,8 +3133,59 @@ weightedTransportUnitComponent_homotopyEquivalence H i :
 
 を証明した。恒等射での評価は自明 Kan fibration なので、その同値性と合成の fiber 同型を使う。
 これは元の図式 H とその weighted nerve の strict transport の自然な比較である。
-成分のホモトピー逆の自然性や、Bousfield–Kan end 上の誘導射の同値性はまだ主張しない。
+成分のホモトピー逆の自然性は要求しない。end 上の誘導射の同値性は次節で証明した。
 coherent cone の射影の strict transport と元の sHom 図式との自然な比較、
+錐の pinched Hom と q_x の導来ファイバーの主比較、𝒮・Sp の残りの適用は未完了。
+
+### Bousfield–Kan end の成分ごとの同値不変性（実装済み）
+
+`WeightedCoefficientPostcomp` は最後の係数評価の係数図式に関する自然性を証明する。
+`WeightedBoundaryReconstruction` と `WeightedBoundaryLifting` は、正次元の境界を最後の面と
+最後の係数から復元する。零次元では係数の自明 Kan fibration の切断を使う。
+`WeightedNerveTrivialFibration` により、任意の `C : Type u`・`[Category.{u} C]`、
+`F G : C ⥤ SSet.{u}`、`η : F ⟶ G` について次が成立する。
+
+```lean
+weightedNerveMap_trivialKanFibration η [∀ c, TrivialKanFibration (η.app c)] :
+    TrivialKanFibration (weightedNerveMap η)
+```
+
+`BousfieldKanCoefficientFibration` は切断空間との自然同型でこの持ち上げ性を end に移す。
+ここからは `I : Type u`・`[SmallCategory I]`、`F G : I ⥤ SSet.{u}` とする。
+
+```lean
+bousfieldKanMap_trivialKanFibration (η : F ⟶ G)
+    [∀ i, TrivialKanFibration (η.app i)] :
+    TrivialKanFibration (weightedSectionsMap (bousfieldKanWeight I) η)
+```
+
+ここまでは値の Kan 性も遷移の fibration 性も不要。
+`DiagramPathReplacement` と `DiagramPathSpan` は自然変換の成分の既存の可逆 path 置換を束ね、
+`diagramPathReplacement η` と自然変換 `diagramPathProjection η`・`diagramPathEndpoint η`・
+`diagramPathSection η` を作る。切断との合成は厳密に恒等変換と η に等しい。
+Kan 値図式の成分ごとの同値なら二つの射影がともに成分ごとの自明 Kan fibration になる。
+`BousfieldKanHomotopyInvariance` はこの span により、次を証明した。
+
+```lean
+bousfieldKanMap_isQCatEquivalence
+    [∀ i, KanComplex (F.obj i)] [∀ i, KanComplex (G.obj i)] (η : F ⟶ G)
+    (hη : ∀ i, IsQCatEquivalence (η.app i)) :
+    IsQCatEquivalence (weightedSectionsMap (bousfieldKanWeight I) η)
+bousfieldKanMap_homotopyEquivalence
+    [∀ i, KanComplex (F.obj i)] [∀ i, KanComplex (G.obj i)] (η : F ⟶ G)
+    (hη : ∀ i, IsSimplicialHomotopyEquivalence (η.app i)) :
+    IsSimplicialHomotopyEquivalence (weightedSectionsMap (bousfieldKanWeight I) η)
+weightedTransportUnit_end_homotopyEquivalence (H : I ⥤ SSet.{u})
+    [∀ i, KanComplex (H.obj i)] :
+    IsSimplicialHomotopyEquivalence
+      (weightedSectionsMap (bousfieldKanWeight I) (weightedTransportUnit H))
+```
+
+添字の有限性、遷移の fibration 性、成分の逆の自然性は要求しない。
+`bousfieldKanWeightedSections_kanComplex` は同値判定で使う end 表示の Kan 性の instance。
+単位が誘導する end の射を、切断の通常の極限錐から作る `strictTransportSectionsComparison` と
+厳密に等しいとは主張しない。この段階で自然に比較したものは H とその weighted nerve の transport。
+coherent cone の射影の transport と元の sHom 図式との自然な比較、
 錐の pinched Hom と q_x の導来ファイバーの主比較、𝒮・Sp の残りの適用は未完了。
 
 ### 𝒮 の空積（実装済み）

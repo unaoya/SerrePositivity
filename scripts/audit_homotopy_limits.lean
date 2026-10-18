@@ -889,3 +889,71 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms weightedTransportUnitComponent_isQCatEquivalence
 #check @weightedTransportUnitComponent_homotopyEquivalence
 #print axioms weightedTransportUnitComponent_homotopyEquivalence
+#check @weightedNerveBaseMap_postcomp
+#print axioms weightedNerveBaseMap_postcomp
+#check @weightedNerveTerminalEvaluation_postcomp
+#print axioms weightedNerveTerminalEvaluation_postcomp
+#check @weightedNerveBaseChangeLift_postcomp
+#print axioms weightedNerveBaseChangeLift_postcomp
+#check @weightedNerveSimplexCoefficient_postcomp
+#print axioms weightedNerveSimplexCoefficient_postcomp
+#check @weightedBoundaryFace_base
+#print axioms weightedBoundaryFace_base
+#check @weightedBoundaryFaceDiagram
+#print axioms weightedBoundaryFaceDiagram
+#check @weightedBoundaryFaceDiagram_eta
+#print axioms weightedBoundaryFaceDiagram_eta
+#check @weightedBoundary_prefix_agreement
+#print axioms weightedBoundary_prefix_agreement
+#check @weightedBoundary_candidate_face_agreement
+#print axioms weightedBoundary_candidate_face_agreement
+#check @weightedBoundary_reconstruction
+#print axioms weightedBoundary_reconstruction
+#check @exists_weightedBoundary_filler_of_last
+#print axioms exists_weightedBoundary_filler_of_last
+#check @weightedDiagram_eq_of_lastFace
+#print axioms weightedDiagram_eq_of_lastFace
+#check @weightedCoefficient_yoneda
+#print axioms weightedCoefficient_yoneda
+#check @weightedCoefficient_square
+#print axioms weightedCoefficient_square
+#check @exists_weightedNerveMap_boundary_lift
+#print axioms exists_weightedNerveMap_boundary_lift
+#check @exists_weightedNerveMap_zero_lift
+#print axioms exists_weightedNerveMap_zero_lift
+#check @weightedNerveMap_trivialKanFibration
+#print axioms weightedNerveMap_trivialKanFibration
+#check @bousfieldKanMap_eq_sections
+#print axioms bousfieldKanMap_eq_sections
+#check @bousfieldKanMap_trivialKanFibration
+#print axioms bousfieldKanMap_trivialKanFibration
+#check @equivalencePathRefl_postcomp
+#print axioms equivalencePathRefl_postcomp
+#check @diagramPathReplacementMap
+#print axioms diagramPathReplacementMap
+#check @diagramPathReplacementMap_fst
+#print axioms diagramPathReplacementMap_fst
+#check @diagramPathReplacementMap_snd
+#print axioms diagramPathReplacementMap_snd
+#check @diagramPathReplacement
+#print axioms diagramPathReplacement
+#check @diagramPathProjection
+#print axioms diagramPathProjection
+#check @diagramPathEndpoint
+#print axioms diagramPathEndpoint
+#check @equivalencePathReplacementSection_fst
+#print axioms equivalencePathReplacementSection_fst
+#check @diagramPathSection
+#print axioms diagramPathSection
+#check @diagramPathSection_projection
+#print axioms diagramPathSection_projection
+#check @diagramPathSection_endpoint
+#print axioms diagramPathSection_endpoint
+#check @bousfieldKanWeightedSections_kanComplex
+#print axioms bousfieldKanWeightedSections_kanComplex
+#check @bousfieldKanMap_isQCatEquivalence
+#print axioms bousfieldKanMap_isQCatEquivalence
+#check @bousfieldKanMap_homotopyEquivalence
+#print axioms bousfieldKanMap_homotopyEquivalence
+#check @weightedTransportUnit_end_homotopyEquivalence
+#print axioms weightedTransportUnit_end_homotopyEquivalence

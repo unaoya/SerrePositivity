@@ -223,7 +223,7 @@ Sp では raw sHom の局所 Kan 性と極限の cofibrancy を省略せず、�
 置換後の錐を公開する。実装は `InfinityCategories/HomotopyLimits/` と専用監査に置く。
 
 γ3b の部分 API は `HomotopyLimits` 集約と `scripts/audit_homotopy_limits.lean` に置く。
-公開442宣言。`representableHomotopyLimitComparison c x` は実際の sHom から end への射、
+公開476宣言。`representableHomotopyLimitComparison c x` は実際の sHom から end への射、
 `representableHomotopyLimitComparison_factorization c x h` は θκ への厳密な分解、
 `representableHomotopyLimitComparison_naturality c f` は始対象に関する厳密な自然性。
 重み付き end の普遍性・通常の随伴と極限保存も公開。正確な型と数学は README に置く。
@@ -262,14 +262,14 @@ right anodyne 性から証明した。その end の制限は trivial Kan fibrat
 塔について実際の κ の単体的ホモトピー同値性を証明する。
 `representableHomotopyLimitComparison_tower_homotopyEquivalence c x hc` は同じ Hom 図式の
 条件と `IsLimit (simplicialHomCone c x)` の下で実際の q_x の同値性を証明する。
-正確な型・全前提は README と公開442宣言の監査に記録。
+正確な型・全前提は README と公開476宣言の監査に記録。
 一般の coherent な錐の写像空間との比較は未完了なので、γ3b の完成とは数えない。
 
 両脚が fibration の cospan では、中央の Kan 性から成分ごとの anodyne な自然変換を延長する。
 その具体的な延長により、重み付き end の Kan 性と anodyne な制限の trivial Kan fibration 性、
 `bousfieldKanLimitComparison_cospan_homotopyEquivalence` および
 `representableHomotopyLimitComparison_cospan_homotopyEquivalence` を証明する。
-後者には Hom 図式の極限性も必要。正確な型・全前提は README と公開442宣言の監査が正本。
+後者には Hom 図式の極限性も必要。正確な型・全前提は README と公開476宣言の監査が正本。
 一般の延長性を入力とする `WeightedExtensions` と `BousfieldKanComparison` を使うが、
 cospan の結論ではその入力を実際の三成分の持ち上げから構成している。
 
@@ -287,7 +287,7 @@ coherent な錐の写像空間の比較と 𝒮・Sp の ∞ 引き戻しへの�
 前提は中央・右端の Kan 性と左脚の Fibration 性で、一般の重み W では右脚の Mono 性も要求する。
 `cospanRightCorner_tensor_anodyne` と持ち上げ版は、中央の相対境界を pushout-product と同定する。
 `bousfieldKanWeight_map_mono` は添字の単射から重みの遷移の単射性を証明するので、
-Bousfield–Kan 重みに追加の未証明条件はない。正確な型は README と公開442宣言の監査に記録。
+Bousfield–Kan 重みに追加の未証明条件はない。正確な型は README と公開476宣言の監査に記録。
 元の重みの相対境界と一脚での κ の同値性は末尾の実装で証明した。
 coherent な錐の写像空間との比較と 𝒮・Sp への適用は未完了。
 
@@ -298,7 +298,7 @@ pushout-product の相対境界が anodyne であることを証明する。
 これにより `weightedSectionsPre_cospan_leftFibration_trivialKanFibration` は中央と右端が Kan、
 左脚が Fibration の cospan に対して、成分と元の中央の相対境界が anodyne な重みの制限を扱う。
 `weightedSectionsPre_cospan_leftFibration_homotopyEquivalence` では両重みの右脚の Mono 性も要求する。
-正確な型・全前提は README と公開442宣言の監査に記録。
+正確な型・全前提は README と公開476宣言の監査に記録。
 元の重みの相対境界と一脚での κ の同値性は末尾の実装で証明した。
 coherent な錐の写像空間との比較と 𝒮・Sp への適用は未完了。
 
@@ -310,7 +310,7 @@ coherent な錐の写像空間との比較と 𝒮・Sp への適用は未完了
 `bousfieldKanConeWeightComparison_cospan_leftFibration_homotopyEquivalence H c hc` は
 同じ前提と `IsLimit c` の下で strict 極限から補助 end への比較射の同値性を証明する。
 頂点の Kan 性は導出し、追加の境界条件や右脚の fibration 性は要求しない。
-正確な型・全前提は README と公開442宣言の監査に記録。
+正確な型・全前提は README と公開476宣言の監査に記録。
 元の重み W → V の相対境界とその制限、一脚の場合の κ 全体は末尾の実装で証明した。
 coherent な錐の写像空間との比較と 𝒮・Sp の適用は未完了。
 
@@ -320,7 +320,7 @@ coherent な錐の写像空間との比較と 𝒮・Sp の適用は未完了。
 `joinUnion_pointBoundary_anodyne` は anodyne な部分複体の包含から作る相対的な点の錐を扱い、
 `bousfieldKanWeight_cospan_inr_relativeCone_anodyne` は実際の遷移の像に適用した定理。
 外側の最後のホーンも含む相対 coslice の Kan fibration 性から証明する。
-正確な型・全前提は README と公開442宣言の監査に記録。
+正確な型・全前提は README と公開476宣言の監査に記録。
 この相対錐と標準境界の同定、一脚の場合の κ 全体は末尾の実装で証明した。
 coherent な錐の写像空間との比較と 𝒮・Sp の適用は未完了。
 
@@ -330,7 +330,7 @@ WithInitial の nerve と点の join の同定のため、射列の切断と元�
 `initialNerveOldFunctor` は全対象が新しい始対象でない部分を元の圏へ戻し、恒等・合成を保つ。
 `initialNerveTail` は切断以後の射列、`initialNerveJoinSimplex` は次数ごとの join 型のデータ。
 後半が空のときは補った空単体を使い、元の圏の非空性は要求しない。
-正確な型・全前提は README と公開442宣言の監査に記録。
+正確な型・全前提は README と公開476宣言の監査に記録。
 全データの単体的自然性と逆関係は下記の同型で証明した。
 相対錐と標準境界の同定と一脚での κ は末尾の実装で証明した。
 coherent な錐の写像空間との比較と 𝒮・Sp の適用も未完了。
@@ -341,7 +341,7 @@ coherent な錐の写像空間との比較と 𝒮・Sp の適用も未完了。
 `initialJoinChain` は切断より前を新しい始対象、後を元の射列としてつなぐ。
 `initialJoinChain_star_iff` と `initialNerveCut_initialJoinChain` により切断が元に戻る。
 C : Type u、[SmallCategory C] のみを仮定し、追加の非空性・忠実性は要求しない。
-正確な型・全前提は README と公開442宣言の監査に記録。
+正確な型・全前提は README と公開476宣言の監査に記録。
 単体的自然性と全データの両向きの逆関係、単体集合の同型は下記の三ファイルで証明した。
 相対錐と標準境界の同定と一脚での κ は末尾の実装で証明した。
 coherent な錐の写像空間との比較、
@@ -353,7 +353,7 @@ join (Δ[0] : SSet.{u}) (nerve C) ≅ nerve (WithInitial C)` を構成した。
 任意の単体作用素と可換な射列への復元を作り、切断と後半の全対象・全射を比較して単射性を証明する。
 `initialJoinChain_initialNerveJoinSimplex` と `initialNerveJoinSimplex_initialJoinChain` は
 全データの両向きの厳密な逆関係。逆射の自然性も導出した。
-元の圏の非空性や Kan 性は要求しない。正確な型・全前提は README と公開442宣言の監査に記録。
+元の圏の非空性や Kan 性は要求しない。正確な型・全前提は README と公開476宣言の監査に記録。
 両端の包含と関手との可換性も末尾の実装で証明した。既存の始対象の錐の射との一致は未完了。
 相対錐と標準境界の同定と一脚での κ は末尾の実装で証明した。
 coherent な錐の写像空間との比較、
@@ -373,7 +373,7 @@ H : AsSmall.{u} WalkingCospan ⥤ SSet.{u} に対し、中央・右端の Kan �
 任意の極限錐 c と IsLimit c に対する版も公開し、極限頂点の Kan 性は導出する。
 `representableHomotopyLimitComparison_cospan_leftFibration_homotopyEquivalence c x hc` は
 Hom 図式の同じ条件と hc : IsLimit (simplicialHomCone c x) の下で、実際の q_x の同値性を証明する。
-右脚の Fibration 性や未証明の境界条件は追加しない。正確な型・全前提は README と公開442宣言の監査が正本。
+右脚の Fibration 性や未証明の境界条件は追加しない。正確な型・全前提は README と公開476宣言の監査が正本。
 coherent な錐の pinched Hom と導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了。
 
 γ3b の主比較へ向け、重み付き end と weighted nerve の切断空間の対応の順方向を構成した。
@@ -385,7 +385,7 @@ coherent な錐の pinched Hom と導来ファイバーの主比較、𝒮・Sp 
 `nerve I ⊗ A ⟶ weightedNerve H` で、射影との合成は厳密に第一射影に一致する。
 `bousfieldKanWeightedNerveEvaluation H` は同じ構成に end の恒等射の uncurry を渡した普遍的な族。
 I : Type u、[SmallCategory I] 以外に、係数やパラメータの Kan 性などは要求しない。
-正確な型・全前提は README と公開442宣言の監査に記録。
+正確な型・全前提は README と公開476宣言の監査に記録。
 切断から自然変換への逆対応と両逆関係は以下で証明した。切断空間との単体集合の同型も以下で証明した。
 coherent な錐の pinched Hom と導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了。
 
@@ -398,7 +398,7 @@ coherent な錐の pinched Hom と導来ファイバーの主比較、𝒮・Sp 
 `bousfieldKanSectionHomEquiv H A` は end の普遍性と合成した
 `(A ⟶ bousfieldKanHolim H) ≃ {s : nerve I ⊗ A ⟶ weightedNerve H // s ≫ projection = fst}`。
 I : Type u、[SmallCategory I] のみで、係数とパラメータの Kan 性は不要。
-正確な型・全前提は README と公開442宣言の監査に記録。
+正確な型・全前提は README と公開476宣言の監査に記録。
 全単射のパラメータ自然性と切断模型との単体集合の同型は以下で証明した。
 coherent な錐の pinched Hom と導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了。
 
@@ -413,7 +413,7 @@ coherent な錐の pinched Hom と導来ファイバーの主比較、𝒮・Sp 
 F1 の weighted nerve の射影の left fibration 性と相対関手空間の Kan 性から、
 `bousfieldKanHolim_kanComplex H [∀ i, KanComplex (H.obj i)]` を証明した。
 添字圏は任意の小さい圏で、遷移の fibration 性も有限性も要求しない。
-正確な型・全前提は README と公開442宣言の監査に記録。
+正確な型・全前提は README と公開476宣言の監査に記録。
 比較先の一般の Kan 性までの結果であり、任意の Kan 図式の strict 極限を homotopy 極限とは主張しない。
 coherent な錐の pinched Hom と導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了。
 
@@ -429,7 +429,7 @@ HasLiftingProperty (K ◁ i) f から切断空間での i の持ち上げ性を�
 ホーンと境界に適用し、f が Fibration または TrivialKanFibration なら
 切断空間の誘導写像もそれぞれ同じ性質を持つことを証明した。
 前提は全空間間の写像 f の性質であり、底への射影の left fibration 性だけでは代用しない。
-正確な型・全前提は README と公開442宣言の監査に記録。
+正確な型・全前提は README と公開476宣言の監査に記録。
 coherent な錐の切断模型との比較射とその同値性、pinched Hom と導来ファイバーの主比較、
 𝒮・Sp の残りの ∞ 極限への適用は未完了。
 
@@ -448,7 +448,7 @@ X が quasicategory なら模型は Kan で、K の quasicategory 性は不要�
 `coherentConeProjectionMappingEquivalence p x k` は各 fiber と右 pinched Hom の同値。
 `strictCoherentConeFiberHomEquivalence F x i` は局所 Kan な単体的圏の実際の strict 図式の各 fiber と
 宇宙を持ち上げた sHom x (F.obj i) の QCatEquivalence を与える。
-正確な型・全前提は README と公開442宣言の監査に記録。
+正確な型・全前提は README と公開476宣言の監査に記録。
 fiber の比較を図式全体へ束ねること、Bousfield–Kan end との切断空間の同値性、
 錐の pinched Hom と q_x の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了。
 
@@ -466,7 +466,7 @@ strict transport の場合は既存の universal scaffold で元の全空間へ�
 cospan と塔上の left fibration p について実際の単体的ホモトピー同値である。
 strict transport の構造射の fibration 性は F1 の薄い圏の制限の定理から導出し、追加仮定を残さない。
 離散の場合の同じ比較は p の充填性や添字の有限性なしで厳密な同型。
-正確な型・全前提は README と公開442宣言の監査に記録。
+正確な型・全前提は README と公開476宣言の監査に記録。
 切断空間と strict transport の大域的な比較まで進んだが、元の sHom 図式との自然な比較は未完了。
 錐の pinched Hom と q_x の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限への適用も継続中。
 
@@ -479,7 +479,28 @@ strict transport の構造射の fibration 性は F1 の薄い圏の制限の定
 `weightedTransportUnitComponent_isQCatEquivalence H i` と
 `weightedTransportUnitComponent_homotopyEquivalence H i` を証明した。
 前提は `[∀ i, KanComplex (H.obj i)]` のみであり、図式の構造射の fibration 性は不要。
-成分の逆の自然性や end 上の同値性はまだ主張しない。
-正確な型・全前提は README と公開442宣言の監査に記録。
+成分の逆の自然性は要求しない。end 上の同値性は以下で証明した。
+正確な型・全前提は README と公開476宣言の監査に記録。
 coherent cone の射影の strict transport と元の sHom 図式との自然な比較、
 錐の pinched Hom と q_x の導来ファイバーの主比較、𝒮・Sp の残りの適用は継続中。
+
+`WeightedCoefficientPostcomp` は最後の係数評価の後合成自然性を証明し、
+`WeightedBoundaryReconstruction` と `WeightedBoundaryLifting` は最後の面と最後の係数から
+全ての正次元の境界を復元する。零次元は係数の自明 Kan fibration の切断で持ち上げる。
+`weightedNerveMap_trivialKanFibration η` は `[∀ i, TrivialKanFibration (η.app i)]` の下で
+実際の全空間の射 `weightedNerveMap η` が自明 Kan fibration であることを示す。
+`bousfieldKanMap_trivialKanFibration η` は切断空間との自然同型で同じ結論を
+`weightedSectionsMap (bousfieldKanWeight I) η` に移す。ここまでは値の Kan 性は不要。
+`DiagramPathReplacement` と `DiagramPathSpan` は成分の可逆 path 置換を自然な図式にし、
+射影・終点・切断を自然変換として束ねる。切断と射影の合成は恒等、切断と終点の合成は元の η。
+Kan 値図式の成分ごとの同値なら、二射影がともに成分ごとの自明 Kan fibration になる。
+これにより `bousfieldKanMap_isQCatEquivalence η hη` と
+`bousfieldKanMap_homotopyEquivalence η hη` は任意の小圏上の Kan 値図式の
+成分ごとの同値を、実際の end の誘導射の同値へ移す。
+添字の有限性、遷移の fibration 性、成分の逆の自然性は要求しない。
+`weightedTransportUnit_end_homotopyEquivalence H` は元の Kan 値図式とその weighted nerve の
+strict transport の比較が end 全体でもホモトピー同値であることを示す。
+正確な型・全前提は README と公開476宣言の監査に記録。
+coherent cone の射影の transport と元の sHom 図式との自然な比較、
+錐の pinched Hom と q_x の導来ファイバーの主比較、𝒮・Sp の残りの適用は継続中。
+対象集約ビルド2192 jobs、公開476宣言の公理監査は標準三公理のみ。外部リポジトリ依存437件は追跡済みかつ変更なしを確認。
