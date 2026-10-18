@@ -19,7 +19,7 @@ Mathlib の `Quasicategory` をそのまま ∞ 圏の定義とし、Joyal モ�
 
 担当順は A6 → A4 → A5。基盤全体の正本は [foundations.md](foundations.md)。F1 は α2 が担当し、Core の既存の公開名・型の変更は事前に報告する。
 
-現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較と二点の fat join 比較の同型性と任意の標準単体の正規化の自己射への可逆な変形と標準単体の fat join 比較の同値条件、関手単体集合の制限の相対可逆 path の持ち上げと基底も変わる一般の pushout の貼り合わせ、両方の join の pushout 保存、左右両因子の比較の貼り合わせと単射の同値条件のセルによる閉包も整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
+現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較と二点の fat join 比較の同型性と任意の標準単体の正規化の自己射への可逆な変形と標準単体の fat join 比較の同値条件、関手単体集合の制限の相対可逆 path の持ち上げと基底も変わる一般の pushout の貼り合わせ、両方の join の pushout 保存、左右両因子の比較の貼り合わせと単射の同値条件のセルによる閉包と自然な写像円柱の相対比較・余極限保存も整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
 
 ## 1. Mathlib（固定版）の現状
 
@@ -7448,6 +7448,109 @@ instance monoPrecompositionEquivalences_isStableUnderTransfiniteComposition :
 
 instance monoPrecompositionEquivalences_isStableUnderSequentialComposition :
     monoPrecompositionEquivalences.{u}.IsStableUnderTransfiniteCompositionOfShape ℕ
+```
+
+### A6 続き（2026-10-18）：写像円柱の相対比較と余極限の保存
+
+新規21宣言。`equivalenceMappingCylinderMap` は可換正方形への写像円柱の作用であり、始域・終域の比較がともに単射なら単射を誘導する。残った端点の自然性の正方形は任意の比較射に対して pullback。`equivalenceMappingCylinderCornerMap` は元の端点に新しい始域を先に貼った相対比較で、始域・終域の比較が単射なら単射、元の二つの射が前合成の同値条件を満たせば同値条件を満たす。後者には比較射の単射性は不要。`equivalenceMappingCylinderFunctor` は射の圏からの関手で、存在する全ての形 J の余極限を保つ。
+
+検証：Core ビルド成功（1840 jobs）、続けて監査成功（累計1236宣言、標準3公理のみ）。既存の公開名・型は維持。通常の join・fat join の関手の連結な余極限保存と、この相対比較のセル分解への接続が残る。任意の因子の fat join 比較・slice 比較・A6 主定理・A4・A5 は未完了。
+
+以下は namespace `SerrePositivity.InfinityCategories`、`universe u v`、`open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet` の下での正確な型。
+
+```lean
+lemma equivalenceCylinderEndpoint_snd (A : SSet.{u}) (b : Bool) :
+    equivalenceCylinderEndpoint A b ≫ snd A equivalenceInterval =
+      SSet.const (nerveEquiv.symm (Codiscrete.mk (ULift.up b)))
+
+lemma isPullback_equivalenceCylinderEndpoint_naturality {A B : SSet.{u}}
+    (i : A ⟶ B) (b : Bool) :
+    IsPullback (equivalenceCylinderEndpoint A b) i (i ▷ equivalenceInterval)
+      (equivalenceCylinderEndpoint B b)
+
+noncomputable def equivalenceMappingCylinderMap {A B A' B' : SSet.{u}}
+    (f : A ⟶ B) (f' : A' ⟶ B') (a : A ⟶ A') (b : B ⟶ B') (h : f ≫ b = a ≫ f') :
+    equivalenceMappingCylinder f ⟶ equivalenceMappingCylinder f'
+
+lemma equivalenceMappingCylinderMap_inl {A B A' B' : SSet.{u}}
+    (f : A ⟶ B) (f' : A' ⟶ B') (a : A ⟶ A') (b : B ⟶ B') (h : f ≫ b = a ≫ f') :
+    pushout.inl (equivalenceCylinderEndpoint A false) f ≫
+      equivalenceMappingCylinderMap f f' a b h =
+        (a ▷ equivalenceInterval) ≫ pushout.inl _ _
+
+lemma equivalenceMappingCylinderMap_inr {A B A' B' : SSet.{u}}
+    (f : A ⟶ B) (f' : A' ⟶ B') (a : A ⟶ A') (b : B ⟶ B') (h : f ≫ b = a ≫ f') :
+    pushout.inr (equivalenceCylinderEndpoint A false) f ≫
+      equivalenceMappingCylinderMap f f' a b h = b ≫ pushout.inr _ _
+
+lemma equivalenceMappingCylinderIn_map {A B A' B' : SSet.{u}}
+    (f : A ⟶ B) (f' : A' ⟶ B') (a : A ⟶ A') (b : B ⟶ B') (h : f ≫ b = a ≫ f') :
+    equivalenceMappingCylinderIn f ≫ equivalenceMappingCylinderMap f f' a b h =
+      a ≫ equivalenceMappingCylinderIn f'
+
+instance equivalenceMappingCylinderMap_mono {A B A' B' : SSet.{u}}
+    (f : A ⟶ B) (f' : A' ⟶ B') (a : A ⟶ A') (b : B ⟶ B') (h : f ≫ b = a ≫ f')
+    [Mono a] [Mono b] : Mono (equivalenceMappingCylinderMap f f' a b h)
+
+lemma equivalenceMappingCylinderIn_map_isPullback {A B A' B' : SSet.{u}}
+    (f : A ⟶ B) (f' : A' ⟶ B') (a : A ⟶ A') (b : B ⟶ B') (h : f ≫ b = a ≫ f') :
+    IsPullback (equivalenceMappingCylinderIn f) a (equivalenceMappingCylinderMap f f' a b h)
+      (equivalenceMappingCylinderIn f')
+
+noncomputable def equivalenceMappingCylinderCorner {A B A' : SSet.{u}}
+    (f : A ⟶ B) (a : A ⟶ A') : SSet.{u}
+
+noncomputable def equivalenceMappingCylinderCornerMap {A B A' B' : SSet.{u}}
+    (f : A ⟶ B) (f' : A' ⟶ B') (a : A ⟶ A') (b : B ⟶ B') (h : f ≫ b = a ≫ f') :
+    equivalenceMappingCylinderCorner f a ⟶ equivalenceMappingCylinder f'
+
+instance equivalenceMappingCylinderCornerMap_mono {A B A' B' : SSet.{u}}
+    (f : A ⟶ B) (f' : A' ⟶ B') (a : A ⟶ A') (b : B ⟶ B') (h : f ≫ b = a ≫ f')
+    [Mono a] [Mono b] : Mono (equivalenceMappingCylinderCornerMap f f' a b h)
+
+lemma isPrecompositionEquivalence_equivalenceMappingCylinderCornerMap {A B A' B' : SSet.{u}}
+    (f : A ⟶ B) (f' : A' ⟶ B') (a : A ⟶ A') (b : B ⟶ B') (h : f ≫ b = a ≫ f')
+    (hf : IsPrecompositionEquivalence f) (hf' : IsPrecompositionEquivalence f') :
+    IsPrecompositionEquivalence (equivalenceMappingCylinderCornerMap f f' a b h)
+
+lemma preservesColimitsOfShape_of_pointwise_pushout
+    {C : Type u} [Category C] {D : Type v} [Category D] [HasPushouts D]
+    (J : Type*) [Category* J] {F₁ F₂ F₃ F₄ : C ⥤ D}
+    (t : F₁ ⟶ F₂) (l : F₁ ⟶ F₃) (r : F₂ ⟶ F₄) (b : F₃ ⟶ F₄)
+    (h : ∀ X, IsPushout (t.app X) (l.app X) (r.app X) (b.app X))
+    [PreservesColimitsOfShape J F₁] [PreservesColimitsOfShape J F₂]
+    [PreservesColimitsOfShape J F₃] : PreservesColimitsOfShape J F₄
+
+lemma equivalenceMappingCylinderMap_id {A B : SSet.{u}} (f : A ⟶ B)
+    (h : f ≫ 𝟙 B = 𝟙 A ≫ f) :
+    equivalenceMappingCylinderMap f f (𝟙 A) (𝟙 B) h = 𝟙 _
+
+lemma equivalenceMappingCylinderMap_comp {A B A' B' A'' B'' : SSet.{u}}
+    (f : A ⟶ B) (f' : A' ⟶ B') (f'' : A'' ⟶ B'')
+    (a : A ⟶ A') (b : B ⟶ B') (a' : A' ⟶ A'') (b' : B' ⟶ B'')
+    (h : f ≫ b = a ≫ f') (h' : f' ≫ b' = a' ≫ f'')
+    (hh : f ≫ (b ≫ b') = (a ≫ a') ≫ f'') :
+    equivalenceMappingCylinderMap f f' a b h ≫ equivalenceMappingCylinderMap f' f'' a' b' h' =
+      equivalenceMappingCylinderMap f f'' (a ≫ a') (b ≫ b') hh
+
+noncomputable def equivalenceMappingCylinderFunctor : Arrow SSet.{u} ⥤ SSet.{u}
+
+def equivalenceMappingCylinderZeroNat :
+    (Arrow.leftFunc : Arrow SSet.{u} ⥤ SSet.{u}) ⟶
+      Arrow.leftFunc ⋙ tensorRight equivalenceInterval
+
+def equivalenceMappingCylinderArrowNat :
+    (Arrow.leftFunc : Arrow SSet.{u} ⥤ SSet.{u}) ⟶ Arrow.rightFunc
+
+noncomputable def equivalenceMappingCylinderInlNat :
+    Arrow.leftFunc ⋙ tensorRight equivalenceInterval ⟶ equivalenceMappingCylinderFunctor.{u}
+
+noncomputable def equivalenceMappingCylinderInrNat :
+    (Arrow.rightFunc : Arrow SSet.{u} ⥤ SSet.{u}) ⟶ equivalenceMappingCylinderFunctor
+
+instance equivalenceMappingCylinderFunctor_preservesColimitsOfShape
+    (J : Type*) [Category* J] [HasColimitsOfShape J SSet.{u}] :
+    PreservesColimitsOfShape J equivalenceMappingCylinderFunctor.{u}
 ```
 
 ## 7. A3 の工程（2026-10-18 追加）

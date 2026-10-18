@@ -223,3 +223,13 @@ public import SerrePositivity.InfinityCategories.Core.FatJoinRightMono
 public import SerrePositivity.InfinityCategories.Core.InternalHomFlipAdjunction
 
 public import SerrePositivity.InfinityCategories.Core.PrecompositionCellClosure
+
+public import SerrePositivity.InfinityCategories.Core.EquivalenceCylinderPullback
+
+public import SerrePositivity.InfinityCategories.Core.EquivalenceMappingCylinderMap
+
+public import SerrePositivity.InfinityCategories.Core.EquivalenceMappingCylinderCorner
+
+public import SerrePositivity.InfinityCategories.Core.PushoutFunctorColimits
+
+public import SerrePositivity.InfinityCategories.Core.EquivalenceMappingCylinderFunctor
