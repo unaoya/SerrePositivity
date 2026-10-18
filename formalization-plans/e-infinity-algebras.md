@@ -159,6 +159,9 @@ simplicialNerve_quasicategory (C : Type u)
 `standardDoldKanModuleIso x y : standardModule x y ≅ doldKanHomModule x y`、
 `homModuleDoldKanIso x y : homModule x y ≅ doldKanHomModule x y` は単体的加群の自然同型。
 `doldKanHomSpaceKan x y : SSet.KanComplex (doldKanHomSpace x y)` は N4 の線形充填から従う。
-前提は `[CommRing R] [DGCategory R D]`。公開104宣言の正確な型・前提・公理監査は
-`scripts/audit_dold_kan_comparison.lean`。残りは C_Δ の AW 豊穣合成、
+`awDataBilinear x y z n` は AW 成分族の R 双線形演算。
+`awData_unit_left`・`awData_unit_right` は dg 単位の定数単体による両側単位則、
+`standardUnitMap x : 𝟙_ SSet.{u} ⟶ standardHomSpace x x` は単体的単位写像。
+前提は `[CommRing R] [DGCategory R D]`。公開138宣言の正確な型・前提・公理監査は
+`scripts/audit_dold_kan_comparison.lean`。残りは AW の標準方程式の保存・結合律・自然性、
 比較写像、低次の一致、写像空間の比較。同値の最終判定は A3e が届いた後に行う。

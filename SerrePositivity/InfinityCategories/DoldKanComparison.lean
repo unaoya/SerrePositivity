@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.HomSpace
+public import SerrePositivity.InfinityCategories.DoldKanComparison.AWUnitMap
 public import SerrePositivity.InfinityCategories.DoldKanComparison.DoldKanIso
 public import SerrePositivity.InfinityCategories.DoldKanComparison.ConnectiveHom
 public import SerrePositivity.InfinityCategories.DoldKanComparison.StandardModule

@@ -11,6 +11,108 @@ import SerrePositivity.InfinityCategories.DoldKanComparison
 set_option pp.universes true
 set_option pp.explicit true
 
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.compose_smul_left
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.compose_smul_left
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.compose_smul_right
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.compose_smul_right
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awData_smul_left
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awData_smul_left
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awData_smul_right
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awData_smul_right
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awDataBilinear
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awDataBilinear
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardConstant
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardConstant
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardConstant_singleton
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardConstant_singleton
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardConstant_component_zero
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardConstant_component_zero
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awTerm
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awTerm
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awData
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awData
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awData_component
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awData_component
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awData_add_left
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awData_add_left
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awData_add_right
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awData_add_right
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.left_nonempty
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.left_nonempty
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.right_nonempty
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.right_nonempty
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.degree_add
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.degree_add
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.left_left
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.left_left
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.right_right
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.right_right
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.middle
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.middle
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.component_heq_of_eq
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.component_heq_of_eq
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardConstant_component_heq
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardConstant_component_heq
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_unit_left_min
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_unit_left_min
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_unit_right_max
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_unit_right_max
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awData_unit_left
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awData_unit_left
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awData_unit_right
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awData_unit_right
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.left_at_min
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.left_at_min
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.right_at_min
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.right_at_min
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.left_at_max
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.left_at_max
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.right_at_max
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.right_at_max
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.left_two_of_ne_min
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.left_two_of_ne_min
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.right_two_of_ne_max
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.AWIndex.right_two_of_ne_max
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardConstant_pullback
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardConstant_pullback
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardUnit
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardUnit
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardUnitMap
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardUnitMap
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.connectiveHomComplex
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.connectiveHomComplex
 

@@ -1368,10 +1368,20 @@ H^(−(n+1)) との同型で、追加の閉性・充填の仮定はない。
 `doldKanHomSpaceKan` は N4 の線形充填をこの同型で移した Kan instance。
 `doldKanHomPinchedIso` は宇宙を持ち上げた DK Hom と dg nerve の右 pinched Hom の同型である。
 この同型はまだ coherent nerve の写像空間との比較ではない。
-対象・集約ビルドは3549件で成功し、公開104宣言の型と公理監査は標準三公理のみ。
+対象・集約ビルドは3557件で成功し、公開138宣言の型と公理監査は標準三公理のみ。
 正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean` に記録する。
 
-γ1.5b 全体は未完了。Hom の Mathlib Γ との同定と Kan 性は証明済み。残りは AW 豊穣合成と
+`awData` は後の射の接頭部分と前の射の接尾部分を合成して全切断点で足す成分族の演算。
+`awDataBilinear x y z n` はこの演算を
+`LinearData R y z n →ₗ[R] LinearData R x y n →ₗ[R] LinearData R x z n` にまとめる。
+`standardConstant` は閉零射の全ての退化をまとめた標準単体であり、一点成分はその閉零射、
+二点以上の成分は零となる。`awData_unit_left`・`awData_unit_right` は、dg 単位の
+定数単体が任意の成分族に対する両側単位であることを証明する。最小・最大切断点だけが残る。
+`standardUnitMap x : 𝟙_ SSet.{u} ⟶ standardHomSpace x x` は、全ての面・退化との
+可換性も持つ単位写像。これらは AW の標準方程式の保存を仮定せずに証明している。
+
+γ1.5b 全体は未完了。Hom の Mathlib Γ との同定と Kan 性、成分族上の AW の双線形性と
+単位則は証明済み。残りは AW の標準方程式の保存・結合律・単体的自然性と
 通常の閉零射の圏との整合性、γ1.5c の比較写像、γ1.5d の写像空間の比較。
 この Hom の模型だけで C_Δ の構成や coherent nerve との同値を完成とは数えない。
 
