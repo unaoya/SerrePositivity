@@ -271,6 +271,15 @@ S4 の三角構造は未完了。前加法構造・シフトの加法性、回�
 標準 span を一点の恒等余錐の付加で表し、区間の終点余錐に制限して判定した。
 `columnZeroTriangle` は終点が零頂点である場合の cofiber 列で、第一射は恒等射。
 `columnCofiberTriangleIso` はその cofiber 三角形と始点の可縮三角形を同型で比較する。
+有限余極限から前加法構造へ進むため、`exists_colimitCocone_extension_of_trivialRestriction`
+を追加した。coslice 制限が trivial Kan fibration なら、選んだ部分図式上の余極限余錐を
+全体へ延長し、その制限と頂点を等号で保つ。`hasColimit_iff_of_trivialRestriction` は
+余極限の存在自体を保存・反映する。right anodyne 制限と余極限付加への適用も公開した。
+`exists_pastingExtension_of_outerColimit` は、左が押し出しである五頂点図式と
+四頂点の外側基底で選んだ余極限から、右も押し出しとなる長方形を構成する。
+元の五頂点上の図式と外側基底上の余錐の実際の射を厳密に保持する。
+これらは Quasicategory のみを仮定する。直和の存在への適用には、懸垂四角形と
+零射の合成二単体を五頂点図式へ貼る形状の補題が次に必要。
 前加法構造・シフトの加法性、回転、八面体、Pretriangulated instance は未完了。
 安定性から全有限極限・余極限を導く逆向き、S5〜S7 の長完全列・完全関手・D7 は未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
@@ -403,6 +412,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | TR3 | `exists_cofiberTriangleMorphism_of_comm`、`exists_cofiberDistinguishedTriangleMorphism`、`complete_cofiberDistinguishedTriangle_morphism`（Quasicategory、IsStable、指定した最初の二成分の可換正方形） | 定義済み distinguished 集合の全ての三角形について完成。Pretriangulated instance は未完了 |
 | 一点・区間の終点余極限 | `cosliceIdentityCone_isInitialVertex`、`cosliceIdentityCone_isColimit`、`isColimitCone_of_point_constant`、`edgeTerminalCocone_isColimit`（Quasicategory のみ） | 完了。恒等射の cofiber 四角形への適用も下記で完成 |
 | 恒等射の cofiber と TR1 | `squareColumnDiagram_isPushout`（Quasicategory）、`columnZeroTriangle`、`columnZeroTriangle_isCofiber`、`columnZeroTriangle_f_eq_id`（Quasicategory、HasZeroVertex）、`columnCofiberTriangleIso`、`contractibleTriangle_mem_cofiberDistinguishedTriangles`（Quasicategory、IsStable） | 可縮三角形の所属まで完了。定義済み distinguished 集合の TR1 が揃った |
+| 余極限の存在の転送・貼り合わせによる長方形の構成 | `exists_colimitCocone_extension_of_trivialRestriction`、`hasColimit_iff_of_trivialRestriction`、right anodyne・余極限付加版、`exists_pastingExtension_of_outerColimit`（Quasicategory） | 指定した余錐・頂点と五頂点図式を厳密に保持して完成。有限直和への適用は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

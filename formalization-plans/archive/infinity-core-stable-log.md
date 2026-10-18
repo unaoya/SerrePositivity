@@ -7961,3 +7961,92 @@ columnSpan_attachment_isPushout.{u_1} : CategoryTheory.IsPushout.{u_1, u_1 + 1}
 について標準三公理のみ。自分の新規ファイルの警告は解消。`git diff --check` 成功。
 TR1 と TR3 は完成。前加法構造・シフトの加法性、回転、八面体、Pretriangulated instance、
 安定性から全有限極限・余極限を導く逆向き、S5〜S7 は未完了。
+
+
+## 余極限の存在の厳密な転送と五頂点図式からの長方形の構成
+
+`ColimitExistenceTransfer.lean` は coslice 制限が trivial Kan fibration である場合に、
+任意の余錐および余極限余錐を、制限の等号と頂点の等号を保って持ち上げる。
+余極限の存在の同値、right anodyne と余極限付加への適用も公開する。
+任意の余錐の延長自体には値域 Quasicategory の仮定は不要で、余極限性の判定にはこれを使う。
+`PastingExtension.lean` は左四角形が押し出しである五頂点図式と外側四頂点基底の余極限から、
+右も押し出しとなる長方形を構成する。元の五頂点図式、外側で指定した余錐の射を等号で保持する。
+有限直和の存在に向けた貼り合わせの構成補題であり、直和や前加法構造自体を主張しない。
+次に必要なのは、懸垂四角形と底辺の合成二単体から五頂点図式を貼る形状の補題。
+
+Lean で抽出した公開宣言の正確な型：
+
+```lean
+@JoinCocone.vertex_restrict.{u_1} : ∀ {K L X : SSet.{u_1}} {p : Quiver.Hom.{u_1, u_1 + 1} K X} (c : JoinCocone.{u_1} p)
+  (f : Quiver.Hom.{u_1, u_1 + 1} L K),
+  Eq.{u_1 + 1} (JoinCocone.vertex.{u_1} (JoinCocone.restrict.{u_1} c f)) (JoinCocone.vertex.{u_1} c)
+@exists_cocone_extension_of_trivialRestriction.{u_1} : ∀ {K L X : SSet.{u_1}} (p : Quiver.Hom.{u_1, u_1 + 1} K X)
+  (f : Quiver.Hom.{u_1, u_1 + 1} L K) [TrivialKanFibration.{u_1} (sliceUnderRestrict.{u_1} p f)]
+  (d : JoinCocone.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f p)),
+  ∃ c,
+    Eq.{u_1 + 1} (JoinCocone.restrict.{u_1} c f) d ∧
+      Eq.{u_1 + 1} (JoinCocone.vertex.{u_1} c) (JoinCocone.vertex.{u_1} d)
+@exists_colimitCocone_extension_of_trivialRestriction.{u_1} : ∀ {K L X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) (f : Quiver.Hom.{u_1, u_1 + 1} L K)
+  [TrivialKanFibration.{u_1} (sliceUnderRestrict.{u_1} p f)]
+  (d : JoinCocone.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f p)),
+  IsColimitCone.{u_1} d →
+    ∃ c,
+      IsColimitCone.{u_1} c ∧
+        Eq.{u_1 + 1} (JoinCocone.restrict.{u_1} c f) d ∧
+          Eq.{u_1 + 1} (JoinCocone.vertex.{u_1} c) (JoinCocone.vertex.{u_1} d)
+@hasColimit_iff_of_trivialRestriction.{u_1} : ∀ {K L X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) (f : Quiver.Hom.{u_1, u_1 + 1} L K)
+  [TrivialKanFibration.{u_1} (sliceUnderRestrict.{u_1} p f)],
+  HasColimit.{u_1} p ↔ HasColimit.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f p)
+@exists_colimitCocone_extension_of_rightAnodyne.{u_1} : ∀ {K L X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) (f : Quiver.Hom.{u_1, u_1 + 1} L K) [CategoryTheory.Mono.{u_1, u_1 + 1} f],
+  rightAnodyneExtensions.{u_1} f →
+    ∀ (d : JoinCocone.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f p)),
+      IsColimitCone.{u_1} d →
+        ∃ c,
+          IsColimitCone.{u_1} c ∧
+            Eq.{u_1 + 1} (JoinCocone.restrict.{u_1} c f) d ∧
+              Eq.{u_1 + 1} (JoinCocone.vertex.{u_1} c) (JoinCocone.vertex.{u_1} d)
+@exists_colimitCocone_extension_of_colimit_attachment.{u_1} : ∀ {K C D X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} (c : JoinCocone.{u_1} p),
+  IsColimitCone.{u_1} c →
+    ∀ (i : Quiver.Hom.{u_1, u_1 + 1} K C)
+      (j :
+        Quiver.Hom.{u_1, u_1 + 1}
+          (join.{u_1} K (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })) D)
+      (k : Quiver.Hom.{u_1, u_1 + 1} C D),
+      CategoryTheory.IsPushout.{u_1, u_1 + 1}
+          (joinInl.{u_1} K (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })) i j k →
+        ∀ (F : Quiver.Hom.{u_1, u_1 + 1} D X),
+          Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} j F) ↑c →
+            ∀ (d : JoinCocone.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} k F)),
+              IsColimitCone.{u_1} d →
+                ∃ e,
+                  IsColimitCone.{u_1} e ∧
+                    Eq.{u_1 + 1} (JoinCocone.restrict.{u_1} e k) d ∧
+                      Eq.{u_1 + 1} (JoinCocone.vertex.{u_1} e) (JoinCocone.vertex.{u_1} d)
+@pastingCornerLeftDiagram.{u_1} : {X : SSet.{u_1}} →
+  Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} pastingCorner.{u_1}) X →
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X
+@exists_pastingExtension_of_outerColimit.{u_1} : ∀ {X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  (G : Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} pastingCorner.{u_1}) X),
+  IsPushoutSquare.{u_1} (pastingCornerLeftDiagram.{u_1} G) →
+    ∀ (d : JoinCocone.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} pastingOuterBaseToCorner.{u_1} G)),
+      IsColimitCone.{u_1} d →
+        ∃ F,
+          Eq.{u_1 + 1}
+              (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (SSet.Subcomplex.ι.{u_1} pastingCorner.{u_1}) F) G ∧
+            IsPushoutSquare.{u_1} (pastingSquare.{u_1} F 0) ∧ Eq.{u_1 + 1} ↑(pastingOuterCocone.{u_1} F) ↑d
+```
+
+対象 ColimitExistenceTransfer ビルド 1937 jobs、PastingExtension ビルド 1963 jobs、
+対象・Stable 集約ビルド 2163 jobs、公開型抽出、公理監査はすべて終了コード 0。
+監査は 170 モジュール・1402 宣言（生成・非公開宣言を含む）について標準三公理のみ。
+自分の新規ファイルに警告なし。`git diff --check` 成功。
+TR1・TR3 は完成のまま。前加法構造、シフトの加法性、回転、八面体、Pretriangulated instance、
+安定性から全有限極限・余極限を導く逆向き、S5〜S7 は未完了。
