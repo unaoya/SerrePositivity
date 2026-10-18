@@ -1077,5 +1077,19 @@ lemma leftUnstraighteningMap_isPullback {C D : SSet.{u + 1}}
     IsPullback (leftUnstraighteningMap F G α h) (leftUnstraighteningProjection F)
       (leftUnstraighteningProjection G) α
 
+noncomputable def vertexFiberPullbackIso {E B C : SSet.{u}} (p : E ⟶ B) (f : C ⟶ B)
+    (b : C _⦋0⦌) : vertexFiber (pullback.snd p f) b ≅
+      vertexFiber p (f.app (Opposite.op ⦋0⦌) b)
+
+lemma vertexFiberPullbackIso_hom_ι {E B C : SSet.{u}} (p : E ⟶ B) (f : C ⟶ B)
+    (b : C _⦋0⦌) : (vertexFiberPullbackIso p f b).hom ≫
+      vertexFiberι p (f.app (Opposite.op ⦋0⦌) b) =
+        vertexFiberι (pullback.snd p f) b ≫ pullback.fst p f
+
+noncomputable def leftUnstraighteningFiberIso {C : SSet.{u + 1}}
+    (F : C ⟶ SpaceInfinity.{u}) (c : C _⦋0⦌) :
+    vertexFiber (leftUnstraighteningProjection F) c ≅
+      vertexFiber pointedSpaceProjection (F.app (Opposite.op ⦋0⦌) c)
+
 end SerrePositivity.InfinityCategories
 ```

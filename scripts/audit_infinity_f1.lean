@@ -262,3 +262,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.leftUnstraighteningMap_id
 #check @SerrePositivity.InfinityCategories.leftUnstraighteningMap_comp
 #check @SerrePositivity.InfinityCategories.leftUnstraighteningMap_isPullback
+#check @SerrePositivity.InfinityCategories.vertexFiberPullbackIso
+#check @SerrePositivity.InfinityCategories.vertexFiberPullbackIso_hom_ι
+#check @SerrePositivity.InfinityCategories.leftUnstraighteningFiberIso
