@@ -30,6 +30,8 @@ public import SerrePositivity.KST.Descent.NoetherianReduction
 public import SerrePositivity.KST.Descent.FiniteTypeReduction
 public import SerrePositivity.KST.Descent.DescentNaturality
 public import SerrePositivity.KST.Descent.ReductionDescent
+public import SerrePositivity.KST.Descent.FiniteCoproduct
+public import SerrePositivity.KST.Descent.SectionOrbit
 
 /-!
 # K-L8：論文 §3 の降下
@@ -48,6 +50,7 @@ public import SerrePositivity.KST.Descent.ReductionDescent
 被約閉中心と実際の Cartesian 正方形、アフィン Noether の被約化の冪零性、
 一般の被約化の普遍性と関手性・群作用の移行を公開する。
 Noether 基底上の「一般 → 被約」の全次数降下比較の還元も公開する。
+切断の有限非交和の有限性・固有性と、被約化への軌道射の G 同変性も公開する。
 
 ## 規約
 最小公理 (1)–(8)、Čech 降下、主定理の証明、E の実現は未完成。
