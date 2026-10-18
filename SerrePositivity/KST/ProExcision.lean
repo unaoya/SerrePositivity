@@ -233,3 +233,13 @@ public import SerrePositivity.KST.ProExcision.TriangularBlockProduct
 public import SerrePositivity.KST.ProExcision.IdealRightColumn
 
 public import SerrePositivity.KST.ProExcision.GroupHomotopyOperations
+
+public import SerrePositivity.KST.ProExcision.ColumnInsertion
+
+public import SerrePositivity.KST.ProExcision.TriangularConjugation
+
+public import SerrePositivity.KST.ProExcision.RightColumnInsertion
+
+public import SerrePositivity.KST.ProExcision.Lemma416Data
+
+public import SerrePositivity.KST.ProExcision.Lemma416Homotopy

@@ -3201,3 +3201,57 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.groupConjugationMHomotopy
 #print axioms SerrePositivity.KST.ProExcision.groupConjugationMHomotopy
+
+#check @SerrePositivity.KST.ProExcision.blockColumn_succAbove
+#print axioms SerrePositivity.KST.ProExcision.blockColumn_succAbove
+
+#check @SerrePositivity.KST.ProExcision.blockColumn_succAbove_row
+#print axioms SerrePositivity.KST.ProExcision.blockColumn_succAbove_row
+
+#check @SerrePositivity.KST.ProExcision.blockColumn_succAbove_column
+#print axioms SerrePositivity.KST.ProExcision.blockColumn_succAbove_column
+
+#check @SerrePositivity.KST.ProExcision.matrixInsertion_one_add_blockColumn
+#print axioms SerrePositivity.KST.ProExcision.matrixInsertion_one_add_blockColumn
+
+#check @SerrePositivity.KST.ProExcision.auxiliaryBlockIndex
+#print axioms SerrePositivity.KST.ProExcision.auxiliaryBlockIndex
+
+#check @SerrePositivity.KST.ProExcision.auxiliaryBlockUnit
+#print axioms SerrePositivity.KST.ProExcision.auxiliaryBlockUnit
+
+#check @SerrePositivity.KST.ProExcision.auxiliaryBlockColumnHom
+#print axioms SerrePositivity.KST.ProExcision.auxiliaryBlockColumnHom
+
+#check @SerrePositivity.KST.ProExcision.auxiliaryBlockUnit_conjugation
+#print axioms SerrePositivity.KST.ProExcision.auxiliaryBlockUnit_conjugation
+
+#check @SerrePositivity.KST.ProExcision.auxiliaryInsertion_first_rows
+#print axioms SerrePositivity.KST.ProExcision.auxiliaryInsertion_first_rows
+
+#check @SerrePositivity.KST.ProExcision.auxiliaryInsertion_last
+#print axioms SerrePositivity.KST.ProExcision.auxiliaryInsertion_last
+
+#check @SerrePositivity.KST.ProExcision.triangularInsertion_lastRightColumn
+#print axioms SerrePositivity.KST.ProExcision.triangularInsertion_lastRightColumn
+
+#check @SerrePositivity.KST.ProExcision.lemma416GroupData
+#print axioms SerrePositivity.KST.ProExcision.lemma416GroupData
+
+#check @SerrePositivity.KST.ProExcision.lemma416GroupData_left
+#print axioms SerrePositivity.KST.ProExcision.lemma416GroupData_left
+
+#check @SerrePositivity.KST.ProExcision.lemma416GroupData_right
+#print axioms SerrePositivity.KST.ProExcision.lemma416GroupData_right
+
+#check @SerrePositivity.KST.ProExcision.lemma416GroupData_product
+#print axioms SerrePositivity.KST.ProExcision.lemma416GroupData_product
+
+#check @SerrePositivity.KST.ProExcision.LinearizedMHomotopy.congr
+#print axioms SerrePositivity.KST.ProExcision.LinearizedMHomotopy.congr
+
+#check @SerrePositivity.KST.ProExcision.lemma416HomotopyStep
+#print axioms SerrePositivity.KST.ProExcision.lemma416HomotopyStep
+
+#check @SerrePositivity.KST.ProExcision.lemma416Homotopy
+#print axioms SerrePositivity.KST.ProExcision.lemma416Homotopy

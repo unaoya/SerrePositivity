@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：借用する π・H_* の明示的な模型界面に対して工程完了。一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと1118宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと1136宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -355,6 +355,11 @@
 | idealBlockColumnHom / triangularBlockProductHom | IdealColumnGroup.lean / TriangularBlockProduct.lean | 検証済み | 同じ実群 H 内に値を持つ ψ と μ:P×Q→H |
 | idealVectorRightHom / lastRightColumnHom | IdealRightColumn.lean | 検証済み | イデアル内の右乗法と最後の列の実準同型 |
 | groupConjugationMHomotopy | GroupHomotopyOperations.lean | 検証済み | C(f) と C(u⁻¹fu) の実 m 次比較 |
+
+| auxiliaryBlockUnit_conjugation | TriangularConjugation.lean | 検証済み | 同じ実群 H 内の u⁻¹ψ(v)u=ψ(v)φ(v) |
+| triangularInsertion_lastRightColumn | RightColumnInsertion.lean | 検証済み | φ の小さい帰納段階への実因子化 |
+| lemma416GroupData / lemma416GroupData_product | Lemma416Data.lean | 検証済み | A.5 の因子データと共役への同定 |
+| lemma416HomotopyStep / lemma416Homotopy | Lemma416Homotopy.lean | 非同変版検証済み | μ 版 A.5 と A.6 の連結と相殺による全 m の実帰納比較 |
 
 ## L6a：最小 pro 形式
 
@@ -891,3 +896,13 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - `idealRightMultiplication` と `idealVectorRightHom` はイデアル内の右乗法。中心性を要さず、`lastRightColumnHom` で同じ実三角ブロック群の最後の列へ入れる。
 - `groupConjugationMHomotopy` は A.6 を任意の群準同型へ前合成した実 m 次ホモトピー。C(f) と C(u⁻¹fu) の両端を自由化の合成則で同定した。
 - 対象ビルド・1118宣言の公理監査は標準三公理のみで成功。次は補助元 u の実群所属、共役と μ の積の同定、帰納ホモトピーと外部行列作用。
+
+
+### L6d の非同変な実帰納ホモトピー（2026-10-19）
+
+- `matrixInsertion_one_add_blockColumn` と `triangularInsertion_lastRightColumn` は小さい右乗法の列の埋め込みを大きい φ に同定する。
+- `auxiliaryBlockUnit` と `auxiliaryBlockColumnHom` は同じ実三角ブロック群 H の中にある補助元 u と ψ。`auxiliaryBlockUnit_conjugation` は u⁻¹ψ(v)u=ψ(v)φ(v) を証明する。
+- `lemma416GroupData` は実 P,Q,H,μ,α,β。左右の項は大きい φ と ψ、積は u による ψ の共役に等しいことを証明した。
+- `lemma416HomotopyStep` は C(P) 内の m 次帰納仮定と C(Q) 内の0次入力に μ 版 A.5 を適用し、A.6 と連結して augmentation 補正を相殺する。
+- `lemma416Homotopy` は全ての m に対する非同変な実 m 次ホモトピー。入力は n、周囲の単位環の両側イデアル J、a∈J、m のみであり、帰納法の結論を仮定にしない。中心性もこの非同変部分では不要。
+- 対象ビルド・1136宣言の公理監査は標準三公理のみで成功。外部行列作用の同変性、(I,a) に関する関手性と単体環への移送、相対零化・安定化はまだ未完了。
