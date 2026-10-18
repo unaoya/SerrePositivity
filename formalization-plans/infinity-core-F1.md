@@ -2618,5 +2618,32 @@ lemma coherentResolutionBoundaryProjection_ι (n : ℕ) :
 lemma coherentResolutionBoundaryProjection_isPrecompositionEquivalence (n : ℕ) :
     IsPrecompositionEquivalence (coherentResolutionBoundaryProjection.{u} n)
 
+instance coherentResolution_isLeftAdjoint : coherentResolution.{u}.IsLeftAdjoint
+
+instance coherentResolution_preservesColimitsOfSize :
+    PreservesColimitsOfSize.{v, w} coherentResolution.{u}
+
+noncomputable def coherentResolutionFaceExtensionIso {n m : ℕ}
+    (T : Finset (Fin (n + 1))) (e : Fin (m + 1) ≃o T) :
+    coherentResolution.{u}.obj (stdSimplex.face T).toSSet ≅ (coherentResolutionFace T).toSSet
+
+lemma coherentResolutionFaceExtensionIso_hom_ι {n m : ℕ}
+    (T : Finset (Fin (n + 1))) (e : Fin (m + 1) ≃o T) :
+    (coherentResolutionFaceExtensionIso.{u} T e).hom ≫ (coherentResolutionFace T).ι =
+      coherentResolution.map (stdSimplex.face T).ι ≫ coherentResolutionStdIso.hom.app ⦋n⦌
+
+lemma coherentResolutionStdIso_hom_projection (n : ℕ) :
+    coherentResolutionStdIso.{u}.hom.app ⦋n⦌ ≫ coherentResolutionProjection n =
+      coherentResolutionProjectionAll.app Δ[n]
+
+lemma coherentResolutionFaceExtensionIso_projection {n m : ℕ}
+    (T : Finset (Fin (n + 1))) (e : Fin (m + 1) ≃o T) :
+    (coherentResolutionFaceExtensionIso.{u} T e).hom ≫ coherentResolutionFaceProjection T =
+      coherentResolutionProjectionAll.app (stdSimplex.face T).toSSet
+
+lemma coherentResolution_map_face_ι_mono {n m : ℕ}
+    (T : Finset (Fin (n + 1))) (e : Fin (m + 1) ≃o T) :
+    Mono (coherentResolution.{u}.map (stdSimplex.face T).ι)
+
 end SerrePositivity.InfinityCategories
 ```
