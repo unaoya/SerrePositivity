@@ -10867,5 +10867,185 @@ lemma weightedNerveComparison_transport_isQCatEquivalence_iff_of_precompositionE
     (eh : IsPrecompositionEquivalence h) {c d : C} (f : c ⟶ d) :
     IsQCatEquivalence (edgeTransport q (nerve.edgeMk f)) ↔ IsQCatEquivalence (F.map f)
 
+def uliftVertexFiberMap {E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) :
+    (SSet.uliftFunctor.{v, u}).obj (vertexFiber p b) ⟶
+      vertexFiber ((SSet.uliftFunctor.{v, u}).map p) (ULift.up b)
+
+def uliftVertexFiberInverse {E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) :
+    vertexFiber ((SSet.uliftFunctor.{v, u}).map p) (ULift.up b) ⟶
+      (SSet.uliftFunctor.{v, u}).obj (vertexFiber p b)
+
+def uliftVertexFiberIso {E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) :
+    (SSet.uliftFunctor.{v, u}).obj (vertexFiber p b) ≅
+      vertexFiber ((SSet.uliftFunctor.{v, u}).map p) (ULift.up b)
+
+lemma uliftVertexFiberIso_hom_ι {E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) :
+    (uliftVertexFiberIso.{u, v} p b).hom ≫
+      vertexFiberι ((SSet.uliftFunctor.{v, u}).map p) (ULift.up b) =
+        (SSet.uliftFunctor.{v, u}).map (vertexFiberι p b)
+
+lemma uliftVertexFiberIso_inv_ι {E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) :
+    (uliftVertexFiberIso.{u, v} p b).inv ≫
+      (SSet.uliftFunctor.{v, u}).map (vertexFiberι p b) =
+        vertexFiberι ((SSet.uliftFunctor.{v, u}).map p) (ULift.up b)
+
+lemma uliftVertexFiberIso_naturality {E F B : SSet.{u}}
+    (p : E ⟶ B) (q : F ⟶ B) (f : E ⟶ F) (hf : f ≫ q = p) (b : B _⦋0⦌) :
+    (SSet.uliftFunctor.{v, u}).map (vertexFiberMap p q f hf b) ≫
+      (uliftVertexFiberIso.{u, v} q b).hom =
+    (uliftVertexFiberIso.{u, v} p b).hom ≫
+      vertexFiberMap ((SSet.uliftFunctor.{v, u}).map p) ((SSet.uliftFunctor.{v, u}).map q)
+        ((SSet.uliftFunctor.{v, u}).map f) (by
+          rw [← Functor.map_comp, hf]) (ULift.up b)
+
+def uliftSimplexPrism {A E : SSet.{u}} {n : ℕ} (H : (Δ[n] : SSet.{u}) ⊗ A ⟶ E) :
+    (Δ[n] : SSet.{max u v}) ⊗ (SSet.uliftFunctor.{v, u}).obj A ⟶
+      (SSet.uliftFunctor.{v, u}).obj E
+
+lemma uliftSimplexPrism_vertex {A E : SSet.{u}} {n : ℕ}
+    (H : (Δ[n] : SSet.{u}) ⊗ A ⟶ E) (i : Fin (n + 1)) :
+    simplexPrismVertex n i ((SSet.uliftFunctor.{v, u}).obj A) ≫ uliftSimplexPrism.{u, v} H =
+      (SSet.uliftFunctor.{v, u}).map (simplexPrismVertex n i A ≫ H)
+
+lemma uliftSimplexPrism_post {A E B : SSet.{u}} {n : ℕ}
+    (H : (Δ[n] : SSet.{u}) ⊗ A ⟶ E) (f : E ⟶ B) :
+    uliftSimplexPrism.{u, v} H ≫ (SSet.uliftFunctor.{v, u}).map f =
+      uliftSimplexPrism.{u, v} (H ≫ f)
+
+lemma uliftSimplexPrism_edgeFamily {A B : SSet.{u}} {a b : B _⦋0⦌}
+    (e : SSet.Edge a b) :
+    uliftSimplexPrism.{u, v}
+      (fst (Δ[1] : SSet.{u}) A ≫ SSet.yonedaEquiv.symm e.edge) =
+    fst (Δ[1] : SSet.{max u v}) ((SSet.uliftFunctor.{v, u}).obj A) ≫
+      SSet.yonedaEquiv.symm (uliftTruncatedEdge.{u, v} e).edge
+
+def uliftFiberTransport {E B : SSet.{u}} (p : E ⟶ B) {a b : B _⦋0⦌}
+    (T : vertexFiber p a ⟶ vertexFiber p b) :
+    vertexFiber ((SSet.uliftFunctor.{v, u}).map p) (ULift.up a) ⟶
+      vertexFiber ((SSet.uliftFunctor.{v, u}).map p) (ULift.up b)
+
+lemma IsEdgeTransport.ulift {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p]
+    {a b : B _⦋0⦌} (e : SSet.Edge a b) {T : vertexFiber p a ⟶ vertexFiber p b}
+    (hT : IsEdgeTransport p e T) :
+    IsEdgeTransport ((SSet.uliftFunctor.{v, u}).map p) (uliftTruncatedEdge.{u, v} e)
+      (uliftFiberTransport.{u, v} p T)
+
+noncomputable def edgeTransport_uliftIso {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p]
+    {a b : B _⦋0⦌} (e : SSet.Edge a b) :
+    FunctorIso
+      (edgeTransport ((SSet.uliftFunctor.{v, u}).map p) (uliftTruncatedEdge.{u, v} e))
+      (uliftFiberTransport.{u, v} p (edgeTransport p e))
+
+noncomputable def uliftWeightedNerveFiberIso {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (c : C) :
+    (SSet.uliftFunctor.{v, u}).obj (F.obj c) ≅
+      vertexFiber ((SSet.uliftFunctor.{v, u}).map (weightedNerveProjection F))
+        (ULift.up (nerveVertex c))
+
+lemma uliftWeightedNerveCoefficientTransport_isTransport
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) [∀ c, KanComplex (F.obj c)]
+    {c d : C} (f : c ⟶ d) :
+    IsEdgeTransport ((SSet.uliftFunctor.{v, u}).map (weightedNerveProjection F))
+      (uliftTruncatedEdge.{u, v} (nerve.edgeMk f))
+      ((uliftWeightedNerveFiberIso.{u, v} F c).inv ≫
+        (SSet.uliftFunctor.{v, u}).map (F.map f) ≫ (uliftWeightedNerveFiberIso.{u, v} F d).hom)
+
+noncomputable def uliftWeightedNerveTransport_coefficientIso
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) [∀ c, KanComplex (F.obj c)]
+    {c d : C} (f : c ⟶ d) :
+    FunctorIso
+      ((uliftWeightedNerveFiberIso.{u, v} F c).hom ≫
+        edgeTransport ((SSet.uliftFunctor.{v, u}).map (weightedNerveProjection F))
+          (uliftTruncatedEdge.{u, v} (nerve.edgeMk f)) ≫
+            (uliftWeightedNerveFiberIso.{u, v} F d).inv)
+      ((SSet.uliftFunctor.{v, u}).map (F.map f))
+
+noncomputable def uliftWeightedNerveComparisonFiber {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {E : SSet.{max u v}}
+    (q : E ⟶ (SSet.uliftFunctor.{v, u}).obj (nerve C))
+    (h : (SSet.uliftFunctor.{v, u}).obj (weightedNerve F) ⟶ E)
+    (hh : h ≫ q = (SSet.uliftFunctor.{v, u}).map (weightedNerveProjection F)) (c : C) :
+    (SSet.uliftFunctor.{v, u}).obj (F.obj c) ⟶ vertexFiber q (ULift.up (nerveVertex c))
+
+noncomputable def uliftWeightedNerveComparisonFiber_transportIso
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) [∀ c, KanComplex (F.obj c)]
+    {E : SSet.{max u v}} (q : E ⟶ (SSet.uliftFunctor.{v, u}).obj (nerve C)) [LeftFibration q]
+    (h : (SSet.uliftFunctor.{v, u}).obj (weightedNerve F) ⟶ E)
+    (hh : h ≫ q = (SSet.uliftFunctor.{v, u}).map (weightedNerveProjection F))
+    {c d : C} (f : c ⟶ d) :
+    FunctorIso
+      ((SSet.uliftFunctor.{v, u}).map (F.map f) ≫ uliftWeightedNerveComparisonFiber F q h hh d)
+      (uliftWeightedNerveComparisonFiber F q h hh c ≫
+        edgeTransport q (uliftTruncatedEdge.{u, v} (nerve.edgeMk f)))
+
+lemma uliftWeightedNerveComparisonFiber_isQCatEquivalence
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) [∀ c, KanComplex (F.obj c)]
+    {E : SSet.{max u v}} (q : E ⟶ (SSet.uliftFunctor.{v, u}).obj (nerve C)) [LeftFibration q]
+    (h : (SSet.uliftFunctor.{v, u}).obj (weightedNerve F) ⟶ E)
+    (hh : h ≫ q = (SSet.uliftFunctor.{v, u}).map (weightedNerveProjection F))
+    (eh : IsPrecompositionEquivalence h) (c : C) :
+    IsQCatEquivalence (uliftWeightedNerveComparisonFiber F q h hh c)
+
+lemma uliftWeightedNerveComparison_transport_isQCatEquivalence_iff
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) [∀ c, KanComplex (F.obj c)]
+    {E : SSet.{max u v}} (q : E ⟶ (SSet.uliftFunctor.{v, u}).obj (nerve C)) [LeftFibration q]
+    (h : (SSet.uliftFunctor.{v, u}).obj (weightedNerve F) ⟶ E)
+    (hh : h ≫ q = (SSet.uliftFunctor.{v, u}).map (weightedNerveProjection F))
+    (eh : IsPrecompositionEquivalence h) {c d : C} (f : c ⟶ d) :
+    IsQCatEquivalence (edgeTransport q (uliftTruncatedEdge.{u, v} (nerve.edgeMk f))) ↔
+      IsQCatEquivalence ((SSet.uliftFunctor.{v, u}).map (F.map f))
+
+def uliftMorphismDown {X Y : SSet.{u}}
+    (f : (SSet.uliftFunctor.{v, u}).obj X ⟶ (SSet.uliftFunctor.{v, u}).obj Y) : X ⟶ Y
+
+lemma uliftMorphismDown_map {X Y : SSet.{u}} (f : X ⟶ Y) :
+    uliftMorphismDown ((SSet.uliftFunctor.{v, u}).map f) = f
+
+lemma uliftMorphismDown_comp {X Y Z : SSet.{u}}
+    (f : (SSet.uliftFunctor.{v, u}).obj X ⟶ (SSet.uliftFunctor.{v, u}).obj Y)
+    (g : (SSet.uliftFunctor.{v, u}).obj Y ⟶ (SSet.uliftFunctor.{v, u}).obj Z) :
+    uliftMorphismDown (f ≫ g) = uliftMorphismDown f ≫ uliftMorphismDown g
+
+lemma uliftMorphismDown_id (X : SSet.{u}) :
+    uliftMorphismDown (𝟙 ((SSet.uliftFunctor.{v, u}).obj X)) = 𝟙 X
+
+def unliftSimplicialHomotopy {X Y : SSet.{u}}
+    {f g : (SSet.uliftFunctor.{v, u}).obj X ⟶ (SSet.uliftFunctor.{v, u}).obj Y}
+    (H : SSet.Homotopy f g) : SSet.Homotopy (uliftMorphismDown f) (uliftMorphismDown g)
+
+lemma IsSimplicialHomotopyEquivalence.of_ulift {X Y : SSet.{u}} {f : X ⟶ Y}
+    (h : IsSimplicialHomotopyEquivalence ((SSet.uliftFunctor.{v, u}).map f)) :
+    IsSimplicialHomotopyEquivalence f
+
+lemma isQCatEquivalence_ulift_iff_of_kan {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
+    (f : X ⟶ Y) :
+    IsQCatEquivalence ((SSet.uliftFunctor.{v, u}).map f) ↔ IsQCatEquivalence f
+
+noncomputable def directKanUnstraighteningFiberComparison
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) (c : C) :
+    (SSet.uliftFunctor.{u + 1, u}).obj (F.obj c).obj ⟶
+      vertexFiber (leftUnstraighteningProjection (kanDiagramCoherentNerve F))
+        (ULift.up (nerveVertex c))
+
+lemma directKanUnstraighteningFiberComparison_isQCatEquivalence
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) (c : C) :
+    IsQCatEquivalence (directKanUnstraighteningFiberComparison F c)
+
+noncomputable def directKanUnstraighteningFiberComparison_transportIso
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) {c d : C} (f : c ⟶ d) :
+    FunctorIso
+      ((SSet.uliftFunctor.{u + 1, u}).map (F.map f) ≫
+        directKanUnstraighteningFiberComparison F d)
+      (directKanUnstraighteningFiberComparison F c ≫
+        edgeTransport (leftUnstraighteningProjection (kanDiagramCoherentNerve F))
+          (uliftTruncatedEdge.{u, u + 1} (nerve.edgeMk f)))
+
+lemma directKanUnstraighteningTransport_isQCatEquivalence_iff
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) {c d : C} (f : c ⟶ d) :
+    IsQCatEquivalence
+      (edgeTransport (leftUnstraighteningProjection (kanDiagramCoherentNerve F))
+        (uliftTruncatedEdge.{u, u + 1} (nerve.edgeMk f))) ↔
+      IsQCatEquivalence (F.map f)
+
 end SerrePositivity.InfinityCategories
 ```
