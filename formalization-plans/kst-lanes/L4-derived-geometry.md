@@ -1134,6 +1134,33 @@
 - `affineDqcPlusEquivalence`：下に有界な H 加群の導来圏と、元の全係数層の導来圏の下に有界な準連接コホモロジー対象との実際の同値を構成した。冪等完備化は不要。
 - 非有界の Dqc 同値は未完了。bounded below の結果だけから非有界を主張しない。
 
+## 54. 非有界比較の模型と随伴（実装前記録）
+
+- bounded below の同値の証明は下限を用いるため、そのまま非有界対象へ適用しない。Mathlib の `DerivabilityStructureInjectives` と `ModelCategory/Injective` が構成する injective 模型は下に有界な複体についてのもの。
+- 最初の一般補題として、加法的随伴 F ⊣ G の鎖写像の Hom 同値がホモトピーを保つことを、任意の複体形状で成分ごとに証明する。元の随伴の加法性と左右自然性でホモトピーの式を移す。
+- F が完全なら、F は非有界複体の acyclicity を保つ。L が K-injective であるとき、acyclic な K から G(L) への射を F(K) から L への射に移し、その零ホモトピーを戻すことで、G(L) の K-injectivity を証明する。有界性は要求しない。
+- アフィンの tilde ⊣ Γ にこれを適用し、実際の元の係数層の K-injective 模型を Γ が保つ接続点を構成する。分解の存在を未証明フィールドにしない。
+- 非有界の K-injective 分解の存在と、準連接コホモロジーでの比較の収束は別途証明すべき残件。既証の bounded below の同値で代用しない。
+- 原典・接続：TT §3・§8、BvdB Thm 3.1.1、Toën §3.2、正本 §10-7。標的は引き続き全係数層複体の acyclic による dg 商の H⁰ である。
+
+### §54 の実装の現在地
+
+- 保存検証：非有界 Hom 比較の接続点まで集約対象ビルド 4034 jobs 成功、公理監査 2072 宣言。標準3公理のみ、KTheory import なし。
+
+- `adjunctionComplexHomotopy` と逆方向の補題、`homotopyAdjunctionHomEquiv` を任意の複体形状で構成した。
+- `rightAdjoint_map_isKInjective` と `affineCoefficientΓ_map_isKInjective` を非有界複体について証明した。
+- `kInjectiveDerivedHomAdjunction`：実際の K-injective 複体への非有界導来 Hom の同値を、元の Mathlib 導来局所化で構成した。分解の存在はこの宣言のフィールドにしていない。
+- bounded below 段階の全体ビルドは、import 閉包外の F1/F1B の `relativeFunctorVertex` 重複で失敗した。K-L4 対象は成功しているため並行先を変更しない。
+
+## 55. 非有界 K-injective 分解の存在の構成部品（実装前記録）
+
+- 実装で維持する対象と公理の条件は §54 と同じ。存在定理を引用の公理や構造体の未証明フィールドにしない。
+- 構成の参考として [Stacks Lemma 19.12.4 (079M)](https://stacks.math.columbia.edu/tag/079M)、[Lemma 19.12.5 (079N)](https://stacks.math.columbia.edu/tag/079N)、[Theorem 19.12.6 (079P)](https://stacks.math.columbia.edu/tag/079P) の文言と証明を確認した。原典の比較先 TT §3・§8、BvdB Thm 3.1.1、Toën §3.2 を変更するものではない。
+- 最初の構成部品は任意のアーベル圏 C の十分な injective の選択だけから作る。複体 M の各項について i_n : M_n → I_n を選び、J_n := I_n ⊕ I_(n+1)、微分 (x,y) ↦ (y,0) の contractible 複体を作る。M_n → J_n は (i_n, d_n ≫ i_(n+1))。各項の単射性・injectivity、鎖写像の式、縮約を証明する。
+- 次の構成部品はこの鎖写像 u の余核 Q と v : J → Q の mapping cocone を用いる。M → cocone(v) が各項単射かつ準同型で、各成分が injective 対象を経由することを、短完全列と cone のコホモロジーから証明する。まず対象ごとの存在として実装し、関手的な injective 選択がない段階で関手性は主張しない。
+- acyclic な小複体の射を零ホモトピーにする工程では identity cone への単射の coproduct と pushout を構成する。準同型性には AB4、極限順序数での colimit には AB5 を使う。
+- 最終的な超限反復には小複体による K-injective 判定と regular cardinal による因子化が必要。この部分を各項 injective という条件で代用しない。また切断の逆極限の収束を未証明のまま使用しない。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -1352,6 +1379,8 @@
 | `affineDerivedPlus_unit_isIso`・`affineDerivedTildePlusFullyFaithful` | DerivedGeometry/AffineDerivedPlusUnit・AffineDerivedPlusFullyFaithful | 実装・対象ビルド済み |
 | `affineDqcPlus_truncLE`・`affineDqcPlus_truncGT` | DerivedGeometry/AffineDqcPlusTruncation | 実装・対象ビルド済み |
 | `affineDerivedPlus_counit_isIso`・`affineDqcPlusEquivalence` | DerivedGeometry/AffineDerivedPlusCounit・AffineDqcPlusEquivalence | 実装・対象ビルド済み |
+| `rightAdjoint_map_isKInjective`・`affineCoefficientΓ_map_isKInjective` | DerivedGeometry/AdjunctionKInjective・AffineGammaKInjective | 実装・対象ビルド済み |
+| `homotopyAdjunctionHomEquiv`・`kInjectiveDerivedHomAdjunction` | DerivedGeometry/HomotopyAdjunctionHomEquiv・KInjectiveDerivedHomAdjunction | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |

@@ -113,3 +113,8 @@ public import SerrePositivity.KST.DerivedGeometry.TriangulatedCounitLocus
 public import SerrePositivity.KST.DerivedGeometry.AffineDerivedBoundedCounit
 public import SerrePositivity.KST.DerivedGeometry.AffineDerivedPlusCounit
 public import SerrePositivity.KST.DerivedGeometry.AffineDqcPlusEquivalence
+public import SerrePositivity.KST.DerivedGeometry.ComplexAdjunctionHomotopy
+public import SerrePositivity.KST.DerivedGeometry.AdjunctionKInjective
+public import SerrePositivity.KST.DerivedGeometry.AffineGammaKInjective
+public import SerrePositivity.KST.DerivedGeometry.HomotopyAdjunctionHomEquiv
+public import SerrePositivity.KST.DerivedGeometry.KInjectiveDerivedHomAdjunction
