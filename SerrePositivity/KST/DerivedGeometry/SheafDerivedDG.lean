@@ -9,8 +9,10 @@ public import SerrePositivity.DifferentialGraded.Category.Homotopy
 
 概要：実際の層複体の acyclic 条件を用い、既存の Drinfeld dg 商を構成する。
 方針：宇宙調整した複体を元の複体へ戻して acyclic を判定する。
-規約：この型の構成だけで Mathlib の導来圏との同値を主張しない。
-使われ方：KST D4・§13 決定11、Drinfeld dg 商、Toën Derived Azumaya §3.2。
+規約：これは明示的 path 商であり、Mathlib の導来圏との同値は未証明。
+Hom の片側 K-flat 性を確認せず導来増強として使わない。
+使われ方：KST D4・§13 決定11、Drinfeld Thm 3.4・§3.5、Toën Derived Azumaya §3.2。
+平坦分解を先行させる案はレーン計画 §26 に記録する。
 -/
 
 @[expose] public section
@@ -61,8 +63,8 @@ abbrev DerivedDG := DGQuotient.QuotientObject B.Complexes B.acyclicComplexes
 /--
 概要：層複体の acyclic 商に既存の dg 圏構造を与える。
 方針：明示的な path dg 商の構造を適用する。
-規約：基礎環は宇宙を持ち上げた整数環。
-使われ方：KST D4・§13 決定11、Drinfeld dg 商。
+規約：基礎環は宇宙を持ち上げた整数環。Hom の K-flat 性はこの構成からは主張しない。
+使われ方：KST D4・§13 決定11、Drinfeld Thm 3.4・§3.5 の比較前の path 商。
 -/
 instance derivedDGCategory : DGCategory CoefficientDGBase.{u} B.DerivedDG :=
   DGQuotient.quotientDGCategory CoefficientDGBase.{u} B.Complexes B.acyclicComplexes

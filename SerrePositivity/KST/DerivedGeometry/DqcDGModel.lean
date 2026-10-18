@@ -8,7 +8,8 @@ public import SerrePositivity.DifferentialGraded.Category.FullSubcategory
 
 概要：層複体の acyclic dg 商で、忘却後のコホモロジーが準連接な対象を取る。
 方針：元の層複体のコホモロジーで対象条件を指定し、既存の充満 dg 部分圏を使う。
-規約：H⁰ と既存 D_qc の圏同値はまだ主張しない。
+規約：明示的 path 商の部分候補であり、H⁰ と既存 D_qc の圏同値は未証明。
+Drinfeld Thm 3.4 の K-flat 条件を確認せず導来増強として使わない。
 使われ方：KST D4・§13 決定11、Bondal–van den Bergh Thm 3.1.1、Toën §3.2。
 -/
 
@@ -48,7 +49,7 @@ def dqcDGObjects : Set B.DerivedDG := fun K => B.complexHasQuasicoherentCohomolo
 /--
 概要：準連接コホモロジーを持つ対象による充満 dg 部分模型。
 方針：層複体の実際の dg 商の充満部分圏を取る。
-規約：既存の三角圏 Dqc との比較は別定理。
+規約：既存の三角圏 Dqc との比較は未証明。平坦分解を経る案はレーン計画 §26。
 使われ方：KST D4・§13 決定11、Toën §3.2 の導来幾何の dg 模型。
 -/
 abbrev DqcDGModel := DGFullSubcategory B.DerivedDG B.dqcDGObjects

@@ -1,6 +1,6 @@
 # K-L4：導来圏と幾何の基盤
 
-作成日：2026-10-18。状態：L4a 途中。具体的係数環層 H_X とその中心的な構造層作用を構成済み。アフィン模型・降下との比較を整備中。
+作成日：2026-10-18。状態：L4a 途中。具体的係数環層 H_X とその中心的な構造層作用を構成済み。dg 商の平坦分解を先行させる設計変更を提案中（§26）。
 
 ## 0. 目的と所有範囲
 
@@ -516,6 +516,44 @@
 - その比較では既存 dg 商の定理の前提、とくに K-flat 条件が現れる箇所を照合し、未証明の前提を追加仮定として済ませない。
 - 原典は KST D4・§13 決定11、Drinfeld の dg 商、Bondal–van den Bergh Thm 3.1.1、Toën §3.2。
 
+## 26. §10-7 の再照合：平坦分解を経る導来 dg 商の設計変更案
+
+### 原典の条件と現実装の限界
+
+- 原典：[Drinfeld, DG quotients of DG categories](https://arxiv.org/abs/math/0210114)、Thm 3.4、§3.5、Lemma 13.5。
+- Thm 3.4 は、殺す対象へ入る全 Hom、または殺す対象から出る全 Hom の K-flat 性を要求する。
+- 既存 `DGQuotient.localKFlat` もこの二つの片側条件の選言であり、対象ごとの選言ではない。
+- `localPerfectQuotientEquivalence` はこの条件を引数に取り、条件自体を証明する定理ではない。
+- 現在の基礎環は宇宙を持ち上げた整数環。宇宙の調整から Hom の K-flat 性は導けない。
+- 全係数加群層の Hom 複体に対する片側 K-flat 性は現状では未証明。
+- acyclic 対象を商で収縮させたことだけでは Verdier 局所化との同値は証明できていない。
+- 現 `DerivedDG` は明示的 path 商、`DqcDGModel` はその充満部分候補としてのみ扱う。
+- `mem_dqcDGObjects_iff` は対象条件の一致。関手の完全充満性を含まない。
+
+### 変更案と実装前の証明方針
+
+- §13 決定11の対象となる導来圏、係数環層、準連接コホモロジー条件は維持する。
+- dg 増強の構成順序を「全層複体 → acyclic の path 商」から次へ変更する案を提出する。
+- 全層複体 dg 圏 C に対し、対象を保つ半自由 dg 圏 C̃ と準同値 C̃ → C を構成する。
+- Lemma 13.5 の段階的生成元添加を形式化し、Hom 上の全射準同型と準同型性を証明する。
+- 半自由フィルトレーションから Hom 複体の K-flat 性を証明する。次数ごとの自由性だけで非有界 K-flat 性を済ませない。
+- C̃ の中で、像が acyclic である対象を充満部分圏 Ñ として取る。
+- C̃/Ñ を既存の明示的 path 商で構成し、Thm 3.4 の前提を証明して適用する。
+- 前三角化および準同値による移送を経て H⁰ と Mathlib 導来圏の同値を証明する。
+- その後、準連接コホモロジー条件へ制限して Dqc の dg 増強を得る。
+- 平坦分解の存在・K-flat 性・導来比較を構造体の未証明フィールドや追加公理にはしない。
+- 係数環 H の平坦性は追加しない。L4e の平坦性仮定と dg 基礎環上の条件を混同しない。
+- 既存の複体の K-flat 分解と dg 圏の半自由分解は別構成であり、前者の項別適用で合成の整合性を済ませない。
+
+### 影響と現在地
+
+- `DifferentialGraded/` は読み取り専用を維持し、新しい構成は所有ディレクトリに置く案とする。
+- 既存 path 商・指定収縮・acyclic の零性の証明は有効であり保持する。
+- `DerivedDG`・`DqcDGModel` を最終的な導来 dg 増強として使う工程は保留する。
+- L4a の完了、L4b–e の完了は主張しない。
+- 今回は変更案と限界の明記までを保存し、ユーザー指定の「設計変更の提案」で停止する。
+- 正本や他レーンのファイルは変更しない。半自由分解の実装は今回開始しない。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -595,7 +633,8 @@
 | `acyclicComplexes`・`mem_acyclicComplexes_iff` | DerivedGeometry/SheafDerivedDG | 実装・対象ビルド済み |
 | `DerivedDG`・`derivedDGProjection`・`derivedDGContractedProjection`・`derivedDG_acyclic_isZero` | DerivedGeometry/SheafDerivedDG | 実装・対象ビルド済み |
 | `DqcDGModel`・`dqcDGModelInclusion`・`mem_dqcDGObjects_iff` | DerivedGeometry/DqcDGModel | 実装・対象ビルド済み |
-| dg 商の H⁰ と Mathlib の導来圏との同値 | DerivedGeometry/ | 未実装 |
+| dg 圏の半自由分解・Hom の K-flat 性 | DerivedGeometry/ | §26 設計変更案、未実装 |
+| dg 商の H⁰ と Mathlib の導来圏との同値 | DerivedGeometry/ | §26 平坦分解を経る案、未実装 |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |
