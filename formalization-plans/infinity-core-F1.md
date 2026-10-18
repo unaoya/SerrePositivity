@@ -7387,5 +7387,34 @@ lemma coslicePostcompFiberMap_source_equivalence_of_target
     (ht : IsQCatEquivalence (coslicePostcompFiberMap (stdSimplex.δ (0 : Fin 2) ≫ e) f y)) :
     IsQCatEquivalence (coslicePostcompFiberMap (stdSimplex.δ (1 : Fin 2) ≫ e) f y)
 
+def pointCosliceFiberMap {E F : SSet.{u}} (f : E ⟶ F) (x y : E _⦋0⦌) :
+    vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y ⟶
+      vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm
+        (f.app (Opposite.op ⦋0⦌) x))) (f.app (Opposite.op ⦋0⦌) y)
+
+lemma pointCosliceFiberMap_uncurry {A E F : SSet.{u}} {x y : E _⦋0⦌}
+    (a : A ⟶ vertexFiber (sliceUnderProjection (SSet.yonedaEquiv.symm x)) y) (f : E ⟶ F) :
+    cosliceFiberUncurry (a ≫ pointCosliceFiberMap f x y) = cosliceFiberUncurry a ≫ f
+
+lemma cosliceIntervalComparison_naturality {E F : SSet.{u}} (f : E ⟶ F) (x y : E _⦋0⦌) :
+    pointCosliceFiberMap f x y ≫ cosliceFiberToIntervalMappingSpace
+        (f.app (Opposite.op ⦋0⦌) x) (f.app (Opposite.op ⦋0⦌) y) =
+      cosliceFiberToIntervalMappingSpace x y ≫ intervalFunctorMap f x y
+
+lemma pinchedInterval_comparison_eq {E : SSet.{u}} (x y : E _⦋0⦌) :
+    PinchedInterval.comparison x y = pinchedHomToIntervalMappingSpace x y
+
+lemma pinchedHomToIntervalMappingSpace_naturality {E F : SSet.{u}}
+    (f : E ⟶ F) (x y : E _⦋0⦌) :
+    pinchedHomMap f x y ≫ pinchedHomToIntervalMappingSpace
+        (f.app (Opposite.op ⦋0⦌) x) (f.app (Opposite.op ⦋0⦌) y) =
+      pinchedHomToIntervalMappingSpace x y ≫ intervalFunctorMap f x y
+
+lemma pointCosliceFiberMap_equivalence_iff_pinchedHomMap
+    {E F : SSet.{u}} [Quasicategory E] [Quasicategory F]
+    (f : E ⟶ F) (x y : E _⦋0⦌) :
+    IsQCatEquivalence (pointCosliceFiberMap f x y) ↔
+      IsSimplicialHomotopyEquivalence (pinchedHomMap f x y)
+
 end SerrePositivity.InfinityCategories
 ```

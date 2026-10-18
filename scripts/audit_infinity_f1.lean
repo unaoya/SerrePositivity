@@ -1609,3 +1609,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.coslicePostcompFiberMap_ι
 #check @SerrePositivity.InfinityCategories.coslicePostcompFiberMap_restrict
 #check @SerrePositivity.InfinityCategories.coslicePostcompFiberMap_source_equivalence_of_target
+#check @SerrePositivity.InfinityCategories.pointCosliceFiberMap
+#check @SerrePositivity.InfinityCategories.pointCosliceFiberMap_uncurry
+#check @SerrePositivity.InfinityCategories.cosliceIntervalComparison_naturality
+#check @SerrePositivity.InfinityCategories.pinchedInterval_comparison_eq
+#check @SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_naturality
+#check @SerrePositivity.InfinityCategories.pointCosliceFiberMap_equivalence_iff_pinchedHomMap
