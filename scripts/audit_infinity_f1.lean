@@ -48,3 +48,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.rightFibration_iff_cartesianFibration_all_edges
 #check @SerrePositivity.InfinityCategories.leftFibration_of_cocartesianFibration_of_all_edges
 #check @SerrePositivity.InfinityCategories.leftFibration_iff_cocartesianFibration_all_edges
+#check @SerrePositivity.InfinityCategories.CocartesianEdgeLift
+#check @SerrePositivity.InfinityCategories.nonempty_cocartesianEdgeLift
+#check @SerrePositivity.InfinityCategories.chooseCocartesianEdgeLift
+#check @SerrePositivity.InfinityCategories.cocartesianTransportObject
+#check @SerrePositivity.InfinityCategories.leftFibration_lift_boundary_prism

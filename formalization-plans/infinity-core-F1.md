@@ -130,5 +130,32 @@ lemma leftFibration_of_cocartesianFibration_of_all_edges {X B : SSet.{u}}
 lemma leftFibration_iff_cocartesianFibration_all_edges {X B : SSet.{u}} (p : X ⟶ B) :
     LeftFibration p ↔ CocartesianFibration p ∧ ∀ e : X _⦋1⦌, IsCocartesianEdge p e
 
+
+structure CocartesianEdgeLift {X B : SSet.{u}} (p : X ⟶ B) (e : B _⦋1⦌)
+    (x : (vertexFiber p (B.δ 1 e)) _⦋0⦌)
+
+lemma nonempty_cocartesianEdgeLift {X B : SSet.{u}} (p : X ⟶ B)
+    [CocartesianFibration p] (e : B _⦋1⦌)
+    (x : (vertexFiber p (B.δ 1 e)) _⦋0⦌) : Nonempty (CocartesianEdgeLift p e x)
+
+noncomputable def chooseCocartesianEdgeLift {X B : SSet.{u}} (p : X ⟶ B)
+    [CocartesianFibration p] (e : B _⦋1⦌)
+    (x : (vertexFiber p (B.δ 1 e)) _⦋0⦌) : CocartesianEdgeLift p e x
+
+noncomputable def cocartesianTransportObject {X B : SSet.{u}} (p : X ⟶ B)
+    [CocartesianFibration p] (e : B _⦋1⦌) :
+    (vertexFiber p (B.δ 1 e)) _⦋0⦌ → (vertexFiber p (B.δ 0 e)) _⦋0⦌
+
+lemma leftFibration_lift_boundary_prism {X B : SSet.{u}} (p : X ⟶ B)
+    [LeftFibration p] (n : ℕ)
+    (H : (Δ[1] : SSet.{u}) ⊗ (boundary n : SSet.{u}) ⟶ X)
+    (F₀ : (Δ[n] : SSet.{u}) ⟶ X) (b : (Δ[1] : SSet.{u}) ⊗ Δ[n] ⟶ B)
+    (hF₀ : (boundary n).ι ≫ F₀ = prismEndpoint 0 (boundary n : SSet.{u}) ≫ H)
+    (hH : H ≫ p = (Δ[1] ◁ (boundary n).ι) ≫ b)
+    (hb : F₀ ≫ p = prismEndpoint 0 Δ[n] ≫ b) :
+    ∃ F : (Δ[1] : SSet.{u}) ⊗ Δ[n] ⟶ X,
+      (Δ[1] ◁ (boundary n).ι) ≫ F = H ∧
+        prismEndpoint 0 Δ[n] ≫ F = F₀ ∧ F ≫ p = b
+
 end SerrePositivity.InfinityCategories
 ```
