@@ -12,7 +12,7 @@ public import SerrePositivity.KST.SchemeLemmas.Flattening
 
 @[expose] public noncomputable section
 
-universe u
+universe u v
 namespace SerrePositivity.KST.SchemeLemmas
 open AlgebraicGeometry CategoryTheory
 variable {S : Scheme.{u}} (U : S.Opens) (I J : S.IdealSheafData)
@@ -104,5 +104,35 @@ theorem exists_admissible_finite_refinement [IsLocallyNoetherian S]
       · obtain ⟨g, hg⟩ := hK A hA
         exact ⟨blowupProductRightMap J K ≫ g,
           by rw [Category.assoc, hg, blowupProductRightMap_base]⟩
+
+/--
+概要：有限個の U-admissible 中心を、中心外がちょうど U である一つの中心で共通支配する。
+方針：有限族の共通細分へ U の閉補集合の消滅イデアルをさらに掛ける。
+規約：KST §5、Stacks 080Y、基底は局所 Noether とする。
+使われ方：大域貼り合わせで U をスキーム論的に稠密な検出開集合にする。
+-/
+theorem exists_admissible_family_refinement [IsLocallyNoetherian S]
+    {ι : Type v} [Finite ι] (J : ι → S.IdealSheafData)
+    (hJ : ∀ i, IsUAdmissibleCenter U (J i)) :
+    ∃ M : S.IdealSheafData, centerComplement M = U ∧
+      (∀ V : S.affineOpens, (M.ideal V).FG) ∧
+      ∀ i, ∃ g : blowup M ⟶ blowup (J i), g ≫ blowupπ (J i) = blowupπ M := by
+  classical
+  let : Fintype ι := Fintype.ofFinite ι
+  let L := Finset.univ.toList.map J
+  have hL : ∀ A ∈ L, IsUAdmissibleCenter U A := by
+    intro A hA
+    obtain ⟨i, _, rfl⟩ := List.mem_map.mp hA
+    exact hJ i
+  obtain ⟨K, hKU, hKfg, hK⟩ := exists_admissible_finite_refinement U L hL
+  let B := initialAdmissibleCenter U
+  refine ⟨B * K, ?_, productCenter_finiteGeneration B K (initialAdmissibleCenter_fg U) hKfg,
+    fun i => ?_⟩
+  · rw [centerComplement_mul, initialAdmissibleCenter_complement]
+    exact inf_eq_left.mpr hKU
+  · have hi : J i ∈ L := List.mem_map.mpr ⟨i, by simp, rfl⟩
+    obtain ⟨g, hg⟩ := hK (J i) hi
+    exact ⟨blowupProductRightMap B K ≫ g,
+      by rw [Category.assoc, hg, blowupProductRightMap_base]⟩
 
 end SerrePositivity.KST.SchemeLemmas

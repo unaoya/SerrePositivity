@@ -88,3 +88,8 @@ public import SerrePositivity.KST.SchemeLemmas.ProductLiftCenter
 public import SerrePositivity.KST.SchemeLemmas.AffineCompositionDomination
 public import SerrePositivity.KST.SchemeLemmas.RestrictionOpenOrder
 public import SerrePositivity.KST.SchemeLemmas.AffineAdmissibleComposition
+public import SerrePositivity.KST.SchemeLemmas.OpenCenterExtension
+public import SerrePositivity.KST.SchemeLemmas.BlowupOpenComparison
+public import SerrePositivity.KST.SchemeLemmas.DenseOpenGluing
+public import SerrePositivity.KST.SchemeLemmas.LocalDominationRestriction
+public import SerrePositivity.KST.SchemeLemmas.AffineLocalDominationGluing
