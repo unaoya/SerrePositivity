@@ -1404,3 +1404,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.scaffoldSimplexBridge
 #check @SerrePositivity.InfinityCategories.scaffoldSimplexBridge_innerAnodyne
 #check @SerrePositivity.InfinityCategories.scaffoldSimplexBridge_whiskerRight_innerAnodyne
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteNerveConeIso
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteTail_isoNerve
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteNerveConeIso_inr
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteNervePoint_leftAnodyne
+#check @SerrePositivity.InfinityCategories.scaffoldNerveConeBridge
+#check @SerrePositivity.InfinityCategories.scaffoldNerveConeBridge_innerAnodyne
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteNerveBridge
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteNerveBridge_innerAnodyne
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteNerveBridge_whiskerRight_innerAnodyne
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteNerveBridge_inr

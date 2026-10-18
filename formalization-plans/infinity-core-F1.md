@@ -6346,5 +6346,44 @@ lemma scaffoldSimplexBridge_innerAnodyne (n : ℕ) :
 lemma scaffoldSimplexBridge_whiskerRight_innerAnodyne (n : ℕ) (K : SSet.{u}) :
     innerAnodyneExtensions (scaffoldSimplexBridge n ▷ K)
 
+noncomputable def scaffoldFiniteNerveConeIso (n : ℕ) :
+    join (Δ[0] : SSet.{u}) (nerve (ULift.{u} (Fin (n + 1)))) ≅
+      nerve (ULift.{u} (Fin (n + 2)))
+
+lemma scaffoldFiniteTail_isoNerve (n : ℕ) :
+    stdSimplex.δ (0 : Fin (n + 2)) ≫ (stdSimplex.isoNerve.{u} (n + 1)).hom =
+      (stdSimplex.isoNerve n).hom ≫ nerveMap (scaffoldFiniteTail n)
+
+lemma scaffoldFiniteNerveConeIso_inr (n : ℕ) :
+    joinInr (Δ[0] : SSet.{u}) (nerve (ULift.{u} (Fin (n + 1)))) ≫
+        (scaffoldFiniteNerveConeIso n).hom = nerveMap (scaffoldFiniteTail n)
+
+lemma scaffoldFiniteNervePoint_leftAnodyne (n : ℕ) :
+    leftAnodyneExtensions (nervePoint (ULift.up (0 : Fin (n + 1)) : ULift.{u} _))
+
+noncomputable def scaffoldNerveConeBridge (n : ℕ) :
+    pushout (stdSimplex.δ (0 : Fin 2))
+        (nervePoint (ULift.up (0 : Fin (n + 1)) : ULift.{u} _)) ⟶
+      join (Δ[0] : SSet.{u}) (nerve (ULift.{u} (Fin (n + 1))))
+
+lemma scaffoldNerveConeBridge_innerAnodyne (n : ℕ) :
+    innerAnodyneExtensions (scaffoldNerveConeBridge.{u} n)
+
+noncomputable def scaffoldFiniteNerveBridge (n : ℕ) :
+    pushout (stdSimplex.δ (0 : Fin 2))
+        (nervePoint (ULift.up (0 : Fin (n + 1)) : ULift.{u} _)) ⟶
+      nerve (ULift.{u} (Fin (n + 2)))
+
+lemma scaffoldFiniteNerveBridge_innerAnodyne (n : ℕ) :
+    innerAnodyneExtensions (scaffoldFiniteNerveBridge.{u} n)
+
+lemma scaffoldFiniteNerveBridge_whiskerRight_innerAnodyne (n : ℕ) (K : SSet.{u}) :
+    innerAnodyneExtensions (scaffoldFiniteNerveBridge n ▷ K)
+
+lemma scaffoldFiniteNerveBridge_inr (n : ℕ) :
+    pushout.inr (stdSimplex.δ (0 : Fin 2))
+        (nervePoint (ULift.up (0 : Fin (n + 1)) : ULift.{u} _)) ≫
+      scaffoldFiniteNerveBridge n = nerveMap (scaffoldFiniteTail n)
+
 end SerrePositivity.InfinityCategories
 ```
