@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：借用する π・H_* の明示的な模型界面に対して工程完了。一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと1309宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと1318宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -1015,3 +1015,12 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - `triangularBlockAffineSplit` は T_{n,m+1} から T_{n,m} と列群の実半直積への準同型。積は v+M v′ の順であり、非可換な係数を保つ。
 - `actionProductLift` と section・fiber への制限の等式は、基底とファイバーの実射を作用の交換則で束ねる。外部モノイドの次数ごとの可逆性を仮定しない。
 - 対象ビルド・1309宣言の公理監査は標準三公理のみで成功。外部 ĜL を含む実比較射と相対項の因子化、安定化を続行する。
+
+
+### L6d の単体的な実分解と外部 ĜL のブロック積（2026-10-19）
+
+- `SimplicialIdealData.triangularColumnAction` と `triangularAffineSplitMap` は実三角群の半直積への分解を単体的に束ねる。面・退化との可換性は基底と最終列で実証明した。
+- `firstBlockMatrixHom` と `NonUnitalSimplicialRing.hatGLBlockMap` は一般の有限補助 rank に対する単位ブロック和。π₀ での単位性と整数核条件の両方を保つ。
+- `triangularBlockMatrixAction_intertwining` は ρ_M(t)diag(M,1)=diag(M,1)t を右吸収の式から証明する。一般の非可逆行列にも成立する。
+- `triangularGLProductHom` と `triangularGLProductMap` は外部 ĜL と三角群の半直積から ĜL_{n+m} への実ブロック積。各次数の逆元は仮定せず、全単体射への自然性を証明した。
+- 対象ビルド・1318宣言の公理監査は標準三公理のみで成功。最終列を含む二つの実比較の接続、相対項の因子化、安定化は続行する。

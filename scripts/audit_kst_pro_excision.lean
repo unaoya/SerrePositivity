@@ -3774,3 +3774,30 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.actionProductLift_fiber
 #print axioms SerrePositivity.KST.ProExcision.actionProductLift_fiber
+
+#check @SerrePositivity.KST.ProExcision.SimplicialIdealData.triangularColumnAction
+#print axioms SerrePositivity.KST.ProExcision.SimplicialIdealData.triangularColumnAction
+
+#check @SerrePositivity.KST.ProExcision.SimplicialIdealData.triangularAffineSplitMap
+#print axioms SerrePositivity.KST.ProExcision.SimplicialIdealData.triangularAffineSplitMap
+
+#check @SerrePositivity.KST.ProExcision.firstBlockMatrixHom
+#print axioms SerrePositivity.KST.ProExcision.firstBlockMatrixHom
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGLBlockHom
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGLBlockHom
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGLBlockMap
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGLBlockMap
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockMatrixAction_intertwining
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockMatrixAction_intertwining
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.triangularGLAction
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.triangularGLAction
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.triangularGLProductHom
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.triangularGLProductHom
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.triangularGLProductMap
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.triangularGLProductMap

@@ -343,3 +343,9 @@ public import SerrePositivity.KST.ProExcision.TriangularLastColumn
 public import SerrePositivity.KST.ProExcision.TriangularAffineSplit
 
 public import SerrePositivity.KST.ProExcision.ActionProductLift
+
+public import SerrePositivity.KST.ProExcision.SimplicialTriangularSplit
+
+public import SerrePositivity.KST.ProExcision.NonUnitalHatGLBlock
+
+public import SerrePositivity.KST.ProExcision.TriangularGLProduct
