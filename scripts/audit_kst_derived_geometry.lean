@@ -14,6 +14,11 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let required : Array Name := #[
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.mappingShiftIso,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.rightShift_comp,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.representableShift_naturality,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.representableShiftIso,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.representableShiftIso_hom_eval,
     `SerrePositivity.KST.DerivedGeometry.DGResolution.cycleCoverHomEquiv,
     `SerrePositivity.KST.DerivedGeometry.DGResolution.initialFunctorEquiv,
     `SerrePositivity.KST.DerivedGeometry.DGResolution.attachment_degree_splitMono,

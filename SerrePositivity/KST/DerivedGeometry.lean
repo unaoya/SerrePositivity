@@ -22,3 +22,4 @@ public import SerrePositivity.KST.DerivedGeometry.ResolvedSheafComparison
 public import SerrePositivity.KST.DerivedGeometry.DGResolution.StagePresentation
 public import SerrePositivity.KST.DerivedGeometry.DGResolution.CellUniversal
 public import SerrePositivity.KST.DerivedGeometry.DGResolution.InitialPresentation
+public import SerrePositivity.KST.DerivedGeometry.LinearRepresentableShift

@@ -51,7 +51,7 @@
 
 - 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。任意 dg 圏の段階分解、Hom の K-flat 性、増大関手の各次数全射性・準同値性・H⁰ 同値、前三角化の三角同値、分解後の path 商と元の指定 Verdier 商の tria 比較を実装済み。層の DerivedDG・DqcDGModel も平坦分解後の商へ移行済み。商自体の H⁰ と Mathlib の導来圏の同値、Perf、アフィン係数加群圏の同値、導来降下は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の導来随伴・生成・T1′、L4c、L4d、L4e は未実装。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の698宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の714宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -649,6 +649,27 @@
 - 対象ビルドと698宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
 - 設計上の判断待ち・所有 import 閉包の破損はない。商自体の H⁰ と Mathlib 導来圏の比較は未完了。
 
+## 30. §10-7：前三角化の代表可能性から商の H⁰ へ（実装前記録）
+
+- 残る H⁰ 比較に対し、元の層複体 dg 圏の代表加群が零・shift・有限和・cone で閉じることを具体的に証明する。
+- 一般の A 線形加法圏 C で、Hom(X,Y)[s] と Hom(X,Y[s]) の chain 同型を Mathlib の cochain の rightShift から構成する。
+- shift の微分の符号と δ_rightShift を照合する。次数別の全単射だけで chain 同型とはしない。
+- 全次数の前合成との両立を証明し、代表 dg 加群の shift が実際の複体の shift で表現されることへ渡す。
+- 同様に cone の写像複体を比較し、有限 cell の三角閉包の代表可能性へ帰納する。
+- 既存の dg Yoneda と代表加群の導来局所化の完全忠実性を使い、元の H⁰ と tria を同定する。
+- 分解後の商の tria 比較と Mathlib の acyclic 局所化の普遍性を、同じ商関手の正方形で接続する。
+- 商自体が前三角的であることを別途証明し、その H⁰ と tria の同値を通して最終比較を得る。
+- この段階では H⁰ と tria を定義で同じものにせず、未証明の代表可能性を構造体の入力にしない。
+
+### 現在地
+
+- `LinearComplexShift.mappingShiftIso`：一般の線形加法圏の写像複体の右 shift を chain 同型として構成済み。
+- `rightShift_comp`：任意次数の前合成との両立を証明済み。
+- `LinearRepresentableShift.representableShiftIso`：shift した代表加群と、shift した複体の代表加群の同型を全次数自然性込みで構成済み。
+- shift 比較の評価は同じ具体的な chain map に一致する。
+- 対象ビルドと714宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
+- 次は cone の写像複体・代表加群の比較。H⁰ と Mathlib 導来圏の最終比較は未完了。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -738,6 +759,8 @@
 | `DGResolution.stageInclusion_degree_mono`・`homogeneous_finiteStage`・`cycle_finiteStage` | DGResolution/StagePresentation | 実装・対象ビルド済み |
 | `DGResolution.cellFunctorEquiv`・`cellFunctorEquiv_apply` | DGResolution/CellUniversal | 実装・対象ビルド済み |
 | `DGResolution.cycleCoverHomEquiv`・`initialFunctorEquiv` | DGResolution/InitialPresentation | 実装・対象ビルド済み |
+| `LinearComplex.mappingShiftIso`・`rightShift_comp` | DerivedGeometry/LinearComplexShift | 実装・対象ビルド済み |
+| `LinearComplex.representableShiftIso`・`representableShiftIso_hom_eval` | DerivedGeometry/LinearRepresentableShift | 実装・対象ビルド済み |
 | `DGResolution.augmentation_triaImage_iff`・`augmentation_trW_eq` | DGResolution/SupportTransport・VerdierTransport | 実装・対象ビルド済み |
 | `DGResolution.verdierSquare`・`quotientToOriginalVerdierIsTriangulated` | DGResolution/VerdierTransport | 実装・対象ビルド済み |
 | `ResolvedComplexes`・`resolvedAcyclicComplexes`・`resolvedAugmentation_quasiEquivalence` | DerivedGeometry/SheafDerivedDG | 実装・対象ビルド済み |
