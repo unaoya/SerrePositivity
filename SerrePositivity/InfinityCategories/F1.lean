@@ -104,3 +104,4 @@ public import SerrePositivity.InfinityCategories.F1.CoherentResolutionFaceExtens
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionAllFaces
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionExtensionGluing
 public import SerrePositivity.InfinityCategories.F1.CoherentResolutionBoundaryExtension
+public import SerrePositivity.InfinityCategories.F1.CoherentResolutionMonomorphisms

@@ -2747,5 +2747,22 @@ lemma coherentResolutionProjectionAll_boundary_isPrecompositionEquivalence (n : 
 lemma coherentResolution_map_boundary_ι_mono (n : ℕ) :
     Mono (coherentResolution.{u}.map (SSet.boundary n).ι)
 
+lemma coherentResolution_map_mono_of_attachCells {α : Type v} {A B : α → SSet.{u}}
+    (g : (i : α) → A i ⟶ B i) {X Y : SSet.{u}} {f : X ⟶ Y}
+    (c : AttachCells.{u} g f) (hg : ∀ i, Mono (coherentResolution.map (g i))) :
+    Mono (coherentResolution.map f)
+
+lemma coherentResolution_map_mono {X Y : SSet.{u}} (f : X ⟶ Y) [Mono f] :
+    Mono (coherentResolution.map f)
+
+instance coherentResolution_preservesMonomorphisms :
+    coherentResolution.{u}.PreservesMonomorphisms
+
+lemma coherentResolutionProjectionAll_initial_isPrecompositionEquivalence :
+    IsPrecompositionEquivalence (coherentResolutionProjectionAll.{u}.app (⊥_ SSet.{u}))
+
+lemma coherentResolutionProjectionAll_isPrecompositionEquivalence (X : SSet.{u}) :
+    IsPrecompositionEquivalence (coherentResolutionProjectionAll.app X)
+
 end SerrePositivity.InfinityCategories
 ```
