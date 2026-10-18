@@ -1,6 +1,22 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.spanSquareBoundary_swap
+#print axioms SerrePositivity.InfinityCategories.pushoutSpan_transpose
+#print axioms SerrePositivity.InfinityCategories.edgeSpan_self_swap
+#print axioms SerrePositivity.InfinityCategories.hasColimit_edgeSpan_self
+#print axioms SerrePositivity.InfinityCategories.symmetricSuspensionCocone
+#print axioms SerrePositivity.InfinityCategories.symmetricSuspensionCocone_isColimit
+#print axioms SerrePositivity.InfinityCategories.symmetricSuspensionSquare
+#print axioms SerrePositivity.InfinityCategories.symmetricSuspensionSquare_span
+#print axioms SerrePositivity.InfinityCategories.symmetricSuspensionSquare_sameSpan
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.swapIso_comparison
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.swapIso_eq_neg_id_of_comparison
+#print axioms SerrePositivity.InfinityCategories.chosenSymmetricSuspensionSquare
+#print axioms SerrePositivity.InfinityCategories.chosenSymmetricSuspensionSquare_sameSpan
+#print axioms SerrePositivity.InfinityCategories.chosenSymmetricSuspensionSquare_swap_comparison
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.swapIso_eq_neg_id_of_chosenSymmetric
+
 #print axioms SerrePositivity.InfinityCategories.cosliceCoconeDiagramMap
 #print axioms SerrePositivity.InfinityCategories.cosliceCoconeDiagramMap_vertex
 #print axioms SerrePositivity.InfinityCategories.cosliceCoconeDiagramMap_restriction
@@ -1245,7 +1261,11 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.CosliceSquareDiagram,
     `SerrePositivity.InfinityCategories.Stable.ColimitSquareComparison,
     `SerrePositivity.InfinityCategories.Stable.SuspensionColimitComparison,
-    `SerrePositivity.InfinityCategories.Stable.SuspensionSameSpanSwap]
+    `SerrePositivity.InfinityCategories.Stable.SuspensionSameSpanSwap,
+    `SerrePositivity.InfinityCategories.Stable.SymmetricSpan,
+    `SerrePositivity.InfinityCategories.Stable.SymmetricSuspension,
+    `SerrePositivity.InfinityCategories.Stable.SuspensionSwapChoice,
+    `SerrePositivity.InfinityCategories.Stable.ChosenSymmetricSuspension]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
