@@ -545,3 +545,59 @@ theorem completionExtendCone_vertex (R : Type u) [CommRing R] (S : A_R R)
     (completionExtendCone p R S c).vertex = c.vertex
 end SerrePositivity.BhattScholze.PerfectoidizationInterface
 ```
+
+### Π2-3
+
+```lean
+namespace SerrePositivity.BhattScholze.PerfectoidizationInterface
+universe u
+open CategoryTheory CategoryTheory.Limits SerrePositivity.InfinityCategories
+open scoped Simplicial
+variable (R : Type u) [CommRing R]
+structure H0RingData (P : algebraNerve R ⟶ derivedInfinityCategory R)
+    (η : NatInfinity R (J R) P) where
+  ringFunctor : A_R R ⥤ A_R R
+  moduleIso : ∀ S, (discreteAlgebraModule R).obj (ringFunctor.obj S) ≅ H R 0 (vertex R P S)
+  map_compat : ∀ {S T} (f : S ⟶ T),
+    (discreteAlgebraModule R).map (ringFunctor.map f) ≫ (moduleIso T).hom =
+      (moduleIso S).hom ≫ HMap R 0 (edge R P f)
+  unit : 𝟭 (A_R R) ⟶ ringFunctor
+  unit_compat : ∀ S,
+    (JHZeroIso R S).hom ≫ (discreteAlgebraModule R).map (unit.app S) ≫ (moduleIso S).hom =
+      HMap R 0 (component R η S)
+
+def joinLegSimplex {K : SSet.{u + 1}} (x : K _⦋0⦌) : (join (Δ[0] : SSet.{u + 1}) K) _⦋1⦌
+
+def targetUnitMap (p : ℕ) [Fact p.Prime] (S : A_R R) (T : PerfUnder_u p S.right) :
+    S ⟶ (targetAlgebra R p S).obj T
+
+theorem targetUnitMap_naturality (p : ℕ) [Fact p.Prime] (S : A_R R)
+    {T U : PerfUnder_u p S.right} (f : T ⟶ U) :
+    targetUnitMap R p S T ≫ (targetAlgebra R p S).map f = targetUnitMap R p S U
+
+structure BSLimitConeData (p : ℕ) [Fact p.Prime]
+    (P : algebraNerve R ⟶ derivedInfinityCategory R) (η : NatInfinity R (J R) P)
+    (h0 : H0RingData R P η) (S : A_R R) where
+  cone : JoinCone (targetDiagram R p S)
+  vertex_eq : cone.vertex = vertex R P S
+  sourceCone : JoinCone (nerveMap (targetAlgebra R p S))
+  source_vertex : sourceCone.vertex = ComposableArrows.mk₀ S
+  source_legs : ∀ T, sourceCone.val.app _ (joinLegSimplex (ComposableArrows.mk₀ T)) =
+    ComposableArrows.mk₁ (targetUnitMap R p S T)
+  overSource : (sliceOver (targetDiagram R p S)).Edge (sourceCone.postcomp (J R)) cone
+  overSource_unit : (overSource.map (sliceOverProjection (targetDiagram R p S))).edge =
+    (component R η S).edge
+  projectionEdge : ∀ T : PerfUnder_u p S.right,
+    (derivedInfinityCategory R).Edge (vertex R P S) (vertex R (J R) ((targetAlgebra R p S).obj T))
+  projectionEdge_eq : ∀ T, (projectionEdge T).edge =
+    cone.val.app _ (joinLegSimplex (ComposableArrows.mk₀ T))
+  projection : ∀ T : PerfUnder_u p S.right, h0.ringFunctor.obj S ⟶ (targetAlgebra R p S).obj T
+  projection_unit : ∀ T, h0.unit.app S ≫ projection T = targetUnitMap R p S T
+  projection_naturality : ∀ {T U : PerfUnder_u p S.right} (f : T ⟶ U),
+    projection T ≫ (targetAlgebra R p S).map f = projection U
+  projection_compat : ∀ T,
+    (h0.moduleIso S).hom ≫ HMap R 0 (projectionEdge T) ≫
+        (JHZeroIso R ((targetAlgebra R p S).obj T)).hom =
+      (discreteAlgebraModule R).map (projection T)
+end SerrePositivity.BhattScholze.PerfectoidizationInterface
+```
