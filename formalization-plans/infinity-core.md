@@ -19,7 +19,7 @@ Mathlib の `Quasicategory` をそのまま ∞ 圏の定義とし、Joyal モ�
 
 担当順は A6 → A4 → A5。基盤全体の正本は [foundations.md](foundations.md)。F1 は α2 が担当し、Core の既存の公開名・型の変更は事前に報告する。
 
-現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較も整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
+現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）、`IsPointwiseLimitCone`・`HasPointwiseLimits`（A6 の主定理の条件）、`isTerminalVertex_functorVertex_of_pointwise`（点ごとの終対象から関手単体集合の終対象）。A6 は点ごとの相対境界充填の移送と、slice から関手単体集合の錐の fiber への比較射・零単体の対応まで完了。fat join と通常の join の比較射・内部 Hom の前後合成の同値性・指定された関手の辺の点ごとの可逆性判定、前合成の普遍的な同値条件と既存の同値との整合性・直積と単射の pushout による保存、可逆な写像円柱による単射への因子分解、固定基底の単射の図式の pushout による比較と二点の fat join 比較の同型性も整備したが、slice 比較射の同値性と任意図式の主定理は未完了。
 
 ## 1. Mathlib（固定版）の現状
 
@@ -6516,6 +6516,76 @@ lemma isPrecompositionEquivalence_of_pushout_fixed_base {A B B' C D D' : SSet.{u
     (f : B ⟶ B') (h : D ⟶ D') (hi : i ≫ f = i')
     (hr : r ≫ h = f ≫ r') (hs : s ≫ h = s')
     (hf : IsPrecompositionEquivalence f) : IsPrecompositionEquivalence h
+
+end SerrePositivity.InfinityCategories
+```
+
+### A6 続き：二点の fat join の比較と可逆ホモトピーの検出（2026-10-18）
+
+`fatJoinComparison Δ[0] Δ[0]` が厳密な同型であることを証明した。両端を貼る射影が同型なので円柱の pushout 包含も同型となり、通常の join の円柱比較も点との直積の同型として検出した。標準零単体と Mathlib のモノイダル単位の同型を明示し、定義的同一視は用いていない。これは二点の場合のみであり、任意の標準単体の比較や一般の比較の完成ではない。
+
+前合成の同値条件の二対六則、点ごとに可逆なホモトピーによる不変性、切断と二つの同じ向きの可逆ホモトピーによる検出も追加した。Core ビルド1795 jobs、累計1029宣言の標準3公理監査成功。既存の公開名・型は維持。一般の fat join 比較・slice 比較の同値性と A6 の主定理は未完了。A4・A5 は未着手。新規17宣言の全型・前提：
+
+```lean
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories
+def stdSimplexZeroUnitIso : (Δ[0] : SSet.{u}) ≅ 𝟙_ SSet.{u}
+
+instance isIso_toUnit_stdSimplexZero : IsIso (toUnit (Δ[0] : SSet.{u}))
+
+instance isIso_fst_stdSimplexZero (A : SSet.{u}) : IsIso (fst A (Δ[0] : SSet.{u}))
+
+instance isIso_snd_stdSimplexZero (A : SSet.{u}) : IsIso (snd (Δ[0] : SSet.{u}) A)
+
+def joinIso {A A' B B' : SSet.{u}} (e : A ≅ A') (f : B ≅ B') : join A B ≅ join A' B'
+
+instance isIso_joinMap {A A' B B' : SSet.{u}} (f : A ⟶ A') (g : B ⟶ B')
+    [IsIso f] [IsIso g] : IsIso (joinMap f g)
+
+lemma Join.augTensorEquiv_symm_augHomFst (A B : SSet.{u}) (r : ℕ)
+    (a : Join.augObj A r) (b : Join.augObj B r) :
+    Join.augHom (fst A B) r ((Join.augTensorEquiv A B r).symm (a, b)) = a
+
+lemma joinTensorRight_unit (A B : SSet.{u}) :
+    joinTensorRight A B (Δ[0] : SSet.{u}) ≫ joinMap (𝟙 A) (fst B (Δ[0] : SSet.{u})) =
+      fst (join A B) (Δ[0] : SSet.{u})
+
+instance isIso_joinTensorLeft_point (B C : SSet.{u}) :
+    IsIso (joinTensorLeft (Δ[0] : SSet.{u}) B C)
+
+instance isIso_joinTensorRight_point (A B : SSet.{u}) :
+    IsIso (joinTensorRight A B (Δ[0] : SSet.{u}))
+
+instance isIso_fatJoinCylinder_point :
+    IsIso (fatJoinCylinder (Δ[0] : SSet.{u}) (Δ[0] : SSet.{u}))
+
+instance isIso_joinCylinderMap_point :
+    IsIso (joinCylinderMap (Δ[0] : SSet.{u}) (Δ[0] : SSet.{u}))
+
+instance isIso_fatJoinComparison_point :
+    IsIso (fatJoinComparison (Δ[0] : SSet.{u}) (Δ[0] : SSet.{u}))
+
+lemma isPrecompositionEquivalence_fatJoinComparison_point :
+    IsPrecompositionEquivalence (fatJoinComparison (Δ[0] : SSet.{u}) (Δ[0] : SSet.{u}))
+
+lemma isPrecompositionEquivalence_of_composites {A B C D : SSet.{u}}
+    {f : A ⟶ B} {g : B ⟶ C} {h : C ⟶ D}
+    (hfg : IsPrecompositionEquivalence (f ≫ g))
+    (hgh : IsPrecompositionEquivalence (g ≫ h)) : IsPrecompositionEquivalence g
+
+lemma isPrecompositionEquivalence_iff_of_homotopy {A B : SSet.{u}} {f g : A ⟶ B}
+    (H : SSet.Homotopy f g)
+    (hH : ∀ a : A _⦋0⦌, IsInvertibleEdge (simplicialHomotopyVertexEdge H a).toTruncated) :
+    IsPrecompositionEquivalence f ↔ IsPrecompositionEquivalence g
+
+lemma isPrecompositionEquivalence_of_section_zigzag {A B : SSet.{u}}
+    (f : A ⟶ B) (g : B ⟶ A) (hgf : g ≫ f = 𝟙 B) (r : A ⟶ A)
+    (H₀ : SSet.Homotopy (𝟙 A) r) (H₁ : SSet.Homotopy (f ≫ g) r)
+    (h₀ : ∀ a : A _⦋0⦌, IsInvertibleEdge (simplicialHomotopyVertexEdge H₀ a).toTruncated)
+    (h₁ : ∀ a : A _⦋0⦌, IsInvertibleEdge (simplicialHomotopyVertexEdge H₁ a).toTruncated) :
+    IsPrecompositionEquivalence f
 
 end SerrePositivity.InfinityCategories
 ```

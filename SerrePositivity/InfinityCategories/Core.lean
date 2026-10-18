@@ -139,3 +139,9 @@ public import SerrePositivity.InfinityCategories.Core.RelativeMappingCylinder
 public import SerrePositivity.InfinityCategories.Core.PrecompositionUnderCriterion
 
 public import SerrePositivity.InfinityCategories.Core.PrecompositionUnderPushout
+
+public import SerrePositivity.InfinityCategories.Core.JoinTensorPoint
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinPoint
+
+public import SerrePositivity.InfinityCategories.Core.PrecompositionHomotopy
