@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 896 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 913 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -87,6 +87,8 @@
 - 有限個の admissible 中心を、中心外がちょうど U である一つの中心で共通支配する補題を証明済み。
 - 任意の開埋め込みに沿う一般 blowup 比較射と基底交換式を構成済み。
 - 一般 Noether 基底上の二段の U-admissible blowup を一つで支配する実際の射を証明済み。
+- 加群の純変換を局所化核による商として定義済み。境界元の正則作用、局所化の像との線形同型、有限性・Noether 環上の有限表示性、写像の降下を証明済み。
+- 有限生成の境界ねじれは一様な冪で消えることを証明済み。純変換の平坦化中心の存在は未証明。
 - 有限アフィン被覆上で実際の admissible 支配射が与えられれば、一つの大域 blowup からの支配射を構成できることを証明済み。零核の中心外開集合による重なりの一致を使う。
 - 次は一般の開埋め込みの blowup 比較射を構成し、一般 Noether 基底上の二段合成へアフィン結果を接続する。
 - Noether でも実際に平坦な strict transform を達成する中心の存在はなお未証明。L7b 完了とはしない。
@@ -413,6 +415,10 @@ A 上の平坦性の存在証明は依然として必要である。
 | `blowupOpenMap` | BlowupOpenMap | 検証済み | 開埋め込みによる実比較射 |
 | `exists_finite_affineOpenCover` | FiniteAffineCover | 検証済み | コンパクトな基底の有限アフィン被覆 |
 | `exists_admissible_composition_domination` | SchemeCompositionDomination | 検証済み | 一般 Noether 基底上の二段合成の支配 |
+| `boundaryTorsion` / `modulePureTransform` | PureTransformModule | 検証済み | 境界ねじれと純変換 |
+| `modulePureTransform_isSMulRegular` | PureTransformModule | 検証済み | 境界元の単射作用 |
+| `exists_pow_annihilates_boundaryTorsion` | PureTransformModule | 検証済み | 有限生成ねじれの一様な冪消滅 |
+| `modulePureTransform_finitePresentation` | PureTransformModule | 検証済み | Noether 環上の有限表示性 |
 | `reesProjection` | Blowup | 検証済み | 単項式射影 |
 | `reesGrade` | Blowup | 検証済み | Rees の斉次成分 |
 | `mem_reesGrade_iff` | Blowup | 検証済み | 斉次所属の判定 |

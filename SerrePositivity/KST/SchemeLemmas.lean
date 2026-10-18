@@ -98,3 +98,4 @@ public import SerrePositivity.KST.SchemeLemmas.OpenComparisonBase
 public import SerrePositivity.KST.SchemeLemmas.BlowupOpenMap
 public import SerrePositivity.KST.SchemeLemmas.FiniteAffineCover
 public import SerrePositivity.KST.SchemeLemmas.SchemeCompositionDomination
+public import SerrePositivity.KST.SchemeLemmas.PureTransformModule
