@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c 完了。L9d 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・253 モジュール 3013 宣言の公理監査成功。
+対象ビルド・255 モジュール 3032 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -2227,3 +2227,31 @@ BF 図式を Kan 列へ忘れた場合、この構成は既存の filtered BF �
 保存単位の対象ビルド 2454 jobs 成功。
 私有宣言を含む 253 モジュール 3013 宣言で標準三公理のみ。
 L9d は進行中。次は円の前合成とスペクトルの後合成から厳密な有理化図式を作る。
+
+## 77. L9d の置換前の厳密な有理化図式と実際の射への作用
+
+円の Kan 置換の次数 2,3,4,… による前合成を、単射置換前の内部 Hom の Kan 列で並べた。
+元のスペクトルの射は各段の後合成で作用し、前合成と厳密に可換する。
+これにより有理化の Kan 列の図式の厳密な自然変換が得られた。
+既存の cotensor の図式からは単射置換の射影による自然変換を構成した。
+その成分は全て各段で全基点の π_* 同型である。
+
+filtered BF 比較を使い、既存の telescope から関手的な図式の telescope への実際の各段 π_* 同型を得た。
+次数移動の後で標的の比較射の逆方向の BF 射を構成し、元の f : X→Y に実際の X_ℚ→Y_ℚ を対応させた。
+これは群の同型による写像の移送だけではなく、実際のスペクトルの射の合成である。
+誘導準同型の関手法則・単位の自然性は継続して検証する。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `rawRationalSequence` / `rawRationalDiagram` | 置換前の内部 Hom の厳密な有理化図式 |
+| `rawRationalSequenceMap` / `rawRationalDiagramMap` | スペクトルの射の後合成による厳密な自然変換 |
+| `rationalDiagramProjection` / `rationalDiagramProjection_levelwise` | 既存の cotensor 図式からの各段 π_* 同型比較 |
+| `rawRationalLoopTelescope` / `rawRationalLoopMap` | 関手的な図式の BF 対象と実際の射 |
+| `rationalLoopProjection` / `rationalLoopProjection_levelwise` | 既存の telescope からの比較と各段の同型性 |
+| `rationalizationProjection` / `rationalizationProjection_levelwise` | 次数移動後の比較 |
+| `rationalizationMap` | 既存の有理化対象間の実際の厳密な射 |
+
+参照：BF 1978 §2、Goerss–Jardine I §7、HTT A.3.3、HA §1.4.2。
+保存単位の対象ビルド 2456 jobs 成功。
+私有宣言を含む 255 モジュール 3032 宣言で標準三公理のみ。
+L9d は進行中。次は単位写像の段ごとのホモトピー可換性と誘導群準同型の自然性を示す。

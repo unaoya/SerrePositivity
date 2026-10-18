@@ -1,5 +1,8 @@
 module
 
+public import SerrePositivity.KST.Spectra.RawRationalDiagram
+public import SerrePositivity.KST.Spectra.RawRationalSpectrum
+
 public import SerrePositivity.KST.Spectra.FilteredHomotopyGroups
 public import SerrePositivity.KST.Spectra.FilteredLoopColimit
 public import SerrePositivity.KST.Spectra.FilteredSpectrumHomotopy
