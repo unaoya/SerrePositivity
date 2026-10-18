@@ -8204,5 +8204,79 @@ noncomputable def leftFibrationInfinityMappingEquivalence {E F B : SSet.{u}}
     QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj (relativeFunctorSpace q p))
       (pinchedHom (leftFibrationInfinityVertex p) (leftFibrationInfinityVertex q))
 
+def relativeFunctorPostHom {B : SSet.{u}} (a b c : Over B) :
+    relativeFunctorSpace c.hom b.hom ⟶
+      (ihom (relativeFunctorSpace b.hom a.hom)).obj (relativeFunctorSpace c.hom a.hom)
+
+lemma relativeFunctorPostHom_id {B : SSet.{u}} (a b : Over B) :
+    relativeFunctorIdentity b ≫ relativeFunctorPostHom a b b =
+      MonoidalClosed.id (relativeFunctorSpace b.hom a.hom)
+
+lemma relativeFunctorPostHom_comp_uncurry {B : SSet.{u}} (a b c d : Over B) :
+    uncurry ((relativeFunctorPostHom a b c ⊗ₘ relativeFunctorPostHom a c d) ≫
+      MonoidalClosed.comp (relativeFunctorSpace b.hom a.hom)
+        (relativeFunctorSpace c.hom a.hom) (relativeFunctorSpace d.hom a.hom)) =
+    (α_ (relativeFunctorSpace b.hom a.hom) (relativeFunctorSpace c.hom b.hom)
+      (relativeFunctorSpace d.hom c.hom)).inv ≫
+      relativeFunctorComposition a b c ▷ _ ≫ relativeFunctorComposition a c d
+
+lemma relativeFunctorPostHom_comp {B : SSet.{u}} (a b c d : Over B) :
+    relativeFunctorComposition b c d ≫ relativeFunctorPostHom a b d =
+    (relativeFunctorPostHom a b c ⊗ₘ relativeFunctorPostHom a c d) ≫
+      MonoidalClosed.comp (relativeFunctorSpace b.hom a.hom)
+        (relativeFunctorSpace c.hom a.hom) (relativeFunctorSpace d.hom a.hom)
+
+def relativeFunctorEnrichedEvaluation {B : SSet.{u}} (a : Over B) :
+    EnrichedFunctor SSet.{u} (LeftFibrationObject B) KanObject.{u}
+
+lemma relativeFunctorComposition_overPre {B : SSet.{u}} {a b : Over B}
+    (f : a ⟶ b) (p q : Over B) :
+    relativeFunctorComposition b p q ≫ relativeFunctorOverPre q.hom f =
+      relativeFunctorOverPre p.hom f ▷ _ ≫ relativeFunctorComposition a p q
+
+lemma relativeFunctorPostHom_overPre {B : SSet.{u}} {a b : Over B}
+    (f : a ⟶ b) (p q : Over B) :
+    relativeFunctorPostHom b p q ≫
+      (ihom (relativeFunctorSpace p.hom b.hom)).map (relativeFunctorOverPre q.hom f) =
+    relativeFunctorPostHom a p q ≫
+      (pre (relativeFunctorOverPre p.hom f)).app (relativeFunctorSpace q.hom a.hom)
+
+def coherentNerveMap {C D : Type v} [Category.{u} C] [Category.{u} D]
+    [SimplicialCategory C] [SimplicialCategory D] (F : EnrichedFunctor SSet.{u} C D) :
+    SimplicialNerve C ⟶ SimplicialNerve D
+
+lemma coherentNerveMap_id (C : Type v) [Category.{u} C] [SimplicialCategory C] :
+    coherentNerveMap (EnrichedFunctor.id SSet.{u} C) = 𝟙 (SimplicialNerve C)
+
+lemma coherentNerveMap_comp {C D E : Type v} [Category.{u} C] [Category.{u} D] [Category.{u} E]
+    [SimplicialCategory C] [SimplicialCategory D] [SimplicialCategory E]
+    (F : EnrichedFunctor SSet.{u} C D) (G : EnrichedFunctor SSet.{u} D E) :
+    coherentNerveMap (F.comp SSet G) = coherentNerveMap F ≫ coherentNerveMap G
+
+lemma coherentNerveMap_vertex {C D : Type v} [Category.{u} C] [Category.{u} D]
+    [SimplicialCategory C] [SimplicialCategory D]
+    (F : EnrichedFunctor SSet.{u} C D) (c : C) :
+    (coherentNerveMap F).app (Opposite.op ⦋0⦌) (coherentNerveVertex c) =
+      coherentNerveVertex (F.obj c)
+
+noncomputable def leftFibrationCoherentEvaluation {B : SSet.{u}} (a : Over B) :
+    LeftFibrationInfinity B ⟶ SpaceInfinity.{u}
+
+lemma leftFibrationCoherentEvaluation_vertex {E B : SSet.{u}} (a : Over B)
+    (p : E ⟶ B) [LeftFibration p] :
+    (leftFibrationCoherentEvaluation a).app (Opposite.op ⦋0⦌) (leftFibrationInfinityVertex p) =
+      spaceInfinityVertex
+        ((relativeFunctorEnrichedEvaluation a).obj (leftFibrationObjectOf p))
+
+noncomputable def leftStrictTransportCoherentEvaluation {C : Type u} [Category.{u} C] (c : C) :
+    LeftFibrationInfinity (nerve C) ⟶ SpaceInfinity.{u}
+
+lemma leftStrictTransportCoherentEvaluation_vertex
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] (c : C) :
+    (leftStrictTransportCoherentEvaluation c).app (Opposite.op ⦋0⦌)
+      (leftFibrationInfinityVertex p) =
+      spaceInfinityVertex ((leftStrictTransportFunctor p).obj c)
+
 end SerrePositivity.InfinityCategories
 ```

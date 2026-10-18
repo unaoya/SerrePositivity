@@ -1,5 +1,10 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorEnrichedEvaluation
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorEnrichedNaturality
+public import SerrePositivity.InfinityCategories.F1.CoherentNervePostcomposition
+public import SerrePositivity.InfinityCategories.F1.LeftFibrationCoherentEvaluation
+
 public import SerrePositivity.InfinityCategories.F1.LeftFibrationMappingSpaces
 
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorComposition
