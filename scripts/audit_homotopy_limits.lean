@@ -1597,3 +1597,53 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms weightedConeSourceSections_kanComplex
 #check @weightedCoherentConeSectionsComparison
 #print axioms weightedCoherentConeSectionsComparison
+#check @simplicialSectionsBaseMap
+#print axioms simplicialSectionsBaseMap
+#check @simplicialSectionsBaseInv
+#print axioms simplicialSectionsBaseInv
+#check @simplicialSectionsBaseMap_evaluation
+#print axioms simplicialSectionsBaseMap_evaluation
+#check @simplicialSectionsBaseInv_evaluation
+#print axioms simplicialSectionsBaseInv_evaluation
+#check @simplicialSectionsBaseMap_inv
+#print axioms simplicialSectionsBaseMap_inv
+#check @simplicialSectionsBaseInv_map
+#print axioms simplicialSectionsBaseInv_map
+#check @simplicialSectionsBaseIso
+#print axioms simplicialSectionsBaseIso
+#check @simplicialSectionsBaseMap_naturality
+#print axioms simplicialSectionsBaseMap_naturality
+#check @simplicialSectionsBaseMap_evaluation_assoc
+#print axioms simplicialSectionsBaseMap_evaluation_assoc
+#check @leftFibration_postIso
+#print axioms leftFibration_postIso
+#check @vertexFiberBaseIso
+#print axioms vertexFiberBaseIso
+#check @vertexFiberBaseIso_hom_ι
+#print axioms vertexFiberBaseIso_hom_ι
+#check @vertexFiberBaseIso_naturality
+#print axioms vertexFiberBaseIso_naturality
+#check @vertexFiberMap_homotopyEquivalence_postIso
+#print axioms vertexFiberMap_homotopyEquivalence_postIso
+#check @simplicialSectionsMap_homotopyEquivalence_iff_postIso
+#print axioms simplicialSectionsMap_homotopyEquivalence_iff_postIso
+#check @vertexFiberMap_isQCatEquivalence_postIso_all
+#print axioms vertexFiberMap_isQCatEquivalence_postIso_all
+#check @simplicialSectionsMap_discreteBaseIso_homotopyEquivalence
+#print axioms simplicialSectionsMap_discreteBaseIso_homotopyEquivalence
+#check @simplicialSectionsMap_cospanBaseIso_homotopyEquivalence
+#print axioms simplicialSectionsMap_cospanBaseIso_homotopyEquivalence
+#check @simplicialSectionsMap_towerBaseIso_homotopyEquivalence
+#print axioms simplicialSectionsMap_towerBaseIso_homotopyEquivalence
+#check @nerveIsoOfStrictInverse
+#print axioms nerveIsoOfStrictInverse
+#check @liftedDiscreteNerveIso
+#print axioms liftedDiscreteNerveIso
+#check @liftedAsSmallNerveIso
+#print axioms liftedAsSmallNerveIso
+#check @weightedCoherentConeSectionsComparison_discrete_homotopyEquivalence
+#print axioms weightedCoherentConeSectionsComparison_discrete_homotopyEquivalence
+#check @weightedCoherentConeSectionsComparison_cospan_homotopyEquivalence
+#print axioms weightedCoherentConeSectionsComparison_cospan_homotopyEquivalence
+#check @weightedCoherentConeSectionsComparison_tower_homotopyEquivalence
+#print axioms weightedCoherentConeSectionsComparison_tower_homotopyEquivalence

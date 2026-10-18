@@ -2060,8 +2060,8 @@ strict な図式・錐の coherent nerve での表示、fibration の塔の重�
 離散図式の比較、𝒮 の空積、Kan 値図式の end の一般の Kan 性も実装済み。
 Kan 値図式の end の同値不変性も証明済み。反転した表現可能な weighted nerve から
 coherent な錐の全空間への実際の底上の射と、全ての頂点上での実際の fiber 射の同値性も証明済み。
-切断空間と元の q_x の比較、
-𝒮 の残りの極限と Sp への適用は未完了。
+三形状の反転豊穣係数の切断と coherent な錐の切断模型の実際の比較射の同値性も証明済み。
+元の豊穣 Hom の end・q_x との比較、𝒮 の残りの極限と Sp への適用は未完了。
 当面は通常の小圏で添字付けた strict な図式の極限側を扱い、余極限と一般の図式の比較は後続に保持する。
 
 ### γ3a：原典と今回の限定形
@@ -2205,7 +2205,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開796宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開821宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2833,7 +2833,7 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開796宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開821宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
 ### 重み付き end と weighted nerve の切断の族（全単射を実装）
@@ -4188,6 +4188,61 @@ C の対象の宇宙 v と Hom・I の宇宙 u は異なってよい。
 
 切断比較の同値性、底の nerve の同型と反転・ULift を通じた重み付き end への移送、
 元の q_x との一致、および 𝒮・Sp の残りの適用は未完了。
+
+### 底の厳密な同型による移送と三形状の切断比較の同値性（実装済み）
+
+`SectionsBaseIso` は任意の `p : E ⟶ K` と `e : K ≅ L` に対し、
+
+```lean
+simplicialSectionsBaseIso p e : simplicialSections p ≅ simplicialSections (p ≫ e.hom)
+```
+
+を構成した。順方向は普遍的な切断の族を e.inv で前合成し、逆方向は e.hom で前合成する。
+評価の一意性と二因子の交換則で両方の往復則を示す。fibration 性・Kan 性は不要。
+`simplicialSectionsBaseMap_naturality`は全体の底上の射が誘導する切断写像との厳密な自然性である。
+
+`FibersBaseIso` は left fibration の射影の同型による後合成での保存、
+`vertexFiberBaseIso p e b` と包含の式、実際の fiber 射との自然性を証明する。
+全頂点上の fiber 射の同値性を新しい底の全頂点へ移す式と、
+切断写像の同値性が底の同型の前後で同値となる判定も公開した。
+`SectionsShapeBaseIso` はこれを既存の離散・cospan・塔の切断比較へ適用する。
+
+`LiftedShapeNerveIso` は厳密な逆関手から nerve の厳密な同型を作り、
+
+```lean
+liftedDiscreteNerveIso (J : Type u) :
+  (SSet.uliftFunctor.{v, u}).obj (nerve (Discrete J)) ≅ nerve (Discrete (ULift.{v, u} J))
+liftedAsSmallNerveIso (J : Type) [SmallCategory J] :
+  (SSet.uliftFunctor.{v, u}).obj (nerve (AsSmall.{u} J)) ≅ nerve (AsSmall.{max u v} J)
+```
+
+を構成する。後者は WalkingCospan と ℕᵒᵖ の双方へ適用する。
+単なる圏同値ではなく厳密な逆関手を使うため、底の変更に上の同型の結果をそのまま使える。
+
+`WeightedConeSectionEquivalence` は `C : Type v`、`[Category.{u} C]`、
+`[SimplicialCategory C]`、`[∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]` の下で
+
+```lean
+weightedCoherentConeSectionsComparison_discrete_homotopyEquivalence
+    {J : Type u} (F : Discrete J ⥤ C) (x : C) :
+  IsSimplicialHomotopyEquivalence (weightedCoherentConeSectionsComparison F x)
+weightedCoherentConeSectionsComparison_cospan_homotopyEquivalence
+    (F : AsSmall.{u} WalkingCospan ⥤ C) (x : C) :
+  IsSimplicialHomotopyEquivalence (weightedCoherentConeSectionsComparison F x)
+weightedCoherentConeSectionsComparison_tower_homotopyEquivalence
+    (F : AsSmall.{u} ℕᵒᵖ ⥤ C) (x : C) :
+  IsSimplicialHomotopyEquivalence (weightedCoherentConeSectionsComparison F x)
+```
+
+を証明した。比較射は構成済みの全体の射による後合成のままで、
+全頂点の実際の fiber 射の同値性を底の標準同型を通じて三形状の判定に渡す。
+C の対象と Hom の宇宙は異なってよい。図式の射に fibration 性を仮定せず、
+離散図式には有限性も要求しない。原典は HTT 4.2.4.1、Kerodon §7.5.4。
+
+始域は反転した豊穣係数の weighted nerve の射影の ULift の切断空間である。
+その反転と ULift を元の `sHom(x,F−)` の Bousfield–Kan end へ移す比較、
+元の q_x と cone の写像空間の射との一致、𝒮・Sp の残りの適用は未完了。
+したがってこの三形状の切断比較の同値性だけで γ3b・γ3c の完成とはしない。
 
 ### 𝒮 の空積（実装済み）
 

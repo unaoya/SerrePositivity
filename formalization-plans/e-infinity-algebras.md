@@ -216,14 +216,14 @@ HTT 4.2.4.1 の双対と Kerodon Corollary 7.5.4.6 を基準とする。
 | 工程 | 現在地 |
 | --- | --- |
 | γ3a | 限定した主張、原典、仮定、pinched Hom による検出、適用条件と宇宙を記録済み |
-| γ3b | 錐の頂点 fiber と切断空間の同値、切断による表現可能な極限判定、三形状の transport の end の極限判定まで実装。反転した係数の weighted nerve から錐の全空間への実際の底上の射を構成。全頂点上の実際の fiber 射の同値性を証明。切断空間と元の q_x との主比較は未完了 |
+| γ3b | 錐の頂点 fiber と切断空間の同値、切断による表現可能な極限判定、三形状の transport の end の極限判定まで実装。反転した係数の weighted nerve から錐の全空間への実際の底上の射を構成。全頂点上の実際の fiber 射の同値性を証明。三形状の実際の切断比較射の同値性まで証明。反転・ULift と元の q_x との主比較は未完了 |
 | γ3c | 𝒮 の空積は IsLimitCone として実装。SSet の積・fibration 引き戻し・塔の Kan 性を実装。𝒮 の残りと Sp は未完了 |
 
 Sp では raw sHom の局所 Kan 性と極限の cofibrancy を省略せず、必要なら cofibrant-fibrant
 置換後の錐を公開する。実装は `InfinityCategories/HomotopyLimits/` と専用監査に置く。
 
 γ3b の部分 API は `HomotopyLimits` 集約と `scripts/audit_homotopy_limits.lean` に置く。
-公開796宣言。`representableHomotopyLimitComparison c x` は実際の sHom から end への射、
+公開821宣言。`representableHomotopyLimitComparison c x` は実際の sHom から end への射、
 `representableHomotopyLimitComparison_factorization c x h` は θκ への厳密な分解、
 `representableHomotopyLimitComparison_naturality c f` は始対象に関する厳密な自然性。
 重み付き end の普遍性・通常の随伴と極限保存も公開。正確な型と数学は README に置く。
@@ -262,14 +262,14 @@ right anodyne 性から証明した。その end の制限は trivial Kan fibrat
 塔について実際の κ の単体的ホモトピー同値性を証明する。
 `representableHomotopyLimitComparison_tower_homotopyEquivalence c x hc` は同じ Hom 図式の
 条件と `IsLimit (simplicialHomCone c x)` の下で実際の q_x の同値性を証明する。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 一般の coherent な錐の写像空間との比較は未完了なので、γ3b の完成とは数えない。
 
 両脚が fibration の cospan では、中央の Kan 性から成分ごとの anodyne な自然変換を延長する。
 その具体的な延長により、重み付き end の Kan 性と anodyne な制限の trivial Kan fibration 性、
 `bousfieldKanLimitComparison_cospan_homotopyEquivalence` および
 `representableHomotopyLimitComparison_cospan_homotopyEquivalence` を証明する。
-後者には Hom 図式の極限性も必要。正確な型・全前提は README と公開796宣言の監査が正本。
+後者には Hom 図式の極限性も必要。正確な型・全前提は README と公開821宣言の監査が正本。
 一般の延長性を入力とする `WeightedExtensions` と `BousfieldKanComparison` を使うが、
 cospan の結論ではその入力を実際の三成分の持ち上げから構成している。
 
@@ -287,7 +287,7 @@ coherent な錐の写像空間の比較と 𝒮・Sp の ∞ 引き戻しへの�
 前提は中央・右端の Kan 性と左脚の Fibration 性で、一般の重み W では右脚の Mono 性も要求する。
 `cospanRightCorner_tensor_anodyne` と持ち上げ版は、中央の相対境界を pushout-product と同定する。
 `bousfieldKanWeight_map_mono` は添字の単射から重みの遷移の単射性を証明するので、
-Bousfield–Kan 重みに追加の未証明条件はない。正確な型は README と公開796宣言の監査に記録。
+Bousfield–Kan 重みに追加の未証明条件はない。正確な型は README と公開821宣言の監査に記録。
 元の重みの相対境界と一脚での κ の同値性は末尾の実装で証明した。
 coherent な錐の写像空間との比較と 𝒮・Sp への適用は未完了。
 
@@ -298,7 +298,7 @@ pushout-product の相対境界が anodyne であることを証明する。
 これにより `weightedSectionsPre_cospan_leftFibration_trivialKanFibration` は中央と右端が Kan、
 左脚が Fibration の cospan に対して、成分と元の中央の相対境界が anodyne な重みの制限を扱う。
 `weightedSectionsPre_cospan_leftFibration_homotopyEquivalence` では両重みの右脚の Mono 性も要求する。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 元の重みの相対境界と一脚での κ の同値性は末尾の実装で証明した。
 coherent な錐の写像空間との比較と 𝒮・Sp への適用は未完了。
 
@@ -310,7 +310,7 @@ coherent な錐の写像空間との比較と 𝒮・Sp への適用は未完了
 `bousfieldKanConeWeightComparison_cospan_leftFibration_homotopyEquivalence H c hc` は
 同じ前提と `IsLimit c` の下で strict 極限から補助 end への比較射の同値性を証明する。
 頂点の Kan 性は導出し、追加の境界条件や右脚の fibration 性は要求しない。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 元の重み W → V の相対境界とその制限、一脚の場合の κ 全体は末尾の実装で証明した。
 coherent な錐の写像空間との比較と 𝒮・Sp の適用は未完了。
 
@@ -320,7 +320,7 @@ coherent な錐の写像空間との比較と 𝒮・Sp の適用は未完了。
 `joinUnion_pointBoundary_anodyne` は anodyne な部分複体の包含から作る相対的な点の錐を扱い、
 `bousfieldKanWeight_cospan_inr_relativeCone_anodyne` は実際の遷移の像に適用した定理。
 外側の最後のホーンも含む相対 coslice の Kan fibration 性から証明する。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 この相対錐と標準境界の同定、一脚の場合の κ 全体は末尾の実装で証明した。
 coherent な錐の写像空間との比較と 𝒮・Sp の適用は未完了。
 
@@ -330,7 +330,7 @@ WithInitial の nerve と点の join の同定のため、射列の切断と元�
 `initialNerveOldFunctor` は全対象が新しい始対象でない部分を元の圏へ戻し、恒等・合成を保つ。
 `initialNerveTail` は切断以後の射列、`initialNerveJoinSimplex` は次数ごとの join 型のデータ。
 後半が空のときは補った空単体を使い、元の圏の非空性は要求しない。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 全データの単体的自然性と逆関係は下記の同型で証明した。
 相対錐と標準境界の同定と一脚での κ は末尾の実装で証明した。
 coherent な錐の写像空間との比較と 𝒮・Sp の適用も未完了。
@@ -341,7 +341,7 @@ coherent な錐の写像空間との比較と 𝒮・Sp の適用も未完了。
 `initialJoinChain` は切断より前を新しい始対象、後を元の射列としてつなぐ。
 `initialJoinChain_star_iff` と `initialNerveCut_initialJoinChain` により切断が元に戻る。
 C : Type u、[SmallCategory C] のみを仮定し、追加の非空性・忠実性は要求しない。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 単体的自然性と全データの両向きの逆関係、単体集合の同型は下記の三ファイルで証明した。
 相対錐と標準境界の同定と一脚での κ は末尾の実装で証明した。
 coherent な錐の写像空間との比較、
@@ -353,7 +353,7 @@ join (Δ[0] : SSet.{u}) (nerve C) ≅ nerve (WithInitial C)` を構成した。
 任意の単体作用素と可換な射列への復元を作り、切断と後半の全対象・全射を比較して単射性を証明する。
 `initialJoinChain_initialNerveJoinSimplex` と `initialNerveJoinSimplex_initialJoinChain` は
 全データの両向きの厳密な逆関係。逆射の自然性も導出した。
-元の圏の非空性や Kan 性は要求しない。正確な型・全前提は README と公開796宣言の監査に記録。
+元の圏の非空性や Kan 性は要求しない。正確な型・全前提は README と公開821宣言の監査に記録。
 両端の包含と関手との可換性も末尾の実装で証明した。既存の始対象の錐の射との一致は未完了。
 相対錐と標準境界の同定と一脚での κ は末尾の実装で証明した。
 coherent な錐の写像空間との比較、
@@ -373,7 +373,7 @@ H : AsSmall.{u} WalkingCospan ⥤ SSet.{u} に対し、中央・右端の Kan �
 任意の極限錐 c と IsLimit c に対する版も公開し、極限頂点の Kan 性は導出する。
 `representableHomotopyLimitComparison_cospan_leftFibration_homotopyEquivalence c x hc` は
 Hom 図式の同じ条件と hc : IsLimit (simplicialHomCone c x) の下で、実際の q_x の同値性を証明する。
-右脚の Fibration 性や未証明の境界条件は追加しない。正確な型・全前提は README と公開796宣言の監査が正本。
+右脚の Fibration 性や未証明の境界条件は追加しない。正確な型・全前提は README と公開821宣言の監査が正本。
 coherent な錐の pinched Hom と導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了。
 
 γ3b の主比較へ向け、重み付き end と weighted nerve の切断空間の対応の順方向を構成した。
@@ -385,7 +385,7 @@ coherent な錐の pinched Hom と導来ファイバーの主比較、𝒮・Sp 
 `nerve I ⊗ A ⟶ weightedNerve H` で、射影との合成は厳密に第一射影に一致する。
 `bousfieldKanWeightedNerveEvaluation H` は同じ構成に end の恒等射の uncurry を渡した普遍的な族。
 I : Type u、[SmallCategory I] 以外に、係数やパラメータの Kan 性などは要求しない。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 切断から自然変換への逆対応と両逆関係は以下で証明した。切断空間との単体集合の同型も以下で証明した。
 coherent な錐の pinched Hom と導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了。
 
@@ -398,7 +398,7 @@ coherent な錐の pinched Hom と導来ファイバーの主比較、𝒮・Sp 
 `bousfieldKanSectionHomEquiv H A` は end の普遍性と合成した
 `(A ⟶ bousfieldKanHolim H) ≃ {s : nerve I ⊗ A ⟶ weightedNerve H // s ≫ projection = fst}`。
 I : Type u、[SmallCategory I] のみで、係数とパラメータの Kan 性は不要。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 全単射のパラメータ自然性と切断模型との単体集合の同型は以下で証明した。
 coherent な錐の pinched Hom と導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了。
 
@@ -413,7 +413,7 @@ coherent な錐の pinched Hom と導来ファイバーの主比較、𝒮・Sp 
 F1 の weighted nerve の射影の left fibration 性と相対関手空間の Kan 性から、
 `bousfieldKanHolim_kanComplex H [∀ i, KanComplex (H.obj i)]` を証明した。
 添字圏は任意の小さい圏で、遷移の fibration 性も有限性も要求しない。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 比較先の一般の Kan 性までの結果であり、任意の Kan 図式の strict 極限を homotopy 極限とは主張しない。
 coherent な錐の pinched Hom と導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了。
 
@@ -429,7 +429,7 @@ HasLiftingProperty (K ◁ i) f から切断空間での i の持ち上げ性を�
 ホーンと境界に適用し、f が Fibration または TrivialKanFibration なら
 切断空間の誘導写像もそれぞれ同じ性質を持つことを証明した。
 前提は全空間間の写像 f の性質であり、底への射影の left fibration 性だけでは代用しない。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 coherent な錐の切断模型との比較射とその同値性、pinched Hom と導来ファイバーの主比較、
 𝒮・Sp の残りの ∞ 極限への適用は未完了。
 
@@ -448,7 +448,7 @@ X が quasicategory なら模型は Kan で、K の quasicategory 性は不要�
 `coherentConeProjectionMappingEquivalence p x k` は各 fiber と右 pinched Hom の同値。
 `strictCoherentConeFiberHomEquivalence F x i` は局所 Kan な単体的圏の実際の strict 図式の各 fiber と
 宇宙を持ち上げた sHom x (F.obj i) の QCatEquivalence を与える。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 fiber の比較を図式全体へ束ねること、Bousfield–Kan end との切断空間の同値性、
 錐の pinched Hom と q_x の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了。
 
@@ -466,7 +466,7 @@ strict transport の場合は既存の universal scaffold で元の全空間へ�
 cospan と塔上の left fibration p について実際の単体的ホモトピー同値である。
 strict transport の構造射の fibration 性は F1 の薄い圏の制限の定理から導出し、追加仮定を残さない。
 離散の場合の同じ比較は p の充填性や添字の有限性なしで厳密な同型。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 切断空間と strict transport の大域的な比較まで進んだが、元の sHom 図式との自然な比較は未完了。
 錐の pinched Hom と q_x の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限への適用も継続中。
 
@@ -480,7 +480,7 @@ strict transport の構造射の fibration 性は F1 の薄い圏の制限の定
 `weightedTransportUnitComponent_homotopyEquivalence H i` を証明した。
 前提は `[∀ i, KanComplex (H.obj i)]` のみであり、図式の構造射の fibration 性は不要。
 成分の逆の自然性は要求しない。end 上の同値性は以下で証明した。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 coherent cone の射影の strict transport と元の sHom 図式との自然な比較、
 錐の pinched Hom と q_x の導来ファイバーの主比較、𝒮・Sp の残りの適用は継続中。
 
@@ -500,10 +500,10 @@ Kan 値図式の成分ごとの同値なら、二射影がともに成分ごと�
 添字の有限性、遷移の fibration 性、成分の逆の自然性は要求しない。
 `weightedTransportUnit_end_homotopyEquivalence H` は元の Kan 値図式とその weighted nerve の
 strict transport の比較が end 全体でもホモトピー同値であることを示す。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 coherent cone の射影の transport と元の sHom 図式との自然な比較、
 錐の pinched Hom と q_x の導来ファイバーの主比較、𝒮・Sp の残りの適用は継続中。
-対象集約ビルド2265 jobs、公開796宣言の公理監査は標準三公理のみ。
+対象集約ビルド2265 jobs、公開821宣言の公理監査は標準三公理のみ。
 外部リポジトリ依存457件は追跡済みかつ変更なしを確認。
 
 `RelativeFunctorPostcomposition` は底を保つ全空間の実際の射 f から相対関手の後合成を作り、
@@ -521,7 +521,7 @@ fiber ごとの同値が実際の切断の誘導射のホモトピー同値を�
 `simplicialSectionsMap_discrete_homotopyEquivalence`。
 全空間の射 f 自身の fibration 性や自明 Kan fibration 性は要求せず、離散添字の有限性も不要。
 実際の底を保つ f と全 fiber の誘導射の同値性を要求し、点ごとに選んだ同値の族だけでは代用しない。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 coherent cone の射影と元の sHom 図式の模型の間の実際の比較、pinched Hom と q_x の導来ファイバーの
 主比較、𝒮・Sp の残りの適用は継続中。
 
@@ -542,7 +542,7 @@ M := `rightFibrationMappingTotal r c x` を構成し、
 `conePinchedHom_mappingEvaluationFiberIso d c` を公開した。
 これは実際の `pinchedHom (X := sliceOver p) d c` と始点評価の strict fiber の同型であり、
 主比較の slice 側を回収する。strict な通常の錐に制限しない。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 始点評価の strict fiber と導来ファイバーの比較は以下で証明した。
 錐の頂点 fiber と end の切断模型の比較、既存の sHom からの q_x との比較、
 𝒮・Sp の残りの ∞ 極限への適用は未完了。
@@ -564,7 +564,7 @@ Kan 複体間の Kan fibration p の `relativeEquivalencePathMapAt p j` が
 公開名は `isLimitCone_iff_rightFibrationHomComparison_homotopyEquivalence`。
 添字 K や図式 p に strict な通常の図式という条件はなく、全ての x を量化する。
 比較射には span の自明 Kan fibration の切断の選択が含まれ、その自然性は主張しない。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 錐の頂点 fiber と end の切断模型の比較、既存の豊穣 Hom からの q_x との接続、
 𝒮・Sp の残りの ∞ 極限への適用は未完了であり、γ3b・γ3c の完成とは数えない。
 
@@ -578,7 +578,7 @@ fixedApexConeFamily p x` を構成する。
 `sectionConeFamilyMap_apex p x` で頂点を全次数で固定することを示した。
 その結果 `sectionFixedApexConeFamilyMap p x : coherentConeSectionSpace p x ⟶
 fixedApexConeFamily p x` を得た。全て任意の K・X・p・x で、充填性の仮定は不要。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 二つの射の同値性、豊穣 q_x との接続、𝒮・Sp の残りの適用は未完了。
 大域的な slice の比較の同値性を strict fiber へ無条件に移してはいない。
 
@@ -594,7 +594,7 @@ F1 の両端固定の fat join 比較の同値性を使い、頂点と図式を�
 `joinEndpointInclusion_vertex_surjective` と固定 fiber の Kan 判定により、
 同じ前提で `fixedEndpointConeSpace_kanComplex`・`fixedApexConeFamily_kanComplex` も得た。
 K の quasicategory 性・非空性や p の fibration 性を追加しない。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 slice と切断空間から固定頂点の模型への二つの射の同値性、豊穣 q_x との接続、
 𝒮・Sp の残りの適用は未完了であり、γ3b・γ3c の完成とは数えない。
 
@@ -612,7 +612,7 @@ coneVertexFiberFamilyMap p x ≫ fixedApexFatConeComparison p x` を定義した
 fixedSliceFatConeComparison p x ≫ r = 𝟙 _` を証明する。
 F1 の相対 join 延長で既存の部分族を固定し、頂点と図式を保って slice へ戻した。
 K の quasicategory 性・非空性や p の fibration 性は不要。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 厳密な左逆だけを圏同値性と同一視しない。逆合成のホモトピー、切断空間側の同値、
 豊穣 q_x との接続、𝒮・Sp の残りの適用は未完了。
 
@@ -630,7 +630,7 @@ pinchedHom x c.vertex ⟶ fixedApexConeFamily p x` を定義し、
 `isLimitCone_iff_fixedApexConeHomComparison_homotopyEquivalence c :
 IsLimitCone c ↔ ∀ x, IsSimplicialHomotopyEquivalence (fixedApexConeHomComparison c x)`
 を証明した。比較には既存の span の切断の選択が含まれ、その自然性は主張しない。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 切断空間側の比較の同値性、豊穣 q_x との接続、𝒮・Sp の残りの適用は未完了。
 
 `SectionConeUniversal` は任意パラメータ A での切断空間の join 表示
@@ -648,7 +648,7 @@ sectionFixedApexConeFamilyMap p x ≫ fixedApexFatConeComparison p x` を定義�
 `∃ r : fixedEndpointFatConeSpace p x ⟶ coherentConeSectionSpace p x,
 sectionFatConeComparison p x ≫ r = 𝟙 _` を証明した。
 F1 の右因子の相対 join 延長を使い、部分族・頂点・図式を固定して逆射を作った。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 逆合成のホモトピーは未完了で、左逆だけを圏同値性とは数えない。
 切断側の比較の同値性、豊穣 q_x との接続、𝒮・Sp の残りの適用を継続する。
 
@@ -670,7 +670,7 @@ cospan・塔・離散図式では追加の比較仮定なしに
 いずれも `IsLimitCone c ↔ ∀ x, IsSimplicialHomotopyEquivalence
 (coneTransportHomComparison c x)` であり、p の fibration 性や添字の非空性は要求しない。
 比較には同値の逆と span の切断の選択を含み、その自然性は主張しない。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 end の係数は表現可能な left fibration の transport であり、元の豊穣 Hom の図式との
 自然な比較・実際の豊穣 q_x との整合性、𝒮・Sp の残りの適用は未完了。
 
@@ -685,7 +685,7 @@ SimplexCategory.rev による添字の反転の可換性を証明した。
 Kan 性の仮定はなく、面・退化への自然性と頂点 x の像が op x である厳密な等式を含む。
 `CoherentNervePost` は対象の宇宙が同じ C・D の豊穣関手 F について nerve の後合成を定義し、
 `coherentNerveOppositeMap_post F` で反対の標準射との厳密な自然性を証明した。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 この射の逆と往復則、左 coslice の係数図式への接続は未完了。
 元の豊穣 Hom の図式・q_x との主比較と、𝒮・Sp の残りの適用を継続する。
 
@@ -699,7 +699,7 @@ Hom では端点の等式による移送を保持し、部分集合の二回の�
 任意の単体的圏 C で成立し、Kan 性・quasicategory 性は要求しない。
 逆射の面・退化との可換性、頂点 op x の像の厳密な等式、
 `coherentNerveOppositeInverse_post F` による豊穣関手への自然性も証明した。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 左 coslice の係数図式への接続、元の豊穣 Hom の図式・q_x との主比較、
 𝒮・Sp の残りの適用は引き続き未完了。
 
@@ -710,7 +710,7 @@ Hom では端点の等式による移送を保持し、部分集合の二回の�
 Kan 複体間のホモトピー同値の反転による保存を実装した。
 公開宣言は `oppositeTensorIso`、`oppositeSimplicialHomotopy`、
 `oppositeKanHomotopyEquivalence`、`uliftOppositeIso`。
-正確な型と前提は README の対応節と公開796宣言の監査に記録。
+正確な型と前提は README の対応節と公開821宣言の監査に記録。
 係数図式の自然比較、元の q_x、𝒮・Sp の残りの適用は未完了。
 
 
@@ -722,7 +722,7 @@ Kan 複体間のホモトピー同値の反転による保存を実装した。
 `coherentCosliceFiberComparison_homotopyEquivalence x y` は局所 Kan 性のみで
 実際の比較射の単体的ホモトピー同値性を証明する。
 途中の右 Hom と左 Hom の射とその同値性、端点の厳密な同型も公開した。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 係数図式全体への自然比較、元の q_x、𝒮・Sp の残りの適用は未完了。
 
 
@@ -732,7 +732,7 @@ Kan 複体間のホモトピー同値の反転による保存を実装した。
 `coherentHomComparison_post F x y` として単体集合の射の厳密な可換図式を証明した。
 前提は二つの単体的圏と豊穣関手のみ。Kan 性を要求しない。
 各 Hom の端点を標準対象へ移送し、豊穣単位則と最大元評価の自然性で証明する。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 添字圏の合成作用・高次整合性と左 coslice 側への接続、元の q_x、
 𝒮・Sp の残りの適用は未完了。
 
@@ -744,7 +744,7 @@ Kan 複体間のホモトピー同値の反転による保存を実装した。
 既存 Core の `prependOrderHom` を再利用し、面・退化を含めて扱う。
 `pathFirstMinimumMap j` は反転した初区間の標準単体への実際の射で、
 `pathFirstMinimumMap_reindex α j` が重みの初区間の制限との厳密な自然性を与える。
-Kan 性を要求しない。正確な型・全前提は README と公開796宣言の監査に記録。
+Kan 性を要求しない。正確な型・全前提は README と公開821宣言の監査に記録。
 実際の weighted nerve から左 coslice への射の組立てと元の q_x、
 𝒮・Sp の残りの適用は未完了。
 
@@ -756,7 +756,7 @@ path の合成を係数図式の作用へ移す厳密な式と全ての面・退
 `WeightedRepresentableCoefficients` で表現可能な係数へ適用し、
 `weightedRepresentableCoefficient_comp` により図式の作用を通常の射の定値 simplex との
 豊穣合成と同定した。Kan 性や極限性は要求しない。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 cone の全頂点と Hom の豊穣関手への組立て、実際の左 coslice 射、元の q_x、
 𝒮・Sp の残りの適用は未完了。
 
@@ -769,7 +769,7 @@ cone の全頂点と Hom の豊穣関手への組立て、実際の左 coslice �
 `weightedCoherentConeComparison F x` として元の図式の上の実際の射を構成した。
 `weightedCoherentConeComparison_over` が底への射影との厳密な可換性を与える。
 前提は strict な図式と単体的圏だけ。Kan 性・Hom の逆の選択を要求しない。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 構成した射の fiber の同値性、反転した係数の切断空間の移送と元の q_x、
 𝒮・Sp の残りの適用は未完了。
 
@@ -781,7 +781,7 @@ cone の全頂点と Hom の豊穣関手への組立て、実際の左 coslice �
 `WeightedConstantFiber` に構成済みの射の一定の底での制限と、終点 F(i) の fiber への
 実際の持ち上げを構成し、その元の cone simplex と非定値 Hom の作用を計算した。
 `coherentLeftHomComparison_simplex` に既存の左 Hom 比較の simplex の反転による表示を証明。
-Kan 性を要求しない。正確な型・全前提は README と公開796宣言の監査に記録。
+Kan 性を要求しない。正確な型・全前提は README と公開821宣言の監査に記録。
 二つの coherent simplex 全体の一致と実際の fiber 射の同値性、元の q_x と切断空間、
 𝒮・Sp の残りの適用は未完了。
 
@@ -793,7 +793,7 @@ coherent simplex 全体を反対圏の右 Hom の標準 simplex の反転に同�
 `weightedConstantCosliceFiberMap_eq` は構成済みの実際の射を標準左 Hom 比較に厳密に同定する。
 `weightedConstantCosliceFiberMap_homotopyEquivalence` は局所 Kan 性のみでその射の同値性を証明。
 比較の同値性の追加仮定や逆射の選び直しはない。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 ULift と引き戻しの fiber の同型を通じた全体比較の各 fiber への移送、切断空間と元の q_x、
 𝒮・Sp の残りの適用は未完了。
 
@@ -806,7 +806,7 @@ ULift と引き戻しの fiber の同型を通じた全体比較の各 fiber へ
 `weightedCoherentConeFiberMap_factorization` を証明した。
 `weightedCoherentConeFiberMap_homotopyEquivalence` は局所 Kan 性のみで全ての底の頂点の
 実際の fiber 射が単体的ホモトピー同値であることを証明する。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 切断空間の比較と反転・ULift・底の同型に沿う移送、元の q_x、𝒮・Sp の残りの適用は未完了。
 
 
@@ -817,6 +817,20 @@ ULift と引き戻しの fiber の同型を通じた全体比較の各 fiber へ
 `WeightedConeSections` で持ち上げた反転豊穣係数の射影の left fibration 性と切断空間の Kan 性を証明。
 `weightedCoherentConeSectionsComparison` は構成済みの全体の比較射による後合成を使う実際の射。
 射の定義には Kan 性・極限性を要求しない。
-正確な型・全前提は README と公開796宣言の監査に記録。
+正確な型・全前提は README と公開821宣言の監査に記録。
 切断比較の同値性、底の同型と反転・ULift を通じた end への移送、元の q_x、
+𝒮・Sp の残りの適用は未完了。
+
+
+### γ3b：三形状の実際の切断比較の同値性
+
+`SectionsBaseIso` と `FibersBaseIso` に底の厳密な同型による切断空間・fiber の同型と
+実際の比較写像への自然性、同値性の移送を証明した。
+`SectionsShapeBaseIso` と `LiftedShapeNerveIso` で離散・cospan・塔の持ち上げた nerve を
+標準形へ同型で移し、構成済みの全 fiber の同値性を三形状の切断判定へ渡した。
+`WeightedConeSectionEquivalence` の三つの公開定理は実際の
+`weightedCoherentConeSectionsComparison` の単体的ホモトピー同値性を局所 Kan 性のみで証明する。
+図式の射の fibration 性や離散対象の有限性は要求しない。
+正確な型・全前提は README と公開821宣言の監査に記録。
+始域の反転・ULift を元の豊穣 Hom の end へ移す比較、元の q_x と cone の射の一致、
 𝒮・Sp の残りの適用は未完了。
