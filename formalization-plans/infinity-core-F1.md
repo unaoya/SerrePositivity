@@ -6835,5 +6835,25 @@ lemma isPullback_joinInl_naturality {A B K L : SSet.{u}} (f : A ⟶ B) (g : K �
 lemma isPullback_joinInr_naturality {A B K L : SSet.{u}} (f : A ⟶ B) (g : K ⟶ L) :
     IsPullback (joinInr A K) g (joinMap f g) (joinInr B L)
 
+lemma isPullback_prismEndpoint_fst (i : Fin 2) (S : SSet.{u}) :
+    IsPullback (prismEndpoint i S) (stdSimplex.isTerminalObj₀.from S) (fst Δ[1] S)
+      (SSet.const (stdSimplex.obj₀Equiv.symm i) : (Δ[0] : SSet.{u}) ⟶ Δ[1])
+
+lemma relativeJoinInl_prism_isPullback {X Y S : SSet.{u}} (f : X ⟶ S) (g : Y ⟶ S) :
+    IsPullback (relativeJoinInl f g) f
+      (pullback.snd (joinMap f g) (joinDiagonal S)) (prismEndpoint 0 S)
+
+lemma relativeJoinInr_prism_isPullback {X Y S : SSet.{u}} (f : X ⟶ S) (g : Y ⟶ S) :
+    IsPullback (relativeJoinInr f g) g
+      (pullback.snd (joinMap f g) (joinDiagonal S)) (prismEndpoint 1 S)
+
+lemma relativeJoinInl_endpoint_isPullback {X Y S : SSet.{u}} (f : X ⟶ S) (g : Y ⟶ S) :
+    IsPullback (relativeJoinInl f g) (stdSimplex.isTerminalObj₀.from X)
+      (relativeJoinProjection f g) (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
+
+lemma relativeJoinInr_endpoint_isPullback {X Y S : SSet.{u}} (f : X ⟶ S) (g : Y ⟶ S) :
+    IsPullback (relativeJoinInr f g) (stdSimplex.isTerminalObj₀.from Y)
+      (relativeJoinProjection f g) (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
+
 end SerrePositivity.InfinityCategories
 ```

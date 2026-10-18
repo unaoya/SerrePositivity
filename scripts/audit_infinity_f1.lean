@@ -1505,3 +1505,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.relativeJoin_extension_of_prism_over_interval
 #check @SerrePositivity.InfinityCategories.isPullback_joinInl_naturality
 #check @SerrePositivity.InfinityCategories.isPullback_joinInr_naturality
+#check @SerrePositivity.InfinityCategories.isPullback_prismEndpoint_fst
+#check @SerrePositivity.InfinityCategories.relativeJoinInl_prism_isPullback
+#check @SerrePositivity.InfinityCategories.relativeJoinInr_prism_isPullback
+#check @SerrePositivity.InfinityCategories.relativeJoinInl_endpoint_isPullback
+#check @SerrePositivity.InfinityCategories.relativeJoinInr_endpoint_isPullback
