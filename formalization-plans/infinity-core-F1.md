@@ -7641,5 +7641,11 @@ lemma IsLeftScaffold.finiteComparison_step (n : ℕ) {E : SSet.{u}}
     (ht : IsPrecompositionEquivalence (leftScaffoldBaseChange p F l h (scaffoldFiniteTail n))) :
     IsPrecompositionEquivalence l
 
+lemma IsLeftScaffold.finiteComparison (n : ℕ) {E : SSet.{u}}
+    (p : E ⟶ nerve (ULift.{u} (Fin (n + 1)))) [LeftFibration p]
+    (F : ULift.{u} (Fin (n + 1)) ⥤ SSet.{u}) [∀ c, KanComplex (F.obj c)]
+    (l : simplicialReplacement F ⟶ E) (hs : IsLeftScaffold p F l) :
+    IsPrecompositionEquivalence l
+
 end SerrePositivity.InfinityCategories
 ```

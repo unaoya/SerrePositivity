@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteComparison
+
 public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteComparisonStep
 
 public import SerrePositivity.InfinityCategories.F1.CartesianEdge
