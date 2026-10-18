@@ -5891,3 +5891,325 @@ SerrePositivity.InfinityCategories.suspensionSpanHomotopy_homMk_eq.{u} {X : SSet
 始点固定の suspension span 比較の h の射の一意性まで完了。接続射全体の選択独立性は、
 これと前回の普遍余錐間の持ち上げの一意性を、頂点で取り出した射に照合する段階が未完了。
 自然性、Σf との零合成、前加法構造、整数シフト、TR1〜TR4、Pretriangulated、S5〜S7 も未完了。
+
+
+## 指定 suspension への接続射の比較ホモトピーに関する選択独立性
+
+普遍余錐の射影の忠実性と、始点固定の span 比較の一意性を四角形で照合した。
+指定した suspension 四角形を固定したとき、任意の始点固定の比較ホモトピーの
+第三成分が `cofiberConnectingToSuspension` に一致する。
+主な前提は X の Quasicategory 性、元の列の IsCofiberSequence、h X の
+HasZeroMorphisms。四角形の比較の一意性自体には零射構造は不要。
+以下は Lean による公開宣言の正確な型の出力（宇宙・完全修飾名つき）。
+
+```text
+SerrePositivity.InfinityCategories.exists_fullSubcomplexEdgeLift.{u} {X : SSet.{u}}
+  (P : CategoryTheory.Functor.obj.{0, u, 0, u + 1} X (Opposite.op.{1} { len := 0 }) → Prop)
+  (a b :
+    CategoryTheory.Functor.obj.{0, u, 0, u + 1}
+      (SSet.Subcomplex.toSSet.{u} (SerrePositivity.InfinityCategories.fullSubcomplexOnVertices.{u} X P))
+      (Opposite.op.{1} { len := 0 }))
+  (e : SSet.Truncated.Edge.{u} ↑a ↑b) :
+  ∃ f,
+    Eq.{u + 1}
+      (SSet.Truncated.Edge.map.{u} f
+        (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} (SSet.truncation.{u} 2)
+          (SSet.Subcomplex.ι.{u} (SerrePositivity.InfinityCategories.fullSubcomplexOnVertices.{u} X P))))
+      e
+SerrePositivity.InfinityCategories.colimitCoconeHomotopyEdge.{u} {K X : SSet.{u}} [SSet.Quasicategory.{u} X]
+  {p q : Quiver.Hom.{u, u + 1} K X} (c : SerrePositivity.InfinityCategories.JoinCocone.{u} p)
+  (d : SerrePositivity.InfinityCategories.JoinCocone.{u} q)
+  (hc : SerrePositivity.InfinityCategories.IsColimitCone.{u} c)
+  (hd : SerrePositivity.InfinityCategories.IsColimitCone.{u} d) (H : SSet.Homotopy.{u} ↑c ↑d) :
+  SSet.Truncated.Edge.{u} (SerrePositivity.InfinityCategories.colimitCoconeVertex.{u} c hc)
+    (SerrePositivity.InfinityCategories.colimitCoconeVertex.{u} d hd)
+SerrePositivity.InfinityCategories.colimitCoconeHomotopyEdge_map.{u} {K X : SSet.{u}} [SSet.Quasicategory.{u} X]
+  {p q : Quiver.Hom.{u, u + 1} K X} (c : SerrePositivity.InfinityCategories.JoinCocone.{u} p)
+  (d : SerrePositivity.InfinityCategories.JoinCocone.{u} q)
+  (hc : SerrePositivity.InfinityCategories.IsColimitCone.{u} c)
+  (hd : SerrePositivity.InfinityCategories.IsColimitCone.{u} d) (H : SSet.Homotopy.{u} ↑c ↑d) :
+  Eq.{u + 1}
+    (SSet.Truncated.Edge.map.{u} (SerrePositivity.InfinityCategories.colimitCoconeHomotopyEdge.{u} c d hc hd H)
+      (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} (SSet.truncation.{u} 2)
+        (SSet.Subcomplex.ι.{u}
+          (SerrePositivity.InfinityCategories.relativeInitialVertices.{u}
+            (SerrePositivity.InfinityCategories.coconeRestriction.{u} K X)))))
+    (SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy.{u} H)
+SerrePositivity.InfinityCategories.colimitCoconeHomotopy_homMk_eq.{u} {K X : SSet.{u}} [SSet.Quasicategory.{u} X]
+  {p q : Quiver.Hom.{u, u + 1} K X} (c : SerrePositivity.InfinityCategories.JoinCocone.{u} p)
+  (d : SerrePositivity.InfinityCategories.JoinCocone.{u} q)
+  (hc : SerrePositivity.InfinityCategories.IsColimitCone.{u} c)
+  (hd : SerrePositivity.InfinityCategories.IsColimitCone.{u} d) (H J : SSet.Homotopy.{u} ↑c ↑d)
+  (h :
+    Eq.{u + 1}
+      (CategoryTheory.Functor.map.{u, u, u, u}
+        (CategoryTheory.Cat.Hom.toFunctor.{u, u}
+          (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} SSet.hoFunctor.{u}
+            (SerrePositivity.InfinityCategories.coconeRestriction.{u} K X)))
+        (SSet.Truncated.HomotopyCategory.homMk.{u}
+          (SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy.{u} H)))
+      (CategoryTheory.Functor.map.{u, u, u, u}
+        (CategoryTheory.Cat.Hom.toFunctor.{u, u}
+          (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} SSet.hoFunctor.{u}
+            (SerrePositivity.InfinityCategories.coconeRestriction.{u} K X)))
+        (SSet.Truncated.HomotopyCategory.homMk.{u}
+          (SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy.{u} J)))) :
+  Eq.{u + 1}
+    (SSet.Truncated.HomotopyCategory.homMk.{u}
+      (SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy.{u} H))
+    (SSet.Truncated.HomotopyCategory.homMk.{u}
+      (SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy.{u} J))
+SerrePositivity.InfinityCategories.stableHomotopyPrecomp.{u} {A B X : SSet.{u}} (i : Quiver.Hom.{u, u + 1} A B)
+  {F G : Quiver.Hom.{u, u + 1} B X} (H : SSet.Homotopy.{u} F G) :
+  SSet.Homotopy.{u} (CategoryTheory.CategoryStruct.comp.{u, u + 1} i F)
+    (CategoryTheory.CategoryStruct.comp.{u, u + 1} i G)
+SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy_precomp.{u} {A B X : SSet.{u}}
+  (i : Quiver.Hom.{u, u + 1} A B) {F G : Quiver.Hom.{u, u + 1} B X} (H : SSet.Homotopy.{u} F G) :
+  Eq.{u + 1}
+    (SSet.Truncated.Edge.map.{u} (SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy.{u} H)
+      (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} (SSet.truncation.{u} 2)
+        (CategoryTheory.NatTrans.app.{u, u, u + 1, u + 1} (CategoryTheory.MonoidalClosed.pre.{u, u + 1} i) X)))
+    (SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy.{u}
+      (SerrePositivity.InfinityCategories.stableHomotopyPrecomp.{u} i H))
+SerrePositivity.InfinityCategories.homMk_functorEdge_precomp.{u} {A B X : SSet.{u}} (i : Quiver.Hom.{u, u + 1} A B)
+  {F G : Quiver.Hom.{u, u + 1} B X} (H : SSet.Homotopy.{u} F G) :
+  Eq.{u + 1}
+    (CategoryTheory.Functor.map.{u, u, u, u}
+      (CategoryTheory.Cat.Hom.toFunctor.{u, u}
+        (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} SSet.hoFunctor.{u}
+          (CategoryTheory.NatTrans.app.{u, u, u + 1, u + 1} (CategoryTheory.MonoidalClosed.pre.{u, u + 1} i) X)))
+      (SSet.Truncated.HomotopyCategory.homMk.{u}
+        (SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy.{u} H)))
+    (SSet.Truncated.HomotopyCategory.homMk.{u}
+      (SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy.{u}
+        (SerrePositivity.InfinityCategories.stableHomotopyPrecomp.{u} i H)))
+SerrePositivity.InfinityCategories.homMk_functorEdge_precomp_inv_hom_arrow.{u} {A B X : SSet.{u}}
+  (e : CategoryTheory.Iso.{u, u + 1} A B) {F G : Quiver.Hom.{u, u + 1} B X} (H : SSet.Homotopy.{u} F G) :
+  Eq.{u + 1}
+    (CategoryTheory.Arrow.mk.{u, u}
+      (SSet.Truncated.HomotopyCategory.homMk.{u}
+        (SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy.{u}
+          (SerrePositivity.InfinityCategories.stableHomotopyPrecomp.{u} (CategoryTheory.Iso.inv.{u, u + 1} e)
+            (SerrePositivity.InfinityCategories.stableHomotopyPrecomp.{u} (CategoryTheory.Iso.hom.{u, u + 1} e) H)))))
+    (CategoryTheory.Arrow.mk.{u, u}
+      (SSet.Truncated.HomotopyCategory.homMk.{u}
+        (SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy.{u} H)))
+SerrePositivity.InfinityCategories.stableHomotopyPrecomp_span_source.{u} {X : SSet.{u}}
+  {F G :
+    Quiver.Hom.{u, u + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u, u + 1}
+        (CategoryTheory.Functor.obj.{0, u, 0, u + 1} SSet.stdSimplex.{u} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u, 0, u + 1} SSet.stdSimplex.{u} { len := 1 }))
+      X}
+  (H : SSet.Homotopy.{u} F G)
+  (hH :
+    Eq.{u + 1}
+      (CategoryTheory.CategoryStruct.comp.{u, u + 1}
+        (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u, u + 1}
+          (CategoryTheory.CategoryStruct.comp.{u, u + 1}
+            (CategoryTheory.CosimplicialObject.δ.{u, u + 1} SSet.stdSimplex.{u} 1)
+            SerrePositivity.InfinityCategories.squareBottomEdge.{u})
+          (CategoryTheory.Functor.obj.{0, u, 0, u + 1} SSet.stdSimplex.{u} { len := 1 }))
+        (SSet.RelativeMorphism.Homotopy.h.{u} H))
+      (CategoryTheory.CategoryStruct.comp.{u, u + 1}
+        (CategoryTheory.SemiCartesianMonoidalCategory.snd.{u, u + 1}
+          (CategoryTheory.Functor.obj.{0, u, 0, u + 1} SSet.stdSimplex.{u} { len := 0 })
+          (CategoryTheory.Functor.obj.{0, u, 0, u + 1} SSet.stdSimplex.{u} { len := 1 }))
+        (SSet.const.{u} (SerrePositivity.InfinityCategories.squareVertex.{u} F 0 0)))) :
+  Eq.{u + 1}
+    (CategoryTheory.CategoryStruct.comp.{u, u + 1}
+      (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u, u + 1}
+        (CategoryTheory.CategoryStruct.comp.{u, u + 1}
+          (CategoryTheory.CosimplicialObject.δ.{u, u + 1} SSet.stdSimplex.{u} 1) SSet.horn₂₀.ι₀₁.{u})
+        (CategoryTheory.Functor.obj.{0, u, 0, u + 1} SSet.stdSimplex.{u} { len := 1 }))
+      (SSet.RelativeMorphism.Homotopy.h.{u}
+        (SerrePositivity.InfinityCategories.stableHomotopyPrecomp.{u}
+          SerrePositivity.InfinityCategories.spanSquareBoundary.{u} H)))
+    (CategoryTheory.CategoryStruct.comp.{u, u + 1}
+      (CategoryTheory.SemiCartesianMonoidalCategory.snd.{u, u + 1}
+        (CategoryTheory.Functor.obj.{0, u, 0, u + 1} SSet.stdSimplex.{u} { len := 0 })
+        (CategoryTheory.Functor.obj.{0, u, 0, u + 1} SSet.stdSimplex.{u} { len := 1 }))
+      (SSet.const.{u} (SerrePositivity.InfinityCategories.squareVertex.{u} F 0 0)))
+SerrePositivity.InfinityCategories.cofiberComparison_coconeRestriction.{u} {X : SSet.{u}}
+  {F G :
+    Quiver.Hom.{u, u + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u, u + 1}
+        (CategoryTheory.Functor.obj.{0, u, 0, u + 1} SSet.stdSimplex.{u} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u, 0, u + 1} SSet.stdSimplex.{u} { len := 1 }))
+      X}
+  (H : SSet.Homotopy.{u} F G) :
+  Eq.{u + 1}
+    (CategoryTheory.Functor.map.{u, u, u, u}
+      (CategoryTheory.Cat.Hom.toFunctor.{u, u}
+        (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} SSet.hoFunctor.{u}
+          (SerrePositivity.InfinityCategories.coconeRestriction.{u} (SSet.Subcomplex.toSSet.{u} (SSet.horn.{u} 2 0))
+            X)))
+      (SSet.Truncated.HomotopyCategory.homMk.{u}
+        (SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy.{u}
+          (SerrePositivity.InfinityCategories.stableHomotopyPrecomp.{u}
+            (CategoryTheory.Iso.hom.{u, u + 1} SerrePositivity.InfinityCategories.spanCoconeSquareIso.{u}) H))))
+    (SSet.Truncated.HomotopyCategory.homMk.{u}
+      (SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy.{u}
+        (SerrePositivity.InfinityCategories.stableHomotopyPrecomp.{u}
+          SerrePositivity.InfinityCategories.spanSquareBoundary.{u} H)))
+SerrePositivity.InfinityCategories.cofiberSuspensionComparison_homMk_eq.{u} {X : SSet.{u}} [SSet.Quasicategory.{u} X]
+  (F :
+    Quiver.Hom.{u, u + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u, u + 1}
+        (CategoryTheory.Functor.obj.{0, u, 0, u + 1} SSet.stdSimplex.{u} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u, 0, u + 1} SSet.stdSimplex.{u} { len := 1 }))
+      X)
+  (hF : SerrePositivity.InfinityCategories.IsPushoutSquare.{u} F)
+  (s :
+    SerrePositivity.InfinityCategories.SuspensionSquare.{u} (SerrePositivity.InfinityCategories.squareVertex.{u} F 0 0))
+  (H J :
+    SSet.Homotopy.{u} F
+      (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u}
+        (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u} s)))
+  (hH :
+    Eq.{u + 1}
+      (CategoryTheory.CategoryStruct.comp.{u, u + 1}
+        (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u, u + 1}
+          (CategoryTheory.CategoryStruct.comp.{u, u + 1}
+            (CategoryTheory.CosimplicialObject.δ.{u, u + 1} SSet.stdSimplex.{u} 1)
+            SerrePositivity.InfinityCategories.squareBottomEdge.{u})
+          (CategoryTheory.Functor.obj.{0, u, 0, u + 1} SSet.stdSimplex.{u} { len := 1 }))
+        (SSet.RelativeMorphism.Homotopy.h.{u} H))
+      (CategoryTheory.CategoryStruct.comp.{u, u + 1}
+        (CategoryTheory.SemiCartesianMonoidalCategory.snd.{u, u + 1}
+          (CategoryTheory.Functor.obj.{0, u, 0, u + 1} SSet.stdSimplex.{u} { len := 0 })
+          (CategoryTheory.Functor.obj.{0, u, 0, u + 1} SSet.stdSimplex.{u} { len := 1 }))
+        (SSet.const.{u} (SerrePositivity.InfinityCategories.squareVertex.{u} F 0 0))))
+  (hJ :
+    Eq.{u + 1}
+      (CategoryTheory.CategoryStruct.comp.{u, u + 1}
+        (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u, u + 1}
+          (CategoryTheory.CategoryStruct.comp.{u, u + 1}
+            (CategoryTheory.CosimplicialObject.δ.{u, u + 1} SSet.stdSimplex.{u} 1)
+            SerrePositivity.InfinityCategories.squareBottomEdge.{u})
+          (CategoryTheory.Functor.obj.{0, u, 0, u + 1} SSet.stdSimplex.{u} { len := 1 }))
+        (SSet.RelativeMorphism.Homotopy.h.{u} J))
+      (CategoryTheory.CategoryStruct.comp.{u, u + 1}
+        (CategoryTheory.SemiCartesianMonoidalCategory.snd.{u, u + 1}
+          (CategoryTheory.Functor.obj.{0, u, 0, u + 1} SSet.stdSimplex.{u} { len := 0 })
+          (CategoryTheory.Functor.obj.{0, u, 0, u + 1} SSet.stdSimplex.{u} { len := 1 }))
+        (SSet.const.{u} (SerrePositivity.InfinityCategories.squareVertex.{u} F 0 0)))) :
+  Eq.{u + 1}
+    (SSet.Truncated.HomotopyCategory.homMk.{u}
+      (SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy.{u} H))
+    (SSet.Truncated.HomotopyCategory.homMk.{u}
+      (SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy.{u} J))
+SerrePositivity.InfinityCategories.cofiberComparison_τ₃_eq_of_source_fixed.{u} {X : SSet.{u}} [SSet.Quasicategory.{u} X]
+  [CategoryTheory.Limits.HasZeroMorphisms.{u, u}
+      ↑(CategoryTheory.Functor.obj.{u, u, u + 1, u + 1} SSet.hoFunctor.{u} X)]
+  (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u} X)
+  (ht : SerrePositivity.InfinityCategories.IsCofiberSequence.{u} t)
+  (s :
+    SerrePositivity.InfinityCategories.SuspensionSquare.{u}
+      (SerrePositivity.InfinityCategories.squareVertex.{u}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u} t) 0 0))
+  (H J :
+    SSet.Homotopy.{u} (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u} t)
+      (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u}
+        (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u} s)))
+  (hH :
+    Eq.{u + 1}
+      (CategoryTheory.CategoryStruct.comp.{u, u + 1}
+        (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u, u + 1}
+          (CategoryTheory.CategoryStruct.comp.{u, u + 1}
+            (CategoryTheory.CosimplicialObject.δ.{u, u + 1} SSet.stdSimplex.{u} 1)
+            SerrePositivity.InfinityCategories.squareBottomEdge.{u})
+          (CategoryTheory.Functor.obj.{0, u, 0, u + 1} SSet.stdSimplex.{u} { len := 1 }))
+        (SSet.RelativeMorphism.Homotopy.h.{u} H))
+      (CategoryTheory.CategoryStruct.comp.{u, u + 1}
+        (CategoryTheory.SemiCartesianMonoidalCategory.snd.{u, u + 1}
+          (CategoryTheory.Functor.obj.{0, u, 0, u + 1} SSet.stdSimplex.{u} { len := 0 })
+          (CategoryTheory.Functor.obj.{0, u, 0, u + 1} SSet.stdSimplex.{u} { len := 1 }))
+        (SSet.const.{u}
+          (SerrePositivity.InfinityCategories.squareVertex.{u}
+            (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u} t) 0 0))))
+  (hJ :
+    Eq.{u + 1}
+      (CategoryTheory.CategoryStruct.comp.{u, u + 1}
+        (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u, u + 1}
+          (CategoryTheory.CategoryStruct.comp.{u, u + 1}
+            (CategoryTheory.CosimplicialObject.δ.{u, u + 1} SSet.stdSimplex.{u} 1)
+            SerrePositivity.InfinityCategories.squareBottomEdge.{u})
+          (CategoryTheory.Functor.obj.{0, u, 0, u + 1} SSet.stdSimplex.{u} { len := 1 }))
+        (SSet.RelativeMorphism.Homotopy.h.{u} J))
+      (CategoryTheory.CategoryStruct.comp.{u, u + 1}
+        (CategoryTheory.SemiCartesianMonoidalCategory.snd.{u, u + 1}
+          (CategoryTheory.Functor.obj.{0, u, 0, u + 1} SSet.stdSimplex.{u} { len := 0 })
+          (CategoryTheory.Functor.obj.{0, u, 0, u + 1} SSet.stdSimplex.{u} { len := 1 }))
+        (SSet.const.{u}
+          (SerrePositivity.InfinityCategories.squareVertex.{u}
+            (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u} t) 0 0)))) :
+  Eq.{u + 1}
+    (CategoryTheory.ShortComplex.Hom.τ₃.{u, u}
+      (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplexMapOfHomotopy.{u} t
+        (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u} s)
+        (SSet.RelativeMorphism.Homotopy.h.{u} H) ⋯ ⋯))
+    (CategoryTheory.ShortComplex.Hom.τ₃.{u, u}
+      (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplexMapOfHomotopy.{u} t
+        (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u} s)
+        (SSet.RelativeMorphism.Homotopy.h.{u} J) ⋯ ⋯))
+SerrePositivity.InfinityCategories.cofiberComparison_τ₃_eq_connectingToSuspension.{u} {X : SSet.{u}}
+  [SSet.Quasicategory.{u} X]
+  [CategoryTheory.Limits.HasZeroMorphisms.{u, u}
+      ↑(CategoryTheory.Functor.obj.{u, u, u + 1, u + 1} SSet.hoFunctor.{u} X)]
+  (t : SerrePositivity.InfinityCategories.ZeroTriangle.{u} X)
+  (ht : SerrePositivity.InfinityCategories.IsCofiberSequence.{u} t)
+  (s :
+    SerrePositivity.InfinityCategories.SuspensionSquare.{u}
+      (SerrePositivity.InfinityCategories.squareVertex.{u}
+        (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u} t) 0 0))
+  (H :
+    SSet.Homotopy.{u} (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u} t)
+      (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u}
+        (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u} s)))
+  (hH :
+    Eq.{u + 1}
+      (CategoryTheory.CategoryStruct.comp.{u, u + 1}
+        (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u, u + 1}
+          (CategoryTheory.CategoryStruct.comp.{u, u + 1}
+            (CategoryTheory.CosimplicialObject.δ.{u, u + 1} SSet.stdSimplex.{u} 1)
+            SerrePositivity.InfinityCategories.squareBottomEdge.{u})
+          (CategoryTheory.Functor.obj.{0, u, 0, u + 1} SSet.stdSimplex.{u} { len := 1 }))
+        (SSet.RelativeMorphism.Homotopy.h.{u} H))
+      (CategoryTheory.CategoryStruct.comp.{u, u + 1}
+        (CategoryTheory.SemiCartesianMonoidalCategory.snd.{u, u + 1}
+          (CategoryTheory.Functor.obj.{0, u, 0, u + 1} SSet.stdSimplex.{u} { len := 0 })
+          (CategoryTheory.Functor.obj.{0, u, 0, u + 1} SSet.stdSimplex.{u} { len := 1 }))
+        (SSet.const.{u}
+          (SerrePositivity.InfinityCategories.squareVertex.{u}
+            (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u} t) 0 0)))) :
+  Eq.{u + 1}
+    (CategoryTheory.ShortComplex.Hom.τ₃.{u, u}
+      (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplexMapOfHomotopy.{u} t
+        (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u} s)
+        (SSet.RelativeMorphism.Homotopy.h.{u} H) ⋯ ⋯))
+    (SerrePositivity.InfinityCategories.cofiberConnectingToSuspension.{u} t ht s)
+SerrePositivity.InfinityCategories.homotopyEvaluationOfEndpoints_arrow.{u} {A X : SSet.{u}}
+  {F G : Quiver.Hom.{u, u + 1} A X} (H : SSet.Homotopy.{u} F G)
+  (a : CategoryTheory.Functor.obj.{0, u, 0, u + 1} A (Opposite.op.{1} { len := 0 })) :
+  Eq.{u + 1}
+    (CategoryTheory.Arrow.mk.{u, u}
+      (CategoryTheory.Functor.map.{u, u, u, u}
+        (CategoryTheory.Cat.Hom.toFunctor.{u, u}
+          (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} SSet.hoFunctor.{u}
+            (SerrePositivity.InfinityCategories.evaluateFunctorAt.{u} a)))
+        (SSet.Truncated.HomotopyCategory.homMk.{u}
+          (SerrePositivity.InfinityCategories.functorEdgeOfSimplicialHomotopy.{u} H))))
+    (CategoryTheory.Arrow.mk.{u, u}
+      (CategoryTheory.NatTrans.app.{u, u, u, u}
+        (SerrePositivity.InfinityCategories.homotopyNatTransOfEndpoints.{u} (SSet.RelativeMorphism.Homotopy.h.{u} H) ⋯
+          ⋯)
+        (SSet.HomotopyCategory.mk.{u} a)))
+```
+
+対象 CofiberConnectingIndependence ビルド 2006 jobs、対象・Stable 集約ビルド
+2080 jobs、公開型抽出、公理監査はすべて終了コード 0。監査は 135 モジュール・1199 宣言
+（生成・非公開宣言を含む）について標準三公理のみ。`git diff --check` 成功。
+指定 suspension を固定した比較ホモトピーの選択独立性まで完了。
+suspension 四角形そのものの変更との整合、接続射の自然性、Σf との零合成、
+前加法構造、整数シフト、TR1〜TR4、Pretriangulated、S5〜S7 は未完了。

@@ -47,6 +47,22 @@ lemma homotopyEvaluation_arrow {A X : SSet.{u}} {F G : A ⟶ X}
     Arrow.mk (SSet.Truncated.HomotopyCategory.homMk e₂)
   exact SSet.Truncated.HomotopyCategory.congr_arrowMk_homMk e₁ e₂ heq
 
+/-- 概要：両端を指定した自然変換の頂点成分もホモトピーの評価した類と一致する。
+方針：両端の等式による輸送を Arrow の等号に含める。
+規約：quasicategory 性は不要。使われ方：短複体の比較成分の照合。 -/
+lemma homotopyEvaluationOfEndpoints_arrow {A X : SSet.{u}} {F G : A ⟶ X}
+    (H : SSet.Homotopy F G) (a : A _⦋0⦌) :
+    Arrow.mk ((hoFunctor.map (evaluateFunctorAt (Y := X) a)).toFunctor.map
+      (SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H))) =
+    Arrow.mk ((homotopyNatTransOfEndpoints H.h H.h₀ H.h₁).app (SSet.HomotopyCategory.mk a)) := by
+  have ht (U : A ⊗ (Δ[1] : SSet.{u}) ⟶ X) {f g : A ⟶ X}
+      (h₀ : SSet.ι₀ ≫ U = f) (h₁ : SSet.ι₁ ≫ U = g) :
+      Arrow.mk ((homotopyNatTransOfEndpoints U h₀ h₁).app (SSet.HomotopyCategory.mk a)) =
+        Arrow.mk ((homotopyNatTrans U).app (SSet.HomotopyCategory.mk a)) := by
+    subst f g
+    rfl
+  exact (homotopyEvaluation_arrow H a).trans (ht H.h H.h₀ H.h₁).symm
+
 /-- 概要：同じ頂点で同じ値に固定された二つのホモトピーの評価した類は一致する。
 方針：両方の評価した類を同じ恒等成分へ移し、固定した端点間の Arrow の等号を消す。
 規約：quasicategory 性は不要。使われ方：始点固定の図式の比較の一意性。 -/

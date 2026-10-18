@@ -1,6 +1,9 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.cofiberSuspensionComparison_homMk_eq
+#print axioms SerrePositivity.InfinityCategories.cofiberComparison_τ₃_eq_connectingToSuspension
+
 /-! # 安定 ∞ 圏の全宣言の公理監査
 
 概要：実装モジュールの全宣言と主要公開宣言の公理を監査する。
@@ -828,7 +831,12 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.TerminalJoinBoundary,
     `SerrePositivity.InfinityCategories.Stable.TerminalMappingSpace,
     `SerrePositivity.InfinityCategories.Stable.HomotopyEvaluationClass,
-    `SerrePositivity.InfinityCategories.Stable.SpanComparisonUniqueness]
+    `SerrePositivity.InfinityCategories.Stable.SpanComparisonUniqueness,
+    `SerrePositivity.InfinityCategories.Stable.FullSubcomplexEdgeLift,
+    `SerrePositivity.InfinityCategories.Stable.ColimitHomotopyUniqueness,
+    `SerrePositivity.InfinityCategories.Stable.HomotopyPrecomposition,
+    `SerrePositivity.InfinityCategories.Stable.CofiberComparisonUniqueness,
+    `SerrePositivity.InfinityCategories.Stable.CofiberConnectingIndependence]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
