@@ -121,3 +121,4 @@ public import SerrePositivity.InfinityCategories.F1.JoinEndpointComparison
 public import SerrePositivity.InfinityCategories.F1.PreFiberKan
 public import SerrePositivity.InfinityCategories.F1.IntervalComparisonMono
 public import SerrePositivity.InfinityCategories.F1.IntervalFatDiagram
+public import SerrePositivity.InfinityCategories.F1.JoinEndpointLifting

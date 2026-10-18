@@ -3139,5 +3139,14 @@ lemma rightIntervalFatDiagram_recover {A X : SSet.{u}} {x y : X _⦋0⦌}
     rightIntervalCylinderSection A ≫ fatJoinCylinder A Δ[0] ≫ rightIntervalFatDiagram f =
       intervalMappingUncurry f
 
+lemma exists_joinDiagram_of_fatJoinDiagram {A B X : SSet.{u}} [Quasicategory X]
+    (p : joinEndpointDiagram A B ⟶ X) (F : fatJoin A B ⟶ X)
+    (hF : fatJoinEndpointInclusion A B ≫ F = p) :
+    ∃ G : join A B ⟶ X, ∃ _hG : joinEndpointInclusion A B ≫ G = p,
+      ∃ H : SSet.Homotopy (fatJoinComparison A B ≫ G) F,
+        (fatJoinEndpointInclusion A B ▷ (Δ[1] : SSet.{u})) ≫ H.h =
+          fst (joinEndpointDiagram A B) Δ[1] ≫ p ∧
+        ∀ v, IsInvertibleEdge (simplicialHomotopyVertexEdge H v).toTruncated
+
 end SerrePositivity.InfinityCategories
 ```

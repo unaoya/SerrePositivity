@@ -727,3 +727,4 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.rightIntervalFatDiagram_inl
 #check @SerrePositivity.InfinityCategories.rightIntervalFatDiagram_inr
 #check @SerrePositivity.InfinityCategories.rightIntervalFatDiagram_recover
+#check @SerrePositivity.InfinityCategories.exists_joinDiagram_of_fatJoinDiagram
