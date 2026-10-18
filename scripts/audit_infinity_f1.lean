@@ -146,3 +146,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.squareComparison_exists_lift
 #check @SerrePositivity.InfinityCategories.squareComparison_trivialKanFibration_horiz_comp
 #check @SerrePositivity.InfinityCategories.squareComparison_trivialKanFibration_cancel_left
+#check @SerrePositivity.InfinityCategories.joinLeftFunctor
+#check @SerrePositivity.InfinityCategories.joinSubcomplexLeft_inf
+#check @SerrePositivity.InfinityCategories.joinSubcomplexLeft_sup
+#check @SerrePositivity.InfinityCategories.joinSubcomplexLeft_bicartSq
+#check @SerrePositivity.InfinityCategories.joinLeftSubcomplexIso
+#check @SerrePositivity.InfinityCategories.joinLeftSubcomplexIso_hom_ι
+#check @SerrePositivity.InfinityCategories.joinLeft_horn₂₁_isPushout

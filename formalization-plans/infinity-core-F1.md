@@ -578,7 +578,8 @@ lemma triangleLongEdge_rightAnodyne :
     rightAnodyneExtensions (stdSimplex.δ (1 : Fin 3) : (Δ[1] : SSet.{u}) ⟶ Δ[2])
 
 lemma triangleLongFace_rightAnodyne :
-    rightAnodyneExtensions (stdSimplex.face (n
+    rightAnodyneExtensions (stdSimplex.face (n := 2) {(1 : Fin 3)}ᶜ :
+      (Δ[2] : SSet.{u}).Subcomplex).ι
 
 noncomputable def squareComparison {E F B C : SSet.{u}} {f : E ⟶ F} {p : E ⟶ B}
     {q : F ⟶ C} {g : B ⟶ C} (sq : CommSq f p q g) : E ⟶ pullback q g
@@ -607,6 +608,33 @@ lemma squareComparison_trivialKanFibration_cancel_left
     [TrivialKanFibration b] [TrivialKanFibration (squareComparison sq₂)]
     [TrivialKanFibration (squareComparison (sq₂.horiz_comp sq₁))] :
     TrivialKanFibration (squareComparison sq₁)
+
+def joinLeftFunctor (B : SSet.{u}) : SSet.{u} ⥤ SSet.{u}
+
+lemma joinSubcomplexLeft_inf (B : SSet.{u}) {A : SSet.{u}} (A₀ A₁ : A.Subcomplex) :
+    joinSubcomplexLeft (A₀ ⊓ A₁) B = joinSubcomplexLeft A₀ B ⊓ joinSubcomplexLeft A₁ B
+
+lemma joinSubcomplexLeft_sup (B : SSet.{u}) {A : SSet.{u}} (A₀ A₁ : A.Subcomplex) :
+    joinSubcomplexLeft (A₀ ⊔ A₁) B = joinSubcomplexLeft A₀ B ⊔ joinSubcomplexLeft A₁ B
+
+lemma joinSubcomplexLeft_bicartSq (B : SSet.{u}) {A : SSet.{u}}
+    {A₀ A₁ A₂ A₃ : A.Subcomplex} (h : Subcomplex.BicartSq A₀ A₁ A₂ A₃) :
+    Subcomplex.BicartSq (joinSubcomplexLeft A₀ B) (joinSubcomplexLeft A₁ B)
+      (joinSubcomplexLeft A₂ B) (joinSubcomplexLeft A₃ B)
+
+noncomputable def joinLeftSubcomplexIso (B : SSet.{u}) {A C : SSet.{u}}
+    (A₀ : A.Subcomplex) (e : C ≅ (A₀ : SSet.{u})) :
+    join C B ≅ (joinSubcomplexLeft A₀ B : SSet.{u})
+
+lemma joinLeftSubcomplexIso_hom_ι (B : SSet.{u}) {A C : SSet.{u}}
+    (A₀ : A.Subcomplex) (e : C ≅ (A₀ : SSet.{u})) :
+    (joinLeftSubcomplexIso B A₀ e).hom ≫ (joinSubcomplexLeft A₀ B).ι =
+      joinMap (e.hom ≫ A₀.ι) (𝟙 B)
+
+lemma joinLeft_horn₂₁_isPushout (A : SSet.{u}) :
+    IsPushout (joinMap (stdSimplex.δ (0 : Fin 2)) (𝟙 A))
+      (joinMap (stdSimplex.δ (1 : Fin 2)) (𝟙 A))
+      (joinMap horn₂₁.ι₀₁ (𝟙 A)) (joinMap horn₂₁.ι₁₂ (𝟙 A))
 
 end SerrePositivity.InfinityCategories
 ```

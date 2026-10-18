@@ -30,3 +30,4 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianCosliceConverse
 public import SerrePositivity.InfinityCategories.F1.CosliceRightAnodyne
 public import SerrePositivity.InfinityCategories.F1.TriangleLongEdge
 public import SerrePositivity.InfinityCategories.F1.SquareComparison
+public import SerrePositivity.InfinityCategories.F1.JoinLeftGluing
