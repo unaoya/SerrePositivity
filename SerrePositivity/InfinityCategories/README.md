@@ -1370,7 +1370,7 @@ H^(−(n+1)) との同型で、追加の閉性・充填の仮定はない。
 `doldKanHomSpaceKan` は N4 の線形充填をこの同型で移した Kan instance。
 `doldKanHomPinchedIso` は宇宙を持ち上げた DK Hom と dg nerve の右 pinched Hom の同型である。
 この同型はまだ coherent nerve の写像空間との比較ではない。
-対象・集約ビルドは3909件で成功し、公開513宣言の型と公理監査は標準三公理のみ。
+対象・集約ビルドは3916件で成功し、公開524宣言の型と公理監査は標準三公理のみ。
 正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean` に記録する。
 
 `awData` は後の射の接頭部分と前の射の接尾部分を合成して全切断点で足す成分族の演算。
@@ -1727,8 +1727,33 @@ coherentComparison_fullyFaithful_iff_standard :
 ```
 
 これは充満忠実性の判定への移送であり、右辺の実際のホモトピー逆はまだ証明していない。
-残りは余単体的立方体模型 Q^• との比較と反対側の合成の単体的ホモトピー、
-この判定による充満忠実性の証明、A3e による ∞ 圏の同値の構成。
+反対側の合成のホモトピーの構成には、F1 の確定済みの `CoherentResolutionFlag n d` を使う。
+`resolutionFlagPath F t` は各段の有限集合の持ち上げた像に追加した最終点を加えた native Path。
+始点は F.start であり、`resolutionFlagPathFunctor F` はその包含による d 単体である。
+`resolutionFlagPath_maximum` は、その最後以外の最大頂点が `F.maxAt t` に等しいことを示す。
+`resolutionFlagPath_pullback` は、任意の添字写像 α での旗の正規化した引き戻しが、
+選んだ元の Path の `F.maxAt (α 0)` からの末尾に等しいという式である。退化も含む。
+
+`coherentPinched_source_obj`・`coherentPinched_target_obj` は実際の pinched 条件から
+各端点の対象を固定する。これを使って各旗での標準 Hom の値を定義する。
+
+```lean
+resolutionHomValue {x y : ClosedCategory R D} {n d : ℕ}
+    (s : coherentPinchedHom (R := R) (D := D) x y _⦋n⦌)
+    (F : CoherentResolutionFlag n d) : StandardSimplex R (D := D) x y d
+
+resolutionHomValue_standard (σ : StandardSimplex R (D := D) x y n)
+    (F : CoherentResolutionFlag n d) :
+  resolutionHomValue (standardCoherentPinchedSimplex σ) F =
+    standardPullback ⟨F.maxAt, F.maxAt_monotone⟩ σ
+```
+
+前提は `[CommRing R] [DGCategory R D]` のみ。
+最後の式は全次数・全旗での等式であり、標準 Hom からの射が補助解像の最大元への射影を
+通じた値を取ることを示す。任意の pinched 単体について `resolutionHomValue` の全ての
+自然性はまだ証明していないため、解像から標準 Hom への単体集合の射にはまだまとめていない。
+残りはこの自然性と解像の比較の完成、反対側の合成の単体的ホモトピー、
+上の判定による充満忠実性の証明、A3e による ∞ 圏の同値の構成。
 
 
 ## γ3：homotopy 極限・余極限と ∞ 極限・余極限（γ1.5 の後）
