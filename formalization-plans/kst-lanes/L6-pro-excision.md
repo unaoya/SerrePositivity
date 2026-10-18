@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと960宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと974宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -203,6 +203,10 @@
 | chainIntervalHomotopySign_zero / chainIntervalHomotopySign_succ | ChainIntervalHomotopySigns.lean | 検証済み | 符号付き辺評価の微分等式の代数部分 |
 | chainInterval_ι_D₁_succ / chainInterval_ι_D₂_succ | ChainIntervalTensorDifferential.lean | 検証済み | 全テンソルの水平・垂直微分の後の実評価 |
 | chainHomotopyInterval / chainHomotopyInterval_comm | ChainIntervalEvaluationChainMap.lean | 検証済み | 鎖ホモトピーによる全テンソル鎖区間からの実鎖写像 |
+| chainHomotopyCylinderCore / chainHomotopyCylinderMap / chainHomotopyCylinderReconstruct | ChainHomotopyCylinder.lean | 射の構成済み | AW・区間比較・評価からの実鎖写像と Dold–Kan による実単体的区間射、両端は別工程 |
+| integerIntervalComparison_constant_of_pos | IntervalComparisonConstants.lean | 検証済み | 正次数の定数単体の鎖比較での零性 |
+| cylinderAWTerm_constant_of_lt | CylinderAWTerms.lean | 検証済み | 最後より前の AW 項の区間の定数単体上の零性 |
+| chainHomotopyInterval_naturality | ChainIntervalEvaluationChainNaturality.lean | 検証済み | 端点と鎖ホモトピーの自然な正方形から区間評価の実鎖写像の自然性 |
 | normalizedMapReconstruct / normalizedMapReconstruct_comp | NormalizedMapReconstruction.lean | 検証済み | Dold–Kan の実同値からの単体的射の復元と合成則 |
 | extraDegeneracy_positive_boundary / extraDegeneracy_fill_cycle | ExtraDegeneracyContraction.lean | 検証済み | 正次数の鎖収縮等式とサイクルの明示的な充填 |
 | shuffleBoundary_horizontal_succ / shuffleBoundary_vertical_succ | ShuffleBoundaryDecomposition.lean | 検証済み | 両因子の通常微分への一致と零次の端 |
@@ -743,3 +747,8 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - `chainHomotopyInterval_comm` は q=0,1,≥2 の三場合を合成し、全テンソル区間の実評価の微分可換性を証明する。`chainHomotopyInterval` で実鎖写像へ束ねた。
 - 頂点では端点写像の鎖写像性、辺では符号付きホモトピー等式、q≥2 では第二因子の自明性を使う。ホモトピーの評価の鎖写像性を仮定として受け取っていない。
 - 次は実単体的区間からの AW と `integerIntervalComparison` の合成、両端・自然性、Dold–Kan による実区間射への復元。
+
+- `chainHomotopyCylinderCore` は AW・区間比較・評価による正規化前の区間からの実鎖写像。`chainHomotopyCylinderMap` は始域の Moore 包含を合成する。
+- `chainHomotopyCylinderReconstruct` はこの実鎖写像から Dold–Kan の前像により実単体的区間射を構成する。まだ両端の証明を伴う `LinearizedHomotopy` としての完成とは表示しない。
+- `cylinderAWTerm_constant_of_lt` は最後より前の AW 項が端点の定数単体上で零になることを実写像で証明する。最後の項と全和の計算を実装中。
+- `chainHomotopyInterval_naturality` により鎖区間評価の実鎖写像自体の自然性は検証済み。復元の同変性は AW・Moore 射影・Dold–Kan の忠実性を通して次に接続する。

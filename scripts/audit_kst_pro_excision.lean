@@ -2727,3 +2727,45 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.chainHomotopyInterval
 #print axioms SerrePositivity.KST.ProExcision.chainHomotopyInterval
+
+#check @SerrePositivity.KST.ProExcision.chainHomotopyCylinderCore
+#print axioms SerrePositivity.KST.ProExcision.chainHomotopyCylinderCore
+
+#check @SerrePositivity.KST.ProExcision.chainHomotopyCylinderMap
+#print axioms SerrePositivity.KST.ProExcision.chainHomotopyCylinderMap
+
+#check @SerrePositivity.KST.ProExcision.chainHomotopyCylinderReconstruct
+#print axioms SerrePositivity.KST.ProExcision.chainHomotopyCylinderReconstruct
+
+#check @SerrePositivity.KST.ProExcision.chainHomotopyCylinderReconstruct_map
+#print axioms SerrePositivity.KST.ProExcision.chainHomotopyCylinderReconstruct_map
+
+#check @SerrePositivity.KST.ProExcision.intervalSimplexVertex_constant
+#print axioms SerrePositivity.KST.ProExcision.intervalSimplexVertex_constant
+
+#check @SerrePositivity.KST.ProExcision.intervalConstant_map
+#print axioms SerrePositivity.KST.ProExcision.intervalConstant_map
+
+#check @SerrePositivity.KST.ProExcision.integerIntervalComparison_constant_zero
+#print axioms SerrePositivity.KST.ProExcision.integerIntervalComparison_constant_zero
+
+#check @SerrePositivity.KST.ProExcision.integerIntervalComparison_constant_succ
+#print axioms SerrePositivity.KST.ProExcision.integerIntervalComparison_constant_succ
+
+#check @SerrePositivity.KST.ProExcision.integerIntervalComparison_constant_of_pos
+#print axioms SerrePositivity.KST.ProExcision.integerIntervalComparison_constant_of_pos
+
+#check @SerrePositivity.KST.ProExcision.cylinderAWTerm
+#print axioms SerrePositivity.KST.ProExcision.cylinderAWTerm
+
+#check @SerrePositivity.KST.ProExcision.chainHomotopyCylinderCore_eq_sum
+#print axioms SerrePositivity.KST.ProExcision.chainHomotopyCylinderCore_eq_sum
+
+#check @SerrePositivity.KST.ProExcision.cylinderAWTerm_eq
+#print axioms SerrePositivity.KST.ProExcision.cylinderAWTerm_eq
+
+#check @SerrePositivity.KST.ProExcision.cylinderAWTerm_constant_of_lt
+#print axioms SerrePositivity.KST.ProExcision.cylinderAWTerm_constant_of_lt
+
+#check @SerrePositivity.KST.ProExcision.chainHomotopyInterval_naturality
+#print axioms SerrePositivity.KST.ProExcision.chainHomotopyInterval_naturality
