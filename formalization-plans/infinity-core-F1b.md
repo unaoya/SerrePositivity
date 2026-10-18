@@ -20,7 +20,7 @@ sorry・追加公理・文献入力を使わず、監査で許す公理は
 | B1 / F1e | 単位・余単位と h Fun の三角恒等式、自然な写像空間対応との特徴づけ、合成、随伴関手の一意性 | Kerodon [Def 6.1.1.1](https://kerodon.net/tag/02CG)、[§6.1.3](https://kerodon.net/tag/02D5)、[§6.1.5](https://kerodon.net/tag/02DM)、[Def 6.2.1.1・Prop 6.2.1.17](https://kerodon.net/tag/02EJ)、[Prop 6.2.6.1](https://kerodon.net/tag/02FV)・[Cor 6.2.6.5](https://kerodon.net/tag/02FX) / HTT §5.2 | 完了（全パラメータの族の前層による自然性の模型） |
 | B2 / F1f | 充満部分 ∞ 圏への反射、局所対象、冪等性、局所化の普遍性の型と反射的な場合の構成 | Kerodon [§6.2.2](https://kerodon.net/tag/02F5)、[Cor 6.2.2.26](https://kerodon.net/tag/02FF)、[Def 6.3.1.9・Prop 6.3.1.13](https://kerodon.net/tag/01ME)、[Prop 6.3.3.7](https://kerodon.net/tag/02FY) / HTT §5.2.7 | 完了（同じ宇宙の標的に対する普遍性） |
 | B3 / F1g 前半 | right cofinal、Quillen A、A2h の始対象による limit 計算の双対的回収 | Kerodon [Def 7.2.1.1](https://kerodon.net/tag/02N1)、[Thm 7.2.3.1](https://kerodon.net/tag/02NX) / HTT Thm 4.1.3.1 | 完了（左右の Quillen A と二宇宙版 A2h の同じ制限写像の回収） |
-| B4 / F1g 後半 | slice の極限による左右 Kan 拡張、h での一意性、各点の存在、関手全体への組み立て | Kerodon [Notation 7.3.1.1・Def 7.3.1.2](https://kerodon.net/tag/02Y7)、Variant 7.3.1.5、§7.3.5 / HTT §4.3 | 進行中（指定自然変換の比較錐、各点の値・一意性、左右比較錐の選択不変性、左右の指定自然変換の h 不変性、h Fun の射への降下） |
+| B4 / F1g 後半 | slice の極限による左右 Kan 拡張、h での一意性、各点の存在、関手全体への組み立て | Kerodon [Notation 7.3.1.1・Def 7.3.1.2](https://kerodon.net/tag/02Y7)、Variant 7.3.1.5、§7.3.5 / HTT §4.3 | 進行中（指定自然変換の比較錐、各点の値・一意性、左右比較錐の選択不変性、左右の h 不変性、普遍写像性を仮定した大域的一意性、相対 join 表示） |
 | B5 | nerve による古典随伴・Kan 拡張の回収と監査 | 上記と通常の圏の随伴・Kan 拡張 | 未着手（監査スクリプトは稼働中） |
 
 ## 2. 設計上の決定
@@ -380,12 +380,28 @@ slice での制限の自然性を使い、異なる端点表示の照合は h �
 `..._iff_of_representative` は元の射を表す任意のホモトピーによる判定との一致、
 `..._homotopy` は実際のホモトピーの類を入力したときの元の条件との一致を与える。
 
-**B4 は未完了。**
-h Fun(C,D) での大域的一意性、極限からの点ごとの存在と大域的組み立てが残る。
+`KanUniversalProperty` は正確な比較写像
+`rightKanHomMap δ α G : Hom(G,F) → Hom(Gδ,F₀)` と
+`leftKanHomMap δ β G : Hom(F,G) → Hom(F₀,Gδ)` の全単射性を
+`RightKanHomUniversal`・`LeftKanHomUniversal` として述べる。
+この全単射性を**明示的に仮定した** `rightKanHomUniversalIso`・`leftKanHomUniversalIso` は
+h Fun(C,D) の同型を作り、両方向の指定自然変換との両立と比較射の一意性を証明する。
+点ごとの Kan 条件からこの仮定を導く定理は未完了であり、B4 の大域的一意性はまだ未達成。
+
+`KanRelativeJoinRealization` は任意の δ に対し、左指定自然変換を貼った写像円柱の図式を
+相対 join δ⋆_C C 上の図式と円柱全体の自然同型で表示する。
+`leftKanRelativeJoinRealization_nonempty` は円柱比較の前合成の同値の本質的全射性を使う。
+`prismIso`・`leftIso`・`rightIso` は一つの比較を制限して得るため、独立な端点の同型は選ばない。
+δ の単射性を要求しない代わりに、端点の制限は自然同型として保持する。端点の厳密化は未完了。
+
+**B4 は未完了。** 点ごとの Kan 条件からの h Fun(C,D) での大域的一意性、
+極限からの点ごとの存在と大域的組み立てが残る。
 各点の `valueIso` を大域的な同型の証明とは扱わない。
 
 ### 次の工程
 
+相対 join 表示の端点の厳密化・同型不変性と、全部分 ∞ 圏からの相対 Kan 拡張の
+写像空間の制限定理（Kerodon Prop 7.3.6.7・Cor 7.3.6.9）を整える。
 点ごとの Kan 条件から h Fun 全体の普遍写像性（Kerodon Prop 7.3.6.1 の左右版）を導き、
 Remark 7.3.6.6 の大域的一意性へ接続する。
 普遍写像性だけの条件は一般には点ごとの Kan 条件より弱い（§7.3.6 冒頭・Cor 7.3.6.5）。
@@ -396,8 +412,8 @@ A6 の `exists_pointwiseLimitCone`・`hasLimit_of_hasPointwiseLimits`・
 B5 の古典 nerve に戻る検査も未完了。
 全体の α2b 目標は継続中。
 
-対象ビルド2288 jobs、公理監査2263宣言（標準三公理のみ）が成功。
-推移的 import のリポジトリ内617モジュールに straightening 依存なし。
+対象ビルド2373 jobs、公理監査2318宣言（標準三公理のみ）が成功。
+推移的 import のリポジトリ内702モジュールに straightening 依存なし。
 
 ## 4. 主要宣言
 
@@ -554,3 +570,8 @@ B5 の古典 nerve に戻る検査も未完了。
 | `LeftKanCoconeTransport.coconeFamily_opIso_of_homMk_eq`・`isLeftKanExtension_iff_of_homMk_eq` | 指定自然変換の h の等式による左比較余錐の反転同型と左 Kan 条件の不変性 | 済 |
 | `IsRightKanExtensionHom/IsLeftKanExtensionHom` | h Fun の指定した射に対する左右 Kan 条件 | 済 |
 | `isRightKanExtensionHom_iff_of_representative/isLeftKanExtensionHom_iff_of_representative`・`..._homotopy` | 任意の代表による判定と元の点ごとの定義との一致 | 済 |
+
+| `rightKanHomMap/leftKanHomMap`・`RightKanHomUniversal/LeftKanHomUniversal` | 指定自然変換による大域的 Hom 比較と全単射性の明示的条件 | 型・定義済、点ごとの Kan 条件からの導出は未完了 |
+| `rightKanHomUniversalIso/leftKanHomUniversalIso`・`..._hom_fac/..._inv_fac/..._hom_unique` | 普遍写像性を仮定した h Fun の同型、両立と一意性 | 条件つき一般部分は済、Kan 条件のみからの大域的一意性は未完了 |
+| `leftKanCylinderDiagram`・`LeftKanRelativeJoinRealization`・`leftKanRelativeJoinRealization_nonempty` | 任意の δ の左指定自然変換の相対 join 表示と円柱全体の比較同型 | 済・端点の厳密化は未完了 |
+| `LeftKanRelativeJoinRealization.prismIso/leftIso/rightIso` | 一つの円柱比較から得る指定 prism と両端の同型 | 済 |

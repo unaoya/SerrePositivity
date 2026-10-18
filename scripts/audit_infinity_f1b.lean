@@ -1179,3 +1179,22 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.isLeftKanExtensionHom_iff_of_representative
 #check @SerrePositivity.InfinityCategories.isRightKanExtensionHom_homotopy
 #check @SerrePositivity.InfinityCategories.isLeftKanExtensionHom_homotopy
+
+#check @SerrePositivity.InfinityCategories.rightKanHomMap
+#check @SerrePositivity.InfinityCategories.leftKanHomMap
+#check @SerrePositivity.InfinityCategories.RightKanHomUniversal
+#check @SerrePositivity.InfinityCategories.LeftKanHomUniversal
+#check @SerrePositivity.InfinityCategories.rightKanHomUniversalIso
+#check @SerrePositivity.InfinityCategories.leftKanHomUniversalIso
+#check @SerrePositivity.InfinityCategories.rightKanHomUniversalIso_hom_fac
+#check @SerrePositivity.InfinityCategories.rightKanHomUniversalIso_inv_fac
+#check @SerrePositivity.InfinityCategories.rightKanHomUniversalIso_hom_unique
+#check @SerrePositivity.InfinityCategories.leftKanHomUniversalIso_hom_fac
+#check @SerrePositivity.InfinityCategories.leftKanHomUniversalIso_inv_fac
+#check @SerrePositivity.InfinityCategories.leftKanHomUniversalIso_hom_unique
+#check @SerrePositivity.InfinityCategories.leftKanCylinderDiagram
+#check @SerrePositivity.InfinityCategories.LeftKanRelativeJoinRealization
+#check @SerrePositivity.InfinityCategories.leftKanRelativeJoinRealization_nonempty
+#check @SerrePositivity.InfinityCategories.LeftKanRelativeJoinRealization.prismIso
+#check @SerrePositivity.InfinityCategories.LeftKanRelativeJoinRealization.rightIso
+#check @SerrePositivity.InfinityCategories.LeftKanRelativeJoinRealization.leftIso
