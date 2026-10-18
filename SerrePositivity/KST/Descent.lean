@@ -70,6 +70,9 @@ public import SerrePositivity.KST.Descent.SpecAction
 public import SerrePositivity.KST.Descent.AffineOrbitCovering
 public import SerrePositivity.KST.Descent.TensorBaseChangeAction
 public import SerrePositivity.KST.Descent.GeometricBaseChange
+public import SerrePositivity.KST.Descent.ClosedCenterTransitivity
+public import SerrePositivity.KST.Descent.OrbitCenterInduction
+public import SerrePositivity.KST.Descent.ClosedCoverGeometry
 
 /-!
 # K-L8：論文 §3 の降下
@@ -106,6 +109,8 @@ Noether な終域への全射閉埋め込みの冪零性と、冪零な基底変
 既存の環論的な幾何的推移性から Spec の点のファイバーの推移性を導き、
 切断を持つ有限型アフィン対象について、移動切断の実際の像の被覆へ接続する。
 任意の係数拡大での幾何的推移性の保存と、基底変更後の移動切断の被覆も公開する。
+実際の閉中心への切断・点の推移性・被約化後の被覆の移行と、
+二つの閉部分の被覆による実際の抽象 blowup 正方形も公開する。
 
 ## 規約
 最小公理 (1)–(8)、Čech 降下、主定理の証明、E の実現は未完成。

@@ -121,6 +121,15 @@ noncomputable def reducedClosedAsFiniteType {S : Scheme.{u}} (X : FiniteTypeSche
   exact ⟨Over.mk (reducedClosedInclusion Z ≫ X.obj.hom),
     locallyOfFiniteType_comp _ _, quasiCompact_comp _ _⟩
 
+/-- 概要：有限型の圏内の被約閉中心は被約（論文 定理 3.1）。
+方針：消滅イデアル層から構成した被約閉部分スキームの性質を使う。
+規約：元の対象 X の被約性は不要。
+使われ方：中心上の切断を引き戻しの始域の被約化へ持ち上げる。 -/
+instance reducedClosedAsFiniteType_isReduced {S : Scheme.{u}}
+    (X : FiniteTypeSchemes S) (Z : Closeds X.obj.left) :
+    IsReduced (reducedClosedAsFiniteType X Z).obj.left :=
+  inferInstanceAs (IsReduced (reducedClosedSubscheme Z))
+
 /-- 概要：有限型スキームの圏における閉中心の包含（論文 §3）。
 方針：構造射との可換式を持つ `Over` の射を充満部分圏へ入れる。
 規約：基底 S を保つ射。
