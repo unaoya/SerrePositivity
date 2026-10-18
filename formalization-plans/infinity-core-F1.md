@@ -1153,5 +1153,22 @@ lemma nerveToCoherent_vertex {C : Type v} [Category.{u} C] [SimplicialCategory C
     (nerveToCoherent C).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X) =
       coherentNerveVertex X
 
+noncomputable def coherentNerveEdge {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {X Y : C} (f : X ⟶ Y) :
+    (SimplicialNerve C).Edge (coherentNerveVertex X) (coherentNerveVertex Y)
+
+lemma coherentNerveEdge_edge {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {X Y : C} (f : X ⟶ Y) :
+    (coherentNerveEdge f).edge =
+      (nerveToCoherent C).app (Opposite.op ⦋1⦌) (ComposableArrows.mk₁ f)
+
+lemma coherentNerveEdge_id {C : Type v} [Category.{u} C] [SimplicialCategory C] (X : C) :
+    coherentNerveEdge (𝟙 X) = SSet.Edge.id (coherentNerveVertex X)
+
+noncomputable def coherentNerveCompStruct {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y Z : C} (f : X ⟶ Y) (g : Y ⟶ Z) :
+    SSet.Edge.CompStruct (coherentNerveEdge f) (coherentNerveEdge g)
+      (coherentNerveEdge (f ≫ g))
+
 end SerrePositivity.InfinityCategories
 ```

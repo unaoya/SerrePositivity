@@ -282,3 +282,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.enrichedFunctorOfOrderDiagram_precomp
 #check @SerrePositivity.InfinityCategories.nerveToCoherent
 #check @SerrePositivity.InfinityCategories.nerveToCoherent_vertex
+#check @SerrePositivity.InfinityCategories.coherentNerveEdge
+#check @SerrePositivity.InfinityCategories.coherentNerveEdge_edge
+#check @SerrePositivity.InfinityCategories.coherentNerveEdge_id
+#check @SerrePositivity.InfinityCategories.coherentNerveCompStruct
