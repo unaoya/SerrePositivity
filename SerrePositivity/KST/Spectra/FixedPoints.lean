@@ -1,5 +1,10 @@
 module
 
+public import SerrePositivity.KST.Spectra.BoundaryTensorMonomorphism
+public import SerrePositivity.KST.Spectra.TotalizationBoundaryLifting
+public import SerrePositivity.KST.Spectra.CosimplicialRelativeWhitehead
+public import SerrePositivity.KST.Spectra.TotalizationRelativeWhitehead
+
 public import SerrePositivity.KST.Spectra.TotalizationFibration
 
 public import SerrePositivity.KST.Spectra.TotalizationFunctor

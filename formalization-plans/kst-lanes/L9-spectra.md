@@ -33,7 +33,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・305 モジュール 3444 宣言の公理監査成功。
+対象ビルド・309 モジュール 3461 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -2565,4 +2565,38 @@ Reedy fibrant な係数では、パラメーターの horn を Reedy 次数帰�
 参照：Goerss–Jardine VII §4、VIII §1、HTT A.3.3。
 保存単位の対象ビルド 3746 jobs 成功。
 私有宣言を含む 305 モジュール 3444 宣言で標準三公理のみ。
+L9e は進行中。有理 Shapiro と通常の Tot から BF 模型への比較は引き続き未完了。
+
+## 87. L9e の通常の Tot の相対 Whitehead
+
+二つの境界包含の pushout-product を部分複体の積の和の包含と同定し、単射性を証明した。
+このため境界をパラメーターにした標準単体の射は Reedy 単射である。
+相対 matching が全ての単射に RLP を持つ係数の射は、通常の Tot 上でも全ての単射に RLP を持つ。
+両 Tot が Kan なら、この射は本レーンの全基点 π_* 同型である。
+
+さらに、各段で全基点 π_* 同型な Reedy fibration を扱った。
+低次数での相対 matching の単射 RLP を matching 対象へ送り、引き戻しの射にも移す。
+その引き戻しの射と元の成分の π_* 同型から、現在の相対 matching 射の π_* 同型を得る。
+Kan fibration の相対 Whitehead で現在の次数の単射 RLP が従い、次数帰納が閉じる。
+この証明では各段の始域の頂点を明示する。
+これは空な始域で全基点条件が空虚になる場合を扱いに混ぜないために必要である。
+点つき図式では各基点を使ってこの仮定を満たせる。
+
+従って、各段の全基点 π_* 同型である Reedy fibration は Kan な通常の Tot でも全基点 π_* 同型である。
+これは Reedy fibration という相対条件を持つ射についての結果であり、一般の係数同型の保存はまだ結論していない。
+次は一般の射を二つの Reedy fibration へ因子分解して比較する。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `SimplexTensorBoundary.productSquareArrowIso` | 同じ二辺から作る pushout-product の arrow 同型 |
+| `SimplexTensorBoundary.boundaryMap_reedy_mono` | 境界のパラメーターによる標準単体の Reedy 単射性 |
+| `CosimplicialTotalization.map_hasLiftingProperty` | パラメーター付きの持ち上げから Tot の持ち上げへの移送 |
+| `CosimplicialTotalization.map_rlp_monomorphisms` | 相対 matching の単射 RLP の Tot による保存 |
+| `CosimplicialRelativeWhitehead.matching_rlp_of_levelwise` | 各段の π_* 同型である Reedy fibration の相対 Whitehead |
+| `CosimplicialTotalization.map_piIsomorphism_of_reedyFibration` | Reedy fibration の Tot における全基点 π_* 同型保存 |
+| `PointedTotalization.map_piIsomorphism_of_reedyFibration` | 基点を参照頂点にした点つき版 |
+
+参照：Goerss–Jardine VII §4、VIII §1。
+保存単位の対象ビルド 3750 jobs 成功。
+私有宣言を含む 309 モジュール 3461 宣言で標準三公理のみ。
 L9e は進行中。有理 Shapiro と通常の Tot から BF 模型への比較は引き続き未完了。
