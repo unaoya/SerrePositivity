@@ -311,3 +311,17 @@ public import SerrePositivity.InfinityCategories.Core.FixedDiagramPrecomposition
 public import SerrePositivity.InfinityCategories.Core.FixedDiagramCylinderIso
 
 public import SerrePositivity.InfinityCategories.Core.JoinCylinderFixedDiagram
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinTensorExt
+
+public import SerrePositivity.InfinityCategories.Core.FatJoinTensorNaturality
+
+public import SerrePositivity.InfinityCategories.Core.LaxSlice
+
+public import SerrePositivity.InfinityCategories.Core.LaxSliceInputs
+
+public import SerrePositivity.InfinityCategories.Core.LaxSliceUncurry
+
+public import SerrePositivity.InfinityCategories.Core.LaxSliceCurryUnit
+
+public import SerrePositivity.InfinityCategories.Core.LaxSliceUniversal

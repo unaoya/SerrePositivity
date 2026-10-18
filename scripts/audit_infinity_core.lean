@@ -2913,3 +2913,105 @@ end InitialCofinalityUniverses
 
 #check @SerrePositivity.InfinityCategories.nonempty_fixedDiagramVertexIso_of_joinCylinder
 #print axioms SerrePositivity.InfinityCategories.nonempty_fixedDiagramVertexIso_of_joinCylinder
+
+#check @SerrePositivity.InfinityCategories.fatJoinTensorInputShuffle
+#print axioms SerrePositivity.InfinityCategories.fatJoinTensorInputShuffle
+
+#check @SerrePositivity.InfinityCategories.fatJoinTensorCylinderShuffle
+#print axioms SerrePositivity.InfinityCategories.fatJoinTensorCylinderShuffle
+
+#check @SerrePositivity.InfinityCategories.fatJoinTensorLeftRight
+#print axioms SerrePositivity.InfinityCategories.fatJoinTensorLeftRight
+
+#check @SerrePositivity.InfinityCategories.fatJoinTensorLeft
+#print axioms SerrePositivity.InfinityCategories.fatJoinTensorLeft
+
+#check @SerrePositivity.InfinityCategories.fatJoinTensorLeft_inl
+#print axioms SerrePositivity.InfinityCategories.fatJoinTensorLeft_inl
+
+#check @SerrePositivity.InfinityCategories.fatJoinTensorLeft_inr
+#print axioms SerrePositivity.InfinityCategories.fatJoinTensorLeft_inr
+
+#check @SerrePositivity.InfinityCategories.fatJoinTensorLeft_cylinder
+#print axioms SerrePositivity.InfinityCategories.fatJoinTensorLeft_cylinder
+
+#check @SerrePositivity.InfinityCategories.fatJoin_tensorRight_hom_ext
+#print axioms SerrePositivity.InfinityCategories.fatJoin_tensorRight_hom_ext
+
+#check @SerrePositivity.InfinityCategories.fatJoin_tensorLeft_hom_ext
+#print axioms SerrePositivity.InfinityCategories.fatJoin_tensorLeft_hom_ext
+
+#check @SerrePositivity.InfinityCategories.fatJoinTensorLeft_naturality
+#print axioms SerrePositivity.InfinityCategories.fatJoinTensorLeft_naturality
+
+#check @SerrePositivity.InfinityCategories.fatJoinTensorLeft_projection
+#print axioms SerrePositivity.InfinityCategories.fatJoinTensorLeft_projection
+
+#check @SerrePositivity.InfinityCategories.fatJoinTensorLeft_unit
+#print axioms SerrePositivity.InfinityCategories.fatJoinTensorLeft_unit
+
+#check @SerrePositivity.InfinityCategories.laxSlice
+#print axioms SerrePositivity.InfinityCategories.laxSlice
+
+#check @SerrePositivity.InfinityCategories.laxSlice_quasicategory
+#print axioms SerrePositivity.InfinityCategories.laxSlice_quasicategory
+
+#check @SerrePositivity.InfinityCategories.coneFamilyLaxSliceMap
+#print axioms SerrePositivity.InfinityCategories.coneFamilyLaxSliceMap
+
+#check @SerrePositivity.InfinityCategories.isQCatEquivalence_coneFamilyLaxSliceMap
+#print axioms SerrePositivity.InfinityCategories.isQCatEquivalence_coneFamilyLaxSliceMap
+
+#check @SerrePositivity.InfinityCategories.laxSliceCurryFamily
+#print axioms SerrePositivity.InfinityCategories.laxSliceCurryFamily
+
+#check @SerrePositivity.InfinityCategories.laxSliceCurryFamily_fixed
+#print axioms SerrePositivity.InfinityCategories.laxSliceCurryFamily_fixed
+
+#check @SerrePositivity.InfinityCategories.laxSliceCurry
+#print axioms SerrePositivity.InfinityCategories.laxSliceCurry
+
+#check @SerrePositivity.InfinityCategories.laxSliceLeftInput
+#print axioms SerrePositivity.InfinityCategories.laxSliceLeftInput
+
+#check @SerrePositivity.InfinityCategories.laxSliceCylinderInput
+#print axioms SerrePositivity.InfinityCategories.laxSliceCylinderInput
+
+#check @SerrePositivity.InfinityCategories.laxSliceCylinderInput_zero
+#print axioms SerrePositivity.InfinityCategories.laxSliceCylinderInput_zero
+
+#check @SerrePositivity.InfinityCategories.laxSliceCylinderInput_one
+#print axioms SerrePositivity.InfinityCategories.laxSliceCylinderInput_one
+
+#check @SerrePositivity.InfinityCategories.laxSliceFamily_fixed
+#print axioms SerrePositivity.InfinityCategories.laxSliceFamily_fixed
+
+#check @SerrePositivity.InfinityCategories.laxSliceUncurry
+#print axioms SerrePositivity.InfinityCategories.laxSliceUncurry
+
+#check @SerrePositivity.InfinityCategories.laxSliceUncurry_fixed
+#print axioms SerrePositivity.InfinityCategories.laxSliceUncurry_fixed
+
+#check @SerrePositivity.InfinityCategories.laxSliceUncurry_inl
+#print axioms SerrePositivity.InfinityCategories.laxSliceUncurry_inl
+
+#check @SerrePositivity.InfinityCategories.laxSliceUncurry_cylinder
+#print axioms SerrePositivity.InfinityCategories.laxSliceUncurry_cylinder
+
+#check @SerrePositivity.InfinityCategories.laxSliceLeftInput_curryFamily
+#print axioms SerrePositivity.InfinityCategories.laxSliceLeftInput_curryFamily
+
+#check @SerrePositivity.InfinityCategories.laxSliceCylinderInput_curryFamily
+#print axioms SerrePositivity.InfinityCategories.laxSliceCylinderInput_curryFamily
+
+#check @SerrePositivity.InfinityCategories.laxSliceUncurry_curry
+#print axioms SerrePositivity.InfinityCategories.laxSliceUncurry_curry
+
+#check @SerrePositivity.InfinityCategories.laxSliceCurryFamily_uncurry
+#print axioms SerrePositivity.InfinityCategories.laxSliceCurryFamily_uncurry
+
+#check @SerrePositivity.InfinityCategories.laxSliceCurry_uncurry
+#print axioms SerrePositivity.InfinityCategories.laxSliceCurry_uncurry
+
+#check @SerrePositivity.InfinityCategories.laxSliceHomEquiv
+#print axioms SerrePositivity.InfinityCategories.laxSliceHomEquiv

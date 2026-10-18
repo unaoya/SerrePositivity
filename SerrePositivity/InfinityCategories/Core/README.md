@@ -512,3 +512,7 @@ A6 続き：可逆円柱による関手の同型の判定と、共通図式を�
 A6 続き：`nonempty_functorIso_iff_sliceOverFixedDiagramVertexIso` により Kerodon Lemma 4.6.4.25 の同型判定が両方向で完成。任意の A と K、quasicategory X、p : K ⟶ X と f g : A ⟶ sliceOver p に対し、関手の同型の存在と固定図式上の join の関手の同型の存在が同値。新規17宣言の全型・前提は計画 §6。既存 API は維持。fat join の普遍性との接続、slice 比較射の同値性・A6 主定理は未完了、A4・A5 は未着手。
 
 上記保存単位の検証：Core ビルド1883 jobs成功、累計1369宣言の公理監査は標準3公理のみ。
+
+A6 続き：`laxSliceHomEquiv p A : (A ⟶ laxSlice p) ≃ {F : fatJoin A K ⟶ X // fatJoinInr A K ≫ F = p}` を任意の A、K、X で証明。太い slice は太い零単体の join の固定図式上の内部 Hom の fiber で、X が quasicategory なら quasicategory。`coneFamilyLaxSliceMap p` は X が quasicategory のとき同値。太い join と直積の比較と curry・uncurry の両方の逆則も追加。新規34宣言の全型・前提は計画 §6。既存 API は維持。パラメーター付きの同型類の対応・slice 比較射の同値性・A6 主定理は未完了、A4・A5 は未着手。
+
+上記保存単位の検証：Core ビルド1891 jobs成功、累計1403宣言の公理監査は標準3公理のみ。
