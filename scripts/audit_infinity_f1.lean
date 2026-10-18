@@ -710,3 +710,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.isInvertibleEdge_preFiber_of_vertexSurjective
 #check @SerrePositivity.InfinityCategories.kanComplex_preFiber_of_vertexSurjective
 #check @SerrePositivity.InfinityCategories.intervalMappingSpace_kanComplex
+#check @SerrePositivity.InfinityCategories.rightMappingSpacePrism_hom_ext
+#check @SerrePositivity.InfinityCategories.leftMappingSpacePrism_hom_ext
+#check @SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_mono
+#check @SerrePositivity.InfinityCategories.cosliceFiberToIntervalMappingSpace_mono
+#check @SerrePositivity.InfinityCategories.pinchedHomLeftToIntervalMappingSpace_mono

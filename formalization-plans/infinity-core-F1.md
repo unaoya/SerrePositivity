@@ -3078,5 +3078,22 @@ lemma kanComplex_preFiber_of_vertexSurjective {A B X : SSet.{u}} [Quasicategory 
 instance intervalMappingSpace_kanComplex {X : SSet.{u}} [Quasicategory X] (x y : X _⦋0⦌) :
     KanComplex (intervalMappingSpace x y)
 
+lemma rightMappingSpacePrism_hom_ext {A X : SSet.{u}} {f g : join A (Δ[0] : SSet.{u}) ⟶ X}
+    (h : rightMappingSpacePrism A ≫ f = rightMappingSpacePrism A ≫ g)
+    (hy : joinInr A Δ[0] ≫ f = joinInr A Δ[0] ≫ g) : f = g
+
+lemma leftMappingSpacePrism_hom_ext {A X : SSet.{u}} {f g : join (Δ[0] : SSet.{u}) A ⟶ X}
+    (h : leftMappingSpacePrism A ≫ f = leftMappingSpacePrism A ≫ g)
+    (hx : joinInl Δ[0] A ≫ f = joinInl Δ[0] A ≫ g) : f = g
+
+instance pinchedHomToIntervalMappingSpace_mono {X : SSet.{u}} (x y : X _⦋0⦌) :
+    Mono (pinchedHomToIntervalMappingSpace x y)
+
+instance cosliceFiberToIntervalMappingSpace_mono {X : SSet.{u}} (x y : X _⦋0⦌) :
+    Mono (cosliceFiberToIntervalMappingSpace x y)
+
+instance pinchedHomLeftToIntervalMappingSpace_mono {X : SSet.{u}} (x y : X _⦋0⦌) :
+    Mono (pinchedHomLeftToIntervalMappingSpace x y)
+
 end SerrePositivity.InfinityCategories
 ```
