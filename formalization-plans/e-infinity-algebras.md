@@ -148,90 +148,58 @@ simplicialNerve_quasicategory (C : Type u)
 `#check @`・`#print axioms` が正本。数学は `InfinityCategories/README.md` の γ1 節。
 実施の経緯・検証はコミットに置く。追加の充填・整合性仮定はない。
 
-### γ1.5：Dold–Kan 豊穣化と dg nerve の比較（進行中）
+### γ1.5：Dold–Kan 豊穣化と dg nerve の比較（完了）
 
 前提は `[CommRing R] [DGCategory R D]`。namespace は `DoldKanComparison`。
-γ1.5a の設計と符号は `InfinityCategories/README.md` に記録済み。
-γ1.5b の単体的圏と局所 Kan 性、γ1.5c の比較写像と低次の一致は完了。
+正本の数学・符号・設計は `InfinityCategories/README.md` に置く。
+
+| 工程 | 完成した内容 |
+| --- | --- |
+| γ1.5a | 比較の向き `N^hc(C_Δ) → N_dg(C)`、切断と次数・AW の符号、写像空間による証明方針 |
+| γ1.5b | Hom を実際の Mathlib Γ と自然同型で同定、全 AW 豊穣則、局所 Kan 性と coherent nerve |
+| γ1.5c | 全ての面・退化と可換な比較射、頂点・辺・三角形の成分の一致 |
+| γ1.5d | 実際の pinched 比較射のホモトピー逆、充満忠実性と本質的全射性、A3e による同値 |
 
 ```lean
 standardDoldKanModuleIso (x y : D) : standardModule x y ≅ doldKanHomModule x y
-homModuleDoldKanIso (x y : D) : homModule x y ≅ doldKanHomModule x y
 doldKanSimplicialCategory : SimplicialCategory (ClosedCategory R D)
 doldKanSimplicialCategory_locallyKan (x y : ClosedCategory R D) :
   SSet.KanComplex (SimplicialCategory.sHom x y)
-doldKanCoherentNerve : SSet.{max u v}
-coherentSimplex {n : ℕ} (s : doldKanCoherentNerve _⦋n⦌) : DGNerve.Simplex R D n
 coherentComparison : doldKanCoherentNerve (R := R) (D := D) ⟶ dgNerve R D
-coherentComparison_essentiallySurjective : IsEssentiallySurjective
-  (coherentComparison (R := R) (D := D))
-coherentPinchedStandardComparison (x y : D) :
-  coherentPinchedHom (R := R) x y ⟶
-    SSet.uliftFunctor.{v,u}.obj (standardHomSpace (R := R) x y)
-standardHomToCoherentPinched (x y : ClosedCategory R D) :
-  SSet.uliftFunctor.{v,u}.obj (standardHomSpace (R := R) (D := D) x y) ⟶
-    coherentPinchedHom (R := R) (D := D) x y
-standardHomToCoherentPinched_comp (x y : ClosedCategory R D) :
-  standardHomToCoherentPinched (R := R) x y ≫
-    coherentPinchedStandardComparison (R := R) (D := D) x y = 𝟙 _
-coherentComparison_fullyFaithful_iff_standard :
-  IsFullyFaithful (coherentComparison (R := R) (D := D)) ↔
-    ∀ x y : D,
-      IsSimplicialHomotopyEquivalence (coherentPinchedStandardComparison (R := R) x y)
+coherentComparison_obj {n : ℕ} (s : doldKanCoherentNerve _⦋n⦌) (a : Fin (n + 1)) :
+  (coherentComparison.app (Opposite.op ⦋n⦌) s).obj a = s.obj (.mk (ULift.up a))
+coherentPinchedStandardComparison_homotopyEquivalence (x y : ClosedCategory R D) :
+  IsSimplicialHomotopyEquivalence
+    (coherentPinchedStandardComparison (R := R) (D := D) x y)
+coherentPinchedComparison_homotopyEquivalence (x y : D) :
+  IsSimplicialHomotopyEquivalence (coherentPinchedComparison (R := R) (D := D) x y)
+coherentComparison_fullyFaithful : IsFullyFaithful (coherentComparison (R := R) (D := D))
+coherentComparison_essentiallySurjective :
+  IsEssentiallySurjective (coherentComparison (R := R) (D := D))
+coherentComparisonEquivalence :
+  QCatEquivalence (doldKanCoherentNerve (R := R) (D := D)) (dgNerve R D)
+coherentComparisonEquivalence_hom :
+  (coherentComparisonEquivalence (R := R) (D := D)).hom =
+    coherentComparison (R := R) (D := D)
+coherentComparison_isQCatEquivalence :
+  IsQCatEquivalence (coherentComparison (R := R) (D := D))
 ```
 
-Hom を実際の Mathlib Γ と自然同型で同定し、AW の全豊穣則と方程式の保存を証明済み。
-`coherentSimplexData_equation` が立方体評価による全ての既存 dg 方程式を証明する。
-`coherentSimplex_pullback` は全単調写像で引き戻しと可換で、退化も含む。
-`coherentComparison_obj`・`coherentComparison_edgeHom`・`coherentComparison_triangleHom` は
-対象、二端点だけの Path の零成分、`{0,2} → {0,1,2}` の旗の次数 −1 の成分との一致。
-三角形に追加の負号はない。追加の単射性・整合性・充填の仮定はない。
+頂点は元の対象、辺は二端点だけの Path の零成分、三角形は `{0,2} → {0,1,2}` の旗の
+次数 −1 の成分に一致する。三角形に追加の負号はない。
+`standardHomToCoherentPinched_comp` は逆順の合成の厳密な恒等式、
+`coherentPinchedStandardComparison_oppositeHomotopy` は同じ二射の反対側の合成の実際のホモトピー。
 
-γ1.5d では全頂点を対象から再構成する `coherentVertexEquiv` を構成し、本質的全射性を証明済み。
-`coherentPinchedComparison` は実際の pinched Hom の射、標準座標での各成分は N4 回収成分に
-`degreeSign (J.card−1)` を掛けた値。全ての面・退化と可換である。
-`standardHomToCoherentPinched` は F1 の確定済みの最大頂点の構成と自然性から得る逆向きの射。
-`cubeEvaluation_maximum` は降順立方体の評価が唯一の昇順旗の評価に `degreeSign m` を掛けた値と証明する。
-`standardHomToCoherentPinched_comp` は片側の合成が全次数で厳密に恒等となることを証明する。
-昇順旗の像の同定と端点の移送から実際の成分を計算し、次数符号の二重作用を相殺する。
-`coherentPinchedComparison_eq_pinchedHomMap` は固定端点の射を Core の射の端点移送に厳密に同定する。
-全頂点の再構成と自然同型による移送により、標準座標の射での充満忠実性の判定も完成した。
-F1 の補助解像の旗を native Path に送り、最大元と末尾への正規化した引き戻しを同定した。
-`resolutionHomValue s F : StandardSimplex R x y d` は各旗での実際の Hom 写像の値。
-`resolutionHomValue_standard` は標準 Hom からの射の値を最大元での引き戻しに同定する。
-`resolutionHomValue_pullback` は固定した任意の s について旗の全ての引き戻しとの可換性を証明する。
-`resolutionHomMap s : coherentResolutionSimplex n ⟶ standardHomSpace x y` は実際の単体集合の射。
-`resolutionHomMap_standard` は標準単体から来る場合に最大元の射影を通る射へ同定する。
-`resolutionHomMap_reindex` は s の面・退化と `coherentResolutionMap` の前合成との整合を証明する。
-旗の押し出しと Path の像の一致から導き、旗と s の両方の次数について自然性が揃った。
-`resolutionHomEquiv x y n` は固定次数の pinched 単体と解像から標準 Hom への射の型の同値。
-実際の `resolutionHomMap` を F1 の確定済みの構成に厳密に同定し、両側の回収則を移した。
-逆構成の面・退化との整合も `resolutionHomEquiv_symm_reindex` で証明済み。
-`resolutionHomIso` はこれを単体集合の同型にまとめる。
-`standardHomToCoherentPinched_resolutionHomIso` は逆向きの射を解像の標準比較射へ厳密に同定する。
-`coherentComparison_fullyFaithful_iff_resolution` は厳密な片側の逆と Kan 性を使い、
-充満忠実性を全ての標準 Hom に対する解像の標準比較射の実際のホモトピー同値性と同値にする。
-残りはこの右辺の証明と ∞ 圏の同値。一般の解像の境界の貼り合わせは未接続。
-低次の基底では `resolutionProjectionIsoOfLeOne` が `n ≤ 1` の解像の射影を厳密な同型にする。
-`standardCoherentPinchedEquivOfLeOne` は同じ次数での標準 Hom と coherent pinched 単体の同値。
-逆方向は実際の標準比較射で、反対側の合成も単体上で厳密に恒等となる。高次の同値性は未証明。
-`normalizeResolutionFlag` は一般の増大集合族を最初の最大元で正規化し、全引き戻しと可換。
-`resolutionInsertHomotopy i` は解像の恒等射から `k ↦ max i k` の押し出しへの実際のホモトピー。
-選んだ i 以外の頂点を追加しないことも証明済み。
-`resolutionHornInsertHomotopy i` は台で定義したホーンの旗の部分複体内への制限。
-i ≠ 0 では終端の射が零頂点を除く面を通る厳密な因子分解も証明済み。
-ホーンの左 Kan 拡張との同定、縮約の完成、比較射の反対側の合成のホモトピーは未証明。
-Kan 標的の前合成の実際のホモトピー同値性を使い、向き付きホモトピー不変性と二対六則を証明した。
-`resolutionPositiveFace_inclusion_isKanPrecompositionEquivalence` は i ≠ 0 のホーンの旗の模型に
-零頂点を除く旗の面を含める射について、この条件を証明する。
-標準ホーン側も同じ面の包含の比較を証明し、面の射影の可換正方形で解像側へ接続した。
-`resolutionHornProjection_isKanPrecompositionEquivalence_of_ne_zero` は i ≠ 0 のホーンの射影が
-任意の Kan 標的への写像空間で実際のホモトピー同値を与えることを証明する。
-i = 0、ホーンの左 Kan 拡張との同定、一般の解像の比較の同値性は未証明。
-判定への移送や片側の逆の性質だけでは、充満忠実性やホモトピー同値を証明したとは数えない。
-A3e の `qCatEquivalenceOfFullyFaithfulEssentiallySurjective` は実装済みで、写像空間の比較後に適用する。
+F1 の確定済みの一般の解像の射影の同値性により、余単位をホモトピーまで降下する。
+円筒の比較と随伴によるホモトピーの転置、前合成による反映で両合成を計算する。
+`resolutionComparison_homotopyEquivalence K` の前提は K の Kan 性のみで、
+右随伴の値の Kan 性を追加しない。この逆を宇宙の持ち上げで移し、既存の判定から
+具体的な比較射の充満忠実性を得て A3e に適用した。
+局所ホーン補題の i = 0 への拡張は最終証明に必要としない。
+γ1.5 の未完了項目はない。E2b 本体と γ3 は後続の別工程。
 
-公開625宣言の正確な型・全前提・依存公理は `scripts/audit_dold_kan_comparison.lean` の
+公開645宣言の正確な型・全前提・依存公理は `scripts/audit_dold_kan_comparison.lean` の
 `#check @`・`#print axioms` が正本。依存公理は標準三公理のみ。
 詳しい API と数学は `InfinityCategories/README.md`、整理前の索引は
 [archive/e-infinity-algebras-gamma1.5-api.md](archive/e-infinity-algebras-gamma1.5-api.md) を参照する。
+実施の経緯と検証はコミットメッセージに置く。

@@ -1234,7 +1234,8 @@ simplicialNerve_quasicategory (C : Type u)
 
 ## γ1.5：Dold–Kan 豊穣化と dg nerve の比較
 
-γ1.5a（紙の設計）は完了。以下は γ1.5b 以降の実装で用いる設計と規約の正本。
+γ1.5a〜d は完了。任意の `[CommRing R] [DGCategory R D]` に対して、構成済みの比較射を
+順方向とする `coherentComparisonEquivalence` を得た。以下は設計・規約・数学の正本。
 原典は [HA 1.3.1.12–1.3.1.17](https://www.math.ias.edu/~lurie/papers/HA.pdf)、
 [Kerodon 2.5.7](https://kerodon.net/tag/00RF)、
 [2.5.8](https://kerodon.net/tag/00S0)、[2.5.9](https://kerodon.net/tag/00SC)。
@@ -1328,7 +1329,8 @@ A3e の `qCatEquivalenceOfFullyFaithfulEssentiallySurjective` は Core に実装
 この判定に充満忠実性と頂点上恒等による本質的全射性を渡して `QCatEquivalence` を構成する。
 比較写像・写像空間の比較・同値判定への接続が全て済むまでは、∞ 圏の同値の完成とは数えない。
 
-現在地：γ1.5a の設計記録と γ1.5b の単体的圏 C_Δ の構成・局所 Kan 性が完了。
+現在地：γ1.5a の設計、γ1.5b の単体的圏と局所 Kan 性、γ1.5c の比較写像、
+γ1.5d の写像空間の実際のホモトピー逆と quasicategory の同値が完了。
 namespace `DoldKanComparison` の `homModule x y : SimplicialObject (ModuleCat.{u} R)` と
 `homSpace x y : SSet.{u}` は N4 の線形解を全ての単調写像に関してまとめたもの。
 `homSpaceLiftIso x y` は `SSet.uliftFunctor.{v,u}.obj (homSpace x y)` と
@@ -1338,7 +1340,8 @@ namespace `DoldKanComparison` の `homModule x y : SimplicialObject (ModuleCat.{
 `degreeSign` は ε_k を二項係数で実装し、`degreeSign_differential` が微分の符号の変換、
 `degreeSign_cut` が AW 合成での交差符号を与える。符号による作用は二度で恒等になる。
 `homSpaceVertexCycleEquiv` は零単体と閉次数零元の同値、`closedHomVertexEquiv` は
-`ClosedCategory R D` の射と零単体の同値である。まだ合成の保存を主張していない。
+`ClosedCategory R D` の射と零単体の同値である。合成との整合は
+`closedStandardVertexEquiv_comp` によって単体的圏の構成へ接続する。
 `standardSubmodule` は標準境界の独立な方程式を課した部分加群である。
 `standardSimplexEquiv` は N4 の解とこの標準方程式の解との全次数の R 線形同値。
 `standardPullback_val` は標準座標の引き戻しが有限集合の像による通常の作用と一致することを示す。
@@ -1369,7 +1372,8 @@ H^(−(n+1)) との同型で、追加の閉性・充填の仮定はない。
 `homSpaceDoldKanIso` はその台単体集合の同型であり、全ての面・退化と可換である。
 `doldKanHomSpaceKan` は N4 の線形充填をこの同型で移した Kan instance。
 `doldKanHomPinchedIso` は宇宙を持ち上げた DK Hom と dg nerve の右 pinched Hom の同型である。
-この同型はまだ coherent nerve の写像空間との比較ではない。
+coherent nerve の写像空間との比較は、後述の `resolutionHomIso` と
+`coherentPinchedStandardComparison_homotopyEquivalence` によって完成する。
 対象・集約ビルドは3916件で成功し、公開524宣言の型と公理監査は標準三公理のみ。
 正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean` に記録する。
 
@@ -1404,7 +1408,7 @@ Leibniz 則から得る左右の削除和を `AWIndex.boundaryPairEquiv` で、�
 `doldKanCoherentNerve : SSet.{max u v}` はこの C_Δ の coherent nerve であり、
 `doldKanCoherentNerve_quasicategory` は γ1 の一般定理から従う。
 前提は `[CommRing R] [DGCategory R D]` のみで、任意の通常の Category D は要求しない。
-γ1.5c の比較写像と低次の一致も完了。残りは γ1.5d の写像空間の比較および同値の証明。
+γ1.5c の比較写像と低次の一致、γ1.5d の写像空間の比較と同値の証明も完了。
 
 γ1.5c は完了。`cubeFlag e` は任意の番号付け `e : Fin m ≃ T` に対して、
 空集合から先頭 t 座標へ進む立方体の m 単体を作る。
@@ -1618,9 +1622,10 @@ coherentSimplex_pullback {m n : ℕ} (s : doldKanCoherentNerve _⦋n⦌)
 次数 −1 の最上位成分に等しいことを示す。三角形では t は一番の頂点であり、
 旗は `{0,2} → {0,1,2}`、追加の負号はない。既存の `differential_triangleHom` により
 `δh = f₁₂ ∘ f₀₁ − f₀₂` となる。これで γ1.5c の頂点・辺・二単体の検査を満たす。
-γ1.5d の pinched Hom の実際の単体的ホモトピー同値と ∞ 圏の同値は未証明。
+γ1.5d の pinched Hom の実際の単体的ホモトピー同値と ∞ 圏の同値は、
+後述の `ComparisonEquivalence.lean` で完成している。
 
-### γ1.5d：比較射と端点の同定（進行中）
+### γ1.5d：比較射と端点の同定（完了）
 
 `coherentConstant x n` は全ての対象を x、全ての Hom を dg 単位の定数単体に送る
 実際の豊穣関手である。`coherentVertex x` はその零単体で、
@@ -1726,7 +1731,8 @@ coherentComparison_fullyFaithful_iff_standard :
       IsSimplicialHomotopyEquivalence (coherentPinchedStandardComparison (R := R) x y)
 ```
 
-これは充満忠実性の判定への移送であり、右辺の実際のホモトピー逆はまだ証明していない。
+これは充満忠実性の判定への移送である。右辺の実際のホモトピー逆は、
+最後の解像の随伴による転置の証明で構成する。
 反対側の合成のホモトピーの構成には、F1 の確定済みの `CoherentResolutionFlag n d` を使う。
 `resolutionFlagPath F t` は各段の有限集合の持ち上げた像に追加した最終点を加えた native Path。
 始点は F.start であり、`resolutionFlagPathFunctor F` はその包含による d 単体である。
@@ -1828,10 +1834,10 @@ coherentComparison_fullyFaithful_iff_resolution :
 ```
 
 右随伴側の必要な Kan 性は `resolutionHomIso` の逆射によって実際の pinched Hom から導く。
-残りはこの判定の右辺、すなわち解像の標準比較射の実際のホモトピー同値性の証明と、
-充満忠実性・本質的全射性を合わせた A3e による ∞ 圏の同値の構成。
+この判定の右辺は、最後の `resolutionComparison_homotopyEquivalence` によって証明済み。
+充満忠実性・本質的全射性を合わせた A3e による ∞ 圏の同値も構成済み。
 標準単体ごとの解像の変形だけでは次数間の自然性を持つホモトピーとみなさない。
-一般の解像について境界の貼り合わせを扱う工程は、この判定では仮定として残っている。
+一般の解像の射影については、F1 の確定済みの境界の貼り合わせとセル帰納法の定理を使う。
 
 低次の基底は厳密な同型まで証明済み。
 `resolutionFlag_sets_eq_interval_of_le_one` は `n ≤ 1` のとき、任意次数の旗 F について
@@ -1855,7 +1861,7 @@ standardCoherentPinchedEquivOfLeOne (x y : ClosedCategory R D) {n : ℕ} (hn : n
 `coherentPinchedStandardComparison_section_of_le_one` は反対側の合成も n 単体上で恒等となる
 等式であり、π₀ の計算だけではない。一般次数での片側の回収則は
 `standardCoherentPinchedSimplex_comparison` で公開する。
-この低次の厳密な回収を高次のホモトピー逆の代用とはせず、上記の未証明範囲を保持する。
+一般次数のホモトピー逆には、最後の解像の随伴による転置の証明を使う。
 
 高次の解像の相対的な変形のため、`normalizeResolutionFlag S hS h0` を構成した。
 増大する非空な有限集合族 S の最初の集合の最大元 c を始点とし、各段を c 以上に制限する。
@@ -1881,7 +1887,8 @@ resolutionInsertHomotopy {n : ℕ} (i : Fin (n + 1)) :
 零端点は既存の旗の正規化の回収、一端点は追加・切断後の集合とこの頂点写像の直接像の一致から得る。
 `resolutionInsertVertex_no_new_vertices` は変形後の各集合の元が元の元か i に限られることを示す。
 従って i 以外の欠落頂点を補わず、区間全体を追加する変形とは異なる相対的な構成に使える。
-ホーンの部分複体への制限は以下の通り。縮約の完成と一般の解像の比較の同値性は未証明。
+ホーンの部分複体への制限は以下の通り。これらの局所的な補題は独立の補助 API であり、
+γ1.5d の完成には最後の一般の解像の射影と随伴の転置を使う。
 これは補助解像上のホモトピーであり、比較射の反対側の合成のホモトピーそのものではない。
 
 `resolutionHorn i` は `∃ j, j ≠ i ∧ j ∉ F.support` を満たす旗の部分複体。
@@ -1910,8 +1917,8 @@ resolutionHornUpperMap_factor_positiveFace {n : ℕ} (i : Fin (n + 1)) (hi : i �
     resolutionHornUpperMap i
 ```
 
-これはホーン内の恒等射を面を通る射まで変形した段階であり、面からの縮約や i = 0 の場合の
-縮約、一般の解像の射影の同値性を証明したとは数えない。
+これはホーン内の恒等射を面を通る射まで変形した構成である。
+この局所的な縮約の方法自体を i = 0 へ延長する補題は実装していない。
 
 Kan 標的での位相的な比較には、次の既存のホモトピー同値性による条件を使う。
 
@@ -1965,7 +1972,72 @@ resolutionHornProjection_isKanPrecompositionEquivalence_of_ne_zero {n : ℕ}
 これは任意の Kan 標的 K に対して、標準ホーンから K への内部 Hom から、旗で定義した
 ホーンの模型から K への内部 Hom への前合成が実際の単体的ホモトピー逆を持つことを意味する。
 標的 K の Kan 性と i ≠ 0 以外の充填・比較の仮定を追加していない。
-i = 0 の場合、ホーンの左 Kan 拡張との同定と一般の解像の比較の同値性は未証明である。
+この局所ホーンの証明の i = 0 への延長と左 Kan 拡張との直接の同定は未実装。
+γ1.5d の完成には、次の F1 の一般の射影の定理を使うため、これらを追加の仮定にはしない。
+
+
+### γ1.5d の完成：解像の随伴によるホモトピー逆
+
+F を `coherentResolution`、G をその右随伴、p_A を自然な射影 F(A) → A、
+η_K を `coherentResolutionComparison K` と書く。F1 の確定済みの
+`coherentResolutionProjectionAll_isPrecompositionEquivalence A` により、全ての A について
+p_A による前合成は任意の quasicategory への内部 Hom の同値である。
+これは境界での比較、単射と余極限の保存、セル帰納法から証明された定理を使う。
+
+`resolutionCylinderMap A : F(A ⊗ Δ[1]) → F(A) ⊗ Δ[1]` は、第一射影の F による像と、
+p の後の第二射影を組にした射である。p の自然性により両方の端点を厳密に保つ。
+従って `resolutionHomotopyTranspose` は F(A) → K の二射の実際のホモトピーを、
+随伴による A → G(K) の二射の実際のホモトピーへ移す。積と F の厳密な可換性は仮定しない。
+
+K が Kan のとき、余単位 ε_K : F(G(K)) → K を p_G(K) に沿って降下し、
+g : G(K) → K と `p_G(K) ≫ g ~ ε_K` を選ぶ。
+このホモトピーを転置すると、自然性と随伴の計算則により `g ≫ η_K ~ 𝟙 _` となる。
+一方、F(η_K) で前合成すると `p_K ≫ η_K ≫ g ~ p_K`。
+p_K による前合成の同値は Kan 標的 K へのホモトピーを反映するため、
+`η_K ≫ g ~ 𝟙 _` も得る。降下と反映には内部 Hom の同値の本質的全射性と
+逆同値の単位の成分を使い、最後は実際の単体的ホモトピーへ戻す。
+
+```lean
+resolutionComparison_homotopyEquivalence (K : SSet.{u}) [SSet.KanComplex K] :
+  IsSimplicialHomotopyEquivalence (coherentResolutionComparison K)
+```
+
+右随伴 G(K) の Kan 性はこの定理の前提ではない。
+`uliftHomotopy` と `ulift_homotopyEquivalence` により、この実際のホモトピー逆を
+coherent nerve の宇宙 max(u,v) へ移せる。標準 Hom の Kan 性と既存の可換式を合わせて
+元の比較射の写像空間の同値性と充満忠実性を得る。
+
+```lean
+coherentPinchedStandardComparison_homotopyEquivalence (x y : ClosedCategory R D) :
+  IsSimplicialHomotopyEquivalence
+    (coherentPinchedStandardComparison (R := R) (D := D) x y)
+
+coherentPinchedComparison_homotopyEquivalence (x y : D) :
+  IsSimplicialHomotopyEquivalence (coherentPinchedComparison (R := R) (D := D) x y)
+
+coherentComparison_fullyFaithful :
+  IsFullyFaithful (coherentComparison (R := R) (D := D))
+
+coherentComparisonEquivalence :
+  QCatEquivalence (doldKanCoherentNerve (R := R) (D := D)) (dgNerve R D)
+
+coherentComparisonEquivalence_hom :
+  (coherentComparisonEquivalence (R := R) (D := D)).hom =
+    coherentComparison (R := R) (D := D)
+
+coherentComparison_isQCatEquivalence :
+  IsQCatEquivalence (coherentComparison (R := R) (D := D))
+```
+
+これらの前提は `[CommRing R] [DGCategory R D]` のみ。
+A3e に実際の比較射の充満忠実性と既存の本質的全射性を渡したもので、
+選択した同値の順方向は頂点・辺・三角形で計算済みの比較射そのものである。
+`coherentPinchedStandardComparison_oppositeHomotopy x y` は、既存の標準比較射の後に
+既存の `standardHomToCoherentPinched` を合成した射と恒等射の実際のホモトピーを与える。
+逆順の合成の厳密な恒等式も保持しており、同値の存在だけに置き換えていない。
+
+γ1.5a〜d の要求には未完了項目はない。E2b 自体の Alg_E の豊穣化・忘却 ∞ 関手の構成と
+γ3 の極限・余極限の比較は後続の別工程であり、この同値だけで完成したとは数えない。
 
 
 ## γ3：homotopy 極限・余極限と ∞ 極限・余極限（γ1.5 の後）

@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.DoldKanComparison.ComparisonEquivalence
+
 public import SerrePositivity.InfinityCategories.DoldKanComparison.ResolutionHornProjection
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.StandardUpperVertexHomotopy

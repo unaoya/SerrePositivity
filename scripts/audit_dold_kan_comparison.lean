@@ -5,7 +5,7 @@ import SerrePositivity.InfinityCategories.DoldKanComparison
 概要：γ1.5 の明示的な公開宣言の完全な型と依存公理を検査する。
 方針：集約のビルド後に各宣言を #check @ と公理表示で確認する。
 規約：許される公理は propext、Classical.choice、Quot.sound のみ。
-使われ方：HA 1.3.1.13–1.3.1.17、Kerodon 2.5.7–2.5.9。γ1.5 全体は未完了。
+使われ方：HA 1.3.1.13–1.3.1.17、Kerodon 2.5.7–2.5.9。γ1.5a〜d の完了の検査。
 -/
 
 set_option pp.universes true
@@ -655,6 +655,30 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison_essentiallySurjective
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison_essentiallySurjective
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentPinchedStandardComparison_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentPinchedStandardComparison_homotopyEquivalence
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentPinchedComparison_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentPinchedComparison_homotopyEquivalence
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison_fullyFaithful
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison_fullyFaithful
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparisonEquivalence
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparisonEquivalence
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparisonEquivalence_hom
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparisonEquivalence_hom
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison_isQCatEquivalence
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.simplicialHomotopy_split_inverse
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.simplicialHomotopy_split_inverse
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentPinchedStandardComparison_oppositeHomotopy
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentPinchedStandardComparison_oppositeHomotopy
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.connectiveHomComplex
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.connectiveHomComplex
@@ -1433,6 +1457,18 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardCoherentPinchedEquivOfLeOne
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardCoherentPinchedEquivOfLeOne
 
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.precomposition_exists_homotopy
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.precomposition_exists_homotopy
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.precomposition_reflect_homotopy
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.precomposition_reflect_homotopy
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionComparison_counit
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionComparison_counit
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionComparison_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionComparison_homotopyEquivalence
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionEndpointEquiv
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionEndpointEquiv
 
@@ -1504,6 +1540,24 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison_fullyFaithful_iff_resolution
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.coherentComparison_fullyFaithful_iff_resolution
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionCylinderMap
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionCylinderMap
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionCylinderMap_zero
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionCylinderMap_zero
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionCylinderMap_one
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionCylinderMap_one
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomotopyTranspose
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomotopyTranspose
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomEquiv_projection_comp
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomEquiv_projection_comp
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomEquiv_counit
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionHomEquiv_counit
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.resolutionInsertVertex_mem_positiveFace
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.resolutionInsertVertex_mem_positiveFace
@@ -1867,6 +1921,12 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_thin_nerve_repeat_zero
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_thin_nerve_repeat_zero
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.uliftHomotopy
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.uliftHomotopy
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.ulift_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.ulift_homotopyEquivalence
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.uliftSimplexHom
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.uliftSimplexHom
