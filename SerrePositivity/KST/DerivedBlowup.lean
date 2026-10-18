@@ -144,3 +144,5 @@ public import SerrePositivity.KST.DerivedBlowup.DiagramAlgebraMultiplication
 public import SerrePositivity.KST.DerivedBlowup.DiagramModuleUnit
 public import SerrePositivity.KST.DerivedBlowup.DiagramModuleAssociativity
 public import SerrePositivity.KST.DerivedBlowup.DiagramModuleCoefficientCategory
+public import SerrePositivity.KST.DerivedBlowup.DiagramModuleProjectiveResolution
+public import SerrePositivity.KST.DerivedBlowup.DiagramModuleProjectiveEnhancement

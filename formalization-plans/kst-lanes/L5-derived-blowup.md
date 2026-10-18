@@ -45,6 +45,8 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 一般のモノイド対象の射に沿う乗法の単位・結合則、および係数圏の左右の単位律を証明済み。
 係数圏の結合律も証明し、全 diagram-module を表す実際の係数 dg 圏を構成済み。
 その opposite 上の右 dg 加群として全 diagram-module の加群圏と通常の導来圏を定義済み。
+図式全体の標準半自由分解・擬同型増大射と全次数 Hom に対する射影性を構成済み。
+射影的 diagram-module の充満 dg 部分圏の H⁰ と全図式の主導来局所化との同値を証明済み。
 その係数図式上の coherent な dg 加群の降下模型と層レベル比較は未完了。
 L5b 全体は未完了。L5c〜L5f は未実装。
 既存の L11 の検証記録を、Lean の証明済み宣言とは扱わない。
@@ -262,6 +264,8 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `diagramModuleHom_isZero`・`diagramModule_left_unit`・`diagramModule_right_unit` | DiagramModuleUnit | 包含のない Hom の零性と diagram-module 係数圏の左右の単位律 |
 | `diagramModule_assoc_of_le`・tensor の零性・`diagramModule_assoc` | DiagramModuleAssociativity | 全ての対象での diagram-module 係数圏の結合律 |
 | `DiagramModuleCoefficientObject`・`diagramModuleCoefficientDGCategory`・`AllDiagramModules`・`DerivedAllDiagramModules`・`BlowupDiagramCoefficientObject` | DiagramModuleCoefficientCategory | 既存 DGCategory へ接続した全 diagram-module の係数圏・全加群圏・通常の導来局所化 |
+| `diagramModuleProjectiveResolution`・半自由性・擬同型・`ProjectiveDiagramModules`・代表・Hom の acyclic 性 | DiagramModuleProjectiveResolution | 各評価の性質ではなく全図式の Hom end に関する標準半自由・射影的置換 |
+| `projectiveDiagramModuleInclusion`・`projectiveDiagramModuleToDerived`・充満忠実性・本質的全射性・`projectiveDiagramModuleHomotopyEquivalence` | DiagramModuleProjectiveEnhancement | 射影的 dg 図式加群の実際の H⁰ と主導来局所化の同値 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -329,10 +333,11 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 その上の coherent な dg 加群の降下模型と、層レベルの Dqc・Perf 比較は未完了。
 係数 dg 代数図式と局所の導来底変更比較は構成済みだが、
 coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全体の完成とは扱わない。
-所有モジュールの全1538定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全1577定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
-次の実装単位は全 diagram-module の射影的／半自由置換と mapping 複体の導来化。
-objectwise acyclic による dg 導来化を確認し、cartesian・局所 perfect 条件へ接続する。
+次の実装単位は各有限重なりへの評価 dg 関手と、その導来制限による局所 perfect 条件。
+canonical な導来係数拡大の比較射を構成して cartesian 条件を課す。
+射影的 dg 模型の H⁰ 比較だけで、dg 商の普遍性や層の降下との比較を済んだとは扱わない。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
 
