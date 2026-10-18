@@ -1,4 +1,6 @@
 import SerrePositivity.KST.Comparison
+import Lean.Elab.Command
+import Lean.Util.CollectAxioms
 
 /-!
 # K-L2 比較定理の公理監査
@@ -19,6 +21,22 @@ set_option pp.explicit true
 
 
 
+
+
+/- 自動生成された公開補題・射影も含め、名前空間全体を許可リストで検査する。 -/
+run_cmd do
+  let env ← Lean.getEnv
+  let nsPrefix := `SerrePositivity.KST.Comparison
+  let allowed := #[``propext, ``Classical.choice, ``Quot.sound]
+  let mut count : Nat := 0
+  for (name, _) in env.constants.toList do
+    if nsPrefix.isPrefixOf name then
+      let axs ← Lean.collectAxioms name
+      for ax in axs do
+        unless allowed.contains ax do
+          throwError "K-L2: {name} depends on forbidden axiom {ax}"
+      count := count + 1
+  Lean.logInfo m!"K-L2 namespace audit: {count} declarations; standard three axioms only"
 
 
 -- ActionBarCoordinates.lean
@@ -52,6 +70,21 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.Comparison.regularActionCoordinate_whisker
 #print axioms SerrePositivity.KST.Comparison.regularActionCoordinate_whisker
+
+
+-- AlternativePullback.lean
+
+#check @SerrePositivity.KST.Comparison.alternativePullbackComparison
+#print axioms SerrePositivity.KST.Comparison.alternativePullbackComparison
+
+#check @SerrePositivity.KST.Comparison.alternativePullbackComparison_fst
+#print axioms SerrePositivity.KST.Comparison.alternativePullbackComparison_fst
+
+#check @SerrePositivity.KST.Comparison.alternativePullbackComparison_snd
+#print axioms SerrePositivity.KST.Comparison.alternativePullbackComparison_snd
+
+#check @SerrePositivity.KST.Comparison.isHomotopyPullback_iff_alternative
+#print axioms SerrePositivity.KST.Comparison.isHomotopyPullback_iff_alternative
 
 
 -- BarEdge.lean
@@ -750,6 +783,24 @@ set_option pp.explicit true
 #print axioms SerrePositivity.KST.Comparison.regularBarFiberMap_projection
 
 
+-- ReplacementComparison.lean
+
+#check @SerrePositivity.KST.Comparison.pullbackMapBase
+#print axioms SerrePositivity.KST.Comparison.pullbackMapBase
+
+#check @SerrePositivity.KST.Comparison.pullbackMapBase_fst
+#print axioms SerrePositivity.KST.Comparison.pullbackMapBase_fst
+
+#check @SerrePositivity.KST.Comparison.pullbackMapBase_snd
+#print axioms SerrePositivity.KST.Comparison.pullbackMapBase_snd
+
+#check @SerrePositivity.KST.Comparison.pullbackMapBase_comp
+#print axioms SerrePositivity.KST.Comparison.pullbackMapBase_comp
+
+#check @SerrePositivity.KST.Comparison.replacementComparison_pullback_isIso
+#print axioms SerrePositivity.KST.Comparison.replacementComparison_pullback_isIso
+
+
 -- SimplexComponents.lean
 
 #check @SerrePositivity.KST.Comparison.simplexVertex
@@ -781,3 +832,24 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.Comparison.simplexMapContraction
 #print axioms SerrePositivity.KST.Comparison.simplexMapContraction
+
+
+-- TranslationDescent.lean
+
+#check @SerrePositivity.KST.Comparison.TranslationDescent.of_iso
+#print axioms SerrePositivity.KST.Comparison.TranslationDescent.of_iso
+
+#check @SerrePositivity.KST.Comparison.TranslationDescent.initial
+#print axioms SerrePositivity.KST.Comparison.TranslationDescent.initial
+
+#check @SerrePositivity.KST.Comparison.TranslationDescent.coproduct
+#print axioms SerrePositivity.KST.Comparison.TranslationDescent.coproduct
+
+#check @SerrePositivity.KST.Comparison.TranslationDescent.pushout
+#print axioms SerrePositivity.KST.Comparison.TranslationDescent.pushout
+
+#check @SerrePositivity.KST.Comparison.TranslationDescent.stage_isIso
+#print axioms SerrePositivity.KST.Comparison.TranslationDescent.stage_isIso
+
+#check @SerrePositivity.KST.Comparison.monoidActionFamily_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.monoidActionFamily_localized_isIso

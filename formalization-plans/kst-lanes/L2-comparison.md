@@ -206,6 +206,10 @@ pro 圏そのものは本ファイルに再実装しない。
 Segal Proposition 1.6（本文 pp.296–298）の移植は次の順序とする。
 各単体作用の四角形の homotopy-cartesian 性を証明する。
 正則 bar の行の積座標では、これは前置ラベルによる平行移動の比較となる。
+この前段の補題では単体上の元の族を零頂点へ実収縮し、定数の平行移動へ比較する。
+一般のパラメータへは共有 `CellularNaturalComparison` の骨格帰納を元の族付きに拡張する。
+このセル降下の証明経路を原典の位相的な作用の議論から区別して記録する。
+ここでも anodyne 局所化関手が余極限を保存するとは仮定しない。
 原典は fat realization の骨格を double mapping cylinder で接合する。
 その帰納の要は Lemma 1.7 のホモトピー引き戻しの貼り合わせである。
 無限骨格への移行は Lemma 1.8 の telescope による。
@@ -333,13 +337,16 @@ anodyne 包含と基底を固定する実ホモトピーを pushout-product の�
 基底上の収縮を任意の引き戻しへ移し、元の右射が Kan fibration なら厳密引き戻しの標準比較射が局所化同型となることを証明した。
 標準単体の零頂点への実収縮、元の族の作用とそのホモトピーを構成した。
 群状性から単体上の元の族による作用が anodyne 局所化同型となることを証明した。
+単体上の作用の比較をセルと骨格の単射列で貼り合わせ、任意のパラメータで動く元の族の作用の局所化可逆性を証明した。
+同じ右射の二つの anodyne–Kan 分解の比較が任意の基底変換後も可逆となること、別分解でもホモトピー引き戻し性を判定できることを証明した。
 bar 束の homotopy-cartesian 性、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
 §10-5 は検証する文言と証明方針を記した段階である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-全ての公開 221 宣言を公理監査ファイルで検査し、標準三公理のみを確認した。
+主要 236 宣言の型と公理を確認した。
+さらに名前空間全体の 604 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -384,6 +391,9 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `simplexContraction`、`simplexMapContraction` | 実装済み | 標準単体と単体上の写像の実収縮 |
 | `monoidActionFamilyHomotopy` | 実装済み | 元の族のホモトピーが誘導する作用のホモトピー |
 | `monoidActionFamily_simplex_localized_isIso` | 実装済み | 単体上で動く元による作用の局所化可逆性 |
+| `monoidActionFamily_localized_isIso` | 実装済み | 任意のパラメータで動く元の族の作用の局所化可逆性 |
+| `replacementComparison_pullback_isIso` | 実装済み | 二つの Kan 分解の基底変換後の比較 |
+| `isHomotopyPullback_iff_alternative` | 実装済み | 別の anodyne–Kan 分解による判定 |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
 | plus 構成 | 未実装 | acyclic map と π₁ の商 |
