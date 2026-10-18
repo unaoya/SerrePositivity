@@ -54,3 +54,7 @@ public import SerrePositivity.EInfinity.BarrattEccles.ShuffleCornerPartition
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleCornerCoordinates
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleBoundaryFaces
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleBoundaryDecomposition
+public import SerrePositivity.EInfinity.BarrattEccles.NormalizedDegreeTransport
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleDirectionalTransport
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleEndpointTransport
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleLeibnizPositive
