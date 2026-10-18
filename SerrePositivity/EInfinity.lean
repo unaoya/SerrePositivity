@@ -44,3 +44,4 @@ public import SerrePositivity.EInfinity.Operad.TensorFamilySplitAtBoundary
 public import SerrePositivity.EInfinity.Operad.TensorFamilyBlockSum
 public import SerrePositivity.EInfinity.Operad.CompositionAfterInputs
 public import SerrePositivity.EInfinity.Operad.TensorSubstitutionEmptyTail
+public import SerrePositivity.EInfinity.Operad.CompositionBlockDecomposition
