@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 247 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 280 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -26,6 +26,8 @@
 - 核が零の射と分離標的による射の一意性、開基底変換での零核の保存を証明済み。
 - 標準アフィン開被覆を構成し、中心外で同型な分離標的へのチャート比較の重なり上の一致と大域一意性を証明済み。
 - 正の冪について基底上の実際のスキーム同型 `affineBlowupPowerIso : Bl(Iⁿ) ≅ Bl(I)` を構成済み。
+- 任意の中心を保つ環準同型の Rees 次数付き写像と合成則、像中心での irrelevant ideal の包含を証明済み。
+- 任意の環準同型に対する実際の blowup 比較射と、基底の Spec の射との交換式を構成済み。
 - 次は局所化との両立と一般スキームへの貼り合わせ。
 - §14 の担当境界を採用済み（正本 §13-13、2026-10-18）。
 - L7a・L7b と L7c の環論・古典的スキーム射を本レーンで完成させる。
@@ -366,6 +368,11 @@ f の有限型性は固有性から導く。
 | `powerBlowupMap` / `powerBlowupInv` | PowerBlowup | 検証済み | 正の冪との両方向の基底上の比較射 |
 | `affineBlowupPowerIso` | PowerBlowup | 検証済み | 任意の可換環での正の冪の blowup 同型 |
 | `affineBlowupPowerIso_hom_base` | PowerBlowup | 検証済み | 冪不変性の同型と構造射の両立 |
+| `reesMap` / `reesGradedMap` | ReesMap | 検証済み | 中心を保つ係数環準同型の次数付き Rees 写像 |
+| `reesMap_surjective` / `reesMap_injective` | ReesMap | 検証済み | 係数環の全射性・単射性の保存 |
+| `reesGradedMap_irrelevant_le` | ReesMap | 検証済み | 像中心についての irrelevant ideal の包含 |
+| `proj_map_toSpecZero` | ProjMap | 検証済み | 一般の Proj の構造射の自然性 |
+| `affineBlowupBaseMap` / `affineBlowupBaseMap_base` | BaseChangeMap | 検証済み | 任意の環準同型に対する基底上の比較射 |
 | `blowupPowerIso` | Blowup | 予定 | 正の冪の比較 |
 | `blowup` | Blowup | 予定 | 一般スキームへの貼り合わせ |
 | `exceptionalDivisor` | Blowup | 予定 | 例外因子 |
