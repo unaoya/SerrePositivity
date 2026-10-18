@@ -8116,3 +8116,128 @@ lemma weightedStrictConeFamilyFiberComparison_homotopyEquivalence {I : Type u} [
 他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-weighted-cone-derived-fiber-aggregate.log` と
 `/tmp/gamma3-weighted-cone-derived-fiber-audit.log`。
+
+### γ3b：標的の同値が誘導する実際の導来 fiber の比較
+
+
+Kan 複体間の `p : E ⟶ B` と `g : B ⟶ D`、頂点 `b : B _⦋0⦌` に対して、
+実際の射
+`comparisonFiberPost p g b : comparisonFiber p b ⟶ comparisonFiber (p ≫ g) (g.app _ b)`
+を構成した。可逆 path を g で後合成し、元の源成分を保持する。
+`comparisonFiberPost_source` と `comparisonFiberPost_path` はこの二成分の厳密な等式。
+
+`comparisonFiberPost_homotopyEquivalence` の前提は E・B・D の Kan 性と g の単体的
+ホモトピー同値性であり、p の fibration 性や E・fiber の非空性は要求しない。
+path 置換の全空間の比較は、元の源への二つの自明 Kan fibration との可換式から、
+g の同値性なしでも同値となる。全空間と底が同値な Kan fibration の正方形から
+各 fiber の実際の比較の同値性を得て、部分型の頂点 fiber の模型へ厳密な同型で戻した。
+
+空の fiber を含めるため、全基点・全次数の `KanPiIsomorphism` だけで結論せず、
+fiber の π₀ の全射性を別に証明する。全空間の π₀ の全射性、底の π₀ の単射性と
+fibration の成分持ち上げからこれを得る。源に頂点がある場合は点つき Whitehead を使い、
+頂点がない場合は π₀ の全射性から標的も全次数で空であることを確認する。
+
+既存の同じ底上の源の比較 `comparisonFiberMap` と合わせ、導来 fiber の源と標的の
+同値による実際の比較が使える。元の非反転 q_x と錐の pinched Hom の直接比較、
+一般形状の end の直接比較、余極限側、E2a 完了後の E2b 適用は引き続き未完了。
+この補助比較を γ3 全体の完成とは数えない。
+原典：HTT 4.2.4.1、Kerodon 7.4.1.6・7.5.4.6、Goerss–Jardine I §§7–8。
+
+公開21宣言の正確な型と前提（namespace `HomotopyLimits`）：
+
+```lean
+instance kanEquivalencePathReplacement_kanComplex {X Y : SSet.{u}}
+    [KanComplex X] [KanComplex Y] (f : X ⟶ Y) : KanComplex (equivalencePathReplacement f)
+
+lemma kanPiIsomorphism_of_homotopyEquivalence {X Y : SSet.{u}}
+    [KanComplex X] [KanComplex Y] (f : X ⟶ Y) (he : IsSimplicialHomotopyEquivalence f) :
+    KanPiIsomorphism f
+
+lemma homotopyEquivalence_of_kanPiIsomorphism_of_vertex {X Y : SSet.{u}}
+    [KanComplex X] [KanComplex Y] (f : X ⟶ Y) (hf : KanPiIsomorphism f) (x : X _⦋0⦌) :
+    IsSimplicialHomotopyEquivalence f
+
+lemma homotopyEquivalence_of_kanPiIsomorphism_of_piZero_surjective {X Y : SSet.{u}}
+    [KanComplex X] [KanComplex Y] (f : X ⟶ Y) (hf : KanPiIsomorphism f)
+    (h₀ : Function.Surjective (mapπ₀ f)) : IsSimplicialHomotopyEquivalence f
+
+lemma fibrationFiberMapBase_homotopyEquivalence {E B E' B' : SSet.{u}}
+    [KanComplex E] [KanComplex B] [KanComplex E'] [KanComplex B']
+    (p : E ⟶ B) (p' : E' ⟶ B') [Fibration p] [Fibration p']
+    (f : E ⟶ E') (g : B ⟶ B') (comm : p ≫ g = f ≫ p')
+    (hf : IsSimplicialHomotopyEquivalence f) (hg : IsSimplicialHomotopyEquivalence g)
+    (b : B _⦋0⦌) :
+    IsSimplicialHomotopyEquivalence (fibrationFiberMapBase p p' f g comm b)
+
+def vertexFiberKanFiberIso {E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) :
+    vertexFiber p b ≅ KanFiber p b
+
+lemma vertexFiberKanFiberIso_hom_ι {E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) :
+    (vertexFiberKanFiberIso p b).hom ≫ fiberι p b = vertexFiberι p b
+
+lemma vertexFiberKanFiberIso_inv_ι {E B : SSet.{u}} (p : E ⟶ B) (b : B _⦋0⦌) :
+    (vertexFiberKanFiberIso p b).inv ≫ vertexFiberι p b = fiberι p b
+
+def vertexFiberSquareMap {E B E' B' : SSet.{u}}
+    (p : E ⟶ B) (p' : E' ⟶ B') (f : E ⟶ E') (g : B ⟶ B')
+    (comm : p ≫ g = f ≫ p') (b : B _⦋0⦌) :
+    vertexFiber p b ⟶ vertexFiber p' (g.app _ b)
+
+lemma vertexFiberSquareMap_ι {E B E' B' : SSet.{u}}
+    (p : E ⟶ B) (p' : E' ⟶ B') (f : E ⟶ E') (g : B ⟶ B')
+    (comm : p ≫ g = f ≫ p') (b : B _⦋0⦌) :
+    vertexFiberSquareMap p p' f g comm b ≫ vertexFiberι p' (g.app _ b) =
+      vertexFiberι p b ≫ f
+
+lemma vertexFiberSquareMap_homotopyEquivalence {E B E' B' : SSet.{u}}
+    [KanComplex E] [KanComplex B] [KanComplex E'] [KanComplex B']
+    (p : E ⟶ B) (p' : E' ⟶ B') [Fibration p] [Fibration p']
+    (f : E ⟶ E') (g : B ⟶ B') (comm : p ≫ g = f ≫ p')
+    (hf : IsSimplicialHomotopyEquivalence f) (hg : IsSimplicialHomotopyEquivalence g)
+    (b : B _⦋0⦌) : IsSimplicialHomotopyEquivalence (vertexFiberSquareMap p p' f g comm b)
+
+def comparisonPathReplacementPost {E B D : SSet.{u}} (p : E ⟶ B) (g : B ⟶ D) :
+    equivalencePathReplacement p ⟶ equivalencePathReplacement (p ≫ g)
+
+lemma comparisonPathReplacementPost_path {E B D : SSet.{u}} (p : E ⟶ B) (g : B ⟶ D) :
+    comparisonPathReplacementPost p g ≫ pullback.fst (equivalencePathEndpoint D 0) (p ≫ g) =
+      pullback.fst (equivalencePathEndpoint B 0) p ≫ equivalencePathMap g
+
+lemma comparisonPathReplacementPost_source {E B D : SSet.{u}} (p : E ⟶ B) (g : B ⟶ D) :
+    comparisonPathReplacementPost p g ≫ equivalencePathReplacementProjection (p ≫ g) =
+      equivalencePathReplacementProjection p
+
+lemma comparisonPathReplacementPost_target {E B D : SSet.{u}} (p : E ⟶ B) (g : B ⟶ D) :
+    comparisonPathReplacementPost p g ≫ equivalencePathReplacementMap (p ≫ g) =
+      equivalencePathReplacementMap p ≫ g
+
+lemma comparisonPathReplacementPost_homotopyEquivalence {E B D : SSet.{u}}
+    [KanComplex E] [KanComplex B] [KanComplex D] (p : E ⟶ B) (g : B ⟶ D) :
+    IsSimplicialHomotopyEquivalence (comparisonPathReplacementPost p g)
+
+def comparisonFiberPost {E B D : SSet.{u}} (p : E ⟶ B) (g : B ⟶ D) (b : B _⦋0⦌) :
+    comparisonFiber p b ⟶ comparisonFiber (p ≫ g) (g.app _ b)
+
+lemma comparisonFiberPost_ι {E B D : SSet.{u}} (p : E ⟶ B) (g : B ⟶ D) (b : B _⦋0⦌) :
+    comparisonFiberPost p g b ≫ vertexFiberι (equivalencePathReplacementMap (p ≫ g)) (g.app _ b) =
+      vertexFiberι (equivalencePathReplacementMap p) b ≫ comparisonPathReplacementPost p g
+
+lemma comparisonFiberPost_source {E B D : SSet.{u}} (p : E ⟶ B) (g : B ⟶ D) (b : B _⦋0⦌) :
+    comparisonFiberPost p g b ≫ comparisonFiberSource (p ≫ g) (g.app _ b) =
+      comparisonFiberSource p b
+
+lemma comparisonFiberPost_path {E B D : SSet.{u}} (p : E ⟶ B) (g : B ⟶ D) (b : B _⦋0⦌) :
+    comparisonFiberPost p g b ≫ comparisonFiberPath (p ≫ g) (g.app _ b) =
+      comparisonFiberPath p b ≫ equivalencePathMap g
+
+lemma comparisonFiberPost_homotopyEquivalence {E B D : SSet.{u}}
+    [KanComplex E] [KanComplex B] [KanComplex D] (p : E ⟶ B) (g : B ⟶ D)
+    (hg : IsSimplicialHomotopyEquivalence g) (b : B _⦋0⦌) :
+    IsSimplicialHomotopyEquivalence (comparisonFiberPost p g b)
+```
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4677 jobs）、公開1384宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規5ファイルの警告・sorry・追加公理はない。
+他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
+ログ：`/tmp/gamma3-comparison-fiber-post-aggregate.log`、
+`/tmp/gamma3-comparison-fiber-post-audit.log`。

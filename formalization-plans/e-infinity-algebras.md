@@ -1757,3 +1757,38 @@ README の同名節に記録した。γ3 冒頭の現在地もこの実際の fi
 他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-weighted-cone-derived-fiber-aggregate.log` と
 `/tmp/gamma3-weighted-cone-derived-fiber-audit.log`。
+
+### γ3b：標的の同値が誘導する実際の導来 fiber の比較
+
+
+Kan 複体間の `p : E ⟶ B` と `g : B ⟶ D`、頂点 `b : B _⦋0⦌` に対して、
+実際の射
+`comparisonFiberPost p g b : comparisonFiber p b ⟶ comparisonFiber (p ≫ g) (g.app _ b)`
+を構成した。可逆 path を g で後合成し、元の源成分を保持する。
+`comparisonFiberPost_source` と `comparisonFiberPost_path` はこの二成分の厳密な等式。
+
+`comparisonFiberPost_homotopyEquivalence` の前提は E・B・D の Kan 性と g の単体的
+ホモトピー同値性であり、p の fibration 性や E・fiber の非空性は要求しない。
+path 置換の全空間の比較は、元の源への二つの自明 Kan fibration との可換式から、
+g の同値性なしでも同値となる。全空間と底が同値な Kan fibration の正方形から
+各 fiber の実際の比較の同値性を得て、部分型の頂点 fiber の模型へ厳密な同型で戻した。
+
+空の fiber を含めるため、全基点・全次数の `KanPiIsomorphism` だけで結論せず、
+fiber の π₀ の全射性を別に証明する。全空間の π₀ の全射性、底の π₀ の単射性と
+fibration の成分持ち上げからこれを得る。源に頂点がある場合は点つき Whitehead を使い、
+頂点がない場合は π₀ の全射性から標的も全次数で空であることを確認する。
+
+既存の同じ底上の源の比較 `comparisonFiberMap` と合わせ、導来 fiber の源と標的の
+同値による実際の比較が使える。元の非反転 q_x と錐の pinched Hom の直接比較、
+一般形状の end の直接比較、余極限側、E2a 完了後の E2b 適用は引き続き未完了。
+この補助比較を γ3 全体の完成とは数えない。
+原典：HTT 4.2.4.1、Kerodon 7.4.1.6・7.5.4.6、Goerss–Jardine I §§7–8。
+
+新規5ファイル・21宣言を集約と専用監査へ追加した。正確な型・全前提は
+README の同名節と `scripts/audit_homotopy_limits.lean` の `#check @` を正本とする。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4677 jobs）、公開1384宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規5ファイルの警告・sorry・追加公理はない。
+他担当の依存846ソースは全て追跡済み・コミット済み・変更なし。
+ログ：`/tmp/gamma3-comparison-fiber-post-aggregate.log`、
+`/tmp/gamma3-comparison-fiber-post-audit.log`。
