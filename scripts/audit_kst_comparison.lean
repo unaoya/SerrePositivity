@@ -119,6 +119,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -3380,6 +3381,24 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.localCoefficientChainsMap_naturality
 
 
+-- LocalCoefficientOverFunctor.lean
+
+#check @SerrePositivity.KST.Comparison.overLocalCoefficientSimplicialMap_id
+#print axioms SerrePositivity.KST.Comparison.overLocalCoefficientSimplicialMap_id
+
+#check @SerrePositivity.KST.Comparison.overLocalCoefficientSimplicialMap_comp
+#print axioms SerrePositivity.KST.Comparison.overLocalCoefficientSimplicialMap_comp
+
+#check @SerrePositivity.KST.Comparison.overLocalCoefficientSimplicialFunctor
+#print axioms SerrePositivity.KST.Comparison.overLocalCoefficientSimplicialFunctor
+
+#check @SerrePositivity.KST.Comparison.overLocalCoefficientChainsFunctor
+#print axioms SerrePositivity.KST.Comparison.overLocalCoefficientChainsFunctor
+
+#check @SerrePositivity.KST.Comparison.overLocalCoefficientUnnormalizedChainsFunctor
+#print axioms SerrePositivity.KST.Comparison.overLocalCoefficientUnnormalizedChainsFunctor
+
+
 -- LocalCoefficientTrivialization.lean
 
 #check @SerrePositivity.KST.Comparison.localCoefficientConstIsoOfInitial
@@ -3435,6 +3454,27 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.constantLocalCoefficients
 #print axioms SerrePositivity.KST.Comparison.constantLocalCoefficients
+
+
+-- LocalCoefficientsOver.lean
+
+#check @SerrePositivity.KST.Comparison.overLocalCoefficientSourceIso
+#print axioms SerrePositivity.KST.Comparison.overLocalCoefficientSourceIso
+
+#check @SerrePositivity.KST.Comparison.coefficientWhiskerLeft_eqToHom
+#print axioms SerrePositivity.KST.Comparison.coefficientWhiskerLeft_eqToHom
+
+#check @SerrePositivity.KST.Comparison.overLocalCoefficientSourceIso_id
+#print axioms SerrePositivity.KST.Comparison.overLocalCoefficientSourceIso_id
+
+#check @SerrePositivity.KST.Comparison.overLocalCoefficientSourceIso_comp
+#print axioms SerrePositivity.KST.Comparison.overLocalCoefficientSourceIso_comp
+
+#check @SerrePositivity.KST.Comparison.overLocalCoefficientSimplicialMap
+#print axioms SerrePositivity.KST.Comparison.overLocalCoefficientSimplicialMap
+
+#check @SerrePositivity.KST.Comparison.overLocalCoefficientSimplicialMap_unit
+#print axioms SerrePositivity.KST.Comparison.overLocalCoefficientSimplicialMap_unit
 
 
 -- LocalizedCoproductMaps.lean

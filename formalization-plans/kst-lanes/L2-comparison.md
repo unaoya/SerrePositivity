@@ -839,6 +839,15 @@ Waldhausen LNM 1126 §1.7・§1.8 のセル濾過を単体的・アーベル圏�
 整数係数だけの anodyne 保存から局所係数の保存を推論することはしない。
 原典は Weibel K-book IV.1.6。定数係数の計算は Mathlib の sigmaConst と alternating face map complex を使う。
 
+### 基底上の係数複体の次数ごとの余極限
+
+設計上の決定：固定した次数 d と基底の単体集合 B_d に対し、族 A_b をその単体の係数群とする。
+Over(B_d) の対象 p:X→B_d を ⊕_(x∈X) A_(p x) へ送る関手を使う。
+この関手の右随伴は、G を射影 (Σ b, Hom(A_b,G))→B_d へ送る。
+直和の普遍性と射影との可換性から実際の Hom 同値を作り、左随伴性で余極限保存を証明する。
+slice の評価と係数群の直和表示を比較して、基底上の非正規化鎖複体の余極限保存へ渡す。
+この次数ごとの議論は、全次数の余極限を仮定に置くことを避け、係数の輸送も明示できる。
+
 ## 12. 現在地と主要宣言
 
 現在地：L2a と L2b の要求された群状モノイドの比較・KST Lemma 2.13 を完了し、L2c に進む。
@@ -910,7 +919,9 @@ anodyne 局所化の同型と群状モノイドの標準群完備化写像の整
 標準単体上の局所係数の自明化、任意の定数アーベル群係数の直和模型との比較、
 実際の horn の鎖ホモトピー同値、係数変換の自然性と誘導写像の恒等・合成法則を証明した。
 正次元の全 horn 包含は全ての標的局所係数で正規化鎖写像の擬同型を誘導することも証明した。
-局所係数の基底上の関手、anodyne 保存の拡張と plus のセル添付の計算は未完了。
+固定した基底上の局所係数の単体的群の関手と、その正規化・非正規化複体の関手を構成した。
+係数の等式からの輸送・その合成・Kan 拡張の単位・関手法則は全て証明した。
+これらの余極限保存、局所係数での anodyne 保存の拡張と plus のセル添付の計算は未完了。
 その後、局所係数を含む acyclic map、ホモロジー同型、基本群の完全正規部分群による商として plus を証明する。
 L2d：確定した K0 界面、冪等元の持ち上げ、安定 elementary 部分群と K₁ の比較を証明する。
 L2e：K-L1 の K1a の供給状況を確認し、§10-5 の Hurewicz の紙上確認と ∞-S• の比較へ進む。
@@ -919,10 +930,10 @@ L2e：K-L1 の K1a の供給状況を確認し、§10-5 の Hurewicz の紙上�
 
 ### 検証
 
-`lake build SerrePositivity.KST.Comparison`：成功、4494 jobs。
+`lake build SerrePositivity.KST.Comparison`：成功、4496 jobs。
 `lake env lean scripts/audit_kst_comparison.lean`：終了コード 0。
-主要 1417 宣言の型と推移的依存公理を確認した。
-名前空間全体の 2603 宣言（自動生成された公開補題・射影を含む）も許可リストで検査した。
+主要 1428 宣言の型と推移的依存公理を確認した。
+名前空間全体の 2619 宣言（自動生成された公開補題・射影を含む）も許可リストで検査した。
 許可した公理は propext、Classical.choice、Quot.sound の標準三公理のみ。
 L2b の工程の区切りの全体ビルドはルート集約 `SerrePositivity.lean:1` で失敗した（12355 jobs の最終集約）。
 `F1B.RelativeFunctorHomotopyComposition` の import が `F1.RelativeFunctorVertices` の
@@ -934,6 +945,8 @@ L2b の工程の区切りの全体ビルドはルート集約 `SerrePositivity.l
 
 | 主要宣言 | 状態 | 意味 |
 | --- | --- | --- |
+| `overLocalCoefficientSourceIso`、`overLocalCoefficientSimplicialMap_unit` | 監査済み | 基底との可換性による係数輸送と単位の可換性 |
+| `overLocalCoefficientSimplicialFunctor`、`overLocalCoefficientChainsFunctor`、`overLocalCoefficientUnnormalizedChainsFunctor` | 監査済み | 基底上の実際の局所係数の関手 |
 | `standardSimplexLocalCoefficientTrivialization` | 監査済み | 初対象からの輸送による局所係数の自明化 |
 | `constantCoefficientSimplicialIso`、`localConstantCoefficientMap_quasiIso_iff` | 監査済み | 任意の定数係数と Mathlib の鎖複体の誘導射の比較 |
 | `constantCoefficientHornChainHomotopyEquiv` | 監査済み | 任意のアーベル群係数の実際の鎖ホモトピー同値 |
