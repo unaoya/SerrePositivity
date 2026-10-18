@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：借用する π・H_* の明示的な模型界面に対して工程完了。一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと1183宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと1188宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -369,6 +369,9 @@
 | lastRightColumnHom_equivariant / auxiliaryBlockColumnHom_equivariant | IdealColumnEquivariance.lean | 検証済み | 実 φ と ψ の全行列同変性 |
 | auxiliaryBlockUnit_fixed | AuxiliaryUnitAction.lean | 検証済み | 共役に使う実 u の行列作用による固定性 |
 | triangularBlockInsertion_equivariant | MatrixActionInsertion.lean | 検証済み | μ の第一因子の実埋め込みの全行列同変性 |
+
+| lemma416EquivariantGroupData | Lemma416EquivariantData.lean | 検証済み | 実 μ,α,β と全行列作用の同変な A.5 入力 |
+| lemma416Homotopy_equivariant | Lemma416Equivariance.lean | 離散版検証済み | 構成済みの全 m の実区間ホモトピーの全行列同変性 |
 
 ## L6a：最小 pro 形式
 
@@ -937,3 +940,11 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - `groupConjugationMHomotopy_equivariant` と前合成・連結の同変性は実区間射のテンソル合成則と加減法から証明した。
 - `affineMatrixAction_insertion` と `triangularBlockInsertion_equivariant` は first n 行の外への恒等座標の挿入と全行列作用の可換性。
 - 対象ビルド・1183宣言の公理監査は標準三公理のみで成功。次は μ 版入力への束ねと実帰納ホモトピー全体の同変性。
+
+
+### L6d の離散非可換環上の全行列同変な帰納ホモトピー（2026-10-19）
+
+- `lemma416EquivariantGroupData` は実 P,Q,H の行列作用と実 μ,α,β を採用済み A.5 の同変な入力に束ねる。μ の同変性は実埋め込みと補助列の同変性から導いた。
+- `lemma416HomotopyStep_equivariant` は既に構成した実帰納段階の区間射自体の同変性を証明。A.5 と A.6 の区間射の同変性を同じ線形な連結・相殺に適用した。
+- `lemma416Homotopy_equivariant` は全 m の実帰納ホモトピーの行列同変性。結論を含む追加構造体・追加公理を導入していない。
+- 対象ビルド・1188宣言の公理監査は標準三公理のみで成功。離散環上の非可換な実比較と全行列同変性は検証済みだが、(I,a) の射への関手性、単体環への移送、相対零化・安定化は未完了。

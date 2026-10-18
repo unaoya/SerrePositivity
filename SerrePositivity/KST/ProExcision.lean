@@ -271,3 +271,7 @@ public import SerrePositivity.KST.ProExcision.EquivariantHomotopyOperations
 public import SerrePositivity.KST.ProExcision.AffineMatrixAction
 
 public import SerrePositivity.KST.ProExcision.MatrixActionInsertion
+
+public import SerrePositivity.KST.ProExcision.Lemma416EquivariantData
+
+public import SerrePositivity.KST.ProExcision.Lemma416Equivariance

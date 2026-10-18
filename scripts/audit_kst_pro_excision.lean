@@ -3396,3 +3396,18 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.triangularBlockInsertion_equivariant
 #print axioms SerrePositivity.KST.ProExcision.triangularBlockInsertion_equivariant
+
+#check @SerrePositivity.KST.ProExcision.lemma416GroupData_mu_apply
+#print axioms SerrePositivity.KST.ProExcision.lemma416GroupData_mu_apply
+
+#check @SerrePositivity.KST.ProExcision.lemma416GroupData_mu_equivariant
+#print axioms SerrePositivity.KST.ProExcision.lemma416GroupData_mu_equivariant
+
+#check @SerrePositivity.KST.ProExcision.lemma416EquivariantGroupData
+#print axioms SerrePositivity.KST.ProExcision.lemma416EquivariantGroupData
+
+#check @SerrePositivity.KST.ProExcision.lemma416HomotopyStep_equivariant
+#print axioms SerrePositivity.KST.ProExcision.lemma416HomotopyStep_equivariant
+
+#check @SerrePositivity.KST.ProExcision.lemma416Homotopy_equivariant
+#print axioms SerrePositivity.KST.ProExcision.lemma416Homotopy_equivariant
