@@ -2059,3 +2059,86 @@ SerrePositivity.InfinityCategories.cocartesianHornFibration_coconeRestriction_op
       (SerrePositivity.InfinityCategories.coconeRestriction.{u_1} K X)
       (SerrePositivity.InfinityCategories.functorVertex.{u_1} ↑c)
 ```
+
+## S3 補助：普遍余錐の族の選択と比較
+
+相対始対象の全部分圏の正次元境界充填を証明した。各頂点で余極限が存在する任意の図式の族に沿う普遍余錐の射影は trivial Kan fibration であり、厳密な切断と選択間の FunctorIso を得た。
+基底に quasicategory 性を要求せず、値域 X の quasicategory 性と族の各頂点での HasColimit のみを仮定する。
+ΣΩ の span/cospan の族への適用、評価の充満忠実性、ΣΩ の関手性・自己同値、S4〜S7 は未完了。
+検証：Stable 集約ビルド 1974 jobs 成功、全 486 宣言／41 モジュールの公理監査成功（標準三公理のみ）。
+
+```lean
+@SerrePositivity.InfinityCategories.relativeInitialVertices.{u_1} : {E B : SSet.{u_1}} →
+  Quiver.Hom.{u_1, u_1 + 1} E B → SSet.Subcomplex.{u_1} E
+@SerrePositivity.InfinityCategories.relativeInitialProjection.{u_1} : {E B : SSet.{u_1}} →
+  (p : Quiver.Hom.{u_1, u_1 + 1} E B) →
+    Quiver.Hom.{u_1, u_1 + 1}
+      (SSet.Subcomplex.toSSet.{u_1} (SerrePositivity.InfinityCategories.relativeInitialVertices.{u_1} p)) B
+@SerrePositivity.InfinityCategories.relativeInitialProjection_hasLiftingProperty_boundary.{u_1} : ∀ {E B : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} E B) (n : ℕ),
+  CategoryTheory.HasLiftingProperty.{u_1, u_1 + 1}
+    (SSet.Subcomplex.ι.{u_1} (SSet.boundary.{u_1} (HAdd.hAdd.{0, 0, 0} n 1)))
+    (SerrePositivity.InfinityCategories.relativeInitialProjection.{u_1} p)
+@SerrePositivity.InfinityCategories.relativeInitialProjection_trivialKanFibration.{u_1} : ∀ {E B : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} E B),
+  Function.Surjective.{u_1 + 1, u_1 + 1}
+      ⇑(CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+          (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+            (SerrePositivity.InfinityCategories.relativeInitialProjection.{u_1} p) (Opposite.op.{1} { len := 0 }))) →
+    SerrePositivity.InfinityCategories.TrivialKanFibration.{u_1}
+      (SerrePositivity.InfinityCategories.relativeInitialProjection.{u_1} p)
+SerrePositivity.InfinityCategories.colimitCocones.{u_1} : SSet.{u_1} → SSet.{u_1} → SSet.{u_1}
+SerrePositivity.InfinityCategories.colimitCocones_quasicategory.{u_1} : ∀ (K X : SSet.{u_1})
+  [SSet.Quasicategory.{u_1} X], SSet.Quasicategory.{u_1} (SerrePositivity.InfinityCategories.colimitCocones.{u_1} K X)
+@SerrePositivity.InfinityCategories.colimitCocones_vertex_iff.{u_1} : ∀ {K X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p),
+  SerrePositivity.InfinityCategories.InitialBoundaryLifting.{u_1}
+      (SerrePositivity.InfinityCategories.coconeRestriction.{u_1} K X)
+      (SerrePositivity.InfinityCategories.functorVertex.{u_1} ↑c) ↔
+    SerrePositivity.InfinityCategories.IsColimitCone.{u_1} c
+SerrePositivity.InfinityCategories.colimitCoconeProjection.{u_1} : (K X : SSet.{u_1}) →
+  Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.colimitCocones.{u_1} K X) (K ⟹ X)
+@SerrePositivity.InfinityCategories.colimitCoconeProjection_pullback_trivialKanFibration.{u_1} : ∀ {A K X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X] (d : Quiver.Hom.{u_1, u_1 + 1} A (K ⟹ X)),
+  (∀ (a : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} A (Opposite.op.{1} { len := 0 })),
+      SerrePositivity.InfinityCategories.HasColimit.{u_1}
+        ((Equiv.symm.{u_1 + 1, u_1 + 1} (SerrePositivity.InfinityCategories.functorVertexEquiv.{u_1} K X))
+          ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+              (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} d (Opposite.op.{1} { len := 0 })))
+            a))) →
+    SerrePositivity.InfinityCategories.TrivialKanFibration.{u_1}
+      (CategoryTheory.Limits.pullback.snd.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.colimitCoconeProjection.{u_1} K X) d)
+@SerrePositivity.InfinityCategories.exists_colimitCoconeFamily.{u_1} : ∀ {A K X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X] (d : Quiver.Hom.{u_1, u_1 + 1} A (K ⟹ X)),
+  (∀ (a : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} A (Opposite.op.{1} { len := 0 })),
+      SerrePositivity.InfinityCategories.HasColimit.{u_1}
+        ((Equiv.symm.{u_1 + 1, u_1 + 1} (SerrePositivity.InfinityCategories.functorVertexEquiv.{u_1} K X))
+          ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+              (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} d (Opposite.op.{1} { len := 0 })))
+            a))) →
+    ∃ f,
+      Eq.{u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f
+          (SerrePositivity.InfinityCategories.colimitCoconeProjection.{u_1} K X))
+        d
+@SerrePositivity.InfinityCategories.colimitCoconeFamilyIso.{u_1} : {A K X : SSet.{u_1}} →
+  [SSet.Quasicategory.{u_1} X] →
+    (d : Quiver.Hom.{u_1, u_1 + 1} A (K ⟹ X)) →
+      (∀ (a : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} A (Opposite.op.{1} { len := 0 })),
+          SerrePositivity.InfinityCategories.HasColimit.{u_1}
+            ((Equiv.symm.{u_1 + 1, u_1 + 1} (SerrePositivity.InfinityCategories.functorVertexEquiv.{u_1} K X))
+              ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+                  (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} d (Opposite.op.{1} { len := 0 })))
+                a))) →
+        (f g : Quiver.Hom.{u_1, u_1 + 1} A (SerrePositivity.InfinityCategories.colimitCocones.{u_1} K X)) →
+          Eq.{u_1 + 1}
+              (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} f
+                (SerrePositivity.InfinityCategories.colimitCoconeProjection.{u_1} K X))
+              d →
+            Eq.{u_1 + 1}
+                (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} g
+                  (SerrePositivity.InfinityCategories.colimitCoconeProjection.{u_1} K X))
+                d →
+              SerrePositivity.InfinityCategories.FunctorIso.{u_1} f g
+```

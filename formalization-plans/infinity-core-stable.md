@@ -32,8 +32,12 @@ fiber の始対象から相対始点境界充填を得た。さらに最後の�
 終点の余錐を固定した prism の輸送は cartesian な辺を与え、反転した
 `coconeRestriction` 自身の `CocartesianHornFibration` を認証した。
 これを使い、`IsColimitCone` と余錐制限射に対する `InitialBoundaryLifting` の同値を、
-輸送の追加仮定なしに証明した。残るのはこの相対充填を普遍四角形の族の評価の
-充満忠実性へ移す部分である。
+輸送の追加仮定なしに証明した。相対始対象の全部分圏への制限は正次元の全境界を
+持ち上げる。普遍余錐の全部分圏 `colimitCocones` を作り、各頂点で余極限が存在する
+任意の図式の族に沿う射影が trivial Kan fibration であることを証明した。
+その厳密な切断による全単体に自然な余極限の選択と、二つの選択の関手同型も構成した。
+残るのは suspension/loop の span/cospan の族への適用、普遍四角形の族の評価の
+充満忠実性と、h C の ΣΩ・自己同値への接続である。
 現段階は関手性・選択の自然な比較・自己同値の完成ではない。
 安定性から全有限極限・余極限を導く逆向き、S3 の関手性と自己同値、三角構造・D7 は未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
@@ -104,6 +108,8 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 余錐の辺の輸送 | `exists_cocone_fixedVertex_prism`、`coconeRestriction_hasLiftingProperty_finalVertex`（値域 Quasicategory、任意の形状） | 完了。`exists_cartesian_cocone_lift` により cartesian 性も認証済み |
 | 余錐制限の輸送 | `isCartesianEdge_coconeRestriction_of_apex`、`cocartesianHornFibration_coconeRestriction_op`（値域 Quasicategory、形状は任意） | 完了 |
 | 相対余極限性 | `IsColimitCone.initialBoundaryLifting`、`isColimitCone_iff_initialBoundaryLifting`（値域 Quasicategory、任意図式の JoinCocone） | 完了 |
+| 相対始対象の族 | `relativeInitialVertices`、`relativeInitialProjection_hasLiftingProperty_boundary`（任意の射、正次元境界）、`relativeInitialProjection_trivialKanFibration`（頂点全射を仮定） | 完了 |
+| 普遍余錐の族の選択 | `colimitCocones`、`colimitCoconeProjection_pullback_trivialKanFibration`、`exists_colimitCoconeFamily`、`colimitCoconeFamilyIso`（値域 Quasicategory、族の各頂点で HasColimit、基底は任意） | 一般の族は完了。ΣΩ の族への適用は未完了 |
 | S3〜S7 | ΣΩ の関手性・自然な選択比較・自己同値、三角構造・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

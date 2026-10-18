@@ -251,6 +251,18 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.IsColimitCone.initialBoundaryLifting
 #print axioms SerrePositivity.InfinityCategories.isColimitCone_iff_initialBoundaryLifting
 
+#print axioms SerrePositivity.InfinityCategories.relativeInitialVertices
+#print axioms SerrePositivity.InfinityCategories.relativeInitialProjection
+#print axioms SerrePositivity.InfinityCategories.relativeInitialProjection_hasLiftingProperty_boundary
+#print axioms SerrePositivity.InfinityCategories.relativeInitialProjection_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.colimitCocones
+#print axioms SerrePositivity.InfinityCategories.colimitCocones_quasicategory
+#print axioms SerrePositivity.InfinityCategories.colimitCocones_vertex_iff
+#print axioms SerrePositivity.InfinityCategories.colimitCoconeProjection
+#print axioms SerrePositivity.InfinityCategories.colimitCoconeProjection_pullback_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.exists_colimitCoconeFamily
+#print axioms SerrePositivity.InfinityCategories.colimitCoconeFamilyIso
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -293,7 +305,9 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.CoconeRestrictionCartesianEdge,
     `SerrePositivity.InfinityCategories.Stable.CoconeCartesianTransport,
     `SerrePositivity.InfinityCategories.Stable.CoconeRestrictionOppositeFibration,
-    `SerrePositivity.InfinityCategories.Stable.ColimitRelativeBoundary]
+    `SerrePositivity.InfinityCategories.Stable.ColimitRelativeBoundary,
+    `SerrePositivity.InfinityCategories.Stable.RelativeInitialVertices,
+    `SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamilies]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
