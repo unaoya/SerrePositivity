@@ -18508,3 +18508,170 @@ propext・Classical.choice・Quot.sound のみ。担当範囲のステージ済�
 任意の三つの distinguished 三角形への同型輸送と IsTriangulated instance が残る。
 三角形の射の存在と各成分の Arrow の照合だけを TR4 全体の完成とは数えない。
 ∞ 圏の全有限極限・余極限の存在、S5〜S7 も未完了。目標全体は継続中。
+
+
+## 2026-10-19：八面体公理 TR4 と三角構造（S4 完了）
+
+`OctahedronModel` は、指定された二つの Arrow と同じ第一・第二辺を持つ六対象の図式、
+三つの distinguished 三角形、Mathlib の Octahedron の存在を表す。
+`exists_octahedron_of_triangle_comparisons` は一般の前三角圏で二つの比較射を使って模型を構成する。
+Arrow の等号から対象を置き換え、四可換式を二つの三角形の射の可換式から取る。
+最後の列の第三射を合成として表示した所属も入力に含まれ、八面体公理は仮定しない。
+
+`CofiberOctahedronDiagram.octahedronModel` は安定 ∞ 圏の二長方形に適用する。
+`exists_compositionSimplex` は二辺の合成を実際の二単体で表す。
+`octahedronModel_of_morphisms` は任意の二射を辺で表し、第一辺の cofiber から二長方形を作り、
+模型の二辺が元の射と端点も含めて等しいことを証明する。
+`isTriangulated_of_octahedronModels` は等号同型と可換式を IsTriangulated.mk' に渡し、
+任意の三つの distinguished 三角形へ模型の八面体を同型輸送する。
+
+公開する最終的な型（namespace SerrePositivity.InfinityCategories）：
+
+```lean
+instance isTriangulated_ho {X : SSet.{u}} [Quasicategory X] [IsStable X] :
+    CategoryTheory.IsTriangulated (hoFunctor.obj X)
+```
+
+追加の有限極限・余極限・モデル圏・特殊な cofiber 代表の整合条件は仮定していない。
+既存の前加法構造、整数シフト、cofiberDistinguishedTriangles の定義を変更していない。
+従来の pretriangulated_ho が TR1〜TR3、新しい isTriangulated_ho が TR4 を与える。
+
+新規公開7宣言の `#check @...`、pp.universes=true による全型：
+
+```text
+@SerrePositivity.InfinityCategories.OctahedronModel.{u_1,
+    u_2} : {C : Type u_1} →
+  [inst : CategoryTheory.Category.{u_2, u_1} C] →
+    [inst_1 : CategoryTheory.Limits.HasZeroObject.{u_2, u_1} C] →
+      [inst_2 : CategoryTheory.HasShift.{u_2, u_1, 0} C ℤ] →
+        [inst_3 : CategoryTheory.Preadditive.{u_2, u_1} C] →
+          [inst_4 :
+              ∀ (n : ℤ),
+                CategoryTheory.Functor.Additive.{u_2, u_1, u_2, u_1} (CategoryTheory.shiftFunctor.{u_2, u_1, 0} C n)] →
+            [CategoryTheory.Pretriangulated.{u_2, u_1} C] →
+              CategoryTheory.Arrow.{u_2, u_1} C → CategoryTheory.Arrow.{u_2, u_1} C → Prop
+@SerrePositivity.InfinityCategories.exists_octahedron_of_triangle_comparisons.{u_1,
+    u_2} : ∀ {C : Type u_1} [inst : CategoryTheory.Category.{u_2, u_1} C]
+  [inst_1 : CategoryTheory.Limits.HasZeroObject.{u_2, u_1} C] [inst_2 : CategoryTheory.HasShift.{u_2, u_1, 0} C ℤ]
+  [inst_3 : CategoryTheory.Preadditive.{u_2, u_1} C]
+  [inst_4 :
+    ∀ (n : ℤ), CategoryTheory.Functor.Additive.{u_2, u_1, u_2, u_1} (CategoryTheory.shiftFunctor.{u_2, u_1, 0} C n)]
+  [inst_5 : CategoryTheory.Pretriangulated.{u_2, u_1} C]
+  (T₁₂ T₁₃ T₂₃ T₄ : CategoryTheory.Pretriangulated.Triangle.{u_2, u_1} C),
+  Membership.mem.{max u_1 u_2, max u_1 u_2} CategoryTheory.Pretriangulated.distinguishedTriangles.{u_2, u_1} T₁₂ →
+    Membership.mem.{max u_1 u_2, max u_1 u_2} CategoryTheory.Pretriangulated.distinguishedTriangles.{u_2, u_1} T₁₃ →
+      Membership.mem.{max u_1 u_2, max u_1 u_2} CategoryTheory.Pretriangulated.distinguishedTriangles.{u_2, u_1} T₂₃ →
+        Membership.mem.{max u_1 u_2, max u_1 u_2} CategoryTheory.Pretriangulated.distinguishedTriangles.{u_2, u_1} T₄ →
+          ∀ (a : Quiver.Hom.{u_2, max u_1 u_2} T₁₂ T₁₃) (b : Quiver.Hom.{u_2, max u_1 u_2} T₁₃ T₂₃)
+            (s :
+              Quiver.Hom.{u_2, u_1} (CategoryTheory.Pretriangulated.Triangle.obj₁.{u_2, u_1} T₂₃)
+                (CategoryTheory.Pretriangulated.Triangle.obj₁.{u_2, u_1} T₄)),
+            Eq.{max (u_1 + 1) (u_2 + 1)}
+                (CategoryTheory.Arrow.mk.{u_2, u_1} (CategoryTheory.Pretriangulated.TriangleMorphism.hom₁.{u_2, u_1} a))
+                (CategoryTheory.Arrow.mk.{u_2, u_1}
+                  (CategoryTheory.CategoryStruct.id.{u_2, u_1}
+                    (CategoryTheory.Pretriangulated.Triangle.obj₁.{u_2, u_1} T₁₂))) →
+              Eq.{max (u_1 + 1) (u_2 + 1)}
+                  (CategoryTheory.Arrow.mk.{u_2, u_1}
+                    (CategoryTheory.Pretriangulated.TriangleMorphism.hom₂.{u_2, u_1} a))
+                  (CategoryTheory.Arrow.mk.{u_2, u_1} (CategoryTheory.Pretriangulated.Triangle.mor₁.{u_2, u_1} T₂₃)) →
+                Eq.{max (u_1 + 1) (u_2 + 1)}
+                    (CategoryTheory.Arrow.mk.{u_2, u_1}
+                      (CategoryTheory.Pretriangulated.TriangleMorphism.hom₁.{u_2, u_1} b))
+                    (CategoryTheory.Arrow.mk.{u_2, u_1} (CategoryTheory.Pretriangulated.Triangle.mor₁.{u_2, u_1} T₁₂)) →
+                  Eq.{max (u_1 + 1) (u_2 + 1)}
+                      (CategoryTheory.Arrow.mk.{u_2, u_1}
+                        (CategoryTheory.Pretriangulated.TriangleMorphism.hom₂.{u_2, u_1} b))
+                      (CategoryTheory.Arrow.mk.{u_2, u_1}
+                        (CategoryTheory.CategoryStruct.id.{u_2, u_1}
+                          (CategoryTheory.Pretriangulated.Triangle.obj₂.{u_2, u_1} T₁₃))) →
+                    Eq.{max (u_1 + 1) (u_2 + 1)}
+                        (CategoryTheory.Arrow.mk.{u_2, u_1}
+                          (CategoryTheory.Pretriangulated.Triangle.mor₁.{u_2, u_1} T₄))
+                        (CategoryTheory.Arrow.mk.{u_2, u_1}
+                          (CategoryTheory.Pretriangulated.TriangleMorphism.hom₃.{u_2, u_1} a)) →
+                      Eq.{max (u_1 + 1) (u_2 + 1)}
+                          (CategoryTheory.Arrow.mk.{u_2, u_1}
+                            (CategoryTheory.Pretriangulated.Triangle.mor₂.{u_2, u_1} T₄))
+                          (CategoryTheory.Arrow.mk.{u_2, u_1}
+                            (CategoryTheory.Pretriangulated.TriangleMorphism.hom₃.{u_2, u_1} b)) →
+                        Eq.{max (u_1 + 1) (u_2 + 1)} (CategoryTheory.Arrow.mk.{u_2, u_1} s)
+                            (CategoryTheory.Arrow.mk.{u_2, u_1}
+                              (CategoryTheory.Pretriangulated.Triangle.mor₂.{u_2, u_1} T₁₂)) →
+                          Eq.{max (u_1 + 1) (u_2 + 1)}
+                              (CategoryTheory.Arrow.mk.{u_2, u_1}
+                                (CategoryTheory.Pretriangulated.Triangle.mor₃.{u_2, u_1} T₄))
+                              (CategoryTheory.Arrow.mk.{u_2, u_1}
+                                (CategoryTheory.CategoryStruct.comp.{u_2, u_1}
+                                  (CategoryTheory.Pretriangulated.Triangle.mor₃.{u_2, u_1} T₂₃)
+                                  (CategoryTheory.Functor.map.{u_2, u_2, u_1, u_1}
+                                    (CategoryTheory.shiftFunctor.{u_2, u_1, 0} C 1) s))) →
+                            SerrePositivity.InfinityCategories.OctahedronModel.{u_1, u_2}
+                              (CategoryTheory.Arrow.mk.{u_2, u_1}
+                                (CategoryTheory.Pretriangulated.Triangle.mor₁.{u_2, u_1} T₁₂))
+                              (CategoryTheory.Arrow.mk.{u_2, u_1}
+                                (CategoryTheory.Pretriangulated.Triangle.mor₁.{u_2, u_1} T₂₃))
+@SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.octahedronModel.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  {t : SerrePositivity.InfinityCategories.ZeroTriangle.{u_1} X},
+  SerrePositivity.InfinityCategories.IsCofiberSequence.{u_1} t →
+    ∀
+      {τ :
+        Quiver.Hom.{u_1, u_1 + 1} (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 2 })
+          X}
+      (d : SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.{u_1} t τ),
+      SerrePositivity.InfinityCategories.OctahedronModel.{u_1, u_1}
+        (CategoryTheory.Arrow.mk.{u_1, u_1}
+          (CategoryTheory.ShortComplex.f.{u_1, u_1}
+            (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplex.{u_1} t)))
+        (CategoryTheory.Arrow.mk.{u_1, u_1}
+          (CategoryTheory.ShortComplex.f.{u_1, u_1}
+            (SerrePositivity.InfinityCategories.ZeroTriangle.hoShortComplex.{u_1}
+              (SerrePositivity.InfinityCategories.PushoutCofiberRectangle.outerZeroTriangle.{u_1}
+                (SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.second.{u_1} d)))))
+@SerrePositivity.InfinityCategories.isTriangulated_of_octahedronModels.{u_1,
+    u_2} : ∀ {C : Type u_1} [inst : CategoryTheory.Category.{u_2, u_1} C]
+  [inst_1 : CategoryTheory.Limits.HasZeroObject.{u_2, u_1} C] [inst_2 : CategoryTheory.HasShift.{u_2, u_1, 0} C ℤ]
+  [inst_3 : CategoryTheory.Preadditive.{u_2, u_1} C]
+  [inst_4 :
+    ∀ (n : ℤ), CategoryTheory.Functor.Additive.{u_2, u_1, u_2, u_1} (CategoryTheory.shiftFunctor.{u_2, u_1, 0} C n)]
+  [inst_5 : CategoryTheory.Pretriangulated.{u_2, u_1} C],
+  (∀ {A B D : C} (f : Quiver.Hom.{u_2, u_1} A B) (g : Quiver.Hom.{u_2, u_1} B D),
+      SerrePositivity.InfinityCategories.OctahedronModel.{u_1, u_2} (CategoryTheory.Arrow.mk.{u_2, u_1} f)
+        (CategoryTheory.Arrow.mk.{u_2, u_1} g)) →
+    CategoryTheory.IsTriangulated.{u_2, u_1} C
+@SerrePositivity.InfinityCategories.exists_compositionSimplex.{u_1} : ∀ {X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  {x y z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x y) (g : SSet.Truncated.Edge.{u_1} y z),
+  ∃ τ,
+    Eq.{u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 2) τ)
+        ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) ∧
+      Eq.{u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 0) τ)
+        ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} g))
+@SerrePositivity.InfinityCategories.octahedronModel_of_morphisms.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  {A B D : ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)}
+  (f : Quiver.Hom.{u_1, u_1} A B) (g : Quiver.Hom.{u_1, u_1} B D),
+  SerrePositivity.InfinityCategories.OctahedronModel.{u_1, u_1} (CategoryTheory.Arrow.mk.{u_1, u_1} f)
+    (CategoryTheory.Arrow.mk.{u_1, u_1} g)
+@SerrePositivity.InfinityCategories.isTriangulated_ho.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X],
+  CategoryTheory.IsTriangulated.{u_1, u_1}
+    ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)
+```
+
+対象 TriangulatedInstance ビルド2808 jobs、対象・Stable 集約ビルド2824 jobs、終了コード0。
+新規五モジュールに警告なし。型抽出・全宣言の公理監査も終了コード0。
+342モジュール・2504宣言（生成・非公開宣言含む）、標準三公理のみ。
+担当範囲のステージ済み差分の git diff --check 成功。引用・追加公理・sorry は導入していない。
+他レーンのファイルは変更していない。
+
+S4 は完成：押し出し・引き戻しの貼り合わせ、cofiber 列の像による distinguished 集合、
+TR1〜TR4、Mathlib の Pretriangulated と IsTriangulated の instance を公開した。
+S5 の Hom 長完全列、S6 の完全関手と自然変換、S7・D7 は未完了。
+安定性から ∞ 圏の全有限極限・余極限を導く逆向きの一般論も未完了のまま明記する。
+目標全体は未完了であり、S5 へ続ける。

@@ -1184,6 +1184,14 @@ open Lean in
 #print axioms SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.nextTriangle_middle_arrow
 #print axioms SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.last_second_arrow
 
+#print axioms SerrePositivity.InfinityCategories.OctahedronModel
+#print axioms SerrePositivity.InfinityCategories.exists_octahedron_of_triangle_comparisons
+#print axioms SerrePositivity.InfinityCategories.CofiberOctahedronDiagram.octahedronModel
+#print axioms SerrePositivity.InfinityCategories.isTriangulated_of_octahedronModels
+#print axioms SerrePositivity.InfinityCategories.exists_compositionSimplex
+#print axioms SerrePositivity.InfinityCategories.octahedronModel_of_morphisms
+#print axioms SerrePositivity.InfinityCategories.isTriangulated_ho
+
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
@@ -1524,7 +1532,12 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.TransposedPastingComparison,
     `SerrePositivity.InfinityCategories.Stable.PastingComparisonIdentity,
     `SerrePositivity.InfinityCategories.Stable.CofiberOctahedronNextComparison,
-    `SerrePositivity.InfinityCategories.Stable.CofiberOctahedronTriangleComparisons]
+    `SerrePositivity.InfinityCategories.Stable.CofiberOctahedronTriangleComparisons,
+    `SerrePositivity.InfinityCategories.Stable.OctahedronFromComparisons,
+    `SerrePositivity.InfinityCategories.Stable.CofiberOctahedronModel,
+    `SerrePositivity.InfinityCategories.Stable.OctahedronModelTransport,
+    `SerrePositivity.InfinityCategories.Stable.OctahedronForMorphisms,
+    `SerrePositivity.InfinityCategories.Stable.TriangulatedInstance]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

@@ -126,7 +126,7 @@ S4 の三角構造へ向け、四辺を端点つきの辺と h C の射として
 `exists_cofiber_hoShortComplex` と `exists_fiber_hoShortComplex` により、安定な X の
 h C の全ての射が、cofiber 短複体の第一射／fiber 短複体の第二射として現れる。
 この存在定理自体は短複体まで。接続射、整数シフト、通常の Triangle、distinguished 集合の定義、
-TR1 と TR3 は下記のとおり証明済み。回転・八面体は未証明。
+TR1〜TR4 は下記のとおり証明済み。前三角構造と八面体公理を instance として公開した。
 接続射と cofiber 列の射に向け、`exists_colimitCoconeFamily_extension` により
 各頂点で余極限が存在する族の任意の単射部分族上で、指定した普遍余錐の族を
 厳密に保持して延長できることを証明した。`colimitCoconeVertex` とその射影の等式により
@@ -231,7 +231,7 @@ IsCofiberSequence の証明で与える。S3 の対象比較との整合と図�
 S3 の対象比較の自然性で Σ に移した。
 `cofiberConnecting_comp_suspension_map_eq_zero` により δ ≫ Σf = 0 が成り立つ
 （Quasicategory、IsStable、IsCofiberSequence）。f ≫ g = 0、g ≫ δ = 0 と合わせ、
-cofiber 列の三つの隣接零合成は完成。回転・八面体を含む三角圏の公理は未完了。
+cofiber 列の三つの隣接零合成は完成。回転・八面体を含む三角構造も下記で完成。
 `stableEquivalenceHasShift` は任意の圏の自己同値から整合的な整数シフトを構成する。
 skeleton 上の mapSkeleton は充満忠実かつ対象全単射なので厳密な自己同型となり、その
 Aut(Cat) の整数冪の等号から ShiftMkCore を作る。HasShift.induced により元の圏へ戻す。
@@ -248,7 +248,7 @@ Triangle.mk f g h がこの集合に属することを証明する（TR1 の存�
 `contractibleTriangle_mem_cofiberDistinguishedTriangles` により任意の対象 a の
 可縮三角形 `(a → a → 0 → a[1])` の所属も証明済み。同型不変性・任意の射を含む存在と
 合わせて、定義済み distinguished 集合に対する TR1 が揃った。
-S4 の三角構造は未完了。前加法構造・シフトの加法性は下記で完成。回転・八面体および Pretriangulated instance は残る S4 の義務として保持する。TR3 は下記で完成。
+S4 の三角構造は下記で完成。前加法構造・シフトの加法性・回転・八面体と二つの instance を構成済み。
 `exists_stableSquare_of_homMk_comm` は、h で可換な四つの指定辺を二つの合成三角形の
 貼り合わせで実際の正方形にする。`exists_arrowHomotopy_of_homMk_comm` は二つの縦の辺を
 厳密な端点の道として持つホモトピーに直す。
@@ -737,7 +737,7 @@ Pretriangulated instance。TR1・TR2・TR3 を既存の cofiberDistinguishedTria
 `distinguishedTriangles_ho_eq` はその distinguished 集合が既存の cofiber の像の集合同士で
 定義的に一致することを公開する。Quasicategory と IsStable のみを仮定する。
 対象ビルド2791 jobs・集約ビルド2807 jobs、326モジュール・2360宣言の公理監査が成功した。
-**Pretriangulated instance は完成**。八面体・TR4 は未完了であり、S4 全体の完了とは数えない。
+**Pretriangulated instance は完成**。八面体・TR4 と S4 全体も下記で完成。
 
 TR4 の幾何学的構成を進めた。
 `CofiberCompositionRectangle` と存在定理は、元の cofiber 列と合成する二射の二単体を保持し、
@@ -775,10 +775,22 @@ TR4 の幾何学的構成を進めた。
 新規五モジュールの対象・集約ビルド2818 jobs、337モジュール・2496宣言の監査、
 公開31宣言の universe 付き型抽出が成功した。標準三公理のみ。
 
-**TR4 は未完了**。残るのは Mathlib の Octahedron の四可換式を同じ三対象の表示で組み立てること、
-任意に指定された distinguished 三角形の三つ組への同型輸送と IsTriangulated instance。
-最後の三角形の所属までの今回の成果を八面体公理全体の完成とは数えない。
-
+**TR4 と S4 は完成**。
+`OctahedronModel` は最初の二辺が指定した Arrow と等しい、六対象・三つの distinguished 三角形・
+Mathlib の Octahedron を持つ模型の存在を表す。
+`exists_octahedron_of_triangle_comparisons` は任意の前三角圏で、二つの三角形比較と最後の列の所属から
+対象の表示を Arrow の等号で統一し、四可換式と最後の三角形の所属を備えた八面体を構成する。
+この補題は八面体公理を仮定しない。
+`CofiberOctahedronDiagram.octahedronModel` が二長方形に適用し、
+`octahedronModel_of_morphisms` は任意の二射の辺の代表と合成二単体、第一辺の cofiber を選んで
+模型を作る。模型の二辺は元の二射と端点を含めて Arrow として等しい。
+`isTriangulated_of_octahedronModels` はその等号から三対象の等号同型と可換式を得て、
+Mathlib の IsTriangulated.mk' を使い、任意の三つの distinguished 三角形へ同型輸送する。
+`isTriangulated_ho` は Quasicategory X と IsStable X のみを仮定する八面体公理の instance。
+既存の preadditive_ho、hasShift_ho、pretriangulated_ho を変更していない。
+従って h C は cofiber 列の像を distinguished とする三角圏である（HA 1.1.2.14）。
+対象ビルド2808 jobs、対象・Stable 集約ビルド2824 jobs、342モジュール・2504宣言の監査と
+公開7宣言の universe 付き型抽出が成功した。標準三公理のみ。
 安定性から全有限極限・余極限を導く逆向き、S5〜S7 の長完全列・完全関手・D7 は未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
 実装は `InfinityCategories/Stable/`、D7 は `InfinityCategories/Derived/` に置く。
@@ -804,7 +816,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | S1 | `Stable/Pointed.lean` | 零対象、coslice の始対象としての IsColimitCone、IsPushoutSquare、fiber/cofiber 四角形 | 完了 |
 | S2 | `Stable/Definition.lean` | HA 1.1.1.9 の安定性、HA 1.1.3.4 の必要な向き | 完了 |
 | S3 | `Stable/Suspension.lean` | h C の Σ・Ω 関手、選択の比較、安定な場合の自己同値 | 完了 |
-| S4 | `Stable/Pasting.lean`、`Stable/Triangulated.lean` | 四角形の貼り合わせ、cofiber 三角形、TR1〜TR4、Pretriangulated | 実装中（貼り合わせ、TR1〜TR3、Pretriangulated instance は完了。八面体・TR4 は未完了） |
+| S4 | `Stable/Pasting.lean`、`Stable/Triangulated.lean` | 四角形の貼り合わせ、cofiber 三角形、TR1〜TR4、Pretriangulated | 完了（貼り合わせ、TR1〜TR4、Pretriangulated・IsTriangulated instance） |
 | S5 | `Stable/LongExactSequence.lean` | fiber 列に Hom を適用した長完全列 | 未着手 |
 | S6 | `Stable/ExactFunctor.lean` | 完全関手、h の三角関手、完全関手間の自然変換 | 未着手 |
 | S7（D7） | `Derived/Stable.lean` | D(S) の安定性と D3 による通常の導来圏の三角構造との一致 | 未着手 |
@@ -905,7 +917,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 接続射の後の零合成 | `cofiberConnecting_comp_suspension_map_eq_zero`（Quasicategory、IsStable、cofiber 列） | 完了。三つの隣接零合成が揃った。三角構造は未完了 |
 | h C の整数シフト | `stableEquivalenceHasShift`（任意の圏の自己同値）、`hasShift_ho`、`shiftOneSuspensionIso`、`shiftNegOneLoopIso`（Quasicategory、IsStable） | HasShift ℤ の全整合条件と Σ・Ω との比較まで完了。加法性も下記で完成 |
 | Mathlib の cofiber 三角形 | `cofiberTriangle`、三つの隣接零合成、`cofiberTriangleMapOfHomotopy`（Quasicategory、IsStable、cofiber 列） | 通常の Triangle とその射として完了 |
-| distinguished 集合と TR1 の存在部分 | `cofiberDistinguishedTriangles` と同型不変性、`exists_cofiberDistinguishedTriangle`（Quasicategory、IsStable、任意の h C の射） | 集合の定義・同型不変性・厳密に指定した射を含む三角形の存在は完了。TR3 も下記で完成。可縮三角形も下記で完成。回転・八面体・Pretriangulated は未完了 |
+| distinguished 集合と TR1 の存在部分 | `cofiberDistinguishedTriangles` と同型不変性、`exists_cofiberDistinguishedTriangle`（Quasicategory、IsStable、任意の h C の射） | 集合の定義・同型不変性・厳密に指定した射を含む三角形の存在は完了。TR3 も下記で完成。可縮三角形も下記で完成。回転・八面体・Pretriangulated も下記で完成 |
 | 可換正方形の図式への延長 | `exists_stableSquare_of_homMk_comm`、`exists_terminalArrowHomotopy_of_sourcePath`、`exists_cofiberSquareHomotopy_of_comm`（Quasicategory、最後は両端が cofiber 列） | 完了。入力の二つの辺の一次単体を保持 |
 | TR3 | `exists_cofiberTriangleMorphism_of_comm`、`exists_cofiberDistinguishedTriangleMorphism`、`complete_cofiberDistinguishedTriangle_morphism`（Quasicategory、IsStable、指定した最初の二成分の可換正方形） | 定義済み distinguished 集合の全ての三角形について完成。Pretriangulated instance も下記で完成 |
 | 一点・区間の終点余極限 | `cosliceIdentityCone_isInitialVertex`、`cosliceIdentityCone_isColimit`、`isColimitCone_of_point_constant`、`edgeTerminalCocone_isColimit`（Quasicategory のみ） | 完了。恒等射の cofiber 四角形への適用も下記で完成 |
@@ -943,9 +955,10 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 基点独立性・Hom の加法・懸垂交換の負号 | `kanKernelPairPiZeroLoopEquiv_basepoint`・`kanKernelPairLoopProduct_basepoint`（Kan fibration、E 可縮な Kan、B Kan）、`symmetricCoconeHomProduct_naturality` と零単位・右逆元（Quasicategory、零終点、全体の余極限余錐。零単位・右逆元は零射構造）、`symmetricCoconeHomProduct_eq_add`・`fixedCoconeSwap_eq_neg_id`・`SuspensionSquare.swapIso_eq_neg_id`（Quasicategory、IsStable） | ループ積の基点独立性、Hom の後合成自然性・加法との一致、任意の懸垂交換と -id の一致まで完成。回転第三接続射の負号・TR2 も下記で完成 |
 | 回転第三接続射の符号 | `pastingOuterToRightHomotopy` と二成分（値域の仮定なし）、`CofiberRotationRectangle.suspensionComparison` と二成分（Quasicategory、終点は零射構造）、`SuspensionSquare.ambientHom_target`・`transpose_objIso_inv`、`CofiberRotationRectangle.connecting_eq_neg_suspension`（Quasicategory、IsStable） | 対象比較と始点の等号輸送を含め、回転後の接続射が -Σf となる式まで完成。Triangle の回転所属・逆方向・TR2 も下記で完成 |
 | 三角形の回転 TR2 | `CofiberRotationRectangle.triangleIsoRotate`、`exists_cofiberPredecessor`、`cofiberTriangleIsoOfFunctorIso`、`nonempty_cofiberTriangleIso_of_bottom_eq`、`rotate_mem_cofiberDistinguishedTriangles`、`invRotate_mem_cofiberDistinguishedTriangles`、`cofiberDistinguishedTriangles_rotate_iff`（Quasicategory、IsStable） | 第三射の符号を含む順回転同型、前の列、逆回転の所属、回転による所属の同値まで完成 |
-| 前三角構造の公開 | `pretriangulated_ho`、`distinguishedTriangles_ho_eq`（Quasicategory、IsStable） | Mathlib の Pretriangulated instance と cofiber の像の集合との定義的一致まで完成。TR4 は未完了 |
-| 八面体の二長方形と最後の三角形 | `CofiberCompositionRectangle` と存在・三成分・`connecting_comm`、`PushoutCofiberRectangle` と存在・`connecting_comp`・`triangle_connecting_comp`、`CofiberOctahedronDiagram` と存在・辺の式・`lastTriangle_mem`（存在と三角形の主張は Quasicategory、IsStable） | 二長方形と第一の三角形比較、最後の第三射の合成表示と distinguished 性まで完成。Mathlib の Octahedron 全体・TR4 は未完了 |
-| 八面体の第二比較と三角形の射 | `cofiberTriangleHoMap` と三成分、`CofiberOctahedronDiagram.nextComparisonHom` と三成分、`nextTriangleMorphism`・`nextConnecting_comm`、二比較と最後の列の Arrow 照合（最終的な三角形の主張は Quasicategory、IsStable） | 第二比較と第一・第二の三角形の射の成分の照合まで完成。共通の対象表示での Octahedron の組み立て・任意の三角形への輸送・TR4 は未完了 |
-| S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
+| 前三角構造の公開 | `pretriangulated_ho`、`distinguishedTriangles_ho_eq`（Quasicategory、IsStable） | Mathlib の Pretriangulated instance と cofiber の像の集合との定義的一致まで完成。TR4 も下記で完成 |
+| 八面体の二長方形と最後の三角形 | `CofiberCompositionRectangle` と存在・三成分・`connecting_comm`、`PushoutCofiberRectangle` と存在・`connecting_comp`・`triangle_connecting_comp`、`CofiberOctahedronDiagram` と存在・辺の式・`lastTriangle_mem`（存在と三角形の主張は Quasicategory、IsStable） | 二長方形と第一の三角形比較、最後の第三射の合成表示と distinguished 性まで完成。Mathlib の Octahedron 全体・TR4 も下記で完成 |
+| 八面体の第二比較と三角形の射 | `cofiberTriangleHoMap` と三成分、`CofiberOctahedronDiagram.nextComparisonHom` と三成分、`nextTriangleMorphism`・`nextConnecting_comm`、二比較と最後の列の Arrow 照合（最終的な三角形の主張は Quasicategory、IsStable） | 第二比較と第一・第二の三角形の射の成分の照合まで完成。共通の対象表示での Octahedron の組み立て・任意の三角形への輸送・TR4 も下記で完成 |
+| 八面体公理と三角構造の公開 | `OctahedronModel`、`exists_octahedron_of_triangle_comparisons`、`CofiberOctahedronDiagram.octahedronModel`、`isTriangulated_of_octahedronModels`、`octahedronModel_of_morphisms`、`isTriangulated_ho`（最終的な instance は Quasicategory、IsStable のみ） | 任意の二射と任意の三つの distinguished 三角形について八面体公理が完成。S4 は完了 |
+| S5〜S7 | 長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。
