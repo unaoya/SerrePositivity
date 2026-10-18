@@ -99,6 +99,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -2121,6 +2122,12 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.monoidGroupCompletionMap_evaluation
 
 
+-- GrouplikeColimit.lean
+
+#check @SerrePositivity.KST.Comparison.isGrouplike_of_sequential_isColimit
+#print axioms SerrePositivity.KST.Comparison.isGrouplike_of_sequential_isColimit
+
+
 -- GrouplikeComparison.lean
 
 #check @SerrePositivity.KST.Comparison.monoidGroupCompletionMap_localized_isIso
@@ -2146,6 +2153,18 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.dgAlgebraHatGLGroupCompletionMap_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.dgAlgebraHatGLGroupCompletionMap_localized_isIso
+
+
+-- HatGLStabilization.lean
+
+#check @SerrePositivity.KST.Comparison.matrixToComponents_stabilization
+#print axioms SerrePositivity.KST.Comparison.matrixToComponents_stabilization
+
+#check @SerrePositivity.KST.Comparison.hatGLStabilizationAt
+#print axioms SerrePositivity.KST.Comparison.hatGLStabilizationAt
+
+#check @SerrePositivity.KST.Comparison.hatGLStabilization
+#print axioms SerrePositivity.KST.Comparison.hatGLStabilization
 
 
 -- HomotopyPullback.lean
@@ -2701,6 +2720,21 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.mappingCylinderToDouble_isPushout
 #print axioms SerrePositivity.KST.Comparison.mappingCylinderToDouble_isPushout
+
+
+-- MatrixStabilization.lean
+
+#check @SerrePositivity.KST.Comparison.matrixBlockUnit
+#print axioms SerrePositivity.KST.Comparison.matrixBlockUnit
+
+#check @SerrePositivity.KST.Comparison.matrixStabilization
+#print axioms SerrePositivity.KST.Comparison.matrixStabilization
+
+#check @SerrePositivity.KST.Comparison.matrixBlockUnit_map
+#print axioms SerrePositivity.KST.Comparison.matrixBlockUnit_map
+
+#check @SerrePositivity.KST.Comparison.matrixStabilization_map
+#print axioms SerrePositivity.KST.Comparison.matrixStabilization_map
 
 
 -- MonoBasePullback.lean
@@ -3616,6 +3650,21 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.spanStrictification_of_mono
 #print axioms SerrePositivity.KST.Comparison.spanStrictification_of_mono
+
+
+-- StableHatGL.lean
+
+#check @SerrePositivity.KST.Comparison.hatGLRankSequence
+#print axioms SerrePositivity.KST.Comparison.hatGLRankSequence
+
+#check @SerrePositivity.KST.Comparison.stableHatGL
+#print axioms SerrePositivity.KST.Comparison.stableHatGL
+
+#check @SerrePositivity.KST.Comparison.stableHatGL_isGrouplike
+#print axioms SerrePositivity.KST.Comparison.stableHatGL_isGrouplike
+
+#check @SerrePositivity.KST.Comparison.stableHatGLGroupCompletionMap_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.stableHatGLGroupCompletionMap_localized_isIso
 
 
 -- StrictCylinderFibration.lean

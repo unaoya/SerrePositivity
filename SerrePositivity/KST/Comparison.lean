@@ -115,6 +115,8 @@ public import SerrePositivity.KST.Comparison.RegularBarHomotopyFiber
 
 public import SerrePositivity.KST.Comparison.HatGLDelooping
 
+public import SerrePositivity.KST.Comparison.StableHatGL
+
 /-!
 # K-L2：比較定理の入口
 
