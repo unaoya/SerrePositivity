@@ -73,3 +73,5 @@ public import SerrePositivity.InfinityCategories.F1.CoherentHomNaturality
 public import SerrePositivity.InfinityCategories.F1.CoherentMaximumFlag
 public import SerrePositivity.InfinityCategories.F1.CoherentHomMono
 public import SerrePositivity.InfinityCategories.F1.UniverseKan
+public import SerrePositivity.InfinityCategories.F1.CoherentResolutionFlags
+public import SerrePositivity.InfinityCategories.F1.CoherentResolutionSimplex

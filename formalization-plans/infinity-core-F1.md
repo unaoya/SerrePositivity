@@ -1709,5 +1709,54 @@ lemma uliftSimplexHomDown_face {X : SSet.{u}} {n : ℕ}
 instance kanComplex_uliftFunctor_obj (X : SSet.{u}) [KanComplex X] :
     KanComplex (SSet.uliftFunctor.{v, u}.obj X)
 
+structure CoherentResolutionFlag (n d : ℕ) where
+  start : Fin (n + 1)
+  sets : Fin (d + 1) → Finset (Fin (n + 1))
+  monotone_sets : Monotone sets
+  first : sets 0 = {start}
+  lower : ∀ i k, k ∈ sets i → start ≤ k
+
+lemma CoherentResolutionFlag.ext {n d : ℕ} {F G : CoherentResolutionFlag n d}
+    (hstart : F.start = G.start) (hsets : F.sets = G.sets) : F = G
+
+lemma CoherentResolutionFlag.start_mem {n d : ℕ} (F : CoherentResolutionFlag n d)
+    (i : Fin (d + 1)) : F.start ∈ F.sets i
+
+lemma CoherentResolutionFlag.sets_nonempty {n d : ℕ} (F : CoherentResolutionFlag n d)
+    (i : Fin (d + 1)) : (F.sets i).Nonempty
+
+def CoherentResolutionFlag.maxAt {n d : ℕ} (F : CoherentResolutionFlag n d)
+    (i : Fin (d + 1)) : Fin (n + 1)
+
+lemma CoherentResolutionFlag.maxAt_mem {n d : ℕ} (F : CoherentResolutionFlag n d)
+    (i : Fin (d + 1)) : F.maxAt i ∈ F.sets i
+
+lemma CoherentResolutionFlag.le_maxAt {n d : ℕ} (F : CoherentResolutionFlag n d)
+    (i : Fin (d + 1)) (k : Fin (n + 1)) (hk : k ∈ F.sets i) : k ≤ F.maxAt i
+
+lemma CoherentResolutionFlag.maxAt_monotone {n d : ℕ} (F : CoherentResolutionFlag n d) :
+    Monotone F.maxAt
+
+lemma CoherentResolutionFlag.maxAt_zero {n d : ℕ} (F : CoherentResolutionFlag n d) :
+    F.maxAt 0 = F.start
+
+def CoherentResolutionFlag.pullback {n d e : ℕ} (F : CoherentResolutionFlag n d)
+    (α : Fin (e + 1) →o Fin (d + 1)) : CoherentResolutionFlag n e
+
+lemma CoherentResolutionFlag.maxAt_pullback {n d e : ℕ} (F : CoherentResolutionFlag n d)
+    (α : Fin (e + 1) →o Fin (d + 1)) (i : Fin (e + 1)) :
+    (F.pullback α).maxAt i = F.maxAt (α i)
+
+lemma CoherentResolutionFlag.pullback_id {n d : ℕ} (F : CoherentResolutionFlag n d) :
+    F.pullback (OrderHom.id (α := Fin (d + 1))) = F
+
+lemma CoherentResolutionFlag.pullback_comp {n d e f : ℕ} (F : CoherentResolutionFlag n d)
+    (α : Fin (e + 1) →o Fin (d + 1)) (β : Fin (f + 1) →o Fin (e + 1)) :
+    (F.pullback α).pullback β = F.pullback (α.comp β)
+
+def coherentResolutionSimplex (n : ℕ) : SSet.{u}
+
+def coherentResolutionProjection (n : ℕ) : coherentResolutionSimplex.{u} n ⟶ Δ[n]
+
 end SerrePositivity.InfinityCategories
 ```
