@@ -333,3 +333,13 @@ public import SerrePositivity.KST.ProExcision.NonUnitalHatGLComponents
 public import SerrePositivity.KST.ProExcision.NonUnitalHatGLGrouplike
 
 public import SerrePositivity.KST.ProExcision.NonUnitalLemma416Relative
+
+public import SerrePositivity.KST.ProExcision.MatrixLastColumn
+
+public import SerrePositivity.KST.ProExcision.TriangularDropLast
+
+public import SerrePositivity.KST.ProExcision.TriangularLastColumn
+
+public import SerrePositivity.KST.ProExcision.TriangularAffineSplit
+
+public import SerrePositivity.KST.ProExcision.ActionProductLift

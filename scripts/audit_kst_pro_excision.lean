@@ -3714,3 +3714,63 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.nonUnitalLemma416_relative_zero
 #print axioms SerrePositivity.KST.ProExcision.nonUnitalLemma416_relative_zero
+
+#check @SerrePositivity.KST.ProExcision.matrixDropLast
+#print axioms SerrePositivity.KST.ProExcision.matrixDropLast
+
+#check @SerrePositivity.KST.ProExcision.matrixLastColumn
+#print axioms SerrePositivity.KST.ProExcision.matrixLastColumn
+
+#check @SerrePositivity.KST.ProExcision.matrixDropLast_one
+#print axioms SerrePositivity.KST.ProExcision.matrixDropLast_one
+
+#check @SerrePositivity.KST.ProExcision.matrixLastColumn_one
+#print axioms SerrePositivity.KST.ProExcision.matrixLastColumn_one
+
+#check @SerrePositivity.KST.ProExcision.matrixDropLast_mul
+#print axioms SerrePositivity.KST.ProExcision.matrixDropLast_mul
+
+#check @SerrePositivity.KST.ProExcision.matrixLastColumn_mul
+#print axioms SerrePositivity.KST.ProExcision.matrixLastColumn_mul
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockGroup_lastRow
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockGroup_lastRow
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockGroup_dropLast_mem
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockGroup_dropLast_mem
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockGroupDropLastUnit
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockGroupDropLastUnit
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockGroupDropLast
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockGroupDropLast
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockGroup_lastColumn_mem
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockGroup_lastColumn_mem
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockGroupLastColumn
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockGroupLastColumn
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockGroupLastColumn_one
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockGroupLastColumn_one
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockGroupLastColumn_mul
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockGroupLastColumn_mul
+
+#check @SerrePositivity.KST.ProExcision.triangularColumnAction
+#print axioms SerrePositivity.KST.ProExcision.triangularColumnAction
+
+#check @SerrePositivity.KST.ProExcision.triangularColumnActionStructure
+#print axioms SerrePositivity.KST.ProExcision.triangularColumnActionStructure
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockAffineSplit
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockAffineSplit
+
+#check @SerrePositivity.KST.ProExcision.actionProductLift
+#print axioms SerrePositivity.KST.ProExcision.actionProductLift
+
+#check @SerrePositivity.KST.ProExcision.actionProductLift_section
+#print axioms SerrePositivity.KST.ProExcision.actionProductLift_section
+
+#check @SerrePositivity.KST.ProExcision.actionProductLift_fiber
+#print axioms SerrePositivity.KST.ProExcision.actionProductLift_fiber
