@@ -46,7 +46,7 @@ Kerodon 5.6 の証明（5.3 の「fibration の ∞ 圏」、5.4 の （∞,2）
 
 ```lean
 universe u
-open CategoryTheory Limits SSet
+open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories
 
@@ -290,6 +290,109 @@ noncomputable def cocartesianLiftSpaceVertexEquiv {A X B : SSet.{u}} (p : X ⟶ 
     (c : A ⟶ relativeEdgeSourceTarget p) :
     {F : A ⟶ cocartesianPath p // F ≫ cocartesianPathSource p = c} ≃
       (cocartesianLiftSpace p c) _⦋0⦌
+
+
+lemma ihom_map_const {A X B : SSet.{u}} (b : B _⦋0⦌) :
+    (ihom A).map (SSet.const b : X ⟶ B) =
+      SSet.const (functorVertex (SSet.const b : A ⟶ B))
+
+lemma uncurry_const_functorVertex {A L B : SSet.{u}} (f : A ⟶ B) :
+    uncurry (SSet.const (functorVertex f) : L ⟶ (ihom A).obj B) = fst A L ≫ f
+
+instance vertexFiberι_mono {X B : SSet.{u}} (p : X ⟶ B) (b : B _⦋0⦌) :
+    Mono (vertexFiberι p b)
+
+def ihomVertexFiberMap (A : SSet.{u}) {X B : SSet.{u}} (p : X ⟶ B) (b : B _⦋0⦌) :
+    (ihom A).obj (vertexFiber p b) ⟶
+      vertexFiber ((ihom A).map p) (functorVertex (SSet.const b : A ⟶ B))
+
+def ihomVertexFiberInverse (A : SSet.{u}) {X B : SSet.{u}} (p : X ⟶ B) (b : B _⦋0⦌) :
+    vertexFiber ((ihom A).map p) (functorVertex (SSet.const b : A ⟶ B)) ⟶
+      (ihom A).obj (vertexFiber p b)
+
+lemma ihomVertexFiberInverse_comp (A : SSet.{u}) {X B : SSet.{u}} (p : X ⟶ B)
+    (b : B _⦋0⦌) :
+    ihomVertexFiberInverse A p b ≫ (ihom A).map (vertexFiberι p b) =
+      vertexFiberι ((ihom A).map p) (functorVertex (SSet.const b : A ⟶ B))
+
+def ihomVertexFiberIso (A : SSet.{u}) {X B : SSet.{u}} (p : X ⟶ B) (b : B _⦋0⦌) :
+    (ihom A).obj (vertexFiber p b) ≅
+      vertexFiber ((ihom A).map p) (functorVertex (SSet.const b : A ⟶ B))
+
+def cocartesianPathEndpoint {X B : SSet.{u}} (p : X ⟶ B) (i : Fin 2) :
+    cocartesianPath p ⟶ X
+
+lemma cocartesianPathEndpoint_comp {X B : SSet.{u}} (p : X ⟶ B) :
+    cocartesianPathEndpoint p 1 ≫ p = cocartesianPathSource p ≫
+      pullback.snd p (evaluateFunctorAt (Y
+
+noncomputable def cocartesianLiftSpaceEndpoint {A X B : SSet.{u}} (p : X ⟶ B)
+    (c : A ⟶ relativeEdgeSourceTarget p) :
+    cocartesianLiftSpace p c ⟶ vertexFiber ((ihom A).map p)
+      (functorVertex (c ≫ pullback.snd p
+        (evaluateFunctorAt (Y
+
+noncomputable def IsContractibleKan.vertexIso {K : SSet.{u}} (h : IsContractibleKan K)
+    (x y : K _⦋0⦌) : VertexIso x y
+
+noncomputable def cocartesianLiftSpaceEndpointIso {A X B : SSet.{u}} (p : X ⟶ B)
+    [CocartesianFibration p] (c : A ⟶ relativeEdgeSourceTarget p)
+    (x y : (cocartesianLiftSpace p c) _⦋0⦌) :
+    VertexIso ((cocartesianLiftSpaceEndpoint p c).app (Opposite.op ⦋0⦌) x)
+      ((cocartesianLiftSpaceEndpoint p c).app (Opposite.op ⦋0⦌) y)
+
+noncomputable def transportSourceDiagram {X B : SSet.{u}} (p : X ⟶ B) (e : B _⦋1⦌) :
+    vertexFiber p (B.δ 1 e) ⟶ relativeEdgeSourceTarget p
+
+lemma transportSourceDiagram_endpoint {X B : SSet.{u}} (p : X ⟶ B) (e : B _⦋1⦌) :
+    transportSourceDiagram p e ≫ pullback.snd p
+      (evaluateFunctorAt (Y
+
+noncomputable def transportChoiceSpace {X B : SSet.{u}} (p : X ⟶ B) (e : B _⦋1⦌) : SSet.{u}
+
+lemma transportChoiceSpace_isContractibleKan {X B : SSet.{u}} (p : X ⟶ B)
+    [CocartesianFibration p] (e : B _⦋1⦌) : IsContractibleKan (transportChoiceSpace p e)
+
+noncomputable def transportChoiceLift {X B : SSet.{u}} (p : X ⟶ B) (e : B _⦋1⦌)
+    (x : (transportChoiceSpace p e) _⦋0⦌) :
+    {F : vertexFiber p (B.δ 1 e) ⟶ cocartesianPath p //
+      F ≫ cocartesianPathSource p = transportSourceDiagram p e}
+
+noncomputable def transportChoiceEndpoint {X B : SSet.{u}} (p : X ⟶ B) (e : B _⦋1⦌) :
+    transportChoiceSpace p e ⟶ (ihom (vertexFiber p (B.δ 1 e))).obj (vertexFiber p (B.δ 0 e))
+
+lemma transportChoiceEndpoint_comp {X B : SSet.{u}} (p : X ⟶ B) (e : B _⦋1⦌) :
+    transportChoiceEndpoint p e ≫ (ihom (vertexFiber p (B.δ 1 e))).map (vertexFiberι p (B.δ 0 e)) =
+      vertexFiberι ((ihom (vertexFiber p (B.δ 1 e))).map (cocartesianPathSource p))
+        (functorVertex (transportSourceDiagram p e)) ≫
+          (ihom (vertexFiber p (B.δ 1 e))).map (cocartesianPathEndpoint p 1)
+
+noncomputable def transportAtChoice {X B : SSet.{u}} (p : X ⟶ B) (e : B _⦋1⦌)
+    (x : (transportChoiceSpace p e) _⦋0⦌) :
+    vertexFiber p (B.δ 1 e) ⟶ vertexFiber p (B.δ 0 e)
+
+lemma transportChoiceLift_vertex {X B : SSet.{u}} (p : X ⟶ B) (e : B _⦋1⦌)
+    (x : (transportChoiceSpace p e) _⦋0⦌) :
+    functorVertex (transportChoiceLift p e x).val = x.val
+
+lemma transportAtChoice_vertex {X B : SSet.{u}} (p : X ⟶ B) (e : B _⦋1⦌)
+    (x : (transportChoiceSpace p e) _⦋0⦌) :
+    functorVertex (transportAtChoice p e x) =
+      (transportChoiceEndpoint p e).app (Opposite.op ⦋0⦌) x
+
+lemma transportAtChoice_witness {X B : SSet.{u}} (p : X ⟶ B) (e : B _⦋1⦌)
+    (x : (transportChoiceSpace p e) _⦋0⦌) :
+    ∃ H : (Δ[1] : SSet.{u}) ⊗ vertexFiber p (B.δ 1 e) ⟶ X,
+      prismEndpoint 0 _ ≫ H = vertexFiberι p (B.δ 1 e) ∧
+      prismEndpoint 1 _ ≫ H = transportAtChoice p e x ≫ vertexFiberι p (B.δ 0 e) ∧
+      H ≫ p = fst (Δ[1] : SSet.{u}) _ ≫ SSet.yonedaEquiv.symm e ∧
+      ∀ v : (vertexFiber p (B.δ 1 e)) _⦋0⦌, IsCocartesianEdge p
+        (H.app (Opposite.op ⦋1⦌)
+          (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant v 1))
+
+noncomputable def transportAtChoiceIso {X B : SSet.{u}} (p : X ⟶ B)
+    [CocartesianFibration p] (e : B _⦋1⦌) (x y : (transportChoiceSpace p e) _⦋0⦌) :
+    FunctorIso (transportAtChoice p e x) (transportAtChoice p e y)
 
 end SerrePositivity.InfinityCategories
 ```

@@ -15,3 +15,7 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianPath
 public import SerrePositivity.InfinityCategories.F1.CocartesianPathLifting
 public import SerrePositivity.InfinityCategories.F1.CocartesianTransport
 public import SerrePositivity.InfinityCategories.F1.CocartesianLiftSpace
+public import SerrePositivity.InfinityCategories.F1.FunctorFiber
+public import SerrePositivity.InfinityCategories.F1.LiftEndpoint
+public import SerrePositivity.InfinityCategories.F1.TransportChoices
+public import SerrePositivity.InfinityCategories.F1.TransportComparison
