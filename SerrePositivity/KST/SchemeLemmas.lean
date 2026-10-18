@@ -263,3 +263,6 @@ public import SerrePositivity.KST.SchemeLemmas.RelativePureFreeNeighborhoods
 public import SerrePositivity.KST.SchemeLemmas.GenericPureFreePushout
 public import SerrePositivity.KST.SchemeLemmas.RelativePureFreeNeighborhoodsBasic
 public import SerrePositivity.KST.SchemeLemmas.RelativePureFreeNeighborhoodsPushout
+public import SerrePositivity.KST.SchemeLemmas.TensorAlgebraBaseChangeDiagram
+public import SerrePositivity.KST.SchemeLemmas.TensorAlgebraBaseChangePushout
+public import SerrePositivity.KST.SchemeLemmas.BoundaryFreeNeighborhoodsSingleBaseChange
