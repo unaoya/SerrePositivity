@@ -32,6 +32,8 @@ public import SerrePositivity.KST.Comparison.SubdivisionDegeneracy
 public import SerrePositivity.KST.Comparison.SubdivisionCommutation
 public import SerrePositivity.KST.Comparison.ExPairingStep
 public import SerrePositivity.KST.Comparison.ExDoublePairing
+public import SerrePositivity.KST.Comparison.SubdivisionFaceDegeneracy
+public import SerrePositivity.KST.Comparison.SubdivisionFrontFace
 
 /-!
 # K-L2：比較定理の入口

@@ -50,6 +50,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -396,6 +397,18 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.exUnitAt_mono
 #print axioms SerrePositivity.KST.Comparison.exUnitAt_mono
+
+
+-- FaceIntervals.lean
+
+#check @SerrePositivity.KST.Comparison.liftedFace_injective
+#print axioms SerrePositivity.KST.Comparison.liftedFace_injective
+
+#check @SerrePositivity.KST.Comparison.liftedFace_of_below
+#print axioms SerrePositivity.KST.Comparison.liftedFace_of_below
+
+#check @SerrePositivity.KST.Comparison.liftedFace_initialSegment_of_below
+#print axioms SerrePositivity.KST.Comparison.liftedFace_initialSegment_of_below
 
 
 -- FiberwiseAnodyne.lean
@@ -1325,6 +1338,39 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.subdivisionCutAt_face_absorb
 
 
+-- SubdivisionFaceDegeneracy.lean
+
+#check @SerrePositivity.KST.Comparison.liftedFace_special
+#print axioms SerrePositivity.KST.Comparison.liftedFace_special
+
+#check @SerrePositivity.KST.Comparison.finiteChainDegeneracy_face_right
+#print axioms SerrePositivity.KST.Comparison.finiteChainDegeneracy_face_right
+
+#check @SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_face_right
+#print axioms SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_face_right
+
+
+-- SubdivisionFrontFace.lean
+
+#check @SerrePositivity.KST.Comparison.finiteChainFrontImage
+#print axioms SerrePositivity.KST.Comparison.finiteChainFrontImage
+
+#check @SerrePositivity.KST.Comparison.finiteChainFrontImage_maximum
+#print axioms SerrePositivity.KST.Comparison.finiteChainFrontImage_maximum
+
+#check @SerrePositivity.KST.Comparison.finiteChainFrontImage_singleton_ge
+#print axioms SerrePositivity.KST.Comparison.finiteChainFrontImage_singleton_ge
+
+#check @SerrePositivity.KST.Comparison.finiteChainFrontImage_of_max_ge
+#print axioms SerrePositivity.KST.Comparison.finiteChainFrontImage_of_max_ge
+
+#check @SerrePositivity.KST.Comparison.finiteChainFrontImage_absorb
+#print axioms SerrePositivity.KST.Comparison.finiteChainFrontImage_absorb
+
+#check @SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_front_absorb
+#print axioms SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_front_absorb
+
+
 -- SubdivisionIntervals.lean
 
 #check @SerrePositivity.KST.Comparison.finiteChainCut_initialSegment
@@ -1377,6 +1423,15 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.subdivisionLastVertexAt_epi
 #print axioms SerrePositivity.KST.Comparison.subdivisionLastVertexAt_epi
+
+
+-- SubdivisionMaximum.lean
+
+#check @SerrePositivity.KST.Comparison.finiteChainDegeneracy_maximum
+#print axioms SerrePositivity.KST.Comparison.finiteChainDegeneracy_maximum
+
+#check @SerrePositivity.KST.Comparison.liftedDegeneracy_face_ge
+#print axioms SerrePositivity.KST.Comparison.liftedDegeneracy_face_ge
 
 
 -- SubdivisionUnions.lean
