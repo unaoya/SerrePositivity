@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 1273 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 1280 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -116,6 +116,7 @@
 - 局所環の正則単項イデアルを生成する集合からの単元倍の選択と、正則単項小行列式イデアルからの単射な行・列ピボットの存在を証明済み。
 - 選んだ行と残りの行への実際の線形同型、小行列への制限の包含を接続し、局所環で k 次小行列式イデアルが正則単項なら純変換がピボット外からの全射を持つことを証明済み。有限な生成元数 N の場合は Fin(N-k) 上の自由加群からの実際の全射を構成済み。これは選んだ関係式行列の下での 080Z の正則単項特殊形で、一般有限型の平坦化中心の存在までは主張しない。
 - 自由な直和因子として明示的に分裂する k 列の関係式行列について、k 次小行列式イデアルが単位、k を越える次数が零となることを証明済み。同じ列部分加群の任意の有限生成表示にも適用済み。
+- 局所環上の有限射影加群から射影加群への全射の核への実射影と自由性を証明済み。有限自由な生成元加群の場合、その核を表す実際の有限行列と左逆元を構成済み。任意の完全な有限関係式行列について、ある次数で小行列式イデアルが単位、以後が零となることまで証明済み。次数と対象の自由階数との関係の特定は残る。
 - 正則な境界を持つ全アフィン試験対象への純変換の引き戻し平坦性を定義し、Noether アフィンモデルでの証明・任意の前合成での保存・開被覆の局所性を証明済み。
 - チャート環を基礎環とした性質を元の基礎環へ戻す定理、通常 blowup のチャート平坦性との両方向の接続を証明済み。
 - 有限アフィン被覆上の admissible 中心と局所の引き戻し平坦性から、中心の補開集合が U に等しい大域中心と同じ性質を構成・証明済み。
@@ -527,6 +528,10 @@ k を越える次数では、列数による消滅から零となる。
 既証明の列部分加群による不変性を使って同じ結論を得る。
 これは明示的な分裂した自由関係式についての計算であり、
 任意の局所自由対象の表示から分裂と自由な核を構成する段階は別に証明する。
+その存在の段階では、全射 q : P → M と M の射影性から実際の右逆元 s を選ぶ。
+id_P - s q を ker(q) に制限した射影を構成し、包含との合成が恒等であることを証明する。
+P が有限射影なら ker(q) も有限射影となり、局所環上では既存の有限平坦加群の自由性を適用する。
+この証明には環の Noether 性を加える必要がない。
 
 ### 7.2 証明の分解
 
@@ -706,6 +711,10 @@ k を越える次数では、列数による消滅から零となる。
 | `exists_pureTransform_complement_surjection_of_regular_minorIdeal` | LocalMinorPureTransformGeneration | 検証済み | 局所ピボット選択から純変換への全射 |
 | `exists_fin_surjection_pureTransform_of_regular_minorIdeal` | LocalMinorPureTransformGeneration | 検証済み | N 個の生成元を N-k 個へ削減した実全射 |
 | `matrixMinorIdeal_of_split_columnSpan` | SplitMatrixMinorIdeal | 検証済み | 分裂した自由関係式の単位条件と消滅条件 |
+| `presentationKernelProjection` | LocalPresentationKernel | 検証済み | 右逆元から核への実射影 |
+| `presentationKernel_free_of_projective` | LocalPresentationKernel | 検証済み | 有限射影な表示の核の局所環上での自由性 |
+| `exists_split_matrix_for_local_presentation_kernel` | LocalPresentationSplitMatrix | 検証済み | 表示の核の実際の分裂行列の存在 |
+| `exists_minor_pattern_of_projective_presentation` | LocalPresentationSplitMatrix | 検証済み | 完全な有限関係式行列の単位次数と消滅 |
 | `finiteType_tensorPureTransform_flat_baseChange` | FiniteTypeTensorPureTransformBaseChange | 検証済み | 一般有限型加群のチャート平坦性の保存 |
 | `reesProjection` | Blowup | 検証済み | 単項式射影 |
 | `reesGrade` | Blowup | 検証済み | Rees の斉次成分 |
