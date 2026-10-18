@@ -10,7 +10,7 @@ public import SerrePositivity.InfinityCategories.Coherent.IntervalFunctor
 方針：区間の Hom 同型に沿って写像を移し、同型と豊穣関手の構造則を用いる。
 規約：内部ホーンの真部分区間には追加の充填仮定や局所 Kan 性は不要。
 使われ方：HTT 1.1.5.10、Kerodon 2.4.5.8–2.4.5.9 の合成面の構成。
-異なる区間や既知面を選んだ場合の比較は後続工程で扱う。
+異なる区間や既知面の選択との比較は IntervalChoice と FaceIntervalRestriction に置く。
 -/
 
 @[expose] public section

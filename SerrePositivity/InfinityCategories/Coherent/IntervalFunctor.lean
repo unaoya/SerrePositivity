@@ -10,7 +10,7 @@ public import SerrePositivity.InfinityCategories.Coherent.FaceHom
 方針：区間外の既知面に沿って引き戻し、対象を共通の頂点対象へ移す。
 規約：閉区間は ULift した有限順序の部分型で表す。全区間は除く。
 使われ方：HTT 1.1.5.10、Kerodon 2.4.5.8–2.4.5.9 の合成面の構成。
-区間の包含による Hom の同定と異なる面の選択の比較は後続工程で扱う。
+区間の包含による Hom の同定は IntervalHom、面の選択の比較は IntervalChoice に置く。
 -/
 
 @[expose] public section

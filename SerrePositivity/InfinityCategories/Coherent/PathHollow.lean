@@ -8,7 +8,7 @@ public import SerrePositivity.InfinityCategories.Coherent.HollowCube
 
 概要：内部ホーンから既知となる path の Hom の空洞部分は Kan 複体内で充填できる。
 方針：内部点座標の同型で空洞立方体の anodyne 性を移送する。
-規約：この段階では元のホーンからこの部分上の写像を作る貼合せは未実装。
+規約：元のホーンから空洞部分上の写像を作る貼合せは HornHollow で実装する。
 使われ方：HTT 1.1.5.10、Kerodon 2.4.5.8・2.4.5.12 の充填の Hom 側。
 -/
 

@@ -6,7 +6,7 @@ import SerrePositivity.InfinityCategories.Coherent
 方針：全宣言を公理表示と #check @ で個別に検査する。
 規約：許される公理は propext、Classical.choice、Quot.sound のみ。
 使われ方：対象と集約をビルド後、lake env lean scripts/audit_coherent_nerve.lean。
-原典：HTT 1.1.5.10、Kerodon 2.4.3–2.4.5。γ1 全体は未完了。
+原典：HTT 1.1.5.10、Kerodon 2.4.3–2.4.5。γ1 の最終 instance も明示型と公理を監査する。
 -/
 
 set_option pp.universes true
@@ -140,6 +140,26 @@ set_option pp.explicit true
 #check @SerrePositivity.InfinityCategories.Coherent.faceRetraction_ulift_image
 #print axioms SerrePositivity.InfinityCategories.Coherent.thickening_faceRetraction_section
 #check @SerrePositivity.InfinityCategories.Coherent.thickening_faceRetraction_section
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornFillHom_comp
+#check @SerrePositivity.InfinityCategories.Coherent.hornFillHom_comp
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornFilledFunctor
+#check @SerrePositivity.InfinityCategories.Coherent.hornFilledFunctor
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornFillHom
+#check @SerrePositivity.InfinityCategories.Coherent.hornFillHom
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornFillHom_proper
+#check @SerrePositivity.InfinityCategories.Coherent.hornFillHom_proper
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornFillHom_full
+#check @SerrePositivity.InfinityCategories.Coherent.hornFillHom_full
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornFillHom_id
+#check @SerrePositivity.InfinityCategories.Coherent.hornFillHom_id
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornFillHom_comp_inner
+#check @SerrePositivity.InfinityCategories.Coherent.hornFillHom_comp_inner
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornFillHom_on_zero
+#check @SerrePositivity.InfinityCategories.Coherent.hornFillHom_on_zero
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornFillHom_on_face
+#check @SerrePositivity.InfinityCategories.Coherent.hornFillHom_on_face
+#print axioms SerrePositivity.InfinityCategories.Coherent.hornFilledFunctor_face
+#check @SerrePositivity.InfinityCategories.Coherent.hornFilledFunctor_face
 #print axioms SerrePositivity.InfinityCategories.Coherent.hornInnerZeroHom
 #check @SerrePositivity.InfinityCategories.Coherent.hornInnerZeroHom
 #print axioms SerrePositivity.InfinityCategories.Coherent.hornInnerZeroHom_overlap
@@ -366,6 +386,18 @@ set_option pp.explicit true
 #check @SerrePositivity.InfinityCategories.Coherent.pathSuffix
 #print axioms SerrePositivity.InfinityCategories.Coherent.pathPrefix_comp_pathSuffix
 #check @SerrePositivity.InfinityCategories.Coherent.pathPrefix_comp_pathSuffix
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathLoop_eq_id
+#check @SerrePositivity.InfinityCategories.Coherent.pathLoop_eq_id
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathUnitIso
+#check @SerrePositivity.InfinityCategories.Coherent.pathUnitIso
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathUnit_isIso
+#check @SerrePositivity.InfinityCategories.Coherent.pathUnit_isIso
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathEmptyHom
+#check @SerrePositivity.InfinityCategories.Coherent.pathEmptyHom
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathEmpty_hom_ext
+#check @SerrePositivity.InfinityCategories.Coherent.pathEmpty_hom_ext
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathProduct_empty_hom_ext
+#check @SerrePositivity.InfinityCategories.Coherent.pathProduct_empty_hom_ext
 #print axioms SerrePositivity.InfinityCategories.Coherent.pathAvoids_preimage_pathFaceMap
 #check @SerrePositivity.InfinityCategories.Coherent.pathAvoids_preimage_pathFaceMap
 #print axioms SerrePositivity.InfinityCategories.Coherent.pathDoubleFaceMap
@@ -434,11 +466,17 @@ set_option pp.explicit true
 #check @SerrePositivity.InfinityCategories.Coherent.pathOfInteriorFunctor_comp_pathInteriorFunctor
 #print axioms SerrePositivity.InfinityCategories.Coherent.pathInteriorNerveIso
 #check @SerrePositivity.InfinityCategories.Coherent.pathInteriorNerveIso
+#print axioms SerrePositivity.InfinityCategories.Coherent.simplicialNerve_quasicategory
+#check @SerrePositivity.InfinityCategories.Coherent.simplicialNerve_quasicategory
 #print axioms SerrePositivity.InfinityCategories.Coherent.subcomplexPreimageIso
 #check @SerrePositivity.InfinityCategories.Coherent.subcomplexPreimageIso
 #print axioms SerrePositivity.InfinityCategories.Coherent.subcomplexPreimageArrowIso
 #check @SerrePositivity.InfinityCategories.Coherent.subcomplexPreimageArrowIso
 #print axioms SerrePositivity.InfinityCategories.Coherent.anodyne_subcomplexPreimage
 #check @SerrePositivity.InfinityCategories.Coherent.anodyne_subcomplexPreimage
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathHom_comp_left_unit
+#check @SerrePositivity.InfinityCategories.Coherent.pathHom_comp_left_unit
+#print axioms SerrePositivity.InfinityCategories.Coherent.pathHom_comp_right_unit
+#check @SerrePositivity.InfinityCategories.Coherent.pathHom_comp_right_unit
 #print axioms SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_zero_overlap
 #check @SerrePositivity.InfinityCategories.Coherent.hornHomViaFace_zero_overlap

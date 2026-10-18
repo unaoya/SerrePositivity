@@ -8,7 +8,7 @@ public import SerrePositivity.InfinityCategories.Coherent.HornData
 
 概要：coherent nerve のホーンの面から Hom 写像を回収する道具を構成する。
 方針：面と退化の順序写像、Path の関手性、共通の端点への型の移送を使う。
-規約：面候補の全体の貼合せとホーン充填は後続工程で証明する。
+規約：面候補の貼合せは HornHollow、ホーン充填は Quasicategory に置く。
 使われ方：HTT 1.1.5.10、Kerodon 2.4.5.8–2.4.5.10。
 -/
 
@@ -59,7 +59,7 @@ set_option backward.isDefEq.respectTransparency false in
 方針：面と退化の合成が恒等射であることを nerve の関手性へ移し、型の移送を消去する。
 規約：面への埋め込みを合成した厳密な写像の等式。
 使われ方：HTT 1.1.5.10、Kerodon 2.4.5.8 の零座標面の貼合せ。
-他の面との重なりや合成面との整合性は後続工程で扱う。 -/
+他の面や合成面との整合性は FullFaceCompatibility に置く。 -/
 lemma hornHomViaFace_on_face {n : ℕ} {i : Fin (n + 3)}
     (σ : (Λ[n + 2, i] : SSet.{max u v}) ⟶ SimplicialNerve C)
     (j : Fin (n + 3)) (hj : j ≠ i) (a b : Fin (n + 2)) :

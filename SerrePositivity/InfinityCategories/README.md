@@ -1128,7 +1128,7 @@ N7a–N7e は完了。N7f の cofiber の双対は任意項目として未実装
 SSet.Quasicategory (CategoryTheory.SimplicialNerve C)`。
 局所 Kan 性以外に充填の選択・整合性・モデル構造を仮定しない。
 原典は HTT 1.1.5.10 と [Kerodon 2.4.5.1](https://kerodon.net/tag/00LH)。
-配置は `InfinityCategories/Coherent/`。以下は数学的設計であり、γ1 の証明完了を表さない。
+配置は `InfinityCategories/Coherent/`。着手前の照合に基づく以下の方針で γ1 を証明した。
 
 ### Path[n] と順序の向き
 
@@ -1211,7 +1211,23 @@ native な合成面への同型 `pathThroughIso` と、零座標面・他の合�
 `∃ g : nerve (Path (ULift.up 0) (ULift.up last)) ⟶ sHom (hornObj σ 0) (hornObj σ last),
  ∀ j, (pathHollowFace (hornHollowPoint i h0 hn) j).ι ≫ g = hornHollowFaceHom σ h0 hn j`。
 他の Hom の Kan 性や全区間の Hom 写像の存在は前提にしていない。
-明示的な公開 215 宣言を公理監査済み。
-残工程：延長と真部分区間の回収から豊穣関手を復元し、単位・合成、ホーンへの制限、
-`Quasicategory` を証明する。γ1 全体は未完了。
+延長と真部分区間の回収から `hornFillHom` を全ての頂点対に定義した。
+逆向き区間の空性、同じ端点の単位則、真部分区間の合成則と内部合成面の制限を使い、
+`hornFillHom_id`・`hornFillHom_comp` を証明し、`hornFilledFunctor` を復元した。
+`hornFillHom_on_zero`・`hornFillHom_on_face`・`hornFilledFunctor_face` により
+全ての既知面が元のホーンに一致する。これを Mathlib の面ごとのホーン充填判定に渡した。
+
+γ1 は完了。namespace `SerrePositivity.InfinityCategories.Coherent` の最終公開 instance は
+
+```lean
+simplicialNerve_quasicategory (C : Type u)
+    [Category.{v} C] [SimplicialCategory C]
+    [∀ X Y : C, SSet.KanComplex (SimplicialCategory.sHom X Y)] :
+    SSet.Quasicategory (SimplicialNerve C)
+```
+
+前提は Mathlib の単体的圏と各 Hom の Kan 性だけで、充填や整合性を仮定していない。
+型は対象・Hom の両宇宙を保持する。明示的な公開 234 宣言を公理監査済みで標準三公理のみ。
+対象と集約のビルド、公理監査は終了コード 0。N7 と計画分割の完了も再検証した。
+γ2・γ3 と N7f の任意の双対は今回の範囲外。
 各段の実施記録はコミットメッセージへ置き、計画本文には現在地と残工程を短く残す。

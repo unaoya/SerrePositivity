@@ -8,7 +8,7 @@ public import SerrePositivity.InfinityCategories.Coherent.FaceHom
 
 概要：実際の零座標面を定義域とする Hom 写像を構成し、面からの候補の制限と比較する。
 方針：Path の面の像との同型を使い、元の面の豊穣関手を評価する。
-規約：異なる零座標面の重なりでの一致は後続工程。
+規約：零座標面の重なりでの一致は ZeroFaceCompatibility で証明する。
 使われ方：HTT 1.1.5.10、Kerodon 2.4.5.8 の空洞部分への貼合せ。
 -/
 

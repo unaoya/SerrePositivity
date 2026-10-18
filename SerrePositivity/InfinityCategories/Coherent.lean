@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Coherent.Path
+public import SerrePositivity.InfinityCategories.Coherent.Quasicategory
 public import SerrePositivity.InfinityCategories.Coherent.HornHollow
 public import SerrePositivity.InfinityCategories.Coherent.CompositionCompatibility
 public import SerrePositivity.InfinityCategories.Coherent.MixedCompatibility
@@ -21,10 +22,10 @@ public import SerrePositivity.InfinityCategories.Coherent.HollowCube
 public import SerrePositivity.InfinityCategories.Coherent.HollowCylinder
 
 /-!
-# Coherent nerve の基盤
+# Coherent nerve の quasicategory 性
 
-概要：局所 Kan な単体的圏の coherent nerve の証明に使う基盤を集約する。
-方針：Path[n] の包含規約と空洞立方体の延長を個別に証明する。
-規約：現段階では γ1 全体の quasicategory instance は未実装。
+概要：局所 Kan な単体的圏の Mathlib の SimplicialNerve は quasicategory である。
+方針：Path[n] の空洞部分への貼合せ、Kan 延長、豊穣関手の復元により内部ホーンを充填する。
+規約：前提は単体的圏と各 Hom の Kan 性のみ。γ1 の最終 instance を公開する。
 使われ方：HTT 1.1.5.10、Kerodon 2.4.5.1 の証明の入口。
 -/

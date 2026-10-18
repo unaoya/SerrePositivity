@@ -7,7 +7,7 @@ public import Mathlib.AlgebraicTopology.SimplicialNerve
 
 概要：coherent nerve のホーンの面から Hom 写像を回収する道具を構成する。
 方針：面と退化の順序写像、Path の関手性、共通の端点への型の移送を使う。
-規約：面候補の全体の貼合せとホーン充填は後続工程で証明する。
+規約：面候補の貼合せは HornHollow、ホーン充填は Quasicategory に置く。
 使われ方：HTT 1.1.5.10、Kerodon 2.4.5.8–2.4.5.10。
 -/
 

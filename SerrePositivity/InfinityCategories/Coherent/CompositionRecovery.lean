@@ -9,7 +9,7 @@ public import SerrePositivity.InfinityCategories.Coherent.IntervalChoice
 方針：pathThroughIso の逆で二つの Hom に分割し、回収写像と sHomComp を適用する。
 規約：外側区間が全区間でも、両脚が真部分区間なら構成できる。
 使われ方：HTT 1.1.5.10、Kerodon 2.4.5.8–2.4.5.9 の空洞立方体の合成面。
-零座標面との混合した重なり、および合成面どうしの重なりの整合性は後続工程。
+零座標面との整合性は FullFaceCompatibility、合成面どうしは CompositionCompatibility に置く。
 -/
 
 @[expose] public section
