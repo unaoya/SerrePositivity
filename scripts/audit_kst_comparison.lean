@@ -100,6 +100,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -2788,6 +2789,60 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.SimplicialMonoid.componentsGroup
 
 
+-- MonoidComponentsAdjunction.lean
+
+#check @SerrePositivity.KST.Comparison.SimplicialMonoid.componentsExtend
+#print axioms SerrePositivity.KST.Comparison.SimplicialMonoid.componentsExtend
+
+#check @SerrePositivity.KST.Comparison.SimplicialMonoid.componentsExtend_desc
+#print axioms SerrePositivity.KST.Comparison.SimplicialMonoid.componentsExtend_desc
+
+#check @SerrePositivity.KST.Comparison.SimplicialMonoid.componentsDesc_extend
+#print axioms SerrePositivity.KST.Comparison.SimplicialMonoid.componentsDesc_extend
+
+#check @SerrePositivity.KST.Comparison.SimplicialMonoid.componentsHomEquiv
+#print axioms SerrePositivity.KST.Comparison.SimplicialMonoid.componentsHomEquiv
+
+#check @SerrePositivity.KST.Comparison.SimplicialMonoid.componentsConstAdjunction
+#print axioms SerrePositivity.KST.Comparison.SimplicialMonoid.componentsConstAdjunction
+
+#check @SerrePositivity.KST.Comparison.SimplicialMonoid.componentsFunctor_isLeftAdjoint
+#print axioms SerrePositivity.KST.Comparison.SimplicialMonoid.componentsFunctor_isLeftAdjoint
+
+
+-- MonoidComponentsDescent.lean
+
+#check @SerrePositivity.KST.Comparison.SimplicialMonoid.constantMap_edge
+#print axioms SerrePositivity.KST.Comparison.SimplicialMonoid.constantMap_edge
+
+#check @SerrePositivity.KST.Comparison.SimplicialMonoid.componentsDesc
+#print axioms SerrePositivity.KST.Comparison.SimplicialMonoid.componentsDesc
+
+#check @SerrePositivity.KST.Comparison.SimplicialMonoid.simplexToComponents_zero
+#print axioms SerrePositivity.KST.Comparison.SimplicialMonoid.simplexToComponents_zero
+
+
+-- MonoidComponentsFunctor.lean
+
+#check @SerrePositivity.KST.Comparison.SimplicialMonoid.componentsObject
+#print axioms SerrePositivity.KST.Comparison.SimplicialMonoid.componentsObject
+
+#check @SerrePositivity.KST.Comparison.SimplicialMonoid.componentsFunctor
+#print axioms SerrePositivity.KST.Comparison.SimplicialMonoid.componentsFunctor
+
+#check @SerrePositivity.KST.Comparison.SimplicialMonoid.vertexToComponents
+#print axioms SerrePositivity.KST.Comparison.SimplicialMonoid.vertexToComponents
+
+#check @SerrePositivity.KST.Comparison.SimplicialMonoid.simplexToComponents
+#print axioms SerrePositivity.KST.Comparison.SimplicialMonoid.simplexToComponents
+
+#check @SerrePositivity.KST.Comparison.SimplicialMonoid.simplexToComponents_natural
+#print axioms SerrePositivity.KST.Comparison.SimplicialMonoid.simplexToComponents_natural
+
+#check @SerrePositivity.KST.Comparison.SimplicialMonoid.toComponents
+#print axioms SerrePositivity.KST.Comparison.SimplicialMonoid.toComponents
+
+
 -- MonoidTranslations.lean
 
 #check @SerrePositivity.KST.Comparison.monoidMultiplication
@@ -3650,6 +3705,27 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.spanStrictification_of_mono
 #print axioms SerrePositivity.KST.Comparison.spanStrictification_of_mono
+
+
+-- StableGLComponents.lean
+
+#check @SerrePositivity.KST.Comparison.hatGLInducedComponentsEquiv
+#print axioms SerrePositivity.KST.Comparison.hatGLInducedComponentsEquiv
+
+#check @SerrePositivity.KST.Comparison.generalLinearRankSequence
+#print axioms SerrePositivity.KST.Comparison.generalLinearRankSequence
+
+#check @SerrePositivity.KST.Comparison.stableGeneralLinear
+#print axioms SerrePositivity.KST.Comparison.stableGeneralLinear
+
+#check @SerrePositivity.KST.Comparison.hatGLInducedComponentsEquiv_stabilization
+#print axioms SerrePositivity.KST.Comparison.hatGLInducedComponentsEquiv_stabilization
+
+#check @SerrePositivity.KST.Comparison.hatGLRankComponentsIso
+#print axioms SerrePositivity.KST.Comparison.hatGLRankComponentsIso
+
+#check @SerrePositivity.KST.Comparison.stableHatGLComponentsIso
+#print axioms SerrePositivity.KST.Comparison.stableHatGLComponentsIso
 
 
 -- StableHatGL.lean
