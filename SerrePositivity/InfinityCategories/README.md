@@ -2059,7 +2059,8 @@ strict な図式・錐の coherent nerve での表示、fibration の塔の重�
 塔と一脚が fibration の cospan の実際の標準比較 κ・q_x のホモトピー同値性まで実装。
 離散図式の比較、𝒮 の空積、Kan 値図式の end の一般の Kan 性も実装済み。
 Kan 値図式の end の同値不変性も証明済み。反転した表現可能な weighted nerve から
-coherent な錐の全空間への実際の底上の射も構成済み。その fiber の同値性と元の q_x の比較、
+coherent な錐の全空間への実際の底上の射と、全ての頂点上での実際の fiber 射の同値性も証明済み。
+切断空間と元の q_x の比較、
 𝒮 の残りの極限と Sp への適用は未完了。
 当面は通常の小圏で添字付けた strict な図式の極限側を扱い、余極限と一般の図式の比較は後続に保持する。
 
@@ -2204,7 +2205,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開779宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開790宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2832,7 +2833,7 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開779宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開790宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
 ### 重み付き end と weighted nerve の切断の族（全単射を実装）
@@ -4094,6 +4095,59 @@ coherent cone の引き戻しの fiber の標準同型に沿って移し、
 `weightedCoherentConeComparison` が誘導する各 fiber の射に同定する工程である。
 その後の切断空間の移送、元の q_x との一致、𝒮・Sp の残りの適用は未完了。
 γ3b・γ3c の完成とはまだ数えない。
+
+### 全体の比較射の各 fiber の同値性（実装済み）
+
+`UniverseVertexFiber` は任意の射 p : E→B と頂点 b に対し、
+
+```lean
+uliftVertexFiberIso (p : E ⟶ B) (b : B _⦋0⦌) :
+  (SSet.uliftFunctor.{v, u}).obj (vertexFiber p b) ≅
+  vertexFiber ((SSet.uliftFunctor.{v, u}).map p) (ULift.up b)
+```
+
+を各次数で ULift と部分型を交換して構成した。包含との厳密な可換性と、
+固定頂点を等号で移した fiber の包含が変わらない式も証明している。
+
+`WeightedConeFiberEquivalence` は `F : I ⥤ C`、`x : C`、`i : I` に対し
+`weightedConeSourceFiberIso` で持ち上げた weighted nerve の fiber を
+反転した sHom(x,F(i)) の ULift と同定する。
+`weightedConeTargetFiberIso` は coherent cone の引き戻しの fiber を
+始点 x・終点 F(i) の左 coslice fiber と同定する。
+どちらも包含後の式を明示し、以下の実際の fiber 射との因子分解を証明した。
+
+```lean
+weightedCoherentConeFiberMap F x
+    (b : ((SSet.uliftFunctor.{v, u}).obj (nerve I)) _⦋0⦌) :
+  vertexFiber ((SSet.uliftFunctor.{v, u}).map
+    (weightedNerveProjection (simplicialHomDiagram F x ⋙ SSet.opFunctor))) b ⟶
+  vertexFiber (coherentConeProjection (strictCoherentDiagram F) (coherentNerveVertex x)) b
+weightedCoherentConeFiberMap_factorization F x i :
+  (weightedConeSourceFiberIso F x i).hom ≫
+    weightedCoherentConeFiberMap F x (ULift.up (nerveVertex i)) ≫
+    (weightedConeTargetFiberIso F x i).hom = weightedConstantCosliceFiberMap F x i
+```
+
+この射の定義は `weightedCoherentConeComparison F x` とその底上の可換性に
+`vertexFiberMap` を適用したものである。別に選んだ点ごとの同値には置き換えない。
+局所 Kan 性の下で、両端の同型から fiber の Kan 性を移し、
+一定の底で証明した実際の射の同値性から同型を消去することで
+
+```lean
+weightedCoherentConeFiberMap_homotopyEquivalence
+    [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]
+    (F : I ⥤ C) (x : C) (b : ((SSet.uliftFunctor.{v, u}).obj (nerve I)) _⦋0⦌) :
+  IsSimplicialHomotopyEquivalence (weightedCoherentConeFiberMap F x b)
+```
+
+を証明した。`weightedCoherentConeFiberMap_homotopyEquivalence_at F x i` は
+標準頂点の場合。任意の底の零単体は元の圏の対象で表示できるため、上の全頂点版に追加仮定はない。
+C の対象の宇宙 v と Hom・I の宇宙 u は異なってよい。
+原典は HTT 4.2.4.1、Kerodon §7.5.4。
+
+残るのは反転した係数の weighted nerve と coherent cone の全空間の切断空間の比較、
+反転・ULift・底の nerve の同型に沿う移送、元の q_x との一致である。
+𝒮・Sp の残りの適用を含む γ3b・γ3c は未完了。
 
 ### 𝒮 の空積（実装済み）
 

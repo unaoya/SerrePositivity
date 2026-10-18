@@ -1563,3 +1563,25 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms weightedConstantCosliceFiberMap_eq
 #check @weightedConstantCosliceFiberMap_homotopyEquivalence
 #print axioms weightedConstantCosliceFiberMap_homotopyEquivalence
+#check @uliftVertexFiberIso
+#print axioms uliftVertexFiberIso
+#check @uliftVertexFiberIso_hom_ι
+#print axioms uliftVertexFiberIso_hom_ι
+#check @vertexFiber_endpointTransport_ι
+#print axioms vertexFiber_endpointTransport_ι
+#check @weightedConeSourceFiberIso
+#print axioms weightedConeSourceFiberIso
+#check @weightedConeSourceFiberIso_hom_ι
+#print axioms weightedConeSourceFiberIso_hom_ι
+#check @weightedConeTargetFiberIso
+#print axioms weightedConeTargetFiberIso
+#check @weightedConeTargetFiberIso_hom_ι
+#print axioms weightedConeTargetFiberIso_hom_ι
+#check @weightedCoherentConeFiberMap
+#print axioms weightedCoherentConeFiberMap
+#check @weightedCoherentConeFiberMap_factorization
+#print axioms weightedCoherentConeFiberMap_factorization
+#check @weightedCoherentConeFiberMap_homotopyEquivalence_at
+#print axioms weightedCoherentConeFiberMap_homotopyEquivalence_at
+#check @weightedCoherentConeFiberMap_homotopyEquivalence
+#print axioms weightedCoherentConeFiberMap_homotopyEquivalence
