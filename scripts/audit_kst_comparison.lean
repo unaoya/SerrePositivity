@@ -57,6 +57,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -304,6 +305,15 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.hatGLMonoidObject
 #print axioms SerrePositivity.KST.Comparison.hatGLMonoidObject
+
+
+-- DoubleSubdivisionHornMap.lean
+
+#check @SerrePositivity.KST.Comparison.doubleSubdivisionHornMap
+#print axioms SerrePositivity.KST.Comparison.doubleSubdivisionHornMap
+
+#check @SerrePositivity.KST.Comparison.doubleSubdivisionHornMap_ι
+#print axioms SerrePositivity.KST.Comparison.doubleSubdivisionHornMap_ι
 
 
 -- ExComplexity.lean
@@ -904,6 +914,45 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.homotopyPullbackMap_localized_isIso_fixed_kan_base
 #print axioms SerrePositivity.KST.Comparison.homotopyPullbackMap_localized_isIso_fixed_kan_base
+
+
+-- HornChainMissingVertex.lean
+
+#check @SerrePositivity.KST.Comparison.hornChainVertex_common_missing
+#print axioms SerrePositivity.KST.Comparison.hornChainVertex_common_missing
+
+
+-- HornChainNerve.lean
+
+#check @SerrePositivity.KST.Comparison.hornChainToSimplex
+#print axioms SerrePositivity.KST.Comparison.hornChainToSimplex
+
+#check @SerrePositivity.KST.Comparison.hornChainToSimplex_range_le
+#print axioms SerrePositivity.KST.Comparison.hornChainToSimplex_range_le
+
+#check @SerrePositivity.KST.Comparison.hornChainToHorn
+#print axioms SerrePositivity.KST.Comparison.hornChainToHorn
+
+
+-- HornChainVertices.lean
+
+#check @SerrePositivity.KST.Comparison.HornFaceSet
+#print axioms SerrePositivity.KST.Comparison.HornFaceSet
+
+#check @SerrePositivity.KST.Comparison.hornFaceSet_of_le
+#print axioms SerrePositivity.KST.Comparison.hornFaceSet_of_le
+
+#check @SerrePositivity.KST.Comparison.hornFaceChoice
+#print axioms SerrePositivity.KST.Comparison.hornFaceChoice
+
+#check @SerrePositivity.KST.Comparison.hornChainVertex
+#print axioms SerrePositivity.KST.Comparison.hornChainVertex
+
+#check @SerrePositivity.KST.Comparison.hornChainVertex_exists_face
+#print axioms SerrePositivity.KST.Comparison.hornChainVertex_exists_face
+
+#check @SerrePositivity.KST.Comparison.hornChainVertex_of_all_faces
+#print axioms SerrePositivity.KST.Comparison.hornChainVertex_of_all_faces
 
 
 -- HornContraction.lean

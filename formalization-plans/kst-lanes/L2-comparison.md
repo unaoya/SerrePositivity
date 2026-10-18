@@ -463,6 +463,10 @@ Mathlib の IsUniquelyCodimOneFace への接続も証明した。
 順序集合の nerve の細分から有限鎖の nerve への比較写像を構成した。
 単調写像に関する自然性、最大元の写像を合成した際の Ex の単位との一致を証明した。
 部分順序集合の非空有限鎖の最大元の存在・単調性・像との交換も証明した。
+hornChainVertex を単調写像として定義し、全ての面が horn 内なら反復最大元と一致することを証明した。
+各部分鎖の候補頂点が k 以外の共通の頂点を避けることを証明し、horn への写像を構成した。
+doubleSubdivisionHornMap を二重細分された標準単体から horn への具体的な写像として構成した。
+horn 上の境界条件の一致は未証明であり、まだ充填定理や Kan 性を主張しない。
 Ex∞ の Kan 性・fibration 保存は未証明であり、現時点で Kan 置換と呼ばない。
 非 Kan 基底への一般化、対角化後の bar 束の homotopy-cartesian 性、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
@@ -470,8 +474,8 @@ L2b、L2c、L2d、L2e は未完了である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 463 宣言の型と公理を確認した。
-さらに名前空間全体の 932 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 475 宣言の型と公理を確認した。
+さらに名前空間全体の 953 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -563,6 +567,8 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `exUnitAt_anodyne`、`exInfinityUnit_anodyne` | 実装済み | Moss Theorem 22、Corollary 30 の単位の anodyne 性 |
 | `subdivisionNerveChains`、`subdivisionNerveChains_naturality`、`nerveChainsExUnit_lastVertex` | 実装済み | 順序集合の nerve の細分比較・自然性・最終頂点との整合 |
 | `finiteChainGreatest`、`finiteChainGreatest_map` | 実装済み | 部分順序集合の非空有限鎖の最大元 |
+| `hornChainVertex`、`hornChainVertex_common_missing` | 実装済み | 単調な候補頂点写像と共通に欠ける頂点 |
+| `hornChainToHorn`、`doubleSubdivisionHornMap` | 実装済み | 二重細分から horn への写像、境界条件の一致は未証明 |
 | Ex∞ の Kan 性 | 未証明 | Moss 2020 Proposition 21 |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
