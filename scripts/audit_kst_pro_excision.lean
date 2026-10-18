@@ -242,3 +242,42 @@ set_option pp.explicit true
 #check @SerrePositivity.KST.ProExcision.truncationFiltrationFunctor
 #print axioms SerrePositivity.KST.ProExcision.truncationFiltrationFunctor
 
+#check @SerrePositivity.KST.ProExcision.truncationGradeIso
+#print axioms SerrePositivity.KST.ProExcision.truncationGradeIso
+
+#check @SerrePositivity.KST.ProExcision.tensorCutShortComplex
+#print axioms SerrePositivity.KST.ProExcision.tensorCutShortComplex
+
+#check @SerrePositivity.KST.ProExcision.tensorCutShortComplex_shortExact
+#print axioms SerrePositivity.KST.ProExcision.tensorCutShortComplex_shortExact
+
+#check @SerrePositivity.KST.ProExcision.tensorCutConeComparison
+#print axioms SerrePositivity.KST.ProExcision.tensorCutConeComparison
+
+#check @SerrePositivity.KST.ProExcision.tensorCutConeComparison_quasiIso
+#print axioms SerrePositivity.KST.ProExcision.tensorCutConeComparison_quasiIso
+
+#check @SerrePositivity.KST.ProExcision.tensorCutGradeIso
+#print axioms SerrePositivity.KST.ProExcision.tensorCutGradeIso
+
+#check @SerrePositivity.KST.ProExcision.tensorCutConeHomologyIso
+#print axioms SerrePositivity.KST.ProExcision.tensorCutConeHomologyIso
+
+#check @SerrePositivity.KST.ProExcision.aboveAboveIso_comp_inclusion
+#print axioms SerrePositivity.KST.ProExcision.aboveAboveIso_comp_inclusion
+
+#check @SerrePositivity.KST.ProExcision.aboveAboveIso_inv_comp_inclusion
+#print axioms SerrePositivity.KST.ProExcision.aboveAboveIso_inv_comp_inclusion
+
+#check @SerrePositivity.KST.ProExcision.adjacentTensorConeIso
+#print axioms SerrePositivity.KST.ProExcision.adjacentTensorConeIso
+
+#check @SerrePositivity.KST.ProExcision.adjacentTensorConeHomologyIso
+#print axioms SerrePositivity.KST.ProExcision.adjacentTensorConeHomologyIso
+
+#check @SerrePositivity.KST.ProExcision.finiteFirstPageComputation
+#print axioms SerrePositivity.KST.ProExcision.finiteFirstPageComputation
+
+#check @SerrePositivity.KST.ProExcision.koszulFirstPageXIso
+#print axioms SerrePositivity.KST.ProExcision.koszulFirstPageXIso
+

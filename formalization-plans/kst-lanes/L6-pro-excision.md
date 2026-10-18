@@ -43,7 +43,10 @@
 - そこから実際の mapping cone スペクトル対象と有限行補助スペクトル系列を構成済み。
 - 初端の零性と終端の全 Koszul 複体への包含が同型であることを証明済み。
 - 複体の射に関する切り詰め濾過の自然性と関手性を証明済み。
-- Mathlib の補助頁番号と KST の E₂ 頁の対応は未検証。初頁・微分・次頁の同定を次に行う。
+- 隣接する項濾過の cone と、一項複体をテンソルした複体のホモロジーの同型まで証明済み。
+- Mathlib の有限行初頁をスペクトル対象の区間ホモロジーへ同定済み。
+- Mathlib の補助頁番号と KST の E₂ 頁の対応は未検証。微分・次頁の同定を次に行う。
+- 初頁の二つのモデルの完全な自然性・Koszul 冪遷移との整合は残件。
 - スペクトル対象から頁への関手性を既存 API で確認中。未供給の自然性を仮定に置かない。
 - π_n の具体的な複体ホモロジーとの同定は K-L9 の界面から受け取る。
 - Lemma 4.9 は原典の列長帰納法と異なり、Artin–Rees と実際の冪遷移の深度を用いた。
@@ -91,6 +94,8 @@
 | koszulTruncation_initial_isZero | KoszulFiltration.lean | 検証済み | 濾過の初端 |
 | koszulTruncation_terminal_isIso | KoszulFiltration.lean | 検証済み | 濾過の終端 |
 | truncationFiltrationFunctor | TruncationNaturality.lean | 検証済み | 複体の射に自然な項濾過 |
+| adjacentTensorConeHomologyIso | KoszulGraded.lean | 検証済み | 隣接する項濾過の cone のホモロジー計算 |
+| koszulFirstPageXIso | KoszulGraded.lean | 検証済み | 補助初頁の区間ホモロジー表示 |
 | koszul_comparison | KoszulPro.lean | 予定 | KST Lemma 4.10 |
 | prop414 | Prop414.lean | 予定 | 中心的係数による非可換版 |
 | pro_whitehead | Whitehead.lean | 予定 | simple 空間版 |
