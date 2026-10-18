@@ -5883,5 +5883,26 @@ lemma isPrecompositionEquivalence_relativeJoinCylinderComparison_lastFace {m n :
     IsPrecompositionEquivalence
       (relativeJoinCylinderComparison (f ≫ stdSimplex.δ (Fin.last (n + 1))))
 
+lemma relativeJoin_exists_lastFaceFactor {m n : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Δ[n + 1])
+    (hf : (SSet.yonedaEquiv f) (Fin.last m) ≠ Fin.last (n + 1)) :
+    ∃ g : (Δ[m] : SSet.{u}) ⟶ Δ[n],
+      g ≫ stdSimplex.δ (Fin.last (n + 1)) = f
+
+lemma isPrecompositionEquivalence_relativeJoinCylinderComparison_of_not_last
+    {m n : ℕ} (f : (Δ[m] : SSet.{u}) ⟶ Δ[n + 1])
+    (hf : (SSet.yonedaEquiv f) (Fin.last m) ≠ Fin.last (n + 1))
+    (hsmall : ∀ g : (Δ[m] : SSet.{u}) ⟶ Δ[n],
+      IsPrecompositionEquivalence (relativeJoinCylinderComparison g)) :
+    IsPrecompositionEquivalence (relativeJoinCylinderComparison f)
+
+lemma isPrecompositionEquivalence_relativeJoinCylinderComparison_stdSimplex_step
+    {m n : ℕ} (f : (Δ[m] : SSet.{u}) ⟶ Δ[n + 1])
+    (hsmall : ∀ g : (Δ[m] : SSet.{u}) ⟶ Δ[n],
+      IsPrecompositionEquivalence (relativeJoinCylinderComparison g))
+    (hboundary : IsPrecompositionEquivalence
+      (relativeJoinCylinderComparison ((boundary m).ι ≫ f))) :
+    IsPrecompositionEquivalence (relativeJoinCylinderComparison f)
+
 end SerrePositivity.InfinityCategories
 ```

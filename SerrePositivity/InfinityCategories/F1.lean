@@ -267,3 +267,4 @@ public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinderCone
 public import SerrePositivity.InfinityCategories.F1.JoinLeftBoundaryAnodyne
 public import SerrePositivity.InfinityCategories.F1.PrismEndpointRightAnodyne
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinderConeAnodyne
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinLastFaceFactor
