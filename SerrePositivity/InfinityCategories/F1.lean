@@ -189,3 +189,5 @@ public import SerrePositivity.InfinityCategories.F1.SimplicialReplacementFiber
 public import SerrePositivity.InfinityCategories.F1.ScaffoldUnderChain
 public import SerrePositivity.InfinityCategories.F1.UniversalScaffoldEvaluation
 public import SerrePositivity.InfinityCategories.F1.UniversalScaffold
+public import SerrePositivity.InfinityCategories.F1.SimplicialReplacementFiberKan
+public import SerrePositivity.InfinityCategories.F1.UniversalScaffoldFiber

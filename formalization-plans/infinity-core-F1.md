@@ -4415,5 +4415,44 @@ lemma universalScaffold_projection {C : Type u} [Category.{u} C] {E : SSet.{u}}
     (p : E ⟶ nerve C) :
     universalScaffold p ≫ p = simplicialReplacementProjection (leftStrictTransportDiagram p)
 
+instance simplicialReplacementFiber_kanComplex {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (c : C) [KanComplex (F.obj c)] :
+    KanComplex (vertexFiber (simplicialReplacementProjection F) (nerveVertex c))
+
+lemma scaffoldUnderChain_constant {C : Type u} [Category.{u} C] (c : C) (n : ℕ) :
+    scaffoldUnderChain ((CategoryTheory.Functor.const (Fin (n + 1))).obj c) =
+      (CategoryTheory.Functor.const (Fin (n + 1))).obj (Under.mk (𝟙 c))
+
+lemma simplicialReplacementConstantLift_universalScaffold
+    {C : Type u} [Category.{u} C] {E : SSet.{u}} (p : E ⟶ nerve C) (c : C) :
+    simplicialReplacementConstantLift (leftStrictTransportDiagram p) c ≫ universalScaffold p =
+      leftStrictTransportEvaluate p c ≫ vertexFiberι p (nerveVertex c)
+
+def universalScaffoldFiberMap {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) (c : C) :
+    vertexFiber (simplicialReplacementProjection (leftStrictTransportDiagram p)) (nerveVertex c) ⟶
+      vertexFiber p (nerveVertex c)
+
+lemma simplicialReplacementFiberMap_universalScaffoldFiberMap
+    {C : Type u} [Category.{u} C] {E : SSet.{u}} (p : E ⟶ nerve C) (c : C) :
+    simplicialReplacementFiberMap (leftStrictTransportDiagram p) c ≫
+      universalScaffoldFiberMap p c = leftStrictTransportEvaluate p c
+
+instance universalScaffoldFiberMap_trivialKanFibration
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] (c : C) :
+    TrivialKanFibration (universalScaffoldFiberMap p c)
+
+instance leftStrictTransportReplacementFiber_kanComplex
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] (c : C) :
+    KanComplex (vertexFiber
+      (simplicialReplacementProjection (leftStrictTransportDiagram p)) (nerveVertex c))
+
+lemma universalScaffoldFiberMap_isQCatEquivalence
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] (c : C) :
+    IsQCatEquivalence (universalScaffoldFiberMap p c)
+
 end SerrePositivity.InfinityCategories
 ```
