@@ -947,5 +947,23 @@ lemma quasicategoryCore_horn_filler_mem {X : SSet.{u}} (n : ℕ) (i : Fin (n + 3
 instance quasicategoryCore_kanComplex (X : SSet.{u}) [Quasicategory X] :
     KanComplex (quasicategoryCore X : SSet.{u})
 
+lemma isInvertibleEdge_pair {X Y : SSet.{u}} (e : X _⦋1⦌) (f : Y _⦋1⦌)
+    (he : IsInvertibleEdge (edgeOfSimplex e)) (hf : IsInvertibleEdge (edgeOfSimplex f)) :
+    IsInvertibleEdge (edgeOfSimplex (X := X ⊗ Y) (e, f))
+
+def quasicategoryCoreProduct (X Y : SSet.{u}) :
+    (quasicategoryCore X : SSet.{u}) ⊗ (quasicategoryCore Y : SSet.{u}) ⟶
+      (quasicategoryCore (X ⊗ Y) : SSet.{u})
+
+def quasicategoryCoreUnit : (𝟙_ SSet.{u}) ⟶ (quasicategoryCore (𝟙_ SSet.{u}) : SSet.{u})
+
+instance quasicategoryCoreFunctor_laxMonoidal : quasicategoryCoreFunctor.{u}.LaxMonoidal
+
+def quasicategoryCoreUnitHomEquiv (X : SSet.{u}) :
+    ((𝟙_ SSet.{u}) ⟶ X) ≃ ((𝟙_ SSet.{u}) ⟶ (quasicategoryCore X : SSet.{u}))
+
+lemma quasicategoryCoreUnitHomEquiv_eq (X : SSet.{u}) (f : (𝟙_ SSet.{u}) ⟶ X) :
+    quasicategoryCoreUnitHomEquiv X f = quasicategoryCoreUnit ≫ quasicategoryCoreMap f
+
 end SerrePositivity.InfinityCategories
 ```

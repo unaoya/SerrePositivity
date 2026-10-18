@@ -217,3 +217,9 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.isInvertibleEdge_triangle_missing
 #check @SerrePositivity.InfinityCategories.quasicategoryCore_horn_filler_mem
 #check @SerrePositivity.InfinityCategories.quasicategoryCore_kanComplex
+#check @SerrePositivity.InfinityCategories.isInvertibleEdge_pair
+#check @SerrePositivity.InfinityCategories.quasicategoryCoreProduct
+#check @SerrePositivity.InfinityCategories.quasicategoryCoreUnit
+#check @SerrePositivity.InfinityCategories.quasicategoryCoreFunctor_laxMonoidal
+#check @SerrePositivity.InfinityCategories.quasicategoryCoreUnitHomEquiv
+#check @SerrePositivity.InfinityCategories.quasicategoryCoreUnitHomEquiv_eq
