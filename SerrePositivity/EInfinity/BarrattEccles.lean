@@ -98,3 +98,5 @@ public import SerrePositivity.EInfinity.BarrattEccles.TripleShuffleEnumeration
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleBlockPermutation
 public import SerrePositivity.EInfinity.BarrattEccles.TripleShufflePermutation
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleNestedSimplex
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleNestedGenerators
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleNestedChains
