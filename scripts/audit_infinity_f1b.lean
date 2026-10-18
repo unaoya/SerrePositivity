@@ -1128,3 +1128,16 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.IsLeftKanExtension.colimitValue
 #check @SerrePositivity.InfinityCategories.IsRightKanExtension.valueIso
 #check @SerrePositivity.InfinityCategories.IsLeftKanExtension.valueIso
+
+#check @SerrePositivity.InfinityCategories.kanTransportTarget
+#check @SerrePositivity.InfinityCategories.kanTransportChoice
+#check @SerrePositivity.InfinityCategories.kanPointCosliceVertexEdge_injective
+#check @SerrePositivity.InfinityCategories.kanTransportEdgeChoice
+#check @SerrePositivity.InfinityCategories.kanTransportEdgeChoice_target_val
+#check @SerrePositivity.InfinityCategories.kanTransportTargetIso
+#check @SerrePositivity.InfinityCategories.exists_kanTransportEndVertexIso
+#check @SerrePositivity.InfinityCategories.RightKanConeTransport.edge
+#check @SerrePositivity.InfinityCategories.RightKanConeTransport.edge_cocartesian
+#check @SerrePositivity.InfinityCategories.RightKanConeTransport.coneFamily_iso
+#check @SerrePositivity.InfinityCategories.RightKanConeTransport.isLimitCone_iff
+#check @SerrePositivity.InfinityCategories.isRightKanExtension_iff_forall_transport
