@@ -476,6 +476,17 @@ G(q):G(Z)→G(A) を恒等切断の転置 1_B→G(A) に沿って引き戻す。
 これは Mather 1976 Lemmas 19–23 の WCHP・numerable covering を移植する経路とは異なる。
 上の共通模型・延長・中間 span の各構成と還元を組み合わせ、Lemma 1.7 を証明した。
 
+### telescope の各段階の四角形への貼り合わせ
+
+確認する文言：横に並ぶ二つの homotopy-cartesian な四角形で、中央の縦射が
+Kan fibration なら、外周も homotopy-cartesian である。telescope では各成分の包含の
+厳密な引き戻しと、余積から円筒への四角形に適用する。
+証明方針：右端の縦射を anodyne–Kan 分解し、右の四角形を厳密ファイバーへの
+局所化同型で表示する。中央の Kan fibration と新しいファイバーの Kan fibration の
+比較を、左下の射に沿って引き戻す。既証の固定基底の引き戻しの不変性と
+引き戻しの横の貼り合わせから、外周の別分解による比較も局所化同型とする。
+各段階の対象を単に colimit と定義して telescope の結論を仮定することはしない。
+
 ## 12. 現在地と主要宣言
 
 現在地：L2a の有限 rank の構成を完了し、L2b の群状モノイドの bar 構成へ進む。
@@ -606,6 +617,8 @@ Kan 分解は span の二面と、円筒への三頂点の四角形のホモト�
 これらを span の模型の置換に組み合わせ、両面が厳密な引き戻しとなる span を構成した。
 単射な基底への置換、任意の基底に沿う right properness、Ex∞ と縦射の Kan 分解で
 追加の Kan 性・単射性の仮定を取り除き、Segal Lemma 1.7 の一般形を証明した。
+添字付き余積を各次数の依存和として構成し、添字を写す成分ごとの厳密な引き戻しを余積へ移した。
+成分ごとの Kan fibration・局所化同型の余積保存と、右縦射が Kan のホモトピー引き戻しの余積保存を証明した。
 Lemma 1.8 の telescope と Proposition 1.6 の対角化の貼り合わせは未証明。
 対角化後の bar 束の homotopy-cartesian 性と、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
@@ -613,8 +626,8 @@ L2b、L2c、L2d、L2e は未完了である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 748 宣言の型と公理を確認した。
-さらに名前空間全体の 1385 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 764 宣言の型と公理を確認した。
+さらに名前空間全体の 1407 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -757,6 +770,10 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `diagramPullback_arrowSquare_iff`、`diagramExInfinity_arrowSquare_iff` | 実装済み | 基底変換と Ex∞ による二面の比較 |
 | `spanCylinder_vertexSquare_map_iff` | 実装済み | 成分ごとの局所化同型による円筒の頂点の四角形の比較 |
 | `spanCylinder_vertex_homotopyPullback` | 実装済み | Segal Lemma 1.7、追加の Kan 性・単射性なし |
+| `simplicialSum`、`simplicialSumIsCoproduct` | 実装済み | 次数ごとの依存和による実際の添字付き余積 |
+| `simplicialSumReindex_isPullback`、`simplicialSumInclusion_isPullback` | 実装済み | 任意の添字の写像と成分の包含の引き戻し |
+| `simplicialSumMap_rlp`、`simplicialSumMap_localized_isIso` | 実装済み | 成分ごとの Kan fibration と局所化同型の余積保存 |
+| `simplicialSumReindex_homotopyPullback_of_fibrations` | 実装済み | Kan な右縦射を持つホモトピー引き戻しの余積 |
 | Segal Lemma 1.8・Proposition 1.6 | 未証明 | telescope と対角化の貼り合わせ |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |

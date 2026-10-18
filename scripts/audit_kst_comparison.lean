@@ -79,6 +79,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -2330,6 +2331,69 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.internalMonoidToSimplicial_space
 #print axioms SerrePositivity.KST.Comparison.internalMonoidToSimplicial_space
+
+
+-- SimplicialSum.lean
+
+#check @SerrePositivity.KST.Comparison.simplicialSum
+#print axioms SerrePositivity.KST.Comparison.simplicialSum
+
+#check @SerrePositivity.KST.Comparison.simplicialSumInclusion
+#print axioms SerrePositivity.KST.Comparison.simplicialSumInclusion
+
+#check @SerrePositivity.KST.Comparison.simplicialSumDesc
+#print axioms SerrePositivity.KST.Comparison.simplicialSumDesc
+
+#check @SerrePositivity.KST.Comparison.simplicialSumInclusion_desc
+#print axioms SerrePositivity.KST.Comparison.simplicialSumInclusion_desc
+
+#check @SerrePositivity.KST.Comparison.simplicialSum_hom_ext
+#print axioms SerrePositivity.KST.Comparison.simplicialSum_hom_ext
+
+#check @SerrePositivity.KST.Comparison.simplicialSumIsCoproduct
+#print axioms SerrePositivity.KST.Comparison.simplicialSumIsCoproduct
+
+#check @SerrePositivity.KST.Comparison.simplicialSumMap
+#print axioms SerrePositivity.KST.Comparison.simplicialSumMap
+
+#check @SerrePositivity.KST.Comparison.simplicialSumInclusion_map
+#print axioms SerrePositivity.KST.Comparison.simplicialSumInclusion_map
+
+
+-- SimplicialSumEquivalences.lean
+
+#check @SerrePositivity.KST.Comparison.simplicialSumMap_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.simplicialSumMap_localized_isIso
+
+
+-- SimplicialSumFibrations.lean
+
+#check @SerrePositivity.KST.Comparison.simplicialSumMap_rlp
+#print axioms SerrePositivity.KST.Comparison.simplicialSumMap_rlp
+
+
+-- SimplicialSumHomotopyPullbacks.lean
+
+#check @SerrePositivity.KST.Comparison.simplicialSumReindex_homotopyPullback_of_fibrations
+#print axioms SerrePositivity.KST.Comparison.simplicialSumReindex_homotopyPullback_of_fibrations
+
+
+-- SimplicialSumPullbacks.lean
+
+#check @SerrePositivity.KST.Comparison.simplicialSumReindex
+#print axioms SerrePositivity.KST.Comparison.simplicialSumReindex
+
+#check @SerrePositivity.KST.Comparison.simplicialSumInclusion_reindex
+#print axioms SerrePositivity.KST.Comparison.simplicialSumInclusion_reindex
+
+#check @SerrePositivity.KST.Comparison.simplicialSumReindex_commSq
+#print axioms SerrePositivity.KST.Comparison.simplicialSumReindex_commSq
+
+#check @SerrePositivity.KST.Comparison.simplicialSumReindex_isPullback
+#print axioms SerrePositivity.KST.Comparison.simplicialSumReindex_isPullback
+
+#check @SerrePositivity.KST.Comparison.simplicialSumInclusion_isPullback
+#print axioms SerrePositivity.KST.Comparison.simplicialSumInclusion_isPullback
 
 
 -- SliceAdjunction.lean

@@ -68,6 +68,8 @@ public import SerrePositivity.KST.Comparison.TrivialFibrationExtension
 
 public import SerrePositivity.KST.Comparison.SpanGluing
 
+public import SerrePositivity.KST.Comparison.SimplicialSumHomotopyPullbacks
+
 /-!
 # K-L2：比較定理の入口
 
