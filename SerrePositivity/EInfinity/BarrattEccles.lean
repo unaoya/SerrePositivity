@@ -105,3 +105,7 @@ public import SerrePositivity.EInfinity.BarrattEccles.PartialCompositionNested
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleExchange
 public import SerrePositivity.EInfinity.BarrattEccles.BlockExchangeSign
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleExchangePermutation
+public import SerrePositivity.EInfinity.BarrattEccles.ShufflePathCast
+public import SerrePositivity.EInfinity.BarrattEccles.ParallelShuffleSign
+public import SerrePositivity.EInfinity.BarrattEccles.ParallelShuffleCoordinates
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleParallelSimplex
