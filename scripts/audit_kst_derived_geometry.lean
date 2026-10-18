@@ -14,6 +14,16 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let required : Array Name := #[
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.yoneda_map_eval,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.representablePostcompose_eq_yoneda,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.representableHom_lift,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.mappingConeIso,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.mappingConeComparison_isIso,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.representableCone_naturality,
+    `SerrePositivity.KST.DerivedGeometry.LinearComplex.representableStandardConeIso,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.derivedYoneda_map_bijective,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.derivedYoneda_full,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.derivedYoneda_faithful,
     `SerrePositivity.KST.DerivedGeometry.LinearComplex.mappingShiftIso,
     `SerrePositivity.KST.DerivedGeometry.LinearComplex.rightShift_comp,
     `SerrePositivity.KST.DerivedGeometry.LinearComplex.representableShift_naturality,

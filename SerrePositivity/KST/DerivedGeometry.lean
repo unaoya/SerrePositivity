@@ -23,3 +23,6 @@ public import SerrePositivity.KST.DerivedGeometry.DGResolution.StagePresentation
 public import SerrePositivity.KST.DerivedGeometry.DGResolution.CellUniversal
 public import SerrePositivity.KST.DerivedGeometry.DGResolution.InitialPresentation
 public import SerrePositivity.KST.DerivedGeometry.LinearRepresentableShift
+public import SerrePositivity.KST.DerivedGeometry.LinearRepresentableCone
+public import SerrePositivity.KST.DerivedGeometry.DGResolution.DerivedYoneda
+public import SerrePositivity.KST.DerivedGeometry.LinearYonedaComparison

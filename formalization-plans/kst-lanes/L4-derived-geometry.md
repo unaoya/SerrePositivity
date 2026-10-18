@@ -51,7 +51,7 @@
 
 - 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。任意 dg 圏の段階分解、Hom の K-flat 性、増大関手の各次数全射性・準同値性・H⁰ 同値、前三角化の三角同値、分解後の path 商と元の指定 Verdier 商の tria 比較を実装済み。層の DerivedDG・DqcDGModel も平坦分解後の商へ移行済み。商自体の H⁰ と Mathlib の導来圏の同値、Perf、アフィン係数加群圏の同値、導来降下は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の導来随伴・生成・T1′、L4c、L4d、L4e は未実装。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の714宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の776宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -667,8 +667,13 @@
 - `rightShift_comp`：任意次数の前合成との両立を証明済み。
 - `LinearRepresentableShift.representableShiftIso`：shift した代表加群と、shift した複体の代表加群の同型を全次数自然性込みで構成済み。
 - shift 比較の評価は同じ具体的な chain map に一致する。
-- 対象ビルドと714宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
-- 次は cone の写像複体・代表加群の比較。H⁰ と Mathlib 導来圏の最終比較は未完了。
+- `mappingConeIso`：写像複体と写像複体間の chain map の cone の同型を構成済み。微分と逆写像を検証した。
+- `representableStandardConeIso`：全次数の前合成との両立を証明し、実際の `moduleCone` と複体の cone の代表加群を同定済み。
+- `DGResolution.derivedYoneda_map_bijective`：任意 dg 圏の H⁰ から導来加群圏への代表加群関手の完全忠実性を証明済み。
+- `yoneda_map_eval`・`representablePostcompose_eq_yoneda`：具体的な後合成は既存の dg Yoneda の同じ閉零射に一致する。
+- `representableHom_lift`：代表加群間の任意の射を元の複体の chain map として表示済み。
+- 対象ビルドと776宣言の公理監査に成功。標準3公理のみ、KTheory import なし。
+- 次は有限 cell の代表可能性の帰納。H⁰ と Mathlib 導来圏の最終比較は未完了。
 
 ## 主要宣言の表
 
@@ -761,6 +766,10 @@
 | `DGResolution.cycleCoverHomEquiv`・`initialFunctorEquiv` | DGResolution/InitialPresentation | 実装・対象ビルド済み |
 | `LinearComplex.mappingShiftIso`・`rightShift_comp` | DerivedGeometry/LinearComplexShift | 実装・対象ビルド済み |
 | `LinearComplex.representableShiftIso`・`representableShiftIso_hom_eval` | DerivedGeometry/LinearRepresentableShift | 実装・対象ビルド済み |
+| `LinearComplex.mappingConeIso`・`mappingConeComparison_isIso` | DerivedGeometry/LinearComplexCone | 実装・対象ビルド済み |
+| `LinearComplex.representableStandardConeIso` | DerivedGeometry/LinearRepresentableCone | 実装・対象ビルド済み |
+| `DGResolution.derivedYoneda_map_bijective`・`derivedYoneda_full`・`derivedYoneda_faithful` | DGResolution/DerivedYoneda | 実装・対象ビルド済み |
+| `LinearComplex.yoneda_map_eval`・`representableHom_lift` | DerivedGeometry/LinearYonedaComparison | 実装・対象ビルド済み |
 | `DGResolution.augmentation_triaImage_iff`・`augmentation_trW_eq` | DGResolution/SupportTransport・VerdierTransport | 実装・対象ビルド済み |
 | `DGResolution.verdierSquare`・`quotientToOriginalVerdierIsTriangulated` | DGResolution/VerdierTransport | 実装・対象ビルド済み |
 | `ResolvedComplexes`・`resolvedAcyclicComplexes`・`resolvedAugmentation_quasiEquivalence` | DerivedGeometry/SheafDerivedDG | 実装・対象ビルド済み |
