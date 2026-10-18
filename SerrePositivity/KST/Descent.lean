@@ -1,5 +1,9 @@
 module
 
+public import SerrePositivity.KST.Descent.CechReindexWeights
+public import SerrePositivity.KST.Descent.CechReindexAugmentation
+public import SerrePositivity.KST.Descent.CechReindexDescent
+public import SerrePositivity.KST.Descent.SplitCechDescent
 public import SerrePositivity.KST.Descent.InitialCechWeights
 public import SerrePositivity.KST.Descent.InitialCechDescent
 public import SerrePositivity.KST.Descent.SplitCechSpaceExtension
