@@ -7252,5 +7252,18 @@ lemma isEssentiallySurjective_over_interval_of_endpoint_fibers {E F : SSet.{u}}
     (h1 : IsEssentiallySurjective (vertexFiberMap p q f hf (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))) :
     IsEssentiallySurjective f
 
+lemma relativeJoin_extension_isEssentiallySurjective {X Y E : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] (f : X ⟶ Y)
+    (p : E ⟶ (Δ[1] : SSet.{u})) [InnerFibration p]
+    (G : relativeJoin f (𝟙 Y) ⟶ E) (hG : G ≫ p = relativeJoinProjection f (𝟙 Y))
+    (H : (Δ[1] : SSet.{u}) ⊗ X ⟶ E) (hH : relativeJoinPrism f ≫ G = H)
+    (g : Y ⟶ E) (hg : relativeJoinInr f (𝟙 Y) ≫ G = g)
+    (z0 : X ⟶ vertexFiber p (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
+    (hz0 : z0 ≫ vertexFiberι p (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = prismEndpoint 0 X ≫ H)
+    (z1 : Y ⟶ vertexFiber p (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
+    (hz1 : z1 ≫ vertexFiberι p (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = g)
+    (he0 : IsPrecompositionEquivalence z0) (he1 : IsPrecompositionEquivalence z1) :
+    IsEssentiallySurjective G
+
 end SerrePositivity.InfinityCategories
 ```
