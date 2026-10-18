@@ -459,6 +459,10 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `blowupTwistDGFunctor_inclusion`・`blowupTwistDGDerivedComparison`・`blowupTwistDGCartesianComparison`・`blowupTwistDGFunctorHomotopyIsEquivalence` | FiniteOverlapTwistDGComparison | 包含の可換式、指定導来捻りとの部分圏内の自然同型、H⁰ 関手の同値性 |
 | `diagramGaugeModuleUnrestrictParam`・`diagramGaugeModuleHomInv`・`diagramGaugeModuleHomIso` | DiagramGaugeModuleHomIso | Hom 重み付けの消去で豊穣自然性を復元し、指定全 Hom 写像の複体同型を構成 |
 | 全三段の dg 捻りの Hom 同型・`blowupTwistHomIso`・`blowupTwistDGFunctor_quasiEquivalence` | FiniteOverlapTwistDGQuasiEquivalence | 元の dg 模型上の整数捻りの準同値性 |
+| `exceptionalTransitionEquiv`・微分保存・cocycle・恒等律・共通表示との比較 | ExceptionalTransitionBasis | 共通の全 a_j 表示を介する例外因子の可逆生成元変換 |
+| `exceptionalChartGeneratorInclusion`・`exceptionalTransitionEquiv_chart` | ExceptionalTransitionChart | 例外因子の遷移が既存のチャート基底変換を延長する可換式 |
+| `exceptionalTransitionDGFunctor`・全 Hom 同型・cocycle・恒等律・共通表示との比較 | ExceptionalTransitionDG | 同一重なり係数環上の例外因子の指定 dg 遷移 |
+| `exceptionalChartInclusionDGFunctor`・`exceptionalChartInclusionDGFunctor_transition` | ExceptionalChartDGInclusion | blowup チャートから例外因子への局所 dg 係数射と遷移の可換四角形 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -526,7 +530,7 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 その上の coherent な dg 加群の降下模型と、層レベルの Dqc・Perf 比較は未完了。
 係数 dg 代数図式と局所の導来底変更比較は構成済みだが、
 coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全体の完成とは扱わない。
-所有モジュールの全3059定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全3083定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
 指定の加群比較、主局所化上の制限比較、随伴で移した導来係数拡大比較を構成済み。
 全射について自然であり、指定比較の可逆性による cartesian・局所 perfect 条件は同型で保たれる。
@@ -594,7 +598,15 @@ gauge 制限後の全次数自然変換から各 Hom の可逆な重み付けを
 制限前の豊穣自然性を復元する逆を構成済み。Hom end の普遍性と全頂点の評価で
 指定制限 Hom 写像の複体同型を証明済み。全図式・射影的・cartesian perfect の三段の
 dg 捻りに適用し、既存 cartesian perfect dg 模型上の整数捻りの準同値性を証明済み。
-次の実装単位は L5b の例外因子・重なりの同定、および coherent な降下との比較。
+例外因子の同一重なり係数環上の遷移は、共通の全 a_j の Koszul 表示を介する
+可逆基底変換として構成済み。微分保存・恒等律・三重 cocycle と共通表示への
+比較の可換性を、生成加群および外積 dg 関手の両段階で証明済み。
+Cartier 生成元を追加するチャート生成加群の包含と実際の局所 dg 射を構成し、
+例外因子の遷移が既存チャート遷移を延長する可換四角形を証明済み。
+原典は KST v4 Def 3.1・Lemma 3.6（pp.11–14）。共通 Koszul 表示を経由して
+遷移の整合性を再構成する経路であり、係数環間の移送を省略した大域降下の主張ではない。
+次の実装単位は例外因子の基底変換の係数自然性と実際の有限重なり環への接続、
+および coherent な降下との比較。
 射影的 dg 模型の H⁰ 比較だけで、dg 商の普遍性や層の降下との比較を済んだとは扱わない。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
