@@ -86,7 +86,9 @@ underlying 複体が当該添字での値に一致することを証明済み。
 指定導来制限比較の単位・三重整合性を自然変換の等式と各対象での等式として証明済み。
 左随伴一意性で標準係数拡大同型を指定し、指定導来係数拡大比較の単位・合成条件を
 対象ごとの等式と自然変換の等式として証明済み。恒等包含の指定比較の可逆性も証明済み。
-元の cartesian 比較との同定は未完了。
+元の Koszul 模型への dg 比較と局所遷移の可換四角形、指定加群比較の制限後の一致、
+全導来対象で指定導来制限比較を正規表示へ制限した射との一致を証明済み。
+係数拡大側の可逆性による元の cartesian 条件との iff は未完了。
 その係数図式上の coherent な dg 加群の降下模型と層レベル比較は未完了。
 L5b 全体は未完了。L5c〜L5f は未実装。
 既存の L11 の検証記録を、Lean の証明済み宣言とは扱わない。
@@ -350,6 +352,10 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | 指定導来制限比較の単位・合成自然変換等式と対象ごとの等式 | DiagramAlgebraDerivedComparisonCoherence | 加群比較の単位・三重整合性を主導来圏へ移送した結果 |
 | `adjointComparisonIdIso`・`adjointComparisonCompIso`・単位と合成の移送補題 | AdjointComparisonCoherence | 右随伴の指定同型と比較射の整合性から左随伴側の整合性を導く |
 | `diagramAlgebraDerivedExtensionComparison_id`・`diagramAlgebraDerivedExtensionComparison_comp`・自然変換等式・恒等包含の可逆性 | DiagramAlgebraDerivedExtensionCoherence | 正規表示の指定導来係数拡大比較の単位・合成条件 |
+| `finiteOverlapAlgebraVertexToChart_transition` | FiniteOverlapAlgebraTransitionComparison | 正規表示と元の Koszul 模型の局所遷移の可換四角形 |
+| `finiteOverlapAlgebraModuleComparison` | FiniteOverlapAlgebraModuleComparison | 元の指定加群比較を正規表示へ制限した射との一致 |
+| 評価計算同型の恒等成分・`finiteOverlapDerivedRestrictionNatTrans_app_Q_map` | FiniteOverlapDerivedComputation | 元の指定導来制限比較を加群比較の局所化像として計算 |
+| `finiteOverlapAlgebraDerivedRestrictionComparison_Q`・`finiteOverlapAlgebraDerivedRestrictionComparison` | FiniteOverlapAlgebraDerivedComparison | 全導来対象での指定制限比較の表示変更との整合性 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -417,7 +423,7 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 その上の coherent な dg 加群の降下模型と、層レベルの Dqc・Perf 比較は未完了。
 係数 dg 代数図式と局所の導来底変更比較は構成済みだが、
 coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全体の完成とは扱わない。
-所有モジュールの全2209定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全2218定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
 指定の加群比較、主局所化上の制限比較、随伴で移した導来係数拡大比較を構成済み。
 全射について自然であり、指定比較の可逆性による cartesian・局所 perfect 条件は同型で保たれる。
@@ -429,7 +435,8 @@ dg 準同値な一対象正規表示での指定加群比較の単位・三重�
 既存局所 perfect 条件との一致と、正規表示の canonical な導来係数拡大比較の自然性は証明済み。
 正規表示の指定導来制限比較の単位・三重整合性は証明済み。
 指定導来係数拡大比較の単位・合成条件と恒等包含の可逆性も証明済み。
-次の実装単位は元の cartesian 比較との同定、
+元の Koszul 模型と正規表示の局所遷移・指定加群比較・指定導来制限比較の整合性は証明済み。
+次の実装単位は元の係数拡大比較の可逆性による cartesian 条件との iff、
 および coherent な降下との接続。
 射影的 dg 模型の H⁰ 比較だけで、dg 商の普遍性や層の降下との比較を済んだとは扱わない。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
