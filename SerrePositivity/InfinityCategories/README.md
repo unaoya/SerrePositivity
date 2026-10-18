@@ -1758,8 +1758,10 @@ resolutionHomValue_standard (σ : StandardSimplex R (D := D) x y n)
 
 ## γ3：homotopy 極限・余極限と ∞ 極限・余極限（γ1.5 の後）
 
-担当と順序は `formalization-plans/foundations.md` §1・§4 と
-`formalization-plans/e-infinity-algebras.md` §3 に従う。γ1.5 の完了後に着手し、
+担当は N。正本は `formalization-plans/foundations.md` §1 と
+`formalization-plans/e-infinity-algebras.md` §3、着手順は foundations.md §4 に従う。
+担当項目の文言は「γ3：homotopy 極限・余極限 = ∞ 極限・余極限（HTT 4.2.4.1 型）。
+γ1.5 の完了後、まず Kan 複体の単体的モデル圏に対して証明する」とする。
 𝒮（F2）・Sp（L9）・E2b が共用する比較を作る。第一段階は単体集合の Quillen モデル構造と、
 その cofibrant-fibrant 対象である Kan 複体の単体的圏を扱う。
 原典は [HTT §4.2.4、特に Theorem 4.2.4.1](https://www.math.ias.edu/~lurie/papers/HTT.pdf)。
