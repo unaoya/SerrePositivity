@@ -8278,5 +8278,84 @@ lemma leftStrictTransportCoherentEvaluation_vertex
       (leftFibrationInfinityVertex p) =
       spaceInfinityVertex ((leftStrictTransportFunctor p).obj c)
 
+def relativeFunctorMixedHom {B : SSet.{u}} {a b : Over B} (f : a ⟶ b) (p q : Over B) :
+    relativeFunctorSpace q.hom p.hom ⟶
+      (ihom (relativeFunctorSpace p.hom b.hom)).obj (relativeFunctorSpace q.hom a.hom)
+
+lemma relativeFunctorMixedHom_id {B : SSet.{u}} (a p : Over B) :
+    relativeFunctorIdentity p ≫ relativeFunctorMixedHom (𝟙 a) p p =
+      MonoidalClosed.id (relativeFunctorSpace p.hom a.hom)
+
+lemma relativeFunctorMixedHom_comp {B : SSet.{u}} {a b c : Over B}
+    (f : b ⟶ a) (g : c ⟶ b) (p q r : Over B) :
+    relativeFunctorComposition p q r ≫ relativeFunctorMixedHom (g ≫ f) p r =
+      (relativeFunctorMixedHom f p q ⊗ₘ relativeFunctorMixedHom g q r) ≫
+        MonoidalClosed.comp (relativeFunctorSpace p.hom a.hom)
+          (relativeFunctorSpace q.hom b.hom) (relativeFunctorSpace r.hom c.hom)
+
+def diagonalRelativeObject {B : SSet.{u}} {J : Type u} [LinearOrder J]
+    (A : Jᵒᵖ ⥤ Over B)
+    (F : EnrichedFunctor SSet.{u} (SimplicialThickening J) (LeftFibrationObject B))
+    (i : SimplicialThickening J) : KanObject.{u}
+
+noncomputable def diagonalRelativeHom {B : SSet.{u}} {J : Type u} [LinearOrder J]
+    (A : Jᵒᵖ ⥤ Over B)
+    (F : EnrichedFunctor SSet.{u} (SimplicialThickening J) (LeftFibrationObject B))
+    (i j : SimplicialThickening J) :
+    SimplicialCategory.sHom i j ⟶
+      SimplicialCategory.sHom (diagonalRelativeObject A F i) (diagonalRelativeObject A F j)
+
+lemma diagonalRelativeHom_of_le {B : SSet.{u}} {J : Type u} [LinearOrder J]
+    (A : Jᵒᵖ ⥤ Over B)
+    (F : EnrichedFunctor SSet.{u} (SimplicialThickening J) (LeftFibrationObject B))
+    (i j : SimplicialThickening J) (h : i.as ≤ j.as) :
+    diagonalRelativeHom A F i j =
+      F.map i j ≫ relativeFunctorMixedHom (A.map (homOfLE h).op) (F.obj i).val (F.obj j).val
+
+noncomputable def diagonalRelativeEvaluation {B : SSet.{u}} {J : Type u} [LinearOrder J]
+    (A : Jᵒᵖ ⥤ Over B)
+    (F : EnrichedFunctor SSet.{u} (SimplicialThickening J) (LeftFibrationObject B)) :
+    EnrichedFunctor SSet.{u} (SimplicialThickening J) KanObject.{u}
+
+lemma diagonalRelativeEvaluation_reindex {B : SSet.{u}} {J K : Type u}
+    [LinearOrder J] [LinearOrder K] (α : J →o K) (A : Kᵒᵖ ⥤ Over B)
+    (F : EnrichedFunctor SSet.{u} (SimplicialThickening K) (LeftFibrationObject B)) :
+    (SimplicialThickening.functor α).comp SSet (diagonalRelativeEvaluation A F) =
+      diagonalRelativeEvaluation (α.toFunctor.op ⋙ A)
+        ((SimplicialThickening.functor α).comp SSet F)
+
+def underNerveDiagram (C : Type u) [Category.{u} C] : Cᵒᵖ ⥤ Over (nerve C)
+
+def strictTransportSimplexUnderDiagram {C : Type u} [Category.{u} C] {n : ℕ}
+    (σ : (nerve C) _⦋n⦌) : (ULift.{u} (Fin (n + 1)))ᵒᵖ ⥤ Over (nerve C)
+
+lemma strictTransportSimplexUnderDiagram_reindex
+    {C : Type u} [Category.{u} C] {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌)
+    (σ : (nerve C) _⦋n⦌) :
+    α.toOrderHom.uliftMap.toFunctor.op ⋙ strictTransportSimplexUnderDiagram σ =
+      strictTransportSimplexUnderDiagram ((nerve C).map α.op σ)
+
+noncomputable def strictTransportDiagonalSimplex
+    {C : Type u} [Category.{u} C] {n : ℕ} (σ : (nerve C) _⦋n⦌)
+    (F : (LeftFibrationInfinity (nerve C)) _⦋n⦌) : SpaceInfinity.{u} _⦋n⦌
+
+lemma strictTransportDiagonalSimplex_naturality
+    {C : Type u} [Category.{u} C] {m n : ℕ} (α : ⦋m⦌ ⟶ ⦋n⦌)
+    (σ : (nerve C) _⦋n⦌) (F : (LeftFibrationInfinity (nerve C)) _⦋n⦌) :
+    SpaceInfinity.map α.op (strictTransportDiagonalSimplex σ F) =
+      strictTransportDiagonalSimplex ((nerve C).map α.op σ)
+        ((LeftFibrationInfinity (nerve C)).map α.op F)
+
+noncomputable def strictTransportJointEvaluation (C : Type u) [Category.{u} C] :
+    (SSet.uliftFunctor.{u + 1, u}).obj (nerve C) ⊗ LeftFibrationInfinity (nerve C) ⟶
+      SpaceInfinity.{u}
+
+noncomputable def leftStraighteningCoherentMap (C : Type u) [Category.{u} C] :
+    LeftFibrationInfinity (nerve C) ⟶
+      SpaceInfinityFunctor ((SSet.uliftFunctor.{u + 1, u}).obj (nerve C))
+
+lemma leftStraighteningCoherentMap_uncurry (C : Type u) [Category.{u} C] :
+    uncurry (leftStraighteningCoherentMap C) = strictTransportJointEvaluation C
+
 end SerrePositivity.InfinityCategories
 ```

@@ -1,5 +1,12 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorMixedHom
+public import SerrePositivity.InfinityCategories.F1.DiagonalRelativeEvaluation
+public import SerrePositivity.InfinityCategories.F1.DiagonalRelativeReindex
+public import SerrePositivity.InfinityCategories.F1.UnderNerveDiagram
+public import SerrePositivity.InfinityCategories.F1.StrictTransportDiagonalSimplex
+public import SerrePositivity.InfinityCategories.F1.StrictTransportJointEvaluation
+
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorEnrichedEvaluation
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorEnrichedNaturality
 public import SerrePositivity.InfinityCategories.F1.CoherentNervePostcomposition
