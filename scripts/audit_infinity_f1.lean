@@ -1559,3 +1559,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.join_hom_ext_extreme_faces_of_interval
 #check @SerrePositivity.InfinityCategories.join_horn_hom_ext_extreme_faces
 #check @SerrePositivity.InfinityCategories.join_mixed_innerHorn_filling
+#check @SerrePositivity.InfinityCategories.join_quasicategory
+#check @SerrePositivity.InfinityCategories.relativeJoin_quasicategory
+#check @SerrePositivity.InfinityCategories.relativeJoinProjection_innerFibration

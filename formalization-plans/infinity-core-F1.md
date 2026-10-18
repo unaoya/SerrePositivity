@@ -7117,5 +7117,16 @@ lemma join_mixed_innerHorn_filling {X Y : SSet.{u}} (n : ℕ) (i : Fin (n + 3))
     ∃ l : (Δ[n + 2] : SSet.{u}) ⟶ join X Y,
       (horn (n + 2) i).ι ≫ l = a ∧ l ≫ joinIntervalProjection X Y = t
 
+instance join_quasicategory (X Y : SSet.{u}) [Quasicategory X] [Quasicategory Y] :
+    Quasicategory (join X Y)
+
+instance relativeJoin_quasicategory {X Y S : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] [Quasicategory S] (f : X ⟶ S) (g : Y ⟶ S) :
+    Quasicategory (relativeJoin f g)
+
+instance relativeJoinProjection_innerFibration {X Y S : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] [Quasicategory S] (f : X ⟶ S) (g : Y ⟶ S) :
+    InnerFibration (relativeJoinProjection f g)
+
 end SerrePositivity.InfinityCategories
 ```

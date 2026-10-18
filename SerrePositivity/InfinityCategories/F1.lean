@@ -328,3 +328,4 @@ public import SerrePositivity.InfinityCategories.F1.JoinHornFaceGeometry
 public import SerrePositivity.InfinityCategories.F1.IntervalCutDetection
 public import SerrePositivity.InfinityCategories.F1.JoinMixedHornUniqueness
 public import SerrePositivity.InfinityCategories.F1.JoinMixedHornFilling
+public import SerrePositivity.InfinityCategories.F1.JoinQuasicategory
