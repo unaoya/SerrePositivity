@@ -5691,3 +5691,146 @@ E2b の具体的な適用は E2a 完了後に扱う。
 公理監査成功（標準3公理のみ）。新規ファイルの警告・sorry・追加公理はない。
 他担当の依存703ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-space-limits-aggregate.log` と `/tmp/gamma3-space-limits-audit.log`。
+
+
+### γ3c：Sp の段評価と、段ごとの極限から豊穣 Hom の極限への移送
+
+L9 の正本の模型を確認した。`KST.Spectra.OmegaSpectrum` は各段の点つき Kan 複体に加え、
+懸垂の構造射の単射性と、随伴構造射の全基点の π_* 同型を条件に持つ。
+`KST.Spectra.Sp` は L9 の既存の単体的圏の coherent nerve。
+𝒮 の極限を各段で取るだけで、この Ω 条件と構造射の単射性が得られたとは扱わない。
+既存の Sp、対象、射、豊穣構造の定義は変更していない。
+
+`SpectrumMappingDiagram` は L9 の実際の写像空間の後合成と各段評価の可換式
+`spectrumHomMap_evaluation` を証明し、`spectrumMappingEvaluation` として自然変換へ束ねた。
+点つき内部 Hom と忘却の二つの右随伴の極限保存、前合成と後合成の可換性、
+懸垂の写像空間の自然性、構造射による境界比較の後合成に関する自然性も証明した。
+この段階で通常の射の零単体だけに制限せず、写像単体集合全体の自然性を扱う。
+
+`SpectrumHomLimitFamilies` は、任意の小圏 I の L9 のスペクトルの錐 c が各段で極限なら、
+全ての豊穣 Hom の錐も実際に極限となることを証明した。主定理は
+
+```lean
+spectrumHomCone_isLimit_of_levelwise (c : Cone F)
+    (hc : ∀ n, IsLimit (spectrumLevelCone c n)) (X : OmegaSpectrum.{u}) :
+  IsLimit (simplicialHomCone c X)
+```
+
+共通の前提は `I : Type u`、`[SmallCategory I]`、`F : I ⥤ OmegaSpectrum.{u}`。
+`spectrumLevelCone c n` は c の n 段への評価で、極限性は点つき単体集合の圏で指定する。
+SimplicialCategory の実体には `OmegaSpectrum.simplicialCategory` を用いる。
+
+証明では Hom 図式上の任意の錐 s について、各段の普遍射 `spectrumHomLimitFamily` を作る。
+次段の境界 Hom の射影で検査し、前合成・後合成・懸垂の自然性からスペクトルの構造射との
+整合性 `spectrumHomLimitFamily_condition` を導いた。L9 の既存の
+`TruncatedMapping.familyLift` で実際の全写像空間への普遍射を構成し、全ての段と
+全単体的パラメータでの射影則と一意性まで証明した。
+別の写像空間の模型や、追加の Hom の比較同値は導入していない。
+原典上の位置は BF 1978 §2、HTT 4.2.4.1、Kerodon 7.5.4.6。
+
+新規21宣言の正確な型は以下。Ω スペクトルと点つき単体集合の単体的豊穣構造は
+それぞれ L9 の `OmegaSpectrum.simplicialCategory` と `PointedEnrichment.simplicialCategory`。
+I、F には上記の共通の前提を付ける。その他の前提は各型に明記した。
+
+```lean
+def spectrumLevelFunctor (n : ℕ) : OmegaSpectrum.{u} ⥤ PointedSimplicialSet.{u}
+
+noncomputable def pointedMappingFunctor (A : PointedSimplicialSet.{u}) :
+    PointedSimplicialSet.{u} ⥤ SSet.{u}
+
+noncomputable instance pointedMappingFunctor_preservesLimits (A : PointedSimplicialSet.{u}) :
+    PreservesLimits (pointedMappingFunctor A)
+
+lemma spectrumHomMap_evaluation (X : OmegaSpectrum.{u}) {Y Z : OmegaSpectrum.{u}}
+    (f : Y ⟶ Z) (n : ℕ) :
+    ((SimplicialCategory.sHomFunctor OmegaSpectrum.{u}).obj (Opposite.op X)).map f ≫
+        OmegaSpectrum.evaluation X Z n =
+      OmegaSpectrum.evaluation X Y n ≫
+        (PointedObject.basedHomMap (X.level n).space (f.app n)).right
+
+noncomputable def spectrumStageHomFunctor (X : OmegaSpectrum.{u}) (n : ℕ) :
+    OmegaSpectrum.{u} ⥤ SSet.{u}
+
+noncomputable def spectrumMappingEvaluation (X : OmegaSpectrum.{u}) (n : ℕ) :
+    (SimplicialCategory.sHomFunctor OmegaSpectrum.{u}).obj (Opposite.op X) ⟶
+      spectrumStageHomFunctor X n
+
+lemma pointedMapping_pre_post {A B Y Z : PointedSimplicialSet.{u}} (i : A ⟶ B) (f : Y ⟶ Z) :
+    PointedMapping.pre i Y ≫ (pointedMappingFunctor A).map f =
+      (pointedMappingFunctor B).map f ≫ PointedMapping.pre i Z
+
+lemma suspensionHom_post (A : PointedSimplicialSet.{u}) {B D : PointedSimplicialSet.{u}}
+    (f : B ⟶ D) :
+    (pointedMappingFunctor A).map f ≫ (suspensionHom A D).right =
+      (suspensionHom A B).right ≫ (pointedMappingFunctor (suspension A)).map
+        (PointedSimplicialSet.circle.{u} ◁ f)
+
+lemma spectrumMappingStep_post (X : OmegaSpectrum.{u}) {Y Z : OmegaSpectrum.{u}}
+    (f : Y ⟶ Z) (n : ℕ) :
+    OmegaSpectrum.mappingStep X Y n ≫
+        (pointedMappingFunctor (suspension (X.level n).space)).map (f.app (n + 1)) =
+      (pointedMappingFunctor (X.level n).space).map (f.app n) ≫
+        OmegaSpectrum.mappingStep X Z n
+
+def spectrumLevelCone (c : Cone F) (n : ℕ) : Cone (F ⋙ spectrumLevelFunctor n)
+
+def spectrumStageHomCone (c : Cone F) (X : OmegaSpectrum.{u}) (n : ℕ) :
+    Cone (F ⋙ spectrumStageHomFunctor X n)
+
+def spectrumStageHomCone_isLimit (c : Cone F) (X : OmegaSpectrum.{u}) (n : ℕ)
+    (hc : IsLimit (spectrumLevelCone c n)) : IsLimit (spectrumStageHomCone c X n)
+
+def spectrumHomParameterCone (X : OmegaSpectrum.{u}) (n : ℕ)
+    (s : Cone (simplicialHomDiagram F X)) : Cone (F ⋙ spectrumStageHomFunctor X n)
+
+def spectrumHomLimitFamily (c : Cone F) (hc : ∀ n, IsLimit (spectrumLevelCone c n))
+    (X : OmegaSpectrum.{u}) (s : Cone (simplicialHomDiagram F X)) (n : ℕ) :
+    s.pt ⟶ (PointedObject.basedHom (X.level n).space (c.pt.level n).space).right
+
+lemma spectrumHomLimitFamily_fac (c : Cone F) (hc : ∀ n, IsLimit (spectrumLevelCone c n))
+    (X : OmegaSpectrum.{u}) (s : Cone (simplicialHomDiagram F X)) (n : ℕ) (i : I) :
+    spectrumHomLimitFamily c hc X s n ≫
+        (pointedMappingFunctor (X.level n).space).map ((c.π.app i).app n) =
+      s.π.app i ≫ OmegaSpectrum.evaluation X (F.obj i) n
+
+lemma spectrumHomLimitFamily_condition (c : Cone F) (hc : ∀ n, IsLimit (spectrumLevelCone c n))
+    (X : OmegaSpectrum.{u}) (s : Cone (simplicialHomDiagram F X)) (n : ℕ) :
+    spectrumHomLimitFamily c hc X s (n + 1) ≫
+        PointedMapping.pre (X.sigma n) (c.pt.level (n + 1)).space =
+      spectrumHomLimitFamily c hc X s n ≫ OmegaSpectrum.mappingStep X c.pt n
+
+def spectrumHomConeLift (c : Cone F) (hc : ∀ n, IsLimit (spectrumLevelCone c n))
+    (X : OmegaSpectrum.{u}) (s : Cone (simplicialHomDiagram F X)) :
+    s.pt ⟶ OmegaSpectrum.mappingSpace X c.pt
+
+lemma spectrumHomConeLift_evaluation (c : Cone F) (hc : ∀ n, IsLimit (spectrumLevelCone c n))
+    (X : OmegaSpectrum.{u}) (s : Cone (simplicialHomDiagram F X)) (n : ℕ) :
+    spectrumHomConeLift c hc X s ≫ OmegaSpectrum.evaluation X c.pt n =
+      spectrumHomLimitFamily c hc X s n
+
+lemma spectrumHomConeLift_fac (c : Cone F) (hc : ∀ n, IsLimit (spectrumLevelCone c n))
+    (X : OmegaSpectrum.{u}) (s : Cone (simplicialHomDiagram F X)) (i : I) :
+    spectrumHomConeLift c hc X s ≫ (simplicialHomCone c X).π.app i = s.π.app i
+
+lemma spectrumHomConeLift_uniq (c : Cone F) (hc : ∀ n, IsLimit (spectrumLevelCone c n))
+    (X : OmegaSpectrum.{u}) (s : Cone (simplicialHomDiagram F X))
+    (m : s.pt ⟶ OmegaSpectrum.mappingSpace X c.pt)
+    (hm : ∀ i, m ≫ (simplicialHomCone c X).π.app i = s.π.app i) :
+    m = spectrumHomConeLift c hc X s
+
+def spectrumHomCone_isLimit_of_levelwise (c : Cone F)
+    (hc : ∀ n, IsLimit (spectrumLevelCone c n)) (X : OmegaSpectrum.{u}) :
+    IsLimit (simplicialHomCone c X)
+```
+
+これは Sp の実際の Hom 条件を段ごとの普遍性から検証する証明であり、
+Sp の積・引き戻し・塔の極限対象を構成した定理ではない。
+具体的な対象の Ω 条件と構造射の単射性、必要な Hom の fibration 条件を検証し、
+三形状の ∞ 極限錐を公開する工程は未完了。元の非反転の end・q_x と反転係数の直接比較、
+余極限側も未完了で、γ3 は継続中。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4528 jobs）、公開1084宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規ファイルの警告・sorry・追加公理はない。
+他担当の依存758ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-spectrum-hom-limits-aggregate.log` と
+`/tmp/gamma3-spectrum-hom-limits-audit.log`。

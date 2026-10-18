@@ -1100,3 +1100,31 @@ Kan 複体の圏の極限の普遍性、全 Hom の極限性と必要な fibrati
 公理監査成功（標準3公理のみ）。新規ファイルの警告・sorry・追加公理はない。
 他担当の依存703ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-space-limits-aggregate.log` と `/tmp/gamma3-space-limits-audit.log`。
+
+
+### γ3c：Sp の実際の写像空間の段評価と極限の普遍性
+
+L9 の `OmegaSpectrum` の対象条件（各段 Kan、懸垂の構造射が単射、随伴構造射の
+全基点の π_* 同型）と、既存の `Sp` がこの局所 Kan な単体的圏の coherent nerve であることを確認。
+`SpectrumMappingDiagram` は実際の Hom の後合成と各段評価の厳密な可換式を証明し、
+評価を自然変換として束ねた。点つき写像空間の極限保存、前合成・後合成・懸垂の自然性と、
+スペクトルの境界比較の後合成に関する自然性も証明した。
+`SpectrumHomLimitFamilies` は、任意の小圏 I、`F : I ⥤ OmegaSpectrum`、錐 c について、
+`spectrumHomCone_isLimit_of_levelwise (c : Cone F)
+(hc : ∀ n, IsLimit (spectrumLevelCone c n)) (X : OmegaSpectrum) :
+IsLimit (simplicialHomCone c X)` を公開。
+各段の極限性は点つき単体集合の圏で指定し、Hom の極限性を追加の前提にはしない。
+任意の Hom 図式上の錐 s の全単体的パラメータの各段の普遍族を構成し、
+構造射との整合性から L9 の実際の全写像空間へ持ち上げ、射影則・一意性まで証明した。
+L9 の対象・射・豊穣構造の定義は変更せず、別の Sp の模型や追加の比較同値は使わない。
+原典は BF 1978 §2、HTT 4.2.4.1、Kerodon 7.5.4.6。
+新規21宣言の正確な型・全前提は README に記録し、公開1084宣言の監査へ追加。
+Sp の実際の極限対象の Ω 条件と構造射の単射性、必要な Hom の fibration 条件、
+三形状の ∞ 極限錐の公開は未完了。この Hom の普遍性の結果だけで Sp の適用を完了とは数えない。
+元の非反転の end・q_x と反転係数の直接比較、余極限側も未完了で、γ3 は継続中。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4528 jobs）、公開1084宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規ファイルの警告・sorry・追加公理はない。
+他担当の依存758ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-spectrum-hom-limits-aggregate.log` と
+`/tmp/gamma3-spectrum-hom-limits-audit.log`。

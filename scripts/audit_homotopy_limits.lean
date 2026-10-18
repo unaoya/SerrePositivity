@@ -2350,3 +2350,66 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @spaceTowerCone_isLimitCone
 #print axioms spaceTowerCone_isLimitCone
+
+#check @spectrumLevelFunctor
+#print axioms spectrumLevelFunctor
+
+#check @pointedMappingFunctor
+#print axioms pointedMappingFunctor
+
+#check @pointedMappingFunctor_preservesLimits
+#print axioms pointedMappingFunctor_preservesLimits
+
+#check @spectrumHomMap_evaluation
+#print axioms spectrumHomMap_evaluation
+
+#check @spectrumStageHomFunctor
+#print axioms spectrumStageHomFunctor
+
+#check @spectrumMappingEvaluation
+#print axioms spectrumMappingEvaluation
+
+#check @pointedMapping_pre_post
+#print axioms pointedMapping_pre_post
+
+#check @suspensionHom_post
+#print axioms suspensionHom_post
+
+#check @spectrumMappingStep_post
+#print axioms spectrumMappingStep_post
+
+#check @spectrumLevelCone
+#print axioms spectrumLevelCone
+
+#check @spectrumStageHomCone
+#print axioms spectrumStageHomCone
+
+#check @spectrumStageHomCone_isLimit
+#print axioms spectrumStageHomCone_isLimit
+
+#check @spectrumHomParameterCone
+#print axioms spectrumHomParameterCone
+
+#check @spectrumHomLimitFamily
+#print axioms spectrumHomLimitFamily
+
+#check @spectrumHomLimitFamily_fac
+#print axioms spectrumHomLimitFamily_fac
+
+#check @spectrumHomLimitFamily_condition
+#print axioms spectrumHomLimitFamily_condition
+
+#check @spectrumHomConeLift
+#print axioms spectrumHomConeLift
+
+#check @spectrumHomConeLift_evaluation
+#print axioms spectrumHomConeLift_evaluation
+
+#check @spectrumHomConeLift_fac
+#print axioms spectrumHomConeLift_fac
+
+#check @spectrumHomConeLift_uniq
+#print axioms spectrumHomConeLift_uniq
+
+#check @spectrumHomCone_isLimit_of_levelwise
+#print axioms spectrumHomCone_isLimit_of_levelwise
