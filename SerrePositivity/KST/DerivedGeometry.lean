@@ -61,3 +61,6 @@ public import SerrePositivity.KST.DerivedGeometry.FreeSheafOnOpen
 public import SerrePositivity.KST.DerivedGeometry.SheafificationLocalExact
 public import SerrePositivity.KST.DerivedGeometry.FormalCoproductEvalCovariant
 public import SerrePositivity.KST.DerivedGeometry.RepresentableFreeCechContraction
+
+public import SerrePositivity.KST.DerivedGeometry.FreeSheafCechAugmentation
+public import SerrePositivity.KST.DerivedGeometry.InjectiveHomExact
