@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 1596 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 1599 宣言、標準三公理のみ。
 - 一般点で自由な境界純変換の開自由 locus が基礎環を覆うことを、実際の局所化同型から証明済み。
 - 境界外の任意の開閉部分を、互いに交わらず全体を覆う二つの実チャートで分離する有限生成中心を構成済み。
 - 実分裂の下で拡大素点の任意の基底変更との両立性、および相対平坦有限表示加群の一般階数の基底変更保存を証明済み。
@@ -25,6 +25,7 @@
 - Noether アフィン基底の通常 blowup の有限開閉チャートに、この正確な中心の貼り合わせを適用済み。中心補開集合は構造射による D(f) の逆像。
 - 実分裂の下で、一般階数一定を仮定せず、第一段の blowup 上の一つの大域自由化中心を構成済み。各制限中心での自由化基本開の存在まで保持する。
 - 全拡大一般点で自由な純変換の自由性と階数は、正則境界を保つ任意の Noether 基底変更で保存されることを証明済み。基底変更後の自由化基本開の存在も得る。
+- 自由化基本開の存在から一般点での自由性と階数を取り出す逆向きを証明し、`BoundaryPureFreeNeighborhoods` 自体の追加の正則境界基底変更による保存まで接続済み。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -1075,6 +1076,19 @@ Noether 基礎環 A 上の平坦有限表示・幾何学的整な分裂代数 B 
 一般の平坦化の存在そのものを仮定しない。
 `GenericPureFreeBaseChange.lean` で、新しい純変換の自由 locus への所属と局所階数の等式として証明済み。
 `GenericPureFreeBaseChangeNeighborhoods.lean` で、同じ共通階数の自由化基本開の存在へ接続済み。
+中心の結論からこの入力を取り出すため、基本開自由化の逆向きも明示する。
+有限加群 N と素点 Q に対し、g∉Q で N_g が自由かつ階数 r なら、
+Q は N の自由 locus に属し、Q での局所階数は r である。
+Q の g 局所化先での素点を選び、自由 locus の局所化公式で所属を戻す。
+階数は自由な N_g の局所階数と、自由な素点での基底変更による階数の保存で照合する。
+これを `BoundaryPureFreeNeighborhoods` の各一般点へ適用して、
+既存の自由化中心の結論を追加基底変更保存の入力へ変換する。
+これと保存補題を合成して、C 上で `BoundaryPureFreeNeighborhoods` を満たす純変換が、
+任意の Noether 係数環 C→E への基底変更後も同じ共通階数の自由化基本開を持つことを示す。
+基底変更後の対象は E⊗_C(C⊗_A B) とその実際の基底変更加群とする。
+二段テンソルを元の A 上の形へ置き換える比較は、必要な利用箇所で別に明示する。
+`FreeNeighborhoodStalk.lean` と `BoundaryFreeNeighborhoodsGenericFree.lean` で逆向きを証明済み。
+`BoundaryFreeNeighborhoodsBaseChange.lean` で二段テンソルの実際の対象に対する保存まで証明済み。
 
 #### 選んだ有限表示の任意の基底変更
 
@@ -1224,6 +1238,9 @@ Fin(N-k) 上の自由加群からの全射を構成する。
 
 | 宣言 | 内容 | 状態 |
 | --- | --- | --- |
+| `freeLocus_and_rankAtStalk_of_away_free` | 自由な基本開から素点での自由性と局所階数を戻す | 証明済み |
+| `genericPureTransformFree_of_boundaryPureFreeNeighborhoods` | 自由化基本開の存在から全一般点での自由性と階数 | 証明済み |
+| `boundaryPureFreeNeighborhoods_iterated_baseChange` | 自由化基本開の存在の追加の正則境界基底変更による保存 | 証明済み |
 | `genericPureTransformFree_baseChange` | 全一般点で自由な純変換の任意の正則境界基底変更による保存 | 証明済み |
 | `boundaryPureFreeNeighborhoods_of_genericPureTransformFree_baseChange` | 追加基底変更後の共通階数の自由化基本開 | 証明済み |
 | `BoundaryFreeNeighborhoodsAtCenter` | 固定中心での共通階数の自由化基本開の存在 | 定義済み |

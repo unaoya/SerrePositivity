@@ -254,3 +254,6 @@ public import SerrePositivity.KST.SchemeLemmas.DisjointBlowupChartCenter
 public import SerrePositivity.KST.SchemeLemmas.GlobalGenericFreeCenter
 public import SerrePositivity.KST.SchemeLemmas.GenericPureFreeBaseChange
 public import SerrePositivity.KST.SchemeLemmas.GenericPureFreeBaseChangeNeighborhoods
+public import SerrePositivity.KST.SchemeLemmas.FreeNeighborhoodStalk
+public import SerrePositivity.KST.SchemeLemmas.BoundaryFreeNeighborhoodsGenericFree
+public import SerrePositivity.KST.SchemeLemmas.BoundaryFreeNeighborhoodsBaseChange
