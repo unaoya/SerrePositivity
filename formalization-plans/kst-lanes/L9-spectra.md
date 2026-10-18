@@ -19,8 +19,8 @@
 ## 1. 正本と目的
 
 作成日：2026-10-18。
-状態：L9a 完了（対象ビルド・公理監査成功）。L9b に着手。
-全体ビルドは別レーン ChartAlgebra の heartbeat 超過で失敗し、自分の import 閉包は正常。
+状態：L9a・L9b 完了。L9c に着手。
+対象ビルド・11 モジュール 631 宣言の公理監査・全体ビルド（8370 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
 基盤の正本：[foundations](../foundations.md) §1 の F3・γ。
@@ -270,9 +270,9 @@ amend・rebase・reset を使わない。
 | 工程 | 状態 | 残る証明 |
 | --- | --- | --- |
 | 計画 | 作成 | 実装と同期する |
-| L9a | 完了・対象ビルドと公理監査成功 | 全体ビルドの別レーン失敗は下記 |
-| L9b | 連結写像と正次数の三箇所の kernel = image を実装済み | 準同型性、自然性、零次数を含む端の完全性 |
-| L9c | 改訂仕様を承認済み・未着手 | 単射による Hom の塔と Kan 性、置換、整数次数 |
+| L9a | 完了 | 全体ビルドも L9b の区切りで成功 |
+| L9b | 完了・対象ビルド、公理監査、全体ビルド成功 | なし |
+| L9c | 改訂仕様を承認済み・着手 | 点つき Kan、Σ・Ω、単射による Hom の塔、置換、整数次数 |
 | L9d | 未着手 | telescope と π_* の計算 |
 | L9e | 未着手 | Tot、hG、有理自明作用の比較 |
 
@@ -330,7 +330,9 @@ amend・rebase・reset を使わない。
 | 同上 | `KanHomotopy.map_point` | 全次数の基点保存 |
 | 同上 | `KanHomotopy.map_eq_of_basedHomotopy` | 全次数のホモトピー不変性 |
 
-L9b の実装済みの宣言は `FibrationSequence.lean` に置く。
+L9b の公開入口は `FibrationSequence.lean`。fiber と連結射の実構成は
+`FibrationBoundary.lean`、完全性は `FibrationExactness.lean`、自然性は
+`FibrationNaturality.lean`、群準同型性は `FibrationMultiplication.lean` に分ける。
 
 | 宣言 | 内容 |
 | --- | --- |
@@ -348,14 +350,27 @@ L9b の実装済みの宣言は `FibrationSequence.lean` に置く。
 | `fiber_map_connecting` | 包含の誘導写像と連結射の合成は基点に定数 |
 | `connecting_map` | 射影の誘導写像と連結射の合成は基点に定数 |
 
-L9b の `connecting` は集合上の写像として証明済みである。
-正次数の完全性は `FibrationExactness.lean` に置く。
-`exact_connecting_fiber` は fiber の全ての正次数で kernel = image を与える。
-`exact_fiber_total` は全空間の全ての正次数で kernel = image を与える。
-`exact_total_base` は底の二以上の次数で kernel = image を与える。
-原像は零ホモトピーの相対充填によって実際に構成している。
-正次数での群準同型性、自然性、零次数を含む端の完全性はまだ未証明。
-L9b の完了や長完全列の完成とは報告しない。
+L9b の追加の公開宣言：
+
+| 宣言 | 内容 |
+| --- | --- |
+| `ZeroRelations.symm`、`trans` | 二次元ホーンから零次数の関係の対称性・推移性 |
+| `KanHomotopyZero.mk_eq_iff` | 零次数でも単一の RelStruct₀ で商の等式を検出 |
+| `KanHomotopy.mk_eq_iff_relStruct` | 全自然数次数で商の等式と RelStruct の存在の同値 |
+| `exact_connecting_fiber_all` | fiber の零次数を含む全次数の完全性 |
+| `exact_fiber_total_all` | 全空間の零次数を含む全次数の完全性 |
+| `exact_total_base_all` | 底の全正次数の完全性、π₁(B) → π₀(fiber) を含む |
+| `FibrationSquare.fiberMap` | 可換四角形から fiber 列の射を作る |
+| `FibrationSquare.connecting_natural` | 全次数の連結写像の自然性 |
+| `ConnectingProduct.exists_product_lift` | fiber の積を境界に持つ相対持ち上げ |
+| `connecting_mul` | 標的が正次数の連結写像の積保存 |
+| `connectingHom` | π_(n+2)(B) → π_(n+1)(fiber) の群準同型 |
+| `fiberLongExact` | 零次数を含む全箇所の完全性の集約定理 |
+
+原像は零ホモトピーの相対充填によって実際に構成する。
+群の法則、完全性、自然性を入力構造に移していない。
+L9b の完了は、Kan fibration の具体的な fiber 列のホモトピー長完全列の完成を意味する。
+スペクトルの fiber 列への昇格は L9c の工程であり、まだ主張しない。
 
 `KanHomotopy X (n + 1) x` は群、`KanHomotopy X (n + 2) x` は可換群。
 正次数の群準同型としての界面は `KanHomotopyGroup.map`。
@@ -374,11 +389,8 @@ lake env lean scripts/audit_kst_spectra.lean
 L9a 保存時の結果：対象ビルド成功。監査は私有宣言を含め 367 宣言、5 モジュールで標準三公理のみ。
 L9b の連結写像の保存時：対象ビルド成功。476 宣言、6 モジュールで標準三公理のみ。
 L9b の正次数の完全性の保存時：対象ビルド成功。517 宣言、7 モジュールで標準三公理のみ。
-L9a の区切りで `set -o pipefail; lake build` を実行した。
-終了コード 1：`SerrePositivity/KST/SchemeLemmas/ChartAlgebra.lean:62` の
-`isDefEq` の heartbeat 超過（8150/8153）。
-本レーンの import 閉包にはこのファイルを含まない。対象ビルドは正常。
-他レーンのファイルを編集せず L9b に進む。
+L9b 完了時：対象ビルド成功。631 宣言、11 モジュールで標準三公理のみ。
+工程区切りの全体ビルドも終了コード 0、8370 jobs で成功。
 ルートには指定の public import 一行を追加済み。
 ルートは他レーンの未コミット変更を含むので、この保存ではコミット対象から外す。
 

@@ -18,8 +18,12 @@ run_cmd do
     `SerrePositivity.KST.Spectra.HomotopyInvariance,
     `SerrePositivity.KST.Spectra.Commutativity,
     `SerrePositivity.KST.Spectra.HomotopyIndexing,
+    `SerrePositivity.KST.Spectra.HomotopyZeroRelations,
+    `SerrePositivity.KST.Spectra.FibrationBoundary,
     `SerrePositivity.KST.Spectra.FibrationSequence,
-    `SerrePositivity.KST.Spectra.FibrationExactness]
+    `SerrePositivity.KST.Spectra.FibrationExactness,
+    `SerrePositivity.KST.Spectra.FibrationNaturality,
+    `SerrePositivity.KST.Spectra.FibrationMultiplication]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do

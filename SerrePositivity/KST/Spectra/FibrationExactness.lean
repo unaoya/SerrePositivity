@@ -1,6 +1,7 @@
 module
 
-public import SerrePositivity.KST.Spectra.FibrationSequence
+public import SerrePositivity.KST.Spectra.FibrationBoundary
+public import SerrePositivity.KST.Spectra.HomotopyZeroRelations
 
 /-!
 概要：Kan fibration のホモトピー長完全列の完全性。
@@ -26,31 +27,31 @@ variable {E B : SSet.{u}} (p : E ⟶ B) [Fibration p] [KanComplex B]
 
 /-- 概要：fiber の代表の全空間での零ホモトピーから、連結写像の原像を構成する。
 方針：零ホモトピーを底へ射影して境界定数単体を作り、同じ単体を相対持ち上げとする。
-規約：fiber の代表の次数は n + 1、底の原像の次数は n + 2。
-使われ方：Kerodon Theorem 3.2.6.1。fiber の正次数の核が連結射の像に含まれること。 -/
-theorem exists_connecting_of_nullRel
-    (b : (KanFiber p (p.app _ e)).PtSimplex (n + 1) (fiberPoint p e))
+規約：fiber の代表の次数は n、底の原像の次数は n + 1。
+使われ方：Kerodon Theorem 3.2.6.1。零次数も含む fiber の核が連結射の像に含まれること。 -/
+theorem exists_connecting_of_nullRel_all
+    (b : (KanFiber p (p.app _ e)).PtSimplex n (fiberPoint p e))
     (r : PtSimplex.RelStruct RelativeMorphism.const
-      (mapSimplex (fiberι p (p.app _ e)) (fiberι_point p e) b) (Fin.last (n + 1))) :
-    ∃ s : B.PtSimplex (n + 2) (p.app _ e),
-      connecting p e (n + 1) (KanHomotopyGroup.mk s) = KanHomotopyGroup.mk b := by
-  have hlast : stdSimplex.δ (Fin.last (n + 2)) ≫ r.map = b.map ≫ fiberι p (p.app _ e) := by
+      (mapSimplex (fiberι p (p.app _ e)) (fiberι_point p e) b) (Fin.last n)) :
+    ∃ s : B.PtSimplex (n + 1) (p.app _ e),
+      connecting p e n (KanHomotopyGroup.mk s) = KanHomotopy.mk n b := by
+  have hlast : stdSimplex.δ (Fin.last (n + 1)) ≫ r.map = b.map ≫ fiberι p (p.app _ e) := by
     simpa only [Fin.succ_last, mapSimplex_map] using r.δ_succ_map
-  have hr (j : Fin (n + 3)) (hj : j ≠ Fin.last (n + 2)) :
+  have hr (j : Fin (n + 2)) (hj : j ≠ Fin.last (n + 1)) :
       stdSimplex.δ j ≫ r.map = SSet.const e := by
-    by_cases he : j = (Fin.last (n + 1)).castSucc
+    by_cases he : j = (Fin.last n).castSucc
     · subst j; exact r.δ_castSucc_map
-    · have hj' : j.val ≠ n + 2 := fun h ↦ hj (Fin.ext h)
+    · have hj' : j.val ≠ n + 1 := fun h ↦ hj (Fin.ext h)
       apply r.δ_map_of_lt
       simp only [Fin.lt_def, Fin.val_castSucc, Fin.val_last]
-      have he' : j.val ≠ n + 1 := fun h ↦ he (Fin.ext h)
+      have he' : j.val ≠ n := fun h ↦ he (Fin.ext h)
       omega
-  let s : B.PtSimplex (n + 2) (p.app _ e) :=
+  let s : B.PtSimplex (n + 1) (p.app _ e) :=
     { map := r.map ≫ p
       comm := by
         ext j : 1
         simp only [boundary.ι_ι_assoc, Subcomplex.ofSimplex_ι, comp_const]
-        by_cases hj : j = Fin.last (n + 2)
+        by_cases hj : j = Fin.last (n + 1)
         · subst j
           rw [← Category.assoc, hlast, Category.assoc, fiberι_comp, comp_const]
         · rw [← Category.assoc, hr j hj, const_comp] }
@@ -62,7 +63,18 @@ theorem exists_connecting_of_nullRel
     exact hlast
   refine ⟨s, ?_⟩
   rw [connecting_eq p e L, hb]
-  rfl
+
+/-- 概要：fiber の正次数の零ホモトピーから底の原像を得る。
+方針：零次数を含む一般の構成を正次数に適用する。
+規約：fiber の次数は n + 1、底の原像の次数は n + 2。
+使われ方：Kerodon Theorem 3.2.6.1。正次数の完全性の界面。 -/
+theorem exists_connecting_of_nullRel
+    (b : (KanFiber p (p.app _ e)).PtSimplex (n + 1) (fiberPoint p e))
+    (r : PtSimplex.RelStruct RelativeMorphism.const
+      (mapSimplex (fiberι p (p.app _ e)) (fiberι_point p e) b) (Fin.last (n + 1))) :
+    ∃ s : B.PtSimplex (n + 2) (p.app _ e),
+      connecting p e (n + 1) (KanHomotopyGroup.mk s) = KanHomotopyGroup.mk b :=
+  exists_connecting_of_nullRel_all p e b r
 
 end FiberExactness
 
@@ -129,6 +141,42 @@ theorem exists_fiber_of_baseNullRel (a : E.PtSimplex (n + 1) e)
     omega
   · intro j hj
     exact (not_lt_of_ge (Fin.le_last j) hj).elim
+
+/-- 概要：底で基点と同じ成分へ写る零単体は、fiber の零単体と辺で結ばれる。
+方針：底の辺を、全空間の指定した終点を固定して持ち上げる。
+規約：零次数の関係の向きに合わせ、終点を与えた外ホーンを使う。
+使われ方：Kerodon Theorem 3.2.6.1。π₀(全空間) の位置の完全性。 -/
+theorem exists_fiber_of_baseNullRel_zero (a : E.PtSimplex 0 e)
+    (r : PtSimplex.RelStruct₀ (mapSimplex p rfl a) RelativeMorphism.const) :
+    ∃ b : (KanFiber p (p.app _ e)).PtSimplex 0 (fiberPoint p e),
+      Nonempty (PtSimplex.RelStruct₀ a
+        (mapSimplex (fiberι p (p.app _ e)) (fiberι_point p e) b)) := by
+  let α (j : Fin 2) (_ : j ≠ (1 : Fin 2)) : (Δ[0] : SSet.{u}) ⟶ E := a.map
+  have hα : horn.IsCompatible α := by simp
+  have hcomm (j : Fin 2) (hj : j ≠ 1) : α j hj ≫ p = stdSimplex.δ j ≫ r.map := by
+    have he : j = 0 := by
+      apply Fin.ext
+      have hn : j.val ≠ 1 := fun h ↦ hj (Fin.ext h)
+      omega
+    subst j
+    exact r.δ_castSucc_map.symm
+  obtain ⟨φ, hφ, hp⟩ := hα.exists_lift p r.map hcomm
+  have ht : (stdSimplex.δ (1 : Fin 2) ≫ φ) ≫ p = SSet.const (p.app _ e) := by
+    rw [Category.assoc, hp]
+    exact r.δ_succ_map
+  let b : (KanFiber p (p.app _ e)).PtSimplex 0 (fiberPoint p e) :=
+    { map := fiberLift p (p.app _ e) (stdSimplex.δ (1 : Fin 2) ≫ φ) ht
+      comm := by ext }
+  refine ⟨b, ⟨{
+    map := φ
+    δ_castSucc_map := ?_
+    δ_succ_map := ?_
+    δ_map_of_lt := ?_
+    δ_map_of_gt := ?_ }⟩⟩
+  · exact hφ 0 (by decide)
+  · exact (fiberLift_ι p (p.app _ e) (stdSimplex.δ (1 : Fin 2) ≫ φ) ht).symm
+  · intro j hj; exact (Fin.not_lt_zero j hj).elim
+  · intro j hj; exact (not_lt_of_ge (Fin.le_last j) hj).elim
 
 end TotalExactness
 
@@ -358,5 +406,92 @@ theorem exact_total_base {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     exact ⟨KanHomotopyGroup.mk b, hb⟩
   · rintro ⟨b, rfl⟩
     exact connecting_map p e (n + 1) b
+
+/-- 概要：fiber の零次数を含む全次数で、包含の基点の逆像は連結写像の像。
+方針：全空間での零ホモトピーから底の原像を構成し、逆向きは複体条件を使う。
+規約：n = 0 は基点付き集合の完全性、n > 0 は群の核と像の一致。
+使われ方：Kerodon Theorem 3.2.6.1。π₀(fiber) を含む長完全列の端。 -/
+theorem exact_connecting_fiber_all {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
+    [KanComplex E] [KanComplex B] (e : E _⦋0⦌) (n : ℕ)
+    (a : KanHomotopy (KanFiber p (p.app _ e)) n (fiberPoint p e)) :
+    KanHomotopy.map n (fiberι p (p.app _ e)) (fiberι_point p e) a = KanHomotopy.point n ↔
+      ∃ b : KanHomotopyGroup B n (p.app _ e), connecting p e n b = a := by
+  constructor
+  · intro ha
+    obtain ⟨b, rfl⟩ := KanHomotopy.mk_surjective n a
+    rw [KanHomotopy.map_mk] at ha
+    have he : KanHomotopy.mk n (RelativeMorphism.const : E.PtSimplex n e) =
+        KanHomotopy.mk n (mapSimplex (fiberι p (p.app _ e)) (fiberι_point p e) b) :=
+      (KanHomotopy.mk_const n).trans ha.symm
+    obtain ⟨r⟩ := (KanHomotopy.mk_eq_iff_relStruct n _ _ (Fin.last n)).1 he
+    obtain ⟨s, hs⟩ := FiberExactness.exists_connecting_of_nullRel_all p e b r
+    exact ⟨KanHomotopyGroup.mk s, hs⟩
+  · rintro ⟨b, rfl⟩
+    exact fiber_map_connecting p e n b
+
+/-- 概要：底の π₁ を含む全正次数で、連結像が基点となる元は全空間から来る。
+方針：零次数でも単一の RelStruct に戻せることを使い、境界の零ホモトピーを貼る。
+規約：n = 0 の標的は π₀(fiber) であり、群構造を要求しない。
+使われ方：Kerodon Theorem 3.2.6.1。π₁(B) → π₀(fiber) の位置の完全性。 -/
+theorem exact_total_base_all {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
+    [KanComplex E] [KanComplex B] (e : E _⦋0⦌) (n : ℕ)
+    (a : KanHomotopyGroup B n (p.app _ e)) :
+    connecting p e n a = KanHomotopy.point n ↔
+      ∃ b : KanHomotopyGroup E n e, KanHomotopyGroup.map p rfl b = a := by
+  constructor
+  · intro ha
+    induction a using Quotient.inductionOn with | h s => ?_
+    change connecting p e n (KanHomotopyGroup.mk s) = KanHomotopy.point n at ha
+    let L := chooseBoundaryLift p e s
+    rw [connecting_eq p e L] at ha
+    have he : KanHomotopy.mk n L.boundary = KanHomotopy.mk n RelativeMorphism.const :=
+      ha.trans (KanHomotopy.mk_const n).symm
+    obtain ⟨r⟩ := (KanHomotopy.mk_eq_iff_relStruct n _ _ (Fin.last n)).1 he
+    obtain ⟨b, hb⟩ := BaseExactness.exists_total_of_boundaryNullRel L r
+    exact ⟨KanHomotopyGroup.mk b, hb⟩
+  · rintro ⟨b, rfl⟩
+    exact connecting_map p e n b
+
+/-- 概要：π₀(全空間) で、底の基点の成分の逆像は fiber からの像。
+方針：底の成分の等式を一本の辺へ戻し、終点を指定して持ち上げる。
+規約：群の核ではなく基点付き集合の完全性として述べる。
+使われ方：Kerodon Theorem 3.2.6.1。長完全列の零次数の端。 -/
+theorem exact_fiber_total_zero {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
+    [KanComplex E] [KanComplex B] (e : E _⦋0⦌) (a : KanHomotopy E 0 e) :
+    KanHomotopy.map 0 p rfl a = KanHomotopy.point 0 ↔
+      ∃ b : KanHomotopy (KanFiber p (p.app _ e)) 0 (fiberPoint p e),
+        KanHomotopy.map 0 (fiberι p (p.app _ e)) (fiberι_point p e) b = a := by
+  constructor
+  · intro ha
+    obtain ⟨s, rfl⟩ := KanHomotopy.mk_surjective 0 a
+    rw [KanHomotopy.map_mk] at ha
+    have he : KanHomotopy.mk 0 (mapSimplex p rfl s) = KanHomotopy.mk 0 RelativeMorphism.const :=
+      ha.trans (KanHomotopy.mk_const 0).symm
+    obtain ⟨r⟩ := (KanHomotopy.mk_eq_iff_relStruct 0 _ _ 0).1 he
+    obtain ⟨b, ⟨hb⟩⟩ := TotalExactness.exists_fiber_of_baseNullRel_zero p e s r
+    refine ⟨KanHomotopy.mk 0 b, ?_⟩
+    rw [KanHomotopy.map_mk]
+    exact (KanHomotopy.sound hb).symm
+  · rintro ⟨b, rfl⟩
+    obtain ⟨s, rfl⟩ := KanHomotopy.mk_surjective 0 b
+    rw [KanHomotopy.map_mk, KanHomotopy.map_mk]
+    have hc : mapSimplex p rfl (mapSimplex (fiberι p (p.app _ e)) (fiberι_point p e) s) =
+        RelativeMorphism.const := by
+      ext : 1
+      simp [mapSimplex]
+    rw [hc, KanHomotopy.mk_const]
+
+/-- 概要：全空間の全自然数次数で、射影の基点の逆像は fiber の包含の像。
+方針：正次数の群の完全性と零次数の辺の持ち上げをまとめる。
+規約：零次数には群構造を要求しない。
+使われ方：Kerodon Theorem 3.2.6.1。全次数のホモトピー長完全列。 -/
+theorem exact_fiber_total_all {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
+    [KanComplex E] [KanComplex B] (e : E _⦋0⦌) (n : ℕ) (a : KanHomotopy E n e) :
+    KanHomotopy.map n p rfl a = KanHomotopy.point n ↔
+      ∃ b : KanHomotopy (KanFiber p (p.app _ e)) n (fiberPoint p e),
+        KanHomotopy.map n (fiberι p (p.app _ e)) (fiberι_point p e) b = a := by
+  cases n with
+  | zero => exact exact_fiber_total_zero p e a
+  | succ n => exact exact_fiber_total p e n a
 
 end SerrePositivity.KST.Spectra
