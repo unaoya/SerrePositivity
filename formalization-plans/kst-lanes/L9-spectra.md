@@ -35,7 +35,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・457 モジュール 4439 宣言の公理監査成功。
+対象ビルド・463 モジュール 4462 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -3318,3 +3318,36 @@ loop 値の球面の写像類の比較、二重 Hom の交換、球面の基本�
 参照：Goerss–Jardine I §7、VIII §1。
 対象ビルド 3908 jobs 成功。私有宣言を含む 457 モジュール 4439 宣言で標準三公理のみ。
 L9e は進行中。有理 Shapiro、Tot の π_* の計算、一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。
+
+
+## 109. L9e の標準射の定数写像表示と π_* の単射性
+
+自由基点からの定数族を元の成分へ制限すると、通常の内部 Hom の定数族となることを証明した。
+点つき錐の end 比較を忘却した射が通常の weighted end の錐の比較と一致することを各射影で照合した。
+定値図式の既存の end 比較に合成し、任意の点つきパラメーターからの標準比較を定数写像として同定した。
+これを実際の自明作用の標準射の BF 射影の式に適用した。
+従って homotopyFixedPointsUnit の各段は、BG の写像空間の表示へ移すと定数写像への標準射である。
+
+単位単体集合からの写像空間の点つき評価同型と、選んだ点への制限を合成して評価射を構成した。
+定数射の後の評価が恒等射であることを証明した。
+BG の標準頂点で評価することで、実際の BF 標準射の各段に点つき射としての左逆を得た。
+この段ごとの左逆がスペクトルの厳密な射であることは必要とせず主張していない。
+各段の全正次数群の単射性を、自然な正次数の段表示を通じて全整数次数の π_* の単射性へ移した。
+この単射性には群の有限性も係数の有理性も不要である。
+
+有理 Shapiro の残る全射性は、有理係数の正次数の群コホモロジーの消滅だけではまだ得られていない。
+塔の微分と cochain 微分の照合、向き、収束を引き続き証明する。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `PointedWeightedEnd.constantFamily_restrict` / `underlyingIso_coneComparison` | 定数族の制限と錐の比較の忘却後の式 |
+| `constantPointedHomotopyEndIso_cone` / `constantPointedHomotopyEndIso_unit` | 定値点つき end の標準射の定数写像表示 |
+| `homotopyFixedPointsUnit_mapping` | 実際の BF 標準射の BG の写像空間での式 |
+| `UnbasedPointedMapping.constant` / `evaluation` / `constant_evaluation` | 定数射と点での評価による厳密な分裂 |
+| `trivialFixedPointLevelRetraction` / `homotopyFixedPointsUnit_level_retraction` | BF 標準射の各段の左逆 |
+| `homotopyFixedPointsUnit_level_groupMap_injective` | 各段の全正次数群の単射性 |
+| `homotopyFixedPointsUnit_homotopyMap_injective` | 全整数次数の安定群の単射性 |
+
+参照：Goerss–Jardine I §7、VIII §2、BF 1978 §2、HA §1.4.2。
+対象ビルド 3914 jobs 成功。私有宣言を含む 463 モジュール 4462 宣言で標準三公理のみ。
+L9e は進行中。有理 Shapiro の全射性、Tot の π_* の計算、一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。

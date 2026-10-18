@@ -1,5 +1,12 @@
 module
 
+public import SerrePositivity.KST.Spectra.PointedWeightedConeUnderlying
+public import SerrePositivity.KST.Spectra.ConstantPointedHomotopyCone
+public import SerrePositivity.KST.Spectra.TrivialFixedPointUnitMapping
+public import SerrePositivity.KST.Spectra.ConstantMappingRetraction
+public import SerrePositivity.KST.Spectra.TrivialFixedPointRetraction
+public import SerrePositivity.KST.Spectra.TrivialFixedPointStableInjection
+
 public import SerrePositivity.KST.Spectra.PositiveLoopNaturality
 public import SerrePositivity.KST.Spectra.CirclePowerPositiveNaturality
 public import SerrePositivity.KST.Spectra.SphereFundamentalNaturality
