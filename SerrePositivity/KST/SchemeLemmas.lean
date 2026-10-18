@@ -117,3 +117,11 @@ public import SerrePositivity.KST.SchemeLemmas.LinearMapTensorToPi
 public import SerrePositivity.KST.SchemeLemmas.DeterminantalChartImage
 public import SerrePositivity.KST.SchemeLemmas.FiniteRankIsogeny
 public import SerrePositivity.KST.SchemeLemmas.FiniteRankFlattening
+public import SerrePositivity.KST.SchemeLemmas.BoundaryTorsionLocalization
+public import SerrePositivity.KST.SchemeLemmas.PureTransformBaseLocalization
+public import SerrePositivity.KST.SchemeLemmas.TensorCoefficientLocalization
+public import SerrePositivity.KST.SchemeLemmas.ChartRatioGeneratorCover
+public import SerrePositivity.KST.SchemeLemmas.FlatLocalizationFamily
+public import SerrePositivity.KST.SchemeLemmas.ChartOverlapPureTransform
+public import SerrePositivity.KST.SchemeLemmas.GeneratorChartFlatness
+public import SerrePositivity.KST.SchemeLemmas.FiniteModuleFreeLocusFlattening

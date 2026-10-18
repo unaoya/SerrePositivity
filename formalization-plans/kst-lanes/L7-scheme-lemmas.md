@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 1040 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 1078 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -95,7 +95,9 @@
 - 局所化で同型な有限表示加群について、実際の両射と両合成が同じ分母倍の恒等となる関係式を構成済み。
 - 境界外で階数一自由な有限表示 A 加群について、実際の有限生成 admissible 中心と全標準チャート上の純変換の平坦性を証明済み。一般有限 B 加群の場合は未完了。
 - Noether 環上の有限 A 加群が境界外で有限階数自由な場合、実際の行列式中心と admissible 性、および生成元チャートの全体被覆上での純変換の自由化・平坦性を証明済み。
-- 一般チャート上の平坦性への移送には純変換と係数局所化の可換性を次に証明する。
+- 純変換と係数局所化の可換性、実際の比較線形同型と平坦性の保存を証明済み。
+- 生成元チャートから任意の標準チャートへ純変換の平坦性を移す定理を証明済み。
+- Noether 環上有限で境界外が有限階数自由な場合、全標準チャート上で純変換を平坦にする実際の admissible 中心の存在を証明済み。境界外で平坦という一般化と有限型 B 上有限の場合は残る。
 - 有限アフィン被覆上で実際の admissible 支配射が与えられれば、一つの大域 blowup からの支配射を構成できることを証明済み。零核の中心外開集合による重なりの一致を使う。
 - 次は一般の開埋め込みの blowup 比較射を構成し、一般 Noether 基底上の二段合成へアフィン結果を接続する。
 - Noether でも実際に平坦な strict transform を達成する中心の存在はなお未証明。L7b 完了とはしない。
@@ -368,6 +370,19 @@ Noether 条件は中心の有限生成性にも使える。
 これは有限 A 加群の特殊形であり、有限型 B 上有限な M の一般平坦化とは同一視しない。
 原典の位置付けは Stacks 0815 の平坦化に向けた有限加群の行列式計算。
 
+#### 既に平坦な純変換の追加基底変更
+
+次の補題は Noether 環 A 上有限な M とその f に沿う純変換 Q に対するもの。
+Q が A 上平坦で、A 代数 C における f の像が非零因子なら、
+C ⊗_A M の純変換と C ⊗_A Q の実際の C 線形同型を構成する。
+境界ねじれは有限生成なので fᴺ で消える。
+fᴺ id_M は Q から M への写像に降り、商写像との合成は fᴺ id になる。
+基底変更後もこの合成式を保つので商写像の核は f の冪で消える。
+標的 C ⊗_A Q は平坦で f の像が正則に作用し、純変換の核と一致する。
+商写像の基底変更が全射であることから実際の同型と平坦性が得られる。
+この補題は、局所平坦化中心の共通細分・追加 blowup による平坦性の保存に使う。
+原典の位置付けは Stacks 0815 の純変換の平坦性と KST §5 の admissible blowup。
+
 ### 7.2 証明の分解
 
 1. 閉補集合を定義する有限型イデアル層を選ぶ。
@@ -484,6 +499,12 @@ Noether 条件は中心の有限生成性にも使える。
 | `determinantalChartPureTransformEquiv` | DeterminantalChartImage | 検証済み | 行列式生成元チャート上の自由化 |
 | `exists_finiteRank_isogeny` | FiniteRankIsogeny | 検証済み | 有限自由加群との冪倍同型 |
 | `exists_finiteRank_determinantal_flattening` | FiniteRankFlattening | 検証済み | 実中心と被覆チャート上の平坦性 |
+| `localized_mem_boundaryTorsion_iff` | BoundaryTorsionLocalization | 検証済み | 局所化先の境界ねじれの判定 |
+| `pureTransformBaseLocalizationMap_isLocalizedModule` | PureTransformBaseLocalization | 検証済み | 純変換と係数局所化の可換性 |
+| `tensorPureTransformLocalization_flat` | TensorCoefficientLocalization | 検証済み | 基底変更加群の局所化への平坦性の移送 |
+| `span_chartRatio_generators_eq_top` | ChartRatioGeneratorCover | 検証済み | 各チャート上の比の被覆 |
+| `pureTransform_flat_of_generatorCharts` | GeneratorChartFlatness | 検証済み | 任意のチャートへの平坦性の移送 |
+| `exists_finiteRank_flattening_center` | FiniteModuleFreeLocusFlattening | 検証済み | 有限階数自由な境界外部分の平坦化中心 |
 | `reesProjection` | Blowup | 検証済み | 単項式射影 |
 | `reesGrade` | Blowup | 検証済み | Rees の斉次成分 |
 | `mem_reesGrade_iff` | Blowup | 検証済み | 斉次所属の判定 |
