@@ -82,6 +82,7 @@ public import SerrePositivity.KST.Descent.ComponentRemainderCover
 public import SerrePositivity.KST.Descent.FiberTransitivityNaturality
 public import SerrePositivity.KST.Descent.ClosedCoverIntersectionGeometry
 public import SerrePositivity.KST.Descent.BasicDescent
+public import SerrePositivity.KST.Descent.IntegralDescentStep
 
 /-!
 # K-L8：論文 §3 の降下
@@ -126,6 +127,8 @@ Noether な対象の整な成分による有限閉被覆、一成分と残りへ
 実際の交わりの次元低下と、残りをより少ない元の整成分で覆う射も公開する。
 閉和の交わりの指定比較へ元の切断・点の推移性を移し、両側の被約化後の被覆も構成する。
 被約化の次元保存と、同型射・空の基底の全次数降下も公開する。
+整な基底では、厳密に低い次元への帰納仮定から中心上の降下を供給し、
+切断を持つ射の全次数降下を証明する。Noether 性と冪零不変性で始域の被約性も外す。
 
 ## 規約
 最小公理 (1)–(8)、Čech 降下、主定理の証明、E の実現は未完成。

@@ -9,6 +9,7 @@ public import SerrePositivity.KST.Descent.ClosedCoverDescent
 public import SerrePositivity.KST.Descent.ComponentRemainderCover
 public import SerrePositivity.KST.Descent.ClosedCoverIntersectionGeometry
 public import SerrePositivity.KST.Descent.BasicDescent
+public import SerrePositivity.KST.Descent.IntegralDescentStep
 
 /-!
 # 定理 3.1 の軌道正方形における全次数の貼り合わせ
@@ -20,6 +21,7 @@ public import SerrePositivity.KST.Descent.BasicDescent
 `ClosedCoverDescent` では、二つの閉部分と実際の交わりの指定降下から元の射の全次数降下を導く。
 `ComponentRemainderCover` では、整な成分の有限被覆と交わりの次元低下を構成する。
 交わりの指定比較の切断・推移性と、両側の被約化後の被覆、空の基底の降下も公開する。
+整な基底では、低次元に限った帰納仮定から中心上の降下を導き、軌道段階を閉じる。
 本ファイルの宣言は、これと併用する代数的な表現による貼り合わせを記述する。
 
 ## 方針
