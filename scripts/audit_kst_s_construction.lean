@@ -3094,3 +3094,39 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.simplicialPathDiagonalBoundary
 #check @SerrePositivity.KST.SConstruction.sPathRealizationBoundary
 #print axioms SerrePositivity.KST.SConstruction.sPathRealizationBoundary
+
+-- 経路の第一行制限の全単体的自然性・対角比較・S₁ の照合
+#check @SerrePositivity.KST.SConstruction.pathFirstRowOrderMap
+#print axioms SerrePositivity.KST.SConstruction.pathFirstRowOrderMap
+#check @SerrePositivity.KST.SConstruction.pathFirstRowNerveFunctor
+#print axioms SerrePositivity.KST.SConstruction.pathFirstRowNerveFunctor
+#check @SerrePositivity.KST.SConstruction.pathFirstRowSimplexNatIso
+#print axioms SerrePositivity.KST.SConstruction.pathFirstRowSimplexNatIso
+#check @SerrePositivity.KST.SConstruction.pathFirstRowInclusion_naturality
+#print axioms SerrePositivity.KST.SConstruction.pathFirstRowInclusion_naturality
+#check @SerrePositivity.KST.SConstruction.pathFirstRowDiagram
+#print axioms SerrePositivity.KST.SConstruction.pathFirstRowDiagram
+#check @SerrePositivity.KST.SConstruction.pathFirstRowDiagram_obj_quasicategory
+#print axioms SerrePositivity.KST.SConstruction.pathFirstRowDiagram_obj_quasicategory
+#check @SerrePositivity.KST.SConstruction.pathFirstRowRestriction
+#print axioms SerrePositivity.KST.SConstruction.pathFirstRowRestriction
+#check @SerrePositivity.KST.SConstruction.pathFirstRowRestriction_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.pathFirstRowRestriction_trivialKanFibration
+#check @SerrePositivity.KST.SConstruction.corePathFirstRowRestriction
+#print axioms SerrePositivity.KST.SConstruction.corePathFirstRowRestriction
+#check @SerrePositivity.KST.SConstruction.corePathFirstRowRestriction_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.corePathFirstRowRestriction_trivialKanFibration
+#check @SerrePositivity.KST.SConstruction.pathFirstRowDiagonalComparison
+#print axioms SerrePositivity.KST.SConstruction.pathFirstRowDiagonalComparison
+#check @SerrePositivity.KST.SConstruction.pathFirstRowDiagonalComparison_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.pathFirstRowDiagonalComparison_localized_isIso
+#check @SerrePositivity.KST.SConstruction.pathFirstRowDiagramMap
+#print axioms SerrePositivity.KST.SConstruction.pathFirstRowDiagramMap
+#check @SerrePositivity.KST.SConstruction.pathSConstructionMap
+#print axioms SerrePositivity.KST.SConstruction.pathSConstructionMap
+#check @SerrePositivity.KST.SConstruction.pathFirstRowRestriction_naturality
+#print axioms SerrePositivity.KST.SConstruction.pathFirstRowRestriction_naturality
+#check @SerrePositivity.KST.SConstruction.pathFirstRowRestriction_zero
+#print axioms SerrePositivity.KST.SConstruction.pathFirstRowRestriction_zero
+#check @SerrePositivity.KST.SConstruction.corePathFirstRowRestriction_zero
+#print axioms SerrePositivity.KST.SConstruction.corePathFirstRowRestriction_zero

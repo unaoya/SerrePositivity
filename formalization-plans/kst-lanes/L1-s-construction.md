@@ -4212,3 +4212,106 @@ def sPathRealizationBoundary (C : SSet.{u}) : sPathRealization C ⟶ diagonalCor
 L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（3069 jobs）、公理監査成功（1118 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+
+## 6.35 経路の第一行の全単体的比較と S₁ の照合
+
+経路構成の先頭を保つ単体作用素について、正の端点の nerve の関手
+pathFirstRowNerveFunctor を構成した。この関手は stdSimplex と自然に同型であり、
+各次数で標準単体と有限順序圏の nerve の既存の同型を使っている。
+第一行の Ar への包含は、先頭追加した全単体作用素について厳密に自然である。
+この可換式と元の第一行制限の式から、
+pathFirstRowRestriction C : simplicialPath (simplicialSConstruction C) → pathFirstRowDiagram C
+を自然変換として構成した。標的の第 n 段は Fun(N([n]), C) である。
+
+C が安定な quasicategory の場合、各段の比較は L1b の元の第一行制限の
+trivial Kan fibration であり、追加の補完仮定は不要。core を取った比較も各段で
+trivial Kan fibration となる。対角比較 pathFirstRowDiagonalComparison C は
+anodyne 局所化で可逆である。対角の Kan 性は仮定していない。
+
+入力の射 f:C→D の後合成を、第一行の単体的図式の自然変換として構成した。
+D が quasicategory で f が零対象と cofiber を保つとき、S の経路側にも自然変換を構成でき、
+第一行比較と後合成は自然変換の厳密な等号で可換となる。chosen zero の厳密な保存は不要。
+経路の零次段の第一行比較に一点の内部 Hom の同型を合成すると、
+既存の sOneComparison C を厳密に回収する。core の比較についても coreSOneComparison C と厳密に一致する。
+
+今回の比較は経路の全空間と第一行の関手空間との比較である。
+境界射の homotopy fiber と Ω の比較、反復 S への適用後の比較、既存の suspension 構造射との
+照合全体は未完了。零次段の照合だけで Ω 条件を結論してはいない。
+Core・Stable・F1・HA・Spectra・CategoryTheory の所有ファイルと公開 API は変更していない。
+
+以下は namespace `SerrePositivity.KST.SConstruction`、`universe u`、
+`open CategoryTheory MonoidalCategory MonoidalClosed SSet`、
+`open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel`、
+`open scoped Simplicial` の下の正確な型。
+
+```lean
+def pathFirstRowOrderMap {d e : SimplexCategory} (f : d ⟶ e) :
+    ULift.{u} (Fin (d.len + 1)) →o ULift.{u} (Fin (e.len + 1))
+
+def pathFirstRowNerveFunctor : SimplexCategory ⥤ SSet.{u}
+
+def pathFirstRowSimplexNatIso : stdSimplex.{u} ≅ pathFirstRowNerveFunctor
+
+lemma pathFirstRowInclusion_naturality {d e : SimplexCategory} (f : d ⟶ e) :
+    firstRowInclusion.{u} (d.len + 1) ≫
+        arNerveMap (SimplexPrefix.functor.map f).toOrderHom =
+      pathFirstRowNerveFunctor.map f ≫ firstRowInclusion (e.len + 1)
+
+def pathFirstRowDiagram (C : SSet.{u}) : SimplicialObject SSet.{u}
+
+instance pathFirstRowDiagram_obj_quasicategory (C : SSet.{u}) [Quasicategory C]
+    (d : SimplexCategoryᵒᵖ) : Quasicategory ((pathFirstRowDiagram C).obj d)
+
+def pathFirstRowRestriction (C : SSet.{u}) :
+    simplicialPath (simplicialSConstruction C) ⟶ pathFirstRowDiagram C
+
+instance pathFirstRowRestriction_trivialKanFibration (C : SSet.{u})
+    [Quasicategory C] [IsStable C] (d : SimplexCategoryᵒᵖ) :
+    TrivialKanFibration ((pathFirstRowRestriction C).app d)
+
+def corePathFirstRowRestriction (C : SSet.{u}) :
+    simplicialPath (simplicialCoreSConstruction C) ⟶
+      pathFirstRowDiagram C ⋙ quasicategoryCoreFunctor
+
+instance corePathFirstRowRestriction_trivialKanFibration (C : SSet.{u})
+    [Quasicategory C] [IsStable C] (d : SimplexCategoryᵒᵖ) :
+    TrivialKanFibration ((corePathFirstRowRestriction C).app d)
+
+def pathFirstRowDiagonalComparison (C : SSet.{u}) : sPathRealization C ⟶
+    simplicialDiagonalFunctor.obj (pathFirstRowDiagram C ⋙ quasicategoryCoreFunctor)
+
+lemma pathFirstRowDiagonalComparison_localized_isIso (C : SSet.{u})
+    [Quasicategory C] [IsStable C] :
+    IsIso (AnodyneHomotopy.anodyneQ.map (pathFirstRowDiagonalComparison C))
+
+def pathFirstRowDiagramMap {C D : SSet.{u}} (f : C ⟶ D) :
+    pathFirstRowDiagram C ⟶ pathFirstRowDiagram D
+
+def pathSConstructionMap {C D : SSet.{u}} [Quasicategory D]
+    (f : C ⟶ D) (hf : PreservesCofiberData f) :
+    simplicialPath (simplicialSConstruction C) ⟶ simplicialPath (simplicialSConstruction D)
+
+lemma pathFirstRowRestriction_naturality {C D : SSet.{u}} [Quasicategory D]
+    (f : C ⟶ D) (hf : PreservesCofiberData f) :
+    pathSConstructionMap f hf ≫ pathFirstRowRestriction D =
+      pathFirstRowRestriction C ≫ pathFirstRowDiagramMap f
+
+lemma pathFirstRowRestriction_zero (C : SSet.{u}) :
+    (pathFirstRowRestriction C).app (Opposite.op ⦋0⦌) ≫ firstRowOneHomNatIso.hom.app C =
+      sOneComparison C
+
+lemma corePathFirstRowRestriction_zero (C : SSet.{u}) :
+    (corePathFirstRowRestriction C).app (Opposite.op ⦋0⦌) ≫
+      quasicategoryCoreMap (firstRowOneHomNatIso.hom.app C) = coreSOneComparison C
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。経路全空間の弱可縮性・境界射に加え、
+経路の第一行の全単体的な自然変換と対角の弱同値、入力の cofiber 保存射への自然性、
+零次段での既存の S₁ 比較の厳密な回収まで証明済み。
+反復 S へ移した比較、境界射の homotopy fiber の計算と loop の比較、
+正の段の Ω 条件・delooping、負次数消滅を含む BF 連結スペクトル、スペクトル関手の構成は未完了。
+同時商と円の smash の明示的同型、任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。
+L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（3071 jobs）、公理監査成功（1135 宣言、標準三公理のみ）。追加公理・sorry なし。

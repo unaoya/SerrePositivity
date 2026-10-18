@@ -92,4 +92,7 @@ public import SerrePositivity.KST.SConstruction.SimplicialPathContraction
 public import SerrePositivity.KST.SConstruction.SPathRealization
 public import SerrePositivity.KST.SConstruction.SPathBoundary
 
+public import SerrePositivity.KST.SConstruction.PathFirstRow
+public import SerrePositivity.KST.SConstruction.PathFirstRowNaturality
+
 /-! # ∞-S• 構成と連結 K 理論 -/
