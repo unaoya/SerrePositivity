@@ -272,3 +272,7 @@ public import SerrePositivity.KST.SchemeLemmas.BoundaryFreeNeighborhoodCenterOve
 public import SerrePositivity.KST.SchemeLemmas.GlobalGenericFreeCenterOver
 public import SerrePositivity.KST.SchemeLemmas.ExactAffineAdmissibleComposition
 public import SerrePositivity.KST.SchemeLemmas.GlobalGenericFreeCenterDomination
+public import SerrePositivity.KST.SchemeLemmas.BlowupOpenChartCover
+public import SerrePositivity.KST.SchemeLemmas.BoundaryFreeOpenPullbacks
+public import SerrePositivity.KST.SchemeLemmas.TensorAlgebraBaseLocalization
+public import SerrePositivity.KST.SchemeLemmas.BoundaryFreeOpensGenericFree
