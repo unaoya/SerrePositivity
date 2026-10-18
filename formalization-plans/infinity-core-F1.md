@@ -5904,5 +5904,33 @@ lemma isPrecompositionEquivalence_relativeJoinCylinderComparison_stdSimplex_step
       (relativeJoinCylinderComparison ((boundary m).ι ≫ f))) :
     IsPrecompositionEquivalence (relativeJoinCylinderComparison f)
 
+lemma types_exists_dependentDesc {J : Type v} [Category.{w} J] {D : J ⥤ Type u}
+    (c : Cocone D) (hc : IsColimit c) (P : c.pt → Type u)
+    (a : ∀ j (x : D.obj j), P (c.ι.app j x))
+    (ha : ∀ {j k} (f : j ⟶ k) (x : D.obj j), HEq (a k (D.map f x)) (a j x)) :
+    ∃ b : ∀ z, P z, ∀ j (x : D.obj j), b (c.ι.app j x) = a j x
+
+noncomputable def types_isColimit_of_pullback {J : Type v} [Category.{w} J]
+    {D E : J ⥤ Type u} (c : Cocone D) (hc : IsColimit c) (d : Cocone E)
+    (α : E ⟶ D) (f : d.pt ⟶ c.pt)
+    (hp : ∀ j, IsPullback (d.ι.app j) (α.app j) f (c.ι.app j)) : IsColimit d
+
+noncomputable def sset_isColimit_of_pullback {J : Type v} [Category.{w} J] [Small.{u} J]
+    {D E : J ⥤ SSet.{u}} (c : Cocone D) (hc : IsColimit c) (d : Cocone E)
+    (α : E ⟶ D) (f : d.pt ⟶ c.pt)
+    (hp : ∀ j, IsPullback (d.ι.app j) (α.app j) f (c.ι.app j)) : IsColimit d
+
+noncomputable def relativeJoinLeftProjection {Y S : SSet.{u}} (g : Y ⟶ S) :
+    relativeJoinLeftFunctor g ⟶ Over.forget S ⋙ joinLeftFunctor Y
+
+noncomputable def relativeJoin_left_isColimit {Y S : SSet.{u}} (g : Y ⟶ S)
+    {J : Type v} [Category.{w} J] [Small.{u} J] [IsConnected J] {D : J ⥤ Over S}
+    (c : Cocone D) (hc : IsColimit c) :
+    IsColimit ((relativeJoinLeftFunctor g).mapCocone c)
+
+instance relativeJoinLeftFunctor_preservesConnectedColimits {Y S : SSet.{u}} (g : Y ⟶ S)
+    (J : Type v) [Category.{w} J] [Small.{u} J] [IsConnected J] :
+    PreservesColimitsOfShape J (relativeJoinLeftFunctor g)
+
 end SerrePositivity.InfinityCategories
 ```
