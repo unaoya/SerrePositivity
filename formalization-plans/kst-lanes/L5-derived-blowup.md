@@ -454,6 +454,9 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `adjointEndomorphism_homEquiv` | AdjointEndomorphismComparison | 左随伴の自然自己射を Hom 同値で右 mate の作用へ移す一般公式 |
 | `diagramGaugeDerivedExtensionComparison_square`・可逆性の同値・cartesian perfect 性の保存反映 | DiagramGaugeDerivedExtensionSquare | canonical な比較そのものの全対象での可逆性を同型の消去で移す |
 | `finiteOverlapDerivedTwistAction_cartesian/cartesianPerfect_iff`・`blowupDerivedTwistEquivalence` | FiniteOverlapTwistCartesianAction | 元の Koszul 表示の全対象の条件保存反映と既存の大域導来部分圏の捻り自己同値 |
+| `finiteOverlapDGTwistAction`・閉零／H⁰ 随伴・`finiteOverlapTwistAction_homotopicallyProjective` | FiniteOverlapTwistProjective | 全次数 dg 捻りと図式全体のホモトピー射影性の保存 |
+| `projectiveDiagramTwistDGFunctor`・`blowupTwistDGFunctor` | FiniteOverlapTwistDGModel | 射影性と指定 cartesian perfect 条件を保つ実際の dg 関手 |
+| `blowupTwistDGFunctor_inclusion`・`blowupTwistDGDerivedComparison`・`blowupTwistDGCartesianComparison`・`blowupTwistDGFunctorHomotopyIsEquivalence` | FiniteOverlapTwistDGComparison | 包含の可換式、指定導来捻りとの部分圏内の自然同型、H⁰ 関手の同値性 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -521,7 +524,7 @@ ULift 後も弱正則性と解消性を証明し、標準チャートへの dg �
 その上の coherent な dg 加群の降下模型と、層レベルの Dqc・Perf 比較は未完了。
 係数 dg 代数図式と局所の導来底変更比較は構成済みだが、
 coherent な加群の降下と Dqc・Perf 比較を含む導来 blowup 模型全体の完成とは扱わない。
-所有モジュールの全2996定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全3032定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
 指定の加群比較、主局所化上の制限比較、随伴で移した導来係数拡大比較を構成済み。
 全射について自然であり、指定比較の可逆性による cartesian・局所 perfect 条件は同型で保たれる。
@@ -577,7 +580,15 @@ canonical な比較には、βᴰ を既存の指定導来随伴 `A : L_h ⊣ R_
 全対象の cartesian 性の保存・反映を導き、元の Koszul 表示へ移して
 既存の cartesian perfect 導来部分圏の全整数捻り自己同値を構成済み。
 graph の直接の導来像との比較は独立した整合性命題として扱う。
-次の実装単位は捻り作用の dg 模型との接続、および coherent な降下との比較。
+捻りと逆捻りの指定通常自己同値から閉零随伴を構成し、境界の商へ送った H⁰ 随伴と
+逆捻りの擬同型保存を用いて、全図式加群のホモトピー射影性の保存を証明済み。
+既存の射影的 dg 模型、および cartesian perfect 射影的 dg 模型上の整数捻りを
+全次数制限写像そのもので構成済み。全 dg 加群への包含との可換式を H⁰ へ移し、
+既存の導来制限比較を合成した、指定導来捻りとの自然同型を構成済み。
+この証明経路は KST v4 §3.1（pp.11–14）の幾何的な捻りを図式加群模型で再構成するもの。
+この自然同型は cartesian perfect 導来部分圏内へ持ち上がり、既存の模型比較と
+導来捻りの同値から、dg 捻りの H⁰ 関手が同値であることも証明済み。
+次の実装単位は dg 捻りの全次数 Hom 比較、および coherent な降下との比較。
 射影的 dg 模型の H⁰ 比較だけで、dg 商の普遍性や層の降下との比較を済んだとは扱わない。
 L4 の T3 を使う層・cartesian dg 加群模型との比較は、この局所計算とは区別して残す。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
