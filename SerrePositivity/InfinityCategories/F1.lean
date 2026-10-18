@@ -637,3 +637,8 @@ public import SerrePositivity.InfinityCategories.F1.LocalUnstraighteningStrictif
 public import SerrePositivity.InfinityCategories.F1.EdgewiseEnrichedCategory
 public import SerrePositivity.InfinityCategories.F1.EdgewiseEnrichedComparison
 public import SerrePositivity.InfinityCategories.F1.EdgewiseKanEnriched
+public import SerrePositivity.InfinityCategories.F1.KanEnrichedComparison
+public import SerrePositivity.InfinityCategories.F1.KanEnrichedComparisonArrow
+public import SerrePositivity.InfinityCategories.F1.KanEnrichedComparisonIso
+public import SerrePositivity.InfinityCategories.F1.EdgewiseKanComparison
+public import SerrePositivity.InfinityCategories.F1.EdgewiseCoherentDiagram

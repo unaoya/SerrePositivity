@@ -12841,5 +12841,118 @@ lemma edgewiseInternalHomEvaluation_right (X Y : SSet.{u}) :
     edgewiseInternalHomEvaluation X Y ≫ edgewiseRight Y =
       (edgewiseRight X ⊗ₘ edgewiseRight ((ihom X).obj Y)) ≫ (ihom.ev X).app Y
 
+def KanEnrichedComparison {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    (F G : EnrichedFunctor SSet.{u} C KanObject.{u})
+
+lemma kanEnrichedComparison_app {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {F G : EnrichedFunctor SSet.{u} C KanObject.{u}} (η : KanEnrichedComparison F G)
+    (X Y : C) {n k : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n)
+    (α : n ⟶ k) (x : (F.obj X).obj.obj k) :
+    ((G.map X Y).app n θ).app k α ((η.val X).app k x) =
+      (η.val Y).app k (((F.map X Y).app n θ).app k α x)
+
+def kanEnrichedComparisonDiagram {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {F G : EnrichedFunctor SSet.{u} C KanObject.{u}} (η : KanEnrichedComparison F G) (X : C) :
+    ULift.{u} (Fin 2) ⥤ KanObject.{u}
+
+noncomputable def kanEnrichedComparisonMappingSimplex {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {F G : EnrichedFunctor SSet.{u} C KanObject.{u}} (η : KanEnrichedComparison F G)
+    (X Y : C) {n : SimplexCategoryᵒᵖ} (θ : (SimplicialCategory.sHom X Y).obj n) :
+    strictDiagramMappingSimplex (kanEnrichedComparisonDiagram η X ⋙ kanObjectForget)
+      (kanEnrichedComparisonDiagram η Y ⋙ kanObjectForget) n
+
+noncomputable def kanEnrichedComparisonMappingSpaceMap {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {F G : EnrichedFunctor SSet.{u} C KanObject.{u}} (η : KanEnrichedComparison F G) (X Y : C) :
+    SimplicialCategory.sHom X Y ⟶ strictDiagramMappingSpace
+      (kanEnrichedComparisonDiagram η X ⋙ kanObjectForget)
+      (kanEnrichedComparisonDiagram η Y ⋙ kanObjectForget)
+
+noncomputable def kanEnrichedComparisonArrowEnriched {C : Type v}
+    [Category.{u} C] [SimplicialCategory C]
+    {F G : EnrichedFunctor SSet.{u} C KanObject.{u}} (η : KanEnrichedComparison F G) :
+    EnrichedFunctor SSet.{u} C (KanDiagramObject (ULift.{u} (Fin 2)))
+
+lemma kanEnrichedComparisonArrowEnriched_zero {C : Type v}
+    [Category.{u} C] [SimplicialCategory C]
+    {F G : EnrichedFunctor SSet.{u} C KanObject.{u}} (η : KanEnrichedComparison F G) :
+    (kanEnrichedComparisonArrowEnriched η).comp SSet
+      (kanDiagramEvaluationEnriched (ULift.up (0 : Fin 2))) = F
+
+lemma kanEnrichedComparisonArrowEnriched_one {C : Type v}
+    [Category.{u} C] [SimplicialCategory C]
+    {F G : EnrichedFunctor SSet.{u} C KanObject.{u}} (η : KanEnrichedComparison F G) :
+    (kanEnrichedComparisonArrowEnriched η).comp SSet
+      (kanDiagramEvaluationEnriched (ULift.up (1 : Fin 2))) = G
+
+noncomputable def kanEnrichedComparisonFamily {C : Type (u + 1)}
+    [Category.{u} C] [SimplicialCategory C]
+    {F G : EnrichedFunctor SSet.{u} C KanObject.{u}} (η : KanEnrichedComparison F G) :
+    SimplicialNerve C ⟶ SpaceInfinityFunctor
+      ((SSet.uliftFunctor.{u + 1, u}).obj (nerve (ULift.{u} (Fin 2))))
+
+lemma kanEnrichedComparisonFamily_zero {C : Type (u + 1)}
+    [Category.{u} C] [SimplicialCategory C]
+    {F G : EnrichedFunctor SSet.{u} C KanObject.{u}} (η : KanEnrichedComparison F G) :
+    kanEnrichedComparisonFamily η ≫
+      evaluateFunctorAt (ULift.up (nerveVertex (ULift.up (0 : Fin 2)))) = coherentNerveMap F
+
+lemma kanEnrichedComparisonFamily_one {C : Type (u + 1)}
+    [Category.{u} C] [SimplicialCategory C]
+    {F G : EnrichedFunctor SSet.{u} C KanObject.{u}} (η : KanEnrichedComparison F G) :
+    kanEnrichedComparisonFamily η ≫
+      evaluateFunctorAt (ULift.up (nerveVertex (ULift.up (1 : Fin 2)))) = coherentNerveMap G
+
+noncomputable def kanEnrichedComparisonEdge {C : Type (u + 1)}
+    [Category.{u} C] [SimplicialCategory C]
+    {F G : EnrichedFunctor SSet.{u} C KanObject.{u}} (η : KanEnrichedComparison F G) :
+    Edge (functorVertex (coherentNerveMap F)) (functorVertex (coherentNerveMap G))
+
+lemma kanEnrichedComparisonEdge_at {C : Type (u + 1)}
+    [Category.{u} C] [SimplicialCategory C]
+    {F G : EnrichedFunctor SSet.{u} C KanObject.{u}} (η : KanEnrichedComparison F G) (X : C) :
+    (functorEdgeAt (kanEnrichedComparisonEdge η) (coherentNerveVertex X)).edge =
+      (coherentNerveEdge (η.val X)).edge
+
+lemma kanEnrichedComparisonEdge_isInvertible {C : Type (u + 1)}
+    [Category.{u} C] [SimplicialCategory C]
+    {F G : EnrichedFunctor SSet.{u} C KanObject.{u}} (η : KanEnrichedComparison F G)
+    (hη : ∀ X, IsQCatEquivalence (X := (F.obj X).obj) (Y := (G.obj X).obj) (η.val X)) :
+    IsInvertibleEdge (kanEnrichedComparisonEdge η)
+
+noncomputable def kanEnrichedComparisonIso {C : Type (u + 1)}
+    [Category.{u} C] [SimplicialCategory C]
+    {F G : EnrichedFunctor SSet.{u} C KanObject.{u}} (η : KanEnrichedComparison F G)
+    (hη : ∀ X, IsQCatEquivalence (X := (F.obj X).obj) (Y := (G.obj X).obj) (η.val X)) :
+    FunctorIso (coherentNerveMap F) (coherentNerveMap G)
+
+def edgewiseKanRightComparison :
+    KanEnrichedComparison edgewiseKanEnriched.{u} (edgewiseEnrichedRight KanObject.{u})
+
+def edgewiseKanInfinityMap :
+    SimplicialNerve (EdgewiseEnrichedObject KanObject.{u}) ⟶ SpaceInfinity.{u}
+
+noncomputable def edgewiseKanInfinityComparisonIso :
+    FunctorIso edgewiseKanInfinityMap.{u} (edgewiseEnrichedInfinityMap KanObject.{u})
+
+noncomputable def edgewiseKanInfinityEquivalence :
+    QCatEquivalence (SimplicialNerve (EdgewiseEnrichedObject KanObject.{u})) SpaceInfinity.{u}
+
+noncomputable def edgewiseCoherentDiagramLift {B : SSet.{u + 1}} (F : B ⟶ SpaceInfinity.{u}) :
+    B ⟶ SimplicialNerve (EdgewiseEnrichedObject KanObject.{u})
+
+noncomputable def edgewiseCoherentDiagramLiftIso {B : SSet.{u + 1}} (F : B ⟶ SpaceInfinity.{u}) :
+    FunctorIso (edgewiseCoherentDiagramLift F ≫ edgewiseEnrichedInfinityMap KanObject.{u}) F
+
+noncomputable def edgewiseCoherentReplacement {B : SSet.{u + 1}} (F : B ⟶ SpaceInfinity.{u}) :
+    B ⟶ SpaceInfinity.{u}
+
+noncomputable def edgewiseCoherentReplacementIso {B : SSet.{u + 1}} (F : B ⟶ SpaceInfinity.{u}) :
+    FunctorIso (edgewiseCoherentReplacement F) F
+
+noncomputable def smallEdgewiseCoherentReplacementEquivalence {B : SSet.{u}} [Quasicategory B]
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj B ⟶ SpaceInfinity.{u}) :
+    QCatEquivalence (smallLeftUnstraightening (edgewiseCoherentReplacement F))
+      (smallLeftUnstraightening F)
+
 end SerrePositivity.InfinityCategories
 ```
