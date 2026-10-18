@@ -53,3 +53,5 @@ public import SerrePositivity.KST.DerivedGeometry.BasicOpenSectionComparisonIso
 public import SerrePositivity.KST.DerivedGeometry.AffineCechExact
 public import SerrePositivity.KST.DerivedGeometry.AffineQuasicoherentCech
 public import SerrePositivity.KST.DerivedGeometry.AffineCechResolution
+
+public import SerrePositivity.KST.DerivedGeometry.AffineLocalVanishing

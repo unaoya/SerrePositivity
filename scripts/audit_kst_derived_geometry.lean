@@ -14,6 +14,23 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let required : Array Name := #[
+    `SerrePositivity.KST.DerivedGeometry.sheafExact_toCycles_locallySurjective,
+    `SerrePositivity.KST.DerivedGeometry.sheafExact_localBoundary,
+    `SerrePositivity.KST.DerivedGeometry.affineSheafExact_basicOpenBoundary,
+    `SerrePositivity.KST.DerivedGeometry.affineSheafExact_finiteBasicOpenBoundaries,
+    `SerrePositivity.KST.DerivedGeometry.leftExactCyclesIso,
+    `SerrePositivity.KST.DerivedGeometry.leftExactCyclesIso_hom_iCycles,
+    `SerrePositivity.KST.DerivedGeometry.sheafModuleSections,
+    `SerrePositivity.KST.DerivedGeometry.sheafModuleSections_preservesFiniteLimits,
+    `SerrePositivity.KST.DerivedGeometry.sheafSectionCycle,
+    `SerrePositivity.KST.DerivedGeometry.sheafSectionCycle_iCycles,
+    `SerrePositivity.KST.DerivedGeometry.sheafExact_localCocycleBoundary,
+    `SerrePositivity.KST.DerivedGeometry.sectionsShortComplexPresheaf,
+    `SerrePositivity.KST.DerivedGeometry.sectionHomologyPresheaf,
+    `SerrePositivity.KST.DerivedGeometry.sectionHomologyPresheaf_locallyZero,
+    `SerrePositivity.KST.DerivedGeometry.affinePresheaf_finiteBasicOpenVanishing,
+    `SerrePositivity.KST.DerivedGeometry.affineSectionHomology_finiteBasicOpenVanishing,
+
     `SerrePositivity.KST.DerivedGeometry.sheafCoverShortComplex,
     `SerrePositivity.KST.DerivedGeometry.sheafCoverKernel,
     `SerrePositivity.KST.DerivedGeometry.sheafCoverShortComplex_exact,

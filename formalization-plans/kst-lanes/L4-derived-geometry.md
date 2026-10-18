@@ -51,7 +51,7 @@
 
 - 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。任意 dg 圏の半自由な段階分解、フィルトレーションからの Hom の K-flat 性、増大関手の各次数全射性・準同値性・H⁰ 同値、前三角化の三角同値を証明済み。分解後の層の acyclic dg 商自体の H⁰ と Mathlib の元の層導来圏の同値、対象ごとの導来像の計算、準連接コホモロジーによる Dqc への H⁰ 同値を証明済み。半自由分解から導来比較までの工程は完了。アフィン準連接係数加群層と左 H 加群の通常の圏同値、その準連接複体の導来圏の三角同値、実際の Dqc の開制限、台つき核と Verdier 商への降下も証明済み。Perf、アフィン導来比較、導来降下、T1–T3、平坦係数の RHom 比較は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の随伴移送の一般定理は証明済み。実際の導来随伴・生成・T1′、L4c の局所化同値、L4d、L4e は未完了。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の1,470宣言の公理監査に成功。工程区切りの全体ビルドは有限 Čech 完全性までの状態で11,343 jobsに成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の1,512宣言の公理監査に成功。工程区切りの全体ビルドは有限 Čech 完全性までの状態で11,343 jobsに成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -916,6 +916,23 @@
 - 集約ビルド（3,804 jobs）と1,470宣言の監査に成功。標準3公理のみ、KTheory import なし。直前の工程区切りの全体ビルドも11,343 jobsに成功。
 - 未完了：層コホモロジーへの比較、非有界 Dqc のアフィン導来同値。上の準同型は切断の Čech 複体についての主張であり、導来切断を計算するという未証明の仮定は含めていない。
 
+## 44. 層の完全性と局所境界（実装前記録）
+
+- 文言：加群層の完全な短複体について、サイクル層の任意の切断は各点の近傍で前の項の切断の境界として表せる。
+- 証明：完全性から境界からサイクルへの実際の射 `toCycles` が epi であることを得る。加群層の epi と局所全射性の同値を用い、開近傍と切断を取り出す。
+- アフィンへの接続：スペクトルの基本開基底を使って近傍を基本開へ細分し、その上でも同じ境界等式を保つ。準コンパクトな開については有限部分被覆を選ぶ。
+- この補題を切断のコホモロジーの局所消滅に用い、Čech 比較と層コホモロジー計算を接続する。injective 分解の存在、比較、非有界制御を証明したものとして省略しない。
+- 原典：TT §3、BvdB Thm 3.1.1、Toën §3.2。正本 §10-7 の紙上確認に対応する。
+
+### 現在地
+
+- `sheafExact_localCocycleBoundary` は任意のサイクル切断の実際の局所境界表示。切断関手の左完全性から層のサイクルへ持ち上げ、境界へ局所的に持ち上げる。
+- `leftExactCyclesIso` は一般の左完全関手のサイクル比較。右完全性・コホモロジー保存を仮定しない。
+- `sectionHomologyPresheaf_locallyZero` は完全な層の短複体の切断コホモロジーの各類の局所消滅。サイクルの代表と境界の表示で証明した。
+- `affineSectionHomology_finiteBasicOpenVanishing` は準コンパクトな開の有限基本開被覆上の類の消滅。包含と実際の制限写像を保持している。
+- 集約ビルド（3,814 jobs）と1,512宣言の監査に成功。標準3公理のみ、KTheory import なし。
+- 残り：injective 分解での計算との接続、Čech と層コホモロジーの比較、非有界導来比較。局所消滅とアフィン大域消滅を混同しない。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -1082,6 +1099,11 @@
 | `openCechZeroIso`・`openCechOneIso`・`openCech_firstDifferential` | DerivedGeometry/OpenCechLowDegree | 実装・対象ビルド済み |
 | `sheafCechAugmentation_exact`・`sheafCechH0Iso` | DerivedGeometry/SheafCechAugmentation | 実装・対象ビルド済み |
 | `affineCoefficientCechAugmentation_quasiIso` | DerivedGeometry/AffineCechResolution | 実装・対象ビルド済み |
+| `sheafExact_localBoundary`・`sheafExact_localCocycleBoundary` | DerivedGeometry/SheafLocalBoundaries・SheafSectionCycles | 実装・対象ビルド済み |
+| `affineSheafExact_finiteBasicOpenBoundaries` | DerivedGeometry/AffineLocalBoundaries | 実装・対象ビルド済み |
+| `leftExactCyclesIso` | DerivedGeometry/LeftExactCycles | 実装・対象ビルド済み |
+| `sectionHomologyPresheaf_locallyZero` | DerivedGeometry/SheafSectionCohomology | 実装・対象ビルド済み |
+| `affineSectionHomology_finiteBasicOpenVanishing` | DerivedGeometry/AffineLocalVanishing | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |
