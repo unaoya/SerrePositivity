@@ -1,6 +1,14 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.isPushoutSquare_iff_transpose
+#print axioms SerrePositivity.InfinityCategories.dualSquare
+#print axioms SerrePositivity.InfinityCategories.isPushoutSquare_iff_dualSquare
+#print axioms SerrePositivity.InfinityCategories.isPullbackSquare_iff_dualSquare
+#print axioms SerrePositivity.InfinityCategories.isStable_op
+#print axioms SerrePositivity.InfinityCategories.exists_zeroTargetPullbackSquare
+#print axioms SerrePositivity.InfinityCategories.homotopyOppositeEquivalence
+#print axioms SerrePositivity.InfinityCategories.hasBinaryProducts_ho
 #print axioms SerrePositivity.InfinityCategories.exists_binaryCoconeTriangleFamily
 #print axioms SerrePositivity.InfinityCategories.exists_binaryCoconeEdgeLift
 #print axioms SerrePositivity.InfinityCategories.exists_binaryCoconeEdgeLift_of_comm
@@ -954,7 +962,13 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.BinaryCoconeTriangleFamily,
     `SerrePositivity.InfinityCategories.Stable.BinaryCoconeEdgeLift,
     `SerrePositivity.InfinityCategories.Stable.BinaryColimitHomExt,
-    `SerrePositivity.InfinityCategories.Stable.HomotopyBinaryCoproduct]
+    `SerrePositivity.InfinityCategories.Stable.HomotopyBinaryCoproduct,
+    `SerrePositivity.InfinityCategories.Stable.SquareTranspose,
+    `SerrePositivity.InfinityCategories.Stable.SquareDuality,
+    `SerrePositivity.InfinityCategories.Stable.StableOpposite,
+    `SerrePositivity.InfinityCategories.Stable.BinaryProductSquare,
+    `SerrePositivity.InfinityCategories.Stable.HomotopyOpposite,
+    `SerrePositivity.InfinityCategories.Stable.HomotopyBinaryProduct]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

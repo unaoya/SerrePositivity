@@ -9178,3 +9178,250 @@ HomotopyBinaryCoproduct ビルド 2057 jobs、対象・Stable 集約ビルド 21
 `git diff --check` 成功。引用・追加公理・sorry は導入していない。
 双積・前加法構造、シフトの加法性、回転、八面体、Pretriangulated instance、S5〜S7 は未完了。
 TR1・TR3 は完成のまま。次は双積・前加法構造へ進む。
+
+
+## 安定性の自己双対性とホモトピー圏の二項積
+
+`SquareTranspose.lean` は標準 span の二枝の交換同型を作り、その join が四角形の転置と
+一致することを二つの標準三角形に制限して証明した。これで押し出し性の転置不変性を得た。
+`SquareDuality.lean` は値域の同型が coslice の後合成でも同型になることを各次数で証明し、
+押し出し・引き戻しの値域同型不変性と二重反転を整備した。
+`dualSquare` は二座標を反転・交換し、(0,1) の零角の位置を保つ。
+押し出しと引き戻しの交換、頂点、下辺と右辺の式まで証明した。
+これらの四角形の構成・同値には Quasicategory 性を仮定しない。
+
+`StableOpposite.lean` は元へ戻す零頂点の補題と反対側の零対象の存在を与え、
+辺の反転で指定辺を保つことを計算して、安定性の三条件を反対側で直接証明した。
+`isStable_op {X : SSet} [Quasicategory X] [IsStable X] : IsStable X.op` が完成。
+全有限極限・余極限や一般の四角形の pushout/pullback 一致を追加仮定にしていない。
+`BinaryProductSquare.lean` は反対側の零始点の押し出しを双対化し、二つの指定頂点を
+右下・左上に持つ零終点の引き戻し四角形を元の値域へ戻す。
+
+`HomotopyOpposite.lean` は辺を元へ戻す反変関手を辺のホモトピー類に降ろす。
+Hom の逆写像を反転で与えて充満忠実性を証明し、頂点の反転で本質的全射性を得る。
+道の商との既存比較同値で挟み、`homotopyOppositeEquivalence X` を構成した。
+これは `[Quasicategory X]` のみで `hoFunctor.obj X.op ≌ (hoFunctor.obj X)ᵒᵖ` を与える。
+`HomotopyBinaryProduct.lean` は反対側の二項余積をこの圏同値で輸送し、
+`hasBinaryProducts_ho {X : SSet} [Quasicategory X] [IsStable X] :
+HasBinaryProducts (hoFunctor.obj X)` を公開した。
+h C の二項積・二項余積は完成。双積性と前加法構造は未完了。
+
+Lean で抽出した全公開宣言の正確な型：
+
+```lean
+spanSwap.{u_1} : Quiver.Hom.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0))
+  (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0))
+spanSwap_left.{u_1} : Eq.{u_1 + 1}
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SSet.horn₂₀.ι₀₁.{u_1} spanSwap.{u_1}) SSet.horn₂₀.ι₀₂.{u_1}
+spanSwap_right.{u_1} : Eq.{u_1 + 1}
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} SSet.horn₂₀.ι₀₂.{u_1} spanSwap.{u_1}) SSet.horn₂₀.ι₀₁.{u_1}
+spanSwap_comp_self.{u_1} : Eq.{u_1 + 1}
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} spanSwap.{u_1} spanSwap.{u_1})
+  (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0)))
+spanSwapIso.{u_1} : CategoryTheory.Iso.{u_1, u_1 + 1} (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0))
+  (SSet.Subcomplex.toSSet.{u_1} (SSet.horn.{u_1} 2 0))
+spanCoconeSquareIso_swap.{u_1} : Eq.{u_1 + 1}
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+    (joinMap.{u_1} spanSwap.{u_1}
+      (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 0 })))
+    (CategoryTheory.Iso.hom.{u_1, u_1 + 1} spanCoconeSquareIso.{u_1}))
+  (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (CategoryTheory.Iso.hom.{u_1, u_1 + 1} spanCoconeSquareIso.{u_1})
+    (CategoryTheory.Iso.hom.{u_1, u_1 + 1}
+      (CategoryTheory.BraidedCategory.braiding.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))))
+@isPushoutSquare_iff_transpose.{u_1} : ∀ {X : SSet.{u_1}}
+  (F :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  IsPushoutSquare.{u_1} F ↔
+    IsPushoutSquare.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (CategoryTheory.Iso.hom.{u_1, u_1 + 1}
+          (CategoryTheory.BraidedCategory.braiding.{u_1, u_1 + 1}
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })))
+        F)
+@sliceUnderPostcomp_isIso.{u_1} : ∀ {K X Y : SSet.{u_1}} (p : Quiver.Hom.{u_1, u_1 + 1} K X)
+  (q : Quiver.Hom.{u_1, u_1 + 1} X Y) [CategoryTheory.IsIso.{u_1, u_1 + 1} q],
+  CategoryTheory.IsIso.{u_1, u_1 + 1} (sliceUnderPostcomp.{u_1} p q)
+@isPushoutSquare_iff_postcomp_isIso.{u_1} : ∀ {X Y : SSet.{u_1}}
+  (F :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X)
+  (q : Quiver.Hom.{u_1, u_1 + 1} X Y) [CategoryTheory.IsIso.{u_1, u_1 + 1} q],
+  IsPushoutSquare.{u_1} F ↔ IsPushoutSquare.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} F q)
+@isPushoutSquare_iff_reverseGrid.{u_1} : ∀ {X : SSet.{u_1}}
+  (F :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  IsPushoutSquare.{u_1} F ↔ IsPullbackSquare.{u_1} (reverseGrid.{u_1} F)
+@reverseGrid_transpose.{u_1} : ∀ {X : SSet.{u_1}}
+  (F :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  Eq.{u_1 + 1}
+    (reverseGrid.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (CategoryTheory.Iso.hom.{u_1, u_1 + 1}
+          (CategoryTheory.BraidedCategory.braiding.{u_1, u_1 + 1}
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })))
+        F))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1}
+        (CategoryTheory.BraidedCategory.braiding.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })))
+      (reverseGrid.{u_1} F))
+@isPullbackSquare_iff_transpose.{u_1} : ∀ {X : SSet.{u_1}}
+  (F :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  IsPullbackSquare.{u_1} F ↔
+    IsPullbackSquare.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (CategoryTheory.Iso.hom.{u_1, u_1 + 1}
+          (CategoryTheory.BraidedCategory.braiding.{u_1, u_1 + 1}
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })))
+        F)
+@dualSquare.{u_1} : {X : SSet.{u_1}} →
+  Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X →
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      (SSet.op.{u_1} X)
+@isPushoutSquare_iff_dualSquare.{u_1} : ∀ {X : SSet.{u_1}}
+  (F :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  IsPushoutSquare.{u_1} F ↔ IsPullbackSquare.{u_1} (dualSquare.{u_1} F)
+@isPullbackSquare_iff_dualSquare.{u_1} : ∀ {X : SSet.{u_1}}
+  (F :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  IsPullbackSquare.{u_1} F ↔ IsPushoutSquare.{u_1} (dualSquare.{u_1} F)
+@isPullbackSquare_iff_postcomp_isIso.{u_1} : ∀ {X Y : SSet.{u_1}}
+  (F :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X)
+  (q : Quiver.Hom.{u_1, u_1 + 1} X Y) [CategoryTheory.IsIso.{u_1, u_1 + 1} q],
+  IsPullbackSquare.{u_1} F ↔ IsPullbackSquare.{u_1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} F q)
+@dualSquare_vertex.{u_1} : ∀ {X : SSet.{u_1}}
+  (F :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X)
+  (i j : Fin 2),
+  Eq.{u_1 + 1} (squareVertex.{u_1} (dualSquare.{u_1} F) i j)
+    ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.opObjEquiv.{u_1}) (squareVertex.{u_1} F j.rev i.rev))
+@dualSquare_rightEdge.{u_1} : ∀ {X : SSet.{u_1}}
+  (F :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} squareRightEdge.{u_1} (dualSquare.{u_1} F))
+    (reverseSimplex.{u_1} 1 (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} squareBottomEdge.{u_1} F))
+@dualSquare_bottomEdge.{u_1} : ∀ {X : SSet.{u_1}}
+  (F :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  Eq.{u_1 + 1} (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} squareBottomEdge.{u_1} (dualSquare.{u_1} F))
+    (reverseSimplex.{u_1} 1 (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} squareRightEdge.{u_1} F))
+@IsZeroVertex.unop.{u_1} : ∀ {X : SSet.{u_1}}
+  {x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (SSet.op.{u_1} X) (Opposite.op.{1} { len := 0 })},
+  IsZeroVertex.{u_1} x → IsZeroVertex.{u_1} (SSet.opObjEquiv.{u_1} x)
+@hasZeroVertex_op.{u_1} : ∀ {X : SSet.{u_1}} [HasZeroVertex.{u_1} X], HasZeroVertex.{u_1} (SSet.op.{u_1} X)
+@reverseSimplex_edgeUnop.{u_1} : ∀ {X : SSet.{u_1}}
+  {x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (SSet.op.{u_1} X) (Opposite.op.{1} { len := 0 })}
+  (e : SSet.Truncated.Edge.{u_1} x y),
+  Eq.{u_1 + 1}
+    (reverseSimplex.{u_1} 1
+      ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} (edgeUnop.{u_1} e))))
+    ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} e))
+@isStable_op.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X] [IsStable.{u_1} X],
+  IsStable.{u_1} (SSet.op.{u_1} X)
+@exists_zeroTargetPullbackSquare.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X] [IsStable.{u_1} X]
+  (x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),
+  ∃ R,
+    IsZeroVertex.{u_1} (squareVertex.{u_1} R 1 1) ∧
+      Eq.{u_1 + 1} (squareVertex.{u_1} R 1 0) x ∧ Eq.{u_1 + 1} (squareVertex.{u_1} R 0 1) y ∧ IsPullbackSquare.{u_1} R
+@homotopicL_edgeUnop.{u_1} : ∀ {X : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  {x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (SSet.op.{u_1} X) (Opposite.op.{1} { len := 0 })}
+  {f g : SSet.Truncated.Edge.{u_1} x y},
+  SSet.Truncated.HomotopicL.{u_1} f g → SSet.Truncated.HomotopicL.{u_1} (edgeUnop.{u_1} f) (edgeUnop.{u_1} g)
+edgeHomotopyUnopFunctor.{u_1} : (X : SSet.{u_1}) →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    CategoryTheory.Functor.{u_1, u_1, u_1, u_1}
+      (SSet.Truncated.HomotopyCategory₂.{u_1}
+        (CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} (SSet.truncation.{u_1} 2) (SSet.op.{u_1} X)))
+      (Opposite.{u_1 + 1}
+        (SSet.Truncated.HomotopyCategory₂.{u_1}
+          (CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} (SSet.truncation.{u_1} 2) X)))
+edgeHomotopyUnopFullyFaithful.{u_1} : (X : SSet.{u_1}) →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    CategoryTheory.Functor.FullyFaithful.{u_1, u_1, u_1, u_1} (edgeHomotopyUnopFunctor.{u_1} X)
+edgeHomotopyUnopEquivalence.{u_1} : (X : SSet.{u_1}) →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    CategoryTheory.Equivalence.{u_1, u_1, u_1, u_1}
+      (SSet.Truncated.HomotopyCategory₂.{u_1}
+        (CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} (SSet.truncation.{u_1} 2) (SSet.op.{u_1} X)))
+      (Opposite.{u_1 + 1}
+        (SSet.Truncated.HomotopyCategory₂.{u_1}
+          (CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} (SSet.truncation.{u_1} 2) X)))
+homotopyOppositeEquivalence.{u_1} : (X : SSet.{u_1}) →
+  [SSet.Quasicategory.{u_1} X] →
+    CategoryTheory.Equivalence.{u_1, u_1, u_1, u_1}
+      (↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} (SSet.op.{u_1} X)))
+      (Opposite.{u_1 + 1} ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X))
+@hasBinaryProducts_ho.{u_1} : ∀ {X : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X] [IsStable.{u_1} X],
+  CategoryTheory.Limits.HasBinaryProducts.{u_1, u_1}
+    ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} X)
+```
+
+対象 SquareTranspose ビルド 1961 jobs、SquareDuality ビルド 1966 jobs、
+StableOpposite ビルド 1967 jobs、BinaryProductSquare ビルド 2049 jobs、
+HomotopyOpposite ビルド 1546 jobs、HomotopyBinaryProduct ビルド 2067 jobs、
+対象・Stable 集約ビルド 2194 jobs、公開型抽出、公理監査はすべて終了コード 0。
+監査は 200 モジュール・1590 宣言（生成・非公開宣言を含む）について標準三公理のみ。
+自分の新規ファイルは警告なし。`git diff --check` 成功。引用・追加公理・sorry は導入していない。
+双積性・前加法構造、シフトの加法性、回転、八面体、Pretriangulated instance、S5〜S7 は未完了。
+TR1・TR3 は完成のまま。次は積と余積の比較を進め、前加法構造を構成する。

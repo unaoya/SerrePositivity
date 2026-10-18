@@ -339,7 +339,21 @@ Quasicategory と IsColimitCone c のみを仮定し、安定性は不要。
 `hasBinaryCoproduct_of_binaryColimit` は二点図式の余極限から h C の二項余積を得る一般補題。
 `hasBinaryCoproducts_ho {X : SSet} [Quasicategory X] [IsStable X] :
 HasBinaryCoproducts (hoFunctor.obj X)` により h C の二項余積 instance が完成した。
-次は双積・前加法構造を構成する。
+反対圏を用いる二項積側も構成した。`spanSwapIso` は標準 span の二枝を交換する同型、
+`isPushoutSquare_iff_transpose`・`isPullbackSquare_iff_transpose` は四角形の転置不変性。
+`sliceUnderPostcomp_isIso` と `isPushoutSquare_iff_postcomp_isIso`・
+`isPullbackSquare_iff_postcomp_isIso` は値域の同型による不変性を与える。
+`dualSquare` は二座標を反転・交換し、(0,1) の零角を保持して値域を反対にする。
+`isPushoutSquare_iff_dualSquare`・`isPullbackSquare_iff_dualSquare` は押し出しと引き戻しの交換、
+頂点と二辺の式は零角と指定辺の保持を与える（ここまでは値域への仮定なし）。
+`hasZeroVertex_op` は零対象の双対化、`isStable_op` は `[Quasicategory X] [IsStable X]` から
+`IsStable X.op` を三条件の直接証明で与える。全有限極限・余極限は仮定しない。
+`exists_zeroTargetPullbackSquare` は二つの指定頂点を右下・左上に持つ零終点の引き戻しを与える。
+`edgeHomotopyUnopFunctor` とその充満忠実性・同値を辺の類で構成し、
+`homotopyOppositeEquivalence X : hoFunctor.obj X.op ≌ (hoFunctor.obj X)ᵒᵖ` を得た（Quasicategory）。
+`hasBinaryProducts_ho {X : SSet} [Quasicategory X] [IsStable X] :
+HasBinaryProducts (hoFunctor.obj X)` はその同値で反対側の二項余積を輸送する。
+h C の二項積・二項余積は完成。双積性・前加法構造は未完了。
 前加法構造・シフトの加法性、回転、八面体、Pretriangulated instance は未完了。
 安定性から全有限極限・余極限を導く逆向き、S5〜S7 の長完全列・完全関手・D7 は未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
@@ -480,6 +494,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 離散二点図式の余極限 | `spanPointJoinIso` と三頂点の包含の式、`isColimitCone_iff_restrict_joinInr_of_initial`（Quasicategory、始点の始対象性）、`binaryPointDiagram`、`hasColimit_binaryPointDiagram`（Quasicategory、IsStable） | 任意の二つの指定頂点の余極限の存在まで完成。h C の二項余積の Hom の普遍性・instance は下記で完成 |
 | 二項余積の Hom の存在部分 | `JoinCocone.leg`、`legCompStruct`、`leg_comp_projection`、`binaryCoconeOfEdges` と脚・頂点の式（値域に仮定なし）、`exists_coconeVertexFactorization`、`exists_binaryColimit_desc`（Quasicategory、余極限性） | 指定された共通終域への二本の射の因子分解の存在まで完成。一意性・HasBinaryCoproducts instance も下記で完成 |
 | 二項余積の Hom の一意性と instance | `coconeLegTriangle` と制限の式、`exists_binaryCoconeTriangleFamily`、`exists_binaryCoconeEdgeLift`（値域に仮定なし）、`exists_binaryCoconeEdgeLift_of_comm`、`exists_binaryCoconeHomLift`、`binaryColimit_hom_ext_to_cocone`、`binaryColimit_hom_ext`、`binaryColimit_isColimit`、`hasBinaryCoproduct_of_binaryColimit`（Quasicategory、後四者は余極限性）、`hasBinaryCoproducts_ho`（Quasicategory、IsStable） | 完成。双積・前加法構造は未完了 |
+| 安定性の自己双対性と二項積 | `spanSwapIso`、`isPushoutSquare_iff_transpose`、`sliceUnderPostcomp_isIso`、`isPushoutSquare_iff_postcomp_isIso`、`isPullbackSquare_iff_postcomp_isIso`、`dualSquare` と二つの普遍性判定（値域に仮定なし）、`isStable_op`、`exists_zeroTargetPullbackSquare`（Quasicategory、IsStable）、`homotopyOppositeEquivalence`（Quasicategory）、`hasBinaryProducts_ho`（Quasicategory、IsStable） | 完成。双積性・前加法構造は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

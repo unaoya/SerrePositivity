@@ -72,6 +72,13 @@ public import SerrePositivity.InfinityCategories.Stable.BinaryCoconeEdgeLift
 public import SerrePositivity.InfinityCategories.Stable.BinaryColimitHomExt
 public import SerrePositivity.InfinityCategories.Stable.HomotopyBinaryCoproduct
 
+public import SerrePositivity.InfinityCategories.Stable.SquareTranspose
+public import SerrePositivity.InfinityCategories.Stable.SquareDuality
+public import SerrePositivity.InfinityCategories.Stable.StableOpposite
+public import SerrePositivity.InfinityCategories.Stable.BinaryProductSquare
+public import SerrePositivity.InfinityCategories.Stable.HomotopyOpposite
+public import SerrePositivity.InfinityCategories.Stable.HomotopyBinaryProduct
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。
