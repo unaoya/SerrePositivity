@@ -238,3 +238,6 @@ public import SerrePositivity.InfinityCategories.F1.RelativeJoinPrismHornEqualit
 public import SerrePositivity.InfinityCategories.F1.PrismCellPushout
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinPrismCell
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinPrismAnodyne
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinPrismCoverage
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinBoundaryMissingVertex
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinPrismBoundaryPullback

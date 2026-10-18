@@ -5341,5 +5341,63 @@ lemma isPrecompositionEquivalence_relativeJoinPrismInitial_penultimate (m : ℕ)
     IsPrecompositionEquivalence (Subcomplex.homOfLE
       (relativeJoinPrismInitial_le_penultimate.{u} m))
 
+lemma relativeJoinPrismStage_top (m : ℕ) :
+    relativeJoinPrismStage.{u} m (m + 1) = ⊤
+
+lemma relativeJoinPrismPenultimate_sup_last (m : ℕ) :
+    relativeJoinPrismPenultimate.{u} m ⊔
+        Subcomplex.ofSimplex (relativeJoinPrismShuffle m (Fin.last m)) = ⊤
+
+lemma relativeJoinPrismPenultimate_or_last (m d : ℕ)
+    (z : ((Δ[1] : SSet.{u}) ⊗ Δ[m]) _⦋d⦌) :
+    z ∈ (relativeJoinPrismPenultimate m).obj (Opposite.op ⦋d⦌) ∨
+      ∃ a : (Δ[m + 1] : SSet.{u}) _⦋d⦌,
+        (SSet.yonedaEquiv.symm (relativeJoinPrismShuffle m (Fin.last m))).app
+          (Opposite.op ⦋d⦌) a = z
+
+lemma join_left_boundary_exists_missing_vertex {Y : SSet.{u}} {m d : ℕ}
+    (s : Join.Simplex (Δ[m] : SSet.{u}) Y d)
+    (hs : s ∈ (joinSubcomplexLeft (boundary m) Y).obj (Opposite.op ⦋d⦌)) :
+    ∃ v : Fin (m + 1), ∀ i : Fin s.1.val, (Join.stdAugEquiv m _ s.2.1) i ≠ v
+
+lemma joinCylinderMap_left_boundary_exists_missing_vertex {Y : SSet.{u}} {m d : ℕ}
+    (a : (Δ[m] : SSet.{u}) _⦋d⦌) (t : (Δ[1] : SSet.{u}) _⦋d⦌) (b : Y _⦋d⦌)
+    (hs : (joinCylinderMap Δ[m] Y).app (Opposite.op ⦋d⦌) ((a, t), b) ∈
+      (joinSubcomplexLeft (boundary m) Y).obj (Opposite.op ⦋d⦌)) :
+    ∃ v : Fin (m + 1), ∀ i : Fin (d + 1), (t i).val = 0 → a i ≠ v
+
+lemma relativeJoinPrism_boundary_exists_missing_vertex {Y : SSet.{u}} {m d : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Y) (t : (Δ[1] : SSet.{u}) _⦋d⦌)
+    (a : (Δ[m] : SSet.{u}) _⦋d⦌)
+    (h : (relativeJoinPrism f).app (Opposite.op ⦋d⦌) (t, a) ∈ Set.range
+      ((relativeJoinLeftMap (𝟙 Y) (f := (boundary m).ι ≫ f) (f' := f)
+        (boundary m).ι rfl).app (Opposite.op ⦋d⦌))) :
+    ∃ v : Fin (m + 1), ∀ i : Fin (d + 1), (t i).val = 0 → a i ≠ v
+
+lemma relativeJoinPrismShuffle_last_left_vertex (m : ℕ) (v : Fin (m + 1)) :
+    ((relativeJoinPrismShuffle.{u} m (Fin.last m)).1 v.castSucc,
+      (relativeJoinPrismShuffle.{u} m (Fin.last m)).2 v.castSucc) = (0, v)
+
+lemma relativeJoinPrism_last_boundary_mem_horn {Y : SSet.{u}} {m d : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Y) (a : (Δ[m + 1] : SSet.{u}) _⦋d⦌)
+    (h : (relativeJoinPrism f).app (Opposite.op ⦋d⦌)
+        ((SSet.yonedaEquiv.symm (relativeJoinPrismShuffle m (Fin.last m))).app
+          (Opposite.op ⦋d⦌) a) ∈ Set.range
+      ((relativeJoinLeftMap (𝟙 Y) (f := (boundary m).ι ≫ f) (f' := f)
+        (boundary m).ι rfl).app (Opposite.op ⦋d⦌))) :
+    a ∈ (horn (m + 1) (Fin.last m).succ).obj (Opposite.op ⦋d⦌)
+
+lemma relativeJoinPrism_boundary_preimage_eq_penultimate {Y : SSet.{u}} {m : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Y) :
+    (Subcomplex.range (relativeJoinLeftMap (𝟙 Y) (f := (boundary m).ι ≫ f) (f' := f)
+        (boundary m).ι rfl)).preimage (relativeJoinPrism f) =
+      relativeJoinPrismPenultimate m
+
+lemma relativeJoinPrismPenultimateBoundaryLift_isPullback {Y : SSet.{u}} {m : ℕ}
+    (f : (Δ[m] : SSet.{u}) ⟶ Y) :
+    IsPullback (relativeJoinPrismPenultimateBoundaryLift f) (relativeJoinPrismPenultimate m).ι
+      (relativeJoinLeftMap (𝟙 Y) (f := (boundary m).ι ≫ f) (f' := f) (boundary m).ι rfl)
+      (relativeJoinPrism f)
+
 end SerrePositivity.InfinityCategories
 ```
