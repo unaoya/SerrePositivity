@@ -965,5 +965,28 @@ def quasicategoryCoreUnitHomEquiv (X : SSet.{u}) :
 lemma quasicategoryCoreUnitHomEquiv_eq (X : SSet.{u}) (f : (𝟙_ SSet.{u}) ⟶ X) :
     quasicategoryCoreUnitHomEquiv X f = quasicategoryCoreUnit ≫ quasicategoryCoreMap f
 
+structure QuasicategoryObject where
+  obj : SSet.{u}
+  isQuasicategory : Quasicategory obj
+
+instance quasicategoryObject_category : Category.{u} QuasicategoryObject.{u}
+
+instance quasicategoryObject_enrichedCategory : EnrichedCategory SSet.{u} QuasicategoryObject.{u}
+
+instance quasicategoryObject_simplicialCategory : SimplicialCategory.{u} QuasicategoryObject.{u}
+
+def QCat : Type (u + 1)
+
+instance qCat_category : Category.{u} QCat.{u}
+
+noncomputable instance qCat_simplicialCategory : SimplicialCategory QCat.{u}
+
+lemma qCat_sHom (X Y : QCat.{u}) :
+    SimplicialCategory.sHom X Y =
+      (quasicategoryCore ((ihom X.obj).obj Y.obj) : SSet.{u})
+
+instance qCat_sHom_kanComplex (X Y : QCat.{u}) :
+    KanComplex (SimplicialCategory.sHom X Y)
+
 end SerrePositivity.InfinityCategories
 ```

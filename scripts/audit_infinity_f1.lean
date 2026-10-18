@@ -223,3 +223,12 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.quasicategoryCoreFunctor_laxMonoidal
 #check @SerrePositivity.InfinityCategories.quasicategoryCoreUnitHomEquiv
 #check @SerrePositivity.InfinityCategories.quasicategoryCoreUnitHomEquiv_eq
+#check @SerrePositivity.InfinityCategories.QuasicategoryObject
+#check @SerrePositivity.InfinityCategories.quasicategoryObject_category
+#check @SerrePositivity.InfinityCategories.quasicategoryObject_enrichedCategory
+#check @SerrePositivity.InfinityCategories.quasicategoryObject_simplicialCategory
+#check @SerrePositivity.InfinityCategories.QCat
+#check @SerrePositivity.InfinityCategories.qCat_category
+#check @SerrePositivity.InfinityCategories.qCat_simplicialCategory
+#check @SerrePositivity.InfinityCategories.qCat_sHom
+#check @SerrePositivity.InfinityCategories.qCat_sHom_kanComplex
