@@ -1472,3 +1472,10 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.preorderNerveHorn_extend
 #check @SerrePositivity.InfinityCategories.preorderNerveHornVertex_edge_objs
 #check @SerrePositivity.InfinityCategories.preorderNerveHornVertex_le
+#check @SerrePositivity.InfinityCategories.stdSimplex_hom_ext_horn
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteInitialEdge
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteCollapse_horn_vertex
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteInitialHorn_monotone
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteInitialEdge_isCocartesian
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteInitialEdge_yoneda
+#check @SerrePositivity.InfinityCategories.scaffoldFiniteInitialEdge_comp_isCocartesian

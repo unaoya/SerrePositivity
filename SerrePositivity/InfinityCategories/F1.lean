@@ -307,3 +307,4 @@ public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteCylinderEndpoi
 public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteFiberComparison
 public import SerrePositivity.InfinityCategories.F1.ThinNerveInnerFibration
 public import SerrePositivity.InfinityCategories.F1.PreorderNerveHornExtension
+public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteCocartesianEdge

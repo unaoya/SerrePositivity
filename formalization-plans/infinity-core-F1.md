@@ -6685,5 +6685,37 @@ lemma preorderNerveHornVertex_le {C : Type u} [Preorder C] {n : ℕ} {i : Fin (n
     (j k : Fin (n + 3)) (hjk : j ≤ k) (hc : Finset.card {i, j, k} ≤ n + 2) :
     preorderNerveHornVertex a j ≤ preorderNerveHornVertex a k
 
+lemma stdSimplex_hom_ext_horn (n r : ℕ) (i : Fin (n + 3))
+    {f g : (Δ[n + 2] : SSet.{u}) ⟶ Δ[r]}
+    (h : (horn (n + 2) i).ι ≫ f = (horn (n + 2) i).ι ≫ g) : f = g
+
+def scaffoldFiniteInitialEdge (n : ℕ) : (nerve (ULift.{u} (Fin (n + 2)))) _⦋1⦌
+
+lemma scaffoldFiniteCollapse_horn_vertex (n m : ℕ) (i : Fin (m + 3))
+    (a : (horn (m + 2) i : SSet.{u}) ⟶ nerve (ULift.{u} (Fin (n + 2))))
+    (b : (Δ[m + 2] : SSet.{u}) ⟶ Δ[1])
+    (sq : CommSq a (horn (m + 2) i).ι (scaffoldFiniteCollapse n) b) (j : Fin (m + 3)) :
+    (if (preorderNerveHornVertex a j).down = 0 then (0 : Fin 2) else 1) =
+      (SSet.yonedaEquiv b) j
+
+lemma scaffoldFiniteInitialHorn_monotone (n m : ℕ)
+    (a : (horn (m + 2) 0 : SSet.{u}) ⟶ nerve (ULift.{u} (Fin (n + 2))))
+    (b : (Δ[m + 2] : SSet.{u}) ⟶ Δ[1])
+    (he : a.app (Opposite.op ⦋1⦌) (initialHornEdge m) = scaffoldFiniteInitialEdge n)
+    (sq : CommSq a (horn (m + 2) 0).ι (scaffoldFiniteCollapse n) b) :
+    Monotone (preorderNerveHornVertex a)
+
+lemma scaffoldFiniteInitialEdge_isCocartesian (n : ℕ) :
+    IsCocartesianEdge (scaffoldFiniteCollapse.{u} n) (scaffoldFiniteInitialEdge n)
+
+lemma scaffoldFiniteInitialEdge_yoneda (n : ℕ) :
+    SSet.yonedaEquiv ((stdSimplex.isoNerve.{u} 1).hom ≫ nerveMap (scaffoldFiniteFirstEdge n)) =
+      scaffoldFiniteInitialEdge n
+
+lemma scaffoldFiniteInitialEdge_comp_isCocartesian (n : ℕ) {E : SSet.{u}}
+    (p : E ⟶ nerve (ULift.{u} (Fin (n + 2)))) [LeftFibration p]
+    (e : E _⦋1⦌) (he : p.app (Opposite.op ⦋1⦌) e = scaffoldFiniteInitialEdge n) :
+    IsCocartesianEdge (p ≫ scaffoldFiniteCollapse n) e
+
 end SerrePositivity.InfinityCategories
 ```
