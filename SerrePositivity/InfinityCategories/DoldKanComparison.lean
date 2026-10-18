@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.DoldKanComparison.AWCubeSum
+
 public import SerrePositivity.InfinityCategories.DoldKanComparison.AWCubeRestriction
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.CoherentComposition

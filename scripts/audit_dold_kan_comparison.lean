@@ -161,6 +161,15 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_AW_restriction_eq_term
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_AW_restriction_eq_term
 
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_cubeSum_zero_of_bad_cut
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_cubeSum_zero_of_bad_cut
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_AW_cubeSum
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_AW_cubeSum
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_AW_cubeSum_signed_sum
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_AW_cubeSum_signed_sum
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awTerm
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.awTerm
 
@@ -350,6 +359,57 @@ set_option pp.explicit true
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_deletion
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_deletion
 
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardComponent_cubeSum_prefix
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardComponent_cubeSum_prefix
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardComponent_cubeSum_suffix
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardComponent_cubeSum_suffix
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_cubeSum_eq_comp
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.awTerm_cubeSum_eq_comp
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubePrefixOrder
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubePrefixOrder
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeSuffixOrder
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeSuffixOrder
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubePrefixOrder_injective
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubePrefixOrder_injective
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeSuffixOrder_injective
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeSuffixOrder_injective
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubePrefixOrder_image_univ
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubePrefixOrder_image_univ
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeSuffixOrder_image_univ
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeSuffixOrder_image_univ
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubePrefixOrder_card
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubePrefixOrder_card
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeSuffixOrder_card
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeSuffixOrder_card
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeBlockPermutation
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeBlockPermutation
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeBlockPermutation_castAdd
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeBlockPermutation_castAdd
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeBlockPermutation_natAdd
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeBlockPermutation_natAdd
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeBlockPermutation_sign
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeBlockPermutation_sign
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeBlockPermutation_trans_enumeration
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeBlockPermutation_trans_enumeration
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeBlockPermutation_signed_sum
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeBlockPermutation_signed_sum
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlag_all_internal_sum_eq_zero
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeFlag_all_internal_sum_eq_zero
 
@@ -505,6 +565,33 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_restriction_zero
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeEvaluation_restriction_zero
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeSumEnumeration
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeSumEnumeration
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeSumLeftMap
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeSumLeftMap
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeSumRightMap
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeSumRightMap
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeSumEnumeration_symm_inl
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeSumEnumeration_symm_inl
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeSumEnumeration_symm_inr
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeSumEnumeration_symm_inr
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeSumLeftMap_flag_prefix
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeSumLeftMap_flag_prefix
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeSumRightMap_flag_suffix
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeSumRightMap_flag_suffix
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeSumLeftMap_flag_repeat_right
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeSumLeftMap_flag_repeat_right
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.cubeSumRightMap_flag_repeat_left
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.cubeSumRightMap_flag_repeat_left
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_pullback_zero
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardTopEval_pullback_zero

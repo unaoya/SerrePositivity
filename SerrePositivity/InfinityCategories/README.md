@@ -1370,7 +1370,7 @@ H^(−(n+1)) との同型で、追加の閉性・充填の仮定はない。
 `doldKanHomSpaceKan` は N4 の線形充填をこの同型で移した Kan instance。
 `doldKanHomPinchedIso` は宇宙を持ち上げた DK Hom と dg nerve の右 pinched Hom の同型である。
 この同型はまだ coherent nerve の写像空間との比較ではない。
-対象・集約ビルドは3712件で成功し、公開303宣言の型と公理監査は標準三公理のみ。
+対象・集約ビルドは3717件で成功し、公開332宣言の型と公理監査は標準三公理のみ。
 正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean` に記録する。
 
 `awData` は後の射の接頭部分と前の射の接尾部分を合成して全切断点で足す成分族の演算。
@@ -1469,9 +1469,28 @@ P 座標への像を後の射、¬P 座標への像を前の射とする AW の�
 AW の和には切断点 c の一項だけが残ることを示す。c が最初または最後の場合も含む。
 前提は `[CommRing R] [DGCategory R D]` と各座標立方体からの実際の標準 Hom 写像。
 
-まだ dg nerve への単体集合の射は得ていない。残る AW の一項を左右の旗の評価へ同定し、
-適合した番号付けの符号付き和を左右の立方体評価の dg 合成へまとめる計算、
-dg 単体の方程式、退化も含む自然性、および比較写像の頂点・辺・三角形での一致が残る。
+`cubeSumEnumeration e f : Fin (p+q) ≃ A ⊕ B` は
+`e : Fin p ≃ A`、`f : Fin q ≃ B` を順に連結する番号付け。
+`cubeSumLeftMap`・`cubeSumRightMap` は和の座標集合から各因子への射影である。
+`standardTopEval_AW_cubeSum e f ψ φ` は `[CommRing R] [DGCategory R D]` の下で、
+`ψ : Coherent.cube A ⟶ standardHomSpace y z` と
+`φ : Coherent.cube B ⟶ standardHomSpace x y` に対し、次を与える。
+
+```text
+topEval (p+q) (AW (ψ (projA (flag (e⊕f)))) (φ (projB (flag (e⊕f)))))
+  = compose R (cubeFlagEvaluation e ψ) (cubeFlagEvaluation f φ).
+```
+
+両辺は次数 `−↑(p+q)` にあり、`p=0`・`q=0` も含む。
+`awTerm_cubeSum_eq_comp` が境目の一項の評価、`awTerm_cubeSum_zero_of_bad_cut` が
+他の切断点の消滅を与える。接頭・接尾の濃度と次数は `CubeBlockIndices` で明示する。
+`cubeBlockPermutation σ τ` は各区間を保つ置換で、その符号は `sign σ * sign τ`。
+`standardTopEval_AW_cubeSum_signed_sum` はこの二つの置換に関する AW 評価の符号付き二重和が
+`compose R (cubeEvaluation e ψ) (cubeEvaluation f φ)` に等しいことを示す。
+
+まだ dg nerve への単体集合の射は得ていない。全置換の和から区間を保つ置換の組への再添字付け、
+その和と Path の合成面の対応、dg 単体の方程式、退化も含む自然性、
+および比較写像の頂点・辺・三角形での一致が残る。
 
 
 ## γ3：homotopy 極限・余極限と ∞ 極限・余極限（γ1.5 の後）
