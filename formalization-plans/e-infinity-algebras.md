@@ -154,7 +154,9 @@ simplicialNerve_quasicategory (C : Type u)
 比較の向きは `N^hc(C_Δ) → N_dg(C)`。小さい線形 Hom の Kan 性、次数の符号、
 閉零射と零単体の同値、標準 chain map 方程式の単体的加群との自然同型、
 切断 Hom 複体への Mathlib Γ の適用とその正規化、標準模型の正規化の各項の
-具体的な核の共通部分との同定と正次数の最上位評価の単射性まで実装済み。
-公開67宣言の正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean`。
+具体的な核の共通部分との同定と正次数の最上位評価の線形同値まで実装済み。
+`standardMoorePositiveIso x y n` は標準模型の Moore 正規化の次数 n+1 の項と
+`(homObject R D x y).X (-(n+1 : ℤ))` との同型（`[CommRing R] [DGCategory R D]`）。
+零次数と微分との両立は残る。公開81宣言の正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean`。
 残りは実際の chain map・Mathlib Γ との同定、C_Δ の AW 合成、
 比較写像、低次の一致、写像空間の比較。同値の最終判定は A3e が届いた後に行う。

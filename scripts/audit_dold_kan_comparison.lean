@@ -13,135 +13,243 @@ set_option pp.explicit true
 
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.connectiveHomComplex
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.connectiveHomComplex
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.connectiveHomComplex_zeroIso
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.connectiveHomComplex_zeroIso
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.connectiveHomComplex_positiveIso
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.connectiveHomComplex_positiveIso
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.connectiveHomComplex_zeroCyclesIso
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.connectiveHomComplex_zeroCyclesIso
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.connectiveHomComplex_d_positive
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.connectiveHomComplex_d_positive
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.connectiveHomComplex_d_zero
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.connectiveHomComplex_d_zero
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.doldKanHomModule
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.doldKanHomModule
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.doldKanHomSpace
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.doldKanHomSpace
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.doldKanHomNormalizationIso
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.doldKanHomNormalizationIso
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.card_before_add_after
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.card_before_add_after
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.negOnePow_nat_add_one
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.negOnePow_nat_add_one
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_deletion
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_deletion
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.homModule
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.homModule
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.homSpace
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.homSpace
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.homSpaceLiftIso
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.homSpaceLiftIso
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.homSpaceLiftKan
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.homSpaceLiftKan
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.homSpaceKan
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.homSpaceKan
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.normalizedModuleSubmodule
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.normalizedModuleSubmodule
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.moore_positiveFace_zero
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.moore_positiveFace_zero
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.mooreToNormalizedModule
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.mooreToNormalizedModule
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.normalizedModule_subtype_factors
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.normalizedModule_subtype_factors
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.mooreNormalizedModuleIso
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.mooreNormalizedModuleIso
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.normalizedLift_mem
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.normalizedLift_mem
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.normalizedTopEval_surjective
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.normalizedTopEval_surjective
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.normalizedTopEquiv
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.normalizedTopEquiv
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardMoorePositiveIso
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardMoorePositiveIso
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardRhs_normalized_univ
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardRhs_normalized_univ
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.normalized_top_differential
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.normalized_top_differential
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.normalizedTopEval
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.normalizedTopEval
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.normalizedTopEval_injective
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.normalizedTopEval_injective
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.singleComponent
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.singleComponent
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.singleComponent_self
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.singleComponent_self
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.singleComponent_other
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.singleComponent_other
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.normalizedLiftData
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.normalizedLiftData
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.normalizedLiftData_top
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.normalizedLiftData_top
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.normalizedLiftData_face
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.normalizedLiftData_face
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.normalizedLiftData_other
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.normalizedLiftData_other
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardRhs_lift_other
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardRhs_lift_other
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardRhs_lift_top
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.standardRhs_lift_top
+
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.normalizedLiftData_mem_standard
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.normalizedLiftData_mem_standard
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardNormalizedSubmodule
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardNormalizedSubmodule
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.mem_standardNormalizedSubmodule_iff
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.mem_standardNormalizedSubmodule_iff
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.normalized_component_zero_of_notMem
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.normalized_component_zero_of_notMem
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.normalized_component_zero
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.normalized_component_zero
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_succ
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_succ
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_mul_self
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_mul_self
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_add
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_add
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_differential
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_differential
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_cut
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_cut
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_smul_involutive
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_smul_involutive
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.signChangeData
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.signChangeData
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.signChangeData_component
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.signChangeData_component
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.signChangeData_involutive
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.signChangeData_involutive
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardRhs
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardRhs
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardRhs_signChangeData
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardRhs_signChangeData
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.signChangeData_pullback
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.signChangeData_pullback
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardPullback
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardPullback
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardPullback_val
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardPullback_val
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardPullback_id
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardPullback_id
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardPullback_comp
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardPullback_comp
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardPullback_equiv
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardPullback_equiv
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardModule
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardModule
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardModuleIso
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardModuleIso
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardHomSpace
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardHomSpace
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.homSpaceStandardIso
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.homSpaceStandardIso
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardHomSpaceKan
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardHomSpaceKan
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardMooreTermIso
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardMooreTermIso
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardMooreTopMap
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardMooreTopMap
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardMooreTopMap_mono
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardMooreTopMap_mono
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardSubmodule
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardSubmodule
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.StandardSimplex
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.StandardSimplex
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.signChange_mem_standard
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.signChange_mem_standard
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.signChange_mem_linear
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.signChange_mem_linear
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.standardSimplexEquiv
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.standardSimplexEquiv
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.uliftSimplexHom
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.uliftSimplexHom
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.uliftSimplexHom_yonedaEquiv
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.uliftSimplexHom_yonedaEquiv
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.uliftSimplexHom_face
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.uliftSimplexHom_face
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.kanComplex_of_ulift
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.kanComplex_of_ulift
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.homSpaceVertexCycleEquiv
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.homSpaceVertexCycleEquiv
+
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.closedHomVertexEquiv
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.closedHomVertexEquiv

@@ -1353,8 +1353,13 @@ namespace `DoldKanComparison` の `homModule x y : SimplicialObject (ModuleCat.{
 `standardMooreTermIso` により標準模型へ適用し、`standardMooreTopMap_mono` は正次数の
 正規化から H^(−n) への最上位成分による評価が単射であることを示す。正規化された成分は
 全体集合と零番目の面以外では零で、後者は前者の δ に等しい。
-全射性・微分との両立・零次数の比較と Mathlib Γ 側への接続はまだ残る。
-対象・集約ビルドは3542件で成功し、公開67宣言の型と公理監査は標準三公理のみ。
+`normalizedLiftData` は最上位に z、零番目の面に δz を置く具体的な逆構成であり、
+標準方程式と全ての正の面の消滅を満たす。`normalizedTopEval_surjective` により
+最上位評価は全射でもあり、`normalizedTopEquiv` は線形同値となる。
+`standardMoorePositiveIso x y n` は実際の Mathlib Moore 正規化の次数 n+1 の項と
+H^(−(n+1)) との同型で、追加の閉性・充填の仮定はない。
+微分との両立・零次数の比較と Mathlib Γ 側への接続はまだ残る。
+対象・集約ビルドは3545件で成功し、公開81宣言の型と公理監査は標準三公理のみ。
 
 γ1.5b 全体は未完了。残りは標準成分模型と実際の chain map・Mathlib Γ との同定、AW 豊穣合成と
 通常の閉零射の圏との整合性、γ1.5c の比較写像、γ1.5d の写像空間の比較。
