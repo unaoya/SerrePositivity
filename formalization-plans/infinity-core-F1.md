@@ -7473,5 +7473,32 @@ lemma isQCatEquivalence_over_interval_of_endpoint_fibers_of_cocartesian_lifts
           IsCocartesianEdge p (SSet.yonedaEquiv e) ∧
           IsCocartesianEdge q (SSet.yonedaEquiv (e ≫ f))) : IsQCatEquivalence f
 
+lemma relativeJoin_extension_preserved_lift {X Y E : SSet.{u}} [Quasicategory Y]
+    (f : X ⟶ Y) (p : E ⟶ (Δ[1] : SSet.{u})) (G : relativeJoin f (𝟙 Y) ⟶ E)
+    (H : (Δ[1] : SSet.{u}) ⊗ X ⟶ E) (hH : relativeJoinPrism f ≫ G = H)
+    (hc : ∀ x : X _⦋0⦌, IsCocartesianEdge p (prismVerticalSimplex H x))
+    (x : (relativeJoin f (𝟙 Y)) _⦋0⦌)
+    (hx : (relativeJoinProjection f (𝟙 Y)).app (Opposite.op ⦋0⦌) x =
+      stdSimplex.obj₀Equiv.symm (0 : Fin 2)) :
+    ∃ e : (Δ[1] : SSet.{u}) ⟶ relativeJoin f (𝟙 Y),
+      stdSimplex.δ 1 ≫ e = SSet.yonedaEquiv.symm x ∧
+      e ≫ relativeJoinProjection f (𝟙 Y) = 𝟙 Δ[1] ∧
+      IsCocartesianEdge (relativeJoinProjection f (𝟙 Y)) (SSet.yonedaEquiv e) ∧
+      IsCocartesianEdge p (SSet.yonedaEquiv (e ≫ G))
+
+lemma relativeJoin_extension_isQCatEquivalence {X Y E : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] [Quasicategory E] (f : X ⟶ Y)
+    (p : E ⟶ (Δ[1] : SSet.{u}))
+    (G : relativeJoin f (𝟙 Y) ⟶ E) (hG : G ≫ p = relativeJoinProjection f (𝟙 Y))
+    (H : (Δ[1] : SSet.{u}) ⊗ X ⟶ E) (hH : relativeJoinPrism f ≫ G = H)
+    (g : Y ⟶ E) (hg : relativeJoinInr f (𝟙 Y) ≫ G = g)
+    (z0 : X ⟶ vertexFiber p (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
+    (hz0 : z0 ≫ vertexFiberι p (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = prismEndpoint 0 X ≫ H)
+    (z1 : Y ⟶ vertexFiber p (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
+    (hz1 : z1 ≫ vertexFiberι p (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = g)
+    (he0 : IsPrecompositionEquivalence z0) (he1 : IsPrecompositionEquivalence z1)
+    (hc : ∀ x : X _⦋0⦌, IsCocartesianEdge p (prismVerticalSimplex H x)) :
+    IsQCatEquivalence G
+
 end SerrePositivity.InfinityCategories
 ```
