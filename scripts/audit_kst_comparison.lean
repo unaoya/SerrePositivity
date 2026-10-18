@@ -109,6 +109,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -3017,6 +3018,39 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.kanReplacementSquare_homotopyPullback_iff
 #print axioms SerrePositivity.KST.Comparison.kanReplacementSquare_homotopyPullback_iff
+
+
+-- LocalCoefficients.lean
+
+#check @SerrePositivity.KST.Comparison.LocalCoefficientSystem
+#print axioms SerrePositivity.KST.Comparison.LocalCoefficientSystem
+
+#check @SerrePositivity.KST.Comparison.coefficientSimplicialFunctor
+#print axioms SerrePositivity.KST.Comparison.coefficientSimplicialFunctor
+
+#check @SerrePositivity.KST.Comparison.localCoefficientChains
+#print axioms SerrePositivity.KST.Comparison.localCoefficientChains
+
+#check @SerrePositivity.KST.Comparison.localCoefficientHomology
+#print axioms SerrePositivity.KST.Comparison.localCoefficientHomology
+
+#check @SerrePositivity.KST.Comparison.pullbackLocalCoefficients
+#print axioms SerrePositivity.KST.Comparison.pullbackLocalCoefficients
+
+#check @SerrePositivity.KST.Comparison.localCoefficientSimplicialMap
+#print axioms SerrePositivity.KST.Comparison.localCoefficientSimplicialMap
+
+#check @SerrePositivity.KST.Comparison.localCoefficientChainsMap
+#print axioms SerrePositivity.KST.Comparison.localCoefficientChainsMap
+
+#check @SerrePositivity.KST.Comparison.localCoefficientHomologyMap
+#print axioms SerrePositivity.KST.Comparison.localCoefficientHomologyMap
+
+#check @SerrePositivity.KST.Comparison.LocalHomologyIsomorphism
+#print axioms SerrePositivity.KST.Comparison.LocalHomologyIsomorphism
+
+#check @SerrePositivity.KST.Comparison.constantLocalCoefficients
+#print axioms SerrePositivity.KST.Comparison.constantLocalCoefficients
 
 
 -- LocalizedCoproductMaps.lean
