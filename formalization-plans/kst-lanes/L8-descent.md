@@ -93,10 +93,12 @@ Cartesian モデルと指定引き戻しの標準同型の同変性を証明し�
 増強先を含む矢の圏の同型から、実際の底変換被覆を使う transfer 還元を得た（§45）。
 元の値域の線形性なしでも、実際の図式関手の像に対する観測後の rank 公式から
 全次数ごとに transfer を正規化する経路を構成した（§46）。
+有限全射の実際の strict transform の有限性・全射性を証明し、局所 Noether 基底で
+実際の構造射が平坦なら有限忠実平坦な細分を取り出した（§47）。
 `Theorem31.lean` では (3.8) と中心上の帰納仮定による代数的な軌道貼り合わせを証明。
 正本 D7 に従う導来値域への実現の型を §19 に明示する。
 検証状態：`lake build SerrePositivity.KST.Descent` が成功。
-監査状態：`scripts/audit_kst_descent.lean` は 116 モジュール・1433 宣言を検査し成功。
+監査状態：`scripts/audit_kst_descent.lean` は 117 モジュール・1440 宣言を検査し成功。
 許容公理は標準三公理のみ。主定理や八つの公理の完成を意味しない。
 切断を持つ射の帰納の区切りとして、全体ビルド `lake build` も成功（9418 ジョブ）。
 終了コードは `set -eo pipefail` で確認。ログは `/tmp/l8-sectioned-full-build.log`。
@@ -607,6 +609,11 @@ Z 上の帰納仮定で残りの辺を同型とする。
 | `invertibleCompositeRetract`、`naturalComparisonRetractOfIsoComposite` | 往復の合成の同型性による比較射の retract | 対象ビルド済み、圏の線形性は不要 |
 | `piComparison_of_observedComposite`、`piComparison_of_observedRank` | 観測後の同型・rank 公式による全次数比較の移行 | 対象ビルド済み、元の圏に線形性を課さない |
 | `BaseChangeTransfer.piCechComparison_of_observedRank` | 実際の底変換被覆からの観測後の transfer 還元 | 対象ビルド済み、rank 公式は実際の図式関手の像で要求 |
+| `surjective_of_proper_dense_restrict` | 固有射の稠密開集合上の全射性から全射性 | 対象ビルド済み、開部分での同型性は不要 |
+| `strictTransformπ_isFinite`、`strictTransformπ_restrict_surjective` | 実際の strict transform の有限性と開部分上の全射性 | 対象ビルド済み、既存の実際の閉包含を使用 |
+| `strictTransformπ_centerComplement_surjective` | 有限全射の中心外からの strict transform の全射性 | 対象ビルド済み、実際の blowup の中心外の稠密性を使用 |
+| `strictTransformπ_locallyOfFinitePresentation` | 局所 Noether 基底上の有限射の strict transform の有限表示性 | 対象ビルド済み、基底の局所 Noether 性を明示 |
+| `exists_finiteFlat_refinement_of_flat_strictTransform` | 平坦化した実際の strict transform から有限忠実平坦な細分を取り出す | 対象ビルド済み、平坦化中心の存在は別工程 |
 | `finiteCoproductDesc_isFinite` | 共通の終域への有限個の有限射を非交和にまとめる | 対象ビルド済み |
 | `sectionOrbitMap_isFinite`、`sectionOrbitMap_isProper` | 分離射の有限個の切断からの軌道射の有限性・固有性 | 対象ビルド済み |
 | `reducedSectionOrbitMap_isFinite` | 被約化への切断の軌道射の有限性 | 対象ビルド済み |
@@ -1506,3 +1513,40 @@ L9 の実際の Tot・hG と分裂降下・Fubini、実降下からの自然な�
 
 §46 の保存検証：集約対象ビルドと公理監査が成功。116 モジュール・1433 宣言、標準三公理のみ。
 §45 の全体ビルド成功後、今回の保存単位では全体ビルドを反復しない。
+
+
+## 47. 補題 3.3 の有限全射の strict transform と有限忠実平坦な細分
+
+L9 の現状を再確認し、L9e の Tot・hG は引き続き未着手である。
+一方、SchemeLemmas 側の実際の strict transform は、
+元の空間と blowup のファイバー積における開部分のスキーム論的像として構成されている。
+その閉包含と構造射を読み取り、L8 の補題 3.3 の幾何に接続した。
+他レーンのファイルは変更していない。
+
+有限射 f : X → Y の strict transform の構造射は、
+有限射の引き戻しに実際の閉包含を合成したものなので有限である。
+元の f が全射なら、その引き戻しも全射であり、制限した射も全射となる。
+strict transform の閉包含は定義に用いた開部分で同型なので、
+構造射のその開部分上の制限も全射となる。
+ここで元の f が開部分で同型になるという仮定は不要である。
+
+固有射の稠密な開部分上の全射性から全体の全射性を導く補題を証明した。
+制限射の各点の持ち上げから開部分を像に含め、固有性による閉像性で閉包も含める。
+実際の blowup の中心外の逆像は常に稠密なので、
+中心外を用いて構成した有限全射の strict transform は全射となる。
+平坦化や降下の結論をこの全射性の仮定としては使っていない。
+
+局所 Noether 基底では blowup も局所 Noether であり、有限射の有限型性から
+strict transform の構造射の局所有限表示性を導いた。
+したがって、この実際の構造射が平坦になっていれば、
+有限・平坦・全射・局所有限表示な射と元の X への射、および基底上の可換式を取り出せる。
+`exists_finiteFlat_refinement_of_flat_strictTransform` はこの実際の空間と射を返す。
+
+これは平坦化後から有限忠実平坦細分までの幾何的な段階を完了するものである。
+公理 (6) の平坦化中心の存在、整な基底を支配する被約既約成分の選択、
+元の有限型の圏内の全図式への持ち上げ、Čech 細分と中心上の帰納の接続は残る。
+SchemeLemmas の有限加群のチャート平坦化を直ちに strict transform のスキームの平坦性と
+同一視してはいない。実際の同定が必要である。
+最小公理全体、実際の Tot・hG、自然な blowup 列と有限積保存の導出、(3.6)・K0・T2・E も未完である。
+
+§47 の保存検証：集約対象ビルドと公理監査が成功。117 モジュール・1440 宣言、標準三公理のみ。

@@ -44,6 +44,7 @@ run_cmd do
       `SerrePositivity.KST.Descent.SchemeFacts,
       `SerrePositivity.KST.Descent.ClosedDimension,
       `SerrePositivity.KST.Descent.BlowupGeometry,
+      `SerrePositivity.KST.Descent.FiniteFlatStrictTransform,
       `SerrePositivity.KST.Descent.MayerVietoris,
       `SerrePositivity.KST.Descent.SquareSequence,
       `SerrePositivity.KST.Descent.CoincidenceLocus,

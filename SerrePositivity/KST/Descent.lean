@@ -16,6 +16,7 @@ public import SerrePositivity.KST.Descent.NilpotentThickening
 public import SerrePositivity.KST.Descent.SchemeFacts
 public import SerrePositivity.KST.Descent.ClosedDimension
 public import SerrePositivity.KST.Descent.BlowupGeometry
+public import SerrePositivity.KST.Descent.FiniteFlatStrictTransform
 public import SerrePositivity.KST.Descent.MayerVietoris
 public import SerrePositivity.KST.Descent.SquareSequence
 public import SerrePositivity.KST.Descent.CoincidenceLocus
@@ -192,6 +193,8 @@ Cartesian モデルと指定引き戻しの標準同型の同変性を証明し�
 任意の図式関手での像と全次数観測の同型への移行も公開する。
 底変換後の係数図式と実際の底変換被覆の Čech 図式の自然同型を構成し、
 増強先を含む矢の圏の同型を経て、この実際の被覆からの transfer 還元を公開する。
+有限全射の実際の strict transform の有限性・中心外での全射性・全体の全射性を証明し、
+局所 Noether 基底で平坦なら有限忠実平坦な細分を取り出す。
 元の値域の線形性を使わず、実際の図式関手の像における観測後の rank 公式で
 全次数ごとに正規化する代替経路も公開する。
 
