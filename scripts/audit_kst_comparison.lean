@@ -106,6 +106,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -296,6 +297,21 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.monoidBarMap_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.monoidBarMap_localized_isIso
+
+
+-- BarPositiveDelooping.lean
+
+#check @SerrePositivity.KST.Comparison.monoidGroupCompletionPointedMap
+#print axioms SerrePositivity.KST.Comparison.monoidGroupCompletionPointedMap
+
+#check @SerrePositivity.KST.Comparison.pointedKanPositiveHomotopyMulEquiv
+#print axioms SerrePositivity.KST.Comparison.pointedKanPositiveHomotopyMulEquiv
+
+#check @SerrePositivity.KST.Comparison.monoidBarPositiveHomotopyMulEquiv
+#print axioms SerrePositivity.KST.Comparison.monoidBarPositiveHomotopyMulEquiv
+
+#check @SerrePositivity.KST.Comparison.stableHatGLBarPositiveHomotopyMulEquiv
+#print axioms SerrePositivity.KST.Comparison.stableHatGLBarPositiveHomotopyMulEquiv
 
 
 -- BarSegal.lean
@@ -512,6 +528,24 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.fiberCocone_ι_snd
 #print axioms SerrePositivity.KST.Comparison.fiberCocone_ι_snd
+
+
+-- CoefficientMatrixStabilization.lean
+
+#check @SerrePositivity.KST.Comparison.coefficientMatrixStabilization
+#print axioms SerrePositivity.KST.Comparison.coefficientMatrixStabilization
+
+#check @SerrePositivity.KST.Comparison.coefficientMatrixStabilization_apply_sum
+#print axioms SerrePositivity.KST.Comparison.coefficientMatrixStabilization_apply_sum
+
+#check @SerrePositivity.KST.Comparison.coefficientMatrixRankSequence
+#print axioms SerrePositivity.KST.Comparison.coefficientMatrixRankSequence
+
+#check @SerrePositivity.KST.Comparison.grpCat_hasSequentialColimits
+#print axioms SerrePositivity.KST.Comparison.grpCat_hasSequentialColimits
+
+#check @SerrePositivity.KST.Comparison.stableCoefficientMatrices
+#print axioms SerrePositivity.KST.Comparison.stableCoefficientMatrices
 
 
 -- CommonTrivialRefinement.lean
@@ -2320,6 +2354,12 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.simplicialRingHatGLCoefficientHomotopyMulEquiv
 
 
+-- HatGLCoefficientStabilization.lean
+
+#check @SerrePositivity.KST.Comparison.hatGLCoefficientHomotopy_stabilization
+#print axioms SerrePositivity.KST.Comparison.hatGLCoefficientHomotopy_stabilization
+
+
 -- HatGLComponentIso.lean
 
 #check @SerrePositivity.KST.Comparison.matrixCoefficientEdge
@@ -2357,6 +2397,51 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.hatGLPositiveHomotopyMulEquiv_apply
 #print axioms SerrePositivity.KST.Comparison.hatGLPositiveHomotopyMulEquiv_apply
+
+
+-- HatGLRankCoefficientIso.lean
+
+#check @SerrePositivity.KST.Comparison.nativeHatGLHomotopyGroupDiagram
+#print axioms SerrePositivity.KST.Comparison.nativeHatGLHomotopyGroupDiagram
+
+#check @SerrePositivity.KST.Comparison.nativeHatGLHomotopyGroupDiagram_map_succ
+#print axioms SerrePositivity.KST.Comparison.nativeHatGLHomotopyGroupDiagram_map_succ
+
+#check @SerrePositivity.KST.Comparison.nativeHatGLRankCoefficientIso
+#print axioms SerrePositivity.KST.Comparison.nativeHatGLRankCoefficientIso
+
+#check @SerrePositivity.KST.Comparison.hatGLRankCoefficientIso
+#print axioms SerrePositivity.KST.Comparison.hatGLRankCoefficientIso
+
+
+-- HatGLShiftedEntry.lean
+
+#check @SerrePositivity.KST.Comparison.ringDegenerateVertex_one
+#print axioms SerrePositivity.KST.Comparison.ringDegenerateVertex_one
+
+#check @SerrePositivity.KST.Comparison.hatGLShiftedEntryMap
+#print axioms SerrePositivity.KST.Comparison.hatGLShiftedEntryMap
+
+#check @SerrePositivity.KST.Comparison.hatGLShiftedEntryMap_basepoint
+#print axioms SerrePositivity.KST.Comparison.hatGLShiftedEntryMap_basepoint
+
+#check @SerrePositivity.KST.Comparison.hatGLShiftedEntryMap_app
+#print axioms SerrePositivity.KST.Comparison.hatGLShiftedEntryMap_app
+
+#check @SerrePositivity.KST.Comparison.hatGLCoefficientHomotopyMulEquiv_entry
+#print axioms SerrePositivity.KST.Comparison.hatGLCoefficientHomotopyMulEquiv_entry
+
+
+-- HatGLShiftedStabilization.lean
+
+#check @SerrePositivity.KST.Comparison.hatGLSpaceStabilization
+#print axioms SerrePositivity.KST.Comparison.hatGLSpaceStabilization
+
+#check @SerrePositivity.KST.Comparison.hatGLSpaceStabilization_unit
+#print axioms SerrePositivity.KST.Comparison.hatGLSpaceStabilization_unit
+
+#check @SerrePositivity.KST.Comparison.hatGLShiftedEntryMap_stabilization
+#print axioms SerrePositivity.KST.Comparison.hatGLShiftedEntryMap_stabilization
 
 
 -- HatGLStabilization.lean
@@ -2998,6 +3083,21 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.matrixStabilization_map
 
 
+-- MatrixZeroStabilization.lean
+
+#check @SerrePositivity.KST.Comparison.matrixZeroStabilization
+#print axioms SerrePositivity.KST.Comparison.matrixZeroStabilization
+
+#check @SerrePositivity.KST.Comparison.matrixZeroStabilization_map
+#print axioms SerrePositivity.KST.Comparison.matrixZeroStabilization_map
+
+#check @SerrePositivity.KST.Comparison.matrixStabilization_sub_one
+#print axioms SerrePositivity.KST.Comparison.matrixStabilization_sub_one
+
+#check @SerrePositivity.KST.Comparison.matrixZeroStabilizationMap
+#print axioms SerrePositivity.KST.Comparison.matrixZeroStabilizationMap
+
+
 -- MonoBasePullback.lean
 
 #check @SerrePositivity.KST.Comparison.monoBasePullback_fst_snd
@@ -3101,6 +3201,24 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.SimplicialMonoid.toComponents
 #print axioms SerrePositivity.KST.Comparison.SimplicialMonoid.toComponents
+
+
+-- MonoidPointedColimit.lean
+
+#check @SerrePositivity.KST.Comparison.monoidSpaceFunctor
+#print axioms SerrePositivity.KST.Comparison.monoidSpaceFunctor
+
+#check @SerrePositivity.KST.Comparison.monoidSpaceFunctor_preservesSequentialColimits
+#print axioms SerrePositivity.KST.Comparison.monoidSpaceFunctor_preservesSequentialColimits
+
+#check @SerrePositivity.KST.Comparison.monoidPointedFunctor
+#print axioms SerrePositivity.KST.Comparison.monoidPointedFunctor
+
+#check @SerrePositivity.KST.Comparison.monoidPointed_kanComplex
+#print axioms SerrePositivity.KST.Comparison.monoidPointed_kanComplex
+
+#check @SerrePositivity.KST.Comparison.monoidPointed_basepoint
+#print axioms SerrePositivity.KST.Comparison.monoidPointed_basepoint
 
 
 -- MonoidTranslations.lean
@@ -4118,6 +4236,84 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.stableHatGLGroupCompletionMap_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.stableHatGLGroupCompletionMap_localized_isIso
+
+
+-- StableHatGLHigherComparison.lean
+
+#check @SerrePositivity.KST.Comparison.monoidBarKanConnected
+#print axioms SerrePositivity.KST.Comparison.monoidBarKanConnected
+
+#check @SerrePositivity.KST.Comparison.stableHatGLCoefficientHomotopyIso
+#print axioms SerrePositivity.KST.Comparison.stableHatGLCoefficientHomotopyIso
+
+#check @SerrePositivity.KST.Comparison.stableHatGLCoefficientHomotopyMulEquiv
+#print axioms SerrePositivity.KST.Comparison.stableHatGLCoefficientHomotopyMulEquiv
+
+#check @SerrePositivity.KST.Comparison.lemma_2_13_pi_one
+#print axioms SerrePositivity.KST.Comparison.lemma_2_13_pi_one
+
+#check @SerrePositivity.KST.Comparison.lemma_2_13_higher
+#print axioms SerrePositivity.KST.Comparison.lemma_2_13_higher
+
+
+-- StableHatGLHomotopyColimit.lean
+
+#check @SerrePositivity.KST.Comparison.liftedRankEquivalence
+#print axioms SerrePositivity.KST.Comparison.liftedRankEquivalence
+
+#check @SerrePositivity.KST.Comparison.liftedRank_isFiltered
+#print axioms SerrePositivity.KST.Comparison.liftedRank_isFiltered
+
+#check @SerrePositivity.KST.Comparison.stableHatGLLiftedPointedDiagram
+#print axioms SerrePositivity.KST.Comparison.stableHatGLLiftedPointedDiagram
+
+#check @SerrePositivity.KST.Comparison.stableHatGLLiftedPointedDiagram_kan
+#print axioms SerrePositivity.KST.Comparison.stableHatGLLiftedPointedDiagram_kan
+
+#check @SerrePositivity.KST.Comparison.stableHatGLLiftedPointedCocone
+#print axioms SerrePositivity.KST.Comparison.stableHatGLLiftedPointedCocone
+
+#check @SerrePositivity.KST.Comparison.stableHatGLLiftedPointedCocone_underlyingIsColimit
+#print axioms SerrePositivity.KST.Comparison.stableHatGLLiftedPointedCocone_underlyingIsColimit
+
+#check @SerrePositivity.KST.Comparison.stableHatGLLiftedPointedCocone_kan
+#print axioms SerrePositivity.KST.Comparison.stableHatGLLiftedPointedCocone_kan
+
+#check @SerrePositivity.KST.Comparison.stableHatGLHomotopyIsColimit
+#print axioms SerrePositivity.KST.Comparison.stableHatGLHomotopyIsColimit
+
+
+-- StableHatGLHomotopyGroupColimit.lean
+
+#check @SerrePositivity.KST.Comparison.stableHatGLHomotopyGroupDiagram
+#print axioms SerrePositivity.KST.Comparison.stableHatGLHomotopyGroupDiagram
+
+#check @SerrePositivity.KST.Comparison.stableHatGLHomotopyGroupCocone
+#print axioms SerrePositivity.KST.Comparison.stableHatGLHomotopyGroupCocone
+
+#check @SerrePositivity.KST.Comparison.stableHatGLHomotopyGroupDiagram_hasColimit
+#print axioms SerrePositivity.KST.Comparison.stableHatGLHomotopyGroupDiagram_hasColimit
+
+#check @SerrePositivity.KST.Comparison.stableHatGLHomotopyGroupCocone_underlyingIsColimit
+#print axioms SerrePositivity.KST.Comparison.stableHatGLHomotopyGroupCocone_underlyingIsColimit
+
+#check @SerrePositivity.KST.Comparison.stableHatGLHomotopyGroupIsColimit
+#print axioms SerrePositivity.KST.Comparison.stableHatGLHomotopyGroupIsColimit
+
+#check @SerrePositivity.KST.Comparison.stableHatGLHomotopyGroupColimitIso
+#print axioms SerrePositivity.KST.Comparison.stableHatGLHomotopyGroupColimitIso
+
+
+-- StableHatGLKan.lean
+
+#check @SerrePositivity.KST.Comparison.stableHatGLPointedCocone
+#print axioms SerrePositivity.KST.Comparison.stableHatGLPointedCocone
+
+#check @SerrePositivity.KST.Comparison.stableHatGLPointedCocone_underlyingIsColimit
+#print axioms SerrePositivity.KST.Comparison.stableHatGLPointedCocone_underlyingIsColimit
+
+#check @SerrePositivity.KST.Comparison.stableHatGL_kanComplex
+#print axioms SerrePositivity.KST.Comparison.stableHatGL_kanComplex
 
 
 -- StrictCylinderFibration.lean

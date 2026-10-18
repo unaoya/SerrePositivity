@@ -636,7 +636,7 @@ filtered colimit と有限極限の交換により厳密な引き戻しの余極
 Segal Proposition 1.6 の無限骨格の段階では、この有限表示可能性と実際の余極限の経路を用いる。
 原典の Lemma 1.8 の telescope を経由する記述とは異なる証明経路であり、
 既証の Lemma 1.8 は独立した比較補題として保持する。
-fat realization と対角の比較の局所化可逆性は、この順序余極限の定理だけでは得られず別途残る。
+fat realization と対角の比較の局所化可逆性は、この順序余極限の定理だけからは得られず、別の証明を要する。
 
 ### fat realization の各行の局所化同型に対する不変性
 
@@ -758,459 +758,130 @@ K-L9 の π₁ の積の MulStruct は二単体の δ₂ を第一因子、δ₀
 
 ## 12. 現在地と主要宣言
 
-現在地：L2a は完了。L2b の群完備化比較と基本群の群同型を完了し、高次の行列公式を実装中。
-既存 γ1.5 の AW の閉性・結合律・単位律・自然性のビルドを確認した。
-既存の標準成分模型から Γ の環構造を構成した。
-ĜL_r の単体的モノイド、π₀ĜL_r ≃* GL_r(π₀A)、群構造、積と単位の代表上の整合を証明した。
-一対象 dg 圏を入力とする ΓA と ĜL_r(A) の入口を構成した。
-H⁰ の自己射環との環同型と、connective な入力の good truncation の擬同型を証明した。
-L2a の有限 rank の要求は完了。安定 rank の余極限とその自然性は L2b の BĜL への接続で扱う。
-L2b：一般のモノイドの二重単体的 bar、対角による分類空間、連結性と関手性を構成した。
-一般の π₀ 誘導モノイドによる群状性を定義し、ĜL_r がそれを満たすことを証明した。
-正則作用の分類圏、射影、準同型に関する関手と nerve の実際の収縮を構成した。
-正則作用の二重単体的 nerve と対角の全空間も構成した。
-標準写像の随伴側 M×Δ¹→BM と、両端が基点に一致する実単体的ホモトピーを構成した。
-正則 bar の対角上の収縮を実単体的ホモトピーとして証明した。
-正則 bar から BM への射影、M から全空間への写像と基点への三角形を構成した。
-頂点による左平行移動、その辺に沿う実ホモトピーと π₀ への降下を構成した。
-群状性から逆成分の平行移動で局所化後の左右逆を作り、anodyne 局所化での同型を証明した。
-bar の各行と M の有限積の自然な厳密同型を構成し、Segal 条件を供給した。
-正則 bar の基点上の厳密ファイバーと M の単体的同型、および標準四角形の引き戻し性を証明した。
-ファイバーへ制限した全空間の収縮を射影すると標準ループ族に一致することを証明した。
-K-L9 の単体的円からの点付き内部 Hom を借り、Kan 置換した BM のループ空間を構成した。
-標準ループ族を円の商の普遍性へ降ろし、実際の射 M→ΩR(BM) と評価による復元を証明した。
-正則 bar の各行の基底×M 座標と、任意の面・退化による始点の左平行移動の式を証明した。
-右射を関手的な Kan fibration へ置換するホモトピー引き戻し模型と標準比較射を構成した。
-模型の射影の fibration 性、左の対象が Kan の場合の模型の Kan 性、基底の可換な比較の射を証明した。
-anodyne 包含と基底を固定する実ホモトピーを pushout-product の持ち上げから構成した。
-基底上の収縮を任意の引き戻しへ移し、元の右射が Kan fibration なら厳密引き戻しの標準比較射が局所化同型となることを証明した。
-標準単体の零頂点への実収縮、元の族の作用とそのホモトピーを構成した。
-群状性から単体上の元の族による作用が anodyne 局所化同型となることを証明した。
-単体上の作用の比較をセルと骨格の単射列で貼り合わせ、任意のパラメータで動く元の族の作用の局所化可逆性を証明した。
-同じ右射の二つの anodyne–Kan 分解の比較が任意の基底変換後も可逆となること、別分解でもホモトピー引き戻し性を判定できることを証明した。
-積射影の引き戻しは、因子の Kan 性を仮定せずホモトピー引き戻しとなることを証明した。
-正則 bar の各構造写像が定める四角形のホモトピー引き戻し性を、群状性だけから証明した。
-正次元 horn の包含の Kan fibration に沿う逆像が anodyne 局所化で同型となることを、実際の二段階の収縮で証明した。
-スライスの閉構造と積・忘却の右随伴を実際に構成し、horn ごとの持ち上げ性を移すことで、一般の anodyne 射の Kan fibration に沿う引き戻しの局所化可逆性を証明した。
-Kan 基底上では局所化可逆な単射の Kan fibration に対する左持ち上げ性、および任意の局所化同型の Kan 引き戻しの可逆性を証明した。
-Kan 基底上の Kan fibration 同士の比較は左の任意の射で引き戻しても可逆となり、固定した Kan 基底上のホモトピー引き戻し模型の左右両入力に関する不変性まで証明した。
-Mathlib の sd–Ex 随伴から、自然な最終頂点写像と各単体での切断、単射な X→Ex(X) を構成した。
-Ex の反復と Ex∞ の実際の余極限関手、標準単位、有限極限保存を証明した。
-Moss Definition 23 の作用素と合成則・冪等性・両端の式、Notation 24 の固定点フィルター、その零段階と単位の像の同定を証明した。
-単体ごとの最小の複雑度と、その閾値の最小性を証明した。
-Moss Definition 25 の r_n^k と、Lemma 26 (1) の指定した面との合成が恒等となる式を証明した。
-和集合保存による singleton 上の比較原理、作用素の和集合保存と初期区間の像を証明した。
-Lemma 26 (4) の拡張退化と複雑度の交換、(6) の小さい複雑度での通常の退化との一致を証明した。
-Lemma 26 (5) の面と複雑度の吸収則を証明した。
-最小の複雑度で次元を上げる exPairingStep と指定面による復元、単射性（Lemma 27）を証明した。
-exPairingStep が最小の複雑度を保つこと、元の X の像に入る条件の同値も証明した。
-Lemma 26 (7) より強い未切断の二重拡張退化の式と、原典の切断後の式を証明した。
-exPairingStep の二重適用の通常の退化による表示と退化性を証明した。
-対応先が非退化なら元は前段の exPairingStep の像ではないこと（Lemma 28 の部分）を証明した。
-Lemma 26 (2) の前側の面の吸収則、(3) の後ろの面との交換則を証明した。
-Lemma 26 (8)・(9) の切断した拡張退化と前後の通常の退化との交換則を証明した。
-Lemma 26 の九つの式を全て証明した。
-前側の面の複雑度の減少と、後ろの面が元の面の拡張になる式を Ex 上で証明した。
-退化単体の複雑度に合った拡張は退化することを証明した。
-対応先が非退化なら元も非退化であること（Lemma 28 の残りの部分）を証明した。
-小さい複雑度の拡張の退化性、前後の面が元の型 II 単体に等しくないことを証明した。
-型 II の集合 exTypeTwo を定義し、指定面の一意性・対応先の非退化性を証明した（Lemma 29）。
-Mathlib の IsUniquelyCodimOneFace への接続も証明した。
-型 I の集合 exTypeOne と、型 II の n 単体から型 I の n+1 単体への全単射を構成した。
-全次元をまとめる exPairingCore と exPairing、その properness を構成した。
-同次元の異なる型 II の面での最小複雑度の厳密な減少を証明した。
-自然数値の弱 rank 関数 exPairingWeakRank から exPairing の正則性を証明した。
-単位 X→Ex(X) の anodyne 性（Moss Theorem 22）を正則 pairing から証明した。
-反復列を順序合成とし、X→Ex∞(X) の anodyne 性（Corollary 30）を証明した。
-順序集合の nerve の細分から有限鎖の nerve への比較写像を構成した。
-単調写像に関する自然性、最大元の写像を合成した際の Ex の単位との一致を証明した。
-部分順序集合の非空有限鎖の最大元の存在・単調性・像との交換も証明した。
-hornChainVertex を単調写像として定義し、全ての面が horn 内なら反復最大元と一致することを証明した。
-各部分鎖の候補頂点が k 以外の共通の頂点を避けることを証明し、horn への写像を構成した。
-doubleSubdivisionHornMap を二重細分された標準単体から horn への具体的な写像として構成した。
-HornFacePoset とその nerve から horn への最終頂点写像を構成した。
-hornChainToHorn_boundary により、horn 内の面の有限鎖上では候補と反復最大元が一致する。
-実際の sd(horn) から HornFacePoset の nerve への比較を構成し、最終頂点との合成の一致を証明した。
-全対象の subdivisionLastVertexMap と、その標準単体上の明示的な計算式を証明した。
-hornSubdivisionComparison_inclusion で包含との可換性を証明した。
-doubleSubdivisionHornMap_boundary で二重細分の候補の horn 上の境界条件を証明した。
-二回の随伴で転置し、任意の horn の写像が二回の Ex の後で充填できることを証明した。
-有限単体集合から Ex∞ への写像の有限段階への因子化と遷移との整合を証明した。
-exInfinity_kanComplex により Ex∞ の Kan 性（Moss Proposition 21）を証明した。
-有限極限保存・anodyne な単位・Kan 性が揃い、Ex∞ は実際の Kan 置換となった。
-Ex∞ の単射保存と局所化可逆な射の保存・反映を証明した。
-Ex∞ の monoidal 構造と、内部モノイドの置換・単位を構成した。
-既存の SimplicialObject MonCat と内部モノイドの移送を構成し、基礎単体集合の一致を証明した。
-単体的モノイドの Ex∞ 置換と単位を構成し、基礎対象の Kan 性と単位の局所化可逆性を証明した。
-π₀ のモノイド射の関手性、置換が π₀ のモノイド同型を誘導し群状性を保つことを証明した。
-有限積座標の射の局所化可逆性と、bar の各行の Segal 座標の自然性を証明した。
-既存の行ごとの局所化可逆性の対角化定理で、bar の模型の局所化不変性を証明した。
-Ex∞ のモノイド置換への bar の比較射が局所化可逆であることを証明した。
-Kan モノイドの有限積座標・bar の基底と全空間の各行の Kan 性を証明した。
-正則 bar の各行の射影が Kan fibration であることを証明した。
-二重写像円筒を実際の pushout として定義し、比較写像とその恒等・合成の保存を証明した。
-スライスのファイバー関手の余極限・pushout 保存と、その標準比較同型を証明した。
-円筒の端点の余積を C⊗∂Δ[1] と同定し、貼り付けの脚の単射性を証明した。
-局所化可逆な二項余積の射、単射な脚を持つ pushout の比較の可逆性を証明した。
-span の各成分の局所化可逆な比較が二重写像円筒で可逆となることを証明した。
-円筒の端点の自然性の四角形と、二つの引き戻しの二項余積の引き戻し性を証明した。
-adhesive 性による立方体の貼り合わせから、span の厳密な引き戻しについて、
-二重写像円筒の中央の円筒・左右の頂点・中央の頂点の各四角形の引き戻し性を証明した。
-部分対象を保つ二段階の収縮から、包含の anodyne 性を相対ホモトピーの持ち上げで証明した。
-Kan fibration に沿う horn の逆像と、任意の anodyne 射の引き戻しの anodyne 性を証明した。
-スライスの積の右随伴が、任意の Kan fibration を保つことも証明した。基底の Kan 性は不要。
-二段階の収縮を任意の端点の向きへ一般化し、順序集合の nerve の部分対象にも適用した。
-部分型の nerve と全頂点を指定した部分単体集合との同型を構成した。
-horn の安全な面へ頂点 k を加える収縮から、面の部分順序集合の nerve の包含の anodyne 性を証明した。
-余面の分裂による頂点集合の復元と、面の nerve の余面による被覆を証明した。
-実際の正次元 horn の細分比較の各次数の全射性と epi 性を証明した。
-細分の元の標準単体による表示を密度の余極限から証明し、horn の細分の元も余面で覆われることを証明した。
-異なる余面表示の共通の小さい面への持ち上げから、実際の正次元 horn の細分比較の単射性・同型性を証明した。
-この同型で細分された horn の anodyne 性を移し、sd の anodyne 保存と Ex の Kan fibration 保存を証明した。
-horn と標準単体の有限表示可能性による arrow の順序余極限で、Ex∞ の Kan fibration 保存を証明した。
-有限極限保存と局所化後の単位の同型を合わせ、任意の基底での Kan fibration に沿う局所化同型の引き戻しを証明した。
-固定した任意の基底でのホモトピー引き戻し模型の左右の入力の不変性を証明した。
-基底も動く Kan fibration の cospan の比較と、ホモトピー引き戻し模型の三入力の不変性を証明した。
-標準比較射の自然性、四つの頂点の局所化同型によるホモトピー引き戻し性の保存・反映を証明した。
-Ex∞ が四角形のホモトピー引き戻し性を保存・反映することを証明した。
-厳密な引き戻しの pushout の覆いでの Kan fibration の局所性と、積・余積の Kan fibration 保存を証明した。
-厳密な引き戻しの span の三縦射が Kan fibration なら、二重写像円筒の比較も Kan fibration と証明した。
-ホモトピー引き戻し性の脚の交換の不変性と、三頂点のホモトピー引き戻し性の厳密な場合を証明した。
-図式の射の関手的な成分ごとの anodyne–Kan 分解と、その自然性・因子化を構成した。
-二重写像円筒を span の関手とし、左・右・中央の頂点の写像を自然変換にまとめた。
-Kan 分解は span の二面と、円筒への三頂点の四角形のホモトピー引き戻し性を保存・反映すると証明した。
-一般の homotopy-cartesian な二面から、縦射が Kan fibration の場合への還元は証明済み。
-二つの Kan なファイバー模型へ向かう局所化同型を、共通の trivial fibration の模型で比較することを証明した。
-部分切断の実際の対象と元の全空間からの包含を構成し、随伴表示による復元と一意性を証明した。
-単射に沿う trivial fibration の延長と、元の射が厳密な引き戻しであることを証明した。
-これらを span の模型の置換に組み合わせ、両面が厳密な引き戻しとなる span を構成した。
-単射な基底への置換、任意の基底に沿う right properness、Ex∞ と縦射の Kan 分解で
-追加の Kan 性・単射性の仮定を取り除き、Segal Lemma 1.7 の一般形を証明した。
-添字付き余積を各次数の依存和として構成し、添字を写す成分ごとの厳密な引き戻しを余積へ移した。
-成分ごとの Kan fibration・局所化同型の余積保存と、右縦射が Kan のホモトピー引き戻しの余積保存を証明した。
-偶数・奇数の余積の span と二重写像円筒から、実際の telescope 関手を構成した。
-中央の Kan fibration を用いる横の貼り合わせ、隣接段からの帰納、成分ごとの Kan 分解から、
-各偶数・奇数段の telescope への四角形を追加仮定なしで証明した（Segal Lemma 1.8）。
-任意の固定単体集合との直積がホモトピー引き戻しを保つことを証明した。
-各行と標準単体の積から対角模型への評価、自然性、dinatural な関係式、恒等単体の計算を証明した。
-dinatural な射の族を対角からの射へまとめる desc と、各行の復元・一意性を証明した。
-単射の面の関係式の余等化子として fat realization の実対象を構成した。
-各行の包含、面の関係式、desc の計算則と射の一意性、関手性を証明した。
-対角への実際の比較を自然変換とし、各行の評価との一致を証明した。
-単体圏の像分解の単射との後合成と全射の場合の輸送を証明した。
-任意の epi–mono 分解による正規化の計算、面の関係式での不変性、全射の復元を証明した。
-各次数の実際の余等化子へ正規化を降ろし、各行からの包含による両逆性を証明した。
-fat realization の各次数と全射な標準形の型との同値を構成した。
-標準形の自然性から、各行で単射の射の fat realization の単射性を証明した。
-単体作用後の正規化の式と終域の次元の減少を証明した。
-正規化した終域の次元による有限骨格の部分単体集合を構成した。
-骨格の単調性、各次数での安定化、全骨格の和が全体となること、各行の像の包含を証明した。
-各行の骨格への因子化、骨格の関手、全体への自然な包含を構成した。
-骨格の順序列の実際の包含の余錐が fat realization を余極限とすることを証明した。
-新しい行の旧骨格の逆像が境界であることと、境界外の単射性を標準形で証明した。
-境界の付着の厳密な引き戻し、旧骨格と新しい行の共同全射性から、
-一段階の骨格の付着の実際の pushout の普遍性を証明した。
-mapping cylinder の実対象、底の anodyne な包含、底への収縮の局所化可逆性を証明した。
-二重写像円筒の三部分の desc の普遍性から、一端ずつ貼る二段階の pushout 表示を証明した。
-右の脚が単射なら、二重写像円筒を通常の pushout へ潰す比較が局所化同型であると証明した。
-円筒から任意の具体的な span の余極限への比較と、各頂点・余錐の比較に関する自然性を証明した。
-単射な右脚の通常の pushout の各頂点へ、Lemma 1.7 のホモトピー引き戻し性を移した。
-任意の余錐の基底上への持ち上げと、固定した射の厳密ファイバーの余極限保存を証明した。
-各頂点で同じ固定射へのホモトピー引き戻し性を、単射な脚の span の余極限へ貼り合わせる定理を証明した。
-全ての非空な部分族の交叉から有限和へ進む分配束の帰納補題を証明した。
-部分単体集合の分配束構造を既存の束演算のまま証明し、積と部分対象の有限被覆の比較を構成した。
-境界の余面の有限被覆と頂点集合による交叉を計算し、適切な非空な面の比較から境界全体のホモトピー引き戻し性を証明した。
-適切な非空な境界の面の低次元の標準単体表示と、包含の単射な単体圏の射との一致を証明した。
-小さい行から指定した骨格への射、行・境界の付着の自然性、各面での因子化を証明した。
-各行の Kan 性と低い行の比較から境界の付着のホモトピー引き戻し性を得た。
-零骨格と第零行と標準零単体の積との実際の同型も証明した。
-中央の Kan 性を課さないホモトピー引き戻しの横の貼り合わせを、三縦射の関手的 Kan 分解で証明した。
-付着の実際の span とその余極限・自然性を構成し、旧骨格と新しい行から次の骨格への比較を証明した。
-各行が Kan fibration の場合、全ての m ≤ n 行から n 骨格へのホモトピー引き戻し性の帰納を完了した。
-各行の局所化同型による有限骨格の不変性を証明し、各行の Kan 性を仮定しない有限骨格の比較へ移した。
-上側二つの図式の遷移が単射な順序余極限の四角形のホモトピー引き戻し保存を証明した。
-各行を含む骨格の余終な尾と定数図式に適用し、各行から fat realization 全体への比較を証明した。
-各行の局所化同型に対する fat realization 全体の不変性も証明した。
-自由な退化の補助関手 D と augmentation を構成し、各次数の全射の標準形による計算と単射保存を証明した。
-頂点の先頭追加の全射・単射・面・退化との整合、像分解の正規化との交換を証明した。
-D(Δ[n]) の実際の余分な退化を構成し、標準単体上の augmentation の局所化可逆性を証明した。
-D の余極限保存と任意の単体集合への augmentation の局所化可逆性を証明した。
-各列の自由な退化の対角と fat realization との同型と、元の自然な比較射との一致を証明した。
-対角への比較の局所化可逆性を四頂点の不変性へ適用し、Segal Proposition 1.6 の対角版を証明した。
-Proposition 1.6 の対角化の貼り合わせは証明済み。
-第零行と元のモノイド・一点の同型、および評価射と標準ファイバー・基点の一致を証明した。
-Proposition 1.6 を正則 bar へ適用し、群状モノイドの標準ファイバーの四角形のホモトピー引き戻し性を証明した。
-正則 bar の収縮を K-L9 の基点始点 path space へ実際に転置し、終点評価と全空間の局所化可逆性を証明した。
-K-L9 の loop の厳密なファイバー表示の包含を円の商の制限と同定し、標準群完備化写像との一致を区間の評価で証明した。
-群状単体的モノイドの既存の標準写像 M→ΩR(BM) の局所化可逆性を追加仮定なしに証明した。
-単体的環と dg 代数の ΓA の有限 rank の ĜL に特殊化した。
-Segal Proposition 1.5 の群状モノイドの比較部分は完了。
-行列のブロック和の積・単位保存と係数環への自然性を証明し、有限 rank の ĜL の安定化の自然変換を構成した。
-実際の安定 ĜL の順序余極限、零単体の有限段階の代表による群状性、標準群完備化写像の局所化可逆性を証明した。
-成分モノイド関手の定数関手への左随伴性を証明し、実際の誘導乗法を保つ安定成分の GL(π₀A) との同型を構成した。
-標準群完備化写像が単位を定数ループへ送ることを全次数で証明した。
-Kan 置換への厳密な延長と局所化可逆性から、K-L9 の全自然数次数のホモトピー類の delooping 同値を構成した。
-安定 GL(π₀A) と BĜL の基本群の台集合の全単射を構成した。
-nerve の辺の反乗法性を二単体の MulStruct で証明し、標準群完備化写像の頂点との代表の一致を証明した。
-逆元を前合成して誘導成分群と基本群の乗法同値を構成し、安定 GL(π₀A) との群としての同定を証明した。
-KST Lemma 2.13 の i=1 の具体的な群の同定は完了。
-成分全体の部分複体の Kan 性と正次数のホモトピー群の群同型を、代表と関係の実際の持ち上げで証明した。
-全行列の単体的環、係数の Kan 性から行列の Kan 性、ĜL と全行列の可逆成分の同型を構成した。
-全行列が Kan という仮定の下で ĜL の正次数の群を全行列の群と、実際の包含の誘導写像によって同定した。
-係数ごとの境界定数単体と同じ添字の RelStruct を行列へ束ね、行列の正次数の群の積分解を証明した。
-全次数の退化を引く実際の単体的同型で、単位行列の基点を零行列へ移す群同型を構成した。
-係数環の台集合が Kan という明示的仮定の下で、有限 rank の ĜL の正次数の群を零基点の係数群の行列と同定した。
-面と退化の恒等式で補正の一段と既存面の保存を証明し、互換な面の低い側・高い側の有限帰納でホーン充填を構成した。
-一次元のホーンの完全退化も処理し、任意の単体的環の台集合の Kan 性を追加仮定なしに証明した。
-有限 rank の ĜL の高次の係数表示は Kan 性の追加入力なしに適用できる。高次公式の rank の安定化が残る。
-L2b、L2c、L2d、L2e は未完了である。
-§10-5 は検証する文言と証明方針を記した段階である。
-ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
-検証：`lake build SerrePositivity.KST.Comparison` は成功した。
-検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 1211 宣言の型と公理を確認した。
-さらに名前空間全体の 2211 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
-L2a の工程の区切りで全体ビルドを実行した。
-全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
-未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
-比較レーンの対象ビルドは成功しており、他レーンのファイルは変更しない。
+現在地：L2a と L2b の要求された群状モノイドの比較・KST Lemma 2.13 を完了し、L2c に進む。
+L2c の整数ホモロジーと plus、L2d の K₀・K₁、L2e の ∞-S• の比較は未完了である。
+正本 §13-10 のとおり、ĜL は群状単体的モノイドであり、次数ごとの単体的群とはしない。
+π_n とその既存の群演算・loop の次数移動・filtered colimit の定理は K-L9 の実装を借りた。
+π_n の計算を追加仮定として導入せず、実際の Kan 模型に対する群同型を構成した。
+pro 圏や pro 同型は本レーンには再実装しない。K-L6 との接続は所有する界面に従う。
+
+### L2a の完成内容
+
+SS03 式 (2.9) の Alexander–Whitney 積による Γ の環構造を構成した。
+Mathlib の実際の Dold–Kan Γ との比較と、π₀Γ・H⁰・実際の homology の比較を証明した。
+cochain 規約で H^i=0（i>0）の connective 性から good truncation の擬同型を証明した。
+ĜL_r を π₀ で可逆な行列の単体的部分モノイドとして構成した。
+零次の積から誘導した成分モノイドを GL_r(π₀A) と乗法的に同定し、群状性を証明した。
+単位とのブロック和の安定化と実際の安定 ĜL の順序余極限を構成した。
+成分モノイド関手の定数関手への左随伴性で π₀ と安定化の余極限を交換し、安定 GL(π₀A) と同定した。
+
+### L2b の完成内容
+
+一般の単体的モノイドの二重単体的 bar、対角による分類空間、連結性と関手性を構成した。
+正則作用の bar の収縮を実際の単体的ホモトピーとして構成した。
+群状性から元の族の作用の局所化可逆性を証明した。
+Segal Proposition 1.6 の fat realization の有限骨格・順序余極限・対角との比較を証明した。
+原典と異なる箇所は §11 の確認事項に記した。
+無限骨格では telescope の引用によらず、有限 horn の表示可能性と filtered colimit の有限 pullback 保存を使った。
+fat realization と対角との比較は自由な退化の標準単体上の実収縮と列ごとの局所化比較から導いた。
+これを正則 bar に適用し、標準ファイバーのホモトピー引き戻し性を証明した。
+K-L9 の実際の path・loop の模型で標準群完備化写像との一致を証明した。
+群状モノイドの標準写像 M→ΩR(BM) が anodyne 局所化で可逆であることを追加仮定なしに証明した。
+単位は定数ループへ送られることを全次数で証明した。
+基本群では SingleObj の合成 f≫g=g*f と K-L9 の積の向きを二単体の MulStruct で照合した。
+正向きの辺の反乗法性と標準比較との代表の一致から、逆元の辺による乗法的な群同型を構成した。
+高次では成分全体の部分複体の Kan 性と、包含の正次数の群同型を代表・関係の持ち上げで証明した。
+全行列の係数評価の群同型と、単位行列を引く実際の平行移動を構成した。
+単体的環の Kan 性は低い面・高い面からの退化による有限回の補正で直接証明した。
+これにより有限 rank の高次の群の係数表示から Kan 性の仮定を除いた。
+零基点の係数評価は安定化に対し既存の係数を保ち、新しい係数を零へ送ることを証明した。
+rank の図式の自然同型を構成し、K-L9 の群の filtered colimit の定理で実際の安定対象へ移した。
+添字の宇宙の整合には AsSmall の圏同値を使った。
+安定係数行列群は点ごとの群演算の有限行列に新しい単位の行・列を付ける実際の群の余極限である。
+この単位は係数群を加法記法で書いた際の零に対応する。
+KST Lemma 2.13 は次の三つの実際の宣言で供給される。
+
+- `monoidBarKanConnected`：Kan 置換した安定分類空間の連結性。
+- `lemma_2_13_pi_one`：GL(π₀A) と BĜL の基本群の乗法同値。
+- `lemma_2_13_higher`：BĜL の次数 n+2 の群と、係数環の次数 n+1 の群の安定行列群の乗法同値。
+
+### 残工程
+
+L2c：Mathlib の alternating face map complex と正規化 Moore complex を使う整数ホモロジーを構成する。
+その後、局所係数を含む acyclic map、ホモロジー同型、基本群の完全正規部分群による商として plus を証明する。
+L2d：確定した K0 界面、冪等元の持ち上げ、安定 elementary 部分群と K₁ の比較を証明する。
+L2e：K-L1 の K1a の供給状況を確認し、§10-5 の Hurewicz の紙上確認と ∞-S• の比較へ進む。
+§10-5 は文言と証明方針の記録の段階であり、紙上証明の完了とは扱わない。
+負の次数は K-L3 の Bass 基本定理の界面に接続する。
+
+### 検証
+
+`lake build SerrePositivity.KST.Comparison`：成功、4445 jobs。
+`lake env lean scripts/audit_kst_comparison.lean`：終了コード 0。
+主要 1264 宣言の型と推移的依存公理を確認した。
+名前空間全体の 2294 宣言（自動生成された公開補題・射影を含む）も許可リストで検査した。
+許可した公理は propext、Classical.choice、Quot.sound の標準三公理のみ。
+L2b の工程の区切りの全体ビルドはルート集約 `SerrePositivity.lean:1` で失敗した（12355 jobs の最終集約）。
+`F1B.RelativeFunctorHomotopyComposition` の import が `F1.RelativeFunctorVertices` の
+`SerrePositivity.InfinityCategories.relativeFunctorVertex` と重複するためである。
+比較レーンの import 閉包の対象ビルドは成功しており、回避する import の変更はしない。
+他レーンのファイルは編集していない。
+
+### 主要宣言
 
 | 主要宣言 | 状態 | 意味 |
 | --- | --- | --- |
-| `unitsPreimage` | ビルド・監査済み | 環準同型による単元の逆像部分モノイド |
-| `evalZeroUnits` | ビルド・監査済み | ℤ[X] → ℤ の単元の逆像 |
-| `one_add_X_mem_evalZeroUnits` | ビルド・監査済み | 1+X は逆像に属する |
-| `not_isUnit_one_add_X` | ビルド・監査済み | 多項式環では可逆でない |
-| `one_add_X_no_right_inverse` | ビルド・監査済み | 逆像での右逆元の不存在 |
-| `gammaEndRingObject`、`gammaEndDoldKanIso` | 実装済み | SS03 式 (2.9)、実際の Mathlib Γ との同型 |
-| `SimplicialRing.componentsRing`、`simplexToComponents` | 実装済み | Mathlib π₀ の環と単体からの準同型 |
-| `componentClassEquiv` | 実装済み | 成分全体を選んだ部分単体集合の π₀ |
-| `hatGLMonoidObject` | 実装済み | KST 式 (2.2) |
-| `hatGLComponentsMulEquiv`、`hatGL_mk_mul`、`hatGL_mk_one` | 実装済み | π₀ の群と誘導乗法の整合 |
-| `dgAlgebraGamma`、`dgAlgebraHatGLComponents` | 実装済み | 一対象 dg 圏としての dg 代数への適用 |
-| `gammaEndH0RingEquiv`、`dgAlgebraComponentsH0RingEquiv` | 実装済み | π₀Γ と既存 H⁰ 環の同型 |
-| `gammaEndPiZeroHomologyEquiv` | 実装済み | 実際の Mathlib homology との全単射 |
-| `quasiIso_connective_truncation` | 実装済み | H^i=0 (i>0) から good truncation の擬同型 |
-| `monoidBar`、`monoidBarMap`、`monoidBarConnected` | 実装済み | bar 分類空間の対角模型と連結性 |
-| `SimplicialMonoid.componentsMonoid`、`IsGrouplike` | 実装済み | 一般の群状性の界面 |
-| `hatGL_isGrouplike` | 実装済み | ĜL の実際の群状性の供給 |
-| `regularActionNerveContraction` | 実装済み | 正則作用の nerve の実ホモトピー |
-| `monoidBarEdgeMap`、`monoidBarLoopFamily` | 実装済み | 各元が与える基点ループの自然な族 |
-| `regularBar`、`regularBarContraction` | 実装済み | 正則作用の全空間の対角と実収縮 |
-| `regularBarProjection`、`regularBarFiberMap_projection` | 実装済み | 分類空間への射影と標準ファイバー写像の三角形 |
-| `monoidLeftTranslationHomotopy`、`grouplikeTranslationIso` | 実装済み | 実ホモトピーと逆成分による平行移動の可逆性 |
-| `grouplikeTranslation_localized_isIso` | 実装済み | anodyne 局所化での具体的な適用 |
-| `monoidWordEquiv`、`monoidBarRowIso` | 実装済み | 射列の隣接ラベルによる Segal 同型 |
-| `regularBarFiberIso`、`regularBarFiber_isPullback` | 実装済み | 厳密ファイバーと標準引き戻し四角形 |
-| `regularBarContraction_projection` | 実装済み | 収縮が与える標準ループ族との一致 |
-| `monoidGroupCompletionSpace`、`monoidGroupCompletionSpace_kan` | 実装済み | K-L9 の ΩR(BM) とその Kan 性 |
-| `monoidGroupCompletionMap`、`monoidGroupCompletionMap_evaluation` | 実装済み | 実際の標準射と標準ループ族への評価則 |
-| `regularBarRowIso`、`regularActionCoordinate_whisker` | 実装済み | 各行の積座標と任意の単体作用の移送式 |
-| `homotopyPullbackObject`、`homotopyPullbackComparison` | 実装済み | 右射の Kan 分解による比較模型と標準射 |
-| `homotopyPullbackObject_kan`、`homotopyPullbackMap` | 実装済み | Kan 性と基底付き比較 |
-| `anodyne_fiberwise_homotopy`、`anodyne_fibration_retraction` | 実装済み | 包含と基底を固定する実収縮 |
-| `pullbackHomotopyOver` | 実装済み | 基底上のホモトピーの引き戻し |
-| `isHomotopyPullback_of_fibration` | 実装済み | 右射が Kan fibration の厳密引き戻しの比較 |
-| `simplexContraction`、`simplexMapContraction` | 実装済み | 標準単体と単体上の写像の実収縮 |
-| `monoidActionFamilyHomotopy` | 実装済み | 元の族のホモトピーが誘導する作用のホモトピー |
-| `monoidActionFamily_simplex_localized_isIso` | 実装済み | 単体上で動く元による作用の局所化可逆性 |
-| `monoidActionFamily_localized_isIso` | 実装済み | 任意のパラメータで動く元の族の作用の局所化可逆性 |
-| `replacementComparison_pullback_isIso` | 実装済み | 二つの Kan 分解の基底変換後の比較 |
-| `isHomotopyPullback_iff_alternative` | 実装済み | 別の anodyne–Kan 分解による判定 |
-| `productPullback_isHomotopyPullback` | 実装済み | 任意の因子を持つ積射影の基底変換 |
-| `actionBarCoordinate_naturality` | 実装済み | 各構造写像と前置ラベルの作用の整合 |
-| `actionBarSquare_isHomotopyPullback` | 実装済み | 群状性から Segal Proposition 1.6 の各行の仮定を供給 |
-| `simplexMeetToIdentity`、`simplexMeetToVertex` | 実装済み | horn と両立する任意の頂点への二段階の収縮 |
-| `relative_interval_lift`、`interval_lift` | 実装済み | Kan fibration に沿う両端点からの持ち上げ |
-| `subcomplex_inclusion_localized_isIso` | 実装済み | 部分対象を保つ二段階の収縮による局所化可逆性 |
-| `horn_preimage_localized_isIso` | 実装済み | Kan fibration に沿う正次元 horn の逆像の局所化可逆性 |
-| `simplicialSliceClosed`、`sliceFiberFunctor_isLeftAdjoint` | 実装済み | 宇宙を揃えたスライスの閉構造と基底変換の右随伴 |
-| `underlying_rlp_of_over_horns` | 実装済み | 基底付き horn の持ち上げ性による Kan 条件の判定 |
-| `pullback_anodyne_localized_isIso` | 実装済み | 一般の anodyne 射の Kan 引き戻しの局所化可逆性 |
-| `localizedMono_lifting_fibrantTarget` | 実装済み | Kan 基底上の fibration への局所化可逆な単射の持ち上げ |
-| `sliceFiberRightAdjoint_kan` | 実装済み | Kan 基底上の右随伴の Kan 性 |
-| `pullback_localized_isIso_of_kan_base` | 実装済み | Kan 基底上の任意の局所化同型の Kan 引き戻し |
-| `pullbackMapBase_localized_isIso_of_kan_base` | 実装済み | Kan 基底上の Kan fibration の比較の任意の左射による引き戻し |
-| `homotopyPullbackMap_localized_isIso_fixed_kan_base` | 実装済み | 固定した Kan 基底上のホモトピー引き戻しの両入力の不変性 |
-| `subdivisionLastVertex`、`subdivisionVertexSectionAt_lastVertex` | 実装済み | 細分の自然な最終頂点写像と各単体での切断 |
-| `exUnit`、`exUnitAt_mono` | 実装済み | Mathlib Ex への自然な単射 |
-| `exSequence`、`exInfinity`、`exInfinityUnit` | 実装済み | Ex の反復と実際の順序余極限、標準単位 |
-| `exInfinity_preservesFiniteLimits` | 実装済み | filtered colimit と有限極限の交換による保存性 |
-| `subdivisionCutAt_comp`、`subdivisionCutAt_zero`、`subdivisionCutAt_last` | 実装済み | Moss Definition 23 の作用素の合成と両端の式 |
-| `exComplexity_zero`、`exComplexity_last` | 実装済み | Moss Notation 24 のフィルターと単位の像・全単体の同定 |
-| `exComplexityLevel_le_iff`、`exComplexityLevel_zero_iff` | 実装済み | 最小の複雑度とその零条件 |
-| `subdivisionDegeneracyAt`、`subdivisionDegeneracyAt_face` | 実装済み | Moss Definition 25 と Lemma 26 (1) の拡張退化と指定面 |
-| `finiteChainUnion_ext`、`finiteChainCut_preservesUnion`、`finiteChainDegeneracy_preservesUnion` | 実装済み | Moss Lemma 26 の singleton 上の比較原理とその前提 |
-| `finiteChainDegeneracy_initialSegment` | 実装済み | 拡張退化の初期区間上の式 |
-| `subdivisionDegeneracyAt_cut`、`subdivisionDegeneracyAt_cut_lt` | 実装済み | Moss Lemma 26 (4)・(6) の交換則 |
-| `subdivisionCutAt_face_absorb` | 実装済み | Moss Lemma 26 (5) の面と複雑度の吸収則 |
-| `exExpansion_face`、`exComplexity_face` | 実装済み | 指定した面の復元と面の複雑度の上界 |
-| `exPairingStep_injective` | 実装済み | Moss Lemma 27 の対応先の一意性 |
-| `exPairingStep_complexityLevel`、`exPairingStep_mem_image_iff` | 実装済み | 拡張前後の最小閾値と元の部分対象の制御 |
-| `subdivisionDegeneracyAt_double`、`subdivisionDegeneracyAt_double_cut` | 実装済み | Moss Lemma 26 (7) の未切断の強い式と原典の式 |
-| `exPairingStep_double_degenerate`、`exPairingStep_notMem_range_of_nonDegenerate` | 実装済み | 二重適用の退化性と Lemma 28 の像に関する部分 |
-| `subdivisionDegeneracyAt_front_absorb`、`subdivisionDegeneracyAt_face_right` | 実装済み | Moss Lemma 26 (2)・(3) の前後の面との関係 |
-| `finiteChainCutDegeneracy_singleton`、`subdivisionDegeneracyAt_front`、`subdivisionDegeneracyAt_rear` | 実装済み | Moss Lemma 26 (8)・(9) の通常の退化との交換則 |
-| `exExpansion_front_complexity`、`exExpansion_rear_face` | 実装済み | Moss Lemma 29 の前後の面の計算 |
-| `exExpansion_mem_degenerate`、`exPairingStep_nonDegenerate_source` | 実装済み | Moss Lemma 28 の退化性と非退化性を元へ戻す部分 |
-| `exTypeTwo`、`exPairingStep_face_unique`、`exPairingStep_nonDegenerate_target` | 実装済み | 型 II の定義と Moss Lemma 29 の指定面・対応先の性質 |
-| `nonDegenerate_of_unique_face`、`exPairingStep_isUniquelyCodimOneFace` | 実装済み | 一意な非退化面の一般補題と Mathlib の properness 述語への接続 |
-| `exTypeOne`、`exPairingEquiv` | 実装済み | 型 I の定義と各次元の型 II との全単射 |
-| `exPairingCore`、`exPairingCore_isProper`、`exPairing` | 実装済み | 全次元の proper pairing |
-| `exPairingWeakRank`、`exPairingCore_isRegular`、`exPairing_isRegular` | 実装済み | 最小複雑度による先行関係の整礎性 |
-| `exUnitAt_anodyne`、`exInfinityUnit_anodyne` | 実装済み | Moss Theorem 22、Corollary 30 の単位の anodyne 性 |
-| `subdivisionNerveChains`、`subdivisionNerveChains_naturality`、`nerveChainsExUnit_lastVertex` | 実装済み | 順序集合の nerve の細分比較・自然性・最終頂点との整合 |
-| `finiteChainGreatest`、`finiteChainGreatest_map` | 実装済み | 部分順序集合の非空有限鎖の最大元 |
-| `hornChainVertex`、`hornChainVertex_common_missing` | 実装済み | 単調な候補頂点写像と共通に欠ける頂点 |
-| `hornChainToHorn`、`doubleSubdivisionHornMap` | 実装済み | 二重細分から horn への具体的な写像 |
-| `HornFacePoset`、`hornChainToHorn_boundary` | 実装済み | horn の面の nerve 上の境界条件 |
-| `hornSubdivisionComparison`、`hornSubdivisionComparison_lastVertex` | 実装済み | 実際の horn の細分比較と最終頂点との一致 |
-| `subdivisionLastVertexMap`、`subdivisionLastVertexMap_stdSimplex` | 実装済み | 全対象の最終頂点と標準単体上の計算 |
-| `doubleSubdivisionHornMap_boundary`、`exDoubleHornFiller_boundary` | 実装済み | 二重細分の境界条件と二回の Ex の後の horn の充填 |
-| `exInfinity_finite_factorization`、`exInfinityStage_succ` | 実装済み | 有限段階への因子化と反復列の遷移 |
-| `exInfinity_hornFilling`、`exInfinity_kanComplex` | 実装済み | Moss 2020 Proposition 21 の Kan 性 |
-| `exInfinity_map_localized_isIso_iff`、`exInfinity_preservesMonomorphisms` | 実装済み | 局所化可逆な射の保存・反映と単射保存 |
-| `exInfinitySimplicialMonoidFunctor`、`exInfinitySimplicialMonoidUnit` | 実装済み | モノイド構造を保つ実際の Kan 置換 |
-| `exInfinitySimplicialMonoid_componentsMulEquiv`、`exInfinitySimplicialMonoid_isGrouplike` | 実装済み | π₀ モノイドと群状性を保つ置換 |
-| `monoidTupleMap_localized_isIso`、`monoidBarMap_localized_isIso` | 実装済み | 有限積座標と bar の局所化不変性 |
-| `exInfinitySimplicialMonoid_bar_localized_isIso` | 実装済み | Kan モノイドへの置換が誘導する bar の可逆性 |
-| `monoidBarRow_kanComplex`、`regularBarRow_kanComplex`、`actionBarProjection_row_rlp` | 実装済み | Kan モノイドの各行と射影の Kan 条件 |
-| `doubleMappingCylinder`、`doubleMappingCylinderMap`、`doubleMappingCylinderMap_comp` | 実装済み | 実際の二重写像円筒と比較の関手性 |
-| `sliceFiberPushoutIso`、`cylinderEndpoints_mono` | 実装済み | 厳密なファイバーと pushout の交換、貼り付けの単射性 |
-| `pushoutMap_localized_isIso`、`doubleMappingCylinderMap_localized_isIso` | 実装済み | pushout と二重写像円筒の模型の局所化不変性 |
-| `cylinderEndpoints_isPullback`、`coproductSquare_isPullback` | 実装済み | 円筒の境界と二項余積の厳密な引き戻し |
-| `strictPushoutCube`、`doubleMappingCylinderMap_isPullback` | 実装済み | van Kampen 性による厳密な貼り合わせ |
-| `doubleMappingCylinder_left_isPullback`、`doubleMappingCylinder_right_isPullback`、`doubleMappingCylinder_center_isPullback` | 実装済み | 三つの頂点の厳密な引き戻し |
-| `subcomplex_inclusion_anodyne`、`horn_preimage_anodyne` | 実装済み | 二段階の収縮による相対持ち上げと horn の逆像の anodyne 性 |
-| `sliceFiberRightAdjoint_rlp`、`pullback_anodyne` | 実装済み | 任意の基底での Kan fibration に沿う anodyne 射の基底変換 |
-| `subcomplex_pairContraction_anodyne`、`orderNerveSubcomplex_anodyne` | 実装済み | 任意の向きの収縮と順序集合の nerve への適用 |
-| `orderNerveSubcomplexIso`、`orderSubtypeNerve_anodyne` | 実装済み | 部分型の nerve と部分単体集合の比較 |
-| `hornFaceInclusion_anodyne` | 実装済み | horn の安全な面の nerve の包含の anodyne 性 |
-| `simplexFaceRetraction_chain`、`hornFaceNerve_faceCover` | 実装済み | 余面の分裂と面の nerve の余面による被覆 |
-| `hornSubdivisionComparison_app_surjective`、`hornSubdivisionComparison_epi` | 実装済み | 実際の細分比較の全射性 |
-| `subdivisionSimplexCover`、`hornSimplexFaceFactorization`、`hornSubdivisionFaceCover` | 実装済み | 密度による細分の表示と horn の余面表示 |
-| `subdivisionCommonFace`、`hornSubdivisionComparison_isIso` | 実装済み | 共通の余面表示と実際の細分比較の同型性 |
-| `subdivisionHorn_anodyne`、`subdivision_map_anodyne`、`ex_map_rlp` | 実装済み | 実際の sd の anodyne 保存と Ex の Kan fibration 保存 |
-| `hornRight_sequentialColimit`、`exInfinity_map_rlp` | 実装済み | horn の有限表示可能性による Ex∞ の Kan fibration 保存 |
-| `pullback_localized_isIso`、`sliceFiberFunctor_localized_isIso_anyBase` | 実装済み | 任意の基底での Kan fibration に沿う局所化同型の引き戻し |
-| `pullbackMapBase_localized_isIso`、`homotopyPullbackMap_localized_isIso_fixed_base` | 実装済み | 任意の固定基底での左右の入力の比較 |
-| `fibrantCospanMap_localized_isIso`、`homotopyPullbackMap_localized_isIso` | 実装済み | 基底も動かす三入力の比較 |
-| `homotopyPullbackComparison_naturality`、`isHomotopyPullback_iff_of_localized_isIso` | 実装済み | 標準比較射の自然性と四つの頂点の置換 |
-| `isHomotopyPullback_exInfinity_iff` | 実装済み | Ex∞ によるホモトピー引き戻しの保存・反映 |
-| `lifting_of_pullbackFactorizations`、`kanFibration_of_pushoutCover` | 実装済み | 単体ごとの厳密な引き戻しの覆いによる Kan 条件の局所性 |
-| `tensorRight_rlp`、`coproductMap_rlp`、`doubleMappingCylinderMap_rlp` | 実装済み | 厳密な引き戻しの span の円筒の比較の Kan 条件 |
-| `isHomotopyPullback_flip_iff`、`isHomotopyPullback_of_left_fibration` | 実装済み | 脚の交換と左脚が Kan fibration の場合の判定 |
-| `doubleMappingCylinder_homotopyPullbacks_of_strict` | 実装済み | 厳密な引き戻し・縦射が Kan fibration の場合の三頂点 |
-| `diagramKanMiddle`、`diagramKanUnit`、`diagramKanProjection`、`diagramKan_fac` | 実装済み | 関手的な図式の成分ごとの anodyne–Kan 分解 |
-| `spanCylinderFunctor`、`spanCylinderVertex` | 実装済み | span の円筒の関手と三頂点の自然性 |
-| `diagramKan_arrowSquare_iff`、`spanCylinderKan_vertexSquare_iff` | 実装済み | 縦射が Kan fibration の場合への還元 |
-| `commonTrivialFibrationRefinement` | 実装済み | 二つのファイバー模型の共通の trivial fibration の模型 |
-| `partialSectionObject`、`partialSectionObject_allMono_rlp` | 実装済み | 部分切断の実対象と全体の trivial fibration 性 |
-| `partialSectionAdjunct`、`partialSectionRestrictionLift_unique` | 実装済み | 随伴表示、復元、存在と一意性 |
-| `partialSectionInclusion_isPullback`、`trivialFibrationExtension` | 実装済み | 単射に沿う延長と制限の厳密な引き戻し |
-| `spanStrictification_of_mono` | 実装済み | 共通の trivial fibration の延長による厳密な span への置換 |
-| `diagramPullback_arrowSquare_iff`、`diagramExInfinity_arrowSquare_iff` | 実装済み | 基底変換と Ex∞ による二面の比較 |
-| `spanCylinder_vertexSquare_map_iff` | 実装済み | 成分ごとの局所化同型による円筒の頂点の四角形の比較 |
-| `spanCylinder_vertex_homotopyPullback` | 実装済み | Segal Lemma 1.7、追加の Kan 性・単射性なし |
-| `simplicialSum`、`simplicialSumIsCoproduct` | 実装済み | 次数ごとの依存和による実際の添字付き余積 |
-| `simplicialSumReindex_isPullback`、`simplicialSumInclusion_isPullback` | 実装済み | 任意の添字の写像と成分の包含の引き戻し |
-| `simplicialSumMap_rlp`、`simplicialSumMap_localized_isIso` | 実装済み | 成分ごとの Kan fibration と局所化同型の余積保存 |
-| `simplicialSumReindex_homotopyPullback_of_fibrations` | 実装済み | Kan な右縦射を持つホモトピー引き戻しの余積 |
-| `isHomotopyPullback_paste_horiz_of_middle_fibration` | 実装済み | 中央の Kan fibration を用いる横の貼り合わせ |
-| `sequenceArrow_homotopyPullback_of_successors` | 実装済み | 隣接段から任意の遷移への帰納 |
-| `telescopeSpan`、`telescopeSpanFunctor`、`telescopeFunctor` | 実装済み | 偶数・奇数段の余積による telescope の模型 |
-| `telescopeEvenStage`、`telescopeOddStage` | 実装済み | 全ての偶数・奇数段の telescope への自然変換 |
-| `telescopeFunctor_map_localized_isIso` | 実装済み | 成分ごとの局所化同型による telescope の不変性 |
-| `telescopeStages_homotopyPullback` | 実装済み | Segal Lemma 1.8、隣接段の仮定のみ |
-| `isHomotopyPullback_map_of_preserves_factorizations` | 実装済み | 分解・引き戻し・局所化同型を保つ関手による保存 |
-| `tensorRight_isPullback`、`isHomotopyPullback_tensorRight` | 実装済み | 任意の固定単体集合との積の引き戻しの保存 |
-| `diagonalRowEvaluation`、`diagonalRowEvaluation_dinaturality` | 実装済み | 各行と標準単体の積から実際の対角への整合する射 |
-| `diagonalRowDesc`、`diagonalRowEvaluation_desc`、`diagonalRowDesc_unique` | 実装済み | 対角模型の行の余極限表示の普遍性 |
-| `SimplexFace`、`fatRelationLeft`、`fatRelationRight`、`fatRealization` | 実装済み | 単射の面の関係式による余等化子の実対象 |
-| `fatRealizationInclusion_face`、`fatRealizationDesc`、`fatRealization_hom_ext` | 実装済み | 面の関係式と余積・余等化子の普遍性 |
-| `fatRealizationFunctor`、`fatRealizationToDiagonalNatTrans` | 実装済み | 実際の関手と対角への自然な比較（可逆性は未証明） |
-| `simplexImage_comp_mono`、`simplexFactorThruImage_of_epi` | 実装済み | 単体圏の epi–mono 分解の対象・二因子の輸送 |
-| `FatNormalForm`、`fatNormalize`、`fatNormalize_face` | 実装済み | 全射な標準形と面の関係式での不変性 |
-| `fatDegreeCoforkIsColimit`、`fatDegreeNormalize` | 実装済み | 各次数の実際の余等化子へ降りる正規化 |
-| `fatNormalFormRealize`、`fatNormalFormEquiv` | 実装済み | 各行の包含による逆写像と各次数の全射な標準形との同値 |
-| `fatDegreeNormalize_map`、`fatRealizationMap_mono` | 実装済み | 標準形の自然性と各行の単射性の保存 |
-| `fatDegreeNormalize_action`、`fatNormalDegree_action_le` | 実装済み | 単体作用後の正規化と終域の次元の減少 |
-| `fatSkeleton`、`fatSkeleton_monotone`、`iSup_fatSkeleton_eq_top` | 実装済み | 標準形の次元による部分単体集合の濾過と全体の復元 |
-| `fatSkeleton_obj_eq_univ`、`fatRealizationInclusion_mem_skeleton` | 実装済み | 各次数での安定化と各行の像の包含 |
-| `fatSkeletonRow`、`fatSkeletonFunctor`、`fatSkeletonInclusion` | 実装済み | 各行の骨格への因子化と骨格の関手性 |
-| `fatSkeletonSequence`、`fatSkeletonCoconeIsColimit` | 実装済み | 実際の有限骨格の順序余極限としての fat realization |
-| `fatRealizationInclusion_mem_skeleton_iff_boundary` | 実装済み | 新しい行の旧骨格の逆像と境界の同定 |
-| `fatRealizationInclusion_injective_off_boundary_range` | 実装済み | 境界の像の補集合での単射性 |
-| `fatBoundaryAttachment`、`fatBoundaryAttachment_isPullback` | 実装済み | 境界の旧骨格への付着と厳密な引き戻し |
-| `fatSkeletonStep_row_jointly_surjective`、`fatSkeleton_isPushout` | 実装済み | 一段階の付着の共同全射性と pushout の普遍性 |
-| `mappingCylinder`、`mappingCylinderBase_anodyne`、`mappingCylinderRetraction_localized_isIso` | 実装済み | 片端を貼った円筒の底への収縮 |
-| `doubleMappingCylinderDesc`、`doubleMappingCylinder_hom_ext` | 実装済み | 三部分の射による二重写像円筒の普遍性 |
-| `mappingCylinderToDouble_isPushout` | 実装済み | 一端ずつ貼る二段階の pushout 表示 |
-| `doubleMappingCylinderCollapse_localized_isIso` | 実装済み | 右の脚が単射の場合の通常の pushout への比較の可逆性 |
-| `spanCylinderToColimit`、`spanCylinderToColimit_naturality` | 実装済み | 任意の具体的な余極限への円筒の自然な比較 |
-| `spanPushout_vertex_homotopyPullback` | 実装済み | 単射な脚の通常の pushout の各頂点への貼り合わせ |
-| `spanColimit_map_localized_isIso` | 実装済み | 具体的な span の余極限への成分ごとの可逆性の移送 |
-| `coconeOverCoconeIsColimit`、`fiberCoconeIsColimit` | 実装済み | スライスへの持ち上げと厳密ファイバーの余極限保存 |
-| `coconeBaseFiberComparison`、`coconeBase_homotopyPullback_of_span` | 実装済み | 同じ固定射への四角形の各頂点から余極限への貼り合わせ |
-| `finiteSup_of_nonempty_intersections` | 実装済み | 有限交叉の条件を有限和へ移す束の帰納 |
-| `subcomplexUnionCoconeIsColimit`、`tensorSubcomplexUnionCoconeIsColimit` | 実装済み | 部分対象の和とその積の実際の pushout |
-| `tensorLeft_mono_of_mono`、`subcomplexDistribLattice` | 実装済み | 積の単射保存と部分対象の分配束構造 |
-| `tensorSubcomplex_homotopyPullback_sup`、`tensorSubcomplex_homotopyPullback_bot` | 実装済み | 二つの部分対象の和と空対象の比較 |
-| `tensorSubcomplex_homotopyPullback_top_iff`、`tensorSubcomplex_homotopyPullback_of_finset_cover` | 実装済み | 有限被覆から全体への比較 |
-| `boundaryVertexFace_finset_inf`、`boundaryVertexFace_coface_cover` | 実装済み | 境界の余面の被覆と有限交叉 |
-| `tensorBoundary_homotopyPullback_of_faces` | 実装済み | 適切な非空な面から境界への貼り合わせ |
-| `subcomplexPreimageIsoOfLE` | 実装済み | 包含に沿う小さい部分対象の逆像の実際の同型 |
-| `boundaryVertexFace_representation`、`boundaryVertexFaceIso_hom_ι` | 実装済み | 低次元の標準単体による面の表示と包含との一致 |
-| `fatSkeletonRowOfLE_map`、`fatBoundaryAttachment_map` | 実装済み | 指定骨格への行と境界の付着の自然性 |
-| `fatBoundaryAttachment_face` | 実装済み | 境界の面の低い行による因子化 |
-| `tensorRestriction_homotopyPullback_iff` | 実装済み | 右因子の同型による比較の保存・反映 |
-| `fatBoundaryAttachment_homotopyPullback` | 実装済み | 各行の Kan 性の下で低い行から境界の付着への比較 |
-| `fatSkeletonRow_zero_isIso` | 実装済み | 零骨格と第零行の積の同型 |
-| `kanReplacementSquare_homotopyPullback_iff` | 実装済み | 関手的な縦射の Kan 分解による四角形の比較 |
-| `isHomotopyPullback_paste_horiz` | 実装済み | Kan 性を仮定しない二つの四角形の横の貼り合わせ |
-| `fatAttachmentCoconeIsColimit`、`fatAttachmentSpanMap` | 実装済み | 骨格の実際の付着の span の余極限と比較 |
-| `fatSkeleton_successor_homotopyPullback` | 実装済み | 境界から旧骨格・新しい行の次骨格への比較 |
-| `fatSkeletonRow_homotopyPullback` | 実装済み | 各行の Kan 性の下で全ての有限骨格の行の比較 |
-| `fatSkeletonMap_localized_isIso` | 実装済み | 各行の局所化同型に対する有限骨格の不変性 |
-| `fatSkeletonRow_general_homotopyPullback` | 実装済み | Kan 性を仮定しない全ての有限骨格の行の比較 |
-| `isHomotopyPullback_iff_alternative_fiber` | 実装済み | 任意の厳密なファイバーへの局所化同型による判定 |
-| `sequentialColim_rlp`、`sequentialColim_preservesPullbacks` | 実装済み | 順序余極限の Kan fibration と厳密な引き戻しの保存 |
-| `sequentialFiberComparison_app_localized_isIso` | 実装済み | 図式圏のファイバーへの各成分の比較 |
-| `sequential_homotopyPullback`、`actual_sequential_homotopyPullback` | 実装済み | 単射な順序列のホモトピー引き戻しの実際の余極限への保存 |
-| `fatSkeletonTailCoconeIsColimit`、`fatSkeletonTailRow_map` | 実装済み | 各行を含む骨格の余終な尾の普遍性と自然性 |
-| `fatRealizationInclusion_homotopyPullback` | 実装済み | 各行から fat realization 全体への比較 |
-| `fatRealizationMap_localized_isIso` | 実装済み | 各行の局所化同型に対する全体の不変性 |
-| `freeDegeneracies`、`freeDegeneraciesAugmentation` | 実装済み | 自由な退化の実際の補助模型と自然な augmentation |
-| `freeDegeneraciesAugmentation_realize`、`freeDegeneracies_preservesMonomorphisms` | 実装済み | 標準形での評価と単射保存 |
-| `simplexPrepend`、`simplexConeZero` | 実装済み | 全射と頂点写像への零点の追加 |
-| `freeStandardPrepend_normalize`、`freeStandardPrepend_naturality` | 実装済み | 零点追加と像分解・単体作用との交換 |
-| `freeStandardExtraDegeneracy` | 実装済み | 全ての面・退化の恒等式を満たす実際の余分な退化 |
-| `freeDegeneraciesAugmentation_standard_localized_isIso` | 実装済み | 標準単体上の augmentation の局所化可逆性 |
-| `freeDegeneracyShapeColimitNatIso` | 実装済み | 全射の形を添字とする次数ごとの直和表示の自然同型 |
-| `freeDegeneracies_preservesColimits` | 実装済み | 自由な退化の小さい余極限の保存 |
-| `freeDegeneraciesAugmentation_localized_isIso` | 実装済み | 全ての単体集合の augmentation の局所化可逆性 |
-| `fatFreeColumnsIso`、`fatFreeColumnsIso_augmentation` | 実装済み | 列の自由な退化の対角との同型と元の比較との一致 |
-| `fatRealizationToDiagonal_localized_isIso` | 実装済み | fat realization から対角への自然比較の局所化可逆性 |
-| `segalRealization_homotopyPullback` | 実装済み | Segal Proposition 1.6 の対角版の各行の比較 |
-| `regularBarZeroRowIso`、`monoidBarZeroRowIso` | 実装済み | 第零行と元のモノイド・一点の同型 |
-| `regularBarZeroRow_evaluation`、`monoidBarZeroRow_evaluation` | 実装済み | 第零行の評価と標準ファイバー・基点の一致 |
-| `regularBarFiber_homotopyPullback` | 実装済み | 群状モノイドの正則 bar 束のホモトピーファイバー |
-| `contractedSpace_terminal_localized_isIso` | 実装済み | 実際の収縮から終射の局所化可逆性 |
-| `pointedUnitIso_evaluation`、`basedPathFamilyMap_endpoint` | 実装済み | 点つき path の終点と区間の族の終点の一致 |
-| `regularBarPathMap_localized_isIso` | 実装済み | 正則 bar と K-L9 の path space の全空間の比較 |
-| `loopPathRestriction_isPullback` | 実装済み | K-L9 の loop の円の商の制限によるファイバー表示 |
-| `monoidGroupCompletionMap_path` | 実装済み | 標準群完備化写像と実際のファイバー比較の一致 |
-| `monoidGroupCompletionMap_localized_isIso` | 実装済み | Segal Proposition 1.5 の群状モノイドの標準比較 |
-| `hatGLGroupCompletionMap_localized_isIso`、`dgAlgebraHatGLGroupCompletionMap_localized_isIso` | 実装済み | 単体的環・ΓA の有限 rank の ĜL の delooping |
-| `matrixStabilization`、`matrixStabilization_map` | 実装済み | 行列の単位とのブロック和と係数環の射の可換性 |
-| `hatGLStabilization`、`hatGLRankSequence` | 実装済み | 有限 rank の ĜL の自然な安定化と順序列 |
-| `isGrouplike_of_sequential_isColimit` | 実装済み | 実際の順序余極限の群状性 |
-| `stableHatGL`、`stableHatGLGroupCompletionMap_localized_isIso` | 実装済み | 安定 ĜL の実対象と Segal 比較 |
-| KST Lemma 2.13 の安定 rank の π_n の同型 | 未証明 | 安定化と K-L9 のホモトピー群との接続 |
+| `unitsPreimage`、`not_isUnit_one_add_X` | 監査済み | π₀ の単元の逆像が各次数の群とは限らない反例 |
+| `gammaEndRingObject`、`gammaEndDoldKanIso` | 監査済み | SS03 式 (2.9) の実際の Γ の AW 環 |
+| `SimplicialRing.componentsRing`、`simplexToComponents` | 監査済み | 成分環と各次数からの環準同型 |
+| `dgAlgebraGamma`、`dgAlgebraHatGLComponents` | 監査済み | 一対象 dg 圏としての dg 代数への適用 |
+| `gammaEndH0RingEquiv`、`dgAlgebraComponentsH0RingEquiv` | 監査済み | π₀Γ と既存の H⁰ 環の比較 |
+| `gammaEndPiZeroHomologyEquiv`、`quasiIso_connective_truncation` | 監査済み | 実際の homology と connective truncation |
+| `hatGLMonoidObject`、`hatGL_isGrouplike` | 監査済み | 群状単体的モノイドとしての ĜL |
+| `hatGLInducedComponentsEquiv`、`hatGLRankComponentsIso` | 監査済み | 誘導乗法の有限比較と安定化の整合 |
+| `SimplicialMonoid.componentsFunctor`、`componentsConstAdjunction` | 監査済み | 実際の成分モノイドと定数関手の随伴 |
+| `stableHatGL`、`stableGeneralLinear`、`stableHatGLComponentsIso` | 監査済み | 実際の安定化の余極限と安定成分の同型 |
+| `monoidBar`、`monoidBarMap`、`monoidBarConnected` | 監査済み | 実際の bar の対角模型・関手性・連結性 |
+| `regularBarContraction`、`regularBarFiber_isPullback` | 監査済み | 正則作用の実収縮と厳密ファイバー |
+| `grouplikeTranslation_localized_isIso` | 監査済み | 逆成分による作用の局所化可逆性 |
+| `monoidActionFamily_localized_isIso` | 監査済み | 任意のパラメータの元の族による作用 |
+| `homotopyPullbackObject`、`IsHomotopyPullback` | 監査済み | 実際の Kan 分解によるホモトピー引き戻し |
+| `isHomotopyPullback_of_fibration`、`isHomotopyPullback_paste_horiz` | 監査済み | 厳密引き戻しからの比較と貼り合わせ |
+| `sequential_homotopyPullback` | 監査済み | 有限 horn と余極限による無限骨格の比較 |
+| `fatRealizationMap_localized_isIso` | 監査済み | fat realization の行ごとの局所化比較 |
+| `freeDegeneraciesAugmentation` | 監査済み | 自由な退化と任意の対象の局所化比較 |
+| `fatRealizationToDiagonal_localized_isIso` | 監査済み | fat realization と実際の対角の比較 |
+| `segalRealization_homotopyPullback` | 監査済み | Segal Proposition 1.6 の対角版 |
+| `regularBarFiber_homotopyPullback` | 監査済み | 群状モノイドの正則 bar の標準ファイバー |
+| `monoidGroupCompletionSpace`、`monoidGroupCompletionMap` | 監査済み | 実際の ΩR(BM) と標準比較射 |
+| `monoidGroupCompletionMap_path`、`monoidGroupCompletionMap_unit` | 監査済み | 標準ファイバー比較との一致と基点保存 |
+| `monoidGroupCompletionMap_localized_isIso` | 監査済み | Segal Proposition 1.5 の群状モノイドの比較 |
+| `hatGLGroupCompletionMap_localized_isIso` | 監査済み | 有限 rank の ĜL への特殊化 |
+| `stableHatGLGroupCompletionMap_localized_isIso` | 監査済み | 実際の安定 ĜL への特殊化 |
+| `kanPiIsomorphism_of_localized_isIso` | 監査済み | K-L9 の全基点・全次数の類への接続 |
+| `monoidNerveLoopMulStruct`、`monoidNerveFundamentalClass_mul` | 監査済み | 二単体での基本群の積の向きの検査 |
+| `groupCompletionVertex_eq_barLoop` | 監査済み | 標準群完備化の頂点と nerve の辺の代表の一致 |
+| `monoidBarFundamentalMulEquiv` | 監査済み | 群状モノイドの成分群と BM の基本群の群同型 |
+| `componentSubcomplex_kanComplex` | 監査済み | 成分全体の部分複体の Kan 性 |
+| `componentPtSimplexLift`、`componentRelStructLift` | 監査済み | 正次数の代表と関係の実際の持ち上げ |
+| `componentPositiveHomotopyMulEquiv` | 監査済み | 成分全体の包含の正次数の群同型 |
+| `matrixRingObject`、`matrixPositiveHomotopyMulEquiv` | 監査済み | 全行列の単体的環と係数群の積分解 |
+| `hatGLComponentIso`、`hatGLPositiveHomotopyMulEquiv` | 監査済み | 可逆成分の包含による正次数の比較 |
+| `ringTranslationIso`、`matrixStabilization_sub_one` | 監査済み | 零基点への平行移動と安定化の整合 |
+| `RingHornFaces.exists_lower_prefix`、`exists_filler` | 監査済み | 二方向の有限帰納によるホーン充填 |
+| `ringSpace_kanComplex`、`stableHatGL_kanComplex` | 監査済み | 係数環と実際の安定 ĜL の Kan 性 |
+| `simplicialRingHatGLCoefficientHomotopyMulEquiv` | 監査済み | 追加仮定のない有限 rank の高次の係数表示 |
+| `hatGLCoefficientHomotopy_stabilization`、`hatGLRankCoefficientIso` | 監査済み | rank の安定化の可換性と群の図式の自然同型 |
+| `coefficientMatrixRankSequence`、`stableCoefficientMatrices` | 監査済み | 係数群の行列と単位による安定化の実際の群の余極限 |
+| `stableHatGLHomotopyIsColimit`、`stableHatGLHomotopyGroupColimitIso` | 監査済み | K-L9 の定理による実際の安定群の余極限 |
+| `stableHatGLBarPositiveHomotopyMulEquiv` | 監査済み | 安定 ĜL と分類空間の正次数の群の delooping |
+| `monoidBarKanConnected` | 監査済み | KST Lemma 2.13 の連結な Kan 模型 |
+| `lemma_2_13_pi_one` | 監査済み | GL(π₀A) と基本群の乗法同値 |
+| `lemma_2_13_higher` | 監査済み | 分類空間の全高次の群と安定係数行列群の乗法同値 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
-| plus 構成 | 未実装 | acyclic map と π₁ の商 |
-| K₀・K₁ の比較 | 未実装 | KST Theorem 2.16、次数 0、1 |
-| ∞-S• との比較 | K1a 接続前 | KST Proposition 2.15 |
+| plus 構成 | 未実装 | 局所係数の acyclic map と π₁ の商 |
+| K₀・K₁ の比較 | 未実装 | KST Theorem 2.16 の次数 0、1 |
+| ∞-S• との比較 | K1a の供給を確認予定 | KST Proposition 2.15 |
 
 ## 13. 原典の所在
 
@@ -1221,38 +892,3 @@ L2a の工程の区切りで全体ビルドを実行した。
 
 上の原典は設計の照合に用いる。
 原典への参照だけを Lean の証明にすることはない。
-
-| `SimplicialMonoid.componentsFunctor`、`componentsConstAdjunction` | 実装済み | 成分モノイドと定数単体的モノイドの随伴 |
-| `hatGLInducedComponentsEquiv`、`hatGLRankComponentsIso` | 実装済み | 誘導乗法の有限比較と安定化の自然性 |
-| `stableGeneralLinear`、`stableHatGLComponentsIso` | 実装済み | 実際の安定 rank の余極限と π₀ĜL ≅ GL(π₀A) |
-
-| `monoidGroupCompletionMap_unit` | 実装済み | 標準写像が単位を定数ループへ送る |
-| `kanPiIsomorphism_of_localized_isIso` | 実装済み | Kan 複体間の比較から K-L9 の全ホモトピー類へ |
-| `groupCompletionKanMap`、`groupCompletionKanMap_fac` | 実装済み | 元の標準写像に厳密に一致する Kan 延長 |
-| `monoidBarHomotopyEquiv` | 実装済み | 群状モノイドの Kan 模型の π_n と BM の π_(n+1) |
-| `monoidBarFundamentalEquiv`、`stableHatGLBarFundamentalEquiv` | 実装済み | 実際の成分、安定 GL と基本群の台集合の全単射 |
-
-| `monoidNerveLoopMulStruct`、`monoidNerveFundamentalClass_mul` | 実装済み | nerve の二単体による基本群の反乗法性 |
-| `monoidVertexNerveMap` | 実装済み | 零次モノイドの nerve の対角 bar への包含 |
-| `groupCompletionVertex_simplex_map`、`groupCompletionVertex_eq_barLoop` | 実装済み | 標準群完備化写像の頂点と nerve の辺の代表の一致 |
-| `monoidBarFundamentalClass_bijective`、`monoidBarFundamentalClass_mul` | 実装済み | 標準の成分比較の全単射性と反乗法性 |
-| `monoidBarFundamentalMulEquiv` | 実装済み | 群状モノイドの成分群と BM の基本群の乗法同値 |
-| `stableHatGLBarFundamentalMulEquiv` | 実装済み | KST Lemma 2.13 の i=1 の安定 GL との群同型 |
-
-| `componentSubcomplex_kanComplex` | 実装済み | Kan 複体の成分全体の部分複体の Kan 性 |
-| `componentPtSimplexLift`、`componentRelStructLift` | 実装済み | 正次数の代表単体と関係の充填の持ち上げ |
-| `componentPositiveHomotopyMulEquiv` | 実装済み | 成分全体の包含が誘導する正次数の群同型 |
-| `matrixRingObject`、`matrixSpace_kanComplex` | 実装済み | 全行列の単体的環と係数の Kan 性からの充填 |
-| `matrixComponentMap`、`hatGLComponentIso` | 実装済み | ĜL と全行列の可逆成分全体との同型 |
-| `hatGLPositiveHomotopyMulEquiv`、`hatGLPositiveHomotopyMulEquiv_apply` | 実装済み | 全行列が Kan のとき、包含による正次数の群同型 |
-
-| `matrixPtSimplex`、`matrixRelStruct` | 実装済み | 係数ごとの境界定数単体と関係を行列へ束ねる |
-| `matrixPositiveHomotopyMulEquiv` | 実装済み | 行列の正次数の群の係数ごとの積分解 |
-| `ringTranslationIso`、`ringPositiveHomotopyBasepointEquiv` | 実装済み | 加法的平行移動による零基点への群同型 |
-| `hatGLCoefficientHomotopyMulEquiv` | 実装済み | 係数環が Kan のときの有限 rank の零基点の係数群の行列表示 |
-
-| `ringAddDegeneracy_correct_lower`、`ringAddDegeneracy_correct_upper` | 実装済み | 退化を加える一段の面の補正 |
-| `RingHornFaces.error_face_low`、`error_face_high` | 実装済み | 互換性から誤差の面が零であること |
-| `RingHornFaces.exists_lower_prefix`、`exists_filler` | 実装済み | 二方向の有限帰納による全ての面の充填 |
-| `ringSpace_kanComplex` | 実装済み | 任意の単体的環の台集合の Kan 性 |
-| `simplicialRingHatGLCoefficientHomotopyMulEquiv` | 実装済み | 追加仮定のない有限 rank の高次の係数表示 |
