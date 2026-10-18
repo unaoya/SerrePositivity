@@ -187,3 +187,13 @@ public import SerrePositivity.KST.ProExcision.LowChainComparisonNaturality
 public import SerrePositivity.KST.ProExcision.NormalizedTensorComparisonNaturality
 
 public import SerrePositivity.KST.ProExcision.ConstructionA5
+
+public import SerrePositivity.KST.ProExcision.LinearizedGroupProductNaturality
+
+public import SerrePositivity.KST.ProExcision.NormalizedTensorSandwichNaturality
+
+public import SerrePositivity.KST.ProExcision.TensorAugmentationNaturality
+
+public import SerrePositivity.KST.ProExcision.DiscreteActionNaturality
+
+public import SerrePositivity.KST.ProExcision.ConstructionA5Equivariant

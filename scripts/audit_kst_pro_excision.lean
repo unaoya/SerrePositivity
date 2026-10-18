@@ -2919,3 +2919,42 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.constructionA5
 #print axioms SerrePositivity.KST.ProExcision.constructionA5
+
+#check @SerrePositivity.KST.ProExcision.linearizedDiagonal_generator
+#print axioms SerrePositivity.KST.ProExcision.linearizedDiagonal_generator
+
+#check @SerrePositivity.KST.ProExcision.linearizedDiagonal_naturality
+#print axioms SerrePositivity.KST.ProExcision.linearizedDiagonal_naturality
+
+#check @SerrePositivity.KST.ProExcision.linearizedGroupProduct_generator
+#print axioms SerrePositivity.KST.ProExcision.linearizedGroupProduct_generator
+
+#check @SerrePositivity.KST.ProExcision.linearizedGroupProduct_naturality
+#print axioms SerrePositivity.KST.ProExcision.linearizedGroupProduct_naturality
+
+#check @SerrePositivity.KST.ProExcision.normalizedTensorSandwich_naturality
+#print axioms SerrePositivity.KST.ProExcision.normalizedTensorSandwich_naturality
+
+#check @SerrePositivity.KST.ProExcision.chainComparisonWhisker_naturality
+#print axioms SerrePositivity.KST.ProExcision.chainComparisonWhisker_naturality
+
+#check @SerrePositivity.KST.ProExcision.normalizedComparisonWhisker_square
+#print axioms SerrePositivity.KST.ProExcision.normalizedComparisonWhisker_square
+
+#check @SerrePositivity.KST.ProExcision.linearizedTensorAugmentationMHomotopy_naturality
+#print axioms SerrePositivity.KST.ProExcision.linearizedTensorAugmentationMHomotopy_naturality
+
+#check @SerrePositivity.KST.ProExcision.discreteNerveAction_linearized
+#print axioms SerrePositivity.KST.ProExcision.discreteNerveAction_linearized
+
+#check @SerrePositivity.KST.ProExcision.LinearizedEquivariant.discrete_naturality
+#print axioms SerrePositivity.KST.ProExcision.LinearizedEquivariant.discrete_naturality
+
+#check @SerrePositivity.KST.ProExcision.LinearizedCylinderEquivariant.discrete_naturality
+#print axioms SerrePositivity.KST.ProExcision.LinearizedCylinderEquivariant.discrete_naturality
+
+#check @SerrePositivity.KST.ProExcision.constructionA5_equivariant
+#print axioms SerrePositivity.KST.ProExcision.constructionA5_equivariant
+
+#check @SerrePositivity.KST.ProExcision.constructionA5EquivariantCylinderMap
+#print axioms SerrePositivity.KST.ProExcision.constructionA5EquivariantCylinderMap

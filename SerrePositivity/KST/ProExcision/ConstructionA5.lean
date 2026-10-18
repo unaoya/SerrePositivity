@@ -15,7 +15,8 @@ public import SerrePositivity.KST.ProExcision.LinearizedGroupProduct
 set_option backward.isDefEq.respectTransparency false
 universe u
 namespace SerrePositivity.KST.ProExcision
-open CategoryTheory
+open CategoryTheory Opposite
+open scoped Simplicial
 
 /-- 概要：非可換標的に対する μ 版 A.5 の非同変な実区間比較。
 方針：因子内の厳密化・正規化・差のテンソルの消滅・実 EZ 比較・区間復元を合成する。
@@ -46,7 +47,10 @@ def constructionA5 {T P Q H : Type u} [Group T] [Group P] [Group Q] [Group H]
     rw [linearizedGroupProduct_comp, linearizedGroupProduct_comp, linearizedGroupProduct_comp,
       groupProduct_trivial]
     rfl
-  rw [hl, hr] at h
-  exact h
+  refine { h := h.h, h₀ := ?_, h₁ := ?_ }
+  · intro n hn
+    exact (h.h₀ n hn).trans (congrArg (fun t ↦ t.app (op ⦋n⦌)) hl)
+  · intro n hn
+    exact (h.h₁ n hn).trans (congrArg (fun t ↦ t.app (op ⦋n⦌)) hr)
 
 end SerrePositivity.KST.ProExcision

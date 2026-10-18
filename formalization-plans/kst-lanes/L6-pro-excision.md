@@ -47,15 +47,15 @@
 - 単体環の π とこの複体模型との同定は K-L9 が供給する界面。π 自体の定理の完成は主張しない。
 - 平坦ホモロジー底変換、a(n)M の像のテンソル比較、pro-零性・pro 同型の保存は検証済み。
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
-- L6c：一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
+- L6c：借用する π・H_* の明示的な模型界面に対して工程完了。一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと1024宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと1037宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
 - Construction A.6：成分 u⁻¹ の自然変換、nerve の実ホモトピー、係数付き自由鎖複体への実鎖ホモトピーに加え、`conjugationLinearizedHomotopy` で非被約 C(H)⊗ℤΔ¹ の実区間ホモトピーを構成。両端条件は全次数で成立。区間関手・nerve の区間写像・自由化したテンソル区間写像について、群準同型との自然性も証明。
 - Construction A.5：ユーザーが augmentation 補正を採用し、L6c を再開。非被約 C(H)=ℤBH を保持する。下記の設計確認欄を参照。
-- A.5 の代数部分：`tensorMap_augmentation_expansion` と `tensorMap_augmentation_eq_low` を検証。二つの差の消滅から m+m′+1 以下の補正式を得る。AW・shuffle のホモトピー構成と移送は未完。
+- A.5 の代数部分：`tensorMap_augmentation_expansion` と `tensorMap_augmentation_eq_low` を検証。二つの差の消滅から m+m′+1 以下の補正式を得る。AW・shuffle の実ホモトピーと実区間への復元・同変性も完成。
 - `LinearizedMHomotopy.cancel_augmentation`：C(ψ)≃C(ψ)+C(φ)−C(e) から C(φ)≃C(e) を区間写像の差で構成。作用の同変性は `cancel_augmentation_equivariant` で接続済み。
 - `LinearizedMHomotopy.homologyMap_eq`：m 次ホモトピーから次数 ≤m の交代面写像複体のホモロジー写像の一致を証明。零次を含む。同変 bar への移送は `linearizedActionBarMHomotopy` と Lemma A.4 で検証済み。
 - `actionBarComparison`：実際の E_BH G から B(G⋉H) への単体的比較を構成。transport 関手の合成則と全ての単体射への自然性を検証。
@@ -85,8 +85,8 @@
 - shuffle の境界添字：`removeHorizontal`・`removeVertical` と挿入の両逆を検証し、位置つき挿入の実同値を構成。`rank_eq_left` は水平ステップの順位と第一座標を同定。`horizontalFacePosition`・`horizontalFaceVertex` は各第一因子の面を実挿入に送り、`horizontalFace_left`・`horizontalFace_right` が面の実写像を同定。補集合による二因子交換で `verticalFace_left`・`verticalFace_right` も検証。境界添字全体の分類と全和への統合は `shuffleBoundaryPartitionEquiv` と `shuffle_comm` で完了。
 - shuffle の全混合境界和：`MixedShuffleIndex.swap` は固定点のない対合で、`shuffleMixedWeight_cancel` は面の符号を含む各対の相殺。`shuffleMixed_sum_zero` は全有限和の消滅を実写像について証明。係数群の二倍の単射性を使わず、一般の加法群で成立する有限和の対合による。
 - shuffle の純粋境界添字の同値：`horizontalShuffleBoundaryEquiv` は小さい shuffle と第一因子の面から全純粋水平境界への実同値で、`horizontalShuffleBoundary_sum` が有限和を移す。`verticalShuffleBoundaryEquiv`・`verticalShuffleBoundary_sum` は補集合の同値と合成して第二因子の場合を実装。面番号・挿入位置・削除頂点の左右の復元を証明済み。実写像と符号も同定し、全境界の分類と鎖写像性へ接続済み。
-- L6c の残作業：採用済み μ 版 A.5 の鎖ホモトピーの単体的区間への復元、μ と対角への移送。A.1・A.4・A.6 の H_* の具体模型への特殊化は所有レーンの界面。
-- L6d〜g：未着手。
+- L6c の完成界面：`constructionA5` は μ 版の実 (m+m′+1) 次ホモトピー、`constructionA5_equivariant` は外部 G 同変性、`constructionA5EquivariantCylinderMap` は作用 bar へ渡す束。A.1・A.4・A.6 の H_* の具体模型への特殊化は所有レーンの界面。
+- L6d：§10-1 の非可換再記述の紙の確認を下記に記録し、実装へ進む。L6e〜g は未着手。
 
 ## 主要宣言の表
 
@@ -147,7 +147,7 @@
 | alexanderWhitney_naturality | AWChainMap.lean | 検証済み | 実鎖写像の二つの入力の射に関する自然性 |
 | normalizedAlexanderWhitney | NormalizedAlexanderWhitney.lean | 検証済み | 正規化 Moore 複体の実 AW 鎖写像 |
 | normalizedAlexanderWhitney_naturality | NormalizedAlexanderWhitney.lean | 検証済み | 正規化 AW の二つの入力の写像に関する自然性 |
-| shuffleApp | Shuffle.lean | 成分検証済み | 格子路の符号付き和の実成分、鎖写像性は未完 |
+| shuffleApp | Shuffle.lean | 検証済み | 格子路の符号付き和の実成分、鎖写像性は shuffle_comm |
 | shuffleApp_naturality | Shuffle.lean | 検証済み | 実成分の二つの入力の写像に関する自然性 |
 | ShuffleIndex.coordinates_add / left_step / right_step | ShufflePath.lean | 検証済み | 実格子路の座標と一歩ごとの変化 |
 | ShuffleIndex.left_surjective / right_surjective | ShuffleSurjective.lean | 検証済み | 格子路の二つの順序写像が全射であること |
@@ -331,6 +331,11 @@
 | pro_whitehead | Whitehead.lean | 予定 | simple 空間版 |
 | claim418 | Serre.lean | 予定 | 相対 Serre SS の帰結 |
 | theorem411 | Excision.lean | 予定 | pro 切除 |
+
+| constructionA5 / constructionA5_equivariant | ConstructionA5.lean / ConstructionA5Equivariant.lean | 検証済み | 非可換な μ 版 A.5 の実ホモトピーと外部 G 同変性 |
+| constructionA5EquivariantCylinderMap | ConstructionA5Equivariant.lean | 検証済み | 作用 bar に渡す同変な実区間射 |
+| linearizedTensorAugmentationMHomotopy_naturality | TensorAugmentationNaturality.lean | 検証済み | augmentation 補正の構成全体の自然性 |
+| linearizedGroupProduct_naturality / linearizedDiagonal_naturality | LinearizedGroupProductNaturality.lean | 検証済み | 最後の μ と対角の自然性 |
 
 ## L6a：最小 pro 形式
 
@@ -788,3 +793,33 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - `linearizedMHomotopyOfChainComparisons_naturality` により、二つの低次一致する全鎖比較の差からの実区間復元が自然であることを証明した。
 - `normalizedTensorComparisonWithHomotopies_square` と `normalizedTensorAugmentationComparison_square` により、AW・shuffle で挟んだ比較と補正した三項の比較の自然性を証明した。
 - この保存単位では1024宣言の監査が標準三公理のみで成功。L6c は未完了であり、対角・μ の自然性および最終的な外部 G 同変性の接続を続ける。
+
+
+### L6c 工程完了（2026-10-19）
+
+- `linearizedTensorAugmentationMHomotopy_naturality` は構成した実区間ホモトピー全体の自然性。厳密化、正規化、AW・shuffle、差のテンソルの消滅、実区間復元を全て接続した。
+- `linearizedDiagonal_naturality` と `linearizedGroupProduct_naturality` により最後の対角と μ の自然性も証明した。
+- `constructionA5_equivariant` は採用済みの群 P,Q,H,μ,α,β と入力の同変性だけから外部 G 同変性を導く。G は普通のモノイド、作用は自己準同型による。I や H の可換性を要求しない。
+- 非被約 C(H) を保ち、A.5 の右辺の augmentation 補正を保つ。原典の一般文言との差は各 docstring に記載した。
+- A.1 の比較射と自然性、A.4 の m 次比較と相対零化、A.6 の実区間比較と固定元を保つ外部作用の同変性は前工程で検証済み。
+- 1037宣言の対象ビルド・公理監査が成功、標準三公理のみ。工程区切りの全体ビルドを別途実行する。
+
+### L6d §10-1：実装前の文言と証明方針（2026-10-19）
+
+原典：KST Proposition 4.14、Claim 4.15、Lemma 4.16、App. A.5・A.6。
+参照：[KST arXiv v4 §4.3](https://arxiv.org/html/1611.08466v4#S4.SS3)。
+
+1. I は結合的な非単位環、a は中心元。右乗法 φ(v)_i=v_i a を使う。
+   左行列作用について (Mv)_i a=Σ_j M_ij(v_j a) は結合律と有限和の分配法則だけで成立し、中心性を使わない。
+2. 集合 aI={ax | x∈I} は加法部分群であり、中心性から b(ax)=a(bx)、(ax)b=a(xb)。従って両側イデアル。
+   Ia={xa} との同一性も中心性で証明する。左・右乗法の単射性もこの同一性で移せる。
+3. 単位化環上の行列で ψ(v)=1+V、u=1+U と置く。V は first n 行・最後の補助列、U は同補助行・追加した最後の列だけに非零成分を持つ。
+   U²=V²=UV=0、VU は first n 行・追加列に v_i a を持つ。従って u⁻¹=1−U、u⁻¹ψ(v)u=1+V+VU=ψ(v)φ(v)。可換性は不要。
+4. P,Q,H と μ は上記の n,m−1,1,1 のブロック配置を用いる。P の埋め込みと ψ(Q) は交差積が両側とも零なので可換。
+   μ(p,q)=embed(p)ψ(q) は群準同型。外部の左行列作用は first n 行の X,y,v のみを変え、U,z と補助元 u を固定する。積の交差項は結合律で可換になる。
+5. m=0 は群の nerve の零次の一意な頂点を使う。m>0 は帰納法の入力を C(P) 内に保ち、Q の0次入力と μ 版 A.5 を組み合わせる。
+   A.6 の共役比較と連結して C(ψ)≃C(ψ)+C(φ)−C(e) を得た後、`cancel_augmentation` で C(φ)≃C(e) を得る。
+6. Prop 4.14 は安定 GL の全ホモロジーへの自明性ではなく、aI から I への像上の作用の自明性を目標とする。
+   Claim 4.15 の相対零化を A.4 の明示的 H_* 模型界面へ移し、有限次元から安定化する。
+
+上記は非可換版の文言と紙の計算であり、Lean での Prop 4.14 の完成を主張しない。まず右乗法・両側イデアル・零積による共役公式を実装し、その後ブロック群と帰納法を実装する。
