@@ -63,7 +63,10 @@
 - 合成 cone 三角形の δ を、右の短完全列の δ と左の商射の合成で表す公式を証明済み。
 - 濾過スペクトル対象の δ を実際の合成 cone 三角形へ移す比較を証明済み。
 - その δ を cone–商比較で移し、次数ごとの分裂境界のホモロジー写像で表す公式を証明済み。
-- 次は Koszul 濾過の隣接する三段にこの一般公式を適用し、初頁微分全体へ接続する。
+- 実際の隣接切り詰め射を第一射にした短完全列と、その次数ごと分裂を構成済み。
+- 隣接包含の残る次数での同型性と、分裂境界が中央切り詰めの微分になることを証明済み。
+- その全テンソル境界の同次成分も中央切り詰めの微分のテンソルに一致する。
+- 次はこの隣接三段を実際の濾過スペクトル対象に入れ、初頁微分全体へ接続する。
 - 初頁の二つのモデルの完全な自然性・Koszul 冪遷移との整合は残件。
 - スペクトル対象から頁への関手性を既存 API で確認中。未供給の自然性を仮定に置かない。
 - π_n の具体的な複体ホモロジーとの同定は K-L9 の界面から受け取る。
@@ -127,6 +130,11 @@
 | coneCompositeConnecting_quotient | ConeConnecting.lean | 検証済み | 合成 cone の δ と商の連結写像 |
 | filtrationInterval_delta | FiltrationConnecting.lean | 検証済み | 濾過の δ と実際の cone 三角形 |
 | filtrationInterval_delta_split | FiltrationConnecting.lean | 検証済み | 濾過の δ を分裂境界へ移す |
+| splitBoundary_differential | CutoffBoundary.lean | 検証済み | 二次数で同型な分裂境界は微分 |
+| splitTensorBoundary_differential | CutoffBoundary.lean | 検証済み | 同じ一般境界のテンソル計算 |
+| adjacentCutShortComplex | AdjacentCut.lean | 検証済み | 実際の隣接射の短完全模型 |
+| adjacentTensorCutShortComplex_shortExact | AdjacentCut.lean | 検証済み | 分裂による全テンソルの短完全性 |
+| adjacentTensorCutBoundary_differential | AdjacentCut.lean | 検証済み | 隣接濾過の同次境界計算 |
 | koszul_comparison | KoszulPro.lean | 予定 | KST Lemma 4.10 |
 | prop414 | Prop414.lean | 予定 | 中心的係数による非可換版 |
 | pro_whitehead | Whitehead.lean | 予定 | simple 空間版 |

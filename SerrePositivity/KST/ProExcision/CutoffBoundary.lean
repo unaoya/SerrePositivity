@@ -24,6 +24,28 @@ open SerrePositivity.StupidTruncation
 
 variable {R : Type u} [CommRing R]
 
+/-- 概要：隣接する二次数で商射と包含が同型なら分裂境界は中央項の微分になる。
+方針：分裂の片側逆を同型性により両側逆へ移し、合成を簡約する。
+規約：分裂は次数ごとに選び、複体の分裂は要求しない。
+使われ方：KST Lemma 4.10 の実際の隣接濾過への境界公式。 -/
+theorem splitBoundary_differential
+    (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ))
+    (σ : ∀ n, (S.map (eval _ _ n)).Splitting) (n : ℤ)
+    [IsIso (S.g.f n)] [IsIso (S.f.f (n + 1))] :
+    S.g.f n ≫ (CochainComplex.cocycleOfDegreewiseSplit S σ).1.v n (n + 1) rfl ≫
+      S.f.f (n + 1) = S.X₂.d n (n + 1) := by
+  have hs : S.g.f n ≫ (σ n).s = 𝟙 (S.X₂.X n) := by
+    apply (cancel_mono (S.g.f n)).mp
+    erw [Category.assoc, (σ n).s_g, Category.comp_id]
+  have hr : (σ (n + 1)).r ≫ S.f.f (n + 1) = 𝟙 (S.X₂.X (n + 1)) := by
+    apply (cancel_epi (S.f.f (n + 1))).mp
+    erw [← Category.assoc, (σ (n + 1)).f_r, Category.id_comp]
+  change S.g.f n ≫ ((σ n).s ≫ S.X₂.d n (n + 1) ≫ (σ (n + 1)).r) ≫
+    S.f.f (n + 1) = _
+  erw [Category.assoc, Category.assoc, hr, Category.comp_id, ← Category.assoc, hs,
+    Category.id_comp]
+
+
 /-- 概要：項切り詰めの境界を元の複体の微分で計算する。
 方針：下端の前後で射影と包含が同型となり、分裂の片側逆を両側逆へ移す。
 規約：切り詰め位置は n+1、境界成分は n から n+1。
@@ -37,16 +59,30 @@ theorem cutoffBoundary_differential (P : CochainComplex (ModuleCat.{u} R) ℤ) (
   let σ := StupidTruncation.splitting P (n + 1)
   let : IsIso (S.f.f (n + 1)) := inclusion_f_isIso P (n + 1) (n + 1) (le_refl _)
   let : IsIso (S.g.f n) := projection_f_isIso P (n + 1 - 1) n (by omega)
-  have hs : S.g.f n ≫ (σ n).s = 𝟙 (P.X n) := by
-    apply (cancel_mono (S.g.f n)).mp
-    erw [Category.assoc, (σ n).s_g, Category.comp_id]
-  have hr : (σ (n + 1)).r ≫ S.f.f (n + 1) = 𝟙 (P.X (n + 1)) := by
-    apply (cancel_epi (S.f.f (n + 1))).mp
-    erw [← Category.assoc, (σ (n + 1)).f_r, Category.id_comp]
-  change S.g.f n ≫ ((σ n).s ≫ P.d n (n + 1) ≫ (σ (n + 1)).r) ≫
-    S.f.f (n + 1) = _
-  erw [Category.assoc, Category.assoc, hr, Category.comp_id, ← Category.assoc, hs,
-    Category.id_comp]
+  exact splitBoundary_differential S σ n
+
+/-- 概要：二次数で包含と商が同型ならテンソル境界は中央項の微分のテンソルになる。
+方針：同次テンソル境界公式を一般分裂境界の微分公式と合成する。
+規約：全次数 t と二方向の次数 i,j を明示する。
+使われ方：KST Lemma 4.10 の実際の隣接濾過のテンソル境界。 -/
+theorem splitTensorBoundary_differential
+    (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ))
+    (σ : ∀ n, (S.map (eval _ _ n)).Splitting)
+    (K : CochainComplex (ModuleCat.{u} R) ℤ)
+    (i j t : ℤ) (h : i + j = t)
+    [IsIso (S.g.f i)] [IsIso (S.f.f (i + 1))] :
+    (S.g.f i ▷ K.X j) ≫ ιTensorObj S.X₃ K i j t h ≫
+      (CochainComplex.cocycleOfDegreewiseSplit (cochainTensorShortComplexRight S K)
+        (cochainTensorShortComplexRightSplitting S σ K)).1.v t (t + 1) rfl ≫
+      (cochainTensorMap S.f (𝟙 K)).f (t + 1) =
+        (S.X₂.d i (i + 1) ▷ K.X j) ≫
+          ιTensorObj S.X₂ K (i + 1) j (t + 1) (by omega) := by
+  have hd : S.g.f i ≫ ((σ i).s ≫ S.X₂.d i (i + 1) ≫ (σ (i + 1)).r) ≫
+      S.f.f (i + 1) = S.X₂.d i (i + 1) := splitBoundary_differential S σ i
+  rw [tensorSplitBoundary_homogeneous_assoc, ιTensorObj_cochainTensorMap]
+  simp only [HomologicalComplex.id_f, tensorHom_id]
+  erw [← comp_whiskerRight_assoc, ← comp_whiskerRight_assoc]
+  erw [Category.assoc, hd]
 
 /-- 概要：項切り詰めのテンソル境界を包含・射影で比較すると元の微分のテンソルになる。
 方針：一般のテンソル境界の同次公式と、切り詰め境界の微分計算を合成する。

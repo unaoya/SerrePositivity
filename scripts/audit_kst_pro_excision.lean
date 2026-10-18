@@ -374,3 +374,39 @@ set_option pp.explicit true
 #check @SerrePositivity.KST.ProExcision.filtrationInterval_delta_split
 #print axioms SerrePositivity.KST.ProExcision.filtrationInterval_delta_split
 
+
+#check @SerrePositivity.KST.ProExcision.splitBoundary_differential
+#print axioms SerrePositivity.KST.ProExcision.splitBoundary_differential
+
+#check @SerrePositivity.KST.ProExcision.splitTensorBoundary_differential
+#print axioms SerrePositivity.KST.ProExcision.splitTensorBoundary_differential
+
+#check @SerrePositivity.KST.ProExcision.adjacentCutShortComplex
+#print axioms SerrePositivity.KST.ProExcision.adjacentCutShortComplex
+
+#check @SerrePositivity.KST.ProExcision.adjacentCutIso
+#print axioms SerrePositivity.KST.ProExcision.adjacentCutIso
+
+#check @SerrePositivity.KST.ProExcision.adjacentCutSplitting
+#print axioms SerrePositivity.KST.ProExcision.adjacentCutSplitting
+
+#check @SerrePositivity.KST.ProExcision.adjacentCutShortComplex_shortExact
+#print axioms SerrePositivity.KST.ProExcision.adjacentCutShortComplex_shortExact
+
+#check @SerrePositivity.KST.ProExcision.adjacentTensorCutShortComplex
+#print axioms SerrePositivity.KST.ProExcision.adjacentTensorCutShortComplex
+
+#check @SerrePositivity.KST.ProExcision.adjacentTensorCutSplitting
+#print axioms SerrePositivity.KST.ProExcision.adjacentTensorCutSplitting
+
+#check @SerrePositivity.KST.ProExcision.adjacentTensorCutShortComplex_shortExact
+#print axioms SerrePositivity.KST.ProExcision.adjacentTensorCutShortComplex_shortExact
+
+#check @SerrePositivity.KST.ProExcision.truncationInclusion_f_isIso
+#print axioms SerrePositivity.KST.ProExcision.truncationInclusion_f_isIso
+
+#check @SerrePositivity.KST.ProExcision.adjacentCutBoundary_differential
+#print axioms SerrePositivity.KST.ProExcision.adjacentCutBoundary_differential
+
+#check @SerrePositivity.KST.ProExcision.adjacentTensorCutBoundary_differential
+#print axioms SerrePositivity.KST.ProExcision.adjacentTensorCutBoundary_differential
