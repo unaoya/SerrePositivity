@@ -95,10 +95,19 @@ def exactFunctorSuspensionIso {X Y : SSet.{u}}
     (F : X ⟶ Y) [IsExactFunctor F] :
     suspensionFunctor X ⋙ (hoFunctor.map F).toFunctor ≅
       (hoFunctor.map F).toFunctor ⋙ suspensionFunctor Y := by
-  have e := (FunctorIso.postcomp (exactFunctorSuspensionFamilyIso F)
+  let e := (FunctorIso.postcomp (exactFunctorSuspensionFamilyIso F)
     (suspensionDiagramEvaluation Y 1 1)).toNatIso
-  rw [Category.assoc, exactFunctorSuspensionDiagrams_evaluation] at e
-  simpa only [CategoryTheory.Functor.map_comp, Cat.Hom.comp_toFunctor,
-    suspensionFunctor, QCatEquivalence.toHoEquivalence_inverse, CategoryTheory.Functor.assoc] using e
+  have hl : (hoFunctor.map (((suspensionDiagramSourceEquivalence X).inv ≫
+      exactFunctorSuspensionDiagrams F) ≫ suspensionDiagramEvaluation Y 1 1)).toFunctor =
+      suspensionFunctor X ⋙ (hoFunctor.map F).toFunctor := by
+    rw [Category.assoc, exactFunctorSuspensionDiagrams_evaluation]
+    simp only [CategoryTheory.Functor.map_comp, Cat.Hom.comp_toFunctor,
+      suspensionFunctor, QCatEquivalence.toHoEquivalence_inverse, CategoryTheory.Functor.assoc]
+  have hr : (hoFunctor.map ((F ≫ (suspensionDiagramSourceEquivalence Y).inv) ≫
+      suspensionDiagramEvaluation Y 1 1)).toFunctor =
+      (hoFunctor.map F).toFunctor ⋙ suspensionFunctor Y := by
+    simp only [CategoryTheory.Functor.map_comp, Cat.Hom.comp_toFunctor,
+      suspensionFunctor, QCatEquivalence.toHoEquivalence_inverse, CategoryTheory.Functor.assoc]
+  exact (eqToIso hl).symm ≪≫ e ≪≫ eqToIso hr
 
 end SerrePositivity.InfinityCategories

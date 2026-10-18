@@ -266,6 +266,10 @@ public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationComparis
 
 public import SerrePositivity.InfinityCategories.Stable.ExactFunctorSuspensionComponents
 
+public import SerrePositivity.InfinityCategories.Stable.ExactFunctorSuspensionObjectComparison
+public import SerrePositivity.InfinityCategories.Stable.ExactFunctorConnecting
+public import SerrePositivity.InfinityCategories.Stable.ExactFunctorTriangulated
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。

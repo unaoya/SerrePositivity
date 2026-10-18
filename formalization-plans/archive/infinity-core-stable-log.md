@@ -19540,3 +19540,174 @@ isExactFunctor_id.{u_1} : ∀ (X : SSet.{u_1}), IsExactFunctor.{u_1} (CategoryTh
               (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} F (Opposite.op.{1} { len := 0 })))
             x))))
 ```
+
+
+## S6：完全関手が誘導する h の三角関手（2026-10-19）
+
+標準の懸垂比較が指定 suspension の対象比較と可換であることを始点評価の忠実性から証明し、終点評価により対象比較の式を公開。既存の `exactFunctorSuspensionIso` は型の輸送を明示的な eqToIso に書き直し、成分を計算できるようにした（公開型・数学的な比較は同じ）。これと指定懸垂への接続射の保存から `cofiberConnecting_postcomp` を証明。整数シフトの一回比較の復元式により第三射を照合し、`exactFunctorCofiberTriangleIso` と `exactFunctor_isTriangulated` を公開した。加法性は Mathlib の三角関手の一般論から従う。追加の加法性・シフト比較・接続射両立の仮定はない。
+
+対象＋統合ビルド 3081 jobs 成功。全 357 modules／2631 declarations の公理監査成功（標準 3 公理のみ）。S6 の完全関手間の自然変換、S7（D7）は未完了。
+
+全 11 公開宣言の正確な型：
+
+```lean
+@exactFunctorSuspensionDiagrams_hoMap_evaluation.{u_1} : ∀ {X Y : SSet.{u_1}} [SSet.Quasicategory.{u_1} X]
+  (F : Quiver.Hom.{u_1, u_1 + 1} X Y) [inst : IsExactFunctor.{u_1} F]
+  {a b : ↑(CategoryTheory.Functor.obj.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} (suspensionDiagrams.{u_1} X))}
+  (f : Quiver.Hom.{u_1, u_1} a b) (i j : Fin 2),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+      (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1}
+          (suspensionDiagramEvaluation.{u_1} Y i j)))
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+          (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1}
+            (exactFunctorSuspensionDiagrams.{u_1} F)))
+        f))
+    (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+      (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} F))
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+          (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1}
+            (suspensionDiagramEvaluation.{u_1} X i j)))
+        f))
+@exactFunctorSuspensionDiagrams_sourceObjIso_source_arrow.{u_1} : ∀ {X Y : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : IsStable.{u_1} X] [inst_2 : SSet.Quasicategory.{u_1} Y]
+  [IsStable.{u_1} Y] (F : Quiver.Hom.{u_1, u_1 + 1} X Y) [inst_4 : IsExactFunctor.{u_1} F]
+  {x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })} (s : SuspensionSquare.{u_1} x),
+  Eq.{u_1 + 1}
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+          (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1}
+            (suspensionDiagramEvaluation.{u_1} Y 0 0)))
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+          (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+            (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1}
+              (exactFunctorSuspensionDiagrams.{u_1} F)))
+          (CategoryTheory.Iso.hom.{u_1, u_1} (SuspensionSquare.sourceDiagramObjIso.{u_1} s)))))
+    (CategoryTheory.Arrow.mk.{u_1, u_1}
+      (CategoryTheory.CategoryStruct.id.{u_1, u_1}
+        (SSet.HomotopyCategory.mk.{u_1}
+          ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+              (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} F (Opposite.op.{1} { len := 0 })))
+            x))))
+@exactFunctorSuspensionFamilyIso_comp_sourceObjIso.{u_1} : ∀ {X Y : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 : IsStable.{u_1} X] [inst_2 : SSet.Quasicategory.{u_1} Y] [inst_3 : IsStable.{u_1} Y]
+  (F : Quiver.Hom.{u_1, u_1 + 1} X Y) [inst_4 : IsExactFunctor.{u_1} F]
+  {x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })} (s : SuspensionSquare.{u_1} x),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+      (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.Iso.hom.{u_1, u_1} (FunctorIso.toNatIso.{u_1} (exactFunctorSuspensionFamilyIso.{u_1} F)))
+        (SSet.HomotopyCategory.mk.{u_1} x))
+      (CategoryTheory.Iso.hom.{u_1, u_1} (SuspensionSquare.sourceDiagramObjIso.{u_1} (SuspensionSquare.map.{u_1} s F))))
+    (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+      (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1}
+          (exactFunctorSuspensionDiagrams.{u_1} F)))
+      (CategoryTheory.Iso.hom.{u_1, u_1} (SuspensionSquare.sourceDiagramObjIso.{u_1} s)))
+@exactFunctorSuspensionIso_hom_app.{u_1} : ∀ {X Y : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 : IsStable.{u_1} X] [inst_2 : SSet.Quasicategory.{u_1} Y] [inst_3 : IsStable.{u_1} Y]
+  (F : Quiver.Hom.{u_1, u_1 + 1} X Y) [inst_4 : IsExactFunctor.{u_1} F]
+  (x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),
+  Eq.{u_1 + 1}
+    (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1}
+      (CategoryTheory.Iso.hom.{u_1, u_1} (exactFunctorSuspensionIso.{u_1} F)) (SSet.HomotopyCategory.mk.{u_1} x))
+    (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+      (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1}
+          (suspensionDiagramEvaluation.{u_1} Y 1 1)))
+      (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.Iso.hom.{u_1, u_1} (FunctorIso.toNatIso.{u_1} (exactFunctorSuspensionFamilyIso.{u_1} F)))
+        (SSet.HomotopyCategory.mk.{u_1} x)))
+@exactFunctorSuspensionIso_comp_objIso.{u_1} : ∀ {X Y : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 : IsStable.{u_1} X] [inst_2 : SSet.Quasicategory.{u_1} Y] [inst_3 : IsStable.{u_1} Y]
+  (F : Quiver.Hom.{u_1, u_1 + 1} X Y) [inst_4 : IsExactFunctor.{u_1} F]
+  {x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })} (s : SuspensionSquare.{u_1} x),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+      (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.Iso.hom.{u_1, u_1} (exactFunctorSuspensionIso.{u_1} F)) (SSet.HomotopyCategory.mk.{u_1} x))
+      (CategoryTheory.Iso.hom.{u_1, u_1}
+        (SuspensionSquare.suspensionFunctorObjIso.{u_1} (SuspensionSquare.map.{u_1} s F))))
+    (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+      (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+        (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} F))
+      (CategoryTheory.Iso.hom.{u_1, u_1} (SuspensionSquare.suspensionFunctorObjIso.{u_1} s)))
+@exactFunctor_map_objIso_inv_comp_suspensionIso.{u_1} : ∀ {X Y : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 : IsStable.{u_1} X] [inst_2 : SSet.Quasicategory.{u_1} Y] [inst_3 : IsStable.{u_1} Y]
+  (F : Quiver.Hom.{u_1, u_1 + 1} X Y) [inst_4 : IsExactFunctor.{u_1} F]
+  {x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })} (s : SuspensionSquare.{u_1} x),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+          (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} F))
+        (CategoryTheory.Iso.inv.{u_1, u_1} (SuspensionSquare.suspensionFunctorObjIso.{u_1} s)))
+      (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.Iso.hom.{u_1, u_1} (exactFunctorSuspensionIso.{u_1} F)) (SSet.HomotopyCategory.mk.{u_1} x)))
+    (CategoryTheory.Iso.inv.{u_1, u_1}
+      (SuspensionSquare.suspensionFunctorObjIso.{u_1} (SuspensionSquare.map.{u_1} s F)))
+@cofiberConnecting_postcomp.{u_1} : ∀ {X Y : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X] [inst_1 : IsStable.{u_1} X]
+  [inst_2 : SSet.Quasicategory.{u_1} Y] [inst_3 : IsStable.{u_1} Y] (F : Quiver.Hom.{u_1, u_1 + 1} X Y)
+  [inst_4 : IsExactFunctor.{u_1} F] (t : ZeroTriangle.{u_1} X) (ht : IsCofiberSequence.{u_1} t),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+          (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} F))
+        (cofiberConnecting.{u_1} t ht))
+      (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.Iso.hom.{u_1, u_1} (exactFunctorSuspensionIso.{u_1} F))
+        (CategoryTheory.ShortComplex.X₁.{u_1, u_1} (ZeroTriangle.hoShortComplex.{u_1} t))))
+    (cofiberConnecting.{u_1} (ZeroTriangle.map.{u_1} t F ⋯) ⋯)
+@exactFunctor_map_cofiberTriangle_mor₃.{u_1} : ∀ {X Y : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 : IsStable.{u_1} X] [inst_2 : SSet.Quasicategory.{u_1} Y] [inst_3 : IsStable.{u_1} Y]
+  (F : Quiver.Hom.{u_1, u_1 + 1} X Y) [inst_4 : IsExactFunctor.{u_1} F] (t : ZeroTriangle.{u_1} X)
+  (ht : IsCofiberSequence.{u_1} t),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1}
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+          (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} F))
+        (CategoryTheory.Pretriangulated.Triangle.mor₃.{u_1, u_1} (cofiberTriangle.{u_1} t ht)))
+      (CategoryTheory.NatTrans.app.{u_1, u_1, u_1, u_1}
+        (CategoryTheory.Iso.hom.{u_1, u_1}
+          (CategoryTheory.Functor.commShiftIso.{u_1, u_1, u_1, u_1, 0}
+            (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+              (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} F))
+            1))
+        (CategoryTheory.Pretriangulated.Triangle.obj₁.{u_1, u_1} (cofiberTriangle.{u_1} t ht))))
+    (CategoryTheory.Pretriangulated.Triangle.mor₃.{u_1, u_1} (cofiberTriangle.{u_1} (ZeroTriangle.map.{u_1} t F ⋯) ⋯))
+@exactFunctorCofiberTriangleIso.{u_1} : {X Y : SSet.{u_1}} →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [inst_1 : IsStable.{u_1} X] →
+      [inst_2 : SSet.Quasicategory.{u_1} Y] →
+        [inst_3 : IsStable.{u_1} Y] →
+          (F : Quiver.Hom.{u_1, u_1 + 1} X Y) →
+            [inst_4 : IsExactFunctor.{u_1} F] →
+              (t : ZeroTriangle.{u_1} X) →
+                (ht : IsCofiberSequence.{u_1} t) →
+                  CategoryTheory.Iso.{u_1, u_1}
+                    (CategoryTheory.Functor.obj.{u_1, u_1, u_1, u_1}
+                      (CategoryTheory.Functor.mapTriangle.{u_1, u_1, u_1, u_1}
+                        (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+                          (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} F)))
+                      (cofiberTriangle.{u_1} t ht))
+                    (cofiberTriangle.{u_1} (ZeroTriangle.map.{u_1} t F ⋯) ⋯)
+@exactFunctor_isTriangulated.{u_1} : ∀ {X Y : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X]
+  [inst_1 : IsStable.{u_1} X] [inst_2 : SSet.Quasicategory.{u_1} Y] [inst_3 : IsStable.{u_1} Y]
+  (F : Quiver.Hom.{u_1, u_1 + 1} X Y) [inst_4 : IsExactFunctor.{u_1} F],
+  CategoryTheory.Functor.IsTriangulated.{u_1, u_1, u_1, u_1}
+    (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} F))
+@exactFunctor_additive.{u_1} : ∀ {X Y : SSet.{u_1}} [inst : SSet.Quasicategory.{u_1} X] [inst_1 : IsStable.{u_1} X]
+  [inst_2 : SSet.Quasicategory.{u_1} Y] [inst_3 : IsStable.{u_1} Y] (F : Quiver.Hom.{u_1, u_1 + 1} X Y)
+  [IsExactFunctor.{u_1} F],
+  CategoryTheory.Functor.Additive.{u_1, u_1, u_1, u_1}
+    (CategoryTheory.Cat.Hom.toFunctor.{u_1, u_1}
+      (CategoryTheory.Functor.map.{u_1, u_1, u_1 + 1, u_1 + 1} SSet.hoFunctor.{u_1} F))
+```
