@@ -98,6 +98,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -329,6 +330,27 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.monoidBarZeroRowIso
 
 
+-- BasedPathEndpoint.lean
+
+#check @SerrePositivity.KST.Comparison.basedPathEndpoint_evaluation
+#print axioms SerrePositivity.KST.Comparison.basedPathEndpoint_evaluation
+
+#check @SerrePositivity.KST.Comparison.basedPathFamilyMap_endpoint
+#print axioms SerrePositivity.KST.Comparison.basedPathFamilyMap_endpoint
+
+
+-- BasedPathFamily.lean
+
+#check @SerrePositivity.KST.Comparison.basedPathFamily_basepoint
+#print axioms SerrePositivity.KST.Comparison.basedPathFamily_basepoint
+
+#check @SerrePositivity.KST.Comparison.basedPathFamilyMap
+#print axioms SerrePositivity.KST.Comparison.basedPathFamilyMap
+
+#check @SerrePositivity.KST.Comparison.basedPathFamilyMap_ι
+#print axioms SerrePositivity.KST.Comparison.basedPathFamilyMap_ι
+
+
 -- BoundaryFaceRepresentation.lean
 
 #check @SerrePositivity.KST.Comparison.vertexFace_le_boundary
@@ -459,6 +481,15 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.DGAlgebraModel.quasiIso_truncation
 #print axioms SerrePositivity.KST.Comparison.DGAlgebraModel.quasiIso_truncation
+
+
+-- ContractibleComparison.lean
+
+#check @SerrePositivity.KST.Comparison.contractedSpace_terminal_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.contractedSpace_terminal_localized_isIso
+
+#check @SerrePositivity.KST.Comparison.map_between_contractible_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.map_between_contractible_localized_isIso
 
 
 -- CoproductPullbacks.lean
@@ -2060,6 +2091,12 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.hatGLBar
 
 
+-- GroupCompletionPathIdentity.lean
+
+#check @SerrePositivity.KST.Comparison.monoidGroupCompletionMap_path
+#print axioms SerrePositivity.KST.Comparison.monoidGroupCompletionMap_path
+
+
 -- GroupCompletionSpace.lean
 
 #check @SerrePositivity.KST.Comparison.monoidBarKanPointed
@@ -2084,6 +2121,12 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.monoidGroupCompletionMap_evaluation
 
 
+-- GrouplikeComparison.lean
+
+#check @SerrePositivity.KST.Comparison.monoidGroupCompletionMap_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.monoidGroupCompletionMap_localized_isIso
+
+
 -- GrouplikeGL.lean
 
 #check @SerrePositivity.KST.Comparison.hatGL_isGrouplike
@@ -2094,6 +2137,15 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.grouplikeTranslation_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.grouplikeTranslation_localized_isIso
+
+
+-- HatGLDelooping.lean
+
+#check @SerrePositivity.KST.Comparison.hatGLGroupCompletionMap_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.hatGLGroupCompletionMap_localized_isIso
+
+#check @SerrePositivity.KST.Comparison.dgAlgebraHatGLGroupCompletionMap_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.dgAlgebraHatGLGroupCompletionMap_localized_isIso
 
 
 -- HomotopyPullback.lean
@@ -2576,6 +2628,30 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.loopFamilyMap_evaluation
 
 
+-- LoopPathPullback.lean
+
+#check @SerrePositivity.KST.Comparison.loopPathFiberIso_hom_restriction
+#print axioms SerrePositivity.KST.Comparison.loopPathFiberIso_hom_restriction
+
+#check @SerrePositivity.KST.Comparison.loopPathRestriction_isPullback
+#print axioms SerrePositivity.KST.Comparison.loopPathRestriction_isPullback
+
+
+-- LoopPathRestriction.lean
+
+#check @SerrePositivity.KST.Comparison.intervalCircleProjection
+#print axioms SerrePositivity.KST.Comparison.intervalCircleProjection
+
+#check @SerrePositivity.KST.Comparison.intervalCircleProjection_right
+#print axioms SerrePositivity.KST.Comparison.intervalCircleProjection_right
+
+#check @SerrePositivity.KST.Comparison.loopPathRestriction
+#print axioms SerrePositivity.KST.Comparison.loopPathRestriction
+
+#check @SerrePositivity.KST.Comparison.loopPathRestriction_ι
+#print axioms SerrePositivity.KST.Comparison.loopPathRestriction_ι
+
+
 -- MappingCylinder.lean
 
 #check @SerrePositivity.KST.Comparison.mappingCylinder
@@ -2966,6 +3042,15 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.SimplicialRing.simplexToComponents_natural
 
 
+-- PointedUnitEvaluation.lean
+
+#check @SerrePositivity.KST.Comparison.pointedEvaluation_product
+#print axioms SerrePositivity.KST.Comparison.pointedEvaluation_product
+
+#check @SerrePositivity.KST.Comparison.pointedUnitIso_evaluation
+#print axioms SerrePositivity.KST.Comparison.pointedUnitIso_evaluation
+
+
 -- ProductHomotopyPullback.lean
 
 #check @SerrePositivity.KST.Comparison.productPullbackSquare
@@ -3090,6 +3175,27 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.regularBarContraction_projection
 #print axioms SerrePositivity.KST.Comparison.regularBarContraction_projection
+
+
+-- RegularBarPathComparison.lean
+
+#check @SerrePositivity.KST.Comparison.regularBarPathFamily
+#print axioms SerrePositivity.KST.Comparison.regularBarPathFamily
+
+#check @SerrePositivity.KST.Comparison.regularBarPathFamily_zero
+#print axioms SerrePositivity.KST.Comparison.regularBarPathFamily_zero
+
+#check @SerrePositivity.KST.Comparison.regularBarPathMap
+#print axioms SerrePositivity.KST.Comparison.regularBarPathMap
+
+#check @SerrePositivity.KST.Comparison.regularBarPathMap_endpoint
+#print axioms SerrePositivity.KST.Comparison.regularBarPathMap_endpoint
+
+#check @SerrePositivity.KST.Comparison.regularBar_terminal_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.regularBar_terminal_localized_isIso
+
+#check @SerrePositivity.KST.Comparison.regularBarPathMap_localized_isIso
+#print axioms SerrePositivity.KST.Comparison.regularBarPathMap_localized_isIso
 
 
 -- RegularBarProjection.lean

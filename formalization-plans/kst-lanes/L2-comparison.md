@@ -861,14 +861,18 @@ D の余極限保存と任意の単体集合への augmentation の局所化可�
 Proposition 1.6 の対角化の貼り合わせは証明済み。
 第零行と元のモノイド・一点の同型、および評価射と標準ファイバー・基点の一致を証明した。
 Proposition 1.6 を正則 bar へ適用し、群状モノイドの標準ファイバーの四角形のホモトピー引き戻し性を証明した。
-標準の群完備化写像の局所化可逆性の Segal 比較は未証明。
+正則 bar の収縮を K-L9 の基点始点 path space へ実際に転置し、終点評価と全空間の局所化可逆性を証明した。
+K-L9 の loop の厳密なファイバー表示の包含を円の商の制限と同定し、標準群完備化写像との一致を区間の評価で証明した。
+群状単体的モノイドの既存の標準写像 M→ΩR(BM) の局所化可逆性を追加仮定なしに証明した。
+単体的環と dg 代数の ΓA の有限 rank の ĜL に特殊化した。
+Segal Proposition 1.5 の群状モノイドの比較部分は完了。安定 rank と KST Lemma 2.13 の具体的な π_n の同型への接続は残る。
 L2b、L2c、L2d、L2e は未完了である。
 §10-5 は検証する文言と証明方針を記した段階である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 1054 宣言の型と公理を確認した。
-さらに名前空間全体の 1926 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 1079 宣言の型と公理を確認した。
+さらに名前空間全体の 1958 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -1094,7 +1098,14 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `regularBarZeroRowIso`、`monoidBarZeroRowIso` | 実装済み | 第零行と元のモノイド・一点の同型 |
 | `regularBarZeroRow_evaluation`、`monoidBarZeroRow_evaluation` | 実装済み | 第零行の評価と標準ファイバー・基点の一致 |
 | `regularBarFiber_homotopyPullback` | 実装済み | 群状モノイドの正則 bar 束のホモトピーファイバー |
-| 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
+| `contractedSpace_terminal_localized_isIso` | 実装済み | 実際の収縮から終射の局所化可逆性 |
+| `pointedUnitIso_evaluation`、`basedPathFamilyMap_endpoint` | 実装済み | 点つき path の終点と区間の族の終点の一致 |
+| `regularBarPathMap_localized_isIso` | 実装済み | 正則 bar と K-L9 の path space の全空間の比較 |
+| `loopPathRestriction_isPullback` | 実装済み | K-L9 の loop の円の商の制限によるファイバー表示 |
+| `monoidGroupCompletionMap_path` | 実装済み | 標準群完備化写像と実際のファイバー比較の一致 |
+| `monoidGroupCompletionMap_localized_isIso` | 実装済み | Segal Proposition 1.5 の群状モノイドの標準比較 |
+| `hatGLGroupCompletionMap_localized_isIso`、`dgAlgebraHatGLGroupCompletionMap_localized_isIso` | 実装済み | 単体的環・ΓA の有限 rank の ĜL の delooping |
+| KST Lemma 2.13 の安定 rank の π_n の同型 | 未証明 | 安定化と K-L9 のホモトピー群との接続 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
 | plus 構成 | 未実装 | acyclic map と π₁ の商 |
 | K₀・K₁ の比較 | 未実装 | KST Theorem 2.16、次数 0、1 |
