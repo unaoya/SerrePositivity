@@ -11117,5 +11117,29 @@ lemma pointedSpaceTransport_coherentEdge_isQCatEquivalence_iff
     IsQCatEquivalence (edgeTransport pointedSpaceProjection (coherentNerveEdge f)) ↔
       IsQCatEquivalence f
 
+lemma coherentKanEdge_homMk_eq_of_functorIso {K L : KanObject.{u}}
+    {f g : K ⟶ L} (h : FunctorIso f g) :
+    SSet.Truncated.HomotopyCategory.homMk (coherentNerveEdge f).toTruncated =
+      SSet.Truncated.HomotopyCategory.homMk (coherentNerveEdge g).toTruncated
+
+lemma coherentKanEdge_isInvertible_of_isQCatEquivalence {K L : KanObject.{u}}
+    {f : K ⟶ L} (hf : IsQCatEquivalence f) : IsInvertibleEdge (coherentNerveEdge f)
+
+lemma pointedSpaceEdge_isInvertible_of_transport_isQCatEquivalence
+    {s t : SpaceInfinity.{u} _⦋0⦌} (e : SSet.Edge s t)
+    (he : IsQCatEquivalence (edgeTransport pointedSpaceProjection e)) : IsInvertibleEdge e
+
+lemma leftUnstraighteningMappingEdge_isQCatEquivalence_iff_isInvertibleEdge
+    {B : SSet.{u + 1}} [Quasicategory B] (F G : B ⟶ SpaceInfinity.{u})
+    (e : SSet.Edge (X := (ihom B).obj SpaceInfinity.{u}) (functorVertex F) (functorVertex G)) :
+    IsQCatEquivalence (leftUnstraighteningMappingVertexMap F G (intervalMappingVertexOfEdge e)).val ↔
+      IsInvertibleEdge e
+
+lemma leftUnstraighteningMappingVertexMap_isQCatEquivalence_iff
+    {B : SSet.{u + 1}} [Quasicategory B] (F G : B ⟶ SpaceInfinity.{u})
+    (x : (leftUnstraighteningTransformationSpace F G) _⦋0⦌) :
+    IsQCatEquivalence (leftUnstraighteningMappingVertexMap F G x).val ↔
+      IsInvertibleEdge (intervalMappingEdgeOfVertex x)
+
 end SerrePositivity.InfinityCategories
 ```
