@@ -295,3 +295,23 @@ public import SerrePositivity.KST.ProExcision.Lemma416CoefficientData
 public import SerrePositivity.KST.ProExcision.CylinderSquareOperations
 
 public import SerrePositivity.KST.ProExcision.Lemma416Functoriality
+
+public import SerrePositivity.KST.ProExcision.DiagonalGroupBar
+
+public import SerrePositivity.KST.ProExcision.SimplicialIdealData
+
+public import SerrePositivity.KST.ProExcision.DiagonalGroupHomotopy
+
+public import SerrePositivity.KST.ProExcision.CoefficientGroupLaws
+
+public import SerrePositivity.KST.ProExcision.SimplicialIdealGroups
+
+public import SerrePositivity.KST.ProExcision.Lemma416SimplicialHomotopy
+
+public import SerrePositivity.KST.ProExcision.MatrixActionCoefficientMap
+
+public import SerrePositivity.KST.ProExcision.SimplicialMatrixActions
+
+public import SerrePositivity.KST.ProExcision.ActionRestriction
+
+public import SerrePositivity.KST.ProExcision.Lemma416Relative

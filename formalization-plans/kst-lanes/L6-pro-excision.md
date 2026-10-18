@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：借用する π・H_* の明示的な模型界面に対して工程完了。一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと1218宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと1252宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -86,7 +86,7 @@
 - shuffle の全混合境界和：`MixedShuffleIndex.swap` は固定点のない対合で、`shuffleMixedWeight_cancel` は面の符号を含む各対の相殺。`shuffleMixed_sum_zero` は全有限和の消滅を実写像について証明。係数群の二倍の単射性を使わず、一般の加法群で成立する有限和の対合による。
 - shuffle の純粋境界添字の同値：`horizontalShuffleBoundaryEquiv` は小さい shuffle と第一因子の面から全純粋水平境界への実同値で、`horizontalShuffleBoundary_sum` が有限和を移す。`verticalShuffleBoundaryEquiv`・`verticalShuffleBoundary_sum` は補集合の同値と合成して第二因子の場合を実装。面番号・挿入位置・削除頂点の左右の復元を証明済み。実写像と符号も同定し、全境界の分類と鎖写像性へ接続済み。
 - L6c の完成界面：`constructionA5` は μ 版の実 (m+m′+1) 次ホモトピー、`constructionA5_equivariant` は外部 G 同変性、`constructionA5EquivariantCylinderMap` は作用 bar へ渡す束。A.1・A.4・A.6 の H_* の具体模型への特殊化は所有レーンの界面。
-- L6d：§10-1 の非可換再記述の紙の確認を下記に記録し、実装へ進む。L6e〜g は未着手。
+- L6d：単体的イデアル模型で Lemma 4.16 の実比較・全行列同変性・係数関手性と A.4 による相対零化を検証済み。一般の非単位図式の標準単位化、Claim 4.15 の一般線形モノイドへの因子化、Prop 4.14 の安定化を続行。L6e〜g は未着手。
 
 ## 主要宣言の表
 
@@ -376,6 +376,11 @@
 | constructionA5_functorial | ConstructionA5Functoriality.lean | 検証済み | 異なる群データ間の μ 版 A.5 の実区間の自然性 |
 | auxiliaryBlockUnit_functorial / triangularBlockInsertion_functorial | BlockCoefficientMap.lean | 検証済み | u と実埋め込みの係数自然性 |
 | lemma416Homotopy_functorial | Lemma416Functoriality.lean | 離散版検証済み | 全 m の構成済み実帰納ホモトピーの (I,a) の射への自然性 |
+
+| SimplicialIdealData / SimplicialIdealData.vertexElement | SimplicialIdealData.lean | 検証済み | 単体的両側イデアルと零次指定元の自然な移送 |
+| diagonalGroupMHomotopy | DiagonalGroupHomotopy.lean | 検証済み | 次数ごとの自然な実比較を既存の対角 C(H) へ制限 |
+| lemma416 / simplicialLemma416Homotopy_equivariant | Lemma416.lean | 単体的理想模型で検証済み | 実 m 次比較と全行列同変性を A.4 の入力に束ねる |
+| lemma416_relative_zero | Lemma416Relative.lean | 検証済み | 群状モノイドの行列表示に沿った相対半直積ホモロジーの零化 |
 
 ## L6a：最小 pro 形式
 
@@ -962,3 +967,14 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - `groupZeroMHomotopy_functorial` と `groupConjugationMHomotopy_functorial` は零次比較と A.6 の実区間の係数自然性。
 - `lemma416Homotopy_functorial` は指定元と係数イデアルを保つ全ての周囲環準同型に対する、全 m の構成済み実区間射の自然性。因子内の帰納仮定、A.5、A.6、連結・相殺を同じ構成で比較した。
 - 対象ビルド・1218宣言の公理監査は標準三公理のみで成功。次は次数ごとの群の nerve の実比較を対角へ制限する単体環への移送。相対零化・安定化はまだ未完了。
+
+
+### L6d の単体的イデアル模型での Lemma 4.16 と相対零化（2026-10-19）
+
+- `SimplicialIdealData` は周囲の単体的単位環と面・退化が保つ両側イデアルの族のみを保持する数学的データ。零次の指定元は唯一の [n]→[0] により各次数へ移す。
+- `SimplicialIdealData.columnGroup` と `triangularGroup` は各次数の実群を単体的群へ束ねる。`rightColumnMap` は右乗法の実単体射。
+- `diagonalGroupMHomotopy` は係数方向に自然な次数ごとの実比較を既存の monoidBar の対角へ制限する。二つの方向の自然性と実両端条件を証明した。
+- `simplicialLemma416Homotopy` とその同変性を `lemma416` で A.4 の HomologicallyMConstant に束ねた。結論の実比較や対角への移送を仮定していない。
+- `SimplicialIdealData.matrixMonoid` と二つの実作用、右乗法の同変射も単体的に構成した。
+- `lemma416_relative_zero` は群状の単体的モノイドからの実行列表示に沿って作用を制限した相対写像の零化。H_* の自然な複体模型は K-L2 の明示的界面。
+- 対象ビルド・1252宣言の公理監査は標準三公理のみで成功。一般の非単位単体環の標準単位化からこの模型を得る実装と、Claim 4.15 の一般線形モノイドへの因子化・安定化は続行する。

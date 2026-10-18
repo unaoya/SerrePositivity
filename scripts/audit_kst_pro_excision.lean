@@ -3501,3 +3501,105 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.lemma416Homotopy_functorial
 #print axioms SerrePositivity.KST.ProExcision.lemma416Homotopy_functorial
+
+#check @SerrePositivity.KST.ProExcision.simplicialGroupBar
+#print axioms SerrePositivity.KST.ProExcision.simplicialGroupBar
+
+#check @SerrePositivity.KST.ProExcision.simplicialGroupBarMap
+#print axioms SerrePositivity.KST.ProExcision.simplicialGroupBarMap
+
+#check @SerrePositivity.KST.ProExcision.linearizedGroupBar_map_decomposition
+#print axioms SerrePositivity.KST.ProExcision.linearizedGroupBar_map_decomposition
+
+#check @SerrePositivity.KST.ProExcision.linearizedGroupBar_cylinder_decomposition
+#print axioms SerrePositivity.KST.ProExcision.linearizedGroupBar_cylinder_decomposition
+
+#check @SerrePositivity.KST.ProExcision.SimplicialIdealData
+#print axioms SerrePositivity.KST.ProExcision.SimplicialIdealData
+
+#check @SerrePositivity.KST.ProExcision.simplexVertexMap
+#print axioms SerrePositivity.KST.ProExcision.simplexVertexMap
+
+#check @SerrePositivity.KST.ProExcision.simplexVertexMap_comp
+#print axioms SerrePositivity.KST.ProExcision.simplexVertexMap_comp
+
+#check @SerrePositivity.KST.ProExcision.SimplicialIdealData.vertexElement
+#print axioms SerrePositivity.KST.ProExcision.SimplicialIdealData.vertexElement
+
+#check @SerrePositivity.KST.ProExcision.SimplicialIdealData.vertexElement_natural
+#print axioms SerrePositivity.KST.ProExcision.SimplicialIdealData.vertexElement_natural
+
+#check @SerrePositivity.KST.ProExcision.diagonalGroupCylinderMap
+#print axioms SerrePositivity.KST.ProExcision.diagonalGroupCylinderMap
+
+#check @SerrePositivity.KST.ProExcision.diagonalGroupMHomotopy
+#print axioms SerrePositivity.KST.ProExcision.diagonalGroupMHomotopy
+
+#check @SerrePositivity.KST.ProExcision.idealVectorMap_id
+#print axioms SerrePositivity.KST.ProExcision.idealVectorMap_id
+
+#check @SerrePositivity.KST.ProExcision.idealVectorMap_comp
+#print axioms SerrePositivity.KST.ProExcision.idealVectorMap_comp
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockGroupMap_id
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockGroupMap_id
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockGroupMap_comp
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockGroupMap_comp
+
+#check @SerrePositivity.KST.ProExcision.SimplicialIdealData.columnGroup
+#print axioms SerrePositivity.KST.ProExcision.SimplicialIdealData.columnGroup
+
+#check @SerrePositivity.KST.ProExcision.SimplicialIdealData.triangularGroup
+#print axioms SerrePositivity.KST.ProExcision.SimplicialIdealData.triangularGroup
+
+#check @SerrePositivity.KST.ProExcision.SimplicialIdealData.rightColumnMap
+#print axioms SerrePositivity.KST.ProExcision.SimplicialIdealData.rightColumnMap
+
+#check @SerrePositivity.KST.ProExcision.simplicialGroupTrivialMap
+#print axioms SerrePositivity.KST.ProExcision.simplicialGroupTrivialMap
+
+#check @SerrePositivity.KST.ProExcision.simplicialLemma416Homotopy
+#print axioms SerrePositivity.KST.ProExcision.simplicialLemma416Homotopy
+
+#check @SerrePositivity.KST.ProExcision.idealMatrixAction_functorial
+#print axioms SerrePositivity.KST.ProExcision.idealMatrixAction_functorial
+
+#check @SerrePositivity.KST.ProExcision.firstBlockMatrix_coefficient_map
+#print axioms SerrePositivity.KST.ProExcision.firstBlockMatrix_coefficient_map
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockMatrixAction_functorial
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockMatrixAction_functorial
+
+#check @SerrePositivity.KST.ProExcision.SimplicialIdealData.matrixMonoid
+#print axioms SerrePositivity.KST.ProExcision.SimplicialIdealData.matrixMonoid
+
+#check @SerrePositivity.KST.ProExcision.SimplicialIdealData.columnMatrixAction
+#print axioms SerrePositivity.KST.ProExcision.SimplicialIdealData.columnMatrixAction
+
+#check @SerrePositivity.KST.ProExcision.SimplicialIdealData.triangularMatrixAction
+#print axioms SerrePositivity.KST.ProExcision.SimplicialIdealData.triangularMatrixAction
+
+#check @SerrePositivity.KST.ProExcision.SimplicialIdealData.rightColumnActionHom
+#print axioms SerrePositivity.KST.ProExcision.SimplicialIdealData.rightColumnActionHom
+
+#check @SerrePositivity.KST.ProExcision.simplicialLemma416Homotopy_equivariant
+#print axioms SerrePositivity.KST.ProExcision.simplicialLemma416Homotopy_equivariant
+
+#check @SerrePositivity.KST.ProExcision.lemma416
+#print axioms SerrePositivity.KST.ProExcision.lemma416
+
+#check @SerrePositivity.KST.ProExcision.SimplicialMonoidAction.restrict
+#print axioms SerrePositivity.KST.ProExcision.SimplicialMonoidAction.restrict
+
+#check @SerrePositivity.KST.ProExcision.SimplicialActionHom.restrict
+#print axioms SerrePositivity.KST.ProExcision.SimplicialActionHom.restrict
+
+#check @SerrePositivity.KST.ProExcision.HomologicallyMConstant.restrict
+#print axioms SerrePositivity.KST.ProExcision.HomologicallyMConstant.restrict
+
+#check @SerrePositivity.KST.ProExcision.lemma416_restrict
+#print axioms SerrePositivity.KST.ProExcision.lemma416_restrict
+
+#check @SerrePositivity.KST.ProExcision.lemma416_relative_zero
+#print axioms SerrePositivity.KST.ProExcision.lemma416_relative_zero
