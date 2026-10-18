@@ -183,3 +183,15 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.cocartesianTrianglePrism_longEdge
 #check @SerrePositivity.InfinityCategories.IsEdgeTransport.comp
 #check @SerrePositivity.InfinityCategories.edgeTransport_composition_iso
+#check @SerrePositivity.InfinityCategories.homotopyQCatHomSetoid
+#check @SerrePositivity.InfinityCategories.HomotopyQCat
+#check @SerrePositivity.InfinityCategories.homotopyQCat_category
+#check @SerrePositivity.InfinityCategories.homotopyQCatHomMk
+#check @SerrePositivity.InfinityCategories.homotopyQCatHomMk_eq_of_functorIso
+#check @SerrePositivity.InfinityCategories.homotopyQCatHomMk_comp
+#check @SerrePositivity.InfinityCategories.homotopyTransportFiber
+#check @SerrePositivity.InfinityCategories.homotopyTransport
+#check @SerrePositivity.InfinityCategories.homotopyTransport_obj
+#check @SerrePositivity.InfinityCategories.homotopyTransport_map_edge
+#check @SerrePositivity.InfinityCategories.homotopyTransport_map_isTransport
+#check @SerrePositivity.InfinityCategories.homotopyTransport_unique

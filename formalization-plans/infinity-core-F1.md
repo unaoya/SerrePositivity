@@ -813,5 +813,58 @@ lemma edgeTransport_composition_iso {X B : SSet.{u}} [Quasicategory B] (p : X �
     {g : SSet.Edge (X := B) a c} (σ : SSet.Edge.CompStruct e f g) :
     Nonempty (FunctorIso (edgeTransport p g) (edgeTransport p e ≫ edgeTransport p f))
 
+def homotopyQCatHomSetoid (X Y : SSet.{u}) : Setoid (X ⟶ Y)
+
+structure HomotopyQCat where
+  obj : SSet.{u}
+  isQuasicategory : Quasicategory obj
+
+instance homotopyQCat_category : Category HomotopyQCat.{u}
+
+def homotopyQCatHomMk {X Y : HomotopyQCat.{u}} (f : X.obj ⟶ Y.obj) : X ⟶ Y
+
+lemma homotopyQCatHomMk_eq_of_functorIso {X Y : HomotopyQCat.{u}}
+    {f g : X.obj ⟶ Y.obj} (h : Nonempty (FunctorIso f g)) :
+    homotopyQCatHomMk f = homotopyQCatHomMk g
+
+lemma homotopyQCatHomMk_comp {X Y Z : HomotopyQCat.{u}}
+    (f : X.obj ⟶ Y.obj) (g : Y.obj ⟶ Z.obj) :
+    homotopyQCatHomMk (f ≫ g) = homotopyQCatHomMk f ≫ homotopyQCatHomMk g
+
+def homotopyTransportFiber {X B : SSet.{u}} (p : X ⟶ B) [CocartesianFibration p]
+    (b : B _⦋0⦌) : HomotopyQCat.{u}
+
+noncomputable def homotopyTransport {X B : SSet.{u}} [Quasicategory B] (p : X ⟶ B)
+    [CocartesianFibration p] : hoFunctor.obj B ⥤ HomotopyQCat.{u}
+
+lemma homotopyTransport_obj {X B : SSet.{u}} [Quasicategory B] (p : X ⟶ B)
+    [CocartesianFibration p] (b : B _⦋0⦌) :
+    (homotopyTransport p).obj (SSet.HomotopyCategory.mk b) = homotopyTransportFiber p b
+
+lemma homotopyTransport_map_edge {X B : SSet.{u}} [Quasicategory B] (p : X ⟶ B)
+    [CocartesianFibration p] {a b : B _⦋0⦌}
+    (e : SSet.Truncated.Edge (X := (truncation 2).obj B) a b) :
+    (homotopyTransport p).map (SSet.HomotopyCategory.homMk e) =
+      homotopyQCatHomMk (X := homotopyTransportFiber p a)
+        (Y := homotopyTransportFiber p b) (edgeTransport p e)
+
+lemma homotopyTransport_map_isTransport {X B : SSet.{u}} [Quasicategory B] (p : X ⟶ B)
+    [CocartesianFibration p] {a b : B _⦋0⦌}
+    (e : SSet.Truncated.Edge (X := (truncation 2).obj B) a b)
+    {F : vertexFiber p a ⟶ vertexFiber p b} (hF : IsEdgeTransport p e F) :
+    (homotopyTransport p).map (SSet.HomotopyCategory.homMk e) =
+      homotopyQCatHomMk (X := homotopyTransportFiber p a)
+        (Y := homotopyTransportFiber p b) F
+
+lemma homotopyTransport_unique {X B : SSet.{u}} [Quasicategory B] (p : X ⟶ B)
+    [CocartesianFibration p] (T : hoFunctor.obj B ⥤ HomotopyQCat.{u})
+    (hobj : ∀ b : B _⦋0⦌, T.obj (SSet.HomotopyCategory.mk b) = homotopyTransportFiber p b)
+    (hmap : ∀ {a b : B _⦋0⦌}
+      (e : SSet.Truncated.Edge (X := (truncation 2).obj B) a b),
+      T.map (SSet.HomotopyCategory.homMk e) = eqToHom (hobj a) ≫
+        homotopyQCatHomMk (X := homotopyTransportFiber p a)
+          (Y := homotopyTransportFiber p b) (edgeTransport p e) ≫ eqToHom (hobj b).symm) :
+    T = homotopyTransport p
+
 end SerrePositivity.InfinityCategories
 ```

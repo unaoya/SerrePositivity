@@ -42,3 +42,5 @@ public import SerrePositivity.InfinityCategories.F1.CocartesianComposition
 public import SerrePositivity.InfinityCategories.F1.TrianglePrism
 public import SerrePositivity.InfinityCategories.F1.CocartesianTrianglePrism
 public import SerrePositivity.InfinityCategories.F1.TransportComposition
+public import SerrePositivity.InfinityCategories.F1.HomotopyQCat
+public import SerrePositivity.InfinityCategories.F1.HomotopyTransport
