@@ -72,7 +72,10 @@
 - 実際の有限 Koszul 濾過の補助初頁微分を、商ホモロジー上の分裂境界と左の商射の合成として計算済み。
 - テンソル前の隣接次数別商の境界は、標準項同型で移すと元の複体の微分になることを証明済み。
 - その比較を複体射の等式へ引き上げ、一項複体のシフト同型を含めた微分との一致を証明済み。
-- 次はテンソル後の商境界をこの複体射の等式へ移す。
+- テンソル後の隣接商境界は、元の商境界のテンソルと左シフト比較の合成であることを証明済み。
+- 全テンソル後にも、一項模型での境界は元の微分のテンソルに一致すると複体射として証明済み。
+- 平坦な左テンソルのホモロジー比較について、係数加群の射に関する自然性を証明済み。
+- 次は一項テンソルのシフト比較の係数自然性と合わせ、初頁のホモロジー上の係数微分へ接続する。
 - 初頁の二つのモデルの完全な自然性・Koszul 冪遷移との整合は残件。
 - スペクトル対象から頁への関手性を既存 API で確認中。未供給の自然性を仮定に置かない。
 - π_n の具体的な複体ホモロジーとの同定は K-L9 の界面から受け取る。
@@ -151,6 +154,9 @@
 | adjacentGradeIso | AdjacentGradeBoundary.lean | 検証済み | 標準項同型に合う一項複体模型 |
 | singleDegreeBoundary | AdjacentGradeBoundary.lean | 検証済み | 係数射から作るシフトつき一項境界 |
 | adjacentGradeBoundary_single | AdjacentGradeBoundary.lean | 検証済み | 商境界と元の微分の複体射としての一致 |
+| adjacentTensorGradeBoundary_eq | TensorGradeBoundary.lean | 検証済み | 全テンソルと隣接商境界の比較 |
+| adjacentTensorGradeBoundary_single | TensorGradeBoundary.lean | 検証済み | 一項模型でのテンソル微分との一致 |
+| flatLeftTensorHomologyIso_map | CoefficientHomology.lean | 検証済み | 平坦テンソルの係数射についてのホモロジー自然性 |
 | koszul_comparison | KoszulPro.lean | 予定 | KST Lemma 4.10 |
 | prop414 | Prop414.lean | 予定 | 中心的係数による非可換版 |
 | pro_whitehead | Whitehead.lean | 予定 | simple 空間版 |

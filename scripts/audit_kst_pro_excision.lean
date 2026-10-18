@@ -479,3 +479,21 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.adjacentGradeBoundary_single
 #print axioms SerrePositivity.KST.ProExcision.adjacentGradeBoundary_single
+
+#check @SerrePositivity.KST.ProExcision.adjacentTensorGradeBoundary
+#print axioms SerrePositivity.KST.ProExcision.adjacentTensorGradeBoundary
+
+#check @SerrePositivity.KST.ProExcision.adjacentTensorGradeBoundary_eq
+#print axioms SerrePositivity.KST.ProExcision.adjacentTensorGradeBoundary_eq
+
+#check @SerrePositivity.KST.ProExcision.tensorSingleDegreeBoundary
+#print axioms SerrePositivity.KST.ProExcision.tensorSingleDegreeBoundary
+
+#check @SerrePositivity.KST.ProExcision.adjacentTensorGradeBoundary_single
+#print axioms SerrePositivity.KST.ProExcision.adjacentTensorGradeBoundary_single
+
+#check @SerrePositivity.KST.ProExcision.flatLeftTensorHomologyIso_coefficient
+#print axioms SerrePositivity.KST.ProExcision.flatLeftTensorHomologyIso_coefficient
+
+#check @SerrePositivity.KST.ProExcision.flatLeftTensorHomologyIso_map
+#print axioms SerrePositivity.KST.ProExcision.flatLeftTensorHomologyIso_map
