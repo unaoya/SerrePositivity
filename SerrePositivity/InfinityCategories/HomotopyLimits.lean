@@ -161,3 +161,4 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSect
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseSSetMaps
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseSections
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ReflectedHomHolimComparison
+public import SerrePositivity.InfinityCategories.HomotopyLimits.ReflectedRepresentableComparison

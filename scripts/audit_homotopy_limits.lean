@@ -1693,3 +1693,39 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms reflectedHomHolimConeComparison_cospan_homotopyEquivalence
 #check @reflectedHomHolimConeComparison_tower_homotopyEquivalence
 #print axioms reflectedHomHolimConeComparison_tower_homotopyEquivalence
+
+#check @fibration_opFunctor_map
+#print axioms fibration_opFunctor_map
+
+#check @reflectedSimplicialHomCone
+#print axioms reflectedSimplicialHomCone
+
+#check @reflectedSimplicialHomCone_isLimit
+#print axioms reflectedSimplicialHomCone_isLimit
+
+#check @reflectedRepresentableComparison
+#print axioms reflectedRepresentableComparison
+
+#check @reflectedRepresentableComparison_naturality
+#print axioms reflectedRepresentableComparison_naturality
+
+#check @reflectedRepresentableComparison_discrete_isIso
+#print axioms reflectedRepresentableComparison_discrete_isIso
+
+#check @reflectedRepresentableComparison_cospan_homotopyEquivalence
+#print axioms reflectedRepresentableComparison_cospan_homotopyEquivalence
+
+#check @reflectedRepresentableComparison_tower_homotopyEquivalence
+#print axioms reflectedRepresentableComparison_tower_homotopyEquivalence
+
+#check @reflectedStrictConeSectionsComparison
+#print axioms reflectedStrictConeSectionsComparison
+
+#check @reflectedStrictConeSectionsComparison_discrete_homotopyEquivalence
+#print axioms reflectedStrictConeSectionsComparison_discrete_homotopyEquivalence
+
+#check @reflectedStrictConeSectionsComparison_cospan_homotopyEquivalence
+#print axioms reflectedStrictConeSectionsComparison_cospan_homotopyEquivalence
+
+#check @reflectedStrictConeSectionsComparison_tower_homotopyEquivalence
+#print axioms reflectedStrictConeSectionsComparison_tower_homotopyEquivalence

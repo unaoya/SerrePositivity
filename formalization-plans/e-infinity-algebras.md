@@ -846,3 +846,28 @@ ULift と引き戻しの fiber の同型を通じた全体比較の各 fiber へ
 coherent な錐の切断模型へ写す。三形状では局所 Kan 性のみでホモトピー同値性を証明した。
 正確な型・全前提は README と公開844宣言の監査に記録。
 係数の反転の移送と元の q_x・strict な錐の比較射との整合性、𝒮・Sp の残りの適用は未完了。
+
+
+### γ3b：反転した strict Hom 錐の標準比較
+
+`OppositeFibration` に Kan fibration の反転の保存を追加。始域・終域の Kan 性を要求せず、
+全ホーンの相対持ち上げ性を反転同型で移した。
+`ReflectedRepresentableComparison` は `reflectedSimplicialHomCone c x`、その極限性、
+実際の標準比較 `reflectedRepresentableComparison c x : sHom(x,L).op → BKholim(H_x ⋙ op)`、
+始対象の射に関する厳密な反変自然性を公開する。
+離散図式の比較は同型、中央・右端が Kan で左脚が fibration の cospan の比較と、
+零段が Kan で全隣接遷移が fibration の塔の比較は単体的ホモトピー同値。
+三形状の `reflectedStrictConeSectionsComparison c x` はこの比較を ULift で写して
+反転 end からの切断比較へ合成した実際の射であり、局所 Kan 性と Hom 錐の極限性、
+cospan・塔の上記 fibration 条件の下で同値である。
+新規12宣言の正確な型・全前提は README と公開856宣言の監査に記録。
+既存の `DoldKanComparison.ulift_homotopyEquivalence` を再利用する。
+係数の反転の自然な移送、元の q_x と native な strict 錐の比較との整合性、
+𝒮・Sp の残りの適用は未完了。新しい切断比較の同値性だけで `IsLimitCone` を結論しない。
+
+検証：`lake build SerrePositivity.InfinityCategories.HomotopyLimits` 成功（4434 jobs）、
+`scripts/audit_homotopy_limits.lean` の公開856宣言の `#check @` と公理監査が成功。
+標準3公理のみ。新規ファイルに警告・sorry・追加公理はない。
+集約から再帰的に辿る他担当の700ソースはすべて追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-reflected-strict-aggregate.log` と
+`/tmp/gamma3-reflected-strict-audit.log`。

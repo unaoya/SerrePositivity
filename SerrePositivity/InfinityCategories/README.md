@@ -2061,7 +2061,9 @@ strict な図式・錐の coherent nerve での表示、fibration の塔の重�
 Kan 値図式の end の同値不変性も証明済み。反転した表現可能な weighted nerve から
 coherent な錐の全空間への実際の底上の射と、全ての頂点上での実際の fiber 射の同値性も証明済み。
 三形状の反転豊穣係数の切断と coherent な錐の切断模型の実際の比較射の同値性も証明済み。
-元の豊穣 Hom の end・q_x との比較、𝒮 の残りの極限と Sp への適用は未完了。
+反転した strict Hom 錐の標準比較 q′、始対象に関する自然性、三形状での切断模型への
+合成の同値性も証明済み。元の豊穣 Hom の end・q_x との比較、native な錐の比較射との一致、
+𝒮 の残りの極限と Sp への適用は未完了。
 当面は通常の小圏で添字付けた strict な図式の極限側を扱い、余極限と一般の図式の比較は後続に保持する。
 
 ### γ3a：原典と今回の限定形
@@ -4367,3 +4369,100 @@ N(I) と錐の shape の ULift を明示する。𝒮 は対象型のため SSet
 γ3b の完了には錐の pinched Hom と導来ファイバーの比較および極限錐の定理、
 γ3c の完了には 𝒮 と Sp の三つの適用の公開と対象ビルド・標準三公理の監査が必要。
 この紙の記録と原典の照合だけを γ3b・γ3c の完成とは数えない。
+
+
+### 反転した strict Hom 錐の標準比較と切断模型への合成
+
+`OppositeFibration` は全ホーンの相対充填を反転同型で移し、Kan fibration の反転を証明する。
+`ReflectedRepresentableComparison` は反転した Hom 錐の極限性、実際の標準比較 q′、
+Hom の始対象に関する反変自然性を構成する。DoldKanComparison の既存の
+`ulift_homotopyEquivalence` を再利用し、三形状で coherent な錐の切断模型への実際の合成が
+ホモトピー同値であることまで証明した。原典上の位置は HTT 4.2.4.1 の双対、
+Kerodon 7.5.3.12、7.5.4.6 の strict な錐との比較である。
+
+以下の共通変数は `I : Type u`、`[SmallCategory I]`、`C : Type v`、
+`[Category.{u} C]`、`[SimplicialCategory C]`、`F : I ⥤ C`、`c : Cone F`、`x : C`。
+新規公開宣言の型は次の通り（全暗黙引数・宇宙・前提は監査スクリプトの `#check @` にも記録）。
+
+```lean
+fibration_opFunctor_map {X Y : SSet.{u}} (p : X ⟶ Y) [Fibration p] :
+  Fibration (SSet.opFunctor.map p)
+reflectedSimplicialHomCone (c : Cone F) (x : C) :
+  Cone (simplicialHomDiagram F x ⋙ SSet.opFunctor)
+reflectedSimplicialHomCone_isLimit (c : Cone F) (x : C)
+    (hc : IsLimit (simplicialHomCone c x)) :
+  IsLimit (reflectedSimplicialHomCone c x)
+reflectedRepresentableComparison (c : Cone F) (x : C) :
+  (SimplicialCategory.sHom x c.pt).op ⟶
+    bousfieldKanHolim (simplicialHomDiagram F x ⋙ SSet.opFunctor)
+reflectedRepresentableComparison_naturality (c : Cone F) {x y : C} (f : x ⟶ y) :
+  SSet.opFunctor.map (((SimplicialCategory.sHomFunctor C).map f.op).app c.pt) ≫
+      reflectedRepresentableComparison c x =
+    reflectedRepresentableComparison c y ≫ (bousfieldKanHolimFunctor I).map
+      (Functor.whiskerRight (simplicialHomDiagramPre F f) SSet.opFunctor)
+reflectedStrictConeSectionsComparison (c : Cone F) (x : C) :
+  (SSet.uliftFunctor.{v, u}).obj (SimplicialCategory.sHom x c.pt).op ⟶
+    coherentConeSectionSpace (strictCoherentDiagram F) (coherentNerveVertex x)
+```
+
+反転した錐の脚は元の Hom 錐の脚を反転関手で写したもの。q′ はこの錐から直接作る
+`bousfieldKanConeComparison` であり、同値の存在から選んだ別の射ではない。
+最後の切断比較は `uliftFunctor.map q′ ≫ reflectedHomHolimConeComparison F x` と定義する。
+反転の極限保存にも元の通常の錐の極限性ではなく `IsLimit (simplicialHomCone c x)` を使う。
+
+残る六宣言の正確な型・前提は次の通り。
+
+```lean
+reflectedRepresentableComparison_discrete_isIso {J : Type u}
+    {F : Discrete J ⥤ C} (c : Cone F) (x : C)
+    (hc : IsLimit (simplicialHomCone c x)) :
+  IsIso (reflectedRepresentableComparison c x)
+reflectedRepresentableComparison_cospan_homotopyEquivalence
+    {F : AsSmall.{u} WalkingCospan ⥤ C} (c : Cone F) (x : C)
+    (hc : IsLimit (simplicialHomCone c x))
+    [KanComplex ((simplicialHomDiagram F x).obj (AsSmall.up.obj .one))]
+    [KanComplex ((simplicialHomDiagram F x).obj (AsSmall.up.obj .right))]
+    [Fibration ((simplicialHomDiagram F x).map (AsSmall.up.map WalkingCospan.Hom.inl))] :
+  IsSimplicialHomotopyEquivalence (reflectedRepresentableComparison c x)
+reflectedRepresentableComparison_tower_homotopyEquivalence
+    {F : AsSmall.{u} ℕᵒᵖ ⥤ C} (c : Cone F) (x : C)
+    (hc : IsLimit (simplicialHomCone c x))
+    [KanComplex ((simplicialHomDiagram F x).obj (AsSmall.up.obj (Opposite.op 0)))]
+    [∀ n : ℕ, Fibration
+      ((simplicialHomDiagram F x).map (AsSmall.up.map (homOfLE (Nat.le_succ n)).op))] :
+  IsSimplicialHomotopyEquivalence (reflectedRepresentableComparison c x)
+reflectedStrictConeSectionsComparison_discrete_homotopyEquivalence {J : Type u}
+    [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]
+    {F : Discrete J ⥤ C} (c : Cone F) (x : C)
+    (hc : IsLimit (simplicialHomCone c x)) :
+  IsSimplicialHomotopyEquivalence (reflectedStrictConeSectionsComparison c x)
+reflectedStrictConeSectionsComparison_cospan_homotopyEquivalence
+    [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]
+    {F : AsSmall.{u} WalkingCospan ⥤ C} (c : Cone F) (x : C)
+    (hc : IsLimit (simplicialHomCone c x))
+    [Fibration ((simplicialHomDiagram F x).map (AsSmall.up.map WalkingCospan.Hom.inl))] :
+  IsSimplicialHomotopyEquivalence (reflectedStrictConeSectionsComparison c x)
+reflectedStrictConeSectionsComparison_tower_homotopyEquivalence
+    [∀ a b : C, KanComplex (SimplicialCategory.sHom a b)]
+    {F : AsSmall.{u} ℕᵒᵖ ⥤ C} (c : Cone F) (x : C)
+    (hc : IsLimit (simplicialHomCone c x))
+    [∀ n : ℕ, Fibration
+      ((simplicialHomDiagram F x).map (AsSmall.up.map (homOfLE (Nat.le_succ n)).op))] :
+  IsSimplicialHomotopyEquivalence (reflectedStrictConeSectionsComparison c x)
+```
+
+離散図式の q′ の同型性には Kan 性や添字の有限性は不要。cospan の q′ には中央と右端の
+Kan 性と左脚の fibration 性のみを要求し、右脚の条件を加えない。塔の q′ には零段の Kan 性と
+全隣接遷移の fibration 性を要求する。切断模型への三つの合成には局所 Kan 性を使う。
+
+係数の反転を元の Hom 図式の end へ自然に移す比較、元の q_x との整合性、
+`reflectedStrictConeSectionsComparison` と native な strict 錐の Hom 比較との一致は未完了。
+したがって、この合成の同値性だけから strict な錐の `IsLimitCone` は結論していない。
+𝒮・Sp の残りの適用と余極限の比較も未完了のまま保持する。
+
+検証：`lake build SerrePositivity.InfinityCategories.HomotopyLimits` 成功（4434 jobs）、
+`scripts/audit_homotopy_limits.lean` の公開856宣言の `#check @` と公理監査が成功。
+標準3公理のみ。新規ファイルに警告・sorry・追加公理はない。
+集約から再帰的に辿る他担当の700ソースはすべて追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-reflected-strict-aggregate.log` と
+`/tmp/gamma3-reflected-strict-audit.log`。
