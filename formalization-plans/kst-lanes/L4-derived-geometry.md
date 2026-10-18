@@ -49,9 +49,9 @@
 
 ## 3. 現在地と受入条件
 
-- 現在地：L4a の具体的係数環層 H_X を構成し、一般の A → R に対し Spec R 上の基本開の環切断比較・正則 O 加群の tilde 模型・準連接性を証明済み。一般の X の開部分への制限との比較も環層と正則 O 加群の同型まで証明済み。アフィン開と Spec Γ(U) の同型に沿う輸送、一般の X 上の準連接性、dg 模型・降下との比較は未完了。
+- 現在地：L4a の具体的係数環層 H_X を構成し、一般の A → R に対する Spec R 上の切断比較・正則 O 加群の tilde 模型を証明済み。任意の開埋め込みに沿う環層・正則 O 加群の比較も証明済み。アフィン同型に沿う輸送と開被覆による局所判定により、任意の X 上の H_X の正則 O 加群の準連接性まで証明済み。アフィン係数加群圏・dg 模型・導来降下との比較は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の導来随伴・生成・T1′、L4c、L4d、L4e は未実装。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の287宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の324宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -409,7 +409,7 @@
 - 正則 O 加群と tilde (H ⊗_A R) の同型を構成し、準連接性を証明済み。
 - affineBaseMap は実際の Spec R → Spec A の構造射から得る globalBaseMap と一致する。
 - coefficientSheafOfMorphism による実際の構成にもアフィン準連接性を適用済み。
-- 一般の X の開部分への制限との比較は §22 で証明済み。アフィン開と Spec Γ(U) の同型に沿う輸送、および導来・dg 圏の比較は未証明。
+- 一般の X の開部分への制限との比較は §22、アフィン開と Spec Γ(U) の同型に沿う輸送は §23 で証明済み。導来・dg 圏の比較は未証明。
 
 ## 22. 開部分への制限と係数環層の構成
 
@@ -432,7 +432,34 @@
 - 一般の CoefficientSheaf の開制限と、その正則 O 加群の開制限との標準同型を構成済み。
 - 具体的な係数環層の正則 O 加群も、直接構成と Mathlib の開制限関手による制限とで同型になる。
 - 実際の構造射からの coefficientSheafOfMorphism にも、環層・正則 O 加群の両方の制限同型を構成済み。
-- これだけで一般の X 上の準連接性は主張しない。任意のアフィン開を Spec Γ(U) へ輸送する比較が残る。
+- §22 の制限比較だけでは一般の X 上の準連接性は結論しない。§23 のアフィン同型による輸送と局所判定の追加証明を用いる。
+
+## 23. 開埋め込み・アフィン同型に沿う輸送
+
+- 文字どおりの開部分への制限に続き、任意の開埋め込み f : X → Y に沿う係数比較を構成する。
+- X 上の基礎環写像は f.appTop と a : A → Γ(Y,⊤) の合成とする。
+- 各開 V で appIso V の逆が基礎環の作用を保つことを、appLE_appIso_inv から証明する。
+- 切断環の同型を A 代数の同型へ束ね、H とのテンソルを取る。
+- appIso_inv_naturality によりテンソル前層の自然同型を構成し、構造層射との可換性を確認する。
+- 開埋め込みのサイトの層化比較で環層へ移す。
+- Mathlib の構造層加群の restrictFunctor と正則加群を同定する。
+- スキーム同型にも適用できるので、アフィン X と Spec Γ(X,⊤) の間で準連接性を輸送する。
+- その後、開被覆による準連接性の局所判定を用いて一般の X の係数環層を扱う。
+- ここでは層の準連接性までを扱い、D_qc のアフィン同値・導来降下・compact 性は別の工程とする。
+- 原典は KST D4、Bondal–van den Bergh Thm 3.1.1、Toën Derived Azumaya §3.2。
+- appIso の逆による構造層射、基礎環の作用との両立、切断の A 代数同型を実装・証明済み。
+- 任意の開埋め込みに対する係数前層の自然同型と単位との可換式を証明済み。
+- 環層の比較、層化前の比較射との可換式、構造層射との可換式を証明済み。
+- 一般の係数環層の開埋め込みに沿う制限を構成し、正則 O 加群の制限同型を証明済み。
+- 終域の正則加群の準連接性から始域の直接構成の準連接性を得る補題を証明済み。
+- X.toSpecΓ の大域切断の計算で基礎環作用の引き戻しが元に戻ることを証明済み。
+- これにより任意のアフィンスキーム X 上の正則係数加群の準連接性を証明済み。
+- Mathlib の overFunctorEquiv を使い、開部分上の制限の準連接性からスライスサイト上の制限の準連接性を得た。
+- サイト同値の Over.post の連続性は、被覆保存と平坦性から明示的に証明する。
+- 開被覆による準連接性判定は IsQuasicoherent.of_coversTop に接続して証明済み。
+- 全アフィン開の被覆に適用し、任意のスキーム上の H_X の正則 O 加群の準連接性を証明済み。
+- 実際の構造射から作る coefficientSheafOfMorphism についても同じ準連接性を証明済み。
+- 係数環層の準連接性だけで、自由関手が全 D_qc を生成することや T1′ を主張しない。
 
 ## 主要宣言の表
 
@@ -489,6 +516,14 @@
 | `coefficientSheafOfMorphism_restrictIso` | DerivedGeometry/OpenTensorSheaf | 実装・対象ビルド済み |
 | `CoefficientSheaf.regularRestrictIso` | DerivedGeometry/CoefficientRegularRestriction | 実装・対象ビルド済み |
 | `openTensorRegularIso`・`coefficientSheafOfMorphism_regularRestrictIso` | DerivedGeometry/OpenTensorRegular | 実装・対象ビルド済み |
+| `openImmersionStructureMap`・`appIso_inv_comp_sectionBaseMap`・`openImmersionSectionAlgEquiv` | DerivedGeometry/OpenImmersionBase | 実装・対象ビルド済み |
+| `openImmersionTensorPresheafIso`・`openImmersionTensorPresheafIso_unit` | DerivedGeometry/OpenImmersionTensorPresheaf | 実装・対象ビルド済み |
+| `CoefficientSheaf.restrictAlong` | DerivedGeometry/CoefficientOpenImmersion | 実装・対象ビルド済み |
+| `openImmersionTensorSheafIso`・`openImmersionTensorSheafIso_structureMap` | DerivedGeometry/OpenImmersionTensorSheaf | 実装・対象ビルド済み |
+| `regularRestrictAlongIso`・`openImmersionTensorRegularIso` | DerivedGeometry/OpenImmersionTensorRegular | 実装・対象ビルド済み |
+| `pullbackBaseMap_toSpecΓ`・`affineSchemeCoefficientRegular_isQuasicoherent` | DerivedGeometry/AffineSchemeCoefficient | 実装・対象ビルド済み |
+| `moduleOver_isQuasicoherent_of_restrict`・`module_isQuasicoherent_of_openCover` | DerivedGeometry/QuasicoherentOpenCriterion | 実装・対象ビルド済み |
+| `tensorCoefficientRegular_isQuasicoherent`・`coefficientSheafOfMorphism_regular_isQuasicoherent` | DerivedGeometry/CoefficientQuasicoherent | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装・模型の設計変更提案中 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |

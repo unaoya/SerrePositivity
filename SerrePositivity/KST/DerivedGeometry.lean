@@ -13,3 +13,4 @@ public import SerrePositivity.KST.DerivedGeometry.AffineCoefficientSections
 public import SerrePositivity.KST.DerivedGeometry.AffineCoefficientQuasicoherent
 public import SerrePositivity.KST.DerivedGeometry.AffineBaseChangeQuasicoherent
 public import SerrePositivity.KST.DerivedGeometry.OpenTensorRegular
+public import SerrePositivity.KST.DerivedGeometry.CoefficientQuasicoherent

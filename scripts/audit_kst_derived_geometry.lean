@@ -91,7 +91,21 @@ run_cmd do
     `SerrePositivity.KST.DerivedGeometry.coefficientSheafOfMorphism_restrictIso,
     `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.regularRestrictIso,
     `SerrePositivity.KST.DerivedGeometry.openTensorRegularIso,
-    `SerrePositivity.KST.DerivedGeometry.coefficientSheafOfMorphism_regularRestrictIso]
+    `SerrePositivity.KST.DerivedGeometry.coefficientSheafOfMorphism_regularRestrictIso,
+    `SerrePositivity.KST.DerivedGeometry.openImmersionStructureMap,
+    `SerrePositivity.KST.DerivedGeometry.appIso_inv_comp_sectionBaseMap,
+    `SerrePositivity.KST.DerivedGeometry.openImmersionSectionAlgEquiv,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.restrictAlong,
+    `SerrePositivity.KST.DerivedGeometry.openImmersionTensorPresheafIso,
+    `SerrePositivity.KST.DerivedGeometry.openImmersionTensorSheafIso,
+    `SerrePositivity.KST.DerivedGeometry.openImmersionTensorSheafIso_structureMap,
+    `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.regularRestrictAlongIso,
+    `SerrePositivity.KST.DerivedGeometry.openImmersionTensorRegularIso,
+    `SerrePositivity.KST.DerivedGeometry.affineSchemeCoefficientRegular_isQuasicoherent,
+    `SerrePositivity.KST.DerivedGeometry.moduleOver_isQuasicoherent_of_restrict,
+    `SerrePositivity.KST.DerivedGeometry.module_isQuasicoherent_of_openCover,
+    `SerrePositivity.KST.DerivedGeometry.tensorCoefficientRegular_isQuasicoherent,
+    `SerrePositivity.KST.DerivedGeometry.coefficientSheafOfMorphism_regular_isQuasicoherent]
   for name in required do
     unless env.contains name do throwError "Missing K-L4 declaration: {name}"
   for mod in env.header.modules do
