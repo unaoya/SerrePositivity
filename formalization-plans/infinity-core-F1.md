@@ -13501,5 +13501,59 @@ lemma strictDiagramScaffoldHomEquiv_symm_evaluate_ι {C : Type u} [Category.{u} 
     ((strictDiagramScaffoldHomEquiv F q).symm h).app c ≫ leftStrictTransportEvaluate q c ≫
       vertexFiberι q (nerveVertex c) = simplicialReplacementConstantLift F c ≫ h.val
 
+noncomputable def smallOppositeKanUnstraighteningComparison
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    weightedNerve (F ⋙ kanObjectForget) ⟶
+      smallLeftUnstraightening (kanDiagramCoherentNerve (F ⋙ kanObjectOpFunctor))
+
+lemma smallOppositeKanUnstraighteningComparison_projection
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    smallOppositeKanUnstraighteningComparison F ≫
+      smallLeftUnstraighteningProjection (kanDiagramCoherentNerve (F ⋙ kanObjectOpFunctor)) =
+      weightedNerveProjection (F ⋙ kanObjectForget)
+
+lemma smallOppositeKanUnstraighteningComparison_isPrecompositionEquivalence
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    IsPrecompositionEquivalence (smallOppositeKanUnstraighteningComparison F)
+
+noncomputable def smallOppositeKanTransportUnit
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    F ⋙ kanObjectForget ⟶ leftStrictTransportDiagram
+      (smallLeftUnstraighteningProjection (kanDiagramCoherentNerve (F ⋙ kanObjectOpFunctor)))
+
+lemma weightedNerveComparisonFiber_ι {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {E : SSet.{u}} (q : E ⟶ nerve C)
+    (h : weightedNerve F ⟶ E) (hh : h ≫ q = weightedNerveProjection F) (c : C) :
+    weightedNerveComparisonFiber F q h hh c ≫ vertexFiberι q (nerveVertex c) =
+      weightedNerveConstantLift F c ≫ h
+
+lemma smallOppositeKanTransportUnit_evaluate
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) (c : C) :
+    (smallOppositeKanTransportUnit F).app c ≫ leftStrictTransportEvaluate
+      (smallLeftUnstraighteningProjection (kanDiagramCoherentNerve (F ⋙ kanObjectOpFunctor))) c =
+    weightedNerveComparisonFiber (F ⋙ kanObjectForget)
+      (smallLeftUnstraighteningProjection (kanDiagramCoherentNerve (F ⋙ kanObjectOpFunctor)))
+      (smallOppositeKanUnstraighteningComparison F)
+      (smallOppositeKanUnstraighteningComparison_projection F) c
+
+lemma smallOppositeKanTransportUnit_isQCatEquivalence
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) (c : C) :
+    IsQCatEquivalence (X := (F.obj c).obj)
+      (Y := leftStrictTransport
+        (smallLeftUnstraighteningProjection (kanDiagramCoherentNerve (F ⋙ kanObjectOpFunctor))) c)
+      ((smallOppositeKanTransportUnit F).app c)
+
+noncomputable def smallOppositeKanStraighteningUnitIso
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    FunctorIso (kanDiagramCoherentNerve F)
+      (leftStraighteningCandidate (smallLeftUnstraighteningProjection
+        (kanDiagramCoherentNerve (F ⋙ kanObjectOpFunctor))))
+
+noncomputable def strictKanStraighteningUnitIso
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    FunctorIso (kanDiagramCoherentNerve F)
+      (leftStraighteningCandidate
+        (smallLeftUnstraighteningProjection (kanDiagramCoherentNerve F)))
+
 end SerrePositivity.InfinityCategories
 ```
