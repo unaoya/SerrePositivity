@@ -1333,7 +1333,11 @@ namespace `DoldKanComparison` の `homModule x y : SimplicialObject (ModuleCat.{
 `DGNerve.pinchedHom R D x y` の自然同型であり、次数ごとの同値だけではない。
 `homSpaceKan x y : SSet.KanComplex (homSpace x y)` は N4 の直接の線形充填から従う。
 宇宙の持ち上げが Kan 性を反映する一般補題 `kanComplex_of_ulift` も証明した。
-対象・集約ビルドは3473件で成功し、公開9宣言の型と公理監査は標準三公理のみ。
+`degreeSign` は ε_k を二項係数で実装し、`degreeSign_differential` が微分の符号の変換、
+`degreeSign_cut` が AW 合成での交差符号を与える。符号による作用は二度で恒等になる。
+`homSpaceVertexCycleEquiv` は零単体と閉次数零元の同値、`closedHomVertexEquiv` は
+`ClosedCategory R D` の射と零単体の同値である。まだ合成の保存を主張していない。
+対象・集約ビルドは3475件で成功し、公開18宣言の型と公理監査は標準三公理のみ。
 
 γ1.5b 全体は未完了。残りは標準 chain map 模型・Mathlib Γ との自然同型、AW 豊穣合成と
 通常の閉零射の圏との整合性、γ1.5c の比較写像、γ1.5d の写像空間の比較。

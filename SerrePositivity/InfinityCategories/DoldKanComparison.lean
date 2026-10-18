@@ -1,6 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.DoldKanComparison.HomSpace
+public import SerrePositivity.InfinityCategories.DoldKanComparison.Sign
+public import SerrePositivity.InfinityCategories.DoldKanComparison.Vertices
 
 /-!
 # Dold–Kan 豊穣化と dg nerve の比較の入口

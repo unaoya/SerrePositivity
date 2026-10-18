@@ -21,6 +21,20 @@ set_option pp.explicit true
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.homSpaceLiftKan
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.homSpaceKan
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.homSpaceKan
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_succ
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_succ
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_mul_self
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_mul_self
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_add
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_add
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_differential
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_differential
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_cut
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_cut
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_smul_involutive
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.degreeSign_smul_involutive
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.uliftSimplexHom
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.uliftSimplexHom
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.uliftSimplexHom_yonedaEquiv
@@ -29,3 +43,7 @@ set_option pp.explicit true
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.uliftSimplexHom_face
 #print axioms SerrePositivity.InfinityCategories.DoldKanComparison.kanComplex_of_ulift
 #check @SerrePositivity.InfinityCategories.DoldKanComparison.kanComplex_of_ulift
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.homSpaceVertexCycleEquiv
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.homSpaceVertexCycleEquiv
+#print axioms SerrePositivity.InfinityCategories.DoldKanComparison.closedHomVertexEquiv
+#check @SerrePositivity.InfinityCategories.DoldKanComparison.closedHomVertexEquiv
