@@ -1349,8 +1349,12 @@ namespace `DoldKanComparison` の `homModule x y : SimplicialObject (ModuleCat.{
 元の δ および閉元への因子分解に一致することを示す。
 `doldKanHomModule` はこの複体に Mathlib の `Abelian.DoldKan.Γ` を適用した対象そのもの。
 `doldKanHomNormalizationIso` はその正規化 Moore 複体と切断 Hom 複体の同型である。
-標準成分模型側の正規化を計算して、この Mathlib Γ 側へ接続する部分はまだ残る。
-対象・集約ビルドは3537件で成功し、公開51宣言の型と公理監査は標準三公理のみ。
+`mooreNormalizedModuleIso` は Mathlib の正規化の各項を正の面の核の共通部分と同定する。
+`standardMooreTermIso` により標準模型へ適用し、`standardMooreTopMap_mono` は正次数の
+正規化から H^(−n) への最上位成分による評価が単射であることを示す。正規化された成分は
+全体集合と零番目の面以外では零で、後者は前者の δ に等しい。
+全射性・微分との両立・零次数の比較と Mathlib Γ 側への接続はまだ残る。
+対象・集約ビルドは3542件で成功し、公開67宣言の型と公理監査は標準三公理のみ。
 
 γ1.5b 全体は未完了。残りは標準成分模型と実際の chain map・Mathlib Γ との同定、AW 豊穣合成と
 通常の閉零射の圏との整合性、γ1.5c の比較写像、γ1.5d の写像空間の比較。

@@ -153,6 +153,8 @@ simplicialNerve_quasicategory (C : Type u)
 γ1.5a の設計・符号・原典との照合は `InfinityCategories/README.md` に置く。
 比較の向きは `N^hc(C_Δ) → N_dg(C)`。小さい線形 Hom の Kan 性、次数の符号、
 閉零射と零単体の同値、標準 chain map 方程式の単体的加群との自然同型、
-切断 Hom 複体への Mathlib Γ の適用とその正規化まで実装済み。
+切断 Hom 複体への Mathlib Γ の適用とその正規化、標準模型の正規化の各項の
+具体的な核の共通部分との同定と正次数の最上位評価の単射性まで実装済み。
+公開67宣言の正確な型・前提・公理監査は `scripts/audit_dold_kan_comparison.lean`。
 残りは実際の chain map・Mathlib Γ との同定、C_Δ の AW 合成、
 比較写像、低次の一致、写像空間の比較。同値の最終判定は A3e が届いた後に行う。
