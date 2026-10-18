@@ -111,7 +111,7 @@ L1a 完了。対象ビルド 1932 jobs、公理監査 26 宣言（標準3公理�
 `arSquareOrder`、`arSquare`、`arSquare_naturality`、`sMap_ι`。全26宣言の展開された型を監査スクリプトで検査する。
 上記は定義・関手法則であり安定性を仮定しない。quasicategory instance だけは明記した前提を持つ。
 
-L1b 進行中。第一行制限と零対角の補完段階を実装済み。対象ビルド1995 jobs、累計59宣言の監査。
+L1b 進行中。第一行制限と零対角の補完段階を実装済み。対象ビルド1998 jobs、累計78宣言の監査（標準3公理のみ）。
 
 | 公開宣言 | 正確な型・前提 |
 | --- | --- |
@@ -134,6 +134,22 @@ L1b 進行中。第一行制限と零対角の補完段階を実装済み。対�
 `exists_extension_of_initial_or_terminal_endpoints`、`frame_extend_boundary`、
 `exists_extension_with_vertices`、`zeroFrame_extend_boundary` は相対拡張の補助定理。
 全公開宣言の展開された型・前提を監査スクリプトで検査する。
+
+| 公開宣言 | 正確な型・前提 |
+| --- | --- |
+| `frameFirstRowIso` | `(n : ℕ) → (firstRowNerve.{u} n ≅ (framePositiveRow n : SSet.{u}))` |
+| `frameInclusion` | `(n : ℕ) → (frameNerve.{u} n ⟶ arNerve n)` |
+| `gappedFrameRestriction` | `(n : ℕ) → (C : SSet.{u}) → (sConstruction n C ⟶ zeroFrameDiagrams n C)` |
+| `frameRowRestriction` | `(n : ℕ) → (C : SSet.{u}) → (zeroFrameDiagrams n C ⟶ (ihom (firstRowNerve n)).obj C)` |
+| `firstRowRestriction_factor` | `gappedFrameRestriction n C ≫ frameRowRestriction n C = firstRowRestriction n C` |
+| `frameRowRestriction_trivialKanFibration` | `(n : ℕ) → (C : SSet.{u}) → [HasZeroVertex C] → TrivialKanFibration (frameRowRestriction n C)` |
+| `gappedCofiberTriangle` | `(hF : IsGapped F) → (i j k : Fin (n+1)) → (hij : i ≤ j) → (hjk : j ≤ k) → ZeroTriangle C` |
+| `gappedCofiberTriangle_isCofiber` | `(hF : IsGapped F) → (i j k : Fin (n+1)) → (hij : i ≤ j) → (hjk : j ≤ k) → IsCofiberSequence (gappedCofiberTriangle hF i j k hij hjk)` |
+
+第一行の二表示を同型で接続し、元の制限を厳密に因子分解した。
+原典 [BGT v4 p.44](https://arxiv.org/pdf/1001.2282v4#page=44) Definition 7.1 の原始条件は三つ組の cofiber 四角形である。
+本実装の全四つ組の押し出し条件から原典の三つ組を取り出す向きは `gappedCofiberTriangle_isCofiber` で証明済み。
+逆向きの全四つ組への押し出し貼り合わせは、cofiber 補完段階の未完了範囲に含む。
 
 零対角の射影の trivial Kan fibration は無条件の相対境界証明であり、quasicategory 性・安定性を仮定しない。
 ただし **gapped 条件の cofiber 補完段階は未証明**。したがって

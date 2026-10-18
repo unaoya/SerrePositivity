@@ -7,6 +7,12 @@ import SerrePositivity.KST.SConstruction
 使われ方：BGT §7 に対応する保存単位の検証。
 -/
 
+#check @SerrePositivity.KST.SConstruction.arSquare_cofiber_zero_corner
+#print axioms SerrePositivity.KST.SConstruction.arSquare_cofiber_zero_corner
+#check @SerrePositivity.KST.SConstruction.gappedCofiberTriangle
+#print axioms SerrePositivity.KST.SConstruction.gappedCofiberTriangle
+#check @SerrePositivity.KST.SConstruction.gappedCofiberTriangle_isCofiber
+#print axioms SerrePositivity.KST.SConstruction.gappedCofiberTriangle_isCofiber
 #check @SerrePositivity.KST.SConstruction.firstRowNerve
 #print axioms SerrePositivity.KST.SConstruction.firstRowNerve
 #check @SerrePositivity.KST.SConstruction.firstRowOrder
@@ -25,6 +31,22 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.firstRowSimplexIso
 #check @SerrePositivity.KST.SConstruction.frame_extend_boundary
 #print axioms SerrePositivity.KST.SConstruction.frame_extend_boundary
+#check @SerrePositivity.KST.SConstruction.firstRowFrameOrder
+#print axioms SerrePositivity.KST.SConstruction.firstRowFrameOrder
+#check @SerrePositivity.KST.SConstruction.firstRowFrameMap
+#print axioms SerrePositivity.KST.SConstruction.firstRowFrameMap
+#check @SerrePositivity.KST.SConstruction.frameRowChain_positive
+#print axioms SerrePositivity.KST.SConstruction.frameRowChain_positive
+#check @SerrePositivity.KST.SConstruction.frameRowChainInverse
+#print axioms SerrePositivity.KST.SConstruction.frameRowChainInverse
+#check @SerrePositivity.KST.SConstruction.frameFirstRowMap
+#print axioms SerrePositivity.KST.SConstruction.frameFirstRowMap
+#check @SerrePositivity.KST.SConstruction.firstRowFrameMap_comp
+#print axioms SerrePositivity.KST.SConstruction.firstRowFrameMap_comp
+#check @SerrePositivity.KST.SConstruction.frameFirstRowMap_comp
+#print axioms SerrePositivity.KST.SConstruction.frameFirstRowMap_comp
+#check @SerrePositivity.KST.SConstruction.frameFirstRowIso
+#print axioms SerrePositivity.KST.SConstruction.frameFirstRowIso
 #check @SerrePositivity.KST.SConstruction.Ar
 #print axioms SerrePositivity.KST.SConstruction.Ar
 #check @SerrePositivity.KST.SConstruction.arObj
@@ -77,6 +99,22 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.sMap_comp
 #check @SerrePositivity.KST.SConstruction.simplicialSConstruction
 #print axioms SerrePositivity.KST.SConstruction.simplicialSConstruction
+#check @SerrePositivity.KST.SConstruction.frameInclusion
+#print axioms SerrePositivity.KST.SConstruction.frameInclusion
+#check @SerrePositivity.KST.SConstruction.firstRowFrameMap_inclusion
+#print axioms SerrePositivity.KST.SConstruction.firstRowFrameMap_inclusion
+#check @SerrePositivity.KST.SConstruction.IsGapped.zeroFrameVertex
+#print axioms SerrePositivity.KST.SConstruction.IsGapped.zeroFrameVertex
+#check @SerrePositivity.KST.SConstruction.gappedFrameRestriction
+#print axioms SerrePositivity.KST.SConstruction.gappedFrameRestriction
+#check @SerrePositivity.KST.SConstruction.frameRowRestriction
+#print axioms SerrePositivity.KST.SConstruction.frameRowRestriction
+#check @SerrePositivity.KST.SConstruction.firstRowRestriction_factor
+#print axioms SerrePositivity.KST.SConstruction.firstRowRestriction_factor
+#check @SerrePositivity.KST.SConstruction.frameRowDiagramIso
+#print axioms SerrePositivity.KST.SConstruction.frameRowDiagramIso
+#check @SerrePositivity.KST.SConstruction.frameRowRestriction_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.frameRowRestriction_trivialKanFibration
 #check @SerrePositivity.KST.SConstruction.exists_extension_with_vertices
 #print axioms SerrePositivity.KST.SConstruction.exists_extension_with_vertices
 #check @SerrePositivity.KST.SConstruction.exists_extension_of_initial_or_terminal_endpoints
