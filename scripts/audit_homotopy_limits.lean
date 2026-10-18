@@ -1091,3 +1091,23 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms rightFibrationHomComparison_homotopyEquivalence_iff
 #check @isLimitCone_iff_rightFibrationHomComparison_homotopyEquivalence
 #print axioms isLimitCone_iff_rightFibrationHomComparison_homotopyEquivalence
+#check @coneFamilyApex
+#print axioms coneFamilyApex
+#check @sliceConeFamilyMap_apex
+#print axioms sliceConeFamilyMap_apex
+#check @fixedApexConeFamily
+#print axioms fixedApexConeFamily
+#check @coneVertexFiberFamilyMap
+#print axioms coneVertexFiberFamilyMap
+#check @sectionConeFamilyUncurry
+#print axioms sectionConeFamilyUncurry
+#check @sectionConeFamilyUncurry_fixed
+#print axioms sectionConeFamilyUncurry_fixed
+#check @sectionConeFamilyUncurry_curry_fixed
+#print axioms sectionConeFamilyUncurry_curry_fixed
+#check @sectionConeFamilyMap
+#print axioms sectionConeFamilyMap
+#check @sectionConeFamilyMap_apex
+#print axioms sectionConeFamilyMap_apex
+#check @sectionFixedApexConeFamilyMap
+#print axioms sectionFixedApexConeFamilyMap

@@ -2049,7 +2049,8 @@ A3e に実際の比較射の充満忠実性と既存の本質的全射性を渡�
 strict な図式・錐の coherent nerve での表示、fibration の塔の重み付き end の Kan 性、
 塔と一脚が fibration の cospan の実際の標準比較 κ・q_x のホモトピー同値性まで実装。
 離散図式の比較、𝒮 の空積、Kan 値図式の end の一般の Kan 性も実装済み。
-一般の coherent な錐との比較、end の同値不変性、𝒮 の残りの極限と Sp への適用は未実装。
+Kan 値図式の end の同値不変性も証明済み。一般の coherent な錐との比較、
+𝒮 の残りの極限と Sp への適用は未実装。
 当面は通常の小圏で添字付けた strict な図式の極限側を扱い、余極限と一般の図式の比較は後続に保持する。
 
 ### γ3a：原典と今回の限定形
@@ -2169,8 +2170,9 @@ weightedSectionsAdjunction (W : I ⥤ SSet.{u}) :
 `bousfieldKanLimitComparison H : limit H → bousfieldKanHolim H` は重みを忘れる標準射であり、
 `bousfieldKanLimitComparison_evaluation H i` により恒等射 `i → i` での評価は極限射影になる。
 `bousfieldKanLimitComparison_naturality η` は図式に関する厳密な自然性。
-一般の添字圏における end の Kan 性、対象ごとの同値に対する不変性、
-Kerodon の切断模型との比較は未証明。離散図式の Kan 性と比較の同型性は下記で証明済み。
+一般の添字圏における Kan 値図式の end の Kan 性と対象ごとの同値に対する不変性は
+後節で証明済み。coherent な錐の頂点 fiber との比較は未証明。
+離散図式の比較の同型性は下記で証明済み。
 
 `RepresentableComparison.lean` は strict な錐から実際の射 q_x を作る。
 前提は `I : Type u`、`[SmallCategory I]`、`C : Type v`、`[Category.{u} C]`、
@@ -2192,7 +2194,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開543宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開553宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2820,7 +2822,7 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開543宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開553宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
 ### 重み付き end と weighted nerve の切断の族（全単射を実装）
@@ -3338,6 +3340,39 @@ isLimitCone_iff_rightFibrationHomComparison_homotopyEquivalence (c : JoinCone p)
 この ∞ 圏内の極限判定を、豊穣 Hom からの既存の `representableHomotopyLimitComparison c x`
 とまだ同定していない。錐の頂点 fiber と end の切断模型の比較、および元の q_x との接続、
 𝒮・Sp の残りの ∞ 極限への適用は未完了であり、γ3b・γ3c の完成とは数えない。
+
+### 固定頂点の内部 Hom の錐への二つの比較射（構成済み）
+
+`ConeFamilyApex` は内部 Hom による錐の模型から頂点への射影を作る。
+`SectionConeFamily` は coslice の切断の普遍族を join と直積の比較で展開する。
+任意の `K X : SSet.{u}`、`p : K ⟶ X`、`x : X _⦋0⦌` に対して次を構成した。
+X の quasicategory 性や図式の通常の圏からの表示は不要。
+
+```lean
+coneFamilyApex p : coneFamily p ⟶ X
+fixedApexConeFamily p x : SSet.{u} := vertexFiber (coneFamilyApex p) x
+
+sliceConeFamilyMap_apex p :
+  sliceConeFamilyMap p ≫ coneFamilyApex p = sliceOverProjection p
+coneVertexFiberFamilyMap p x :
+  vertexFiber (sliceOverProjection p) x ⟶ fixedApexConeFamily p x
+
+sectionConeFamilyUncurry p x :
+  join (Δ[0] : SSet.{u}) K ⊗ coherentConeSectionSpace p x ⟶ X
+sectionConeFamilyMap p x : coherentConeSectionSpace p x ⟶ coneFamily p
+sectionConeFamilyMap_apex p x :
+  sectionConeFamilyMap p x ≫ coneFamilyApex p = SSet.const x
+sectionFixedApexConeFamilyMap p x :
+  coherentConeSectionSpace p x ⟶ fixedApexConeFamily p x
+```
+
+`sectionConeFamilyUncurry_fixed` と `sectionConeFamilyUncurry_curry_fixed` は
+右端が全次数で p に固定されることを示す。二つの apex の補題も射の厳密な等式であり、
+零単体だけの対応ではない。このため slice 側と切断側から同じ固定頂点の模型への
+実際の単体集合の射が得られた。これらの射の同値性はまだ証明していない。
+大域的な `isQCatEquivalence_sliceConeFamilyMap p` から strict fiber の同値性を
+そのまま結論せず、固定頂点を保つ比較を別途証明する。
+既存の豊穣 q_x との接続と 𝒮・Sp の残りの適用も未完了。
 
 ### 𝒮 の空積（実装済み）
 
