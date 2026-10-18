@@ -2274,3 +2274,39 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.shuffleBoundaryPartition_sum
 #print axioms SerrePositivity.KST.ProExcision.shuffleBoundaryPartition_sum
+
+#check @SerrePositivity.KST.ProExcision.shuffleBoundaryWeight
+#print axioms SerrePositivity.KST.ProExcision.shuffleBoundaryWeight
+
+#check @SerrePositivity.KST.ProExcision.shuffleBoundary_mixed_sum_zero
+#print axioms SerrePositivity.KST.ProExcision.shuffleBoundary_mixed_sum_zero
+
+#check @SerrePositivity.KST.ProExcision.shuffleBidegree_boundary
+#print axioms SerrePositivity.KST.ProExcision.shuffleBidegree_boundary
+
+#check @SerrePositivity.KST.ProExcision.shuffleBidegree_boundary_pure
+#print axioms SerrePositivity.KST.ProExcision.shuffleBidegree_boundary_pure
+
+#check @SerrePositivity.KST.ProExcision.verticalShuffleFace_iff_transpose
+#print axioms SerrePositivity.KST.ProExcision.verticalShuffleFace_iff_transpose
+
+#check @SerrePositivity.KST.ProExcision.allVerticalShuffleBoundaryEquiv
+#print axioms SerrePositivity.KST.ProExcision.allVerticalShuffleBoundaryEquiv
+
+#check @SerrePositivity.KST.ProExcision.shuffleFace_not_horizontal_zero
+#print axioms SerrePositivity.KST.ProExcision.shuffleFace_not_horizontal_zero
+
+#check @SerrePositivity.KST.ProExcision.shuffleFace_not_vertical_zero
+#print axioms SerrePositivity.KST.ProExcision.shuffleFace_not_vertical_zero
+
+#check @SerrePositivity.KST.ProExcision.shuffleBoundary_horizontal_zero
+#print axioms SerrePositivity.KST.ProExcision.shuffleBoundary_horizontal_zero
+
+#check @SerrePositivity.KST.ProExcision.shuffleBoundary_vertical_zero
+#print axioms SerrePositivity.KST.ProExcision.shuffleBoundary_vertical_zero
+
+#check @SerrePositivity.KST.ProExcision.shuffleBoundary_horizontal_succ
+#print axioms SerrePositivity.KST.ProExcision.shuffleBoundary_horizontal_succ
+
+#check @SerrePositivity.KST.ProExcision.shuffleBoundary_vertical_succ
+#print axioms SerrePositivity.KST.ProExcision.shuffleBoundary_vertical_succ
