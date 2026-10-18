@@ -14,7 +14,10 @@ Koszul 解消性を証明済み。通常の普遍チャート環への underlyin
 標準添加を係数変更の単位・外積底変更・零生成元射の合成による dg 関手として構成済み。
 空 Koszul の係数制限を通常のチャート環の単一複体へ同定すると、Hom 写像は標準添加射に一致する。
 既存 DerivedChartObject から通常の普遍チャートの局所 dg 模型への準同値まで証明済み。
-全有限重なり図式の組立ては未完了。
+全有限重なりの係数環関手は構成済み。有限座標積の局所化、pivot 変更の代数同型、
+pivot の三重 cocycle、制限との自然性を証明済み。微分等式の移送を明示した
+チャート dg 関手の三重 cocycle も証明済み。
+全有限重なりへの dg 底変更比較の適用と、係数環変更を含む dg 図式の組立ては未完了。
 L5b 全体は未完了。L5c〜L5f は未実装。
 既存の L11 の検証記録を、Lean の証明済み宣言とは扱わない。
 
@@ -179,6 +182,12 @@ H 係数版は中央 A 作用を持つ A 平坦な結合代数を tensor し、�
 | `exteriorKoszulAugmentation_unique` | ExteriorAugmentationUniqueness | 単位の1保存による添加鎖写像の一意性 |
 | `exteriorAugmentationDGFunctor_map_comparison`・準同値の判定 | ExteriorAugmentationDGComparison | Hom 写像と標準添加鎖写像の一致 |
 | `universalChartAugmentationDGFunctor`・準同値性 | UniversalChartDGResolution | 既存 DerivedChartObject の通常の普遍チャートへの局所 dg 準同値 |
+| `exteriorDifferentialTransportDGFunctor`・`chartExteriorDGFunctor_cocycle` | ChartDGCocycle | 微分等式の移送を明示した三重 dg cocycle |
+| `FiniteOverlapRing`・`finiteOverlapRestriction`・恒等/合成則 | FiniteOverlaps | 座標有限積の局所化と制限射 |
+| `finiteOverlapPivotMap`・`finiteOverlapPivotEquiv` | FiniteOverlapTransitions | 任意有限重なりの pivot 変更の代数同型 |
+| `finiteOverlapPivotMap_cocycle` | FiniteOverlapCocycle | 任意有限重なり上の環射の三重 cocycle |
+| `finiteOverlapPivotMap_restriction`・`finiteOverlapPivotMap_self` | FiniteOverlapNaturality | 制限との自然性と恒等変更 |
+| `finiteOverlapRingDiagram` | FiniteOverlapDiagram | 非空有限部分集合から可換 R 代数への実際の関手 |
 
 `ChartExterior` は総外積代数。`chartExteriorCochain` は次数分解・収縮微分から作った整数次数の複体。
 積は既存 tensor 複体からの chain map として装備済み。単位も tensor unit からの chain map として構成済み。
@@ -215,12 +224,14 @@ O(m) の単元整数冪による推移射と cocycle、および可逆性は coc
 係数代数に関する自然性、普遍チャートの標準添加射の擬同型性を証明済み。
 標準添加の dg 関手を構成し、その Hom と標準添加鎖写像の一致を証明済み。
 既存 DerivedChartObject から、通常の普遍チャートを表す空 Koszul 模型の係数制限への
-局所 dg 準同値を証明済み。全重なり図式上での降下模型の組立ては未完了。
+局所 dg 準同値を証明済み。全有限重なりの係数環図式を実際の関手として構成済み。
+微分移送を明示した三重 dg cocycle も証明済み。全有限重なりへの dg 底変更比較の適用と、
+係数環変更を含む dg 図式・降下模型の組立ては未完了。
 導来チャートの外積 dg 代数と underlying Koszul 複体は構成済みだが、
 局所化と底変更の比較を含むチャート図式全体の完成とは扱わない。
-所有モジュールの全886定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
+所有モジュールの全948定数（生成宣言を含む）の公理監査は標準三公理のみで成功。
 
-次の実装単位は dg 遷移の三重 cocycle と、全有限重なり図式の構成。
+次の実装単位は全有限重なりの係数環への dg 底変更比較の適用と図式の組立て。
 重なり環への導来底変更・dg 関手のチャート cocycle の具体化も残る。
 L5c へはこの比較と L5b の例外因子・重なりの同定を済ませてから進む。
 
