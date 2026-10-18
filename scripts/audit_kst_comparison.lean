@@ -81,6 +81,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -418,6 +419,33 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.liftedDegeneracy_castSucc
 #print axioms SerrePositivity.KST.Comparison.liftedDegeneracy_castSucc
+
+
+-- DiagonalRowDesc.lean
+
+#check @SerrePositivity.KST.Comparison.diagonalRowDesc
+#print axioms SerrePositivity.KST.Comparison.diagonalRowDesc
+
+#check @SerrePositivity.KST.Comparison.diagonalRowEvaluation_desc
+#print axioms SerrePositivity.KST.Comparison.diagonalRowEvaluation_desc
+
+#check @SerrePositivity.KST.Comparison.diagonalRowDesc_unique
+#print axioms SerrePositivity.KST.Comparison.diagonalRowDesc_unique
+
+
+-- DiagonalRowEvaluation.lean
+
+#check @SerrePositivity.KST.Comparison.diagonalRowEvaluation
+#print axioms SerrePositivity.KST.Comparison.diagonalRowEvaluation
+
+#check @SerrePositivity.KST.Comparison.diagonalRowEvaluation_naturality
+#print axioms SerrePositivity.KST.Comparison.diagonalRowEvaluation_naturality
+
+#check @SerrePositivity.KST.Comparison.diagonalRowEvaluation_dinaturality
+#print axioms SerrePositivity.KST.Comparison.diagonalRowEvaluation_dinaturality
+
+#check @SerrePositivity.KST.Comparison.diagonalRowEvaluation_identity
+#print axioms SerrePositivity.KST.Comparison.diagonalRowEvaluation_identity
 
 
 -- DiagramArrowFibers.lean
@@ -1147,6 +1175,12 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.coproductMap_rlp
 #print axioms SerrePositivity.KST.Comparison.coproductMap_rlp
+
+
+-- FunctorHomotopyPullbacks.lean
+
+#check @SerrePositivity.KST.Comparison.isHomotopyPullback_map_of_preserves_factorizations
+#print axioms SerrePositivity.KST.Comparison.isHomotopyPullback_map_of_preserves_factorizations
 
 
 -- GLComponents.lean
@@ -2944,6 +2978,15 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.telescopeSpanMap
 #print axioms SerrePositivity.KST.Comparison.telescopeSpanMap
+
+
+-- TensorHomotopyPullbacks.lean
+
+#check @SerrePositivity.KST.Comparison.tensorRight_isPullback
+#print axioms SerrePositivity.KST.Comparison.tensorRight_isPullback
+
+#check @SerrePositivity.KST.Comparison.isHomotopyPullback_tensorRight
+#print axioms SerrePositivity.KST.Comparison.isHomotopyPullback_tensorRight
 
 
 -- TranslationDescent.lean
