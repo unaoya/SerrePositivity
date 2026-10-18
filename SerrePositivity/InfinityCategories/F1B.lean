@@ -1,5 +1,9 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1B.CofinalFactorization
+
+public import SerrePositivity.InfinityCategories.F1B.SliceWeakContractibility
+
 public import SerrePositivity.InfinityCategories.F1B.CofinalComposition
 
 public import SerrePositivity.InfinityCategories.F1B.CofinalWeakEquivalence

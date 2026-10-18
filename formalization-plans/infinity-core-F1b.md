@@ -162,18 +162,35 @@ trivial Kan fibration 性へ移し、`isRightCofinal_of_rightAnodyne` を証明�
 合成した底図式への相対関手空間との厳密な同型で、制限写像との可換性も持つ。
 これから cofinality を任意の底図式に適用する `restrictDiagram`、合成 `comp`、
 最初の因子と合成から後の因子を得る `cancel_left` を左右とも証明した。
-Quillen A 本体、cocartesian fibration に沿う cofinality の pullback 安定性、
+`isInitialVertex_functorVertex_of_pointwise` は相対始点境界充填から、
+点ごとに始対象となる関手の始対象性を得る。定値始対象関手から恒等関手への辺を
+uncurry して実際の収縮を作り、`IsInitialVertex.isWeaklyContractible` を得た。
+終対象の場合の収縮は逆向きなので、Kan 標的への前合成で自然同型を逆にして
+`IsTerminalVertex.isWeaklyContractible` を証明した。
+これは [Kerodon Cor 4.7.3.23](https://kerodon.net/tag/02P2) の内容。
+`sliceUnder_isWeaklyContractible` は既存の恒等余錐の始対象性（Stable.IdentityCocone）に適用し、
+Quillen A の必要性で使う D_{d/} の弱可縮性を得る。slice 自体の Kan 性は主張しない。
+
+左右のホーンを小さい族に同定し、有限表示可能性から可算小対象論法を適用した。
+`exists_leftAnodyne_leftFibration_factorization`・`exists_rightAnodyne_rightFibration_factorization`
+は、任意の射の anodyne な単射と fibration への厳密な因子分解を与える。
+`IsLeftCofinal.exists_anodyne_fibration_factorization` と right 版では、
+cofinal な射の右因子も cofinal と分かる。**この右因子の trivial Kan fibration 性は未証明**。
+Prop 7.2.1.15 全体を完了したとは主張しない。
+
+Quillen A 本体、cofinal な左右 fibration の trivial Kan fibration 性、
+cocartesian fibration に沿う cofinality の pullback 安定性、
 Kan な底への弱同値 ⇒ cofinal の逆方向（Prop 7.2.1.5(2)）、
 left/right cofinality の opposite による比較は未完了。
 
 ### 次の工程
 
-B3 の cofinality の pullback 安定性と弱可縮な slice の補題を整え、Quillen A を証明する。
+B3 の cofinal な fibration の判定から pullback 安定性へ進み、Quillen A を証明する。
 B4 の各点の Kan 拡張、B5 の古典 nerve に戻る検査も未完了。
 全体の α2b 目標は継続中。
 
-対象ビルド2191 jobs、公理監査1853宣言（標準三公理のみ）が成功。
-推移的 import のリポジトリ内522モジュールに straightening 依存なし。
+対象ビルド2199 jobs、公理監査1877宣言（標準三公理のみ）が成功。
+推移的 import のリポジトリ内530モジュールに straightening 依存なし。
 
 ## 4. 主要宣言
 
@@ -237,4 +254,11 @@ B4 の各点の Kan 拡張、B5 の古典 nerve に戻る検査も未完了。
 | `cofinalFunctorCurry/Uncurry`・`cofinalFunctorUncurry_projection/curry/injective/naturality`・`cofinalFunctorPre_uncurry` | 相対関手空間への族と底上の図式の族の対応・制限との整合 | 済 |
 | `cofinalFunctorBaseChangeForward/Backward/Iso`・`cofinalFunctorBaseChangeIso_pre` | 引き戻した射への相対関手空間と合成図式への相対関手空間の同型・制限との整合 | 済 |
 | `IsLeftCofinal.restrictDiagram/comp/cancel_left`・`IsRightCofinal.restrictDiagram/comp/cancel_left` | 任意の底図式の検査・cofinality の合成と最初の因子の消去 | 済 |
+| `isInitialVertex_functorVertex_of_pointwise` | 関手単体集合の点ごとの始対象性 | 済 |
+| `isWeakHomotopyEquivalence_of_reverseHomotopyInverse` | 恒等から合成への向きの収縮も Kan 標的で弱同値を与える | 済 |
+| `IsInitialVertex.terminalFrom_isSimplicialHomotopyEquivalence`・`IsInitialVertex.isWeaklyContractible`・`IsTerminalVertex.isWeaklyContractible` | 始対象・終対象を持つ単体集合の弱可縮性 | 済 |
+| `sliceUnder_isWeaklyContractible` | 恒等余錐の始対象性から D_{d/} の弱可縮性 | 済 |
+| `cofinalLeftHornFamily/cofinalRightHornFamily`・各 `_eq/_isSmall/_isCardinalForSmallObjectArgument/_hasSmallObjectArgument/_llp_rlp_le_monomorphisms` | 左右ホーンの小対象論法と単射性 | 済 |
+| `exists_leftAnodyne_leftFibration_factorization`・`exists_rightAnodyne_rightFibration_factorization` | 任意の射の左右 anodyne な単射と左右 fibration への厳密な因子分解 | 済 |
+| `IsLeftCofinal.exists_anodyne_fibration_factorization`・`IsRightCofinal.exists_anodyne_fibration_factorization` | cofinal な射では fibration 側も cofinal となる還元 | 済 |
 | B3 の Quillen A・B4〜B5 | §1 の残る工程 | 未完了 |
