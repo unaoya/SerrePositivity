@@ -6783,5 +6783,16 @@ lemma relativeJoin_extension_of_prism {X Y E : SSet.{u}}
     ∃ G : relativeJoin f (𝟙 Y) ⟶ E,
       relativeJoinPrism f ≫ G = H ∧ relativeJoinInr f (𝟙 Y) ≫ G = g
 
+lemma stdSimplex_homotopy_vertex_le {A : SSet.{u}} {n : ℕ}
+    {f g : A ⟶ (Δ[n] : SSet.{u})} (H : SSet.Homotopy f g) (x : A _⦋0⦌) :
+    (f.app (Opposite.op ⦋0⦌) x) 0 ≤ (g.app (Opposite.op ⦋0⦌) x) 0
+
+lemma stdSimplex_eq_of_functorIso {A : SSet.{u}} {n : ℕ}
+    {f g : A ⟶ (Δ[n] : SSet.{u})} (e : FunctorIso f g) : f = g
+
+lemma IsPrecompositionEquivalence.stdSimplex_hom_ext {A B : SSet.{u}} {i : A ⟶ B}
+    (hi : IsPrecompositionEquivalence i) {n : ℕ} {f g : B ⟶ (Δ[n] : SSet.{u})}
+    (h : i ≫ f = i ≫ g) : f = g
+
 end SerrePositivity.InfinityCategories
 ```

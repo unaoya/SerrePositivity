@@ -311,3 +311,4 @@ public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteCocartesianEdg
 public import SerrePositivity.InfinityCategories.F1.ScaffoldFiniteVerticalEdges
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinderMono
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinderExtension
+public import SerrePositivity.InfinityCategories.F1.StdSimplexFunctorRigidity

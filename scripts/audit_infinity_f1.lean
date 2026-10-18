@@ -1493,3 +1493,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.relativeJoinCylinderExtensionSpace_isContractibleKan
 #check @SerrePositivity.InfinityCategories.relativeJoinCylinder_extension_exists
 #check @SerrePositivity.InfinityCategories.relativeJoin_extension_of_prism
+#check @SerrePositivity.InfinityCategories.stdSimplex_homotopy_vertex_le
+#check @SerrePositivity.InfinityCategories.stdSimplex_eq_of_functorIso
+#check @SerrePositivity.InfinityCategories.IsPrecompositionEquivalence.stdSimplex_hom_ext
