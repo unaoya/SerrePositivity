@@ -13,3 +13,4 @@ public import SerrePositivity.KST.SchemeLemmas.PowerCharts
 public import SerrePositivity.KST.SchemeLemmas.PowerChartCover
 public import SerrePositivity.KST.SchemeLemmas.SeparatedExt
 public import SerrePositivity.KST.SchemeLemmas.ChartGluing
+public import SerrePositivity.KST.SchemeLemmas.PowerBlowup
