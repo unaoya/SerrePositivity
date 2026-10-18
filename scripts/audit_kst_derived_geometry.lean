@@ -14,6 +14,17 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let required : Array Name := #[
+    `SerrePositivity.KST.DerivedGeometry.freeModulePresheafOnOpenHomAddEquiv,
+    `SerrePositivity.KST.DerivedGeometry.coproductHomAddEquiv,
+    `SerrePositivity.KST.DerivedGeometry.additiveProductIsoPi,
+    `SerrePositivity.KST.DerivedGeometry.freeFormalSheafHomAddEquiv_naturality,
+    `SerrePositivity.KST.DerivedGeometry.freeFormalSheafHomNatIso,
+    `SerrePositivity.KST.DerivedGeometry.alternatingFaceContravariantIso,
+    `SerrePositivity.KST.DerivedGeometry.freeSheafCechHomIso,
+    `SerrePositivity.KST.DerivedGeometry.injectiveCechAb_exactAt,
+    `SerrePositivity.KST.DerivedGeometry.injectiveCech_exactAt,
+    `SerrePositivity.KST.DerivedGeometry.injectiveCechAugmentation_quasiIso,
+
     `SerrePositivity.KST.DerivedGeometry.alternatingFaceCompMapIso,
     `SerrePositivity.KST.DerivedGeometry.freePresheafCechEvaluationIso,
     `SerrePositivity.KST.DerivedGeometry.freePresheafCech_evaluated_exactAt,

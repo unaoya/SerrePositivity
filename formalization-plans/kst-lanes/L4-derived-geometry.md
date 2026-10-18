@@ -51,7 +51,7 @@
 
 - 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。任意 dg 圏の半自由な段階分解、フィルトレーションからの Hom の K-flat 性、増大関手の各次数全射性・準同値性・H⁰ 同値、前三角化の三角同値を証明済み。分解後の層の acyclic dg 商自体の H⁰ と Mathlib の元の層導来圏の同値、対象ごとの導来像の計算、準連接コホモロジーによる Dqc への H⁰ 同値を証明済み。半自由分解から導来比較までの工程は完了。アフィン準連接係数加群層と左 H 加群の通常の圏同値、その準連接複体の導来圏の三角同値、実際の Dqc の開制限、台つき核と Verdier 商への降下も証明済み。Perf、アフィン導来比較、導来降下、T1–T3、平坦係数の RHom 比較は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の随伴移送の一般定理は証明済み。実際の導来随伴・生成・T1′、L4c の局所化同値、L4d、L4e は未完了。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の1,613宣言の公理監査に成功。工程区切りの全体ビルドは有限 Čech 完全性までの状態で11,343 jobsに成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の1,668宣言の公理監査に成功。工程区切りの全体ビルドは有限 Čech 完全性までの状態で11,343 jobsに成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -976,6 +976,20 @@
 - 追加後の集約ビルド（3,877 jobs）と1,613宣言の監査に成功。標準3公理のみ、KTheory import なし。
 - 残る接続：自由 Čech の Hom 余鎖複体と通常の切断の Čech 複体の加法的比較、Čech と右導来切断の比較、アフィン消滅と非有界 Dqc の同値。
 
+- `freeFormalSheafHomNatIso`・`freeSheafCechHomIso` は自由 Čech の Hom と通常の切断の Čech の加法的・微分込みの比較。
+- `injectiveCechAb_exactAt` は任意の開被覆の injective 加群層の Čech 正次数の完全性。
+- `injectiveCechAugmentation_quasiIso` は有限開被覆の元の R 加群値の Čech 増大の準同型性。加法群への忘却の完全忠実性に頼らず、完全性の反映を使う。
+- 追加後の集約ビルド（3,884 jobs）と1,668宣言の監査に成功。標準3公理のみ、KTheory import なし。
+
+## 47. アフィン消滅の有限次元移動による Cartan 型判定（実装前記録）
+
+- 一般の文言：A をアーベル圏、K を全次数で完全な増大鎖複体（K₀=L、K₁=C₀、…）、F を対象とする。正次数で Hom(K,F) が完全で、0<q<n について各 Kᵢ（i≥1）の Ext^q(-,F) が零なら、Ext^n(L,F)→Ext^n(C₀,F) は単射。
+- 証明：Z₁=ker(C₀→L) を用いた短完全列に対する反変 Ext の長完全列を使う。C₀ 上で消える類を Ext^{n-1}(Z₁,F) から持ち上げる。分解の尾部を Z₁ で増大した完全複体へ移し、n に関する帰納法を使う。n=1 では Hom の完全性で Z₁→F が C₀ へ延長でき、接続像が零となる。
+- 具体化：自由 Čech の増大鎖複体と §42–46 の Hom 比較を使う。コホモロジー類を消す有限基本開被覆は §45 で得たものを使い、基本開の有限交叉における低次数の消滅を帰納仮定として使う。
+- 基底の要件：基本開 V の任意の有限基本開被覆についても Čech 完全性と自由増大分解が必要。全体を被覆する族だけの定理で代用しない。V 外では自由表現可能前層の切断が零となることを用い、自由層の分解を任意の開の被覆へ拡張する。準連接層の基本開への制限の計算も別途比較する。
+- この証明は有限回の次元移動であり、非有界全複体化の収束を仮定しない。非有界 Dqc 比較の制御はこの後の別工程。
+- 原典：TT §3、BvdB Thm 3.1.1、Toën §3.2、正本 §10-7。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -1158,6 +1172,9 @@
 | `chainAugment_acyclic_of_quasiIso`・`augmentedAlternatingFaceMapIso` | DerivedGeometry/AugmentedChainExact・AugmentedAlternatingFace | 実装・対象ビルド済み |
 | `freeSheafAugmentedCech_acyclic` | DerivedGeometry/FreeSheafCechAugmentation | 実装・対象ビルド済み |
 | `injectiveHom_op_exact`・`injectiveHom_map_acyclic` | DerivedGeometry/InjectiveHomExact | 実装・対象ビルド済み |
+| `freeModulePresheafOnOpenHomAddEquiv`・`coproductHomAddEquiv` | DerivedGeometry/FreePresheafHom・CoproductHomAddEquiv | 実装・対象ビルド済み |
+| `freeFormalSheafHomNatIso`・`freeSheafCechHomIso` | DerivedGeometry/FreeFormalSheafHomIso・InjectiveCechExact | 実装・対象ビルド済み |
+| `injectiveCechAb_exactAt`・`injectiveCechAugmentation_quasiIso` | DerivedGeometry/InjectiveCechExact | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |

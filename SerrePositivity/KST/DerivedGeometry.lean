@@ -64,3 +64,5 @@ public import SerrePositivity.KST.DerivedGeometry.RepresentableFreeCechContracti
 
 public import SerrePositivity.KST.DerivedGeometry.FreeSheafCechAugmentation
 public import SerrePositivity.KST.DerivedGeometry.InjectiveHomExact
+
+public import SerrePositivity.KST.DerivedGeometry.InjectiveCechExact
