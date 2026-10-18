@@ -1,6 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.Coherent.Path
+public import SerrePositivity.InfinityCategories.Coherent.IntervalFunctor
+public import SerrePositivity.InfinityCategories.Coherent.HornFunctor
+public import SerrePositivity.InfinityCategories.Coherent.CompositionFace
 public import SerrePositivity.InfinityCategories.Coherent.PathHollow
 public import SerrePositivity.InfinityCategories.Coherent.PathNerve
 public import SerrePositivity.InfinityCategories.Coherent.ZeroFaceCompatibility
