@@ -1023,6 +1023,15 @@
 - 存在する比較と分解だけを使い、Ext と層コホモロジーの未証明の同一視は仮定しない。係数環は非可換でもよい。
 - 原典：TT §3・§8、BvdB Thm 3.1.1、Toën §3.2。
 
+### §49 の実装の現在地
+
+- 保存検証：集約対象ビルド 3918 jobs 成功、公理監査 1735 宣言。標準3公理のみ、KTheory import なし。
+
+- 自由層からの Hom と切断の加法的同値と標的自然性を証明した。
+- 実際の injective 分解を使って、正次数 Ext 類の近傍での消滅と有限基本開被覆での同時消滅を証明した。
+- 一般の有限余積を始域とする Ext の消滅、および各挿入への前合成での零の検出を証明した。
+- 基本開の全ての正次数 Ext の消滅を帰納する工程は継続中。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -1214,6 +1223,8 @@
 | `relativeFreeSheafAugmentedCech_acyclic`・`relativeCech_ext_precomp_injective` | DerivedGeometry/RelativeFreeCech | 実装・対象ビルド済み |
 | `relativeBasicOpenLocalization_exact` | DerivedGeometry/RelativeLocalizationExact | 実装・対象ビルド済み |
 | `relativeAffineCech_exactAt`・`relativeAffineCoefficientCech_exactAt` | DerivedGeometry/RelativeAffineCech | 実装・対象ビルド済み |
+| `moduleSheafExt_locallyZero`・`moduleSheafExt_finiteBasicOpenVanishing` | DerivedGeometry/SheafExtLocalVanishing・AffineSheafExtVanishing | 実装・対象ビルド済み |
+| `finiteCoproduct_ext_eq_zero`・`finiteCoproduct_ext_subsingleton` | DerivedGeometry/FiniteCoproductExt | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |

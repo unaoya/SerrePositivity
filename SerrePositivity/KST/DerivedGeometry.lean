@@ -73,3 +73,6 @@ public import SerrePositivity.KST.DerivedGeometry.CechExtCriterion
 
 public import SerrePositivity.KST.DerivedGeometry.RelativeFreeCech
 public import SerrePositivity.KST.DerivedGeometry.RelativeAffineCech
+
+public import SerrePositivity.KST.DerivedGeometry.AffineSheafExtVanishing
+public import SerrePositivity.KST.DerivedGeometry.FiniteCoproductExt
