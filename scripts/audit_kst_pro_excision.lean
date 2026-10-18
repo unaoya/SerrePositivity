@@ -2508,3 +2508,54 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.moorePInftyHomotopy_naturality
 #print axioms SerrePositivity.KST.ProExcision.moorePInftyHomotopy_naturality
+
+#check @SerrePositivity.KST.ProExcision.ι_chainIntegerTensorHomotopy
+#print axioms SerrePositivity.KST.ProExcision.ι_chainIntegerTensorHomotopy
+
+#check @SerrePositivity.KST.ProExcision.chainIntegerTensorHomotopyToId_naturality
+#print axioms SerrePositivity.KST.ProExcision.chainIntegerTensorHomotopyToId_naturality
+
+#check @SerrePositivity.KST.ProExcision.mooreRetractionHomotopy_naturality
+#print axioms SerrePositivity.KST.ProExcision.mooreRetractionHomotopy_naturality
+
+#check @SerrePositivity.KST.ProExcision.mooreProjectionRetraction_naturality
+#print axioms SerrePositivity.KST.ProExcision.mooreProjectionRetraction_naturality
+
+#check @SerrePositivity.KST.ProExcision.chainIntegerTensorMooreRetraction_naturality
+#print axioms SerrePositivity.KST.ProExcision.chainIntegerTensorMooreRetraction_naturality
+
+#check @SerrePositivity.KST.ProExcision.ChainHomotopySquare
+#print axioms SerrePositivity.KST.ProExcision.ChainHomotopySquare
+
+#check @SerrePositivity.KST.ProExcision.ChainHomotopySquare.ofEq
+#print axioms SerrePositivity.KST.ProExcision.ChainHomotopySquare.ofEq
+
+#check @SerrePositivity.KST.ProExcision.ChainHomotopySquare.trans
+#print axioms SerrePositivity.KST.ProExcision.ChainHomotopySquare.trans
+
+#check @SerrePositivity.KST.ProExcision.ChainHomotopySquare.symm
+#print axioms SerrePositivity.KST.ProExcision.ChainHomotopySquare.symm
+
+#check @SerrePositivity.KST.ProExcision.ChainHomotopySquare.compLeft
+#print axioms SerrePositivity.KST.ProExcision.ChainHomotopySquare.compLeft
+
+#check @SerrePositivity.KST.ProExcision.ChainHomotopySquare.compRight
+#print axioms SerrePositivity.KST.ProExcision.ChainHomotopySquare.compRight
+
+#check @SerrePositivity.KST.ProExcision.ezHomotopy_square
+#print axioms SerrePositivity.KST.ProExcision.ezHomotopy_square
+
+#check @SerrePositivity.KST.ProExcision.normalizedEZPrefix_naturality
+#print axioms SerrePositivity.KST.ProExcision.normalizedEZPrefix_naturality
+
+#check @SerrePositivity.KST.ProExcision.normalizedEZSuffix_naturality
+#print axioms SerrePositivity.KST.ProExcision.normalizedEZSuffix_naturality
+
+#check @SerrePositivity.KST.ProExcision.normalizedEZRawHomotopy_square
+#print axioms SerrePositivity.KST.ProExcision.normalizedEZRawHomotopy_square
+
+#check @SerrePositivity.KST.ProExcision.normalizedEZInsertMooreHomotopy_square
+#print axioms SerrePositivity.KST.ProExcision.normalizedEZInsertMooreHomotopy_square
+
+#check @SerrePositivity.KST.ProExcision.normalizedEZHomotopy_square
+#print axioms SerrePositivity.KST.ProExcision.normalizedEZHomotopy_square

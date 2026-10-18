@@ -140,3 +140,8 @@ public import SerrePositivity.KST.ProExcision.EZHomotopy
 public import SerrePositivity.KST.ProExcision.ChainTensorHomotopy
 public import SerrePositivity.KST.ProExcision.NormalizedEZHomotopy
 public import SerrePositivity.KST.ProExcision.MooreHomotopyNaturality
+public import SerrePositivity.KST.ProExcision.TensorHomotopyComponents
+public import SerrePositivity.KST.ProExcision.TensorHomotopyNaturality
+public import SerrePositivity.KST.ProExcision.MooreTensorHomotopyNaturality
+public import SerrePositivity.KST.ProExcision.ChainHomotopySquare
+public import SerrePositivity.KST.ProExcision.NormalizedEZHomotopyNaturality
