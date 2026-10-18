@@ -1,5 +1,11 @@
 module
 
+public import SerrePositivity.KST.Spectra.InverseCompositeComponents
+public import SerrePositivity.KST.Spectra.RationalUnitNaturality
+public import SerrePositivity.KST.Spectra.RationalTensorExtensionality
+public import SerrePositivity.KST.Spectra.RationalTensorNaturality
+public import SerrePositivity.KST.Spectra.RationalSpectrumNaturality
+
 public import SerrePositivity.KST.Spectra.PointedComponentIsomorphism
 public import SerrePositivity.KST.Spectra.KanAdjointNaturality
 public import SerrePositivity.KST.Spectra.ComponentHomotopyMaps
@@ -57,6 +63,6 @@ public import SerrePositivity.KST.Spectra.RationalSpectrumUnit
 /-!
 概要：スペクトルの telescope 有理化に使う余極限とホモトピー群の比較。
 方針：有限な代表・関係を後続段へ移し、Kan 性と群の余極限を実証する。
-規約：有理化の対象と全次数のテンソル比較を含む。元の対象からの標準射と自然性は継続する。
+規約：実際の有理化対象・単位・射と、全整数次数の自然なテンソル比較を含む。
 使われ方：Goerss–Jardine I §7、BF 1978 §2、HA §1.4.2。L9d の集約入口。
 -/

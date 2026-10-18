@@ -26,10 +26,13 @@
 ## 1. 正本と目的
 
 作成日：2026-10-18。
-状態：L9a・L9b・L9c 完了。L9d 着手。
+状態：L9a・L9b・L9c・L9d 完了。L9e 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・262 モジュール 3061 宣言の公理監査成功。
-直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
+対象ビルド・267 モジュール 3077 宣言の公理監査成功。
+直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
+`InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
+`relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
+最後に成功した全体ビルドは L9c、9543 jobs。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
 基盤の正本：[foundations](../foundations.md) §1 の F3・γ。
@@ -282,8 +285,8 @@ amend・rebase・reset を使わない。
 | L9a | 完了 | 全体ビルドも L9b の区切りで成功 |
 | L9b | 完了・対象ビルド、公理監査、全体ビルド成功 | なし |
 | L9c | 完了・対象ビルド、公理監査、全体ビルド成功 | γ3 後の導来 Sp・∞ 極限との比較は別工程 |
-| L9d | 進行中 | スペクトルの乗法射、telescope、群の計算との接続 |
-| L9e | 未着手 | Tot、hG、有理自明作用の比較 |
+| L9d | 完了 | 実際の telescope 有理化・単位・射、全整数次数の自然なテンソル比較 |
+| L9e | 進行中 | Tot、hG、有理自明作用の比較 |
 
 ## 16. 主要宣言
 
@@ -2283,3 +2286,35 @@ telescope の零段注入を関手的な図式の段の Kan 余極限へ射影�
 保存単位の対象ビルド 2463 jobs 成功。
 私有宣言を含む 262 モジュール 3061 宣言で標準三公理のみ。
 L9d は進行中。次はこれらの自然性を実際の有理化の単位で結合し、テンソル表示の自然性を検証する。
+
+## 79. L9d 完了：実際の単位・射と全整数次数の自然な有理テンソル表示
+
+元の X から既存の有理化対象への単位と、f : X→Y に対する実際の X_ℚ→Y_ℚ の射について、
+各段の点つき写像空間の成分で自然性を証明した。
+したがって全整数次数の誘導準同型で単位は自然である。
+
+加法準同型が有理数倍を保存することを用い、有理テンソル群の準同型は a⊗1 上で決まることを実証した。
+これを単位の自然性と単位のテンソル公式に適用した。
+実際の射への作用は全整数次数の単位に適合するテンソル表示で π_*(f)⊗id_ℚ を与える。
+その一意性から、実際の射の誘導準同型が恒等・合成を保つことも示した。
+対象間の選んだ持ち上げ自体の厳密な関手法則や ∞ 普遍性は主張しない。
+
+L9d の完了条件である、実際の telescope 対象・単位・射、Ω 条件、全整数次数のテンソル同型、
+単位の a⊗1 の公式、自然性、加法性、誘導準同型の恒等・合成法則を全て検証した。
+L9e の有限群の作用、段ごとの hG と Tot、有理自明作用の比較へ進む。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `rationalizationUnit_natural_component` / `rationalizationUnit_natural` | 実際の単位の各段の成分と全整数次数での自然性 |
+| `rationalTensor_addHom_ext` | a⊗1 上での像による有理テンソル群の準同型の一意性 |
+| `rationalTensor_realization_natural` / `rationalTensor_realization_ext` | 単位に適合する実際の準同型のテンソル表示と一意性 |
+| `rationalizationUnitTensorEquiv_unit` | 加法・線形表示での実際の単位の公式 |
+| `rationalizationUnitTensorEquiv_natural` | 実際の有理化の射が元の射の ℚ テンソルを誘導する公式 |
+| `rationalization_homotopyMap_ext` | 実際の単位の像上での準同型の一意性 |
+| `rationalizationMap_homotopy_id` / `rationalizationMap_homotopy_comp` | 実際の射への作用の π_* 上の恒等・合成法則 |
+
+参照：Goerss–Jardine I §7、BF 1978 §2、HTT A.3.3、HA §1.4.2。
+保存単位の対象ビルド 2468 jobs 成功。
+私有宣言を含む 267 モジュール 3077 宣言で標準三公理のみ。
+工程区切りの全体ビルドは共有ルートで F1 と F1B の relativeFunctorVertex の重複により失敗。
+K-L9 の import 閉包は通っているため、回避策も他レーンの編集もせず L9e を継続する。
