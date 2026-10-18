@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと515宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと521宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -67,6 +67,7 @@
 - A.5 の厳密化：`strictificationHomotopy` は入力射と全次数ホモトピックで、終点と次数 ≤m で厳密に一致する `strictifiedMap` を構成。
 - A.5 の非可換な標的：ユーザーが正本 §13-14 の μ:P×Q→H と因子内の入力ホモトピーを使う形を採用（2026-10-18）。設計停止を解除して実装を再開。augmentation 補正も維持する。
 - 外部 G の同変性：両端・射影、射と区間写像の加減法を経由し、`strictifiedMap_equivariant`、`strictificationHomotopy_equivariant`、`cancel_augmentation_equivariant` を検証。因子内の入力ホモトピーの同変性を保つ。
+- 正規化：`normalizedMap_component_eq` で低次数の一致を Moore 複体へ移送。`normalizedStrictificationHomotopy` は包含と PInfty 射影による実鎖ホモトピー。正規化した二つの差の低次数消滅まで検証。
 - L6c の残作業：採用済み μ 版 A.5 の同変性、正規化、AW・shuffle 比較。A.1・A.4・A.6 の H_* の具体模型への特殊化は所有レーンの界面。
 - L6d〜g：未着手。
 
@@ -103,6 +104,8 @@
 | LinearizedMHomotopy.strictifiedMap_equivariant | EquivariantStrictification.lean | 検証済み | 低次厳密化した射の外部 G 同変性 |
 | LinearizedMHomotopy.strictificationHomotopy_equivariant | EquivariantStrictification.lean | 検証済み | 厳密化の全次数ホモトピーの同変性 |
 | LinearizedMHomotopy.cancel_augmentation_equivariant | EquivariantStrictification.lean | 検証済み | Lemma 4.16 で使う相殺の同変性 |
+| LinearizedMHomotopy.normalizedStrictificationHomotopy | NormalizedStrictification.lean | 検証済み | 厳密化前後の正規化した写像の全鎖ホモトピー |
+| LinearizedMHomotopy.normalized_strictifiedDifference_eq_zero | NormalizedStrictification.lean | 検証済み | 正規化した差の次数 ≤m の消滅 |
 | obstructionTorusCycle_not_boundary | CommutingImageObstruction.lean | 検証済み | 可換な対 (r²,s) の二次 bar サイクルの非境界性 |
 | obstructionHalfTurnBoundingChain_boundary | CommutingImageObstruction.lean | 検証済み | [r²]−[1] の明示的な一次の境界 |
 | Tower | Pro.lean | 検証済み | ℕ 上の逆系 |

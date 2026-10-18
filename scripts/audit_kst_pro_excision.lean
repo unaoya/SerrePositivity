@@ -1392,3 +1392,21 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.LinearizedMHomotopy.cancel_augmentation_equivariant
 #print axioms SerrePositivity.KST.ProExcision.LinearizedMHomotopy.cancel_augmentation_equivariant
+
+#check @SerrePositivity.KST.ProExcision.normalizedMap_component_eq
+#print axioms SerrePositivity.KST.ProExcision.normalizedMap_component_eq
+
+#check @SerrePositivity.KST.ProExcision.normalizedMap_eq_retract
+#print axioms SerrePositivity.KST.ProExcision.normalizedMap_eq_retract
+
+#check @SerrePositivity.KST.ProExcision.normalizedChainHomotopy
+#print axioms SerrePositivity.KST.ProExcision.normalizedChainHomotopy
+
+#check @SerrePositivity.KST.ProExcision.LinearizedMHomotopy.normalized_strictifiedMap_eq_low
+#print axioms SerrePositivity.KST.ProExcision.LinearizedMHomotopy.normalized_strictifiedMap_eq_low
+
+#check @SerrePositivity.KST.ProExcision.LinearizedMHomotopy.normalized_strictifiedDifference_eq_zero
+#print axioms SerrePositivity.KST.ProExcision.LinearizedMHomotopy.normalized_strictifiedDifference_eq_zero
+
+#check @SerrePositivity.KST.ProExcision.LinearizedMHomotopy.normalizedStrictificationHomotopy
+#print axioms SerrePositivity.KST.ProExcision.LinearizedMHomotopy.normalizedStrictificationHomotopy
