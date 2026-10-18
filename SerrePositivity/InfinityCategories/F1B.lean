@@ -216,3 +216,4 @@ public import SerrePositivity.InfinityCategories.F1B.KanRightHomotopyInvariant
 public import SerrePositivity.InfinityCategories.F1B.KanExtensionHom
 public import SerrePositivity.InfinityCategories.F1B.KanUniversalProperty
 public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinRealization
+public import SerrePositivity.InfinityCategories.F1B.KanRelativeJoinStrictification
