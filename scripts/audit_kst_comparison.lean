@@ -77,6 +77,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -273,6 +274,12 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.cartesianTensorSquare_isPullback
 #print axioms SerrePositivity.KST.Comparison.cartesianTensorSquare_isPullback
+
+
+-- CommonTrivialRefinement.lean
+
+#check @SerrePositivity.KST.Comparison.commonTrivialFibrationRefinement
+#print axioms SerrePositivity.KST.Comparison.commonTrivialFibrationRefinement
 
 
 -- ComponentSubcomplex.lean
@@ -1712,6 +1719,18 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.loopFamilyMap_evaluation
 
 
+-- MonoBasePullback.lean
+
+#check @SerrePositivity.KST.Comparison.monoBasePullback_fst_snd
+#print axioms SerrePositivity.KST.Comparison.monoBasePullback_fst_snd
+
+#check @SerrePositivity.KST.Comparison.monoBasePullbackIso
+#print axioms SerrePositivity.KST.Comparison.monoBasePullbackIso
+
+#check @SerrePositivity.KST.Comparison.monoBasePullbackIso_inv_snd
+#print axioms SerrePositivity.KST.Comparison.monoBasePullbackIso_inv_snd
+
+
 -- MonoidComponentMaps.lean
 
 #check @SerrePositivity.KST.Comparison.SimplicialMonoid.componentsMap
@@ -1893,6 +1912,78 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.monoidActionFamily_simplex_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.monoidActionFamily_simplex_localized_isIso
+
+
+-- PartialSectionAdjunct.lean
+
+#check @SerrePositivity.KST.Comparison.partialSectionAdjunct
+#print axioms SerrePositivity.KST.Comparison.partialSectionAdjunct
+
+#check @SerrePositivity.KST.Comparison.partialSectionAdjunct_comp
+#print axioms SerrePositivity.KST.Comparison.partialSectionAdjunct_comp
+
+#check @SerrePositivity.KST.Comparison.partialSectionAdjunct_naturality
+#print axioms SerrePositivity.KST.Comparison.partialSectionAdjunct_naturality
+
+#check @SerrePositivity.KST.Comparison.partialSectionAdjunct_inclusion
+#print axioms SerrePositivity.KST.Comparison.partialSectionAdjunct_inclusion
+
+#check @SerrePositivity.KST.Comparison.partialSection_hom_ext
+#print axioms SerrePositivity.KST.Comparison.partialSection_hom_ext
+
+
+-- PartialSectionInclusion.lean
+
+#check @SerrePositivity.KST.Comparison.partialSectionLiftMap
+#print axioms SerrePositivity.KST.Comparison.partialSectionLiftMap
+
+#check @SerrePositivity.KST.Comparison.partialSectionLiftMap_comp
+#print axioms SerrePositivity.KST.Comparison.partialSectionLiftMap_comp
+
+#check @SerrePositivity.KST.Comparison.partialSectionInclusionOver
+#print axioms SerrePositivity.KST.Comparison.partialSectionInclusionOver
+
+#check @SerrePositivity.KST.Comparison.partialSectionInclusion
+#print axioms SerrePositivity.KST.Comparison.partialSectionInclusion
+
+#check @SerrePositivity.KST.Comparison.partialSectionInclusion_base
+#print axioms SerrePositivity.KST.Comparison.partialSectionInclusion_base
+
+#check @SerrePositivity.KST.Comparison.partialSectionInclusionOver_fst
+#print axioms SerrePositivity.KST.Comparison.partialSectionInclusionOver_fst
+
+
+-- PartialSectionRestrictionLift.lean
+
+#check @SerrePositivity.KST.Comparison.partialSectionRestrictionLift
+#print axioms SerrePositivity.KST.Comparison.partialSectionRestrictionLift
+
+#check @SerrePositivity.KST.Comparison.partialSectionRestrictionLift_comp
+#print axioms SerrePositivity.KST.Comparison.partialSectionRestrictionLift_comp
+
+#check @SerrePositivity.KST.Comparison.partialSectionRestrictionLiftOver
+#print axioms SerrePositivity.KST.Comparison.partialSectionRestrictionLiftOver
+
+#check @SerrePositivity.KST.Comparison.partialSectionRestrictionLiftOver_inclusion
+#print axioms SerrePositivity.KST.Comparison.partialSectionRestrictionLiftOver_inclusion
+
+#check @SerrePositivity.KST.Comparison.partialSectionRestrictionLift_inclusion
+#print axioms SerrePositivity.KST.Comparison.partialSectionRestrictionLift_inclusion
+
+#check @SerrePositivity.KST.Comparison.partialSectionRestrictionLift_unique
+#print axioms SerrePositivity.KST.Comparison.partialSectionRestrictionLift_unique
+
+
+-- PartialSections.lean
+
+#check @SerrePositivity.KST.Comparison.partialSectionUnit
+#print axioms SerrePositivity.KST.Comparison.partialSectionUnit
+
+#check @SerrePositivity.KST.Comparison.partialSectionObject
+#print axioms SerrePositivity.KST.Comparison.partialSectionObject
+
+#check @SerrePositivity.KST.Comparison.partialSectionObject_allMono_rlp
+#print axioms SerrePositivity.KST.Comparison.partialSectionObject_allMono_rlp
 
 
 -- PiZeroRing.lean
@@ -2208,6 +2299,15 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.sliceFiberPushoutIso
 #print axioms SerrePositivity.KST.Comparison.sliceFiberPushoutIso
+
+
+-- SliceRightAdjointTrivialFibrations.lean
+
+#check @SerrePositivity.KST.Comparison.underlying_rlp_of_over_monos
+#print axioms SerrePositivity.KST.Comparison.underlying_rlp_of_over_monos
+
+#check @SerrePositivity.KST.Comparison.sliceFiberRightAdjoint_allMono_rlp
+#print axioms SerrePositivity.KST.Comparison.sliceFiberRightAdjoint_allMono_rlp
 
 
 -- SpanCylinderFunctor.lean
@@ -2622,6 +2722,18 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.monoidActionFamily_localized_isIso
 #print axioms SerrePositivity.KST.Comparison.monoidActionFamily_localized_isIso
+
+
+-- TrivialFibrationExtension.lean
+
+#check @SerrePositivity.KST.Comparison.partialSectionInclusion_isPullback
+#print axioms SerrePositivity.KST.Comparison.partialSectionInclusion_isPullback
+
+#check @SerrePositivity.KST.Comparison.partialSectionInclusion_mono
+#print axioms SerrePositivity.KST.Comparison.partialSectionInclusion_mono
+
+#check @SerrePositivity.KST.Comparison.trivialFibrationExtension
+#print axioms SerrePositivity.KST.Comparison.trivialFibrationExtension
 
 
 -- UniqueFaceNondegenerate.lean

@@ -448,6 +448,33 @@ span からこの状況へ移す論証は別途必要である。
 Mather 1976 Lemma 21 の fibration への還元に対応するが、元のホモトピー引き戻しを
 厳密な引き戻しへ置換する論証まで完了したことは意味しない。
 
+### 共通の trivial fibration 模型と単射に沿う延長による厳密化
+
+確認する文言：同じ基底 C 上の Kan fibration E₁→C、E₂→C と、Y から両者への
+局所化同型があるとき、Y→Z を anodyne、Z→E₁ と Z→E₂ を trivial fibration とする
+可換な共通の模型を作る。ここで E₁ と E₂ の全空間は Kan とする。
+証明方針：Y→E₁×_C E₂ を anodyne–Kan 分解し、その後半を二つの射影へ合成する。
+射影の Kan 性と二対三から、Kan 全空間へ向かう局所化可逆な Kan fibration を得る。
+既存の KanFibrationLocalizedLifting を適用し、全ての単射に対する右持ち上げ性を示す。
+
+次に確認する文言：単射 j:A→B と trivial fibration q:Z→A に対し、
+B 上の trivial fibration E→B と、Z≅A×_B E となる延長を構成する。
+候補は j に沿う部分切断の対象である。既存の sliceFiberFunctor j とその右随伴 G を使い、
+G(q):G(Z)→G(A) を恒等切断の転置 1_B→G(A) に沿って引き戻す。
+全単射的右持ち上げ性は、積の単射保存と随伴で移す。j が単射なので、A へ制限した
+部分切断は元の Z の元と一意に一致することを、随伴と引き戻しの普遍性で証明する。
+この段階では延長や制限の同型を仮定した構造体は作らず、構成と普遍性を証明する。
+
+一般の貼り合わせへの接続方針：Ex∞ と縦射の関手的分解で C を Kan にする。
+水平の二つの基底射は既存の mono–全単射的右持ち上げ性の分解で単射に置換する。
+その基底の比較を縦の Kan fibration で引き戻し、既証の right properness で模型を保つ。
+元の中央の対象から二つの厳密ファイバーへの比較は、ホモトピー引き戻しの仮定から可逆になる。
+共通の Z と、二つのファイバーの端点の全空間への単射に沿う延長を使い、
+両面が厳密な引き戻しとなる span と、元の span に成分ごとの局所化同型で結ばれる中間 span を作る。
+最後に円筒の関手の不変性と四頂点の置換で、証明済みの厳密な場合へ移す。
+これは Mather 1976 Lemmas 19–23 の WCHP・numerable covering を移植する経路とは異なる。
+上の共通模型・延長・中間 span の各構成は個別の証明項目であり、全体の完成はまだ主張しない。
+
 ## 12. 現在地と主要宣言
 
 現在地：L2a の有限 rank の構成を完了し、L2b の群状モノイドの bar 構成へ進む。
@@ -572,7 +599,10 @@ Ex∞ が四角形のホモトピー引き戻し性を保存・反映するこ�
 二重写像円筒を span の関手とし、左・右・中央の頂点の写像を自然変換にまとめた。
 Kan 分解は span の二面と、円筒への三頂点の四角形のホモトピー引き戻し性を保存・反映すると証明した。
 一般の homotopy-cartesian な二面から、縦射が Kan fibration の場合への還元は証明済み。
-そこから両面を厳密な引き戻しへ移す論証は未証明。
+二つの Kan なファイバー模型へ向かう局所化同型を、共通の trivial fibration の模型で比較することを証明した。
+部分切断の実際の対象と元の全空間からの包含を構成し、随伴表示による復元と一意性を証明した。
+単射に沿う trivial fibration の延長と、元の射が厳密な引き戻しであることを証明した。
+これらを span の模型の置換に組み合わせ、両面を厳密な引き戻しへ移す残りの論証は未証明。
 Segal Lemma 1.7 の homotopy-cartesian 性の貼り合わせの本体は未証明。
 対角化後の bar 束の homotopy-cartesian 性と、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
@@ -580,8 +610,8 @@ L2b、L2c、L2d、L2e は未完了である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 693 宣言の型と公理を確認した。
-さらに名前空間全体の 1304 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 722 宣言の型と公理を確認した。
+さらに名前空間全体の 1353 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -716,6 +746,10 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `diagramKanMiddle`、`diagramKanUnit`、`diagramKanProjection`、`diagramKan_fac` | 実装済み | 関手的な図式の成分ごとの anodyne–Kan 分解 |
 | `spanCylinderFunctor`、`spanCylinderVertex` | 実装済み | span の円筒の関手と三頂点の自然性 |
 | `diagramKan_arrowSquare_iff`、`spanCylinderKan_vertexSquare_iff` | 実装済み | 縦射が Kan fibration の場合への還元 |
+| `commonTrivialFibrationRefinement` | 実装済み | 二つのファイバー模型の共通の trivial fibration の模型 |
+| `partialSectionObject`、`partialSectionObject_allMono_rlp` | 実装済み | 部分切断の実対象と全体の trivial fibration 性 |
+| `partialSectionAdjunct`、`partialSectionRestrictionLift_unique` | 実装済み | 随伴表示、復元、存在と一意性 |
+| `partialSectionInclusion_isPullback`、`trivialFibrationExtension` | 実装済み | 単射に沿う延長と制限の厳密な引き戻し |
 | Segal Lemma 1.7 の homotopy-cartesian 性の貼り合わせ | 未証明 | 実際の二重写像円筒の比較について証明する |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |

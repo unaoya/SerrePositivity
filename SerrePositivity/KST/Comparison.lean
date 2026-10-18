@@ -63,6 +63,8 @@ public import SerrePositivity.KST.Comparison.ArbitraryBasePullback
 public import SerrePositivity.KST.Comparison.ExInfinityHomotopyPullback
 public import SerrePositivity.KST.Comparison.StrictCylinderHomotopyPullbacks
 public import SerrePositivity.KST.Comparison.KanReplacementSquares
+public import SerrePositivity.KST.Comparison.CommonTrivialRefinement
+public import SerrePositivity.KST.Comparison.TrivialFibrationExtension
 
 /-!
 # K-L2：比較定理の入口
