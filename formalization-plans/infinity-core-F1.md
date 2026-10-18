@@ -4761,5 +4761,107 @@ lemma leftStrictTransportMap_fibration_of_thin
     (p : E ⟶ nerve C) [LeftFibration p] {c d : C} (f : c ⟶ d) :
     Fibration (leftStrictTransportMap p f)
 
+def simplicialReplacementSourceCoefficient {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {n : ℕ} (s : simplicialReplacementSimplex F n)
+    (c : C) (h : s.1.obj 0 = c) : (Δ[n] : SSet.{u}) ⟶ F.obj c
+
+lemma simplicialReplacementSourceCoefficient_congr {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) {n : ℕ} {s t : simplicialReplacementSimplex F n}
+    (hst : s = t) (c : C) (h : s.1.obj 0 = c) (h' : t.1.obj 0 = c) :
+    simplicialReplacementSourceCoefficient F s c h =
+      simplicialReplacementSourceCoefficient F t c h'
+
+lemma simplicialReplacementSimplex_eq_of_sourceCoefficient
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u})
+    {n : ℕ} (s t : simplicialReplacementSimplex F n) (hb : s.1 = t.1)
+    (c : C) (h : s.1.obj 0 = c) (h' : t.1.obj 0 = c)
+    (he : simplicialReplacementSourceCoefficient F s c h =
+      simplicialReplacementSourceCoefficient F t c h') : s = t
+
+lemma simplicialReplacementSourceCoefficient_naturality
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u})
+    {m n : SimplexCategory} (α : m ⟶ n) (hα : α.toOrderHom 0 = 0)
+    (s : simplicialReplacementSimplex F n.len) (c : C)
+    (h : s.1.obj 0 = c)
+    (h' : (simplicialReplacementSimplexMap F α s).1.obj 0 = c) :
+    simplicialReplacementSourceCoefficient F (simplicialReplacementSimplexMap F α s) c h' =
+      stdSimplex.map α ≫ simplicialReplacementSourceCoefficient F s c h
+
+lemma simplicialReplacementSourceCoefficient_overlap
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u})
+    {m n r : SimplexCategory} (α : m ⟶ n) (β : m ⟶ r)
+    (hα : α.toOrderHom 0 = 0) (hβ : β.toOrderHom 0 = 0)
+    (s : simplicialReplacementSimplex F n.len) (t : simplicialReplacementSimplex F r.len)
+    (c : C) (hs : s.1.obj 0 = c) (ht : t.1.obj 0 = c)
+    (he : simplicialReplacementSimplexMap F α s = simplicialReplacementSimplexMap F β t) :
+    stdSimplex.map α ≫ simplicialReplacementSourceCoefficient F s c hs =
+      stdSimplex.map β ≫ simplicialReplacementSourceCoefficient F t c ht
+
+lemma simplexFace_zero_of_ne_zero {n : ℕ} (j : Fin (n + 2)) (hj : j ≠ 0) :
+    (SimplexCategory.δ j).toOrderHom 0 = 0
+
+lemma simplicialReplacementHornFace_base
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) {n : ℕ}
+    (σ : ComposableArrows C (n + 1)) (k : Fin (n + 2))
+    (a : (horn (n + 1) k : SSet.{u}) ⟶ simplicialReplacement F)
+    (ha : a ≫ simplicialReplacementProjection F =
+      (horn (n + 1) k).ι ≫ SSet.yonedaEquiv.symm σ)
+    (j : Fin (n + 2)) (hj : j ≠ k) :
+    (SSet.yonedaEquiv (horn.ι k j hj ≫ a)).1 =
+      (SimplexCategory.toCat.map (SimplexCategory.δ j)).toFunctor ⋙ σ
+
+lemma simplicialReplacementHornFace_start
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) {n : ℕ}
+    (σ : ComposableArrows C (n + 1)) (k : Fin (n + 2))
+    (a : (horn (n + 1) k : SSet.{u}) ⟶ simplicialReplacement F)
+    (ha : a ≫ simplicialReplacementProjection F =
+      (horn (n + 1) k).ι ≫ SSet.yonedaEquiv.symm σ)
+    (j : Fin (n + 2)) (hj : j ≠ k) (hj0 : j ≠ 0) :
+    (SSet.yonedaEquiv (horn.ι k j hj ≫ a)).1.obj 0 = σ.obj 0
+
+def simplicialReplacementHornSourceFace
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) {n : ℕ}
+    (σ : ComposableArrows C (n + 1)) (k : Fin (n + 2))
+    (a : (horn (n + 1) k : SSet.{u}) ⟶ simplicialReplacement F)
+    (ha : a ≫ simplicialReplacementProjection F =
+      (horn (n + 1) k).ι ≫ SSet.yonedaEquiv.symm σ)
+    (j : Fin (n + 2)) (hj : j ≠ k) (hj0 : j ≠ 0) :
+    (Δ[n] : SSet.{u}) ⟶ F.obj (σ.obj 0)
+
+lemma simplicialReplacementHornSourceFace_overlap
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) {n m : ℕ}
+    (σ : ComposableArrows C (n + 1)) (k : Fin (n + 2))
+    (a : (horn (n + 1) k : SSet.{u}) ⟶ simplicialReplacement F)
+    (ha : a ≫ simplicialReplacementProjection F =
+      (horn (n + 1) k).ι ≫ SSet.yonedaEquiv.symm σ)
+    (j l : Fin (n + 2)) (hj : j ≠ k) (hl : l ≠ k) (hj0 : j ≠ 0) (hl0 : l ≠ 0)
+    (β γ : ⦋m⦌ ⟶ ⦋n⦌) (hβ : β.toOrderHom 0 = 0) (hγ : γ.toOrderHom 0 = 0)
+    (he : (stdSimplex.map β : (Δ[m] : SSet.{u}) ⟶ Δ[n]) ≫ (horn.ι k j hj ≫ a) =
+      stdSimplex.map γ ≫ (horn.ι k l hl ≫ a)) :
+    stdSimplex.map β ≫ simplicialReplacementHornSourceFace F σ k a ha j hj hj0 =
+      stdSimplex.map γ ≫ simplicialReplacementHornSourceFace F σ k a ha l hl hl0
+
+lemma simplicialReplacementHornSourceFace_zero_isCompatible
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) {n : ℕ}
+    (σ : ComposableArrows C (n + 1))
+    (a : (horn (n + 1) 0 : SSet.{u}) ⟶ simplicialReplacement F)
+    (ha : a ≫ simplicialReplacementProjection F =
+      (horn (n + 1) 0).ι ≫ SSet.yonedaEquiv.symm σ) :
+    horn.IsCompatible (fun j hj ↦ simplicialReplacementHornSourceFace F σ 0 a ha j hj hj)
+
+lemma exists_simplicialReplacement_zeroHorn_lift
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) {n : ℕ}
+    (σ : ComposableArrows C (n + 1)) [KanComplex (F.obj (σ.obj 0))]
+    (a : (horn (n + 1) 0 : SSet.{u}) ⟶ simplicialReplacement F)
+    (ha : a ≫ simplicialReplacementProjection F =
+      (horn (n + 1) 0).ι ≫ SSet.yonedaEquiv.symm σ) :
+    ∃ H : (Δ[n + 1] : SSet.{u}) ⟶ simplicialReplacement F,
+      (horn (n + 1) 0).ι ≫ H = a ∧
+        H ≫ simplicialReplacementProjection F = SSet.yonedaEquiv.symm σ
+
+lemma hasLiftingProperty_simplicialReplacementProjection_zeroHorn
+    {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) [∀ c, KanComplex (F.obj c)] (n : ℕ) :
+    HasLiftingProperty (horn (n + 1) 0).ι (simplicialReplacementProjection F)
+
 end SerrePositivity.InfinityCategories
 ```
