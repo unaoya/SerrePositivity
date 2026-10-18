@@ -436,3 +436,5 @@ A3e 続き：同値である Fibration は trivial Kan fibration となること
 `initialCofinality` と `initialRestriction` は既存名のまま `{I : Type v} [Category.{w} I]` に一般化した。`nerveVertex`・`nervePoint` から始対象の錐と retract の補題も二宇宙を扱う。`nerve I`、図式の標的 `X`、join・slice は `SSet.{max v w}` に置く。対象 Type (u+1)・Hom Type u の `PerfUnder_u p S` の形では `X : SSet.{u+1}` を取れる。従来の同一宇宙の型は v=w の特殊化でそのまま使用できる。
 
 一般化した19公開宣言の全ての型と前提を計画 §6 に記録。Core ビルドと、一般二宇宙・Π2 の宇宙・従来の宇宙の三つの使用例を含む監査が成功し、累計756宣言は標準3公理のみ。今回の要請は完了し A3e に戻る。
+
+A3e 続き：写像空間の基底変換と標準単体の最後の頂点の終対象性を実装。充満忠実な inner fibration は全正次元境界を持ち上げ、頂点上の全射性を加えれば trivial Kan fibration、従って A3a の同値となる。公開25宣言の正確な型・全前提は計画 §6。Core ビルド・累計781宣言の標準3公理監査成功。一般の関手の path 置換への充満忠実性の移行、主同値判定と一般の極限不変性は未完了。

@@ -5077,6 +5077,170 @@ lemma initialCofinality {I : Type v} [Category.{w} I] {c : I} (hc : IsInitial c)
 
 ```
 
+
+### A3e 続き：充満忠実な inner fibration の境界充填（2026-10-18）
+
+Mathlib の引き戻しの単体と右 pinched 写像空間の基底変換を実装。充満忠実な inner fibration の quasicategory への引き戻しは充満忠実である。標準単体の最後の頂点の終対象性を写像空間の各次数の一意性と非空性で証明し、標準単体への基底変換で終対象性を反映することにより、充満忠実な inner fibration の全正次元境界の持ち上げ性を証明した。頂点上の全射性を加えれば trivial Kan fibration であり A3a の同値となる。これは一般の本質的全射な関手の判定を完成したものではない。Core 対象ビルド成功（1634 jobs）、累計781宣言の標準3公理監査成功。未完了：一般の関手の path 置換への充満忠実性の移行と主同値判定、一般の同値による極限の保存・反映。§4 の設計変更なし。
+
+新規25公開宣言の正確な型と全前提を以下に記録する。namespace は `SerrePositivity.InfinityCategories`、`universe u`、`open CategoryTheory Limits SSet`、`open scoped Simplicial`。
+
+PullbackSimplex：
+
+```lean
+noncomputable def pullbackSimplex {X Y B : SSet.{u}} (p : X ⟶ B) (q : Y ⟶ B) {n : ℕ}
+    (x : X _⦋n⦌) (y : Y _⦋n⦌)
+    (h : p.app (Opposite.op ⦋n⦌) x = q.app (Opposite.op ⦋n⦌) y) :
+    (pullback p q) _⦋n⦌
+
+lemma pullbackSimplex_fst {X Y B : SSet.{u}} (p : X ⟶ B) (q : Y ⟶ B) {n : ℕ}
+    (x : X _⦋n⦌) (y : Y _⦋n⦌)
+    (h : p.app (Opposite.op ⦋n⦌) x = q.app (Opposite.op ⦋n⦌) y) :
+    (pullback.fst p q).app (Opposite.op ⦋n⦌) (pullbackSimplex p q x y h) = x
+
+lemma pullbackSimplex_snd {X Y B : SSet.{u}} (p : X ⟶ B) (q : Y ⟶ B) {n : ℕ}
+    (x : X _⦋n⦌) (y : Y _⦋n⦌)
+    (h : p.app (Opposite.op ⦋n⦌) x = q.app (Opposite.op ⦋n⦌) y) :
+    (pullback.snd p q).app (Opposite.op ⦋n⦌) (pullbackSimplex p q x y h) = y
+
+lemma pullbackSimplex_ext {X Y B : SSet.{u}} (p : X ⟶ B) (q : Y ⟶ B) {n : ℕ}
+    {x y : (pullback p q) _⦋n⦌}
+    (hf : (pullback.fst p q).app (Opposite.op ⦋n⦌) x = (pullback.fst p q).app (Opposite.op ⦋n⦌) y)
+    (hs : (pullback.snd p q).app (Opposite.op ⦋n⦌) x = (pullback.snd p q).app (Opposite.op ⦋n⦌) y) :
+    x = y
+
+lemma pullbackSimplex_compat {X Y B : SSet.{u}} (p : X ⟶ B) (q : Y ⟶ B) {n : ℕ}
+    (x : (pullback p q) _⦋n⦌) :
+    p.app (Opposite.op ⦋n⦌) ((pullback.fst p q).app (Opposite.op ⦋n⦌) x) =
+      q.app (Opposite.op ⦋n⦌) ((pullback.snd p q).app (Opposite.op ⦋n⦌) x)
+
+lemma pullbackSimplex_eta {X Y B : SSet.{u}} (p : X ⟶ B) (q : Y ⟶ B) {n : ℕ}
+    (x : (pullback p q) _⦋n⦌) :
+    pullbackSimplex p q ((pullback.fst p q).app (Opposite.op ⦋n⦌) x)
+      ((pullback.snd p q).app (Opposite.op ⦋n⦌) x) (pullbackSimplex_compat p q x) = x
+
+lemma pullbackSimplex_map {X Y B : SSet.{u}} (p : X ⟶ B) (q : Y ⟶ B) {n m : ℕ}
+    (α : ⦋m⦌ ⟶ ⦋n⦌) (x : X _⦋n⦌) (y : Y _⦋n⦌)
+    (h : p.app (Opposite.op ⦋n⦌) x = q.app (Opposite.op ⦋n⦌) y)
+    (h' : p.app (Opposite.op ⦋m⦌) (X.map α.op x) = q.app (Opposite.op ⦋m⦌) (Y.map α.op y)) :
+    (pullback p q).map α.op (pullbackSimplex p q x y h) =
+      pullbackSimplex p q (X.map α.op x) (Y.map α.op y) h'
+
+```
+
+MappingSpacePullback：
+
+```lean
+noncomputable def pinchedPullbackSimplex {X Y B : SSet.{u}} (p : X ⟶ B) (q : Y ⟶ B)
+    (v w : (pullback p q) _⦋0⦌) {n : ℕ}
+    (x : (pinchedHom ((pullback.fst p q).app (Opposite.op ⦋0⦌) v)
+      ((pullback.fst p q).app (Opposite.op ⦋0⦌) w)) _⦋n⦌)
+    (y : (pinchedHom ((pullback.snd p q).app (Opposite.op ⦋0⦌) v)
+      ((pullback.snd p q).app (Opposite.op ⦋0⦌) w)) _⦋n⦌)
+    (h : p.app (Opposite.op ⦋n + 1⦌) x.val = q.app (Opposite.op ⦋n + 1⦌) y.val) :
+    (pinchedHom v w) _⦋n⦌
+
+lemma pinchedPullbackSimplex_fst {X Y B : SSet.{u}} (p : X ⟶ B) (q : Y ⟶ B)
+    (v w : (pullback p q) _⦋0⦌) {n : ℕ} (x y) (h) :
+    (pinchedHomMap (pullback.fst p q) v w).app (Opposite.op ⦋n⦌)
+      (pinchedPullbackSimplex p q v w x y h) = x
+
+lemma pinchedPullbackSimplex_snd {X Y B : SSet.{u}} (p : X ⟶ B) (q : Y ⟶ B)
+    (v w : (pullback p q) _⦋0⦌) {n : ℕ} (x y) (h) :
+    (pinchedHomMap (pullback.snd p q) v w).app (Opposite.op ⦋n⦌)
+      (pinchedPullbackSimplex p q v w x y h) = y
+
+noncomputable def pinchedHomPullbackLift {A X Y B : SSet.{u}} (p : X ⟶ B) (q : Y ⟶ B)
+    (v w : (pullback p q) _⦋0⦌)
+    (f : A ⟶ pinchedHom ((pullback.fst p q).app (Opposite.op ⦋0⦌) v)
+      ((pullback.fst p q).app (Opposite.op ⦋0⦌) w))
+    (g : A ⟶ pinchedHom ((pullback.snd p q).app (Opposite.op ⦋0⦌) v)
+      ((pullback.snd p q).app (Opposite.op ⦋0⦌) w))
+    (hc : ∀ (n : ℕ) (a : A _⦋n⦌),
+      p.app (Opposite.op ⦋n + 1⦌) (f.app (Opposite.op ⦋n⦌) a).val =
+        q.app (Opposite.op ⦋n + 1⦌) (g.app (Opposite.op ⦋n⦌) a).val) :
+    A ⟶ pinchedHom v w
+
+lemma pinchedHomPullbackLift_fst {A X Y B : SSet.{u}} (p : X ⟶ B) (q : Y ⟶ B)
+    (v w : (pullback p q) _⦋0⦌) (f g hc) :
+    pinchedHomPullbackLift (A := A) p q v w f g hc ≫ pinchedHomMap (pullback.fst p q) v w = f
+
+lemma pinchedHomPullbackLift_snd {A X Y B : SSet.{u}} (p : X ⟶ B) (q : Y ⟶ B)
+    (v w : (pullback p q) _⦋0⦌) (f g hc) :
+    pinchedHomPullbackLift (A := A) p q v w f g hc ≫ pinchedHomMap (pullback.snd p q) v w = g
+
+lemma pinchedHomPullback_hom_ext {A X Y B : SSet.{u}} (p : X ⟶ B) (q : Y ⟶ B)
+    (v w : (pullback p q) _⦋0⦌) {f g : A ⟶ pinchedHom v w}
+    (hf : f ≫ pinchedHomMap (pullback.fst p q) v w = g ≫ pinchedHomMap (pullback.fst p q) v w)
+    (hs : f ≫ pinchedHomMap (pullback.snd p q) v w = g ≫ pinchedHomMap (pullback.snd p q) v w) :
+    f = g
+
+```
+
+FullyFaithfulBaseChange：
+
+```lean
+noncomputable def pinchedHomPullbackBaseMap {X Y B : SSet.{u}} (p : X ⟶ B) (q : Y ⟶ B)
+    (v w : (pullback p q) _⦋0⦌) :
+    pinchedHom ((pullback.snd p q).app (Opposite.op ⦋0⦌) v)
+      ((pullback.snd p q).app (Opposite.op ⦋0⦌) w) ⟶
+    pinchedHom (p.app (Opposite.op ⦋0⦌) ((pullback.fst p q).app (Opposite.op ⦋0⦌) v))
+      (p.app (Opposite.op ⦋0⦌) ((pullback.fst p q).app (Opposite.op ⦋0⦌) w))
+
+lemma pinchedHomPullbackBaseMap_comm {X Y B : SSet.{u}} (p : X ⟶ B) (q : Y ⟶ B)
+    (v w : (pullback p q) _⦋0⦌) :
+    pinchedHomMap (pullback.fst p q) v w ≫
+        pinchedHomMap p ((pullback.fst p q).app (Opposite.op ⦋0⦌) v)
+          ((pullback.fst p q).app (Opposite.op ⦋0⦌) w) =
+      pinchedHomMap (pullback.snd p q) v w ≫ pinchedHomPullbackBaseMap p q v w
+
+lemma IsFullyFaithful.pinchedHomMap_pullback_snd_trivialKanFibration {X Y B : SSet.{u}}
+    [Quasicategory X] [Quasicategory B] {p : X ⟶ B} [InnerFibration p]
+    (hp : IsFullyFaithful p) (q : Y ⟶ B) (v w : (pullback p q) _⦋0⦌) :
+    TrivialKanFibration (pinchedHomMap (pullback.snd p q) v w)
+
+lemma IsFullyFaithful.pullback_snd {X Y B : SSet.{u}}
+    [Quasicategory X] [Quasicategory B] [Quasicategory Y] {p : X ⟶ B} [InnerFibration p]
+    (hp : IsFullyFaithful p) (q : Y ⟶ B) : IsFullyFaithful (pullback.snd p q)
+
+```
+
+StdSimplexTerminal：
+
+```lean
+lemma isContractibleKan_of_nonempty_of_degreewise_subsingleton (K : SSet.{u})
+    (hne : Nonempty (K _⦋0⦌)) (hs : ∀ n : ℕ, Subsingleton (K _⦋n⦌)) :
+    IsContractibleKan K
+
+instance pinchedHom_stdSimplex_subsingleton {n : ℕ} (a b : (Δ[n] : SSet.{u}) _⦋0⦌)
+    (m : ℕ) : Subsingleton ((pinchedHom a b) _⦋m⦌)
+
+lemma pinchedHom_stdSimplex_last_nonempty {n : ℕ} (a : (Δ[n] : SSet.{u}) _⦋0⦌) :
+    Nonempty ((pinchedHom a (stdSimplex.obj₀Equiv.symm (Fin.last n))) _⦋0⦌)
+
+lemma stdSimplex_last_isTerminalVertex (n : ℕ) :
+    IsTerminalVertex (X := (Δ[n] : SSet.{u})) (stdSimplex.obj₀Equiv.symm (Fin.last n))
+
+```
+
+FullyFaithfulBoundary：
+
+```lean
+lemma IsFullyFaithful.hasLiftingProperty_boundary_succ {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] {p : X ⟶ Y} [InnerFibration p]
+    (hp : IsFullyFaithful p) (n : ℕ) : HasLiftingProperty (boundary (n + 1)).ι p
+
+lemma IsFullyFaithful.trivialKanFibration_of_surjective {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] {p : X ⟶ Y} [InnerFibration p]
+    (hp : IsFullyFaithful p) (hs : Function.Surjective (p.app (Opposite.op ⦋0⦌))) :
+    TrivialKanFibration p
+
+lemma IsFullyFaithful.isQCatEquivalence_of_surjective {X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] {p : X ⟶ Y} [InnerFibration p]
+    (hp : IsFullyFaithful p) (hs : Function.Surjective (p.app (Opposite.op ⦋0⦌))) :
+    IsQCatEquivalence p
+
+```
+
 ## 7. A3 の工程（2026-10-18 追加）
 
 A1・A2 の完了を受けて着手する。優先順は G1（infinity-categories.md §0）と D4・ε が使う順。

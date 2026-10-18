@@ -1661,3 +1661,78 @@ example {I : Type u} [Category.{u} I] {c : I} (hc : IsInitial c)
     TrivialKanFibration (initialRestriction F c) := initialCofinality hc F
 
 end InitialCofinalityUniverses
+
+#check SerrePositivity.InfinityCategories.pullbackSimplex
+#print axioms SerrePositivity.InfinityCategories.pullbackSimplex
+
+#check SerrePositivity.InfinityCategories.pullbackSimplex_fst
+#print axioms SerrePositivity.InfinityCategories.pullbackSimplex_fst
+
+#check SerrePositivity.InfinityCategories.pullbackSimplex_snd
+#print axioms SerrePositivity.InfinityCategories.pullbackSimplex_snd
+
+#check SerrePositivity.InfinityCategories.pullbackSimplex_ext
+#print axioms SerrePositivity.InfinityCategories.pullbackSimplex_ext
+
+#check SerrePositivity.InfinityCategories.pullbackSimplex_compat
+#print axioms SerrePositivity.InfinityCategories.pullbackSimplex_compat
+
+#check SerrePositivity.InfinityCategories.pullbackSimplex_eta
+#print axioms SerrePositivity.InfinityCategories.pullbackSimplex_eta
+
+#check SerrePositivity.InfinityCategories.pullbackSimplex_map
+#print axioms SerrePositivity.InfinityCategories.pullbackSimplex_map
+
+#check SerrePositivity.InfinityCategories.pinchedPullbackSimplex
+#print axioms SerrePositivity.InfinityCategories.pinchedPullbackSimplex
+
+#check SerrePositivity.InfinityCategories.pinchedPullbackSimplex_fst
+#print axioms SerrePositivity.InfinityCategories.pinchedPullbackSimplex_fst
+
+#check SerrePositivity.InfinityCategories.pinchedPullbackSimplex_snd
+#print axioms SerrePositivity.InfinityCategories.pinchedPullbackSimplex_snd
+
+#check SerrePositivity.InfinityCategories.pinchedHomPullbackLift
+#print axioms SerrePositivity.InfinityCategories.pinchedHomPullbackLift
+
+#check SerrePositivity.InfinityCategories.pinchedHomPullbackLift_fst
+#print axioms SerrePositivity.InfinityCategories.pinchedHomPullbackLift_fst
+
+#check SerrePositivity.InfinityCategories.pinchedHomPullbackLift_snd
+#print axioms SerrePositivity.InfinityCategories.pinchedHomPullbackLift_snd
+
+#check SerrePositivity.InfinityCategories.pinchedHomPullback_hom_ext
+#print axioms SerrePositivity.InfinityCategories.pinchedHomPullback_hom_ext
+
+#check SerrePositivity.InfinityCategories.pinchedHomPullbackBaseMap
+#print axioms SerrePositivity.InfinityCategories.pinchedHomPullbackBaseMap
+
+#check SerrePositivity.InfinityCategories.pinchedHomPullbackBaseMap_comm
+#print axioms SerrePositivity.InfinityCategories.pinchedHomPullbackBaseMap_comm
+
+#check SerrePositivity.InfinityCategories.IsFullyFaithful.pinchedHomMap_pullback_snd_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.IsFullyFaithful.pinchedHomMap_pullback_snd_trivialKanFibration
+
+#check SerrePositivity.InfinityCategories.IsFullyFaithful.pullback_snd
+#print axioms SerrePositivity.InfinityCategories.IsFullyFaithful.pullback_snd
+
+#check SerrePositivity.InfinityCategories.isContractibleKan_of_nonempty_of_degreewise_subsingleton
+#print axioms SerrePositivity.InfinityCategories.isContractibleKan_of_nonempty_of_degreewise_subsingleton
+
+#check SerrePositivity.InfinityCategories.pinchedHom_stdSimplex_subsingleton
+#print axioms SerrePositivity.InfinityCategories.pinchedHom_stdSimplex_subsingleton
+
+#check SerrePositivity.InfinityCategories.pinchedHom_stdSimplex_last_nonempty
+#print axioms SerrePositivity.InfinityCategories.pinchedHom_stdSimplex_last_nonempty
+
+#check SerrePositivity.InfinityCategories.stdSimplex_last_isTerminalVertex
+#print axioms SerrePositivity.InfinityCategories.stdSimplex_last_isTerminalVertex
+
+#check SerrePositivity.InfinityCategories.IsFullyFaithful.hasLiftingProperty_boundary_succ
+#print axioms SerrePositivity.InfinityCategories.IsFullyFaithful.hasLiftingProperty_boundary_succ
+
+#check SerrePositivity.InfinityCategories.IsFullyFaithful.trivialKanFibration_of_surjective
+#print axioms SerrePositivity.InfinityCategories.IsFullyFaithful.trivialKanFibration_of_surjective
+
+#check SerrePositivity.InfinityCategories.IsFullyFaithful.isQCatEquivalence_of_surjective
+#print axioms SerrePositivity.InfinityCategories.IsFullyFaithful.isQCatEquivalence_of_surjective

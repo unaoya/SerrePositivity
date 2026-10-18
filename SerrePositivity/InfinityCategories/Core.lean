@@ -63,3 +63,13 @@ public import SerrePositivity.InfinityCategories.Core.KanPrismLifting
 public import SerrePositivity.InfinityCategories.Core.KanFibrationEquivalence
 
 public import SerrePositivity.InfinityCategories.Core.FullyFaithfulFibration
+
+public import SerrePositivity.InfinityCategories.Core.PullbackSimplex
+
+public import SerrePositivity.InfinityCategories.Core.MappingSpacePullback
+
+public import SerrePositivity.InfinityCategories.Core.FullyFaithfulBaseChange
+
+public import SerrePositivity.InfinityCategories.Core.StdSimplexTerminal
+
+public import SerrePositivity.InfinityCategories.Core.FullyFaithfulBoundary
