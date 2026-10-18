@@ -22,7 +22,7 @@
 
 作成日：2026-10-18。
 状態：L9a・L9b 完了。L9c に着手。
-対象ビルド・12 モジュール 644 宣言の公理監査成功。
+対象ビルド・13 モジュール 672 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9b、8370 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -454,3 +454,26 @@ HT-KQ は使わない。共有正本 §13-3 はユーザーが更新する。
 保存単位の検証：対象ビルド 1522 jobs 成功。
 私有宣言を含む 12 モジュール 644 宣言で標準三公理のみ。
 L9c 全体は未完了。次は fibration の塔の極限への相対充填を構成する。
+
+## 20. L9c の塔の極限
+
+`FibrationTower.lean` に自然数で添字づけた逆向きの塔の極限を構成した。
+各次数の単体は、隣接段の遷移と整合する元の族である。
+一般の厳密極限の Kan 性を仮定していない。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `FibrationTower.limit` | 次数ごとの整合族による単体集合 |
+| `FibrationTower.projection` | 各段への自然な射影 |
+| `FibrationTower.lift` | 整合する射の族の普遍的持ち上げ |
+| `FibrationTower.hom_ext` | 射影による射の一意性 |
+| `FibrationTower.stages` | 初段の指定充填からの帰納的な相対充填 |
+| `FibrationTower.stages_comp` | 帰納的充填の遷移との整合性 |
+| `FibrationTower.projection_zero_hasLiftingProperty` | 右持ち上げ性の初段射影への移送 |
+| `FibrationTower.projection_zero_fibration` | fibration の塔の初段射影は fibration |
+| `FibrationTower.limit_kanComplex` | 初段 Kan・遷移 fibration の塔の極限は Kan |
+
+参照：Kerodon Corollary 11.9.7.2、HTT A.3.3、BF 1978 §2。
+保存単位の対象ビルド 1523 jobs 成功。
+私有宣言を含む 13 モジュール 672 宣言で標準三公理のみ。
+L9c 全体は未完了。次は切断スペクトルの Hom の塔を実装する。
