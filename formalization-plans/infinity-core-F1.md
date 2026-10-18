@@ -5714,5 +5714,78 @@ lemma prismRightConeMap_mem_range_iff {n d : ℕ}
     (t, c) ∈ Set.range ((prismRightConeMap n).app (Opposite.op ⦋d⦌)) ↔
       ∀ i : Fin (d + 1), c i = Fin.last (n + 1) → t i = 1
 
+noncomputable def rightConeJoinIso (K : SSet.{u}) (n : ℕ) :
+    join (join K Δ[n]) Δ[0] ≅ join K Δ[n + 1]
+
+lemma rightConeJoinIso_naturality {K L : SSet.{u}} (f : K ⟶ L) (n : ℕ) :
+    joinMap (joinMap f (𝟙 Δ[n])) (𝟙 Δ[0]) ≫ (rightConeJoinIso L n).hom =
+      (rightConeJoinIso K n).hom ≫ joinMap f (𝟙 Δ[n + 1])
+
+lemma rightConeJoinIso_inl (K : SSet.{u}) (n : ℕ) :
+    joinInl (join K Δ[n]) Δ[0] ≫ (rightConeJoinIso K n).hom =
+      joinMap (𝟙 K) (stdSimplex.δ (Fin.last (n + 1)))
+
+lemma rightConeJoinIso_inr (K : SSet.{u}) (n : ℕ) :
+    joinInr (join K Δ[n]) Δ[0] ≫ (rightConeJoinIso K n).hom =
+      SSet.const (stdSimplex.obj₀Equiv.symm (Fin.last (n + 1))) ≫ joinInr K Δ[n + 1]
+
+lemma relativeJoinConeFirst_factor {m n : ℕ} (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    relativeJoinConeFirst f =
+      joinMap (pullback.fst (joinMap f (𝟙 Δ[n])) (joinDiagonal Δ[n])) (𝟙 Δ[0]) ≫
+        (rightConeJoinIso Δ[m] n).hom
+
+noncomputable def prismRightConeDiagonal (n : ℕ) :
+    join ((Δ[1] : SSet.{u}) ⊗ Δ[n]) Δ[0] ⟶ join (Δ[n] : SSet.{u}) Δ[n + 1]
+
+lemma prismRightConeMap_inl (n : ℕ) :
+    joinInl ((Δ[1] : SSet.{u}) ⊗ Δ[n]) Δ[0] ≫ prismRightConeMap n =
+      ((Δ[1] : SSet.{u}) ◁ stdSimplex.δ (Fin.last (n + 1)))
+
+lemma prismRightConeMap_inr (n : ℕ) :
+    joinInr ((Δ[1] : SSet.{u}) ⊗ Δ[n]) Δ[0] ≫ prismRightConeMap n =
+      SSet.const (stdSimplex.obj₀Equiv.symm (Fin.last (n + 1))) ≫
+        prismEndpoint 1 (Δ[n + 1] : SSet.{u})
+
+lemma prismRightConeDiagonal_inl (n : ℕ) :
+    joinInl ((Δ[1] : SSet.{u}) ⊗ Δ[n]) Δ[0] ≫ prismRightConeDiagonal n =
+      joinDiagonal Δ[n] ≫ joinMap (𝟙 Δ[n]) (stdSimplex.δ (Fin.last (n + 1)))
+
+lemma prismRightConeDiagonal_inr (n : ℕ) :
+    joinInr ((Δ[1] : SSet.{u}) ⊗ Δ[n]) Δ[0] ≫ prismRightConeDiagonal n =
+      SSet.const (stdSimplex.obj₀Equiv.symm (Fin.last (n + 1))) ≫
+        joinInr (Δ[n] : SSet.{u}) Δ[n + 1]
+
+lemma prismRightCone_square (n : ℕ) :
+    prismRightConeDiagonal.{u} n ≫ joinMap (stdSimplex.δ (Fin.last (n + 1))) (𝟙 Δ[n + 1]) =
+      prismRightConeMap n ≫ joinDiagonal Δ[n + 1]
+
+lemma prismRightCone_lastFace_aug_val {n r : ℕ}
+    (a : Join.augObj (Δ[n] : SSet.{u}) r) (i : Fin r) :
+    (Join.stdAugEquiv (n + 1) r
+      (Join.augHom (stdSimplex.δ (Fin.last (n + 1))) r a) i).val =
+      (Join.stdAugEquiv n r a i).val
+
+lemma prismRightCone_joinFace_avoids_left_last {n d : ℕ}
+    (s : Join.Simplex (Δ[n] : SSet.{u}) Δ[n + 1] d) (i : Fin (d + 1)) :
+    ((joinStdSimplexIso (n + 1) (n + 1)).hom.app (Opposite.op ⦋d⦌)
+      ((joinMap (stdSimplex.δ (Fin.last (n + 1))) (𝟙 Δ[n + 1])).app
+        (Opposite.op ⦋d⦌) s) i).val ≠ n + 1
+
+lemma prismRightCone_isPullback (n : ℕ) :
+    IsPullback (prismRightConeDiagonal.{u} n) (prismRightConeMap n)
+      (joinMap (stdSimplex.δ (Fin.last (n + 1))) (𝟙 Δ[n + 1])) (joinDiagonal Δ[n + 1])
+
+lemma relativeJoinCone_isPullback {m n : ℕ} (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    IsPullback (relativeJoinConeFirst f) (relativeJoinConeSecond f)
+      (joinMap (f ≫ stdSimplex.δ (Fin.last (n + 1))) (𝟙 Δ[n + 1]))
+      (joinDiagonal Δ[n + 1])
+
+instance relativeJoinConeMap_isIso {m n : ℕ} (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    IsIso (relativeJoinConeMap f)
+
+noncomputable def relativeJoinConeIso {m n : ℕ} (f : (Δ[m] : SSet.{u}) ⟶ Δ[n]) :
+    join (relativeJoin f (𝟙 Δ[n])) Δ[0] ≅
+      relativeJoin (f ≫ stdSimplex.δ (Fin.last (n + 1))) (𝟙 Δ[n + 1])
+
 end SerrePositivity.InfinityCategories
 ```
