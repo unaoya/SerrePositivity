@@ -2693,3 +2693,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.coherentLeftResolutionInfinityComparisonIso
 #check @SerrePositivity.InfinityCategories.coherentLeftResolutionInfinityEquivalence
 #check @SerrePositivity.InfinityCategories.coherentLeftResolutionDiagramComparisonIso
+#check @SerrePositivity.InfinityCategories.coherentOppositeRightHomComparison_pinchedIso
+#check @SerrePositivity.InfinityCategories.coherentLeftHomComparison_flagIso
+#check @SerrePositivity.InfinityCategories.coherentCosliceFiberComparison_flagIso

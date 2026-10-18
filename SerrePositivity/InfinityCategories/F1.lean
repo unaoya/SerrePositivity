@@ -651,3 +651,4 @@ public import SerrePositivity.InfinityCategories.F1.PointedSpaceLeftResolution
 public import SerrePositivity.InfinityCategories.F1.EdgewiseUnstraighteningLeftResolution
 public import SerrePositivity.InfinityCategories.F1.CoherentLeftResolutionEnriched
 public import SerrePositivity.InfinityCategories.F1.CoherentLeftResolutionComparison
+public import SerrePositivity.InfinityCategories.F1.CoherentLeftFlagComparison

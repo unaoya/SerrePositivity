@@ -13091,5 +13091,26 @@ noncomputable def coherentLeftResolutionInfinityEquivalence :
 noncomputable def coherentLeftResolutionDiagramComparisonIso {B : SSet.{u + 1}}
     (F : B ⟶ SpaceInfinity.{u}) : FunctorIso F (F ≫ coherentLeftResolutionInfinityMap)
 
+lemma coherentOppositeRightHomComparison_pinchedIso
+    {C : Type v} [Category.{u} C] [SimplicialCategory C] (x y : C) :
+    HomotopyLimits.coherentOppositeRightHomComparison x y ≫
+      (coherentOppositePinchedIso x y).hom =
+    coherentHomComparison (Opposite.op y) (Opposite.op x)
+
+lemma coherentLeftHomComparison_flagIso
+    {C : Type v} [Category.{u} C] [SimplicialCategory C] (x y : C) :
+    HomotopyLimits.coherentLeftHomComparison x y ≫
+      (coherentLeftPinchedFlagIso x y).hom =
+    (SSet.uliftFunctor.{v, u}).map
+      (SSet.opFunctor.map (coherentResolutionComparison (SimplicialCategory.sHom x y)))
+
+lemma coherentCosliceFiberComparison_flagIso
+    {C : Type v} [Category.{u} C] [SimplicialCategory C] (x y : C) :
+    HomotopyLimits.coherentCosliceFiberComparison x y ≫
+      (pinchedLeftCosliceFiberIso (coherentNerveVertex x) (coherentNerveVertex y)).inv ≫
+      (coherentLeftPinchedFlagIso x y).hom =
+    (SSet.uliftFunctor.{v, u}).map
+      (SSet.opFunctor.map (coherentResolutionComparison (SimplicialCategory.sHom x y)))
+
 end SerrePositivity.InfinityCategories
 ```
