@@ -52,6 +52,11 @@
 - 全テンソル複体を既存 koszulComplexOn へ移す同型を列長帰納法で構成済み。
 - 次数ごと分裂する短完全列のテンソル境界を純テンソル上で計算済み。
 - 係数複体の微分の項が s≫r=0 により消えることを証明済み。
+- その純テンソル計算を射の同次成分の等式、さらに全複体射の等式へ引き上げ済み。
+- 全テンソル後の分裂境界は、元の分裂境界をテンソルして左シフト同型を合成したものと一致する。
+- 項切り詰めの境界を射影・包含で挟むと元の複体の微分になることを証明済み。
+- テンソル後も同じ射影・包含で比較すると元の微分のテンソルになることを証明済み。
+- 次は補助スペクトル対象の δ と短完全列の分裂境界を比較し、初頁微分全体へ接続する。
 - 初頁の二つのモデルの完全な自然性・Koszul 冪遷移との整合は残件。
 - スペクトル対象から頁への関手性を既存 API で確認中。未供給の自然性を仮定に置かない。
 - π_n の具体的な複体ホモロジーとの同定は K-L9 の界面から受け取る。
@@ -106,6 +111,9 @@
 | koszulFirstPageHomologicalTermIso | KoszulFirstPage.lean | 検証済み | KST 添字での E₁ の係数 |
 | totalKoszulTensorIso | TotalKoszul.lean | 検証済み | 全テンソルと既存 Koszul 構成の同型 |
 | tensorSplitBoundary_apply_homogeneous | TensorBoundary.lean | 検証済み | テンソル境界の同次純テンソル上の計算 |
+| tensorSplitBoundary_eq | TensorBoundary.lean | 検証済み | 全複体射としてのテンソル境界の比較 |
+| cutoffBoundary_differential | CutoffBoundary.lean | 検証済み | 項切り詰めの境界は元の微分 |
+| cutoffTensorBoundary_differential | CutoffBoundary.lean | 検証済み | テンソル後も元の微分を取り出せる |
 | koszul_comparison | KoszulPro.lean | 予定 | KST Lemma 4.10 |
 | prop414 | Prop414.lean | 予定 | 中心的係数による非可換版 |
 | pro_whitehead | Whitehead.lean | 予定 | simple 空間版 |

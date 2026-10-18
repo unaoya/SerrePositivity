@@ -326,3 +326,18 @@ set_option pp.explicit true
 #check @SerrePositivity.KST.ProExcision.tensorSplitBoundary_apply_homogeneous
 #print axioms SerrePositivity.KST.ProExcision.tensorSplitBoundary_apply_homogeneous
 
+#check @SerrePositivity.KST.ProExcision.tensorSplitBoundary_homogeneous
+#print axioms SerrePositivity.KST.ProExcision.tensorSplitBoundary_homogeneous
+
+#check @SerrePositivity.KST.ProExcision.tensorSplitBoundary_homogeneous_assoc
+#print axioms SerrePositivity.KST.ProExcision.tensorSplitBoundary_homogeneous_assoc
+
+#check @SerrePositivity.KST.ProExcision.tensorSplitBoundary_eq
+#print axioms SerrePositivity.KST.ProExcision.tensorSplitBoundary_eq
+
+#check @SerrePositivity.KST.ProExcision.cutoffBoundary_differential
+#print axioms SerrePositivity.KST.ProExcision.cutoffBoundary_differential
+
+#check @SerrePositivity.KST.ProExcision.cutoffTensorBoundary_differential
+#print axioms SerrePositivity.KST.ProExcision.cutoffTensorBoundary_differential
+

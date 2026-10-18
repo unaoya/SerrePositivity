@@ -13,3 +13,4 @@ public import SerrePositivity.KST.ProExcision.KoszulGraded
 public import SerrePositivity.KST.ProExcision.KoszulFirstPage
 public import SerrePositivity.KST.ProExcision.TotalKoszul
 public import SerrePositivity.KST.ProExcision.TensorBoundary
+public import SerrePositivity.KST.ProExcision.CutoffBoundary

@@ -55,12 +55,59 @@ theorem tensorSplitBoundary_apply_homogeneous
     ((cochainTensor S.X₂ K).d n (n + 1)
       ((cochainTensorDegreeMap (fun k ↦ (σ k).s) (fun k ↦ 𝟙 (K.X k)) n)
         (ιTensorObj S.X₃ K i j n h (x ⊗ₜ[R] y)))) = _
-  rw [tensorDegreeMap_apply_homogeneous, cochainTensor_d_apply_ι, map_add, Units.smul_def, map_zsmul,
+  rw [tensorDegreeMap_apply_homogeneous, cochainTensor_d_apply_ι, map_add,
+    Units.smul_def, map_zsmul,
     tensorDegreeMap_apply_homogeneous, tensorDegreeMap_apply_homogeneous]
   have hz : (σ i).r ((σ i).s x) = 0 :=
     congrArg (fun k ↦ k.hom x) (σ i).s_r
   simp only [ModuleCat.id_apply]
   erw [hz]
   simp
+
+/-- 概要：テンソル境界の同次成分は、元の短完全列の境界を右テンソルした写像。
+方針：純テンソル上の計算から加群のテンソル積の外延性で射の等式を得る。
+規約：係数複体の微分に由来する項は消えている。
+使われ方：KST Lemma 4.10 の初頁微分の射としての同定。 -/
+@[reassoc]
+theorem tensorSplitBoundary_homogeneous
+    (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ))
+    (σ : ∀ i, (S.map (eval _ _ i)).Splitting)
+    (K : CochainComplex (ModuleCat.{u} R) ℤ) (i j n : ℤ) (h : i + j = n) :
+    ιTensorObj S.X₃ K i j n h ≫
+      (CochainComplex.cocycleOfDegreewiseSplit (cochainTensorShortComplexRight S K)
+        (cochainTensorShortComplexRightSplitting S σ K)).1.v n (n + 1) rfl =
+      (((σ i).s ≫ S.X₂.d i (i + 1) ≫ (σ (i + 1)).r) ▷ K.X j) ≫
+        ιTensorObj S.X₁ K (i + 1) j (n + 1) (by omega) := by
+  apply ModuleCat.MonoidalCategory.tensor_ext
+  intro x y
+  exact tensorSplitBoundary_apply_homogeneous S σ K i j n h x y
+
+/-- 概要：全テンソル後の次数ごと分裂境界は、元の境界のテンソルと同じ。
+方針：各同次成分で比較し、全テンソルの左シフト同型で標的を合わせる。
+規約：左シフト比較には符号を加えない。使われ方：KST Lemma 4.10 の初頁微分。 -/
+theorem tensorSplitBoundary_eq
+    (S : ShortComplex (CochainComplex (ModuleCat.{u} R) ℤ))
+    (σ : ∀ i, (S.map (eval _ _ i)).Splitting)
+    (K : CochainComplex (ModuleCat.{u} R) ℤ) :
+    CochainComplex.homOfDegreewiseSplit (cochainTensorShortComplexRight S K)
+      (cochainTensorShortComplexRightSplitting S σ K) =
+      cochainTensorMap (CochainComplex.homOfDegreewiseSplit S σ) (𝟙 K) ≫
+        (cochainTensorShiftLeft S.X₁ K (1 : ℤ)).hom := by
+  apply HomologicalComplex.Hom.ext
+  funext n
+  apply (cancel_mono
+    (CochainComplex.shiftFunctorObjXIso (cochainTensor S.X₁ K) 1 n (n + 1) rfl).hom).mp
+  apply HomologicalComplex.mapBifunctor.hom_ext
+  intro i j h
+  simp only [HomologicalComplex.comp_f, Category.assoc]
+  rw [CochainComplex.homOfDegreewiseSplit_f, tensorSplitBoundary_homogeneous_assoc,
+    ιTensorObj_cochainTensorMap_assoc, ιTensorObj_cochainTensorShiftLeft_assoc]
+  simp only [CochainComplex.shiftFunctorObjXIso, HomologicalComplex.XIsoOfEq_rfl,
+    Iso.refl_hom, Iso.refl_inv, CochainComplex.homOfDegreewiseSplit_f,
+    CochainComplex.cocycleOfDegreewiseSplit, CochainComplex.HomComplex.Cocycle.mk,
+    CochainComplex.HomComplex.Cochain.mk_v, HomologicalComplex.id_f,
+    tensorHom_id, Category.comp_id, Category.id_comp]
+  erw [id_whiskerRight]
+  erw [Category.comp_id]
 
 end SerrePositivity.KST.ProExcision
