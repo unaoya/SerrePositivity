@@ -1920,3 +1920,108 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.StableModel.stable
 #print axioms SerrePositivity.KST.SConstruction.StableModel.stable
+
+#check @SerrePositivity.KST.SConstruction.simplicialDiagonalFunctor
+#print axioms SerrePositivity.KST.SConstruction.simplicialDiagonalFunctor
+
+#check @SerrePositivity.KST.SConstruction.diagonalZeroColumn_mono
+#print axioms SerrePositivity.KST.SConstruction.diagonalZeroColumn_mono
+
+#check @SerrePositivity.KST.SConstruction.diagonalZeroColumnNat
+#print axioms SerrePositivity.KST.SConstruction.diagonalZeroColumnNat
+
+#check @SerrePositivity.KST.SConstruction.reducedDiagonal
+#print axioms SerrePositivity.KST.SConstruction.reducedDiagonal
+
+#check @SerrePositivity.KST.SConstruction.diagonalReductionQuotient
+#print axioms SerrePositivity.KST.SConstruction.diagonalReductionQuotient
+
+#check @SerrePositivity.KST.SConstruction.reducedDiagonalMap
+#print axioms SerrePositivity.KST.SConstruction.reducedDiagonalMap
+
+#check @SerrePositivity.KST.SConstruction.reducedDiagonalMap_quotient
+#print axioms SerrePositivity.KST.SConstruction.reducedDiagonalMap_quotient
+
+#check @SerrePositivity.KST.SConstruction.reducedDiagonalFunctor
+#print axioms SerrePositivity.KST.SConstruction.reducedDiagonalFunctor
+
+#check @SerrePositivity.KST.SConstruction.diagonalReductionNat
+#print axioms SerrePositivity.KST.SConstruction.diagonalReductionNat
+
+#check @SerrePositivity.KST.SConstruction.map_isIso_of_trivialKanFibration
+#print axioms SerrePositivity.KST.SConstruction.map_isIso_of_trivialKanFibration
+
+#check @SerrePositivity.KST.SConstruction.trivialKanFibration_toUnit_of_contractible
+#print axioms SerrePositivity.KST.SConstruction.trivialKanFibration_toUnit_of_contractible
+
+#check @SerrePositivity.KST.SConstruction.cofiberQuotient_image_isIso_of_contractible
+#print axioms SerrePositivity.KST.SConstruction.cofiberQuotient_image_isIso_of_contractible
+
+#check @SerrePositivity.KST.SConstruction.diagonalReductionQuotient_image_isIso
+#print axioms SerrePositivity.KST.SConstruction.diagonalReductionQuotient_image_isIso
+
+#check @SerrePositivity.KST.SConstruction.kanPiIsomorphism_of_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.kanPiIsomorphism_of_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.pointedKanReplacement_map_piIsomorphism_of_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.pointedKanReplacement_map_piIsomorphism_of_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.multiDiagonalDiagramFunctor
+#print axioms SerrePositivity.KST.SConstruction.multiDiagonalDiagramFunctor
+
+#check @SerrePositivity.KST.SConstruction.multiDiagonalDiagram_zero_isContractibleKan
+#print axioms SerrePositivity.KST.SConstruction.multiDiagonalDiagram_zero_isContractibleKan
+
+#check @SerrePositivity.KST.SConstruction.reducedMultiRealizationFunctor
+#print axioms SerrePositivity.KST.SConstruction.reducedMultiRealizationFunctor
+
+#check @SerrePositivity.KST.SConstruction.multiRealizationReductionNat
+#print axioms SerrePositivity.KST.SConstruction.multiRealizationReductionNat
+
+#check @SerrePositivity.KST.SConstruction.multiRealizationReduction_image_isIso
+#print axioms SerrePositivity.KST.SConstruction.multiRealizationReduction_image_isIso
+
+#check @SerrePositivity.KST.SConstruction.reducedMultiKanRealizationFunctor
+#print axioms SerrePositivity.KST.SConstruction.reducedMultiKanRealizationFunctor
+
+#check @SerrePositivity.KST.SConstruction.reducedMultiKanRealization_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.reducedMultiKanRealization_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.reducedKSpaceFunctor
+#print axioms SerrePositivity.KST.SConstruction.reducedKSpaceFunctor
+
+#check @SerrePositivity.KST.SConstruction.reducedKSpaceFunctor_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.reducedKSpaceFunctor_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.diagonalReductionPointedMap
+#print axioms SerrePositivity.KST.SConstruction.diagonalReductionPointedMap
+
+#check @SerrePositivity.KST.SConstruction.diagonalReductionPointedMap_kan_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.diagonalReductionPointedMap_kan_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.diagonalReductionLoopMap
+#print axioms SerrePositivity.KST.SConstruction.diagonalReductionLoopMap
+
+#check @SerrePositivity.KST.SConstruction.diagonalReductionLoopMap_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.diagonalReductionLoopMap_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.multiDiagonalDiagramFunctor_one_obj
+#print axioms SerrePositivity.KST.SConstruction.multiDiagonalDiagramFunctor_one_obj
+
+#check @SerrePositivity.KST.SConstruction.reducedSRealizationComparison
+#print axioms SerrePositivity.KST.SConstruction.reducedSRealizationComparison
+
+#check @SerrePositivity.KST.SConstruction.reducedSRealizationComparison_kan_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.reducedSRealizationComparison_kan_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.kSpaceReductionComparison
+#print axioms SerrePositivity.KST.SConstruction.kSpaceReductionComparison
+
+#check @SerrePositivity.KST.SConstruction.kSpaceReductionComparison_piIsomorphism
+#print axioms SerrePositivity.KST.SConstruction.kSpaceReductionComparison_piIsomorphism
+
+#check @SerrePositivity.KST.SConstruction.reducedSRealizationComparison_naturality
+#print axioms SerrePositivity.KST.SConstruction.reducedSRealizationComparison_naturality
+
+#check @SerrePositivity.KST.SConstruction.kSpaceReductionComparison_naturality
+#print axioms SerrePositivity.KST.SConstruction.kSpaceReductionComparison_naturality

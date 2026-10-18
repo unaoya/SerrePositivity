@@ -44,4 +44,6 @@ public import SerrePositivity.KST.SConstruction.StructureMapCofibers
 
 public import SerrePositivity.KST.SConstruction.MultiRealization
 
+public import SerrePositivity.KST.SConstruction.ReducedKComparison
+
 /-! # ∞-S• 構成と連結 K 理論 -/

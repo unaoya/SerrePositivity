@@ -96,7 +96,7 @@ Kₙ の境界・比較同型は自然性と対象類の式を含む。宇宙は
 
 ## 6. 現在地・主要宣言
 
-**L1a・L1b 完了。L1c 進行中（空間模型・零対象比較・後合成・有限反復対象と零方向の可縮性、関手圏・S_n・有限反復の安定性、全多単体構造・入力についての自然性と対角実現の関手性まで実装済み）。L1d–f 未完了、L1g は別途指示待ち。**
+**L1a・L1b 完了。L1c 進行中（空間模型・零対象比較・後合成・有限反復対象と零方向の可縮性、関手圏・S_n・有限反復の安定性、全多単体構造・入力についての自然性と対角実現の関手性、自然な基点を持つ K 空間の関手と旧模型との全基点 π_* 比較まで実装済み）。L1d–f 未完了、L1g は別途指示待ち。**
 L1b は元の全 gapped 図式の制限写像そのものについて、全次数・全境界の RLP を証明した。
 追加の存在仮定や出力の gapped 性の仮定は残っていない。
 
@@ -1796,3 +1796,180 @@ StableModel の公開フィールドは `carrier : SSet.{u}`、`[quasicategory :
 L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（2296 jobs）、公理監査成功（698 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+## 6.15 同時零段の自然な collapse と旧 K 空間との π_* 比較
+
+任意の単体的単体集合 X について零段 X_0 から対角への包含が単射で自然であることを証明し、
+その零段全体を一点へ潰す通常の cofiber を点つき関手として構成した。零頂点の選択を含まない。
+可縮 Kan な零段の collapse の可逆性は、同じ単射を持つ pushout cube の既存の HA 定理から導いた。
+さらにホーン分解・局所化の Kan fibration 検出・L9 の π_* 定理により、Kan 置換後の全基点・全自然数次数の π_* 同型へ接続した。
+値域モデル構造や HT-KQ・追加の検出公理は仮定していない。
+正の反復 S の同時零段は既存の零方向の可縮性から可縮。これに collapse と点つき Kan 置換を適用し、
+入力について関手的な点つき反復実現と reducedKSpaceFunctor を構成した。
+一重の模型は従来の単体的 core と厳密に一致し、旧 kSpace から新模型への実際の写像が全基点 π_* 同型であることを証明。
+旧 API の chosen zero 保存を仮定する写像に対して比較の自然性も証明。新しい関手自身には chosen zero 保存を要求しない。
+Core/・Stable/・HA/・Spectra/ の公開定義は変更していない。
+
+**DiagonalReduction.lean**
+
+```text
+def simplicialDiagonalFunctor : (SimplexCategoryᵒᵖ ⥤ SSet.{u}) ⥤ SSet.{u}
+
+instance diagonalZeroColumn_mono (X : SimplexCategoryᵒᵖ ⥤ SSet.{u}) :
+    Mono (diagonalZeroColumn X)
+
+def diagonalZeroColumnNat :
+    (evaluation SimplexCategoryᵒᵖ SSet.{u}).obj (Opposite.op ⦋0⦌) ⟶ simplicialDiagonalFunctor
+
+def reducedDiagonal (X : SimplexCategoryᵒᵖ ⥤ SSet.{u}) : PointedSimplicialSet.{u}
+
+def diagonalReductionQuotient (X : SimplexCategoryᵒᵖ ⥤ SSet.{u}) :
+    simplicialDiagonalFunctor.obj X ⟶ (reducedDiagonal X).right
+
+def reducedDiagonalMap {X Y : SimplexCategoryᵒᵖ ⥤ SSet.{u}} (f : X ⟶ Y) :
+    reducedDiagonal X ⟶ reducedDiagonal Y
+
+lemma reducedDiagonalMap_quotient {X Y : SimplexCategoryᵒᵖ ⥤ SSet.{u}} (f : X ⟶ Y) :
+    diagonalReductionQuotient X ≫ (reducedDiagonalMap f).right =
+      simplicialDiagonalFunctor.map f ≫ diagonalReductionQuotient Y
+
+def reducedDiagonalFunctor : (SimplexCategoryᵒᵖ ⥤ SSet.{u}) ⥤ PointedSimplicialSet.{u}
+
+def diagonalReductionNat : simplicialDiagonalFunctor ⟶
+    reducedDiagonalFunctor ⋙ PointedSimplicialSet.forget
+
+```
+
+**LocalizedTrivialFibrations.lean**
+
+```text
+lemma map_isIso_of_trivialKanFibration {D : Type v} [Category.{w} D]
+    (L : SSet.{u} ⥤ D) (hL : anodyneExtensions.IsInvertedBy L)
+    {E B : SSet.{u}} (p : E ⟶ B) [TrivialKanFibration p] : IsIso (L.map p)
+
+```
+
+**ReductionEquivalence.lean**
+
+```text
+lemma trivialKanFibration_toUnit_of_contractible {A : SSet.{u}} (hA : IsContractibleKan A) :
+    TrivialKanFibration (toUnit A)
+
+lemma cofiberQuotient_image_isIso_of_contractible {D : Type v} [Category.{w} D]
+    (L : SSet.{u} ⥤ D) (hL : anodyneExtensions.IsInvertedBy L)
+    {A B : SSet.{u}} (i : A ⟶ B) [Mono i] (hA : IsContractibleKan A) :
+    IsIso (L.map (PointedObject.cofiberQuotient i))
+
+lemma diagonalReductionQuotient_image_isIso {D : Type v} [Category.{w} D]
+    (L : SSet.{u} ⥤ D) (hL : anodyneExtensions.IsInvertedBy L)
+    (X : SimplexCategoryᵒᵖ ⥤ SSet.{u}) (hX : IsContractibleKan (X.obj (Opposite.op ⦋0⦌))) :
+    IsIso (L.map (diagonalReductionQuotient X))
+
+```
+
+**LocalizedPiComparison.lean**
+
+```text
+lemma kanPiIsomorphism_of_localized_isIso {A B : SSet.{u}} [KanComplex A] [KanComplex B]
+    (f : A ⟶ B) (hf : IsIso (AnodyneHomotopy.anodyneQ.map f)) : Spectra.KanPiIsomorphism f
+
+lemma pointedKanReplacement_map_piIsomorphism_of_localized_isIso
+    {A B : PointedSimplicialSet.{u}} (f : A ⟶ B)
+    (hf : IsIso (AnodyneHomotopy.anodyneQ.map f.right)) :
+    Spectra.KanPiIsomorphism (Spectra.PointedKanReplacement.map f).right
+
+```
+
+**ReducedMultiRealization.lean**
+
+```text
+def multiDiagonalDiagramFunctor (r : ℕ) : StableModel.{u} ⥤ (SimplexCategoryᵒᵖ ⥤ SSet.{u})
+
+lemma multiDiagonalDiagram_zero_isContractibleKan (r : ℕ) (X : StableModel.{u}) :
+    IsContractibleKan (((multiDiagonalDiagramFunctor (r + 1)).obj X).obj (Opposite.op ⦋0⦌))
+
+def reducedMultiRealizationFunctor (r : ℕ) : StableModel.{u} ⥤ PointedSimplicialSet.{u}
+
+def multiRealizationReductionNat (r : ℕ) : multiRealizationFunctor (r + 1) ⟶
+    reducedMultiRealizationFunctor r ⋙ PointedSimplicialSet.forget
+
+lemma multiRealizationReduction_image_isIso {D : Type v} [Category.{w} D]
+    (L : SSet.{u} ⥤ D) (hL : anodyneExtensions.IsInvertedBy L) (r : ℕ) (X : StableModel.{u}) :
+    IsIso (L.map ((multiRealizationReductionNat r).app X))
+
+def reducedMultiKanRealizationFunctor (r : ℕ) : StableModel.{u} ⥤ PointedSimplicialSet.{u}
+
+instance reducedMultiKanRealization_kanComplex (r : ℕ) (X : StableModel.{u}) :
+    KanComplex (((reducedMultiKanRealizationFunctor r).obj X).right)
+
+def reducedKSpaceFunctor : StableModel.{u} ⥤ PointedSimplicialSet.{u}
+
+instance reducedKSpaceFunctor_kanComplex (X : StableModel.{u}) :
+    KanComplex ((reducedKSpaceFunctor.obj X).right)
+
+```
+
+**ReductionPointedComparison.lean**
+
+```text
+def diagonalReductionPointedMap (X : SimplexCategoryᵒᵖ ⥤ SSet.{u})
+    (z : (X.obj (Opposite.op ⦋0⦌)) _⦋0⦌) :
+    PointedSimplicialSet.ofVertex (simplicialDiagonalFunctor.obj X)
+      ((diagonalZeroColumn X).app (Opposite.op ⦋0⦌) z) ⟶ reducedDiagonal X
+
+lemma diagonalReductionPointedMap_kan_piIsomorphism (X : SimplexCategoryᵒᵖ ⥤ SSet.{u})
+    (hX : IsContractibleKan (X.obj (Opposite.op ⦋0⦌)))
+    (z : (X.obj (Opposite.op ⦋0⦌)) _⦋0⦌) :
+    Spectra.KanPiIsomorphism (Spectra.PointedKanReplacement.map (diagonalReductionPointedMap X z)).right
+
+def diagonalReductionLoopMap (X : SimplexCategoryᵒᵖ ⥤ SSet.{u})
+    (z : (X.obj (Opposite.op ⦋0⦌)) _⦋0⦌) :
+    Spectra.loopSpace (Spectra.PointedKanReplacement.obj
+      (PointedSimplicialSet.ofVertex (simplicialDiagonalFunctor.obj X)
+        ((diagonalZeroColumn X).app (Opposite.op ⦋0⦌) z))) ⟶
+      Spectra.loopSpace (Spectra.PointedKanReplacement.obj (reducedDiagonal X))
+
+lemma diagonalReductionLoopMap_piIsomorphism (X : SimplexCategoryᵒᵖ ⥤ SSet.{u})
+    (hX : IsContractibleKan (X.obj (Opposite.op ⦋0⦌)))
+    (z : (X.obj (Opposite.op ⦋0⦌)) _⦋0⦌) :
+    Spectra.KanPiIsomorphism (diagonalReductionLoopMap X z).right
+
+```
+
+**ReducedKComparison.lean**
+
+```text
+lemma multiDiagonalDiagramFunctor_one_obj (X : StableModel.{u}) :
+    (multiDiagonalDiagramFunctor 1).obj X = simplicialCoreSConstruction X.carrier
+
+def reducedSRealizationComparison (X : StableModel.{u}) :
+    pointedSRealization X.carrier ⟶ (reducedMultiRealizationFunctor 0).obj X
+
+lemma reducedSRealizationComparison_kan_piIsomorphism (X : StableModel.{u}) :
+    Spectra.KanPiIsomorphism (Spectra.PointedKanReplacement.map (reducedSRealizationComparison X)).right
+
+def kSpaceReductionComparison (X : StableModel.{u}) :
+    kSpace X.carrier ⟶ reducedKSpaceFunctor.obj X
+
+lemma kSpaceReductionComparison_piIsomorphism (X : StableModel.{u}) :
+    Spectra.KanPiIsomorphism (kSpaceReductionComparison X).right
+
+lemma reducedSRealizationComparison_naturality {X Y : StableModel.{u}}
+    (f : X.carrier ⟶ Y.carrier) (hf : PreservesSConstructionData f) (hz : PreservesChosenZero f) :
+    pointedSPostcomp f hf hz ≫ reducedSRealizationComparison Y =
+      reducedSRealizationComparison X ≫ (reducedMultiRealizationFunctor 0).map
+        (⟨f, PreservesSConstructionData.toCofiberData hf⟩ : X ⟶ Y)
+
+lemma kSpaceReductionComparison_naturality {X Y : StableModel.{u}}
+    (f : X.carrier ⟶ Y.carrier) (hf : PreservesSConstructionData f) (hz : PreservesChosenZero f) :
+    kSpacePostcomp f hf hz ≫ kSpaceReductionComparison Y =
+      kSpaceReductionComparison X ≫ reducedKSpaceFunctor.map
+        (⟨f, PreservesSConstructionData.toCofiberData hf⟩ : X ⟶ Y)
+
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。反復の同時零段を潰した自然な基点・Kan 置換・Ω の関手性と旧 K 空間との全基点 π_* 比較は証明済み。
+今回潰したのは全 S 方向が同時に零次数となる段だけ。個々の零方向の境界の合併（fat wedge）の coherent な collapse、反復間の構造写像、delooping・Ω 条件・BF 連結スペクトルは未完了。
+任意の押し出し保存と cofiber 保存条件との同値は未証明。L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（2348 jobs）、公理監査成功（733 宣言、標準三公理のみ）。追加公理・sorry なし。
