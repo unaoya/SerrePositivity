@@ -106,3 +106,7 @@ public import SerrePositivity.InfinityCategories.F1B.FunctorDiagramPathUniquenes
 public import SerrePositivity.InfinityCategories.F1B.SquareBoundary
 public import SerrePositivity.InfinityCategories.F1B.SquareTransportComparison
 public import SerrePositivity.InfinityCategories.F1B.UnitCommaReconstructionComparison
+public import SerrePositivity.InfinityCategories.F1B.SquareHomotopyTranspose
+public import SerrePositivity.InfinityCategories.F1B.UnitCommaSquareParameters
+public import SerrePositivity.InfinityCategories.F1B.UnitCommaSquareCoherenceReplacement
+public import SerrePositivity.InfinityCategories.F1B.UnitCommaSquareHomotopyLift

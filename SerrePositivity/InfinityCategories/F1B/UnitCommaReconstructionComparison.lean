@@ -3,6 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1B.UnitCommaSquareComparisonPath
 public import SerrePositivity.InfinityCategories.F1B.UnitCommaSquareRecovery
 public import SerrePositivity.InfinityCategories.F1B.SquareTransportComparison
+public import SerrePositivity.InfinityCategories.F1B.UnitCommaSquareHomotopyLift
 
 /-!
 概要：comma 正方形から取り出した経路による復元を、元の正方形と全境界固定で比較する。
@@ -61,5 +62,38 @@ lemma unitCommaSquare_reconstruction_homotopy {A X Y : SSet.{u}}
       h₁ := D.h₁.trans hr.symm
       rel := D.rel }
   exact ⟨D', hD⟩
+
+/-- 概要：元の comma 正方形の族と、同じパラメータ上で復元した族はホモトピック。
+方針：全境界固定の正方形の比較を時間付き正方形へ転置し、写像空間の族へ戻す。
+規約：普遍族から前合成した復元との同一視はまだ含めない。
+使われ方：順方向から戻る合成のホモトピーの同じパラメータでの比較。 -/
+lemma unitCommaSquare_reconstruction_family_homotopy {A X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X}
+    (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌)
+    (w : (unitCommaFiber G x) _⦋0⦌)
+    (s : UnitCommaFiberSquare G x (unitCommaSectionVertex η x) w A) :
+    Nonempty (SSet.Homotopy s.family
+      (unitCommaMappingFamilyOfComparisonHomotopy η x w (unitCommaSquareTargetFamily η x w s)
+        (unitCommaSquareComparisonHomotopy η x w s))) := by
+  obtain ⟨H, hH⟩ := unitCommaSquare_reconstruction_homotopy η x w s
+  let t := unitCommaSquareOfComparisonHomotopy η x w (unitCommaSquareTargetFamily η x w s)
+    (unitCommaSquareComparisonHomotopy η x w s)
+  have ht : s.target = t.target := (unitCommaSquareTargetFamily_uncurry η x w s).symm
+  exact ⟨(unitCommaSquareHomotopyLift s t H hH).familyHomotopy ht⟩
+
+/-- 概要：comma の区間写像空間の族は、その正方形から同じパラメータ上で復元した族にホモトピック。
+方針：正方形の族の復元比較と、族・正方形の厳密な全単射を使う。
+規約：導来 fiber の普遍族で選んだ復元の前合成との比較は別途必要。
+使われ方：B1 の戻る合成のホモトピーへの接続。 -/
+lemma unitCommaMappingFamily_reconstruction_homotopy {A X Y : SSet.{u}}
+    [Quasicategory X] [Quasicategory Y] {F : X ⟶ Y} {G : Y ⟶ X}
+    (η : FunctorHom (𝟙 X) (F ≫ G)) (x : X _⦋0⦌)
+    (w : (unitCommaFiber G x) _⦋0⦌)
+    (f : A ⟶ intervalMappingSpace (unitCommaSectionVertex η x) w) :
+    Nonempty (SSet.Homotopy f (unitCommaMappingFamilyOfComparisonHomotopy η x w
+      (unitCommaSquareTargetFamily η x w (unitCommaFiberMappingSquare f))
+      (unitCommaSquareComparisonHomotopy η x w (unitCommaFiberMappingSquare f)))) := by
+  simpa only [unitCommaFiberMappingSquare_family] using
+    unitCommaSquare_reconstruction_family_homotopy η x w (unitCommaFiberMappingSquare f)
 
 end SerrePositivity.InfinityCategories

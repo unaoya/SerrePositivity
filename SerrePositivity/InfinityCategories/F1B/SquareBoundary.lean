@@ -43,4 +43,47 @@ lemma squareBoundary_restriction_eq {Z : SSet.{u}}
   · exact ConcreteCategory.congr_hom (NatTrans.congr_app h₃ n) ⟨q, hq⟩
   · exact ConcreteCategory.congr_hom (NatTrans.congr_app hr n) e
 
+/-- 概要：全境界で一致する図式は、その中の任意の射でも一致する。
+方針：部分単体集合への持ち上げで前合成する。
+規約：射の像が全境界に含まれることを明示する。
+使われ方：全境界固定の条件から各辺の固定を取り出す。 -/
+lemma squareBoundary_restriction_edge {K Z : SSet.{u}}
+    {f g : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ Z}
+    (h : squareBoundary.ι ≫ f = squareBoundary.ι ≫ g)
+    (e : K ⟶ (Δ[1] : SSet.{u}) ⊗ Δ[1]) (he : Subcomplex.range e ≤ squareBoundary) :
+    e ≫ f = e ≫ g := by
+  have hh := congrArg (fun k ↦ Subcomplex.lift e he ≫ k) h
+  simpa only [← Category.assoc, Subcomplex.lift_ι] using hh
+
+/-- 概要：下辺の像は全境界に含まれる。
+方針：三回の和への包含を合成する。
+規約：像の包含として述べる。
+使われ方：転置した正方形の下辺の固定。 -/
+lemma squareBoundary_range_bottom_le :
+    Subcomplex.range (SSet.ι₀ : (Δ[1] : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1]) ≤ squareBoundary :=
+  le_trans (le_trans le_sup_left le_sup_left) le_sup_left
+
+/-- 概要：左辺の像は全境界に含まれる。
+方針：三回の和への包含を合成する。
+規約：像の包含として述べる。
+使われ方：転置した正方形の左辺の固定。 -/
+lemma squareBoundary_range_left_le :
+    Subcomplex.range (prismEndpoint 0 (Δ[1] : SSet.{u})) ≤ squareBoundary :=
+  le_trans (le_trans le_sup_right le_sup_left) le_sup_left
+
+/-- 概要：上辺の像は全境界に含まれる。
+方針：二回の和への包含を合成する。
+規約：像の包含として述べる。
+使われ方：転置した正方形の上辺の固定。 -/
+lemma squareBoundary_range_top_le :
+    Subcomplex.range (SSet.ι₁ : (Δ[1] : SSet.{u}) ⟶ Δ[1] ⊗ Δ[1]) ≤ squareBoundary :=
+  le_trans le_sup_right le_sup_left
+
+/-- 概要：右辺の像は全境界に含まれる。
+方針：全境界を定義する和の右側の包含を使う。
+規約：像の包含として述べる。
+使われ方：転置した正方形の右辺の固定。 -/
+lemma squareBoundary_range_right_le :
+    Subcomplex.range (prismEndpoint 1 (Δ[1] : SSet.{u})) ≤ squareBoundary := le_sup_right
+
 end SerrePositivity.InfinityCategories

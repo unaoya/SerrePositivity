@@ -642,3 +642,22 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.squareBoundary_restriction_eq
 #check @SerrePositivity.InfinityCategories.ThreeEdgeSquareComparison.exists_homotopy_to_triangleTransport
 #check @SerrePositivity.InfinityCategories.unitCommaSquare_reconstruction_homotopy
+
+#check @SerrePositivity.InfinityCategories.diagramHomotopyTranspose
+#check @SerrePositivity.InfinityCategories.diagramHomotopyTranspose_restriction
+#check @SerrePositivity.InfinityCategories.diagramHomotopyTranspose_zero
+#check @SerrePositivity.InfinityCategories.diagramHomotopyTranspose_one
+#check @SerrePositivity.InfinityCategories.UnitCommaFiberSquare.family
+#check @SerrePositivity.InfinityCategories.UnitCommaFiberSquare.precomp
+#check @SerrePositivity.InfinityCategories.UnitCommaFiberSquare.precomp_family
+#check @SerrePositivity.InfinityCategories.UnitCommaFiberSquare.precomp_functorSquare
+#check @SerrePositivity.InfinityCategories.UnitCommaFiberSquare.ext_functorSquare
+#check @SerrePositivity.InfinityCategories.UnitCommaFiberSquare.withFunctorSquare
+#check @SerrePositivity.InfinityCategories.UnitCommaFiberSquare.withFunctorSquare_functorSquare
+#check @SerrePositivity.InfinityCategories.UnitCommaSquareHomotopyLift
+#check @SerrePositivity.InfinityCategories.unitCommaSquareHomotopyLift
+#check @SerrePositivity.InfinityCategories.UnitCommaSquareHomotopyLift.zero
+#check @SerrePositivity.InfinityCategories.UnitCommaSquareHomotopyLift.one
+#check @SerrePositivity.InfinityCategories.UnitCommaSquareHomotopyLift.familyHomotopy
+#check @SerrePositivity.InfinityCategories.unitCommaSquare_reconstruction_family_homotopy
+#check @SerrePositivity.InfinityCategories.unitCommaMappingFamily_reconstruction_homotopy

@@ -274,8 +274,15 @@ h Fun の等式から任意の path を取り直す操作とは区別する。
 正方形へ移し、同じ始点・全境界 path を照合して、全境界固定の終点ホモトピーを返す。
 `unitCommaSquare_reconstruction_homotopy` は元の comma 正方形と、その標的・全体比較から
 取り出した経路で復元した正方形を、この一意性により全境界固定で結ぶ。
-**同じパラメータ上での正方形の復元比較まで実装済み。比較射の合成のホモトピーは未証明。**
-次はこの比較を comma の区間写像空間の族のホモトピーへ戻し、導来 fiber の普遍族で選んだ
+`diagramHomotopyTranspose` は正方形のホモトピーを、時間をパラメータに加えた関手図式へ移し、
+固定した辺と時間の両端を厳密に回収する。`UnitCommaFiberSquare.precomp` とその標的・coherence・
+関手正方形の公式はパラメータ制限を表す。`withFunctorSquare` は標的と四辺を保って coherence を
+指定図式に置き換える。これらによる `unitCommaSquareHomotopyLift` は全境界固定の変形を時間付き
+comma 正方形にし、標的を共有するとき `familyHomotopy` で区間写像空間の族のホモトピーへ戻す。
+`unitCommaSquare_reconstruction_family_homotopy` と `unitCommaMappingFamily_reconstruction_homotopy`
+は元の族と、同じパラメータ上でその正方形から復元した族を実際に結ぶ。
+**同じパラメータ上での復元比較を写像空間の族のホモトピーへ移す接続は実装済み。
+普遍族から定義した比較射の合成のホモトピーは未証明。** 次は、導来 fiber の普遍族で選んだ
 復元を前合成した場合の同じ始点・境界 path を照合して、戻る合成のホモトピーと始対象性へ接続する。
 同じパラメータで選び直した輸送と、普遍族から前合成した輸送を定義的に同じとは扱わない。
 
@@ -286,8 +293,8 @@ comma の経路では、各点の比較の同値性から `UnitCommaInitialCondi
 射影の充填・輸送を使って自然な余単位と三角恒等式へ接続する必要がある。
 既存の全パラメータ版の経路も利用できるが、その十分条件で原典の各点の条件を置き換えて
 B1 完了とはしない。B2〜B5 も未完了。
-対象ビルド（2057 jobs）・公理監査（1153 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 389 モジュールに straightening 依存がないことも確認した。
+対象ビルド（2061 jobs）・公理監査（1221 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 393 モジュールに straightening 依存がないことも確認した。
 監査スクリプトも Lean 環境の実際の読み込みモジュールを検査し、straightening 系を拒否する。
 
 ## 4. 主要宣言
@@ -489,4 +496,9 @@ B1 完了とはしない。B2〜B5 も未完了。
 | `exists_functorDiagramPath_endpointHomotopy`・`FunctorDiagramPathExtension.exists_endpointHomotopy` | 同じ始点・制限 path の拡張の終点を指定部分図式固定で結ぶ | 実装済み（同じパラメータの正方形の復元比較にも接続済み） |
 | `squareBoundary`・`squareBoundary_restriction_eq` | 三辺の固定と右辺の path の一致を全境界の等式へまとめる | 実装済み |
 | `ThreeEdgeSquareComparison.exists_homotopy_to_triangleTransport` | 三角形の輸送の畳み込みと元の正方形を、始点・全境界 path の照合により境界固定で結ぶ | 実装済み |
-| `unitCommaSquare_reconstruction_homotopy` | 同じパラメータ上で元の comma 正方形とその標的・経路からの復元を全境界固定で比較 | 実装済み（写像空間の族への移送と普遍族の前合成の照合は未完了） |
+| `unitCommaSquare_reconstruction_homotopy` | 同じパラメータ上で元の comma 正方形とその標的・経路からの復元を全境界固定で比較 | 実装済み（写像空間の族への移送も実装済み、普遍族の前合成の照合は未完了） |
+| `diagramHomotopyTranspose` と固定部分図式・時間両端の公式 | 時間をパラメータへ移した関手図式と元の図式の厳密な回収 | 実装済み |
+| `UnitCommaFiberSquare.family/precomp` と標的・coherence・関手表示の公式、`ext_functorSquare` | 族の逆表示・パラメータ制限と外延性 | 実装済み |
+| `UnitCommaFiberSquare.compositionSquare/withFunctorSquare` と回収公式 | 標的・四辺を保った coherence の置き換え | 実装済み |
+| `UnitCommaSquareHomotopyLift`・`unitCommaSquareHomotopyLift` と `zero/one/familyHomotopy` | 全境界固定の図式の変形を時間付き comma 正方形・族のホモトピーに移す | 実装済み |
+| `unitCommaSquare_reconstruction_family_homotopy`・`unitCommaMappingFamily_reconstruction_homotopy` | 元の族と同じパラメータ上での復元を実際のホモトピーで結ぶ | 実装済み（普遍族で選んだ逆射の前合成との照合は未完了） |
