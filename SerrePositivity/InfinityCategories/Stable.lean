@@ -208,6 +208,17 @@ public import SerrePositivity.InfinityCategories.Stable.SymmetricSpanFold
 public import SerrePositivity.InfinityCategories.Stable.SymmetricCoconeFoldUnit
 public import SerrePositivity.InfinityCategories.Stable.SymmetricCoconeUnitZero
 
+public import SerrePositivity.InfinityCategories.Stable.InitialVertexHomEdge
+public import SerrePositivity.InfinityCategories.Stable.KernelPairFiberTransportHom
+public import SerrePositivity.InfinityCategories.Stable.KanKernelPairBasepoint
+public import SerrePositivity.InfinityCategories.Stable.KanKernelPairProductBasepoint
+public import SerrePositivity.InfinityCategories.Stable.SymmetricCoconeProductBasepoint
+public import SerrePositivity.InfinityCategories.Stable.SymmetricCoconeHomProduct
+public import SerrePositivity.InfinityCategories.Stable.SymmetricCoconeHomProductNaturality
+public import SerrePositivity.InfinityCategories.Stable.RepresentableAdditionCover
+public import SerrePositivity.InfinityCategories.Stable.SymmetricCoconeHomAddition
+public import SerrePositivity.InfinityCategories.Stable.SuspensionSwapSign
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。

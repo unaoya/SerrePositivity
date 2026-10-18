@@ -1371,7 +1371,17 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.CosliceDiagramChange,
     `SerrePositivity.InfinityCategories.Stable.SymmetricSpanFold,
     `SerrePositivity.InfinityCategories.Stable.SymmetricCoconeFoldUnit,
-    `SerrePositivity.InfinityCategories.Stable.SymmetricCoconeUnitZero]
+    `SerrePositivity.InfinityCategories.Stable.SymmetricCoconeUnitZero,
+    `SerrePositivity.InfinityCategories.Stable.InitialVertexHomEdge,
+    `SerrePositivity.InfinityCategories.Stable.KernelPairFiberTransportHom,
+    `SerrePositivity.InfinityCategories.Stable.KanKernelPairBasepoint,
+    `SerrePositivity.InfinityCategories.Stable.KanKernelPairProductBasepoint,
+    `SerrePositivity.InfinityCategories.Stable.SymmetricCoconeProductBasepoint,
+    `SerrePositivity.InfinityCategories.Stable.SymmetricCoconeHomProduct,
+    `SerrePositivity.InfinityCategories.Stable.SymmetricCoconeHomProductNaturality,
+    `SerrePositivity.InfinityCategories.Stable.RepresentableAdditionCover,
+    `SerrePositivity.InfinityCategories.Stable.SymmetricCoconeHomAddition,
+    `SerrePositivity.InfinityCategories.Stable.SuspensionSwapSign]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

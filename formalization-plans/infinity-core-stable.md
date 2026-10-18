@@ -482,7 +482,7 @@ suspension の二つの零枝の交換の幾何学と自然性を整備した。
 suspension 図式の任意の h の射に対して交換作用が可換となることを証明する
 （Quasicategory、安定性・加法性の追加仮定なし）。
 **交換の二乗が恒等であることを負の恒等射との一致とは数えない**。
-次に、構成済みの加法で `swapIso.hom + 𝟙 = 0`、従って `swapIso.hom = -𝟙` を証明する。
+構成済みの加法で `swapIso.hom = -𝟙` を証明する工程は、以下のループ表示と加法の照合により完成した。
 その証明のため、HA Lemma 1.1.2.10 の終点固定余錐空間 D(p) を構成した。
 原典の証明は D(σ) を、可縮な二因子 D(f) の D(A) 上の引き戻しとして扱い、
 ループ模型への比較で二枝交換をループ反転へ移す。
@@ -565,7 +565,7 @@ s、r の四角形表示を持つとき、既存の suspension 標準比較と c
 従来の chosenSuspensionSquare・suspensionFunctor の選択は変更しない。
 `SuspensionSquare.swapIso_comparison` は標準比較との可換性（Quasicategory のみ）、
 `swapIso_eq_neg_id_of_comparison` と `_of_chosenSymmetric` は一つの模型での負号を任意の同じ始点の
-suspension へ移す（Quasicategory、IsStable）。負号はこれらの転送定理の仮定であって未証明。
+suspension へ移す（Quasicategory、IsStable）。これらの条件付き転送定理の仮定となる負号そのものも下記で証明した。
 具体的な頂点の Hom では、既存の preadditive_ho を X.HomotopyCategory の型表示に局所的に与える。
 加法構造を新たに選んだり変更したりはしない。
 `fixedCosliceReindex p i hi` は i ≫ p = p を満たす形状の自己射の、同じ coslice 上の自己作用。
@@ -681,9 +681,31 @@ E が可縮な Kan・射が Kan fibration なら π₀ で全単射となる。
 `symmetricCoconeLoopUnit_hom_eq_zero` はループ単位が Hom 表示で零射となることを示す。
 仮定は X Quasicategory、h X の零射構造、枝の零終点、指定した全体の余極限余錐であり、安定性全体は不要。
 零対象を経由する因子分解には辺の終点余錐の始対象性を用いた。
-単位と零射の照合は完成したが、枝の基点の選択・変更からの積の独立性は未証明。
-従って、抽象補題の後合成自然性の仮定を、任意の基点で Hom に移した演算で満たす工程は未完了。
-**負号との一致は未証明**。構成済みの双積の加法への適用も残る。
+`leftFibrationInitialVertexHom_edge` と `_FiberPiZeroEquiv_edge` は、二つの fiber 頂点を結ぶ辺の像を
+Hom 表示の後合成として読む。`LeftFibrationFiberTransport.piZero_inclusion` は輸送前後の全空間での
+連結成分が同じになることを示す。`kernelPairFiberTransport_hom` は自己引き戻しの第二射影の輸送を
+第一射影へ送り、固定した始対象による Hom 表示が底の辺との後合成で変わることを示す。
+`kanKernelPairPiZeroLoopEquiv_basepoint` はこれと始対象変更を組み合わせ、
+異なる基点のループ表示を基点間の辺の底への像で結ぶ共役の可換式を証明する
+（Kan fibration、E 可縮な Kan、B Kan）。
+`kanKernelPairLoopProduct_basepoint` は共役が合成を保つことから積の基点独立性を証明し、
+`symmetricCoconeLoopProduct_basepoint` は全体の余錐空間への適用。
+`symmetricCoconeLoopProduct_transport_basepoints` により、両端の枝の基点を自由に選んでも積の輸送が可換になる。
+`symmetricCoconeHomProduct` は全体の余錐の Hom 表示へループ積を移した演算。
+基点独立性、零射の左右単位、二枝交換の頂点自己同型による前合成が右逆元になる式を証明した。
+`symmetricCoconeHomProduct_naturality` は任意の頂点間の h X の射による後合成への自然性を、
+辺の代表元と整合する三つの輸送から証明する（Quasicategory、枝の零終点、全体の余極限余錐）。
+`representableOperation_eq_add_of_surjective_objects` は全射的な対象表示の上の自然な零単位演算が
+既存の前加法圏の加法と一致する一般補題。双積の対象の表示を一つ選び、二射影と余対角で計算する。
+対象の表示を大域的に選んで新しい圏を作り直すことはしない。
+`symmetricCoconeHomProduct_eq_add` は安定な X の全対象の頂点表示、二項双積、
+既存の preadditive_ho を用い、Hom に移したループ演算と構成済みの加法の一致を証明する。
+`fixedCoconeSwap_eq_neg_id` は恒等射の右逆元の式にこれを適用し、対称 span の交換を負の恒等射に同定する。
+`fixedCoconeSwap_eq_neg_id_of_diagram_eq` は等しい図式の表示へ適用し、
+`chosenSymmetricSuspensionSquare_swapIso_eq_neg_id` で対称な懸垂模型の swapIso に照合する。
+`SuspensionSquare.swapIso_eq_neg_id` は既存の選択変更の可換性により任意の懸垂四角形へ移す。
+**懸垂の二枝交換と負の恒等射の一致は完成**（Quasicategory、IsStable、追加の対称性の仮定なし）。
+回転した cofiber 列の第三接続射と -Σf との一致、Triangle の回転所属・逆方向、TR2 全体は未証明。
 表現可能な比較の完成を符号・TR2 全体の完成とは数えない。
 八面体、Pretriangulated instance も未完了。
 安定性から全有限極限・余極限を導く逆向き、S5〜S7 の長完全列・完全関手・D7 は未完了。
@@ -835,18 +857,19 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | h C の前加法構造 | `stableHomAddCommMonoid`、`exists_additiveInverse_of_zeroSourcePushout`、`exists_stableHom_additiveInverse`、`stableHomAddCommGroup`、`preadditive_ho`（Quasicategory、IsStable） | Hom の可換群・合成の双加法性・Preadditive instance まで完成 |
 | h C の有限双積とシフトの加法性 | `hasFiniteProducts_ho`、`hasFiniteBiproducts_ho`、`suspensionFunctor_additive`、`loopFunctor_additive`、`shiftFunctor_additive_ho`（Quasicategory、IsStable） | 全有限双積・Σ・Ω・全整数シフトの加法性まで完成。∞ 圏自体の全有限極限・余極限の存在は未証明 |
 | cofiber 列の回転の幾何学的構成と二射列 | `pastingLeftToOuterHomotopy`（値域の仮定なし）、`CofiberRotationRectangle` とその存在・選択（Quasicategory、IsStable）、`rotated_isCofiber`（データを入力すれば仮定なし）、`rotated_f_arrow`・`rotated_g_arrow_connecting`（Quasicategory、零射、後者は元の cofiber 性）、`tailShortComplexIso`・`exists_cofiberTailShortComplex`（Quasicategory、IsStable） | B → C → ΣA の cofiber 短複体表示まで完成。第三の接続射の負号・Triangle の回転所属・逆方向は未証明。TR2 全体は未完了 |
-| suspension の二枝交換 | `SuspensionSquare.transpose`・`transpose_transpose`・`transpose_vertex`（値域に仮定なし）、`swapIso`、`comparisonIso_hom_transpose`、`swapIso_hom_comp_self`、`diagramComparisonIso_transpose_naturality`・`swapIso_naturality`（Quasicategory） | 標準比較との両立・自然性・二乗が恒等まで完成。加法の負号との一致は未証明。TR2 は未完了 |
-| 終点固定余錐空間と二枝の引き戻し | `coconeMappingSpace`、`coconeMappingSpace_kanComplex`（Quasicategory）、`coconeMappingSpace_restrict_fibration`（Quasicategory、Mono）、`coconeMappingSpace_edge_isContractibleKan`（Quasicategory、枝の終点の始対象性）、`exists_coconeMappingSpace_glue`・`coconeMappingSpace_hom_ext_of_pushout`・`spanCoconeMapping_isPullback`・`coconeMappingSpace_spanSwap_left`・`right`（値域の仮定なし） | 空間・充填性・可縮な枝・引き戻し・交換の二成分まで完成。π₀ と Hom の比較は下記で完成。ループ模型、群構造と加法の一致は未証明 |
-| 余錐空間と余極限頂点の Hom | `leftFibrationInitialFiberPiZeroEquiv`（底 Quasicategory、LeftFibration、始点の始対象性）、`coconeMappingSpacePiZeroEquiv`・`pushoutCoconeMappingSpacePiZeroEquiv`、`coconeMappingSpaceHomComparison_homotopyEquivalence`・`coconeMappingSpacePiZeroEquiv_eq_comparison`（Quasicategory、余極限性または押し出し性） | π₀ と Hom の同値・実際の比較射のホモトピー同値・二つの比較の一致まで完成。形状制限・再添字付け・二枝交換による制限余錐での Hom 表示との両立まで完成。同じ図式の余錐の変更に対する colimitVertexIso との両立も完成。選択済みの swapIso への接続とループ模型・加法との照合は未証明 |
-| coslice の余錐比較と suspension 標準比較 | `cosliceSquareDiagramMap` と制限・評価の計算（値域の仮定なし）、`colimitSquareComparisonIso_target_arrow`、`SuspensionSquare.comparisonIso_eq_colimitVertexIso_arrow`（Quasicategory、同じ span の余極限余錐での表示）、`swapIso_eq_colimitVertexIso_arrow_of_sameSpan`（さらに転置前後の span の等号） | 同じ span の表示の下で標準比較の一致まで完成。対称な模型と転置前後の span の等号を構成済み。負号の主張を任意の選択へ転送する補題も完成。対称模型での負号そのものは未証明 |
-| 対称 span の余錐空間の自己作用 | `fixedCosliceReindex`・`fixedCoconeMappingReindex`・`symmetricCoconeSwap` と対合・枝の交換（値域の仮定なし）、`coconeMappingSpacePiZeroEquiv_reindexFixed`・`symmetricCoconeSwap_piZero`（Quasicategory、余極限余錐）、`chosenSymmetricSuspensionSquare_reindex_swap_arrow`（Quasicategory、IsStable） | 実際の交換自己同型、二枝への作用、Hom 表示での前合成、対称模型の swapIso との同定まで完成。ループ模型と加法の負号との一致は未証明 |
-| 可縮な枝の自己引き戻しとループ模型 | `vertexFiberι_homotopyEquivalence_of_contractible_base`（Kan fibration、Kan な全空間・可縮な底）、`kanKernelPairLoopComparison_homotopyEquivalence`（Kan fibration、E・B Kan、E 可縮、基点 e）、`kanKernelPairPiZeroLoopEquiv_fiber`、`coconeBranchKernelPairLoopComparison_homotopyEquivalence`（Quasicategory、枝の終点の始対象性、枝の余錐の基点） | 実際のホモトピー同値・π₀ の Hom 同値と固定 fiber 上の計算まで完成。交換と逆射の両立も下記で完成。群構造と加法との一致は未証明 |
-| 対称 span 全体からのループ比較 | `symmetricCoconeBranches_isPullback`・`symmetricCoconeKernelPairIso`・`symmetricCoconeKernelPairIso_swap`（値域の仮定なし）、`symmetricCoconeLoopComparison_homotopyEquivalence`・`symmetricCoconePiZeroLoopEquiv_eq_comparison`（Quasicategory、辺の終点の始対象性、枝の余錐の基点） | 全体の余錐空間のループ模型への実際のホモトピー同値と、自己引き戻しへの交換作用の転送まで完成。ループの逆射との一致も下記で完成。加法の負号との一致は未証明 |
-| 二成分・二枝交換とループの逆射 | `kanKernelPairFiberInclusion_piZero_bijective`（Kan fibration、E Kan・可縮）、`exists_kanKernelPairSwap_fiber_path`（同前）、`kanKernelPairPiZeroLoopEquiv_comp_swap`・`kanKernelPairPiZeroLoopEquiv_swap`（さらに B Kan）、`symmetricCoconePiZeroLoopEquiv_comp_swap`・`symmetricCoconePiZeroLoopEquiv_swap`（Quasicategory、枝の終点の始対象性、枝の余錐の基点） | 成分交換と二枝交換がループの逆射となることまで完成。ループの群構造と双積の加法との一致、負号、TR2 は未証明 |
-| ループ積の自然性と加法の一般判定 | `kanKernelPairPiZeroLoopEquiv_naturality`（両射 Kan fibration、両全空間 Kan・可縮、両底 Kan、可換正方形）、`kanKernelPairPiZeroLoopEquiv_diagonal`・`kanKernelPairLoopProduct` と結合則・左右単位・交換右逆元・自然性（同前）、`representableOperation_eq_add`・`representableRightInverse_eq_neg`（一般の前加法圏、二項双積、演算の零単位・後合成自然性） | 自己引き戻しの π₀ 上の自然なループ積と、加法へ照合する一般補題が完成。余錐の Hom 表示に移した演算の後合成自然性・零単位の照合と適用は未完了 |
-| 余錐空間の終点輸送と貼り合わせ | `nonempty_leftFibrationFiberTransport`（left fibration のみ）、`exists_leftFibrationFiberTransport_lift`（中間の輸送、制限射が left fibration）、`leftFibrationInitialFiberPiZeroEquiv_transport`（全空間・底 Quasicategory、left fibration、始対象）、`coconeMappingSpacePiZeroEquiv_transport`（Quasicategory、余極限余錐）、`exists_coconeEndpointTransport_restrict`（Quasicategory、Mono）、`exists_coconeEndpointTransport_glue`（二枝の区間族の整合を入力、充填性・余極限性不要） | 終点輸送の存在、単射の制限との同時可換性、Hom の後合成への対応、整合条件付きの全図式の輸送の貼り合わせまで完成。対称 span での整合条件の検証も下記で完成。基点の整合・零射の照合と加法への適用は未完了 |
-| 対称 span 全体の輸送とループ積 | `exists_symmetricCoconeEndpointTransport`（Quasicategory、選んだ共通始点の輸送）、`symmetricCoconeTransport_kernelPair`・`_piZero`（三つの輸送と可換性、充填性不要）、`symmetricCoconeLoopProduct`・`Unit` と左右単位・交換右逆元（Quasicategory、枝の終点の始対象性、枝の基点）、`symmetricCoconeLoopProduct_transport`・`Unit_transport`（整合する輸送、終域の基点は輸送の像） | 貼り合わせ条件の実際の検証と全体の輸送、自己引き戻しへの可換性、全体の積・単位とその輸送による保存まで完成。任意の基点変更の独立性・加法への適用は未完了。単位と零射の照合は下記で完成 |
-| ループ単位の零射との照合 | `leftFibrationInitialVertexHom_eq_zero_of_factor`・`leftFibrationInitialFiberPiZeroEquiv_map_eq_zero`（零像を通る因子分解、詳細は本文）、`spanFold`・`symmetricCoconeFold` と両枝・対角の式、`symmetricCoconeLoopUnit_eq_fold`（充填性不要）、`coconeMappingSpacePiZeroEquiv_fold_eq_zero`・`symmetricCoconeLoopUnit_hom_eq_zero`（Quasicategory、h X の零射、枝の零終点、全体の余極限余錐） | 単位が零射となることまで完成。積の基点独立性・Hom 上の後合成自然性の確定・加法への適用は未完了 |
+| suspension の二枝交換 | `SuspensionSquare.transpose`・`transpose_transpose`・`transpose_vertex`（値域に仮定なし）、`swapIso`、`comparisonIso_hom_transpose`、`swapIso_hom_comp_self`、`diagramComparisonIso_transpose_naturality`・`swapIso_naturality`（Quasicategory） | 標準比較との両立・自然性・二乗が恒等まで完成。加法の負号との一致も下記で完成。TR2 は未完了 |
+| 終点固定余錐空間と二枝の引き戻し | `coconeMappingSpace`、`coconeMappingSpace_kanComplex`（Quasicategory）、`coconeMappingSpace_restrict_fibration`（Quasicategory、Mono）、`coconeMappingSpace_edge_isContractibleKan`（Quasicategory、枝の終点の始対象性）、`exists_coconeMappingSpace_glue`・`coconeMappingSpace_hom_ext_of_pushout`・`spanCoconeMapping_isPullback`・`coconeMappingSpace_spanSwap_left`・`right`（値域の仮定なし） | 空間・充填性・可縮な枝・引き戻し・交換の二成分まで完成。π₀ と Hom の比較は下記で完成。ループ模型と、零終点の対称 span に対する演算と加法の一致も下記で完成 |
+| 余錐空間と余極限頂点の Hom | `leftFibrationInitialFiberPiZeroEquiv`（底 Quasicategory、LeftFibration、始点の始対象性）、`coconeMappingSpacePiZeroEquiv`・`pushoutCoconeMappingSpacePiZeroEquiv`、`coconeMappingSpaceHomComparison_homotopyEquivalence`・`coconeMappingSpacePiZeroEquiv_eq_comparison`（Quasicategory、余極限性または押し出し性） | π₀ と Hom の同値・実際の比較射のホモトピー同値・二つの比較の一致まで完成。形状制限・再添字付け・二枝交換による制限余錐での Hom 表示との両立まで完成。同じ図式の余錐の変更に対する colimitVertexIso との両立も完成。選択済みの swapIso への接続とループ模型・加法との照合も下記で完成 |
+| coslice の余錐比較と suspension 標準比較 | `cosliceSquareDiagramMap` と制限・評価の計算（値域の仮定なし）、`colimitSquareComparisonIso_target_arrow`、`SuspensionSquare.comparisonIso_eq_colimitVertexIso_arrow`（Quasicategory、同じ span の余極限余錐での表示）、`swapIso_eq_colimitVertexIso_arrow_of_sameSpan`（さらに転置前後の span の等号） | 同じ span の表示の下で標準比較の一致まで完成。対称な模型と転置前後の span の等号を構成済み。負号の主張を任意の選択へ転送する補題も完成。対称模型での負号そのものも下記で完成 |
+| 対称 span の余錐空間の自己作用 | `fixedCosliceReindex`・`fixedCoconeMappingReindex`・`symmetricCoconeSwap` と対合・枝の交換（値域の仮定なし）、`coconeMappingSpacePiZeroEquiv_reindexFixed`・`symmetricCoconeSwap_piZero`（Quasicategory、余極限余錐）、`chosenSymmetricSuspensionSquare_reindex_swap_arrow`（Quasicategory、IsStable） | 実際の交換自己同型、二枝への作用、Hom 表示での前合成、対称模型の swapIso との同定まで完成。ループ模型と加法の負号との一致も下記で完成 |
+| 可縮な枝の自己引き戻しとループ模型 | `vertexFiberι_homotopyEquivalence_of_contractible_base`（Kan fibration、Kan な全空間・可縮な底）、`kanKernelPairLoopComparison_homotopyEquivalence`（Kan fibration、E・B Kan、E 可縮、基点 e）、`kanKernelPairPiZeroLoopEquiv_fiber`、`coconeBranchKernelPairLoopComparison_homotopyEquivalence`（Quasicategory、枝の終点の始対象性、枝の余錐の基点） | 実際のホモトピー同値・π₀ の Hom 同値と固定 fiber 上の計算まで完成。交換と逆射の両立も下記で完成。零終点の対称 span に対する演算と加法の一致も下記で完成 |
+| 対称 span 全体からのループ比較 | `symmetricCoconeBranches_isPullback`・`symmetricCoconeKernelPairIso`・`symmetricCoconeKernelPairIso_swap`（値域の仮定なし）、`symmetricCoconeLoopComparison_homotopyEquivalence`・`symmetricCoconePiZeroLoopEquiv_eq_comparison`（Quasicategory、辺の終点の始対象性、枝の余錐の基点） | 全体の余錐空間のループ模型への実際のホモトピー同値と、自己引き戻しへの交換作用の転送まで完成。ループの逆射との一致も下記で完成。加法の負号との一致も下記で完成 |
+| 二成分・二枝交換とループの逆射 | `kanKernelPairFiberInclusion_piZero_bijective`（Kan fibration、E Kan・可縮）、`exists_kanKernelPairSwap_fiber_path`（同前）、`kanKernelPairPiZeroLoopEquiv_comp_swap`・`kanKernelPairPiZeroLoopEquiv_swap`（さらに B Kan）、`symmetricCoconePiZeroLoopEquiv_comp_swap`・`symmetricCoconePiZeroLoopEquiv_swap`（Quasicategory、枝の終点の始対象性、枝の余錐の基点） | 成分交換と二枝交換がループの逆射となることまで完成。零終点の対称 span に対する加法・懸垂交換の負号との一致も下記で完成。TR2 は未完了 |
+| ループ積の自然性と加法の一般判定 | `kanKernelPairPiZeroLoopEquiv_naturality`（両射 Kan fibration、両全空間 Kan・可縮、両底 Kan、可換正方形）、`kanKernelPairPiZeroLoopEquiv_diagonal`・`kanKernelPairLoopProduct` と結合則・左右単位・交換右逆元・自然性（同前）、`representableOperation_eq_add`・`representableRightInverse_eq_neg`（一般の前加法圏、二項双積、演算の零単位・後合成自然性） | 自己引き戻しの π₀ 上の自然なループ積と、加法へ照合する一般補題が完成。余錐の Hom 表示に移した演算の後合成自然性・零単位の照合と適用も下記で完成 |
+| 余錐空間の終点輸送と貼り合わせ | `nonempty_leftFibrationFiberTransport`（left fibration のみ）、`exists_leftFibrationFiberTransport_lift`（中間の輸送、制限射が left fibration）、`leftFibrationInitialFiberPiZeroEquiv_transport`（全空間・底 Quasicategory、left fibration、始対象）、`coconeMappingSpacePiZeroEquiv_transport`（Quasicategory、余極限余錐）、`exists_coconeEndpointTransport_restrict`（Quasicategory、Mono）、`exists_coconeEndpointTransport_glue`（二枝の区間族の整合を入力、充填性・余極限性不要） | 終点輸送の存在、単射の制限との同時可換性、Hom の後合成への対応、整合条件付きの全図式の輸送の貼り合わせまで完成。対称 span での整合条件の検証も下記で完成。基点の整合・零射の照合と加法への適用も下記で完成 |
+| 対称 span 全体の輸送とループ積 | `exists_symmetricCoconeEndpointTransport`（Quasicategory、選んだ共通始点の輸送）、`symmetricCoconeTransport_kernelPair`・`_piZero`（三つの輸送と可換性、充填性不要）、`symmetricCoconeLoopProduct`・`Unit` と左右単位・交換右逆元（Quasicategory、枝の終点の始対象性、枝の基点）、`symmetricCoconeLoopProduct_transport`・`Unit_transport`（整合する輸送、終域の基点は輸送の像） | 貼り合わせ条件の実際の検証と全体の輸送、自己引き戻しへの可換性、全体の積・単位とその輸送による保存まで完成。任意の基点変更の独立性・単位と零射の照合・加法への適用も下記で完成 |
+| ループ単位の零射との照合 | `leftFibrationInitialVertexHom_eq_zero_of_factor`・`leftFibrationInitialFiberPiZeroEquiv_map_eq_zero`（零像を通る因子分解、詳細は本文）、`spanFold`・`symmetricCoconeFold` と両枝・対角の式、`symmetricCoconeLoopUnit_eq_fold`（充填性不要）、`coconeMappingSpacePiZeroEquiv_fold_eq_zero`・`symmetricCoconeLoopUnit_hom_eq_zero`（Quasicategory、h X の零射、枝の零終点、全体の余極限余錐） | 単位が零射となることまで完成。積の基点独立性・Hom 上の後合成自然性の確定・加法への適用も下記で完成 |
+| 基点独立性・Hom の加法・懸垂交換の負号 | `kanKernelPairPiZeroLoopEquiv_basepoint`・`kanKernelPairLoopProduct_basepoint`（Kan fibration、E 可縮な Kan、B Kan）、`symmetricCoconeHomProduct_naturality` と零単位・右逆元（Quasicategory、零終点、全体の余極限余錐。零単位・右逆元は零射構造）、`symmetricCoconeHomProduct_eq_add`・`fixedCoconeSwap_eq_neg_id`・`SuspensionSquare.swapIso_eq_neg_id`（Quasicategory、IsStable） | ループ積の基点独立性、Hom の後合成自然性・加法との一致、任意の懸垂交換と -id の一致まで完成。回転第三接続射の負号・TR2 は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。
