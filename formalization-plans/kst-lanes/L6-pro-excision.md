@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：借用する π・H_* の明示的な模型界面に対して工程完了。一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと1356宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと1378宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -1057,3 +1057,18 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - 相対零化から、射影を経由する二つの写像の像上の一致を証明し、実アフィン比較の共役正方形から整数 elementary 行列の作用の自明性を得る。全ホモロジーの自明性には拡張しない。
 - 整数一般線形群の作用へ移す最後の段階では、原典の生成系の議論を実証明するか、安定ブロック行列 diag(g,g⁻¹) の elementary 分解と有限支持を用いた同じ結論への再構成を行う。採用した経路は実装の docstring に明記する。
 - 以上は §10-1 の紙の確認の追加記録。Claim 4.15 は実装済みだが、上記の安定化・行側比較・整数作用への移送の完成はまだ主張しない。
+
+#### SW92 最終段の実行列補題の選択
+
+整数 GL の生成系の一般定理を追加の引用や入力にせず、diag(g,g⁻¹) の六つの上・下ブロック単冪行列への Whitehead 分解を実証明する。各ブロック単冪行列は有限個の elementary 行列の積であり、残りの逆ブロックは対象の有限支持の外へ置ける。このため像上の作用だけについて原典と同じ結論へ進める。原典の生成系の文言とは異なる実行列経路として実装 docstring に明記する。
+
+
+### L6d の安定 rank と SW92 の加群・ブロック計算（2026-10-19）
+
+- `NonUnitalSimplicialRing.stableHatGL` は通常の単位ブロック和の実順序余極限。各有限 rank の実群状性から `stableHatGL_isGrouplike` を証明した。
+- `SimplicialActionOverHom` と `columnBlockOverHom` は基底変更を許す実同変射と通常の列の安定化。余核に誘導する実対射を構成した。
+- `relativeAffineRankSequence` と `relativeAffineColimit` は有限 rank の相対加群の実列・余極限。安定 H_* との模型同定を主張しない。`relativeAffine_representative` はこの実余極限の各元の有限 rank の代表を証明する。
+- `sequentialModule_map_injective_of_finite_iso` は SW92 Lemma 1.4 の加群部分。有限段階の実置換共役の同定は別途必要であり、この補題を Lemma 1.4 全体の完成と扱わない。
+- `relativeModuleMap_factor_of_zero`・`relativeModuleMap_factor_of_split_square`・`splitRelative_action_image` は相対零化から基底への因子化、射影を固定する可換な作用の像上での自明性を実商模型で証明する。
+- `blockUpperUnit`・`blockLowerUnit` は実ブロック単冪単位。`whiteheadBlockFactorization` は diag(g,g⁻¹) の六因子分解を非可換な行列積から証明する。原典の生成系の文言との差は docstring に記載。
+- 対象ビルド・1378宣言の公理監査は標準三公理のみで成功。有限 rank の遷移の合成則、安定右乗法の零化、行側の比較、置換共役・整数作用への移送は未完了。L6d 全体および L6e〜g の完成は主張しない。

@@ -3915,3 +3915,69 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.claim415
 #print axioms SerrePositivity.KST.ProExcision.claim415
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGLRankSequence
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.hatGLRankSequence
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.stableHatGL
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.stableHatGL
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.stableHatGL_isGrouplike
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.stableHatGL_isGrouplike
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.stableHatGLInclusion
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.stableHatGLInclusion
+
+#check @SerrePositivity.KST.ProExcision.SimplicialActionOverHom
+#print axioms SerrePositivity.KST.ProExcision.SimplicialActionOverHom
+
+#check @SerrePositivity.KST.ProExcision.SimplicialActionOverHom.total
+#print axioms SerrePositivity.KST.ProExcision.SimplicialActionOverHom.total
+
+#check @SerrePositivity.KST.ProExcision.SimplicialActionOverHom.toPairMap
+#print axioms SerrePositivity.KST.ProExcision.SimplicialActionOverHom.toPairMap
+
+#check @SerrePositivity.KST.ProExcision.SimplicialIdealData.columnBlockMap
+#print axioms SerrePositivity.KST.ProExcision.SimplicialIdealData.columnBlockMap
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.columnBlockOverHom
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.columnBlockOverHom
+
+#check @SerrePositivity.KST.ProExcision.sequentialModule_representative
+#print axioms SerrePositivity.KST.ProExcision.sequentialModule_representative
+
+#check @SerrePositivity.KST.ProExcision.sequentialModule_map_zero
+#print axioms SerrePositivity.KST.ProExcision.sequentialModule_map_zero
+
+#check @SerrePositivity.KST.ProExcision.sequentialModule_map_injective_of_finite_iso
+#print axioms SerrePositivity.KST.ProExcision.sequentialModule_map_injective_of_finite_iso
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.relativeAffineRankSequence
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.relativeAffineRankSequence
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.relativeAffineColimit
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.relativeAffineColimit
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.relativeAffineInclusion
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.relativeAffineInclusion
+
+#check @SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.relativeAffine_representative
+#print axioms SerrePositivity.KST.ProExcision.NonUnitalSimplicialRing.relativeAffine_representative
+
+#check @SerrePositivity.KST.ProExcision.blockUpperUnit
+#print axioms SerrePositivity.KST.ProExcision.blockUpperUnit
+
+#check @SerrePositivity.KST.ProExcision.blockLowerUnit
+#print axioms SerrePositivity.KST.ProExcision.blockLowerUnit
+
+#check @SerrePositivity.KST.ProExcision.whiteheadBlockFactorization
+#print axioms SerrePositivity.KST.ProExcision.whiteheadBlockFactorization
+
+#check @SerrePositivity.KST.ProExcision.relativeModuleMap_factor_of_zero
+#print axioms SerrePositivity.KST.ProExcision.relativeModuleMap_factor_of_zero
+
+#check @SerrePositivity.KST.ProExcision.relativeModuleMap_factor_of_split_square
+#print axioms SerrePositivity.KST.ProExcision.relativeModuleMap_factor_of_split_square
+
+#check @SerrePositivity.KST.ProExcision.splitRelative_action_image
+#print axioms SerrePositivity.KST.ProExcision.splitRelative_action_image
