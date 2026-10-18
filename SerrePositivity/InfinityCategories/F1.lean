@@ -37,3 +37,5 @@ public import SerrePositivity.InfinityCategories.F1.CosliceRightRestriction
 public import SerrePositivity.InfinityCategories.F1.CocartesianSourceRestriction
 public import SerrePositivity.InfinityCategories.F1.CosliceConeExtension
 public import SerrePositivity.InfinityCategories.F1.CocartesianTriangleCone
+public import SerrePositivity.InfinityCategories.F1.CocartesianTriangleRestriction
+public import SerrePositivity.InfinityCategories.F1.CocartesianComposition
