@@ -969,3 +969,69 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.isGapped_iff_arCofiberFamily_vertices
 #print axioms SerrePositivity.KST.SConstruction.isGapped_iff_arCofiberFamily_vertices
+
+#check @SerrePositivity.KST.SConstruction.intervalMaxOrder
+#print axioms SerrePositivity.KST.SConstruction.intervalMaxOrder
+
+#check @SerrePositivity.KST.SConstruction.intervalMax
+#print axioms SerrePositivity.KST.SConstruction.intervalMax
+
+#check @SerrePositivity.KST.SConstruction.intervalMax_zero
+#print axioms SerrePositivity.KST.SConstruction.intervalMax_zero
+
+#check @SerrePositivity.KST.SConstruction.intervalMax_one
+#print axioms SerrePositivity.KST.SConstruction.intervalMax_one
+
+#check @SerrePositivity.KST.SConstruction.cofiberUnitCornerPrism
+#print axioms SerrePositivity.KST.SConstruction.cofiberUnitCornerPrism
+
+#check @SerrePositivity.KST.SConstruction.arCofiberUnitPrism
+#print axioms SerrePositivity.KST.SConstruction.arCofiberUnitPrism
+
+#check @SerrePositivity.KST.SConstruction.cofiberUnitCorner
+#print axioms SerrePositivity.KST.SConstruction.cofiberUnitCorner
+
+#check @SerrePositivity.KST.SConstruction.cofiberUnitCornerPrism_zero
+#print axioms SerrePositivity.KST.SConstruction.cofiberUnitCornerPrism_zero
+
+#check @SerrePositivity.KST.SConstruction.cofiberUnitCornerPrism_one
+#print axioms SerrePositivity.KST.SConstruction.cofiberUnitCornerPrism_one
+
+#check @SerrePositivity.KST.SConstruction.arCofiberUnitSquare
+#print axioms SerrePositivity.KST.SConstruction.arCofiberUnitSquare
+
+#check @SerrePositivity.KST.SConstruction.arCofiberUnitPrism_zero
+#print axioms SerrePositivity.KST.SConstruction.arCofiberUnitPrism_zero
+
+#check @SerrePositivity.KST.SConstruction.arCofiberUnitPrism_one
+#print axioms SerrePositivity.KST.SConstruction.arCofiberUnitPrism_one
+
+#check @SerrePositivity.KST.SConstruction.arCofiberUnitPrism_lower
+#print axioms SerrePositivity.KST.SConstruction.arCofiberUnitPrism_lower
+
+#check @SerrePositivity.KST.SConstruction.arCofiberUnitPrism_upper
+#print axioms SerrePositivity.KST.SConstruction.arCofiberUnitPrism_upper
+
+#check @SerrePositivity.KST.SConstruction.frameCofiberSquareMap_row_right
+#print axioms SerrePositivity.KST.SConstruction.frameCofiberSquareMap_row_right
+
+#check @SerrePositivity.KST.SConstruction.arCofiberUnitPrism_vertex_constant
+#print axioms SerrePositivity.KST.SConstruction.arCofiberUnitPrism_vertex_constant
+
+#check @SerrePositivity.KST.SConstruction.arCofiberUnitComparisonIso
+#print axioms SerrePositivity.KST.SConstruction.arCofiberUnitComparisonIso
+
+#check @SerrePositivity.KST.SConstruction.arSquareFamilyDiagram
+#print axioms SerrePositivity.KST.SConstruction.arSquareFamilyDiagram
+
+#check @SerrePositivity.KST.SConstruction.arSquareFamilyDiagram_evaluate
+#print axioms SerrePositivity.KST.SConstruction.arSquareFamilyDiagram_evaluate
+
+#check @SerrePositivity.KST.SConstruction.arSquareFamilyDiagram_frame
+#print axioms SerrePositivity.KST.SConstruction.arSquareFamilyDiagram_frame
+
+#check @SerrePositivity.KST.SConstruction.arSquareFamilyUnitComparisonIso
+#print axioms SerrePositivity.KST.SConstruction.arSquareFamilyUnitComparisonIso
+
+#check @SerrePositivity.KST.SConstruction.cofiberFamilyUnitComparisonIso
+#print axioms SerrePositivity.KST.SConstruction.cofiberFamilyUnitComparisonIso

@@ -599,3 +599,51 @@ L1c–f は未完了、L1g は別途指示待ち。
 
 この保存単位の検証：`lake build SerrePositivity.KST.SConstruction` 成功（2090 jobs）、
 `lake env lean scripts/audit_kst_s_construction.lean` 成功（381 宣言、標準三公理のみ）。
+
+枠の指定だけから、単位の中間正方形と補完後の図式の標準正方形との関手同型を証明した。
+以下で `Square := (Δ[1] ⊗ Δ[1] : SSet.{u})`、`top := (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm (1 : Fin 2)) : Square _⦋0⦌`、
+`q a := arSquare 0 a.down.val.1 a.down.val.1 a.down.val.2 (Fin.zero_le _) le_rfl a.down.property`、
+`J a := arCofiberUnitPrism a`、`D a := arCofiberUnitSquare a`、
+`e := lift (𝟙 (arNerve n)) (SSet.const top)`、`ι := (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι` と略記する。
+また `row k := ComposableArrows.mk₀ (⟨arObj 0 k (Fin.zero_le _), Or.inl rfl⟩ : FrameAr.{u} n)`、
+`v x y := (stdSimplex.obj₀Equiv.symm x, stdSimplex.obj₀Equiv.symm y) : Square _⦋0⦌` とする。
+これらの q・J・D・e・row・v はこの表のための略記であり、追加の仮定ではない。
+
+| 公開宣言 | 正確な型・前提 |
+| --- | --- |
+| `intervalMaxOrder` | `ULift.{u} (Fin 2 × Fin 2) →o ULift.{u} (Fin 2)`、値は max |
+| `intervalMax` | `Square ⟶ (Δ[1] : SSet.{u})` |
+| `intervalMax_zero` | `prismEndpoint 0 (Δ[1] : SSet.{u}) ≫ intervalMax = 𝟙 Δ[1]` |
+| `intervalMax_one` | `prismEndpoint 1 (Δ[1] : SSet.{u}) ≫ intervalMax = SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))` |
+| `cofiberUnitCornerPrism` | `(Δ[1] : SSet.{u}) ⊗ Square ⟶ Square`、値は `(t,(x,y)) ↦ (1,max t y)` |
+| `arCofiberUnitPrism` | `{n : ℕ} → (a : Ar.{u} n) → ((Δ[1] : SSet.{u}) ⊗ Square ⟶ arNerve n ⊗ Square)`、値は `(t,s) ↦ (q a(s),(1,max t s.2))` |
+| `cofiberUnitCorner` | `Square ⟶ Square`、値は `(x,y) ↦ (1,y)` |
+| `cofiberUnitCornerPrism_zero` | `prismEndpoint 0 Square ≫ cofiberUnitCornerPrism = cofiberUnitCorner` |
+| `cofiberUnitCornerPrism_one` | `prismEndpoint 1 Square ≫ cofiberUnitCornerPrism = SSet.const top` |
+| `arCofiberUnitSquare` | `{n : ℕ} → (a : Ar.{u} n) → (Square ⟶ arNerve n ⊗ Square)`、値は `lift (q a) cofiberUnitCorner` |
+| `arCofiberUnitPrism_zero` | `(a : Ar.{u} n) → prismEndpoint 0 Square ≫ J a = D a` |
+| `arCofiberUnitPrism_one` | `(a : Ar.{u} n) → prismEndpoint 1 Square ≫ J a = q a ≫ e` |
+| `arCofiberUnitPrism_lower` | `(a : Ar.{u} n) → (x : Fin 2) → lift (𝟙 Δ[1]) (SSet.const (v x 0)) ≫ J a = lift (SSet.const (row (intervalStep a.down.val.1 a.down.val.2 a.down.property x))) squareRightEdge ≫ (frameInclusion n ▷ Square)` |
+| `arCofiberUnitPrism_upper` | `(a : Ar.{u} n) → (x : Fin 2) → lift (𝟙 Δ[1]) (SSet.const (v x 1)) ≫ J a = SSet.const (ComposableArrows.mk₀ (arObj a.down.val.1 (intervalStep a.down.val.1 a.down.val.2 a.down.property x) (le_intervalStep _ _ _ _)), top)` |
+| `frameCofiberSquareMap_row_right` | `(k : Fin (n + 1)) → lift (SSet.const (row k)) squareRightEdge ≫ frameCofiberSquareMap n = SSet.const (row k)` |
+| `arCofiberUnitPrism_vertex_constant` | `(E : arNerve n ⊗ Square ⟶ C) → (F : frameNerve n ⟶ C) → ((frameInclusion n ▷ Square) ≫ E = frameCofiberSquareMap n ≫ F) → (a : Ar.{u} n) → (v : Square _⦋0⦌) → ∃ z : C _⦋0⦌, lift (𝟙 Δ[1]) (SSet.const v) ≫ (J a ≫ E) = SSet.const z` |
+| `arCofiberUnitComparisonIso` | `[Quasicategory C] → (E : arNerve n ⊗ Square ⟶ C) → (F : frameNerve n ⟶ C) → ((frameInclusion n ▷ Square) ≫ E = frameCofiberSquareMap n ≫ F) → (a : Ar.{u} n) → FunctorIso (D a ≫ E) (q a ≫ e ≫ E)` |
+| `arSquareFamilyDiagram` | `(H : arNerve n ⟶ (ihom Square).obj C) → (arNerve n ⊗ Square ⟶ C)`、値は `(β_ (arNerve n) Square).hom ≫ uncurry H` |
+| `arSquareFamilyDiagram_evaluate` | `(H : arNerve n ⟶ (ihom Square).obj C) → (v : Square _⦋0⦌) → lift (𝟙 (arNerve n)) (SSet.const v) ≫ arSquareFamilyDiagram H = H ≫ evaluateFunctorAt v` |
+| `arSquareFamilyDiagram_frame` | `(H : arNerve n ⟶ (ihom Square).obj C) → (F : frameNerve n ⟶ C) → (frameInclusion n ≫ H = frameCofiberFamily F) → (frameInclusion n ▷ Square) ≫ arSquareFamilyDiagram H = frameCofiberSquareMap n ≫ F` |
+| `arSquareFamilyUnitComparisonIso` | `[Quasicategory C] → (H : arNerve n ⟶ (ihom Square).obj C) → (F : frameNerve n ⟶ C) → (frameInclusion n ≫ H = frameCofiberFamily F) → (a : Ar.{u} n) → FunctorIso (D a ≫ arSquareFamilyDiagram H) (q a ≫ H ≫ evaluateFunctorAt top)` |
+| `cofiberFamilyUnitComparisonIso` | `[Quasicategory C] → (H : arNerve n ⟶ cofiberDiagrams C) → (F : frameNerve n ⟶ C) → (hF : IsZeroFrameVertex (functorVertex F)) → (frameInclusion n ≫ H = zeroFrameCofiberFamily F hF) → (a : Ar.{u} n) → FunctorIso (D a ≫ arSquareFamilyDiagram (H ≫ ι)) (q a ≫ H ≫ cofiberApex C)` |
+
+全ての型で省略した n・C は `{n : ℕ} {C : SSet.{u}}`。比較の下側の角では枠内の第一行の右辺が恒等、
+上側の角では prism 自体が定値なので、全ての縦辺が恒等辺となる。
+`functorIsoOfEquivalenceHomotopy` を用いて、点ごとの恒等性を関手単体集合の実際の同型へ送った。
+この比較は cofiber 族の各正方形の押し出し性や C の安定性を使わない。
+
+**現在地・未完了**：この同型は「単位の中間正方形 → 図式の標準抽出」の比較である。
+中間正方形 `D a ≫ arSquareFamilyDiagram (H ≫ ι)` 自体が押し出しであることはまだ証明していない。
+次は固定 span の等号と H(a) の cofiber 普遍性からこの中間正方形の普遍性を導く。
+前の `isGapped_iff_originSquares` により、これを全 a で示せば補完後の実際の図式の gapped 性へ進める。
+L1b の n≥3 の零次元持ち上げは引き続き未完了。L1a 完了、L1c–f 未完了、L1g は別途指示待ち。
+
+この保存単位の検証：`lake build SerrePositivity.KST.SConstruction` 成功（2092 jobs）、
+`lake env lean scripts/audit_kst_s_construction.lean` 成功（403 宣言、標準三公理のみ）。
