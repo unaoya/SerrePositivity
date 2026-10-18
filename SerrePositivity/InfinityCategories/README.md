@@ -2046,7 +2046,8 @@ A3e に実際の比較射の充満忠実性と既存の本質的全射性を渡�
 `formalization-plans/foundations.md` §1。γ1.5 の完了後に続けて担当し、
 𝒮（F2）・Sp（L9）・E2b の三者が共有する比較を作る。
 現在は γ3a と、γ3b の検出・比較ファイバー・重み付き end・表現可能な標準比較射まで実装。
-coherent な錐との比較、end の Kan 性・同値不変性、および γ3c は未実装。
+離散図式の比較と 𝒮 の空積は実装済み。一般の coherent な錐との比較、end の一般の Kan 性・
+同値不変性、𝒮 の残りの極限と Sp への適用は未実装。
 当面は通常の小圏で添字付けた strict な図式の極限側を扱い、余極限と一般の図式の比較は後続に保持する。
 
 ### γ3a：原典と今回の限定形
@@ -2166,7 +2167,8 @@ weightedSectionsAdjunction (W : I ⥤ SSet.{u}) :
 `bousfieldKanLimitComparison H : limit H → bousfieldKanHolim H` は重みを忘れる標準射であり、
 `bousfieldKanLimitComparison_evaluation H i` により恒等射 `i → i` での評価は極限射影になる。
 `bousfieldKanLimitComparison_naturality η` は図式に関する厳密な自然性。
-この end の Kan 性、対象ごとの同値に対する不変性、Kerodon の切断模型との比較は未証明。
+一般の添字圏における end の Kan 性、対象ごとの同値に対する不変性、
+Kerodon の切断模型との比較は未証明。離散図式の Kan 性と比較の同型性は下記で証明済み。
 
 `RepresentableComparison.lean` は strict な錐から実際の射 q_x を作る。
 前提は `I : Type u`、`[SmallCategory I]`、`C : Type v`、`[Category.{u} C]`、
@@ -2188,7 +2190,65 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開52宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開83宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+
+### 離散図式の比較と三つの strict 極限の Kan 性
+
+`TerminalWeight.lean` は、図式の圏の終対象である重み W に対して、任意の strict 極限錐の
+`weightedConeComparison W c` が同型であることを証明する。重みの変数を忘れる直積の射影の
+同型、極限の普遍性、重み付き end の普遍性を合成し、実際の比較射に一致することを検証した。
+
+`DiscreteComparison.lean` は離散圏の over 圏の対象・射と nerve の全次数の単体の一意性から、
+重み `bousfieldKanWeight (Discrete J)` の厳密な終対象性を証明する。
+したがって任意の `H : Discrete J ⥤ SSet.{u}` で、成分の Kan 性や添字の有限性なしに
+
+```lean
+bousfieldKanLimitComparison_discrete_isIso H : IsIso (bousfieldKanLimitComparison H)
+bousfieldKanLimitComparison_discrete_homotopyEquivalence H :
+  IsSimplicialHomotopyEquivalence (bousfieldKanLimitComparison H)
+```
+
+が成り立つ。`RepresentableProducts.lean` の
+`representableHomotopyLimitComparison_discrete_isIso c x h` と
+`representableHomotopyLimitComparison_discrete_homotopyEquivalence c x h` は、
+離散添字の錐と `h : IsLimit (simplicialHomCone c x)` から、実際の q_x の同型性と
+ホモトピー同値性を与える。この計算だけで非空の積の ∞ 極限性を証明したとは数えない。
+
+`TowerExtension.lean` の `exists_tower_extension` は、任意の射 j に対して、
+各遷移が j の持ち上げ性を持つとき零段の指定された延長を全段に整合的に延長する。
+`hasLiftingProperty_towerLimitπ_zero` は極限の零段への射影にも同じ持ち上げ性を移す。
+各段で独立な延長を選んで塔の整合性を省略する構成ではない。
+
+`KanLimits.lean` の公開結果は次の通り。モデル構造の存在や弱同値を仮定しない。
+Fibration は Mathlib の単体集合の全ホーンの持ち上げ性による既存クラス。
+
+| 宣言 | 正確な対象と前提 |
+| --- | --- |
+| `discreteLimit_kanComplex H` | `H : Discrete J ⥤ SSet.{u}`、全ての H(i) が Kan なら `KanComplex (limit H)`。空積を含む |
+| `bousfieldKanHolim_discrete_kanComplex H` | 同じ前提で `KanComplex (bousfieldKanHolim H)` |
+| `pullback_kanComplex_of_fibration p q` | `p : E → B` が Fibration、`q : D → B`、D が Kan なら `KanComplex (pullback p q)` |
+| `towerLimit_kanComplex H` | `H : ℕᵒᵖ ⥤ SSet.{u}`、H(0) が Kan、全ての隣接遷移が Fibration なら `KanComplex (limit H)` |
+| `towerLimitπ_zero_fibration H` | 隣接遷移の Fibration 性だけから `Fibration (limit.π H (Opposite.op 0))` |
+
+### 𝒮 の空積（実装済み）
+
+`CoherentTerminal.lean` の `coherentNerve_isTerminalVertex_of_enrichedTerminal t h` は、
+局所 Kan な単体的圏において全ての `sHom(x,t)` が単体集合の終対象なら、
+`IsTerminalVertex (coherentNerveVertex t)` を証明する。全ての nerve の頂点を元の対象で表示し、
+F1 の実際の写像空間比較で可縮性を移して A3d を使う。追加の比較仮定はない。
+
+`SpaceTerminal.lean` は、F1 の既存の `KanObject`・`SpaceInfinity`・`pointSpaceVertex` に対して
+次を公開する。`EmptyCone.lean` で空図式の slice 射影の厳密な同型を構成したので、
+空積を `IsLimitCone` として公開できる。
+
+```lean
+pointSpaceVertex_isTerminalVertex : IsTerminalVertex pointSpaceVertex.{u}
+spaceEmptyProductCone : JoinCone (⊥ : SpaceInfinity.{u}.Subcomplex).ι
+spaceEmptyProductCone_isLimitCone : IsLimitCone spaceEmptyProductCone.{u}
+```
+
+ここでは一般の重み付き end の比較を前提としていない。𝒮 の非空の有限積・引き戻し・塔と、
+Sp の空積を含む全ての適用は未完了。
 
 ### γ3c：最初に検証する三つの極限
 
@@ -2206,7 +2266,11 @@ strict な錐から q_x を構成できたことを、その比較まで証明�
 内部 Hom のホーン充填を使い、Kan fibration の引き戻しと塔、有限積を適用例として公開する。
 一般の Kan 図式の strict 極限を無条件に ∞ 極限とはしない。
 
-Sp には L9 の単体的豊穣と Ω スペクトルの API を接続する。
+Sp の接続先は L9 の `KST/Spectra/CoherentNerve.lean` にある
+`SerrePositivity.KST.Spectra.Sp := SimplicialNerve OmegaSpectrum`。
+`OmegaSpectrum` は `sigma_mono` と全基点での `KanPiIsomorphism` の Ω 条件を保持し、
+`OmegaSpectrum.simplicialCategory` と `OmegaSpectrum.mappingSpace_kanComplex` は構成済みである。
+この模型の局所 Kan 性を利用し、levelwise の極限が対象の条件を満たすことを別途検証する。
 単体的モデル圏から raw sHom を使うときは cofibrant な始対象と fibrant な終対象が必要なので、
 単に「全対象が Ω スペクトル」という条件だけで局所 Kan 性を主張しない。
 cofibrant かつ fibrant な Ω スペクトルの充満部分圏を使うか、同じ導来写像空間を与える模型を選ぶ。

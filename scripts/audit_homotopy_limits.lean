@@ -109,3 +109,65 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms simplicialHomDiagramPre
 #check @representableHomotopyLimitComparison_naturality
 #print axioms representableHomotopyLimitComparison_naturality
+#check @weightIsTerminalOfObj
+#print axioms weightIsTerminalOfObj
+#check @weightedParameterProjection_isIso
+#print axioms weightedParameterProjection_isIso
+#check @weightedConeComparison_isIso_of_isTerminalWeight
+#print axioms weightedConeComparison_isIso_of_isTerminalWeight
+#check @discreteOver_subsingleton
+#print axioms discreteOver_subsingleton
+#check @discreteOver_isThin
+#print axioms discreteOver_isThin
+#check @discreteOverNerve_obj_subsingleton
+#print axioms discreteOverNerve_obj_subsingleton
+#check @discreteOverNerve_isTerminal
+#print axioms discreteOverNerve_isTerminal
+#check @discreteBousfieldKanWeight_isTerminal
+#print axioms discreteBousfieldKanWeight_isTerminal
+#check @bousfieldKanLimitComparison_discrete_isIso
+#print axioms bousfieldKanLimitComparison_discrete_isIso
+#check @homotopyEquivalence_of_isIso
+#print axioms homotopyEquivalence_of_isIso
+#check @bousfieldKanLimitComparison_discrete_homotopyEquivalence
+#print axioms bousfieldKanLimitComparison_discrete_homotopyEquivalence
+#check @exists_tower_extension
+#print axioms exists_tower_extension
+#check @hasLiftingProperty_towerLimitπ_zero
+#print axioms hasLiftingProperty_towerLimitπ_zero
+#check @kanComplex_of_iso
+#print axioms kanComplex_of_iso
+#check @discreteLimit_kanComplex
+#print axioms discreteLimit_kanComplex
+#check @bousfieldKanHolim_discrete_kanComplex
+#print axioms bousfieldKanHolim_discrete_kanComplex
+#check @pullback_kanComplex_of_fibration
+#print axioms pullback_kanComplex_of_fibration
+#check @towerLimit_kanComplex
+#print axioms towerLimit_kanComplex
+#check @towerLimitπ_zero_fibration
+#print axioms towerLimitπ_zero_fibration
+#check @representableHomotopyLimitComparison_discrete_isIso
+#print axioms representableHomotopyLimitComparison_discrete_isIso
+#check @representableHomotopyLimitComparison_discrete_homotopyEquivalence
+#print axioms representableHomotopyLimitComparison_discrete_homotopyEquivalence
+#check @ulift_isContractibleKan_of_isTerminal
+#print axioms ulift_isContractibleKan_of_isTerminal
+#check @coherentNerve_isTerminalVertex_of_enrichedTerminal
+#print axioms coherentNerve_isTerminalVertex_of_enrichedTerminal
+#check @emptyCone
+#print axioms emptyCone
+#check @emptyCone_vertex
+#print axioms emptyCone_vertex
+#check @emptySliceProjection_isIso
+#print axioms emptySliceProjection_isIso
+#check @isLimitCone_emptyCone_iff
+#print axioms isLimitCone_emptyCone_iff
+#check @pointKanObject_sHom_isTerminal
+#print axioms pointKanObject_sHom_isTerminal
+#check @pointSpaceVertex_isTerminalVertex
+#print axioms pointSpaceVertex_isTerminalVertex
+#check @spaceEmptyProductCone
+#print axioms spaceEmptyProductCone
+#check @spaceEmptyProductCone_isLimitCone
+#print axioms spaceEmptyProductCone_isLimitCone
