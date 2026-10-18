@@ -34,7 +34,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・363 モジュール 3804 宣言の公理監査成功。
+対象ビルド・372 モジュール 3841 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -2879,3 +2879,39 @@ hG の BF 対象との比較は、この同じ Kan end を介する具体的な 
 私有宣言を含む 363 モジュール 3804 宣言で標準三公理のみ。
 L9e は進行中。有理 Shapiro と一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。
 Sp の ∞ 極限性と導来写像空間の比較は γ3 の後に扱う。
+
+
+## 96. L9e の通常の群 Tot の係数への自然性と厳密な関手性
+
+通常の cochain の係数の自然変換を構成し、点つき cochain の忘却比較がこれと可換であることを示した。
+密度の族の係数への後合成を図式に束ね、通常の Tot と完全な重みの end の密度比較の係数への自然性を証明した。
+点つき cochain と end の忘却比較を合成し、点つき密度の同型も係数に自然であることを確認した。
+
+重みの前合成を係数の end 関手の自然変換に束ねた。
+これにより重みから係数関手の圏への反変関手を得た。
+この関手に EG の重みの同型を送り、密度の自然同型と関手の段階で合成した。
+群の比較の各成分をこの自然同型から取り出す形へ整理した。
+各成分を直接展開する証明はカーネルの検証時間上限に達したため、検証時間の設定を変えずに、この関手的な合成へ分解して検証を閉じた。
+
+段の同型による Kan 列の移送の逆比較を作り、移送した列と元の列の厳密な同型を構成した。
+同変射の BK end の射をこの同型で共役し、通常の Tot の Kan Ω 列の厳密な射を得た。
+その各段は、元の余単体 cochain の射から誘導する通常の Tot の射そのものであると証明した。
+従って通常の Tot の列は同変射に関する厳密な関手であり、BK end への厳密な比較も自然である。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `UnderlyingWeightedCochains.map` / `pointedUnderlyingIso_natural` | 通常の cochain の係数の射と点つき忘却比較の自然性 |
+| `SimplexDensity.totalizationEndIso_natural` | 通常の密度の係数への自然性 |
+| `SimplexDensity.pointedTotalizationEndIso_natural` | 点つき密度の係数への自然性 |
+| `PointedWeightedEnd.preTransformation` / `weightToFunctor` | 重みから係数 end 関手の圏への反変関手 |
+| `SimplexDensity.pointedTotalizationEndNatIso` | 点つき密度の係数関手の自然同型 |
+| `GroupActionCochains.universalCoverEndNatIso` / `totalizationEndNatIso` | 群の二つの比較の関手的な合成 |
+| `GroupActionCochains.totalizationEndIso_natural` | 通常の群 Tot と BK end の比較の係数への自然性 |
+| `KanSequence.changeLevelsInverse` / `changeLevelsIso` / `changeLevelsMap` | 段の同型による列全体の同型と射の移送 |
+| `GroupActionCochains.totalizationKanMap` / `totalizationKanMap_app` | 厳密な Kan 列の射と通常の Tot の射の一致 |
+| `GroupActionCochains.totalizationKanFunctor` / `totalizationKanComparison_natural` | 通常の Tot の列の厳密な関手性と BK 比較の自然性 |
+
+参照：Goerss–Jardine VIII §§1–2、HA §1.4.2、BF 1978 §2。
+保存単位の対象ビルド 3816 jobs 成功。
+私有宣言を含む 372 モジュール 3841 宣言で標準三公理のみ。
+L9e は進行中。有理 Shapiro と一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.PointedCochainDensity
+public import SerrePositivity.KST.Spectra.PointedCochainDensityFunctor
 public import SerrePositivity.KST.Spectra.GroupCochainTotalization
 
 /-!
@@ -31,10 +31,8 @@ set_option backward.isDefEq.respectTransparency.types false
 def totalizationEndIso (G : Type u) [Group G]
     (D : AsSmall.{u} (SingleObj G) ⥤ PointedSimplicialSet.{u}) :
     PointedTotalization.obj (weightedCochains (universalCoverWeight G) D) ≅
-      PointedWeightedEnd.obj (bousfieldKanWeight (AsSmall.{u} (SingleObj G))) D := by
-  let e := SimplexDensity.pointedTotalizationEndIso (universalCoverDiagram G) D
-  rw [← universalCoverWeight_eq_discreteLevels G] at e
-  exact e ≪≫ (universalCoverEndIso G D).symm
+      PointedWeightedEnd.obj (bousfieldKanWeight (AsSmall.{u} (SingleObj G))) D :=
+  (totalizationEndNatIso G).app D
 
 end
 
