@@ -1571,3 +1571,4 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.initialHorn_face_initial_vertex
 #check @SerrePositivity.InfinityCategories.join_initialHorn_hom_ext_of_initial_vertex_joinMap
 #check @SerrePositivity.InfinityCategories.joinMap_right_id_initialHorn_hasLift_of_cut_one
+#check @SerrePositivity.InfinityCategories.relativeJoin_initialHorn_hasLift_of_coefficient

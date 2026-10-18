@@ -7187,5 +7187,14 @@ lemma joinMap_right_id_initialHorn_hasLift_of_cut_one {X X' Y : SSet.{u}} (n : �
     ∃ l : (Δ[n + 2] : SSet.{u}) ⟶ join X Y,
       (horn (n + 2) 0).ι ≫ l = a ∧ l ≫ joinMap f (𝟙 Y) = b
 
+lemma relativeJoin_initialHorn_hasLift_of_coefficient {X Y : SSet.{u}} (n : ℕ)
+    (f : X ⟶ Y) (a : (horn (n + 2) 0 : SSet.{u}) ⟶ relativeJoin f (𝟙 Y))
+    (b : (Δ[n + 2] : SSet.{u}) ⟶ Δ[1])
+    (sq : CommSq a (horn (n + 2) 0).ι (relativeJoinProjection f (𝟙 Y)) b)
+    (hb : Join.pullCut (stdSimplex.objEquiv (SSet.yonedaEquiv b)).toOrderHom 1 = 1)
+    (c : (Δ[n + 2] : SSet.{u}) ⟶ Y)
+    (hc : (horn (n + 2) 0).ι ≫ c = a ≫ relativeJoinBaseProjection f (𝟙 Y)) :
+    sq.HasLift
+
 end SerrePositivity.InfinityCategories
 ```
