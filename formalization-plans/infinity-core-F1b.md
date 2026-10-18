@@ -202,9 +202,18 @@ Map(F(x),y) 全体で、元の単位の代表、G による普遍標的辺、標
 `unitCompositionBoundaryPath` は標準単位比較の像から指定族へのホモトピーを、基準合成三角形の
 境界全体の可逆 path に組み込む。二つの合成辺を固定し、対角辺で与えられた path 自体を厳密に
 回収する。境界 path の始点は基準三角形の境界に厳密に一致する。
-残る接続は、境界 path を関手単体集合内の path へ移し、相対持ち上げを適用して三角形を運び、
-逆向きの比較と両合成のホモトピーを構成する部分である。合成の Hom の等式から三角形を
-族ごとに選ぶだけでは、与えられた path の情報を保つ保証はない。
+`functorDiagramPathEquiv` は境界上の path の図式と関手単体集合内の path の厳密な全単射で、
+端点と始域の制限を保つ。これを相対持ち上げへ接続した `FunctorDiagramPathExtension` は、
+全体の path の図式と境界制限・始点の厳密な等式を保持する。
+`unitCompositionPathExtension` によって基準合成三角形を実際に運び、対角辺の path 自体を
+入力のホモトピーの path に一致させた。`transportedUnitCompositionTriangle` の三辺は、
+元の単位の代表、G の標的辺、指定族 g の表示に厳密に一致する。
+`functorSquareOfCompositionTriangle` は、この三角形に対角辺を共有する恒等合成の退化三角形を貼り、
+下辺が恒等で三辺の代表を保持した関手正方形を構成する。
+残る接続は、この関手正方形を comma の族へ戻し、逆向きの比較と両合成のホモトピーを構成する
+部分である。合成の Hom の等式から三角形を族ごとに選ぶだけでは、与えられた path の情報を
+保つ保証はない。順方向の比較の path は h Fun の等式から選んでいるため、今回運んだ三角形との
+両合成の整合性も別に検証する必要がある。
 **比較射の逆射・両合成のホモトピーと同値性は未証明。** 順方向の射と終域の可縮性だけでは
 始域の可縮性は従わず、始対象性を結論してはならない。
 
@@ -215,8 +224,8 @@ comma の経路では、各点の比較の同値性から `UnitCommaInitialCondi
 射影の充填・輸送を使って自然な余単位と三角恒等式へ接続する必要がある。
 既存の全パラメータ版の経路も利用できるが、その十分条件で原典の各点の条件を置き換えて
 B1 完了とはしない。B2〜B5 も未完了。
-対象ビルド（2023 jobs）・公理監査（800 宣言、標準三公理のみ）は成功。
-推移的 import のリポジトリ内 355 モジュールに straightening 依存がないことも確認した。
+対象ビルド（2027 jobs）・公理監査（882 宣言、標準三公理のみ）は成功。
+推移的 import のリポジトリ内 359 モジュールに straightening 依存がないことも確認した。
 
 ## 4. 主要宣言
 
@@ -374,3 +383,8 @@ B1 完了とはしない。B2〜B5 も未完了。
 | `triangleBoundaryPath`・`triangleBoundaryPath_start` | 固定した二辺と動く対角辺の境界の path、始点の境界を回収 | 実装済み |
 | `intervalFamilyPath` と始点・終点・頂点の公式 | 区間族のホモトピーから矢印を動かす可逆 path の図式への変換 | 実装済み |
 | `unitCompositionBoundaryPath`・`unitCompositionBoundaryPath_diagonal/start` | 単位比較の像を動かすホモトピーを合成三角形の境界へ組み込む、実際の path と始点を保持 | 実装済み |
+| `functorDiagramPointEquiv`・`functorDiagramPathEquiv` と端点・制限の公式 | 図式上の可逆 path と関手単体集合内の path の厳密な全単射 | 実装済み |
+| `FunctorDiagramPathExtension`・`functorDiagramPathExtension` | 指定した始点・境界 path を保つ全体図式の path の拡張 | 実装済み |
+| `unitCompositionPathExtension`・`unitCompositionPathExtension_diagonal` | 基準合成三角形の輸送、対角辺の path 自体を保持 | 実装済み |
+| `transportedUnitCompositionTriangle` | 単位・G の標的辺・指定族を三辺に持つ輸送後の三角形 | 実装済み |
+| `FunctorCompositionSquare`・`functorSquareOfCompositionTriangle` | 三辺の代表を保った、下辺が恒等の関手正方形への補完 | 実装済み |

@@ -72,3 +72,7 @@ public import SerrePositivity.InfinityCategories.F1B.TriangleBoundaryGluing
 public import SerrePositivity.InfinityCategories.F1B.TriangleBoundaryPath
 public import SerrePositivity.InfinityCategories.F1B.IntervalFamilyPath
 public import SerrePositivity.InfinityCategories.F1B.UnitCompositionBoundaryPath
+public import SerrePositivity.InfinityCategories.F1B.FunctorDiagramPath
+public import SerrePositivity.InfinityCategories.F1B.FunctorDiagramTransport
+public import SerrePositivity.InfinityCategories.F1B.UnitCompositionTransport
+public import SerrePositivity.InfinityCategories.F1B.FunctorTriangleSquare

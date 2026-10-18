@@ -478,3 +478,27 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.unitCompositionBoundaryPath_diagonal
 
 #check @SerrePositivity.InfinityCategories.unitCompositionBoundaryPath_start
+
+#check @SerrePositivity.InfinityCategories.functorDiagramPointEquiv
+
+#check @SerrePositivity.InfinityCategories.functorDiagramPathEquiv
+
+#check @SerrePositivity.InfinityCategories.functorDiagramPathEquiv_endpoint
+
+#check @SerrePositivity.InfinityCategories.functorDiagramPathEquiv_precomp
+
+#check @SerrePositivity.InfinityCategories.FunctorDiagramPathExtension
+
+#check @SerrePositivity.InfinityCategories.nonempty_functorDiagramPathExtension
+
+#check @SerrePositivity.InfinityCategories.functorDiagramPathExtension
+
+#check @SerrePositivity.InfinityCategories.unitCompositionPathExtension
+
+#check @SerrePositivity.InfinityCategories.unitCompositionPathExtension_diagonal
+
+#check @SerrePositivity.InfinityCategories.transportedUnitCompositionTriangle
+
+#check @SerrePositivity.InfinityCategories.FunctorCompositionSquare
+
+#check @SerrePositivity.InfinityCategories.functorSquareOfCompositionTriangle
