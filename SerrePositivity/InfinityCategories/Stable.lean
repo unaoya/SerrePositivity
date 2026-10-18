@@ -134,6 +134,12 @@ public import SerrePositivity.InfinityCategories.Stable.CoconeMappingGluing
 public import SerrePositivity.InfinityCategories.Stable.SpanCoconeMappingPullback
 public import SerrePositivity.InfinityCategories.Stable.SpanCoconeMappingSwap
 
+public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialSpan
+public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialPiZero
+public import SerrePositivity.InfinityCategories.Stable.CoconeMappingPiZero
+public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialHomComparison
+public import SerrePositivity.InfinityCategories.Stable.CoconeMappingHomComparison
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。

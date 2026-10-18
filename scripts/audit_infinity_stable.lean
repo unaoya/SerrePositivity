@@ -1,6 +1,27 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialTotal
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialEvaluation
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialProjection
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialProjection_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialEvaluation_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialTotal_kanComplex
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialBaseIso
+#print axioms SerrePositivity.InfinityCategories.stablePiZeroEquivOfTrivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialFiberPiZeroEquiv
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialFiberPiZeroEquiv_evaluation
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpacePiZeroEquiv
+#print axioms SerrePositivity.InfinityCategories.pushoutCocone_vertex
+#print axioms SerrePositivity.InfinityCategories.pushoutCoconeMappingSpacePiZeroEquiv
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialSection
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialSection_evaluation
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialHomComparison
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialHomComparison_homotopyEquivalence
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialFiberPiZeroEquiv_eq_comparison
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpaceHomComparison
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpaceHomComparison_homotopyEquivalence
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpacePiZeroEquiv_eq_comparison
 #print axioms SerrePositivity.InfinityCategories.coconeMappingSpace
 #print axioms SerrePositivity.InfinityCategories.coconeMappingSpace_kanComplex
 #print axioms SerrePositivity.InfinityCategories.coconeMappingSpace_restrict_ι
@@ -1142,7 +1163,12 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.CoconeMappingContractible,
     `SerrePositivity.InfinityCategories.Stable.CoconeMappingGluing,
     `SerrePositivity.InfinityCategories.Stable.SpanCoconeMappingPullback,
-    `SerrePositivity.InfinityCategories.Stable.SpanCoconeMappingSwap]
+    `SerrePositivity.InfinityCategories.Stable.SpanCoconeMappingSwap,
+    `SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialSpan,
+    `SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialPiZero,
+    `SerrePositivity.InfinityCategories.Stable.CoconeMappingPiZero,
+    `SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialHomComparison,
+    `SerrePositivity.InfinityCategories.Stable.CoconeMappingHomComparison]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

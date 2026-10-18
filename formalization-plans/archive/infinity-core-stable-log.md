@@ -11715,3 +11715,245 @@ Gluing の対象ビルド 1687 jobs、全六モジュールを含む対象ビル
 propext・Classical.choice・Quot.sound のみ。自分の新規ファイルの警告なし。
 `git diff --check` 成功。引用・追加公理・sorry は導入していない。
 負号との一致、TR2、八面体、Pretriangulated instance、S5〜S7 は未完了。
+
+
+## 2026-10-19：余錐空間の表現可能性と実際の写像空間比較
+
+S4 の符号を比較するための補助工程。始対象を持つ left fibration p : E → B の
+終点 fiber を、中間の始点固定 coslice fiber を介して底の左写像空間へ比較した。
+終点評価は始点の始対象性だけで自明 Kan fibration、底への射影は p の
+LeftFibration 性だけで自明 Kan fibration。底 B が Quasicategory のとき中間空間も Kan となり、
+π₀(vertexFiber p y) ≃ Hom(p(c), y) が得られる。
+終点評価の切断を選んで作る実際の比較射も単体的ホモトピー同値となり、
+その π₀ への作用が上の Hom 同値と一致する。
+
+coslice 射影への適用により、余極限余錐 c と任意の y に対して
+π₀(coconeMappingSpace p y) ≃ Hom(c.vertex, y)、および
+coconeMappingSpace p y → pinchedHomLeft c.vertex y の単体的ホモトピー同値を得た。
+ここで必要なのは X の Quasicategory 性と c の余極限性のみで、安定性や有限性は不要。
+押し出し四角形の余錐の頂点の同定も証明し、その終端頂点に対する Hom 同値を公開した。
+
+追加ファイルは LeftFibrationInitialSpan、LeftFibrationInitialPiZero、CoconeMappingPiZero、
+LeftFibrationInitialHomComparison、CoconeMappingHomComparison の五つ。
+公開 21 宣言の正確な型は次のとおり（Lean の #check @ による出力）。
+
+```lean
+@SerrePositivity.InfinityCategories.leftFibrationInitialTotal.{u_1} : {E B : SSet.{u_1}} →
+  Quiver.Hom.{u_1, u_1 + 1} E B →
+    CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 }) →
+      CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 }) → SSet.{u_1}
+@SerrePositivity.InfinityCategories.leftFibrationInitialEvaluation.{u_1} : {E B : SSet.{u_1}} →
+  (p : Quiver.Hom.{u_1, u_1 + 1} E B) →
+    (c : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 })) →
+      (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 })) →
+        Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.leftFibrationInitialTotal.{u_1} p c y)
+          (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p y)
+@SerrePositivity.InfinityCategories.leftFibrationInitialProjection.{u_1} : {E B : SSet.{u_1}} →
+  (p : Quiver.Hom.{u_1, u_1 + 1} E B) →
+    (c : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 })) →
+      (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 })) →
+        Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.leftFibrationInitialTotal.{u_1} p c y)
+          (SerrePositivity.InfinityCategories.vertexFiber.{u_1}
+            (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}
+              (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+                ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) c) p))
+            y)
+@SerrePositivity.InfinityCategories.leftFibrationInitialProjection_trivialKanFibration.{u_1} : ∀ {E B : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} E B) [SerrePositivity.InfinityCategories.LeftFibration.{u_1} p]
+  (c : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 }))
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 })),
+  SerrePositivity.InfinityCategories.TrivialKanFibration.{u_1}
+    (SerrePositivity.InfinityCategories.leftFibrationInitialProjection.{u_1} p c y)
+@SerrePositivity.InfinityCategories.leftFibrationInitialEvaluation_trivialKanFibration.{u_1} : ∀ {E B : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} E B)
+  (c : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 })),
+  SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} c →
+    ∀ (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 })),
+      SerrePositivity.InfinityCategories.TrivialKanFibration.{u_1}
+        (SerrePositivity.InfinityCategories.leftFibrationInitialEvaluation.{u_1} p c y)
+@SerrePositivity.InfinityCategories.leftFibrationInitialTotal_kanComplex.{u_1} : ∀ {E B : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} B] (p : Quiver.Hom.{u_1, u_1 + 1} E B)
+  [SerrePositivity.InfinityCategories.LeftFibration.{u_1} p]
+  (c : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 }))
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 })),
+  SSet.KanComplex.{u_1} (SerrePositivity.InfinityCategories.leftFibrationInitialTotal.{u_1} p c y)
+@SerrePositivity.InfinityCategories.leftFibrationInitialBaseIso.{u_1} : {E B : SSet.{u_1}} →
+  (p : Quiver.Hom.{u_1, u_1 + 1} E B) →
+    (c : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 })) →
+      (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 })) →
+        CategoryTheory.Iso.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.vertexFiber.{u_1}
+            (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}
+              (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+                ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) c) p))
+            y)
+          (SerrePositivity.InfinityCategories.pinchedHomLeft.{u_1}
+            ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+                (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} p (Opposite.op.{1} { len := 0 })))
+              c)
+            y)
+@SerrePositivity.InfinityCategories.stablePiZeroEquivOfTrivialKanFibration.{u_1} : {E B : SSet.{u_1}} →
+  [SSet.KanComplex.{u_1} E] →
+    [SSet.KanComplex.{u_1} B] →
+      (p : Quiver.Hom.{u_1, u_1 + 1} E B) →
+        [SerrePositivity.InfinityCategories.TrivialKanFibration.{u_1} p] →
+          Equiv.{u_1 + 1, u_1 + 1} (SSet.π₀.{u_1} E) (SSet.π₀.{u_1} B)
+@SerrePositivity.InfinityCategories.leftFibrationInitialFiberPiZeroEquiv.{u_1} : {E B : SSet.{u_1}} →
+  [SSet.Quasicategory.{u_1} B] →
+    (p : Quiver.Hom.{u_1, u_1 + 1} E B) →
+      [SerrePositivity.InfinityCategories.LeftFibration.{u_1} p] →
+        (c : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 })) →
+          SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} c →
+            (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 })) →
+              Equiv.{u_1 + 1, u_1 + 1} (SSet.π₀.{u_1} (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p y))
+                (Quiver.Hom.{u_1, u_1}
+                  (SSet.HomotopyCategory.mk.{u_1}
+                    ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+                        (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} p (Opposite.op.{1} { len := 0 })))
+                      c))
+                  (SSet.HomotopyCategory.mk.{u_1} y))
+@SerrePositivity.InfinityCategories.leftFibrationInitialFiberPiZeroEquiv_evaluation.{u_1} : ∀ {E B : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} B] (p : Quiver.Hom.{u_1, u_1 + 1} E B)
+  [inst_1 : SerrePositivity.InfinityCategories.LeftFibration.{u_1} p]
+  (c : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 }))
+  (hc : SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} c)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 }))
+  (a : SSet.π₀.{u_1} (SerrePositivity.InfinityCategories.leftFibrationInitialTotal.{u_1} p c y)),
+  Eq.{u_1 + 1}
+    ((SerrePositivity.InfinityCategories.leftFibrationInitialFiberPiZeroEquiv.{u_1} p c hc y)
+      (SSet.mapπ₀.{u_1} (SerrePositivity.InfinityCategories.leftFibrationInitialEvaluation.{u_1} p c y) a))
+    ((SerrePositivity.InfinityCategories.pinchedHomLeftPiZeroEquiv.{u_1}
+        ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+            (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} p (Opposite.op.{1} { len := 0 })))
+          c)
+        y)
+      (SSet.mapπ₀.{u_1}
+        (CategoryTheory.Iso.hom.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.leftFibrationInitialBaseIso.{u_1} p c y))
+        (SSet.mapπ₀.{u_1} (SerrePositivity.InfinityCategories.leftFibrationInitialProjection.{u_1} p c y) a)))
+@SerrePositivity.InfinityCategories.coconeMappingSpacePiZeroEquiv.{u_1} : {K X : SSet.{u_1}} →
+  [SSet.Quasicategory.{u_1} X] →
+    {p : Quiver.Hom.{u_1, u_1 + 1} K X} →
+      (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p) →
+        SerrePositivity.InfinityCategories.IsColimitCone.{u_1} c →
+          (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })) →
+            Equiv.{u_1 + 1, u_1 + 1} (SSet.π₀.{u_1} (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1} p y))
+              (Quiver.Hom.{u_1, u_1}
+                (SSet.HomotopyCategory.mk.{u_1} (SerrePositivity.InfinityCategories.JoinCocone.vertex.{u_1} c))
+                (SSet.HomotopyCategory.mk.{u_1} y))
+@SerrePositivity.InfinityCategories.pushoutCocone_vertex.{u_1} : ∀ {X : SSet.{u_1}}
+  (R :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.JoinCocone.vertex.{u_1}
+      (SerrePositivity.InfinityCategories.pushoutCocone.{u_1} R))
+    (SerrePositivity.InfinityCategories.squareVertex.{u_1} R 1 1)
+@SerrePositivity.InfinityCategories.pushoutCoconeMappingSpacePiZeroEquiv.{u_1} : {X : SSet.{u_1}} →
+  [SSet.Quasicategory.{u_1} X] →
+    (R :
+        Quiver.Hom.{u_1, u_1 + 1}
+          (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+          X) →
+      SerrePositivity.InfinityCategories.IsPushoutSquare.{u_1} R →
+        (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })) →
+          Equiv.{u_1 + 1, u_1 + 1}
+            (SSet.π₀.{u_1}
+              (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+                (SerrePositivity.InfinityCategories.pushoutSpan.{u_1} R) y))
+            (Quiver.Hom.{u_1, u_1} (SerrePositivity.InfinityCategories.squareHoVertex.{u_1} R 1 1)
+              (SSet.HomotopyCategory.mk.{u_1} y))
+@SerrePositivity.InfinityCategories.leftFibrationInitialSection.{u_1} : {E B : SSet.{u_1}} →
+  (p : Quiver.Hom.{u_1, u_1 + 1} E B) →
+    (c : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 })) →
+      SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} c →
+        (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 })) →
+          Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p y)
+            (SerrePositivity.InfinityCategories.leftFibrationInitialTotal.{u_1} p c y)
+@SerrePositivity.InfinityCategories.leftFibrationInitialSection_evaluation.{u_1} : ∀ {E B : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} E B)
+  (c : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 }))
+  (hc : SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} c)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 })),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.leftFibrationInitialSection.{u_1} p c hc y)
+      (SerrePositivity.InfinityCategories.leftFibrationInitialEvaluation.{u_1} p c y))
+    (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p y))
+@SerrePositivity.InfinityCategories.leftFibrationInitialHomComparison.{u_1} : {E B : SSet.{u_1}} →
+  (p : Quiver.Hom.{u_1, u_1 + 1} E B) →
+    (c : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 })) →
+      SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} c →
+        (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 })) →
+          Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p y)
+            (SerrePositivity.InfinityCategories.pinchedHomLeft.{u_1}
+              ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+                  (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} p (Opposite.op.{1} { len := 0 })))
+                c)
+              y)
+@SerrePositivity.InfinityCategories.leftFibrationInitialHomComparison_homotopyEquivalence.{u_1} : ∀ {E B : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} B] (p : Quiver.Hom.{u_1, u_1 + 1} E B)
+  [SerrePositivity.InfinityCategories.LeftFibration.{u_1} p]
+  (c : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 }))
+  (hc : SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} c)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 })),
+  SerrePositivity.InfinityCategories.IsSimplicialHomotopyEquivalence.{u_1}
+    (SerrePositivity.InfinityCategories.leftFibrationInitialHomComparison.{u_1} p c hc y)
+@SerrePositivity.InfinityCategories.leftFibrationInitialFiberPiZeroEquiv_eq_comparison.{u_1} : ∀ {E B : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} B] (p : Quiver.Hom.{u_1, u_1 + 1} E B)
+  [inst_1 : SerrePositivity.InfinityCategories.LeftFibration.{u_1} p]
+  (c : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} E (Opposite.op.{1} { len := 0 }))
+  (hc : SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} c)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} B (Opposite.op.{1} { len := 0 }))
+  (a : SSet.π₀.{u_1} (SerrePositivity.InfinityCategories.vertexFiber.{u_1} p y)),
+  Eq.{u_1 + 1} ((SerrePositivity.InfinityCategories.leftFibrationInitialFiberPiZeroEquiv.{u_1} p c hc y) a)
+    ((SerrePositivity.InfinityCategories.pinchedHomLeftPiZeroEquiv.{u_1}
+        ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+            (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1} p (Opposite.op.{1} { len := 0 })))
+          c)
+        y)
+      (SSet.mapπ₀.{u_1} (SerrePositivity.InfinityCategories.leftFibrationInitialHomComparison.{u_1} p c hc y) a))
+@SerrePositivity.InfinityCategories.coconeMappingSpaceHomComparison.{u_1} : {K X : SSet.{u_1}} →
+  {p : Quiver.Hom.{u_1, u_1 + 1} K X} →
+    (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p) →
+      SerrePositivity.InfinityCategories.IsColimitCone.{u_1} c →
+        (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })) →
+          Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1} p y)
+            (SerrePositivity.InfinityCategories.pinchedHomLeft.{u_1}
+              (SerrePositivity.InfinityCategories.JoinCocone.vertex.{u_1} c) y)
+@SerrePositivity.InfinityCategories.coconeMappingSpaceHomComparison_homotopyEquivalence.{u_1} : ∀ {K X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X] {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p)
+  (hc : SerrePositivity.InfinityCategories.IsColimitCone.{u_1} c)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })),
+  SerrePositivity.InfinityCategories.IsSimplicialHomotopyEquivalence.{u_1}
+    (SerrePositivity.InfinityCategories.coconeMappingSpaceHomComparison.{u_1} c hc y)
+@SerrePositivity.InfinityCategories.coconeMappingSpacePiZeroEquiv_eq_comparison.{u_1} : ∀ {K X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] {p : Quiver.Hom.{u_1, u_1 + 1} K X}
+  (c : SerrePositivity.InfinityCategories.JoinCocone.{u_1} p)
+  (hc : SerrePositivity.InfinityCategories.IsColimitCone.{u_1} c)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }))
+  (a : SSet.π₀.{u_1} (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1} p y)),
+  Eq.{u_1 + 1} ((SerrePositivity.InfinityCategories.coconeMappingSpacePiZeroEquiv.{u_1} c hc y) a)
+    ((SerrePositivity.InfinityCategories.pinchedHomLeftPiZeroEquiv.{u_1}
+        (SerrePositivity.InfinityCategories.JoinCocone.vertex.{u_1} c) y)
+      (SSet.mapπ₀.{u_1} (SerrePositivity.InfinityCategories.coconeMappingSpaceHomComparison.{u_1} c hc y) a))
+```
+
+対象・Stable 集約ビルドは終了コード 0（2537 jobs）。型抽出と公理監査も終了コード 0。
+監査対象は 251 モジュール・1891 宣言（生成・非公開宣言を含む）で、
+propext・Classical.choice・Quot.sound の標準三公理のみ。
+自分の五新規モジュールの警告なし。git diff --check 成功。
+引用・追加公理・sorry は導入していない。他レーンのファイルは変更していない。
+
+比較射には切断の選択が含まれる。図式・余極限余錐の変更や二枝交換との自然性は未証明。
+次の義務は二枝交換との両立、厳密な引き戻しとループ模型の比較、
+ループの群構造と既存の双積による加法との一致。
+交換作用が −𝟙 であること、回転第三射の符号、TR2、八面体・TR4、
+Pretriangulated instance、S5〜S7 は引き続き未完了。
+本補助工程を三角構造または目標全体の完成とは数えない。
