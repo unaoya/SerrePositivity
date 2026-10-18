@@ -1257,5 +1257,16 @@ noncomputable def coherentNerveEdgeEquiv {C : Type v} [Category.{u} C]
     [SimplicialCategory C] (X Y : C) :
     (SimplicialNerve C).Edge (coherentNerveVertex X) (coherentNerveVertex Y) ≃ (X ⟶ Y)
 
+noncomputable def pointedSpaceFiberVertexEquiv (K : KanObject.{u}) :
+    (vertexFiber pointedSpaceProjection (spaceInfinityVertex K)) _⦋0⦌ ≃ K.obj _⦋0⦌
+
+noncomputable def pointedSpaceFiberVertexEquivAt (s : SpaceInfinity.{u} _⦋0⦌) :
+    (vertexFiber pointedSpaceProjection s) _⦋0⦌ ≃ (spaceInfinityObject s).obj _⦋0⦌
+
+noncomputable def leftUnstraighteningFiberVertexEquiv {C : SSet.{u + 1}}
+    (F : C ⟶ SpaceInfinity.{u}) (c : C _⦋0⦌) :
+    (vertexFiber (leftUnstraighteningProjection F) c) _⦋0⦌ ≃
+      (spaceInfinityObject (F.app (Opposite.op ⦋0⦌) c)).obj _⦋0⦌
+
 end SerrePositivity.InfinityCategories
 ```

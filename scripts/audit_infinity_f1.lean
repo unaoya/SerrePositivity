@@ -309,3 +309,6 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.arrowData_transport
 #check @SerrePositivity.InfinityCategories.coherentNerveEdge_hom
 #check @SerrePositivity.InfinityCategories.coherentNerveEdgeEquiv
+#check @SerrePositivity.InfinityCategories.pointedSpaceFiberVertexEquiv
+#check @SerrePositivity.InfinityCategories.pointedSpaceFiberVertexEquivAt
+#check @SerrePositivity.InfinityCategories.leftUnstraighteningFiberVertexEquiv
