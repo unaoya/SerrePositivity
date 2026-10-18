@@ -12658,5 +12658,54 @@ noncomputable def coherentSimplexMaximalizationIso
     FunctorIso (SSet.yonedaEquiv.symm σ)
       (SSet.yonedaEquiv.symm (coherentSimplexMaximalization σ))
 
+def coherentMaximalPath {J : Type u} [LinearOrder J] {i j : J} (h : i ≤ j) : Path i j
+
+def coherentMaximalPathFunctor (J : Type u) [LinearOrder J] : J ⥤ SimplicialThickening J
+
+lemma coherentPathDeformation_one_eq_maximal {J K : Type u} [LinearOrder J] [LinearOrder K]
+    (A : J →o K) {i j : J} (P : Path i j) :
+    coherentPathDeformation A (OrderHom.const J 1) P =
+      coherentMaximalPath (A.monotone P.le)
+
+lemma coherentPathDeformationEnriched_one {J K : Type u} [LinearOrder J] [LinearOrder K]
+    (A : J →o K) :
+    coherentPathDeformationEnriched A (OrderHom.const J 1) =
+      enrichedFunctorOfOrderDiagram (A.toFunctor ⋙ coherentMaximalPathFunctor K)
+
+def coherentEnrichedUnderlyingFunctor {C : Type v} {D : Type w}
+    [Category.{u} C] [Category.{u} D] [SimplicialCategory C] [SimplicialCategory D]
+    (F : EnrichedFunctor SSet.{u} C D) : C ⥤ D
+
+lemma coherentEnrichedUnderlyingFunctor_vertex {C : Type v} {D : Type w}
+    [Category.{u} C] [Category.{u} D] [SimplicialCategory C] [SimplicialCategory D]
+    (F : EnrichedFunctor SSet.{u} C D) {X Y : C} (f : X ⟶ Y) :
+    SimplicialCategory.homEquiv' (F.obj X) (F.obj Y) ((coherentEnrichedUnderlyingFunctor F).map f) =
+      (F.map X Y).app (Opposite.op ⦋0⦌) (SimplicialCategory.homEquiv' X Y f)
+
+lemma enrichedFunctorOfOrderDiagram_postcomp {J : Type u} [LinearOrder J]
+    {C : Type v} {D : Type w} [Category.{u} C] [Category.{u} D]
+    [SimplicialCategory C] [SimplicialCategory D]
+    (A : J ⥤ C) (F : EnrichedFunctor SSet.{u} C D) :
+    (enrichedFunctorOfOrderDiagram A).comp SSet F =
+      enrichedFunctorOfOrderDiagram (A ⋙ coherentEnrichedUnderlyingFunctor F)
+
+def coherentSimplexStrictDiagram {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {n : ℕ} (σ : (SimplicialNerve C) _⦋n⦌) : ULift.{u} (Fin (n + 1)) ⥤ C
+
+lemma coherentSimplexStrictDiagram_obj {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {n : ℕ} (σ : (SimplicialNerve C) _⦋n⦌) (i : Fin (n + 1)) :
+    (coherentSimplexStrictDiagram σ).obj (ULift.up i) = σ.obj ⟨ULift.up i⟩
+
+lemma coherentSimplexMaximalization_eq_strictDiagram
+    {C : Type v} [Category.{u} C] [SimplicialCategory C]
+    {n : ℕ} (σ : (SimplicialNerve C) _⦋n⦌) :
+    coherentSimplexMaximalization σ = enrichedFunctorOfOrderDiagram (coherentSimplexStrictDiagram σ)
+
+noncomputable def coherentSimplexStrictificationIso
+    {C : Type v} [Category.{u} C] [SimplicialCategory C] [Quasicategory (SimplicialNerve C)]
+    {n : ℕ} (σ : (SimplicialNerve C) _⦋n⦌) :
+    FunctorIso (SSet.yonedaEquiv.symm σ)
+      (SSet.yonedaEquiv.symm (enrichedFunctorOfOrderDiagram (coherentSimplexStrictDiagram σ)))
+
 end SerrePositivity.InfinityCategories
 ```

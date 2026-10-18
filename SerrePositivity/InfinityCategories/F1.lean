@@ -629,3 +629,6 @@ public import SerrePositivity.InfinityCategories.F1.CoherentPathDeformation
 public import SerrePositivity.InfinityCategories.F1.CoherentPathDeformationEnriched
 public import SerrePositivity.InfinityCategories.F1.CoherentSimplexDeformation
 public import SerrePositivity.InfinityCategories.F1.CoherentSimplexDeformationIso
+public import SerrePositivity.InfinityCategories.F1.CoherentMaximalPathFunctor
+public import SerrePositivity.InfinityCategories.F1.CoherentOrderPostcomposition
+public import SerrePositivity.InfinityCategories.F1.CoherentSimplexStrictification
