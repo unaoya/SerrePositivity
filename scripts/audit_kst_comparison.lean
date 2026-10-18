@@ -32,6 +32,17 @@ set_option pp.explicit true
 #check @SerrePositivity.KST.Comparison.componentClassEquiv
 #print axioms SerrePositivity.KST.Comparison.componentClassEquiv
 
+-- ConnectiveTruncation.lean
+
+#check @SerrePositivity.KST.Comparison.supported_nonpositive_of_connective
+#print axioms SerrePositivity.KST.Comparison.supported_nonpositive_of_connective
+
+#check @SerrePositivity.KST.Comparison.quasiIso_connective_truncation
+#print axioms SerrePositivity.KST.Comparison.quasiIso_connective_truncation
+
+#check @SerrePositivity.KST.Comparison.DGAlgebraModel.quasiIso_truncation
+#print axioms SerrePositivity.KST.Comparison.DGAlgebraModel.quasiIso_truncation
+
 -- DGAlgebra.lean
 
 #check @SerrePositivity.KST.Comparison.DGAlgebraModel
@@ -134,6 +145,37 @@ set_option pp.explicit true
 #check @SerrePositivity.KST.Comparison.hatGL_mk_one
 #print axioms SerrePositivity.KST.Comparison.hatGL_mk_one
 
+-- GammaH0.lean
+
+#check @SerrePositivity.KST.Comparison.sameUniverseLiftIso
+#print axioms SerrePositivity.KST.Comparison.sameUniverseLiftIso
+
+#check @SerrePositivity.KST.Comparison.gammaEndPinchedIso
+#print axioms SerrePositivity.KST.Comparison.gammaEndPinchedIso
+
+#check @SerrePositivity.KST.Comparison.gammaEndPiZeroH0Equiv
+#print axioms SerrePositivity.KST.Comparison.gammaEndPiZeroH0Equiv
+
+#check @SerrePositivity.KST.Comparison.gammaEndPiZeroHomologyEquiv
+#print axioms SerrePositivity.KST.Comparison.gammaEndPiZeroHomologyEquiv
+
+-- GammaH0Ring.lean
+
+#check @SerrePositivity.KST.Comparison.gammaEndPinched_vertex
+#print axioms SerrePositivity.KST.Comparison.gammaEndPinched_vertex
+
+#check @SerrePositivity.KST.Comparison.gammaEndPiZeroH0Equiv_mk
+#print axioms SerrePositivity.KST.Comparison.gammaEndPiZeroH0Equiv_mk
+
+#check @SerrePositivity.KST.Comparison.gammaEndH0RingEquiv
+#print axioms SerrePositivity.KST.Comparison.gammaEndH0RingEquiv
+
+#check @SerrePositivity.KST.Comparison.dgAlgebraH0Ring
+#print axioms SerrePositivity.KST.Comparison.dgAlgebraH0Ring
+
+#check @SerrePositivity.KST.Comparison.dgAlgebraComponentsH0RingEquiv
+#print axioms SerrePositivity.KST.Comparison.dgAlgebraComponentsH0RingEquiv
+
 -- GammaRing.lean
 
 #check @SerrePositivity.KST.Comparison.GammaEnd
@@ -153,6 +195,14 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.Comparison.gammaEndDoldKanIso
 #print axioms SerrePositivity.KST.Comparison.gammaEndDoldKanIso
+
+-- GammaZeroRing.lean
+
+#check @SerrePositivity.KST.Comparison.standardZeroEval_mul
+#print axioms SerrePositivity.KST.Comparison.standardZeroEval_mul
+
+#check @SerrePositivity.KST.Comparison.gammaZeroClosedRingEquiv
+#print axioms SerrePositivity.KST.Comparison.gammaZeroClosedRingEquiv
 
 -- PiZeroRing.lean
 

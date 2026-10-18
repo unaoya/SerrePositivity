@@ -83,7 +83,11 @@ Schwede–Shipley は Equivalences of monoidal model categories を用いる。
 掲載は Algebraic & Geometric Topology 3 (2003), 287–334 である。
 その Proposition 2.13 は単体的環 ΓA を扱う。
 同命題は ĜL が各次数で群であるとは述べない。
-Segal の原典本文の精査は L2b の実装前に行う。
+Segal 1974 Proposition 1.5、本文頁 296–297 を照合した。
+A₀ の可縮性と Segal 写像 A_n → A₁^n のホモトピー同値が仮定。
+結論は A₁ → Ω|A| がホモトピー同値となることと homotopy inverse の存在の同値。
+証明は path-space PA と Proposition 1.6 の homotopy-cartesian な実現の比較による。
+単体的模型では二重単体的 bar の対角を用い、この比較部分を別途証明する。
 Waldhausen の原典本文の精査は §10-5 の記録に反映する。
 Weibel III と IV.1 の用途を混同しない。
 
@@ -288,19 +292,23 @@ amend、rebase、reset は使用しない。
 
 ## 12. 現在地と主要宣言
 
-現在地：群状単体的モノイドという設計を採用し、L2a の本構成に着手した。
+現在地：L2a の有限 rank の構成を完了し、L2b の群状モノイドの bar 構成へ進む。
 既存 γ1.5 の AW の閉性・結合律・単位律・自然性のビルドを確認した。
 既存の標準成分模型から Γ の環構造を構成した。
 ĜL_r の単体的モノイド、π₀ĜL_r ≃* GL_r(π₀A)、群構造、積と単位の代表上の整合を証明した。
 一対象 dg 圏を入力とする ΓA と ĜL_r(A) の入口を構成した。
-H⁰ との環同型と connective な入力の切断との擬同型の明示は残工程。
+H⁰ の自己射環との環同型と、connective な入力の good truncation の擬同型を証明した。
+L2a の有限 rank の要求は完了。安定 rank の余極限とその自然性は L2b の BĜL への接続で扱う。
 L2b、L2c、L2d、L2e は未完了である。
 §10-5 は検証する文言と証明方針を記した段階である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-全ての公開 70 宣言を公理監査ファイルで検査し、標準三公理のみを確認した。
-L2a の工程は完了していないため、この単位での全体ビルドは行わない。
+全ての公開 84 宣言を公理監査ファイルで検査し、標準三公理のみを確認した。
+L2a の工程の区切りで全体ビルドを実行した。
+全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
+未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
+比較レーンの対象ビルドは成功しており、他レーンのファイルは変更しない。
 
 | 主要宣言 | 状態 | 意味 |
 | --- | --- | --- |
@@ -315,7 +323,10 @@ L2a の工程は完了していないため、この単位での全体ビルド�
 | `hatGLMonoidObject` | 実装済み | KST 式 (2.2) |
 | `hatGLComponentsMulEquiv`、`hatGL_mk_mul`、`hatGL_mk_one` | 実装済み | π₀ の群と誘導乗法の整合 |
 | `dgAlgebraGamma`、`dgAlgebraHatGLComponents` | 実装済み | 一対象 dg 圏としての dg 代数への適用 |
-| 群完備化 | 未実装 | Segal Proposition 1.5 |
+| `gammaEndH0RingEquiv`、`dgAlgebraComponentsH0RingEquiv` | 実装済み | π₀Γ と既存 H⁰ 環の同型 |
+| `gammaEndPiZeroHomologyEquiv` | 実装済み | 実際の Mathlib homology との全単射 |
+| `quasiIso_connective_truncation` | 実装済み | H^i=0 (i>0) から good truncation の擬同型 |
+| 群完備化 | 実装中 | Segal Proposition 1.5 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |
 | plus 構成 | 未実装 | acyclic map と π₁ の商 |
 | K₀・K₁ の比較 | 未実装 | KST Theorem 2.16、次数 0、1 |
@@ -323,6 +334,7 @@ L2a の工程は完了していないため、この単位での全体ビルド�
 
 ## 13. 原典の所在
 
+- [Segal 1974 原論文 PDF](https://ncatlab.org/nlab/files/SegalCategoriesAndCohomologyTheories.pdf)
 - [KST arXiv:1611.08466v4](https://arxiv.org/pdf/1611.08466v4)
 - [Schwede–Shipley 2003 原論文 PDF](https://people.math.rochester.edu/faculty/doug/otherpapers/schwede-shipley2.pdf)
 

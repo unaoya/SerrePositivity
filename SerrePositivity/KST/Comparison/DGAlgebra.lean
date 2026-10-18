@@ -29,7 +29,7 @@ variable (R : Type u) [CommRing R]
 規約：合成の順序と Koszul 符号は既存の DGCategory の規約。
 使われ方：SS03 (2.9) の単体的環への入力。
 -/
-abbrev DGAlgebraModel := DGCategory R PUnit
+abbrev DGAlgebraModel := DGCategory R PUnit.{u + 1}
 
 /--
 概要：cochain 規約で dg 代数が connective であること。
