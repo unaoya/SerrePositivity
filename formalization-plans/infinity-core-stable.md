@@ -25,7 +25,12 @@ S3 の準備として、始頂点が h C の始対象となること、零頂点
 左図式を固定した fat join 比較に加え、太い coslice の任意パラメーターの普遍性、
 可逆円柱による固定図式上の同型判定、直接定義の coslice と太い coslice の比較同値を証明した。
 この結果、`cosliceCoconeFamilyMap` 自体の同値性と、余極限性が `coconeFamily` の始対象性と
-同値であることまで完成した。余極限性から図式の族における相対境界充填への接続は未完了。
+同値であることまで完成した。境界・始終対象・頂点上の fiber の反転も整備した。
+`InitialBoundaryLifting` を定義し、反転した射に `CocartesianHornFibration` がある場合は
+fiber の始対象から相対始点境界充填を得た。この輸送条件を余錐の制限射自身について
+証明する部分は未完了。終点の余錐を固定した図式の prism を持ち上げる構成と、
+`coconeRestriction` の終点固定の辺の持ち上げ性までは証明した。
+持ち上げた辺の cartesian 性を証明して、上の相対充填の定理に接続する必要がある。
 現段階は関手性・選択の自然な比較・自己同値の完成ではない。
 安定性から全有限極限・余極限を導く逆向き、S3 の関手性と自己同値、三角構造・D7 は未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
@@ -92,6 +97,8 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 太い coslice | `laxCosliceHomEquiv`（任意の形状・値域・パラメーター）、`isQCatEquivalence_cosliceLaxMap`（値域 Quasicategory） | 完了 |
 | 余錐の族の比較 | `isQCatEquivalence_cosliceCoconeFamilyMap`（値域 Quasicategory、任意図式） | 完了 |
 | 余極限性の判定 | `isColimitCone_iff_isInitialVertex_coconeFamily`（値域 Quasicategory、任意図式の JoinCocone） | 完了（相対境界充填への接続は未完了） |
+| 相対始対象 | `InitialBoundaryLifting`、`initialBoundaryLifting_of_isInitialVertex_fiber_op`（元・標的 Quasicategory、反転した射の CocartesianHornFibration、fiber の始対象） | 一般の判定は完了。余錐制限射の輸送条件は未証明 |
+| 余錐の辺の輸送 | `exists_cocone_fixedVertex_prism`、`coconeRestriction_hasLiftingProperty_finalVertex`（値域 Quasicategory、任意の形状） | 存在部分は完了。cartesian 性は未完了 |
 | S3〜S7 | ΣΩ の関手性・自然な選択比較・自己同値、三角構造・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

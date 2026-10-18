@@ -211,6 +211,37 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.QCatEquivalence.isInitialVertex_iff
 #print axioms SerrePositivity.InfinityCategories.isColimitCone_iff_isInitialVertex_coconeFamily
 
+#print axioms SerrePositivity.InfinityCategories.reverseBoundaryMap
+#print axioms SerrePositivity.InfinityCategories.reverseBoundaryMap_restrict
+#print axioms SerrePositivity.InfinityCategories.reverseBoundaryMap_injective
+#print axioms SerrePositivity.InfinityCategories.reverseBoundaryMap_comp
+#print axioms SerrePositivity.InfinityCategories.boundaryFiller_of_reverseBoundaryFiller
+#print axioms SerrePositivity.InfinityCategories.boundaryReverseIso_vertex
+#print axioms SerrePositivity.InfinityCategories.reverseBoundaryMap_vertex
+#print axioms SerrePositivity.InfinityCategories.reverseSimplex_vertex
+#print axioms SerrePositivity.InfinityCategories.isInitialVertex_of_isTerminalVertex_op
+#print axioms SerrePositivity.InfinityCategories.IsInitialVertex.op_isTerminalVertex
+#print axioms SerrePositivity.InfinityCategories.isInitialVertex_iff_isTerminalVertex_op
+#print axioms SerrePositivity.InfinityCategories.IsTerminalVertex.op_isInitialVertex
+#print axioms SerrePositivity.InfinityCategories.IsZeroVertex.op
+#print axioms SerrePositivity.InfinityCategories.InitialBoundaryLifting
+#print axioms SerrePositivity.InfinityCategories.initialBoundaryLifting_of_terminalBoundaryLifting_op
+#print axioms SerrePositivity.InfinityCategories.InitialBoundaryLifting.isInitialVertex_fiber
+#print axioms SerrePositivity.InfinityCategories.isColimitCone_of_initialBoundaryLifting_coconeRestriction
+#print axioms SerrePositivity.InfinityCategories.stablePinchedConstant_op
+#print axioms SerrePositivity.InfinityCategories.vertexFiberOpEquiv
+#print axioms SerrePositivity.InfinityCategories.vertexFiberOpIso
+#print axioms SerrePositivity.InfinityCategories.IsInitialVertex.isTerminalVertex_opFiber
+#print axioms SerrePositivity.InfinityCategories.initialBoundaryLifting_of_isInitialVertex_fiber_op
+
+#print axioms SerrePositivity.InfinityCategories.coconeSimplex_lastVertex_of_not_range
+#print axioms SerrePositivity.InfinityCategories.stable_hornOneLast_inclusion
+#print axioms SerrePositivity.InfinityCategories.stable_rightFibration_lift_prism
+#print axioms SerrePositivity.InfinityCategories.exists_cocone_fixedVertex_transport
+#print axioms SerrePositivity.InfinityCategories.stable_joinTensorLeft_prismEndpoint
+#print axioms SerrePositivity.InfinityCategories.exists_cocone_fixedVertex_prism
+#print axioms SerrePositivity.InfinityCategories.coconeRestriction_hasLiftingProperty_finalVertex
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -238,7 +269,16 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.CosliceLaxEquivalence,
     `SerrePositivity.InfinityCategories.Stable.FatJoinRightTensorComparison,
     `SerrePositivity.InfinityCategories.Stable.CosliceCoconeFamilyEquivalence,
-    `SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamily]
+    `SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamily,
+    `SerrePositivity.InfinityCategories.Stable.BoundaryOpposite,
+    `SerrePositivity.InfinityCategories.Stable.InitialOpposite,
+    `SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary,
+    `SerrePositivity.InfinityCategories.Stable.VertexFiberOpposite,
+    `SerrePositivity.InfinityCategories.Stable.CartesianInitialBoundary,
+    `SerrePositivity.InfinityCategories.Stable.CoconeLastVertex,
+    `SerrePositivity.InfinityCategories.Stable.CoconeTransport,
+    `SerrePositivity.InfinityCategories.Stable.CoconeTransportPrism,
+    `SerrePositivity.InfinityCategories.Stable.CoconeRestrictionEdges]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
