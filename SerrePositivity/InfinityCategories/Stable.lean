@@ -177,6 +177,11 @@ public import SerrePositivity.InfinityCategories.Stable.SymmetricCoconeKernelPai
 public import SerrePositivity.InfinityCategories.Stable.SymmetricCoconeLoopComparison
 public import SerrePositivity.InfinityCategories.Stable.SymmetricCoconeKernelPairSwap
 
+public import SerrePositivity.InfinityCategories.Stable.KanKernelPairFiber
+public import SerrePositivity.InfinityCategories.Stable.KanKernelPairSwapPath
+public import SerrePositivity.InfinityCategories.Stable.KanKernelPairSwapInverse
+public import SerrePositivity.InfinityCategories.Stable.SymmetricCoconeLoopSwap
+
 /-! # 安定 ∞ 圏の基盤
 
 概要：零対象・余極限・fiber/cofiber から安定 ∞ 圏の基盤を構成する。
