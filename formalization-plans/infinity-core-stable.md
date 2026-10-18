@@ -1,6 +1,6 @@
 # α-S：安定 ∞ 圏と D(S) の安定性
 
-作成日：2026-10-18。状態：S1・S2 完了、S3 実装中。S4〜S7 未完了。
+作成日：2026-10-18。状態：S1〜S3 完了。S4〜S7 未完了。
 全体の正本は [foundations.md](foundations.md) §1（F3）・§4。
 担当は旧 α の A4・A5 と D7。実施経緯・検証結果は各保存単位のコミットメッセージに記す。
 
@@ -22,7 +22,12 @@ suspension 図式の始点評価は、零対象へ向かう二辺の輸送と普
 trivial Kan fibration であることまで証明した。その逆と右上の評価から h C 上の
 `suspensionFunctor` を構成し、同じ始点の族の二つの選択の自然同型も構成した。
 任意の指定した `SuspensionSquare x` の右上と Σx の同型も公開する。
-残る中心は loop 図式の終点評価の充満忠実性と、Ω の関手化・ΣΩ の逆性である。
+loop 側でも零対象から出る二辺を延長して cospan を貼り、普遍錐の相対終点境界充填を
+適用した。終点評価は trivial Kan fibration であり、`loopFunctor`、族の選択の
+自然同型、任意の指定した LoopSquare と Ω の対象上の比較を構成した。
+二つの評価の同値の間に安定性による図式の族の同型を挟み、
+`suspensionEquivalence` を構成した。順方向は `suspensionFunctor`、逆方向は
+`loopFunctor` と厳密に一致し、単位・余単位を自然同型として公開する。S3 は完了。
 余錐側では制限射 `coconeRestriction` の fiber `coconeFamily`、その零単体と
 `JoinCocone` の同値、coslice からの比較射と零次成分の式を構成した。
 左図式を固定した fat join 比較に加え、太い coslice の任意パラメーターの普遍性、
@@ -41,9 +46,8 @@ fiber の始対象から相対始点境界充填を得た。さらに最後の�
 その厳密な切断による全単体に自然な余極限の選択と、二つの選択の関手同型も構成した。
 suspension 側ではこれを span の族へ適用済み。二本の零終点の辺の始点評価の
 trivial Kan fibration 性を証明し、span を貼って普遍余錐を充填した。
-残るのは loop 側の cospan の族への適用と、Ω・Σ の自己同値への接続である。
-現段階は S3 全体の完了ではない。
-安定性から全有限極限・余極限を導く逆向き、S3 の Ω と自己同値、三角構造・D7 は未完了。
+loop 側の双対的な適用も完了した。次は S4 の貼り合わせと三角構造へ進む。
+安定性から全有限極限・余極限を導く逆向き、S4〜S7 の三角構造・長完全列・完全関手・D7 は未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
 実装は `InfinityCategories/Stable/`、D7 は `InfinityCategories/Derived/` に置く。
 引用・追加公理・sorry を使わず、各工程を対象・集約ビルドと公理監査の後に保存する。
@@ -56,7 +60,7 @@ Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
 | 有限極限・余極限による判定 | HA Proposition 1.1.3.4 | S1・S2 以降で実際に使う向きを証明し、未証明の逆向きを主張しない |
 | h C の三角構造 | HA Theorem 1.1.2.14 | cofiber 列の像による distinguished triangle、TR1〜TR4、Mathlib Pretriangulated instance |
 | 完全関手と自然変換 | HA §1.1.4 | 零・fiber/cofiber 四角形の保存、h の三角関手、完全関手間の自然変換 |
-| 四角形の貼り合わせ | HTT Proposition 4.4.2.1 | A2 の join・slice による証明。A6 待ちの箇所が生じれば正確に特定 |
+| 四角形の貼り合わせ | HTT Lemma 4.4.2.1 | A2 の join・slice による証明。A6 待ちの箇所が生じれば正確に特定 |
 | D(S) の安定性と三角構造の一致 | 上記と D3・N7 | cofiber 四角形の押し出し性も coslice で直接証明し、D3 を三角比較へ昇格 |
 
 HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の照合に用い、引用公理にはしない。
@@ -67,7 +71,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | --- | --- | --- | --- |
 | S1 | `Stable/Pointed.lean` | 零対象、coslice の始対象としての IsColimitCone、IsPushoutSquare、fiber/cofiber 四角形 | 完了 |
 | S2 | `Stable/Definition.lean` | HA 1.1.1.9 の安定性、HA 1.1.3.4 の必要な向き | 完了 |
-| S3 | `Stable/Suspension.lean` | h C の Σ・Ω 関手、選択の比較、安定な場合の自己同値 | 実装中 |
+| S3 | `Stable/Suspension.lean` | h C の Σ・Ω 関手、選択の比較、安定な場合の自己同値 | 完了 |
 | S4 | `Stable/Pasting.lean`、`Stable/Triangulated.lean` | 四角形の貼り合わせ、cofiber 三角形、TR1〜TR4、Pretriangulated | 未着手 |
 | S5 | `Stable/LongExactSequence.lean` | fiber 列に Hom を適用した長完全列 | 未着手 |
 | S6 | `Stable/ExactFunctor.lean` | 完全関手、h の三角関手、完全関手間の自然変換 | 未着手 |
@@ -104,7 +108,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | h C の零対象 | `IsInitialVertex.isInitialHo`、`IsZeroVertex.isZeroHo`、`hasZeroObject_ho`（Quasicategory と該当する頂点条件） | 完了 |
 | 余極限の同型不変性 | `IsInitialVertex.of_vertexIso`、`IsColimitCone.of_vertexIso`（Quasicategory、同じ図式の coslice 内の同型） | 完了 |
 | ΣΩ の四角形 | `chosenSuspensionSquare x`、`chosenLoopSquare x`（Quasicategory、IsStable）、`SuspensionSquare.toLoopSquare` と双対 | 完了（対象と四角形のみ） |
-| ΣΩ の図式の族 | `suspensionDiagrams`、`loopDiagrams`（Quasicategory）、`suspensionLoopDiagramsIso`（IsStable）、評価の可換性と本質的全射性 | suspension の始点評価は同値まで完了。loop の終点評価は未完了 |
+| ΣΩ の図式の族 | `suspensionDiagrams`、`loopDiagrams`（Quasicategory）、`suspensionLoopDiagramsIso`（IsStable）、評価の可換性と本質的全射性 | 両評価の同値まで完了 |
 | 太い coslice | `laxCosliceHomEquiv`（任意の形状・値域・パラメーター）、`isQCatEquivalence_cosliceLaxMap`（値域 Quasicategory） | 完了 |
 | 余錐の族の比較 | `isQCatEquivalence_cosliceCoconeFamilyMap`（値域 Quasicategory、任意図式） | 完了 |
 | 余極限性の判定 | `isColimitCone_iff_isInitialVertex_coconeFamily`（値域 Quasicategory、任意図式の JoinCocone） | 完了（相対境界充填との同値も証明済み） |
@@ -113,9 +117,12 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 余錐制限の輸送 | `isCartesianEdge_coconeRestriction_of_apex`、`cocartesianHornFibration_coconeRestriction_op`（値域 Quasicategory、形状は任意） | 完了 |
 | 相対余極限性 | `IsColimitCone.initialBoundaryLifting`、`isColimitCone_iff_initialBoundaryLifting`（値域 Quasicategory、任意図式の JoinCocone） | 完了 |
 | 相対始対象の族 | `relativeInitialVertices`、`relativeInitialProjection_hasLiftingProperty_boundary`（任意の射、正次元境界）、`relativeInitialProjection_trivialKanFibration`（頂点全射を仮定） | 完了 |
-| 普遍余錐の族の選択 | `colimitCocones`、`colimitCoconeProjection_pullback_trivialKanFibration`、`exists_colimitCoconeFamily`、`colimitCoconeFamilyIso`（値域 Quasicategory、族の各頂点で HasColimit、基底は任意） | 一般の族と suspension 側への適用は完了。loop 側への適用は未完了 |
+| 普遍余錐の族の選択 | `colimitCocones`、`colimitCoconeProjection_pullback_trivialKanFibration`、`exists_colimitCoconeFamily`、`colimitCoconeFamilyIso`（値域 Quasicategory、族の各頂点で HasColimit、基底は任意） | 一般の族、suspension と loop の両側への適用は完了 |
 | suspension の始点評価 | `suspensionDiagramEvaluation_source_trivialKanFibration`、`suspensionDiagramSourceEquivalence`（Quasicategory、IsStable） | 完了 |
-| h C の Σ と選択の比較 | `suspensionFunctor`、`suspensionDiagramFamilyIso`、`suspensionFunctorChoiceIso`、`SuspensionSquare.suspensionFunctorObjIso`（Quasicategory、IsStable。族の比較は同じ始点の族） | 完了（Ω と自己同値は未完了） |
-| S3〜S7 | Ω の関手化・ΣΩ の逆性と自己同値、三角構造・完全関手・D7 | 未完了 |
+| h C の Σ と選択の比較 | `suspensionFunctor`、`suspensionDiagramFamilyIso`、`suspensionFunctorChoiceIso`、`SuspensionSquare.suspensionFunctorObjIso`（Quasicategory、IsStable。族の比較は同じ始点の族） | 完了 |
+| loop の終点評価 | `loopDiagramEvaluation_target_trivialKanFibration`、`loopDiagramTargetEquivalence`（Quasicategory、IsStable） | 完了 |
+| h C の Ω と選択の比較 | `loopFunctor`、`loopDiagramFamilyIso`、`loopFunctorChoiceIso`、`LoopSquare.loopFunctorObjIso`（Quasicategory、IsStable） | 完了 |
+| ΣΩ の逆性 | `suspensionEquivalence`、`suspensionEquivalence_functor`、`suspensionEquivalence_inverse`、`suspensionLoopUnitIso`、`loopSuspensionCounitIso`（Quasicategory、IsStable） | 完了 |
+| S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。
