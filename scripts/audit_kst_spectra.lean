@@ -177,7 +177,9 @@ run_cmd do
     `SerrePositivity.KST.Spectra.RationalSpectrumDiagram,
     `SerrePositivity.KST.Spectra.RationalSpectrumCocone,
     `SerrePositivity.KST.Spectra.RationalLoopTensor,
-    `SerrePositivity.KST.Spectra.RationalSpectrum]
+    `SerrePositivity.KST.Spectra.RationalSpectrum,
+    `SerrePositivity.KST.Spectra.SpectrumTailNaturality,
+    `SerrePositivity.KST.Spectra.RationalSpectrumModelMap]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, _) in env.constants.toList do
