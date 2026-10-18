@@ -96,3 +96,7 @@ public import SerrePositivity.EInfinity.Operad.InsertionCore
 public import SerrePositivity.EInfinity.Operad.InsertionMoveFirst
 public import SerrePositivity.EInfinity.Operad.SchurActionComposition
 public import SerrePositivity.EInfinity.Operad.FreeAlgebra
+public import SerrePositivity.EInfinity.Operad.AlgebraActionTransport
+public import SerrePositivity.EInfinity.Operad.SchurOperationTensorOne
+public import SerrePositivity.EInfinity.Operad.AlgebraEvaluationOne
+public import SerrePositivity.EInfinity.Operad.AlgebraEvaluationCriterion
