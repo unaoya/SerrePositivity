@@ -1195,8 +1195,16 @@ native な合成面への同型 `pathThroughIso` と、零座標面・他の合�
 零座標面と合成面の交わりは面内 Hom の直積と同型であり、この交わり上で
 `hornCompositionHom_zero_overlap` が両方の回収写像の厳密な一致を与える。
 同じ座標に関する零座標面と合成面の交わりは空で、その上の写像は一意である。
-明示的な公開 187 宣言を公理監査済み。
-残工程：合成面どうしの重なりの整合性を証明する。続いて全区間の添字をそろえ、
+二つの合成面の交わりは三つの native Hom の合成で全射に覆われる
+（`pathTripleToIntersection_epi`、切断点 b≤c を仮定）。
+この全射と真部分区間の合成則、C の結合律から、
+`hornCompositionHom_composition_overlap` を証明した。
+特に `hornInnerCompositionHom_overlap` は全区間の任意の内部切断点 b,c に対し、
+`homOfLE inf_le_left ≫ hornInnerCompositionHom b =
+ homOfLE inf_le_right ≫ hornInnerCompositionHom c` を与える。
+前提は元の内部ホーン、0<i<last、0<b,c<last のみで、Kan 性や全区間の Hom の存在は不要。
+明示的な公開 196 宣言を公理監査済み。
+残工程：全区間の零座標面と合成面の添字をそろえ、
 空洞部分への貼合せ、延長からの
 豊穣関手の復元、ホーンへの制限、`Quasicategory` を証明する。γ1 全体は未完了。
 各段の実施記録はコミットメッセージへ置き、計画本文には現在地と残工程を短く残す。

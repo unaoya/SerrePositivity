@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Coherent.Path
+public import SerrePositivity.InfinityCategories.Coherent.CompositionCompatibility
 public import SerrePositivity.InfinityCategories.Coherent.MixedCompatibility
 public import SerrePositivity.InfinityCategories.Coherent.CompositionRecovery
 public import SerrePositivity.InfinityCategories.Coherent.IntervalChoice
