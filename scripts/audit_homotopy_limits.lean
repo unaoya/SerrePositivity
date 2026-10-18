@@ -1199,3 +1199,39 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms fixedSliceFatConeComparison_exists_retraction
 #check @fixedEndpointFatConeSpace_kanComplex
 #print axioms fixedEndpointFatConeSpace_kanComplex
+#check @fatJoinTimeInput
+#print axioms fatJoinTimeInput
+#check @fatJoinTimeInput_zero
+#print axioms fatJoinTimeInput_zero
+#check @fatJoinTimeInput_one
+#print axioms fatJoinTimeInput_one
+#check @fatJoinTimeInput_time_zero
+#print axioms fatJoinTimeInput_time_zero
+#check @fatJoinTimeInput_time_one
+#print axioms fatJoinTimeInput_time_one
+#check @fixedFatConeTimeDiagram
+#print axioms fixedFatConeTimeDiagram
+#check @fixedFatConeTimeDiagram_inl
+#print axioms fixedFatConeTimeDiagram_inl
+#check @fixedFatConeTimeDiagram_inr
+#print axioms fixedFatConeTimeDiagram_inr
+#check @fixedFatConeTimeDiagram_zero
+#print axioms fixedFatConeTimeDiagram_zero
+#check @fixedFatConeTimeDiagram_one
+#print axioms fixedFatConeTimeDiagram_one
+#check @fixedFatConeHomotopyOfDiagram
+#print axioms fixedFatConeHomotopyOfDiagram
+#check @fixedSliceFatConeComparison_exists_homotopy
+#print axioms fixedSliceFatConeComparison_exists_homotopy
+#check @fixedSliceFatConeComparison_isQCatEquivalence
+#print axioms fixedSliceFatConeComparison_isQCatEquivalence
+#check @coneVertexFiberFamilyMap_isQCatEquivalence
+#print axioms coneVertexFiberFamilyMap_isQCatEquivalence
+#check @coneVertexFiberFamilyMap_homotopyEquivalence
+#print axioms coneVertexFiberFamilyMap_homotopyEquivalence
+#check @fixedApexConeHomComparison
+#print axioms fixedApexConeHomComparison
+#check @fixedApexConeHomComparison_homotopyEquivalence_iff
+#print axioms fixedApexConeHomComparison_homotopyEquivalence_iff
+#check @isLimitCone_iff_fixedApexConeHomComparison_homotopyEquivalence
+#print axioms isLimitCone_iff_fixedApexConeHomComparison_homotopyEquivalence

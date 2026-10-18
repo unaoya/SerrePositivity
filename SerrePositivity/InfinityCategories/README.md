@@ -2194,7 +2194,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開597宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開615宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2822,7 +2822,7 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開597宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開615宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
 ### 重み付き end と weighted nerve の切断の族（全単射を実装）
@@ -3369,7 +3369,8 @@ sectionFixedApexConeFamilyMap p x :
 `sectionConeFamilyUncurry_fixed` と `sectionConeFamilyUncurry_curry_fixed` は
 右端が全次数で p に固定されることを示す。二つの apex の補題も射の厳密な等式であり、
 零単体だけの対応ではない。このため slice 側と切断側から同じ固定頂点の模型への
-実際の単体集合の射が得られた。これらの射の同値性はまだ証明していない。
+実際の単体集合の射が得られた。slice 側の同値性は後節で証明した。
+切断空間側の同値性は未証明。
 大域的な `isQCatEquivalence_sliceConeFamilyMap p` から strict fiber の同値性を
 そのまま結論せず、固定頂点を保つ比較を別途証明する。
 既存の豊穣 q_x との接続と 𝒮・Sp の残りの適用も未完了。
@@ -3411,7 +3412,7 @@ fixedApexFatConeComparison p x :
 同じ前提の下で `fixedEndpointConeSpace_kanComplex`・`fixedApexConeFamily_kanComplex` を得る。
 K の quasicategory 性や非空性、p の fibration 性は不要。
 
-前節の slice と切断空間からの二つの射の同値性は、この fat join 模型の同値とは別の未完了項目。
+前節の slice 側の射の同値性は後節で証明した。切断空間側の射の同値性は未完了。
 豊穣 q_x との整合性および 𝒮・Sp の残りの適用も引き続き証明が必要である。
 
 ### 両端固定の普遍性と slice 比較の厳密な左逆（実装済み）
@@ -3457,8 +3458,52 @@ fixedSliceFatConeComparison_exists_retraction p x :
 ```
 
 逆射は頂点と図式を保つ。K の quasicategory 性や非空性は不要である。
-この厳密な左逆だけでは圏同値性を結論しない。もう一方の合成のホモトピー、
+この厳密な左逆に加え、次節でホモトピー右逆を構成して圏同値性を証明した。
 切断空間側の同値、豊穣 q_x との接続と 𝒮・Sp の残りの適用は未完了。
+
+### slice の頂点 fiber と固定頂点の内部 Hom の錐の同値（実装済み）
+
+`FatJoinTimeInput` は join の区間とホモトピーの時間を区別して円柱の成分を交換する。
+`FixedFatConeHomotopy` は両端を全時間で固定する図式のホモトピーから、
+固定頂点の錐の族の実際のホモトピー `fixedFatConeHomotopyOfDiagram` を構成する。
+この構成には充填性を要求しない。
+
+`FixedSliceConeEquivalence` は任意のパラメータ A について、
+両端固定の fat join の図式を通常の join の図式とホモトピーまで比較する既存の F1 の
+`exists_joinDiagram_of_fatJoinDiagram` を適用した。
+回収した図式を頂点を保って slice へ curry し、上のホモトピーの移送を使うことで、
+`fixedSliceFatConeComparison_exists_homotopy a` が任意の族 a のホモトピーまでの逆像を与える。
+恒等族に適用し、前節の厳密な左逆と合わせて圏同値性を証明した。
+
+任意の `K X : SSet.{u}`、`[Quasicategory X]`、`p : K ⟶ X`、`x : X _⦋0⦌` について、
+
+```lean
+fixedSliceFatConeComparison_isQCatEquivalence p x :
+  IsQCatEquivalence (fixedSliceFatConeComparison p x)
+coneVertexFiberFamilyMap_isQCatEquivalence p x :
+  IsQCatEquivalence (coneVertexFiberFamilyMap p x)
+coneVertexFiberFamilyMap_homotopyEquivalence p x :
+  IsSimplicialHomotopyEquivalence (coneVertexFiberFamilyMap p x)
+```
+
+を得た。後二者は実際の `vertexFiber (sliceOverProjection p) x ⟶ fixedApexConeFamily p x`
+についての主張である。図式の添字 K の quasicategory 性・非空性や p の fibration 性は不要。
+固定頂点の比較を、大域的な slice の同値から無条件に導いたのではない。
+
+`FixedApexLimitCriterion` はこの同値を既存の native な表現可能な極限判定へ接続する。
+任意の `c : JoinCone p` について
+
+```lean
+fixedApexConeHomComparison c x : pinchedHom x c.vertex ⟶ fixedApexConeFamily p x
+isLimitCone_iff_fixedApexConeHomComparison_homotopyEquivalence c :
+  IsLimitCone c ↔ ∀ x : X _⦋0⦌,
+    IsSimplicialHomotopyEquivalence (fixedApexConeHomComparison c x)
+```
+
+を公開した。比較射は既存の `rightFibrationHomComparison` に実際の模型の同値を後合成したもので、
+元の span の自明 Kan fibration の切断の選択を保持する。その自然性は主張しない。
+切断空間側の `sectionFixedApexConeFamilyMap` の同値性、豊穣 q_x との一致、
+𝒮・Sp の残りの適用は未完了であり、γ3b・γ3c の完成とは数えない。
 
 ### 𝒮 の空積（実装済み）
 
