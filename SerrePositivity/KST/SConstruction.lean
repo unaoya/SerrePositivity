@@ -132,4 +132,8 @@ public import SerrePositivity.KST.SConstruction.PathHomotopyFiberNaturality
 public import SerrePositivity.KST.SConstruction.PathHomotopyFiberFunctor
 public import SerrePositivity.KST.SConstruction.IteratedPathHomotopyFiber
 
+public import SerrePositivity.KST.SConstruction.DiagonalObjects
+public import SerrePositivity.KST.SConstruction.ObjectSConstruction
+public import SerrePositivity.KST.SConstruction.STwoAdditivityComparison
+
 /-! # ∞-S• 構成と連結 K 理論 -/

@@ -5255,3 +5255,145 @@ L9 の mapping path による fiber 模型との比較は未証明。
 L1d–f 未完了、L1g は別途指示待ち。Core および他レーンの公開 API に変更なし。
 
 検証：対象ビルド成功（3109 jobs）、公理監査成功（1296 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+### 6.44 正の Ω 条件の加法性による fiber 比較の準備
+
+§6.43 の比較だけでは反復 S 実現と fiber の比較は得られない。
+L2 の `segalRealization_homotopyPullback` は各面の自然性のホモトピー引き戻し性を要求するため、
+この入力を追加仮定にはせず、加法性の補題で供給する。
+L1c の Ω 条件に必要な補題を、既に §4 に記録した McCarthy 法に沿って実装する。
+L1d の加法性全体を完成扱いしない。原典は L11 §11 と Fiore–Pieper 著者公開版
+<https://www-personal.umd.umich.edu/~tmfiore/1/FiorePieperQCatAddNONHouse12.pdf> の
+Lemma 4.24、Proposition 4.27、Theorem 4.35、Corollary 3.35。
+
+文言と方針：全 gapped 図式の S_n を維持し、その零単体から object 単体集合 s•C を作る。
+core が全ての頂点を含むことから object と core の零単体を同定し、
+内部の零単体を退化させて core の対角への実際の比較射を作る。
+この比較の弱同値性は Proposition 4.27 に対応する別の証明項目であり定義に含めない。
+cofiber 列の模型は S₂C とし、面 δ₂・δ₁・δ₀ と S₁ の既存の比較による
+subobject・middle・quotient の完全関手を使う。
+これに s• と core 実現を施した (subobject, quotient) の射が McCarthy 法で証明すべき対象。
+S₂C と C×C の ∞ 圏としての同値を主張しない。
+coherent pushout の相対充填、単体積 Quillen A、object/core の弱同値比較、
+面のホモトピー引き戻し条件、既存の構造射との照合はこれから証明する。
+
+実装済み：`DiagonalObjects.lean`、`ObjectSConstruction.lean`、`STwoAdditivityComparison.lean`。
+任意の二重単体集合について、各行の内部零単体から対角への定数退化による射と、その厳密な自然性を証明した。
+任意の単体集合の頂点と core の頂点の同定を自然同型に束ね、二重単体集合の各行に適用した。
+全 gapped S_n の零単体を n 単体とする `objectSConstruction C`、core の対角への比較、
+S 図式の射についての厳密な自然性を構成した。安定な入力についての object S 関手も定義した。
+S₂ の δ₂・δ₁・δ₀ と既存の S₁ 比較を合成した subobject・middle・quotient は、
+cofiber 保存条件を持つ `StableModel` の射であり、入力について厳密に自然。
+任意の空間値関手 F に対して `(F(subobject), F(quotient))` を積へ束ねる自然変換を構成した。
+積は `SSet` の cartesian tensor を使う。二つの射影の回収式を証明し、
+F に object S と一回の core S 実現を代入した加法性の比較射を定義した。
+
+前提：object/core の比較射自体は `C : SSet.{u}` に quasicategory 性を要求しない。
+S₂ の三つの完全関手および加法性の比較は `X : StableModel.{u}` とその射を入力とする。
+一般の加法性比較の `F : StableModel.{u} ⥤ SSet.{u}` に追加仮定はない。
+以下は namespace `SerrePositivity.KST.SConstruction`、`universe u`、
+`open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet`、
+`open SerrePositivity.InfinityCategories`、`open scoped Simplicial` の下での正確な公開型。
+
+```lean
+def diagonalObjects (X : SimplexCategoryᵒᵖ ⥤ SSet.{u}) : SSet.{u}
+
+def diagonalObjectInclusion (X : SimplexCategoryᵒᵖ ⥤ SSet.{u}) :
+    diagonalObjects X ⟶ simplicialDiagonalFunctor.obj X where
+  app d
+
+def diagonalObjectInclusionNat :
+    (Functor.whiskeringRight SimplexCategoryᵒᵖ SSet.{u} (Type u)).obj
+        ((evaluation SimplexCategoryᵒᵖ (Type u)).obj (Opposite.op ⦋0⦌)) ⟶
+      simplicialDiagonalFunctor where
+  app
+
+def objectSConstruction (C : SSet.{u}) : SSet.{u}
+
+lemma objectSConstruction_obj (C : SSet.{u}) (n : ℕ) :
+    (objectSConstruction C).obj (Opposite.op ⦋n⦌) =
+      (sConstruction n C).obj (Opposite.op ⦋0⦌)
+
+def coreVertexNatIso :
+    (evaluation SimplexCategoryᵒᵖ (Type u)).obj (Opposite.op ⦋0⦌) ≅
+      quasicategoryCoreFunctor ⋙
+        (evaluation SimplexCategoryᵒᵖ (Type u)).obj (Opposite.op ⦋0⦌)
+
+def coreDiagramObjectsIso :
+    (Functor.whiskeringRight SimplexCategoryᵒᵖ SSet.{u} (Type u)).obj
+        ((evaluation SimplexCategoryᵒᵖ (Type u)).obj (Opposite.op ⦋0⦌)) ≅
+      (Functor.whiskeringRight SimplexCategoryᵒᵖ SSet.{u} SSet.{u}).obj
+        quasicategoryCoreFunctor ⋙
+      (Functor.whiskeringRight SimplexCategoryᵒᵖ SSet.{u} (Type u)).obj
+        ((evaluation SimplexCategoryᵒᵖ (Type u)).obj (Opposite.op ⦋0⦌))
+
+def objectCoreDiagonalComparisonNat :
+    (Functor.whiskeringRight SimplexCategoryᵒᵖ SSet.{u} (Type u)).obj
+        ((evaluation SimplexCategoryᵒᵖ (Type u)).obj (Opposite.op ⦋0⦌)) ⟶
+      (Functor.whiskeringRight SimplexCategoryᵒᵖ SSet.{u} SSet.{u}).obj
+        quasicategoryCoreFunctor ⋙ simplicialDiagonalFunctor
+
+def objectSCoreVertexIso (C : SSet.{u}) :
+    objectSConstruction C ≅ diagonalObjects (simplicialCoreSConstruction C)
+
+def objectToCoreSRealization (C : SSet.{u}) :
+    objectSConstruction C ⟶ simplicialDiagonalFunctor.obj (simplicialCoreSConstruction C)
+
+lemma objectToCoreSRealization_eq (C : SSet.{u}) :
+    objectToCoreSRealization C =
+      objectCoreDiagonalComparisonNat.app (simplicialSConstruction C)
+
+lemma objectToCoreSRealization_naturality {C D : SSet.{u}}
+    (f : simplicialSConstruction C ⟶ simplicialSConstruction D) :
+    Functor.whiskerRight f
+        ((evaluation SimplexCategoryᵒᵖ (Type u)).obj (Opposite.op ⦋0⦌)) ≫
+      objectToCoreSRealization D =
+        objectToCoreSRealization C ≫
+          simplicialDiagonalFunctor.map (Functor.whiskerRight f quasicategoryCoreFunctor)
+
+def objectSConstructionFunctor : StableModel.{u} ⥤ SSet.{u}
+
+lemma objectSConstructionFunctor_obj (X : StableModel.{u}) :
+    objectSConstructionFunctor.obj X = objectSConstruction X.carrier
+
+def sTwoFaceComparisonNat (i : Fin 3) : sEndofunctor.{u} 2 ⟶ 𝟭 StableModel.{u}
+
+def sTwoSubobject (X : StableModel.{u}) : (sEndofunctor 2).obj X ⟶ X
+
+def sTwoMiddle (X : StableModel.{u}) : (sEndofunctor 2).obj X ⟶ X
+
+def sTwoQuotient (X : StableModel.{u}) : (sEndofunctor 2).obj X ⟶ X
+
+def sTwoAdditivityComparisonNat (F : StableModel.{u} ⥤ SSet.{u}) :
+    sEndofunctor 2 ⋙ F ⟶ F ⊗ F where
+  app X
+
+lemma sTwoAdditivityComparisonNat_fst (F : StableModel.{u} ⥤ SSet.{u}) (X : StableModel.{u}) :
+    (sTwoAdditivityComparisonNat F).app X ≫ fst (F.obj X) (F.obj X) =
+      F.map (sTwoSubobject X)
+
+lemma sTwoAdditivityComparisonNat_snd (F : StableModel.{u} ⥤ SSet.{u}) (X : StableModel.{u}) :
+    (sTwoAdditivityComparisonNat F).app X ≫ snd (F.obj X) (F.obj X) =
+      F.map (sTwoQuotient X)
+
+def objectSAdditivityComparisonNat :
+    sEndofunctor.{u} 2 ⋙ objectSConstructionFunctor ⟶
+      objectSConstructionFunctor ⊗ objectSConstructionFunctor
+
+def coreSAdditivityComparisonNat :
+    sEndofunctor.{u} 2 ⋙ multiRealizationFunctor 1 ⟶
+      multiRealizationFunctor 1 ⊗ multiRealizationFunctor 1
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。
+正の Ω 条件に必要な加法性補題の object 単体集合、object/core の自然な比較射、
+S₂ の完全な三つの評価と object・core 実現での加法性の具体的な比較射まで構成済み。
+coherent pushout を用いる McCarthy の単体ホモトピー、単体積 Quillen A、object/core 比較の弱同値性、
+加法性の比較射の弱同値性、面のホモトピー引き戻し条件は未証明。
+McCarthy の一般の pushout の選択には、安定性から任意 span の pushout の存在と、
+cofiber 保存から任意の pushout の保存を導く補題も必要であり、追加仮定では済ませない。
+反復 S 実現と §6.43 の homotopy fiber の比較、既存の構造射との照合、
+正の段の Ω 条件・delooping、負次数消滅を含む BF 連結スペクトル、スペクトル関手は未完了。
+L1d–f 未完了、L1g は別途指示待ち。Core および他レーンの公開 API に変更なし。
+
+検証：対象ビルド成功（3112 jobs）、公理監査成功（1319 宣言、標準三公理のみ）。追加公理・sorry なし。

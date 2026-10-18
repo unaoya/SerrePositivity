@@ -3468,3 +3468,51 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.iteratedPathLoopComparison_piIsomorphism
 #check @SerrePositivity.KST.SConstruction.iteratedPathLoopComparisonNat
 #print axioms SerrePositivity.KST.SConstruction.iteratedPathLoopComparisonNat
+
+-- McCarthy 法の全 gapped object 単体集合と加法性の比較射
+#check @SerrePositivity.KST.SConstruction.diagonalObjects
+#print axioms SerrePositivity.KST.SConstruction.diagonalObjects
+#check @SerrePositivity.KST.SConstruction.diagonalObjectInclusion
+#print axioms SerrePositivity.KST.SConstruction.diagonalObjectInclusion
+#check @SerrePositivity.KST.SConstruction.diagonalObjectInclusionNat
+#print axioms SerrePositivity.KST.SConstruction.diagonalObjectInclusionNat
+#check @SerrePositivity.KST.SConstruction.objectSConstruction
+#print axioms SerrePositivity.KST.SConstruction.objectSConstruction
+#check @SerrePositivity.KST.SConstruction.objectSConstruction_obj
+#print axioms SerrePositivity.KST.SConstruction.objectSConstruction_obj
+#check @SerrePositivity.KST.SConstruction.coreVertexNatIso
+#print axioms SerrePositivity.KST.SConstruction.coreVertexNatIso
+#check @SerrePositivity.KST.SConstruction.coreDiagramObjectsIso
+#print axioms SerrePositivity.KST.SConstruction.coreDiagramObjectsIso
+#check @SerrePositivity.KST.SConstruction.objectCoreDiagonalComparisonNat
+#print axioms SerrePositivity.KST.SConstruction.objectCoreDiagonalComparisonNat
+#check @SerrePositivity.KST.SConstruction.objectSCoreVertexIso
+#print axioms SerrePositivity.KST.SConstruction.objectSCoreVertexIso
+#check @SerrePositivity.KST.SConstruction.objectToCoreSRealization
+#print axioms SerrePositivity.KST.SConstruction.objectToCoreSRealization
+#check @SerrePositivity.KST.SConstruction.objectToCoreSRealization_eq
+#print axioms SerrePositivity.KST.SConstruction.objectToCoreSRealization_eq
+#check @SerrePositivity.KST.SConstruction.objectToCoreSRealization_naturality
+#print axioms SerrePositivity.KST.SConstruction.objectToCoreSRealization_naturality
+#check @SerrePositivity.KST.SConstruction.objectSConstructionFunctor
+#print axioms SerrePositivity.KST.SConstruction.objectSConstructionFunctor
+#check @SerrePositivity.KST.SConstruction.objectSConstructionFunctor_obj
+#print axioms SerrePositivity.KST.SConstruction.objectSConstructionFunctor_obj
+#check @SerrePositivity.KST.SConstruction.sTwoFaceComparisonNat
+#print axioms SerrePositivity.KST.SConstruction.sTwoFaceComparisonNat
+#check @SerrePositivity.KST.SConstruction.sTwoSubobject
+#print axioms SerrePositivity.KST.SConstruction.sTwoSubobject
+#check @SerrePositivity.KST.SConstruction.sTwoMiddle
+#print axioms SerrePositivity.KST.SConstruction.sTwoMiddle
+#check @SerrePositivity.KST.SConstruction.sTwoQuotient
+#print axioms SerrePositivity.KST.SConstruction.sTwoQuotient
+#check @SerrePositivity.KST.SConstruction.sTwoAdditivityComparisonNat
+#print axioms SerrePositivity.KST.SConstruction.sTwoAdditivityComparisonNat
+#check @SerrePositivity.KST.SConstruction.sTwoAdditivityComparisonNat_fst
+#print axioms SerrePositivity.KST.SConstruction.sTwoAdditivityComparisonNat_fst
+#check @SerrePositivity.KST.SConstruction.sTwoAdditivityComparisonNat_snd
+#print axioms SerrePositivity.KST.SConstruction.sTwoAdditivityComparisonNat_snd
+#check @SerrePositivity.KST.SConstruction.objectSAdditivityComparisonNat
+#print axioms SerrePositivity.KST.SConstruction.objectSAdditivityComparisonNat
+#check @SerrePositivity.KST.SConstruction.coreSAdditivityComparisonNat
+#print axioms SerrePositivity.KST.SConstruction.coreSAdditivityComparisonNat
