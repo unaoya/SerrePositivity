@@ -1862,5 +1862,41 @@ lemma coherentResolutionProjection_isPrecompositionEquivalence (n : ℕ) :
 lemma coherentResolutionSection_isPrecompositionEquivalence (n : ℕ) :
     IsPrecompositionEquivalence (coherentResolutionSection.{u} n)
 
+def CoherentResolutionFlag.pushforward {n m d : ℕ} (F : CoherentResolutionFlag n d)
+    (β : Fin (n + 1) →o Fin (m + 1)) : CoherentResolutionFlag m d
+
+lemma CoherentResolutionFlag.maxAt_pushforward {n m d : ℕ}
+    (F : CoherentResolutionFlag n d) (β : Fin (n + 1) →o Fin (m + 1))
+    (i : Fin (d + 1)) : (F.pushforward β).maxAt i = β (F.maxAt i)
+
+lemma CoherentResolutionFlag.pushforward_pullback {n m d e : ℕ}
+    (F : CoherentResolutionFlag n d) (β : Fin (n + 1) →o Fin (m + 1))
+    (α : Fin (e + 1) →o Fin (d + 1)) :
+    (F.pushforward β).pullback α = (F.pullback α).pushforward β
+
+lemma CoherentResolutionFlag.pushforward_id {n d : ℕ} (F : CoherentResolutionFlag n d) :
+    F.pushforward (OrderHom.id (α := Fin (n + 1))) = F
+
+lemma CoherentResolutionFlag.pushforward_comp {n m l d : ℕ}
+    (F : CoherentResolutionFlag n d) (β : Fin (n + 1) →o Fin (m + 1))
+    (γ : Fin (m + 1) →o Fin (l + 1)) :
+    (F.pushforward β).pushforward γ = F.pushforward (γ.comp β)
+
+def coherentResolutionMap {n m : ℕ} (β : Fin (n + 1) →o Fin (m + 1)) :
+    coherentResolutionSimplex.{u} n ⟶ coherentResolutionSimplex m
+
+lemma coherentResolutionMap_id (n : ℕ) :
+    coherentResolutionMap.{u} (OrderHom.id (α := Fin (n + 1))) =
+      𝟙 (coherentResolutionSimplex n)
+
+lemma coherentResolutionMap_comp {n m l : ℕ}
+    (β : Fin (n + 1) →o Fin (m + 1)) (γ : Fin (m + 1) →o Fin (l + 1)) :
+    coherentResolutionMap.{u} β ≫ coherentResolutionMap γ =
+      coherentResolutionMap (γ.comp β)
+
+def coherentResolutionDiagram : SimplexCategory ⥤ SSet.{u}
+
+def coherentResolutionProjectionNat : coherentResolutionDiagram.{u} ⟶ SSet.stdSimplex
+
 end SerrePositivity.InfinityCategories
 ```

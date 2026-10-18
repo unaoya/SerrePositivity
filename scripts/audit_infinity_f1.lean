@@ -443,3 +443,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.coherentResolutionHomotopy_vertex_isInvertible
 #check @SerrePositivity.InfinityCategories.coherentResolutionProjection_isPrecompositionEquivalence
 #check @SerrePositivity.InfinityCategories.coherentResolutionSection_isPrecompositionEquivalence
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.pushforward
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.maxAt_pushforward
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.pushforward_pullback
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.pushforward_id
+#check @SerrePositivity.InfinityCategories.CoherentResolutionFlag.pushforward_comp
+#check @SerrePositivity.InfinityCategories.coherentResolutionMap
+#check @SerrePositivity.InfinityCategories.coherentResolutionMap_id
+#check @SerrePositivity.InfinityCategories.coherentResolutionMap_comp
+#check @SerrePositivity.InfinityCategories.coherentResolutionDiagram
+#check @SerrePositivity.InfinityCategories.coherentResolutionProjectionNat
