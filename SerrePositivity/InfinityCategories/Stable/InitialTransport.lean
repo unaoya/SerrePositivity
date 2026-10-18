@@ -21,7 +21,7 @@ namespace SerrePositivity.InfinityCategories
 /-- 概要：始頂点の coslice 射影に任意の図式を持ち上げられる。
 方針：空部分複体からの持ち上げ性を使う。
 規約：図式の形状は任意。使われ方：境界からの余錐と零対象からの図式。 -/
-lemma IsInitialVertex.exists_cosliceLift {A X : SSet.{u}} {x : X _⦋0⦌}
+lemma IsInitialVertex.exists_stableCosliceLift {A X : SSet.{u}} {x : X _⦋0⦌}
     (hx : IsInitialVertex x) (b : A ⟶ X) :
     ∃ C : A ⟶ sliceUnder (SSet.yonedaEquiv.symm x),
       C ≫ sliceUnderProjection (SSet.yonedaEquiv.symm x) = b := by
@@ -41,7 +41,7 @@ lemma isInitialVertex_of_isInitialHo {X : SSet.{u}} [Quasicategory X]
     {x y : X _⦋0⦌} (hx : IsInitialVertex x)
     (hy : IsInitial (SSet.HomotopyCategory.mk y : hoFunctor.obj X)) : IsInitialVertex y := by
   intro n b hb
-  obtain ⟨C, hC⟩ := hx.exists_cosliceLift b
+  obtain ⟨C, hC⟩ := hx.exists_stableCosliceLift b
   let G := sliceUnderUncurry C
   let v := SSet.yonedaEquiv (boundaryVertex n 0)
   let t := C.app (Opposite.op ⦋0⦌) v

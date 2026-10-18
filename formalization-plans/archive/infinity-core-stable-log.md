@@ -663,3 +663,148 @@ S3 全体は未完了。関手性・選択間の自然同型・ΣΩ の自己同
               (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1} toZeroTriangle) →
             SerrePositivity.InfinityCategories.LoopSquare.{u_1} x
 ```
+
+## S3 の準備：普遍四角形の族と評価
+
+S3 全体は未完了。評価の充満忠実性と、その逆関手による ΣΩ の構成が残る。
+対象・集約ビルド（1626 jobs）、全 292 宣言／9 モジュールの標準三公理監査に成功。
+並行中の Core の同名補題と衝突しないよう、先の持ち上げ補題を
+`IsInitialVertex.exists_stableCosliceLift` に改名した。公開型：
+
+```lean
+@SerrePositivity.InfinityCategories.squareDiagram.{u_1} : {X : SSet.{u_1}} →
+  CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) ⟹
+        X)
+      (Opposite.op.{1} { len := 0 }) →
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X
+@SerrePositivity.InfinityCategories.squareDiagram_functorVertex.{u_1} : ∀ {X : SSet.{u_1}}
+  (F :
+    Quiver.Hom.{u_1, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+        (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+      X),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.squareDiagram.{u_1} (SerrePositivity.InfinityCategories.functorVertex.{u_1} F))
+    F
+@SerrePositivity.InfinityCategories.IsSuspensionDiagramVertex.{u_1} : {X : SSet.{u_1}} →
+  CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) ⟹
+        X)
+      (Opposite.op.{1} { len := 0 }) →
+    Prop
+@SerrePositivity.InfinityCategories.IsLoopDiagramVertex.{u_1} : {X : SSet.{u_1}} →
+  CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) ⟹
+        X)
+      (Opposite.op.{1} { len := 0 }) →
+    Prop
+SerrePositivity.InfinityCategories.suspensionDiagrams.{u_1} : SSet.{u_1} → SSet.{u_1}
+SerrePositivity.InfinityCategories.loopDiagrams.{u_1} : SSet.{u_1} → SSet.{u_1}
+SerrePositivity.InfinityCategories.suspensionDiagrams_quasicategory.{u_1} : ∀ (X : SSet.{u_1})
+  [SSet.Quasicategory.{u_1} X], SSet.Quasicategory.{u_1} (SerrePositivity.InfinityCategories.suspensionDiagrams.{u_1} X)
+SerrePositivity.InfinityCategories.loopDiagrams_quasicategory.{u_1} : ∀ (X : SSet.{u_1}) [SSet.Quasicategory.{u_1} X],
+  SSet.Quasicategory.{u_1} (SerrePositivity.InfinityCategories.loopDiagrams.{u_1} X)
+SerrePositivity.InfinityCategories.suspensionDiagramEvaluation.{u_1} : (X : SSet.{u_1}) →
+  Fin 2 → Fin 2 → Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.suspensionDiagrams.{u_1} X) X
+SerrePositivity.InfinityCategories.loopDiagramEvaluation.{u_1} : (X : SSet.{u_1}) →
+  Fin 2 → Fin 2 → Quiver.Hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.loopDiagrams.{u_1} X) X
+@SerrePositivity.InfinityCategories.isSuspensionDiagramVertex_iff_isLoopDiagramVertex.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X] [SerrePositivity.InfinityCategories.IsStable.{u_1} X]
+  (v :
+    CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+      (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1}
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 })
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }) ⟹
+        X)
+      (Opposite.op.{1} { len := 0 })),
+  SerrePositivity.InfinityCategories.IsSuspensionDiagramVertex.{u_1} v ↔
+    SerrePositivity.InfinityCategories.IsLoopDiagramVertex.{u_1} v
+SerrePositivity.InfinityCategories.suspensionLoopDiagramsIso.{u_1} : (X : SSet.{u_1}) →
+  [inst : SSet.Quasicategory.{u_1} X] →
+    [SerrePositivity.InfinityCategories.IsStable.{u_1} X] →
+      CategoryTheory.Iso.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.suspensionDiagrams.{u_1} X)
+        (SerrePositivity.InfinityCategories.loopDiagrams.{u_1} X)
+SerrePositivity.InfinityCategories.suspensionLoopDiagramsIso_evaluation.{u_1} : ∀ (X : SSet.{u_1})
+  [inst : SSet.Quasicategory.{u_1} X] [inst_1 : SerrePositivity.InfinityCategories.IsStable.{u_1} X] (i j : Fin 2),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1} (SerrePositivity.InfinityCategories.suspensionLoopDiagramsIso.{u_1} X))
+      (SerrePositivity.InfinityCategories.loopDiagramEvaluation.{u_1} X i j))
+    (SerrePositivity.InfinityCategories.suspensionDiagramEvaluation.{u_1} X i j)
+@SerrePositivity.InfinityCategories.SuspensionSquare.diagramVertex.{u_1} : {X : SSet.{u_1}} →
+  {x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })} →
+    SerrePositivity.InfinityCategories.SuspensionSquare.{u_1} x →
+      CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (SerrePositivity.InfinityCategories.suspensionDiagrams.{u_1} X)
+        (Opposite.op.{1} { len := 0 })
+@SerrePositivity.InfinityCategories.LoopSquare.diagramVertex.{u_1} : {X : SSet.{u_1}} →
+  {x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })} →
+    SerrePositivity.InfinityCategories.LoopSquare.{u_1} x →
+      CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} (SerrePositivity.InfinityCategories.loopDiagrams.{u_1} X)
+        (Opposite.op.{1} { len := 0 })
+@SerrePositivity.InfinityCategories.SuspensionSquare.diagramVertex_evaluation.{u_1} : ∀ {X : SSet.{u_1}}
+  {x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (s : SerrePositivity.InfinityCategories.SuspensionSquare.{u_1} x) (i j : Fin 2),
+  Eq.{u_1 + 1}
+    ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+        (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+          (SerrePositivity.InfinityCategories.suspensionDiagramEvaluation.{u_1} X i j) (Opposite.op.{1} { len := 0 })))
+      (SerrePositivity.InfinityCategories.SuspensionSquare.diagramVertex.{u_1} s))
+    (SerrePositivity.InfinityCategories.squareVertex.{u_1}
+      (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+        (SerrePositivity.InfinityCategories.SuspensionSquare.toZeroTriangle.{u_1} s))
+      i j)
+@SerrePositivity.InfinityCategories.LoopSquare.diagramVertex_evaluation.{u_1} : ∀ {X : SSet.{u_1}}
+  {x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (s : SerrePositivity.InfinityCategories.LoopSquare.{u_1} x) (i j : Fin 2),
+  Eq.{u_1 + 1}
+    ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+        (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+          (SerrePositivity.InfinityCategories.loopDiagramEvaluation.{u_1} X i j) (Opposite.op.{1} { len := 0 })))
+      (SerrePositivity.InfinityCategories.LoopSquare.diagramVertex.{u_1} s))
+    (SerrePositivity.InfinityCategories.squareVertex.{u_1}
+      (SerrePositivity.InfinityCategories.ZeroTriangle.square.{u_1}
+        (SerrePositivity.InfinityCategories.LoopSquare.toZeroTriangle.{u_1} s))
+      i j)
+SerrePositivity.InfinityCategories.suspensionDiagramEvaluation_source_surjective.{u_1} : ∀ (X : SSet.{u_1})
+  [inst : SSet.Quasicategory.{u_1} X] [SerrePositivity.InfinityCategories.IsStable.{u_1} X],
+  Function.Surjective.{u_1 + 1, u_1 + 1}
+    ⇑(CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+        (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+          (SerrePositivity.InfinityCategories.suspensionDiagramEvaluation.{u_1} X 0 0) (Opposite.op.{1} { len := 0 })))
+SerrePositivity.InfinityCategories.loopDiagramEvaluation_target_surjective.{u_1} : ∀ (X : SSet.{u_1})
+  [inst : SSet.Quasicategory.{u_1} X] [SerrePositivity.InfinityCategories.IsStable.{u_1} X],
+  Function.Surjective.{u_1 + 1, u_1 + 1}
+    ⇑(CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+        (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+          (SerrePositivity.InfinityCategories.loopDiagramEvaluation.{u_1} X 1 1) (Opposite.op.{1} { len := 0 })))
+SerrePositivity.InfinityCategories.suspensionDiagramEvaluation_source_essentiallySurjective.{u_1} : ∀ (X : SSet.{u_1})
+  [inst : SSet.Quasicategory.{u_1} X] [SerrePositivity.InfinityCategories.IsStable.{u_1} X],
+  SerrePositivity.InfinityCategories.IsEssentiallySurjective.{u_1}
+    (SerrePositivity.InfinityCategories.suspensionDiagramEvaluation.{u_1} X 0 0)
+SerrePositivity.InfinityCategories.loopDiagramEvaluation_target_essentiallySurjective.{u_1} : ∀ (X : SSet.{u_1})
+  [inst : SSet.Quasicategory.{u_1} X] [SerrePositivity.InfinityCategories.IsStable.{u_1} X],
+  SerrePositivity.InfinityCategories.IsEssentiallySurjective.{u_1}
+    (SerrePositivity.InfinityCategories.loopDiagramEvaluation.{u_1} X 1 1)
+@SerrePositivity.InfinityCategories.IsInitialVertex.exists_stableCosliceLift.{u_1} : ∀ {A X : SSet.{u_1}}
+  {x : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })},
+  SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} x →
+    ∀ (b : Quiver.Hom.{u_1, u_1 + 1} A X),
+      ∃ C,
+        Eq.{u_1 + 1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} C
+            (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}
+              ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) x)))
+          b
+```

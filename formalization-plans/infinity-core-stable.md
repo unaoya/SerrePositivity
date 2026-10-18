@@ -15,7 +15,12 @@ S2 は完了。HA 1.1.1.9 の三条件を `IsStable` に定義し、有限極限
 S3 の準備として、始頂点が h C の始対象となること、零頂点が h C の零対象となること、
 始対象・余極限錐の h(sliceUnder) の同型による不変性を直接証明した。
 二つの零角を持つ suspension/loop 四角形は全頂点で構成でき、安定性によって同じ四角形が
-互いの普遍四角形となる。これは関手性・選択の自然な比較・自己同値の完成ではない。
+互いの普遍四角形となる。四角形を関手 ∞ 圏の全部分圏 `suspensionDiagrams`・
+`loopDiagrams` に束ね、全ての角の評価が単体的な射であること、安定性による二つの族の
+同型とその評価との可換性、始点／終点評価の本質的全射性も証明した。
+残る中心は始点／終点評価の充満忠実性（図式の族における普遍余錐／錐の相対充填）。
+その証明後に逆関手を取り h C の ΣΩ と選択間の自然同型を構成する。
+現段階は関手性・選択の自然な比較・自己同値の完成ではない。
 安定性から全有限極限・余極限を導く逆向き、S3 の関手性と自己同値、三角構造・D7 は未完了。
 Core・F1・DGNerve・DoldKanComparison・HomotopyLimits は参照専用。
 実装は `InfinityCategories/Stable/`、D7 は `InfinityCategories/Derived/` に置く。
@@ -77,6 +82,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | h C の零対象 | `IsInitialVertex.isInitialHo`、`IsZeroVertex.isZeroHo`、`hasZeroObject_ho`（Quasicategory と該当する頂点条件） | 完了 |
 | 余極限の同型不変性 | `IsInitialVertex.of_vertexIso`、`IsColimitCone.of_vertexIso`（Quasicategory、同じ図式の coslice 内の同型） | 完了 |
 | ΣΩ の四角形 | `chosenSuspensionSquare x`、`chosenLoopSquare x`（Quasicategory、IsStable）、`SuspensionSquare.toLoopSquare` と双対 | 完了（対象と四角形のみ） |
+| ΣΩ の図式の族 | `suspensionDiagrams`、`loopDiagrams`（Quasicategory）、`suspensionLoopDiagramsIso`（IsStable）、評価の可換性と本質的全射性 | 完了（評価の充満忠実性は未完了） |
 | S3〜S7 | ΣΩ の関手性・自然な選択比較・自己同値、三角構造・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

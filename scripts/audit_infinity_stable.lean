@@ -88,7 +88,7 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.IsInitialVertex.isInitialHo
 #print axioms SerrePositivity.InfinityCategories.IsZeroVertex.isZeroHo
 #print axioms SerrePositivity.InfinityCategories.hasZeroObject_ho
-#print axioms SerrePositivity.InfinityCategories.IsInitialVertex.exists_cosliceLift
+#print axioms SerrePositivity.InfinityCategories.IsInitialVertex.exists_stableCosliceLift
 #print axioms SerrePositivity.InfinityCategories.isInitialVertex_of_isInitialHo
 #print axioms SerrePositivity.InfinityCategories.IsInitialVertex.of_vertexIso
 #print axioms SerrePositivity.InfinityCategories.isInitialVertex_iff_of_vertexIso
@@ -108,6 +108,28 @@ import Lean.Util.CollectAxioms
 #print axioms SerrePositivity.InfinityCategories.SuspensionSquare.toLoopSquare
 #print axioms SerrePositivity.InfinityCategories.LoopSquare.toSuspensionSquare
 
+#print axioms SerrePositivity.InfinityCategories.squareDiagram
+#print axioms SerrePositivity.InfinityCategories.squareDiagram_functorVertex
+#print axioms SerrePositivity.InfinityCategories.IsSuspensionDiagramVertex
+#print axioms SerrePositivity.InfinityCategories.IsLoopDiagramVertex
+#print axioms SerrePositivity.InfinityCategories.suspensionDiagrams
+#print axioms SerrePositivity.InfinityCategories.loopDiagrams
+#print axioms SerrePositivity.InfinityCategories.suspensionDiagrams_quasicategory
+#print axioms SerrePositivity.InfinityCategories.loopDiagrams_quasicategory
+#print axioms SerrePositivity.InfinityCategories.suspensionDiagramEvaluation
+#print axioms SerrePositivity.InfinityCategories.loopDiagramEvaluation
+#print axioms SerrePositivity.InfinityCategories.isSuspensionDiagramVertex_iff_isLoopDiagramVertex
+#print axioms SerrePositivity.InfinityCategories.suspensionLoopDiagramsIso
+#print axioms SerrePositivity.InfinityCategories.suspensionLoopDiagramsIso_evaluation
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.diagramVertex
+#print axioms SerrePositivity.InfinityCategories.LoopSquare.diagramVertex
+#print axioms SerrePositivity.InfinityCategories.SuspensionSquare.diagramVertex_evaluation
+#print axioms SerrePositivity.InfinityCategories.LoopSquare.diagramVertex_evaluation
+#print axioms SerrePositivity.InfinityCategories.suspensionDiagramEvaluation_source_surjective
+#print axioms SerrePositivity.InfinityCategories.loopDiagramEvaluation_target_surjective
+#print axioms SerrePositivity.InfinityCategories.suspensionDiagramEvaluation_source_essentiallySurjective
+#print axioms SerrePositivity.InfinityCategories.loopDiagramEvaluation_target_essentiallySurjective
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -119,7 +141,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.Definition,
     `SerrePositivity.InfinityCategories.Stable.ZeroHomotopy,
     `SerrePositivity.InfinityCategories.Stable.InitialTransport,
-    `SerrePositivity.InfinityCategories.Stable.SuspensionSquare]
+    `SerrePositivity.InfinityCategories.Stable.SuspensionSquare,
+    `SerrePositivity.InfinityCategories.Stable.SuspensionDiagrams]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
