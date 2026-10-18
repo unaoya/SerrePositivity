@@ -44,3 +44,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.isCocartesianEdge_pullback
 #check @SerrePositivity.InfinityCategories.cartesianFibration_pullback_snd
 #check @SerrePositivity.InfinityCategories.cocartesianFibration_pullback_snd
+#check @SerrePositivity.InfinityCategories.rightFibration_of_cartesianFibration_of_all_edges
+#check @SerrePositivity.InfinityCategories.rightFibration_iff_cartesianFibration_all_edges
+#check @SerrePositivity.InfinityCategories.leftFibration_of_cocartesianFibration_of_all_edges
+#check @SerrePositivity.InfinityCategories.leftFibration_iff_cocartesianFibration_all_edges

@@ -115,5 +115,20 @@ instance cartesianFibration_pullback_snd {X Y B : SSet.{u}} (p : X ⟶ B) (q : Y
 instance cocartesianFibration_pullback_snd {X Y B : SSet.{u}} (p : X ⟶ B) (q : Y ⟶ B)
     [CocartesianFibration p] : CocartesianFibration (pullback.snd p q)
 
+
+lemma rightFibration_of_cartesianFibration_of_all_edges {X B : SSet.{u}}
+    (p : X ⟶ B) [CartesianFibration p]
+    (h : ∀ e : X _⦋1⦌, IsCartesianEdge p e) : RightFibration p
+
+lemma rightFibration_iff_cartesianFibration_all_edges {X B : SSet.{u}} (p : X ⟶ B) :
+    RightFibration p ↔ CartesianFibration p ∧ ∀ e : X _⦋1⦌, IsCartesianEdge p e
+
+lemma leftFibration_of_cocartesianFibration_of_all_edges {X B : SSet.{u}}
+    (p : X ⟶ B) [CocartesianFibration p]
+    (h : ∀ e : X _⦋1⦌, IsCocartesianEdge p e) : LeftFibration p
+
+lemma leftFibration_iff_cocartesianFibration_all_edges {X B : SSet.{u}} (p : X ⟶ B) :
+    LeftFibration p ↔ CocartesianFibration p ∧ ∀ e : X _⦋1⦌, IsCocartesianEdge p e
+
 end SerrePositivity.InfinityCategories
 ```
