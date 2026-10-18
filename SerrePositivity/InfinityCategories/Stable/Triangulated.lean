@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Stable.CofiberTriangle
 
 概要：cofiber 列から構成した三角形と同型な三角形の集合を定義する。
 方針：通常の Triangle の同型による閉包を取り、同型不変性を証明する。
-規約：前加法構造・シフトの加法性・TR1〜TR4 はまだ未証明であり、Pretriangulated は導入しない。
+規約：前加法構造・シフトの加法性と残る三角圏公理は別途必要。Pretriangulated は導入しない。
 使われ方：S4 の三角構造の distinguishedTriangles の候補。
 -/
 @[expose] public section

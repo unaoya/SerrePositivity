@@ -1,6 +1,10 @@
 import SerrePositivity.InfinityCategories.Stable
 import Lean.Util.CollectAxioms
 
+#print axioms SerrePositivity.InfinityCategories.exists_cofiberSquareHomotopy_of_comm
+#print axioms SerrePositivity.InfinityCategories.exists_cofiberTriangleMorphism_of_comm
+#print axioms SerrePositivity.InfinityCategories.exists_cofiberDistinguishedTriangleMorphism
+#print axioms SerrePositivity.InfinityCategories.complete_cofiberDistinguishedTriangle_morphism
 #print axioms SerrePositivity.InfinityCategories.hasShift_ho
 #print axioms SerrePositivity.InfinityCategories.shiftOneSuspensionIso
 #print axioms SerrePositivity.InfinityCategories.cofiberTriangle
@@ -872,7 +876,15 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.Shift,
     `SerrePositivity.InfinityCategories.Stable.CofiberTriangle,
     `SerrePositivity.InfinityCategories.Stable.Triangulated,
-    `SerrePositivity.InfinityCategories.Stable.DistinguishedCoconeTriangle]
+    `SerrePositivity.InfinityCategories.Stable.DistinguishedCoconeTriangle,
+    `SerrePositivity.InfinityCategories.Stable.CommutativeSquareRealization,
+    `SerrePositivity.InfinityCategories.Stable.TerminalBoundaryEdgeLift,
+    `SerrePositivity.InfinityCategories.Stable.ArrowSquareHomotopy,
+    `SerrePositivity.InfinityCategories.Stable.TerminalArrowSourcePath,
+    `SerrePositivity.InfinityCategories.Stable.SpanHomotopyGluing,
+    `SerrePositivity.InfinityCategories.Stable.PushoutSquareHomotopyLift,
+    `SerrePositivity.InfinityCategories.Stable.CofiberSquareHomotopy,
+    `SerrePositivity.InfinityCategories.Stable.TriangleMorphismExtension]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
