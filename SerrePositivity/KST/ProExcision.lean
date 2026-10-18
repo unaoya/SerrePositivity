@@ -387,3 +387,19 @@ public import SerrePositivity.KST.ProExcision.RelativeAffineRankSequence
 public import SerrePositivity.KST.ProExcision.WhiteheadBlockFactorization
 
 public import SerrePositivity.KST.ProExcision.SplitRelativeImage
+
+public import SerrePositivity.KST.ProExcision.BlockStabilizationCoherence
+
+public import SerrePositivity.KST.ProExcision.SimplicialColumnRightMultiplication
+
+public import SerrePositivity.KST.ProExcision.ColumnBlockPairCoherence
+
+public import SerrePositivity.KST.ProExcision.RelativeAffineTransition
+
+public import SerrePositivity.KST.ProExcision.ColumnRightBlockCoherence
+
+public import SerrePositivity.KST.ProExcision.RelativeAffineRightMultiplication
+
+public import SerrePositivity.KST.ProExcision.IntegerUnitizationOpposite
+
+public import SerrePositivity.KST.ProExcision.NonUnitalSimplicialOpposite

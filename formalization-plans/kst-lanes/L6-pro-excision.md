@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：借用する π・H_* の明示的な模型界面に対して工程完了。一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと1378宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと1402宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -1072,3 +1072,15 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - `relativeModuleMap_factor_of_zero`・`relativeModuleMap_factor_of_split_square`・`splitRelative_action_image` は相対零化から基底への因子化、射影を固定する可換な作用の像上での自明性を実商模型で証明する。
 - `blockUpperUnit`・`blockLowerUnit` は実ブロック単冪単位。`whiteheadBlockFactorization` は diag(g,g⁻¹) の六因子分解を非可換な行列積から証明する。原典の生成系の文言との差は docstring に記載。
 - 対象ビルド・1378宣言の公理監査は標準三公理のみで成功。有限 rank の遷移の合成則、安定右乗法の零化、行側の比較、置換共役・整数作用への移送は未完了。L6d 全体および L6e〜g の完成は主張しない。
+
+
+### L6d の実 rank 余極限上の右乗法の零化（2026-10-19）
+
+- `columnBlockInclusion_succ` と `firstBlockMatrix_succ` は通常の一座標ずつの安定化と一度のブロック安定化の成分等式。`columnBlockPair_zero`・`columnBlockPair_succ` はこれを実対射として同定する。
+- `columnRightMap` と `columnRightActionHom` は同じ rank の列の実右乗法。指定元と係数写像の自然性、および左行列作用との可換性を証明した。
+- `relativeAffineRankSequence_map` は任意の有限遷移を一度の通常のブロック対射の相対写像へ同定する。
+- `columnRight_then_block` は同じ rank の右乗法の後の通常の安定化が Claim 4.15 の実写像であることを証明する。`columnRight_block_commute` は実順序列での自然性。
+- `relativeAffineRightNatTrans` と `relativeAffineRightColimitMap` は零性を定義に含めず、有限 rank の自然変換と余極限関手から実誘導射を構成する。
+- `relativeAffineRight_leg_zero` と `relativeAffineRightColimitMap_zero` は Claim 4.15 と実余極限の可換性・外延性から零化を証明する。安定モノイドの H_* との模型比較は依然として別界面。
+- `integerUnitizationOpEquiv` は整数単位化と反対環の実環同型。整数射影と元の非単位環の包含を保つ。`NonUnitalSimplicialRing.mulOpposite` は実反対単体環。
+- 対象ビルド・1402宣言の公理監査は標準三公理のみで成功。行側の bar 鎖複体比較、実置換共役、安定 H_* との模型比較と整数作用の移送が L6d の残り。
