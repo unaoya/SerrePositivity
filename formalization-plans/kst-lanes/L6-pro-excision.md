@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：借用する π・H_* の明示的な模型界面に対して工程完了。一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと1087宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと1105宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -346,6 +346,11 @@
 | blockPatternSubring / triangularBlockGroup | BlockPattern.lean | 検証済み | 三角条件と両側イデアルの係数を持つ実群模型 |
 | integerUnitizationIdeal / nonUnitalTriangularBlockGroup | IntegerUnitization.lean | 検証済み | 非単位環の整数単位化による係数模型 |
 | blockColumnHom_mem_triangularBlockGroup | BlockPatternColumn.lean | 検証済み | ψ の実列の三角ブロック群への所属 |
+
+| triangularBlockGroupMap | BlockPatternNaturality.lean | 検証済み | 係数イデアルを保つ環準同型による実群の射 |
+| matrixInsertionHom / matrixInsertionUnits | MatrixInsertion.lean | 検証済み | 補助座標の実挿入と成分の公式 |
+| triangularBlockGroupInsertion | BlockInsertion.lean | 検証済み | 三角条件と係数を保つ実ブロック埋め込み |
+| triangularBlockInsertionFixedHom | BlockInsertionFixed.lean | 検証済み | ψ(Q) と可換な固定ブロック群への実埋め込み |
 
 ## L6a：最小 pro 形式
 
@@ -863,3 +868,13 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - `blockColumnHom_mem_triangularBlockGroup` は ψ の実列がこの群に入ることを、三角条件と係数のイデアル所属から証明する。
 - `commutingProductHom` の宇宙を各因子で独立に一般化した。数学的な仮定の変更はない。
 - この保存単位の対象ビルド・1087宣言の公理監査は標準三公理のみで成功。帰納段階のブロック埋め込みとホモトピーの帰納法は未完了。
+
+
+### L6d の帰納段階の実挿入（2026-10-19）
+
+- `triangularBlockGroupMap` は係数イデアルを保つ環準同型からの実群準同型。差と逆の差の自然性を証明した。
+- `optionMatrixExtensionHom` は恒等成分を一つ加える行列モノイド準同型。加法的・環準同型とはしない。
+- `matrixInsertionHom` と `matrixInsertionUnits` は指定点 p に恒等行・列を入れる実準同型。元の成分、補助対角、交差零成分の公式を証明した。
+- `triangularBlockGroupInsertion` は三角条件と係数イデアルを保つ実群準同型。単位と逆の両方に対して差の所属を証明した。
+- `triangularBlockInsertionFixedHom` はその埋め込みが固定ブロック群に値を持つことを証明する。これで P の全体と ψ(Q) の可換性へ実際に接続できる。
+- 対象ビルド・1105宣言の公理監査は標準三公理のみで成功。Q のイデアル内への制限、実 μ、行列作用と帰納ホモトピーは続行中。

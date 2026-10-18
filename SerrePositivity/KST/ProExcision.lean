@@ -217,3 +217,11 @@ public import SerrePositivity.KST.ProExcision.BlockPattern
 public import SerrePositivity.KST.ProExcision.IntegerUnitization
 
 public import SerrePositivity.KST.ProExcision.BlockPatternColumn
+
+public import SerrePositivity.KST.ProExcision.BlockPatternNaturality
+
+public import SerrePositivity.KST.ProExcision.MatrixInsertion
+
+public import SerrePositivity.KST.ProExcision.BlockInsertion
+
+public import SerrePositivity.KST.ProExcision.BlockInsertionFixed

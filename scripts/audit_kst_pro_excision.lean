@@ -3108,3 +3108,57 @@ set_option pp.explicit true
 
 #check @SerrePositivity.KST.ProExcision.blockColumnHom_mem_triangularBlockGroup
 #print axioms SerrePositivity.KST.ProExcision.blockColumnHom_mem_triangularBlockGroup
+
+#check @SerrePositivity.KST.ProExcision.oneDifferenceSubgroupMap
+#print axioms SerrePositivity.KST.ProExcision.oneDifferenceSubgroupMap
+
+#check @SerrePositivity.KST.ProExcision.map_mem_blockPattern
+#print axioms SerrePositivity.KST.ProExcision.map_mem_blockPattern
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockGroupMap
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockGroupMap
+
+#check @SerrePositivity.KST.ProExcision.optionMatrixExtension
+#print axioms SerrePositivity.KST.ProExcision.optionMatrixExtension
+
+#check @SerrePositivity.KST.ProExcision.optionMatrixExtensionHom
+#print axioms SerrePositivity.KST.ProExcision.optionMatrixExtensionHom
+
+#check @SerrePositivity.KST.ProExcision.matrixInsertionHom
+#print axioms SerrePositivity.KST.ProExcision.matrixInsertionHom
+
+#check @SerrePositivity.KST.ProExcision.matrixInsertionUnits
+#print axioms SerrePositivity.KST.ProExcision.matrixInsertionUnits
+
+#check @SerrePositivity.KST.ProExcision.matrixInsertion_succAbove
+#print axioms SerrePositivity.KST.ProExcision.matrixInsertion_succAbove
+
+#check @SerrePositivity.KST.ProExcision.matrixInsertion_self
+#print axioms SerrePositivity.KST.ProExcision.matrixInsertion_self
+
+#check @SerrePositivity.KST.ProExcision.matrixInsertion_row
+#print axioms SerrePositivity.KST.ProExcision.matrixInsertion_row
+
+#check @SerrePositivity.KST.ProExcision.matrixInsertion_column
+#print axioms SerrePositivity.KST.ProExcision.matrixInsertion_column
+
+#check @SerrePositivity.KST.ProExcision.matrixInsertion_difference_succAbove
+#print axioms SerrePositivity.KST.ProExcision.matrixInsertion_difference_succAbove
+
+#check @SerrePositivity.KST.ProExcision.insertion_index_le
+#print axioms SerrePositivity.KST.ProExcision.insertion_index_le
+
+#check @SerrePositivity.KST.ProExcision.matrixInsertion_difference_mem_blockPattern
+#print axioms SerrePositivity.KST.ProExcision.matrixInsertion_difference_mem_blockPattern
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockGroupInsertion
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockGroupInsertion
+
+#check @SerrePositivity.KST.ProExcision.matrixInsertion_fixed_row
+#print axioms SerrePositivity.KST.ProExcision.matrixInsertion_fixed_row
+
+#check @SerrePositivity.KST.ProExcision.matrixInsertion_fixed_column
+#print axioms SerrePositivity.KST.ProExcision.matrixInsertion_fixed_column
+
+#check @SerrePositivity.KST.ProExcision.triangularBlockInsertionFixedHom
+#print axioms SerrePositivity.KST.ProExcision.triangularBlockInsertionFixedHom
