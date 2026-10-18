@@ -60,16 +60,6 @@ plus 構成の存在とその性質を区別して証明する。
 
 | 対象 | 原典 | 本レーンでの用途 |
 | --- | --- | --- |
-| `integralHomologyFunctor`、`normalizationHomologyNatIso` | 監査済み | 実際の正規化整数ホモロジーと非正規化との自然同型 |
-| `coefficientFiberIsColimit`、`coefficientSimplicialObjIsoSigma` | 監査済み | 各次数の係数群の直和の普遍性と実際の比較同型 |
-| `integerCoefficientSimplicialIso`、`integerLocalCoefficientChainsIso`、`integerLocalCoefficientHomologyIso` | 監査済み | 定数整数局所係数と自由整数鎖複体の実際の同型 |
-| `LocalCoefficientSystem`、`localCoefficientChains`、`localCoefficientHomologyMap` | 監査済み | 局所係数の実際の複体と誘導写像 |
-| `LocalHomologyIsomorphism` | 監査済み | 全標的局所係数でのホモロジー同型条件。plus の存在は未証明 |
-| `relativeIntegralChainsFunctor`、`normalizedIntegralChains_map_mono` | 監査済み | 相対鎖複体の関手と包含の単射性 |
-| `relativeIntegralHomologyBoundary`、`relativeIntegralHomology_exact_at_source`、`relativeIntegralHomology_exact_at_target`、`relativeIntegralHomology_exact_at_relative` | 監査済み | 相対ホモロジー長完全列の連結射と完全性 |
-| `integralHomologyMap_eq_of_homotopy` | 監査済み | 単体的ホモトピー不変性 |
-| `degenerateIntegralChainsContraction`、`degenerateIntegralChains_homology_isZero` | 監査済み | 退化部分の実際の鎖収縮と消滅 |
-| `integralDegenerateProjection_annihilates_iff` | 監査済み | 退化射影の像の普遍的特徴付け |
 | Γ の環構造 | Schwede–Shipley 2003 §2.3、式 (2.8)–(2.9) | Alexander–Whitney 積 |
 | Γ の忠実充満性 | 同 Proposition 2.13 | 正規化との整合 |
 | ĜL_n | KST §2.2、式 (2.2) | π₀ の単元成分の逆像 |
@@ -779,7 +769,7 @@ H_n(X;ℤ) を Nℤ[X] の実際の homology として定義し、誘導写像�
 退化部分の像の分解は Q∞ の冪等性から構成し、Mathlib の Q∞ の零ホモトピーを制限する。
 退化像の生成する部分との一致は、Decomposition と Degeneracies の補題で別途確認する。
 この経路は非正規化複体を正規化と呼び換える経路ではない。
-原典は Weibel K-book III の plus のホモロジー、Waldhausen LNM 1126 §1.7・§1.8・§2.3。
+原典は Weibel K-book IV.1.5–IV.1.6 の plus のホモロジー、Waldhausen LNM 1126 §1.7・§1.8・§2.3。
 
 ### 局所係数の単体的模型と acyclic 性
 
@@ -798,6 +788,25 @@ AGT 12 (2012), Remark 2.1 の全射の局所化による記述と整合させる
 <https://msp.org/agt/2012/12-1/agt-v12-n1-p15-s.pdf>。
 plus のセル添付の存在証明、π₁ の商、ホモトピーファイバーの acyclic 性との同値は未証明である。
 これらを局所係数系の構造体のフィールドとして仮定しない。
+
+### plus のセル添付で確かめる項目
+
+確認する文言：連結な Kan 複体 X と完全正規部分群 P⊲π₁X に対し、
+P のループを殺す 2-cell と、その相対ホモロジーの基底を殺す 3-cell を付ける。
+Q=π₁X/P とする。2-cell を付けた Y の普遍 Q-cover への X の引き戻しは π₁=P を持つ。
+P の完全性からこの cover の H₁ は零である。
+相対鎖群 C₂(Ỹ,X̃) は添付したループを添字とする自由 ℤ[Q]-加群である。
+相対長完全列により H₂(Ỹ)→H₂(Ỹ,X̃) は全射となる。
+Ỹ は単連結なので、Hurewicz により相対基底の持ち上げを π₂ の代表として選べる。
+それらを 3-cell で殺すと相対鎖複体の 3→2 微分は自由 ℤ[Q]-加群の恒等行列となる。
+従って任意の Q-加群を係数にしても相対複体は収縮し、全局所係数でホモロジー同型を得る。
+3-cell は π₁ を変えないため、最終の基本群は Q となる。
+原典は Weibel K-book IV.1.5 および Ex. IV.1.4、IV.1.6。
+Lean で必要な部品：単体的セル添付、cover と係数の比較、H₁ と基本群の可換化、
+単連結 Hurewicz、2-cell・3-cell の基本群への効果、Kan 置換の局所係数ホモロジー保存。
+π_n の定義や既存の次数移動は K-L9 から借りるが、未供給の部品を plus の存在と同値の仮定に束ねない。
+先に既存の horn の二段階収縮を整数ホモロジーへ移し、その後局所係数・セル添付へ拡張する。
+この論理の記録は、上記各部品の形式化完了を意味しない。
 
 ## 12. 現在地と主要宣言
 
@@ -858,7 +867,9 @@ L2c：正規化整数ホモロジー、非正規化との自然同型、ホモ�
 局所係数系・左 Kan 拡張による実際の正規化鎖複体・引き戻し係数と誘導鎖写像は構成した。
 各次数の直和表示と Kan 拡張の単位の包含との一致を証明した。
 定数整数係数の単体的群と自由単体的アーベル群の実際の同型、正規化複体とホモロジーの同型を構成した。
-単体写像に対する比較の自然性とセル添付の計算は未完了。
+単体写像に対する比較の自然性を単体的群・正規化複体・ホモロジーで証明し、
+全局所係数のホモロジー同型から整数係数のホモロジー同型を導いた。
+Kan 置換のホモロジー保存とセル添付の計算は未完了。
 その後、局所係数を含む acyclic map、ホモロジー同型、基本群の完全正規部分群による商として plus を証明する。
 L2d：確定した K0 界面、冪等元の持ち上げ、安定 elementary 部分群と K₁ の比較を証明する。
 L2e：K-L1 の K1a の供給状況を確認し、§10-5 の Hurewicz の紙上確認と ∞-S• の比較へ進む。
@@ -867,10 +878,10 @@ L2e：K-L1 の K1a の供給状況を確認し、§10-5 の Hurewicz の紙上�
 
 ### 検証
 
-`lake build SerrePositivity.KST.Comparison`：成功、4455 jobs。
+`lake build SerrePositivity.KST.Comparison`：成功、4456 jobs。
 `lake env lean scripts/audit_kst_comparison.lean`：終了コード 0。
-主要 1335 宣言の型と推移的依存公理を確認した。
-名前空間全体の 2441 宣言（自動生成された公開補題・射影を含む）も許可リストで検査した。
+主要 1340 宣言の型と推移的依存公理を確認した。
+名前空間全体の 2447 宣言（自動生成された公開補題・射影を含む）も許可リストで検査した。
 許可した公理は propext、Classical.choice、Quot.sound の標準三公理のみ。
 L2b の工程の区切りの全体ビルドはルート集約 `SerrePositivity.lean:1` で失敗した（12355 jobs の最終集約）。
 `F1B.RelativeFunctorHomotopyComposition` の import が `F1.RelativeFunctorVertices` の
@@ -882,6 +893,17 @@ L2b の工程の区切りの全体ビルドはルート集約 `SerrePositivity.l
 
 | 主要宣言 | 状態 | 意味 |
 | --- | --- | --- |
+| `integralHomologyFunctor`、`normalizationHomologyNatIso` | 監査済み | 実際の正規化整数ホモロジーと非正規化との自然同型 |
+| `coefficientFiberIsColimit`、`coefficientSimplicialObjIsoSigma` | 監査済み | 各次数の係数群の直和の普遍性と実際の比較同型 |
+| `integerLocalCoefficientHomologyIso_naturality`、`integralHomologyIsomorphism_of_local` | 監査済み | 自然な比較と全局所係数から整数係数への帰結 |
+| `integerCoefficientSimplicialIso`、`integerLocalCoefficientChainsIso`、`integerLocalCoefficientHomologyIso` | 監査済み | 定数整数局所係数と自由整数鎖複体の実際の同型 |
+| `LocalCoefficientSystem`、`localCoefficientChains`、`localCoefficientHomologyMap` | 監査済み | 局所係数の実際の複体と誘導写像 |
+| `LocalHomologyIsomorphism` | 監査済み | 全標的局所係数でのホモロジー同型条件。plus の存在は未証明 |
+| `relativeIntegralChainsFunctor`、`normalizedIntegralChains_map_mono` | 監査済み | 相対鎖複体の関手と包含の単射性 |
+| `relativeIntegralHomologyBoundary`、`relativeIntegralHomology_exact_at_source`、`relativeIntegralHomology_exact_at_target`、`relativeIntegralHomology_exact_at_relative` | 監査済み | 相対ホモロジー長完全列の連結射と完全性 |
+| `integralHomologyMap_eq_of_homotopy` | 監査済み | 単体的ホモトピー不変性 |
+| `degenerateIntegralChainsContraction`、`degenerateIntegralChains_homology_isZero` | 監査済み | 退化部分の実際の鎖収縮と消滅 |
+| `integralDegenerateProjection_annihilates_iff` | 監査済み | 退化射影の像の普遍的特徴付け |
 | `unitsPreimage`、`not_isUnit_one_add_X` | 監査済み | π₀ の単元の逆像が各次数の群とは限らない反例 |
 | `gammaEndRingObject`、`gammaEndDoldKanIso` | 監査済み | SS03 式 (2.9) の実際の Γ の AW 環 |
 | `SimplicialRing.componentsRing`、`simplexToComponents` | 監査済み | 成分環と各次数からの環準同型 |
@@ -929,7 +951,7 @@ L2b の工程の区切りの全体ビルドはルート集約 `SerrePositivity.l
 | `monoidBarKanConnected` | 監査済み | KST Lemma 2.13 の連結な Kan 模型 |
 | `lemma_2_13_pi_one` | 監査済み | GL(π₀A) と基本群の乗法同値 |
 | `lemma_2_13_higher` | 監査済み | 分類空間の全高次の群と安定係数行列群の乗法同値 |
-| H_* | 未実装 | 正規化自由アーベル群複体 |
+| H_* | 基礎・相対長完全列・局所係数の鎖複体は監査済み | セル添付と Kan 置換の比較を継続 |
 | plus 構成 | 未実装 | 局所係数の acyclic map と π₁ の商 |
 | K₀・K₁ の比較 | 未実装 | KST Theorem 2.16 の次数 0、1 |
 | ∞-S• との比較 | K1a の供給を確認予定 | KST Proposition 2.15 |

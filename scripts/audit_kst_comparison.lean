@@ -111,6 +111,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -2941,6 +2942,24 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.integerCoefficientCoproductIso
 #print axioms SerrePositivity.KST.Comparison.integerCoefficientCoproductIso
+
+
+-- IntegerCoefficientNaturality.lean
+
+#check @SerrePositivity.KST.Comparison.localCoefficientSimplicialMap_unit
+#print axioms SerrePositivity.KST.Comparison.localCoefficientSimplicialMap_unit
+
+#check @SerrePositivity.KST.Comparison.integerCoefficientComparison_naturality
+#print axioms SerrePositivity.KST.Comparison.integerCoefficientComparison_naturality
+
+#check @SerrePositivity.KST.Comparison.integerLocalCoefficientChainsIso_naturality
+#print axioms SerrePositivity.KST.Comparison.integerLocalCoefficientChainsIso_naturality
+
+#check @SerrePositivity.KST.Comparison.integerLocalCoefficientHomologyIso_naturality
+#print axioms SerrePositivity.KST.Comparison.integerLocalCoefficientHomologyIso_naturality
+
+#check @SerrePositivity.KST.Comparison.integralHomologyIsomorphism_of_local
+#print axioms SerrePositivity.KST.Comparison.integralHomologyIsomorphism_of_local
 
 
 -- IntervalBoundaryFamily.lean
