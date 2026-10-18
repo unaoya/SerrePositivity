@@ -4387,3 +4387,117 @@ trivial Kan fibration を保ち、core の実現後に弱同値を与えるこ�
 L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（3073 jobs）、公理監査成功（1142 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+
+## 6.37 経路の第一行比較の安定な図式への束ねと有限反復の弱可縮性
+
+S の経路図式と第一行の関手圏の図式を StableModel に値を持つ単体的図式として束ねた。
+第一行の関手圏は点ごとの安定性を持ち、添字制限は零対象と cofiber を保つ。
+第一行制限自体は既証の全押し出しと零対象の保存を使って StableModel の射にまとめた。
+比較の自然性は元の第一行制限の自然性のままで、追加の選択を含まない。
+忘却後の自然変換は元の pathFirstRowRestriction と厳密に一致する。
+第一行の零次段から元の入力への比較も StableModel の射として構成し、
+零次比較との合成が既存の stableSOneComparison と厳密に一致することを証明した。
+
+この比較に r 重 S の core の実現の関手を後合成した。
+各経路次数の比較は自明ファイブレーションの有限反復による保存定理から弱同値となり、
+経路方向も対角に取った iteratedPathFirstRowDiagonalComparison は局所化で可逆である。
+反復後の零次比較に、反復で写した第一行の一点の比較を合成すると、
+反復で写した既存の stableSOneComparison を厳密に回収する。
+座標は最内側が経路の S_(n+1)、その外側に r 個の S_n、core の次数も n とする。
+先頭方向を経路にした既存の suspension 構造射との座標の照合全体はまだ行っていない。
+
+可縮 Kan な安定な入力の有限反復 S とその core は、全多次数で可縮 Kan であることを
+方向数について帰納して示した。各段から一点への自明ファイブレーションを対角の比較定理へ渡すと、
+その反復実現は弱可縮となる。
+これを経路の零段 S₀X に適用した。反復実現の関手を後合成した後も経路は一般の経路構成と
+定義上同じ形であり、§6.34 の実際の収縮による零段への射影の可逆性が適用できる。
+したがって iteratedPathRealization r X は全 r で弱可縮である。
+対角比較の可逆性と組み合わせ、iteratedFirstRowRealization r X も弱可縮であることを証明した。
+経路・第一行の全対角の Kan 性は仮定していない。
+
+これらは経路全空間の比較と弱可縮性である。境界射の homotopy fiber の計算や
+それを loop と比較する実現後の homotopy pullback 性は引き続き未証明。
+全空間の弱可縮性から無条件で Ω 条件を推論してはいない。
+Core・Stable・F1・HA・Spectra の所有ファイルと公開 API は変更していない。
+
+以下は namespace `SerrePositivity.KST.SConstruction`、`universe u`、
+`open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet`、
+`open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel`、
+`open scoped Simplicial` の下の正確な型。
+
+```lean
+def stableSPathDiagram (X : StableModel.{u}) : SimplicialObject StableModel.{u}
+
+def stablePathFirstRowDiagram (X : StableModel.{u}) : SimplicialObject StableModel.{u}
+
+def stablePathFirstRowRestriction (X : StableModel.{u}) :
+    stableSPathDiagram X ⟶ stablePathFirstRowDiagram X
+
+instance stablePathFirstRowRestriction_trivialKanFibration (X : StableModel.{u})
+    (d : SimplexCategoryᵒᵖ) : TrivialKanFibration (((stablePathFirstRowRestriction X).app d).val)
+
+lemma stablePathFirstRowRestriction_forget (X : StableModel.{u}) :
+    Functor.whiskerRight (stablePathFirstRowRestriction X) stableModelForget =
+      pathFirstRowRestriction X.carrier
+
+def stablePathFirstRowZeroComparison (X : StableModel.{u}) :
+    (stablePathFirstRowDiagram X).obj (Opposite.op ⦋0⦌) ⟶ X
+
+lemma stablePathFirstRowRestriction_zero (X : StableModel.{u}) :
+    (stablePathFirstRowRestriction X).app (Opposite.op ⦋0⦌) ≫
+      stablePathFirstRowZeroComparison X = stableSOneComparison X
+
+def iteratedPathRealizationDiagram (r : ℕ) (X : StableModel.{u}) : SimplicialObject SSet.{u}
+
+def iteratedFirstRowRealizationDiagram (r : ℕ) (X : StableModel.{u}) : SimplicialObject SSet.{u}
+
+def iteratedPathFirstRowComparison (r : ℕ) (X : StableModel.{u}) :
+    iteratedPathRealizationDiagram r X ⟶ iteratedFirstRowRealizationDiagram r X
+
+lemma iteratedPathFirstRowComparison_app_localized_isIso (r : ℕ) (X : StableModel.{u})
+    (d : SimplexCategoryᵒᵖ) :
+    IsIso (AnodyneHomotopy.anodyneQ.map ((iteratedPathFirstRowComparison r X).app d))
+
+def iteratedPathRealization (r : ℕ) (X : StableModel.{u}) : SSet.{u}
+
+def iteratedFirstRowRealization (r : ℕ) (X : StableModel.{u}) : SSet.{u}
+
+def iteratedPathFirstRowDiagonalComparison (r : ℕ) (X : StableModel.{u}) :
+    iteratedPathRealization r X ⟶ iteratedFirstRowRealization r X
+
+lemma iteratedPathFirstRowDiagonalComparison_localized_isIso (r : ℕ) (X : StableModel.{u}) :
+    IsIso (AnodyneHomotopy.anodyneQ.map (iteratedPathFirstRowDiagonalComparison r X))
+
+lemma iteratedPathFirstRowComparison_zero (r : ℕ) (X : StableModel.{u}) :
+    (iteratedPathFirstRowComparison r X).app (Opposite.op ⦋0⦌) ≫
+        (multiRealizationFunctor r).map (stablePathFirstRowZeroComparison X) =
+      (multiRealizationFunctor r).map (stableSOneComparison X)
+
+lemma multiSConstruction_isContractibleKan_of_contractible (r : ℕ) (X : StableModel.{u})
+    (hX : IsContractibleKan X.carrier) (d : Fin r → SimplexCategoryᵒᵖ) :
+    IsContractibleKan ((multiSConstruction r X).obj d)
+
+lemma multiCoreSConstruction_isContractibleKan_of_contractible (r : ℕ) (X : StableModel.{u})
+    (hX : IsContractibleKan X.carrier) (d : Fin r → SimplexCategoryᵒᵖ) :
+    IsContractibleKan ((multiCoreSConstruction r X).obj d)
+
+lemma multiRealization_toPoint_localized_isIso_of_contractible (r : ℕ) (X : StableModel.{u})
+    (hX : IsContractibleKan X.carrier) :
+    IsIso (AnodyneHomotopy.anodyneQ.map (toUnit ((multiRealizationFunctor r).obj X)))
+
+lemma iteratedPathRealization_toPoint_localized_isIso (r : ℕ) (X : StableModel.{u}) :
+    IsIso (AnodyneHomotopy.anodyneQ.map (toUnit (iteratedPathRealization r X)))
+
+lemma iteratedFirstRowRealization_toPoint_localized_isIso (r : ℕ) (X : StableModel.{u}) :
+    IsIso (AnodyneHomotopy.anodyneQ.map (toUnit (iteratedFirstRowRealization r X)))
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。経路と第一行の比較を安定な入力の図式に束ねて
+有限反復 S へ移し、全対角の弱同値、零次段の厳密な比較、両全対角の弱可縮性まで証明済み。
+反復した境界射の homotopy fiber の計算と loop の比較、既存の構造射との座標の照合、
+正の段の Ω 条件・delooping、負次数消滅を含む BF 連結スペクトル、スペクトル関手は未完了。
+同時商と円の smash の明示的同型、任意の押し出し保存と一般の cofiber 保存条件との同値は未証明。
+L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（3076 jobs）、公理監査成功（1163 宣言、標準三公理のみ）。追加公理・sorry なし。
