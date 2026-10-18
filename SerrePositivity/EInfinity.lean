@@ -116,3 +116,14 @@ public import SerrePositivity.EInfinity.Operad.TensorPowerLastInput
 public import SerrePositivity.EInfinity.Operad.TensorFamilyGeneratorTailSplitLast
 public import SerrePositivity.EInfinity.Operad.AlgebraEvaluationAll
 public import SerrePositivity.EInfinity.Operad.AlgebraLift
+public import SerrePositivity.EInfinity.Operad.TensorUnitFamily
+public import SerrePositivity.EInfinity.Operad.TensorSubstitutionRightUnit
+public import SerrePositivity.EInfinity.Operad.CompositionRightUnit
+public import SerrePositivity.EInfinity.Operad.TensorUnitFamilyHead
+public import SerrePositivity.EInfinity.Operad.TensorFamilyUnitSeparation
+public import SerrePositivity.EInfinity.Operad.TensorFamilyGeneratorIso
+public import SerrePositivity.EInfinity.Operad.TensorUnitCoefficient
+public import SerrePositivity.EInfinity.Operad.SchurOperationRightUnit
+public import SerrePositivity.EInfinity.Operad.SchurActionGenerators
+public import SerrePositivity.EInfinity.Operad.FreeAlgebraUniversal
+public import SerrePositivity.EInfinity.Operad.FreeAlgebraAdjunction

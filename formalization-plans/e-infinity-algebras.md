@@ -1260,3 +1260,81 @@ Sp の塔、非反転の比較、余極限側、E2a 完了後の E2b 適用も�
 他担当の依存821ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-spectrum-pullback-structure-aggregate.log` と
 `/tmp/gamma3-spectrum-pullback-structure-audit.log`。
+
+
+### E2a-1
+
+```lean
+universe u
+open CategoryTheory MonoidalCategory
+open scoped BigOperators
+open SerrePositivity.DifferentialGraded
+namespace SerrePositivity.EInfinity
+
+Operad (A : Type u) [CommRing A] : Type (u + 1)
+schurFunctor (A : Type u) [CommRing A] (S : SymmetricSequence (Complex A)) :
+  Complex A ⥤ Complex A
+
+namespace Operad
+variable {A : Type u} [CommRing A]
+
+arity (P : Operad A) (n : ℕ) : Complex A
+rightAction (P : Operad A) (n : ℕ) (σ : Equiv.Perm (Fin n)) : P.arity n ⟶ P.arity n
+composition (P : Operad A) (n : ℕ) (s : Fin n → ℕ) :
+  P.arity n ⊗ tensorFamily n (fun i => P.arity (s i)) ⟶ P.arity (∑ i, s i)
+Algebra (P : Operad A) : Type (u + 1)
+AlgebraHom {P : Operad A} (X Y : P.Algebra) : Type u
+
+Algebra.instCategory {P : Operad A} : Category.{u} P.Algebra
+Algebra.forget (P : Operad A) : P.Algebra ⥤ Complex A
+Algebra.forget_faithful (P : Operad A) : (Algebra.forget P).Faithful
+
+schurUnit (P : Operad A) (K : Complex A) : K ⟶ (schurFunctor A P.sequence).obj K
+schurUnitNatTrans (P : Operad A) : 𝟭 (Complex A) ⟶ schurFunctor A P.sequence
+freeAlgebra (P : Operad A) (K : Complex A) : P.Algebra
+freeAlgebraFunctor (P : Operad A) : Complex A ⥤ P.Algebra
+freeAlgebraFunctor_forget (P : Operad A) :
+  P.freeAlgebraFunctor ⋙ Algebra.forget P = schurFunctor A P.sequence
+
+schurAction_generators (P : Operad A) (K : Complex A) (n : ℕ) :
+  (P.arity n ◁ TensorPowers.map (P.schurUnit K) n) ≫ P.schurAction K n =
+    schurι A P.sequence K n
+
+namespace Algebra
+variable {P : Operad A}
+
+evaluation (X : P.Algebra) : (schurFunctor A P.sequence).obj X.carrier ⟶ X.carrier
+evaluation_action (X : P.Algebra) (n : ℕ) :
+  P.schurAction X.carrier n ≫ X.evaluation =
+    (P.arity n ◁ TensorPowers.map X.evaluation n) ≫ X.action n
+evaluationHom (X : P.Algebra) : P.freeAlgebra X.carrier ⟶ X
+schurLift {K : Complex A} (X : P.Algebra) (f : K ⟶ X.carrier) :
+  (schurFunctor A P.sequence).obj K ⟶ X.carrier
+liftHom {K : Complex A} (X : P.Algebra) (f : K ⟶ X.carrier) : P.freeAlgebra K ⟶ X
+schurUnit_liftHom {K : Complex A} (X : P.Algebra) (f : K ⟶ X.carrier) :
+  P.schurUnit K ≫ (X.liftHom f).hom = f
+freeAlgebraHom_ι {K : Complex A} {X : P.Algebra} (f : P.freeAlgebra K ⟶ X) (n : ℕ) :
+  schurι A P.sequence K n ≫ f.hom =
+    (P.arity n ◁ TensorPowers.map (P.schurUnit K ≫ f.hom) n) ≫ X.action n
+freeAlgebraHom_ext {K : Complex A} {X : P.Algebra} {f g : P.freeAlgebra K ⟶ X}
+  (h : P.schurUnit K ≫ f.hom = P.schurUnit K ≫ g.hom) : f = g
+liftHom_restrict {K : Complex A} {X : P.Algebra} (f : P.freeAlgebra K ⟶ X) :
+  X.liftHom (P.schurUnit K ≫ f.hom) = f
+evaluationAlgebraNatTrans (P : Operad A) :
+  forget P ⋙ P.freeAlgebraFunctor ⟶ 𝟭 P.Algebra
+
+end Algebra
+
+freeAlgebraHomEquiv (P : Operad A) (K : Complex A) (X : P.Algebra) :
+  (P.freeAlgebra K ⟶ X) ≃ (K ⟶ X.carrier)
+freeAlgebraAdjunction (P : Operad A) : P.freeAlgebraFunctor ⊣ Algebra.forget P
+freeAlgebraAdjunction_homEquiv (P : Operad A) (K : Complex A) (X : P.Algebra) :
+  P.freeAlgebraAdjunction.homEquiv K X = P.freeAlgebraHomEquiv K X
+freeAlgebraAdjunction_unit_app (P : Operad A) (K : Complex A) :
+  P.freeAlgebraAdjunction.unit.app K = P.schurUnit K
+freeAlgebraAdjunction_counit_app (P : Operad A) (X : P.Algebra) :
+  P.freeAlgebraAdjunction.counit.app X = X.evaluationHom
+
+end Operad
+end SerrePositivity.EInfinity
+```
