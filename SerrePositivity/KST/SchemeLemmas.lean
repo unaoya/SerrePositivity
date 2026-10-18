@@ -63,3 +63,9 @@ public import SerrePositivity.KST.SchemeLemmas.ProductBlowup
 public import SerrePositivity.KST.SchemeLemmas.ProductNaturality
 public import SerrePositivity.KST.SchemeLemmas.SchemeProductBlowup
 public import SerrePositivity.KST.SchemeLemmas.AdmissibleRefinement
+public import SerrePositivity.KST.SchemeLemmas.PrincipalBlowupIso
+public import SerrePositivity.KST.SchemeLemmas.LocallyPrincipalBlowup
+public import SerrePositivity.KST.SchemeLemmas.BlowupUniversal
+public import SerrePositivity.KST.SchemeLemmas.ChartIdealDescent
+public import SerrePositivity.KST.SchemeLemmas.ChartFractions
+public import SerrePositivity.KST.SchemeLemmas.HomogeneousNumerators

@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 663 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 709 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -66,6 +66,11 @@
 - 積中心の比較射の自然性を証明して一般スキームへ大域化済み。積中心は admissible 性とアフィン局所有限生成性を保つ。
 - 局所 Noether 基底上の有限個の admissible 中心の blowup を一つで共通支配する補題を証明済み。
 - 同一基底上の有限中心の共通細分と、blowup 後の基底上にある中心の降下・合成の支配は区別する。次は後者のための幾何学的普遍性とイデアルの降下を進める。合成の支配はまだ未証明。
+- 一般基底上でも、始域のアフィン被覆・基底アフィンへの係数写像・正則単項な像中心から、実際の普遍写像と基底上の存在一意性を証明済み。
+- 正則単項中心のアフィン blowup の同型、およびアフィン開被覆上で正則単項な中心の一般 blowup の同型性を証明済み。
+- 一チャート上の有限生成イデアルは、十分大きい任意の次数で I のその冪に含まれる基礎環イデアルへ降ろせる。
+- 指定次数のチャート分数の演算と、全チャートのイデアル条件を満たす斉次な分子の候補中心を構成済み。各チャートで必要なイデアルへの包含と次数の増加は証明済み。
+- 候補中心が十分大きい次数で全チャートの指定イデアルを生成する逆包含は未証明。次はチャートの重なりで分数とイデアルの局所化を比較する。
 - Noether でも実際に平坦な strict transform を達成する中心の存在と、admissible blowup の合成を一つで支配する段階は未証明。L7b 完了とはしない。
 - 固定版 Mathlib に blowup の構成はない。
 - 固定版 Mathlib には絶対 Proj とその構造射の固有性がある。
@@ -506,6 +511,13 @@ strict transform とその平坦化の有限型特殊形は未実装であり、
 | `centerComplement_mul` / `isUAdmissibleCenter_mul` | AdmissibleRefinement | 検証済み | 積中心の中心外開集合と admissible 性 |
 | `productCenter_finiteGeneration` | AdmissibleRefinement | 検証済み | 積中心のアフィン局所有限生成性 |
 | `exists_admissible_binary_refinement` / `exists_admissible_finite_refinement` | AdmissibleRefinement | 検証済み | 同一基底上の二中心・有限個の中心の共通支配 |
+| `affineBlowupPrincipalIso` / `affineBlowupπ_isIso_of_regular_principal` | PrincipalBlowupIso | 検証済み | 正則単項中心の blowup の自明性 |
+| `blowupπ_isIso_of_locally_regular_principal` | LocallyPrincipalBlowup | 検証済み | 局所的に可逆な中心の一般 blowup の自明性 |
+| `blowupUniversalLift` / `existsUnique_blowup_universal_lift` | BlowupUniversal | 検証済み | 一般基底・始域上の実際の普遍写像と存在一意性 |
+| `chart_finite_clear_denominators` | ChartIdealDescent | 検証済み | 有限個のチャート切断の同時分母消去 |
+| `chart_finite_ideal_descent` / `chart_finite_ideal_descent_eventually` | ChartIdealDescent | 検証済み | 一チャート上の有限生成イデアルの各十分大次数での降下 |
+| `chartFraction` / `chartFraction_clear` / `chartFraction_mul` | ChartFractions | 検証済み | 指定次数の斉次分数とその演算 |
+| `homogeneousNumeratorIdeal` / `homogeneousNumeratorIdeal_map_le` / `homogeneousNumeratorIdeal_mul_le` | HomogeneousNumerators | 検証済み | 全チャートの条件を満たす実際の分子候補中心と包含・次数増加 |
 | `exists_admissibleBlowup_dominating` | Flattening | 予定 | 081T の特殊形 |
 | Prop 5.2 の環論 | Section5 | 予定 | 冪・像・核 |
 | Claim 5.3 の左逆元 | K-L6 | 担当外 | K/pro の結論 |
