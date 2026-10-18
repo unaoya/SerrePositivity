@@ -2192,7 +2192,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開325宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開345宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2820,15 +2820,15 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開325宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開345宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
-### 重み付き end から weighted nerve の切断の族（順方向を実装）
+### 重み付き end と weighted nerve の切断の族（全単射を実装）
 
 γ3b の主比較へ向け、Bousfield–Kan 重み付き end と weighted nerve の切断空間の対応を作る。
-次に必要なのは切断の族から重み付き自然変換へ戻す構成と両逆関係であり、
-さらに coherent な錐の pinched Hom と導来ファイバーの比較を別途証明する。
-この切断模型への射だけで γ3b を完成とは数えない。
+切断の族から自然変換へ戻す構成と両逆関係まで以下で証明した。
+単体集合の切断模型との同型と、coherent な錐の pinched Hom と導来ファイバーの比較は未完了。
+この族の全単射だけで γ3b を完成とは数えない。
 
 `PrefixOverWeight.lean` は各射列 σ の初区間を、その終点の over 圏へ持ち上げる。
 I : Type u、[SmallCategory I] の下で、次を構成した。
@@ -2865,7 +2865,42 @@ bousfieldKanWeightedNerveEvaluation_projection (H : I ⥤ SSet.{u}) :
 
 普遍的な族は重み付き end の恒等射を uncurry して得る。
 ここでは係数やパラメータの Kan 性を要求しない。F1 の既存の `weightedNerve` を使い、
-重複した nerve の定義は導入しない。逆対応・切断空間との同型・coherent な錐との比較は未完了。
+重複した nerve の定義は導入しない。逆対応は以下で証明した。
+
+`WeightedSectionCoefficients.lean` は切断の射影条件で底を正規化した係数を取り出す。
+`weightedSectionCoefficients_restriction` は切断の全ての面・退化との可換性を係数の等式に移す。
+`WeightedSectionOverEvaluation.lean` は over 圏の射列の底を忘れた後、最後の係数を取り出し、
+最後の構造射で後合成する。最後の頂点を保たない作用素には係数の自然性と over の三角形を使う。
+`WeightedSectionTransform.lean` はこの評価を全次数と全添字で束ねる。
+
+```lean
+weightedSectionTransform {A : SSet.{u}} {H : I ⥤ SSet.{u}}
+    (s : nerve I ⊗ A ⟶ weightedNerve H)
+    (hs : s ≫ weightedNerveProjection H = fst (nerve I) A) :
+    bousfieldKanWeight I ⊗ (Functor.const I).obj A ⟶ H
+```
+
+`WeightedSectionTransformRetraction.lean` は over 圏の射列を最後の構造射で復元し、
+`weightedSectionTransform_fromTransform η` により自然変換側の逆関係を証明する。
+`WeightedSectionRoundtrip.lean` は初区間の最後での評価から元の係数を回収し、
+`weightedNerveSectionFromTransform_fromSection s hs` により切断側の逆関係を証明する。
+いずれもホモトピーだけでなく、実際の射・自然変換の厳密な等式である。
+
+```lean
+weightedNerveSectionEquiv (H : I ⥤ SSet.{u}) (A : SSet.{u}) :
+    (bousfieldKanWeight I ⊗ (Functor.const I).obj A ⟶ H) ≃
+      {s : nerve I ⊗ A ⟶ weightedNerve H //
+        s ≫ weightedNerveProjection H = fst (nerve I) A}
+bousfieldKanSectionHomEquiv (H : I ⥤ SSet.{u}) (A : SSet.{u}) :
+    (A ⟶ bousfieldKanHolim H) ≃
+      {s : nerve I ⊗ A ⟶ weightedNerve H //
+        s ≫ weightedNerveProjection H = fst (nerve I) A}
+```
+
+後者は重み付き end の普遍性との合成であり、I : Type u、[SmallCategory I] だけを仮定する。
+パラメータ A と係数図式 H の Kan 性は不要。
+この全単射のパラメータに関する自然性、単体集合としての切断模型との同型、
+coherent な錐の pinched Hom と導来ファイバーの主比較は未完了。𝒮・Sp の残りの ∞ 極限も継続中。
 
 ### 𝒮 の空積（実装済み）
 

@@ -655,3 +655,43 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms bousfieldKanWeightedNerveEvaluation
 #check @bousfieldKanWeightedNerveEvaluation_projection
 #print axioms bousfieldKanWeightedNerveEvaluation_projection
+#check @weightedSection_base
+#print axioms weightedSection_base
+#check @weightedSectionCoefficients
+#print axioms weightedSectionCoefficients
+#check @weightedSection_app
+#print axioms weightedSection_app
+#check @weightedSectionCoefficients_restriction
+#print axioms weightedSectionCoefficients_restriction
+#check @weightedSectionOverSimplex
+#print axioms weightedSectionOverSimplex
+#check @weightedSectionOverSimplex_map
+#print axioms weightedSectionOverSimplex_map
+#check @weightedSectionOverSimplex_restriction
+#print axioms weightedSectionOverSimplex_restriction
+#check @weightedSectionOverMap
+#print axioms weightedSectionOverMap
+#check @weightedSectionOverMap_naturality
+#print axioms weightedSectionOverMap_naturality
+#check @weightedSectionTransform
+#print axioms weightedSectionTransform
+#check @prefixOverChain_last_map
+#print axioms prefixOverChain_last_map
+#check @weightedSectionCoefficients_fromTransform
+#print axioms weightedSectionCoefficients_fromTransform
+#check @weightedSectionOverSimplex_fromTransform
+#print axioms weightedSectionOverSimplex_fromTransform
+#check @weightedSectionTransform_fromTransform
+#print axioms weightedSectionTransform_fromTransform
+#check @weightedSectionTransform_yoneda
+#print axioms weightedSectionTransform_yoneda
+#check @weightedSectionOverSimplex_prefix
+#print axioms weightedSectionOverSimplex_prefix
+#check @weightedNerveCoefficients_fromSection
+#print axioms weightedNerveCoefficients_fromSection
+#check @weightedNerveSectionFromTransform_fromSection
+#print axioms weightedNerveSectionFromTransform_fromSection
+#check @weightedNerveSectionEquiv
+#print axioms weightedNerveSectionEquiv
+#check @bousfieldKanSectionHomEquiv
+#print axioms bousfieldKanSectionHomEquiv
