@@ -195,3 +195,7 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.homotopyTransport_map_edge
 #check @SerrePositivity.InfinityCategories.homotopyTransport_map_isTransport
 #check @SerrePositivity.InfinityCategories.homotopyTransport_unique
+#check @SerrePositivity.InfinityCategories.IsCartesianEdge.op
+#check @SerrePositivity.InfinityCategories.isCartesianEdge_of_isCocartesianEdge_op
+#check @SerrePositivity.InfinityCategories.isCartesianEdge_iff_isCocartesianEdge_op
+#check @SerrePositivity.InfinityCategories.isCartesianEdge_triangle_longEdge

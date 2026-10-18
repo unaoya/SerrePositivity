@@ -866,5 +866,24 @@ lemma homotopyTransport_unique {X B : SSet.{u}} [Quasicategory B] (p : X ⟶ B)
           (Y := homotopyTransportFiber p b) (edgeTransport p e) ≫ eqToHom (hobj b).symm) :
     T = homotopyTransport p
 
+lemma IsCartesianEdge.op {X B : SSet.{u}} {p : X ⟶ B} {e : X _⦋1⦌}
+    (he : IsCartesianEdge p e) :
+    IsCocartesianEdge (SSet.opFunctor.map p) (SSet.opObjEquiv.symm e)
+
+lemma isCartesianEdge_of_isCocartesianEdge_op {X B : SSet.{u}} (p : X ⟶ B)
+    (e : X _⦋1⦌)
+    (he : IsCocartesianEdge (SSet.opFunctor.map p) (SSet.opObjEquiv.symm e)) :
+    IsCartesianEdge p e
+
+lemma isCartesianEdge_iff_isCocartesianEdge_op {X B : SSet.{u}} (p : X ⟶ B)
+    (e : X _⦋1⦌) : IsCartesianEdge p e ↔
+      IsCocartesianEdge (SSet.opFunctor.map p) (SSet.opObjEquiv.symm e)
+
+lemma isCartesianEdge_triangle_longEdge {X B : SSet.{u}} [Quasicategory B]
+    (t : (Δ[2] : SSet.{u}) ⟶ X) (p : X ⟶ B) [InnerFibration p]
+    (hfirst : IsCartesianEdge p (SSet.yonedaEquiv (stdSimplex.δ (2 : Fin 3) ≫ t)))
+    (hsecond : IsCartesianEdge p (SSet.yonedaEquiv (stdSimplex.δ (0 : Fin 3) ≫ t))) :
+    IsCartesianEdge p (SSet.yonedaEquiv (stdSimplex.δ (1 : Fin 3) ≫ t))
+
 end SerrePositivity.InfinityCategories
 ```
