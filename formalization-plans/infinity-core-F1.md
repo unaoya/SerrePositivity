@@ -674,5 +674,25 @@ lemma squareComparison_trivialKanFibration_congr {E F B C : SSet.{u}}
     TrivialKanFibration (squareComparison sq) ↔
       TrivialKanFibration (squareComparison sq')
 
+instance sliceUnderRestrict_isIso {K L X : SSet.{u}} (p : K ⟶ X)
+    (f : L ⟶ K) [IsIso f] : IsIso (sliceUnderRestrict p f)
+
+instance squareComparison_isIso {E F B C : SSet.{u}} {f : E ⟶ F} {p : E ⟶ B}
+    {q : F ⟶ C} {g : B ⟶ C} (sq : CommSq f p q g) [IsIso f] [IsIso g] :
+    IsIso (squareComparison sq)
+
+instance relativeCosliceRestriction_isIso {K L X Y : SSet.{u}}
+    (p : K ⟶ X) (q : X ⟶ Y) (f : L ⟶ K) [IsIso f] :
+    IsIso (relativeCosliceRestriction p q f)
+
+lemma relativeCosliceRestriction_trivialKanFibration_subcomplexIso {K L X Y : SSet.{u}}
+    (p : K ⟶ X) (q : X ⟶ Y) (K₀ : K.Subcomplex) (e : L ≅ (K₀ : SSet.{u}))
+    [TrivialKanFibration (relativeCosliceMap p q K₀)] :
+    TrivialKanFibration (relativeCosliceRestriction p q (e.hom ≫ K₀.ι))
+
+lemma relativeCosliceRestriction_triangleLongEdge {X Y : SSet.{u}}
+    (t : (Δ[2] : SSet.{u}) ⟶ X) (q : X ⟶ Y) [InnerFibration q] :
+    TrivialKanFibration (relativeCosliceRestriction t q (stdSimplex.δ (1 : Fin 3)))
+
 end SerrePositivity.InfinityCategories
 ```
