@@ -17,3 +17,4 @@ public import SerrePositivity.KST.DerivedGeometry.CoefficientQuasicoherent
 public import SerrePositivity.KST.DerivedGeometry.AffineQuasicoherentActions
 public import SerrePositivity.KST.DerivedGeometry.CoefficientComplexComparison
 public import SerrePositivity.KST.DerivedGeometry.DqcDGModel
+public import SerrePositivity.KST.DerivedGeometry.DGResolution.Quotient

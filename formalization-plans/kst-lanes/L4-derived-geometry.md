@@ -1,6 +1,6 @@
 # K-L4：導来圏と幾何の基盤
 
-作成日：2026-10-18。状態：L4a 途中。具体的係数環層 H_X とその中心的な構造層作用を構成済み。dg 商の平坦分解を先行させる設計変更を提案中（§26）。
+作成日：2026-10-18。状態：L4a 途中。§26 の設計変更は採用済み。一般 dg 圏の半自由分解と K-flat 性の供給を DGResolution/ で実装する（§27）。
 
 ## 0. 目的と所有範囲
 
@@ -49,9 +49,9 @@
 
 ## 3. 現在地と受入条件
 
-- 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。全層複体の dg 圏と acyclic の dg 商を構成し、商の前の Z⁰・H⁰ と元の層複体・ホモトピー圏の同値、商の H⁰ での acyclic の零性を証明済み。準連接コホモロジーの充満 dg 部分模型も構成済み。dg 商の H⁰ と Mathlib の導来圏の同値、Perf、アフィン係数加群圏の同値、導来降下は未完了。
+- 現在地：L4a の係数環層・準連接性・開埋め込みの比較と、アフィン大域切断の忠実性・同型反映は証明済み。全層複体の dg 圏と acyclic の path 商の候補を構成済み。§26 採用後、任意 dg 圏の段階分解、Hom の K-flat 性、増大関手の各次数全射性・準同値性・H⁰ 同値、前三角化の三角同値、分解後の商への localKFlat の供給を実装済み。層の分解後の商への移行、dg 商の H⁰ と Mathlib の導来圏の同値、Perf、アフィン係数加群圏の同値、導来降下は未完了。
 - L4b の入力である層の随伴と導来忘却は実装済み。L4b の導来随伴・生成・T1′、L4c、L4d、L4e は未実装。
-- 最新の検証済み保存単位は対象ビルドと所有 namespace の500宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
+- 最新の検証済み保存単位は対象ビルドと所有 namespace の564宣言の公理監査に成功。許容公理は標準3公理のみ、KTheory import なし。
 - 既存 dg 基盤と Mathlib の接続点を確認中。
 - 層レベルの降下と導来局所化の交換は未証明として管理する。
 - 保存単位ごとに対象 lake build を実行する。
@@ -554,6 +554,55 @@
 - 今回は変更案と限界の明記までを保存し、ユーザー指定の「設計変更の提案」で停止する。
 - 正本や他レーンのファイルは変更しない。半自由分解の実装は今回開始しない。
 
+## 27. 採用された Lemma 13.5 の構成と証明方針（実装前記録）
+
+- 2026-10-18、ユーザーが §26 を採用。以下の方針で承認待ちを終えて実装へ進む。
+- 正本 §13-11 の層レベルの定義は維持する。正本自体は編集しない。
+- 配置は `KST/DerivedGeometry/DGResolution/`、namespace は `SerrePositivity.KST.DerivedGeometry.DGResolution`。
+- 可換環 A と任意の dg 圏 D をパラメータとし、層や K 理論に依存しない。
+- 直和の宇宙には `Small.{u} D` を明示する。層への適用では既存の宇宙調整を使う。
+
+### 構成の文言
+
+- Drinfeld Lemma 13.5：対象を固定した半自由 dg 圏からの増大関手を構成し、各 Hom で全射準同型を得る。
+- 初期段階は離散 dg 圏。全 Hom の閉元を球生成元として添加する。
+- 任意の斉次元の持ち上げには、その微分の閉元を先に持ち上げ、原始元を次の段階で添加する。
+- 各後続段階で、源の閉元 z と標的の原始元 b（像 z = db）すべてに対し dt = z、像 t = b となる生成元 t を添加する。
+- 生成元の微分は前段階に属し、有限語に Leibniz 則で延長する。
+- 列の余極限を C̃ とする。閉元の持ち上げと核の境界化から Hom の準同型性を証明する。
+- 同じ充填を微分の持ち上げに適用し、各次数の全射性も証明する。
+
+### K-flat 性と移送の証明方針
+
+- 初期の球生成元は自由加群の shift。有限語の tensor と直和は K-flat。
+- 一段の生成元添加では、新生成元の語長フィルトレーションを使う。追加微分は語長を下げる。
+- 各随伴次数は前段階の Hom と球生成元の tensor の直和。
+- 次数別分裂の短完全列を用いて有限フィルトレーション段階へ帰納する。
+- 語長と生成元添加段階の二つの逐次余極限に、加群圏の完全な filtered colimit を使う。
+- よって任意の非有界 acyclic 複体との tensor が acyclic。次数ごとの自由性だけを根拠にしない。
+- 準同値による H⁰ の同値、前三角化との両立を証明し終えるまで Dqc・Perf の増強への適用は行わない。
+- 既存 path 商には証明した `DGQuotient.localKFlat` を渡す。比較定理や分解の存在を未証明フィールドにしない。
+
+### 既存の証明済み部品の利用
+
+- 読み取り調査で `DifferentialGraded/Resolution/` に自由 dg 圏、境界生成元添加、逐次余極限の構成を確認した。
+- `CellSequence.candidateHom_kFlat` は語長フィルトレーションと逐次余極限に基づく既存の証明を使う。
+- `CellCategory.augmentation_quasiEquivalence` は具体的増大関手について証明済み。
+- これらの証明を再利用し、所有ディレクトリで一般定理と各次数全射性・商への供給を整備する。
+- 既存構造体 `KFlatDGResolution` のフィールドを外部仮定として受け取る入口にはしない。
+- 元の Hom の平坦性・有界性は追加しない。`DifferentialGraded/` は編集しない。
+
+### 実装と検証の現在地
+
+- `Filtration`：任意の生成元添加の有限語長・全語長・全添加段階の K-flat 性を証明した。
+- `Construction`：具体的分解の対象、増大関手、準同値、H⁰ の圏同値、任意集合に対する localKFlat を公開した。
+- `Surjectivity`：微分の閉元持ち上げと一段の原始元添加から増大関手の各次数全射性を証明した。
+- `Pretriangulation`：任意の dg 準同値について有限 cell の三角閉包 tria の同値を構成した。
+- `PretriangulationTriangles`：包含正方形、shift、区別三角形、随伴の単位と shift の両立を証明した。
+- `Quotient`：分解後の逆像部分圏の path 商を構成し、既存の完備化前・後の商比較へ証明済み localKFlat を渡した。
+- 元の圏の Verdier 商へ戻す正方形と、層の acyclic 商の H⁰ の導来圏比較はまだ未実装。
+- 対象ビルド成功。所有 namespace の564宣言を公理監査し、標準3公理のみ、KTheory import なし。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -633,8 +682,12 @@
 | `acyclicComplexes`・`mem_acyclicComplexes_iff` | DerivedGeometry/SheafDerivedDG | 実装・対象ビルド済み |
 | `DerivedDG`・`derivedDGProjection`・`derivedDGContractedProjection`・`derivedDG_acyclic_isZero` | DerivedGeometry/SheafDerivedDG | 実装・対象ビルド済み |
 | `DqcDGModel`・`dqcDGModelInclusion`・`mem_dqcDGObjects_iff` | DerivedGeometry/DqcDGModel | 実装・対象ビルド済み |
-| dg 圏の半自由分解・Hom の K-flat 性 | DerivedGeometry/ | §26 設計変更案、未実装 |
-| dg 商の H⁰ と Mathlib の導来圏との同値 | DerivedGeometry/ | §26 平坦分解を経る案、未実装 |
+| `DGResolution.finiteLength_kFlat`・`attachment_kFlat`・`stage_kFlat`・`limitHom_kFlat` | DGResolution/Filtration | 実装・対象ビルド済み |
+| `DGResolution.Objects`・`augmentation_quasiEquivalence`・`augmentation_homotopy_isEquivalence` | DGResolution/Construction | 実装・対象ビルド済み |
+| `DGResolution.augmentation_surjective`・`augmentation_degree_epi` | DGResolution/Surjectivity | 実装・対象ビルド済み |
+| `DGResolution.triaEquivalence`・`triaEquivalenceIsTriangulated` | DGResolution/Pretriangulation・PretriangulationTriangles | 実装・対象ビルド済み |
+| `DGResolution.localKFlat`・`quotientTriaEquivalence`・`perfectQuotientEquivalence` | DGResolution/Construction・Quotient | 実装・対象ビルド済み |
+| dg 商の H⁰ と Mathlib の導来圏との同値 | DerivedGeometry/ | 分解後の商への移行と比較は未実装 |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |

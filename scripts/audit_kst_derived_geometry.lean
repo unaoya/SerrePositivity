@@ -14,6 +14,17 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let required : Array Name := #[
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.finiteLength_kFlat,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.attachment_kFlat,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.stage_kFlat,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.limitHom_kFlat,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.augmentation_quasiEquivalence,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.augmentation_homotopy_isEquivalence,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.augmentation_surjective,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.localKFlat,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.triaEquivalenceIsTriangulated,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.quotientTriaEquivalence,
+    `SerrePositivity.KST.DerivedGeometry.DGResolution.perfectQuotientEquivalence,
     `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf,
     `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.forget,
     `SerrePositivity.KST.DerivedGeometry.CoefficientSheaf.underlyingCohomology,
