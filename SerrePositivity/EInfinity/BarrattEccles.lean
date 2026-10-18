@@ -30,3 +30,8 @@ public import SerrePositivity.EInfinity.BarrattEccles.ShuffleVerticalDeletion
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleDeletionCoordinates
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleStepMembership
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleVerticalFace
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleCastCoordinates
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleHorizontalFace
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleLastFace
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleFirstPosition
+public import SerrePositivity.EInfinity.BarrattEccles.ShuffleFirstFace
