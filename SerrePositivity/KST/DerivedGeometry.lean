@@ -66,3 +66,7 @@ public import SerrePositivity.KST.DerivedGeometry.FreeSheafCechAugmentation
 public import SerrePositivity.KST.DerivedGeometry.InjectiveHomExact
 
 public import SerrePositivity.KST.DerivedGeometry.InjectiveCechExact
+
+public import SerrePositivity.KST.DerivedGeometry.ResolutionExtCriterion
+public import SerrePositivity.KST.DerivedGeometry.ChainHomExact
+public import SerrePositivity.KST.DerivedGeometry.CechExtCriterion

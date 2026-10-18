@@ -990,6 +990,15 @@
 - この証明は有限回の次元移動であり、非有界全複体化の収束を仮定しない。非有界 Dqc 比較の制御はこの後の別工程。
 - 原典：TT §3、BvdB Thm 3.1.1、Toën §3.2、正本 §10-7。
 
+### §47 の実装の現在地
+
+- 保存検証：集約対象ビルド 3900 jobs 成功。公理監査 1699 宣言、標準3公理のみ、KTheory import なし。
+
+- 一般の増大鎖複体について、サイクルで増大した尾部の完全性と Hom 完全性の継承を証明した。
+- Ext の長完全列と次数帰納により、低次数消滅から最初の制限の単射性を証明した。結論の次数の消滅は仮定していない。
+- Hom の因子分解による表示と、実際の加法群値 Hom 複体の正次数完全性の同値を証明した。
+- 自由増大 Čech の完全性を実際の層化から移し、その Hom の完全性を実際の切断 Čech の正次数完全性から導いた。これにより Čech に沿う Ext 制限単射性まで証明した。基本開上の消滅への適用は継続中。Dqc のアフィン同値・T1–T3 の完了とはしていない。
+
 ## 主要宣言の表
 
 | 宣言・接続点 | 配置 | 状態 |
@@ -1175,6 +1184,9 @@
 | `freeModulePresheafOnOpenHomAddEquiv`・`coproductHomAddEquiv` | DerivedGeometry/FreePresheafHom・CoproductHomAddEquiv | 実装・対象ビルド済み |
 | `freeFormalSheafHomNatIso`・`freeSheafCechHomIso` | DerivedGeometry/FreeFormalSheafHomIso・InjectiveCechExact | 実装・対象ビルド済み |
 | `injectiveCechAb_exactAt`・`injectiveCechAugmentation_quasiIso` | DerivedGeometry/InjectiveCechExact | 実装・対象ビルド済み |
+| `cycleResolutionTail_acyclic`・`chainHomPositiveExact_tail` | DerivedGeometry/ResolutionTail | 実装・対象ビルド済み |
+| `resolution_ext_precomp_injective`・`chainHomPositiveExact_iff` | DerivedGeometry/ResolutionExtCriterion・ChainHomExact | 実装・対象ビルド済み |
+| `freeFormalSheafAugmentedCech_homExact`・`cech_ext_precomp_injective` | DerivedGeometry/CechExtCriterion | 実装・対象ビルド済み |
 | 層の降下 | DerivedGeometry/ | 未実装 |
 | D_qc と降下模型の同値 | DerivedGeometry/ | 未実装 |
 | T1・T1′ | DerivedGeometry/ | 未実装 |
