@@ -276,3 +276,9 @@ public import SerrePositivity.KST.SchemeLemmas.BlowupOpenChartCover
 public import SerrePositivity.KST.SchemeLemmas.BoundaryFreeOpenPullbacks
 public import SerrePositivity.KST.SchemeLemmas.TensorAlgebraBaseLocalization
 public import SerrePositivity.KST.SchemeLemmas.BoundaryFreeOpensGenericFree
+public import SerrePositivity.KST.SchemeLemmas.FreeLocusLocalizedModule
+public import SerrePositivity.KST.SchemeLemmas.GenericPureFreeBaseLocalization
+public import SerrePositivity.KST.SchemeLemmas.BoundaryFreeOpenLocality
+public import SerrePositivity.KST.SchemeLemmas.ChosenBlowupChartCover
+public import SerrePositivity.KST.SchemeLemmas.TwoStageFreeOpenPullbacks
+public import SerrePositivity.KST.SchemeLemmas.SplitAlgebraFreeOpenBlowup

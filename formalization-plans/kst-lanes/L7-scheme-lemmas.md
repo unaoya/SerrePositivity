@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 1652 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 1664 宣言、標準三公理のみ。
 - 一般点で自由な境界純変換の開自由 locus が基礎環を覆うことを、実際の局所化同型から証明済み。
 - 境界外の任意の開閉部分を、互いに交わらず全体を覆う二つの実チャートで分離する有限生成中心を構成済み。
 - 実分裂の下で拡大素点の任意の基底変更との両立性、および相対平坦有限表示加群の一般階数の基底変更保存を証明済み。
@@ -34,6 +34,7 @@
 - 第一段 blowup 上の大域第二段中心の全制限について、全第二段チャートの自由化を元の A と B 加群 M の一段の基底変更に統一済み。
 - 大域第二段中心への支配射を元の基礎環上の一つの有限生成中心の blowup から構成済み。中心外はちょうど D(f)、元の基底への可換式も保持する。
 - 指定アフィン被覆に付随する第二段チャート被覆と構造射を構成済み。各固定階数チャートの自由化を全 Noether アフィン試験対象で使う述語と、その前合成保存を証明済み。
+- 実分裂の下で、元の基礎環上の一つの有限生成中心の通常 blowup に全 Noether アフィン引き戻しでの自由化基本開を構成済み。中心外は D(f)。射影代数を入力する系も証明済み。一般の L7b は未完了。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -1192,6 +1193,25 @@ C 上の固定中心 J の各チャート E について、A→C→E の複合�
 一般点の自由性との同値は、各点の自由基底を基本開へ降ろす既証の有限表示補題から得る。
 係数局所化 E/C に対して、実際の係数変更写像 D=C⊗_A B→E⊗_A B は対応する局所化となる。
 これは明示的な押し出しの保存と Mathlib の局所化の基底変更の同値から従う。
+一般の局所化加群の自由 locus は、局所化写像の基底変更同型から元の自由 locus の逆像と一致する。
+これを純変換の係数局所化写像へ適用し、任意の実現の局所化で純変換の素点自由性を比較する。
+元の代数の実分裂の下で、押し出しでの拡大一般点の縮約も既証なので、
+新しい一般点での自由性と、縮約した基礎素点の元の拡大一般点での自由性は同値となる。
+この同値には境界正則性を要求しない。
+開被覆に沿う局所性の文言：全被覆成分で `HasBoundaryFreeOpenPullbacks` が成り立つなら全体でも成り立つ。
+証明は、Noether アフィン試験対象の各素点を含む基本開を被覆の一成分へ持ち上げ、
+局所化先での自由化基本開を一般点自由性へ戻し、上の局所化比較で元の一般点へ戻す。
+正則境界は局所化で保たれ、各局所化環は Noether。共通階数を選ぶ必要はない。
+`FreeLocusLocalizedModule.lean` と `GenericPureFreeBaseLocalization.lean` で局所化の正確な自由性比較を証明済み。
+`BoundaryFreeOpenLocality.lean` で全 Noether アフィン引き戻しについての始域開被覆に関する局所性を証明済み。
+`ChosenBlowupChartCover.lean` で被覆性を直接入力する第一段の実チャート被覆を構成し、
+`TwoStageFreeOpenPullbacks.lean` で第二段の全チャートの自由化を二段対象全体の性質へまとめた。
+`SplitAlgebraFreeOpenBlowup.lean` では二段対象への支配射でこの性質を引き戻し、
+有限生成中心 K⊆A、中心外 D(f)、全 Noether アフィン引き戻しの自由化基本開まで、一つの通常 blowup 上で証明済み。
+ここで元の代数 B/A の実分裂は入力である。`Module.Projective A B` を入力する系も証明済み。
+Stacks 05FS の射影性の存在、相対 Noether 正規化と支持次元による devissage、および一般の L7b は依然未完了。
+
+
 
 
 #### 選んだ有限表示の任意の基底変更
@@ -1344,6 +1364,12 @@ Fin(N-k) 上の自由加群からの全射を構成する。
 | --- | --- | --- |
 | `BoundaryFreeNeighborhoodsAtCenterOver` | 中間環上の中心の自由化を元の基礎環・加群で述べる条件 | 定義済み |
 | `boundaryFreeNeighborhoodsAtCenterOver_of_baseChanged_center` | 固定中心の全チャートの自由化の元のデータへの統一 | 証明済み |
+| `mem_freeLocus_iff_of_isLocalizedModule` | 任意の実現の局所化加群の自由 locus の正確な比較 | 証明済み |
+| `genericPureTransformFree_baseLocalization_iff` | 係数局所化による純変換の拡大一般点での自由性の同値 | 証明済み |
+| `hasBoundaryFreeOpenPullbacks_of_openCover` | 全 Noether アフィン引き戻しでの自由化基本開の始域開局所性 | 証明済み |
+| `hasBoundaryFreeOpenPullbacks_twoStage` | 全第二段チャートの自由化から二段 blowup 全体への接続 | 証明済み |
+| `exists_fg_center_boundaryFreeOpenPullbacks_of_split` | 実分裂の下で元の基礎環上の一つの中心の存在と自由化基本開 | 証明済み |
+| `exists_fg_center_boundaryFreeOpenPullbacks_of_projective` | 射影代数の場合の一段中心と自由化基本開 | 証明済み |
 | `blowupOpenChartCover` / `blowupOpenChartCover_base` | 指定アフィン被覆に付随する第二段チャート被覆と構造射 | 証明済み |
 | `HasBoundaryFreeOpenPullbacks.comp` | 基礎を覆う自由化基本開の全 Noether アフィン引き戻しでの前合成保存 | 証明済み |
 | `hasBoundaryFreeOpenPullbacks_spec_of_neighborhoods` | 固定階数チャートから全 Noether 試験対象への自由化基本開の保存 | 証明済み |
