@@ -11,7 +11,7 @@
 
 - L7a の Rees 次数付けとアフィン blowup の定義を実装済み。
 - 零次成分の同定・基礎環上の構造射・有限生成中心での固有性を実装済み。
-- 対象ビルド成功。最新の保存単位の公理監査は 1395 宣言、標準三公理のみ。
+- 対象ビルド成功。最新の保存単位の公理監査は 1405 宣言、標準三公理のみ。
 - 中心の逆像の閉部分スキーム、閉埋め込み、交換式を構成済み。
 - 次数一の標準アフィンチャートとその被覆性を証明済み。
 - チャート上で `a · (b/a) = b` と拡大イデアル `I O = (a)` を証明済み。
@@ -612,6 +612,20 @@ Noether S 上の有限生成加群に対する特殊化も証明済み。
 上記の素点・自由性・小行列式条件の接続は証明済み。
 拡大素点の縮約が元の素点に等しいことも、幾何学的整な射の全射性から証明した。
 
+#### 実際の分裂表示の下での一般階数の局所定数性
+
+原典：Stacks 0811, Lemma 38.30.3 と 0810, Lemma 38.30.2。
+既存の係数イデアルと同じ実際の A 線形分裂 e : B → A^(ι)、p、p e = id を入力する。
+拡大素点への写像 g の基本開集合 D(b) の逆像は、
+所属判定 b ∈ PB ↔ ∀ i, e(b)_i ∈ P により ⋃ i, D(e(b)_i) に等しい。
+従って g は連続。A 上平坦な有限表示 B-加群 M は g(P) で自由なので、
+g を実際の自由 locus への連続写像へ制限できる。
+有限表示加群の自由 locus 上の階数の局所定数性を引き戻す。
+これは基礎環上の射影性（分裂表示の存在）を証明したことにはならない。
+`SplitGenericPrimeContinuity.lean` で上記の連続性と局所定数性を証明済み。
+実際のテンソル局所化の階数での同値な文言、各階数のファイバーの開閉性、
+素スペクトルのコンパクト性による階数の有限性も証明した。
+
 #### 選んだ有限表示の任意の基底変更
 
 原典：Stacks 0810, Lemma 38.30.2 の小行列式の基底変更の利用。
@@ -773,6 +787,13 @@ Fin(N-k) 上の自由加群からの全射を構成する。
 | `geometricallyIntegralGenericPrime_comap` | 拡大素点の縮約は元の素点 | 証明済み |
 | `free_at_geometricallyIntegralGenericPrime` | 拡大素点での相対平坦加群の自由性 | 証明済み |
 | `minor_pattern_at_geometricallyIntegralGenericPrime` | 拡大素点での表示行列の単位・零条件 | 証明済み |
+| `genericPrime_preimage_basicOpen` | 基本開集合の逆像は係数の基本開集合の和 | 証明済み |
+| `continuous_geometricallyIntegralGenericPrime` | 実分裂の下での拡大素点写像の連続性 | 証明済み |
+| `genericPrime_mem_freeLocus` | 相対平坦加群の自由 locus への所属 | 証明済み |
+| `isLocallyConstant_genericRank` | 実分裂の下での一般階数の局所定数性 | 証明済み |
+| `isLocallyConstant_genericTensorRank` | テンソル局所化で計算した階数の局所定数性 | 証明済み |
+| `isClopen_genericRank_fiber` | 指定した一般階数の集合の開閉性 | 証明済み |
+| `genericRank_range_finite` | 一般階数の値の有限性 | 証明済み |
 
 以下は予定名であり、実装済みでないものを `#check` 済みとは扱わない。
 
