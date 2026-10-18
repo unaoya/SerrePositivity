@@ -514,6 +514,16 @@ image.ι と factorThruImage の輸送を照合して、余等化子の二射で
 全射のときの像は終域であることを使い、全射の標準形から各行への包含が逆写像になることを証明する。
 この標準形自体や比較の可逆性を、新しい仮定として導入しない。
 
+### 標準形による fat realization の骨格
+
+確認する文言：fat realization の n 骨格を、正規化した全射の終域の次元が n 以下の
+元からなる部分単体集合とする。単体作用でその次元は増えない。
+証明方針：全射 σ と単体作用 θ の合成 θ≫σ を epi–mono 分解し、
+新しい像から元の終域への単射の次元の不等式を使う。
+各行 Xₙ⊗Δ[n] の像は n 骨格に入り、次数 d の全ての元は d 次元までの骨格に入る。
+この部分単体集合の定義から有限骨格の付着の pushout の普遍性を別途証明し、
+ホモトピー引き戻しの骨格帰納を仮定にはしない。
+
 ## 12. 現在地と主要宣言
 
 現在地：L2a の有限 rank の構成を完了し、L2b の群状モノイドの bar 構成へ進む。
@@ -659,7 +669,11 @@ dinatural な射の族を対角からの射へまとめる desc と、各行の�
 任意の epi–mono 分解による正規化の計算、面の関係式での不変性、全射の復元を証明した。
 各次数の実際の余等化子へ正規化を降ろし、各行からの包含による両逆性を証明した。
 fat realization の各次数と全射な標準形の型との同値を構成した。
-対角への比較の局所化可逆性と有限骨格の帰納は未証明。
+標準形の自然性から、各行で単射の射の fat realization の単射性を証明した。
+単体作用後の正規化の式と終域の次元の減少を証明した。
+正規化した終域の次元による有限骨格の部分単体集合を構成した。
+骨格の単調性、各次数での安定化、全骨格の和が全体となること、各行の像の包含を証明した。
+対角への比較の局所化可逆性と有限骨格の付着の普遍性・ホモトピー引き戻しの帰納は未証明。
 Proposition 1.6 の対角化の貼り合わせは未証明。
 対角化後の bar 束の homotopy-cartesian 性と、Segal 比較は未証明。
 L2b、L2c、L2d、L2e は未完了である。
@@ -667,8 +681,8 @@ L2b、L2c、L2d、L2e は未完了である。
 ĜL の対象は正本 §13-10 に従い群状単体的モノイドとする。
 検証：`lake build SerrePositivity.KST.Comparison` は成功した。
 検証：`lake env lean scripts/audit_kst_comparison.lean` は終了コード 0。
-主要 832 宣言の型と公理を確認した。
-さらに名前空間全体の 1553 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
+主要 847 宣言の型と公理を確認した。
+さらに名前空間全体の 1570 宣言（自動生成された公開補題・射影を含む）を許可リストで検査し、標準三公理のみを確認した。
 L2a の工程の区切りで全体ビルドを実行した。
 全体ビルドは比較レーンの import 閉包外の `KST/SchemeLemmas/Exceptional.lean:75` で失敗。
 未解決の `CategoryTheory.Limits.pullback.map_fst` と関連する pullback の型不整合が原因。
@@ -832,6 +846,10 @@ L2a の工程の区切りで全体ビルドを実行した。
 | `FatNormalForm`、`fatNormalize`、`fatNormalize_face` | 実装済み | 全射な標準形と面の関係式での不変性 |
 | `fatDegreeCoforkIsColimit`、`fatDegreeNormalize` | 実装済み | 各次数の実際の余等化子へ降りる正規化 |
 | `fatNormalFormRealize`、`fatNormalFormEquiv` | 実装済み | 各行の包含による逆写像と各次数の全射な標準形との同値 |
+| `fatDegreeNormalize_map`、`fatRealizationMap_mono` | 実装済み | 標準形の自然性と各行の単射性の保存 |
+| `fatDegreeNormalize_action`、`fatNormalDegree_action_le` | 実装済み | 単体作用後の正規化と終域の次元の減少 |
+| `fatSkeleton`、`fatSkeleton_monotone`、`iSup_fatSkeleton_eq_top` | 実装済み | 標準形の次元による部分単体集合の濾過と全体の復元 |
+| `fatSkeleton_obj_eq_univ`、`fatRealizationInclusion_mem_skeleton` | 実装済み | 各次数での安定化と各行の像の包含 |
 | Segal Proposition 1.6 | 未証明 | 対角化の貼り合わせ |
 | 群完備化・Segal 比較定理 | 未証明 | Segal Proposition 1.5、KST Lemma 2.13 |
 | H_* | 未実装 | 正規化自由アーベル群複体 |

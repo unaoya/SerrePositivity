@@ -84,6 +84,7 @@ run_cmd do
 
 
 
+
 -- ActionBarCoordinates.lean
 
 #check @SerrePositivity.KST.Comparison.monoidPrefixLabel
@@ -1068,6 +1069,21 @@ run_cmd do
 #print axioms SerrePositivity.KST.Comparison.fatNormalize_of_normalForm
 
 
+-- FatNormalFormAction.lean
+
+#check @SerrePositivity.KST.Comparison.fatNormalFormRealize_action
+#print axioms SerrePositivity.KST.Comparison.fatNormalFormRealize_action
+
+#check @SerrePositivity.KST.Comparison.fatDegreeNormalize_action
+#print axioms SerrePositivity.KST.Comparison.fatDegreeNormalize_action
+
+#check @SerrePositivity.KST.Comparison.fatNormalDegree_action_le
+#print axioms SerrePositivity.KST.Comparison.fatNormalDegree_action_le
+
+#check @SerrePositivity.KST.Comparison.fatNormalDegree_le
+#print axioms SerrePositivity.KST.Comparison.fatNormalDegree_le
+
+
 -- FatNormalFormEquiv.lean
 
 #check @SerrePositivity.KST.Comparison.fatNormalFormRealize
@@ -1084,6 +1100,21 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.fatNormalFormEquiv
 #print axioms SerrePositivity.KST.Comparison.fatNormalFormEquiv
+
+
+-- FatNormalFormMap.lean
+
+#check @SerrePositivity.KST.Comparison.fatNormalFormMap
+#print axioms SerrePositivity.KST.Comparison.fatNormalFormMap
+
+#check @SerrePositivity.KST.Comparison.fatNormalize_map
+#print axioms SerrePositivity.KST.Comparison.fatNormalize_map
+
+#check @SerrePositivity.KST.Comparison.fatNormalFormRealize_map
+#print axioms SerrePositivity.KST.Comparison.fatNormalFormRealize_map
+
+#check @SerrePositivity.KST.Comparison.fatDegreeNormalize_map
+#print axioms SerrePositivity.KST.Comparison.fatDegreeNormalize_map
 
 
 -- FatRealization.lean
@@ -1144,6 +1175,33 @@ run_cmd do
 
 #check @SerrePositivity.KST.Comparison.fatRealizationToDiagonalNatTrans
 #print axioms SerrePositivity.KST.Comparison.fatRealizationToDiagonalNatTrans
+
+
+-- FatRealizationMono.lean
+
+#check @SerrePositivity.KST.Comparison.fatNormalFormMap_injective
+#print axioms SerrePositivity.KST.Comparison.fatNormalFormMap_injective
+
+#check @SerrePositivity.KST.Comparison.fatRealizationMap_mono
+#print axioms SerrePositivity.KST.Comparison.fatRealizationMap_mono
+
+
+-- FatSkeleton.lean
+
+#check @SerrePositivity.KST.Comparison.fatSkeleton
+#print axioms SerrePositivity.KST.Comparison.fatSkeleton
+
+#check @SerrePositivity.KST.Comparison.fatSkeleton_monotone
+#print axioms SerrePositivity.KST.Comparison.fatSkeleton_monotone
+
+#check @SerrePositivity.KST.Comparison.fatSkeleton_obj_eq_univ
+#print axioms SerrePositivity.KST.Comparison.fatSkeleton_obj_eq_univ
+
+#check @SerrePositivity.KST.Comparison.iSup_fatSkeleton_eq_top
+#print axioms SerrePositivity.KST.Comparison.iSup_fatSkeleton_eq_top
+
+#check @SerrePositivity.KST.Comparison.fatRealizationInclusion_mem_skeleton
+#print axioms SerrePositivity.KST.Comparison.fatRealizationInclusion_mem_skeleton
 
 
 -- FiberwiseAnodyne.lean
