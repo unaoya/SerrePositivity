@@ -35,7 +35,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・451 モジュール 4409 宣言の公理監査成功。
+対象ビルド・457 モジュール 4439 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -3291,4 +3291,30 @@ loop の積を代表する射の正次数群への作用を二つの射影に分
 
 参照：Goerss–Jardine I §7、VIII §1。
 対象ビルド 3902 jobs 成功。私有宣言を含む 451 モジュール 4409 宣言で標準三公理のみ。
+L9e は進行中。有理 Shapiro、Tot の π_* の計算、一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。
+
+
+## 108. L9e の球面とセルの群の係数自然性
+
+全次数の loop の自然性を通常の正次数の群同型へ移した。
+円の Kan 置換の単位による前合成が係数射と可換であることを使い、置換した円の次数移動の自然性を得た。
+loop 値の球面の写像類の比較、二重 Hom の交換、球面の基本群の比較をそれぞれ係数射と照合した。
+球面の正次数群の構成の帰納式を界面にし、loop の逆同型の自然性と交換の正方形を群へ送って帰納した。
+従って正次元球面の Hom の全正次数の次数移動は、実際の点つき係数射に自然である。
+自由基点から作ったセルの球面についても、球面の比較同型の前合成の自然性を使って同じ可換式を得た。
+
+これは塔の fiber の係数の群の表示へ接続するための自然性である。
+塔の境界準同型と交代微分の一致、向きの符号、塔の収束はこの自然性だけでは導かれず、後続で証明する。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `loopPositiveHomotopyEquiv_natural` | loop の正次数の群同型の係数自然性 |
+| `CirclePower.positiveHomotopyEquiv_natural` | 円の Kan 置換の Hom の群の係数自然性 |
+| `SphereSimplex.fundamentalHomotopyEquiv_natural` | 球面の Hom の基本群の次数移動の自然性 |
+| `SphereSimplex.loopSwap_natural` | loop と球面の Hom の交換の係数自然性 |
+| `SphereSimplex.positiveHomotopyEquiv_succ` / `positiveHomotopyEquiv_natural` | 正次数の帰納式と全正次数の係数自然性 |
+| `SimplexCell.positiveHomotopyEquiv_natural` | セルの球面の Hom の次数移動の係数自然性 |
+
+参照：Goerss–Jardine I §7、VIII §1。
+対象ビルド 3908 jobs 成功。私有宣言を含む 457 モジュール 4439 宣言で標準三公理のみ。
 L9e は進行中。有理 Shapiro、Tot の π_* の計算、一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。

@@ -1,5 +1,12 @@
 module
 
+public import SerrePositivity.KST.Spectra.PositiveLoopNaturality
+public import SerrePositivity.KST.Spectra.CirclePowerPositiveNaturality
+public import SerrePositivity.KST.Spectra.SphereFundamentalNaturality
+public import SerrePositivity.KST.Spectra.SphereMappingHomotopyFormula
+public import SerrePositivity.KST.Spectra.SpherePositiveNaturality
+public import SerrePositivity.KST.Spectra.SimplexCellPositiveNaturality
+
 public import SerrePositivity.KST.Spectra.SphereLoopMappingClasses
 public import SerrePositivity.KST.Spectra.CirclePowerPositiveHomotopy
 public import SerrePositivity.KST.Spectra.SphereMappingHomotopyGroups
