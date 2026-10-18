@@ -190,3 +190,6 @@ public import SerrePositivity.KST.SchemeLemmas.SplitAlgebraTensorCoefficients
 public import SerrePositivity.KST.SchemeLemmas.SplitAlgebraCoefficientBaseChange
 public import SerrePositivity.KST.SchemeLemmas.BoundaryMultipleCenter
 public import SerrePositivity.KST.SchemeLemmas.CoefficientBlowupCenter
+public import SerrePositivity.KST.SchemeLemmas.SplitAlgebraCoefficientScalar
+public import SerrePositivity.KST.SchemeLemmas.NormalizedCoefficientIdeal
+public import SerrePositivity.KST.SchemeLemmas.CoefficientIdealPrimeLocalization
