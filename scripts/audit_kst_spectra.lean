@@ -13,6 +13,13 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.KST.Spectra.AdditiveFunctionEquiv,
+    `SerrePositivity.KST.Spectra.GroupCoefficientCochainFunctor,
+    `SerrePositivity.KST.Spectra.TrivialHomotopyAction,
+    `SerrePositivity.KST.Spectra.TrivialHomotopyLinearCochains,
+    `SerrePositivity.KST.Spectra.AlternatingCofaceFunctorIso,
+    `SerrePositivity.KST.Spectra.TrivialHomotopyCochainComplex,
+    `SerrePositivity.KST.Spectra.TrivialHomotopyCohomology,
     `SerrePositivity.KST.Spectra.GroupFunctionCofaces,
     `SerrePositivity.KST.Spectra.LinearGroupCochains,
     `SerrePositivity.KST.Spectra.LinearGroupCofaces,

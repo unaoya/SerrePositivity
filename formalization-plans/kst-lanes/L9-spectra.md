@@ -34,7 +34,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 進行中。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・401 モジュール 4012 宣言の公理監査成功。
+対象ビルド・408 モジュール 4069 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -3064,3 +3064,31 @@ L9e は進行中。有理 Shapiro、線形 cochain の cohomology との比較�
 保存単位の対象ビルド 3847 jobs 成功。
 私有宣言を含む 401 モジュール 4012 宣言で標準三公理のみ。
 L9e は進行中。有理 Shapiro、π_* の加法的 cochain と線形複体の比較、Tot の π_* の計算、一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。
+
+
+## 101. L9e の自明作用の高次 π_* の cochain 計算
+
+自明な点つき Kan 作用が正次数のホモトピー群へ誘導する作用は自明であることを証明した。
+非斉次群 cochain の係数変更を関手に束ね、既存の余単体比較を自明係数へ移した。
+関数群の Additive と加法群の関数の同型を用い、二以上の次数の π_* の余単体加法群を、指定した加群構造の線形 cochain の忘却と比較した。
+交代余面複体と加法的関手の可換同型を構成し、この比較を実際の cochain complex の同型にした。
+加群から加法群への忘却がホモロジーを保つ同型を使い、各次数のコホモロジーへ比較を移した。
+有限群・標数零の体の指定係数で正次数は零となり、零次数は元の係数と同型である。
+係数構造は現段階では入力であり、有理化スペクトルの各段への供給は次の保存単位で行う。
+これは Tot の π_* の計算や有理 Shapiro をまだ含まない。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `additiveFunctionEquiv` | 関数群の加法表示と加法群の関数の同型 |
+| `GroupCoefficientCochains.functor` | 非斉次群 cochain の係数に関する関手性 |
+| `PointedActionCochains.homotopyTrivialIso` | 自明作用が誘導する π_* の作用の自明性 |
+| `PointedActionCochains.trivialHomotopyFunctionNatIso` | 自明係数の非斉次 cochain への比較 |
+| `TrivialHomotopyCochains.linearDiagramIso` | 高次 π_* の加法的図式と指定線形係数の比較 |
+| `alternatingCofaceFunctorIso` | 交代余面複体と加法的関手の可換同型 |
+| `TrivialHomotopyCochains.complexIso` / `cohomologyIso` | 実際の複体とそのコホモロジーの比較 |
+| `TrivialHomotopyCochains.zeroCohomologyIso` | 自明作用の零次数 cohomology は元の係数 |
+| `TrivialHomotopyCochains.positive_cohomology_isZero` | 有限群・標数零係数での正次数消滅 |
+
+参照：Goerss–Jardine I §7、VIII §2。
+対象ビルド 3854 jobs 成功。私有宣言を含む 408 モジュール 4069 宣言で標準三公理のみ。
+L9e は進行中。有理 Shapiro、Tot の π_* の計算、一般の余単体 BF 図式の通常の Tot の比較は引き続き未完了。

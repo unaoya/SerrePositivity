@@ -1,5 +1,13 @@
 module
 
+public import SerrePositivity.KST.Spectra.AdditiveFunctionEquiv
+public import SerrePositivity.KST.Spectra.GroupCoefficientCochainFunctor
+public import SerrePositivity.KST.Spectra.TrivialHomotopyAction
+public import SerrePositivity.KST.Spectra.TrivialHomotopyLinearCochains
+public import SerrePositivity.KST.Spectra.AlternatingCofaceFunctorIso
+public import SerrePositivity.KST.Spectra.TrivialHomotopyCochainComplex
+public import SerrePositivity.KST.Spectra.TrivialHomotopyCohomology
+
 public import SerrePositivity.KST.Spectra.GroupFunctionCofaces
 public import SerrePositivity.KST.Spectra.LinearGroupCochains
 public import SerrePositivity.KST.Spectra.LinearGroupCofaces
