@@ -4863,5 +4863,77 @@ lemma hasLiftingProperty_simplicialReplacementProjection_zeroHorn
     {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) [∀ c, KanComplex (F.obj c)] (n : ℕ) :
     HasLiftingProperty (horn (n + 1) 0).ι (simplicialReplacementProjection F)
 
+noncomputable def joinDiagonalCylinder (K : SSet.{u}) :
+    (Δ[1] : SSet.{u}) ⊗ K ⟶ (K ⊗ (Δ[1] : SSet.{u})) ⊗ K
+
+noncomputable def joinDiagonal (K : SSet.{u}) : (Δ[1] : SSet.{u}) ⊗ K ⟶ join K K
+
+lemma prismEndpoint_zero_joinDiagonal (K : SSet.{u}) :
+    prismEndpoint 0 K ≫ joinDiagonal K = joinInl K K
+
+lemma prismEndpoint_one_joinDiagonal (K : SSet.{u}) :
+    prismEndpoint 1 K ≫ joinDiagonal K = joinInr K K
+
+lemma joinDiagonal_naturality {X Y : SSet.{u}} (f : X ⟶ Y) :
+    ((Δ[1] : SSet.{u}) ◁ f) ≫ joinDiagonal Y = joinDiagonal X ≫ joinMap f f
+
+noncomputable def relativeJoin {X Y S : SSet.{u}} (f : X ⟶ S) (g : Y ⟶ S) : SSet.{u}
+
+noncomputable def relativeJoinProjection {X Y S : SSet.{u}} (f : X ⟶ S) (g : Y ⟶ S) :
+    relativeJoin f g ⟶ (Δ[1] : SSet.{u})
+
+noncomputable def relativeJoinInl {X Y S : SSet.{u}} (f : X ⟶ S) (g : Y ⟶ S) :
+    X ⟶ relativeJoin f g
+
+noncomputable def relativeJoinInr {X Y S : SSet.{u}} (f : X ⟶ S) (g : Y ⟶ S) :
+    Y ⟶ relativeJoin f g
+
+lemma relativeJoinInl_fst {X Y S : SSet.{u}} (f : X ⟶ S) (g : Y ⟶ S) :
+    relativeJoinInl f g ≫ pullback.fst (joinMap f g) (joinDiagonal S) = joinInl X Y
+
+lemma relativeJoinInr_fst {X Y S : SSet.{u}} (f : X ⟶ S) (g : Y ⟶ S) :
+    relativeJoinInr f g ≫ pullback.fst (joinMap f g) (joinDiagonal S) = joinInr X Y
+
+lemma relativeJoinInl_projection {X Y S : SSet.{u}} (f : X ⟶ S) (g : Y ⟶ S) :
+    relativeJoinInl f g ≫ relativeJoinProjection f g =
+      SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2))
+
+lemma relativeJoinInr_projection {X Y S : SSet.{u}} (f : X ⟶ S) (g : Y ⟶ S) :
+    relativeJoinInr f g ≫ relativeJoinProjection f g =
+      SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
+
+noncomputable def relativeJoinPrism {X Y : SSet.{u}} (f : X ⟶ Y) :
+    (Δ[1] : SSet.{u}) ⊗ X ⟶ relativeJoin f (𝟙 Y)
+
+lemma relativeJoinPrism_zero {X Y : SSet.{u}} (f : X ⟶ Y) :
+    prismEndpoint 0 X ≫ relativeJoinPrism f = relativeJoinInl f (𝟙 Y)
+
+lemma relativeJoinPrism_one {X Y : SSet.{u}} (f : X ⟶ Y) :
+    prismEndpoint 1 X ≫ relativeJoinPrism f = f ≫ relativeJoinInr f (𝟙 Y)
+
+lemma relativeJoinPrism_projection {X Y : SSet.{u}} (f : X ⟶ Y) :
+    relativeJoinPrism f ≫ relativeJoinProjection f (𝟙 Y) = fst (Δ[1] : SSet.{u}) X
+
+noncomputable def relativeJoinCylinderComparison {X Y : SSet.{u}} (f : X ⟶ Y) :
+    pushout (prismEndpoint 1 X) f ⟶ relativeJoin f (𝟙 Y)
+
+lemma relativeJoinCylinderComparison_inl {X Y : SSet.{u}} (f : X ⟶ Y) :
+    pushout.inl (prismEndpoint 1 X) f ≫ relativeJoinCylinderComparison f = relativeJoinPrism f
+
+lemma relativeJoinCylinderComparison_inr {X Y : SSet.{u}} (f : X ⟶ Y) :
+    pushout.inr (prismEndpoint 1 X) f ≫ relativeJoinCylinderComparison f =
+      relativeJoinInr f (𝟙 Y)
+
+instance relativeJoinSelf_snd_isIso (S : SSet.{u}) :
+    IsIso (pullback.snd (joinMap (𝟙 S) (𝟙 S)) (joinDiagonal S))
+
+noncomputable def relativeJoinSelfIso (S : SSet.{u}) :
+    relativeJoin (𝟙 S) (𝟙 S) ≅ (Δ[1] : SSet.{u}) ⊗ S
+
+instance relativeJoinPrism_id_isIso (S : SSet.{u}) : IsIso (relativeJoinPrism (𝟙 S))
+
+instance relativeJoinCylinderComparison_id_isIso (S : SSet.{u}) :
+    IsIso (relativeJoinCylinderComparison (𝟙 S))
+
 end SerrePositivity.InfinityCategories
 ```

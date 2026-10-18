@@ -212,3 +212,7 @@ public import SerrePositivity.InfinityCategories.F1.LeftStrictTransportThinRestr
 public import SerrePositivity.InfinityCategories.F1.SimplicialReplacementSourceCoefficient
 public import SerrePositivity.InfinityCategories.F1.SimplicialReplacementHornSources
 public import SerrePositivity.InfinityCategories.F1.SimplicialReplacementZeroHorn
+public import SerrePositivity.InfinityCategories.F1.JoinDiagonal
+public import SerrePositivity.InfinityCategories.F1.RelativeJoin
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinder
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinIdentity
