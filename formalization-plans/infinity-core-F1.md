@@ -5091,5 +5091,47 @@ lemma isPrecompositionEquivalence_relativeJoinCylinderComparison_of_pushout
     (hC : IsPrecompositionEquivalence (relativeJoinCylinderComparison C.hom)) :
     IsPrecompositionEquivalence (relativeJoinCylinderComparison D.hom)
 
+lemma joinDiagonal_app_cut (Y : SSet.{u}) (n : ℕ)
+    (t : (Δ[1] : SSet.{u}) _⦋n⦌) (a : Y _⦋n⦌) :
+    ((joinDiagonal Y).app (Opposite.op ⦋n⦌) (t, a)).1.val =
+      Join.pullCut (stdSimplex.objEquiv t).toOrderHom 1
+
+lemma joinDiagonal_eq_inr_iff (Y : SSet.{u}) (n : ℕ)
+    (z : ((Δ[1] : SSet.{u}) ⊗ Y) _⦋n⦌) (b : Y _⦋n⦌) :
+    (joinDiagonal Y).app (Opposite.op ⦋n⦌) z =
+        (joinInr Y Y).app (Opposite.op ⦋n⦌) b ↔
+      z = (prismEndpoint 1 Y).app (Opposite.op ⦋n⦌) b
+
+lemma isPullback_joinDiagonal_inr (Y : SSet.{u}) :
+    IsPullback (prismEndpoint 1 Y) (𝟙 Y) (joinDiagonal Y) (joinInr Y Y)
+
+instance relativeJoin_joinInr_emptySource_isIso (X Y : SSet.{u})
+    [∀ n, IsEmpty (X.obj n)] : IsIso (joinInr X Y)
+
+instance relativeJoinInr_emptySource_isIso {X Y : SSet.{u}} (f : X ⟶ Y)
+    [∀ n, IsEmpty (X.obj n)] : IsIso (relativeJoinInr f (𝟙 Y))
+
+instance relativeJoin_prismEndpoint_empty_isIso (i : Fin 2) (X : SSet.{u})
+    [∀ n, IsEmpty (X.obj n)] : IsIso (prismEndpoint i X)
+
+instance relativeJoinCylinderComparison_emptySource_isIso {X Y : SSet.{u}} (f : X ⟶ Y)
+    [∀ n, IsEmpty (X.obj n)] : IsIso (relativeJoinCylinderComparison f)
+
+lemma isPrecompositionEquivalence_relativeJoinCylinderComparison_emptySource
+    {X Y : SSet.{u}} (f : X ⟶ Y) [∀ n, IsEmpty (X.obj n)] :
+    IsPrecompositionEquivalence (relativeJoinCylinderComparison f)
+
+lemma joinDiagonal_stdSimplex_val (n d : ℕ)
+    (t : (Δ[1] : SSet.{u}) _⦋d⦌) (a : (Δ[n] : SSet.{u}) _⦋d⦌) (i : Fin (d + 1)) :
+    ((joinStdSimplexIso n n).hom.app (Opposite.op ⦋d⦌)
+      ((joinDiagonal Δ[n]).app (Opposite.op ⦋d⦌) (t, a)) i).val =
+        if (t i).val = 0 then (a i).val else n + 1 + (a i).val
+
+instance joinDiagonal_stdSimplex_mono (n : ℕ) : Mono (joinDiagonal (Δ[n] : SSet.{u}))
+
+instance relativeJoin_fst_stdSimplex_mono {X Y : SSet.{u}} {n : ℕ}
+    (f : X ⟶ (Δ[n] : SSet.{u})) (g : Y ⟶ (Δ[n] : SSet.{u})) :
+    Mono (pullback.fst (joinMap f g) (joinDiagonal Δ[n]))
+
 end SerrePositivity.InfinityCategories
 ```

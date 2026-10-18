@@ -224,3 +224,6 @@ public import SerrePositivity.InfinityCategories.F1.MappingCylinderOverFunctor
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinderNaturality
 public import SerrePositivity.InfinityCategories.F1.MappingCylinderOverMono
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinderGluing
+public import SerrePositivity.InfinityCategories.F1.JoinDiagonalEndpoint
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinEmpty
+public import SerrePositivity.InfinityCategories.F1.JoinDiagonalStdSimplex
