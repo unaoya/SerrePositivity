@@ -160,3 +160,8 @@ public import SerrePositivity.InfinityCategories.F1.PointFunctorEvaluation
 public import SerrePositivity.InfinityCategories.F1.RelativePointFunctorIso
 public import SerrePositivity.InfinityCategories.F1.RelativeFunctorInitialEvaluation
 public import SerrePositivity.InfinityCategories.F1.LeftStrictTransportEquivalence
+public import SerrePositivity.InfinityCategories.F1.WeightedNervePrefixes
+public import SerrePositivity.InfinityCategories.F1.WeightedNerve
+public import SerrePositivity.InfinityCategories.F1.WeightedNerveFunctor
+public import SerrePositivity.InfinityCategories.F1.WeightedNerveFiber
+public import SerrePositivity.InfinityCategories.F1.LeftStrictTransportWeightedNerve

@@ -3738,5 +3738,118 @@ lemma leftStrictTransportEvaluate_fiber_isContractibleKan
     (e : (vertexFiber p ((nerveEquiv (C := C)).symm c)) _⦋0⦌) :
     IsContractibleKan (vertexFiber (leftStrictTransportEvaluate p c) e)
 
+def simplexPrefixInclusion (m n : ℕ) (h : m ≤ n) : ⦋m⦌ ⟶ ⦋n⦌
+
+lemma simplexPrefixInclusion_id (n : ℕ) : simplexPrefixInclusion n n le_rfl = 𝟙 ⦋n⦌
+
+lemma simplexPrefixInclusion_comp {l m n : ℕ} (h : l ≤ m) (k : m ≤ n) :
+    simplexPrefixInclusion l m h ≫ simplexPrefixInclusion m n k =
+      simplexPrefixInclusion l n (h.trans k)
+
+def simplexPrefixVertex {n : ℕ} (i : Fin (n + 1)) (k : Fin (i.val + 1)) : Fin (n + 1)
+
+def simplexPrefixRestriction {m n : SimplexCategory} (α : m ⟶ n) (i : Fin (m.len + 1)) :
+    ⦋i.val⦌ ⟶ ⦋(α.toOrderHom i).val⦌
+
+lemma simplexPrefixRestriction_id (m : SimplexCategory) (i : Fin (m.len + 1)) :
+    simplexPrefixRestriction (𝟙 m) i = 𝟙 ⦋i.val⦌
+
+lemma simplexPrefixRestriction_comp {l m n : SimplexCategory}
+    (α : l ⟶ m) (β : m ⟶ n) (i : Fin (l.len + 1)) :
+    simplexPrefixRestriction (α ≫ β) i =
+      simplexPrefixRestriction α i ≫ simplexPrefixRestriction β (α.toOrderHom i)
+
+lemma simplexPrefixRestriction_naturality {m n : SimplexCategory} (α : m ⟶ n)
+    {i j : Fin (m.len + 1)} (h : i ≤ j) :
+    simplexPrefixInclusion i.val j.val h ≫ simplexPrefixRestriction α j =
+      simplexPrefixRestriction α i ≫ simplexPrefixInclusion
+        (α.toOrderHom i).val (α.toOrderHom j).val (α.toOrderHom.monotone h)
+
+lemma simplexPrefixRestriction_factor {m n : SimplexCategory} (α : m ⟶ n)
+    (i : Fin (m.len + 1)) :
+    simplexPrefixInclusion i.val m.len (Nat.le_of_lt_succ i.isLt) ≫ α =
+      simplexPrefixRestriction α i ≫ simplexPrefixInclusion
+        (α.toOrderHom i).val n.len (Nat.le_of_lt_succ (α.toOrderHom i).isLt)
+
+def simplexPrefixWeight (n : ℕ) : Fin (n + 1) ⥤ SSet.{u}
+
+def simplexPrefixWeightRestriction {m n : SimplexCategory} (α : m ⟶ n) :
+    simplexPrefixWeight.{u} m.len ⟶
+      (SimplexCategory.toCat.map α).toFunctor ⋙ simplexPrefixWeight n.len
+
+def weightedNerveSimplex {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) (n : ℕ) : Type u
+
+def weightedNerveSimplexMap {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u})
+    {m n : SimplexCategory} (α : m ⟶ n) (s : weightedNerveSimplex F n.len) :
+    weightedNerveSimplex F m.len
+
+def weightedNerve {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) : SSet.{u}
+
+def weightedNerveProjection {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) :
+    weightedNerve F ⟶ nerve C
+
+def weightedNerveMap {C : Type u} [Category.{u} C] {F G : C ⥤ SSet.{u}} (η : F ⟶ G) :
+    weightedNerve F ⟶ weightedNerve G
+
+lemma weightedNerveMap_projection {C : Type u} [Category.{u} C]
+    {F G : C ⥤ SSet.{u}} (η : F ⟶ G) :
+    weightedNerveMap η ≫ weightedNerveProjection G = weightedNerveProjection F
+
+lemma weightedNerveMap_id {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) :
+    weightedNerveMap (𝟙 F) = 𝟙 (weightedNerve F)
+
+lemma weightedNerveMap_comp {C : Type u} [Category.{u} C]
+    {F G H : C ⥤ SSet.{u}} (η : F ⟶ G) (θ : G ⟶ H) :
+    weightedNerveMap (η ≫ θ) = weightedNerveMap η ≫ weightedNerveMap θ
+
+def weightedNerveFunctor (C : Type u) [Category.{u} C] :
+    (C ⥤ SSet.{u}) ⥤ Over (nerve C)
+
+def weightedNerveConstantDiagram {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (c : C) {n : ℕ} (s : (F.obj c) _⦋n⦌) :
+    simplexPrefixWeight n ⟶ (CategoryTheory.Functor.const (Fin (n + 1))).obj c ⋙ F
+
+def weightedNerveConstantLift {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) (c : C) :
+    F.obj c ⟶ weightedNerve F
+
+lemma weightedNerveConstantLift_projection {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (c : C) :
+    weightedNerveConstantLift F c ≫ weightedNerveProjection F = SSet.const (nerveVertex c)
+
+def weightedNerveFiberMap {C : Type u} [Category.{u} C] (F : C ⥤ SSet.{u}) (c : C) :
+    F.obj c ⟶ vertexFiber (weightedNerveProjection F) (nerveVertex c)
+
+instance weightedNerveFiberMap_isIso {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (c : C) : IsIso (weightedNerveFiberMap F c)
+
+noncomputable def weightedNerveFiberIso {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (c : C) : F.obj c ≅
+      vertexFiber (weightedNerveProjection F) (nerveVertex c)
+
+instance weightedNerveFiber_kanComplex {C : Type u} [Category.{u} C]
+    (F : C ⥤ SSet.{u}) (c : C) [KanComplex (F.obj c)] :
+    KanComplex (vertexFiber (weightedNerveProjection F) (nerveVertex c))
+
+def leftStrictTransportDiagram {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) : C ⥤ SSet.{u}
+
+def leftStrictTransportWeightedNerve {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) : SSet.{u}
+
+def leftStrictTransportWeightedProjection {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) : leftStrictTransportWeightedNerve p ⟶ nerve C
+
+instance leftStrictTransportWeightedFiber_kanComplex
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] (c : C) :
+    KanComplex (vertexFiber (leftStrictTransportWeightedProjection p) (nerveVertex c))
+
+noncomputable def leftStrictTransportWeightedFiberEquivalence
+    {C : Type u} [Category.{u} C] {E : SSet.{u}}
+    (p : E ⟶ nerve C) [LeftFibration p] (c : C) :
+    QCatEquivalence
+      (vertexFiber (leftStrictTransportWeightedProjection p) (nerveVertex c))
+      (vertexFiber p (nerveVertex c))
+
 end SerrePositivity.InfinityCategories
 ```
