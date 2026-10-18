@@ -2198,5 +2198,35 @@ lemma coherentPinchedFlagMap_flag {C : Type v} [Category.{u} C] [SimplicialCateg
     (φ : coherentResolutionSimplex.{u} n ⟶ SimplicialCategory.sHom X Y) :
     coherentPinchedFlagMap (coherentFlagPinchedSimplex φ) = φ
 
+noncomputable def pathFlagPrepend {n d : ℕ} {i : Fin (n + 1)}
+    (P : Fin (d + 1) ⥤ Path (ULift.up i.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (Fin.last (n + 1)))) : CoherentResolutionFlag n (d + 1)
+
+lemma pathFlagPrepend_pullback {n d : ℕ} {i : Fin (n + 1)}
+    (P : Fin (d + 1) ⥤ Path (ULift.up i.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (Fin.last (n + 1)))) :
+    (pathFlagPrepend P).pullback (Fin.succOrderEmb (d + 1)).toOrderHom =
+      pathFlagResolution P
+
+lemma pathFlagPrepend_pathFlag {n d : ℕ} {i : Fin (n + 1)}
+    (P : Fin (d + 1) ⥤ Path (ULift.up i.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (Fin.last (n + 1)))) :
+    (Fin.succOrderEmb (d + 1)).toOrderHom.toFunctor ⋙ (pathFlagPrepend P).pathFlag = P
+
+lemma coherentPinchedEvaluate_pathFlagResolution {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} {n d : ℕ}
+    (τ : PinchedHom.Simplex (coherentNerveVertex X) (coherentNerveVertex Y) n)
+    {i : Fin (n + 1)}
+    (P : Fin (d + 1) ⥤ Path (ULift.up i.castSucc : ULift.{u} (Fin (n + 2)))
+      (ULift.up (Fin.last (n + 1)))) :
+    coherentPinchedEvaluate τ (pathFlagResolution P) =
+      (coherentPinchedHom τ i).app (Opposite.op ⦋d⦌) P
+
+lemma pathResolutionMap_coherentPinchedFlagMap {C : Type v} [Category.{u} C]
+    [SimplicialCategory C] {X Y : C} {n : ℕ}
+    (τ : PinchedHom.Simplex (coherentNerveVertex X) (coherentNerveVertex Y) n)
+    (i : Fin (n + 1)) :
+    pathResolutionMap i ≫ coherentPinchedFlagMap τ = coherentPinchedHom τ i
+
 end SerrePositivity.InfinityCategories
 ```

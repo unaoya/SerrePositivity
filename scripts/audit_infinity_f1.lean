@@ -507,3 +507,8 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.coherentFlagHom_cast_last
 #check @SerrePositivity.InfinityCategories.coherentPinchedHom_flag
 #check @SerrePositivity.InfinityCategories.coherentPinchedFlagMap_flag
+#check @SerrePositivity.InfinityCategories.pathFlagPrepend
+#check @SerrePositivity.InfinityCategories.pathFlagPrepend_pullback
+#check @SerrePositivity.InfinityCategories.pathFlagPrepend_pathFlag
+#check @SerrePositivity.InfinityCategories.coherentPinchedEvaluate_pathFlagResolution
+#check @SerrePositivity.InfinityCategories.pathResolutionMap_coherentPinchedFlagMap
