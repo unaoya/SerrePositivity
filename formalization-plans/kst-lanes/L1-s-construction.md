@@ -120,7 +120,7 @@ L1a 完了。対象ビルド 1932 jobs、公理監査 26 宣言（標準3公理�
 `arSquareOrder`、`arSquare`、`arSquare_naturality`、`sMap_ι`。全26宣言の展開された型を監査スクリプトで検査する。
 上記は定義・関手法則であり安定性を仮定しない。quasicategory instance だけは明記した前提を持つ。
 
-L1b 進行中。第一行制限と零対角の補完段階を実装済み。対象ビルド2020 jobs、累計181宣言の監査（標準3公理のみ）。
+L1b 進行中。第一行制限と零対角の補完段階を実装済み。対象ビルド2040 jobs、累計218宣言の監査（標準3公理のみ）。
 
 | 公開宣言 | 正確な型・前提 |
 | --- | --- |
@@ -229,7 +229,48 @@ Ar[n] 全体への適用をつなぐ自然な cofiber 抽出を実装した。
 `∃ F : Δ[r+1] ⟶ sConstruction n C, (boundary (r+1)).ι ≫ F = a` を証明する。
 この結論は **F の第一行が d と等しいことを含まない**。したがってこれを RLP の完成と数えない。
 
-**未完了**：出力図式の第一行が指定入力と厳密に一致する等号、零次元で作る図式の gapped 条件、
+恒等辺を持つ押し出しと、零対角の枠で固定する cofiber 族を証明した。
+下表で `Square := (Δ[1] ⊗ Δ[1] : SSet.{u})`、`K,C : SSet.{u}`。
+これらは枠での実際の図式を保つ構成であり、第一行を別の同値な模型に置き換えていない。
+
+| 公開宣言 | 正確な型・前提 |
+| --- | --- |
+| `isInitialVertex_pointCoslice_of_isInvertibleEdge` | `[Quasicategory C] → (a : Δ[0] ⟶ C) → (t : (sliceUnder a) _⦋0⦌) → IsInvertibleEdge (pointCosliceVertexEdge a t) → IsInitialVertex t` |
+| `identityCocone` | `(a : Δ[0] ⟶ C) → JoinCocone a` |
+| `identityCocone_isColimit` | `[Quasicategory C] → (a : Δ[0] ⟶ C) → IsColimitCone (identityCocone a)` |
+| `isColimitCone_iff_of_map_eq` | `{p q : K ⟶ C} → (c : JoinCocone p) → (d : JoinCocone q) → c.val = d.val → (IsColimitCone c ↔ IsColimitCone d)` |
+| `identityCocone_val` | `(a : Δ[0] ⟶ C) → (identityCocone a).val = SSet.const (SSet.yonedaEquiv a)` |
+| `pointCocone_isColimit_of_constant` | `[Quasicategory C] → {p : Δ[0] ⟶ C} → (c : JoinCocone p) → (x : C _⦋0⦌) → c.val = SSet.const x → IsColimitCone c` |
+| `lastVertex_rightAnodyne` | `rightAnodyneExtensions (stdSimplex.δ (0 : Fin 2) : (Δ[0] : SSet.{u}) ⟶ Δ[1])` |
+| `edgeTargetShape` | `join (Δ[1] : SSet.{u}) Δ[0] ⟶ Δ[1]` |
+| `edgeTargetCocone` | `(F : (Δ[1] : SSet.{u}) ⟶ C) → JoinCocone F` |
+| `edgeTargetCocone_isColimit` | `[Quasicategory C] → (F : (Δ[1] : SSet.{u}) ⟶ C) → IsColimitCone (edgeTargetCocone F)` |
+| `isPushoutSquare_fst` | `[Quasicategory C] → (F : (Δ[1] : SSet.{u}) ⟶ C) → IsPushoutSquare (CartesianMonoidalCategory.fst _ _ ≫ F)` |
+| `isPushoutSquare_snd` | `[Quasicategory C] → (F : (Δ[1] : SSet.{u}) ⟶ C) → IsPushoutSquare (CartesianMonoidalCategory.snd _ _ ≫ F)` |
+| `frameCofiberSquareOrder` | `(n : ℕ) → (FrameAr.{u} n × ULift.{u} (Fin 2 × Fin 2) →o FrameAr.{u} n)` |
+| `frameCofiberSquareMap` | `(n : ℕ) → (frameNerve.{u} n ⊗ Square ⟶ frameNerve n)` |
+| `frameCofiberSquareMap_inclusion` | `(n : ℕ) → frameCofiberSquareMap n ≫ frameInclusion n = (frameInclusion n ▷ Square) ≫ arCofiberSquareMap n` |
+| `frameCofiberSquareAt` | `(a : FrameAr.{u} n) → (Square ⟶ frameNerve n)` |
+| `frameCofiberSquareAt_firstRow` | `(a : FrameAr.{u} n) → a.val.down.val.1 = 0 → frameCofiberSquareAt a = CartesianMonoidalCategory.fst _ _ ≫ squareBottomEdge ≫ frameCofiberSquareAt a` |
+| `frameCofiberSquareAt_diagonal` | `(a : FrameAr.{u} n) → IsDiagonal a.val → frameCofiberSquareAt a = CartesianMonoidalCategory.snd _ _ ≫ squareLeftEdge ≫ frameCofiberSquareAt a` |
+| `frameCofiberSquareAt_isPushout` | `[Quasicategory C] → (F : frameNerve n ⟶ C) → (a : FrameAr.{u} n) → IsPushoutSquare (frameCofiberSquareAt a ≫ F)` |
+| `frameCofiberFamily` | `(F : frameNerve n ⟶ C) → (frameNerve n ⟶ (ihom Square).obj C)` |
+| `zeroFrameCofiberFamily` | `[Quasicategory C] → (F : frameNerve n ⟶ C) → IsZeroFrameVertex (functorVertex F) → (frameNerve n ⟶ cofiberDiagrams C)` |
+| `zeroFrameCofiberFamily_ι` | `[Quasicategory C] → (F : frameNerve n ⟶ C) → (hF : IsZeroFrameVertex (functorVertex F)) → zeroFrameCofiberFamily F hF ≫ (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι = frameCofiberFamily F` |
+| `zeroFrameCofiberFamily_apex` | `[Quasicategory C] → (F : frameNerve n ⟶ C) → (hF : IsZeroFrameVertex (functorVertex F)) → zeroFrameCofiberFamily F hF ≫ cofiberApex C = F` |
+
+補助宣言 `horn_one_one_eq_last_face`・`edgeTargetShape_inl`・`edgeTargetShape_restrict_last`、
+`identityLegAttachment_isPushout`・`identityFirstLegAttachment_isPushout`、
+`isColimitCone_iff_restrict_of_identity_leg`・`isColimitCone_iff_restrict_of_identity_first_leg`、
+`spanCoconeSquare_fst_restrict`・`spanCoconeSquare_snd_restrict`、
+`arCofiberSquareOrder_mem_frame`・`frameCofiberFamily_vertex`・`frameCofiberSquareAt_zero_corner`・
+`frameCofiberSquareMap_apex`・`frameCofiberFamily_apex` も正確な型と公理を監査した。
+α-S の `ColimitAttachment` の普遍性を読み取り専用で用いている。
+枠の cofiber 族とその厳密な回収に `IsStable C` は必要なく、`Quasicategory C` だけを使う。
+恒等脚の条件を除去したり、h C の通常の押し出しで代用したりしていない。
+
+**未完了**：この枠上の族と指定境界の族を合わせた相対 cofiber 補完、
+出力図式の第一行が指定入力と厳密に一致する等号、零次元で作る図式の gapped 条件、
 三つ組の cofiber 条件から全四つ組の押し出しへの貼り合わせ。
 `firstRowRestriction` の trivial Kan fibration と L1b 全体はまだ完了していない。
 L1c–f は未着手。L1g は別途指示待ち。

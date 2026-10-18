@@ -369,3 +369,114 @@ import SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.FirstRowCofiberData.firstRow
 #check @SerrePositivity.KST.SConstruction.FirstRowCofiberData.cofibers
 #print axioms SerrePositivity.KST.SConstruction.FirstRowCofiberData.cofibers
+
+#check @SerrePositivity.KST.SConstruction.isInitialVertex_pointCoslice_of_isInvertibleEdge
+#print axioms SerrePositivity.KST.SConstruction.isInitialVertex_pointCoslice_of_isInvertibleEdge
+
+#check @SerrePositivity.KST.SConstruction.identityCocone
+#print axioms SerrePositivity.KST.SConstruction.identityCocone
+
+#check @SerrePositivity.KST.SConstruction.identityCocone_isColimit
+#print axioms SerrePositivity.KST.SConstruction.identityCocone_isColimit
+
+#check @SerrePositivity.KST.SConstruction.isColimitCone_iff_of_map_eq
+#print axioms SerrePositivity.KST.SConstruction.isColimitCone_iff_of_map_eq
+
+#check @SerrePositivity.KST.SConstruction.identityCocone_val
+#print axioms SerrePositivity.KST.SConstruction.identityCocone_val
+
+#check @SerrePositivity.KST.SConstruction.pointCocone_isColimit_of_constant
+#print axioms SerrePositivity.KST.SConstruction.pointCocone_isColimit_of_constant
+
+#check @SerrePositivity.KST.SConstruction.horn_one_one_eq_last_face
+#print axioms SerrePositivity.KST.SConstruction.horn_one_one_eq_last_face
+
+#check @SerrePositivity.KST.SConstruction.lastVertex_rightAnodyne
+#print axioms SerrePositivity.KST.SConstruction.lastVertex_rightAnodyne
+
+#check @SerrePositivity.KST.SConstruction.edgeTargetShape
+#print axioms SerrePositivity.KST.SConstruction.edgeTargetShape
+
+#check @SerrePositivity.KST.SConstruction.edgeTargetShape_inl
+#print axioms SerrePositivity.KST.SConstruction.edgeTargetShape_inl
+
+#check @SerrePositivity.KST.SConstruction.edgeTargetShape_restrict_last
+#print axioms SerrePositivity.KST.SConstruction.edgeTargetShape_restrict_last
+
+#check @SerrePositivity.KST.SConstruction.edgeTargetCocone
+#print axioms SerrePositivity.KST.SConstruction.edgeTargetCocone
+
+#check @SerrePositivity.KST.SConstruction.edgeTargetCocone_isColimit
+#print axioms SerrePositivity.KST.SConstruction.edgeTargetCocone_isColimit
+
+#check @SerrePositivity.KST.SConstruction.identityLegAttachment_isPushout
+#print axioms SerrePositivity.KST.SConstruction.identityLegAttachment_isPushout
+
+#check @SerrePositivity.KST.SConstruction.isColimitCone_iff_restrict_of_identity_leg
+#print axioms SerrePositivity.KST.SConstruction.isColimitCone_iff_restrict_of_identity_leg
+
+#check @SerrePositivity.KST.SConstruction.spanCoconeSquare_fst_restrict
+#print axioms SerrePositivity.KST.SConstruction.spanCoconeSquare_fst_restrict
+
+#check @SerrePositivity.KST.SConstruction.isPushoutSquare_fst
+#print axioms SerrePositivity.KST.SConstruction.isPushoutSquare_fst
+
+#check @SerrePositivity.KST.SConstruction.identityFirstLegAttachment_isPushout
+#print axioms SerrePositivity.KST.SConstruction.identityFirstLegAttachment_isPushout
+
+#check @SerrePositivity.KST.SConstruction.isColimitCone_iff_restrict_of_identity_first_leg
+#print axioms SerrePositivity.KST.SConstruction.isColimitCone_iff_restrict_of_identity_first_leg
+
+#check @SerrePositivity.KST.SConstruction.spanCoconeSquare_snd_restrict
+#print axioms SerrePositivity.KST.SConstruction.spanCoconeSquare_snd_restrict
+
+#check @SerrePositivity.KST.SConstruction.isPushoutSquare_snd
+#print axioms SerrePositivity.KST.SConstruction.isPushoutSquare_snd
+
+#check @SerrePositivity.KST.SConstruction.arCofiberSquareOrder_mem_frame
+#print axioms SerrePositivity.KST.SConstruction.arCofiberSquareOrder_mem_frame
+
+#check @SerrePositivity.KST.SConstruction.frameCofiberSquareOrder
+#print axioms SerrePositivity.KST.SConstruction.frameCofiberSquareOrder
+
+#check @SerrePositivity.KST.SConstruction.frameCofiberSquareMap
+#print axioms SerrePositivity.KST.SConstruction.frameCofiberSquareMap
+
+#check @SerrePositivity.KST.SConstruction.frameCofiberSquareMap_inclusion
+#print axioms SerrePositivity.KST.SConstruction.frameCofiberSquareMap_inclusion
+
+#check @SerrePositivity.KST.SConstruction.frameCofiberSquareAt
+#print axioms SerrePositivity.KST.SConstruction.frameCofiberSquareAt
+
+#check @SerrePositivity.KST.SConstruction.frameCofiberSquareAt_firstRow
+#print axioms SerrePositivity.KST.SConstruction.frameCofiberSquareAt_firstRow
+
+#check @SerrePositivity.KST.SConstruction.frameCofiberSquareAt_diagonal
+#print axioms SerrePositivity.KST.SConstruction.frameCofiberSquareAt_diagonal
+
+#check @SerrePositivity.KST.SConstruction.frameCofiberSquareAt_isPushout
+#print axioms SerrePositivity.KST.SConstruction.frameCofiberSquareAt_isPushout
+
+#check @SerrePositivity.KST.SConstruction.frameCofiberFamily
+#print axioms SerrePositivity.KST.SConstruction.frameCofiberFamily
+
+#check @SerrePositivity.KST.SConstruction.frameCofiberFamily_vertex
+#print axioms SerrePositivity.KST.SConstruction.frameCofiberFamily_vertex
+
+#check @SerrePositivity.KST.SConstruction.frameCofiberSquareAt_zero_corner
+#print axioms SerrePositivity.KST.SConstruction.frameCofiberSquareAt_zero_corner
+
+#check @SerrePositivity.KST.SConstruction.zeroFrameCofiberFamily
+#print axioms SerrePositivity.KST.SConstruction.zeroFrameCofiberFamily
+
+#check @SerrePositivity.KST.SConstruction.zeroFrameCofiberFamily_ι
+#print axioms SerrePositivity.KST.SConstruction.zeroFrameCofiberFamily_ι
+
+#check @SerrePositivity.KST.SConstruction.frameCofiberSquareMap_apex
+#print axioms SerrePositivity.KST.SConstruction.frameCofiberSquareMap_apex
+
+#check @SerrePositivity.KST.SConstruction.frameCofiberFamily_apex
+#print axioms SerrePositivity.KST.SConstruction.frameCofiberFamily_apex
+
+#check @SerrePositivity.KST.SConstruction.zeroFrameCofiberFamily_apex
+#print axioms SerrePositivity.KST.SConstruction.zeroFrameCofiberFamily_apex
