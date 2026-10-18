@@ -149,3 +149,6 @@ public import SerrePositivity.KST.ProExcision.IntegerChainInterval
 public import SerrePositivity.KST.ProExcision.IntegerIntervalWeights
 public import SerrePositivity.KST.ProExcision.NormalizedMapReconstruction
 public import SerrePositivity.KST.ProExcision.IntegerIntervalComparison
+public import SerrePositivity.KST.ProExcision.IntegerTensorFreeDesc
+public import SerrePositivity.KST.ProExcision.ChainIntervalEvaluationComponents
+public import SerrePositivity.KST.ProExcision.ChainIntervalEvaluation

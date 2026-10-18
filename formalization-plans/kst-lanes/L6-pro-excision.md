@@ -49,7 +49,7 @@
 - 以前の頁計算は完成の根拠に数えず、通常の短完全列・cone 境界で再利用する補題だけを残す。
 - L6c：一般のモノイド作用の半直積・単体的半直積・包含と射影の分裂・ψ の単体性を検証済み。
 - `grouplikeActionIso`：群状モノイドの頂点による作用のホモトピー不変な像での可逆性を証明。
-- 対象ビルドと927宣言の公理監査は成功し、標準三公理のみ。
+- 対象ビルドと939宣言の公理監査は成功し、標準三公理のみ。
 - Lemma A.2 の ψ は anodyne 局所化で同型と証明。π による同値性への移送は K-L9 の模型界面。
 - Lemma A.4 の相対項の代数部分：同変射の半直積への誘導射、分裂包含の余核、定数射の相対項での零化を実装。F は H_* を受ける明示的な関手引数。
 - Prop A.1 の基礎：一般の作用の圏、同変写像からの関手、二重 nerve と対角、正則作用の nerve の実収縮を実装。さらに一般の単体的集合への作用 `SimplicialSetAction` と、`barSetAction` により BH への作用と実際の `coefficientActionBar`=E_BH G を構成。
@@ -195,6 +195,9 @@
 | integerChainInterval / integerIntervalBoundary_edge | IntegerChainInterval.lean | 検証済み | 二頂点と一辺の実整数鎖区間 |
 | integerIntervalWeight_vertices / integerIntervalWeight_triangle | IntegerIntervalWeights.lean | 検証済み | 頂点の差の境界と三頂点の望遠鏡相殺 |
 | integerIntervalComparison | IntegerIntervalComparison.lean | 検証済み | ℤΔ¹ の交代面複体から二項整数鎖区間への実鎖写像 |
+| integerTensorFreeDesc / integerTensor_free_hom_ext | IntegerTensorFreeDesc.lean | 検証済み | 第二因子の自由基底による降下と純テンソルの外延性 |
+| chainHomotopyIntervalBidegree | ChainIntervalEvaluationComponents.lean | 検証済み | 頂点・符号付き辺・高次の零の実成分 |
+| chainHomotopyIntervalApp / ι_chainHomotopyIntervalApp | ChainIntervalEvaluation.lean | 成分構成済み | 全テンソル区間の実降下写像、微分可換性は未完 |
 | normalizedMapReconstruct / normalizedMapReconstruct_comp | NormalizedMapReconstruction.lean | 検証済み | Dold–Kan の実同値からの単体的射の復元と合成則 |
 | extraDegeneracy_positive_boundary / extraDegeneracy_fill_cycle | ExtraDegeneracyContraction.lean | 検証済み | 正次数の鎖収縮等式とサイクルの明示的な充填 |
 | shuffleBoundary_horizontal_succ / shuffleBoundary_vertical_succ | ShuffleBoundaryDecomposition.lean | 検証済み | 両因子の通常微分への一致と零次の端 |
@@ -727,3 +730,7 @@ example (data : Abelian.SpectralObject.SpectralSequenceDataCore J c r₀)
 - 復元の基礎部：`integerChainInterval` の実二項複体、辺の境界、重みの一次・二次の公式を実装済み。
 - `normalizedMapReconstruct` は Mathlib の Dold–Kan の実同値の充満性から鎖写像を実単体的射へ戻す。`normalizedMapReconstruct_map`、`normalizedMap_eq_of_map_eq`、`normalizedMapReconstruct_comp` も証明済み。
 - ℤΔ¹ からこの鎖区間への実鎖写像は `integerIntervalComparison` で実装済み。ホモトピーによる全テンソルの評価、両端の公式は未完であり、A.5 の区間復元完了とは表示しない。
+
+- `integerTensorFreeDesc` は第一因子の自由性を要求しないテンソル射を、第二因子の各自由基底に指定した写像から構成する。整数の加法作用と ModuleCat の ℤ 作用の一致は `map_intCast_smul` により証明する。
+- `chainHomotopyIntervalBidegree` は頂点上の f,g と辺上の (−1)^(p+1)H_p を実成分として構成済み。`chainHomotopyIntervalApp` は全複体の実余積からの降下写像。
+- 次は区間次数 q=0,1,≥2 に分けて微分可換性を証明する。q≥2 の始域の自明性は `integerTensor_punit_hom_zero` により検証済み。まだ鎖区間の評価を実鎖写像に束ねたとは表示しない。
