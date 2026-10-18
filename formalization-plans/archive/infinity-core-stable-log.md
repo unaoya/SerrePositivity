@@ -4805,3 +4805,36 @@ SerrePositivity.InfinityCategories.coneDiagramReverseHomEquiv_apply.{u_1} : ∀ 
       (SerrePositivity.InfinityCategories.JoinCone.reverseCocone.{u_1} c))
     ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.opObjEquiv.{u_1}) (SerrePositivity.InfinityCategories.JoinCone.vertex.{u_1} c))
 ```
+
+## S4：標準格子と長方形の面の反転
+
+任意の値域 X と自然数 m,n。追加の quasicategory 仮定なし。
+正確な公開型（Lean の出力）：
+
+```lean
+SerrePositivity.InfinityCategories.reverseGrid.{u} {X : SSet.{u}} {m n : ℕ}
+  (F : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[m] Δ[n]) X) :
+  Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[m] Δ[n]) (SSet.op.{u} X)
+SerrePositivity.InfinityCategories.reverseGrid_postcomp.{u} {X Y : SSet.{u}} {m n : ℕ}
+  (F : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[m] Δ[n]) X) (p : Quiver.Hom.{u, u + 1} X Y) :
+  Eq.{u + 1} (SerrePositivity.InfinityCategories.reverseGrid.{u} (CategoryStruct.comp.{u, u + 1} F p))
+    (CategoryStruct.comp.{u, u + 1} (SerrePositivity.InfinityCategories.reverseGrid.{u} F)
+      (CategoryTheory.Functor.map.{u, u, u + 1, u + 1} opFunctor.{u} p))
+SerrePositivity.InfinityCategories.reverseGrid_double.{u} {X : SSet.{u}} {m n : ℕ}
+  (F : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[m] Δ[n]) X) :
+  Eq.{u + 1}
+    (CategoryStruct.comp.{u, u + 1}
+      (SerrePositivity.InfinityCategories.reverseGrid.{u} (SerrePositivity.InfinityCategories.reverseGrid.{u} F))
+      (Iso.hom.{u, u + 1} (Iso.app.{u, u, u + 1, u + 1} opFunctorCompOpFunctorIso.{u} X)))
+    F
+SerrePositivity.InfinityCategories.reverseGrid_pastingSquare.{u} {X : SSet.{u}}
+  (F : Quiver.Hom.{u, u + 1} (tensorObj.{u, u + 1} Δ[2] Δ[1]) X) (i : Fin 3) :
+  Eq.{u + 1}
+    (SerrePositivity.InfinityCategories.pastingSquare.{u} (SerrePositivity.InfinityCategories.reverseGrid.{u} F) i)
+    (SerrePositivity.InfinityCategories.reverseGrid.{u} (SerrePositivity.InfinityCategories.pastingSquare.{u} F i.rev))
+```
+
+対象ビルド 1614 jobs、Stable 集約ビルド 2045 jobs とも終了コード 0。
+公理監査は 101 モジュール・1060 宣言について標準三公理のみ、終了コード 0。
+`git diff --check` 成功。普遍四角形の反転との照合、引き戻しの貼り合わせ、
+三角構造および S5〜S7 は未完了。

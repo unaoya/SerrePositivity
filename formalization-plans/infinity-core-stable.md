@@ -102,7 +102,10 @@ sliceUnder (opFunctor.map p)` を構成した。標準単体のパラメータ�
 `isLimitCone_iff_reverseCocone` により `IsLimitCone c ↔ IsColimitCone c.reverseCocone`。
 これらは値域の quasicategory 性を仮定しない。反転した余錐の頂点も opObjEquiv による
 元の頂点の反転に一致する。標準四角形の反転と span／cospan の形状の一致、
-および長方形の面の反転に接続して引き戻しの貼り合わせを導く段階は未完了。
+長方形の面の反転は `reverseGrid_pastingSquare` で証明した。
+`reverseGrid` は任意の標準格子の両座標を反転し、後合成との両立と二重反転の恒等式も満たす。
+余面 i は i.rev に移るため左・右を交換し、外側を保つ。値域に追加の仮定は不要。
+標準 span／cospan の形状とこの格子反転を照合し、引き戻しの貼り合わせを導く段階は未完了。
 三角構造も未完了。Mathlib の三角構造の構成には h C の
 前加法構造・整数シフトとその加法性も証明する必要があり、S4 の義務として保持する。
 安定性から全有限極限・余極限を導く逆向き、S4〜S7 の三角構造・長完全列・完全関手・D7 は未完了。
@@ -202,6 +205,7 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | join の反転 | `stableJoinReverseIso`、`stableJoinReverse_naturality`、`stableJoinReverse_inl`、`stableJoinReverse_inr`（任意の二因子とその射） | 完了 |
 | slice の反転 | `coneDiagramReverseEquiv`、`sliceOverOpIso`、`sliceOverOpIso_projection`（任意の図式、追加仮定なし） | 完了 |
 | 極限錐の反転 | `JoinCone.reverseCocone`、`isLimitCone_iff_reverseCocone`、`JoinCone.reverseCocone_vertex`（任意の錐、追加仮定なし） | 完了。標準四角形の照合と引き戻し貼り合わせは未完了 |
+| 格子の反転 | `reverseGrid`、`reverseGrid_postcomp`、`reverseGrid_double`、`reverseGrid_pastingSquare`（任意の単体集合、追加の仮定なし） | 完了。普遍四角形との比較は未完了 |
 | S4〜S7 | 引き戻しの貼り合わせ・三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

@@ -9,6 +9,10 @@ import Lean.Util.CollectAxioms
 使われ方：対象ビルド後の `lake env lean scripts/audit_infinity_stable.lean`。
 -/
 
+#print axioms SerrePositivity.InfinityCategories.reverseGrid
+#print axioms SerrePositivity.InfinityCategories.reverseGrid_postcomp
+#print axioms SerrePositivity.InfinityCategories.reverseGrid_double
+#print axioms SerrePositivity.InfinityCategories.reverseGrid_pastingSquare
 #print axioms SerrePositivity.InfinityCategories.JoinCocone
 #print axioms SerrePositivity.InfinityCategories.JoinCocone.vertex
 #print axioms SerrePositivity.InfinityCategories.JoinCocone.vertex_eq
@@ -692,7 +696,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.JoinReverseBoundary,
     `SerrePositivity.InfinityCategories.Stable.ConeDiagramReverse,
     `SerrePositivity.InfinityCategories.Stable.SliceOpposite,
-    `SerrePositivity.InfinityCategories.Stable.ConeOpposite]
+    `SerrePositivity.InfinityCategories.Stable.ConeOpposite,
+    `SerrePositivity.InfinityCategories.Stable.GridOpposite]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
