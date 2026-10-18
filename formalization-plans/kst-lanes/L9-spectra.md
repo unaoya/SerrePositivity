@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c 完了。L9d 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・240 モジュール 2911 宣言の公理監査成功。
+対象ビルド・245 モジュール 2938 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9c、9543 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -2131,3 +2131,36 @@ cofibrant な標的の列から恒等射をこの終点射へ持ち上げ、厳�
 保存単位の対象ビルド 2441 jobs 成功。
 私有宣言を含む 240 モジュール 2911 宣言で標準三公理のみ。
 L9d は進行中。次は二つの随伴構造射の合成を符号を変えた loop 列の構造射と比較する。
+
+## 74. L9d の随伴構造射から符号を調整した BF loop 模型への実際の射
+
+任意の源を持つ反復 loop 値の射で、内側の loop の符号を二度反転すると同じ成分へ戻ることを整数冪の作用から証明した。
+Kan 円への二つの随伴の射を合成し、通常の円への制限を源の交換と前合成の自然性で移した。
+二つの円の交換から来る符号と構造射の後に加える符号は、この二回の符号反転の式により打ち消し合う。
+
+Kan 列の一段の添字移動と厳密な射の添字移動を作った。
+Kan 円の内部 Hom 列の構造射の後に符号を反転して一段をずらした列は Ω 条件を満たす。
+各段の元の随伴構造射を Kan 円の loop へ実際に持ち上げた。
+上記の符号の計算から、これらは符号を調整した loop 列に対して成分で構造可換となる。
+随伴側の等式を uncurry により元の suspension 構造射の成分の等式へ戻した。
+
+単射な構造射を用いる既存の相対充填でこの比較を厳密化し、cofibrant 比較射へ持ち上げた。
+元の Ω スペクトルから符号を調整した BF loop 模型への実際の厳密な射を得た。
+この射は各段で全基点 π_* 同型であり、全整数次数でも同型である。
+通常の有理化の loop 模型への比較、および telescope への元の対象からの単位写像は次に合成する。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `PointedMapping.componentOf_nested_neg_one_twice` | 任意の源のパラメータを保つ二回の符号反転の消去 |
+| `signed_adjoint_composition` | 二つの随伴構造射の合成と符号を変えた loop 構造の比較 |
+| `KanSequence.tail` / `.tailHom` / `.tail_omegaCondition` | Kan 列と射の一段の移動と Ω 条件 |
+| `KanSequence.signedLoopTail` / `.signedLoopTail_omegaCondition` / `.signedLoopTail_adjoint` | 符号を調整した loop 列とその随伴構造射 |
+| `KanSequence.kanAdjoint` / `.kanAdjoint_comparison` / `.kanAdjoint_piIsomorphism` | Kan 円へ持ち上げた随伴構造射と各段の同型性 |
+| `KanSequence.kanAdjoint_signedLoopTail_comm` | 符号を調整した列への成分での構造可換性 |
+| `OmegaSpectrum.signedLoopModel` / `.signedLoopProjection` / `.signedLoopUnit` | 符号を調整した BF 模型と元の対象からの実際の厳密な射 |
+| `OmegaSpectrum.signedLoopUnit_levelwise` / `.signedLoopUnit_piIsomorphism` | 比較射の各段と全整数次数の π_* 同型性 |
+
+参照：Goerss–Jardine I §7、BF 1978 §2、HA §1.4.2、HTT A.3.3。
+保存単位の対象ビルド 2446 jobs 成功。
+私有宣言を含む 245 モジュール 2938 宣言で標準三公理のみ。
+L9d は進行中。次は通常の一段先の cotensor 模型との実際の比較を合成する。
