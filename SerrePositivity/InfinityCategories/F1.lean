@@ -454,3 +454,11 @@ public import SerrePositivity.InfinityCategories.F1.EdgewiseFaceDomainCoordinate
 public import SerrePositivity.InfinityCategories.F1.EdgewiseCoverDomain
 public import SerrePositivity.InfinityCategories.F1.EdgewiseOneBoundary
 public import SerrePositivity.InfinityCategories.F1.EdgewiseRightFilling
+public import SerrePositivity.InfinityCategories.F1.JoinSelfOpposite
+public import SerrePositivity.InfinityCategories.F1.EdgewiseWeightDuality
+public import SerrePositivity.InfinityCategories.F1.EdgewiseDuality
+public import SerrePositivity.InfinityCategories.F1.OppositeSimplexYoneda
+public import SerrePositivity.InfinityCategories.F1.EdgewiseLeftFilling
+public import SerrePositivity.InfinityCategories.F1.KanEdgewiseFunctor
+public import SerrePositivity.InfinityCategories.F1.WeightedNerveMapComparison
+public import SerrePositivity.InfinityCategories.F1.WeightedKanEdgewiseComparison

@@ -8943,5 +8943,103 @@ instance edgewiseRight_trivialKanFibration (K : SSet.{u}) [KanComplex K] :
 instance edgewiseSubdivision_kanComplex (K : SSet.{u}) [KanComplex K] :
     KanComplex (edgewiseSubdivision K)
 
+noncomputable def joinSelfOppositeIso (A : SSet.{u}) : (join A.op A).op ≅ join A.op A
+
+lemma joinSelfOpposite_naturality {A B : SSet.{u}} (f : A ⟶ B) :
+    SSet.opFunctor.map (joinMap (SSet.opFunctor.map f) f) ≫ (joinSelfOppositeIso B).hom =
+      (joinSelfOppositeIso A).hom ≫ joinMap (SSet.opFunctor.map f) f
+
+lemma joinSelfOpposite_inv_naturality {A B : SSet.{u}} (f : A ⟶ B) :
+    joinMap (SSet.opFunctor.map f) f ≫ (joinSelfOppositeIso B).inv =
+      (joinSelfOppositeIso A).inv ≫ SSet.opFunctor.map (joinMap (SSet.opFunctor.map f) f)
+
+lemma joinSelfOpposite_inv_inr (A : SSet.{u}) :
+    joinInr A.op A ≫ (joinSelfOppositeIso A).inv =
+      (SSet.opFunctorCompOpFunctorIso.app A).inv ≫ SSet.opFunctor.map (joinInl A.op A)
+
+noncomputable def edgewiseWeightReverseIso (n : SimplexCategory) :
+    (edgewiseWeight.{u}.obj n).op ≅ edgewiseWeight.obj n
+
+lemma edgewiseWeightReverse_naturality {m n : SimplexCategory} (α : m ⟶ n) :
+    SSet.opFunctor.map (edgewiseWeight.{u}.map α) ≫ (edgewiseWeightReverseIso n).hom =
+      (edgewiseWeightReverseIso m).hom ≫ edgewiseWeight.map α
+
+lemma edgewiseWeightReverse_inv_naturality {m n : SimplexCategory} (α : m ⟶ n) :
+    edgewiseWeight.{u}.map α ≫ (edgewiseWeightReverseIso n).inv =
+      (edgewiseWeightReverseIso m).inv ≫ SSet.opFunctor.map (edgewiseWeight.map α)
+
+lemma edgewiseWeightReverse_inv_inr (n : SimplexCategory) :
+    joinInr (stdSimplex.obj n).op (stdSimplex.obj n) ≫ (edgewiseWeightReverseIso.{u} n).inv =
+      (SSet.opFunctorCompOpFunctorIso.app (stdSimplex.obj n)).inv ≫
+        SSet.opFunctor.map (joinInl (stdSimplex.obj n).op (stdSimplex.obj n))
+
+noncomputable def edgewiseDuality (X : SSet.{u}) : edgewiseSubdivision X ⟶ edgewiseSubdivision X.op
+
+instance edgewiseDuality_isIso (X : SSet.{u}) : IsIso (edgewiseDuality X)
+
+noncomputable def edgewiseDualityIso (X : SSet.{u}) : edgewiseSubdivision X ≅ edgewiseSubdivision X.op
+
+lemma edgewiseDuality_naturality {X Y : SSet.{u}} (f : X ⟶ Y) :
+    edgewiseSubdivisionMap f ≫ edgewiseDuality Y =
+      edgewiseDuality X ≫ edgewiseSubdivisionMap (SSet.opFunctor.map f)
+
+lemma oppositeSimplex_yoneda {K : SSet.{u}} (n : SimplexCategory)
+    (g : (stdSimplex.obj n).op ⟶ K) :
+    SSet.yonedaEquiv ((SSet.opFunctorCompOpFunctorIso.app (stdSimplex.obj n)).inv ≫
+      SSet.opFunctor.map g) =
+      SSet.opObjEquiv.symm (SSet.yonedaEquiv ((stdSimplex.opIso n).inv ≫ g))
+
+lemma edgewiseDuality_right (X : SSet.{u}) :
+    edgewiseDuality X ≫ edgewiseRight X.op = edgewiseLeft X
+
+instance edgewiseLeft_trivialKanFibration (X : SSet.{u}) [KanComplex X] :
+    TrivialKanFibration (edgewiseLeft X)
+
+def kanEdgewiseFunctor : KanObject.{u} ⥤ KanObject.{u}
+
+def kanEdgewiseRight : kanEdgewiseFunctor.{u} ⟶ 𝟭 KanObject.{u}
+
+def kanEdgewiseLeft : kanEdgewiseFunctor.{u} ⟶ kanObjectOpFunctor
+
+lemma kanEdgewiseRight_trivialKanFibration (K : KanObject.{u}) :
+    TrivialKanFibration (kanEdgewiseRight.app K)
+
+lemma kanEdgewiseLeft_trivialKanFibration (K : KanObject.{u}) :
+    TrivialKanFibration (kanEdgewiseLeft.app K)
+
+lemma weightedNerveMap_fiber_naturality {C : Type u} [Category.{u} C]
+    {F G : C ⥤ SSet.{u}} (η : F ⟶ G) (c : C) :
+    weightedNerveFiberMap F c ≫ vertexFiberMap (weightedNerveProjection F)
+      (weightedNerveProjection G) (weightedNerveMap η) (weightedNerveMap_projection η) (nerveVertex c) =
+      η.app c ≫ weightedNerveFiberMap G c
+
+lemma weightedNerveMap_isPrecompositionEquivalence {C : Type u} [Category.{u} C]
+    {F G : C ⥤ SSet.{u}} [∀ c, KanComplex (F.obj c)] [∀ c, KanComplex (G.obj c)]
+    (η : F ⟶ G) (h : ∀ c, IsQCatEquivalence (η.app c)) :
+    IsPrecompositionEquivalence (weightedNerveMap η)
+
+def weightedKanEdgewiseRight {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    weightedNerve (F ⋙ kanEdgewiseFunctor ⋙ kanObjectForget) ⟶ weightedNerve (F ⋙ kanObjectForget)
+
+def weightedKanEdgewiseLeft {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    weightedNerve (F ⋙ kanEdgewiseFunctor ⋙ kanObjectForget) ⟶
+      weightedNerve (F ⋙ kanObjectOpFunctor ⋙ kanObjectForget)
+
+lemma weightedKanEdgewiseRight_projection {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    weightedKanEdgewiseRight F ≫ weightedNerveProjection (F ⋙ kanObjectForget) =
+      weightedNerveProjection (F ⋙ kanEdgewiseFunctor ⋙ kanObjectForget)
+
+lemma weightedKanEdgewiseLeft_projection {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    weightedKanEdgewiseLeft F ≫ weightedNerveProjection (F ⋙ kanObjectOpFunctor ⋙ kanObjectForget) =
+      weightedNerveProjection (F ⋙ kanEdgewiseFunctor ⋙ kanObjectForget)
+
+lemma weightedKanEdgewiseRight_isPrecompositionEquivalence
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    IsPrecompositionEquivalence (weightedKanEdgewiseRight F)
+
+lemma weightedKanEdgewiseLeft_isPrecompositionEquivalence
+    {C : Type u} [Category.{u} C] (F : C ⥤ KanObject.{u}) :
+    IsPrecompositionEquivalence (weightedKanEdgewiseLeft F)
+
 end SerrePositivity.InfinityCategories
 ```
