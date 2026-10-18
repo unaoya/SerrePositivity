@@ -6199,3 +6199,113 @@ Sp の空積と一般の有限積への束ね直し、一脚 fibration の引き
 他担当の依存812ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-spectrum-binary-product-aggregate.log` と
 `/tmp/gamma3-spectrum-binary-product-audit.log`。
+
+
+### γ3c：Sp の空積を含む全ての有限積
+
+`SpectrumPoint` は各段が `PointedObject.point` の実際の `spectrumPoint` を構成した。
+一点の Kan 性は終対象へのホーン充填で証明した。
+`suspensionPoint_isZero` と `loopPoint_isZero` は懸垂・loop の随伴を使い、
+一点から出る射・一点へ入る射の一意性をそれぞれ移して得る。
+構造射は一点への射で、零対象間の同型なので基礎単体写像もモノ射。
+その随伴も零対象間の同型なので、全基点・零次数を含む Ω 条件を満たす。
+Kan 列の中間対象に止めず、L9 の `OmegaSpectrum` に束ねた。
+
+`SpectrumFiniteProducts` は `spectrumPoint_isTerminal` で通常のスペクトルの圏の終対象性を、
+`spectrumBinaryProductLift` と `spectrumBinaryFan_isLimit` で前回の実際の二項積の
+通常の普遍性を証明した。その終対象と二項積を入力に、Mathlib の有限帰納の構成で
+`spectrumHasFiniteProducts` を得た。添字は任意の有限型でよく、空の型も含む。
+これらの存在・保存のクラスの補題はこのモジュール内だけで instance として使う。
+外部で型クラスとして使う場合は対応する公開補題を局所 instance にできる。
+
+各段の評価 `spectrumLevelFunctor n` について終対象と二項積の保存を直接確認し、
+`spectrumLevel_preservesFiniteProducts` を証明した。
+任意の `J : Type u`、`[Finite J]`、`F : Discrete J ⥤ OmegaSpectrum.{u}` に対し、
+`spectrumFiniteProductCone F` はこの構成から選んだ実際の通常の極限錐。
+`spectrumFiniteProductCone_level_isLimit` はその全ての段が点つき単体的集合の極限錐で
+あることを与える。L9 の実際の写像空間の全パラメータの普遍性を使って
+全ての豊穣 Hom の極限性へ移し、既存の離散図式の比較定理を適用した。
+
+主定理は `spectrumFiniteProductInfinityCone_isLimit`。
+底は元の有限離散図式の nerve、標的は L9 の `Sp` と同じ coherent nerve。
+追加仮定は添字 J の有限性だけで、空積・一点積・全ての有限積を含む。
+構造射の単射性、全基点の Ω 条件、各段と実際の豊穣 Hom の普遍性は検証済みの構成から得る。
+Sp の有限積の工程はこれで実際の対象と ∞ 極限錐まで完成した。
+原典上の位置は BF 1978 §2、HA §1.4.2、HTT 4.2.4.1 の双対、Kerodon 7.5.4.6。
+
+新規19宣言の正確な型・全前提は以下。namespace は
+`SerrePositivity.InfinityCategories.HomotopyLimits`、宇宙は u。
+最後の三宣言では L9 の `OmegaSpectrum.simplicialCategory` を局所 instance として使う。
+公理依存の正本は `scripts/audit_homotopy_limits.lean`。
+
+`SpectrumPoint`：
+
+```lean
+instance pointedPoint_kanComplex :
+    KanComplex (PointedObject.point : PointedSimplicialSet.{u}).right
+
+lemma suspensionPoint_isZero :
+    IsZero (suspension (PointedObject.point : PointedSimplicialSet.{u}))
+
+lemma loopPoint_isZero :
+    IsZero (loopSpace (PointedObject.point : PointedSimplicialSet.{u}))
+
+def spectrumPoint : OmegaSpectrum.{u}
+```
+
+`SpectrumFiniteProducts`：
+
+```lean
+def spectrumPoint_isTerminal : IsTerminal spectrumPoint.{u}
+
+def spectrumBinaryProductLift {X Y Z : OmegaSpectrum.{u}} (f : Z ⟶ X) (g : Z ⟶ Y) :
+    Z ⟶ spectrumBinaryProduct X Y
+
+def spectrumBinaryFan_isLimit (X Y : OmegaSpectrum.{u}) :
+    IsLimit (BinaryFan.mk (spectrumBinaryProductFst X Y) (spectrumBinaryProductSnd X Y))
+
+lemma spectrumHasTerminal : HasTerminal OmegaSpectrum.{u}
+
+lemma spectrumHasBinaryProducts : HasBinaryProducts OmegaSpectrum.{u}
+
+lemma spectrumHasFiniteProducts : HasFiniteProducts OmegaSpectrum.{u}
+
+lemma spectrumLevel_preservesTerminal (n : ℕ) :
+    PreservesLimit (Functor.empty.{0} OmegaSpectrum.{u}) (spectrumLevelFunctor n)
+
+lemma spectrumLevel_preservesBinaryProducts (n : ℕ) :
+    PreservesLimitsOfShape (Discrete WalkingPair) (spectrumLevelFunctor n)
+
+lemma spectrumLevel_preservesFiniteProducts (n : ℕ) :
+    PreservesFiniteProducts (spectrumLevelFunctor n)
+
+def spectrumFiniteProductCone {J : Type u} [Finite J] (F : Discrete J ⥤ OmegaSpectrum.{u}) :
+    Cone F
+
+def spectrumFiniteProductCone_isLimit {J : Type u} [Finite J]
+    (F : Discrete J ⥤ OmegaSpectrum.{u}) : IsLimit (spectrumFiniteProductCone F)
+
+def spectrumFiniteProductCone_level_isLimit {J : Type u} [Finite J]
+    (F : Discrete J ⥤ OmegaSpectrum.{u}) (n : ℕ) :
+    IsLimit (spectrumLevelCone (spectrumFiniteProductCone F) n)
+
+def spectrumFiniteProductCone_hom_isLimit {J : Type u} [Finite J]
+    (F : Discrete J ⥤ OmegaSpectrum.{u}) (X : OmegaSpectrum.{u}) :
+    IsLimit (simplicialHomCone (spectrumFiniteProductCone F) X)
+
+def spectrumFiniteProductInfinityCone {J : Type u} [Finite J]
+    (F : Discrete J ⥤ OmegaSpectrum.{u}) : JoinCone (strictCoherentDiagram F)
+
+lemma spectrumFiniteProductInfinityCone_isLimit {J : Type u} [Finite J]
+    (F : Discrete J ⥤ OmegaSpectrum.{u}) : IsLimitCone (spectrumFiniteProductInfinityCone F)
+```
+
+Sp の一脚 fibration の引き戻しと fibration の塔の実際の極限錐は未完了。
+元の非反転の end・q_x と反転係数の直接比較、余極限側、E2a 完了後の E2b 適用も未完了。
+γ3 全体は継続中。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4593 jobs）、公開1170宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規2ファイルの警告・sorry・追加公理はない。
+他担当の依存812ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-spectrum-finite-products-aggregate.log` と
+`/tmp/gamma3-spectrum-finite-products-audit.log`。

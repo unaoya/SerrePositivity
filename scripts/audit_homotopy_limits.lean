@@ -2614,3 +2614,60 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 
 #check @spectrumBinaryProductInfinityCone_isLimit
 #print axioms spectrumBinaryProductInfinityCone_isLimit
+
+#check @pointedPoint_kanComplex
+#print axioms pointedPoint_kanComplex
+
+#check @suspensionPoint_isZero
+#print axioms suspensionPoint_isZero
+
+#check @loopPoint_isZero
+#print axioms loopPoint_isZero
+
+#check @spectrumPoint
+#print axioms spectrumPoint
+
+#check @spectrumPoint_isTerminal
+#print axioms spectrumPoint_isTerminal
+
+#check @spectrumBinaryProductLift
+#print axioms spectrumBinaryProductLift
+
+#check @spectrumBinaryFan_isLimit
+#print axioms spectrumBinaryFan_isLimit
+
+#check @spectrumHasTerminal
+#print axioms spectrumHasTerminal
+
+#check @spectrumHasBinaryProducts
+#print axioms spectrumHasBinaryProducts
+
+#check @spectrumHasFiniteProducts
+#print axioms spectrumHasFiniteProducts
+
+#check @spectrumLevel_preservesTerminal
+#print axioms spectrumLevel_preservesTerminal
+
+#check @spectrumLevel_preservesBinaryProducts
+#print axioms spectrumLevel_preservesBinaryProducts
+
+#check @spectrumLevel_preservesFiniteProducts
+#print axioms spectrumLevel_preservesFiniteProducts
+
+#check @spectrumFiniteProductCone
+#print axioms spectrumFiniteProductCone
+
+#check @spectrumFiniteProductCone_isLimit
+#print axioms spectrumFiniteProductCone_isLimit
+
+#check @spectrumFiniteProductCone_level_isLimit
+#print axioms spectrumFiniteProductCone_level_isLimit
+
+#check @spectrumFiniteProductCone_hom_isLimit
+#print axioms spectrumFiniteProductCone_hom_isLimit
+
+#check @spectrumFiniteProductInfinityCone
+#print axioms spectrumFiniteProductInfinityCone
+
+#check @spectrumFiniteProductInfinityCone_isLimit
+#print axioms spectrumFiniteProductInfinityCone_isLimit

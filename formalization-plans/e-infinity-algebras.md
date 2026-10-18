@@ -1191,3 +1191,36 @@ Sp の空積・一般の有限積への束ね直し、引き戻し、塔は未�
 他担当の依存812ソースは全て追跡済み・コミット済み・変更なし。
 検証ログは `/tmp/gamma3-spectrum-binary-product-aggregate.log` と
 `/tmp/gamma3-spectrum-binary-product-audit.log`。
+
+
+### γ3c：Sp の空積を含む全ての有限積
+
+`SpectrumPoint` で一点の Kan 性と、その懸垂・loop の零対象性を証明し、
+構造射とその随伴が同型である実際の `spectrumPoint : OmegaSpectrum.{u}` を構成した。
+`SpectrumFiniteProducts` で通常の終対象性と前回の二項積の通常の普遍性を検証し、
+Mathlib の終対象・二項積からの有限帰納の構成により `spectrumHasFiniteProducts` を得た。
+各段の評価が終対象と二項積を保つことを直接確認し、全ての有限積の保存を証明した。
+存在・保存のクラスの公開補題はモジュール内では局所 instance として使う。
+
+任意の有限型 J と実際の図式 F について、通常の極限錐 `spectrumFiniteProductCone F` と
+全ての段の極限性、L9 の実際の豊穣 Hom の極限性を得た。主定理は
+
+```lean
+spectrumFiniteProductInfinityCone_isLimit {J : Type u} [Finite J]
+    (F : Discrete J ⥤ OmegaSpectrum.{u}) :
+  IsLimitCone (spectrumFiniteProductInfinityCone F)
+```
+
+追加仮定は J の有限性だけ。空積を含み、L9 の対象や写像空間の定義は変更していない。
+Sp の有限積の工程は実際の対象と ∞ 極限錐まで完成した。
+新規19宣言の正確な型・全前提は InfinityCategories/README.md の同名節に記録し、監査へ追加。
+原典は BF 1978 §2、HA §1.4.2、HTT 4.2.4.1 の双対、Kerodon 7.5.4.6。
+
+Sp の引き戻し・塔、元の非反転の end・q_x と反転係数の直接比較、余極限側、
+E2a 完了後の E2b 適用は未完了。γ3 は継続中。
+
+検証：対象集約 `HomotopyLimits` のビルド成功（4593 jobs）、公開1170宣言の `#check @` と
+公理監査成功（標準3公理のみ）。新規2ファイルの警告・sorry・追加公理はない。
+他担当の依存812ソースは全て追跡済み・コミット済み・変更なし。
+検証ログは `/tmp/gamma3-spectrum-finite-products-aggregate.log` と
+`/tmp/gamma3-spectrum-finite-products-audit.log`。

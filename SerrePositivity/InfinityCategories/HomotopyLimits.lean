@@ -189,3 +189,5 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.SmashSimplex
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SmashSimplexModel
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SmashProductMono
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumBinaryProduct
+public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumPoint
+public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumFiniteProducts
