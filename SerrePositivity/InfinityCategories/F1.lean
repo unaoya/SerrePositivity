@@ -1,5 +1,10 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.LeftFibrationTrivialComparison
+public import SerrePositivity.InfinityCategories.F1.RelativeHomEquivalenceRestriction
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorOverPrecomposition
+public import SerrePositivity.InfinityCategories.F1.RelativeFunctorOverEquivalence
+
 public import SerrePositivity.InfinityCategories.F1.UniverseInnerFibration
 public import SerrePositivity.InfinityCategories.F1.UniverseInvertibleEdge
 public import SerrePositivity.InfinityCategories.F1.UniverseQCatEquivalence

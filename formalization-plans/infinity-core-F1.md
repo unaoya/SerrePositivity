@@ -7985,5 +7985,59 @@ lemma nonempty_leftCoherentTransportEquivalence
     Nonempty (QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj E)
       (leftUnstraightening (leftCoherentTransport p)))
 
+lemma leftFibration_vertex_surjective_of_essentiallySurjective
+    {E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p]
+    (hp : IsEssentiallySurjective p) : Function.Surjective (p.app (Opposite.op ⦋0⦌))
+
+lemma trivialKanFibration_of_leftFibration_of_isQCatEquivalence
+    {E B : SSet.{u}} [Quasicategory E] [Quasicategory B]
+    (p : E ⟶ B) [LeftFibration p] (hp : IsQCatEquivalence p) : TrivialKanFibration p
+
+lemma trivialKanFibration_relativeHom_of_precompositionEquivalence
+    {A D E B : SSet.{u}} [Quasicategory B] (i : D ⟶ A) [Mono i]
+    (hi : IsPrecompositionEquivalence i) (p : E ⟶ B) [LeftFibration p]
+    (r : internalHom.PullbackObjObj i p) : TrivialKanFibration r.π
+
+lemma relativeFunctorPre_trivialKanFibration_of_precompositionEquivalence
+    {A D E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p]
+    (a : A ⟶ B) (i : D ⟶ A) [Mono i] (hi : IsPrecompositionEquivalence i) :
+    TrivialKanFibration (relativeFunctorPre p a i)
+
+def relativeFunctorOverPre {E B : SSet.{u}} (p : E ⟶ B) {a b : Over B} (f : a ⟶ b) :
+    relativeFunctorSpace p b.hom ⟶ relativeFunctorSpace p a.hom
+
+lemma relativeFunctorOverPre_ι {E B : SSet.{u}} (p : E ⟶ B) {a b : Over B} (f : a ⟶ b) :
+    relativeFunctorOverPre p f ≫ vertexFiberι ((ihom a.left).map p) (functorVertex a.hom) =
+      vertexFiberι ((ihom b.left).map p) (functorVertex b.hom) ≫ (pre f.left).app E
+
+lemma relativeFunctorOverPre_id {E B : SSet.{u}} (p : E ⟶ B) (a : Over B) :
+    relativeFunctorOverPre p (𝟙 a) = 𝟙 (relativeFunctorSpace p a.hom)
+
+lemma relativeFunctorOverPre_comp {E B : SSet.{u}} (p : E ⟶ B) {a b c : Over B}
+    (f : a ⟶ b) (g : b ⟶ c) :
+    relativeFunctorOverPre p (f ≫ g) = relativeFunctorOverPre p g ≫ relativeFunctorOverPre p f
+
+def relativeFunctorOverFunctor {E B : SSet.{u}} (p : E ⟶ B) : (Over B)ᵒᵖ ⥤ SSet.{u}
+
+lemma relativeFunctorOverPre_isPrecompositionEquivalence_of_mono
+    {E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p]
+    {a b : Over B} (f : a ⟶ b) [Mono f.left] (hf : IsPrecompositionEquivalence f.left) :
+    IsPrecompositionEquivalence (relativeFunctorOverPre p f)
+
+lemma relativeFunctorOverPre_isPrecompositionEquivalence
+    {E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p]
+    {a b : Over B} (f : a ⟶ b) (hf : IsPrecompositionEquivalence f.left) :
+    IsPrecompositionEquivalence (relativeFunctorOverPre p f)
+
+lemma relativeFunctorOverPre_isQCatEquivalence
+    {E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p]
+    {a b : Over B} (f : a ⟶ b) (hf : IsPrecompositionEquivalence f.left) :
+    IsQCatEquivalence (relativeFunctorOverPre p f)
+
+lemma relativeFunctorPre_isQCatEquivalence_of_precompositionEquivalence
+    {A D E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p]
+    (a : A ⟶ B) (i : D ⟶ A) (hi : IsPrecompositionEquivalence i) :
+    IsQCatEquivalence (relativeFunctorPre p a i)
+
 end SerrePositivity.InfinityCategories
 ```
