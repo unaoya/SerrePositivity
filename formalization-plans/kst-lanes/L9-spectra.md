@@ -31,7 +31,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b・L9c・L9d 完了。L9e 着手。
 Sp、自然な任意段表示、置換、任意の射の homotopy fiber と整数次数の長完全列まで検証済み。
-対象ビルド・289 モジュール 3281 宣言の公理監査成功。
+対象ビルド・294 モジュール 3316 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9d、12125 jobs）は共有ルートの他レーンの宣言重複で失敗。
 `InfinityCategories.F1.RelativeFunctorVertices` と `F1B.RelativeFunctorHomotopyComposition` の
 `relativeFunctorVertex` 重複。K-L9 の import 閉包と対象ビルドは成功。
@@ -2458,3 +2458,30 @@ BF 図式の厳密な錐では、その始域の単射構造射を使い、比�
 私有宣言を含む 289 モジュール 3281 宣言で標準三公理のみ。
 L9e は進行中。次は end と Kan 列の射への関手性を整え、有理係数の π_* 比較を進める。
 有理 Shapiro と通常の Tot との比較は引き続き未完了。
+
+## 84. L9e の end・hG の射への作用と標準射の自然性
+
+点つき weighted end の恒等射・合成の法則と cotensor 交換の自然性を証明した。
+各段へ適用し、図式の自然変換から homotopy limit の Kan 列の厳密な射を構成した。
+各対象・各段で全基点 π_* 同型な自然変換は、この Kan 列でも各段の同型を誘導する。
+
+BF 置換の持ち上げを使い、hG と homotopy Tot の間の実際の BF 射を構成した。
+置換への射影との可換式を示し、厳密な錐からの標準比較の自然性を各段のホモトピー成分で証明した。
+これを全整数次数の π_* の等式へ移した。
+特に自明作用の標準射は元のスペクトルの射に自然である。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `PointedWeightedEnd.functor` / `cotensorIso_natural` | end の係数の関手性と loop 交換の自然性 |
+| `KanSequence.homotopyLimitMap` / `homotopyLimitMap_levelwise` | Kan 列への実際の射と各段の同型保存 |
+| `KanSequence.homotopyLimitMap_id` / `homotopyLimitMap_comp` | 置換前の厳密な関手法則 |
+| `KanSequence.homotopyLimitSpectrumMap_piIsomorphism` | BF 置換後の全整数次数の同型保存 |
+| `OmegaSpectrum.homotopyLimitMap` / `homotopyLimitMap_projection` | BF 図式の射への作用と置換への射影式 |
+| `OmegaSpectrum.homotopyLimitConeComparison_natural` | 錐からの比較の π_* の自然性 |
+| `homotopyFixedPointsMap` / `homotopyTotalizationMap` | hG・homotopy Tot の実際の BF 射 |
+| `homotopyFixedPointsUnit_natural_component` / `homotopyFixedPointsUnit_natural` | 自明作用の標準射の自然性 |
+
+参照：HA §1.4.2、BF 1978 §2、HTT A.3.3。
+保存単位の対象ビルド 3652 jobs 成功。
+私有宣言を含む 294 モジュール 3316 宣言で標準三公理のみ。
+L9e は進行中。有理 Shapiro と通常の Tot との比較は引き続き未完了。
