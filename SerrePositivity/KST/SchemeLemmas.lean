@@ -299,3 +299,6 @@ public import SerrePositivity.KST.SchemeLemmas.FiniteDualFactorization
 public import SerrePositivity.KST.SchemeLemmas.MittagLefflerHomStabilization
 public import SerrePositivity.KST.SchemeLemmas.NatInverseSections
 public import SerrePositivity.KST.SchemeLemmas.FiniteLiftCorrection
+public import SerrePositivity.KST.SchemeLemmas.LinearLiftInverseFunctor
+public import SerrePositivity.KST.SchemeLemmas.LinearLiftMittagLeffler
+public import SerrePositivity.KST.SchemeLemmas.CountableFlatMittagLefflerProjective
