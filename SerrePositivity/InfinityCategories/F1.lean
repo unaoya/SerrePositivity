@@ -290,3 +290,6 @@ public import SerrePositivity.InfinityCategories.F1.MappingCylinderPullbackMap
 public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinderPullbackLift
 public import SerrePositivity.InfinityCategories.F1.SSetPullbackColimitDescent
 public import SerrePositivity.InfinityCategories.F1.MappingCylinderPullbackIso
+public import SerrePositivity.InfinityCategories.F1.JoinPullback
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinPullbackIso
+public import SerrePositivity.InfinityCategories.F1.RelativeJoinCylinderEquivalence

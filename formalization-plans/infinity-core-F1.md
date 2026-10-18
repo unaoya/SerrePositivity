@@ -6259,5 +6259,37 @@ lemma mappingCylinderPullbackMap_isPullback {X Y Z : SSet.{u}} (f : X ⟶ Y) (h 
 instance mappingCylinderPullbackLift_isIso {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) :
     IsIso (mappingCylinderPullbackLift f h)
 
+lemma join_isPullback {P A B C Q D E F : SSet.{u}}
+    {a : P ⟶ A} {b : P ⟶ B} {f : A ⟶ C} {g : B ⟶ C}
+    {c : Q ⟶ D} {d : Q ⟶ E} {h : D ⟶ F} {k : E ⟶ F}
+    (hP : IsPullback a b f g) (hQ : IsPullback c d h k) :
+    IsPullback (joinMap a c) (joinMap b d) (joinMap f h) (joinMap g k)
+
+lemma prismBaseChange_isPullback {Y Z : SSet.{u}} (h : Z ⟶ Y) :
+    IsPullback ((Δ[1] : SSet.{u}) ◁ h) (snd (Δ[1] : SSet.{u}) Z)
+      (snd (Δ[1] : SSet.{u}) Y) h
+
+lemma relativeJoinPullbackMap_prism_isPullback {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) :
+    IsPullback (relativeJoinPullbackMap f h)
+      (pullback.snd (joinMap (pullback.snd f h) (𝟙 Z)) (joinDiagonal Z))
+      (pullback.snd (joinMap f (𝟙 Y)) (joinDiagonal Y)) ((Δ[1] : SSet.{u}) ◁ h)
+
+lemma relativeJoinPullbackMap_isPullback {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) :
+    IsPullback (relativeJoinPullbackMap f h) (relativeJoinBaseProjection (pullback.snd f h) (𝟙 Z))
+      (relativeJoinBaseProjection f (𝟙 Y)) h
+
+instance relativeJoinPullbackLift_isIso {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) :
+    IsIso (relativeJoinPullbackLift f h)
+
+lemma isPrecompositionEquivalence_relativeJoinCylinderComparison_pullback_iff
+    {X Y Z : SSet.{u}} (f : X ⟶ Y) (h : Z ⟶ Y) :
+    IsPrecompositionEquivalence
+      (overPullbackMap (relativeJoinCylinderComparisonOver f) (Over.mk h)) ↔
+        IsPrecompositionEquivalence (relativeJoinCylinderComparison (pullback.snd f h))
+
+lemma isPrecompositionEquivalence_relativeJoinCylinderComparison
+    {X Y : SSet.{u}} (f : X ⟶ Y) :
+    IsPrecompositionEquivalence (relativeJoinCylinderComparison f)
+
 end SerrePositivity.InfinityCategories
 ```
