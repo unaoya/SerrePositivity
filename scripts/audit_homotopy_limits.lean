@@ -815,3 +815,47 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms coherentConeProjectionHomEquivalence
 #check @strictCoherentConeFiberHomEquivalence
 #print axioms strictCoherentConeFiberHomEquivalence
+#check @coneReplacementMap
+#print axioms coneReplacementMap
+#check @coneReplacementMap_projection
+#print axioms coneReplacementMap_projection
+#check @strictTransportConeAssembly
+#print axioms strictTransportConeAssembly
+#check @strictTransportConeAssembly_projection
+#print axioms strictTransportConeAssembly_projection
+#check @strictTransportConeSections
+#print axioms strictTransportConeSections
+#check @transportSectionsRestriction
+#print axioms transportSectionsRestriction
+#check @transportSectionsRestriction_evaluation
+#print axioms transportSectionsRestriction_evaluation
+#check @transportSectionsRestriction_naturality
+#print axioms transportSectionsRestriction_naturality
+#check @transportSectionsCone
+#print axioms transportSectionsCone
+#check @strictTransportConeAssembly_sections
+#print axioms strictTransportConeAssembly_sections
+#check @strictTransportConeSections_sections
+#print axioms strictTransportConeSections_sections
+#check @scaffoldUnderChain_under_map
+#print axioms scaffoldUnderChain_under_map
+#check @strictTransportConeAssembly_restriction
+#print axioms strictTransportConeAssembly_restriction
+#check @strictTransportConeSections_fac
+#print axioms strictTransportConeSections_fac
+#check @coneReplacementMap_naturality
+#print axioms coneReplacementMap_naturality
+#check @strictTransportConeAssembly_naturality
+#print axioms strictTransportConeAssembly_naturality
+#check @transportSectionsConeIsLimit
+#print axioms transportSectionsConeIsLimit
+#check @transportLimitSectionsIso
+#print axioms transportLimitSectionsIso
+#check @strictTransportSectionsComparison
+#print axioms strictTransportSectionsComparison
+#check @strictTransportSectionsComparison_cospan_homotopyEquivalence
+#print axioms strictTransportSectionsComparison_cospan_homotopyEquivalence
+#check @strictTransportSectionsComparison_tower_homotopyEquivalence
+#print axioms strictTransportSectionsComparison_tower_homotopyEquivalence
+#check @strictTransportSectionsComparison_discrete_isIso
+#print axioms strictTransportSectionsComparison_discrete_isIso

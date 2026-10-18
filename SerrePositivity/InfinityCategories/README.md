@@ -2192,7 +2192,7 @@ representableHomotopyLimitComparison_factorization (c : Cone F) (x : C)
 ただし具体的な coherent な錐 c から end の点 b_c を作ることと、
 錐の pinched Hom を `comparisonFiber q_x b_c` と比較することは未完了。
 strict な錐から q_x を構成できたことを、その比較まで証明したとは数えない。
-公開405宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
+公開427宣言の正確な型・全前提・依存公理は `scripts/audit_homotopy_limits.lean` が正本。
 
 ### strict な図式・錐の coherent 表示
 
@@ -2820,7 +2820,7 @@ bousfieldKanLimitComparison_cospan_leftFibration_homotopyEquivalence H :
 実際の `representableHomotopyLimitComparison c x` の単体的ホモトピー同値性を証明する。
 ここで F : AsSmall.{u} WalkingCospan ⥤ C、c : Cone F、x : C、
 hc : IsLimit (simplicialHomCone c x) であり、上記の H の条件を
-`H := simplicialHomDiagram F x` に要求する。正確な全型は公開405宣言の監査に記録。
+`H := simplicialHomDiagram F x` に要求する。正確な全型は公開427宣言の監査に記録。
 錐の pinched Hom と比較射の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限は未完了である。
 
 ### 重み付き end と weighted nerve の切断の族（全単射を実装）
@@ -3053,6 +3053,59 @@ J : Type u、[SmallCategory J] と全ての sHom の Kan 性を要求する。�
 ここまでで任意の coherent な錐に具体的な切断の点と、fiber ごとの実際の Hom の比較を与えた。
 fiber の比較を図式全体の比較へ束ねること、その切断空間と Bousfield–Kan end の同値性、
 錐の pinched Hom と q_x の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限への適用は未完了。
+
+### 切断空間と strict transport の通常の極限（実装済み）
+
+`TransportConeAssembly.lean` は通常の錐 c から `nerve I ⊗ c.pt` を
+simplicial replacement へ写す。各射列の始点で錐の成分を添え、始点が移る自然性は c.w を使う。
+strict transport の錐では F1 の `universalScaffold p` を後合成し、元の全空間への切断の族を得る。
+
+```lean
+strictTransportConeAssembly {E : SSet.{u}} (p : E ⟶ nerve I)
+    (c : Cone (leftStrictTransportDiagram p)) : nerve I ⊗ c.pt ⟶ E
+strictTransportConeAssembly_projection p c :
+    strictTransportConeAssembly p c ≫ p = fst (nerve I) c.pt
+strictTransportConeSections p c : c.pt ⟶ simplicialSections p
+```
+
+`TransportSectionsCone.lean` は普遍的な切断の族を各 under 圏の忘却で制限し、
+`transportSectionsRestriction p i : simplicialSections p ⟶ leftStrictTransport p i` を作る。
+これらは strict transport の全ての構造射と厳密に可換である。
+`TransportSectionsRetraction.lean` と `TransportSectionsLimit.lean` は両向きの回収を証明する。
+under 圏の射列は、底の標準の under 射列を最初の構造射で前合成して復元できる。
+この式と通常の錐の可換性で任意の互換な族の全成分を回収する。
+
+```lean
+transportSectionsCone (p : E ⟶ nerve I) : Cone (leftStrictTransportDiagram p)
+transportSectionsConeIsLimit (p : E ⟶ nerve I) : IsLimit (transportSectionsCone p)
+transportLimitSectionsIso (p : E ⟶ nerve I) :
+    limit (leftStrictTransportDiagram p) ≅ simplicialSections p
+```
+
+I : Type u、[SmallCategory I]、E : SSet.{u}。この通常の極限の同定に left fibration 性は不要。
+
+`TransportSectionsComparison.lean` は切断空間が担う極限錐に実際の標準比較を適用する。
+
+```lean
+strictTransportSectionsComparison {I : Type u} [SmallCategory I] {E : SSet.{u}}
+    (p : E ⟶ nerve I) :
+    simplicialSections p ⟶ bousfieldKanHolim (leftStrictTransportDiagram p)
+strictTransportSectionsComparison_cospan_homotopyEquivalence {E : SSet.{u}}
+    (p : E ⟶ nerve (AsSmall.{u} WalkingCospan)) [LeftFibration p] :
+    IsSimplicialHomotopyEquivalence (strictTransportSectionsComparison p)
+strictTransportSectionsComparison_tower_homotopyEquivalence {E : SSet.{u}}
+    (p : E ⟶ nerve (AsSmall.{u} ℕᵒᵖ)) [LeftFibration p] :
+    IsSimplicialHomotopyEquivalence (strictTransportSectionsComparison p)
+strictTransportSectionsComparison_discrete_isIso {J : Type u} {E : SSet.{u}}
+    (p : E ⟶ nerve (Discrete J)) : IsIso (strictTransportSectionsComparison p)
+```
+
+cospan と塔では F1 の `leftStrictTransportMap_fibration_of_thin` を使う。
+strict transport の Kan 値性と、各構造射の fibration 性は p の left fibration 性から導出する。
+離散の場合は left fibration 性も有限性も不要。
+これは切断空間と strict transport 図式の大域的な比較である。
+元の豊穣 Hom 図式 `simplicialHomDiagram F x` との自然な比較は別途必要であり未完了。
+錐の pinched Hom と q_x の導来ファイバーの主比較、𝒮・Sp の残りの ∞ 極限も継続中。
 
 ### 𝒮 の空積（実装済み）
 
