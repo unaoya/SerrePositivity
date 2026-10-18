@@ -96,7 +96,7 @@ Kₙ の境界・比較同型は自然性と対象類の式を含む。宇宙は
 
 ## 6. 現在地・主要宣言
 
-**L1a・L1b 完了。L1c 進行中（空間模型・零対象比較・後合成・有限反復対象と零方向の可縮性、関手圏・S_n・有限反復の安定性、全多単体構造・入力についての自然性と対角実現の関手性、自然な基点を持つ K 空間の関手と旧模型との全基点 π_* 比較まで実装済み）。L1d–f 未完了、L1g は別途指示待ち。**
+**L1a・L1b 完了。L1c 進行中（空間模型・零対象比較・後合成・有限反復対象と零方向の可縮性、関手圏・S_n・有限反復の安定性、全多単体構造・入力についての自然性と対角実現の関手性、自然な基点を持つ K 空間の関手と旧模型との全基点 π_* 比較、全零方向の境界の自然な商と局所化比較まで実装済み）。L1d–f 未完了、L1g は別途指示待ち。**
 L1b は元の全 gapped 図式の制限写像そのものについて、全次数・全境界の RLP を証明した。
 追加の存在仮定や出力の gapped 性の仮定は残っていない。
 
@@ -1973,3 +1973,253 @@ lemma kSpaceReductionComparison_naturality {X Y : StableModel.{u}}
 任意の押し出し保存と cofiber 保存条件との同値は未証明。L1d–f 未完了、L1g は別途指示待ち。
 
 検証：対象ビルド成功（2348 jobs）、公理監査成功（733 宣言、標準三公理のみ）。追加公理・sorry なし。
+
+## 6.16 全零方向の境界の合併と自然な商
+
+個々の S 方向を零次数に固定する添字関手と、その対角実現への単射を構成した。
+方向集合 s の像を R_s とすると、R_(s∪t) = R_s ∩ R_t が厳密に成り立つ。
+非空 s に対する R_s の弱可縮性は各段の可縮 Kan 性と HA の対角定理から従う。
+境界 B(s,t) := ⋃_(i∈s) R_(insert i t) は、非空 s に対し anodyne 局所化で一点と同値。
+交差の計算と部分複体の合併を表す pushout の cube により有限帰納した。
+
+正の反復に対し全方向の合併 B(univ,∅) を潰す `boundaryReducedRealization` を定義し、
+入力について厳密に自然な点つき関手と Kan 置換を構成した。商写像は任意の anodyne 反転関手で可逆。
+境界・対角実現の Kan 性、選択した零対象の保存は仮定しない。
+一般の cofiber 比較を追加し、既存の可縮 Kan 版の名前・型は保持した。
+Core・Stable・F1・HA・Spectra のファイルに変更はない。
+
+以下の型は namespace `SerrePositivity.KST.SConstruction` 内。
+`StableModel` は quasicategory と安定性を持ち、射は `PreservesCofiberData` を満たす射。
+`AnodyneHomotopy.anodyneQ` は anodyne extensions による局所化、
+`r : ℕ`、`u v w` は独立の宇宙。各定理に記載した前提以外の仮定はない。
+
+**ZeroDirections.lean**
+
+```lean
+def zeroCoordinateFunctor {r : ℕ} (i : Fin r) : Bool → ((Fin r → SimplexCategoryᵒᵖ) ⥤ SimplexCategoryᵒᵖ)
+
+def zeroCoordinateNat {r : ℕ} (i : Fin r) : (b : Bool) →
+    zeroCoordinateFunctor i b ⟶ Pi.eval (fun _ : Fin r => SimplexCategoryᵒᵖ) i
+
+def zeroCoordinateRetraction {r : ℕ} (i : Fin r) : (b : Bool) →
+    (d : Fin r → SimplexCategoryᵒᵖ) → d i ⟶ (zeroCoordinateFunctor i b).obj d
+
+lemma zeroCoordinateNat_retraction {r : ℕ} (i : Fin r) (b : Bool)
+    (d : Fin r → SimplexCategoryᵒᵖ) :
+    (zeroCoordinateNat i b).app d ≫ zeroCoordinateRetraction i b d =
+      𝟙 ((zeroCoordinateFunctor i b).obj d)
+
+def zeroDirectionsIndex {r : ℕ} (s : Finset (Fin r)) :
+    (Fin r → SimplexCategoryᵒᵖ) ⥤ (Fin r → SimplexCategoryᵒᵖ)
+
+def zeroDirectionsIndexNat {r : ℕ} (s : Finset (Fin r)) : zeroDirectionsIndex s ⟶ 𝟭 _
+
+def zeroDirectionsIndexRetraction {r : ℕ} (s : Finset (Fin r))
+    (d : Fin r → SimplexCategoryᵒᵖ) : d ⟶ (zeroDirectionsIndex s).obj d
+
+lemma zeroDirectionsIndexNat_retraction {r : ℕ} (s : Finset (Fin r))
+    (d : Fin r → SimplexCategoryᵒᵖ) :
+    (zeroDirectionsIndexNat s).app d ≫ zeroDirectionsIndexRetraction s d =
+      𝟙 ((zeroDirectionsIndex s).obj d)
+
+def zeroDirectionsDiagram {r : ℕ} (s : Finset (Fin r)) (X : StableModel.{u}) :
+    SimplexCategoryᵒᵖ ⥤ SSet.{u}
+
+def zeroDirectionsDiagramMap {r : ℕ} (s : Finset (Fin r)) (X : StableModel.{u}) :
+    zeroDirectionsDiagram s X ⟶ (multiDiagonalDiagramFunctor r).obj X
+
+def zeroDirectionsInclusion {r : ℕ} (s : Finset (Fin r)) (X : StableModel.{u}) :
+    simplicialDiagonalFunctor.obj (zeroDirectionsDiagram s X) ⟶ multiDiagonalCoreSConstruction r X
+
+instance zeroDirectionsInclusion_mono {r : ℕ} (s : Finset (Fin r)) (X : StableModel.{u}) :
+    Mono (zeroDirectionsInclusion s X)
+
+lemma zeroDirectionsDiagram_isContractibleKan {r : ℕ} (s : Finset (Fin r)) (hs : s.Nonempty)
+    (X : StableModel.{u}) (d : SimplexCategoryᵒᵖ) :
+    IsContractibleKan ((zeroDirectionsDiagram s X).obj d)
+```
+
+**ZeroDirectionsRanges.lean**
+
+```lean
+def zeroCoordinateEndomorphism {r : ℕ} (i : Fin r) (b : Bool) (d : Fin r → SimplexCategoryᵒᵖ) :
+    d i ⟶ d i
+
+lemma zeroCoordinateEndomorphism_or {r : ℕ} (i : Fin r) (a b : Bool)
+    (d : Fin r → SimplexCategoryᵒᵖ) :
+    zeroCoordinateEndomorphism i (a || b) d =
+      zeroCoordinateEndomorphism i a d ≫ zeroCoordinateEndomorphism i b d
+
+def zeroDirectionsIndexEndomorphism {r : ℕ} (s : Finset (Fin r))
+    (d : Fin r → SimplexCategoryᵒᵖ) : d ⟶ d
+
+lemma zeroDirectionsIndexEndomorphism_union {r : ℕ} (s t : Finset (Fin r))
+    (d : Fin r → SimplexCategoryᵒᵖ) :
+    zeroDirectionsIndexEndomorphism (s ∪ t) d =
+      zeroDirectionsIndexEndomorphism s d ≫ zeroDirectionsIndexEndomorphism t d
+
+def zeroDirectionsRetractionAt {r : ℕ} (s : Finset (Fin r)) (X : StableModel.{u})
+    (d : SimplexCategoryᵒᵖ) (x : (multiDiagonalCoreSConstruction r X).obj d) :
+    (simplicialDiagonalFunctor.obj (zeroDirectionsDiagram s X)).obj d
+
+lemma zeroDirectionsRetractionAt_leftInverse {r : ℕ} (s : Finset (Fin r)) (X : StableModel.{u})
+    (d : SimplexCategoryᵒᵖ) :
+    Function.LeftInverse (zeroDirectionsRetractionAt s X d) ((zeroDirectionsInclusion s X).app d)
+
+def zeroDirectionsOperator {r : ℕ} (s : Finset (Fin r)) (X : StableModel.{u})
+    (d : SimplexCategoryᵒᵖ) (x : (multiDiagonalCoreSConstruction r X).obj d) :
+    (multiDiagonalCoreSConstruction r X).obj d
+
+lemma zeroDirectionsOperator_eq_map {r : ℕ} (s : Finset (Fin r)) (X : StableModel.{u})
+    (d : SimplexCategoryᵒᵖ) (x : (multiDiagonalCoreSConstruction r X).obj d) :
+    zeroDirectionsOperator s X d x =
+      ((multiCoreSConstruction r X).map (zeroDirectionsIndexEndomorphism s (fun _ => d))).app d x
+
+lemma zeroDirectionsOperator_union {r : ℕ} (s t : Finset (Fin r)) (X : StableModel.{u})
+    (d : SimplexCategoryᵒᵖ) (x : (multiDiagonalCoreSConstruction r X).obj d) :
+    zeroDirectionsOperator (s ∪ t) X d x =
+      zeroDirectionsOperator t X d (zeroDirectionsOperator s X d x)
+
+def zeroDirectionsRange {r : ℕ} (s : Finset (Fin r)) (X : StableModel.{u}) :
+    (multiDiagonalCoreSConstruction r X).Subcomplex
+
+lemma mem_zeroDirectionsRange_iff {r : ℕ} (s : Finset (Fin r)) (X : StableModel.{u})
+    (d : SimplexCategoryᵒᵖ) (x : (multiDiagonalCoreSConstruction r X).obj d) :
+    x ∈ (zeroDirectionsRange s X).obj d ↔ zeroDirectionsOperator s X d x = x
+
+lemma zeroDirectionsRange_antitone {r : ℕ} {s t : Finset (Fin r)} (hst : s ⊆ t)
+    (X : StableModel.{u}) : zeroDirectionsRange t X ≤ zeroDirectionsRange s X
+
+lemma zeroDirectionsRange_union {r : ℕ} (s t : Finset (Fin r)) (X : StableModel.{u}) :
+    zeroDirectionsRange (s ∪ t) X = zeroDirectionsRange s X ⊓ zeroDirectionsRange t X
+```
+
+**ZeroDirectionsWeak.lean**
+
+```lean
+def zeroDirectionsDiagramToPoint {r : ℕ} (s : Finset (Fin r)) (X : StableModel.{u}) :
+    zeroDirectionsDiagram s X ⟶ (Functor.const SimplexCategoryᵒᵖ).obj (𝟙_ SSet.{u})
+
+lemma zeroDirectionsRealization_toPoint_localized_isIso {r : ℕ} (s : Finset (Fin r))
+    (hs : s.Nonempty) (X : StableModel.{u}) :
+    IsIso (AnodyneHomotopy.anodyneQ.map
+      (toUnit (simplicialDiagonalFunctor.obj (zeroDirectionsDiagram s X))))
+
+lemma zeroDirectionsRealization_toPoint_image_isIso {D : Type v} [Category.{w} D]
+    (L : SSet.{u} ⥤ D) (hL : anodyneExtensions.IsInvertedBy L) {r : ℕ}
+    (s : Finset (Fin r)) (hs : s.Nonempty) (X : StableModel.{u}) :
+    IsIso (L.map (toUnit (simplicialDiagonalFunctor.obj (zeroDirectionsDiagram s X))))
+```
+
+**ZeroBoundary.lean**
+
+```lean
+lemma zeroDirectionsRange_toPoint_localized_isIso {r : ℕ} (s : Finset (Fin r))
+    (hs : s.Nonempty) (X : StableModel.{u}) :
+    IsIso (AnodyneHomotopy.anodyneQ.map (toUnit (zeroDirectionsRange s X : SSet.{u})))
+
+lemma subcomplex_inf_sup {W : SSet.{u}} (A B C : W.Subcomplex) :
+    A ⊓ (B ⊔ C) = (A ⊓ B) ⊔ (A ⊓ C)
+
+lemma subcomplex_sup_toPoint_localized_isIso {W : SSet.{u}} (A B : W.Subcomplex)
+    (hA : IsIso (AnodyneHomotopy.anodyneQ.map (toUnit (A : SSet.{u}))))
+    (hB : IsIso (AnodyneHomotopy.anodyneQ.map (toUnit (B : SSet.{u}))))
+    (hI : IsIso (AnodyneHomotopy.anodyneQ.map (toUnit (A ⊓ B : W.Subcomplex).toSSet))) :
+    IsIso (AnodyneHomotopy.anodyneQ.map (toUnit (A ⊔ B : W.Subcomplex).toSSet))
+
+def zeroDirectionsBoundary {r : ℕ} (s t : Finset (Fin r)) (X : StableModel.{u}) :
+    (multiDiagonalCoreSConstruction r X).Subcomplex
+
+lemma zeroDirectionsBoundary_insert {r : ℕ} (i : Fin r) (s t : Finset (Fin r)) (X : StableModel.{u}) :
+    zeroDirectionsBoundary (insert i s) t X =
+      zeroDirectionsRange (insert i t) X ⊔ zeroDirectionsBoundary s t X
+
+lemma zeroDirectionsBoundary_inf {r : ℕ} (i : Fin r) (s t : Finset (Fin r)) (X : StableModel.{u}) :
+    zeroDirectionsRange (insert i t) X ⊓ zeroDirectionsBoundary s t X =
+      zeroDirectionsBoundary s (insert i t) X
+
+lemma zeroDirectionsBoundary_toPoint_localized_isIso {r : ℕ} (s t : Finset (Fin r))
+    (hs : s.Nonempty) (X : StableModel.{u}) :
+    IsIso (AnodyneHomotopy.anodyneQ.map (toUnit (zeroDirectionsBoundary s t X : SSet.{u})))
+
+def zeroDirectionsFatBoundary (r : ℕ) (X : StableModel.{u}) :
+    (multiDiagonalCoreSConstruction r X).Subcomplex
+
+lemma zeroDirectionsFatBoundary_toPoint_localized_isIso (r : ℕ) (X : StableModel.{u}) :
+    IsIso (AnodyneHomotopy.anodyneQ.map (toUnit (zeroDirectionsFatBoundary (r + 1) X : SSet.{u})))
+```
+
+**ZeroDirectionsNaturality.lean**
+
+```lean
+def zeroDirectionsRealizationFunctor {r : ℕ} (s : Finset (Fin r)) : StableModel.{u} ⥤ SSet.{u}
+
+def zeroDirectionsInclusionNat {r : ℕ} (s : Finset (Fin r)) :
+    zeroDirectionsRealizationFunctor.{u} s ⟶ multiRealizationFunctor r
+
+lemma zeroDirectionsInclusionNat_app {r : ℕ} (s : Finset (Fin r)) (X : StableModel.{u}) :
+    (zeroDirectionsInclusionNat s).app X = zeroDirectionsInclusion s X
+
+lemma zeroDirectionsRange_image_le {r : ℕ} (s : Finset (Fin r)) {X Y : StableModel.{u}}
+    (f : X ⟶ Y) :
+    (zeroDirectionsRange s X).image ((multiRealizationFunctor r).map f) ≤ zeroDirectionsRange s Y
+```
+
+**BoundaryReduction.lean**
+
+```lean
+lemma zeroDirectionsBoundary_image_le {r : ℕ} (s t : Finset (Fin r)) {X Y : StableModel.{u}}
+    (f : X ⟶ Y) :
+    (zeroDirectionsBoundary s t X).image ((multiRealizationFunctor r).map f) ≤
+      zeroDirectionsBoundary s t Y
+
+def zeroDirectionsFatBoundaryMap (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    (zeroDirectionsFatBoundary r X : SSet.{u}) ⟶ (zeroDirectionsFatBoundary r Y : SSet.{u})
+
+lemma zeroDirectionsFatBoundaryMap_ι (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    zeroDirectionsFatBoundaryMap r f ≫ (zeroDirectionsFatBoundary r Y).ι =
+      (zeroDirectionsFatBoundary r X).ι ≫ (multiRealizationFunctor r).map f
+
+def boundaryReducedRealization (r : ℕ) (X : StableModel.{u}) : PointedSimplicialSet.{u}
+
+def boundaryReductionQuotient (r : ℕ) (X : StableModel.{u}) :
+    multiDiagonalCoreSConstruction (r + 1) X ⟶ (boundaryReducedRealization r X).right
+
+def boundaryReducedRealizationMap (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    boundaryReducedRealization r X ⟶ boundaryReducedRealization r Y
+
+lemma boundaryReducedRealizationMap_quotient (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
+    boundaryReductionQuotient r X ≫ (boundaryReducedRealizationMap r f).right =
+      (multiRealizationFunctor (r + 1)).map f ≫ boundaryReductionQuotient r Y
+
+def boundaryReducedRealizationFunctor (r : ℕ) : StableModel.{u} ⥤ PointedSimplicialSet.{u}
+
+def boundaryReductionNat (r : ℕ) : multiRealizationFunctor (r + 1) ⟶
+    boundaryReducedRealizationFunctor r ⋙ PointedSimplicialSet.forget
+
+lemma boundaryReductionQuotient_image_isIso {D : Type v} [Category.{w} D]
+    (L : SSet.{u} ⥤ D) (hL : anodyneExtensions.IsInvertedBy L) (r : ℕ) (X : StableModel.{u}) :
+    IsIso (L.map (boundaryReductionQuotient r X))
+
+def boundaryKanRealizationFunctor (r : ℕ) : StableModel.{u} ⥤ PointedSimplicialSet.{u}
+
+instance boundaryKanRealization_kanComplex (r : ℕ) (X : StableModel.{u}) :
+    KanComplex (((boundaryKanRealizationFunctor r).obj X).right)
+```
+
+**ReductionEquivalence.lean**
+
+```lean
+lemma cofiberQuotient_image_isIso_of_localized_toPoint {D : Type v} [Category.{w} D]
+    (L : SSet.{u} ⥤ D) (hL : anodyneExtensions.IsInvertedBy L)
+    {A B : SSet.{u}} (i : A ⟶ B) [Mono i]
+    (hA : IsIso (AnodyneHomotopy.anodyneQ.map (toUnit A))) :
+    IsIso (L.map (PointedObject.cofiberQuotient i))
+```
+
+現在地：L1a・L1b 完了、L1c 継続中。全零方向の境界の自然な collapse とその局所化での比較は証明済み。
+旧 K 空間との既存の π_* 比較は同時零段を潰す模型についてであり、今回の全境界商との点つき π_* 比較はまだ接続していない。
+反復間の構造写像、delooping・Ω 条件・BF 連結スペクトルは未完了。
+任意の押し出し保存と cofiber 保存条件との同値は未証明。L1d–f 未完了、L1g は別途指示待ち。
+
+検証：対象ビルド成功（2950 jobs）、公理監査成功（788 宣言、標準三公理のみ）。追加公理・sorry なし。

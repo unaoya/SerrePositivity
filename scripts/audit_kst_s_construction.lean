@@ -2025,3 +2025,168 @@ import SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.kSpaceReductionComparison_naturality
 #print axioms SerrePositivity.KST.SConstruction.kSpaceReductionComparison_naturality
+
+#check @SerrePositivity.KST.SConstruction.zeroCoordinateFunctor
+#print axioms SerrePositivity.KST.SConstruction.zeroCoordinateFunctor
+
+#check @SerrePositivity.KST.SConstruction.zeroCoordinateNat
+#print axioms SerrePositivity.KST.SConstruction.zeroCoordinateNat
+
+#check @SerrePositivity.KST.SConstruction.zeroCoordinateRetraction
+#print axioms SerrePositivity.KST.SConstruction.zeroCoordinateRetraction
+
+#check @SerrePositivity.KST.SConstruction.zeroCoordinateNat_retraction
+#print axioms SerrePositivity.KST.SConstruction.zeroCoordinateNat_retraction
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsIndex
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsIndex
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsIndexNat
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsIndexNat
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsIndexRetraction
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsIndexRetraction
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsIndexNat_retraction
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsIndexNat_retraction
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsDiagram
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsDiagram
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsDiagramMap
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsDiagramMap
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsInclusion
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsInclusion
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsInclusion_mono
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsInclusion_mono
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsDiagram_isContractibleKan
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsDiagram_isContractibleKan
+
+#check @SerrePositivity.KST.SConstruction.zeroCoordinateEndomorphism
+#print axioms SerrePositivity.KST.SConstruction.zeroCoordinateEndomorphism
+
+#check @SerrePositivity.KST.SConstruction.zeroCoordinateEndomorphism_or
+#print axioms SerrePositivity.KST.SConstruction.zeroCoordinateEndomorphism_or
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsIndexEndomorphism
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsIndexEndomorphism
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsIndexEndomorphism_union
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsIndexEndomorphism_union
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsRetractionAt
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsRetractionAt
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsRetractionAt_leftInverse
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsRetractionAt_leftInverse
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsOperator
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsOperator
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsOperator_eq_map
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsOperator_eq_map
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsOperator_union
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsOperator_union
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsRange
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsRange
+
+#check @SerrePositivity.KST.SConstruction.mem_zeroDirectionsRange_iff
+#print axioms SerrePositivity.KST.SConstruction.mem_zeroDirectionsRange_iff
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsRange_antitone
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsRange_antitone
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsRange_union
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsRange_union
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsDiagramToPoint
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsDiagramToPoint
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsRealization_toPoint_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsRealization_toPoint_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsRealization_toPoint_image_isIso
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsRealization_toPoint_image_isIso
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsRange_toPoint_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsRange_toPoint_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.subcomplex_inf_sup
+#print axioms SerrePositivity.KST.SConstruction.subcomplex_inf_sup
+
+#check @SerrePositivity.KST.SConstruction.subcomplex_sup_toPoint_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.subcomplex_sup_toPoint_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsBoundary
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsBoundary
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsBoundary_insert
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsBoundary_insert
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsBoundary_inf
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsBoundary_inf
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsBoundary_toPoint_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsBoundary_toPoint_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsFatBoundary
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsFatBoundary
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsFatBoundary_toPoint_localized_isIso
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsFatBoundary_toPoint_localized_isIso
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsRealizationFunctor
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsRealizationFunctor
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsInclusionNat
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsInclusionNat
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsInclusionNat_app
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsInclusionNat_app
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsRange_image_le
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsRange_image_le
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsBoundary_image_le
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsBoundary_image_le
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsFatBoundaryMap
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsFatBoundaryMap
+
+#check @SerrePositivity.KST.SConstruction.zeroDirectionsFatBoundaryMap_ι
+#print axioms SerrePositivity.KST.SConstruction.zeroDirectionsFatBoundaryMap_ι
+
+#check @SerrePositivity.KST.SConstruction.boundaryReducedRealization
+#print axioms SerrePositivity.KST.SConstruction.boundaryReducedRealization
+
+#check @SerrePositivity.KST.SConstruction.boundaryReductionQuotient
+#print axioms SerrePositivity.KST.SConstruction.boundaryReductionQuotient
+
+#check @SerrePositivity.KST.SConstruction.boundaryReducedRealizationMap
+#print axioms SerrePositivity.KST.SConstruction.boundaryReducedRealizationMap
+
+#check @SerrePositivity.KST.SConstruction.boundaryReducedRealizationMap_quotient
+#print axioms SerrePositivity.KST.SConstruction.boundaryReducedRealizationMap_quotient
+
+#check @SerrePositivity.KST.SConstruction.boundaryReducedRealizationFunctor
+#print axioms SerrePositivity.KST.SConstruction.boundaryReducedRealizationFunctor
+
+#check @SerrePositivity.KST.SConstruction.boundaryReductionNat
+#print axioms SerrePositivity.KST.SConstruction.boundaryReductionNat
+
+#check @SerrePositivity.KST.SConstruction.boundaryReductionQuotient_image_isIso
+#print axioms SerrePositivity.KST.SConstruction.boundaryReductionQuotient_image_isIso
+
+#check @SerrePositivity.KST.SConstruction.boundaryKanRealizationFunctor
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanRealizationFunctor
+
+#check @SerrePositivity.KST.SConstruction.boundaryKanRealization_kanComplex
+#print axioms SerrePositivity.KST.SConstruction.boundaryKanRealization_kanComplex
+
+#check @SerrePositivity.KST.SConstruction.cofiberQuotient_image_isIso_of_localized_toPoint
+#print axioms SerrePositivity.KST.SConstruction.cofiberQuotient_image_isIso_of_localized_toPoint

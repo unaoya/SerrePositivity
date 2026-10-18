@@ -30,17 +30,15 @@ lemma trivialKanFibration_toUnit_of_contractible {A : SSet.{u}} (hA : IsContract
   obtain ⟨F, hF⟩ := hA n a
   exact CommSq.HasLift.mk' { l := F, fac_left := hF, fac_right := isTerminalTensorUnit.hom_ext _ _ }
 
-/-- 概要：可縮 Kan な部分を一点へ潰す商写像は anodyne を反転する全関手で可逆。
-方針：元の標的を表す自明 pushout と商を表す pushout の cube を比較する。
-規約：包含は単射、標的の Kan 性は不要。使われ方：零段を潰した実現との比較。 -/
-lemma cofiberQuotient_image_isIso_of_contractible {D : Type v} [Category.{w} D]
+/-- 概要：局所化で一点と同値な部分を潰す商写像は全 anodyne 反転関手で可逆。
+方針：同じ単射を持つ pushout cube の一点側の比較を使う。
+規約：部分も標的も Kan であるとは仮定しない。使われ方：零境界の合併全体の collapse。 -/
+lemma cofiberQuotient_image_isIso_of_localized_toPoint {D : Type v} [Category.{w} D]
     (L : SSet.{u} ⥤ D) (hL : anodyneExtensions.IsInvertedBy L)
-    {A B : SSet.{u}} (i : A ⟶ B) [Mono i] (hA : IsContractibleKan A) :
+    {A B : SSet.{u}} (i : A ⟶ B) [Mono i]
+    (hA : IsIso (AnodyneHomotopy.anodyneQ.map (toUnit A))) :
     IsIso (L.map (PointedObject.cofiberQuotient i)) := by
   let Q := AnodyneHomotopy.anodyneQ
-  have hQ : anodyneExtensions.IsInvertedBy Q := Localization.inverts Q anodyneExtensions
-  have ht := trivialKanFibration_toUnit_of_contractible hA
-  have hc : IsIso (Q.map (toUnit A)) := map_isIso_of_trivialKanFibration Q hQ (toUnit A)
   have hidA : IsIso (Q.map (𝟙 A)) := by rw [Q.map_id]; infer_instance
   have hidB : IsIso (Q.map (𝟙 B)) := by rw [Q.map_id]; infer_instance
   have hs : IsPushout i (𝟙 A) (𝟙 B) i := IsPushout.of_vert_isIso ⟨by simp⟩
@@ -50,7 +48,19 @@ lemma cofiberQuotient_image_isIso_of_contractible {D : Type v} [Category.{w} D]
     i (toUnit A) (PointedObject.cofiberQuotient i) (PointedObject.cofiber i).hom hs'
     (𝟙 A) (𝟙 B) (toUnit A) (PointedObject.cofiberQuotient i)
     (by simp) (by simp) (by simp) (PointedObject.cofiberQuotient_condition i)
-    hidA hidB hc L hL
+    hidA hidB hA L hL
+
+/-- 概要：可縮 Kan な部分を一点へ潰す商写像は anodyne を反転する全関手で可逆。
+方針：一点への trivial Kan fibration の可逆性を一般の商写像の比較へ渡す。
+規約：包含は単射、標的の Kan 性は不要。使われ方：零段を潰した実現との比較。 -/
+lemma cofiberQuotient_image_isIso_of_contractible {D : Type v} [Category.{w} D]
+    (L : SSet.{u} ⥤ D) (hL : anodyneExtensions.IsInvertedBy L)
+    {A B : SSet.{u}} (i : A ⟶ B) [Mono i] (hA : IsContractibleKan A) :
+    IsIso (L.map (PointedObject.cofiberQuotient i)) := by
+  apply cofiberQuotient_image_isIso_of_localized_toPoint L hL i
+  have := trivialKanFibration_toUnit_of_contractible hA
+  exact map_isIso_of_trivialKanFibration AnodyneHomotopy.anodyneQ
+    (Localization.inverts AnodyneHomotopy.anodyneQ anodyneExtensions) (toUnit A)
 
 /-- 概要：可縮 Kan な零段を潰す対角の商写像は anodyne を反転する全関手で可逆。
 方針：零段の包含の単射性と一般の cofiber 商写像の比較を使う。
