@@ -1361,7 +1361,12 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.LeftFibrationTransportHom,
     `SerrePositivity.InfinityCategories.Stable.CoconeEndpointTransport,
     `SerrePositivity.InfinityCategories.Stable.CoslicePushoutGluing,
-    `SerrePositivity.InfinityCategories.Stable.CoconeEndpointGluing]
+    `SerrePositivity.InfinityCategories.Stable.CoconeEndpointGluing,
+    `SerrePositivity.InfinityCategories.Stable.CoconeTransportChange,
+    `SerrePositivity.InfinityCategories.Stable.SymmetricCoconeEndpointTransport,
+    `SerrePositivity.InfinityCategories.Stable.SymmetricCoconeTransportKernelPair,
+    `SerrePositivity.InfinityCategories.Stable.SymmetricCoconeLoopProduct,
+    `SerrePositivity.InfinityCategories.Stable.SymmetricCoconeLoopProductNaturality]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do

@@ -644,9 +644,26 @@ E が可縮な Kan・射が Kan fibration なら π₀ で全単射となる。
 貼り合わせの存在・一意性。`exists_coconeEndpointTransport_glue` はこれにより
 二枝の輸送の区間族が共通部分で一致するという入力から、全図式の輸送を両枝と厳密に可換に構成する。
 これら三つの貼り合わせ結果に値域の quasicategory 性や余極限性は不要。
-対称 span で共通始点の輸送を一つ選び同じ枝へ持ち上げた場合に、
-表示変更を含む二枝の区間族の一致を証明してこの貼り合わせを適用する工程は未完了。
-また、ループ演算を Hom に移すための枝の基点の選択・変更の整合と対角成分と零射の照合が未完了。
+`LeftFibrationFiberTransport.changeDiagram` と `_map`・`_uncurry` は固定図式の等号による
+表示変更を輸送の射と区間族に適用する。`coconeEndpointTransport_restrict_uncurry` は
+共通部分への区間族の制限を展開後に計算する（充填性の仮定不要）。
+これにより、共通始点の輸送を先に選び同じ枝に持ち上げた場合、対称 span の二枝の表示変更後の
+区間族は厳密に共通始点で一致する。
+`exists_symmetricCoconeEndpointTransport` はこの整合条件を仮定せず検証し、
+同じ枝と対称 span 全体の輸送を両枝と厳密に可換に構成する（Quasicategory のみ）。
+枝の終点の零性や全体の余極限性は不要。
+`symmetricCoconeTransport_kernelPair`・`_piZero` は、この全体の輸送が自己引き戻し表示で
+枝と共通始点の輸送から誘導される kanKernelPairMap に一致することを示す
+（三つの輸送と可換性を入力とすれば充填性不要）。
+`symmetricCoconeLoopProduct`・`symmetricCoconeLoopUnit` は自己引き戻しの積と対角を全体の π₀ に移す。
+二つの `_kernelPair`、積の左右単位、二枝交換が右逆元である式を証明した。
+積とその単位・逆元の性質は Quasicategory・枝の終点の始対象性・枝の余錐の基点を仮定する。
+単位の定義自体には充填性や始対象性は不要。
+`symmetricCoconeLoopProduct_transport` は前述の整合する三つの輸送に対する積の保存、
+`symmetricCoconeLoopUnit_transport` は単位の保存を示す。
+これらの式では、終域側の枝の基点は始域側の枝の基点を枝の輸送で送った像とする。
+任意に選び直した終域の基点でも同じ積となる独立性は、まだ証明していない。
+従って、枝の基点の選択・変更の整合と対角成分と零射の照合が未完了。
 従って、抽象補題の自然性・零単位の仮定を余錐の Hom 表示へ移した演算で満たすことは未証明。
 **負号との一致は未証明**。構成済みの双積の加法への適用も残る。
 表現可能な比較の完成を符号・TR2 全体の完成とは数えない。
@@ -809,7 +826,8 @@ HA §1.1 に対応する Kerodon の章はない。原典は定義と命題の�
 | 対称 span 全体からのループ比較 | `symmetricCoconeBranches_isPullback`・`symmetricCoconeKernelPairIso`・`symmetricCoconeKernelPairIso_swap`（値域の仮定なし）、`symmetricCoconeLoopComparison_homotopyEquivalence`・`symmetricCoconePiZeroLoopEquiv_eq_comparison`（Quasicategory、辺の終点の始対象性、枝の余錐の基点） | 全体の余錐空間のループ模型への実際のホモトピー同値と、自己引き戻しへの交換作用の転送まで完成。ループの逆射との一致も下記で完成。加法の負号との一致は未証明 |
 | 二成分・二枝交換とループの逆射 | `kanKernelPairFiberInclusion_piZero_bijective`（Kan fibration、E Kan・可縮）、`exists_kanKernelPairSwap_fiber_path`（同前）、`kanKernelPairPiZeroLoopEquiv_comp_swap`・`kanKernelPairPiZeroLoopEquiv_swap`（さらに B Kan）、`symmetricCoconePiZeroLoopEquiv_comp_swap`・`symmetricCoconePiZeroLoopEquiv_swap`（Quasicategory、枝の終点の始対象性、枝の余錐の基点） | 成分交換と二枝交換がループの逆射となることまで完成。ループの群構造と双積の加法との一致、負号、TR2 は未証明 |
 | ループ積の自然性と加法の一般判定 | `kanKernelPairPiZeroLoopEquiv_naturality`（両射 Kan fibration、両全空間 Kan・可縮、両底 Kan、可換正方形）、`kanKernelPairPiZeroLoopEquiv_diagonal`・`kanKernelPairLoopProduct` と結合則・左右単位・交換右逆元・自然性（同前）、`representableOperation_eq_add`・`representableRightInverse_eq_neg`（一般の前加法圏、二項双積、演算の零単位・後合成自然性） | 自己引き戻しの π₀ 上の自然なループ積と、加法へ照合する一般補題が完成。余錐の Hom 表示に移した演算の後合成自然性・零単位の照合と適用は未完了 |
-| 余錐空間の終点輸送と貼り合わせ | `nonempty_leftFibrationFiberTransport`（left fibration のみ）、`exists_leftFibrationFiberTransport_lift`（中間の輸送、制限射が left fibration）、`leftFibrationInitialFiberPiZeroEquiv_transport`（全空間・底 Quasicategory、left fibration、始対象）、`coconeMappingSpacePiZeroEquiv_transport`（Quasicategory、余極限余錐）、`exists_coconeEndpointTransport_restrict`（Quasicategory、Mono）、`exists_coconeEndpointTransport_glue`（二枝の区間族の整合を入力、充填性・余極限性不要） | 終点輸送の存在、単射の制限との同時可換性、Hom の後合成への対応、整合条件付きの全図式の輸送の貼り合わせまで完成。対称 span での整合条件の検証・基点の整合・零射の照合と演算への適用は未完了 |
+| 余錐空間の終点輸送と貼り合わせ | `nonempty_leftFibrationFiberTransport`（left fibration のみ）、`exists_leftFibrationFiberTransport_lift`（中間の輸送、制限射が left fibration）、`leftFibrationInitialFiberPiZeroEquiv_transport`（全空間・底 Quasicategory、left fibration、始対象）、`coconeMappingSpacePiZeroEquiv_transport`（Quasicategory、余極限余錐）、`exists_coconeEndpointTransport_restrict`（Quasicategory、Mono）、`exists_coconeEndpointTransport_glue`（二枝の区間族の整合を入力、充填性・余極限性不要） | 終点輸送の存在、単射の制限との同時可換性、Hom の後合成への対応、整合条件付きの全図式の輸送の貼り合わせまで完成。対称 span での整合条件の検証も下記で完成。基点の整合・零射の照合と加法への適用は未完了 |
+| 対称 span 全体の輸送とループ積 | `exists_symmetricCoconeEndpointTransport`（Quasicategory、選んだ共通始点の輸送）、`symmetricCoconeTransport_kernelPair`・`_piZero`（三つの輸送と可換性、充填性不要）、`symmetricCoconeLoopProduct`・`Unit` と左右単位・交換右逆元（Quasicategory、枝の終点の始対象性、枝の基点）、`symmetricCoconeLoopProduct_transport`・`Unit_transport`（整合する輸送、終域の基点は輸送の像） | 貼り合わせ条件の実際の検証と全体の輸送、自己引き戻しへの可換性、全体の積・単位とその輸送による保存まで完成。任意の基点変更の独立性・単位と零射の照合・加法への適用は未完了 |
 | S4〜S7 | 三角構造・長完全列・完全関手・D7 | 未完了 |
 
 正確な公開型と構造体の構成子は [型一覧](archive/infinity-core-stable-log.md) に記録する。

@@ -15294,3 +15294,578 @@ CoconeEndpointGluing 2325 jobs、Stable 集約 2635 jobs で終了コード 0。
 Hom へ移したループ積への加法の一般判定の適用。
 従って swapIso = -id、回転第三射の負号、TR2、八面体・TR4、Pretriangulated instance、
 S5〜S7 は未完了。α-S 全体の目標は継続中。
+
+
+## 2026-10-19：対称 span 全体の終点輸送とループ積の保存
+
+`LeftFibrationFiberTransport.changeDiagram` と `_map`・`_uncurry` は、固定図式の等号で
+輸送のデータを表示変更し、fiber の射と展開した区間族に対する計算則を与える。
+`coconeEndpointTransport_restrict_uncurry` は区間族の制限可換性を展開後の join の式へ移す。
+これらの計算に値域の充填性は不要。
+
+`exists_symmetricCoconeEndpointTransport` は共通始点の余錐空間の輸送を先に固定し、
+同じ枝の輸送を制限射に沿って持ち上げ、その二つの表示を対称 span の両枝へ戻して貼る。
+貼り合わせの整合条件は、枝の持ち上げの共通始点への等号と
+`symmetricCoconeBranches_comm` から厳密に検証した。
+従って前段の整合条件付きの結果だけではなく、対称 span に対する実際の存在定理となった。
+仮定は X の quasicategory 性と共通始点の輸送の選択だけで、枝の終点の零性や全体の余極限性は不要。
+
+`symmetricCoconeTransport_kernelPair`・`_piZero` は、三つの輸送が両枝と可換なら、
+全体の輸送が自己引き戻し表示を介して枝と共通始点の輸送から誘導する写像に一致することを示す。
+両射影で計算した。この結果自体には値域の充填性は不要。
+
+`symmetricCoconeLoopProduct`・`symmetricCoconeLoopUnit` は自己引き戻しのループ積と対角を
+全体の余錐空間の π₀ に移す。二つの `_kernelPair` 計算則、積の左右単位、
+二枝交換が右逆元となる式を証明した。
+積およびその単位・逆元の性質は X が quasicategory、枝の終点が始対象、枝の余錐の基点を仮定する。
+単位の定義とその自己引き戻しでの表示自体には充填性や始対象性は不要。
+
+`symmetricCoconeLoopProduct_transport`・`symmetricCoconeLoopUnit_transport` は、
+両枝と整合する全体の終点輸送が積と単位を保つことを示す。
+終域側の枝の基点は、始域側で指定した基点を枝の輸送で送った像とする。
+任意に選び直した終域側の基点との独立性はまだ証明していない。
+
+公開17宣言の正確な型（`#check @`、宇宙変数を含む）：
+
+```lean
+@SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.changeDiagram.{u_1} : {K X : SSet.{u_1}} →
+  {p q : Quiver.Hom.{u_1, u_1 + 1} K X} →
+    {x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })} →
+      {a : SSet.Truncated.Edge.{u_1} x y} →
+        SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.{u_1}
+            (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1} p) a →
+          Eq.{u_1 + 1} p q →
+            SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.{u_1}
+              (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1} q) a
+@SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.changeDiagram_map.{u_1} : ∀ {K X : SSet.{u_1}}
+  {p q : Quiver.Hom.{u_1, u_1 + 1} K X}
+  {x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  {a : SSet.Truncated.Edge.{u_1} x y}
+  (T :
+    SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.{u_1}
+      (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1} p) a)
+  (h : Eq.{u_1 + 1} p q),
+  Eq.{u_1 + 1}
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+      (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1}
+        (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.changeDiagram.{u_1} T h))
+      (CategoryTheory.eqToHom.{u_1, u_1 + 1} ⋯))
+    (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} (CategoryTheory.eqToHom.{u_1, u_1 + 1} ⋯)
+      (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} T))
+@SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.changeDiagram_uncurry.{u_1} : ∀ {K X Z : SSet.{u_1}}
+  {p q : Quiver.Hom.{u_1, u_1 + 1} K X}
+  {x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  {a : SSet.Truncated.Edge.{u_1} x y}
+  (T :
+    SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.{u_1}
+      (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1} p) a)
+  (h : Eq.{u_1 + 1} p q)
+  (v : Quiver.Hom.{u_1, u_1 + 1} Z (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1} q x)),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.sliceUnderUncurry.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1} v
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+        (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.h.{u_1}
+          (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.changeDiagram.{u_1} T h))))
+    (SerrePositivity.InfinityCategories.sliceUnderUncurry.{u_1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} v (CategoryTheory.eqToHom.{u_1, u_1 + 1} ⋯))
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+        (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.h.{u_1} T)))
+@SerrePositivity.InfinityCategories.coconeEndpointTransport_restrict_uncurry.{u_1} : ∀ {K L X Z : SSet.{u_1}}
+  (p : Quiver.Hom.{u_1, u_1 + 1} K X) (i : Quiver.Hom.{u_1, u_1 + 1} L K)
+  {x y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (a : SSet.Truncated.Edge.{u_1} x y)
+  (T :
+    SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.{u_1}
+      (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1} p) a)
+  (S :
+    SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.{u_1}
+      (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} i p))
+      a),
+  Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.h.{u_1} T)
+        (SerrePositivity.InfinityCategories.sliceUnderRestrict.{u_1} p i))
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.cosliceRestrictionFiberMap.{u_1} p i x)
+          (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+        (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.h.{u_1} S)) →
+    ∀ (v : Quiver.Hom.{u_1, u_1 + 1} Z (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1} p x)),
+      Eq.{u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.joinMap.{u_1} i
+            (CategoryTheory.CategoryStruct.id.{u_1, u_1 + 1}
+              (CategoryTheory.MonoidalCategoryStruct.tensorObj.{u_1, u_1 + 1} Z
+                (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))))
+          (SerrePositivity.InfinityCategories.sliceUnderUncurry.{u_1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+              (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1} v
+                (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+              (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.h.{u_1} T))))
+        (SerrePositivity.InfinityCategories.sliceUnderUncurry.{u_1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+            (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1}
+              (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1} v
+                (SerrePositivity.InfinityCategories.cosliceRestrictionFiberMap.{u_1} p i x))
+              (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+            (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.h.{u_1} S)))
+@SerrePositivity.InfinityCategories.exists_symmetricCoconeEndpointTransport.{u_1} : ∀ {X : SSet.{u_1}}
+  [SSet.Quasicategory.{u_1} X] {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z)
+  {y₀ y₁ : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (a : SSet.Truncated.Edge.{u_1} y₀ y₁)
+  (S :
+    SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.{u_1}
+      (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 1)
+          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f))))
+      a),
+  ∃ T U,
+    Eq.{u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.h.{u_1} T)
+          (SerrePositivity.InfinityCategories.sliceUnderRestrict.{u_1}
+            ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f))
+            (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 1)))
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (CategoryTheory.MonoidalCategoryStruct.whiskerRight.{u_1, u_1 + 1}
+            (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+              ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y₀)
+            (CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} SSet.stdSimplex.{u_1} { len := 1 }))
+          (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.h.{u_1} S)) ∧
+      Eq.{u_1 + 1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+            (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} T)
+            (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+              ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y₁))
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+            (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+              ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y₀)
+            (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} S)) ∧
+        Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+              (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} U)
+              (SerrePositivity.InfinityCategories.symmetricCoconeFirst.{u_1} f y₁))
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+              (SerrePositivity.InfinityCategories.symmetricCoconeFirst.{u_1} f y₀)
+              (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} T)) ∧
+          Eq.{u_1 + 1}
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+              (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} U)
+              (SerrePositivity.InfinityCategories.symmetricCoconeSecond.{u_1} f y₁))
+            (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+              (SerrePositivity.InfinityCategories.symmetricCoconeSecond.{u_1} f y₀)
+              (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} T))
+@SerrePositivity.InfinityCategories.symmetricCoconeTransport_kernelPair.{u_1} : ∀ {X : SSet.{u_1}}
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z)
+  {y₀ y₁ : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (a : SSet.Truncated.Edge.{u_1} y₀ y₁)
+  (S :
+    SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.{u_1}
+      (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 1)
+          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f))))
+      a)
+  (T :
+    SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.{u_1}
+      (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}
+        ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)))
+      a)
+  (U :
+    SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.{u_1}
+      (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}
+        (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f))
+      a)
+  (hT :
+    Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} T)
+        (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y₁))
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y₀)
+        (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} S))),
+  Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} U)
+        (SerrePositivity.InfinityCategories.symmetricCoconeFirst.{u_1} f y₁))
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.symmetricCoconeFirst.{u_1} f y₀)
+        (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} T)) →
+    Eq.{u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} U)
+          (SerrePositivity.InfinityCategories.symmetricCoconeSecond.{u_1} f y₁))
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.symmetricCoconeSecond.{u_1} f y₀)
+          (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} T)) →
+      Eq.{u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} U)
+          (CategoryTheory.Iso.hom.{u_1, u_1 + 1}
+            (SerrePositivity.InfinityCategories.symmetricCoconeKernelPairIso.{u_1} f y₁)))
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (CategoryTheory.Iso.hom.{u_1, u_1 + 1}
+            (SerrePositivity.InfinityCategories.symmetricCoconeKernelPairIso.{u_1} f y₀))
+          (SerrePositivity.InfinityCategories.kanKernelPairMap.{u_1}
+            (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+              ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y₀)
+            (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+              ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y₁)
+            (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} T)
+            (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} S) hT))
+@SerrePositivity.InfinityCategories.symmetricCoconeTransport_kernelPair_piZero.{u_1} : ∀ {X : SSet.{u_1}}
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z)
+  {y₀ y₁ : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (a : SSet.Truncated.Edge.{u_1} y₀ y₁)
+  (S :
+    SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.{u_1}
+      (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 1)
+          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f))))
+      a)
+  (T :
+    SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.{u_1}
+      (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}
+        ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)))
+      a)
+  (U :
+    SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.{u_1}
+      (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}
+        (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f))
+      a)
+  (hT :
+    Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} T)
+        (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y₁))
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y₀)
+        (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} S))),
+  Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} U)
+        (SerrePositivity.InfinityCategories.symmetricCoconeFirst.{u_1} f y₁))
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.symmetricCoconeFirst.{u_1} f y₀)
+        (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} T)) →
+    Eq.{u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} U)
+          (SerrePositivity.InfinityCategories.symmetricCoconeSecond.{u_1} f y₁))
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.symmetricCoconeSecond.{u_1} f y₀)
+          (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} T)) →
+      ∀
+        (b :
+          SSet.π₀.{u_1}
+            (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+              (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f) y₀)),
+        Eq.{u_1 + 1}
+          (SSet.mapπ₀.{u_1}
+            (CategoryTheory.Iso.hom.{u_1, u_1 + 1}
+              (SerrePositivity.InfinityCategories.symmetricCoconeKernelPairIso.{u_1} f y₁))
+            (SSet.mapπ₀.{u_1} (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} U) b))
+          (SSet.mapπ₀.{u_1}
+            (SerrePositivity.InfinityCategories.kanKernelPairMap.{u_1}
+              (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+                ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y₀)
+              (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+                ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y₁)
+              (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} T)
+              (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} S) hT)
+            (SSet.mapπ₀.{u_1}
+              (CategoryTheory.Iso.hom.{u_1, u_1 + 1}
+                (SerrePositivity.InfinityCategories.symmetricCoconeKernelPairIso.{u_1} f y₀))
+              b))
+@SerrePositivity.InfinityCategories.stableMapPiZeroIso_injective.{u_1} : ∀ {A B : SSet.{u_1}}
+  (i : CategoryTheory.Iso.{u_1, u_1 + 1} A B),
+  Function.Injective.{u_1 + 1, u_1 + 1} (SSet.mapπ₀.{u_1} (CategoryTheory.Iso.hom.{u_1, u_1 + 1} i))
+@SerrePositivity.InfinityCategories.symmetricCoconeLoopProduct.{u_1} : {X : SSet.{u_1}} →
+  [SSet.Quasicategory.{u_1} X] →
+    {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })} →
+      (f : SSet.Truncated.Edge.{u_1} x z) →
+        SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} z →
+          (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })) →
+            CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+                (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+                  ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)
+                (Opposite.op.{1} { len := 0 }) →
+              SSet.π₀.{u_1}
+                  (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+                    (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f) y) →
+                SSet.π₀.{u_1}
+                    (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+                      (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f) y) →
+                  SSet.π₀.{u_1}
+                    (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+                      (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f) y)
+@SerrePositivity.InfinityCategories.symmetricCoconeLoopProduct_kernelPair.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X]
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z) (hz : SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} z)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }))
+  (e :
+    CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+      (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+        ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)
+      (Opposite.op.{1} { len := 0 }))
+  (a b :
+    SSet.π₀.{u_1}
+      (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+        (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f) y)),
+  Eq.{u_1 + 1}
+    (SSet.mapπ₀.{u_1}
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.symmetricCoconeKernelPairIso.{u_1} f y))
+      (SerrePositivity.InfinityCategories.symmetricCoconeLoopProduct.{u_1} f hz y e a b))
+    (SerrePositivity.InfinityCategories.kanKernelPairLoopProduct.{u_1}
+      (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+        ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)
+      ⋯ e
+      (SSet.mapπ₀.{u_1}
+        (CategoryTheory.Iso.hom.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.symmetricCoconeKernelPairIso.{u_1} f y))
+        a)
+      (SSet.mapπ₀.{u_1}
+        (CategoryTheory.Iso.hom.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.symmetricCoconeKernelPairIso.{u_1} f y))
+        b))
+@SerrePositivity.InfinityCategories.symmetricCoconeLoopUnit.{u_1} : {X : SSet.{u_1}} →
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })} →
+    (f : SSet.Truncated.Edge.{u_1} x z) →
+      (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })) →
+        CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+            (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+              ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)
+            (Opposite.op.{1} { len := 0 }) →
+          SSet.π₀.{u_1}
+            (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+              (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f) y)
+@SerrePositivity.InfinityCategories.symmetricCoconeLoopUnit_kernelPair.{u_1} : ∀ {X : SSet.{u_1}}
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }))
+  (e :
+    CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+      (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+        ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)
+      (Opposite.op.{1} { len := 0 })),
+  Eq.{u_1 + 1}
+    (SSet.mapπ₀.{u_1}
+      (CategoryTheory.Iso.hom.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.symmetricCoconeKernelPairIso.{u_1} f y))
+      (SerrePositivity.InfinityCategories.symmetricCoconeLoopUnit.{u_1} f y e))
+    (SSet.mapπ₀.{u_1}
+      (SerrePositivity.InfinityCategories.kanKernelPairDiagonal.{u_1}
+        (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y))
+      (SSet.π₀.mk.{u_1} e))
+@SerrePositivity.InfinityCategories.symmetricCoconeLoopProduct_unit_left.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X]
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z) (hz : SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} z)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }))
+  (e :
+    CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+      (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+        ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)
+      (Opposite.op.{1} { len := 0 }))
+  (a :
+    SSet.π₀.{u_1}
+      (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+        (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f) y)),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.symmetricCoconeLoopProduct.{u_1} f hz y e
+      (SerrePositivity.InfinityCategories.symmetricCoconeLoopUnit.{u_1} f y e) a)
+    a
+@SerrePositivity.InfinityCategories.symmetricCoconeLoopProduct_unit_right.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X]
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z) (hz : SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} z)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }))
+  (e :
+    CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+      (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+        ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)
+      (Opposite.op.{1} { len := 0 }))
+  (a :
+    SSet.π₀.{u_1}
+      (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+        (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f) y)),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.symmetricCoconeLoopProduct.{u_1} f hz y e a
+      (SerrePositivity.InfinityCategories.symmetricCoconeLoopUnit.{u_1} f y e))
+    a
+@SerrePositivity.InfinityCategories.symmetricCoconeLoopProduct_swap.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X]
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z) (hz : SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} z)
+  (y : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 }))
+  (e :
+    CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+      (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+        ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y)
+      (Opposite.op.{1} { len := 0 }))
+  (a :
+    SSet.π₀.{u_1}
+      (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+        (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f) y)),
+  Eq.{u_1 + 1}
+    (SerrePositivity.InfinityCategories.symmetricCoconeLoopProduct.{u_1} f hz y e a
+      (SSet.mapπ₀.{u_1} (SerrePositivity.InfinityCategories.symmetricCoconeSwap.{u_1} f y) a))
+    (SerrePositivity.InfinityCategories.symmetricCoconeLoopUnit.{u_1} f y e)
+@SerrePositivity.InfinityCategories.symmetricCoconeLoopProduct_transport.{u_1} : ∀ {X : SSet.{u_1}}
+  [inst : SSet.Quasicategory.{u_1} X]
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z) (hz : SerrePositivity.InfinityCategories.IsInitialVertex.{u_1} z)
+  {y₀ y₁ : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (a : SSet.Truncated.Edge.{u_1} y₀ y₁)
+  (S :
+    SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.{u_1}
+      (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 1)
+          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f))))
+      a)
+  (T :
+    SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.{u_1}
+      (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}
+        ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)))
+      a)
+  (U :
+    SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.{u_1}
+      (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}
+        (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f))
+      a),
+  Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} T)
+        (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y₁))
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y₀)
+        (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} S)) →
+    Eq.{u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} U)
+          (SerrePositivity.InfinityCategories.symmetricCoconeFirst.{u_1} f y₁))
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.symmetricCoconeFirst.{u_1} f y₀)
+          (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} T)) →
+      Eq.{u_1 + 1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+            (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} U)
+            (SerrePositivity.InfinityCategories.symmetricCoconeSecond.{u_1} f y₁))
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+            (SerrePositivity.InfinityCategories.symmetricCoconeSecond.{u_1} f y₀)
+            (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} T)) →
+        ∀
+          (e :
+            CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+              (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+                ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y₀)
+              (Opposite.op.{1} { len := 0 }))
+          (b c :
+            SSet.π₀.{u_1}
+              (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+                (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f) y₀)),
+          Eq.{u_1 + 1}
+            (SSet.mapπ₀.{u_1} (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} U)
+              (SerrePositivity.InfinityCategories.symmetricCoconeLoopProduct.{u_1} f hz y₀ e b c))
+            (SerrePositivity.InfinityCategories.symmetricCoconeLoopProduct.{u_1} f hz y₁
+              ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+                  (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+                    (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} T)
+                    (Opposite.op.{1} { len := 0 })))
+                e)
+              (SSet.mapπ₀.{u_1} (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} U) b)
+              (SSet.mapπ₀.{u_1} (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} U) c))
+@SerrePositivity.InfinityCategories.symmetricCoconeLoopUnit_transport.{u_1} : ∀ {X : SSet.{u_1}}
+  {x z : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (f : SSet.Truncated.Edge.{u_1} x z)
+  {y₀ y₁ : CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1} X (Opposite.op.{1} { len := 0 })}
+  (a : SSet.Truncated.Edge.{u_1} y₀ y₁)
+  (S :
+    SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.{u_1}
+      (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (CategoryTheory.CosimplicialObject.δ.{u_1, u_1 + 1} SSet.stdSimplex.{u_1} 1)
+          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f))))
+      a)
+  (T :
+    SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.{u_1}
+      (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}
+        ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)))
+      a)
+  (U :
+    SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.{u_1}
+      (SerrePositivity.InfinityCategories.sliceUnderProjection.{u_1}
+        (SerrePositivity.InfinityCategories.edgeSpan.{u_1} f f))
+      a),
+  Eq.{u_1 + 1}
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} T)
+        (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y₁))
+      (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+        (SerrePositivity.InfinityCategories.coconeBranchSource.{u_1}
+          ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y₀)
+        (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} S)) →
+    Eq.{u_1 + 1}
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} U)
+          (SerrePositivity.InfinityCategories.symmetricCoconeFirst.{u_1} f y₁))
+        (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+          (SerrePositivity.InfinityCategories.symmetricCoconeFirst.{u_1} f y₀)
+          (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} T)) →
+      Eq.{u_1 + 1}
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+            (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} U)
+            (SerrePositivity.InfinityCategories.symmetricCoconeSecond.{u_1} f y₁))
+          (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}
+            (SerrePositivity.InfinityCategories.symmetricCoconeSecond.{u_1} f y₀)
+            (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} T)) →
+        ∀
+          (e :
+            CategoryTheory.Functor.obj.{0, u_1, 0, u_1 + 1}
+              (SerrePositivity.InfinityCategories.coconeMappingSpace.{u_1}
+                ((Equiv.symm.{u_1 + 1, u_1 + 1} SSet.yonedaEquiv.{u_1}) (SSet.Truncated.Edge.edge.{u_1} f)) y₀)
+              (Opposite.op.{1} { len := 0 })),
+          Eq.{u_1 + 1}
+            (SSet.mapπ₀.{u_1} (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} U)
+              (SerrePositivity.InfinityCategories.symmetricCoconeLoopUnit.{u_1} f y₀ e))
+            (SerrePositivity.InfinityCategories.symmetricCoconeLoopUnit.{u_1} f y₁
+              ((CategoryTheory.ConcreteCategory.hom.{u_1, u_1, u_1 + 1, u_1}
+                  (CategoryTheory.NatTrans.app.{0, u_1, 0, u_1 + 1}
+                    (SerrePositivity.InfinityCategories.LeftFibrationFiberTransport.map.{u_1} T)
+                    (Opposite.op.{1} { len := 0 })))
+                e))
+```
+
+対象ビルドは TransportChange 2324 jobs、SymmetricEndpointTransport 2595 jobs、
+TransportKernelPair 2597 jobs、SymmetricLoopProduct 2603 jobs、ProductNaturality 2604 jobs、
+Stable 集約 2640 jobs で終了コード 0。公開型抽出・公理監査も終了コード 0。
+監査は 302 モジュール・2229 宣言（生成・非公開宣言を含む）、
+標準三公理 propext・Classical.choice・Quot.sound のみ。
+新規五モジュールの警告なし。担当ファイルを指定した git diff --check 成功。
+引用・追加公理・sorry は導入していない。他レーンのファイルは変更していない。
+
+未完了の義務は、枝の基点の選択・変更からの積の独立性、対角成分と Hom の零射との照合、
+Hom へ移した演算の自然性・零単位の確定と加法の一般判定の適用。
+従って swapIso = -id、回転第三射の負号、TR2、八面体・TR4、Pretriangulated instance、
+S5〜S7 は未完了。α-S 全体の目標は継続中。
