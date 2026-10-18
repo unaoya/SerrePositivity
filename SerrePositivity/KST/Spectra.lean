@@ -34,3 +34,6 @@ public import SerrePositivity.KST.Spectra.FiberKanSequence
 public import SerrePositivity.KST.Spectra.FibrationComparisonPositive
 public import SerrePositivity.KST.Spectra.StageComparisonCoherence
 public import SerrePositivity.KST.Spectra.StageComparisonNaturality
+public import SerrePositivity.KST.Spectra.KanSequenceReplacement
+public import SerrePositivity.KST.Spectra.FiberComponentNaturality
+public import SerrePositivity.KST.Spectra.FibrationComparison

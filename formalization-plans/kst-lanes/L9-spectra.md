@@ -28,7 +28,7 @@
 作成日：2026-10-18。
 状態：L9a・L9b 完了。L9c 進行中。
 Sp、整数次数群と自然な任意段表示、Kan Ω 列の単射置換まで検証済み。
-対象ビルド・78 モジュール 1425 宣言の公理監査成功。
+対象ビルド・86 モジュール 1494 宣言の公理監査成功。
 直近の工程区切りの全体ビルド（L9b、8370 jobs）成功。
 L9c の BF cofibrant–fibrant 方式への改訂を承認済み。
 正本：[KST 経路](../k-theory-kst-route.md) §5、§13 決定 3・4。
@@ -965,3 +965,60 @@ path の連結写像による同値を全自然数次数の集合の同値とし
 私有宣言を含む 78 モジュール 1425 宣言で標準三公理のみ。
 L9c は未完了。零次数の fiber 比較、fiber の Ω 条件、Kan でない列の構造射を含む置換、
 整数次数長完全列、反復比較の隣接構造射との添字正規化が残る。
+
+## 36. L9c の構造射を含む段ごとの Kan 置換
+
+Kan 性をまだ要求しない `PointedSequence` を定義した。
+anodyne な点つき射に沿う Kan 標的への延長を、元の基点を保つ点つき射として構成した。
+元の構造射を次段の Kan 置換へ合成し、その随伴を次段の loop に取った。
+この loop は Kan なので、anodyne な現段の置換単位に沿って随伴構造射を延長できる。
+uncurry によって置換した二段の suspension 構造射を得た。
+置換単位との厳密可換性を、延長の制限式と随伴の逆関係から証明した。
+任意の点つき列から、構造射を持つ Kan 列への実際の比較射を得た。
+延長の選択に列の関手性は主張しない。
+任意の入力について Ω 条件が成立するとは主張しない。
+元の段が Kan である場合は、比較射の全基点 π_* 同型性を証明した。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `PointedExtension.exists_extension` / `.extend` | anodyne 射に沿う点つき延長 |
+| `PointedSequence` / `.Hom` | Kan 条件を持たない列と厳密射 |
+| `PointedSequence.kanReplacementAdjoint` / `.kanReplacementSigma` | 延長された随伴と構造射 |
+| `PointedSequence.kanReplacement_unit_comm` | 単位と構造射との厳密可換性 |
+| `PointedSequence.kanReplacement` / `.kanReplacementUnit` | Kan 列への置換と比較射 |
+| `PointedSequence.kanReplacementUnit_piIsomorphism` | 元の段が Kan の場合の π_* 保存 |
+
+参照：Goerss–Jardine I §7、BF 1978 §2、HTT A.3.3。
+
+## 37. L9c の fiber の零次数と全基点 π_* 比較
+
+零次数の基点付きの類と基点を選ばない連結成分の界面を整えた。
+全基点 π_* 条件から連結成分の全単射性を得る際には、源の指定頂点の存在を明示した。
+全空間の参照頂点を任意に選び直し、固定 fiber の連結成分へ値を持つ連結写像を定義した。
+零次数の完全性と自然性をこの表示へ移した。
+fiber の零次数比較の単射性では、第一の原像の頂点を参照基点に取った。
+底の基本群からの連結写像で第二の原像を表示し、標的の全空間の基本群へ戻した。
+全空間の基本群の全射性と底の基本群の単射性を使って、元の連結成分が一致すると示した。
+全射性では、先に全空間の連結成分を持ち上げた。
+底の連結成分の単射性と零次数の完全性で源の fiber の頂点を選び、参照基点をそこへ移した。
+標的の残りの成分を底の基本群の全射性と連結写像の自然性で持ち上げた。
+この零次数の全単射性と正次数の五項補題を合わせ、fiber の全基点・全次数の π_* 同型性を得た。
+任意の包含と可換な fiber 射にも、普遍性の一意性で移せる形にした。
+
+| 主要宣言 | 内容 |
+| --- | --- |
+| `KanHomotopyZero.map_bijective_iff_piZero` | 基点付き零次数と連結成分の全単射性の同値 |
+| `KanPiIsomorphism.piZero_bijective_at` | 指定頂点を持つ源での連結成分の全単射性 |
+| `componentConnecting` | 固定 fiber の連結成分への連結写像 |
+| `componentConnecting_exact` / `.componentConnecting_kernel` | 参照基点を変えられる零次数の完全性 |
+| `componentFiber_exact` | 全空間の連結成分の位置での完全性 |
+| `FibrationSquare.componentConnecting_natural` | 固定 fiber の連結写像の自然性 |
+| `FibrationSquare.fiberMap_piZero_bijective` | fiber の連結成分の全単射性 |
+| `FibrationSquare.fiberMap_piIsomorphism` | fiber の全基点 π_* 同型 |
+| `FibrationSquare.fiberMapOver_piIsomorphism` | 包含と可換な固定 fiber 射での比較 |
+
+参照：Goerss–Jardine I §§7–8、Kerodon §3.2.6、BF 1978 §2。
+保存単位の対象ビルド 1859 jobs 成功。
+私有宣言を含む 86 モジュール 1494 宣言で標準三公理のみ。
+L9c は未完了。次は loop と fiber の比較を用いて fiber 列の Ω 条件を証明する。
+整数次数長完全列と反復比較の隣接構造射との添字正規化も残る。
