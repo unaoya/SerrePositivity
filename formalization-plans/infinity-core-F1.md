@@ -9255,5 +9255,109 @@ noncomputable def leftUnstraighteningTransformationMapChoiceIso
         (leftUnstraighteningTransformationMap F G H h₀ h₁).property)
       ((leftUnstraighteningTransformationEndpoint F G H h₀ h₁).app _ x)
 
+lemma relativeFunctorVertex_transport {A E B : SSet.{u}} (p : E ⟶ B)
+    {a b : A ⟶ B} (h : a = b) (f : A ⟶ E) (hf : f ≫ p = a) :
+    (eqToHom (congrArg (relativeFunctorSpace p) h)).app _ (relativeFunctorVertex p a f hf) =
+      relativeFunctorVertex p b f (hf.trans h)
+
+lemma relativeFunctorBaseChangeForward_vertex {A E B D : SSet.{u}}
+    (p : E ⟶ B) (f : D ⟶ B) (a : A ⟶ D)
+    (g : A ⟶ pullback p f) (hg : g ≫ pullback.snd p f = a) :
+    (relativeFunctorBaseChangeForward p f a).app _
+      (relativeFunctorVertex (pullback.snd p f) a g hg) =
+    relativeFunctorVertex p (a ≫ f) (g ≫ pullback.fst p f) (by
+      rw [Category.assoc, pullback.condition, ← Category.assoc, hg])
+
+lemma relativeFunctorBaseChangeBackward_vertex {A E B D : SSet.{u}}
+    (p : E ⟶ B) (f : D ⟶ B) (a : A ⟶ D)
+    (g : A ⟶ E) (hg : g ≫ p = a ≫ f) :
+    (relativeFunctorBaseChangeBackward p f a).app _ (relativeFunctorVertex p (a ≫ f) g hg) =
+      relativeFunctorVertex (pullback.snd p f) a (pullback.lift g a hg)
+        (pullback.lift_snd _ _ _)
+
+lemma relativeEdgeLiftSpaceEndpoint_vertex {A X B : SSet.{u}} (p : X ⟶ B)
+    (c : A ⟶ relativeEdgeSourceTarget p)
+    (Q : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X) (hQ : Q ≫ relativeEdgeSource p = c) :
+    (relativeEdgeLiftSpaceEndpoint p c).app _
+      (relativeEdgeLiftSpaceVertexEquiv p c ⟨Q, hQ⟩) =
+    relativeFunctorVertex p (c ≫ pullback.snd p
+      (evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) ≫
+        evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
+      (Q ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) (by
+        rw [Category.assoc, relativeEdgeEndpoint_comp, ← Category.assoc, hQ])
+
+lemma relativeEdgeLiftSpaceEndpoint_baseChange_vertex {A X B D : SSet.{u}} (p : X ⟶ B)
+    (c : A ⟶ relativeEdgeSourceTarget p)
+    (Q : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X) (hQ : Q ≫ relativeEdgeSource p = c)
+    (G : D ⟶ B) (a : A ⟶ D)
+    (he : c ≫ pullback.snd p
+      (evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) ≫
+        evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = a ≫ G)
+    (g : A ⟶ pullback p G) (hg : g ≫ pullback.snd p G = a)
+    (hQg : Q ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
+      g ≫ pullback.fst p G) :
+    (relativeEdgeLiftSpaceEndpoint p c ≫ eqToHom (congrArg (relativeFunctorSpace p) he) ≫
+      (relativeFunctorBaseChangeIso p G a).inv).app _
+        (relativeEdgeLiftSpaceVertexEquiv p c ⟨Q, hQ⟩) =
+      relativeFunctorVertex (pullback.snd p G) a g hg
+
+noncomputable def leftUnstraighteningTransformationWitness
+    {B : SSet.{u + 1}} (F : B ⟶ SpaceInfinity.{u})
+    (H : (Δ[1] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+    (h₀ : prismEndpoint 0 B ≫ H = F)
+    (W : (Δ[1] : SSet.{u + 1}) ⊗ leftUnstraightening F ⟶ PointedSpaceInfinity.{u})
+    (hW₀ : prismEndpoint 0 _ ≫ W = pullback.fst pointedSpaceProjection F)
+    (hWp : W ≫ pointedSpaceProjection = (Δ[1] ◁ leftUnstraighteningProjection F) ≫ H) :
+    (leftUnstraighteningTransformationChoiceSpace F H h₀) _⦋0⦌
+
+lemma leftUnstraighteningTransformationWitness_endpoint
+    {B : SSet.{u + 1}} (F G : B ⟶ SpaceInfinity.{u})
+    (H : (Δ[1] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
+    (h₀ : prismEndpoint 0 B ≫ H = F) (h₁ : prismEndpoint 1 B ≫ H = G)
+    (W : (Δ[1] : SSet.{u + 1}) ⊗ leftUnstraightening F ⟶ PointedSpaceInfinity.{u})
+    (hW₀ : prismEndpoint 0 _ ≫ W = pullback.fst pointedSpaceProjection F)
+    (hWp : W ≫ pointedSpaceProjection = (Δ[1] ◁ leftUnstraighteningProjection F) ≫ H)
+    (g : leftUnstraightening F ⟶ leftUnstraightening G)
+    (hg : g ≫ leftUnstraighteningProjection G = leftUnstraighteningProjection F)
+    (hW₁ : prismEndpoint 1 _ ≫ W = g ≫ pullback.fst pointedSpaceProjection G) :
+    (leftUnstraighteningTransformationEndpoint F G H h₀ h₁).app _
+      (leftUnstraighteningTransformationWitness F H h₀ W hW₀ hWp) =
+      relativeFunctorVertex (leftUnstraighteningProjection G) (leftUnstraighteningProjection F)
+        g hg
+
+def leftUnstraighteningIdentityTransformation {B : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) : (Δ[1] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u}
+
+lemma leftUnstraighteningIdentityTransformation_endpoint {B : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) (i : Fin 2) :
+    prismEndpoint i B ≫ leftUnstraighteningIdentityTransformation F = F
+
+noncomputable def leftUnstraighteningIdentityLift {B : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) :
+    (Δ[1] : SSet.{u + 1}) ⊗ leftUnstraightening F ⟶ PointedSpaceInfinity.{u}
+
+lemma leftUnstraighteningIdentityLift_endpoint {B : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) (i : Fin 2) :
+    prismEndpoint i _ ≫ leftUnstraighteningIdentityLift F =
+      pullback.fst pointedSpaceProjection F
+
+lemma leftUnstraighteningIdentityLift_projection {B : SSet.{u + 1}}
+    (F : B ⟶ SpaceInfinity.{u}) :
+    leftUnstraighteningIdentityLift F ≫ pointedSpaceProjection =
+      (Δ[1] ◁ leftUnstraighteningProjection F) ≫ leftUnstraighteningIdentityTransformation F
+
+noncomputable def leftUnstraighteningTransformationMap_identityIso
+    {B : SSet.{u + 1}} (F : B ⟶ SpaceInfinity.{u}) :
+    VertexIso (relativeFunctorVertex (leftUnstraighteningProjection F)
+      (leftUnstraighteningProjection F)
+        (leftUnstraighteningTransformationMap F F (leftUnstraighteningIdentityTransformation F)
+          (leftUnstraighteningIdentityTransformation_endpoint F 0)
+          (leftUnstraighteningIdentityTransformation_endpoint F 1)).val
+        (leftUnstraighteningTransformationMap F F (leftUnstraighteningIdentityTransformation F)
+          (leftUnstraighteningIdentityTransformation_endpoint F 0)
+          (leftUnstraighteningIdentityTransformation_endpoint F 1)).property)
+      (relativeFunctorVertex (leftUnstraighteningProjection F) (leftUnstraighteningProjection F)
+        (𝟙 _) (Category.id_comp _))
+
 end SerrePositivity.InfinityCategories
 ```

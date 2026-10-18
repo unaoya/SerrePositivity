@@ -73,15 +73,13 @@ noncomputable def leftUnstraighteningTransformationEndpoint
     (H : (Δ[1] : SSet.{u + 1}) ⊗ B ⟶ SpaceInfinity.{u})
     (h₀ : prismEndpoint 0 B ≫ H = F) (h₁ : prismEndpoint 1 B ≫ H = G) :
     leftUnstraighteningTransformationChoiceSpace F H h₀ ⟶
-      relativeFunctorSpace (leftUnstraighteningProjection G) (leftUnstraighteningProjection F) := by
-  let c := leftUnstraighteningTransformationSource F H h₀
-  have e : leftUnstraighteningTransformationChoiceSpace F H h₀ ⟶
-      relativeFunctorSpace pointedSpaceProjection (leftUnstraighteningProjection F ≫ G) := by
-    have h := leftUnstraighteningTransformationSource_endpoint F G H h₀ h₁
-    simpa only [c, h, leftUnstraighteningTransformationChoiceSpace] using
-      relativeEdgeLiftSpaceEndpoint pointedSpaceProjection c
-  exact e ≫ (relativeFunctorBaseChangeIso pointedSpaceProjection G
-    (leftUnstraighteningProjection F)).inv
+      relativeFunctorSpace (leftUnstraighteningProjection G) (leftUnstraighteningProjection F) :=
+  relativeEdgeLiftSpaceEndpoint pointedSpaceProjection
+    (leftUnstraighteningTransformationSource F H h₀) ≫
+      eqToHom (congrArg (relativeFunctorSpace pointedSpaceProjection)
+        (leftUnstraighteningTransformationSource_endpoint F G H h₀ h₁)) ≫
+      (relativeFunctorBaseChangeIso pointedSpaceProjection G
+        (leftUnstraighteningProjection F)).inv
 
 /-- 概要：coherent な変換の任意の二つの持ち上げの終点は、底上の写像空間内で同型。
 方針：可縮な選択空間の二頂点の同型を終点の射で写す。
