@@ -147,3 +147,6 @@ public import SerrePositivity.KST.SchemeLemmas.BlowupPureTransformPullbacks
 public import SerrePositivity.KST.SchemeLemmas.PureTransformRestrictBase
 public import SerrePositivity.KST.SchemeLemmas.LocalFlatPureRefinement
 public import SerrePositivity.KST.SchemeLemmas.AffineBlowupNoetherian
+public import SerrePositivity.KST.SchemeLemmas.AffineLocalFlatPureRefinement
+public import SerrePositivity.KST.SchemeLemmas.AffineFlatPureComposition
+public import SerrePositivity.KST.SchemeLemmas.NoetherianFiniteModuleFlattening
